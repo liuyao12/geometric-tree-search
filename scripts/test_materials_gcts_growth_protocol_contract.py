@@ -31,7 +31,7 @@ def test_growth_protocols_expand_into_existing_controls() -> None:
 
     for setting in (
         "confinement", "geometryPreference", "compositionPreference", "surfacePreference",
-        "frontMorphologyMode", "epitaxyTemplateMode", "externalDriveMode",
+        "frontMorphologyMode", "capillaryGeometryMode", "epitaxyTemplateMode", "externalDriveMode",
         "robustnessPreference", "microstructureCouplingMode", "loopClosurePreference",
         "arrivalPathMode", "geometricExplorationScale", "requestedGrowthNuclei",
         "growthScheduling", "hierarchyEnabled",

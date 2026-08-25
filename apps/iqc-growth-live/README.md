@@ -3810,6 +3810,33 @@ construction; and the score is not capillary pressure, attachment kinetics,
 instability wavelength, or physical time. The receipt records the local frame,
 reach, neighborhood work, accepted/rejected score means, and all non-claims.
 
+## Discrete capillary geometry
+
+The adjacent **discrete capillary geometry** experiment adds a genuinely 3D
+interface descriptor without reinterpreting the tangent-sector morphology
+score. Around every emitted site, 32 deterministic equal-area directions on
+the unit sphere form a finite solid-angle quadrature. A direction is occupied
+when an existing or co-emitted neighbour lies inside a `38°` angular cap and
+within `2.2 d_nn`; otherwise it remains open. Cyan/amber spokes around the live
+frontier make the occupied/open angular measure visible.
+
+The user can favor a highly occupied pocket (concavity filling), a roughly
+half-occupied local half-space (planar-front balance), or an open environment
+(exposed-front control). The chosen score ranks the same already-enumerated
+whole-cluster actions. It cannot add or move a site, change a collision or
+topology gate, repair an invalid marking, or read the held-out target. The
+epitaxy and directional-solidification protocols select planar balance; pore
+filling and impingement select concavity filling; the dendritic hypothesis
+selects the exposed control.
+
+This equal-area occupancy measure is a discrete geometric surrogate—not
+differential mean curvature, surface free energy, capillary pressure, an
+equilibrium Wulff shape, or attachment kinetics. Its receipt records the
+quadrature, angular cap, reach, co-emitted-site treatment, direction-neighbour
+work, accepted/rejected score means, and every non-claim. Keeping it separate
+from the older morphology score lets a materials scientist compare 2D backing
+geometry against 3D local solid angle on an identical frozen frontier.
+
 ## Declared epitaxial registry
 
 The supported-film experiment can now replace its visually uniform excluded

@@ -169,6 +169,9 @@ const surfacePreferenceSelect = $("surfacePreferenceSelect");
 const frontMorphologySelect = $("frontMorphologySelect");
 const frontMorphologyWeightSelect = $("frontMorphologyWeightSelect");
 const frontMorphologyHint = $("frontMorphologyHint");
+const capillaryGeometrySelect = $("capillaryGeometrySelect");
+const capillaryGeometryWeightSelect = $("capillaryGeometryWeightSelect");
+const capillaryGeometryHint = $("capillaryGeometryHint");
 const frontMorphologyBadge = $("frontMorphologyBadge");
 const frontMorphologyBadgeLabel = $("frontMorphologyBadgeLabel");
 const epitaxyTemplateSelect = $("epitaxyTemplateSelect");
@@ -711,6 +714,11 @@ let acceptedFrontMorphologyScore = 0;
 let rejectedFrontMorphologyScore = 0;
 let frontMorphologyEvaluations = 0;
 let frontMorphologyNeighborhoodChecks = 0;
+let acceptedCapillaryGeometryScore = 0;
+let rejectedCapillaryGeometryScore = 0;
+let capillaryGeometryEvaluations = 0;
+let capillaryGeometryDirectionTests = 0;
+let capillaryGeometryNeighborhoodChecks = 0;
 let acceptedEpitaxyRegistryScore = 0;
 let rejectedEpitaxyRegistryScore = 0;
 let epitaxyRegistryEvaluations = 0;
@@ -774,6 +782,8 @@ let chargePreference = "auto";
 let surfacePreference = "soft";
 let frontMorphologyMode = "none";
 let frontMorphologyWeight = .24;
+let capillaryGeometryMode = "none";
+let capillaryGeometryWeight = .24;
 let epitaxyTemplateMode = "none";
 let epitaxyWeight = .24;
 let externalDriveMode = "none";
@@ -818,6 +828,7 @@ const GROWTH_PROTOCOL_DEFAULTS = Object.freeze({
   confinement: "box", geometryPreference: "strain", geometricStrainWeight: .16,
   compositionPreference: "soft", chargePreference: "auto", surfacePreference: "soft",
   frontMorphologyMode: "none", frontMorphologyWeight: .24,
+  capillaryGeometryMode: "none", capillaryGeometryWeight: .24,
   epitaxyTemplateMode: "none", epitaxyWeight: .24,
   externalDriveMode: "none", externalDriveWeight: .24,
   affineLoadMode: "none", affineLoadMagnitude: .02,
@@ -836,6 +847,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
     settings: { confinement: "box", geometryPreference: "strain", geometricStrainWeight: .16,
       compositionPreference: "soft", chargePreference: "auto", surfacePreference: "soft",
       frontMorphologyMode: "none", epitaxyTemplateMode: "none", externalDriveMode: "none",
+      capillaryGeometryMode: "none",
       affineLoadMode: "none", robustnessPreference: "none", microstructureCouplingMode: "none",
       loopClosurePreference: "none", arrivalPathMode: "none", geometricExplorationScale: 0,
       requestedGrowthNuclei: 1, growthScheduling: "commuting", hierarchyEnabled: true },
@@ -845,6 +857,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
     settings: { confinement: "substrate", geometryPreference: "strain", geometricStrainWeight: .16,
       compositionPreference: "soft", chargePreference: "auto", surfacePreference: "strong",
       frontMorphologyMode: "facet", frontMorphologyWeight: .24, epitaxyTemplateMode: "hex-coherent", epitaxyWeight: .24,
+      capillaryGeometryMode: "planar", capillaryGeometryWeight: .24,
       externalDriveMode: "z-plus", externalDriveWeight: .24, affineLoadMode: "none",
       robustnessPreference: "margin", robustnessWeight: .24, microstructureCouplingMode: "none",
       loopClosurePreference: "none", arrivalPathMode: "declared-drive", arrivalPathWeight: .24,
@@ -856,6 +869,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
     settings: { confinement: "substrate", geometryPreference: "strain", geometricStrainWeight: .16,
       compositionPreference: "soft", chargePreference: "auto", surfacePreference: "strong",
       frontMorphologyMode: "facet", frontMorphologyWeight: .24, epitaxyTemplateMode: "hex-mismatch", epitaxyWeight: .24,
+      capillaryGeometryMode: "planar", capillaryGeometryWeight: .24,
       externalDriveMode: "z-plus", externalDriveWeight: .24, affineLoadMode: "none",
       robustnessPreference: "margin", robustnessWeight: .24, microstructureCouplingMode: "none",
       loopClosurePreference: "consensus", loopClosureWeight: .12, arrivalPathMode: "declared-drive", arrivalPathWeight: .24,
@@ -867,6 +881,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
     settings: { confinement: "box", geometryPreference: "strain", geometricStrainWeight: .16,
       compositionPreference: "soft", chargePreference: "auto", surfacePreference: "soft",
       frontMorphologyMode: "facet", frontMorphologyWeight: .24, epitaxyTemplateMode: "none",
+      capillaryGeometryMode: "planar", capillaryGeometryWeight: .24,
       externalDriveMode: "z-plus", externalDriveWeight: .48, affineLoadMode: "none",
       robustnessPreference: "margin", robustnessWeight: .12, microstructureCouplingMode: "none",
       loopClosurePreference: "none", arrivalPathMode: "declared-drive", arrivalPathWeight: .24,
@@ -878,6 +893,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
     settings: { confinement: "sphere", geometryPreference: "strain", geometricStrainWeight: .08,
       compositionPreference: "soft", chargePreference: "auto", surfacePreference: "soft",
       frontMorphologyMode: "tip", frontMorphologyWeight: .48, epitaxyTemplateMode: "none",
+      capillaryGeometryMode: "exposed", capillaryGeometryWeight: .24,
       externalDriveMode: "radial-out", externalDriveWeight: .24, affineLoadMode: "none",
       robustnessPreference: "none", microstructureCouplingMode: "none", loopClosurePreference: "none",
       arrivalPathMode: "radial-outward", arrivalPathWeight: .24, geometricExplorationScale: .15,
@@ -889,6 +905,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
     settings: { confinement: "box", geometryPreference: "strain", geometricStrainWeight: .16,
       compositionPreference: "soft", chargePreference: "auto", surfacePreference: "soft",
       frontMorphologyMode: "smooth", frontMorphologyWeight: .24, epitaxyTemplateMode: "none",
+      capillaryGeometryMode: "pocket", capillaryGeometryWeight: .24,
       externalDriveMode: "none", affineLoadMode: "none", robustnessPreference: "margin", robustnessWeight: .12,
       microstructureCouplingMode: "interface-follow", microstructureCouplingWeight: .24,
       loopClosurePreference: "consensus", loopClosureWeight: .24, arrivalPathMode: "none",
@@ -899,6 +916,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
     settings: { confinement: "hourglass", geometryPreference: "strain", geometricStrainWeight: .16,
       compositionPreference: "soft", chargePreference: "auto", surfacePreference: "strong",
       frontMorphologyMode: "smooth", frontMorphologyWeight: .48, epitaxyTemplateMode: "none",
+      capillaryGeometryMode: "pocket", capillaryGeometryWeight: .48,
       externalDriveMode: "none", affineLoadMode: "none", robustnessPreference: "margin", robustnessWeight: .24,
       microstructureCouplingMode: "gap-heal", microstructureCouplingWeight: .24,
       loopClosurePreference: "consensus", loopClosureWeight: .12,
@@ -909,6 +927,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
 const GROWTH_PROTOCOL_CONTROL_IDS = new Set([
   "geometryPreferenceSelect", "strainWeightSelect", "compositionPreferenceSelect", "chargePreferenceSelect",
   "surfacePreferenceSelect", "frontMorphologySelect", "frontMorphologyWeightSelect",
+  "capillaryGeometrySelect", "capillaryGeometryWeightSelect",
   "epitaxyTemplateSelect", "epitaxyWeightSelect", "externalDriveSelect", "externalDriveWeightSelect",
   "affineLoadSelect", "affineLoadMagnitudeSelect", "robustnessPreferenceSelect", "robustnessWeightSelect",
   "microstructureCouplingSelect", "microstructureCouplingWeightSelect", "loopClosurePreferenceSelect",
@@ -4270,7 +4289,7 @@ function renderGrowthMechanismAudit() {
     const empty = document.createElement("p"); empty.textContent = "Advance one tree-search update to map its local geometric environment."; growthMechanismLedger.appendChild(empty);
   }
   renderGrowthUncertaintyBudget();
-  growthMechanismBoundary.textContent = `Phenotypes and uncertainty budgets are assigned after the candidate geometry and decision are frozen. Up to ${MAXIMUM_POSE_AUDITS_PER_LEAP} deterministic pose audits replay hard geometry at the larger of measured pair uncertainty and half the resolved isometry tolerance; the capped set is retained in encounter order, target-blind, and never changes admission or rank. This is a bounded sensitivity audit, not a posterior probability, confidence interval, thermal ensemble, dynamics, or calibrated robustness certificate. ${activeMicrostructureCouplingWeight() > 0 ? `The declared ${microstructureCouplingLabel()} experiment uses only proximity to frozen input-derived roles as a soft rank term over unchanged actions.` : "Proximity to heterogeneous-geometry roles is diagnostic only."} ${activeFrontMorphologyWeight() > 0 ? `The ${frontMorphologyLabel()} experiment uses parent-local angular support as another soft ordering term.` : "Front morphology is diagnostic only."} ${activeEpitaxyWeight() > 0 ? `The declared ${epitaxyTemplateLabel()} contributes an interfacial registry score without substrate atoms.` : "No epitaxial template ranks the frontier."} ${activeFeedExposureWeight() > 0 ? `The ${feedExposureLabel()} contributes finite-ray geometric visibility.` : "No source-ray shadowing term ranks the frontier."} No defect identity, mean curvature, adhesion, interface energy, flux, physical mechanism, formation energy, mobility, or rate is inferred.`;
+  growthMechanismBoundary.textContent = `Phenotypes and uncertainty budgets are assigned after the candidate geometry and decision are frozen. Up to ${MAXIMUM_POSE_AUDITS_PER_LEAP} deterministic pose audits replay hard geometry at the larger of measured pair uncertainty and half the resolved isometry tolerance; the capped set is retained in encounter order, target-blind, and never changes admission or rank. This is a bounded sensitivity audit, not a posterior probability, confidence interval, thermal ensemble, dynamics, or calibrated robustness certificate. ${activeMicrostructureCouplingWeight() > 0 ? `The declared ${microstructureCouplingLabel()} experiment uses only proximity to frozen input-derived roles as a soft rank term over unchanged actions.` : "Proximity to heterogeneous-geometry roles is diagnostic only."} ${activeFrontMorphologyWeight() > 0 ? `The ${frontMorphologyLabel()} experiment uses parent-local angular support as another soft ordering term.` : "Front morphology is diagnostic only."} ${activeCapillaryGeometryWeight() > 0 ? `The ${capillaryGeometryLabel()} experiment uses finite 3D solid-angle occupancy around emitted sites.` : "Discrete capillary geometry is diagnostic only."} ${activeEpitaxyWeight() > 0 ? `The declared ${epitaxyTemplateLabel()} contributes an interfacial registry score without substrate atoms.` : "No epitaxial template ranks the frontier."} ${activeFeedExposureWeight() > 0 ? `The ${feedExposureLabel()} contributes finite-ray geometric visibility.` : "No source-ray shadowing term ranks the frontier."} No defect identity, differential mean curvature, adhesion, interface energy, flux, physical mechanism, formation energy, mobility, or rate is inferred.`;
 }
 
 function clusterPlacementIndices(cluster) {
@@ -5663,7 +5682,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-92",
+      buildId: "20260825-93",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -6064,6 +6083,31 @@ async function buildExperimentReceipt() {
         capillaryPressureInferred: false,
         physicalTimeIntegrated: false,
       },
+      discreteCapillaryGeometryRanking: {
+        role: "target-blind soft ordering of unchanged exact actions by local 3D occupied solid angle",
+        mode: capillaryGeometryMode,
+        label: capillaryGeometryLabel(),
+        enabled: activeCapillaryGeometryWeight() > 0,
+        effectiveWeight: activeCapillaryGeometryWeight(),
+        quadratureDirections: 32,
+        angularCapHalfWidthDegrees: 38,
+        neighborhoodReachNearestNeighborUnits: 2.2,
+        emittedSitesIncludedAsNeighbors: true,
+        acceptedMeanScore: receiptRound(acceptedCapillaryGeometryScore / Math.max(1, acceptedDecisions)),
+        rejectedMeanScore: receiptRound(rejectedCapillaryGeometryScore / Math.max(1, rejectedDecisions)),
+        evaluations: capillaryGeometryEvaluations,
+        directionTests: capillaryGeometryDirectionTests,
+        neighborhoodChecks: capillaryGeometryNeighborhoodChecks,
+        candidateSetChanged: false,
+        candidateGeometryChanged: false,
+        hardAdmissionChanged: false,
+        heldoutTargetUsed: false,
+        meanCurvatureInferred: false,
+        surfaceEnergyInferred: false,
+        capillaryPressureInferred: false,
+        equilibriumShapeInferred: false,
+        physicalTimeIntegrated: false,
+      },
       epitaxialRegistryRanking: {
         role: "user-declared target-blind support-plane template ranks unchanged exact interfacial actions",
         mode: epitaxyTemplateMode,
@@ -6362,6 +6406,8 @@ function notebookInterventionFactors(receipt) {
       surface: [search.surfaceCompletionRanking?.mode, search.surfaceCompletionRanking?.effectiveWeight],
       frontMorphology: [search.mesoscopicFrontMorphologyRanking?.mode,
         search.mesoscopicFrontMorphologyRanking?.effectiveWeight],
+      capillaryGeometry: [search.discreteCapillaryGeometryRanking?.mode,
+        search.discreteCapillaryGeometryRanking?.effectiveWeight],
       epitaxy: [search.epitaxialRegistryRanking?.mode, search.epitaxialRegistryRanking?.effectiveWeight],
       externalDrive: [search.externalDrivingGeometry?.mode, search.externalDrivingGeometry?.effectiveWeight],
       robustness: [search.constraintRobustnessRanking?.mode, search.constraintRobustnessRanking?.effectiveWeight],
@@ -7485,6 +7531,73 @@ function frontMorphologyForCandidate(candidate, { recordWork = true } = {}) {
   };
 }
 
+function activeCapillaryGeometryWeight() {
+  return capillaryGeometryMode === "none" ? 0 : capillaryGeometryWeight;
+}
+
+function capillaryGeometryLabel(mode = capillaryGeometryMode) {
+  return ({ none: "solid-angle diagnostic", pocket: "concavity filling",
+    planar: "planar-front balance", exposed: "exposed-front control" })[mode] || "solid-angle diagnostic";
+}
+
+function capillaryQuadratureDirections() {
+  const count = 32; const goldenAngle = Math.PI * (3 - Math.sqrt(5));
+  return Array.from({ length: count }, (_, index) => {
+    const z = 1 - 2 * (index + .5) / count;
+    const radius = Math.sqrt(Math.max(0, 1 - z * z));
+    const angle = index * goldenAngle;
+    return new THREE.Vector3(radius * Math.cos(angle), radius * Math.sin(angle), z);
+  });
+}
+
+function capillaryGeometryForFreshSites(fresh, { recordWork = true } = {}) {
+  const directions = capillaryQuadratureDirections();
+  const reach = 2.2 * referenceSpacing; const capCosine = Math.cos(38 * Math.PI / 180);
+  const directionSummaries = directions.map((direction) => ({ direction: direction.toArray(), occupiedSites: 0, openSites: 0 }));
+  let neighborhoodChecks = 0; let occupiedDirectionTests = 0;
+  const siteCoverages = fresh.map((site, siteIndex) => {
+    const existing = nearbyAtoms(site.p, reach).map((atom) => atom.p.clone().sub(site.p));
+    const coemitted = fresh.filter((_, otherIndex) => otherIndex !== siteIndex)
+      .map((other) => other.p.clone().sub(site.p)).filter((offset) => offset.length() <= reach);
+    const neighborDirections = [...existing, ...coemitted]
+      .filter((offset) => offset.lengthSq() > MERGE_TOLERANCE ** 2).map((offset) => offset.normalize());
+    neighborhoodChecks += neighborDirections.length;
+    let occupied = 0;
+    directions.forEach((direction, directionIndex) => {
+      const covered = neighborDirections.some((neighbor) => neighbor.dot(direction) >= capCosine);
+      if (covered) { occupied++; directionSummaries[directionIndex].occupiedSites++; }
+      else directionSummaries[directionIndex].openSites++;
+    });
+    occupiedDirectionTests += directions.length * neighborDirections.length;
+    return occupied / directions.length;
+  });
+  const meanOccupiedSolidAngleFraction = siteCoverages.reduce((sum, value) => sum + value, 0)
+    / Math.max(1, siteCoverages.length);
+  const pocketScore = 2 * meanOccupiedSolidAngleFraction - 1;
+  const planarScore = 1 - 4 * Math.abs(meanOccupiedSolidAngleFraction - .5);
+  const exposedScore = 1 - 2 * meanOccupiedSolidAngleFraction;
+  const score = capillaryGeometryMode === "pocket" ? pocketScore
+    : capillaryGeometryMode === "planar" ? planarScore
+      : capillaryGeometryMode === "exposed" ? exposedScore : 0;
+  if (recordWork) {
+    capillaryGeometryEvaluations++;
+    capillaryGeometryDirectionTests += occupiedDirectionTests;
+    capillaryGeometryNeighborhoodChecks += neighborhoodChecks;
+  }
+  return {
+    mode: capillaryGeometryMode, label: capillaryGeometryLabel(), enabled: capillaryGeometryMode !== "none",
+    score, pocketScore, planarScore, exposedScore, meanOccupiedSolidAngleFraction,
+    meanOpenSolidAngleFraction: 1 - meanOccupiedSolidAngleFraction,
+    siteCoverages, directionSummaries, quadratureDirectionCount: directions.length,
+    angularCapHalfWidthDegrees: 38, reachNearestNeighborUnits: 2.2,
+    neighborhoodChecks, occupiedDirectionTests,
+    equalAreaSphereQuadrature: true, emittedSitesIncludedAsNeighbors: true,
+    candidateSetChanged: false, candidateGeometryChanged: false, hardAdmissionChanged: false,
+    heldoutTargetUsed: false, meanCurvatureInferred: false, surfaceEnergyInferred: false,
+    capillaryPressureInferred: false, equilibriumShapeInferred: false, physicalTimeIntegrated: false,
+  };
+}
+
 function epitaxyTemplateSpec(mode = epitaxyTemplateMode) {
   return ({
     "square-coherent": { symmetry: "square", mismatch: 0, angleDegrees: 0 },
@@ -7956,6 +8069,8 @@ function capturePolicyComparison(entries) {
     { id: "surface", label: "surface 0.18", score: (entry) => entry.baseScore - .18 * entry.evaluation.surfaceCompletion.scaledDelta },
     { id: "front-morphology", label: `${frontMorphologyLabel()} ${activeFrontMorphologyWeight().toFixed(2)}`,
       score: (entry) => entry.baseScore + activeFrontMorphologyWeight() * entry.evaluation.frontMorphology.score },
+    { id: "capillary-geometry", label: `${capillaryGeometryLabel()} ${activeCapillaryGeometryWeight().toFixed(2)}`,
+      score: (entry) => entry.baseScore + activeCapillaryGeometryWeight() * entry.evaluation.capillaryGeometry.score },
     { id: "epitaxy", label: `${epitaxyTemplateLabel()} ${activeEpitaxyWeight().toFixed(2)}`,
       score: (entry) => entry.baseScore + activeEpitaxyWeight() * entry.evaluation.epitaxyRegistry.score },
     { id: "drive", label: `${externalDriveModeLabel()} ${activeExternalDriveWeight().toFixed(2)}`,
@@ -8201,6 +8316,7 @@ function commutingFrontierBatch() {
         - activeFormalChargeWeight() * evaluation.formalChargeBalance.scaledDelta
         - activeSurfaceCompletionWeight() * evaluation.surfaceCompletion.scaledDelta
         + activeFrontMorphologyWeight() * evaluation.frontMorphology.score
+        + activeCapillaryGeometryWeight() * evaluation.capillaryGeometry.score
         + activeEpitaxyWeight() * evaluation.epitaxyRegistry.score
         + activeExternalDriveWeight() * evaluation.externalDrive.alignment
         + activeRobustnessWeight() * evaluation.constraintRobustness.score
@@ -8310,6 +8426,7 @@ function evaluateCandidate(candidate, {
   const affineLoadedGeometricStrain = affineLoadedGeometricStrainForFreshSites(fresh, constraintProjection);
   const surfaceCompletion = surfaceCompletionForFreshSites(fresh, constraintProjection);
   const frontMorphology = frontMorphologyForCandidate(candidate, { recordWork });
+  const capillaryGeometry = capillaryGeometryForFreshSites(fresh, { recordWork });
   const epitaxyRegistry = epitaxyRegistryForFreshSites(fresh, { recordWork });
   const compositionBalance = compositionBalanceForFreshSites(fresh);
   const formalChargeBalance = formalChargeBalanceForFreshSites(fresh);
@@ -8324,7 +8441,7 @@ function evaluateCandidate(candidate, {
     && angularViolations.length === 0 && (markingAccepted || markingFallback);
   return { accepted, sites, merged, fresh, conflicts, boundaryFailures, knownFailures, markingFallback,
     coordinationOverflows, angularViolations, geometricStrain, affineLoadedGeometricStrain,
-    surfaceCompletion, frontMorphology, epitaxyRegistry, compositionBalance, formalChargeBalance,
+    surfaceCompletion, frontMorphology, capillaryGeometry, epitaxyRegistry, compositionBalance, formalChargeBalance,
     externalDrive, constraintRobustness, microstructureCoupling, loopClosure, arrivalPath, feedExposure,
     duplicateSites: canonical.duplicateSites,
     freshReferenceIndices: fresh.map((site) => site.referenceIndex).filter(Number.isInteger),
@@ -8543,6 +8660,11 @@ function initializeOffLatticeSearch() {
   rejectedFrontMorphologyScore = 0;
   frontMorphologyEvaluations = 0;
   frontMorphologyNeighborhoodChecks = 0;
+  acceptedCapillaryGeometryScore = 0;
+  rejectedCapillaryGeometryScore = 0;
+  capillaryGeometryEvaluations = 0;
+  capillaryGeometryDirectionTests = 0;
+  capillaryGeometryNeighborhoodChecks = 0;
   acceptedEpitaxyRegistryScore = 0;
   rejectedEpitaxyRegistryScore = 0;
   epitaxyRegistryEvaluations = 0;
@@ -9109,7 +9231,8 @@ function currentGrowthProtocolSettings() {
   return {
     confinement: confinementSelect.value, geometryPreference, geometricStrainWeight,
     compositionPreference, chargePreference, surfacePreference,
-    frontMorphologyMode, frontMorphologyWeight, epitaxyTemplateMode, epitaxyWeight,
+    frontMorphologyMode, frontMorphologyWeight, capillaryGeometryMode, capillaryGeometryWeight,
+    epitaxyTemplateMode, epitaxyWeight,
     externalDriveMode, externalDriveWeight, affineLoadMode, affineLoadMagnitude,
     robustnessPreference, robustnessWeight, microstructureCouplingMode, microstructureCouplingWeight,
     loopClosurePreference, loopClosureWeight, arrivalPathMode, arrivalPathWeight,
@@ -9155,6 +9278,7 @@ function applyGrowthProtocol(mode) {
   compositionPreference = settings.compositionPreference; chargePreference = settings.chargePreference;
   surfacePreference = settings.surfacePreference;
   frontMorphologyMode = settings.frontMorphologyMode; frontMorphologyWeight = settings.frontMorphologyWeight;
+  capillaryGeometryMode = settings.capillaryGeometryMode; capillaryGeometryWeight = settings.capillaryGeometryWeight;
   epitaxyTemplateMode = settings.epitaxyTemplateMode; epitaxyWeight = settings.epitaxyWeight;
   externalDriveMode = settings.externalDriveMode; externalDriveWeight = settings.externalDriveWeight;
   affineLoadMode = settings.affineLoadMode; affineLoadMagnitude = settings.affineLoadMagnitude;
@@ -9298,6 +9422,8 @@ function syncStageOptions() {
     surfacePreferenceSelect.value = surfacePreference;
     frontMorphologySelect.value = frontMorphologyMode;
     frontMorphologyWeightSelect.value = String(frontMorphologyWeight);
+    capillaryGeometrySelect.value = capillaryGeometryMode;
+    capillaryGeometryWeightSelect.value = String(capillaryGeometryWeight);
     epitaxyTemplateSelect.value = epitaxyTemplateMode;
     epitaxyWeightSelect.value = String(epitaxyWeight);
     externalDriveSelect.value = externalDriveMode;
@@ -9324,6 +9450,8 @@ function syncStageOptions() {
     surfacePreferenceSelect.disabled = finiteIceAnchorMode;
     frontMorphologySelect.disabled = finiteIceAnchorMode;
     frontMorphologyWeightSelect.disabled = finiteIceAnchorMode || frontMorphologyMode === "none";
+    capillaryGeometrySelect.disabled = finiteIceAnchorMode;
+    capillaryGeometryWeightSelect.disabled = finiteIceAnchorMode || capillaryGeometryMode === "none";
     epitaxyTemplateSelect.disabled = finiteIceAnchorMode || confinementSelect.value !== "substrate";
     epitaxyWeightSelect.disabled = finiteIceAnchorMode || confinementSelect.value !== "substrate" || epitaxyTemplateMode === "none";
     externalDriveSelect.disabled = finiteIceAnchorMode;
@@ -9376,6 +9504,8 @@ function syncStageOptions() {
       : `${initializedGrowthNuclei || requestedGrowthNuclei} observed seed${(initializedGrowthNuclei || requestedGrowthNuclei) === 1 ? "" : "s"} · ${crossNucleusMergeContacts} interface contacts`;
     frontMorphologyHint.textContent = frontMorphologyMode === "none"
       ? "neutral · diagnostic" : `${frontMorphologyLabel()} · weight ${frontMorphologyWeight.toFixed(2)}`;
+    capillaryGeometryHint.textContent = capillaryGeometryMode === "none"
+      ? "off · diagnostic solid angle" : `${capillaryGeometryLabel()} · 32 directions · weight ${capillaryGeometryWeight.toFixed(2)}`;
     epitaxyTemplateHint.textContent = confinementSelect.value !== "substrate"
       ? "choose supported-film geometry"
       : epitaxyTemplateMode === "none" ? "inert excluded plane · registry off"
@@ -9432,14 +9562,17 @@ function syncStageOptions() {
     const morphologyUse = frontMorphologyMode === "none"
       ? " Mesoscopic angular support and backing depth are reported but have zero rank weight."
       : ` A ${frontMorphologyWeight.toFixed(2)} soft ${frontMorphologyLabel()} term ranks the same exact actions from their parent-local angular support and backing-depth profile; it is not surface energy or mean curvature.`;
+    const capillaryUse = capillaryGeometryMode === "none"
+      ? " Local 3D occupied solid angle is diagnostic only."
+      : ` A ${capillaryGeometryWeight.toFixed(2)} soft ${capillaryGeometryLabel()} term uses 32 equal-area directions around emitted sites; it is a discrete interface proxy, not curvature or surface energy.`;
     const epitaxyUse = activeEpitaxyWeight() <= 0
       ? confinementSelect.value === "substrate" ? " The support plane remains inert excluded geometry; epitaxial registry contributes zero rank weight." : " No support-plane template is active."
       : ` A declared ${epitaxyTemplateLabel()} ranks interfacial sites within 3.5dₙₙ of the support at weight ${epitaxyWeight.toFixed(2)}; it supplies no substrate atoms, adhesion, or interface energy.`;
     growthModeNote.textContent = finiteIceAnchorMode
       ? "This sealed ice gate executes primitive H₂O connection ports with mutually exclusive orientation domains. Clusters² is disabled because no stationary promoted ice production has been certified."
       : hierarchyEnabled
-      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${epitaxyUse}`
-      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${epitaxyUse}`;
+      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`
+      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`;
   }
 }
 
@@ -9488,6 +9621,11 @@ function resetCounters() {
   rejectedFrontMorphologyScore = 0;
   frontMorphologyEvaluations = 0;
   frontMorphologyNeighborhoodChecks = 0;
+  acceptedCapillaryGeometryScore = 0;
+  rejectedCapillaryGeometryScore = 0;
+  capillaryGeometryEvaluations = 0;
+  capillaryGeometryDirectionTests = 0;
+  capillaryGeometryNeighborhoodChecks = 0;
   acceptedEpitaxyRegistryScore = 0;
   rejectedEpitaxyRegistryScore = 0;
   epitaxyRegistryEvaluations = 0;
@@ -9817,6 +9955,7 @@ function stateForCandidate(candidate, evaluation) {
     formalChargeBalance: evaluation.formalChargeBalance,
     surfaceCompletion: evaluation.surfaceCompletion,
     frontMorphology: evaluation.frontMorphology,
+    capillaryGeometry: evaluation.capillaryGeometry,
     epitaxyRegistry: evaluation.epitaxyRegistry,
     externalDrive: evaluation.externalDrive,
     constraintRobustness: evaluation.constraintRobustness,
@@ -9932,6 +10071,7 @@ function performOffLatticeEvent() {
     arrivalAxis: evaluation.arrivalPath.axis,
     arrivalSweepDistance: evaluation.arrivalPath.sweepDistanceSceneUnits,
     frontMorphology: evaluation.frontMorphology,
+    capillaryGeometry: evaluation.capillaryGeometry,
     feedExposure: evaluation.feedExposure,
   }));
   const mechanismDiagnostics = new Map(batch.map(({ candidate, evaluation }) =>
@@ -9957,6 +10097,7 @@ function performOffLatticeEvent() {
       rejectedFormalChargeDelta += snapshotEvaluation.formalChargeBalance.scaledDelta;
       rejectedSurfaceDeficit += snapshotEvaluation.surfaceCompletion.scaledDelta;
       rejectedFrontMorphologyScore += snapshotEvaluation.frontMorphology.score;
+      rejectedCapillaryGeometryScore += snapshotEvaluation.capillaryGeometry.score;
       rejectedEpitaxyRegistryScore += snapshotEvaluation.epitaxyRegistry.score;
       rejectedExternalDriveAlignment += snapshotEvaluation.externalDrive.alignment;
       rejectedRobustnessScore += snapshotEvaluation.constraintRobustness.score;
@@ -9999,6 +10140,7 @@ function performOffLatticeEvent() {
     acceptedFormalChargeDelta += evaluation.formalChargeBalance.scaledDelta;
     acceptedSurfaceDeficit += evaluation.surfaceCompletion.scaledDelta;
     acceptedFrontMorphologyScore += evaluation.frontMorphology.score;
+    acceptedCapillaryGeometryScore += evaluation.capillaryGeometry.score;
     acceptedEpitaxyRegistryScore += evaluation.epitaxyRegistry.score;
     acceptedExternalDriveAlignment += evaluation.externalDrive.alignment;
     acceptedRobustnessScore += evaluation.constraintRobustness.score;
@@ -10539,6 +10681,22 @@ function rebuildWorld() {
         ray.computeLineDistances(); decisionGroup.add(ray);
       });
     }
+    if (candidateIndex < 8 && candidate.capillaryGeometry?.enabled) {
+      const occupiedPoints = []; const openPoints = [];
+      candidate.capillaryGeometry.directionSummaries.forEach((summary) => {
+        const direction = new THREE.Vector3(...summary.direction).normalize();
+        const occupied = summary.occupiedSites >= summary.openSites;
+        const points = occupied ? occupiedPoints : openPoints;
+        points.push(candidate.p.clone().addScaledVector(direction, .25),
+          candidate.p.clone().addScaledVector(direction, occupied ? .46 : .39));
+      });
+      [[occupiedPoints, 0x7ee1e8, .78], [openPoints, 0xffb36b, .48]].forEach(([points, color, opacity]) => {
+        if (points.length) decisionGroup.add(new THREE.LineSegments(
+          new THREE.BufferGeometry().setFromPoints(points),
+          new THREE.LineBasicMaterial({ color, transparent: true, opacity }),
+        ));
+      });
+    }
     if (candidateIndex < 12 && frontMorphologyMode !== "none" && candidate.frontMorphology) {
       const tangentX = new THREE.Vector3(...candidate.frontMorphology.tangentX);
       const tangentY = new THREE.Vector3(...candidate.frontMorphology.tangentY);
@@ -10620,6 +10778,10 @@ function physicsTranslationRecords(leap = null) {
       encoding: `${frontMorphologyLabel()}; eight parent-local angular support sectors plus the normalized depth spread of atoms backing each candidate within 2.4dₙₙ`,
       evidence: leap ? `Accepted mean front score ${receiptRound(acceptedFrontMorphologyScore / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedFrontMorphologyScore / Math.max(1, rejectedDecisions), 4)}; ${frontMorphologyNeighborhoodChecks.toLocaleString()} neighbor checks.` : "No front candidate evaluated yet.",
       boundary: "This distinguishes concavity filling, coherent backing, and exposed tips geometrically. It is not mean curvature, surface energy, capillary pressure, a Wulff construction, attachment kinetics, or physical time." },
+    { id: "capillary-geometry", process: "discrete capillary geometry / solid-angle screening", status: activeCapillaryGeometryWeight() > 0 ? "soft" : "open", role: activeCapillaryGeometryWeight() > 0 ? "3D interface geometric ordering" : "diagnostic",
+      encoding: `${capillaryGeometryLabel()}; 32 equal-area sphere directions test 38° neighbor caps within 2.2dₙₙ around every emitted site, including co-emitted sites`,
+      evidence: leap ? `Accepted mean capillary score ${receiptRound(acceptedCapillaryGeometryScore / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedCapillaryGeometryScore / Math.max(1, rejectedDecisions), 4)}; ${capillaryGeometryDirectionTests.toLocaleString()} direction-neighbor tests.` : "No local solid angle evaluated yet.",
+      boundary: "This is a finite solid-angle occupancy surrogate. It is not differential mean curvature, surface free energy, capillary pressure, a Wulff construction, equilibrium shape, attachment kinetics, or physical time." },
     { id: "epitaxy", process: "substrate templating / epitaxial registry", status: activeEpitaxyWeight() > 0 ? "soft" : "open", role: activeEpitaxyWeight() > 0 ? "declared interfacial geometric ordering" : "disabled",
       encoding: activeEpitaxyWeight() > 0
         ? `${epitaxyTemplateLabel()}, w=${activeEpitaxyWeight().toFixed(2)}; fresh sites within 3.5dₙₙ are projected onto the nearest declared 2D template node with height-decaying weight`
@@ -10911,6 +11073,17 @@ function geometryConstraintEvidence(name, term, state, mode) {
         ? `Soft ${frontMorphologyLabel()} rank term with weight ${activeFrontMorphologyWeight().toFixed(2)}.` : "Diagnostic only; weight zero.",
       boundary: "This is a finite-neighborhood shape descriptor, not mean curvature, surface energy, capillary pressure, Wulff faceting, or attachment kinetics.",
     },
+    "capillary geometry": {
+      observed: state?.capillaryGeometry
+        ? `${Math.round(state.capillaryGeometry.meanOccupiedSolidAngleFraction * 100)}% occupied and ${Math.round(state.capillaryGeometry.meanOpenSolidAngleFraction * 100)}% open local solid angle`
+        : "no emitted-site solid angle evaluated",
+      encoding: state?.capillaryGeometry
+        ? `${state.capillaryGeometry.quadratureDirectionCount} equal-area directions · 38° neighbor caps · reach 2.2dₙₙ · emitted sites included`
+        : "finite equal-area sphere quadrature around each emitted site",
+      searchRole: activeCapillaryGeometryWeight() > 0
+        ? `Soft ${capillaryGeometryLabel()} rank term with weight ${activeCapillaryGeometryWeight().toFixed(2)}.` : "Diagnostic only; weight zero.",
+      boundary: "Occupied solid angle is not differential mean curvature, surface free energy, capillary pressure, equilibrium shape, a Wulff construction, or attachment kinetics.",
+    },
     "epitaxial registry": {
       observed: state?.epitaxyRegistry?.enabled
         ? `${state.epitaxyRegistry.interfacialSites}/${state.epitaxyRegistry.evaluatedFreshSites} new sites within 3.5dₙₙ of the declared support template`
@@ -11059,6 +11232,9 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "front morphology", status: ranked(activeFrontMorphologyWeight() > 0),
       value: state.frontMorphology ? `${signed(state.frontMorphology.score)} · ${state.frontMorphology.angularSectors}/8 sectors` : "not evaluated",
       detail: activeFrontMorphologyWeight() > 0 ? `${frontMorphologyLabel()} · rank weight ${activeFrontMorphologyWeight().toFixed(2)}` : "diagnostic · no capillarity claim" },
+    { name: "capillary geometry", status: ranked(activeCapillaryGeometryWeight() > 0),
+      value: state.capillaryGeometry ? `${signed(state.capillaryGeometry.score)} · ${(state.capillaryGeometry.meanOccupiedSolidAngleFraction * 100).toFixed(1)}% occupied Ω` : "not evaluated",
+      detail: activeCapillaryGeometryWeight() > 0 ? `${capillaryGeometryLabel()} · rank weight ${activeCapillaryGeometryWeight().toFixed(2)}` : "diagnostic · finite solid angle" },
     { name: "epitaxial registry", status: ranked(activeEpitaxyWeight() > 0),
       value: state.epitaxyRegistry?.enabled ? `${signed(state.epitaxyRegistry.score)} · ${state.epitaxyRegistry.interfacialSites} interface sites` : "inactive",
       detail: activeEpitaxyWeight() > 0 ? `${epitaxyTemplateLabel()} · rank weight ${activeEpitaxyWeight().toFixed(2)}` : "requires supported-film template" },
@@ -11101,6 +11277,7 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "formal-charge reservoir", status: "diagnostic", value: "unavailable", detail: "no complete supplied oxidation-state channel" },
     { name: "surface completion", status: "diagnostic", value: "withheld", detail: "no branch ranking" },
     { name: "front morphology", status: "diagnostic", value: "withheld", detail: "no executable front" },
+    { name: "capillary geometry", status: "diagnostic", value: "withheld", detail: "no executable front" },
     { name: "epitaxial registry", status: "diagnostic", value: "withheld", detail: "no executable supported-film front" },
     { name: "external drive", status: "diagnostic", value: "withheld", detail: "occupational realization required" },
     { name: "feedstock exposure", status: "diagnostic", value: "withheld", detail: "occupational realization required" },
@@ -11117,6 +11294,7 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "formal-charge reservoir", status: "diagnostic", value: "not used", detail: "cannot authorize this trace" },
     { name: "surface completion", status: "diagnostic", value: "not used", detail: "cannot authorize this trace" },
     { name: "front morphology", status: "diagnostic", value: "not used", detail: "specialized frozen trace" },
+    { name: "capillary geometry", status: "diagnostic", value: "not used", detail: "specialized frozen trace" },
     { name: "epitaxial registry", status: "diagnostic", value: "not used", detail: "specialized frozen trace" },
     { name: "external drive", status: "diagnostic", value: "not used", detail: "cannot authorize this trace" },
     { name: "feedstock exposure", status: "diagnostic", value: "not used", detail: "specialized frozen trace" },
@@ -11140,6 +11318,8 @@ function renderConstraintLedger(state, mode = "configured") {
       value: activeSurfaceCompletionWeight() > 0 ? "ranked" : "diagnostic", detail: `weight ${activeSurfaceCompletionWeight().toFixed(2)}` },
     { name: "front morphology", status: ranked(activeFrontMorphologyWeight() > 0),
       value: activeFrontMorphologyWeight() > 0 ? frontMorphologyLabel() : "diagnostic", detail: `weight ${activeFrontMorphologyWeight().toFixed(2)}` },
+    { name: "capillary geometry", status: ranked(activeCapillaryGeometryWeight() > 0),
+      value: activeCapillaryGeometryWeight() > 0 ? capillaryGeometryLabel() : "diagnostic", detail: `weight ${activeCapillaryGeometryWeight().toFixed(2)}` },
     { name: "epitaxial registry", status: ranked(activeEpitaxyWeight() > 0),
       value: activeEpitaxyWeight() > 0 ? epitaxyTemplateLabel() : "inactive", detail: `weight ${activeEpitaxyWeight().toFixed(2)}` },
     { name: "external drive", status: ranked(activeExternalDriveWeight() > 0),
@@ -12252,6 +12432,18 @@ frontMorphologySelect.addEventListener("change", () => {
 frontMorphologyWeightSelect.addEventListener("change", () => {
   const value = Number(frontMorphologyWeightSelect.value);
   frontMorphologyWeight = [.12, .24, .48].includes(value) ? value : .24;
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+capillaryGeometrySelect.addEventListener("change", () => {
+  const value = capillaryGeometrySelect.value;
+  capillaryGeometryMode = ["pocket", "planar", "exposed"].includes(value) ? value : "none";
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+capillaryGeometryWeightSelect.addEventListener("change", () => {
+  const value = Number(capillaryGeometryWeightSelect.value);
+  capillaryGeometryWeight = [.12, .24, .48].includes(value) ? value : .24;
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
 });
