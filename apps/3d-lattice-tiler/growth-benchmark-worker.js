@@ -1,7 +1,8 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260824-cold-linear-v212";
+import { createTilingStream, preprocessTilingSystem, tileSpecs } from "./engine.js?v=20260824-preprocess-barrier-v213";
 
 let activeSequence = 0;
 let stopToken = { stop: false };
+let preparedRun = null;
 const HISTORY_BATCH_LIMIT = 256;
 const HISTORY_BATCH_INTERVAL_MS = 200;
 
@@ -96,7 +97,7 @@ const post = (sequence, payload) => {
   if (sequence === activeSequence) self.postMessage({ sequence, ...payload });
 };
 
-async function runMode(sequence, baseConfig, mode) {
+function configureMode(baseConfig, mode) {
   const shellSearch = baseConfig.criterion === "shell";
   const exactLearningShell = shellSearch && ["gcts", "rl", "gcts_rl"].includes(mode.id);
   const effectiveMode = shellSearch && mode.proof
@@ -157,7 +158,17 @@ async function runMode(sequence, baseConfig, mode) {
     generic_periodic_certificate_time_limit_ms: 1000,
     exhaustive: !!mode.proof || exactLearningShell
   };
-  const started = performance.now();
+  return { baseConfig, mode, effectiveMode, config };
+}
+
+const epochNow = () => performance.timeOrigin + performance.now();
+
+async function runMode(sequence, run, preparedSystem, preprocessingMilliseconds, startEpochMs) {
+  const { baseConfig, mode, effectiveMode, config } = run;
+  const delay = Math.max(0, startEpochMs - epochNow());
+  if (delay > 0) await new Promise(resolve => setTimeout(resolve, delay));
+  if (stopToken.stop || sequence !== activeSequence) return null;
+  const started = startEpochMs;
   let best = 0;
   let final = null;
   let latestStats = null;
@@ -166,24 +177,24 @@ async function runMode(sequence, baseConfig, mode) {
   let checkedPatchSize = 0;
   const points = [];
   let lastHistoryTileCount = null;
-  let lastHistoryFlushAt = performance.now();
+  let lastHistoryFlushAt = epochNow();
   let pendingHistorySamples = [];
   const flushHistory = () => {
     if (!pendingHistorySamples.length) return;
     post(sequence, { type: "sample-batch", samples: pendingHistorySamples });
     pendingHistorySamples = [];
-    lastHistoryFlushAt = performance.now();
+    lastHistoryFlushAt = epochNow();
   };
   const queueHistory = sample => {
     points.push(sample.point);
     pendingHistorySamples.push(sample);
     if (
       pendingHistorySamples.length >= HISTORY_BATCH_LIMIT
-      || performance.now() - lastHistoryFlushAt >= HISTORY_BATCH_INTERVAL_MS
+      || epochNow() - lastHistoryFlushAt >= HISTORY_BATCH_INTERVAL_MS
     ) flushHistory();
   };
   post(sequence, { type: "series-start", mode: effectiveMode });
-  for await (const message of createTilingStream(config, tileSpecs, stopToken)) {
+  for await (const message of createTilingStream(config, tileSpecs, stopToken, preparedSystem)) {
     if (stopToken.stop || sequence !== activeSequence) return null;
     if (message.type === "prototile_info") post(sequence, { type: "prototile-info", mode: mode.id, info: message });
     if (message.type === "translational_check") {
@@ -214,13 +225,13 @@ async function runMode(sequence, baseConfig, mode) {
     const snapshot = message.type === "node_snapshot" ? message.snapshot : message;
     const tiles = snapshot?.tile_count ?? 0;
     if (message.type === "placement_delta" && tiles !== lastHistoryTileCount) {
-      const point = { milliseconds: Math.round(performance.now() - started), tiles };
+      const point = { milliseconds: Math.max(0, Math.round(epochNow() - started)), tiles };
       queueHistory({ point, delta: message });
       lastHistoryTileCount = tiles;
       best = Math.max(best, tiles);
     } else if (message.type === "full_update") {
       if (lastHistoryTileCount === null || tiles !== lastHistoryTileCount) {
-        const point = { milliseconds: Math.round(performance.now() - started), tiles };
+        const point = { milliseconds: Math.max(0, Math.round(epochNow() - started)), tiles };
         queueHistory({ point, snapshot });
         lastHistoryTileCount = tiles;
         best = Math.max(best, tiles);
@@ -235,7 +246,7 @@ async function runMode(sequence, baseConfig, mode) {
     if (message.type === "finished") final = message;
   }
 
-  const elapsed = Math.round(performance.now() - started);
+  const elapsed = Math.max(0, Math.round(epochNow() - started));
   const learnedProgram = null;
   const finalStats = final?.search_stats ?? latestStats ?? {};
   const certificatePayloadBytes = final?.tiling_evidence?.periodic_template
@@ -254,6 +265,8 @@ async function runMode(sequence, baseConfig, mode) {
     label: effectiveMode.label,
     criterion: baseConfig.criterion,
     targetValue: baseConfig.target_val,
+    preprocessingMilliseconds,
+    preprocessing: preparedSystem.summary,
     success: final?.success ?? false,
     tileCount: exactNoTiling
       ? 0
@@ -295,18 +308,39 @@ async function runMode(sequence, baseConfig, mode) {
 }
 
 self.onmessage = event => {
-  const { type, sequence, config, mode: modeId } = event.data ?? {};
+  const { type, sequence, config, mode: modeId, startEpochMs } = event.data ?? {};
   if (type === "stop") {
     stopToken.stop = true;
+    preparedRun = null;
     return;
   }
-  if (type !== "start" || !MODES[modeId]) return;
-  stopToken.stop = true;
-  activeSequence = sequence;
-  stopToken = { stop: false };
-  runMode(sequence, config, MODES[modeId])
+  if (type === "prepare" && MODES[modeId]) {
+    stopToken.stop = true;
+    activeSequence = sequence;
+    stopToken = { stop: false };
+    try {
+      const run = configureMode(config, MODES[modeId]);
+      const preprocessingStarted = performance.now();
+      const preparedSystem = preprocessTilingSystem(run.config, tileSpecs);
+      const preprocessingMilliseconds = performance.now() - preprocessingStarted;
+      preparedRun = { sequence, run, preparedSystem, preprocessingMilliseconds };
+      post(sequence, {
+        type: "mode-ready",
+        mode: modeId,
+        preprocessingMilliseconds,
+        preprocessing: preparedSystem.summary
+      });
+    } catch (error) {
+      post(sequence, { type: "error", mode: modeId, error: error?.message ?? String(error) });
+    }
+    return;
+  }
+  if (type !== "go" || preparedRun?.sequence !== sequence || !Number.isFinite(startEpochMs)) return;
+  const ready = preparedRun;
+  preparedRun = null;
+  runMode(sequence, ready.run, ready.preparedSystem, ready.preprocessingMilliseconds, startEpochMs)
     .then(result => {
       if (result && !stopToken.stop) post(sequence, { type: "finished", result });
     })
-    .catch(error => post(sequence, { type: "error", mode: modeId, error: error?.message ?? String(error) }));
+    .catch(error => post(sequence, { type: "error", mode: ready.run.mode.id, error: error?.message ?? String(error) }));
 };
