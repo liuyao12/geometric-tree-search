@@ -46,6 +46,9 @@ def test_experiment_receipt_is_reproducible_and_claim_bounded() -> None:
     assert "heterogeneousGeometryAudit: receiptMicrostructureAudit()" in source
     assert "gapBoundaryClassesEmitAtoms: false" in (APP_DIR / "microstructure-audit.js").read_text(encoding="utf-8")
     assert "liveCertificate: liveGrowthCertificate()" in source
+    assert "structuralLeapCertificates: leapHistory.map" in source
+    assert "physicalTimeModeled: leap.physicalTimeModeled" in source
+    assert "dynamicsIntegrated: leap.dynamicsIntegrated" in source
     assert "representationReadout: MARKING_REPRESENTATIONS[activeMarking.config.representation]?.readout" in source
     assert "representationState: activeMarking.representationState || null" in source
     assert "learnedChiralPortClasses: Object.keys(sectionModel.representationState?.chiralPreferences || {}).length" in source
@@ -67,7 +70,7 @@ def test_experiment_receipt_is_reproducible_and_claim_bounded() -> None:
     assert 'id="chargeValue"' in html
     assert 'id="surfaceValue"' in html
     assert 'type="text"' not in html[html.index('class="receipt-section"'):html.index('class="legend-section"')]
-    assert 'app.js?v=20260824-60' in html
+    assert 'app.js?v=20260824-61' in html
     assert "externalGeometry: receiptExternalGeometry()" in source
     assert 'candidateGeometryChangedByScheduling: false' in source
     assert 'surfaceCompletionRanking: {' in source

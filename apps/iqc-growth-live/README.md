@@ -522,6 +522,19 @@ NaCl stationary benchmark is likewise not relabelled as physical elapsed time
 in the viewport. The same structured certificate is embedded in experiment
 receipts.
 
+The adjacent **structural leap certificate** explains what one visible update
+actually means. It records the explicit atom/cluster state before the update,
+the immutable whole-cluster candidate batch, shared and proposed-new colored
+sites, the hard geometric tests applied before commitment, and the explicit
+state afterward. Recent leap cards are selectable, and the same target-free
+records are serialized into the experiment receipt. A commuting update is one
+order-independent antichain over the underlying tree; it is not a
+molecular-dynamics time step. Every record therefore freezes `targetUsed=false`,
+`dynamicsIntegrated=false`, and `physicalTimeModeled=false`, with a material-
+specific statement of the omitted relaxation, diffusion, barrier, entropy, or
+rate claim. A frontier exhaustion is reported as a finite structural fixed
+point—not equilibrium.
+
 The representative destination patch is transformed into world coordinates.
 A cell-list spatial index merges coincident same-species atoms and detects
 hard-core or species conflicts without scanning the whole structure. A

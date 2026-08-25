@@ -235,6 +235,11 @@ const surfaceValue = $("surfaceValue");
 const resolverValue = $("resolverValue");
 const constraintLedger = $("constraintLedger");
 const constraintDetail = $("constraintDetail");
+const leapCertificateSection = $("leapCertificateSection");
+const leapCertificateState = $("leapCertificateState");
+const leapHistoryElement = $("leapHistory");
+const leapFlow = $("leapFlow");
+const leapClaimBoundary = $("leapClaimBoundary");
 const stackDepth = $("stackDepth");
 const searchStack = $("searchStack");
 const markingHeading = $("markingHeading");
@@ -584,6 +589,9 @@ let trainingProgress = 0;
 let clusterDiscoveryTrace = null;
 let clusterDiscoveryProgress = 0;
 let selectedConstraintName = "species / hard core";
+let leapHistory = [];
+let selectedLeapIndex = -1;
+let leapEventCount = 0;
 let markingSelection = null;
 let liveOrderCache = { key: "", result: null };
 let liveOrderHistory = [];
@@ -4900,7 +4908,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-60",
+      buildId: "20260824-61",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -5256,6 +5264,12 @@ async function buildExperimentReceipt() {
       grammarDecisions,
       localOracleCalls: oracleCalls,
       liveCertificate: liveGrowthCertificate(),
+      structuralLeapCertificates: leapHistory.map((leap) => ({
+        index: leap.index, status: leap.status, label: leap.label,
+        before: leap.before, proposal: leap.proposal, tests: leap.tests, after: leap.after,
+        targetUsed: leap.targetUsed, physicalTimeModeled: leap.physicalTimeModeled,
+        dynamicsIntegrated: leap.dynamicsIntegrated, claimBoundary: leap.claimBoundary,
+      })),
       finiteIceAnchorTrace: iceAnchorTrace ? {
         artifactDigest: iceAnchorTrace.artifactDigest,
         caseId: iceAnchorTrace.caseId,
@@ -7114,6 +7128,9 @@ function resetCounters() {
   trainingProgress = 0;
   clusterDiscoveryTrace = null;
   clusterDiscoveryProgress = 0;
+  leapHistory = [];
+  selectedLeapIndex = -1;
+  leapEventCount = 0;
   markingSelection = null;
   liveOrderCache = { key: "", result: null };
   liveOrderHistory = [];
@@ -7454,8 +7471,15 @@ function materializeCandidate(candidate, evaluation) {
 }
 
 function performOffLatticeEvent() {
+  const before = { atoms: atoms.length, clusters: placedClusters.length, frontier: frontierCandidates.length };
   const batch = commutingFrontierBatch();
   if (!batch.length) {
+    recordStructuralLeap({ status: "fixed", label: "no geometrically admissible successor",
+      before, proposal: { candidates: 0, sites: 0, shared: 0, fresh: 0 },
+      tests: { summary: "finite frontier exhausted", detail: "Every frozen port is consumed, unsupported, conflicting, or outside the public domain." },
+      after: { atoms: atoms.length, clusters: placedClusters.length, accepted: 0, rejected: 0,
+        depth: Math.max(0, ...placedClusters.map((placement) => placement.depth || 0)) },
+      claimBoundary: "This is a certified finite structural fixed point. It is not equilibrium, a stopping time, or evidence that a physical interface cannot advance by an unmodeled mechanism." });
     pauseGrowth("Frontier exhausted: no learned overlap rule remains geometrically admissible.");
     return;
   }
@@ -7469,11 +7493,15 @@ function performOffLatticeEvent() {
   let acceptedInBatch = 0;
   let rejectedInBatch = 0;
   let freshInBatch = 0;
+  let sharedInBatch = 0;
+  let proposedSitesInBatch = 0;
   let lastDecision = null;
   batch.forEach(({ candidate, evaluation: snapshotEvaluation }) => {
     let evaluation = snapshotEvaluation;
     let state = stateForCandidate(candidate, evaluation);
     if (!snapshotEvaluation.accepted) {
+      proposedSitesInBatch += snapshotEvaluation.sites.length;
+      sharedInBatch += snapshotEvaluation.merged.length;
       rejectedDecisions++;
       if (snapshotEvaluation.coordinationOverflows?.length) coordinationCapacityPrunes++;
       if (snapshotEvaluation.angularViolations?.length) angularEnvelopePrunes++;
@@ -7493,6 +7521,8 @@ function performOffLatticeEvent() {
     // converts any coincident same-species fresh sites into shared sites.
     evaluation = evaluateCandidate(candidate);
     state = stateForCandidate(candidate, evaluation);
+    proposedSitesInBatch += evaluation.sites.length;
+    sharedInBatch += evaluation.merged.length;
     if (!evaluation.accepted) throw new Error("Commuting frontier batch lost permutation invariance");
     const decision = cacheDecision(state, candidate.markingScore);
     const placement = materializeCandidate(candidate, evaluation);
@@ -7516,12 +7546,26 @@ function performOffLatticeEvent() {
       + `${reconstructionMarkingFallbacks ? ` · ${reconstructionMarkingFallbacks} marking false negatives bypassed by the replay certificate` : ""}`
       + `${rejectedInBatch ? ` · ${rejectedInBatch} invariant prunes flash red` : ""}.`;
   if (lastDecision) updateDecision(lastDecision);
+  recordStructuralLeap({ status: acceptedInBatch ? "accepted" : "rejected",
+    label: growthScheduling === "commuting"
+      ? `${batch.length} pairwise-commuting whole-cluster actions` : `${batch.length} best-first whole-cluster action`,
+    before,
+    proposal: { candidates: batch.length, sites: proposedSitesInBatch, shared: sharedInBatch,
+      fresh: freshInBatch + batch.filter(({ evaluation }) => !evaluation.accepted)
+        .reduce((sum, { evaluation }) => sum + evaluation.fresh.length, 0) },
+    tests: { summary: `${acceptedInBatch} passed · ${rejectedInBatch} pruned`,
+      detail: "Species/hard-core, overlap, novelty, public boundary, coordination, angle, and active marking were evaluated before any commit." },
+    after: { atoms: atoms.length, clusters: placedClusters.length, accepted: acceptedInBatch, rejected: rejectedInBatch,
+      depth: Math.max(0, ...placedClusters.map((placement) => placement.depth || 0)) },
+    claimBoundary: "The accepted antichain is valid in every placement order and jumps directly to a certified structural state. No force trajectory, relaxation path, transition probability, or physical elapsed time was computed." });
   rebuildWorld();
   updateUI();
 }
 
 function performIceAnchorEvent() {
   const wave = iceAnchorTrace?.waves[iceAnchorWaveIndex];
+  const before = { atoms: atoms.length, clusters: acceptedDecisions,
+    frontier: wave?.candidateAnchors || 0 };
   if (!wave) {
     growthStopReason = "Certified molecular anchor trace exhausted at its safe fixed point.";
     setPlaying(false);
@@ -7551,6 +7595,13 @@ function performIceAnchorEvent() {
     resolverValue.textContent = iceAnchorTrace.selectionRuleLabel;
     appendHistory("reject", { type: "reject", depth: wave.wave,
       action: "safe fixed point", family: "no unanimous parent domain" });
+    recordStructuralLeap({ status: "fixed", label: `wave ${wave.wave} · molecular anchor frontier`,
+      before, proposal: { candidates: wave.candidateAnchors, sites: wave.candidateAnchors, shared: 0, fresh: 0 },
+      tests: { summary: `0 / ${wave.candidateAnchors} anchors admitted`,
+        detail: `${wave.rejectedCandidateAnchors} unsupported or conflicting candidates fail ${iceAnchorTrace.selectionRuleLabel}.` },
+      after: { atoms: atoms.length, clusters: acceptedDecisions, accepted: 0,
+        rejected: wave.rejectedCandidateAnchors, depth: wave.wave },
+      claimBoundary: `The frozen ${iceAnchorTrace.portCount}-port grammar reaches a finite structural fixed point. Unresolved ${iceAnchorTrace.orientationSpecies} motion, proton/deuteron barriers, entropy, and physical stopping time are not modeled.` });
     growthStopReason = "Frozen molecular-port grammar reached its certified finite fixed point.";
     setPlaying(false);
     pipelineAuto = false;
@@ -7575,6 +7626,14 @@ function performIceAnchorEvent() {
     state: { action: `${wave.acceptedAnchors} O-anchor placements`,
       domain: `${iceAnchorTrace.portCount} frozen molecular ports · wave ${wave.wave}` },
     resolver: iceAnchorTrace.selectionRuleLabel, interval: [1, 1] });
+  recordStructuralLeap({ status: "accepted", label: `wave ${wave.wave} · shared oxygen-anchor leap`,
+    before, proposal: { candidates: wave.candidateAnchors, sites: wave.candidateAnchors,
+      shared: wave.retainedOrientationHypotheses, fresh: wave.acceptedAnchors },
+    tests: { summary: `${wave.acceptedAnchors} / ${wave.candidateAnchors} anchors admitted`,
+      detail: `${iceAnchorTrace.portCount} frozen proper-SE(3) ports + ${iceAnchorTrace.selectionRuleLabel}; ${wave.retainedOrientationHypotheses} mutually exclusive ${iceAnchorTrace.moleculeLabel} poses retained.` },
+    after: { atoms: atoms.length, clusters: acceptedDecisions, accepted: wave.acceptedAnchors,
+      rejected: wave.rejectedCandidateAnchors, depth: wave.wave },
+    claimBoundary: `The browser jumps to oxygen anchors shared by every surviving ${iceAnchorTrace.moleculeLabel} orientation domain. It does not integrate ${iceAnchorTrace.orientationSpecies} rearrangement, tunnelling, diffusion, relaxation, probability, or elapsed physical time.` });
   rebuildWorld();
   updateUI();
 }
@@ -7772,6 +7831,70 @@ function rebuildWorld() {
     decisionGroup.add(centerMarkers);
   }
   buildDetectedUnitCell();
+}
+
+function renderStructuralLeap(leap = null) {
+  if (!leapCertificateSection) return;
+  leapCertificateSection.hidden = pipelineStage !== 4;
+  if (pipelineStage !== 4) return;
+  const selected = leap || leapHistory[selectedLeapIndex] || null;
+  leapHistoryElement.replaceChildren();
+  leapHistory.slice(-8).forEach((entry, visibleIndex) => {
+    const absoluteIndex = Math.max(0, leapHistory.length - 8) + visibleIndex;
+    const button = document.createElement("button"); button.type = "button";
+    button.className = entry.status;
+    button.classList.toggle("active", absoluteIndex === selectedLeapIndex);
+    button.setAttribute("aria-pressed", String(absoluteIndex === selectedLeapIndex));
+    button.textContent = `${entry.index} · ${entry.status === "accepted" ? "+" : entry.status === "fixed" ? "■" : "×"}${entry.after.atoms - entry.before.atoms}`;
+    button.title = `${entry.label} · ${entry.status}`;
+    button.addEventListener("click", () => {
+      selectedLeapIndex = absoluteIndex;
+      renderStructuralLeap(leapHistory[selectedLeapIndex]);
+    });
+    leapHistoryElement.append(button);
+  });
+  leapFlow.replaceChildren();
+  if (!selected) {
+    leapCertificateState.textContent = "seed state · no leap executed";
+    [
+      ["01 · before", `${atoms.length} explicit atoms`, `${placedClusters.length} placed clusters`],
+      ["02 · proposal", "frontier not sampled", `${frontierCandidates.length} frozen candidates`],
+      ["03 · certificate", "not evaluated", "geometry gates await one action"],
+      ["04 · after", "unchanged seed", "physical time unresolved"],
+    ].forEach(([label, value, detail]) => {
+      const card = document.createElement("article");
+      const small = document.createElement("small"); small.textContent = label;
+      const strong = document.createElement("strong"); strong.textContent = value;
+      const span = document.createElement("span"); span.textContent = detail;
+      card.append(small, strong, span); leapFlow.append(card);
+    });
+    leapClaimBoundary.textContent = "No trajectory is integrated. The seed geometry defines a search state, not a time origin or nucleation probability.";
+    return;
+  }
+  leapCertificateState.textContent = `${selected.status} · leap ${selected.index}`;
+  [
+    ["01 · before", `${selected.before.atoms} atoms · ${selected.before.clusters} clusters`, `${selected.before.frontier} frozen frontier candidates`],
+    ["02 · proposed leap", selected.label, `${selected.proposal.candidates} candidates · ${selected.proposal.sites} colored sites · ${selected.proposal.shared} shared + ${selected.proposal.fresh} new`],
+    ["03 · geometric certificate", selected.tests.summary, selected.tests.detail],
+    ["04 · after", `${selected.after.atoms} atoms · ${selected.after.clusters} clusters`, `${selected.after.accepted} accepted · ${selected.after.rejected} rejected · causal depth ${selected.after.depth}`],
+  ].forEach(([label, value, detail], index) => {
+    const card = document.createElement("article");
+    if (index === 2) card.className = selected.status;
+    const small = document.createElement("small"); small.textContent = label;
+    const strong = document.createElement("strong"); strong.textContent = value;
+    const span = document.createElement("span"); span.textContent = detail;
+    card.append(small, strong, span); leapFlow.append(card);
+  });
+  leapClaimBoundary.textContent = selected.claimBoundary;
+}
+
+function recordStructuralLeap(leap) {
+  const frozen = { ...leap, index: ++leapEventCount, targetUsed: false,
+    physicalTimeModeled: false, dynamicsIntegrated: false };
+  leapHistory.push(frozen);
+  if (leapHistory.length > 24) leapHistory.shift();
+  selectedLeapIndex = leapHistory.length - 1;
+  renderStructuralLeap(frozen);
 }
 
 function updateDecision(event) {
@@ -8167,6 +8290,7 @@ function updateUI() {
   updateRecursiveBenchmark();
   updateGrowthCertificate();
   renderPolicyComparison();
+  renderStructuralLeap();
   eventCounter.textContent = String(eventIndex).padStart(4, "0");
   const material = currentMaterial();
   playButton.disabled = pipelineStage === 4 && Boolean(material.growthWithheld);
