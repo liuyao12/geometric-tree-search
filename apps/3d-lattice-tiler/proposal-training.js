@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260825-terminal-hold-v220";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260825-resumable-clock-v221";
 import {
   createInitialProposalPopulation,
   growthCurveArea,

@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260825-terminal-hold-v220";
+} from "./engine.js?v=20260825-resumable-clock-v221";
 
 const $ = (id) => document.getElementById(id);
 
@@ -3060,7 +3060,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260825-terminal-hold-v220", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260825-resumable-clock-v221", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3798,7 +3798,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260825-terminal-hold-v220", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260825-resumable-clock-v221", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     setRunButton();
     worker.addEventListener("message", event => {
@@ -3834,6 +3834,8 @@ function startGrowthBenchmark() {
         series.prototileInfo = message.info;
       } else if (message.type === "mode-status") {
         series.status = message.text;
+      } else if (message.type === "mode-paused") {
+        series.status = `paused at ${formatElapsed(message.milliseconds ?? 0)} · ${message.tiles ?? 0} live · Continue to add clock time`;
       } else if (message.type === "sample-batch") {
         appendGrowthHistorySamples(series, message.samples);
         scheduleGrowthUiRefresh({ showCurrent:

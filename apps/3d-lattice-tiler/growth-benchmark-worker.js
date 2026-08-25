@@ -1,4 +1,4 @@
-import { createTilingStream, preprocessTilingSystem, tileSpecs } from "./engine.js?v=20260825-terminal-hold-v220";
+import { createTilingStream, preprocessTilingSystem, tileSpecs } from "./engine.js?v=20260825-resumable-clock-v221";
 
 let activeSequence = 0;
 let stopToken = { stop: false, additional_time_ms: 0 };
@@ -175,6 +175,9 @@ function configureMode(baseConfig, mode) {
     generic_periodic_certificate_checkpoint_max_total_checks: 280,
     generic_periodic_certificate_checkpoint_total_time_limit_ms: 5000,
     generic_periodic_certificate_time_limit_ms: 1000,
+    // The comparison worker enforces this as a cooperative, resumable clock
+    // at generator yield points. The engine must not unwind at the first cap.
+    time_limit_ms: null,
     exhaustive: !!mode.proof || exactLearningShell
   };
   return { baseConfig, mode, effectiveMode, config };
@@ -188,6 +191,30 @@ async function runMode(sequence, run, preparedSystem, preprocessingMilliseconds,
   if (delay > 0) await new Promise(resolve => setTimeout(resolve, delay));
   if (stopToken.stop || sequence !== activeSequence) return null;
   const started = startEpochMs;
+  const baseClockBudgetMs = Number.isFinite(baseConfig.time_limit_ms)
+    ? Math.max(0, Number(baseConfig.time_limit_ms))
+    : Infinity;
+  let pausedMilliseconds = 0;
+  const searchElapsedMilliseconds = () => Math.max(0, epochNow() - started - pausedMilliseconds);
+  const awaitClockBudget = async () => {
+    while (
+      Number.isFinite(baseClockBudgetMs)
+      && searchElapsedMilliseconds() >= baseClockBudgetMs + (Number(stopToken.additional_time_ms) || 0)
+      && !stopToken.stop
+    ) {
+      flushHistory();
+      post(sequence, {
+        type: "mode-paused",
+        mode: mode.id,
+        milliseconds: Math.round(searchElapsedMilliseconds()),
+        tiles: lastHistoryTileCount ?? 0
+      });
+      const pausedAt = epochNow();
+      await new Promise(resolve => { stopToken.resume_clock = resolve; });
+      stopToken.resume_clock = null;
+      pausedMilliseconds += Math.max(0, epochNow() - pausedAt);
+    }
+  };
   let best = 0;
   let final = null;
   let latestStats = null;
@@ -259,13 +286,13 @@ async function runMode(sequence, run, preparedSystem, preprocessingMilliseconds,
       && message.action === "remove"
       && !!snapshot?.search_stats?.termination_reason;
     if (message.type === "placement_delta" && !terminalCleanupRemoval && tiles !== lastHistoryTileCount) {
-      const point = { milliseconds: Math.max(0, Math.round(epochNow() - started)), tiles };
+      const point = { milliseconds: Math.round(searchElapsedMilliseconds()), tiles };
       queueHistory({ point, delta: message });
       lastHistoryTileCount = tiles;
       best = Math.max(best, tiles);
     } else if (message.type === "full_update") {
       if (lastHistoryTileCount === null || tiles !== lastHistoryTileCount) {
-        const point = { milliseconds: Math.max(0, Math.round(epochNow() - started)), tiles };
+        const point = { milliseconds: Math.round(searchElapsedMilliseconds()), tiles };
         queueHistory({ point, snapshot });
         lastHistoryTileCount = tiles;
         best = Math.max(best, tiles);
@@ -278,9 +305,10 @@ async function runMode(sequence, run, preparedSystem, preprocessingMilliseconds,
     }
     if (message.type === "full_update") terminalSnapshot = message;
     if (message.type === "finished") final = message;
+    if (!final) await awaitClockBudget();
   }
 
-  const elapsed = Math.max(0, Math.round(epochNow() - started));
+  const elapsed = Math.round(searchElapsedMilliseconds());
   const learnedProgram = null;
   const finalStats = final?.search_stats ?? latestStats ?? {};
   const certificatePayloadBytes = final?.tiling_evidence?.periodic_template
@@ -351,10 +379,12 @@ self.onmessage = event => {
   if (type === "extend-time" && sequence === activeSequence) {
     stopToken.additional_time_ms = Math.max(0, Number(stopToken.additional_time_ms) || 0)
       + Math.max(0, Number(additionalTimeMs) || 0);
+    stopToken.resume_clock?.();
     return;
   }
   if (type === "stop") {
     stopToken.stop = true;
+    stopToken.resume_clock?.();
     preparedRun = null;
     return;
   }

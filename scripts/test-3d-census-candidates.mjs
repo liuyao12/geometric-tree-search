@@ -124,6 +124,16 @@ assert.match(
   "active benchmark workers must accept clock extensions without restarting"
 );
 assert.match(
+  growthWorkerSource,
+  /time_limit_ms: null,[\s\S]*?awaitClockBudget[\s\S]*?stopToken\.resume_clock/,
+  "the benchmark clock cap must pause a live generator instead of unwinding its search stack"
+);
+assert.match(
+  growthAppSource,
+  /message\.type === "mode-paused"[\s\S]*?Continue to add clock time/,
+  "paused lanes must remain visibly resumable"
+);
+assert.match(
   growthAppSource,
   /function extendGrowthBenchmark\(\)[\s\S]*?type: "extend-time"[\s\S]*?additionalTimeMs/,
   "the Continue control must add clock time to every active lane"
