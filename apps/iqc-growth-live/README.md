@@ -235,6 +235,20 @@ receipt records the same audit. `D_M` is deliberately a finite-window
 structural exponent: it is not asserted to be an asymptotic fractal dimension,
 dynamic scaling exponent, diffusion-limited-aggregation law, or growth rate.
 
+Build 127 separates **whole-configuration morphology from nucleus-lineage
+morphology**. Every seeded nucleus already labels its descendants, and a site
+shared after coalescence carries every contributing lineage ID. The live
+passport now reports the active and effective nucleus counts, largest-lineage
+population share, shared-interface population, and one compact morphology row
+per lineage. Shared sites are divided fractionally when population shares and
+lineage mass are computed, but remain in every participating lineage's shape
+tensor. The global finite mass–radius audit is explicitly flagged when its
+radius of gyration includes inter-nucleus separation; a second audit follows
+the largest lineage alone. Saved-run plots can compare largest-lineage radius,
+effective nucleus count, and shared-interface fraction. These are provenance-
+aware geometric observables, not inferred grain identities, grain-boundary or
+interfacial energies, nucleation rates, or coarsening kinetics.
+
 The notebook never restores or executes a run, never stores atom
 coordinates, and never substitutes for the downloadable receipt. Clearing it is
 a two-click action and does not affect downloaded files or the marking library.

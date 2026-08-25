@@ -410,6 +410,8 @@ const leapMorphologyState = $("leapMorphologyState");
 const leapMorphologySpectrum = $("leapMorphologySpectrum");
 const leapMorphologyMetrics = $("leapMorphologyMetrics");
 const leapMorphologyScaling = $("leapMorphologyScaling");
+const leapLineageSummary = $("leapLineageSummary");
+const leapLineageList = $("leapLineageList");
 const leapMorphologyBoundary = $("leapMorphologyBoundary");
 const leapPhysicsState = $("leapPhysicsState");
 const leapPhysicsFilters = $("leapPhysicsFilters");
@@ -6161,7 +6163,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-126",
+      buildId: "20260825-127",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7563,6 +7565,15 @@ const NOTEBOOK_TRAJECTORY_OBSERVABLES = {
     format: (value) => Math.round(value).toLocaleString() },
   radius: { label: "radius of gyration · Å", value: (point) => point.morphology?.radiusOfGyrationAngstrom,
     format: (value) => `${value.toFixed(2)} Å` },
+  lineageRadius: { label: "largest-nucleus radius of gyration · Å",
+    value: (point) => point.morphology?.lineageEnsemble?.lineages?.[0]?.radiusOfGyrationAngstrom,
+    format: (value) => `${value.toFixed(2)} Å` },
+  nuclei: { label: "effective nucleus count",
+    value: (point) => point.morphology?.lineageEnsemble?.effectiveNucleusCount,
+    format: (value) => value.toFixed(2) },
+  shared: { label: "shared interface fraction",
+    value: (point) => point.morphology?.lineageEnsemble?.sharedInterfaceFraction,
+    format: (value) => `${(100 * value).toFixed(1)}%` },
   extent: { label: "maximum nucleus extent · Å", value: (point) => point.morphology?.maximumExtentAngstrom,
     format: (value) => `${value.toFixed(2)} Å` },
   anisotropy: { label: "relative shape anisotropy · κ²", value: (point) => point.morphology?.relativeShapeAnisotropy,
@@ -7579,11 +7590,28 @@ function selectedNotebookTrajectoryObservable() {
 }
 
 function notebookMassRadiusScaling(points = []) {
-  return finiteMassRadiusScaling(points.map((point) => ({
+  const global = finiteMassRadiusScaling(points.map((point) => ({
     mass: point.atoms,
     radius: point.morphology?.radiusOfGyrationAngstrom,
     dimension: point.morphology?.intrinsicDimension,
   })));
+  const largestNucleusId = points.at(-1)?.morphology?.lineageEnsemble?.largestNucleusId ?? null;
+  const lineageStates = largestNucleusId === null ? [] : points.map((point) => {
+    const lineage = point.morphology?.lineageEnsemble?.lineages
+      ?.find((entry) => entry.nucleusId === largestNucleusId);
+    return lineage ? { mass: lineage.fractionalAtomCount, radius: lineage.radiusOfGyrationAngstrom,
+      dimension: lineage.intrinsicDimension } : null;
+  }).filter(Boolean);
+  return { ...global,
+    scope: "whole explicit configuration",
+    globalRadiusContainsInterNucleusSeparation:
+      Boolean(points.at(-1)?.morphology?.lineageEnsemble?.globalRadiusContainsInterNucleusSeparation),
+    largestLineage: largestNucleusId === null ? null : {
+      nucleusId: largestNucleusId, ...finiteMassRadiusScaling(lineageStates),
+      massAccounting: "fractional shared-site population",
+      radiusAccounting: "inclusive lineage geometry",
+    },
+  };
 }
 
 function renderNotebookInterventionAudit(selected) {
@@ -7751,6 +7779,11 @@ function renderNotebookTrajectoryAudit(selected) {
       ? "insufficient scale span"
       : `${comparison.firstScaling.exponent.toFixed(2)} → ${comparison.secondScaling.exponent.toFixed(2)}`,
     `fit R² ${comparison.firstScaling.rSquared?.toFixed(2) || "—"} → ${comparison.secondScaling.rSquared?.toFixed(2) || "—"}`],
+    ["largest-lineage Dₘ", comparison.firstScaling.largestLineage?.exponent == null
+      || comparison.secondScaling.largestLineage?.exponent == null
+      ? "insufficient lineage span"
+      : `${comparison.firstScaling.largestLineage.exponent.toFixed(2)} → ${comparison.secondScaling.largestLineage.exponent.toFixed(2)}`,
+    "shared sites apportioned fractionally"],
     ["finite structural regime", `${comparison.firstScaling.regime} → ${comparison.secondScaling.regime}`,
     "not fractal dimension or kinetics"],
   ];
@@ -13842,14 +13875,39 @@ function structuralMassRadiusScaling(selected = null) {
     radius: state.radiusOfGyrationAngstrom,
     dimension: state.intrinsicDimension,
   })));
-  return { ...audit, retainedWindowTruncated: leapEventCount > leapHistory.length,
+  const largestNucleusId = states.at(-1)?.lineageEnsemble?.largestNucleusId ?? null;
+  const largestLineageStates = largestNucleusId === null ? [] : states.map((state) => {
+    const lineage = state.lineageEnsemble?.lineages?.find((entry) => entry.nucleusId === largestNucleusId);
+    return lineage ? {
+      mass: lineage.fractionalAtomCount,
+      radius: lineage.radiusOfGyrationAngstrom,
+      dimension: lineage.intrinsicDimension,
+    } : null;
+  }).filter(Boolean);
+  const largestLineage = largestNucleusId === null ? null : {
+    nucleusId: largestNucleusId,
+    ...finiteMassRadiusScaling(largestLineageStates),
+    massAccounting: "fractional shared-site population",
+    radiusAccounting: "inclusive lineage geometry",
+  };
+  return { ...audit,
+    scope: "whole explicit configuration",
+    globalRadiusContainsInterNucleusSeparation:
+      Boolean(states.at(-1)?.lineageEnsemble?.globalRadiusContainsInterNucleusSeparation),
+    largestLineage,
+    retainedWindowTruncated: leapEventCount > leapHistory.length,
     alignment: "certified structural leap index; no physical time" };
 }
 
 function receiptMassRadiusScaling(selected = null) {
-  const audit = structuralMassRadiusScaling(selected);
-  return Object.fromEntries(Object.entries(audit).map(([key, value]) => [key,
-    Number.isFinite(value) && !Number.isInteger(value) ? receiptRound(value) : value]));
+  const roundDeep = (value) => {
+    if (Number.isFinite(value) && !Number.isInteger(value)) return receiptRound(value);
+    if (Array.isArray(value)) return value.map(roundDeep);
+    if (value && typeof value === "object") return Object.fromEntries(
+      Object.entries(value).map(([key, nested]) => [key, roundDeep(nested)]));
+    return value;
+  };
+  return roundDeep(structuralMassRadiusScaling(selected));
 }
 
 function morphologyTrend(before, after) {
@@ -13909,7 +13967,8 @@ function renderLeapMorphology(selected = null) {
   leapMorphologyScaling.className = `leap-morphology-scaling ${scaling.fitReliable ? "resolved" : "unresolved"}`;
   leapMorphologyScaling.replaceChildren();
   const scalingTitle = document.createElement("span");
-  const scalingLabel = document.createElement("small"); scalingLabel.textContent = "finite mass–radius audit";
+  const scalingLabel = document.createElement("small"); scalingLabel.textContent = scaling.globalRadiusContainsInterNucleusSeparation
+    ? "global finite mass–radius audit" : "finite mass–radius audit";
   const scalingValue = document.createElement("strong");
   scalingValue.textContent = scaling.exponent === null ? "Dₘ unresolved" : `Dₘ ${scaling.exponent.toFixed(2)}`;
   const scalingStatus = document.createElement("em"); scalingStatus.textContent = scaling.regime;
@@ -13925,7 +13984,45 @@ function renderLeapMorphology(selected = null) {
       cell.append(key, datum); scalingEvidence.append(cell);
     });
   leapMorphologyScaling.append(scalingTitle, scalingEvidence);
-  leapMorphologyBoundary.textContent = `${after.sampledCoordinationCenters} radially stratified sites audited. Dₘ fits log(atom count) against log(radius of gyration) only across the displayed finite structural states${scaling.retainedWindowTruncated ? "; the retained history is truncated" : ""}. The observables are invariant to translation and proper rotation. They are not physical surface area, asymptotic fractal dimension, equilibrium habit, Wulff shape, interfacial energy, growth rate, kinetics, or elapsed time.`;
+  const ensemble = after.lineageEnsemble;
+  if (leapLineageSummary && leapLineageList) {
+    leapLineageSummary.replaceChildren();
+    [["active nuclei", `${ensemble.lineageCount}`],
+      ["effective count", ensemble.effectiveNucleusCount.toFixed(2)],
+      ["largest share", `${(100 * ensemble.largestPopulationFraction).toFixed(1)}%`],
+      ["shared interface", `${ensemble.sharedInterfaceAtoms} · ${(100 * ensemble.sharedInterfaceFraction).toFixed(1)}%`]]
+      .forEach(([label, value]) => {
+        const cell = document.createElement("span"); const key = document.createElement("small");
+        const datum = document.createElement("strong"); key.textContent = label; datum.textContent = value;
+        cell.append(key, datum); leapLineageSummary.append(cell);
+      });
+    leapLineageList.replaceChildren();
+    ensemble.lineages.slice(0, 4).forEach((lineage) => {
+      const row = document.createElement("div");
+      const head = document.createElement("span"); const label = document.createElement("strong");
+      const share = document.createElement("small"); label.textContent = `N${lineage.nucleusId}`;
+      share.textContent = `${(100 * lineage.populationFraction).toFixed(1)}%`; head.append(label, share);
+      const track = document.createElement("i"); const fill = document.createElement("b");
+      fill.style.width = `${Math.max(0, Math.min(100, 100 * lineage.populationFraction))}%`; track.append(fill);
+      const detail = document.createElement("em");
+      detail.textContent = `${lineage.fractionalAtomCount.toFixed(1)} fractional atoms · ${lineage.phenotype} · R_g ${lineage.radiusOfGyrationAngstrom.toFixed(2)} Å · κ² ${lineage.relativeShapeAnisotropy.toFixed(3)}`;
+      row.append(head, track, detail); leapLineageList.append(row);
+    });
+    if (!ensemble.lineages.length) {
+      const empty = document.createElement("p"); empty.textContent = "No seeded nucleus lineage is assigned to this state.";
+      leapLineageList.append(empty);
+    }
+  }
+  const lineageScaling = scaling.largestLineage;
+  if (lineageScaling) {
+    const lineageCell = document.createElement("span");
+    const key = document.createElement("small"); key.textContent = `largest nucleus N${lineageScaling.nucleusId}`;
+    const datum = document.createElement("strong"); datum.textContent = lineageScaling.exponent === null
+      ? "Dₘ unresolved" : `Dₘ ${lineageScaling.exponent.toFixed(2)}`;
+    lineageCell.append(key, datum); scalingEvidence.append(lineageCell);
+  }
+  leapMorphologyState.textContent = `${after.phenotype} · ${trend} · ${ensemble.lineageCount} ${ensemble.lineageCount === 1 ? "nucleus" : "nuclei"}`;
+  leapMorphologyBoundary.textContent = `${after.sampledCoordinationCenters} radially stratified sites audited. ${ensemble.lineageCount > 1 ? "The global R_g contains separation between nuclei; the largest-lineage audit isolates one nucleus. " : ""}Shared sites are apportioned fractionally for populations and included in every participating lineage shape. Dₘ fits finite structural states only${scaling.retainedWindowTruncated ? "; the retained history is truncated" : ""}. These observables are not physical surface area, asymptotic fractal dimension, equilibrium habit, Wulff shape, interfacial energy, nucleation rate, growth rate, kinetics, or elapsed time; no crystallographic grain identity is inferred.`;
 }
 
 function renderStructuralLeap(leap = null) {
@@ -13985,6 +14082,81 @@ function renderStructuralLeap(leap = null) {
   leapClaimBoundary.textContent = selected.claimBoundary;
 }
 
+function radiallyStratifiedIndices(source, candidateIndices, maximumCenters) {
+  if (!candidateIndices.length) return [];
+  const center = candidateIndices.reduce((sum, index) => sum.add(source[index].p), new THREE.Vector3())
+    .multiplyScalar(1 / candidateIndices.length);
+  const radialOrder = candidateIndices.map((index) => ({
+    index, species: source[index].species, radiusSquared: source[index].p.distanceToSquared(center),
+  })).sort((first, second) => first.radiusSquared - second.radiusSquared
+    || first.species.localeCompare(second.species) || first.index - second.index);
+  return radialOrder.length <= maximumCenters ? radialOrder.map((entry) => entry.index)
+    : Array.from({ length: maximumCenters }, (_, index) =>
+      radialOrder[Math.min(radialOrder.length - 1,
+        Math.floor((index + .5) * radialOrder.length / maximumCenters))].index);
+}
+
+function coordinationDeficitForIndices(source, centerIndices) {
+  return coloredCoordinationEnvelopes?.records?.length && centerIndices.length
+    ? coloredCoordinationDeficit(source.map((atom) => atom.species),
+      (first, second) => source[first].p.distanceTo(source[second].p),
+      coloredCoordinationEnvelopes, centerIndices)
+    : { mean: null, terms: 0 };
+}
+
+function lineageMorphologyAudit(source, scaleToAngstrom) {
+  const memberships = source.map((atom) => [...new Set(atom.nucleusIds || [])]
+    .filter(Number.isInteger).sort((first, second) => first - second));
+  const nucleusIds = [...new Set(memberships.flat())].sort((first, second) => first - second);
+  const assignedAtoms = memberships.filter((ids) => ids.length).length;
+  const sharedInterfaceAtoms = memberships.filter((ids) => ids.length > 1).length;
+  const unassignedAtoms = source.length - assignedAtoms;
+  const fractionalCounts = new Map(nucleusIds.map((id) => [id, 0]));
+  memberships.forEach((ids) => ids.forEach((id) => {
+    fractionalCounts.set(id, fractionalCounts.get(id) + 1 / ids.length);
+  }));
+  const lineages = nucleusIds.map((nucleusId) => {
+    const indices = memberships.map((ids, index) => ids.includes(nucleusId) ? index : null)
+      .filter(Number.isInteger);
+    const exclusiveAtomCount = memberships.filter((ids) => ids.length === 1 && ids[0] === nucleusId).length;
+    const sharedAtomCount = indices.length - exclusiveAtomCount;
+    const geometry = covarianceMorphology(indices.map((index) => source[index]), scaleToAngstrom);
+    const coordinationCenters = radiallyStratifiedIndices(source, indices, 64);
+    const coordination = coordinationDeficitForIndices(source, coordinationCenters);
+    const fractionalAtomCount = fractionalCounts.get(nucleusId);
+    return {
+      nucleusId, inclusiveAtomCount: indices.length, exclusiveAtomCount, sharedAtomCount,
+      fractionalAtomCount: receiptRound(fractionalAtomCount),
+      populationFraction: assignedAtoms ? receiptRound(fractionalAtomCount / assignedAtoms) : 0,
+      phenotype: geometry.phenotype, intrinsicDimension: geometry.intrinsicDimension,
+      radiusOfGyrationAngstrom: receiptRound(geometry.radiusOfGyration),
+      maximumExtentAngstrom: receiptRound(geometry.maximumExtent),
+      relativeShapeAnisotropy: receiptRound(geometry.relativeShapeAnisotropy),
+      coordinationDeficit: Number.isFinite(coordination.mean) ? receiptRound(coordination.mean) : null,
+      sampledCoordinationCenters: coordinationCenters.length,
+    };
+  }).sort((first, second) => second.fractionalAtomCount - first.fractionalAtomCount
+    || first.nucleusId - second.nucleusId);
+  const normalizedFractions = lineages.map((lineage) => lineage.populationFraction);
+  const effectiveNucleusCount = normalizedFractions.length
+    ? 1 / normalizedFractions.reduce((sum, fraction) => sum + fraction * fraction, 0) : 0;
+  return {
+    lineageCount: lineages.length, assignedAtoms, unassignedAtoms, sharedInterfaceAtoms,
+    sharedInterfaceFraction: source.length ? receiptRound(sharedInterfaceAtoms / source.length) : 0,
+    effectiveNucleusCount: receiptRound(effectiveNucleusCount),
+    largestNucleusId: lineages[0]?.nucleusId || null,
+    largestPopulationFraction: lineages[0]?.populationFraction || 0,
+    globalRadiusContainsInterNucleusSeparation: lineages.length > 1,
+    coalescenceObserved: sharedInterfaceAtoms > 0,
+    lineages,
+    sharedSitesCountedFractionallyForPopulation: true,
+    sharedSitesIncludedInEveryLineageShape: true,
+    crystallographicGrainIdentityInferred: false,
+    interfacialEnergyInferred: false,
+    targetUsed: false,
+  };
+}
+
 function structuralMorphologySnapshot(source = atoms) {
   if (!source.length) return {
     atomCount: 0, sufficient: false, phenotype: "empty", intrinsicDimension: null,
@@ -13992,31 +14164,26 @@ function structuralMorphologySnapshot(source = atoms) {
     radiusOfGyrationAngstrom: 0, maximumExtentAngstrom: 0,
     relativeShapeAnisotropy: 0, planarityRatio: 1, localPlanarityRatio: 1,
     coordinationDeficit: null, coordinationTerms: 0, sampledCoordinationCenters: 0,
+    lineageEnsemble: {
+      lineageCount: 0, assignedAtoms: 0, unassignedAtoms: 0, sharedInterfaceAtoms: 0,
+      sharedInterfaceFraction: 0, effectiveNucleusCount: 0, largestNucleusId: null,
+      largestPopulationFraction: 0, globalRadiusContainsInterNucleusSeparation: false,
+      coalescenceObserved: false, lineages: [], sharedSitesCountedFractionallyForPopulation: true,
+      sharedSitesIncludedInEveryLineageShape: true, crystallographicGrainIdentityInferred: false,
+      interfacialEnergyInferred: false, targetUsed: false,
+    },
     coordinateFrameUsed: false, targetUsed: false,
   };
   const scaleToAngstrom = referenceSpacingA / Math.max(referenceSpacing, 1e-12);
-  const center = source.reduce((sum, atom) => sum.add(atom.p), new THREE.Vector3())
-    .multiplyScalar(1 / source.length);
   const geometry = covarianceMorphology(source, scaleToAngstrom);
 
   // Surface exposure is sampled across the full radial distribution. The
   // ordering uses only species and radius about the instantaneous centroid,
   // so translation and proper rotation cannot alter the selected strata.
-  const maximumCenters = 192;
-  const radialOrder = source.map((atom, index) => ({
-    index, species: atom.species, radiusSquared: atom.p.distanceToSquared(center),
-  })).sort((first, second) => first.radiusSquared - second.radiusSquared
-    || first.species.localeCompare(second.species) || first.index - second.index);
-  const sampledCoordinationCenters = radialOrder.length <= maximumCenters
-    ? radialOrder.map((entry) => entry.index)
-    : Array.from({ length: maximumCenters }, (_, index) =>
-      radialOrder[Math.min(radialOrder.length - 1,
-        Math.floor((index + .5) * radialOrder.length / maximumCenters))].index);
-  const coordination = coloredCoordinationEnvelopes?.records?.length
-    ? coloredCoordinationDeficit(source.map((atom) => atom.species),
-      (first, second) => source[first].p.distanceTo(source[second].p),
-      coloredCoordinationEnvelopes, sampledCoordinationCenters)
-    : { mean: null, terms: 0 };
+  const sampledCoordinationCenters = radiallyStratifiedIndices(source,
+    source.map((_, index) => index), 192);
+  const coordination = coordinationDeficitForIndices(source, sampledCoordinationCenters);
+  const lineageEnsemble = lineageMorphologyAudit(source, scaleToAngstrom);
   return {
     atomCount: source.length, sufficient: geometry.sufficient, phenotype: geometry.phenotype,
     intrinsicDimension: geometry.intrinsicDimension,
@@ -14032,6 +14199,7 @@ function structuralMorphologySnapshot(source = atoms) {
     coordinationTerms: coordination.terms,
     sampledCoordinationCenters: sampledCoordinationCenters.length,
     coordinationReference: "observed colored median coordination within learned contact cutoffs",
+    lineageEnsemble,
     coordinateFrameUsed: false, targetUsed: false,
     physicalSurfaceAreaInferred: false, equilibriumHabitInferred: false,
   };

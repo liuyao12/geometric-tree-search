@@ -81,8 +81,8 @@ def test_claim_boundary_is_kinematic_not_plastic_or_kinetic():
 
 
 def test_build_114_is_cache_busted():
-    assert 'buildId: "20260825-126"' in APP
-    assert 'app.js?v=20260825-126' in HTML
+    assert 'buildId: "20260825-127"' in APP
+    assert 'app.js?v=20260825-127' in HTML
 
 
 if __name__ == "__main__":
