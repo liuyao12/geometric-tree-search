@@ -1,4 +1,4 @@
-import { createTilingStream, preprocessTilingSystem, tileSpecs } from "./engine.js?v=20260825-audit-correctness-v218";
+import { createTilingStream, preprocessTilingSystem, tileSpecs } from "./engine.js?v=20260825-shell-parity-v219";
 
 let activeSequence = 0;
 let stopToken = { stop: false };
@@ -104,7 +104,12 @@ function configureMode(baseConfig, mode) {
     : shellSearch
       ? Math.max(24, Math.floor(baseConfig.target_val) * 24)
       : Math.max(1, Math.floor(baseConfig.periodic_patch_max_tiles ?? baseConfig.target_val ?? 4));
-  const exactLearningShell = shellSearch && ["gcts", "rl", "gcts_rl"].includes(mode.id);
+  // The four general-search benchmark lanes must traverse the same complete
+  // shell state space.  RL may reorder choices and GCTS may soundly prune
+  // proved-failed supersets, but the naive Free-range control must not retain
+  // the older generation-banded/local-search semantics.
+  const exactLearningShell = shellSearch
+    && ["free_range", "gcts", "rl", "gcts_rl"].includes(mode.id);
   const effectiveMode = shellSearch && mode.proof
     ? { ...mode, label: `${mode.label.replace(/ · .*$/u, "")} · complete shell` }
     : mode;

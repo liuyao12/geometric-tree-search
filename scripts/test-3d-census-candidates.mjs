@@ -108,7 +108,11 @@ assert.match(
   /forced_move_layer_lag_cap: mode\.proof \|\| exactLearningShell \? 0 : baseConfig\.forced_move_layer_lag_cap/,
   "proof and exact learning shell lanes must disable generational pruning"
 );
-assert.match(growthWorkerSource, /exactLearningShell = shellSearch && \["gcts", "rl", "gcts_rl"\]/, "RL and GCTS+RL must use the same exact shell state space");
+assert.match(
+  growthWorkerSource,
+  /\["free_range", "gcts", "rl", "gcts_rl"\]\.includes\(mode\.id\)/,
+  "Free-range, GCTS, RL, and GCTS+RL must use the same exact shell state space"
+);
 assert.match(growthWorkerSource, /generic_failure_memo: !!mode\.proof \|\| exactLearningShell/, "proof and exact learning shell lanes must memoize exact failures");
 assert.match(
   growthWorkerSource,

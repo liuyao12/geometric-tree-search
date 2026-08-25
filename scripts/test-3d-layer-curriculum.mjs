@@ -67,18 +67,27 @@ const run = async (marking, overrides = {}) => {
   return { final, maximumCompletedShell };
 };
 
+const freeRange = await run(false, { move_order: "balanced", agent_policy: null });
 const rl = await run(false);
 const hybrid = await run(true);
-for (const result of [rl, hybrid]) {
-  assert.equal(result.final?.success, true, "cold RL policies must fill the shell-2 periodic control");
+for (const result of [freeRange, rl, hybrid]) {
+  assert.equal(result.final?.success, true, "all general-search controls must fill the shell-2 periodic control");
   assert.ok(result.maximumCompletedShell >= 2, "success must mean the live patch completed shell 2");
   assert.equal(result.final?.search_stats?.learned_layer_macro_enabled, false);
   assert.equal(result.final?.search_stats?.learned_layer_macro_tiles_applied, 0);
+  assert.equal(result.final?.search_incomplete, false);
+}
+for (const result of [rl, hybrid]) {
   assert.equal(result.final?.search_stats?.agent_model_parameter_count, 143);
   assert.equal(result.final?.search_stats?.agent_model_weight_count, 11);
   assert.equal(result.final?.search_stats?.agent_model_payload_bytes, 1144);
-  assert.equal(result.final?.search_incomplete, false);
 }
+assert.equal(freeRange.final?.search_stats?.agent_model_parameter_count, 0);
+assert.equal(
+  freeRange.final.search_stats.generic_complete_shell_enumeration,
+  true,
+  "the Free-range shell control must use the same complete global extension state space"
+);
 assert.ok(
   hybrid.final.search_stats.visited_nodes <= rl.final.search_stats.visited_nodes,
   "GCTS+RL must not visit more branches than the identical RL policy on the parity control"
@@ -92,6 +101,7 @@ console.log("3D cold shell-curriculum regression passed", {
   completedShell: hybrid.maximumCompletedShell,
   tiles: hybrid.final.tile_count,
   oneTileActions: hybrid.final.search_stats.branch_choices_visited,
+  freeRangeVisitedNodes: freeRange.final.search_stats.visited_nodes,
   rlVisitedNodes: rl.final.search_stats.visited_nodes,
   hybridVisitedNodes: hybrid.final.search_stats.visited_nodes,
   exactGeometricClauses: hybrid.final.search_stats.generic_geometric_nogood_clauses,
