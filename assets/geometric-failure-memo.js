@@ -23,6 +23,8 @@ export class GeometricFailureMemo {
     this.compatibilityChecks = 0;
     this.clauseChecks = 0;
     this.linearClauseChecks = 0;
+    this.contextTokens = 0;
+    this.payloadBytes = 0;
   }
 
   representation(context, candidate) {
@@ -59,6 +61,8 @@ export class GeometricFailureMemo {
     const clause = { ...representation, pivot, signature, metadata: { ...metadata } };
     this.signatures.add(signature);
     this.clauses.push(clause);
+    this.contextTokens += clause.required.length;
+    this.payloadBytes += JSON.stringify(clause).length;
     if (!this.byCandidate.has(clause.candidate)) this.byCandidate.set(clause.candidate, []);
     this.byCandidate.get(clause.candidate).push(clause);
     if (!this.byCandidatePivot.has(clause.candidate)) this.byCandidatePivot.set(clause.candidate, new Map());
@@ -106,7 +110,9 @@ export class GeometricFailureMemo {
       compatibility_checks: this.compatibilityChecks,
       clause_checks: this.clauseChecks,
       linear_clause_checks: this.linearClauseChecks,
-      avoided_clause_checks: this.linearClauseChecks - this.clauseChecks
+      avoided_clause_checks: this.linearClauseChecks - this.clauseChecks,
+      context_tokens: this.contextTokens,
+      payload_bytes: this.payloadBytes
     };
   }
 }

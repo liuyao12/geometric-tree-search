@@ -498,8 +498,9 @@ export const createTilingStream = (() => {
           if (angleCanClose(edge.angle, angles)) continue;
           return {
             kind: "local_edge_obstruction",
-            certified: true,
-            can_tile: false,
+            certified: false,
+            can_tile: null,
+            heuristic: true,
             model: "face_to_face_congruent_copies",
             edge: edge.edge,
             edge_length_squared: Number(lengthSquared),
@@ -1427,6 +1428,14 @@ export const createTilingStream = (() => {
       return keys;
     };
     const invalidateCandidateCaches = (changedPositions = null) => {
+      // Convex-polyhedron validity is decided by continuous SAT overlap, not
+      // solely by the discrete solid-angle samples.  Sample-offset selective
+      // invalidation can therefore retain a candidate rejected by a placement
+      // which has just been undone.  Clear the cache in that model.
+      if (allSystemTilesAreConvexPolyhedra) {
+        state.vertex_candidate_cache.clear();
+        return;
+      }
       const affectedPointKeys = candidateInfluencePointKeys(changedPositions);
       if (!affectedPointKeys) {
         state.vertex_candidate_cache.clear();
@@ -2430,6 +2439,8 @@ export const createTilingStream = (() => {
       searchStats.generic_geometric_nogood_clause_checks = stats.clause_checks;
       searchStats.generic_geometric_nogood_linear_clause_checks = stats.linear_clause_checks;
       searchStats.generic_geometric_nogood_avoided_clause_checks = stats.avoided_clause_checks;
+      searchStats.generic_geometric_nogood_context_tokens = stats.context_tokens;
+      searchStats.generic_geometric_nogood_payload_bytes = stats.payload_bytes;
     };
     const rememberGenericFailure = (key, placements) => {
       if (genericFailureMemoEnabled && key && !genericFailureMemo.has(key)) {
@@ -2505,8 +2516,9 @@ export const createTilingStream = (() => {
       ? Math.max(2000, Math.ceil(targetVal))
       : criterion === "region" ? Math.max(1, regionTileUpperBound) : 2000;
     const safetyMax = Number.isFinite(configuredSafetyMax) && configuredSafetyMax > 0
-      ? Math.max(criterion === "count" ? Math.ceil(targetVal) : 1, Math.floor(configuredSafetyMax))
+      ? Math.max(1, Math.floor(configuredSafetyMax))
       : defaultSafetyMax;
+    searchStats.safety_max_tiles = safetyMax;
     const overNodeLimit = () => {
       const reached = Number.isFinite(nodeLimit) && searchWorkCounter >= nodeLimit;
       if (reached && !searchStats.termination_reason) searchStats.termination_reason = "node_limit";
@@ -3120,6 +3132,7 @@ export const createTilingStream = (() => {
         }
       }
       if (!periodVectors) return null;
+      if (!periodicTranslationNeighborhoodIsValid(periodVectors, [startMove])) return null;
       const isParallelepiped = startOrient.verts.length === 8
         && startOrient.faces.length === 6
         && startOrient.faces.every(face => face.length === 4);
@@ -4815,13 +4828,12 @@ export const createTilingStream = (() => {
             ? Math.max(24, targetVal * 24)
             : safetyMax;
       let growthGoalSnapshot = null;
-      // Goal-bounded comparisons need not exhaust every smaller motif size
-      // before they are allowed to represent the requested finite patch. Do
-      // the especially useful one-tile exact preflight, then make one bounded
-      // connected search whose intermediate states are checked against the
-      // actual count/shell/region goal.
-      const patchSizes = stopAtGrowthGoal
-        ? [...new Set([1, growthGoalPatchLimit])]
+      // A smaller periodic quotient remains a valid (and usually much easier)
+      // certificate for a larger display goal.  Never jump directly from one
+      // tile to the requested preview size: that used to miss, for example,
+      // the known three-tile quotient of lattice polytope 10_24775.
+      const patchSizes = stopAtGrowthGoal && Number.isFinite(growthGoalPatchLimit)
+        ? Array.from({ length: Math.max(1, growthGoalPatchLimit) }, (_, index) => index + 1)
         : null;
       const patchSizeCount = patchSizes?.length ?? maximumPatchSize;
       for (let patchOrdinal = 0;
@@ -5067,6 +5079,7 @@ export const createTilingStream = (() => {
         ? Math.floor(configuredSelectionWindow)
         : 64;
       const periodicNodeId = nowId();
+      searchStats.periodic_preflight_start_tiles = state.placements.length;
       yield branchSet(parentId, [{
         id: periodicNodeId,
         text: "certified forced growth",
@@ -5194,9 +5207,14 @@ export const createTilingStream = (() => {
         }
         await yieldToBrowser();
       }
+      searchStats.periodic_preflight_end_tiles = state.placements.length;
       if (goalMet()) {
         yield nodeStatus(periodicNodeId, "success", `+ ${applied} certified forced`);
         return true;
+      }
+      if (state.placements.length >= safetyMax) {
+        noteIncompleteSearch();
+        searchStats.termination_reason = "safety_tile_limit";
       }
       while (appliedMoves.length) {
         const entry = appliedMoves.pop();
@@ -5394,14 +5412,25 @@ export const createTilingStream = (() => {
       `${transform.rotation.flat().join(",")}::${isohedralPointKey(transform.translation)}`;
     const globalPlacementVertices = placement =>
       placement.orient.verts.map(vertex => vecAdd(vertex, placement.translation));
+    const isohedralWeightedCloudKey = points => points
+      .map(point => `${point.pos.map(isohedralCoordinate).join(",")}:${isohedralCoordinate(point.weight)}`)
+      .sort()
+      .join("|");
+    const isohedralOrientationGeometryKey = orient => {
+      const mins = [0, 1, 2].map(axis => Math.min(...orient.verts.map(vertex => vertex[axis])));
+      const normalizedVertices = orient.verts.map(vertex =>
+        vertex.map((coordinate, axis) => isohedralCoordinate(coordinate - mins[axis]))
+      );
+      const normalizedOccupancy = (orient.occupancy ?? []).map(point => ({
+        pos: point.pos.map((coordinate, axis) => isohedralCoordinate(coordinate - mins[axis])),
+        weight: point.weight
+      }));
+      return `${isohedralVertexCloudKey(normalizedVertices)}::${isohedralWeightedCloudKey(normalizedOccupancy)}`;
+    };
     const isohedralOrientationMaps = prototiles.map(tile => {
       const orientations = new Map();
       for (const orient of tile.unique_orientations ?? []) {
-        const mins = [0, 1, 2].map(axis => Math.min(...orient.verts.map(vertex => vertex[axis])));
-        const normalized = orient.verts.map(vertex =>
-          vertex.map((coordinate, axis) => isohedralCoordinate(coordinate - mins[axis]))
-        );
-        orientations.set(isohedralVertexCloudKey(normalized), orient);
+        orientations.set(isohedralOrientationGeometryKey(orient), orient);
       }
       return orientations;
     });
@@ -5416,16 +5445,26 @@ export const createTilingStream = (() => {
       const targetCenter = [0, 1, 2].map(axis =>
         targetVertices.reduce((sum, vertex) => sum + vertex[axis], 0) / targetVertices.length
       );
-      const targetKey = isohedralVertexCloudKey(targetVertices);
+      const targetOccupancy = (placement.orient.occupancy ?? []).map(point => ({
+        pos: vecAdd(point.pos, placement.translation),
+        weight: point.weight
+      }));
+      const targetKey = `${isohedralVertexCloudKey(targetVertices)}::${isohedralWeightedCloudKey(targetOccupancy)}`;
       const transforms = new Map();
       for (const { matrix: rotation, determinant } of isohedralRotations) {
         const rotatedCenter = isohedralMatrixVector(rotation, sourceCenter);
         const translation = targetCenter.map((coordinate, axis) =>
           isohedralCoordinate(coordinate - rotatedCenter[axis])
         );
-        const transformedKey = isohedralVertexCloudKey(
+        const transformedKey = `${isohedralVertexCloudKey(
           sourceVertices.map(vertex => isohedralTransformPoint({ rotation, translation }, vertex))
-        );
+        )}::${isohedralWeightedCloudKey((root.orient.occupancy ?? []).map(point => ({
+          pos: isohedralTransformPoint(
+            { rotation, translation },
+            vecAdd(point.pos, root.translation)
+          ),
+          weight: point.weight
+        })))}`;
         if (transformedKey !== targetKey) continue;
         const transform = {
           rotation: rotation.map(row => row.slice()),
@@ -5445,7 +5484,15 @@ export const createTilingStream = (() => {
       const normalized = transformedVertices.map(vertex =>
         vertex.map((coordinate, axis) => isohedralCoordinate(coordinate - mins[axis]))
       );
-      const normalizedKey = isohedralVertexCloudKey(normalized);
+      const transformedOccupancy = (placement.orient.occupancy ?? []).map(point => ({
+        pos: isohedralTransformPoint(transform, vecAdd(point.pos, placement.translation)),
+        weight: point.weight
+      }));
+      const normalizedOccupancy = transformedOccupancy.map(point => ({
+        pos: point.pos.map((coordinate, axis) => isohedralCoordinate(coordinate - mins[axis])),
+        weight: point.weight
+      }));
+      const normalizedKey = `${isohedralVertexCloudKey(normalized)}::${isohedralWeightedCloudKey(normalizedOccupancy)}`;
       const targetPrototileIndices = isohedralOrientationMaps
         .map((orientations, prototileIdx) => orientations.has(normalizedKey) ? prototileIdx : -1)
         .filter(prototileIdx => prototileIdx >= 0);
@@ -5939,6 +5986,19 @@ export const createTilingStream = (() => {
         yield nodeStatus(parentId, "success", `learned layer macro: +${applied.length}`);
         return true;
       }
+      if (state.placements.length >= safetyMax) {
+        noteIncompleteSearch();
+        searchStats.termination_reason = "safety_tile_limit";
+        if (applied.length) searchStats.learned_layer_macro_rollbacks += 1;
+        while (applied.length) {
+          const entry = applied.pop();
+          undoMove(entry.move, entry.rollback, { captureBest: false });
+          searchStats.forced_total = Math.max(0, searchStats.forced_total - 1);
+          yield placementDelta("remove", entry.move, entry.rollback, parentId);
+        }
+        yield nodeStatus(parentId, "fail", "Safety tile limit");
+        return false;
+      }
       const configuredMiningMs = Number(config.learned_layer_macro_mining_time_ms);
       const miningMs = Number.isFinite(configuredMiningMs) && configuredMiningMs > 0
         ? configuredMiningMs
@@ -5973,6 +6033,12 @@ export const createTilingStream = (() => {
       if (overBudget()) {
         noteIncompleteSearch();
         yield nodeStatus(parentId, "fail", budgetText());
+        return false;
+      }
+      if (!goalMet() && state.placements.length >= safetyMax) {
+        noteIncompleteSearch();
+        searchStats.termination_reason = "safety_tile_limit";
+        yield nodeStatus(parentId, "fail", "Safety tile limit");
         return false;
       }
       const propagated = yield* propagateIsohedralPatch(parentId);
@@ -6120,6 +6186,12 @@ export const createTilingStream = (() => {
       if (overBudget()) {
         noteIncompleteSearch();
         yield nodeStatus(parentId, "fail", budgetText());
+        return false;
+      }
+      if (state.placements.length >= safetyMax) {
+        noteIncompleteSearch();
+        searchStats.termination_reason = "safety_tile_limit";
+        yield nodeStatus(parentId, "fail", "Safety tile limit");
         return false;
       }
       if (genericPeriodicCheckpointEnabled) {
@@ -6421,9 +6493,15 @@ export const createTilingStream = (() => {
             yield snapshot(null);
             await tick();
           }
-          if (goalMet() || state.placements.length >= safetyMax) {
+          if (goalMet()) {
             yield nodeStatus(parentId, "success");
             return yield* doReturn(true);
+          }
+          if (state.placements.length >= safetyMax) {
+            noteIncompleteSearch();
+            searchStats.termination_reason = "safety_tile_limit";
+            yield nodeStatus(parentId, "fail", "Safety tile limit");
+            return yield* doReturn(false);
           }
           continue;
         }
@@ -6836,7 +6914,7 @@ export const createTilingStream = (() => {
     }
 
     let success = false;
-    if (convexEdgeAngleObstruction) {
+    if (convexEdgeAngleObstruction?.certified && convexEdgeAngleObstruction?.can_tile === false) {
       tilingEvidence = {
         ...convexEdgeAngleObstruction,
         strategy: tilingStrategy
@@ -6860,15 +6938,54 @@ export const createTilingStream = (() => {
       ) {
         const growthGoalReached = yield* search(rootId);
         if (growthGoalReached) {
-          searchStats.termination_reason = "translational_growth_goal_without_certificate";
+          const configuredGoalCheckMs = Number(config.periodic_goal_patch_check_time_ms);
+          const goalCheckMs = Number.isFinite(configuredGoalCheckMs) && configuredGoalCheckMs > 0
+            ? configuredGoalCheckMs
+            : 1000;
+          const goalCheckStartedAt = performance.now();
+          let goalCheckTimedOut = false;
+          const goalCheckBudgetExceeded = () => {
+            const exceeded = performance.now() - goalCheckStartedAt >= goalCheckMs;
+            if (exceeded) goalCheckTimedOut = true;
+            return exceeded;
+          };
+          let goalTemplate = findBoundaryPeriodicTemplate(state.placements.length, {
+            budget_exceeded: goalCheckBudgetExceeded,
+            on_budget_exceeded: () => { goalCheckTimedOut = true; }
+          });
+          if (!goalTemplate && !goalCheckBudgetExceeded()) {
+            goalTemplate = minePeriodicTemplateFromCurrentPatch({
+              budget_exceeded: goalCheckBudgetExceeded,
+              on_budget_exceeded: () => { goalCheckTimedOut = true; }
+            });
+          }
+          if (goalTemplate) {
+            tilingEvidence = {
+              kind: "translational_certificate",
+              certified: true,
+              can_tile: true,
+              strategy: "translational",
+              source: "translational_growth_goal_patch",
+              patch_size: goalTemplate.motif.length,
+              certificate_kind: goalTemplate.kind,
+              period_vectors: goalTemplate.period_vectors.map(vector => vector.slice()),
+              periodic_template: goalTemplate
+            };
+            success = true;
+          } else {
+            searchStats.termination_reason = goalCheckTimedOut
+              ? "translational_growth_goal_certificate_check_timed_out"
+              : "translational_growth_goal_without_certificate";
+          }
           yield {
             type: "translational_check",
             patch_size: state.placements.length,
-            certified: false,
+            certified: !!goalTemplate,
+            check_completed: !goalCheckTimedOut,
             growth_goal_reached: true,
             growth_goal_criterion: criterion,
             growth_goal_target: targetVal,
-            periodic_template: null,
+            periodic_template: goalTemplate,
             frontier_stats: frontierStatsWithCandidateCount(),
             search_stats: searchStatsSnapshot()
           };
@@ -6947,7 +7064,10 @@ export const createTilingStream = (() => {
     // it succeeds only after its requested live patch was actually produced.
     // Dedicated translational/isohedral proof lanes still report certificates
     // immediately, as does a count-only discovery run.
-    const certificateCompletesRun = tilingStrategy !== "generic" || criterion === "count";
+    const structuralGoalRequired = tilingStrategy === "translational"
+      && config.periodic_stop_at_growth_goal !== false;
+    const certificateCompletesRun = (tilingStrategy !== "generic" || criterion === "count")
+      && (!structuralGoalRequired || goalMet());
     success = success || (
       certificateCompletesRun
       && !!(tilingEvidence?.certified && tilingEvidence?.can_tile === true)
@@ -6988,6 +7108,13 @@ export const createTilingStream = (() => {
     ) {
       const restrictedToInitialPatch = searchStats.initial_patch_applied_tiles > 1;
       const usedDeadFacePruning = searchStats.generic_global_zero_face_dead_ends > 0;
+      const proofCoversWholePrototileSystem = prototiles.length === 1;
+      // Face-extension enumeration is complete for Z3 polycubes because every
+      // legal contact is a union of unit lattice faces.  For a general lattice
+      // polyhedron it proves only the explicitly narrower face-to-face model;
+      // non-face-to-face lattice contacts remain possible.
+      const proofCoversRequestedTilingModel = proofCoversWholePrototileSystem
+        && (prototiles.every(tile => tile.is_polycube) || config.face_to_face_model === true);
       tilingEvidence = criterion === "shell"
         ? {
             kind: restrictedToInitialPatch
@@ -6996,7 +7123,8 @@ export const createTilingStream = (() => {
                 ? "finite_extendable_shell_obstruction"
                 : "finite_shell_obstruction",
             certified: true,
-            can_tile: restrictedToInitialPatch ? null : false,
+            can_tile: restrictedToInitialPatch || !proofCoversRequestedTilingModel ? null : false,
+            can_tile_in_rooted_face_to_face_model: restrictedToInitialPatch ? null : false,
             strategy: tilingStrategy,
             target_shell_depth: targetVal,
             ...(restrictedToInitialPatch
@@ -7015,7 +7143,8 @@ export const createTilingStream = (() => {
         : {
             kind: "finite_patch_obstruction",
             certified: true,
-            can_tile: false,
+            can_tile: proofCoversRequestedTilingModel ? false : null,
+            can_tile_in_rooted_face_to_face_model: false,
             strategy: tilingStrategy,
             target_tiles: targetVal,
             model: `connected face-to-face tiling by the configured ${includeMirrors ? "full lattice isometries" : "proper lattice orientations"}`,
@@ -7072,6 +7201,7 @@ export const createTilingStream = (() => {
       tilingEvidence = {
         kind: "exact_region_fill",
         certified: true,
+        can_tile: null,
         strategy: tilingStrategy,
         region_type: targetRegion?.type ?? null,
         placed_volume: state.placed_volume,
@@ -7088,17 +7218,21 @@ export const createTilingStream = (() => {
           : "A locally legal finite patch is not a proof that all of 3-space can be tiled."
       };
     }
-    const provenImpossible = tilingEvidence?.can_tile === false || (
-      !success
-      && criterion === "region"
-      && exhaustive
-      && !searchIncomplete
-    );
+    const provenImpossible = tilingEvidence?.can_tile === false;
     const extensionImpossible = tilingEvidence?.kind === "finite_shell_extension_obstruction";
+    const certifiedFiniteRegion = tilingEvidence?.kind === "exact_region_fill";
+    const certifiedButGoalIncomplete = !!tilingEvidence?.certified
+      && tilingEvidence?.can_tile === true
+      && structuralGoalRequired
+      && !success;
     const resultKind = provenImpossible
       ? "no_tiling"
       : extensionImpossible
         ? "patch_extension_impossible"
+      : certifiedFiniteRegion
+        ? "certified_region_fill"
+      : certifiedButGoalIncomplete
+        ? "certified_tiling_goal_incomplete"
       : tilingEvidence?.certified
         ? "certified_tiling"
       : success
@@ -7120,6 +7254,8 @@ export const createTilingStream = (() => {
         ? null
         : typeof tilingEvidence?.can_tile === "boolean"
         ? tilingEvidence.can_tile
+        : certifiedFiniteRegion
+          ? null
         : tilingEvidence?.certified
           ? true
           : provenImpossible
@@ -8246,7 +8382,7 @@ export const tileSpecs = (() => {
         ? "Unresolved Lattice Candidates"
         : ["translational", "isohedral_periodic_quotient"].includes(candidate.screening.certificate)
           ? "GCTS Periodic Controls"
-          : "GCTS Non-Tiler Controls"],
+          : "Face-to-face Obstruction Controls"],
       census_candidate: candidate,
       build: () => [make_tile(candidate.name, createScaledTileData(candidate.vertices, [], true))]
     }])),
@@ -8618,8 +8754,9 @@ export const tileSpecs = (() => {
         if (angleCanClose(edge.angle, angles)) continue;
         return {
           kind: "local_edge_obstruction",
-          certified: true,
-          can_tile: false,
+          certified: false,
+          can_tile: null,
+          heuristic: true,
           model: "face_to_face_congruent_copies",
           edge: edge.edge,
           edge_length_squared: Number(lengthSquared),

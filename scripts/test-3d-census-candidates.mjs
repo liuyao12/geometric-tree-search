@@ -122,8 +122,8 @@ assert.match(
 );
 assert.match(
   growthWorkerSource,
-  /generic_geometric_nogood: !!mode\.nogood && !shellSearch/,
-  "only the complementary proof lane may enable translated nogoods"
+  /generic_geometric_nogood: \["gcts", "gcts_rl"\]\.includes\(mode\.id\)[\s\S]*?\|\| \(!!mode\.nogood && !shellSearch\)/,
+  "GCTS shell lanes must retain exact translated failure markings"
 );
 assert.match(growthWorkerSource, /generic_geometric_nogood_max_clauses: 20000/);
 assert.match(growthWorkerSource, /generic_geometric_nogood_index: true/);
@@ -1578,7 +1578,7 @@ assert.equal(
 );
 
 const candidates = tileSpecs.figureCatalog.filter(figure => figure.census_candidate);
-assert.equal(candidates.length, 50, "the lattice controls and focused free-polycube representatives must remain in the catalog");
+assert.equal(candidates.length, 56, "the lattice controls and fresh free-polycube representatives must remain in the catalog");
 assert.ok(!candidates.some(figure => figure.census_candidate.id === "10_26470"));
 const survivors = candidates.filter(figure => figure.census_candidate.screening.status === "inconclusive");
 const shellControls = candidates.filter(figure =>
@@ -1587,10 +1587,19 @@ const shellControls = candidates.filter(figure =>
 const periodicControls = candidates.filter(figure =>
   ["translational", "isohedral_periodic_quotient"].includes(figure.census_candidate.screening.certificate)
 );
-assert.equal(survivors.length, 5);
+assert.equal(survivors.length, 11);
 assert.deepEqual(
   survivors.map(figure => figure.census_candidate.id).sort(),
-  ["p10-054782", "p10-055695", "p10-290795", "p10-346304", "p9-42947"]
+  [
+    "p10-054782", "p10-055695", "p10-290795", "p10-346304",
+    "p9-02127", "p9-08203", "p9-08219", "p9-20656",
+    "p9-24025", "p9-42947", "p9-48258"
+  ]
+);
+assert.equal(
+  survivors.filter(figure => figure.census_candidate.screening.census_stage === "volume9_fresh_bounded_2026_08_25").length,
+  6,
+  "the fresh census must add six new free representatives beside the existing deep p9-42947 control"
 );
 const volumeNineSurvivor = survivors.find(figure => figure.census_candidate.id === "p9-42947");
 assert.ok(volumeNineSurvivor
@@ -3028,11 +3037,11 @@ const corrected16113Proof = await solve({
   seeded_tie_breaks: false,
   ui_yield_interval_ms: 1000000
 });
-assert.equal(corrected16113Proof.final.result_kind, "no_tiling");
-assert.equal(corrected16113Proof.final.can_tile, false);
-assert.equal(corrected16113Proof.final.search_incomplete, false);
-assert.equal(corrected16113Proof.final.tiling_evidence?.kind, "finite_shell_obstruction");
-assert.equal(corrected16113Proof.final.search_stats.visited_nodes, 50);
+assert.notEqual(
+  corrected16113Proof.final.can_tile,
+  false,
+  "a face-to-face shell obstruction for a general lattice polyhedron must not be promoted to unrestricted lattice non-tiling"
+);
 assert.ok(
   corrected16113Proof.final.search_stats.generic_shell_face_match_attempts < 20000,
   "translation-normalized face indexing should avoid scanning every oriented face anchor"

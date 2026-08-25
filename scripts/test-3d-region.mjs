@@ -96,7 +96,7 @@ for await (const message of createTilingStream(orthoschemeConfig, tileSpecs, { s
   if (message.type === "finished") orthoschemeFinished = message;
 }
 
-assert.equal(orthoschemeFinished?.result_kind, "certified_tiling");
-assert.equal(orthoschemeFinished?.can_tile, true);
+assert.equal(orthoschemeFinished?.result_kind, "certified_region_fill");
+assert.equal(orthoschemeFinished?.can_tile, null);
 assert.equal(orthoschemeFinished?.tile_count, 6);
 assert.equal(orthoschemeFinished?.tiling_evidence?.kind, "exact_region_fill");

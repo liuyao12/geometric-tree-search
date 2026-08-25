@@ -2,6 +2,7 @@
 
 import assert from "node:assert/strict";
 import { GeometricFrontierMarking } from "../assets/geometric-frontier-marking.js";
+import { GeometricFailureMemo } from "../assets/geometric-failure-memo.js";
 import { PROPER_CUBIC_ROTATIONS } from "../apps/3d-lattice-tiler/engine.js";
 
 const orientation = vertices => ({ verts: vertices });
@@ -58,5 +59,26 @@ assert.equal(
 const bounded = new GeometricFrontierMarking({ rotations: PROPER_CUBIC_ROTATIONS, reach: 2, maxContext: 1 });
 assert.equal(bounded.encode(point, 0.5, context).encoded, false, "oversize contexts are skipped, never unsafely truncated");
 assert.equal(bounded.stats().clauses, 0);
+
+const failureMemo = new GeometricFailureMemo({
+  describePlacement: item => ({
+    kind: String(item.prototile_idx),
+    orientation: "tetrahedron",
+    translation: item.translation
+  }),
+  contextMatch: "subset"
+});
+assert.equal(failureMemo.encode([context[0]], context[1]).encoded, true);
+assert.equal(failureMemo.compatible(context[1], [context[0]]), false);
+assert.equal(
+  failureMemo.compatible(
+    { ...context[1], translation: [8, -3, 3] },
+    [{ ...context[0], translation: [7, -4, 3] }, remoteExtra]
+  ),
+  false,
+  "complete failed contexts recur under translation and harmless supersets"
+);
+assert.ok(failureMemo.stats().context_tokens > 0);
+assert.ok(failureMemo.stats().payload_bytes > 0);
 
 console.log("geometric frontier marking tests passed");

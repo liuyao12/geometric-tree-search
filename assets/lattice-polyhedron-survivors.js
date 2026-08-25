@@ -363,7 +363,7 @@ export const LATTICE_POLYHEDRON_SIZE11_CONTROLS = SIZE11_CANDIDATE_GEOMETRY.map(
     gcts_proof_screening: Object.freeze({}),
     description: template
       ? `Size-11 periodic control ${candidate.id}; exact GCTS screening found a ${template.motif.length}-tile translational quotient.`
-      : `Size-11 non-tiler control ${candidate.id}; exhaustive GCTS reaches shell 2 but proves shell 3 impossible.`
+      : `Size-11 face-to-face obstruction control ${candidate.id}; exhaustive GCTS reaches shell 2 but proves shell 3 impossible in the rooted face-to-face model.`
   });
 });
 
@@ -536,7 +536,7 @@ export const LATTICE_POLYHEDRON_SIZE12_CONTROLS = [
     }),
     gcts_proof_screening: Object.freeze({}),
     description: candidate.obstruction_shell
-      ? `Size-12 full-isometry non-tiler control ${candidate.id}; overlap-audited easy lanes found no periodic certificate and exhaustive unpruned GCTS proves shell ${candidate.obstruction_shell} impossible.`
+      ? `Size-12 full-isometry face-to-face obstruction control ${candidate.id}; overlap-audited easy lanes found no periodic certificate and exhaustive unpruned GCTS proves shell ${candidate.obstruction_shell} impossible in the rooted face-to-face model.`
       : `Unresolved size-12 full-isometry control ${candidate.id}; 20 distinct shell-3 witnesses survive, although each tested witness has an exact shell-4 extension obstruction and none contains a periodic quotient. The complete root-level shell-4 search remains bounded-inconclusive.`
   }))
 ];
@@ -602,7 +602,7 @@ export const LATTICE_POLYHEDRON_SIZE13_CONTROLS = Object.freeze([
     last_screening: LATTICE_POLYHEDRON_SIZE13_SCREENING,
     shell_screening: Object.freeze({ deepest_completed_shell: 1, obstruction_shell: 2, witness_tiles: candidate.shell_tiles, full_isometries: true, robust: true }),
     gcts_proof_screening: Object.freeze({ exact_root_nodes: candidate.proof_nodes }),
-    description: `Size-13 hard non-tiler control ${candidate.id}; both bounded easy lanes are inconclusive, then three independent exhaustive GCTS orders prove shell 2 impossible after the same ${candidate.proof_nodes}-node root search.`
+    description: `Size-13 hard face-to-face obstruction control ${candidate.id}; both bounded easy lanes are inconclusive, then three independent exhaustive GCTS orders prove shell 2 impossible in the rooted face-to-face model after the same ${candidate.proof_nodes}-node search.`
   }))
 ]);
 
@@ -670,8 +670,8 @@ export const LATTICE_POLYHEDRON_SHELL_REJECTS = LATTICE_POLYHEDRON_PRE_SHELL_CAN
   .map(candidate => ({
     ...candidate,
     description: candidate.screening.certificate === "finite_shell_obstruction"
-      ? `GCTS non-tiler control ${candidate.id}; exhaustive unpruned face-to-face search proves shell ${candidate.screening.shell_depth} impossible under full cubic isometries and integer translations.`
-      : `GCTS non-tiler control ${candidate.id}; exhaustive face-obligation search proves that every route toward shell ${candidate.screening.shell_depth} encounters a permanently unfillable exposed face in the configured face-to-face proper-lattice model.`
+      ? `GCTS face-to-face obstruction control ${candidate.id}; exhaustive unpruned face-to-face search proves shell ${candidate.screening.shell_depth} impossible under full cubic isometries and integer translations.`
+      : `GCTS face-to-face obstruction control ${candidate.id}; exhaustive face-obligation search proves that every route toward shell ${candidate.screening.shell_depth} encounters a permanently unfillable exposed face in the configured face-to-face proper-lattice model.`
   }));
 
 export const LATTICE_POLYHEDRON_PERIODIC_REJECTS = LATTICE_POLYHEDRON_PRE_SHELL_CANDIDATES

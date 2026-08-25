@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260824-translational-goal-v216";
+} from "./engine.js?v=20260825-audit-correctness-v217";
 
 const $ = (id) => document.getElementById(id);
 
@@ -527,7 +527,7 @@ const STRATEGY_DESCRIPTIONS = {
   rl_free_range: "Starts with zero linear weights and learns one-tile next-placement returns from anonymous lattice geometry during this run.",
   gcts_rl: "Combines the same one-tile cold linear learner with exact GCTS failure markings; RL orders but never removes legal branches.",
   translational: "Tests increasingly large patches for three exact translation vectors and stops only on a certificate or search limit.",
-  isohedral: "Searches tile-transitive patches, then requires an exact periodic quotient preserved by symmetries taking the root to every tile class."
+  isohedral: "Bounded positive-certificate search: it accepts only an exact periodic quotient preserved by symmetries taking the root to every tile class; failure is inconclusive."
 };
 
 function checkedRadioValue(radios, fallback) {
@@ -1417,7 +1417,9 @@ function updateCandidateResearchPanel() {
     } else {
       candidateResearchTitle.textContent = `Research candidate ${candidate.id}`;
       candidateResearchDetail.textContent = candidate.kind === "polycube_census"
-        ? candidate.screening.census_stage?.startsWith("volume10_through")
+        ? candidate.screening.census_stage === "volume9_fresh_bounded_2026_08_25"
+          ? `${candidate.volume}-cube ${candidate.mirror_equivalent_id ? `chiral polycube; its omitted enantiomer ${candidate.mirror_equivalent_id} is tiling-equivalent by reflection of all space` : "achiral polycube"}. A fresh, gap-audited proper-rotation census found no independently verified periodic quotient through ${candidate.screening.periodic_exact_through} copies. A longer exact run was requested through ${candidate.screening.periodic_requested_through}, but stopped partway through the ${candidate.screening.periodic_next_motif}-copy domain after ${candidate.screening.periodic_deep_hnf_visited.toLocaleString()} HNF bases and ${candidate.screening.periodic_deep_nodes.toLocaleString()} exact-cover nodes, so larger domains remain open. The bounded isohedral certifier found no certificate through its ${candidate.screening.isohedral_growth_horizon}-tile horizon; that negative result is inconclusive. An independently replayed radius-${candidate.screening.corona_completed_radius} corona exists (${candidate.screening.corona_completed_nodes.toLocaleString()} search nodes over ${candidate.screening.corona_placements_considered.toLocaleString()} placements). This is a bounded-unresolved GCTS benchmark, not evidence of aperiodicity.`
+        : candidate.screening.census_stage?.startsWith("volume10_through")
           ? `${candidate.volume}-cube ${candidate.mirror_equivalent_id ? `chiral polycube; its omitted enantiomer ${candidate.mirror_equivalent_id} is the same tiling-existence problem under reflection of all space` : "achiral polycube"}. Exact HNF search exhausted all ${candidate.screening.periodic_hnf_candidates_exhausted.toLocaleString()} quotient bases through ${candidate.screening.periodic_hnf_max_motif_tiles} copies without a periodic certificate. Its radius-${candidate.screening.corona_completed_radius} patch is independently verified. Radius ${candidate.screening.corona_next_radius} remains unresolved across ${candidate.screening.corona_next_portfolio_runs} conflict-backjumping ${candidate.screening.corona_next_portfolio_runs === 1 ? "run" : "runs"} with ${candidate.screening.corona_next_time_limit_ms / 1000} aggregate CPU-seconds of configured budget and ${candidate.screening.corona_next_nodes.toLocaleString()} search nodes; that search was not exhausted.${candidate.screening.corona_continuation_states_checked ? ` Continuation-guided GCTS tested ${candidate.screening.corona_continuation_states_checked} complete radius-${candidate.screening.corona_completed_radius} ${candidate.screening.corona_continuation_states_checked === 1 ? "state" : "states"}; exact radius-${candidate.screening.corona_next_radius} continuation rejected ${candidate.screening.corona_continuation_states_rejected} as dead ends, then the outer search remained incomplete.` : ""} This is a focused GCTS stress candidate, not a tiling or aperiodicity claim.`
           : `${candidate.volume}-cube nonplanar polycube; its omitted enantiomer ${candidate.mirror_equivalent_id} is the same tiling-existence problem under reflection of all space. Exact HNF search exhausted all ${candidate.screening.periodic_hnf_candidates_exhausted.toLocaleString()} quotients through ${candidate.screening.periodic_hnf_max_motif_tiles} copies without a periodic certificate. An exact radius-${candidate.screening.corona_completed_radius} corona exists; radius ${candidate.screening.corona_next_radius} remained incomplete after ${candidate.screening.corona_next_nodes.toLocaleString()} nodes and ${candidate.screening.corona_next_time_limit_ms / 1000}s. Conflict-directed continuation GCTS learned ${candidate.screening.corona_nogood_clauses.toLocaleString()} exact placement nogoods across ${candidate.screening.corona_nogood_portfolio_trials} seeded orderings and pruned ${candidate.screening.corona_nogood_prunes.toLocaleString()} branches using only ${candidate.screening.corona_nogood_continuation_checks} full continuation checks. It found no radius-${candidate.screening.corona_next_radius} extension but did not exhaust the outer search. An exact first-corona forcing audit found all ${candidate.screening.corona_forcing_placements_tested} baseline neighbor placements replaceable, so no individual absolute placement is forced. At the coarser contact-type level, a counterexample-guided exact search found a minimum non-single-cell disjunction of ${candidate.screening.corona_contact_minimum_nontrivial_disjunction} types. Its reciprocal two-state and self-state cycles both survive through radius ${candidate.screening.corona_contact_cycle_completed_radius}. Conditioning on the reciprocal contacts gives ${candidate.screening.corona_contact_reciprocal_incoming_orbits} incoming placement orbits and a dense ${candidate.screening.corona_contact_conditional_transition_edges}-edge local graph: all ${candidate.screening.corona_contact_inactive_incoming_orbits} inactive orbits require another active contact, but the ${candidate.screening.corona_contact_terminating_active_incoming_orbits} active orbits can terminate without one. Whole-corona boundary states are sharper: ${candidate.screening.corona_boundary_obstructed_states.toLocaleString()} of ${candidate.screening.corona_boundary_sampled_states.toLocaleString()} distinct sampled radius-one exteriors (${(100 * candidate.screening.corona_boundary_obstructed_fraction).toFixed(1)}%) cannot extend to radius two, while ${candidate.screening.corona_boundary_extendable_states} survive. An on-demand learned run accumulated ${candidate.screening.corona_boundary_learned_clauses.toLocaleString()} clauses and ${candidate.screening.corona_boundary_nogood_prunes.toLocaleString()} prunes. At the next level it redirected a 1,000-state run to ${candidate.screening.corona_boundary_radius2_learned_survivors} radius-three survivors; at radius three it still made ${candidate.screening.corona_boundary_radius3_stress_prunes.toLocaleString()} prunes in ${candidate.screening.corona_boundary_radius3_stress_time_ms / 1000}s without reaching a survivor. A bounded direct-depth proposal beats that held-out ordering failure with a verified radius-four witness in ${candidate.screening.corona_deep_proposal_radius4_nodes.toLocaleString()} nodes and ${candidate.screening.corona_deep_proposal_radius4_milliseconds}ms. A ${candidate.screening.corona_adaptive_proposal_milliseconds}ms pilot retains that escape while preserving ${(100 * candidate.screening.corona_adaptive_proposal_radius5_coverage_ratio).toFixed(1)}% of equal-budget radius-five coverage; neither it nor exact symmetry closure improves the radius-five result, so both remain optional. An independent pseudo-Boolean Z3 backend matches the ${candidate.screening.corona_next_radius === 5 ? "6,781-placement" : "finite"} incidence model and finds a separately verified radius-four patch in ${candidate.screening.corona_z3_radius4_fast_milliseconds}ms; ${candidate.screening.corona_z3_radius5_runs} diversified radius-five runs totaling ${(candidate.screening.corona_z3_radius5_milliseconds / 1000).toFixed(1)}s remain undecided. A positive-control low-copy CEGAR run rejects ${candidate.screening.corona_cegar_positive_control_dead_states} dead radius-two patches before recovering a verified radius-three witness. Applied here, it exactly rejects all ${candidate.screening.corona_cegar_radius4_obstructed_states} proposed radius-four states, including ${candidate.screening.corona_cegar_economical_radius4_states_checked} economical states down to ${candidate.screening.corona_cegar_minimum_radius4_placements} copies, and retains ${candidate.screening.corona_cegar_symmetry_closed_clauses} sound symmetry-closed obstruction clauses. Eight earlier 62-copy attempts timed out before the factored encoding found and exactly rejected one; ${candidate.screening.corona_cegar_pair_witness_cnf_max61_timeout_runs} searches at 61 copies remain timeout-inconclusive. Radius four is still unexhausted. This is a concrete GCTS proposal-selection stress test, while tiling and aperiodicity remain unresolved.`
         : candidate.lattice_points === 12
@@ -2942,9 +2944,11 @@ function handleMessage(message) {
     setStatus(message.certified
       ? `Certified ${message.patch_size}-tile translational patch`
       : message.growth_goal_reached
-        ? message.growth_goal_criterion === "shell"
-          ? `Reached shell ${message.growth_goal_target}; translational result is inconclusive`
-          : `Reached ${message.growth_goal_target}-tile goal; translational result is inconclusive`
+        ? message.check_completed
+          ? message.growth_goal_criterion === "shell"
+            ? `Reached shell ${message.growth_goal_target}; checked patch is not a quotient`
+            : `Reached ${message.growth_goal_target}-tile goal; checked patch is not a quotient`
+          : "Reached the growth goal; quotient check timed out"
         : `No ${message.patch_size}-tile patch; checking the next size…`);
     return;
   }
@@ -3051,7 +3055,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260824-translational-goal-v216", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260825-audit-correctness-v217", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3569,10 +3573,13 @@ function formatGrowthResult(result, target) {
     ? ` · certificate ${formatMemoryBytes(certificateBytes)}`
     : "";
   const memorySuffix = ` · learned ${formatMemoryBytes(learnedBytes)}${certificateMemory} · search cache ${searchCacheEntries} states`;
+  const gctsClauses = result?.memory?.markingClauses ?? 0;
+  const gctsPrunes = (result?.stats?.marking_geometric_prunes ?? 0)
+    + (result?.stats?.generic_geometric_nogood_prunes ?? 0);
   const learningSuffix = result?.mode === "gcts_rl"
-    ? ` (RL ${result.stats?.agent_model_weight_count ?? result.stats?.agent_learned_tags ?? 0} weights; GCTS ${result.stats?.marking_geometric_clauses ?? 0} failures, ${result.stats?.marking_geometric_prunes ?? 0} reuses; learner ${formatElapsed(learningMilliseconds)})`
+    ? ` (RL ${result.stats?.agent_model_weight_count ?? result.stats?.agent_learned_tags ?? 0} weights; GCTS ${gctsClauses} failures, ${gctsPrunes} reuses; learner ${formatElapsed(learningMilliseconds)})`
     : result?.mode === "gcts"
-    ? ` (learned ${result.stats?.marking_geometric_clauses ?? 0}, reused ${result.stats?.marking_geometric_prunes ?? 0})`
+    ? ` (learned ${gctsClauses}, reused ${gctsPrunes})`
     : result?.mode === "rl"
       ? ` (learned ${result.stats?.agent_model_weight_count ?? result.stats?.agent_learned_tags ?? 0} geometric weights; learner ${formatElapsed(learningMilliseconds)})`
     : "";
@@ -3667,6 +3674,10 @@ function formatGrowthResult(result, target) {
   if (["gcts", "gcts_rl"].includes(result?.mode) && result?.searchIncomplete) {
     const maxLive = result.stats?.max_live_tiles ?? result.tileCount ?? 0;
     return `${result.label} inconclusive · max ${maxLive} live${stopSuffix}${learningSuffix}`;
+  }
+  if (!result?.success && result?.canTile == null) {
+    const maxLive = result?.stats?.max_live_tiles ?? result?.tileCount ?? 0;
+    return `${result?.label ?? "run"} inconclusive · max ${maxLive} live${stopSuffix}${learningSuffix}`;
   }
   if (targetPoint) {
     const witness = result?.mode === "translational" && result?.resultKind === "certified_tiling"
@@ -3767,7 +3778,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260824-translational-goal-v216", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260825-audit-correctness-v217", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};
@@ -3822,10 +3833,13 @@ function startGrowthBenchmark() {
         ) showSelectedGrowthSnapshot();
       } else if (message.type === "series-finished") {
         series.result = message.result;
+        const gctsClauses = message.result.memory?.markingClauses ?? 0;
+        const gctsPrunes = (message.result.stats?.marking_geometric_prunes ?? 0)
+          + (message.result.stats?.generic_geometric_nogood_prunes ?? 0);
         if (mode.id === "gcts_rl") {
-          series.status = `RL ${message.result.stats?.agent_model_weight_count ?? 0} weights; GCTS ${message.result.stats?.marking_geometric_clauses ?? 0} failures / ${message.result.stats?.marking_geometric_prunes ?? 0} reuses; ${formatMemoryBytes(message.result.memory?.learnedPayloadBytes)} retained`;
+          series.status = `RL ${message.result.stats?.agent_model_weight_count ?? 0} weights; GCTS ${gctsClauses} failures / ${gctsPrunes} reuses; ${formatMemoryBytes(message.result.memory?.learnedPayloadBytes)} retained`;
         } else if (mode.id === "gcts") {
-          series.status = `learned ${message.result.stats?.marking_geometric_clauses ?? 0} geometric failures; reused ${message.result.stats?.marking_geometric_prunes ?? 0}; ${formatMemoryBytes(message.result.memory?.learnedPayloadBytes)} retained`;
+          series.status = `learned ${gctsClauses} geometric failures; reused ${gctsPrunes}; ${formatMemoryBytes(message.result.memory?.learnedPayloadBytes)} retained`;
         } else if (mode.id === "rl") {
           series.status = `${message.result.stats?.agent_model_weight_count ?? 0} anonymous geometric weights; ${formatMemoryBytes(message.result.memory?.learnedPayloadBytes)} retained`;
         }

@@ -559,18 +559,27 @@ remain useful GCTS stress tests under the `12_235174-shell3-portfolio`,
 `shell4-extension-portfolio`, and `shell3-periodicity-portfolio` filenames.
 For sizes 12–15, `scripts/screen-next-lattice-polytope-pool.mjs` downloads
 bounded aggregate pages from polyDB and records contiguous source ranges and
-SHA-256 receipts; the merge script refuses gaps and overlaps.
+SHA-256 receipts; the merge script refuses gaps and overlaps. An independent
+2026-08-25 audit found an important scope limitation: polyDB supplies one
+representative per affine-unimodular class, whereas this solver fixes the
+Euclidean cubic lattice and identifies shapes only by its rigid symmetry
+group. The floating-tolerance edge-angle prefilter is also heuristic, not an
+exact rejection certificate. Consequently these lattice-polyhedron records
+are regression controls, not an exhaustive census for this tiling model, and
+the webapp no longer promotes that prefilter to `can_tile=false`.
 
-The complete size-13 pass covers all 1,502,640 polyDB representatives without
-a source gap or search timeout. A geometry-only exact edge-angle preflight
-rejects 1,502,508; exhaustive shell-one search rejects 39 more and leaves 93
+The archived size-13 pass covers all 1,502,640 downloaded polyDB
+representatives without a source gap or search timeout. A geometry-only
+edge-angle heuristic filtered 1,502,508; face-to-face shell-one search filtered
+39 more and left 93
 witnesses. The easy lanes certify 88 translational quotients and two additional
 eight-tile quotients found only by the isohedral lane. The remaining three
 (`13_0492735`, `13_1072824`, and `13_1429971`) make useful GCTS stress tests:
 both bounded easy lanes are inconclusive, but three independent unpruned
 full-isometry searches exhaust identical root trees and prove shell 2
-impossible. Thus this census also closes with no unresolved aperiodic
-candidate. The catalogue keeps `13_0635270` as the isohedral-lane regression
+impossible in the rooted face-to-face model. These archived results do not
+close the fixed-Euclidean lattice-polyhedron census or prove unrestricted
+non-tiling. The catalogue keeps `13_0635270` as the isohedral-lane regression
 and the first two hard non-tilers as compact tree-search controls. A
 translation-normalized oriented-face index preserves those exact trees while
 reducing `13_0492735` face-match attempts from 1,851,648 to 27,844 per trial.
@@ -579,7 +588,24 @@ The receipts are
 `data/lattice-polyhedron-size13-full-isometry-easy-lanes-2026-08-20.json`, and
 `data/lattice-polyhedron-size13-full-isometry-shell2-2026-08-20.json`.
 
-The one-sided polycube census now extends through volume nine. The first pass
+The volume-nine polycube census was regenerated from scratch on 2026-08-25.
+Its manifest contains all 48,311 face-connected one-sided polycubes under the
+24 proper cubic rotations, with canonical-key, connectivity, stabilizer, and
+orbit-size checks. Independently replayed HNF quotient certificates reduce the
+pool to 1,151 after motifs 1–2, 111 after 3–4, 36 after 5–6, and 11 after the
+audited 7–8 stage. Six time-limited copy-eight suffixes were resumed from their
+recorded HNF indices; none produced a certificate and all six ranges were then
+exhausted. The remaining 11 one-sided shapes form seven representatives after
+mirror pairs are collapsed. Every one has a separately replayed radius-two
+corona; a bounded 24-tile isohedral certifier found no positive certificate.
+Those seven are catalogued as **bounded unresolved**, never as aperiodic. The
+machine-readable summary is
+`data/polycube-volume9-fresh-census-2026-08-25.json`; the reusable manifest,
+stage, and shard auditors are in `scripts/create-polycube-census-manifest.mjs`,
+`scripts/audit-polycube-screen-stage.mjs`, and
+`scripts/audit-polycube-census-screen.mjs`.
+
+The earlier one-sided polycube campaign also extended through volume nine. The first pass
 certified 48,260 of 48,311 shapes with motifs through six copies. A deeper
 eight-copy pass resolves two more, `p9-43172` and its enantiomer `p9-43188`,
 with an exact 8-tile quotient. The webapp independently replays that quotient;

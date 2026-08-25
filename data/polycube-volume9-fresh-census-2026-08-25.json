@@ -1,0 +1,55 @@
+{
+  "schema": "gcts.z3_polycube_fresh_census.v1",
+  "date": "2026-08-25",
+  "model": {
+    "lattice": "Z3 unit voxels",
+    "connectivity": "face-connected",
+    "placement_group": "24 proper cubic rotations and integer translations",
+    "enumeration_equivalence": "proper rotations",
+    "reflections_allowed_as_moves": false
+  },
+  "manifest": {
+    "volume": 9,
+    "candidate_count": 48311,
+    "candidate_key_sha256": "97970c83c7c0d722df9518023323b818af3080e51cdbac8c23d78b326147f0cc",
+    "known_count_verified": true,
+    "connectivity_verified": true,
+    "orbit_stabilizer_verified": true
+  },
+  "periodic_funnel": [
+    { "requested_motif_range": [1, 2], "periodic_certificates": 47160, "bounded_unresolved": 1151 },
+    { "requested_motif_range": [3, 4], "periodic_certificates": 1040, "bounded_unresolved": 111 },
+    { "requested_motif_range": [5, 6], "periodic_certificates": 75, "bounded_unresolved": 36 },
+    { "requested_motif_range": [7, 8], "periodic_certificates": 25, "bounded_unresolved": 11 }
+  ],
+  "certificate_policy": {
+    "periodic_positive": "accepted only after independent Cramer-rule quotient replay",
+    "isohedral_positive": "accepted only after independent periodic quotient replay and tile-orbit verification",
+    "isohedral_negative": "always inconclusive because the certifier is bounded",
+    "corona_positive": "independently replayed finite witness; not a space-tiling certificate",
+    "bounded_unresolved": "neither a tiler classification nor evidence of aperiodicity"
+  },
+  "final_one_sided_candidates": 11,
+  "final_free_representatives": [
+    { "id": "p9-02127", "mirror_partner_id": "p9-02127", "periodic_exact_through": 9, "next_domain_incomplete": 10 },
+    { "id": "p9-08203", "mirror_partner_id": "p9-08214", "periodic_exact_through": 9, "next_domain_incomplete": 10 },
+    { "id": "p9-08219", "mirror_partner_id": "p9-08220", "periodic_exact_through": 9, "next_domain_incomplete": 10 },
+    { "id": "p9-20656", "mirror_partner_id": "p9-20656", "periodic_exact_through": 9, "next_domain_incomplete": 10 },
+    { "id": "p9-24025", "mirror_partner_id": "p9-24830", "periodic_exact_through": 8, "next_domain_incomplete": 9 },
+    { "id": "p9-42947", "mirror_partner_id": "p9-42969", "periodic_exact_through": 14, "next_domain_incomplete": 15, "note": "The deeper bound is independently retained from the earlier gap-audited 52-shard campaign; the fresh run also independently reconfirmed the complete domains through eight." },
+    { "id": "p9-48258", "mirror_partner_id": "p9-48258", "periodic_exact_through": 11, "next_domain_incomplete": 12 }
+  ],
+  "bounded_structural_screen": {
+    "isohedral_growth_horizon_tiles": 24,
+    "verified_isohedral_certificates": 0,
+    "corona_radius": 2,
+    "verified_corona_witnesses": 11,
+    "certified_non_tilers": 0
+  },
+  "audit": {
+    "gap_free_shards": true,
+    "duplicate_ids": 0,
+    "stage_identities_match_exactly": true,
+    "warning": "Requested maximum motif size is never reported as exhausted when a time or node cap stopped inside an earlier motif domain."
+  }
+}

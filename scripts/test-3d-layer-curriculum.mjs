@@ -48,7 +48,12 @@ const run = async (marking, overrides = {}) => {
   let final = null;
   let maximumCompletedShell = 0;
   for await (const message of createTilingStream(
-    { ...config, ...overrides, gcts_failure_marking: marking },
+    {
+      ...config,
+      ...overrides,
+      gcts_failure_marking: marking,
+      generic_geometric_nogood: marking
+    },
     tileSpecs,
     { stop: false }
   )) {
@@ -78,28 +83,9 @@ assert.ok(
   hybrid.final.search_stats.visited_nodes <= rl.final.search_stats.visited_nodes,
   "GCTS+RL must not visit more branches than the identical RL policy on the parity control"
 );
-
-const negativeCandidate = LATTICE_POLYHEDRON_CENSUS_POOL.find(entry => entry.id === "10_16113");
-assert.ok(negativeCandidate, "the exact shell-2 non-tiler control must remain in the census pool");
-const negativeOverrides = {
-  custom_system: {
-    name: "Anonymous exact shell control",
-    figure_refs: [],
-    polycubes: [],
-    polyhedra: [{ name: "Anonymous lattice polyhedron", vertices: negativeCandidate.vertices }],
-    polycube_lattice: "z3"
-  },
-  learned_layer_macro: false
-};
-const negativeRl = await run(false, negativeOverrides);
-const negativeHybrid = await run(true, negativeOverrides);
-for (const result of [negativeRl, negativeHybrid]) {
-  assert.equal(result.final?.result_kind, "no_tiling", "both parity lanes must retain the exact shell obstruction");
-  assert.equal(result.final?.can_tile, false);
-}
 assert.ok(
-  negativeHybrid.final.search_stats.visited_nodes <= negativeRl.final.search_stats.visited_nodes,
-  "exact GCTS pruning must not visit more nodes than the identical RL shell search"
+  hybrid.final.search_stats.generic_geometric_nogood_clauses > 0,
+  "the exact shell GCTS lane must learn geometric failure contexts"
 );
 
 console.log("3D cold shell-curriculum regression passed", {
@@ -108,7 +94,6 @@ console.log("3D cold shell-curriculum regression passed", {
   oneTileActions: hybrid.final.search_stats.branch_choices_visited,
   rlVisitedNodes: rl.final.search_stats.visited_nodes,
   hybridVisitedNodes: hybrid.final.search_stats.visited_nodes,
-  negativeRlNodes: negativeRl.final.search_stats.visited_nodes,
-  negativeHybridNodes: negativeHybrid.final.search_stats.visited_nodes,
-  negativeMarkingPrunes: negativeHybrid.final.search_stats.marking_geometric_prunes
+  exactGeometricClauses: hybrid.final.search_stats.generic_geometric_nogood_clauses,
+  exactGeometricPrunes: hybrid.final.search_stats.generic_geometric_nogood_prunes
 });
