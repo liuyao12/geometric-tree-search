@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260825-41">
+  <link rel="stylesheet" href="./style.css?v=20260825-42">
   <script type="importmap">
     {
       "imports": {
@@ -538,6 +538,14 @@
                 <option value="serial">Serial best-first · one branch decision</option>
               </select>
             </label>
+            <label class="field" for="growthNucleiSelect">
+              <span>Observed growth nuclei <b id="growthNucleiHint">1 local seed</b></span>
+              <select id="growthNucleiSelect">
+                <option value="1" selected>One observed nucleus</option>
+                <option value="2">Two far-separated observed nuclei</option>
+                <option value="4">Four dispersed observed nuclei</option>
+              </select>
+            </label>
             <label class="field" for="explorationScaleSelect">
               <span>Configurational path ensemble <b id="explorationScaleHint">greedy · T* = 0</b></span>
               <select id="explorationScaleSelect">
@@ -836,6 +844,7 @@
           <div id="loopClosureBadge" class="loop-closure-badge" hidden><i>⟳</i><span><b id="loopClosureBadgeLabel">loop closure</b><small>multi-parent geometric consensus</small></span></div>
           <div id="arrivalPathBadge" class="arrival-path-badge" hidden><i>⇢</i><span><b id="arrivalPathBadgeLabel">arrival path</b><small>swept clearance · no barrier</small></span></div>
           <div id="explorationBadge" class="exploration-badge" hidden><i>∿</i><span><b id="explorationBadgeLabel">T* 0.15 · seed 1</b><small>reproducible path sampling</small></span></div>
+          <div id="nucleiBadge" class="nuclei-badge" hidden><i>◎</i><span><b id="nucleiBadgeLabel">1 observed nucleus</b><small>interfaces emerge on contact</small></span></div>
           <div class="axis-labels" aria-hidden="true"><span class="x">x</span><span class="y">y</span><span class="z">z</span></div>
           <div class="viewport-caption"><span id="captionAction">Every point is an observed species and position; no cluster labels are supplied.</span></div>
         </div>
@@ -1011,7 +1020,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-86"></script>
+  <script type="module" src="./app.js?v=20260825-87"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

@@ -3729,3 +3729,23 @@ search. `T*` is not Kelvin temperature or an energy, and the app does not claim
 Boltzmann weights, equilibrium probabilities, free energies, rates, or
 physical time. The experiment receipt records the scale, seed, hash inputs,
 and these claim boundaries so sampled and greedy runs remain auditable.
+
+## Multiple observed nuclei and geometric impingement
+
+Material Growth can start from one, two, or four cluster occurrences already
+present in the supplied configuration. For two or four nuclei, a deterministic
+farthest-point traversal chooses spatially dispersed observed occurrences; it
+does not rotate, translate, or synthesize a nucleus. Each seed therefore keeps
+its observed cluster type and proper-SE(3) pose. Every accepted descendant
+inherits that seed lineage while all nuclei expose frozen ports into the same
+tree-search frontier.
+
+When descendants from distinct lineages share an exact species-labelled site,
+the app records a coalescence contact and draws a cyan ring around the shared
+atom. The interface diagnostic is produced by the same overlap, collision,
+coordination, angular, and public-boundary certificates as ordinary growth.
+It is useful for exploring geometric impingement and competing orientation
+domains, but it is not a grain-boundary classification, nucleation rate,
+interfacial energy, texture distribution, coarsening law, or elapsed physical
+time. The experiment receipt records requested and realized seed counts,
+selection provenance, interface contacts, and these explicit claim limits.

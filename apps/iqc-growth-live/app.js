@@ -196,6 +196,10 @@ const explorationScaleHint = $("explorationScaleHint");
 const resampleGrowthButton = $("resampleGrowthButton");
 const explorationBadge = $("explorationBadge");
 const explorationBadgeLabel = $("explorationBadgeLabel");
+const growthNucleiSelect = $("growthNucleiSelect");
+const growthNucleiHint = $("growthNucleiHint");
+const nucleiBadge = $("nucleiBadge");
+const nucleiBadgeLabel = $("nucleiBadgeLabel");
 const growthSchedulingSelect = $("growthSchedulingSelect");
 const growthSchedulingHint = $("growthSchedulingHint");
 const trainVariantButton = $("trainVariantButton");
@@ -600,6 +604,8 @@ const occupancyRingMaterials = new Map();
 const thermalEnvelopeMaterial = new THREE.MeshBasicMaterial({
   color: 0x9d84ff, wireframe: true, transparent: true, opacity: .16, depthWrite: false,
 });
+const interfaceRingMaterial = new THREE.MeshBasicMaterial({ color: 0x7ee1e8,
+  transparent: true, opacity: .9, depthWrite: false });
 const clusterMaterials = CLUSTER_COLORS.map((color) => new THREE.MeshStandardMaterial({ color, roughness: .32, metalness: .08, emissive: color, emissiveIntensity: .12 }));
 const markingMaterials = new Map();
 const candidateMaterial = new THREE.MeshBasicMaterial({ color: COLORS.violet, wireframe: true, transparent: true, opacity: 0.92 });
@@ -745,6 +751,10 @@ let arrivalPathMode = "none";
 let arrivalPathWeight = .24;
 let geometricExplorationScale = 0;
 let growthPathSeed = 1;
+let requestedGrowthNuclei = 1;
+let initializedGrowthNuclei = 0;
+let coalescenceEvents = 0;
+let crossNucleusMergeContacts = 0;
 let growthScheduling = "commuting";
 let nextMarkingId = 1;
 let geometryMode = "auto";
@@ -5508,7 +5518,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-86",
+      buildId: "20260825-87",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -5987,6 +5997,22 @@ async function buildExperimentReceipt() {
         energyUnitsUsed: false,
         boltzmannDistributionClaimed: false,
         freeEnergyInferred: false,
+        physicalTimeIntegrated: false,
+      },
+      multiNucleusGrowth: {
+        role: "geometry-only co-growth from farthest-separated cluster occurrences already present in the supplied configuration",
+        requestedNuclei: requestedGrowthNuclei,
+        initializedNuclei: initializedGrowthNuclei,
+        selection: "deterministic farthest-point traversal of observed cluster occurrence centers",
+        orientations: "observed proper-SE(3) occurrence poses; no artificial grain rotation",
+        coalescenceEvents,
+        crossNucleusSharedSiteContacts: crossNucleusMergeContacts,
+        interfaceVisualization: "cyan rings mark sites shared by lineages from different initialized nuclei",
+        exactSpeciesAndCollisionGatesPreserved: true,
+        targetUsedToSelectSeeds: false,
+        nucleationRateInferred: false,
+        grainIdentityInferred: false,
+        interfacialEnergyInferred: false,
         physicalTimeIntegrated: false,
       },
       localConstraintWork: {
@@ -7866,6 +7892,44 @@ function initializeIceAnchorSearch() {
     action: `${iceAnchorTrace.seedAnchors} observed O anchors`, family: "sealed disjoint seed" }];
 }
 
+function growthSeedSites(occurrenceIndex) {
+  const occurrence = overlapGrammar.occurrences[occurrenceIndex];
+  if (overlapGrammar.coverBased || overlapGrammar.molecular) return occurrence.sites;
+  const inverseFrame = occurrence.rotation.clone().invert();
+  const sites = [{ local: new THREE.Vector3(), species: referenceAtoms[occurrenceIndex].species, center: true }];
+  learnedClusters.environments[occurrenceIndex].shell
+    .filter((neighbor) => neighbor.r <= motifShellCutoff())
+    .forEach((neighbor) => sites.push({
+      local: neighbor.vector.clone().multiplyScalar(referenceSpacing / referenceSpacingA).applyQuaternion(inverseFrame),
+      species: neighbor.atom.species, center: false,
+    }));
+  return sites;
+}
+
+function growthSeedType(occurrenceIndex) {
+  const occurrence = overlapGrammar.occurrences[occurrenceIndex];
+  return overlapGrammar.coverBased || overlapGrammar.molecular
+    ? occurrence.type : learnedClusters.labels[occurrenceIndex];
+}
+
+function observedGrowthSeedIndices() {
+  const requested = Math.max(1, requestedGrowthNuclei);
+  const first = overlapGrammar.replaySeedIndex;
+  const eligible = overlapGrammar.occurrences.map((occurrence, index) => ({ occurrence, index }))
+    .filter(({ occurrence, index }) => occurrence?.position && growthSeedSites(index).length >= 2)
+    .sort((a, b) => a.index - b.index);
+  const selected = [first];
+  while (selected.length < requested) {
+    const next = eligible.filter(({ index }) => !selected.includes(index))
+      .map(({ occurrence, index }) => ({ index, minimumSeparation: Math.min(...selected.map((chosen) =>
+        occurrence.position.distanceTo(overlapGrammar.occurrences[chosen].position))) }))
+      .sort((a, b) => b.minimumSeparation - a.minimumSeparation || a.index - b.index)[0];
+    if (!next || next.minimumSeparation < referenceSpacing * 1.5) break;
+    selected.push(next.index);
+  }
+  return selected;
+}
+
 function initializeOffLatticeSearch() {
   atoms = [];
   placedClusters = [];
@@ -7904,6 +7968,9 @@ function initializeOffLatticeSearch() {
   arrivalPathNeighborhoodChecks = 0;
   acceptedExplorationOffset = 0;
   rejectedExplorationOffset = 0;
+  initializedGrowthNuclei = 0;
+  coalescenceEvents = 0;
+  crossNucleusMergeContacts = 0;
   constraintNeighborhoodEvaluations = 0;
   constraintNeighborhoodSiteTotal = 0;
   maximumConstraintNeighborhoodSites = 0;
@@ -7913,30 +7980,32 @@ function initializeOffLatticeSearch() {
   selectedPolicyPreviewId = "active";
   policySnapshotCount = 0;
   atomSpatialIndex = new Map();
-  const seedIndex = overlapGrammar.replaySeedIndex;
-  const seedOccurrence = overlapGrammar.occurrences[seedIndex];
-  const seedType = overlapGrammar.coverBased || overlapGrammar.molecular
-    ? seedOccurrence.type : learnedClusters.labels[seedIndex];
-  const seed = { id: 1, type: seedType, position: seedOccurrence.position.clone(), rotation: seedOccurrence.rotation.clone(), occurrenceIndex: seedIndex, parentId: null, ruleId: null, depth: 0, atomIds: [] };
-  const inverseSeedFrame = seed.rotation.clone().invert();
-  const seedSites = overlapGrammar.coverBased || overlapGrammar.molecular
-    ? seedOccurrence.sites : [{ local: new THREE.Vector3(), species: referenceAtoms[seedIndex].species, center: true }];
-  if (!overlapGrammar.coverBased && !overlapGrammar.molecular) learnedClusters.environments[seedIndex].shell.filter((neighbor) => neighbor.r <= motifShellCutoff()).forEach((neighbor) => seedSites.push({
-    local: neighbor.vector.clone().multiplyScalar(referenceSpacing / referenceSpacingA).applyQuaternion(inverseSeedFrame),
-    species: neighbor.atom.species, center: false,
-  }));
-  const canonicalSeed = canonicalKnownSites(seedSites.map((site) => ({
-    ...site, p: site.local.clone().applyQuaternion(seed.rotation).add(seed.position),
-  })));
-  canonicalSeed.sites.forEach((site) => {
-    const atom = addAtom(site.p, site.species, `C${seedType + 1}`, null, true);
-    atom.referenceIndex = site.referenceIndex;
-    atom.clusterIds = [seed.id];
-    seed.atomIds.push(atom.id);
-    indexAtom(atom);
+  const seedIndices = observedGrowthSeedIndices();
+  seedIndices.forEach((seedIndex, nucleusIndex) => {
+    const seedOccurrence = overlapGrammar.occurrences[seedIndex];
+    const seedType = growthSeedType(seedIndex);
+    const seed = { id: placedClusters.length + 1, nucleusId: nucleusIndex + 1, seedNucleus: true,
+      type: seedType, position: seedOccurrence.position.clone(), rotation: seedOccurrence.rotation.clone(),
+      occurrenceIndex: seedIndex, parentId: null, ruleId: null, depth: 0, atomIds: [] };
+    const canonicalSeed = canonicalKnownSites(growthSeedSites(seedIndex).map((site) => ({
+      ...site, p: site.local.clone().applyQuaternion(seed.rotation).add(seed.position),
+    })));
+    canonicalSeed.sites.forEach((site) => {
+      const existing = nearbyAtoms(site.p, MERGE_TOLERANCE)
+        .find((atom) => atom.species === site.species && atom.p.distanceTo(site.p) <= MERGE_TOLERANCE);
+      const atom = existing || addAtom(site.p, site.species, `C${seedType + 1}`, null, true);
+      atom.referenceIndex = site.referenceIndex;
+      atom.clusterIds ||= [];
+      if (!atom.clusterIds.includes(seed.id)) atom.clusterIds.push(seed.id);
+      atom.nucleusIds ||= [];
+      if (!atom.nucleusIds.includes(seed.nucleusId)) atom.nucleusIds.push(seed.nucleusId);
+      seed.atomIds.push(atom.id);
+      if (!existing) indexAtom(atom);
+    });
+    placedClusters.push(seed);
   });
-  placedClusters.push(seed);
-  enqueueRulesFromPlacement(seed);
+  initializedGrowthNuclei = placedClusters.length;
+  placedClusters.forEach(enqueueRulesFromPlacement);
   replayIndex = referenceCoverageCount();
   const initialAudit = referenceCoverageAudit();
   reconstructionCertified = replayIndex === referenceCount() && atoms.length === referenceCount()
@@ -8455,6 +8524,11 @@ function syncStageOptions() {
     + 35 * Number(affineLoadMode !== "none") + 35 * Number(loopClosurePreference !== "none")
     + 35 * Number(arrivalPathMode !== "none")}px`;
   explorationBadgeLabel.textContent = `T* ${geometricExplorationScale.toFixed(2)} · seed ${growthPathSeed}`;
+  nucleiBadge.hidden = pipelineStage !== 4 || initializedGrowthNuclei <= 1;
+  nucleiBadge.style.top = `${49 + 35 * Number(externalDriveMode !== "none")
+    + 35 * Number(affineLoadMode !== "none") + 35 * Number(loopClosurePreference !== "none")
+    + 35 * Number(arrivalPathMode !== "none") + 35 * Number(geometricExplorationScale > 0)}px`;
+  nucleiBadgeLabel.textContent = `${initializedGrowthNuclei || requestedGrowthNuclei} nuclei · ${crossNucleusMergeContacts} interface contacts`;
   stageOptionsPanel.hidden = !visible;
   if (!visible) return;
   const clustering = pipelineStage === 1;
@@ -8550,6 +8624,7 @@ function syncStageOptions() {
     arrivalPathSelect.value = arrivalPathMode;
     arrivalPathWeightSelect.value = String(arrivalPathWeight);
     explorationScaleSelect.value = String(geometricExplorationScale);
+    growthNucleiSelect.value = String(requestedGrowthNuclei);
     growthSchedulingSelect.value = growthScheduling;
     geometryPreferenceSelect.disabled = finiteIceAnchorMode;
     strainWeightSelect.disabled = finiteIceAnchorMode || geometryPreference !== "strain";
@@ -8569,6 +8644,7 @@ function syncStageOptions() {
     arrivalPathSelect.disabled = finiteIceAnchorMode;
     arrivalPathWeightSelect.disabled = finiteIceAnchorMode || arrivalPathMode === "none";
     explorationScaleSelect.disabled = finiteIceAnchorMode;
+    growthNucleiSelect.disabled = finiteIceAnchorMode;
     resampleGrowthButton.disabled = finiteIceAnchorMode || geometricExplorationScale <= 0;
     resampleGrowthButton.textContent = `↻ Resample path · seed ${growthPathSeed}`;
     growthSchedulingSelect.disabled = finiteIceAnchorMode;
@@ -8596,6 +8672,8 @@ function syncStageOptions() {
         : `${arrivalPathLabel()} · 9 samples × 2dₙₙ · weight ${arrivalPathWeight.toFixed(2)}`;
     explorationScaleHint.textContent = geometricExplorationScale > 0
       ? `dimensionless T* ${geometricExplorationScale.toFixed(2)} · seed ${growthPathSeed}` : "greedy · T* = 0";
+    growthNucleiHint.textContent = finiteIceAnchorMode ? "sealed molecular seed"
+      : `${initializedGrowthNuclei || requestedGrowthNuclei} observed seed${(initializedGrowthNuclei || requestedGrowthNuclei) === 1 ? "" : "s"} · ${crossNucleusMergeContacts} interface contacts`;
     stageOptionsState.textContent = `${policySelect.value === "marked" && active ? active.name.split(" · ")[0] : "baseline"} · ${geometryPreference === "strain" ? `strain ${geometricStrainWeight.toFixed(2)}` : "no strain"}`;
     primitiveGrowthButton.classList.toggle("active", finiteIceAnchorMode || !hierarchyEnabled);
     primitiveGrowthButton.setAttribute("aria-pressed", String(finiteIceAnchorMode || !hierarchyEnabled));
@@ -8639,11 +8717,14 @@ function syncStageOptions() {
     const explorationUse = geometricExplorationScale > 0
       ? ` Reproducible Gumbel sampling at dimensionless T*=${geometricExplorationScale.toFixed(2)} and seed ${growthPathSeed} explores alternate exact branch orders; this is not Kelvin temperature or Boltzmann sampling.`
       : " Frontier selection is deterministic greedy ordering (T*=0).";
+    const nucleiUse = requestedGrowthNuclei > 1
+      ? ` ${initializedGrowthNuclei || requestedGrowthNuclei} far-separated observed cluster occurrences seed independent pose domains; ${crossNucleusMergeContacts} cross-nucleus shared-site contacts have emerged. No nucleation rate or grain identity is inferred.`
+      : " Growth begins from one observed local cluster occurrence.";
     growthModeNote.textContent = finiteIceAnchorMode
       ? "This sealed ice gate executes primitive H₂O connection ports with mutually exclusive orientation domains. Clusters² is disabled because no stationary promoted ice production has been certified."
       : hierarchyEnabled
-      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${explorationUse}`
-      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${explorationUse}`;
+      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${explorationUse}${nucleiUse}`
+      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${explorationUse}${nucleiUse}`;
   }
 }
 
@@ -8683,6 +8764,9 @@ function resetCounters() {
   arrivalPathNeighborhoodChecks = 0;
   acceptedExplorationOffset = 0;
   rejectedExplorationOffset = 0;
+  initializedGrowthNuclei = 0;
+  coalescenceEvents = 0;
+  crossNucleusMergeContacts = 0;
   constraintNeighborhoodEvaluations = 0;
   constraintNeighborhoodSiteTotal = 0;
   maximumConstraintNeighborhoodSites = 0;
@@ -8968,6 +9052,21 @@ function updateStageNarrative() {
   renderConstraintLedger(null);
 }
 
+function nucleusInterfaceForCandidate(candidate, evaluation) {
+  const parent = placedClusters.find((placement) => placement.id === candidate.parentId);
+  const parentNucleus = parent?.nucleusId || 1;
+  const otherNuclei = new Set();
+  let crossNucleusContacts = 0;
+  evaluation.merged.forEach(({ atom }) => (atom.nucleusIds || []).forEach((nucleusId) => {
+    if (nucleusId === parentNucleus) return;
+    otherNuclei.add(nucleusId);
+    crossNucleusContacts++;
+  }));
+  return { parentNucleus, otherNuclei: [...otherNuclei].sort((a, b) => a - b),
+    crossNucleusContacts, coalescenceCandidate: otherNuclei.size > 0,
+    seedSelectionTargetUsed: false, interfacialEnergyInferred: false };
+}
+
 function stateForCandidate(candidate, evaluation) {
   const rule = candidate.rule;
   return {
@@ -8993,6 +9092,7 @@ function stateForCandidate(candidate, evaluation) {
     microstructureCoupling: evaluation.microstructureCoupling,
     loopClosure: evaluation.loopClosure,
     arrivalPath: evaluation.arrivalPath,
+    nucleusInterface: nucleusInterfaceForCandidate(candidate, evaluation),
     geometricExploration: {
       dimensionlessScale: geometricExplorationScale,
       seed: growthPathSeed,
@@ -9030,6 +9130,7 @@ function materializeCandidate(candidate, evaluation) {
   const centerReferenceIndex = evaluation.sites.find((site) => site.center)?.referenceIndex;
   const placement = {
     id: placedClusters.length + 1, type: candidate.type,
+    nucleusId: parent?.nucleusId || 1,
     position: candidate.position.clone(), rotation: candidate.rotation.clone(),
     occurrenceIndex: overlapGrammar.coverBased || overlapGrammar.molecular ? candidate.occurrenceIndex : Number.isInteger(centerReferenceIndex)
       && learnedClusters.labels[centerReferenceIndex] === candidate.type
@@ -9040,12 +9141,21 @@ function materializeCandidate(candidate, evaluation) {
   evaluation.merged.forEach(({ atom }) => {
     atom.clusterIds ||= [];
     if (!atom.clusterIds.includes(placement.id)) atom.clusterIds.push(placement.id);
+    atom.nucleusIds ||= [];
+    if (!atom.nucleusIds.includes(placement.nucleusId)) {
+      atom.nucleusIds.push(placement.nucleusId);
+      atom.interfaceContact = true;
+      crossNucleusMergeContacts++;
+    }
     placement.atomIds.push(atom.id);
   });
+  const touchesOtherNucleus = evaluation.merged.some(({ atom }) => atom.nucleusIds?.some((id) => id !== placement.nucleusId));
+  if (touchesOtherNucleus) coalescenceEvents++;
   evaluation.fresh.forEach((site) => {
     const atom = addAtom(site.p, site.species, `C${candidate.type + 1}`, nearestParent(site.p));
     if (Number.isInteger(site.referenceIndex)) atom.referenceIndex = site.referenceIndex;
     atom.clusterIds = [placement.id];
+    atom.nucleusIds = [placement.nucleusId];
     placement.atomIds.push(atom.id);
     indexAtom(atom);
   });
@@ -9542,6 +9652,21 @@ function rebuildWorld() {
     });
   }
 
+  const interfaceSites = atoms.filter((atom) => atom.interfaceContact || (atom.nucleusIds?.length || 0) > 1);
+  if (pipelineStage === 4 && interfaceSites.length) {
+    const rings = new THREE.InstancedMesh(occupancyRingGeometry, interfaceRingMaterial, interfaceSites.length);
+    interfaceSites.forEach((atom, index) => {
+      dummy.position.copy(atom.p);
+      dummy.rotation.set(Math.PI / 2 * (index % 2), Math.PI / 3 * (index % 3), 0);
+      dummy.scale.setScalar(elementScale(atom.species) * 1.32);
+      dummy.updateMatrix();
+      rings.setMatrixAt(index, dummy.matrix);
+    });
+    dummy.rotation.set(0, 0, 0);
+    rings.instanceMatrix.needsUpdate = true;
+    atomGroup.add(rings);
+  }
+
   const occupationalGroups = new Map();
   atoms.forEach((atom) => {
     const descriptor = occupancyRingDescriptor(atom);
@@ -9725,6 +9850,10 @@ function physicsTranslationRecords(leap = null) {
         : "heterogeneous-geometry roles are mapped but do not rank branches",
       evidence: leap ? `Accepted mean coupling score ${receiptRound(acceptedMicrostructureCouplingScore / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedMicrostructureCouplingScore / Math.max(1, rejectedDecisions), 4)}.` : "No microstructure-conditioned action scored yet.",
       boundary: "These roles are geometric hypotheses, not automatic vacancies, dislocations, grains, formation energies, mobilities, or physical mechanisms." },
+    { id: "multi-nucleus", process: "multiple nuclei / impingement", status: initializedGrowthNuclei > 1 ? "explicit" : "open", role: initializedGrowthNuclei > 1 ? "observed-pose co-growth" : "single local seed",
+      encoding: `${initializedGrowthNuclei || requestedGrowthNuclei} farthest-separated observed cluster occurrence${(initializedGrowthNuclei || requestedGrowthNuclei) === 1 ? "" : "s"}; lineage IDs propagate through unchanged frozen ports`,
+      evidence: `${coalescenceEvents} coalescence action${coalescenceEvents === 1 ? "" : "s"} and ${crossNucleusMergeContacts} shared-site interface contact${crossNucleusMergeContacts === 1 ? "" : "s"} in the live state.`,
+      boundary: "Observed seeds expose geometric impingement, not a nucleation rate, grain identity, interfacial energy, texture distribution, coarsening law, or elapsed time." },
     { id: "loop-closure", process: "mesoscopic elastic compatibility / seam avoidance", status: activeLoopClosureWeight() > 0 ? "soft" : "open", role: activeLoopClosureWeight() > 0 ? "multi-parent proper-SE(3) consensus" : "diagnostic",
       encoding: "independent placed parents apply frozen connection rules; complete transformed colored site sets are compared so proper-symmetry gauges cannot create false seams",
       evidence: leap ? `Accepted mean ${receiptRound(acceptedIndependentLoopWitnesses / Math.max(1, acceptedDecisions), 4)} independent compatible paths; rejected mean ${receiptRound(rejectedIndependentLoopWitnesses / Math.max(1, rejectedDecisions), 4)}.` : "No mesoscopic loop tested yet.",
@@ -9992,6 +10121,14 @@ function geometryConstraintEvidence(name, term, state, mode) {
         ? `Soft rank term with weight ${activeMicrostructureCouplingWeight().toFixed(2)} over unchanged exact actions.` : "Post-decision diagnostic only; weight zero.",
       boundary: "A spatial role is not a defect label. This experiment infers no formation energy, migration barrier, mobility, grain identity, or mechanism.",
     },
+    "multi-nucleus interface": {
+      observed: `${initializedGrowthNuclei || requestedGrowthNuclei} initialized observed pose domains · ${crossNucleusMergeContacts} shared-site contacts so far`,
+      encoding: "Each placement inherits its seed lineage. A contact is recorded only when an exact accepted cluster shares a colored site with a different initialized lineage.",
+      searchRole: state?.nucleusInterface?.coalescenceCandidate
+        ? `Diagnostic interface event with ${state.nucleusInterface.crossNucleusContacts} cross-lineage shared-site contact${state.nucleusInterface.crossNucleusContacts === 1 ? "" : "s"}.`
+        : "Diagnostic only; the candidate remains within one initialized lineage.",
+      boundary: "Lineage contact is not a grain-boundary classification, interfacial energy, misorientation distribution, nucleation probability, coarsening law, or physical time.",
+    },
     "mesoscopic loop closure": {
       observed: `${overlapGrammar?.rules?.length || 0} frozen recurring proper-SE(3) rules can independently predict a frontier pose from already placed parents`,
       encoding: "Nearby predictions for the same cluster type are compared as complete colored point sets; raw quaternion frames are never compared, and the generating parent is excluded from the independent-consensus count.",
@@ -10093,6 +10230,9 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "microstructure coupling", status: ranked(activeMicrostructureCouplingWeight() > 0),
       value: state.microstructureCoupling ? `${signed(state.microstructureCoupling.score)} · ${state.microstructureCoupling.label}` : "not evaluated",
       detail: activeMicrostructureCouplingWeight() > 0 ? `rank weight ${activeMicrostructureCouplingWeight().toFixed(2)} · labels withheld` : "diagnostic · labels withheld" },
+    { name: "multi-nucleus interface", status: state.nucleusInterface?.coalescenceCandidate ? "interface" : "diagnostic",
+      value: state.nucleusInterface ? `${state.nucleusInterface.crossNucleusContacts} cross-lineage contacts · parent N${state.nucleusInterface.parentNucleus}` : "not evaluated",
+      detail: `${initializedGrowthNuclei || requestedGrowthNuclei} observed nuclei · diagnostic only · no interfacial energy` },
     { name: "mesoscopic loop closure", status: ranked(activeLoopClosureWeight() > 0),
       value: state.loopClosure ? `${signed(state.loopClosure.score)} · ${state.loopClosure.independentCompatiblePaths} support / ${state.loopClosure.independentConflictingPaths} conflict` : "not evaluated",
       detail: activeLoopClosureWeight() > 0 ? `rank weight ${activeLoopClosureWeight().toFixed(2)} · generating parent excluded` : "diagnostic · local-only ordering" },
@@ -10792,6 +10932,14 @@ function renderLegend() {
     const swatch = document.createElement("i"); swatch.className = "candidate";
     proposal.append(swatch, document.createTextNode("Proposal"));
     speciesLegend.appendChild(proposal);
+    if (pipelineStage === 4 && initializedGrowthNuclei > 1) {
+      const interfaceRow = document.createElement("span");
+      const interfaceSwatch = document.createElement("i");
+      interfaceSwatch.className = "cluster-swatch";
+      interfaceSwatch.style.setProperty("--swatch", "#7ee1e8");
+      interfaceRow.append(interfaceSwatch, document.createTextNode("cyan ring · exact cross-nucleus shared site"));
+      speciesLegend.appendChild(interfaceRow);
+    }
   }
 }
 
@@ -11312,6 +11460,12 @@ explorationScaleSelect.addEventListener("change", () => {
 resampleGrowthButton.addEventListener("click", () => {
   if (geometricExplorationScale <= 0) return;
   growthPathSeed += 1;
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+growthNucleiSelect.addEventListener("change", () => {
+  const value = Number(growthNucleiSelect.value);
+  requestedGrowthNuclei = [1, 2, 4].includes(value) ? value : 1;
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
 });
