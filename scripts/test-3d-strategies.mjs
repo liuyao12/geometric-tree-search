@@ -146,15 +146,16 @@ const noOneTilePatch = await solve({
   tiling_strategy: "translational",
   periodic_tile_count: 1
 });
-assert.equal(noOneTilePatch.final.success, false, "translational mode must not fall back");
+assert.equal(noOneTilePatch.final.success, false, "uncertified fallback growth must not become tiling success");
 assert.equal(noOneTilePatch.final.result_kind, "search_incomplete");
 assert.equal(noOneTilePatch.final.search_incomplete, true);
 assert.equal(
   noOneTilePatch.final.search_stats.termination_reason,
-  "bounded_translational_motif_range"
+  "generation_band_pruning",
+  "the fallback growth heuristic must report its branch deferral instead of claiming exact motif-range exhaustion"
 );
-assert.equal(noOneTilePatch.final.tile_count, 1);
-assert.equal(noOneTilePatch.final.search_stats.branch_choices_visited, 0);
+assert.ok(noOneTilePatch.final.tile_count >= 8, "fallback growth should retain the requested patch for inspection");
+assert.ok(noOneTilePatch.final.search_stats.branch_choices_visited > 0);
 
 const progressivePatchCheck = await solve({
   mode_key: "tet_oct",
@@ -180,9 +181,10 @@ const unboundedPatchCheck = await solve({
   periodic_motif_node_limit: 1,
   time_limit_ms: 500
 });
+assert.equal(unboundedPatchCheck.final.search_incomplete, true);
 assert.ok(
-  unboundedPatchCheck.translationalChecks.some(check => check.patchSize > 4),
-  "uncertified translational search must continue beyond four-tile patches"
+  unboundedPatchCheck.translationalChecks.every(check => check.patchSize <= 8),
+  "goal-bounded translational search must not run past its requested tile target"
 );
 
 const candidate1045033 = LATTICE_POLYHEDRON_PERIODIC_REJECTS.find(candidate => candidate.id === "10_45033");
@@ -409,9 +411,11 @@ const completeObstruction = await solve({
   generic_connected_patch_enumeration: true,
   node_limit: 100
 });
-assert.equal(completeObstruction.final.result_kind, "no_tiling");
-assert.equal(completeObstruction.final.tiling_evidence?.kind, "finite_patch_obstruction");
-assert.match(completeObstruction.final.tiling_evidence?.note ?? "", /global face-extension search/);
+assert.notEqual(
+  completeObstruction.final.can_tile,
+  false,
+  "one rooted face-to-face search cannot reject an unrestricted multi-species lattice tiling system"
+);
 
 const completeShellObstruction = await solve({
   mode_key: "cube",
@@ -428,11 +432,7 @@ const completeShellObstruction = await solve({
   generic_global_zero_face_pruning: true,
   node_limit: 100
 });
-assert.equal(completeShellObstruction.final.result_kind, "no_tiling");
-assert.equal(completeShellObstruction.final.can_tile, false);
-assert.equal(completeShellObstruction.final.tiling_evidence?.kind, "finite_extendable_shell_obstruction");
-assert.equal(completeShellObstruction.final.tiling_evidence?.target_shell_depth, 1);
-assert.ok(completeShellObstruction.final.search_stats.generic_global_zero_face_dead_ends > 0);
+assert.notEqual(completeShellObstruction.final.can_tile, false);
 
 const heuristicExhaustion = await solve({
   mode_key: "cube",
@@ -875,7 +875,9 @@ const retainedCertifiedPreview = await solve({
   safety_max_tiles: 2,
   snapshot_every: 0
 });
-assert.equal(retainedCertifiedPreview.final.result_kind, "certified_tiling");
+assert.equal(retainedCertifiedPreview.final.result_kind, "certified_tiling_goal_incomplete");
+assert.equal(retainedCertifiedPreview.final.can_tile, true);
+assert.equal(retainedCertifiedPreview.final.success, false);
 assert.equal(retainedCertifiedPreview.final.tile_count, 2);
 assert.equal(
   retainedCertifiedPreview.latestSnapshot?.tile_count,
@@ -903,7 +905,7 @@ for (const mode_key of ["corner_tetra", "big_corner_tetra"]) {
   assert.equal(
     tileSpecs.convexEdgeAngleObstruction(localTile.verts, localTile.faces)?.kind,
     "local_edge_obstruction",
-    "the geometry-only census preflight must reproduce the solver's local certificate"
+    "the numerical geometry preflight must reproduce the solver's local heuristic"
   );
   const obstruction = await solve({
     mode_key,
@@ -912,9 +914,8 @@ for (const mode_key of ["corner_tetra", "big_corner_tetra"]) {
     tiling_strategy: "freestyle",
     include_mirrors: true
   });
-  assert.equal(obstruction.final.result_kind, "no_tiling");
-  assert.equal(obstruction.final.can_tile, false);
-  assert.equal(obstruction.final.tiling_evidence?.kind, "local_edge_obstruction");
+  assert.notEqual(obstruction.final.can_tile, false);
+  assert.equal(tileSpecs.convexEdgeAngleObstruction(localTile.verts, localTile.faces)?.certified, false);
 }
 const cubeTileForEdgePreflight = tileSpecs.TILING_REGISTRY.cube.build()[0];
 assert.equal(
@@ -948,9 +949,8 @@ const reflectedChiralLocalObstruction = await solve({
 });
 assert.equal(reflectedChiralLocalObstruction.prototileInfo?.tiles?.length, 2);
 assert.ok(reflectedChiralLocalObstruction.prototileInfo.tiles.some(tile => tile.is_mirror));
-assert.equal(reflectedChiralLocalObstruction.final.can_tile, false);
-assert.equal(reflectedChiralLocalObstruction.final.tiling_evidence?.kind, "local_edge_obstruction");
-assert.equal(reflectedChiralLocalObstruction.final.tiling_evidence?.model, "face_to_face_congruent_copies");
+assert.notEqual(reflectedChiralLocalObstruction.final.can_tile, false);
+assert.equal(tileSpecs.convexEdgeAngleObstruction(reflectedChiralVertices)?.certified, false);
 
 const reflectedPeriodicShellControl = await solve({
   mode_key: "cube",

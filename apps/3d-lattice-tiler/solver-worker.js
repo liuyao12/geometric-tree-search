@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260824-translational-goal-v216";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260825-audit-correctness-v218";
 
 const MESSAGE_BATCH_INTERVAL_MS = 32;
 const MESSAGE_BATCH_LIMIT = 256;

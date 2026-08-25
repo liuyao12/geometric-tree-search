@@ -1,4 +1,4 @@
-import { createTilingStream, preprocessTilingSystem, tileSpecs } from "./engine.js?v=20260824-translational-goal-v216";
+import { createTilingStream, preprocessTilingSystem, tileSpecs } from "./engine.js?v=20260825-audit-correctness-v218";
 
 let activeSequence = 0;
 let stopToken = { stop: false };
@@ -148,7 +148,12 @@ function configureMode(baseConfig, mode) {
     generic_complete_shell_enumeration: (!!mode.proof || exactLearningShell) && shellSearch,
     generic_failure_memo: !!mode.proof || exactLearningShell,
     generic_failure_memo_symmetry: shellSearch ? "rigid" : "fixed",
-    generic_geometric_nogood: !!mode.nogood && !shellSearch,
+    // Exact shell GCTS records complete failed placement contexts.  These
+    // translation-equivariant subset nogoods are sound because any later
+    // state containing the failed patch is one of its extensions.  RL alone
+    // keeps only the common exact-state memo; GCTS+RL gets both mechanisms.
+    generic_geometric_nogood: ["gcts", "gcts_rl"].includes(mode.id)
+      || (!!mode.nogood && !shellSearch),
     generic_geometric_nogood_max_clauses: 20000,
     generic_geometric_nogood_index: true,
     generic_geometric_nogood_activation_failure_states: mode.nogood ? 25 : 0,
@@ -226,9 +231,13 @@ async function runMode(sequence, run, preparedSystem, preprocessingMilliseconds,
                 ? `${message.patch_size}-tile checkpoint is not a translational quotient`
                 : `${message.patch_size}-tile checkpoint quotient check timed out`
             : message.growth_goal_reached
-              ? message.growth_goal_criterion === "shell"
-                ? `reached shell ${message.growth_goal_target}; no translational certificate through this patch`
-                : `reached ${message.growth_goal_target}-tile goal; no translational certificate through this patch`
+              ? message.certified
+                ? `goal patch certifies a ${message.patch_size}-tile translational quotient`
+                : message.check_completed
+                  ? message.growth_goal_criterion === "shell"
+                    ? `reached shell ${message.growth_goal_target}; checked patch is not a translational quotient`
+                    : `reached ${message.growth_goal_target}-tile goal; checked patch is not a translational quotient`
+                  : `reached growth goal; quotient check timed out`
             : message.certified
               ? `certified ${message.patch_size}-tile patch`
               : `no ${message.patch_size}-tile patch; expanding`
@@ -290,12 +299,17 @@ async function runMode(sequence, run, preparedSystem, preprocessingMilliseconds,
     memory: {
       learnedPayloadBytes:
         (finalStats.agent_model_payload_bytes ?? 0)
-        + (finalStats.marking_payload_bytes ?? 0),
+        + (finalStats.marking_payload_bytes ?? 0)
+        + (finalStats.generic_geometric_nogood_payload_bytes ?? 0),
       modelParameters: finalStats.agent_model_parameter_count ?? 0,
       modelWeights: finalStats.agent_model_weight_count ?? 0,
       learnedTags: finalStats.agent_learned_tags ?? 0,
-      markingClauses: finalStats.marking_geometric_clauses ?? 0,
-      markingContextTokens: finalStats.marking_context_tokens ?? 0,
+      markingClauses:
+        (finalStats.marking_geometric_clauses ?? 0)
+        + (finalStats.generic_geometric_nogood_clauses ?? 0),
+      markingContextTokens:
+        (finalStats.marking_context_tokens ?? 0)
+        + (finalStats.generic_geometric_nogood_context_tokens ?? 0),
       certificatePayloadBytes,
       retainedFailedTranslationalDomains: 0,
       transientSearchCacheEntries:

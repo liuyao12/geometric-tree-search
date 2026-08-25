@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
-import { readFileSync } from "node:fs";
+import { createWriteStream, readFileSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { once } from "node:events";
 import { createTilingStream, tileSpecs } from "../apps/3d-lattice-tiler/engine.js";
 import {
   canonicalPolycubeKey,
@@ -32,6 +34,11 @@ const numberArg = (name, fallback) => {
 const booleanArg = (name, fallback) => {
   if (!args.has(name)) return fallback;
   return !["0", "false", "no"].includes(String(args.get(name)).toLowerCase());
+};
+const outputFile = args.get("output-file") ?? null;
+const outputStream = outputFile ? createWriteStream(outputFile, { encoding: "utf8" }) : process.stdout;
+const writeRecord = async record => {
+  if (!outputStream.write(`${JSON.stringify(record)}\n`)) await once(outputStream, "drain");
 };
 
 const requestedKey = args.get("key");
@@ -116,6 +123,19 @@ const reportCandidates = inputReports.length
         input_periodic_fast: periodic_fast ?? null
       })))
   : null;
+if (reportCandidates) {
+  const identities = new Set();
+  const keysById = new Map();
+  for (const candidate of reportCandidates) {
+    const identity = `${candidate.id}\0${candidate.key}`;
+    if (identities.has(identity)) throw new Error(`Duplicate resumed candidate ${candidate.id}`);
+    if (keysById.has(candidate.id) && keysById.get(candidate.id) !== candidate.key) {
+      throw new Error(`Inconsistent resumed geometry for ${candidate.id}`);
+    }
+    identities.add(identity);
+    keysById.set(candidate.id, candidate.key);
+  }
+}
 if (inputReports.length && !reportCandidates.length && !booleanArg("allow-empty-input", false)) {
   throw new Error(`No candidates matched the requested input reports and filters (${inputReports.join(", ")})`);
 }
@@ -271,22 +291,36 @@ async function obstructionScreen(candidate) {
   });
 }
 
+const completeEnumeration = requestedVoxels || reportCandidates
+  ? null
+  : enumeratePolycubes(size, { includeReflections });
 const candidates = requestedVoxels
   ? [{
       id: requestedCandidateId ?? `custom-${size}`,
       key: canonicalPolycubeKey(requestedVoxels, { includeReflections }),
       voxels: requestedVoxels
     }]
-  : (reportCandidates ?? enumeratePolycubes(size, { includeReflections }))
-      .slice(startIndex, startIndex + maxCandidates);
+  : (reportCandidates ?? completeEnumeration)
+      .slice(startIndex, startIndex + maxCandidates)
+      .map((candidate, localIndex) => ({
+        ...candidate,
+        global_index: startIndex + localIndex
+      }));
+const candidateKeySha256 = createHash("sha256")
+  .update(candidates.map(candidate => `${candidate.id}\0${candidate.key}\n`).join(""))
+  .digest("hex");
 const counts = { periodic: 0, non_tiler: 0, isohedral_lead: 0, unresolved: 0 };
 const witnessCounts = { torus: 0, box: 0, isohedral_easy: 0, general_periodic: 0, isohedral_lane: 0 };
 const startedAt = performance.now();
 
-process.stdout.write(`${JSON.stringify({
+await writeRecord({
   type: "screen_start",
   size,
   candidates: candidates.length,
+  source_candidates: completeEnumeration?.length ?? reportCandidates?.length ?? candidates.length,
+  candidate_range_start: requestedVoxels ? null : startIndex,
+  candidate_range_end_exclusive: requestedVoxels ? null : startIndex + candidates.length,
+  candidate_key_sha256: candidateKeySha256,
   equivalence: includeReflections ? "rotations_and_reflections" : "proper_rotations",
   report_chirality: reportChirality,
   input_reports: inputReports,
@@ -319,7 +353,7 @@ process.stdout.write(`${JSON.stringify({
   obstruction_return_corona: obstructionReturnCorona,
   obstruction_seed: obstructionSeed,
   stop_after: stopAfter
-})}\n`);
+});
 
 for (let index = 0; index < candidates.length; index++) {
   const candidate = candidates[index];
@@ -364,15 +398,35 @@ for (let index = 0; index < candidates.length; index++) {
   }
   const easyCertified = !!easyVerification?.verified;
   const periodic = easyCertified || !generalPeriodic ? null : await periodicScreen(candidate);
+  const periodicVerification = periodic?.tiling_evidence?.certified
+    ? verifyPolycubePeriodicCertificate(
+        candidate.voxels,
+        periodic.tiling_evidence.periodic_template,
+        { includeReflections }
+      )
+    : null;
+  if (periodic?.tiling_evidence?.certified && !periodicVerification?.verified) {
+    throw new Error(`Independent general-periodic verification failed for ${candidate.id}`);
+  }
   let classification = "unresolved";
   let isohedral = null;
   let obstruction = null;
 
-  if (easyCertified || (periodic?.tiling_evidence?.certified && periodic?.can_tile === true)) {
+  if (easyCertified || (periodicVerification?.verified && periodic?.can_tile === true)) {
     classification = "periodic";
   } else if (stopAfter !== "periodic") {
     if (isohedralScreenEnabled) isohedral = await isohedralLeadScreen(candidate);
-    if (isohedral?.tiling_evidence?.certified && isohedral?.can_tile === true) {
+    const isohedralVerification = isohedral?.tiling_evidence?.certified
+      ? verifyPolycubePeriodicCertificate(
+          candidate.voxels,
+          isohedral.tiling_evidence.periodic_template,
+          { includeReflections }
+        )
+      : null;
+    if (isohedral?.tiling_evidence?.certified && !isohedralVerification?.verified) {
+      throw new Error(`Independent isohedral-periodic verification failed for ${candidate.id}`);
+    }
+    if (isohedralVerification?.verified && isohedral?.can_tile === true) {
       classification = "periodic";
     } else {
       if (stopAfter === "all") obstruction = await obstructionScreen(candidate);
@@ -401,9 +455,10 @@ for (let index = 0; index < candidates.length; index++) {
   if (isohedral?.tiling_evidence?.certified && isohedral?.can_tile === true) witnessCounts.isohedral_lane += 1;
   counts[classification] += 1;
 
-  process.stdout.write(`${JSON.stringify({
+  await writeRecord({
     type: "candidate",
     index: index + 1,
+    global_index: candidate.global_index ?? null,
     total: candidates.length,
     id: candidate.id,
     key: candidate.key,
@@ -429,6 +484,7 @@ for (let index = 0; index < candidates.length; index++) {
     periodic: {
       result_kind: periodic?.result_kind ?? null,
       certificate: periodic?.tiling_evidence?.kind ?? null,
+      certificate_verified: periodicVerification?.verified ?? null,
       motif_tiles: periodic?.tiling_evidence?.patch_size
         ?? periodic?.tiling_evidence?.motif?.length
         ?? null,
@@ -457,6 +513,7 @@ for (let index = 0; index < candidates.length; index++) {
       tiles: isohedral.tile_count,
       incomplete: isohedral.search_incomplete,
       certified: !!isohedral.tiling_evidence?.certified,
+      certificate_verified: isohedral.tiling_evidence?.certified ? true : null,
       certificate: isohedral.tiling_evidence?.kind ?? null,
       motif_tiles: isohedral.tiling_evidence?.patch_size ?? null
     } : null,
@@ -488,16 +545,27 @@ for (let index = 0; index < candidates.length; index++) {
         ?.fixed_placement_indices?.length ?? null
     } : null,
     milliseconds: Math.round(performance.now() - candidateStartedAt)
-  })}\n`);
+  });
+  // The exact-cover search is synchronous. Yield between candidates so file
+  // streams flush and long campaigns expose durable progress without changing
+  // the per-candidate CPU-clock budget.
+  await new Promise(resolve => setImmediate(resolve));
 }
 
-process.stdout.write(`${JSON.stringify({
+await writeRecord({
   type: "screen_summary",
   size,
   candidates: candidates.length,
+  candidate_range_start: requestedVoxels ? null : startIndex,
+  candidate_range_end_exclusive: requestedVoxels ? null : startIndex + candidates.length,
+  candidate_key_sha256: candidateKeySha256,
   counts,
   witness_counts: witnessCounts,
   stop_after: stopAfter,
   milliseconds: Math.round(performance.now() - startedAt),
   warning: "Unresolved means only that these bounded screens found neither a proof of periodic tiling nor a finite non-tiling obstruction; it is not evidence of aperiodicity."
-})}\n`);
+});
+if (outputFile) {
+  outputStream.end();
+  await once(outputStream, "finish");
+}

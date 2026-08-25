@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260824-translational-goal-v216";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260825-audit-correctness-v218";
 import {
   createInitialProposalPopulation,
   growthCurveArea,
