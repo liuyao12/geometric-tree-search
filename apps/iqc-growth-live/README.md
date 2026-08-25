@@ -200,6 +200,19 @@ interpolate atom positions or imply velocities, relaxation paths, kinetic
 rates, transition probabilities, or elapsed time. Different input hashes stay
 descriptive even when their curves look similar.
 
+Build 124 adds a **morphology passport** to every retained structural state.
+It stores the translation- and proper-rotation-invariant covariance spectrum,
+radius of gyration and maximum extent in ångströms, relative shape anisotropy
+κ², an inferred 2D/3D support dimension, a deliberately descriptive
+compact/elongated/plate-like/needle-like covariance phenotype, and a bounded
+colored-coordination deficit relative to the observed median local
+coordination. The two-run chart can switch among all of these observables
+without changing or replaying either search. This makes compact fronts, plates,
+needles, and highly exposed structures distinguishable even when their atom
+counts happen to agree. The deficit is a geometric exposure proxy, not a
+surface area; the phenotype is not an equilibrium crystal habit, Wulff shape,
+interfacial energy, growth rate, or kinetic morphology prediction.
+
 The notebook never restores or executes a run, never stores atom
 coordinates, and never substitutes for the downloadable receipt. Clearing it is
 a two-click action and does not affect downloaded files or the marking library.

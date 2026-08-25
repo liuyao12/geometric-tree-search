@@ -113,6 +113,55 @@ export function inferPointSetDimension(source, planarVarianceRatio = .02) {
   };
 }
 
+/**
+ * Coordinate-free whole-point-set shape observables.  The covariance spectrum
+ * is invariant under translation and every orthogonal change of frame; the
+ * caller supplies only the conversion from coordinate units to a physical
+ * length unit.  The phenotype is deliberately descriptive rather than a
+ * crystal-habit, surface-energy, or kinetic classification.
+ */
+export function covarianceMorphology(source, lengthScale = 1, planarVarianceRatio = .02) {
+  if (!Array.isArray(source)) throw new Error("morphology source must be an array");
+  if (!(Number.isFinite(lengthScale) && lengthScale > 0)) {
+    throw new Error("morphology length scale must be finite and positive");
+  }
+  if (!source.length) return {
+    atomCount: 0, sufficient: false, phenotype: "empty", intrinsicDimension: null,
+    dimensionInferenceBasis: "insufficient geometry", principalVarianceFractions: [0, 0, 0],
+    principalVariance: [0, 0, 0], radiusOfGyration: 0, maximumExtent: 0,
+    relativeShapeAnisotropy: 0, planarityRatio: 1, localPlanarityRatio: 1,
+  };
+  const points = source.map(coordinates);
+  const center = points.reduce((sum, point) => sum.map((value, axis) => value + point[axis]), [0, 0, 0])
+    .map((value) => value / points.length);
+  const dimension = inferPointSetDimension(source, planarVarianceRatio);
+  const principalVariance = dimension.eigenvalues.map((value) => value * lengthScale ** 2);
+  const varianceSum = principalVariance.reduce((sum, value) => sum + value, 0);
+  const principalVarianceFractions = principalVariance
+    .map((value) => varianceSum > 1e-15 ? value / varianceSum : 0);
+  const squaredVarianceSum = principalVariance.reduce((sum, value) => sum + value * value, 0);
+  const relativeShapeAnisotropy = varianceSum > 1e-15
+    ? Math.max(0, Math.min(1, 1.5 * squaredVarianceSum / varianceSum ** 2 - .5)) : 0;
+  const maximumExtent = points.reduce((maximum, point) => Math.max(maximum,
+    Math.hypot(...point.map((value, axis) => value - center[axis]))), 0) * lengthScale;
+  const secondToFirst = dimension.eigenvalues[0] > 1e-12
+    ? dimension.eigenvalues[1] / dimension.eigenvalues[0] : 1;
+  const thirdToFirst = dimension.eigenvalues[0] > 1e-12
+    ? dimension.eigenvalues[2] / dimension.eigenvalues[0] : 1;
+  const phenotype = !dimension.sufficient ? "insufficient"
+    : secondToFirst <= .18 ? "needle-like"
+      : thirdToFirst <= .08 && secondToFirst > .25 ? "plate-like"
+        : relativeShapeAnisotropy >= .35 ? "elongated" : "compact";
+  return {
+    atomCount: source.length, sufficient: dimension.sufficient, phenotype,
+    intrinsicDimension: dimension.dimension, dimensionInferenceBasis: dimension.basis,
+    principalVarianceFractions, principalVariance,
+    radiusOfGyration: Math.sqrt(Math.max(0, varianceSum)), maximumExtent,
+    relativeShapeAnisotropy, planarityRatio: dimension.planarityRatio,
+    localPlanarityRatio: dimension.localPlanarityRatio,
+  };
+}
+
 export function phaseComparisonRadius(atomCount, dimension) {
   if (!Number.isInteger(atomCount) || atomCount < 1) throw new Error("phase comparison atom count must be positive");
   if (dimension !== 2 && dimension !== 3) throw new Error("phase comparison dimension must be two or three");

@@ -28,7 +28,7 @@ def test_phase_inference_is_posthoc_traced_and_receipted() -> None:
 
     assert "function recordLiveOrder(inference)" in source
     assert "function drawPhaseTrajectory()" in source
-    assert 'from "./phase-evidence.js?v=20260824-1"' in source
+    assert 'from "./phase-evidence.js?v=20260825-2"' in source
     assert "centeredStructuralWindow(availableSource, matchedAtomCount)" in source
     assert "inferPointSetDimension(source)" in source
     assert "phaseComparisonRadius(source.length, dimensionAudit.dimension)" in source
@@ -71,7 +71,7 @@ def test_phase_inference_is_posthoc_traced_and_receipted() -> None:
     assert "truncates every prototype to the same atom count" in normalized_readme
     assert "curated material dimension is not consulted" in normalized_readme
     assert 'style.css?v=20260825-46' in html
-    assert 'app.js?v=20260825-123' in html
+    assert 'app.js?v=20260825-124' in html
 
 
 if __name__ == "__main__":

@@ -47,9 +47,10 @@ import { learnLocalPairDistanceUncertaintyEnsemble } from "./ensemble-geometry-u
 import { classifyProperPoseOrbits, symmetryReducedMisorientation } from "./proper-pose-orbits.js?v=20260825-1";
 import {
   centeredStructuralWindow,
+  covarianceMorphology,
   inferPointSetDimension,
   phaseComparisonRadius,
-} from "./phase-evidence.js?v=20260824-1";
+} from "./phase-evidence.js?v=20260825-2";
 import {
   growthEnvironmentAudit,
   growthEnvironmentContains,
@@ -339,6 +340,7 @@ const notebookEntries = $("notebookEntries");
 const notebookComparison = $("notebookComparison");
 const notebookInterventionAudit = $("notebookInterventionAudit");
 const notebookTrajectoryAudit = $("notebookTrajectoryAudit");
+const notebookTrajectoryObservable = $("notebookTrajectoryObservable");
 const notebookTrajectoryPlot = $("notebookTrajectoryPlot");
 const notebookTrajectorySummary = $("notebookTrajectorySummary");
 const runStateText = $("runStateText");
@@ -6152,7 +6154,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-123",
+      buildId: "20260825-124",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7397,7 +7399,8 @@ function experimentNotebookSummary(receipt) {
   const initialLeapStep = Math.max(0, (structuralLeaps[0]?.index || 1) - 1);
   const trajectoryPoints = [{ step: initialLeapStep, status: initialLeapStep ? "retained-window start" : "seed", atoms: initialLeapState.atoms,
     clusters: initialLeapState.clusters || 0, frontier: initialLeapState.frontier || 0,
-    acceptedThisLeap: 0, rejectedThisLeap: 0, cumulativeAccepted: 0, cumulativeRejected: 0, depth: 0 }];
+    acceptedThisLeap: 0, rejectedThisLeap: 0, cumulativeAccepted: 0, cumulativeRejected: 0, depth: 0,
+    morphology: initialLeapState.morphology || null }];
   structuralLeaps.forEach((leap, index) => {
     cumulativeAccepted += leap.after?.accepted || 0;
     cumulativeRejected += leap.after?.rejected || 0;
@@ -7407,7 +7410,8 @@ function experimentNotebookSummary(receipt) {
       proposedCandidates: leap.proposal?.candidates || 0,
       proposedSites: leap.proposal?.sites || 0,
       acceptedThisLeap: leap.after?.accepted || 0, rejectedThisLeap: leap.after?.rejected || 0,
-      cumulativeAccepted, cumulativeRejected, depth: leap.after?.depth || 0 });
+      cumulativeAccepted, cumulativeRejected, depth: leap.after?.depth || 0,
+      morphology: leap.after?.morphology || null });
   });
   return {
     id: receipt.receiptSha256.slice(0, 16),
@@ -7444,6 +7448,7 @@ function experimentNotebookSummary(receipt) {
     benchmarkGate: receipt.evidenceBoundary.benchmarkGate,
     physicalTimeModeled: receipt.evidenceBoundary.physicalElapsedTimeModeled,
     trajectory: { alignment: "structural leap index", points: trajectoryPoints,
+      morphologyPassport: "rotation/translation-invariant covariance spectrum + learned colored-coordination deficit",
       leapCount: structuralLeaps.length,
       totalLeapEvents: search?.structuralLeapHistory?.totalEvents ?? structuralLeaps.length,
       maximumRetainedLeapEvents: search?.structuralLeapHistory?.maximumRetainedEvents ?? MAXIMUM_RETAINED_STRUCTURAL_LEAPS,
@@ -7544,6 +7549,26 @@ function signedNotebookDelta(value) {
   return `${rounded > 0 ? "+" : ""}${rounded.toLocaleString()}`;
 }
 
+const NOTEBOOK_TRAJECTORY_OBSERVABLES = {
+  atoms: { label: "explicit atoms", value: (point) => point.atoms,
+    format: (value) => Math.round(value).toLocaleString() },
+  radius: { label: "radius of gyration · Å", value: (point) => point.morphology?.radiusOfGyrationAngstrom,
+    format: (value) => `${value.toFixed(2)} Å` },
+  extent: { label: "maximum nucleus extent · Å", value: (point) => point.morphology?.maximumExtentAngstrom,
+    format: (value) => `${value.toFixed(2)} Å` },
+  anisotropy: { label: "relative shape anisotropy · κ²", value: (point) => point.morphology?.relativeShapeAnisotropy,
+    format: (value) => value.toFixed(3) },
+  exposure: { label: "colored coordination deficit", value: (point) => point.morphology?.coordinationDeficit,
+    format: (value) => `${(100 * value).toFixed(1)}%` },
+  dimension: { label: "inferred structural dimension", value: (point) => point.morphology?.intrinsicDimension,
+    format: (value) => `${Math.round(value)}D` },
+};
+
+function selectedNotebookTrajectoryObservable() {
+  return NOTEBOOK_TRAJECTORY_OBSERVABLES[notebookTrajectoryObservable?.value]
+    || NOTEBOOK_TRAJECTORY_OBSERVABLES.atoms;
+}
+
 function renderNotebookInterventionAudit(selected) {
   notebookInterventionAudit.replaceChildren();
   const header = document.createElement("header");
@@ -7610,6 +7635,10 @@ function notebookTrajectoryComparison(first, second) {
     secondAmplification: secondFinal.atoms / Math.max(1, secondPoints[0].atoms),
     firstAccepted: firstFinal.cumulativeAccepted || 0, secondAccepted: secondFinal.cumulativeAccepted || 0,
     firstRejected: firstFinal.cumulativeRejected || 0, secondRejected: secondFinal.cumulativeRejected || 0,
+    firstFinalMorphology: firstFinal.morphology || null,
+    secondFinalMorphology: secondFinal.morphology || null,
+    morphologyAvailable: Boolean(firstPoints.every((point) => point.morphology)
+      && secondPoints.every((point) => point.morphology)),
     historyTruncated: Boolean(first.trajectory.historyTruncated || second.trajectory.historyTruncated),
     targetUsed: Boolean(first.trajectory.targetUsed || second.trajectory.targetUsed),
     physicalTimeModeled: false, dynamicsIntegrated: false, coordinatesEmbedded: false };
@@ -7637,20 +7666,30 @@ function renderNotebookTrajectoryAudit(selected) {
   detail.textContent = comparison.sameInput
     ? `${comparison.alignedSteps} aligned states from one observed input · protocol effects remain model-dependent${comparison.historyTruncated ? " · at least one 24-leap history is truncated" : ""}`
     : "Observed input digests differ; trajectories are shown descriptively and cannot be attributed to the protocol.";
+  const observable = selectedNotebookTrajectoryObservable();
+  const selectedObservableKey = notebookTrajectoryObservable?.value || "atoms";
+  const observableValues = [...comparison.firstPoints, ...comparison.secondPoints]
+    .map((point) => observable.value(point));
+  if (!observableValues.every(Number.isFinite)) {
+    notebookTrajectoryAudit.className = "notebook-trajectory-audit unavailable";
+    title.textContent = "morphology passport unavailable";
+    detail.textContent = "This saved run predates Build 124. Save the unchanged state again to upgrade its coordinate-free morphology history.";
+    return;
+  }
   const svg = notebookTrajectoryPlot; const svgNamespace = "http://www.w3.org/2000/svg";
+  svg.setAttribute("aria-label", `${observable.label} after each structural leap`);
   const makeSvg = (name, attributes = {}) => {
     const element = document.createElementNS(svgNamespace, name);
     Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, value));
     return element;
   };
-  const allPoints = [...comparison.firstPoints, ...comparison.secondPoints];
-  const minimumAtoms = Math.min(...allPoints.map((point) => point.atoms));
-  const maximumAtoms = Math.max(...allPoints.map((point) => point.atoms));
-  const atomRange = Math.max(1, maximumAtoms - minimumAtoms);
+  const minimumValue = Math.min(...observableValues);
+  const maximumValue = Math.max(...observableValues);
+  const observableRange = Math.max(1e-9, maximumValue - minimumValue);
   const left = 31; const top = 10; const width = 238; const height = 78;
   const x = (step) => left + width * (step - comparison.minimumStep)
     / Math.max(1, comparison.maximumStep - comparison.minimumStep);
-  const y = (atomsValue) => top + height * (1 - (atomsValue - minimumAtoms) / atomRange);
+  const y = (value) => top + height * (1 - (value - minimumValue) / observableRange);
   [0, .5, 1].forEach((fraction) => {
     svg.append(makeSvg("line", { x1: left, x2: left + width, y1: top + height * fraction,
       y2: top + height * fraction, class: "grid" }));
@@ -7661,18 +7700,18 @@ function renderNotebookTrajectoryAudit(selected) {
   }));
   [[comparison.firstPoints, "first", selected[0]], [comparison.secondPoints, "second", selected[1]]]
     .forEach(([points, className, entry]) => {
-      const path = makeSvg("path", { d: points.map((point, index) => `${index ? "L" : "M"}${x(point.step).toFixed(2)},${y(point.atoms).toFixed(2)}`).join(" "), class: className });
+      const path = makeSvg("path", { d: points.map((point, index) => `${index ? "L" : "M"}${x(point.step).toFixed(2)},${y(observable.value(point)).toFixed(2)}`).join(" "), class: className });
       svg.append(path);
       points.forEach((point) => {
-        const circle = makeSvg("circle", { cx: x(point.step), cy: y(point.atoms), r: point.status === "fixed" ? 3.1 : 2.3,
+        const circle = makeSvg("circle", { cx: x(point.step), cy: y(observable.value(point)), r: point.status === "fixed" ? 3.1 : 2.3,
           class: `${className} ${point.status}` });
         const tooltip = makeSvg("title");
-        tooltip.textContent = `${entry.material} · leap ${point.step} · ${point.atoms} atoms · ${point.clusters} clusters · depth ${point.depth} · +${point.acceptedThisLeap}/−${point.rejectedThisLeap} branches`;
+        tooltip.textContent = `${entry.material} · leap ${point.step} · ${observable.label}: ${observable.format(observable.value(point))} · ${point.morphology?.phenotype || "legacy shape"} · ${point.atoms} atoms · ${point.clusters} clusters · depth ${point.depth} · +${point.acceptedThisLeap}/−${point.rejectedThisLeap} branches`;
         circle.append(tooltip); svg.append(circle);
       });
     });
-  const yTop = makeSvg("text", { x: left - 4, y: top + 3, class: "axis", "text-anchor": "end" }); yTop.textContent = maximumAtoms;
-  const yBottom = makeSvg("text", { x: left - 4, y: top + height + 2, class: "axis", "text-anchor": "end" }); yBottom.textContent = minimumAtoms;
+  const yTop = makeSvg("text", { x: left - 4, y: top + 3, class: "axis", "text-anchor": "end" }); yTop.textContent = observable.format(maximumValue);
+  const yBottom = makeSvg("text", { x: left - 4, y: top + height + 2, class: "axis", "text-anchor": "end" }); yBottom.textContent = observable.format(minimumValue);
   const xLabel = makeSvg("text", { x: left + width / 2, y: 106, class: "axis", "text-anchor": "middle" }); xLabel.textContent = "structural leap index →";
   const legendFirst = makeSvg("text", { x: left, y: 114, class: "legend first" }); legendFirst.textContent = `1 · ${selected[0].material}`;
   const legendSecond = makeSvg("text", { x: left + width, y: 114, class: "legend second", "text-anchor": "end" }); legendSecond.textContent = `2 · ${selected[1].material}`;
@@ -7682,6 +7721,12 @@ function renderNotebookTrajectoryAudit(selected) {
     ["final explicit atoms", signedNotebookDelta(comparison.atomDelta), "run 2 − run 1"],
     ["representation gain", `${comparison.firstAmplification.toFixed(2)}× → ${comparison.secondAmplification.toFixed(2)}×`, "run 1 → run 2"],
     ["accepted branches", `${comparison.firstAccepted} → ${comparison.secondAccepted}`, `rejected ${comparison.firstRejected} → ${comparison.secondRejected}`],
+    ["covariance phenotype", comparison.morphologyAvailable
+      ? `${comparison.firstFinalMorphology.phenotype} → ${comparison.secondFinalMorphology.phenotype}` : "legacy unavailable",
+    "rotation / translation invariant"],
+    ["coordination exposure", comparison.morphologyAvailable
+      ? `${(100 * comparison.firstFinalMorphology.coordinationDeficit).toFixed(1)}% → ${(100 * comparison.secondFinalMorphology.coordinationDeficit).toFixed(1)}%` : "legacy unavailable",
+    "colored deficit proxy · not area"],
   ];
   tiles.forEach(([label, value, note]) => {
     const tile = document.createElement("span");
@@ -7689,7 +7734,7 @@ function renderNotebookTrajectoryAudit(selected) {
     notebookTrajectorySummary.append(tile);
   });
   const boundary = document.createElement("p");
-  boundary.textContent = "Horizontal position is a discrete GCTS search update, not elapsed time. Lines connect certified structural states; they are not atomistic trajectories, rates, kinetics, or interpolated configurations.";
+  boundary.textContent = `Showing ${observable.label}. Horizontal position is a discrete GCTS search update, not elapsed time. Covariance phenotype and colored-coordination deficit are geometric observables—not equilibrium habit, physical surface area, energy, kinetics, or an atomistic trajectory.${selectedObservableKey === "atoms" ? " Choose another observable to inspect morphology evolution." : ""}`;
   notebookTrajectorySummary.append(boundary);
 }
 
@@ -7753,10 +7798,14 @@ async function saveCurrentExperimentNotebookEntry() {
     const receipt = await buildExperimentReceipt();
     const duplicate = experimentNotebookEntries.find((entry) => entry.experimentStateSha256 === receipt.experimentStateSha256);
     if (duplicate) {
-      if (!duplicate.trajectory?.points?.length) {
+      const morphologyUpgradeNeeded = duplicate.trajectory?.points?.length
+        && duplicate.trajectory.points.some((point) => !point.morphology);
+      if (!duplicate.trajectory?.points?.length || morphologyUpgradeNeeded) {
         Object.assign(duplicate, experimentNotebookSummary(receipt));
         persistExperimentNotebook();
-        receiptStatus.textContent = "Existing run upgraded with its coordinate-free structural-leap history.";
+        receiptStatus.textContent = morphologyUpgradeNeeded
+          ? "Existing run upgraded with its coordinate-free morphology passport."
+          : "Existing run upgraded with its coordinate-free structural-leap history.";
       }
       selectedNotebookEntryIds = [duplicate.id];
       if (duplicate.trajectory?.points?.length && !receiptStatus.textContent.includes("upgraded")) {
@@ -12502,14 +12551,16 @@ function materializeCandidate(candidate, evaluation) {
 }
 
 function performOffLatticeEvent() {
-  const before = { atoms: atoms.length, clusters: placedClusters.length, frontier: frontierCandidates.length };
+  const before = { atoms: atoms.length, clusters: placedClusters.length, frontier: frontierCandidates.length,
+    morphology: structuralMorphologySnapshot() };
   const batch = commutingFrontierBatch();
   if (!batch.length) {
     recordStructuralLeap({ status: "fixed", label: "no geometrically admissible successor",
       before, proposal: { candidates: 0, sites: 0, shared: 0, fresh: 0 },
       tests: { summary: "finite frontier exhausted", detail: "Every frozen port is consumed, unsupported, conflicting, or outside the public domain." },
       after: { atoms: atoms.length, clusters: placedClusters.length, accepted: 0, rejected: 0,
-        depth: Math.max(0, ...placedClusters.map((placement) => placement.depth || 0)) },
+        depth: Math.max(0, ...placedClusters.map((placement) => placement.depth || 0)),
+        morphology: structuralMorphologySnapshot() },
       claimBoundary: "This is a certified finite structural fixed point. It is not equilibrium, a stopping time, or evidence that a physical interface cannot advance by an unmodeled mechanism." });
     pauseGrowth("Frontier exhausted: no learned overlap rule remains geometrically admissible.");
     return;
@@ -12661,7 +12712,8 @@ function performOffLatticeEvent() {
     tests: { summary: `${acceptedInBatch} passed · ${rejectedInBatch} pruned`,
       detail: "Species/hard-core, overlap, novelty, public boundary, coordination, angle, and active marking were evaluated before any commit." },
     after: { atoms: atoms.length, clusters: placedClusters.length, accepted: acceptedInBatch, rejected: rejectedInBatch,
-      depth: Math.max(0, ...placedClusters.map((placement) => placement.depth || 0)) },
+      depth: Math.max(0, ...placedClusters.map((placement) => placement.depth || 0)),
+      morphology: structuralMorphologySnapshot() },
     claimBoundary: "The accepted antichain is valid in every placement order and jumps directly to a certified structural state. No force trajectory, relaxation path, transition probability, or physical elapsed time was computed." });
   rebuildWorld();
   updateUI();
@@ -12670,7 +12722,7 @@ function performOffLatticeEvent() {
 function performIceAnchorEvent() {
   const wave = iceAnchorTrace?.waves[iceAnchorWaveIndex];
   const before = { atoms: atoms.length, clusters: acceptedDecisions,
-    frontier: wave?.candidateAnchors || 0 };
+    frontier: wave?.candidateAnchors || 0, morphology: structuralMorphologySnapshot() };
   if (!wave) {
     growthStopReason = "Certified molecular anchor trace exhausted at its safe fixed point.";
     setPlaying(false);
@@ -12705,7 +12757,8 @@ function performIceAnchorEvent() {
       tests: { summary: `0 / ${wave.candidateAnchors} anchors admitted`,
         detail: `${wave.rejectedCandidateAnchors} unsupported or conflicting candidates fail ${iceAnchorTrace.selectionRuleLabel}.` },
       after: { atoms: atoms.length, clusters: acceptedDecisions, accepted: 0,
-        rejected: wave.rejectedCandidateAnchors, depth: wave.wave },
+        rejected: wave.rejectedCandidateAnchors, depth: wave.wave,
+        morphology: structuralMorphologySnapshot() },
       claimBoundary: `The frozen ${iceAnchorTrace.portCount}-port grammar reaches a finite structural fixed point. Unresolved ${iceAnchorTrace.orientationSpecies} motion, proton/deuteron barriers, entropy, and physical stopping time are not modeled.` });
     growthStopReason = "Frozen molecular-port grammar reached its certified finite fixed point.";
     setPlaying(false);
@@ -12737,7 +12790,8 @@ function performIceAnchorEvent() {
     tests: { summary: `${wave.acceptedAnchors} / ${wave.candidateAnchors} anchors admitted`,
       detail: `${iceAnchorTrace.portCount} frozen proper-SE(3) ports + ${iceAnchorTrace.selectionRuleLabel}; ${wave.retainedOrientationHypotheses} mutually exclusive ${iceAnchorTrace.moleculeLabel} poses retained.` },
     after: { atoms: atoms.length, clusters: acceptedDecisions, accepted: wave.acceptedAnchors,
-      rejected: wave.rejectedCandidateAnchors, depth: wave.wave },
+      rejected: wave.rejectedCandidateAnchors, depth: wave.wave,
+      morphology: structuralMorphologySnapshot() },
     claimBoundary: `The browser jumps to oxygen anchors shared by every surviving ${iceAnchorTrace.moleculeLabel} orientation domain. It does not integrate ${iceAnchorTrace.orientationSpecies} rearrangement, tunnelling, diffusion, relaxation, probability, or elapsed physical time.` });
   rebuildWorld();
   updateUI();
@@ -13790,6 +13844,58 @@ function renderStructuralLeap(leap = null) {
     card.append(small, strong, span); leapFlow.append(card);
   });
   leapClaimBoundary.textContent = selected.claimBoundary;
+}
+
+function structuralMorphologySnapshot(source = atoms) {
+  if (!source.length) return {
+    atomCount: 0, sufficient: false, phenotype: "empty", intrinsicDimension: null,
+    principalVarianceFractions: [0, 0, 0], principalVarianceAngstromSquared: [0, 0, 0],
+    radiusOfGyrationAngstrom: 0, maximumExtentAngstrom: 0,
+    relativeShapeAnisotropy: 0, planarityRatio: 1, localPlanarityRatio: 1,
+    coordinationDeficit: null, coordinationTerms: 0, sampledCoordinationCenters: 0,
+    coordinateFrameUsed: false, targetUsed: false,
+  };
+  const scaleToAngstrom = referenceSpacingA / Math.max(referenceSpacing, 1e-12);
+  const center = source.reduce((sum, atom) => sum.add(atom.p), new THREE.Vector3())
+    .multiplyScalar(1 / source.length);
+  const geometry = covarianceMorphology(source, scaleToAngstrom);
+
+  // Surface exposure is sampled across the full radial distribution. The
+  // ordering uses only species and radius about the instantaneous centroid,
+  // so translation and proper rotation cannot alter the selected strata.
+  const maximumCenters = 192;
+  const radialOrder = source.map((atom, index) => ({
+    index, species: atom.species, radiusSquared: atom.p.distanceToSquared(center),
+  })).sort((first, second) => first.radiusSquared - second.radiusSquared
+    || first.species.localeCompare(second.species) || first.index - second.index);
+  const sampledCoordinationCenters = radialOrder.length <= maximumCenters
+    ? radialOrder.map((entry) => entry.index)
+    : Array.from({ length: maximumCenters }, (_, index) =>
+      radialOrder[Math.min(radialOrder.length - 1,
+        Math.floor((index + .5) * radialOrder.length / maximumCenters))].index);
+  const coordination = coloredCoordinationEnvelopes?.records?.length
+    ? coloredCoordinationDeficit(source.map((atom) => atom.species),
+      (first, second) => source[first].p.distanceTo(source[second].p),
+      coloredCoordinationEnvelopes, sampledCoordinationCenters)
+    : { mean: null, terms: 0 };
+  return {
+    atomCount: source.length, sufficient: geometry.sufficient, phenotype: geometry.phenotype,
+    intrinsicDimension: geometry.intrinsicDimension,
+    dimensionInferenceBasis: geometry.dimensionInferenceBasis,
+    principalVarianceFractions: geometry.principalVarianceFractions.map((value) => receiptRound(value)),
+    principalVarianceAngstromSquared: geometry.principalVariance.map((value) => receiptRound(value)),
+    radiusOfGyrationAngstrom: receiptRound(geometry.radiusOfGyration),
+    maximumExtentAngstrom: receiptRound(geometry.maximumExtent),
+    relativeShapeAnisotropy: receiptRound(geometry.relativeShapeAnisotropy),
+    planarityRatio: receiptRound(geometry.planarityRatio),
+    localPlanarityRatio: receiptRound(geometry.localPlanarityRatio),
+    coordinationDeficit: Number.isFinite(coordination.mean) ? receiptRound(coordination.mean) : null,
+    coordinationTerms: coordination.terms,
+    sampledCoordinationCenters: sampledCoordinationCenters.length,
+    coordinationReference: "observed colored median coordination within learned contact cutoffs",
+    coordinateFrameUsed: false, targetUsed: false,
+    physicalSurfaceAreaInferred: false, equilibriumHabitInferred: false,
+  };
 }
 
 function recordStructuralLeap(leap) {
@@ -15697,6 +15803,7 @@ clearNotebookButton.addEventListener("click", () => {
   receiptStatus.textContent = "Experiment notebook cleared. Downloaded receipts are unaffected.";
   renderExperimentNotebook();
 });
+notebookTrajectoryObservable.addEventListener("change", renderExperimentNotebook);
 scenarioSelect.addEventListener("change", () => {
   renderEnsembleControls();
   renderIceViMicrostateControls();

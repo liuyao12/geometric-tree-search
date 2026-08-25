@@ -1163,6 +1163,16 @@
           </article>
           <article id="notebookTrajectoryAudit" class="notebook-trajectory-audit" aria-live="polite">
             <header><small>structural-leap comparison</small><strong>select two runs</strong><span>coordinate-free leap histories will be aligned by search update, never by physical time</span></header>
+            <label class="notebook-trajectory-observable">observable
+              <select id="notebookTrajectoryObservable" aria-label="Structural-leap comparison observable">
+                <option value="atoms">explicit atoms</option>
+                <option value="radius">radius of gyration · Å</option>
+                <option value="extent">maximum nucleus extent · Å</option>
+                <option value="anisotropy">relative shape anisotropy · κ²</option>
+                <option value="exposure">colored coordination deficit</option>
+                <option value="dimension">inferred structural dimension</option>
+              </select>
+            </label>
             <svg id="notebookTrajectoryPlot" viewBox="0 0 280 118" role="img" aria-label="Explicit atoms represented after each structural leap"></svg>
             <div id="notebookTrajectorySummary" class="notebook-trajectory-summary"></div>
           </article>
@@ -1376,7 +1386,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-123"></script>
+  <script type="module" src="./app.js?v=20260825-124"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

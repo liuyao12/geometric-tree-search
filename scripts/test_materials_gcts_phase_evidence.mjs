@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import {
   centeredStructuralWindow,
+  covarianceMorphology,
   inferPointSetDimension,
   phaseComparisonRadius,
 } from "../apps/iqc-growth-live/phase-evidence.js";
@@ -32,6 +33,23 @@ assert.equal(bilayerAudit.dimension, 2);
 assert.ok(bilayerAudit.planarityRatio > .02, "the global audit must see finite layer thickness");
 assert.ok(bilayerAudit.localPlanarityRatio < 1e-10, "local geometry must recover the planar sheets");
 assert.equal(bilayerAudit.basis, "median local covariance");
+
+const rod = Array.from({ length: 17 }, (_, index) => ({ p: [index - 8, 0, 0] }));
+const plate = [];
+for (let x = -4; x <= 4; x++) for (let y = -3; y <= 3; y++) plate.push({ p: [x, y, 0] });
+const rodMorphology = covarianceMorphology(rod, 1.7);
+const transformedRodMorphology = covarianceMorphology(rod.map((atom) => ({ p: rotate(atom.p) })), 1.7);
+const plateMorphology = covarianceMorphology(plate);
+const compactMorphology = covarianceMorphology(volume);
+assert.equal(rodMorphology.phenotype, "needle-like");
+assert.equal(plateMorphology.phenotype, "plate-like");
+assert.equal(compactMorphology.phenotype, "compact");
+assert.ok(rodMorphology.relativeShapeAnisotropy > .99);
+assert.ok(compactMorphology.relativeShapeAnisotropy < 1e-10);
+assert.deepEqual(transformedRodMorphology.principalVariance.map((value) => value.toFixed(10)),
+  rodMorphology.principalVariance.map((value) => value.toFixed(10)));
+assert.equal(transformedRodMorphology.radiusOfGyration.toFixed(10), rodMorphology.radiusOfGyration.toFixed(10));
+assert.equal(transformedRodMorphology.maximumExtent.toFixed(10), rodMorphology.maximumExtent.toFixed(10));
 
 const tagged = volume.map((atom, id) => ({ ...atom, id }));
 const shifted = tagged.map((atom) => ({ ...atom, p: atom.p.map((value, axis) => value + [13, -7, 4][axis]) }));
