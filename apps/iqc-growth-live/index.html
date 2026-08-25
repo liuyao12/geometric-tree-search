@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260824-32">
+  <link rel="stylesheet" href="./style.css?v=20260824-33">
   <script type="importmap">
     {
       "imports": {
@@ -834,6 +834,24 @@
           <p id="growthCertificateNote" class="certificate-note">This receipt distinguishes exact replay, target-blind structural output, and independently certified recurrence.</p>
         </section>
 
+        <section id="costScalingSection" class="cost-scaling-section" aria-label="Computational work scaling laboratory">
+          <div class="section-heading"><p class="eyebrow">computational work laboratory</p><span id="costScalingState">operation ledger</span></div>
+          <div class="cost-scaling-controls">
+            <label for="mdHorizonSelect"><span>MD horizon assumption</span><select id="mdHorizonSelect">
+              <option value="1000">10³ steps · local relaxation</option>
+              <option value="100000" selected>10⁵ steps · interface evolution</option>
+              <option value="10000000">10⁷ steps · rare-event scale</option>
+            </select></label>
+            <label for="mdScalingSelect"><span>interaction work model</span><select id="mdScalingSelect">
+              <option value="local" selected>short-range · O(N)</option>
+              <option value="long-range">long-range · O(N log N)</option>
+            </select></label>
+          </div>
+          <div id="costLiveWork" class="cost-live-work" aria-label="Measured live browser work"></div>
+          <div id="costScalingTable" class="cost-scaling-table" role="table" aria-label="GCTS and molecular dynamics scaling comparison"></div>
+          <p id="costScalingBoundary" class="cost-scaling-boundary">Operation units compare algorithmic work only. They are not wall time, energy, kinetics, or a measured MD speedup.</p>
+        </section>
+
         <section class="audit-card" id="auditedBenchmark">
           <p class="eyebrow">live order inference</p>
           <div><strong id="orderClassValue">analyzing…</strong><span>emergent class</span></div>
@@ -857,7 +875,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260824-69"></script>
+  <script type="module" src="./app.js?v=20260824-70"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

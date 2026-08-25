@@ -18,6 +18,19 @@ the GCTS anatomy view explains covers, oriented ports, markings, search, and
 promotion; and the claim ledger keeps proved, measured, and open results visibly
 separate. Its numbers are frozen benchmark results, not recomputed browser demos.
 
+The right-hand **computational work laboratory** turns the scaling question into
+an explicit, inspectable comparison at 10×, 1,000×, and 100,000× the observed
+sample. It reports deterministic browser tree decisions and finite-neighborhood
+tests separately from two counterfactual quantities: a certified symbolic GCTS
+action count, when the selected material actually has a passing recursive
+representation benchmark, and an MD interaction-step estimate under a
+user-selected step horizon and `O(N)` or `O(N log N)` work model. Uncertified
+materials say “not certified”; explicit coordinate materialization remains
+`O(N)` in every case. These are abstract operation units, not wall time, a force
+field calculation, or kinetics; this is not a measured MD speedup. The selected assumptions,
+zero live MD-force evaluations, linear-output boundary, and all table rows are
+stored in the coordinate-free experiment receipt.
+
 The selectable inputs include an exact NaCl rocksalt positive control, a Cu-Zr
 metallic-glass negative control, an Al-Cu-Fe icosahedral-approximant surrogate,
 the published Cd5.7Yb icosahedral-quasicrystal model, a 30° twisted hBN bilayer,

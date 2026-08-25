@@ -276,6 +276,13 @@ const certificateContinuation = $("certificateContinuation");
 const certificateHierarchy = $("certificateHierarchy");
 const certificateBoundary = $("certificateBoundary");
 const growthCertificateNote = $("growthCertificateNote");
+const costScalingSection = $("costScalingSection");
+const costScalingState = $("costScalingState");
+const mdHorizonSelect = $("mdHorizonSelect");
+const mdScalingSelect = $("mdScalingSelect");
+const costLiveWork = $("costLiveWork");
+const costScalingTable = $("costScalingTable");
+const costScalingBoundary = $("costScalingBoundary");
 const legendHeading = $("legendHeading");
 const speciesLegend = $("speciesLegend");
 const orderClassValue = $("orderClassValue");
@@ -648,6 +655,8 @@ let markingLibrary = [];
 let activeMarkingId = null;
 let markingSearchMode = "single";
 let hierarchyEnabled = true;
+let mdHorizonSteps = 100000;
+let mdWorkScaling = "local";
 let geometryPreference = "strain";
 let geometricStrainWeight = DEFAULT_GEOMETRIC_STRAIN_WEIGHT;
 let compositionPreference = "soft";
@@ -4811,6 +4820,136 @@ function receiptGrowthClaims(scenarioId, benchmark, trace) {
   };
 }
 
+const COST_SCALING_FACTORS = [10, 1000, 100000];
+
+function formatWorkUnits(value) {
+  if (!Number.isFinite(value)) return "—";
+  if (value < 1000) return Math.round(value).toLocaleString();
+  if (value < 1e6) return `${(value / 1e3).toFixed(value < 1e4 ? 1 : 0)}k`;
+  if (value < 1e9) return `${(value / 1e6).toFixed(value < 1e7 ? 1 : 0)}m`;
+  if (value < 1e12) return `${(value / 1e9).toFixed(value < 1e10 ? 1 : 0)}b`;
+  return value.toExponential(2).replace("e+", "e");
+}
+
+function certifiedRecursiveAmplification(benchmark) {
+  const claims = receiptGrowthClaims(scenarioSelect.value, benchmark, iceAnchorTrace);
+  if (!claims.symbolicRecursiveScalingClaimed || benchmark.curve.length < 2) return null;
+  const ratios = benchmark.curve.slice(1).map((count, index) => count / benchmark.curve[index])
+    .filter((ratio) => Number.isFinite(ratio) && ratio > 1);
+  if (ratios.length !== benchmark.curve.length - 1) return null;
+  return Math.exp(ratios.reduce((sum, ratio) => sum + Math.log(ratio), 0) / ratios.length);
+}
+
+function computationalCostAudit() {
+  const benchmark = currentRecursiveBenchmark();
+  const claims = receiptGrowthClaims(scenarioSelect.value, benchmark, iceAnchorTrace);
+  const baseSites = Math.max(1, referenceCount());
+  const amplification = certifiedRecursiveAmplification(benchmark);
+  const scalingLabel = mdWorkScaling === "long-range" ? "O(N log2 N)" : "O(N)";
+  const rows = COST_SCALING_FACTORS.map((factor) => {
+    const targetSites = baseSites * factor;
+    const interactionFactor = mdWorkScaling === "long-range" ? Math.log2(Math.max(2, targetSites)) : 1;
+    const mdWork = targetSites * mdHorizonSteps * interactionFactor;
+    return {
+      sizeMultiplier: factor,
+      targetSites,
+      symbolicGctsActions: amplification ? Math.ceil(Math.log(factor) / Math.log(amplification)) : null,
+      symbolicActionBasis: amplification ? "certified recursive benchmark representation" : "not certified for this material",
+      explicitGctsMaterializationWrites: targetSites,
+      mdInteractionStepUnits: mdWork.toExponential(6),
+    };
+  });
+  return {
+    role: "algorithmic work ledger; no physical trajectory or wall-clock equivalence",
+    baseObservedSites: baseSites,
+    liveBrowserWork: {
+      stageEntered: pipelineStage >= 4,
+      currentExplicitSites: atoms.length,
+      grammarDecisions,
+      acceptedDecisions,
+      rejectedDecisions,
+      exactLocalConstraintEvaluations: constraintNeighborhoodEvaluations,
+      projectedNeighborhoodSites: constraintNeighborhoodSiteTotal,
+      maximumProjectedNeighborhoodSites: maximumConstraintNeighborhoodSites,
+      mdForceEvaluationsPerformed: 0,
+    },
+    assumptions: {
+      mdHorizonSteps,
+      mdInteractionScaling: mdWorkScaling,
+      mdInteractionScalingLabel: scalingLabel,
+      userSelectableNotInferred: true,
+      forceFieldSpecified: false,
+      hardwareSpecified: false,
+    },
+    recursiveRepresentation: {
+      certified: claims.symbolicRecursiveScalingClaimed,
+      stationaryProductionCertified: claims.stationaryProductionCertified,
+      amplificationPerAction: amplification === null ? null : receiptRound(amplification),
+      explicitOutputRemainsLinear: true,
+    },
+    rows,
+    boundaries: {
+      operationUnitsOnly: true,
+      wallTimeCompared: false,
+      speedupClaimed: false,
+      mdReplacementClaimed: false,
+      kineticsModeled: false,
+      explicitMaterializationComplexity: "O(N)",
+    },
+  };
+}
+
+function renderComputationalCost() {
+  const audit = computationalCostAudit();
+  const recursive = audit.recursiveRepresentation;
+  costScalingState.className = recursive.certified ? "pass" : "limit";
+  costScalingState.textContent = recursive.certified
+    ? `${recursive.amplificationPerAction.toFixed(2)}× certified representation`
+    : "symbolic recursion not certified";
+  const live = audit.liveBrowserWork;
+  const tiles = [
+    ["explicit sites", live.currentExplicitSites],
+    ["tree decisions", live.grammarDecisions],
+    ["local tests", live.exactLocalConstraintEvaluations],
+    ["neighbor sites inspected", live.projectedNeighborhoodSites],
+  ];
+  costLiveWork.replaceChildren(...tiles.map(([label, value]) => {
+    const tile = document.createElement("span");
+    tile.innerHTML = `<small>${label}</small><strong>${formatWorkUnits(value)}</strong>`;
+    return tile;
+  }));
+  costLiveWork.classList.toggle("inactive", !live.stageEntered);
+  costScalingTable.replaceChildren();
+  const headings = ["scale", "explicit solid", "symbolic GCTS", "emit/write", "MD work units"];
+  headings.forEach((label) => {
+    const cell = document.createElement("b");
+    cell.className = "cost-table-head";
+    cell.setAttribute("role", "columnheader");
+    cell.textContent = label;
+    costScalingTable.appendChild(cell);
+  });
+  audit.rows.forEach((row) => {
+    const cells = [
+      `${formatWorkUnits(row.sizeMultiplier)}×`,
+      formatWorkUnits(row.targetSites),
+      row.symbolicGctsActions === null ? "not certified" : `${row.symbolicGctsActions} actions`,
+      formatWorkUnits(row.explicitGctsMaterializationWrites),
+      formatWorkUnits(Number(row.mdInteractionStepUnits)),
+    ];
+    cells.forEach((value, index) => {
+      const cell = document.createElement(index === 0 ? "strong" : "span");
+      cell.setAttribute("role", "cell");
+      cell.classList.toggle("uncertified", index === 2 && row.symbolicGctsActions === null);
+      cell.textContent = value;
+      costScalingTable.appendChild(cell);
+    });
+  });
+  const livePrefix = live.stageEntered
+    ? "Live counters are exact deterministic browser operations."
+    : "Enter material growth to populate the live browser counters.";
+  costScalingBoundary.textContent = `${livePrefix} MD = ${mdHorizonSteps.toExponential(0).replace("e+", "e")} assumed steps with ${audit.assumptions.mdInteractionScalingLabel} abstract interaction work. Explicit GCTS output still writes O(N) sites. No force field, wall time, kinetics, or speedup is claimed.`;
+}
+
 function receiptExternalGeometry() {
   const audit = growthEnvironmentAudit(confinementSelect.value);
   const scale = referenceSpacingA / Math.max(referenceSpacing, 1e-12);
@@ -4946,7 +5085,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-69",
+      buildId: "20260824-70",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -5060,6 +5199,7 @@ async function buildExperimentReceipt() {
       stageName: ["sample configuration", "cluster identification", "rigid encoding", "GCTS learning", "material growth"][pipelineStage],
       reversibleProcessTimeline: processTimelineRecord(),
     },
+    computationalWork: computationalCostAudit(),
     geometry: {
       requestedMode: geometryMode,
       metricIsometryToleranceMode: clusterToleranceMode,
@@ -9057,6 +9197,7 @@ function updateGrowthCertificate() {
 function updateUI() {
   updateRecursiveBenchmark();
   updateGrowthCertificate();
+  renderComputationalCost();
   renderObservationProvenance();
   renderScalePassport();
   renderPolicyComparison();
@@ -9756,6 +9897,15 @@ policySelect.addEventListener("change", () => {
 });
 speedInput.addEventListener("input", () => { speedOutput.textContent = speedInput.value; });
 growthDurationSelect.addEventListener("change", () => { if (!playing) setPlaying(false); updateUI(); });
+mdHorizonSelect.addEventListener("change", () => {
+  const value = Number(mdHorizonSelect.value);
+  mdHorizonSteps = [1000, 100000, 10000000].includes(value) ? value : 100000;
+  renderComputationalCost();
+});
+mdScalingSelect.addEventListener("change", () => {
+  mdWorkScaling = mdScalingSelect.value === "long-range" ? "long-range" : "local";
+  renderComputationalCost();
+});
 [markingToggle, bondToggle, frontierToggle].forEach((input) => input.addEventListener("change", rebuildWorld));
 rotateToggle.addEventListener("change", () => { controls.autoRotate = rotateToggle.checked; });
 coordClearButton.addEventListener("click", () => selectCoordination(coordinationSelection));
