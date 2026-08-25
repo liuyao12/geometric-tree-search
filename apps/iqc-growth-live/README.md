@@ -595,6 +595,17 @@ specific statement of the omitted relaxation, diffusion, barrier, entropy, or
 rate claim. A frontier exhaustion is reported as a finite structural fixed
 point—not equilibrium.
 
+Every selectable leap now carries an interactive **physics → geometry
+translation matrix**. It distinguishes hard colored contact and local-topology
+gates, learned GCTS connection compatibility, optional soft composition/charge
+and surface-completion ordering, and physics that remains open. The open rows
+are first-class evidence: activation barriers, diffusion, heat flow, elapsed
+time, long-range elasticity/electrostatics, and electronic response are not
+silently absorbed into a local score. Clicking any row shows the microscopic
+role, exact geometric encoding used for that leap, observed result, and claim
+boundary. The frozen matrix is serialized with the leap receipt and embeds no
+coordinates.
+
 The representative destination patch is transformed into world coordinates.
 A cell-list spatial index merges coincident same-species atoms and detects
 hard-core or species conflicts without scanning the whole structure. A

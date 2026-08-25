@@ -258,6 +258,8 @@ const leapCertificateSection = $("leapCertificateSection");
 const leapCertificateState = $("leapCertificateState");
 const leapHistoryElement = $("leapHistory");
 const leapFlow = $("leapFlow");
+const leapPhysicsMatrix = $("leapPhysicsMatrix");
+const leapPhysicsDetail = $("leapPhysicsDetail");
 const leapClaimBoundary = $("leapClaimBoundary");
 const stackDepth = $("stackDepth");
 const searchStack = $("searchStack");
@@ -620,6 +622,7 @@ let selectedConstraintName = "species / hard core";
 let leapHistory = [];
 let selectedLeapIndex = -1;
 let leapEventCount = 0;
+let selectedLeapPhysicsId = "steric";
 let markingSelection = null;
 let liveOrderCache = { key: "", result: null };
 let liveOrderHistory = [];
@@ -4939,7 +4942,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-67",
+      buildId: "20260824-68",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -5317,6 +5320,7 @@ async function buildExperimentReceipt() {
         before: leap.before, proposal: leap.proposal, tests: leap.tests, after: leap.after,
         targetUsed: leap.targetUsed, physicalTimeModeled: leap.physicalTimeModeled,
         dynamicsIntegrated: leap.dynamicsIntegrated, claimBoundary: leap.claimBoundary,
+        physicsTranslation: leap.physicsTranslation,
       })),
       policySensitivity: {
         role: "counterfactual soft-physics rankings over one unchanged hard-admitted candidate set; previews never execute",
@@ -7391,6 +7395,7 @@ function resetCounters() {
   leapHistory = [];
   selectedLeapIndex = -1;
   leapEventCount = 0;
+  selectedLeapPhysicsId = "steric";
   markingSelection = null;
   liveOrderCache = { key: "", result: null };
   liveOrderHistory = [];
@@ -8258,6 +8263,76 @@ function rebuildWorld() {
   buildDetectedUnitCell();
 }
 
+function physicsTranslationRecords(leap = null) {
+  const activeMarking = selectedMarking();
+  const markingMode = policySelect.value === "marked"
+    ? activeMarking ? `${activeMarking.name} · ${MARKING_REPRESENTATIONS[activeMarking.config.representation].short}` : "current learned section"
+    : policySelect.value === "direct" ? "exact-local diagnostic ceiling" : "unmarked action baseline";
+  const chemistryTerms = [activeCompositionBalanceWeight() > 0 ? `composition w=${activeCompositionBalanceWeight().toFixed(2)}` : null,
+    activeFormalChargeWeight() > 0 ? `formal charge w=${activeFormalChargeWeight().toFixed(2)}` : null].filter(Boolean);
+  const leapResult = leap
+    ? `${leap.tests.summary}; ${leap.after.accepted} accepted and ${leap.after.rejected} rejected in the displayed leap.`
+    : "Awaiting the first frozen frontier evaluation.";
+  return [
+    { id: "steric", process: "short-range repulsion / species contact", status: "hard", role: "hard admission gate",
+      encoding: `${coloredDistanceEnvelopes?.records?.length || 0} colored pair envelopes with exact species coincidence and learned hard-exclusion radii`,
+      evidence: leapResult,
+      boundary: "This excludes geometrically impossible contacts; it is not a repulsive pair potential, force, pressure, or collision trajectory." },
+    { id: "local", process: "local bonding geometry / valence saturation", status: "hard", role: "hard causal neighborhood gate",
+      encoding: `${coloredCoordinationEnvelopes?.records?.length || 0} ordered coordination bounds + ${coloredAngularEnvelopes?.records?.length || 0} colored angular bands within the sample-derived reach`,
+      evidence: `${coordinationCapacityPrunes} coordination and ${angularEnvelopePrunes} angular prunes have occurred in this run.`,
+      boundary: "Coordination and angle envelopes constrain local topology but do not calculate bond order, bond energy, hybridization, or electronic structure." },
+    { id: "connection", process: "cluster attachment preference", status: policySelect.value === "action" ? "open" : "learned", role: policySelect.value === "action" ? "ablated" : "learned local connection gate / rank",
+      encoding: `${markingMode}; ${sectionModel?.channels || 0} channels, reach ${sectionModel?.reach || 0}, transported in cluster-local proper-SE(3) frames`,
+      evidence: leap ? `${leap.proposal.shared} shared and ${leap.proposal.fresh} proposed fresh sites were checked through the frozen port grammar.` : "No attachment scored yet.",
+      boundary: "A GCTS marking represents compatibility of overlapping cluster sections. It is not an interatomic potential or a calibrated attachment free energy." },
+    { id: "chemistry", process: "multicomponent reservoir / charge bookkeeping", status: chemistryTerms.length ? "soft" : "open", role: chemistryTerms.length ? "target-blind soft ordering" : "available but disabled",
+      encoding: chemistryTerms.join(" + ") || "no composition or supplied-formal-charge ranking term is active",
+      evidence: chemistryTerms.length ? `Reference reduced ratio ${compositionTarget?.reducedRatio || "unavailable"}; formal-charge coverage ${Math.round((formalChargeTarget?.coverage || 0) * 100)}%.` : "Candidate geometry is unchanged; this counterfactual policy contribution is zero.",
+      boundary: "These finite-reservoir summaries are not chemical potentials, oxidation-state inference, Coulomb energy, electron transfer, or redox thermodynamics." },
+    { id: "surface", process: "interface completion / undercoordination", status: activeSurfaceCompletionWeight() > 0 ? "soft" : "open", role: activeSurfaceCompletionWeight() > 0 ? "target-blind soft ordering" : "disabled",
+      encoding: activeSurfaceCompletionWeight() > 0 ? `sample-derived colored coordination deficit, w=${activeSurfaceCompletionWeight().toFixed(2)}` : "no surface-completion ranking term is active",
+      evidence: leap ? `${leap.before.frontier} frontier candidates before the leap; ${leap.after.atoms - leap.before.atoms} explicit atoms added.` : "No interface update yet.",
+      boundary: "This favors closing local coordination deficits but does not relax a surface, calculate surface energy, reconstruct an interface, or model solvent/feedstock transport." },
+    { id: "kinetics", process: "activation, diffusion, heat flow, and elapsed time", status: "open", role: "not modeled",
+      encoding: "none; the accepted whole-cluster antichain jumps directly between certified structural states",
+      evidence: leap ? `${leap.after.atoms - leap.before.atoms} explicit sites were emitted with physicalTimeModeled=false and dynamicsIntegrated=false.` : "The seed has no physical clock.",
+      boundary: "No barrier, rate, pathway probability, thermostat, phonon transport, diffusion, hydrodynamics, relaxation trajectory, or physical duration is inferred." },
+    { id: "long-range", process: "long-range elasticity, electrostatics, and electronic response", status: "open", role: "outside the bounded local grammar",
+      encoding: `local constraint reach is at most ${coloredCoordinationEnvelopes ? (coloredCoordinationEnvelopes.maximumCutoff * referenceSpacingA / referenceSpacing).toFixed(2) : "—"} Å; no long-range field solver`,
+      evidence: "The portal reports this omission instead of silently folding it into a local score.",
+      boundary: "Collective strain, defects, polarization, screening, magnetism, excited states, and nonlocal charge redistribution require external physics or new geometric state variables." },
+  ];
+}
+
+function renderLeapPhysics(leap = null) {
+  const records = leap?.physicsTranslation || physicsTranslationRecords(leap);
+  leapPhysicsMatrix.replaceChildren();
+  if (!records.some((record) => record.id === selectedLeapPhysicsId)) selectedLeapPhysicsId = records[0]?.id || "steric";
+  records.forEach((record) => {
+    const button = document.createElement("button"); button.type = "button";
+    button.className = `${record.status}${record.id === selectedLeapPhysicsId ? " active" : ""}`;
+    button.setAttribute("aria-pressed", String(record.id === selectedLeapPhysicsId));
+    const small = document.createElement("small"); small.textContent = record.role;
+    const strong = document.createElement("strong"); strong.textContent = record.process;
+    const span = document.createElement("span"); span.textContent = record.status;
+    button.append(small, strong, span);
+    button.addEventListener("click", () => { selectedLeapPhysicsId = record.id; renderLeapPhysics(leap); });
+    leapPhysicsMatrix.append(button);
+  });
+  const selected = records.find((record) => record.id === selectedLeapPhysicsId) || records[0];
+  leapPhysicsDetail.replaceChildren();
+  if (!selected) return;
+  const header = document.createElement("header");
+  const small = document.createElement("small"); small.textContent = `${selected.status} · ${selected.role}`;
+  const strong = document.createElement("strong"); strong.textContent = selected.process;
+  header.append(small, strong); leapPhysicsDetail.append(header);
+  [["geometric encoding", selected.encoding], ["this leap", selected.evidence], ["claim boundary", selected.boundary]].forEach(([label, copy]) => {
+    const row = document.createElement("div"); const key = document.createElement("b"); const value = document.createElement("p");
+    key.textContent = label; value.textContent = copy; row.append(key, value); leapPhysicsDetail.append(row);
+  });
+}
+
 function renderStructuralLeap(leap = null) {
   if (!leapCertificateSection) return;
   leapCertificateSection.hidden = pipelineStage !== 4;
@@ -8279,6 +8354,7 @@ function renderStructuralLeap(leap = null) {
     leapHistoryElement.append(button);
   });
   leapFlow.replaceChildren();
+  renderLeapPhysics(selected);
   if (!selected) {
     leapCertificateState.textContent = "seed state · no leap executed";
     [
@@ -8316,6 +8392,7 @@ function renderStructuralLeap(leap = null) {
 function recordStructuralLeap(leap) {
   const frozen = { ...leap, index: ++leapEventCount, targetUsed: false,
     physicalTimeModeled: false, dynamicsIntegrated: false };
+  frozen.physicsTranslation = physicsTranslationRecords(frozen);
   leapHistory.push(frozen);
   if (leapHistory.length > 24) leapHistory.shift();
   selectedLeapIndex = leapHistory.length - 1;
