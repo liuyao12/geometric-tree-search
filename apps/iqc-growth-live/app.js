@@ -10,6 +10,7 @@ import {
   validateStructure,
 } from "./structure-io.js?v=20260825-6";
 import { randomNomadStructure } from "./structure-database.js?v=20260825-3";
+import { bestAffineNeighborhoodResidual } from "./relaxation-local-environment.js?v=20260825-1";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -98,6 +99,7 @@ const relaxationSequence = $("relaxationSequence");
 const relaxationSequenceState = $("relaxationSequenceState");
 const relaxationSequenceChart = $("relaxationSequenceChart");
 const relaxationDisplacementState = $("relaxationDisplacementState");
+const relaxationLocalEnvironmentState = $("relaxationLocalEnvironmentState");
 const measurementConditions = $("measurementConditions");
 const measurementConditionChips = $("measurementConditionChips");
 const publishedFixtureProvenance = $("publishedFixtureProvenance");
@@ -301,6 +303,8 @@ const forceToggle = $("forceToggle");
 const forceToggleLabel = $("forceToggleLabel");
 const relaxationDisplacementToggle = $("relaxationDisplacementToggle");
 const relaxationDisplacementToggleLabel = $("relaxationDisplacementToggleLabel");
+const relaxationLocalEnvironmentToggle = $("relaxationLocalEnvironmentToggle");
+const relaxationLocalEnvironmentToggleLabel = $("relaxationLocalEnvironmentToggleLabel");
 const rotateToggle = $("rotateToggle");
 const downloadReceiptButton = $("downloadReceiptButton");
 const copyReceiptButton = $("copyReceiptButton");
@@ -852,6 +856,7 @@ let iceAnchorWaveIndex = 0;
 let importedStructure = null;
 let importedFrameIndex = 0;
 let ensembleEvidenceMode = "all";
+let relaxationLocalEnvironmentCache = null;
 let iceViMicrostate = null;
 let iceViMicrostateSeed = 0;
 let selectedDatabaseElements = ["Na", "Cl"];
@@ -1241,6 +1246,75 @@ function relaxationDisplacementField() {
   };
 }
 
+function relaxationLocalEnvironmentField() {
+  if (relaxationLocalEnvironmentCache?.structure === importedStructure
+      && relaxationLocalEnvironmentCache.frameIndex === importedFrameIndex) {
+    return relaxationLocalEnvironmentCache.result;
+  }
+  const displacement = relaxationDisplacementField();
+  if (!displacement) return null;
+  const frames = importedTrajectoryFrames();
+  const source = frames[displacement.sourceFrameIndex];
+  const target = frames[displacement.targetFrameIndex];
+  const atomCount = source.atoms.length;
+  const neighborCount = Math.min(12, atomCount - 1);
+  if (neighborCount < 3) return null;
+  const contextFor = (frame) => periodicContextFromSceneCell(
+    frame.cell?.map((vector) => new THREE.Vector3(...vector)) || null,
+    frame.pbc || [false, false, false],
+  );
+  const sourceContext = contextFor(source);
+  const targetContext = contextFor(target);
+  const pairVector = (frame, first, second, context) => {
+    const delta = new THREE.Vector3(...frame.atoms[second].position)
+      .sub(new THREE.Vector3(...frame.atoms[first].position));
+    if (!context.matrix) return delta;
+    const fractional = delta.applyMatrix3(context.inverse);
+    context.pbc.forEach((periodic, axis) => {
+      if (periodic) fractional.setComponent(axis,
+        fractional.getComponent(axis) - Math.round(fractional.getComponent(axis)));
+    });
+    return fractional.applyMatrix3(context.matrix);
+  };
+  const records = [];
+  for (let center = 0; center < atomCount; center++) {
+    const neighbors = [];
+    for (let neighbor = 0; neighbor < atomCount; neighbor++) if (neighbor !== center) {
+      const sourceVector = pairVector(source, center, neighbor, sourceContext);
+      neighbors.push({ neighbor, sourceVector, distanceSq: sourceVector.lengthSq() });
+    }
+    neighbors.sort((first, second) => first.distanceSq - second.distanceSq || first.neighbor - second.neighbor);
+    const local = neighbors.slice(0, neighborCount).map((entry) => ({
+      source: entry.sourceVector,
+      target: pairVector(target, center, entry.neighbor, targetContext),
+    }));
+    const fit = bestAffineNeighborhoodResidual(
+      local.map((pair) => pair.source.toArray()),
+      local.map((pair) => pair.target.toArray()),
+    );
+    const d2MinAngstromSquared = fit.d2Min;
+    records.push({ sourceIndex: center, species: occupancyChemistryToken(source.atoms[center]),
+      neighborCount: local.length, d2MinAngstromSquared,
+      rootD2MinAngstrom: Math.sqrt(Math.max(0, d2MinAngstromSquared)) });
+  }
+  const ordered = records.map((record) => record.rootD2MinAngstrom).sort((first, second) => first - second);
+  const percentile = (fraction) => ordered[Math.min(ordered.length - 1,
+    Math.max(0, Math.round(fraction * (ordered.length - 1))))] || 0;
+  const result = {
+    sourceFrameIndex: displacement.sourceFrameIndex,
+    targetFrameIndex: displacement.targetFrameIndex,
+    neighborCount,
+    records,
+    medianRootD2MinAngstrom: percentile(.5),
+    percentile90RootD2MinAngstrom: percentile(.9),
+    maximumRootD2MinAngstrom: ordered.at(-1) || 0,
+    definition: "square root of mean residual after a regularized per-site best-affine fit from selected-frame neighbor vectors to final-frame neighbor vectors",
+    physicalTimeUsed: false,
+  };
+  relaxationLocalEnvironmentCache = { structure: importedStructure, frameIndex: importedFrameIndex, result };
+  return result;
+}
+
 function evidenceFrameCount() {
   return scenarioSelect.value === "imported" && ensembleEvidenceMode === "all"
     ? importedTrajectoryFrames().length || 1 : 1;
@@ -1405,6 +1479,10 @@ function renderRelaxationSequence(frames, relaxation) {
     : importedFrameIndex === frames.length - 1
       ? "Final archived snapshot selected · selected-to-final displacement is zero."
       : "Selected-to-final displacement is unavailable for this sequence.";
+  const localEnvironment = relaxationLocalEnvironmentField();
+  relaxationLocalEnvironmentState.textContent = localEnvironment
+    ? `Local ${localEnvironment.neighborCount}-neighbor best-affine fit: median √D²min ${localEnvironment.medianRootD2MinAngstrom.toFixed(3)} Å · 90th percentile ${localEnvironment.percentile90RootD2MinAngstrom.toFixed(3)} Å · max ${localEnvironment.maximumRootD2MinAngstrom.toFixed(3)} Å.`
+    : "Local best-affine neighborhood residual is unavailable for the selected state.";
   relaxationSequenceChart.setAttribute("aria-label", `${frames.length} ordered archived relaxation snapshots; ${energies.length} have energy and ${availableForceFrames} have complete residual forces; snapshot ${importedFrameIndex + 1} selected`);
 }
 
@@ -5977,12 +6055,19 @@ async function buildExperimentReceipt() {
   })) || [];
   const relaxationDisplacementSha256 = relaxationDisplacementRecords.length
     ? await receiptSha256(JSON.stringify(relaxationDisplacementRecords)) : null;
+  const relaxationLocalEnvironment = relaxationLocalEnvironmentField();
+  const relaxationLocalEnvironmentRecords = relaxationLocalEnvironment?.records.map((record) => ({
+    sourceIndex: record.sourceIndex, species: record.species, neighborCount: record.neighborCount,
+    d2MinAngstromSquared: receiptRound(record.d2MinAngstromSquared, 10),
+  })) || [];
+  const relaxationLocalEnvironmentSha256 = relaxationLocalEnvironmentRecords.length
+    ? await receiptSha256(JSON.stringify(relaxationLocalEnvironmentRecords)) : null;
   const receipt = {
     schema: "gcts-materials-growth-receipt-v1",
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-111",
+      buildId: "20260825-112",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -6100,6 +6185,23 @@ async function buildExperimentReceipt() {
           vectorSha256: relaxationDisplacementSha256,
           vectorsEmbedded: false,
           viewportLengthsNormalizedForVisibility: true,
+          usedForClusterIdentification: false,
+          usedForMarkingLearning: false,
+          usedForGrowth: false,
+        } : null,
+        selectedToFinalLocalEnvironment: relaxationLocalEnvironment ? {
+          sourceFrameIndexZeroBased: relaxationLocalEnvironment.sourceFrameIndex,
+          targetFrameIndexZeroBased: relaxationLocalEnvironment.targetFrameIndex,
+          atomCount: relaxationLocalEnvironment.records.length,
+          neighborCount: relaxationLocalEnvironment.neighborCount,
+          definition: relaxationLocalEnvironment.definition,
+          medianRootD2MinAngstrom: receiptRound(relaxationLocalEnvironment.medianRootD2MinAngstrom),
+          percentile90RootD2MinAngstrom: receiptRound(relaxationLocalEnvironment.percentile90RootD2MinAngstrom),
+          maximumRootD2MinAngstrom: receiptRound(relaxationLocalEnvironment.maximumRootD2MinAngstrom),
+          recordSha256: relaxationLocalEnvironmentSha256,
+          recordsEmbedded: false,
+          localBestAffineMapsEmbedded: false,
+          physicalTimeUsed: false,
           usedForClusterIdentification: false,
           usedForMarkingLearning: false,
           usedForGrowth: false,
@@ -10554,6 +10656,11 @@ function syncStageOptions() {
   relaxationDisplacementToggleLabel.textContent = displacement
     ? `Selected → final non-affine displacement · RMS ${displacement.nonAffineRmsAngstrom.toFixed(3)} Å`
     : "Selected → final displacement · unavailable";
+  const localEnvironment = relaxationLocalEnvironmentField();
+  relaxationLocalEnvironmentToggle.disabled = !localEnvironment;
+  relaxationLocalEnvironmentToggleLabel.textContent = localEnvironment
+    ? `Local rearrangement √D²min · p90 ${localEnvironment.percentile90RootD2MinAngstrom.toFixed(3)} Å`
+    : "Local rearrangement √D²min · unavailable";
   externalDriveBadge.hidden = pipelineStage !== 4 || externalDriveMode === "none";
   externalDriveBadgeLabel.textContent = externalDriveModeLabel();
   externalDriveGlyph.textContent = ({ "z-plus": "↑", "z-minus": "↓",
@@ -12142,6 +12249,35 @@ function rebuildWorld() {
     ));
   }
 
+  const relaxationLocalEnvironment = relaxationLocalEnvironmentToggle.checked
+    ? relaxationLocalEnvironmentField() : null;
+  if (relaxationLocalEnvironment) {
+    const atomBySourceIndex = new Map();
+    atoms.forEach((atom) => {
+      if (Number.isInteger(atom.sourceIndex) && !atomBySourceIndex.has(atom.sourceIndex)) atomBySourceIndex.set(atom.sourceIndex, atom);
+    });
+    const visible = relaxationLocalEnvironment.records
+      .map((record) => ({ record, atom: atomBySourceIndex.get(record.sourceIndex) }))
+      .filter((entry) => entry.atom);
+    if (visible.length) {
+      const geometry = new THREE.IcosahedronGeometry(.27, 1);
+      const material = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true,
+        transparent: true, opacity: .44, depthWrite: false });
+      const halos = new THREE.InstancedMesh(geometry, material, visible.length);
+      const scale = Math.max(1e-12, relaxationLocalEnvironment.percentile90RootD2MinAngstrom);
+      visible.forEach(({ record, atom }, index) => {
+        const relative = Math.max(0, Math.min(1, record.rootD2MinAngstrom / scale));
+        dummy.position.copy(atom.p); dummy.rotation.set(0, 0, 0);
+        dummy.scale.setScalar(.72 + .92 * Math.sqrt(relative)); dummy.updateMatrix();
+        halos.setMatrixAt(index, dummy.matrix);
+        halos.setColorAt(index, new THREE.Color().setHSL(.53 + .35 * relative, .78, .58));
+      });
+      halos.instanceMatrix.needsUpdate = true;
+      if (halos.instanceColor) halos.instanceColor.needsUpdate = true;
+      atomGroup.add(halos);
+    }
+  }
+
   if (bondToggle.checked) {
     const points = [];
     if (selectedCoordination?.centers.length) {
@@ -12392,6 +12528,7 @@ function physicsTranslationRecords(leap = null) {
   const calculation = activeCalculationProvenance();
   const relaxation = scenarioSelect.value === "imported" ? importedStructure?.metadata?.relaxationSequence : null;
   const relaxationDisplacement = relaxationDisplacementField();
+  const relaxationLocalEnvironment = relaxationLocalEnvironmentField();
   return [
     { id: "steric", process: "short-range repulsion / species contact", status: "hard", role: "hard admission gate",
       encoding: `${coloredDistanceEnvelopes?.records?.length || 0} colored pair envelopes with exact species coincidence and learned hard-exclusion radii`,
@@ -12417,6 +12554,14 @@ function physicsTranslationRecords(leap = null) {
         ? `${evidenceFrameCount()} frame${evidenceFrameCount() === 1 ? "" : "s"} currently supply geometric envelopes; the displayed frame alone supplies the cover, grammar, and growth seed.${relaxationDisplacement ? ` Selected → final non-affine RMS ${relaxationDisplacement.nonAffineRmsAngstrom.toFixed(3)} Å; affine RMS ${relaxationDisplacement.affineRmsAngstrom.toFixed(3)} Å${Number.isFinite(relaxationDisplacement.volumeChangeFraction) ? `; ΔV ${(100 * relaxationDisplacement.volumeChangeFraction).toFixed(2)}%` : ""}.` : ""}`
         : "No cross-frame structural variability is available.",
       boundary: "The displacement field is a difference between archived structures, not a physical path. Archive order is not physical elapsed time. No velocity, integration step, optimizer clock, minimum-energy path, transition probability, or growth rate is inferred; energies are compared only within this one same-method archived sequence." },
+    { id: "local-rearrangement", process: "localized rearrangement / environment change", status: relaxationLocalEnvironment ? "observed" : "unavailable", role: relaxationLocalEnvironment ? "archived structural-difference diagnostic" : "no paired local environments",
+      encoding: relaxationLocalEnvironment
+        ? `${relaxationLocalEnvironment.neighborCount}-neighbor periodic minimum-image vectors; one regularized best-affine map per site; √D²min is the RMS residual in Å`
+        : "no selected-to-final fixed-topology pair is available",
+      evidence: relaxationLocalEnvironment
+        ? `Median √D²min ${relaxationLocalEnvironment.medianRootD2MinAngstrom.toFixed(3)} Å; p90 ${relaxationLocalEnvironment.percentile90RootD2MinAngstrom.toFixed(3)} Å; maximum ${relaxationLocalEnvironment.maximumRootD2MinAngstrom.toFixed(3)} Å.`
+        : "No atom-resolved local rearrangement field is available.",
+      boundary: "D²min is a kinematic difference between two archived configurations after a local affine fit. It is not plastic strain, a defect label, activation energy, mobility, a transition pathway, or elapsed time, and it never ranks or admits growth." },
     { id: "connection", process: "cluster attachment preference", status: policySelect.value === "action" ? "open" : "learned", role: policySelect.value === "action" ? "ablated" : "learned local connection gate / rank",
       encoding: `${markingMode}; ${sectionModel?.channels || 0} channels, reach ${sectionModel?.reach || 0}, transported in cluster-local proper-SE(3) frames`,
       evidence: leap ? `${leap.proposal.shared} shared and ${leap.proposal.fresh} proposed fresh sites were checked through the frozen port grammar.` : "No attachment scored yet.",
@@ -13419,6 +13564,7 @@ function observationProvenanceRecords() {
   const calculation = activeCalculationProvenance();
   const relaxation = scenarioSelect.value === "imported" ? importedStructure?.metadata?.relaxationSequence : null;
   const displacementField = relaxationDisplacementField();
+  const localEnvironmentField = relaxationLocalEnvironmentField();
   return [
     { id: "conditions", short: "conditions", status: conditionSummary.length ? "recorded" : "unavailable",
       value: conditionSummary.length ? conditionSummary.join(" · ") : "no temperature / pressure metadata",
@@ -13437,7 +13583,7 @@ function observationProvenanceRecords() {
       observed: scenarioSelect.value === "imported" && importedFrames.length > 1
         ? `${importedFrames.length} ordered structural snapshots with fixed species and atom ordering.${relaxation?.available ? ` Retained from ${relaxation.originalSystemCount} same-run NOMAD systems.` : ""}`
         : `${referenceCount()} species-labelled Cartesian sites in one observation window.`,
-      transform: frames > 1 ? `${ensembleEvidenceMode === "all" ? "All frames pool" : "Only the displayed frame supplies"} contact, coordination, angle, and local pair-distance observations.${displacementField ? ` Selected → final geometry is additionally decomposed into affine cell deformation (RMS ${displacementField.affineRmsAngstrom.toFixed(3)} Å) and minimum-image non-affine rearrangement (RMS ${displacementField.nonAffineRmsAngstrom.toFixed(3)} Å).` : ""}` : "One frame supplies the finite structural evidence.",
+      transform: frames > 1 ? `${ensembleEvidenceMode === "all" ? "All frames pool" : "Only the displayed frame supplies"} contact, coordination, angle, and local pair-distance observations.${displacementField ? ` Selected → final geometry is additionally decomposed into affine cell deformation (RMS ${displacementField.affineRmsAngstrom.toFixed(3)} Å) and minimum-image non-affine rearrangement (RMS ${displacementField.nonAffineRmsAngstrom.toFixed(3)} Å).` : ""}${localEnvironmentField ? ` A ${localEnvironmentField.neighborCount}-neighbor best-affine fit localizes the residual as √D²min (p90 ${localEnvironmentField.percentile90RootD2MinAngstrom.toFixed(3)} Å).` : ""}` : "One frame supplies the finite structural evidence.",
       use: `Growth starts from exactly one displayed frame${frames > 1 ? ` (${importedFrameIndex + 1}/${importedFrames.length})` : ""}; cross-frame atom pairs are never invented.`,
       boundary: "Selected-to-final vectors compare two archived structures; they are not a trajectory. Snapshot order is not treated as physical time unless velocities, time steps, and calibrated temporal provenance are independently supplied; none are used here. Same-run energy differences and residual forces remain diagnostic provenance." },
     { id: "uncertainty", short: "uncertainty", status: uncertainty > 0 ? "measured" : "nominal",
@@ -14616,7 +14762,8 @@ mdScalingSelect.addEventListener("change", () => {
     candidate.setAttribute("aria-pressed", String(candidate === button)));
   drawGrowthMechanismMap();
 }));
-[markingToggle, bondToggle, frontierToggle, forceToggle, relaxationDisplacementToggle]
+[markingToggle, bondToggle, frontierToggle, forceToggle, relaxationDisplacementToggle,
+  relaxationLocalEnvironmentToggle]
   .forEach((input) => input.addEventListener("change", rebuildWorld));
 rotateToggle.addEventListener("change", () => { controls.autoRotate = rotateToggle.checked; });
 coordClearButton.addEventListener("click", () => selectCoordination(coordinationSelection));

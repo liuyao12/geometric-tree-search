@@ -4242,6 +4242,17 @@ and hash the derived per-site vectors without embedding them. For records
 without compatible periodic cells, the diagnostic falls back to direct
 Cartesian selected-to-final differences with a zero affine term.
 
+A second **Local rearrangement √D²min** layer asks a more local question: after
+the best affine map is fitted independently around each atom, how much of that
+atom's neighborhood change remains unexplained? For every site, the portal
+takes its 12 nearest selected-frame neighbors, constructs periodic
+minimum-image neighbor vectors in both selected and final cells, solves the
+regularized least-squares affine map, and reports the square root of the mean
+squared residual in Å. Cyan-to-magenta wire halos localize small-to-large
+residuals; the panel reports the median, 90th percentile, and maximum. The
+receipt hashes every per-site D²min record and records the exact definition and
+neighbor count.
+
 Archive ordering is not interpreted as physical time. The portal does not
 receive optimizer iteration duration, velocities, an integration time step, or
 a calibrated dynamical path, and it does not infer them. Same-run energy
@@ -4255,3 +4266,5 @@ The selected-to-final field is likewise a comparison of two archived
 structures, not an optimizer trajectory, atomic velocity, minimum-energy path,
 or prediction of how the material actually moved between them. It is excluded
 from cluster identification, marking learning, candidate ranking, and growth.
+Likewise, D²min is a kinematic comparison, not a plastic-strain tensor, defect
+classifier, barrier, mobility, or proof of a localized transition mechanism.
