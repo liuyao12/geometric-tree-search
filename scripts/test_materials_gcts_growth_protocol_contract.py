@@ -34,6 +34,7 @@ def test_growth_protocols_expand_into_existing_controls() -> None:
         "growthDrivingMode", "growthDrivingWeight",
         "attachmentTopologyMode", "attachmentTopologyWeight",
         "habitAnisotropyMode", "habitAnisotropyWeight",
+        "defectPrecursorMode", "defectPrecursorWeight",
         "frontMorphologyMode", "capillaryGeometryMode", "epitaxyTemplateMode", "externalDriveMode", "thermalFieldMode",
         "robustnessPreference", "microstructureCouplingMode", "loopClosurePreference",
         "arrivalPathMode", "geometricExplorationScale", "requestedGrowthNuclei",

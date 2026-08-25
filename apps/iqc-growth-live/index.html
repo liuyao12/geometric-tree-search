@@ -519,6 +519,23 @@
                 <option value="0.48">0.48 · strong</option>
               </select>
             </label>
+            <label class="field" for="defectPrecursorSelect">
+              <span>Action defect precursors <b id="defectPrecursorHint">off · burden reported</b></span>
+              <select id="defectPrecursorSelect">
+                <option value="none" selected>Off · report action burden</option>
+                <option value="suppress">Suppress geometric precursors</option>
+                <option value="explore">Explore defect-rich growth</option>
+                <option value="seam">Seam-accommodation hypothesis</option>
+              </select>
+            </label>
+            <label class="field" for="defectPrecursorWeightSelect">
+              <span>Precursor weight <b>soft action-generated rank</b></span>
+              <select id="defectPrecursorWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
             <label class="field" for="frontMorphologySelect">
               <span>Mesoscopic front morphology <b id="frontMorphologyHint">neutral · diagnostic</b></span>
               <select id="frontMorphologySelect">
@@ -1224,7 +1241,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-102"></script>
+  <script type="module" src="./app.js?v=20260825-103"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

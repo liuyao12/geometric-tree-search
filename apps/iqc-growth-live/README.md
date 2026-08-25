@@ -4064,3 +4064,28 @@ This atlas is a frequency summary of observed connection geometry, not surface
 free energy, a Wulff construction, Miller-index assignment, equilibrium habit,
 kinetic attachment coefficient, or growth rate. It ranks an identical frozen
 candidate set and cannot authorize a pose or alter emitted coordinates.
+
+## Action-generated defect-precursor budget
+
+The heterogeneous-geometry audit describes roles already present in the input.
+The growth stage now separately reports geometry that the **current candidate
+action would create**. Four bounded channels form an explicit precursor budget:
+`35%` exposed coordination deficit on new sites, `30%` sample-relative local
+distance/angle strain, `15%` projected composition drift, and `20%` incompatible
+multi-parent loop-closure evidence. Each component is displayed independently;
+the weighted burden is never substituted for the underlying measurements.
+
+The user may leave this diagnostic, softly suppress high-burden actions,
+explore defect-rich counterfactual growth, or test a seam-accommodation
+hypothesis. A wire dodecahedral halo encodes the burden and its color identifies
+the dominant channel: amber coordination exposure, coral strain, violet
+composition drift, or blue seam incompatibility. This is evaluated after the
+exact action geometry is frozen and cannot alter a cluster pose, emitted site,
+hard gate, public boundary, or candidate digest.
+
+“Precursor” is deliberately not “defect.” The portal assigns no vacancy,
+antisite, stacking fault, dislocation, grain boundary, or reaction mechanism.
+It calculates no formation energy, migration barrier, mobility, plastic
+relaxation, kinetic rate, or physical time. The receipt keeps the four raw
+components, fixed weights, accepted/rejected burden and score means, work, and
+all identity and energetic non-claims.
