@@ -485,6 +485,23 @@
                 <option value="0.48">0.48 · strong</option>
               </select>
             </label>
+            <label class="field" for="attachmentTopologySelect">
+              <span>Attachment-site topology <b id="attachmentTopologyHint">off · terrace / step / kink reported</b></span>
+              <select id="attachmentTopologySelect">
+                <option value="none" selected>Off · classify only</option>
+                <option value="kink">Kink-rich incorporation</option>
+                <option value="step">Step-flow attachment</option>
+                <option value="terrace">Terrace-island hypothesis</option>
+              </select>
+            </label>
+            <label class="field" for="attachmentTopologyWeightSelect">
+              <span>Attachment weight <b>soft local-topology rank</b></span>
+              <select id="attachmentTopologyWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
             <label class="field" for="frontMorphologySelect">
               <span>Mesoscopic front morphology <b id="frontMorphologyHint">neutral · diagnostic</b></span>
               <select id="frontMorphologySelect">
@@ -1190,7 +1207,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-99"></script>
+  <script type="module" src="./app.js?v=20260825-100"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

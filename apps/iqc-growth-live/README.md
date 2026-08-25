@@ -4015,3 +4015,27 @@ energy, interfacial tension, classical nucleation barrier, phase diagram,
 growth rate, or physical time. It is a reduced geometric grand-potential
 surrogate whose value is to pose an inspectable hypothesis before calibrated
 thermodynamic data are available.
+
+## Non-lattice terrace, step, and kink geometry
+
+Every exact growth action now receives an explicit **attachment-site topology**
+audit. For each genuinely emitted site, the portal inspects placed atoms within
+`1.45 d_nn` in a parent-local proper-rotation frame. Six tangent-plane sectors
+measure independent lateral support. A site with fewer than two contacts or no
+lateral direction is a terrace analogue; at least two contacts and one lateral
+direction define a step analogue; at least three contacts and two lateral
+directions define a kink analogue. This definition applies to irregular and
+rotated clusters as well as lattice crystals.
+
+Users can leave the classification diagnostic or softly favor kink-rich,
+step-flow, or terrace-island attachment. Candidate geometry, frozen port IDs,
+collision tests, coordination and angular gates, the public boundary, and the
+candidate digest remain unchanged. Small mint rings, amber ledges, and coral
+tetrahedra display the dominant topology for each candidate; the ledger exposes
+the full terrace/step/kink count rather than only a label.
+
+These are local geometric analogues, not crystallographic Miller-index labels.
+The portal does not infer an activation barrier, sticking or attachment
+coefficient, ledge free energy, 2D nucleation barrier, atomistic trajectory,
+growth rate, or elapsed physical time. The receipt retains the classification
+rule, neighborhood work, accepted/rejected scores, and every non-claim.
