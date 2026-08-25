@@ -4305,3 +4305,19 @@ probability, rate, or calibrated thermodynamic potential. Reference gain is
 explicitly labeled target-aware during known-window replay and disappears from
 unseen continuation; changing a policy reorders an unchanged hard-admitted
 frontier and does not manufacture new geometry.
+
+The ledger is also a **frozen-frontier hypothesis workbench**. Beside every
+term, a compact multiplier cycles from the declared baseline to zero, double,
+and back to baseline. The portal stores the exact active score vector for every
+hard-admitted candidate before any intervention, then recomputes the winner
+with stable candidate-ID tie breaking. A changed winner is previewed in the 3D
+scene on the original candidate-set digest; it is never committed to growth.
+Reset restores the baseline active-policy winner.
+
+This is a one-frontier sensitivity intervention, not parameter fitting. It
+does not reopen cluster identification, retrain a marking, change port or
+candidate geometry, relax hard exclusions, use posthoc phase labels, or alter
+the executed growth trajectory. The receipt records the sparse multiplier map,
+baseline and intervention winner digests, whether the winner changed, and
+explicit `candidateSetChanged=false`, `hardAdmissionChanged=false`, and
+`executed=false` provenance flags.

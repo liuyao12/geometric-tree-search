@@ -866,10 +866,11 @@
               <div id="policyComparison" class="policy-comparison"></div>
               <div class="policy-score-heading"><small>selected action score ledger</small><strong id="policyScoreLedgerState">awaiting an evaluated frontier</strong></div>
               <div id="policyScoreLedger" class="policy-score-ledger" aria-label="Signed geometric score contributions"></div>
+              <div class="policy-workbench-heading"><span><small>frozen-frontier intervention</small><strong id="policyWorkbenchState">baseline weights</strong></span><button id="policyWorkbenchReset" type="button" disabled>Reset ×1</button></div>
               <div class="policy-sensitivity-heading"><small>pathway sensitivity</small><strong id="policySensitivityState">no evaluated frontiers</strong></div>
               <div id="policyHistory" class="policy-history" role="group" aria-label="Inspect policy disagreement on recent frozen frontiers"></div>
               <p id="policyPreviewState">Select a policy row to preview its winner in the 3D scene.</p>
-              <p>Admission geometry is identical in every row. During known-window replay, target-aware reconstruction gain is labeled; after certification it is absent.</p>
+              <p>Admission geometry is identical in every row. Click ×1 beside a score term to cycle it off or double it on this frozen frontier. This previews a hypothesis intervention only: the executed growth policy does not change. During known-window replay, target-aware reconstruction gain is labeled; after certification it is absent.</p>
             </section>
             <button id="trainVariantButton" class="train-variant" type="button">↶ Train a different marking</button>
             <div class="hierarchy-choice" role="group" aria-label="Cluster hierarchy mode">
@@ -1340,7 +1341,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-115"></script>
+  <script type="module" src="./app.js?v=20260825-116"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

@@ -280,6 +280,8 @@ const policyComparison = $("policyComparison");
 const policyComparisonState = $("policyComparisonState");
 const policyScoreLedger = $("policyScoreLedger");
 const policyScoreLedgerState = $("policyScoreLedgerState");
+const policyWorkbenchState = $("policyWorkbenchState");
+const policyWorkbenchReset = $("policyWorkbenchReset");
 const policySensitivityState = $("policySensitivityState");
 const policyHistoryElement = $("policyHistory");
 const policyPreviewState = $("policyPreviewState");
@@ -6125,7 +6127,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-115",
+      buildId: "20260825-116",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7046,6 +7048,24 @@ async function buildExperimentReceipt() {
           rankingMode: snapshot.referenceGuided ? "known-window reference-guided replay" : "target-blind frontier",
           distinctTopActions: snapshot.uniqueTopActions,
           everyScoreDecompositionExact: snapshot.everyScoreDecompositionExact,
+          workbench: (() => {
+            const intervention = buildPolicyWorkbench(snapshot);
+            return intervention ? {
+              role: "counterfactual weight intervention over the already frozen hard-admitted frontier",
+              multipliers: Object.fromEntries(Object.entries(snapshot.workbenchMultipliers || {}).sort()),
+              changedTerms: intervention.changedTerms,
+              winnerChanged: intervention.winnerChanged,
+              baselineCandidateDigest: snapshot.policies.find((policy) => policy.id === "active")?.candidateDigest || null,
+              interventionCandidateDigest: intervention.candidateDigest,
+              interventionScore: receiptRound(intervention.score),
+              candidateSetDigest: intervention.candidateSetDigest,
+              candidateSetChanged: intervention.candidateSetChanged,
+              hardAdmissionChanged: intervention.hardAdmissionChanged,
+              candidateGeometryChanged: false,
+              executed: intervention.executed,
+              targetUsedToChooseMultipliers: false,
+            } : null;
+          })(),
           policies: snapshot.policies.map((policy) => ({
             id: policy.id,
             label: policy.label,
@@ -9226,6 +9246,49 @@ function policyScoreTerms(policy, entry) {
   return terms;
 }
 
+function policyActionLabel(entry) {
+  return `C${entry.candidate.rule.from + 1}→C${entry.candidate.rule.to + 1} · R${entry.candidate.rule.id}`;
+}
+
+function workbenchMultiplier(snapshot, termId) {
+  return snapshot?.workbenchMultipliers?.[termId] ?? 1;
+}
+
+function buildPolicyWorkbench(snapshot) {
+  if (!snapshot?.workbenchCandidates?.length) return null;
+  const ranked = snapshot.workbenchCandidates.map((candidate) => {
+    const scoreTerms = candidate.scoreTerms.map((term) => {
+      const multiplier = workbenchMultiplier(snapshot, term.id);
+      return { ...term, baselineWeight: term.weight, baselineContribution: term.contribution, multiplier,
+        weight: term.weight * multiplier, contribution: term.contribution * multiplier };
+    });
+    return { candidate, scoreTerms, score: scoreTerms.reduce((sum, term) => sum + term.contribution, 0) };
+  }).sort((first, second) => second.score - first.score
+    || first.candidate.candidateKey.localeCompare(second.candidate.candidateKey));
+  const winner = ranked[0];
+  const baseline = snapshot.policies.find((policy) => policy.id === "active");
+  const changedTerms = Object.values(snapshot.workbenchMultipliers || {}).filter((value) => value !== 1).length;
+  return {
+    id: "workbench",
+    label: "hypothesis mix",
+    action: winner.candidate.action,
+    candidateKey: winner.candidate.candidateKey,
+    candidateDigest: winner.candidate.candidateDigest,
+    score: winner.score,
+    scoreTerms: winner.scoreTerms,
+    scoreTermTotal: winner.score,
+    scoreDecompositionExact: true,
+    preview: winner.candidate.preview,
+    changedTerms,
+    winnerChanged: winner.candidate.candidateKey !== baseline?.candidateKey,
+    baselineCandidateKey: baseline?.candidateKey || null,
+    candidateSetDigest: snapshot.candidateDigest,
+    candidateSetChanged: false,
+    hardAdmissionChanged: false,
+    executed: false,
+  };
+}
+
 function capturePolicyComparison(entries) {
   const admissible = entries.filter((entry) => entry.evaluation.accepted);
   const policies = [
@@ -9283,7 +9346,7 @@ function capturePolicyComparison(entries) {
     return {
       id: policy.id,
       label: policy.label,
-      action: winner ? `C${winner.entry.candidate.rule.from + 1}→C${winner.entry.candidate.rule.to + 1} · R${winner.entry.candidate.rule.id}` : "no admitted action",
+      action: winner ? policyActionLabel(winner.entry) : "no admitted action",
       candidateKey: winner?.entry.candidate.key || null,
       candidateDigest: winner ? frozenFrontierDigest([winner.entry]) : null,
       score: winner?.score ?? null,
@@ -9297,6 +9360,21 @@ function capturePolicyComparison(entries) {
   if (!policies.every((policy) => policy.scoreDecompositionExact)) {
     throw new Error("growth-policy score ledger does not reconcile with the ranking score");
   }
+  const workbenchCandidates = admissible.map((entry) => {
+    const scoreTerms = activeCandidateScoreTerms(entry, true);
+    const scoreTermTotal = scoreTerms.reduce((sum, term) => sum + term.contribution, 0);
+    if (Math.abs(scoreTermTotal - entry.selectionScore) > 1e-9) {
+      throw new Error("frozen-frontier workbench term vector does not reconcile with the active score");
+    }
+    return {
+      candidateKey: entry.candidate.key,
+      candidateDigest: frozenFrontierDigest([entry]),
+      action: policyActionLabel(entry),
+      baselineScore: entry.selectionScore,
+      scoreTerms,
+      preview: { p: entry.candidate.position.clone(), rotation: entry.candidate.rotation.clone(), type: entry.candidate.type },
+    };
+  });
   lastPolicyComparison = {
     index: ++policySnapshotCount,
     frontier: entries.length,
@@ -9307,11 +9385,14 @@ function capturePolicyComparison(entries) {
     referenceGuided: !reconstructionCertified,
     uniqueTopActions: new Set(policies.map((policy) => policy.candidateKey).filter(Boolean)).size,
     everyScoreDecompositionExact: policies.every((policy) => policy.scoreDecompositionExact),
+    workbenchCandidates,
+    workbenchMultipliers: {},
     policies,
   };
   policyComparisonHistory.push(lastPolicyComparison);
   if (policyComparisonHistory.length > 48) policyComparisonHistory.shift();
   selectedPolicySnapshotIndex = policyComparisonHistory.length - 1;
+  selectedPolicyPreviewId = "active";
 }
 
 function candidateSites(candidate) {
@@ -13610,13 +13691,34 @@ function previewPolicyWinner(policy, snapshot) {
   renderPolicyComparison();
 }
 
-function renderPolicyScoreLedger(policy) {
+function cyclePolicyWorkbenchTerm(snapshot, termId) {
+  const current = workbenchMultiplier(snapshot, termId);
+  snapshot.workbenchMultipliers[termId] = current === 1 ? 0 : current === 0 ? 2 : 1;
+  selectedPolicyPreviewId = "workbench";
+  previewPolicyWinner(buildPolicyWorkbench(snapshot), snapshot);
+}
+
+function renderPolicyWorkbenchState(snapshot, workbench = buildPolicyWorkbench(snapshot)) {
+  if (!snapshot || !workbench) {
+    policyWorkbenchState.textContent = "awaiting a frozen frontier";
+    policyWorkbenchReset.disabled = true;
+    return;
+  }
+  policyWorkbenchReset.disabled = workbench.changedTerms === 0;
+  policyWorkbenchState.textContent = workbench.changedTerms === 0
+    ? "baseline weights · preview only"
+    : `${workbench.changedTerms} term${workbench.changedTerms === 1 ? "" : "s"} changed · winner ${workbench.winnerChanged ? "switched" : "unchanged"}`;
+}
+
+function renderPolicyScoreLedger(policy, snapshot = null) {
   policyScoreLedger.replaceChildren();
   if (!policy?.scoreTerms?.length) {
     policyScoreLedgerState.textContent = "no selected action";
+    renderPolicyWorkbenchState(null);
     return;
   }
   const visibleTerms = policy.scoreTerms.filter((term) => Math.abs(term.contribution) > 1e-12
+    || Math.abs(term.baselineContribution || 0) > 1e-12
     || term.id === "grammar-priority" || term.id === "known-window-gain");
   const maximum = Math.max(1e-12, ...visibleTerms.map((term) => Math.abs(term.contribution)));
   visibleTerms.forEach((term) => {
@@ -13627,10 +13729,18 @@ function renderPolicyScoreLedger(policy) {
     const fill = document.createElement("i"); fill.className = term.contribution >= 0 ? "positive" : "negative";
     fill.style.transform = `scaleX(${Math.abs(term.contribution) / maximum})`; bar.append(fill);
     const value = document.createElement("b"); value.textContent = `${term.contribution >= 0 ? "+" : ""}${term.contribution.toFixed(3)}`;
-    row.append(label, bar, value); policyScoreLedger.append(row);
+    const multiplier = document.createElement("button"); multiplier.type = "button";
+    const factor = snapshot ? workbenchMultiplier(snapshot, term.id) : 1;
+    multiplier.textContent = `×${factor}`; multiplier.classList.toggle("changed", factor !== 1);
+    multiplier.disabled = !snapshot || !["active", "workbench"].includes(policy.id);
+    multiplier.setAttribute("aria-label", `Cycle ${term.label} frozen-frontier multiplier; current ${factor}`);
+    multiplier.title = "Preview this same frontier with the term off, doubled, or restored; no action is executed";
+    if (!multiplier.disabled) multiplier.addEventListener("click", () => cyclePolicyWorkbenchTerm(snapshot, term.id));
+    row.append(label, bar, value, multiplier); policyScoreLedger.append(row);
   });
   const activeTerms = policy.scoreTerms.filter((term) => Math.abs(term.weight) > 0).length;
   policyScoreLedgerState.textContent = `Σ ${policy.scoreTermTotal.toFixed(3)} = score · ${activeTerms} term${activeTerms === 1 ? "" : "s"} · ${policy.scoreDecompositionExact ? "exact" : "mismatch"}`;
+  renderPolicyWorkbenchState(snapshot);
 }
 
 function renderPolicyComparison() {
@@ -13668,6 +13778,7 @@ function renderPolicyComparison() {
     return;
   }
   const snapshot = policyComparisonHistory[selectedPolicySnapshotIndex] || lastPolicyComparison;
+  const workbench = buildPolicyWorkbench(snapshot);
   policyComparisonState.textContent = `${snapshot.frontier} candidates · ${snapshot.admissible} admitted · ${snapshot.uniqueTopActions} winner${snapshot.uniqueTopActions === 1 ? "" : "s"}`
     + `${snapshot.referenceGuided ? " · target-aware replay" : " · target-blind frontier"}`;
   snapshot.policies.forEach((policy) => {
@@ -13681,8 +13792,21 @@ function renderPolicyComparison() {
     row.append(label, action, score); policyComparison.append(row);
     row.addEventListener("click", () => previewPolicyWinner(policy, snapshot));
   });
-  renderPolicyScoreLedger(snapshot.policies.find((policy) => policy.id === selectedPolicyPreviewId)
-    || snapshot.policies.find((policy) => policy.id === "active") || snapshot.policies.at(-1));
+  if (workbench) {
+    const row = document.createElement("button"); row.type = "button";
+    row.classList.toggle("active", selectedPolicyPreviewId === "workbench");
+    row.setAttribute("aria-pressed", String(selectedPolicyPreviewId === "workbench"));
+    row.title = "Preview the frozen-frontier hypothesis intervention; this never executes";
+    const label = document.createElement("small"); label.textContent = workbench.label;
+    const action = document.createElement("strong"); action.textContent = workbench.action;
+    const score = document.createElement("em"); score.textContent = workbench.score.toFixed(3);
+    row.append(label, action, score); policyComparison.append(row);
+    row.addEventListener("click", () => previewPolicyWinner(workbench, snapshot));
+  }
+  const selectedScorePolicy = selectedPolicyPreviewId === "workbench" ? workbench
+    : snapshot.policies.find((policy) => policy.id === selectedPolicyPreviewId)
+      || snapshot.policies.find((policy) => policy.id === "active") || snapshot.policies.at(-1);
+  renderPolicyScoreLedger(selectedScorePolicy, snapshot);
   const sensitive = policyComparisonHistory.filter((entry) => entry.uniqueTopActions > 1).length;
   const meanWinners = policyComparisonHistory.reduce((sum, entry) => sum + entry.uniqueTopActions, 0)
     / Math.max(1, policyComparisonHistory.length);
@@ -13703,9 +13827,11 @@ function renderPolicyComparison() {
     });
     policyHistoryElement.append(button);
   });
-  const selectedPolicy = snapshot.policies.find((policy) => policy.id === selectedPolicyPreviewId) || snapshot.policies.at(-1);
+  const selectedPolicy = selectedPolicyPreviewId === "workbench" ? workbench
+    : snapshot.policies.find((policy) => policy.id === selectedPolicyPreviewId) || snapshot.policies.at(-1);
   policyPreviewState.textContent = `${selectedPolicy.label}: ${selectedPolicy.action} · frontier ${snapshot.candidateDigest} · candidate set target-free`
-    + `${snapshot.rankingTargetUsed ? " · replay score reference-guided" : " · ranking target-free"}`;
+    + `${snapshot.rankingTargetUsed ? " · replay score reference-guided" : " · ranking target-free"}`
+    + `${selectedPolicy.id === "workbench" ? " · counterfactual preview only · not executed" : ""}`;
 }
 
 function liveGrowthCertificate() {
@@ -14946,6 +15072,14 @@ resampleGrowthButton.addEventListener("click", () => {
   growthPathSeed += 1;
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
+});
+policyWorkbenchReset.addEventListener("click", () => {
+  const snapshot = policyComparisonHistory[selectedPolicySnapshotIndex] || lastPolicyComparison;
+  if (!snapshot) return;
+  snapshot.workbenchMultipliers = {};
+  selectedPolicyPreviewId = "active";
+  const activePolicy = snapshot.policies.find((policy) => policy.id === "active") || snapshot.policies.at(-1);
+  previewPolicyWinner(activePolicy, snapshot);
 });
 growthNucleiSelect.addEventListener("change", () => {
   const value = Number(growthNucleiSelect.value);
