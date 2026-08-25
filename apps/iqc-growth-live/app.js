@@ -191,6 +191,11 @@ const arrivalPathWeightSelect = $("arrivalPathWeightSelect");
 const arrivalPathHint = $("arrivalPathHint");
 const arrivalPathBadge = $("arrivalPathBadge");
 const arrivalPathBadgeLabel = $("arrivalPathBadgeLabel");
+const explorationScaleSelect = $("explorationScaleSelect");
+const explorationScaleHint = $("explorationScaleHint");
+const resampleGrowthButton = $("resampleGrowthButton");
+const explorationBadge = $("explorationBadge");
+const explorationBadgeLabel = $("explorationBadgeLabel");
 const growthSchedulingSelect = $("growthSchedulingSelect");
 const growthSchedulingHint = $("growthSchedulingHint");
 const trainVariantButton = $("trainVariantButton");
@@ -668,6 +673,8 @@ let acceptedBlockedPathSamples = 0;
 let rejectedBlockedPathSamples = 0;
 let arrivalPathSiteSamples = 0;
 let arrivalPathNeighborhoodChecks = 0;
+let acceptedExplorationOffset = 0;
+let rejectedExplorationOffset = 0;
 let constraintNeighborhoodEvaluations = 0;
 let constraintNeighborhoodSiteTotal = 0;
 let maximumConstraintNeighborhoodSites = 0;
@@ -736,6 +743,8 @@ let loopClosurePreference = "none";
 let loopClosureWeight = .24;
 let arrivalPathMode = "none";
 let arrivalPathWeight = .24;
+let geometricExplorationScale = 0;
+let growthPathSeed = 1;
 let growthScheduling = "commuting";
 let nextMarkingId = 1;
 let geometryMode = "auto";
@@ -5499,7 +5508,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-85",
+      buildId: "20260825-86",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -5963,6 +5972,23 @@ async function buildExperimentReceipt() {
         barrierOrRateInferred: false,
         physicalTimeIntegrated: false,
       },
+      configurationalPathEnsemble: {
+        role: "reproducible Gumbel ordering over the unchanged exact frontier after all declared geometric terms",
+        dimensionlessExplorationScale: geometricExplorationScale,
+        seed: growthPathSeed,
+        mode: geometricExplorationScale > 0 ? "sampled exact branch ordering" : "greedy deterministic ordering",
+        acceptedMeanOffset: receiptRound(acceptedExplorationOffset / Math.max(1, acceptedDecisions)),
+        rejectedMeanOffset: receiptRound(rejectedExplorationOffset / Math.max(1, rejectedDecisions)),
+        hashInputs: ["growthPathSeed", "eventIndex", "candidateKey"],
+        candidateSetChanged: false,
+        hardAdmissionChanged: false,
+        exactCandidateGeometryChanged: false,
+        physicalTemperatureKelvin: null,
+        energyUnitsUsed: false,
+        boltzmannDistributionClaimed: false,
+        freeEnergyInferred: false,
+        physicalTimeIntegrated: false,
+      },
       localConstraintWork: {
         role: "exact finite-reach neighborhood evaluation via the live spatial index; not an approximation or sampled cutoff",
         maximumReachAngstrom: receiptRound(coloredCoordinationEnvelopes.maximumCutoff * referenceSpacingA / referenceSpacing),
@@ -6083,6 +6109,8 @@ function notebookInterventionFactors(receipt) {
       microstructure: [search.microstructureCouplingRanking?.mode, search.microstructureCouplingRanking?.effectiveWeight],
       loopClosure: [search.mesoscopicLoopClosureRanking?.mode, search.mesoscopicLoopClosureRanking?.effectiveWeight],
       arrivalPath: [search.geometricArrivalPathRanking?.mode, search.geometricArrivalPathRanking?.effectiveWeight],
+      pathEnsemble: [search.configurationalPathEnsemble?.dimensionlessExplorationScale,
+        search.configurationalPathEnsemble?.seed],
     } : null) },
     scheduling: { label: "tree scheduling", role: "search", value: serialized(search?.scheduling || null) },
     hierarchy: { label: "clusters² promotion", role: "search", value: String(search?.hierarchyEnabled ?? "not entered") },
@@ -7258,6 +7286,22 @@ function activeArrivalPathWeight() {
   return arrivalPathMode === "none" ? 0 : arrivalPathWeight;
 }
 
+function deterministicPathUniform(candidateKey) {
+  const serialized = `${growthPathSeed}|${eventIndex}|${candidateKey}`;
+  let hash = 0x811c9dc5;
+  for (let index = 0; index < serialized.length; index++) {
+    hash ^= serialized.charCodeAt(index);
+    hash = Math.imul(hash, 0x01000193) >>> 0;
+  }
+  return (hash + .5) / 0x100000000;
+}
+
+function geometricExplorationOffset(candidate) {
+  if (geometricExplorationScale <= 0) return 0;
+  const uniform = Math.max(1e-12, Math.min(1 - 1e-12, deterministicPathUniform(candidate.key)));
+  return geometricExplorationScale * -Math.log(-Math.log(uniform));
+}
+
 function arrivalPathLabel(mode = arrivalPathMode) {
   return ({ none: "final pose only", "parent-outward": "parent-normal arrival",
     "radial-outward": "seed-radial arrival", "declared-drive": "declared-drive arrival" })[mode]
@@ -7434,7 +7478,10 @@ function capturePolicyComparison(entries) {
       score: (entry) => entry.baseScore + activeLoopClosureWeight() * entry.evaluation.loopClosure.score },
     { id: "arrival-path", label: `${arrivalPathLabel()} ${activeArrivalPathWeight().toFixed(2)}`,
       score: (entry) => entry.baseScore + activeArrivalPathWeight() * entry.evaluation.arrivalPath.score },
-    { id: "active", label: "active combined", score: (entry) => entry.score },
+    { id: "combined", label: "combined greedy", score: (entry) => entry.score },
+    { id: "active", label: geometricExplorationScale > 0
+      ? `sampled T* ${geometricExplorationScale.toFixed(2)}` : "active greedy",
+      score: (entry) => entry.selectionScore },
   ].map((policy) => {
     const ranked = admissible.map((entry) => ({ entry, score: policy.score(entry) }))
       .sort((first, second) => second.score - first.score || first.entry.candidate.key.localeCompare(second.entry.candidate.key));
@@ -7656,12 +7703,7 @@ function commutingFrontierBatch() {
   const evaluated = frontierCandidates.map((candidate) => {
     const evaluation = evaluateCandidate(candidate);
     const baseScore = dynamicCandidatePriority(candidate) + 2.5 * candidateReferenceGain(candidate, audit);
-    return {
-      candidate,
-      evaluation,
-      sites: evaluation.sites,
-      baseScore,
-      score: baseScore
+    const score = baseScore
         - activeGeometricStrainWeight() * effectiveGeometricStrain(evaluation).total
         - activeCompositionBalanceWeight() * evaluation.compositionBalance.scaledDelta
         - activeFormalChargeWeight() * evaluation.formalChargeBalance.scaledDelta
@@ -7670,11 +7712,15 @@ function commutingFrontierBatch() {
         + activeRobustnessWeight() * evaluation.constraintRobustness.score
         + activeMicrostructureCouplingWeight() * evaluation.microstructureCoupling.score
         + activeLoopClosureWeight() * evaluation.loopClosure.score
-        + activeArrivalPathWeight() * evaluation.arrivalPath.score,
-    };
+        + activeArrivalPathWeight() * evaluation.arrivalPath.score;
+    const explorationOffset = geometricExplorationOffset(candidate);
+    candidate.explorationOffset = explorationOffset;
+    return { candidate, evaluation, sites: evaluation.sites, baseScore, score,
+      explorationOffset, selectionScore: score + explorationOffset };
   });
   capturePolicyComparison(evaluated);
-  const ranked = evaluated.sort((first, second) => second.score - first.score || first.candidate.key.localeCompare(second.candidate.key));
+  const ranked = evaluated.sort((first, second) => second.selectionScore - first.selectionScore
+    || first.candidate.key.localeCompare(second.candidate.key));
   if (overlapGrammar.molecular && !reconstructionCertified) {
     const ordered = ranked.slice().sort((first, second) => first.candidate.rule.replayOrder - second.candidate.rule.replayOrder);
     for (const entry of ordered) {
@@ -7856,6 +7902,8 @@ function initializeOffLatticeSearch() {
   rejectedBlockedPathSamples = 0;
   arrivalPathSiteSamples = 0;
   arrivalPathNeighborhoodChecks = 0;
+  acceptedExplorationOffset = 0;
+  rejectedExplorationOffset = 0;
   constraintNeighborhoodEvaluations = 0;
   constraintNeighborhoodSiteTotal = 0;
   maximumConstraintNeighborhoodSites = 0;
@@ -8402,6 +8450,11 @@ function syncStageOptions() {
   arrivalPathBadge.style.top = `${49 + 35 * Number(externalDriveMode !== "none")
     + 35 * Number(affineLoadMode !== "none") + 35 * Number(loopClosurePreference !== "none")}px`;
   arrivalPathBadgeLabel.textContent = `${arrivalPathLabel()} · w ${arrivalPathWeight.toFixed(2)}`;
+  explorationBadge.hidden = pipelineStage !== 4 || geometricExplorationScale <= 0;
+  explorationBadge.style.top = `${49 + 35 * Number(externalDriveMode !== "none")
+    + 35 * Number(affineLoadMode !== "none") + 35 * Number(loopClosurePreference !== "none")
+    + 35 * Number(arrivalPathMode !== "none")}px`;
+  explorationBadgeLabel.textContent = `T* ${geometricExplorationScale.toFixed(2)} · seed ${growthPathSeed}`;
   stageOptionsPanel.hidden = !visible;
   if (!visible) return;
   const clustering = pipelineStage === 1;
@@ -8496,6 +8549,7 @@ function syncStageOptions() {
     loopClosureWeightSelect.value = String(loopClosureWeight);
     arrivalPathSelect.value = arrivalPathMode;
     arrivalPathWeightSelect.value = String(arrivalPathWeight);
+    explorationScaleSelect.value = String(geometricExplorationScale);
     growthSchedulingSelect.value = growthScheduling;
     geometryPreferenceSelect.disabled = finiteIceAnchorMode;
     strainWeightSelect.disabled = finiteIceAnchorMode || geometryPreference !== "strain";
@@ -8514,6 +8568,9 @@ function syncStageOptions() {
     loopClosureWeightSelect.disabled = finiteIceAnchorMode || loopClosurePreference === "none";
     arrivalPathSelect.disabled = finiteIceAnchorMode;
     arrivalPathWeightSelect.disabled = finiteIceAnchorMode || arrivalPathMode === "none";
+    explorationScaleSelect.disabled = finiteIceAnchorMode;
+    resampleGrowthButton.disabled = finiteIceAnchorMode || geometricExplorationScale <= 0;
+    resampleGrowthButton.textContent = `↻ Resample path · seed ${growthPathSeed}`;
     growthSchedulingSelect.disabled = finiteIceAnchorMode;
     growthSchedulingHint.textContent = growthScheduling === "commuting"
       ? "maximal commuting set" : "one branch decision";
@@ -8537,6 +8594,8 @@ function syncStageOptions() {
       : arrivalPathMode === "declared-drive" && externalDriveMode === "none"
         ? "requires external driving geometry · score zero"
         : `${arrivalPathLabel()} · 9 samples × 2dₙₙ · weight ${arrivalPathWeight.toFixed(2)}`;
+    explorationScaleHint.textContent = geometricExplorationScale > 0
+      ? `dimensionless T* ${geometricExplorationScale.toFixed(2)} · seed ${growthPathSeed}` : "greedy · T* = 0";
     stageOptionsState.textContent = `${policySelect.value === "marked" && active ? active.name.split(" · ")[0] : "baseline"} · ${geometryPreference === "strain" ? `strain ${geometricStrainWeight.toFixed(2)}` : "no strain"}`;
     primitiveGrowthButton.classList.toggle("active", finiteIceAnchorMode || !hierarchyEnabled);
     primitiveGrowthButton.setAttribute("aria-pressed", String(finiteIceAnchorMode || !hierarchyEnabled));
@@ -8577,11 +8636,14 @@ function syncStageOptions() {
     const arrivalPathUse = arrivalPathMode === "none"
       ? " Swept arrival clearance is disabled; only the final pose is tested."
       : ` A ${arrivalPathWeight.toFixed(2)} soft accessibility term sweeps emitted sites along a 9-point ${arrivalPathLabel()} path spanning 2dₙₙ; it is not a barrier or trajectory.`;
+    const explorationUse = geometricExplorationScale > 0
+      ? ` Reproducible Gumbel sampling at dimensionless T*=${geometricExplorationScale.toFixed(2)} and seed ${growthPathSeed} explores alternate exact branch orders; this is not Kelvin temperature or Boltzmann sampling.`
+      : " Frontier selection is deterministic greedy ordering (T*=0).";
     growthModeNote.textContent = finiteIceAnchorMode
       ? "This sealed ice gate executes primitive H₂O connection ports with mutually exclusive orientation domains. Clusters² is disabled because no stationary promoted ice production has been certified."
       : hierarchyEnabled
-      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}`
-      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}`;
+      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${explorationUse}`
+      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${explorationUse}`;
   }
 }
 
@@ -8619,6 +8681,8 @@ function resetCounters() {
   rejectedBlockedPathSamples = 0;
   arrivalPathSiteSamples = 0;
   arrivalPathNeighborhoodChecks = 0;
+  acceptedExplorationOffset = 0;
+  rejectedExplorationOffset = 0;
   constraintNeighborhoodEvaluations = 0;
   constraintNeighborhoodSiteTotal = 0;
   maximumConstraintNeighborhoodSites = 0;
@@ -8929,6 +8993,11 @@ function stateForCandidate(candidate, evaluation) {
     microstructureCoupling: evaluation.microstructureCoupling,
     loopClosure: evaluation.loopClosure,
     arrivalPath: evaluation.arrivalPath,
+    geometricExploration: {
+      dimensionlessScale: geometricExplorationScale,
+      seed: growthPathSeed,
+      offset: candidate.explorationOffset || 0,
+    },
   };
 }
 
@@ -9052,6 +9121,7 @@ function performOffLatticeEvent() {
       rejectedBlockedPathSamples += snapshotEvaluation.arrivalPath.blockedSiteSamples;
       arrivalPathSiteSamples += snapshotEvaluation.arrivalPath.siteSamples;
       arrivalPathNeighborhoodChecks += snapshotEvaluation.arrivalPath.neighborhoodChecks;
+      rejectedExplorationOffset += candidate.explorationOffset || 0;
       rejectedInBatch++;
       appendHistory("reject", { type: "reject", depth: placedClusters.find((placement) => placement.id === candidate.parentId)?.depth || 0,
         action: state.action, family: evaluation.reason });
@@ -9090,6 +9160,7 @@ function performOffLatticeEvent() {
     acceptedBlockedPathSamples += evaluation.arrivalPath.blockedSiteSamples;
     arrivalPathSiteSamples += evaluation.arrivalPath.siteSamples;
     arrivalPathNeighborhoodChecks += evaluation.arrivalPath.neighborhoodChecks;
+    acceptedExplorationOffset += candidate.explorationOffset || 0;
     acceptedInBatch++;
     freshInBatch += evaluation.fresh.length;
     appendHistory(decision.reuse ? "reuse" : "accept", { type: "accept", depth: placement.depth, action: state.action,
@@ -9664,6 +9735,12 @@ function physicsTranslationRecords(leap = null) {
         : "none; the accepted whole-cluster antichain jumps directly between certified structural states",
       evidence: leap ? `${arrivalPathSiteSamples.toLocaleString()} site-path samples and ${arrivalPathNeighborhoodChecks.toLocaleString()} existing-neighbor checks; ${leap.after.atoms - leap.before.atoms} explicit sites emitted.` : "The seed has no physical clock.",
       boundary: "Swept clearance is not a minimum-energy path. No barrier, rate, pathway probability, thermostat, phonon transport, diffusion, hydrodynamics, relaxation trajectory, or physical duration is inferred." },
+    { id: "path-ensemble", process: "configurational pathway multiplicity", status: geometricExplorationScale > 0 ? "sampled" : "open", role: geometricExplorationScale > 0 ? "reproducible exact-branch exploration" : "deterministic greedy ordering",
+      encoding: geometricExplorationScale > 0
+        ? `FNV-keyed Gumbel offsets at dimensionless T*=${geometricExplorationScale.toFixed(2)}, seed ${growthPathSeed}; candidate geometry and every hard gate are unchanged`
+        : "T*=0; the highest exact combined score is selected deterministically",
+      evidence: leap ? `Accepted mean ordering offset ${receiptRound(acceptedExplorationOffset / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedExplorationOffset / Math.max(1, rejectedDecisions), 4)}.` : "No branch order has been sampled yet.",
+      boundary: "T* is not Kelvin temperature. These offsets are not energy, Boltzmann weights, equilibrium probabilities, free energy, kinetics, or physical time." },
     { id: "long-range", process: "long-range elasticity, electrostatics, and electronic response", status: "open", role: "outside the bounded local grammar",
       encoding: `local constraint reach is at most ${coloredCoordinationEnvelopes ? (coloredCoordinationEnvelopes.maximumCutoff * referenceSpacingA / referenceSpacing).toFixed(2) : "—"} Å; ${[affineLoadMode === "none" ? null : `${affineLoadModeLabel()} metric`, activeExternalDriveWeight() > 0 ? `${externalDriveModeLabel()} drive` : null].filter(Boolean).join(" + ") || "no external condition"} is imposed geometrically, but nonlocal material response is unsolved`,
       evidence: "The portal reports this omission instead of silently folding it into a local score.",
@@ -9929,6 +10006,13 @@ function geometryConstraintEvidence(name, term, state, mode) {
         ? `Soft rank term with weight ${activeArrivalPathWeight().toFixed(2)}; final-pose admission is unchanged.` : "Disabled; final pose only.",
       boundary: "This is one declared rigid arrival geometry, not a transition path, activation barrier, diffusion event, assembly mechanism, probability, rate, or elapsed time.",
     },
+    "configurational path ensemble": {
+      observed: `dimensionless T*=${geometricExplorationScale.toFixed(2)} · seed ${growthPathSeed} · event ${eventIndex}`,
+      encoding: "A deterministic hash of seed, event index, and exact candidate key produces one reproducible Gumbel ordering offset. No coordinate, candidate, or hard certificate is changed.",
+      searchRole: geometricExplorationScale > 0
+        ? "Samples one alternative ordering of the unchanged admitted frontier." : "Greedy deterministic ordering; offset zero.",
+      boundary: "The exploration scale has no Kelvin or energy units and does not imply Boltzmann sampling, thermodynamic probability, free energy, a transition rate, or elapsed time.",
+    },
     "GCTS marking": {
       observed: `${trainingProgress}/${markingSampleCount()} ${sectionModel?.sampleKind || "connection"} samples · ${iceAnchorTrace?.portCount || overlapGrammar?.rules?.length || 0} frozen connection states`,
       encoding: mode === "specialized"
@@ -10015,6 +10099,9 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "arrival-path accessibility", status: ranked(activeArrivalPathWeight() > 0),
       value: state.arrivalPath ? `${signed(state.arrivalPath.score)} · ${state.arrivalPath.blockedSiteSamples}/${state.arrivalPath.siteSamples} blocked samples` : "not evaluated",
       detail: activeArrivalPathWeight() > 0 ? `rank weight ${activeArrivalPathWeight().toFixed(2)} · ${arrivalPathLabel()}` : "disabled · final pose only" },
+    { name: "configurational path ensemble", status: geometricExplorationScale > 0 ? "sampled" : "diagnostic",
+      value: state.geometricExploration ? `${signed(state.geometricExploration.offset)} · T* ${state.geometricExploration.dimensionlessScale.toFixed(2)} · seed ${state.geometricExploration.seed}` : "not evaluated",
+      detail: geometricExplorationScale > 0 ? "reproducible branch-order offset · unchanged geometry and hard gates" : "greedy ordering · offset zero" },
     { name: "GCTS marking", status: policySelect.value === "marked" ? state.markingAccepted ? "pass" : "fail" : "diagnostic",
       value: policySelect.value === "marked" ? state.markingAccepted ? "compatible" : "mismatch" : "not gating",
       detail: "bounded transported connection section" },
@@ -11213,6 +11300,18 @@ arrivalPathSelect.addEventListener("change", () => {
 arrivalPathWeightSelect.addEventListener("change", () => {
   const value = Number(arrivalPathWeightSelect.value);
   arrivalPathWeight = [.12, .24, .48].includes(value) ? value : .24;
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+explorationScaleSelect.addEventListener("change", () => {
+  const value = Number(explorationScaleSelect.value);
+  geometricExplorationScale = [0, .05, .15, .35].includes(value) ? value : 0;
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+resampleGrowthButton.addEventListener("click", () => {
+  if (geometricExplorationScale <= 0) return;
+  growthPathSeed += 1;
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
 });

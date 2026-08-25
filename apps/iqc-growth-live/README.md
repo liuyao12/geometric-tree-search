@@ -3711,3 +3711,21 @@ fallback and reproduces the V3 `1,102`-lineage digest exactly. A wider
 the original joint tier and zero from the fallbacks, so V4 remains an
 experimental coverage hedge—not a demonstrated scientific improvement or a
 reason to consume another fresh target yet.
+
+## Reproducible configurational-path ensemble
+
+Material Growth can now explore several exact branch orderings without
+changing the frozen frontier. The user chooses a dimensionless geometric
+exploration scale `T*` (`0`, `0.05`, `0.15`, or `0.35`) and can resample with a
+button-controlled integer seed; there are no free-text parameters. A stable
+hash of the seed, event index, and exact candidate key generates a Gumbel
+ordering offset. The same seed reproduces the same ordering, while another
+seed can expose a different compatible history.
+
+This is deliberately a configurational search ensemble, not thermodynamics.
+Candidate positions, colored overlaps, the public boundary, collision tests,
+coordination limits, and every hard certificate are identical to greedy
+search. `T*` is not Kelvin temperature or an energy, and the app does not claim
+Boltzmann weights, equilibrium probabilities, free energies, rates, or
+physical time. The experiment receipt records the scale, seed, hash inputs,
+and these claim boundaries so sampled and greedy runs remain auditable.

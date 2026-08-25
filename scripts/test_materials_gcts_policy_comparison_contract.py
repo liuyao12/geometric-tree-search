@@ -18,7 +18,7 @@ def test_policy_comparison_reuses_one_hard_admitted_frontier() -> None:
     assert "function capturePolicyComparison(entries)" in source
     assert "const admissible = entries.filter((entry) => entry.evaluation.accepted)" in source
     assert "capturePolicyComparison(evaluated)" in source
-    for label in ("mark + recurrence", "elastic 0.16", "composition 0.35", "formal charge 0.25", "surface 0.18", "active combined"):
+    for label in ("mark + recurrence", "elastic 0.16", "composition 0.35", "formal charge 0.25", "surface 0.18", "combined greedy", "active greedy", "sampled T*"):
         assert label in source
     assert 'referenceGuided: !reconstructionCertified' in source
     assert 'candidateSetTargetUsed: false' in source

@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260825-40">
+  <link rel="stylesheet" href="./style.css?v=20260825-41">
   <script type="importmap">
     {
       "imports": {
@@ -538,6 +538,16 @@
                 <option value="serial">Serial best-first · one branch decision</option>
               </select>
             </label>
+            <label class="field" for="explorationScaleSelect">
+              <span>Configurational path ensemble <b id="explorationScaleHint">greedy · T* = 0</b></span>
+              <select id="explorationScaleSelect">
+                <option value="0" selected>Greedy · deterministic best score</option>
+                <option value="0.05">T* 0.05 · narrow alternatives</option>
+                <option value="0.15">T* 0.15 · balanced exploration</option>
+                <option value="0.35">T* 0.35 · broad exploration</option>
+              </select>
+            </label>
+            <button id="resampleGrowthButton" class="train-variant" type="button">↻ Resample path · seed 1</button>
             <section class="policy-comparison-card" aria-label="Counterfactual frontier ranking">
               <div><small>same frozen frontier</small><strong>Physics-policy comparison</strong><span id="policyComparisonState">advance one update</span></div>
               <div id="policyComparison" class="policy-comparison"></div>
@@ -825,6 +835,7 @@
           <div id="affineLoadBadge" class="affine-load-badge" hidden><i id="affineLoadGlyph">⇳</i><span><b id="affineLoadBadgeLabel">2% affine load</b><small>deformed metric · coordinates unchanged</small></span></div>
           <div id="loopClosureBadge" class="loop-closure-badge" hidden><i>⟳</i><span><b id="loopClosureBadgeLabel">loop closure</b><small>multi-parent geometric consensus</small></span></div>
           <div id="arrivalPathBadge" class="arrival-path-badge" hidden><i>⇢</i><span><b id="arrivalPathBadgeLabel">arrival path</b><small>swept clearance · no barrier</small></span></div>
+          <div id="explorationBadge" class="exploration-badge" hidden><i>∿</i><span><b id="explorationBadgeLabel">T* 0.15 · seed 1</b><small>reproducible path sampling</small></span></div>
           <div class="axis-labels" aria-hidden="true"><span class="x">x</span><span class="y">y</span><span class="z">z</span></div>
           <div class="viewport-caption"><span id="captionAction">Every point is an observed species and position; no cluster labels are supplied.</span></div>
         </div>
@@ -1000,7 +1011,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-85"></script>
+  <script type="module" src="./app.js?v=20260825-86"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>
