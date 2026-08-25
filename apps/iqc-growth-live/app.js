@@ -23,7 +23,7 @@ import { formalChargeBalanceDelta, learnFormalChargeTarget } from "./formal-char
 import {
   discoverFiniteMolecularComponents,
   discoverMolecularConnectionTopology,
-} from "./molecular-components.js?v=20260824-2";
+} from "./molecular-components.js?v=20260824-3";
 import {
   aggregateMarkingReadout,
   coloredConnectionChirality,
@@ -52,6 +52,10 @@ import {
 } from "./growth-environments.js?v=20260824-1";
 import { auditGeometricMicrostructure } from "./microstructure-audit.js?v=20260824-1";
 import { CDYB_BROWSER_FIXTURE } from "./cdyb-browser-fixture.js?v=20260824-1";
+import {
+  generateIceViiiObservation,
+  ICE_VIII_BROWSER_FIXTURE,
+} from "./ice-viii-browser-fixture.js?v=20260824-1";
 
 const ICE_MOLECULAR_PORT_ARTIFACT = await fetch(new URL(
   "./ice-molecular-port-artifact.json?v=20260824-1", import.meta.url)).then((response) => {
@@ -290,6 +294,7 @@ const RDF_MAX_RADIUS = 4.2;
 const COORDINATION_CUTOFF = 1.32;
 const ELEMENTS = {
   H: { color: 0xf2f2f2, css: "#f2f2f2", radius: .31 },
+  D: { color: 0xd9f4ff, css: "#d9f4ff", radius: .31 },
   Li: { color: 0xcc80ff, css: "#cc80ff", radius: 1.28 },
   B: { color: 0xffb5b5, css: "#ffb5b5", radius: .84 },
   C: { color: 0x909090, css: "#909090", radius: .76 },
@@ -321,6 +326,24 @@ const ELEMENTS = {
 const MATERIALS = {
   iceIh: { name: "ice Ih", elements: ["H", "O"], spacingA: .9572, cell: "hexagonal ice · proton-ordered fixture", periodicWindow: true, order: "crystal", symmetry: "P6₃/mmc oxygen network", audit: "molecular cover + hydrogen-bond graph", motifShellCutoff: 3.12, descriptorCutoff: 3.25, overlapDistanceCutoff: 3.35, icePolytype: "Ih", note: "The learner must discover H₂O molecules, then use overlapping water-dimer and oxygen-ring connection clusters to traverse the crystal." },
   iceIc: { name: "ice Ic", elements: ["H", "O"], spacingA: .9572, cell: "cubic ice · proton-ordered fixture", periodicWindow: true, order: "crystal", symmetry: "Fd-3m oxygen network", audit: "molecular cover + hydrogen-bond graph", motifShellCutoff: 3.12, descriptorCutoff: 3.25, overlapDistanceCutoff: 3.35, icePolytype: "Ic", note: "A cubic-ice control with the same H₂O motif but a different cluster-of-clusters connection grammar." },
+  iceVIII: { name: "ice VIII · D₂O", elements: ["D", "O"], spacingA: .9732640323944047,
+    cell: "tetragonal proton-ordered ice · COD 1566658 · 2×2×2 observation window",
+    periodicWindow: true, order: "crystal", symmetry: "I4₁/amd · #141",
+    audit: "published neutron geometry + molecular/connection/void cover",
+    motifShellCutoff: 3.0, descriptorCutoff: 3.35, overlapDistanceCutoff: 3.55,
+    molecularFixture: "ice-viii-cod-1566658",
+    fixtureProvenance: {
+      id: `COD-${ICE_VIII_BROWSER_FIXTURE.codId}`,
+      name: "proton-ordered D₂O ice VIII",
+      atomCount: 192,
+      articleDoi: ICE_VIII_BROWSER_FIXTURE.doi,
+      sourceUrl: `https://www.crystallography.net/cod/${ICE_VIII_BROWSER_FIXTURE.codId}.cif`,
+      license: ICE_VIII_BROWSER_FIXTURE.license,
+      sourceSha256: ICE_VIII_BROWSER_FIXTURE.cifSha256,
+      normalizedAtomsSha256: ICE_VIII_BROWSER_FIXTURE.normalizedAtomsSha256,
+      sourceRevision: ICE_VIII_BROWSER_FIXTURE.codRevision,
+    },
+    note: "A published neutron-diffraction control with explicit, fully occupied deuterium sites. D is retained as an isotope; the learner receives only D/O identities and Cartesian positions, not the D₂O formula or ice-VIII label." },
   dryIce: { name: "dry ice CO₂-I", elements: ["C", "O"], spacingA: 1.168, cell: "cubic molecular solid · Pa-3 · a = 5.578 Å", periodicWindow: true, referenceCellA: 16.734, order: "crystal", symmetry: "Pa-3 · #205", audit: "generic molecular + connection + void cover", motifShellCutoff: 4.2, descriptorCutoff: 4.6, overlapDistanceCutoff: 4.8, molecularFixture: "dry-ice-pa3", note: "A non-water molecular-crystal control: the learner must discover linear CO₂ components and intermolecular connection/void topology without receiving the CO₂ formula or Pa-3 label." },
   graphene: { name: "graphene monolayer", elements: ["C"], spacingA: 1.42, cell: "single hexagonal sheet", order: "crystal", symmetry: "p6/mmm layer group", audit: "2D translations + diffraction", intrinsicDimension: 2, planarLayers: [{ angle: 0, zA: 0, species: ["C", "C"] }], note: "A one-component intrinsic-2D positive control learned after arbitrary embedding in 3D." },
   hbn: { name: "aligned hBN bilayer", elements: ["B", "N"], spacingA: 1.44, cell: "aligned hexagonal sheets · 3.33 Å separation", order: "crystal", symmetry: "commensurate bilayer", audit: "2D translations + finite registry", intrinsicDimension: 2, planarLayers: [{ angle: 0, zA: -1.665, species: ["B", "N"] }, { angle: 0, zA: 1.665, species: ["B", "N"] }], note: "A commensurate bilayer whose finite interlayer registry can be represented by a bounded local marking." },
@@ -338,6 +361,9 @@ const MATERIALS = {
 const RECURSIVE_BENCHMARKS = {
   iceIh: { hierarchy: [1, 8, "pose domains"], curve: [27, 43, 51], mark: "unanimous orientation domains", action: "2 exact blind O frontiers", speed: "16 → 8 exact · then fixed", gate: "pass anchor · molecular growth open", status: "limit", note: "The physically corrected fixture obeys the Bernal–Fowler ice rules: every H₂O donates twice and every O–O connection carries exactly one proton. The known periodic window has one H₂O class, 3 decorated bridge classes, and 33 decorated O₆ ring-boundary classes; together their occurrences cover 216/216 atoms. The sealed gate learns 8 proper-SE(3) ports on a disjoint 201-atom window. Factoring mutually exclusive H₂O poses emits 16/16 and then 8/8 correct unseen oxygen anchors before a safe fixed point. Proton orientations remain unresolved, so full-molecule, stationary, and exponential ice growth stay red." },
   iceIc: { hierarchy: [1, 8, "pose domains"], curve: [15, 27], mark: "Ih ports → Ic alternatives", action: "1 exact cross-polytype frontier", speed: "12 exact · then safe fixed point", gate: "progress · cross-polytype blind transfer", status: "limit", note: "The Ih-fitted 8-port grammar transfers to a disjoint cubic-ice seed without refitting or target access. Its first unseen oxygen frontier is 12/12 exact and the whole-molecule path reaches 100% oxygen recall, but premature proton choices lower precision. Domain unanimity rejects unsupported depth-2 anchors rather than emitting false sites. This isolates the remaining task as a bounded proton-orientation connection marking, not a new lattice backend." },
+  iceVIII: { hierarchy: ["D₂O", "bridges", "voids"], curve: [192], mark: "published ordered-isotope geometry",
+    action: "cover audit only", speed: "no autonomous claim", gate: "real-data molecular generalization", status: "control",
+    note: "COD 1566658 supplies fully occupied O and D coordinates from neutron diffraction. The live path must rediscover D₂O molecules and the interpenetrating-network connection/void grammar from positions alone. This is a published known-window cover audit; no held-out ice-VIII continuation, stationary rule, or high-pressure kinetics is claimed." },
   dryIce: { hierarchy: ["molecule", "pair", "void"], curve: [3, 324], mark: "generic molecular ports", action: "94 replay decisions", speed: "324 / 324 · fixed point", gate: "exact known-window control", status: "limit", note: "A saved Pa-3 CO₂-I window exercises the generic, non-water molecular front end. Starting from one 3-atom CO₂ component, 94 deterministic covering decisions produce 95 rigid placements at causal depth 14 and replay all 324/324 known colored sites with zero missing, duplicate, or extraneous atoms. The frozen observed frontier then exhausts with zero outside-window emissions. This is an exact target-aware known-window replay—not autonomous continuation, stationarity, an exponential rule, or a physical growth rate." },
   graphene: { hierarchy: [1, 4, 16], curve: [373, 1495, 5983, 23935, 95743, 382975, 1531903], mark: "one C₂ sheet pose", action: "6 area rewrites → 1.53m", speed: "≈4× area per action", gate: "pass · 2D synthetic", status: "pass", note: "The generic planar atlas learns one C₂ motif pose and exactly predicts an unseen 1,495-atom disk." },
   hbn: { hierarchy: [2, 8, 32], curve: [746, 2990, 11960, 47840, 191360, 765440, 3061760], mark: "finite registry + pose fallback", action: "6 area rewrites → 3.06m", speed: "≈4× area per action", gate: "pass · 2D synthetic", status: "pass", note: "The registry vocabulary remains bounded for the aligned bilayer and the generic planar atlas preserves both learned sheet poses." },
@@ -701,9 +727,12 @@ function renderPublishedFixtureProvenance() {
   publishedFixtureProvenance.hidden = !provenance;
   if (!provenance) return;
   publishedFixtureLicense.textContent = provenance.license;
-  publishedFixtureName.textContent = `${provenance.name} · ${provenance.atoms.length.toLocaleString()} physical atoms`;
+  const atomCount = provenance.atoms?.length || provenance.atomCount;
+  publishedFixtureName.textContent = `${provenance.name}${atomCount ? ` · ${atomCount.toLocaleString()} physical atoms` : ""}`;
   publishedFixtureArticle.href = `https://doi.org/${provenance.articleDoi}`;
-  publishedFixtureArchive.href = `https://doi.org/${provenance.archiveDoi}`;
+  publishedFixtureArticle.textContent = "article DOI";
+  publishedFixtureArchive.href = provenance.sourceUrl || `https://doi.org/${provenance.archiveDoi}`;
+  publishedFixtureArchive.textContent = provenance.sourceUrl ? "source CIF" : "immutable archive";
 }
 
 function syncImportedFrameMaterial() {
@@ -1672,7 +1701,9 @@ function renderTrainingStats() {
       fill: color,
       opacity: markingSelection && markingSelection !== key ? .18 : .72,
     }));
-    const label = learnedCover?.molecular ? ["H₂O", "bridge", "O₆ gap"][index] || `C${index + 1}` : `C${index + 1}`;
+    const label = learnedCover?.molecular
+      ? [learnedCover.molecular.waterLabel || "molecule", "bridge", "O₆ gap"][index] || `C${index + 1}`
+      : `C${index + 1}`;
     coordChart.append(svgNode("text", { x: 29 + (index + .5) * barStep, y: 108, class: "chart-label", "text-anchor": "middle" }, label));
   });
   setChartLegend(coordLegend, [["known-key", "type color = compatible connection port"], ["live-key", "red lobe = absent / failed port"]]);
@@ -1948,6 +1979,29 @@ function makeDryIceReferenceConfiguration() {
     .sort((first, second) => first.p.lengthSq() - second.p.lengthSq() || first.species.localeCompare(second.species));
 }
 
+function makeIceViiiReferenceConfiguration() {
+  const observation = generateIceViiiObservation();
+  const center = new THREE.Vector3(
+    observation.cell[0][0] / 2,
+    observation.cell[1][1] / 2,
+    observation.cell[2][2] / 2,
+  );
+  const scale = .92 / MATERIALS.iceVIII.spacingA;
+  return observation.atoms.map((atom, sourceIndex) => {
+    const pA = new THREE.Vector3(...atom.position);
+    return {
+      pA,
+      p: pA.clone().sub(center).multiplyScalar(scale),
+      species: atom.species,
+      displaySpecies: atom.species,
+      family: "published-ice-viii",
+      sourceIndex,
+      q: atom.q.slice(),
+    };
+  }).sort((first, second) => first.p.lengthSq() - second.p.lengthSq()
+    || first.species.localeCompare(second.species) || first.sourceIndex - second.sourceIndex);
+}
+
 function makeSyntheticReferenceSite(qx, qy, qz, sourceIndex = 0, scenario = scenarioSelect.value) {
   const material = MATERIALS[scenario];
   let family = qx < -Math.abs(qy) * .35 ? "BC8" : qx > Math.abs(qy) * .35 ? "glass" : "IQC";
@@ -2039,6 +2093,7 @@ function makeImportedFrameReference(frame = currentImportedFrame(), sceneScale =
 function makeReferenceConfiguration(scenario = scenarioSelect.value) {
   if (scenario === "imported" && importedStructure) return makeImportedFrameReference();
   if (MATERIALS[scenario]?.icePolytype) return makeIceReferenceConfiguration(MATERIALS[scenario].icePolytype);
+  if (MATERIALS[scenario]?.molecularFixture === "ice-viii-cod-1566658") return makeIceViiiReferenceConfiguration();
   if (MATERIALS[scenario]?.molecularFixture === "dry-ice-pa3") return makeDryIceReferenceConfiguration();
   if (MATERIALS[scenario]?.publishedFixture === "cdyb-offcenter-r14") return makeCdYbReferenceConfiguration();
   if (MATERIALS[scenario]?.intrinsicDimension === 2) return makePlanarReferenceConfiguration(scenario);
@@ -2097,6 +2152,11 @@ function currentCell() {
   if (currentMaterial().icePolytype) {
     const definition = iceDefinition(currentMaterial().icePolytype);
     return definition.primitive.map((vector, axis) => vector.clone().multiplyScalar(definition.repeats[axis]));
+  }
+  if (currentMaterial().molecularFixture === "ice-viii-cod-1566658") {
+    const [rx, ry, rz] = ICE_VIII_BROWSER_FIXTURE.repeats;
+    const [a, b, c] = ICE_VIII_BROWSER_FIXTURE.cellAngstrom;
+    return [new THREE.Vector3(rx * a, 0, 0), new THREE.Vector3(0, ry * b, 0), new THREE.Vector3(0, 0, rz * c)];
   }
   if (currentMaterial().referenceCellA) {
     const length = currentMaterial().referenceCellA;
@@ -2692,14 +2752,20 @@ function molecularComponentHypothesis(source) {
   } : result;
 }
 
+function isHydrogenIsotope(species) {
+  return species === "H" || species === "D";
+}
+
 function discoveredWaterComponents(discovery) {
   if (!discovery.accepted || discovery.types.length !== 1) return null;
   const formula = discovery.types[0].formula;
+  const hydrogen = formula.find(([species]) => isHydrogenIsotope(species));
+  const oxygen = formula.find(([species]) => species === "O");
   const waterFormula = formula.length === 2
-    && formula[0][0] === "H" && formula[0][1] === 2
-    && formula[1][0] === "O" && formula[1][1] === 1;
+    && hydrogen?.[1] === 2 && oxygen?.[1] === 1;
   if (!waterFormula || discovery.components.some((component) => component.length !== 3)) return null;
-  return discovery;
+  const isotope = hydrogen[0];
+  return { ...discovery, waterIsotope: isotope, waterLabel: isotope === "D" ? "D₂O" : "H₂O" };
 }
 
 function molecularDiscoverySummary(discovery, route) {
@@ -2720,17 +2786,19 @@ function molecularDiscoverySummary(discovery, route) {
 }
 
 function buildWaterClusterCover(source, molecularDiscovery) {
+  const hydrogenSpecies = molecularDiscovery.waterIsotope || "H";
+  const waterLabel = molecularDiscovery.waterLabel || "H₂O";
   const oxygen = source.map((atom, index) => atom.species === "O" ? index : -1).filter((index) => index >= 0);
   const waters = [];
   const owner = new Map();
   molecularDiscovery.components.forEach((component) => {
     const oxygenIndex = component.find((index) => source[index].species === "O");
-    const bonded = component.filter((index) => source[index].species === "H")
+    const bonded = component.filter((index) => source[index].species === hydrogenSpecies)
       .sort((first, second) => first - second);
     if (!Number.isInteger(oxygenIndex) || bonded.length !== 2) return;
     const waterIndex = waters.length;
     const support = [oxygenIndex, ...bonded];
-    waters.push({ center: oxygenIndex, support, type: 0, residual: false, kind: "H₂O molecule", family: "molecule" });
+    waters.push({ center: oxygenIndex, support, type: 0, residual: false, kind: `${waterLabel} molecule`, family: "molecule" });
     support.forEach((atomIndex) => owner.set(atomIndex, waterIndex));
   });
 
@@ -2747,7 +2815,7 @@ function buildWaterClusterCover(source, molecularDiscovery) {
   const bridges = [...bridgePairs].map((key) => key.split(":").map(Number)).map(([first, second]) => ({
     center: waters[first].center,
     support: [...new Set([...waters[first].support, ...waters[second].support])],
-    type: 1, residual: false, kind: "H₂O···H₂O bridge", waterPair: [first, second], family: "bridge",
+    type: 1, residual: false, kind: `${waterLabel}···${waterLabel} bridge`, waterPair: [first, second], family: "bridge",
   }));
 
   const adjacency = Array.from({ length: waters.length }, () => new Set());
@@ -2783,10 +2851,10 @@ function buildWaterClusterCover(source, molecularDiscovery) {
   const bridgeSupport = bridges[0]?.support || [];
   const ringSupport = gaps[0]?.ring?.map((waterIndex) => waters[waterIndex].center) || [];
   const types = [
-    { type: 0, familyType: 0, medoid: waters[0]?.center || 0, element: "H₂O", shortLabel: "H₂O", label: "H₂O molecule", geometry: "bent molecular face",
+    { type: 0, familyType: 0, medoid: waters[0]?.center || 0, element: waterLabel, shortLabel: waterLabel, label: `${waterLabel} molecule`, geometry: "bent molecular face",
       count: waters.length, visualKind: "molecule", customSupport: waterSupport,
       customVectors: centeredPeriodicSupport(source, waterSupport) },
-    { type: 1, familyType: 1, medoid: bridges[0]?.center || 0, element: "2 H₂O", shortLabel: "bridge", label: "hydrogen-bond bridge", geometry: "connection polyhedron",
+    { type: 1, familyType: 1, medoid: bridges[0]?.center || 0, element: `2 ${waterLabel}`, shortLabel: "bridge", label: "hydrogen-bond bridge", geometry: "connection polyhedron",
       count: bridges.length, visualKind: "bridge", customSupport: bridgeSupport,
       customVectors: centeredPeriodicSupport(source, bridgeSupport) },
     { type: 2, familyType: 2, medoid: gaps[0]?.center || 0, element: "O₆ void", shortLabel: "O₆ gap", label: "six-water ring void", geometry: "void-boundary polyhedron",
@@ -2799,7 +2867,7 @@ function buildWaterClusterCover(source, molecularDiscovery) {
   return { placements, residualTypes: [], types, galleryTypes, incidence, covered: coveredAtoms.size,
     complete: coveredAtoms.size === source.length, periodic: true,
     molecularDiscovery: molecularDiscoverySummary(molecularDiscovery, "molecular connection / void cover"),
-    molecular: { water: true, molecules: waters.length, connections: bridges.length, voids: gaps.length,
+    molecular: { water: true, waterLabel, hydrogenSpecies, molecules: waters.length, connections: bridges.length, voids: gaps.length,
       moleculeClasses: galleryTypes.filter((type) => type.familyType === 0).length,
       connectionClasses: galleryTypes.filter((type) => type.familyType === 1).length,
       voidClasses: galleryTypes.filter((type) => type.familyType === 2).length,
@@ -3073,7 +3141,7 @@ function buildMolecularCoverLedger(types) {
   ledger.className = "cluster-cover-ledger";
   ledger.setAttribute("aria-label", "Molecular ice cover accounting");
   const layers = [
-    { family: "molecule", eyebrow: "atomic cover", title: molecular.water ? `${molecular.waters} H₂O` : `${molecular.molecules} molecules`,
+    { family: "molecule", eyebrow: "atomic cover", title: molecular.water ? `${molecular.waters} ${molecular.waterLabel || "H₂O"}` : `${molecular.molecules} molecules`,
       detail: `${learnedCover.covered} / ${referenceCount()} atoms · ${molecular.moleculeClasses} isometry class${molecular.moleculeClasses === 1 ? "" : "es"}` },
     { family: "bridge", eyebrow: "connection cover", title: `${molecular.connections} connections`,
       detail: `${molecular.connectionClasses} metric-isometry classes · attachment geometry` },
@@ -3093,7 +3161,7 @@ function buildMolecularCoverLedger(types) {
     ledger.append(button);
   });
   const explanation = document.createElement("p");
-  explanation.textContent = `${molecular.water ? "H₂O" : "Finite molecules"} close the atom cover; connection and void clusters encode intermolecular geometry without inventing radial spokes.`;
+  explanation.textContent = `${molecular.water ? molecular.waterLabel || "H₂O" : "Finite molecules"} close the atom cover; connection and void clusters encode intermolecular geometry without inventing radial spokes.`;
   ledger.append(explanation);
   return ledger;
 }
@@ -3295,7 +3363,7 @@ function buildMolecularGalleryToolbar(types) {
   controls.setAttribute("aria-label", "Filter molecular cluster isometry classes");
   const status = document.createElement("p");
   const filters = learnedCover.molecular ? [
-    ["all", "All exact classes"], ["molecule", learnedCover.molecular.water ? "H₂O molecules" : "Molecules"],
+    ["all", "All exact classes"], ["molecule", learnedCover.molecular.water ? `${learnedCover.molecular.waterLabel || "H₂O"} molecules` : "Molecules"],
     ["bridge", "Bridge polyhedra"], ["gap", "Gap boundaries"],
   ] : [
     ["all", "All cover classes"], ["support", "Recurring supports"],
@@ -3438,7 +3506,7 @@ function waterBridgePolyhedron(sites) {
   if (sites.length !== 6 || sites[0].atom.species !== "O" || sites[3].atom.species !== "O") return null;
   const firstHydrogens = [1, 2];
   const secondHydrogens = [4, 5];
-  if (![...firstHydrogens, ...secondHydrogens].every((index) => sites[index].atom.species === "H")) return null;
+  if (![...firstHydrogens, ...secondHydrogens].every((index) => isHydrogenIsotope(sites[index].atom.species))) return null;
   const direct = sites[1].vector.distanceTo(sites[4].vector) + sites[2].vector.distanceTo(sites[5].vector);
   const crossed = sites[1].vector.distanceTo(sites[5].vector) + sites[2].vector.distanceTo(sites[4].vector);
   const paired = direct <= crossed ? secondHydrogens : secondHydrogens.slice().reverse();
@@ -4414,7 +4482,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-48",
+      buildId: "20260824-50",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -4493,12 +4561,14 @@ async function buildExperimentReceipt() {
         publishedModel: material.fixtureProvenance ? {
           fixtureId: material.fixtureProvenance.id,
           articleDoi: material.fixtureProvenance.articleDoi,
-          archiveDoi: material.fixtureProvenance.archiveDoi,
+          archiveDoi: material.fixtureProvenance.archiveDoi || null,
+          sourceUrl: material.fixtureProvenance.sourceUrl || null,
           license: material.fixtureProvenance.license,
-          archiveSha256: material.fixtureProvenance.archiveSha256,
-          normalizedAtomsSha256: material.fixtureProvenance.normalizedAtomsSha256,
-          generatorVersion: material.fixtureProvenance.generatorVersion,
-          crop: material.fixtureProvenance.crop,
+          archiveSha256: material.fixtureProvenance.archiveSha256 || material.fixtureProvenance.sourceSha256 || null,
+          normalizedAtomsSha256: material.fixtureProvenance.normalizedAtomsSha256 || null,
+          generatorVersion: material.fixtureProvenance.generatorVersion || null,
+          sourceRevision: material.fixtureProvenance.sourceRevision || null,
+          crop: material.fixtureProvenance.crop || null,
           sourceSitesEmbedded: false,
           cutAndProjectCoordinatesEmbedded: false,
           phaseLabelUsedByLearner: false,
@@ -5061,7 +5131,13 @@ function learnMolecularSectionModel(source, config) {
   const overlapWeight = representation.overlapWeight;
   const channelGain = 1 + Math.log2(Math.max(1, config.channels)) * .065;
   const samples = overlapGrammar.occurrences;
-  const prototypeCount = (learnedCover.types || clusterGalleryTypes()).length;
+  // Molecular connection covers may expose many exact isometry classes while
+  // retaining only a few human-facing family summaries.  Fit one coefficient
+  // row for every executable occurrence type, not merely every summary card.
+  const prototypeCount = Math.max(
+    (learnedCover.types || clusterGalleryTypes()).length,
+    ...samples.map((occurrence) => occurrence.type + 1),
+  );
   const sampleLabels = samples.map((occurrence) => occurrence.type);
   const incident = Array.from({ length: samples.length }, () => []);
   overlapGrammar.reconstructionByOccurrence.forEach((rules, parent) => rules.forEach((rule) => {
@@ -6618,7 +6694,7 @@ function updateStageNarrative() {
     narratives[1].eyebrow = "learning · molecular and gap cover";
     narratives[1].decision = "Molecular overlap cover computed";
     narratives[1].copy = water
-      ? "Species-resolved bond geometry discovers one H₂O motif. Shared hydrogen-bond bridges and empty oxygen-ring boundaries are promoted to connection clusters, then the periodic window is audited atom by atom."
+      ? `Species-resolved bond geometry discovers one ${learnedCover.molecular.waterLabel || "H₂O"} motif. Shared hydrogen-bond bridges and empty oxygen-ring boundaries are promoted to connection clusters, then the periodic window is audited atom by atom.`
       : "Valence-bounded species geometry discovers recurrent finite molecules. A nearest-component graph supplies molecule-pair connections; locally shortest chordless cycles become explicit void boundaries without an expected formula or ring size.";
     narratives[1].caption = `${learnedCover.molecular.molecules} molecular placements cover every observed atom; ${learnedCover.molecular.connections} connection polyhedra and ${learnedCover.molecular.voids} void-boundary polygons fill the intermolecular grammar. The scrollable gallery shows all ${clusterGalleryTypes().length} colored metric-isometry classes as independent rotating scenes, with physical and connection edges—not radial coordination spokes.`;
     narratives[1].values = [

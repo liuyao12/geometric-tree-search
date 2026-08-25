@@ -11,7 +11,7 @@ def test_ice_gallery_uses_molecular_and_center_free_polyhedral_views() -> None:
     source = APP.read_text(encoding="utf-8")
     style = STYLE.read_text(encoding="utf-8")
 
-    assert 'from "./molecular-components.js?v=20260824-2"' in source
+    assert 'from "./molecular-components.js?v=20260824-3"' in source
     assert 'molecularCover: "water"' not in source
     assert "function molecularComponentHypothesis(source)" in source
     assert "function discoveredWaterComponents(discovery)" in source
@@ -21,7 +21,7 @@ def test_ice_gallery_uses_molecular_and_center_free_polyhedral_views() -> None:
     assert "if (learnedCover?.molecular) return learnMolecularOverlapGrammar(source)" in source
     assert 'materialLabelUsed: discovery.materialLabelUsed' in source
     assert 'expectedFormulaUsed: discovery.expectedFormulaUsed' in source
-    assert 'label: "H₂O molecule"' in source
+    assert 'label: `${waterLabel} molecule`' in source
     assert 'label: "hydrogen-bond bridge"' in source
     assert 'label: "six-water ring void"' in source
     assert "customVectors: centeredPeriodicSupport(source, waterSupport)" in source
@@ -49,11 +49,11 @@ def test_ice_gallery_uses_molecular_and_center_free_polyhedral_views() -> None:
     assert 'eyebrow: "atomic cover"' in source
     assert 'eyebrow: "connection cover"' in source
     assert 'eyebrow: "void-boundary cover"' in source
-    assert 'molecular.water ? "H₂O" : "Finite molecules"' in source
+    assert 'molecular.water ? molecular.waterLabel || "H₂O" : "Finite molecules"' in source
     assert "button.dataset.clusterLedgerFilter" in source
     assert "data-cluster-family-filter" in source
     assert ".cluster-cover-ledger" in style
-    assert '["molecule", learnedCover.molecular.water ? "H₂O molecules" : "Molecules"]' in source
+    assert '["molecule", learnedCover.molecular.water ? `${learnedCover.molecular.waterLabel || "H₂O"} molecules` : "Molecules"]' in source
     assert '["bridge", "Bridge polyhedra"]' in source
     assert '["gap", "Gap boundaries"]' in source
     assert "no classes merged" in source
@@ -87,6 +87,10 @@ def test_ice_gallery_uses_molecular_and_center_free_polyhedral_views() -> None:
     assert 'oracleMetric.textContent = "0"' in source
     assert "mutually exclusive H₂O orientation hypotheses remain symbolic" in source
     assert "Clusters² is disabled because no stationary promoted ice production has been certified" in source
+    assert 'species === "H" || species === "D"' in source
+    assert 'waterLabel: isotope === "D" ? "D₂O" : "H₂O"' in source
+    assert 'molecularFixture: "ice-viii-cod-1566658"' in source
+    assert "generateIceViiiObservation" in source
 
 
 if __name__ == "__main__":
