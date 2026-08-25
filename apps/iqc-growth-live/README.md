@@ -124,6 +124,16 @@ It is ensemble-informed structural geometry, not molecular dynamics or a
 kinetic growth-rate model. Reactions, changing atom identity, and trajectories
 requiring atom remapping fail closed for now.
 
+The right-hand **observation → geometry provenance** chain makes this boundary
+auditable in one place. Six interactive records follow recorded conditions,
+structural sample/frame selection, measured positional uncertainty, the
+resolved metric tolerance, the learned cluster/pose representation, and its
+eventual use in growth. Each record separates observed metadata, the exact
+transformation applied, its role in search, and its claim boundary. In
+particular the header always reports zero simulation-control channels from
+recorded conditions: temperature and pressure never become hidden knobs. The
+same coordinate-free chain is serialized in the experiment receipt.
+
 ## Reproducible experiment receipts
 
 The left rail can download or copy a stage-aware JSON receipt at any point in

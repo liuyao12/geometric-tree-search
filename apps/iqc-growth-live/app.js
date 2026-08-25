@@ -176,6 +176,9 @@ const policyPreviewState = $("policyPreviewState");
 const scalePassportState = $("scalePassportState");
 const scalePassport = $("scalePassport");
 const scalePassportDetail = $("scalePassportDetail");
+const observationProvenanceState = $("observationProvenanceState");
+const observationProvenance = $("observationProvenance");
+const observationProvenanceDetail = $("observationProvenanceDetail");
 const pipelineButton = $("pipelineButton");
 const playButton = $("playButton");
 const playIcon = $("playIcon");
@@ -611,6 +614,7 @@ let selectedPolicyPreviewId = "active";
 let policySnapshotCount = 0;
 let selectedScalePassportId = null;
 let selectedScalePassportStage = -1;
+let selectedObservationProvenanceId = null;
 let experimentNotebookEntries = [];
 let selectedNotebookEntryIds = [];
 let atomSpatialIndex = new Map();
@@ -4942,7 +4946,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-68",
+      buildId: "20260824-69",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -5182,6 +5186,12 @@ async function buildExperimentReceipt() {
           searchRole: record.role,
           claimBoundary: record.boundary,
         })),
+      },
+      observationProvenanceChain: {
+        role: "coordinate-free audit of how recorded conditions, structural samples, and uncertainty enter or do not enter geometry learning and growth",
+        simulationControlChannelsFromRecordedConditions: 0,
+        coordinatesEmbedded: false,
+        records: observationProvenanceRecords(),
       },
     },
     structuralEvidence: {
@@ -8840,6 +8850,98 @@ function clusterDiameterRangeAngstrom() {
   return { median: diameters[Math.floor(diameters.length / 2)], maximum: diameters.at(-1) };
 }
 
+function observationProvenanceRecords() {
+  const conditions = activeMeasurementConditions();
+  const validation = activeImportedFrameValidation();
+  const conditionSummary = [
+    conditions?.temperature ? `T ${formatRecordedCondition(conditions.temperature.value)} ${conditions.temperature.unit || "K"}` : null,
+    conditions?.pressure ? `P ${formatRecordedCondition(conditions.pressure.value)} ${conditions.pressure.unit || "kPa"}` : null,
+    conditions?.environment?.value ? conditions.environment.value : null,
+  ].filter(Boolean);
+  const frames = evidenceFrameCount();
+  const uncertainty = measuredPairUncertaintyAngstrom();
+  const uncertaintySource = measuredPairUncertaintySource();
+  const tolerance = clusterMetricToleranceAngstrom();
+  const coverReady = pipelineStage >= 1;
+  const growthReady = pipelineStage >= 4;
+  const importedFrames = importedTrajectoryFrames();
+  return [
+    { id: "conditions", short: "conditions", status: conditionSummary.length ? "recorded" : "unavailable",
+      value: conditionSummary.length ? conditionSummary.join(" · ") : "no temperature / pressure metadata",
+      observed: conditionSummary.length ? `Recorded source metadata: ${conditionSummary.join(" · ")}.` : "No calibrated thermodynamic condition accompanies this geometry.",
+      transform: "Preserved as provenance labels only; no geometric parameter is inferred from temperature or pressure.",
+      use: "Displayed and serialized; never passed into clustering, marking, candidate enumeration, or ranking.",
+      boundary: "Recorded measurement conditions describe how a structure was measured, not how it grew, equilibrated, or should evolve." },
+    { id: "samples", short: "samples", status: frames > 1 ? "measured" : "single",
+      value: frames > 1 ? `${frames} fixed-topology frames` : "1 structural frame",
+      observed: scenarioSelect.value === "imported" && importedFrames.length > 1
+        ? `${importedFrames.length} ordered structural snapshots with fixed species and atom ordering.`
+        : `${referenceCount()} species-labelled Cartesian sites in one observation window.`,
+      transform: frames > 1 ? `${ensembleEvidenceMode === "all" ? "All frames pool" : "Only the displayed frame supplies"} contact, coordination, angle, and local pair-distance observations.` : "One frame supplies the finite structural evidence.",
+      use: `Growth starts from exactly one displayed frame${frames > 1 ? ` (${importedFrameIndex + 1}/${importedFrames.length})` : ""}; cross-frame atom pairs are never invented.`,
+      boundary: "Snapshot order is not treated as a trajectory unless velocities, time steps, and calibrated temporal provenance are independently supplied; none are used here." },
+    { id: "uncertainty", short: "uncertainty", status: uncertainty > 0 ? "measured" : "nominal",
+      value: uncertainty > 0 ? `${uncertainty.toFixed(3)} Å pair σ floor` : "no measured σ floor",
+      observed: uncertainty > 0
+        ? `${uncertaintySource}; ${validation?.thermalDisplacementSites || 0} U/B sites and ${ensemblePairDistanceUncertainty?.localPairCount || 0} local snapshot-pair observations.`
+        : "No U/B displacement parameters or repeated fixed-topology pair-distance spread is available.",
+      transform: uncertainty > 0 ? "The larger measured pair-distance uncertainty becomes a lower bound on metric-isometry matching tolerance." : "The selected nominal tolerance remains unchanged.",
+      use: "Broadens equivalence testing and colored distance envelopes; it does not displace atoms or sample a thermal configuration.",
+      boundary: "A positional uncertainty ellipsoid is not a phonon mode, force covariance, temperature distribution, or dynamical ensemble." },
+    { id: "tolerance", short: "tolerance", status: "active",
+      value: `ε ${(effectiveClusterMetricTolerance() * 100).toFixed(2)}% · ${tolerance.toFixed(3)} Å`,
+      observed: `${clusterToleranceMode} nominal mode: ${(clusterMetricTolerance() * 100).toFixed(1)}% of dₙₙ=${referenceSpacingA.toFixed(3)} Å; floor source ${uncertaintySource}.`,
+      transform: `Effective ε=max(nominal ${ (referenceSpacingA * clusterMetricTolerance()).toFixed(3)} Å, measured ${uncertainty.toFixed(3)} Å).`,
+      use: "Controls colored metric-isometry class matching and vocabulary compatibility; every experiment receipt records the resolved value.",
+      boundary: "Tolerance is an observation/model-resolution parameter, not thermal energy, strain energy, or permission to move sites." },
+    { id: "representation", short: "representation", status: coverReady ? "learned" : "pending",
+      value: coverReady ? `${clusterGalleryTypes().length} cover types · ${orientationAtlas.reduce((sum, entry) => sum + entry.orientations, 0)} pose orbits` : "await cluster identification",
+      observed: coverReady ? `${learnedCover.covered}/${referenceCount()} observed sites represented by ${learnedCover.placements.length} overlapping placements.` : "Only raw sites and chemistry tokens are currently available.",
+      transform: coverReady ? "Resolved tolerance produces colored isometry classes, explicit gaps, proper-pose orbits, and frozen connection ports." : "No cluster label is supplied; the learner must form a complete cover first.",
+      use: coverReady ? "The exact local vocabulary becomes the only geometry available to GCTS and tree search." : "Not used before identification.",
+      boundary: "A stable representation does not prove energetic stability, uniqueness of motif decomposition, or transfer to an unseen growth front." },
+    { id: "growth", short: "growth use", status: growthReady ? "active" : "pending",
+      value: growthReady ? `${atoms.length} explicit sites · ${acceptedDecisions} accepted actions` : "not executed",
+      observed: growthReady ? `${frontierCandidates.length} frozen frontier actions over the selected seed frame.` : "Growth waits for cluster and marking stages.",
+      transform: "Only species, positions, structural uncertainty-derived envelopes, learned ports, and configured geometry surrogates enter the search.",
+      use: growthReady ? "Whole exact cluster placements jump between certified structural states; the known target is not a branch feature." : "No branch has been ranked or committed.",
+      boundary: "Temperature, pressure, environment, snapshot ordering, forces, velocities, rates, and physical time remain outside execution." },
+  ];
+}
+
+function renderObservationProvenance() {
+  const records = observationProvenanceRecords();
+  if (!records.some((record) => record.id === selectedObservationProvenanceId)) {
+    selectedObservationProvenanceId = records.find((record) => record.status === "measured")?.id || "tolerance";
+  }
+  const selected = records.find((record) => record.id === selectedObservationProvenanceId) || records[0];
+  const measured = records.filter((record) => ["recorded", "measured"].includes(record.status)).length;
+  observationProvenanceState.textContent = `${measured} measured channel${measured === 1 ? "" : "s"} · simulation controls 0`;
+  observationProvenance.replaceChildren(...records.map((record, index) => {
+    const button = document.createElement("button"); button.type = "button";
+    button.className = record.status;
+    button.classList.toggle("active", record.id === selected.id);
+    button.setAttribute("aria-pressed", String(record.id === selected.id));
+    const number = document.createElement("small"); number.textContent = String(index + 1).padStart(2, "0");
+    const label = document.createElement("strong"); label.textContent = record.short;
+    const status = document.createElement("span"); status.textContent = record.status;
+    button.append(number, label, status);
+    button.addEventListener("click", () => { selectedObservationProvenanceId = record.id; renderObservationProvenance(); });
+    return button;
+  }));
+  observationProvenanceDetail.className = `observation-provenance-detail ${selected.status}`;
+  observationProvenanceDetail.replaceChildren();
+  const header = document.createElement("header");
+  const block = document.createElement("div"); const eyebrow = document.createElement("small"); eyebrow.textContent = selected.status;
+  const title = document.createElement("strong"); title.textContent = selected.short;
+  const value = document.createElement("span"); value.textContent = selected.value;
+  block.append(eyebrow, title); header.append(block, value); observationProvenanceDetail.append(header);
+  [["observed", selected.observed], ["transformation", selected.transform], ["use in search", selected.use], ["claim boundary", selected.boundary]].forEach(([label, copy]) => {
+    const row = document.createElement("div"); const key = document.createElement("b"); const body = document.createElement("p");
+    key.textContent = label; body.textContent = copy; row.append(key, body); observationProvenanceDetail.append(row);
+  });
+}
+
 function liveScalePassportRecords() {
   const clusterScale = clusterDiameterRangeAngstrom();
   const clusterTypes = clusterGalleryTypes();
@@ -8955,6 +9057,7 @@ function updateGrowthCertificate() {
 function updateUI() {
   updateRecursiveBenchmark();
   updateGrowthCertificate();
+  renderObservationProvenance();
   renderScalePassport();
   renderPolicyComparison();
   renderStructuralLeap();

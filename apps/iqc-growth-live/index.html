@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260824-31">
+  <link rel="stylesheet" href="./style.css?v=20260824-32">
   <script type="importmap">
     {
       "imports": {
@@ -789,6 +789,12 @@
           </article>
         </section>
 
+        <section class="observation-provenance-card" aria-label="Measurement to geometry provenance chain">
+          <div class="section-heading"><p class="eyebrow">observation → geometry provenance</p><span id="observationProvenanceState">structural input</span></div>
+          <div id="observationProvenance" class="observation-provenance" role="group" aria-label="Inspect how recorded observations enter or do not enter geometric learning"></div>
+          <article id="observationProvenanceDetail" class="observation-provenance-detail" aria-live="polite"></article>
+        </section>
+
         <section class="scale-passport-card" aria-label="Live multiscale geometry passport">
           <div class="section-heading"><p class="eyebrow">multiscale geometry passport</p><span id="scalePassportState">atomic evidence</span></div>
           <div id="scalePassport" class="scale-passport" role="group" aria-label="Inspect encoded physical scales"></div>
@@ -851,7 +857,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260824-68"></script>
+  <script type="module" src="./app.js?v=20260824-69"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>
