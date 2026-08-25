@@ -207,6 +207,12 @@ const clusterGallery = $("clusterGallery");
 const viewportHint = $("viewportHint");
 const unitCellBadge = $("unitCellBadge");
 const captionAction = $("captionAction");
+const processTimeline = $("processTimeline");
+const processTimelineEyebrow = $("processTimelineEyebrow");
+const processTimelineTitle = $("processTimelineTitle");
+const processTimelineState = $("processTimelineState");
+const processTimelineInput = $("processTimelineInput");
+const processTimelineNote = $("processTimelineNote");
 const atomLabel = $("atomLabel");
 const atomMetric = $("atomMetric");
 const atomDelta = $("atomDelta");
@@ -4930,7 +4936,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-65",
+      buildId: "20260824-66",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -5042,6 +5048,7 @@ async function buildExperimentReceipt() {
       internalStage: pipelineStage,
       visibleStage: visiblePipelineOrdinal(pipelineStage),
       stageName: ["sample configuration", "cluster identification", "rigid encoding", "GCTS learning", "material growth"][pipelineStage],
+      reversibleProcessTimeline: processTimelineRecord(),
     },
     geometry: {
       requestedMode: geometryMode,
@@ -7907,6 +7914,74 @@ function advanceClusterDiscovery(batchSize = 3) {
   updateUI();
 }
 
+function processTimelineRecord() {
+  if (pipelineStage === 1 && clusterDiscoveryTrace) {
+    const state = clusterDiscoveryState();
+    const total = clusterDiscoveryTrace.totalSteps;
+    return {
+      stage: "cluster-identification",
+      title: "Connection decisions",
+      eyebrow: "process microscope · full 3D scene",
+      progress: clusterDiscoveryProgress,
+      total,
+      state: `${clusterDiscoveryProgress} / ${total} · ${state.tentative.length} testing · ${state.rejected.length} removing · ${state.settled.length} settled`,
+      note: clusterDiscoveryProgress >= total
+        ? "The complete overlapping cluster-and-gap cover is frozen. Drag backward to audit how competing connections were removed."
+        : "Drag to inspect tentative, rejected, and settled atom connections; Play resumes discovery from this exact decision step.",
+      reversible: true,
+      traceFrozen: true,
+      targetUsed: false,
+    };
+  }
+  if (pipelineStage === 3 && sectionModel) {
+    const point = currentTrainingPoint();
+    const total = markingSampleCount();
+    return {
+      stage: "gcts-learning",
+      title: "Local marking fit",
+      eyebrow: "process microscope · one 3D scene per cluster",
+      progress: trainingProgress,
+      total,
+      state: `${trainingProgress} / ${total} samples · holdout ${point.validationLoss.toFixed(3)}`,
+      note: trainingProgress >= total
+        ? "The local connection sections are fully fitted. Drag backward to compare their random initial halos with intermediate learned level sets."
+        : "Drag to morph every cluster's local level sets through the fit; Play resumes from the selected sample count.",
+      reversible: true,
+      traceFrozen: true,
+      targetUsed: false,
+    };
+  }
+  return null;
+}
+
+function updateProcessTimeline() {
+  const record = processTimelineRecord();
+  processTimeline.hidden = !record;
+  if (!record) return;
+  processTimelineEyebrow.textContent = record.eyebrow;
+  processTimelineTitle.textContent = record.title;
+  processTimelineState.textContent = record.state;
+  processTimelineNote.textContent = record.note;
+  processTimelineInput.max = String(Math.max(1, record.total));
+  processTimelineInput.value = String(record.progress);
+  processTimelineInput.setAttribute("aria-valuetext", record.state);
+  processTimeline.style.setProperty("--process-progress", `${100 * record.progress / Math.max(1, record.total)}%`);
+}
+
+function scrubProcessTimeline(value) {
+  const record = processTimelineRecord();
+  if (!record) return;
+  setPlaying(false);
+  const progress = Math.max(0, Math.min(record.total, Math.round(Number(value) || 0)));
+  if (pipelineStage === 1) clusterDiscoveryProgress = progress;
+  else if (pipelineStage === 3) trainingProgress = progress;
+  eventIndex = progress;
+  buildClusterOverlay();
+  if (pipelineStage === 3) updateClusterGalleryTrainingReadouts();
+  rebuildWorld();
+  updateUI();
+}
+
 function performEvent() {
   if (pipelineStage === 1) {
     if (clusterDiscoveryProgress < clusterDiscoveryTrace.totalSteps) advanceClusterDiscovery();
@@ -8706,6 +8781,7 @@ function updateUI() {
   renderScalePassport();
   renderPolicyComparison();
   renderStructuralLeap();
+  updateProcessTimeline();
   eventCounter.textContent = String(eventIndex).padStart(4, "0");
   const material = currentMaterial();
   playButton.disabled = pipelineStage === 4 && Boolean(material.growthWithheld);
@@ -9157,6 +9233,7 @@ playButton.addEventListener("click", () => {
   updateUI();
 });
 stepButton.addEventListener("click", () => { setPlaying(false); performEvent(); });
+processTimelineInput.addEventListener("input", () => scrubProcessTimeline(processTimelineInput.value));
 resetButton.addEventListener("click", () => enterPipelineStage(pipelineStage));
 downloadReceiptButton.addEventListener("click", () => withReceiptStatus(downloadReceiptButton, async () => {
   const receipt = await serializedExperimentReceipt();

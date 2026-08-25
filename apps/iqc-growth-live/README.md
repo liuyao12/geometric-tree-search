@@ -193,6 +193,15 @@ full coloured metric set is isometric. Thus the cover is always audited against
 every supplied atom, while a glass or unfamiliar boundary is allowed to remain
 literal instead of being forced into a false repeating motif.
 
+Cluster identification is presented as a process over the complete 3D
+configuration, not only as a final gallery. Tentative teal connections appear,
+locally inconsistent or non-recurrent connections are removed in red, and
+family-coloured edges settle into the accepted overlapping cover. A reversible
+process timeline is indexed by the frozen decision trace: dragging it rewinds
+the connections, coverage, rejection count, captions, and metrics together,
+and Play resumes from the selected decision step. It never consults a target
+structure or fabricates a dynamical trajectory.
+
 Cover completeness and rigid replay connectivity are audited separately. The
 learner first adds recurring Steiner occurrences from already admitted support
 classes. If a nearby component still lacks a two-site rigid overlap, it may add
@@ -423,6 +432,14 @@ rigid placement. They are connection markings, not physical or interatomic
 potentials. Training starts from deterministic random directional coefficients;
 the live fit and held-out curves combine signed-port mismatch with
 shared-support disagreement.
+
+GCTS learning deliberately changes the visual grammar. Each learned cluster or
+gap class receives its own rotating 3D scene, and its local connection/failure
+level sets morph from the random initialization toward the fitted section. The
+same reversible timeline is now indexed by processed section samples, so a
+materials scientist can compare intermediate halos across cluster classes,
+rewind to any fit state, and resume training from that sample count. The
+timeline state is included in the coordinate-free experiment receipt.
 
 The representation selector now changes the mathematical readout, not only its
 label. Port vectors compare the two directed endpoint sections. Site-resolved
