@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260824-shell-curriculum-v210";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260824-rl-parity-v211";
 
 let activeSequence = 0;
 let stopToken = { stop: false };
@@ -98,7 +98,7 @@ const post = (sequence, payload) => {
 
 async function runMode(sequence, baseConfig, mode) {
   const shellSearch = baseConfig.criterion === "shell";
-  const exactGctsShell = shellSearch && ["gcts", "gcts_rl"].includes(mode.id);
+  const exactLearningShell = shellSearch && ["gcts", "rl", "gcts_rl"].includes(mode.id);
   const effectiveMode = shellSearch && mode.proof
     ? { ...mode, label: `${mode.label.replace(/ · .*$/u, "")} · complete shell` }
     : mode;
@@ -133,10 +133,10 @@ async function runMode(sequence, baseConfig, mode) {
     placement_details: ["gcts", "rl", "gcts_rl"].includes(mode.id),
     branch_cap: null,
     candidate_cap: null,
-    forced_move_layer_lag_cap: mode.proof || exactGctsShell ? 0 : baseConfig.forced_move_layer_lag_cap,
+    forced_move_layer_lag_cap: mode.proof || exactLearningShell ? 0 : baseConfig.forced_move_layer_lag_cap,
     generic_connected_patch_enumeration: !!mode.proof && !shellSearch,
-    generic_complete_shell_enumeration: (!!mode.proof || exactGctsShell) && shellSearch,
-    generic_failure_memo: !!mode.proof || exactGctsShell,
+    generic_complete_shell_enumeration: (!!mode.proof || exactLearningShell) && shellSearch,
+    generic_failure_memo: !!mode.proof || exactLearningShell,
     generic_failure_memo_symmetry: shellSearch ? "rigid" : "fixed",
     generic_geometric_nogood: !!mode.nogood && !shellSearch,
     generic_geometric_nogood_max_clauses: 20000,
@@ -155,7 +155,7 @@ async function runMode(sequence, baseConfig, mode) {
     generic_periodic_certificate_checkpoint_max_total_checks: 280,
     generic_periodic_certificate_checkpoint_total_time_limit_ms: 5000,
     generic_periodic_certificate_time_limit_ms: 1000,
-    exhaustive: !!mode.proof || exactGctsShell
+    exhaustive: !!mode.proof || exactLearningShell
   };
   const started = performance.now();
   let best = 0;

@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260824-shell-curriculum-v210";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260824-rl-parity-v211";
 import {
   createInitialProposalPopulation,
   growthCurveArea,
