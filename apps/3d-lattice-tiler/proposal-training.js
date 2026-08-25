@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260824-gcts-terminal-v208";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260824-shell-curriculum-v209";
 import {
   createInitialProposalPopulation,
   growthCurveArea,

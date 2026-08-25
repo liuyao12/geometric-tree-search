@@ -77,10 +77,10 @@ assert.match(
 );
 assert.match(
   growthWorkerSource,
-  /forced_move_layer_lag_cap: mode\.proof \? 0 : baseConfig\.forced_move_layer_lag_cap/,
-  "the proof lane must disable the generational band"
+  /forced_move_layer_lag_cap: mode\.proof \|\| exactGctsShell \? 0 : baseConfig\.forced_move_layer_lag_cap/,
+  "proof and exact GCTS shell lanes must disable generational pruning"
 );
-assert.match(growthWorkerSource, /generic_failure_memo: mode\.proof/, "the proof lane must memoize exact failures");
+assert.match(growthWorkerSource, /generic_failure_memo: !!mode\.proof \|\| exactGctsShell/, "proof and exact GCTS shell lanes must memoize exact failures");
 assert.match(
   growthWorkerSource,
   /generic_connected_patch_enumeration: !!mode\.proof && !shellSearch/,
@@ -154,8 +154,8 @@ assert.match(growthWorkerSource, /const exactNoTiling = final\?\.result_kind ===
 assert.match(growthWorkerSource, /if \(exactNoTiling\) \{[\s\S]*?tiles: 0, terminal: true/);
 assert.match(growthAppSource, /certified that no tiling is possible/);
 assert.match(growthAppSource, /GCTS[^\n]*inconclusive|\["gcts", "gcts_rl"\][\s\S]*?searchIncomplete/);
-assert.match(sourceTilerHtml, />Growth layer</);
-assert.match(sourceTilerHtml, />Proof shell</);
+assert.doesNotMatch(sourceTilerHtml, /name="criterion" value="layer"/);
+assert.match(sourceTilerHtml, /Order-independent face-adjacency shell; exhaustive failure can prove non-tiling/);
 assert.match(sourceTilerHtml, /id="growthHistoryBack"[\s\S]*?id="growthHistoryForward"/);
 assert.match(growthAppSource, /function stepGrowthHistory\(direction\)/);
 assert.match(

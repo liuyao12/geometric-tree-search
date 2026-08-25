@@ -59,11 +59,12 @@ Pages site. The main way to use it is to open the page in a browser:
   difficult prism that survived deep GCTS screening before an exact two-tile
   translational quotient resolved the full size-12 pass, and `10_16113`, whose
   corrected shell-1 witness leads to an exact shell-2 non-tiler certificate.
-  Its six cold comparison lanes now share a completed-frontier layer
-  curriculum. RL and GCTS+RL may discover, certify, and reuse small repeating
-  clusters without catalog templates; the periodic control `10_45033`
-  independently yields its six-tile quotient and fills layers 2 and 3 (107 and
-  432 live tiles), while a certificate alone cannot satisfy a layer target.
+  Its six cold comparison lanes now share an order-independent face-adjacency
+  shell curriculum. RL and GCTS+RL may discover, certify, and reuse small
+  repeating clusters without catalog templates; the periodic control
+  `10_45033` independently yields its six-tile quotient and completes shell 2
+  with 118 live tiles. Insertion generations remain an internal oldest-frontier
+  scheduling signal rather than a user-facing success criterion.
   The complete 1,502,640-entry size-13 pass contributes an isohedral-only
   periodic regression and two harder exact shell-2 non-tiler controls. For
   polycube candidate `p10-055695`, lazy next-ring cell CEGAR has now checked 22

@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260824-gcts-terminal-v208";
+} from "./engine.js?v=20260824-shell-curriculum-v209";
 
 const $ = (id) => document.getElementById(id);
 
@@ -515,7 +515,7 @@ function updateCriterionUI() {
   const selected = criterion();
   const byCount = selected === "count";
   maxTileField.classList.toggle("is-active", byCount);
-  layerField.classList.toggle("is-active", selected === "layer");
+  layerField?.classList.toggle("is-active", selected === "layer");
   shellField.classList.toggle("is-active", selected === "shell");
   regionField.classList.toggle("is-active", selected === "region");
   regionSizeFields.classList.toggle("is-hidden", selected !== "region");
@@ -571,7 +571,7 @@ function applySearchParams() {
     if (Number.isFinite(value) && value > 0) control.value = String(value);
   };
   const criterionParam = params.get("criterion");
-  if (["count", "layer", "shell", "region"].includes(criterionParam)) {
+  if (["count", "shell", "region"].includes(criterionParam)) {
     document.querySelector(`input[name="criterion"][value="${criterionParam}"]`).checked = true;
   }
   setPositiveNumberParam(maxTilesInput, "target");
@@ -1194,7 +1194,7 @@ function applyCheckpointUiState(ui = {}) {
   }
   if (!builderVoxels.size) builderVoxels = new Set(["0,0,0"]);
 
-  const savedCriterion = ["count", "layer", "shell", "region"].includes(controls.criterion) ? controls.criterion : "count";
+  const savedCriterion = ["count", "shell", "region"].includes(controls.criterion) ? controls.criterion : "count";
   const criterionRadio = document.querySelector(`input[name="criterion"][value="${savedCriterion}"]`);
   if (criterionRadio) criterionRadio.checked = true;
   if (controls.maxTiles != null) maxTilesInput.value = controls.maxTiles;
@@ -1306,13 +1306,13 @@ function applyCandidateSearchPreset({ invalidate = true } = {}) {
   if (!candidate && !knownAperiodic) return;
   const periodicLane = censusCandidatePeriodicLane(candidate);
   const periodicCandidate = !!periodicLane;
-  document.querySelector(`input[name="criterion"][value="${candidate ? "layer" : "count"}"]`).checked = true;
+  document.querySelector(`input[name="criterion"][value="${candidate ? "shell" : "count"}"]`).checked = true;
   maxTilesInput.value = knownAperiodic
     ? "80"
     : periodicCandidate
       ? String(Math.max(24, candidate.screening?.motif_tiles ?? 1))
       : "120";
-  if (candidate) layerInput.value = "2";
+  if (candidate) shellInput.value = "2";
   strategySelect.value = setRadioValue(
     strategyRadios,
     candidate ? "gcts_rl" : "free_range",
@@ -1339,7 +1339,7 @@ function updateCandidateResearchPanel() {
   candidateSearchButton.classList.toggle("is-hidden", !!knownAperiodic);
   if (candidate) {
     const periodicLane = censusCandidatePeriodicLane(candidate);
-    candidateSearchButton.textContent = "Load cold layer-2 curriculum";
+    candidateSearchButton.textContent = "Load cold shell-2 curriculum";
     const screening = candidate.last_screening;
     const proof = candidate.gcts_proof_screening;
     const shell = candidate.shell_screening;
@@ -1884,8 +1884,8 @@ function configKey() {
     && moveOrderSelect.value === "global"
     && selectedCriterion === "count"
     && exhaustiveCheckbox.checked;
-  const completeShellSearch = tilingStrategy === "free_range"
-    && selectedCriterion === "shell"
+  const completeShellSearch = selectedCriterion === "shell"
+    && ["free_range", "learning_free_range", "rl_free_range", "gcts_rl"].includes(tilingStrategy)
     && exhaustiveCheckbox.checked;
   const forcedLayerLagCap = completeGlobalSearch || completeShellSearch
     ? 0
@@ -1944,7 +1944,7 @@ function configKey() {
     learned_layer_macro: isRl,
     learned_layer_macro_max_motif_tiles: 8,
     learned_layer_macro_motif_node_limit: 2500,
-    learned_layer_macro_discovery_time_ms: 5000,
+    learned_layer_macro_discovery_time_ms: 15000,
     template_preflight: isStructural,
     periodic_patch_unbounded: tilingStrategy === "translational",
     periodic_motif_node_limit: tilingStrategy === "translational" ? 2500 : null,
@@ -3013,7 +3013,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260824-gcts-terminal-v208", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260824-shell-curriculum-v209", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3686,7 +3686,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260824-gcts-terminal-v208", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260824-shell-curriculum-v209", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};

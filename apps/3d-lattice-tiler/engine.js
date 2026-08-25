@@ -2156,7 +2156,7 @@ export const createTilingStream = (() => {
     const learnedLayerMacroEnabled = config.learned_layer_macro === true
       && usePolicyAgent
       && tilingStrategy === "generic"
-      && criterion === "layer";
+      && (criterion === "layer" || criterion === "shell");
     searchStats.learned_layer_macro_enabled = learnedLayerMacroEnabled;
     const useUct = moveOrder === "uct";
     const completeLatticePointBranching = config.complete_lattice_point_branching === true;

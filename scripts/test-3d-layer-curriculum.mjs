@@ -14,7 +14,7 @@ const config = {
     polyhedra: [{ name: "Anonymous lattice polyhedron", vertices: candidate.vertices }],
     polycube_lattice: "z3"
   },
-  criterion: "layer",
+  criterion: "shell",
   target_val: 2,
   tiling_strategy: "free_range",
   move_order: "rl",
@@ -28,13 +28,15 @@ const config = {
   learned_layer_macro: true,
   learned_layer_macro_max_motif_tiles: 8,
   learned_layer_macro_motif_node_limit: 2500,
-  learned_layer_macro_discovery_time_ms: 5000,
+  learned_layer_macro_discovery_time_ms: 15000,
   known_periodic_template: null,
   initial_patch: null,
   proposal_program: null,
   template_preflight: false,
   periodic_preflight: false,
-  forced_move_layer_lag_cap: 2,
+  forced_move_layer_lag_cap: 0,
+  generic_complete_shell_enumeration: true,
+  generic_failure_memo: true,
   random_seed: 1,
   seeded_tie_breaks: true,
   exhaustive: true,
@@ -45,24 +47,24 @@ const config = {
 };
 
 let final = null;
-let maximumCompletedLayer = 0;
+let maximumCompletedShell = 0;
 for await (const message of createTilingStream(config, tileSpecs, { stop: false })) {
   const snapshot = message.type === "node_snapshot" ? message.snapshot : message;
-  maximumCompletedLayer = Math.max(
-    maximumCompletedLayer,
-    snapshot?.frontier_stats?.min_gen ?? 0
+  maximumCompletedShell = Math.max(
+    maximumCompletedShell,
+    snapshot?.frontier_stats?.complete_shell_depth ?? 0
   );
   if (message.type === "finished") final = message;
 }
 
-assert.equal(final?.success, true, "cold GCTS+RL must fill the layer-2 periodic control");
-assert.ok(maximumCompletedLayer >= 2, "success must mean the live frontier completed layer 2");
+assert.equal(final?.success, true, "cold GCTS+RL must fill the shell-2 periodic control");
+assert.ok(maximumCompletedShell >= 2, "success must mean the live patch completed shell 2");
 assert.equal(final?.tiling_evidence?.kind, "translational_certificate");
 assert.equal(final?.tiling_evidence?.patch_size, 6, "the six-tile cluster must be discovered from geometry");
 assert.equal(final?.search_incomplete, false);
 
-console.log("3D cold layer-curriculum regression passed", {
-  completedLayer: maximumCompletedLayer,
+console.log("3D cold shell-curriculum regression passed", {
+  completedShell: maximumCompletedShell,
   tiles: final.tile_count,
   motifTiles: final.tiling_evidence.patch_size,
   visitedNodes: final.search_stats.visited_nodes
