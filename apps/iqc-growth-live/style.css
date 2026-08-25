@@ -522,15 +522,28 @@ body.atlas-open { overflow: hidden; }
 .decision-grid dd { overflow: hidden; margin: 4px 0 0; color: #cbd8d4; font: 8px var(--mono); white-space: nowrap; text-overflow: ellipsis; }
 .constraint-ledger-heading { display: flex; justify-content: space-between; gap: 8px; margin-top: 11px; color: var(--faint); font: 6px var(--mono); letter-spacing: .07em; text-transform: uppercase; }
 .constraint-ledger { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 4px; margin-top: 6px; }
-.constraint-term { min-width: 0; padding: 6px 7px; border: 1px solid rgba(151,194,183,.13); background: rgba(5,15,17,.72); }
+.constraint-term { min-width: 0; padding: 6px 7px; border: 1px solid rgba(151,194,183,.13); background: rgba(5,15,17,.72); color: inherit; text-align: left; cursor: pointer; }
+.constraint-term:hover,.constraint-term:focus-visible,.constraint-term.active { border-color: rgba(151,194,183,.52); background: rgba(151,194,183,.055); outline: none; }
+.constraint-term.active { box-shadow: inset 2px 0 var(--constraint-accent,var(--faint)); }
 .constraint-term small,.constraint-term strong,.constraint-term span { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .constraint-term small { color: var(--faint); font: 5px var(--mono); letter-spacing: .06em; text-transform: uppercase; }
 .constraint-term strong { margin-top: 3px; color: #aebfba; font: 7px var(--mono); font-weight: 400; }
 .constraint-term span { margin-top: 3px; color: #5f7770; font: 5px var(--mono); }
-.constraint-term.pass { border-color: rgba(101,225,188,.28); }.constraint-term.pass strong { color: var(--mint); }
-.constraint-term.fail { border-color: rgba(255,109,113,.42); background: rgba(255,109,113,.035); }.constraint-term.fail strong { color: var(--red); }
-.constraint-term.ranked { border-color: rgba(181,148,255,.32); }.constraint-term.ranked strong { color: var(--violet); }
+.constraint-term.pass { --constraint-accent: var(--mint); border-color: rgba(101,225,188,.28); }.constraint-term.pass strong { color: var(--mint); }
+.constraint-term.fail { --constraint-accent: var(--red); border-color: rgba(255,109,113,.42); background: rgba(255,109,113,.035); }.constraint-term.fail strong { color: var(--red); }
+.constraint-term.ranked { --constraint-accent: var(--violet); border-color: rgba(181,148,255,.32); }.constraint-term.ranked strong { color: var(--violet); }
 .constraint-term.diagnostic strong { color: #82978f; }
+.constraint-detail { margin-top: 6px; border: 1px solid rgba(151,194,183,.16); background: rgba(5,15,17,.82); }
+.constraint-detail > header { padding: 8px 9px; border-bottom: 1px solid var(--line); box-shadow: inset 2px 0 var(--constraint-accent,var(--faint)); }
+.constraint-detail > header small,.constraint-detail > header strong,.constraint-detail > header span { display: block; }
+.constraint-detail > header small { color: var(--constraint-accent,var(--faint)); font: 5px var(--mono); letter-spacing: .07em; text-transform: uppercase; }
+.constraint-detail > header strong { margin-top: 4px; color: #d6e2de; font: 8px var(--mono); font-weight: 400; }
+.constraint-detail > header span { margin-top: 3px; color: #617870; font: 5px/1.4 var(--mono); }
+.constraint-detail > div { display: grid; grid-template-columns: 78px minmax(0,1fr); gap: 7px; padding: 6px 9px; border-bottom: 1px solid rgba(151,194,183,.08); }
+.constraint-detail > div:last-child { border-bottom: 0; }
+.constraint-detail b { color: var(--faint); font: 5px/1.45 var(--mono); font-weight: 400; letter-spacing: .05em; text-transform: uppercase; }
+.constraint-detail p { margin: 0; color: #829790; font: 6px/1.45 var(--mono); }
+.constraint-detail.pass { --constraint-accent: var(--mint); }.constraint-detail.fail { --constraint-accent: var(--red); }.constraint-detail.ranked { --constraint-accent: var(--violet); }
 .policy-comparison-card { margin: 9px 0; padding: 8px; border: 1px solid rgba(181,148,255,.2); background: rgba(181,148,255,.025); }
 .policy-comparison-card > div:first-child { display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; }.policy-comparison-card > div:first-child small { grid-column: 1 / -1; color: var(--faint); font: 5px var(--mono); letter-spacing: .07em; text-transform: uppercase; }.policy-comparison-card > div:first-child strong { color: #c7b5ee; font: 8px var(--mono); font-weight: 400; }.policy-comparison-card > div:first-child span { color: var(--faint); font: 6px var(--mono); }
 .policy-comparison { display: grid; gap: 3px; margin-top: 7px; }.policy-comparison article { display: grid; grid-template-columns: 74px minmax(0,1fr) auto; gap: 6px; align-items: center; min-width: 0; padding: 4px 5px; background: rgba(5,15,17,.72); font: 6px var(--mono); }.policy-comparison article.active { box-shadow: inset 2px 0 var(--violet); }.policy-comparison small { color: var(--faint); text-transform: uppercase; }.policy-comparison strong { overflow: hidden; color: #b7c6c1; font-weight: 400; text-overflow: ellipsis; white-space: nowrap; }.policy-comparison em { color: #70867f; font-style: normal; }.policy-comparison-card > p { margin: 6px 0 0; color: #61766f; font: 5px/1.4 var(--mono); }

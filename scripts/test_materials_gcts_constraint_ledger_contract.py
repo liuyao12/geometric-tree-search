@@ -13,10 +13,17 @@ def test_constraint_ledger_covers_admission_and_ranking_terms() -> None:
     style = (APP_DIR / "style.css").read_text()
 
     assert 'id="constraintLedger"' in html
+    assert 'id="constraintDetail"' in html
     assert "geometry-as-physics ledger" in html
-    assert 'style.css?v=20260824-22' in html
-    assert 'app.js?v=20260824-59' in html
+    assert 'style.css?v=20260824-23' in html
+    assert 'app.js?v=20260824-60' in html
     assert 'function renderConstraintLedger(state, mode = "configured")' in source
+    assert "function geometryConstraintEvidence(name, term, state, mode)" in source
+    assert "function renderConstraintDetail(term, state, mode)" in source
+    assert 'row.setAttribute("aria-pressed"' in source
+    assert 'row.addEventListener("click"' in source
+    for field in ("observed evidence", "geometric encoding", "role in search", "claim boundary"):
+        assert field in source
     for term in (
         "species / hard core",
         "shared support",
@@ -46,6 +53,13 @@ def test_constraint_ledger_covers_admission_and_ranking_terms() -> None:
     assert "angularViolations: evaluation.angularViolations?.length || 0" in source
     assert ".constraint-term.fail" in style
     assert ".constraint-term.ranked" in style
+    assert ".constraint-term.active" in style
+    assert ".constraint-detail" in style
+    assert "A contact exclusion is not a pair potential" in source
+    assert "This is not elastic energy" in source
+    assert "Formal labels are not charge density" in source
+    assert 'iceAnchorTrace?.portCount || overlapGrammar?.rules?.length' in source
+    assert 'all surviving ${iceAnchorTrace?.moleculeLabel || "H₂O"} poses agree' in source
 
 
 if __name__ == "__main__":

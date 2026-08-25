@@ -491,6 +491,16 @@ geometrically coincident proposal fails `novel colored sites` as a duplicate
 cover even when every other constraint passes. This makes the physics proxy,
 search logic, and claim boundary inspectable action by action.
 
+Each ledger tile is interactive. Its expanded record separates four things a
+materials scientist should not have to infer from a color alone: the observed
+position/species evidence, the frozen geometric surrogate, whether it is a hard
+admission gate or a soft ordering term, and the physical claim boundary. Thus a
+coordination cap exposes its center-observation count and species channel,
+whereas the elastic proxy explicitly reports that its dimensionless residual is
+not a modulus, stress, force, or phonon calculation. Formal-charge bookkeeping
+fails closed when oxidation-state coverage is incomplete. The selected record
+updates with each tree decision without turning any diagnostic into an energy.
+
 The growth controls also display a counterfactual frontier table computed from
 the same already-enumerated, hard-admitted candidate set. It reports the top
 action under marking/recurrence alone, balanced elastic mismatch, composition

@@ -234,6 +234,7 @@ const chargeValue = $("chargeValue");
 const surfaceValue = $("surfaceValue");
 const resolverValue = $("resolverValue");
 const constraintLedger = $("constraintLedger");
+const constraintDetail = $("constraintDetail");
 const stackDepth = $("stackDepth");
 const searchStack = $("searchStack");
 const markingHeading = $("markingHeading");
@@ -582,6 +583,7 @@ let atomSpatialIndex = new Map();
 let trainingProgress = 0;
 let clusterDiscoveryTrace = null;
 let clusterDiscoveryProgress = 0;
+let selectedConstraintName = "species / hard core";
 let markingSelection = null;
 let liveOrderCache = { key: "", result: null };
 let liveOrderHistory = [];
@@ -4898,7 +4900,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-59",
+      buildId: "20260824-60",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7810,6 +7812,129 @@ function updateDecision(event) {
   eventKind.textContent = reuse ? "MARK REUSE" : event.accepted ? "ACCEPT" : "REJECT";
 }
 
+function geometryConstraintEvidence(name, term, state, mode) {
+  const frameCount = coloredDistanceEnvelopes?.frameCount || 1;
+  const presentations = coloredDistanceEnvelopes?.atomPresentations || referenceCount();
+  const pairRecords = coloredDistanceEnvelopes?.records || [];
+  const coordinationRecords = coloredCoordinationEnvelopes?.records || [];
+  const angularRecords = coloredAngularEnvelopes?.records || [];
+  const totalAngles = angularRecords.reduce((sum, record) => sum + (record.angleObservations || 0), 0);
+  const totalBands = angularRecords.reduce((sum, record) => sum + (record.bands?.length || 0), 0);
+  const ratio = compositionTarget?.reducedRatio
+    ? Object.entries(compositionTarget.reducedRatio).map(([symbol, count]) => `${symbol}:${count}`).join(" · ") : "unavailable";
+  const environment = growthEnvironmentSpec(confinementSelect.value);
+  const generic = {
+    observed: `${presentations.toLocaleString()} species-labelled position presentations · ${frameCount} within-frame observation${frameCount === 1 ? "" : "s"}`,
+    encoding: term.detail,
+    searchRole: term.status === "pass" || term.status === "fail" ? "hard admission gate"
+      : term.status === "ranked" ? "soft ordering of the unchanged exact candidate set" : "diagnostic only",
+    boundary: "Geometric evidence only; no force, free energy, rate, or elapsed physical time is inferred.",
+  };
+  const evidence = {
+    "species / hard core": {
+      observed: `${pairRecords.length} colored pair envelopes from ${presentations.toLocaleString()} atom presentations`,
+      encoding: "Species-preserving coincidence plus pair-specific minimum-distance exclusions learned below every supplied contact.",
+      searchRole: "Hard gate: an unlike species coincidence or sub-exclusion contact rejects the whole placement.",
+      boundary: "A contact exclusion is not a pair potential, bond order, repulsive energy, or electronic-structure calculation.",
+    },
+    "shared support": {
+      observed: `${learnedCover?.placements?.length || 0} cover occurrences · ${(overlapGrammar?.observations || 0).toLocaleString()} witnessed directed relations`,
+      encoding: "Exact colored shared sites and a proper-SE(3) relative pose, quotiented by learned proper cluster symmetries.",
+      searchRole: "Hard gate: a frozen attachment must reproduce its required overlap or admitted boundary witness.",
+      boundary: "Witnessed adjacency establishes structural compatibility, not binding energy or reaction favorability.",
+    },
+    "novel colored sites": {
+      observed: `${learnedCover?.covered || 0}/${referenceCount()} input sites represented · ${learnedCover?.residualTypes?.length || 0} explicit residual types`,
+      encoding: "Species-labelled set difference of a whole rigid cluster; shared sites are counted once and gaps remain literal.",
+      searchRole: "Hard gate: an action must add at least one new colored site without silently dropping part of a cluster.",
+      boundary: "Novel geometry is a continuation proposal, not proof that the site is thermodynamically occupied.",
+    },
+    "public boundary": {
+      observed: `${environment.shortLabel} selected before search · ${currentPbc().some(Boolean) ? "periodic input quotient" : "finite input window"}`,
+      encoding: `${environment.shape} containment evaluated before branch ranking.`,
+      searchRole: "Hard gate: every emitted site must lie inside the declared public growth domain.",
+      boundary: "The domain is an experimental/geometric condition, not an inferred surface energy or equilibrium crystal habit.",
+    },
+    "coordination capacity": {
+      observed: `${coordinationRecords.length} ordered species channels · ${coordinationRecords.reduce((sum, record) => sum + (record.centerObservations || 0), 0).toLocaleString()} center observations`,
+      encoding: "For each centre→neighbour species channel, the first-shell cutoff and maximum observed occupancy are frozen.",
+      searchRole: "Hard causal gate: a proposal cannot oversaturate an already present local coordination channel.",
+      boundary: "Observed coordination capacity is not valence theory, bond energy, charge transfer, or a guarantee of stability.",
+    },
+    "angular envelope": {
+      observed: `${totalAngles.toLocaleString()} colored three-body angles · ${totalBands} separated angular bands`,
+      encoding: "Neighbour–centre–neighbour angle support is stored as a union of observed bands rather than one spherical shell.",
+      searchRole: "Hard causal gate: new bonds cannot force already present contact neighbours into an unsupported angular gap.",
+      boundary: "These bands are not an angular potential, torque, vibrational mode, or finite-temperature distribution.",
+    },
+    "elastic proxy": {
+      observed: `${pairRecords.length} contact scales + ${totalBands} angular bands from the supplied geometry`,
+      encoding: "Dimensionless distance and angle residuals measure deformation away from observed local envelopes.",
+      searchRole: activeGeometricStrainWeight() > 0
+        ? `Soft rank term with weight ${activeGeometricStrainWeight().toFixed(2)}; it cannot authorize a failed hard gate.` : "Diagnostic only; weight zero.",
+      boundary: "This is not elastic energy: no modulus, stress tensor, relaxation, phonon, or force is calculated.",
+    },
+    "composition reservoir": {
+      observed: `${ratio} reduced ratio from ${compositionTarget?.observations || referenceCount()} supplied sites`,
+      encoding: "The running composition-distance change of each candidate is measured against the observed multicomponent ratio.",
+      searchRole: activeCompositionBalanceWeight() > 0
+        ? `Soft rank term with weight ${activeCompositionBalanceWeight().toFixed(2)}.` : "Diagnostic only; weight zero.",
+      boundary: "Composition balancing is not a chemical potential, phase reservoir, reaction network, or charge-neutrality model.",
+    },
+    "formal-charge reservoir": {
+      observed: formalChargeTarget?.available
+        ? `${Math.round(formalChargeTarget.coverage * 100)}% supplied oxidation-state coverage · q̄ ${formalChargeTarget.meanFormalCharge.toFixed(3)}`
+        : `${Math.round((formalChargeTarget?.coverage || 0) * 100)}% coverage · incomplete channel`,
+      encoding: formalChargeTarget?.available
+        ? "Candidate bookkeeping tracks drift from the supplied mean formal charge per site." : "No surrogate is fitted when oxidation states are not completely supplied.",
+      searchRole: activeFormalChargeWeight() > 0
+        ? `Soft rank term with weight ${activeFormalChargeWeight().toFixed(2)}.` : "Unavailable or diagnostic only.",
+      boundary: "Formal labels are not charge density, electrostatics, redox chemistry, electron transfer, or dielectric screening.",
+    },
+    "surface completion": {
+      observed: `${coordinationRecords.length} learned bulk coordination channels define local deficit relative to the sample`,
+      encoding: "A candidate receives credit for healing existing coordination deficits and cost for creating new exposed deficits.",
+      searchRole: activeSurfaceCompletionWeight() > 0
+        ? `Soft rank term with weight ${activeSurfaceCompletionWeight().toFixed(2)}.` : "Diagnostic only; weight zero.",
+      boundary: "Coordination deficit is not surface free energy, reconstruction, adsorption, solvent chemistry, or Wulff construction.",
+    },
+    "GCTS marking": {
+      observed: `${trainingProgress}/${markingSampleCount()} ${sectionModel?.sampleKind || "connection"} samples · ${iceAnchorTrace?.portCount || overlapGrammar?.rules?.length || 0} frozen connection states`,
+      encoding: mode === "specialized"
+        ? `${iceAnchorTrace?.portCount || 0} frozen proper-SE(3) molecular ports + mutually exclusive ${iceAnchorTrace?.moleculeLabel || "H₂O"} orientation domains`
+        : `${sectionModel?.channels || 0}-channel ${MARKING_REPRESENTATIONS[sectionModel?.representation]?.label || "local section"} over ${sectionModel?.reach || 0} neighbour shell${sectionModel?.reach === 1 ? "" : "s"}`,
+      searchRole: mode === "specialized"
+        ? "All surviving molecular pose domains must agree on an oxygen anchor before it is emitted."
+        : policySelect.value === "marked" ? "Bounded transported context ranks or gates the same frozen exact actions." : "Fitted but not active in the selected search policy.",
+      boundary: "The marking encodes connection success/failure. It is not a physical potential, and it cannot invent a candidate pose.",
+    },
+  }[name] || generic;
+  return { ...evidence, status: term.status, current: `${term.value} · ${term.detail}`, mode };
+}
+
+function renderConstraintDetail(term, state, mode) {
+  if (!constraintDetail || !term) return;
+  const evidence = geometryConstraintEvidence(term.name, term, state, mode);
+  constraintDetail.className = `constraint-detail ${term.status}`;
+  constraintDetail.replaceChildren();
+  const header = document.createElement("header");
+  const eyebrow = document.createElement("small"); eyebrow.textContent = `selected surrogate · ${term.status}`;
+  const title = document.createElement("strong"); title.textContent = term.name;
+  const live = document.createElement("span"); live.textContent = evidence.current;
+  header.append(eyebrow, title, live); constraintDetail.append(header);
+  [
+    ["observed evidence", evidence.observed],
+    ["geometric encoding", evidence.encoding],
+    ["role in search", evidence.searchRole],
+    ["claim boundary", evidence.boundary],
+  ].forEach(([label, copy]) => {
+    const row = document.createElement("div");
+    const key = document.createElement("b"); key.textContent = label;
+    const value = document.createElement("p"); value.textContent = copy;
+    row.append(key, value); constraintDetail.append(row);
+  });
+}
+
 function renderConstraintLedger(state, mode = "configured") {
   const ranked = (enabled) => enabled ? "ranked" : "diagnostic";
   const signed = (value) => `${value >= 0 ? "+" : ""}${value.toFixed(3)}`;
@@ -7870,7 +7995,8 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "composition reservoir", status: "diagnostic", value: "not used", detail: "cannot authorize this trace" },
     { name: "formal-charge reservoir", status: "diagnostic", value: "not used", detail: "cannot authorize this trace" },
     { name: "surface completion", status: "diagnostic", value: "not used", detail: "cannot authorize this trace" },
-    { name: "GCTS marking", status: "pass", value: "domain unanimity", detail: "all surviving H₂O poses agree" },
+    { name: "GCTS marking", status: "pass", value: "domain unanimity",
+      detail: `all surviving ${iceAnchorTrace?.moleculeLabel || "H₂O"} poses agree` },
   ] : [
     { name: "species / hard core", status: "diagnostic", value: "armed", detail: "admission gate" },
     { name: "shared support", status: "diagnostic", value: "armed", detail: "admission gate" },
@@ -7890,14 +8016,29 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "GCTS marking", status: policySelect.value === "marked" ? "ranked" : "diagnostic",
       value: policySelect.value === "marked" ? "active" : "not gating", detail: "bounded local section" },
   ];
+  if (!terms.some((term) => term.name === selectedConstraintName)) selectedConstraintName = terms[0].name;
   constraintLedger.replaceChildren(...terms.map((term) => {
-    const row = document.createElement("article"); row.className = `constraint-term ${term.status}`;
+    const row = document.createElement("button"); row.type = "button";
+    row.className = `constraint-term ${term.status}`;
+    row.classList.toggle("active", term.name === selectedConstraintName);
+    row.setAttribute("aria-pressed", String(term.name === selectedConstraintName));
+    row.title = `Inspect ${term.name}: evidence, geometric encoding, search role, and claim boundary`;
     const label = document.createElement("small"); label.textContent = term.name;
     const value = document.createElement("strong"); value.textContent = term.value;
     const detail = document.createElement("span"); detail.textContent = term.detail;
     row.append(label, value, detail);
+    row.addEventListener("click", () => {
+      selectedConstraintName = term.name;
+      constraintLedger.querySelectorAll(".constraint-term").forEach((candidate) => {
+        const active = candidate === row;
+        candidate.classList.toggle("active", active);
+        candidate.setAttribute("aria-pressed", String(active));
+      });
+      renderConstraintDetail(term, state, mode);
+    });
     return row;
   }));
+  renderConstraintDetail(terms.find((term) => term.name === selectedConstraintName), state, mode);
 }
 
 function renderPolicyComparison() {
