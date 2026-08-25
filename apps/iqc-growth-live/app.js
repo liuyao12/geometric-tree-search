@@ -404,6 +404,11 @@ const leapCertificateSection = $("leapCertificateSection");
 const leapCertificateState = $("leapCertificateState");
 const leapHistoryElement = $("leapHistory");
 const leapFlow = $("leapFlow");
+const leapMorphologyPassport = $("leapMorphologyPassport");
+const leapMorphologyState = $("leapMorphologyState");
+const leapMorphologySpectrum = $("leapMorphologySpectrum");
+const leapMorphologyMetrics = $("leapMorphologyMetrics");
+const leapMorphologyBoundary = $("leapMorphologyBoundary");
 const leapPhysicsState = $("leapPhysicsState");
 const leapPhysicsFilters = $("leapPhysicsFilters");
 const leapPhysicsMatrix = $("leapPhysicsMatrix");
@@ -6154,7 +6159,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-124",
+      buildId: "20260825-125",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -13790,6 +13795,62 @@ leapPhysicsFilters.addEventListener("click", (event) => {
   renderLeapPhysics(leapHistory[selectedLeapIndex] || null);
 });
 
+function morphologyTrend(before, after) {
+  if (!before || !after || after.atomCount <= before.atomCount) return "shape fixed";
+  if (before.phenotype !== after.phenotype) return `${before.phenotype} → ${after.phenotype}`;
+  const exposureChange = (after.coordinationDeficit ?? 0) - (before.coordinationDeficit ?? 0);
+  const anisotropyChange = after.relativeShapeAnisotropy - before.relativeShapeAnisotropy;
+  if (exposureChange <= -.03) return "surface completing";
+  if (exposureChange >= .03) return "exposure increasing";
+  if (anisotropyChange >= .05) return "anisotropy increasing";
+  if (anisotropyChange <= -.05) return "compactifying";
+  return "shape-preserving expansion";
+}
+
+function renderLeapMorphology(selected = null) {
+  if (!leapMorphologyPassport) return;
+  const after = selected?.after?.morphology || structuralMorphologySnapshot();
+  const before = selected?.before?.morphology || after;
+  const trend = morphologyTrend(before, after);
+  leapMorphologyPassport.className = `leap-morphology-passport morphology-${after.phenotype}`;
+  leapMorphologyState.textContent = `${after.phenotype} · ${trend}`;
+  leapMorphologySpectrum.replaceChildren();
+  after.principalVarianceFractions.forEach((fraction, index) => {
+    const row = document.createElement("div"); row.className = `axis-${index + 1}`;
+    const label = document.createElement("small"); label.textContent = `λ${index + 1} / tr C`;
+    const track = document.createElement("span"); const fill = document.createElement("i");
+    fill.style.width = `${Math.max(0, Math.min(100, fraction * 100))}%`; track.append(fill);
+    const value = document.createElement("strong"); value.textContent = `${(100 * fraction).toFixed(1)}%`;
+    row.append(label, track, value); leapMorphologySpectrum.append(row);
+  });
+  leapMorphologyMetrics.replaceChildren();
+  const metric = (label, value, detail) => {
+    const tile = document.createElement("span");
+    const small = document.createElement("small"); small.textContent = label;
+    const strong = document.createElement("strong"); strong.textContent = value;
+    const note = document.createElement("em"); note.textContent = detail;
+    tile.append(small, strong, note); leapMorphologyMetrics.append(tile);
+  };
+  const signed = (value, digits = 2) => `${value >= 0 ? "+" : ""}${value.toFixed(digits)}`;
+  metric("covariance phenotype", `${before.phenotype} → ${after.phenotype}`, "descriptive shape class");
+  metric("structural dimension", `${before.intrinsicDimension || "—"}D → ${after.intrinsicDimension || "—"}D`, after.dimensionInferenceBasis || "insufficient geometry");
+  metric("radius of gyration", `${before.radiusOfGyrationAngstrom.toFixed(2)} → ${after.radiusOfGyrationAngstrom.toFixed(2)} Å`,
+    `${signed(after.radiusOfGyrationAngstrom - before.radiusOfGyrationAngstrom)} Å this leap`);
+  metric("maximum extent", `${before.maximumExtentAngstrom.toFixed(2)} → ${after.maximumExtentAngstrom.toFixed(2)} Å`,
+    `${signed(after.maximumExtentAngstrom - before.maximumExtentAngstrom)} Å this leap`);
+  metric("shape anisotropy κ²", `${before.relativeShapeAnisotropy.toFixed(3)} → ${after.relativeShapeAnisotropy.toFixed(3)}`,
+    `${signed(after.relativeShapeAnisotropy - before.relativeShapeAnisotropy, 3)} this leap`);
+  const beforeExposure = before.coordinationDeficit;
+  const afterExposure = after.coordinationDeficit;
+  const exposureAvailable = Number.isFinite(beforeExposure) && Number.isFinite(afterExposure);
+  metric("coordination exposure", exposureAvailable
+    ? `${(100 * beforeExposure).toFixed(1)} → ${(100 * afterExposure).toFixed(1)}%` : "not available",
+  exposureAvailable
+    ? `${signed(100 * (afterExposure - beforeExposure), 1)} points · ${after.coordinationTerms} colored terms`
+    : "no learned colored coordination reference");
+  leapMorphologyBoundary.textContent = `${after.sampledCoordinationCenters} radially stratified sites audited. The normalized covariance spectrum and colored-coordination deficit are invariant to translation and proper rotation. They are not physical surface area, equilibrium habit, Wulff shape, interfacial energy, growth rate, or elapsed time.`;
+}
+
 function renderStructuralLeap(leap = null) {
   if (!leapCertificateSection) return;
   leapCertificateSection.hidden = pipelineStage !== 4;
@@ -13812,6 +13873,7 @@ function renderStructuralLeap(leap = null) {
   });
   leapFlow.replaceChildren();
   renderLeapPhysics(selected);
+  renderLeapMorphology(selected);
   if (!selected) {
     leapCertificateState.textContent = "seed state · no leap executed";
     [

@@ -213,6 +213,17 @@ counts happen to agree. The deficit is a geometric exposure proxy, not a
 surface area; the phenotype is not an equilibrium crystal habit, Wulff shape,
 interfacial energy, growth rate, or kinetic morphology prediction.
 
+Build 125 makes the same passport visible inside the live structural-leap
+inspector. Selecting any retained leap now shows its before→after covariance
+phenotype, inferred structural dimension, radius of gyration, maximum extent,
+κ² anisotropy, and colored-coordination exposure. A three-row shape-tensor
+readout plots λ₁, λ₂, and λ₃ as fractions of the covariance trace, so compact,
+plate-like, and needle-like states are visually distinguishable without adding
+non-atomic glyphs to the material-growth viewport. The panel labels whether a
+leap is shape-preserving, compactifying, increasingly anisotropic, surface-
+completing, or increasingly exposed. These labels summarize finite structural
+states; they do not infer a mechanism in physical time.
+
 The notebook never restores or executes a run, never stores atom
 coordinates, and never substitutes for the downloadable receipt. Clearing it is
 a two-click action and does not affect downloaded files or the marking library.

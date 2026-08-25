@@ -11,8 +11,8 @@ README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
 
 def test_policy_composite_spatial_field_contract() -> None:
-    assert 'buildId: "20260825-124"' in APP
-    assert 'app.js?v=20260825-124' in HTML
+    assert 'buildId: "20260825-125"' in APP
+    assert 'app.js?v=20260825-125' in HTML
     assert 'id="policySpatialDecomposition"' in HTML
     assert 'const POLICY_SPATIAL_COMPOSITE = "__composite__"' in APP
     assert 'snapshot.spatialTermId ||= POLICY_SPATIAL_COMPOSITE' in APP
