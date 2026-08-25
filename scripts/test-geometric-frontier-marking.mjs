@@ -23,6 +23,8 @@ const context = [placement([0, 0, 0]), placement([1, 1, 0])];
 const marking = new GeometricFrontierMarking({ rotations: PROPER_CUBIC_ROTATIONS, reach: 2 });
 assert.equal(marking.compatible(point, 0.5, context), true, "cold marking accepts every state");
 assert.equal(marking.encode(point, 0.5, context).encoded, true);
+assert.ok(marking.stats().context_tokens > 0, "marking memory reports retained geometry tokens");
+assert.ok(marking.stats().payload_bytes > 0, "marking memory reports a deterministic payload lower bound");
 assert.equal(marking.compatible(point, 0.5, context), false, "the learned obstruction rejects an exact recurrence");
 
 const shift = [7, -4, 3];

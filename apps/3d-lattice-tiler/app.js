@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260824-rl-parity-v211";
+} from "./engine.js?v=20260824-cold-linear-v212";
 
 const $ = (id) => document.getElementById(id);
 
@@ -524,8 +524,8 @@ function updateCriterionUI() {
 const STRATEGY_DESCRIPTIONS = {
   free_range: "Prioritizes forced moves, then explores sensible legal placements with backtracking.",
   learning_free_range: "Starts with an empty marking and records exact local frontier failures; translated recurrences are pruned by geometric overlap.",
-  rl_free_range: "Starts with an empty value table and learns only how anonymous lattice-geometry actions perform during this run.",
-  gcts_rl: "Combines cold online geometric action learning with exact GCTS failure markings; RL orders but never removes legal branches.",
+  rl_free_range: "Starts with zero linear weights and learns one-tile next-placement returns from anonymous lattice geometry during this run.",
+  gcts_rl: "Combines the same one-tile cold linear learner with exact GCTS failure markings; RL orders but never removes legal branches.",
   translational: "Tests increasingly large patches for three exact translation vectors and stops only on a certificate or search limit.",
   isohedral: "Searches tile-transitive patches, then requires an exact periodic quotient preserved by symmetries taking the root to every tile class."
 };
@@ -1923,7 +1923,7 @@ function configKey() {
       : isGcts
         ? "balanced"
         : tilingStrategy === "translational"
-          ? "periodic_agent"
+          ? "periodic"
           : completeShellSearch
             ? "shell"
             : moveOrderSelect.value,
@@ -1938,13 +1938,11 @@ function configKey() {
     gcts_marking_index: true,
     greedy_no_backtrack: false,
     agent_exhaustive: true,
-    agent_policy: isRl || tilingStrategy === "translational" ? "cold_geometry" : null,
+    agent_policy: isRl ? "cold_linucb" : null,
+    agent_ucb_alpha: isRl ? 0 : null,
     seeded_tie_breaks: isRl || tilingStrategy === "translational",
     random_seed: 1,
-    learned_layer_macro: isRl,
-    learned_layer_macro_max_motif_tiles: 8,
-    learned_layer_macro_motif_node_limit: 2500,
-    learned_layer_macro_discovery_time_ms: 45000,
+    learned_layer_macro: false,
     template_preflight: isStructural,
     periodic_patch_unbounded: tilingStrategy === "translational",
     periodic_motif_node_limit: tilingStrategy === "translational" ? 2500 : null,
@@ -3013,7 +3011,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260824-rl-parity-v211", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260824-cold-linear-v212", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3506,6 +3504,13 @@ async function renderGrowthChart() {
   }
 }
 
+function formatMemoryBytes(bytes) {
+  const value = Math.max(0, Number(bytes) || 0);
+  if (value < 1024) return `${Math.round(value)} B`;
+  if (value < 1024 * 1024) return `${(value / 1024).toFixed(1)} KiB`;
+  return `${(value / (1024 * 1024)).toFixed(1)} MiB`;
+}
+
 function formatGrowthResult(result, target) {
   const proofMode = result?.mode?.startsWith("proof");
   const stopReason = {
@@ -3515,12 +3520,21 @@ function formatGrowthResult(result, target) {
     configured_branch_pruning: "configured branch pruning"
   }[result?.stats?.termination_reason] ?? null;
   const stopSuffix = result?.searchIncomplete && stopReason ? ` · ${stopReason}` : "";
+  const learningMilliseconds =
+    (result?.stats?.agent_score_time_ms ?? 0) + (result?.stats?.agent_training_time_ms ?? 0);
+  const learnedBytes = result?.memory?.learnedPayloadBytes ?? 0;
+  const certificateBytes = result?.memory?.certificatePayloadBytes ?? 0;
+  const searchCacheEntries = result?.memory?.transientSearchCacheEntries ?? 0;
+  const certificateMemory = certificateBytes
+    ? ` · certificate ${formatMemoryBytes(certificateBytes)}`
+    : "";
+  const memorySuffix = ` · learned ${formatMemoryBytes(learnedBytes)}${certificateMemory} · search cache ${searchCacheEntries} states`;
   const learningSuffix = result?.mode === "gcts_rl"
-    ? ` (RL ${result.stats?.agent_learned_tags ?? 0} values; GCTS ${result.stats?.marking_geometric_clauses ?? 0} failures, ${result.stats?.marking_geometric_prunes ?? 0} reuses)`
+    ? ` (RL ${result.stats?.agent_model_weight_count ?? result.stats?.agent_learned_tags ?? 0} weights; GCTS ${result.stats?.marking_geometric_clauses ?? 0} failures, ${result.stats?.marking_geometric_prunes ?? 0} reuses; learner ${formatElapsed(learningMilliseconds)})`
     : result?.mode === "gcts"
     ? ` (learned ${result.stats?.marking_geometric_clauses ?? 0}, reused ${result.stats?.marking_geometric_prunes ?? 0})`
     : result?.mode === "rl"
-      ? ` (learned ${result.stats?.agent_learned_tags ?? 0} geometric values)`
+      ? ` (learned ${result.stats?.agent_model_weight_count ?? result.stats?.agent_learned_tags ?? 0} geometric weights; learner ${formatElapsed(learningMilliseconds)})`
     : "";
   const targetPoint = result?.points?.find(point => point.tiles >= target);
   if (result?.resultKind === "known_aperiodic_construction") {
@@ -3529,14 +3543,14 @@ function formatGrowthResult(result, target) {
   if (result?.criterion === "shell") {
     const shell = result.targetValue ?? target;
     if (result.resultKind === "no_tiling" && result.certified && result.canTile === false) {
-      return `${result.label} certified that shell ${shell} is impossible, hence no tiling exists ${formatElapsed(result.milliseconds)}`;
+      return `${result.label} certified that shell ${shell} is impossible, hence no tiling exists ${formatElapsed(result.milliseconds)}${memorySuffix}`;
     }
     if (result.success) {
-      return `${result.label} completed shell ${shell} with ${result.tileCount} tiles ${formatElapsed(result.milliseconds)}${learningSuffix}`;
+      return `${result.label} completed shell ${shell} with ${result.tileCount} tiles ${formatElapsed(result.milliseconds)}${learningSuffix}${memorySuffix}`;
     }
     const maxShell = result.stats?.max_complete_shell_depth ?? 0;
     const maxLive = result.stats?.max_live_tiles ?? result.tileCount ?? 0;
-    return `${result.label} inconclusive · max shell ${maxShell} · max ${maxLive} live${stopSuffix}${learningSuffix}`;
+    return `${result.label} inconclusive · max shell ${maxShell} · max ${maxLive} live${stopSuffix}${learningSuffix}${memorySuffix}`;
   }
   if (
     proofMode
@@ -3698,7 +3712,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260824-rl-parity-v211", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260824-cold-linear-v212", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};
@@ -3733,11 +3747,11 @@ function startGrowthBenchmark() {
       } else if (message.type === "series-finished") {
         series.result = message.result;
         if (mode.id === "gcts_rl") {
-          series.status = `RL learned ${message.result.stats?.agent_learned_tags ?? 0} values; GCTS learned ${message.result.stats?.marking_geometric_clauses ?? 0} failures and reused ${message.result.stats?.marking_geometric_prunes ?? 0}`;
+          series.status = `RL ${message.result.stats?.agent_model_weight_count ?? 0} weights; GCTS ${message.result.stats?.marking_geometric_clauses ?? 0} failures / ${message.result.stats?.marking_geometric_prunes ?? 0} reuses; ${formatMemoryBytes(message.result.memory?.learnedPayloadBytes)} retained`;
         } else if (mode.id === "gcts") {
-          series.status = `learned ${message.result.stats?.marking_geometric_clauses ?? 0} geometric failures; reused ${message.result.stats?.marking_geometric_prunes ?? 0}`;
+          series.status = `learned ${message.result.stats?.marking_geometric_clauses ?? 0} geometric failures; reused ${message.result.stats?.marking_geometric_prunes ?? 0}; ${formatMemoryBytes(message.result.memory?.learnedPayloadBytes)} retained`;
         } else if (mode.id === "rl") {
-          series.status = `learned ${message.result.stats?.agent_learned_tags ?? 0} anonymous geometric values`;
+          series.status = `${message.result.stats?.agent_model_weight_count ?? 0} anonymous geometric weights; ${formatMemoryBytes(message.result.memory?.learnedPayloadBytes)} retained`;
         }
         if (!series.status || ["running", "starting"].includes(series.status)) {
           series.status = message.result.success ? "finished" : message.result.searchIncomplete ? "search limit" : "terminated";

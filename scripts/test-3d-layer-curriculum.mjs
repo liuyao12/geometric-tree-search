@@ -24,11 +24,9 @@ const config = {
   gcts_marking_symmetry: "fixed",
   gcts_marking_index: true,
   agent_exhaustive: true,
-  agent_policy: "cold_geometry",
-  learned_layer_macro: true,
-  learned_layer_macro_max_motif_tiles: 8,
-  learned_layer_macro_motif_node_limit: 2500,
-  learned_layer_macro_discovery_time_ms: 45000,
+  agent_policy: "cold_linucb",
+  agent_ucb_alpha: 0,
+  learned_layer_macro: false,
   known_periodic_template: null,
   initial_patch: null,
   proposal_program: null,
@@ -69,8 +67,11 @@ const hybrid = await run(true);
 for (const result of [rl, hybrid]) {
   assert.equal(result.final?.success, true, "cold RL policies must fill the shell-2 periodic control");
   assert.ok(result.maximumCompletedShell >= 2, "success must mean the live patch completed shell 2");
-  assert.equal(result.final?.tiling_evidence?.kind, "translational_certificate");
-  assert.equal(result.final?.tiling_evidence?.patch_size, 6, "the six-tile cluster must be discovered from geometry");
+  assert.equal(result.final?.search_stats?.learned_layer_macro_enabled, false);
+  assert.equal(result.final?.search_stats?.learned_layer_macro_tiles_applied, 0);
+  assert.equal(result.final?.search_stats?.agent_model_parameter_count, 143);
+  assert.equal(result.final?.search_stats?.agent_model_weight_count, 11);
+  assert.equal(result.final?.search_stats?.agent_model_payload_bytes, 1144);
   assert.equal(result.final?.search_incomplete, false);
 }
 assert.ok(
@@ -104,7 +105,7 @@ assert.ok(
 console.log("3D cold shell-curriculum regression passed", {
   completedShell: hybrid.maximumCompletedShell,
   tiles: hybrid.final.tile_count,
-  motifTiles: hybrid.final.tiling_evidence.patch_size,
+  oneTileActions: hybrid.final.search_stats.branch_choices_visited,
   rlVisitedNodes: rl.final.search_stats.visited_nodes,
   hybridVisitedNodes: hybrid.final.search_stats.visited_nodes,
   negativeRlNodes: negativeRl.final.search_stats.visited_nodes,

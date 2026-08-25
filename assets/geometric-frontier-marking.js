@@ -62,6 +62,7 @@ export class GeometricFrontierMarking {
     this.prunes = 0;
     this.contextTokens = 0;
     this.maxContextTokens = 0;
+    this.payloadBytes = 0;
   }
 
   placementBounds(placement) {
@@ -164,6 +165,9 @@ export class GeometricFrontierMarking {
       };
       this.signatures.add(signature);
       this.clauses.push(clause);
+      // The JSON payload is a deterministic lower-bound proxy for retained
+      // marking memory. It excludes JavaScript container/object overhead.
+      this.payloadBytes += JSON.stringify(clause).length;
       if (!this.byWeight.has(key)) this.byWeight.set(key, []);
       this.byWeight.get(key).push(clause);
       if (!this.byWeightPivot.has(key)) this.byWeightPivot.set(key, new Map());
@@ -239,7 +243,9 @@ export class GeometricFrontierMarking {
       avoided_clause_checks: this.linearClauseChecks - this.clauseChecks,
       prunes: this.prunes,
       average_context_tokens: this.clauses.length ? this.contextTokens / this.clauses.length : 0,
-      max_context_tokens: this.maxContextTokens
+      max_context_tokens: this.maxContextTokens,
+      context_tokens: this.contextTokens,
+      payload_bytes: this.payloadBytes
     };
   }
 }
