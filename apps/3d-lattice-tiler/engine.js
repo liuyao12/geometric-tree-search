@@ -94,8 +94,73 @@ export const latticePatchFingerprint = stateKey => {
   return hash.toString(16).padStart(32, "0");
 };
 
+// Geometry-only work shared by every search lane. Keep this boundary free of
+// strategy settings so a prepared system can be reused by any solver.
+export function preprocessTilingSystem(config, tileSpecs) {
+  const { mode_key } = config;
+  const includeMirrors = !!config.include_mirrors;
+  const normalizePolycubeLattice = tileSpecs.normalizePolycubeLattice
+    ?? (value => value === "fcc" || value === "d3" || value === "half"
+      ? (value === "d3" ? "fcc" : value)
+      : "z3");
+  const polycubeLattice = normalizePolycubeLattice(
+    config.polycube_lattice ?? config.custom_system?.polycube_lattice
+  );
+  const customSystem = config.custom_system
+    ? { ...config.custom_system, polycube_lattice: polycubeLattice }
+    : null;
+  const modeDef = customSystem
+    ? tileSpecs.buildCustomSystem(customSystem)
+    : tileSpecs.TILING_REGISTRY[mode_key];
+  if (!modeDef) throw new Error(`Unknown mode_key: ${mode_key}`);
+
+  const buildBaseTiles = () => modeDef.build();
+  const baseTiles = tileSpecs.withPolycubeLattice
+    ? tileSpecs.withPolycubeLattice(polycubeLattice, buildBaseTiles)
+    : buildBaseTiles();
+  const prototiles = [];
+  for (const tile of baseTiles) {
+    prototiles.push(tile);
+    if (!includeMirrors || !tile.is_chiral) continue;
+    const mirror = tile.get_mirror_copy?.();
+    if (!mirror) continue;
+    mirror.name = tile.name.startsWith("reflected ")
+      ? tile.name.substring(10)
+      : `reflected ${tile.name}`;
+    mirror.__is_mirror = true;
+    prototiles.push(mirror);
+  }
+
+  prototiles.forEach((tile, prototileIndex) => {
+    tile.unique_orientations?.forEach((orientation, orientationIndex) => {
+      orientation.__orientation_id = `${prototileIndex}:${orientationIndex}`;
+    });
+  });
+  const summaryTiles = prototiles.map(tile => ({
+    name: tile.name,
+    is_mirror: !!tile.__is_mirror,
+    is_chiral: !!tile.is_chiral,
+    orientation_count: tile.unique_orientations?.length ?? 0,
+    point_group_order: tile.lattice_orientation_group_order ?? PROPER_CUBIC_ROTATIONS.length,
+    stabilizer_order: tile.lattice_stabilizer_matrices?.length ?? 1,
+    stabilizer_matrices: (tile.lattice_stabilizer_matrices ?? []).map(matrix =>
+      matrix.map(row => row.slice())
+    )
+  }));
+  const summary = {
+    lattice: polycubeLattice,
+    point_group: "proper cubic lattice rotations",
+    point_group_order: PROPER_CUBIC_ROTATIONS.length,
+    prototile_count: prototiles.length,
+    orientation_count: summaryTiles.reduce((sum, tile) => sum + tile.orientation_count, 0),
+    tiles: summaryTiles
+  };
+  summary.fingerprint = latticePatchFingerprint(JSON.stringify(summary));
+  return { modeDef, customSystem, baseTiles, prototiles, polycubeLattice, summary };
+}
+
 export const createTilingStream = (() => {
-  return async function* createTilingStream(config, tileSpecs, stopToken = { stop: false }) {
+  return async function* createTilingStream(config, tileSpecs, stopToken = { stop: false }, preparedSystem = null) {
     const SCALE = tileSpecs.SCALE;
     const COLOR_PALETTE = tileSpecs.COLOR_PALETTE;
     const BASE_COLOR_PALETTE_SIZE = tileSpecs.BASE_COLOR_PALETTE_SIZE ?? 10;
@@ -238,47 +303,11 @@ export const createTilingStream = (() => {
       while (b) [a, b] = [b, a % b];
       return a || 1;
     };
-    // --- Build Prototiles First (to ensure correct order and cache key) ---
+    // --- Use the strategy-independent geometry prepared before search. ---
     const { mode_key } = config;
     const includeMirrors = !!config.include_mirrors;
-    const normalizePolycubeLattice = tileSpecs.normalizePolycubeLattice ?? ((value) => value === "fcc" || value === "d3" || value === "half" ? (value === "d3" ? "fcc" : value) : "z3");
-    const polycubeLattice = normalizePolycubeLattice(config.polycube_lattice ?? config.custom_system?.polycube_lattice);
-    const customSystem = config.custom_system
-      ? { ...config.custom_system, polycube_lattice: polycubeLattice }
-      : null;
-    const modeDef = customSystem
-      ? tileSpecs.buildCustomSystem(customSystem)
-      : tileSpecs.TILING_REGISTRY[mode_key];
-    if (!modeDef) throw new Error(`Unknown mode_key: ${mode_key}`);
-
-    const buildBaseTiles = () => modeDef.build();
-    const baseTiles = tileSpecs.withPolycubeLattice
-      ? tileSpecs.withPolycubeLattice(polycubeLattice, buildBaseTiles)
-      : buildBaseTiles();
-    const prototiles = (() => {
-      const out = [];
-      for (const t of baseTiles) {
-        out.push(t);
-        if (includeMirrors && t.is_chiral) {
-          const m = t.get_mirror_copy?.();
-          if (m) {
-            if (t.name.startsWith("reflected ")) {
-              m.name = t.name.substring(10);
-            } else {
-              m.name = `reflected ${t.name}`;
-            }
-            m.__is_mirror = true;
-            out.push(m);
-          }
-        }
-      }
-      return out;
-    })();
-    prototiles.forEach((tile, prototileIndex) => {
-      tile.unique_orientations?.forEach((orient, orientIndex) => {
-        orient.__orientation_id = `${prototileIndex}:${orientIndex}`;
-      });
-    });
+    const prepared = preparedSystem ?? preprocessTilingSystem(config, tileSpecs);
+    const { modeDef, customSystem, baseTiles, prototiles, polycubeLattice } = prepared;
 
     const determinant3 = (vectors) => {
       const [a, b, c] = vectors;
@@ -503,7 +532,13 @@ export const createTilingStream = (() => {
         is_polycube: !!p.is_polycube,
         polycube_lattice: p.polycube_lattice ?? null,
         is_chiral: !!p.is_chiral,
-        is_mirror: !!p.__is_mirror
+        is_mirror: !!p.__is_mirror,
+        orientation_count: p.unique_orientations?.length ?? 0,
+        point_group_order: p.lattice_orientation_group_order ?? PROPER_CUBIC_ROTATIONS.length,
+        stabilizer_order: p.lattice_stabilizer_matrices?.length ?? 1,
+        stabilizer_matrices: (p.lattice_stabilizer_matrices ?? []).map(matrix =>
+          matrix.map(row => row.slice())
+        )
       };
     });
 
@@ -7582,7 +7617,7 @@ export const tileSpecs = (() => {
         M[2][0]*v[0]+M[2][1]*v[1]+M[2][2]*v[2],
       ]);
       const buildFrom = (matList) => {
-        const seen = new Set();
+        const seen = new Map();
         const out = [];
         for (let iso_idx = 0; iso_idx < matList.length; iso_idx++) {
           const { M, det } = matList[iso_idx];
@@ -7612,24 +7647,39 @@ export const tileSpecs = (() => {
           const oHash = tOcc.map(p=>`${p.pos.join(",")}:${p.weight}`).sort().join("|");
           const fHash = newFaces.map(f => f.slice().sort((a,b)=>a-b).join(",")).sort().join("|");
           const geomHash = `${vHash}@@${oHash}@@${fHash}`;
-          if (seen.has(geomHash)) continue;
-          seen.add(geomHash);
-          out.push({
+          const equivalent = seen.get(geomHash);
+          if (equivalent) {
+            equivalent.__equivalent_lattice_matrices.push(M.map(row => row.slice()));
+            continue;
+          }
+          const orientation = {
             iso_idx,
             det,
             __mark_matrix: M.map(row => row.slice()),
             __mark_shift: shift.slice(),
+            __equivalent_lattice_matrices: [M.map(row => row.slice())],
             verts: tVerts,
             faces: newFaces,
             face_types: newFaceTypes,
             occupancy: tOcc,
             vertsForFace: (fIdx) => fIdx.map(i => tVerts[i])
-          });
+          };
+          seen.set(geomHash, orientation);
+          out.push(orientation);
         }
         return out;
       };
       this.orientations24 = buildFrom(Z3_MATRICES_DET1);
       this.unique_orientations = this.orientations24;
+      const isIdentity = matrix => matrix.every((row, i) =>
+        row.every((value, j) => value === (i === j ? 1 : 0))
+      );
+      const identityCoset = this.unique_orientations.find(orientation =>
+        orientation.__equivalent_lattice_matrices.some(isIdentity)
+      );
+      this.lattice_orientation_group_order = Z3_MATRICES_DET1.length;
+      this.lattice_stabilizer_matrices = (identityCoset?.__equivalent_lattice_matrices ?? [])
+        .map(matrix => matrix.map(row => row.slice()));
     }
     _checkChirality() {
       const mirror = this.verts.map(v => [-v[0], v[1], v[2]]);

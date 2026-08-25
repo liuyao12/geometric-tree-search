@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260824-cold-linear-v212";
+} from "./engine.js?v=20260824-preprocess-barrier-v213";
 
 const $ = (id) => document.getElementById(id);
 
@@ -3011,7 +3011,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260824-cold-linear-v212", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260824-preprocess-barrier-v213", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3637,7 +3637,11 @@ function finishGrowthBenchmark(results) {
     : criterion() === "count"
       ? Number(maxTilesInput.value) || 1
       : Number(layerInput.value) || 1;
-  growthBenchmarkStatus.textContent = results.map(result => formatGrowthResult(result, target)).join(" · ");
+  const preprocessing = results.map(result =>
+    `${result.label} ${(result.preprocessingMilliseconds ?? 0).toFixed(1)}ms`
+  ).join(" · ");
+  const searches = results.map(result => formatGrowthResult(result, target)).join(" · ");
+  growthBenchmarkStatus.textContent = `Preprocessing (excluded): ${preprocessing} · Search: ${searches}`;
   setStatus("All six lanes finished.");
   renderGrowthChart();
 }
@@ -3682,13 +3686,16 @@ function startGrowthBenchmark() {
   config.ui_yield_interval_ms = 250;
   growthRunning = true;
   setRunButton();
-  setStatus("Running all six lanes…");
+  setStatus("Preprocessing tile orientations for all six lanes…");
   const targetLabel = config.criterion === "shell"
     ? `shell ${config.target_val}`
     : config.criterion === "count"
       ? `${config.target_val} tiles`
       : `${config.criterion} ${config.target_val}`;
-  growthBenchmarkStatus.textContent = `Running six searches simultaneously to ${targetLabel}…`;
+  growthBenchmarkStatus.textContent = `Preprocessing six lanes before the shared start barrier…`;
+  const readyModes = new Set();
+  const preprocessingFingerprints = new Set();
+  let benchmarkStarted = false;
 
   const refreshStatus = () => {
     const summaries = GROWTH_MODES.map(mode => {
@@ -3712,7 +3719,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260824-cold-linear-v212", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260824-preprocess-barrier-v213", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};
@@ -3722,6 +3729,27 @@ function startGrowthBenchmark() {
       if (message.type === "series-start") {
         series.mode = message.mode;
         series.status = "running";
+      } else if (message.type === "mode-ready") {
+        series.preprocessingMilliseconds = message.preprocessingMilliseconds;
+        series.preprocessing = message.preprocessing;
+        series.status = `ready · ${message.preprocessing?.orientation_count ?? 0} orientations · stabilizer computed · ${formatElapsed(message.preprocessingMilliseconds ?? 0)} prep`;
+        readyModes.add(mode.id);
+        if (message.preprocessing?.fingerprint) preprocessingFingerprints.add(message.preprocessing.fingerprint);
+        if (readyModes.size === GROWTH_MODES.length && !benchmarkStarted) {
+          if (preprocessingFingerprints.size !== 1) {
+            stopGrowthBenchmark("Preprocessing mismatch: the lanes did not receive identical tile geometry.");
+            return;
+          }
+          benchmarkStarted = true;
+          const startEpochMs = performance.timeOrigin + performance.now() + 100;
+          for (const [readyModeId, readyWorker] of growthWorkers) {
+            const readySeries = growthSeries.get(readyModeId);
+            if (readySeries) readySeries.status = "at start barrier";
+            readyWorker.postMessage({ type: "go", sequence, startEpochMs });
+          }
+          setStatus(`All six lanes ready; search clock starts after preprocessing.`);
+          growthBenchmarkStatus.textContent = `All six lanes ready; starting simultaneously to ${targetLabel}…`;
+        }
       } else if (message.type === "prototile-info") {
         series.prototileInfo = message.info;
       } else if (message.type === "mode-status") {
@@ -3760,9 +3788,15 @@ function startGrowthBenchmark() {
         renderGrowthChart();
       } else if (message.type === "finished") {
         series.result = message.result;
+        const completesBenchmark = growthWorkers.size === 1;
         finishWorker(mode.id);
+        if (completesBenchmark) return;
       } else if (message.type === "error") {
         series.status = `error: ${message.error}`;
+        if (!benchmarkStarted) {
+          stopGrowthBenchmark(`Preprocessing failed for ${mode.label}: ${message.error}`);
+          return;
+        }
         finishWorker(mode.id);
       }
       refreshStatus();
@@ -3770,10 +3804,14 @@ function startGrowthBenchmark() {
     worker.addEventListener("error", error => {
       const series = growthSeries.get(mode.id);
       if (series) series.status = `error: ${error.message}`;
+      if (!benchmarkStarted) {
+        stopGrowthBenchmark(`Preprocessing failed for ${mode.label}: ${error.message}`);
+        return;
+      }
       finishWorker(mode.id);
     });
     worker.postMessage({
-      type: "start",
+      type: "prepare",
       sequence,
       config,
       mode: mode.id

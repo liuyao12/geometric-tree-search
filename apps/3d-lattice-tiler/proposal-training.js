@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260824-cold-linear-v212";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260824-preprocess-barrier-v213";
 import {
   createInitialProposalPopulation,
   growthCurveArea,

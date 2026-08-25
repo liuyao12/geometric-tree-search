@@ -5,6 +5,7 @@ import {
   createTilingStream,
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
+  preprocessTilingSystem,
   tileSpecs
 } from "../apps/3d-lattice-tiler/engine.js";
 import {
@@ -64,6 +65,19 @@ assert.equal(
   styleVersion(sourceTilerHtml),
   "the root GitHub Pages wrapper must load the same cache-busted stylesheet as the source page"
 );
+const preparedCube = preprocessTilingSystem({ mode_key: "cube", polycube_lattice: "z3" }, tileSpecs);
+assert.equal(preparedCube.summary.point_group_order, 24);
+assert.equal(preparedCube.summary.orientation_count, 1);
+assert.equal(preparedCube.summary.tiles[0].stabilizer_order, 24);
+assert.ok(preparedCube.summary.tiles.every(tile =>
+  tile.orientation_count * tile.stabilizer_order === tile.point_group_order
+), "orientation representatives must be the point-group cosets of the tile stabilizer");
+assert.match(growthWorkerSource, /preprocessTilingSystem\(run\.config, tileSpecs\)/);
+assert.match(growthWorkerSource, /type: "mode-ready"/);
+assert.match(growthWorkerSource, /type !== "go"/);
+assert.match(growthAppSource, /readyModes\.size === GROWTH_MODES\.length/);
+assert.match(growthAppSource, /performance\.timeOrigin \+ performance\.now\(\) \+ 100/);
+assert.match(growthAppSource, /Preprocessing \(excluded\)/);
 assert.match(
   tilerStyleSource,
   /grid-template-rows: auto auto auto auto minmax\(190px, 1fr\);[\s\S]*?overflow-y: auto;/,
