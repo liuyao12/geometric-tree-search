@@ -31,7 +31,7 @@ def test_growth_certificate_separates_replay_continuation_and_recurrence() -> No
     assert 'targetCoordinatesUsed: false' in source
     assert 'physicalPotentialUsed: false' in source
     assert 'geometrically certified but not labeled physically correct' in source
-    assert 'Mutually exclusive H₂O orientations stay symbolic' in source
+    assert 'Mutually exclusive ${iceAnchorTrace.moleculeLabel} orientations stay symbolic' in source
     assert 'this viewport trace is not itself a physical-time trajectory' in source
     assert "exact replay of the supplied window" in readme
     assert "outside-window structural output" in readme

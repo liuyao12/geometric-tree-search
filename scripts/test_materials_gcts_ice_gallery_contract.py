@@ -37,7 +37,7 @@ def test_ice_gallery_uses_molecular_and_center_free_polyhedral_views() -> None:
     assert "A generic hull is the wrong representation here" in source
     assert "[0, 1, 2], [3, paired[1], paired[0]]" in source
     assert "if (learnedCover?.occurrenceBased || learnedCover?.molecular) return;" in source
-    assert "would turn molecular or irregular supports back into radial spokes" in source
+    assert "without inventing radial spokes" in source
     assert "function learnMolecularSectionModel(source, config)" in source
     assert 'sampleKind: learnedCover.molecular ? "molecular cover occurrence" : "irregular support occurrence"' in source
     assert "function observedPortRules(cluster)" in source
@@ -74,7 +74,8 @@ def test_ice_gallery_uses_molecular_and_center_free_polyhedral_views() -> None:
     assert "if (learnedCover.galleryTypes) return learnedCover.galleryTypes" in source
     assert "markingPrototypeTypes().forEach((cluster, clusterIndex)" in source
     assert "return learnedCover?.occurrenceBased || learnedCover?.molecular ? learnedCover.types" in source
-    assert "cover classes as independent rotating scenes" in source
+    assert "candidate species-resolved bonds and intermolecular connections are proposed, rejected, and replaced" in source
+    assert "Each learned cover class now receives its own rotating 3D card" in source
     assert "metric conformers as pose subtypes beneath one topological atom-cover class" in source
     assert "cluster-gallery-inspector" in source
     assert "literal terminal · never promoted" in source

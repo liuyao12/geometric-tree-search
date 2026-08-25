@@ -440,7 +440,7 @@ body.atlas-open { overflow: hidden; }
 .cluster-gallery-inspector small { color: var(--faint); font: 6px var(--mono); text-transform: uppercase; letter-spacing: .07em; }
 .cluster-gallery-inspector strong { margin-top: 5px; color: #d8e5e1; font: 9px var(--mono); font-weight: 400; }
 .cluster-gallery-inspector span { margin-top: 4px; color: #637b74; font: 6px var(--mono); }
-.cluster-card { position: relative; min-height: 194px; overflow: hidden; border: 1px solid rgba(151,194,183,.22); background: linear-gradient(145deg, rgba(14,37,36,.92), rgba(5,15,17,.96)); cursor: pointer; outline: none; }
+.cluster-card { position: relative; min-height: 212px; overflow: hidden; border: 1px solid rgba(151,194,183,.22); background: linear-gradient(145deg, rgba(14,37,36,.92), rgba(5,15,17,.96)); cursor: pointer; outline: none; }
 .cluster-card:hover,.cluster-card:focus-visible { border-color: rgba(101,225,188,.65); }
 .cluster-card.active { border-color: var(--mint); box-shadow: inset 0 0 0 1px rgba(101,225,188,.22), 0 0 18px rgba(101,225,188,.08); }
 .cluster-card[hidden] { display: none; }
@@ -450,6 +450,9 @@ body.atlas-open { overflow: hidden; }
 .cluster-card-label em { justify-self: end; color: #7f9e96; font-style: normal; }
 .cluster-card-label span { grid-column: 1 / -1; line-height: 1.35; }
 .cluster-card-label small { grid-column: 1 / -1; color: #617a73; font: 6px/1.35 var(--mono); text-transform: uppercase; }
+.cluster-card-label .cluster-training-readout { color: #9b8dd5; letter-spacing: .025em; }
+.cluster-card-label .cluster-training-readout.complete { color: var(--mint); }
+.cluster-card-label .cluster-training-readout.terminal { color: #b98d54; }
 .cluster-card.residual { border-color: rgba(255,109,113,.4); }
 .cluster-card.residual .cluster-card-label b { color: var(--red); }
 .cluster-card.gap { border-color: rgba(255,193,105,.36); }
