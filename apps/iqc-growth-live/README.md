@@ -224,6 +224,17 @@ leap is shape-preserving, compactifying, increasingly anisotropic, surface-
 completing, or increasingly exposed. These labels summarize finite structural
 states; they do not infer a mechanism in physical time.
 
+Build 126 adds a gated **finite mass–radius scaling audit**. For the retained
+certified states it fits `log N = b + D_M log R_g`, where `N` is explicit atom
+count and `R_g` is the coordinate-free radius of gyration. At least three
+states and a 1.25× radius span are required; the panel reports sample count,
+span, ordinary least-squares `R²`, the inferred 2D/3D support reference, and
+whether the finite window is dimension-consistent, densifying, open/
+anisotropic, or mixed. Saved-run comparisons carry both fits, and the full
+receipt records the same audit. `D_M` is deliberately a finite-window
+structural exponent: it is not asserted to be an asymptotic fractal dimension,
+dynamic scaling exponent, diffusion-limited-aggregation law, or growth rate.
+
 The notebook never restores or executes a run, never stores atom
 coordinates, and never substitutes for the downloadable receipt. Clearing it is
 a two-click action and does not affect downloaded files or the marking library.

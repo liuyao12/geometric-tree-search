@@ -48,9 +48,10 @@ import { classifyProperPoseOrbits, symmetryReducedMisorientation } from "./prope
 import {
   centeredStructuralWindow,
   covarianceMorphology,
+  finiteMassRadiusScaling,
   inferPointSetDimension,
   phaseComparisonRadius,
-} from "./phase-evidence.js?v=20260825-2";
+} from "./phase-evidence.js?v=20260825-3";
 import {
   growthEnvironmentAudit,
   growthEnvironmentContains,
@@ -408,6 +409,7 @@ const leapMorphologyPassport = $("leapMorphologyPassport");
 const leapMorphologyState = $("leapMorphologyState");
 const leapMorphologySpectrum = $("leapMorphologySpectrum");
 const leapMorphologyMetrics = $("leapMorphologyMetrics");
+const leapMorphologyScaling = $("leapMorphologyScaling");
 const leapMorphologyBoundary = $("leapMorphologyBoundary");
 const leapPhysicsState = $("leapPhysicsState");
 const leapPhysicsFilters = $("leapPhysicsFilters");
@@ -6159,7 +6161,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-125",
+      buildId: "20260825-126",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7062,6 +7064,7 @@ async function buildExperimentReceipt() {
         maximumRetainedEvents: MAXIMUM_RETAINED_STRUCTURAL_LEAPS,
         truncated: leapEventCount > leapHistory.length,
         alignment: "discrete GCTS search update; not physical time" },
+      structuralMassRadiusScaling: receiptMassRadiusScaling(),
       structuralLeapCertificates: leapHistory.map((leap) => ({
         index: leap.index, status: leap.status, label: leap.label,
         before: leap.before, proposal: leap.proposal, tests: leap.tests, after: leap.after,
@@ -7454,6 +7457,7 @@ function experimentNotebookSummary(receipt) {
     physicalTimeModeled: receipt.evidenceBoundary.physicalElapsedTimeModeled,
     trajectory: { alignment: "structural leap index", points: trajectoryPoints,
       morphologyPassport: "rotation/translation-invariant covariance spectrum + learned colored-coordination deficit",
+      massRadiusScaling: notebookMassRadiusScaling(trajectoryPoints),
       leapCount: structuralLeaps.length,
       totalLeapEvents: search?.structuralLeapHistory?.totalEvents ?? structuralLeaps.length,
       maximumRetainedLeapEvents: search?.structuralLeapHistory?.maximumRetainedEvents ?? MAXIMUM_RETAINED_STRUCTURAL_LEAPS,
@@ -7574,6 +7578,14 @@ function selectedNotebookTrajectoryObservable() {
     || NOTEBOOK_TRAJECTORY_OBSERVABLES.atoms;
 }
 
+function notebookMassRadiusScaling(points = []) {
+  return finiteMassRadiusScaling(points.map((point) => ({
+    mass: point.atoms,
+    radius: point.morphology?.radiusOfGyrationAngstrom,
+    dimension: point.morphology?.intrinsicDimension,
+  })));
+}
+
 function renderNotebookInterventionAudit(selected) {
   notebookInterventionAudit.replaceChildren();
   const header = document.createElement("header");
@@ -7630,6 +7642,8 @@ function notebookTrajectoryComparison(first, second) {
     }
   }
   const firstFinal = firstPoints.at(-1); const secondFinal = secondPoints.at(-1);
+  const firstScaling = first.trajectory.massRadiusScaling || notebookMassRadiusScaling(firstPoints);
+  const secondScaling = second.trajectory.massRadiusScaling || notebookMassRadiusScaling(secondPoints);
   return { firstPoints, secondPoints, minimumStep, maximumStep, firstDivergence,
     sameInput: Boolean(first.inputIdentity && first.inputIdentity === second.inputIdentity),
     alignedSteps: [...firstByStep.keys()].filter((step) => secondByStep.has(step)).length,
@@ -7642,6 +7656,7 @@ function notebookTrajectoryComparison(first, second) {
     firstRejected: firstFinal.cumulativeRejected || 0, secondRejected: secondFinal.cumulativeRejected || 0,
     firstFinalMorphology: firstFinal.morphology || null,
     secondFinalMorphology: secondFinal.morphology || null,
+    firstScaling, secondScaling,
     morphologyAvailable: Boolean(firstPoints.every((point) => point.morphology)
       && secondPoints.every((point) => point.morphology)),
     historyTruncated: Boolean(first.trajectory.historyTruncated || second.trajectory.historyTruncated),
@@ -7732,6 +7747,12 @@ function renderNotebookTrajectoryAudit(selected) {
     ["coordination exposure", comparison.morphologyAvailable
       ? `${(100 * comparison.firstFinalMorphology.coordinationDeficit).toFixed(1)}% → ${(100 * comparison.secondFinalMorphology.coordinationDeficit).toFixed(1)}%` : "legacy unavailable",
     "colored deficit proxy · not area"],
+    ["finite mass–radius Dₘ", comparison.firstScaling.exponent === null || comparison.secondScaling.exponent === null
+      ? "insufficient scale span"
+      : `${comparison.firstScaling.exponent.toFixed(2)} → ${comparison.secondScaling.exponent.toFixed(2)}`,
+    `fit R² ${comparison.firstScaling.rSquared?.toFixed(2) || "—"} → ${comparison.secondScaling.rSquared?.toFixed(2) || "—"}`],
+    ["finite structural regime", `${comparison.firstScaling.regime} → ${comparison.secondScaling.regime}`,
+    "not fractal dimension or kinetics"],
   ];
   tiles.forEach(([label, value, note]) => {
     const tile = document.createElement("span");
@@ -7805,12 +7826,16 @@ async function saveCurrentExperimentNotebookEntry() {
     if (duplicate) {
       const morphologyUpgradeNeeded = duplicate.trajectory?.points?.length
         && duplicate.trajectory.points.some((point) => !point.morphology);
-      if (!duplicate.trajectory?.points?.length || morphologyUpgradeNeeded) {
+      const scalingUpgradeNeeded = duplicate.trajectory?.points?.length
+        && !duplicate.trajectory.massRadiusScaling;
+      if (!duplicate.trajectory?.points?.length || morphologyUpgradeNeeded || scalingUpgradeNeeded) {
         Object.assign(duplicate, experimentNotebookSummary(receipt));
         persistExperimentNotebook();
         receiptStatus.textContent = morphologyUpgradeNeeded
           ? "Existing run upgraded with its coordinate-free morphology passport."
-          : "Existing run upgraded with its coordinate-free structural-leap history.";
+          : scalingUpgradeNeeded
+            ? "Existing run upgraded with its finite mass–radius audit."
+            : "Existing run upgraded with its coordinate-free structural-leap history.";
       }
       selectedNotebookEntryIds = [duplicate.id];
       if (duplicate.trajectory?.points?.length && !receiptStatus.textContent.includes("upgraded")) {
@@ -13795,6 +13820,38 @@ leapPhysicsFilters.addEventListener("click", (event) => {
   renderLeapPhysics(leapHistory[selectedLeapIndex] || null);
 });
 
+function structuralMorphologySeries(selected = null) {
+  const selectedPosition = selected
+    ? leapHistory.findIndex((entry) => entry.index === selected.index) : leapHistory.length - 1;
+  const retained = selectedPosition >= 0 ? leapHistory.slice(0, selectedPosition + 1) : [];
+  if (!retained.length) return [{ step: 0, ...structuralMorphologySnapshot() }];
+  const states = [];
+  if (retained[0].before?.morphology) states.push({
+    step: Math.max(0, retained[0].index - 1), ...retained[0].before.morphology,
+  });
+  retained.forEach((leap) => {
+    if (leap.after?.morphology) states.push({ step: leap.index, ...leap.after.morphology });
+  });
+  return states;
+}
+
+function structuralMassRadiusScaling(selected = null) {
+  const states = structuralMorphologySeries(selected);
+  const audit = finiteMassRadiusScaling(states.map((state) => ({
+    mass: state.atomCount,
+    radius: state.radiusOfGyrationAngstrom,
+    dimension: state.intrinsicDimension,
+  })));
+  return { ...audit, retainedWindowTruncated: leapEventCount > leapHistory.length,
+    alignment: "certified structural leap index; no physical time" };
+}
+
+function receiptMassRadiusScaling(selected = null) {
+  const audit = structuralMassRadiusScaling(selected);
+  return Object.fromEntries(Object.entries(audit).map(([key, value]) => [key,
+    Number.isFinite(value) && !Number.isInteger(value) ? receiptRound(value) : value]));
+}
+
 function morphologyTrend(before, after) {
   if (!before || !after || after.atomCount <= before.atomCount) return "shape fixed";
   if (before.phenotype !== after.phenotype) return `${before.phenotype} → ${after.phenotype}`;
@@ -13848,7 +13905,27 @@ function renderLeapMorphology(selected = null) {
   exposureAvailable
     ? `${signed(100 * (afterExposure - beforeExposure), 1)} points · ${after.coordinationTerms} colored terms`
     : "no learned colored coordination reference");
-  leapMorphologyBoundary.textContent = `${after.sampledCoordinationCenters} radially stratified sites audited. The normalized covariance spectrum and colored-coordination deficit are invariant to translation and proper rotation. They are not physical surface area, equilibrium habit, Wulff shape, interfacial energy, growth rate, or elapsed time.`;
+  const scaling = structuralMassRadiusScaling(selected);
+  leapMorphologyScaling.className = `leap-morphology-scaling ${scaling.fitReliable ? "resolved" : "unresolved"}`;
+  leapMorphologyScaling.replaceChildren();
+  const scalingTitle = document.createElement("span");
+  const scalingLabel = document.createElement("small"); scalingLabel.textContent = "finite mass–radius audit";
+  const scalingValue = document.createElement("strong");
+  scalingValue.textContent = scaling.exponent === null ? "Dₘ unresolved" : `Dₘ ${scaling.exponent.toFixed(2)}`;
+  const scalingStatus = document.createElement("em"); scalingStatus.textContent = scaling.regime;
+  scalingTitle.append(scalingLabel, scalingValue, scalingStatus);
+  const scalingEvidence = document.createElement("div");
+  [["states", `${scaling.sampleCount}/${scaling.minimumStates}`],
+    ["R_g span", scaling.radiusRatio ? `${scaling.radiusRatio.toFixed(2)}×` : "—"],
+    ["fit R²", scaling.rSquared === null ? "—" : scaling.rSquared.toFixed(3)],
+    ["reference", scaling.referenceDimension ? `${scaling.referenceDimension}D support` : "unresolved"]]
+    .forEach(([label, value]) => {
+      const cell = document.createElement("span"); const key = document.createElement("small");
+      const datum = document.createElement("strong"); key.textContent = label; datum.textContent = value;
+      cell.append(key, datum); scalingEvidence.append(cell);
+    });
+  leapMorphologyScaling.append(scalingTitle, scalingEvidence);
+  leapMorphologyBoundary.textContent = `${after.sampledCoordinationCenters} radially stratified sites audited. Dₘ fits log(atom count) against log(radius of gyration) only across the displayed finite structural states${scaling.retainedWindowTruncated ? "; the retained history is truncated" : ""}. The observables are invariant to translation and proper rotation. They are not physical surface area, asymptotic fractal dimension, equilibrium habit, Wulff shape, interfacial energy, growth rate, kinetics, or elapsed time.`;
 }
 
 function renderStructuralLeap(leap = null) {

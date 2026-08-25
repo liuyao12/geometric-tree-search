@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import {
   centeredStructuralWindow,
   covarianceMorphology,
+  finiteMassRadiusScaling,
   inferPointSetDimension,
   phaseComparisonRadius,
 } from "../apps/iqc-growth-live/phase-evidence.js";
@@ -50,6 +51,23 @@ assert.deepEqual(transformedRodMorphology.principalVariance.map((value) => value
   rodMorphology.principalVariance.map((value) => value.toFixed(10)));
 assert.equal(transformedRodMorphology.radiusOfGyration.toFixed(10), rodMorphology.radiusOfGyration.toFixed(10));
 assert.equal(transformedRodMorphology.maximumExtent.toFixed(10), rodMorphology.maximumExtent.toFixed(10));
+
+for (const dimension of [1, 2, 3]) {
+  const scaling = finiteMassRadiusScaling([1, 2, 4, 8].map((radius) => ({
+    mass: 5 * radius ** dimension, radius, dimension: dimension === 1 ? 2 : dimension,
+  })));
+  assert.equal(scaling.status, "finite scaling resolved");
+  assert.ok(Math.abs(scaling.exponent - dimension) < 1e-12);
+  assert.ok(Math.abs(scaling.rSquared - 1) < 1e-12);
+  assert.equal(scaling.fitReliable, true);
+  assert.equal(scaling.asymptoticFractalDimensionInferred, false);
+  assert.equal(scaling.physicalTimeUsed, false);
+}
+assert.equal(finiteMassRadiusScaling([{ mass: 1, radius: 1 }, { mass: 2, radius: 2 }]).status,
+  "insufficient states");
+assert.equal(finiteMassRadiusScaling([
+  { mass: 10, radius: 1 }, { mass: 11, radius: 1.02 }, { mass: 12, radius: 1.04 },
+]).status, "insufficient radius span");
 
 const tagged = volume.map((atom, id) => ({ ...atom, id }));
 const shifted = tagged.map((atom) => ({ ...atom, p: atom.p.map((value, axis) => value + [13, -7, 4][axis]) }));

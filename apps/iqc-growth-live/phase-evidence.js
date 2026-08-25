@@ -162,6 +162,87 @@ export function covarianceMorphology(source, lengthScale = 1, planarVarianceRati
   };
 }
 
+/**
+ * Fit log(mass) = intercept + D_M log(radius) across a finite sequence of
+ * certified structural states. D_M is a descriptive mass-radius exponent for
+ * the observed scale window. It is not promoted to an asymptotic fractal
+ * dimension, kinetic exponent, or rate law.
+ */
+export function finiteMassRadiusScaling(states, {
+  minimumStates = 3,
+  minimumRadiusRatio = 1.25,
+  minimumRSquared = .8,
+} = {}) {
+  if (!Array.isArray(states)) throw new Error("mass-radius scaling states must be an array");
+  if (!(Number.isInteger(minimumStates) && minimumStates >= 3)) {
+    throw new Error("mass-radius scaling requires at least three declared states");
+  }
+  if (!(Number.isFinite(minimumRadiusRatio) && minimumRadiusRatio > 1)) {
+    throw new Error("mass-radius scaling radius ratio must exceed one");
+  }
+  if (!(Number.isFinite(minimumRSquared) && minimumRSquared >= 0 && minimumRSquared <= 1)) {
+    throw new Error("mass-radius scaling R-squared threshold must lie in [0,1]");
+  }
+  const samples = states.map((state, index) => ({
+    index,
+    mass: Number(state?.mass ?? state?.atomCount ?? state?.atoms),
+    radius: Number(state?.radius ?? state?.radiusOfGyration ?? state?.radiusOfGyrationAngstrom),
+    dimension: Number(state?.dimension ?? state?.intrinsicDimension),
+  })).filter((sample) => sample.mass > 0 && sample.radius > 0
+    && Number.isFinite(sample.mass) && Number.isFinite(sample.radius));
+  const radiusMinimum = samples.length ? Math.min(...samples.map((sample) => sample.radius)) : null;
+  const radiusMaximum = samples.length ? Math.max(...samples.map((sample) => sample.radius)) : null;
+  const radiusRatio = radiusMinimum > 0 ? radiusMaximum / radiusMinimum : null;
+  const base = {
+    sampleCount: samples.length, minimumStates, radiusMinimum, radiusMaximum, radiusRatio,
+    minimumRadiusRatio, minimumRSquared,
+    finiteWindowOnly: true, asymptoticFractalDimensionInferred: false,
+    physicalTimeUsed: false, kineticsInferred: false, coordinatesUsed: false,
+  };
+  if (samples.length < minimumStates) return {
+    ...base, status: "insufficient states", sufficient: false, exponent: null,
+    intercept: null, rSquared: null, fitReliable: false, referenceDimension: null,
+    regime: "unresolved",
+  };
+  if (!(radiusRatio >= minimumRadiusRatio)) return {
+    ...base, status: "insufficient radius span", sufficient: false, exponent: null,
+    intercept: null, rSquared: null, fitReliable: false, referenceDimension: null,
+    regime: "unresolved",
+  };
+  const x = samples.map((sample) => Math.log(sample.radius));
+  const y = samples.map((sample) => Math.log(sample.mass));
+  const meanX = x.reduce((sum, value) => sum + value, 0) / x.length;
+  const meanY = y.reduce((sum, value) => sum + value, 0) / y.length;
+  const varianceX = x.reduce((sum, value) => sum + (value - meanX) ** 2, 0);
+  if (!(varianceX > 1e-15)) return {
+    ...base, status: "degenerate radius window", sufficient: false, exponent: null,
+    intercept: null, rSquared: null, fitReliable: false, referenceDimension: null,
+    regime: "unresolved",
+  };
+  const covariance = x.reduce((sum, value, index) =>
+    sum + (value - meanX) * (y[index] - meanY), 0);
+  const exponent = covariance / varianceX;
+  const intercept = meanY - exponent * meanX;
+  const residual = y.map((value, index) => value - (intercept + exponent * x[index]));
+  const residualSumSquares = residual.reduce((sum, value) => sum + value * value, 0);
+  const totalSumSquares = y.reduce((sum, value) => sum + (value - meanY) ** 2, 0);
+  const rSquared = totalSumSquares > 1e-15 ? Math.max(0, 1 - residualSumSquares / totalSumSquares) : 1;
+  const dimensions = samples.map((sample) => sample.dimension).filter((value) => value === 2 || value === 3)
+    .sort((first, second) => first - second);
+  const referenceDimension = dimensions.length ? dimensions[Math.floor(dimensions.length / 2)] : null;
+  const fitReliable = rSquared >= minimumRSquared;
+  const regime = !fitReliable || !referenceDimension ? "mixed finite-window scaling"
+    : exponent > referenceDimension + .35 ? "densifying within window"
+      : exponent < referenceDimension - .55 ? "open / anisotropic within window"
+        : "dimension-consistent filling";
+  return {
+    ...base, status: fitReliable ? "finite scaling resolved" : "low fit quality",
+    sufficient: true, exponent, intercept, rSquared, fitReliable,
+    referenceDimension, regime,
+    residualRootMeanSquare: Math.sqrt(residualSumSquares / residual.length),
+  };
+}
+
 export function phaseComparisonRadius(atomCount, dimension) {
   if (!Number.isInteger(atomCount) || atomCount < 1) throw new Error("phase comparison atom count must be positive");
   if (dimension !== 2 && dimension !== 3) throw new Error("phase comparison dimension must be two or three");
