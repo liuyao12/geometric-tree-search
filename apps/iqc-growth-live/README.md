@@ -438,6 +438,15 @@ tensor and loaded versus unloaded mean residuals. This is a mechanical boundary
 hypothesis, not stress, pressure, modulus, force, elastic relaxation,
 plasticity, phonons, or mechanical equilibrium.
 
+The search can also apply a **geometric robustness** ordering. For each frozen
+exact action it measures the smallest colored-contact clearance, exact-overlap
+headroom, or public-boundary clearance and normalizes that margin by the
+resolved clustering tolerance. This target-blind preference never changes the
+candidate set and cannot authorize a failed hard gate. It is not a pose
+ensemble, temperature, survival probability, free energy, barrier, or rate.
+The separate bounded pose-perturbation audit remains post-decision validation
+and never feeds this ranking.
+
 All pair, capacity, angle, and strain evaluations are compiled to the exact
 finite-reach neighborhood affected by the proposed fresh sites. The live
 spatial index finds existing centers touched by the action and then gathers

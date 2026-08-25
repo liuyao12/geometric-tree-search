@@ -52,8 +52,9 @@ import {
 import {
   growthEnvironmentAudit,
   growthEnvironmentContains,
+  growthEnvironmentSignedMargin,
   growthEnvironmentSpec,
-} from "./growth-environments.js?v=20260824-1";
+} from "./growth-environments.js?v=20260825-2";
 import { auditGeometricMicrostructure } from "./microstructure-audit.js?v=20260824-1";
 import { CDYB_BROWSER_FIXTURE } from "./cdyb-browser-fixture.js?v=20260824-1";
 import {
@@ -174,6 +175,9 @@ const affineLoadHint = $("affineLoadHint");
 const affineLoadBadge = $("affineLoadBadge");
 const affineLoadGlyph = $("affineLoadGlyph");
 const affineLoadBadgeLabel = $("affineLoadBadgeLabel");
+const robustnessPreferenceSelect = $("robustnessPreferenceSelect");
+const robustnessWeightSelect = $("robustnessWeightSelect");
+const robustnessHint = $("robustnessHint");
 const growthSchedulingSelect = $("growthSchedulingSelect");
 const growthSchedulingHint = $("growthSchedulingHint");
 const trainVariantButton = $("trainVariantButton");
@@ -637,6 +641,8 @@ let acceptedSurfaceDeficit = 0;
 let rejectedSurfaceDeficit = 0;
 let acceptedExternalDriveAlignment = 0;
 let rejectedExternalDriveAlignment = 0;
+let acceptedRobustnessScore = 0;
+let rejectedRobustnessScore = 0;
 let constraintNeighborhoodEvaluations = 0;
 let constraintNeighborhoodSiteTotal = 0;
 let maximumConstraintNeighborhoodSites = 0;
@@ -697,6 +703,8 @@ let externalDriveMode = "none";
 let externalDriveWeight = .24;
 let affineLoadMode = "none";
 let affineLoadMagnitude = .02;
+let robustnessPreference = "none";
+let robustnessWeight = .24;
 let growthScheduling = "commuting";
 let nextMarkingId = 1;
 let geometryMode = "auto";
@@ -5449,7 +5457,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-81",
+      buildId: "20260825-82",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -5842,6 +5850,21 @@ async function buildExperimentReceipt() {
         targetUsed: false,
         physicalFieldSolved: false,
       },
+      constraintRobustnessRanking: {
+        role: "target-blind soft ordering of unchanged exact actions by the smallest normalized geometric safety margin",
+        mode: robustnessPreference,
+        enabled: activeRobustnessWeight() > 0,
+        effectiveWeight: activeRobustnessWeight(),
+        acceptedMeanScore: receiptRound(acceptedRobustnessScore / Math.max(1, acceptedDecisions)),
+        rejectedMeanScore: receiptRound(rejectedRobustnessScore / Math.max(1, rejectedDecisions)),
+        candidateGeometryChanged: false,
+        hardAdmissionChanged: false,
+        targetUsed: false,
+        temperatureModeled: false,
+        probabilityInferred: false,
+        freeEnergyInferred: false,
+        perturbationEnsembleUsedForRanking: false,
+      },
       localConstraintWork: {
         role: "exact finite-reach neighborhood evaluation via the live spatial index; not an approximation or sampled cutoff",
         maximumReachAngstrom: receiptRound(coloredCoordinationEnvelopes.maximumCutoff * referenceSpacingA / referenceSpacing),
@@ -5958,6 +5981,7 @@ function notebookInterventionFactors(receipt) {
       formalCharge: [search.formalChargeBalanceRanking?.mode, search.formalChargeBalanceRanking?.effectiveWeight],
       surface: [search.surfaceCompletionRanking?.mode, search.surfaceCompletionRanking?.effectiveWeight],
       externalDrive: [search.externalDrivingGeometry?.mode, search.externalDrivingGeometry?.effectiveWeight],
+      robustness: [search.constraintRobustnessRanking?.mode, search.constraintRobustnessRanking?.effectiveWeight],
     } : null) },
     scheduling: { label: "tree scheduling", role: "search", value: serialized(search?.scheduling || null) },
     hierarchy: { label: "clusters² promotion", role: "search", value: String(search?.hierarchyEnabled ?? "not entered") },
@@ -7008,6 +7032,10 @@ function activeExternalDriveWeight() {
   return externalDriveMode === "none" ? 0 : externalDriveWeight;
 }
 
+function activeRobustnessWeight() {
+  return robustnessPreference === "margin" ? robustnessWeight : 0;
+}
+
 function externalDriveModeLabel(mode = externalDriveMode) {
   return ({ none: "isotropic", "z-plus": "axis +Z", "z-minus": "axis −Z",
     "radial-out": "radial outward", "radial-in": "radial inward" })[mode] || "isotropic";
@@ -7041,6 +7069,41 @@ function externalDriveForCandidate(candidate) {
   };
 }
 
+function constraintRobustnessForCandidate(fresh, merged) {
+  const scaleAngstrom = referenceSpacingA / Math.max(referenceSpacing, 1e-12);
+  const toleranceScene = clusterMetricToleranceAngstrom() / Math.max(scaleAngstrom, 1e-12);
+  const contactMargins = [];
+  fresh.forEach((site) => nearbyAtoms(site.p,
+    coloredDistanceEnvelopes?.maximumExclusion || COLLISION_TOLERANCE).forEach((atom) => {
+    contactMargins.push(site.p.distanceTo(atom.p) - coloredPairExclusion(site.species, atom.species));
+  }));
+  const overlapMargins = merged.map(({ site, atom }) => MERGE_TOLERANCE - site.p.distanceTo(atom.p));
+  const boundaryMargins = fresh.map((site) => growthEnvironmentSignedMargin(confinementSelect.value, site.p));
+  const minimum = (values) => values.length ? Math.min(...values) : null;
+  const componentsScene = {
+    contactClearance: minimum(contactMargins),
+    overlapHeadroom: minimum(overlapMargins),
+    boundaryClearance: minimum(boundaryMargins),
+  };
+  const finite = Object.values(componentsScene).filter(Number.isFinite);
+  const minimumMarginScene = finite.length ? Math.min(...finite) : 0;
+  const normalizedMinimum = minimumMarginScene / Math.max(toleranceScene, 1e-9);
+  return {
+    score: Math.tanh(normalizedMinimum / 2),
+    normalizedMinimum,
+    minimumMarginScene,
+    minimumMarginAngstrom: minimumMarginScene * scaleAngstrom,
+    componentsScene,
+    componentsAngstrom: Object.fromEntries(Object.entries(componentsScene)
+      .map(([key, value]) => [key, Number.isFinite(value) ? value * scaleAngstrom : null])),
+    toleranceAngstrom: clusterMetricToleranceAngstrom(),
+    targetUsed: false,
+    candidateGeometryChanged: false,
+    hardAdmissionChanged: false,
+    perturbationEnsembleUsedForRanking: false,
+  };
+}
+
 function frozenFrontierDigest(entries) {
   const serialized = entries.map((entry) => entry.candidate.key).sort().join("|");
   let hash = 0x811c9dc5;
@@ -7063,6 +7126,8 @@ function capturePolicyComparison(entries) {
     { id: "surface", label: "surface 0.18", score: (entry) => entry.baseScore - .18 * entry.evaluation.surfaceCompletion.scaledDelta },
     { id: "drive", label: `${externalDriveModeLabel()} ${activeExternalDriveWeight().toFixed(2)}`,
       score: (entry) => entry.baseScore + activeExternalDriveWeight() * entry.evaluation.externalDrive.alignment },
+    { id: "robustness", label: `constraint margin ${activeRobustnessWeight().toFixed(2)}`,
+      score: (entry) => entry.baseScore + activeRobustnessWeight() * entry.evaluation.constraintRobustness.score },
     { id: "active", label: "active combined", score: (entry) => entry.score },
   ].map((policy) => {
     const ranked = admissible.map((entry) => ({ entry, score: policy.score(entry) }))
@@ -7295,7 +7360,8 @@ function commutingFrontierBatch() {
         - activeCompositionBalanceWeight() * evaluation.compositionBalance.scaledDelta
         - activeFormalChargeWeight() * evaluation.formalChargeBalance.scaledDelta
         - activeSurfaceCompletionWeight() * evaluation.surfaceCompletion.scaledDelta
-        + activeExternalDriveWeight() * evaluation.externalDrive.alignment,
+        + activeExternalDriveWeight() * evaluation.externalDrive.alignment
+        + activeRobustnessWeight() * evaluation.constraintRobustness.score,
     };
   });
   capturePolicyComparison(evaluated);
@@ -7396,13 +7462,14 @@ function evaluateCandidate(candidate, {
   const compositionBalance = compositionBalanceForFreshSites(fresh);
   const formalChargeBalance = formalChargeBalanceForFreshSites(fresh);
   const externalDrive = externalDriveForCandidate(candidate);
+  const constraintRobustness = constraintRobustnessForCandidate(fresh, merged);
   const accepted = conflicts === 0 && boundaryFailures === 0 && merged.length >= 2
     && fresh.length > 0 && knownFailures === 0 && coordinationOverflows.length === 0
     && angularViolations.length === 0 && (markingAccepted || markingFallback);
   return { accepted, sites, merged, fresh, conflicts, boundaryFailures, knownFailures, markingFallback,
     coordinationOverflows, angularViolations, geometricStrain, affineLoadedGeometricStrain,
     surfaceCompletion, compositionBalance, formalChargeBalance,
-    externalDrive,
+    externalDrive, constraintRobustness,
     duplicateSites: canonical.duplicateSites,
     freshReferenceIndices: fresh.map((site) => site.referenceIndex).filter(Number.isInteger),
     reason: conflicts ? `${conflicts} hard-core/species conflicts` : boundaryFailures ? "outside confinement" : knownFailures ? `${knownFailures} sites outside known configuration` : coordinationOverflows.length ? `${coordinationOverflows.length} colored coordination capacities exceeded` : angularViolations.length ? `${angularViolations.length} colored angular envelopes violated` : merged.length < 2 ? "insufficient shared support" : fresh.length === 0 ? "duplicate covering" : !markingAccepted ? "marking mismatch" : "compatible overlap" };
@@ -7463,6 +7530,8 @@ function initializeOffLatticeSearch() {
   rejectedSurfaceDeficit = 0;
   acceptedExternalDriveAlignment = 0;
   rejectedExternalDriveAlignment = 0;
+  acceptedRobustnessScore = 0;
+  rejectedRobustnessScore = 0;
   constraintNeighborhoodEvaluations = 0;
   constraintNeighborhoodSiteTotal = 0;
   maximumConstraintNeighborhoodSites = 0;
@@ -8087,6 +8156,8 @@ function syncStageOptions() {
     externalDriveWeightSelect.value = String(externalDriveWeight);
     affineLoadSelect.value = affineLoadMode;
     affineLoadMagnitudeSelect.value = String(affineLoadMagnitude);
+    robustnessPreferenceSelect.value = robustnessPreference;
+    robustnessWeightSelect.value = String(robustnessWeight);
     growthSchedulingSelect.value = growthScheduling;
     geometryPreferenceSelect.disabled = finiteIceAnchorMode;
     strainWeightSelect.disabled = finiteIceAnchorMode || geometryPreference !== "strain";
@@ -8097,6 +8168,8 @@ function syncStageOptions() {
     externalDriveWeightSelect.disabled = finiteIceAnchorMode || externalDriveMode === "none";
     affineLoadSelect.disabled = finiteIceAnchorMode;
     affineLoadMagnitudeSelect.disabled = finiteIceAnchorMode || affineLoadMode === "none";
+    robustnessPreferenceSelect.disabled = finiteIceAnchorMode;
+    robustnessWeightSelect.disabled = finiteIceAnchorMode || robustnessPreference === "none";
     growthSchedulingSelect.disabled = finiteIceAnchorMode;
     growthSchedulingHint.textContent = growthScheduling === "commuting"
       ? "maximal commuting set" : "one branch decision";
@@ -8109,6 +8182,8 @@ function syncStageOptions() {
       ? "isotropic · weight zero" : `${externalDriveModeLabel()} · weight ${externalDriveWeight.toFixed(2)}`;
     affineLoadHint.textContent = affineLoadMode === "none"
       ? "undeformed metric" : `${Math.round(affineLoadMagnitude * 100)}% ${affineLoadModeLabel()}`;
+    robustnessHint.textContent = robustnessPreference === "margin"
+      ? `minimum margin · weight ${robustnessWeight.toFixed(2)}` : "diagnostic · weight zero";
     stageOptionsState.textContent = `${policySelect.value === "marked" && active ? active.name.split(" · ")[0] : "baseline"} · ${geometryPreference === "strain" ? `strain ${geometricStrainWeight.toFixed(2)}` : "no strain"}`;
     primitiveGrowthButton.classList.toggle("active", finiteIceAnchorMode || !hierarchyEnabled);
     primitiveGrowthButton.setAttribute("aria-pressed", String(finiteIceAnchorMode || !hierarchyEnabled));
@@ -8137,11 +8212,14 @@ function syncStageOptions() {
     const externalDriveUse = externalDriveMode === "none"
       ? " No external direction is preferred."
       : ` A user-declared ${externalDriveModeLabel()} direction adds a ${externalDriveWeight.toFixed(2)} soft alignment term to the same actions; it is boundary/loading geometry, not a solved force field.`;
+    const robustnessUse = robustnessPreference === "margin"
+      ? ` A ${robustnessWeight.toFixed(2)} soft robustness term prefers the largest minimum normalized contact, overlap, or boundary safety margin; it does not sample temperature or change hard admission.`
+      : " Constraint margins are reported but contribute zero ranking weight.";
     growthModeNote.textContent = finiteIceAnchorMode
       ? "This sealed ice gate executes primitive H₂O connection ports with mutually exclusive orientation domains. Clusters² is disabled because no stationary promoted ice production has been certified."
       : hierarchyEnabled
-      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first tree branch."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}`
-      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}`;
+      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first tree branch."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}`
+      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}`;
   }
 }
 
@@ -8165,6 +8243,8 @@ function resetCounters() {
   rejectedSurfaceDeficit = 0;
   acceptedExternalDriveAlignment = 0;
   rejectedExternalDriveAlignment = 0;
+  acceptedRobustnessScore = 0;
+  rejectedRobustnessScore = 0;
   constraintNeighborhoodEvaluations = 0;
   constraintNeighborhoodSiteTotal = 0;
   maximumConstraintNeighborhoodSites = 0;
@@ -8471,6 +8551,7 @@ function stateForCandidate(candidate, evaluation) {
     formalChargeBalance: evaluation.formalChargeBalance,
     surfaceCompletion: evaluation.surfaceCompletion,
     externalDrive: evaluation.externalDrive,
+    constraintRobustness: evaluation.constraintRobustness,
   };
 }
 
@@ -8584,6 +8665,7 @@ function performOffLatticeEvent() {
       rejectedFormalChargeDelta += snapshotEvaluation.formalChargeBalance.scaledDelta;
       rejectedSurfaceDeficit += snapshotEvaluation.surfaceCompletion.scaledDelta;
       rejectedExternalDriveAlignment += snapshotEvaluation.externalDrive.alignment;
+      rejectedRobustnessScore += snapshotEvaluation.constraintRobustness.score;
       rejectedInBatch++;
       appendHistory("reject", { type: "reject", depth: placedClusters.find((placement) => placement.id === candidate.parentId)?.depth || 0,
         action: state.action, family: evaluation.reason });
@@ -8614,6 +8696,7 @@ function performOffLatticeEvent() {
     acceptedFormalChargeDelta += evaluation.formalChargeBalance.scaledDelta;
     acceptedSurfaceDeficit += evaluation.surfaceCompletion.scaledDelta;
     acceptedExternalDriveAlignment += evaluation.externalDrive.alignment;
+    acceptedRobustnessScore += evaluation.constraintRobustness.score;
     acceptedInBatch++;
     freshInBatch += evaluation.fresh.length;
     appendHistory(decision.reuse ? "reuse" : "accept", { type: "accept", depth: placement.depth, action: state.action,
@@ -9152,6 +9235,10 @@ function physicsTranslationRecords(leap = null) {
         : "isotropic search; no preferred attachment direction",
       evidence: leap ? `Accepted mean alignment ${receiptRound(acceptedExternalDriveAlignment / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedExternalDriveAlignment / Math.max(1, rejectedDecisions), 4)}.` : "No directional attachment scored yet.",
       boundary: "This is a declared geometric boundary/loading condition. It does not solve a force, electric field, flux transport, stress propagation, or orientation-dependent attachment rate." },
+    { id: "robustness", process: "finite geometric uncertainty / attachment tolerance", status: activeRobustnessWeight() > 0 ? "soft" : "open", role: activeRobustnessWeight() > 0 ? "target-blind constraint-margin ordering" : "diagnostic",
+      encoding: `minimum of colored-contact clearance, exact-overlap headroom, and public-boundary clearance, normalized by ε=${clusterMetricToleranceAngstrom().toFixed(3)} Å`,
+      evidence: leap ? `Accepted mean bounded score ${receiptRound(acceptedRobustnessScore / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedRobustnessScore / Math.max(1, rejectedDecisions), 4)}.` : "No attachment margin scored yet.",
+      boundary: "This deterministic safety margin is not a perturbation ensemble, thermal fluctuation, survival probability, free energy, barrier, or rate." },
     { id: "kinetics", process: "activation, diffusion, heat flow, and elapsed time", status: "open", role: "not modeled",
       encoding: "none; the accepted whole-cluster antichain jumps directly between certified structural states",
       evidence: leap ? `${leap.after.atoms - leap.before.atoms} explicit sites were emitted with physicalTimeModeled=false and dynamicsIntegrated=false.` : "The seed has no physical clock.",
@@ -9393,6 +9480,13 @@ function geometryConstraintEvidence(name, term, state, mode) {
         ? `Soft rank term +${activeExternalDriveWeight().toFixed(2)} × alignment over the unchanged exact candidate set.` : "Diagnostic only; weight zero.",
       boundary: "A directional geometric bias is not force, stress, pressure, electric field, chemical-potential gradient, deposition flux, or a kinetic rate.",
     },
+    "constraint robustness": {
+      observed: `effective geometric tolerance ε=${clusterMetricToleranceAngstrom().toFixed(3)} Å from the selected clustering uncertainty rule`,
+      encoding: "The smallest contact-exclusion clearance, overlap headroom, or public-domain clearance is normalized by ε and smoothly bounded.",
+      searchRole: activeRobustnessWeight() > 0
+        ? `Soft rank term with weight ${activeRobustnessWeight().toFixed(2)} over the unchanged exact frontier.` : "Diagnostic only; weight zero.",
+      boundary: "Margin ordering does not sample a pose ensemble and is not temperature, probability, energy, or a physical stability certificate. The separate post-decision pose audit remains validation only.",
+    },
     "GCTS marking": {
       observed: `${trainingProgress}/${markingSampleCount()} ${sectionModel?.sampleKind || "connection"} samples · ${iceAnchorTrace?.portCount || overlapGrammar?.rules?.length || 0} frozen connection states`,
       encoding: mode === "specialized"
@@ -9467,6 +9561,9 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "external drive", status: ranked(activeExternalDriveWeight() > 0),
       value: state.externalDrive ? signed(state.externalDrive.alignment) : "not evaluated",
       detail: activeExternalDriveWeight() > 0 ? `${externalDriveModeLabel()} · rank weight ${activeExternalDriveWeight().toFixed(2)}` : "isotropic · weight zero" },
+    { name: "constraint robustness", status: ranked(activeRobustnessWeight() > 0),
+      value: state.constraintRobustness ? `${state.constraintRobustness.score.toFixed(3)} · ${state.constraintRobustness.minimumMarginAngstrom.toFixed(3)} Å min` : "not evaluated",
+      detail: activeRobustnessWeight() > 0 ? `rank weight ${activeRobustnessWeight().toFixed(2)} · deterministic margin` : "diagnostic · no ensemble" },
     { name: "GCTS marking", status: policySelect.value === "marked" ? state.markingAccepted ? "pass" : "fail" : "diagnostic",
       value: policySelect.value === "marked" ? state.markingAccepted ? "compatible" : "mismatch" : "not gating",
       detail: "bounded transported connection section" },
@@ -10617,6 +10714,17 @@ affineLoadSelect.addEventListener("change", () => {
 affineLoadMagnitudeSelect.addEventListener("change", () => {
   const value = Number(affineLoadMagnitudeSelect.value);
   affineLoadMagnitude = [.01, .02, .04].includes(value) ? value : .02;
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+robustnessPreferenceSelect.addEventListener("change", () => {
+  robustnessPreference = robustnessPreferenceSelect.value === "margin" ? "margin" : "none";
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+robustnessWeightSelect.addEventListener("change", () => {
+  const value = Number(robustnessWeightSelect.value);
+  robustnessWeight = [.12, .24, .48].includes(value) ? value : .24;
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
 });

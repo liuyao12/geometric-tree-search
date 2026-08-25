@@ -84,6 +84,31 @@ export function growthEnvironmentContains(id, point) {
   throw new Error(`Unsupported growth-domain shape: ${shape}`);
 }
 
+export function growthEnvironmentSignedMargin(id, point) {
+  const { shape, parameters } = growthEnvironmentSpec(id);
+  const x = Number(point?.x ?? point?.[0]);
+  const y = Number(point?.y ?? point?.[1]);
+  const z = Number(point?.z ?? point?.[2]);
+  if (![x, y, z].every(Number.isFinite)) throw new Error("Growth-domain point must contain three finite coordinates");
+  if (shape === "orthorhombic box" || shape === "orthorhombic slab") {
+    return Math.min(parameters.halfExtents[0] - Math.abs(x),
+      parameters.halfExtents[1] - Math.abs(y), parameters.halfExtents[2] - Math.abs(z));
+  }
+  if (shape === "sphere") return parameters.radius - Math.hypot(x, y, z);
+  if (shape === "x-axis cylinder") {
+    return Math.min(parameters.halfLength - Math.abs(x), parameters.radius - Math.hypot(y, z));
+  }
+  if (shape === "bounded half-space above a plane") {
+    return Math.min(parameters.lateralHalfExtents[0] - Math.abs(x),
+      parameters.lateralHalfExtents[1] - Math.abs(y), z - parameters.lowerZ, parameters.upperZ - z);
+  }
+  if (shape === "x-axis hourglass") {
+    return Math.min(parameters.halfLength - Math.abs(x),
+      parameters.throatRadius + parameters.radialSlope * Math.abs(x) - Math.hypot(y, z));
+  }
+  throw new Error(`Unsupported growth-domain shape: ${shape}`);
+}
+
 export function growthEnvironmentAudit(id) {
   const spec = growthEnvironmentSpec(id);
   return {
