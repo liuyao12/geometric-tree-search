@@ -9,7 +9,7 @@ import {
   parseStructureText,
   validateStructure,
 } from "./structure-io.js?v=20260824-5";
-import { randomNomadStructure } from "./structure-database.js?v=20260824-1";
+import { randomNomadStructure } from "./structure-database.js?v=20260825-2";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -293,6 +293,8 @@ const growthDurationSelect = $("growthDurationSelect");
 const markingToggle = $("markingToggle");
 const bondToggle = $("bondToggle");
 const frontierToggle = $("frontierToggle");
+const forceToggle = $("forceToggle");
+const forceToggleLabel = $("forceToggleLabel");
 const rotateToggle = $("rotateToggle");
 const downloadReceiptButton = $("downloadReceiptButton");
 const copyReceiptButton = $("copyReceiptButton");
@@ -1187,6 +1189,12 @@ function activeMeasurementConditions() {
     || importedStructure.metadata?.measurementConditions || null;
 }
 
+function activeCalculationProvenance() {
+  if (scenarioSelect.value !== "imported" || !importedStructure) return null;
+  return currentImportedFrame()?.metadata?.calculation
+    || importedStructure.metadata?.calculation || null;
+}
+
 function formatRecordedCondition(value) {
   if (!Number.isFinite(Number(value))) return null;
   return Number(Number(value).toPrecision(7)).toLocaleString(undefined, { maximumFractionDigits: 6 });
@@ -1453,7 +1461,11 @@ function importSummary(structure, validation) {
     validation.measurementPressureKilopascal !== null ? `${formatRecordedCondition(validation.measurementPressureKilopascal)} kPa` : null,
   ].filter(Boolean);
   const conditions = recordedConditions.length ? ` · measured ${recordedConditions.join(" · ")}` : "";
-  return `${structure.format} · ${validation.atomCount} sites · ${composition}${disorder}${thermal}${charge}${trajectory}${conditions} · PBC ${periodicity} · dₙₙ ${validation.medianNearestDistance.toFixed(3)} Å${warnings}`;
+  const calculation = structure.metadata?.calculation;
+  const calculationSummary = calculation?.available
+    ? ` · ${calculation.programName || "calculation"}${calculation.forceCoverage > 0
+      ? ` · Fᵣₘₛ ${calculation.forceRmsElectronVoltPerAngstrom.toExponential(2)} eV/Å` : " · forces unavailable"}` : "";
+  return `${structure.format} · ${validation.atomCount} sites · ${composition}${disorder}${thermal}${charge}${trajectory}${conditions}${calculationSummary} · PBC ${periodicity} · dₙₙ ${validation.medianNearestDistance.toFixed(3)} Å${warnings}`;
 }
 
 async function importStructureFile(file) {
@@ -2675,6 +2687,7 @@ function makeImportedFrameReference(frame = currentImportedFrame(), sceneScale =
         uAnisoCartesianA2: atom.uAnisoCartesianA2?.map((row) => row.slice()) || null,
         thermalSigmaAxesA: atom.thermalSigmaAxesA?.slice() || null,
         thermalAxesCartesian: atom.thermalAxesCartesian?.map((axis) => axis.slice()) || null,
+        calculationForceEvPerAngstrom: atom.calculationForceEvPerAngstrom?.slice() || null,
         family: "imported", sourceIndex,
       };
     }).sort((first, second) => first.p.lengthSq() - second.p.lengthSq()
@@ -5797,6 +5810,13 @@ async function buildExperimentReceipt() {
   const referenceSq = ensureStructureFactor(referenceStructuralStats);
   const trajectoryFrames = scenarioSelect.value === "imported" ? importedTrajectoryFrames() : [];
   const recordedConditions = activeMeasurementConditions();
+  const externalCalculation = activeCalculationProvenance();
+  const calculationForceRecords = externalCalculation?.forceCoverage > 0
+    ? referenceAtoms.map((atom) => ({ sourceIndex: atom.sourceIndex, species: atom.species,
+      forceEvPerAngstrom: atom.calculationForceEvPerAngstrom?.map((value) => receiptRound(value, 10)) || null }))
+    : [];
+  const calculationForceSha256 = calculationForceRecords.length
+    ? await receiptSha256(JSON.stringify(calculationForceRecords)) : null;
   const trajectoryFrameDigests = trajectoryFrames.length > 1
     ? await Promise.all(trajectoryFrames.map((frame) => structureDigest(makeImportedFrameReference(frame, 1), "angstrom")))
     : [];
@@ -5805,7 +5825,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-107",
+      buildId: "20260825-108",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -5834,6 +5854,20 @@ async function buildExperimentReceipt() {
         pressureInferred: false,
         synthesisConditionsClaimed: false,
         thermodynamicStateReconstructed: false,
+      } : null,
+      externalCalculation: externalCalculation ? {
+        ...externalCalculation,
+        forceVectorCount: calculationForceRecords.length,
+        forceVectorsSha256: calculationForceSha256,
+        perSiteVectorsEmbedded: false,
+        displayedAsGeometry: externalCalculation.forceCoverage > 0,
+        usedForClusterIdentification: false,
+        usedForMarkingLearning: false,
+        usedForCandidateGeneration: false,
+        usedForAdmission: false,
+        usedForBranchRanking: false,
+        usedForRelaxation: false,
+        usedForClassification: false,
       } : null,
       crystallographicOccupancy: scenarioSelect.value === "imported" ? {
         representation: "one geometric site with a finite element-fraction alternative set; vacancy retained explicitly",
@@ -10316,6 +10350,10 @@ function applyGrowthProtocol(mode) {
 
 function syncStageOptions() {
   const visible = pipelineStage === 1 || pipelineStage === 3 || pipelineStage === 4;
+  const calculation = activeCalculationProvenance();
+  forceToggle.disabled = !(calculation?.forceCoverage > 0);
+  forceToggleLabel.textContent = calculation?.forceCoverage > 0
+    ? `Residual forces · ${calculation.programName || "calculation"}` : "Residual forces · unavailable";
   externalDriveBadge.hidden = pipelineStage !== 4 || externalDriveMode === "none";
   externalDriveBadgeLabel.textContent = externalDriveModeLabel();
   externalDriveGlyph.textContent = ({ "z-plus": "↑", "z-minus": "↓",
@@ -11841,6 +11879,31 @@ function rebuildWorld() {
     atomGroup.add(envelopes);
   }
 
+  if (forceToggle.checked) {
+    const forceSites = atoms.map((atom) => ({ atom,
+      force: atom.calculationForceEvPerAngstrom
+        ? new THREE.Vector3(...atom.calculationForceEvPerAngstrom) : null }))
+      .filter((entry) => entry.force && entry.force.lengthSq() > 0);
+    const maximumForce = Math.max(0, ...forceSites.map((entry) => entry.force.length()));
+    if (maximumForce > 0) {
+      const forceSegments = [];
+      const forceHeads = [];
+      forceSites.forEach(({ atom, force }) => {
+        const relative = Math.sqrt(force.length() / maximumForce);
+        const end = atom.p.clone().add(force.clone().normalize().multiplyScalar(.12 + .48 * relative));
+        forceSegments.push(atom.p, end); forceHeads.push(end);
+      });
+      atomGroup.add(new THREE.LineSegments(
+        new THREE.BufferGeometry().setFromPoints(forceSegments),
+        new THREE.LineBasicMaterial({ color: 0xff7f88, transparent: true, opacity: .78 }),
+      ));
+      atomGroup.add(new THREE.Points(
+        new THREE.BufferGeometry().setFromPoints(forceHeads),
+        new THREE.PointsMaterial({ color: 0xffc169, size: .075, transparent: true, opacity: .9, sizeAttenuation: true }),
+      ));
+    }
+  }
+
   if (bondToggle.checked) {
     const points = [];
     if (selectedCoordination?.centers.length) {
@@ -12088,6 +12151,7 @@ function physicsTranslationRecords(leap = null) {
   const leapResult = leap
     ? `${leap.tests.summary}; ${leap.after.accepted} accepted and ${leap.after.rejected} rejected in the displayed leap.`
     : "Awaiting the first frozen frontier evaluation.";
+  const calculation = activeCalculationProvenance();
   return [
     { id: "steric", process: "short-range repulsion / species contact", status: "hard", role: "hard admission gate",
       encoding: `${coloredDistanceEnvelopes?.records?.length || 0} colored pair envelopes with exact species coincidence and learned hard-exclusion radii`,
@@ -12097,6 +12161,14 @@ function physicsTranslationRecords(leap = null) {
       encoding: `${coloredCoordinationEnvelopes?.records?.length || 0} ordered coordination bounds + ${coloredAngularEnvelopes?.records?.length || 0} colored angular bands within the sample-derived reach`,
       evidence: `${coordinationCapacityPrunes} coordination and ${angularEnvelopePrunes} angular prunes have occurred in this run.`,
       boundary: "Coordination and angle envelopes constrain local topology but do not calculate bond order, bond energy, hybridization, or electronic structure." },
+    { id: "calculation-forces", process: "external relaxation / residual-force geometry", status: calculation?.forceCoverage > 0 ? "explicit" : "unavailable", role: calculation?.forceCoverage > 0 ? "external calculation diagnostic" : "no force channel",
+      encoding: calculation?.forceCoverage > 0
+        ? `${calculation.programName || "public calculation"}; per-site Cartesian vectors in eV/Å, displayed with direction preserved and length normalized only for visibility`
+        : "no site-resolved force vectors accompany the active structural record",
+      evidence: calculation?.forceCoverage > 0
+        ? `${Math.round(calculation.forceCoverage * referenceCount())}/${referenceCount()} sites; RMS ${calculation.forceRmsElectronVoltPerAngstrom.toExponential(3)} eV/Å; maximum ${calculation.forceMaximumElectronVoltPerAngstrom.toExponential(3)} eV/Å.`
+        : "No calculation-force vector is available for this material.",
+      boundary: "Residual forces diagnose the supplied calculation state only. They never rank, admit, displace, relax, or extrapolate a growth action; total energies are not compared across entries, methods, or compositions." },
     { id: "connection", process: "cluster attachment preference", status: policySelect.value === "action" ? "open" : "learned", role: policySelect.value === "action" ? "ablated" : "learned local connection gate / rank",
       encoding: `${markingMode}; ${sectionModel?.channels || 0} channels, reach ${sectionModel?.reach || 0}, transported in cluster-local proper-SE(3) frames`,
       evidence: leap ? `${leap.proposal.shared} shared and ${leap.proposal.fresh} proposed fresh sites were checked through the frozen port grammar.` : "No attachment scored yet.",
@@ -12223,7 +12295,7 @@ function physicsEvidenceBucket(record) {
 function physicsEvidenceClass(record) {
   if (record.status === "hard") return "sample-learned admission constraint";
   if (record.status === "learned") return "learned GCTS connection evidence";
-  if (record.status === "explicit") return "explicit observed geometric state";
+  if (record.status === "explicit") return "explicit supplied geometric state";
   if (record.status === "soft") return "user-declared counterfactual hypothesis";
   if (record.status === "sampled") return "declared reproducible search ensemble";
   if (record.status === "unavailable") return "required input channel unavailable";
@@ -13095,6 +13167,7 @@ function observationProvenanceRecords() {
   const coverReady = pipelineStage >= 1;
   const growthReady = pipelineStage >= 4;
   const importedFrames = importedTrajectoryFrames();
+  const calculation = activeCalculationProvenance();
   return [
     { id: "conditions", short: "conditions", status: conditionSummary.length ? "recorded" : "unavailable",
       value: conditionSummary.length ? conditionSummary.join(" · ") : "no temperature / pressure metadata",
@@ -13102,6 +13175,12 @@ function observationProvenanceRecords() {
       transform: "Preserved as provenance labels only; no geometric parameter is inferred from temperature or pressure.",
       use: "Displayed and serialized; never passed into clustering, marking, candidate enumeration, or ranking.",
       boundary: "Recorded measurement conditions describe how a structure was measured, not how it grew, equilibrated, or should evolve." },
+    { id: "calculation", short: "calculation", status: calculation?.forceCoverage > 0 ? "recorded" : "unavailable",
+      value: calculation?.available ? `${calculation.programName || "public calculation"} · ${calculation.forceCoverage > 0 ? `Fᵣₘₛ ${calculation.forceRmsElectronVoltPerAngstrom.toExponential(2)} eV/Å` : "no forces"}` : "no calculation metadata",
+      observed: calculation?.available ? `Final archived calculation from ${calculation.sourcePath}; program ${calculation.programName || "unreported"}${calculation.programVersion ? ` ${calculation.programVersion}` : ""}.` : "The active structural record supplies no paired final calculation.",
+      transform: calculation?.forceCoverage > 0 ? "SI archive forces are converted once to eV/Å and transported as site-local Cartesian vectors; arrow lengths are normalized only in the viewport." : "No force geometry is constructed.",
+      use: "Diagnostic layer and receipt provenance only; excluded from clustering, marking fit, candidate generation, admission, ranking, and structural classification.",
+      boundary: "One method-dependent residual-force snapshot is not a force field, relaxation trajectory, phonon model, free energy, barrier, rate, or transferable force predictor." },
     { id: "samples", short: "samples", status: frames > 1 ? "measured" : "single",
       value: frames > 1 ? `${frames} fixed-topology frames` : "1 structural frame",
       observed: scenarioSelect.value === "imported" && importedFrames.length > 1
@@ -14289,7 +14368,7 @@ mdScalingSelect.addEventListener("change", () => {
     candidate.setAttribute("aria-pressed", String(candidate === button)));
   drawGrowthMechanismMap();
 }));
-[markingToggle, bondToggle, frontierToggle].forEach((input) => input.addEventListener("change", rebuildWorld));
+[markingToggle, bondToggle, frontierToggle, forceToggle].forEach((input) => input.addEventListener("change", rebuildWorld));
 rotateToggle.addEventListener("change", () => { controls.autoRotate = rotateToggle.checked; });
 coordClearButton.addEventListener("click", () => selectCoordination(coordinationSelection));
 rdfPairSelect.addEventListener("change", () => {

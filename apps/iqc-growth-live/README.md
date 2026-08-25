@@ -4181,3 +4181,29 @@ marking, and latest frozen leap. Selecting any record exposes four distinct
 statements: its evidence class, geometric encoding, measured role in this leap,
 and claim boundary. Filtering never changes the candidate set, score, admission
 gate, committed structure, or receipt; it is a live scientific-validity audit.
+
+## Public calculation provenance and residual-force geometry
+
+For public NOMAD structures, the archive request now pairs the final periodic
+system with the final calculation from the same run. When present, the portal
+retains the program name/version, total energy, and site-resolved Cartesian
+force vectors. NOMAD archive values are converted once from joules to eV and
+newtons to eV/Å. The vectors repeat with a displayed learning supercell exactly
+as the source sites repeat; they are never regenerated or inferred for new
+growth sites. The archive schema follows the official NOMAD `run → system /
+calculation` organization and preserves the calculation reference in the
+experiment receipt.
+
+The layers panel exposes **Residual forces** only when vector coverage is
+complete. Coral segments preserve direction; their viewport lengths are
+normalized by the largest displayed magnitude, and amber endpoints make the
+direction readable. The data status, observation-provenance chain, live
+growth-validity map, and JSON receipt report the program, coverage, RMS force,
+maximum force, units, and exact exclusions from learning and execution.
+
+This channel is diagnostic. A single method-dependent residual-force snapshot
+is not a transferable force field, interatomic potential, relaxation path,
+phonon calculation, free energy, activation barrier, rate, or physical clock.
+Absolute total energies are not compared across entries, methods, cells, or
+compositions. Forces do not change clustering, marking, candidate geometry,
+admission, ranking, relaxation, growth, or post-growth classification.
