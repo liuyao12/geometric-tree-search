@@ -97,6 +97,7 @@ const ensembleStatus = $("ensembleStatus");
 const relaxationSequence = $("relaxationSequence");
 const relaxationSequenceState = $("relaxationSequenceState");
 const relaxationSequenceChart = $("relaxationSequenceChart");
+const relaxationDisplacementState = $("relaxationDisplacementState");
 const measurementConditions = $("measurementConditions");
 const measurementConditionChips = $("measurementConditionChips");
 const publishedFixtureProvenance = $("publishedFixtureProvenance");
@@ -298,6 +299,8 @@ const bondToggle = $("bondToggle");
 const frontierToggle = $("frontierToggle");
 const forceToggle = $("forceToggle");
 const forceToggleLabel = $("forceToggleLabel");
+const relaxationDisplacementToggle = $("relaxationDisplacementToggle");
+const relaxationDisplacementToggleLabel = $("relaxationDisplacementToggleLabel");
 const rotateToggle = $("rotateToggle");
 const downloadReceiptButton = $("downloadReceiptButton");
 const copyReceiptButton = $("copyReceiptButton");
@@ -1180,6 +1183,64 @@ function importedTrajectoryFrames() {
   return importedStructure?.frames?.length ? importedStructure.frames : importedStructure ? [importedStructure] : [];
 }
 
+function relaxationDisplacementField() {
+  if (scenarioSelect.value !== "imported") return null;
+  const frames = importedTrajectoryFrames();
+  if (!(importedStructure?.metadata?.relaxationSequence?.available && frames.length > 1)
+      || importedFrameIndex >= frames.length - 1) return null;
+  const source = frames[importedFrameIndex];
+  const target = frames.at(-1);
+  if (!source?.atoms?.length || source.atoms.length !== target?.atoms?.length) return null;
+  const sourceCell = source.cell?.map((vector) => new THREE.Vector3(...vector)) || null;
+  const targetCell = target.cell?.map((vector) => new THREE.Vector3(...vector)) || null;
+  const sourcePbc = source.pbc || [false, false, false];
+  const targetPbc = target.pbc || [false, false, false];
+  const periodicCell = sourceCell?.length === 3 && targetCell?.length === 3
+    && sourcePbc.some((value, axis) => value && targetPbc[axis]);
+  const sourceContext = periodicCell ? periodicContextFromSceneCell(sourceCell, sourcePbc) : null;
+  const targetContext = periodicCell ? periodicContextFromSceneCell(targetCell, targetPbc) : null;
+  const records = [];
+  for (let sourceIndex = 0; sourceIndex < source.atoms.length; sourceIndex++) {
+    const sourceAtom = source.atoms[sourceIndex];
+    const targetAtom = target.atoms[sourceIndex];
+    if (occupancyChemistryToken(sourceAtom) !== occupancyChemistryToken(targetAtom)) return null;
+    const sourceCartesian = new THREE.Vector3(...sourceAtom.position);
+    const targetCartesian = new THREE.Vector3(...targetAtom.position);
+    let affine = new THREE.Vector3();
+    let nonAffine;
+    if (periodicCell && sourceContext?.inverse && targetContext?.matrix) {
+      const sourceFractional = sourceCartesian.clone().applyMatrix3(sourceContext.inverse);
+      const targetFractional = targetCartesian.clone().applyMatrix3(targetContext.inverse);
+      const fractionalChange = targetFractional.sub(sourceFractional);
+      sourcePbc.forEach((periodic, axis) => {
+        if (periodic && targetPbc[axis]) fractionalChange.setComponent(axis,
+          fractionalChange.getComponent(axis) - Math.round(fractionalChange.getComponent(axis)));
+      });
+      nonAffine = fractionalChange.applyMatrix3(targetContext.matrix);
+      affine = sourceFractional.clone().applyMatrix3(targetContext.matrix).sub(sourceCartesian);
+    } else nonAffine = targetCartesian.sub(sourceCartesian);
+    records.push({ sourceIndex, species: occupancyChemistryToken(sourceAtom), affine, nonAffine,
+      total: affine.clone().add(nonAffine) });
+  }
+  const rms = (key) => Math.sqrt(records.reduce((sum, record) => sum + record[key].lengthSq(), 0)
+    / Math.max(1, records.length));
+  const maximum = (key) => Math.max(0, ...records.map((record) => record[key].length()));
+  const sourceVolume = sourceContext?.matrix ? Math.abs(sourceContext.matrix.determinant()) : null;
+  const targetVolume = targetContext?.matrix ? Math.abs(targetContext.matrix.determinant()) : null;
+  return {
+    sourceFrameIndex: importedFrameIndex,
+    targetFrameIndex: frames.length - 1,
+    records,
+    nonAffineRmsAngstrom: rms("nonAffine"), nonAffineMaximumAngstrom: maximum("nonAffine"),
+    affineRmsAngstrom: rms("affine"), affineMaximumAngstrom: maximum("affine"),
+    volumeChangeFraction: Number.isFinite(sourceVolume) && sourceVolume > 0 && Number.isFinite(targetVolume)
+      ? targetVolume / sourceVolume - 1 : null,
+    decomposition: periodicCell
+      ? "final-cell affine deformation at fixed fractional coordinates + minimum-image fractional rearrangement"
+      : "direct Cartesian rearrangement; no periodic cell deformation available",
+  };
+}
+
 function evidenceFrameCount() {
   return scenarioSelect.value === "imported" && ensembleEvidenceMode === "all"
     ? importedTrajectoryFrames().length || 1 : 1;
@@ -1338,6 +1399,12 @@ function renderRelaxationSequence(frames, relaxation) {
   });
   const availableForceFrames = records.filter((record) => record.calculation.forceCoverage > 0).length;
   relaxationSequenceState.textContent = `${frames.length}/${relaxation.originalSystemCount || frames.length} snapshots · force ${availableForceFrames}/${frames.length}`;
+  const displacement = relaxationDisplacementField();
+  relaxationDisplacementState.textContent = displacement
+    ? `Snapshot ${displacement.sourceFrameIndex + 1} → final: non-affine RMS ${displacement.nonAffineRmsAngstrom.toFixed(3)} Å (max ${displacement.nonAffineMaximumAngstrom.toFixed(3)} Å) · affine RMS ${displacement.affineRmsAngstrom.toFixed(3)} Å${Number.isFinite(displacement.volumeChangeFraction) ? ` · ΔV ${(100 * displacement.volumeChangeFraction).toFixed(2)}%` : ""}.`
+    : importedFrameIndex === frames.length - 1
+      ? "Final archived snapshot selected · selected-to-final displacement is zero."
+      : "Selected-to-final displacement is unavailable for this sequence.";
   relaxationSequenceChart.setAttribute("aria-label", `${frames.length} ordered archived relaxation snapshots; ${energies.length} have energy and ${availableForceFrames} have complete residual forces; snapshot ${importedFrameIndex + 1} selected`);
 }
 
@@ -5902,12 +5969,20 @@ async function buildExperimentReceipt() {
         ?.map((value) => receiptRound(value, 10)) || null),
     })));
   }
+  const relaxationDisplacement = relaxationDisplacementField();
+  const relaxationDisplacementRecords = relaxationDisplacement?.records.map((record) => ({
+    sourceIndex: record.sourceIndex, species: record.species,
+    affineAngstrom: record.affine.toArray().map((value) => receiptRound(value, 10)),
+    nonAffineAngstrom: record.nonAffine.toArray().map((value) => receiptRound(value, 10)),
+  })) || [];
+  const relaxationDisplacementSha256 = relaxationDisplacementRecords.length
+    ? await receiptSha256(JSON.stringify(relaxationDisplacementRecords)) : null;
   const receipt = {
     schema: "gcts-materials-growth-receipt-v1",
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-110",
+      buildId: "20260825-111",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -6011,6 +6086,24 @@ async function buildExperimentReceipt() {
           forceRmsElectronVoltPerAngstrom: Number.isFinite(frame.metadata?.calculation?.forceRmsElectronVoltPerAngstrom)
             ? receiptRound(frame.metadata.calculation.forceRmsElectronVoltPerAngstrom) : null,
         })))),
+        selectedToFinalDisplacement: relaxationDisplacement ? {
+          sourceFrameIndexZeroBased: relaxationDisplacement.sourceFrameIndex,
+          targetFrameIndexZeroBased: relaxationDisplacement.targetFrameIndex,
+          atomCount: relaxationDisplacement.records.length,
+          decomposition: relaxationDisplacement.decomposition,
+          nonAffineRmsAngstrom: receiptRound(relaxationDisplacement.nonAffineRmsAngstrom),
+          nonAffineMaximumAngstrom: receiptRound(relaxationDisplacement.nonAffineMaximumAngstrom),
+          affineRmsAngstrom: receiptRound(relaxationDisplacement.affineRmsAngstrom),
+          affineMaximumAngstrom: receiptRound(relaxationDisplacement.affineMaximumAngstrom),
+          volumeChangeFraction: Number.isFinite(relaxationDisplacement.volumeChangeFraction)
+            ? receiptRound(relaxationDisplacement.volumeChangeFraction) : null,
+          vectorSha256: relaxationDisplacementSha256,
+          vectorsEmbedded: false,
+          viewportLengthsNormalizedForVisibility: true,
+          usedForClusterIdentification: false,
+          usedForMarkingLearning: false,
+          usedForGrowth: false,
+        } : null,
         framesUsedForDistanceCoordinationAngleEnvelopes: coloredDistanceEnvelopes.frameCount,
         framesUsedForClusterCover: 1,
         framesUsedForPortGrammarAndMarking: 1,
@@ -10456,6 +10549,11 @@ function syncStageOptions() {
   forceToggle.disabled = !(calculation?.forceCoverage > 0);
   forceToggleLabel.textContent = calculation?.forceCoverage > 0
     ? `Residual forces · ${calculation.programName || "calculation"}` : "Residual forces · unavailable";
+  const displacement = relaxationDisplacementField();
+  relaxationDisplacementToggle.disabled = !displacement;
+  relaxationDisplacementToggleLabel.textContent = displacement
+    ? `Selected → final non-affine displacement · RMS ${displacement.nonAffineRmsAngstrom.toFixed(3)} Å`
+    : "Selected → final displacement · unavailable";
   externalDriveBadge.hidden = pipelineStage !== 4 || externalDriveMode === "none";
   externalDriveBadgeLabel.textContent = externalDriveModeLabel();
   externalDriveGlyph.textContent = ({ "z-plus": "↑", "z-minus": "↓",
@@ -12006,6 +12104,44 @@ function rebuildWorld() {
     }
   }
 
+  const relaxationDisplacement = relaxationDisplacementToggle.checked ? relaxationDisplacementField() : null;
+  if (relaxationDisplacement) {
+    const atomBySourceIndex = new Map();
+    atoms.forEach((atom) => {
+      if (Number.isInteger(atom.sourceIndex) && !atomBySourceIndex.has(atom.sourceIndex)) atomBySourceIndex.set(atom.sourceIndex, atom);
+    });
+    const nonAffineMaximum = Math.max(1e-12, relaxationDisplacement.nonAffineMaximumAngstrom);
+    const affineMaximum = Math.max(1e-12, relaxationDisplacement.affineMaximumAngstrom);
+    const nonAffineSegments = []; const nonAffineHeads = []; const affineSegments = [];
+    relaxationDisplacement.records.forEach((record) => {
+      const atom = atomBySourceIndex.get(record.sourceIndex);
+      if (!atom) return;
+      if (record.affine.lengthSq() > 1e-16) {
+        const affineLength = .05 + .27 * Math.sqrt(record.affine.length() / affineMaximum);
+        affineSegments.push(atom.p, atom.p.clone().add(record.affine.clone().normalize().multiplyScalar(affineLength)));
+      }
+      if (record.nonAffine.lengthSq() > 1e-16) {
+        const visibleLength = Math.max(.07, Math.min(.62,
+          .09 + .47 * Math.sqrt(record.nonAffine.length() / nonAffineMaximum)));
+        const end = atom.p.clone().add(record.nonAffine.clone().normalize()
+          .multiplyScalar(visibleLength));
+        nonAffineSegments.push(atom.p, end); nonAffineHeads.push(end);
+      }
+    });
+    if (affineSegments.length) atomGroup.add(new THREE.LineSegments(
+      new THREE.BufferGeometry().setFromPoints(affineSegments),
+      new THREE.LineBasicMaterial({ color: 0x63c9e9, transparent: true, opacity: .24 }),
+    ));
+    if (nonAffineSegments.length) atomGroup.add(new THREE.LineSegments(
+      new THREE.BufferGeometry().setFromPoints(nonAffineSegments),
+      new THREE.LineBasicMaterial({ color: 0xb995ff, transparent: true, opacity: .72 }),
+    ));
+    if (nonAffineHeads.length) atomGroup.add(new THREE.Points(
+      new THREE.BufferGeometry().setFromPoints(nonAffineHeads),
+      new THREE.PointsMaterial({ color: 0xd7c8ff, size: .068, transparent: true, opacity: .88, sizeAttenuation: true }),
+    ));
+  }
+
   if (bondToggle.checked) {
     const points = [];
     if (selectedCoordination?.centers.length) {
@@ -12255,6 +12391,7 @@ function physicsTranslationRecords(leap = null) {
     : "Awaiting the first frozen frontier evaluation.";
   const calculation = activeCalculationProvenance();
   const relaxation = scenarioSelect.value === "imported" ? importedStructure?.metadata?.relaxationSequence : null;
+  const relaxationDisplacement = relaxationDisplacementField();
   return [
     { id: "steric", process: "short-range repulsion / species contact", status: "hard", role: "hard admission gate",
       encoding: `${coloredDistanceEnvelopes?.records?.length || 0} colored pair envelopes with exact species coincidence and learned hard-exclusion radii`,
@@ -12274,12 +12411,12 @@ function physicsTranslationRecords(leap = null) {
       boundary: "Residual forces diagnose the supplied calculation state only. They never rank, admit, displace, relax, or extrapolate a growth action; total energies are not compared across entries, methods, or compositions." },
     { id: "relaxation-ensemble", process: "geometry-optimization path / structural variability", status: relaxation?.available ? "observed" : "unavailable", role: relaxation?.available ? "fixed-topology geometric ensemble" : "single structural state",
       encoding: relaxation?.available
-        ? `${relaxation.retainedFrameCount}/${relaxation.originalSystemCount} ordered NOMAD system/calculation snapshots; same-run relative energy and residual-force curves remain provenance channels`
+        ? `${relaxation.retainedFrameCount}/${relaxation.originalSystemCount} ordered NOMAD system/calculation snapshots; same-run relative energy, residual-force curves, and a variable-cell-safe selected-to-final affine/non-affine decomposition remain provenance channels`
         : "no ordered calculation sequence accompanies the active structure",
       evidence: relaxation?.available
-        ? `${evidenceFrameCount()} frame${evidenceFrameCount() === 1 ? "" : "s"} currently supply geometric envelopes; the displayed frame alone supplies the cover, grammar, and growth seed.`
+        ? `${evidenceFrameCount()} frame${evidenceFrameCount() === 1 ? "" : "s"} currently supply geometric envelopes; the displayed frame alone supplies the cover, grammar, and growth seed.${relaxationDisplacement ? ` Selected → final non-affine RMS ${relaxationDisplacement.nonAffineRmsAngstrom.toFixed(3)} Å; affine RMS ${relaxationDisplacement.affineRmsAngstrom.toFixed(3)} Å${Number.isFinite(relaxationDisplacement.volumeChangeFraction) ? `; ΔV ${(100 * relaxationDisplacement.volumeChangeFraction).toFixed(2)}%` : ""}.` : ""}`
         : "No cross-frame structural variability is available.",
-      boundary: "Archive order is not physical elapsed time. No velocity, integration step, optimizer clock, minimum-energy path, transition probability, or growth rate is inferred; energies are compared only within this one same-method archived sequence." },
+      boundary: "The displacement field is a difference between archived structures, not a physical path. Archive order is not physical elapsed time. No velocity, integration step, optimizer clock, minimum-energy path, transition probability, or growth rate is inferred; energies are compared only within this one same-method archived sequence." },
     { id: "connection", process: "cluster attachment preference", status: policySelect.value === "action" ? "open" : "learned", role: policySelect.value === "action" ? "ablated" : "learned local connection gate / rank",
       encoding: `${markingMode}; ${sectionModel?.channels || 0} channels, reach ${sectionModel?.reach || 0}, transported in cluster-local proper-SE(3) frames`,
       evidence: leap ? `${leap.proposal.shared} shared and ${leap.proposal.fresh} proposed fresh sites were checked through the frozen port grammar.` : "No attachment scored yet.",
@@ -13281,6 +13418,7 @@ function observationProvenanceRecords() {
   const importedFrames = importedTrajectoryFrames();
   const calculation = activeCalculationProvenance();
   const relaxation = scenarioSelect.value === "imported" ? importedStructure?.metadata?.relaxationSequence : null;
+  const displacementField = relaxationDisplacementField();
   return [
     { id: "conditions", short: "conditions", status: conditionSummary.length ? "recorded" : "unavailable",
       value: conditionSummary.length ? conditionSummary.join(" · ") : "no temperature / pressure metadata",
@@ -13299,9 +13437,9 @@ function observationProvenanceRecords() {
       observed: scenarioSelect.value === "imported" && importedFrames.length > 1
         ? `${importedFrames.length} ordered structural snapshots with fixed species and atom ordering.${relaxation?.available ? ` Retained from ${relaxation.originalSystemCount} same-run NOMAD systems.` : ""}`
         : `${referenceCount()} species-labelled Cartesian sites in one observation window.`,
-      transform: frames > 1 ? `${ensembleEvidenceMode === "all" ? "All frames pool" : "Only the displayed frame supplies"} contact, coordination, angle, and local pair-distance observations.` : "One frame supplies the finite structural evidence.",
+      transform: frames > 1 ? `${ensembleEvidenceMode === "all" ? "All frames pool" : "Only the displayed frame supplies"} contact, coordination, angle, and local pair-distance observations.${displacementField ? ` Selected → final geometry is additionally decomposed into affine cell deformation (RMS ${displacementField.affineRmsAngstrom.toFixed(3)} Å) and minimum-image non-affine rearrangement (RMS ${displacementField.nonAffineRmsAngstrom.toFixed(3)} Å).` : ""}` : "One frame supplies the finite structural evidence.",
       use: `Growth starts from exactly one displayed frame${frames > 1 ? ` (${importedFrameIndex + 1}/${importedFrames.length})` : ""}; cross-frame atom pairs are never invented.`,
-      boundary: "Snapshot order is not treated as a trajectory unless velocities, time steps, and calibrated temporal provenance are independently supplied; none are used here. Same-run energy differences and residual forces remain diagnostic provenance." },
+      boundary: "Selected-to-final vectors compare two archived structures; they are not a trajectory. Snapshot order is not treated as physical time unless velocities, time steps, and calibrated temporal provenance are independently supplied; none are used here. Same-run energy differences and residual forces remain diagnostic provenance." },
     { id: "uncertainty", short: "uncertainty", status: uncertainty > 0 ? "measured" : "nominal",
       value: uncertainty > 0 ? `${uncertainty.toFixed(3)} Å pair σ floor` : "no measured σ floor",
       observed: uncertainty > 0
@@ -14478,7 +14616,8 @@ mdScalingSelect.addEventListener("change", () => {
     candidate.setAttribute("aria-pressed", String(candidate === button)));
   drawGrowthMechanismMap();
 }));
-[markingToggle, bondToggle, frontierToggle, forceToggle].forEach((input) => input.addEventListener("change", rebuildWorld));
+[markingToggle, bondToggle, frontierToggle, forceToggle, relaxationDisplacementToggle]
+  .forEach((input) => input.addEventListener("change", rebuildWorld));
 rotateToggle.addEventListener("change", () => { controls.autoRotate = rotateToggle.checked; });
 coordClearButton.addEventListener("click", () => selectCoordination(coordinationSelection));
 rdfPairSelect.addEventListener("change", () => {

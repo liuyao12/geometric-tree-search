@@ -4230,6 +4230,18 @@ uncertainty envelopes or run the selected-frame ablation. The cluster cover,
 port grammar, marking, and growth seed always come from one explicitly selected
 frame; frames are never concatenated into a fictitious material.
 
+Selecting any non-final snapshot also exposes a **Selected → final
+displacement** layer. For periodic variable-cell records, the portal maps both
+states into fractional coordinates, wraps atom rearrangements by the periodic
+minimum image, and separates the result into (1) affine cell deformation at
+fixed fractional coordinates and (2) non-affine atomic rearrangement in the
+final cell. Violet vectors show the non-affine component and faint cyan vectors
+show the affine component; lengths are normalized only for readability. The UI
+and receipt report the exact RMS/max values in Å and the cell-volume change,
+and hash the derived per-site vectors without embedding them. For records
+without compatible periodic cells, the diagnostic falls back to direct
+Cartesian selected-to-final differences with a zero affine term.
+
 Archive ordering is not interpreted as physical time. The portal does not
 receive optimizer iteration duration, velocities, an integration time step, or
 a calibrated dynamical path, and it does not infer them. Same-run energy
@@ -4238,3 +4250,8 @@ fixed; they are not compared between database entries. The receipt hashes every
 retained structure and records the system/calculation indices, energy and force
 series, down-sampling rule, and the facts that temporal ordering, forces, and
 energies never select a GCTS action.
+
+The selected-to-final field is likewise a comparison of two archived
+structures, not an optimizer trajectory, atomic velocity, minimum-energy path,
+or prediction of how the material actually moved between them. It is excluded
+from cluster identification, marking learning, candidate ranking, and growth.
