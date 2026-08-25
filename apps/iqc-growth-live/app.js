@@ -173,6 +173,9 @@ const policyComparisonState = $("policyComparisonState");
 const policySensitivityState = $("policySensitivityState");
 const policyHistoryElement = $("policyHistory");
 const policyPreviewState = $("policyPreviewState");
+const scalePassportState = $("scalePassportState");
+const scalePassport = $("scalePassport");
+const scalePassportDetail = $("scalePassportDetail");
 const pipelineButton = $("pipelineButton");
 const playButton = $("playButton");
 const playIcon = $("playIcon");
@@ -591,6 +594,8 @@ let policyComparisonHistory = [];
 let selectedPolicySnapshotIndex = -1;
 let selectedPolicyPreviewId = "active";
 let policySnapshotCount = 0;
+let selectedScalePassportId = null;
+let selectedScalePassportStage = -1;
 let atomSpatialIndex = new Map();
 let trainingProgress = 0;
 let clusterDiscoveryTrace = null;
@@ -4915,7 +4920,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-62",
+      buildId: "20260824-63",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -5138,6 +5143,22 @@ async function buildExperimentReceipt() {
         netReferenceFormalCharge: receiptRound(formalChargeTarget.netFormalCharge),
         meanReferenceFormalChargePerSite: formalChargeTarget.meanFormalCharge === null ? null : receiptRound(formalChargeTarget.meanFormalCharge),
         oxidationStatesInferred: false,
+      },
+      multiscalePassport: {
+        role: "live material- and stage-specific map from observed structural evidence to geometric encoding and explicit claim boundaries",
+        coordinateDataEmbedded: false,
+        structuralScalesEncoded: liveScalePassportRecords().filter((record) => ["reached", "active"].includes(record.status)).length,
+        kineticsModeled: false,
+        scales: liveScalePassportRecords().map((record) => ({
+          id: record.id,
+          label: record.label,
+          status: record.status,
+          scale: record.scale,
+          evidence: record.evidence,
+          geometricEncoding: record.encoding,
+          searchRole: record.role,
+          claimBoundary: record.boundary,
+        })),
       },
     },
     structuralEvidence: {
@@ -8382,6 +8403,115 @@ function liveGrowthCertificate() {
   };
 }
 
+function clusterDiameterRangeAngstrom() {
+  const sceneToAngstrom = referenceSpacingA / Math.max(referenceSpacing, 1e-12);
+  const diameters = clusterGalleryTypes().map((cluster) => {
+    const sites = clusterGallerySites(cluster);
+    let diameter = 0;
+    for (let first = 0; first < sites.length; first++) for (let second = first + 1; second < sites.length; second++) {
+      diameter = Math.max(diameter, sites[first].vector.distanceTo(sites[second].vector));
+    }
+    return diameter * sceneToAngstrom;
+  }).filter((diameter) => diameter > 0).sort((first, second) => first - second);
+  if (!diameters.length) return { median: 0, maximum: 0 };
+  return { median: diameters[Math.floor(diameters.length / 2)], maximum: diameters.at(-1) };
+}
+
+function liveScalePassportRecords() {
+  const clusterScale = clusterDiameterRangeAngstrom();
+  const clusterTypes = clusterGalleryTypes();
+  const markingConfig = currentMarkingConfig();
+  const conditions = activeMeasurementConditions();
+  const conditionLabels = [
+    conditions?.temperature?.value === null || conditions?.temperature?.value === undefined
+      ? null : `${conditions.temperature.value} K recorded`,
+    conditions?.pressure?.value === null || conditions?.pressure?.value === undefined
+      ? null : `${conditions.pressure.value} kPa recorded`,
+    conditions?.environment?.value || null,
+  ].filter(Boolean);
+  const maximumDepth = Math.max(0, ...placedClusters.map((placement) => placement.depth || 0));
+  const stageReached = (stage) => pipelineStage >= stage;
+  return [
+    {
+      id: "contacts", label: "atoms + contacts", short: "atomic", status: "reached",
+      scale: `${referenceSpacingA.toFixed(3)} Å nearest-neighbor scale`,
+      evidence: `${referenceCount().toLocaleString()} colored sites · ${coloredDistanceEnvelopes.atomPresentations.toLocaleString()} atom presentations`,
+      encoding: `${coloredDistanceEnvelopes.records.length} pair exclusions · ${coloredCoordinationEnvelopes.records.length} coordination caps · ${coloredAngularEnvelopes.records.length} angular channels`,
+      role: "Hard collision, species, coordination, and observed-angle admission; dimensionless contact strain may softly rank legal actions.",
+      boundary: "No bond order, electron density, force, phonon, elastic modulus, pair potential, or angular potential is inferred.",
+    },
+    {
+      id: "clusters", label: "clusters + voids", short: "local motifs", status: stageReached(1) ? "reached" : "pending",
+      scale: stageReached(1) ? `${clusterScale.median.toFixed(2)} Å median · ${clusterScale.maximum.toFixed(2)} Å maximum support` : "learned after complete-cover discovery",
+      evidence: stageReached(1) ? `${clusterTypes.length} colored isometry classes · ${learnedCover.placements.length} placements · ${learnedCover.residualTypes?.length || 0} residual classes` : "No cluster label is supplied with the input.",
+      encoding: "Overlapping irregular colored point sets, proper-pose orbits, molecular faces, connection polyhedra, and explicit gap terminals.",
+      role: "Defines the indivisible geometry transported by the covering search; residuals close the observation but cannot silently become growth rules.",
+      boundary: "Recurrence and exact cover do not establish energetic stability, defect formation energy, relaxation, or a unique physical motif decomposition.",
+    },
+    {
+      id: "marking", label: "GCTS neighborhood", short: "connection halo", status: stageReached(3) ? "reached" : "pending",
+      scale: stageReached(3) ? `${sectionModel.reach} cluster-hop reach · ${sectionModel.channels} channels` : `${markingConfig.reach} cluster-hop reach configured`,
+      evidence: stageReached(3) ? `${sectionModel.fitCount ?? sectionModel.curve.length} fit sections · ${sectionModel.holdoutCount ?? 0} holdout sections` : "Channels are allocated only after cluster pose and port ranks are frozen.",
+      encoding: stageReached(3) ? `${MARKING_REPRESENTATIONS[sectionModel.representation]?.label || sectionModel.representation}; bounded incoming compatibility and failure evidence` : `${MARKING_REPRESENTATIONS[markingConfig.representation]?.label || markingConfig.representation} requested`,
+      role: "Ranks or admits already enumerated exact cluster attachments; it can select among alternatives but cannot move an atom or invent a pose.",
+      boundary: "The marking is a connection-valued local section, not potential energy, free energy, probability, or elapsed-time dynamics.",
+    },
+    {
+      id: "continuation", label: "frontier + hierarchy", short: "structural scale", status: stageReached(4) ? "active" : "pending",
+      scale: stageReached(4) ? `${placedClusters.length.toLocaleString()} placed clusters · causal depth ${maximumDepth}` : "activated during material growth",
+      evidence: stageReached(4) ? `${frontierCandidates.length.toLocaleString()} live SE(3) frontier actions · ${acceptedDecisions} accepted / ${rejectedDecisions} rejected decisions` : "Requires a frozen cluster, port, and marking vocabulary.",
+      encoding: hierarchyEnabled ? "Dependency-ordered tree search with compatible antichain commits and optional clusters-of-clusters promotion." : "Primitive-cluster best-first covering search; recursive promotion disabled.",
+      role: "Leap-frogs between fully certified structural states while preserving explicit colored overlaps, collisions, residuals, and branch work.",
+      boundary: "A deep hierarchy or large represented count is not stationary growth; exponential claims require an exact recurring production across independently verified scales.",
+    },
+    {
+      id: "kinetics", label: "thermodynamics + time", short: "open boundary", status: "open",
+      scale: conditionLabels.length ? conditionLabels.join(" · ") : "no calibrated thermodynamic state supplied",
+      evidence: conditionLabels.length ? `${conditionLabels.length} recorded condition channel${conditionLabels.length === 1 ? "" : "s"}; retained as provenance only` : "Positions, species, and optional structural snapshots contain no clock, force, or ensemble calibration.",
+      encoding: "Only structural successes/failures and geometric surrogate scores are available. Recorded conditions never become hidden simulation controls.",
+      role: "Defines the current approximation boundary and the data that MD, DFT, kinetic Monte Carlo, or experiment must supply for kinetic calibration.",
+      boundary: "No temperature-dependent free energy, chemical potential, diffusion barrier, nucleation probability, growth rate, or physical elapsed time is claimed.",
+    },
+  ];
+}
+
+function renderScalePassport() {
+  const records = liveScalePassportRecords();
+  const defaults = ["contacts", "clusters", "clusters", "marking", "continuation"];
+  if (selectedScalePassportStage !== pipelineStage || !records.some((record) => record.id === selectedScalePassportId)) {
+    selectedScalePassportId = defaults[pipelineStage] || "contacts";
+    selectedScalePassportStage = pipelineStage;
+  }
+  const selected = records.find((record) => record.id === selectedScalePassportId) || records[0];
+  const encoded = records.filter((record) => ["reached", "active"].includes(record.status)).length;
+  scalePassportState.textContent = `${encoded}/4 structural scales encoded · kinetics open`;
+  scalePassport.replaceChildren(...records.map((record, index) => {
+    const button = document.createElement("button"); button.type = "button";
+    button.className = record.status;
+    button.classList.toggle("active", record.id === selected.id);
+    button.setAttribute("aria-pressed", String(record.id === selected.id));
+    const number = document.createElement("small"); number.textContent = String(index + 1).padStart(2, "0");
+    const label = document.createElement("strong"); label.textContent = record.short;
+    const status = document.createElement("span"); status.textContent = record.status;
+    button.append(number, label, status);
+    button.addEventListener("click", () => { selectedScalePassportId = record.id; renderScalePassport(); });
+    return button;
+  }));
+  scalePassportDetail.className = `scale-passport-detail ${selected.status}`;
+  scalePassportDetail.replaceChildren();
+  const header = document.createElement("header");
+  const headerText = document.createElement("div");
+  const eyebrow = document.createElement("small"); eyebrow.textContent = selected.status;
+  const title = document.createElement("strong"); title.textContent = selected.label;
+  const scale = document.createElement("span"); scale.textContent = selected.scale;
+  headerText.append(eyebrow, title); header.append(headerText, scale); scalePassportDetail.append(header);
+  [["observed evidence", selected.evidence], ["geometric encoding", selected.encoding],
+    ["role in search", selected.role], ["claim boundary", selected.boundary]].forEach(([label, copy]) => {
+    const row = document.createElement("div"); const key = document.createElement("b"); const value = document.createElement("p");
+    key.textContent = label; value.textContent = copy; row.append(key, value); scalePassportDetail.append(row);
+  });
+}
+
 function updateGrowthCertificate() {
   const certificate = liveGrowthCertificate();
   growthCertificateSection.hidden = !certificate;
@@ -8402,6 +8532,7 @@ function updateGrowthCertificate() {
 function updateUI() {
   updateRecursiveBenchmark();
   updateGrowthCertificate();
+  renderScalePassport();
   renderPolicyComparison();
   renderStructuralLeap();
   eventCounter.textContent = String(eventIndex).padStart(4, "0");

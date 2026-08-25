@@ -51,6 +51,9 @@ def test_experiment_receipt_is_reproducible_and_claim_bounded() -> None:
     assert "candidateCoordinatesEmbedded: false" in source
     assert "candidateSetTargetUsed: snapshot.candidateSetTargetUsed" in source
     assert "rankingTargetUsed: snapshot.rankingTargetUsed" in source
+    assert "multiscalePassport: {" in source
+    assert "coordinateDataEmbedded: false" in source
+    assert "kineticsModeled: false" in source
     assert "physicalTimeModeled: leap.physicalTimeModeled" in source
     assert "dynamicsIntegrated: leap.dynamicsIntegrated" in source
     assert "representationReadout: MARKING_REPRESENTATIONS[activeMarking.config.representation]?.readout" in source
@@ -74,7 +77,7 @@ def test_experiment_receipt_is_reproducible_and_claim_bounded() -> None:
     assert 'id="chargeValue"' in html
     assert 'id="surfaceValue"' in html
     assert 'type="text"' not in html[html.index('class="receipt-section"'):html.index('class="legend-section"')]
-    assert 'app.js?v=20260824-62' in html
+    assert 'app.js?v=20260824-63' in html
     assert "externalGeometry: receiptExternalGeometry()" in source
     assert 'candidateGeometryChangedByScheduling: false' in source
     assert 'surfaceCompletionRanking: {' in source

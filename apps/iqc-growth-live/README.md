@@ -520,6 +520,17 @@ and selected-candidate digests, policy labels, actions, and scores—never previ
 coordinates. Candidate enumeration is always target-free; the receipt separately
 records whether the ranking itself still used known-window reconstruction evidence.
 
+The right-hand inspector adds a live **multiscale geometry passport**. Its five
+interactive levels report the measured nearest-neighbour distance and colored
+contact evidence; learned cluster/void support diameters; GCTS channel count and
+neighborhood reach; current frontier size, hierarchy mode, and causal depth; and
+the thermodynamic/kinetic boundary. Each level uses the same four-part audit as
+the constraint ledger—observed evidence, geometric encoding, role in search, and
+claim boundary—and updates with the selected material and pipeline stage. The
+receipt preserves the passport without atom or preview coordinates. Recorded
+temperature, pressure, or environment metadata appears only in the open kinetics
+level and is never promoted into an uncalibrated simulation control.
+
 The live **growth certificate** keeps four layers separate while the animation
 runs: exact replay of the supplied window, outside-window structural output,
 causal self-feed / hierarchy depth, and the strongest claim actually supported.
