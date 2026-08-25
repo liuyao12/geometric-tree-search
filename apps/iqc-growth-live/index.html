@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260825-45">
+  <link rel="stylesheet" href="./style.css?v=20260825-46">
   <script type="importmap">
     {
       "imports": {
@@ -380,6 +380,22 @@
           </div>
 
           <div id="growthSearchOptions" hidden>
+            <label class="field protocol-field" for="growthProtocolSelect">
+              <span>Experiment protocol <b id="growthProtocolHint">custom settings</b></span>
+              <select id="growthProtocolSelect">
+                <option value="custom" selected>Custom · independent controls</option>
+                <option value="bulk">Bulk continuation · neutral boundary</option>
+                <option value="epitaxy">Thin-film epitaxy · coherent hex template</option>
+                <option value="misfit-film">Misfit film · +5% hex template</option>
+                <option value="directional">Directional solidification · facet front</option>
+                <option value="dendritic">Dendritic hypothesis · radial tip growth</option>
+                <option value="impingement">Polycrystal impingement · four nuclei</option>
+                <option value="pore-fill">Pore filling · concavity healing</option>
+              </select>
+            </label>
+            <article id="growthProtocolSummary" class="growth-protocol-summary" aria-live="polite">
+              <span><b>custom experiment</b><small>Every search control remains independent and receipt-visible.</small></span>
+            </article>
             <label class="field" for="markingLibrarySelect">
               <span>Active marking <b id="markingLibraryCount">0 saved</b></span>
               <select id="markingLibrarySelect"></select>
@@ -1063,7 +1079,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-90"></script>
+  <script type="module" src="./app.js?v=20260825-91"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

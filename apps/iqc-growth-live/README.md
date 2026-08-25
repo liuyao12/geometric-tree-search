@@ -3814,3 +3814,39 @@ measured geometric evidence or a separately calibrated physical model. The
 experiment receipt records the template symmetry, mismatch, azimuth, range,
 site-check work, accepted/rejected means, `targetUsed=false`, and these claim
 boundaries.
+
+## Materials-growth experiment protocols
+
+Stage 4 now provides compact **experiment protocols** that coordinate the
+independent controls into recognizable materials-science questions. They are
+convenience bundles, not new hidden backends: applying one writes every
+underlying selector, the user can immediately edit any factor, and the receipt
+serializes the fully expanded state. The available protocols are:
+
+- **bulk continuation** — neutral finite bulk boundary with learned local
+  strain, multicomponent balance, and coordination-deficit completion;
+- **coherent thin-film epitaxy** — impenetrable support, coherent hexagonal
+  template, facet-front ordering, +Z drive, arrival clearance, and constraint
+  robustness;
+- **misfit film** — the same supported-film experiment with a declared `+5%`
+  hexagonal mismatch and loop-closure diagnostics;
+- **directional solidification** — +Z directional ordering, a facet-front
+  hypothesis, declared arrival accessibility, and narrow configurational
+  alternatives;
+- **dendritic hypothesis** — a finite nucleus, radial-outward ordering,
+  exposed-tip preference, radial accessibility, and broader path exploration;
+- **polycrystal impingement** — four dispersed observed nuclei,
+  pose-interface following, multi-parent loop closure, and commuting-front
+  scheduling; and
+- **constricted-pore filling** — an hourglass public boundary, concavity
+  filling, gap/coordination healing, and parent-normal accessibility.
+
+Selecting a protocol restarts the same auditable stage-4 experiment from its
+observed seed. Changing any bundled control marks the run as `custom`; changing
+the marking library alone does not, so alternative learned markings can be
+compared under the same physical protocol. The notebook treats the protocol
+manifest as an intervention factor alongside the expanded soft-physics state.
+No protocol adds atoms, candidates, material labels, rates, or target access.
+Names such as “dendritic” and “epitaxy” describe the declared geometric
+hypothesis and do not certify a mechanism, phase diagram, kinetic law, or
+thermodynamic ensemble.

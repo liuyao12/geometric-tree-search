@@ -144,6 +144,9 @@ const inheritedGeometryMode = $("inheritedGeometryMode");
 const inheritedPoseCount = $("inheritedPoseCount");
 const inheritedChannelCount = $("inheritedChannelCount");
 const growthSearchOptions = $("growthSearchOptions");
+const growthProtocolSelect = $("growthProtocolSelect");
+const growthProtocolHint = $("growthProtocolHint");
+const growthProtocolSummary = $("growthProtocolSummary");
 const markingChannelsSelect = $("markingChannelsSelect");
 const markingChannelsHint = $("markingChannelsHint");
 const markingReachSelect = $("markingReachSelect");
@@ -756,6 +759,7 @@ let hierarchyEnabled = true;
 let mdHorizonSteps = 100000;
 let mdWorkScaling = "local";
 let geometryPreference = "strain";
+let growthProtocolMode = "custom";
 let geometricStrainWeight = DEFAULT_GEOMETRIC_STRAIN_WEIGHT;
 let compositionPreference = "soft";
 let chargePreference = "auto";
@@ -799,6 +803,103 @@ let coloredAngularEnvelopes = null;
 let ensemblePairDistanceUncertainty = null;
 let compositionTarget = null;
 let formalChargeTarget = null;
+
+const GROWTH_PROTOCOL_DEFAULTS = Object.freeze({
+  confinement: "box", geometryPreference: "strain", geometricStrainWeight: .16,
+  compositionPreference: "soft", chargePreference: "auto", surfacePreference: "soft",
+  frontMorphologyMode: "none", frontMorphologyWeight: .24,
+  epitaxyTemplateMode: "none", epitaxyWeight: .24,
+  externalDriveMode: "none", externalDriveWeight: .24,
+  affineLoadMode: "none", affineLoadMagnitude: .02,
+  robustnessPreference: "none", robustnessWeight: .24,
+  microstructureCouplingMode: "none", microstructureCouplingWeight: .24,
+  loopClosurePreference: "none", loopClosureWeight: .24,
+  arrivalPathMode: "none", arrivalPathWeight: .24,
+  geometricExplorationScale: 0, requestedGrowthNuclei: 1,
+  growthScheduling: "commuting", hierarchyEnabled: true,
+});
+
+const GROWTH_PROTOCOLS = Object.freeze({
+  bulk: {
+    label: "bulk continuation", summary: "Neutral finite bulk boundary with learned strain, balanced composition, and surface-completion ordering.",
+    settings: { confinement: "box", geometryPreference: "strain", geometricStrainWeight: .16,
+      compositionPreference: "soft", chargePreference: "auto", surfacePreference: "soft",
+      frontMorphologyMode: "none", epitaxyTemplateMode: "none", externalDriveMode: "none",
+      affineLoadMode: "none", robustnessPreference: "none", microstructureCouplingMode: "none",
+      loopClosurePreference: "none", arrivalPathMode: "none", geometricExplorationScale: 0,
+      requestedGrowthNuclei: 1, growthScheduling: "commuting", hierarchyEnabled: true },
+  },
+  epitaxy: {
+    label: "coherent thin-film epitaxy", summary: "Supported film with a coherent hexagonal registry, facet propagation, upward feed geometry, arrival clearance, and robustness ordering.",
+    settings: { confinement: "substrate", geometryPreference: "strain", geometricStrainWeight: .16,
+      compositionPreference: "soft", chargePreference: "auto", surfacePreference: "strong",
+      frontMorphologyMode: "facet", frontMorphologyWeight: .24, epitaxyTemplateMode: "hex-coherent", epitaxyWeight: .24,
+      externalDriveMode: "z-plus", externalDriveWeight: .24, affineLoadMode: "none",
+      robustnessPreference: "margin", robustnessWeight: .24, microstructureCouplingMode: "none",
+      loopClosurePreference: "none", arrivalPathMode: "declared-drive", arrivalPathWeight: .24,
+      geometricExplorationScale: 0, requestedGrowthNuclei: 1, growthScheduling: "commuting", hierarchyEnabled: true },
+  },
+  "misfit-film": {
+    label: "misfit thin film", summary: "The coherent-film protocol with a declared +5% hexagonal support mismatch; no elastic relaxation or dislocations are inserted.",
+    settings: { confinement: "substrate", geometryPreference: "strain", geometricStrainWeight: .16,
+      compositionPreference: "soft", chargePreference: "auto", surfacePreference: "strong",
+      frontMorphologyMode: "facet", frontMorphologyWeight: .24, epitaxyTemplateMode: "hex-mismatch", epitaxyWeight: .24,
+      externalDriveMode: "z-plus", externalDriveWeight: .24, affineLoadMode: "none",
+      robustnessPreference: "margin", robustnessWeight: .24, microstructureCouplingMode: "none",
+      loopClosurePreference: "consensus", loopClosureWeight: .12, arrivalPathMode: "declared-drive", arrivalPathWeight: .24,
+      geometricExplorationScale: 0, requestedGrowthNuclei: 1, growthScheduling: "commuting", hierarchyEnabled: true },
+  },
+  directional: {
+    label: "directional solidification", summary: "A +Z growth direction, coherent facet-front ordering, declared arrival accessibility, and narrow configurational alternatives.",
+    settings: { confinement: "box", geometryPreference: "strain", geometricStrainWeight: .16,
+      compositionPreference: "soft", chargePreference: "auto", surfacePreference: "soft",
+      frontMorphologyMode: "facet", frontMorphologyWeight: .24, epitaxyTemplateMode: "none",
+      externalDriveMode: "z-plus", externalDriveWeight: .48, affineLoadMode: "none",
+      robustnessPreference: "margin", robustnessWeight: .12, microstructureCouplingMode: "none",
+      loopClosurePreference: "none", arrivalPathMode: "declared-drive", arrivalPathWeight: .24,
+      geometricExplorationScale: .05, requestedGrowthNuclei: 1, growthScheduling: "commuting", hierarchyEnabled: true },
+  },
+  dendritic: {
+    label: "dendritic growth hypothesis", summary: "A finite nucleus with radial-outward drive, exposed-tip preference, radial arrival accessibility, and a broader path ensemble.",
+    settings: { confinement: "sphere", geometryPreference: "strain", geometricStrainWeight: .08,
+      compositionPreference: "soft", chargePreference: "auto", surfacePreference: "soft",
+      frontMorphologyMode: "tip", frontMorphologyWeight: .48, epitaxyTemplateMode: "none",
+      externalDriveMode: "radial-out", externalDriveWeight: .24, affineLoadMode: "none",
+      robustnessPreference: "none", microstructureCouplingMode: "none", loopClosurePreference: "none",
+      arrivalPathMode: "radial-outward", arrivalPathWeight: .24, geometricExplorationScale: .15,
+      requestedGrowthNuclei: 1, growthScheduling: "commuting", hierarchyEnabled: true },
+  },
+  impingement: {
+    label: "polycrystal impingement", summary: "Four dispersed observed nuclei, pose-interface following, multi-parent loop closure, and simultaneous compatible-front scheduling.",
+    settings: { confinement: "box", geometryPreference: "strain", geometricStrainWeight: .16,
+      compositionPreference: "soft", chargePreference: "auto", surfacePreference: "soft",
+      frontMorphologyMode: "smooth", frontMorphologyWeight: .24, epitaxyTemplateMode: "none",
+      externalDriveMode: "none", affineLoadMode: "none", robustnessPreference: "margin", robustnessWeight: .12,
+      microstructureCouplingMode: "interface-follow", microstructureCouplingWeight: .24,
+      loopClosurePreference: "consensus", loopClosureWeight: .24, arrivalPathMode: "none",
+      geometricExplorationScale: .05, requestedGrowthNuclei: 4, growthScheduling: "commuting", hierarchyEnabled: true },
+  },
+  "pore-fill": {
+    label: "constricted-pore filling", summary: "Hard hourglass confinement with concavity filling, coordination healing, and parent-normal arrival accessibility.",
+    settings: { confinement: "hourglass", geometryPreference: "strain", geometricStrainWeight: .16,
+      compositionPreference: "soft", chargePreference: "auto", surfacePreference: "strong",
+      frontMorphologyMode: "smooth", frontMorphologyWeight: .48, epitaxyTemplateMode: "none",
+      externalDriveMode: "none", affineLoadMode: "none", robustnessPreference: "margin", robustnessWeight: .24,
+      microstructureCouplingMode: "gap-heal", microstructureCouplingWeight: .24,
+      loopClosurePreference: "consensus", loopClosureWeight: .12,
+      arrivalPathMode: "parent-outward", arrivalPathWeight: .24, geometricExplorationScale: 0,
+      requestedGrowthNuclei: 1, growthScheduling: "commuting", hierarchyEnabled: true },
+  },
+});
+const GROWTH_PROTOCOL_CONTROL_IDS = new Set([
+  "geometryPreferenceSelect", "strainWeightSelect", "compositionPreferenceSelect", "chargePreferenceSelect",
+  "surfacePreferenceSelect", "frontMorphologySelect", "frontMorphologyWeightSelect",
+  "epitaxyTemplateSelect", "epitaxyWeightSelect", "externalDriveSelect", "externalDriveWeightSelect",
+  "affineLoadSelect", "affineLoadMagnitudeSelect", "robustnessPreferenceSelect", "robustnessWeightSelect",
+  "microstructureCouplingSelect", "microstructureCouplingWeightSelect", "loopClosurePreferenceSelect",
+  "loopClosureWeightSelect", "arrivalPathSelect", "arrivalPathWeightSelect", "explorationScaleSelect",
+  "growthNucleiSelect", "growthSchedulingSelect",
+]);
 
 function renderPeriodicSelection() {
   selectedElementsContainer.replaceChildren();
@@ -5546,7 +5647,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-90",
+      buildId: "20260825-91",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -5861,6 +5962,7 @@ async function buildExperimentReceipt() {
     },
     search: searchVisible ? {
       policy: policySelect.value,
+      experimentProtocol: growthProtocolManifest(),
       hierarchyEnabled: Boolean(hierarchyEnabled && !iceAnchorTrace),
       markingLibraryMode: markingSearchMode,
       scheduling: {
@@ -6211,6 +6313,7 @@ function notebookInterventionFactors(receipt) {
       vocabularyKey: activeMarking?.vocabularyKey || null,
     }) },
     ranking: { label: "frontier ranking", role: "search", value: search?.policy || "not entered" },
+    protocol: { label: "growth protocol", role: "experiment", value: serialized(search?.experimentProtocol || null) },
     softPhysics: { label: "soft physics ordering", role: "search", value: serialized(search ? {
       strain: [search.geometricStrainRanking?.mode, search.geometricStrainRanking?.effectiveWeight,
         search.geometricStrainRanking?.affineLoadMode, search.geometricStrainRanking?.prescribedStrainMagnitude],
@@ -8882,6 +8985,70 @@ function renderMolecularHypothesis() {
   molecularHypothesisRoute.textContent = "irregular cover";
 }
 
+function currentGrowthProtocolSettings() {
+  return {
+    confinement: confinementSelect.value, geometryPreference, geometricStrainWeight,
+    compositionPreference, chargePreference, surfacePreference,
+    frontMorphologyMode, frontMorphologyWeight, epitaxyTemplateMode, epitaxyWeight,
+    externalDriveMode, externalDriveWeight, affineLoadMode, affineLoadMagnitude,
+    robustnessPreference, robustnessWeight, microstructureCouplingMode, microstructureCouplingWeight,
+    loopClosurePreference, loopClosureWeight, arrivalPathMode, arrivalPathWeight,
+    geometricExplorationScale, growthPathSeed, requestedGrowthNuclei, growthScheduling, hierarchyEnabled,
+  };
+}
+
+function growthProtocolManifest() {
+  const protocol = GROWTH_PROTOCOLS[growthProtocolMode];
+  return {
+    id: growthProtocolMode,
+    label: protocol?.label || "custom experiment",
+    summary: protocol?.summary || "Every search control remains independent and receipt-visible.",
+    preset: Boolean(protocol),
+    settings: currentGrowthProtocolSettings(),
+    convenienceOnly: true,
+    hiddenPhysicsAdded: false,
+    candidateGeometryAuthorized: false,
+  };
+}
+
+function renderGrowthProtocolSummary() {
+  const manifest = growthProtocolManifest();
+  growthProtocolSelect.value = growthProtocolMode;
+  growthProtocolHint.textContent = manifest.preset ? "audited control bundle" : "custom settings";
+  const span = document.createElement("span"); const title = document.createElement("b");
+  const copy = document.createElement("small"); title.textContent = manifest.label; copy.textContent = manifest.summary;
+  span.append(title, copy); growthProtocolSummary.replaceChildren(span);
+}
+
+function applyGrowthProtocol(mode) {
+  const protocol = GROWTH_PROTOCOLS[mode];
+  if (!protocol) {
+    growthProtocolMode = "custom";
+    renderGrowthProtocolSummary();
+    return;
+  }
+  const settings = { ...GROWTH_PROTOCOL_DEFAULTS, ...protocol.settings };
+  growthProtocolMode = mode;
+  confinementSelect.value = settings.confinement;
+  geometryPreference = settings.geometryPreference; geometricStrainWeight = settings.geometricStrainWeight;
+  compositionPreference = settings.compositionPreference; chargePreference = settings.chargePreference;
+  surfacePreference = settings.surfacePreference;
+  frontMorphologyMode = settings.frontMorphologyMode; frontMorphologyWeight = settings.frontMorphologyWeight;
+  epitaxyTemplateMode = settings.epitaxyTemplateMode; epitaxyWeight = settings.epitaxyWeight;
+  externalDriveMode = settings.externalDriveMode; externalDriveWeight = settings.externalDriveWeight;
+  affineLoadMode = settings.affineLoadMode; affineLoadMagnitude = settings.affineLoadMagnitude;
+  robustnessPreference = settings.robustnessPreference; robustnessWeight = settings.robustnessWeight;
+  microstructureCouplingMode = settings.microstructureCouplingMode;
+  microstructureCouplingWeight = settings.microstructureCouplingWeight;
+  loopClosurePreference = settings.loopClosurePreference; loopClosureWeight = settings.loopClosureWeight;
+  arrivalPathMode = settings.arrivalPathMode; arrivalPathWeight = settings.arrivalPathWeight;
+  geometricExplorationScale = settings.geometricExplorationScale; growthPathSeed = 1;
+  requestedGrowthNuclei = settings.requestedGrowthNuclei; growthScheduling = settings.growthScheduling;
+  hierarchyEnabled = settings.hierarchyEnabled;
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+}
+
 function syncStageOptions() {
   const visible = pipelineStage === 1 || pipelineStage === 3 || pipelineStage === 4;
   externalDriveBadge.hidden = pipelineStage !== 4 || externalDriveMode === "none";
@@ -8998,6 +9165,7 @@ function syncStageOptions() {
     markingConfigNote.textContent = `${resolvedChannels} channels${markingDraft.channels ? " (manual override)" : " (derived from the frozen pose × port incidence rank)"} · support R=${sectionModel?.support.toFixed(2) || "—"}a · ${MARKING_REPRESENTATIONS[markingDraft.representation].label}: ${MARKING_REPRESENTATIONS[markingDraft.representation].readout}. Clustering freezes the finite or sampled proper-rotation support before this fit; symmetry-equivalent rotations share channels.`;
   } else {
     renderMarkingLibrary();
+    renderGrowthProtocolSummary();
     markingSearchModeSelect.value = markingSearchMode;
     const active = selectedMarking();
     const finiteIceAnchorMode = Boolean(iceAnchorTrace);
@@ -9083,7 +9251,7 @@ function syncStageOptions() {
       ? "choose supported-film geometry"
       : epitaxyTemplateMode === "none" ? "inert excluded plane · registry off"
         : `${epitaxyTemplateLabel()} · weight ${epitaxyWeight.toFixed(2)}`;
-    stageOptionsState.textContent = `${policySelect.value === "marked" && active ? active.name.split(" · ")[0] : "baseline"} · ${geometryPreference === "strain" ? `strain ${geometricStrainWeight.toFixed(2)}` : "no strain"}`;
+    stageOptionsState.textContent = `${growthProtocolMode === "custom" ? "custom" : GROWTH_PROTOCOLS[growthProtocolMode].label} · ${policySelect.value === "marked" && active ? active.name.split(" · ")[0] : "baseline"} · ${geometryPreference === "strain" ? `strain ${geometricStrainWeight.toFixed(2)}` : "no strain"}`;
     primitiveGrowthButton.classList.toggle("active", finiteIceAnchorMode || !hierarchyEnabled);
     primitiveGrowthButton.setAttribute("aria-pressed", String(finiteIceAnchorMode || !hierarchyEnabled));
     hierarchicalGrowthButton.classList.toggle("active", !finiteIceAnchorMode && hierarchyEnabled);
@@ -11809,7 +11977,16 @@ loadEnsembleFixtureButton.addEventListener("click", async () => {
     importStatus.textContent = `Ensemble fixture failed: ${error.message}`;
   }
 });
-confinementSelect.addEventListener("change", () => enterPipelineStage(pipelineStage));
+confinementSelect.addEventListener("change", () => {
+  growthProtocolMode = "custom";
+  enterPipelineStage(pipelineStage);
+});
+growthProtocolSelect.addEventListener("change", () => applyGrowthProtocol(growthProtocolSelect.value));
+growthSearchOptions.addEventListener("change", (event) => {
+  if (event.target === growthProtocolSelect || !GROWTH_PROTOCOL_CONTROL_IDS.has(event.target.id)) return;
+  growthProtocolMode = "custom";
+  renderGrowthProtocolSummary();
+});
 geometryModeSelect.addEventListener("change", () => {
   geometryMode = geometryModeSelect.value;
   enterPipelineStage(1);
@@ -12016,11 +12193,13 @@ trainVariantButton.addEventListener("click", () => {
 primitiveGrowthButton.addEventListener("click", () => {
   if (!hierarchyEnabled) return;
   hierarchyEnabled = false;
+  growthProtocolMode = "custom";
   if (pipelineStage === 4) enterPipelineStage(4);
 });
 hierarchicalGrowthButton.addEventListener("click", () => {
   if (hierarchyEnabled) return;
   hierarchyEnabled = true;
+  growthProtocolMode = "custom";
   if (pipelineStage === 4) enterPipelineStage(4);
 });
 policySelect.addEventListener("change", () => {

@@ -489,6 +489,8 @@ body.atlas-open { overflow: hidden; }
 .nucleus-interface-inspector article div { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 3px 8px; align-items: baseline; padding: 6px 0; }
 .nucleus-interface-inspector article strong { margin-top: 0; text-align: right; }
 .nucleus-interface-inspector article span { grid-column: 1 / -1; margin-top: 0; }
+.protocol-field { border-top: 1px solid rgba(101,225,188,.22); padding-top: 9px; }
+.growth-protocol-summary { margin: -2px 0 9px; padding: 8px 9px; border: 1px solid rgba(101,225,188,.2); background: linear-gradient(110deg,rgba(101,225,188,.08),rgba(85,200,255,.025)); }.growth-protocol-summary span,.growth-protocol-summary b,.growth-protocol-summary small { display: block; }.growth-protocol-summary b { color: #aaf3dd; font: 7px var(--mono); font-weight: 400; text-transform: uppercase; letter-spacing: .08em; }.growth-protocol-summary small { margin-top: 4px; color: #718c84; font: 6px/1.45 var(--sans); }
 .axis-labels span { position: absolute; z-index: 2; color: rgba(144,177,169,.45); font: 8px var(--mono); text-transform: uppercase; }
 .axis-labels .x { right: 16%; bottom: 15%; }
 .axis-labels .y { left: 51%; top: 14%; }
