@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260825-audit-correctness-v217";
+} from "./engine.js?v=20260825-audit-correctness-v218";
 
 const $ = (id) => document.getElementById(id);
 
@@ -775,6 +775,7 @@ const catalogGroupDefinitions = [
     test: figure => figureHasCategory(figure, "GCTS Periodic Controls")
   },
   { id: "non-tiler-controls", title: "GCTS non-tiler controls", test: figure => figureHasCategory(figure, "GCTS Non-Tiler Controls") },
+  { id: "face-obstruction-controls", title: "Face-to-face obstruction controls", test: figure => figureHasCategory(figure, "Face-to-face Obstruction Controls") },
   { id: "polycubes", title: "Polycubes", test: figure => figureHasCategory(figure, "Polycubes") },
   { id: "fedorov", title: "Fedorov solids", test: figure => figureHasCategory(figure, "Fedorov Solids") },
   { id: "space", title: "Space-fillers", test: figure => figureHasCategory(figure, "Space Fillers") },
@@ -3055,7 +3056,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260825-audit-correctness-v217", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260825-audit-correctness-v218", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3778,7 +3779,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260825-audit-correctness-v217", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260825-audit-correctness-v218", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};

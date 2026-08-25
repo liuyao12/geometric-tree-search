@@ -1,4 +1,4 @@
-import { createTilingStream, preprocessTilingSystem, tileSpecs } from "./engine.js?v=20260825-audit-correctness-v217";
+import { createTilingStream, preprocessTilingSystem, tileSpecs } from "./engine.js?v=20260825-audit-correctness-v218";
 
 let activeSequence = 0;
 let stopToken = { stop: false };
