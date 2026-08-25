@@ -4253,6 +4253,15 @@ residuals; the panel reports the median, 90th percentile, and maximum. The
 receipt hashes every per-site D²min record and records the exact definition and
 neighbor count.
 
+The same fixed 12-neighbor ranking supplies a complementary **neighbor identity
+audit**. Coral relations were present in the selected-frame kNN graph but not
+the final graph; mint relations appear in the final graph but not the selected
+graph. The panel reports directed-neighbor persistence, changed cages, and
+unique lost/gained undirected relations. This answers whether a large local
+residual coincides with a neighbor exchange instead of treating every large
+displacement as the same event. The ranking and both identity sets are included
+in the per-site receipt hash.
+
 Archive ordering is not interpreted as physical time. The portal does not
 receive optimizer iteration duration, velocities, an integration time step, or
 a calibrated dynamical path, and it does not infer them. Same-run energy
@@ -4268,3 +4277,5 @@ or prediction of how the material actually moved between them. It is excluded
 from cluster identification, marking learning, candidate ranking, and growth.
 Likewise, D²min is a kinematic comparison, not a plastic-strain tensor, defect
 classifier, barrier, mobility, or proof of a localized transition mechanism.
+The fixed-k graph is geometric adjacency, not bond order: a gained or lost kNN
+relation is not, by itself, chemical bond formation or rupture.

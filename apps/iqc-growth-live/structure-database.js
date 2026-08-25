@@ -80,20 +80,26 @@ function vectorLength(vector) {
 function expandPeriodicFrame(frame, repetitions) {
   if (!frame.cell || !frame.pbc?.every(Boolean)) return {
     ...frame,
-    atoms: frame.atoms.map((atom) => ({ ...atom, position: [...atom.position] })),
+    atoms: frame.atoms.map((atom, primitiveSourceIndex) => ({ ...atom, position: [...atom.position],
+      primitiveSourceIndex: atom.primitiveSourceIndex ?? primitiveSourceIndex,
+      supercellImage: atom.supercellImage?.slice() || [0, 0, 0] })),
+    metadata: { ...frame.metadata, repetitions: [1, 1, 1], primitiveAtomCount: frame.atoms.length },
   };
   const atoms = [];
   for (let i = 0; i < repetitions[0]; i++) for (let j = 0; j < repetitions[1]; j++) for (let k = 0; k < repetitions[2]; k++) {
     const shift = [0, 1, 2].map((axis) => i * frame.cell[0][axis] + j * frame.cell[1][axis] + k * frame.cell[2][axis]);
-    frame.atoms.forEach((atom) => atoms.push({
+    frame.atoms.forEach((atom, primitiveSourceIndex) => atoms.push({
       ...atom,
       position: atom.position.map((value, axis) => value + shift[axis]),
+      primitiveSourceIndex: atom.primitiveSourceIndex ?? primitiveSourceIndex,
+      supercellImage: [i, j, k],
     }));
   }
   return {
     ...frame,
     atoms,
     cell: frame.cell.map((vector, axis) => vector.map((value) => value * repetitions[axis])),
+    metadata: { ...frame.metadata, repetitions: repetitions.slice(), primitiveAtomCount: frame.atoms.length },
   };
 }
 

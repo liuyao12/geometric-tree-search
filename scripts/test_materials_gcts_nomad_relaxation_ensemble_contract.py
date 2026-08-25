@@ -88,11 +88,11 @@ def test_scientific_nonclaims_and_mocked_sequence_regression_are_documented():
         assert token in NODE_TEST
 
 
-def test_build_112_is_cache_busted():
-    assert 'buildId: "20260825-112"' in APP
+def test_build_114_is_cache_busted():
+    assert 'buildId: "20260825-114"' in APP
     assert 'structure-io.js?v=20260825-6' in APP
-    assert 'structure-database.js?v=20260825-3' in APP
-    assert 'app.js?v=20260825-112' in HTML
+    assert 'structure-database.js?v=20260825-4' in APP
+    assert 'app.js?v=20260825-114' in HTML
 
 
 if __name__ == "__main__":

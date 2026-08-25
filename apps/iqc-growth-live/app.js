@@ -9,7 +9,7 @@ import {
   parseStructureText,
   validateStructure,
 } from "./structure-io.js?v=20260825-6";
-import { randomNomadStructure } from "./structure-database.js?v=20260825-3";
+import { randomNomadStructure } from "./structure-database.js?v=20260825-4";
 import { bestAffineNeighborhoodResidual } from "./relaxation-local-environment.js?v=20260825-1";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
@@ -1276,30 +1276,72 @@ function relaxationLocalEnvironmentField() {
     });
     return fractional.applyMatrix3(context.matrix);
   };
+  const neighborIdentity = (frame, first, second, context) => {
+    const neighbor = frame.atoms[second]; const center = frame.atoms[first];
+    if (!Number.isInteger(neighbor.primitiveSourceIndex) || !Array.isArray(neighbor.supercellImage)
+        || !Array.isArray(center.supercellImage)) return `atom:${second}`;
+    const relativeImage = neighbor.supercellImage.map((value, axis) => value - center.supercellImage[axis]);
+    const repetitions = frame.metadata?.repetitions || [1, 1, 1];
+    if (context.matrix) {
+      const rawDelta = new THREE.Vector3(...neighbor.position).sub(new THREE.Vector3(...center.position));
+      const fractional = rawDelta.applyMatrix3(context.inverse);
+      context.pbc.forEach((periodic, axis) => {
+        if (periodic) relativeImage[axis] -= Math.round(fractional.getComponent(axis)) * repetitions[axis];
+      });
+    }
+    return `primitive:${neighbor.primitiveSourceIndex}@${relativeImage.join(",")}`;
+  };
   const records = [];
   for (let center = 0; center < atomCount; center++) {
     const neighbors = [];
     for (let neighbor = 0; neighbor < atomCount; neighbor++) if (neighbor !== center) {
       const sourceVector = pairVector(source, center, neighbor, sourceContext);
-      neighbors.push({ neighbor, sourceVector, distanceSq: sourceVector.lengthSq() });
+      const targetVector = pairVector(target, center, neighbor, targetContext);
+      neighbors.push({ neighbor, sourceVector, targetVector,
+        sourceIdentity: neighborIdentity(source, center, neighbor, sourceContext),
+        targetIdentity: neighborIdentity(target, center, neighbor, targetContext),
+        sourceDistanceSq: sourceVector.lengthSq(), targetDistanceSq: targetVector.lengthSq() });
     }
-    neighbors.sort((first, second) => first.distanceSq - second.distanceSq || first.neighbor - second.neighbor);
-    const local = neighbors.slice(0, neighborCount).map((entry) => ({
-      source: entry.sourceVector,
-      target: pairVector(target, center, entry.neighbor, targetContext),
+    const sourceNeighbors = [...neighbors].sort((first, second) => first.sourceDistanceSq - second.sourceDistanceSq
+      || first.neighbor - second.neighbor).slice(0, neighborCount);
+    const targetNeighbors = [...neighbors].sort((first, second) => first.targetDistanceSq - second.targetDistanceSq
+      || first.neighbor - second.neighbor).slice(0, neighborCount);
+    const local = sourceNeighbors.map((entry) => ({
+      source: entry.sourceVector, target: entry.targetVector,
     }));
     const fit = bestAffineNeighborhoodResidual(
       local.map((pair) => pair.source.toArray()),
       local.map((pair) => pair.target.toArray()),
     );
     const d2MinAngstromSquared = fit.d2Min;
+    const sourceNeighborIndices = sourceNeighbors.map((entry) => entry.neighbor);
+    const targetNeighborIndices = targetNeighbors.map((entry) => entry.neighbor);
+    const sourceNeighborIdentities = sourceNeighbors.map((entry) => entry.sourceIdentity);
+    const targetNeighborIdentities = targetNeighbors.map((entry) => entry.targetIdentity);
+    const sourceSet = new Set(sourceNeighborIdentities); const targetSet = new Set(targetNeighborIdentities);
+    const lostNeighborIndices = sourceNeighbors.filter((entry) => !targetSet.has(entry.sourceIdentity))
+      .map((entry) => entry.neighbor);
+    const gainedNeighborIndices = targetNeighbors.filter((entry) => !sourceSet.has(entry.targetIdentity))
+      .map((entry) => entry.neighbor);
     records.push({ sourceIndex: center, species: occupancyChemistryToken(source.atoms[center]),
       neighborCount: local.length, d2MinAngstromSquared,
-      rootD2MinAngstrom: Math.sqrt(Math.max(0, d2MinAngstromSquared)) });
+      rootD2MinAngstrom: Math.sqrt(Math.max(0, d2MinAngstromSquared)),
+      sourceNeighborIndices, targetNeighborIndices, sourceNeighborIdentities, targetNeighborIdentities,
+      lostNeighborIndices, gainedNeighborIndices,
+      neighborPersistenceFraction: 1 - lostNeighborIndices.length / neighborCount });
   }
   const ordered = records.map((record) => record.rootD2MinAngstrom).sort((first, second) => first - second);
   const percentile = (fraction) => ordered[Math.min(ordered.length - 1,
     Math.max(0, Math.round(fraction * (ordered.length - 1))))] || 0;
+  const lostPairSet = new Set(); const gainedPairSet = new Set();
+  records.forEach((record) => {
+    record.lostNeighborIndices.forEach((neighbor) => lostPairSet.add(
+      `${Math.min(record.sourceIndex, neighbor)}:${Math.max(record.sourceIndex, neighbor)}`));
+    record.gainedNeighborIndices.forEach((neighbor) => gainedPairSet.add(
+      `${Math.min(record.sourceIndex, neighbor)}:${Math.max(record.sourceIndex, neighbor)}`));
+  });
+  const lostPairs = [...lostPairSet]; const gainedPairs = [...gainedPairSet];
+  const decodePair = (key) => key.split(":").map(Number);
   const result = {
     sourceFrameIndex: displacement.sourceFrameIndex,
     targetFrameIndex: displacement.targetFrameIndex,
@@ -1308,7 +1350,17 @@ function relaxationLocalEnvironmentField() {
     medianRootD2MinAngstrom: percentile(.5),
     percentile90RootD2MinAngstrom: percentile(.9),
     maximumRootD2MinAngstrom: ordered.at(-1) || 0,
+    meanNeighborPersistenceFraction: records.reduce((sum, record) => sum
+      + record.neighborPersistenceFraction, 0) / records.length,
+    changedAtomCount: records.filter((record) => record.lostNeighborIndices.length > 0).length,
+    lostDirectedNeighborLinks: records.reduce((sum, record) => sum + record.lostNeighborIndices.length, 0),
+    gainedDirectedNeighborLinks: records.reduce((sum, record) => sum + record.gainedNeighborIndices.length, 0),
+    uniqueLostNeighborPairs: lostPairs.length,
+    uniqueGainedNeighborPairs: gainedPairs.length,
+    lostNeighborPairs: lostPairs.map(decodePair),
+    gainedNeighborPairs: gainedPairs.map(decodePair),
     definition: "square root of mean residual after a regularized per-site best-affine fit from selected-frame neighbor vectors to final-frame neighbor vectors",
+    neighborIdentityDefinition: "identity overlap of the fixed 12-nearest periodic minimum-image neighbor ranking in selected and final structures; geometric adjacency only, not bond order",
     physicalTimeUsed: false,
   };
   relaxationLocalEnvironmentCache = { structure: importedStructure, frameIndex: importedFrameIndex, result };
@@ -1481,7 +1533,7 @@ function renderRelaxationSequence(frames, relaxation) {
       : "Selected-to-final displacement is unavailable for this sequence.";
   const localEnvironment = relaxationLocalEnvironmentField();
   relaxationLocalEnvironmentState.textContent = localEnvironment
-    ? `Local ${localEnvironment.neighborCount}-neighbor best-affine fit: median √D²min ${localEnvironment.medianRootD2MinAngstrom.toFixed(3)} Å · 90th percentile ${localEnvironment.percentile90RootD2MinAngstrom.toFixed(3)} Å · max ${localEnvironment.maximumRootD2MinAngstrom.toFixed(3)} Å.`
+    ? `Local ${localEnvironment.neighborCount}-neighbor best-affine fit: median √D²min ${localEnvironment.medianRootD2MinAngstrom.toFixed(3)} Å · p90 ${localEnvironment.percentile90RootD2MinAngstrom.toFixed(3)} Å · max ${localEnvironment.maximumRootD2MinAngstrom.toFixed(3)} Å · neighbor identity ${(100 * localEnvironment.meanNeighborPersistenceFraction).toFixed(1)}% persistent (${localEnvironment.changedAtomCount}/${localEnvironment.records.length} cages changed).`
     : "Local best-affine neighborhood residual is unavailable for the selected state.";
   relaxationSequenceChart.setAttribute("aria-label", `${frames.length} ordered archived relaxation snapshots; ${energies.length} have energy and ${availableForceFrames} have complete residual forces; snapshot ${importedFrameIndex + 1} selected`);
 }
@@ -6059,6 +6111,10 @@ async function buildExperimentReceipt() {
   const relaxationLocalEnvironmentRecords = relaxationLocalEnvironment?.records.map((record) => ({
     sourceIndex: record.sourceIndex, species: record.species, neighborCount: record.neighborCount,
     d2MinAngstromSquared: receiptRound(record.d2MinAngstromSquared, 10),
+    sourceNeighborIndices: record.sourceNeighborIndices,
+    targetNeighborIndices: record.targetNeighborIndices,
+    sourceNeighborIdentities: record.sourceNeighborIdentities,
+    targetNeighborIdentities: record.targetNeighborIdentities,
   })) || [];
   const relaxationLocalEnvironmentSha256 = relaxationLocalEnvironmentRecords.length
     ? await receiptSha256(JSON.stringify(relaxationLocalEnvironmentRecords)) : null;
@@ -6067,7 +6123,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-112",
+      buildId: "20260825-114",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -6198,6 +6254,13 @@ async function buildExperimentReceipt() {
           medianRootD2MinAngstrom: receiptRound(relaxationLocalEnvironment.medianRootD2MinAngstrom),
           percentile90RootD2MinAngstrom: receiptRound(relaxationLocalEnvironment.percentile90RootD2MinAngstrom),
           maximumRootD2MinAngstrom: receiptRound(relaxationLocalEnvironment.maximumRootD2MinAngstrom),
+          neighborIdentityDefinition: relaxationLocalEnvironment.neighborIdentityDefinition,
+          meanNeighborPersistenceFraction: receiptRound(relaxationLocalEnvironment.meanNeighborPersistenceFraction),
+          changedAtomCount: relaxationLocalEnvironment.changedAtomCount,
+          lostDirectedNeighborLinks: relaxationLocalEnvironment.lostDirectedNeighborLinks,
+          gainedDirectedNeighborLinks: relaxationLocalEnvironment.gainedDirectedNeighborLinks,
+          uniqueLostNeighborPairs: relaxationLocalEnvironment.uniqueLostNeighborPairs,
+          uniqueGainedNeighborPairs: relaxationLocalEnvironment.uniqueGainedNeighborPairs,
           recordSha256: relaxationLocalEnvironmentSha256,
           recordsEmbedded: false,
           localBestAffineMapsEmbedded: false,
@@ -10659,7 +10722,7 @@ function syncStageOptions() {
   const localEnvironment = relaxationLocalEnvironmentField();
   relaxationLocalEnvironmentToggle.disabled = !localEnvironment;
   relaxationLocalEnvironmentToggleLabel.textContent = localEnvironment
-    ? `Local rearrangement √D²min · p90 ${localEnvironment.percentile90RootD2MinAngstrom.toFixed(3)} Å`
+    ? `Local rearrangement √D²min + kNN exchange · p90 ${localEnvironment.percentile90RootD2MinAngstrom.toFixed(3)} Å`
     : "Local rearrangement √D²min · unavailable";
   externalDriveBadge.hidden = pipelineStage !== 4 || externalDriveMode === "none";
   externalDriveBadgeLabel.textContent = externalDriveModeLabel();
@@ -12275,6 +12338,23 @@ function rebuildWorld() {
       halos.instanceMatrix.needsUpdate = true;
       if (halos.instanceColor) halos.instanceColor.needsUpdate = true;
       atomGroup.add(halos);
+      const residualByIndex = new Map(relaxationLocalEnvironment.records
+        .map((record) => [record.sourceIndex, record.rootD2MinAngstrom]));
+      const addNeighborExchange = (pairs, color) => {
+        const points = [...pairs].sort((first, second) => Math.max(residualByIndex.get(second[0]) || 0,
+          residualByIndex.get(second[1]) || 0) - Math.max(residualByIndex.get(first[0]) || 0,
+          residualByIndex.get(first[1]) || 0) || first[0] - second[0] || first[1] - second[1])
+          .slice(0, 180).flatMap(([first, second]) => {
+            const firstAtom = atomBySourceIndex.get(first); const secondAtom = atomBySourceIndex.get(second);
+            return firstAtom && secondAtom ? [firstAtom.p, secondAtom.p] : [];
+          });
+        if (points.length) atomGroup.add(new THREE.LineSegments(
+          new THREE.BufferGeometry().setFromPoints(points),
+          new THREE.LineBasicMaterial({ color, transparent: true, opacity: .36, depthWrite: false }),
+        ));
+      };
+      addNeighborExchange(relaxationLocalEnvironment.lostNeighborPairs, 0xff756f);
+      addNeighborExchange(relaxationLocalEnvironment.gainedNeighborPairs, 0x65e1bc);
     }
   }
 
@@ -12556,12 +12636,12 @@ function physicsTranslationRecords(leap = null) {
       boundary: "The displacement field is a difference between archived structures, not a physical path. Archive order is not physical elapsed time. No velocity, integration step, optimizer clock, minimum-energy path, transition probability, or growth rate is inferred; energies are compared only within this one same-method archived sequence." },
     { id: "local-rearrangement", process: "localized rearrangement / environment change", status: relaxationLocalEnvironment ? "observed" : "unavailable", role: relaxationLocalEnvironment ? "archived structural-difference diagnostic" : "no paired local environments",
       encoding: relaxationLocalEnvironment
-        ? `${relaxationLocalEnvironment.neighborCount}-neighbor periodic minimum-image vectors; one regularized best-affine map per site; √D²min is the RMS residual in Å`
+        ? `${relaxationLocalEnvironment.neighborCount}-neighbor periodic minimum-image vectors; one regularized best-affine map per site; √D²min is the RMS residual in Å; selected/final kNN identity sets expose geometric neighbor exchange`
         : "no selected-to-final fixed-topology pair is available",
       evidence: relaxationLocalEnvironment
-        ? `Median √D²min ${relaxationLocalEnvironment.medianRootD2MinAngstrom.toFixed(3)} Å; p90 ${relaxationLocalEnvironment.percentile90RootD2MinAngstrom.toFixed(3)} Å; maximum ${relaxationLocalEnvironment.maximumRootD2MinAngstrom.toFixed(3)} Å.`
+        ? `Median √D²min ${relaxationLocalEnvironment.medianRootD2MinAngstrom.toFixed(3)} Å; p90 ${relaxationLocalEnvironment.percentile90RootD2MinAngstrom.toFixed(3)} Å; ${(100 * relaxationLocalEnvironment.meanNeighborPersistenceFraction).toFixed(1)}% directed-neighbor persistence; ${relaxationLocalEnvironment.uniqueLostNeighborPairs} lost and ${relaxationLocalEnvironment.uniqueGainedNeighborPairs} gained undirected kNN relations.`
         : "No atom-resolved local rearrangement field is available.",
-      boundary: "D²min is a kinematic difference between two archived configurations after a local affine fit. It is not plastic strain, a defect label, activation energy, mobility, a transition pathway, or elapsed time, and it never ranks or admits growth." },
+      boundary: "D²min and kNN identity exchange are kinematic differences between two archived configurations. A nearest-neighbor ranking is not a chemical bond graph. Neither channel is plastic strain, a defect label, activation energy, mobility, a transition pathway, or elapsed time, and neither ranks or admits growth." },
     { id: "connection", process: "cluster attachment preference", status: policySelect.value === "action" ? "open" : "learned", role: policySelect.value === "action" ? "ablated" : "learned local connection gate / rank",
       encoding: `${markingMode}; ${sectionModel?.channels || 0} channels, reach ${sectionModel?.reach || 0}, transported in cluster-local proper-SE(3) frames`,
       evidence: leap ? `${leap.proposal.shared} shared and ${leap.proposal.fresh} proposed fresh sites were checked through the frozen port grammar.` : "No attachment scored yet.",

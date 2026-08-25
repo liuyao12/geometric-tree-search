@@ -256,6 +256,7 @@
               <div class="relaxation-sequence-legend"><span>relative energy / atom</span><span>force RMS</span></div>
               <div id="relaxationDisplacementState" class="relaxation-displacement-state">Select an earlier snapshot to compare its geometry with the final archived state.</div>
               <div id="relaxationLocalEnvironmentState" class="relaxation-displacement-state">Local best-affine neighborhood residual is unavailable.</div>
+              <div class="relaxation-neighbor-legend"><span>lost kNN relation</span><span>gained kNN relation</span><span>halo = √D²min</span></div>
               <p>Ordered calculation snapshots are geometric evidence, not physical-time integration. Click a point to inspect that archived state.</p>
             </div>
             <p id="ensembleStatus" class="control-note">Frames contribute contact, coordination, and angle observations; growth starts from only the selected frame.</p>
@@ -1337,7 +1338,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-112"></script>
+  <script type="module" src="./app.js?v=20260825-114"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

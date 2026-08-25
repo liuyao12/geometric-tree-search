@@ -51,26 +51,38 @@ def test_visualization_and_receipt_keep_exact_metrics_separate():
         "usedForGrowth: false",
         "new THREE.IcosahedronGeometry(.27, 1)",
         "halos.setColorAt",
+        "lostNeighborPairs",
+        "gainedNeighborPairs",
+        "meanNeighborPersistenceFraction",
+        "sourceNeighborIndices: record.sourceNeighborIndices",
+        "targetNeighborIndices: record.targetNeighborIndices",
+        "uniqueLostNeighborPairs",
+        "uniqueGainedNeighborPairs",
+        "primitiveSourceIndex",
+        "supercellImage",
+        "sourceNeighborIdentities",
+        "targetNeighborIdentities",
     ):
         assert token in APP
 
 
 def test_claim_boundary_is_kinematic_not_plastic_or_kinetic():
     for token in (
-        "D²min is a kinematic difference between two archived configurations after a local affine fit.",
-        "It is not plastic strain, a defect label, activation energy, mobility, a transition pathway, or elapsed time",
+        "D²min and kNN identity exchange are kinematic differences",
+        "A nearest-neighbor ranking is not a chemical bond graph.",
     ):
         assert token in APP
     for token in (
         "regularized least-squares affine map",
         "not a plastic-strain tensor, defect",
+        "fixed-k graph is geometric adjacency, not bond order",
     ):
         assert token in README
 
 
-def test_build_112_is_cache_busted():
-    assert 'buildId: "20260825-112"' in APP
-    assert 'app.js?v=20260825-112' in HTML
+def test_build_114_is_cache_busted():
+    assert 'buildId: "20260825-114"' in APP
+    assert 'app.js?v=20260825-114' in HTML
 
 
 if __name__ == "__main__":
