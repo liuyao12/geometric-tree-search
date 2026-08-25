@@ -290,6 +290,7 @@ const policySpatialFieldState = $("policySpatialFieldState");
 const policySpatialTerm = $("policySpatialTerm");
 const policySpatialToggle = $("policySpatialToggle");
 const policySpatialExtremes = $("policySpatialExtremes");
+const policySpatialDecomposition = $("policySpatialDecomposition");
 const policySensitivityState = $("policySensitivityState");
 const policyHistoryElement = $("policyHistory");
 const policyPreviewState = $("policyPreviewState");
@@ -6135,7 +6136,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-118",
+      buildId: "20260825-119",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7106,6 +7107,7 @@ async function buildExperimentReceipt() {
             const field = buildPolicySpatialField(snapshot);
             return field ? {
               role: "candidate-resolved signed contribution overlay over one unchanged hard-admitted frontier",
+              fieldMode: field.mode,
               term: { id: field.termId, label: field.termLabel, multiplier: field.multiplier },
               visibleIn3D: field.visible,
               normalization: "signed contribution divided by maximum absolute contribution on this frontier",
@@ -7119,13 +7121,17 @@ async function buildExperimentReceipt() {
               candidateSetChanged: field.candidateSetChanged,
               hardAdmissionChanged: field.hardAdmissionChanged,
               candidateGeometryChanged: field.candidateGeometryChanged,
+              compositeScoreDecompositionExact: field.compositeScoreDecompositionExact,
               continuousFieldInferred: field.continuousFieldInferred,
               targetUsed: field.targetUsed,
               executed: field.executed,
               candidateCoordinatesEmbedded: false,
               samples: field.points.map((point) => ({ candidateDigest: point.candidateDigest,
                 action: point.action, contribution: receiptRound(point.contribution),
-                normalizedContribution: receiptRound(point.normalizedContribution) })),
+                normalizedContribution: receiptRound(point.normalizedContribution),
+                termContributions: point.termContributions.map((term) => ({ id: term.id, label: term.label,
+                  multiplier: term.multiplier, contribution: receiptRound(term.contribution) })),
+              })),
             } : null;
           })(),
           policies: snapshot.policies.map((policy) => ({
@@ -9322,6 +9328,7 @@ function setWorkbenchMultiplier(snapshot, termId, value) {
 }
 
 const POLICY_PHASE_LEVELS = [0, .5, 1, 1.5, 2];
+const POLICY_SPATIAL_COMPOSITE = "__composite__";
 
 function defaultPolicyPhaseAxes(snapshot) {
   const terms = (snapshot.workbenchCandidates[0]?.scoreTerms || [])
@@ -9385,24 +9392,35 @@ function buildPolicyPhaseMap(snapshot) {
 function buildPolicySpatialField(snapshot) {
   if (!snapshot?.workbenchCandidates?.length) return null;
   snapshot.phaseMapAxes ||= defaultPolicyPhaseAxes(snapshot);
-  snapshot.spatialTermId ||= snapshot.phaseMapAxes.x;
+  snapshot.spatialTermId ||= POLICY_SPATIAL_COMPOSITE;
   const termId = snapshot.spatialTermId;
-  const firstTerm = snapshot.workbenchCandidates[0].scoreTerms.find((term) => term.id === termId);
-  if (!firstTerm) return null;
-  const multiplier = workbenchMultiplier(snapshot, termId);
+  const composite = termId === POLICY_SPATIAL_COMPOSITE;
+  const firstTerm = composite ? null
+    : snapshot.workbenchCandidates[0].scoreTerms.find((term) => term.id === termId);
+  if (!composite && !firstTerm) return null;
+  const multiplier = composite ? null : workbenchMultiplier(snapshot, termId);
   const points = snapshot.workbenchCandidates.map((candidate) => {
-    const term = candidate.scoreTerms.find((candidateTerm) => candidateTerm.id === termId);
-    const contribution = (term?.contribution || 0) * multiplier;
+    const termContributions = candidate.scoreTerms.map((term) => {
+      const termMultiplier = workbenchMultiplier(snapshot, term.id);
+      return { id: term.id, label: term.label, role: term.role, claimBoundary: term.claimBoundary,
+        raw: term.raw, baselineWeight: term.weight, baselineContribution: term.contribution,
+        multiplier: termMultiplier, weight: term.weight * termMultiplier,
+        contribution: term.contribution * termMultiplier };
+    });
+    const contribution = composite
+      ? termContributions.reduce((sum, term) => sum + term.contribution, 0)
+      : termContributions.find((term) => term.id === termId)?.contribution || 0;
     return { candidateKey: candidate.candidateKey, candidateDigest: candidate.candidateDigest,
       action: candidate.action, p: candidate.preview.p, rotation: candidate.preview.rotation,
-      type: candidate.preview.type, contribution };
+      type: candidate.preview.type, contribution, termContributions };
   }).sort((first, second) => first.candidateKey.localeCompare(second.candidateKey));
   const maximumAbsolute = Math.max(1e-12, ...points.map((point) => Math.abs(point.contribution)));
   points.forEach((point) => { point.normalizedContribution = point.contribution / maximumAbsolute; });
   const ranked = [...points].sort((first, second) => first.contribution - second.contribution
     || first.candidateKey.localeCompare(second.candidateKey));
   const epsilon = maximumAbsolute * 1e-9;
-  return { termId, termLabel: firstTerm.label, multiplier, points,
+  return { termId, termLabel: composite ? "Σ active score · composite" : firstTerm.label,
+    mode: composite ? "exact signed composite" : "single signed term", multiplier, points,
     minimum: ranked[0], maximum: ranked.at(-1),
     minimumContribution: ranked[0].contribution, maximumContribution: ranked.at(-1).contribution,
     maximumAbsoluteContribution: maximumAbsolute,
@@ -9411,7 +9429,10 @@ function buildPolicySpatialField(snapshot) {
     positiveCandidates: points.filter((point) => point.contribution > epsilon).length,
     visible: Boolean(snapshot.spatialFieldVisible), candidateSetDigest: snapshot.candidateDigest,
     candidateSetChanged: false, hardAdmissionChanged: false, candidateGeometryChanged: false,
-    continuousFieldInferred: false, targetUsed: snapshot.rankingTargetUsed && termId === "known-window-gain",
+    compositeScoreDecompositionExact: composite,
+    continuousFieldInferred: false, targetUsed: snapshot.rankingTargetUsed && (composite
+      ? points.some((point) => point.termContributions.some((term) => term.id === "known-window-gain"
+        && Math.abs(term.contribution) > 1e-12)) : termId === "known-window-gain"),
     executed: false };
 }
 
@@ -9420,16 +9441,13 @@ function buildPolicySpatialPreview(snapshot) {
   const point = field?.points.find((candidate) => candidate.candidateKey === snapshot.spatialPreviewCandidateKey);
   const candidate = snapshot?.workbenchCandidates?.find((entry) => entry.candidateKey === point?.candidateKey);
   if (!field || !point || !candidate) return null;
-  const scoreTerms = candidate.scoreTerms.map((term) => {
-    const multiplier = workbenchMultiplier(snapshot, term.id);
-    return { ...term, baselineWeight: term.weight, baselineContribution: term.contribution,
-      multiplier, weight: term.weight * multiplier, contribution: term.contribution * multiplier };
-  });
+  const scoreTerms = point.termContributions;
   const score = scoreTerms.reduce((sum, term) => sum + term.contribution, 0);
   return { id: "spatial", label: `${field.termLabel} spatial probe`, action: candidate.action,
     candidateKey: candidate.candidateKey, candidateDigest: candidate.candidateDigest,
     score, scoreTerms, scoreTermTotal: score, scoreDecompositionExact: true,
-    preview: candidate.preview, contribution: point.contribution, candidateSetDigest: field.candidateSetDigest,
+    preview: candidate.preview, contribution: point.contribution, spatialFieldMode: field.mode,
+    candidateSetDigest: field.candidateSetDigest,
     candidateSetChanged: false, hardAdmissionChanged: false, executed: false };
 }
 
@@ -13967,8 +13985,40 @@ function previewPolicySpatialCandidate(snapshot, candidateKey) {
   previewPolicyWinner(buildPolicySpatialPreview(snapshot), snapshot);
 }
 
+function renderPolicySpatialDecomposition(snapshot, field) {
+  policySpatialDecomposition.replaceChildren();
+  const point = field.points.find((candidate) => candidate.candidateKey === snapshot.spatialPreviewCandidateKey)
+    || field.maximum;
+  const heading = document.createElement("header");
+  const identity = document.createElement("span"); identity.textContent = point.action;
+  const totalContribution = point.termContributions.reduce((sum, term) => sum + term.contribution, 0);
+  const total = document.createElement("b");
+  total.textContent = `Σ ${totalContribution >= 0 ? "+" : ""}${totalContribution.toFixed(3)}`;
+  heading.append(identity, total); policySpatialDecomposition.append(heading);
+  const visibleTerms = point.termContributions.filter((term) => Math.abs(term.contribution) > 1e-12
+    || Math.abs(term.baselineContribution) > 1e-12);
+  const maximum = Math.max(1e-12, ...visibleTerms.map((term) => Math.abs(term.contribution)));
+  visibleTerms.sort((first, second) => Math.abs(second.contribution) - Math.abs(first.contribution)
+    || first.id.localeCompare(second.id)).forEach((term) => {
+    const row = document.createElement("button"); row.type = "button";
+    row.classList.toggle("active", field.termId === term.id);
+    row.setAttribute("aria-pressed", String(field.termId === term.id));
+    row.title = `${term.role}; ${term.claimBoundary} Click to isolate this term on the same frontier.`;
+    const label = document.createElement("span"); label.textContent = term.label;
+    const bar = document.createElement("i");
+    const fill = document.createElement("em"); fill.className = term.contribution >= 0 ? "positive" : "negative";
+    fill.style.transform = `scaleX(${Math.abs(term.contribution) / maximum})`; bar.append(fill);
+    const value = document.createElement("b");
+    value.textContent = `${term.contribution >= 0 ? "+" : ""}${term.contribution.toFixed(3)} · ×${term.multiplier}`;
+    row.append(label, bar, value);
+    row.addEventListener("click", () => selectPolicySpatialTerm(snapshot, term.id));
+    policySpatialDecomposition.append(row);
+  });
+}
+
 function renderPolicySpatialField(snapshot) {
   policySpatialTerm.replaceChildren(); policySpatialExtremes.replaceChildren();
+  policySpatialDecomposition.replaceChildren();
   const field = buildPolicySpatialField(snapshot);
   if (!field) {
     policySpatialFieldState.textContent = "awaiting a frozen frontier";
@@ -13977,6 +14027,9 @@ function renderPolicySpatialField(snapshot) {
     return;
   }
   policySpatialTerm.disabled = false; policySpatialToggle.disabled = false;
+  const compositeOption = document.createElement("option");
+  compositeOption.value = POLICY_SPATIAL_COMPOSITE; compositeOption.textContent = "Σ active score · composite";
+  compositeOption.selected = field.termId === POLICY_SPATIAL_COMPOSITE; policySpatialTerm.append(compositeOption);
   snapshot.workbenchCandidates[0].scoreTerms.forEach((term) => {
     const option = document.createElement("option"); option.value = term.id; option.textContent = term.label;
     option.selected = term.id === field.termId; policySpatialTerm.append(option);
@@ -13988,7 +14041,9 @@ function renderPolicySpatialField(snapshot) {
     snapshot.spatialFieldVisible = !snapshot.spatialFieldVisible;
     rebuildWorld(); renderPolicySpatialField(snapshot);
   };
-  policySpatialFieldState.textContent = `${field.negativeCandidates}− · ${field.neutralCandidates}≈0 · ${field.positiveCandidates}+ · ×${field.multiplier}`;
+  policySpatialFieldState.textContent = `${field.negativeCandidates}− · ${field.neutralCandidates}≈0 · ${field.positiveCandidates}+`
+    + `${field.multiplier === null ? " · exact Σ" : ` · ×${field.multiplier}`}`
+    + `${field.targetUsed ? " · reference-guided" : " · target-free"}`;
   [[field.minimum, "most suppressive"], [field.maximum, "most favorable"]].forEach(([point, label]) => {
     const button = document.createElement("button"); button.type = "button";
     button.textContent = `${label} · ${point.action} · ${point.contribution >= 0 ? "+" : ""}${point.contribution.toFixed(3)}`;
@@ -13996,6 +14051,7 @@ function renderPolicySpatialField(snapshot) {
     button.addEventListener("click", () => previewPolicySpatialCandidate(snapshot, point.candidateKey));
     policySpatialExtremes.append(button);
   });
+  renderPolicySpatialDecomposition(snapshot, field);
 }
 
 function renderPolicyWorkbenchState(snapshot, workbench = buildPolicyWorkbench(snapshot)) {
