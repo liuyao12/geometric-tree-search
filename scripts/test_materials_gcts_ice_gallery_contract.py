@@ -51,8 +51,14 @@ def test_ice_gallery_uses_molecular_and_center_free_polyhedral_views() -> None:
     assert 'eyebrow: "void-boundary cover"' in source
     assert 'molecular.water ? molecular.waterLabel || "H₂O" : "Finite molecules"' in source
     assert "button.dataset.clusterLedgerFilter" in source
+    assert "top: Math.max(0, selected.offsetTop - 8), left: 0" in source
+    assert "clusterGallery.scrollTop = 0" in source
+    assert "clusterGallery.scrollLeft = 0" in source
     assert "data-cluster-family-filter" in source
     assert ".cluster-cover-ledger" in style
+    assert "const rows = document.createDocumentFragment()" in source
+    assert "rows.append(toolbar)" in source
+    assert "grid-template-columns: minmax(0,1fr)" in style
     assert '["molecule", learnedCover.molecular.water ? `${learnedCover.molecular.waterLabel || "H₂O"} molecules` : "Molecules"]' in source
     assert '["bridge", "Bridge polyhedra"]' in source
     assert '["gap", "Gap boundaries"]' in source

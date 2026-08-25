@@ -3714,7 +3714,12 @@ function buildMolecularGalleryToolbar(types) {
       status.textContent = `Showing ${visible} / ${types.length} cover classes · ${galleryAccounting}`;
       const selected = clusterGallery.querySelector(".cluster-card.active:not([hidden])")
         || clusterGallery.querySelector(".cluster-card:not([hidden])");
-      if (selected) updateClusterGalleryInspector(Number(selected.dataset.clusterIndex));
+      if (selected) {
+        updateClusterGalleryInspector(Number(selected.dataset.clusterIndex));
+        clusterGallery.scrollTo({
+          top: Math.max(0, selected.offsetTop - 8), left: 0, behavior: "auto",
+        });
+      }
     });
     controls.append(button);
   });
@@ -3724,13 +3729,20 @@ function buildMolecularGalleryToolbar(types) {
   inspector.setAttribute("aria-live", "polite");
   const ledger = buildMolecularCoverLedger(types);
   toolbar.append(controls, status);
-  if (ledger) toolbar.append(ledger);
-  toolbar.append(inspector);
-  return toolbar;
+  // Ledger and inspector are peer grid rows, not overflowing children of a
+  // fixed toolbar track. This keeps every 3D card below—not underneath—the
+  // accounting controls at desktop and narrow widths.
+  const rows = document.createDocumentFragment();
+  rows.append(toolbar);
+  if (ledger) rows.append(ledger);
+  rows.append(inspector);
+  return rows;
 }
 
 function rebuildClusterGallery() {
   clusterGallery.replaceChildren();
+  clusterGallery.scrollTop = 0;
+  clusterGallery.scrollLeft = 0;
   const types = clusterGalleryTypes();
   clusterGallery.append(buildMolecularGalleryToolbar(types));
   const microstructure = buildMicrostructureLedger();
@@ -3925,7 +3937,10 @@ function drawClusterGallery(now) {
         context.beginPath(); context.moveTo(points[0].x, points[0].y);
         points.slice(1).forEach((point) => context.lineTo(point.x, point.y));
         context.closePath();
-        context.fillStyle = `rgba(${surface.join(",")},${cluster.gap ? .13 : .075 + (faceIndex % 3) * .018})`;
+        const faceAlpha = cluster.gap ? .17 : cluster.visualKind === "molecule"
+          ? .24 : cluster.visualKind === "bridge" ? .12 + (faceIndex % 3) * .018
+            : .075 + (faceIndex % 3) * .018;
+        context.fillStyle = `rgba(${surface.join(",")},${faceAlpha})`;
         context.fill();
       });
     topology.edges.forEach(([first, second, kind]) => {
@@ -3933,10 +3948,13 @@ function drawClusterGallery(now) {
       if (!start || !finish) return;
       context.save();
       context.beginPath(); context.moveTo(start.x, start.y); context.lineTo(finish.x, finish.y);
-      context.lineWidth = kind === "bond" ? 2.4 : kind === "hydrogen" ? 1.2 : 1.5;
+      context.lineWidth = kind === "bond" ? 2.4 : kind === "hydrogen" ? 1.2
+        : cluster.visualKind === "molecule" ? 1.9 : 1.5;
       context.strokeStyle = kind === "hydrogen" ? "rgba(147,190,255,.7)" : kind === "outline"
-        ? `rgba(${surface.join(",")},.25)` : `rgba(${surface.join(",")},.62)`;
+        ? `rgba(${surface.join(",")},${cluster.visualKind === "molecule" ? .72 : .34})`
+        : `rgba(${surface.join(",")},.62)`;
       if (kind === "hydrogen") context.setLineDash([3, 4]);
+      if (kind === "outline" && cluster.visualKind === "molecule") context.setLineDash([2, 3]);
       context.stroke(); context.restore();
     });
     projected.sort((first, second) => first.z - second.z).forEach((point) => {
@@ -4805,7 +4823,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-54",
+      buildId: "20260824-56",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
