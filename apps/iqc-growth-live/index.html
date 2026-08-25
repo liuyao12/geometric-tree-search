@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260824-24">
+  <link rel="stylesheet" href="./style.css?v=20260824-25">
   <script type="importmap">
     {
       "imports": {
@@ -440,6 +440,9 @@
             <section class="policy-comparison-card" aria-label="Counterfactual frontier ranking">
               <div><small>same frozen frontier</small><strong>Physics-policy comparison</strong><span id="policyComparisonState">advance one update</span></div>
               <div id="policyComparison" class="policy-comparison"></div>
+              <div class="policy-sensitivity-heading"><small>pathway sensitivity</small><strong id="policySensitivityState">no evaluated frontiers</strong></div>
+              <div id="policyHistory" class="policy-history" role="group" aria-label="Inspect policy disagreement on recent frozen frontiers"></div>
+              <p id="policyPreviewState">Select a policy row to preview its winner in the 3D scene.</p>
               <p>Admission geometry is identical in every row. During known-window replay, target-aware reconstruction gain is labeled; after certification it is absent.</p>
             </section>
             <button id="trainVariantButton" class="train-variant" type="button">↶ Train a different marking</button>
@@ -820,7 +823,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260824-61"></script>
+  <script type="module" src="./app.js?v=20260824-62"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

@@ -170,6 +170,9 @@ const hierarchicalGrowthButton = $("hierarchicalGrowthButton");
 const growthModeNote = $("growthModeNote");
 const policyComparison = $("policyComparison");
 const policyComparisonState = $("policyComparisonState");
+const policySensitivityState = $("policySensitivityState");
+const policyHistoryElement = $("policyHistory");
+const policyPreviewState = $("policyPreviewState");
 const pipelineButton = $("pipelineButton");
 const playButton = $("playButton");
 const playIcon = $("playIcon");
@@ -584,6 +587,10 @@ let constraintNeighborhoodEvaluations = 0;
 let constraintNeighborhoodSiteTotal = 0;
 let maximumConstraintNeighborhoodSites = 0;
 let lastPolicyComparison = null;
+let policyComparisonHistory = [];
+let selectedPolicySnapshotIndex = -1;
+let selectedPolicyPreviewId = "active";
+let policySnapshotCount = 0;
 let atomSpatialIndex = new Map();
 let trainingProgress = 0;
 let clusterDiscoveryTrace = null;
@@ -4908,7 +4915,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-61",
+      buildId: "20260824-62",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -5270,6 +5277,28 @@ async function buildExperimentReceipt() {
         targetUsed: leap.targetUsed, physicalTimeModeled: leap.physicalTimeModeled,
         dynamicsIntegrated: leap.dynamicsIntegrated, claimBoundary: leap.claimBoundary,
       })),
+      policySensitivity: {
+        role: "counterfactual soft-physics rankings over one unchanged hard-admitted candidate set; previews never execute",
+        maximumStoredFrontiers: 48,
+        candidateCoordinatesEmbedded: false,
+        snapshots: policyComparisonHistory.map((snapshot) => ({
+          index: snapshot.index,
+          frontierCandidates: snapshot.frontier,
+          hardAdmittedCandidates: snapshot.admissible,
+          candidateSetDigest: snapshot.candidateDigest,
+          candidateSetTargetUsed: snapshot.candidateSetTargetUsed,
+          rankingTargetUsed: snapshot.rankingTargetUsed,
+          rankingMode: snapshot.referenceGuided ? "known-window reference-guided replay" : "target-blind frontier",
+          distinctTopActions: snapshot.uniqueTopActions,
+          policies: snapshot.policies.map((policy) => ({
+            id: policy.id,
+            label: policy.label,
+            action: policy.action,
+            selectedCandidateDigest: policy.candidateDigest,
+            score: policy.score === null ? null : receiptRound(policy.score),
+          })),
+        })),
+      },
       finiteIceAnchorTrace: iceAnchorTrace ? {
         artifactDigest: iceAnchorTrace.artifactDigest,
         caseId: iceAnchorTrace.caseId,
@@ -6066,6 +6095,16 @@ function activeSurfaceCompletionWeight() {
   return surfacePreference === "strong" ? .36 : surfacePreference === "soft" ? .18 : 0;
 }
 
+function frozenFrontierDigest(entries) {
+  const serialized = entries.map((entry) => entry.candidate.key).sort().join("|");
+  let hash = 0x811c9dc5;
+  for (let index = 0; index < serialized.length; index++) {
+    hash ^= serialized.charCodeAt(index);
+    hash = Math.imul(hash, 0x01000193) >>> 0;
+  }
+  return hash.toString(16).padStart(8, "0");
+}
+
 function capturePolicyComparison(entries) {
   const admissible = entries.filter((entry) => entry.evaluation.accepted);
   const policies = [
@@ -6084,16 +6123,26 @@ function capturePolicyComparison(entries) {
       label: policy.label,
       action: winner ? `C${winner.entry.candidate.rule.from + 1}→C${winner.entry.candidate.rule.to + 1} · R${winner.entry.candidate.rule.id}` : "no admitted action",
       candidateKey: winner?.entry.candidate.key || null,
+      candidateDigest: winner ? frozenFrontierDigest([winner.entry]) : null,
       score: winner?.score ?? null,
+      preview: winner ? { p: winner.entry.candidate.position.clone(),
+        rotation: winner.entry.candidate.rotation.clone(), type: winner.entry.candidate.type } : null,
     };
   });
   lastPolicyComparison = {
+    index: ++policySnapshotCount,
     frontier: entries.length,
     admissible: admissible.length,
+    candidateDigest: frozenFrontierDigest(entries),
+    candidateSetTargetUsed: false,
+    rankingTargetUsed: !reconstructionCertified,
     referenceGuided: !reconstructionCertified,
     uniqueTopActions: new Set(policies.map((policy) => policy.candidateKey).filter(Boolean)).size,
     policies,
   };
+  policyComparisonHistory.push(lastPolicyComparison);
+  if (policyComparisonHistory.length > 48) policyComparisonHistory.shift();
+  selectedPolicySnapshotIndex = policyComparisonHistory.length - 1;
 }
 
 function candidateSites(candidate) {
@@ -6440,6 +6489,10 @@ function initializeOffLatticeSearch() {
   constraintNeighborhoodSiteTotal = 0;
   maximumConstraintNeighborhoodSites = 0;
   lastPolicyComparison = null;
+  policyComparisonHistory = [];
+  selectedPolicySnapshotIndex = -1;
+  selectedPolicyPreviewId = "active";
+  policySnapshotCount = 0;
   atomSpatialIndex = new Map();
   const seedIndex = overlapGrammar.replaySeedIndex;
   const seedOccurrence = overlapGrammar.occurrences[seedIndex];
@@ -7109,6 +7162,11 @@ function resetCounters() {
   constraintNeighborhoodEvaluations = 0;
   constraintNeighborhoodSiteTotal = 0;
   maximumConstraintNeighborhoodSites = 0;
+  lastPolicyComparison = null;
+  policyComparisonHistory = [];
+  selectedPolicySnapshotIndex = -1;
+  selectedPolicyPreviewId = "active";
+  policySnapshotCount = 0;
   stackHistory = [];
   markingCache = new Map();
   actionCache = new Map();
@@ -8164,10 +8222,34 @@ function renderConstraintLedger(state, mode = "configured") {
   renderConstraintDetail(terms.find((term) => term.name === selectedConstraintName), state, mode);
 }
 
+function previewPolicyWinner(policy, snapshot) {
+  selectedPolicyPreviewId = policy.id;
+  const frontierReadout = { value: frontierMetric.textContent, detail: frontierDelta.textContent };
+  if (policy.preview) {
+    currentCandidates = [{ p: policy.preview.p.clone(), rotation: policy.preview.rotation.clone(),
+      type: policy.preview.type, accepted: true, preview: true }];
+    rebuildWorld();
+    frontierMetric.textContent = frontierReadout.value;
+    frontierDelta.textContent = frontierReadout.detail;
+    policyPreviewState.textContent = `${policy.label}: ${policy.action} · frontier ${snapshot.candidateDigest} · candidate set target-free`
+      + `${snapshot.rankingTargetUsed ? " · replay score reference-guided" : " · ranking target-free"}`;
+  } else {
+    currentCandidates = [];
+    rebuildWorld();
+    frontierMetric.textContent = frontierReadout.value;
+    frontierDelta.textContent = frontierReadout.detail;
+    policyPreviewState.textContent = `${policy.label}: no hard-admitted action on frontier ${snapshot.candidateDigest}`;
+  }
+  renderPolicyComparison();
+}
+
 function renderPolicyComparison() {
   policyComparison.replaceChildren();
+  policyHistoryElement.replaceChildren();
   if (pipelineStage !== 4) {
     policyComparisonState.textContent = "available during growth";
+    policySensitivityState.textContent = "available during growth";
+    policyPreviewState.textContent = "Select a policy row during material growth.";
     return;
   }
   if (iceAnchorTrace) {
@@ -8177,6 +8259,8 @@ function renderPolicyComparison() {
     const action = document.createElement("strong"); action.textContent = "unanimous proper-SE(3) ports";
     const score = document.createElement("em"); score.textContent = "generic ranks unused";
     row.append(label, action, score); policyComparison.append(row);
+    policySensitivityState.textContent = "generic policy comparison not applicable";
+    policyPreviewState.textContent = `${iceAnchorTrace.selectionRuleLabel} is the only certified molecular-anchor policy in this trace.`;
     return;
   }
   if (!lastPolicyComparison) {
@@ -8186,18 +8270,47 @@ function renderPolicyComparison() {
     const action = document.createElement("strong"); action.textContent = `${frontierCandidates.length} frozen candidates await evaluation`;
     const score = document.createElement("em"); score.textContent = "same geometry";
     row.append(label, action, score); policyComparison.append(row);
+    policySensitivityState.textContent = "no evaluated frontiers";
+    policyPreviewState.textContent = "Select a policy row after the first frontier is frozen.";
     return;
   }
-  const snapshot = lastPolicyComparison;
+  const snapshot = policyComparisonHistory[selectedPolicySnapshotIndex] || lastPolicyComparison;
   policyComparisonState.textContent = `${snapshot.frontier} candidates · ${snapshot.admissible} admitted · ${snapshot.uniqueTopActions} winner${snapshot.uniqueTopActions === 1 ? "" : "s"}`
     + `${snapshot.referenceGuided ? " · target-aware replay" : " · target-blind frontier"}`;
   snapshot.policies.forEach((policy) => {
-    const row = document.createElement("article"); row.classList.toggle("active", policy.id === "active");
+    const row = document.createElement("button"); row.type = "button";
+    row.classList.toggle("active", policy.id === selectedPolicyPreviewId);
+    row.setAttribute("aria-pressed", String(policy.id === selectedPolicyPreviewId));
+    row.title = `Preview the ${policy.label} winner without executing it`;
     const label = document.createElement("small"); label.textContent = policy.label;
     const action = document.createElement("strong"); action.textContent = policy.action;
     const score = document.createElement("em"); score.textContent = policy.score === null ? "—" : policy.score.toFixed(3);
     row.append(label, action, score); policyComparison.append(row);
+    row.addEventListener("click", () => previewPolicyWinner(policy, snapshot));
   });
+  const sensitive = policyComparisonHistory.filter((entry) => entry.uniqueTopActions > 1).length;
+  const meanWinners = policyComparisonHistory.reduce((sum, entry) => sum + entry.uniqueTopActions, 0)
+    / Math.max(1, policyComparisonHistory.length);
+  policySensitivityState.textContent = `${sensitive}/${policyComparisonHistory.length} frontiers disagree · mean ${meanWinners.toFixed(2)} winners`;
+  policyComparisonHistory.slice(-12).forEach((entry, visibleIndex) => {
+    const absoluteIndex = Math.max(0, policyComparisonHistory.length - 12) + visibleIndex;
+    const button = document.createElement("button"); button.type = "button";
+    button.classList.toggle("sensitive", entry.uniqueTopActions > 1);
+    button.classList.toggle("active", absoluteIndex === selectedPolicySnapshotIndex);
+    button.setAttribute("aria-pressed", String(absoluteIndex === selectedPolicySnapshotIndex));
+    button.textContent = `${entry.index} · ${entry.uniqueTopActions}`;
+    button.title = `Frontier ${entry.index}: ${entry.uniqueTopActions} distinct policy winners · candidate digest ${entry.candidateDigest}`;
+    button.addEventListener("click", () => {
+      selectedPolicySnapshotIndex = absoluteIndex;
+      selectedPolicyPreviewId = "active";
+      const activePolicy = entry.policies.find((policy) => policy.id === "active") || entry.policies.at(-1);
+      previewPolicyWinner(activePolicy, entry);
+    });
+    policyHistoryElement.append(button);
+  });
+  const selectedPolicy = snapshot.policies.find((policy) => policy.id === selectedPolicyPreviewId) || snapshot.policies.at(-1);
+  policyPreviewState.textContent = `${selectedPolicy.label}: ${selectedPolicy.action} · frontier ${snapshot.candidateDigest} · candidate set target-free`
+    + `${snapshot.rankingTargetUsed ? " · replay score reference-guided" : " · ranking target-free"}`;
 }
 
 function liveGrowthCertificate() {

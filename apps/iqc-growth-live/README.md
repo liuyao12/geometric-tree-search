@@ -511,6 +511,15 @@ proxies actually change the next action. During reconstruction the table says
 `target-blind frontier`. The specialized ice executor instead states that its
 orientation-domain rule is used and the generic rankers are not.
 
+Each policy row is also an interactive counterfactual: clicking it previews the
+winning whole-cluster pose in the 3D scene without executing the action or
+changing the atoms, frontier, or search state. A bounded history strip records
+how often recent frozen frontiers produce more than one winner and lets the user
+revisit any disagreement. The experiment receipt serializes only candidate-set
+and selected-candidate digests, policy labels, actions, and scores—never preview
+coordinates. Candidate enumeration is always target-free; the receipt separately
+records whether the ranking itself still used known-window reconstruction evidence.
+
 The live **growth certificate** keeps four layers separate while the animation
 runs: exact replay of the supplied window, outside-window structural output,
 causal self-feed / hierarchy depth, and the strongest claim actually supported.
