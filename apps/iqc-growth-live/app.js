@@ -293,6 +293,9 @@ const policyParetoPlot = $("policyParetoPlot");
 const policyParetoDetail = $("policyParetoDetail");
 const policyPoseAuditLimit = $("policyPoseAuditLimit");
 const policyPoseAuditHint = $("policyPoseAuditHint");
+const policyOmissionState = $("policyOmissionState");
+const policyOmissionList = $("policyOmissionList");
+const policyOmissionDetail = $("policyOmissionDetail");
 const policySpatialFieldState = $("policySpatialFieldState");
 const policySpatialTerm = $("policySpatialTerm");
 const policySpatialToggle = $("policySpatialToggle");
@@ -6145,7 +6148,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-121",
+      buildId: "20260825-122",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7162,6 +7165,52 @@ async function buildExperimentReceipt() {
                   failureModes: point.boundedPoseAudit.perturbationFailureModes,
                   targetUsed: point.boundedPoseAudit.perturbationAuditTargetUsed,
                 } : null })),
+            } : null;
+          })(),
+          leaveOnePhysicsChannelOut: (() => {
+            const audit = buildPolicyOmissionAudit(snapshot);
+            return audit ? {
+              role: "local attribution audit by exact leave-one-soft-geometric-term-out re-ranking of one frozen frontier",
+              omissionRule: audit.omissionRule,
+              baselineCandidateDigest: audit.baselineCandidateDigest,
+              baselineAction: audit.baselineAction,
+              baselineScore: receiptRound(audit.baselineScore),
+              baselineRunnerUpMargin: receiptRound(audit.baselineMargin),
+              activeSoftTerms: audit.activeTerms,
+              changedWinners: audit.changedWinners,
+              inactiveTermsReported: audit.inactiveTerms,
+              candidateSetDigest: audit.candidateSetDigest,
+              candidateSetChanged: audit.candidateSetChanged,
+              hardAdmissionChanged: audit.hardAdmissionChanged,
+              candidateGeometryChanged: audit.candidateGeometryChanged,
+              rankingTargetUsed: audit.targetUsed,
+              executed: audit.executed,
+              coordinatesEmbedded: false,
+              causalEffectIdentified: false,
+              energyDecompositionInferred: false,
+              parameterFittingPerformed: false,
+              cases: audit.cases.map((entry) => ({
+                omittedTerm: { id: entry.termId, label: entry.termLabel,
+                  role: entry.termRole, claimBoundary: entry.claimBoundary },
+                active: entry.active,
+                omittedWeight: receiptRound(entry.omittedWeight),
+                baselineContribution: receiptRound(entry.baselineContribution),
+                winnerChanged: entry.winnerChanged,
+                winnerCandidateDigest: entry.winnerCandidateDigest,
+                winnerAction: entry.winnerAction,
+                winnerScore: receiptRound(entry.winnerScore),
+                runnerUpMargin: receiptRound(entry.runnerUpMargin),
+                translationFromBaselineAngstrom: receiptRound(entry.translationAngstrom),
+                sameChildPrototype: entry.sameChildPrototype,
+                properSymmetryComparable: entry.properSymmetryComparable,
+                properSymmetryGaugePairsMinimized: entry.properGaugePairs,
+                properSymmetryReducedMisorientationDegrees: entry.rotationDegrees === null ? null : receiptRound(entry.rotationDegrees),
+                rotationComparisonReason: entry.rotationReason,
+                sharedSpeciesLabeledEmittedSites: entry.sharedFreshSites,
+                baselineEmittedSites: entry.baselineFreshSites,
+                omittedWinnerEmittedSites: entry.winnerFreshSites,
+                emittedSiteJaccard: receiptRound(entry.emittedSiteJaccard),
+              })),
             } : null;
           })(),
           spatialDrivingField: (() => {
@@ -9519,6 +9568,122 @@ function buildPolicyParetoMap(snapshot) {
     executed: false, coordinatesEmbedded: false, selectionRule: snapshot.paretoAxes.selectionRule };
 }
 
+const POLICY_OMISSION_EXCLUDED_TERMS = new Set(["grammar-priority", "known-window-gain", "exploration"]);
+
+function coloredSiteIntersectionCount(firstSites = [], secondSites = []) {
+  const used = new Set();
+  let matches = 0;
+  firstSites.forEach((first) => {
+    let bestIndex = -1; let bestDistance = Infinity;
+    secondSites.forEach((second, index) => {
+      if (used.has(index) || first.species !== second.species) return;
+      const distance = first.p.distanceTo(second.p);
+      if (distance <= MERGE_TOLERANCE && distance < bestDistance) {
+        bestIndex = index; bestDistance = distance;
+      }
+    });
+    if (bestIndex >= 0) { used.add(bestIndex); matches++; }
+  });
+  return matches;
+}
+
+function candidatePoseDifference(first, second) {
+  const sceneDistance = first.preview.p.distanceTo(second.preview.p);
+  if (first.candidateKey === second.candidateKey) return {
+    translationAngstrom: 0, sameChildPrototype: true, properSymmetryComparable: true,
+    properGaugePairs: 1, rotationReason: "identical exact candidate", rotationDegrees: 0,
+  };
+  const sameChildPrototype = first.preview.type === second.preview.type;
+  const misorientation = sameChildPrototype ? symmetryReducedMisorientation({
+    species: first.fullSites.map((site) => site.species),
+    positions: first.fullSites.map((site) => site.p.toArray()),
+  }, {
+    species: second.fullSites.map((site) => site.species),
+    positions: second.fullSites.map((site) => site.p.toArray()),
+  }, { metricToleranceFraction: effectiveClusterMetricTolerance() }) : {
+    comparable: false, angleDegrees: null, properGaugePairs: 0, reason: "different child prototype types",
+  };
+  return { translationAngstrom: sceneDistance * referenceSpacingA / Math.max(referenceSpacing, 1e-12),
+    sameChildPrototype, properSymmetryComparable: misorientation.comparable,
+    properGaugePairs: misorientation.properGaugePairs, rotationReason: misorientation.reason || null,
+    rotationDegrees: misorientation.angleDegrees };
+}
+
+function buildPolicyOmissionAudit(snapshot) {
+  if (!snapshot?.workbenchCandidates?.length) return null;
+  const rankedBaseline = snapshot.workbenchCandidates.map((candidate) => {
+    const scoreTerms = workbenchCandidateTerms(snapshot, candidate);
+    return { candidate, scoreTerms, score: scoreTerms.reduce((sum, term) => sum + term.contribution, 0) };
+  }).sort((first, second) => second.score - first.score
+    || first.candidate.candidateKey.localeCompare(second.candidate.candidateKey));
+  const baseline = rankedBaseline[0];
+  const baselineMargin = baseline.score - (rankedBaseline[1]?.score ?? baseline.score);
+  const cases = baseline.scoreTerms.filter((term) => !POLICY_OMISSION_EXCLUDED_TERMS.has(term.id)).map((term) => {
+    const active = Math.abs(term.weight) > 1e-12;
+    const ranked = rankedBaseline.map((entry) => {
+      const omittedTerms = entry.scoreTerms.map((candidateTerm) => candidateTerm.id === term.id
+        ? { ...candidateTerm, multiplier: 0, weight: 0, contribution: 0 } : { ...candidateTerm });
+      return { candidate: entry.candidate, scoreTerms: omittedTerms,
+        score: omittedTerms.reduce((sum, candidateTerm) => sum + candidateTerm.contribution, 0) };
+    }).sort((first, second) => second.score - first.score
+      || first.candidate.candidateKey.localeCompare(second.candidate.candidateKey));
+    const winner = ranked[0];
+    const poseDifference = candidatePoseDifference(baseline.candidate, winner.candidate);
+    const sharedFreshSites = coloredSiteIntersectionCount(baseline.candidate.freshSites, winner.candidate.freshSites);
+    const freshSiteUnion = baseline.candidate.freshSites.length + winner.candidate.freshSites.length - sharedFreshSites;
+    return { termId: term.id, termLabel: term.label, termRole: term.role, claimBoundary: term.claimBoundary,
+      active, omittedWeight: term.weight, baselineContribution: term.contribution,
+      baselineCandidateKey: baseline.candidate.candidateKey,
+      baselineCandidateDigest: baseline.candidate.candidateDigest,
+      baselineAction: baseline.candidate.action,
+      winnerChanged: winner.candidate.candidateKey !== baseline.candidate.candidateKey,
+      winnerCandidateKey: winner.candidate.candidateKey,
+      winnerCandidateDigest: winner.candidate.candidateDigest,
+      winnerAction: winner.candidate.action,
+      winnerScore: winner.score, runnerUpMargin: winner.score - (ranked[1]?.score ?? winner.score),
+      scoreTerms: winner.scoreTerms, preview: winner.candidate.preview,
+      translationAngstrom: poseDifference.translationAngstrom,
+      sameChildPrototype: poseDifference.sameChildPrototype,
+      properSymmetryComparable: poseDifference.properSymmetryComparable,
+      properGaugePairs: poseDifference.properGaugePairs,
+      rotationReason: poseDifference.rotationReason,
+      rotationDegrees: poseDifference.rotationDegrees,
+      baselineFreshSites: baseline.candidate.freshSites.length,
+      winnerFreshSites: winner.candidate.freshSites.length,
+      sharedFreshSites, emittedSiteJaccard: freshSiteUnion ? sharedFreshSites / freshSiteUnion : 1 };
+  }).sort((first, second) => Number(second.winnerChanged) - Number(first.winnerChanged)
+    || Number(second.active) - Number(first.active)
+    || second.translationAngstrom - first.translationAngstrom
+    || Math.abs(second.baselineContribution) - Math.abs(first.baselineContribution)
+    || first.termId.localeCompare(second.termId));
+  const selectedTermId = cases.some((entry) => entry.termId === snapshot.omissionPreviewTermId)
+    ? snapshot.omissionPreviewTermId : cases.find((entry) => entry.winnerChanged)?.termId
+      || cases.find((entry) => entry.active)?.termId || cases[0]?.termId || null;
+  snapshot.omissionPreviewTermId = selectedTermId;
+  return { baselineCandidateKey: baseline.candidate.candidateKey,
+    baselineCandidateDigest: baseline.candidate.candidateDigest, baselineAction: baseline.candidate.action,
+    baselineScore: baseline.score, baselineMargin, cases, selectedTermId,
+    activeTerms: cases.filter((entry) => entry.active).length,
+    changedWinners: cases.filter((entry) => entry.active && entry.winnerChanged).length,
+    inactiveTerms: cases.filter((entry) => !entry.active).length,
+    candidateSetDigest: snapshot.candidateDigest, candidateSetChanged: false,
+    hardAdmissionChanged: false, candidateGeometryChanged: false,
+    targetUsed: snapshot.rankingTargetUsed, executed: false,
+    omissionRule: "set exactly one soft geometric score-term multiplier to zero; retain every other current workbench multiplier; stable candidate-key tie break" };
+}
+
+function buildPolicyOmissionPreview(snapshot) {
+  const audit = buildPolicyOmissionAudit(snapshot);
+  const entry = audit?.cases.find((candidate) => candidate.termId === audit.selectedTermId);
+  if (!audit || !entry) return null;
+  return { id: "omission", label: `without ${entry.termLabel}`, action: entry.winnerAction,
+    candidateKey: entry.winnerCandidateKey, candidateDigest: entry.winnerCandidateDigest,
+    score: entry.winnerScore, scoreTerms: entry.scoreTerms, scoreTermTotal: entry.winnerScore,
+    scoreDecompositionExact: true, preview: entry.preview,
+    candidateSetDigest: audit.candidateSetDigest, candidateSetChanged: false,
+    hardAdmissionChanged: false, executed: false };
+}
+
 function buildPolicySpatialField(snapshot) {
   if (!snapshot?.workbenchCandidates?.length) return null;
   snapshot.phaseMapAxes ||= defaultPolicyPhaseAxes(snapshot);
@@ -9712,6 +9877,8 @@ function capturePolicyComparison(entries) {
       baselineScore: entry.selectionScore,
       scoreTerms,
       boundedPoseAudit: frontierPoseAudits.get(entry.candidate.key) || null,
+      freshSites: entry.evaluation.fresh.map((site) => ({ species: site.species, p: site.p.clone() })),
+      fullSites: entry.evaluation.sites.map((site) => ({ species: site.species, p: site.p.clone() })),
       preview: { p: entry.candidate.position.clone(), rotation: entry.candidate.rotation.clone(), type: entry.candidate.type },
     };
   });
@@ -14246,6 +14413,56 @@ function renderPolicyParetoMap(snapshot) {
   }
 }
 
+function previewPolicyOmission(snapshot, termId) {
+  snapshot.omissionPreviewTermId = termId;
+  selectedPolicyPreviewId = "omission";
+  previewPolicyWinner(buildPolicyOmissionPreview(snapshot), snapshot);
+}
+
+function renderPolicyOmissionAudit(snapshot) {
+  policyOmissionList.replaceChildren(); policyOmissionDetail.replaceChildren();
+  const audit = buildPolicyOmissionAudit(snapshot);
+  if (!audit) {
+    policyOmissionState.textContent = "awaiting a frozen frontier";
+    return;
+  }
+  policyOmissionState.textContent = `${audit.changedWinners}/${audit.activeTerms} active channels switch the pose`
+    + `${audit.targetUsed ? " · reference-guided baseline" : " · target-free"}`;
+  const maximumTranslation = Math.max(1e-12, ...audit.cases.map((entry) => entry.translationAngstrom));
+  audit.cases.forEach((entry) => {
+    const button = document.createElement("button"); button.type = "button";
+    button.className = entry.active ? entry.winnerChanged ? "changed" : "same" : "inactive";
+    button.classList.toggle("active", entry.termId === audit.selectedTermId);
+    button.setAttribute("aria-pressed", String(entry.termId === audit.selectedTermId));
+    button.setAttribute("aria-label", `${entry.termLabel}; ${entry.active ? entry.winnerChanged ? "winner changes" : "winner unchanged" : "inactive zero-weight term"}; emitted-site overlap ${(100 * entry.emittedSiteJaccard).toFixed(0)} percent`);
+    button.title = `${entry.termRole}. Omit weight ${entry.omittedWeight.toFixed(3)}; ${entry.claimBoundary}`;
+    const label = document.createElement("span"); label.textContent = entry.termLabel;
+    const track = document.createElement("i");
+    const displacement = document.createElement("em");
+    displacement.style.transform = `scaleX(${entry.translationAngstrom / maximumTranslation})`;
+    track.append(displacement);
+    const result = document.createElement("b");
+    result.textContent = !entry.active ? "inactive" : entry.winnerChanged
+      ? `${entry.translationAngstrom.toFixed(2)} Å · ${(100 * entry.emittedSiteJaccard).toFixed(0)}% sites`
+      : "same exact pose";
+    button.append(label, track, result);
+    button.addEventListener("click", () => previewPolicyOmission(snapshot, entry.termId));
+    policyOmissionList.append(button);
+  });
+  const selected = audit.cases.find((entry) => entry.termId === audit.selectedTermId);
+  if (selected) {
+    const heading = document.createElement("strong"); heading.textContent = `without ${selected.termLabel}`;
+    const status = document.createElement("b");
+    status.textContent = !selected.active ? "ZERO-WEIGHT CONTROL" : selected.winnerChanged ? "WINNER CHANGED" : "WINNER UNCHANGED";
+    const action = document.createElement("span"); action.textContent = `${audit.baselineAction} → ${selected.winnerAction}`;
+    const geometry = document.createElement("span");
+    geometry.textContent = `${selected.translationAngstrom.toFixed(3)} Å translation · ${selected.properSymmetryComparable ? `${selected.rotationDegrees.toFixed(2)}° symmetry-reduced proper misorientation · ${selected.properGaugePairs} gauge pairs` : `${selected.rotationReason || "colored metric classes differ"} · rotation not compared`} · ${selected.sharedFreshSites}/${selected.baselineFreshSites + selected.winnerFreshSites - selected.sharedFreshSites} species-labelled emitted-site union shared`;
+    const margin = document.createElement("span");
+    margin.textContent = `omitted contribution ${selected.baselineContribution >= 0 ? "+" : ""}${selected.baselineContribution.toFixed(3)} · new runner-up margin ${selected.runnerUpMargin.toFixed(3)}`;
+    policyOmissionDetail.append(heading, status, action, geometry, margin);
+  }
+}
+
 function selectPolicySpatialTerm(snapshot, termId) {
   snapshot.spatialTermId = termId;
   snapshot.spatialPreviewCandidateKey = null;
@@ -14383,6 +14600,7 @@ function renderPolicyComparison() {
     renderPolicyScoreLedger(null);
     renderPolicyPhaseMap(null);
     renderPolicyParetoMap(null);
+    renderPolicyOmissionAudit(null);
     renderPolicySpatialField(null);
     return;
   }
@@ -14398,6 +14616,7 @@ function renderPolicyComparison() {
     renderPolicyScoreLedger(null);
     renderPolicyPhaseMap(null);
     renderPolicyParetoMap(null);
+    renderPolicyOmissionAudit(null);
     renderPolicySpatialField(null);
     return;
   }
@@ -14413,12 +14632,14 @@ function renderPolicyComparison() {
     renderPolicyScoreLedger(null);
     renderPolicyPhaseMap(null);
     renderPolicyParetoMap(null);
+    renderPolicyOmissionAudit(null);
     renderPolicySpatialField(null);
     return;
   }
   const snapshot = policyComparisonHistory[selectedPolicySnapshotIndex] || lastPolicyComparison;
   const workbench = buildPolicyWorkbench(snapshot);
   const paretoPreview = snapshot.paretoPreviewCandidateKey ? buildPolicyParetoPreview(snapshot) : null;
+  const omissionPreview = selectedPolicyPreviewId === "omission" ? buildPolicyOmissionPreview(snapshot) : null;
   const spatialPreview = buildPolicySpatialPreview(snapshot);
   policyComparisonState.textContent = `${snapshot.frontier} candidates · ${snapshot.admissible} admitted · ${snapshot.uniqueTopActions} winner${snapshot.uniqueTopActions === 1 ? "" : "s"}`
     + `${snapshot.referenceGuided ? " · target-aware replay" : " · target-blind frontier"}`;
@@ -14466,14 +14687,27 @@ function renderPolicyComparison() {
     row.append(label, action, score); policyComparison.append(row);
     row.addEventListener("click", () => previewPolicyWinner(paretoPreview, snapshot));
   }
+  if (omissionPreview) {
+    const row = document.createElement("button"); row.type = "button";
+    row.classList.toggle("active", selectedPolicyPreviewId === "omission");
+    row.setAttribute("aria-pressed", String(selectedPolicyPreviewId === "omission"));
+    row.title = "Preview the leave-one-geometric-hypothesis-out winner; this never executes";
+    const label = document.createElement("small"); label.textContent = omissionPreview.label;
+    const action = document.createElement("strong"); action.textContent = omissionPreview.action;
+    const score = document.createElement("em"); score.textContent = omissionPreview.score.toFixed(3);
+    row.append(label, action, score); policyComparison.append(row);
+    row.addEventListener("click", () => previewPolicyWinner(omissionPreview, snapshot));
+  }
   const selectedScorePolicy = selectedPolicyPreviewId === "workbench" ? workbench
     : selectedPolicyPreviewId === "spatial" && spatialPreview ? spatialPreview
     : selectedPolicyPreviewId === "pareto" && paretoPreview ? paretoPreview
+    : selectedPolicyPreviewId === "omission" && omissionPreview ? omissionPreview
     : snapshot.policies.find((policy) => policy.id === selectedPolicyPreviewId)
       || snapshot.policies.find((policy) => policy.id === "active") || snapshot.policies.at(-1);
   renderPolicyScoreLedger(selectedScorePolicy, snapshot);
   renderPolicyPhaseMap(snapshot);
   renderPolicyParetoMap(snapshot);
+  renderPolicyOmissionAudit(snapshot);
   renderPolicySpatialField(snapshot);
   const sensitive = policyComparisonHistory.filter((entry) => entry.uniqueTopActions > 1).length;
   const meanWinners = policyComparisonHistory.reduce((sum, entry) => sum + entry.uniqueTopActions, 0)
@@ -14498,10 +14732,11 @@ function renderPolicyComparison() {
   const selectedPolicy = selectedPolicyPreviewId === "workbench" ? workbench
     : selectedPolicyPreviewId === "spatial" && spatialPreview ? spatialPreview
     : selectedPolicyPreviewId === "pareto" && paretoPreview ? paretoPreview
+    : selectedPolicyPreviewId === "omission" && omissionPreview ? omissionPreview
     : snapshot.policies.find((policy) => policy.id === selectedPolicyPreviewId) || snapshot.policies.at(-1);
   policyPreviewState.textContent = `${selectedPolicy.label}: ${selectedPolicy.action} · frontier ${snapshot.candidateDigest} · candidate set target-free`
     + `${snapshot.rankingTargetUsed ? " · replay score reference-guided" : " · ranking target-free"}`
-    + `${["workbench", "spatial", "pareto"].includes(selectedPolicy.id) ? " · counterfactual preview only · not executed" : ""}`;
+    + `${["workbench", "spatial", "pareto", "omission"].includes(selectedPolicy.id) ? " · counterfactual preview only · not executed" : ""}`;
 }
 
 function liveGrowthCertificate() {

@@ -4398,6 +4398,37 @@ agreement is a bounded sensitivity diagnostic, not a posterior probability,
 confidence interval, temperature ensemble, survival fraction, or calibrated
 robustness certificate.
 
+### Leave-one-physics-channel-out attribution
+
+The frozen-frontier workbench now performs a complete **leave-one-soft-channel-
+out audit** before any action is executed. Starting from the current workbench
+weights, it sets exactly one geometric ranking term to zero, retains every
+other multiplier, and re-ranks the identical hard-admitted candidate set with
+the same stable candidate-key tie break. Grammar priority, reference-guided
+known-window replay, and seeded exploration remain explicit background terms;
+the omission rows cover the physical surrogates themselves.
+
+Each row reports whether the exact winning pose changes. When it does, the
+portal measures the translation in ångströms, proper-rotation difference in
+degrees after minimizing over every proper colored symmetry gauge when both
+poses place comparable child prototypes, and species-labelled emitted-site
+Jaccard overlap relative to the baseline winner. Unlike child prototypes or
+noncongruent colored metric classes are reported explicitly instead of assigning
+a meaningless frame-to-frame rotation. Zero-weight terms remain visible as inactive controls, making
+it clear which hypotheses were merely available and which actually entered the
+score. Clicking a row previews the omitted-channel winner, synchronizes its
+complete signed ledger, and never commits it to growth.
+
+This is a one-frontier model-sensitivity intervention, not causal
+identification. Removing one term does not estimate a physical treatment
+effect, Shapley value, interaction energy, free-energy component, uncertainty
+distribution, or calibrated importance. Correlated geometric channels may
+substitute for one another, and reference-guided reconstruction is labelled
+separately from target-blind continuation. The receipt stores every omitted
+term, changed winner, score and margin, pose displacement, emitted-site overlap,
+candidate digest, target-use status, and invariants that geometry, hard
+admission, candidate membership, and execution were unchanged.
+
 ### Candidate-resolved geometric driving field
 
 The policy workbench also projects either any selected ledger term or the exact
