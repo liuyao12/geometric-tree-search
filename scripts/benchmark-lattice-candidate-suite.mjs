@@ -137,12 +137,12 @@ const censusCases = (requestedIds.size ? [...requestedIds] : defaultIds)
     researchQueue: preShellIds.has(candidate.id),
     vertices: candidate.vertices,
     lanes: preShellIds.has(candidate.id)
-      ? ["translational", "isohedral", "free_range", "restart_dfs", "ilds", "uct", "beam", "gcts", "free_range_no_brainer", "free_range_unbanded"]
+      ? ["translational", "isohedral", "free_range", "gcts", "rl", "gcts_rl", "restart_dfs", "ilds", "uct", "beam", "free_range_no_brainer", "free_range_unbanded"]
       : candidate.screening.certificate === "translational"
       ? ["translational", "free_range"]
       : candidate.screening.certificate === "isohedral_periodic_quotient"
         ? ["isohedral", "free_range"]
-        : ["translational", "isohedral", "free_range", "restart_dfs", "ilds", "uct", "beam", "gcts", "free_range_no_brainer", "free_range_unbanded"]
+        : ["translational", "isohedral", "free_range", "gcts", "rl", "gcts_rl", "restart_dfs", "ilds", "uct", "beam", "free_range_no_brainer", "free_range_unbanded"]
   }));
 const specialCases = includeSpecial ? [
   { id: "corner_tetra", family: "control", expected: "certified_non_tiler", lanes: ["free_range"] },
@@ -167,7 +167,7 @@ const customSystem = benchmarkCase => benchmarkCase.family === "census" ? {
 
 const configFor = (benchmarkCase, lane, seed, proposalProgram = null, searchOptions = {}) => {
   const genericLane = lane.startsWith("free_range")
-    || ["gcts", "restart_dfs", "ilds", "uct", "beam"].includes(lane);
+    || ["gcts", "rl", "gcts_rl", "restart_dfs", "ilds", "uct", "beam"].includes(lane);
   return ({
   mode_key: benchmarkCase.family === "control" ? benchmarkCase.id : "cube",
   custom_system: customSystem(benchmarkCase),
@@ -179,6 +179,8 @@ const configFor = (benchmarkCase, lane, seed, proposalProgram = null, searchOpti
     ? "isohedral"
     : lane === "gcts"
       ? "balanced"
+    : lane === "rl" || lane === "gcts_rl"
+      ? "rl"
     : lane === "uct"
       ? "uct"
     : lane === "free_range_no_brainer"
@@ -188,7 +190,7 @@ const configFor = (benchmarkCase, lane, seed, proposalProgram = null, searchOpti
         : "balanced",
   proposal_program: null,
   complete_lattice_point_branching: genericLane && lane !== "free_range_unbanded",
-  gcts_failure_marking: lane === "gcts",
+  gcts_failure_marking: lane === "gcts" || lane === "gcts_rl",
   gcts_marking_reach_multiplier: gctsMarkingReachMultiplier,
   gcts_marking_max_clauses: gctsMarkingMaxClauses,
   gcts_marking_max_context_tiles: gctsMarkingMaxContextTiles,
@@ -203,6 +205,7 @@ const configFor = (benchmarkCase, lane, seed, proposalProgram = null, searchOpti
   face_order: faceOrder,
   exhaustive: true,
   agent_exhaustive: true,
+  agent_policy: lane === "rl" || lane === "gcts_rl" ? "cold_geometry" : null,
   forced_move_layer_lag_cap: lane === "free_range_unbanded" ? 0 : 2,
   generic_connected_patch_enumeration: connectedPatchEnumeration && lane === "free_range_unbanded",
   generic_failure_memo: lane === "uct" ? false : failureMemo,
@@ -226,7 +229,7 @@ const configFor = (benchmarkCase, lane, seed, proposalProgram = null, searchOpti
   generic_periodic_certificate_checkpoint_total_time_limit_ms: genericPeriodicCheckpointTotalTimeMs,
   generic_periodic_certificate_time_limit_ms: genericPeriodicCertificateTimeMs,
   generic_periodic_certificate_method: "internal_first",
-  known_periodic_template: benchmarkCase.knownPeriodicTemplate,
+  known_periodic_template: null,
   include_mirrors: false,
   template_preflight: !genericLane,
   periodic_patch_max_tiles: periodicMax,
@@ -319,7 +322,7 @@ async function runLane(
     family: benchmarkCase.family,
     expected: benchmarkCase.expected,
     lane,
-    gctsRound: lane === "gcts" ? round : null,
+    gctsRound: lane === "gcts" || lane === "gcts_rl" ? round : null,
     reusedLearnedPatch: false,
     learnedProgram,
     seed,
@@ -360,6 +363,8 @@ async function runLane(
     agentLearnedTags: stats.agent_learned_tags ?? 0,
     agentSiblingReorders: stats.agent_sibling_reorders ?? 0,
     agentPolicy: stats.agent_policy ?? null,
+    agentStartedEmpty: !!stats.agent_started_empty,
+    agentFeatureSchema: stats.agent_feature_schema ?? null,
     agentProbeMaxLiveTiles: stats.agent_probe_max_live_tiles ?? null,
     proposalPatchTilesReplayed: stats.proposal_patch_tiles_replayed ?? 0,
     proposalPatchConflicts: stats.proposal_patch_conflicts ?? 0,
@@ -668,11 +673,11 @@ const rows = [];
 for (const benchmarkCase of cases) {
   for (const lane of benchmarkCase.lanes) {
     const laneSeeds = benchmarkCase.researchQueue
-      && (lane.startsWith("free_range") || ["gcts", "restart_dfs", "ilds", "uct", "beam"].includes(lane))
+      && (lane.startsWith("free_range") || ["gcts", "rl", "gcts_rl", "restart_dfs", "ilds", "uct", "beam"].includes(lane))
       ? seeds
       : [seeds[0]];
     for (const seed of laneSeeds) {
-      const rounds = lane === "gcts" ? gctsRounds : 1;
+      const rounds = lane === "gcts" || lane === "gcts_rl" ? gctsRounds : 1;
       for (let round = 0; round < rounds; round++) {
         const row = ["restart_dfs", "ilds", "beam"].includes(lane)
           ? await runSearchBaseline(benchmarkCase, lane, seed)
@@ -691,7 +696,7 @@ const median = values => {
   const middle = Math.floor(sorted.length / 2);
   return sorted.length % 2 ? sorted[middle] : (sorted[middle - 1] + sorted[middle]) / 2;
 };
-const SEARCH_ALGORITHM_LANES = ["free_range", "restart_dfs", "ilds", "uct", "beam", "gcts"];
+const SEARCH_ALGORITHM_LANES = ["free_range", "gcts", "rl", "gcts_rl", "restart_dfs", "ilds", "uct", "beam"];
 const searchAlgorithmComparisons = cases
   .filter(benchmarkCase => benchmarkCase.researchQueue)
   .map(benchmarkCase => ({
@@ -902,7 +907,7 @@ const candidateSummaries = LATTICE_POLYHEDRON_PRE_SHELL_CANDIDATES
 const unresolvedIds = new Set(LATTICE_POLYHEDRON_SURVIVORS.map(candidate => candidate.id));
 const activeUnresolved = candidateSummaries.filter(candidate => unresolvedIds.has(candidate.id));
 const summary = {
-  schemaVersion: 22,
+  schemaVersion: 23,
   configuration: {
     target,
     timeMs,

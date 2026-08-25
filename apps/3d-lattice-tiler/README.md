@@ -24,7 +24,7 @@ balanced growth, and ordinary backtracking. The browser executes that same engin
 
 ## Solver modes
 
-The UI exposes and compares exactly four solver lanes concurrently in
+The UI exposes and compares exactly six solver lanes concurrently in
 independent workers:
 
 1. **Free-range** is the baseline tree search. It applies forced moves first,
@@ -37,7 +37,16 @@ independent workers:
    possible oriented tile continuation. Coordinates are relative to the failed
    point, so a translated recurrence is rejected by geometric overlap. Nothing
    is loaded from the catalog or a previous run.
-3. **Translational** progressively checks increasingly large motifs using an
+3. **RL** searches the same complete lattice-point branches as free-range but
+   orders them with a cold online learner. Its value table starts empty on
+   every run. Features are anonymous, symmetry-invariant lattice geometry
+   bands (frontier generation, coverage, frontier change, branching width,
+   and patch shape); they contain no tile ID, catalog label, known motif, or
+   periodic/isohedral feature. RL never removes a legal action.
+4. **GCTS + RL** uses exactly the RL action order and adds the same sound
+   geometric-failure pruning as GCTS. This isolates the interaction between
+   learned ordering and learned exact failure markings.
+5. **Translational** progressively checks increasingly large motifs using an
    exact finite-quotient (3-torus) cover test. It succeeds only when translated
    copies of the certified whole patch tile 3-space. Certified translation
    motifs may contain multiple orientations and multiple prototile species.
@@ -51,7 +60,7 @@ independent workers:
    the second changes green, and the third changes blue. Thus a multi-tile unit
    patch keeps its individual tile colors while each tile exposes eight
    directional variants across translated copies.
-4. **Isohedral** treats every tile as an image of the root tile. Each
+6. **Isohedral** treats every tile as an image of the root tile. Each
    root-to-tile rigid motion lifts, rotates, and translates the entire known
    patch onto that tile; exact duplicates are skipped and a patch image is
    committed only when every new tile is legal. A single successful neighbor
@@ -65,7 +74,7 @@ independent workers:
    tile class. Without that certificate the result is exhausted or
    inconclusive and the displayed patch rolls back to the root.
 
-The interactive Plotly growth chart uses one wall clock for all four workers.
+The interactive Plotly growth chart uses one wall clock for all six workers.
 It records every tile-count transition, including downward backtracking steps,
 instead of plotting only record highs. Geometry deltas are transferred in
 200-ms batches and UI refreshes are coalesced to at most one every 300 ms, so
@@ -81,6 +90,19 @@ no tile-transitive quotient exists. An uncertified translational search
 continues increasing the motif size until certified, stopped, or limited by an
 explicit search cap, and every such finite cutoff is likewise inconclusive.
 
+The first cold five-second comparison on hard cases `10_16113`, `10_45026`,
+`10_45033`, and `9_11683` used three seeds per general-search lane and an
+80-tile target. RL's median maximum patch sizes were 17, 17, 19, and 17,
+compared with free-range's 17, 17, 12, and 15. GCTS + RL matched RL's maximum
+depth in every one of the twelve paired runs while making 207–511 median exact
+recurrence prunes per case. This is evidence that the two mechanisms compose
+soundly, not yet evidence of a hybrid depth advantage at that horizon. Raw
+results are in `data/lattice-six-lane-cold-benchmark-2026-08-24.json` and
+`data/lattice-six-lane-cold-rl-replicates-2026-08-24.json`.
+
+Every comparison worker explicitly clears catalog periodic templates and
+supplied initial patches. Thus even the two certificate lanes reconstruct their
+witnesses from the tile geometry and the configured lattice symmetry group.
 The lower-level API uses `generic` internally and retains `freestyle` as a
 backward-compatible alias of `free_range`. It also retains `auto` for regression
 and research use. No strategy makes decisions from catalog names. Candidate

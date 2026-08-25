@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260824-gcts-i-v205";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260824-six-lanes-v206";
 
 let activeSequence = 0;
 let stopToken = { stop: false };
@@ -58,6 +58,22 @@ const MODES = {
     templates: false,
     agentExhaustive: true
   },
+  rl: {
+    id: "rl",
+    label: "RL",
+    strategy: "free_range",
+    moveOrder: "rl",
+    templates: false,
+    agentExhaustive: true
+  },
+  gcts_rl: {
+    id: "gcts_rl",
+    label: "GCTS + RL",
+    strategy: "free_range",
+    moveOrder: "rl",
+    templates: false,
+    agentExhaustive: true
+  },
   translational: {
     id: "translational",
     label: "Translational",
@@ -90,8 +106,8 @@ async function runMode(sequence, baseConfig, mode) {
     tiling_strategy: mode.strategy,
     move_order: shellSearch && mode.proof ? "shell" : mode.moveOrder,
     proposal_program: null,
-    complete_lattice_point_branching: ["free_range", "gcts", "no_brainer"].includes(mode.id),
-    gcts_failure_marking: mode.id === "gcts",
+    complete_lattice_point_branching: ["free_range", "gcts", "rl", "gcts_rl", "no_brainer"].includes(mode.id),
+    gcts_failure_marking: mode.id === "gcts" || mode.id === "gcts_rl",
     gcts_marking_reach_multiplier: baseConfig.gcts_marking_reach_multiplier ?? 1,
     gcts_marking_max_clauses: baseConfig.gcts_marking_max_clauses ?? 20000,
     gcts_marking_max_context_tiles: baseConfig.gcts_marking_max_context_tiles ?? 1000000,
@@ -99,13 +115,16 @@ async function runMode(sequence, baseConfig, mode) {
     gcts_marking_symmetry: baseConfig.gcts_marking_symmetry ?? "fixed",
     gcts_marking_index: baseConfig.gcts_marking_index !== false,
     agent_exhaustive: mode.agentExhaustive,
+    agent_policy: mode.id === "rl" || mode.id === "gcts_rl" ? "cold_geometry" : null,
+    known_periodic_template: null,
+    initial_patch: null,
     greedy_no_backtrack: false,
     template_preflight: mode.templates,
     periodic_preflight: mode.templates,
     periodic_patch_unbounded: mode.id === "translational",
     periodic_patch_max_tiles: mode.id === "translational" ? null : baseConfig.periodic_patch_max_tiles,
     snapshot_every: 1,
-    placement_details: mode.id === "gcts",
+    placement_details: ["gcts", "rl", "gcts_rl"].includes(mode.id),
     branch_cap: null,
     candidate_cap: null,
     forced_move_layer_lag_cap: mode.proof ? 0 : baseConfig.forced_move_layer_lag_cap,

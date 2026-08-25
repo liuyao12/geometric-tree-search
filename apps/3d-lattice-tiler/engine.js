@@ -698,7 +698,13 @@ export const createTilingStream = (() => {
       return (hash ^ (hash >>> 16)) >>> 0;
     };
     const nowId = () => (++nodeCounter);
-    const normalizedStrategy = ["freestyle", "free_range", "learning_free_range"].includes(config.tiling_strategy)
+    const normalizedStrategy = [
+      "freestyle",
+      "free_range",
+      "learning_free_range",
+      "rl_free_range",
+      "gcts_rl"
+    ].includes(config.tiling_strategy)
       ? "generic"
       : config.tiling_strategy;
     const searchStats = {
@@ -798,6 +804,8 @@ export const createTilingStream = (() => {
       agent_learned_tags: 0,
       agent_sibling_reorders: 0,
       agent_policy: null,
+      agent_started_empty: false,
+      agent_feature_schema: null,
       agent_crystal_probe_nodes: 40,
       discrepancy_limit: null,
       discrepancy_prunes: 0,
@@ -1529,6 +1537,10 @@ export const createTilingStream = (() => {
         .join("|");
       return `${move.prototile_idx}::${vertsKey}`;
     };
+    const anonymousPlacementGeometryKey = (move) => move.orient.verts
+      .map(vertex => vecKey(add3(vertex, move.translation)))
+      .sort()
+      .join("|");
     // Polycube lattice tiers are represented in integer coordinates: z3 uses
     // unit cube steps, fcc uses the even-sum half-grid, and half uses all
     // half-grid translations.
@@ -3503,7 +3515,16 @@ export const createTilingStream = (() => {
     };
     const rlAgent = (() => {
       const values = new Map();
-      let selectedPolicy = "crystal_probe";
+      const requestedAgentPolicy = config.agent_policy === "cold_geometry"
+        ? "cold_geometry"
+        : "crystal_probe";
+      let selectedPolicy = requestedAgentPolicy;
+      searchStats.agent_started_empty = usePolicyAgent;
+      searchStats.agent_feature_schema = usePolicyAgent
+        ? selectedPolicy === "cold_geometry"
+          ? "anonymous_lattice_geometry_v1"
+          : "structural_crystal_v1"
+        : null;
       const tagsFor = (features) => {
         const tags = [];
         if (features.periodic_evidence > 0) tags.push("periodic");
@@ -3537,8 +3558,34 @@ export const createTilingStream = (() => {
           return sum + estimate.value * estimate.count / (estimate.count + 3);
         }, 0) / marks.length;
       };
+      const coldTagsFor = (features) => {
+        const isotropyBand = Math.max(0, Math.min(4, Math.floor(features.growth_isotropy * 5)));
+        const frontierBand = Math.max(-4, Math.min(4, Math.round(features.frontier_faces)));
+        const coverageBand = Math.max(0, Math.min(6, Math.floor(features.coverage)));
+        const mrvBand = Number.isFinite(features.mrv_width)
+          ? Math.min(6, Math.floor(Math.log2(Math.max(1, features.mrv_width))))
+          : 7;
+        return [
+          `layer:${features.layer_lag}:complete:${features.oldest_layer_completion > 0 ? 1 : 0}`,
+          `shape:${features.growth_axis_rank}:${isotropyBand}:${features.growth_planarity}`,
+          `coverage:${coverageBand}:frontier:${frontierBand}`,
+          `mrv:${mrvBand}:rank:${features.growth_axis_rank}`
+        ];
+      };
+      const coldLearnedValue = (features) => {
+        const tags = coldTagsFor(features);
+        return tags.reduce((sum, tag) => {
+          const estimate = values.get(tag);
+          return sum + (estimate ? estimate.value * estimate.count / (estimate.count + 3) : 0);
+        }, 0) / tags.length;
+      };
+      const coldNovelty = (features) => {
+        const tags = coldTagsFor(features);
+        return tags.reduce((sum, tag) => sum + 1 / Math.sqrt((values.get(tag)?.count ?? 0) + 1), 0) / tags.length;
+      };
       const updateMarks = (features, reward) => {
-        for (const tag of tagsFor(features)) {
+        const tags = selectedPolicy === "cold_geometry" ? coldTagsFor(features) : tagsFor(features);
+        for (const tag of tags) {
           const current = values.get(tag) ?? { value: 0, count: 0 };
           current.count += 1;
           current.value += (reward - current.value) / current.count;
@@ -3548,14 +3595,25 @@ export const createTilingStream = (() => {
       };
       return {
         usesGlobalProposalScope() {
-          return selectedPolicy === "structural";
+          return selectedPolicy === "structural" || selectedPolicy === "cold_geometry";
         },
         learnsOnline() {
-          return selectedPolicy === "structural";
+          return selectedPolicy === "structural" || selectedPolicy === "cold_geometry";
         },
         score(move, option = null) {
           searchStats.agent_policy ??= selectedPolicy;
           const features = moveAgentFeatures(move, option);
+          if (selectedPolicy === "cold_geometry") {
+            // This policy has no tile IDs, catalog labels, known motifs, or
+            // periodic/isohedral priors.  It starts at zero and only orders the
+            // complete action set using rewards observed in this run.  A
+            // geometry-only hash makes otherwise equal cold actions repeatable.
+            return [
+              coldLearnedValue(features),
+              coldNovelty(features),
+              seededTieValue(anonymousPlacementGeometryKey(move))
+            ];
+          }
           const learned = learnedValue(features);
           if (selectedPolicy === "crystal_probe" && searchWorkCounter >= 40) {
             searchStats.agent_probe_max_live_tiles = searchStats.max_live_tiles;

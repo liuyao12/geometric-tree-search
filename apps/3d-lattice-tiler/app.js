@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260824-gcts-i-v205";
+} from "./engine.js?v=20260824-six-lanes-v206";
 
 const $ = (id) => document.getElementById(id);
 
@@ -524,6 +524,8 @@ function updateCriterionUI() {
 const STRATEGY_DESCRIPTIONS = {
   free_range: "Prioritizes forced moves, then explores sensible legal placements with backtracking.",
   learning_free_range: "Starts with an empty marking and records exact local frontier failures; translated recurrences are pruned by geometric overlap.",
+  rl_free_range: "Starts with an empty value table and learns only how anonymous lattice-geometry actions perform during this run.",
+  gcts_rl: "Combines cold online geometric action learning with exact GCTS failure markings; RL orders but never removes legal branches.",
   translational: "Tests increasingly large patches for three exact translation vectors and stops only on a certificate or search limit.",
   isohedral: "Searches tile-transitive patches, then requires an exact periodic quotient preserved by symmetries taking the root to every tile class."
 };
@@ -1897,7 +1899,8 @@ function configKey() {
   const forcedLayerLagCap = completeGlobalSearch || completeShellSearch
     ? 0
     : positiveSearchParam("generation_lag_cap", "forced_layer_lag_cap", "forced_move_layer_lag_cap") ?? 2;
-  const isLearningFreeRange = tilingStrategy === "learning_free_range";
+  const isGcts = tilingStrategy === "learning_free_range" || tilingStrategy === "gcts_rl";
+  const isRl = tilingStrategy === "rl_free_range" || tilingStrategy === "gcts_rl";
   const isStructural = tilingStrategy === "translational" || tilingStrategy === "isohedral";
   const candidateIsohedralHorizon = root?.census_candidate?.last_screening
     ?.isohedral?.growth_horizon_tiles ?? null;
@@ -1924,10 +1927,10 @@ function configKey() {
     snapshot_every: Number.isFinite(snapshotEvery) ? snapshotEvery : 1,
     face_order: faceOrderSelect.value,
     tiling_strategy: tilingStrategy,
-    move_order: isLearningFreeRange ? "balanced" : completeShellSearch ? "shell" : moveOrderSelect.value,
-    complete_lattice_point_branching: isLearningFreeRange
+    move_order: isRl ? "rl" : isGcts ? "balanced" : completeShellSearch ? "shell" : moveOrderSelect.value,
+    complete_lattice_point_branching: isGcts || isRl
       || (tilingStrategy === "free_range" && selectedCriterion !== "shell"),
-    gcts_failure_marking: isLearningFreeRange,
+    gcts_failure_marking: isGcts,
     gcts_marking_reach_multiplier: 1,
     gcts_marking_max_clauses: 20000,
     gcts_marking_max_context_tiles: 1000000,
@@ -1936,6 +1939,7 @@ function configKey() {
     gcts_marking_index: true,
     greedy_no_backtrack: false,
     agent_exhaustive: true,
+    agent_policy: isRl ? "cold_geometry" : null,
     template_preflight: isStructural,
     periodic_patch_unbounded: tilingStrategy === "translational",
     periodic_patch_max_tiles: tilingStrategy === "translational"
@@ -1947,7 +1951,9 @@ function configKey() {
     forced_move_layer_lag_cap: forcedLayerLagCap,
     generic_connected_patch_enumeration: completeGlobalSearch,
     generic_complete_shell_enumeration: completeShellSearch,
-    known_periodic_template: root?.census_candidate?.screening?.periodic_template ?? null,
+    // Catalog annotations are display-only. Every interactive lane must derive
+    // its behavior from the supplied lattice geometry in the current run.
+    known_periodic_template: null,
     branch_cap: positiveOrNull(branchCapInput),
     node_limit: positiveOrNull(nodeCapInput),
     candidate_cap: positiveOrNull(candidateCapInput),
@@ -3001,7 +3007,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260824-gcts-i-v205", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260824-six-lanes-v206", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3132,6 +3138,8 @@ function pauseRun() {
 const GROWTH_MODES = [
   { id: "free_range", strategy: "free_range", label: "Free-range", color: "#6f7c77", symbol: "square-open", dash: "dash" },
   { id: "gcts", strategy: "learning_free_range", label: "GCTS", color: "#178273", symbol: "diamond", dash: "solid" },
+  { id: "rl", strategy: "rl_free_range", label: "RL", color: "#c16a28", symbol: "cross", dash: "dot" },
+  { id: "gcts_rl", strategy: "gcts_rl", label: "GCTS + RL", color: "#b33c67", symbol: "star", dash: "solid" },
   { id: "translational", strategy: "translational", label: "Translational", color: "#315f9f", symbol: "circle-open", dash: "solid" },
   { id: "isohedral", strategy: "isohedral", label: "Isohedral", color: "#7656a5", symbol: "triangle-up-open", dash: "solid" }
 ];
@@ -3501,8 +3509,12 @@ function formatGrowthResult(result, target) {
     configured_branch_pruning: "configured branch pruning"
   }[result?.stats?.termination_reason] ?? null;
   const stopSuffix = result?.searchIncomplete && stopReason ? ` · ${stopReason}` : "";
-  const learningSuffix = result?.mode === "gcts"
+  const learningSuffix = result?.mode === "gcts_rl"
+    ? ` (RL ${result.stats?.agent_learned_tags ?? 0} values; GCTS ${result.stats?.marking_geometric_clauses ?? 0} failures, ${result.stats?.marking_geometric_prunes ?? 0} reuses)`
+    : result?.mode === "gcts"
     ? ` (learned ${result.stats?.marking_geometric_clauses ?? 0}, reused ${result.stats?.marking_geometric_prunes ?? 0})`
+    : result?.mode === "rl"
+      ? ` (learned ${result.stats?.agent_learned_tags ?? 0} geometric values)`
     : "";
   const targetPoint = result?.points?.find(point => point.tiles >= target);
   if (result?.resultKind === "known_aperiodic_construction") {
@@ -3587,7 +3599,7 @@ function finishGrowthBenchmark(results) {
       ? Number(maxTilesInput.value) || 1
       : Number(layerInput.value) || 1;
   growthBenchmarkStatus.textContent = results.map(result => formatGrowthResult(result, target)).join(" · ");
-  setStatus("All four modes finished.");
+  setStatus("All six lanes finished.");
   renderGrowthChart();
 }
 
@@ -3631,13 +3643,13 @@ function startGrowthBenchmark() {
   config.ui_yield_interval_ms = 250;
   growthRunning = true;
   setRunButton();
-  setStatus("Running all four modes…");
+  setStatus("Running all six lanes…");
   const targetLabel = config.criterion === "shell"
     ? `shell ${config.target_val}`
     : config.criterion === "count"
       ? `${config.target_val} tiles`
       : `${config.criterion} ${config.target_val}`;
-  growthBenchmarkStatus.textContent = `Running four searches simultaneously to ${targetLabel}…`;
+  growthBenchmarkStatus.textContent = `Running six searches simultaneously to ${targetLabel}…`;
 
   const refreshStatus = () => {
     const summaries = GROWTH_MODES.map(mode => {
@@ -3661,7 +3673,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260824-gcts-i-v205", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260824-six-lanes-v206", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};
@@ -3695,8 +3707,12 @@ function startGrowthBenchmark() {
         ) showSelectedGrowthSnapshot();
       } else if (message.type === "series-finished") {
         series.result = message.result;
-        if (mode.id === "gcts") {
+        if (mode.id === "gcts_rl") {
+          series.status = `RL learned ${message.result.stats?.agent_learned_tags ?? 0} values; GCTS learned ${message.result.stats?.marking_geometric_clauses ?? 0} failures and reused ${message.result.stats?.marking_geometric_prunes ?? 0}`;
+        } else if (mode.id === "gcts") {
           series.status = `learned ${message.result.stats?.marking_geometric_clauses ?? 0} geometric failures; reused ${message.result.stats?.marking_geometric_prunes ?? 0}`;
+        } else if (mode.id === "rl") {
+          series.status = `learned ${message.result.stats?.agent_learned_tags ?? 0} anonymous geometric values`;
         }
         if (!series.status || ["running", "starting"].includes(series.status)) {
           series.status = message.result.success ? "finished" : message.result.searchIncomplete ? "search limit" : "terminated";
@@ -3785,7 +3801,7 @@ function bindControls() {
 
   candidateSearchButton.addEventListener("click", () => {
     applyCandidateSearchPreset();
-    setStatus("Long-growth preset ready: four modes race to 120 tiles for up to 30 seconds.");
+    setStatus("Long-growth preset ready: six lanes race to 120 tiles for up to 30 seconds.");
     setRunButton();
   });
 

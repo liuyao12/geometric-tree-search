@@ -64,6 +64,14 @@
               <span><b>GCTS</b><small>Learn exact geometric failure markings from an empty start.</small></span>
             </label>
             <label>
+              <input type="radio" name="tilingStrategy" value="rl_free_range">
+              <span><b>RL</b><small>Cold online learning orders every legal branch without pruning.</small></span>
+            </label>
+            <label>
+              <input type="radio" name="tilingStrategy" value="gcts_rl">
+              <span><b>GCTS + RL</b><small>Exact failure pruning plus cold learned branch ordering.</small></span>
+            </label>
+            <label>
               <input type="radio" name="tilingStrategy" value="translational">
               <span><b>Translational</b><small>Grow patches until three exact period vectors work.</small></span>
             </label>
@@ -79,6 +87,8 @@
           <select id="strategySelect">
             <option value="free_range" selected>Free-range</option>
             <option value="learning_free_range">GCTS</option>
+            <option value="rl_free_range">RL</option>
+            <option value="gcts_rl">GCTS + RL</option>
             <option value="translational">Translational</option>
             <option value="isohedral">Isohedral</option>
           </select>
@@ -186,7 +196,7 @@
         <div class="growth-header">
           <div>
             <h2 id="growthChartTitle">Growth curve · tiles versus time</h2>
-            <small>Choose the lane above. This panel never switches lanes: click a sample on the selected lane to inspect it, or empty chart space to return to its current patch.</small>
+            <small>Six cold-start lanes share only the tile geometry, lattice, and its configured symmetry group. Choose the lane above; click its samples to inspect history.</small>
           </div>
           <div class="growth-history-controls" aria-label="Growth snapshot history">
             <button id="growthHistoryBack" type="button" aria-label="Previous growth snapshot" title="Previous snapshot" disabled>←</button>
@@ -246,6 +256,6 @@
   </dialog>
 
   <script src="https://cdn.plot.ly/plotly-3.6.0.min.js" charset="utf-8"></script>
-  <script type="module" src="./app.js?v=20260824-gcts-i-v205"></script>
+  <script type="module" src="./app.js?v=20260824-six-lanes-v206"></script>
 </body>
 </html>
