@@ -171,6 +171,9 @@ const solutePartitionHint = $("solutePartitionHint");
 const chargePreferenceSelect = $("chargePreferenceSelect");
 const chargePreferenceHint = $("chargePreferenceHint");
 const surfacePreferenceSelect = $("surfacePreferenceSelect");
+const growthDrivingSelect = $("growthDrivingSelect");
+const growthDrivingWeightSelect = $("growthDrivingWeightSelect");
+const growthDrivingHint = $("growthDrivingHint");
 const frontMorphologySelect = $("frontMorphologySelect");
 const frontMorphologyWeightSelect = $("frontMorphologyWeightSelect");
 const frontMorphologyHint = $("frontMorphologyHint");
@@ -709,6 +712,9 @@ let acceptedFormalChargeDelta = 0;
 let rejectedFormalChargeDelta = 0;
 let acceptedSurfaceDeficit = 0;
 let rejectedSurfaceDeficit = 0;
+let acceptedGrowthDrivingScore = 0;
+let rejectedGrowthDrivingScore = 0;
+let growthDrivingEvaluations = 0;
 let acceptedExternalDriveAlignment = 0;
 let rejectedExternalDriveAlignment = 0;
 let acceptedThermalFieldScore = 0;
@@ -809,6 +815,8 @@ let solutePartitionMode = "none";
 let solutePartitionWeight = .24;
 let chargePreference = "auto";
 let surfacePreference = "soft";
+let growthDrivingMode = "none";
+let growthDrivingWeight = .24;
 let frontMorphologyMode = "none";
 let frontMorphologyWeight = .24;
 let capillaryGeometryMode = "none";
@@ -861,6 +869,7 @@ let formalChargeTarget = null;
 const GROWTH_PROTOCOL_DEFAULTS = Object.freeze({
   confinement: "box", geometryPreference: "strain", geometricStrainWeight: .16,
   compositionPreference: "soft", chargePreference: "auto", surfacePreference: "soft",
+  growthDrivingMode: "none", growthDrivingWeight: .24,
   solutePartitionMode: "none", solutePartitionWeight: .24,
   frontMorphologyMode: "none", frontMorphologyWeight: .24,
   capillaryGeometryMode: "none", capillaryGeometryWeight: .24,
@@ -881,7 +890,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
   bulk: {
     label: "bulk continuation", summary: "Neutral finite bulk boundary with learned strain, balanced composition, and surface-completion ordering.",
     settings: { confinement: "box", geometryPreference: "strain", geometricStrainWeight: .16,
-      compositionPreference: "soft", chargePreference: "auto", surfacePreference: "soft",
+      compositionPreference: "soft", chargePreference: "auto", surfacePreference: "soft", growthDrivingMode: "balanced",
       frontMorphologyMode: "none", epitaxyTemplateMode: "none", externalDriveMode: "none",
       capillaryGeometryMode: "none",
       thermalFieldMode: "none",
@@ -892,7 +901,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
   epitaxy: {
     label: "coherent thin-film epitaxy", summary: "Supported film with coherent hexagonal registry, planar capillary balance, a +Z reduced cold side, upward feed geometry, and robustness ordering.",
     settings: { confinement: "substrate", geometryPreference: "strain", geometricStrainWeight: .16,
-      compositionPreference: "soft", chargePreference: "auto", surfacePreference: "strong",
+      compositionPreference: "soft", chargePreference: "auto", surfacePreference: "strong", growthDrivingMode: "surface-limited",
       frontMorphologyMode: "facet", frontMorphologyWeight: .24, epitaxyTemplateMode: "hex-coherent", epitaxyWeight: .24,
       capillaryGeometryMode: "planar", capillaryGeometryWeight: .24,
       externalDriveMode: "z-plus", externalDriveWeight: .24, affineLoadMode: "none",
@@ -905,7 +914,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
   "misfit-film": {
     label: "misfit thin film", summary: "The coherent-film protocol with a declared +5% hexagonal support mismatch; no elastic relaxation or dislocations are inserted.",
     settings: { confinement: "substrate", geometryPreference: "strain", geometricStrainWeight: .16,
-      compositionPreference: "soft", chargePreference: "auto", surfacePreference: "strong",
+      compositionPreference: "soft", chargePreference: "auto", surfacePreference: "strong", growthDrivingMode: "surface-limited",
       frontMorphologyMode: "facet", frontMorphologyWeight: .24, epitaxyTemplateMode: "hex-mismatch", epitaxyWeight: .24,
       capillaryGeometryMode: "planar", capillaryGeometryWeight: .24,
       externalDriveMode: "z-plus", externalDriveWeight: .24, affineLoadMode: "none",
@@ -918,7 +927,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
   directional: {
     label: "directional solidification", summary: "A +Z attachment direction and cold side, minority-species rejection toward the hot side, coherent facet/front balance, and narrow alternatives.",
     settings: { confinement: "box", geometryPreference: "strain", geometricStrainWeight: .16,
-      compositionPreference: "soft", chargePreference: "auto", surfacePreference: "soft",
+      compositionPreference: "soft", chargePreference: "auto", surfacePreference: "soft", growthDrivingMode: "volume-driven",
       frontMorphologyMode: "facet", frontMorphologyWeight: .24, epitaxyTemplateMode: "none",
       capillaryGeometryMode: "planar", capillaryGeometryWeight: .24,
       externalDriveMode: "z-plus", externalDriveWeight: .48, affineLoadMode: "none",
@@ -932,7 +941,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
   dendritic: {
     label: "dendritic growth hypothesis", summary: "A finite nucleus with outward drive/quench, minority-species rejection toward the hot side, exposed-tip/solid-angle preference, and broader path exploration.",
     settings: { confinement: "sphere", geometryPreference: "strain", geometricStrainWeight: .08,
-      compositionPreference: "soft", chargePreference: "auto", surfacePreference: "soft",
+      compositionPreference: "soft", chargePreference: "auto", surfacePreference: "soft", growthDrivingMode: "volume-driven", growthDrivingWeight: .48,
       frontMorphologyMode: "tip", frontMorphologyWeight: .48, epitaxyTemplateMode: "none",
       capillaryGeometryMode: "exposed", capillaryGeometryWeight: .24,
       externalDriveMode: "radial-out", externalDriveWeight: .24, affineLoadMode: "none",
@@ -946,7 +955,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
   impingement: {
     label: "polycrystal impingement", summary: "Four dispersed observed nuclei, pose-interface following, multi-parent loop closure, and simultaneous compatible-front scheduling.",
     settings: { confinement: "box", geometryPreference: "strain", geometricStrainWeight: .16,
-      compositionPreference: "soft", chargePreference: "auto", surfacePreference: "soft",
+      compositionPreference: "soft", chargePreference: "auto", surfacePreference: "soft", growthDrivingMode: "balanced",
       frontMorphologyMode: "smooth", frontMorphologyWeight: .24, epitaxyTemplateMode: "none",
       capillaryGeometryMode: "pocket", capillaryGeometryWeight: .24,
       externalDriveMode: "none", affineLoadMode: "none", robustnessPreference: "margin", robustnessWeight: .12,
@@ -958,7 +967,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
   "pore-fill": {
     label: "constricted-pore filling", summary: "Hard hourglass confinement with concavity filling, coordination healing, and parent-normal arrival accessibility.",
     settings: { confinement: "hourglass", geometryPreference: "strain", geometricStrainWeight: .16,
-      compositionPreference: "soft", chargePreference: "auto", surfacePreference: "strong",
+      compositionPreference: "soft", chargePreference: "auto", surfacePreference: "strong", growthDrivingMode: "surface-limited",
       frontMorphologyMode: "smooth", frontMorphologyWeight: .48, epitaxyTemplateMode: "none",
       capillaryGeometryMode: "pocket", capillaryGeometryWeight: .48,
       externalDriveMode: "none", affineLoadMode: "none", robustnessPreference: "margin", robustnessWeight: .24,
@@ -972,7 +981,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
 const GROWTH_PROTOCOL_CONTROL_IDS = new Set([
   "geometryPreferenceSelect", "strainWeightSelect", "compositionPreferenceSelect", "chargePreferenceSelect",
   "soluteSpeciesSelect", "solutePartitionSelect", "solutePartitionWeightSelect",
-  "surfacePreferenceSelect", "frontMorphologySelect", "frontMorphologyWeightSelect",
+  "surfacePreferenceSelect", "growthDrivingSelect", "growthDrivingWeightSelect", "frontMorphologySelect", "frontMorphologyWeightSelect",
   "capillaryGeometrySelect", "capillaryGeometryWeightSelect",
   "epitaxyTemplateSelect", "epitaxyWeightSelect", "externalDriveSelect", "externalDriveWeightSelect",
   "thermalFieldSelect", "thermalFieldWeightSelect",
@@ -5729,7 +5738,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-98",
+      buildId: "20260825-99",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -6132,6 +6141,31 @@ async function buildExperimentReceipt() {
         acceptedMeanScaledDelta: receiptRound(acceptedSurfaceDeficit / Math.max(1, acceptedDecisions)),
         rejectedMeanScaledDelta: receiptRound(rejectedSurfaceDeficit / Math.max(1, rejectedDecisions)),
       },
+      bulkSurfaceDrivingRanking: {
+        role: "dimensionless geometric grand-potential surrogate balancing explicit fresh-site incorporation against sample-derived interface coordination integrity",
+        mode: growthDrivingMode,
+        label: growthDrivingLabel(),
+        enabled: activeGrowthDrivingWeight() > 0,
+        effectiveWeight: activeGrowthDrivingWeight(),
+        bulkShare: growthDrivingBulkShare(),
+        interfaceShare: 1 - growthDrivingBulkShare(),
+        referenceActionCapacity: Math.max(1, ...(overlapGrammar?.occurrences || [])
+          .map((_, index) => growthSeedSites(index).length)),
+        acceptedMeanScore: receiptRound(acceptedGrowthDrivingScore / Math.max(1, acceptedDecisions)),
+        rejectedMeanScore: receiptRound(rejectedGrowthDrivingScore / Math.max(1, rejectedDecisions)),
+        evaluations: growthDrivingEvaluations,
+        candidateSetChanged: false,
+        candidateGeometryChanged: false,
+        hardAdmissionChanged: false,
+        heldoutTargetUsed: false,
+        energyUnitsUsed: false,
+        chemicalPotentialInferred: false,
+        supersaturationInferred: false,
+        surfaceFreeEnergyInferred: false,
+        nucleationBarrierInferred: false,
+        phaseDiagramUsed: false,
+        physicalTimeIntegrated: false,
+      },
       mesoscopicFrontMorphologyRanking: {
         role: "target-blind soft ordering of unchanged exact actions by parent-local angular support and backing-depth geometry",
         mode: frontMorphologyMode,
@@ -6512,6 +6546,7 @@ function notebookInterventionFactors(receipt) {
         search.solutePartitionRanking?.effectiveWeight],
       formalCharge: [search.formalChargeBalanceRanking?.mode, search.formalChargeBalanceRanking?.effectiveWeight],
       surface: [search.surfaceCompletionRanking?.mode, search.surfaceCompletionRanking?.effectiveWeight],
+      bulkSurfaceDriving: [search.bulkSurfaceDrivingRanking?.mode, search.bulkSurfaceDrivingRanking?.effectiveWeight],
       frontMorphology: [search.mesoscopicFrontMorphologyRanking?.mode,
         search.mesoscopicFrontMorphologyRanking?.effectiveWeight],
       capillaryGeometry: [search.discreteCapillaryGeometryRanking?.mode,
@@ -7572,6 +7607,20 @@ function activeSurfaceCompletionWeight() {
   return surfacePreference === "strong" ? .36 : surfacePreference === "soft" ? .18 : 0;
 }
 
+function growthDrivingLabel(mode = growthDrivingMode) {
+  return ({ none: "separate surface term", "surface-limited": "surface-limited compact growth",
+    balanced: "balanced bulk–surface driving", "volume-driven": "volume-driven incorporation" })[mode]
+    || "separate surface term";
+}
+
+function activeGrowthDrivingWeight() {
+  return growthDrivingMode === "none" ? 0 : growthDrivingWeight;
+}
+
+function growthDrivingBulkShare(mode = growthDrivingMode) {
+  return mode === "volume-driven" ? .78 : mode === "balanced" ? .50 : mode === "surface-limited" ? .22 : 0;
+}
+
 function activeFrontMorphologyWeight() {
   return frontMorphologyMode === "none" ? 0 : frontMorphologyWeight;
 }
@@ -8260,6 +8309,8 @@ function capturePolicyComparison(entries) {
       score: (entry) => entry.baseScore + activeSolutePartitionWeight() * entry.evaluation.solutePartition.score },
     { id: "charge", label: "formal charge 0.25", score: (entry) => entry.baseScore - .25 * entry.evaluation.formalChargeBalance.scaledDelta },
     { id: "surface", label: "surface 0.18", score: (entry) => entry.baseScore - .18 * entry.evaluation.surfaceCompletion.scaledDelta },
+    { id: "bulk-surface-driving", label: `${growthDrivingLabel()} ${activeGrowthDrivingWeight().toFixed(2)}`,
+      score: (entry) => entry.baseScore + activeGrowthDrivingWeight() * entry.evaluation.bulkSurfaceDriving.score },
     { id: "front-morphology", label: `${frontMorphologyLabel()} ${activeFrontMorphologyWeight().toFixed(2)}`,
       score: (entry) => entry.baseScore + activeFrontMorphologyWeight() * entry.evaluation.frontMorphology.score },
     { id: "capillary-geometry", label: `${capillaryGeometryLabel()} ${activeCapillaryGeometryWeight().toFixed(2)}`,
@@ -8454,6 +8505,24 @@ function surfaceCompletionForFreshSites(rawFreshSites,
   };
 }
 
+function bulkSurfaceDrivingForCandidate(rawFreshSites, surfaceCompletion, { recordWork = true } = {}) {
+  const referenceActionCapacity = Math.max(1, ...(overlapGrammar?.occurrences || [])
+    .map((_, index) => growthSeedSites(index).length));
+  const bulkGain = Math.min(1, rawFreshSites.length / referenceActionCapacity);
+  const interfaceIntegrity = THREE.MathUtils.clamp(
+    surfaceCompletion.healedExisting - surfaceCompletion.newSiteDeficit, -1, 1);
+  const bulkShare = growthDrivingBulkShare();
+  const score = growthDrivingMode === "none" ? 0
+    : bulkShare * bulkGain + (1 - bulkShare) * interfaceIntegrity;
+  if (recordWork && growthDrivingMode !== "none") growthDrivingEvaluations++;
+  return { mode: growthDrivingMode, label: growthDrivingLabel(), enabled: growthDrivingMode !== "none",
+    referenceActionCapacity, freshSites: rawFreshSites.length, bulkGain, interfaceIntegrity, bulkShare,
+    interfaceShare: 1 - bulkShare, score, candidateGeometryChanged: false, hardAdmissionChanged: false,
+    heldoutTargetUsed: false, energyUnitsUsed: false, chemicalPotentialInferred: false,
+    supersaturationInferred: false, surfaceFreeEnergyInferred: false, nucleationBarrierInferred: false,
+    phaseDiagramUsed: false, physicalTimeIntegrated: false };
+}
+
 function soluteSpeciesVocabulary() {
   const counts = new Map();
   referenceAtoms.forEach((atom) => {
@@ -8592,6 +8661,7 @@ function commutingFrontierBatch() {
         + activeSolutePartitionWeight() * evaluation.solutePartition.score
         - activeFormalChargeWeight() * evaluation.formalChargeBalance.scaledDelta
         - activeSurfaceCompletionWeight() * evaluation.surfaceCompletion.scaledDelta
+        + activeGrowthDrivingWeight() * evaluation.bulkSurfaceDriving.score
         + activeFrontMorphologyWeight() * evaluation.frontMorphology.score
         + activeCapillaryGeometryWeight() * evaluation.capillaryGeometry.score
         + activeEpitaxyWeight() * evaluation.epitaxyRegistry.score
@@ -8703,6 +8773,7 @@ function evaluateCandidate(candidate, {
   const geometricStrain = geometricStrainForFreshSites(fresh, constraintProjection);
   const affineLoadedGeometricStrain = affineLoadedGeometricStrainForFreshSites(fresh, constraintProjection);
   const surfaceCompletion = surfaceCompletionForFreshSites(fresh, constraintProjection);
+  const bulkSurfaceDriving = bulkSurfaceDrivingForCandidate(fresh, surfaceCompletion, { recordWork });
   const frontMorphology = frontMorphologyForCandidate(candidate, { recordWork });
   const capillaryGeometry = capillaryGeometryForFreshSites(fresh, { recordWork });
   const epitaxyRegistry = epitaxyRegistryForFreshSites(fresh, { recordWork });
@@ -8721,7 +8792,7 @@ function evaluateCandidate(candidate, {
     && angularViolations.length === 0 && (markingAccepted || markingFallback);
   return { accepted, sites, merged, fresh, conflicts, boundaryFailures, knownFailures, markingFallback,
     coordinationOverflows, angularViolations, geometricStrain, affineLoadedGeometricStrain,
-    surfaceCompletion, frontMorphology, capillaryGeometry, epitaxyRegistry, compositionBalance, formalChargeBalance,
+    surfaceCompletion, bulkSurfaceDriving, frontMorphology, capillaryGeometry, epitaxyRegistry, compositionBalance, formalChargeBalance,
     externalDrive, thermalField, solutePartition, constraintRobustness, microstructureCoupling, loopClosure, arrivalPath, feedExposure,
     duplicateSites: canonical.duplicateSites,
     freshReferenceIndices: fresh.map((site) => site.referenceIndex).filter(Number.isInteger),
@@ -9005,6 +9076,9 @@ function initializeOffLatticeSearch() {
   rejectedFormalChargeDelta = 0;
   acceptedSurfaceDeficit = 0;
   rejectedSurfaceDeficit = 0;
+  acceptedGrowthDrivingScore = 0;
+  rejectedGrowthDrivingScore = 0;
+  growthDrivingEvaluations = 0;
   acceptedExternalDriveAlignment = 0;
   rejectedExternalDriveAlignment = 0;
   acceptedThermalFieldScore = 0;
@@ -9607,7 +9681,7 @@ function currentGrowthProtocolSettings() {
   return {
     confinement: confinementSelect.value, geometryPreference, geometricStrainWeight,
     compositionPreference, soluteSpecies: resolvedSoluteSpecies(), solutePartitionMode, solutePartitionWeight,
-    chargePreference, surfacePreference,
+    chargePreference, surfacePreference, growthDrivingMode, growthDrivingWeight,
     frontMorphologyMode, frontMorphologyWeight, capillaryGeometryMode, capillaryGeometryWeight,
     epitaxyTemplateMode, epitaxyWeight,
     externalDriveMode, externalDriveWeight, thermalFieldMode, thermalFieldWeight,
@@ -9656,6 +9730,7 @@ function applyGrowthProtocol(mode) {
   compositionPreference = settings.compositionPreference; chargePreference = settings.chargePreference;
   solutePartitionMode = settings.solutePartitionMode; solutePartitionWeight = settings.solutePartitionWeight;
   surfacePreference = settings.surfacePreference;
+  growthDrivingMode = settings.growthDrivingMode; growthDrivingWeight = settings.growthDrivingWeight;
   frontMorphologyMode = settings.frontMorphologyMode; frontMorphologyWeight = settings.frontMorphologyWeight;
   capillaryGeometryMode = settings.capillaryGeometryMode; capillaryGeometryWeight = settings.capillaryGeometryWeight;
   epitaxyTemplateMode = settings.epitaxyTemplateMode; epitaxyWeight = settings.epitaxyWeight;
@@ -9805,6 +9880,8 @@ function syncStageOptions() {
     solutePartitionWeightSelect.value = String(solutePartitionWeight);
     chargePreferenceSelect.value = chargePreference;
     surfacePreferenceSelect.value = surfacePreference;
+    growthDrivingSelect.value = growthDrivingMode;
+    growthDrivingWeightSelect.value = String(growthDrivingWeight);
     frontMorphologySelect.value = frontMorphologyMode;
     frontMorphologyWeightSelect.value = String(frontMorphologyWeight);
     capillaryGeometrySelect.value = capillaryGeometryMode;
@@ -9839,6 +9916,8 @@ function syncStageOptions() {
     solutePartitionWeightSelect.disabled = finiteIceAnchorMode || soluteVocabulary.length < 2 || solutePartitionMode === "none";
     chargePreferenceSelect.disabled = finiteIceAnchorMode || !formalChargeTarget?.available;
     surfacePreferenceSelect.disabled = finiteIceAnchorMode;
+    growthDrivingSelect.disabled = finiteIceAnchorMode;
+    growthDrivingWeightSelect.disabled = finiteIceAnchorMode || growthDrivingMode === "none";
     frontMorphologySelect.disabled = finiteIceAnchorMode;
     frontMorphologyWeightSelect.disabled = finiteIceAnchorMode || frontMorphologyMode === "none";
     capillaryGeometrySelect.disabled = finiteIceAnchorMode;
@@ -9874,6 +9953,8 @@ function syncStageOptions() {
     chargePreferenceHint.textContent = formalChargeTarget?.available
       ? `${formalChargeTarget.resolvedObservations}/${formalChargeTarget.observations} sites · q̄ ${formalChargeTarget.meanFormalCharge >= 0 ? "+" : ""}${formalChargeTarget.meanFormalCharge.toFixed(3)}`
       : `${formalChargeTarget?.resolvedObservations || 0}/${formalChargeTarget?.observations || referenceCount()} sites · unavailable`;
+    growthDrivingHint.textContent = growthDrivingMode === "none"
+      ? "off · geometry reported" : `${growthDrivingLabel()} · bulk ${(100 * growthDrivingBulkShare()).toFixed(0)}% · weight ${growthDrivingWeight.toFixed(2)}`;
     const selectedSolute = soluteVocabulary.find((entry) => entry.species === resolvedSoluteSpecies());
     soluteSpeciesHint.textContent = selectedSolute
       ? `${selectedSolute.species} · ${(selectedSolute.fraction * 100).toFixed(1)}% observed`
@@ -9945,6 +10026,9 @@ function syncStageOptions() {
     const surfaceUse = surfacePreference === "none"
       ? " Coordination deficit is reported but contributes zero ranking weight."
       : ` A ${surfacePreference === "strong" ? "strong" : "balanced"} soft surface-completion term favors actions that heal observed coordination deficits without requiring a complete frontier shell.`;
+    const growthDrivingUse = growthDrivingMode === "none"
+      ? " Bulk–surface driving is reported but contributes zero ranking weight."
+      : ` A ${growthDrivingWeight.toFixed(2)} dimensionless ${growthDrivingLabel()} term balances explicit fresh-site gain (${(100 * growthDrivingBulkShare()).toFixed(0)}%) against coordination-defined interface integrity; it is not supersaturation or free energy.`;
     const externalDriveUse = externalDriveMode === "none"
       ? " No external direction is preferred."
       : ` A user-declared ${externalDriveModeLabel()} direction adds a ${externalDriveWeight.toFixed(2)} soft alignment term to the same actions; it is boundary/loading geometry, not a solved force field.`;
@@ -9982,8 +10066,8 @@ function syncStageOptions() {
     growthModeNote.textContent = finiteIceAnchorMode
       ? "This sealed ice gate executes primitive H₂O connection ports with mutually exclusive orientation domains. Clusters² is disabled because no stationary promoted ice production has been certified."
       : hierarchyEnabled
-      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${strainUse}${compositionUse}${solutePartitionUse}${chargeUse}${surfaceUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`
-      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}${solutePartitionUse}${chargeUse}${surfaceUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`;
+      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${strainUse}${compositionUse}${solutePartitionUse}${chargeUse}${surfaceUse}${growthDrivingUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`
+      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}${solutePartitionUse}${chargeUse}${surfaceUse}${growthDrivingUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`;
   }
 }
 
@@ -10008,6 +10092,9 @@ function resetCounters() {
   rejectedFormalChargeDelta = 0;
   acceptedSurfaceDeficit = 0;
   rejectedSurfaceDeficit = 0;
+  acceptedGrowthDrivingScore = 0;
+  rejectedGrowthDrivingScore = 0;
+  growthDrivingEvaluations = 0;
   acceptedExternalDriveAlignment = 0;
   rejectedExternalDriveAlignment = 0;
   acceptedThermalFieldScore = 0;
@@ -10373,6 +10460,7 @@ function stateForCandidate(candidate, evaluation) {
     solutePartition: evaluation.solutePartition,
     formalChargeBalance: evaluation.formalChargeBalance,
     surfaceCompletion: evaluation.surfaceCompletion,
+    bulkSurfaceDriving: evaluation.bulkSurfaceDriving,
     frontMorphology: evaluation.frontMorphology,
     capillaryGeometry: evaluation.capillaryGeometry,
     epitaxyRegistry: evaluation.epitaxyRegistry,
@@ -10521,6 +10609,7 @@ function performOffLatticeEvent() {
       rejectedSolutePartitionScore += snapshotEvaluation.solutePartition.score;
       rejectedFormalChargeDelta += snapshotEvaluation.formalChargeBalance.scaledDelta;
       rejectedSurfaceDeficit += snapshotEvaluation.surfaceCompletion.scaledDelta;
+      rejectedGrowthDrivingScore += snapshotEvaluation.bulkSurfaceDriving.score;
       rejectedFrontMorphologyScore += snapshotEvaluation.frontMorphology.score;
       rejectedCapillaryGeometryScore += snapshotEvaluation.capillaryGeometry.score;
       rejectedEpitaxyRegistryScore += snapshotEvaluation.epitaxyRegistry.score;
@@ -10567,6 +10656,7 @@ function performOffLatticeEvent() {
     acceptedSolutePartitionScore += evaluation.solutePartition.score;
     acceptedFormalChargeDelta += evaluation.formalChargeBalance.scaledDelta;
     acceptedSurfaceDeficit += evaluation.surfaceCompletion.scaledDelta;
+    acceptedGrowthDrivingScore += evaluation.bulkSurfaceDriving.score;
     acceptedFrontMorphologyScore += evaluation.frontMorphology.score;
     acceptedCapillaryGeometryScore += evaluation.capillaryGeometry.score;
     acceptedEpitaxyRegistryScore += evaluation.epitaxyRegistry.score;
@@ -11132,6 +11222,13 @@ function rebuildWorld() {
       ring.scale.setScalar(.82 + .26 * Math.abs(candidate.solutePartition.enrichmentContrast));
       decisionGroup.add(ring);
     }
+    if (candidateIndex < 12 && candidate.bulkSurfaceDriving?.enabled) {
+      const driving = candidate.bulkSurfaceDriving;
+      const shell = new THREE.Mesh(new THREE.IcosahedronGeometry(.40 + .22 * driving.bulkGain, 1),
+        new THREE.MeshBasicMaterial({ color: driving.score >= 0 ? 0x65e1bc : 0xff9b70,
+          wireframe: true, transparent: true, opacity: .24 + .34 * Math.min(1, Math.abs(driving.score)), depthWrite: false }));
+      shell.position.copy(candidate.p); decisionGroup.add(shell);
+    }
     if (candidateIndex < 12 && candidate.arrivalAxis && candidate.arrivalSweepDistance > 0) {
       const axis = new THREE.Vector3(...candidate.arrivalAxis).normalize();
       const routePoints = candidate.arrivalRoutePoints?.length > 1
@@ -11265,6 +11362,10 @@ function physicsTranslationRecords(leap = null) {
       encoding: activeSurfaceCompletionWeight() > 0 ? `sample-derived colored coordination deficit, w=${activeSurfaceCompletionWeight().toFixed(2)}` : "no surface-completion ranking term is active",
       evidence: leap ? `${leap.before.frontier} frontier candidates before the leap; ${leap.after.atoms - leap.before.atoms} explicit atoms added.` : "No interface update yet.",
       boundary: "This favors closing local coordination deficits but does not relax a surface, calculate surface energy, reconstruct an interface, or model solvent/feedstock transport." },
+    { id: "bulk-surface-driving", process: "bulk driving force / interface-cost competition", status: activeGrowthDrivingWeight() > 0 ? "soft" : "open", role: activeGrowthDrivingWeight() > 0 ? "dimensionless geometric grand-potential surrogate" : "disabled",
+      encoding: activeGrowthDrivingWeight() > 0 ? `${growthDrivingLabel()}, w=${activeGrowthDrivingWeight().toFixed(2)}; ${(100 * growthDrivingBulkShare()).toFixed(0)}% normalized fresh-site gain + ${(100 * (1 - growthDrivingBulkShare())).toFixed(0)}% coordination-defined interface integrity` : "bulk incorporation and interface integrity reported separately",
+      evidence: leap ? `${growthDrivingEvaluations.toLocaleString()} action evaluations; accepted mean ${receiptRound(acceptedGrowthDrivingScore / Math.max(1, acceptedDecisions), 4)}, rejected mean ${receiptRound(rejectedGrowthDrivingScore / Math.max(1, rejectedDecisions), 4)}.` : "No bulk–surface action evaluated yet.",
+      boundary: "The score is dimensionless and sample-relative. It is not chemical potential, supersaturation, bulk or surface free energy, a nucleation barrier, phase equilibrium, growth rate, or physical time." },
     { id: "front-morphology", process: "capillarity / front-shape selection", status: activeFrontMorphologyWeight() > 0 ? "soft" : "open", role: activeFrontMorphologyWeight() > 0 ? "mesoscopic geometric ordering" : "diagnostic",
       encoding: `${frontMorphologyLabel()}; eight parent-local angular support sectors plus the normalized depth spread of atoms backing each candidate within 2.4dₙₙ`,
       evidence: leap ? `Accepted mean front score ${receiptRound(acceptedFrontMorphologyScore / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedFrontMorphologyScore / Math.max(1, rejectedDecisions), 4)}; ${frontMorphologyNeighborhoodChecks.toLocaleString()} neighbor checks.` : "No front candidate evaluated yet.",
@@ -11572,6 +11673,17 @@ function geometryConstraintEvidence(name, term, state, mode) {
         ? `Soft rank term with weight ${activeSurfaceCompletionWeight().toFixed(2)}.` : "Diagnostic only; weight zero.",
       boundary: "Coordination deficit is not surface free energy, reconstruction, adsorption, solvent chemistry, or Wulff construction.",
     },
+    "bulk–surface driving": {
+      observed: state?.bulkSurfaceDriving?.enabled
+        ? `${state.bulkSurfaceDriving.freshSites}/${state.bulkSurfaceDriving.referenceActionCapacity} normalized fresh-site capacity · interface integrity ${signed(state.bulkSurfaceDriving.interfaceIntegrity)}`
+        : "bulk gain and coordination-defined interface integrity available; coupling disabled",
+      encoding: state?.bulkSurfaceDriving?.enabled
+        ? `${Math.round(100 * state.bulkSurfaceDriving.bulkShare)}% bulk gain + ${Math.round(100 * state.bulkSurfaceDriving.interfaceShare)}% interface integrity = ${signed(state.bulkSurfaceDriving.score)}`
+        : "No combined bulk–surface score.",
+      searchRole: activeGrowthDrivingWeight() > 0
+        ? `Soft rank term with weight ${activeGrowthDrivingWeight().toFixed(2)} over unchanged exact actions.` : "Diagnostic only; weight zero.",
+      boundary: "This dimensionless sample-relative functional is not chemical potential, supersaturation, bulk/surface free energy, a nucleation barrier, phase equilibrium, rate, or time.",
+    },
     "front morphology": {
       observed: `${state?.frontMorphology?.neighborhoodAtoms ?? 0} placed atoms within 2.4dₙₙ · ${state?.frontMorphology?.angularSectors ?? 0}/8 occupied parent-local angular sectors`,
       encoding: state?.frontMorphology
@@ -11749,6 +11861,9 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "surface completion", status: ranked(activeSurfaceCompletionWeight() > 0),
       value: state.surfaceCompletion ? signed(state.surfaceCompletion.scaledDelta) : "not evaluated",
       detail: activeSurfaceCompletionWeight() > 0 ? `rank weight ${activeSurfaceCompletionWeight().toFixed(2)}` : "diagnostic · cannot authorize geometry" },
+    { name: "bulk–surface driving", status: ranked(activeGrowthDrivingWeight() > 0),
+      value: state.bulkSurfaceDriving?.enabled ? `${signed(state.bulkSurfaceDriving.score)} · bulk ${(100 * state.bulkSurfaceDriving.bulkShare).toFixed(0)}%` : "disabled",
+      detail: activeGrowthDrivingWeight() > 0 ? `${growthDrivingLabel()} · rank weight ${activeGrowthDrivingWeight().toFixed(2)}` : "diagnostic · no thermodynamic units" },
     { name: "front morphology", status: ranked(activeFrontMorphologyWeight() > 0),
       value: state.frontMorphology ? `${signed(state.frontMorphology.score)} · ${state.frontMorphology.angularSectors}/8 sectors` : "not evaluated",
       detail: activeFrontMorphologyWeight() > 0 ? `${frontMorphologyLabel()} · rank weight ${activeFrontMorphologyWeight().toFixed(2)}` : "diagnostic · no capillarity claim" },
@@ -11845,6 +11960,8 @@ function renderConstraintLedger(state, mode = "configured") {
       detail: formalChargeTarget?.available ? `weight ${activeFormalChargeWeight().toFixed(2)}` : "no complete supplied oxidation-state channel" },
     { name: "surface completion", status: ranked(activeSurfaceCompletionWeight() > 0),
       value: activeSurfaceCompletionWeight() > 0 ? "ranked" : "diagnostic", detail: `weight ${activeSurfaceCompletionWeight().toFixed(2)}` },
+    { name: "bulk–surface driving", status: ranked(activeGrowthDrivingWeight() > 0),
+      value: activeGrowthDrivingWeight() > 0 ? growthDrivingLabel() : "disabled", detail: `weight ${activeGrowthDrivingWeight().toFixed(2)}` },
     { name: "front morphology", status: ranked(activeFrontMorphologyWeight() > 0),
       value: activeFrontMorphologyWeight() > 0 ? frontMorphologyLabel() : "diagnostic", detail: `weight ${activeFrontMorphologyWeight().toFixed(2)}` },
     { name: "capillary geometry", status: ranked(activeCapillaryGeometryWeight() > 0),
@@ -12969,6 +13086,18 @@ chargePreferenceSelect.addEventListener("change", () => {
 surfacePreferenceSelect.addEventListener("change", () => {
   const value = surfacePreferenceSelect.value;
   surfacePreference = value === "none" || value === "strong" ? value : "soft";
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+growthDrivingSelect.addEventListener("change", () => {
+  const value = growthDrivingSelect.value;
+  growthDrivingMode = ["surface-limited", "balanced", "volume-driven"].includes(value) ? value : "none";
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+growthDrivingWeightSelect.addEventListener("change", () => {
+  const value = Number(growthDrivingWeightSelect.value);
+  growthDrivingWeight = [.12, .24, .48].includes(value) ? value : .24;
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
 });

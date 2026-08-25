@@ -3990,3 +3990,28 @@ No protocol adds atoms, candidates, material labels, rates, or target access.
 Names such as “dendritic” and “epitaxy” describe the declared geometric
 hypothesis and do not certify a mechanism, phase diagram, kinetic law, or
 thermodynamic ensemble.
+
+## Reduced bulk–surface growth driving
+
+The material-growth stage exposes a bounded **bulk–surface driving** score for
+counterfactual action ordering. Its bulk term is the number of genuinely new
+sites divided by the largest occurrence support observed in the fitted cluster
+library. Its interface term is the coordination deficit healed on existing
+sites minus the deficit introduced on new sites, clamped to `[-1, 1]`. The
+surface-limited, balanced, and volume-driven hypotheses assign respectively
+`22%`, `50%`, and `78%` of the score to normalized fresh-site gain; the rest is
+assigned to coordination-defined interface integrity. A separate weak,
+balanced, or strong weight controls how much this score affects ranking.
+
+This functional is dimensionless, target blind, and soft: it reorders an
+identical set of exact frozen-port actions but cannot create a pose, override a
+collision or topology gate, or move an emitted atom. Candidate wire shells
+make the signed score and normalized action capacity visible, while the
+constraint ledger and experiment receipt retain the two components, their
+weights, and accepted/rejected means.
+
+The score is not a chemical potential, supersaturation, bulk or surface free
+energy, interfacial tension, classical nucleation barrier, phase diagram,
+growth rate, or physical time. It is a reduced geometric grand-potential
+surrogate whose value is to pose an inspectable hypothesis before calibrated
+thermodynamic data are available.

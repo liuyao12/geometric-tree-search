@@ -468,6 +468,23 @@
                 <option value="none">Off · report only</option>
               </select>
             </label>
+            <label class="field" for="growthDrivingSelect">
+              <span>Reduced growth driving <b id="growthDrivingHint">off · geometry reported</b></span>
+              <select id="growthDrivingSelect">
+                <option value="none" selected>Off · separate surface term only</option>
+                <option value="surface-limited">Surface-limited · compact completion</option>
+                <option value="balanced">Balanced · bulk–surface competition</option>
+                <option value="volume-driven">Volume-driven · rapid incorporation</option>
+              </select>
+            </label>
+            <label class="field" for="growthDrivingWeightSelect">
+              <span>Driving weight <b>dimensionless soft rank</b></span>
+              <select id="growthDrivingWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
             <label class="field" for="frontMorphologySelect">
               <span>Mesoscopic front morphology <b id="frontMorphologyHint">neutral · diagnostic</b></span>
               <select id="frontMorphologySelect">
@@ -1173,7 +1190,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-98"></script>
+  <script type="module" src="./app.js?v=20260825-99"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>
