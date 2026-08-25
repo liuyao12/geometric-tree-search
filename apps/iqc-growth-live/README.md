@@ -179,6 +179,27 @@ change, a confounded multi-factor comparison, or a cross-input descriptive
 comparison. Structural-output, branch, causal-depth, classification, local-test,
 and neighborhood-work deltas are reported as run 2 minus run 1. Even a one-factor
 label excludes only recorded app settings—not hidden experimental confounders.
+
+Build 123 also retains the coordinate-free **structural-leap series** behind
+each saved summary. The comparison overlays explicit atom count after every
+GCTS search update, marks accepted, rejected, and finite-fixed-point states,
+and reports the first update at which atom count, placed-cluster count, or
+causal depth differs. Final atom and cluster deltas, representation
+amplification, and cumulative accepted/rejected branch work remain tied to the
+same input-identity audit. Properly matched runs therefore show how two declared
+geometric protocols diverge through successive certified structural states,
+not only how their final totals differ. Legacy summaries fail visibly until
+they are saved again; saving an identical old state upgrades it rather than
+creating a fake replicate. The live receipt and notebook retain at most the
+latest 24 structural leaps and report both the total event count and whether
+that bounded history was truncated.
+
+The horizontal coordinate is a discrete search-update index, not physical
+time. Straight segments connect recorded structural states only; they do not
+interpolate atom positions or imply velocities, relaxation paths, kinetic
+rates, transition probabilities, or elapsed time. Different input hashes stay
+descriptive even when their curves look similar.
+
 The notebook never restores or executes a run, never stores atom
 coordinates, and never substitutes for the downloadable receipt. Clearing it is
 a two-click action and does not affect downloaded files or the marking library.

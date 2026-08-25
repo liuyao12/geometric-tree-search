@@ -1161,6 +1161,11 @@
           <article id="notebookInterventionAudit" class="notebook-intervention-audit" aria-live="polite">
             <header><small>intervention audit</small><strong>select two runs</strong><span>input identity and changed assumptions will be checked before any causal comparison</span></header>
           </article>
+          <article id="notebookTrajectoryAudit" class="notebook-trajectory-audit" aria-live="polite">
+            <header><small>structural-leap comparison</small><strong>select two runs</strong><span>coordinate-free leap histories will be aligned by search update, never by physical time</span></header>
+            <svg id="notebookTrajectoryPlot" viewBox="0 0 280 118" role="img" aria-label="Explicit atoms represented after each structural leap"></svg>
+            <div id="notebookTrajectorySummary" class="notebook-trajectory-summary"></div>
+          </article>
         </section>
 
         <section class="legend-section">
@@ -1371,7 +1376,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-122"></script>
+  <script type="module" src="./app.js?v=20260825-123"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

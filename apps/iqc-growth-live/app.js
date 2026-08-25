@@ -338,6 +338,9 @@ const notebookState = $("notebookState");
 const notebookEntries = $("notebookEntries");
 const notebookComparison = $("notebookComparison");
 const notebookInterventionAudit = $("notebookInterventionAudit");
+const notebookTrajectoryAudit = $("notebookTrajectoryAudit");
+const notebookTrajectoryPlot = $("notebookTrajectoryPlot");
+const notebookTrajectorySummary = $("notebookTrajectorySummary");
 const runStateText = $("runStateText");
 const stageEyebrow = $("stageEyebrow");
 const stageTitle = $("stageTitle");
@@ -861,6 +864,7 @@ let selectedLeapIndex = -1;
 let leapEventCount = 0;
 let selectedLeapPhysicsId = "steric";
 let selectedLeapPhysicsFilter = "all";
+const MAXIMUM_RETAINED_STRUCTURAL_LEAPS = 24;
 let growthMechanismEvents = [];
 let growthMechanismTotals = {};
 let growthPoseAuditsByLeap = new Map();
@@ -6148,7 +6152,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-122",
+      buildId: "20260825-123",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7047,6 +7051,10 @@ async function buildExperimentReceipt() {
       grammarDecisions,
       localOracleCalls: oracleCalls,
       liveCertificate: liveGrowthCertificate(),
+      structuralLeapHistory: { totalEvents: leapEventCount, retainedEvents: leapHistory.length,
+        maximumRetainedEvents: MAXIMUM_RETAINED_STRUCTURAL_LEAPS,
+        truncated: leapEventCount > leapHistory.length,
+        alignment: "discrete GCTS search update; not physical time" },
       structuralLeapCertificates: leapHistory.map((leap) => ({
         index: leap.index, status: leap.status, label: leap.label,
         before: leap.before, proposal: leap.proposal, tests: leap.tests, after: leap.after,
@@ -7381,6 +7389,26 @@ function experimentNotebookSummary(receipt) {
   const strongestClaim = receipt.evidenceBoundary.stationaryProductionCertified
     ? "stationary structural production certified"
     : certificate?.state || receipt.evidenceBoundary.benchmarkGate || "structural evidence only";
+  const structuralLeaps = search?.structuralLeapCertificates || [];
+  let cumulativeAccepted = 0; let cumulativeRejected = 0;
+  const initialLeapState = structuralLeaps[0]?.before || {
+    atoms: search?.explicitSites ?? receipt.input.atomCount, clusters: 0, frontier: 0,
+  };
+  const initialLeapStep = Math.max(0, (structuralLeaps[0]?.index || 1) - 1);
+  const trajectoryPoints = [{ step: initialLeapStep, status: initialLeapStep ? "retained-window start" : "seed", atoms: initialLeapState.atoms,
+    clusters: initialLeapState.clusters || 0, frontier: initialLeapState.frontier || 0,
+    acceptedThisLeap: 0, rejectedThisLeap: 0, cumulativeAccepted: 0, cumulativeRejected: 0, depth: 0 }];
+  structuralLeaps.forEach((leap, index) => {
+    cumulativeAccepted += leap.after?.accepted || 0;
+    cumulativeRejected += leap.after?.rejected || 0;
+    trajectoryPoints.push({ step: leap.index ?? initialLeapStep + index + 1, status: leap.status, atoms: leap.after?.atoms ?? trajectoryPoints.at(-1).atoms,
+      clusters: leap.after?.clusters ?? trajectoryPoints.at(-1).clusters,
+      frontier: leap.before?.frontier ?? 0,
+      proposedCandidates: leap.proposal?.candidates || 0,
+      proposedSites: leap.proposal?.sites || 0,
+      acceptedThisLeap: leap.after?.accepted || 0, rejectedThisLeap: leap.after?.rejected || 0,
+      cumulativeAccepted, cumulativeRejected, depth: leap.after?.depth || 0 });
+  });
   return {
     id: receipt.receiptSha256.slice(0, 16),
     savedAt: receipt.generatedAt,
@@ -7415,6 +7443,13 @@ function experimentNotebookSummary(receipt) {
     strongestClaim,
     benchmarkGate: receipt.evidenceBoundary.benchmarkGate,
     physicalTimeModeled: receipt.evidenceBoundary.physicalElapsedTimeModeled,
+    trajectory: { alignment: "structural leap index", points: trajectoryPoints,
+      leapCount: structuralLeaps.length,
+      totalLeapEvents: search?.structuralLeapHistory?.totalEvents ?? structuralLeaps.length,
+      maximumRetainedLeapEvents: search?.structuralLeapHistory?.maximumRetainedEvents ?? MAXIMUM_RETAINED_STRUCTURAL_LEAPS,
+      historyTruncated: search?.structuralLeapHistory?.truncated ?? false,
+      targetUsed: structuralLeaps.some((leap) => leap.targetUsed),
+      physicalTimeModeled: false, dynamicsIntegrated: false, coordinatesEmbedded: false },
     interventionFactors: notebookInterventionFactors(receipt),
     coordinatesEmbedded: false,
   };
@@ -7549,6 +7584,115 @@ function renderNotebookInterventionAudit(selected) {
   notebookInterventionAudit.append(identity, factors, outcomes, boundary);
 }
 
+function notebookTrajectoryComparison(first, second) {
+  const firstPoints = first?.trajectory?.points || [];
+  const secondPoints = second?.trajectory?.points || [];
+  if (!firstPoints.length || !secondPoints.length) return null;
+  const firstByStep = new Map(firstPoints.map((point) => [point.step, point]));
+  const secondByStep = new Map(secondPoints.map((point) => [point.step, point]));
+  const minimumStep = Math.min(firstPoints[0].step, secondPoints[0].step);
+  const maximumStep = Math.max(firstPoints.at(-1).step, secondPoints.at(-1).step);
+  let firstDivergence = null;
+  for (let step = minimumStep; step <= maximumStep; step++) {
+    const a = firstByStep.get(step); const b = secondByStep.get(step);
+    if (!a || !b || a.atoms !== b.atoms || a.clusters !== b.clusters || a.depth !== b.depth) {
+      firstDivergence = step; break;
+    }
+  }
+  const firstFinal = firstPoints.at(-1); const secondFinal = secondPoints.at(-1);
+  return { firstPoints, secondPoints, minimumStep, maximumStep, firstDivergence,
+    sameInput: Boolean(first.inputIdentity && first.inputIdentity === second.inputIdentity),
+    alignedSteps: [...firstByStep.keys()].filter((step) => secondByStep.has(step)).length,
+    atomDelta: secondFinal.atoms - firstFinal.atoms,
+    clusterDelta: secondFinal.clusters - firstFinal.clusters,
+    depthDelta: secondFinal.depth - firstFinal.depth,
+    firstAmplification: firstFinal.atoms / Math.max(1, firstPoints[0].atoms),
+    secondAmplification: secondFinal.atoms / Math.max(1, secondPoints[0].atoms),
+    firstAccepted: firstFinal.cumulativeAccepted || 0, secondAccepted: secondFinal.cumulativeAccepted || 0,
+    firstRejected: firstFinal.cumulativeRejected || 0, secondRejected: secondFinal.cumulativeRejected || 0,
+    historyTruncated: Boolean(first.trajectory.historyTruncated || second.trajectory.historyTruncated),
+    targetUsed: Boolean(first.trajectory.targetUsed || second.trajectory.targetUsed),
+    physicalTimeModeled: false, dynamicsIntegrated: false, coordinatesEmbedded: false };
+}
+
+function renderNotebookTrajectoryAudit(selected) {
+  notebookTrajectoryPlot.replaceChildren(); notebookTrajectorySummary.replaceChildren();
+  const heading = notebookTrajectoryAudit.querySelector("header");
+  const title = heading.querySelector("strong"); const detail = heading.querySelector("span");
+  if (selected.length !== 2) {
+    notebookTrajectoryAudit.className = "notebook-trajectory-audit waiting";
+    title.textContent = "select two runs";
+    detail.textContent = "Coordinate-free leap histories will be aligned by search update, never by physical time.";
+    return;
+  }
+  const comparison = notebookTrajectoryComparison(selected[0], selected[1]);
+  if (!comparison) {
+    notebookTrajectoryAudit.className = "notebook-trajectory-audit unavailable";
+    title.textContent = "legacy trajectory unavailable";
+    detail.textContent = "Save both runs again with Build 123 to retain their structural-leap series.";
+    return;
+  }
+  notebookTrajectoryAudit.className = `notebook-trajectory-audit ${comparison.sameInput ? "controlled" : "descriptive"}`;
+  title.textContent = comparison.firstDivergence === null ? "same recorded structural path" : `first divergence at leap ${comparison.firstDivergence}`;
+  detail.textContent = comparison.sameInput
+    ? `${comparison.alignedSteps} aligned states from one observed input · protocol effects remain model-dependent${comparison.historyTruncated ? " · at least one 24-leap history is truncated" : ""}`
+    : "Observed input digests differ; trajectories are shown descriptively and cannot be attributed to the protocol.";
+  const svg = notebookTrajectoryPlot; const svgNamespace = "http://www.w3.org/2000/svg";
+  const makeSvg = (name, attributes = {}) => {
+    const element = document.createElementNS(svgNamespace, name);
+    Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, value));
+    return element;
+  };
+  const allPoints = [...comparison.firstPoints, ...comparison.secondPoints];
+  const minimumAtoms = Math.min(...allPoints.map((point) => point.atoms));
+  const maximumAtoms = Math.max(...allPoints.map((point) => point.atoms));
+  const atomRange = Math.max(1, maximumAtoms - minimumAtoms);
+  const left = 31; const top = 10; const width = 238; const height = 78;
+  const x = (step) => left + width * (step - comparison.minimumStep)
+    / Math.max(1, comparison.maximumStep - comparison.minimumStep);
+  const y = (atomsValue) => top + height * (1 - (atomsValue - minimumAtoms) / atomRange);
+  [0, .5, 1].forEach((fraction) => {
+    svg.append(makeSvg("line", { x1: left, x2: left + width, y1: top + height * fraction,
+      y2: top + height * fraction, class: "grid" }));
+  });
+  if (comparison.firstDivergence !== null) svg.append(makeSvg("line", {
+    x1: x(comparison.firstDivergence), x2: x(comparison.firstDivergence), y1: top, y2: top + height,
+    class: "divergence",
+  }));
+  [[comparison.firstPoints, "first", selected[0]], [comparison.secondPoints, "second", selected[1]]]
+    .forEach(([points, className, entry]) => {
+      const path = makeSvg("path", { d: points.map((point, index) => `${index ? "L" : "M"}${x(point.step).toFixed(2)},${y(point.atoms).toFixed(2)}`).join(" "), class: className });
+      svg.append(path);
+      points.forEach((point) => {
+        const circle = makeSvg("circle", { cx: x(point.step), cy: y(point.atoms), r: point.status === "fixed" ? 3.1 : 2.3,
+          class: `${className} ${point.status}` });
+        const tooltip = makeSvg("title");
+        tooltip.textContent = `${entry.material} · leap ${point.step} · ${point.atoms} atoms · ${point.clusters} clusters · depth ${point.depth} · +${point.acceptedThisLeap}/−${point.rejectedThisLeap} branches`;
+        circle.append(tooltip); svg.append(circle);
+      });
+    });
+  const yTop = makeSvg("text", { x: left - 4, y: top + 3, class: "axis", "text-anchor": "end" }); yTop.textContent = maximumAtoms;
+  const yBottom = makeSvg("text", { x: left - 4, y: top + height + 2, class: "axis", "text-anchor": "end" }); yBottom.textContent = minimumAtoms;
+  const xLabel = makeSvg("text", { x: left + width / 2, y: 106, class: "axis", "text-anchor": "middle" }); xLabel.textContent = "structural leap index →";
+  const legendFirst = makeSvg("text", { x: left, y: 114, class: "legend first" }); legendFirst.textContent = `1 · ${selected[0].material}`;
+  const legendSecond = makeSvg("text", { x: left + width, y: 114, class: "legend second", "text-anchor": "end" }); legendSecond.textContent = `2 · ${selected[1].material}`;
+  svg.append(yTop, yBottom, xLabel, legendFirst, legendSecond);
+  const tiles = [
+    ["first divergence", comparison.firstDivergence === null ? "none" : `leap ${comparison.firstDivergence}`, "atoms / clusters / depth"],
+    ["final explicit atoms", signedNotebookDelta(comparison.atomDelta), "run 2 − run 1"],
+    ["representation gain", `${comparison.firstAmplification.toFixed(2)}× → ${comparison.secondAmplification.toFixed(2)}×`, "run 1 → run 2"],
+    ["accepted branches", `${comparison.firstAccepted} → ${comparison.secondAccepted}`, `rejected ${comparison.firstRejected} → ${comparison.secondRejected}`],
+  ];
+  tiles.forEach(([label, value, note]) => {
+    const tile = document.createElement("span");
+    tile.innerHTML = `<small>${label}</small><strong>${value}</strong><em>${note}</em>`;
+    notebookTrajectorySummary.append(tile);
+  });
+  const boundary = document.createElement("p");
+  boundary.textContent = "Horizontal position is a discrete GCTS search update, not elapsed time. Lines connect certified structural states; they are not atomistic trajectories, rates, kinetics, or interpolated configurations.";
+  notebookTrajectorySummary.append(boundary);
+}
+
 function renderExperimentNotebook() {
   notebookState.textContent = `${experimentNotebookEntries.length}/${MAX_EXPERIMENT_NOTEBOOK_ENTRIES} saved runs`;
   clearNotebookButton.disabled = experimentNotebookEntries.length === 0;
@@ -7576,6 +7720,7 @@ function renderExperimentNotebook() {
   const selected = selectedNotebookEntryIds.map((id) => experimentNotebookEntries.find((entry) => entry.id === id)).filter(Boolean);
   notebookComparison.replaceChildren();
   renderNotebookInterventionAudit(selected);
+  renderNotebookTrajectoryAudit(selected);
   if (selected.length !== 2) {
     const note = document.createElement("p");
     note.textContent = selected.length ? "Select one more saved run to compare." : "Select two saved runs to compare.";
@@ -7608,8 +7753,15 @@ async function saveCurrentExperimentNotebookEntry() {
     const receipt = await buildExperimentReceipt();
     const duplicate = experimentNotebookEntries.find((entry) => entry.experimentStateSha256 === receipt.experimentStateSha256);
     if (duplicate) {
+      if (!duplicate.trajectory?.points?.length) {
+        Object.assign(duplicate, experimentNotebookSummary(receipt));
+        persistExperimentNotebook();
+        receiptStatus.textContent = "Existing run upgraded with its coordinate-free structural-leap history.";
+      }
       selectedNotebookEntryIds = [duplicate.id];
-      receiptStatus.textContent = "This exact experiment state is already saved.";
+      if (duplicate.trajectory?.points?.length && !receiptStatus.textContent.includes("upgraded")) {
+        receiptStatus.textContent = "This exact experiment state is already saved.";
+      }
     } else {
       const entry = experimentNotebookSummary(receipt);
       experimentNotebookEntries.push(entry);
@@ -13645,7 +13797,7 @@ function recordStructuralLeap(leap) {
     physicalTimeModeled: false, dynamicsIntegrated: false };
   frozen.physicsTranslation = physicsTranslationRecords(frozen);
   leapHistory.push(frozen);
-  if (leapHistory.length > 24) leapHistory.shift();
+  if (leapHistory.length > MAXIMUM_RETAINED_STRUCTURAL_LEAPS) leapHistory.shift();
   selectedLeapIndex = leapHistory.length - 1;
   renderStructuralLeap(frozen);
 }
