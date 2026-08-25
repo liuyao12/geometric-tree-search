@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260824-shell-curriculum-v209";
+} from "./engine.js?v=20260824-shell-curriculum-v210";
 
 const $ = (id) => document.getElementById(id);
 
@@ -1944,7 +1944,7 @@ function configKey() {
     learned_layer_macro: isRl,
     learned_layer_macro_max_motif_tiles: 8,
     learned_layer_macro_motif_node_limit: 2500,
-    learned_layer_macro_discovery_time_ms: 15000,
+    learned_layer_macro_discovery_time_ms: 45000,
     template_preflight: isStructural,
     periodic_patch_unbounded: tilingStrategy === "translational",
     periodic_motif_node_limit: tilingStrategy === "translational" ? 2500 : null,
@@ -3013,7 +3013,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260824-shell-curriculum-v209", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260824-shell-curriculum-v210", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3526,6 +3526,18 @@ function formatGrowthResult(result, target) {
   if (result?.resultKind === "known_aperiodic_construction") {
     return `${result.label} · known SCD construction to ${target} tiles ${formatElapsed(targetPoint?.milliseconds ?? result.milliseconds)}`;
   }
+  if (result?.criterion === "shell") {
+    const shell = result.targetValue ?? target;
+    if (result.resultKind === "no_tiling" && result.certified && result.canTile === false) {
+      return `${result.label} certified that shell ${shell} is impossible, hence no tiling exists ${formatElapsed(result.milliseconds)}`;
+    }
+    if (result.success) {
+      return `${result.label} completed shell ${shell} with ${result.tileCount} tiles ${formatElapsed(result.milliseconds)}${learningSuffix}`;
+    }
+    const maxShell = result.stats?.max_complete_shell_depth ?? 0;
+    const maxLive = result.stats?.max_live_tiles ?? result.tileCount ?? 0;
+    return `${result.label} inconclusive · max shell ${maxShell} · max ${maxLive} live${stopSuffix}${learningSuffix}`;
+  }
   if (
     proofMode
     && result?.certified
@@ -3686,7 +3698,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260824-shell-curriculum-v209", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260824-shell-curriculum-v210", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};

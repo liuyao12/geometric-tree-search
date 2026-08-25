@@ -28,7 +28,7 @@ const config = {
   learned_layer_macro: true,
   learned_layer_macro_max_motif_tiles: 8,
   learned_layer_macro_motif_node_limit: 2500,
-  learned_layer_macro_discovery_time_ms: 15000,
+  learned_layer_macro_discovery_time_ms: 45000,
   known_periodic_template: null,
   initial_patch: null,
   proposal_program: null,

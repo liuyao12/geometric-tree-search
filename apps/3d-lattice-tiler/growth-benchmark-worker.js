@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260824-shell-curriculum-v209";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260824-shell-curriculum-v210";
 
 let activeSequence = 0;
 let stopToken = { stop: false };
@@ -120,7 +120,7 @@ async function runMode(sequence, baseConfig, mode) {
     learned_layer_macro: mode.id === "rl" || mode.id === "gcts_rl",
     learned_layer_macro_max_motif_tiles: 8,
     learned_layer_macro_motif_node_limit: 2500,
-    learned_layer_macro_discovery_time_ms: 15000,
+    learned_layer_macro_discovery_time_ms: 45000,
     known_periodic_template: null,
     initial_patch: null,
     greedy_no_backtrack: false,

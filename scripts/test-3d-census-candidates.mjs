@@ -153,6 +153,7 @@ assert.doesNotMatch(growthWorkerSource, /tiles > best/);
 assert.match(growthWorkerSource, /const exactNoTiling = final\?\.result_kind === "no_tiling"/);
 assert.match(growthWorkerSource, /if \(exactNoTiling\) \{[\s\S]*?tiles: 0, terminal: true/);
 assert.match(growthAppSource, /certified that no tiling is possible/);
+assert.match(growthAppSource, /result\?\.criterion === "shell"[\s\S]*?completed shell \$\{shell\}[\s\S]*?max shell \$\{maxShell\}/);
 assert.match(growthAppSource, /GCTS[^\n]*inconclusive|\["gcts", "gcts_rl"\][\s\S]*?searchIncomplete/);
 assert.doesNotMatch(sourceTilerHtml, /name="criterion" value="layer"/);
 assert.match(sourceTilerHtml, /Order-independent face-adjacency shell; exhaustive failure can prove non-tiling/);
