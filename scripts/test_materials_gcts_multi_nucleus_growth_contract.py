@@ -45,7 +45,8 @@ def test_multi_nucleus_growth_uses_only_observed_occurrences() -> None:
     assert "interfaceRingMaterial" in APP
 
     for invariant in (
-        'selection: "deterministic farthest-point traversal of observed cluster occurrence centers"',
+        "selection: nucleationSelectionAudit",
+        'additionalNuclei: "atom-disjoint farthest-point traversal within one recurring fitted cluster type"',
         'orientations: "observed proper-SE(3) occurrence poses; no artificial grain rotation"',
         "exactSpeciesAndCollisionGatesPreserved: true",
         "targetUsedToSelectSeeds: false",

@@ -42,12 +42,15 @@ def test_microstructure_audit_is_visible_reproducible_and_non_generative() -> No
     assert "heterogeneous-geometry audit" in readme
     assert "not automatic vacancy, dislocation, grain, or grain-boundary labels" in normalized_readme
 
-    # This audit is presentation/receipt evidence only. It must not enter
-    # candidate admission, action ranking, or the marking training payload.
+    # Frozen local roles may choose an observed initial seed, but they must not
+    # alter candidate geometry, admission, action ranking, or marking training.
     search_logic = source[source.index("function ruleMarkingScore"):source.index("function renderMarkingLibrary")]
-    assert "microstructureEvidence" not in search_logic
+    assert search_logic.count("microstructureEvidence") == 1
+    assert "const roleByIndex = new Map((microstructureEvidence?.siteRoles || [])" in search_logic
+    assert "candidateGeometryChanged: false" in search_logic
+    assert "heldoutTargetUsed: false" in search_logic
     assert "const { adjacencyReach, coordinationBaselines, siteRoles, ...audit }" in source
-    assert 'app.js?v=20260825-95' in html
+    assert 'app.js?v=20260825-96' in html
 
 
 if __name__ == "__main__":

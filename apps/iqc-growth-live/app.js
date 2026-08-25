@@ -225,6 +225,8 @@ const explorationBadge = $("explorationBadge");
 const explorationBadgeLabel = $("explorationBadgeLabel");
 const growthNucleiSelect = $("growthNucleiSelect");
 const growthNucleiHint = $("growthNucleiHint");
+const nucleationSiteSelect = $("nucleationSiteSelect");
+const nucleationSiteHint = $("nucleationSiteHint");
 const nucleiBadge = $("nucleiBadge");
 const nucleiBadgeLabel = $("nucleiBadgeLabel");
 const nucleusInterfaceInspector = $("nucleusInterfaceInspector");
@@ -822,6 +824,8 @@ let feedExposureWeight = .24;
 let geometricExplorationScale = 0;
 let growthPathSeed = 1;
 let requestedGrowthNuclei = 1;
+let nucleationSiteMode = "replay";
+let nucleationSelectionAudit = null;
 let initializedGrowthNuclei = 0;
 let coalescenceEvents = 0;
 let crossNucleusMergeContacts = 0;
@@ -858,7 +862,7 @@ const GROWTH_PROTOCOL_DEFAULTS = Object.freeze({
   loopClosurePreference: "none", loopClosureWeight: .24,
   arrivalPathMode: "none", arrivalPathWeight: .24,
   feedExposureMode: "none", feedExposureWeight: .24,
-  geometricExplorationScale: 0, requestedGrowthNuclei: 1,
+  geometricExplorationScale: 0, requestedGrowthNuclei: 1, nucleationSiteMode: "replay",
   growthScheduling: "commuting", hierarchyEnabled: true,
 });
 
@@ -872,7 +876,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
       thermalFieldMode: "none",
       affineLoadMode: "none", robustnessPreference: "none", microstructureCouplingMode: "none",
       loopClosurePreference: "none", arrivalPathMode: "none", geometricExplorationScale: 0,
-      requestedGrowthNuclei: 1, growthScheduling: "commuting", hierarchyEnabled: true },
+      requestedGrowthNuclei: 1, nucleationSiteMode: "interior", growthScheduling: "commuting", hierarchyEnabled: true },
   },
   epitaxy: {
     label: "coherent thin-film epitaxy", summary: "Supported film with coherent hexagonal registry, planar capillary balance, a +Z reduced cold side, upward feed geometry, and robustness ordering.",
@@ -885,7 +889,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
       robustnessPreference: "margin", robustnessWeight: .24, microstructureCouplingMode: "none",
       loopClosurePreference: "none", arrivalPathMode: "declared-drive", arrivalPathWeight: .24,
       feedExposureMode: "top", feedExposureWeight: .24,
-      geometricExplorationScale: 0, requestedGrowthNuclei: 1, growthScheduling: "commuting", hierarchyEnabled: true },
+      geometricExplorationScale: 0, requestedGrowthNuclei: 1, nucleationSiteMode: "surface", growthScheduling: "commuting", hierarchyEnabled: true },
   },
   "misfit-film": {
     label: "misfit thin film", summary: "The coherent-film protocol with a declared +5% hexagonal support mismatch; no elastic relaxation or dislocations are inserted.",
@@ -898,7 +902,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
       robustnessPreference: "margin", robustnessWeight: .24, microstructureCouplingMode: "none",
       loopClosurePreference: "consensus", loopClosureWeight: .12, arrivalPathMode: "declared-drive", arrivalPathWeight: .24,
       feedExposureMode: "top", feedExposureWeight: .24,
-      geometricExplorationScale: 0, requestedGrowthNuclei: 1, growthScheduling: "commuting", hierarchyEnabled: true },
+      geometricExplorationScale: 0, requestedGrowthNuclei: 1, nucleationSiteMode: "surface", growthScheduling: "commuting", hierarchyEnabled: true },
   },
   directional: {
     label: "directional solidification", summary: "A +Z attachment direction and cold side, minority-species rejection toward the hot side, coherent facet/front balance, and narrow alternatives.",
@@ -912,7 +916,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
       robustnessPreference: "margin", robustnessWeight: .12, microstructureCouplingMode: "none",
       loopClosurePreference: "none", arrivalPathMode: "declared-drive", arrivalPathWeight: .24,
       feedExposureMode: "top", feedExposureWeight: .24,
-      geometricExplorationScale: .05, requestedGrowthNuclei: 1, growthScheduling: "commuting", hierarchyEnabled: true },
+      geometricExplorationScale: .05, requestedGrowthNuclei: 1, nucleationSiteMode: "surface", growthScheduling: "commuting", hierarchyEnabled: true },
   },
   dendritic: {
     label: "dendritic growth hypothesis", summary: "A finite nucleus with outward drive/quench, minority-species rejection toward the hot side, exposed-tip/solid-angle preference, and broader path exploration.",
@@ -926,7 +930,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
       robustnessPreference: "none", microstructureCouplingMode: "none", loopClosurePreference: "none",
       arrivalPathMode: "radial-outward", arrivalPathWeight: .24, geometricExplorationScale: .15,
       feedExposureMode: "hemisphere", feedExposureWeight: .12,
-      requestedGrowthNuclei: 1, growthScheduling: "commuting", hierarchyEnabled: true },
+      requestedGrowthNuclei: 1, nucleationSiteMode: "interior", growthScheduling: "commuting", hierarchyEnabled: true },
   },
   impingement: {
     label: "polycrystal impingement", summary: "Four dispersed observed nuclei, pose-interface following, multi-parent loop closure, and simultaneous compatible-front scheduling.",
@@ -938,7 +942,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
       thermalFieldMode: "none",
       microstructureCouplingMode: "interface-follow", microstructureCouplingWeight: .24,
       loopClosurePreference: "consensus", loopClosureWeight: .24, arrivalPathMode: "none",
-      geometricExplorationScale: .05, requestedGrowthNuclei: 4, growthScheduling: "commuting", hierarchyEnabled: true },
+      geometricExplorationScale: .05, requestedGrowthNuclei: 4, nucleationSiteMode: "dispersed", growthScheduling: "commuting", hierarchyEnabled: true },
   },
   "pore-fill": {
     label: "constricted-pore filling", summary: "Hard hourglass confinement with concavity filling, coordination healing, and parent-normal arrival accessibility.",
@@ -951,7 +955,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
       microstructureCouplingMode: "gap-heal", microstructureCouplingWeight: .24,
       loopClosurePreference: "consensus", loopClosureWeight: .12,
       arrivalPathMode: "parent-outward", arrivalPathWeight: .24, geometricExplorationScale: 0,
-      requestedGrowthNuclei: 1, growthScheduling: "commuting", hierarchyEnabled: true },
+      requestedGrowthNuclei: 1, nucleationSiteMode: "gap", growthScheduling: "commuting", hierarchyEnabled: true },
   },
 });
 const GROWTH_PROTOCOL_CONTROL_IDS = new Set([
@@ -965,7 +969,7 @@ const GROWTH_PROTOCOL_CONTROL_IDS = new Set([
   "microstructureCouplingSelect", "microstructureCouplingWeightSelect", "loopClosurePreferenceSelect",
   "loopClosureWeightSelect", "arrivalPathSelect", "arrivalPathWeightSelect", "explorationScaleSelect",
   "feedExposureSelect", "feedExposureWeightSelect",
-  "growthNucleiSelect", "growthSchedulingSelect",
+  "growthNucleiSelect", "nucleationSiteSelect", "growthSchedulingSelect",
 ]);
 
 function renderPeriodicSelection() {
@@ -5714,7 +5718,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-95",
+      buildId: "20260825-96",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -6340,10 +6344,11 @@ async function buildExperimentReceipt() {
         physicalTimeIntegrated: false,
       },
       multiNucleusGrowth: {
-        role: "geometry-only co-growth from farthest-separated cluster occurrences already present in the supplied configuration",
+        role: "geometry-only co-growth from selected fitted cluster occurrences already present in the supplied configuration",
         requestedNuclei: requestedGrowthNuclei,
         initializedNuclei: initializedGrowthNuclei,
-        selection: "deterministic farthest-point traversal of observed cluster occurrence centers",
+        selection: nucleationSelectionAudit,
+        additionalNuclei: "atom-disjoint farthest-point traversal within one recurring fitted cluster type",
         orientations: "observed proper-SE(3) occurrence poses; no artificial grain rotation",
         coalescenceEvents,
         crossNucleusSharedSiteContacts: crossNucleusMergeContacts,
@@ -6364,6 +6369,8 @@ async function buildExperimentReceipt() {
         exactSpeciesAndCollisionGatesPreserved: true,
         targetUsedToSelectSeeds: false,
         nucleationRateInferred: false,
+        nucleationBarrierInferred: false,
+        criticalNucleusSizeInferred: false,
         grainIdentityInferred: false,
         interfacialEnergyInferred: false,
         physicalTimeIntegrated: false,
@@ -8722,6 +8729,15 @@ function growthSeedType(occurrenceIndex) {
     ? occurrence.type : learnedClusters.labels[occurrenceIndex];
 }
 
+const NUCLEATION_SITE_LABELS = Object.freeze({
+  replay: "replay anchor", interior: "homogeneous interior", surface: "exposed support",
+  gap: "gap / residual adjacent", interface: "pose interface", dispersed: "dispersed observed sites",
+});
+
+function nucleationSiteLabel() {
+  return NUCLEATION_SITE_LABELS[nucleationSiteMode] || NUCLEATION_SITE_LABELS.replay;
+}
+
 function observedGrowthSeedIndices() {
   const requested = Math.max(1, requestedGrowthNuclei);
   const replaySeed = overlapGrammar.replaySeedIndex;
@@ -8732,7 +8748,30 @@ function observedGrowthSeedIndices() {
     growthSeedSites(index).map((site) => ({ ...site,
       p: site.local.clone().applyQuaternion(occurrence.rotation).add(occurrence.position) }))).sites
     .map((site) => site.referenceIndex))]));
-  let first = replaySeed;
+  const roleByIndex = new Map((microstructureEvidence?.siteRoles || []).map((role) => [role.index, role]));
+  const centroid = eligible.reduce((sum, entry) => sum.add(entry.occurrence.position), new THREE.Vector3())
+    .multiplyScalar(1 / Math.max(1, eligible.length));
+  const features = eligible.map((entry) => {
+    const support = [...(referenceSupports.get(entry.index) || [])];
+    const roles = support.map((index) => roleByIndex.get(index)).filter(Boolean);
+    return { ...entry,
+      boundaryMargin: growthEnvironmentSignedMargin(confinementSelect.value, entry.occurrence.position),
+      gapEvidence: roles.filter((role) => role.gapBoundary || role.literalTerminal).length,
+      interfaceEvidence: roles.filter((role) => role.poseInterface).length,
+      centroidDistance: entry.occurrence.position.distanceTo(centroid),
+    };
+  });
+  const ranked = features.slice().sort((a, b) => {
+    if (nucleationSiteMode === "interior") return b.boundaryMargin - a.boundaryMargin || a.index - b.index;
+    if (nucleationSiteMode === "surface") return a.boundaryMargin - b.boundaryMargin || a.index - b.index;
+    if (nucleationSiteMode === "gap") return b.gapEvidence - a.gapEvidence || a.index - b.index;
+    if (nucleationSiteMode === "interface") return b.interfaceEvidence - a.interfaceEvidence || a.index - b.index;
+    if (nucleationSiteMode === "dispersed") return b.centroidDistance - a.centroidDistance || a.index - b.index;
+    return (a.index === replaySeed ? -1 : 0) - (b.index === replaySeed ? -1 : 0) || a.index - b.index;
+  });
+  const evidenceAvailable = nucleationSiteMode !== "gap" && nucleationSiteMode !== "interface"
+    || ranked.some((entry) => nucleationSiteMode === "gap" ? entry.gapEvidence > 0 : entry.interfaceEvidence > 0);
+  let first = evidenceAvailable && ranked.length ? ranked[0].index : replaySeed;
   let pool = eligible;
   if (requested > 1) {
     const byType = new Map();
@@ -8745,10 +8784,8 @@ function observedGrowthSeedIndices() {
       .sort((a, b) => b[1].length - a[1].length || a[0] - b[0])[0];
     if (recurring) {
       pool = recurring[1];
-      first = pool.slice().sort((a, b) =>
-        a.occurrence.position.distanceToSquared(overlapGrammar.occurrences[replaySeed].position)
-        - b.occurrence.position.distanceToSquared(overlapGrammar.occurrences[replaySeed].position)
-        || a.index - b.index)[0].index;
+      const poolIndices = new Set(pool.map((entry) => entry.index));
+      first = ranked.find((entry) => poolIndices.has(entry.index))?.index ?? pool[0].index;
     }
   }
   const selected = [first];
@@ -8762,6 +8799,18 @@ function observedGrowthSeedIndices() {
     if (!next || next.minimumSeparation < referenceSpacing * 1.5) break;
     selected.push(next.index);
   }
+  const selectedFeatures = selected.map((index) => features.find((entry) => entry.index === index)).filter(Boolean);
+  nucleationSelectionAudit = {
+    mode: nucleationSiteMode, label: nucleationSiteLabel(), requested, selected: selected.length,
+    eligibleObservedOccurrences: eligible.length, evidenceAvailable,
+    fallback: evidenceAvailable ? null : "requested local role absent; replay anchor retained",
+    selectedBoundaryMarginsSceneUnits: selectedFeatures.map((entry) => receiptRound(entry.boundaryMargin)),
+    selectedGapResidualRoleCounts: selectedFeatures.map((entry) => entry.gapEvidence),
+    selectedPoseInterfaceRoleCounts: selectedFeatures.map((entry) => entry.interfaceEvidence),
+    selectedOccurrencesWereFitted: true, properObservedPosesPreserved: true,
+    candidateGeometryChanged: false, heldoutTargetUsed: false,
+    nucleationBarrierInferred: false, nucleationRateInferred: false, criticalNucleusSizeInferred: false,
+  };
   return selected;
 }
 
@@ -9466,7 +9515,7 @@ function currentGrowthProtocolSettings() {
     robustnessPreference, robustnessWeight, microstructureCouplingMode, microstructureCouplingWeight,
     loopClosurePreference, loopClosureWeight, arrivalPathMode, arrivalPathWeight,
     feedExposureMode, feedExposureWeight,
-    geometricExplorationScale, growthPathSeed, requestedGrowthNuclei, growthScheduling, hierarchyEnabled,
+    geometricExplorationScale, growthPathSeed, requestedGrowthNuclei, nucleationSiteMode, growthScheduling, hierarchyEnabled,
   };
 }
 
@@ -9520,7 +9569,8 @@ function applyGrowthProtocol(mode) {
   arrivalPathMode = settings.arrivalPathMode; arrivalPathWeight = settings.arrivalPathWeight;
   feedExposureMode = settings.feedExposureMode; feedExposureWeight = settings.feedExposureWeight;
   geometricExplorationScale = settings.geometricExplorationScale; growthPathSeed = 1;
-  requestedGrowthNuclei = settings.requestedGrowthNuclei; growthScheduling = settings.growthScheduling;
+  requestedGrowthNuclei = settings.requestedGrowthNuclei; nucleationSiteMode = settings.nucleationSiteMode;
+  growthScheduling = settings.growthScheduling;
   hierarchyEnabled = settings.hierarchyEnabled;
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
@@ -9678,6 +9728,7 @@ function syncStageOptions() {
     feedExposureWeightSelect.value = String(feedExposureWeight);
     explorationScaleSelect.value = String(geometricExplorationScale);
     growthNucleiSelect.value = String(requestedGrowthNuclei);
+    nucleationSiteSelect.value = nucleationSiteMode;
     growthSchedulingSelect.value = growthScheduling;
     geometryPreferenceSelect.disabled = finiteIceAnchorMode;
     strainWeightSelect.disabled = finiteIceAnchorMode || geometryPreference !== "strain";
@@ -9711,6 +9762,7 @@ function syncStageOptions() {
     feedExposureWeightSelect.disabled = finiteIceAnchorMode || feedExposureMode === "none";
     explorationScaleSelect.disabled = finiteIceAnchorMode;
     growthNucleiSelect.disabled = finiteIceAnchorMode;
+    nucleationSiteSelect.disabled = finiteIceAnchorMode;
     resampleGrowthButton.disabled = finiteIceAnchorMode || geometricExplorationScale <= 0;
     resampleGrowthButton.textContent = `↻ Resample path · seed ${growthPathSeed}`;
     growthSchedulingSelect.disabled = finiteIceAnchorMode;
@@ -9754,6 +9806,8 @@ function syncStageOptions() {
       ? `dimensionless T* ${geometricExplorationScale.toFixed(2)} · seed ${growthPathSeed}` : "greedy · T* = 0";
     growthNucleiHint.textContent = finiteIceAnchorMode ? "sealed molecular seed"
       : `${initializedGrowthNuclei || requestedGrowthNuclei} observed seed${(initializedGrowthNuclei || requestedGrowthNuclei) === 1 ? "" : "s"} · ${crossNucleusMergeContacts} interface contacts`;
+    nucleationSiteHint.textContent = finiteIceAnchorMode ? "sealed molecular seed"
+      : `${nucleationSiteLabel()}${nucleationSelectionAudit?.fallback ? " · fallback" : ""}`;
     frontMorphologyHint.textContent = frontMorphologyMode === "none"
       ? "neutral · diagnostic" : `${frontMorphologyLabel()} · weight ${frontMorphologyWeight.toFixed(2)}`;
     capillaryGeometryHint.textContent = capillaryGeometryMode === "none"
@@ -9814,9 +9868,7 @@ function syncStageOptions() {
     const explorationUse = geometricExplorationScale > 0
       ? ` Reproducible Gumbel sampling at dimensionless T*=${geometricExplorationScale.toFixed(2)} and seed ${growthPathSeed} explores alternate exact branch orders; this is not Kelvin temperature or Boltzmann sampling.`
       : " Frontier selection is deterministic greedy ordering (T*=0).";
-    const nucleiUse = requestedGrowthNuclei > 1
-      ? ` ${initializedGrowthNuclei || requestedGrowthNuclei} far-separated observed cluster occurrences seed independent pose domains; ${crossNucleusMergeContacts} cross-nucleus shared-site contacts have emerged. No nucleation rate or grain identity is inferred.`
-      : " Growth begins from one observed local cluster occurrence.";
+    const nucleiUse = ` ${initializedGrowthNuclei || requestedGrowthNuclei} fitted observed occurrence${(initializedGrowthNuclei || requestedGrowthNuclei) === 1 ? "" : "s"} selected by ${nucleationSiteLabel()}${nucleationSelectionAudit?.fallback ? " (fallback to replay anchor)" : ""}; ${crossNucleusMergeContacts} cross-nucleus shared-site contacts have emerged. No nucleation barrier, rate, critical size, or grain identity is inferred.`;
     const morphologyUse = frontMorphologyMode === "none"
       ? " Mesoscopic angular support and backing depth are reported but have zero rank weight."
       : ` A ${frontMorphologyWeight.toFixed(2)} soft ${frontMorphologyLabel()} term ranks the same exact actions from their parent-local angular support and backing-depth profile; it is not surface energy or mean curvature.`;
@@ -11126,7 +11178,7 @@ function physicsTranslationRecords(leap = null) {
       evidence: leap ? `Accepted mean coupling score ${receiptRound(acceptedMicrostructureCouplingScore / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedMicrostructureCouplingScore / Math.max(1, rejectedDecisions), 4)}.` : "No microstructure-conditioned action scored yet.",
       boundary: "These roles are geometric hypotheses, not automatic vacancies, dislocations, grains, formation energies, mobilities, or physical mechanisms." },
     { id: "multi-nucleus", process: "multiple nuclei / impingement", status: initializedGrowthNuclei > 1 ? "explicit" : "open", role: initializedGrowthNuclei > 1 ? "observed-pose co-growth" : "single local seed",
-      encoding: `${initializedGrowthNuclei || requestedGrowthNuclei} farthest-separated observed cluster occurrence${(initializedGrowthNuclei || requestedGrowthNuclei) === 1 ? "" : "s"}; lineage IDs propagate through unchanged frozen ports`,
+      encoding: `${initializedGrowthNuclei || requestedGrowthNuclei} fitted observed cluster occurrence${(initializedGrowthNuclei || requestedGrowthNuclei) === 1 ? "" : "s"}; ${nucleationSiteLabel()} selector, then atom-disjoint farthest traversal; lineage IDs propagate through unchanged frozen ports`,
       evidence: `${coalescenceEvents} coalescence action${coalescenceEvents === 1 ? "" : "s"} and ${crossNucleusMergeContacts} shared-site interface contact${crossNucleusMergeContacts === 1 ? "" : "s"} in the live state.`,
       boundary: "Observed seeds expose geometric impingement, not a nucleation rate, grain identity, interfacial energy, texture distribution, coarsening law, or elapsed time." },
     { id: "loop-closure", process: "mesoscopic elastic compatibility / seam avoidance", status: activeLoopClosureWeight() > 0 ? "soft" : "open", role: activeLoopClosureWeight() > 0 ? "multi-parent proper-SE(3) consensus" : "diagnostic",
@@ -11455,7 +11507,7 @@ function geometryConstraintEvidence(name, term, state, mode) {
     },
     "multi-nucleus interface": {
       observed: `${initializedGrowthNuclei || requestedGrowthNuclei} initialized observed pose domains · ${crossNucleusMergeContacts} shared-site contacts so far`,
-      encoding: "Each placement inherits its seed lineage. A contact is recorded only when an exact accepted cluster shares a colored site with a different initialized lineage.",
+      encoding: `${nucleationSiteLabel()} chooses only among fitted observed occurrences using boundary margin or frozen local-role evidence. Additional nuclei use atom-disjoint farthest traversal. Each placement inherits its seed lineage.`,
       searchRole: state?.nucleusInterface?.coalescenceCandidate
         ? `Diagnostic interface event with ${state.nucleusInterface.crossNucleusContacts} cross-lineage shared-site contact${state.nucleusInterface.crossNucleusContacts === 1 ? "" : "s"}.`
         : "Diagnostic only; the candidate remains within one initialized lineage.",
@@ -12940,6 +12992,12 @@ resampleGrowthButton.addEventListener("click", () => {
 growthNucleiSelect.addEventListener("change", () => {
   const value = Number(growthNucleiSelect.value);
   requestedGrowthNuclei = [1, 2, 4].includes(value) ? value : 1;
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+nucleationSiteSelect.addEventListener("change", () => {
+  nucleationSiteMode = Object.hasOwn(NUCLEATION_SITE_LABELS, nucleationSiteSelect.value)
+    ? nucleationSiteSelect.value : "replay";
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
 });

@@ -674,6 +674,17 @@
                 <option value="4">Four dispersed observed nuclei</option>
               </select>
             </label>
+            <label class="field" for="nucleationSiteSelect">
+              <span>Observed nucleation site <b id="nucleationSiteHint">replay anchor</b></span>
+              <select id="nucleationSiteSelect">
+                <option value="replay" selected>Replay anchor · fitted occurrence</option>
+                <option value="interior">Homogeneous interior · maximum boundary margin</option>
+                <option value="surface">Exposed support · minimum boundary margin</option>
+                <option value="gap">Gap / residual adjacent · cover-completion evidence</option>
+                <option value="interface">Pose interface · local orientation evidence</option>
+                <option value="dispersed">Dispersed observed sites · farthest traversal</option>
+              </select>
+            </label>
             <section id="nucleusInterfaceInspector" class="nucleus-interface-inspector" hidden>
               <header><span><small>orientation relationship</small><strong>Nucleus-pair inspector</strong></span><b id="nucleusInterfaceState">no interface pair</b></header>
               <div id="nucleusPairButtons" class="nucleus-pair-buttons" role="group" aria-label="Select a nucleus pair"></div>
@@ -1155,7 +1166,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-95"></script>
+  <script type="module" src="./app.js?v=20260825-96"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

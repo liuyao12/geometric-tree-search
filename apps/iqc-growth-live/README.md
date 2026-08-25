@@ -3758,10 +3758,15 @@ and these claim boundaries so sampled and greedy runs remain auditable.
 ## Multiple observed nuclei and geometric impingement
 
 Material Growth can start from one, two, or four cluster occurrences already
-present in the supplied configuration. For two or four nuclei, a deterministic
-farthest-point traversal chooses spatially dispersed observed occurrences; it
-does not rotate, translate, or synthesize a nucleus. Each seed therefore keeps
-its observed cluster type and proper-SE(3) pose. Every accepted descendant
+present in the supplied configuration. The **Observed nucleation site** control
+can retain the replay anchor, maximize interior boundary margin, select an
+exposed support, favor a cluster touching gap/residual evidence or a local
+pose-interface, or request dispersed sites. A missing gap/interface role fails
+closed to the replay anchor and is disclosed in the receipt. For two or four
+nuclei, atom-disjoint farthest-point traversal adds spatially separated fitted
+occurrences of one recurring type. It does not rotate, translate, or synthesize
+a nucleus. Each seed therefore keeps its observed cluster type and
+proper-SE(3) pose. Every accepted descendant
 inherits that seed lineage while all nuclei expose frozen ports into the same
 tree-search frontier.
 
@@ -3773,7 +3778,9 @@ It is useful for exploring geometric impingement and competing orientation
 domains, but it is not a grain-boundary classification, nucleation rate,
 interfacial energy, texture distribution, coarsening law, or elapsed physical
 time. The experiment receipt records requested and realized seed counts,
-selection provenance, interface contacts, and these explicit claim limits.
+selection provenance, boundary margins and role counts, interface contacts,
+and these explicit claim limits. These selectors are geometric initial-state
+hypotheses—not a nucleation barrier, rate, critical nucleus size, or probability.
 
 For every nucleus pair, an interactive orientation-relationship inspector now
 reports seed-center separation, exact shared-site registry, and a proper
