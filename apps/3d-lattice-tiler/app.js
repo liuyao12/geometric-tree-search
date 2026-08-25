@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260824-preprocess-barrier-v213";
+} from "./engine.js?v=20260824-face-backtrack-v214";
 
 const $ = (id) => document.getElementById(id);
 
@@ -2309,6 +2309,21 @@ function applyPlacementDelta(delta, { deferDisplay = false } = {}) {
     else liveFrontierPoints.delete(key);
   }
 
+  // A full snapshot can be waiting for its throttled render while newer
+  // placement deltas arrive. Keep that pending render at the current state;
+  // otherwise the older snapshot would erase faces restored by backtracking.
+  if (pendingFullUpdate) {
+    pendingFullUpdate = {
+      ...pendingFullUpdate,
+      tile_count: delta.tile_count ?? pendingFullUpdate.tile_count,
+      tile_counts: delta.tile_counts ?? pendingFullUpdate.tile_counts,
+      faces: liveFaces(),
+      frontier_points: [...liveFrontierPoints.values()],
+      frontier_stats: delta.frontier_stats ?? pendingFullUpdate.frontier_stats,
+      search_stats: delta.search_stats ?? pendingFullUpdate.search_stats
+    };
+  }
+
   if (!deferDisplay) {
     updateRunMetrics({
       tile_count: delta.tile_count,
@@ -2970,6 +2985,17 @@ function handleMessage(message) {
 }
 
 function scheduleFullUpdate(snapshot) {
+  // Synchronize the model immediately even though expensive Three.js geometry
+  // rebuilding remains throttled. Subsequent deltas must apply to this exact
+  // snapshot, not to whichever frame happened to be rendered previously.
+  resetLiveFaceStacks(snapshot);
+  resetLiveFrontierPoints(snapshot);
+  if (liveUpdateTimer) {
+    clearTimeout(liveUpdateTimer);
+    liveUpdateTimer = null;
+  }
+  liveUpdateRenderQueued = false;
+  pendingLiveSnapshot = null;
   pendingFullUpdate = snapshot;
   if (fullUpdateRenderQueued) return;
   fullUpdateRenderQueued = true;
@@ -3011,7 +3037,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260824-preprocess-barrier-v213", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260824-face-backtrack-v214", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3719,7 +3745,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260824-preprocess-barrier-v213", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260824-face-backtrack-v214", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};

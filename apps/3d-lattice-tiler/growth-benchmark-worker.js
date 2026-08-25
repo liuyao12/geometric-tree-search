@@ -1,4 +1,4 @@
-import { createTilingStream, preprocessTilingSystem, tileSpecs } from "./engine.js?v=20260824-preprocess-barrier-v213";
+import { createTilingStream, preprocessTilingSystem, tileSpecs } from "./engine.js?v=20260824-face-backtrack-v214";
 
 let activeSequence = 0;
 let stopToken = { stop: false };

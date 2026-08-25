@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260824-preprocess-barrier-v213";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260824-face-backtrack-v214";
 import {
   createInitialProposalPopulation,
   growthCurveArea,

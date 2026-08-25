@@ -79,6 +79,16 @@ assert.match(growthAppSource, /readyModes\.size === GROWTH_MODES\.length/);
 assert.match(growthAppSource, /performance\.timeOrigin \+ performance\.now\(\) \+ 100/);
 assert.match(growthAppSource, /Preprocessing \(excluded\)/);
 assert.match(
+  growthAppSource,
+  /function scheduleFullUpdate\(snapshot\) \{[\s\S]*?resetLiveFaceStacks\(snapshot\);[\s\S]*?resetLiveFrontierPoints\(snapshot\);[\s\S]*?pendingFullUpdate = snapshot;/,
+  "a throttled full render must synchronize the live face model before later deltas"
+);
+assert.match(
+  growthAppSource,
+  /if \(pendingFullUpdate\) \{[\s\S]*?faces: liveFaces\(\),[\s\S]*?frontier_points: \[\.\.\.liveFrontierPoints\.values\(\)\]/,
+  "backtracking deltas must update any full snapshot waiting to render"
+);
+assert.match(
   tilerStyleSource,
   /grid-template-rows: auto auto auto auto minmax\(190px, 1fr\);[\s\S]*?overflow-y: auto;/,
   "short desktop viewports must be able to scroll to a nonzero-height tile catalogue"
