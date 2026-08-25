@@ -6775,6 +6775,20 @@ export const createTilingStream = (() => {
             note: `Exhaustive global face-extension search found no connected ${targetVal}-tile patch containing the normalized root tile.`
           };
     }
+    // Exact GCTS markings are sound pruning rules, but exhausting a bounded
+    // growth-layer search is not by itself a non-tiling theorem.  A failed
+    // GCTS run may terminate logically only when an explicit exact
+    // obstruction above has set can_tile=false; all resource, generation-band,
+    // and merely finite-target exhaustions remain inconclusive.
+    if (
+      !success
+      && gctsFailureMarkingEnabled
+      && tilingEvidence?.can_tile !== false
+      && !searchIncomplete
+    ) {
+      noteIncompleteSearch();
+      searchStats.termination_reason ??= "bounded_gcts_target_exhausted";
+    }
     // Structural certificate searches are one-sided unless they have emitted
     // an explicit impossibility certificate.  In particular, reaching the
     // configured isohedral patch horizon is not an exhaustive enumeration of

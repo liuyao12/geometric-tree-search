@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260824-layer-curriculum-v207";
+} from "./engine.js?v=20260824-gcts-terminal-v208";
 
 const $ = (id) => document.getElementById(id);
 
@@ -1939,6 +1939,8 @@ function configKey() {
     greedy_no_backtrack: false,
     agent_exhaustive: true,
     agent_policy: isRl || tilingStrategy === "translational" ? "cold_geometry" : null,
+    seeded_tie_breaks: isRl || tilingStrategy === "translational",
+    random_seed: 1,
     learned_layer_macro: isRl,
     learned_layer_macro_max_motif_tiles: 8,
     learned_layer_macro_motif_node_limit: 2500,
@@ -3011,7 +3013,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260824-layer-curriculum-v207", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260824-gcts-terminal-v208", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3585,6 +3587,13 @@ function formatGrowthResult(result, target) {
     const checked = result.checkedPatchSize ?? 0;
     return `${result.label} inconclusive · checked through ${checked}-tile patches`;
   }
+  if (["gcts", "gcts_rl"].includes(result?.mode) && result?.resultKind === "no_tiling") {
+    return `${result.label} certified that no tiling is possible ${formatElapsed(result.milliseconds)}`;
+  }
+  if (["gcts", "gcts_rl"].includes(result?.mode) && result?.searchIncomplete) {
+    const maxLive = result.stats?.max_live_tiles ?? result.tileCount ?? 0;
+    return `${result.label} inconclusive · max ${maxLive} live${stopSuffix}${learningSuffix}`;
+  }
   if (targetPoint) {
     const witness = result?.mode === "translational" && result?.resultKind === "certified_tiling"
         ? ` certified ${result.certificatePatchSize ?? "finite"}-tile unit cell`
@@ -3677,7 +3686,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260824-layer-curriculum-v207", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260824-gcts-terminal-v208", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};

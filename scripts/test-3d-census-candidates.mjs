@@ -150,6 +150,12 @@ assert.match(growthAppSource, /Lazy GCTS independently replays/);
 assert.match(growthWorkerSource, /message\.type === "placement_delta" && tiles !== lastHistoryTileCount/);
 assert.match(growthWorkerSource, /type: "sample-batch"/);
 assert.doesNotMatch(growthWorkerSource, /tiles > best/);
+assert.match(growthWorkerSource, /const exactNoTiling = final\?\.result_kind === "no_tiling"/);
+assert.match(growthWorkerSource, /if \(exactNoTiling\) \{[\s\S]*?tiles: 0, terminal: true/);
+assert.match(growthAppSource, /certified that no tiling is possible/);
+assert.match(growthAppSource, /GCTS[^\n]*inconclusive|\["gcts", "gcts_rl"\][\s\S]*?searchIncomplete/);
+assert.match(sourceTilerHtml, />Growth layer</);
+assert.match(sourceTilerHtml, />Proof shell</);
 assert.match(sourceTilerHtml, /id="growthHistoryBack"[\s\S]*?id="growthHistoryForward"/);
 assert.match(growthAppSource, /function stepGrowthHistory\(direction\)/);
 assert.match(

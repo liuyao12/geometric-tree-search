@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260824-layer-curriculum-v207";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260824-gcts-terminal-v208";
 
 let activeSequence = 0;
 let stopToken = { stop: false };
@@ -141,7 +141,8 @@ async function runMode(sequence, baseConfig, mode) {
     generic_geometric_nogood_max_clauses: 20000,
     generic_geometric_nogood_index: true,
     generic_geometric_nogood_activation_failure_states: mode.nogood ? 25 : 0,
-    seeded_tie_breaks: !!mode.proof,
+    seeded_tie_breaks: !!mode.proof || ["rl", "gcts_rl", "translational"].includes(mode.id),
+    random_seed: baseConfig.random_seed ?? 1,
     generic_periodic_certificate: !!mode.proof && !shellSearch,
     generic_periodic_certificate_method: mode.proof ? "internal_first" : "boundary_first",
     generic_periodic_certificate_check_new_maximum: !!mode.proof && !shellSearch,
@@ -235,7 +236,10 @@ async function runMode(sequence, baseConfig, mode) {
 
   const elapsed = Math.round(performance.now() - started);
   const learnedProgram = null;
-  if (mode.id === "isohedral" && final?.success === false) {
+  const exactNoTiling = final?.result_kind === "no_tiling"
+    && final?.can_tile === false
+    && final?.tiling_evidence?.certified === true;
+  if (exactNoTiling) {
     const point = { milliseconds: elapsed, tiles: 0, terminal: true };
     queueHistory({ point, snapshot: terminalSnapshot });
   }
@@ -246,7 +250,7 @@ async function runMode(sequence, baseConfig, mode) {
     criterion: baseConfig.criterion,
     targetValue: baseConfig.target_val,
     success: final?.success ?? false,
-    tileCount: mode.id === "isohedral" && final?.success === false
+    tileCount: exactNoTiling
       ? 0
       : final?.tile_count ?? best,
     milliseconds: elapsed,
