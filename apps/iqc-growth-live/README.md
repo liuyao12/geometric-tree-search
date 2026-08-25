@@ -4321,3 +4321,29 @@ the executed growth trajectory. The receipt records the sparse multiplier map,
 baseline and intervention winner digests, whether the winner changed, and
 explicit `candidateSetChanged=false`, `hardAdmissionChanged=false`, and
 `executed=false` provenance flags.
+
+### Two-hypothesis attachment-action map
+
+The workbench now renders a 5×5 **growth decision phase map** for two selected
+score terms. Each axis sweeps its declared weight multiplier through
+0, 0.5, 1, 1.5, and 2 while every other term remains at the current frozen
+workbench setting. The default axes are the two non-reference terms with the
+largest candidate-to-candidate contribution ranges on that frontier; the
+target-aware known-window replay term is excluded from automatic axis choice.
+No phase label or correctness feedback selects the axes, and both can be
+changed with compact menus. If a user explicitly selects the known-window term
+during replay, the map labels its ranking as reference-guided.
+
+Each colored cell is one exact re-ranking of the same hard-admitted candidate
+set. Color identifies the winning attachment action, brightness encodes its
+margin over the runner-up, and the `B` cell is the declared ×1/×1 baseline.
+Clicking a cell transfers its two multipliers into the nonexecuting workbench
+and previews the winning cluster pose. The map reports the number of distinct
+action basins, so a scientist can distinguish a robust attachment choice from
+a frontier sitting near a competition boundary between geometric hypotheses.
+
+This is a decision-sensitivity diagram, not an equilibrium phase diagram,
+kinetic morphology map, free-energy surface, Bayesian posterior, or parameter
+fit. The receipt records all 25 multiplier pairs, winner action/digest, score,
+runner-up margin, axes and their selection rule, plus explicit invariants that
+the candidate set, hard admission, geometry, and executed trace were unchanged.

@@ -867,6 +867,12 @@
               <div class="policy-score-heading"><small>selected action score ledger</small><strong id="policyScoreLedgerState">awaiting an evaluated frontier</strong></div>
               <div id="policyScoreLedger" class="policy-score-ledger" aria-label="Signed geometric score contributions"></div>
               <div class="policy-workbench-heading"><span><small>frozen-frontier intervention</small><strong id="policyWorkbenchState">baseline weights</strong></span><button id="policyWorkbenchReset" type="button" disabled>Reset ×1</button></div>
+              <section class="policy-phase-map-card" aria-label="Two-hypothesis growth decision phase map">
+                <header><span><small>two-hypothesis decision map</small><strong>Attachment-action basins</strong></span><b id="policyPhaseMapState">awaiting a frozen frontier</b></header>
+                <div class="policy-phase-axes"><label>horizontal<select id="policyPhaseX" aria-label="Horizontal physics hypothesis"></select></label><label>vertical<select id="policyPhaseY" aria-label="Vertical physics hypothesis"></select></label></div>
+                <div id="policyPhaseMap" class="policy-phase-map" role="group" aria-label="Click a hypothesis-weight cell to preview its winning action"></div>
+                <p>Each cell re-ranks the same hard-admitted candidate set at ×0…×2 declared weight. Color denotes the winning exact action; brightness denotes its margin over the runner-up.</p>
+              </section>
               <div class="policy-sensitivity-heading"><small>pathway sensitivity</small><strong id="policySensitivityState">no evaluated frontiers</strong></div>
               <div id="policyHistory" class="policy-history" role="group" aria-label="Inspect policy disagreement on recent frozen frontiers"></div>
               <p id="policyPreviewState">Select a policy row to preview its winner in the 3D scene.</p>
@@ -1341,7 +1347,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-116"></script>
+  <script type="module" src="./app.js?v=20260825-117"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

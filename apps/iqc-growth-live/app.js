@@ -282,6 +282,10 @@ const policyScoreLedger = $("policyScoreLedger");
 const policyScoreLedgerState = $("policyScoreLedgerState");
 const policyWorkbenchState = $("policyWorkbenchState");
 const policyWorkbenchReset = $("policyWorkbenchReset");
+const policyPhaseMapState = $("policyPhaseMapState");
+const policyPhaseX = $("policyPhaseX");
+const policyPhaseY = $("policyPhaseY");
+const policyPhaseMap = $("policyPhaseMap");
 const policySensitivityState = $("policySensitivityState");
 const policyHistoryElement = $("policyHistory");
 const policyPreviewState = $("policyPreviewState");
@@ -6127,7 +6131,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-116",
+      buildId: "20260825-117",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7064,6 +7068,34 @@ async function buildExperimentReceipt() {
               candidateGeometryChanged: false,
               executed: intervention.executed,
               targetUsedToChooseMultipliers: false,
+            } : null;
+          })(),
+          decisionPhaseMap: (() => {
+            const phaseMap = buildPolicyPhaseMap(snapshot);
+            return phaseMap ? {
+              role: "two-parameter sensitivity map over one unchanged hard-admitted frontier",
+              horizontalTerm: { id: phaseMap.x, label: phaseMap.xLabel },
+              verticalTerm: { id: phaseMap.y, label: phaseMap.yLabel },
+              multiplierLevels: phaseMap.levels,
+              axisSelectionRule: phaseMap.selectionRule,
+              actionBasins: phaseMap.basinCount,
+              candidateSetDigest: phaseMap.candidateSetDigest,
+              candidateSetChanged: phaseMap.candidateSetChanged,
+              hardAdmissionChanged: phaseMap.hardAdmissionChanged,
+              candidateGeometryChanged: phaseMap.candidateGeometryChanged,
+              targetUsedToChooseAxes: phaseMap.targetUsedToChooseAxes,
+              selectedAxesIncludeReferenceGuidedTerm: phaseMap.selectedAxesIncludeReferenceGuidedTerm,
+              rankingTargetUsed: phaseMap.rankingTargetUsed,
+              executed: phaseMap.executed,
+              cells: phaseMap.cells.map((cell) => ({
+                horizontalMultiplier: cell.xMultiplier,
+                verticalMultiplier: cell.yMultiplier,
+                winnerCandidateDigest: cell.candidateDigest,
+                winnerAction: cell.action,
+                winnerScore: receiptRound(cell.score),
+                runnerUpMargin: receiptRound(cell.margin),
+                baseline: cell.baseline,
+              })),
             } : null;
           })(),
           policies: snapshot.policies.map((policy) => ({
@@ -9252,6 +9284,72 @@ function policyActionLabel(entry) {
 
 function workbenchMultiplier(snapshot, termId) {
   return snapshot?.workbenchMultipliers?.[termId] ?? 1;
+}
+
+function setWorkbenchMultiplier(snapshot, termId, value) {
+  if (Math.abs(value - 1) <= 1e-12) delete snapshot.workbenchMultipliers[termId];
+  else snapshot.workbenchMultipliers[termId] = value;
+}
+
+const POLICY_PHASE_LEVELS = [0, .5, 1, 1.5, 2];
+
+function defaultPolicyPhaseAxes(snapshot) {
+  const terms = (snapshot.workbenchCandidates[0]?.scoreTerms || [])
+    .filter((term) => term.id !== "known-window-gain");
+  const ranked = terms.map((term) => {
+    const values = snapshot.workbenchCandidates.map((candidate) =>
+      candidate.scoreTerms.find((candidateTerm) => candidateTerm.id === term.id)?.contribution || 0);
+    return { id: term.id, spread: Math.max(...values) - Math.min(...values) };
+  }).sort((first, second) => second.spread - first.spread || first.id.localeCompare(second.id));
+  return { x: ranked[0]?.id || null, y: ranked[1]?.id || ranked[0]?.id || null,
+    selectionRule: "two largest frozen-frontier contribution ranges excluding target-aware known-window replay; lexical tie break" };
+}
+
+function policyBasinHue(candidateKey) {
+  let hash = 0x811c9dc5;
+  for (const character of candidateKey || "none") {
+    hash ^= character.charCodeAt(0); hash = Math.imul(hash, 0x01000193) >>> 0;
+  }
+  return hash % 360;
+}
+
+function buildPolicyPhaseMap(snapshot) {
+  if (!snapshot?.workbenchCandidates?.length) return null;
+  snapshot.phaseMapAxes ||= defaultPolicyPhaseAxes(snapshot);
+  const { x, y } = snapshot.phaseMapAxes;
+  const firstTerms = snapshot.workbenchCandidates[0].scoreTerms;
+  const labels = Object.fromEntries(firstTerms.map((term) => [term.id, term.label]));
+  const termIds = firstTerms.map((term) => term.id);
+  const cells = [];
+  [...POLICY_PHASE_LEVELS].reverse().forEach((yMultiplier) => POLICY_PHASE_LEVELS.forEach((xMultiplier) => {
+    const ranked = snapshot.workbenchCandidates.map((candidate) => {
+      const score = candidate.scoreTerms.reduce((sum, term) => {
+        const multiplier = term.id === x ? xMultiplier : term.id === y ? yMultiplier
+          : workbenchMultiplier(snapshot, term.id);
+        return sum + term.contribution * multiplier;
+      }, 0);
+      return { candidate, score };
+    }).sort((first, second) => second.score - first.score
+      || first.candidate.candidateKey.localeCompare(second.candidate.candidateKey));
+    const winner = ranked[0];
+    cells.push({ xMultiplier, yMultiplier, candidateKey: winner.candidate.candidateKey,
+      candidateDigest: winner.candidate.candidateDigest, action: winner.candidate.action,
+      score: winner.score, margin: winner.score - (ranked[1]?.score ?? winner.score),
+      baseline: xMultiplier === 1 && yMultiplier === 1,
+      active: xMultiplier === workbenchMultiplier(snapshot, x)
+        && yMultiplier === workbenchMultiplier(snapshot, y) });
+  }));
+  const maximumMargin = Math.max(1e-12, ...cells.map((cell) => cell.margin));
+  cells.forEach((cell) => { cell.normalizedMargin = cell.margin / maximumMargin; });
+  return { x, y, xLabel: labels[x] || x, yLabel: labels[y] || y, termIds, labels,
+    levels: [...POLICY_PHASE_LEVELS], cells,
+    basinCount: new Set(cells.map((cell) => cell.candidateKey)).size,
+    candidateSetDigest: snapshot.candidateDigest,
+    candidateSetChanged: false, hardAdmissionChanged: false, candidateGeometryChanged: false,
+    targetUsedToChooseAxes: false,
+    selectedAxesIncludeReferenceGuidedTerm: snapshot.rankingTargetUsed && [x, y].includes("known-window-gain"),
+    rankingTargetUsed: snapshot.rankingTargetUsed,
+    executed: false, selectionRule: snapshot.phaseMapAxes.selectionRule };
 }
 
 function buildPolicyWorkbench(snapshot) {
@@ -12858,10 +12956,10 @@ function physicsTranslationRecords(leap = null) {
       boundary: "A GCTS marking represents compatibility of overlapping cluster sections. It is not an interatomic potential or a calibrated attachment free energy." },
     { id: "score-ledger", process: "growth-action driving / competing physical hypotheses", status: lastPolicyComparison ? "explicit" : "unavailable", role: lastPolicyComparison ? "exact signed rank decomposition" : "awaiting first evaluated frontier",
       encoding: lastPolicyComparison
-        ? `${lastPolicyComparison.policies.find((policy) => policy.id === "active")?.scoreTerms.length || 0} raw descriptor × declared weight terms over one unchanged frozen candidate set`
+        ? `${lastPolicyComparison.policies.find((policy) => policy.id === "active")?.scoreTerms.length || 0} raw descriptor × declared weight terms plus a 5×5 two-hypothesis decision map over one unchanged frozen candidate set`
         : "no frontier score has been decomposed",
       evidence: lastPolicyComparison
-        ? `${lastPolicyComparison.everyScoreDecompositionExact ? "Every" : "Not every"} counterfactual winner exactly reconciles Σ contributions with its displayed score; frontier digest ${lastPolicyComparison.candidateDigest}.`
+        ? `${lastPolicyComparison.everyScoreDecompositionExact ? "Every" : "Not every"} counterfactual winner exactly reconciles Σ contributions with its displayed score; ${buildPolicyPhaseMap(lastPolicyComparison)?.basinCount || 0} attachment-action basins across 25 exact re-ranks; frontier digest ${lastPolicyComparison.candidateDigest}.`
         : "Advance one material-growth update to create the ledger.",
       boundary: "Ledger terms are dimensionless geometric ranking hypotheses. They are not commensurate physical energies, forces, probabilities, rates, or a fitted thermodynamic free-energy functional." },
     { id: "chemistry", process: "multicomponent reservoir / charge bookkeeping", status: chemistryTerms.length ? "soft" : "open", role: chemistryTerms.length ? "target-blind soft ordering" : "available but disabled",
@@ -13693,9 +13791,60 @@ function previewPolicyWinner(policy, snapshot) {
 
 function cyclePolicyWorkbenchTerm(snapshot, termId) {
   const current = workbenchMultiplier(snapshot, termId);
-  snapshot.workbenchMultipliers[termId] = current === 1 ? 0 : current === 0 ? 2 : 1;
+  setWorkbenchMultiplier(snapshot, termId, current === 1 ? 0 : current === 0 ? 2 : 1);
   selectedPolicyPreviewId = "workbench";
   previewPolicyWinner(buildPolicyWorkbench(snapshot), snapshot);
+}
+
+function selectPolicyPhaseAxis(snapshot, axis, termId) {
+  const otherAxis = axis === "x" ? "y" : "x";
+  snapshot.phaseMapAxes[axis] = termId;
+  if (snapshot.phaseMapAxes[otherAxis] === termId) {
+    const alternative = snapshot.workbenchCandidates[0].scoreTerms
+      .find((term) => term.id !== termId)?.id;
+    if (alternative) snapshot.phaseMapAxes[otherAxis] = alternative;
+  }
+  snapshot.phaseMapAxes.selectionRule = "user-selected from exact frozen score terms";
+  renderPolicyComparison();
+}
+
+function applyPolicyPhaseCell(snapshot, phaseMap, cell) {
+  setWorkbenchMultiplier(snapshot, phaseMap.x, cell.xMultiplier);
+  setWorkbenchMultiplier(snapshot, phaseMap.y, cell.yMultiplier);
+  selectedPolicyPreviewId = "workbench";
+  previewPolicyWinner(buildPolicyWorkbench(snapshot), snapshot);
+}
+
+function renderPolicyPhaseMap(snapshot) {
+  policyPhaseMap.replaceChildren(); policyPhaseX.replaceChildren(); policyPhaseY.replaceChildren();
+  const phaseMap = buildPolicyPhaseMap(snapshot);
+  if (!phaseMap) {
+    policyPhaseMapState.textContent = "awaiting a frozen frontier";
+    policyPhaseX.disabled = true; policyPhaseY.disabled = true;
+    return;
+  }
+  policyPhaseX.disabled = false; policyPhaseY.disabled = false;
+  phaseMap.termIds.forEach((termId) => {
+    const xOption = document.createElement("option"); xOption.value = termId;
+    xOption.textContent = phaseMap.labels[termId]; xOption.selected = termId === phaseMap.x;
+    const yOption = xOption.cloneNode(true); yOption.selected = termId === phaseMap.y;
+    policyPhaseX.append(xOption); policyPhaseY.append(yOption);
+  });
+  policyPhaseX.onchange = () => selectPolicyPhaseAxis(snapshot, "x", policyPhaseX.value);
+  policyPhaseY.onchange = () => selectPolicyPhaseAxis(snapshot, "y", policyPhaseY.value);
+  policyPhaseMapState.textContent = `${phaseMap.basinCount} action basin${phaseMap.basinCount === 1 ? "" : "s"} · 25 exact re-ranks`;
+  phaseMap.cells.forEach((cell) => {
+    const button = document.createElement("button"); button.type = "button";
+    button.style.setProperty("--basin-hue", policyBasinHue(cell.candidateKey));
+    button.style.setProperty("--basin-alpha", (.12 + .45 * cell.normalizedMargin).toFixed(3));
+    button.classList.toggle("baseline", cell.baseline); button.classList.toggle("active", cell.active);
+    button.setAttribute("aria-pressed", String(cell.active));
+    button.setAttribute("aria-label", `${phaseMap.xLabel} ×${cell.xMultiplier}; ${phaseMap.yLabel} ×${cell.yMultiplier}; winner ${cell.action}; margin ${cell.margin.toFixed(3)}`);
+    button.title = `${cell.action} · score ${cell.score.toFixed(3)} · runner-up margin ${cell.margin.toFixed(3)} · same frontier ${phaseMap.candidateSetDigest} · preview only`;
+    button.textContent = cell.action.split(" · ").at(-1);
+    button.addEventListener("click", () => applyPolicyPhaseCell(snapshot, phaseMap, cell));
+    policyPhaseMap.append(button);
+  });
 }
 
 function renderPolicyWorkbenchState(snapshot, workbench = buildPolicyWorkbench(snapshot)) {
@@ -13751,6 +13900,7 @@ function renderPolicyComparison() {
     policySensitivityState.textContent = "available during growth";
     policyPreviewState.textContent = "Select a policy row during material growth.";
     renderPolicyScoreLedger(null);
+    renderPolicyPhaseMap(null);
     return;
   }
   if (iceAnchorTrace) {
@@ -13763,6 +13913,7 @@ function renderPolicyComparison() {
     policySensitivityState.textContent = "generic policy comparison not applicable";
     policyPreviewState.textContent = `${iceAnchorTrace.selectionRuleLabel} is the only certified molecular-anchor policy in this trace.`;
     renderPolicyScoreLedger(null);
+    renderPolicyPhaseMap(null);
     return;
   }
   if (!lastPolicyComparison) {
@@ -13775,6 +13926,7 @@ function renderPolicyComparison() {
     policySensitivityState.textContent = "no evaluated frontiers";
     policyPreviewState.textContent = "Select a policy row after the first frontier is frozen.";
     renderPolicyScoreLedger(null);
+    renderPolicyPhaseMap(null);
     return;
   }
   const snapshot = policyComparisonHistory[selectedPolicySnapshotIndex] || lastPolicyComparison;
@@ -13807,6 +13959,7 @@ function renderPolicyComparison() {
     : snapshot.policies.find((policy) => policy.id === selectedPolicyPreviewId)
       || snapshot.policies.find((policy) => policy.id === "active") || snapshot.policies.at(-1);
   renderPolicyScoreLedger(selectedScorePolicy, snapshot);
+  renderPolicyPhaseMap(snapshot);
   const sensitive = policyComparisonHistory.filter((entry) => entry.uniqueTopActions > 1).length;
   const meanWinners = policyComparisonHistory.reduce((sum, entry) => sum + entry.uniqueTopActions, 0)
     / Math.max(1, policyComparisonHistory.length);
