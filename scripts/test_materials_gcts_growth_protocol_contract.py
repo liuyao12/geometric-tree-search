@@ -30,7 +30,7 @@ def test_growth_protocols_expand_into_existing_controls() -> None:
     assert "GROWTH_PROTOCOL_CONTROL_IDS.has(event.target.id)" in APP
 
     for setting in (
-        "confinement", "geometryPreference", "compositionPreference", "surfacePreference",
+        "confinement", "geometryPreference", "compositionPreference", "solutePartitionMode", "surfacePreference",
         "frontMorphologyMode", "capillaryGeometryMode", "epitaxyTemplateMode", "externalDriveMode", "thermalFieldMode",
         "robustnessPreference", "microstructureCouplingMode", "loopClosurePreference",
         "arrivalPathMode", "geometricExplorationScale", "requestedGrowthNuclei",

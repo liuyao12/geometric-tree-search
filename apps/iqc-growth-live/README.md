@@ -3863,6 +3863,38 @@ solidification speed or physical time. The receipt stores the seed-derived
 origin policy rather than its coordinates, the plane/sphere scale, width,
 work, accepted/rejected means, unchanged-action invariants, and all non-claims.
 
+## Species-resolved partition geometry
+
+For a multicomponent configuration, the growth stage now exposes an explicit
+**partition species** selector populated from the observed element channels—no
+text field or hidden material label. The least-abundant observed species is the
+initial solute hypothesis, but every element remains selectable. Each exact
+whole-cluster action reports that species' fraction among genuinely emitted
+sites relative to its fraction in the supplied configuration.
+
+Four counterfactual geometries can couple this bounded enrichment contrast to
+an already-audited spatial descriptor: enrichment on the cold side, rejection
+toward the hot/liquid side, segregation at an open solid-angle interface, or
+incorporation into an occupied pocket. Thermal modes fail closed at score zero
+when no reduced thermal field is active. The global composition-reservoir
+control remains separate: it asks whether the whole solid drifts from its
+observed ratio, while partition geometry asks where a selected species occurs.
+
+The ring around each displayed candidate uses the normal atom color of the
+selected species, so the active partition channel is visible. Candidate IDs,
+cluster poses, emitted coordinates, hard contacts, topology gates, GCTS
+markings, and the public boundary remain identical across partition policies.
+Directional-solidification and dendritic protocols use hot-side enrichment as
+the familiar solute-rejection hypothesis; this is still only a declared
+experiment, not an asserted mechanism for every selected material.
+
+No chemical potential, equilibrium partition coefficient, phase diagram,
+constitutional-supercooling criterion, interfacial free energy, or diffusion
+trajectory is inferred. The receipt records the chosen species, observed and
+emitted fractions, spatial field source, score/work means, and those claim
+boundaries. This provides a geometrically inspectable alloy-growth question
+without pretending that geometry alone supplied missing thermodynamics.
+
 ## Declared epitaxial registry
 
 The supported-film experiment can now replace its visually uniform excluded

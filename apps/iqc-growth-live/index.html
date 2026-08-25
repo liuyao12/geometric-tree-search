@@ -430,6 +430,28 @@
                 <option value="none">Off · unrestricted frontier drift</option>
               </select>
             </label>
+            <label class="field" for="soluteSpeciesSelect">
+              <span>Partition species <b id="soluteSpeciesHint">choose a multicomponent sample</b></span>
+              <select id="soluteSpeciesSelect"></select>
+            </label>
+            <label class="field" for="solutePartitionSelect">
+              <span>Solute partition geometry <b id="solutePartitionHint">homogeneous · weight zero</b></span>
+              <select id="solutePartitionSelect">
+                <option value="none" selected>Homogeneous control · no spatial partition</option>
+                <option value="cold-enrich">Cold-side enrichment</option>
+                <option value="hot-enrich">Hot-side rejection / liquid enrichment</option>
+                <option value="surface-enrich">Open-interface segregation</option>
+                <option value="bulk-enrich">Occupied-pocket incorporation</option>
+              </select>
+            </label>
+            <label class="field" for="solutePartitionWeightSelect">
+              <span>Partition weight <b>soft species × field coupling</b></span>
+              <select id="solutePartitionWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
             <label class="field" for="chargePreferenceSelect">
               <span>Formal-charge reservoir <b id="chargePreferenceHint">requires supplied oxidation states</b></span>
               <select id="chargePreferenceSelect">
@@ -1133,7 +1155,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-94"></script>
+  <script type="module" src="./app.js?v=20260825-95"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

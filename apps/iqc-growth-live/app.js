@@ -163,6 +163,11 @@ const geometryPreferenceSelect = $("geometryPreferenceSelect");
 const strainWeightSelect = $("strainWeightSelect");
 const strainWeightHint = $("strainWeightHint");
 const compositionPreferenceSelect = $("compositionPreferenceSelect");
+const soluteSpeciesSelect = $("soluteSpeciesSelect");
+const soluteSpeciesHint = $("soluteSpeciesHint");
+const solutePartitionSelect = $("solutePartitionSelect");
+const solutePartitionWeightSelect = $("solutePartitionWeightSelect");
+const solutePartitionHint = $("solutePartitionHint");
 const chargePreferenceSelect = $("chargePreferenceSelect");
 const chargePreferenceHint = $("chargePreferenceHint");
 const surfacePreferenceSelect = $("surfacePreferenceSelect");
@@ -686,6 +691,9 @@ let acceptedUnloadedGeometricStrain = 0;
 let rejectedUnloadedGeometricStrain = 0;
 let acceptedCompositionDelta = 0;
 let rejectedCompositionDelta = 0;
+let acceptedSolutePartitionScore = 0;
+let rejectedSolutePartitionScore = 0;
+let solutePartitionEvaluations = 0;
 let acceptedFormalChargeDelta = 0;
 let rejectedFormalChargeDelta = 0;
 let acceptedSurfaceDeficit = 0;
@@ -784,6 +792,9 @@ let geometryPreference = "strain";
 let growthProtocolMode = "custom";
 let geometricStrainWeight = DEFAULT_GEOMETRIC_STRAIN_WEIGHT;
 let compositionPreference = "soft";
+let soluteSpecies = null;
+let solutePartitionMode = "none";
+let solutePartitionWeight = .24;
 let chargePreference = "auto";
 let surfacePreference = "soft";
 let frontMorphologyMode = "none";
@@ -835,6 +846,7 @@ let formalChargeTarget = null;
 const GROWTH_PROTOCOL_DEFAULTS = Object.freeze({
   confinement: "box", geometryPreference: "strain", geometricStrainWeight: .16,
   compositionPreference: "soft", chargePreference: "auto", surfacePreference: "soft",
+  solutePartitionMode: "none", solutePartitionWeight: .24,
   frontMorphologyMode: "none", frontMorphologyWeight: .24,
   capillaryGeometryMode: "none", capillaryGeometryWeight: .24,
   epitaxyTemplateMode: "none", epitaxyWeight: .24,
@@ -889,26 +901,28 @@ const GROWTH_PROTOCOLS = Object.freeze({
       geometricExplorationScale: 0, requestedGrowthNuclei: 1, growthScheduling: "commuting", hierarchyEnabled: true },
   },
   directional: {
-    label: "directional solidification", summary: "A +Z attachment direction and distinct +Z reduced cold side, coherent facet/front balance, declared arrival accessibility, and narrow alternatives.",
+    label: "directional solidification", summary: "A +Z attachment direction and cold side, minority-species rejection toward the hot side, coherent facet/front balance, and narrow alternatives.",
     settings: { confinement: "box", geometryPreference: "strain", geometricStrainWeight: .16,
       compositionPreference: "soft", chargePreference: "auto", surfacePreference: "soft",
       frontMorphologyMode: "facet", frontMorphologyWeight: .24, epitaxyTemplateMode: "none",
       capillaryGeometryMode: "planar", capillaryGeometryWeight: .24,
       externalDriveMode: "z-plus", externalDriveWeight: .48, affineLoadMode: "none",
       thermalFieldMode: "z-plus-cold", thermalFieldWeight: .24,
+      solutePartitionMode: "hot-enrich", solutePartitionWeight: .24,
       robustnessPreference: "margin", robustnessWeight: .12, microstructureCouplingMode: "none",
       loopClosurePreference: "none", arrivalPathMode: "declared-drive", arrivalPathWeight: .24,
       feedExposureMode: "top", feedExposureWeight: .24,
       geometricExplorationScale: .05, requestedGrowthNuclei: 1, growthScheduling: "commuting", hierarchyEnabled: true },
   },
   dendritic: {
-    label: "dendritic growth hypothesis", summary: "A finite nucleus with radial-outward drive, an outward reduced quench, exposed-tip/solid-angle preference, radial accessibility, and a broader path ensemble.",
+    label: "dendritic growth hypothesis", summary: "A finite nucleus with outward drive/quench, minority-species rejection toward the hot side, exposed-tip/solid-angle preference, and broader path exploration.",
     settings: { confinement: "sphere", geometryPreference: "strain", geometricStrainWeight: .08,
       compositionPreference: "soft", chargePreference: "auto", surfacePreference: "soft",
       frontMorphologyMode: "tip", frontMorphologyWeight: .48, epitaxyTemplateMode: "none",
       capillaryGeometryMode: "exposed", capillaryGeometryWeight: .24,
       externalDriveMode: "radial-out", externalDriveWeight: .24, affineLoadMode: "none",
       thermalFieldMode: "radial-cold", thermalFieldWeight: .24,
+      solutePartitionMode: "hot-enrich", solutePartitionWeight: .24,
       robustnessPreference: "none", microstructureCouplingMode: "none", loopClosurePreference: "none",
       arrivalPathMode: "radial-outward", arrivalPathWeight: .24, geometricExplorationScale: .15,
       feedExposureMode: "hemisphere", feedExposureWeight: .12,
@@ -942,6 +956,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
 });
 const GROWTH_PROTOCOL_CONTROL_IDS = new Set([
   "geometryPreferenceSelect", "strainWeightSelect", "compositionPreferenceSelect", "chargePreferenceSelect",
+  "soluteSpeciesSelect", "solutePartitionSelect", "solutePartitionWeightSelect",
   "surfacePreferenceSelect", "frontMorphologySelect", "frontMorphologyWeightSelect",
   "capillaryGeometrySelect", "capillaryGeometryWeightSelect",
   "epitaxyTemplateSelect", "epitaxyWeightSelect", "externalDriveSelect", "externalDriveWeightSelect",
@@ -5699,7 +5714,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-94",
+      buildId: "20260825-95",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -6059,6 +6074,30 @@ async function buildExperimentReceipt() {
         targetReducedRatio: compositionTarget.reducedRatio,
         acceptedMeanScaledDelta: receiptRound(acceptedCompositionDelta / Math.max(1, acceptedDecisions)),
         rejectedMeanScaledDelta: receiptRound(rejectedCompositionDelta / Math.max(1, rejectedDecisions)),
+      },
+      solutePartitionRanking: {
+        role: "target-blind soft coupling of emitted selected-species fraction to declared thermal or solid-angle geometry",
+        mode: solutePartitionMode,
+        label: solutePartitionLabel(),
+        enabled: activeSolutePartitionWeight() > 0,
+        effectiveWeight: activeSolutePartitionWeight(),
+        selectedSpecies: resolvedSoluteSpecies(),
+        speciesSelectionPolicy: "user-selected from observed species; least-abundant observed species is the initial default",
+        observedReferenceFraction: receiptRound(soluteSpeciesVocabulary()
+          .find((entry) => entry.species === resolvedSoluteSpecies())?.fraction || 0),
+        acceptedMeanScore: receiptRound(acceptedSolutePartitionScore / Math.max(1, acceptedDecisions)),
+        rejectedMeanScore: receiptRound(rejectedSolutePartitionScore / Math.max(1, rejectedDecisions)),
+        evaluations: solutePartitionEvaluations,
+        candidateSetChanged: false,
+        candidateGeometryChanged: false,
+        hardAdmissionChanged: false,
+        heldoutTargetUsed: false,
+        chemicalPotentialInferred: false,
+        partitionCoefficientInferred: false,
+        phaseDiagramUsed: false,
+        interfacialEnergyInferred: false,
+        diffusionIntegrated: false,
+        physicalTimeIntegrated: false,
       },
       formalChargeBalanceRanking: {
         role: "target-blind soft ordering toward the supplied mean formal charge per site; never a hard surface constraint or electrostatic energy",
@@ -6443,6 +6482,8 @@ function notebookInterventionFactors(receipt) {
       strain: [search.geometricStrainRanking?.mode, search.geometricStrainRanking?.effectiveWeight,
         search.geometricStrainRanking?.affineLoadMode, search.geometricStrainRanking?.prescribedStrainMagnitude],
       composition: [search.compositionBalanceRanking?.mode, search.compositionBalanceRanking?.effectiveWeight],
+      solutePartition: [search.solutePartitionRanking?.mode, search.solutePartitionRanking?.selectedSpecies,
+        search.solutePartitionRanking?.effectiveWeight],
       formalCharge: [search.formalChargeBalanceRanking?.mode, search.formalChargeBalanceRanking?.effectiveWeight],
       surface: [search.surfaceCompletionRanking?.mode, search.surfaceCompletionRanking?.effectiveWeight],
       frontMorphology: [search.mesoscopicFrontMorphologyRanking?.mode,
@@ -8156,6 +8197,8 @@ function capturePolicyComparison(entries) {
     { id: "affine-load", label: `${affineLoadModeLabel()} metric`,
       score: (entry) => entry.baseScore - .16 * effectiveGeometricStrain(entry.evaluation).total },
     { id: "composition", label: "composition 0.35", score: (entry) => entry.baseScore - .35 * entry.evaluation.compositionBalance.scaledDelta },
+    { id: "solute-partition", label: `${solutePartitionLabel()} ${activeSolutePartitionWeight().toFixed(2)}`,
+      score: (entry) => entry.baseScore + activeSolutePartitionWeight() * entry.evaluation.solutePartition.score },
     { id: "charge", label: "formal charge 0.25", score: (entry) => entry.baseScore - .25 * entry.evaluation.formalChargeBalance.scaledDelta },
     { id: "surface", label: "surface 0.18", score: (entry) => entry.baseScore - .18 * entry.evaluation.surfaceCompletion.scaledDelta },
     { id: "front-morphology", label: `${frontMorphologyLabel()} ${activeFrontMorphologyWeight().toFixed(2)}`,
@@ -8352,6 +8395,87 @@ function surfaceCompletionForFreshSites(rawFreshSites,
   };
 }
 
+function soluteSpeciesVocabulary() {
+  const counts = new Map();
+  referenceAtoms.forEach((atom) => {
+    if (occupationalAlternatives(atom.species)) return;
+    counts.set(atom.species, (counts.get(atom.species) || 0) + 1);
+  });
+  return [...counts.entries()].sort((first, second) => first[1] - second[1]
+    || String(first[0]).localeCompare(String(second[0])))
+    .map(([species, count]) => ({ species, count, fraction: count / Math.max(1, referenceAtoms.length) }));
+}
+
+function resolvedSoluteSpecies() {
+  const vocabulary = soluteSpeciesVocabulary();
+  if (vocabulary.some((entry) => entry.species === soluteSpecies)) return soluteSpecies;
+  return vocabulary.length >= 2 ? vocabulary[0].species : null;
+}
+
+function renderSoluteSpeciesOptions() {
+  const vocabulary = soluteSpeciesVocabulary();
+  const signature = vocabulary.map((entry) => `${entry.species}:${entry.count}`).join("|");
+  if (soluteSpeciesSelect.dataset.signature !== signature) {
+    soluteSpeciesSelect.replaceChildren();
+    if (vocabulary.length < 2) {
+      const option = document.createElement("option"); option.value = "";
+      option.textContent = vocabulary.length ? `${vocabulary[0].species} · single-component` : "No species available";
+      soluteSpeciesSelect.append(option);
+    } else vocabulary.forEach((entry) => {
+      const option = document.createElement("option"); option.value = entry.species;
+      option.textContent = `${entry.species} · ${(entry.fraction * 100).toFixed(1)}% observed`;
+      soluteSpeciesSelect.append(option);
+    });
+    soluteSpeciesSelect.dataset.signature = signature;
+  }
+  soluteSpecies = resolvedSoluteSpecies();
+  soluteSpeciesSelect.value = soluteSpecies || "";
+  return vocabulary;
+}
+
+function activeSolutePartitionWeight() {
+  return solutePartitionMode === "none" || !resolvedSoluteSpecies() ? 0 : solutePartitionWeight;
+}
+
+function solutePartitionLabel(mode = solutePartitionMode) {
+  return ({ none: "homogeneous composition", "cold-enrich": "cold-side enrichment",
+    "hot-enrich": "hot-side rejection", "surface-enrich": "open-interface segregation",
+    "bulk-enrich": "occupied-pocket incorporation" })[mode] || "homogeneous composition";
+}
+
+function solutePartitionForFreshSites(fresh, thermalField, capillaryGeometry, { recordWork = true } = {}) {
+  const species = resolvedSoluteSpecies(); const vocabulary = soluteSpeciesVocabulary();
+  const target = vocabulary.find((entry) => entry.species === species);
+  const referenceFraction = target?.fraction || 0;
+  const emittedCount = species ? fresh.filter((site) => site.species === species).length : 0;
+  const emittedFraction = emittedCount / Math.max(1, fresh.length);
+  const contrastScale = Math.max(.15, Math.sqrt(Math.max(0, referenceFraction * (1 - referenceFraction))));
+  const enrichmentContrast = species && fresh.length
+    ? Math.tanh((emittedFraction - referenceFraction) / contrastScale) : 0;
+  let spatialScore = 0; let fieldSource = "none"; let available = vocabulary.length >= 2;
+  if (solutePartitionMode === "cold-enrich" || solutePartitionMode === "hot-enrich") {
+    available = available && Boolean(thermalField?.enabled);
+    spatialScore = thermalField?.enabled ? thermalField.score * (solutePartitionMode === "cold-enrich" ? 1 : -1) : 0;
+    fieldSource = thermalField?.enabled ? "declared reduced thermal field" : "thermal field required";
+  } else if (solutePartitionMode === "surface-enrich") {
+    spatialScore = capillaryGeometry?.exposedScore || 0; fieldSource = "open solid-angle fraction";
+  } else if (solutePartitionMode === "bulk-enrich") {
+    spatialScore = capillaryGeometry?.pocketScore || 0; fieldSource = "occupied solid-angle fraction";
+  }
+  const score = solutePartitionMode !== "none" && available ? enrichmentContrast * spatialScore : 0;
+  if (recordWork && solutePartitionMode !== "none" && available) solutePartitionEvaluations++;
+  return {
+    mode: solutePartitionMode, label: solutePartitionLabel(), enabled: solutePartitionMode !== "none" && available,
+    species, observedReferenceFraction: referenceFraction, emittedCount, emittedSites: fresh.length,
+    emittedFraction, enrichmentContrast, spatialScore, fieldSource, score,
+    speciesChosenFromObservedConfiguration: true, candidateSetChanged: false,
+    candidateGeometryChanged: false, hardAdmissionChanged: false, heldoutTargetUsed: false,
+    chemicalPotentialInferred: false, partitionCoefficientInferred: false,
+    phaseDiagramUsed: false, interfacialEnergyInferred: false, diffusionIntegrated: false,
+    physicalTimeIntegrated: false,
+  };
+}
+
 function compositionBalanceForFreshSites(rawFreshSites) {
   const freshSites = uniqueFreshSites(rawFreshSites);
   if (!compositionTarget || !freshSites.length) return {
@@ -8406,6 +8530,7 @@ function commutingFrontierBatch() {
     const score = baseScore
         - activeGeometricStrainWeight() * effectiveGeometricStrain(evaluation).total
         - activeCompositionBalanceWeight() * evaluation.compositionBalance.scaledDelta
+        + activeSolutePartitionWeight() * evaluation.solutePartition.score
         - activeFormalChargeWeight() * evaluation.formalChargeBalance.scaledDelta
         - activeSurfaceCompletionWeight() * evaluation.surfaceCompletion.scaledDelta
         + activeFrontMorphologyWeight() * evaluation.frontMorphology.score
@@ -8526,6 +8651,7 @@ function evaluateCandidate(candidate, {
   const formalChargeBalance = formalChargeBalanceForFreshSites(fresh);
   const externalDrive = externalDriveForCandidate(candidate);
   const thermalField = reducedThermalFieldForCandidate(candidate, { recordWork });
+  const solutePartition = solutePartitionForFreshSites(fresh, thermalField, capillaryGeometry, { recordWork });
   const constraintRobustness = constraintRobustnessForCandidate(fresh, merged);
   const microstructureCoupling = microstructureCouplingForCandidate(candidate, { fresh, merged });
   const loopClosure = mesoscopicLoopClosureForCandidate(candidate);
@@ -8537,7 +8663,7 @@ function evaluateCandidate(candidate, {
   return { accepted, sites, merged, fresh, conflicts, boundaryFailures, knownFailures, markingFallback,
     coordinationOverflows, angularViolations, geometricStrain, affineLoadedGeometricStrain,
     surfaceCompletion, frontMorphology, capillaryGeometry, epitaxyRegistry, compositionBalance, formalChargeBalance,
-    externalDrive, thermalField, constraintRobustness, microstructureCoupling, loopClosure, arrivalPath, feedExposure,
+    externalDrive, thermalField, solutePartition, constraintRobustness, microstructureCoupling, loopClosure, arrivalPath, feedExposure,
     duplicateSites: canonical.duplicateSites,
     freshReferenceIndices: fresh.map((site) => site.referenceIndex).filter(Number.isInteger),
     reason: conflicts ? `${conflicts} hard-core/species conflicts` : boundaryFailures ? "outside confinement" : knownFailures ? `${knownFailures} sites outside known configuration` : coordinationOverflows.length ? `${coordinationOverflows.length} colored coordination capacities exceeded` : angularViolations.length ? `${angularViolations.length} colored angular envelopes violated` : merged.length < 2 ? "insufficient shared support" : fresh.length === 0 ? "duplicate covering" : !markingAccepted ? "marking mismatch" : "compatible overlap" };
@@ -8724,6 +8850,9 @@ function initializeOffLatticeSearch() {
   rejectedUnloadedGeometricStrain = 0;
   acceptedCompositionDelta = 0;
   rejectedCompositionDelta = 0;
+  acceptedSolutePartitionScore = 0;
+  rejectedSolutePartitionScore = 0;
+  solutePartitionEvaluations = 0;
   acceptedFormalChargeDelta = 0;
   rejectedFormalChargeDelta = 0;
   acceptedSurfaceDeficit = 0;
@@ -9328,7 +9457,8 @@ function renderMolecularHypothesis() {
 function currentGrowthProtocolSettings() {
   return {
     confinement: confinementSelect.value, geometryPreference, geometricStrainWeight,
-    compositionPreference, chargePreference, surfacePreference,
+    compositionPreference, soluteSpecies: resolvedSoluteSpecies(), solutePartitionMode, solutePartitionWeight,
+    chargePreference, surfacePreference,
     frontMorphologyMode, frontMorphologyWeight, capillaryGeometryMode, capillaryGeometryWeight,
     epitaxyTemplateMode, epitaxyWeight,
     externalDriveMode, externalDriveWeight, thermalFieldMode, thermalFieldWeight,
@@ -9375,6 +9505,7 @@ function applyGrowthProtocol(mode) {
   confinementSelect.value = settings.confinement;
   geometryPreference = settings.geometryPreference; geometricStrainWeight = settings.geometricStrainWeight;
   compositionPreference = settings.compositionPreference; chargePreference = settings.chargePreference;
+  solutePartitionMode = settings.solutePartitionMode; solutePartitionWeight = settings.solutePartitionWeight;
   surfacePreference = settings.surfacePreference;
   frontMorphologyMode = settings.frontMorphologyMode; frontMorphologyWeight = settings.frontMorphologyWeight;
   capillaryGeometryMode = settings.capillaryGeometryMode; capillaryGeometryWeight = settings.capillaryGeometryWeight;
@@ -9518,6 +9649,9 @@ function syncStageOptions() {
     geometryPreferenceSelect.value = geometryPreference;
     strainWeightSelect.value = String(geometricStrainWeight);
     compositionPreferenceSelect.value = compositionPreference;
+    const soluteVocabulary = renderSoluteSpeciesOptions();
+    solutePartitionSelect.value = solutePartitionMode;
+    solutePartitionWeightSelect.value = String(solutePartitionWeight);
     chargePreferenceSelect.value = chargePreference;
     surfacePreferenceSelect.value = surfacePreference;
     frontMorphologySelect.value = frontMorphologyMode;
@@ -9548,6 +9682,9 @@ function syncStageOptions() {
     geometryPreferenceSelect.disabled = finiteIceAnchorMode;
     strainWeightSelect.disabled = finiteIceAnchorMode || geometryPreference !== "strain";
     compositionPreferenceSelect.disabled = finiteIceAnchorMode;
+    soluteSpeciesSelect.disabled = finiteIceAnchorMode || soluteVocabulary.length < 2;
+    solutePartitionSelect.disabled = finiteIceAnchorMode || soluteVocabulary.length < 2;
+    solutePartitionWeightSelect.disabled = finiteIceAnchorMode || soluteVocabulary.length < 2 || solutePartitionMode === "none";
     chargePreferenceSelect.disabled = finiteIceAnchorMode || !formalChargeTarget?.available;
     surfacePreferenceSelect.disabled = finiteIceAnchorMode;
     frontMorphologySelect.disabled = finiteIceAnchorMode;
@@ -9584,6 +9721,15 @@ function syncStageOptions() {
     chargePreferenceHint.textContent = formalChargeTarget?.available
       ? `${formalChargeTarget.resolvedObservations}/${formalChargeTarget.observations} sites · q̄ ${formalChargeTarget.meanFormalCharge >= 0 ? "+" : ""}${formalChargeTarget.meanFormalCharge.toFixed(3)}`
       : `${formalChargeTarget?.resolvedObservations || 0}/${formalChargeTarget?.observations || referenceCount()} sites · unavailable`;
+    const selectedSolute = soluteVocabulary.find((entry) => entry.species === resolvedSoluteSpecies());
+    soluteSpeciesHint.textContent = selectedSolute
+      ? `${selectedSolute.species} · ${(selectedSolute.fraction * 100).toFixed(1)}% observed`
+      : "choose a multicomponent sample";
+    solutePartitionHint.textContent = solutePartitionMode === "none"
+      ? "homogeneous · weight zero"
+      : (solutePartitionMode === "cold-enrich" || solutePartitionMode === "hot-enrich") && thermalFieldMode === "none"
+        ? "requires reduced thermal field · score zero"
+        : `${solutePartitionLabel()} · weight ${solutePartitionWeight.toFixed(2)}`;
     externalDriveHint.textContent = externalDriveMode === "none"
       ? "isotropic · weight zero" : `${externalDriveModeLabel()} · weight ${externalDriveWeight.toFixed(2)}`;
     thermalFieldHint.textContent = thermalFieldMode === "none"
@@ -9633,6 +9779,9 @@ function syncStageOptions() {
     const compositionUse = compositionPreference === "none"
       ? " Composition drift is reported but contributes zero ranking weight."
       : ` A ${compositionPreference === "strong" ? "strong" : "balanced"} soft reservoir term favors the observed ${ratio} ratio without constraining an incomplete surface.`;
+    const solutePartitionUse = activeSolutePartitionWeight() <= 0
+      ? " Species-resolved partitioning contributes zero rank weight."
+      : ` A ${solutePartitionWeight.toFixed(2)} soft ${solutePartitionLabel()} term couples emitted ${resolvedSoluteSpecies()} enrichment to the declared ${solutePartitionMode.includes("cold") || solutePartitionMode.includes("hot") ? "thermal" : "solid-angle"} geometry; it is not a chemical potential or partition coefficient.`;
     const chargeUse = !formalChargeTarget?.available
       ? " No complete formal oxidation-state channel was supplied, so charge ranking fails closed at weight zero."
       : chargePreference === "none"
@@ -9680,8 +9829,8 @@ function syncStageOptions() {
     growthModeNote.textContent = finiteIceAnchorMode
       ? "This sealed ice gate executes primitive H₂O connection ports with mutually exclusive orientation domains. Clusters² is disabled because no stationary promoted ice production has been certified."
       : hierarchyEnabled
-      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`
-      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`;
+      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${strainUse}${compositionUse}${solutePartitionUse}${chargeUse}${surfaceUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`
+      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}${solutePartitionUse}${chargeUse}${surfaceUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`;
   }
 }
 
@@ -9699,6 +9848,9 @@ function resetCounters() {
   rejectedUnloadedGeometricStrain = 0;
   acceptedCompositionDelta = 0;
   rejectedCompositionDelta = 0;
+  acceptedSolutePartitionScore = 0;
+  rejectedSolutePartitionScore = 0;
+  solutePartitionEvaluations = 0;
   acceptedFormalChargeDelta = 0;
   rejectedFormalChargeDelta = 0;
   acceptedSurfaceDeficit = 0;
@@ -10064,6 +10216,7 @@ function stateForCandidate(candidate, evaluation) {
     geometricStrain: evaluation.geometricStrain,
     affineLoadedGeometricStrain: evaluation.affineLoadedGeometricStrain,
     compositionBalance: evaluation.compositionBalance,
+    solutePartition: evaluation.solutePartition,
     formalChargeBalance: evaluation.formalChargeBalance,
     surfaceCompletion: evaluation.surfaceCompletion,
     frontMorphology: evaluation.frontMorphology,
@@ -10187,6 +10340,7 @@ function performOffLatticeEvent() {
     capillaryGeometry: evaluation.capillaryGeometry,
     feedExposure: evaluation.feedExposure,
     thermalField: evaluation.thermalField,
+    solutePartition: evaluation.solutePartition,
   }));
   const mechanismDiagnostics = new Map(batch.map(({ candidate, evaluation }) =>
     [candidate, prepareGrowthMechanismDiagnostic(candidate, evaluation)]));
@@ -10208,6 +10362,7 @@ function performOffLatticeEvent() {
       rejectedGeometricStrain += effectiveGeometricStrain(snapshotEvaluation).total;
       rejectedUnloadedGeometricStrain += snapshotEvaluation.geometricStrain.total;
       rejectedCompositionDelta += snapshotEvaluation.compositionBalance.scaledDelta;
+      rejectedSolutePartitionScore += snapshotEvaluation.solutePartition.score;
       rejectedFormalChargeDelta += snapshotEvaluation.formalChargeBalance.scaledDelta;
       rejectedSurfaceDeficit += snapshotEvaluation.surfaceCompletion.scaledDelta;
       rejectedFrontMorphologyScore += snapshotEvaluation.frontMorphology.score;
@@ -10252,6 +10407,7 @@ function performOffLatticeEvent() {
     acceptedGeometricStrain += effectiveGeometricStrain(evaluation).total;
     acceptedUnloadedGeometricStrain += evaluation.geometricStrain.total;
     acceptedCompositionDelta += evaluation.compositionBalance.scaledDelta;
+    acceptedSolutePartitionScore += evaluation.solutePartition.score;
     acceptedFormalChargeDelta += evaluation.formalChargeBalance.scaledDelta;
     acceptedSurfaceDeficit += evaluation.surfaceCompletion.scaledDelta;
     acceptedFrontMorphologyScore += evaluation.frontMorphology.score;
@@ -10789,6 +10945,14 @@ function rebuildWorld() {
     mesh.position.copy(candidate.p);
     if (candidate.rotation) mesh.quaternion.copy(candidate.rotation);
     decisionGroup.add(mesh);
+    if (candidateIndex < 12 && candidate.solutePartition?.enabled && candidate.solutePartition.species) {
+      const ring = new THREE.Mesh(new THREE.TorusGeometry(.34, .018, 6, 28),
+        new THREE.MeshBasicMaterial({ color: elementRecord(candidate.solutePartition.species).color,
+          transparent: true, opacity: .82 }));
+      ring.position.copy(candidate.p);
+      ring.scale.setScalar(.82 + .26 * Math.abs(candidate.solutePartition.enrichmentContrast));
+      decisionGroup.add(ring);
+    }
     if (candidateIndex < 12 && candidate.arrivalAxis && candidate.arrivalSweepDistance > 0) {
       const axis = new THREE.Vector3(...candidate.arrivalAxis).normalize();
       const start = candidate.p.clone().addScaledVector(axis, candidate.arrivalSweepDistance);
@@ -10909,6 +11073,12 @@ function physicsTranslationRecords(leap = null) {
       encoding: chemistryTerms.join(" + ") || "no composition or supplied-formal-charge ranking term is active",
       evidence: chemistryTerms.length ? `Reference reduced ratio ${compositionTarget?.reducedRatio || "unavailable"}; formal-charge coverage ${Math.round((formalChargeTarget?.coverage || 0) * 100)}%.` : "Candidate geometry is unchanged; this counterfactual policy contribution is zero.",
       boundary: "These finite-reservoir summaries are not chemical potentials, oxidation-state inference, Coulomb energy, electron transfer, or redox thermodynamics." },
+    { id: "solute-partition", process: "solute partitioning / interfacial segregation", status: activeSolutePartitionWeight() > 0 ? "soft" : "open", role: activeSolutePartitionWeight() > 0 ? "species × spatial-field ordering" : "disabled",
+      encoding: activeSolutePartitionWeight() > 0
+        ? `${resolvedSoluteSpecies()} enrichment relative to its observed fraction × ${solutePartitionLabel()} spatial score, w=${activeSolutePartitionWeight().toFixed(2)}`
+        : "no species-resolved spatial partition term",
+      evidence: leap ? `Accepted mean partition score ${receiptRound(acceptedSolutePartitionScore / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedSolutePartitionScore / Math.max(1, rejectedDecisions), 4)}.` : "No partitioned attachment evaluated yet.",
+      boundary: "This is a counterfactual spatial redistribution hypothesis, not a chemical potential, equilibrium partition coefficient, phase diagram, solute diffusion, interfacial free energy, constitutional-supercooling calculation, or physical time." },
     { id: "surface", process: "interface completion / undercoordination", status: activeSurfaceCompletionWeight() > 0 ? "soft" : "open", role: activeSurfaceCompletionWeight() > 0 ? "target-blind soft ordering" : "disabled",
       encoding: activeSurfaceCompletionWeight() > 0 ? `sample-derived colored coordination deficit, w=${activeSurfaceCompletionWeight().toFixed(2)}` : "no surface-completion ranking term is active",
       evidence: leap ? `${leap.before.frontier} frontier candidates before the leap; ${leap.after.atoms - leap.before.atoms} explicit atoms added.` : "No interface update yet.",
@@ -11192,6 +11362,17 @@ function geometryConstraintEvidence(name, term, state, mode) {
         ? `Soft rank term with weight ${activeCompositionBalanceWeight().toFixed(2)}.` : "Diagnostic only; weight zero.",
       boundary: "Composition balancing is not a chemical potential, phase reservoir, reaction network, or charge-neutrality model.",
     },
+    "solute partition": {
+      observed: state?.solutePartition?.species
+        ? `${state.solutePartition.species}: ${(state.solutePartition.observedReferenceFraction * 100).toFixed(1)}% observed versus ${(state.solutePartition.emittedFraction * 100).toFixed(1)}% in this action`
+        : "no multicomponent partition species available",
+      encoding: state?.solutePartition?.enabled
+        ? `bounded enrichment contrast × ${state.solutePartition.fieldSource} score`
+        : solutePartitionMode === "none" ? "homogeneous composition control" : "required spatial field unavailable",
+      searchRole: activeSolutePartitionWeight() > 0
+        ? `Soft ${solutePartitionLabel()} rank term with weight ${activeSolutePartitionWeight().toFixed(2)}.` : "Disabled; weight zero.",
+      boundary: "This is not a chemical potential, equilibrium partition coefficient, phase diagram, solute diffusion, interfacial energy, or constitutional-supercooling calculation.",
+    },
     "formal-charge reservoir": {
       observed: formalChargeTarget?.available
         ? `${Math.round(formalChargeTarget.coverage * 100)}% supplied oxidation-state coverage · q̄ ${formalChargeTarget.meanFormalCharge.toFixed(3)}`
@@ -11377,6 +11558,9 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "composition reservoir", status: ranked(activeCompositionBalanceWeight() > 0),
       value: state.compositionBalance ? signed(state.compositionBalance.scaledDelta) : "not evaluated",
       detail: activeCompositionBalanceWeight() > 0 ? `rank weight ${activeCompositionBalanceWeight().toFixed(2)}` : "diagnostic · cannot authorize geometry" },
+    { name: "solute partition", status: ranked(activeSolutePartitionWeight() > 0),
+      value: state.solutePartition?.species ? `${signed(state.solutePartition.score)} · ${state.solutePartition.species} ${(state.solutePartition.emittedFraction * 100).toFixed(0)}% emitted` : "unavailable",
+      detail: activeSolutePartitionWeight() > 0 ? `${solutePartitionLabel()} · rank weight ${activeSolutePartitionWeight().toFixed(2)}` : "homogeneous · weight zero" },
     { name: "formal-charge reservoir", status: ranked(activeFormalChargeWeight() > 0),
       value: state.formalChargeBalance?.available ? signed(state.formalChargeBalance.scaledDelta) : state.formalChargeBalance?.reason || "unavailable",
       detail: activeFormalChargeWeight() > 0 ? `rank weight ${activeFormalChargeWeight().toFixed(2)} · supplied oxidation states` : "diagnostic · cannot authorize geometry" },
@@ -11431,6 +11615,7 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "angular envelope", status: "diagnostic", value: "inspection only", detail: "average-site geometry" },
     { name: "elastic proxy", status: "diagnostic", value: "withheld", detail: "no branch ranking" },
     { name: "composition reservoir", status: "diagnostic", value: "withheld", detail: "occupancy ensemble required" },
+    { name: "solute partition", status: "diagnostic", value: "withheld", detail: "occupancy ensemble required" },
     { name: "formal-charge reservoir", status: "diagnostic", value: "unavailable", detail: "no complete supplied oxidation-state channel" },
     { name: "surface completion", status: "diagnostic", value: "withheld", detail: "no branch ranking" },
     { name: "front morphology", status: "diagnostic", value: "withheld", detail: "no executable front" },
@@ -11449,6 +11634,7 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "angular envelope", status: "diagnostic", value: "not used", detail: "specialized frozen trace" },
     { name: "elastic proxy", status: "diagnostic", value: "not used", detail: "cannot authorize this trace" },
     { name: "composition reservoir", status: "diagnostic", value: "not used", detail: "cannot authorize this trace" },
+    { name: "solute partition", status: "diagnostic", value: "not used", detail: "specialized frozen trace" },
     { name: "formal-charge reservoir", status: "diagnostic", value: "not used", detail: "cannot authorize this trace" },
     { name: "surface completion", status: "diagnostic", value: "not used", detail: "cannot authorize this trace" },
     { name: "front morphology", status: "diagnostic", value: "not used", detail: "specialized frozen trace" },
@@ -11470,6 +11656,8 @@ function renderConstraintLedger(state, mode = "configured") {
       value: activeGeometricStrainWeight() > 0 ? "ranked" : "diagnostic", detail: `weight ${activeGeometricStrainWeight().toFixed(2)}` },
     { name: "composition reservoir", status: ranked(activeCompositionBalanceWeight() > 0),
       value: activeCompositionBalanceWeight() > 0 ? "ranked" : "diagnostic", detail: `weight ${activeCompositionBalanceWeight().toFixed(2)}` },
+    { name: "solute partition", status: ranked(activeSolutePartitionWeight() > 0),
+      value: activeSolutePartitionWeight() > 0 ? `${resolvedSoluteSpecies()} · ${solutePartitionLabel()}` : "homogeneous", detail: `weight ${activeSolutePartitionWeight().toFixed(2)}` },
     { name: "formal-charge reservoir", status: ranked(activeFormalChargeWeight() > 0),
       value: activeFormalChargeWeight() > 0 ? "ranked" : formalChargeTarget?.available ? "diagnostic" : "unavailable",
       detail: formalChargeTarget?.available ? `weight ${activeFormalChargeWeight().toFixed(2)}` : "no complete supplied oxidation-state channel" },
@@ -12569,6 +12757,24 @@ strainWeightSelect.addEventListener("change", () => {
 compositionPreferenceSelect.addEventListener("change", () => {
   const value = compositionPreferenceSelect.value;
   compositionPreference = value === "none" || value === "strong" ? value : "soft";
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+soluteSpeciesSelect.addEventListener("change", () => {
+  soluteSpecies = soluteSpeciesSelect.value || null;
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+solutePartitionSelect.addEventListener("change", () => {
+  const value = solutePartitionSelect.value;
+  solutePartitionMode = ["cold-enrich", "hot-enrich", "surface-enrich", "bulk-enrich"].includes(value)
+    ? value : "none";
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+solutePartitionWeightSelect.addEventListener("change", () => {
+  const value = Number(solutePartitionWeightSelect.value);
+  solutePartitionWeight = [.12, .24, .48].includes(value) ? value : .24;
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
 });
