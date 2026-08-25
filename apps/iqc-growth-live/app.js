@@ -182,6 +182,9 @@ const epitaxyBadgeLabel = $("epitaxyBadgeLabel");
 const externalDriveSelect = $("externalDriveSelect");
 const externalDriveWeightSelect = $("externalDriveWeightSelect");
 const externalDriveHint = $("externalDriveHint");
+const thermalFieldSelect = $("thermalFieldSelect");
+const thermalFieldWeightSelect = $("thermalFieldWeightSelect");
+const thermalFieldHint = $("thermalFieldHint");
 const externalDriveBadge = $("externalDriveBadge");
 const externalDriveGlyph = $("externalDriveGlyph");
 const externalDriveBadgeLabel = $("externalDriveBadgeLabel");
@@ -689,6 +692,9 @@ let acceptedSurfaceDeficit = 0;
 let rejectedSurfaceDeficit = 0;
 let acceptedExternalDriveAlignment = 0;
 let rejectedExternalDriveAlignment = 0;
+let acceptedThermalFieldScore = 0;
+let rejectedThermalFieldScore = 0;
+let thermalFieldEvaluations = 0;
 let acceptedRobustnessScore = 0;
 let rejectedRobustnessScore = 0;
 let acceptedMicrostructureCouplingScore = 0;
@@ -788,6 +794,8 @@ let epitaxyTemplateMode = "none";
 let epitaxyWeight = .24;
 let externalDriveMode = "none";
 let externalDriveWeight = .24;
+let thermalFieldMode = "none";
+let thermalFieldWeight = .24;
 let affineLoadMode = "none";
 let affineLoadMagnitude = .02;
 let robustnessPreference = "none";
@@ -831,6 +839,7 @@ const GROWTH_PROTOCOL_DEFAULTS = Object.freeze({
   capillaryGeometryMode: "none", capillaryGeometryWeight: .24,
   epitaxyTemplateMode: "none", epitaxyWeight: .24,
   externalDriveMode: "none", externalDriveWeight: .24,
+  thermalFieldMode: "none", thermalFieldWeight: .24,
   affineLoadMode: "none", affineLoadMagnitude: .02,
   robustnessPreference: "none", robustnessWeight: .24,
   microstructureCouplingMode: "none", microstructureCouplingWeight: .24,
@@ -848,17 +857,19 @@ const GROWTH_PROTOCOLS = Object.freeze({
       compositionPreference: "soft", chargePreference: "auto", surfacePreference: "soft",
       frontMorphologyMode: "none", epitaxyTemplateMode: "none", externalDriveMode: "none",
       capillaryGeometryMode: "none",
+      thermalFieldMode: "none",
       affineLoadMode: "none", robustnessPreference: "none", microstructureCouplingMode: "none",
       loopClosurePreference: "none", arrivalPathMode: "none", geometricExplorationScale: 0,
       requestedGrowthNuclei: 1, growthScheduling: "commuting", hierarchyEnabled: true },
   },
   epitaxy: {
-    label: "coherent thin-film epitaxy", summary: "Supported film with a coherent hexagonal registry, facet propagation, upward feed geometry, arrival clearance, and robustness ordering.",
+    label: "coherent thin-film epitaxy", summary: "Supported film with coherent hexagonal registry, planar capillary balance, a +Z reduced cold side, upward feed geometry, and robustness ordering.",
     settings: { confinement: "substrate", geometryPreference: "strain", geometricStrainWeight: .16,
       compositionPreference: "soft", chargePreference: "auto", surfacePreference: "strong",
       frontMorphologyMode: "facet", frontMorphologyWeight: .24, epitaxyTemplateMode: "hex-coherent", epitaxyWeight: .24,
       capillaryGeometryMode: "planar", capillaryGeometryWeight: .24,
       externalDriveMode: "z-plus", externalDriveWeight: .24, affineLoadMode: "none",
+      thermalFieldMode: "z-plus-cold", thermalFieldWeight: .24,
       robustnessPreference: "margin", robustnessWeight: .24, microstructureCouplingMode: "none",
       loopClosurePreference: "none", arrivalPathMode: "declared-drive", arrivalPathWeight: .24,
       feedExposureMode: "top", feedExposureWeight: .24,
@@ -871,30 +882,33 @@ const GROWTH_PROTOCOLS = Object.freeze({
       frontMorphologyMode: "facet", frontMorphologyWeight: .24, epitaxyTemplateMode: "hex-mismatch", epitaxyWeight: .24,
       capillaryGeometryMode: "planar", capillaryGeometryWeight: .24,
       externalDriveMode: "z-plus", externalDriveWeight: .24, affineLoadMode: "none",
+      thermalFieldMode: "z-plus-cold", thermalFieldWeight: .24,
       robustnessPreference: "margin", robustnessWeight: .24, microstructureCouplingMode: "none",
       loopClosurePreference: "consensus", loopClosureWeight: .12, arrivalPathMode: "declared-drive", arrivalPathWeight: .24,
       feedExposureMode: "top", feedExposureWeight: .24,
       geometricExplorationScale: 0, requestedGrowthNuclei: 1, growthScheduling: "commuting", hierarchyEnabled: true },
   },
   directional: {
-    label: "directional solidification", summary: "A +Z growth direction, coherent facet-front ordering, declared arrival accessibility, and narrow configurational alternatives.",
+    label: "directional solidification", summary: "A +Z attachment direction and distinct +Z reduced cold side, coherent facet/front balance, declared arrival accessibility, and narrow alternatives.",
     settings: { confinement: "box", geometryPreference: "strain", geometricStrainWeight: .16,
       compositionPreference: "soft", chargePreference: "auto", surfacePreference: "soft",
       frontMorphologyMode: "facet", frontMorphologyWeight: .24, epitaxyTemplateMode: "none",
       capillaryGeometryMode: "planar", capillaryGeometryWeight: .24,
       externalDriveMode: "z-plus", externalDriveWeight: .48, affineLoadMode: "none",
+      thermalFieldMode: "z-plus-cold", thermalFieldWeight: .24,
       robustnessPreference: "margin", robustnessWeight: .12, microstructureCouplingMode: "none",
       loopClosurePreference: "none", arrivalPathMode: "declared-drive", arrivalPathWeight: .24,
       feedExposureMode: "top", feedExposureWeight: .24,
       geometricExplorationScale: .05, requestedGrowthNuclei: 1, growthScheduling: "commuting", hierarchyEnabled: true },
   },
   dendritic: {
-    label: "dendritic growth hypothesis", summary: "A finite nucleus with radial-outward drive, exposed-tip preference, radial arrival accessibility, and a broader path ensemble.",
+    label: "dendritic growth hypothesis", summary: "A finite nucleus with radial-outward drive, an outward reduced quench, exposed-tip/solid-angle preference, radial accessibility, and a broader path ensemble.",
     settings: { confinement: "sphere", geometryPreference: "strain", geometricStrainWeight: .08,
       compositionPreference: "soft", chargePreference: "auto", surfacePreference: "soft",
       frontMorphologyMode: "tip", frontMorphologyWeight: .48, epitaxyTemplateMode: "none",
       capillaryGeometryMode: "exposed", capillaryGeometryWeight: .24,
       externalDriveMode: "radial-out", externalDriveWeight: .24, affineLoadMode: "none",
+      thermalFieldMode: "radial-cold", thermalFieldWeight: .24,
       robustnessPreference: "none", microstructureCouplingMode: "none", loopClosurePreference: "none",
       arrivalPathMode: "radial-outward", arrivalPathWeight: .24, geometricExplorationScale: .15,
       feedExposureMode: "hemisphere", feedExposureWeight: .12,
@@ -907,6 +921,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
       frontMorphologyMode: "smooth", frontMorphologyWeight: .24, epitaxyTemplateMode: "none",
       capillaryGeometryMode: "pocket", capillaryGeometryWeight: .24,
       externalDriveMode: "none", affineLoadMode: "none", robustnessPreference: "margin", robustnessWeight: .12,
+      thermalFieldMode: "none",
       microstructureCouplingMode: "interface-follow", microstructureCouplingWeight: .24,
       loopClosurePreference: "consensus", loopClosureWeight: .24, arrivalPathMode: "none",
       geometricExplorationScale: .05, requestedGrowthNuclei: 4, growthScheduling: "commuting", hierarchyEnabled: true },
@@ -918,6 +933,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
       frontMorphologyMode: "smooth", frontMorphologyWeight: .48, epitaxyTemplateMode: "none",
       capillaryGeometryMode: "pocket", capillaryGeometryWeight: .48,
       externalDriveMode: "none", affineLoadMode: "none", robustnessPreference: "margin", robustnessWeight: .24,
+      thermalFieldMode: "band", thermalFieldWeight: .12,
       microstructureCouplingMode: "gap-heal", microstructureCouplingWeight: .24,
       loopClosurePreference: "consensus", loopClosureWeight: .12,
       arrivalPathMode: "parent-outward", arrivalPathWeight: .24, geometricExplorationScale: 0,
@@ -929,6 +945,7 @@ const GROWTH_PROTOCOL_CONTROL_IDS = new Set([
   "surfacePreferenceSelect", "frontMorphologySelect", "frontMorphologyWeightSelect",
   "capillaryGeometrySelect", "capillaryGeometryWeightSelect",
   "epitaxyTemplateSelect", "epitaxyWeightSelect", "externalDriveSelect", "externalDriveWeightSelect",
+  "thermalFieldSelect", "thermalFieldWeightSelect",
   "affineLoadSelect", "affineLoadMagnitudeSelect", "robustnessPreferenceSelect", "robustnessWeightSelect",
   "microstructureCouplingSelect", "microstructureCouplingWeightSelect", "loopClosurePreferenceSelect",
   "loopClosureWeightSelect", "arrivalPathSelect", "arrivalPathWeightSelect", "explorationScaleSelect",
@@ -4289,7 +4306,7 @@ function renderGrowthMechanismAudit() {
     const empty = document.createElement("p"); empty.textContent = "Advance one tree-search update to map its local geometric environment."; growthMechanismLedger.appendChild(empty);
   }
   renderGrowthUncertaintyBudget();
-  growthMechanismBoundary.textContent = `Phenotypes and uncertainty budgets are assigned after the candidate geometry and decision are frozen. Up to ${MAXIMUM_POSE_AUDITS_PER_LEAP} deterministic pose audits replay hard geometry at the larger of measured pair uncertainty and half the resolved isometry tolerance; the capped set is retained in encounter order, target-blind, and never changes admission or rank. This is a bounded sensitivity audit, not a posterior probability, confidence interval, thermal ensemble, dynamics, or calibrated robustness certificate. ${activeMicrostructureCouplingWeight() > 0 ? `The declared ${microstructureCouplingLabel()} experiment uses only proximity to frozen input-derived roles as a soft rank term over unchanged actions.` : "Proximity to heterogeneous-geometry roles is diagnostic only."} ${activeFrontMorphologyWeight() > 0 ? `The ${frontMorphologyLabel()} experiment uses parent-local angular support as another soft ordering term.` : "Front morphology is diagnostic only."} ${activeCapillaryGeometryWeight() > 0 ? `The ${capillaryGeometryLabel()} experiment uses finite 3D solid-angle occupancy around emitted sites.` : "Discrete capillary geometry is diagnostic only."} ${activeEpitaxyWeight() > 0 ? `The declared ${epitaxyTemplateLabel()} contributes an interfacial registry score without substrate atoms.` : "No epitaxial template ranks the frontier."} ${activeFeedExposureWeight() > 0 ? `The ${feedExposureLabel()} contributes finite-ray geometric visibility.` : "No source-ray shadowing term ranks the frontier."} No defect identity, differential mean curvature, adhesion, interface energy, flux, physical mechanism, formation energy, mobility, or rate is inferred.`;
+  growthMechanismBoundary.textContent = `Phenotypes and uncertainty budgets are assigned after the candidate geometry and decision are frozen. Up to ${MAXIMUM_POSE_AUDITS_PER_LEAP} deterministic pose audits replay hard geometry at the larger of measured pair uncertainty and half the resolved isometry tolerance; the capped set is retained in encounter order, target-blind, and never changes admission or rank. This is a bounded sensitivity audit, not a posterior probability, confidence interval, thermal ensemble, dynamics, or calibrated robustness certificate. ${activeMicrostructureCouplingWeight() > 0 ? `The declared ${microstructureCouplingLabel()} experiment uses only proximity to frozen input-derived roles as a soft rank term over unchanged actions.` : "Proximity to heterogeneous-geometry roles is diagnostic only."} ${activeFrontMorphologyWeight() > 0 ? `The ${frontMorphologyLabel()} experiment uses parent-local angular support as another soft ordering term.` : "Front morphology is diagnostic only."} ${activeCapillaryGeometryWeight() > 0 ? `The ${capillaryGeometryLabel()} experiment uses finite 3D solid-angle occupancy around emitted sites.` : "Discrete capillary geometry is diagnostic only."} ${activeThermalFieldWeight() > 0 ? `The ${thermalFieldLabel()} experiment supplies a declared reduced scalar field relative to the observed seed.` : "The thermal-field control is isothermal."} ${activeEpitaxyWeight() > 0 ? `The declared ${epitaxyTemplateLabel()} contributes an interfacial registry score without substrate atoms.` : "No epitaxial template ranks the frontier."} ${activeFeedExposureWeight() > 0 ? `The ${feedExposureLabel()} contributes finite-ray geometric visibility.` : "No source-ray shadowing term ranks the frontier."} No defect identity, differential mean curvature, adhesion, interface energy, Kelvin temperature, heat flow, flux, physical mechanism, formation energy, mobility, or rate is inferred.`;
 }
 
 function clusterPlacementIndices(cluster) {
@@ -5682,7 +5699,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-93",
+      buildId: "20260825-94",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -6147,6 +6164,30 @@ async function buildExperimentReceipt() {
         targetUsed: false,
         physicalFieldSolved: false,
       },
+      reducedThermalFieldRanking: {
+        role: "user-declared target-blind scalar geometry over unchanged exact candidate positions",
+        mode: thermalFieldMode,
+        label: thermalFieldLabel(),
+        enabled: activeThermalFieldWeight() > 0,
+        effectiveWeight: activeThermalFieldWeight(),
+        originPolicy: "centroid of observed depth-zero seed cluster poses",
+        transitionRadiusNearestNeighborUnits: 4,
+        widthNearestNeighborUnits: 2,
+        acceptedMeanScore: receiptRound(acceptedThermalFieldScore / Math.max(1, acceptedDecisions)),
+        rejectedMeanScore: receiptRound(rejectedThermalFieldScore / Math.max(1, rejectedDecisions)),
+        evaluations: thermalFieldEvaluations,
+        candidateSetChanged: false,
+        candidateGeometryChanged: false,
+        hardAdmissionChanged: false,
+        heldoutTargetUsed: false,
+        temperatureKelvin: null,
+        temperatureGradientInferred: false,
+        heatEquationSolved: false,
+        conductivityInferred: false,
+        latentHeatModeled: false,
+        thermalDiffusionIntegrated: false,
+        physicalTimeIntegrated: false,
+      },
       constraintRobustnessRanking: {
         role: "target-blind soft ordering of unchanged exact actions by the smallest normalized geometric safety margin",
         mode: robustnessPreference,
@@ -6410,6 +6451,7 @@ function notebookInterventionFactors(receipt) {
         search.discreteCapillaryGeometryRanking?.effectiveWeight],
       epitaxy: [search.epitaxialRegistryRanking?.mode, search.epitaxialRegistryRanking?.effectiveWeight],
       externalDrive: [search.externalDrivingGeometry?.mode, search.externalDrivingGeometry?.effectiveWeight],
+      thermalField: [search.reducedThermalFieldRanking?.mode, search.reducedThermalFieldRanking?.effectiveWeight],
       robustness: [search.constraintRobustnessRanking?.mode, search.constraintRobustnessRanking?.effectiveWeight],
       microstructure: [search.microstructureCouplingRanking?.mode, search.microstructureCouplingRanking?.effectiveWeight],
       loopClosure: [search.mesoscopicLoopClosureRanking?.mode, search.mesoscopicLoopClosureRanking?.effectiveWeight],
@@ -8012,6 +8054,55 @@ function externalDriveForCandidate(candidate) {
   };
 }
 
+function activeThermalFieldWeight() {
+  return thermalFieldMode === "none" ? 0 : thermalFieldWeight;
+}
+
+function thermalFieldLabel(mode = thermalFieldMode) {
+  return ({ none: "isothermal control", "z-plus-cold": "+Z planar undercooling",
+    "z-minus-cold": "−Z planar undercooling", "radial-cold": "outward radial quench",
+    "radial-hot": "inward radial anneal", band: "localized thermal band" })[mode] || "isothermal control";
+}
+
+function thermalFieldOriginVector() {
+  const seeds = placedClusters.filter((placement) => (placement.depth || 0) === 0);
+  if (!seeds.length) return new THREE.Vector3();
+  return seeds.reduce((sum, placement) => sum.add(placement.position), new THREE.Vector3())
+    .multiplyScalar(1 / seeds.length);
+}
+
+function reducedThermalFieldForCandidate(candidate, { recordWork = true } = {}) {
+  const origin = thermalFieldOriginVector();
+  const offset = candidate.position.clone().sub(origin);
+  const transitionRadius = 4 * referenceSpacing; const width = 2 * referenceSpacing;
+  let reducedCoordinate = 0; let score = 0; let isothermKind = "none";
+  if (thermalFieldMode === "z-plus-cold" || thermalFieldMode === "z-minus-cold") {
+    reducedCoordinate = offset.z / Math.max(width, 1e-12)
+      * (thermalFieldMode === "z-plus-cold" ? 1 : -1);
+    score = Math.tanh(reducedCoordinate); isothermKind = "seed-centroid plane";
+  } else if (thermalFieldMode === "radial-cold" || thermalFieldMode === "radial-hot") {
+    reducedCoordinate = (offset.length() - transitionRadius) / Math.max(width, 1e-12);
+    if (thermalFieldMode === "radial-hot") reducedCoordinate *= -1;
+    score = Math.tanh(reducedCoordinate); isothermKind = "seed-centroid sphere";
+  } else if (thermalFieldMode === "band") {
+    reducedCoordinate = offset.z / Math.max(width, 1e-12);
+    score = 2 * Math.exp(-.5 * reducedCoordinate ** 2) - 1;
+    isothermKind = "seed-centroid planar band";
+  }
+  if (recordWork && thermalFieldMode !== "none") thermalFieldEvaluations++;
+  return {
+    mode: thermalFieldMode, label: thermalFieldLabel(), enabled: thermalFieldMode !== "none",
+    score, reducedCoordinate, isothermKind,
+    originPolicy: "centroid of observed depth-zero seed cluster poses",
+    transitionRadiusNearestNeighborUnits: 4, widthNearestNeighborUnits: 2,
+    scalarFieldDeclaredByUser: thermalFieldMode !== "none",
+    candidateSetChanged: false, candidateGeometryChanged: false, hardAdmissionChanged: false,
+    heldoutTargetUsed: false, temperatureKelvin: null, temperatureGradientInferred: false,
+    heatEquationSolved: false, conductivityInferred: false, latentHeatModeled: false,
+    thermalDiffusionIntegrated: false, physicalTimeIntegrated: false,
+  };
+}
+
 function constraintRobustnessForCandidate(fresh, merged) {
   const scaleAngstrom = referenceSpacingA / Math.max(referenceSpacing, 1e-12);
   const toleranceScene = clusterMetricToleranceAngstrom() / Math.max(scaleAngstrom, 1e-12);
@@ -8075,6 +8166,8 @@ function capturePolicyComparison(entries) {
       score: (entry) => entry.baseScore + activeEpitaxyWeight() * entry.evaluation.epitaxyRegistry.score },
     { id: "drive", label: `${externalDriveModeLabel()} ${activeExternalDriveWeight().toFixed(2)}`,
       score: (entry) => entry.baseScore + activeExternalDriveWeight() * entry.evaluation.externalDrive.alignment },
+    { id: "thermal-field", label: `${thermalFieldLabel()} ${activeThermalFieldWeight().toFixed(2)}`,
+      score: (entry) => entry.baseScore + activeThermalFieldWeight() * entry.evaluation.thermalField.score },
     { id: "robustness", label: `constraint margin ${activeRobustnessWeight().toFixed(2)}`,
       score: (entry) => entry.baseScore + activeRobustnessWeight() * entry.evaluation.constraintRobustness.score },
     { id: "microstructure", label: `${microstructureCouplingLabel()} ${activeMicrostructureCouplingWeight().toFixed(2)}`,
@@ -8319,6 +8412,7 @@ function commutingFrontierBatch() {
         + activeCapillaryGeometryWeight() * evaluation.capillaryGeometry.score
         + activeEpitaxyWeight() * evaluation.epitaxyRegistry.score
         + activeExternalDriveWeight() * evaluation.externalDrive.alignment
+        + activeThermalFieldWeight() * evaluation.thermalField.score
         + activeRobustnessWeight() * evaluation.constraintRobustness.score
         + activeMicrostructureCouplingWeight() * evaluation.microstructureCoupling.score
         + activeLoopClosureWeight() * evaluation.loopClosure.score
@@ -8431,6 +8525,7 @@ function evaluateCandidate(candidate, {
   const compositionBalance = compositionBalanceForFreshSites(fresh);
   const formalChargeBalance = formalChargeBalanceForFreshSites(fresh);
   const externalDrive = externalDriveForCandidate(candidate);
+  const thermalField = reducedThermalFieldForCandidate(candidate, { recordWork });
   const constraintRobustness = constraintRobustnessForCandidate(fresh, merged);
   const microstructureCoupling = microstructureCouplingForCandidate(candidate, { fresh, merged });
   const loopClosure = mesoscopicLoopClosureForCandidate(candidate);
@@ -8442,7 +8537,7 @@ function evaluateCandidate(candidate, {
   return { accepted, sites, merged, fresh, conflicts, boundaryFailures, knownFailures, markingFallback,
     coordinationOverflows, angularViolations, geometricStrain, affineLoadedGeometricStrain,
     surfaceCompletion, frontMorphology, capillaryGeometry, epitaxyRegistry, compositionBalance, formalChargeBalance,
-    externalDrive, constraintRobustness, microstructureCoupling, loopClosure, arrivalPath, feedExposure,
+    externalDrive, thermalField, constraintRobustness, microstructureCoupling, loopClosure, arrivalPath, feedExposure,
     duplicateSites: canonical.duplicateSites,
     freshReferenceIndices: fresh.map((site) => site.referenceIndex).filter(Number.isInteger),
     reason: conflicts ? `${conflicts} hard-core/species conflicts` : boundaryFailures ? "outside confinement" : knownFailures ? `${knownFailures} sites outside known configuration` : coordinationOverflows.length ? `${coordinationOverflows.length} colored coordination capacities exceeded` : angularViolations.length ? `${angularViolations.length} colored angular envelopes violated` : merged.length < 2 ? "insufficient shared support" : fresh.length === 0 ? "duplicate covering" : !markingAccepted ? "marking mismatch" : "compatible overlap" };
@@ -8635,6 +8730,9 @@ function initializeOffLatticeSearch() {
   rejectedSurfaceDeficit = 0;
   acceptedExternalDriveAlignment = 0;
   rejectedExternalDriveAlignment = 0;
+  acceptedThermalFieldScore = 0;
+  rejectedThermalFieldScore = 0;
+  thermalFieldEvaluations = 0;
   acceptedRobustnessScore = 0;
   rejectedRobustnessScore = 0;
   acceptedMicrostructureCouplingScore = 0;
@@ -9233,7 +9331,8 @@ function currentGrowthProtocolSettings() {
     compositionPreference, chargePreference, surfacePreference,
     frontMorphologyMode, frontMorphologyWeight, capillaryGeometryMode, capillaryGeometryWeight,
     epitaxyTemplateMode, epitaxyWeight,
-    externalDriveMode, externalDriveWeight, affineLoadMode, affineLoadMagnitude,
+    externalDriveMode, externalDriveWeight, thermalFieldMode, thermalFieldWeight,
+    affineLoadMode, affineLoadMagnitude,
     robustnessPreference, robustnessWeight, microstructureCouplingMode, microstructureCouplingWeight,
     loopClosurePreference, loopClosureWeight, arrivalPathMode, arrivalPathWeight,
     feedExposureMode, feedExposureWeight,
@@ -9281,6 +9380,7 @@ function applyGrowthProtocol(mode) {
   capillaryGeometryMode = settings.capillaryGeometryMode; capillaryGeometryWeight = settings.capillaryGeometryWeight;
   epitaxyTemplateMode = settings.epitaxyTemplateMode; epitaxyWeight = settings.epitaxyWeight;
   externalDriveMode = settings.externalDriveMode; externalDriveWeight = settings.externalDriveWeight;
+  thermalFieldMode = settings.thermalFieldMode; thermalFieldWeight = settings.thermalFieldWeight;
   affineLoadMode = settings.affineLoadMode; affineLoadMagnitude = settings.affineLoadMagnitude;
   robustnessPreference = settings.robustnessPreference; robustnessWeight = settings.robustnessWeight;
   microstructureCouplingMode = settings.microstructureCouplingMode;
@@ -9428,6 +9528,8 @@ function syncStageOptions() {
     epitaxyWeightSelect.value = String(epitaxyWeight);
     externalDriveSelect.value = externalDriveMode;
     externalDriveWeightSelect.value = String(externalDriveWeight);
+    thermalFieldSelect.value = thermalFieldMode;
+    thermalFieldWeightSelect.value = String(thermalFieldWeight);
     affineLoadSelect.value = affineLoadMode;
     affineLoadMagnitudeSelect.value = String(affineLoadMagnitude);
     robustnessPreferenceSelect.value = robustnessPreference;
@@ -9456,6 +9558,8 @@ function syncStageOptions() {
     epitaxyWeightSelect.disabled = finiteIceAnchorMode || confinementSelect.value !== "substrate" || epitaxyTemplateMode === "none";
     externalDriveSelect.disabled = finiteIceAnchorMode;
     externalDriveWeightSelect.disabled = finiteIceAnchorMode || externalDriveMode === "none";
+    thermalFieldSelect.disabled = finiteIceAnchorMode;
+    thermalFieldWeightSelect.disabled = finiteIceAnchorMode || thermalFieldMode === "none";
     affineLoadSelect.disabled = finiteIceAnchorMode;
     affineLoadMagnitudeSelect.disabled = finiteIceAnchorMode || affineLoadMode === "none";
     robustnessPreferenceSelect.disabled = finiteIceAnchorMode;
@@ -9482,6 +9586,8 @@ function syncStageOptions() {
       : `${formalChargeTarget?.resolvedObservations || 0}/${formalChargeTarget?.observations || referenceCount()} sites · unavailable`;
     externalDriveHint.textContent = externalDriveMode === "none"
       ? "isotropic · weight zero" : `${externalDriveModeLabel()} · weight ${externalDriveWeight.toFixed(2)}`;
+    thermalFieldHint.textContent = thermalFieldMode === "none"
+      ? "isothermal · weight zero" : `${thermalFieldLabel()} · width 2dₙₙ · weight ${thermalFieldWeight.toFixed(2)}`;
     affineLoadHint.textContent = affineLoadMode === "none"
       ? "undeformed metric" : `${Math.round(affineLoadMagnitude * 100)}% ${affineLoadModeLabel()}`;
     robustnessHint.textContent = robustnessPreference === "margin"
@@ -9538,6 +9644,9 @@ function syncStageOptions() {
     const externalDriveUse = externalDriveMode === "none"
       ? " No external direction is preferred."
       : ` A user-declared ${externalDriveModeLabel()} direction adds a ${externalDriveWeight.toFixed(2)} soft alignment term to the same actions; it is boundary/loading geometry, not a solved force field.`;
+    const thermalFieldUse = thermalFieldMode === "none"
+      ? " No reduced thermal scalar ranks the frontier."
+      : ` A ${thermalFieldWeight.toFixed(2)} soft ${thermalFieldLabel()} scalar evaluates absolute candidate position relative to the frozen observed-seed isotherm; it is not Kelvin temperature or solved heat flow.`;
     const robustnessUse = robustnessPreference === "margin"
       ? ` A ${robustnessWeight.toFixed(2)} soft robustness term prefers the largest minimum normalized contact, overlap, or boundary safety margin; it does not sample temperature or change hard admission.`
       : " Constraint margins are reported but contribute zero ranking weight.";
@@ -9571,8 +9680,8 @@ function syncStageOptions() {
     growthModeNote.textContent = finiteIceAnchorMode
       ? "This sealed ice gate executes primitive H₂O connection ports with mutually exclusive orientation domains. Clusters² is disabled because no stationary promoted ice production has been certified."
       : hierarchyEnabled
-      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`
-      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`;
+      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`
+      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`;
   }
 }
 
@@ -9596,6 +9705,9 @@ function resetCounters() {
   rejectedSurfaceDeficit = 0;
   acceptedExternalDriveAlignment = 0;
   rejectedExternalDriveAlignment = 0;
+  acceptedThermalFieldScore = 0;
+  rejectedThermalFieldScore = 0;
+  thermalFieldEvaluations = 0;
   acceptedRobustnessScore = 0;
   rejectedRobustnessScore = 0;
   acceptedMicrostructureCouplingScore = 0;
@@ -9958,6 +10070,7 @@ function stateForCandidate(candidate, evaluation) {
     capillaryGeometry: evaluation.capillaryGeometry,
     epitaxyRegistry: evaluation.epitaxyRegistry,
     externalDrive: evaluation.externalDrive,
+    thermalField: evaluation.thermalField,
     constraintRobustness: evaluation.constraintRobustness,
     microstructureCoupling: evaluation.microstructureCoupling,
     loopClosure: evaluation.loopClosure,
@@ -10073,6 +10186,7 @@ function performOffLatticeEvent() {
     frontMorphology: evaluation.frontMorphology,
     capillaryGeometry: evaluation.capillaryGeometry,
     feedExposure: evaluation.feedExposure,
+    thermalField: evaluation.thermalField,
   }));
   const mechanismDiagnostics = new Map(batch.map(({ candidate, evaluation }) =>
     [candidate, prepareGrowthMechanismDiagnostic(candidate, evaluation)]));
@@ -10100,6 +10214,7 @@ function performOffLatticeEvent() {
       rejectedCapillaryGeometryScore += snapshotEvaluation.capillaryGeometry.score;
       rejectedEpitaxyRegistryScore += snapshotEvaluation.epitaxyRegistry.score;
       rejectedExternalDriveAlignment += snapshotEvaluation.externalDrive.alignment;
+      rejectedThermalFieldScore += snapshotEvaluation.thermalField.score;
       rejectedRobustnessScore += snapshotEvaluation.constraintRobustness.score;
       rejectedMicrostructureCouplingScore += snapshotEvaluation.microstructureCoupling.score;
       rejectedLoopClosureScore += snapshotEvaluation.loopClosure.score;
@@ -10143,6 +10258,7 @@ function performOffLatticeEvent() {
     acceptedCapillaryGeometryScore += evaluation.capillaryGeometry.score;
     acceptedEpitaxyRegistryScore += evaluation.epitaxyRegistry.score;
     acceptedExternalDriveAlignment += evaluation.externalDrive.alignment;
+    acceptedThermalFieldScore += evaluation.thermalField.score;
     acceptedRobustnessScore += evaluation.constraintRobustness.score;
     acceptedMicrostructureCouplingScore += evaluation.microstructureCoupling.score;
     acceptedLoopClosureScore += evaluation.loopClosure.score;
@@ -10501,6 +10617,29 @@ function rebuildWorld() {
           axis.clone().multiplyScalar(inward ? -1 : 1), extent * .48));
     }
   }
+  if (pipelineStage === 4 && thermalFieldMode !== "none") {
+    const origin = thermalFieldOriginVector();
+    const extent = Math.max(5, ...atoms.map((atom) => atom.p.distanceTo(origin))) * 1.35;
+    const fieldMaterial = new THREE.MeshBasicMaterial({ color: 0x68b8ff, transparent: true,
+      opacity: .11, side: THREE.DoubleSide, depthWrite: false });
+    if (thermalFieldMode === "radial-cold" || thermalFieldMode === "radial-hot") {
+      const shell = new THREE.LineSegments(
+        new THREE.WireframeGeometry(new THREE.IcosahedronGeometry(4 * referenceSpacing, 2)),
+        new THREE.LineBasicMaterial({ color: thermalFieldMode === "radial-cold" ? 0x68b8ff : 0xff9b70,
+          transparent: true, opacity: .34 }),
+      );
+      shell.position.copy(origin); externalDriveGroup.add(shell);
+    } else {
+      const addPlane = (offset, opacity = .11) => {
+        const plane = new THREE.Mesh(new THREE.PlaneGeometry(extent * 2, extent * 2), fieldMaterial.clone());
+        plane.material.opacity = opacity; plane.position.copy(origin).add(new THREE.Vector3(0, 0, offset));
+        externalDriveGroup.add(plane);
+      };
+      if (thermalFieldMode === "band") {
+        addPlane(-2 * referenceSpacing, .08); addPlane(2 * referenceSpacing, .08);
+      } else addPlane(0, .13);
+    }
+  }
   const dummy = new THREE.Object3D();
   const selectedCoordination = selectedCoordinationDetail();
   const selectedIds = selectedCoordination?.ids || null;
@@ -10800,6 +10939,12 @@ function physicsTranslationRecords(leap = null) {
         : "isotropic search; no preferred attachment direction",
       evidence: leap ? `Accepted mean alignment ${receiptRound(acceptedExternalDriveAlignment / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedExternalDriveAlignment / Math.max(1, rejectedDecisions), 4)}.` : "No directional attachment scored yet.",
       boundary: "This is a declared geometric boundary/loading condition. It does not solve a force, electric field, flux transport, stress propagation, or orientation-dependent attachment rate." },
+    { id: "thermal-field", process: "solidification thermal field / undercooling geometry", status: activeThermalFieldWeight() > 0 ? "soft" : "open", role: activeThermalFieldWeight() > 0 ? "declared scalar-field ordering" : "disabled",
+      encoding: activeThermalFieldWeight() > 0
+        ? `${thermalFieldLabel()}; reduced coordinate relative to the observed seed-centroid plane or 4dₙₙ sphere with 2dₙₙ transition width, w=${activeThermalFieldWeight().toFixed(2)}`
+        : "isothermal control; no scalar field ranks the frontier",
+      evidence: leap ? `Accepted mean reduced-field score ${receiptRound(acceptedThermalFieldScore / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedThermalFieldScore / Math.max(1, rejectedDecisions), 4)}.` : "No thermal-field coordinate evaluated yet.",
+      boundary: "This is a declared dimensionless spatial field, not Kelvin temperature, undercooling calibrated to a phase diagram, heat flow, conductivity, latent heat, thermal diffusion, a solidification rate, or physical time." },
     { id: "robustness", process: "finite geometric uncertainty / attachment tolerance", status: activeRobustnessWeight() > 0 ? "soft" : "open", role: activeRobustnessWeight() > 0 ? "target-blind constraint-margin ordering" : "diagnostic",
       encoding: `minimum of colored-contact clearance, exact-overlap headroom, and public-boundary clearance, normalized by ε=${clusterMetricToleranceAngstrom().toFixed(3)} Å`,
       evidence: leap ? `Accepted mean bounded score ${receiptRound(acceptedRobustnessScore / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedRobustnessScore / Math.max(1, rejectedDecisions), 4)}.` : "No attachment margin scored yet.",
@@ -11104,6 +11249,15 @@ function geometryConstraintEvidence(name, term, state, mode) {
         ? `Soft rank term +${activeExternalDriveWeight().toFixed(2)} × alignment over the unchanged exact candidate set.` : "Diagnostic only; weight zero.",
       boundary: "A directional geometric bias is not force, stress, pressure, electric field, chemical-potential gradient, deposition flux, or a kinetic rate.",
     },
+    "thermal field": {
+      observed: `${thermalFieldLabel()} declared before growth relative to the centroid of observed depth-zero seed poses`,
+      encoding: state?.thermalField?.enabled
+        ? `${state.thermalField.isothermKind} · reduced coordinate ${state.thermalField.reducedCoordinate.toFixed(3)} · width 2dₙₙ`
+        : "No spatial scalar is applied; isothermal control.",
+      searchRole: activeThermalFieldWeight() > 0
+        ? `Soft rank term +${activeThermalFieldWeight().toFixed(2)} × reduced field score over unchanged exact candidates.` : "Disabled; weight zero.",
+      boundary: "The reduced scalar is not Kelvin temperature, calibrated undercooling, a heat-equation solution, conductivity, latent heat, thermal diffusion, solidification rate, or time.",
+    },
     "constraint robustness": {
       observed: `effective geometric tolerance ε=${clusterMetricToleranceAngstrom().toFixed(3)} Å from the selected clustering uncertainty rule`,
       encoding: "The smallest contact-exclusion clearance, overlap headroom, or public-domain clearance is normalized by ε and smoothly bounded.",
@@ -11241,6 +11395,9 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "external drive", status: ranked(activeExternalDriveWeight() > 0),
       value: state.externalDrive ? signed(state.externalDrive.alignment) : "not evaluated",
       detail: activeExternalDriveWeight() > 0 ? `${externalDriveModeLabel()} · rank weight ${activeExternalDriveWeight().toFixed(2)}` : "isotropic · weight zero" },
+    { name: "thermal field", status: ranked(activeThermalFieldWeight() > 0),
+      value: state.thermalField?.enabled ? `${signed(state.thermalField.score)} · ξ ${state.thermalField.reducedCoordinate.toFixed(2)}` : "isothermal",
+      detail: activeThermalFieldWeight() > 0 ? `${thermalFieldLabel()} · rank weight ${activeThermalFieldWeight().toFixed(2)}` : "no scalar-field rank" },
     { name: "constraint robustness", status: ranked(activeRobustnessWeight() > 0),
       value: state.constraintRobustness ? `${state.constraintRobustness.score.toFixed(3)} · ${state.constraintRobustness.minimumMarginAngstrom.toFixed(3)} Å min` : "not evaluated",
       detail: activeRobustnessWeight() > 0 ? `rank weight ${activeRobustnessWeight().toFixed(2)} · deterministic margin` : "diagnostic · no ensemble" },
@@ -11280,6 +11437,7 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "capillary geometry", status: "diagnostic", value: "withheld", detail: "no executable front" },
     { name: "epitaxial registry", status: "diagnostic", value: "withheld", detail: "no executable supported-film front" },
     { name: "external drive", status: "diagnostic", value: "withheld", detail: "occupational realization required" },
+    { name: "thermal field", status: "diagnostic", value: "withheld", detail: "occupational realization required" },
     { name: "feedstock exposure", status: "diagnostic", value: "withheld", detail: "occupational realization required" },
     { name: "GCTS marking", status: "diagnostic", value: "not executed", detail: "inspectable sections only" },
   ] : mode === "specialized" ? [
@@ -11297,6 +11455,7 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "capillary geometry", status: "diagnostic", value: "not used", detail: "specialized frozen trace" },
     { name: "epitaxial registry", status: "diagnostic", value: "not used", detail: "specialized frozen trace" },
     { name: "external drive", status: "diagnostic", value: "not used", detail: "cannot authorize this trace" },
+    { name: "thermal field", status: "diagnostic", value: "not used", detail: "specialized frozen trace" },
     { name: "feedstock exposure", status: "diagnostic", value: "not used", detail: "specialized frozen trace" },
     { name: "GCTS marking", status: "pass", value: "domain unanimity",
       detail: `all surviving ${iceAnchorTrace?.moleculeLabel || "H₂O"} poses agree` },
@@ -11325,6 +11484,8 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "external drive", status: ranked(activeExternalDriveWeight() > 0),
       value: activeExternalDriveWeight() > 0 ? externalDriveModeLabel() : "isotropic",
       detail: activeExternalDriveWeight() > 0 ? `weight ${activeExternalDriveWeight().toFixed(2)}` : "weight zero" },
+    { name: "thermal field", status: ranked(activeThermalFieldWeight() > 0),
+      value: activeThermalFieldWeight() > 0 ? thermalFieldLabel() : "isothermal", detail: `weight ${activeThermalFieldWeight().toFixed(2)}` },
     { name: "feedstock exposure", status: ranked(activeFeedExposureWeight() > 0),
       value: activeFeedExposureWeight() > 0 ? feedExposureLabel() : "inactive", detail: `weight ${activeFeedExposureWeight().toFixed(2)}` },
     { name: "GCTS marking", status: policySelect.value === "marked" ? "ranked" : "diagnostic",
@@ -12469,6 +12630,19 @@ externalDriveSelect.addEventListener("change", () => {
 externalDriveWeightSelect.addEventListener("change", () => {
   const value = Number(externalDriveWeightSelect.value);
   externalDriveWeight = [.12, .24, .48].includes(value) ? value : .24;
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+thermalFieldSelect.addEventListener("change", () => {
+  const value = thermalFieldSelect.value;
+  thermalFieldMode = ["z-plus-cold", "z-minus-cold", "radial-cold", "radial-hot", "band"].includes(value)
+    ? value : "none";
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+thermalFieldWeightSelect.addEventListener("change", () => {
+  const value = Number(thermalFieldWeightSelect.value);
+  thermalFieldWeight = [.12, .24, .48].includes(value) ? value : .24;
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
 });

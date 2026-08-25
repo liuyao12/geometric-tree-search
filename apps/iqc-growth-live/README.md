@@ -3837,6 +3837,32 @@ work, accepted/rejected score means, and every non-claim. Keeping it separate
 from the older morphology score lets a materials scientist compare 2D backing
 geometry against 3D local solid angle on an identical frozen frontier.
 
+## Reduced thermal-field geometry
+
+Stage 4 can now place the unchanged frozen frontier inside a declared
+**reduced thermal field**. Planar modes favor the `+Z` or `−Z` side of an
+isotherm through the centroid of the observed depth-zero seed poses. Radial
+modes use a spherical transition at `4 d_nn`; a localized-band mode favors the
+`±2 d_nn` neighborhood of the seed plane. A smooth dimensionless coordinate
+with width `2 d_nn` gives a bounded soft score. The isotherm is rendered as a
+translucent blue plane, paired band, or wire sphere.
+
+This field is deliberately different from the external-drive vector. Drive
+geometry scores the direction of a parent-to-child attachment; the thermal
+geometry scores the candidate's absolute position relative to a frozen spatial
+field. The two can therefore agree, compete, or be ablated independently on
+the same candidate digest. Epitaxy and directional-solidification protocols
+combine a `+Z` cold side with their directional geometry, the dendritic
+hypothesis uses an outward radial quench, and pore filling exposes a localized
+band experiment.
+
+No temperature is fitted or reported in Kelvin. The reduced coordinate is not
+calibrated undercooling, and the portal does not solve a heat equation, infer
+conductivity or latent heat, integrate thermal diffusion, or assign a
+solidification speed or physical time. The receipt stores the seed-derived
+origin policy rather than its coordinates, the plane/sphere scale, width,
+work, accepted/rejected means, unchanged-action invariants, and all non-claims.
+
 ## Declared epitaxial registry
 
 The supported-film experiment can now replace its visually uniform excluded

@@ -517,6 +517,25 @@
                 <option value="0.48">0.48 · strong</option>
               </select>
             </label>
+            <label class="field" for="thermalFieldSelect">
+              <span>Reduced thermal field <b id="thermalFieldHint">isothermal · weight zero</b></span>
+              <select id="thermalFieldSelect">
+                <option value="none" selected>Isothermal control · no scalar field</option>
+                <option value="z-plus-cold">Planar field · +Z colder side</option>
+                <option value="z-minus-cold">Planar field · −Z colder side</option>
+                <option value="radial-cold">Radial quench · outside colder</option>
+                <option value="radial-hot">Radial anneal · inside favored</option>
+                <option value="band">Localized thermal band · seed plane</option>
+              </select>
+            </label>
+            <label class="field" for="thermalFieldWeightSelect">
+              <span>Thermal-field weight <b>soft reduced coordinate</b></span>
+              <select id="thermalFieldWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
             <label class="field" for="affineLoadSelect">
               <span>Prescribed affine loading <b id="affineLoadHint">undeformed metric</b></span>
               <select id="affineLoadSelect">
@@ -1114,7 +1133,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-93"></script>
+  <script type="module" src="./app.js?v=20260825-94"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>
