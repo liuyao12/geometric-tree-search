@@ -36,13 +36,13 @@ Cell = tuple[Vector, Vector, Vector]
 # bounds.  The table is chemistry metadata, not a water-specific rule.  A
 # caller may extend/replace it for unusual oxidation or coordination states.
 DEFAULT_COVALENT_RADII: Mapping[str, float] = {
-    "H": .31, "B": .84, "C": .76, "N": .71, "O": .66, "F": .57,
+    "H": .31, "D": .31, "B": .84, "C": .76, "N": .71, "O": .66, "F": .57,
     "Si": 1.11, "P": 1.07, "S": 1.05, "Cl": 1.02,
     "Ge": 1.20, "As": 1.19, "Se": 1.20, "Br": 1.20,
     "I": 1.39,
 }
 DEFAULT_VALENCE_BOUNDS: Mapping[str, int] = {
-    "H": 1, "B": 3, "C": 4, "N": 3, "O": 2, "F": 1,
+    "H": 1, "D": 1, "B": 3, "C": 4, "N": 3, "O": 2, "F": 1,
     "Si": 4, "P": 5, "S": 6, "Cl": 1,
     "Ge": 4, "As": 5, "Se": 6, "Br": 1, "I": 1,
 }

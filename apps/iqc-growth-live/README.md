@@ -803,12 +803,28 @@ circuit. Selecting the donor-side D on every oriented edge yields exactly one
 D per O--O bond and two covalent D per oxygen: 80 O + 160 D = 240 realized
 atoms on two interpenetrating networks. A seed makes the choice reproducible;
 another click samples a different valid orientation. Only after this choice
-does the ordinary molecular pipeline rediscover a D2O cluster, hydrogen-bond
-connection clusters, and O4 gap polyhedra and enable exploratory tree search.
+does the ordinary molecular pipeline rediscover one D2O topology (with six
+measured metric conformers retained as pose subtypes), hydrogen-bond connection
+polyhedra, and the two O4 gap classes. It does not retain the generic O6 family
+alongside those shortest Ice-VI voids, so the gallery does not double-count
+empty space.
 The receipt records the seed, method, both ice-rule checks, and that neither an
 energy nor a target score selected the microstate. This is one valid
 instantaneous realization, not a claim that diffraction determined it or that
 all occupational states are equiprobable.
+
+A separate sealed cross-microstate audit now tests what that geometry can
+actually continue. One 123-molecule training crop learns five recurring D2O
+metric conformers and 84 directed proper-SE(3) ports. Three training-side
+microstates select a minimum of two independent parent-port witnesses at
+23/24 precision (95.8%). The frozen grammar then receives a spatially disjoint
+23-molecule nucleus from a fifth microstate; only after its candidate traces
+are frozen is the 134-molecule outer crop opened. It emits `4 → 3 → 1` oxygen
+anchors in three self-fed waves, all `8/8` exact. Every associated D2O pose
+remains a mutually exclusive hypothesis, and forcing whole molecules yields
+18 correct plus 3 wrong atomic sites. This is finite oxygen-framework
+continuation—not occupational prediction, kinetics, stationarity, or an
+exponential ice rule.
 
 Cluster identification now exposes its colored metric-isometry tolerance as a
 stage-local scientific control: strict `1.0%`, balanced `2.5%`, or thermally

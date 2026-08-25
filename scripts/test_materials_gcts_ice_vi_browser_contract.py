@@ -40,6 +40,12 @@ def test_ice_rule_microstate_is_optional_geometry_only_and_audited():
     assert 'realizationSeed: iceViMicrostate.audit.seed' in APP
     assert 'Sample a different ice-rule microstate' in APP
     assert 'Return to diffraction average' in HTML
+    assert 'moleculeClasses: 1' in APP
+    assert 'observedMetricConformers: molecularConformers.length' in APP
+    assert 'waterCover.placements.filter((placement) => placement.family !== "gap")' in APP
+    assert 'O${minimumRingSize} gap' in APP
+    assert '8 exact O anchors · poses unresolved' in APP
+    assert 'forced whole-molecule continuation produces three wrong sites' in APP
 
 
 def test_curated_occupancy_reaches_receipt_and_display():

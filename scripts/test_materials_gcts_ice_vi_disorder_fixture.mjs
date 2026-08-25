@@ -86,4 +86,12 @@ assert.notEqual(selectedDigest(realization), selectedDigest(secondRealization));
 assert.equal(selectedDigest(realization), selectedDigest(resolveIceViIceRuleMicrostate(1)),
   "the same seed must reproduce the same occupational microstate");
 
+const larger = resolveIceViIceRuleMicrostate(9, [3, 3, 3]);
+assert.equal(larger.atoms.length, 810);
+assert.equal(larger.audit.oxygenAtoms, 270);
+assert.equal(larger.audit.oxygenBonds, 540);
+assert.equal(larger.audit.selectedDeuteriumAtoms, 540);
+assert.equal(larger.audit.twoCovalentDeuteriaPerOxygen, true);
+assert.throws(() => generateIceViAverageObservation([2, 0, 2]), /three positive integers/);
+
 console.log("ice VI occupational-disorder browser fixture: passed");

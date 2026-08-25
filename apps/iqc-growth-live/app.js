@@ -404,9 +404,9 @@ const RECURSIVE_BENCHMARKS = {
   iceVIII: { hierarchy: ["D₂O", "bridges", "voids"], curve: [192], mark: "published ordered-isotope geometry",
     action: "cover audit only", speed: "no autonomous claim", gate: "real-data molecular generalization", status: "control",
     note: "COD 1566658 supplies fully occupied O and D coordinates from neutron diffraction. The live path must rediscover D₂O molecules and the interpenetrating-network connection/void grammar from positions alone. This is a published known-window cover audit; no held-out ice-VIII continuation, stationary rule, or high-pressure kinetics is claimed." },
-  iceVI: { hierarchy: ["O framework", "D/Vac alternatives", "gap terminals"], curve: [400], mark: "occupancy-aware colored sites",
-    action: "average-structure cover audit", speed: "no unique molecular growth claim", gate: "pass ambiguity · growth withheld", status: "control",
-    note: "COD 1567346 supplies a proton-disordered average structure: 80 O positions and 320 candidate D positions at occupancy 1/2 in the 2×2×2 observation. Because the average coordinates do not select two D sites around each oxygen, the portal preserves D/vacancy alternatives, declines a unique D₂O partition, and routes the configuration through irregular supports plus explicit gaps. This is the scientifically correct ambiguity result, not a failed molecule detector." },
+  iceVI: { hierarchy: ["O framework", "D/Vac alternatives", "gap terminals"], curve: [400, 23, 8], mark: "two-parent port consensus",
+    action: "8 exact O anchors · D₂O poses retained", speed: "4 → 3 → 1 exact · then fixed", gate: "pass O framework · orientation red", status: "limit",
+    note: "COD 1567346 supplies a proton-disordered average structure: 80 O positions and 320 candidate D positions at occupancy 1/2 in the 2×2×2 observation. The average remains unresolved and declines a unique D₂O partition. In a separate sealed audit, one realized microstate teaches five D₂O metric conformers and 84 proper-SE(3) ports. A 95.8%-precision training consensus then transfers to a spatially disjoint microstate and emits 4 → 3 → 1 exact unseen oxygen anchors with zero false anchors. Every new D₂O pose remains a mutually exclusive occupational hypothesis; forcing whole molecules makes three atomic errors. Oxygen-framework continuation passes, while occupational, stationary, and exponential growth remain red." },
   dryIce: { hierarchy: ["molecule", "pair", "void"], curve: [3, 324], mark: "generic molecular ports", action: "94 replay decisions", speed: "324 / 324 · fixed point", gate: "exact known-window control", status: "limit", note: "A saved Pa-3 CO₂-I window exercises the generic, non-water molecular front end. Starting from one 3-atom CO₂ component, 94 deterministic covering decisions produce 95 rigid placements at causal depth 14 and replay all 324/324 known colored sites with zero missing, duplicate, or extraneous atoms. The frozen observed frontier then exhausts with zero outside-window emissions. This is an exact target-aware known-window replay—not autonomous continuation, stationarity, an exponential rule, or a physical growth rate." },
   graphene: { hierarchy: [1, 4, 16], curve: [373, 1495, 5983, 23935, 95743, 382975, 1531903], mark: "one C₂ sheet pose", action: "6 area rewrites → 1.53m", speed: "≈4× area per action", gate: "pass · 2D synthetic", status: "pass", note: "The generic planar atlas learns one C₂ motif pose and exactly predicts an unseen 1,495-atom disk." },
   hbn: { hierarchy: [2, 8, 32], curve: [746, 2990, 11960, 47840, 191360, 765440, 3061760], mark: "finite registry + pose fallback", action: "6 area rewrites → 3.06m", speed: "≈4× area per action", gate: "pass · 2D synthetic", status: "pass", note: "The registry vocabulary remains bounded for the aligned bilayer and the generic planar atlas preserves both learned sheet poses." },
@@ -875,14 +875,14 @@ function currentRecursiveBenchmark() {
   const benchmark = RECURSIVE_BENCHMARKS[scenarioSelect.value] || RECURSIVE_BENCHMARKS.imported;
   if (scenarioSelect.value !== "iceVI" || !iceViMicrostate) return benchmark;
   return {
-    hierarchy: ["D₂O", "H-bond bridges", "O₄ voids"],
-    curve: [240],
-    mark: "sampled ice-rule connection geometry",
-    action: "generic molecular/port search",
-    speed: "exploratory explicit continuation",
-    gate: "valid microstate · growth uncertified",
-    status: "control",
-    note: "The diffraction average remains unchanged in provenance. A geometry-only Euler orientation selects one reproducible 240-atom occupational microstate with two covalent D per oxygen and one D per O–O bond. Molecular, bridge, and O₄ gap clusters are then learned from that realization. Search is enabled as an exploratory generic continuation; no Ice-VI held-out precision, kinetics, stationary rule, or experimental instantaneous configuration is claimed.",
+    hierarchy: ["5 D₂O conformers", "84 typed ports", "pose alternatives"],
+    curve: [23, 4, 3, 1],
+    mark: "two-parent O-anchor consensus",
+    action: "8 exact O anchors · poses unresolved",
+    speed: "4 → 3 → 1 exact · finite fixed point",
+    gate: "O framework pass · occupational pose red",
+    status: "limit",
+    note: "The diffraction average remains unchanged in provenance. A geometry-only Euler orientation selects one reproducible 240-atom occupational microstate with two covalent D per oxygen and one D per O–O bond; molecular, bridge, and O₄ gap clusters are learned from that realization. Separately, a sealed positions-only audit learns five D₂O metric conformers and 84 proper-SE(3) ports. A training-selected two-parent consensus emits eight exact oxygen anchors across three self-fed waves on a disjoint microstate. All eight D₂O orientations remain mutually exclusive alternatives, and forced whole-molecule continuation produces three wrong sites. No kinetics, stationary rule, exponential growth, or experimental instantaneous configuration is claimed.",
   };
 }
 
@@ -3023,17 +3023,33 @@ function buildWaterClusterCover(source, molecularDiscovery) {
       customSupport: ringSupport,
       customVectors: unwrappedRingSupport(source, waters, gaps[0]?.ring || []) },
   ].filter((type) => type.customSupport.length);
-  const galleryTypes = molecularIsometryGallery(source, [waters, bridges, gaps], types);
+  const exactGalleryTypes = molecularIsometryGallery(source, [waters, bridges, gaps], types);
+  const molecularConformers = exactGalleryTypes.filter((type) => type.familyType === 0);
+  // A molecule is the recurring topological atom cover. Small measured bond
+  // distortions remain finite conformer/pose subtypes for the port grammar;
+  // they must not turn one H2O/D2O motif into a wall of separate "clusters".
+  const moleculeGalleryType = {
+    ...types[0],
+    classIndex: 0,
+    classCount: 1,
+    classPlacementIndices: waters.map((water) => water.coverIndex),
+    count: waters.length,
+    observedMetricConformers: molecularConformers.length,
+    geometry: `bent molecular face · ${molecularConformers.length} metric conformer${molecularConformers.length === 1 ? "" : "s"}`,
+  };
+  const galleryTypes = [moleculeGalleryType,
+    ...exactGalleryTypes.filter((type) => type.familyType !== 0)];
   const incidence = source.map((_, atomIndex) => placements.map((placement, placementIndex) => placement.support.includes(atomIndex) ? placementIndex : -1).filter((index) => index >= 0));
   return { placements, residualTypes: [], types, galleryTypes, incidence, covered: coveredAtoms.size,
     complete: coveredAtoms.size === source.length, periodic: true,
     molecularDiscovery: molecularDiscoverySummary(molecularDiscovery, "molecular connection / void cover"),
     molecular: { water: true, waterLabel, hydrogenSpecies, molecules: waters.length, connections: bridges.length, voids: gaps.length,
-      moleculeClasses: galleryTypes.filter((type) => type.familyType === 0).length,
+      moleculeClasses: 1,
+      metricConformerClasses: molecularConformers.length,
       connectionClasses: galleryTypes.filter((type) => type.familyType === 1).length,
       voidClasses: galleryTypes.filter((type) => type.familyType === 2).length,
       waters: waters.length, bridges: bridges.length, gaps: gaps.length,
-      waterClasses: galleryTypes.filter((type) => type.familyType === 0).length,
+      waterClasses: 1,
       bridgeClasses: galleryTypes.filter((type) => type.familyType === 1).length,
       gapClasses: galleryTypes.filter((type) => type.familyType === 2).length } };
 }
@@ -3343,6 +3359,12 @@ function decorateIceViOxygenVoidBoundaries(source, cover) {
     hydrogenOccupancyUsed: false,
     expectedRingSizeUsed: false,
   };
+  if (cover.molecular) {
+    cover.molecular.voids = shortestRings.length;
+    cover.molecular.voidClasses = addedTypes.length;
+    cover.molecular.gaps = shortestRings.length;
+    cover.molecular.gapClasses = addedTypes.length;
+  }
   return cover;
 }
 
@@ -3355,8 +3377,20 @@ function buildExhaustiveClusterCover(source) {
   const waterDiscovery = discoveredWaterComponents(molecularDiscovery);
   if (waterDiscovery) {
     const waterCover = buildWaterClusterCover(source, waterDiscovery);
-    return currentMaterial().molecularFixture === "ice-vi-cod-1567346-average"
-      ? decorateIceViOxygenVoidBoundaries(source, waterCover) : waterCover;
+    if (currentMaterial().molecularFixture === "ice-vi-cod-1567346-average") {
+      // Ice VI's shortest oxygen-framework voids are O4 boundaries. Remove
+      // the generic six-ring family before adding those graph-derived gaps;
+      // retaining both families visually double-counts empty space.
+      waterCover.placements = waterCover.placements.filter((placement) => placement.family !== "gap");
+      waterCover.placements.forEach((placement, coverIndex) => { placement.coverIndex = coverIndex; });
+      waterCover.types = waterCover.types.filter((type) => type.familyType !== 2);
+      waterCover.galleryTypes = waterCover.galleryTypes.filter((type) => type.familyType !== 2);
+      waterCover.incidence = source.map((_, atomIndex) => waterCover.placements
+        .map((placement, placementIndex) => placement.support.includes(atomIndex) ? placementIndex : -1)
+        .filter((placementIndex) => placementIndex >= 0));
+      return decorateIceViOxygenVoidBoundaries(source, waterCover);
+    }
+    return waterCover;
   }
   if (molecularDiscovery.accepted) {
     const molecularCover = buildGenericMolecularClusterCover(source, molecularDiscovery);
@@ -3417,6 +3451,9 @@ function molecularCoverIcon(family) {
 function buildMolecularCoverLedger(types) {
   if (!learnedCover.molecular) return null;
   const molecular = learnedCover.molecular;
+  const oxygenRingLabel = learnedCover.voidBoundary?.ringSize
+    ? `O${learnedCover.voidBoundary.ringSize} boundaries`
+    : "O₆ boundaries";
   const ledger = document.createElement("div");
   ledger.className = "cluster-cover-ledger";
   ledger.setAttribute("aria-label", "Molecular ice cover accounting");
@@ -3425,7 +3462,7 @@ function buildMolecularCoverLedger(types) {
       detail: `${learnedCover.covered} / ${referenceCount()} atoms · ${molecular.moleculeClasses} isometry class${molecular.moleculeClasses === 1 ? "" : "es"}` },
     { family: "bridge", eyebrow: "connection cover", title: `${molecular.connections} connections`,
       detail: `${molecular.connectionClasses} metric-isometry classes · attachment geometry` },
-    { family: "gap", eyebrow: "void-boundary cover", title: `${molecular.voids} ${molecular.water ? "O₆ boundaries" : "void boundaries"}`,
+    { family: "gap", eyebrow: "void-boundary cover", title: `${molecular.voids} ${molecular.water ? oxygenRingLabel : "void boundaries"}`,
       detail: `${molecular.voidClasses} ${molecular.water ? "decorated" : "graph-derived"} classes · empty-region geometry` },
   ];
   layers.forEach((layer) => {
@@ -3642,8 +3679,11 @@ function buildMolecularGalleryToolbar(types) {
   controls.setAttribute("role", "group");
   controls.setAttribute("aria-label", "Filter molecular cluster isometry classes");
   const status = document.createElement("p");
+  const galleryAccounting = learnedCover.molecular?.metricConformerClasses > 1
+    ? `${learnedCover.molecular.metricConformerClasses} molecular metric conformers retained beneath one topology class`
+    : "no classes merged";
   const filters = learnedCover.molecular ? [
-    ["all", "All exact classes"], ["molecule", learnedCover.molecular.water ? `${learnedCover.molecular.waterLabel || "H₂O"} molecules` : "Molecules"],
+    ["all", "All cover classes"], ["molecule", learnedCover.molecular.water ? `${learnedCover.molecular.waterLabel || "H₂O"} molecules` : "Molecules"],
     ["bridge", "Bridge polyhedra"], ["gap", "Gap boundaries"],
   ] : [
     ["all", "All cover classes"], ["support", "Recurring supports"],
@@ -3671,14 +3711,14 @@ function buildMolecularGalleryToolbar(types) {
         card.hidden = !show;
         visible += Number(show);
       });
-      status.textContent = `Showing ${visible} / ${types.length} colored complete-metric isometry classes · no classes merged`;
+      status.textContent = `Showing ${visible} / ${types.length} cover classes · ${galleryAccounting}`;
       const selected = clusterGallery.querySelector(".cluster-card.active:not([hidden])")
         || clusterGallery.querySelector(".cluster-card:not([hidden])");
       if (selected) updateClusterGalleryInspector(Number(selected.dataset.clusterIndex));
     });
     controls.append(button);
   });
-  status.textContent = `Showing ${types.length} / ${types.length} colored complete-metric isometry classes · no classes merged`;
+  status.textContent = `Showing ${types.length} / ${types.length} cover classes · ${galleryAccounting}`;
   const inspector = document.createElement("div");
   inspector.className = "cluster-gallery-inspector";
   inspector.setAttribute("aria-live", "polite");
@@ -4765,7 +4805,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-53",
+      buildId: "20260824-54",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -6998,7 +7038,10 @@ function updateStageNarrative() {
     narratives[1].copy = water
       ? `Species-resolved bond geometry discovers one ${learnedCover.molecular.waterLabel || "H₂O"} motif. Shared hydrogen-bond bridges and empty oxygen-ring boundaries are promoted to connection clusters, then the periodic window is audited atom by atom.`
       : "Valence-bounded species geometry discovers recurrent finite molecules. A nearest-component graph supplies molecule-pair connections; locally shortest chordless cycles become explicit void boundaries without an expected formula or ring size.";
-    narratives[1].caption = `${learnedCover.molecular.molecules} molecular placements cover every observed atom; ${learnedCover.molecular.connections} connection polyhedra and ${learnedCover.molecular.voids} void-boundary polygons fill the intermolecular grammar. The scrollable gallery shows all ${clusterGalleryTypes().length} colored metric-isometry classes as independent rotating scenes, with physical and connection edges—not radial coordination spokes.`;
+    const conformerAccounting = learnedCover.molecular.metricConformerClasses > 1
+      ? ` The molecular card retains ${learnedCover.molecular.metricConformerClasses} measured metric conformers as pose subtypes beneath one topological atom-cover class.`
+      : "";
+    narratives[1].caption = `${learnedCover.molecular.molecules} molecular placements cover every observed atom; ${learnedCover.molecular.connections} connection polyhedra and ${learnedCover.molecular.voids} void-boundary polygons fill the intermolecular grammar. The scrollable gallery shows all ${clusterGalleryTypes().length} cover classes as independent rotating scenes, with physical and connection edges—not radial coordination spokes.${conformerAccounting}`;
     narratives[1].values = [
       `${learnedCover.molecular.moleculeClasses} molecule class${learnedCover.molecular.moleculeClasses === 1 ? "" : "es"}`,
       `${learnedCover.molecular.connectionClasses} connection classes`,

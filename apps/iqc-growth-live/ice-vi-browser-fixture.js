@@ -74,9 +74,13 @@ export function iceViAverageUnitCellSites() {
     || first.label.localeCompare(second.label));
 }
 
-export function generateIceViAverageObservation() {
+export function generateIceViAverageObservation(repeats = ICE_VI_BROWSER_FIXTURE.repeats) {
   const unit = iceViAverageUnitCellSites();
-  const [rx, ry, rz] = ICE_VI_BROWSER_FIXTURE.repeats;
+  if (!Array.isArray(repeats) || repeats.length !== 3
+    || repeats.some((value) => !Number.isInteger(value) || value < 1)) {
+    throw new Error("Ice VI repeats must be three positive integers");
+  }
+  const [rx, ry, rz] = repeats;
   const [a, b, c] = ICE_VI_BROWSER_FIXTURE.cellAngstrom;
   const atoms = [];
   for (let ix = 0; ix < rx; ix++) for (let iy = 0; iy < ry; iy++) for (let iz = 0; iz < rz; iz++) {
@@ -126,8 +130,8 @@ function seededRank(edge, seed) {
 // outgoing bonds per oxygen.  Selecting the D candidate nearer the outgoing
 // oxygen therefore enforces both Bernal--Fowler rules without energies, a
 // lattice label, an expected network count, or hidden source-site identities.
-export function resolveIceViIceRuleMicrostate(seed = 1) {
-  const average = generateIceViAverageObservation();
+export function resolveIceViIceRuleMicrostate(seed = 1, repeats = ICE_VI_BROWSER_FIXTURE.repeats) {
+  const average = generateIceViAverageObservation(repeats);
   const lengths = average.cell.map((vector, axis) => vector[axis]);
   const oxygens = average.atoms.filter((atom) => atom.species === "O");
   const deuteria = average.atoms.filter((atom) => atom.species === "D");

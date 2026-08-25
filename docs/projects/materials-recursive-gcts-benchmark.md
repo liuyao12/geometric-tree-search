@@ -2493,10 +2493,26 @@ selects one donor-side D per bond and exactly two donor bonds per oxygen,
 producing a reproducible 240-atom microstate. The unresolved average remains
 the default and still withholds growth. In the opt-in realization, the generic
 learner finds the D2O molecular cluster, bridge clusters, and the two O4 gap
-isometry classes before enabling exploratory growth. The seed, graph counts,
+isometry classes before enabling exploratory growth. The molecular gallery
+aggregates its six measured metric conformers beneath one D2O topological
+atom-cover class, while the conformer distinctions remain available to the
+port grammar. The seed, graph counts,
 ice-rule certificates, and absence of energy/target selection enter the
-receipt. No held-out Ice-VI continuation, kinetic weighting, equilibrium
-ensemble, or experimental instantaneous configuration is claimed.
+receipt.
+
+The held-out claim boundary is now measured separately. A 123-molecule crop
+from one valid microstate fits five conformer types, 84 symmetry-quotiented
+ports, and 20 directed type pairs. Three additional training-side microstates
+select a two-parent connection-consensus threshold at `23/24 = 95.8%`
+precision. A fifth microstate supplies only a spatially disjoint 23-molecule
+nucleus; its outer 134-molecule crop remains unopened until both the oxygen-
+anchor and whole-molecule traces are frozen. The anchor representation emits
+`4 → 3 → 1` new O sites across three self-fed waves, all `8/8` exact. It retains
+eight unresolved, mutually exclusive D2O pose sets. The forced whole-molecule
+arm emits 21 sites, 18 correct and 3 wrong. Thus finite oxygen-framework
+continuation passes, while occupational prediction, kinetic weighting,
+equilibrium sampling, stationary recurrence, and exponential growth remain
+unclaimed.
 
 The H2O colored-metric signature and the O6 void signature transfer exactly
 between the two polytypes; both cubic bridge classes occur in the three-class

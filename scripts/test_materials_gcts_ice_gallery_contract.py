@@ -61,13 +61,15 @@ def test_ice_gallery_uses_molecular_and_center_free_polyhedral_views() -> None:
     assert "card.dataset.isometrySignature = cluster.classSignature" in source
     assert "supportSites" in source
     assert "clusterCoverRole(cluster)" in source
-    assert "galleryTypes.filter((type) => type.familyType === 0).length" in source
+    assert "moleculeClasses: 1" in source
+    assert "observedMetricConformers: molecularConformers.length" in source
     assert "galleryTypes.filter((type) => type.familyType === 1).length" in source
     assert "galleryTypes.filter((type) => type.familyType === 2).length" in source
     assert "if (learnedCover.galleryTypes) return learnedCover.galleryTypes" in source
     assert "markingPrototypeTypes().forEach((cluster, clusterIndex)" in source
     assert "return learnedCover?.occurrenceBased || learnedCover?.molecular ? learnedCover.types" in source
-    assert "colored metric-isometry classes as independent rotating scenes" in source
+    assert "cover classes as independent rotating scenes" in source
+    assert "metric conformers as pose subtypes beneath one topological atom-cover class" in source
     assert "cluster-gallery-inspector" in source
     assert "literal terminal · never promoted" in source
     assert "markingPrototypeTypes().forEach((_, cluster)" in source
