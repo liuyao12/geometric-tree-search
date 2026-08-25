@@ -178,6 +178,9 @@ const affineLoadBadgeLabel = $("affineLoadBadgeLabel");
 const robustnessPreferenceSelect = $("robustnessPreferenceSelect");
 const robustnessWeightSelect = $("robustnessWeightSelect");
 const robustnessHint = $("robustnessHint");
+const microstructureCouplingSelect = $("microstructureCouplingSelect");
+const microstructureCouplingWeightSelect = $("microstructureCouplingWeightSelect");
+const microstructureCouplingHint = $("microstructureCouplingHint");
 const growthSchedulingSelect = $("growthSchedulingSelect");
 const growthSchedulingHint = $("growthSchedulingHint");
 const trainVariantButton = $("trainVariantButton");
@@ -643,6 +646,8 @@ let acceptedExternalDriveAlignment = 0;
 let rejectedExternalDriveAlignment = 0;
 let acceptedRobustnessScore = 0;
 let rejectedRobustnessScore = 0;
+let acceptedMicrostructureCouplingScore = 0;
+let rejectedMicrostructureCouplingScore = 0;
 let constraintNeighborhoodEvaluations = 0;
 let constraintNeighborhoodSiteTotal = 0;
 let maximumConstraintNeighborhoodSites = 0;
@@ -705,6 +710,8 @@ let affineLoadMode = "none";
 let affineLoadMagnitude = .02;
 let robustnessPreference = "none";
 let robustnessWeight = .24;
+let microstructureCouplingMode = "none";
+let microstructureCouplingWeight = .24;
 let growthScheduling = "commuting";
 let nextMarkingId = 1;
 let geometryMode = "auto";
@@ -3953,7 +3960,9 @@ function growthMechanismAudit() {
     coordinatesEmbedded: false,
     usedForCandidateEnumeration: false,
     usedForAdmission: false,
-    usedForBranchRanking: false,
+    usedForBranchRanking: activeMicrostructureCouplingWeight() > 0,
+    branchRankingMode: microstructureCouplingMode,
+    branchRankingWeight: activeMicrostructureCouplingWeight(),
     perturbationAuditTargetUsed: false,
     statisticalConfidenceClaimed: false,
     defectLabelsAssigned: false,
@@ -3983,8 +3992,16 @@ function drawGrowthMechanismMap() {
   const offsetX = (width - rangeH * scale) / 2, offsetY = (height - rangeV * scale) / 2;
   const screen = (point) => [offsetX + (point[horizontal] - minH) * scale,
     height - offsetY - (point[vertical] - minV) * scale];
-  context.fillStyle = "rgba(151,194,183,.13)";
-  basePoints.forEach((point) => { const [x, y] = screen(point); context.beginPath(); context.arc(x, y, 1.25, 0, TAU); context.fill(); });
+  basePoints.forEach((point, index) => {
+    const [x, y] = screen(point);
+    const highlighted = microstructureRoleMatches(microstructureEvidence?.siteRoles?.[index] || {});
+    context.fillStyle = highlighted ? "rgba(181,148,255,.72)" : "rgba(151,194,183,.13)";
+    context.beginPath(); context.arc(x, y, highlighted ? 2.6 : 1.25, 0, TAU); context.fill();
+    if (highlighted) {
+      context.strokeStyle = "rgba(181,148,255,.34)"; context.lineWidth = 1;
+      context.beginPath(); context.arc(x, y, 5.2, 0, TAU); context.stroke();
+    }
+  });
   growthMechanismEvents.forEach((event) => {
     const [x, y] = screen(event.position);
     const color = GROWTH_EVENT_PHENOTYPES[event.phenotype]?.color || "#b594ff";
@@ -4050,7 +4067,8 @@ function renderGrowthMechanismAudit() {
   const accepted = Object.values(audit.byPhenotype).reduce((sum, counts) => sum + counts.accepted, 0);
   const rejected = Object.values(audit.byPhenotype).reduce((sum, counts) => sum + counts.rejected, 0);
   growthMechanismState.textContent = audit.eventsObserved
-    ? `${accepted} accepted · ${rejected} rejected · ${audit.eventsStored}/${audit.eventsObserved} mapped` : "no decisions yet";
+    ? `${accepted} accepted · ${rejected} rejected · ${audit.eventsStored}/${audit.eventsObserved} mapped · ${microstructureCouplingLabel()}`
+    : `no decisions yet · ${microstructureCouplingLabel()}`;
   drawGrowthMechanismMap();
   growthMechanismLedger.replaceChildren();
   Object.entries(GROWTH_EVENT_PHENOTYPES).forEach(([id, record]) => {
@@ -4064,7 +4082,7 @@ function renderGrowthMechanismAudit() {
     const empty = document.createElement("p"); empty.textContent = "Advance one tree-search update to map its local geometric environment."; growthMechanismLedger.appendChild(empty);
   }
   renderGrowthUncertaintyBudget();
-  growthMechanismBoundary.textContent = `Phenotypes and uncertainty budgets are assigned after the candidate geometry and decision are frozen. Up to ${MAXIMUM_POSE_AUDITS_PER_LEAP} deterministic pose audits replay hard geometry at the larger of measured pair uncertainty and half the resolved isometry tolerance; the capped set is retained in encounter order, target-blind, and never changes admission or rank. This is a bounded sensitivity audit, not a posterior probability, confidence interval, thermal ensemble, dynamics, or calibrated robustness certificate. Proximity to gap, residual, pose-interface, coordination, or occupancy evidence is diagnostic only; no defect identity, physical mechanism, energy, rate, or branch score is inferred.`;
+  growthMechanismBoundary.textContent = `Phenotypes and uncertainty budgets are assigned after the candidate geometry and decision are frozen. Up to ${MAXIMUM_POSE_AUDITS_PER_LEAP} deterministic pose audits replay hard geometry at the larger of measured pair uncertainty and half the resolved isometry tolerance; the capped set is retained in encounter order, target-blind, and never changes admission or rank. This is a bounded sensitivity audit, not a posterior probability, confidence interval, thermal ensemble, dynamics, or calibrated robustness certificate. ${activeMicrostructureCouplingWeight() > 0 ? `The declared ${microstructureCouplingLabel()} experiment uses only proximity to frozen input-derived roles as a soft rank term over unchanged actions.` : "Proximity to heterogeneous-geometry roles is diagnostic only."} No defect identity, physical mechanism, formation energy, mobility, or rate is inferred.`;
 }
 
 function clusterPlacementIndices(cluster) {
@@ -5457,7 +5475,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-82",
+      buildId: "20260825-83",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -5865,6 +5883,22 @@ async function buildExperimentReceipt() {
         freeEnergyInferred: false,
         perturbationEnsembleUsedForRanking: false,
       },
+      microstructureCouplingRanking: {
+        role: "user-declared soft coupling to frozen input-derived heterogeneous-geometry roles over unchanged exact actions",
+        mode: microstructureCouplingMode,
+        label: microstructureCouplingLabel(),
+        enabled: activeMicrostructureCouplingWeight() > 0,
+        effectiveWeight: activeMicrostructureCouplingWeight(),
+        acceptedMeanScore: receiptRound(acceptedMicrostructureCouplingScore / Math.max(1, acceptedDecisions)),
+        rejectedMeanScore: receiptRound(rejectedMicrostructureCouplingScore / Math.max(1, rejectedDecisions)),
+        observedInputGeometryUsed: true,
+        heldoutTargetUsed: false,
+        defectLabelsUsed: false,
+        candidateGeometryChanged: false,
+        hardAdmissionChanged: false,
+        formationEnergyInferred: false,
+        mobilityInferred: false,
+      },
       localConstraintWork: {
         role: "exact finite-reach neighborhood evaluation via the live spatial index; not an approximation or sampled cutoff",
         maximumReachAngstrom: receiptRound(coloredCoordinationEnvelopes.maximumCutoff * referenceSpacingA / referenceSpacing),
@@ -5982,6 +6016,7 @@ function notebookInterventionFactors(receipt) {
       surface: [search.surfaceCompletionRanking?.mode, search.surfaceCompletionRanking?.effectiveWeight],
       externalDrive: [search.externalDrivingGeometry?.mode, search.externalDrivingGeometry?.effectiveWeight],
       robustness: [search.constraintRobustnessRanking?.mode, search.constraintRobustnessRanking?.effectiveWeight],
+      microstructure: [search.microstructureCouplingRanking?.mode, search.microstructureCouplingRanking?.effectiveWeight],
     } : null) },
     scheduling: { label: "tree scheduling", role: "search", value: serialized(search?.scheduling || null) },
     hierarchy: { label: "clusters² promotion", role: "search", value: String(search?.hierarchyEnabled ?? "not entered") },
@@ -7036,6 +7071,46 @@ function activeRobustnessWeight() {
   return robustnessPreference === "margin" ? robustnessWeight : 0;
 }
 
+function activeMicrostructureCouplingWeight() {
+  return microstructureCouplingMode === "none" ? 0 : microstructureCouplingWeight;
+}
+
+function microstructureCouplingLabel(mode = microstructureCouplingMode) {
+  return ({ none: "neutral", "gap-heal": "gap healing", "interface-follow": "pose-interface following",
+    "anomaly-avoid": "coordination-anomaly avoidance", "occupancy-follow": "occupational-front following" })[mode] || "neutral";
+}
+
+function microstructureRoleMatches(role, mode = microstructureCouplingMode) {
+  if (mode === "gap-heal") return role.gapBoundary || role.literalTerminal;
+  if (mode === "interface-follow") return role.poseInterface;
+  if (mode === "anomaly-avoid") return role.coordinationAnomaly;
+  if (mode === "occupancy-follow") return role.occupationalAlternative || role.explicitVacancy;
+  return false;
+}
+
+function microstructureCouplingForCandidate(candidate, evaluation) {
+  const neighborhood = growthEventNeighborhood(candidate, evaluation);
+  const counts = neighborhood.counts;
+  let rawSignal = 0;
+  if (microstructureCouplingMode === "gap-heal") rawSignal = counts.gap + counts.residual;
+  else if (microstructureCouplingMode === "interface-follow") rawSignal = counts.interface;
+  else if (microstructureCouplingMode === "anomaly-avoid") rawSignal = -counts.anomaly;
+  else if (microstructureCouplingMode === "occupancy-follow") rawSignal = counts.occupancy + counts.vacancy;
+  return {
+    mode: microstructureCouplingMode,
+    label: microstructureCouplingLabel(),
+    rawSignal,
+    score: Math.sign(rawSignal) * Math.tanh(Math.abs(rawSignal) / 2),
+    nearbyRoleCounts: { ...counts },
+    reachAngstrom: neighborhood.reach * referenceSpacingA / Math.max(referenceSpacing, 1e-12),
+    observedInputGeometryUsed: true,
+    heldoutTargetUsed: false,
+    defectLabelsUsed: false,
+    candidateGeometryChanged: false,
+    hardAdmissionChanged: false,
+  };
+}
+
 function externalDriveModeLabel(mode = externalDriveMode) {
   return ({ none: "isotropic", "z-plus": "axis +Z", "z-minus": "axis −Z",
     "radial-out": "radial outward", "radial-in": "radial inward" })[mode] || "isotropic";
@@ -7128,6 +7203,8 @@ function capturePolicyComparison(entries) {
       score: (entry) => entry.baseScore + activeExternalDriveWeight() * entry.evaluation.externalDrive.alignment },
     { id: "robustness", label: `constraint margin ${activeRobustnessWeight().toFixed(2)}`,
       score: (entry) => entry.baseScore + activeRobustnessWeight() * entry.evaluation.constraintRobustness.score },
+    { id: "microstructure", label: `${microstructureCouplingLabel()} ${activeMicrostructureCouplingWeight().toFixed(2)}`,
+      score: (entry) => entry.baseScore + activeMicrostructureCouplingWeight() * entry.evaluation.microstructureCoupling.score },
     { id: "active", label: "active combined", score: (entry) => entry.score },
   ].map((policy) => {
     const ranked = admissible.map((entry) => ({ entry, score: policy.score(entry) }))
@@ -7361,7 +7438,8 @@ function commutingFrontierBatch() {
         - activeFormalChargeWeight() * evaluation.formalChargeBalance.scaledDelta
         - activeSurfaceCompletionWeight() * evaluation.surfaceCompletion.scaledDelta
         + activeExternalDriveWeight() * evaluation.externalDrive.alignment
-        + activeRobustnessWeight() * evaluation.constraintRobustness.score,
+        + activeRobustnessWeight() * evaluation.constraintRobustness.score
+        + activeMicrostructureCouplingWeight() * evaluation.microstructureCoupling.score,
     };
   });
   capturePolicyComparison(evaluated);
@@ -7463,13 +7541,14 @@ function evaluateCandidate(candidate, {
   const formalChargeBalance = formalChargeBalanceForFreshSites(fresh);
   const externalDrive = externalDriveForCandidate(candidate);
   const constraintRobustness = constraintRobustnessForCandidate(fresh, merged);
+  const microstructureCoupling = microstructureCouplingForCandidate(candidate, { fresh, merged });
   const accepted = conflicts === 0 && boundaryFailures === 0 && merged.length >= 2
     && fresh.length > 0 && knownFailures === 0 && coordinationOverflows.length === 0
     && angularViolations.length === 0 && (markingAccepted || markingFallback);
   return { accepted, sites, merged, fresh, conflicts, boundaryFailures, knownFailures, markingFallback,
     coordinationOverflows, angularViolations, geometricStrain, affineLoadedGeometricStrain,
     surfaceCompletion, compositionBalance, formalChargeBalance,
-    externalDrive, constraintRobustness,
+    externalDrive, constraintRobustness, microstructureCoupling,
     duplicateSites: canonical.duplicateSites,
     freshReferenceIndices: fresh.map((site) => site.referenceIndex).filter(Number.isInteger),
     reason: conflicts ? `${conflicts} hard-core/species conflicts` : boundaryFailures ? "outside confinement" : knownFailures ? `${knownFailures} sites outside known configuration` : coordinationOverflows.length ? `${coordinationOverflows.length} colored coordination capacities exceeded` : angularViolations.length ? `${angularViolations.length} colored angular envelopes violated` : merged.length < 2 ? "insufficient shared support" : fresh.length === 0 ? "duplicate covering" : !markingAccepted ? "marking mismatch" : "compatible overlap" };
@@ -7532,6 +7611,8 @@ function initializeOffLatticeSearch() {
   rejectedExternalDriveAlignment = 0;
   acceptedRobustnessScore = 0;
   rejectedRobustnessScore = 0;
+  acceptedMicrostructureCouplingScore = 0;
+  rejectedMicrostructureCouplingScore = 0;
   constraintNeighborhoodEvaluations = 0;
   constraintNeighborhoodSiteTotal = 0;
   maximumConstraintNeighborhoodSites = 0;
@@ -8158,6 +8239,8 @@ function syncStageOptions() {
     affineLoadMagnitudeSelect.value = String(affineLoadMagnitude);
     robustnessPreferenceSelect.value = robustnessPreference;
     robustnessWeightSelect.value = String(robustnessWeight);
+    microstructureCouplingSelect.value = microstructureCouplingMode;
+    microstructureCouplingWeightSelect.value = String(microstructureCouplingWeight);
     growthSchedulingSelect.value = growthScheduling;
     geometryPreferenceSelect.disabled = finiteIceAnchorMode;
     strainWeightSelect.disabled = finiteIceAnchorMode || geometryPreference !== "strain";
@@ -8170,6 +8253,8 @@ function syncStageOptions() {
     affineLoadMagnitudeSelect.disabled = finiteIceAnchorMode || affineLoadMode === "none";
     robustnessPreferenceSelect.disabled = finiteIceAnchorMode;
     robustnessWeightSelect.disabled = finiteIceAnchorMode || robustnessPreference === "none";
+    microstructureCouplingSelect.disabled = finiteIceAnchorMode;
+    microstructureCouplingWeightSelect.disabled = finiteIceAnchorMode || microstructureCouplingMode === "none";
     growthSchedulingSelect.disabled = finiteIceAnchorMode;
     growthSchedulingHint.textContent = growthScheduling === "commuting"
       ? "maximal commuting set" : "one branch decision";
@@ -8184,6 +8269,8 @@ function syncStageOptions() {
       ? "undeformed metric" : `${Math.round(affineLoadMagnitude * 100)}% ${affineLoadModeLabel()}`;
     robustnessHint.textContent = robustnessPreference === "margin"
       ? `minimum margin · weight ${robustnessWeight.toFixed(2)}` : "diagnostic · weight zero";
+    microstructureCouplingHint.textContent = microstructureCouplingMode === "none"
+      ? "neutral · weight zero" : `${microstructureCouplingLabel()} · weight ${microstructureCouplingWeight.toFixed(2)}`;
     stageOptionsState.textContent = `${policySelect.value === "marked" && active ? active.name.split(" · ")[0] : "baseline"} · ${geometryPreference === "strain" ? `strain ${geometricStrainWeight.toFixed(2)}` : "no strain"}`;
     primitiveGrowthButton.classList.toggle("active", finiteIceAnchorMode || !hierarchyEnabled);
     primitiveGrowthButton.setAttribute("aria-pressed", String(finiteIceAnchorMode || !hierarchyEnabled));
@@ -8215,11 +8302,14 @@ function syncStageOptions() {
     const robustnessUse = robustnessPreference === "margin"
       ? ` A ${robustnessWeight.toFixed(2)} soft robustness term prefers the largest minimum normalized contact, overlap, or boundary safety margin; it does not sample temperature or change hard admission.`
       : " Constraint margins are reported but contribute zero ranking weight.";
+    const microstructureUse = microstructureCouplingMode === "none"
+      ? " Heterogeneous-geometry correlations remain post-decision diagnostics."
+      : ` A user-declared ${microstructureCouplingLabel()} hypothesis adds a ${microstructureCouplingWeight.toFixed(2)} soft term from frozen input-derived roles; no defect identity or formation energy is assumed.`;
     growthModeNote.textContent = finiteIceAnchorMode
       ? "This sealed ice gate executes primitive H₂O connection ports with mutually exclusive orientation domains. Clusters² is disabled because no stationary promoted ice production has been certified."
       : hierarchyEnabled
-      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first tree branch."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}`
-      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}`;
+      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first tree branch."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}${microstructureUse}`
+      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}${microstructureUse}`;
   }
 }
 
@@ -8245,6 +8335,8 @@ function resetCounters() {
   rejectedExternalDriveAlignment = 0;
   acceptedRobustnessScore = 0;
   rejectedRobustnessScore = 0;
+  acceptedMicrostructureCouplingScore = 0;
+  rejectedMicrostructureCouplingScore = 0;
   constraintNeighborhoodEvaluations = 0;
   constraintNeighborhoodSiteTotal = 0;
   maximumConstraintNeighborhoodSites = 0;
@@ -8552,6 +8644,7 @@ function stateForCandidate(candidate, evaluation) {
     surfaceCompletion: evaluation.surfaceCompletion,
     externalDrive: evaluation.externalDrive,
     constraintRobustness: evaluation.constraintRobustness,
+    microstructureCoupling: evaluation.microstructureCoupling,
   };
 }
 
@@ -8666,6 +8759,7 @@ function performOffLatticeEvent() {
       rejectedSurfaceDeficit += snapshotEvaluation.surfaceCompletion.scaledDelta;
       rejectedExternalDriveAlignment += snapshotEvaluation.externalDrive.alignment;
       rejectedRobustnessScore += snapshotEvaluation.constraintRobustness.score;
+      rejectedMicrostructureCouplingScore += snapshotEvaluation.microstructureCoupling.score;
       rejectedInBatch++;
       appendHistory("reject", { type: "reject", depth: placedClusters.find((placement) => placement.id === candidate.parentId)?.depth || 0,
         action: state.action, family: evaluation.reason });
@@ -8697,6 +8791,7 @@ function performOffLatticeEvent() {
     acceptedSurfaceDeficit += evaluation.surfaceCompletion.scaledDelta;
     acceptedExternalDriveAlignment += evaluation.externalDrive.alignment;
     acceptedRobustnessScore += evaluation.constraintRobustness.score;
+    acceptedMicrostructureCouplingScore += evaluation.microstructureCoupling.score;
     acceptedInBatch++;
     freshInBatch += evaluation.fresh.length;
     appendHistory(decision.reuse ? "reuse" : "accept", { type: "accept", depth: placement.depth, action: state.action,
@@ -9239,6 +9334,12 @@ function physicsTranslationRecords(leap = null) {
       encoding: `minimum of colored-contact clearance, exact-overlap headroom, and public-boundary clearance, normalized by ε=${clusterMetricToleranceAngstrom().toFixed(3)} Å`,
       evidence: leap ? `Accepted mean bounded score ${receiptRound(acceptedRobustnessScore / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedRobustnessScore / Math.max(1, rejectedDecisions), 4)}.` : "No attachment margin scored yet.",
       boundary: "This deterministic safety margin is not a perturbation ensemble, thermal fluctuation, survival probability, free energy, barrier, or rate." },
+    { id: "microstructure", process: "defect/interface-conditioned growth hypothesis", status: activeMicrostructureCouplingWeight() > 0 ? "soft" : "open", role: activeMicrostructureCouplingWeight() > 0 ? "input-derived geometric coupling" : "diagnostic",
+      encoding: activeMicrostructureCouplingWeight() > 0
+        ? `${microstructureCouplingLabel()}, w=${activeMicrostructureCouplingWeight().toFixed(2)}, from frozen gap/residual, pose-interface, coordination, or occupational roles`
+        : "heterogeneous-geometry roles are mapped but do not rank branches",
+      evidence: leap ? `Accepted mean coupling score ${receiptRound(acceptedMicrostructureCouplingScore / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedMicrostructureCouplingScore / Math.max(1, rejectedDecisions), 4)}.` : "No microstructure-conditioned action scored yet.",
+      boundary: "These roles are geometric hypotheses, not automatic vacancies, dislocations, grains, formation energies, mobilities, or physical mechanisms." },
     { id: "kinetics", process: "activation, diffusion, heat flow, and elapsed time", status: "open", role: "not modeled",
       encoding: "none; the accepted whole-cluster antichain jumps directly between certified structural states",
       evidence: leap ? `${leap.after.atoms - leap.before.atoms} explicit sites were emitted with physicalTimeModeled=false and dynamicsIntegrated=false.` : "The seed has no physical clock.",
@@ -9487,6 +9588,13 @@ function geometryConstraintEvidence(name, term, state, mode) {
         ? `Soft rank term with weight ${activeRobustnessWeight().toFixed(2)} over the unchanged exact frontier.` : "Diagnostic only; weight zero.",
       boundary: "Margin ordering does not sample a pose ensemble and is not temperature, probability, energy, or a physical stability certificate. The separate post-decision pose audit remains validation only.",
     },
+    "microstructure coupling": {
+      observed: `${microstructureEvidence?.gapBoundaryAtoms || 0} gap-boundary atoms · ${microstructureEvidence?.literalOnlyAtoms || 0} literal-only · ${microstructureEvidence?.crossPoseContacts || 0} cross-pose contacts · ${microstructureEvidence?.coordinationAnomalyAtoms || 0} coordination candidates`,
+      encoding: `${microstructureCouplingLabel()} converts the count of nearby frozen input-derived roles into a bounded signed score.`,
+      searchRole: activeMicrostructureCouplingWeight() > 0
+        ? `Soft rank term with weight ${activeMicrostructureCouplingWeight().toFixed(2)} over unchanged exact actions.` : "Post-decision diagnostic only; weight zero.",
+      boundary: "A spatial role is not a defect label. This experiment infers no formation energy, migration barrier, mobility, grain identity, or mechanism.",
+    },
     "GCTS marking": {
       observed: `${trainingProgress}/${markingSampleCount()} ${sectionModel?.sampleKind || "connection"} samples · ${iceAnchorTrace?.portCount || overlapGrammar?.rules?.length || 0} frozen connection states`,
       encoding: mode === "specialized"
@@ -9564,6 +9672,9 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "constraint robustness", status: ranked(activeRobustnessWeight() > 0),
       value: state.constraintRobustness ? `${state.constraintRobustness.score.toFixed(3)} · ${state.constraintRobustness.minimumMarginAngstrom.toFixed(3)} Å min` : "not evaluated",
       detail: activeRobustnessWeight() > 0 ? `rank weight ${activeRobustnessWeight().toFixed(2)} · deterministic margin` : "diagnostic · no ensemble" },
+    { name: "microstructure coupling", status: ranked(activeMicrostructureCouplingWeight() > 0),
+      value: state.microstructureCoupling ? `${signed(state.microstructureCoupling.score)} · ${state.microstructureCoupling.label}` : "not evaluated",
+      detail: activeMicrostructureCouplingWeight() > 0 ? `rank weight ${activeMicrostructureCouplingWeight().toFixed(2)} · labels withheld` : "diagnostic · labels withheld" },
     { name: "GCTS marking", status: policySelect.value === "marked" ? state.markingAccepted ? "pass" : "fail" : "diagnostic",
       value: policySelect.value === "marked" ? state.markingAccepted ? "compatible" : "mismatch" : "not gating",
       detail: "bounded transported connection section" },
@@ -10725,6 +10836,19 @@ robustnessPreferenceSelect.addEventListener("change", () => {
 robustnessWeightSelect.addEventListener("change", () => {
   const value = Number(robustnessWeightSelect.value);
   robustnessWeight = [.12, .24, .48].includes(value) ? value : .24;
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+microstructureCouplingSelect.addEventListener("change", () => {
+  const value = microstructureCouplingSelect.value;
+  microstructureCouplingMode = ["gap-heal", "interface-follow", "anomaly-avoid", "occupancy-follow"].includes(value)
+    ? value : "none";
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+microstructureCouplingWeightSelect.addEventListener("change", () => {
+  const value = Number(microstructureCouplingWeightSelect.value);
+  microstructureCouplingWeight = [.12, .24, .48].includes(value) ? value : .24;
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
 });

@@ -447,6 +447,17 @@ ensemble, temperature, survival probability, free energy, barrier, or rate.
 The separate bounded pose-perturbation audit remains post-decision validation
 and never feeds this ranking.
 
+A separate **microstructure-coupling experiment** turns frozen heterogeneous
+geometry into an optional hypothesis rather than an automatic diagnosis. The
+user can favor gap/residual healing, follow unlike-pose interfaces, avoid
+coordination-anomaly candidates, or follow occupational/vacancy-bearing
+fronts. The selected role is highlighted in the spatial growth-event map and
+adds a bounded soft term to the same exact frontier; neutral mode leaves the
+correlation post-decision only. These signals come from the supplied
+configuration and never become vacancy, dislocation, grain, or grain-boundary
+labels. No formation energy, migration barrier, mobility, mechanism, or rate
+is inferred.
+
 All pair, capacity, angle, and strain evaluations are compiled to the exact
 finite-reach neighborhood affected by the proposed fresh sites. The live
 spatial index finds existing centers touched by the action and then gathers
