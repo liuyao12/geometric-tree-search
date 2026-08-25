@@ -359,7 +359,7 @@ input[type="text"]:focus {
 
 .action-row {
   display: grid;
-  grid-template-columns: minmax(154px, 178px) minmax(88px, 1fr) auto;
+  grid-template-columns: minmax(154px, 178px) minmax(76px, 1fr) minmax(104px, auto) auto;
   gap: 8px;
   align-items: end;
 }

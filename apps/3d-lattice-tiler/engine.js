@@ -2525,7 +2525,10 @@ export const createTilingStream = (() => {
       return reached;
     };
     const overTimeLimit = () => {
-      const reached = Number.isFinite(timeLimitMs) && budgetElapsedMilliseconds() >= timeLimitMs;
+      const additionalTimeMs = Math.max(0, Number(stopToken?.additional_time_ms) || 0);
+      searchStats.additional_time_ms = additionalTimeMs;
+      const reached = Number.isFinite(timeLimitMs)
+        && budgetElapsedMilliseconds() >= timeLimitMs + additionalTimeMs;
       if (reached && !searchStats.termination_reason) searchStats.termination_reason = "time_limit";
       return reached;
     };

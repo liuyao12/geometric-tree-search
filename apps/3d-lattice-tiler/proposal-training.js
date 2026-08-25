@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260825-shell-parity-v219";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260825-terminal-hold-v220";
 import {
   createInitialProposalPopulation,
   growthCurveArea,

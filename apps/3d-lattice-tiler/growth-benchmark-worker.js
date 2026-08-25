@@ -1,7 +1,7 @@
-import { createTilingStream, preprocessTilingSystem, tileSpecs } from "./engine.js?v=20260825-shell-parity-v219";
+import { createTilingStream, preprocessTilingSystem, tileSpecs } from "./engine.js?v=20260825-terminal-hold-v220";
 
 let activeSequence = 0;
-let stopToken = { stop: false };
+let stopToken = { stop: false, additional_time_ms: 0 };
 let preparedRun = null;
 const HISTORY_BATCH_LIMIT = 256;
 const HISTORY_BATCH_INTERVAL_MS = 200;
@@ -251,7 +251,14 @@ async function runMode(sequence, run, preparedSystem, preprocessingMilliseconds,
     if (message.search_stats) latestStats = message.search_stats;
     const snapshot = message.type === "node_snapshot" ? message.snapshot : message;
     const tiles = snapshot?.tile_count ?? 0;
-    if (message.type === "placement_delta" && tiles !== lastHistoryTileCount) {
+    // A resource cutoff makes recursive DFS unwind its internal stack. Those
+    // removals are cleanup, not additional searched states, and plotting them
+    // would make an inconclusive run look like a proof that fell to zero.
+    // Certified exhaustive failure receives its explicit zero endpoint below.
+    const terminalCleanupRemoval = message.type === "placement_delta"
+      && message.action === "remove"
+      && !!snapshot?.search_stats?.termination_reason;
+    if (message.type === "placement_delta" && !terminalCleanupRemoval && tiles !== lastHistoryTileCount) {
       const point = { milliseconds: Math.max(0, Math.round(epochNow() - started)), tiles };
       queueHistory({ point, delta: message });
       lastHistoryTileCount = tiles;
@@ -340,7 +347,12 @@ async function runMode(sequence, run, preparedSystem, preprocessingMilliseconds,
 }
 
 self.onmessage = event => {
-  const { type, sequence, config, mode: modeId, startEpochMs } = event.data ?? {};
+  const { type, sequence, config, mode: modeId, startEpochMs, additionalTimeMs } = event.data ?? {};
+  if (type === "extend-time" && sequence === activeSequence) {
+    stopToken.additional_time_ms = Math.max(0, Number(stopToken.additional_time_ms) || 0)
+      + Math.max(0, Number(additionalTimeMs) || 0);
+    return;
+  }
   if (type === "stop") {
     stopToken.stop = true;
     preparedRun = null;
@@ -349,7 +361,7 @@ self.onmessage = event => {
   if (type === "prepare" && MODES[modeId]) {
     stopToken.stop = true;
     activeSequence = sequence;
-    stopToken = { stop: false };
+    stopToken = { stop: false, additional_time_ms: 0 };
     try {
       const run = configureMode(config, MODES[modeId]);
       const preprocessingStarted = performance.now();

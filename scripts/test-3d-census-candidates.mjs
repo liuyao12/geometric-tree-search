@@ -113,6 +113,21 @@ assert.match(
   /\["free_range", "gcts", "rl", "gcts_rl"\]\.includes\(mode\.id\)/,
   "Free-range, GCTS, RL, and GCTS+RL must use the same exact shell state space"
 );
+assert.match(
+  growthWorkerSource,
+  /terminalCleanupRemoval[\s\S]*?message\.action === "remove"[\s\S]*?termination_reason/,
+  "an inconclusive resource-limit unwind must not draw a false drop to zero"
+);
+assert.match(
+  growthWorkerSource,
+  /type === "extend-time"[\s\S]*?stopToken\.additional_time_ms/,
+  "active benchmark workers must accept clock extensions without restarting"
+);
+assert.match(
+  growthAppSource,
+  /function extendGrowthBenchmark\(\)[\s\S]*?type: "extend-time"[\s\S]*?additionalTimeMs/,
+  "the Continue control must add clock time to every active lane"
+);
 assert.match(growthWorkerSource, /generic_failure_memo: !!mode\.proof \|\| exactLearningShell/, "proof and exact learning shell lanes must memoize exact failures");
 assert.match(
   growthWorkerSource,
@@ -187,7 +202,7 @@ assert.match(growthAppSource, /positive-control low-copy CEGAR run rejects/);
 assert.match(growthAppSource, /Radius four is still unexhausted/);
 assert.match(growthAppSource, /Pairwise next-ring coverability promotes/);
 assert.match(growthAppSource, /Lazy GCTS independently replays/);
-assert.match(growthWorkerSource, /message\.type === "placement_delta" && tiles !== lastHistoryTileCount/);
+assert.match(growthWorkerSource, /message\.type === "placement_delta" && !terminalCleanupRemoval && tiles !== lastHistoryTileCount/);
 assert.match(growthWorkerSource, /type: "sample-batch"/);
 assert.doesNotMatch(growthWorkerSource, /tiles > best/);
 assert.match(growthWorkerSource, /const exactNoTiling = final\?\.result_kind === "no_tiling"/);
