@@ -3782,6 +3782,16 @@ selection provenance, boundary margins and role counts, interface contacts,
 and these explicit claim limits. These selectors are geometric initial-state
 hypotheses—not a nucleation barrier, rate, critical nucleus size, or probability.
 
+The nucleation geometry inspector exposes the fitted-occurrence landscape used
+by that choice. Up to 24 leading alternatives appear as amber wire halos in the
+shared 3D scene; initialized occurrences are enlarged in mint. The compact
+ledger reports the number of fitted candidates, initialized seeds, evidence or
+fallback status, cluster support size, and the mode-specific quantity (public-
+boundary margin, gap/residual count, pose-interface count, or distance from the
+occurrence centroid). The experiment receipt stores counts and scalar evidence,
+not occurrence coordinates. The halos are candidate initial states—not critical
+nuclei, probabilities, barriers, or rates.
+
 For every nucleus pair, an interactive orientation-relationship inspector now
 reports seed-center separation, exact shared-site registry, and a proper
 symmetry-reduced misorientation. The angle is not taken from raw quaternions:

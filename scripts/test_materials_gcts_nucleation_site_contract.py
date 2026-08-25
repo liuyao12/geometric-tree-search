@@ -10,11 +10,20 @@ def test_observed_nucleation_site_geometry_contract():
     readme = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
     assert 'id="nucleationSiteSelect"' in html
+    for element_id in ("nucleationLandscapeInspector", "nucleationLandscapeState",
+                       "nucleationLandscapeSummary", "nucleationLandscapeCandidates"):
+        assert f'id="{element_id}"' in html
     for mode in ("replay", "interior", "surface", "gap", "interface", "dispersed"):
         assert f'value="{mode}"' in html
-    assert 'app.js?v=20260825-96' in html
+    assert 'app.js?v=20260825-97' in html
 
     assert "function observedGrowthSeedIndices()" in app
+    assert "function renderNucleationLandscapeInspector()" in app
+    assert "nucleationSiteLandscape = ranked.map" in app
+    assert "const nucleationGroup = new THREE.Group()" in app
+    assert "new THREE.IcosahedronGeometry(.38, 1)" in app
+    assert "nucleationCandidateMaterial" in app
+    assert "nucleationSelectedMaterial" in app
     assert "growthEnvironmentSignedMargin" in app
     assert "role.gapBoundary || role.literalTerminal" in app
     assert "role.poseInterface" in app
@@ -26,9 +35,11 @@ def test_observed_nucleation_site_geometry_contract():
     assert "criticalNucleusSizeInferred: false" in app
     assert "requested local role absent; replay anchor retained" in app
     assert "atom-disjoint farthest-point traversal" in app
+    assert "coordinatesEmbeddedInReceipt: false" in app
 
     assert "Observed nucleation site" in readme
     assert "not a nucleation barrier, rate, critical nucleus size" in readme
+    assert "amber wire halos" in readme
 
 
 if __name__ == "__main__":

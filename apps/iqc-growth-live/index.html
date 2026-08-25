@@ -685,6 +685,12 @@
                 <option value="dispersed">Dispersed observed sites · farthest traversal</option>
               </select>
             </label>
+            <section id="nucleationLandscapeInspector" class="nucleation-landscape-inspector" hidden>
+              <header><span><small>observed occurrence landscape</small><strong>Nucleation geometry inspector</strong></span><b id="nucleationLandscapeState">awaiting growth seed</b></header>
+              <div id="nucleationLandscapeSummary" class="nucleation-landscape-summary"></div>
+              <div id="nucleationLandscapeCandidates" class="nucleation-landscape-candidates" aria-label="Top fitted nucleation-site candidates"></div>
+              <p>Wire halos are fitted occurrence centers, not predicted critical nuclei. Filled halos mark initialized seeds.</p>
+            </section>
             <section id="nucleusInterfaceInspector" class="nucleus-interface-inspector" hidden>
               <header><span><small>orientation relationship</small><strong>Nucleus-pair inspector</strong></span><b id="nucleusInterfaceState">no interface pair</b></header>
               <div id="nucleusPairButtons" class="nucleus-pair-buttons" role="group" aria-label="Select a nucleus pair"></div>
@@ -1166,7 +1172,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-96"></script>
+  <script type="module" src="./app.js?v=20260825-97"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

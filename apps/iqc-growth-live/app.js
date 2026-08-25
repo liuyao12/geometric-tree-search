@@ -227,6 +227,10 @@ const growthNucleiSelect = $("growthNucleiSelect");
 const growthNucleiHint = $("growthNucleiHint");
 const nucleationSiteSelect = $("nucleationSiteSelect");
 const nucleationSiteHint = $("nucleationSiteHint");
+const nucleationLandscapeInspector = $("nucleationLandscapeInspector");
+const nucleationLandscapeState = $("nucleationLandscapeState");
+const nucleationLandscapeSummary = $("nucleationLandscapeSummary");
+const nucleationLandscapeCandidates = $("nucleationLandscapeCandidates");
 const nucleiBadge = $("nucleiBadge");
 const nucleiBadgeLabel = $("nucleiBadgeLabel");
 const nucleusInterfaceInspector = $("nucleusInterfaceInspector");
@@ -622,7 +626,8 @@ const decisionGroup = new THREE.Group();
 const externalDriveGroup = new THREE.Group();
 const unitCellGroup = new THREE.Group();
 const interfaceGroup = new THREE.Group();
-world.add(confinementGroup, externalDriveGroup, unitCellGroup, bondGroup, atomGroup, clusterGroup, interfaceGroup, frontierGroup, decisionGroup);
+const nucleationGroup = new THREE.Group();
+world.add(confinementGroup, externalDriveGroup, unitCellGroup, bondGroup, atomGroup, clusterGroup, interfaceGroup, nucleationGroup, frontierGroup, decisionGroup);
 scene.add(world);
 
 const sphereGeometry = new THREE.SphereGeometry(0.18, 13, 9);
@@ -640,6 +645,10 @@ const thermalEnvelopeMaterial = new THREE.MeshBasicMaterial({
 });
 const interfaceRingMaterial = new THREE.MeshBasicMaterial({ color: 0x7ee1e8,
   transparent: true, opacity: .9, depthWrite: false });
+const nucleationCandidateMaterial = new THREE.MeshBasicMaterial({ color: 0xffc169, wireframe: true,
+  transparent: true, opacity: .28, depthWrite: false });
+const nucleationSelectedMaterial = new THREE.MeshBasicMaterial({ color: 0x65e1bc, wireframe: true,
+  transparent: true, opacity: .92, depthWrite: false });
 const clusterMaterials = CLUSTER_COLORS.map((color) => new THREE.MeshStandardMaterial({ color, roughness: .32, metalness: .08, emissive: color, emissiveIntensity: .12 }));
 const markingMaterials = new Map();
 const candidateMaterial = new THREE.MeshBasicMaterial({ color: COLORS.violet, wireframe: true, transparent: true, opacity: 0.92 });
@@ -826,6 +835,7 @@ let growthPathSeed = 1;
 let requestedGrowthNuclei = 1;
 let nucleationSiteMode = "replay";
 let nucleationSelectionAudit = null;
+let nucleationSiteLandscape = [];
 let initializedGrowthNuclei = 0;
 let coalescenceEvents = 0;
 let crossNucleusMergeContacts = 0;
@@ -5718,7 +5728,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-96",
+      buildId: "20260825-97",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -8738,6 +8748,48 @@ function nucleationSiteLabel() {
   return NUCLEATION_SITE_LABELS[nucleationSiteMode] || NUCLEATION_SITE_LABELS.replay;
 }
 
+function nucleationSiteEvidenceLabel(entry) {
+  if (!entry) return "unavailable";
+  if (nucleationSiteMode === "interior" || nucleationSiteMode === "surface") {
+    const marginA = entry.boundaryMargin * referenceSpacingA / Math.max(referenceSpacing, 1e-12);
+    return `${marginA.toFixed(2)} Å boundary margin`;
+  }
+  if (nucleationSiteMode === "gap") return `${entry.gapEvidence} gap / residual roles`;
+  if (nucleationSiteMode === "interface") return `${entry.interfaceEvidence} pose-interface roles`;
+  if (nucleationSiteMode === "dispersed") {
+    const distanceA = entry.centroidDistance * referenceSpacingA / Math.max(referenceSpacing, 1e-12);
+    return `${distanceA.toFixed(2)} Å from occurrence centroid`;
+  }
+  return entry.index === overlapGrammar.replaySeedIndex ? "frozen replay occurrence" : "fitted occurrence";
+}
+
+function renderNucleationLandscapeInspector() {
+  const visible = pipelineStage === 4 && !iceAnchorTrace && nucleationSiteLandscape.length > 0;
+  nucleationLandscapeInspector.hidden = !visible;
+  if (!visible) return;
+  const selected = nucleationSiteLandscape.filter((entry) => entry.selected);
+  nucleationLandscapeState.textContent = `${nucleationSiteLabel()} · ${selected.length} selected`;
+  const tiles = [
+    ["fitted candidates", nucleationSiteLandscape.length],
+    ["initialized seeds", selected.length],
+    ["evidence", nucleationSelectionAudit?.evidenceAvailable ? "available" : "fallback"],
+  ];
+  nucleationLandscapeSummary.replaceChildren(...tiles.map(([label, value]) => {
+    const tile = document.createElement("span");
+    tile.innerHTML = `<small>${label}</small><strong>${value}</strong>`;
+    return tile;
+  }));
+  const displayed = [...selected, ...nucleationSiteLandscape.filter((entry) => !entry.selected).slice(0, 4)]
+    .filter((entry, index, array) => array.findIndex((candidate) => candidate.index === entry.index) === index)
+    .slice(0, 6);
+  nucleationLandscapeCandidates.replaceChildren(...displayed.map((entry) => {
+    const card = document.createElement("article");
+    card.classList.toggle("selected", entry.selected);
+    card.innerHTML = `<small>${entry.selected ? "initialized seed" : `rank ${entry.rank}`}</small><strong>C${growthSeedType(entry.index) + 1} · ${growthSeedSites(entry.index).length} sites</strong><em>${nucleationSiteEvidenceLabel(entry)}</em>`;
+    return card;
+  }));
+}
+
 function observedGrowthSeedIndices() {
   const requested = Math.max(1, requestedGrowthNuclei);
   const replaySeed = overlapGrammar.replaySeedIndex;
@@ -8800,6 +8852,8 @@ function observedGrowthSeedIndices() {
     selected.push(next.index);
   }
   const selectedFeatures = selected.map((index) => features.find((entry) => entry.index === index)).filter(Boolean);
+  nucleationSiteLandscape = ranked.map((entry, rank) => ({ ...entry, rank: rank + 1,
+    selected: selected.includes(entry.index), position: entry.occurrence.position.clone() }));
   nucleationSelectionAudit = {
     mode: nucleationSiteMode, label: nucleationSiteLabel(), requested, selected: selected.length,
     eligibleObservedOccurrences: eligible.length, evidenceAvailable,
@@ -8807,6 +8861,9 @@ function observedGrowthSeedIndices() {
     selectedBoundaryMarginsSceneUnits: selectedFeatures.map((entry) => receiptRound(entry.boundaryMargin)),
     selectedGapResidualRoleCounts: selectedFeatures.map((entry) => entry.gapEvidence),
     selectedPoseInterfaceRoleCounts: selectedFeatures.map((entry) => entry.interfaceEvidence),
+    landscapeVisualization: { rankedFittedOccurrences: ranked.length,
+      displayedCandidateHalos: Math.min(24, Math.max(0, ranked.length - selected.length)),
+      displayedSelectedHalos: selected.length, coordinatesEmbeddedInReceipt: false },
     selectedOccurrencesWereFitted: true, properObservedPosesPreserved: true,
     candidateGeometryChanged: false, heldoutTargetUsed: false,
     nucleationBarrierInferred: false, nucleationRateInferred: false, criticalNucleusSizeInferred: false,
@@ -9618,6 +9675,7 @@ function syncStageOptions() {
     + 35 * Number(initializedGrowthNuclei > 1) + 35 * Number(frontMorphologyMode !== "none")}px`;
   epitaxyBadgeLabel.textContent = `${epitaxyTemplateLabel()} · w ${epitaxyWeight.toFixed(2)}`;
   renderNucleusInterfaceInspector();
+  renderNucleationLandscapeInspector();
   stageOptionsPanel.hidden = !visible;
   if (!visible) return;
   const clustering = pipelineStage === 1;
@@ -10796,6 +10854,7 @@ function rebuildWorld() {
   clearGroup(unitCellGroup);
   clearGroup(bondGroup);
   clearGroup(interfaceGroup);
+  clearGroup(nucleationGroup);
   clearGroup(frontierGroup);
   clearGroup(decisionGroup);
   if (pipelineStage === 4 && externalDriveMode !== "none") {
@@ -10880,6 +10939,26 @@ function rebuildWorld() {
     currentMaterial().elements.forEach((symbol) => {
       addInstances(atoms.filter((atom) => atom.species === symbol), getElementMaterial(symbol), (atom) => elementScale(atom.species));
     });
+  }
+
+  if (pipelineStage === 4 && !iceAnchorTrace && nucleationSiteLandscape.length) {
+    const selectedLandscape = nucleationSiteLandscape.filter((entry) => entry.selected);
+    const previewLandscape = nucleationSiteLandscape.filter((entry) => !entry.selected).slice(0, 24);
+    const landscapeGeometry = new THREE.IcosahedronGeometry(.38, 1);
+    const addLandscapeInstances = (entries, material, scale) => {
+      if (!entries.length) return;
+      const markers = new THREE.InstancedMesh(landscapeGeometry, material, entries.length);
+      entries.forEach((entry, index) => {
+        dummy.position.copy(entry.position);
+        dummy.rotation.set(0, 0, 0);
+        dummy.scale.setScalar(typeof scale === "function" ? scale(entry) : scale);
+        dummy.updateMatrix(); markers.setMatrixAt(index, dummy.matrix);
+      });
+      markers.instanceMatrix.needsUpdate = true; nucleationGroup.add(markers);
+    };
+    addLandscapeInstances(previewLandscape, nucleationCandidateMaterial,
+      (entry) => Math.max(.62, 1 - (entry.rank - 1) / 48));
+    addLandscapeInstances(selectedLandscape, nucleationSelectedMaterial, 1.45);
   }
 
   const selectedPair = growthNucleusPairs().find((pair) => pair.key === selectedNucleusPairKey);
