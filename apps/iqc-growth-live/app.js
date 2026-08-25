@@ -181,6 +181,11 @@ const robustnessHint = $("robustnessHint");
 const microstructureCouplingSelect = $("microstructureCouplingSelect");
 const microstructureCouplingWeightSelect = $("microstructureCouplingWeightSelect");
 const microstructureCouplingHint = $("microstructureCouplingHint");
+const loopClosurePreferenceSelect = $("loopClosurePreferenceSelect");
+const loopClosureWeightSelect = $("loopClosureWeightSelect");
+const loopClosureHint = $("loopClosureHint");
+const loopClosureBadge = $("loopClosureBadge");
+const loopClosureBadgeLabel = $("loopClosureBadgeLabel");
 const growthSchedulingSelect = $("growthSchedulingSelect");
 const growthSchedulingHint = $("growthSchedulingHint");
 const trainVariantButton = $("trainVariantButton");
@@ -648,6 +653,10 @@ let acceptedRobustnessScore = 0;
 let rejectedRobustnessScore = 0;
 let acceptedMicrostructureCouplingScore = 0;
 let rejectedMicrostructureCouplingScore = 0;
+let acceptedLoopClosureScore = 0;
+let rejectedLoopClosureScore = 0;
+let acceptedIndependentLoopWitnesses = 0;
+let rejectedIndependentLoopWitnesses = 0;
 let constraintNeighborhoodEvaluations = 0;
 let constraintNeighborhoodSiteTotal = 0;
 let maximumConstraintNeighborhoodSites = 0;
@@ -712,6 +721,8 @@ let robustnessPreference = "none";
 let robustnessWeight = .24;
 let microstructureCouplingMode = "none";
 let microstructureCouplingWeight = .24;
+let loopClosurePreference = "none";
+let loopClosureWeight = .24;
 let growthScheduling = "commuting";
 let nextMarkingId = 1;
 let geometryMode = "auto";
@@ -5475,7 +5486,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-83",
+      buildId: "20260825-84",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -5899,6 +5910,23 @@ async function buildExperimentReceipt() {
         formationEnergyInferred: false,
         mobilityInferred: false,
       },
+      mesoscopicLoopClosureRanking: {
+        role: "target-blind multi-parent consensus over complete transformed colored site sets from frozen proper-SE(3) connection rules",
+        mode: loopClosurePreference,
+        enabled: activeLoopClosureWeight() > 0,
+        effectiveWeight: activeLoopClosureWeight(),
+        acceptedMeanScore: receiptRound(acceptedLoopClosureScore / Math.max(1, acceptedDecisions)),
+        rejectedMeanScore: receiptRound(rejectedLoopClosureScore / Math.max(1, rejectedDecisions)),
+        acceptedMeanIndependentCompatiblePaths: receiptRound(acceptedIndependentLoopWitnesses / Math.max(1, acceptedDecisions)),
+        rejectedMeanIndependentCompatiblePaths: receiptRound(rejectedIndependentLoopWitnesses / Math.max(1, rejectedDecisions)),
+        generatingParentExcludedFromConsensus: true,
+        frozenConnectionRulesOnly: true,
+        candidateGeometryChanged: false,
+        hardAdmissionChanged: false,
+        heldoutTargetUsed: false,
+        elasticEnergyInferred: false,
+        modulusOrStressInferred: false,
+      },
       localConstraintWork: {
         role: "exact finite-reach neighborhood evaluation via the live spatial index; not an approximation or sampled cutoff",
         maximumReachAngstrom: receiptRound(coloredCoordinationEnvelopes.maximumCutoff * referenceSpacingA / referenceSpacing),
@@ -6017,6 +6045,7 @@ function notebookInterventionFactors(receipt) {
       externalDrive: [search.externalDrivingGeometry?.mode, search.externalDrivingGeometry?.effectiveWeight],
       robustness: [search.constraintRobustnessRanking?.mode, search.constraintRobustnessRanking?.effectiveWeight],
       microstructure: [search.microstructureCouplingRanking?.mode, search.microstructureCouplingRanking?.effectiveWeight],
+      loopClosure: [search.mesoscopicLoopClosureRanking?.mode, search.mesoscopicLoopClosureRanking?.effectiveWeight],
     } : null) },
     scheduling: { label: "tree scheduling", role: "search", value: serialized(search?.scheduling || null) },
     hierarchy: { label: "clusters² promotion", role: "search", value: String(search?.hierarchyEnabled ?? "not entered") },
@@ -7111,6 +7140,83 @@ function microstructureCouplingForCandidate(candidate, evaluation) {
   };
 }
 
+function activeLoopClosureWeight() {
+  return loopClosurePreference === "consensus" ? loopClosureWeight : 0;
+}
+
+function transformedRuleSites(rule, type, position, rotation) {
+  return (rule.sites || overlapGrammar.templates[type].sites).map((site) => ({
+    species: site.species,
+    p: site.local.clone().applyQuaternion(rotation).add(position),
+  }));
+}
+
+function coloredSiteSetResidual(first, second) {
+  if (first.length !== second.length) return Infinity;
+  const directed = (source, target) => source.reduce((maximum, site) => {
+    const distances = target.filter((other) => other.species === site.species)
+      .map((other) => site.p.distanceTo(other.p));
+    return distances.length ? Math.max(maximum, Math.min(...distances)) : Infinity;
+  }, 0);
+  return Math.max(directed(first, second), directed(second, first));
+}
+
+function mesoscopicLoopClosureForCandidate(candidate) {
+  const toleranceScene = clusterMetricToleranceAngstrom()
+    * referenceSpacing / Math.max(referenceSpacingA, 1e-12);
+  const positionWindow = Math.max(.36, 4 * toleranceScene);
+  const coloredSiteWindow = Math.max(.18, 2 * toleranceScene);
+  const candidateColoredSites = candidateSites(candidate);
+  const paths = [];
+  placedClusters.forEach((placement) => {
+    const rules = hierarchyEnabled || placement.depth === 0
+      ? overlapGrammar.byFrom.get(placement.type) || [] : [];
+    rules.filter((rule) => rule.to === candidate.type).forEach((rule) => {
+      const predictedRotation = placement.rotation.clone().multiply(rule.rotation).normalize();
+      const predictedPosition = placement.position.clone()
+        .add(rule.translation.clone().applyQuaternion(placement.rotation));
+      const positionResidual = predictedPosition.distanceTo(candidate.position);
+      if (positionResidual > positionWindow) return;
+      const coloredSiteResidual = coloredSiteSetResidual(
+        transformedRuleSites(rule, candidate.type, predictedPosition, predictedRotation), candidateColoredSites);
+      paths.push({
+        parentId: placement.id,
+        ruleId: rule.id,
+        positionResidual,
+        coloredSiteResidual,
+        compatible: coloredSiteResidual <= coloredSiteWindow,
+      });
+    });
+  });
+  const independent = paths.filter((path) => path.parentId !== candidate.parentId);
+  const compatible = independent.filter((path) => path.compatible);
+  const conflicting = independent.filter((path) => !path.compatible);
+  const meanNormalizedResidual = compatible.length ? compatible.reduce((sum, path) => sum
+    + path.coloredSiteResidual / Math.max(toleranceScene, 1e-9), 0) / compatible.length : 0;
+  const supportCredit = Math.tanh(compatible.length / 2);
+  const conflictPenalty = Math.tanh(conflicting.length / 2);
+  const residualPenalty = compatible.length ? .35 * Math.tanh(meanNormalizedResidual / 2) : 0;
+  return {
+    score: Math.max(-1, Math.min(1, supportCredit - conflictPenalty - residualPenalty)),
+    independentCompatiblePaths: compatible.length,
+    independentConflictingPaths: conflicting.length,
+    nearbyPredictedPaths: independent.length,
+    meanNormalizedResidual,
+    positionWindowSceneUnits: positionWindow,
+    positionWindowAngstrom: positionWindow * referenceSpacingA / Math.max(referenceSpacing, 1e-12),
+    coloredSiteWindowSceneUnits: coloredSiteWindow,
+    coloredSiteWindowAngstrom: coloredSiteWindow * referenceSpacingA / Math.max(referenceSpacing, 1e-12),
+    generatingParentExcludedFromConsensus: true,
+    frozenConnectionRulesOnly: true,
+    completeColoredSiteSetsCompared: true,
+    rawQuaternionUsedForCompatibility: false,
+    candidateGeometryChanged: false,
+    hardAdmissionChanged: false,
+    heldoutTargetUsed: false,
+    modulusOrStressInferred: false,
+  };
+}
+
 function externalDriveModeLabel(mode = externalDriveMode) {
   return ({ none: "isotropic", "z-plus": "axis +Z", "z-minus": "axis −Z",
     "radial-out": "radial outward", "radial-in": "radial inward" })[mode] || "isotropic";
@@ -7205,6 +7311,8 @@ function capturePolicyComparison(entries) {
       score: (entry) => entry.baseScore + activeRobustnessWeight() * entry.evaluation.constraintRobustness.score },
     { id: "microstructure", label: `${microstructureCouplingLabel()} ${activeMicrostructureCouplingWeight().toFixed(2)}`,
       score: (entry) => entry.baseScore + activeMicrostructureCouplingWeight() * entry.evaluation.microstructureCoupling.score },
+    { id: "loop-closure", label: `loop closure ${activeLoopClosureWeight().toFixed(2)}`,
+      score: (entry) => entry.baseScore + activeLoopClosureWeight() * entry.evaluation.loopClosure.score },
     { id: "active", label: "active combined", score: (entry) => entry.score },
   ].map((policy) => {
     const ranked = admissible.map((entry) => ({ entry, score: policy.score(entry) }))
@@ -7439,7 +7547,8 @@ function commutingFrontierBatch() {
         - activeSurfaceCompletionWeight() * evaluation.surfaceCompletion.scaledDelta
         + activeExternalDriveWeight() * evaluation.externalDrive.alignment
         + activeRobustnessWeight() * evaluation.constraintRobustness.score
-        + activeMicrostructureCouplingWeight() * evaluation.microstructureCoupling.score,
+        + activeMicrostructureCouplingWeight() * evaluation.microstructureCoupling.score
+        + activeLoopClosureWeight() * evaluation.loopClosure.score,
     };
   });
   capturePolicyComparison(evaluated);
@@ -7542,13 +7651,14 @@ function evaluateCandidate(candidate, {
   const externalDrive = externalDriveForCandidate(candidate);
   const constraintRobustness = constraintRobustnessForCandidate(fresh, merged);
   const microstructureCoupling = microstructureCouplingForCandidate(candidate, { fresh, merged });
+  const loopClosure = mesoscopicLoopClosureForCandidate(candidate);
   const accepted = conflicts === 0 && boundaryFailures === 0 && merged.length >= 2
     && fresh.length > 0 && knownFailures === 0 && coordinationOverflows.length === 0
     && angularViolations.length === 0 && (markingAccepted || markingFallback);
   return { accepted, sites, merged, fresh, conflicts, boundaryFailures, knownFailures, markingFallback,
     coordinationOverflows, angularViolations, geometricStrain, affineLoadedGeometricStrain,
     surfaceCompletion, compositionBalance, formalChargeBalance,
-    externalDrive, constraintRobustness, microstructureCoupling,
+    externalDrive, constraintRobustness, microstructureCoupling, loopClosure,
     duplicateSites: canonical.duplicateSites,
     freshReferenceIndices: fresh.map((site) => site.referenceIndex).filter(Number.isInteger),
     reason: conflicts ? `${conflicts} hard-core/species conflicts` : boundaryFailures ? "outside confinement" : knownFailures ? `${knownFailures} sites outside known configuration` : coordinationOverflows.length ? `${coordinationOverflows.length} colored coordination capacities exceeded` : angularViolations.length ? `${angularViolations.length} colored angular envelopes violated` : merged.length < 2 ? "insufficient shared support" : fresh.length === 0 ? "duplicate covering" : !markingAccepted ? "marking mismatch" : "compatible overlap" };
@@ -7613,6 +7723,10 @@ function initializeOffLatticeSearch() {
   rejectedRobustnessScore = 0;
   acceptedMicrostructureCouplingScore = 0;
   rejectedMicrostructureCouplingScore = 0;
+  acceptedLoopClosureScore = 0;
+  rejectedLoopClosureScore = 0;
+  acceptedIndependentLoopWitnesses = 0;
+  rejectedIndependentLoopWitnesses = 0;
   constraintNeighborhoodEvaluations = 0;
   constraintNeighborhoodSiteTotal = 0;
   maximumConstraintNeighborhoodSites = 0;
@@ -8151,6 +8265,10 @@ function syncStageOptions() {
   affineLoadBadgeLabel.textContent = `${Math.round(affineLoadMagnitude * 100)}% ${affineLoadModeLabel()}`;
   affineLoadGlyph.textContent = ({ "hydro-compress": "↘", "hydro-tension": "↗",
     "z-tension": "⇅", "xy-shear": "⇆" })[affineLoadMode] || "·";
+  loopClosureBadge.hidden = pipelineStage !== 4 || loopClosurePreference === "none";
+  loopClosureBadge.style.top = `${49 + 35 * Number(externalDriveMode !== "none")
+    + 35 * Number(affineLoadMode !== "none")}px`;
+  loopClosureBadgeLabel.textContent = `loop closure · w ${loopClosureWeight.toFixed(2)}`;
   stageOptionsPanel.hidden = !visible;
   if (!visible) return;
   const clustering = pipelineStage === 1;
@@ -8241,6 +8359,8 @@ function syncStageOptions() {
     robustnessWeightSelect.value = String(robustnessWeight);
     microstructureCouplingSelect.value = microstructureCouplingMode;
     microstructureCouplingWeightSelect.value = String(microstructureCouplingWeight);
+    loopClosurePreferenceSelect.value = loopClosurePreference;
+    loopClosureWeightSelect.value = String(loopClosureWeight);
     growthSchedulingSelect.value = growthScheduling;
     geometryPreferenceSelect.disabled = finiteIceAnchorMode;
     strainWeightSelect.disabled = finiteIceAnchorMode || geometryPreference !== "strain";
@@ -8255,6 +8375,8 @@ function syncStageOptions() {
     robustnessWeightSelect.disabled = finiteIceAnchorMode || robustnessPreference === "none";
     microstructureCouplingSelect.disabled = finiteIceAnchorMode;
     microstructureCouplingWeightSelect.disabled = finiteIceAnchorMode || microstructureCouplingMode === "none";
+    loopClosurePreferenceSelect.disabled = finiteIceAnchorMode;
+    loopClosureWeightSelect.disabled = finiteIceAnchorMode || loopClosurePreference === "none";
     growthSchedulingSelect.disabled = finiteIceAnchorMode;
     growthSchedulingHint.textContent = growthScheduling === "commuting"
       ? "maximal commuting set" : "one branch decision";
@@ -8271,6 +8393,8 @@ function syncStageOptions() {
       ? `minimum margin · weight ${robustnessWeight.toFixed(2)}` : "diagnostic · weight zero";
     microstructureCouplingHint.textContent = microstructureCouplingMode === "none"
       ? "neutral · weight zero" : `${microstructureCouplingLabel()} · weight ${microstructureCouplingWeight.toFixed(2)}`;
+    loopClosureHint.textContent = loopClosurePreference === "consensus"
+      ? `multi-parent consensus · weight ${loopClosureWeight.toFixed(2)}` : "local-only · weight zero";
     stageOptionsState.textContent = `${policySelect.value === "marked" && active ? active.name.split(" · ")[0] : "baseline"} · ${geometryPreference === "strain" ? `strain ${geometricStrainWeight.toFixed(2)}` : "no strain"}`;
     primitiveGrowthButton.classList.toggle("active", finiteIceAnchorMode || !hierarchyEnabled);
     primitiveGrowthButton.setAttribute("aria-pressed", String(finiteIceAnchorMode || !hierarchyEnabled));
@@ -8305,11 +8429,14 @@ function syncStageOptions() {
     const microstructureUse = microstructureCouplingMode === "none"
       ? " Heterogeneous-geometry correlations remain post-decision diagnostics."
       : ` A user-declared ${microstructureCouplingLabel()} hypothesis adds a ${microstructureCouplingWeight.toFixed(2)} soft term from frozen input-derived roles; no defect identity or formation energy is assumed.`;
+    const loopClosureUse = loopClosurePreference === "consensus"
+      ? ` A ${loopClosureWeight.toFixed(2)} mesoscopic term rewards independent frozen-rule paths that close onto the same proper-SE(3) pose and penalizes nearby incompatible paths.`
+      : " Multi-parent loop closure is reported but contributes zero rank weight.";
     growthModeNote.textContent = finiteIceAnchorMode
       ? "This sealed ice gate executes primitive H₂O connection ports with mutually exclusive orientation domains. Clusters² is disabled because no stationary promoted ice production has been certified."
       : hierarchyEnabled
-      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first tree branch."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}${microstructureUse}`
-      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}${microstructureUse}`;
+      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}${microstructureUse}${loopClosureUse}`
+      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}${microstructureUse}${loopClosureUse}`;
   }
 }
 
@@ -8337,6 +8464,10 @@ function resetCounters() {
   rejectedRobustnessScore = 0;
   acceptedMicrostructureCouplingScore = 0;
   rejectedMicrostructureCouplingScore = 0;
+  acceptedLoopClosureScore = 0;
+  rejectedLoopClosureScore = 0;
+  acceptedIndependentLoopWitnesses = 0;
+  rejectedIndependentLoopWitnesses = 0;
   constraintNeighborhoodEvaluations = 0;
   constraintNeighborhoodSiteTotal = 0;
   maximumConstraintNeighborhoodSites = 0;
@@ -8645,6 +8776,7 @@ function stateForCandidate(candidate, evaluation) {
     externalDrive: evaluation.externalDrive,
     constraintRobustness: evaluation.constraintRobustness,
     microstructureCoupling: evaluation.microstructureCoupling,
+    loopClosure: evaluation.loopClosure,
   };
 }
 
@@ -8760,6 +8892,8 @@ function performOffLatticeEvent() {
       rejectedExternalDriveAlignment += snapshotEvaluation.externalDrive.alignment;
       rejectedRobustnessScore += snapshotEvaluation.constraintRobustness.score;
       rejectedMicrostructureCouplingScore += snapshotEvaluation.microstructureCoupling.score;
+      rejectedLoopClosureScore += snapshotEvaluation.loopClosure.score;
+      rejectedIndependentLoopWitnesses += snapshotEvaluation.loopClosure.independentCompatiblePaths;
       rejectedInBatch++;
       appendHistory("reject", { type: "reject", depth: placedClusters.find((placement) => placement.id === candidate.parentId)?.depth || 0,
         action: state.action, family: evaluation.reason });
@@ -8792,6 +8926,8 @@ function performOffLatticeEvent() {
     acceptedExternalDriveAlignment += evaluation.externalDrive.alignment;
     acceptedRobustnessScore += evaluation.constraintRobustness.score;
     acceptedMicrostructureCouplingScore += evaluation.microstructureCoupling.score;
+    acceptedLoopClosureScore += evaluation.loopClosure.score;
+    acceptedIndependentLoopWitnesses += evaluation.loopClosure.independentCompatiblePaths;
     acceptedInBatch++;
     freshInBatch += evaluation.fresh.length;
     appendHistory(decision.reuse ? "reuse" : "accept", { type: "accept", depth: placement.depth, action: state.action,
@@ -9340,6 +9476,10 @@ function physicsTranslationRecords(leap = null) {
         : "heterogeneous-geometry roles are mapped but do not rank branches",
       evidence: leap ? `Accepted mean coupling score ${receiptRound(acceptedMicrostructureCouplingScore / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedMicrostructureCouplingScore / Math.max(1, rejectedDecisions), 4)}.` : "No microstructure-conditioned action scored yet.",
       boundary: "These roles are geometric hypotheses, not automatic vacancies, dislocations, grains, formation energies, mobilities, or physical mechanisms." },
+    { id: "loop-closure", process: "mesoscopic elastic compatibility / seam avoidance", status: activeLoopClosureWeight() > 0 ? "soft" : "open", role: activeLoopClosureWeight() > 0 ? "multi-parent proper-SE(3) consensus" : "diagnostic",
+      encoding: "independent placed parents apply frozen connection rules; complete transformed colored site sets are compared so proper-symmetry gauges cannot create false seams",
+      evidence: leap ? `Accepted mean ${receiptRound(acceptedIndependentLoopWitnesses / Math.max(1, acceptedDecisions), 4)} independent compatible paths; rejected mean ${receiptRound(rejectedIndependentLoopWitnesses / Math.max(1, rejectedDecisions), 4)}.` : "No mesoscopic loop tested yet.",
+      boundary: "Loop closure detects geometric consistency, not elastic energy, modulus, stress, force balance, dislocation energy, or mechanical relaxation." },
     { id: "kinetics", process: "activation, diffusion, heat flow, and elapsed time", status: "open", role: "not modeled",
       encoding: "none; the accepted whole-cluster antichain jumps directly between certified structural states",
       evidence: leap ? `${leap.after.atoms - leap.before.atoms} explicit sites were emitted with physicalTimeModeled=false and dynamicsIntegrated=false.` : "The seed has no physical clock.",
@@ -9595,6 +9735,13 @@ function geometryConstraintEvidence(name, term, state, mode) {
         ? `Soft rank term with weight ${activeMicrostructureCouplingWeight().toFixed(2)} over unchanged exact actions.` : "Post-decision diagnostic only; weight zero.",
       boundary: "A spatial role is not a defect label. This experiment infers no formation energy, migration barrier, mobility, grain identity, or mechanism.",
     },
+    "mesoscopic loop closure": {
+      observed: `${overlapGrammar?.rules?.length || 0} frozen recurring proper-SE(3) rules can independently predict a frontier pose from already placed parents`,
+      encoding: "Nearby predictions for the same cluster type are compared as complete colored point sets; raw quaternion frames are never compared, and the generating parent is excluded from the independent-consensus count.",
+      searchRole: activeLoopClosureWeight() > 0
+        ? `Soft rank term with weight ${activeLoopClosureWeight().toFixed(2)} over unchanged exact candidates.` : "Diagnostic only; weight zero.",
+      boundary: "This is a bounded graph loop-closure residual, not long-range elasticity, stress, energy, force balance, plastic relaxation, or a dislocation calculation.",
+    },
     "GCTS marking": {
       observed: `${trainingProgress}/${markingSampleCount()} ${sectionModel?.sampleKind || "connection"} samples · ${iceAnchorTrace?.portCount || overlapGrammar?.rules?.length || 0} frozen connection states`,
       encoding: mode === "specialized"
@@ -9675,6 +9822,9 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "microstructure coupling", status: ranked(activeMicrostructureCouplingWeight() > 0),
       value: state.microstructureCoupling ? `${signed(state.microstructureCoupling.score)} · ${state.microstructureCoupling.label}` : "not evaluated",
       detail: activeMicrostructureCouplingWeight() > 0 ? `rank weight ${activeMicrostructureCouplingWeight().toFixed(2)} · labels withheld` : "diagnostic · labels withheld" },
+    { name: "mesoscopic loop closure", status: ranked(activeLoopClosureWeight() > 0),
+      value: state.loopClosure ? `${signed(state.loopClosure.score)} · ${state.loopClosure.independentCompatiblePaths} support / ${state.loopClosure.independentConflictingPaths} conflict` : "not evaluated",
+      detail: activeLoopClosureWeight() > 0 ? `rank weight ${activeLoopClosureWeight().toFixed(2)} · generating parent excluded` : "diagnostic · local-only ordering" },
     { name: "GCTS marking", status: policySelect.value === "marked" ? state.markingAccepted ? "pass" : "fail" : "diagnostic",
       value: policySelect.value === "marked" ? state.markingAccepted ? "compatible" : "mismatch" : "not gating",
       detail: "bounded transported connection section" },
@@ -10849,6 +10999,17 @@ microstructureCouplingSelect.addEventListener("change", () => {
 microstructureCouplingWeightSelect.addEventListener("change", () => {
   const value = Number(microstructureCouplingWeightSelect.value);
   microstructureCouplingWeight = [.12, .24, .48].includes(value) ? value : .24;
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+loopClosurePreferenceSelect.addEventListener("change", () => {
+  loopClosurePreference = loopClosurePreferenceSelect.value === "consensus" ? "consensus" : "none";
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+loopClosureWeightSelect.addEventListener("change", () => {
+  const value = Number(loopClosureWeightSelect.value);
+  loopClosureWeight = [.12, .24, .48].includes(value) ? value : .24;
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
 });

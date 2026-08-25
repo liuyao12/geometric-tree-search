@@ -458,6 +458,19 @@ configuration and never become vacancy, dislocation, grain, or grain-boundary
 labels. No formation energy, migration barrier, mobility, mechanism, or rate
 is inferred.
 
+An optional **mesoscopic loop-closure** experiment asks whether more than one
+already placed cluster independently predicts the same frontier attachment.
+Each parent transports only its frozen proper-SE(3) connection rules. Agreement
+is tested on the complete transformed colored site sets—not raw quaternion
+frames—so every proper-symmetry gauge is implicitly quotiented. A coincident
+set supports a coherent loop; a nearby incompatible set marks a geometric
+seam. The candidate's generating parent is excluded
+from the independent-witness count, so one tree edge cannot certify itself.
+This bounded consensus can softly order the unchanged exact frontier and is
+shown in the viewport, policy comparison, constraint ledger, physics matrix,
+and receipt. It is a geometric compatibility residual—not elastic energy,
+modulus, stress, force balance, relaxation, or a dislocation calculation.
+
 All pair, capacity, angle, and strain evaluations are compiled to the exact
 finite-reach neighborhood affected by the proposed fresh sites. The live
 spatial index finds existing centers touched by the action and then gathers
