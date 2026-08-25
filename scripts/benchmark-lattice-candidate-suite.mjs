@@ -9,6 +9,7 @@ import {
   LATTICE_POLYHEDRON_PRE_SHELL_CANDIDATES,
   LATTICE_POLYHEDRON_SURVIVORS
 } from "../assets/lattice-polyhedron-survivors.js";
+import { POLYCUBE_GCTS_CANDIDATES } from "../assets/polycube-census-candidates.js";
 
 const args = new Map(process.argv.slice(2).map(argument => {
   const separator = argument.indexOf("=");
@@ -22,7 +23,8 @@ const numberArg = (name, fallback) => {
 };
 const output = args.get("output") ?? "json";
 const outputFile = args.get("output-file") ?? null;
-const target = Math.max(2, Math.floor(numberArg("target", 24)));
+const criterion = args.get("criterion") === "shell" ? "shell" : "count";
+const target = Math.max(2, Math.floor(numberArg("target", criterion === "shell" ? 2 : 24)));
 const timeMs = Math.max(50, Math.floor(numberArg("time-ms", 1000)));
 const exactTimeMs = Math.max(timeMs, Math.floor(numberArg("exact-time-ms", 3000)));
 const isohedralHorizon = Math.max(2, Math.floor(numberArg("isohedral-horizon", 24)));
@@ -118,6 +120,7 @@ const requestedLanes = new Set((args.get("lanes") ?? "").split(",").filter(Boole
 const includeSpecial = args.get("special-controls") !== "false";
 
 const censusById = new Map(LATTICE_POLYHEDRON_CENSUS_POOL.map(candidate => [candidate.id, candidate]));
+const polycubeById = new Map(POLYCUBE_GCTS_CANDIDATES.map(candidate => [candidate.id, candidate]));
 const preShellIds = new Set(LATTICE_POLYHEDRON_PRE_SHELL_CANDIDATES.map(candidate => candidate.id));
 const defaultIds = [
   "8_2480",
@@ -125,18 +128,19 @@ const defaultIds = [
   ...LATTICE_POLYHEDRON_PRE_SHELL_CANDIDATES.map(candidate => candidate.id)
 ];
 const censusCases = (requestedIds.size ? [...requestedIds] : defaultIds)
-  .map(id => censusById.get(id))
+  .map(id => censusById.get(id) ?? polycubeById.get(id))
   .filter(Boolean)
   .map(candidate => ({
     id: candidate.id,
-    family: "census",
+    family: candidate.voxels ? "polycube_census" : "census",
     expected: candidate.screening.status === "inconclusive"
       ? "unresolved"
       : candidate.screening.certificate,
     knownPeriodicTemplate: candidate.screening.periodic_template ?? null,
     researchQueue: preShellIds.has(candidate.id),
     vertices: candidate.vertices,
-    lanes: preShellIds.has(candidate.id)
+    voxels: candidate.voxels,
+    lanes: preShellIds.has(candidate.id) || candidate.voxels
       ? ["translational", "isohedral", "free_range", "gcts", "rl", "gcts_rl", "restart_dfs", "ilds", "uct", "beam", "free_range_no_brainer", "free_range_unbanded"]
       : candidate.screening.certificate === "translational"
       ? ["translational", "free_range"]
@@ -157,11 +161,15 @@ const cases = [...censusCases, ...specialCases]
   }))
   .filter(benchmarkCase => benchmarkCase.lanes.length);
 
-const customSystem = benchmarkCase => benchmarkCase.family === "census" ? {
+const customSystem = benchmarkCase => ["census", "polycube_census"].includes(benchmarkCase.family) ? {
   name: `Candidate benchmark ${benchmarkCase.id}`,
   figure_refs: [],
-  polycubes: [],
-  polyhedra: [{ name: `Candidate ${benchmarkCase.id}`, vertices: benchmarkCase.vertices }],
+  polycubes: benchmarkCase.voxels
+    ? [{ name: `Candidate ${benchmarkCase.id}`, voxels: benchmarkCase.voxels }]
+    : [],
+  polyhedra: benchmarkCase.vertices
+    ? [{ name: `Candidate ${benchmarkCase.id}`, vertices: benchmarkCase.vertices }]
+    : [],
   polycube_lattice: "z3"
 } : null;
 
@@ -172,8 +180,8 @@ const configFor = (benchmarkCase, lane, seed, proposalProgram = null, searchOpti
   mode_key: benchmarkCase.family === "control" ? benchmarkCase.id : "cube",
   custom_system: customSystem(benchmarkCase),
   polycube_lattice: "z3",
-  criterion: "count",
-  target_val: lane === "isohedral" ? Math.max(target, 500) : target,
+  criterion,
+  target_val: lane === "isohedral" && criterion === "count" ? Math.max(target, 500) : target,
   tiling_strategy: genericLane ? "free_range" : lane,
   move_order: lane === "isohedral"
     ? "isohedral"
@@ -205,8 +213,15 @@ const configFor = (benchmarkCase, lane, seed, proposalProgram = null, searchOpti
   face_order: faceOrder,
   exhaustive: true,
   agent_exhaustive: true,
-  agent_policy: lane === "rl" || lane === "gcts_rl" ? "cold_geometry" : null,
-  forced_move_layer_lag_cap: lane === "free_range_unbanded" ? 0 : 2,
+  agent_policy: lane === "rl" || lane === "gcts_rl" ? "cold_linucb" : null,
+  agent_ucb_alpha: lane === "rl" || lane === "gcts_rl" ? 0 : null,
+  forced_move_layer_lag_cap:
+    lane === "free_range_unbanded"
+    || (criterion === "shell" && ["gcts", "rl", "gcts_rl"].includes(lane))
+      ? 0
+      : 2,
+  generic_complete_shell_enumeration:
+    criterion === "shell" && ["gcts", "rl", "gcts_rl"].includes(lane),
   generic_connected_patch_enumeration: connectedPatchEnumeration && lane === "free_range_unbanded",
   generic_failure_memo: lane === "uct" ? false : failureMemo,
   generic_failure_memo_symmetry: failureMemoSymmetry,
@@ -317,6 +332,9 @@ async function runLane(
   const stats = final?.search_stats ?? {};
   maxLiveTiles = Math.max(maxLiveTiles, stats.max_live_tiles ?? 0);
   const learnedProgram = null;
+  const certificatePayloadBytes = final?.tiling_evidence?.periodic_template
+    ? JSON.stringify(final.tiling_evidence.periodic_template).length
+    : 0;
   return {
     case: benchmarkCase.id,
     family: benchmarkCase.family,
@@ -365,6 +383,12 @@ async function runLane(
     agentPolicy: stats.agent_policy ?? null,
     agentStartedEmpty: !!stats.agent_started_empty,
     agentFeatureSchema: stats.agent_feature_schema ?? null,
+    agentScoreTimeMs: stats.agent_score_time_ms ?? 0,
+    agentTrainingUpdates: stats.agent_training_updates ?? 0,
+    agentTrainingTimeMs: stats.agent_training_time_ms ?? 0,
+    agentModelParameters: stats.agent_model_parameter_count ?? 0,
+    agentModelWeights: stats.agent_model_weight_count ?? 0,
+    agentModelPayloadBytes: stats.agent_model_payload_bytes ?? 0,
     agentProbeMaxLiveTiles: stats.agent_probe_max_live_tiles ?? null,
     proposalPatchTilesReplayed: stats.proposal_patch_tiles_replayed ?? 0,
     proposalPatchConflicts: stats.proposal_patch_conflicts ?? 0,
@@ -417,11 +441,25 @@ async function runLane(
     markingSkippedLargeContexts: stats.marking_skipped_large_contexts ?? 0,
     markingAverageContextTiles: stats.marking_average_context_tiles ?? 0,
     markingMaxContextTiles: stats.marking_max_context_tiles ?? 0,
+    markingContextTokens: stats.marking_context_tokens ?? 0,
+    markingPayloadBytes: stats.marking_payload_bytes ?? 0,
     markingFrontierChecks: stats.marking_frontier_checks ?? 0,
     markingClauseChecks: stats.marking_clause_checks ?? 0,
     markingAvoidedClauseChecks: stats.marking_avoided_clause_checks ?? 0,
     markingReach: stats.marking_reach ?? 0,
     markingRotationCount: stats.marking_rotation_count ?? 0,
+    learnedPayloadBytes:
+      (stats.agent_model_payload_bytes ?? 0) + (stats.marking_payload_bytes ?? 0),
+    certificatePayloadBytes,
+    retainedFailedTranslationalDomains: 0,
+    transientSearchCacheEntries:
+      (stats.generic_failure_memo_states ?? 0)
+      + (stats.isohedral_certificate_states_retained ?? 0)
+      + (stats.uct_states ?? 0),
+    translationalMotifSizesAttempted: stats.translational_motif_sizes_attempted ?? 0,
+    translationalLargestMotifSizeAttempted:
+      stats.translational_largest_motif_size_attempted ?? 0,
+    isohedralCertificateStatesRetained: stats.isohedral_certificate_states_retained ?? 0,
     genericPeriodicCertificateAttempted: !!stats.generic_periodic_certificate_attempted,
     genericPeriodicCertificateCompleted: !!stats.generic_periodic_certificate_completed,
     genericPeriodicCertificateTimedOut: !!stats.generic_periodic_certificate_timed_out,
@@ -907,8 +945,9 @@ const candidateSummaries = LATTICE_POLYHEDRON_PRE_SHELL_CANDIDATES
 const unresolvedIds = new Set(LATTICE_POLYHEDRON_SURVIVORS.map(candidate => candidate.id));
 const activeUnresolved = candidateSummaries.filter(candidate => unresolvedIds.has(candidate.id));
 const summary = {
-  schemaVersion: 23,
+  schemaVersion: 24,
   configuration: {
+    criterion,
     target,
     timeMs,
     exactTimeMs,

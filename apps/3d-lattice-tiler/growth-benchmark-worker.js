@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260824-rl-parity-v211";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260824-cold-linear-v212";
 
 let activeSequence = 0;
 let stopToken = { stop: false };
@@ -78,7 +78,7 @@ const MODES = {
     id: "translational",
     label: "Translational",
     strategy: "translational",
-    moveOrder: "periodic_agent",
+    moveOrder: "periodic",
     templates: true,
     agentExhaustive: true
   },
@@ -116,11 +116,11 @@ async function runMode(sequence, baseConfig, mode) {
     gcts_marking_symmetry: baseConfig.gcts_marking_symmetry ?? "fixed",
     gcts_marking_index: baseConfig.gcts_marking_index !== false,
     agent_exhaustive: mode.agentExhaustive,
-    agent_policy: ["rl", "gcts_rl", "translational"].includes(mode.id) ? "cold_geometry" : null,
-    learned_layer_macro: mode.id === "rl" || mode.id === "gcts_rl",
-    learned_layer_macro_max_motif_tiles: 8,
-    learned_layer_macro_motif_node_limit: 2500,
-    learned_layer_macro_discovery_time_ms: 45000,
+    agent_policy: ["rl", "gcts_rl"].includes(mode.id) ? "cold_linucb" : null,
+    agent_ucb_alpha: ["rl", "gcts_rl"].includes(mode.id) ? 0 : null,
+    // RL is deliberately a one-tile-at-a-time policy. Periodic or isohedral
+    // clusters must emerge from its action sequence, not from macro replay.
+    learned_layer_macro: false,
     known_periodic_template: null,
     initial_patch: null,
     greedy_no_backtrack: false,
@@ -237,6 +237,10 @@ async function runMode(sequence, baseConfig, mode) {
 
   const elapsed = Math.round(performance.now() - started);
   const learnedProgram = null;
+  const finalStats = final?.search_stats ?? latestStats ?? {};
+  const certificatePayloadBytes = final?.tiling_evidence?.periodic_template
+    ? JSON.stringify(final.tiling_evidence.periodic_template).length
+    : 0;
   const exactNoTiling = final?.result_kind === "no_tiling"
     && final?.can_tile === false
     && final?.tiling_evidence?.certified === true;
@@ -256,7 +260,23 @@ async function runMode(sequence, baseConfig, mode) {
       : final?.tile_count ?? best,
     milliseconds: elapsed,
     points,
-    stats: final?.search_stats ?? latestStats,
+    stats: finalStats,
+    memory: {
+      learnedPayloadBytes:
+        (finalStats.agent_model_payload_bytes ?? 0)
+        + (finalStats.marking_payload_bytes ?? 0),
+      modelParameters: finalStats.agent_model_parameter_count ?? 0,
+      modelWeights: finalStats.agent_model_weight_count ?? 0,
+      learnedTags: finalStats.agent_learned_tags ?? 0,
+      markingClauses: finalStats.marking_geometric_clauses ?? 0,
+      markingContextTokens: finalStats.marking_context_tokens ?? 0,
+      certificatePayloadBytes,
+      retainedFailedTranslationalDomains: 0,
+      transientSearchCacheEntries:
+        (finalStats.generic_failure_memo_states ?? 0)
+        + (finalStats.isohedral_certificate_states_retained ?? 0)
+        + (finalStats.uct_states ?? 0)
+    },
     learnedProgram,
     reusedLearnedPatch: false,
     resultKind: final?.result_kind ?? null,

@@ -142,7 +142,14 @@ assert.match(growthWorkerSource, /id: "free_range"[\s\S]*?label: "Free-range"/);
 assert.match(growthWorkerSource, /id: "gcts"[\s\S]*?label: "GCTS"[\s\S]*?strategy: "free_range"/);
 assert.match(growthWorkerSource, /id: "rl"[\s\S]*?moveOrder: "rl"/);
 assert.match(growthWorkerSource, /id: "gcts_rl"[\s\S]*?moveOrder: "rl"/);
-assert.match(growthWorkerSource, /id: "translational"[\s\S]*?moveOrder: "periodic_agent"/);
+assert.match(growthWorkerSource, /id: "translational"[\s\S]*?moveOrder: "periodic"/);
+assert.match(
+  growthWorkerSource,
+  /agent_policy: \["rl", "gcts_rl"\]\.includes\(mode\.id\) \? "cold_linucb" : null/,
+  "only RL lanes may retain a cold next-placement model"
+);
+assert.match(growthWorkerSource, /agent_ucb_alpha: \["rl", "gcts_rl"\][\s\S]*?\? 0 : null/);
+assert.match(growthWorkerSource, /learned_layer_macro: false/, "RL comparisons must place one tile per action");
 assert.match(growthAppSource, /All six lanes finished\./);
 assert.match(growthAppSource, /positive-control low-copy CEGAR run rejects/);
 assert.match(growthAppSource, /Radius four is still unexhausted/);

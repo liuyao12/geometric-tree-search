@@ -806,6 +806,15 @@ export const createTilingStream = (() => {
       agent_policy: null,
       agent_started_empty: false,
       agent_feature_schema: null,
+      agent_score_calls: 0,
+      agent_score_time_ms: 0,
+      agent_training_updates: 0,
+      agent_training_time_ms: 0,
+      agent_model_dimension: 0,
+      agent_model_weight_count: 0,
+      agent_model_parameter_count: 0,
+      agent_model_payload_bytes: 0,
+      agent_ucb_alpha: null,
       agent_crystal_probe_nodes: 40,
       discrepancy_limit: null,
       discrepancy_prunes: 0,
@@ -824,7 +833,11 @@ export const createTilingStream = (() => {
       isohedral_certificate_patch_size: 0,
       isohedral_certificate_patch_sizes_tried: [],
       isohedral_certificate_duplicate_states_skipped: 0,
+      isohedral_certificate_states_retained: 0,
       isohedral_search_horizon_tiles: null,
+      translational_motif_sizes_attempted: 0,
+      translational_largest_motif_size_attempted: 0,
+      translational_certificate_payload_items: 0,
       learned_layer_macro_enabled: false,
       learned_layer_macro_attempts: 0,
       learned_layer_macro_successes: 0,
@@ -838,6 +851,8 @@ export const createTilingStream = (() => {
       marking_skipped_large_contexts: 0,
       marking_average_context_tiles: 0,
       marking_max_context_tiles: 0,
+      marking_context_tokens: 0,
+      marking_payload_bytes: 0,
       marking_frontier_checks: 0,
       marking_clause_checks: 0,
       marking_avoided_clause_checks: 0,
@@ -2333,6 +2348,8 @@ export const createTilingStream = (() => {
       searchStats.marking_skipped_large_contexts = stats.skipped_large;
       searchStats.marking_average_context_tiles = stats.average_context_tokens;
       searchStats.marking_max_context_tiles = stats.max_context_tokens;
+      searchStats.marking_context_tokens = stats.context_tokens;
+      searchStats.marking_payload_bytes = stats.payload_bytes;
       searchStats.marking_frontier_checks = stats.frontier_checks;
       searchStats.marking_clause_checks = stats.clause_checks;
       searchStats.marking_avoided_clause_checks = stats.avoided_clause_checks;
@@ -3526,16 +3543,73 @@ export const createTilingStream = (() => {
     };
     const rlAgent = (() => {
       const values = new Map();
-      const requestedAgentPolicy = config.agent_policy === "cold_geometry"
-        ? "cold_geometry"
+      let binnedModelPayloadBytes = 0;
+      const requestedAgentPolicy = ["cold_geometry", "cold_linucb"].includes(config.agent_policy)
+        ? config.agent_policy
         : "crystal_probe";
       let selectedPolicy = requestedAgentPolicy;
       searchStats.agent_started_empty = usePolicyAgent;
       searchStats.agent_feature_schema = usePolicyAgent
-        ? selectedPolicy === "cold_geometry"
+        ? selectedPolicy === "cold_geometry" || selectedPolicy === "cold_linucb"
           ? "anonymous_lattice_geometry_v1"
           : "structural_crystal_v1"
         : null;
+      const linUcbVector = features => [
+        1,
+        Math.max(-1, Math.min(1, features.coverage / 6)),
+        features.oldest_layer_completion > 0 ? 1 : 0,
+        -Math.max(0, Math.min(6, features.layer_lag)) / 6,
+        Math.max(0, Math.min(3, features.growth_axis_rank)) / 3,
+        Math.max(0, Math.min(1, features.growth_isotropy)),
+        Math.max(0, Math.min(1, features.growth_planarity)),
+        1 / (1 + Math.max(0, features.growth_max_span)),
+        Math.tanh((features.frontier_faces ?? 0) / 6),
+        Number.isFinite(features.mrv_width) ? 1 / Math.max(1, features.mrv_width) : 0,
+        Math.max(0, Math.min(3, features.periodic_rank)) / 3
+      ];
+      const linUcbDimension = 11;
+      const configuredLinUcbRidge = Number(config.agent_linucb_ridge);
+      const linUcbRidge = Number.isFinite(configuredLinUcbRidge) && configuredLinUcbRidge > 0
+        ? configuredLinUcbRidge
+        : 1;
+      const configuredLinUcbAlpha = Number(config.agent_ucb_alpha);
+      const linUcbAlpha = Number.isFinite(configuredLinUcbAlpha) && configuredLinUcbAlpha >= 0
+        ? configuredLinUcbAlpha
+        : 1;
+      const linUcbInverse = Array.from({ length: linUcbDimension }, (_, row) =>
+        Array.from({ length: linUcbDimension }, (_, column) => row === column ? 1 / linUcbRidge : 0)
+      );
+      const linUcbB = Array(linUcbDimension).fill(0);
+      let linUcbTheta = Array(linUcbDimension).fill(0);
+      if (selectedPolicy === "cold_linucb") {
+        searchStats.agent_model_dimension = linUcbDimension;
+        searchStats.agent_model_weight_count = linUcbDimension;
+        searchStats.agent_model_parameter_count = linUcbDimension * linUcbDimension + 2 * linUcbDimension;
+        searchStats.agent_model_payload_bytes = searchStats.agent_model_parameter_count * 8;
+        searchStats.agent_ucb_alpha = linUcbAlpha;
+      }
+      const matrixVector = (matrix, vector) => matrix.map(row =>
+        row.reduce((sum, value, index) => sum + value * vector[index], 0)
+      );
+      const dot = (left, right) => left.reduce((sum, value, index) => sum + value * right[index], 0);
+      const linUcbScore = features => {
+        const vector = linUcbVector(features);
+        const inverseVector = matrixVector(linUcbInverse, vector);
+        return dot(linUcbTheta, vector)
+          + linUcbAlpha * Math.sqrt(Math.max(0, dot(vector, inverseVector)));
+      };
+      const updateLinUcb = (features, reward) => {
+        const vector = linUcbVector(features);
+        const inverseVector = matrixVector(linUcbInverse, vector);
+        const denominator = 1 + dot(vector, inverseVector);
+        for (let row = 0; row < linUcbDimension; row++) {
+          for (let column = 0; column < linUcbDimension; column++) {
+            linUcbInverse[row][column] -= inverseVector[row] * inverseVector[column] / denominator;
+          }
+          linUcbB[row] += reward * vector[row];
+        }
+        linUcbTheta = matrixVector(linUcbInverse, linUcbB);
+      };
       const tagsFor = (features) => {
         const tags = [];
         if (features.periodic_evidence > 0) tags.push("periodic");
@@ -3598,39 +3672,61 @@ export const createTilingStream = (() => {
         const tags = selectedPolicy === "cold_geometry" ? coldTagsFor(features) : tagsFor(features);
         for (const tag of tags) {
           const current = values.get(tag) ?? { value: 0, count: 0 };
+          if (!values.has(tag)) binnedModelPayloadBytes += tag.length + 16;
           current.count += 1;
           current.value += (reward - current.value) / current.count;
           values.set(tag, current);
         }
         searchStats.agent_learned_tags = values.size;
+        searchStats.agent_model_parameter_count = values.size * 2;
+        searchStats.agent_model_payload_bytes = binnedModelPayloadBytes;
       };
       return {
         usesGlobalProposalScope() {
-          return selectedPolicy === "structural" || selectedPolicy === "cold_geometry";
+          return selectedPolicy === "structural" || selectedPolicy === "cold_geometry" || selectedPolicy === "cold_linucb";
         },
         learnsOnline() {
-          return selectedPolicy === "structural" || selectedPolicy === "cold_geometry";
+          return selectedPolicy === "structural" || selectedPolicy === "cold_geometry" || selectedPolicy === "cold_linucb";
         },
         score(move, option = null) {
+          const scoreStarted = performance.now();
           searchStats.agent_policy ??= selectedPolicy;
           const features = moveAgentFeatures(move, option);
+          searchStats.agent_score_calls += 1;
+          const finishScore = score => {
+            searchStats.agent_score_time_ms += performance.now() - scoreStarted;
+            return score;
+          };
+          if (selectedPolicy === "cold_linucb") {
+            return finishScore([
+              features.oldest_layer_completion,
+              -features.layer_lag,
+              linUcbScore(features),
+              features.coverage,
+              features.growth_axis_rank,
+              features.growth_isotropy,
+              features.growth_planarity,
+              -features.growth_max_span,
+              seededTieValue(anonymousPlacementGeometryKey(move))
+            ]);
+          }
           if (selectedPolicy === "cold_geometry") {
             // This policy has no tile IDs, catalog labels, known motifs, or
             // periodic/isohedral priors.  It starts at zero and only orders the
             // complete action set using rewards observed in this run.  A
             // geometry-only hash makes otherwise equal cold actions repeatable.
-            return [
+            return finishScore([
               features.oldest_layer_completion,
               -features.layer_lag,
-              features.coverage,
               coldLearnedValue(features),
+              features.coverage,
               features.growth_axis_rank,
               features.growth_isotropy,
               features.growth_planarity,
               -features.growth_max_span,
               coldNovelty(features),
               seededTieValue(anonymousPlacementGeometryKey(move))
-            ];
+            ]);
           }
           const learned = learnedValue(features);
           if (selectedPolicy === "crystal_probe" && searchWorkCounter >= 40) {
@@ -3642,7 +3738,7 @@ export const createTilingStream = (() => {
             // Probe the crystal hypothesis first. Continue exploiting it only
             // if it produces rapid concrete growth; otherwise the policy
             // permanently falls back to the general structural learner.
-            return [
+            return finishScore([
               features.periodic_rank_gain,
               features.parallelogram_completion,
               features.vector_repeat,
@@ -3652,13 +3748,13 @@ export const createTilingStream = (() => {
               features.coverage,
               learned,
               seededTieBreaks ? seededTieValue(placementGeometryKey(move)) : 0
-            ];
+            ]);
           }
           // Lexicographic priority: try full-rank periodic evidence first, then
           // build/reuse an isohedral corona. Same-direction vector repetition is
           // useful, but it is deliberately weaker so the agent does not merely
           // grow an infinite one-dimensional stack.
-          return [
+          return finishScore([
             features.periodic_rank_gain,
             features.growth_axis_rank,
             learned,
@@ -3676,9 +3772,10 @@ export const createTilingStream = (() => {
             features.linear_repeat * 0.1,
             Number.isFinite(features.mrv_width) ? -features.mrv_width : -1e9,
             seededTieBreaks ? seededTieValue(placementGeometryKey(move)) : 0
-          ];
+          ]);
         },
         observe(move, outcome) {
+          const trainingStarted = performance.now();
           const features = move._agent_proposal_features ?? moveAgentFeatures(move);
           const startTiles = Math.max(1, outcome?.start_tiles ?? state.placements.length - 1);
           const peakTiles = Math.max(startTiles, outcome?.peak_tiles ?? startTiles);
@@ -3688,7 +3785,10 @@ export const createTilingStream = (() => {
             : growth > 0
               ? Math.tanh(growth / 4)
               : outcome?.incomplete ? 0 : -0.25;
-          updateMarks(features, reward);
+          if (selectedPolicy === "cold_linucb") updateLinUcb(features, reward);
+          else updateMarks(features, reward);
+          searchStats.agent_training_updates += 1;
+          searchStats.agent_training_time_ms += performance.now() - trainingStarted;
           searchStats.agent_observations += 1;
           if (!outcome?.success && !outcome?.incomplete) searchStats.agent_resolved_failures += 1;
           if (outcome?.incomplete) searchStats.agent_incomplete_observations += 1;
@@ -4658,6 +4758,11 @@ export const createTilingStream = (() => {
           : Math.max(1, Math.floor(+config.periodic_tile_count || 2));
       for (let patchSize = 1; !template && patchSize <= maximumPatchSize && !overBudget(); patchSize++) {
         if (performance.now() >= discoveryDeadline) break;
+        searchStats.translational_motif_sizes_attempted += 1;
+        searchStats.translational_largest_motif_size_attempted = Math.max(
+          searchStats.translational_largest_motif_size_attempted,
+          patchSize
+        );
         yield nodeStatus(
           parentId,
           "working",
@@ -4725,6 +4830,8 @@ export const createTilingStream = (() => {
         period_vectors: template.period_vectors?.map(vector => vector.slice()) ?? [],
         periodic_template: template
       };
+      searchStats.translational_certificate_payload_items =
+        (template.motif?.length ?? 0) + (template.period_vectors?.length ?? 0);
       const cells = periodicTemplateCells(template);
       const existing = new Set(state.placements.map(placement => placementGeometryKey(placement)));
       const candidatesByFace = new Map();
@@ -5528,6 +5635,7 @@ export const createTilingStream = (() => {
         return null;
       }
       isohedralCertificateStatesTried.add(stateKey);
+      searchStats.isohedral_certificate_states_retained = isohedralCertificateStatesTried.size;
       isohedralLargestCertificatePatchTried = Math.max(
         isohedralLargestCertificatePatchTried,
         state.placements.length

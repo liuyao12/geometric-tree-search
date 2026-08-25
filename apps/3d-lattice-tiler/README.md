@@ -38,11 +38,20 @@ independent workers:
    point, so a translated recurrence is rejected by geometric overlap. Nothing
    is loaded from the catalog or a previous run.
 3. **RL** searches the same complete lattice-point branches as free-range but
-   orders them with a cold online learner. Its value table starts empty on
-   every run. Features are anonymous, symmetry-invariant lattice geometry
-   bands (frontier generation, coverage, frontier change, branching width,
-   and patch shape); they contain no tile ID, catalog label, known motif, or
-   periodic/isohedral feature. RL never removes a legal action.
+   orders them with a cold greedy linear contextual-return learner. Its
+   11-dimensional weights start at zero with an identity ridge matrix on every
+   run.
+   Features are anonymous, symmetry-invariant lattice geometry (frontier
+   generation, coverage, frontier change, branching width, and patch shape);
+   they contain no tile ID, catalog label, known motif, or
+   supplied periodic/isohedral witness. The learner estimates the return from
+   each next legal placement by online ridge regression. An optimistic UCB
+   bonus is deliberately zero: in a single exhaustive tree, exploratory bad
+   ordering costs wall time without producing reusable cross-tile knowledge.
+   RL never removes a legal action and
+   every action places exactly one tile: motif-macro discovery and replay are
+   disabled, so periodic, isohedral, and larger recurring clusters must emerge
+   as sequences of next-placement predictions.
 4. **GCTS + RL** uses exactly the RL action order and adds the same sound
    geometric-failure pruning as GCTS. This isolates the interaction between
    learned ordering and learned exact failure markings.
@@ -89,6 +98,46 @@ restores the root view; its current finite growth horizon is not a proof that
 no tile-transitive quotient exists. An uncertified translational search
 continues increasing the motif size until certified, stopped, or limited by an
 explicit search cap, and every such finite cutoff is likewise inconclusive.
+
+Wall-clock results include the learner's feature scoring and every online
+update; those times are also reported separately rather than treating training
+as free. Each result reports retained knowledge independently from transient
+search memory. RL records its model parameters and a deterministic payload-byte
+lower bound, GCTS records marking clauses, context tokens, and payload bytes,
+and GCTS + RL reports their sum. The translational lane retains no rejected
+domains between motif sizes (zero persistent negative knowledge), but reports a
+successful certificate payload. Isohedral retains no learned weights or
+markings; its duplicate-certificate-state set and the exact-search failure memo
+are counted as transient cache entries. JavaScript object/container overhead is
+not included in payload bytes, so cache entry counts remain separate instead of
+pretending to be precise heap measurements.
+
+The cold policy selection compared the original binned return table with
+greedy linear regression and LinUCB exploration bonuses from 0.05 through 2.
+The six-case 20-second head-to-head gave the binned and greedy-linear policies
+the same one shell-2 completion, median completed shell, median live patch, and
+median node count. Greedy linear used 756 ms total learner time versus 775 ms,
+100.745 s total wall time versus 100.760 s, and a fixed 1,144-byte numeric
+payload; the binned table grew as high as 1,811 bytes. Five-seed periodic
+controls also completed shell 2 in all runs, with 495 ms versus 522 ms median
+wall time. The fixed greedy linear model is therefore selected on bounded
+memory and marginal overhead, not on an unsupported claim of a large depth
+gain. The raw selection report is
+[`data/lattice-rl-policy-selection-2026-08-24.json`](../../data/lattice-rl-policy-selection-2026-08-24.json),
+and the six-lane shell/memory snapshot is
+[`data/lattice-six-lane-shell-memory-2026-08-24.json`](../../data/lattice-six-lane-shell-memory-2026-08-24.json).
+The paired RL/GCTS+RL marking-memory run is
+[`data/lattice-gcts-rl-memory-2026-08-24.json`](../../data/lattice-gcts-rl-memory-2026-08-24.json).
+
+The design follows the shared-feature action-pool motivation of
+[LinUCB](https://arxiv.org/abs/1003.0146). UCT was retained as a headless
+research policy but not selected: it pays a state/action table for repeated
+rollouts through a tree whose exact tiling states are mostly visited once.
+[NeuralUCB](https://proceedings.mlr.press/v119/zhou20a.html) adds representation
+training and a much larger cold model before these runs supply enough feedback
+to justify it. Optimistic exploration was also counterproductive here because
+the comparison charges the bad exploratory ordering and has no cross-tile
+pretraining to amortize it.
 
 The first cold five-second comparison on hard cases `10_16113`, `10_45026`,
 `10_45033`, and `9_11683` used three seeds per general-search lane and an
