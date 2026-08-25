@@ -4347,3 +4347,29 @@ kinetic morphology map, free-energy surface, Bayesian posterior, or parameter
 fit. The receipt records all 25 multiplier pairs, winner action/digest, score,
 runner-up margin, axes and their selection rule, plus explicit invariants that
 the candidate set, hard admission, geometry, and executed trace were unchanged.
+
+### Candidate-resolved geometric driving field
+
+The policy workbench also projects any selected ledger term back onto every
+hard-admitted attachment site in the 3D material scene. Each point is the exact
+candidate pose already present in the frozen frontier. Coral suppresses rank,
+violet is near zero, and mint favors rank; two wire halos locate the most
+suppressive and most favorable candidates. Color uses the signed contribution
+after the current workbench multiplier, divided symmetrically by the maximum
+absolute contribution on that frontier. No new site or interpolated voxel is
+created.
+
+A compact selector exposes every ledger channel, the readout reports negative,
+neutral, and positive candidate counts, and two buttons preview the spatial
+extremes as exact cluster poses. The overlay can coexist with the ordinary
+frontier and selected-action preview, and its point cloud is held fixed in the
+material frame rather than rotating as a decorative glyph. Selecting the
+known-window replay term is explicitly recorded as reference-guided; all other
+channels retain their declared target-use status.
+
+This is a discrete spatial visualization of a ranking surrogate—not a force,
+potential-energy, chemical-potential, concentration, temperature, stress,
+probability, or continuous driving field. Receipt records include the term,
+multiplier, normalization, signed range, counts, every candidate digest and
+contribution, and explicit invariants that geometry, admission, execution, and
+continuity inference remain unchanged or false.

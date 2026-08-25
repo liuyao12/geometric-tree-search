@@ -873,6 +873,13 @@
                 <div id="policyPhaseMap" class="policy-phase-map" role="group" aria-label="Click a hypothesis-weight cell to preview its winning action"></div>
                 <p>Each cell re-ranks the same hard-admitted candidate set at ×0…×2 declared weight. Color denotes the winning exact action; brightness denotes its margin over the runner-up.</p>
               </section>
+              <section class="policy-spatial-field-card" aria-label="Spatial geometric driving field">
+                <header><span><small>candidate-resolved spatial field</small><strong>Where does this hypothesis act?</strong></span><b id="policySpatialFieldState">awaiting a frozen frontier</b></header>
+                <div class="policy-spatial-controls"><label>score term<select id="policySpatialTerm" aria-label="Spatial score term"></select></label><button id="policySpatialToggle" type="button" aria-pressed="false" disabled>Show in 3D</button></div>
+                <div class="policy-spatial-legend"><span><i class="negative"></i>suppresses rank</span><span><i class="neutral"></i>neutral</span><span><i class="positive"></i>favors rank</span></div>
+                <div id="policySpatialExtremes" class="policy-spatial-extremes" aria-label="Preview strongest spatial field candidates"></div>
+                <p>Discrete candidate sites are colored by their signed ledger contribution, normalized symmetrically within this one frontier. This is not a continuous force, energy, concentration, or probability field.</p>
+              </section>
               <div class="policy-sensitivity-heading"><small>pathway sensitivity</small><strong id="policySensitivityState">no evaluated frontiers</strong></div>
               <div id="policyHistory" class="policy-history" role="group" aria-label="Inspect policy disagreement on recent frozen frontiers"></div>
               <p id="policyPreviewState">Select a policy row to preview its winner in the 3D scene.</p>
@@ -1347,7 +1354,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-117"></script>
+  <script type="module" src="./app.js?v=20260825-118"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

@@ -286,6 +286,10 @@ const policyPhaseMapState = $("policyPhaseMapState");
 const policyPhaseX = $("policyPhaseX");
 const policyPhaseY = $("policyPhaseY");
 const policyPhaseMap = $("policyPhaseMap");
+const policySpatialFieldState = $("policySpatialFieldState");
+const policySpatialTerm = $("policySpatialTerm");
+const policySpatialToggle = $("policySpatialToggle");
+const policySpatialExtremes = $("policySpatialExtremes");
 const policySensitivityState = $("policySensitivityState");
 const policyHistoryElement = $("policyHistory");
 const policyPreviewState = $("policyPreviewState");
@@ -6131,7 +6135,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-117",
+      buildId: "20260825-118",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7096,6 +7100,32 @@ async function buildExperimentReceipt() {
                 runnerUpMargin: receiptRound(cell.margin),
                 baseline: cell.baseline,
               })),
+            } : null;
+          })(),
+          spatialDrivingField: (() => {
+            const field = buildPolicySpatialField(snapshot);
+            return field ? {
+              role: "candidate-resolved signed contribution overlay over one unchanged hard-admitted frontier",
+              term: { id: field.termId, label: field.termLabel, multiplier: field.multiplier },
+              visibleIn3D: field.visible,
+              normalization: "signed contribution divided by maximum absolute contribution on this frontier",
+              minimumContribution: receiptRound(field.minimumContribution),
+              maximumContribution: receiptRound(field.maximumContribution),
+              maximumAbsoluteContribution: receiptRound(field.maximumAbsoluteContribution),
+              negativeCandidates: field.negativeCandidates,
+              neutralCandidates: field.neutralCandidates,
+              positiveCandidates: field.positiveCandidates,
+              candidateSetDigest: field.candidateSetDigest,
+              candidateSetChanged: field.candidateSetChanged,
+              hardAdmissionChanged: field.hardAdmissionChanged,
+              candidateGeometryChanged: field.candidateGeometryChanged,
+              continuousFieldInferred: field.continuousFieldInferred,
+              targetUsed: field.targetUsed,
+              executed: field.executed,
+              candidateCoordinatesEmbedded: false,
+              samples: field.points.map((point) => ({ candidateDigest: point.candidateDigest,
+                action: point.action, contribution: receiptRound(point.contribution),
+                normalizedContribution: receiptRound(point.normalizedContribution) })),
             } : null;
           })(),
           policies: snapshot.policies.map((policy) => ({
@@ -9350,6 +9380,62 @@ function buildPolicyPhaseMap(snapshot) {
     selectedAxesIncludeReferenceGuidedTerm: snapshot.rankingTargetUsed && [x, y].includes("known-window-gain"),
     rankingTargetUsed: snapshot.rankingTargetUsed,
     executed: false, selectionRule: snapshot.phaseMapAxes.selectionRule };
+}
+
+function buildPolicySpatialField(snapshot) {
+  if (!snapshot?.workbenchCandidates?.length) return null;
+  snapshot.phaseMapAxes ||= defaultPolicyPhaseAxes(snapshot);
+  snapshot.spatialTermId ||= snapshot.phaseMapAxes.x;
+  const termId = snapshot.spatialTermId;
+  const firstTerm = snapshot.workbenchCandidates[0].scoreTerms.find((term) => term.id === termId);
+  if (!firstTerm) return null;
+  const multiplier = workbenchMultiplier(snapshot, termId);
+  const points = snapshot.workbenchCandidates.map((candidate) => {
+    const term = candidate.scoreTerms.find((candidateTerm) => candidateTerm.id === termId);
+    const contribution = (term?.contribution || 0) * multiplier;
+    return { candidateKey: candidate.candidateKey, candidateDigest: candidate.candidateDigest,
+      action: candidate.action, p: candidate.preview.p, rotation: candidate.preview.rotation,
+      type: candidate.preview.type, contribution };
+  }).sort((first, second) => first.candidateKey.localeCompare(second.candidateKey));
+  const maximumAbsolute = Math.max(1e-12, ...points.map((point) => Math.abs(point.contribution)));
+  points.forEach((point) => { point.normalizedContribution = point.contribution / maximumAbsolute; });
+  const ranked = [...points].sort((first, second) => first.contribution - second.contribution
+    || first.candidateKey.localeCompare(second.candidateKey));
+  const epsilon = maximumAbsolute * 1e-9;
+  return { termId, termLabel: firstTerm.label, multiplier, points,
+    minimum: ranked[0], maximum: ranked.at(-1),
+    minimumContribution: ranked[0].contribution, maximumContribution: ranked.at(-1).contribution,
+    maximumAbsoluteContribution: maximumAbsolute,
+    negativeCandidates: points.filter((point) => point.contribution < -epsilon).length,
+    neutralCandidates: points.filter((point) => Math.abs(point.contribution) <= epsilon).length,
+    positiveCandidates: points.filter((point) => point.contribution > epsilon).length,
+    visible: Boolean(snapshot.spatialFieldVisible), candidateSetDigest: snapshot.candidateDigest,
+    candidateSetChanged: false, hardAdmissionChanged: false, candidateGeometryChanged: false,
+    continuousFieldInferred: false, targetUsed: snapshot.rankingTargetUsed && termId === "known-window-gain",
+    executed: false };
+}
+
+function buildPolicySpatialPreview(snapshot) {
+  const field = buildPolicySpatialField(snapshot);
+  const point = field?.points.find((candidate) => candidate.candidateKey === snapshot.spatialPreviewCandidateKey);
+  const candidate = snapshot?.workbenchCandidates?.find((entry) => entry.candidateKey === point?.candidateKey);
+  if (!field || !point || !candidate) return null;
+  const scoreTerms = candidate.scoreTerms.map((term) => {
+    const multiplier = workbenchMultiplier(snapshot, term.id);
+    return { ...term, baselineWeight: term.weight, baselineContribution: term.contribution,
+      multiplier, weight: term.weight * multiplier, contribution: term.contribution * multiplier };
+  });
+  const score = scoreTerms.reduce((sum, term) => sum + term.contribution, 0);
+  return { id: "spatial", label: `${field.termLabel} spatial probe`, action: candidate.action,
+    candidateKey: candidate.candidateKey, candidateDigest: candidate.candidateDigest,
+    score, scoreTerms, scoreTermTotal: score, scoreDecompositionExact: true,
+    preview: candidate.preview, contribution: point.contribution, candidateSetDigest: field.candidateSetDigest,
+    candidateSetChanged: false, hardAdmissionChanged: false, executed: false };
+}
+
+function activePolicySpatialField() {
+  if (pipelineStage !== 4 || iceAnchorTrace) return null;
+  return buildPolicySpatialField(policyComparisonHistory[selectedPolicySnapshotIndex] || lastPolicyComparison);
 }
 
 function buildPolicyWorkbench(snapshot) {
@@ -12708,6 +12794,27 @@ function rebuildWorld() {
     frontierMetric.textContent = String(targets.length);
   }
 
+  const spatialField = activePolicySpatialField();
+  if (spatialField?.visible && spatialField.points.length) {
+    const geometry = new THREE.BufferGeometry().setFromPoints(spatialField.points.map((point) => point.p));
+    const neutral = new THREE.Color(0xb594ff); const positive = new THREE.Color(0x65e1bc);
+    const negative = new THREE.Color(0xff756f); const colors = [];
+    spatialField.points.forEach((point) => {
+      const color = neutral.clone().lerp(point.normalizedContribution >= 0 ? positive : negative,
+        Math.min(1, Math.abs(point.normalizedContribution)));
+      colors.push(color.r, color.g, color.b);
+    });
+    geometry.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3));
+    const points = new THREE.Points(geometry, new THREE.PointsMaterial({ vertexColors: true,
+      size: .15, transparent: true, opacity: .9, sizeAttenuation: true, depthWrite: false }));
+    points.userData.staticSpatialField = true; decisionGroup.add(points);
+    [[spatialField.minimum, 0xff756f], [spatialField.maximum, 0x65e1bc]].forEach(([extreme, color]) => {
+      const halo = new THREE.Mesh(new THREE.IcosahedronGeometry(.28, 1),
+        new THREE.MeshBasicMaterial({ color, wireframe: true, transparent: true, opacity: .64, depthWrite: false }));
+      halo.position.copy(extreme.p); halo.userData.staticSpatialField = true; decisionGroup.add(halo);
+    });
+  }
+
   currentCandidates.forEach((candidate, candidateIndex) => {
     const mesh = new THREE.Mesh(candidateGeometry, candidate.accepted ? candidateMaterial : rejectedMaterial);
     mesh.position.copy(candidate.p);
@@ -12956,10 +13063,10 @@ function physicsTranslationRecords(leap = null) {
       boundary: "A GCTS marking represents compatibility of overlapping cluster sections. It is not an interatomic potential or a calibrated attachment free energy." },
     { id: "score-ledger", process: "growth-action driving / competing physical hypotheses", status: lastPolicyComparison ? "explicit" : "unavailable", role: lastPolicyComparison ? "exact signed rank decomposition" : "awaiting first evaluated frontier",
       encoding: lastPolicyComparison
-        ? `${lastPolicyComparison.policies.find((policy) => policy.id === "active")?.scoreTerms.length || 0} raw descriptor × declared weight terms plus a 5×5 two-hypothesis decision map over one unchanged frozen candidate set`
+        ? `${lastPolicyComparison.policies.find((policy) => policy.id === "active")?.scoreTerms.length || 0} raw descriptor × declared weight terms, a 5×5 two-hypothesis decision map, and one candidate-resolved signed spatial overlay over an unchanged frozen candidate set`
         : "no frontier score has been decomposed",
       evidence: lastPolicyComparison
-        ? `${lastPolicyComparison.everyScoreDecompositionExact ? "Every" : "Not every"} counterfactual winner exactly reconciles Σ contributions with its displayed score; ${buildPolicyPhaseMap(lastPolicyComparison)?.basinCount || 0} attachment-action basins across 25 exact re-ranks; frontier digest ${lastPolicyComparison.candidateDigest}.`
+        ? `${lastPolicyComparison.everyScoreDecompositionExact ? "Every" : "Not every"} counterfactual winner exactly reconciles Σ contributions with its displayed score; ${buildPolicyPhaseMap(lastPolicyComparison)?.basinCount || 0} attachment-action basins across 25 exact re-ranks; ${buildPolicySpatialField(lastPolicyComparison)?.points.length || 0} spatial candidate samples; frontier digest ${lastPolicyComparison.candidateDigest}.`
         : "Advance one material-growth update to create the ledger.",
       boundary: "Ledger terms are dimensionless geometric ranking hypotheses. They are not commensurate physical energies, forces, probabilities, rates, or a fitted thermodynamic free-energy functional." },
     { id: "chemistry", process: "multicomponent reservoir / charge bookkeeping", status: chemistryTerms.length ? "soft" : "open", role: chemistryTerms.length ? "target-blind soft ordering" : "available but disabled",
@@ -13847,6 +13954,50 @@ function renderPolicyPhaseMap(snapshot) {
   });
 }
 
+function selectPolicySpatialTerm(snapshot, termId) {
+  snapshot.spatialTermId = termId;
+  snapshot.spatialPreviewCandidateKey = null;
+  if (snapshot.spatialFieldVisible) rebuildWorld();
+  renderPolicyComparison();
+}
+
+function previewPolicySpatialCandidate(snapshot, candidateKey) {
+  snapshot.spatialPreviewCandidateKey = candidateKey;
+  selectedPolicyPreviewId = "spatial";
+  previewPolicyWinner(buildPolicySpatialPreview(snapshot), snapshot);
+}
+
+function renderPolicySpatialField(snapshot) {
+  policySpatialTerm.replaceChildren(); policySpatialExtremes.replaceChildren();
+  const field = buildPolicySpatialField(snapshot);
+  if (!field) {
+    policySpatialFieldState.textContent = "awaiting a frozen frontier";
+    policySpatialTerm.disabled = true; policySpatialToggle.disabled = true;
+    policySpatialToggle.setAttribute("aria-pressed", "false"); policySpatialToggle.textContent = "Show in 3D";
+    return;
+  }
+  policySpatialTerm.disabled = false; policySpatialToggle.disabled = false;
+  snapshot.workbenchCandidates[0].scoreTerms.forEach((term) => {
+    const option = document.createElement("option"); option.value = term.id; option.textContent = term.label;
+    option.selected = term.id === field.termId; policySpatialTerm.append(option);
+  });
+  policySpatialTerm.onchange = () => selectPolicySpatialTerm(snapshot, policySpatialTerm.value);
+  policySpatialToggle.setAttribute("aria-pressed", String(field.visible));
+  policySpatialToggle.textContent = field.visible ? "Hide 3D field" : "Show in 3D";
+  policySpatialToggle.onclick = () => {
+    snapshot.spatialFieldVisible = !snapshot.spatialFieldVisible;
+    rebuildWorld(); renderPolicySpatialField(snapshot);
+  };
+  policySpatialFieldState.textContent = `${field.negativeCandidates}− · ${field.neutralCandidates}≈0 · ${field.positiveCandidates}+ · ×${field.multiplier}`;
+  [[field.minimum, "most suppressive"], [field.maximum, "most favorable"]].forEach(([point, label]) => {
+    const button = document.createElement("button"); button.type = "button";
+    button.textContent = `${label} · ${point.action} · ${point.contribution >= 0 ? "+" : ""}${point.contribution.toFixed(3)}`;
+    button.title = `${field.termLabel}; candidate ${point.candidateDigest}; frontier ${field.candidateSetDigest}; preview only`;
+    button.addEventListener("click", () => previewPolicySpatialCandidate(snapshot, point.candidateKey));
+    policySpatialExtremes.append(button);
+  });
+}
+
 function renderPolicyWorkbenchState(snapshot, workbench = buildPolicyWorkbench(snapshot)) {
   if (!snapshot || !workbench) {
     policyWorkbenchState.textContent = "awaiting a frozen frontier";
@@ -13901,6 +14052,7 @@ function renderPolicyComparison() {
     policyPreviewState.textContent = "Select a policy row during material growth.";
     renderPolicyScoreLedger(null);
     renderPolicyPhaseMap(null);
+    renderPolicySpatialField(null);
     return;
   }
   if (iceAnchorTrace) {
@@ -13914,6 +14066,7 @@ function renderPolicyComparison() {
     policyPreviewState.textContent = `${iceAnchorTrace.selectionRuleLabel} is the only certified molecular-anchor policy in this trace.`;
     renderPolicyScoreLedger(null);
     renderPolicyPhaseMap(null);
+    renderPolicySpatialField(null);
     return;
   }
   if (!lastPolicyComparison) {
@@ -13927,10 +14080,12 @@ function renderPolicyComparison() {
     policyPreviewState.textContent = "Select a policy row after the first frontier is frozen.";
     renderPolicyScoreLedger(null);
     renderPolicyPhaseMap(null);
+    renderPolicySpatialField(null);
     return;
   }
   const snapshot = policyComparisonHistory[selectedPolicySnapshotIndex] || lastPolicyComparison;
   const workbench = buildPolicyWorkbench(snapshot);
+  const spatialPreview = buildPolicySpatialPreview(snapshot);
   policyComparisonState.textContent = `${snapshot.frontier} candidates · ${snapshot.admissible} admitted · ${snapshot.uniqueTopActions} winner${snapshot.uniqueTopActions === 1 ? "" : "s"}`
     + `${snapshot.referenceGuided ? " · target-aware replay" : " · target-blind frontier"}`;
   snapshot.policies.forEach((policy) => {
@@ -13955,11 +14110,24 @@ function renderPolicyComparison() {
     row.append(label, action, score); policyComparison.append(row);
     row.addEventListener("click", () => previewPolicyWinner(workbench, snapshot));
   }
+  if (spatialPreview) {
+    const row = document.createElement("button"); row.type = "button";
+    row.classList.toggle("active", selectedPolicyPreviewId === "spatial");
+    row.setAttribute("aria-pressed", String(selectedPolicyPreviewId === "spatial"));
+    row.title = "Preview this candidate-resolved spatial-field extreme; this never executes";
+    const label = document.createElement("small"); label.textContent = spatialPreview.label;
+    const action = document.createElement("strong"); action.textContent = spatialPreview.action;
+    const score = document.createElement("em"); score.textContent = spatialPreview.contribution.toFixed(3);
+    row.append(label, action, score); policyComparison.append(row);
+    row.addEventListener("click", () => previewPolicyWinner(spatialPreview, snapshot));
+  }
   const selectedScorePolicy = selectedPolicyPreviewId === "workbench" ? workbench
+    : selectedPolicyPreviewId === "spatial" && spatialPreview ? spatialPreview
     : snapshot.policies.find((policy) => policy.id === selectedPolicyPreviewId)
       || snapshot.policies.find((policy) => policy.id === "active") || snapshot.policies.at(-1);
   renderPolicyScoreLedger(selectedScorePolicy, snapshot);
   renderPolicyPhaseMap(snapshot);
+  renderPolicySpatialField(snapshot);
   const sensitive = policyComparisonHistory.filter((entry) => entry.uniqueTopActions > 1).length;
   const meanWinners = policyComparisonHistory.reduce((sum, entry) => sum + entry.uniqueTopActions, 0)
     / Math.max(1, policyComparisonHistory.length);
@@ -13981,10 +14149,11 @@ function renderPolicyComparison() {
     policyHistoryElement.append(button);
   });
   const selectedPolicy = selectedPolicyPreviewId === "workbench" ? workbench
+    : selectedPolicyPreviewId === "spatial" && spatialPreview ? spatialPreview
     : snapshot.policies.find((policy) => policy.id === selectedPolicyPreviewId) || snapshot.policies.at(-1);
   policyPreviewState.textContent = `${selectedPolicy.label}: ${selectedPolicy.action} · frontier ${snapshot.candidateDigest} · candidate set target-free`
     + `${snapshot.rankingTargetUsed ? " · replay score reference-guided" : " · ranking target-free"}`
-    + `${selectedPolicy.id === "workbench" ? " · counterfactual preview only · not executed" : ""}`;
+    + `${["workbench", "spatial"].includes(selectedPolicy.id) ? " · counterfactual preview only · not executed" : ""}`;
 }
 
 function liveGrowthCertificate() {
@@ -15364,6 +15533,7 @@ function animate(now) {
     }
   } else eventAccumulator = 0;
   if (currentCandidates.length) decisionGroup.children.forEach((child, index) => {
+    if (child.userData.staticSpatialField) return;
     if (index % (markingToggle.checked ? 2 : 1) !== 0) return;
     child.rotation.y += delta * 1.8;
     child.rotation.x += delta * .7;
