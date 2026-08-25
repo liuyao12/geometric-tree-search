@@ -21,7 +21,7 @@ def test_trajectory_ensemble_keeps_evidence_and_growth_domains_separate() -> Non
     assert 'id="loadEnsembleFixtureButton"' in html
     assert 'value="all" selected' in html
     assert 'value="selected"' in html
-    assert 'app.js?v=20260825-101' in html
+    assert 'app.js?v=20260825-102' in html
 
     assert "function parseXyzFrame" in io
     assert "function jsonFrameRecord" in io

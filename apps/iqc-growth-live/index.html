@@ -502,6 +502,23 @@
                 <option value="0.48">0.48 · strong</option>
               </select>
             </label>
+            <label class="field" for="habitAnisotropySelect">
+              <span>Local habit anisotropy <b id="habitAnisotropyHint">off · 12-axis atlas reported</b></span>
+              <select id="habitAnisotropySelect">
+                <option value="none" selected>Off · report learned habit</option>
+                <option value="faceted">Observed-axis faceting</option>
+                <option value="roughening">Rare-axis roughening</option>
+                <option value="axial">Dominant-axis elongation</option>
+              </select>
+            </label>
+            <label class="field" for="habitAnisotropyWeightSelect">
+              <span>Habit weight <b>soft parent-local rank</b></span>
+              <select id="habitAnisotropyWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
             <label class="field" for="frontMorphologySelect">
               <span>Mesoscopic front morphology <b id="frontMorphologyHint">neutral · diagnostic</b></span>
               <select id="frontMorphologySelect">
@@ -1207,7 +1224,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-101"></script>
+  <script type="module" src="./app.js?v=20260825-102"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

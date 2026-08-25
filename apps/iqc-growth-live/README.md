@@ -4039,3 +4039,28 @@ The portal does not infer an activation barrier, sticking or attachment
 coefficient, ledge free energy, 2D nucleation barrier, atomistic trajectory,
 growth rate, or elapsed physical time. The receipt retains the classification
 rule, neighborhood work, accepted/rejected scores, and every non-claim.
+
+## Training-only local habit atlas
+
+The portal now separates **orientation-dependent habit geometry** from both a
+global driving direction and the local terrace/step/kink classifier. Every
+recurring frozen connection rule contributes its parent-local translation
+direction to one of twelve equal icosahedral axes. Only the rule's training
+`fitCount` is accumulated; held-out support is explicitly excluded. The live
+candidate reads this atlas in the placed parent's transported proper-rotation
+frame, so a rigid rotation of the whole experiment rotates the spokes and
+preserves the score.
+
+Three counterfactual rankings are available: favor the most frequently
+observed axes as a faceting hypothesis, favor rare axes as a roughening
+hypothesis, or favor the single dominant local axis as an elongation
+hypothesis. A gold polar star around each displayed candidate shows every
+supported direction and its relative count. The receipt records the full
+twelve-bin vector, directional entropy, selected and dominant axes, work, and
+accepted/rejected means. Rules with no training-supported atlas fail neutral at
+score zero.
+
+This atlas is a frequency summary of observed connection geometry, not surface
+free energy, a Wulff construction, Miller-index assignment, equilibrium habit,
+kinetic attachment coefficient, or growth rate. It ranks an identical frozen
+candidate set and cannot authorize a pose or alter emitted coordinates.
