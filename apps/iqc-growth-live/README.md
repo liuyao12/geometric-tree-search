@@ -4139,3 +4139,29 @@ potential, electric field in physical units, dielectric screening, polarization,
 charge transfer, redox chemistry, force, mobility, rate, or physical time. The
 receipt records availability, reach, raw pair and field descriptors, work, and
 every non-claim.
+
+## Progressive growth-physics controls
+
+The material-growth stage exposes a large set of independent, falsifiable
+geometric hypotheses. To keep that scientific breadth navigable, the controls
+are organized into five native, keyboard-accessible disclosure groups:
+
+1. **GCTS marking & local strain** selects the learned connection section,
+   single-mark versus library-portfolio use, and strain ordering.
+2. **Composition & supplied charge** contains reservoir balance, solute
+   partition, formal-charge bookkeeping, and finite charge-neighborhood geometry.
+3. **Attachment, coherency & morphology** contains surface completion,
+   bulk–surface competition, attachment topology, habit, defect precursors,
+   accepted-history coherency, front shape, capillarity, and epitaxy.
+4. **Loading & mesoscopic compatibility** contains directional and thermal
+   fields, affine loading, uncertainty margin, microstructure, and loop closure.
+5. **Transport, nuclei & tree search** contains arrival and exposure geometry,
+   commuting versus serial scheduling, nucleation choices, pathway exploration,
+   and clusters-of-clusters promotion.
+
+Only the search core opens initially; every collapsed heading retains a live
+summary of how many hypotheses are active. Experiment protocols update those
+summaries immediately. “Expand all physics” supports detailed audit, while
+“Collapse to overview” returns to a compact comparison view. Disclosure changes
+presentation only: all original control identities, candidate geometry, search
+semantics, and receipt fields remain unchanged.

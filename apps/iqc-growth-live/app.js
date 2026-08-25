@@ -147,6 +147,13 @@ const growthSearchOptions = $("growthSearchOptions");
 const growthProtocolSelect = $("growthProtocolSelect");
 const growthProtocolHint = $("growthProtocolHint");
 const growthProtocolSummary = $("growthProtocolSummary");
+const growthCoreGroupState = $("growthCoreGroupState");
+const growthChemistryGroupState = $("growthChemistryGroupState");
+const growthInterfaceGroupState = $("growthInterfaceGroupState");
+const growthFieldsGroupState = $("growthFieldsGroupState");
+const growthExecutionGroupState = $("growthExecutionGroupState");
+const expandGrowthGroupsButton = $("expandGrowthGroupsButton");
+const collapseGrowthGroupsButton = $("collapseGrowthGroupsButton");
 const markingChannelsSelect = $("markingChannelsSelect");
 const markingChannelsHint = $("markingChannelsHint");
 const markingReachSelect = $("markingReachSelect");
@@ -5795,7 +5802,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-105",
+      buildId: "20260825-106",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -10242,6 +10249,26 @@ function renderGrowthProtocolSummary() {
   span.append(title, copy); growthProtocolSummary.replaceChildren(span);
 }
 
+function renderGrowthControlGroupSummaries() {
+  const activeCount = (items) => items.filter(Boolean).length;
+  growthCoreGroupState.textContent = `${markingSearchMode === "portfolio" ? "portfolio" : "single mark"} · ${geometryPreference === "strain" ? `strain ${geometricStrainWeight.toFixed(2)}` : "strain off"}`;
+  const chemistryActive = activeCount([activeCompositionBalanceWeight() > 0,
+    activeSolutePartitionWeight() > 0, activeFormalChargeWeight() > 0, activeChargeGeometryWeight() > 0]);
+  growthChemistryGroupState.textContent = `${chemistryActive}/4 active${formalChargeTarget?.available ? " · charge supplied" : ""}`;
+  const interfaceActive = activeCount([activeSurfaceCompletionWeight() > 0, activeGrowthDrivingWeight() > 0,
+    activeAttachmentTopologyWeight() > 0, activeHabitAnisotropyWeight() > 0,
+    activeDefectPrecursorWeight() > 0, activeCoherencyMemoryWeight() > 0,
+    activeFrontMorphologyWeight() > 0, activeCapillaryGeometryWeight() > 0, activeEpitaxyWeight() > 0]);
+  growthInterfaceGroupState.textContent = `${interfaceActive}/9 active`;
+  const fieldsActive = activeCount([activeExternalDriveWeight() > 0, activeThermalFieldWeight() > 0,
+    affineLoadMode !== "none", activeRobustnessWeight() > 0,
+    activeMicrostructureCouplingWeight() > 0, activeLoopClosureWeight() > 0]);
+  growthFieldsGroupState.textContent = `${fieldsActive}/6 active`;
+  const executionActive = activeCount([activeArrivalPathWeight() > 0, activeFeedExposureWeight() > 0,
+    geometricExplorationScale > 0, initializedGrowthNuclei > 1, hierarchyEnabled]);
+  growthExecutionGroupState.textContent = `${executionActive}/5 active · ${growthScheduling}`;
+}
+
 function applyGrowthProtocol(mode) {
   const protocol = GROWTH_PROTOCOLS[mode];
   if (!protocol) {
@@ -10402,6 +10429,7 @@ function syncStageOptions() {
   } else {
     renderMarkingLibrary();
     renderGrowthProtocolSummary();
+    renderGrowthControlGroupSummaries();
     markingSearchModeSelect.value = markingSearchMode;
     const active = selectedMarking();
     const finiteIceAnchorMode = Boolean(iceAnchorTrace);
@@ -13824,6 +13852,12 @@ confinementSelect.addEventListener("change", () => {
   enterPipelineStage(pipelineStage);
 });
 growthProtocolSelect.addEventListener("change", () => applyGrowthProtocol(growthProtocolSelect.value));
+expandGrowthGroupsButton.addEventListener("click", () => {
+  growthSearchOptions.querySelectorAll(".growth-control-group").forEach((group) => { group.open = true; });
+});
+collapseGrowthGroupsButton.addEventListener("click", () => {
+  growthSearchOptions.querySelectorAll(".growth-control-group").forEach((group) => { group.open = false; });
+});
 growthSearchOptions.addEventListener("change", (event) => {
   if (event.target === growthProtocolSelect || !GROWTH_PROTOCOL_CONTROL_IDS.has(event.target.id)) return;
   growthProtocolMode = "custom";

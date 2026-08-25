@@ -396,6 +396,13 @@
             <article id="growthProtocolSummary" class="growth-protocol-summary" aria-live="polite">
               <span><b>custom experiment</b><small>Every search control remains independent and receipt-visible.</small></span>
             </article>
+            <div class="growth-group-actions" role="group" aria-label="Growth control sections">
+              <button id="expandGrowthGroupsButton" type="button">Expand all physics</button>
+              <button id="collapseGrowthGroupsButton" type="button">Collapse to overview</button>
+            </div>
+            <details class="growth-control-group" open>
+              <summary><span><small>01 · search core</small><strong>GCTS marking &amp; local strain</strong></span><b id="growthCoreGroupState">marking + strain</b></summary>
+              <div class="growth-control-fields">
             <label class="field" for="markingLibrarySelect">
               <span>Active marking <b id="markingLibraryCount">0 saved</b></span>
               <select id="markingLibrarySelect"></select>
@@ -422,6 +429,11 @@
                 <option value="0.32">0.32 · strong preference</option>
               </select>
             </label>
+              </div>
+            </details>
+            <details class="growth-control-group">
+              <summary><span><small>02 · chemistry</small><strong>Composition &amp; supplied charge</strong></span><b id="growthChemistryGroupState">reservoirs</b></summary>
+              <div class="growth-control-fields">
             <label class="field" for="compositionPreferenceSelect">
               <span>Composition reservoir <b>multicomponent soft balance</b></span>
               <select id="compositionPreferenceSelect">
@@ -485,6 +497,11 @@
                 <option value="0.48">0.48 · strong</option>
               </select>
             </label>
+              </div>
+            </details>
+            <details class="growth-control-group">
+              <summary><span><small>03 · interface</small><strong>Attachment, coherency &amp; morphology</strong></span><b id="growthInterfaceGroupState">local surface</b></summary>
+              <div class="growth-control-fields">
             <label class="field" for="surfacePreferenceSelect">
               <span>Surface completion <b>soft coordination-deficit proxy</b></span>
               <select id="surfacePreferenceSelect">
@@ -639,6 +656,11 @@
                 <option value="0.48">0.48 · strong</option>
               </select>
             </label>
+              </div>
+            </details>
+            <details class="growth-control-group">
+              <summary><span><small>04 · fields</small><strong>Loading &amp; mesoscopic compatibility</strong></span><b id="growthFieldsGroupState">diagnostic</b></summary>
+              <div class="growth-control-fields">
             <label class="field" for="externalDriveSelect">
               <span>External driving geometry <b id="externalDriveHint">isotropic · weight zero</b></span>
               <select id="externalDriveSelect">
@@ -742,6 +764,11 @@
                 <option value="0.48">0.48 · strong</option>
               </select>
             </label>
+              </div>
+            </details>
+            <details class="growth-control-group">
+              <summary><span><small>05 · execution</small><strong>Transport, nuclei &amp; tree search</strong></span><b id="growthExecutionGroupState">deterministic</b></summary>
+              <div class="growth-control-fields">
             <label class="field" for="arrivalPathSelect">
               <span>Geometric arrival path <b id="arrivalPathHint">not ranked · final pose only</b></span>
               <select id="arrivalPathSelect">
@@ -839,6 +866,8 @@
               <button id="hierarchicalGrowthButton" class="active" type="button" aria-pressed="true"><small>recursive</small><strong>Clusters² enabled</strong><span>promote and self-feed</span></button>
             </div>
             <p id="growthModeNote" class="control-note">The selected marking ranks the same exact candidate geometry. Library entries are enabled only when the colored cluster, pose, and port vocabulary matches exactly. Hierarchy controls whether accepted clusters may generate the next frontier.</p>
+              </div>
+            </details>
           </div>
         </section>
 
@@ -1291,7 +1320,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-105"></script>
+  <script type="module" src="./app.js?v=20260825-106"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>
