@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "protocol": "cold anonymous lattice geometry; no catalog templates, initial patches, proposals, or prior-run state",
+  "configuration": {
+    "ids": [
+      "10_45033"
+    ],
+    "layers": [
+      2,
+      3
+    ],
+    "seeds": [
+      1
+    ],
+    "timeMs": 30000,
+    "nodeLimit": 1000000
+  },
+  "profiles": [
+    {
+      "id": "gcts_rl_macro_lag2",
+      "marking": true,
+      "moveOrder": "rl",
+      "lag": 2,
+      "symmetry": "fixed",
+      "blockers": "first",
+      "agent": true,
+      "macro": true
+    }
+  ],
+  "summaries": [
+    {
+      "targetLayer": 2,
+      "profile": "gcts_rl_macro_lag2",
+      "runs": 1,
+      "successes": 1,
+      "casesWithSuccess": 1,
+      "minimumCompletedLayer": 2,
+      "medianCompletedLayer": 2,
+      "medianMaximumLiveTiles": 107,
+      "medianVisitedNodes": 6339,
+      "totalMarkingPrunes": 0
+    },
+    {
+      "targetLayer": 3,
+      "profile": "gcts_rl_macro_lag2",
+      "runs": 1,
+      "successes": 1,
+      "casesWithSuccess": 1,
+      "minimumCompletedLayer": 3,
+      "medianCompletedLayer": 3,
+      "medianMaximumLiveTiles": 432,
+      "medianVisitedNodes": 6664,
+      "totalMarkingPrunes": 0
+    }
+  ],
+  "rows": [
+    {
+      "case": "10_45033",
+      "targetLayer": 2,
+      "seed": 1,
+      "profile": "gcts_rl_macro_lag2",
+      "success": true,
+      "layerCompleted": true,
+      "solverSuccess": true,
+      "searchIncomplete": false,
+      "elapsedMs": 4153,
+      "maximumCompletedLayer": 2,
+      "tilesAtMaximumLayer": 107,
+      "maximumLiveTiles": 107,
+      "visitedNodes": 6339,
+      "branchChoices": 0,
+      "backtracks": 0,
+      "failedLeaves": 0,
+      "markingClauses": 0,
+      "markingPrunes": 0,
+      "markingChecks": 0,
+      "moveOrder": "rl",
+      "generationLagCap": 2,
+      "markingSymmetry": "fixed",
+      "blockerMode": "first",
+      "agentPolicy": "cold_geometry",
+      "agentObservations": 0,
+      "agentLearnedTags": 0,
+      "macroAttempts": 0,
+      "macroSuccesses": 0,
+      "macroTilesApplied": 0,
+      "macroRollbacks": 0,
+      "macroPeriodicTemplates": 0,
+      "terminationReason": null
+    },
+    {
+      "case": "10_45033",
+      "targetLayer": 3,
+      "seed": 1,
+      "profile": "gcts_rl_macro_lag2",
+      "success": true,
+      "layerCompleted": true,
+      "solverSuccess": true,
+      "searchIncomplete": false,
+      "elapsedMs": 6656,
+      "maximumCompletedLayer": 3,
+      "tilesAtMaximumLayer": 432,
+      "maximumLiveTiles": 432,
+      "visitedNodes": 6664,
+      "branchChoices": 0,
+      "backtracks": 0,
+      "failedLeaves": 0,
+      "markingClauses": 0,
+      "markingPrunes": 0,
+      "markingChecks": 0,
+      "moveOrder": "rl",
+      "generationLagCap": 2,
+      "markingSymmetry": "fixed",
+      "blockerMode": "first",
+      "agentPolicy": "cold_geometry",
+      "agentObservations": 0,
+      "agentLearnedTags": 0,
+      "macroAttempts": 0,
+      "macroSuccesses": 0,
+      "macroTilesApplied": 0,
+      "macroRollbacks": 0,
+      "macroPeriodicTemplates": 0,
+      "terminationReason": null
+    }
+  ]
+}

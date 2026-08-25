@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260824-six-lanes-v206";
+} from "./engine.js?v=20260824-layer-curriculum-v207";
 
 const $ = (id) => document.getElementById(id);
 
@@ -1306,28 +1306,23 @@ function applyCandidateSearchPreset({ invalidate = true } = {}) {
   if (!candidate && !knownAperiodic) return;
   const periodicLane = censusCandidatePeriodicLane(candidate);
   const periodicCandidate = !!periodicLane;
-  document.querySelector(`input[name="criterion"][value="${candidate && !periodicCandidate ? "shell" : "count"}"]`).checked = true;
+  document.querySelector(`input[name="criterion"][value="${candidate ? "layer" : "count"}"]`).checked = true;
   maxTilesInput.value = knownAperiodic
     ? "80"
     : periodicCandidate
       ? String(Math.max(24, candidate.screening?.motif_tiles ?? 1))
       : "120";
-  if (candidate && !periodicCandidate) shellInput.value = String(
-    candidate.screening?.shell_depth ?? candidate.shell_screening?.deepest_completed_shell ?? 5
-  );
+  if (candidate) layerInput.value = "2";
   strategySelect.value = setRadioValue(
     strategyRadios,
-    periodicLane ?? (candidate?.screening?.certificate === "complete_radius3_obstruction"
-      ? "learning_free_range"
-      : "free_range"),
-    periodicLane ?? "free_range"
+    candidate ? "gcts_rl" : "free_range",
+    candidate ? "gcts_rl" : "free_range"
   );
-  if (periodicCandidate) periodicTileCountSelect.value = String(candidate.screening.motif_tiles ?? 6);
   faceOrderSelect.value = "mrv";
-  moveOrderSelect.value = candidate && !periodicCandidate ? "shell" : "balanced";
+  moveOrderSelect.value = "balanced";
   snapshotSelect.value = "0";
   timeCapInput.value = knownAperiodic ? "10" : "60";
-  nodeCapInput.value = candidate && !periodicCandidate ? "100000" : "0";
+  nodeCapInput.value = "0";
   candidateCapInput.value = "0";
   branchCapInput.value = "0";
   exhaustiveCheckbox.checked = true;
@@ -1344,11 +1339,7 @@ function updateCandidateResearchPanel() {
   candidateSearchButton.classList.toggle("is-hidden", !!knownAperiodic);
   if (candidate) {
     const periodicLane = censusCandidatePeriodicLane(candidate);
-    candidateSearchButton.textContent = periodicLane
-      ? `Replay ${periodicLane} certificate`
-      : candidate.screening?.certificate === "complete_radius3_obstruction"
-        ? "Run GCTS control"
-        : "Apply exact shell preset";
+    candidateSearchButton.textContent = "Load cold layer-2 curriculum";
     const screening = candidate.last_screening;
     const proof = candidate.gcts_proof_screening;
     const shell = candidate.shell_screening;
@@ -1927,7 +1918,15 @@ function configKey() {
     snapshot_every: Number.isFinite(snapshotEvery) ? snapshotEvery : 1,
     face_order: faceOrderSelect.value,
     tiling_strategy: tilingStrategy,
-    move_order: isRl ? "rl" : isGcts ? "balanced" : completeShellSearch ? "shell" : moveOrderSelect.value,
+    move_order: isRl
+      ? "rl"
+      : isGcts
+        ? "balanced"
+        : tilingStrategy === "translational"
+          ? "periodic_agent"
+          : completeShellSearch
+            ? "shell"
+            : moveOrderSelect.value,
     complete_lattice_point_branching: isGcts || isRl
       || (tilingStrategy === "free_range" && selectedCriterion !== "shell"),
     gcts_failure_marking: isGcts,
@@ -1939,9 +1938,14 @@ function configKey() {
     gcts_marking_index: true,
     greedy_no_backtrack: false,
     agent_exhaustive: true,
-    agent_policy: isRl ? "cold_geometry" : null,
+    agent_policy: isRl || tilingStrategy === "translational" ? "cold_geometry" : null,
+    learned_layer_macro: isRl,
+    learned_layer_macro_max_motif_tiles: 8,
+    learned_layer_macro_motif_node_limit: 2500,
+    learned_layer_macro_discovery_time_ms: 5000,
     template_preflight: isStructural,
     periodic_patch_unbounded: tilingStrategy === "translational",
+    periodic_motif_node_limit: tilingStrategy === "translational" ? 2500 : null,
     periodic_patch_max_tiles: tilingStrategy === "translational"
       ? null
       : Math.max(1, Number(periodicTileCountSelect.value) || 4),
@@ -3007,7 +3011,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260824-six-lanes-v206", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260824-layer-curriculum-v207", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3673,7 +3677,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260824-six-lanes-v206", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260824-layer-curriculum-v207", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};

@@ -825,6 +825,12 @@ export const createTilingStream = (() => {
       isohedral_certificate_patch_sizes_tried: [],
       isohedral_certificate_duplicate_states_skipped: 0,
       isohedral_search_horizon_tiles: null,
+      learned_layer_macro_enabled: false,
+      learned_layer_macro_attempts: 0,
+      learned_layer_macro_successes: 0,
+      learned_layer_macro_tiles_applied: 0,
+      learned_layer_macro_rollbacks: 0,
+      learned_layer_macro_periodic_templates: 0,
       marking_observed_failures: 0,
       marking_geometric_clauses: 0,
       marking_geometric_prunes: 0,
@@ -2147,6 +2153,11 @@ export const createTilingStream = (() => {
       : null;
     if (proposalProgram) searchStats.proposal_patch_size = proposalProgram.patch_size;
     const usePolicyAgent = moveOrder === "rl" || moveOrder === "agent" || moveOrder === "periodic_agent";
+    const learnedLayerMacroEnabled = config.learned_layer_macro === true
+      && usePolicyAgent
+      && tilingStrategy === "generic"
+      && criterion === "layer";
+    searchStats.learned_layer_macro_enabled = learnedLayerMacroEnabled;
     const useUct = moveOrder === "uct";
     const completeLatticePointBranching = config.complete_lattice_point_branching === true;
     const gctsFailureMarkingEnabled = config.gcts_failure_marking === true
@@ -3609,7 +3620,14 @@ export const createTilingStream = (() => {
             // complete action set using rewards observed in this run.  A
             // geometry-only hash makes otherwise equal cold actions repeatable.
             return [
+              features.oldest_layer_completion,
+              -features.layer_lag,
+              features.coverage,
               coldLearnedValue(features),
+              features.growth_axis_rank,
+              features.growth_isotropy,
+              features.growth_planarity,
+              -features.growth_max_span,
               coldNovelty(features),
               seededTieValue(anonymousPlacementGeometryKey(move))
             ];
@@ -4183,17 +4201,19 @@ export const createTilingStream = (() => {
       }
       return [...candidates.values()].sort(compareMoves);
     };
-    const findPeriodicMotifByBoundarySearch = requestedPeriod => {
+    const findPeriodicMotifByBoundarySearch = (requestedPeriod, options = {}) => {
       if (requestedPeriod < state.placements.length) return null;
       const seenBySize = Array.from({ length: requestedPeriod + 1 }, () => new Set());
-      const configuredNodeLimit = Number(config.periodic_motif_node_limit);
+      const configuredNodeLimit = Number(options.node_limit ?? config.periodic_motif_node_limit);
       const nodeLimit = Number.isFinite(configuredNodeLimit) && configuredNodeLimit > 0
         ? Math.floor(configuredNodeLimit)
         : Infinity;
+      const localBudgetExceeded = options.budget_exceeded ?? (() => false);
       let localNodes = 0;
       const visit = () => {
-        if (overBudget() || localNodes >= nodeLimit) {
-          noteIncompleteSearch();
+        if (overBudget() || localBudgetExceeded() || localNodes >= nodeLimit) {
+          if (overBudget()) noteIncompleteSearch();
+          else options.on_local_limit?.();
           return null;
         }
         localNodes += 1;
@@ -4206,8 +4226,9 @@ export const createTilingStream = (() => {
         if (size === requestedPeriod) return findBoundaryPeriodicTemplate(requestedPeriod);
 
         for (const move of periodicMotifCandidates()) {
-          if (overBudget() || localNodes >= nodeLimit) {
-            noteIncompleteSearch();
+          if (overBudget() || localBudgetExceeded() || localNodes >= nodeLimit) {
+            if (overBudget()) noteIncompleteSearch();
+            else options.on_local_limit?.();
             return null;
           }
           const validity = checkMoveViability(move);
@@ -4599,9 +4620,17 @@ export const createTilingStream = (() => {
       }
       return certifyPeriodicPlacementMotif(placements, rawTemplate.period_vectors);
     };
-    async function* tryPeriodicTemplatePatch(parentId, { force = false } = {}) {
-      if (!periodicPreflightEnabled || (!force && goalMet())) return false;
-      let template = certifyConfiguredPeriodicTemplate(config.known_periodic_template);
+    async function* tryPeriodicTemplatePatch(parentId, {
+      force = false,
+      template: suppliedTemplate = null,
+      evidenceStrategy = "translational",
+      allowDiscovery = false,
+      maximumPatchSize: suppliedMaximumPatchSize = null,
+      motifNodeLimit = null,
+      discoveryTimeMs = null
+    } = {}) {
+      if ((!periodicPreflightEnabled && !suppliedTemplate && !allowDiscovery) || (!force && goalMet())) return false;
+      let template = suppliedTemplate ?? certifyConfiguredPeriodicTemplate(config.known_periodic_template);
       if (config.known_periodic_template) {
         yield {
           type: "translational_check",
@@ -4615,12 +4644,20 @@ export const createTilingStream = (() => {
       }
       const progressiveMax = Number(config.periodic_patch_max_tiles);
       const unbounded = !!config.periodic_patch_unbounded;
-      const maximumPatchSize = unbounded
+      const configuredMaximumPatchSize = Number(suppliedMaximumPatchSize);
+      const configuredDiscoveryTimeMs = Number(discoveryTimeMs);
+      const discoveryDeadline = Number.isFinite(configuredDiscoveryTimeMs) && configuredDiscoveryTimeMs > 0
+        ? performance.now() + configuredDiscoveryTimeMs
+        : Infinity;
+      const maximumPatchSize = Number.isFinite(configuredMaximumPatchSize) && configuredMaximumPatchSize > 0
+        ? Math.floor(configuredMaximumPatchSize)
+        : unbounded
         ? Infinity
         : Number.isFinite(progressiveMax)
           ? Math.max(1, Math.floor(progressiveMax))
           : Math.max(1, Math.floor(+config.periodic_tile_count || 2));
       for (let patchSize = 1; !template && patchSize <= maximumPatchSize && !overBudget(); patchSize++) {
+        if (performance.now() >= discoveryDeadline) break;
         yield nodeStatus(
           parentId,
           "working",
@@ -4628,7 +4665,15 @@ export const createTilingStream = (() => {
           preflightStatusPayload()
         );
         template = findPeriodicTemplate(patchSize);
-        if (!template) template = findPeriodicMotifByBoundarySearch(patchSize);
+        if (!template) template = findPeriodicMotifByBoundarySearch(patchSize, {
+          // An unbounded translational lane must advance through motif sizes
+          // instead of spending its entire run exhaustively on the first hard
+          // small size.  Per-size exhaustion is not a negative certificate;
+          // the lane remains inconclusive and continues to larger domains.
+          node_limit: motifNodeLimit ?? (unbounded ? 2500 : null),
+          budget_exceeded: () => performance.now() >= discoveryDeadline,
+          on_local_limit: () => {}
+        });
         yield {
           type: "translational_check",
           patch_size: patchSize,
@@ -4674,7 +4719,7 @@ export const createTilingStream = (() => {
         kind: "translational_certificate",
         certified: true,
         can_tile: true,
-        strategy: "translational",
+        strategy: evidenceStrategy,
         patch_size: template.motif?.length ?? 1,
         certificate_kind: template.kind,
         period_vectors: template.period_vectors?.map(vector => vector.slice()) ?? [],
@@ -5660,6 +5705,53 @@ export const createTilingStream = (() => {
       }
       return applied;
     }
+    const learnedLayerMacroAttempted = new Set();
+    async function* tryLearnedLayerMacro(parentId) {
+      if (!learnedLayerMacroEnabled || minFrontierPointLayer() <= 0 || goalMet()) return false;
+      const stateKey = `${minFrontierPointLayer()}::${periodicPatchStateKey()}`;
+      if (learnedLayerMacroAttempted.has(stateKey)) return false;
+      learnedLayerMacroAttempted.add(stateKey);
+      searchStats.learned_layer_macro_attempts += 1;
+      // First reuse the completed oldest-layer patch under lattice
+      // isometries.  Besides being a useful macro in its own right, this
+      // creates several copies of each local tile role.  Period vectors are
+      // not observable reliably in the smaller pre-macro patch.
+      const applied = yield* propagateIsohedralPatch(parentId);
+      searchStats.learned_layer_macro_tiles_applied += applied.length;
+      if (goalMet()) {
+        searchStats.learned_layer_macro_successes += 1;
+        yield nodeStatus(parentId, "success", `learned layer macro: +${applied.length}`);
+        return true;
+      }
+      const configuredMiningMs = Number(config.learned_layer_macro_mining_time_ms);
+      const miningMs = Number.isFinite(configuredMiningMs) && configuredMiningMs > 0
+        ? configuredMiningMs
+        : 500;
+      const miningDeadline = performance.now() + miningMs;
+      const learnedPeriodicTemplate = minePeriodicTemplateFromCurrentPatch({
+        budget_exceeded: () => overBudget() || performance.now() >= miningDeadline,
+        on_budget_exceeded: () => {}
+      });
+      if (learnedPeriodicTemplate) {
+        searchStats.learned_layer_macro_periodic_templates += 1;
+        if (yield* tryPeriodicTemplatePatch(parentId, {
+          force: true,
+          template: learnedPeriodicTemplate,
+          evidenceStrategy: "learned_layer_macro"
+        })) {
+          searchStats.learned_layer_macro_successes += 1;
+          return true;
+        }
+      }
+      if (applied.length) searchStats.learned_layer_macro_rollbacks += 1;
+      while (applied.length) {
+        const entry = applied.pop();
+        undoMove(entry.move, entry.rollback, { captureBest: false });
+        searchStats.forced_total = Math.max(0, searchStats.forced_total - 1);
+        yield placementDelta("remove", entry.move, entry.rollback, parentId);
+      }
+      return false;
+    }
     async function* searchIsohedral(parentId, depth = 0) {
       if (stopToken.stop) { noteIncompleteSearch(); return false; }
       if (overBudget()) {
@@ -5837,6 +5929,7 @@ export const createTilingStream = (() => {
           return false;
         }
       }
+      if (yield* tryLearnedLayerMacro(parentId)) return true;
       const entryFailureKey = genericFailureMemoEnabled ? genericFailureStateKey() : null;
       const entryFailurePlacements = genericFailureMemoEnabled ? state.placements.slice() : null;
       const forcedBatch = [];
@@ -6542,7 +6635,32 @@ export const createTilingStream = (() => {
       success = goalMet() || (yield* searchIsohedral(rootId));
     } else if (tilingStrategy === "generic") {
       if (proposalProgram) yield* replayLearnedProposalPatch(rootId);
-      if (useUct) {
+      // The hybrid learner has no catalog hint, but it may spend a bounded
+      // part of its cold-start budget trying to discover and exactly certify
+      // a small repeating cluster.  This is the RL analogue of learning a
+      // macro action; failure does not prune ordinary GCTS search.
+      if (learnedLayerMacroEnabled && !goalMet()) {
+        const configuredMotifTiles = Number(config.learned_layer_macro_max_motif_tiles);
+        const configuredMotifNodes = Number(config.learned_layer_macro_motif_node_limit);
+        const configuredDiscoveryMs = Number(config.learned_layer_macro_discovery_time_ms);
+        success = yield* tryPeriodicTemplatePatch(rootId, {
+          force: true,
+          allowDiscovery: true,
+          maximumPatchSize: Number.isFinite(configuredMotifTiles)
+            ? Math.max(1, Math.floor(configuredMotifTiles))
+            : 8,
+          motifNodeLimit: Number.isFinite(configuredMotifNodes)
+            ? Math.max(1, Math.floor(configuredMotifNodes))
+            : 2500,
+          discoveryTimeMs: Number.isFinite(configuredDiscoveryMs)
+            ? Math.max(1, configuredDiscoveryMs)
+            : 5000,
+          evidenceStrategy: "learned_layer_macro"
+        });
+      }
+      if (success) {
+        // Exact cluster growth reached the requested live layer.
+      } else if (useUct) {
         while (!goalMet() && !overBudget() && !stopToken.stop) {
           searchStats.uct_simulations += 1;
           success = yield* search(rootId);
@@ -6577,9 +6695,16 @@ export const createTilingStream = (() => {
         );
       }
     }
-    // A periodic exact-cover certificate proves an infinite tiling even when the
-    // bounded visualization patch did not reach the requested display count.
-    success = success || !!(tilingEvidence?.certified && tilingEvidence?.can_tile === true);
+    // A periodic exact-cover certificate proves an infinite tiling, but a
+    // generic layer/region/shell run is also an operational growth benchmark:
+    // it succeeds only after its requested live patch was actually produced.
+    // Dedicated translational/isohedral proof lanes still report certificates
+    // immediately, as does a count-only discovery run.
+    const certificateCompletesRun = tilingStrategy !== "generic" || criterion === "count";
+    success = success || (
+      certificateCompletesRun
+      && !!(tilingEvidence?.certified && tilingEvidence?.can_tile === true)
+    );
     if (
       !success
       && exhaustive

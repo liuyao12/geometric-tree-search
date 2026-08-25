@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260824-six-lanes-v206";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260824-layer-curriculum-v207";
 
 let activeSequence = 0;
 let stopToken = { stop: false };
@@ -78,7 +78,7 @@ const MODES = {
     id: "translational",
     label: "Translational",
     strategy: "translational",
-    moveOrder: "balanced",
+    moveOrder: "periodic_agent",
     templates: true,
     agentExhaustive: true
   },
@@ -115,13 +115,18 @@ async function runMode(sequence, baseConfig, mode) {
     gcts_marking_symmetry: baseConfig.gcts_marking_symmetry ?? "fixed",
     gcts_marking_index: baseConfig.gcts_marking_index !== false,
     agent_exhaustive: mode.agentExhaustive,
-    agent_policy: mode.id === "rl" || mode.id === "gcts_rl" ? "cold_geometry" : null,
+    agent_policy: ["rl", "gcts_rl", "translational"].includes(mode.id) ? "cold_geometry" : null,
+    learned_layer_macro: mode.id === "rl" || mode.id === "gcts_rl",
+    learned_layer_macro_max_motif_tiles: 8,
+    learned_layer_macro_motif_node_limit: 2500,
+    learned_layer_macro_discovery_time_ms: 5000,
     known_periodic_template: null,
     initial_patch: null,
     greedy_no_backtrack: false,
     template_preflight: mode.templates,
     periodic_preflight: mode.templates,
     periodic_patch_unbounded: mode.id === "translational",
+    periodic_motif_node_limit: mode.id === "translational" ? 2500 : baseConfig.periodic_motif_node_limit,
     periodic_patch_max_tiles: mode.id === "translational" ? null : baseConfig.periodic_patch_max_tiles,
     snapshot_every: 1,
     placement_details: ["gcts", "rl", "gcts_rl"].includes(mode.id),

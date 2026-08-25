@@ -130,16 +130,19 @@ assert.match(growthWorkerSource, /id: "proof_crystal"[\s\S]*?label: "Proof searc
 const publicGrowthModesSource = growthAppSource.match(/const GROWTH_MODES = \[([\s\S]*?)\n\];/)?.[1] ?? "";
 assert.deepEqual(
   [...publicGrowthModesSource.matchAll(/id: "([^"]+)"/g)].map(match => match[1]),
-  ["free_range", "gcts", "translational", "isohedral"],
-  "the public chart must compare exactly the four solver lanes"
+  ["free_range", "gcts", "rl", "gcts_rl", "translational", "isohedral"],
+  "the public chart must compare exactly the six solver lanes"
 );
 assert.deepEqual(
   [...publicGrowthModesSource.matchAll(/label: "([^"]+)"/g)].map(match => match[1]),
-  ["Free-range", "GCTS", "Translational", "Isohedral"]
+  ["Free-range", "GCTS", "RL", "GCTS + RL", "Translational", "Isohedral"]
 );
 assert.match(growthWorkerSource, /id: "free_range"[\s\S]*?label: "Free-range"/);
-assert.match(growthWorkerSource, /id: "gcts"[\s\S]*?label: "GCTS"[\s\S]*?strategy: "learning_free_range"/);
-assert.match(growthAppSource, /All four modes finished\./);
+assert.match(growthWorkerSource, /id: "gcts"[\s\S]*?label: "GCTS"[\s\S]*?strategy: "free_range"/);
+assert.match(growthWorkerSource, /id: "rl"[\s\S]*?moveOrder: "rl"/);
+assert.match(growthWorkerSource, /id: "gcts_rl"[\s\S]*?moveOrder: "rl"/);
+assert.match(growthWorkerSource, /id: "translational"[\s\S]*?moveOrder: "periodic_agent"/);
+assert.match(growthAppSource, /All six lanes finished\./);
 assert.match(growthAppSource, /positive-control low-copy CEGAR run rejects/);
 assert.match(growthAppSource, /Radius four is still unexhausted/);
 assert.match(growthAppSource, /Pairwise next-ring coverability promotes/);
