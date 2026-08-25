@@ -286,6 +286,11 @@ const policyPhaseMapState = $("policyPhaseMapState");
 const policyPhaseX = $("policyPhaseX");
 const policyPhaseY = $("policyPhaseY");
 const policyPhaseMap = $("policyPhaseMap");
+const policyParetoState = $("policyParetoState");
+const policyParetoX = $("policyParetoX");
+const policyParetoY = $("policyParetoY");
+const policyParetoPlot = $("policyParetoPlot");
+const policyParetoDetail = $("policyParetoDetail");
 const policySpatialFieldState = $("policySpatialFieldState");
 const policySpatialTerm = $("policySpatialTerm");
 const policySpatialToggle = $("policySpatialToggle");
@@ -6136,7 +6141,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-119",
+      buildId: "20260825-120",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7101,6 +7106,31 @@ async function buildExperimentReceipt() {
                 runnerUpMargin: receiptRound(cell.margin),
                 baseline: cell.baseline,
               })),
+            } : null;
+          })(),
+          candidateTradeoffMap: (() => {
+            const map = buildPolicyParetoMap(snapshot);
+            return map ? {
+              role: "pairwise Pareto audit of exact attachment candidates over one unchanged hard-admitted frontier",
+              horizontalTerm: { id: map.x, label: map.xLabel },
+              verticalTerm: { id: map.y, label: map.yLabel },
+              axisSelectionRule: map.selectionRule,
+              dominanceRule: "higher signed contribution on both selected terms; at least one strict improvement",
+              dominanceEpsilon: map.dominanceEpsilon,
+              renderingNormalization: "independent min-max scaling by axis; dominance uses unnormalized signed contributions",
+              exactCandidates: map.points.length,
+              nondominatedCandidates: map.frontier.length,
+              candidateSetDigest: map.candidateSetDigest,
+              candidateSetChanged: map.candidateSetChanged,
+              hardAdmissionChanged: map.hardAdmissionChanged,
+              candidateGeometryChanged: map.candidateGeometryChanged,
+              targetUsed: map.targetUsed,
+              executed: map.executed,
+              candidateCoordinatesEmbedded: map.coordinatesEmbedded,
+              samples: map.points.map((point) => ({ candidateDigest: point.candidateDigest,
+                action: point.action, horizontalContribution: receiptRound(point.xContribution),
+                verticalContribution: receiptRound(point.yContribution),
+                nondominated: point.nondominated, dominatingCandidates: point.dominatedBy })),
             } : null;
           })(),
           spatialDrivingField: (() => {
@@ -9389,6 +9419,67 @@ function buildPolicyPhaseMap(snapshot) {
     executed: false, selectionRule: snapshot.phaseMapAxes.selectionRule };
 }
 
+function workbenchCandidateTerms(snapshot, candidate) {
+  return candidate.scoreTerms.map((term) => {
+    const termMultiplier = workbenchMultiplier(snapshot, term.id);
+    return { id: term.id, label: term.label, role: term.role, claimBoundary: term.claimBoundary,
+      raw: term.raw, baselineWeight: term.weight, baselineContribution: term.contribution,
+      multiplier: termMultiplier, weight: term.weight * termMultiplier,
+      contribution: term.contribution * termMultiplier };
+  });
+}
+
+function buildPolicyParetoMap(snapshot) {
+  if (!snapshot?.workbenchCandidates?.length) return null;
+  snapshot.phaseMapAxes ||= defaultPolicyPhaseAxes(snapshot);
+  snapshot.paretoAxes ||= { x: snapshot.phaseMapAxes.x, y: snapshot.phaseMapAxes.y,
+    selectionRule: "candidate contribution ranges inherited from the target-free phase-map axes" };
+  const firstTerms = snapshot.workbenchCandidates[0].scoreTerms;
+  const termIds = firstTerms.map((term) => term.id);
+  const labels = Object.fromEntries(firstTerms.map((term) => [term.id, term.label]));
+  let { x, y } = snapshot.paretoAxes;
+  if (!termIds.includes(x)) x = termIds[0];
+  if (!termIds.includes(y) || y === x) y = termIds.find((id) => id !== x) || x;
+  snapshot.paretoAxes.x = x; snapshot.paretoAxes.y = y;
+  const points = snapshot.workbenchCandidates.map((candidate) => {
+    const termContributions = workbenchCandidateTerms(snapshot, candidate);
+    return { candidateKey: candidate.candidateKey, candidateDigest: candidate.candidateDigest,
+      action: candidate.action, preview: candidate.preview, termContributions,
+      xContribution: termContributions.find((term) => term.id === x)?.contribution || 0,
+      yContribution: termContributions.find((term) => term.id === y)?.contribution || 0 };
+  }).sort((first, second) => first.candidateKey.localeCompare(second.candidateKey));
+  const dominanceEpsilon = 1e-12;
+  points.forEach((point) => {
+    const dominators = points.filter((other) => other !== point
+      && other.xContribution >= point.xContribution - dominanceEpsilon
+      && other.yContribution >= point.yContribution - dominanceEpsilon
+      && (other.xContribution > point.xContribution + dominanceEpsilon
+        || other.yContribution > point.yContribution + dominanceEpsilon));
+    point.dominatedBy = dominators.length; point.nondominated = dominators.length === 0;
+  });
+  const xMinimum = Math.min(...points.map((point) => point.xContribution));
+  const xMaximum = Math.max(...points.map((point) => point.xContribution));
+  const yMinimum = Math.min(...points.map((point) => point.yContribution));
+  const yMaximum = Math.max(...points.map((point) => point.yContribution));
+  const xRange = xMaximum - xMinimum; const yRange = yMaximum - yMinimum;
+  points.forEach((point) => {
+    point.normalizedX = xRange > dominanceEpsilon ? (point.xContribution - xMinimum) / xRange : .5;
+    point.normalizedY = yRange > dominanceEpsilon ? (point.yContribution - yMinimum) / yRange : .5;
+  });
+  const frontier = points.filter((point) => point.nondominated)
+    .sort((first, second) => first.xContribution - second.xContribution
+      || second.yContribution - first.yContribution || first.candidateKey.localeCompare(second.candidateKey));
+  const activeCandidateKey = snapshot.policies.find((policy) => policy.id === "active")?.candidateKey || null;
+  const selectedCandidateKey = points.some((point) => point.candidateKey === snapshot.paretoPreviewCandidateKey)
+    ? snapshot.paretoPreviewCandidateKey : activeCandidateKey || frontier.at(-1)?.candidateKey || points[0].candidateKey;
+  return { x, y, xLabel: labels[x] || x, yLabel: labels[y] || y, termIds, labels, points, frontier,
+    selectedCandidateKey, xMinimum, xMaximum, yMinimum, yMaximum, dominanceEpsilon,
+    candidateSetDigest: snapshot.candidateDigest, candidateSetChanged: false,
+    hardAdmissionChanged: false, candidateGeometryChanged: false,
+    targetUsed: snapshot.rankingTargetUsed && [x, y].includes("known-window-gain"),
+    executed: false, coordinatesEmbedded: false, selectionRule: snapshot.paretoAxes.selectionRule };
+}
+
 function buildPolicySpatialField(snapshot) {
   if (!snapshot?.workbenchCandidates?.length) return null;
   snapshot.phaseMapAxes ||= defaultPolicyPhaseAxes(snapshot);
@@ -9400,13 +9491,7 @@ function buildPolicySpatialField(snapshot) {
   if (!composite && !firstTerm) return null;
   const multiplier = composite ? null : workbenchMultiplier(snapshot, termId);
   const points = snapshot.workbenchCandidates.map((candidate) => {
-    const termContributions = candidate.scoreTerms.map((term) => {
-      const termMultiplier = workbenchMultiplier(snapshot, term.id);
-      return { id: term.id, label: term.label, role: term.role, claimBoundary: term.claimBoundary,
-        raw: term.raw, baselineWeight: term.weight, baselineContribution: term.contribution,
-        multiplier: termMultiplier, weight: term.weight * termMultiplier,
-        contribution: term.contribution * termMultiplier };
-    });
+    const termContributions = workbenchCandidateTerms(snapshot, candidate);
     const contribution = composite
       ? termContributions.reduce((sum, term) => sum + term.contribution, 0)
       : termContributions.find((term) => term.id === termId)?.contribution || 0;
@@ -13972,6 +14057,110 @@ function renderPolicyPhaseMap(snapshot) {
   });
 }
 
+function selectPolicyParetoAxis(snapshot, axis, termId) {
+  const otherAxis = axis === "x" ? "y" : "x";
+  snapshot.paretoAxes ||= { x: snapshot.phaseMapAxes.x, y: snapshot.phaseMapAxes.y };
+  snapshot.paretoAxes[axis] = termId;
+  if (snapshot.paretoAxes[otherAxis] === termId) {
+    const alternative = snapshot.workbenchCandidates[0].scoreTerms
+      .find((term) => term.id !== termId)?.id;
+    if (alternative) snapshot.paretoAxes[otherAxis] = alternative;
+  }
+  snapshot.paretoAxes.selectionRule = "user-selected signed contribution axes on one frozen frontier";
+  renderPolicyComparison();
+}
+
+function buildPolicyParetoPreview(snapshot) {
+  const map = buildPolicyParetoMap(snapshot);
+  const point = map?.points.find((candidate) => candidate.candidateKey === map.selectedCandidateKey);
+  if (!map || !point) return null;
+  const score = point.termContributions.reduce((sum, term) => sum + term.contribution, 0);
+  return { id: "pareto", label: point.nondominated ? "Pareto-front candidate" : "dominated trade-off candidate",
+    action: point.action, candidateKey: point.candidateKey, candidateDigest: point.candidateDigest,
+    score, scoreTerms: point.termContributions, scoreTermTotal: score, scoreDecompositionExact: true,
+    preview: point.preview, candidateSetDigest: map.candidateSetDigest, candidateSetChanged: false,
+    hardAdmissionChanged: false, executed: false };
+}
+
+function previewPolicyParetoCandidate(snapshot, candidateKey) {
+  snapshot.paretoPreviewCandidateKey = candidateKey;
+  selectedPolicyPreviewId = "pareto";
+  previewPolicyWinner(buildPolicyParetoPreview(snapshot), snapshot);
+}
+
+function renderPolicyParetoMap(snapshot) {
+  policyParetoPlot.replaceChildren(); policyParetoX.replaceChildren(); policyParetoY.replaceChildren();
+  policyParetoDetail.replaceChildren();
+  const map = buildPolicyParetoMap(snapshot);
+  if (!map) {
+    policyParetoState.textContent = "awaiting a frozen frontier";
+    policyParetoX.disabled = true; policyParetoY.disabled = true;
+    return;
+  }
+  policyParetoX.disabled = false; policyParetoY.disabled = false;
+  map.termIds.forEach((termId) => {
+    const xOption = document.createElement("option"); xOption.value = termId;
+    xOption.textContent = map.labels[termId]; xOption.selected = termId === map.x;
+    const yOption = xOption.cloneNode(true); yOption.selected = termId === map.y;
+    policyParetoX.append(xOption); policyParetoY.append(yOption);
+  });
+  policyParetoX.onchange = () => selectPolicyParetoAxis(snapshot, "x", policyParetoX.value);
+  policyParetoY.onchange = () => selectPolicyParetoAxis(snapshot, "y", policyParetoY.value);
+  policyParetoState.textContent = `${map.frontier.length} nondominated · ${map.points.length} exact poses`
+    + `${map.targetUsed ? " · reference-guided" : " · target-free"}`;
+  const namespace = "http://www.w3.org/2000/svg";
+  const make = (name, attributes = {}) => {
+    const element = document.createElementNS(namespace, name);
+    Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, String(value)));
+    return element;
+  };
+  const left = 28; const top = 8; const width = 204; const height = 116;
+  [0, .25, .5, .75, 1].forEach((fraction) => {
+    policyParetoPlot.append(make("line", { x1: left + width * fraction, y1: top,
+      x2: left + width * fraction, y2: top + height, class: "grid" }));
+    policyParetoPlot.append(make("line", { x1: left, y1: top + height * (1 - fraction),
+      x2: left + width, y2: top + height * (1 - fraction), class: "grid" }));
+  });
+  if (map.frontier.length > 1) {
+    const path = make("path", { class: "frontier", d: map.frontier.map((point, index) => {
+      const px = left + width * point.normalizedX; const py = top + height * (1 - point.normalizedY);
+      return `${index ? "L" : "M"}${px.toFixed(2)},${py.toFixed(2)}`;
+    }).join(" ") });
+    policyParetoPlot.append(path);
+  }
+  [...map.points].sort((first, second) => Number(first.nondominated) - Number(second.nondominated)
+    || first.candidateKey.localeCompare(second.candidateKey)).forEach((point) => {
+    const circle = make("circle", { cx: left + width * point.normalizedX,
+      cy: top + height * (1 - point.normalizedY), r: point.nondominated ? 4.2 : 2.6,
+      class: `${point.nondominated ? "nondominated" : "dominated"}${point.candidateKey === map.selectedCandidateKey ? " selected" : ""}`,
+      tabindex: 0, role: "button", "aria-label": `${point.action}; ${map.xLabel} ${point.xContribution.toFixed(3)}; ${map.yLabel} ${point.yContribution.toFixed(3)}; ${point.nondominated ? "nondominated" : `dominated by ${point.dominatedBy}`}` });
+    circle.style.setProperty("--candidate-hue", policyBasinHue(point.candidateKey));
+    const title = make("title"); title.textContent = `${point.action} · ${point.candidateDigest} · click to preview exact pose`;
+    circle.append(title);
+    circle.addEventListener("click", () => previewPolicyParetoCandidate(snapshot, point.candidateKey));
+    circle.addEventListener("keydown", (event) => {
+      if (["Enter", " "].includes(event.key)) { event.preventDefault(); previewPolicyParetoCandidate(snapshot, point.candidateKey); }
+    });
+    policyParetoPlot.append(circle);
+  });
+  const xLabel = make("text", { x: left + width / 2, y: 145, class: "axis-label", "text-anchor": "middle" });
+  xLabel.textContent = `higher ${map.xLabel} →`; policyParetoPlot.append(xLabel);
+  const yLabel = make("text", { x: 7, y: top + height / 2, class: "axis-label", "text-anchor": "middle",
+    transform: `rotate(-90 7 ${top + height / 2})` });
+  yLabel.textContent = `higher ${map.yLabel} →`; policyParetoPlot.append(yLabel);
+  const selected = map.points.find((point) => point.candidateKey === map.selectedCandidateKey);
+  if (selected) {
+    const heading = document.createElement("strong"); heading.textContent = selected.action;
+    const status = document.createElement("b");
+    status.textContent = selected.nondominated ? "NONDOMINATED" : `${selected.dominatedBy} BETTER POSE${selected.dominatedBy === 1 ? "" : "S"}`;
+    const xValue = document.createElement("span");
+    xValue.textContent = `${map.xLabel} ${selected.xContribution >= 0 ? "+" : ""}${selected.xContribution.toFixed(3)}`;
+    const yValue = document.createElement("span");
+    yValue.textContent = `${map.yLabel} ${selected.yContribution >= 0 ? "+" : ""}${selected.yContribution.toFixed(3)}`;
+    policyParetoDetail.append(heading, status, xValue, yValue);
+  }
+}
+
 function selectPolicySpatialTerm(snapshot, termId) {
   snapshot.spatialTermId = termId;
   snapshot.spatialPreviewCandidateKey = null;
@@ -14108,6 +14297,7 @@ function renderPolicyComparison() {
     policyPreviewState.textContent = "Select a policy row during material growth.";
     renderPolicyScoreLedger(null);
     renderPolicyPhaseMap(null);
+    renderPolicyParetoMap(null);
     renderPolicySpatialField(null);
     return;
   }
@@ -14122,6 +14312,7 @@ function renderPolicyComparison() {
     policyPreviewState.textContent = `${iceAnchorTrace.selectionRuleLabel} is the only certified molecular-anchor policy in this trace.`;
     renderPolicyScoreLedger(null);
     renderPolicyPhaseMap(null);
+    renderPolicyParetoMap(null);
     renderPolicySpatialField(null);
     return;
   }
@@ -14136,11 +14327,13 @@ function renderPolicyComparison() {
     policyPreviewState.textContent = "Select a policy row after the first frontier is frozen.";
     renderPolicyScoreLedger(null);
     renderPolicyPhaseMap(null);
+    renderPolicyParetoMap(null);
     renderPolicySpatialField(null);
     return;
   }
   const snapshot = policyComparisonHistory[selectedPolicySnapshotIndex] || lastPolicyComparison;
   const workbench = buildPolicyWorkbench(snapshot);
+  const paretoPreview = snapshot.paretoPreviewCandidateKey ? buildPolicyParetoPreview(snapshot) : null;
   const spatialPreview = buildPolicySpatialPreview(snapshot);
   policyComparisonState.textContent = `${snapshot.frontier} candidates · ${snapshot.admissible} admitted · ${snapshot.uniqueTopActions} winner${snapshot.uniqueTopActions === 1 ? "" : "s"}`
     + `${snapshot.referenceGuided ? " · target-aware replay" : " · target-blind frontier"}`;
@@ -14177,12 +14370,25 @@ function renderPolicyComparison() {
     row.append(label, action, score); policyComparison.append(row);
     row.addEventListener("click", () => previewPolicyWinner(spatialPreview, snapshot));
   }
+  if (paretoPreview) {
+    const row = document.createElement("button"); row.type = "button";
+    row.classList.toggle("active", selectedPolicyPreviewId === "pareto");
+    row.setAttribute("aria-pressed", String(selectedPolicyPreviewId === "pareto"));
+    row.title = "Preview this exact candidate-space trade-off pose; this never executes";
+    const label = document.createElement("small"); label.textContent = paretoPreview.label;
+    const action = document.createElement("strong"); action.textContent = paretoPreview.action;
+    const score = document.createElement("em"); score.textContent = paretoPreview.score.toFixed(3);
+    row.append(label, action, score); policyComparison.append(row);
+    row.addEventListener("click", () => previewPolicyWinner(paretoPreview, snapshot));
+  }
   const selectedScorePolicy = selectedPolicyPreviewId === "workbench" ? workbench
     : selectedPolicyPreviewId === "spatial" && spatialPreview ? spatialPreview
+    : selectedPolicyPreviewId === "pareto" && paretoPreview ? paretoPreview
     : snapshot.policies.find((policy) => policy.id === selectedPolicyPreviewId)
       || snapshot.policies.find((policy) => policy.id === "active") || snapshot.policies.at(-1);
   renderPolicyScoreLedger(selectedScorePolicy, snapshot);
   renderPolicyPhaseMap(snapshot);
+  renderPolicyParetoMap(snapshot);
   renderPolicySpatialField(snapshot);
   const sensitive = policyComparisonHistory.filter((entry) => entry.uniqueTopActions > 1).length;
   const meanWinners = policyComparisonHistory.reduce((sum, entry) => sum + entry.uniqueTopActions, 0)
@@ -14206,10 +14412,11 @@ function renderPolicyComparison() {
   });
   const selectedPolicy = selectedPolicyPreviewId === "workbench" ? workbench
     : selectedPolicyPreviewId === "spatial" && spatialPreview ? spatialPreview
+    : selectedPolicyPreviewId === "pareto" && paretoPreview ? paretoPreview
     : snapshot.policies.find((policy) => policy.id === selectedPolicyPreviewId) || snapshot.policies.at(-1);
   policyPreviewState.textContent = `${selectedPolicy.label}: ${selectedPolicy.action} · frontier ${snapshot.candidateDigest} · candidate set target-free`
     + `${snapshot.rankingTargetUsed ? " · replay score reference-guided" : " · ranking target-free"}`
-    + `${["workbench", "spatial"].includes(selectedPolicy.id) ? " · counterfactual preview only · not executed" : ""}`;
+    + `${["workbench", "spatial", "pareto"].includes(selectedPolicy.id) ? " · counterfactual preview only · not executed" : ""}`;
 }
 
 function liveGrowthCertificate() {

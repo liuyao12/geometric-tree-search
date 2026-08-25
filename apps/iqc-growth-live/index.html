@@ -873,6 +873,13 @@
                 <div id="policyPhaseMap" class="policy-phase-map" role="group" aria-label="Click a hypothesis-weight cell to preview its winning action"></div>
                 <p>Each cell re-ranks the same hard-admitted candidate set at ×0…×2 declared weight. Color denotes the winning exact action; brightness denotes its margin over the runner-up.</p>
               </section>
+              <section class="policy-pareto-card" aria-label="Candidate geometry trade-off explorer">
+                <header><span><small>candidate-space trade-off</small><strong>Geometric Pareto frontier</strong></span><b id="policyParetoState">awaiting a frozen frontier</b></header>
+                <div class="policy-pareto-axes"><label>horizontal<select id="policyParetoX" aria-label="Horizontal candidate contribution"></select></label><label>vertical<select id="policyParetoY" aria-label="Vertical candidate contribution"></select></label></div>
+                <svg id="policyParetoPlot" class="policy-pareto-plot" viewBox="0 0 240 150" role="group" aria-label="Click an exact attachment candidate to preview its pose"></svg>
+                <article id="policyParetoDetail" class="policy-pareto-detail" aria-live="polite"></article>
+                <p>Higher is better on each selected signed ranking term. The mint envelope contains candidates not dominated on this pair; it is not a thermodynamic phase boundary or free-energy surface.</p>
+              </section>
               <section class="policy-spatial-field-card" aria-label="Spatial geometric driving field">
                 <header><span><small>candidate-resolved spatial field</small><strong>Where does this hypothesis act?</strong></span><b id="policySpatialFieldState">awaiting a frozen frontier</b></header>
                 <div class="policy-spatial-controls"><label>score term<select id="policySpatialTerm" aria-label="Spatial score term"></select></label><button id="policySpatialToggle" type="button" aria-pressed="false" disabled>Show in 3D</button></div>
@@ -1355,7 +1362,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-119"></script>
+  <script type="module" src="./app.js?v=20260825-120"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

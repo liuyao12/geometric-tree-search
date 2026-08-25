@@ -4348,6 +4348,32 @@ fit. The receipt records all 25 multiplier pairs, winner action/digest, score,
 runner-up margin, axes and their selection rule, plus explicit invariants that
 the candidate set, hard admission, geometry, and executed trace were unchanged.
 
+### Candidate-space geometric Pareto frontier
+
+The adjacent trade-off explorer keeps every exact hard-admitted attachment
+candidate visible instead of immediately collapsing its geometric evidence to
+one scalar. Two selectors choose signed ledger contributions for the horizontal
+and vertical axes. Higher is better on both. A candidate is marked
+**nondominated** only when no other pose is at least as favorable on both terms
+and strictly more favorable on one. The dashed mint envelope connects those
+pairwise nondominated candidates; subdued points remain inspectable rather than
+being discarded.
+
+Axes initially inherit the same target-free, largest-contribution-range rule as
+the decision map and can be changed independently. Plot normalization is
+min–max scaling for rendering only: dominance is evaluated on the exact signed
+contributions after current workbench multipliers. Clicking any point previews
+its complete rigid cluster pose and full signed score ledger. The selected
+point reports both contributions and how many exact candidates dominate it.
+
+This is a finite candidate-space multi-objective audit—not a free-energy
+landscape, equilibrium convex hull, kinetic phase boundary, probability cloud,
+or proof of material stability. The receipt stores both axes and their rule,
+the exact dominance definition and tolerance, every candidate/action digest,
+signed coordinate pair, nondominated flag, dominator count, target-use status,
+and invariants that candidate geometry, hard admission, and execution did not
+change. Cartesian candidate coordinates are not embedded.
+
 ### Candidate-resolved geometric driving field
 
 The policy workbench also projects either any selected ledger term or the exact
