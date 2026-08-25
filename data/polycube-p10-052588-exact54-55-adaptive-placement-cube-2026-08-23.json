@@ -1,0 +1,78 @@
+{
+  "kind": "polycube_adaptive_placement_cube_range_audit",
+  "date": "2026-08-23",
+  "candidate": "p10-052588",
+  "outer_radius": 3,
+  "continuation_radius": 4,
+  "placement_counts": [54, 55],
+  "result": "unsat",
+  "classification": "placement_cube_range_exhausted",
+  "runner": "scripts/screen-polycube-placement-cube-range.mjs",
+  "run_configuration_sha256": "1577e79a3c333a0b0028f9f1a8d2e5eb0ad95ac1d9d9c426ce860852eca050aa",
+  "anchor_cell": "1,1,0",
+  "anchor_placement_candidates": 58,
+  "shared_formula_shape": {
+    "target_cells": 179,
+    "placements_considered": 8767,
+    "variables": 8767,
+    "constraints_per_leaf": 9898,
+    "applied_forbidden_clauses": 112,
+    "independently_replayed_accumulated_clauses": 176,
+    "cell_coverability_constraints": 56,
+    "lookahead_conflict_encoding": "grouped-pb",
+    "backend": "pb2bv-sat",
+    "pseudo_boolean_solver": "solver"
+  },
+  "covers": [
+    {
+      "placement_count": 54,
+      "placement_cube_base_formula_sha256": "5aea67e91f9b44336be39bf4a1f62369aad26b4be70061cf36b47d2c19005f53",
+      "initial_parts": 16,
+      "coarse_exhausted_indices": [0, 1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+      "coarse_timeout_indices_replaced_by_refinement": [3],
+      "refined_parts": 32,
+      "refined_exhausted_indices": [3, 19],
+      "branch_leaves": 17,
+      "initial_solver_launches": 18,
+      "covered_anchor_placement_candidates": 58,
+      "leaf_overlaps": 0,
+      "uncovered_anchor_placement_candidates": 0,
+      "maximum_resolved_leaf_check_milliseconds": 59877
+    },
+    {
+      "placement_count": 55,
+      "placement_cube_base_formula_sha256": "53f5a65bb0211d68a0137657225f154847cd32886f2064d1fa20cb65ee922533",
+      "initial_parts": 16,
+      "coarse_exhausted_indices": [1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+      "coarse_timeout_indices_replaced_by_refinement": [0, 3],
+      "refined_parts": 32,
+      "refined_exhausted_indices": [0, 3, 16, 19],
+      "branch_leaves": 18,
+      "initial_solver_launches": 20,
+      "covered_anchor_placement_candidates": 58,
+      "leaf_overlaps": 0,
+      "uncovered_anchor_placement_candidates": 0,
+      "maximum_resolved_leaf_check_milliseconds": 55598
+    }
+  ],
+  "coverage_verification": {
+    "tool": "scripts/verify-polycube-placement-cube-cover.mjs",
+    "certificates_accepted": 2,
+    "shared_formula_digests_identical_within_each_cover": true,
+    "shared_constraint_counts_identical": true
+  },
+  "resumability_verification": {
+    "initial_solver_launches": 38,
+    "initial_resumed_branches": 0,
+    "replay_solver_launches": 0,
+    "replay_resumed_branches": 38,
+    "replay_classification": "placement_cube_range_exhausted"
+  },
+  "previous_verified_copy_bound": 53,
+  "new_verified_copy_bound": 55,
+  "copy_56_exhausted": false,
+  "unrestricted_radius_3_space_exhausted": false,
+  "certified_non_tiler": false,
+  "certified_aperiodic": false,
+  "interpretation": "One contiguous adaptive range run closes exact counts 54 and 55, entering 55 only after the exact-54 leaf union verifies. Together with the prior <=53 certificate this establishes bounded exhaustion through 55 copies. Copy 56 and unrestricted radius three remain open, so this proves neither non-tiling nor aperiodicity."
+}

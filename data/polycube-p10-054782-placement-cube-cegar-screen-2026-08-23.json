@@ -1,0 +1,90 @@
+{
+  "kind": "polycube_placement_cube_cegar_screen",
+  "candidate": "p10-054782",
+  "candidate_key": "0,0,0;0,0,1;0,0,2;0,1,0;0,1,2;0,2,2;1,0,2;1,1,1;1,2,1;1,2,2",
+  "outer_layer": 3,
+  "inner_layer": 4,
+  "placement_count": 41,
+  "anchor_cell": "1,1,0",
+  "anchor_placement_candidates": 66,
+  "classification": "cegar_round_limit",
+  "protocol": {
+    "initial_parts": 16,
+    "maximum_parts": 128,
+    "pre_refine_indices": [0, 2, 3],
+    "same_leaf_retries": 1,
+    "branch_timeout_milliseconds": 60000,
+    "continuation_node_limit": 1000000,
+    "continuation_time_limit_milliseconds": 60000,
+    "continuation_budget_clock": "cpu",
+    "symmetry_clauses": true,
+    "learn_cell_coverability": true,
+    "plain_clause_replay": {
+      "nogoods": false,
+      "conflict_backjumping": false
+    }
+  },
+  "rounds": [
+    {
+      "round": 0,
+      "proposal_placements": 41,
+      "proposal_placement_cube": { "parts": 16, "index": 1, "selected_anchor_candidates": 5 },
+      "proposal_sha256": "f4246f825ecd4af18560aae02a3580af070903b5c04be3503665626f66c82b40",
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 1,
+      "immediate_obstructions": 13,
+      "clauses_added": 12,
+      "cells_added": 13,
+      "new_clause_replay": "verified"
+    },
+    {
+      "round": 1,
+      "proposal_placements": 41,
+      "proposal_placement_cube": { "parts": 32, "index": 0, "selected_anchor_candidates": 3 },
+      "proposal_sha256": "59f44fae17009070d4ddd8c1c3db3f2b1bdde621702af7eff7511b7b65e535e6",
+      "continuation_success": false,
+      "continuation_exhausted": true,
+      "continuation_nodes": 1,
+      "immediate_obstructions": 14,
+      "clauses_added": 13,
+      "cells_added": 14,
+      "new_clause_replay": "verified",
+      "localized_before_next_proposal": {
+        "exhausted_singleton_cubes": [
+          { "parts": 128, "index": 1, "check_milliseconds": 2252 },
+          { "parts": 64, "index": 17, "check_milliseconds": 2914 }
+        ],
+        "open_singleton_cubes_after_retry": [
+          { "parts": 128, "index": 65, "check_milliseconds": 60811 },
+          { "parts": 64, "index": 33, "check_milliseconds": 60148 },
+          { "parts": 64, "index": 49, "check_milliseconds": 60060 }
+        ]
+      }
+    }
+  ],
+  "feedback": {
+    "initial_clauses": 20,
+    "initial_cells": 20,
+    "final_clauses": 45,
+    "final_cells": 47,
+    "clause_report": "data/polycube-p10-054782-placement-cube-cegar-clauses-2026-08-23.json",
+    "clause_report_sha256": "25f1f753579e3f83e5a0ce88fbaa11df09341e217abf17d3721bdfed509bd95b",
+    "cell_report": "data/polycube-p10-054782-placement-cube-cegar-cells-2026-08-23.json",
+    "cell_report_sha256": "ca3bd639ea61fab3116cc4fa26d367acdd0f8f7e0c207fea045abd833002c198",
+    "plain_clause_replay_report": "data/polycube-p10-054782-placement-cube-cegar-clause-replay-2026-08-23.json",
+    "plain_clause_replay_report_sha256": "b186b2fca2eeed68cd2f5d206a05beb44e5410d150272ace6de43abbf81371f1",
+    "plain_clause_replay": {
+      "classification": "verified",
+      "clauses": 45,
+      "verified_clauses": 45,
+      "failed_clauses": 0,
+      "incomplete_clauses": 0,
+      "total_nodes": 58
+    }
+  },
+  "formula": {
+    "base_sha256": "61ed95e3543ce169c472e54b9f01ed7c0ead747f7cdf7ab2ecd93e32a0da3f65"
+  },
+  "warning": "Two exact radius-three proposals were rejected at radius four, but exact count 41 remains open. This is neither a non-tiling nor an aperiodicity certificate."
+}

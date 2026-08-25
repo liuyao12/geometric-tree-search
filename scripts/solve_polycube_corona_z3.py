@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 
 import argparse
+import hashlib
 import itertools
 import json
+import sys
 import time
 from pathlib import Path
 
@@ -117,23 +119,100 @@ def parse_cell_key(key):
     return cell
 
 
+def cell_key(cell):
+    return ",".join(str(value) for value in cell)
+
+
+def canonical_pair_key(pair):
+    return ";".join(cell_key(cell) for cell in sorted(pair))
+
+
+def cell_token(cell):
+    return "_".join(f"m{-value}" if value < 0 else f"p{value}" for value in cell)
+
+
 def main():
     parser = argparse.ArgumentParser(description="Solve a finite polycube corona as an exact pseudo-Boolean cover in Z3.")
     parser.add_argument("--key", required=True)
     parser.add_argument("--layer", type=int, default=5)
     parser.add_argument("--timeout-ms", type=int, default=300_000)
+    parser.add_argument("--max-witnesses", type=int, default=1)
     parser.add_argument("--backend", choices=("smt", "qffpbv", "pb2bv-sat"), default="smt")
+    parser.add_argument(
+        "--pb-solver",
+        choices=("solver", "totalizer", "sorting", "binary_merge", "segmented", "circuit"),
+        default="solver",
+    )
     parser.add_argument("--random-seed", type=int, default=0)
+    parser.add_argument("--min-placements", type=int)
     parser.add_argument("--max-placements", type=int)
+    parser.add_argument("--placement-cube-cell")
+    parser.add_argument("--placement-cube-parts", type=int)
+    parser.add_argument("--placement-cube-index", type=int)
+    parser.add_argument("--required-placement-report")
     parser.add_argument("--require-next-layer-coverability", action="store_true")
+    parser.add_argument("--cell-coverability-report")
     parser.add_argument("--pair-coverability-report")
+    parser.add_argument("--pair-soft-minimum", type=int)
+    parser.add_argument("--pair-soft-orbit-minimum", type=int)
+    parser.add_argument("--triple-coverability-report")
+    parser.add_argument("--quadruple-coverability-report")
+    parser.add_argument("--triple-encoding", choices=("dnf", "choice-cnf"), default="choice-cnf")
     parser.add_argument("--pair-encoding", choices=("dnf", "choice-cnf", "witness-cnf"), default="dnf")
+    parser.add_argument("--lookahead-conflict-encoding", choices=("edge-cnf", "grouped-pb"), default="edge-cnf")
+    parser.add_argument("--exact-availability", action="store_true")
+    parser.add_argument("--propagate-values", action="store_true")
     parser.add_argument("--root-symmetry-breaking", action="store_true")
     parser.add_argument("--forbidden-clause-report")
+    parser.add_argument("--formula-cache")
+    parser.add_argument(
+        "--formula-cache-scope",
+        choices=("feedback", "next-ring-universe"),
+        default="feedback",
+    )
+    parser.add_argument("--interactive-jsonl", action="store_true")
+    parser.add_argument("--interactive-replace-pairs", action="store_true")
     parser.add_argument("--output")
     args = parser.parse_args()
-    if args.layer < 1 or args.timeout_ms < 1 or (args.max_placements is not None and args.max_placements < 1):
-        parser.error("layer, timeout, and max-placements (when supplied) must be positive")
+    if (args.layer < 1 or args.timeout_ms < 1 or args.max_witnesses < 1
+            or (args.min_placements is not None and args.min_placements < 1)
+            or (args.max_placements is not None and args.max_placements < 1)
+            or (args.pair_soft_minimum is not None and args.pair_soft_minimum < 1)
+            or (args.pair_soft_orbit_minimum is not None and args.pair_soft_orbit_minimum < 1)):
+        parser.error("layer, timeout, witness count, and placement bounds (when supplied) must be positive")
+    if (args.min_placements is not None and args.max_placements is not None
+            and args.min_placements > args.max_placements):
+        parser.error("min-placements cannot exceed max-placements")
+    cube_arguments = (
+        args.placement_cube_cell,
+        args.placement_cube_parts,
+        args.placement_cube_index,
+    )
+    if any(value is not None for value in cube_arguments) and not all(
+            value is not None for value in cube_arguments):
+        parser.error("placement cube cell, parts, and index must be supplied together")
+    if args.placement_cube_parts is not None and args.placement_cube_parts < 2:
+        parser.error("--placement-cube-parts must be at least 2")
+    if (args.placement_cube_index is not None
+            and not 0 <= args.placement_cube_index < args.placement_cube_parts):
+        parser.error("--placement-cube-index must be in [0, placement-cube-parts)")
+    if args.interactive_jsonl and args.max_witnesses != 1:
+        parser.error("interactive mode requires max-witnesses=1")
+    if args.interactive_replace_pairs and not args.interactive_jsonl:
+        parser.error("--interactive-replace-pairs requires --interactive-jsonl")
+    if args.pair_soft_minimum is not None and args.interactive_jsonl:
+        parser.error("--pair-soft-minimum is not yet supported with --interactive-jsonl")
+    if args.pair_soft_orbit_minimum is not None and args.interactive_jsonl:
+        parser.error("--pair-soft-orbit-minimum is not yet supported with --interactive-jsonl")
+    if args.pair_soft_minimum is not None and args.pair_soft_orbit_minimum is not None:
+        parser.error("pair soft constraint and orbit minimums are mutually exclusive")
+    if args.pb_solver != "solver" and args.backend != "pb2bv-sat":
+        parser.error("--pb-solver variants require --backend=pb2bv-sat")
+    if args.formula_cache_scope == "next-ring-universe" and not args.formula_cache:
+        parser.error("--formula-cache-scope=next-ring-universe requires --formula-cache")
+    if ((args.pair_soft_minimum is not None or args.pair_soft_orbit_minimum is not None)
+            and not args.pair_coverability_report):
+        parser.error("pair soft minimums require --pair-coverability-report")
 
     started = time.perf_counter()
     root = parse_key(args.key)
@@ -148,25 +227,150 @@ def main():
         ";".join(sorted(",".join(str(value) for value in cell) for cell in placement)): index
         for index, placement in enumerate(placements)
     }
+    placement_key_by_index = [None] * len(placements)
+    for key, index in placement_index_by_key.items():
+        placement_key_by_index[index] = key
+    required_placement_keys = []
+    required_placement_indices = []
+    required_placement_cells = set()
+    if args.required_placement_report:
+        required_report = json.loads(Path(args.required_placement_report).read_text(encoding="utf-8"))
+        required_placement_keys = (
+            required_report.get("placement_keys", required_report.get("placements", []))
+            if isinstance(required_report, dict)
+            else required_report
+        )
+        if not isinstance(required_placement_keys, list) or not required_placement_keys:
+            raise ValueError("Required placement report must contain a nonempty placement_keys list")
+        required_placement_keys = sorted(set(str(key) for key in required_placement_keys))
+        for key in required_placement_keys:
+            try:
+                index = placement_index_by_key[key]
+            except KeyError as error:
+                raise ValueError(f"Required placement report contains an unknown placement: {key}") from error
+            required_placement_indices.append(index)
+            required_placement_cells.update(placements[index])
+    cell_coverability = []
+    if args.cell_coverability_report:
+        cell_report = json.loads(Path(args.cell_coverability_report).read_text(encoding="utf-8"))
+        cell_coverability = cell_report.get("cells", cell_report) if isinstance(cell_report, dict) else cell_report
+        if not isinstance(cell_coverability, list):
+            raise ValueError("Cell coverability report must contain a cells list")
+    cell_report_keys = sorted({cell_key(parse_cell_key(cell)) for cell in cell_coverability})
+    pair_coverability = []
+    pair_soft_orbit_groups = []
+    if args.pair_coverability_report:
+        pair_report = json.loads(Path(args.pair_coverability_report).read_text(encoding="utf-8"))
+        pair_coverability = pair_report.get("pairs", pair_report) if isinstance(pair_report, dict) else pair_report
+        if not isinstance(pair_coverability, list):
+            raise ValueError("Pair coverability report must contain a pairs list")
+        if isinstance(pair_report, dict):
+            pair_soft_orbit_groups = pair_report.get("orbit_groups", [])
+            if not isinstance(pair_soft_orbit_groups, list):
+                raise ValueError("Pair coverability orbit_groups must be a list")
+    pair_report_keys = set()
+    for pair_number, pair in enumerate(pair_coverability):
+        if not isinstance(pair, list) or len(pair) != 2:
+            raise ValueError(f"Pair coverability entry {pair_number} must contain two cell keys")
+        pair_report_keys.add(canonical_pair_key(tuple(parse_cell_key(cell) for cell in pair)))
+    cache_path = Path(args.formula_cache) if args.formula_cache else None
+    cache_metadata_path = Path(f"{args.formula_cache}.json") if args.formula_cache else None
+    universe_formula_cache = args.formula_cache_scope == "next-ring-universe"
+    cache_signature_fields = {
+        "version": 5 if universe_formula_cache else 4,
+        "key": args.key,
+        "layer": args.layer,
+        "min_placements": args.min_placements,
+        "max_placements": args.max_placements,
+        "lookahead_conflict_encoding": args.lookahead_conflict_encoding,
+        "exact_availability": args.exact_availability,
+        "root_symmetry_breaking": args.root_symmetry_breaking,
+    }
+    if universe_formula_cache:
+        cache_signature_fields["scope"] = args.formula_cache_scope
+    else:
+        cache_signature_fields.update({
+            "require_next_layer_coverability": args.require_next_layer_coverability,
+            "cell_coverability": cell_report_keys,
+            "pair_encoding": args.pair_encoding,
+            "pair_soft_minimum": args.pair_soft_minimum,
+            "pair_soft_orbit_minimum": args.pair_soft_orbit_minimum,
+            "pair_soft_orbit_groups": pair_soft_orbit_groups,
+            "interactive_replace_pairs": args.interactive_replace_pairs,
+        })
+    cache_signature = json.dumps(cache_signature_fields, sort_keys=True)
+    cache_metadata = None
+    if cache_path and cache_path.is_file() and cache_metadata_path.is_file():
+        candidate_metadata = json.loads(cache_metadata_path.read_text(encoding="utf-8"))
+        cached_pair_keys = set(candidate_metadata.get("pair_keys", ()))
+        if (candidate_metadata.get("signature") == cache_signature
+                and (universe_formula_cache
+                     or args.interactive_replace_pairs
+                     or cached_pair_keys.issubset(pair_report_keys))):
+            cache_metadata = candidate_metadata
     if args.backend == "qffpbv":
         solver = z3.Tactic("qffpbv").solver()
     elif args.backend == "pb2bv-sat":
-        sat_tactic = z3.With(z3.Tactic("sat"), random_seed=args.random_seed)
-        solver = z3.Then("simplify", "pb-preprocess", "pb2bv", sat_tactic).solver()
+        pb_tactic = z3.With(z3.Tactic("pb2bv"), "pb.solver", args.pb_solver)
+        sat_tactic = z3.With(
+            z3.Tactic("sat"),
+            "random_seed", args.random_seed,
+            "pb.solver", args.pb_solver,
+        )
+        preprocessing = [z3.Tactic("simplify")]
+        if args.propagate_values:
+            preprocessing.append(z3.Tactic("propagate-values"))
+        preprocessing.append(z3.Tactic("pb-preprocess"))
+        solver = z3.Then(*preprocessing, pb_tactic, sat_tactic).solver()
     else:
         solver = z3.Solver()
     solver.set(timeout=args.timeout_ms)
+    formula_cache_hit = cache_metadata is not None
+    cached_pair_keys = (
+        set()
+        if universe_formula_cache
+        else set(cache_metadata.get("pair_keys", ())) if cache_metadata else set()
+    )
+    formula_cache_load_ms = 0
+    if formula_cache_hit:
+        cache_load_started = time.perf_counter()
+        solver.from_file(str(cache_path))
+        formula_cache_load_ms = round((time.perf_counter() - cache_load_started) * 1000)
     for cell in sorted(target):
         indices = by_cell.get(cell, [])
+        if formula_cache_hit:
+            continue
         if not indices:
             solver.add(z3.BoolVal(False))
         else:
             solver.add(z3.PbEq([(variables[index], 1) for index in indices], 1))
     for cell, indices in sorted(by_cell.items()):
-        if cell not in target and len(indices) > 1:
+        if not formula_cache_hit and cell not in target and len(indices) > 1:
             solver.add(z3.PbLe([(variables[index], 1) for index in indices], 1))
-    if args.max_placements is not None:
-        solver.add(z3.PbLe([(variable, 1) for variable in variables], args.max_placements))
+    placement_terms = [(variable, 1) for variable in variables]
+    if (not formula_cache_hit and args.min_placements is not None
+            and args.min_placements == args.max_placements):
+        solver.add(z3.PbEq(placement_terms, args.min_placements))
+    else:
+        if not formula_cache_hit and args.min_placements is not None:
+            solver.add(z3.PbGe(placement_terms, args.min_placements))
+        if not formula_cache_hit and args.max_placements is not None:
+            solver.add(z3.PbLe(placement_terms, args.max_placements))
+    placement_cube_cell = parse_cell_key(args.placement_cube_cell) if args.placement_cube_cell else None
+    placement_cube_candidates = []
+    placement_cube_selected = []
+    if placement_cube_cell is not None:
+        if placement_cube_cell not in target:
+            parser.error("--placement-cube-cell must be a primary target cell")
+        if placement_cube_cell in required_placement_cells:
+            parser.error("--placement-cube-cell must not already be covered by a required placement")
+        placement_cube_candidates = sorted(
+            index for index in by_cell.get(placement_cube_cell, ())
+            if all(cell not in required_placement_cells for cell in placements[index])
+        )
+        placement_cube_selected = placement_cube_candidates[args.placement_cube_index::args.placement_cube_parts]
+        if not placement_cube_selected:
+            parser.error("selected placement cube is empty")
     root_stabilizer_size = 1
     symmetry_breaking_constraints = 0
     if args.root_symmetry_breaking:
@@ -179,42 +383,122 @@ def main():
             prefix_equal = z3.BoolVal(True)
             for index, image_index in enumerate(permutation):
                 image = variables[image_index]
-                solver.add(z3.Implies(prefix_equal, z3.Or(z3.Not(variables[index]), image)))
+                if not formula_cache_hit:
+                    solver.add(z3.Implies(prefix_equal, z3.Or(z3.Not(variables[index]), image)))
                 symmetry_breaking_constraints += 1
                 if index + 1 < len(permutation):
                     next_prefix = z3.Bool(f"lex_{symmetry_index}_{index + 1}")
-                    solver.add(next_prefix == z3.And(
-                        prefix_equal,
-                        variables[index] == image
-                    ))
+                    if not formula_cache_hit:
+                        solver.add(next_prefix == z3.And(
+                            prefix_equal,
+                            variables[index] == image
+                        ))
                     symmetry_breaking_constraints += 1
                     prefix_equal = next_prefix
     lookahead_target_count = 0
     lookahead_raw_placement_count = 0
     lookahead_placement_count = 0
     lookahead_conflict_count = 0
-    pair_coverability = []
-    if args.pair_coverability_report:
-        pair_report = json.loads(Path(args.pair_coverability_report).read_text(encoding="utf-8"))
-        pair_coverability = pair_report.get("pairs", pair_report) if isinstance(pair_report, dict) else pair_report
-        if not isinstance(pair_coverability, list):
-            raise ValueError("Pair coverability report must contain a pairs list")
+    lookahead_conflict_group_count = 0
+    triple_coverability = []
+    if args.triple_coverability_report:
+        triple_report = json.loads(Path(args.triple_coverability_report).read_text(encoding="utf-8"))
+        triple_coverability = triple_report.get("triples", triple_report) if isinstance(triple_report, dict) else triple_report
+        if not isinstance(triple_coverability, list):
+            raise ValueError("Triple coverability report must contain a triples list")
+    quadruple_coverability = []
+    if args.quadruple_coverability_report:
+        quadruple_report = json.loads(Path(args.quadruple_coverability_report).read_text(encoding="utf-8"))
+        quadruple_coverability = quadruple_report.get("quadruples", quadruple_report) if isinstance(quadruple_report, dict) else quadruple_report
+        if not isinstance(quadruple_coverability, list):
+            raise ValueError("Quadruple coverability report must contain a quadruples list")
     pair_coverability_count = 0
-    pair_coverability_terms = 0
-    pair_coverability_choice_variables = 0
-    pair_coverability_incompatibilities = 0
-    if args.require_next_layer_coverability or pair_coverability:
+    cached_pair_stats = cache_metadata.get("pair_stats", {}) if cache_metadata else {}
+    pair_coverability_terms = int(cached_pair_stats.get("terms", 0))
+    pair_coverability_choice_variables = int(cached_pair_stats.get("choice_variables", 0))
+    pair_coverability_incompatibilities = int(cached_pair_stats.get("incompatibilities", 0))
+    triple_coverability_count = 0
+    triple_coverability_terms = 0
+    triple_coverability_choice_variables = 0
+    triple_coverability_incompatibilities = 0
+    quadruple_coverability_count = 0
+    quadruple_coverability_choice_variables = 0
+    quadruple_coverability_incompatibilities = 0
+    pair_soft_orbit_variables = []
+    cell_coverability_count = 0
+    formula_cache_write_ms = 0
+    formula_cache_pairs_added = 0
+    if (universe_formula_cache or args.interactive_jsonl or args.require_next_layer_coverability or cell_coverability or pair_coverability
+            or triple_coverability or quadruple_coverability):
         next_target, next_placements = enumerate_placements(root, args.layer + 1)
         next_ring = next_target - target
+        normalized_cells = set()
+        for cell_number, raw_cell_key in enumerate(cell_coverability):
+            cell = parse_cell_key(raw_cell_key)
+            if cell not in next_ring:
+                raise ValueError(f"Cell coverability entry {cell_number} is not a next-ring cell")
+            normalized_cells.add(cell)
+        normalized_pairs = set()
+        for pair_number, pair in enumerate(pair_coverability):
+            if not isinstance(pair, list) or len(pair) != 2:
+                raise ValueError(f"Pair coverability entry {pair_number} must contain two cell keys")
+            cells = tuple(sorted((parse_cell_key(pair[0]), parse_cell_key(pair[1]))))
+            if cells[0] == cells[1] or cells[0] not in next_ring or cells[1] not in next_ring:
+                raise ValueError(f"Pair coverability entry {pair_number} is not a distinct next-ring cell pair")
+            normalized_pairs.add(cells)
+        normalized_soft_orbit_groups = []
+        for group_number, group in enumerate(pair_soft_orbit_groups):
+            if not isinstance(group, list) or not group:
+                raise ValueError(f"Pair soft orbit group {group_number} must be a nonempty list")
+            normalized_group = []
+            for pair_number, pair in enumerate(group):
+                if not isinstance(pair, list) or len(pair) != 2:
+                    raise ValueError(
+                        f"Pair soft orbit group {group_number} entry {pair_number} must contain two cell keys"
+                    )
+                cells = tuple(sorted((parse_cell_key(pair[0]), parse_cell_key(pair[1]))))
+                if cells not in normalized_pairs:
+                    raise ValueError(
+                        f"Pair soft orbit group {group_number} contains a pair absent from pairs"
+                    )
+                normalized_group.append(cells)
+            normalized_soft_orbit_groups.append(tuple(sorted(set(normalized_group))))
+        normalized_triples = set()
+        for triple_number, triple in enumerate(triple_coverability):
+            if not isinstance(triple, list) or len(triple) != 3:
+                raise ValueError(f"Triple coverability entry {triple_number} must contain three cell keys")
+            cells = tuple(sorted(parse_cell_key(cell) for cell in triple))
+            if len(set(cells)) != 3 or any(cell not in next_ring for cell in cells):
+                raise ValueError(f"Triple coverability entry {triple_number} is not a distinct next-ring cell triple")
+            normalized_triples.add(cells)
+        normalized_quadruples = set()
+        for quadruple_number, quadruple in enumerate(quadruple_coverability):
+            if not isinstance(quadruple, list) or len(quadruple) != 4:
+                raise ValueError(f"Quadruple coverability entry {quadruple_number} must contain four cell keys")
+            cells = tuple(sorted(parse_cell_key(cell) for cell in quadruple))
+            if len(set(cells)) != 4 or any(cell not in next_ring for cell in cells):
+                raise ValueError(f"Quadruple coverability entry {quadruple_number} is not a distinct next-ring cell quadruple")
+            normalized_quadruples.add(cells)
+        constrained_cells = set(next_ring) if args.require_next_layer_coverability else set(normalized_cells)
+        for pair in normalized_pairs:
+            constrained_cells.update(pair)
+        for triple in normalized_triples:
+            constrained_cells.update(triple)
+        for quadruple in normalized_quadruples:
+            constrained_cells.update(quadruple)
+        availability_cells = set(next_ring) if universe_formula_cache else constrained_cells
         next_by_cell = {}
         for index, placement in enumerate(next_placements):
             for cell in placement:
-                if cell in next_ring:
+                if cell in availability_cells or (args.interactive_jsonl and cell in next_ring):
                     next_by_cell.setdefault(cell, []).append(index)
-        relevant_indices = sorted(set(itertools.chain.from_iterable(next_by_cell.values())))
+        relevant_indices = sorted(set(itertools.chain.from_iterable(
+            next_by_cell.get(cell, ()) for cell in constrained_cells
+        )))
+        potential_indices = sorted(set(itertools.chain.from_iterable(next_by_cell.values())))
         outer_index_by_placement = {placement: index for index, placement in enumerate(placements)}
         conflict_sets = {}
-        for index in relevant_indices:
+        for index in potential_indices:
             placement = next_placements[index]
             same_outer_index = outer_index_by_placement.get(placement)
             conflicts = set()
@@ -225,8 +509,9 @@ def main():
             conflict_sets[index] = frozenset(conflicts)
         retained_by_cell = {}
         retained_indices = set()
-        for cell in sorted(next_ring):
-            if pair_coverability:
+        retained_cells = next_ring if (universe_formula_cache or args.interactive_jsonl) else constrained_cells
+        for cell in sorted(retained_cells):
+            if pair_coverability or triple_coverability or quadruple_coverability or args.formula_cache:
                 retained = list(next_by_cell.get(cell, ()))
             else:
                 representative_by_conflicts = {}
@@ -238,28 +523,87 @@ def main():
                     if not any(other < conflicts for other, _ in unique)
                 ]
             retained_by_cell[cell] = retained
-            retained_indices.update(retained)
-        availability = {index: z3.Bool(f"a_{index}") for index in sorted(retained_indices)}
-        for index in sorted(retained_indices):
-            conflicts = conflict_sets[index]
-            for conflict in sorted(conflicts):
-                solver.add(z3.Or(z3.Not(availability[index]), z3.Not(variables[conflict])))
-                lookahead_conflict_count += 1
-        for cell in sorted(next_ring):
+            if cell in availability_cells:
+                retained_indices.update(retained)
+        availability = {}
+
+        def ensure_availability(indices):
+            nonlocal lookahead_conflict_count
+            nonlocal lookahead_conflict_group_count
+            new_indices = sorted(set(indices) - set(availability))
+            for index in new_indices:
+                availability[index] = z3.Bool(f"a_{index}")
+            conflicts_by_outer = {}
+            for index in new_indices:
+                for conflict in sorted(conflict_sets[index]):
+                    conflicts_by_outer.setdefault(conflict, []).append(index)
+                    lookahead_conflict_count += 1
+            if args.lookahead_conflict_encoding == "grouped-pb":
+                for conflict, grouped_indices in sorted(conflicts_by_outer.items()):
+                    if not formula_cache_hit:
+                        solver.add(z3.PbLe(
+                            [(variables[conflict], len(grouped_indices))]
+                            + [(availability[index], 1) for index in grouped_indices],
+                            len(grouped_indices)
+                        ))
+                    lookahead_conflict_group_count += 1
+            else:
+                for conflict, grouped_indices in sorted(conflicts_by_outer.items()):
+                    for index in grouped_indices:
+                        if not formula_cache_hit:
+                            solver.add(z3.Or(z3.Not(availability[index]), z3.Not(variables[conflict])))
+            if args.exact_availability and not formula_cache_hit:
+                for index in new_indices:
+                    solver.add(z3.Or(
+                        availability[index],
+                        *[variables[conflict] for conflict in sorted(conflict_sets[index])]
+                    ))
+            return new_indices
+
+        ensure_availability(retained_indices)
+        if universe_formula_cache and cache_path and not formula_cache_hit:
+            cache_write_started = time.perf_counter()
+            cache_path.parent.mkdir(parents=True, exist_ok=True)
+            cache_temporary = Path(f"{cache_path}.tmp")
+            metadata_temporary = Path(f"{cache_metadata_path}.tmp")
+            cache_temporary.write_text(solver.sexpr(), encoding="utf-8")
+            cache_temporary.replace(cache_path)
+            metadata_temporary.write_text(json.dumps({
+                "signature": cache_signature,
+                "pair_keys": [],
+                "pair_stats": {
+                    "terms": 0,
+                    "choice_variables": 0,
+                    "incompatibilities": 0,
+                },
+            }, indent=2) + "\n", encoding="utf-8")
+            metadata_temporary.replace(cache_metadata_path)
+            formula_cache_write_ms = round((time.perf_counter() - cache_write_started) * 1000)
+        coverability_cells = set(next_ring) if args.require_next_layer_coverability else normalized_cells
+        for cell in sorted(coverability_cells):
             candidates = [availability[index] for index in retained_by_cell.get(cell, ())]
-            solver.add(z3.Or(candidates) if candidates else z3.BoolVal(False))
-        normalized_pairs = set()
-        for pair_number, pair in enumerate(pair_coverability):
-            if not isinstance(pair, list) or len(pair) != 2:
-                raise ValueError(f"Pair coverability entry {pair_number} must contain two cell keys")
-            cells = tuple(sorted((parse_cell_key(pair[0]), parse_cell_key(pair[1]))))
-            if cells[0] == cells[1] or cells[0] not in next_ring or cells[1] not in next_ring:
-                raise ValueError(f"Pair coverability entry {pair_number} is not a distinct next-ring cell pair")
-            normalized_pairs.add(cells)
+            if universe_formula_cache or not formula_cache_hit:
+                solver.add(z3.Or(candidates) if candidates else z3.BoolVal(False))
         placement_cell_sets = {
-            index: frozenset(next_placements[index]) for index in relevant_indices
+            index: frozenset(next_placements[index]) for index in potential_indices
         }
-        for pair_index, (left_cell, right_cell) in enumerate(sorted(normalized_pairs)):
+        def pair_activation(left_cell, right_cell):
+            return z3.Bool(f"pair_active_{cell_token(left_cell)}__{cell_token(right_cell)}")
+
+        def encode_pair_constraint(left_cell, right_cell):
+            nonlocal pair_coverability_terms
+            nonlocal pair_coverability_choice_variables
+            nonlocal pair_coverability_incompatibilities
+            pair_name = f"{cell_token(left_cell)}__{cell_token(right_cell)}"
+            activation = pair_activation(left_cell, right_cell) if (
+                args.interactive_replace_pairs
+                or args.pair_soft_minimum is not None
+                or args.pair_soft_orbit_minimum is not None
+            ) else None
+
+            def add_pair_formula(formula):
+                solver.add(z3.Implies(activation, formula) if activation is not None else formula)
+
             if args.pair_encoding == "witness-cnf":
                 left_indices = retained_by_cell.get(left_cell, ())
                 right_indices = retained_by_cell.get(right_cell, ())
@@ -276,57 +620,176 @@ def main():
                     ]
                     if not compatible:
                         continue
-                    witness = z3.Bool(f"w_{pair_index}_{left_index}")
-                    witness_choices.append(witness)
-                    solver.add(z3.Or(z3.Not(witness), availability[left_index]))
-                    solver.add(z3.Or(z3.Not(witness), z3.Or(compatible)))
+                    witness_variable = z3.Bool(f"w_{pair_name}_{left_index}")
+                    witness_choices.append(witness_variable)
+                    add_pair_formula(z3.Or(z3.Not(witness_variable), availability[left_index]))
+                    add_pair_formula(z3.Or(z3.Not(witness_variable), z3.Or(compatible)))
                     pair_coverability_terms += len(compatible)
-                solver.add(z3.Or(witness_choices) if witness_choices else z3.BoolVal(False))
+                add_pair_formula(z3.Or(witness_choices) if witness_choices else z3.BoolVal(False))
                 pair_coverability_choice_variables += len(witness_choices)
-                continue
+                return
             if args.pair_encoding == "choice-cnf":
                 left_choices = {
-                    index: z3.Bool(f"q_{pair_index}_l_{index}")
+                    index: z3.Bool(f"q_{pair_name}_l_{index}")
                     for index in retained_by_cell.get(left_cell, ())
                 }
                 right_choices = {
-                    index: z3.Bool(f"q_{pair_index}_r_{index}")
+                    index: z3.Bool(f"q_{pair_name}_r_{index}")
                     for index in retained_by_cell.get(right_cell, ())
                 }
-                solver.add(z3.Or(list(left_choices.values())) if left_choices else z3.BoolVal(False))
-                solver.add(z3.Or(list(right_choices.values())) if right_choices else z3.BoolVal(False))
+                add_pair_formula(z3.Or(list(left_choices.values())) if left_choices else z3.BoolVal(False))
+                add_pair_formula(z3.Or(list(right_choices.values())) if right_choices else z3.BoolVal(False))
                 for index, choice in itertools.chain(left_choices.items(), right_choices.items()):
-                    solver.add(z3.Or(z3.Not(choice), availability[index]))
+                    add_pair_formula(z3.Or(z3.Not(choice), availability[index]))
                 for left_index, left_choice in left_choices.items():
                     for right_index, right_choice in right_choices.items():
                         if left_index == right_index or placement_cell_sets[left_index].isdisjoint(
-                            placement_cell_sets[right_index]
-                        ):
+                                placement_cell_sets[right_index]):
                             continue
-                        solver.add(z3.Or(z3.Not(left_choice), z3.Not(right_choice)))
+                        add_pair_formula(z3.Or(z3.Not(left_choice), z3.Not(right_choice)))
                         pair_coverability_incompatibilities += 1
                 pair_coverability_choice_variables += len(left_choices) + len(right_choices)
-                continue
+                return
             compatible_terms = {}
             for left_index in retained_by_cell.get(left_cell, ()):
                 for right_index in retained_by_cell.get(right_cell, ()):
                     if left_index != right_index and not placement_cell_sets[left_index].isdisjoint(
-                        placement_cell_sets[right_index]
-                    ):
+                            placement_cell_sets[right_index]):
                         continue
-                    pair_key = tuple(sorted((left_index, right_index)))
-                    compatible_terms.setdefault(pair_key, (
+                    placement_pair = tuple(sorted((left_index, right_index)))
+                    compatible_terms.setdefault(placement_pair, (
                         availability[left_index]
                         if left_index == right_index
                         else z3.And(availability[left_index], availability[right_index])
                     ))
-            solver.add(z3.Or(list(compatible_terms.values())) if compatible_terms else z3.BoolVal(False))
+            add_pair_formula(z3.Or(list(compatible_terms.values())) if compatible_terms else z3.BoolVal(False))
             pair_coverability_terms += len(compatible_terms)
+
+        for left_cell, right_cell in sorted(normalized_pairs):
+            normalized_pair_key = canonical_pair_key((left_cell, right_cell))
+            if normalized_pair_key in cached_pair_keys:
+                continue
+            formula_cache_pairs_added += 1
+            encode_pair_constraint(left_cell, right_cell)
+        if args.pair_soft_minimum is not None:
+            if args.pair_soft_minimum > len(normalized_pairs):
+                raise ValueError(
+                    "pair soft minimum cannot exceed the pair-coverability constraint count"
+                )
+            solver.add(z3.PbGe([
+                (pair_activation(left_cell, right_cell), 1)
+                for left_cell, right_cell in sorted(normalized_pairs)
+            ], args.pair_soft_minimum))
+        if args.pair_soft_orbit_minimum is not None:
+            if args.pair_soft_orbit_minimum > len(normalized_soft_orbit_groups):
+                raise ValueError(
+                    "pair soft orbit minimum cannot exceed the pair orbit group count"
+                )
+            for group_index, group in enumerate(normalized_soft_orbit_groups):
+                group_variable = z3.Bool(f"pair_soft_orbit_{group_index}")
+                pair_soft_orbit_variables.append(group_variable)
+                for pair in group:
+                    solver.add(z3.Implies(group_variable, pair_activation(*pair)))
+            solver.add(z3.PbGe([
+                (variable, 1) for variable in pair_soft_orbit_variables
+            ], args.pair_soft_orbit_minimum))
+        if not universe_formula_cache and cache_path and (not formula_cache_hit or formula_cache_pairs_added):
+            cache_write_started = time.perf_counter()
+            cache_path.parent.mkdir(parents=True, exist_ok=True)
+            cache_temporary = Path(f"{cache_path}.tmp")
+            metadata_temporary = Path(f"{cache_metadata_path}.tmp")
+            cache_temporary.write_text(solver.sexpr(), encoding="utf-8")
+            cache_temporary.replace(cache_path)
+            metadata_temporary.write_text(json.dumps({
+                "signature": cache_signature,
+                "pair_keys": sorted(
+                    cached_pair_keys
+                    | {canonical_pair_key(pair) for pair in normalized_pairs}
+                ),
+                "pair_stats": {
+                    "terms": pair_coverability_terms,
+                    "choice_variables": pair_coverability_choice_variables,
+                    "incompatibilities": pair_coverability_incompatibilities,
+                },
+            }, indent=2) + "\n", encoding="utf-8")
+            metadata_temporary.replace(cache_metadata_path)
+            formula_cache_write_ms = round((time.perf_counter() - cache_write_started) * 1000)
+        for triple_index, (left_cell, middle_cell, right_cell) in enumerate(sorted(normalized_triples)):
+            if args.triple_encoding == "choice-cnf":
+                choice_groups = []
+                for side, cell in enumerate((left_cell, middle_cell, right_cell)):
+                    choices = {
+                        index: z3.Bool(f"t_{triple_index}_{side}_{index}")
+                        for index in retained_by_cell.get(cell, ())
+                    }
+                    solver.add(z3.Or(list(choices.values())) if choices else z3.BoolVal(False))
+                    for index, choice in choices.items():
+                        solver.add(z3.Or(z3.Not(choice), availability[index]))
+                    choice_groups.append(choices)
+                    triple_coverability_choice_variables += len(choices)
+                for left_group_index in range(3):
+                    for right_group_index in range(left_group_index + 1, 3):
+                        for left_index, left_choice in choice_groups[left_group_index].items():
+                            for right_index, right_choice in choice_groups[right_group_index].items():
+                                if left_index == right_index or placement_cell_sets[left_index].isdisjoint(
+                                    placement_cell_sets[right_index]
+                                ):
+                                    continue
+                                solver.add(z3.Or(z3.Not(left_choice), z3.Not(right_choice)))
+                                triple_coverability_incompatibilities += 1
+                continue
+            compatible_terms = {}
+            for left_index in retained_by_cell.get(left_cell, ()):
+                for middle_index in retained_by_cell.get(middle_cell, ()):
+                    if left_index != middle_index and not placement_cell_sets[left_index].isdisjoint(
+                        placement_cell_sets[middle_index]
+                    ):
+                        continue
+                    for right_index in retained_by_cell.get(right_cell, ()):
+                        if ((left_index != right_index and not placement_cell_sets[left_index].isdisjoint(
+                                placement_cell_sets[right_index]
+                            ))
+                                or (middle_index != right_index and not placement_cell_sets[middle_index].isdisjoint(
+                                    placement_cell_sets[right_index]
+                                ))):
+                            continue
+                        indices = tuple(sorted(set((left_index, middle_index, right_index))))
+                        compatible_terms.setdefault(indices, z3.And([
+                            availability[index] for index in indices
+                        ]))
+            solver.add(z3.Or(list(compatible_terms.values())) if compatible_terms else z3.BoolVal(False))
+            triple_coverability_terms += len(compatible_terms)
+        for quadruple_index, quadruple in enumerate(sorted(normalized_quadruples)):
+            choice_groups = []
+            for side, cell in enumerate(quadruple):
+                choices = {
+                    index: z3.Bool(f"u_{quadruple_index}_{side}_{index}")
+                    for index in retained_by_cell.get(cell, ())
+                }
+                solver.add(z3.Or(list(choices.values())) if choices else z3.BoolVal(False))
+                for index, choice in choices.items():
+                    solver.add(z3.Or(z3.Not(choice), availability[index]))
+                choice_groups.append(choices)
+                quadruple_coverability_choice_variables += len(choices)
+            for left_group_index in range(4):
+                for right_group_index in range(left_group_index + 1, 4):
+                    for left_index, left_choice in choice_groups[left_group_index].items():
+                        for right_index, right_choice in choice_groups[right_group_index].items():
+                            if left_index == right_index or placement_cell_sets[left_index].isdisjoint(
+                                placement_cell_sets[right_index]
+                            ):
+                                continue
+                            solver.add(z3.Or(z3.Not(left_choice), z3.Not(right_choice)))
+                            quadruple_coverability_incompatibilities += 1
         pair_coverability_count = len(normalized_pairs)
-        lookahead_target_count = len(next_ring)
+        triple_coverability_count = len(normalized_triples)
+        quadruple_coverability_count = len(normalized_quadruples)
+        cell_coverability_count = len(coverability_cells)
+        lookahead_target_count = len(constrained_cells)
         lookahead_raw_placement_count = len(relevant_indices)
         lookahead_placement_count = len(retained_indices)
     forbidden_clauses = []
+    forbidden_clause_keys = set()
     if args.forbidden_clause_report:
         clause_report = json.loads(Path(args.forbidden_clause_report).read_text(encoding="utf-8"))
         forbidden_clauses = clause_report.get("clauses", clause_report) if isinstance(clause_report, dict) else clause_report
@@ -337,33 +800,329 @@ def main():
                 indices = sorted(set(placement_index_by_key[str(key)] for key in clause))
             except KeyError as error:
                 raise ValueError(f"Forbidden clause {clause_number} contains an unknown placement: {error.args[0]}") from error
+            forbidden_clause_keys.add(tuple(sorted(str(key) for key in clause)))
             solver.add(z3.PbLe([(variables[index], 1) for index in indices], len(indices) - 1))
 
+    placement_cube_base_formula_sha256 = None
+    for index in required_placement_indices:
+        solver.add(variables[index])
+    if placement_cube_selected:
+        # Hash and cache only the common formula. The branch-local assumption
+        # comes last so independent leaves can be compared and safely united.
+        placement_cube_base_formula_sha256 = hashlib.sha256(
+            solver.sexpr().encode("utf-8")
+        ).hexdigest()
+        solver.add(z3.Or([variables[index] for index in placement_cube_selected]))
+
     constraint_count = len(solver.assertions())
-    status = solver.check()
-    elapsed_ms = round((time.perf_counter() - started) * 1000)
-    selected = []
-    if status == z3.sat:
+    construction_ms = round((time.perf_counter() - started) * 1000)
+    if args.interactive_jsonl:
+        active_cells = set(coverability_cells)
+        normalized_pair_keys = {canonical_pair_key(pair) for pair in normalized_pairs}
+        encoded_pair_keys = set(cached_pair_keys) | normalized_pair_keys
+        pair_cells_by_key = {
+            canonical_pair_key(pair): pair for pair in normalized_pairs
+        }
+        for key in cached_pair_keys:
+            pair_cells_by_key.setdefault(
+                key,
+                tuple(parse_cell_key(cell) for cell in key.split(";"))
+            )
+        active_pair_keys = set(normalized_pair_keys)
+        pending_transaction = None
+
+        def transaction_snapshot():
+            return {
+                "availability_keys": set(availability),
+                "forbidden_clause_keys": set(forbidden_clause_keys),
+                "active_cells": set(active_cells),
+                "encoded_pair_keys": set(encoded_pair_keys),
+                "pair_cells_by_key": dict(pair_cells_by_key),
+                "active_pair_keys": set(active_pair_keys),
+                "lookahead_conflict_count": lookahead_conflict_count,
+                "lookahead_conflict_group_count": lookahead_conflict_group_count,
+                "pair_coverability_terms": pair_coverability_terms,
+                "pair_coverability_choice_variables": pair_coverability_choice_variables,
+                "pair_coverability_incompatibilities": pair_coverability_incompatibilities,
+            }
+
+        def interactive_check(command_timeout_ms):
+            if command_timeout_ms < 1:
+                raise ValueError("Interactive timeout must be positive")
+            solver.set(timeout=command_timeout_ms)
+            check_started = time.perf_counter()
+            pair_assumptions = []
+            if args.interactive_replace_pairs:
+                pair_assumptions = [
+                    pair_activation(*pair_cells_by_key[key])
+                    if key in active_pair_keys
+                    else z3.Not(pair_activation(*pair_cells_by_key[key]))
+                    for key in sorted(encoded_pair_keys)
+                ]
+            status = solver.check(*pair_assumptions)
+            check_ms = round((time.perf_counter() - check_started) * 1000)
+            selected = []
+            if status == z3.sat:
+                model = solver.model()
+                selected = [
+                    placements[index] for index, variable in enumerate(variables)
+                    if z3.is_true(model.eval(variable, model_completion=True))
+                ]
+            return status, check_ms, selected
+
+        def interactive_result(status, check_ms, selected, clauses_added=0, cells_added=0, pairs_added=0):
+            return {
+                "type": "result",
+                "z3_status": str(status),
+                "reason_unknown": solver.reason_unknown() if status == z3.unknown else None,
+                "check_milliseconds": check_ms,
+                "clauses_added": clauses_added,
+                "cells_added": cells_added,
+                "pairs_added": pairs_added,
+                "forbidden_clauses": len(forbidden_clause_keys),
+                "cell_coverability_constraints": len(active_cells),
+                "pair_coverability_constraints": len(active_pair_keys),
+                "pair_coverability_formulas": len(encoded_pair_keys),
+                "interactive_replace_pairs": args.interactive_replace_pairs,
+                "transaction_pending": pending_transaction is not None,
+                "constraints": len(solver.assertions()),
+                "corona": [
+                    {"cells": [list(cell) for cell in placement]} for placement in selected
+                ] if selected else None,
+            }
+        print(json.dumps({
+            "type": "ready",
+            "construction_milliseconds": construction_ms,
+            "formula_cache_hit": formula_cache_hit,
+            "formula_cache_pairs_reused": len(cached_pair_keys),
+            "formula_cache_pairs_added": formula_cache_pairs_added,
+            "formula_cache_load_milliseconds": formula_cache_load_ms,
+            "formula_cache_write_milliseconds": formula_cache_write_ms,
+            "pair_coverability_constraints": len(active_pair_keys),
+            "pair_coverability_formulas": len(encoded_pair_keys),
+            "cell_coverability_constraints": len(active_cells),
+            "interactive_replace_pairs": args.interactive_replace_pairs,
+            "forbidden_clauses": len(forbidden_clause_keys),
+            "constraints": constraint_count,
+        }), flush=True)
+        for line in sys.stdin:
+            command = json.loads(line)
+            if command.get("type") == "stop":
+                break
+            command_type = command.get("type")
+            if command_type == "retry":
+                if pending_transaction is None:
+                    raise ValueError("Interactive retry requires a pending transaction")
+                status, check_ms, selected = interactive_check(
+                    int(command.get("timeout_ms", args.timeout_ms))
+                )
+                if status != z3.unknown:
+                    pending_transaction = None
+                print(json.dumps(interactive_result(status, check_ms, selected)), flush=True)
+                continue
+            if command_type == "rollback":
+                if pending_transaction is None:
+                    raise ValueError("Interactive rollback requires a pending transaction")
+                solver.pop()
+                snapshot = pending_transaction
+                for index in set(availability) - snapshot["availability_keys"]:
+                    del availability[index]
+                forbidden_clause_keys = set(snapshot["forbidden_clause_keys"])
+                active_cells = set(snapshot["active_cells"])
+                encoded_pair_keys = set(snapshot["encoded_pair_keys"])
+                pair_cells_by_key = dict(snapshot["pair_cells_by_key"])
+                active_pair_keys = set(snapshot["active_pair_keys"])
+                lookahead_conflict_count = snapshot["lookahead_conflict_count"]
+                lookahead_conflict_group_count = snapshot["lookahead_conflict_group_count"]
+                pair_coverability_terms = snapshot["pair_coverability_terms"]
+                pair_coverability_choice_variables = snapshot["pair_coverability_choice_variables"]
+                pair_coverability_incompatibilities = snapshot["pair_coverability_incompatibilities"]
+                pending_transaction = None
+                print(json.dumps({
+                    "type": "rolled_back",
+                    "forbidden_clauses": len(forbidden_clause_keys),
+                    "cell_coverability_constraints": len(active_cells),
+                    "pair_coverability_constraints": len(active_pair_keys),
+                    "pair_coverability_formulas": len(encoded_pair_keys),
+                    "constraints": len(solver.assertions()),
+                }), flush=True)
+                continue
+            if command_type != "next":
+                raise ValueError("Interactive command type must be next, retry, rollback, or stop")
+            if pending_transaction is not None:
+                raise ValueError("Interactive next cannot replace a pending transaction")
+            if command.get("transactional"):
+                pending_transaction = transaction_snapshot()
+                solver.push()
+            clauses_added = 0
+            for clause_number, clause in enumerate(command.get("clauses", ())):
+                if not isinstance(clause, list) or not clause:
+                    raise ValueError(f"Interactive clause {clause_number} must be nonempty")
+                clause_key = tuple(sorted(str(key) for key in clause))
+                if clause_key in forbidden_clause_keys:
+                    continue
+                try:
+                    indices = sorted(set(placement_index_by_key[key] for key in clause_key))
+                except KeyError as error:
+                    raise ValueError(
+                        f"Interactive clause {clause_number} contains an unknown placement: {error.args[0]}"
+                    ) from error
+                solver.add(z3.PbLe([(variables[index], 1) for index in indices], len(indices) - 1))
+                forbidden_clause_keys.add(clause_key)
+                clauses_added += 1
+            cells_added = 0
+            for cell_number, raw_cell in enumerate(command.get("cells", ())):
+                cell = parse_cell_key(raw_cell)
+                if cell not in next_ring:
+                    raise ValueError(
+                        f"Interactive cell {cell_number} is not a next-ring cell"
+                    )
+                if cell in active_cells:
+                    continue
+                ensure_availability(retained_by_cell.get(cell, ()))
+                candidates = [availability[index] for index in retained_by_cell.get(cell, ())]
+                solver.add(z3.Or(candidates) if candidates else z3.BoolVal(False))
+                active_cells.add(cell)
+                cells_added += 1
+            pairs_added = 0
+            replacement_pairs = command.get("replace_pairs")
+            if replacement_pairs is not None and not args.interactive_replace_pairs:
+                raise ValueError("replace_pairs requires --interactive-replace-pairs")
+            supplied_pairs = replacement_pairs if replacement_pairs is not None else command.get("pairs", ())
+            supplied_pair_keys = set()
+            for pair_number, pair in enumerate(supplied_pairs):
+                if not isinstance(pair, list) or len(pair) != 2:
+                    raise ValueError(f"Interactive pair {pair_number} must contain two cell keys")
+                cells = tuple(sorted(parse_cell_key(cell) for cell in pair))
+                if cells[0] == cells[1] or cells[0] not in next_ring or cells[1] not in next_ring:
+                    raise ValueError(f"Interactive pair {pair_number} is not a distinct next-ring cell pair")
+                normalized_key = canonical_pair_key(cells)
+                supplied_pair_keys.add(normalized_key)
+                pair_cells_by_key[normalized_key] = cells
+                if normalized_key not in encoded_pair_keys:
+                    ensure_availability(itertools.chain.from_iterable(
+                        retained_by_cell.get(cell, ()) for cell in cells
+                    ))
+                    encode_pair_constraint(*cells)
+                    encoded_pair_keys.add(normalized_key)
+                    pairs_added += 1
+            if replacement_pairs is not None:
+                active_pair_keys = supplied_pair_keys
+            else:
+                active_pair_keys.update(supplied_pair_keys)
+            interactive_status, interactive_check_ms, selected = interactive_check(
+                int(command.get("timeout_ms", args.timeout_ms))
+            )
+            if interactive_status != z3.unknown:
+                pending_transaction = None
+            print(json.dumps(interactive_result(
+                interactive_status,
+                interactive_check_ms,
+                selected,
+                clauses_added,
+                cells_added,
+                pairs_added,
+            )), flush=True)
+        return
+
+    witnesses = []
+    check_ms = 0
+    batch_blocking_clauses = 0
+    batch_terminal_status = "limit"
+    batch_reason_unknown = None
+    terminal_status = None
+    while len(witnesses) < args.max_witnesses:
+        remaining_timeout_ms = max(1, args.timeout_ms - check_ms)
+        solver.set(timeout=remaining_timeout_ms)
+        check_started = time.perf_counter()
+        terminal_status = solver.check()
+        witness_check_ms = round((time.perf_counter() - check_started) * 1000)
+        check_ms += witness_check_ms
+        if terminal_status != z3.sat:
+            batch_terminal_status = str(terminal_status)
+            batch_reason_unknown = solver.reason_unknown() if terminal_status == z3.unknown else None
+            break
         model = solver.model()
-        selected = [placements[index] for index, variable in enumerate(variables) if z3.is_true(model.eval(variable))]
+        selected_indices = [
+            index for index, variable in enumerate(variables)
+            if z3.is_true(model.eval(variable, model_completion=True))
+        ]
+        selected = [placements[index] for index in selected_indices]
+        witnesses.append({
+            "check_milliseconds": witness_check_ms,
+            "placements": len(selected),
+            "pair_soft_satisfied": sum(
+                1 for pair in normalized_pairs
+                if args.pair_soft_minimum is not None
+                and z3.is_true(model.eval(pair_activation(*pair), model_completion=True))
+            ) if args.pair_soft_minimum is not None else None,
+            "pair_soft_orbits_satisfied": sum(
+                1 for variable in pair_soft_orbit_variables
+                if z3.is_true(model.eval(variable, model_completion=True))
+            ) if args.pair_soft_orbit_minimum is not None else None,
+            "corona": [{"cells": [list(cell) for cell in placement]} for placement in selected],
+        })
+        if len(witnesses) >= args.max_witnesses:
+            break
+        selected_index_set = set(selected_indices)
+        solver.add(z3.Or([
+            z3.Not(variable) if index in selected_index_set else variable
+            for index, variable in enumerate(variables)
+        ]))
+        batch_blocking_clauses += 1
+    status = z3.sat if witnesses else terminal_status
+    elapsed_ms = round((time.perf_counter() - started) * 1000)
+    selected = witnesses[0]["corona"] if witnesses else None
     report = {
         "kind": "polycube_corona_z3_exact_cover",
         "key": args.key,
         "layer": args.layer,
         "model": "proper cubic rotations; root fixed; primary target cells exactly once; secondary cells at most once",
         "backend": args.backend,
+        "pb_solver": args.pb_solver,
         "random_seed": args.random_seed,
+        "min_placements": args.min_placements,
         "max_placements": args.max_placements,
+        "placement_cube_cell": cell_key(placement_cube_cell) if placement_cube_cell else None,
+        "placement_cube_parts": args.placement_cube_parts,
+        "placement_cube_index": args.placement_cube_index,
+        "placement_cube_candidates": len(placement_cube_candidates),
+        "placement_cube_selected_candidates": len(placement_cube_selected),
+        "placement_cube_selected_keys": [
+            placement_key_by_index[index] for index in placement_cube_selected
+        ],
+        "placement_cube_base_formula_sha256": placement_cube_base_formula_sha256,
+        "required_placements": len(required_placement_keys),
         "require_next_layer_coverability": args.require_next_layer_coverability,
+        "cell_coverability_constraints": cell_coverability_count,
         "lookahead_target_cells": lookahead_target_count,
         "lookahead_raw_placements": lookahead_raw_placement_count,
         "lookahead_placements": lookahead_placement_count,
         "lookahead_conflicts": lookahead_conflict_count,
+        "lookahead_conflict_encoding": args.lookahead_conflict_encoding,
+        "exact_availability": args.exact_availability,
+        "propagate_values": args.propagate_values,
+        "lookahead_conflict_groups": lookahead_conflict_group_count,
         "pair_coverability_constraints": pair_coverability_count,
+        "pair_soft_minimum": args.pair_soft_minimum,
+        "pair_soft_satisfied": witnesses[0]["pair_soft_satisfied"] if witnesses else None,
+        "pair_soft_orbit_minimum": args.pair_soft_orbit_minimum,
+        "pair_soft_orbits_satisfied": (
+            witnesses[0]["pair_soft_orbits_satisfied"] if witnesses else None
+        ),
         "pair_coverability_terms": pair_coverability_terms,
         "pair_coverability_encoding": args.pair_encoding,
         "pair_coverability_choice_variables": pair_coverability_choice_variables,
         "pair_coverability_incompatibilities": pair_coverability_incompatibilities,
+        "triple_coverability_constraints": triple_coverability_count,
+        "triple_coverability_terms": triple_coverability_terms,
+        "triple_coverability_encoding": args.triple_encoding,
+        "triple_coverability_choice_variables": triple_coverability_choice_variables,
+        "triple_coverability_incompatibilities": triple_coverability_incompatibilities,
+        "quadruple_coverability_constraints": quadruple_coverability_count,
+        "quadruple_coverability_encoding": "choice-cnf",
+        "quadruple_coverability_choice_variables": quadruple_coverability_choice_variables,
+        "quadruple_coverability_incompatibilities": quadruple_coverability_incompatibilities,
         "root_symmetry_breaking": args.root_symmetry_breaking,
         "root_stabilizer_size": root_stabilizer_size,
         "symmetry_breaking_constraints": symmetry_breaking_constraints,
@@ -373,22 +1132,48 @@ def main():
         "constraints": constraint_count,
         "forbidden_clauses": len(forbidden_clauses),
         "timeout_ms": args.timeout_ms,
+        "max_witnesses": args.max_witnesses,
+        "witness_count": len(witnesses),
+        "batch_blocking_clauses": batch_blocking_clauses,
+        "batch_terminal_status": batch_terminal_status,
+        "batch_reason_unknown": batch_reason_unknown,
+        "formula_cache": str(cache_path) if cache_path else None,
+        "formula_cache_scope": args.formula_cache_scope,
+        "formula_cache_hit": formula_cache_hit,
+        "formula_cache_pairs_reused": len(cached_pair_keys),
+        "formula_cache_pairs_added": formula_cache_pairs_added,
+        "formula_cache_load_milliseconds": formula_cache_load_ms,
+        "formula_cache_write_milliseconds": formula_cache_write_ms,
+        "construction_milliseconds": construction_ms,
+        "check_milliseconds": check_ms,
         "milliseconds": elapsed_ms,
         "classification": (
             "verified_pending" if status == z3.sat
-            else "certified_non_tiler" if status == z3.unsat and args.max_placements is None and not forbidden_clauses
-            else "unsat_under_forbidden_clauses" if status == z3.unsat and args.max_placements is None
+            else "placement_cube_exhausted" if status == z3.unsat and placement_cube_cell is not None
+            else "certified_non_tiler" if status == z3.unsat and args.min_placements is None and args.max_placements is None and not forbidden_clauses
+            else "unsat_under_forbidden_clauses" if status == z3.unsat and args.min_placements is None and args.max_placements is None
             else "placement_bound_exhausted" if status == z3.unsat
             else "incomplete"
         ),
         "z3_status": str(status),
-        "reason_unknown": solver.reason_unknown() if status == z3.unknown else None,
-        "corona": [{"cells": [list(cell) for cell in placement]} for placement in selected] if selected else None,
+        "reason_unknown": batch_reason_unknown if status == z3.unknown else None,
+        "corona": selected,
+        "coronas": [witness["corona"] for witness in witnesses],
+        "witnesses": witnesses,
         "warning": (
-            "UNSAT depends on externally supplied forbidden clauses; validate their continuation proofs before treating this as a non-tiling certificate."
-            if status == z3.unsat and args.max_placements is None and forbidden_clauses
-            else f"Only patches with at most {args.max_placements} placements were exhausted; this is not a non-tiling or aperiodicity certificate."
-            if status == z3.unsat and args.max_placements is not None
+            "Additional batch enumeration timed out after returning valid witnesses; the returned patches remain exact, but the batch is incomplete."
+            if witnesses and batch_terminal_status == "unknown"
+            else "Only one exhaustive placement-cube branch was exhausted; combine every branch before strengthening the global copy bound."
+            if status == z3.unsat and placement_cube_cell is not None
+            else "UNSAT depends on externally supplied forbidden clauses; validate their continuation proofs before treating this as a non-tiling certificate."
+            if status == z3.unsat and args.min_placements is None and args.max_placements is None and forbidden_clauses
+            else (
+                f"Only patches in the configured placement-count range "
+                f"[{args.min_placements if args.min_placements is not None else 0}, "
+                f"{args.max_placements if args.max_placements is not None else 'unbounded'}] were exhausted; "
+                "this is not a non-tiling or aperiodicity certificate."
+            )
+            if status == z3.unsat and (args.min_placements is not None or args.max_placements is not None)
             else "A solver timeout is not a non-tiling or aperiodicity certificate."
             if status == z3.unknown
             else None
@@ -399,7 +1184,10 @@ def main():
         output = Path(args.output)
         output.parent.mkdir(parents=True, exist_ok=True)
         output.write_text(encoded, encoding="utf-8")
-    print(json.dumps({key: value for key, value in report.items() if key != "corona"}))
+    print(json.dumps({
+        key: value for key, value in report.items()
+        if key not in ("corona", "coronas", "witnesses")
+    }))
 
 
 if __name__ == "__main__":

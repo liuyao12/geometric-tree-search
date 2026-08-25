@@ -3,8 +3,9 @@
 
 import { buildFrontierCandidateGraph, classifyFrontierCandidateGraph } from "../../assets/frontier-candidate-graph.js";
 import { GeometricFailureMemo } from "../../assets/geometric-failure-memo.js?v=20260818-nogood-pivot-v49";
+import { GeometricFrontierMarking } from "../../assets/geometric-frontier-marking.js?v=20260824-gcts-i-v1";
 import { LATTICE_POLYHEDRON_GCTS_EXAMPLES } from "../../assets/lattice-polyhedron-survivors.js?v=20260820-size13-v104";
-import { POLYCUBE_GCTS_CANDIDATES } from "../../assets/polycube-census-candidates.js?v=20260821-volume10-v30";
+import { POLYCUBE_GCTS_CANDIDATES } from "../../assets/polycube-census-candidates.js?v=20260824-volume10-v78";
 import { normalizeProposalProgram } from "./proposal-learner.js";
 
 export const GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES = 5;
@@ -697,7 +698,13 @@ export const createTilingStream = (() => {
       return (hash ^ (hash >>> 16)) >>> 0;
     };
     const nowId = () => (++nodeCounter);
-    const normalizedStrategy = ["freestyle", "free_range", "learning_free_range"].includes(config.tiling_strategy)
+    const normalizedStrategy = [
+      "freestyle",
+      "free_range",
+      "learning_free_range",
+      "rl_free_range",
+      "gcts_rl"
+    ].includes(config.tiling_strategy)
       ? "generic"
       : config.tiling_strategy;
     const searchStats = {
@@ -789,6 +796,25 @@ export const createTilingStream = (() => {
       backtracks: 0,
       max_depth: 0,
       max_live_tiles: 1,
+      agent_observations: 0,
+      agent_resolved_failures: 0,
+      agent_incomplete_observations: 0,
+      agent_positive_growth_observations: 0,
+      agent_max_branch_growth: 0,
+      agent_learned_tags: 0,
+      agent_sibling_reorders: 0,
+      agent_policy: null,
+      agent_started_empty: false,
+      agent_feature_schema: null,
+      agent_crystal_probe_nodes: 40,
+      discrepancy_limit: null,
+      discrepancy_prunes: 0,
+      max_discrepancy_reached: 0,
+      uct_simulations: 0,
+      uct_states: 0,
+      uct_action_visits: 0,
+      uct_max_reward: 0,
+      successor_states_emitted: 0,
       isohedral_transforms_discovered: 0,
       isohedral_patch_copies_applied: 0,
       isohedral_tiles_propagated: 0,
@@ -799,10 +825,25 @@ export const createTilingStream = (() => {
       isohedral_certificate_patch_sizes_tried: [],
       isohedral_certificate_duplicate_states_skipped: 0,
       isohedral_search_horizon_tiles: null,
-      // Kept as zero-valued compatibility counters for existing headless
-      // consumers. This standalone engine does not install a GCTS runtime.
+      learned_layer_macro_enabled: false,
+      learned_layer_macro_attempts: 0,
+      learned_layer_macro_successes: 0,
+      learned_layer_macro_tiles_applied: 0,
+      learned_layer_macro_rollbacks: 0,
+      learned_layer_macro_periodic_templates: 0,
       marking_observed_failures: 0,
       marking_geometric_clauses: 0,
+      marking_geometric_prunes: 0,
+      marking_duplicate_failures: 0,
+      marking_skipped_large_contexts: 0,
+      marking_average_context_tiles: 0,
+      marking_max_context_tiles: 0,
+      marking_frontier_checks: 0,
+      marking_clause_checks: 0,
+      marking_avoided_clause_checks: 0,
+      marking_reach: 0,
+      marking_rotation_count: 0,
+      marking_started_empty: true,
       proposal_program_id: config.proposal_program?.id ?? null,
       proposal_patch_size: 0,
       proposal_sequence_steps_used: 0,
@@ -1502,6 +1543,10 @@ export const createTilingStream = (() => {
         .join("|");
       return `${move.prototile_idx}::${vertsKey}`;
     };
+    const anonymousPlacementGeometryKey = (move) => move.orient.verts
+      .map(vertex => vecKey(add3(vertex, move.translation)))
+      .sort()
+      .join("|");
     // Polycube lattice tiers are represented in integer coordinates: z3 uses
     // unit cube steps, fcc uses the even-sum half-grid, and half uses all
     // half-grid translations.
@@ -1529,6 +1574,85 @@ export const createTilingStream = (() => {
       // merely touching along a line leaves the next placement underconstrained.
       if (tilingDimension >= 3 && affineRank(sharedPoints) < 2) return null;
       return validCheck;
+    };
+    const completeCandidatesForLatticePoint = (option) => {
+      const point = option.point ?? String(option.pointKey ?? option.point_key).split(",").map(Number);
+      const candidates = new Map();
+      const blockerAlternatives = [];
+      let obstructionComplete = gctsFailureMarkingEnabled && allSystemTilesAreConvexPolyhedra;
+      let attempts = 0;
+      candidateScan:
+      for (let prototileIndex = 0; prototileIndex < prototiles.length; prototileIndex += 1) {
+        const tile = prototiles[prototileIndex];
+        for (const orient of tile.unique_orientations ?? []) {
+          for (const anchor of orient.occupancy ?? []) {
+            attempts += 1;
+            if ((attempts & 31) === 0 && overBudget()) {
+              noteIncompleteSearch();
+              break candidateScan;
+            }
+            const translation = vecSub(point, anchor.pos);
+            if (tile.is_polycube
+              ? !isPolycubeMoveTranslation(tile, translation)
+              : !translation.every(Number.isInteger)) continue;
+            const move = { prototile_idx: prototileIndex, orient, translation };
+            const key = placementGeometryKey(move);
+            if (candidates.has(key) || blockerAlternatives.some(item => item.key === key)) continue;
+            if (obstructionComplete) {
+              const blockers = [];
+              for (const placement of state.placements) {
+                if (!convexPlacementInteriorsOverlap(placement, move)) continue;
+                blockers.push(placement);
+                if (markingBlockerMode === "first") break;
+              }
+              if (blockers.length) {
+                blockerAlternatives.push({ key, blockers });
+                continue;
+              }
+            }
+            const validity = isMoveValid(move);
+            if (!validity.ok) {
+              // Convex interior overlap is the common obstruction in this
+              // lane. If another global constraint rejected the candidate,
+              // retain the full local context instead of pretending that a
+              // smaller certificate was proved.
+              obstructionComplete = false;
+              continue;
+            }
+            candidates.set(key, {
+              ...move,
+              occupancy_data: validity.occData,
+              dedup_key: key
+            });
+          }
+        }
+      }
+      if (!candidates.size && obstructionComplete && blockerAlternatives.length) {
+        const unresolved = blockerAlternatives.slice();
+        const selected = [];
+        while (unresolved.length) {
+          let bestPlacement = null;
+          let bestCoverage = 0;
+          for (const placement of state.placements) {
+            const coverage = unresolved.reduce((sum, conflict) =>
+              sum + (conflict.blockers.includes(placement) ? 1 : 0), 0);
+            if (coverage > bestCoverage) {
+              bestCoverage = coverage;
+              bestPlacement = placement;
+            }
+          }
+          if (!bestPlacement || bestCoverage === 0) {
+            obstructionComplete = false;
+            break;
+          }
+          selected.push(bestPlacement);
+          for (let index = unresolved.length - 1; index >= 0; index -= 1) {
+            if (unresolved[index].blockers.includes(bestPlacement)) unresolved.splice(index, 1);
+          }
+        }
+        if (obstructionComplete) option._gcts_obstruction_context = selected;
+      }
+      return [...candidates.values()].sort((left, right) => left.dedup_key.localeCompare(right.dedup_key));
     };
     const orientedFacesBySignature = new Map();
     for (let prototileIndex = 0; prototileIndex < prototiles.length; prototileIndex++) {
@@ -1760,12 +1884,22 @@ export const createTilingStream = (() => {
       return oldestFacesCovered * 1e6 + totalFacesCovered;
     };
 
+    const activeAgentBranchTrackers = [];
+    const activeUctBranchTrackers = [];
     const applyMove = (move, { countWork = true } = {}) => {
       if (countWork) searchWorkCounter += 1;
       const moveLayer = Number.isFinite(move.layer) ? move.layer : candidateMoveLayer(move);
       move.layer = moveLayer;
       state.placements.push(move);
       searchStats.max_live_tiles = Math.max(searchStats.max_live_tiles, state.placements.length);
+      if (countWork) {
+        for (const tracker of activeAgentBranchTrackers) {
+          tracker.peak_tiles = Math.max(tracker.peak_tiles, state.placements.length);
+        }
+        for (const tracker of activeUctBranchTrackers) {
+          tracker.peak_tiles = Math.max(tracker.peak_tiles, state.placements.length);
+        }
+      }
       state.placed_volume += tileVolumes[move.prototile_idx] ?? 0;
       stateVersion += 1;
       const changedOccupancyPositions = move.occupancy_data.map(o => o.pos);
@@ -2005,12 +2139,33 @@ export const createTilingStream = (() => {
     const moveOrder = tilingStrategy === "isohedral" ? "isohedral" : requestedMoveOrder;
     searchStats.move_order = moveOrder;
     const greedyNoBacktrack = !!config.greedy_no_backtrack;
+    const enumerateSuccessorsOnly = config.enumerate_successors_only === true;
     searchStats.backtracking_enabled = !greedyNoBacktrack;
-    const proposalProgram = moveOrder === "proposal"
+    const configuredDiscrepancyLimit = config.search_discrepancy_limit == null
+      ? Infinity
+      : Number(config.search_discrepancy_limit);
+    const discrepancyLimit = Number.isFinite(configuredDiscrepancyLimit)
+      ? Math.max(0, Math.floor(configuredDiscrepancyLimit))
+      : Infinity;
+    searchStats.discrepancy_limit = Number.isFinite(discrepancyLimit) ? discrepancyLimit : null;
+    const proposalProgram = ["proposal", "agent"].includes(moveOrder) && config.proposal_program
       ? normalizeProposalProgram(config.proposal_program)
       : null;
     if (proposalProgram) searchStats.proposal_patch_size = proposalProgram.patch_size;
     const usePolicyAgent = moveOrder === "rl" || moveOrder === "agent" || moveOrder === "periodic_agent";
+    const learnedLayerMacroEnabled = config.learned_layer_macro === true
+      && usePolicyAgent
+      && tilingStrategy === "generic"
+      && (criterion === "layer" || criterion === "shell");
+    searchStats.learned_layer_macro_enabled = learnedLayerMacroEnabled;
+    const useUct = moveOrder === "uct";
+    const completeLatticePointBranching = config.complete_lattice_point_branching === true;
+    const gctsFailureMarkingEnabled = config.gcts_failure_marking === true
+      && completeLatticePointBranching
+      && tilingStrategy === "generic"
+      && !targetRegion;
+    searchStats.complete_lattice_point_branching = completeLatticePointBranching;
+    searchStats.gcts_failure_marking_enabled = gctsFailureMarkingEnabled;
     const faceOrder = config.face_order ?? "coverage";
     searchStats.face_order = faceOrder;
     const configuredForcedLagCap = Number(config.forced_move_layer_lag_cap);
@@ -2073,6 +2228,7 @@ export const createTilingStream = (() => {
       && !Number.isFinite(candidateCap)
       && !greedyNoBacktrack
       && (!usePolicyAgent || agentExhaustive)
+      && !useUct
       && !proposalProgram
       && genericFailureMemoCapacity > 0;
     const genericFailureMemo = new Set();
@@ -2132,6 +2288,60 @@ export const createTilingStream = (() => {
           }
         : null
     });
+    const maximumTileAxisSpan = Math.max(1, ...prototiles.flatMap(tile =>
+      (tile.unique_orientations ?? []).map(orient => Math.max(...[0, 1, 2].map(axis => {
+        const coordinates = orient.verts.map(vertex => vertex[axis]);
+        return Math.max(...coordinates) - Math.min(...coordinates);
+      })))
+    ));
+    const configuredMarkingReachMultiplier = Number(config.gcts_marking_reach_multiplier);
+    const markingReachMultiplier = Number.isFinite(configuredMarkingReachMultiplier)
+      ? Math.max(1, configuredMarkingReachMultiplier)
+      : 1;
+    const configuredMarkingMaxClauses = Number(config.gcts_marking_max_clauses);
+    const markingMaxClauses = Number.isFinite(configuredMarkingMaxClauses)
+      ? Math.max(0, Math.floor(configuredMarkingMaxClauses))
+      : 20000;
+    const configuredMarkingMaxContext = Number(config.gcts_marking_max_context_tiles);
+    const markingMaxContext = Number.isFinite(configuredMarkingMaxContext)
+      ? Math.max(1, Math.floor(configuredMarkingMaxContext))
+      : Infinity;
+    const configuredMarkingActivationFailures = Number(config.gcts_marking_activation_failures);
+    const markingActivationFailures = Number.isFinite(configuredMarkingActivationFailures)
+      ? Math.max(0, Math.floor(configuredMarkingActivationFailures))
+      : 0;
+    const markingSymmetry = config.gcts_marking_symmetry === "rotations" ? "rotations" : "fixed";
+    const markingBlockerMode = config.gcts_marking_blocker_mode === "all" ? "all" : "first";
+    searchStats.marking_blocker_mode = markingBlockerMode;
+    const identityCubicRotation = PROPER_CUBIC_ROTATIONS.find(matrix =>
+      matrix.every((row, rowIndex) => row.every((value, columnIndex) => value === (rowIndex === columnIndex ? 1 : 0)))
+    ) ?? PROPER_CUBIC_ROTATIONS[0];
+    const frontierMarking = new GeometricFrontierMarking({
+      rotations: markingSymmetry === "rotations" ? PROPER_CUBIC_ROTATIONS : [identityCubicRotation],
+      reach: maximumTileAxisSpan * markingReachMultiplier,
+      maxClauses: markingMaxClauses,
+      maxContext: markingMaxContext,
+      activationFailures: markingActivationFailures,
+      usePivotIndex: config.gcts_marking_index !== false
+    });
+    const updateFrontierMarkingStats = () => {
+      const stats = frontierMarking.stats();
+      searchStats.marking_observed_failures = stats.observed_failures;
+      searchStats.marking_geometric_clauses = stats.clauses;
+      searchStats.marking_geometric_prunes = stats.prunes;
+      searchStats.marking_duplicate_failures = stats.duplicates;
+      searchStats.marking_skipped_large_contexts = stats.skipped_large;
+      searchStats.marking_average_context_tiles = stats.average_context_tokens;
+      searchStats.marking_max_context_tiles = stats.max_context_tokens;
+      searchStats.marking_frontier_checks = stats.frontier_checks;
+      searchStats.marking_clause_checks = stats.clause_checks;
+      searchStats.marking_avoided_clause_checks = stats.avoided_clause_checks;
+      searchStats.marking_reach = stats.reach;
+      searchStats.marking_rotation_count = stats.rotations;
+      searchStats.marking_activated = stats.activated;
+      searchStats.marking_capacity_reached = stats.capacity_reached;
+    };
+    updateFrontierMarkingStats();
     searchStats.generic_geometric_nogood_enabled = genericGeometricNogoodEnabled;
     searchStats.generic_geometric_nogood_disable_reason = genericGeometricNogoodEnabled
       ? null
@@ -3244,6 +3454,7 @@ export const createTilingStream = (() => {
       const growthShape = prospectiveGrowthShape(move);
       const features = {
         coverage: moveCoverage(move),
+        oldest_layer_completion: minimumLayerCompletionScore(move),
         root_corona_faces: coveredFrontierFaceScore(move, 0),
         frontier_faces: coveredFrontierFaceScore(move),
         isohedral_corona: isohedralCoronaScore(move),
@@ -3315,6 +3526,16 @@ export const createTilingStream = (() => {
     };
     const rlAgent = (() => {
       const values = new Map();
+      const requestedAgentPolicy = config.agent_policy === "cold_geometry"
+        ? "cold_geometry"
+        : "crystal_probe";
+      let selectedPolicy = requestedAgentPolicy;
+      searchStats.agent_started_empty = usePolicyAgent;
+      searchStats.agent_feature_schema = usePolicyAgent
+        ? selectedPolicy === "cold_geometry"
+          ? "anonymous_lattice_geometry_v1"
+          : "structural_crystal_v1"
+        : null;
       const tagsFor = (features) => {
         const tags = [];
         if (features.periodic_evidence > 0) tags.push("periodic");
@@ -3322,14 +3543,117 @@ export const createTilingStream = (() => {
         if (features.root_corona_faces > 0) tags.push("root-corona");
         if (features.same_root_orientation > 0) tags.push("same-orientation");
         if (!tags.length) tags.push("fallback");
+        const isotropyBand = Math.max(0, Math.min(4, Math.floor(features.growth_isotropy * 5)));
+        const mrvBand = Number.isFinite(features.mrv_width)
+          ? Math.min(5, Math.floor(Math.log2(Math.max(1, features.mrv_width))))
+          : 6;
+        tags.push(
+          `layer:${features.layer_lag}:completion:${features.oldest_layer_completion > 0 ? 1 : 0}`,
+          `rank:${features.growth_axis_rank}:gain:${features.periodic_rank_gain}`,
+          `shape:${features.growth_axis_rank}:${isotropyBand}:${features.growth_planarity}`,
+          `coverage:${Math.min(4, Math.floor(features.coverage))}`,
+          `frontier:${Math.sign(features.frontier_faces)}`,
+          `mrv:${mrvBand}:rank:${features.growth_axis_rank}`
+        );
         return tags;
       };
-      const learnedValue = (features) =>
-        tagsFor(features).reduce((sum, tag) => sum + (values.get(tag)?.value ?? 0), 0);
+      const learnedValue = (features) => {
+        const marks = tagsFor(features);
+        if (!marks.length) return 0;
+        return marks.reduce((sum, tag) => {
+          const estimate = values.get(tag);
+          if (!estimate) return sum;
+          // Shrink sparse marks toward zero so a single failed branch cannot
+          // take over the search, then average across marks so adding a more
+          // descriptive vocabulary does not inflate the learned signal.
+          return sum + estimate.value * estimate.count / (estimate.count + 3);
+        }, 0) / marks.length;
+      };
+      const coldTagsFor = (features) => {
+        const isotropyBand = Math.max(0, Math.min(4, Math.floor(features.growth_isotropy * 5)));
+        const frontierBand = Math.max(-4, Math.min(4, Math.round(features.frontier_faces)));
+        const coverageBand = Math.max(0, Math.min(6, Math.floor(features.coverage)));
+        const mrvBand = Number.isFinite(features.mrv_width)
+          ? Math.min(6, Math.floor(Math.log2(Math.max(1, features.mrv_width))))
+          : 7;
+        return [
+          `layer:${features.layer_lag}:complete:${features.oldest_layer_completion > 0 ? 1 : 0}`,
+          `shape:${features.growth_axis_rank}:${isotropyBand}:${features.growth_planarity}`,
+          `coverage:${coverageBand}:frontier:${frontierBand}`,
+          `mrv:${mrvBand}:rank:${features.growth_axis_rank}`
+        ];
+      };
+      const coldLearnedValue = (features) => {
+        const tags = coldTagsFor(features);
+        return tags.reduce((sum, tag) => {
+          const estimate = values.get(tag);
+          return sum + (estimate ? estimate.value * estimate.count / (estimate.count + 3) : 0);
+        }, 0) / tags.length;
+      };
+      const coldNovelty = (features) => {
+        const tags = coldTagsFor(features);
+        return tags.reduce((sum, tag) => sum + 1 / Math.sqrt((values.get(tag)?.count ?? 0) + 1), 0) / tags.length;
+      };
+      const updateMarks = (features, reward) => {
+        const tags = selectedPolicy === "cold_geometry" ? coldTagsFor(features) : tagsFor(features);
+        for (const tag of tags) {
+          const current = values.get(tag) ?? { value: 0, count: 0 };
+          current.count += 1;
+          current.value += (reward - current.value) / current.count;
+          values.set(tag, current);
+        }
+        searchStats.agent_learned_tags = values.size;
+      };
       return {
+        usesGlobalProposalScope() {
+          return selectedPolicy === "structural" || selectedPolicy === "cold_geometry";
+        },
+        learnsOnline() {
+          return selectedPolicy === "structural" || selectedPolicy === "cold_geometry";
+        },
         score(move, option = null) {
+          searchStats.agent_policy ??= selectedPolicy;
           const features = moveAgentFeatures(move, option);
+          if (selectedPolicy === "cold_geometry") {
+            // This policy has no tile IDs, catalog labels, known motifs, or
+            // periodic/isohedral priors.  It starts at zero and only orders the
+            // complete action set using rewards observed in this run.  A
+            // geometry-only hash makes otherwise equal cold actions repeatable.
+            return [
+              features.oldest_layer_completion,
+              -features.layer_lag,
+              features.coverage,
+              coldLearnedValue(features),
+              features.growth_axis_rank,
+              features.growth_isotropy,
+              features.growth_planarity,
+              -features.growth_max_span,
+              coldNovelty(features),
+              seededTieValue(anonymousPlacementGeometryKey(move))
+            ];
+          }
           const learned = learnedValue(features);
+          if (selectedPolicy === "crystal_probe" && searchWorkCounter >= 40) {
+            searchStats.agent_probe_max_live_tiles = searchStats.max_live_tiles;
+            selectedPolicy = searchStats.max_live_tiles >= 18 ? "crystal" : "structural";
+            searchStats.agent_policy = selectedPolicy;
+          }
+          if (selectedPolicy === "crystal_probe" || selectedPolicy === "crystal") {
+            // Probe the crystal hypothesis first. Continue exploiting it only
+            // if it produces rapid concrete growth; otherwise the policy
+            // permanently falls back to the general structural learner.
+            return [
+              features.periodic_rank_gain,
+              features.parallelogram_completion,
+              features.vector_repeat,
+              features.pair_periodic,
+              features.periodic_continuation,
+              features.same_root_orientation,
+              features.coverage,
+              learned,
+              seededTieBreaks ? seededTieValue(placementGeometryKey(move)) : 0
+            ];
+          }
           // Lexicographic priority: try full-rank periodic evidence first, then
           // build/reuse an isohedral corona. Same-direction vector repetition is
           // useful, but it is deliberately weaker so the agent does not merely
@@ -3337,6 +3661,7 @@ export const createTilingStream = (() => {
           return [
             features.periodic_rank_gain,
             features.growth_axis_rank,
+            learned,
             features.growth_isotropy,
             features.growth_planarity,
             -features.growth_max_span,
@@ -3347,21 +3672,28 @@ export const createTilingStream = (() => {
             features.orientation_diversity,
             features.root_corona_faces,
             features.frontier_faces,
-            learned,
             features.coverage,
             features.linear_repeat * 0.1,
-            Number.isFinite(features.mrv_width) ? -features.mrv_width : -1e9
+            Number.isFinite(features.mrv_width) ? -features.mrv_width : -1e9,
+            seededTieBreaks ? seededTieValue(placementGeometryKey(move)) : 0
           ];
         },
-        observe(move, success) {
+        observe(move, outcome) {
           const features = move._agent_proposal_features ?? moveAgentFeatures(move);
-          const reward = success ? 1 : -0.2;
-          for (const tag of tagsFor(features)) {
-            const current = values.get(tag) ?? { value: 0, count: 0 };
-            current.count += 1;
-            current.value += (reward - current.value) / current.count;
-            values.set(tag, current);
-          }
+          const startTiles = Math.max(1, outcome?.start_tiles ?? state.placements.length - 1);
+          const peakTiles = Math.max(startTiles, outcome?.peak_tiles ?? startTiles);
+          const growth = peakTiles - startTiles;
+          const reward = outcome?.success
+            ? 2
+            : growth > 0
+              ? Math.tanh(growth / 4)
+              : outcome?.incomplete ? 0 : -0.25;
+          updateMarks(features, reward);
+          searchStats.agent_observations += 1;
+          if (!outcome?.success && !outcome?.incomplete) searchStats.agent_resolved_failures += 1;
+          if (outcome?.incomplete) searchStats.agent_incomplete_observations += 1;
+          if (growth > 0) searchStats.agent_positive_growth_observations += 1;
+          searchStats.agent_max_branch_growth = Math.max(searchStats.agent_max_branch_growth, growth);
         }
       };
     })();
@@ -3510,8 +3842,53 @@ export const createTilingStream = (() => {
       }
       return 0;
     };
+    const uctExploration = Number.isFinite(Number(config.uct_exploration))
+      ? Math.max(0, Number(config.uct_exploration))
+      : Math.SQRT2;
+    const uctTable = new Map();
+    const orderUctMoves = (moves) => {
+      if (!useUct || moves.length < 2) return moves;
+      const stateKey = genericFailureStateKey();
+      let node = uctTable.get(stateKey);
+      if (!node) {
+        node = new Map();
+        uctTable.set(stateKey, node);
+        searchStats.uct_states = uctTable.size;
+      }
+      const parentVisits = [...node.values()].reduce((sum, value) => sum + value.visits, 0);
+      return moves.slice().sort((left, right) => {
+        const leftKey = placementGeometryKey(left);
+        const rightKey = placementGeometryKey(right);
+        const leftStats = node.get(leftKey);
+        const rightStats = node.get(rightKey);
+        const score = stats => !stats?.visits
+          ? Infinity
+          : stats.total_reward / stats.visits
+            + uctExploration * Math.sqrt(Math.log(Math.max(2, parentVisits + 1)) / stats.visits);
+        const difference = score(rightStats) - score(leftStats);
+        if (Number.isFinite(difference) && difference) return difference;
+        if (score(rightStats) !== score(leftStats)) return score(rightStats) > score(leftStats) ? 1 : -1;
+        return compareMoves(left, right);
+      }).map(move => {
+        move._uct_state_key = stateKey;
+        move._uct_action_key = placementGeometryKey(move);
+        return move;
+      });
+    };
+    const observeUctMove = (move, { success, startTiles, peakTiles }) => {
+      const node = uctTable.get(move._uct_state_key);
+      if (!node) return;
+      const action = node.get(move._uct_action_key) ?? { visits: 0, total_reward: 0 };
+      const growth = Math.max(0, peakTiles - startTiles);
+      const reward = success ? 2 : Math.tanh(growth / 4);
+      action.visits += 1;
+      action.total_reward += reward;
+      node.set(move._uct_action_key, action);
+      searchStats.uct_action_visits += 1;
+      searchStats.uct_max_reward = Math.max(searchStats.uct_max_reward, reward);
+    };
     const policyAgentProposals = (analysis) => {
-      if (!usePolicyAgent) return [];
+      if (!usePolicyAgent || !rlAgent.usesGlobalProposalScope()) return [];
       const dedup = new Map();
       for (const option of analysis?.branches ?? []) {
         const moves = option.unique_candidates ?? [];
@@ -3824,17 +4201,19 @@ export const createTilingStream = (() => {
       }
       return [...candidates.values()].sort(compareMoves);
     };
-    const findPeriodicMotifByBoundarySearch = requestedPeriod => {
+    const findPeriodicMotifByBoundarySearch = (requestedPeriod, options = {}) => {
       if (requestedPeriod < state.placements.length) return null;
       const seenBySize = Array.from({ length: requestedPeriod + 1 }, () => new Set());
-      const configuredNodeLimit = Number(config.periodic_motif_node_limit);
+      const configuredNodeLimit = Number(options.node_limit ?? config.periodic_motif_node_limit);
       const nodeLimit = Number.isFinite(configuredNodeLimit) && configuredNodeLimit > 0
         ? Math.floor(configuredNodeLimit)
         : Infinity;
+      const localBudgetExceeded = options.budget_exceeded ?? (() => false);
       let localNodes = 0;
       const visit = () => {
-        if (overBudget() || localNodes >= nodeLimit) {
-          noteIncompleteSearch();
+        if (overBudget() || localBudgetExceeded() || localNodes >= nodeLimit) {
+          if (overBudget()) noteIncompleteSearch();
+          else options.on_local_limit?.();
           return null;
         }
         localNodes += 1;
@@ -3847,8 +4226,9 @@ export const createTilingStream = (() => {
         if (size === requestedPeriod) return findBoundaryPeriodicTemplate(requestedPeriod);
 
         for (const move of periodicMotifCandidates()) {
-          if (overBudget() || localNodes >= nodeLimit) {
-            noteIncompleteSearch();
+          if (overBudget() || localBudgetExceeded() || localNodes >= nodeLimit) {
+            if (overBudget()) noteIncompleteSearch();
+            else options.on_local_limit?.();
             return null;
           }
           const validity = checkMoveViability(move);
@@ -4240,9 +4620,17 @@ export const createTilingStream = (() => {
       }
       return certifyPeriodicPlacementMotif(placements, rawTemplate.period_vectors);
     };
-    async function* tryPeriodicTemplatePatch(parentId, { force = false } = {}) {
-      if (!periodicPreflightEnabled || (!force && goalMet())) return false;
-      let template = certifyConfiguredPeriodicTemplate(config.known_periodic_template);
+    async function* tryPeriodicTemplatePatch(parentId, {
+      force = false,
+      template: suppliedTemplate = null,
+      evidenceStrategy = "translational",
+      allowDiscovery = false,
+      maximumPatchSize: suppliedMaximumPatchSize = null,
+      motifNodeLimit = null,
+      discoveryTimeMs = null
+    } = {}) {
+      if ((!periodicPreflightEnabled && !suppliedTemplate && !allowDiscovery) || (!force && goalMet())) return false;
+      let template = suppliedTemplate ?? certifyConfiguredPeriodicTemplate(config.known_periodic_template);
       if (config.known_periodic_template) {
         yield {
           type: "translational_check",
@@ -4256,12 +4644,20 @@ export const createTilingStream = (() => {
       }
       const progressiveMax = Number(config.periodic_patch_max_tiles);
       const unbounded = !!config.periodic_patch_unbounded;
-      const maximumPatchSize = unbounded
+      const configuredMaximumPatchSize = Number(suppliedMaximumPatchSize);
+      const configuredDiscoveryTimeMs = Number(discoveryTimeMs);
+      const discoveryDeadline = Number.isFinite(configuredDiscoveryTimeMs) && configuredDiscoveryTimeMs > 0
+        ? performance.now() + configuredDiscoveryTimeMs
+        : Infinity;
+      const maximumPatchSize = Number.isFinite(configuredMaximumPatchSize) && configuredMaximumPatchSize > 0
+        ? Math.floor(configuredMaximumPatchSize)
+        : unbounded
         ? Infinity
         : Number.isFinite(progressiveMax)
           ? Math.max(1, Math.floor(progressiveMax))
           : Math.max(1, Math.floor(+config.periodic_tile_count || 2));
       for (let patchSize = 1; !template && patchSize <= maximumPatchSize && !overBudget(); patchSize++) {
+        if (performance.now() >= discoveryDeadline) break;
         yield nodeStatus(
           parentId,
           "working",
@@ -4269,7 +4665,15 @@ export const createTilingStream = (() => {
           preflightStatusPayload()
         );
         template = findPeriodicTemplate(patchSize);
-        if (!template) template = findPeriodicMotifByBoundarySearch(patchSize);
+        if (!template) template = findPeriodicMotifByBoundarySearch(patchSize, {
+          // An unbounded translational lane must advance through motif sizes
+          // instead of spending its entire run exhaustively on the first hard
+          // small size.  Per-size exhaustion is not a negative certificate;
+          // the lane remains inconclusive and continues to larger domains.
+          node_limit: motifNodeLimit ?? (unbounded ? 2500 : null),
+          budget_exceeded: () => performance.now() >= discoveryDeadline,
+          on_local_limit: () => {}
+        });
         yield {
           type: "translational_check",
           patch_size: patchSize,
@@ -4315,7 +4719,7 @@ export const createTilingStream = (() => {
         kind: "translational_certificate",
         certified: true,
         can_tile: true,
-        strategy: "translational",
+        strategy: evidenceStrategy,
         patch_size: template.motif?.length ?? 1,
         certificate_kind: template.kind,
         period_vectors: template.period_vectors?.map(vector => vector.slice()) ?? [],
@@ -5301,6 +5705,53 @@ export const createTilingStream = (() => {
       }
       return applied;
     }
+    const learnedLayerMacroAttempted = new Set();
+    async function* tryLearnedLayerMacro(parentId) {
+      if (!learnedLayerMacroEnabled || minFrontierPointLayer() <= 0 || goalMet()) return false;
+      const stateKey = `${minFrontierPointLayer()}::${periodicPatchStateKey()}`;
+      if (learnedLayerMacroAttempted.has(stateKey)) return false;
+      learnedLayerMacroAttempted.add(stateKey);
+      searchStats.learned_layer_macro_attempts += 1;
+      // First reuse the completed oldest-layer patch under lattice
+      // isometries.  Besides being a useful macro in its own right, this
+      // creates several copies of each local tile role.  Period vectors are
+      // not observable reliably in the smaller pre-macro patch.
+      const applied = yield* propagateIsohedralPatch(parentId);
+      searchStats.learned_layer_macro_tiles_applied += applied.length;
+      if (goalMet()) {
+        searchStats.learned_layer_macro_successes += 1;
+        yield nodeStatus(parentId, "success", `learned layer macro: +${applied.length}`);
+        return true;
+      }
+      const configuredMiningMs = Number(config.learned_layer_macro_mining_time_ms);
+      const miningMs = Number.isFinite(configuredMiningMs) && configuredMiningMs > 0
+        ? configuredMiningMs
+        : 500;
+      const miningDeadline = performance.now() + miningMs;
+      const learnedPeriodicTemplate = minePeriodicTemplateFromCurrentPatch({
+        budget_exceeded: () => overBudget() || performance.now() >= miningDeadline,
+        on_budget_exceeded: () => {}
+      });
+      if (learnedPeriodicTemplate) {
+        searchStats.learned_layer_macro_periodic_templates += 1;
+        if (yield* tryPeriodicTemplatePatch(parentId, {
+          force: true,
+          template: learnedPeriodicTemplate,
+          evidenceStrategy: "learned_layer_macro"
+        })) {
+          searchStats.learned_layer_macro_successes += 1;
+          return true;
+        }
+      }
+      if (applied.length) searchStats.learned_layer_macro_rollbacks += 1;
+      while (applied.length) {
+        const entry = applied.pop();
+        undoMove(entry.move, entry.rollback, { captureBest: false });
+        searchStats.forced_total = Math.max(0, searchStats.forced_total - 1);
+        yield placementDelta("remove", entry.move, entry.rollback, parentId);
+      }
+      return false;
+    }
     async function* searchIsohedral(parentId, depth = 0) {
       if (stopToken.stop) { noteIncompleteSearch(); return false; }
       if (overBudget()) {
@@ -5444,7 +5895,7 @@ export const createTilingStream = (() => {
       return false;
     }
 
-    async function* search(parentId, depth = 0) {
+    async function* search(parentId, depth = 0, discrepancy = 0) {
       if (stopToken.stop) { noteIncompleteSearch(); return false; }
       if (goalMet()) {
         yield nodeStatus(parentId, "success");
@@ -5467,6 +5918,18 @@ export const createTilingStream = (() => {
           return true;
         }
       }
+      if (gctsFailureMarkingEnabled) {
+        const markedConflict = frontierMarking.firstConflict(frontierPointOptions().slice(0, 1), state.placements);
+        updateFrontierMarkingStats();
+        if (markedConflict) {
+          searchStats.failed_leaves += 1;
+          yield nodeStatus(parentId, "fail", "Learned geometric marking", {
+            marking_frontier_point: markedConflict.point ?? markedConflict.pointKey
+          });
+          return false;
+        }
+      }
+      if (yield* tryLearnedLayerMacro(parentId)) return true;
       const entryFailureKey = genericFailureMemoEnabled ? genericFailureStateKey() : null;
       const entryFailurePlacements = genericFailureMemoEnabled ? state.placements.slice() : null;
       const forcedBatch = [];
@@ -5508,6 +5971,16 @@ export const createTilingStream = (() => {
         const cached = state.vertex_candidate_cache.get(cacheKey);
         if (cached) return cached;
 
+        if (completeLatticePointBranching) {
+          const candidates = completeCandidatesForLatticePoint(option);
+          const localCandidateCap = Math.min(maxCandidates, candidateCap);
+          const out = Number.isFinite(localCandidateCap)
+            ? candidates.slice(0, localCandidateCap)
+            : candidates;
+          state.vertex_candidate_cache.set(cacheKey, out);
+          return out;
+        }
+
         // Any connected face-to-face continuation covers at least one active
         // frontier face. Index those exact reversed-face matches once per
         // state instead of trying every occupied-cell anchor at every vertex.
@@ -5539,8 +6012,9 @@ export const createTilingStream = (() => {
       };
       const analyzeFrontierGraph = async () => {
         if (latestFrontierGraph && latestFrontierGraphVersion === stateVersion) return latestFrontierGraph;
+        const frontierOptions = frontierPointOptions();
         const graph = await buildFrontierCandidateGraph(
-          frontierPointOptions(),
+          completeLatticePointBranching ? frontierOptions.slice(0, 1) : frontierOptions,
           option => nodeCandidatesForVertexOption(option, candidateCap),
           {
             frontierKey: option => option.pointKey,
@@ -5665,6 +6139,19 @@ export const createTilingStream = (() => {
         if (overBudget()) { noteIncompleteSearch(); yield nodeStatus(parentId, "fail", budgetText()); return yield* doReturn(false); }
         if (analysis.deadEnd) {
           searchStats.failed_leaves += 1;
+          if (gctsFailureMarkingEnabled && !searchIncomplete) {
+            frontierMarking.encode(
+              analysis.deadEnd.point,
+              analysis.deadEnd.weight,
+              analysis.deadEnd._gcts_obstruction_context ?? state.placements,
+              {
+                failed_patch_tiles: state.placements.length,
+                frontier_point: analysis.deadEnd.point.slice(),
+                minimized_blockers: analysis.deadEnd._gcts_obstruction_context?.length ?? null
+              }
+            );
+            updateFrontierMarkingStats();
+          }
           yield nodeStatus(parentId, "fail", "Dead End", { frontier_stats: analysisStats, frontier_dual: frontierDual });
           return yield* doReturn(false);
         }
@@ -5820,6 +6307,7 @@ export const createTilingStream = (() => {
         )
       );
       bestMoves = bestMoves.filter(moveWithinGenerationBand);
+      if (useUct) bestMoves = orderUctMoves(bestMoves).slice(0, 1);
       if (!usePolicyAgent && !exhaustive && Number.isFinite(branchCap) && bestMoves.length > branchCap) {
         bestMoves = bestMoves.slice(0, branchCap);
       }
@@ -5830,6 +6318,36 @@ export const createTilingStream = (() => {
       
       yield branchSet(parentId, payload);
 
+      if (enumerateSuccessorsOnly) {
+        for (let index = 0; index < bestMoves.length; index++) {
+          const move = bestMoves[index];
+          if (!candidatePassesGeometricNogoods(move)) continue;
+          const validity = checkMoveViability(move);
+          if (!validity) continue;
+          move.occupancy_data = validity.occData;
+          move.is_forced = false;
+          const rollback = applyMove(move);
+          const successorSnapshot = snapshot(move.node_id);
+          searchStats.successor_states_emitted += 1;
+          yield {
+            type: "search_successor",
+            parent: parentId,
+            move: describeMove(move),
+            snapshot: successorSnapshot
+          };
+          undoMove(move, rollback, { captureBest: false });
+        }
+        yield {
+          type: "successor_set_finished",
+          parent: parentId,
+          successor_count: searchStats.successor_states_emitted,
+          search_stats: searchStatsSnapshot()
+        };
+        noteIncompleteSearch();
+        searchStats.termination_reason = "successor_enumeration";
+        return yield* doReturn(false);
+      }
+
       for (let i = 0; i < bestMoves.length; i++) {
         await yieldToBrowser();
         if (overBudget()) {
@@ -5838,6 +6356,16 @@ export const createTilingStream = (() => {
           return yield* doReturn(false);
         }
         const mv = bestMoves[i];
+        const nextDiscrepancy = discrepancy + i;
+        if (nextDiscrepancy > discrepancyLimit) {
+          searchStats.discrepancy_prunes += 1;
+          setBranchCursor(depth, bestMoves.length, i + 1);
+          continue;
+        }
+        searchStats.max_discrepancy_reached = Math.max(
+          searchStats.max_discrepancy_reached,
+          nextDiscrepancy
+        );
         if (!candidatePassesGeometricNogoods(mv)) {
           yield nodeStatus(mv.node_id, "fail", "Geometric nogood");
           setBranchCursor(depth, bestMoves.length, i + 1);
@@ -5854,6 +6382,24 @@ export const createTilingStream = (() => {
         setBranchCursor(depth, bestMoves.length, i);
         searchStats.branch_choices_visited += 1;
         searchStats.max_depth = Math.max(searchStats.max_depth, depth + 1);
+        const agentBranchTracker = usePolicyAgent && rlAgent.learnsOnline()
+          ? {
+              // The candidate itself is the decision being evaluated. Reward
+              // only additional descendants, otherwise every immediate dead
+              // end looks like one unit of successful growth.
+              start_tiles: state.placements.length + 1,
+              peak_tiles: state.placements.length + 1,
+              move: mv
+            }
+          : null;
+        if (agentBranchTracker) activeAgentBranchTrackers.push(agentBranchTracker);
+        const uctBranchTracker = useUct
+          ? {
+              start_tiles: state.placements.length + 1,
+              peak_tiles: state.placements.length + 1
+            }
+          : null;
+        if (uctBranchTracker) activeUctBranchTrackers.push(uctBranchTracker);
         const rb = applyMove(mv);
         yield placementDelta("add", mv, rb, mv.node_id);
         const postMoveAnalysis = genericGlobalExtensionEnumeration && !genericGlobalFrontierGraph
@@ -5876,8 +6422,26 @@ export const createTilingStream = (() => {
           yield nodeSnapshot(mv.node_id);
         }
 
-        const child = yield* search(mv.node_id, depth + 1);
-        if (usePolicyAgent) rlAgent.observe(mv, child);
+        const child = yield* search(mv.node_id, depth + 1, nextDiscrepancy);
+        if (uctBranchTracker) {
+          const popped = activeUctBranchTrackers.pop();
+          if (popped !== uctBranchTracker) throw new Error("UCT branch tracker stack mismatch");
+          observeUctMove(mv, {
+            success: child,
+            startTiles: uctBranchTracker.start_tiles,
+            peakTiles: uctBranchTracker.peak_tiles
+          });
+        }
+        if (agentBranchTracker) {
+          const popped = activeAgentBranchTrackers.pop();
+          if (popped !== agentBranchTracker) throw new Error("agent branch tracker stack mismatch");
+          rlAgent.observe(mv, {
+            success: child,
+            incomplete: searchIncomplete,
+            start_tiles: agentBranchTracker.start_tiles,
+            peak_tiles: agentBranchTracker.peak_tiles
+          });
+        }
         if (child) {
           yield nodeStatus(mv.node_id, "success");
           return yield* doReturn(true);
@@ -5888,6 +6452,14 @@ export const createTilingStream = (() => {
         undoMove(mv, rb);
         yield placementDelta("remove", mv, rb, mv.node_id);
         setBranchCursor(depth, bestMoves.length, i + 1);
+        if (useUct) return yield* doReturn(false);
+        if (usePolicyAgent && rlAgent.learnsOnline() && i + 1 < bestMoves.length) {
+          const remaining = bestMoves.slice(i + 1).sort((left, right) =>
+            compareScoreVectors(rlAgent.score(left), rlAgent.score(right))
+          );
+          bestMoves.splice(i + 1, remaining.length, ...remaining);
+          searchStats.agent_sibling_reorders += 1;
+        }
       }
 
       yield nodeStatus(parentId, "fail");
@@ -6063,7 +6635,44 @@ export const createTilingStream = (() => {
       success = goalMet() || (yield* searchIsohedral(rootId));
     } else if (tilingStrategy === "generic") {
       if (proposalProgram) yield* replayLearnedProposalPatch(rootId);
-      success = goalMet() || (yield* search(rootId));
+      // The hybrid learner has no catalog hint, but it may spend a bounded
+      // part of its cold-start budget trying to discover and exactly certify
+      // a small repeating cluster.  This is the RL analogue of learning a
+      // macro action; failure does not prune ordinary GCTS search.
+      if (learnedLayerMacroEnabled && !goalMet()) {
+        const configuredMotifTiles = Number(config.learned_layer_macro_max_motif_tiles);
+        const configuredMotifNodes = Number(config.learned_layer_macro_motif_node_limit);
+        const configuredDiscoveryMs = Number(config.learned_layer_macro_discovery_time_ms);
+        success = yield* tryPeriodicTemplatePatch(rootId, {
+          force: true,
+          allowDiscovery: true,
+          maximumPatchSize: Number.isFinite(configuredMotifTiles)
+            ? Math.max(1, Math.floor(configuredMotifTiles))
+            : 8,
+          motifNodeLimit: Number.isFinite(configuredMotifNodes)
+            ? Math.max(1, Math.floor(configuredMotifNodes))
+            : 2500,
+          discoveryTimeMs: Number.isFinite(configuredDiscoveryMs)
+            ? Math.max(1, configuredDiscoveryMs)
+            : 5000,
+          evidenceStrategy: "learned_layer_macro"
+        });
+      }
+      if (success) {
+        // Exact cluster growth reached the requested live layer.
+      } else if (useUct) {
+        while (!goalMet() && !overBudget() && !stopToken.stop) {
+          searchStats.uct_simulations += 1;
+          success = yield* search(rootId);
+          if (success) break;
+        }
+        if (!success && !searchIncomplete) {
+          noteIncompleteSearch();
+          searchStats.termination_reason = stopToken.stop ? "stopped" : "time_limit";
+        }
+      } else {
+        success = goalMet() || (yield* search(rootId));
+      }
     } else {
       yield* tryPeriodicTemplatePatch(rootId);
       if (!goalMet()) yield* tryIsohedralCoronaSeed(rootId);
@@ -6086,9 +6695,16 @@ export const createTilingStream = (() => {
         );
       }
     }
-    // A periodic exact-cover certificate proves an infinite tiling even when the
-    // bounded visualization patch did not reach the requested display count.
-    success = success || !!(tilingEvidence?.certified && tilingEvidence?.can_tile === true);
+    // A periodic exact-cover certificate proves an infinite tiling, but a
+    // generic layer/region/shell run is also an operational growth benchmark:
+    // it succeeds only after its requested live patch was actually produced.
+    // Dedicated translational/isohedral proof lanes still report certificates
+    // immediately, as does a count-only discovery run.
+    const certificateCompletesRun = tilingStrategy !== "generic" || criterion === "count";
+    success = success || (
+      certificateCompletesRun
+      && !!(tilingEvidence?.certified && tilingEvidence?.can_tile === true)
+    );
     if (
       !success
       && exhaustive
@@ -6106,6 +6722,10 @@ export const createTilingStream = (() => {
     if (!success && !searchIncomplete && searchStats.generation_band_deferrals > 0) {
       noteIncompleteSearch();
       searchStats.termination_reason = "generation_band_pruning";
+    }
+    if (!success && !searchIncomplete && searchStats.discrepancy_prunes > 0) {
+      noteIncompleteSearch();
+      searchStats.termination_reason = "discrepancy_limit_pruning";
     }
     if (
       !success
@@ -6154,6 +6774,36 @@ export const createTilingStream = (() => {
             model: `connected face-to-face tiling by the configured ${includeMirrors ? "full lattice isometries" : "proper lattice orientations"}`,
             note: `Exhaustive global face-extension search found no connected ${targetVal}-tile patch containing the normalized root tile.`
           };
+    }
+    // Exact GCTS markings are sound pruning rules, but exhausting a bounded
+    // growth-layer search is not by itself a non-tiling theorem.  A failed
+    // GCTS run may terminate logically only when an explicit exact
+    // obstruction above has set can_tile=false; all resource, generation-band,
+    // and merely finite-target exhaustions remain inconclusive.
+    if (
+      !success
+      && gctsFailureMarkingEnabled
+      && tilingEvidence?.can_tile !== false
+      && !searchIncomplete
+    ) {
+      noteIncompleteSearch();
+      searchStats.termination_reason ??= "bounded_gcts_target_exhausted";
+    }
+    // Structural certificate searches are one-sided unless they have emitted
+    // an explicit impossibility certificate.  In particular, reaching the
+    // configured isohedral patch horizon is not an exhaustive enumeration of
+    // tile-transitive quotients, and exhausting finitely many translational
+    // motif sizes never excludes a larger fundamental cluster. Mark this
+    // before the terminal snapshot so its statistics carry the same result.
+    if (
+      !success
+      && ["translational", "isohedral"].includes(tilingStrategy)
+      && tilingEvidence?.can_tile !== false
+    ) {
+      noteIncompleteSearch();
+      searchStats.termination_reason ??= tilingStrategy === "translational"
+        ? "bounded_translational_motif_range"
+        : "bounded_isohedral_patch_search";
     }
     yield nodeStatus(rootId, success ? "success" : "fail");
     const terminalSnapshot = snapshot(null);
@@ -7324,7 +7974,7 @@ export const tileSpecs = (() => {
         ? "Unresolved Polycube Candidates"
         : ["translational", "isohedral_periodic_quotient"].includes(candidate.screening.certificate)
           ? "GCTS Periodic Controls"
-          : "GCTS Shell-Obstruction Controls", "Polycubes"],
+          : "GCTS Non-Tiler Controls", "Polycubes"],
       census_candidate: candidate,
       build: () => [make_tile(candidate.name, generatePolycubeData(candidate.voxels))]
     }])),
@@ -7334,7 +7984,7 @@ export const tileSpecs = (() => {
         ? "Unresolved Lattice Candidates"
         : ["translational", "isohedral_periodic_quotient"].includes(candidate.screening.certificate)
           ? "GCTS Periodic Controls"
-          : "GCTS Shell-Obstruction Controls"],
+          : "GCTS Non-Tiler Controls"],
       census_candidate: candidate,
       build: () => [make_tile(candidate.name, createScaledTileData(candidate.vertices, [], true))]
     }])),

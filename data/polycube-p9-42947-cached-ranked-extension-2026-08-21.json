@@ -1,0 +1,81 @@
+{
+  "kind": "polycube_p9_42947_cached_ranked_extension_receipt",
+  "candidate": "p9-42947",
+  "outer_layer": 4,
+  "inner_layer": 5,
+  "implementation_commit": "64e7ae6",
+  "prior_ranked_portfolio": "data/polycube-p9-42947-ranked-hybrid-coverability-2026-08-21.json",
+  "formula_cache_profile": "data/polycube-p9-42947-formula-cache-profile-2026-08-21.json",
+  "one_ranked_orbit_extension": {
+    "random_seeds": [295, 296, 297, 298, 299, 300],
+    "proposal_trials": 6,
+    "sat_outer_states": 5,
+    "unknown_timeout_trials": 1,
+    "exact_tuple_rejections": 5,
+    "continuations_started": 0,
+    "pair_defect_states": 1,
+    "triple_defect_states": 4,
+    "quadruple_defect_states": 0,
+    "full_triple_audit_passes": 0,
+    "sat_z3_milliseconds_total": 593003,
+    "sat_z3_milliseconds_average": 118600.6,
+    "sat_construction_milliseconds_total": 14265,
+    "sat_check_milliseconds_total": 578738,
+    "sat_outer_placements_minimum": 63,
+    "sat_outer_placements_maximum": 69,
+    "initial_constraints": {
+      "symmetry_closed_clauses": 393,
+      "pair": 771,
+      "triple": 207,
+      "quadruple": 3
+    },
+    "final_constraints": {
+      "symmetry_closed_clauses": 408,
+      "pair": 774,
+      "triple": 264,
+      "quadruple": 3
+    },
+    "narrowest_triple_defect": {
+      "random_seed": 298,
+      "outer_placements": 63,
+      "incompatible_triple_orbits": 1,
+      "candidate_combinations_blocked": 50
+    },
+    "result": "Four consecutive cached proposals pass all 771 accumulated pair obligations and fail only the exact full triple audit. Seed 300 exposes one new pair orbit; seed 299 times out."
+  },
+  "two_ranked_orbit_probe": {
+    "random_seed": 301,
+    "encoded_triple_orbits": 2,
+    "encoded_triple_constraints": 6,
+    "selected_orbit_scores": [110, 99],
+    "z3_status": "unknown",
+    "z3_timeout_ms": 330000,
+    "construction_milliseconds": 7189,
+    "check_milliseconds": 330100,
+    "total_milliseconds": 337289,
+    "result": "Encoding the two highest-impact orbits does not return a proposal within the matched production timeout. This single-seed probe is inconclusive but does not support expanding the hybrid window."
+  },
+  "sources": [
+    {
+      "path": "runs/p9-radius4-to5-cache-ranked-seed295-summary.json",
+      "sha256": "ddb326775659975262fc9140e8a03d32b1e27db2f97fe5606bc0d5826244a365"
+    },
+    {
+      "path": "runs/p9-radius4-to5-cache-ranked-seed296-summary.json",
+      "sha256": "971ea9b485b51003c162e1712f842dc3a28932b52711603c397609b6b2f9d1de"
+    },
+    {
+      "path": "runs/p9-radius4-to5-cache-ranked-seed300-summary.json",
+      "sha256": "ac4eb5b31924d24cb24404062cfb44e5132d51d55d9355ca44db67746118cc8e"
+    },
+    {
+      "path": "runs/p9-radius4-to5-cache-ranked2-seed301-summary.json",
+      "sha256": "6ec61182b4ba96e2e027ad8d5217b9e0c346393630d087bec87f0881d4a5b6d1"
+    }
+  ],
+  "radius_five_witness_found": false,
+  "outer_search_exhausted": false,
+  "certified_non_tiler": false,
+  "certified_aperiodic": false,
+  "interpretation": "Formula caching makes the one-orbit ranked lane productive again and advances the exact obstruction portfolio from 207 to 264 triple constraints. The four consecutive pairwise-complete states show that pair screening is no longer the usual immediate bottleneck, but every returned state still has an exact triple defect. The finite outer search remains unexhausted; neither repeated local obstruction nor the two-orbit timeout is evidence of non-tiling or aperiodicity."
+}

@@ -1,0 +1,94 @@
+{
+  "kind": "polycube_corona_copy_band_frontier_audit",
+  "date": "2026-08-22",
+  "candidate": "p10-052588",
+  "outer_radius": 3,
+  "continuation_radius": 4,
+  "verified_lower_copy_bound": 46,
+  "tested_open_copy_counts": [47, 48],
+  "applied_prefix": {
+    "clauses_before_transaction": 112,
+    "cells_before_transaction": 56,
+    "attempted_clause_increment": 2,
+    "attempted_cell_increment": 1,
+    "independently_replayed_accumulated_clauses": 176
+  },
+  "runs": [
+    {
+      "random_seed": 233,
+      "minimum_placements": null,
+      "maximum_placements": 48,
+      "formula_cache_hit": false,
+      "construction_milliseconds": 82129,
+      "check_milliseconds": 300317,
+      "z3_status": "unknown",
+      "reason_unknown": "timeout",
+      "transaction_rolled_back": true
+    },
+    {
+      "random_seed": 234,
+      "minimum_placements": null,
+      "maximum_placements": 48,
+      "formula_cache_hit": true,
+      "construction_milliseconds": 4133,
+      "check_milliseconds": 300392,
+      "z3_status": "unknown",
+      "reason_unknown": "timeout",
+      "transaction_rolled_back": true
+    },
+    {
+      "random_seed": 235,
+      "minimum_placements": 47,
+      "maximum_placements": 48,
+      "formula_cache_hit": false,
+      "construction_milliseconds": 79064,
+      "check_milliseconds": 300160,
+      "z3_status": "unknown",
+      "reason_unknown": "timeout",
+      "transaction_rolled_back": true
+    },
+    {
+      "random_seed": 236,
+      "minimum_placements": 47,
+      "maximum_placements": 47,
+      "cardinality_encoding": "PbGe plus PbLe",
+      "formula_cache_hit": false,
+      "construction_milliseconds": 59082,
+      "check_milliseconds": 303062,
+      "z3_status": "unknown",
+      "reason_unknown": "timeout",
+      "transaction_rolled_back": true
+    },
+    {
+      "random_seed": 237,
+      "minimum_placements": 47,
+      "maximum_placements": 47,
+      "cardinality_encoding": "single PbEq",
+      "formula_cache_hit": false,
+      "construction_milliseconds": 75108,
+      "check_milliseconds": 300229,
+      "z3_status": "unknown",
+      "reason_unknown": "timeout",
+      "transaction_rolled_back": true
+    }
+  ],
+  "exact_cardinality_encoding_change": {
+    "formula_cache_signature_version": 4,
+    "previous_constraints": 2,
+    "current_constraints": 1,
+    "legacy_formula_bytes": 84372720,
+    "single_equality_formula_bytes": 84347503,
+    "formula_bytes_saved": 25217,
+    "formula_size_reduction_fraction": 0.000298876224448,
+    "matched_wall_clock_improvement_established": false,
+    "interpretation": "Exact placement counts now use one pseudo-Boolean equality instead of redundant lower and upper bounds. The real exact-47 benchmark remains timeout-inconclusive, so no speedup is claimed."
+  },
+  "timeout_runs": 5,
+  "verified_radius_4_witness_found": false,
+  "copy_47_exhausted": false,
+  "copy_48_exhausted": false,
+  "unrestricted_radius_3_space_exhausted": false,
+  "certified_non_tiler": false,
+  "certified_aperiodic": false,
+  "interpretation": "Five exact runs test the newly open 47-48-copy frontier as a cumulative bound, an isolated interval, and an exact cardinality. Every run times out and rolls back its attempted 57-cell feedback transaction. The <=46 certificate is unchanged; 47 and 48 copies remain open."
+}

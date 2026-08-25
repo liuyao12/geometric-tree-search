@@ -1,0 +1,93 @@
+{
+  "kind": "polycube_corona_lazy_cell_cegar_audit",
+  "date": "2026-08-22",
+  "candidate": "p10-055695",
+  "implementation_commit": "dd3839e",
+  "model": "proper cubic rotations; one fixed root; finite face-distance corona exact cover",
+  "protocol": {
+    "outer_radius": 3,
+    "inner_radius": 4,
+    "maximum_outer_placements": 43,
+    "proposal_solver": "Z3 pseudo-Boolean exact cover (pb2bv-sat) with grouped conflict constraints",
+    "continuation_solver": "exact conflict-backjumping GCTS with the proposed radius-three patch fixed",
+    "lazy_cell_cut": "after an exactly exhausted immediate dead target, require that target and its root-symmetry orbit to have at least one compatible next-ring placement",
+    "placement_cut": "the simultaneously extracted fixed-placement obstruction clause is closed under the root polycube symmetries",
+    "bounded_copy_semantics": "the copy bound restricts proposal supply only; failure or timeout does not prove non-tiling"
+  },
+  "eager_all_cell_controls": {
+    "next_ring_cells": 138,
+    "max_43": {
+      "random_seed": 124,
+      "configured_timeout_ms": 60000,
+      "construction_milliseconds": 26855,
+      "check_milliseconds": 60149,
+      "status": "timeout",
+      "source_sha256": "4114aeeed39a3b54a58726eb8eaecb0054495c425b1e4b8f32c0870a81edfdfb"
+    },
+    "exact_41_cache_miss": {
+      "random_seed": 125,
+      "configured_timeout_ms": 90000,
+      "construction_milliseconds": 49698,
+      "check_milliseconds": 90175,
+      "status": "timeout",
+      "source_sha256": "3c01f11924db5ad3d8e38f181f813b73b136cf1afb3a8bc0bad3e6cdbecbac2c"
+    },
+    "exact_41_cache_hit": {
+      "random_seed": 126,
+      "configured_timeout_ms": 90000,
+      "construction_milliseconds": 1877,
+      "check_milliseconds": 91756,
+      "status": "timeout",
+      "source_sha256": "5e9a3aba6623ee1be3fac101b3c98d775e263a71004760a64c48a337416bfcbe"
+    }
+  },
+  "lazy_cell_portfolio": {
+    "random_seeds": [127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 148, 149, 150, 151, 152, 153, 154],
+    "z3_sat_outer_states": 22,
+    "z3_timeout_trials": 17,
+    "exact_dead_outer_states": 22,
+    "immediate_dead_target_obstructions": 22,
+    "resolved_subtree_obstructions": 0,
+    "verified_radius_4_witnesses": 0,
+    "outer_placement_distribution": { "41": 3, "42": 1, "43": 18 },
+    "continuation_nodes": 36,
+    "initial_cell_coverability_constraints": 0,
+    "final_cell_coverability_constraints": 44,
+    "symmetry_distinct_cell_orbits_promoted": 22,
+    "initial_symmetry_closed_clauses": 98,
+    "final_symmetry_closed_clauses": 142,
+    "z3_construction_milliseconds": 249961,
+    "z3_check_milliseconds": 1184788,
+    "source_sha256": [
+      "10181160ea09ac3b1336b90ee23074c698be03a1d0293ae68d19ed1233100c9e",
+      "fe05bdea67b71e05606dbdffc76acefeaeb7e19c645f40ce31e1b6a863622912",
+      "f8876cf8915aeb81a56928724838b309a195449eeed377a1b11989c59526bd57",
+      "48d7785686db1f0241617b4136ae31eafc0940e227f22d21360776e2342e74ee",
+      "65f15750b1d0cc0a42ebf54e28f654f2fe6cc1e18466c59609f928ee664fec64",
+      "004f2efc4915699c60bee03675add2e48dc5f94f3abaf68f8ff195b8b53124a4"
+    ]
+  },
+  "incremental_dynamic_cell_ablation": {
+    "random_seed": 148,
+    "initial_cell_coverability_constraints": 32,
+    "final_cell_coverability_constraints": 40,
+    "initial_construction_milliseconds": 13378,
+    "z3_sat_outer_states": 4,
+    "subsequent_sat_states_without_reconstruction": 3,
+    "final_timeout_trials": 1,
+    "exact_dead_outer_states": 4,
+    "immediate_dead_target_obstructions": 4,
+    "verified_radius_4_witnesses": 0,
+    "source_sha256": "48d7785686db1f0241617b4136ae31eafc0940e227f22d21360776e2342e74ee"
+  },
+  "combined_with_prior_clause_cegar": {
+    "clause_distinct_outer_states": 71,
+    "exact_dead_outer_states": 71,
+    "continuation_nodes": 98,
+    "final_symmetry_closed_clauses": 142
+  },
+  "radius_3_space_exhausted": false,
+  "verified_radius_4_witness_found": false,
+  "certified_non_tiler": false,
+  "interpretation": "Lazy cell promotion converts each exactly verified immediate radius-four dead target into a sound necessary next-ring coverability constraint. Twenty-two new clause-distinct radius-three proposals promote twenty-two root-symmetry cell orbits, ending with forty-four enforced cells and 142 symmetry-closed placement clauses. The dynamic interactive implementation reuses one formula for four SAT proposals and performs three strengthened SAT checks without reconstruction, but randomized batched restarts remain complementary after an incremental solver state times out. All seventy-one proposals across the old and new portfolios still fail at an immediate target; none enters a resolved radius-four subtree. The radius-three proposal space remains unexhausted, so this is stronger negative finite-corona evidence and a solver improvement, not a non-tiling or aperiodicity certificate."
+}

@@ -1,0 +1,71 @@
+{
+  "kind": "polycube_placement_cube_cover_range_audit",
+  "date": "2026-08-22",
+  "candidate": "p10-052588",
+  "outer_radius": 3,
+  "continuation_radius": 4,
+  "placement_counts": [48, 49],
+  "result": "unsat",
+  "classification": "placement_cube_range_exhausted",
+  "anchor_cell": "1,1,0",
+  "anchor_placement_candidates": 58,
+  "shared_formula_shape": {
+    "target_cells": 179,
+    "placements_considered": 8767,
+    "variables": 8767,
+    "constraints_per_leaf": 9898,
+    "applied_forbidden_clauses": 112,
+    "independently_replayed_accumulated_clauses": 176,
+    "cell_coverability_constraints": 56,
+    "lookahead_conflict_encoding": "grouped-pb",
+    "backend": "pb2bv-sat",
+    "pseudo_boolean_solver": "solver"
+  },
+  "covers": [
+    {
+      "placement_count": 48,
+      "placement_cube_base_formula_sha256": "a9d448209a800bc0f46b16e88576abbd3574c2cf3516a5fb7bafecede63d520c",
+      "coarse_partition": {
+        "parts": 16,
+        "exhausted_indices": [0, 1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+        "timeout_indices_replaced_by_refinement": [3]
+      },
+      "refined_partition": { "parts": 32, "exhausted_indices": [3, 19] },
+      "branch_leaves": 17,
+      "covered_anchor_placement_candidates": 58,
+      "leaf_overlaps": 0,
+      "uncovered_anchor_placement_candidates": 0,
+      "random_seed_range": [310, 359],
+      "maximum_check_milliseconds": 59488
+    },
+    {
+      "placement_count": 49,
+      "placement_cube_base_formula_sha256": "c87005fe62ad0c54ccfd48c73b1bb33fe48bcbe2e66dcb2dea37d4f9517af7eb",
+      "coarse_partition": {
+        "parts": 16,
+        "exhausted_indices": [0, 1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+        "timeout_indices_replaced_by_refinement": [3]
+      },
+      "refined_partition": { "parts": 32, "exhausted_indices": [3, 19] },
+      "branch_leaves": 17,
+      "covered_anchor_placement_candidates": 58,
+      "leaf_overlaps": 0,
+      "uncovered_anchor_placement_candidates": 0,
+      "random_seed_range": [370, 419],
+      "maximum_check_milliseconds": 51655
+    }
+  ],
+  "coverage_verification": {
+    "tool": "scripts/verify-polycube-placement-cube-cover.mjs",
+    "certificates_accepted": 2,
+    "shared_formula_digests_identical_within_each_cover": true,
+    "shared_constraint_counts_identical": true
+  },
+  "previous_verified_copy_bound": 47,
+  "new_verified_copy_bound": 49,
+  "copy_50_exhausted": false,
+  "unrestricted_radius_3_space_exhausted": false,
+  "certified_non_tiler": false,
+  "certified_aperiodic": false,
+  "interpretation": "Two exhaustive disjoint placement-cube covers close the exact 48- and 49-copy radius-three proposal strata under the independently replayed obstruction prefix and exact next-ring necessary conditions. Together with the prior <=47 certificate this establishes bounded exhaustion through 49 copies. Copy 50 and unrestricted radius three remain open, so this proves neither non-tiling nor aperiodicity."
+}

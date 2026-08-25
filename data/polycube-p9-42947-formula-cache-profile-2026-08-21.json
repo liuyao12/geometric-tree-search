@@ -1,0 +1,64 @@
+{
+  "kind": "polycube_p9_42947_formula_cache_profile_receipt",
+  "candidate": "p9-42947",
+  "outer_layer": 4,
+  "inner_layer": 5,
+  "implementation_commit": "64e7ae6",
+  "input_constraints": {
+    "symmetry_closed_clauses": 393,
+    "pair": 771,
+    "encoded_triple": 3,
+    "full_audited_triple": 207,
+    "audited_quadruple": 3
+  },
+  "cache_contract": {
+    "cached": "the static radius-four exact-cover formula, full next-ring availability/conflict formula, and every accumulated pair-coverability constraint",
+    "rebuilt_each_solve": "the selected triple orbit, encoded quadruple constraints when enabled, and all forbidden-state clauses",
+    "validation": "cache metadata binds every structural encoding option and the complete canonical pair-key set; a missing cached pair or changed configuration rebuilds the cache",
+    "seed_behavior": "the serialized assertions are loaded into a newly configured solver, so each CEGAR iteration can retain its requested random seed",
+    "scope": "formula reuse only; Z3's learned clauses and search state are not persisted"
+  },
+  "two_iteration_cegar_profile": {
+    "random_seeds": [295, 296],
+    "z3_timeout_ms": 1000,
+    "cache_miss": {
+      "z3_status": "unknown",
+      "construction_milliseconds": 56966,
+      "check_milliseconds": 1004,
+      "total_milliseconds": 57969,
+      "pair_constraints_added": 771,
+      "cache_write_milliseconds": 4044
+    },
+    "cache_hit": {
+      "z3_status": "unknown",
+      "construction_milliseconds": 3602,
+      "check_milliseconds": 1013,
+      "total_milliseconds": 4616,
+      "pair_constraints_reused": 771,
+      "cache_load_milliseconds": 693,
+      "cache_write_milliseconds": 0
+    },
+    "construction_runtime_reduction_fraction": 0.9367693009865534,
+    "total_runtime_reduction_fraction": 0.9203712329003433,
+    "result": "The actual CEGAR driver changes seeds and reuses all 771 pair constraints. Construction falls by 93.7% and total wall time by 92.0% under matched one-second checks."
+  },
+  "sources": [
+    {
+      "path": "runs/p9-radius4-to5-cache-profile-seed295-summary.json",
+      "sha256": "32804c6ffde421b93a40bc56d2369cd2cb146348528a186fdadf677ba89918b6"
+    },
+    {
+      "path": "runs/p9-ranked-cache-miss-profile-1s.json",
+      "sha256": "47389fc9144dffecf9f52f8b8cf7c78a7fedd95eba48376d868fda1a495bfcca"
+    },
+    {
+      "path": "runs/p9-ranked-cache-hit-profile2-1s.json",
+      "sha256": "9dc74ac127e2db5f01dad6b729b18417c9fd428ee75ab4cb8f89d871bf51233c"
+    }
+  ],
+  "radius_five_witness_found": false,
+  "outer_search_exhausted": false,
+  "certified_non_tiler": false,
+  "certified_aperiodic": false,
+  "interpretation": "Validated formula reuse removes almost all repeated construction cost without changing the exact constraints or suppressing solver-seed diversity. The one-second checks intentionally time out, so this profile makes no tiling claim. It makes longer ranked CEGAR portfolios materially cheaper; solver search itself remains the dominant cost under production time limits."
+}

@@ -4,11 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260821-polycube10-v140";
-import {
-  normalizeProposalProgram,
-  proposalTileKey
-} from "./proposal-learner.js?v=20260817-generation-band-v31";
+} from "./engine.js?v=20260824-rl-parity-v211";
 
 const $ = (id) => document.getElementById(id);
 
@@ -222,43 +218,12 @@ let growthRunning = false;
 const growthSeries = new Map();
 let growthInspection = { modeId: "free_range", pointIndex: null };
 let growthPlotClickBound = false;
+let growthPlotLegendBound = false;
 let growthPlotBackgroundBound = false;
 let growthPointerWasNearPoint = false;
 let growthPlotRevision = 0;
 let growthUiRefreshTimer = null;
 let growthUiRefreshShowCurrent = false;
-const PROPOSAL_CACHE_STORAGE_KEY = "gcts-3d-learned-proposals-v2";
-const readProposalCache = () => {
-  try {
-    const parsed = JSON.parse(localStorage.getItem(PROPOSAL_CACHE_STORAGE_KEY) ?? "{}");
-    return parsed && typeof parsed === "object" ? parsed : {};
-  } catch {
-    return {};
-  }
-};
-const cachedProposalForConfig = config => {
-  const raw = readProposalCache()[proposalTileKey(config)];
-  return raw ? normalizeProposalProgram(raw) : null;
-};
-const rememberLearnedProposal = (config, rawProgram) => {
-  if (!rawProgram) return null;
-  const program = normalizeProposalProgram(rawProgram);
-  const key = proposalTileKey(config);
-  const cache = readProposalCache();
-  const current = cache[key] ? normalizeProposalProgram(cache[key]) : null;
-  if (
-    current
-    && current.patch.length > program.patch.length
-    && current.generation >= program.generation
-  ) return current;
-  cache[key] = program;
-  try {
-    localStorage.setItem(PROPOSAL_CACHE_STORAGE_KEY, JSON.stringify(cache));
-  } catch {
-    return current;
-  }
-  return program;
-};
 let workerDisplayPaused = false;
 let solverMessageQueue = [];
 let solverMessageQueueIndex = 0;
@@ -353,9 +318,9 @@ const rimLight = new THREE.DirectionalLight(0xffffff, 0.32);
 rimLight.position.set(-10, 14, -16);
 scene.add(rimLight);
 
-let faceGroup = new THREE.Group();
-let edgeGroup = new THREE.Group();
-let frontierPointGroup = new THREE.Group();
+const faceGroup = new THREE.Group();
+const edgeGroup = new THREE.Group();
+const frontierPointGroup = new THREE.Group();
 scene.add(faceGroup, edgeGroup, frontierPointGroup);
 
 let thumbnailRenderer = null;
@@ -550,7 +515,7 @@ function updateCriterionUI() {
   const selected = criterion();
   const byCount = selected === "count";
   maxTileField.classList.toggle("is-active", byCount);
-  layerField.classList.toggle("is-active", selected === "layer");
+  layerField?.classList.toggle("is-active", selected === "layer");
   shellField.classList.toggle("is-active", selected === "shell");
   regionField.classList.toggle("is-active", selected === "region");
   regionSizeFields.classList.toggle("is-hidden", selected !== "region");
@@ -558,7 +523,9 @@ function updateCriterionUI() {
 
 const STRATEGY_DESCRIPTIONS = {
   free_range: "Prioritizes forced moves, then explores sensible legal placements with backtracking.",
-  learning_free_range: "Runs the same tree search, remembers its best legal patch, and replays that proposal on later runs.",
+  learning_free_range: "Starts with an empty marking and records exact local frontier failures; translated recurrences are pruned by geometric overlap.",
+  rl_free_range: "Starts with an empty value table and learns only how anonymous lattice-geometry actions perform during this run.",
+  gcts_rl: "Combines cold online geometric action learning with exact GCTS failure markings; RL orders but never removes legal branches.",
   translational: "Tests increasingly large patches for three exact translation vectors and stops only on a certificate or search limit.",
   isohedral: "Searches tile-transitive patches, then requires an exact periodic quotient preserved by symmetries taking the root to every tile class."
 };
@@ -604,7 +571,7 @@ function applySearchParams() {
     if (Number.isFinite(value) && value > 0) control.value = String(value);
   };
   const criterionParam = params.get("criterion");
-  if (["count", "layer", "shell", "region"].includes(criterionParam)) {
+  if (["count", "shell", "region"].includes(criterionParam)) {
     document.querySelector(`input[name="criterion"][value="${criterionParam}"]`).checked = true;
   }
   setPositiveNumberParam(maxTilesInput, "target");
@@ -807,7 +774,7 @@ const catalogGroupDefinitions = [
     title: `Large-domain periodic controls (≥${GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES} tiles)`,
     test: figure => figureHasCategory(figure, "GCTS Periodic Controls")
   },
-  { id: "shell-controls", title: "GCTS shell-obstruction controls", test: figure => figureHasCategory(figure, "GCTS Shell-Obstruction Controls") },
+  { id: "non-tiler-controls", title: "GCTS non-tiler controls", test: figure => figureHasCategory(figure, "GCTS Non-Tiler Controls") },
   { id: "polycubes", title: "Polycubes", test: figure => figureHasCategory(figure, "Polycubes") },
   { id: "fedorov", title: "Fedorov solids", test: figure => figureHasCategory(figure, "Fedorov Solids") },
   { id: "space", title: "Space-fillers", test: figure => figureHasCategory(figure, "Space Fillers") },
@@ -1227,7 +1194,7 @@ function applyCheckpointUiState(ui = {}) {
   }
   if (!builderVoxels.size) builderVoxels = new Set(["0,0,0"]);
 
-  const savedCriterion = ["count", "layer", "shell", "region"].includes(controls.criterion) ? controls.criterion : "count";
+  const savedCriterion = ["count", "shell", "region"].includes(controls.criterion) ? controls.criterion : "count";
   const criterionRadio = document.querySelector(`input[name="criterion"][value="${savedCriterion}"]`);
   if (criterionRadio) criterionRadio.checked = true;
   if (controls.maxTiles != null) maxTilesInput.value = controls.maxTiles;
@@ -1339,26 +1306,23 @@ function applyCandidateSearchPreset({ invalidate = true } = {}) {
   if (!candidate && !knownAperiodic) return;
   const periodicLane = censusCandidatePeriodicLane(candidate);
   const periodicCandidate = !!periodicLane;
-  document.querySelector(`input[name="criterion"][value="${candidate && !periodicCandidate ? "shell" : "count"}"]`).checked = true;
+  document.querySelector(`input[name="criterion"][value="${candidate ? "shell" : "count"}"]`).checked = true;
   maxTilesInput.value = knownAperiodic
     ? "80"
     : periodicCandidate
       ? String(Math.max(24, candidate.screening?.motif_tiles ?? 1))
       : "120";
-  if (candidate && !periodicCandidate) shellInput.value = String(
-    candidate.screening?.shell_depth ?? candidate.shell_screening?.deepest_completed_shell ?? 5
-  );
+  if (candidate) shellInput.value = "2";
   strategySelect.value = setRadioValue(
     strategyRadios,
-    periodicLane ?? "free_range",
-    periodicLane ?? "free_range"
+    candidate ? "gcts_rl" : "free_range",
+    candidate ? "gcts_rl" : "free_range"
   );
-  if (periodicCandidate) periodicTileCountSelect.value = String(candidate.screening.motif_tiles ?? 6);
   faceOrderSelect.value = "mrv";
-  moveOrderSelect.value = candidate && !periodicCandidate ? "shell" : "balanced";
+  moveOrderSelect.value = "balanced";
   snapshotSelect.value = "0";
   timeCapInput.value = knownAperiodic ? "10" : "60";
-  nodeCapInput.value = candidate && !periodicCandidate ? "100000" : "0";
+  nodeCapInput.value = "0";
   candidateCapInput.value = "0";
   branchCapInput.value = "0";
   exhaustiveCheckbox.checked = true;
@@ -1375,9 +1339,7 @@ function updateCandidateResearchPanel() {
   candidateSearchButton.classList.toggle("is-hidden", !!knownAperiodic);
   if (candidate) {
     const periodicLane = censusCandidatePeriodicLane(candidate);
-    candidateSearchButton.textContent = periodicLane
-      ? `Replay ${periodicLane} certificate`
-      : "Apply exact shell preset";
+    candidateSearchButton.textContent = "Load cold shell-2 curriculum";
     const screening = candidate.last_screening;
     const proof = candidate.gcts_proof_screening;
     const shell = candidate.shell_screening;
@@ -1443,9 +1405,11 @@ function updateCandidateResearchPanel() {
         ? `${candidate.volume} cubes`
         : `${candidate.lattice_points} lattice points`;
       candidateResearchDetail.textContent = `${sizeLabel} · ${source}; the motif has ${candidate.screening.motif_tiles} tiles and period vectors ${candidate.screening.period_vectors.map(vector => `(${vector.join(",")})`).join(", ")}.${candidate.mirror_equivalent_id ? ` Its omitted enantiomer ${candidate.mirror_equivalent_id} is tiling-equivalent by reflection of all space.` : ""} Use the preset to replay the certificate in the ${periodicLane === "isohedral" ? "Isohedral" : "Translational"} lane.`;
-    } else if (["finite_extendable_shell_obstruction", "finite_shell_obstruction", "finite_corona_obstruction"].includes(candidate.screening?.certificate)) {
+    } else if (["finite_extendable_shell_obstruction", "finite_shell_obstruction", "finite_corona_obstruction", "complete_radius3_obstruction"].includes(candidate.screening?.certificate)) {
       candidateResearchTitle.textContent = `Certified non-tiler control ${candidate.id}`;
-      candidateResearchDetail.textContent = candidate.screening.certificate === "finite_corona_obstruction"
+      candidateResearchDetail.textContent = candidate.screening.certificate === "complete_radius3_obstruction"
+        ? `${candidate.volume}-cube polycube · a hash-locked, machine-checked count chain exhausts every radius-three exact-cover proposal: all patches through 46 surrounding copies, every exact count from 47 through 67, and the open-ended tail from 68 upward. The ${candidate.screening.corona_complete_replayed_clauses} imported obstruction clauses were replayed by plain chronological radius-four GCTS with optional nogoods and conflict backjumping disabled; all ${candidate.screening.corona_complete_checked_next_ring_cells} cell obligations are necessary next-ring conditions. Therefore no radius-three patch extends to radius four, which certifies non-tiling in Z³ under proper rotations. Its omitted enantiomer ${candidate.mirror_equivalent_id} has the reflected obstruction. The web run visualizes this hard control; the archived count-chain verifier is the certificate.`
+        : candidate.screening.certificate === "finite_corona_obstruction"
         ? `${candidate.volume}-cube polycube · an independently verified radius-${candidate.screening.corona_completed_radius} patch exists, but exact unpruned lattice-cover search exhausts every radius-${candidate.screening.corona_obstruction_radius} extension after ${candidate.screening.corona_obstruction_nodes.toLocaleString()} search nodes over ${candidate.screening.corona_obstruction_placements_considered.toLocaleString()} legal placements. Its omitted enantiomer ${candidate.mirror_equivalent_id} has the reflected obstruction.`
         : candidate.screening.certificate === "finite_shell_obstruction"
         ? `${candidate.lattice_points} lattice points · exhaustive unpruned face-to-face GCTS proves that no combinatorial shell ${candidate.screening.shell_depth} can surround the normalized root under full cubic isometries and integer translations. Shell ${shell?.deepest_completed_shell ?? 1} is attainable, making this a compact non-tiler regression control.`
@@ -1465,6 +1429,88 @@ function updateCandidateResearchPanel() {
       if (candidate.kind === "polycube_census" && candidate.screening.corona_cegar_radius3_states_checked) {
         candidateResearchDetail.textContent += ` A separate pseudo-Boolean CEGAR portfolio proposes ${candidate.screening.corona_cegar_radius3_states_checked} clause-distinct radius-three patches, down to ${candidate.screening.corona_cegar_minimum_radius3_placements} surrounding copies; exact continuation rejects every one at radius four in ${candidate.screening.corona_cegar_continuation_nodes} aggregate nodes and retains ${candidate.screening.corona_cegar_symmetry_closed_clauses} sound symmetry-closed obstruction clauses. Two eager one-step-coverability solves time out, so the lighter proposal model with lazy exact cuts is currently the better supplier. The radius-three state space remains unexhausted.`;
       }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_cell_cegar_states_checked) {
+        candidateResearchDetail.textContent += ` Lazy next-ring cell promotion has now checked ${candidate.screening.corona_cell_cegar_states_checked} exact proposals and promoted ${candidate.screening.corona_cell_cegar_orbits_promoted} symmetry-distinct dead-cell orbits, ending with ${candidate.screening.corona_cell_cegar_final_constraints} enforced cells and ${candidate.screening.corona_cell_cegar_final_clauses} sound placement clauses.${candidate.screening.corona_cell_cegar_minimum_placements ? ` The smallest proposal uses ${candidate.screening.corona_cell_cegar_minimum_placements} surrounding copies.` : ""} The recorded portfolio contains ${candidate.screening.corona_cell_cegar_combined_states_checked} clause-distinct radius-three states and ${candidate.screening.corona_cell_cegar_combined_continuation_nodes} continuation nodes; every failure is still immediate, so no radius-four subtree has survived. Incremental Z3 reused one formula for ${candidate.screening.corona_cell_cegar_incremental_states} SAT proposals, including ${candidate.screening.corona_cell_cegar_incremental_reused_states} strengthened checks without reconstruction; randomized restarts remain necessary after a solver timeout. This remains finite-corona evidence, not a non-tiling or aperiodicity certificate.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_placement_cube_cegar_rounds) {
+        candidateResearchDetail.textContent += ` Placement-cube CEGAR now continues SAT partition leaves automatically. Its first ${candidate.screening.corona_placement_cube_cegar_rounds} exact-41 rounds reject ${candidate.screening.corona_placement_cube_cegar_proposals_rejected}/${candidate.screening.corona_placement_cube_cegar_proposals_checked} radius-three proposals at radius four, then grow the independently replayed feedback to ${candidate.screening.corona_placement_cube_cegar_final_clauses} clauses and ${candidate.screening.corona_placement_cube_cegar_final_cells} next-ring cells. Fixed-value propagation before PB bit-blasting then revisits ${candidate.screening.corona_propagate_values_historical_singletons} historical singleton leaves: ${candidate.screening.corona_propagate_values_unsat_singletons} become exact UNSAT and the sixth yields a new 41-copy proposal. Nested compatible-placement cubes and exact GCTS feedback ultimately test and reject ${candidate.screening.corona_propagate_values_new_proposals} 41-copy proposals in total, using ${candidate.screening.corona_propagate_values_continuation_nodes} continuation nodes. All ${candidate.screening.corona_propagate_values_replayed_clauses} obstruction clauses replay independently with no failure, and ${candidate.screening.corona_nested_partition_unsat_leaves} terminal partition leaves close with no open residue. Exact count 41 is therefore exhausted as a possible radius-four survivor in this model. Counts ${candidate.screening.corona_next_unresolved_minimum_placements} and above and the unbounded tail remain open, so the candidate is still inconclusive.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_radius3_cegar_proposals) {
+        const radius3 = candidate.screening;
+        candidateResearchDetail.textContent += ` An unbounded-copy radius-two-to-three CEGAR chain proposed ${radius3.corona_radius3_cegar_proposals} exact outer states. GCTS rejected ${radius3.corona_radius3_cegar_rejected_states} of them—${radius3.corona_radius3_cegar_immediate_obstructions} by an immediate dead cell and ${radius3.corona_radius3_cegar_subtree_obstructions} by a resolved subtree conflict—before extending the last proposal to an independently verified ${radius3.corona_completed_witness_placements}-copy radius-three corona. A separate replay exhausts all ${radius3.corona_radius3_cegar_replayed_clauses}/${radius3.corona_radius3_cegar_final_clauses} retained obstruction clauses. That recorded survivor itself has ${radius3.corona_radius3_witness_radius4_dead_cells} immediate radius-four dead cells, with a smallest ${radius3.corona_radius3_witness_radius4_minimum_clause}-copy conflict, so it does not reach radius four; other radius-three coronas remain unexhausted. This upgrades the candidate's finite survival evidence, not its tiling or aperiodicity status.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_staged_cell_feedback_report) {
+        const stagedCells = candidate.screening;
+        candidateResearchDetail.textContent += ` Staging exact dead-cell feedback ${stagedCells.corona_staged_cell_feedback_batch} constraints at a time improves the matched radius-three proposal funnel from ${stagedCells.corona_staged_cell_feedback_matched_all_at_once_states} state to ${stagedCells.corona_staged_cell_feedback_matched_staged_states} under the same seed and 30-second check cap. Across ${stagedCells.corona_staged_cell_feedback_portfolio_runs} staged seeds it supplies ${stagedCells.corona_staged_cell_feedback_distinct_states} distinct ${stagedCells.corona_staged_cell_feedback_minimum_placements}–${stagedCells.corona_staged_cell_feedback_maximum_placements}-copy states. Exact radius-four GCTS rejects all ${stagedCells.corona_staged_cell_feedback_radius4_rejections} immediately in ${stagedCells.corona_staged_cell_feedback_continuation_nodes} aggregate nodes, and independent replay verifies all ${stagedCells.corona_staged_cell_feedback_replayed_clause_instances} learned clause instances with ${stagedCells.corona_staged_cell_feedback_replay_failures} failures. A matched joint clause-and-cell schedule returns ${stagedCells.corona_joint_feedback_matched_states} states rather than ${stagedCells.corona_staged_cell_feedback_matched_staged_states}, so it is not the production policy; however, ${stagedCells.corona_joint_feedback_new_states} are new beyond the whole prior portfolio, raising the exact corpus to ${stagedCells.corona_joint_feedback_combined_distinct_states} distinct states. GCTS rejects all ${stagedCells.corona_joint_feedback_radius4_rejections} immediately, and replay verifies ${stagedCells.corona_joint_feedback_replayed_clauses} more clauses with ${stagedCells.corona_joint_feedback_replay_failures} failures, so joint staging remains a complementary diversity lane. Relaxing the cap to ${stagedCells.corona_relaxed_copy_bound} adds ${stagedCells.corona_relaxed_copy_bound_new_states} further states, including ${stagedCells.corona_relaxed_copy_bound_40_copy_states} with 40 surrounding copies, for ${stagedCells.corona_relaxed_copy_bound_combined_distinct_states} distinct states overall. Same-process timeout escalation then extends the matched run from ${stagedCells.corona_timeout_retry_matched_no_retry_states} to ${stagedCells.corona_timeout_retry_states} states without rebuilding the solver, adding ${stagedCells.corona_timeout_retry_41_copy_states} new 41-copy states and raising the exact corpus to ${stagedCells.corona_timeout_retry_combined_distinct_states}. Exact partition restarts add ${stagedCells.corona_partition_restart_new_states} states and advance to ${stagedCells.corona_partition_restart_applied_cells} applied cells. At that frontier a four-cell step toward ${stagedCells.corona_frontier_large_batch_cells} times out, while one-cell steps reach ${stagedCells.corona_frontier_small_batch_cells}, add ${stagedCells.corona_frontier_small_batch_new_states} more 42-copy states, and raise the exact corpus to ${stagedCells.corona_frontier_combined_distinct_states}. Transactional feedback now automates that recovery: on the matched hard seed it rolls back ${stagedCells.corona_transactional_feedback_backoff_rollbacks} timed-out increments before a one-cell step succeeds; on another seed the four-cell step solves directly and reaches ${stagedCells.corona_transactional_feedback_maximum_applied_cells} applied cells. These add ${stagedCells.corona_transactional_feedback_new_states} states for ${stagedCells.corona_transactional_feedback_combined_distinct_states} distinct states overall, with ${stagedCells.corona_transactional_feedback_direct_replayed_clauses} and ${stagedCells.corona_transactional_feedback_backoff_replayed_clauses} clauses independently replayed and ${stagedCells.corona_transactional_feedback_replay_failures} failures. Retained feedback then contributes ${stagedCells.corona_retained_feedback_new_states} more distinct states, advances the exact prefix to ${stagedCells.corona_retained_feedback_maximum_applied_cells} applied cells, and raises the corpus to ${stagedCells.corona_retained_feedback_combined_distinct_states}. GCTS rejects both new states immediately in ${stagedCells.corona_retained_feedback_continuation_nodes} nodes; independent replay verifies the ${stagedCells.corona_retained_feedback_seed200_replayed_clauses}- and ${stagedCells.corona_retained_feedback_seed203_replayed_clauses}-clause reports with ${stagedCells.corona_retained_feedback_replay_failures} failures. A fresh seed still times out on the minimum 2-clause/1-cell step at that frontier. The ≤${stagedCells.corona_relaxed_copy_bound}-copy proposal space is unexhausted, so this proves neither non-tiling nor aperiodicity.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_partial_formula_cache_commit) {
+        const cache = candidate.screening;
+        const cacheReduction = (100 * cache.corona_partial_formula_cache_construction_reduction_fraction).toFixed(1);
+        candidateResearchDetail.textContent += ` Exact partial-formula caching keys the base solver formula to the applied cell prefix and cuts matched construction from ${(cache.corona_partial_formula_cache_miss_construction_ms / 1000).toFixed(1)} seconds to ${(cache.corona_partial_formula_cache_hit_construction_ms / 1000).toFixed(2)} seconds (${cacheReduction}%). Cache-backed seeds add ${cache.corona_partial_formula_cache_new_states} distinct 42-copy states, advance from 41 to ${cache.corona_partial_formula_cache_maximum_applied_cells} applied cells, and raise the exact corpus to ${cache.corona_partial_formula_cache_combined_distinct_states}. GCTS rejects both immediately in ${cache.corona_partial_formula_cache_continuation_nodes} nodes; independent replay verifies ${cache.corona_partial_formula_cache_seed208_replayed_clauses} and ${cache.corona_partial_formula_cache_seed210_replayed_clauses} clauses with ${cache.corona_partial_formula_cache_replay_failures} failures. The cache-miss control remains ${cache.corona_partial_formula_cache_seed209_status}; the ≤42-copy space is unexhausted, so neither non-tiling nor aperiodicity is established.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_deep_cached_prefix_combined_distinct_states) {
+        const deepPrefix = candidate.screening;
+        candidateResearchDetail.textContent += ` Retained one-cell restarts then add new ${deepPrefix.corona_deep_cached_prefix_seed211_placements}- and ${deepPrefix.corona_deep_cached_prefix_seed212_placements}-copy states, advance the exact prefix to ${deepPrefix.corona_deep_cached_prefix_maximum_applied_cells} applied cells, and raise the bounded corpus to ${deepPrefix.corona_deep_cached_prefix_combined_distinct_states} states. Exact GCTS rejects both at radius four in ${deepPrefix.corona_deep_cached_prefix_continuation_nodes} aggregate nodes, while independent replay verifies all ${deepPrefix.corona_deep_cached_prefix_seed211_replayed_clauses} and ${deepPrefix.corona_deep_cached_prefix_seed212_replayed_clauses} accumulated clauses with ${deepPrefix.corona_deep_cached_prefix_replay_failures} failures. The proposal space is still unexhausted.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_prefix45_diversification_combined_distinct_states) {
+        const diversified = candidate.screening;
+        const constructionReduction = (100 * diversified.corona_prefix45_diversification_construction_reduction_fraction).toFixed(1);
+        candidateResearchDetail.textContent += ` Matched diversification at the 45-cell prefix adds distinct 41- and ${diversified.corona_prefix45_diversification_minimum_placements}-copy states and converges to byte-identical ${diversified.corona_prefix45_diversification_maximum_applied_cells}-cell applied reports. The cache hit cuts construction by ${constructionReduction}% and the bounded corpus reaches ${diversified.corona_prefix45_diversification_combined_distinct_states} states. GCTS rejects both new states immediately in ${diversified.corona_prefix45_diversification_continuation_nodes} aggregate nodes; independent replay verifies ${diversified.corona_prefix45_diversification_seed213_replayed_clauses} and ${diversified.corona_prefix45_diversification_seed214_replayed_clauses} clauses with ${diversified.corona_prefix45_diversification_replay_failures} failures. No radius-four survivor has been found and the search remains unexhausted.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_retained_three_step_combined_distinct_states) {
+        const chain = candidate.screening;
+        candidateResearchDetail.textContent += ` A retained three-step solver chain then advances the exact prefix from 46 to ${chain.corona_retained_three_step_maximum_applied_cells} cells without reconstructing either successful intermediate formula. Its ${chain.corona_retained_three_step_new_states} independently verified ${chain.corona_retained_three_step_minimum_placements}- or 41-copy states raise the bounded corpus to ${chain.corona_retained_three_step_combined_distinct_states}. GCTS rejects all three at radius four in ${chain.corona_retained_three_step_continuation_nodes} aggregate nodes, and replay verifies all ${chain.corona_retained_three_step_replayed_clauses} accumulated clauses with ${chain.corona_retained_three_step_replay_failures} failures. The ≤42-copy proposal space remains unexhausted.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_retained_five_step_combined_distinct_states) {
+        const longChain = candidate.screening;
+        candidateResearchDetail.textContent += ` A longer retained chain succeeds at five further one-cell increments, reaching ${longChain.corona_retained_five_step_maximum_applied_cells} applied cells while avoiding ${longChain.corona_retained_five_step_reconstructions_avoided} formula reconstructions. Its ${longChain.corona_retained_five_step_new_states} independently verified ${longChain.corona_retained_five_step_minimum_placements}–${longChain.corona_retained_five_step_maximum_placements}-copy states raise the bounded corpus to ${longChain.corona_retained_five_step_combined_distinct_states}. All five fail radius-four continuation immediately in ${longChain.corona_retained_five_step_continuation_nodes} aggregate nodes, and replay verifies all ${longChain.corona_retained_five_step_replayed_clauses} clauses with ${longChain.corona_retained_five_step_replay_failures} failures. Same-process retention is now the production frontier policy; the search remains unexhausted.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_bounded_exhaustion_independent_unsat_runs) {
+        const bounded = candidate.screening;
+        const constructionReduction = (100 * bounded.corona_bounded_exhaustion_construction_reduction_fraction).toFixed(1);
+        const timeoutControlLabel = bounded.corona_widened_exhaustion_unknown_runs === 1 ? "control" : "controls";
+        candidateResearchDetail.textContent += ` The final retained chain adds ${bounded.corona_bounded_exhaustion_new_states} more verified states and reaches ${bounded.corona_bounded_exhaustion_maximum_verified_cells} applied cells. At ${bounded.corona_bounded_exhaustion_certificate_cells} cells, ${bounded.corona_bounded_exhaustion_base_independent_unsat_runs} independent solver seeds first agree on exact UNSAT through ${bounded.corona_bounded_exhaustion_base_maximum_placements} copies for byte-identical ${bounded.corona_bounded_exhaustion_applied_clauses}-clause formulas; the cache hit cuts construction by ${constructionReduction}%. Raising the cap to ${bounded.corona_bounded_exhaustion_maximum_placements} gives another exact UNSAT on seed ${bounded.corona_widened_exhaustion_unsat_seed}, alongside ${bounded.corona_widened_exhaustion_unknown_runs} timeout/rollback ${timeoutControlLabel}. This exhausts the ≤${bounded.corona_bounded_exhaustion_maximum_placements}-copy radius-three proposal stratum as a source of radius-four survivors, after ${bounded.corona_bounded_exhaustion_combined_distinct_states} verified bounded states and ${bounded.corona_bounded_exhaustion_replayed_clauses} replayed obstruction clauses. It does not exhaust larger coronas and proves neither non-tiling nor aperiodicity.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_copy47_48_frontier_report) {
+        const frontier = candidate.screening;
+        candidateResearchDetail.textContent += ` The earlier ${frontier.corona_copy47_48_frontier_timeout_runs}-run audit isolated the then-open ${frontier.corona_copy47_48_frontier_minimum_open_placements}–${frontier.corona_copy47_48_frontier_maximum_open_placements}-copy band, but every exact solve timed out and rolled back. Exact-cardinality formulas replace ${frontier.corona_copy47_48_exact_count_constraints_before} opposing pseudo-Boolean bounds with ${frontier.corona_copy47_48_exact_count_constraints_after} equality, saving ${frontier.corona_copy47_48_exact_count_formula_bytes_saved.toLocaleString()} serialized bytes; that matched audit established no speedup or exhaustion.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_exact47_cube_exhausted) {
+        const cubes = candidate.screening;
+        candidateResearchDetail.textContent += ` Exhaustive placement-cube decomposition subsequently partitions all ${cubes.corona_exact47_cube_anchor_candidates} ways to cover anchor cell ${cubes.corona_exact47_cube_anchor_cell} into ${cubes.corona_exact47_cube_branch_leaves} disjoint UNSAT leaves with an identical base-formula digest, closing exact count 47.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_exact48_49_cube_exhausted) {
+        const cubes = candidate.screening;
+        candidateResearchDetail.textContent += ` Two further digest-checked covers use ${cubes.corona_exact48_49_cube_branch_leaves} total leaves to close exact counts ${cubes.corona_exact48_49_cube_counts.join(" and ")}.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_exact50_cube_exhausted) {
+        const cubes = candidate.screening;
+        candidateResearchDetail.textContent += ` An ${cubes.corona_exact50_cube_branch_leaves}-leaf cover then closes exact count 50.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_exact51_adaptive_cube_exhausted) {
+        const cubes = candidate.screening;
+        candidateResearchDetail.textContent += ` The resumable adaptive runner closes exact count 51 with ${cubes.corona_exact51_adaptive_cube_branch_leaves} verified leaves after ${cubes.corona_exact51_adaptive_cube_solver_launches} solver launches; replay reuses all ${cubes.corona_exact51_adaptive_cube_resumed_branches} branch reports with ${cubes.corona_exact51_adaptive_cube_resume_launches} new launches.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_exact52_53_adaptive_cube_exhausted) {
+        const cubes = candidate.screening;
+        candidateResearchDetail.textContent += ` The same runner closes exact counts ${cubes.corona_exact52_53_adaptive_cube_counts.join(" and ")} with ${cubes.corona_exact52_53_adaptive_cube_branch_leaves} verified leaves after ${cubes.corona_exact52_53_adaptive_cube_solver_launches} total launches; replay reuses all ${cubes.corona_exact52_53_adaptive_cube_resumed_branches} attempted reports with ${cubes.corona_exact52_53_adaptive_cube_resume_launches} new launches.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_exact54_55_adaptive_cube_exhausted) {
+        const cubes = candidate.screening;
+        candidateResearchDetail.textContent += ` A contiguous range run closes exact counts ${cubes.corona_exact54_55_adaptive_cube_counts.join(" and ")} with ${cubes.corona_exact54_55_adaptive_cube_branch_leaves} verified leaves after ${cubes.corona_exact54_55_adaptive_cube_solver_launches} total launches; it enters the second count only after certifying the first, and replay reuses all ${cubes.corona_exact54_55_adaptive_cube_resumed_branches} attempted reports with ${cubes.corona_exact54_55_adaptive_cube_resume_launches} new launches.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_exact56_60_adaptive_cube_exhausted) {
+        const cubes = candidate.screening;
+        candidateResearchDetail.textContent += ` Three more adaptive runs close every exact count from ${cubes.corona_exact56_60_adaptive_cube_counts.at(0)} through ${cubes.corona_exact56_60_adaptive_cube_counts.at(-1)} with ${cubes.corona_exact56_60_adaptive_cube_branch_leaves} verified leaves after ${cubes.corona_exact56_60_adaptive_cube_solver_launches} launches. Independent regeneration reproduces all five cover certificates byte for byte, and replay reuses all ${cubes.corona_exact56_60_adaptive_cube_resumed_branches} attempted reports with ${cubes.corona_exact56_60_adaptive_cube_resume_launches} new launches.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_exact61_62_prerefined_cube_exhausted) {
+        const cubes = candidate.screening;
+        candidateResearchDetail.textContent += ` Exact ${cubes.corona_exact61_62_prerefined_cube_counts[0]} initially leaves one singleton anchor unresolved at 60 seconds; a focused seed closes that same leaf, and an independent ${cubes.corona_exact61_62_prerefined_cube_branch_leaves / 2}-leaf union covers all 58 anchors. Exact ${cubes.corona_exact61_62_prerefined_cube_counts[1]} pre-refines recurrent hard cubes 0, 2, and 3 and closes with another ${cubes.corona_exact61_62_prerefined_cube_branch_leaves / 2}-leaf union. Across both counts the runner uses ${cubes.corona_exact61_62_prerefined_cube_runner_launches} attempts and the focused leaf adds ${cubes.corona_exact61_62_prerefined_cube_focused_launches} solve; replay reuses ${cubes.corona_exact61_62_prerefined_cube_resumed_reports} cached runner reports with ${cubes.corona_exact61_62_prerefined_cube_replay_launches} new launches.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_exact63_67_prerefined_cube_exhausted) {
+        const cubes = candidate.screening;
+        candidateResearchDetail.textContent += ` The corrected version-two runner closes every exact count from ${cubes.corona_exact63_67_prerefined_cube_counts.at(0)} through ${cubes.corona_exact63_67_prerefined_cube_counts.at(-1)} with ${cubes.corona_exact63_67_prerefined_cube_branch_leaves} verified leaves across ${cubes.corona_exact63_67_prerefined_cube_solver_launches} attempted reports. All five independently regenerated certificates are byte-identical; replay reuses all ${cubes.corona_exact63_67_prerefined_cube_resumed_reports} reports with ${cubes.corona_exact63_67_prerefined_cube_replay_launches} new launches. Exact 66 alone needs a true two-to-one-anchor refinement, and no configured singleton retry is used. Together with the earlier bounded certificates, this exhausts radius-three proposals through ${cubes.corona_verified_copy_bound} surrounding copies under the replayed necessary conditions. Copy ${cubes.corona_minimum_open_placements} and unrestricted radius three remain open, so this proves neither non-tiling nor aperiodicity.`;
+      }
       if (candidate.kind === "polycube_census" && candidate.screening.corona_partial_coverability_report) {
         const partial = candidate.screening;
         const throughput = (100 * partial.corona_partial_coverability_nodes
@@ -1472,6 +1518,88 @@ function updateCandidateResearchPanel() {
           / (partial.corona_partial_coverability_baseline_nodes
             / partial.corona_partial_coverability_baseline_milliseconds)).toFixed(1);
         candidateResearchDetail.textContent += ` An optional exact partial-patch rule now waits until ${partial.corona_partial_coverability_min_placements} surrounding copies, then rejects a branch as soon as any next-ring cell has no compatible placement. In the matched run it replaced ${partial.corona_partial_coverability_baseline_continuation_checks} doomed complete-patch continuation checks with ${partial.corona_partial_coverability_prunes} earlier prunes and performed ${partial.corona_partial_coverability_nodes.toLocaleString()} outer nodes (${throughput}% of baseline throughput).${candidate.id === "p9-42947" ? ` A longer run still reached only depth ${partial.corona_partial_coverability_long_maximum_depth}, so the maintenance cost does not yet buy a deeper state for this candidate.` : ` Two fresh orderings add ${partial.corona_partial_coverability_validation_nodes.toLocaleString()} nodes and ${partial.corona_partial_coverability_validation_prunes} exact early prunes without reaching a complete proposal; proposal supply is now the bottleneck.`} The finite outer search remains unexhausted.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_placement_order_report) {
+        const ordering = candidate.screening;
+        candidateResearchDetail.textContent += candidate.id === "p9-42947"
+          ? ` A seeded-first exact row ordering reaches a distinct ${ordering.corona_seeded_order_proposal_placements}-copy radius-four boundary state after ${ordering.corona_seeded_order_validation_nodes.toLocaleString()} nodes across three restarts. Exact radius-five continuation rejects it in ${ordering.corona_seeded_order_continuation_nodes} node with a ${ordering.corona_seeded_order_obstruction_clause_size}-placement clause; the other two seeded restarts produce no complete proposal, so this remains a diversity lane rather than the default.`
+          : ` A matched three-profile ordering ablation leaves compact-first search as the best observed supplier: it reaches ${ordering.corona_placement_order_compact_complete_proposals} complete proposals while expansive-first and seeded-first reach ${ordering.corona_placement_order_alternative_complete_proposals}. Alternative ordering remains an exact optional restart, not a claimed improvement.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_high_copy_cegar_report) {
+        const highCopy = candidate.screening;
+        candidateResearchDetail.textContent += ` Minimum-copy CEGAR supplies ${highCopy.corona_high_copy_cegar_states_checked} further clause-distinct radius-four states using ${highCopy.corona_high_copy_cegar_minimum_placements}–${highCopy.corona_high_copy_cegar_maximum_placements} surrounding copies. Exact radius-five continuation rejects all of them in ${highCopy.corona_high_copy_cegar_continuation_nodes} aggregate nodes and retains ${highCopy.corona_high_copy_cegar_symmetry_closed_clauses} symmetry-closed clauses. ${highCopy.corona_high_copy_cegar_lightweight_timeout_runs} lightweight and ${highCopy.corona_high_copy_cegar_eager_timeout_runs} one-step-coverable proposal runs time out, so the high-copy space remains unexhausted.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_staged_coverability_report) {
+        const staged = candidate.screening;
+        candidateResearchDetail.textContent += ` A grouped pseudo-Boolean encoding compresses ${staged.corona_staged_coverability_logical_conflict_edges.toLocaleString()} exact outer/lookahead conflict implications into ${staged.corona_staged_coverability_grouped_conflicts.toLocaleString()} groups and ${staged.corona_staged_coverability_asserted_constraints.toLocaleString()} total asserted constraints. It supplies ${staged.corona_staged_coverability_states_checked} radius-four states with ${staged.corona_staged_coverability_minimum_placements}–${staged.corona_staged_coverability_maximum_placements} copies in which every next-ring cell is individually coverable. Radius-five GCTS rejects all ${staged.corona_staged_coverability_resolved_subtree_states} through genuine resolved-subtree conflicts in ${staged.corona_staged_coverability_continuation_nodes} aggregate nodes (maximum ${staged.corona_staged_coverability_maximum_continuation_nodes}), while lazy learning grows to ${staged.corona_staged_coverability_pair_constraints} symmetry-expanded pair obligations. No radius-five witness is found and the outer search remains unexhausted.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_higher_order_coverability_report) {
+        const higher = candidate.screening;
+        candidateResearchDetail.textContent += ` Higher-order CEGAR extends this to ${higher.corona_higher_order_states_checked} exact full-single-coverability states with ${higher.corona_higher_order_minimum_placements}–${higher.corona_higher_order_maximum_placements} copies, rejected in ${higher.corona_higher_order_continuation_nodes} aggregate radius-five nodes (maximum ${higher.corona_higher_order_maximum_continuation_nodes}). Systematic and lazy learning reaches ${higher.corona_higher_order_pair_constraints} pair and ${higher.corona_higher_order_triple_constraints} triple obligations. A ${higher.corona_higher_order_pairwise_triplewise_state_placements}-copy state independently passes every pair and every triple on the full 180-cell next ring, yet GCTS rejects it in ${higher.corona_higher_order_pairwise_triplewise_state_continuation_nodes} nodes; its first audited local inconsistency is a diameter-${higher.corona_higher_order_first_quadruple_diameter} quadruple blocking ${higher.corona_higher_order_first_quadruple_candidate_combinations} placement combinations. This raises the observed obstruction order to four, but still proves neither non-tiling nor aperiodicity.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_quadruple_coverability_report) {
+        const quadruple = candidate.screening;
+        candidateResearchDetail.textContent += ` The exact proposal solver now encodes that quadruple's ${quadruple.corona_quadruple_constraints}-member symmetry orbit directly. It supplies ${quadruple.corona_quadruple_states_checked} further ${quadruple.corona_quadruple_minimum_placements}–${quadruple.corona_quadruple_maximum_placements}-copy states, all rejected by radius-five GCTS in ${quadruple.corona_quadruple_continuation_nodes} aggregate nodes; the deepest survives ${quadruple.corona_quadruple_maximum_continuation_nodes} nodes. These new states expose ${quadruple.corona_quadruple_pair_defect_states} still-missing pair cases and ${quadruple.corona_quadruple_triple_defect_states} pairwise-complete but triple-defective cases, growing the formula to ${quadruple.corona_quadruple_pair_constraints} pair and ${quadruple.corona_quadruple_triple_constraints} triple obligations. Thus excluding one order-four defect improves the benchmark but does not complete the lower-order screen or prove aperiodicity.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_batched_triple_report) {
+        const batch = candidate.screening;
+        candidateResearchDetail.textContent += ` Complete per-state triple batching then checks ${batch.corona_batched_triple_states_checked} more exact dead states. Its ${batch.corona_batched_triple_triple_defect_states} pairwise-complete proposals contribute ${batch.corona_batched_triple_orbits_added} triple orbits in six audits, growing the carried formula to ${batch.corona_batched_triple_final_pair_constraints} pair, ${batch.corona_batched_triple_final_triple_constraints} triple, and ${batch.corona_batched_triple_final_quadruple_constraints} quadruple obligations. At that strength ${batch.corona_batched_triple_final_four_timeouts} of the final four outer solves time out, shifting the bottleneck from repeated tuple discovery to the monolithic proposal formula; this remains inconclusive.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_lazy_higher_report) {
+        const lazy = candidate.screening;
+        candidateResearchDetail.textContent += ` A matched lazy-higher ablation keeps pair obligations in Z3 but audits triples and quadruples exactly after each proposal. From the identical saved formula and four seeds, proposal yield rises from ${lazy.corona_lazy_higher_encoded_sat_states}/${lazy.corona_lazy_higher_matched_trials} with ${lazy.corona_lazy_higher_encoded_timeouts} timeouts to ${lazy.corona_lazy_higher_sat_states}/${lazy.corona_lazy_higher_matched_trials} with none; every returned state has a sound tuple obstruction before GCTS. Eight chained restarts add ${lazy.corona_lazy_higher_extension_pair_defect_states} pair-defective and ${lazy.corona_lazy_higher_extension_triple_defect_states} pairwise-complete but triple-defective states, reaching ${lazy.corona_lazy_higher_final_pair_constraints} pair, ${lazy.corona_lazy_higher_final_triple_constraints} triple, and ${lazy.corona_lazy_higher_final_quadruple_constraints} quadruple obligations. No tuple-complete radius-four state or radius-five witness appears, so the next target is hybrid proposal steering, not an aperiodicity claim.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_hybrid_higher_report) {
+        const hybrid = candidate.screening;
+        candidateResearchDetail.textContent += ` Hybrid-higher screening encodes just ${hybrid.corona_hybrid_higher_encoded_triple_orbits} complete triple orbit and audits the rest lazily. It returns all four matched proposals without timeout and cuts their aggregate Z3 time by ${(100 * hybrid.corona_hybrid_higher_matched_runtime_reduction_fraction).toFixed(1)}% versus fully lazy screening; encoding ${hybrid.corona_hybrid_higher_large_subset_timeout_orbits} unranked orbits already times out. Across the chained fixed and recent-orbit lanes, ${hybrid.corona_hybrid_higher_chain_sat_states} exact proposals expose ${hybrid.corona_hybrid_higher_pair_defect_states} pair and ${hybrid.corona_hybrid_higher_triple_defect_states} triple defects, growing the formula to ${hybrid.corona_hybrid_higher_final_pair_constraints} pair, ${hybrid.corona_hybrid_higher_final_triple_constraints} triple, and ${hybrid.corona_hybrid_higher_final_quadruple_constraints} quadruple obligations.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_ranked_hybrid_report) {
+        const ranked = candidate.screening;
+        candidateResearchDetail.textContent += ` Persistent impact ranking then follows the triple orbit observed to block ${ranked.corona_ranked_hybrid_selected_score} candidate combinations. Six more exact proposals expose ${ranked.corona_ranked_hybrid_pair_defect_states} pair and ${ranked.corona_ranked_hybrid_triple_defect_states} triple defects, reaching ${ranked.corona_ranked_hybrid_final_pair_constraints} pair, ${ranked.corona_ranked_hybrid_final_triple_constraints} triple, and ${ranked.corona_ranked_hybrid_final_quadruple_constraints} quadruple obligations. The ranked orbit changes as intended, but no proposal clears the full triple audit and each solve still takes minutes. This remains an unresolved benchmark, not evidence of non-tiling or aperiodicity; retaining outer-solver state is now the main performance target.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_formula_cache_report) {
+        const cache = candidate.screening;
+        candidateResearchDetail.textContent += ` Validated formula caching now reuses the static exact-cover/lookahead formula and all ${cache.corona_formula_cache_pair_constraints} accumulated pair constraints across solver seeds while rebuilding higher-order steering and forbidden-state clauses. In a matched two-iteration driver profile, construction falls from ${(cache.corona_formula_cache_miss_construction_ms / 1000).toFixed(1)}s to ${(cache.corona_formula_cache_hit_construction_ms / 1000).toFixed(1)}s (${(100 * cache.corona_formula_cache_construction_reduction_fraction).toFixed(1)}%), reducing total one-second-probe wall time by ${(100 * cache.corona_formula_cache_total_reduction_fraction).toFixed(1)}%. This is a search-throughput improvement only; both timed checks are inconclusive.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_cached_ranked_extension_report) {
+        const extension = candidate.screening;
+        candidateResearchDetail.textContent += ` The cached one-orbit ranked extension returns ${extension.corona_cached_ranked_sat_states} exact proposals with ${extension.corona_cached_ranked_timeout_trials} timeout: ${extension.corona_cached_ranked_triple_defect_states} consecutive states clear every accumulated pair check before failing the full triple audit, while one exposes a new pair orbit. The screen now carries ${extension.corona_cached_ranked_final_pair_constraints} pair, ${extension.corona_cached_ranked_final_triple_constraints} triple, and ${extension.corona_cached_ranked_final_quadruple_constraints} quadruple obligations. A separate two-highest-impact-orbit solve also times out. No proposal clears the full triple audit, so no radius-five GCTS continuation starts and the candidate remains unresolved.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_batched_solver_state_report) {
+        const batch = candidate.screening;
+        candidateResearchDetail.textContent += ` Exact retained-state batching can request ${batch.corona_batched_solver_requested_witnesses} distinct Boolean models without rebuilding Z3. On the positive control it learns from one model and verifies the next through GCTS. On this candidate, seed 302 returns one proposal after ${(batch.corona_batched_solver_first_check_ms / 1000).toFixed(1)}s, exposes a new pair orbit, then spends ${(batch.corona_batched_solver_second_check_ms / 1000).toFixed(1)}s without a second model. The carried screen reaches ${batch.corona_batched_solver_final_pair_constraints} pair and ${batch.corona_batched_solver_final_triple_constraints} triple obligations. Blind batching is therefore not the answer here; the next solver should accept each audited obstruction interactively before continuing its retained search.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_interactive_z3_report) {
+        const interactive = candidate.screening;
+        candidateResearchDetail.textContent += ` Bidirectional retained CEGAR now does that: it asserts every audited state clause and new pair obligation inside the same Z3 process before requesting another model. Three sessions return ${interactive.corona_interactive_z3_sat_states}/${interactive.corona_interactive_z3_sat_states} exact proposals with no timeout—${interactive.corona_interactive_z3_pair_defect_states} pair-defective and ${interactive.corona_interactive_z3_triple_defect_states} pairwise-complete but triple-defective. In production, ${interactive.corona_interactive_z3_pair_feedback_applied} newly learned pair constraints are applied before the next check, whose model clears the enlarged pair audit and reaches the triple audit. The portfolio advances to ${interactive.corona_interactive_z3_final_pair_constraints} pair, ${interactive.corona_interactive_z3_final_triple_constraints} triple, and ${interactive.corona_interactive_z3_final_quadruple_constraints} quadruple obligations. No proposal clears the full triple audit, so the candidate remains unresolved.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_ranked_pair_window_report) {
+        const rankedPairs = candidate.screening;
+        candidateResearchDetail.textContent += ` Pair-level impact ranking now keeps the full ${rankedPairs.corona_interactive_z3_final_pair_constraints}-constraint audit but initially steers Z3 with only the strongest ${rankedPairs.corona_ranked_pair_window_orbits} symmetry orbits (${rankedPairs.corona_ranked_pair_window_constraints} constraints). In the matched seed, that window constructs in ${(rankedPairs.corona_ranked_pair_window_construction_ms / 1000).toFixed(1)}s and returns an exact proposal after ${(rankedPairs.corona_ranked_pair_window_check_ms / 1000).toFixed(1)}s; loading every pair takes ${(rankedPairs.corona_ranked_pair_full_construction_ms / 1000).toFixed(1)}s and then times out after ${(rankedPairs.corona_ranked_pair_full_check_ms / 1000).toFixed(1)}s. A retained follow-up returns ${rankedPairs.corona_ranked_pair_retained_sat_states} more pair-defective states while asserting ${rankedPairs.corona_ranked_pair_feedback_constraints} promoted constraints, then times out. This improves proposal throughput without relaxing the exact gate; it still supplies no radius-five witness or aperiodicity evidence.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_replaceable_pair_window_report) {
+        const replacement = candidate.screening;
+        candidateResearchDetail.textContent += ` Ranked pair steering is now genuinely replaceable: activation assumptions hold the live window fixed while compiled inactive formulas remain cached. A changed window can construct in ${(replacement.corona_replaceable_pair_fast_construction_ms / 1000).toFixed(1)}s and return an exact state in ${(replacement.corona_replaceable_pair_fast_check_ms / 1000).toFixed(1)}s. The expanded portfolio returns ${replacement.corona_replaceable_pair_sat_states} exact states and records ${replacement.corona_replaceable_pair_timeout_trials} timeouts; all ${replacement.corona_replaceable_pair_defect_states} returned states fail the complete pair audit. Windows of 32 and 64 orbits solve in ${(replacement.corona_replaceable_pair_window32_check_ms / 1000).toFixed(1)}s and ${(replacement.corona_replaceable_pair_window64_check_ms / 1000).toFixed(1)}s but remain pair-defective, while 128 orbits times out. The screen now carries ${replacement.corona_replaceable_pair_final_constraints} pair constraints and ${replacement.corona_replaceable_pair_final_clauses} verified state clauses. This is stronger screening and faster proposal generation, not a non-tiling or aperiodicity certificate.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_pair_recurrence_report) {
+        const recurrence = candidate.screening;
+        candidateResearchDetail.textContent += ` A deduplicated replay independently verifies ${recurrence.corona_pair_recurrence_verified_states} historical radius-four states; ${recurrence.corona_pair_recurrence_eligible_states} satisfy the current individual-coverability contract and expose ${recurrence.corona_pair_recurrence_orbits} recurrent pair orbits. Of these states, ${recurrence.corona_pair_recurrence_pair_defect_states} fail pair coverability and ${recurrence.corona_pair_recurrence_pair_complete_states} clear it; ${recurrence.corona_pair_recurrence_triple_defect_states} of the latter fail the bounded triple gate, and the final one fails a quadruple obstruction, leaving ${recurrence.corona_pair_recurrence_tuple_survivors} GCTS continuation targets. Recurrence is therefore recorded but not promoted blindly: in a matched 16-orbit probe, impact-only solves in ${(recurrence.corona_pair_recurrence_impact_check_ms / 1000).toFixed(1)}s with ${recurrence.corona_pair_recurrence_impact_defects} pair defects, versus ${(recurrence.corona_pair_recurrence_frequency_check_ms / 1000).toFixed(1)}s/${recurrence.corona_pair_recurrence_frequency_defects} for frequency-first and ${(recurrence.corona_pair_recurrence_weighted_check_ms / 1000).toFixed(1)}s/${recurrence.corona_pair_recurrence_weighted_defects} for frequency-weighted impact. Impact-only remains the production lane. These are bounded finite-patch screens, not a non-tiling or aperiodicity certificate.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_historical_cover_report) {
+        const cover = candidate.screening;
+        candidateResearchDetail.textContent += ` Joint historical coverage preserves all ${cover.corona_historical_cover_defect_sets} per-state defect sets instead of flattening them into marginal counts. Its greedy 16-orbit window intersects ${cover.corona_historical_cover_sets_covered} replayed failures, versus ${cover.corona_historical_impact_sets_covered} for impact-only. Across three matched seeds both lanes return three exact states; historical-cover uses ${(cover.corona_historical_cover_total_check_ms / 1000).toFixed(1)}s total and exposes ${cover.corona_historical_cover_total_pair_defects} pair defects, versus ${(cover.corona_historical_impact_total_check_ms / 1000).toFixed(1)}s and ${cover.corona_historical_impact_total_pair_defects}. This modest aggregate improvement earns it a complementary diversity lane, not a replacement for impact-only: neither produces a pair-complete state, so no new GCTS continuation begins.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_historical_core_report) {
+        const core = candidate.screening;
+        candidateResearchDetail.textContent += ` A stricter historical-core lane identifies ${core.corona_historical_core_singleton_states} failed states whose sole pair defect belongs to ${core.corona_historical_core_singleton_orbits} distinct orbits, and protects all of those orbits in a 32-orbit window before greedily covering the rest. It intersects ${core.corona_historical_core_sets_covered} historical failures, versus ${core.corona_historical_core_control_sets_covered} for ordinary historical-cover. Across matched seeds 325–327, however, the protected core needs ${(core.corona_historical_core_total_check_ms / 1000).toFixed(1)}s and leaves ${core.corona_historical_core_total_pair_defects} defects, versus ${(core.corona_historical_core_control_check_ms / 1000).toFixed(1)}s and ${core.corona_historical_core_control_pair_defects}; it finds ${core.corona_historical_core_new_pair_orbits} new pair orbit but no pair-complete state. Historical-core is therefore retained only as a proposal-diversity lane, not promoted to production, and supplies no radius-five or aperiodicity evidence.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_adaptive_pair_report) {
+        const adaptive = candidate.screening;
+        candidateResearchDetail.textContent += ` Retained CEGAR can now reserve a bounded prefix of the live pair window for the exact defect set from its preceding proposal, with each trial reporting whether that response is complete. A complete 32-orbit response initially reduces nine defects to four, but across three matched models it needs ${(adaptive.corona_adaptive_pair_total_check_ms / 1000).toFixed(1)}s and ${adaptive.corona_adaptive_pair_replacement_constraints} replacement constraints for ${adaptive.corona_adaptive_pair_total_defects} defects; ordinary historical-cover needs ${(adaptive.corona_adaptive_pair_control_check_ms / 1000).toFixed(1)}s and ${adaptive.corona_adaptive_pair_control_replacement_constraints} replacements for ${adaptive.corona_adaptive_pair_control_defects}. Both discover ${adaptive.corona_adaptive_pair_new_orbits} new pair orbits. Bounding the response to four orbits still times out on its next check. Even a 64-orbit window that intersects all ${adaptive.corona_historical_cover64_sets_covered} historical defect sets returns a fresh state with ${adaptive.corona_historical_cover64_pair_defects} pair defects, and its cache-identical replay times out. Ordinary historical-cover remains the production lane; no pair-complete state or radius-five GCTS start is obtained.`;
+      }
+      if (candidate.kind === "polycube_census" && candidate.screening.corona_soft_pair_quota_report) {
+        const soft = candidate.screening;
+        candidateResearchDetail.textContent += ` Soft global pair steering now supports both constraint quotas and complete root-symmetry-orbit quotas while retaining the exact lazy audit. Across matched seeds 330–332, asking Z3 to satisfy at least 72 of 96 ranked constraints takes ${(soft.corona_soft_pair_quota_total_check_ms / 1000).toFixed(1)}s and exposes ${soft.corona_soft_pair_quota_total_defects} full-audit defects; making all 96 hard takes ${(soft.corona_soft_pair_hard_total_check_ms / 1000).toFixed(1)}s with the same ${soft.corona_soft_pair_hard_total_defects} defects. A quota of 84 is also slower and exposes ${soft.corona_soft_pair_quota84_defects} defects. At the symmetry-correct orbit level, 24 of 32 times out, while 16 of 32 takes ${(soft.corona_soft_pair_orbit16_check_ms / 1000).toFixed(1)}s with ${soft.corona_soft_pair_orbit16_defects} defects, versus ${(soft.corona_soft_pair_hard_seed330_check_ms / 1000).toFixed(1)}s/${soft.corona_soft_pair_hard_seed330_defects} for the hard control. Hard historical-cover remains production; no quota state clears the pair gate or starts radius-five GCTS.`;
       }
     }
   } else if (knownAperiodic) {
@@ -1532,6 +1660,8 @@ function renderSystemTileList() {
         const certificate = figure.census_candidate.screening?.certificate;
         angles.textContent = ["translational", "isohedral_periodic_quotient"].includes(certificate)
           ? `${figure.census_candidate.screening.motif_tiles}-tile periodic quotient · ${figure.census_candidate.kind === "polycube_census" ? `${figure.census_candidate.volume} cubes` : `${figure.census_candidate.lattice_points} points`}`
+          : certificate === "complete_radius3_obstruction"
+            ? `complete radius 3→4 obstruction · ${figure.census_candidate.volume} cubes`
           : figure.census_candidate.kind === "polycube_census"
           ? `period > ${figure.census_candidate.screening.periodic_hnf_max_motif_tiles} · corona radius ${figure.census_candidate.screening.corona_completed_radius} · ${figure.census_candidate.volume} cubes`
           : ["finite_extendable_shell_obstruction", "finite_shell_obstruction"].includes(certificate)
@@ -1754,13 +1884,14 @@ function configKey() {
     && moveOrderSelect.value === "global"
     && selectedCriterion === "count"
     && exhaustiveCheckbox.checked;
-  const completeShellSearch = tilingStrategy === "free_range"
-    && selectedCriterion === "shell"
+  const completeShellSearch = selectedCriterion === "shell"
+    && ["free_range", "learning_free_range", "rl_free_range", "gcts_rl"].includes(tilingStrategy)
     && exhaustiveCheckbox.checked;
   const forcedLayerLagCap = completeGlobalSearch || completeShellSearch
     ? 0
     : positiveSearchParam("generation_lag_cap", "forced_layer_lag_cap", "forced_move_layer_lag_cap") ?? 2;
-  const isLearningFreeRange = tilingStrategy === "learning_free_range";
+  const isGcts = tilingStrategy === "learning_free_range" || tilingStrategy === "gcts_rl";
+  const isRl = tilingStrategy === "rl_free_range" || tilingStrategy === "gcts_rl";
   const isStructural = tilingStrategy === "translational" || tilingStrategy === "isohedral";
   const candidateIsohedralHorizon = root?.census_candidate?.last_screening
     ?.isohedral?.growth_horizon_tiles ?? null;
@@ -1787,11 +1918,36 @@ function configKey() {
     snapshot_every: Number.isFinite(snapshotEvery) ? snapshotEvery : 1,
     face_order: faceOrderSelect.value,
     tiling_strategy: tilingStrategy,
-    move_order: isLearningFreeRange ? "agent" : completeShellSearch ? "shell" : moveOrderSelect.value,
+    move_order: isRl
+      ? "rl"
+      : isGcts
+        ? "balanced"
+        : tilingStrategy === "translational"
+          ? "periodic_agent"
+          : completeShellSearch
+            ? "shell"
+            : moveOrderSelect.value,
+    complete_lattice_point_branching: isGcts || isRl
+      || (tilingStrategy === "free_range" && selectedCriterion !== "shell"),
+    gcts_failure_marking: isGcts,
+    gcts_marking_reach_multiplier: 1,
+    gcts_marking_max_clauses: 20000,
+    gcts_marking_max_context_tiles: 1000000,
+    gcts_marking_activation_failures: 0,
+    gcts_marking_symmetry: "fixed",
+    gcts_marking_index: true,
     greedy_no_backtrack: false,
     agent_exhaustive: true,
+    agent_policy: isRl || tilingStrategy === "translational" ? "cold_geometry" : null,
+    seeded_tie_breaks: isRl || tilingStrategy === "translational",
+    random_seed: 1,
+    learned_layer_macro: isRl,
+    learned_layer_macro_max_motif_tiles: 8,
+    learned_layer_macro_motif_node_limit: 2500,
+    learned_layer_macro_discovery_time_ms: 45000,
     template_preflight: isStructural,
     periodic_patch_unbounded: tilingStrategy === "translational",
+    periodic_motif_node_limit: tilingStrategy === "translational" ? 2500 : null,
     periodic_patch_max_tiles: tilingStrategy === "translational"
       ? null
       : Math.max(1, Number(periodicTileCountSelect.value) || 4),
@@ -1801,7 +1957,9 @@ function configKey() {
     forced_move_layer_lag_cap: forcedLayerLagCap,
     generic_connected_patch_enumeration: completeGlobalSearch,
     generic_complete_shell_enumeration: completeShellSearch,
-    known_periodic_template: root?.census_candidate?.screening?.periodic_template ?? null,
+    // Catalog annotations are display-only. Every interactive lane must derive
+    // its behavior from the supplied lattice geometry in the current run.
+    known_periodic_template: null,
     branch_cap: positiveOrNull(branchCapInput),
     node_limit: positiveOrNull(nodeCapInput),
     candidate_cap: positiveOrNull(candidateCapInput),
@@ -1840,11 +1998,6 @@ function disposeObjectTree(object) {
 
 function clearObjectGroup(group) {
   while (group.children.length) disposeObjectTree(group.children.pop());
-}
-
-function disposeObjectGroup(group) {
-  clearObjectGroup(group);
-  group.parent?.remove(group);
 }
 
 function resizeRenderer() {
@@ -1903,6 +2056,38 @@ function batchFor(map, key, setup) {
     map.set(key, batch);
   }
   return batch;
+}
+
+function geometryFromPositions(positions, { normals = false } = {}) {
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
+  if (normals) geometry.computeVertexNormals();
+  return geometry;
+}
+
+function replaceObjectGeometry(object, geometry) {
+  const previous = object.geometry;
+  object.geometry = geometry;
+  previous?.dispose?.();
+}
+
+function reconcileRenderBatches(group, batches, createObject, updateObject) {
+  const existing = new Map(group.children.map(object => [object.userData.renderBatchKey, object]));
+  for (const [key, batch] of batches) {
+    let object = existing.get(key);
+    if (object) {
+      existing.delete(key);
+      updateObject(object, batch);
+    } else {
+      object = createObject(batch);
+      object.userData.renderBatchKey = key;
+      group.add(object);
+    }
+  }
+  for (const object of existing.values()) {
+    group.remove(object);
+    disposeObjectTree(object);
+  }
 }
 
 function pushVertex(out, vertex, scale) {
@@ -2138,7 +2323,7 @@ function applyPlacementDelta(delta, { deferDisplay = false } = {}) {
 }
 
 function updateScene(snapshot, options = {}) {
-  const { preserveView = false, rebuildFaces = true, syncLive = true } = options;
+  const { preserveView = true, rebuildFaces = true, syncLive = true } = options;
   lastSnapshot = snapshot;
   if (syncLive && snapshot?.faces) resetLiveFaceStacks(snapshot);
   if (syncLive && snapshot?.frontier_points) resetLiveFrontierPoints(snapshot);
@@ -2149,9 +2334,6 @@ function updateScene(snapshot, options = {}) {
   const edgeBatches = new Map();
   const showInternal = internalCheckbox.checked;
   const showEdges = edgesCheckbox.checked && (!running || faces.length <= RUNNING_EDGE_FACE_LIMIT);
-  const nextFaceGroup = rebuildFaces ? new THREE.Group() : null;
-  const nextEdgeGroup = new THREE.Group();
-  const nextFrontierPointGroup = new THREE.Group();
 
   for (const face of faces) {
     if (face.internal && !showInternal) continue;
@@ -2185,76 +2367,90 @@ function updateScene(snapshot, options = {}) {
   }
 
   if (rebuildFaces) {
-    for (const batch of faceBatches.values()) {
-      const geometry = new THREE.BufferGeometry();
-      geometry.setAttribute("position", new THREE.Float32BufferAttribute(batch.positions, 3));
-      geometry.computeVertexNormals();
-      const material = new THREE.MeshPhongMaterial({
-        color: new THREE.Color(batch.color),
-        transparent: batch.alpha < 0.999,
-        opacity: batch.alpha,
-        side: THREE.DoubleSide,
-        flatShading: true,
-        polygonOffset: true,
-        polygonOffsetFactor: 1,
-        polygonOffsetUnits: 1,
-        depthWrite: batch.alpha > 0.55
-      });
-      nextFaceGroup.add(new THREE.Mesh(geometry, material));
-    }
+    reconcileRenderBatches(
+      faceGroup,
+      faceBatches,
+      batch => new THREE.Mesh(
+        geometryFromPositions(batch.positions, { normals: true }),
+        new THREE.MeshPhongMaterial({
+          color: new THREE.Color(batch.color),
+          transparent: batch.alpha < 0.999,
+          opacity: batch.alpha,
+          side: THREE.DoubleSide,
+          flatShading: true,
+          polygonOffset: true,
+          polygonOffsetFactor: 1,
+          polygonOffsetUnits: 1,
+          depthWrite: batch.alpha > 0.55
+        })
+      ),
+      (object, batch) => replaceObjectGeometry(
+        object,
+        geometryFromPositions(batch.positions, { normals: true })
+      )
+    );
   }
 
-  for (const batch of edgeBatches.values()) {
-    const geometry = new THREE.BufferGeometry();
-    geometry.setAttribute("position", new THREE.Float32BufferAttribute(batch.positions, 3));
-    const material = new THREE.LineBasicMaterial({
-      color: 0x111827,
-      transparent: batch.alpha < 0.999,
-      opacity: Math.min(0.72, Math.max(0.18, batch.alpha))
-    });
-    nextEdgeGroup.add(new THREE.LineSegments(geometry, material));
-  }
+  reconcileRenderBatches(
+    edgeGroup,
+    edgeBatches,
+    batch => new THREE.LineSegments(
+      geometryFromPositions(batch.positions),
+      new THREE.LineBasicMaterial({
+        color: 0x111827,
+        transparent: batch.alpha < 0.999,
+        opacity: Math.min(0.72, Math.max(0.18, batch.alpha))
+      })
+    ),
+    (object, batch) => replaceObjectGeometry(object, geometryFromPositions(batch.positions))
+  );
 
   const pointPositions = [];
   for (const point of snapshot?.frontier_points ?? []) {
     if (!point?.pos?.length) continue;
     pointPositions.push([point.pos[0] / scale, point.pos[1] / scale, point.pos[2] / scale]);
   }
+  const lattice = selectedPolycubeLattice();
+  const frontierBatchKey = `frontier:${lattice}`;
+  const existingFrontierMesh = frontierPointGroup.children.find(
+    object => object.userData.renderBatchKey === frontierBatchKey
+  );
+  for (const object of [...frontierPointGroup.children]) {
+    if (object === existingFrontierMesh && pointPositions.length) continue;
+    frontierPointGroup.remove(object);
+    disposeObjectTree(object);
+  }
   if (pointPositions.length) {
-    const lattice = selectedPolycubeLattice();
     const pointRadius = lattice === "half" ? 0.0425 : 0.06;
-    const pointGeometry = new THREE.SphereGeometry(pointRadius, 8, 6);
-    const pointMaterial = new THREE.MeshBasicMaterial({
-      color: { z3: 0x178273, fcc: 0x315f9f, half: 0xd97706 }[lattice] ?? 0x178273,
-      transparent: true,
-      opacity: 0.9,
-      depthTest: true,
-      depthWrite: false
-    });
-    const pointMesh = new THREE.InstancedMesh(pointGeometry, pointMaterial, pointPositions.length);
+    const requiredCapacity = pointPositions.length;
+    let pointMesh = existingFrontierMesh;
+    if (!pointMesh || pointMesh.userData.instanceCapacity < requiredCapacity) {
+      if (pointMesh) {
+        frontierPointGroup.remove(pointMesh);
+        disposeObjectTree(pointMesh);
+      }
+      const capacity = 2 ** Math.ceil(Math.log2(Math.max(1, requiredCapacity)));
+      const pointGeometry = new THREE.SphereGeometry(pointRadius, 8, 6);
+      const pointMaterial = new THREE.MeshBasicMaterial({
+        color: { z3: 0x178273, fcc: 0x315f9f, half: 0xd97706 }[lattice] ?? 0x178273,
+        transparent: true,
+        opacity: 0.9,
+        depthTest: true,
+        depthWrite: false
+      });
+      pointMesh = new THREE.InstancedMesh(pointGeometry, pointMaterial, capacity);
+      pointMesh.userData.renderBatchKey = frontierBatchKey;
+      pointMesh.userData.instanceCapacity = capacity;
+      frontierPointGroup.add(pointMesh);
+    }
+    pointMesh.count = pointPositions.length;
     const pointMatrix = new THREE.Matrix4();
     pointPositions.forEach((position, index) => {
       pointMatrix.makeTranslation(position[0], position[1], position[2]);
       pointMesh.setMatrixAt(index, pointMatrix);
     });
     pointMesh.instanceMatrix.needsUpdate = true;
-    nextFrontierPointGroup.add(pointMesh);
   }
-
-  if (rebuildFaces) {
-    const oldFaceGroup = faceGroup;
-    faceGroup = nextFaceGroup;
-    scene.add(faceGroup);
-    disposeObjectGroup(oldFaceGroup);
-  }
-  const oldEdgeGroup = edgeGroup;
-  edgeGroup = nextEdgeGroup;
-  scene.add(edgeGroup);
-  disposeObjectGroup(oldEdgeGroup);
-  const oldFrontierPointGroup = frontierPointGroup;
-  frontierPointGroup = nextFrontierPointGroup;
-  scene.add(frontierPointGroup);
-  disposeObjectGroup(oldFrontierPointGroup);
 
   updateRunMetrics(snapshot);
   if (!preserveView && autoFitCheckbox.checked && !rootCentered) centerOnSnapshot(snapshot, true);
@@ -2733,7 +2929,7 @@ function handleMessage(message) {
     attachSnapshotToNode(message.node_id, message);
     if ((message.tile_count ?? 0) <= 1) {
       flushFullUpdateNow();
-      updateScene(message);
+      updateScene(message, { preserveView: false });
       lastFullUpdateRenderedAt = performance.now();
       queueCheckpointSave(message, { reason: "root" });
       return;
@@ -2817,7 +3013,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260821-polycube10-v127", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260824-rl-parity-v211", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -2948,6 +3144,8 @@ function pauseRun() {
 const GROWTH_MODES = [
   { id: "free_range", strategy: "free_range", label: "Free-range", color: "#6f7c77", symbol: "square-open", dash: "dash" },
   { id: "gcts", strategy: "learning_free_range", label: "GCTS", color: "#178273", symbol: "diamond", dash: "solid" },
+  { id: "rl", strategy: "rl_free_range", label: "RL", color: "#c16a28", symbol: "cross", dash: "dot" },
+  { id: "gcts_rl", strategy: "gcts_rl", label: "GCTS + RL", color: "#b33c67", symbol: "star", dash: "solid" },
   { id: "translational", strategy: "translational", label: "Translational", color: "#315f9f", symbol: "circle-open", dash: "solid" },
   { id: "isohedral", strategy: "isohedral", label: "Isohedral", color: "#7656a5", symbol: "triangle-up-open", dash: "solid" }
 ];
@@ -3117,8 +3315,7 @@ function showGrowthSnapshot(modeId, pointIndex = null) {
   if (!snapshot) return;
   if (series.prototileInfo) initTileControls(series.prototileInfo);
   lastSnapshot = snapshot;
-  rootCentered = false;
-  updateScene(snapshot, { preserveView: false });
+  updateScene(snapshot, { preserveView: true });
   const displayedPoint = growthInspection.pointIndex == null ? series.points?.at(-1) : inspectedPoint;
   const tiles = displayedPoint?.tiles ?? snapshot.tile_count ?? 0;
   const time = displayedPoint ? ` at ${(displayedPoint.milliseconds / 1000).toFixed(2)}s` : "";
@@ -3185,7 +3382,7 @@ async function renderGrowthChart() {
     const selectedIndex = mode.id === activeMode ? growthInspection.pointIndex : null;
     return {
       type: "scatter",
-      mode: "lines+markers",
+      mode: inspectable ? "lines+markers" : "lines",
       name: mode.label,
       x: points.map(point => point.milliseconds / 1000),
       y: points.map(point => point.tiles),
@@ -3286,6 +3483,12 @@ async function renderGrowthChart() {
     growthChart.on("plotly_click", handleGrowthPlotClick);
     growthPlotClickBound = true;
   }
+  if (!growthPlotLegendBound && typeof growthChart.on === "function") {
+    const keepGrowthLegendReadOnly = () => false;
+    growthChart.on("plotly_legendclick", keepGrowthLegendReadOnly);
+    growthChart.on("plotly_legenddoubleclick", keepGrowthLegendReadOnly);
+    growthPlotLegendBound = true;
+  }
   if (!growthPlotBackgroundBound) {
     growthChart.addEventListener("click", event => {
       growthPointerWasNearPoint = growthEventIsNearPoint(event);
@@ -3312,16 +3515,28 @@ function formatGrowthResult(result, target) {
     configured_branch_pruning: "configured branch pruning"
   }[result?.stats?.termination_reason] ?? null;
   const stopSuffix = result?.searchIncomplete && stopReason ? ` · ${stopReason}` : "";
-  const learningSuffix = result?.mode === "gcts"
-    ? result.reusedLearnedPatch
-      ? ` (replayed ${result.stats?.proposal_patch_tiles_replayed ?? 0})`
-      : result.learnedProgram?.patch?.length
-        ? ` (learned ${result.learnedProgram.patch.length})`
-        : ""
+  const learningSuffix = result?.mode === "gcts_rl"
+    ? ` (RL ${result.stats?.agent_learned_tags ?? 0} values; GCTS ${result.stats?.marking_geometric_clauses ?? 0} failures, ${result.stats?.marking_geometric_prunes ?? 0} reuses)`
+    : result?.mode === "gcts"
+    ? ` (learned ${result.stats?.marking_geometric_clauses ?? 0}, reused ${result.stats?.marking_geometric_prunes ?? 0})`
+    : result?.mode === "rl"
+      ? ` (learned ${result.stats?.agent_learned_tags ?? 0} geometric values)`
     : "";
   const targetPoint = result?.points?.find(point => point.tiles >= target);
   if (result?.resultKind === "known_aperiodic_construction") {
     return `${result.label} · known SCD construction to ${target} tiles ${formatElapsed(targetPoint?.milliseconds ?? result.milliseconds)}`;
+  }
+  if (result?.criterion === "shell") {
+    const shell = result.targetValue ?? target;
+    if (result.resultKind === "no_tiling" && result.certified && result.canTile === false) {
+      return `${result.label} certified that shell ${shell} is impossible, hence no tiling exists ${formatElapsed(result.milliseconds)}`;
+    }
+    if (result.success) {
+      return `${result.label} completed shell ${shell} with ${result.tileCount} tiles ${formatElapsed(result.milliseconds)}${learningSuffix}`;
+    }
+    const maxShell = result.stats?.max_complete_shell_depth ?? 0;
+    const maxLive = result.stats?.max_live_tiles ?? result.tileCount ?? 0;
+    return `${result.label} inconclusive · max shell ${maxShell} · max ${maxLive} live${stopSuffix}${learningSuffix}`;
   }
   if (
     proofMode
@@ -3378,15 +3593,18 @@ function formatGrowthResult(result, target) {
     const attempts = result.stats?.isohedral_certificate_attempts ?? 0;
     const reused = result.stats?.isohedral_certificate_duplicate_states_skipped ?? 0;
     const effort = `max ${maxLive} live · ${attempts} quotient check${attempts === 1 ? "" : "s"}${reused ? ` · ${reused} reused` : ""}`;
-    return result.searchIncomplete
-      ? `${result.label} inconclusive · ${effort}`
-      : `${result.label} exhausted without a certificate · ${effort}`;
+    return `${result.label} inconclusive · ${effort}`;
   }
   if (result?.mode === "translational" && !result?.success) {
     const checked = result.checkedPatchSize ?? 0;
-    return result.searchIncomplete
-      ? `${result.label} inconclusive · checked through ${checked}-tile patches`
-      : `${result.label} exhausted through ${checked}-tile patches`;
+    return `${result.label} inconclusive · checked through ${checked}-tile patches`;
+  }
+  if (["gcts", "gcts_rl"].includes(result?.mode) && result?.resultKind === "no_tiling") {
+    return `${result.label} certified that no tiling is possible ${formatElapsed(result.milliseconds)}`;
+  }
+  if (["gcts", "gcts_rl"].includes(result?.mode) && result?.searchIncomplete) {
+    const maxLive = result.stats?.max_live_tiles ?? result.tileCount ?? 0;
+    return `${result.label} inconclusive · max ${maxLive} live${stopSuffix}${learningSuffix}`;
   }
   if (targetPoint) {
     const witness = result?.mode === "translational" && result?.resultKind === "certified_tiling"
@@ -3406,7 +3624,7 @@ function finishGrowthBenchmark(results) {
       ? Number(maxTilesInput.value) || 1
       : Number(layerInput.value) || 1;
   growthBenchmarkStatus.textContent = results.map(result => formatGrowthResult(result, target)).join(" · ");
-  setStatus("All four modes finished.");
+  setStatus("All six lanes finished.");
   renderGrowthChart();
 }
 
@@ -3448,16 +3666,15 @@ function startGrowthBenchmark() {
   const sequence = growthSequence;
   const config = JSON.parse(configKey());
   config.ui_yield_interval_ms = 250;
-  const cachedLearningProgram = cachedProposalForConfig(config);
   growthRunning = true;
   setRunButton();
-  setStatus("Running all four modes…");
+  setStatus("Running all six lanes…");
   const targetLabel = config.criterion === "shell"
     ? `shell ${config.target_val}`
     : config.criterion === "count"
       ? `${config.target_val} tiles`
       : `${config.criterion} ${config.target_val}`;
-  growthBenchmarkStatus.textContent = `Running four searches simultaneously to ${targetLabel}…`;
+  growthBenchmarkStatus.textContent = `Running six searches simultaneously to ${targetLabel}…`;
 
   const refreshStatus = () => {
     const summaries = GROWTH_MODES.map(mode => {
@@ -3481,7 +3698,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260820-polycube10-v120", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260824-rl-parity-v211", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     worker.addEventListener("message", event => {
       const message = event.data ?? {};
@@ -3515,14 +3732,12 @@ function startGrowthBenchmark() {
         ) showSelectedGrowthSnapshot();
       } else if (message.type === "series-finished") {
         series.result = message.result;
-        if (mode.id === "gcts" && message.result.learnedProgram) {
-          const stored = rememberLearnedProposal(config, message.result.learnedProgram);
-          if (stored) {
-            series.learnedProgram = stored;
-            series.status = message.result.reusedLearnedPatch
-              ? `reused ${message.result.stats?.proposal_patch_tiles_replayed ?? 0}-tile patch; learned ${stored.patch.length}`
-              : `learned ${stored.patch.length}-tile patch for next run`;
-          }
+        if (mode.id === "gcts_rl") {
+          series.status = `RL learned ${message.result.stats?.agent_learned_tags ?? 0} values; GCTS learned ${message.result.stats?.marking_geometric_clauses ?? 0} failures and reused ${message.result.stats?.marking_geometric_prunes ?? 0}`;
+        } else if (mode.id === "gcts") {
+          series.status = `learned ${message.result.stats?.marking_geometric_clauses ?? 0} geometric failures; reused ${message.result.stats?.marking_geometric_prunes ?? 0}`;
+        } else if (mode.id === "rl") {
+          series.status = `learned ${message.result.stats?.agent_learned_tags ?? 0} anonymous geometric values`;
         }
         if (!series.status || ["running", "starting"].includes(series.status)) {
           series.status = message.result.success ? "finished" : message.result.searchIncomplete ? "search limit" : "terminated";
@@ -3546,9 +3761,7 @@ function startGrowthBenchmark() {
     worker.postMessage({
       type: "start",
       sequence,
-      config: mode.id === "gcts"
-        ? { ...config, proposal_program: cachedLearningProgram }
-        : config,
+      config,
       mode: mode.id
     });
   }
@@ -3613,7 +3826,7 @@ function bindControls() {
 
   candidateSearchButton.addEventListener("click", () => {
     applyCandidateSearchPreset();
-    setStatus("Long-growth preset ready: four modes race to 120 tiles for up to 30 seconds.");
+    setStatus("Long-growth preset ready: six lanes race to 120 tiles for up to 30 seconds.");
     setRunButton();
   });
 

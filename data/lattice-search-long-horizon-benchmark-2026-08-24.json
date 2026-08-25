@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "date": "2026-08-24",
+  "purpose": "Extended-horizon comparison of GCTS with the two strongest practical tree-search baselines from the two-second screen.",
+  "algorithms": ["free_range", "uct", "gcts"],
+  "ten_second_configuration": {
+    "cases": ["10_16113", "10_45026", "10_45033", "9_11683"],
+    "target_tiles": 160,
+    "wall_time_ms": 10000,
+    "seeds": [1, 2, 3],
+    "generation_lag_cap": 2
+  },
+  "ten_second_results": {
+    "10_16113": {
+      "free_range": { "final_values": [42, 31, 31], "robust": 31, "median": 31, "best": 42, "checkpoint_medians_2_5_10s": [23, 23, 31], "median_anytime_average_tiles": 25.07 },
+      "uct": { "final_values": [23, 23, 23], "robust": 23, "median": 23, "best": 23, "checkpoint_medians_2_5_10s": [19, 22, 23], "median_anytime_average_tiles": 20.37 },
+      "gcts": { "final_values": [37, 34, 33], "robust": 33, "median": 34, "best": 37, "checkpoint_medians_2_5_10s": [24, 31, 34], "median_anytime_average_tiles": 28.34 }
+    },
+    "10_45026": {
+      "free_range": { "final_values": [26, 21, 22], "robust": 21, "median": 22, "best": 26, "checkpoint_medians_2_5_10s": [20, 22, 22], "median_anytime_average_tiles": 20.34 },
+      "uct": { "final_values": [22, 22, 22], "robust": 22, "median": 22, "best": 22, "checkpoint_medians_2_5_10s": [20, 21, 22], "median_anytime_average_tiles": 20.28 },
+      "gcts": { "final_values": [29, 34, 29], "robust": 29, "median": 29, "best": 34, "checkpoint_medians_2_5_10s": [26, 28, 29], "median_anytime_average_tiles": 26.96 }
+    },
+    "10_45033": {
+      "role": "certified periodic control",
+      "free_range": { "final_values": [29, 35, 41], "robust": 29, "median": 35, "best": 41, "checkpoint_medians_2_5_10s": [32, 32, 35], "median_anytime_average_tiles": 30.42 },
+      "uct": { "final_values": [36, 33, 37], "robust": 33, "median": 36, "best": 37, "checkpoint_medians_2_5_10s": [36, 36, 36], "median_anytime_average_tiles": 33.35 },
+      "gcts": { "final_values": [41, 52, 44], "robust": 41, "median": 44, "best": 52, "checkpoint_medians_2_5_10s": [38, 44, 44], "median_anytime_average_tiles": 40.51 }
+    },
+    "9_11683": {
+      "free_range": { "final_values": [22, 18, 23], "robust": 18, "median": 22, "best": 23, "checkpoint_medians_2_5_10s": [18, 21, 22], "median_anytime_average_tiles": 19.25 },
+      "uct": { "final_values": [20, 18, 25], "robust": 18, "median": 20, "best": 25, "checkpoint_medians_2_5_10s": [18, 18, 20], "median_anytime_average_tiles": 17.97 },
+      "gcts": { "final_values": [47, 50, 48], "robust": 47, "median": 48, "best": 50, "checkpoint_medians_2_5_10s": [33, 40, 48], "median_anytime_average_tiles": 37.18 }
+    }
+  },
+  "thirty_second_extension": {
+    "selection_rule": "Extend only a control whose GCTS advantage widens at each of the 2, 5, and 10 second checkpoints.",
+    "case": "9_11683",
+    "target_tiles": 300,
+    "wall_time_ms": 30000,
+    "seeds": [1, 2, 3],
+    "checkpoint_seconds": [2, 5, 10, 20, 30],
+    "free_range": {
+      "final_values": [26, 18, 23],
+      "checkpoint_values": [[20, 18, 16], [21, 18, 20], [22, 18, 23], [25, 18, 23], [26, 18, 23]],
+      "checkpoint_medians": [18, 20, 22, 23, 23],
+      "median_anytime_average_tiles": 21.69,
+      "visited_nodes": [2538, 3546, 2616],
+      "observed_elapsed_ms": [30013, 30007, 30007]
+    },
+    "uct": {
+      "final_values": [20, 25, 25],
+      "checkpoint_values": [[17, 18, 18], [18, 18, 18], [20, 18, 25], [20, 21, 25], [20, 25, 25]],
+      "checkpoint_medians": [18, 18, 20, 21, 25],
+      "median_anytime_average_tiles": 20.13,
+      "visited_nodes": [8585, 8648, 8601],
+      "observed_elapsed_ms": [30005, 30006, 30003]
+    },
+    "gcts": {
+      "final_values": [58, 73, 59],
+      "checkpoint_values": [[20, 34, 34], [36, 46, 40], [47, 50, 48], [57, 61, 53], [58, 73, 59]],
+      "checkpoint_medians": [34, 40, 48, 57, 59],
+      "median_anytime_average_tiles": 48.23,
+      "visited_nodes": [776, 320, 607],
+      "observed_elapsed_ms": [30490, 31730, 30462]
+    }
+  },
+  "conclusions": [
+    "At ten seconds GCTS has the highest robust and median depth on all four controls, including the periodic control.",
+    "The gain is modest on 10_16113, material on 10_45026 and 10_45033, and dramatic and still widening on 9_11683.",
+    "At thirty seconds on 9_11683, GCTS median depth is 59 versus 23 for free-range DFS and 25 for UCT.",
+    "GCTS also has more than twice the median anytime-average patch size on the thirty-second extension."
+  ],
+  "limitations": [
+    "These are development controls rather than a held-out candidate suite.",
+    "Patch growth is a witness-search metric and does not prove tilability or aperiodicity.",
+    "A branch operation started before the wall-time deadline may finish afterward; strict checkpoint values use snapshot timestamps at or before the stated horizon."
+  ]
+}

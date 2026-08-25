@@ -81,6 +81,19 @@ try {
   const continuationRecords = cpuContinuation.stdout.trim().split(/\r?\n/).map(line => JSON.parse(line));
   assert.equal(continuationRecords[0].budget_clock, "cpu");
   assert.equal(continuationRecords.at(-1).type, "continuation_portfolio_summary");
+  const fixedOnlyContinuation = spawnSync(process.execPath, [
+    continuationScript.pathname,
+    "--id=p10-052588",
+    "--outer-layer=2",
+    "--inner-layer=3",
+    "--seeds=",
+    "--time-ms=1",
+    "--inner-time-ms=1"
+  ], { encoding: "utf8" });
+  assert.equal(fixedOnlyContinuation.status, 0, fixedOnlyContinuation.stderr);
+  const fixedOnlyRecords = fixedOnlyContinuation.stdout.trim().split(/\r?\n/).map(line => JSON.parse(line));
+  assert.deepEqual(fixedOnlyRecords[0].seeds, []);
+  assert.deepEqual(fixedOnlyRecords.at(-1).trials, []);
   const invalidClock = spawnSync(process.execPath, [
     continuationScript.pathname,
     "--budget-clock=calendar"

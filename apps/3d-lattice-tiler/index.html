@@ -13,7 +13,7 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="./style.css?v=20260820-polycube10-v106">
+  <link rel="stylesheet" href="./style.css?v=20260824-polycube10-v107">
 </head>
 <body>
   <div class="app-shell">
@@ -30,12 +30,8 @@
             <span>Tile</span>
             <input id="maxTilesInput" type="number" value="80" min="1" max="2000">
           </label>
-          <label class="inline-field" id="layerField">
-            <input type="radio" name="criterion" value="layer">
-            <span>Layer</span>
-            <input id="layerInput" type="number" value="2" min="1" max="50">
-          </label>
-          <label class="inline-field" id="shellField" title="Complete face-adjacency shells around the root tile">
+          <input id="layerInput" type="hidden" value="2">
+          <label class="inline-field" id="shellField" title="Order-independent face-adjacency shell; exhaustive failure can prove non-tiling">
             <input type="radio" name="criterion" value="shell">
             <span>Shell</span>
             <input id="shellInput" type="number" value="3" min="1" max="20">
@@ -61,7 +57,15 @@
             </label>
             <label>
               <input type="radio" name="tilingStrategy" value="learning_free_range">
-              <span><b>GCTS</b><small>Learn and reuse successful proposal patches.</small></span>
+              <span><b>GCTS</b><small>Learn exact geometric failure markings from an empty start.</small></span>
+            </label>
+            <label>
+              <input type="radio" name="tilingStrategy" value="rl_free_range">
+              <span><b>RL</b><small>Cold online learning orders every legal branch without pruning.</small></span>
+            </label>
+            <label>
+              <input type="radio" name="tilingStrategy" value="gcts_rl">
+              <span><b>GCTS + RL</b><small>Exact failure pruning plus cold learned branch ordering.</small></span>
             </label>
             <label>
               <input type="radio" name="tilingStrategy" value="translational">
@@ -79,6 +83,8 @@
           <select id="strategySelect">
             <option value="free_range" selected>Free-range</option>
             <option value="learning_free_range">GCTS</option>
+            <option value="rl_free_range">RL</option>
+            <option value="gcts_rl">GCTS + RL</option>
             <option value="translational">Translational</option>
             <option value="isohedral">Isohedral</option>
           </select>
@@ -148,7 +154,7 @@
         <div id="candidateResearchPanel" class="candidate-research-panel is-hidden">
           <div>
             <b id="candidateResearchTitle">Unresolved census candidate</b>
-            <small id="candidateResearchDetail"></small>
+            <small id="candidateResearchDetail" class="candidate-research-detail" tabindex="0" aria-label="Research note"></small>
           </div>
           <button id="candidateSearchButton" type="button">Apply exact shell preset</button>
         </div>
@@ -157,7 +163,7 @@
       <section class="metrics">
         <div><b id="metricTiles">0</b><span>tiles</span></div>
         <div><b id="metricFrontier">0</b><span>frontier points</span></div>
-        <div><b id="metricLayer">0</b><span id="metricLayerDetail">active layer</span></div>
+        <div class="is-hidden" aria-hidden="true"><b id="metricLayer">0</b><span id="metricLayerDetail">internal oldest generation</span></div>
         <div><b id="metricVisited">0%</b><span id="metricVisitedDetail">tree visited</span><small id="metricNodes">0 nodes</small></div>
         <div><b id="metricGrowth">—</b><span>3D growth balance</span><small id="metricGrowthDetail">center spans 0 × 0 × 0</small></div>
       </section>
@@ -186,7 +192,7 @@
         <div class="growth-header">
           <div>
             <h2 id="growthChartTitle">Growth curve · tiles versus time</h2>
-            <small>Choose the lane above. This panel never switches lanes: click a sample on the selected lane to inspect it, or empty chart space to return to its current patch.</small>
+            <small>Six cold-start lanes share only the tile geometry, lattice, and its configured symmetry group. Choose the lane above; click its samples to inspect history.</small>
           </div>
           <div class="growth-history-controls" aria-label="Growth snapshot history">
             <button id="growthHistoryBack" type="button" aria-label="Previous growth snapshot" title="Previous snapshot" disabled>←</button>
@@ -246,6 +252,6 @@
   </dialog>
 
   <script src="https://cdn.plot.ly/plotly-3.6.0.min.js" charset="utf-8"></script>
-  <script type="module" src="./app.js?v=20260821-polycube10-v144"></script>
+  <script type="module" src="./app.js?v=20260824-rl-parity-v211"></script>
 </body>
 </html>

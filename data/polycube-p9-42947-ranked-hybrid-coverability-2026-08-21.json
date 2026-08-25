@@ -1,0 +1,66 @@
+{
+  "kind": "polycube_p9_42947_ranked_hybrid_coverability_receipt",
+  "candidate": "p9-42947",
+  "outer_layer": 4,
+  "inner_layer": 5,
+  "implementation_commit": "bba0eb2",
+  "prior_portfolio": "data/polycube-p9-42947-hybrid-higher-coverability-2026-08-21.json",
+  "ranking_contract": {
+    "policy": "max-blocked-combinations",
+    "score": "largest candidate_triples_blocked value observed for any member of a root-symmetry triple orbit",
+    "persistence": "scores are stored by canonical root-symmetry orbit representative in triple-coverability.json and restored on a resumed run",
+    "selection": "encode the highest-scoring complete orbit; ties prefer the most recently accumulated orbit",
+    "soundness": "Every unencoded triple and every quadruple obligation remains subject to the exact lazy audit before any GCTS continuation."
+  },
+  "ranked_chain": {
+    "random_seeds": [289, 290, 291, 292, 293, 294],
+    "proposal_trials": 6,
+    "sat_outer_states": 6,
+    "unknown_timeout_trials": 0,
+    "exact_tuple_rejections": 6,
+    "continuations_started": 0,
+    "pair_defect_states": 4,
+    "triple_defect_states": 2,
+    "quadruple_defect_states": 0,
+    "full_triple_audit_passes": 0,
+    "z3_milliseconds_total": 1602927,
+    "z3_milliseconds_minimum": 186074,
+    "z3_milliseconds_maximum": 324561,
+    "outer_placements_minimum": 66,
+    "outer_placements_maximum": 72,
+    "initial_constraints": {
+      "symmetry_closed_clauses": 375,
+      "pair": 759,
+      "triple": 174,
+      "quadruple": 3
+    },
+    "final_constraints": {
+      "symmetry_closed_clauses": 393,
+      "pair": 771,
+      "triple": 207,
+      "quadruple": 3
+    },
+    "selection_transition": {
+      "initial_score": 0,
+      "measured_blocked_combinations": 110,
+      "selected_score_after_learning": 110,
+      "selected_orbit_changed": true,
+      "selected_canonical_orbit": "-1,-3,2;-1,-4,1;0,-4,2"
+    }
+  },
+  "sources": [
+    {
+      "path": "runs/p9-radius4-to5-hybrid-ranked1-seed289-summary.json",
+      "sha256": "9c3ac76277674b5715e9717d44dadcad11bb33dfe727c55b4635eda96aa9b5c2"
+    },
+    {
+      "path": "runs/p9-radius4-to5-hybrid-ranked1-seed293-summary.json",
+      "sha256": "e77cb71c9c387cd1b008835bcfa13bac72fa6e067030f6b60cad3f51b302b938"
+    }
+  ],
+  "radius_five_witness_found": false,
+  "outer_search_exhausted": false,
+  "certified_non_tiler": false,
+  "certified_aperiodic": false,
+  "interpretation": "Impact ranking is persistent and mechanically effective: after the first measured triple obstruction, the encoded orbit changes to the 110-combination orbit on the next solve and remains selected after restart. All six proposals are nevertheless rejected by exact pair or triple audits, and solve time remains 186-325 seconds per proposal. Ranking therefore improves steering but does not escape the current defect basin; retaining solver state or otherwise reducing repeated outer-model construction is the next performance target."
+}

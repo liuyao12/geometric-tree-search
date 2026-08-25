@@ -161,6 +161,17 @@ const liveProgram = proposalProgramFromPatchSnapshot(
 assert.equal(liveProgram.tile_key, proposalTileKey({ mode_key: "cube", polycube_lattice: "z3" }));
 assert.equal(liveProgram.patch.length, baselineA.snapshot.placements.length);
 assert.deepEqual(liveProgram.patch[0].translation, [0, 0, 0]);
+const reservedTailProgram = proposalProgramFromPatchSnapshot(
+  { mode_key: "cube", polycube_lattice: "z3" },
+  baselineA.snapshot,
+  null,
+  { tailReserve: 4 }
+);
+assert.equal(
+  reservedTailProgram.patch.length,
+  baselineA.snapshot.placements.length - 4,
+  "live learning should be able to reserve a backtrackable suffix"
+);
 const liveReplay = await runProposalEpisode({ mode_key: "cube" }, {
   target: 24,
   horizon_ms: 500

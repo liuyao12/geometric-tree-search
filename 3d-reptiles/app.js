@@ -54,6 +54,32 @@ const CANONICAL_VERTICES = [
   new THREE.Vector3(SQRT3, 0, 1),
   new THREE.Vector3(0, 1, 1)
 ];
+const TUBE_FACES = [
+  [0, 3, 2, 1], [4, 5, 6, 7],
+  [0, 1, 5, 4], [1, 2, 6, 5],
+  [2, 3, 7, 6], [3, 0, 4, 7]
+];
+const PRISM_CENTROID = new THREE.Vector3(SQRT3 / 3, 1 / 3, 0.5);
+const PRINCIPAL_AXIS = new THREE.Vector3(
+  1,
+  (2 - Math.sqrt(7)) / SQRT3,
+  0
+).normalize();
+const SECOND_PRINCIPAL_AXIS = new THREE.Vector3(0, 0, 1);
+const THIRD_PRINCIPAL_AXIS = new THREE.Vector3().crossVectors(
+  PRINCIPAL_AXIS,
+  SECOND_PRINCIPAL_AXIS
+).normalize();
+const PRINCIPAL_ARROW_POINTS = [
+  PRISM_CENTROID,
+  PRISM_CENTROID.clone().addScaledVector(PRINCIPAL_AXIS, 0.84),
+  PRISM_CENTROID.clone().addScaledVector(PRINCIPAL_AXIS, 0.69).addScaledVector(SECOND_PRINCIPAL_AXIS, 0.075),
+  PRISM_CENTROID.clone().addScaledVector(PRINCIPAL_AXIS, 0.69).addScaledVector(SECOND_PRINCIPAL_AXIS, -0.075),
+  PRISM_CENTROID.clone().addScaledVector(PRINCIPAL_AXIS, 0.69)
+];
+const ROD_VERTICES_PER_TILE = 8;
+const DART_VERTICES_PER_TILE = 6;
+const MARKER_VERTICES_PER_TILE = ROD_VERTICES_PER_TILE + DART_VERTICES_PER_TILE;
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0xedf1ef);
@@ -734,12 +760,46 @@ function makeTransparentMaterial({ line = false, opacity } = {}) {
   return material;
 }
 
+function appendThickSegment(positions, colors, indices, start, end, color, thickness) {
+  const direction = end.clone().sub(start).normalize();
+  const reference = Math.abs(direction.z) < 0.9
+    ? new THREE.Vector3(0, 0, 1)
+    : new THREE.Vector3(0, 1, 0);
+  const side = new THREE.Vector3().crossVectors(direction, reference).normalize().multiplyScalar(thickness / 2);
+  const upward = new THREE.Vector3().crossVectors(direction, side).normalize().multiplyScalar(thickness / 2);
+  const baseIndex = positions.length / 3;
+  const corners = [
+    start.clone().sub(side).sub(upward),
+    start.clone().add(side).sub(upward),
+    start.clone().add(side).add(upward),
+    start.clone().sub(side).add(upward),
+    end.clone().sub(side).sub(upward),
+    end.clone().add(side).sub(upward),
+    end.clone().add(side).add(upward),
+    end.clone().sub(side).add(upward)
+  ];
+  for (const corner of corners) {
+    positions.push(corner.x, corner.y, corner.z);
+    colors.push(color.r, color.g, color.b, 1);
+  }
+  for (const face of TUBE_FACES) {
+    indices.push(
+      baseIndex + face[0], baseIndex + face[1], baseIndex + face[2],
+      baseIndex + face[0], baseIndex + face[2], baseIndex + face[3]
+    );
+  }
+}
+
 function makeVisual(transforms, turnGenerations) {
   const facePositions = [];
   const faceColors = [];
   const edgePositions = [];
   const edgeColors = [];
+  const markerPositions = [];
+  const markerColors = [];
+  const markerIndices = [];
   const transformed = CANONICAL_VERTICES.map(() => new THREE.Vector3());
+  const transformedArrow = PRINCIPAL_ARROW_POINTS.map(() => new THREE.Vector3());
 
   transforms.forEach((matrix, transformIndex) => {
     const color = displayedTileColor(matrix, turnGenerations[transformIndex]);
@@ -756,6 +816,39 @@ function makeVisual(transforms, turnGenerations) {
       edgePositions.push(point.x, point.y, point.z);
       edgeColors.push(color.r, color.g, color.b, 1);
     }
+    for (let index = 0; index < PRINCIPAL_ARROW_POINTS.length; index += 1) {
+      transformedArrow[index].copy(PRINCIPAL_ARROW_POINTS[index]).applyMatrix4(matrix);
+    }
+    const rodColor = color.clone().multiplyScalar(0.36);
+    const dartColor = color.clone().multiplyScalar(0.14);
+    appendThickSegment(
+      markerPositions,
+      markerColors,
+      markerIndices,
+      transformedArrow[0],
+      transformedArrow[4],
+      rodColor,
+      0.04
+    );
+    const dartBaseIndex = markerPositions.length / 3;
+    const dartNormal = THIRD_PRINCIPAL_AXIS.clone().transformDirection(matrix).multiplyScalar(0.03);
+    for (const side of [1, -1]) {
+      for (const arrowIndex of [1, 2, 3]) {
+        const point = transformedArrow[arrowIndex].clone().addScaledVector(dartNormal, side);
+        markerPositions.push(point.x, point.y, point.z);
+        markerColors.push(dartColor.r, dartColor.g, dartColor.b, 1);
+      }
+    }
+    markerIndices.push(
+      dartBaseIndex, dartBaseIndex + 1, dartBaseIndex + 2,
+      dartBaseIndex + 3, dartBaseIndex + 5, dartBaseIndex + 4,
+      dartBaseIndex, dartBaseIndex + 3, dartBaseIndex + 4,
+      dartBaseIndex, dartBaseIndex + 4, dartBaseIndex + 1,
+      dartBaseIndex + 1, dartBaseIndex + 4, dartBaseIndex + 5,
+      dartBaseIndex + 1, dartBaseIndex + 5, dartBaseIndex + 2,
+      dartBaseIndex + 2, dartBaseIndex + 5, dartBaseIndex + 3,
+      dartBaseIndex + 2, dartBaseIndex + 3, dartBaseIndex
+    );
   });
 
   const faceOpacity = Math.max(0.006, 0.09 / Math.pow(transforms.length, 0.28));
@@ -771,21 +864,69 @@ function makeVisual(transforms, turnGenerations) {
   const edgeGeometry = new THREE.BufferGeometry();
   edgeGeometry.setAttribute("position", new THREE.Float32BufferAttribute(edgePositions, 3));
   edgeGeometry.setAttribute("color", new THREE.Float32BufferAttribute(edgeColors, 4));
+  const depthMaterial = new THREE.MeshBasicMaterial({
+    colorWrite: false,
+    depthWrite: true,
+    depthTest: true,
+    side: THREE.DoubleSide,
+    polygonOffset: true,
+    polygonOffsetFactor: 1,
+    polygonOffsetUnits: 1
+  });
+  depthMaterial.userData.baseOpacity = 1;
+  const depthMesh = new THREE.Mesh(faceGeometry, depthMaterial);
+  depthMesh.layers.set(1);
+  depthMesh.renderOrder = 0;
+
+  const backEdgeOpacity = edgeOpacity * 0.28;
+  const backEdgeMaterial = makeTransparentMaterial({ line: true, opacity: backEdgeOpacity });
+  backEdgeMaterial.depthFunc = THREE.GreaterDepth;
+  const backEdges = new THREE.LineSegments(edgeGeometry, backEdgeMaterial);
+  backEdges.layers.set(1);
+  backEdges.renderOrder = 1;
+
   const edgeMaterial = makeTransparentMaterial({ line: true, opacity: edgeOpacity });
   const edges = new THREE.LineSegments(edgeGeometry, edgeMaterial);
+  edges.layers.set(1);
   edges.renderOrder = 2;
 
+  const markerOpacity = 0.82;
+  const markerGeometry = new THREE.BufferGeometry();
+  markerGeometry.setAttribute("position", new THREE.Float32BufferAttribute(markerPositions, 3));
+  markerGeometry.setAttribute("color", new THREE.Float32BufferAttribute(markerColors, 4));
+  markerGeometry.setIndex(markerIndices);
+  const markerMaterial = new THREE.MeshBasicMaterial({
+    color: 0xffffff,
+    vertexColors: true,
+    transparent: true,
+    depthWrite: false,
+    depthTest: true,
+    side: THREE.DoubleSide,
+    opacity: markerOpacity
+  });
+  markerMaterial.userData.baseOpacity = markerOpacity;
+  const markers = new THREE.Mesh(markerGeometry, markerMaterial);
+  markers.renderOrder = 2.5;
+
   const group = new THREE.Group();
-  group.add(mesh, edges);
-  return { group, transforms, turnGenerations, materials: [faceMaterial, edgeMaterial], geometries: [faceGeometry, edgeGeometry] };
+  group.add(mesh, depthMesh, backEdges, edges, markers);
+  return {
+    group,
+    transforms,
+    turnGenerations,
+    materials: [faceMaterial, edgeMaterial, markerMaterial, backEdgeMaterial, depthMaterial],
+    geometries: [faceGeometry, edgeGeometry, markerGeometry]
+  };
 }
 
 function refreshVisualColors(visual) {
   if (!visual) return;
   const faceColors = visual.geometries[0].getAttribute("color");
   const edgeColors = visual.geometries[1].getAttribute("color");
+  const markerColors = visual.geometries[2].getAttribute("color");
   let faceOffset = 0;
   let edgeOffset = 0;
+  let markerOffset = 0;
   visual.transforms.forEach((matrix, transformIndex) => {
     const color = displayedTileColor(matrix, visual.turnGenerations[transformIndex]);
     const matches = selectedOrientationKey !== null
@@ -796,15 +937,23 @@ function refreshVisualColors(visual) {
     const edgeAlpha = selectedOrientationKey === null
       ? 1
       : matches ? 1 : Math.max(0.008, visual.materials[1].userData.baseOpacity * 0.28);
+    const markerAlpha = selectedOrientationKey === null ? 1 : matches ? 1 : 0.035;
     for (let index = 0; index < FACE_INDICES.length; index += 1) {
       faceColors.setXYZW(faceOffset++, color.r, color.g, color.b, faceAlpha);
     }
     for (let index = 0; index < EDGE_INDICES.length; index += 1) {
       edgeColors.setXYZW(edgeOffset++, color.r, color.g, color.b, edgeAlpha);
     }
+    const rodColor = color.clone().multiplyScalar(0.36);
+    const dartColor = color.clone().multiplyScalar(0.14);
+    for (let index = 0; index < MARKER_VERTICES_PER_TILE; index += 1) {
+      const markerColor = index < ROD_VERTICES_PER_TILE ? rodColor : dartColor;
+      markerColors.setXYZW(markerOffset++, markerColor.r, markerColor.g, markerColor.b, markerAlpha);
+    }
   });
   faceColors.needsUpdate = true;
   edgeColors.needsUpdate = true;
+  markerColors.needsUpdate = true;
   refreshVisualEmphasis(visual);
 }
 
@@ -1094,7 +1243,18 @@ function animate(time) {
       updateActionButtons();
     }
   }
+  renderer.autoClear = true;
+  camera.layers.set(0);
   renderer.render(scene, camera);
+  renderer.autoClear = false;
+  renderer.clearDepth();
+  camera.layers.set(1);
+  const sceneBackground = scene.background;
+  scene.background = null;
+  renderer.render(scene, camera);
+  scene.background = sceneBackground;
+  renderer.autoClear = true;
+  camera.layers.set(0);
   orientationRenderer.render(orientationScene, orientationCamera);
   requestAnimationFrame(animate);
 }

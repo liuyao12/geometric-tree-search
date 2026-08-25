@@ -44,6 +44,21 @@ export function polycubePlacementClauseOrbitKeys(voxels, placementKeys, options 
   );
 }
 
+export function polycubeCellOrbitKeys(voxels, cellKey, options = {}) {
+  const cell = cellOf(String(cellKey));
+  if (cell.length !== 3 || cell.some(value => !Number.isInteger(value))) return [];
+  const cells = new Set();
+  for (const symmetry of polycubeSymmetries(voxels, options)) {
+    cells.add([0, 1, 2].map(axis =>
+      symmetry.matrix[axis][0] * cell[0]
+      + symmetry.matrix[axis][1] * cell[1]
+      + symmetry.matrix[axis][2] * cell[2]
+      + symmetry.translation[axis]
+    ).join(","));
+  }
+  return [...cells].sort();
+}
+
 export function polycubeCellPairOrbitKeys(voxels, pairKeys, options = {}) {
   if (!Array.isArray(pairKeys) || pairKeys.length !== 2) return [];
   const cells = pairKeys.map(key => cellOf(String(key)));
@@ -59,6 +74,40 @@ export function polycubeCellPairOrbitKeys(voxels, pairKeys, options = {}) {
     pairs.add(transformed.join(";"));
   }
   return [...pairs].sort().map(pair => pair.split(";"));
+}
+
+export function polycubeCellTripleOrbitKeys(voxels, tripleKeys, options = {}) {
+  if (!Array.isArray(tripleKeys) || tripleKeys.length !== 3) return [];
+  const cells = tripleKeys.map(key => cellOf(String(key)));
+  if (cells.some(cell => cell.length !== 3 || cell.some(value => !Number.isInteger(value)))) return [];
+  const triples = new Set();
+  for (const symmetry of polycubeSymmetries(voxels, options)) {
+    const transformed = cells.map(cell => [0, 1, 2].map(axis =>
+      symmetry.matrix[axis][0] * cell[0]
+      + symmetry.matrix[axis][1] * cell[1]
+      + symmetry.matrix[axis][2] * cell[2]
+      + symmetry.translation[axis]
+    ).join(",")).sort();
+    triples.add(transformed.join(";"));
+  }
+  return [...triples].sort().map(triple => triple.split(";"));
+}
+
+export function polycubeCellQuadrupleOrbitKeys(voxels, quadrupleKeys, options = {}) {
+  if (!Array.isArray(quadrupleKeys) || quadrupleKeys.length !== 4) return [];
+  const cells = quadrupleKeys.map(key => cellOf(String(key)));
+  if (cells.some(cell => cell.length !== 3 || cell.some(value => !Number.isInteger(value)))) return [];
+  const quadruples = new Set();
+  for (const symmetry of polycubeSymmetries(voxels, options)) {
+    const transformed = cells.map(cell => [0, 1, 2].map(axis =>
+      symmetry.matrix[axis][0] * cell[0]
+      + symmetry.matrix[axis][1] * cell[1]
+      + symmetry.matrix[axis][2] * cell[2]
+      + symmetry.translation[axis]
+    ).join(",")).sort();
+    quadruples.add(transformed.join(";"));
+  }
+  return [...quadruples].sort().map(quadruple => quadruple.split(";"));
 }
 
 export function polycubeRootContactKey(voxels, placement, options = {}) {
@@ -163,6 +212,15 @@ const buildTarget = (rootSet, layers) => {
   return [...target].sort();
 };
 
+export function polycubeCoronaRingCellKeys(voxels, layer) {
+  const normalizedLayer = Math.max(1, Math.floor(Number(layer) || 1));
+  const rootSet = new Set(voxels.map(keyOf));
+  const inner = normalizedLayer > 1
+    ? new Set(buildTarget(rootSet, normalizedLayer - 1))
+    : new Set();
+  return buildTarget(rootSet, normalizedLayer).filter(key => !inner.has(key));
+}
+
 export function polycubeCoronaBoundaryKey(voxels, placements, layers, options = {}) {
   const rootSet = new Set(voxels.map(keyOf));
   const normalizedLayers = Math.max(1, Math.floor(Number(layers) || 1));
@@ -227,7 +285,7 @@ export function verifyPolycubeCoronaPatch(voxels, placements, layers, options = 
   };
 }
 
-export function polycubeCoronaIncompatibleTargetPairs(voxels, placements, outerLayers, options = {}) {
+export function polycubeCoronaIncompatibleTargetPairDetails(voxels, placements, outerLayers, options = {}) {
   if (!Array.isArray(placements)) return [];
   const normalizedOuterLayers = Math.max(1, Math.floor(Number(outerLayers) || 1));
   const rootSet = new Set(voxels.map(keyOf));
@@ -269,7 +327,191 @@ export function polycubeCoronaIncompatibleTargetPairs(voxels, placements, outerL
           break pairSearch;
         }
       }
-      if (!compatible) incompatible.push([leftKey, rightKey]);
+      if (!compatible) incompatible.push({
+        target_cells: [leftKey, rightKey],
+        left_choices: leftChoices.length,
+        right_choices: rightChoices.length,
+        candidate_pairs_blocked: leftChoices.length * rightChoices.length
+      });
+    }
+  }
+  return incompatible;
+}
+
+export function polycubeCoronaIncompatibleTargetPairs(voxels, placements, outerLayers, options = {}) {
+  return polycubeCoronaIncompatibleTargetPairDetails(voxels, placements, outerLayers, options)
+    .map(detail => detail.target_cells);
+}
+
+export function polycubeCoronaIncompatibleTargetTripleDetails(voxels, placements, outerLayers, options = {}) {
+  if (!Array.isArray(placements)) return [];
+  const normalizedOuterLayers = Math.max(1, Math.floor(Number(outerLayers) || 1));
+  const maximumCellDistance = Math.max(1, Math.floor(Number(options.maximumCellDistance) || 3));
+  const limit = Math.max(1, Math.floor(Number(options.limit) || 1));
+  const rootSet = new Set(voxels.map(keyOf));
+  const outerTarget = new Set(buildTarget(rootSet, normalizedOuterLayers));
+  const nextRing = buildTarget(rootSet, normalizedOuterLayers + 1)
+    .filter(key => !outerTarget.has(key));
+  const fixedKeys = new Set(placements.map(placement =>
+    placement.cells.map(keyOf).sort().join(";")
+  ));
+  const occupied = new Set(rootSet);
+  for (const placement of placements) for (const cell of placement.cells ?? []) {
+    occupied.add(keyOf(cell));
+  }
+  const choices = new Map(nextRing.map(key => [key, []]));
+  for (const placement of enumeratePolycubeCoronaPlacements(
+    voxels,
+    normalizedOuterLayers + 1,
+    options
+  )) {
+    const placementKey = placement.cells.map(keyOf).sort().join(";");
+    const fixed = fixedKeys.has(placementKey);
+    if (!fixed && placement.cells.some(cell => occupied.has(keyOf(cell)))) continue;
+    const cellKeys = new Set(placement.cells.map(keyOf));
+    const choice = { key: placementKey, cellKeys };
+    for (const cellKey of cellKeys) if (choices.has(cellKey)) choices.get(cellKey).push(choice);
+  }
+  const distance = (leftKey, rightKey) => {
+    const left = cellOf(leftKey);
+    const right = cellOf(rightKey);
+    return left.reduce((sum, value, axis) => sum + Math.abs(value - right[axis]), 0);
+  };
+  const compatible = (left, right) => left.key === right.key
+    || [...left.cellKeys].every(cellKey => !right.cellKeys.has(cellKey));
+  const incompatible = [];
+  for (let diameter = 1; diameter <= maximumCellDistance; diameter += 1) {
+    for (let leftIndex = 0; leftIndex < nextRing.length; leftIndex += 1) {
+      const leftKey = nextRing[leftIndex];
+      for (let middleIndex = leftIndex + 1; middleIndex < nextRing.length; middleIndex += 1) {
+        const middleKey = nextRing[middleIndex];
+        const leftMiddleDistance = distance(leftKey, middleKey);
+        if (leftMiddleDistance > diameter) continue;
+        for (let rightIndex = middleIndex + 1; rightIndex < nextRing.length; rightIndex += 1) {
+          const rightKey = nextRing[rightIndex];
+          const tripleDiameter = Math.max(
+            leftMiddleDistance,
+            distance(leftKey, rightKey),
+            distance(middleKey, rightKey)
+          );
+          if (tripleDiameter !== diameter) continue;
+          const cellChoices = [choices.get(leftKey), choices.get(middleKey), choices.get(rightKey)];
+          let available = false;
+          tripleSearch: for (const left of cellChoices[0]) for (const middle of cellChoices[1]) {
+            if (!compatible(left, middle)) continue;
+            for (const right of cellChoices[2]) {
+              if (compatible(left, right) && compatible(middle, right)) {
+                available = true;
+                break tripleSearch;
+              }
+            }
+          }
+          if (available) continue;
+          incompatible.push({
+            target_cells: [leftKey, middleKey, rightKey],
+            diameter: tripleDiameter,
+            choice_counts: cellChoices.map(cellChoice => cellChoice.length),
+            candidate_triples_blocked: cellChoices.reduce((product, cellChoice) =>
+              product * cellChoice.length, 1)
+          });
+          if (incompatible.length >= limit) return incompatible;
+        }
+      }
+    }
+  }
+  return incompatible;
+}
+
+export function polycubeCoronaIncompatibleTargetQuadrupleDetails(voxels, placements, outerLayers, options = {}) {
+  if (!Array.isArray(placements)) return [];
+  const normalizedOuterLayers = Math.max(1, Math.floor(Number(outerLayers) || 1));
+  const maximumCellDistance = Math.max(1, Math.floor(Number(options.maximumCellDistance) || 6));
+  const limit = Math.max(1, Math.floor(Number(options.limit) || 1));
+  const rootSet = new Set(voxels.map(keyOf));
+  const outerTarget = new Set(buildTarget(rootSet, normalizedOuterLayers));
+  const nextRing = buildTarget(rootSet, normalizedOuterLayers + 1)
+    .filter(key => !outerTarget.has(key));
+  const fixedKeys = new Set(placements.map(placement =>
+    placement.cells.map(keyOf).sort().join(";")
+  ));
+  const occupied = new Set(rootSet);
+  for (const placement of placements) for (const cell of placement.cells ?? []) occupied.add(keyOf(cell));
+  const choices = new Map(nextRing.map(key => [key, []]));
+  for (const placement of enumeratePolycubeCoronaPlacements(
+    voxels,
+    normalizedOuterLayers + 1,
+    options
+  )) {
+    const placementKey = placement.cells.map(keyOf).sort().join(";");
+    if (!fixedKeys.has(placementKey) && placement.cells.some(cell => occupied.has(keyOf(cell)))) continue;
+    const cellKeys = new Set(placement.cells.map(keyOf));
+    const choice = { key: placementKey, cellKeys };
+    for (const cellKey of cellKeys) if (choices.has(cellKey)) choices.get(cellKey).push(choice);
+  }
+  const cellByKey = new Map(nextRing.map(key => [key, cellOf(key)]));
+  const distance = (leftKey, rightKey) => cellByKey.get(leftKey).reduce((sum, value, axis) =>
+    sum + Math.abs(value - cellByKey.get(rightKey)[axis]), 0
+  );
+  const compatible = (left, right) => left.key === right.key
+    || [...left.cellKeys].every(cellKey => !right.cellKeys.has(cellKey));
+  const incompatible = [];
+  for (let diameter = 1; diameter <= maximumCellDistance; diameter += 1) {
+    for (let firstIndex = 0; firstIndex < nextRing.length; firstIndex += 1) {
+      const firstKey = nextRing[firstIndex];
+      for (let secondIndex = firstIndex + 1; secondIndex < nextRing.length; secondIndex += 1) {
+        const secondKey = nextRing[secondIndex];
+        const firstSecondDistance = distance(firstKey, secondKey);
+        if (firstSecondDistance > diameter) continue;
+        for (let thirdIndex = secondIndex + 1; thirdIndex < nextRing.length; thirdIndex += 1) {
+          const thirdKey = nextRing[thirdIndex];
+          const firstThreeDiameter = Math.max(
+            firstSecondDistance,
+            distance(firstKey, thirdKey),
+            distance(secondKey, thirdKey)
+          );
+          if (firstThreeDiameter > diameter) continue;
+          for (let fourthIndex = thirdIndex + 1; fourthIndex < nextRing.length; fourthIndex += 1) {
+            const fourthKey = nextRing[fourthIndex];
+            const quadrupleDiameter = Math.max(
+              firstThreeDiameter,
+              distance(firstKey, fourthKey),
+              distance(secondKey, fourthKey),
+              distance(thirdKey, fourthKey)
+            );
+            if (quadrupleDiameter !== diameter) continue;
+            const cellChoices = [
+              choices.get(firstKey),
+              choices.get(secondKey),
+              choices.get(thirdKey),
+              choices.get(fourthKey)
+            ];
+            let available = false;
+            quadrupleSearch: for (const first of cellChoices[0]) for (const second of cellChoices[1]) {
+              if (!compatible(first, second)) continue;
+              for (const third of cellChoices[2]) {
+                if (!compatible(first, third) || !compatible(second, third)) continue;
+                for (const fourth of cellChoices[3]) {
+                  if (compatible(first, fourth)
+                    && compatible(second, fourth)
+                    && compatible(third, fourth)) {
+                    available = true;
+                    break quadrupleSearch;
+                  }
+                }
+              }
+            }
+            if (available) continue;
+            incompatible.push({
+              target_cells: [firstKey, secondKey, thirdKey, fourthKey],
+              diameter: quadrupleDiameter,
+              choice_counts: cellChoices.map(cellChoice => cellChoice.length),
+              candidate_quadruples_blocked: cellChoices.reduce((product, cellChoice) =>
+                product * cellChoice.length, 1)
+            });
+            if (incompatible.length >= limit) return incompatible;
+          }
+        }
+      }
     }
   }
   return incompatible;
@@ -496,6 +738,10 @@ export function searchPolycubeCorona(voxels, options = {}) {
   const forbiddenPlacementKeys = new Set(options.forbiddenPlacementKeys ?? []);
   const forbiddenOrientationKeys = new Set(options.forbiddenOrientationKeys ?? []);
   const preferredPlacementKeys = new Set(options.preferredPlacementKeys ?? []);
+  const placementOrdering = String(options.placementOrdering ?? "compact");
+  if (!["compact", "expansive", "seeded"].includes(placementOrdering)) {
+    throw new Error("placementOrdering must be compact, expansive, or seeded");
+  }
   const seededHash = value => {
     let hash = (2166136261 ^ seed) >>> 0;
     for (let index = 0; index < value.length; index++) {
@@ -630,13 +876,27 @@ export function searchPolycubeCorona(voxels, options = {}) {
     }
     columns.set(key, column);
   }
-  const orderedPlacements = [...placementByKey.values()].sort((left, right) =>
-    Number(preferredPlacementKeys.has(right.key)) - Number(preferredPlacementKeys.has(left.key))
-    || right.targetCoverage.length - left.targetCoverage.length
-    || (left.cellKeys.length - left.targetCoverage.length)
-      - (right.cellKeys.length - right.targetCoverage.length)
-    || (seed ? seededHash(left.key) - seededHash(right.key) : left.key.localeCompare(right.key))
-  );
+  const geometricPlacementOrder = (left, right, expansive = false) => {
+    const targetDifference = expansive
+      ? left.targetCoverage.length - right.targetCoverage.length
+      : right.targetCoverage.length - left.targetCoverage.length;
+    if (targetDifference) return targetDifference;
+    const leftExterior = left.cellKeys.length - left.targetCoverage.length;
+    const rightExterior = right.cellKeys.length - right.targetCoverage.length;
+    return expansive ? rightExterior - leftExterior : leftExterior - rightExterior;
+  };
+  const orderedPlacements = [...placementByKey.values()].sort((left, right) => {
+    const preferredDifference = Number(preferredPlacementKeys.has(right.key))
+      - Number(preferredPlacementKeys.has(left.key));
+    if (preferredDifference) return preferredDifference;
+    if (placementOrdering === "seeded") {
+      return seededHash(left.key) - seededHash(right.key)
+        || geometricPlacementOrder(left, right)
+        || left.key.localeCompare(right.key);
+    }
+    return geometricPlacementOrder(left, right, placementOrdering === "expansive")
+      || (seed ? seededHash(left.key) - seededHash(right.key) : left.key.localeCompare(right.key));
+  });
   const placementsByTarget = new Map(targetKeys.map(key => [key, []]));
   for (let placementId = 0; placementId < orderedPlacements.length; placementId++) {
     const placement = orderedPlacements[placementId];
@@ -662,9 +922,9 @@ export function searchPolycubeCorona(voxels, options = {}) {
       }
     }
   }
-  const minimumFixedObstruction = (() => {
-    if (!fixedPlacements.length) return null;
-    let best = null;
+  const fixedObstructions = (() => {
+    if (!fixedPlacements.length) return [];
+    const obstructions = [];
     for (const targetKey of targetKeys) {
       if (placementsByTarget.get(targetKey).length) continue;
       const blockerSets = [...fixedBlockedRowsByTarget.get(targetKey).values()];
@@ -701,15 +961,16 @@ export function searchPolycubeCorona(voxels, options = {}) {
         fixed_placement_indices: selected.slice().sort((left, right) => left - right),
         candidate_rows_blocked: blockerSets.length
       };
-      if (!best
-        || obstruction.fixed_placement_indices.length < best.fixed_placement_indices.length
-        || (obstruction.fixed_placement_indices.length === best.fixed_placement_indices.length
-          && targetKey < keyOf(best.target_cell))) best = obstruction;
+      obstruction.fixed_placement_keys = obstruction.fixed_placement_indices
+        .map(index => fixedPlacements[index].key);
+      obstructions.push(obstruction);
     }
-    if (!best) return null;
-    best.fixed_placement_keys = best.fixed_placement_indices.map(index => fixedPlacements[index].key);
-    return best;
+    obstructions.sort((left, right) =>
+      left.fixed_placement_indices.length - right.fixed_placement_indices.length
+      || keyOf(left.target_cell).localeCompare(keyOf(right.target_cell)));
+    return obstructions;
   })();
+  const minimumFixedObstruction = fixedObstructions[0] ?? null;
   const chosen = fixedPlacements.slice();
   let nodes = 0;
   let deadEnds = 0;
@@ -1230,6 +1491,7 @@ export function searchPolycubeCorona(voxels, options = {}) {
     preferred_placements_requested: preferredPlacementKeys.size,
     preferred_placements_matched: orderedPlacements.reduce((count, placement) =>
       count + Number(preferredPlacementKeys.has(placement.key)), 0),
+    placement_ordering: placementOrdering,
     orientations: orientations.length,
     placements_considered: placementByKey.size,
     nodes,
@@ -1255,6 +1517,7 @@ export function searchPolycubeCorona(voxels, options = {}) {
     nogood_max_size: nogoodMaxSize,
     maximum_depth: maximumDepth,
     fixed_obstruction_nogood: minimumFixedObstruction ?? resolvedFixedConflict,
+    fixed_obstruction_nogoods: fixedObstructions,
     resolved_fixed_conflict: resolvedFixedConflict,
     nogood_clause_keys: options.returnNogoods
       ? nogoods.map(nogood => nogood.ids.map(id => orderedPlacements[id].key))

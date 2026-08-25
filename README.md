@@ -59,8 +59,39 @@ Pages site. The main way to use it is to open the page in a browser:
   difficult prism that survived deep GCTS screening before an exact two-tile
   translational quotient resolved the full size-12 pass, and `10_16113`, whose
   corrected shell-1 witness leads to an exact shell-2 non-tiler certificate.
+  Its six cold comparison lanes now share an order-independent face-adjacency
+  shell curriculum. RL and GCTS+RL may discover, certify, and reuse small
+  repeating clusters without catalog templates; the periodic control
+  `10_45033` independently yields its six-tile quotient and completes shell 2
+  with 118 live tiles. Insertion generations remain an internal oldest-frontier
+  scheduling signal rather than a user-facing success criterion.
   The complete 1,502,640-entry size-13 pass contributes an isohedral-only
-  periodic regression and two harder exact shell-2 non-tiler controls.
+  periodic regression and two harder exact shell-2 non-tiler controls. For
+  polycube candidate `p10-055695`, lazy next-ring cell CEGAR has now checked 22
+  additional radius-three proposals and promoted 22 symmetry-distinct dead-cell
+  orbits; an incremental Z3 path installs those exact obligations without
+  rebuilding the formula. Across the old and new portfolios, all 71 proposals
+  fail immediate radius-four continuation, but the outer space remains
+  unexhausted, so this is neither a non-tiling nor an aperiodicity certificate.
+  The same incremental funnel produced 22 exact radius-three proposals for
+  `p10-054782`, down to 41 copies, with none surviving radius four. The new
+  placement-cube CEGAR driver now continues SAT partition leaves automatically.
+  Fixed-value PB preprocessing and nested compatible-placement cubes test ten
+  exact-41 proposals in total; exact radius-four GCTS rejects every one in 13
+  aggregate continuation nodes. Independent replay verifies all 236 learned
+  obstruction clauses, and 35 terminal exact-UNSAT partition leaves leave no
+  open count-41 residue. Thus no exact-41 patch can survive to radius four in
+  the configured fixed-root proper-rotation lattice model. Counts 42 and above,
+  including the unbounded tail, remain open, so this is still a useful hard
+  benchmark—not a non-tiling or aperiodicity result.
+
+  `p10-052588`, by contrast, is now a certified non-tiler rather than an
+  unresolved candidate. A cumulative formula closes all radius-three patches
+  through 46 copies, exact placement-cube certificates close every count from
+  47 through 67, and an open-ended placement-cube certificate closes all counts
+  at least 68. Plain chronological replay verifies the 114-clause prefix and
+  112-clause tail, and the hash-locked count-chain verifier audits every count,
+  anchor partition, clause file, and necessary next-ring cell constraint.
 - [Hat GCTS online memoization demo](./hat-gcts-online-demo/)
 - [Offline 2D / online 3D GCTS learning protocol](./docs/projects/gcts-offline-online-learning.md)
   A recorded, step-through run that begins with an empty marking. Immediate

@@ -18,25 +18,35 @@ http://127.0.0.1:5174/3d-lattice-tiler/
 ```
 
 `engine.js` owns tile geometry, candidate generation, exact placement legality,
-periodic certificates, GCTS proposal learning, isohedral reuse, balanced growth,
-and ordinary backtracking. The browser executes that same engine in
+periodic certificates, GCTS-I geometric failure markings, isohedral reuse,
+balanced growth, and ordinary backtracking. The browser executes that same engine in
 `solver-worker.js`.
 
 ## Solver modes
 
-The UI exposes and compares exactly four solver lanes concurrently in
+The UI exposes and compares exactly six solver lanes concurrently in
 independent workers:
 
 1. **Free-range** is the baseline tree search. It applies forced moves first,
    then explores the most sensible legal frontier placements with backtracking,
    growing in all directions without assuming periodicity or tile transitivity.
    Exact scoring ties are resolved by seeded randomness.
-2. **GCTS** runs the same search while updating geometric
-   proposal priorities from successful and failed branches. Its best legal
-   patch is stored per tile in the browser and revalidated on later runs, so
-   repeated comparisons improve without hard-coding a translational or
-   isohedral strategy.
-3. **Translational** progressively checks increasingly large motifs using an
+2. **GCTS** is the cold-start algorithm defined in the GCTS-I essay. It uses
+   the same branch order as free-range, starts with an empty marking, and
+   records exact local obstructions when an incomplete lattice point has no
+   possible oriented tile continuation. Coordinates are relative to the failed
+   point, so a translated recurrence is rejected by geometric overlap. Nothing
+   is loaded from the catalog or a previous run.
+3. **RL** searches the same complete lattice-point branches as free-range but
+   orders them with a cold online learner. Its value table starts empty on
+   every run. Features are anonymous, symmetry-invariant lattice geometry
+   bands (frontier generation, coverage, frontier change, branching width,
+   and patch shape); they contain no tile ID, catalog label, known motif, or
+   periodic/isohedral feature. RL never removes a legal action.
+4. **GCTS + RL** uses exactly the RL action order and adds the same sound
+   geometric-failure pruning as GCTS. This isolates the interaction between
+   learned ordering and learned exact failure markings.
+5. **Translational** progressively checks increasingly large motifs using an
    exact finite-quotient (3-torus) cover test. It succeeds only when translated
    copies of the certified whole patch tile 3-space. Certified translation
    motifs may contain multiple orientations and multiple prototile species.
@@ -50,7 +60,7 @@ independent workers:
    the second changes green, and the third changes blue. Thus a multi-tile unit
    patch keeps its individual tile colors while each tile exposes eight
    directional variants across translated copies.
-4. **Isohedral** treats every tile as an image of the root tile. Each
+6. **Isohedral** treats every tile as an image of the root tile. Each
    root-to-tile rigid motion lifts, rotates, and translates the entire known
    patch onto that tile; exact duplicates are skipped and a patch image is
    committed only when every new tile is legal. A single successful neighbor
@@ -64,7 +74,7 @@ independent workers:
    tile class. Without that certificate the result is exhausted or
    inconclusive and the displayed patch rolls back to the root.
 
-The interactive Plotly growth chart uses one wall clock for all four workers.
+The interactive Plotly growth chart uses one wall clock for all six workers.
 It records every tile-count transition, including downward backtracking steps,
 instead of plotting only record highs. Geometry deltas are transferred in
 200-ms batches and UI refreshes are coalesced to at most one every 300 ms, so
@@ -74,10 +84,25 @@ that historical patch, the left and right arrows walk that selected lane's
 history, and clicking empty chart space restores its current patch. The chart
 and its legend cannot switch lanes; selecting a mode in the controls switches
 the viewport to its latest patch without stopping the other searches.
-An exhausted isohedral search drops to zero and restores the root view. An uncertified translational search
+An uncertified isohedral patch search is inconclusive, drops to zero, and
+restores the root view; its current finite growth horizon is not a proof that
+no tile-transitive quotient exists. An uncertified translational search
 continues increasing the motif size until certified, stopped, or limited by an
-explicit search cap.
+explicit search cap, and every such finite cutoff is likewise inconclusive.
 
+The first cold five-second comparison on hard cases `10_16113`, `10_45026`,
+`10_45033`, and `9_11683` used three seeds per general-search lane and an
+80-tile target. RL's median maximum patch sizes were 17, 17, 19, and 17,
+compared with free-range's 17, 17, 12, and 15. GCTS + RL matched RL's maximum
+depth in every one of the twelve paired runs while making 207–511 median exact
+recurrence prunes per case. This is evidence that the two mechanisms compose
+soundly, not yet evidence of a hybrid depth advantage at that horizon. Raw
+results are in `data/lattice-six-lane-cold-benchmark-2026-08-24.json` and
+`data/lattice-six-lane-cold-rl-replicates-2026-08-24.json`.
+
+Every comparison worker explicitly clears catalog periodic templates and
+supplied initial patches. Thus even the two certificate lanes reconstruct their
+witnesses from the tile geometry and the configured lattice symmetry group.
 The lower-level API uses `generic` internally and retains `freestyle` as a
 backward-compatible alias of `free_range`. It also retains `auto` for regression
 and research use. No strategy makes decisions from catalog names. Candidate
@@ -95,30 +120,24 @@ The exhaustive complete-rank, delayed-nogood, and crystal-rank policies remain
 available to the headless research and regression harnesses. They are not extra
 public comparison lanes.
 
-## GCTS learned proposals
+## GCTS-I failure markings
 
-The concurrent GCTS mode updates proposal priorities during the
-active search. The reusable headless trainer additionally evolves tile-specific
-proposal programs. A program may contain an ordered cycle of move-scoring
-stages plus the complete locally legal patch discovered by its best episode.
-On reuse, the engine revalidates and replays that patch relative to the initial
-tile, then returns to ordinary backtracking when the patch ends or no longer
-fits. The learner can therefore discover a translational-looking sequence for
-one tile, an isohedral-looking neighborhood for another, or a different patch
-without switching to either human baseline.
+At the selected oldest incomplete lattice point, the GCTS and free-range lanes
+enumerate every prototile, proper orientation, and supported lattice-point
+anchor. A zero-candidate point is therefore a genuine local obstruction, not a
+failure of face-matching candidate generation. For each rejected candidate the
+learner retains one exact blocking placement. Their union is a sufficient
+certificate that no tile can complete that point. The certificate is stored as
+a sparse tile marking relative to the point and matched as a subset of later
+local contexts.
 
-Offline training refines the winning patch in expanding-horizon rounds. Each
-round replays the known prefix, spends progressively more time extending it,
-and finally measures the completed proposal again at the original inference
-horizon. Training time is therefore not confused with the tiles-versus-time
-curve for reusing the learned construction.
-
-For repeatable headless training:
-
-```bash
-node scripts/learn-3d-proposals.mjs --modes cube,1_cross,gyrobifastigium
-node scripts/benchmark-3d-proposal-catalog.mjs --modes=cube,hex_prism,trunc_oct,gyrobifastigium
-```
+The selected general settings use one maximum-tile-span of marking support,
+translation normalization, immediate activation, first-blocker certificates,
+a pivot index, and no context truncation. The joint four-case tuning report is
+[`data/lattice-gcts-i-marking-tuning-2026-08-24.json`](../../data/lattice-gcts-i-marking-tuning-2026-08-24.json).
+The 24-element proper cubic rotation quotient remains available through
+`gcts_marking_symmetry: "rotations"`, but translation normalization processed
+more search work per wall-clock second on the present hard cases.
 
 Terminal results distinguish evidence strength. `certified_tiling` means the
 engine has an exact translational quotient certificate or an exact finite
@@ -626,6 +645,125 @@ qualitatively different outer patch rather than rejecting the same local trap.
 See
 `data/polycube-corona-partial-next-layer-lookahead-ab-2026-08-21.json`.
 
+Exact-cover row ordering now has three explicit profiles. `compact` preserves
+the historical preference for covering more current-ring cells with less
+exterior protrusion; `expansive` reverses those geometric preferences; and
+`seeded` places the deterministic seed hash before them. The profiles preserve
+the same search space and agree on every volume-at-most-four radius-two audit.
+For `p10-055695`, neither alternative supplies a complete patch in matched
+seed-7 and seed-10 windows where compact supplies fourteen, so compact remains
+the default. For `p9-42947`, seeded profile seed 3 does reach a reproducible
+79-copy radius-four boundary state distinct from the archived 75- and 78-copy
+Z3 states. Its patch independently verifies, but exact radius-five continuation
+rejects it in one node with a two-placement obstruction. Seeded restarts 11 and
+12 add 8,602,624 nodes without another complete proposal. This is genuine
+boundary-state diversification, but it finds another finite dead end rather
+than an aperiodic tiling witness. The full patch and audit are in
+`data/polycube-corona-placement-order-diversity-2026-08-21.json`.
+
+The pseudo-Boolean supplier can now impose both minimum and maximum selected-
+copy bounds. This makes high-copy strata explicit instead of relying on solver
+luck, while UNSAT remains correctly scoped to the configured count range. A
+staged and focused `p9-42947` runs produce twenty-two 79-copy, nine 80-copy,
+and five 81-copy radius-four states. All 36 patches independently verify;
+exact radius-five GCTS rejects them in 44 aggregate nodes and grows the
+symmetry-closed cut set to 108 clauses. Nine lightweight solves time out.
+Adding eager one-step coverability removes the immediate-dead-cell proposals,
+but the original edge-CNF encoding's five 60-second solver attempts time out
+without SAT or UNSAT. Thus the minimum bound materially broadens proposal
+supply, while that eager encoding remains too expensive and the 79-plus-copy
+space remains unexhausted. See
+`data/polycube-p9-42947-high-copy-cegar-2026-08-21.json`.
+
+Lazy single-cell obligations and grouped pseudo-Boolean conflict implications
+now make that lookahead usable. On a matched 15-cell instance, grouping the
+same 198,683 logical conflicts reduces asserted constraints from 200,044 to
+5,342 and solve time from 23.4s to 14.3s. The grouped full model constrains all
+180 next-ring cells with 4,533 conflict groups rather than 1,187,699 edge-CNF
+implications. It finds 19 verified radius-four states with 66–72 copies; every
+one avoids immediate dead cells and instead needs an exact resolved-subtree
+radius-five proof. Those proofs total 74 GCTS nodes and reach nine nodes in
+the best case. Lazy pair learning reaches 42 symmetry-expanded obligations;
+prioritizing the pair that blocks the most current placement combinations
+produces the nine-node state.
+No radius-five witness is found and neither the outer space nor aperiodicity is
+settled. The reproducible receipt is
+`data/polycube-p9-42947-staged-coverability-2026-08-21.json`.
+
+The next hierarchy now bootstraps all local distance-two pair obligations,
+then learns the remaining global pairs and higher-order counterexamples. The
+combined full-single-coverability portfolio contains 41 exact radius-four
+states with 62–73 copies; radius-five rejection uses 208 aggregate GCTS nodes
+and reaches 13 nodes in the deepest state. A cubic triple DNF exceeds two
+330-second process limits, while the equivalent choice-CNF returns a 62-copy
+proposal in 76.0s. Most importantly, an independently audited 72-copy state
+has no incompatible pair and no incompatible triple anywhere on the 180-cell
+next ring. It still fails exact radius-five continuation in nine nodes; the
+first audited inconsistency is instead a diameter-six quadruple whose
+1×1×3×11 choices give 33 blocked combinations. This raises the observed
+finite obstruction order to four without proving non-tiling or aperiodicity.
+See `data/polycube-p9-42947-higher-order-coverability-2026-08-21.json`.
+
+The outer solver now expresses that audited quadruple exactly with four groups
+of continuation-choice variables and pairwise non-overlap clauses. Preloading
+its three-member root-symmetry orbit produces thirteen further verified
+radius-four states with 60–72 copies. Every state again fails exact radius-five
+GCTS, using 122 aggregate nodes and a new maximum of 28 nodes. The new patches
+also correct an important completeness assumption: eight expose pair defects
+not present in the previous 666-obligation formula, while five are pairwise
+complete but expose new triples. The carried formula reaches 699 pair, 18
+triple, and three quadruple obligations, but the last state still has a missing
+pair. This is a stronger benchmark portfolio, not an exhausted hierarchy or an
+aperiodicity result. See
+`data/polycube-p9-42947-quadruple-coverability-2026-08-21.json`.
+
+Complete per-state triple batching removes another avoidable outer-solver
+loop. Across 16 trials, 12 exact outer states are found and all fail radius-five
+GCTS. Six pairwise-complete states contribute 30 complete-audit triple orbits,
+or 90 symmetry-expanded constraints, in six passes rather than one orbit per
+proposal. The carried formula reaches 720 pair, 108 triple, and three
+quadruple obligations. At that point three of the final four 360-second process
+budgets expire; the next bottleneck is the monolithic outer proposal encoding,
+not tuple-audit throughput. See
+`data/polycube-p9-42947-batched-triple-coverability-2026-08-21.json`.
+
+The higher-order obligations can instead be enforced lazily. In a matched
+ablation starting from the same 336 clauses, 717 pair constraints, 108 triple
+constraints, three quadruple constraints, and seeds 275–278, the monolithic
+formula returns one proposal and times out three times. Encoding pairs while
+auditing triples and quadruples after each proposal returns all four proposals
+without a timeout. All four have exact tuple obstructions before GCTS. Eight
+additional chained seeds likewise return eight exact tuple-defective states,
+ending at 744 pair, 141 triple, and three quadruple constraints. This restores
+proposal throughput but does not find a tuple-complete radius-four state; the
+next useful experiment is a hybrid informative-triple encoding rather than
+more undirected lazy restarts. See
+`data/polycube-p9-42947-lazy-higher-coverability-2026-08-21.json`.
+
+Hybrid enforcement identifies a narrow useful load point. Encoding one complete
+triple orbit returns all four matched seeds with no timeout and reduces their
+aggregate Z3 time by 15.7% relative to fully lazy enforcement. Encoding twelve
+of the 36 available orbits times out on the first matched seed. Continuing the
+one-orbit lane through seed 286 and a two-seed recent-orbit branch yields
+thirteen exact proposals, six with pair defects and seven pairwise-complete
+states with triple defects. The accumulated formula reaches 759 pair, 174
+triple, and three quadruple obligations, but no state clears the full triple
+audit. This makes a ranked adaptive orbit window or an incremental outer solver
+the next optimization target. See
+`data/polycube-p9-42947-hybrid-higher-coverability-2026-08-21.json`.
+
+The next six exact proposals use persistent impact ranking: every learned triple
+orbit keeps the largest observed number of candidate combinations it blocks,
+and the one-orbit hybrid window selects the highest score. The selected orbit
+changes from an unscored fallback to a 110-combination obstruction on the next
+solve and survives a restart. Seeds 289–294 all return exact proposals, four
+with pair defects and two pairwise-complete states with triple defects, growing
+the formula to 771 pair, 207 triple, and three quadruple obligations. None
+clears the full triple audit, and each outer solve still takes 186–325 seconds.
+The result validates adaptive steering but makes repeated solver construction
+the next bottleneck; it is not evidence of non-tiling or aperiodicity. See
+`data/polycube-p9-42947-ranked-hybrid-coverability-2026-08-21.json`.
+
 Verified smaller coronas can also be supplied as an optional proposal-ordering
 hint with `--obstruction-preferred-corona-report=...`. Matching placements are
 tried before other exact-cover rows, but are not fixed or assumed; every legal
@@ -735,8 +873,17 @@ counterexample-guided pair:
 node scripts/screen-polycube-corona-z3-cegar.mjs \
   --id=p9-42947 --outer-layer=4 --inner-layer=5 \
   --iterations=50 --max-placements=64 --symmetry-clauses=true \
+  --learn-cell-coverability=true \
+  --lookahead-conflict-encoding=grouped-pb \
   --learn-pair-coverability=true --pair-orbit-limit=2 \
-  --pair-encoding=witness-cnf
+  --pair-selection=max-blocked-combinations \
+  --bootstrap-pair-distance=2 \
+  --learn-triple-coverability=true --triple-max-cell-distance=3 \
+  --triple-audit-limit=32 --triple-orbit-limit=0 \
+  --triple-encoding=choice-cnf \
+  --learn-quadruple-coverability=true --quadruple-max-cell-distance=6 \
+  --pair-encoding=witness-cnf --z3-formula-cache=true \
+  --z3-witness-batch-size=3
 ```
 
 Z3 proposes a complete outer corona; exact fixed-placement GCTS either extends
@@ -745,6 +892,237 @@ timeout. Imported clauses make a final UNSAT result conditional until their
 continuation proofs are independently replayed, and a copy-count bound can
 only certify exhaustion of that bounded stratum. A low-copy radius-two to
 three positive control recovers a verified witness after 17 dead proposals.
+When continuation identifies an immediately unfillable next-ring cell,
+`--learn-cell-coverability` adds that cell's full root-symmetry orbit as an
+exact outer-solver obligation. This is stronger than its blocker clause but
+much smaller than eagerly constraining the whole next ring. The `grouped-pb`
+conflict encoding replaces one implication per conflicting outer/lookahead
+placement pair with one equivalent pseudo-Boolean implication per outer
+placement; `edge-cnf` remains available as the baseline. Pair learning can
+retain the historical lexicographic order or prioritize the obstruction that
+blocks the most or fewest currently available placement combinations. A
+formula cache is available when the entire next layer is constrained. It
+serializes the validated static exact-cover, grouped-lookahead, and accumulated
+pair formula, then reloads it under each new solver seed; selected triple and
+quadruple steering constraints and all forbidden-state clauses are still added
+fresh. Cache metadata includes the complete pair-key set and every structural
+encoding option, so a missing pair or changed configuration forces a rebuild.
+On the 771-pair `p9-42947` benchmark this reduces measured construction from
+57.0 seconds on a cache miss (including a 4.0-second write) to 3.6 seconds on a
+no-change hit, before the same one-second timed check. This is formula reuse,
+not a tiling inference or a persistent Z3 learned-clause state. See
+`data/polycube-p9-42947-formula-cache-profile-2026-08-21.json`. A
+positive `--bootstrap-pair-distance` adds every next-ring cell-pair obligation
+within that Manhattan distance, closed under the root stabilizer, before the
+first proposal solve. Once a proposal has no incompatible pair,
+`--learn-triple-coverability` can learn a nearby incompatible cell triple.
+`--triple-audit-limit` bounds how many counterexamples are collected from one
+state, while `--triple-orbit-limit=0` admits every collected symmetry orbit;
+each trial records whether the audit hit its bound.
+
+Using that cache, the one-ranked-orbit lane returns five proposals from seeds
+295–300 with one additional timeout. Four consecutive proposals pass all 771
+carried pair obligations and fail only the exact full triple audit; the fifth
+exposes one new pair orbit. The portfolio grows from 393 to 408 symmetry-closed
+state clauses, 771 to 774 pair constraints, and 207 to 264 triple constraints,
+with the three quadruple constraints unchanged. The narrowest returned state
+has 63 copies and one incompatible triple orbit. A separate seed with the two
+highest-scoring encoded orbits (scores 110 and 99) times out at 330 seconds.
+No proposal clears the triple audit, so no radius-five continuation starts and
+the finite outer search remains unexhausted. See
+`data/polycube-p9-42947-cached-ranked-extension-2026-08-21.json`.
+
+`--z3-witness-batch-size` can retain the solver and enumerate several distinct
+outer models before returning to JavaScript. Each additional model is separated
+by an exact full Boolean-assignment blocker, rather than the stronger monotone
+continuation clauses that are legal only after an obstruction is proved. The
+configured Z3 timeout is shared across the whole batch. CEGAR independently
+verifies every returned corona, applies all pair/triple/quadruple audits in
+sequence, and may start GCTS only for a model that clears them. A radius-one
+regression returns three distinct exact models from one solver state; CEGAR
+learns 156 pair constraints from the first and then verifies that the second
+extends to radius two. Batch enumeration therefore amortizes search state
+without weakening either witness verification or obstruction soundness.
+On the production `p9-42947` state, however, seed 302 returns one 68-copy
+proposal after 88.6 seconds of checking and then spends the remaining 242.8
+seconds without a second model. The first proposal has one exact pair defect,
+raising the carried formula to 411 state clauses, 777 pair constraints, 264
+triple constraints, and three quadruple constraints. Because blind batching
+cannot inject that newly audited pair before requesting model two, this result
+motivates the bidirectional retained solver. See
+`data/polycube-p9-42947-batched-solver-state-2026-08-21.json`.
+
+`--z3-interactive=true` starts that retained solver in a JSON-lines session
+with `--z3-witness-batch-size=1`. After each independently verified proposal,
+CEGAR sends every newly proved symmetry-closed state clause and pair obligation
+back to the same process before requesting another model. Higher-order
+obstructions remain under the full lazy audit, so changing the in-process
+proposal formula cannot bypass the GCTS gate. Fully encoded higher-order mode
+is rejected rather than silently failing to update the worker. Dynamic cell
+learning is supported directly: `--cell-feedback-batch=N` learns and archives
+every exact dead-cell obligation but sends only the next N queued constraints
+before each retained check. `applied-cell-coverability.json` records the exact
+applied prefix; a restart can pair it with the full learned report through
+`--initial-cell-report` and `--initial-deferred-cell-report` without expanding
+or reordering a partially applied symmetry orbit. A bounded regression keeps
+one solver alive across three models, applies three learned GCTS clauses before
+model two, and injects six new pair constraints before model three, whose
+reported construction time is zero.
+
+On `p10-052588`, staging four cell constraints at a time gives a matched
+seed-175 improvement from one exact radius-three proposal to five under the
+same ≤39-copy bound and 30-second check cap. Across seeds 175, 182, and 185 it
+finds nineteen mutually distinct 37–39-copy states. Exact radius-four GCTS
+rejects all nineteen immediately in 21 aggregate nodes; independent replay
+verifies all 216 clause instances, representing 199 distinct clauses, with no
+failure or incomplete replay. That was the proposal-supply stage; later exact
+placement-count partitioning closes the search completely. See
+`data/polycube-p10-052588-staged-cell-feedback-2026-08-22.json`.
+
+The completed `p10-052588` certificate partitions every possible number of
+surrounding radius-three copies. One cumulative UNSAT formula covers counts
+through 46; placement-cube certificates cover every exact count from 47
+through 67; and an open-ended `--open-ended-maximum=true` certificate covers
+all counts at least 68. Each placement cube partitions the 58 possible copies
+covering one primary anchor cell, with no missing or overlapping branches.
+The exact clause files used by both formula families are checked in. Plain
+chronological radius-four replay—with optional nogoods and conflict
+backjumping disabled—verifies all 114 prefix clauses and all 112 tail clauses.
+The 57 and 56 respective cell constraints are deliberately weak necessary
+conditions: each asks only that a radius-four ring cell retain one compatible
+covering placement. The hash-locked count-chain verifier checks the contiguous
+count partition, every component archive, both clause replays, and next-ring
+cell membership:
+
+```sh
+node scripts/verify-polycube-non-tiler-count-chain.mjs
+```
+
+It returns `certified_non_tiler`. Thus `p10-052588` is no longer an unresolved
+aperiodic candidate; it remains in the catalogue as a hard GCTS non-tiler
+control. The certificate is
+`data/polycube-p10-052588-complete-radius3-exhaustion-2026-08-23.json`.
+
+The placement-count partitioner can now be run as a closed CEGAR loop with
+`scripts/screen-polycube-placement-cube-cegar.mjs`. A SAT placement-cube leaf
+is no longer reported as an endpoint: the driver verifies the proposed outer
+corona, sends it through exact next-radius GCTS, symmetry-expands every
+immediate obstruction, independently replays each new clause with nogoods and
+conflict backjumping disabled, and restarts the partition with the verified
+feedback. Base SMT formulas can be shared between rounds with
+`--formula-cache-dir`, because the learned clauses and coverability cells are
+applied above that immutable formula. Hard placement cubes are refined
+depth-first, including immediate retries of singleton leaves, so the run
+localizes its open residue or exposes the next SAT proposal before spending the
+same timeout on unrelated coarse cubes. A round limit, a continuation timeout,
+or an open singleton remains explicitly inconclusive; only verified complete
+cube coverage closes a count.
+
+On `p10-054782`, the first two automated exact-41 rounds find distinct
+radius-three proposals. Exact radius-four GCTS rejects both in one node apiece;
+the feedback grows from 20 clauses and 20 cells to 45 clauses and 47 cells.
+Plain replay verifies all 45 clauses in 58 total nodes with both optional
+accelerators disabled. Depth-first partitioning also proves two singleton
+anchor cubes UNSAT and isolates three singleton timeout leaves before finding
+the second proposal. The hash-locked first-stage archive is checked by:
+
+```sh
+node scripts/verify-polycube-placement-cube-cegar-screen.mjs
+```
+
+Fixed-value propagation before PB bit-blasting (`--propagate-values`) revisits
+the six singleton leaves exposed by the longer partial run. Five become exact
+UNSAT; the sixth yields a new 41-copy radius-three patch after the same leaf had
+timed out under every earlier PB encoding. Nested compatible-placement cubes
+then refine its remaining branch through three exact splits. Across this stage,
+ten 41-copy proposals are tested in total and exact radius-four GCTS rejects all
+of them in 13 aggregate nodes. Independent replay verifies all 236 learned
+clauses without a failure, while 35 terminal exact-UNSAT partition leaves close
+the count-41 residue completely. This exhausts exact count 41 only as a possible
+radius-four survivor in the configured fixed-root proper-rotation lattice
+model; counts 42 and above and the unbounded tail remain open. The reproducible
+archive is
+`data/polycube-p10-054782-propagate-values-nested-screen-2026-08-24.json`.
+
+The first production interactive chain keeps three retained solvers through
+nine exact proposals at seeds 303–305. All nine checks return SAT without a
+timeout: three states have pair defects and six clear every pair obligation
+before exposing triple defects. One session learns three pair constraints from
+its first model, applies them inside the worker, and the next model clears the
+enlarged pair audit. Across the chain, 18 state clauses and three pair
+constraints are visibly applied between in-process checks. The portfolio grows
+from 411 to 438 symmetry-closed state clauses, 777 to 792 pair constraints, and
+264 to 336 triple constraints; the three quadruple constraints remain. No
+state clears the full triple audit, so no radius-five GCTS continuation starts
+and the outer space remains unexhausted. See
+`data/polycube-p9-42947-interactive-z3-cegar-2026-08-21.json`.
+The default triple choice-CNF selects one available placement per cell and
+forbids pairwise-overlapping selections, avoiding the cubic compatible-triple
+DNF while expressing the same exact condition. Quadruple learning uses the
+same exact choice-CNF construction across four cell groups after pair and
+triple audits pass; `--initial-quadruple-report` can preload an independently
+audited obstruction orbit.
+When the higher-order formula itself becomes the bottleneck,
+`--tuple-enforcement=lazy-higher` keeps pair obligations in Z3 but audits
+triples and quadruples on each proposed state before GCTS. A failed audit adds
+the symmetry orbit of the entire fixed outer state as a monotone separation
+cut: adding more outer placements cannot restore a blocked continuation, so
+the cut is sound. `lazy-all` also removes pair formulas; `encoded` remains the
+default baseline. `hybrid-higher` plus a positive
+`--encoded-triple-orbit-limit` encodes only that many complete root-symmetry
+orbits from the accumulated triple set and audits every remaining triple and
+quadruple lazily. The generated `encoded-triple-coverability.json` makes the
+actual steering subset explicit and resumable. The optional
+`--encoded-triple-selection=recent` window follows newly learned obstruction
+orbits instead of permanently retaining the earliest ones. The
+`max-blocked-combinations` policy records the largest observed number of
+currently available placement triples eliminated by each obstruction orbit,
+persists those scores beside `triple-coverability.json`, and encodes the
+highest-scoring complete orbits. Ties prefer newer observations.
+
+Pair reports also preserve the complete set of violated pair orbits for every
+verified defective proposal. `--encoded-pair-selection=historical-cover`
+greedily intersects as many of those historical defect sets as its active
+window permits. `historical-core` first protects every orbit that is the sole
+recorded defect of some historical state, then spends the remaining window on
+greedy coverage. For `p9-42947`, 26 singleton-defect states require 25 distinct
+orbits. A 32-orbit core window retains all 25 and intersects 65 of 91 historical
+failures; ordinary historical coverage intersects 67. Across matched seeds
+325–327 the core takes 106.3 seconds of aggregate Z3 check time and leaves 15
+pair defects, versus 81.0 seconds and 11 defects for ordinary coverage. It does
+find one new pair orbit where the control finds none, so it remains an optional
+diversity lane rather than the production default. Every omitted pair and
+higher-order obligation is still checked lazily before GCTS, and neither lane
+finds a pair-complete state. See
+`data/polycube-p9-42947-historical-core-2026-08-21.json`.
+
+`--encoded-pair-selection=recent-defect-cover` makes retained CEGAR reserve a
+configurable `--recent-defect-orbit-limit` prefix for the exact pair-defect set
+from its preceding proposal before greedily covering older failures. The trial
+report records the recent set size, selected count, and whether the response is
+complete. On a matched three-model `p9-42947` chain, complete response lowers
+the immediately following defect count from nine to four but takes 114.1
+seconds and 69 replacement constraints overall, versus 86.5 seconds and six
+replacements for ordinary historical coverage; totals are 20 and 21 defects.
+A four-orbit response times out on check two. A separate 64-orbit historical
+window covers all 91 replayed failure sets and returns SAT in 32.0 seconds, yet
+the fresh state still has six pair defects and a cache-identical replay times
+out. These ablations reject forced recent response and simple historical set
+coverage as production replacements; they do not reject the tile. See
+`data/polycube-p9-42947-adaptive-pair-window-2026-08-22.json`.
+
+Soft global steering is available through `--pair-soft-minimum` for individual
+pair constraints and `--pair-soft-orbit-minimum` for complete root-symmetry
+orbits. Both use guarded witness-CNF formulas plus a pseudo-Boolean quota in the
+existing SAT backend; neither changes the exact lazy audit. On matched seeds
+330–332, a 72-of-96 constraint quota takes 83.2 seconds and returns 19 total
+pair defects, versus 46.9 seconds and the same 19 defects when all 96 are hard.
+An 84-constraint quota is also inferior. Requiring 24 of 32 complete symmetry
+orbits times out; 16 of 32 returns in 45.2 seconds with three defects, versus
+29.5 seconds and two defects for the matched hard control. Soft quotas remain
+an experimental diversity mechanism rather than production steering. See
+`data/polycube-p9-42947-soft-pair-quota-2026-08-22.json`.
+
 For `p9-42947`, 284 radius-four proposals are now exactly rejected at radius
 five, including fifteen 63-copy states and one 62-copy state. An exact one-step coverability filter
 removes immediate dead cells before proposal; its four satisfiable patches all

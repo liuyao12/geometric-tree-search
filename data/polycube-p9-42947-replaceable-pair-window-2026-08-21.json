@@ -1,0 +1,97 @@
+{
+  "kind": "polycube_p9_42947_replaceable_pair_window_receipt",
+  "candidate": "p9-42947",
+  "outer_layer": 4,
+  "inner_layer": 5,
+  "implementation_commits": ["e94f609", "6c81a0c"],
+  "mechanism": {
+    "pair_formulas": "Every compiled pair-coverability formula is guarded by a stable activation literal.",
+    "replacement": "Each retained check activates exactly the current ranked window and supplies negative assumptions for every displaced formula.",
+    "permanent_state": "Verified forbidden-state clauses remain permanently asserted in the retained solver.",
+    "cache": "The formula cache retains a compiled superset of active and inactive pair formulas; changing the ranked window no longer invalidates the cache.",
+    "exact_gate": "Every accumulated pair, triple, and quadruple obligation is still audited after each proposal before GCTS can begin."
+  },
+  "matched_additive_vs_replaceable_seed_307": {
+    "active_pair_constraints": 48,
+    "additive_check_milliseconds": [44149, 42461, 60062],
+    "additive_active_constraints_after_feedback": [48, 78, 99],
+    "replaceable_check_milliseconds": [36487, 27969, 60016],
+    "replaceable_active_constraints_after_feedback": [48, 48, 48],
+    "replaceable_compiled_formulas_after_feedback": [48, 69, 87],
+    "sat_states_each": 2,
+    "terminal_result_each": "timeout",
+    "audit_result": "Both SAT states in each lane are pair-defective."
+  },
+  "cached_extension": {
+    "exact_sat_states": 7,
+    "timeout_trials": 2,
+    "pair_defect_states": 7,
+    "triple_defect_states": 0,
+    "window_16_cached_examples": [
+      {
+        "seed": 311,
+        "construction_milliseconds": 4074,
+        "check_milliseconds": 5157,
+        "compiled_pair_formulas": 54,
+        "active_pair_constraints": 48
+      },
+      {
+        "seed": 314,
+        "construction_milliseconds": 4674,
+        "check_milliseconds": 6433,
+        "compiled_pair_formulas": 78,
+        "active_pair_constraints": 48
+      }
+    ],
+    "window_sweep": [
+      {
+        "pair_orbits": 32,
+        "active_pair_constraints": 96,
+        "check_milliseconds": 18620,
+        "z3_status": "sat",
+        "audit_result": "pair_defect"
+      },
+      {
+        "pair_orbits": 64,
+        "active_pair_constraints": 192,
+        "check_milliseconds": 18611,
+        "z3_status": "sat",
+        "audit_result": "pair_defect"
+      },
+      {
+        "pair_orbits": 128,
+        "active_pair_constraints": 384,
+        "check_milliseconds": 60026,
+        "z3_status": "unknown",
+        "reason_unknown": "timeout"
+      }
+    ]
+  },
+  "portfolio_totals": {
+    "exact_sat_states": 9,
+    "timeout_trials": 3,
+    "pair_defect_states": 9,
+    "triple_defect_states": 0,
+    "continuations_started": 0,
+    "final_symmetry_closed_clauses": 468,
+    "final_pair_constraints": 855,
+    "final_triple_constraints": 336,
+    "final_quadruple_constraints": 3
+  },
+  "sources": [
+    {"path": "runs/p9-radius4-to5-replace-pair16-seed307-summary.json", "sha256": "9221345917df9c232101c4521b8da1bea25aa4fbb3aa6b0661a3f510cf8fe86f"},
+    {"path": "runs/p9-radius4-to5-replace-pair16-seed310-summary.json", "sha256": "0d67d6217b98d64e6974b9ca285843a2f6b10e25013a75fb2d333e21d272678b"},
+    {"path": "runs/p9-radius4-to5-replace-pair16-seed311-summary.json", "sha256": "55fb13ebdd65d19b2cba65d3294bbc6b4bdccc176433a97198093750b359ba82"},
+    {"path": "runs/p9-radius4-to5-replace-pair16-seed312-chain-summary.json", "sha256": "bba075d95086a3956acb6aac8c1171ba0ff3bf3b355010130b71dfe7039bb620"},
+    {"path": "runs/p9-radius4-to5-replace-pair16-seed314-summary.json", "sha256": "46b1c457a73a494528e618ec23bbc6cb3e84511f2f2b7c709f2246dd03c8aa15"},
+    {"path": "runs/p9-radius4-to5-replace-pair16-seed315-summary.json", "sha256": "d6c7ef08eb8dcaf20dfcb6acee9ffe9d5da2cdaafac8f16da3db10364382c879"},
+    {"path": "runs/p9-radius4-to5-replace-pair32-seed316-summary.json", "sha256": "32fbc3351367cb6f7f1f0a07132901b6ad07a7651cee861951e83afe82a4369a"},
+    {"path": "runs/p9-radius4-to5-replace-pair64-seed317-summary.json", "sha256": "c0fd1a4a086dc161e6224622f06cb14241e7aa908e129084e6acabbd36919219"},
+    {"path": "runs/p9-radius4-to5-replace-pair128-seed318-summary.json", "sha256": "b959b3fb5bd83ff7a67bcaa2d317da25edea76cb1b8f8f514463debdd4d43d50"}
+  ],
+  "radius_five_witness_found": false,
+  "outer_search_exhausted": false,
+  "certified_non_tiler": false,
+  "certified_aperiodic": false,
+  "interpretation": "True fixed-size pair replacement and superset formula caching substantially increase exact-proposal throughput. Nine new radius-four states nevertheless fail the complete pair audit; 128 active orbits time out. This rejects the current proposals, not the tile, and establishes recurrence-aware pair ranking as the next steering target."
+}

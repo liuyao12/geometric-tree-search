@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-24",
+  "definition": "GCTS-I cold-start geometric failure marking, not policy learning",
+  "protocol": {
+    "cases": ["10_16113", "10_45026", "10_45033", "9_11683"],
+    "seeds": [1, 2, 3],
+    "seconds_per_lane": 5,
+    "target_tiles": 80,
+    "control": "same complete lattice-point branching, oldest-frontier rule, balanced move order, and generation-lag cap; failure marking disabled",
+    "runtime_knowledge": "Every GCTS run starts with an empty marking. No proposal patch, learned weights, tile identifier, periodic template, or previous-run state is supplied.",
+    "metric_note": "effective_branch_throughput_ratio is (entered GCTS nodes + exact marking prunes) / entered control nodes under the same wall-clock budget. It measures search alternatives disposed of, not a direct wall-clock speedup."
+  },
+  "selected_hyperparameters": {
+    "frontier_selection": "oldest incomplete lattice point",
+    "complete_candidate_enumeration": true,
+    "marking_reach_in_max_tile_spans": 1,
+    "symmetry_quotient": "translations",
+    "blocker_certificate": "first exact blocker per rejected candidate, then union",
+    "activation_failures": 0,
+    "max_context_tiles": null,
+    "max_clauses": 20000,
+    "pivot_index": true
+  },
+  "sweep_conclusions": [
+    "A one-span support is sufficient: every placement that can block a candidate covering the marked point intersects that candidate's bounding box. Larger reaches made clauses less reusable and slower.",
+    "Collecting the first exact blocker preserved soundness and wall-clock depth; collecting every alternative blocker reduced clause size slightly but spent too much time constructing certificates.",
+    "The 24-rotation quotient found essentially the same recurrences but was slower than translation normalization on all four training cases. It remains available as a hyperparameter.",
+    "Context caps of five or six tiles discarded useful exact clauses on 10_16113 and 9_11683. Oversize contexts are therefore retained rather than truncated.",
+    "Immediate activation won. Because every stored clause is an exact obstruction, no statistical burn-in is required."
+  ],
+  "results": [
+    {
+      "case": "10_16113",
+      "median_control_depth": 17,
+      "median_gcts_depth": 17,
+      "median_effective_branch_throughput_ratio": 1.2205,
+      "worst_effective_branch_throughput_ratio": 1.1882,
+      "total_exact_marking_prunes": 357
+    },
+    {
+      "case": "10_45026",
+      "median_control_depth": 17,
+      "median_gcts_depth": 17,
+      "median_effective_branch_throughput_ratio": 1.5760,
+      "worst_effective_branch_throughput_ratio": 1.4539,
+      "total_exact_marking_prunes": 980
+    },
+    {
+      "case": "10_45033",
+      "median_control_depth": 12,
+      "median_gcts_depth": 12,
+      "median_effective_branch_throughput_ratio": 1.4432,
+      "worst_effective_branch_throughput_ratio": 1.4268,
+      "total_exact_marking_prunes": 987
+    },
+    {
+      "case": "9_11683",
+      "median_control_depth": 15,
+      "median_gcts_depth": 15,
+      "median_effective_branch_throughput_ratio": 1.9346,
+      "worst_effective_branch_throughput_ratio": 1.9038,
+      "total_exact_marking_prunes": 1566,
+      "note": "Each run learned one six-tile obstruction and reused it 521-524 times."
+    }
+  ],
+  "acceptance": {
+    "all_case_seed_pairs_preserved_maximum_depth": true,
+    "all_case_seed_pairs_had_positive_exact_marking_reuse": true,
+    "all_case_seed_pairs_effective_branch_throughput_ratio_above_one": true,
+    "minimum_ratio": 1.1882
+  }
+}

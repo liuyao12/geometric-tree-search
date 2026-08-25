@@ -1,8 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260821-polycube10-v128";
-import {
-  normalizeProposalProgram,
-  proposalProgramFromPatchSnapshot
-} from "./proposal-learner.js?v=20260817-generation-band-v31";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260824-rl-parity-v211";
 
 let activeSequence = 0;
 let stopToken = { stop: false };
@@ -57,8 +53,24 @@ const MODES = {
   gcts: {
     id: "gcts",
     label: "GCTS",
-    strategy: "learning_free_range",
-    moveOrder: "agent",
+    strategy: "free_range",
+    moveOrder: "balanced",
+    templates: false,
+    agentExhaustive: true
+  },
+  rl: {
+    id: "rl",
+    label: "RL",
+    strategy: "free_range",
+    moveOrder: "rl",
+    templates: false,
+    agentExhaustive: true
+  },
+  gcts_rl: {
+    id: "gcts_rl",
+    label: "GCTS + RL",
+    strategy: "free_range",
+    moveOrder: "rl",
     templates: false,
     agentExhaustive: true
   },
@@ -66,7 +78,7 @@ const MODES = {
     id: "translational",
     label: "Translational",
     strategy: "translational",
-    moveOrder: "balanced",
+    moveOrder: "periodic_agent",
     templates: true,
     agentExhaustive: true
   },
@@ -86,39 +98,52 @@ const post = (sequence, payload) => {
 
 async function runMode(sequence, baseConfig, mode) {
   const shellSearch = baseConfig.criterion === "shell";
+  const exactLearningShell = shellSearch && ["gcts", "rl", "gcts_rl"].includes(mode.id);
   const effectiveMode = shellSearch && mode.proof
     ? { ...mode, label: `${mode.label.replace(/ · .*$/u, "")} · complete shell` }
     : mode;
-  const priorProgram = mode.id === "gcts" && baseConfig.proposal_program
-    ? normalizeProposalProgram(baseConfig.proposal_program)
-    : null;
   const config = {
     ...baseConfig,
     tiling_strategy: mode.strategy,
-    move_order: priorProgram
-      ? "proposal"
-      : shellSearch && mode.proof ? "shell" : mode.moveOrder,
-    proposal_program: priorProgram,
+    move_order: shellSearch && mode.proof ? "shell" : mode.moveOrder,
+    proposal_program: null,
+    complete_lattice_point_branching: ["free_range", "gcts", "rl", "gcts_rl", "no_brainer"].includes(mode.id),
+    gcts_failure_marking: mode.id === "gcts" || mode.id === "gcts_rl",
+    gcts_marking_reach_multiplier: baseConfig.gcts_marking_reach_multiplier ?? 1,
+    gcts_marking_max_clauses: baseConfig.gcts_marking_max_clauses ?? 20000,
+    gcts_marking_max_context_tiles: baseConfig.gcts_marking_max_context_tiles ?? 1000000,
+    gcts_marking_activation_failures: baseConfig.gcts_marking_activation_failures ?? 0,
+    gcts_marking_symmetry: baseConfig.gcts_marking_symmetry ?? "fixed",
+    gcts_marking_index: baseConfig.gcts_marking_index !== false,
     agent_exhaustive: mode.agentExhaustive,
+    agent_policy: ["rl", "gcts_rl", "translational"].includes(mode.id) ? "cold_geometry" : null,
+    learned_layer_macro: mode.id === "rl" || mode.id === "gcts_rl",
+    learned_layer_macro_max_motif_tiles: 8,
+    learned_layer_macro_motif_node_limit: 2500,
+    learned_layer_macro_discovery_time_ms: 45000,
+    known_periodic_template: null,
+    initial_patch: null,
     greedy_no_backtrack: false,
     template_preflight: mode.templates,
     periodic_preflight: mode.templates,
     periodic_patch_unbounded: mode.id === "translational",
+    periodic_motif_node_limit: mode.id === "translational" ? 2500 : baseConfig.periodic_motif_node_limit,
     periodic_patch_max_tiles: mode.id === "translational" ? null : baseConfig.periodic_patch_max_tiles,
     snapshot_every: 1,
-    placement_details: mode.id === "gcts",
+    placement_details: ["gcts", "rl", "gcts_rl"].includes(mode.id),
     branch_cap: null,
     candidate_cap: null,
-    forced_move_layer_lag_cap: mode.proof ? 0 : baseConfig.forced_move_layer_lag_cap,
+    forced_move_layer_lag_cap: mode.proof || exactLearningShell ? 0 : baseConfig.forced_move_layer_lag_cap,
     generic_connected_patch_enumeration: !!mode.proof && !shellSearch,
-    generic_complete_shell_enumeration: !!mode.proof && shellSearch,
-    generic_failure_memo: mode.proof,
+    generic_complete_shell_enumeration: (!!mode.proof || exactLearningShell) && shellSearch,
+    generic_failure_memo: !!mode.proof || exactLearningShell,
     generic_failure_memo_symmetry: shellSearch ? "rigid" : "fixed",
     generic_geometric_nogood: !!mode.nogood && !shellSearch,
     generic_geometric_nogood_max_clauses: 20000,
     generic_geometric_nogood_index: true,
     generic_geometric_nogood_activation_failure_states: mode.nogood ? 25 : 0,
-    seeded_tie_breaks: !!mode.proof,
+    seeded_tie_breaks: !!mode.proof || ["rl", "gcts_rl", "translational"].includes(mode.id),
+    random_seed: baseConfig.random_seed ?? 1,
     generic_periodic_certificate: !!mode.proof && !shellSearch,
     generic_periodic_certificate_method: mode.proof ? "internal_first" : "boundary_first",
     generic_periodic_certificate_check_new_maximum: !!mode.proof && !shellSearch,
@@ -130,7 +155,7 @@ async function runMode(sequence, baseConfig, mode) {
     generic_periodic_certificate_checkpoint_max_total_checks: 280,
     generic_periodic_certificate_checkpoint_total_time_limit_ms: 5000,
     generic_periodic_certificate_time_limit_ms: 1000,
-    exhaustive: !!mode.proof
+    exhaustive: !!mode.proof || exactLearningShell
   };
   const started = performance.now();
   let best = 0;
@@ -203,7 +228,7 @@ async function runMode(sequence, baseConfig, mode) {
       if (
         mode.id === "gcts"
         && Array.isArray(snapshot?.placements)
-        && (!bestSnapshot || tiles >= (bestSnapshot.tile_count ?? 0))
+        && (!bestSnapshot || tiles > (bestSnapshot.tile_count ?? 0))
       ) bestSnapshot = snapshot;
     }
     if (message.type === "full_update") terminalSnapshot = message;
@@ -211,10 +236,11 @@ async function runMode(sequence, baseConfig, mode) {
   }
 
   const elapsed = Math.round(performance.now() - started);
-  const learnedProgram = mode.id === "gcts" && bestSnapshot?.placements?.length > 1
-    ? proposalProgramFromPatchSnapshot(baseConfig, bestSnapshot, priorProgram)
-    : priorProgram;
-  if (mode.id === "isohedral" && final?.success === false) {
+  const learnedProgram = null;
+  const exactNoTiling = final?.result_kind === "no_tiling"
+    && final?.can_tile === false
+    && final?.tiling_evidence?.certified === true;
+  if (exactNoTiling) {
     const point = { milliseconds: elapsed, tiles: 0, terminal: true };
     queueHistory({ point, snapshot: terminalSnapshot });
   }
@@ -225,14 +251,14 @@ async function runMode(sequence, baseConfig, mode) {
     criterion: baseConfig.criterion,
     targetValue: baseConfig.target_val,
     success: final?.success ?? false,
-    tileCount: mode.id === "isohedral" && final?.success === false
+    tileCount: exactNoTiling
       ? 0
       : final?.tile_count ?? best,
     milliseconds: elapsed,
     points,
     stats: final?.search_stats ?? latestStats,
     learnedProgram,
-    reusedLearnedPatch: !!priorProgram,
+    reusedLearnedPatch: false,
     resultKind: final?.result_kind ?? null,
     certificatePatchSize: final?.tiling_evidence?.patch_size ?? null,
     checkedPatchSize,

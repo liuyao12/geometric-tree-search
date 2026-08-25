@@ -879,10 +879,10 @@ button:disabled {
 }
 
 .candidate-research-panel {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  justify-content: space-between;
-  gap: 10px;
+  gap: 6px 10px;
   margin-top: 8px;
   padding: 9px 10px;
   border: 1px solid color-mix(in srgb, var(--accent) 42%, var(--line));
@@ -891,14 +891,41 @@ button:disabled {
 }
 
 .candidate-research-panel > div {
-  display: grid;
-  gap: 2px;
-  min-width: 0;
+  display: contents;
 }
 
-.candidate-research-panel b { font-size: 12px; }
-.candidate-research-panel small { color: var(--muted); font-size: 10px; line-height: 1.3; }
-.candidate-research-panel button { flex: 0 0 auto; padding: 6px 8px; }
+.candidate-research-panel b {
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
+  font-size: 12px;
+}
+.candidate-research-detail {
+  box-sizing: border-box;
+  display: block;
+  grid-column: 1 / -1;
+  grid-row: 2;
+  height: 88px;
+  overflow: auto;
+  padding: 6px 7px;
+  border: 1px solid color-mix(in srgb, var(--accent) 20%, var(--line));
+  border-radius: 5px;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.35;
+  scrollbar-gutter: stable;
+  white-space: normal;
+}
+.candidate-research-detail:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--accent) 70%, white);
+  outline-offset: 1px;
+}
+.candidate-research-panel button {
+  grid-column: 2;
+  grid-row: 1;
+  padding: 6px 8px;
+}
 .figure-card-angles.is-census-label { opacity: 0.82; }
 
 .tile-meta input {
