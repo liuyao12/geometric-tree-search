@@ -491,6 +491,15 @@ body.atlas-open { overflow: hidden; }
 .process-timeline-scale { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 8px; color: #4f6761; font: 5px var(--mono); text-transform: uppercase; }
 .process-timeline-scale i { height: 1px; background: repeating-linear-gradient(90deg,rgba(151,194,183,.2) 0 1px,transparent 1px 12.5%); }
 .process-timeline > p { margin: 5px 0 0; color: #6b817b; font: 6px/1.4 var(--mono); }
+.process-evidence-ledger { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 1px; margin-top: 7px; background: rgba(151,194,183,.12); }
+.process-evidence-ledger button { min-width: 0; min-height: 43px; padding: 6px 8px; border: 0; border-bottom: 1px solid transparent; background: rgba(4,14,16,.9); color: inherit; text-align: left; cursor: pointer; }
+.process-evidence-ledger button:hover,.process-evidence-ledger button.active { background: rgba(101,225,188,.055); border-bottom-color: var(--mint); outline: none; }
+.process-evidence-ledger button.rejected strong,.process-evidence-ledger button.mixed strong { color: #ff8d90; }
+.process-evidence-ledger button.accepted strong { color: var(--mint); }
+.process-evidence-ledger small,.process-evidence-ledger strong { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.process-evidence-ledger small { color: #58706a; font: 5px var(--mono); letter-spacing: .07em; text-transform: uppercase; }
+.process-evidence-ledger strong { margin-top: 4px; color: #aebfba; font: 7px var(--mono); font-weight: 400; }
+.process-evidence-detail { min-height: 25px; padding-top: 5px; border-top: 1px solid rgba(151,194,183,.08); color: #768d87 !important; }
 .metrics-strip { display: grid; grid-template-columns: repeat(4, 1fr); padding-top: 14px; border-top: 1px solid var(--line); }
 .metrics-strip article { min-width: 0; padding: 0 12px; border-right: 1px solid var(--line); }
 .metrics-strip article:first-child { padding-left: 0; }

@@ -213,6 +213,8 @@ const processTimelineTitle = $("processTimelineTitle");
 const processTimelineState = $("processTimelineState");
 const processTimelineInput = $("processTimelineInput");
 const processTimelineNote = $("processTimelineNote");
+const processEvidenceLedger = $("processEvidenceLedger");
+const processEvidenceDetail = $("processEvidenceDetail");
 const atomLabel = $("atomLabel");
 const atomMetric = $("atomMetric");
 const atomDelta = $("atomDelta");
@@ -613,6 +615,7 @@ let atomSpatialIndex = new Map();
 let trainingProgress = 0;
 let clusterDiscoveryTrace = null;
 let clusterDiscoveryProgress = 0;
+let selectedProcessEvidenceIndex = 0;
 let selectedConstraintName = "species / hard core";
 let leapHistory = [];
 let selectedLeapIndex = -1;
@@ -4936,7 +4939,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-66",
+      buildId: "20260824-67",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7931,6 +7934,7 @@ function processTimelineRecord() {
       reversible: true,
       traceFrozen: true,
       targetUsed: false,
+      evidence: processTimelineEvidenceRecord(),
     };
   }
   if (pipelineStage === 3 && sectionModel) {
@@ -7949,9 +7953,103 @@ function processTimelineRecord() {
       reversible: true,
       traceFrozen: true,
       targetUsed: false,
+      evidence: processTimelineEvidenceRecord(),
     };
   }
   return null;
+}
+
+function processTimelineEvidenceRecord() {
+  if (pipelineStage === 1 && clusterDiscoveryTrace) {
+    const progress = clusterDiscoveryProgress;
+    const current = clusterDiscoveryState(progress);
+    const previous = clusterDiscoveryState(Math.max(0, progress - 1));
+    const born = clusterDiscoveryTrace.edges.filter((edge) => edge.birthStep === progress);
+    const accepted = clusterDiscoveryTrace.edges.filter((edge) => edge.final && edge.decisionStep === progress);
+    const removed = clusterDiscoveryTrace.edges.filter((edge) => !edge.final && edge.decisionStep === progress);
+    const placements = clusterDiscoveryTrace.placements.filter((placement) => placement.settleStep === progress);
+    const newCoverage = [...current.coveredAtoms].filter((index) => !previous.coveredAtoms.has(index)).length;
+    const acceptedFamilies = Object.entries(accepted.reduce((counts, edge) => {
+      counts[edge.family] = (counts[edge.family] || 0) + 1;
+      return counts;
+    }, {})).sort((first, second) => second[1] - first[1] || first[0].localeCompare(second[0]));
+    const representative = accepted[0] || removed[0] || born[0] || null;
+    const pair = representative
+      ? `${referenceAtoms[representative.first].species}–${referenceAtoms[representative.second].species} · ${(representative.length / Math.max(1e-9, referenceSpacing)).toFixed(2)}a`
+      : "no edge transition at this step";
+    return {
+      mode: "deterministic audit replay of the learned cover",
+      selectedStep: progress,
+      targetUsed: false,
+      coordinatesEmbedded: false,
+      tiles: [
+        { label: "new hypotheses", value: born.length, status: "testing",
+          detail: `${born.length} distance-admissible pair connections enter the visual audit queue at this step.` },
+        { label: "accepted / removed", value: `${accepted.length} / ${removed.length}`, status: removed.length ? "mixed" : "accepted",
+          detail: `${accepted.length} edges belong to the final recurring cluster-and-gap cover; ${removed.length} short alternatives do not.` },
+        { label: "cover gain", value: `+${newCoverage} sites`, status: newCoverage ? "accepted" : "neutral",
+          detail: `${placements.length} complete support placement${placements.length === 1 ? "" : "s"} settle, newly certifying ${newCoverage} observed site${newCoverage === 1 ? "" : "s"}.` },
+        { label: "representative", value: pair, status: representative?.final ? "accepted" : representative ? "rejected" : "neutral",
+          detail: representative
+            ? `${pair}. ${representative.final ? `Retained as ${representative.family}; accepted family counts are ${acceptedFamilies.map(([family, count]) => `${family} ${count}`).join(", ") || "none at this exact step"}.` : "Removed because it is absent from every selected recurring support or explicit gap class."}`
+            : "No edge is born or decided at this exact audit step; neighboring steps still update complete support placements." },
+      ],
+      claimBoundary: "The learner computed the recurring isometry cover before this visualization. Step order is a deterministic audit replay, not molecular dynamics, an online clustering optimizer, or physical time.",
+    };
+  }
+  if (pipelineStage === 3 && sectionModel) {
+    const progress = trainingProgress;
+    const point = currentSectionPoint();
+    const previous = progress > 1 ? sectionModel.curve[progress - 2] : sectionModel.initialPoint;
+    const sampleIndex = progress - 1;
+    const cluster = sampleIndex >= 0 ? sectionModel.sampleLabels[sampleIndex] : null;
+    const target = cluster === null ? [] : sectionModel.targets[sampleIndex] || [];
+    const coefficientDelta = cluster === null ? 0 : Math.sqrt(point.coefficients[cluster].reduce((sum, value, axis) =>
+      sum + (value - previous.coefficients[cluster][axis]) ** 2, 0));
+    const fitSample = point.fitSamples > previous.fitSamples;
+    const overlapGain = (point.overlaps || 0) - (previous.overlaps || 0);
+    const lossDelta = point.validationLoss - previous.validationLoss;
+    const positiveChannels = target.filter((value) => value > 0).length;
+    return {
+      mode: "deterministic sample-indexed section fit",
+      selectedStep: progress,
+      targetUsed: false,
+      coordinatesEmbedded: false,
+      tiles: [
+        { label: "sample role", value: progress ? (fitSample ? "fit" : "held out") : "initial", status: fitSample ? "accepted" : "neutral",
+          detail: progress ? `Sample ${progress} is a ${fitSample ? "fitting" : "held-out validation"} ${sectionModel.sampleKind}; held-out samples never update coefficients.` : "Deterministic random local-section coefficients before any occurrence is processed." },
+        { label: "cluster section", value: cluster === null ? "unassigned" : markingPrototypeName(cluster), status: "testing",
+          detail: cluster === null ? "No cluster occurrence has been processed yet." : `${markingPrototypeName(cluster)} receives this local connection observation; ${positiveChannels}/${sectionModel.channels} active channel directions carry compatible-port evidence.` },
+        { label: "coefficient step", value: coefficientDelta.toFixed(4), status: coefficientDelta ? "accepted" : "neutral",
+          detail: `Coordinate-free L2 change of the selected cluster's local section coefficients. Neighborhood reach is ${sectionModel.reach} and the representation is ${MARKING_REPRESENTATIONS[sectionModel.representation].short}.` },
+        { label: "holdout change", value: `${lossDelta >= 0 ? "+" : ""}${lossDelta.toFixed(4)}`, status: lossDelta <= 0 ? "accepted" : "rejected",
+          detail: `Held-out mismatch changes by ${lossDelta.toFixed(4)} at this sample; ${overlapGain >= 0 ? "+" : ""}${overlapGain} support-overlap constraints become visible.` },
+      ],
+      claimBoundary: "These are local connection-section fitting diagnostics. They are not forces, energies, potentials, relaxation steps, elapsed physical time, or target-guided growth scores.",
+    };
+  }
+  return null;
+}
+
+function renderProcessEvidence() {
+  const evidence = processTimelineEvidenceRecord();
+  processEvidenceLedger.replaceChildren();
+  processEvidenceDetail.textContent = "";
+  if (!evidence) return;
+  selectedProcessEvidenceIndex = Math.min(selectedProcessEvidenceIndex, evidence.tiles.length - 1);
+  evidence.tiles.forEach((tile, index) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = `${tile.status}${index === selectedProcessEvidenceIndex ? " active" : ""}`;
+    button.setAttribute("aria-pressed", index === selectedProcessEvidenceIndex ? "true" : "false");
+    const label = document.createElement("small"); label.textContent = tile.label;
+    const value = document.createElement("strong"); value.textContent = tile.value;
+    button.append(label, value);
+    button.addEventListener("click", () => { selectedProcessEvidenceIndex = index; renderProcessEvidence(); });
+    processEvidenceLedger.appendChild(button);
+  });
+  const selected = evidence.tiles[selectedProcessEvidenceIndex];
+  processEvidenceDetail.textContent = `${selected.detail} Claim boundary: ${evidence.claimBoundary}`;
 }
 
 function updateProcessTimeline() {
@@ -7966,6 +8064,7 @@ function updateProcessTimeline() {
   processTimelineInput.value = String(record.progress);
   processTimelineInput.setAttribute("aria-valuetext", record.state);
   processTimeline.style.setProperty("--process-progress", `${100 * record.progress / Math.max(1, record.total)}%`);
+  renderProcessEvidence();
 }
 
 function scrubProcessTimeline(value) {
@@ -7973,6 +8072,7 @@ function scrubProcessTimeline(value) {
   if (!record) return;
   setPlaying(false);
   const progress = Math.max(0, Math.min(record.total, Math.round(Number(value) || 0)));
+  selectedProcessEvidenceIndex = 0;
   if (pipelineStage === 1) clusterDiscoveryProgress = progress;
   else if (pipelineStage === 3) trainingProgress = progress;
   eventIndex = progress;

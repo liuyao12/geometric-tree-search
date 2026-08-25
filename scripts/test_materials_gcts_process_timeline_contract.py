@@ -19,6 +19,8 @@ def test_reversible_process_timeline_contract() -> None:
         "processTimelineState",
         "processTimelineInput",
         "processTimelineNote",
+        "processEvidenceLedger",
+        "processEvidenceDetail",
     ):
         assert f'id="{element_id}"' in HTML
     assert 'id="processTimelineInput" type="range"' in HTML
@@ -31,6 +33,14 @@ def test_reversible_process_timeline_contract() -> None:
     assert 'traceFrozen: true' in APP
     assert 'targetUsed: false' in APP
     assert 'function scrubProcessTimeline(value)' in APP
+    assert 'function processTimelineEvidenceRecord()' in APP
+    assert 'function renderProcessEvidence()' in APP
+    assert 'deterministic audit replay of the learned cover' in APP
+    assert 'deterministic sample-indexed section fit' in APP
+    assert 'accepted / removed' in APP
+    assert 'coefficient step' in APP
+    assert 'Step order is a deterministic audit replay' in APP
+    assert 'They are not forces, energies, potentials' in APP
     assert 'setPlaying(false);' in APP[APP.index('function scrubProcessTimeline(value)'):]
     assert 'clusterDiscoveryProgress = progress' in APP
     assert 'trainingProgress = progress' in APP
@@ -38,6 +48,7 @@ def test_reversible_process_timeline_contract() -> None:
     assert 'reversibleProcessTimeline: processTimelineRecord()' in APP
 
     assert '.process-timeline' in CSS
+    assert '.process-evidence-ledger' in CSS
     assert '--process-progress' in CSS
     assert 'Play resumes from the selected decision step' in README
     assert 'resume training from that sample count' in README

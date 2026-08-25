@@ -202,6 +202,13 @@ the connections, coverage, rejection count, captions, and metrics together,
 and Play resumes from the selected decision step. It never consults a target
 structure or fabricates a dynamical trajectory.
 
+Four clickable evidence tiles explain the selected audit step: newly admitted
+hypotheses, accepted versus removed edges, newly covered sites, and one
+species/normalized-distance representative. Their detail panel states the
+important limitation explicitly: the cover learner is computed first and this
+timeline replays its competing edges in a deterministic visual order. It is
+not an online optimizer, molecular dynamics, or physical time.
+
 Cover completeness and rigid replay connectivity are audited separately. The
 learner first adds recurring Steiner occurrences from already admitted support
 classes. If a nearby component still lacks a two-site rigid overlap, it may add
@@ -440,6 +447,11 @@ same reversible timeline is now indexed by processed section samples, so a
 materials scientist can compare intermediate halos across cluster classes,
 rewind to any fit state, and resume training from that sample count. The
 timeline state is included in the coordinate-free experiment receipt.
+At every sample the synchronized evidence tiles distinguish fit from held-out
+occurrences, name the affected cluster section, report the coordinate-free
+coefficient update norm, and show the held-out-loss change. Clicking a tile
+expands its interpretation and repeats the non-potential, non-dynamics claim
+boundary.
 
 The representation selector now changes the mathematical readout, not only its
 label. Port vectors compare the two directed endpoint sections. Site-resolved
