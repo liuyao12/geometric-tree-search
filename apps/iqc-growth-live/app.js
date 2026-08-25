@@ -54,7 +54,7 @@ import {
   growthEnvironmentContains,
   growthEnvironmentSignedMargin,
   growthEnvironmentSpec,
-} from "./growth-environments.js?v=20260825-2";
+} from "./growth-environments.js?v=20260825-3";
 import { auditGeometricMicrostructure } from "./microstructure-audit.js?v=20260824-1";
 import { CDYB_BROWSER_FIXTURE } from "./cdyb-browser-fixture.js?v=20260824-1";
 import {
@@ -168,6 +168,11 @@ const frontMorphologyWeightSelect = $("frontMorphologyWeightSelect");
 const frontMorphologyHint = $("frontMorphologyHint");
 const frontMorphologyBadge = $("frontMorphologyBadge");
 const frontMorphologyBadgeLabel = $("frontMorphologyBadgeLabel");
+const epitaxyTemplateSelect = $("epitaxyTemplateSelect");
+const epitaxyWeightSelect = $("epitaxyWeightSelect");
+const epitaxyTemplateHint = $("epitaxyTemplateHint");
+const epitaxyBadge = $("epitaxyBadge");
+const epitaxyBadgeLabel = $("epitaxyBadgeLabel");
 const externalDriveSelect = $("externalDriveSelect");
 const externalDriveWeightSelect = $("externalDriveWeightSelect");
 const externalDriveHint = $("externalDriveHint");
@@ -695,6 +700,10 @@ let acceptedFrontMorphologyScore = 0;
 let rejectedFrontMorphologyScore = 0;
 let frontMorphologyEvaluations = 0;
 let frontMorphologyNeighborhoodChecks = 0;
+let acceptedEpitaxyRegistryScore = 0;
+let rejectedEpitaxyRegistryScore = 0;
+let epitaxyRegistryEvaluations = 0;
+let epitaxyRegistrySiteChecks = 0;
 let constraintNeighborhoodEvaluations = 0;
 let constraintNeighborhoodSiteTotal = 0;
 let maximumConstraintNeighborhoodSites = 0;
@@ -753,6 +762,8 @@ let chargePreference = "auto";
 let surfacePreference = "soft";
 let frontMorphologyMode = "none";
 let frontMorphologyWeight = .24;
+let epitaxyTemplateMode = "none";
+let epitaxyWeight = .24;
 let externalDriveMode = "none";
 let externalDriveWeight = .24;
 let affineLoadMode = "none";
@@ -4142,7 +4153,7 @@ function renderGrowthMechanismAudit() {
     const empty = document.createElement("p"); empty.textContent = "Advance one tree-search update to map its local geometric environment."; growthMechanismLedger.appendChild(empty);
   }
   renderGrowthUncertaintyBudget();
-  growthMechanismBoundary.textContent = `Phenotypes and uncertainty budgets are assigned after the candidate geometry and decision are frozen. Up to ${MAXIMUM_POSE_AUDITS_PER_LEAP} deterministic pose audits replay hard geometry at the larger of measured pair uncertainty and half the resolved isometry tolerance; the capped set is retained in encounter order, target-blind, and never changes admission or rank. This is a bounded sensitivity audit, not a posterior probability, confidence interval, thermal ensemble, dynamics, or calibrated robustness certificate. ${activeMicrostructureCouplingWeight() > 0 ? `The declared ${microstructureCouplingLabel()} experiment uses only proximity to frozen input-derived roles as a soft rank term over unchanged actions.` : "Proximity to heterogeneous-geometry roles is diagnostic only."} ${activeFrontMorphologyWeight() > 0 ? `The ${frontMorphologyLabel()} experiment uses parent-local angular support as another soft ordering term.` : "Front morphology is diagnostic only."} No defect identity, mean curvature, surface energy, physical mechanism, formation energy, mobility, or rate is inferred.`;
+  growthMechanismBoundary.textContent = `Phenotypes and uncertainty budgets are assigned after the candidate geometry and decision are frozen. Up to ${MAXIMUM_POSE_AUDITS_PER_LEAP} deterministic pose audits replay hard geometry at the larger of measured pair uncertainty and half the resolved isometry tolerance; the capped set is retained in encounter order, target-blind, and never changes admission or rank. This is a bounded sensitivity audit, not a posterior probability, confidence interval, thermal ensemble, dynamics, or calibrated robustness certificate. ${activeMicrostructureCouplingWeight() > 0 ? `The declared ${microstructureCouplingLabel()} experiment uses only proximity to frozen input-derived roles as a soft rank term over unchanged actions.` : "Proximity to heterogeneous-geometry roles is diagnostic only."} ${activeFrontMorphologyWeight() > 0 ? `The ${frontMorphologyLabel()} experiment uses parent-local angular support as another soft ordering term.` : "Front morphology is diagnostic only."} ${activeEpitaxyWeight() > 0 ? `The declared ${epitaxyTemplateLabel()} contributes an interfacial registry score without substrate atoms.` : "No epitaxial template ranks the frontier."} No defect identity, mean curvature, adhesion, interface energy, physical mechanism, formation energy, mobility, or rate is inferred.`;
 }
 
 function clusterPlacementIndices(cluster) {
@@ -5535,7 +5546,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-89",
+      buildId: "20260825-90",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -5935,6 +5946,30 @@ async function buildExperimentReceipt() {
         capillaryPressureInferred: false,
         physicalTimeIntegrated: false,
       },
+      epitaxialRegistryRanking: {
+        role: "user-declared target-blind support-plane template ranks unchanged exact interfacial actions",
+        mode: epitaxyTemplateMode,
+        label: epitaxyTemplateLabel(),
+        enabled: activeEpitaxyWeight() > 0,
+        requiredEnvironment: "substrate",
+        activeEnvironment: confinementSelect.value,
+        effectiveWeight: activeEpitaxyWeight(),
+        template: epitaxyTemplateSpec(),
+        interactionReachNearestNeighborUnits: 3.5,
+        acceptedMeanScore: receiptRound(acceptedEpitaxyRegistryScore / Math.max(1, acceptedDecisions)),
+        rejectedMeanScore: receiptRound(rejectedEpitaxyRegistryScore / Math.max(1, rejectedDecisions)),
+        evaluations: epitaxyRegistryEvaluations,
+        freshSiteChecks: epitaxyRegistrySiteChecks,
+        substrateAtomsPresent: false,
+        candidateSetChanged: false,
+        candidateGeometryChanged: false,
+        hardAdmissionChanged: false,
+        heldoutTargetUsed: false,
+        adhesionEnergyInferred: false,
+        interfaceEnergyInferred: false,
+        epitaxialRelaxationModeled: false,
+        dislocationNetworkInferred: false,
+      },
       externalDrivingGeometry: {
         role: "user-declared target-blind soft ordering of unchanged exact candidate actions by parent-to-child direction",
         mode: externalDriveMode,
@@ -6184,6 +6219,7 @@ function notebookInterventionFactors(receipt) {
       surface: [search.surfaceCompletionRanking?.mode, search.surfaceCompletionRanking?.effectiveWeight],
       frontMorphology: [search.mesoscopicFrontMorphologyRanking?.mode,
         search.mesoscopicFrontMorphologyRanking?.effectiveWeight],
+      epitaxy: [search.epitaxialRegistryRanking?.mode, search.epitaxialRegistryRanking?.effectiveWeight],
       externalDrive: [search.externalDrivingGeometry?.mode, search.externalDrivingGeometry?.effectiveWeight],
       robustness: [search.constraintRobustnessRanking?.mode, search.constraintRobustnessRanking?.effectiveWeight],
       microstructure: [search.microstructureCouplingRanking?.mode, search.microstructureCouplingRanking?.effectiveWeight],
@@ -7305,6 +7341,94 @@ function frontMorphologyForCandidate(candidate, { recordWork = true } = {}) {
   };
 }
 
+function epitaxyTemplateSpec(mode = epitaxyTemplateMode) {
+  return ({
+    "square-coherent": { symmetry: "square", mismatch: 0, angleDegrees: 0 },
+    "square-mismatch": { symmetry: "square", mismatch: .05, angleDegrees: 0 },
+    "hex-coherent": { symmetry: "hexagonal", mismatch: 0, angleDegrees: 0 },
+    "hex-mismatch": { symmetry: "hexagonal", mismatch: .05, angleDegrees: 0 },
+    "hex-30": { symmetry: "hexagonal", mismatch: 0, angleDegrees: 30 },
+  })[mode] || null;
+}
+
+function epitaxyTemplateLabel(mode = epitaxyTemplateMode) {
+  const spec = epitaxyTemplateSpec(mode);
+  if (!spec) return "inert support plane";
+  const mismatch = spec.mismatch ? ` · +${Math.round(spec.mismatch * 100)}%` : " · coherent";
+  const rotation = spec.angleDegrees ? ` · ${spec.angleDegrees}°` : "";
+  return `${spec.symmetry} template${mismatch}${rotation}`;
+}
+
+function activeEpitaxyWeight() {
+  return confinementSelect.value === "substrate" && epitaxyTemplateSpec() ? epitaxyWeight : 0;
+}
+
+function epitaxyLatticeCoordinate(position, spec = epitaxyTemplateSpec()) {
+  if (!spec) return null;
+  const spacing = referenceSpacing * (1 + spec.mismatch);
+  const angle = -spec.angleDegrees * Math.PI / 180;
+  const x = Math.cos(angle) * position.x - Math.sin(angle) * position.y;
+  const y = Math.sin(angle) * position.x + Math.cos(angle) * position.y;
+  let u; let v;
+  if (spec.symmetry === "hexagonal") {
+    v = 2 * y / (Math.sqrt(3) * spacing);
+    u = x / spacing - .5 * v;
+  } else {
+    u = x / spacing;
+    v = y / spacing;
+  }
+  const nearestU = Math.round(u); const nearestV = Math.round(v);
+  const latticeX = spec.symmetry === "hexagonal"
+    ? spacing * (nearestU + .5 * nearestV) : spacing * nearestU;
+  const latticeY = spec.symmetry === "hexagonal"
+    ? spacing * Math.sqrt(3) * .5 * nearestV : spacing * nearestV;
+  const inverseAngle = -angle;
+  const worldX = Math.cos(inverseAngle) * latticeX - Math.sin(inverseAngle) * latticeY;
+  const worldY = Math.sin(inverseAngle) * latticeX + Math.cos(inverseAngle) * latticeY;
+  return { u, v, nearestU, nearestV, nearestDistance: Math.hypot(position.x - worldX, position.y - worldY),
+    nearestPoint: [worldX, worldY], spacing };
+}
+
+function epitaxyRegistryForFreshSites(fresh, { recordWork = true } = {}) {
+  const template = epitaxyTemplateSpec();
+  const enabled = activeEpitaxyWeight() > 0;
+  const plane = growthEnvironmentSpec("substrate").parameters.lowerZ;
+  const reach = 3.5 * referenceSpacing;
+  const interfacial = enabled ? fresh.map((site) => {
+    const height = site.p.z - plane;
+    if (height < 0 || height > reach) return null;
+    const coordinate = epitaxyLatticeCoordinate(site.p, template);
+    const lateralScore = 2 * Math.exp(-8 * (coordinate.nearestDistance / coordinate.spacing) ** 2) - 1;
+    const proximityWeight = Math.exp(-2 * height / reach);
+    return { species: site.species, height, lateralScore, proximityWeight,
+      nearestDistance: coordinate.nearestDistance, nearestPoint: coordinate.nearestPoint };
+  }).filter(Boolean) : [];
+  const weightTotal = interfacial.reduce((sum, site) => sum + site.proximityWeight, 0);
+  const score = interfacial.reduce((sum, site) => sum + site.lateralScore * site.proximityWeight, 0)
+    / Math.max(weightTotal, 1);
+  if (recordWork && enabled) {
+    epitaxyRegistryEvaluations++;
+    epitaxyRegistrySiteChecks += fresh.length;
+  }
+  return {
+    mode: epitaxyTemplateMode, label: epitaxyTemplateLabel(), enabled, score,
+    templateSymmetry: template?.symmetry || null, mismatchFraction: template?.mismatch || 0,
+    azimuthDegrees: template?.angleDegrees || 0, templateSpacingSceneUnits: template ? referenceSpacing * (1 + template.mismatch) : null,
+    templateSpacingAngstrom: template ? referenceSpacingA * (1 + template.mismatch) : null,
+    supportPlaneZSceneUnits: plane, interactionReachNearestNeighborUnits: 3.5,
+    interfacialSites: interfacial.length, evaluatedFreshSites: enabled ? fresh.length : 0,
+    meanNearestRegistryDistanceAngstrom: interfacial.length
+      ? interfacial.reduce((sum, site) => sum + site.nearestDistance, 0) / interfacial.length * referenceSpacingA / referenceSpacing : null,
+    siteRecords: interfacial.map((site) => ({ species: site.species,
+      heightNearestNeighborUnits: site.height / referenceSpacing,
+      registryScore: site.lateralScore,
+      proximityWeight: site.proximityWeight })),
+    templateDeclaredByUser: Boolean(template), substrateAtomsPresent: false, targetUsed: false,
+    candidateSetChanged: false, candidateGeometryChanged: false, hardAdmissionChanged: false,
+    adhesionEnergyInferred: false, interfaceEnergyInferred: false, epitaxialStrainRelaxationModeled: false,
+  };
+}
+
 function activeExternalDriveWeight() {
   return externalDriveMode === "none" ? 0 : externalDriveWeight;
 }
@@ -7618,6 +7742,8 @@ function capturePolicyComparison(entries) {
     { id: "surface", label: "surface 0.18", score: (entry) => entry.baseScore - .18 * entry.evaluation.surfaceCompletion.scaledDelta },
     { id: "front-morphology", label: `${frontMorphologyLabel()} ${activeFrontMorphologyWeight().toFixed(2)}`,
       score: (entry) => entry.baseScore + activeFrontMorphologyWeight() * entry.evaluation.frontMorphology.score },
+    { id: "epitaxy", label: `${epitaxyTemplateLabel()} ${activeEpitaxyWeight().toFixed(2)}`,
+      score: (entry) => entry.baseScore + activeEpitaxyWeight() * entry.evaluation.epitaxyRegistry.score },
     { id: "drive", label: `${externalDriveModeLabel()} ${activeExternalDriveWeight().toFixed(2)}`,
       score: (entry) => entry.baseScore + activeExternalDriveWeight() * entry.evaluation.externalDrive.alignment },
     { id: "robustness", label: `constraint margin ${activeRobustnessWeight().toFixed(2)}`,
@@ -7859,6 +7985,7 @@ function commutingFrontierBatch() {
         - activeFormalChargeWeight() * evaluation.formalChargeBalance.scaledDelta
         - activeSurfaceCompletionWeight() * evaluation.surfaceCompletion.scaledDelta
         + activeFrontMorphologyWeight() * evaluation.frontMorphology.score
+        + activeEpitaxyWeight() * evaluation.epitaxyRegistry.score
         + activeExternalDriveWeight() * evaluation.externalDrive.alignment
         + activeRobustnessWeight() * evaluation.constraintRobustness.score
         + activeMicrostructureCouplingWeight() * evaluation.microstructureCoupling.score
@@ -7966,6 +8093,7 @@ function evaluateCandidate(candidate, {
   const affineLoadedGeometricStrain = affineLoadedGeometricStrainForFreshSites(fresh, constraintProjection);
   const surfaceCompletion = surfaceCompletionForFreshSites(fresh, constraintProjection);
   const frontMorphology = frontMorphologyForCandidate(candidate, { recordWork });
+  const epitaxyRegistry = epitaxyRegistryForFreshSites(fresh, { recordWork });
   const compositionBalance = compositionBalanceForFreshSites(fresh);
   const formalChargeBalance = formalChargeBalanceForFreshSites(fresh);
   const externalDrive = externalDriveForCandidate(candidate);
@@ -7978,7 +8106,7 @@ function evaluateCandidate(candidate, {
     && angularViolations.length === 0 && (markingAccepted || markingFallback);
   return { accepted, sites, merged, fresh, conflicts, boundaryFailures, knownFailures, markingFallback,
     coordinationOverflows, angularViolations, geometricStrain, affineLoadedGeometricStrain,
-    surfaceCompletion, frontMorphology, compositionBalance, formalChargeBalance,
+    surfaceCompletion, frontMorphology, epitaxyRegistry, compositionBalance, formalChargeBalance,
     externalDrive, constraintRobustness, microstructureCoupling, loopClosure, arrivalPath,
     duplicateSites: canonical.duplicateSites,
     freshReferenceIndices: fresh.map((site) => site.referenceIndex).filter(Number.isInteger),
@@ -8192,6 +8320,10 @@ function initializeOffLatticeSearch() {
   rejectedFrontMorphologyScore = 0;
   frontMorphologyEvaluations = 0;
   frontMorphologyNeighborhoodChecks = 0;
+  acceptedEpitaxyRegistryScore = 0;
+  rejectedEpitaxyRegistryScore = 0;
+  epitaxyRegistryEvaluations = 0;
+  epitaxyRegistrySiteChecks = 0;
   initializedGrowthNuclei = 0;
   coalescenceEvents = 0;
   crossNucleusMergeContacts = 0;
@@ -8318,6 +8450,29 @@ function buildConfinement() {
     grid.material.transparent = true;
     grid.material.opacity = .32;
     confinementGroup.add(grid);
+    const template = epitaxyTemplateSpec();
+    if (template) {
+      const latticeSpacing = referenceSpacing * (1 + template.mismatch) * renderScale;
+      const azimuth = template.angleDegrees * Math.PI / 180;
+      const templatePoints = [];
+      for (let first = -18; first <= 18; first++) {
+        for (let second = -18; second <= 18; second++) {
+          const localX = template.symmetry === "hexagonal"
+            ? latticeSpacing * (first + .5 * second) : latticeSpacing * first;
+          const localY = template.symmetry === "hexagonal"
+            ? latticeSpacing * Math.sqrt(3) * .5 * second : latticeSpacing * second;
+          const x = Math.cos(azimuth) * localX - Math.sin(azimuth) * localY;
+          const y = Math.sin(azimuth) * localX + Math.cos(azimuth) * localY;
+          if (Math.abs(x) <= width * .5 && Math.abs(y) <= depth * .5) {
+            templatePoints.push(x, y, spec.parameters.lowerZ * renderScale + .025);
+          }
+        }
+      }
+      const templateGeometry = new THREE.BufferGeometry();
+      templateGeometry.setAttribute("position", new THREE.Float32BufferAttribute(templatePoints, 3));
+      confinementGroup.add(new THREE.Points(templateGeometry,
+        new THREE.PointsMaterial({ color: 0xffb15c, size: .075, transparent: true, opacity: .82 })));
+    }
   } else {
     const length = spec.parameters.halfLength * renderScale;
     const points = [];
@@ -8762,6 +8917,12 @@ function syncStageOptions() {
     + 35 * Number(arrivalPathMode !== "none") + 35 * Number(geometricExplorationScale > 0)
     + 35 * Number(initializedGrowthNuclei > 1)}px`;
   frontMorphologyBadgeLabel.textContent = `${frontMorphologyLabel()} · w ${frontMorphologyWeight.toFixed(2)}`;
+  epitaxyBadge.hidden = pipelineStage !== 4 || activeEpitaxyWeight() <= 0;
+  epitaxyBadge.style.top = `${49 + 35 * Number(externalDriveMode !== "none")
+    + 35 * Number(affineLoadMode !== "none") + 35 * Number(loopClosurePreference !== "none")
+    + 35 * Number(arrivalPathMode !== "none") + 35 * Number(geometricExplorationScale > 0)
+    + 35 * Number(initializedGrowthNuclei > 1) + 35 * Number(frontMorphologyMode !== "none")}px`;
+  epitaxyBadgeLabel.textContent = `${epitaxyTemplateLabel()} · w ${epitaxyWeight.toFixed(2)}`;
   renderNucleusInterfaceInspector();
   stageOptionsPanel.hidden = !visible;
   if (!visible) return;
@@ -8847,6 +9008,8 @@ function syncStageOptions() {
     surfacePreferenceSelect.value = surfacePreference;
     frontMorphologySelect.value = frontMorphologyMode;
     frontMorphologyWeightSelect.value = String(frontMorphologyWeight);
+    epitaxyTemplateSelect.value = epitaxyTemplateMode;
+    epitaxyWeightSelect.value = String(epitaxyWeight);
     externalDriveSelect.value = externalDriveMode;
     externalDriveWeightSelect.value = String(externalDriveWeight);
     affineLoadSelect.value = affineLoadMode;
@@ -8869,6 +9032,8 @@ function syncStageOptions() {
     surfacePreferenceSelect.disabled = finiteIceAnchorMode;
     frontMorphologySelect.disabled = finiteIceAnchorMode;
     frontMorphologyWeightSelect.disabled = finiteIceAnchorMode || frontMorphologyMode === "none";
+    epitaxyTemplateSelect.disabled = finiteIceAnchorMode || confinementSelect.value !== "substrate";
+    epitaxyWeightSelect.disabled = finiteIceAnchorMode || confinementSelect.value !== "substrate" || epitaxyTemplateMode === "none";
     externalDriveSelect.disabled = finiteIceAnchorMode;
     externalDriveWeightSelect.disabled = finiteIceAnchorMode || externalDriveMode === "none";
     affineLoadSelect.disabled = finiteIceAnchorMode;
@@ -8914,6 +9079,10 @@ function syncStageOptions() {
       : `${initializedGrowthNuclei || requestedGrowthNuclei} observed seed${(initializedGrowthNuclei || requestedGrowthNuclei) === 1 ? "" : "s"} · ${crossNucleusMergeContacts} interface contacts`;
     frontMorphologyHint.textContent = frontMorphologyMode === "none"
       ? "neutral · diagnostic" : `${frontMorphologyLabel()} · weight ${frontMorphologyWeight.toFixed(2)}`;
+    epitaxyTemplateHint.textContent = confinementSelect.value !== "substrate"
+      ? "choose supported-film geometry"
+      : epitaxyTemplateMode === "none" ? "inert excluded plane · registry off"
+        : `${epitaxyTemplateLabel()} · weight ${epitaxyWeight.toFixed(2)}`;
     stageOptionsState.textContent = `${policySelect.value === "marked" && active ? active.name.split(" · ")[0] : "baseline"} · ${geometryPreference === "strain" ? `strain ${geometricStrainWeight.toFixed(2)}` : "no strain"}`;
     primitiveGrowthButton.classList.toggle("active", finiteIceAnchorMode || !hierarchyEnabled);
     primitiveGrowthButton.setAttribute("aria-pressed", String(finiteIceAnchorMode || !hierarchyEnabled));
@@ -8963,11 +9132,14 @@ function syncStageOptions() {
     const morphologyUse = frontMorphologyMode === "none"
       ? " Mesoscopic angular support and backing depth are reported but have zero rank weight."
       : ` A ${frontMorphologyWeight.toFixed(2)} soft ${frontMorphologyLabel()} term ranks the same exact actions from their parent-local angular support and backing-depth profile; it is not surface energy or mean curvature.`;
+    const epitaxyUse = activeEpitaxyWeight() <= 0
+      ? confinementSelect.value === "substrate" ? " The support plane remains inert excluded geometry; epitaxial registry contributes zero rank weight." : " No support-plane template is active."
+      : ` A declared ${epitaxyTemplateLabel()} ranks interfacial sites within 3.5dₙₙ of the support at weight ${epitaxyWeight.toFixed(2)}; it supplies no substrate atoms, adhesion, or interface energy.`;
     growthModeNote.textContent = finiteIceAnchorMode
       ? "This sealed ice gate executes primitive H₂O connection ports with mutually exclusive orientation domains. Clusters² is disabled because no stationary promoted ice production has been certified."
       : hierarchyEnabled
-      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${explorationUse}${nucleiUse}${morphologyUse}`
-      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${explorationUse}${nucleiUse}${morphologyUse}`;
+      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${explorationUse}${nucleiUse}${morphologyUse}${epitaxyUse}`
+      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${explorationUse}${nucleiUse}${morphologyUse}${epitaxyUse}`;
   }
 }
 
@@ -9011,6 +9183,10 @@ function resetCounters() {
   rejectedFrontMorphologyScore = 0;
   frontMorphologyEvaluations = 0;
   frontMorphologyNeighborhoodChecks = 0;
+  acceptedEpitaxyRegistryScore = 0;
+  rejectedEpitaxyRegistryScore = 0;
+  epitaxyRegistryEvaluations = 0;
+  epitaxyRegistrySiteChecks = 0;
   initializedGrowthNuclei = 0;
   coalescenceEvents = 0;
   crossNucleusMergeContacts = 0;
@@ -9336,6 +9512,7 @@ function stateForCandidate(candidate, evaluation) {
     formalChargeBalance: evaluation.formalChargeBalance,
     surfaceCompletion: evaluation.surfaceCompletion,
     frontMorphology: evaluation.frontMorphology,
+    epitaxyRegistry: evaluation.epitaxyRegistry,
     externalDrive: evaluation.externalDrive,
     constraintRobustness: evaluation.constraintRobustness,
     microstructureCoupling: evaluation.microstructureCoupling,
@@ -9473,6 +9650,7 @@ function performOffLatticeEvent() {
       rejectedFormalChargeDelta += snapshotEvaluation.formalChargeBalance.scaledDelta;
       rejectedSurfaceDeficit += snapshotEvaluation.surfaceCompletion.scaledDelta;
       rejectedFrontMorphologyScore += snapshotEvaluation.frontMorphology.score;
+      rejectedEpitaxyRegistryScore += snapshotEvaluation.epitaxyRegistry.score;
       rejectedExternalDriveAlignment += snapshotEvaluation.externalDrive.alignment;
       rejectedRobustnessScore += snapshotEvaluation.constraintRobustness.score;
       rejectedMicrostructureCouplingScore += snapshotEvaluation.microstructureCoupling.score;
@@ -9513,6 +9691,7 @@ function performOffLatticeEvent() {
     acceptedFormalChargeDelta += evaluation.formalChargeBalance.scaledDelta;
     acceptedSurfaceDeficit += evaluation.surfaceCompletion.scaledDelta;
     acceptedFrontMorphologyScore += evaluation.frontMorphology.score;
+    acceptedEpitaxyRegistryScore += evaluation.epitaxyRegistry.score;
     acceptedExternalDriveAlignment += evaluation.externalDrive.alignment;
     acceptedRobustnessScore += evaluation.constraintRobustness.score;
     acceptedMicrostructureCouplingScore += evaluation.microstructureCoupling.score;
@@ -10117,6 +10296,12 @@ function physicsTranslationRecords(leap = null) {
       encoding: `${frontMorphologyLabel()}; eight parent-local angular support sectors plus the normalized depth spread of atoms backing each candidate within 2.4dₙₙ`,
       evidence: leap ? `Accepted mean front score ${receiptRound(acceptedFrontMorphologyScore / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedFrontMorphologyScore / Math.max(1, rejectedDecisions), 4)}; ${frontMorphologyNeighborhoodChecks.toLocaleString()} neighbor checks.` : "No front candidate evaluated yet.",
       boundary: "This distinguishes concavity filling, coherent backing, and exposed tips geometrically. It is not mean curvature, surface energy, capillary pressure, a Wulff construction, attachment kinetics, or physical time." },
+    { id: "epitaxy", process: "substrate templating / epitaxial registry", status: activeEpitaxyWeight() > 0 ? "soft" : "open", role: activeEpitaxyWeight() > 0 ? "declared interfacial geometric ordering" : "disabled",
+      encoding: activeEpitaxyWeight() > 0
+        ? `${epitaxyTemplateLabel()}, w=${activeEpitaxyWeight().toFixed(2)}; fresh sites within 3.5dₙₙ are projected onto the nearest declared 2D template node with height-decaying weight`
+        : confinementSelect.value === "substrate" ? "inert impenetrable support plane; no registry template" : "no support-plane geometry is active",
+      evidence: leap ? `Accepted mean registry score ${receiptRound(acceptedEpitaxyRegistryScore / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedEpitaxyRegistryScore / Math.max(1, rejectedDecisions), 4)}; ${epitaxyRegistrySiteChecks.toLocaleString()} fresh-site checks.` : "No interfacial action evaluated yet.",
+      boundary: "The template is a user-declared uncolored 2D point set. It supplies no substrate atoms or chemistry and is not adhesion, interface energy, wetting, elastic relaxation, a misfit-dislocation model, or a growth rate." },
     { id: "affine", process: "prescribed mechanical boundary deformation", status: affineLoadMode === "none" ? "open" : "soft", role: affineLoadMode === "none" ? "disabled" : "target-blind deformed-metric ordering",
       encoding: affineLoadMode === "none"
         ? "identity deformation gradient; observed contact/angle metric"
@@ -10396,6 +10581,17 @@ function geometryConstraintEvidence(name, term, state, mode) {
         ? `Soft ${frontMorphologyLabel()} rank term with weight ${activeFrontMorphologyWeight().toFixed(2)}.` : "Diagnostic only; weight zero.",
       boundary: "This is a finite-neighborhood shape descriptor, not mean curvature, surface energy, capillary pressure, Wulff faceting, or attachment kinetics.",
     },
+    "epitaxial registry": {
+      observed: state?.epitaxyRegistry?.enabled
+        ? `${state.epitaxyRegistry.interfacialSites}/${state.epitaxyRegistry.evaluatedFreshSites} new sites within 3.5dₙₙ of the declared support template`
+        : confinementSelect.value === "substrate" ? "impenetrable support plane; registry disabled" : "no supported-film environment",
+      encoding: state?.epitaxyRegistry?.enabled
+        ? `${state.epitaxyRegistry.templateSymmetry} lattice · ${(state.epitaxyRegistry.mismatchFraction * 100).toFixed(1)}% mismatch · ${state.epitaxyRegistry.azimuthDegrees.toFixed(1)}° azimuth · nearest-node distance weighted by height`
+        : "No substrate sites or interactions are introduced.",
+      searchRole: activeEpitaxyWeight() > 0
+        ? `Soft interfacial rank term with weight ${activeEpitaxyWeight().toFixed(2)} over the unchanged exact frontier.` : "Disabled; hard support-plane exclusion only.",
+      boundary: "This declared geometric registry is not substrate chemistry, adsorption, adhesion, interface free energy, wetting, elastic relaxation, a dislocation network, or kinetics.",
+    },
     "external drive": {
       observed: `${externalDriveModeLabel()} declared by the user before growth; no target coordinates or outcomes are read`,
       encoding: externalDriveMode === "none"
@@ -10522,6 +10718,9 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "front morphology", status: ranked(activeFrontMorphologyWeight() > 0),
       value: state.frontMorphology ? `${signed(state.frontMorphology.score)} · ${state.frontMorphology.angularSectors}/8 sectors` : "not evaluated",
       detail: activeFrontMorphologyWeight() > 0 ? `${frontMorphologyLabel()} · rank weight ${activeFrontMorphologyWeight().toFixed(2)}` : "diagnostic · no capillarity claim" },
+    { name: "epitaxial registry", status: ranked(activeEpitaxyWeight() > 0),
+      value: state.epitaxyRegistry?.enabled ? `${signed(state.epitaxyRegistry.score)} · ${state.epitaxyRegistry.interfacialSites} interface sites` : "inactive",
+      detail: activeEpitaxyWeight() > 0 ? `${epitaxyTemplateLabel()} · rank weight ${activeEpitaxyWeight().toFixed(2)}` : "requires supported-film template" },
     { name: "external drive", status: ranked(activeExternalDriveWeight() > 0),
       value: state.externalDrive ? signed(state.externalDrive.alignment) : "not evaluated",
       detail: activeExternalDriveWeight() > 0 ? `${externalDriveModeLabel()} · rank weight ${activeExternalDriveWeight().toFixed(2)}` : "isotropic · weight zero" },
@@ -10558,6 +10757,7 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "formal-charge reservoir", status: "diagnostic", value: "unavailable", detail: "no complete supplied oxidation-state channel" },
     { name: "surface completion", status: "diagnostic", value: "withheld", detail: "no branch ranking" },
     { name: "front morphology", status: "diagnostic", value: "withheld", detail: "no executable front" },
+    { name: "epitaxial registry", status: "diagnostic", value: "withheld", detail: "no executable supported-film front" },
     { name: "external drive", status: "diagnostic", value: "withheld", detail: "occupational realization required" },
     { name: "GCTS marking", status: "diagnostic", value: "not executed", detail: "inspectable sections only" },
   ] : mode === "specialized" ? [
@@ -10572,6 +10772,7 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "formal-charge reservoir", status: "diagnostic", value: "not used", detail: "cannot authorize this trace" },
     { name: "surface completion", status: "diagnostic", value: "not used", detail: "cannot authorize this trace" },
     { name: "front morphology", status: "diagnostic", value: "not used", detail: "specialized frozen trace" },
+    { name: "epitaxial registry", status: "diagnostic", value: "not used", detail: "specialized frozen trace" },
     { name: "external drive", status: "diagnostic", value: "not used", detail: "cannot authorize this trace" },
     { name: "GCTS marking", status: "pass", value: "domain unanimity",
       detail: `all surviving ${iceAnchorTrace?.moleculeLabel || "H₂O"} poses agree` },
@@ -10593,6 +10794,8 @@ function renderConstraintLedger(state, mode = "configured") {
       value: activeSurfaceCompletionWeight() > 0 ? "ranked" : "diagnostic", detail: `weight ${activeSurfaceCompletionWeight().toFixed(2)}` },
     { name: "front morphology", status: ranked(activeFrontMorphologyWeight() > 0),
       value: activeFrontMorphologyWeight() > 0 ? frontMorphologyLabel() : "diagnostic", detail: `weight ${activeFrontMorphologyWeight().toFixed(2)}` },
+    { name: "epitaxial registry", status: ranked(activeEpitaxyWeight() > 0),
+      value: activeEpitaxyWeight() > 0 ? epitaxyTemplateLabel() : "inactive", detail: `weight ${activeEpitaxyWeight().toFixed(2)}` },
     { name: "external drive", status: ranked(activeExternalDriveWeight() > 0),
       value: activeExternalDriveWeight() > 0 ? externalDriveModeLabel() : "isotropic",
       detail: activeExternalDriveWeight() > 0 ? `weight ${activeExternalDriveWeight().toFixed(2)}` : "weight zero" },
@@ -11692,6 +11895,19 @@ frontMorphologySelect.addEventListener("change", () => {
 frontMorphologyWeightSelect.addEventListener("change", () => {
   const value = Number(frontMorphologyWeightSelect.value);
   frontMorphologyWeight = [.12, .24, .48].includes(value) ? value : .24;
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+epitaxyTemplateSelect.addEventListener("change", () => {
+  const value = epitaxyTemplateSelect.value;
+  epitaxyTemplateMode = ["square-coherent", "square-mismatch", "hex-coherent", "hex-mismatch", "hex-30"].includes(value)
+    ? value : "none";
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+epitaxyWeightSelect.addEventListener("change", () => {
+  const value = Number(epitaxyWeightSelect.value);
+  epitaxyWeight = [.12, .24, .48].includes(value) ? value : .24;
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
 });

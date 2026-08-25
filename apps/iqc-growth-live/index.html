@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260825-44">
+  <link rel="stylesheet" href="./style.css?v=20260825-45">
   <script type="importmap">
     {
       "imports": {
@@ -447,6 +447,25 @@
                 <option value="0.48">0.48 · strong</option>
               </select>
             </label>
+            <label class="field" for="epitaxyTemplateSelect">
+              <span>Support-plane registry <b id="epitaxyTemplateHint">choose supported-film geometry</b></span>
+              <select id="epitaxyTemplateSelect">
+                <option value="none" selected>Inert plane · exclusion only</option>
+                <option value="square-coherent">Square template · coherent</option>
+                <option value="square-mismatch">Square template · +5% mismatch</option>
+                <option value="hex-coherent">Hexagonal template · coherent</option>
+                <option value="hex-mismatch">Hexagonal template · +5% mismatch</option>
+                <option value="hex-30">Hexagonal template · 30° azimuth</option>
+              </select>
+            </label>
+            <label class="field" for="epitaxyWeightSelect">
+              <span>Registry weight <b>soft interfacial rank</b></span>
+              <select id="epitaxyWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
             <label class="field" for="externalDriveSelect">
               <span>External driving geometry <b id="externalDriveHint">isotropic · weight zero</b></span>
               <select id="externalDriveSelect">
@@ -868,6 +887,7 @@
           <div id="explorationBadge" class="exploration-badge" hidden><i>∿</i><span><b id="explorationBadgeLabel">T* 0.15 · seed 1</b><small>reproducible path sampling</small></span></div>
           <div id="nucleiBadge" class="nuclei-badge" hidden><i>◎</i><span><b id="nucleiBadgeLabel">1 observed nucleus</b><small>interfaces emerge on contact</small></span></div>
           <div id="frontMorphologyBadge" class="front-morphology-badge" hidden><i>⌒</i><span><b id="frontMorphologyBadgeLabel">smooth front</b><small>angular support · no surface energy</small></span></div>
+          <div id="epitaxyBadge" class="epitaxy-badge" hidden><i>▦</i><span><b id="epitaxyBadgeLabel">hexagonal template</b><small>declared registry · no adhesion energy</small></span></div>
           <div class="axis-labels" aria-hidden="true"><span class="x">x</span><span class="y">y</span><span class="z">z</span></div>
           <div class="viewport-caption"><span id="captionAction">Every point is an observed species and position; no cluster labels are supplied.</span></div>
         </div>
@@ -1043,7 +1063,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-89"></script>
+  <script type="module" src="./app.js?v=20260825-90"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

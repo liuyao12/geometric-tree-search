@@ -3784,3 +3784,33 @@ is not mean curvature; depth coherence is not surface energy or a Wulff
 construction; and the score is not capillary pressure, attachment kinetics,
 instability wavelength, or physical time. The receipt records the local frame,
 reach, neighborhood work, accepted/rejected score means, and all non-claims.
+
+## Declared epitaxial registry
+
+The supported-film experiment can now replace its visually uniform excluded
+plane with an optional **declared 2D registry template**. The user may select a
+square or hexagonal template, a coherent spacing or a fixed `+5%` mismatch, and
+for the hexagonal case a `30°` azimuthal rotation. The template spacing is
+defined relative to the measured nearest-neighbour scale of the supplied
+configuration; it is not inferred from a hidden material or substrate label.
+
+For each already-enumerated exact action, only its genuinely new sites within
+`3.5 d_nn` above the support plane are inspected. Each is projected onto the
+nearest point of the declared square or hexagonal lattice. A bounded
+nearest-node score is attenuated continuously with height above the interface
+and averaged over those interfacial sites. The selected weak, balanced, or
+strong weight changes only action ordering. Cluster poses, emitted coordinates,
+species, collision and coordination gates, the public boundary, and the frozen
+candidate digest are unchanged. The support template is rendered as amber
+points on the plane so the ranking hypothesis is visible rather than hidden.
+
+This is a counterfactual epitaxy experiment, not an atomistic substrate. The
+template has no element identities, sites are never emitted from it, and it
+cannot authorize an otherwise invalid attachment. Nearest-node registry is not
+adhesion, adsorption chemistry, interface or surface free energy, wetting,
+elastic relaxation, critical thickness, misfit-dislocation formation, a moiré
+Hamiltonian, or a growth rate. Those remain open until they are supplied as
+measured geometric evidence or a separately calibrated physical model. The
+experiment receipt records the template symmetry, mismatch, azimuth, range,
+site-check work, accepted/rejected means, `targetUsed=false`, and these claim
+boundaries.
