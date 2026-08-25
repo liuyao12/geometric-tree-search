@@ -140,6 +140,7 @@
             </select>
           </label>
           <button id="runButton" class="primary-button" type="button">Run</button>
+          <button id="continueButton" type="button" disabled>Continue +60s</button>
           <button id="fitButton" type="button">Fit</button>
         </div>
       </section>
@@ -194,7 +195,7 @@
         <div class="growth-header">
           <div>
             <h2 id="growthChartTitle">Growth curve · tiles versus time</h2>
-            <small>Six cold-start lanes enumerate orientations and the tile stabilizer before a shared search clock and shared time cap. Curve height is the live patch size, not the fraction of the search tree exhausted. Choose the lane above; click its samples to inspect history.</small>
+            <small>Six cold-start lanes enumerate orientations and the tile stabilizer before a shared search clock; the equal cap is applied independently to each lane. Continue adds time without restarting active searches. An inconclusive cutoff holds its last live patch; only certified exhaustive failure drops to zero.</small>
           </div>
           <div class="growth-history-controls" aria-label="Growth snapshot history">
             <button id="growthHistoryBack" type="button" aria-label="Previous growth snapshot" title="Previous snapshot" disabled>←</button>
@@ -254,6 +255,6 @@
   </dialog>
 
   <script src="https://cdn.plot.ly/plotly-3.6.0.min.js" charset="utf-8"></script>
-  <script type="module" src="./app.js?v=20260825-shell-parity-v219"></script>
+  <script type="module" src="./app.js?v=20260825-resumable-clock-v221"></script>
 </body>
 </html>

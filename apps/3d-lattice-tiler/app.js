@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260825-shell-parity-v219";
+} from "./engine.js?v=20260825-resumable-clock-v221";
 
 const $ = (id) => document.getElementById(id);
 
@@ -40,6 +40,7 @@ const autoFitCheckbox = $("autoFitCheckbox");
 const polycubeLatticeSelect = $("polycubeLatticeSelect");
 const periodicTileCountSelect = $("periodicTileCountSelect");
 const runButton = $("runButton");
+const continueButton = $("continueButton");
 const fitButton = $("fitButton");
 const maxTileField = $("maxTileField");
 const layerField = $("layerField");
@@ -1979,6 +1980,9 @@ function setRunButton() {
   runButton.disabled = !hasRunnableSelection();
   runButton.textContent = growthRunning ? "Stop" : "Run";
   runButton.dataset.state = growthRunning ? "stop" : "run";
+  const extensionSeconds = Math.max(1, Number(timeCapInput.value) || 60);
+  continueButton.disabled = !growthRunning || growthWorkers.size === 0;
+  continueButton.textContent = `Continue +${extensionSeconds}s`;
   if (runButton.disabled) runButton.textContent = "Choose a figure";
 }
 
@@ -3056,7 +3060,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260825-shell-parity-v219", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260825-resumable-clock-v221", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3719,6 +3723,21 @@ function stopGrowthBenchmark(status = "Comparison stopped.") {
   setStatus(status);
 }
 
+function extendGrowthBenchmark() {
+  if (!growthRunning || !growthWorkers.size) return;
+  const additionalSeconds = Math.max(1, Number(timeCapInput.value) || 60);
+  const additionalTimeMs = additionalSeconds * 1000;
+  for (const worker of growthWorkers.values()) {
+    worker.postMessage({
+      type: "extend-time",
+      sequence: growthSequence,
+      additionalTimeMs
+    });
+  }
+  setStatus(`Added ${additionalSeconds}s to ${growthWorkers.size} active lane${growthWorkers.size === 1 ? "" : "s"}.`);
+  growthBenchmarkStatus.textContent = `${growthBenchmarkStatus.textContent} · +${additionalSeconds}s added to active lanes`;
+}
+
 function startGrowthBenchmark() {
   if (!hasRunnableSelection()) {
     growthBenchmarkStatus.textContent = "Choose a figure or enable a custom lattice tile first.";
@@ -3779,8 +3798,9 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260825-shell-parity-v219", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260825-resumable-clock-v221", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
+    setRunButton();
     worker.addEventListener("message", event => {
       const message = event.data ?? {};
       if (message.sequence !== sequence) return;
@@ -3814,6 +3834,8 @@ function startGrowthBenchmark() {
         series.prototileInfo = message.info;
       } else if (message.type === "mode-status") {
         series.status = message.text;
+      } else if (message.type === "mode-paused") {
+        series.status = `paused at ${formatElapsed(message.milliseconds ?? 0)} · ${message.tiles ?? 0} live · Continue to add clock time`;
       } else if (message.type === "sample-batch") {
         appendGrowthHistorySamples(series, message.samples);
         scheduleGrowthUiRefresh({ showCurrent:
@@ -3936,6 +3958,7 @@ function bindControls() {
     if (growthRunning) stopGrowthBenchmark();
     else startGrowthBenchmark();
   });
+  continueButton.addEventListener("click", extendGrowthBenchmark);
   growthHistoryBack.addEventListener("click", () => stepGrowthHistory(-1));
   growthHistoryForward.addEventListener("click", () => stepGrowthHistory(1));
 

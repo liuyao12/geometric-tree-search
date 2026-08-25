@@ -1,7 +1,7 @@
-import { createTilingStream, preprocessTilingSystem, tileSpecs } from "./engine.js?v=20260825-shell-parity-v219";
+import { createTilingStream, preprocessTilingSystem, tileSpecs } from "./engine.js?v=20260825-resumable-clock-v221";
 
 let activeSequence = 0;
-let stopToken = { stop: false };
+let stopToken = { stop: false, additional_time_ms: 0 };
 let preparedRun = null;
 const HISTORY_BATCH_LIMIT = 256;
 const HISTORY_BATCH_INTERVAL_MS = 200;
@@ -175,6 +175,9 @@ function configureMode(baseConfig, mode) {
     generic_periodic_certificate_checkpoint_max_total_checks: 280,
     generic_periodic_certificate_checkpoint_total_time_limit_ms: 5000,
     generic_periodic_certificate_time_limit_ms: 1000,
+    // The comparison worker enforces this as a cooperative, resumable clock
+    // at generator yield points. The engine must not unwind at the first cap.
+    time_limit_ms: null,
     exhaustive: !!mode.proof || exactLearningShell
   };
   return { baseConfig, mode, effectiveMode, config };
@@ -188,6 +191,30 @@ async function runMode(sequence, run, preparedSystem, preprocessingMilliseconds,
   if (delay > 0) await new Promise(resolve => setTimeout(resolve, delay));
   if (stopToken.stop || sequence !== activeSequence) return null;
   const started = startEpochMs;
+  const baseClockBudgetMs = Number.isFinite(baseConfig.time_limit_ms)
+    ? Math.max(0, Number(baseConfig.time_limit_ms))
+    : Infinity;
+  let pausedMilliseconds = 0;
+  const searchElapsedMilliseconds = () => Math.max(0, epochNow() - started - pausedMilliseconds);
+  const awaitClockBudget = async () => {
+    while (
+      Number.isFinite(baseClockBudgetMs)
+      && searchElapsedMilliseconds() >= baseClockBudgetMs + (Number(stopToken.additional_time_ms) || 0)
+      && !stopToken.stop
+    ) {
+      flushHistory();
+      post(sequence, {
+        type: "mode-paused",
+        mode: mode.id,
+        milliseconds: Math.round(searchElapsedMilliseconds()),
+        tiles: lastHistoryTileCount ?? 0
+      });
+      const pausedAt = epochNow();
+      await new Promise(resolve => { stopToken.resume_clock = resolve; });
+      stopToken.resume_clock = null;
+      pausedMilliseconds += Math.max(0, epochNow() - pausedAt);
+    }
+  };
   let best = 0;
   let final = null;
   let latestStats = null;
@@ -251,14 +278,21 @@ async function runMode(sequence, run, preparedSystem, preprocessingMilliseconds,
     if (message.search_stats) latestStats = message.search_stats;
     const snapshot = message.type === "node_snapshot" ? message.snapshot : message;
     const tiles = snapshot?.tile_count ?? 0;
-    if (message.type === "placement_delta" && tiles !== lastHistoryTileCount) {
-      const point = { milliseconds: Math.max(0, Math.round(epochNow() - started)), tiles };
+    // A resource cutoff makes recursive DFS unwind its internal stack. Those
+    // removals are cleanup, not additional searched states, and plotting them
+    // would make an inconclusive run look like a proof that fell to zero.
+    // Certified exhaustive failure receives its explicit zero endpoint below.
+    const terminalCleanupRemoval = message.type === "placement_delta"
+      && message.action === "remove"
+      && !!snapshot?.search_stats?.termination_reason;
+    if (message.type === "placement_delta" && !terminalCleanupRemoval && tiles !== lastHistoryTileCount) {
+      const point = { milliseconds: Math.round(searchElapsedMilliseconds()), tiles };
       queueHistory({ point, delta: message });
       lastHistoryTileCount = tiles;
       best = Math.max(best, tiles);
     } else if (message.type === "full_update") {
       if (lastHistoryTileCount === null || tiles !== lastHistoryTileCount) {
-        const point = { milliseconds: Math.max(0, Math.round(epochNow() - started)), tiles };
+        const point = { milliseconds: Math.round(searchElapsedMilliseconds()), tiles };
         queueHistory({ point, snapshot });
         lastHistoryTileCount = tiles;
         best = Math.max(best, tiles);
@@ -271,9 +305,10 @@ async function runMode(sequence, run, preparedSystem, preprocessingMilliseconds,
     }
     if (message.type === "full_update") terminalSnapshot = message;
     if (message.type === "finished") final = message;
+    if (!final) await awaitClockBudget();
   }
 
-  const elapsed = Math.max(0, Math.round(epochNow() - started));
+  const elapsed = Math.round(searchElapsedMilliseconds());
   const learnedProgram = null;
   const finalStats = final?.search_stats ?? latestStats ?? {};
   const certificatePayloadBytes = final?.tiling_evidence?.periodic_template
@@ -340,16 +375,23 @@ async function runMode(sequence, run, preparedSystem, preprocessingMilliseconds,
 }
 
 self.onmessage = event => {
-  const { type, sequence, config, mode: modeId, startEpochMs } = event.data ?? {};
+  const { type, sequence, config, mode: modeId, startEpochMs, additionalTimeMs } = event.data ?? {};
+  if (type === "extend-time" && sequence === activeSequence) {
+    stopToken.additional_time_ms = Math.max(0, Number(stopToken.additional_time_ms) || 0)
+      + Math.max(0, Number(additionalTimeMs) || 0);
+    stopToken.resume_clock?.();
+    return;
+  }
   if (type === "stop") {
     stopToken.stop = true;
+    stopToken.resume_clock?.();
     preparedRun = null;
     return;
   }
   if (type === "prepare" && MODES[modeId]) {
     stopToken.stop = true;
     activeSequence = sequence;
-    stopToken = { stop: false };
+    stopToken = { stop: false, additional_time_ms: 0 };
     try {
       const run = configureMode(config, MODES[modeId]);
       const preprocessingStarted = performance.now();
