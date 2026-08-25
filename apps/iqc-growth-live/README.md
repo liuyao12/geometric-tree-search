@@ -3761,3 +3761,26 @@ never silently identified. Selecting a pair draws its center-to-center line
 and restricts cyan interface rings to sites shared by that pair. This is an
 orientation/registry diagnostic, not a CSL grain-boundary assignment or an
 interfacial-energy calculation.
+
+## Mesoscopic front morphology
+
+The search can now distinguish three geometric growth-front hypotheses over
+the same exact candidate set. **Concavity filling** favors candidates backed
+from many angular sectors, **facet propagation** favors a coherent depth layer
+behind the candidate, and **tip selection** favors exposed, angularly sparse
+support. Neutral mode reports all descriptors with zero ranking weight.
+
+For each candidate, the parent-to-candidate direction defines a local normal.
+A tangent axis is transported by the parent's proper-SE(3) pose, so the
+descriptor is not tied to the laboratory frame. Existing atoms within
+`2.4 d_nn` are binned into eight tangent-plane sectors; their signed backing
+depths provide backing fraction and plane-coherence statistics. The selected
+mode contributes only a bounded soft score after candidate enumeration.
+Positions, overlaps, species, collision gates, coordination/angle limits, and
+the public boundary remain unchanged.
+
+This is a front-shape experiment, not capillary thermodynamics. Sector coverage
+is not mean curvature; depth coherence is not surface energy or a Wulff
+construction; and the score is not capillary pressure, attachment kinetics,
+instability wavelength, or physical time. The receipt records the local frame,
+reach, neighborhood work, accepted/rejected score means, and all non-claims.
