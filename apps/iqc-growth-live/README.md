@@ -471,6 +471,19 @@ shown in the viewport, policy comparison, constraint ledger, physics matrix,
 and receipt. It is a geometric compatibility residual—not elastic energy,
 modulus, stress, force balance, relaxation, or a dislocation calculation.
 
+To keep structural leaps from silently becoming teleportation, an optional
+**geometric arrival-path** experiment sweeps every emitted site backward from
+its final pose along a parent-normal, seed-radial, or declared-drive direction.
+Nine samples spanning two nearest-neighbour distances measure clearance above
+the learned colored hard-core exclusion against atoms already present. A soft
+score can prefer an unobstructed approach while the exact final candidate and
+all hard-admission gates remain unchanged. Only emitted sites move; shared
+support stays anchored, and intermediate points may lie outside the public
+growth domain because they represent incoming material. This is one declared
+rigid accessibility probe—not a minimum-energy path, activation barrier,
+diffusion event, assembly mechanism, probability, rate, or elapsed physical
+time.
+
 All pair, capacity, angle, and strain evaluations are compiled to the exact
 finite-reach neighborhood affected by the proposed fresh sites. The live
 spatial index finds existing centers touched by the action and then gathers

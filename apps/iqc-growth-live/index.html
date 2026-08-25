@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260825-39">
+  <link rel="stylesheet" href="./style.css?v=20260825-40">
   <script type="importmap">
     {
       "imports": {
@@ -514,6 +514,23 @@
                 <option value="0.48">0.48 · strong</option>
               </select>
             </label>
+            <label class="field" for="arrivalPathSelect">
+              <span>Geometric arrival path <b id="arrivalPathHint">not ranked · final pose only</b></span>
+              <select id="arrivalPathSelect">
+                <option value="none" selected>Off · final-pose geometry only</option>
+                <option value="parent-outward">Parent-normal · arrive from outside</option>
+                <option value="radial-outward">Seed-radial · arrive from outside</option>
+                <option value="declared-drive">Declared-drive direction</option>
+              </select>
+            </label>
+            <label class="field" for="arrivalPathWeightSelect">
+              <span>Accessibility weight <b>9-point swept clearance</b></span>
+              <select id="arrivalPathWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
             <label class="field" for="growthSchedulingSelect">
               <span>Tree-search scheduling <b id="growthSchedulingHint">maximal commuting set</b></span>
               <select id="growthSchedulingSelect">
@@ -807,6 +824,7 @@
           <div id="externalDriveBadge" class="external-drive-badge" hidden><i id="externalDriveGlyph">↑</i><span><b id="externalDriveBadgeLabel">axis +Z</b><small>declared soft drive · no force field</small></span></div>
           <div id="affineLoadBadge" class="affine-load-badge" hidden><i id="affineLoadGlyph">⇳</i><span><b id="affineLoadBadgeLabel">2% affine load</b><small>deformed metric · coordinates unchanged</small></span></div>
           <div id="loopClosureBadge" class="loop-closure-badge" hidden><i>⟳</i><span><b id="loopClosureBadgeLabel">loop closure</b><small>multi-parent geometric consensus</small></span></div>
+          <div id="arrivalPathBadge" class="arrival-path-badge" hidden><i>⇢</i><span><b id="arrivalPathBadgeLabel">arrival path</b><small>swept clearance · no barrier</small></span></div>
           <div class="axis-labels" aria-hidden="true"><span class="x">x</span><span class="y">y</span><span class="z">z</span></div>
           <div class="viewport-caption"><span id="captionAction">Every point is an observed species and position; no cluster labels are supplied.</span></div>
         </div>
@@ -982,7 +1000,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-84"></script>
+  <script type="module" src="./app.js?v=20260825-85"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

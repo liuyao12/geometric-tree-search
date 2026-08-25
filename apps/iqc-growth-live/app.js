@@ -186,6 +186,11 @@ const loopClosureWeightSelect = $("loopClosureWeightSelect");
 const loopClosureHint = $("loopClosureHint");
 const loopClosureBadge = $("loopClosureBadge");
 const loopClosureBadgeLabel = $("loopClosureBadgeLabel");
+const arrivalPathSelect = $("arrivalPathSelect");
+const arrivalPathWeightSelect = $("arrivalPathWeightSelect");
+const arrivalPathHint = $("arrivalPathHint");
+const arrivalPathBadge = $("arrivalPathBadge");
+const arrivalPathBadgeLabel = $("arrivalPathBadgeLabel");
 const growthSchedulingSelect = $("growthSchedulingSelect");
 const growthSchedulingHint = $("growthSchedulingHint");
 const trainVariantButton = $("trainVariantButton");
@@ -657,6 +662,12 @@ let acceptedLoopClosureScore = 0;
 let rejectedLoopClosureScore = 0;
 let acceptedIndependentLoopWitnesses = 0;
 let rejectedIndependentLoopWitnesses = 0;
+let acceptedArrivalPathScore = 0;
+let rejectedArrivalPathScore = 0;
+let acceptedBlockedPathSamples = 0;
+let rejectedBlockedPathSamples = 0;
+let arrivalPathSiteSamples = 0;
+let arrivalPathNeighborhoodChecks = 0;
 let constraintNeighborhoodEvaluations = 0;
 let constraintNeighborhoodSiteTotal = 0;
 let maximumConstraintNeighborhoodSites = 0;
@@ -723,6 +734,8 @@ let microstructureCouplingMode = "none";
 let microstructureCouplingWeight = .24;
 let loopClosurePreference = "none";
 let loopClosureWeight = .24;
+let arrivalPathMode = "none";
+let arrivalPathWeight = .24;
 let growthScheduling = "commuting";
 let nextMarkingId = 1;
 let geometryMode = "auto";
@@ -5486,7 +5499,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-84",
+      buildId: "20260825-85",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -5927,6 +5940,29 @@ async function buildExperimentReceipt() {
         elasticEnergyInferred: false,
         modulusOrStressInferred: false,
       },
+      geometricArrivalPathRanking: {
+        role: "soft kinetic-accessibility proxy from swept hard-core clearance of emitted sites along a declared arrival direction",
+        mode: arrivalPathMode,
+        label: arrivalPathLabel(),
+        enabled: activeArrivalPathWeight() > 0,
+        declaredDirectionAvailable: arrivalPathMode !== "declared-drive" || externalDriveMode !== "none",
+        effectiveWeight: activeArrivalPathWeight(),
+        sampleCountPerSite: arrivalPathMode === "none" ? 0 : 9,
+        sweepDistanceNearestNeighborUnits: 2,
+        acceptedMeanScore: receiptRound(acceptedArrivalPathScore / Math.max(1, acceptedDecisions)),
+        rejectedMeanScore: receiptRound(rejectedArrivalPathScore / Math.max(1, rejectedDecisions)),
+        acceptedBlockedSiteSamples: acceptedBlockedPathSamples,
+        rejectedBlockedSiteSamples: rejectedBlockedPathSamples,
+        totalSiteSamples: arrivalPathSiteSamples,
+        neighborhoodChecks: arrivalPathNeighborhoodChecks,
+        emittedSitesOnly: true,
+        intermediateBoundaryEnforced: false,
+        candidateGeometryChanged: false,
+        hardAdmissionChanged: false,
+        heldoutTargetUsed: false,
+        barrierOrRateInferred: false,
+        physicalTimeIntegrated: false,
+      },
       localConstraintWork: {
         role: "exact finite-reach neighborhood evaluation via the live spatial index; not an approximation or sampled cutoff",
         maximumReachAngstrom: receiptRound(coloredCoordinationEnvelopes.maximumCutoff * referenceSpacingA / referenceSpacing),
@@ -6046,6 +6082,7 @@ function notebookInterventionFactors(receipt) {
       robustness: [search.constraintRobustnessRanking?.mode, search.constraintRobustnessRanking?.effectiveWeight],
       microstructure: [search.microstructureCouplingRanking?.mode, search.microstructureCouplingRanking?.effectiveWeight],
       loopClosure: [search.mesoscopicLoopClosureRanking?.mode, search.mesoscopicLoopClosureRanking?.effectiveWeight],
+      arrivalPath: [search.geometricArrivalPathRanking?.mode, search.geometricArrivalPathRanking?.effectiveWeight],
     } : null) },
     scheduling: { label: "tree scheduling", role: "search", value: serialized(search?.scheduling || null) },
     hierarchy: { label: "clusters² promotion", role: "search", value: String(search?.hierarchyEnabled ?? "not entered") },
@@ -7217,6 +7254,87 @@ function mesoscopicLoopClosureForCandidate(candidate) {
   };
 }
 
+function activeArrivalPathWeight() {
+  return arrivalPathMode === "none" ? 0 : arrivalPathWeight;
+}
+
+function arrivalPathLabel(mode = arrivalPathMode) {
+  return ({ none: "final pose only", "parent-outward": "parent-normal arrival",
+    "radial-outward": "seed-radial arrival", "declared-drive": "declared-drive arrival" })[mode]
+    || "final pose only";
+}
+
+function arrivalPathAxis(candidate) {
+  const parent = placedClusters.find((placement) => placement.id === candidate.parentId);
+  const seedOrigin = placedClusters[0]?.position || new THREE.Vector3();
+  if (arrivalPathMode === "parent-outward") {
+    return candidate.position.clone().sub(parent?.position || seedOrigin).normalize();
+  }
+  if (arrivalPathMode === "radial-outward") {
+    return candidate.position.clone().sub(seedOrigin).normalize();
+  }
+  if (arrivalPathMode === "declared-drive") {
+    const external = externalDriveForCandidate(candidate);
+    return external.axis ? new THREE.Vector3(...external.axis).normalize() : new THREE.Vector3();
+  }
+  return new THREE.Vector3();
+}
+
+function geometricArrivalPathForCandidate(candidate, fresh) {
+  const sampleCount = arrivalPathMode === "none" ? 0 : 9;
+  const axis = arrivalPathAxis(candidate);
+  const available = sampleCount > 0 && axis.lengthSq() > 1e-12;
+  const sweepDistance = 2 * referenceSpacing;
+  const toleranceScene = clusterMetricToleranceAngstrom()
+    * referenceSpacing / Math.max(referenceSpacingA, 1e-12);
+  let minimumClearance = Infinity;
+  let blockedSiteSamples = 0;
+  let neighborhoodChecks = 0;
+  const blockedSites = new Set();
+  if (available) fresh.forEach((site, siteIndex) => {
+    for (let sample = 0; sample < sampleCount; sample++) {
+      const fraction = sample / Math.max(1, sampleCount - 1);
+      const point = site.p.clone().addScaledVector(axis, sweepDistance * (1 - fraction));
+      const neighborhood = nearbyAtoms(point,
+        coloredDistanceEnvelopes?.maximumExclusion || COLLISION_TOLERANCE);
+      neighborhoodChecks += neighborhood.length;
+      let sampleBlocked = false;
+      neighborhood.forEach((atom) => {
+        const clearance = point.distanceTo(atom.p) - coloredPairExclusion(site.species, atom.species);
+        minimumClearance = Math.min(minimumClearance, clearance);
+        if (clearance < 0) sampleBlocked = true;
+      });
+      if (sampleBlocked) { blockedSiteSamples++; blockedSites.add(siteIndex); }
+    }
+  });
+  if (!Number.isFinite(minimumClearance)) minimumClearance = toleranceScene;
+  return {
+    mode: arrivalPathMode,
+    label: arrivalPathLabel(),
+    available,
+    axis: available ? axis.toArray() : null,
+    sampleCount,
+    sweepDistanceSceneUnits: sweepDistance,
+    sweepDistanceAngstrom: sweepDistance * referenceSpacingA / Math.max(referenceSpacing, 1e-12),
+    siteSamples: fresh.length * sampleCount,
+    neighborhoodChecks,
+    blockedSiteSamples,
+    blockedSites: blockedSites.size,
+    minimumClearanceSceneUnits: minimumClearance,
+    minimumClearanceAngstrom: minimumClearance * referenceSpacingA / Math.max(referenceSpacing, 1e-12),
+    pathAccessible: available && blockedSiteSamples === 0,
+    score: available ? Math.tanh(minimumClearance / Math.max(toleranceScene, 1e-9)) : 0,
+    emittedSitesOnly: true,
+    intermediateBoundaryEnforced: false,
+    candidateGeometryChanged: false,
+    hardAdmissionChanged: false,
+    heldoutTargetUsed: false,
+    knownWindowReplayGeometryUsed: !reconstructionCertified,
+    barrierOrRateInferred: false,
+    physicalTimeIntegrated: false,
+  };
+}
+
 function externalDriveModeLabel(mode = externalDriveMode) {
   return ({ none: "isotropic", "z-plus": "axis +Z", "z-minus": "axis −Z",
     "radial-out": "radial outward", "radial-in": "radial inward" })[mode] || "isotropic";
@@ -7242,6 +7360,7 @@ function externalDriveForCandidate(candidate) {
     label: externalDriveModeLabel(),
     alignment,
     signedStepSceneUnits: displacement.dot(axis),
+    axis: axis.lengthSq() > 0 ? axis.toArray() : null,
     globalAxis: externalDriveMode === "z-plus" || externalDriveMode === "z-minus"
       ? axis.toArray() : null,
     seedRelative: externalDriveMode === "radial-out" || externalDriveMode === "radial-in",
@@ -7313,6 +7432,8 @@ function capturePolicyComparison(entries) {
       score: (entry) => entry.baseScore + activeMicrostructureCouplingWeight() * entry.evaluation.microstructureCoupling.score },
     { id: "loop-closure", label: `loop closure ${activeLoopClosureWeight().toFixed(2)}`,
       score: (entry) => entry.baseScore + activeLoopClosureWeight() * entry.evaluation.loopClosure.score },
+    { id: "arrival-path", label: `${arrivalPathLabel()} ${activeArrivalPathWeight().toFixed(2)}`,
+      score: (entry) => entry.baseScore + activeArrivalPathWeight() * entry.evaluation.arrivalPath.score },
     { id: "active", label: "active combined", score: (entry) => entry.score },
   ].map((policy) => {
     const ranked = admissible.map((entry) => ({ entry, score: policy.score(entry) }))
@@ -7548,7 +7669,8 @@ function commutingFrontierBatch() {
         + activeExternalDriveWeight() * evaluation.externalDrive.alignment
         + activeRobustnessWeight() * evaluation.constraintRobustness.score
         + activeMicrostructureCouplingWeight() * evaluation.microstructureCoupling.score
-        + activeLoopClosureWeight() * evaluation.loopClosure.score,
+        + activeLoopClosureWeight() * evaluation.loopClosure.score
+        + activeArrivalPathWeight() * evaluation.arrivalPath.score,
     };
   });
   capturePolicyComparison(evaluated);
@@ -7652,13 +7774,14 @@ function evaluateCandidate(candidate, {
   const constraintRobustness = constraintRobustnessForCandidate(fresh, merged);
   const microstructureCoupling = microstructureCouplingForCandidate(candidate, { fresh, merged });
   const loopClosure = mesoscopicLoopClosureForCandidate(candidate);
+  const arrivalPath = geometricArrivalPathForCandidate(candidate, fresh);
   const accepted = conflicts === 0 && boundaryFailures === 0 && merged.length >= 2
     && fresh.length > 0 && knownFailures === 0 && coordinationOverflows.length === 0
     && angularViolations.length === 0 && (markingAccepted || markingFallback);
   return { accepted, sites, merged, fresh, conflicts, boundaryFailures, knownFailures, markingFallback,
     coordinationOverflows, angularViolations, geometricStrain, affineLoadedGeometricStrain,
     surfaceCompletion, compositionBalance, formalChargeBalance,
-    externalDrive, constraintRobustness, microstructureCoupling, loopClosure,
+    externalDrive, constraintRobustness, microstructureCoupling, loopClosure, arrivalPath,
     duplicateSites: canonical.duplicateSites,
     freshReferenceIndices: fresh.map((site) => site.referenceIndex).filter(Number.isInteger),
     reason: conflicts ? `${conflicts} hard-core/species conflicts` : boundaryFailures ? "outside confinement" : knownFailures ? `${knownFailures} sites outside known configuration` : coordinationOverflows.length ? `${coordinationOverflows.length} colored coordination capacities exceeded` : angularViolations.length ? `${angularViolations.length} colored angular envelopes violated` : merged.length < 2 ? "insufficient shared support" : fresh.length === 0 ? "duplicate covering" : !markingAccepted ? "marking mismatch" : "compatible overlap" };
@@ -7727,6 +7850,12 @@ function initializeOffLatticeSearch() {
   rejectedLoopClosureScore = 0;
   acceptedIndependentLoopWitnesses = 0;
   rejectedIndependentLoopWitnesses = 0;
+  acceptedArrivalPathScore = 0;
+  rejectedArrivalPathScore = 0;
+  acceptedBlockedPathSamples = 0;
+  rejectedBlockedPathSamples = 0;
+  arrivalPathSiteSamples = 0;
+  arrivalPathNeighborhoodChecks = 0;
   constraintNeighborhoodEvaluations = 0;
   constraintNeighborhoodSiteTotal = 0;
   maximumConstraintNeighborhoodSites = 0;
@@ -8269,6 +8398,10 @@ function syncStageOptions() {
   loopClosureBadge.style.top = `${49 + 35 * Number(externalDriveMode !== "none")
     + 35 * Number(affineLoadMode !== "none")}px`;
   loopClosureBadgeLabel.textContent = `loop closure · w ${loopClosureWeight.toFixed(2)}`;
+  arrivalPathBadge.hidden = pipelineStage !== 4 || arrivalPathMode === "none";
+  arrivalPathBadge.style.top = `${49 + 35 * Number(externalDriveMode !== "none")
+    + 35 * Number(affineLoadMode !== "none") + 35 * Number(loopClosurePreference !== "none")}px`;
+  arrivalPathBadgeLabel.textContent = `${arrivalPathLabel()} · w ${arrivalPathWeight.toFixed(2)}`;
   stageOptionsPanel.hidden = !visible;
   if (!visible) return;
   const clustering = pipelineStage === 1;
@@ -8361,6 +8494,8 @@ function syncStageOptions() {
     microstructureCouplingWeightSelect.value = String(microstructureCouplingWeight);
     loopClosurePreferenceSelect.value = loopClosurePreference;
     loopClosureWeightSelect.value = String(loopClosureWeight);
+    arrivalPathSelect.value = arrivalPathMode;
+    arrivalPathWeightSelect.value = String(arrivalPathWeight);
     growthSchedulingSelect.value = growthScheduling;
     geometryPreferenceSelect.disabled = finiteIceAnchorMode;
     strainWeightSelect.disabled = finiteIceAnchorMode || geometryPreference !== "strain";
@@ -8377,6 +8512,8 @@ function syncStageOptions() {
     microstructureCouplingWeightSelect.disabled = finiteIceAnchorMode || microstructureCouplingMode === "none";
     loopClosurePreferenceSelect.disabled = finiteIceAnchorMode;
     loopClosureWeightSelect.disabled = finiteIceAnchorMode || loopClosurePreference === "none";
+    arrivalPathSelect.disabled = finiteIceAnchorMode;
+    arrivalPathWeightSelect.disabled = finiteIceAnchorMode || arrivalPathMode === "none";
     growthSchedulingSelect.disabled = finiteIceAnchorMode;
     growthSchedulingHint.textContent = growthScheduling === "commuting"
       ? "maximal commuting set" : "one branch decision";
@@ -8395,6 +8532,11 @@ function syncStageOptions() {
       ? "neutral · weight zero" : `${microstructureCouplingLabel()} · weight ${microstructureCouplingWeight.toFixed(2)}`;
     loopClosureHint.textContent = loopClosurePreference === "consensus"
       ? `multi-parent consensus · weight ${loopClosureWeight.toFixed(2)}` : "local-only · weight zero";
+    arrivalPathHint.textContent = arrivalPathMode === "none"
+      ? "not ranked · final pose only"
+      : arrivalPathMode === "declared-drive" && externalDriveMode === "none"
+        ? "requires external driving geometry · score zero"
+        : `${arrivalPathLabel()} · 9 samples × 2dₙₙ · weight ${arrivalPathWeight.toFixed(2)}`;
     stageOptionsState.textContent = `${policySelect.value === "marked" && active ? active.name.split(" · ")[0] : "baseline"} · ${geometryPreference === "strain" ? `strain ${geometricStrainWeight.toFixed(2)}` : "no strain"}`;
     primitiveGrowthButton.classList.toggle("active", finiteIceAnchorMode || !hierarchyEnabled);
     primitiveGrowthButton.setAttribute("aria-pressed", String(finiteIceAnchorMode || !hierarchyEnabled));
@@ -8432,11 +8574,14 @@ function syncStageOptions() {
     const loopClosureUse = loopClosurePreference === "consensus"
       ? ` A ${loopClosureWeight.toFixed(2)} mesoscopic term rewards independent frozen-rule paths that close onto the same proper-SE(3) pose and penalizes nearby incompatible paths.`
       : " Multi-parent loop closure is reported but contributes zero rank weight.";
+    const arrivalPathUse = arrivalPathMode === "none"
+      ? " Swept arrival clearance is disabled; only the final pose is tested."
+      : ` A ${arrivalPathWeight.toFixed(2)} soft accessibility term sweeps emitted sites along a 9-point ${arrivalPathLabel()} path spanning 2dₙₙ; it is not a barrier or trajectory.`;
     growthModeNote.textContent = finiteIceAnchorMode
       ? "This sealed ice gate executes primitive H₂O connection ports with mutually exclusive orientation domains. Clusters² is disabled because no stationary promoted ice production has been certified."
       : hierarchyEnabled
-      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}${microstructureUse}${loopClosureUse}`
-      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}${microstructureUse}${loopClosureUse}`;
+      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}`
+      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}${chargeUse}${surfaceUse}${externalDriveUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}`;
   }
 }
 
@@ -8468,6 +8613,12 @@ function resetCounters() {
   rejectedLoopClosureScore = 0;
   acceptedIndependentLoopWitnesses = 0;
   rejectedIndependentLoopWitnesses = 0;
+  acceptedArrivalPathScore = 0;
+  rejectedArrivalPathScore = 0;
+  acceptedBlockedPathSamples = 0;
+  rejectedBlockedPathSamples = 0;
+  arrivalPathSiteSamples = 0;
+  arrivalPathNeighborhoodChecks = 0;
   constraintNeighborhoodEvaluations = 0;
   constraintNeighborhoodSiteTotal = 0;
   maximumConstraintNeighborhoodSites = 0;
@@ -8777,6 +8928,7 @@ function stateForCandidate(candidate, evaluation) {
     constraintRobustness: evaluation.constraintRobustness,
     microstructureCoupling: evaluation.microstructureCoupling,
     loopClosure: evaluation.loopClosure,
+    arrivalPath: evaluation.arrivalPath,
   };
 }
 
@@ -8866,6 +9018,8 @@ function performOffLatticeEvent() {
   currentCandidates = batch.map(({ candidate, evaluation }) => ({
     p: candidate.position.clone(), accepted: evaluation.accepted,
     rotation: candidate.rotation.clone(), type: candidate.type,
+    arrivalAxis: evaluation.arrivalPath.axis,
+    arrivalSweepDistance: evaluation.arrivalPath.sweepDistanceSceneUnits,
   }));
   const mechanismDiagnostics = new Map(batch.map(({ candidate, evaluation }) =>
     [candidate, prepareGrowthMechanismDiagnostic(candidate, evaluation)]));
@@ -8894,6 +9048,10 @@ function performOffLatticeEvent() {
       rejectedMicrostructureCouplingScore += snapshotEvaluation.microstructureCoupling.score;
       rejectedLoopClosureScore += snapshotEvaluation.loopClosure.score;
       rejectedIndependentLoopWitnesses += snapshotEvaluation.loopClosure.independentCompatiblePaths;
+      rejectedArrivalPathScore += snapshotEvaluation.arrivalPath.score;
+      rejectedBlockedPathSamples += snapshotEvaluation.arrivalPath.blockedSiteSamples;
+      arrivalPathSiteSamples += snapshotEvaluation.arrivalPath.siteSamples;
+      arrivalPathNeighborhoodChecks += snapshotEvaluation.arrivalPath.neighborhoodChecks;
       rejectedInBatch++;
       appendHistory("reject", { type: "reject", depth: placedClusters.find((placement) => placement.id === candidate.parentId)?.depth || 0,
         action: state.action, family: evaluation.reason });
@@ -8928,6 +9086,10 @@ function performOffLatticeEvent() {
     acceptedMicrostructureCouplingScore += evaluation.microstructureCoupling.score;
     acceptedLoopClosureScore += evaluation.loopClosure.score;
     acceptedIndependentLoopWitnesses += evaluation.loopClosure.independentCompatiblePaths;
+    acceptedArrivalPathScore += evaluation.arrivalPath.score;
+    acceptedBlockedPathSamples += evaluation.arrivalPath.blockedSiteSamples;
+    arrivalPathSiteSamples += evaluation.arrivalPath.siteSamples;
+    arrivalPathNeighborhoodChecks += evaluation.arrivalPath.neighborhoodChecks;
     acceptedInBatch++;
     freshInBatch += evaluation.fresh.length;
     appendHistory(decision.reuse ? "reuse" : "accept", { type: "accept", depth: placement.depth, action: state.action,
@@ -9393,11 +9555,27 @@ function rebuildWorld() {
     frontierMetric.textContent = String(targets.length);
   }
 
-  currentCandidates.forEach((candidate) => {
+  currentCandidates.forEach((candidate, candidateIndex) => {
     const mesh = new THREE.Mesh(candidateGeometry, candidate.accepted ? candidateMaterial : rejectedMaterial);
     mesh.position.copy(candidate.p);
     if (candidate.rotation) mesh.quaternion.copy(candidate.rotation);
     decisionGroup.add(mesh);
+    if (candidateIndex < 12 && candidate.arrivalAxis && candidate.arrivalSweepDistance > 0) {
+      const axis = new THREE.Vector3(...candidate.arrivalAxis).normalize();
+      const start = candidate.p.clone().addScaledVector(axis, candidate.arrivalSweepDistance);
+      const path = new THREE.Line(
+        new THREE.BufferGeometry().setFromPoints([start, candidate.p]),
+        new THREE.LineDashedMaterial({ color: 0xffc169, dashSize: .16, gapSize: .09,
+          transparent: true, opacity: .72 }),
+      );
+      path.computeLineDistances();
+      decisionGroup.add(path);
+      const head = new THREE.Mesh(new THREE.ConeGeometry(.11, .32, 8),
+        new THREE.MeshBasicMaterial({ color: 0xffc169, transparent: true, opacity: .78 }));
+      head.position.copy(candidate.p);
+      head.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), axis.clone().negate());
+      decisionGroup.add(head);
+    }
     if (markingToggle.checked) {
       const geometry = new THREE.IcosahedronGeometry(1.15, 0);
       const domain = new THREE.LineSegments(
@@ -9480,10 +9658,12 @@ function physicsTranslationRecords(leap = null) {
       encoding: "independent placed parents apply frozen connection rules; complete transformed colored site sets are compared so proper-symmetry gauges cannot create false seams",
       evidence: leap ? `Accepted mean ${receiptRound(acceptedIndependentLoopWitnesses / Math.max(1, acceptedDecisions), 4)} independent compatible paths; rejected mean ${receiptRound(rejectedIndependentLoopWitnesses / Math.max(1, rejectedDecisions), 4)}.` : "No mesoscopic loop tested yet.",
       boundary: "Loop closure detects geometric consistency, not elastic energy, modulus, stress, force balance, dislocation energy, or mechanical relaxation." },
-    { id: "kinetics", process: "activation, diffusion, heat flow, and elapsed time", status: "open", role: "not modeled",
-      encoding: "none; the accepted whole-cluster antichain jumps directly between certified structural states",
-      evidence: leap ? `${leap.after.atoms - leap.before.atoms} explicit sites were emitted with physicalTimeModeled=false and dynamicsIntegrated=false.` : "The seed has no physical clock.",
-      boundary: "No barrier, rate, pathway probability, thermostat, phonon transport, diffusion, hydrodynamics, relaxation trajectory, or physical duration is inferred." },
+    { id: "kinetics", process: "activation, diffusion, heat flow, and elapsed time", status: activeArrivalPathWeight() > 0 ? "soft" : "open", role: activeArrivalPathWeight() > 0 ? "geometric accessibility proxy" : "not modeled",
+      encoding: activeArrivalPathWeight() > 0
+        ? `${arrivalPathLabel()}; 9 swept-clearance samples over 2dₙₙ for emitted sites only, w=${activeArrivalPathWeight().toFixed(2)}`
+        : "none; the accepted whole-cluster antichain jumps directly between certified structural states",
+      evidence: leap ? `${arrivalPathSiteSamples.toLocaleString()} site-path samples and ${arrivalPathNeighborhoodChecks.toLocaleString()} existing-neighbor checks; ${leap.after.atoms - leap.before.atoms} explicit sites emitted.` : "The seed has no physical clock.",
+      boundary: "Swept clearance is not a minimum-energy path. No barrier, rate, pathway probability, thermostat, phonon transport, diffusion, hydrodynamics, relaxation trajectory, or physical duration is inferred." },
     { id: "long-range", process: "long-range elasticity, electrostatics, and electronic response", status: "open", role: "outside the bounded local grammar",
       encoding: `local constraint reach is at most ${coloredCoordinationEnvelopes ? (coloredCoordinationEnvelopes.maximumCutoff * referenceSpacingA / referenceSpacing).toFixed(2) : "—"} Å; ${[affineLoadMode === "none" ? null : `${affineLoadModeLabel()} metric`, activeExternalDriveWeight() > 0 ? `${externalDriveModeLabel()} drive` : null].filter(Boolean).join(" + ") || "no external condition"} is imposed geometrically, but nonlocal material response is unsolved`,
       evidence: "The portal reports this omission instead of silently folding it into a local score.",
@@ -9742,6 +9922,13 @@ function geometryConstraintEvidence(name, term, state, mode) {
         ? `Soft rank term with weight ${activeLoopClosureWeight().toFixed(2)} over unchanged exact candidates.` : "Diagnostic only; weight zero.",
       boundary: "This is a bounded graph loop-closure residual, not long-range elasticity, stress, energy, force balance, plastic relaxation, or a dislocation calculation.",
     },
+    "arrival-path accessibility": {
+      observed: `${arrivalPathMode === "none" ? 0 : 9} deterministic samples per emitted site over a 2dₙₙ declared approach`,
+      encoding: "Only the emitted colored sites are swept backward from the final pose; at each sample their clearance above the learned pair exclusion is evaluated against already placed atoms.",
+      searchRole: activeArrivalPathWeight() > 0
+        ? `Soft rank term with weight ${activeArrivalPathWeight().toFixed(2)}; final-pose admission is unchanged.` : "Disabled; final pose only.",
+      boundary: "This is one declared rigid arrival geometry, not a transition path, activation barrier, diffusion event, assembly mechanism, probability, rate, or elapsed time.",
+    },
     "GCTS marking": {
       observed: `${trainingProgress}/${markingSampleCount()} ${sectionModel?.sampleKind || "connection"} samples · ${iceAnchorTrace?.portCount || overlapGrammar?.rules?.length || 0} frozen connection states`,
       encoding: mode === "specialized"
@@ -9825,6 +10012,9 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "mesoscopic loop closure", status: ranked(activeLoopClosureWeight() > 0),
       value: state.loopClosure ? `${signed(state.loopClosure.score)} · ${state.loopClosure.independentCompatiblePaths} support / ${state.loopClosure.independentConflictingPaths} conflict` : "not evaluated",
       detail: activeLoopClosureWeight() > 0 ? `rank weight ${activeLoopClosureWeight().toFixed(2)} · generating parent excluded` : "diagnostic · local-only ordering" },
+    { name: "arrival-path accessibility", status: ranked(activeArrivalPathWeight() > 0),
+      value: state.arrivalPath ? `${signed(state.arrivalPath.score)} · ${state.arrivalPath.blockedSiteSamples}/${state.arrivalPath.siteSamples} blocked samples` : "not evaluated",
+      detail: activeArrivalPathWeight() > 0 ? `rank weight ${activeArrivalPathWeight().toFixed(2)} · ${arrivalPathLabel()}` : "disabled · final pose only" },
     { name: "GCTS marking", status: policySelect.value === "marked" ? state.markingAccepted ? "pass" : "fail" : "diagnostic",
       value: policySelect.value === "marked" ? state.markingAccepted ? "compatible" : "mismatch" : "not gating",
       detail: "bounded transported connection section" },
@@ -11010,6 +11200,19 @@ loopClosurePreferenceSelect.addEventListener("change", () => {
 loopClosureWeightSelect.addEventListener("change", () => {
   const value = Number(loopClosureWeightSelect.value);
   loopClosureWeight = [.12, .24, .48].includes(value) ? value : .24;
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+arrivalPathSelect.addEventListener("change", () => {
+  const value = arrivalPathSelect.value;
+  arrivalPathMode = ["parent-outward", "radial-outward", "declared-drive"].includes(value)
+    ? value : "none";
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+arrivalPathWeightSelect.addEventListener("change", () => {
+  const value = Number(arrivalPathWeightSelect.value);
+  arrivalPathWeight = [.12, .24, .48].includes(value) ? value : .24;
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
 });
