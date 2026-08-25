@@ -658,10 +658,20 @@ clearance above learned colored exclusions, maximum residual on coincident
 support sites, active marking margin alongside held-out loss, and adjacency to
 occupational alternatives. The receipt records whether measurement uncertainty
 set the tolerance floor and whether occupancy was explicitly realized. These
-numbers condition an individual geometric decision; they are not a perturbation
-ensemble, posterior probability, confidence interval, or robustness
-certificate. The UI therefore leaves “perturbation test open” visible until a
-separate ensemble or held-out audit actually supplies that evidence.
+numbers condition an individual geometric decision. The portal now follows
+them with a deterministic, target-blind **bounded pose ensemble**: twelve
+translations and proper rotations replay the hard geometric gates at the
+larger of the measured pair-distance uncertainty and half the resolved
+isometry tolerance. To keep interactive growth responsive, at most the first
+64 encountered decisions in a leap receive this twelve-pose audit; those
+audited events are retained in the bounded event ledger and the displayed
+audited/observed denominator is explicit. The candidate set and marking score stay frozen, the
+replays do not increment search-work counters, and their outcomes never affect
+admission or rank. The receipt separates candidate provenance from audit
+provenance, because a known-window replay candidate may be reference-guided
+even though its sensitivity test is target-blind. Agreement across these
+bounded trials is not a posterior probability, confidence interval, thermal
+ensemble, dynamical trajectory, or calibrated robustness certificate.
 
 The representative destination patch is transformed into world coordinates.
 A cell-list spatial index merges coincident same-species atoms and detects

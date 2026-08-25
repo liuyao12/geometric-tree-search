@@ -645,6 +645,8 @@ let leapEventCount = 0;
 let selectedLeapPhysicsId = "steric";
 let growthMechanismEvents = [];
 let growthMechanismTotals = {};
+let growthPoseAuditsByLeap = new Map();
+const MAXIMUM_POSE_AUDITS_PER_LEAP = 64;
 let growthMechanismProjectionKey = "xy";
 let markingSelection = null;
 let liveOrderCache = { key: "", result: null };
@@ -3760,7 +3762,49 @@ function classifyGrowthEvent(candidate, evaluation) {
   return { phenotype, tags, neighborhood, reason: evaluation.reason || "unspecified" };
 }
 
-function growthDecisionUncertainty(candidate, evaluation, nearbyRoleCounts) {
+function candidatePosePerturbationAudit(candidate) {
+  const sceneToAngstrom = referenceSpacingA / Math.max(referenceSpacing, 1e-12);
+  const measuredUncertainty = measuredPairUncertaintyAngstrom();
+  const resolvedTolerance = clusterMetricToleranceAngstrom();
+  const stressRadiusAngstrom = Math.max(measuredUncertainty, resolvedTolerance * .5, 1e-6);
+  const stressRadiusScene = stressRadiusAngstrom / sceneToAngstrom;
+  const candidateRadius = Math.max(stressRadiusScene,
+    ...candidateSites(candidate).map((site) => site.p.distanceTo(candidate.position)));
+  const rotationRadians = Math.min(Math.PI / 18, stressRadiusScene / candidateRadius);
+  const axes = [new THREE.Vector3(1, 0, 0), new THREE.Vector3(0, 1, 0), new THREE.Vector3(0, 0, 1)];
+  const cloneAt = (position, rotation) => ({ ...candidate,
+    position: position.clone(), rotation: rotation.clone().normalize(), markingAccepted: true });
+  const diagnosticOptions = { refinePose: false, recordWork: false, targetAware: false, enforceMarking: false };
+  const nominal = evaluateCandidate(cloneAt(candidate.position, candidate.rotation), diagnosticOptions);
+  const trials = [];
+  axes.forEach((axis) => [-1, 1].forEach((sign) => {
+    const translated = candidate.position.clone().addScaledVector(axis, sign * stressRadiusScene);
+    trials.push(evaluateCandidate(cloneAt(translated, candidate.rotation), diagnosticOptions));
+    const delta = new THREE.Quaternion().setFromAxisAngle(axis, sign * rotationRadians);
+    trials.push(evaluateCandidate(cloneAt(candidate.position,
+      candidate.rotation.clone().premultiply(delta)), diagnosticOptions));
+  }));
+  const agreementCount = trials.filter((trial) => trial.accepted === nominal.accepted).length;
+  const acceptedCount = trials.filter((trial) => trial.accepted).length;
+  const failureModes = Object.fromEntries([...new Set(trials.filter((trial) => !trial.accepted)
+    .map((trial) => trial.reason))].sort().map((reason) =>
+    [reason, trials.filter((trial) => !trial.accepted && trial.reason === reason).length]));
+  return {
+    perturbationTrials: trials.length,
+    perturbationAgreementCount: agreementCount,
+    perturbationAgreementFraction: agreementCount / Math.max(1, trials.length),
+    perturbationHardAcceptanceCount: acceptedCount,
+    perturbationNominalHardGeometryAccepted: nominal.accepted,
+    perturbationStressRadiusAngstrom: stressRadiusAngstrom,
+    perturbationRotationDegrees: rotationRadians * 180 / Math.PI,
+    perturbationFailureModes: failureModes,
+    perturbationEnsembleExecutedForThisAction: true,
+    perturbationAuditTargetUsed: false,
+    candidateSelectionTargetUsed: !reconstructionCertified,
+  };
+}
+
+function growthDecisionUncertainty(candidate, evaluation, nearbyRoleCounts, executePerturbation) {
   let minimumContactClearance = Infinity;
   const searchRadius = Math.max(coloredDistanceEnvelopes?.maximumExclusion || COLLISION_TOLERANCE,
     coloredCoordinationEnvelopes?.maximumCutoff || 0);
@@ -3778,6 +3822,20 @@ function growthDecisionUncertainty(candidate, evaluation, nearbyRoleCounts) {
   const sceneToAngstrom = referenceSpacingA / Math.max(referenceSpacing, 1e-12);
   const measuredUncertainty = measuredPairUncertaintyAngstrom();
   const nominalTolerance = referenceSpacingA * clusterMetricTolerance();
+  const perturbation = executePerturbation ? candidatePosePerturbationAudit(candidate) : {
+    perturbationTrials: 0,
+    perturbationAgreementCount: 0,
+    perturbationAgreementFraction: null,
+    perturbationHardAcceptanceCount: 0,
+    perturbationNominalHardGeometryAccepted: null,
+    perturbationStressRadiusAngstrom: null,
+    perturbationRotationDegrees: null,
+    perturbationFailureModes: {},
+    perturbationEnsembleExecutedForThisAction: false,
+    perturbationAuditTargetUsed: false,
+    candidateSelectionTargetUsed: !reconstructionCertified,
+    perturbationNotExecutedReason: "deterministic per-leap audit cap reached",
+  };
   return {
     measuredPairDistanceSigmaAngstrom: measuredUncertainty,
     nominalMetricToleranceAngstrom: nominalTolerance,
@@ -3792,21 +3850,32 @@ function growthDecisionUncertainty(candidate, evaluation, nearbyRoleCounts) {
     nearbyOccupationalAlternativeSites: nearbyRoleCounts.occupancy,
     nearbyExplicitVacancySites: nearbyRoleCounts.vacancy,
     occupancyRealizationResolved: !currentMaterial().growthWithheld,
-    perturbationEnsembleExecutedForThisAction: false,
+    ...perturbation,
     statisticalConfidenceClaimed: false,
   };
 }
 
-function recordGrowthMechanismEvent(candidate, evaluation, accepted, depth) {
+function prepareGrowthMechanismDiagnostic(candidate, evaluation) {
   const classified = classifyGrowthEvent(candidate, evaluation);
-  const uncertainty = growthDecisionUncertainty(candidate, evaluation, classified.neighborhood.counts);
+  const leapIndex = leapEventCount + 1;
+  const poseAuditCount = growthPoseAuditsByLeap.get(leapIndex) || 0;
+  const executePerturbation = poseAuditCount < MAXIMUM_POSE_AUDITS_PER_LEAP;
+  if (executePerturbation) growthPoseAuditsByLeap.set(leapIndex, poseAuditCount + 1);
+  const uncertainty = growthDecisionUncertainty(candidate, evaluation,
+    classified.neighborhood.counts, executePerturbation);
+  return { classified, leapIndex, uncertainty };
+}
+
+function recordGrowthMechanismEvent(candidate, evaluation, accepted, depth, frozenDiagnostic = null) {
+  const { classified, leapIndex, uncertainty } = frozenDiagnostic
+    || prepareGrowthMechanismDiagnostic(candidate, evaluation);
   growthMechanismEvents.push({
     index: eventIndex + growthMechanismEvents.length + 1,
     accepted,
     phenotype: classified.phenotype,
     tags: classified.tags,
     reason: classified.reason,
-    leapIndex: leapEventCount + 1,
+    leapIndex,
     position: candidate.position.toArray(),
     nearbyRoleCounts: classified.neighborhood.counts,
     neighborhoodReachAngstrom: classified.neighborhood.reach * referenceSpacingA / referenceSpacing,
@@ -3826,7 +3895,12 @@ function recordGrowthMechanismEvent(candidate, evaluation, accepted, depth) {
   const totals = growthMechanismTotals[classified.phenotype] ||= { accepted: 0, rejected: 0, emittedSites: 0 };
   totals[accepted ? "accepted" : "rejected"]++;
   totals.emittedSites += accepted ? evaluation.fresh.length : 0;
-  if (growthMechanismEvents.length > 96) growthMechanismEvents.shift();
+  if (growthMechanismEvents.length > 96) {
+    const olderLeap = growthMechanismEvents.findIndex((event) => event.leapIndex < leapIndex);
+    const unaudited = growthMechanismEvents.findIndex((event) =>
+      !event.uncertainty.perturbationEnsembleExecutedForThisAction);
+    growthMechanismEvents.splice(olderLeap >= 0 ? olderLeap : unaudited >= 0 ? unaudited : 0, 1);
+  }
 }
 
 function growthMechanismAudit() {
@@ -3838,6 +3912,8 @@ function growthMechanismAudit() {
     eventsStored: growthMechanismEvents.length,
     eventsObserved,
     maximumStoredEvents: 96,
+    maximumPoseAuditsPerLeap: MAXIMUM_POSE_AUDITS_PER_LEAP,
+    poseAuditsObserved: [...growthPoseAuditsByLeap.values()].reduce((sum, count) => sum + count, 0),
     byPhenotype,
     events: growthMechanismEvents.map(({ position, ...event }) => ({
       ...event,
@@ -3849,6 +3925,8 @@ function growthMechanismAudit() {
     usedForCandidateEnumeration: false,
     usedForAdmission: false,
     usedForBranchRanking: false,
+    perturbationAuditTargetUsed: false,
+    statisticalConfidenceClaimed: false,
     defectLabelsAssigned: false,
     physicalMechanismAssigned: false,
     formationEnergyInferred: false,
@@ -3901,6 +3979,8 @@ function renderGrowthUncertaintyBudget() {
   const latestLeap = Math.max(...growthMechanismEvents.map((event) => event.leapIndex));
   const events = growthMechanismEvents.filter((event) => event.leapIndex === latestLeap);
   const uncertainties = events.map((event) => event.uncertainty);
+  const auditedEvents = events.filter((event) =>
+    event.uncertainty.perturbationEnsembleExecutedForThisAction);
   const finite = (field) => uncertainties.map((entry) => entry[field]).filter(Number.isFinite);
   const minimum = (field) => { const values = finite(field); return values.length ? Math.min(...values) : null; };
   const maximum = (field) => { const values = finite(field); return values.length ? Math.max(...values) : null; };
@@ -3908,6 +3988,9 @@ function renderGrowthUncertaintyBudget() {
   const markingMargin = minimum("markingMargin");
   const holdoutLoss = maximum("markingHoldoutLoss");
   const occupancy = events.reduce((sum, event) => sum + event.uncertainty.nearbyOccupationalAlternativeSites, 0);
+  const perturbationTrials = events.reduce((sum, event) => sum + event.uncertainty.perturbationTrials, 0);
+  const perturbationAgreements = events.reduce((sum, event) => sum + event.uncertainty.perturbationAgreementCount, 0);
+  const selectionTargetUsed = events.some((event) => event.uncertainty.candidateSelectionTargetUsed);
   const values = [
     ["measured pair σ", `${first.measuredPairDistanceSigmaAngstrom.toFixed(3)} Å`, first.measurementFloorActive ? "sets tolerance floor" : "below nominal ε"],
     ["resolved isometry ε", `${first.resolvedMetricToleranceAngstrom.toFixed(3)} Å`, `nominal ${first.nominalMetricToleranceAngstrom.toFixed(3)} Å`],
@@ -3915,6 +3998,8 @@ function renderGrowthUncertaintyBudget() {
     ["maximum overlap residual", `${maximum("maximumOverlapResidualAngstrom").toFixed(3)} Å`, "coincident support mismatch"],
     ["active marking margin", first.activeMarkingGate && markingMargin !== null ? markingMargin.toFixed(3) : "not gating", holdoutLoss === null ? "holdout unavailable" : `holdout loss ${holdoutLoss.toFixed(3)}`],
     ["occupancy adjacency", occupancy.toLocaleString(), first.occupancyRealizationResolved ? "realization explicit" : "occupational state unresolved"],
+    ["bounded pose ensemble", `${perturbationAgreements}/${perturbationTrials} agree`, `${auditedEvents.length}/${events.length} decisions · ${maximum("perturbationStressRadiusAngstrom").toFixed(3)} Å · ${maximum("perturbationRotationDegrees").toFixed(2)}°`],
+    ["candidate provenance", selectionTargetUsed ? "known-window guided" : "target-blind", "perturbation audit itself target-blind"],
   ];
   values.forEach(([label, value, detail]) => {
     const tile = document.createElement("span");
@@ -3925,7 +4010,8 @@ function renderGrowthUncertaintyBudget() {
   if (first.measurementFloorActive) conditioning.push("measurement-floor conditioned");
   if (first.activeMarkingGate && markingMargin !== null && holdoutLoss !== null && markingMargin <= holdoutLoss) conditioning.push("marking margin ≤ holdout loss");
   if (occupancy) conditioning.push("occupancy-adjacent");
-  growthUncertaintyState.textContent = `${events.length} decisions · ${conditioning.join(" · ") || "nominal geometry"} · perturbation test open`;
+  if (perturbationAgreements < perturbationTrials) conditioning.push("pose-sensitive");
+  growthUncertaintyState.textContent = `${auditedEvents.length}/${events.length} decisions pose-audited · ${conditioning.join(" · ") || "nominal geometry"} · ${perturbationAgreements}/${perturbationTrials} trials agree · confidence unclaimed`;
 }
 
 function renderGrowthMechanismAudit() {
@@ -3949,7 +4035,7 @@ function renderGrowthMechanismAudit() {
     const empty = document.createElement("p"); empty.textContent = "Advance one tree-search update to map its local geometric environment."; growthMechanismLedger.appendChild(empty);
   }
   renderGrowthUncertaintyBudget();
-  growthMechanismBoundary.textContent = "Phenotypes and uncertainty budgets are assigned after the candidate geometry and decision are frozen. Reported margins condition the decision but are not a perturbation ensemble or statistical confidence interval. Proximity to gap, residual, pose-interface, coordination, or occupancy evidence is diagnostic only; no defect identity, physical mechanism, energy, rate, or branch score is inferred.";
+  growthMechanismBoundary.textContent = `Phenotypes and uncertainty budgets are assigned after the candidate geometry and decision are frozen. Up to ${MAXIMUM_POSE_AUDITS_PER_LEAP} deterministic pose audits replay hard geometry at the larger of measured pair uncertainty and half the resolved isometry tolerance; the capped set is retained in encounter order, target-blind, and never changes admission or rank. This is a bounded sensitivity audit, not a posterior probability, confidence interval, thermal ensemble, dynamics, or calibrated robustness certificate. Proximity to gap, residual, pose-interface, coordination, or occupancy evidence is diagnostic only; no defect identity, physical mechanism, energy, rate, or branch score is inferred.`;
 }
 
 function clusterPlacementIndices(cluster) {
@@ -5342,7 +5428,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-73",
+      buildId: "20260824-76",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -6919,7 +7005,7 @@ function uniqueFreshSites(freshSites) {
   return unique;
 }
 
-function constraintProjectionForFreshSites(rawFreshSites) {
+function constraintProjectionForFreshSites(rawFreshSites, { recordWork = true } = {}) {
   const freshSites = uniqueFreshSites(rawFreshSites);
   if (!freshSites.length || !coloredCoordinationEnvelopes) return {
     freshSites, projected: [], affectedIndices: [], affectedExistingIndices: [], freshIndices: [], existingCount: 0,
@@ -6943,9 +7029,11 @@ function constraintProjectionForFreshSites(rawFreshSites) {
   const affectedExistingIndices = [...affectedExisting].map((atom) => existingIndex.get(atom));
   const freshIndices = freshSites.map((_, index) => existing.length + index);
   const affectedIndices = affectedExistingIndices.concat(freshIndices);
-  constraintNeighborhoodEvaluations++;
-  constraintNeighborhoodSiteTotal += projected.length;
-  maximumConstraintNeighborhoodSites = Math.max(maximumConstraintNeighborhoodSites, projected.length);
+  if (recordWork) {
+    constraintNeighborhoodEvaluations++;
+    constraintNeighborhoodSiteTotal += projected.length;
+    maximumConstraintNeighborhoodSites = Math.max(maximumConstraintNeighborhoodSites, projected.length);
+  }
   return { freshSites, projected, affectedIndices, affectedExistingIndices, freshIndices, existingCount: existing.length };
 }
 
@@ -7134,10 +7222,15 @@ function refineCandidateTranslation(candidate) {
   if (correction.length() <= .18) candidate.position.add(correction);
 }
 
-function evaluateCandidate(candidate) {
-  refineCandidateTranslation(candidate);
+function evaluateCandidate(candidate, {
+  refinePose = true,
+  recordWork = true,
+  targetAware = true,
+  enforceMarking = true,
+} = {}) {
+  if (refinePose) refineCandidateTranslation(candidate);
   const rawSites = candidateSites(candidate);
-  const reconstructing = !reconstructionCertified && replayIndex < referenceCount();
+  const reconstructing = targetAware && !reconstructionCertified && replayIndex < referenceCount();
   const canonical = reconstructing ? canonicalKnownSites(rawSites) : { sites: rawSites, failures: 0, duplicateSites: 0 };
   const sites = canonical.sites;
   const audit = reconstructing ? referenceCoverageAudit() : null;
@@ -7162,10 +7255,10 @@ function evaluateCandidate(candidate) {
     else if (!insideGrowthDomain(site.p)) boundaryFailures++;
     else fresh.push(site);
   });
-  const markingAccepted = policySelect.value !== "marked" || candidate.markingAccepted;
+  const markingAccepted = !enforceMarking || policySelect.value !== "marked" || candidate.markingAccepted;
   const knownFailures = reconstructing ? canonical.failures : 0;
   const markingFallback = reconstructing && knownFailures === 0 && !markingAccepted;
-  const constraintProjection = constraintProjectionForFreshSites(fresh);
+  const constraintProjection = constraintProjectionForFreshSites(fresh, { recordWork });
   const coordinationOverflows = reconstructing ? [] : coordinationOverflowsForFreshSites(fresh, constraintProjection);
   const angularViolations = reconstructing ? [] : angularViolationsForFreshSites(fresh, constraintProjection);
   const geometricStrain = geometricStrainForFreshSites(fresh, constraintProjection);
@@ -7179,7 +7272,7 @@ function evaluateCandidate(candidate) {
     coordinationOverflows, angularViolations, geometricStrain, surfaceCompletion, compositionBalance, formalChargeBalance,
     duplicateSites: canonical.duplicateSites,
     freshReferenceIndices: fresh.map((site) => site.referenceIndex).filter(Number.isInteger),
-    reason: conflicts ? `${conflicts} hard-core/species conflicts` : boundaryFailures ? "outside confinement" : knownFailures ? `${knownFailures} sites outside known configuration` : coordinationOverflows.length ? `${coordinationOverflows.length} colored coordination capacities exceeded` : angularViolations.length ? `${angularViolations.length} colored angular envelopes violated` : merged.length < 2 ? "insufficient shared support" : fresh.length === 0 ? "duplicate covering" : !candidate.markingAccepted ? "marking mismatch" : "compatible overlap" };
+    reason: conflicts ? `${conflicts} hard-core/species conflicts` : boundaryFailures ? "outside confinement" : knownFailures ? `${knownFailures} sites outside known configuration` : coordinationOverflows.length ? `${coordinationOverflows.length} colored coordination capacities exceeded` : angularViolations.length ? `${angularViolations.length} colored angular envelopes violated` : merged.length < 2 ? "insufficient shared support" : fresh.length === 0 ? "duplicate covering" : !markingAccepted ? "marking mismatch" : "compatible overlap" };
 }
 
 function referenceCoverageCount() {
@@ -7940,6 +8033,7 @@ function resetCounters() {
   selectedLeapPhysicsId = "steric";
   growthMechanismEvents = [];
   growthMechanismTotals = {};
+  growthPoseAuditsByLeap = new Map();
   growthMechanismProjectionKey = "xy";
   markingSelection = null;
   liveOrderCache = { key: "", result: null };
@@ -8300,6 +8394,8 @@ function performOffLatticeEvent() {
     p: candidate.position.clone(), accepted: evaluation.accepted,
     rotation: candidate.rotation.clone(), type: candidate.type,
   }));
+  const mechanismDiagnostics = new Map(batch.map(({ candidate, evaluation }) =>
+    [candidate, prepareGrowthMechanismDiagnostic(candidate, evaluation)]));
   let acceptedInBatch = 0;
   let rejectedInBatch = 0;
   let freshInBatch = 0;
@@ -8323,7 +8419,8 @@ function performOffLatticeEvent() {
       appendHistory("reject", { type: "reject", depth: placedClusters.find((placement) => placement.id === candidate.parentId)?.depth || 0,
         action: state.action, family: evaluation.reason });
       recordGrowthMechanismEvent(candidate, snapshotEvaluation, false,
-        placedClusters.find((placement) => placement.id === candidate.parentId)?.depth || 0);
+        placedClusters.find((placement) => placement.id === candidate.parentId)?.depth || 0,
+        mechanismDiagnostics.get(candidate));
       lastDecision = { eventType: "reject", accepted: false, state, resolver: "geometric + section prune",
         energy: candidate.markingScore, interval: [candidate.markingScore, candidate.markingScore] };
       return;
@@ -8338,7 +8435,8 @@ function performOffLatticeEvent() {
     if (!evaluation.accepted) throw new Error("Commuting frontier batch lost permutation invariance");
     const decision = cacheDecision(state, candidate.markingScore);
     const parentDepth = placedClusters.find((placement) => placement.id === candidate.parentId)?.depth || 0;
-    recordGrowthMechanismEvent(candidate, evaluation, true, parentDepth + 1);
+    recordGrowthMechanismEvent(candidate, evaluation, true, parentDepth + 1,
+      mechanismDiagnostics.get(candidate));
     const placement = materializeCandidate(candidate, evaluation);
     acceptedDecisions++;
     acceptedGeometricStrain += evaluation.geometricStrain.total;

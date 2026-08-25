@@ -47,7 +47,7 @@ def test_microstructure_audit_is_visible_reproducible_and_non_generative() -> No
     search_logic = source[source.index("function ruleMarkingScore"):source.index("function renderMarkingLibrary")]
     assert "microstructureEvidence" not in search_logic
     assert "const { adjacencyReach, coordinationBaselines, siteRoles, ...audit }" in source
-    assert 'app.js?v=20260824-73' in html
+    assert 'app.js?v=20260824-76' in html
 
 
 if __name__ == "__main__":

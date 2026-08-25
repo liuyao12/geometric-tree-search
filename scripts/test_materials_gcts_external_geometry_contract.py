@@ -27,7 +27,7 @@ def test_external_geometry_drives_render_search_and_receipt() -> None:
     assert "epitaxialRegistryModeled: false" in environments
     assert "surfaceEnergyModeled: false" in environments
     assert "External geometry as a hard public boundary" in readme
-    assert 'app.js?v=20260824-73' in html
+    assert 'app.js?v=20260824-76' in html
 
 
 if __name__ == "__main__":

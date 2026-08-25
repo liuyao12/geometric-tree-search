@@ -29,14 +29,16 @@ def test_growth_event_map_is_spatial_diagnostic_and_never_a_ranker() -> None:
     assert "function classifyGrowthEvent(candidate, evaluation)" in APP
     assert '/duplicate|redundant|no novel/.test(reason)' in APP
     assert 'else if (!evaluation.accepted) phenotype = "prune"' in APP
-    assert "function recordGrowthMechanismEvent(candidate, evaluation, accepted, depth)" in APP
+    assert "function prepareGrowthMechanismDiagnostic(candidate, evaluation)" in APP
+    assert "function recordGrowthMechanismEvent(candidate, evaluation, accepted, depth, frozenDiagnostic = null)" in APP
     assert "function growthMechanismAudit()" in APP
     assert "function drawGrowthMechanismMap()" in APP
     assert "function renderGrowthMechanismAudit()" in APP
-    assert "function growthDecisionUncertainty(candidate, evaluation, nearbyRoleCounts)" in APP
+    assert "function growthDecisionUncertainty(candidate, evaluation, nearbyRoleCounts, executePerturbation)" in APP
+    assert "function candidatePosePerturbationAudit(candidate)" in APP
     assert "function renderGrowthUncertaintyBudget()" in APP
     assert "recordGrowthMechanismEvent(candidate, snapshotEvaluation, false" in APP
-    assert "recordGrowthMechanismEvent(candidate, evaluation, true, parentDepth + 1)" in APP
+    assert "recordGrowthMechanismEvent(candidate, evaluation, true, parentDepth + 1," in APP
     assert "spatialGrowthEventAudit: growthMechanismAudit()" in APP
     assert "events: growthMechanismEvents.map(({ position, ...event })" in APP
     assert "eventsObserved" in APP
@@ -55,9 +57,21 @@ def test_growth_event_map_is_spatial_diagnostic_and_never_a_ranker() -> None:
     assert "maximumOverlapResidualAngstrom" in APP
     assert "markingMargin" in APP
     assert "markingHoldoutLoss" in APP
-    assert "perturbationEnsembleExecutedForThisAction: false" in APP
+    assert "perturbationEnsembleExecutedForThisAction: true" in APP
+    assert "perturbationAuditTargetUsed: false" in APP
+    assert "candidateSelectionTargetUsed: !reconstructionCertified" in APP
+    assert "const MAXIMUM_POSE_AUDITS_PER_LEAP = 64" in APP
+    assert "maximumPoseAuditsPerLeap: MAXIMUM_POSE_AUDITS_PER_LEAP" in APP
+    assert "deterministic per-leap audit cap reached" in APP
+    assert "const diagnosticOptions = { refinePose: false, recordWork: false, targetAware: false, enforceMarking: false }" in APP
+    assert "perturbationAgreementFraction" in APP
+    assert "decisions pose-audited" in APP
+    assert "trials agree" in APP
+    assert "confidence unclaimed" in APP
     assert "statisticalConfidenceClaimed: false" in APP
-    assert "perturbation test open" in APP
+    accepted_record = "recordGrowthMechanismEvent(candidate, evaluation, true, parentDepth + 1,"
+    accepted_materialize = "const placement = materializeCandidate(candidate, evaluation)"
+    assert APP.index(accepted_record) < APP.index(accepted_materialize, APP.index(accepted_record))
 
     assert ".growth-mechanism-section" in CSS
     assert ".growth-mechanism-ledger" in CSS
@@ -65,7 +79,10 @@ def test_growth_event_map_is_spatial_diagnostic_and_never_a_ranker() -> None:
     assert "spatial growth-event audit" in README
     assert "not automatic defect identities" in README
     assert "uncertainty budget" in README
-    assert "not a perturbation" in README
+    assert "bounded pose ensemble" in README
+    assert "64 encountered decisions" in README
+    assert "do not increment search-work counters" in README
+    assert "not a posterior probability" in README
 
 
 if __name__ == "__main__":
