@@ -8,8 +8,8 @@ import {
   isotropicPairDistanceUncertaintyA,
   parseStructureText,
   validateStructure,
-} from "./structure-io.js?v=20260824-5";
-import { randomNomadStructure } from "./structure-database.js?v=20260825-2";
+} from "./structure-io.js?v=20260825-6";
+import { randomNomadStructure } from "./structure-database.js?v=20260825-3";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -94,6 +94,9 @@ const ensembleFrameSelect = $("ensembleFrameSelect");
 const ensembleFrameCount = $("ensembleFrameCount");
 const ensembleEvidenceSelect = $("ensembleEvidenceSelect");
 const ensembleStatus = $("ensembleStatus");
+const relaxationSequence = $("relaxationSequence");
+const relaxationSequenceState = $("relaxationSequenceState");
+const relaxationSequenceChart = $("relaxationSequenceChart");
 const measurementConditions = $("measurementConditions");
 const measurementConditionChips = $("measurementConditionChips");
 const publishedFixtureProvenance = $("publishedFixtureProvenance");
@@ -1257,25 +1260,92 @@ function renderEnsembleControls() {
   ensembleControls.hidden = !visible;
   if (!visible) return;
   importedFrameIndex = Math.max(0, Math.min(importedFrameIndex, frames.length - 1));
+  const relaxation = importedStructure?.metadata?.relaxationSequence;
+  const finalEnergy = frames.at(-1)?.metadata?.calculation?.energyPerPrimitiveAtomElectronVolt;
   ensembleFrameSelect.replaceChildren();
   frames.forEach((frame, index) => {
     const option = document.createElement("option");
     option.value = String(index);
     const label = frame.name || frame.comment || `frame ${index + 1}`;
-    option.textContent = `Frame ${index + 1} · ${label.slice(0, 64)}`;
+    const calculation = frame.metadata?.calculation;
+    const relativeEnergy = Number.isFinite(calculation?.energyPerPrimitiveAtomElectronVolt)
+      && Number.isFinite(finalEnergy) ? calculation.energyPerPrimitiveAtomElectronVolt - finalEnergy : null;
+    const calculationLabel = relaxation?.available
+      ? `${relativeEnergy === null ? "ΔE —" : `ΔE ${relativeEnergy >= 0 ? "+" : ""}${relativeEnergy.toFixed(4)} eV/atom`}${calculation?.forceCoverage > 0 ? ` · Fᵣₘₛ ${calculation.forceRmsElectronVoltPerAngstrom.toExponential(2)}` : ""}`
+      : label.slice(0, 64);
+    option.textContent = `Frame ${index + 1} · ${calculationLabel}`;
     ensembleFrameSelect.append(option);
   });
   ensembleFrameSelect.value = String(importedFrameIndex);
   ensembleEvidenceSelect.value = ensembleEvidenceMode;
-  ensembleFrameCount.textContent = `${frames.length} snapshots`;
+  ensembleFrameCount.textContent = `${frames.length} ${relaxation?.available ? "relaxation" : "structural"} snapshots`;
+  renderRelaxationSequence(frames, relaxation);
   const presentations = frames.length * (frames[0]?.atoms.length || 0);
   const empirical = ensemblePairDistanceUncertainty?.available
     && ensemblePairDistanceUncertainty.frameCount === frames.length
     ? ` · local pair σ₉₀ ${ensemblePairDistanceUncertainty.upperPairDistanceSigma.toFixed(4)} Å`
     : "";
   ensembleStatus.textContent = ensembleEvidenceMode === "all"
-    ? `Pooling ${frames.length} fixed-topology frames · ${presentations.toLocaleString()} atom presentations${empirical}. Frame ${importedFrameIndex + 1} alone supplies the cluster cover, grammar, and growth seed.`
+    ? `Pooling ${frames.length} fixed-topology ${relaxation?.available ? "archived relaxation snapshots" : "frames"} · ${presentations.toLocaleString()} atom presentations${empirical}. Frame ${importedFrameIndex + 1} alone supplies the cluster cover, grammar, and growth seed.${relaxation?.available ? " Archive order is displayed but never treated as elapsed time." : ""}`
     : `Ablation: only frame ${importedFrameIndex + 1} supplies geometric envelopes, the cluster cover, grammar, and growth seed.`;
+}
+
+function renderRelaxationSequence(frames, relaxation) {
+  const visible = Boolean(relaxation?.available && frames.length > 1);
+  relaxationSequence.hidden = !visible;
+  relaxationSequenceChart.replaceChildren();
+  if (!visible) return;
+  const svg = (name, attributes = {}) => {
+    const element = document.createElementNS("http://www.w3.org/2000/svg", name);
+    Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, String(value)));
+    return element;
+  };
+  const records = frames.map((frame, index) => ({ index, calculation: frame.metadata?.calculation || {} }));
+  const energies = records.map((record) => record.calculation.energyPerPrimitiveAtomElectronVolt)
+    .filter(Number.isFinite);
+  const forces = records.map((record) => record.calculation.forceRmsElectronVoltPerAngstrom)
+    .filter(Number.isFinite);
+  const finalEnergy = records.at(-1).calculation.energyPerPrimitiveAtomElectronVolt;
+  const relative = records.map((record) => Number.isFinite(record.calculation.energyPerPrimitiveAtomElectronVolt)
+    && Number.isFinite(finalEnergy) ? record.calculation.energyPerPrimitiveAtomElectronVolt - finalEnergy : null);
+  const relativeFinite = relative.filter(Number.isFinite);
+  const energyMinimum = Math.min(0, ...relativeFinite);
+  const energyMaximum = Math.max(0, ...relativeFinite);
+  const energySpan = Math.max(1e-12, energyMaximum - energyMinimum);
+  const forceMaximum = Math.max(1e-12, ...forces);
+  const x = (index) => 14 + index / Math.max(1, records.length - 1) * 252;
+  const energyY = (value) => 62 - Math.max(0, Math.min(1, (value - energyMinimum) / energySpan)) * 46;
+  const forceY = (value) => 62 - Math.max(0, Math.min(1, value / forceMaximum)) * 46;
+  relaxationSequenceChart.append(svg("line", { x1: 14, y1: 62, x2: 266, y2: 62, class: "relaxation-axis" }));
+  const pathFor = (values, yFor) => values.map((value, index) => Number.isFinite(value)
+    ? `${index === 0 || !Number.isFinite(values[index - 1]) ? "M" : "L"}${x(index).toFixed(2)},${yFor(value).toFixed(2)}` : "").join(" ");
+  if (energies.length) relaxationSequenceChart.append(svg("path", { d: pathFor(relative, energyY), class: "relaxation-energy" }));
+  if (forces.length) relaxationSequenceChart.append(svg("path", {
+    d: pathFor(records.map((record) => record.calculation.forceRmsElectronVoltPerAngstrom), forceY),
+    class: "relaxation-force",
+  }));
+  records.forEach((record) => {
+    const value = Number.isFinite(relative[record.index]) ? relative[record.index]
+      : record.calculation.forceRmsElectronVoltPerAngstrom;
+    if (!Number.isFinite(value)) return;
+    const point = svg("circle", { cx: x(record.index), cy: Number.isFinite(relative[record.index])
+      ? energyY(relative[record.index]) : forceY(value), r: record.index === importedFrameIndex ? 3.7 : 2.2,
+      class: record.index === importedFrameIndex ? "relaxation-point active" : "relaxation-point", tabindex: 0,
+      "aria-label": `Inspect archived snapshot ${record.index + 1}` });
+    point.addEventListener("click", () => selectImportedFrame(record.index));
+    point.addEventListener("keydown", (event) => { if (event.key === "Enter" || event.key === " ") selectImportedFrame(record.index); });
+    relaxationSequenceChart.append(point);
+  });
+  const availableForceFrames = records.filter((record) => record.calculation.forceCoverage > 0).length;
+  relaxationSequenceState.textContent = `${frames.length}/${relaxation.originalSystemCount || frames.length} snapshots · force ${availableForceFrames}/${frames.length}`;
+  relaxationSequenceChart.setAttribute("aria-label", `${frames.length} ordered archived relaxation snapshots; ${energies.length} have energy and ${availableForceFrames} have complete residual forces; snapshot ${importedFrameIndex + 1} selected`);
+}
+
+function selectImportedFrame(index) {
+  importedFrameIndex = Math.max(0, Math.min(Number(index) || 0, importedTrajectoryFrames().length - 1));
+  syncImportedFrameMaterial();
+  orderPrototypeLibrary = null;
+  enterPipelineStage(0);
 }
 
 function currentMaterial() {
@@ -1509,7 +1579,8 @@ function deterministicSnapshotEnsemble(structure) {
 function activateImportedStructure(parsed, filename, statusElement = importStatus) {
   const validation = validateStructure(parsed, { maximumAtoms: 1200 });
   if (!validation.valid) throw new Error(validation.errors.join("; "));
-  importedFrameIndex = 0;
+  importedFrameIndex = Number.isInteger(parsed.metadata?.preferredFrameIndex)
+    ? Math.max(0, Math.min(parsed.metadata.preferredFrameIndex, (parsed.frames?.length || 1) - 1)) : 0;
   ensembleEvidenceMode = "all";
   ensemblePairDistanceUncertainty = null;
   const actualElements = Object.keys(validation.elementCounts);
@@ -5820,12 +5891,21 @@ async function buildExperimentReceipt() {
   const trajectoryFrameDigests = trajectoryFrames.length > 1
     ? await Promise.all(trajectoryFrames.map((frame) => structureDigest(makeImportedFrameReference(frame, 1), "angstrom")))
     : [];
+  const trajectoryCalculationDigests = trajectoryFrames.length > 1
+    ? await Promise.all(trajectoryFrames.map((frame) => receiptSha256(JSON.stringify({
+      systemIndex: frame.metadata?.nomadSystemIndex ?? null,
+      calculationIndex: frame.metadata?.nomadCalculationIndex ?? null,
+      energyPerPrimitiveAtomElectronVolt: Number.isFinite(frame.metadata?.calculation?.energyPerPrimitiveAtomElectronVolt)
+        ? receiptRound(frame.metadata.calculation.energyPerPrimitiveAtomElectronVolt, 10) : null,
+      forceVectorsEvPerAngstrom: frame.atoms.map((atom) => atom.calculationForceEvPerAngstrom
+        ?.map((value) => receiptRound(value, 10)) || null),
+    }))))) : [];
   const receipt = {
     schema: "gcts-materials-growth-receipt-v1",
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-108",
+      buildId: "20260825-109",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -5908,7 +5988,27 @@ async function buildExperimentReceipt() {
         topologyConsistent: importedStructure.validation.trajectoryTopologyConsistent,
         variableCell: importedStructure.validation.trajectoryVariableCell,
         frameStructureSha256: trajectoryFrameDigests,
+        frameCalculationSha256: trajectoryCalculationDigests,
         ensembleSha256: await receiptSha256(JSON.stringify(trajectoryFrameDigests)),
+        sourceRelaxationSequence: importedStructure.metadata?.relaxationSequence || null,
+        archivedCalculationSeries: trajectoryFrames.map((frame) => ({
+          systemIndex: frame.metadata?.nomadSystemIndex ?? null,
+          calculationIndex: frame.metadata?.nomadCalculationIndex ?? null,
+          energyPerPrimitiveAtomElectronVolt: Number.isFinite(frame.metadata?.calculation?.energyPerPrimitiveAtomElectronVolt)
+            ? receiptRound(frame.metadata.calculation.energyPerPrimitiveAtomElectronVolt) : null,
+          forceRmsElectronVoltPerAngstrom: Number.isFinite(frame.metadata?.calculation?.forceRmsElectronVoltPerAngstrom)
+            ? receiptRound(frame.metadata.calculation.forceRmsElectronVoltPerAngstrom) : null,
+          forceMaximumElectronVoltPerAngstrom: Number.isFinite(frame.metadata?.calculation?.forceMaximumElectronVoltPerAngstrom)
+            ? receiptRound(frame.metadata.calculation.forceMaximumElectronVoltPerAngstrom) : null,
+        })),
+        archivedCalculationSeriesSha256: await receiptSha256(JSON.stringify(trajectoryFrames.map((frame) => ({
+          systemIndex: frame.metadata?.nomadSystemIndex ?? null,
+          calculationIndex: frame.metadata?.nomadCalculationIndex ?? null,
+          energyPerPrimitiveAtomElectronVolt: Number.isFinite(frame.metadata?.calculation?.energyPerPrimitiveAtomElectronVolt)
+            ? receiptRound(frame.metadata.calculation.energyPerPrimitiveAtomElectronVolt) : null,
+          forceRmsElectronVoltPerAngstrom: Number.isFinite(frame.metadata?.calculation?.forceRmsElectronVoltPerAngstrom)
+            ? receiptRound(frame.metadata.calculation.forceRmsElectronVoltPerAngstrom) : null,
+        })))),
         framesUsedForDistanceCoordinationAngleEnvelopes: coloredDistanceEnvelopes.frameCount,
         framesUsedForClusterCover: 1,
         framesUsedForPortGrammarAndMarking: 1,
@@ -12152,6 +12252,7 @@ function physicsTranslationRecords(leap = null) {
     ? `${leap.tests.summary}; ${leap.after.accepted} accepted and ${leap.after.rejected} rejected in the displayed leap.`
     : "Awaiting the first frozen frontier evaluation.";
   const calculation = activeCalculationProvenance();
+  const relaxation = scenarioSelect.value === "imported" ? importedStructure?.metadata?.relaxationSequence : null;
   return [
     { id: "steric", process: "short-range repulsion / species contact", status: "hard", role: "hard admission gate",
       encoding: `${coloredDistanceEnvelopes?.records?.length || 0} colored pair envelopes with exact species coincidence and learned hard-exclusion radii`,
@@ -12169,6 +12270,14 @@ function physicsTranslationRecords(leap = null) {
         ? `${Math.round(calculation.forceCoverage * referenceCount())}/${referenceCount()} sites; RMS ${calculation.forceRmsElectronVoltPerAngstrom.toExponential(3)} eV/Å; maximum ${calculation.forceMaximumElectronVoltPerAngstrom.toExponential(3)} eV/Å.`
         : "No calculation-force vector is available for this material.",
       boundary: "Residual forces diagnose the supplied calculation state only. They never rank, admit, displace, relax, or extrapolate a growth action; total energies are not compared across entries, methods, or compositions." },
+    { id: "relaxation-ensemble", process: "geometry-optimization path / structural variability", status: relaxation?.available ? "observed" : "unavailable", role: relaxation?.available ? "fixed-topology geometric ensemble" : "single structural state",
+      encoding: relaxation?.available
+        ? `${relaxation.retainedFrameCount}/${relaxation.originalSystemCount} ordered NOMAD system/calculation snapshots; same-run relative energy and residual-force curves remain provenance channels`
+        : "no ordered calculation sequence accompanies the active structure",
+      evidence: relaxation?.available
+        ? `${evidenceFrameCount()} frame${evidenceFrameCount() === 1 ? "" : "s"} currently supply geometric envelopes; the displayed frame alone supplies the cover, grammar, and growth seed.`
+        : "No cross-frame structural variability is available.",
+      boundary: "Archive order is not physical elapsed time. No velocity, integration step, optimizer clock, minimum-energy path, transition probability, or growth rate is inferred; energies are compared only within this one same-method archived sequence." },
     { id: "connection", process: "cluster attachment preference", status: policySelect.value === "action" ? "open" : "learned", role: policySelect.value === "action" ? "ablated" : "learned local connection gate / rank",
       encoding: `${markingMode}; ${sectionModel?.channels || 0} channels, reach ${sectionModel?.reach || 0}, transported in cluster-local proper-SE(3) frames`,
       evidence: leap ? `${leap.proposal.shared} shared and ${leap.proposal.fresh} proposed fresh sites were checked through the frozen port grammar.` : "No attachment scored yet.",
@@ -12287,7 +12396,7 @@ function physicsTranslationRecords(leap = null) {
 }
 
 function physicsEvidenceBucket(record) {
-  if (["hard", "learned", "explicit"].includes(record.status)) return "structural";
+  if (["hard", "learned", "explicit", "observed"].includes(record.status)) return "structural";
   if (["soft", "sampled"].includes(record.status)) return "hypothesis";
   return "open";
 }
@@ -12296,6 +12405,7 @@ function physicsEvidenceClass(record) {
   if (record.status === "hard") return "sample-learned admission constraint";
   if (record.status === "learned") return "learned GCTS connection evidence";
   if (record.status === "explicit") return "explicit supplied geometric state";
+  if (record.status === "observed") return "observed archived structural sequence";
   if (record.status === "soft") return "user-declared counterfactual hypothesis";
   if (record.status === "sampled") return "declared reproducible search ensemble";
   if (record.status === "unavailable") return "required input channel unavailable";
@@ -13168,6 +13278,7 @@ function observationProvenanceRecords() {
   const growthReady = pipelineStage >= 4;
   const importedFrames = importedTrajectoryFrames();
   const calculation = activeCalculationProvenance();
+  const relaxation = scenarioSelect.value === "imported" ? importedStructure?.metadata?.relaxationSequence : null;
   return [
     { id: "conditions", short: "conditions", status: conditionSummary.length ? "recorded" : "unavailable",
       value: conditionSummary.length ? conditionSummary.join(" · ") : "no temperature / pressure metadata",
@@ -13182,13 +13293,13 @@ function observationProvenanceRecords() {
       use: "Diagnostic layer and receipt provenance only; excluded from clustering, marking fit, candidate generation, admission, ranking, and structural classification.",
       boundary: "One method-dependent residual-force snapshot is not a force field, relaxation trajectory, phonon model, free energy, barrier, rate, or transferable force predictor." },
     { id: "samples", short: "samples", status: frames > 1 ? "measured" : "single",
-      value: frames > 1 ? `${frames} fixed-topology frames` : "1 structural frame",
+      value: frames > 1 ? `${frames} fixed-topology ${relaxation?.available ? "relaxation snapshots" : "frames"}` : "1 structural frame",
       observed: scenarioSelect.value === "imported" && importedFrames.length > 1
-        ? `${importedFrames.length} ordered structural snapshots with fixed species and atom ordering.`
+        ? `${importedFrames.length} ordered structural snapshots with fixed species and atom ordering.${relaxation?.available ? ` Retained from ${relaxation.originalSystemCount} same-run NOMAD systems.` : ""}`
         : `${referenceCount()} species-labelled Cartesian sites in one observation window.`,
       transform: frames > 1 ? `${ensembleEvidenceMode === "all" ? "All frames pool" : "Only the displayed frame supplies"} contact, coordination, angle, and local pair-distance observations.` : "One frame supplies the finite structural evidence.",
       use: `Growth starts from exactly one displayed frame${frames > 1 ? ` (${importedFrameIndex + 1}/${importedFrames.length})` : ""}; cross-frame atom pairs are never invented.`,
-      boundary: "Snapshot order is not treated as a trajectory unless velocities, time steps, and calibrated temporal provenance are independently supplied; none are used here." },
+      boundary: "Snapshot order is not treated as a trajectory unless velocities, time steps, and calibrated temporal provenance are independently supplied; none are used here. Same-run energy differences and residual forces remain diagnostic provenance." },
     { id: "uncertainty", short: "uncertainty", status: uncertainty > 0 ? "measured" : "nominal",
       value: uncertainty > 0 ? `${uncertainty.toFixed(3)} Å pair σ floor` : "no measured σ floor",
       observed: uncertainty > 0
@@ -13891,10 +14002,7 @@ iceViAverageButton.addEventListener("click", () => {
   enterPipelineStage(0);
 });
 ensembleFrameSelect.addEventListener("change", () => {
-  importedFrameIndex = Number(ensembleFrameSelect.value) || 0;
-  syncImportedFrameMaterial();
-  orderPrototypeLibrary = null;
-  enterPipelineStage(0);
+  selectImportedFrame(Number(ensembleFrameSelect.value) || 0);
 });
 ensembleEvidenceSelect.addEventListener("change", () => {
   ensembleEvidenceMode = ensembleEvidenceSelect.value === "selected" ? "selected" : "all";

@@ -814,7 +814,9 @@ export function validateStructure(structure, options = {}) {
       if (frame.pbc?.some(Boolean) && !frame.cell) errors.push(`Trajectory frame ${frameIndex + 1} has periodic axes without a cell`);
       trajectoryVariableCell ||= JSON.stringify(frame.cell || null) !== referenceCell;
     });
-    warnings.push(`${trajectoryFrameCount} trajectory frames retained with fixed atom identity${trajectoryVariableCell ? " and variable cells" : ""}`);
+    const frameKind = structure?.metadata?.relaxationSequence?.available
+      ? "ordered relaxation snapshots" : "trajectory frames";
+    warnings.push(`${trajectoryFrameCount} ${frameKind} retained with fixed atom identity${trajectoryVariableCell ? " and variable cells" : ""}`);
   }
   if (structure?.cell) {
     if (!Array.isArray(structure.cell) || structure.cell.length !== 3 || structure.cell.some((vector) => !Array.isArray(vector) || vector.length !== 3 || vector.some((value) => !Number.isFinite(Number(value))))) errors.push("Cell must contain three finite 3D vectors");

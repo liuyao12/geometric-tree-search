@@ -22,7 +22,8 @@ def test_growth_validity_map_separates_authority_from_activity() -> None:
 
     assert "function physicsEvidenceBucket(record)" in source
     assert "function physicsEvidenceClass(record)" in source
-    assert '["hard", "learned", "explicit"]' in source
+    assert '["hard", "learned", "explicit", "observed"]' in source
+    assert 'observed archived structural sequence' in source
     assert '["soft", "sampled"]' in source
     assert 'required input channel unavailable' in source
     assert 'result[physicsEvidenceBucket(record)] += 1' in source

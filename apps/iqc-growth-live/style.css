@@ -524,6 +524,21 @@ body.atlas-open { overflow: hidden; }
 .growth-control-group > summary:focus-visible { outline: 2px solid var(--mint); outline-offset: -2px; }
 .growth-control-fields { padding: 1px 9px 10px; }
 .growth-control-fields > .field:first-child { margin-top: 9px; }
+.relaxation-sequence { margin: 8px 0 6px; padding: 7px 8px; border: 1px solid rgba(255,181,104,.18); background: linear-gradient(145deg,rgba(255,181,104,.035),rgba(85,200,255,.025)); }
+.relaxation-sequence[hidden] { display: none; }
+.relaxation-sequence > div:first-child { display: flex; justify-content: space-between; gap: 8px; color: #6e8780; font: 6px var(--mono); text-transform: uppercase; }
+.relaxation-sequence > div:first-child b { color: #d2a46e; font-weight: 400; text-align: right; }
+.relaxation-sequence svg { display: block; width: 100%; height: 76px; margin-top: 3px; overflow: visible; }
+.relaxation-axis { stroke: rgba(151,194,183,.2); stroke-width: 1; }
+.relaxation-energy { fill: none; stroke: var(--mint); stroke-width: 1.45; vector-effect: non-scaling-stroke; }
+.relaxation-force { fill: none; stroke: #ff9a79; stroke-width: 1.2; stroke-dasharray: 3 2; vector-effect: non-scaling-stroke; }
+.relaxation-point { fill: #91b9ae; stroke: #071416; stroke-width: 1; cursor: pointer; }
+.relaxation-point:hover,.relaxation-point:focus,.relaxation-point.active { fill: #fff2d7; stroke: #ffb568; outline: none; }
+.relaxation-sequence-legend { display: flex; gap: 13px; color: #647d76; font: 5px var(--mono); }
+.relaxation-sequence-legend span { display: inline-flex; align-items: center; gap: 4px; }
+.relaxation-sequence-legend span::before { content: ""; width: 10px; height: 2px; background: var(--mint); }
+.relaxation-sequence-legend span + span::before { background: #ff9a79; }
+.relaxation-sequence p { margin: 5px 0 0; color: #687e78; font: 5px/1.45 var(--mono); }
 .growth-group-actions { display: flex; gap: 6px; margin: 5px 0 8px; }
 .growth-group-actions button { flex: 1; min-height: 26px; padding: 5px 7px; border: 1px solid rgba(126,225,232,.18); color: #74968d; background: rgba(6,13,12,.36); font: 6px var(--mono); letter-spacing: .03em; cursor: pointer; }
 .growth-group-actions button:hover,.growth-group-actions button:focus-visible { border-color: rgba(101,225,188,.5); color: #b8e8d9; outline: none; }

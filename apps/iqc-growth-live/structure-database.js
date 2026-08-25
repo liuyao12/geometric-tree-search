@@ -1,6 +1,8 @@
 const NOMAD_API = "https://nomad-lab.eu/prod/v1/api/v1";
 const JOULE_PER_ELECTRON_VOLT = 1.602176634e-19;
 const NEWTON_PER_ELECTRON_VOLT_PER_ANGSTROM = 1.602176634e-9;
+const MAX_NOMAD_RELAXATION_FRAMES = 24;
+const MAX_NOMAD_RESPONSE_BYTES = 32 * 1024 * 1024;
 const ELEMENT_PATTERN = /^(?:H|He|Li|Be|B|C|N|O|F|Ne|Na|Mg|Al|Si|P|S|Cl|Ar|K|Ca|Sc|Ti|V|Cr|Mn|Fe|Co|Ni|Cu|Zn|Ga|Ge|As|Se|Br|Kr|Rb|Sr|Y|Zr|Nb|Mo|Tc|Ru|Rh|Pd|Ag|Cd|In|Sn|Sb|Te|I|Xe|Cs|Ba|La|Ce|Pr|Nd|Pm|Sm|Eu|Gd|Tb|Dy|Ho|Er|Tm|Yb|Lu|Hf|Ta|W|Re|Os|Ir|Pt|Au|Hg|Tl|Pb|Bi|Po|At|Rn|Fr|Ra|Ac|Th|Pa|U|Np|Pu|Am|Cm|Bk|Cf|Es|Fm|Md|No|Lr|Rf|Db|Sg|Bh|Hs|Mt|Ds|Rg|Cn|Nh|Fl|Mc|Lv|Ts|Og)$/;
 const ATOMIC_SYMBOLS = " H He Li Be B C N O F Ne Na Mg Al Si P S Cl Ar K Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Kr Rb Sr Y Zr Nb Mo Tc Ru Rh Pd Ag Cd In Sn Sb Te I Xe Cs Ba La Ce Pr Nd Pm Sm Eu Gd Tb Dy Ho Er Tm Yb Lu Hf Ta W Re Os Ir Pt Au Hg Tl Pb Bi Po At Rn Fr Ra Ac Th Pa U Np Pu Am Cm Bk Cf Es Fm Md No Lr Rf Db Sg Bh Hs Mt Ds Rg Cn Nh Fl Mc Lv Ts Og".split(" ");
 
@@ -39,6 +41,8 @@ function queryPayload(elementValues, pageOffset = 0) {
         "results.material.symmetry.crystal_system",
         "results.material.symmetry.space_group_number",
         "results.material.symmetry.space_group_symbol",
+        "results.properties.geometry_optimization.final_energy_difference",
+        "results.properties.geometry_optimization.final_force_maximum",
       ],
     },
   };
@@ -54,7 +58,15 @@ async function postJson(url, body, fetchImpl = fetch) {
     const detail = await response.text();
     throw new Error(`NOMAD returned ${response.status}${detail ? `: ${detail.slice(0, 180)}` : ""}`);
   }
-  return response.json();
+  const declaredBytes = Number(response.headers?.get?.("content-length"));
+  if (Number.isFinite(declaredBytes) && declaredBytes > MAX_NOMAD_RESPONSE_BYTES) {
+    throw new Error(`NOMAD archive payload exceeds the ${MAX_NOMAD_RESPONSE_BYTES / 1024 / 1024} MB browser limit`);
+  }
+  const text = await response.text();
+  if (new TextEncoder().encode(text).length > MAX_NOMAD_RESPONSE_BYTES) {
+    throw new Error(`NOMAD archive payload exceeds the ${MAX_NOMAD_RESPONSE_BYTES / 1024 / 1024} MB browser limit`);
+  }
+  return JSON.parse(text);
 }
 
 function randomIndex(limit, random = Math.random) {
@@ -63,6 +75,26 @@ function randomIndex(limit, random = Math.random) {
 
 function vectorLength(vector) {
   return Math.hypot(...vector);
+}
+
+function expandPeriodicFrame(frame, repetitions) {
+  if (!frame.cell || !frame.pbc?.every(Boolean)) return {
+    ...frame,
+    atoms: frame.atoms.map((atom) => ({ ...atom, position: [...atom.position] })),
+  };
+  const atoms = [];
+  for (let i = 0; i < repetitions[0]; i++) for (let j = 0; j < repetitions[1]; j++) for (let k = 0; k < repetitions[2]; k++) {
+    const shift = [0, 1, 2].map((axis) => i * frame.cell[0][axis] + j * frame.cell[1][axis] + k * frame.cell[2][axis]);
+    frame.atoms.forEach((atom) => atoms.push({
+      ...atom,
+      position: atom.position.map((value, axis) => value + shift[axis]),
+    }));
+  }
+  return {
+    ...frame,
+    atoms,
+    cell: frame.cell.map((vector, axis) => vector.map((value) => value * repetitions[axis])),
+  };
 }
 
 export function makeLearningSupercell(structure, options = {}) {
@@ -83,36 +115,21 @@ export function makeLearningSupercell(structure, options = {}) {
       break;
     }
   }
-  const atoms = [];
-  for (let i = 0; i < repetitions[0]; i++) for (let j = 0; j < repetitions[1]; j++) for (let k = 0; k < repetitions[2]; k++) {
-    const shift = [0, 1, 2].map((axis) => i * structure.cell[0][axis] + j * structure.cell[1][axis] + k * structure.cell[2][axis]);
-    structure.atoms.forEach((atom) => atoms.push({
-      ...atom,
-      position: atom.position.map((value, axis) => value + shift[axis]),
-    }));
-  }
+  const expanded = expandPeriodicFrame(structure, repetitions);
+  const frames = structure.frames?.map((frame) => expandPeriodicFrame(frame, repetitions));
   return {
     ...structure,
-    atoms,
-    cell: structure.cell.map((vector, axis) => vector.map((value) => value * repetitions[axis])),
+    atoms: expanded.atoms,
+    cell: expanded.cell,
+    ...(frames?.length ? { frames } : {}),
     metadata: { ...structure.metadata, repetitions, primitiveAtomCount: structure.atoms.length },
   };
 }
 
-export function nomadArchiveToStructure(entry, archiveResponse) {
-  const archive = archiveResponse?.data?.archive;
-  const runs = archive?.run || [];
-  let selectedRun = null;
-  let atomsData = null;
-  for (const run of [...runs].reverse()) {
-    atomsData = [...(run.system || [])].reverse().map((system) => system.atoms).find((atoms) =>
-      atoms?.positions?.length && atoms?.lattice_vectors?.length === 3);
-    if (atomsData) { selectedRun = run; break; }
-  }
-  if (!atomsData) throw new Error("The selected NOMAD archive has no normalized periodic atomic system");
+function nomadSymbols(atomsData) {
   const labels = atomsData.labels || [];
   if (labels.length !== atomsData.positions.length) throw new Error("NOMAD returned inconsistent atom labels and positions");
-  const symbols = labels.map((label, index) => {
+  return labels.map((label, index) => {
     try { return canonicalElement(label); }
     catch {
       const atomicNumber = Number(atomsData.species?.[index]);
@@ -120,36 +137,126 @@ export function nomadArchiveToStructure(entry, archiveResponse) {
       throw new Error(`NOMAD atom ${index + 1} has an unsupported species label: ${label}`);
     }
   });
-  const material = entry.results?.material || {};
-  const symmetry = material.symmetry || {};
-  const calculation = selectedRun?.calculation?.at(-1) || null;
+}
+
+function nomadCalculationRecord(calculation, atomCount, program, runIndex, calculationIndex, systemIndex) {
   const totalEnergyJoule = Number(calculation?.energy?.total?.value);
   const totalEnergyElectronVolt = Number.isFinite(totalEnergyJoule)
     ? totalEnergyJoule / JOULE_PER_ELECTRON_VOLT : null;
   const rawForces = calculation?.forces?.total?.value;
-  const forceVectors = Array.isArray(rawForces) && rawForces.length === atomsData.positions.length
+  const forceVectors = Array.isArray(rawForces) && rawForces.length === atomCount
     && rawForces.every((vector) => Array.isArray(vector) && vector.length === 3
       && vector.every((component) => Number.isFinite(Number(component))))
     ? rawForces.map((vector) => vector.map((component) =>
       Number(component) / NEWTON_PER_ELECTRON_VOLT_PER_ANGSTROM)) : null;
   const forceMagnitudes = forceVectors?.map((vector) => Math.hypot(...vector)) || [];
-  const forceRmsElectronVoltPerAngstrom = forceMagnitudes.length
-    ? Math.sqrt(forceMagnitudes.reduce((sum, value) => sum + value * value, 0) / forceMagnitudes.length) : null;
-  const forceMaximumElectronVoltPerAngstrom = forceMagnitudes.length ? Math.max(...forceMagnitudes) : null;
+  return {
+    forceVectors,
+    provenance: {
+      available: Boolean(calculation),
+      sourcePath: calculationIndex === null ? null : `run/${runIndex}/calculation/${calculationIndex}`,
+      pairedSystemPath: `run/${runIndex}/system/${systemIndex}`,
+      systemReference: calculation?.system_ref || null,
+      methodReference: calculation?.method_ref || null,
+      programName: program.name || null,
+      programVersion: program.version || null,
+      totalEnergyElectronVolt,
+      energyPerPrimitiveAtomElectronVolt: totalEnergyElectronVolt === null ? null : totalEnergyElectronVolt / atomCount,
+      forceCoverage: forceVectors ? 1 : 0,
+      forceRmsElectronVoltPerAngstrom: forceMagnitudes.length
+        ? Math.sqrt(forceMagnitudes.reduce((sum, value) => sum + value * value, 0) / forceMagnitudes.length) : null,
+      forceMaximumElectronVoltPerAngstrom: forceMagnitudes.length ? Math.max(...forceMagnitudes) : null,
+      energyUnit: "eV",
+      forceUnit: "eV/Å",
+      forcesUsedForGrowth: false,
+      absoluteEnergyComparedAcrossEntries: false,
+    },
+  };
+}
+
+function referencedSystemIndex(reference) {
+  const match = String(reference || "").match(/\/system\/(\d+)(?:$|[#/?])/);
+  return match ? Number(match[1]) : null;
+}
+
+function calculationForSystem(run, systemIndex) {
+  const calculations = run.calculation || [];
+  for (let index = calculations.length - 1; index >= 0; index--) {
+    if (referencedSystemIndex(calculations[index]?.system_ref) === systemIndex) return { calculation: calculations[index], index };
+  }
+  if (calculations.length === (run.system || []).length && calculations[systemIndex]) {
+    return { calculation: calculations[systemIndex], index: systemIndex };
+  }
+  return { calculation: null, index: null };
+}
+
+function sampledFrameIndices(count, maximum = MAX_NOMAD_RELAXATION_FRAMES) {
+  if (count <= maximum) return Array.from({ length: count }, (_, index) => index);
+  return [...new Set(Array.from({ length: maximum }, (_, index) =>
+    Math.round(index * (count - 1) / (maximum - 1))))];
+}
+
+function nomadFrame(atomsData, symbols, calculationRecord, name, metadata = {}) {
+  return {
+    name,
+    atoms: atomsData.positions.map((position, index) => ({
+      species: symbols[index], position: position.map((value) => value * 1e10),
+      occupancy: 1, occupancyTotal: 1,
+      occupancyAlternatives: [{ species: symbols[index], fraction: 1 }],
+      calculationForceEvPerAngstrom: calculationRecord.forceVectors?.[index] || null,
+    })),
+    cell: atomsData.lattice_vectors.map((vector) => vector.map((value) => value * 1e10)),
+    pbc: atomsData.periodic?.map(Boolean) || [true, true, true],
+    metadata: { ...metadata, calculation: calculationRecord.provenance },
+  };
+}
+
+export function nomadArchiveToStructure(entry, archiveResponse) {
+  const archive = archiveResponse?.data?.archive;
+  const runs = archive?.run || [];
+  let selectedRun = null;
+  let selectedRunIndex = null;
+  let systemRecords = [];
+  for (let runIndex = runs.length - 1; runIndex >= 0; runIndex--) {
+    const run = runs[runIndex];
+    const records = (run.system || []).map((system, systemIndex) => ({ atomsData: system.atoms, systemIndex }))
+      .filter(({ atomsData }) => atomsData?.positions?.length && atomsData?.lattice_vectors?.length === 3);
+    if (records.length) { selectedRun = run; selectedRunIndex = runIndex; systemRecords = records; break; }
+  }
+  if (!systemRecords.length) throw new Error("The selected NOMAD archive has no normalized periodic atomic system");
+  const finalRecord = systemRecords.at(-1);
+  const finalSymbols = nomadSymbols(finalRecord.atomsData);
+  const topologyRecords = systemRecords.flatMap((record) => {
+    try {
+      const symbols = nomadSymbols(record.atomsData);
+      return symbols.length === finalSymbols.length && symbols.every((symbol, index) => symbol === finalSymbols[index])
+        ? [{ ...record, symbols }] : [];
+    } catch { return []; }
+  });
+  const retainedRecords = sampledFrameIndices(topologyRecords.length).map((index) => topologyRecords[index]);
+  const material = entry.results?.material || {};
+  const symmetry = material.symmetry || {};
   const program = selectedRun?.program || {};
+  const makeRecordFrame = (record, retainedIndex) => {
+    const paired = calculationForSystem(selectedRun, record.systemIndex);
+    const calculationRecord = nomadCalculationRecord(paired.calculation, record.atomsData.positions.length,
+      program, selectedRunIndex, paired.index, record.systemIndex);
+    return nomadFrame(record.atomsData, record.symbols, calculationRecord,
+      `NOMAD relaxation snapshot ${retainedIndex + 1} / ${retainedRecords.length}`,
+      { frameIndex: retainedIndex, nomadSystemIndex: record.systemIndex, nomadCalculationIndex: paired.index,
+        orderedRelaxationSnapshot: true, physicalTimeAvailable: false });
+  };
+  const frames = retainedRecords.map(makeRecordFrame);
+  const finalFrame = frames.at(-1) || makeRecordFrame({ ...finalRecord, symbols: finalSymbols }, 0);
   const entryId = entry.entry_id;
   const sourceUrl = `https://nomad-lab.eu/prod/v1/gui/search/entries/entry/id/${encodeURIComponent(entryId)}`;
   return {
     name: material.chemical_formula_reduced || `NOMAD ${entryId.slice(0, 8)}`,
     format: "NOMAD archive",
-    atoms: atomsData.positions.map((position, index) => ({
-      species: symbols[index], position: position.map((value) => value * 1e10),
-      occupancy: 1, occupancyTotal: 1,
-      occupancyAlternatives: [{ species: symbols[index], fraction: 1 }],
-      calculationForceEvPerAngstrom: forceVectors?.[index] || null,
-    })),
-    cell: atomsData.lattice_vectors.map((vector) => vector.map((value) => value * 1e10)),
-    pbc: atomsData.periodic?.map(Boolean) || [true, true, true],
+    atoms: finalFrame.atoms,
+    cell: finalFrame.cell,
+    pbc: finalFrame.pbc,
+    ...(frames.length > 1 ? { frames } : {}),
     metadata: {
       source: "NOMAD",
       entryId,
@@ -159,24 +266,21 @@ export function nomadArchiveToStructure(entry, archiveResponse) {
       crystalSystem: symmetry.crystal_system,
       spaceGroupNumber: symmetry.space_group_number,
       spaceGroup: symmetry.space_group_symbol || "unassigned",
-      calculation: {
-        available: Boolean(calculation),
-        sourcePath: "run/*/calculation[-1] paired with run/*/system[-1]",
-        systemReference: calculation?.system_ref || null,
-        methodReference: calculation?.method_ref || null,
-        programName: program.name || null,
-        programVersion: program.version || null,
-        totalEnergyElectronVolt,
-        energyPerPrimitiveAtomElectronVolt: totalEnergyElectronVolt === null
-          ? null : totalEnergyElectronVolt / atomsData.positions.length,
-        forceCoverage: forceVectors ? 1 : 0,
-        forceRmsElectronVoltPerAngstrom,
-        forceMaximumElectronVoltPerAngstrom,
-        energyUnit: "eV",
-        forceUnit: "eV/Å",
-        forcesUsedForGrowth: false,
-        absoluteEnergyComparedAcrossEntries: false,
-      },
+      calculation: finalFrame.metadata.calculation,
+      preferredFrameIndex: Math.max(0, frames.length - 1),
+      relaxationSequence: frames.length > 1 ? {
+        available: true,
+        sourcePath: `run/${selectedRunIndex}/system + calculation system_ref`,
+        originalSystemCount: systemRecords.length,
+        topologyCompatibleSystemCount: topologyRecords.length,
+        retainedFrameCount: frames.length,
+        retainedSystemIndices: retainedRecords.map((record) => record.systemIndex),
+        fixedTopology: true,
+        orderedSnapshots: true,
+        physicalTimeAvailable: false,
+        integratedAsTrajectory: false,
+        usedAsGeometricEnsembleOnly: true,
+      } : { available: false, retainedFrameCount: 1, integratedAsTrajectory: false },
     },
   };
 }
@@ -199,8 +303,13 @@ export async function randomNomadStructure(elementValues, options = {}) {
     const entry = page.data?.[0];
     if (!entry) continue;
     try {
+      const hasRelaxation = Boolean(entry.results?.properties?.geometry_optimization);
       const archive = await postJson(`${NOMAD_API}/entries/${encodeURIComponent(entry.entry_id)}/archive/query`, {
-        required: { run: {
+        required: { run: hasRelaxation ? {
+          program: "*",
+          system: { atoms: "*" },
+          calculation: { energy: "*", forces: "*", system_ref: "*", method_ref: "*" },
+        } : {
           program: "*",
           "system[-1]": { atoms: "*" },
           "calculation[-1]": { energy: "*", forces: "*", system_ref: "*", method_ref: "*" },

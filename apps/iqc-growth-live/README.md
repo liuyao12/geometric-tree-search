@@ -4207,3 +4207,34 @@ phonon calculation, free energy, activation barrier, rate, or physical clock.
 Absolute total energies are not compared across entries, methods, cells, or
 compositions. Forces do not change clustering, marking, candidate geometry,
 admission, ranking, relaxation, growth, or post-growth classification.
+
+When NOMAD identifies a geometry optimization, the browser now requests the
+run's full `system` and `calculation` lists instead of discarding everything
+but the result. Calculations are paired to systems through `system_ref` (with a
+same-length positional fallback only for archives that omit resolved
+references), and only snapshots with identical atom count, species, and order
+are retained. At most 24 evenly spaced snapshots—including the first and
+final—enter the browser; the final state remains the default growth frame.
+Every retained frame is expanded by exactly the same integer supercell, so
+fixed atom identity and per-site force provenance survive the visualization.
+Entries without geometry-optimization metadata continue to use the compact
+final-system request, and archive responses above 32 MB fail closed rather
+than exhausting the browser.
+
+The input panel turns those snapshots into an interactive same-run relaxation
+strip. Its mint curve is energy relative to the final state per primitive atom;
+its coral curve is residual-force RMS. Clicking a point selects that archived
+geometry and force field. The existing ensemble switch can either pool all
+fixed-topology snapshots into contact, coordination, angular, and pair-distance
+uncertainty envelopes or run the selected-frame ablation. The cluster cover,
+port grammar, marking, and growth seed always come from one explicitly selected
+frame; frames are never concatenated into a fictitious material.
+
+Archive ordering is not interpreted as physical time. The portal does not
+receive optimizer iteration duration, velocities, an integration time step, or
+a calibrated dynamical path, and it does not infer them. Same-run energy
+differences may be plotted because method, composition, and atom identity are
+fixed; they are not compared between database entries. The receipt hashes every
+retained structure and records the system/calculation indices, energy and force
+series, down-sampling rule, and the facts that temporal ordering, forces, and
+energies never select a GCTS action.
