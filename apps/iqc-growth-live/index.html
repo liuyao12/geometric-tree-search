@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260824-18">
+  <link rel="stylesheet" href="./style.css?v=20260824-19">
   <script type="importmap">
     {
       "imports": {
@@ -232,6 +232,12 @@
             </select>
           </label>
           <p class="sample-note">Curated fixtures are saved, deterministic controls. Composition search above draws a fresh public database entry.</p>
+          <div id="iceViMicrostateControls" class="ensemble-controls" hidden aria-label="Ice VI occupational realization">
+            <div class="database-heading"><strong>Ice-rule realization</strong><span id="iceViMicrostateState">diffraction average · unresolved</span></div>
+            <button id="iceViMicrostateButton" class="database-button" type="button">Sample one geometry-valid D₂O microstate</button>
+            <button id="iceViAverageButton" class="database-button secondary-button" type="button" hidden>Return to diffraction average</button>
+            <p id="iceViMicrostateStatus" class="control-note">Uses only the paired D/Vac positions and the four-connected oxygen network: one D per O–O bond and two covalent D per oxygen.</p>
+          </div>
           <div id="ensembleControls" class="ensemble-controls" hidden>
             <label class="field" for="ensembleFrameSelect">
               <span>Displayed / growth frame <b id="ensembleFrameCount">1 snapshot</b></span>
@@ -804,7 +810,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260824-51"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260824-6"></script>
+  <script type="module" src="./app.js?v=20260824-53"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260824-7"></script>
 </body>
 </html>

@@ -47,6 +47,7 @@ const SYSTEMS = {
       ["Inspect ordered Ice VIII cover", "iceVIII", 1],
       ["Inspect disordered Ice VI ambiguity", "iceVI", 1],
       ["Verify Ice VI growth is withheld", "iceVI", 4],
+      ["Sample Ice VI and inspect D₂O clusters", "iceVI", 1, "resolve-ice-vi"],
       ["Replay Ice Ih anchor trace", "iceIh", 4],
       ["Replay Ih → Ic transfer", "iceIc", 4],
     ],
@@ -398,25 +399,27 @@ function renderSystem(key) {
   byId("systemEvidenceCards").innerHTML = system.evidence.map(([label, value, note]) => `<article><small>${label}</small><strong>${value}</strong><p>${note}</p></article>`).join("");
   const actions = byId("atlasSystemActions");
   actions.hidden = !system.actions?.length;
-  actions.replaceChildren(...(system.actions || []).map(([label, scenario, stage]) => {
+  actions.replaceChildren(...(system.actions || []).map(([label, scenario, stage, preparation]) => {
     const button = document.createElement("button");
     button.type = "button";
     button.textContent = label;
     button.dataset.atlasScenario = scenario;
     button.dataset.atlasStage = String(stage);
-    button.addEventListener("click", () => launchWorkflow(scenario, stage));
+    button.addEventListener("click", () => launchWorkflow(scenario, stage, preparation));
     return button;
   }));
   drawGrowthChart(system);
 }
 
-function launchWorkflow(scenario, stage) {
+function launchWorkflow(scenario, stage, preparation = null) {
   const scenarioSelect = byId("scenarioSelect");
   const stageButton = document.querySelector(`[data-pipeline-stage="${stage}"]`);
   if (!scenarioSelect?.querySelector(`option[value="${scenario}"]`) || !stageButton) return;
   closeAtlas();
   scenarioSelect.value = scenario;
   scenarioSelect.dispatchEvent(new Event("change", { bubbles: true }));
+  if (preparation === "resolve-ice-vi" && !byId("iceViAverageButton")?.hidden) byId("iceViAverageButton").click();
+  if (preparation === "resolve-ice-vi") byId("iceViMicrostateButton")?.click();
   stageButton.click();
   stageButton.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }

@@ -2485,6 +2485,19 @@ occupancy-valued ensemble grammar is supplied. Thus the ordered case tests
 molecular discovery, while the disordered case tests scientifically correct
 ambiguity handling.
 
+The browser now makes the next claim boundary interactive rather than hiding
+it. An optional geometry-only resolver groups the 320 half-occupied D sites
+into 160 two-position O--D···O alternatives and verifies degree four at every
+oxygen. A seeded Euler orientation of each of the two oxygen-network components
+selects one donor-side D per bond and exactly two donor bonds per oxygen,
+producing a reproducible 240-atom microstate. The unresolved average remains
+the default and still withholds growth. In the opt-in realization, the generic
+learner finds the D2O molecular cluster, bridge clusters, and the two O4 gap
+isometry classes before enabling exploratory growth. The seed, graph counts,
+ice-rule certificates, and absence of energy/target selection enter the
+receipt. No held-out Ice-VI continuation, kinetic weighting, equilibrium
+ensemble, or experimental instantaneous configuration is claimed.
+
 The H2O colored-metric signature and the O6 void signature transfer exactly
 between the two polytypes; both cubic bridge classes occur in the three-class
 hexagonal atlas. Atom permutation and arbitrary proper rigid motion preserve

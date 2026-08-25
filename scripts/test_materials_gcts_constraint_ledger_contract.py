@@ -14,8 +14,8 @@ def test_constraint_ledger_covers_admission_and_ranking_terms() -> None:
 
     assert 'id="constraintLedger"' in html
     assert "geometry-as-physics ledger" in html
-    assert 'style.css?v=20260824-18' in html
-    assert 'app.js?v=20260824-51' in html
+    assert 'style.css?v=20260824-19' in html
+    assert 'app.js?v=20260824-53' in html
     assert 'function renderConstraintLedger(state, mode = "configured")' in source
     for term in (
         "species / hard core",

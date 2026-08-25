@@ -267,6 +267,7 @@ body.atlas-open { overflow: hidden; }
 .database-button { width: 100%; min-height: 33px; margin-top: 8px; border: 1px solid rgba(101,225,188,.42); background: rgba(101,225,188,.08); color: var(--mint); font-size: 9px; cursor: pointer; }
 .database-button:hover { border-color: var(--mint); background: rgba(101,225,188,.13); }
 .database-button:disabled { opacity: .55; cursor: wait; }
+.database-button.secondary-button { margin-top: 0; border-color: rgba(151,177,190,.3); background: rgba(151,177,190,.045); color: var(--muted); }
 .source-link { display: inline-block; margin-top: 7px; color: var(--faint); font: 7px var(--mono); text-underline-offset: 3px; }
 .local-import { margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--line); }
 .local-import summary { color: var(--faint); font: 8px var(--mono); cursor: pointer; }

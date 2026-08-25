@@ -59,7 +59,8 @@ import {
 import {
   generateIceViAverageObservation,
   ICE_VI_BROWSER_FIXTURE,
-} from "./ice-vi-browser-fixture.js?v=20260824-1";
+  resolveIceViIceRuleMicrostate,
+} from "./ice-vi-browser-fixture.js?v=20260824-2";
 
 const ICE_MOLECULAR_PORT_ARTIFACT = await fetch(new URL(
   "./ice-molecular-port-artifact.json?v=20260824-1", import.meta.url)).then((response) => {
@@ -71,6 +72,11 @@ validateIceMolecularPortArtifact(ICE_MOLECULAR_PORT_ARTIFACT);
 const $ = (id) => document.getElementById(id);
 const viewport = $("viewport");
 const scenarioSelect = $("scenarioSelect");
+const iceViMicrostateControls = $("iceViMicrostateControls");
+const iceViMicrostateButton = $("iceViMicrostateButton");
+const iceViAverageButton = $("iceViAverageButton");
+const iceViMicrostateState = $("iceViMicrostateState");
+const iceViMicrostateStatus = $("iceViMicrostateStatus");
 const ensembleControls = $("ensembleControls");
 const ensembleFrameSelect = $("ensembleFrameSelect");
 const ensembleFrameCount = $("ensembleFrameCount");
@@ -576,6 +582,8 @@ let iceAnchorWaveIndex = 0;
 let importedStructure = null;
 let importedFrameIndex = 0;
 let ensembleEvidenceMode = "all";
+let iceViMicrostate = null;
+let iceViMicrostateSeed = 0;
 let selectedDatabaseElements = ["Na", "Cl"];
 let markingDraft = { channels: 0, reach: 2, representation: "sites" };
 let markingLibrary = [];
@@ -817,11 +825,69 @@ function renderEnsembleControls() {
 }
 
 function currentMaterial() {
-  return scenarioSelect.value === "imported" && importedStructure ? importedStructure.material : MATERIALS[scenarioSelect.value];
+  if (scenarioSelect.value === "imported" && importedStructure) return importedStructure.material;
+  const material = MATERIALS[scenarioSelect.value];
+  if (scenarioSelect.value !== "iceVI" || !iceViMicrostate) return material;
+  return {
+    ...material,
+    name: "ice VI · sampled D₂O microstate",
+    cell: "tetragonal ice VI · one geometry-valid occupational realization",
+    audit: "geometry-only ice-rule realization + molecular/connection/gap cover",
+    averageStructureSites: false,
+    occupancyWeightedAtomCount: null,
+    growthWithheld: false,
+    crystallographicOccupancy: {
+      ...material.crystallographicOccupancy,
+      representation: "one sampled 240-atom D₂O realization derived from the 400-site diffraction average",
+      partialSites: 0,
+      totalVacancyFraction: 0,
+      realizationSeed: iceViMicrostate.audit.seed,
+      realizationMethod: iceViMicrostate.audit.method,
+    },
+    fixtureProvenance: {
+      ...material.fixtureProvenance,
+      name: "proton-disordered D₂O ice VI · sampled ice-rule microstate",
+      countLabel: "240 realized atoms · derived from 400 average sites",
+    },
+    note: "A deterministic Euler orientation of the measured four-connected oxygen graph selects one of each paired D/Vac alternatives. The realization obeys two D per oxygen and one D per O–O bond; it is a sampled microstate, not a refinement claim.",
+  };
+}
+
+function renderIceViMicrostateControls() {
+  const visible = scenarioSelect.value === "iceVI";
+  iceViMicrostateControls.hidden = !visible;
+  if (!visible) return;
+  if (!iceViMicrostate) {
+    iceViAverageButton.hidden = true;
+    iceViMicrostateState.textContent = "diffraction average · unresolved";
+    iceViMicrostateButton.textContent = "Sample one geometry-valid D₂O microstate";
+    iceViMicrostateStatus.textContent = "Uses only the paired D/Vac positions and the four-connected oxygen network: one D per O–O bond and two covalent D per oxygen.";
+    return;
+  }
+  const audit = iceViMicrostate.audit;
+  iceViAverageButton.hidden = false;
+  iceViMicrostateState.textContent = `sample ${audit.seed} · ${audit.realizedAtoms} atoms`;
+  iceViMicrostateButton.textContent = "Sample a different ice-rule microstate";
+  iceViMicrostateStatus.textContent = `${audit.oxygenAtoms} O · ${audit.selectedDeuteriumAtoms} D · ${audit.oxygenBonds} hydrogen bonds · ${audit.connectedOxygenNetworks} interpenetrating networks. Both ice rules pass; the reported cell supplies minimum images, while no energy or potential selects the state.`;
+}
+
+function currentRecursiveBenchmark() {
+  const benchmark = RECURSIVE_BENCHMARKS[scenarioSelect.value] || RECURSIVE_BENCHMARKS.imported;
+  if (scenarioSelect.value !== "iceVI" || !iceViMicrostate) return benchmark;
+  return {
+    hierarchy: ["D₂O", "H-bond bridges", "O₄ voids"],
+    curve: [240],
+    mark: "sampled ice-rule connection geometry",
+    action: "generic molecular/port search",
+    speed: "exploratory explicit continuation",
+    gate: "valid microstate · growth uncertified",
+    status: "control",
+    note: "The diffraction average remains unchanged in provenance. A geometry-only Euler orientation selects one reproducible 240-atom occupational microstate with two covalent D per oxygen and one D per O–O bond. Molecular, bridge, and O₄ gap clusters are then learned from that realization. Search is enabled as an exploratory generic continuation; no Ice-VI held-out precision, kinetics, stationary rule, or experimental instantaneous configuration is claimed.",
+  };
 }
 
 function updateRecursiveBenchmark() {
-  const benchmark = RECURSIVE_BENCHMARKS[scenarioSelect.value] || RECURSIVE_BENCHMARKS.imported;
+  const benchmark = currentRecursiveBenchmark();
   [hierarchyL1.textContent, hierarchyL2.textContent, hierarchyL3.textContent] = benchmark.hierarchy.map(String);
   recursiveMark.textContent = benchmark.mark;
   recursiveAction.textContent = benchmark.action;
@@ -2049,8 +2115,7 @@ function makeIceViiiReferenceConfiguration() {
     || first.species.localeCompare(second.species) || first.sourceIndex - second.sourceIndex);
 }
 
-function makeIceViAverageReferenceConfiguration() {
-  const observation = generateIceViAverageObservation();
+function makeIceViAverageReferenceConfiguration(observation = generateIceViAverageObservation()) {
   const center = new THREE.Vector3(
     observation.cell[0][0] / 2,
     observation.cell[1][1] / 2,
@@ -2059,24 +2124,23 @@ function makeIceViAverageReferenceConfiguration() {
   const scale = .92 / MATERIALS.iceVI.spacingA;
   return observation.atoms.map((atom, sourceIndex) => {
     const pA = new THREE.Vector3(...atom.position);
-    const site = {
-      species: atom.species,
-      occupancy: atom.occupancy,
-      occupancyAlternatives: atom.occupancyAlternatives.map((entry) => ({ ...entry })),
-    };
+    const site = { species: atom.species, occupancy: atom.occupancy,
+      occupancyAlternatives: atom.occupancyAlternatives.map((entry) => ({ ...entry })) };
+    const resolved = Boolean(observation.audit);
     return {
       pA,
       p: pA.clone().sub(center).multiplyScalar(scale),
-      species: occupancyChemistryToken(site),
+      species: resolved ? atom.species : occupancyChemistryToken(site),
       displaySpecies: atom.species,
-      occupancyLabel: occupancyDisplayLabel(site),
+      occupancyLabel: resolved ? null : occupancyDisplayLabel(site),
       occupancyAlternatives: site.occupancyAlternatives,
       occupancy: atom.occupancy,
       uIsoA2: atom.uIsoA2,
       thermalSigmaA: Math.sqrt(atom.uIsoA2),
-      family: "published-ice-vi-average",
+      family: resolved ? "published-ice-vi-realization" : "published-ice-vi-average",
       sourceIndex,
       q: atom.q.slice(),
+      occupationalRealizationSeed: resolved ? observation.audit.seed : null,
     };
   }).sort((first, second) => first.p.lengthSq() - second.p.lengthSq()
     || first.species.localeCompare(second.species) || first.sourceIndex - second.sourceIndex);
@@ -2174,7 +2238,10 @@ function makeReferenceConfiguration(scenario = scenarioSelect.value) {
   if (scenario === "imported" && importedStructure) return makeImportedFrameReference();
   if (MATERIALS[scenario]?.icePolytype) return makeIceReferenceConfiguration(MATERIALS[scenario].icePolytype);
   if (MATERIALS[scenario]?.molecularFixture === "ice-viii-cod-1566658") return makeIceViiiReferenceConfiguration();
-  if (MATERIALS[scenario]?.molecularFixture === "ice-vi-cod-1567346-average") return makeIceViAverageReferenceConfiguration();
+  if (MATERIALS[scenario]?.molecularFixture === "ice-vi-cod-1567346-average") {
+    return makeIceViAverageReferenceConfiguration(scenario === scenarioSelect.value && iceViMicrostate
+      ? iceViMicrostate : generateIceViAverageObservation());
+  }
   if (MATERIALS[scenario]?.molecularFixture === "dry-ice-pa3") return makeDryIceReferenceConfiguration();
   if (MATERIALS[scenario]?.publishedFixture === "cdyb-offcenter-r14") return makeCdYbReferenceConfiguration();
   if (MATERIALS[scenario]?.intrinsicDimension === 2) return makePlanarReferenceConfiguration(scenario);
@@ -2843,15 +2910,23 @@ function isHydrogenIsotope(species) {
 }
 
 function discoveredWaterComponents(discovery) {
-  if (!discovery.accepted || discovery.types.length !== 1) return null;
-  const formula = discovery.types[0].formula;
-  const hydrogen = formula.find(([species]) => isHydrogenIsotope(species));
-  const oxygen = formula.find(([species]) => species === "O");
-  const waterFormula = formula.length === 2
-    && hydrogen?.[1] === 2 && oxygen?.[1] === 1;
-  if (!waterFormula || discovery.components.some((component) => component.length !== 3)) return null;
-  const isotope = hydrogen[0];
-  return { ...discovery, waterIsotope: isotope, waterLabel: isotope === "D" ? "D₂O" : "H₂O" };
+  if (!discovery.components.length || discovery.components.some((component) => component.length !== 3)
+    || !discovery.types.length || discovery.unsupported?.length) return null;
+  const formulas = discovery.types.map((type) => type.formula);
+  const isotope = formulas[0].find(([species]) => isHydrogenIsotope(species))?.[0];
+  const waterFormula = formulas.every((formula) => formula.length === 2
+    && formula.some(([species, count]) => species === isotope && count === 2)
+    && formula.some(([species, count]) => species === "O" && count === 1));
+  if (!isotope || !waterFormula) return null;
+  return {
+    ...discovery,
+    accepted: true,
+    reason: discovery.accepted ? discovery.reason : "recurrent finite water topology with multiple metric conformers",
+    waterIsotope: isotope,
+    waterLabel: isotope === "D" ? "D₂O" : "H₂O",
+    metricConformerTypes: discovery.types.length,
+    metricConformerRecurrenceRequired: false,
+  };
 }
 
 function molecularDiscoverySummary(discovery, route) {
@@ -3234,9 +3309,8 @@ function decorateIceViOxygenVoidBoundaries(source, cover) {
       const placementIndices = [];
       // The full observed ring count remains in the audit, while only one
       // representative per exact isometry class enters the interactive
-      // occurrence graph.  Ice VI is an ambiguity/control fixture, not an
-      // executable growth grammar; duplicating all symmetry-related empty
-      // boundaries would add quadratic UI work without adding information.
+      // gallery. Duplicating all symmetry-related empty boundaries would add
+      // quadratic drawing work without adding a new isometry class.
       members.slice(0, 1).forEach((cycle) => {
         const coverIndex = cover.placements.length + addedPlacements.length;
         placementIndices.push(coverIndex);
@@ -3279,7 +3353,11 @@ function decorateIceViOxygenVoidBoundaries(source, cover) {
 function buildExhaustiveClusterCover(source) {
   const molecularDiscovery = molecularComponentHypothesis(source);
   const waterDiscovery = discoveredWaterComponents(molecularDiscovery);
-  if (waterDiscovery) return buildWaterClusterCover(source, waterDiscovery);
+  if (waterDiscovery) {
+    const waterCover = buildWaterClusterCover(source, waterDiscovery);
+    return currentMaterial().molecularFixture === "ice-vi-cod-1567346-average"
+      ? decorateIceViOxygenVoidBoundaries(source, waterCover) : waterCover;
+  }
   if (molecularDiscovery.accepted) {
     const molecularCover = buildGenericMolecularClusterCover(source, molecularDiscovery);
     if (molecularCover) return molecularCover;
@@ -4671,7 +4749,7 @@ async function buildExperimentReceipt() {
   const material = currentMaterial();
   const markingConfig = currentMarkingConfig();
   const activeMarking = selectedMarking();
-  const benchmark = RECURSIVE_BENCHMARKS[scenarioSelect.value] || RECURSIVE_BENCHMARKS.imported;
+  const benchmark = currentRecursiveBenchmark();
   const cell = currentCell();
   const coverVisible = pipelineStage >= 1;
   const markingVisible = pipelineStage >= 3;
@@ -4687,7 +4765,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-51",
+      buildId: "20260824-53",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -4734,6 +4812,16 @@ async function buildExperimentReceipt() {
         occupationalChemistryTokens: [...new Set(referenceAtoms.map((atom) => atom.species))].sort(),
         alternativesCollapsedToPrimarySpecies: false,
         uniqueMolecularAssignmentClaimed: false,
+        sourceAverageUniquelyDeterminesAssignment: false,
+        occupationalAlternativeSelectionPerformed: Boolean(iceViMicrostate),
+        sampledIceRuleMicrostate: iceViMicrostate ? {
+          ...iceViMicrostate.audit,
+          sourceAverageSites: generateIceViAverageObservation().atoms.length,
+          sourceOccupancyWeightedAtoms: MATERIALS.iceVI.occupancyWeightedAtomCount,
+          selectedBeforeClusterLearning: true,
+          selectedByTargetOrGrowthScore: false,
+          claimedAsExperimentalInstantaneousConfiguration: false,
+        } : null,
       } : null,
       structureSha256: await structureDigest(referenceAtoms, "angstrom"),
       trajectoryEnsemble: trajectoryFrames.length > 1 ? {
@@ -6835,6 +6923,7 @@ function enterPipelineStage(index, options = {}) {
   updatePipelineButtons();
   syncStageOptions();
   renderEnsembleControls();
+  renderIceViMicrostateControls();
   frameStage();
   if (options.play) setPlaying(true);
 }
@@ -7554,7 +7643,7 @@ function renderPolicyComparison() {
 
 function liveGrowthCertificate() {
   if (pipelineStage < 4) return null;
-  const benchmark = RECURSIVE_BENCHMARKS[scenarioSelect.value] || RECURSIVE_BENCHMARKS.imported;
+  const benchmark = currentRecursiveBenchmark();
   if (currentMaterial().growthWithheld) return {
     mode: "occupational-disorder claim boundary",
     state: "growth withheld",
@@ -8072,6 +8161,20 @@ copyReceiptButton.addEventListener("click", () => withReceiptStatus(copyReceiptB
 }));
 scenarioSelect.addEventListener("change", () => {
   renderEnsembleControls();
+  renderIceViMicrostateControls();
+  enterPipelineStage(0);
+});
+iceViMicrostateButton.addEventListener("click", () => {
+  iceViMicrostateSeed++;
+  iceViMicrostate = resolveIceViIceRuleMicrostate(iceViMicrostateSeed);
+  orderPrototypeLibrary = null;
+  renderIceViMicrostateControls();
+  enterPipelineStage(0);
+});
+iceViAverageButton.addEventListener("click", () => {
+  iceViMicrostate = null;
+  orderPrototypeLibrary = null;
+  renderIceViMicrostateControls();
   enterPipelineStage(0);
 });
 ensembleFrameSelect.addEventListener("change", () => {

@@ -796,6 +796,20 @@ oxygen, the finite-molecule hypothesis, tree search, and post-growth phase
 classification fail closed. This is an occupancy-ambiguity control, not a
 claim that D2O ceases to be the physical local molecule.
 
+Ice VI also exposes an explicit opt-in realization step. From geometry alone,
+the browser pairs the two half-occupied D alternatives on every O--O bond,
+builds the measured four-connected oxygen graph, and orients each closed Euler
+circuit. Selecting the donor-side D on every oriented edge yields exactly one
+D per O--O bond and two covalent D per oxygen: 80 O + 160 D = 240 realized
+atoms on two interpenetrating networks. A seed makes the choice reproducible;
+another click samples a different valid orientation. Only after this choice
+does the ordinary molecular pipeline rediscover a D2O cluster, hydrogen-bond
+connection clusters, and O4 gap polyhedra and enable exploratory tree search.
+The receipt records the seed, method, both ice-rule checks, and that neither an
+energy nor a target score selected the microstate. This is one valid
+instantaneous realization, not a claim that diffraction determined it or that
+all occupational states are equiprobable.
+
 Cluster identification now exposes its colored metric-isometry tolerance as a
 stage-local scientific control: strict `1.0%`, balanced `2.5%`, or thermally
 broadened `5.0%` of the observed nearest-neighbor distance. The selected value

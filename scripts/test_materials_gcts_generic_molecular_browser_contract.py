@@ -32,7 +32,8 @@ def test_molecule_connection_void_roles_are_explicit_and_label_free():
 
 
 def test_water_renderer_stays_a_specialized_view_after_generic_discovery():
-    assert "if (waterDiscovery) return buildWaterClusterCover(source, waterDiscovery);" in APP
+    assert "const waterCover = buildWaterClusterCover(source, waterDiscovery);" in APP
+    assert "decorateIceViOxygenVoidBoundaries(source, waterCover)" in APP
     assert "learnedCover.molecular?.water && currentMaterial().icePolytype" in APP
     assert 'visualKind: molecule ? "molecule" : connection ? "bridge" : "ring"' in APP
 

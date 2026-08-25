@@ -98,3 +98,126 @@ export function generateIceViAverageObservation() {
     pbc: Object.freeze([true, true, true]),
   });
 }
+
+function minimumImageDisplacement(first, second, lengths) {
+  return first.map((value, axis) => {
+    let delta = value - second[axis];
+    delta -= Math.round(delta / lengths[axis]) * lengths[axis];
+    return delta;
+  });
+}
+
+function periodicDistance(first, second, lengths) {
+  return Math.hypot(...minimumImageDisplacement(first, second, lengths));
+}
+
+function seededRank(edge, seed) {
+  let value = (seed ^ Math.imul(edge + 1, 0x9e3779b1)) >>> 0;
+  value ^= value >>> 16;
+  value = Math.imul(value, 0x7feb352d) >>> 0;
+  value ^= value >>> 15;
+  return value >>> 0;
+}
+
+// Resolve one instantaneous ice-rule microstate from the diffraction-average
+// geometry alone.  Every half-occupied D site identifies an O--O bond through
+// its two nearest oxygens.  The resulting four-regular oxygen graph admits an
+// Euler orientation: orienting each closed Euler circuit gives exactly two
+// outgoing bonds per oxygen.  Selecting the D candidate nearer the outgoing
+// oxygen therefore enforces both Bernal--Fowler rules without energies, a
+// lattice label, an expected network count, or hidden source-site identities.
+export function resolveIceViIceRuleMicrostate(seed = 1) {
+  const average = generateIceViAverageObservation();
+  const lengths = average.cell.map((vector, axis) => vector[axis]);
+  const oxygens = average.atoms.filter((atom) => atom.species === "O");
+  const deuteria = average.atoms.filter((atom) => atom.species === "D");
+  const bonds = new Map();
+
+  deuteria.forEach((atom) => {
+    const nearest = oxygens.map((oxygen, oxygenIndex) => ({
+      oxygenIndex,
+      distance: periodicDistance(atom.position, oxygen.position, lengths),
+    })).sort((first, second) => first.distance - second.distance || first.oxygenIndex - second.oxygenIndex).slice(0, 2);
+    const endpoints = nearest.map((entry) => entry.oxygenIndex).sort((first, second) => first - second);
+    const key = endpoints.join(":");
+    if (!bonds.has(key)) bonds.set(key, { endpoints, candidates: [] });
+    bonds.get(key).candidates.push({ atom, nearestOwner: nearest[0].oxygenIndex, nearestDistance: nearest[0].distance,
+      partnerDistance: nearest[1].distance });
+  });
+
+  const edgeRecords = [...bonds.values()].sort((first, second) => first.endpoints[0] - second.endpoints[0]
+    || first.endpoints[1] - second.endpoints[1]);
+  if (!edgeRecords.length || edgeRecords.some((edge) => edge.candidates.length !== 2
+    || new Set(edge.candidates.map((candidate) => candidate.nearestOwner)).size !== 2)) {
+    throw new Error("Ice VI average sites do not form paired O--D···O bond alternatives");
+  }
+  const adjacency = Array.from({ length: oxygens.length }, () => []);
+  edgeRecords.forEach((edge, edgeIndex) => edge.endpoints.forEach((oxygenIndex) => adjacency[oxygenIndex].push({
+    edgeIndex, other: edge.endpoints[0] === oxygenIndex ? edge.endpoints[1] : edge.endpoints[0],
+  })));
+  if (adjacency.some((neighbors) => neighbors.length !== 4)) {
+    throw new Error("Ice VI oxygen framework is not four-connected");
+  }
+  adjacency.forEach((neighbors) => neighbors.sort((first, second) => seededRank(first.edgeIndex, seed)
+    - seededRank(second.edgeIndex, seed) || first.edgeIndex - second.edgeIndex));
+
+  const used = new Set();
+  const orientations = new Map();
+  const components = [];
+  for (let start = 0; start < oxygens.length; start++) {
+    if (adjacency[start].every(({ edgeIndex }) => used.has(edgeIndex))) continue;
+    const componentEdges = [];
+    const stack = [start];
+    while (stack.length) {
+      const current = stack[stack.length - 1];
+      const next = adjacency[current].find(({ edgeIndex }) => !used.has(edgeIndex));
+      if (!next) { stack.pop(); continue; }
+      used.add(next.edgeIndex);
+      orientations.set(next.edgeIndex, [current, next.other]);
+      componentEdges.push(next.edgeIndex);
+      stack.push(next.other);
+    }
+    components.push(componentEdges);
+  }
+  if (used.size !== edgeRecords.length) throw new Error("Ice VI Euler orientation omitted oxygen bonds");
+
+  const selectedDeuteria = edgeRecords.map((edge, edgeIndex) => {
+    const [donor] = orientations.get(edgeIndex);
+    const selected = edge.candidates.find((candidate) => candidate.nearestOwner === donor);
+    if (!selected) throw new Error("Ice VI bond lacks a donor-side D alternative");
+    return selected.atom;
+  });
+  const donorCounts = Array(oxygens.length).fill(0);
+  const bondCounts = Array(oxygens.length).fill(0);
+  orientations.forEach(([donor, acceptor]) => { donorCounts[donor]++; bondCounts[donor]++; bondCounts[acceptor]++; });
+  const atoms = [...oxygens, ...selectedDeuteria].map((atom) => Object.freeze({
+    ...atom,
+    occupancy: 1,
+    occupancyAlternatives: Object.freeze([Object.freeze({ species: atom.species, fraction: 1 })]),
+  })).sort((first, second) => first.species.localeCompare(second.species)
+    || first.position[0] - second.position[0] || first.position[1] - second.position[1]
+    || first.position[2] - second.position[2]);
+
+  return Object.freeze({
+    atoms: Object.freeze(atoms), cell: average.cell, pbc: average.pbc,
+    audit: Object.freeze({
+      method: "geometry-only Euler orientation of paired O--D···O alternatives",
+      seed: Number(seed) || 0,
+      oxygenAtoms: oxygens.length,
+      oxygenBonds: edgeRecords.length,
+      candidateDeuteriumSites: deuteria.length,
+      selectedDeuteriumAtoms: selectedDeuteria.length,
+      realizedAtoms: atoms.length,
+      connectedOxygenNetworks: components.length,
+      oxygenDegreeHistogram: Object.freeze({ 4: bondCounts.filter((count) => count === 4).length }),
+      donorCountHistogram: Object.freeze({ 2: donorCounts.filter((count) => count === 2).length }),
+      oneDeuteriumPerBond: selectedDeuteria.length === edgeRecords.length,
+      twoCovalentDeuteriaPerOxygen: donorCounts.every((count) => count === 2),
+      hiddenSiteLabelsUsed: false,
+      reportedPeriodicCellUsedForMinimumImage: true,
+      latticeSiteIndicesUsed: false,
+      preassignedOxygenBondGraphUsed: false,
+      energyOrPotentialUsed: false,
+    }),
+  });
+}

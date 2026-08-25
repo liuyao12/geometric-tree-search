@@ -15,7 +15,7 @@ def test_published_disordered_ice_is_selectable_and_provenanced():
 
 
 def test_average_structure_never_invents_one_molecular_assignment():
-    assert 'species: occupancyChemistryToken(site)' in APP
+    assert 'species: resolved ? atom.species : occupancyChemistryToken(site)' in APP
     assert 'occupationally disordered sites use the irregular colored-support route' in APP
     assert 'uniqueMolecularAssignmentClaimed: false' in APP
     assert 'declines a unique D₂O partition' in APP
@@ -30,6 +30,18 @@ def test_average_structure_never_invents_one_molecular_assignment():
     assert 'playButton.disabled = pipelineStage === 4 && Boolean(material.growthWithheld)' in APP
 
 
+def test_ice_rule_microstate_is_optional_geometry_only_and_audited():
+    assert 'id="iceViMicrostateControls"' in HTML
+    assert 'id="iceViMicrostateButton"' in HTML
+    assert 'id="iceViAverageButton"' in HTML
+    assert "resolveIceViIceRuleMicrostate" in APP
+    assert 'name: "ice VI · sampled D₂O microstate"' in APP
+    assert 'growthWithheld: false' in APP
+    assert 'realizationSeed: iceViMicrostate.audit.seed' in APP
+    assert 'Sample a different ice-rule microstate' in APP
+    assert 'Return to diffraction average' in HTML
+
+
 def test_curated_occupancy_reaches_receipt_and_display():
     assert 'material.crystallographicOccupancy ? {' in APP
     assert 'alternativesCollapsedToPrimarySpecies: false' in APP
@@ -40,5 +52,6 @@ def test_curated_occupancy_reaches_receipt_and_display():
 if __name__ == "__main__":
     test_published_disordered_ice_is_selectable_and_provenanced()
     test_average_structure_never_invents_one_molecular_assignment()
+    test_ice_rule_microstate_is_optional_geometry_only_and_audited()
     test_curated_occupancy_reaches_receipt_and_display()
     print("ice VI browser disorder contract: passed")
