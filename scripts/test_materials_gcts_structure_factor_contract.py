@@ -25,7 +25,7 @@ def test_powder_structure_factor_is_interactive_and_posthoc_only() -> None:
     assert "omits X-ray form factors" in source
     assert "not experimental intensity or a growth input" in source
     assert "structureFactorError" in source
-    assert 'if (pipelineStage < 4) return {' in source
+    assert 'if (pipelineStage < 4 || currentMaterial().growthWithheld) return {' in source
     assert 'order: "not classified"' in source
     assert "evaluated only after Material Growth begins" in source
     assert source.count("powderStructureFactor") == 2, "S(q) may be imported and evaluated only in the evidence cache"

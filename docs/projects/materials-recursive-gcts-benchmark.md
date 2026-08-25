@@ -2472,6 +2472,19 @@ physical field.
 | proton-ordered ice Ih | 216 / 72 H2O | 1 | 144 / 9 | 180 O6 / 1 | 71 / 6 | 216/216, 0 backtracks |
 | proton-ordered ice Ic | 192 / 64 H2O | 1 | 128 / 6 | 128 O6 / 1 | 63 / 6 | 192/192, 0 backtracks |
 
+The browser also separates two published D2O cases. COD 1566658 (ice VIII)
+has fully occupied O/D sites and therefore admits a unique 64-molecule D2O
+cover of its 192-atom `2×2×2` observation. COD 1567346 (ice VI) is a
+diffraction-average, proton-disordered structure: 80 O sites are fully occupied
+and 320 candidate D sites have occupancy one half. The portal preserves all
+400 average sites (240 occupancy-weighted atoms), refuses to invent a unique
+D2O partition, and derives 80 O4 void boundaries in two metric-isometry classes
+from the fully occupied oxygen framework alone. Its growth controls and phase
+classifier remain disabled until an ice-rule microstate or an explicit
+occupancy-valued ensemble grammar is supplied. Thus the ordered case tests
+molecular discovery, while the disordered case tests scientifically correct
+ambiguity handling.
+
 The H2O colored-metric signature and the O6 void signature transfer exactly
 between the two polytypes; both cubic bridge classes occur in the three-class
 hexagonal atlas. Atom permutation and arbitrary proper rigid motion preserve

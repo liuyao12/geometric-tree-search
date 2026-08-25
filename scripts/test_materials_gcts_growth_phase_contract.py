@@ -16,8 +16,8 @@ def test_phase_inference_is_posthoc_traced_and_receipted() -> None:
 
     assert "const PHASE_CLASSIFICATION_MINIMUM_ATOMS = 32" in source
     assert "const PHASE_CLASSIFICATION_THRESHOLD = .58" in source
-    assert 'if (pipelineStage < 4) return {' in source
-    assert 'order: "not classified", structure: "classification begins after growth"' in source
+    assert 'if (pipelineStage < 4 || currentMaterial().growthWithheld) return {' in source
+    assert 'currentMaterial().growthWithheld ? "occupational realization unresolved" : "classification begins after growth"' in source
     assert "posthocOnly: true, usedAsGrowthInput: false" in source
     assert "independentPhaseDetermination: false" in source
     assert 'structure = crystalPrototypeResolved ? bestCrystal.material.name : "periodic crystal · prototype unresolved"' in source
@@ -51,7 +51,7 @@ def test_phase_inference_is_posthoc_traced_and_receipted() -> None:
 
     assert "function receiptEmergentClassification()" in source
     assert "emergentClassification: receiptEmergentClassification()" in source
-    assert 'stageGate: "material growth only"' in source
+    assert 'stageGate: currentMaterial().growthWithheld ? "material growth unavailable for average occupancy" : "material growth only"' in source
     assert "usedForCandidateAdmission: false" in source
     assert "usedForBranchRanking: false" in source
     assert "selectedFixturePresentInPrototypeLibrary" in source
@@ -71,7 +71,7 @@ def test_phase_inference_is_posthoc_traced_and_receipted() -> None:
     assert "truncates every prototype to the same atom count" in normalized_readme
     assert "curated material dimension is not consulted" in normalized_readme
     assert 'style.css?v=20260824-18' in html
-    assert 'app.js?v=20260824-50' in html
+    assert 'app.js?v=20260824-51' in html
 
 
 if __name__ == "__main__":

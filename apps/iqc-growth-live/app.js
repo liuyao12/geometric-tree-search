@@ -56,6 +56,10 @@ import {
   generateIceViiiObservation,
   ICE_VIII_BROWSER_FIXTURE,
 } from "./ice-viii-browser-fixture.js?v=20260824-1";
+import {
+  generateIceViAverageObservation,
+  ICE_VI_BROWSER_FIXTURE,
+} from "./ice-vi-browser-fixture.js?v=20260824-1";
 
 const ICE_MOLECULAR_PORT_ARTIFACT = await fetch(new URL(
   "./ice-molecular-port-artifact.json?v=20260824-1", import.meta.url)).then((response) => {
@@ -344,6 +348,36 @@ const MATERIALS = {
       sourceRevision: ICE_VIII_BROWSER_FIXTURE.codRevision,
     },
     note: "A published neutron-diffraction control with explicit, fully occupied deuterium sites. D is retained as an isotope; the learner receives only D/O identities and Cartesian positions, not the D₂O formula or ice-VIII label." },
+  iceVI: { name: "ice VI · disordered D₂O average", elements: ["D", "O"], spacingA: .97,
+    cell: "tetragonal proton-disordered ice · COD 1567346 · 2×2×2 average structure",
+    periodicWindow: true, order: "crystal", symmetry: "P4₂/nmc · #137",
+    audit: "published half-occupied D sites + occupancy-aware irregular/gap cover",
+    motifShellCutoff: 3.0, descriptorCutoff: 3.35, overlapDistanceCutoff: 3.55,
+    molecularFixture: "ice-vi-cod-1567346-average", averageStructureSites: true,
+    occupancyWeightedAtomCount: 240, growthWithheld: true,
+    recordedMeasurementConditions: {
+      temperature: { value: ICE_VI_BROWSER_FIXTURE.measurement.temperatureK, unit: "K", sourceTag: "_diffrn_ambient_temperature" },
+      environment: { value: ICE_VI_BROWSER_FIXTURE.measurement.radiation, sourceTag: "_diffrn_radiation_probe" },
+      provenance: "recorded diffraction conditions from COD 1567346",
+    },
+    crystallographicOccupancy: {
+      representation: "80 fully occupied O sites plus 320 candidate D sites at occupancy 1/2; vacancy retained explicitly",
+      mixedSites: 0, partialSites: 320, inferredEqualFractionSites: 0, totalVacancyFraction: 160,
+      formalChargeCoverage: 0, formalChargeResolvedSites: 0, netSuppliedCellFormalCharge: 0,
+    },
+    fixtureProvenance: {
+      id: `COD-${ICE_VI_BROWSER_FIXTURE.codId}`,
+      name: "proton-disordered D₂O ice VI average structure",
+      atomCount: 400,
+      countLabel: "400 average sites · 240 occupancy-weighted atoms",
+      articleDoi: ICE_VI_BROWSER_FIXTURE.doi,
+      sourceUrl: `https://www.crystallography.net/cod/${ICE_VI_BROWSER_FIXTURE.codId}.cif`,
+      license: ICE_VI_BROWSER_FIXTURE.license,
+      sourceSha256: ICE_VI_BROWSER_FIXTURE.cifSha256,
+      normalizedAtomsSha256: ICE_VI_BROWSER_FIXTURE.normalizedAtomsSha256,
+      sourceRevision: ICE_VI_BROWSER_FIXTURE.codRevision,
+    },
+    note: "A published diffraction-average structure. Every half-occupied D/vacancy site remains an explicit occupational alternative. The positions do not specify a unique assignment of two deuteria to each oxygen, so molecular discovery must fail closed instead of inventing D₂O molecules." },
   dryIce: { name: "dry ice CO₂-I", elements: ["C", "O"], spacingA: 1.168, cell: "cubic molecular solid · Pa-3 · a = 5.578 Å", periodicWindow: true, referenceCellA: 16.734, order: "crystal", symmetry: "Pa-3 · #205", audit: "generic molecular + connection + void cover", motifShellCutoff: 4.2, descriptorCutoff: 4.6, overlapDistanceCutoff: 4.8, molecularFixture: "dry-ice-pa3", note: "A non-water molecular-crystal control: the learner must discover linear CO₂ components and intermolecular connection/void topology without receiving the CO₂ formula or Pa-3 label." },
   graphene: { name: "graphene monolayer", elements: ["C"], spacingA: 1.42, cell: "single hexagonal sheet", order: "crystal", symmetry: "p6/mmm layer group", audit: "2D translations + diffraction", intrinsicDimension: 2, planarLayers: [{ angle: 0, zA: 0, species: ["C", "C"] }], note: "A one-component intrinsic-2D positive control learned after arbitrary embedding in 3D." },
   hbn: { name: "aligned hBN bilayer", elements: ["B", "N"], spacingA: 1.44, cell: "aligned hexagonal sheets · 3.33 Å separation", order: "crystal", symmetry: "commensurate bilayer", audit: "2D translations + finite registry", intrinsicDimension: 2, planarLayers: [{ angle: 0, zA: -1.665, species: ["B", "N"] }, { angle: 0, zA: 1.665, species: ["B", "N"] }], note: "A commensurate bilayer whose finite interlayer registry can be represented by a bounded local marking." },
@@ -364,6 +398,9 @@ const RECURSIVE_BENCHMARKS = {
   iceVIII: { hierarchy: ["D₂O", "bridges", "voids"], curve: [192], mark: "published ordered-isotope geometry",
     action: "cover audit only", speed: "no autonomous claim", gate: "real-data molecular generalization", status: "control",
     note: "COD 1566658 supplies fully occupied O and D coordinates from neutron diffraction. The live path must rediscover D₂O molecules and the interpenetrating-network connection/void grammar from positions alone. This is a published known-window cover audit; no held-out ice-VIII continuation, stationary rule, or high-pressure kinetics is claimed." },
+  iceVI: { hierarchy: ["O framework", "D/Vac alternatives", "gap terminals"], curve: [400], mark: "occupancy-aware colored sites",
+    action: "average-structure cover audit", speed: "no unique molecular growth claim", gate: "pass ambiguity · growth withheld", status: "control",
+    note: "COD 1567346 supplies a proton-disordered average structure: 80 O positions and 320 candidate D positions at occupancy 1/2 in the 2×2×2 observation. Because the average coordinates do not select two D sites around each oxygen, the portal preserves D/vacancy alternatives, declines a unique D₂O partition, and routes the configuration through irregular supports plus explicit gaps. This is the scientifically correct ambiguity result, not a failed molecule detector." },
   dryIce: { hierarchy: ["molecule", "pair", "void"], curve: [3, 324], mark: "generic molecular ports", action: "94 replay decisions", speed: "324 / 324 · fixed point", gate: "exact known-window control", status: "limit", note: "A saved Pa-3 CO₂-I window exercises the generic, non-water molecular front end. Starting from one 3-atom CO₂ component, 94 deterministic covering decisions produce 95 rigid placements at causal depth 14 and replay all 324/324 known colored sites with zero missing, duplicate, or extraneous atoms. The frozen observed frontier then exhausts with zero outside-window emissions. This is an exact target-aware known-window replay—not autonomous continuation, stationarity, an exponential rule, or a physical growth rate." },
   graphene: { hierarchy: [1, 4, 16], curve: [373, 1495, 5983, 23935, 95743, 382975, 1531903], mark: "one C₂ sheet pose", action: "6 area rewrites → 1.53m", speed: "≈4× area per action", gate: "pass · 2D synthetic", status: "pass", note: "The generic planar atlas learns one C₂ motif pose and exactly predicts an unseen 1,495-atom disk." },
   hbn: { hierarchy: [2, 8, 32], curve: [746, 2990, 11960, 47840, 191360, 765440, 3061760], mark: "finite registry + pose fallback", action: "6 area rewrites → 3.06m", speed: "≈4× area per action", gate: "pass · 2D synthetic", status: "pass", note: "The registry vocabulary remains bounded for the aligned bilayer and the generic planar atlas preserves both learned sheet poses." },
@@ -655,6 +692,10 @@ function referenceCount() {
   return referenceAtoms.length || importedStructure?.atoms.length || DEFAULT_REFERENCE_COUNT;
 }
 
+function referenceEntityLabel(count = referenceCount()) {
+  return `${count.toLocaleString()} ${currentMaterial()?.averageStructureSites ? "average sites" : "atoms"}`;
+}
+
 function currentImportedFrame() {
   return importedStructure?.frames?.[importedFrameIndex] || importedStructure;
 }
@@ -686,7 +727,8 @@ function evidenceFrameCount() {
 }
 
 function activeMeasurementConditions() {
-  if (scenarioSelect.value !== "imported" || !importedStructure) return null;
+  if (scenarioSelect.value !== "imported") return currentMaterial()?.recordedMeasurementConditions || null;
+  if (!importedStructure) return null;
   return currentImportedFrame()?.metadata?.measurementConditions
     || importedStructure.metadata?.measurementConditions || null;
 }
@@ -728,7 +770,7 @@ function renderPublishedFixtureProvenance() {
   if (!provenance) return;
   publishedFixtureLicense.textContent = provenance.license;
   const atomCount = provenance.atoms?.length || provenance.atomCount;
-  publishedFixtureName.textContent = `${provenance.name}${atomCount ? ` · ${atomCount.toLocaleString()} physical atoms` : ""}`;
+  publishedFixtureName.textContent = `${provenance.name}${provenance.countLabel ? ` · ${provenance.countLabel}` : atomCount ? ` · ${atomCount.toLocaleString()} physical atoms` : ""}`;
   publishedFixtureArticle.href = `https://doi.org/${provenance.articleDoi}`;
   publishedFixtureArticle.textContent = "article DOI";
   publishedFixtureArchive.href = provenance.sourceUrl || `https://doi.org/${provenance.archiveDoi}`;
@@ -869,7 +911,7 @@ function updateRecursiveBenchmark() {
     const bar = document.createElement("div");
     bar.classList.toggle("active", index <= activeLevel);
     bar.style.setProperty("--bar-height", `${7 + Math.log10(Math.max(1, count)) / maximumLog * 27}px`);
-    bar.title = `action ${index}: ${count.toLocaleString()} atoms represented`;
+    bar.title = `action ${index}: ${count.toLocaleString()} ${currentMaterial().averageStructureSites ? "average sites" : "atoms"} represented`;
     const label = document.createElement("span");
     label.textContent = count >= 1e6 ? `${(count / 1e6).toFixed(1)}m` : count >= 1e3 ? `${Math.round(count / 1e3)}k` : String(count);
     bar.appendChild(label);
@@ -1020,12 +1062,14 @@ function translationClosureScore(source, basis) {
 }
 
 function inferLiveOrder() {
-  if (pipelineStage < 4) return {
-    order: "not classified", structure: "classification begins after growth", symmetry: "withheld", confidence: 0,
+  if (pipelineStage < 4 || currentMaterial().growthWithheld) return {
+    order: "not classified", structure: currentMaterial().growthWithheld ? "occupational realization unresolved" : "classification begins after growth", symmetry: "withheld", confidence: 0,
     sampleAtoms: 0, liveAtoms: 0, minimumAtoms: PHASE_CLASSIFICATION_MINIMUM_ATOMS,
     historyKey: "withheld", posthocOnly: true, usedAsGrowthInput: false,
     independentPhaseDetermination: false, classificationThreshold: PHASE_CLASSIFICATION_THRESHOLD,
-    note: "The supplied configuration is used to learn geometry, not to preassign a phase. RDF, coordination, S(q), translation closure, and prototype labels are evaluated only after Material Growth begins.",
+    note: currentMaterial().growthWithheld
+      ? "The diffraction-average occupancy does not define one instantaneous material realization. Phase classification and growth remain withheld until a valid occupational microstate or ensemble representation is supplied."
+      : "The supplied configuration is used to learn geometry, not to preassign a phase. RDF, coordination, S(q), translation closure, and prototype labels are evaluated only after Material Growth begins.",
   };
   const availableSource = classificationSample();
   if (availableSource.length < PHASE_CLASSIFICATION_MINIMUM_ATOMS) return {
@@ -1147,7 +1191,7 @@ function phaseTrajectoryColor(order) {
 }
 
 function recordLiveOrder(inference) {
-  if (pipelineStage !== 4) return;
+  if (pipelineStage !== 4 || currentMaterial().growthWithheld) return;
   const previous = liveOrderHistory[liveOrderHistory.length - 1];
   if (previous?.historyKey === inference.historyKey) return;
   liveOrderHistory.push({
@@ -1180,14 +1224,17 @@ function drawPhaseTrajectory() {
   context.setTransform(ratio, 0, 0, ratio, 0, 0);
   context.clearRect(0, 0, width, height);
   const points = liveOrderHistory;
-  if (pipelineStage < 4 || !points.length) {
+  if (pipelineStage < 4 || currentMaterial().growthWithheld || !points.length) {
     context.fillStyle = "#647a73";
     context.font = "7px ui-monospace, SFMono-Regular, Menlo, monospace";
     context.textAlign = "center";
-    context.fillText(pipelineStage < 4 ? "classification withheld until material growth" : "waiting for live atoms", width / 2, height / 2);
-    phaseTrajectoryState.textContent = pipelineStage < 4 ? "withheld" : "waiting";
-    phaseTrajectoryCanvas.setAttribute("aria-label", pipelineStage < 4
-      ? "Phase confidence is withheld until material growth begins"
+    const withheld = pipelineStage < 4 || currentMaterial().growthWithheld;
+    context.fillText(currentMaterial().growthWithheld ? "classification withheld · occupational state unresolved"
+      : pipelineStage < 4 ? "classification withheld until material growth" : "waiting for live atoms", width / 2, height / 2);
+    phaseTrajectoryState.textContent = withheld ? "withheld" : "waiting";
+    phaseTrajectoryCanvas.setAttribute("aria-label", withheld
+      ? currentMaterial().growthWithheld ? "Phase confidence is withheld because the occupational state is unresolved"
+        : "Phase confidence is withheld until material growth begins"
       : "Phase confidence trajectory is waiting for live atoms");
     return;
   }
@@ -1239,7 +1286,7 @@ function updateOrderAudit() {
   structureNameValue.textContent = inference.structure;
   symmetryValue.textContent = inference.symmetry;
   confidenceValue.textContent = `${Math.round(inference.confidence * 100)}%`;
-  phaseWindowValue.textContent = pipelineStage < 4 ? "withheld" : `${inference.sampleAtoms}/${ANALYSIS_WINDOW_COUNT}`;
+  phaseWindowValue.textContent = pipelineStage < 4 || currentMaterial().growthWithheld ? "withheld" : `${inference.sampleAtoms}/${ANALYSIS_WINDOW_COUNT}`;
   phaseMarginValue.textContent = inference.prototypeMargin === undefined ? "—" : `+${Math.round(inference.prototypeMargin * 100)} pt`;
   phaseIndependentValue.textContent = inference.independentBestPrototypeEvidenceMatch === undefined
     ? "—" : `${inference.independentBestPrototypeOrder} ${Math.round(inference.independentBestPrototypeEvidenceMatch * 100)}%`;
@@ -1767,7 +1814,7 @@ function renderStructureStats() {
     rdfStatus.textContent = `tail ⟨g⟩ ${knownTail.mean.toFixed(2)}${liveTail ? ` → ${liveTail.mean.toFixed(2)}` : ""} · RMS₁ ${knownTail.rmsFromUnity.toFixed(2)}`;
     rdfStatus.title = currentMaterial().order === "amorphous"
       ? "An amorphous RDF has short-range peaks but should approach g(r)=1 at long range; it is not flat at every radius."
-      : `Known ${referenceCount()} atoms; ${liveWindowLabel} ${live.count}.`;
+      : `Known ${referenceEntityLabel()}; ${liveWindowLabel} ${live.count}.`;
     drawChartFrame(rdfChart, "r / a", "g");
     const rdfMaximum = Math.max(1, ...knownRdf, ...liveRdf) * 1.08;
     const unityY = 96 - Math.min(1, 1 / rdfMaximum) * 84;
@@ -2002,6 +2049,39 @@ function makeIceViiiReferenceConfiguration() {
     || first.species.localeCompare(second.species) || first.sourceIndex - second.sourceIndex);
 }
 
+function makeIceViAverageReferenceConfiguration() {
+  const observation = generateIceViAverageObservation();
+  const center = new THREE.Vector3(
+    observation.cell[0][0] / 2,
+    observation.cell[1][1] / 2,
+    observation.cell[2][2] / 2,
+  );
+  const scale = .92 / MATERIALS.iceVI.spacingA;
+  return observation.atoms.map((atom, sourceIndex) => {
+    const pA = new THREE.Vector3(...atom.position);
+    const site = {
+      species: atom.species,
+      occupancy: atom.occupancy,
+      occupancyAlternatives: atom.occupancyAlternatives.map((entry) => ({ ...entry })),
+    };
+    return {
+      pA,
+      p: pA.clone().sub(center).multiplyScalar(scale),
+      species: occupancyChemistryToken(site),
+      displaySpecies: atom.species,
+      occupancyLabel: occupancyDisplayLabel(site),
+      occupancyAlternatives: site.occupancyAlternatives,
+      occupancy: atom.occupancy,
+      uIsoA2: atom.uIsoA2,
+      thermalSigmaA: Math.sqrt(atom.uIsoA2),
+      family: "published-ice-vi-average",
+      sourceIndex,
+      q: atom.q.slice(),
+    };
+  }).sort((first, second) => first.p.lengthSq() - second.p.lengthSq()
+    || first.species.localeCompare(second.species) || first.sourceIndex - second.sourceIndex);
+}
+
 function makeSyntheticReferenceSite(qx, qy, qz, sourceIndex = 0, scenario = scenarioSelect.value) {
   const material = MATERIALS[scenario];
   let family = qx < -Math.abs(qy) * .35 ? "BC8" : qx > Math.abs(qy) * .35 ? "glass" : "IQC";
@@ -2094,6 +2174,7 @@ function makeReferenceConfiguration(scenario = scenarioSelect.value) {
   if (scenario === "imported" && importedStructure) return makeImportedFrameReference();
   if (MATERIALS[scenario]?.icePolytype) return makeIceReferenceConfiguration(MATERIALS[scenario].icePolytype);
   if (MATERIALS[scenario]?.molecularFixture === "ice-viii-cod-1566658") return makeIceViiiReferenceConfiguration();
+  if (MATERIALS[scenario]?.molecularFixture === "ice-vi-cod-1567346-average") return makeIceViAverageReferenceConfiguration();
   if (MATERIALS[scenario]?.molecularFixture === "dry-ice-pa3") return makeDryIceReferenceConfiguration();
   if (MATERIALS[scenario]?.publishedFixture === "cdyb-offcenter-r14") return makeCdYbReferenceConfiguration();
   if (MATERIALS[scenario]?.intrinsicDimension === 2) return makePlanarReferenceConfiguration(scenario);
@@ -2156,6 +2237,11 @@ function currentCell() {
   if (currentMaterial().molecularFixture === "ice-viii-cod-1566658") {
     const [rx, ry, rz] = ICE_VIII_BROWSER_FIXTURE.repeats;
     const [a, b, c] = ICE_VIII_BROWSER_FIXTURE.cellAngstrom;
+    return [new THREE.Vector3(rx * a, 0, 0), new THREE.Vector3(0, ry * b, 0), new THREE.Vector3(0, 0, rz * c)];
+  }
+  if (currentMaterial().molecularFixture === "ice-vi-cod-1567346-average") {
+    const [rx, ry, rz] = ICE_VI_BROWSER_FIXTURE.repeats;
+    const [a, b, c] = ICE_VI_BROWSER_FIXTURE.cellAngstrom;
     return [new THREE.Vector3(rx * a, 0, 0), new THREE.Vector3(0, ry * b, 0), new THREE.Vector3(0, 0, rz * c)];
   }
   if (currentMaterial().referenceCellA) {
@@ -3072,6 +3158,120 @@ function buildIrregularClusterCover(source, molecularDiscovery) {
   };
 }
 
+function canonicalCycleKey(cycle) {
+  const orders = [];
+  const reversed = cycle.slice().reverse();
+  for (let offset = 0; offset < cycle.length; offset++) {
+    orders.push([...cycle.slice(offset), ...cycle.slice(0, offset)].join(":"));
+    orders.push([...reversed.slice(offset), ...reversed.slice(0, offset)].join(":"));
+  }
+  return orders.sort()[0];
+}
+
+function unwrappedAtomicCycle(source, cycle) {
+  if (!cycle.length) return [];
+  const vectors = [new THREE.Vector3()];
+  for (let index = 1; index < cycle.length; index++) {
+    vectors.push(vectors[index - 1].clone().add(periodicDisplacement(source[cycle[index - 1]], source[cycle[index]])));
+  }
+  const centroid = vectors.reduce((sum, vector) => sum.add(vector), new THREE.Vector3())
+    .multiplyScalar(1 / vectors.length);
+  return vectors.map((vector) => vector.clone().sub(centroid));
+}
+
+function decorateIceViOxygenVoidBoundaries(source, cover) {
+  const oxygen = source.map((atom, index) => atom.species === "O" ? index : -1).filter((index) => index >= 0);
+  if (oxygen.length < 4) return cover;
+  const fourthNeighborDistances = oxygen.map((center) => oxygen.filter((index) => index !== center)
+    .map((index) => periodicDisplacement(source[center], source[index]).length()).sort((first, second) => first - second)[3]);
+  const finiteFourth = fourthNeighborDistances.filter(Number.isFinite).sort((first, second) => first - second);
+  if (!finiteFourth.length) return cover;
+  const cutoff = finiteFourth[Math.floor(finiteFourth.length / 2)] * 1.035;
+  const adjacency = new Map(oxygen.map((center) => [center, new Set(oxygen.filter((index) => index !== center
+    && periodicDisplacement(source[center], source[index]).length() <= cutoff))]));
+  const minimumDegree = Math.min(...[...adjacency.values()].map((neighbors) => neighbors.size));
+  if (minimumDegree < 2) return cover;
+  const cycles = new Map();
+  const maximumRingSize = 8;
+  oxygen.forEach((start) => {
+    const stack = [[start, [start]]];
+    while (stack.length) {
+      const [current, path] = stack.pop();
+      if (path.length >= 4 && adjacency.get(current).has(start)) {
+        const key = canonicalCycleKey(path);
+        if (!cycles.has(key)) cycles.set(key, path.slice());
+      }
+      if (path.length === maximumRingSize) continue;
+      adjacency.get(current).forEach((neighbor) => {
+        if (neighbor === start || neighbor < start || path.includes(neighbor)) return;
+        stack.push([neighbor, [...path, neighbor]]);
+      });
+    }
+  });
+  const chordless = [...cycles.values()].filter((cycle) => {
+    for (let first = 0; first < cycle.length; first++) for (let second = first + 1; second < cycle.length; second++) {
+      const adjacentInCycle = second === first + 1 || (first === 0 && second === cycle.length - 1);
+      if (!adjacentInCycle && adjacency.get(cycle[first]).has(cycle[second])) return false;
+    }
+    return true;
+  });
+  if (!chordless.length) return cover;
+  const minimumRingSize = Math.min(...chordless.map((cycle) => cycle.length));
+  const shortestRings = chordless.filter((cycle) => cycle.length === minimumRingSize);
+  const classes = new Map();
+  shortestRings.forEach((cycle) => {
+    const signature = coloredPeriodicSupportSignature(source, cycle);
+    const members = classes.get(signature) || [];
+    members.push(cycle);
+    classes.set(signature, members);
+  });
+  const typeOffset = Math.max(-1, ...cover.types.map((type) => type.type)) + 1;
+  const addedTypes = [];
+  const addedPlacements = [];
+  [...classes.entries()].sort(([first], [second]) => first.localeCompare(second))
+    .forEach(([signature, members], classIndex) => {
+      const type = typeOffset + classIndex;
+      const placementIndices = [];
+      // The full observed ring count remains in the audit, while only one
+      // representative per exact isometry class enters the interactive
+      // occurrence graph.  Ice VI is an ambiguity/control fixture, not an
+      // executable growth grammar; duplicating all symmetry-related empty
+      // boundaries would add quadratic UI work without adding information.
+      members.slice(0, 1).forEach((cycle) => {
+        const coverIndex = cover.placements.length + addedPlacements.length;
+        placementIndices.push(coverIndex);
+        addedPlacements.push({ center: cycle[0], support: cycle.slice(), type, residual: false, gap: true,
+          kind: "oxygen-framework void boundary", family: "gap", ring: cycle.slice(), coverIndex });
+      });
+      const representative = members[0];
+      addedTypes.push({
+        type, medoid: representative[0], element: `O${minimumRingSize} void`, shortLabel: `O${minimumRingSize} gap`,
+        label: `O${minimumRingSize} gap · I${classIndex + 1}`, geometry: "oxygen-framework void-boundary polygon",
+        count: members.length, observedOccurrences: members.length, residual: false, gap: true, visualKind: "ring",
+        customSupport: representative.slice(), customVectors: unwrappedAtomicCycle(source, representative),
+        classSignature: signature, classPlacementIndices: placementIndices,
+        classIndex, classCount: classes.size,
+      });
+    });
+  cover.placements.push(...addedPlacements);
+  cover.types.push(...addedTypes);
+  if (cover.galleryTypes !== cover.types) cover.galleryTypes.push(...addedTypes);
+  cover.incidence = source.map((_, atomIndex) => cover.placements.map((placement, placementIndex) =>
+    placement.support.includes(atomIndex) ? placementIndex : -1).filter((placementIndex) => placementIndex >= 0));
+  cover.voidBoundary = {
+    source: "fully occupied oxygen-framework shortest chordless rings",
+    neighborCutoffAngstrom: cutoff,
+    oxygenCoordinationMinimum: minimumDegree,
+    ringSize: minimumRingSize,
+    occurrences: shortestRings.length,
+    interactiveRepresentatives: addedPlacements.length,
+    classes: addedTypes.length,
+    hydrogenOccupancyUsed: false,
+    expectedRingSizeUsed: false,
+  };
+  return cover;
+}
+
 // Discover exact recurring colored metric supports. Atom-centred coordination
 // polyhedra are only one candidate family; centre-free bond-lens supports can
 // enter the same cover, and any uncovered connected region becomes an explicit
@@ -3084,7 +3284,9 @@ function buildExhaustiveClusterCover(source) {
     const molecularCover = buildGenericMolecularClusterCover(source, molecularDiscovery);
     if (molecularCover) return molecularCover;
   }
-  return buildIrregularClusterCover(source, molecularDiscovery);
+  const irregular = buildIrregularClusterCover(source, molecularDiscovery);
+  return currentMaterial().molecularFixture === "ice-vi-cod-1567346-average"
+    ? decorateIceViOxygenVoidBoundaries(source, irregular) : irregular;
 }
 
 function clusterGalleryTypes() {
@@ -3349,7 +3551,7 @@ function updateClusterGalleryInspector(galleryIndex) {
     : `${displayTopology.faces.length} explicit face${displayTopology.faces.length === 1 ? "" : "s"}`;
   inspector.innerHTML = `
     <div><small>selected class</small><strong>${cluster.label || `C${galleryIndex + 1}`}</strong><span>${cluster.geometry || "colored support polyhedron"} · ${surfaceLabel} · ${displayTopology.edges.length} topology edges</span></div>
-    <div><small>complete-cover evidence</small><strong>${coveredAtoms.size.toLocaleString()} / ${referenceCount().toLocaleString()} atoms</strong><span>${placementIndices.length} occurrence${placementIndices.length === 1 ? "" : "s"} · ${supportSites} sites / occurrence · ${sharedAtoms} overlap-shared atoms</span></div>
+    <div><small>complete-cover evidence</small><strong>${coveredAtoms.size.toLocaleString()} / ${referenceEntityLabel()}</strong><span>${placementIndices.length} occurrence${placementIndices.length === 1 ? "" : "s"} · ${supportSites} sites / occurrence · ${sharedAtoms} overlap-shared sites</span></div>
     <div><small>proper-pose support</small><strong>${poseCount || "unresolved"} orbit${poseCount === 1 ? "" : "s"} · ${poseModel.properSymmetryGaugeCount || 1} proper gauge${poseModel.properSymmetryGaugeCount === 1 ? "" : "s"} · χ ${chirality}</strong><span>${poseStatus} · intrinsic right-handed frames remove translation and atom order; mirrors remain distinct</span></div>
     <div><small>connection capacity</small><strong>${ports} port role${ports === 1 ? "" : "s"} → ${channels} channel${channels === 1 ? "" : "s"}</strong><span>${coverKind}</span></div>`;
 }
@@ -3367,6 +3569,7 @@ function buildMolecularGalleryToolbar(types) {
     ["bridge", "Bridge polyhedra"], ["gap", "Gap boundaries"],
   ] : [
     ["all", "All cover classes"], ["support", "Recurring supports"],
+    ...(types.some((cluster) => cluster.gap && !cluster.residual) ? [["gap", "Void boundaries"]] : []),
     ["residual", "Gap / residual terminals"],
   ];
   filters.forEach(([family, label], index) => {
@@ -3429,7 +3632,7 @@ function rebuildClusterGallery() {
     canvas.dataset.cluster = String(galleryIndex);
     const label = document.createElement("div");
     label.className = "cluster-card-label";
-    const placements = cluster.classPlacementIndices?.length
+    const placements = cluster.observedOccurrences ?? cluster.classPlacementIndices?.length
       ?? learnedCover.placements.filter((placement) => placement.type === cluster.type).length;
     const familyIndex = cluster.familyType ?? galleryIndex;
     const galleryPose = learnedCover.molecular ? galleryPoseModel(cluster) : null;
@@ -4302,7 +4505,7 @@ function receiptComposition(source) {
 function receiptClusterRecord(cluster, index) {
   const familyIndex = cluster.familyType ?? index;
   const poseModel = galleryPoseModel(cluster);
-  const placements = cluster.classPlacementIndices?.length
+  const placements = cluster.observedOccurrences ?? cluster.classPlacementIndices?.length
     ?? learnedCover.placements.filter((placement) => placement.type === cluster.type).length;
   const supportSites = cluster.customSupport?.length
     || learnedCover.placements.find((placement) => placement.type === cluster.type)?.support.length || 1;
@@ -4313,6 +4516,7 @@ function receiptClusterRecord(cluster, index) {
     coverRole: clusterCoverRole(cluster),
     coloredSupportSites: supportSites,
     occurrences: placements,
+    interactiveRepresentativeOccurrences: cluster.classPlacementIndices?.length ?? placements,
     observedProperPoseOrbits: poseModel.orientations,
     properPoseSupport: poseModel.support,
     properSymmetryGaugeCount: poseModel.properSymmetryGaugeCount,
@@ -4391,8 +4595,9 @@ function receiptMicrostructureAudit() {
 function receiptEmergentClassification() {
   const inference = inferLiveOrder();
   return {
-    status: pipelineStage < 4 ? "withheld until material growth" : inference.order,
-    stageGate: "material growth only",
+    status: currentMaterial().growthWithheld ? "withheld; occupational realization unresolved"
+      : pipelineStage < 4 ? "withheld until material growth" : inference.order,
+    stageGate: currentMaterial().growthWithheld ? "material growth unavailable for average occupancy" : "material growth only",
     minimumLiveAtoms: PHASE_CLASSIFICATION_MINIMUM_ATOMS,
     maximumContiguousAnalysisWindowAtoms: ANALYSIS_WINDOW_COUNT,
     decisionThreshold: PHASE_CLASSIFICATION_THRESHOLD,
@@ -4482,7 +4687,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-50",
+      buildId: "20260824-51",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -4523,6 +4728,12 @@ async function buildExperimentReceipt() {
         netSuppliedCellFormalCharge: receiptRound(importedStructure?.validation?.netFormalCharge || 0),
         occupationalChemistryTokens: [...new Set(referenceAtoms.map((atom) => atom.species))].sort(),
         alternativesCollapsedToPrimarySpecies: false,
+      } : material.crystallographicOccupancy ? {
+        ...material.crystallographicOccupancy,
+        totalVacancyFraction: receiptRound(material.crystallographicOccupancy.totalVacancyFraction),
+        occupationalChemistryTokens: [...new Set(referenceAtoms.map((atom) => atom.species))].sort(),
+        alternativesCollapsedToPrimarySpecies: false,
+        uniqueMolecularAssignmentClaimed: false,
       } : null,
       structureSha256: await structureDigest(referenceAtoms, "angstrom"),
       trajectoryEnsemble: trajectoryFrames.length > 1 ? {
@@ -4726,6 +4937,7 @@ async function buildExperimentReceipt() {
       molecularFamilies: learnedCover.molecular || null,
       molecularDiscovery: learnedCover.molecularDiscovery || null,
       irregularMining: learnedCover.irregular || null,
+      emptyRegionBoundaries: learnedCover.voidBoundary || null,
       heterogeneousGeometryAudit: receiptMicrostructureAudit(),
       classes: clusterGalleryTypes().map(receiptClusterRecord),
     } : { status: "stage not entered" },
@@ -6606,6 +6818,7 @@ function enterPipelineStage(index, options = {}) {
   if (pipelineStage === 0 || pipelineStage === 1) atoms = referenceAtoms.map((atom) => cloneAtom(atom));
   else if (pipelineStage === 2) atoms = makeRepresentatives().map((atom) => cloneAtom(atom));
   else if (pipelineStage === 3) atoms = makeRepresentatives().map((atom) => cloneAtom(atom));
+  else if (currentMaterial().growthWithheld) atoms = referenceAtoms.map((atom) => cloneAtom(atom));
   else if (learnedCover.molecular?.water && currentMaterial().icePolytype) initializeIceAnchorSearch();
   else initializeOffLatticeSearch();
   if (pipelineStage < 4) rebuildSpatialIndex();
@@ -6656,13 +6869,13 @@ function updateStageNarrative() {
   const narratives = [
     {
       eyebrow: "input · static atom coordinates", title: "Begin with the configuration we know", phase: "observed",
-      caption: `${material.name}: element identities and Cartesian positions are supplied in ångströms; no phase or cluster labels are given.${evidenceFrameCount() > 1 ? ` ${evidenceFrameCount()} fixed-topology snapshots broaden the geometric envelopes without being concatenated.` : ""}`, badge: "input",
-      decision: material.name, copy: `The learner receives ${referenceCount()} element-labelled positions for the selected seed frame. ${material.cell}; measured median nearest-neighbor distance ${referenceSpacingA.toFixed(2)} Å.${evidenceFrameCount() > 1 ? ` Contact, coordination, and angle statistics pool ${coloredDistanceEnvelopes.atomPresentations.toLocaleString()} atom presentations across ${coloredDistanceEnvelopes.frameCount} frames.` : ""}`,
+      caption: `${material.name}: element identities and Cartesian positions are supplied in ångströms; no phase or cluster labels are given.${material.averageStructureSites ? " Half-occupied sites are alternatives in an average structure, not simultaneous atoms." : ""}${evidenceFrameCount() > 1 ? ` ${evidenceFrameCount()} fixed-topology snapshots broaden the geometric envelopes without being concatenated.` : ""}`, badge: "input",
+      decision: material.name, copy: `The learner receives ${referenceEntityLabel()} for the selected seed frame.${material.averageStructureSites ? ` Their total occupancy is ${material.occupancyWeightedAtomCount.toLocaleString()} atoms.` : ""} ${material.cell}; measured median nearest-neighbor distance ${referenceSpacingA.toFixed(2)} Å.${evidenceFrameCount() > 1 ? ` Contact, coordination, and angle statistics pool ${coloredDistanceEnvelopes.atomPresentations.toLocaleString()} atom presentations across ${coloredDistanceEnvelopes.frameCount} frames.` : ""}`,
       values: [materialElementLabels(material).join(" / "), material.cell, `${referenceSpacingA.toFixed(2)} Å`, `${evidenceFrameCount()} evidence frame${evidenceFrameCount() === 1 ? "" : "s"}`],
     },
     {
       eyebrow: "learning · radial + angular environments", title: "Cluster the environments actually present", phase: `${clusterGalleryTypes().length} cover types`,
-      caption: `${learnedCover.covered}/${referenceCount()} atoms are covered by ${learnedCover.placements.length} overlapping placements on the ${currentPbc().some(Boolean) ? "periodic quotient" : "finite non-periodic window"}. ${orientationAtlas.reduce((sum, entry) => sum + entry.orientations, 0)} symmetry-inequivalent cluster poses cover all observed occurrences.`, badge: "learn",
+      caption: `${learnedCover.covered}/${referenceCount()} ${material.averageStructureSites ? "average sites" : "atoms"} are covered by ${learnedCover.placements.length} overlapping placements on the ${currentPbc().some(Boolean) ? "periodic quotient" : "finite non-periodic window"}.${learnedCover.voidBoundary ? ` ${learnedCover.voidBoundary.occurrences} O${learnedCover.voidBoundary.ringSize} void boundaries encode empty-region geometry without choosing D occupations.` : ""} ${orientationAtlas.reduce((sum, entry) => sum + entry.orientations, 0)} symmetry-inequivalent cluster poses cover all observed occurrences.`, badge: "learn",
       decision: "Cluster cover and pose atlas computed", copy: "Element-resolved radial and angular descriptors define approximate isometry classes. Their centered colored point sets are compared in the laboratory frame, automatically quotienting each cluster's proper self-symmetries; uncovered components remain explicit residual types.",
       values: [`${descriptorCutoff().toFixed(2)}a cutoff`, `${orientationAtlas.reduce((sum, entry) => sum + entry.orientations, 0)} pose classes`, `${learnedCover.placements.length} placements`, learnedCover.molecular ? `${learnedCover.molecular.molecules} molecules · ${learnedCover.molecular.connections} connections · ${learnedCover.molecular.voids} voids` : `${learnedCover.residualTypes.length} residual types`],
     },
@@ -6727,19 +6940,27 @@ function updateStageNarrative() {
     }
   } else if (learnedCover.irregular) {
     narratives[1].eyebrow = "learning · exact irregular support cover";
-    narratives[1].title = "Mine recurring colored point sets, then cover every atom";
+    narratives[1].title = `Mine recurring colored point sets, then cover every ${material.averageStructureSites ? "average site" : "atom"}`;
     narratives[1].decision = "Center-free recurring-support cover computed";
-    narratives[1].copy = "Atomic coordination shells and center-free bond-lens supports are candidate generators only. Translation- and proper-rotation-invariant colored metric plus chirality signatures define the actual support classes; connected uncovered regions become explicit gap terminals.";
-    narratives[1].caption = `${learnedCover.covered}/${referenceCount()} atoms are represented by ${learnedCover.placements.length} support occurrences at ${(learnedCover.irregular.metricToleranceFraction * 100).toFixed(1)}% of the nearest-neighbour scale. The miner found ${learnedCover.irregular.recurringCoordinationClasses} recurring coordination classes and ${learnedCover.irregular.recurringCenterFreeClasses} recurring center-free candidates; ${learnedCover.irregular.selectedCenterFreeOccurrences} center-free occurrences were needed by the deterministic greedy complete cover and ${learnedCover.irregular.residualAtoms} atoms remain in explicit gap clusters.${learnedCover.irregular.disconnectedReplayComponents ? ` ${learnedCover.irregular.disconnectedReplayComponents} spatially separate cover components remain separate rather than receiving a nonlocal connector.` : ""}`;
+    narratives[1].copy = `Atomic coordination shells and center-free bond-lens supports are candidate generators only. Translation- and proper-rotation-invariant colored metric plus chirality signatures define the actual support classes; connected uncovered regions become explicit gap terminals.${learnedCover.voidBoundary ? " Fully occupied oxygen-framework rings additionally define empty-region boundaries without selecting any D/vacancy alternative." : ""}`;
+    narratives[1].caption = `${learnedCover.covered}/${referenceCount()} ${material.averageStructureSites ? "average sites" : "atoms"} are represented by ${learnedCover.placements.length} interactive support representatives at ${(learnedCover.irregular.metricToleranceFraction * 100).toFixed(1)}% of the nearest-neighbour scale. The miner found ${learnedCover.irregular.recurringCoordinationClasses} recurring coordination classes and ${learnedCover.irregular.recurringCenterFreeClasses} recurring center-free candidates; ${learnedCover.irregular.selectedCenterFreeOccurrences} center-free occurrences were needed by the deterministic greedy complete cover and ${learnedCover.irregular.residualAtoms} sites remain in explicit residual clusters.${learnedCover.voidBoundary ? ` ${learnedCover.voidBoundary.occurrences} shortest chordless O${learnedCover.voidBoundary.ringSize} boundaries form ${learnedCover.voidBoundary.classes} empty-region isometry classes.` : ""}${learnedCover.irregular.disconnectedReplayComponents ? ` ${learnedCover.irregular.disconnectedReplayComponents} spatially separate cover components remain separate rather than receiving a nonlocal connector.` : ""}`;
     narratives[1].values = [
       `${learnedCover.irregular.recurringCoordinationClasses} coordination classes`,
       `${learnedCover.irregular.recurringCenterFreeClasses} center-free candidates`,
       `${learnedCover.irregular.selectedCenterFreeOccurrences} selected center-free`,
-      `${learnedCover.residualTypes.length} gap classes · ${learnedCover.irregular.replayConnectorCount} local connectors`,
+      `${learnedCover.residualTypes.length + (learnedCover.voidBoundary?.classes || 0)} gap classes · ${learnedCover.irregular.replayConnectorCount} local connectors`,
     ];
     narratives[2].title = "Register rigid ports between the exact support occurrences";
     narratives[2].phase = `${overlapGrammar.rules.length} frozen rules`;
     narratives[2].copy = "Every port maps one complete colored support to another by a proper rigid transform. Residual gaps participate in exact known-window replay but are not promoted into recurrent continuation rules.";
+  }
+  if (material.growthWithheld) {
+    narratives[4] = {
+      eyebrow: "search · occupational state unresolved", title: "Withhold growth rather than materialize half-occupied atoms", phase: "no executable branch",
+      caption: "The average oxygen framework, D/vacancy alternatives, and empty-region boundaries remain inspectable. A valid ice-rule microstate or an explicit occupancy-valued ensemble grammar is required before tree search.", badge: "withheld",
+      decision: "No unique molecular seed state", copy: "The diffraction average does not select two deuteria around each oxygen. Treating all candidate D sites as simultaneous atoms would create a fictitious structure, so search and phase classification fail closed.",
+      values: ["0 executable actions", "target calls 0", "D/vacancy alternatives preserved", "growth claim false"],
+    };
   }
   const item = narratives[pipelineStage];
   eventKind.textContent = ["INPUT", "LEARN", "ENCODE", "TRAIN", "SEARCH"][pipelineStage];
@@ -7242,6 +7463,18 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "GCTS marking", status: policySelect.value === "marked" ? state.markingAccepted ? "pass" : "fail" : "diagnostic",
       value: policySelect.value === "marked" ? state.markingAccepted ? "compatible" : "mismatch" : "not gating",
       detail: "bounded transported connection section" },
+  ] : mode === "withheld" ? [
+    { name: "species / hard core", status: "diagnostic", value: "not executed", detail: "occupational state unresolved" },
+    { name: "shared support", status: "diagnostic", value: "not executed", detail: "no molecular seed realization" },
+    { name: "novel colored sites", status: "diagnostic", value: "not executed", detail: "average sites are not emitted atoms" },
+    { name: "public boundary", status: "diagnostic", value: "not executed", detail: "target calls 0" },
+    { name: "coordination capacity", status: "diagnostic", value: "inspection only", detail: "average-site geometry" },
+    { name: "angular envelope", status: "diagnostic", value: "inspection only", detail: "average-site geometry" },
+    { name: "elastic proxy", status: "diagnostic", value: "withheld", detail: "no branch ranking" },
+    { name: "composition reservoir", status: "diagnostic", value: "withheld", detail: "occupancy ensemble required" },
+    { name: "formal-charge reservoir", status: "diagnostic", value: "unavailable", detail: "no complete supplied oxidation-state channel" },
+    { name: "surface completion", status: "diagnostic", value: "withheld", detail: "no branch ranking" },
+    { name: "GCTS marking", status: "diagnostic", value: "not executed", detail: "inspectable sections only" },
   ] : mode === "specialized" ? [
     { name: "species / hard core", status: "pass", value: "backend-certified", detail: "frozen exact trace" },
     { name: "shared support", status: "pass", value: "frozen ports", detail: "proper-SE(3) molecular attachments" },
@@ -7322,6 +7555,21 @@ function renderPolicyComparison() {
 function liveGrowthCertificate() {
   if (pipelineStage < 4) return null;
   const benchmark = RECURSIVE_BENCHMARKS[scenarioSelect.value] || RECURSIVE_BENCHMARKS.imported;
+  if (currentMaterial().growthWithheld) return {
+    mode: "occupational-disorder claim boundary",
+    state: "growth withheld",
+    knownWindow: { status: "pass", title: `${referenceCount()} average sites preserved`,
+      detail: `${currentMaterial().occupancyWeightedAtomCount} occupancy-weighted atoms · no candidate site collapsed` },
+    continuation: { status: "open", title: "No unique molecular seed state",
+      detail: "The average diffraction structure does not choose two D sites around each oxygen." },
+    hierarchy: { status: "open", title: "Resolve an ice-rule realization first",
+      detail: "A sampled occupational microstate or an occupancy-valued ensemble grammar is required before growth." },
+    claimBoundary: { status: "pass", title: "No fictitious average-atom growth",
+      detail: "Play, branching, promotion, and phase classification remain disabled for this ambiguity control." },
+    metrics: { averageSites: referenceCount(), occupancyWeightedAtoms: currentMaterial().occupancyWeightedAtomCount,
+      targetCoordinatesUsed: false, uniqueMolecularAssignmentClaimed: false, growthExecuted: false },
+    benchmarkGate: benchmark.gate,
+  };
   if (iceAnchorTrace) {
     const processed = iceAnchorTrace.waves.slice(0, iceAnchorWaveIndex);
     const accepted = processed.reduce((sum, wave) => sum + wave.acceptedAnchors, 0);
@@ -7396,19 +7644,22 @@ function updateUI() {
   renderPolicyComparison();
   eventCounter.textContent = String(eventIndex).padStart(4, "0");
   const material = currentMaterial();
+  playButton.disabled = pipelineStage === 4 && Boolean(material.growthWithheld);
+  stepButton.disabled = pipelineStage === 4 && Boolean(material.growthWithheld);
   if (pipelineStage === 0) {
-    atomLabel.textContent = "ATOMS"; atomMetric.textContent = String(referenceCount()); atomDelta.textContent = `${material.name} · xyz in Å`;
+    atomLabel.textContent = material.averageStructureSites ? "AVERAGE SITES" : "ATOMS"; atomMetric.textContent = String(referenceCount()); atomDelta.textContent = material.averageStructureSites ? `${material.occupancyWeightedAtomCount} occupancy-weighted atoms · xyz in Å` : `${material.name} · xyz in Å`;
     frontierLabel.textContent = "ELEMENTS"; frontierMetric.textContent = String(material.actualElements?.length || material.elements.length); frontierDelta.textContent = materialElementLabels(material).join(" / ");
     oracleLabel.textContent = "LABELS GIVEN"; oracleMetric.textContent = "0"; oracleDelta.textContent = "clusters must be inferred";
     reuseLabel.textContent = "GROWTH MODE"; reuseMetric.textContent = "OPEN"; reuseDelta.textContent = "restartable 1–2 minute bursts";
   } else if (pipelineStage === 1) {
     atomLabel.textContent = "PLACEMENTS"; atomMetric.textContent = String(learnedCover.placements.length); atomDelta.textContent = `overlapping ${currentPbc().some(Boolean) ? "periodic" : "open"} cover`;
     frontierLabel.textContent = "ISOMETRY TYPES"; frontierMetric.textContent = String(clusterGalleryTypes().length); frontierDelta.textContent = "one rotating scene per type";
-    oracleLabel.textContent = "COVERAGE"; oracleMetric.textContent = `${Math.round(learnedCover.covered / referenceCount() * 100)}%`; oracleDelta.textContent = `${learnedCover.covered} / ${referenceCount()} atoms · ${learnedCover.complete ? "complete" : "incomplete"}`;
-    const gapTypes = learnedCover.molecular ? learnedCover.molecular.voidClasses : learnedCover.residualTypes.length;
+    oracleLabel.textContent = "COVERAGE"; oracleMetric.textContent = `${Math.round(learnedCover.covered / referenceCount() * 100)}%`; oracleDelta.textContent = `${learnedCover.covered} / ${referenceCount()} ${material.averageStructureSites ? "average sites" : "atoms"} · ${learnedCover.complete ? "complete" : "incomplete"}`;
+    const gapTypes = learnedCover.molecular ? learnedCover.molecular.voidClasses : learnedCover.residualTypes.length + (learnedCover.voidBoundary?.classes || 0);
     reuseLabel.textContent = "GAP TYPES"; reuseMetric.textContent = String(gapTypes); reuseDelta.textContent = learnedCover.molecular
       ? `${learnedCover.molecular.voids} ${learnedCover.molecular.water ? "oxygen-ring" : "molecular void"} boundaries`
-      : learnedCover.residualTypes.length ? "promoted to explicit clusters" : "none after overlap cover";
+      : learnedCover.voidBoundary ? `${learnedCover.voidBoundary.occurrences} O${learnedCover.voidBoundary.ringSize} empty-region boundaries`
+        : learnedCover.residualTypes.length ? "promoted to explicit clusters" : "none after overlap cover";
   } else if (pipelineStage === 2) {
     const occurrenceBased = learnedCover.occurrenceBased || learnedCover.molecular;
     atomLabel.textContent = "SYMBOLS"; atomMetric.textContent = String(occurrenceBased ? learnedCover.types.length : learnedClusters.clusters.length); atomDelta.textContent = learnedCover.molecular ? "molecule · bridge · ring boundary" : occurrenceBased ? "exact support and gap types" : "one per learned medoid";
@@ -7435,6 +7686,32 @@ function updateUI() {
     energyValue.textContent = point.validationLoss.toFixed(4);
     resolverValue.textContent = `${sectionModel.channels}ch · ${MARKING_REPRESENTATIONS[sectionModel.representation].short}`;
   } else {
+    if (material.growthWithheld) {
+      renderConstraintLedger(null, "withheld");
+      stageEyebrow.textContent = "search · occupational state unresolved";
+      stageTitle.textContent = "Growth withheld until one ice-rule realization is supplied or sampled";
+      phaseReadout.textContent = "average structure · no branch execution";
+      captionAction.textContent = "The oxygen framework and D/vacancy alternatives remain visible, but no half-occupied site is treated as a simultaneous atom and no molecular assignment is invented.";
+      atomLabel.textContent = "AVERAGE SITES";
+      atomMetric.textContent = referenceCount().toLocaleString();
+      atomDelta.textContent = `${material.occupancyWeightedAtomCount} occupancy-weighted atoms · unchanged input`;
+      frontierLabel.textContent = "EXECUTABLE FRONTIER";
+      frontierMetric.textContent = "0";
+      frontierDelta.textContent = "unique D₂O realization unavailable";
+      oracleLabel.textContent = "TARGET CALLS";
+      oracleMetric.textContent = "0";
+      oracleDelta.textContent = "growth not executed";
+      reuseLabel.textContent = "CLAIM BOUNDARY";
+      reuseMetric.textContent = "WITHHELD";
+      reuseDelta.textContent = "occupancy ensemble required";
+      updateOrderAudit();
+      renderStack();
+      renderMarkings();
+      renderStructureStats();
+      renderLegend();
+      syncStageOptions();
+      return;
+    }
     if (iceAnchorTrace) {
       const nextWave = iceAnchorTrace.waves[iceAnchorWaveIndex];
       const emitted = atoms.length - iceAnchorTrace.seedAnchors;
@@ -7531,7 +7808,7 @@ function renderLegend() {
       const swatch = document.createElement("i");
       swatch.className = "cluster-swatch";
       swatch.style.setProperty("--swatch", cluster.residual ? "#ff6d71" : `#${CLUSTER_COLORS[index % CLUSTER_COLORS.length].toString(16).padStart(6, "0")}`);
-      const count = cluster.classPlacementIndices?.length
+      const count = cluster.observedOccurrences ?? cluster.classPlacementIndices?.length
         ?? learnedCover.placements.filter((placement) => placement.type === cluster.type).length;
       row.append(swatch, document.createTextNode(`${cluster.residual ? "gap" : "C"}${index + 1} · ${cluster.element || cluster.species} · ${count} placements`));
       speciesLegend.appendChild(row);
@@ -7683,7 +7960,7 @@ function renderMarkings() {
   const learned = learnedCover.molecular || learnedCover.occurrenceBased ? clusterGalleryTypes().map((cluster) => [
     `${cluster.label} · ${cluster.element}`,
     cluster.gap ? "explicit gap terminal" : cluster.geometry || "species + distances",
-    `×${cluster.classPlacementIndices?.length
+    `×${cluster.observedOccurrences ?? cluster.classPlacementIndices?.length
       ?? learnedCover.placements.filter((placement) => placement.type === cluster.type).length}`,
   ]) : learnedClusters.clusters.map((cluster, index) => [
     `C${index + 1} · ${cluster.element} medoid`,
@@ -7733,6 +8010,7 @@ function renderMarkings() {
 
 
 function setPlaying(value) {
+  if (value && pipelineStage === 4 && currentMaterial().growthWithheld) value = false;
   playing = value;
   if (playing && pipelineStage === 4) {
     growthDeadline = performance.now() + growthDurationSeconds() * 1000;

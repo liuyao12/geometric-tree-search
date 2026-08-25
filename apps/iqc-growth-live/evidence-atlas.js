@@ -44,6 +44,9 @@ const SYSTEMS = {
     ],
     actions: [
       ["Inspect Ice Ih cover", "iceIh", 1],
+      ["Inspect ordered Ice VIII cover", "iceVIII", 1],
+      ["Inspect disordered Ice VI ambiguity", "iceVI", 1],
+      ["Verify Ice VI growth is withheld", "iceVI", 4],
       ["Replay Ice Ih anchor trace", "iceIh", 4],
       ["Replay Ih → Ic transfer", "iceIc", 4],
     ],

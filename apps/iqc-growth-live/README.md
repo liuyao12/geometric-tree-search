@@ -782,6 +782,20 @@ that the auxiliary polyhedra repair missing atoms: H2O already closes the atom
 cover, while the auxiliary clusters close the geometry needed for attachment
 and traversal.
 
+Two published diffraction controls now make the occupancy boundary explicit.
+COD 1566658 is proton-ordered ice VIII: its fully occupied O/D coordinates
+must rediscover one D2O molecular class, water-pair connections, and O6
+empty-region boundaries. COD 1567346 is proton-disordered ice VI: the `2×2×2`
+average structure contains 80 fully occupied O sites and 320 candidate D sites
+at occupancy one half, or 240 occupancy-weighted atoms. Those 400 average sites
+are rendered with D/vacancy rings and enter the irregular colored-support
+learner without being collapsed to D. The fully occupied oxygen framework also
+supplies 80 shortest chordless O4 empty-region boundaries in two exact metric
+classes. Because the average coordinates do not select two D sites around each
+oxygen, the finite-molecule hypothesis, tree search, and post-growth phase
+classification fail closed. This is an occupancy-ambiguity control, not a
+claim that D2O ceases to be the physical local molecule.
+
 Cluster identification now exposes its colored metric-isometry tolerance as a
 stage-local scientific control: strict `1.0%`, balanced `2.5%`, or thermally
 broadened `5.0%` of the observed nearest-neighbor distance. The selected value

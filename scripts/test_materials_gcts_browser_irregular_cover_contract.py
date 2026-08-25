@@ -13,7 +13,8 @@ def test_browser_uses_one_occurrence_cover_through_search() -> None:
 
     assert 'import { discoverIrregularCover } from "./irregular-cover.js?v=20260824-1"' in source
     assert "function buildIrregularClusterCover(source, molecularDiscovery)" in source
-    assert "return buildIrregularClusterCover(source, molecularDiscovery)" in source
+    assert "const irregular = buildIrregularClusterCover(source, molecularDiscovery)" in source
+    assert "? decorateIceViOxygenVoidBoundaries(source, irregular) : irregular" in source
     assert "occurrenceBased: true" in source
     assert "function learnCoverOverlapMarking(source)" in source
     assert "function learnIrregularOverlapGrammar(source)" in source
