@@ -200,6 +200,7 @@ const clearNotebookButton = $("clearNotebookButton");
 const notebookState = $("notebookState");
 const notebookEntries = $("notebookEntries");
 const notebookComparison = $("notebookComparison");
+const notebookInterventionAudit = $("notebookInterventionAudit");
 const runStateText = $("runStateText");
 const stageEyebrow = $("stageEyebrow");
 const stageTitle = $("stageTitle");
@@ -5085,7 +5086,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-70",
+      buildId: "20260824-71",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -5537,6 +5538,43 @@ async function serializedExperimentReceipt() {
   return `${JSON.stringify(await buildExperimentReceipt(), null, 2)}\n`;
 }
 
+function notebookInterventionFactors(receipt) {
+  const search = receipt.search?.explicitSites === undefined ? null : receipt.search;
+  const activeMarking = receipt.marking?.active;
+  const cost = receipt.computationalWork;
+  const serialized = (value) => JSON.stringify(value);
+  return {
+    pipeline: { label: "pipeline extent", role: "execution", value: `${receipt.pipeline.stageName}:${receipt.pipeline.visibleStage}` },
+    boundary: { label: "external boundary", role: "geometry", value: serialized({
+      kind: receipt.input.externalGeometry?.kind,
+      periodic: receipt.input.periodicBoundary,
+      parametersAngstrom: receipt.input.externalGeometry?.parametersAngstrom,
+    }) },
+    clustering: { label: "cluster geometry", role: "geometry", value: serialized({
+      requested: receipt.geometry.requestedMode,
+      resolved: receipt.geometry.resolvedMode,
+      toleranceMode: receipt.geometry.metricIsometryToleranceMode,
+      toleranceAngstrom: receipt.geometry.metricIsometryToleranceAngstrom,
+    }) },
+    marking: { label: "GCTS marking", role: "learned representation", value: serialized({
+      config: receipt.marking.config,
+      searchMode: receipt.marking.searchMode,
+      activeId: activeMarking?.id || null,
+      vocabularyKey: activeMarking?.vocabularyKey || null,
+    }) },
+    ranking: { label: "frontier ranking", role: "search", value: search?.policy || "not entered" },
+    softPhysics: { label: "soft physics ordering", role: "search", value: serialized(search ? {
+      strain: [search.geometricStrainRanking?.mode, search.geometricStrainRanking?.effectiveWeight],
+      composition: [search.compositionBalanceRanking?.mode, search.compositionBalanceRanking?.effectiveWeight],
+      formalCharge: [search.formalChargeBalanceRanking?.mode, search.formalChargeBalanceRanking?.effectiveWeight],
+      surface: [search.surfaceCompletionRanking?.mode, search.surfaceCompletionRanking?.effectiveWeight],
+    } : null) },
+    scheduling: { label: "tree scheduling", role: "search", value: serialized(search?.scheduling || null) },
+    hierarchy: { label: "clusters² promotion", role: "search", value: String(search?.hierarchyEnabled ?? "not entered") },
+    costModel: { label: "cost estimate assumptions", role: "analysis only", value: serialized(cost?.assumptions || null) },
+  };
+}
+
 function experimentNotebookSummary(receipt) {
   const cover = receipt.cover?.inputAtoms ? receipt.cover : null;
   const search = receipt.search?.explicitSites === undefined ? null : receipt.search;
@@ -5557,6 +5595,8 @@ function experimentNotebookSummary(receipt) {
     experimentStateSha256: receipt.experimentStateSha256,
     material: receipt.input.materialName,
     scenarioId: receipt.input.scenarioId,
+    inputStructureSha256: receipt.input.structureSha256,
+    inputIdentity: `${receipt.input.scenarioId}:${receipt.input.structureSha256}`,
     elements: receipt.input.elements,
     inputAtoms: receipt.input.atomCount,
     stage: receipt.pipeline.stageName,
@@ -5574,12 +5614,15 @@ function experimentNotebookSummary(receipt) {
     placedClusters: search?.placedClusters ?? 0,
     acceptedDecisions: search?.acceptedDecisions ?? 0,
     rejectedDecisions: search?.rejectedDecisions ?? 0,
+    localConstraintEvaluations: search?.localConstraintWork?.evaluations ?? 0,
+    projectedNeighborhoodSites: receipt.computationalWork?.liveBrowserWork?.projectedNeighborhoodSites ?? 0,
     causalDepth,
     classification: classification?.status || "withheld",
     classificationConfidence: classification?.current?.confidence ?? 0,
     strongestClaim,
     benchmarkGate: receipt.evidenceBoundary.benchmarkGate,
     physicalTimeModeled: receipt.evidenceBoundary.physicalElapsedTimeModeled,
+    interventionFactors: notebookInterventionFactors(receipt),
     coordinatesEmbedded: false,
   };
 }
@@ -5622,6 +5665,97 @@ function notebookComparisonValue(entry, key) {
   return values[key];
 }
 
+function notebookInterventionComparison(first, second) {
+  const firstFactors = first.interventionFactors || {};
+  const secondFactors = second.interventionFactors || {};
+  const factorKeys = [...new Set([...Object.keys(firstFactors), ...Object.keys(secondFactors)])].sort();
+  const changedFactors = factorKeys.filter((key) => firstFactors[key]?.value !== secondFactors[key]?.value)
+    .map((key) => ({ key, ...(secondFactors[key] || firstFactors[key]) }));
+  const inputIdentityAvailable = Boolean(first.inputIdentity && second.inputIdentity);
+  const sameInput = inputIdentityAvailable && first.inputIdentity === second.inputIdentity;
+  let status = "descriptive";
+  let title = "descriptive comparison only";
+  let detail = "Input identity is unavailable in one legacy summary; save both states again for a controlled audit.";
+  if (inputIdentityAvailable && !sameInput) {
+    title = "different observed configurations";
+    detail = "The input structure digests differ. Outcome deltas describe two materials or samples; they do not identify a causal effect.";
+  } else if (sameInput && changedFactors.length === 1) {
+    status = changedFactors[0].role === "analysis only" ? "analysis" : "controlled";
+    title = changedFactors[0].role === "analysis only" ? "controlled analysis-only change" : "one-factor structural intervention";
+    detail = `${changedFactors[0].label} is the only recorded factor that changed; the observed configuration digest is identical.`;
+  } else if (sameInput && changedFactors.length === 0) {
+    status = "replicate";
+    title = "same recorded experiment state";
+    detail = "No recorded intervention changed. Any outcome difference is replicate divergence or an unrecorded factor, not an attributed effect.";
+  } else if (sameInput) {
+    status = "confounded";
+    title = `${changedFactors.length} factors changed together`;
+    detail = "The input geometry is identical, but the outcome delta cannot be assigned to one intervention.";
+  }
+  const delta = (key) => Number(second[key] || 0) - Number(first[key] || 0);
+  return {
+    status, title, detail, sameInput, inputIdentityAvailable, changedFactors,
+    firstInputDigest: first.inputStructureSha256 || null,
+    secondInputDigest: second.inputStructureSha256 || null,
+    causalAttributionAllowed: status === "controlled",
+    outcomes: [
+      { label: "structural sites", value: delta("generatedSites"), unit: "sites" },
+      { label: "accepted branches", value: delta("acceptedDecisions"), unit: "branches" },
+      { label: "rejected branches", value: delta("rejectedDecisions"), unit: "branches" },
+      { label: "causal depth", value: delta("causalDepth"), unit: "levels" },
+      { label: "classification", value: delta("classificationConfidence") * 100, unit: "points" },
+      { label: "local tests", value: delta("localConstraintEvaluations"), unit: "tests" },
+      { label: "neighbor inspections", value: delta("projectedNeighborhoodSites"), unit: "sites" },
+    ],
+  };
+}
+
+function signedNotebookDelta(value) {
+  if (!Number.isFinite(value)) return "—";
+  const rounded = Math.abs(value) < 10 && !Number.isInteger(value) ? Number(value.toFixed(2)) : Math.round(value);
+  return `${rounded > 0 ? "+" : ""}${rounded.toLocaleString()}`;
+}
+
+function renderNotebookInterventionAudit(selected) {
+  notebookInterventionAudit.replaceChildren();
+  const header = document.createElement("header");
+  const eyebrow = document.createElement("small"); eyebrow.textContent = "intervention audit";
+  const title = document.createElement("strong");
+  const detail = document.createElement("span");
+  header.append(eyebrow, title, detail);
+  notebookInterventionAudit.append(header);
+  if (selected.length !== 2) {
+    notebookInterventionAudit.className = "notebook-intervention-audit waiting";
+    title.textContent = "select two runs";
+    detail.textContent = "Input identity and changed assumptions are checked before any causal comparison.";
+    return;
+  }
+  const audit = notebookInterventionComparison(selected[0], selected[1]);
+  notebookInterventionAudit.className = `notebook-intervention-audit ${audit.status}`;
+  title.textContent = audit.title;
+  detail.textContent = audit.detail;
+  const identity = document.createElement("div"); identity.className = "notebook-input-identity";
+  identity.innerHTML = `<small>observed input</small><strong>${audit.sameInput ? "identical SHA-256" : "not identical"}</strong><span>${audit.firstInputDigest?.slice(0, 10) || "legacy"} → ${audit.secondInputDigest?.slice(0, 10) || "legacy"}</span>`;
+  const factors = document.createElement("div"); factors.className = "notebook-factor-list";
+  if (audit.changedFactors.length) audit.changedFactors.forEach((factor) => {
+    const chip = document.createElement("span"); chip.textContent = `${factor.label} · ${factor.role}`; factors.appendChild(chip);
+  });
+  else {
+    const chip = document.createElement("span"); chip.textContent = "no recorded factor change"; factors.appendChild(chip);
+  }
+  const outcomes = document.createElement("div"); outcomes.className = "notebook-outcome-deltas";
+  audit.outcomes.forEach((outcome) => {
+    const tile = document.createElement("span");
+    tile.innerHTML = `<small>${outcome.label}</small><strong>${signedNotebookDelta(outcome.value)}</strong><em>${outcome.unit} · run 2 − run 1</em>`;
+    outcomes.appendChild(tile);
+  });
+  const boundary = document.createElement("p");
+  boundary.textContent = audit.causalAttributionAllowed
+    ? "Causal interpretation is limited to this recorded one-factor intervention; hidden experimental confounders are not excluded."
+    : "Outcome deltas remain visible, but the portal does not attribute them causally.";
+  notebookInterventionAudit.append(identity, factors, outcomes, boundary);
+}
+
 function renderExperimentNotebook() {
   notebookState.textContent = `${experimentNotebookEntries.length}/${MAX_EXPERIMENT_NOTEBOOK_ENTRIES} saved runs`;
   clearNotebookButton.disabled = experimentNotebookEntries.length === 0;
@@ -5648,6 +5782,7 @@ function renderExperimentNotebook() {
   }));
   const selected = selectedNotebookEntryIds.map((id) => experimentNotebookEntries.find((entry) => entry.id === id)).filter(Boolean);
   notebookComparison.replaceChildren();
+  renderNotebookInterventionAudit(selected);
   if (selected.length !== 2) {
     const note = document.createElement("p");
     note.textContent = selected.length ? "Select one more saved run to compare." : "Select two saved runs to compare.";

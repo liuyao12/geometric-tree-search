@@ -171,7 +171,15 @@ existing entry instead of fabricating a replicate. Up to eight runs may be kept
 locally. Selecting two produces a field-by-field comparison of material and
 composition, geometry hypothesis, complete cover, marking and representation,
 hierarchy/depth, explicit output, branch work, posthoc classification, and claim
-boundary. The notebook never restores or executes a run, never stores atom
+boundary. An **intervention audit** then compares the input structure SHA-256,
+enumerates changes in the boundary, clustering tolerance, GCTS marking, soft
+physics ranking, scheduling, clusters² promotion, and cost assumptions, and
+labels the result as a one-factor structural intervention, an analysis-only
+change, a confounded multi-factor comparison, or a cross-input descriptive
+comparison. Structural-output, branch, causal-depth, classification, local-test,
+and neighborhood-work deltas are reported as run 2 minus run 1. Even a one-factor
+label excludes only recorded app settings—not hidden experimental confounders.
+The notebook never restores or executes a run, never stores atom
 coordinates, and never substitutes for the downloadable receipt. Clearing it is
 a two-click action and does not affect downloaded files or the marking library.
 
