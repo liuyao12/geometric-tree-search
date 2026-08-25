@@ -183,6 +183,10 @@ const habitAnisotropyHint = $("habitAnisotropyHint");
 const defectPrecursorSelect = $("defectPrecursorSelect");
 const defectPrecursorWeightSelect = $("defectPrecursorWeightSelect");
 const defectPrecursorHint = $("defectPrecursorHint");
+const coherencyMemorySelect = $("coherencyMemorySelect");
+const coherencyReachSelect = $("coherencyReachSelect");
+const coherencyMemoryWeightSelect = $("coherencyMemoryWeightSelect");
+const coherencyMemoryHint = $("coherencyMemoryHint");
 const frontMorphologySelect = $("frontMorphologySelect");
 const frontMorphologyWeightSelect = $("frontMorphologyWeightSelect");
 const frontMorphologyHint = $("frontMorphologyHint");
@@ -736,6 +740,11 @@ let rejectedDefectPrecursorScore = 0;
 let acceptedDefectPrecursorBurden = 0;
 let rejectedDefectPrecursorBurden = 0;
 let defectPrecursorEvaluations = 0;
+let acceptedCoherencyMemoryScore = 0;
+let rejectedCoherencyMemoryScore = 0;
+let acceptedInheritedMismatch = 0;
+let rejectedInheritedMismatch = 0;
+let coherencyMemoryEvaluations = 0;
 let acceptedExternalDriveAlignment = 0;
 let rejectedExternalDriveAlignment = 0;
 let acceptedThermalFieldScore = 0;
@@ -844,6 +853,9 @@ let habitAnisotropyMode = "none";
 let habitAnisotropyWeight = .24;
 let defectPrecursorMode = "none";
 let defectPrecursorWeight = .24;
+let coherencyMemoryMode = "none";
+let coherencyMemoryReach = 2;
+let coherencyMemoryWeight = .24;
 let frontMorphologyMode = "none";
 let frontMorphologyWeight = .24;
 let capillaryGeometryMode = "none";
@@ -900,6 +912,7 @@ const GROWTH_PROTOCOL_DEFAULTS = Object.freeze({
   attachmentTopologyMode: "none", attachmentTopologyWeight: .24,
   habitAnisotropyMode: "none", habitAnisotropyWeight: .24,
   defectPrecursorMode: "none", defectPrecursorWeight: .24,
+  coherencyMemoryMode: "none", coherencyMemoryReach: 2, coherencyMemoryWeight: .24,
   solutePartitionMode: "none", solutePartitionWeight: .24,
   frontMorphologyMode: "none", frontMorphologyWeight: .24,
   capillaryGeometryMode: "none", capillaryGeometryWeight: .24,
@@ -920,7 +933,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
   bulk: {
     label: "bulk continuation", summary: "Neutral finite bulk boundary with learned strain, balanced composition, and surface-completion ordering.",
     settings: { confinement: "box", geometryPreference: "strain", geometricStrainWeight: .16,
-      compositionPreference: "soft", chargePreference: "auto", surfacePreference: "soft", growthDrivingMode: "balanced", attachmentTopologyMode: "kink", habitAnisotropyMode: "faceted", defectPrecursorMode: "suppress",
+      compositionPreference: "soft", chargePreference: "auto", surfacePreference: "soft", growthDrivingMode: "balanced", attachmentTopologyMode: "kink", habitAnisotropyMode: "faceted", defectPrecursorMode: "suppress", coherencyMemoryMode: "continue",
       frontMorphologyMode: "none", epitaxyTemplateMode: "none", externalDriveMode: "none",
       capillaryGeometryMode: "none",
       thermalFieldMode: "none",
@@ -931,7 +944,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
   epitaxy: {
     label: "coherent thin-film epitaxy", summary: "Supported film with coherent hexagonal registry, planar capillary balance, a +Z reduced cold side, upward feed geometry, and robustness ordering.",
     settings: { confinement: "substrate", geometryPreference: "strain", geometricStrainWeight: .16,
-      compositionPreference: "soft", chargePreference: "auto", surfacePreference: "strong", growthDrivingMode: "surface-limited", attachmentTopologyMode: "step", habitAnisotropyMode: "faceted", defectPrecursorMode: "suppress", defectPrecursorWeight: .48,
+      compositionPreference: "soft", chargePreference: "auto", surfacePreference: "strong", growthDrivingMode: "surface-limited", attachmentTopologyMode: "step", habitAnisotropyMode: "faceted", defectPrecursorMode: "suppress", defectPrecursorWeight: .48, coherencyMemoryMode: "continue", coherencyMemoryWeight: .48,
       frontMorphologyMode: "facet", frontMorphologyWeight: .24, epitaxyTemplateMode: "hex-coherent", epitaxyWeight: .24,
       capillaryGeometryMode: "planar", capillaryGeometryWeight: .24,
       externalDriveMode: "z-plus", externalDriveWeight: .24, affineLoadMode: "none",
@@ -944,7 +957,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
   "misfit-film": {
     label: "misfit thin film", summary: "The coherent-film protocol with a declared +5% hexagonal support mismatch; no elastic relaxation or dislocations are inserted.",
     settings: { confinement: "substrate", geometryPreference: "strain", geometricStrainWeight: .16,
-      compositionPreference: "soft", chargePreference: "auto", surfacePreference: "strong", growthDrivingMode: "surface-limited", attachmentTopologyMode: "step", habitAnisotropyMode: "faceted", defectPrecursorMode: "seam",
+      compositionPreference: "soft", chargePreference: "auto", surfacePreference: "strong", growthDrivingMode: "surface-limited", attachmentTopologyMode: "step", habitAnisotropyMode: "faceted", defectPrecursorMode: "seam", coherencyMemoryMode: "relieve", coherencyMemoryWeight: .48,
       frontMorphologyMode: "facet", frontMorphologyWeight: .24, epitaxyTemplateMode: "hex-mismatch", epitaxyWeight: .24,
       capillaryGeometryMode: "planar", capillaryGeometryWeight: .24,
       externalDriveMode: "z-plus", externalDriveWeight: .24, affineLoadMode: "none",
@@ -957,7 +970,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
   directional: {
     label: "directional solidification", summary: "A +Z attachment direction and cold side, minority-species rejection toward the hot side, coherent facet/front balance, and narrow alternatives.",
     settings: { confinement: "box", geometryPreference: "strain", geometricStrainWeight: .16,
-      compositionPreference: "soft", chargePreference: "auto", surfacePreference: "soft", growthDrivingMode: "volume-driven", attachmentTopologyMode: "step", habitAnisotropyMode: "axial", defectPrecursorMode: "suppress",
+      compositionPreference: "soft", chargePreference: "auto", surfacePreference: "soft", growthDrivingMode: "volume-driven", attachmentTopologyMode: "step", habitAnisotropyMode: "axial", defectPrecursorMode: "suppress", coherencyMemoryMode: "continue",
       frontMorphologyMode: "facet", frontMorphologyWeight: .24, epitaxyTemplateMode: "none",
       capillaryGeometryMode: "planar", capillaryGeometryWeight: .24,
       externalDriveMode: "z-plus", externalDriveWeight: .48, affineLoadMode: "none",
@@ -971,7 +984,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
   dendritic: {
     label: "dendritic growth hypothesis", summary: "A finite nucleus with outward drive/quench, minority-species rejection toward the hot side, exposed-tip/solid-angle preference, and broader path exploration.",
     settings: { confinement: "sphere", geometryPreference: "strain", geometricStrainWeight: .08,
-      compositionPreference: "soft", chargePreference: "auto", surfacePreference: "soft", growthDrivingMode: "volume-driven", growthDrivingWeight: .48, attachmentTopologyMode: "kink", attachmentTopologyWeight: .48, habitAnisotropyMode: "roughening", habitAnisotropyWeight: .48, defectPrecursorMode: "explore",
+      compositionPreference: "soft", chargePreference: "auto", surfacePreference: "soft", growthDrivingMode: "volume-driven", growthDrivingWeight: .48, attachmentTopologyMode: "kink", attachmentTopologyWeight: .48, habitAnisotropyMode: "roughening", habitAnisotropyWeight: .48, defectPrecursorMode: "explore", coherencyMemoryMode: "isolate",
       frontMorphologyMode: "tip", frontMorphologyWeight: .48, epitaxyTemplateMode: "none",
       capillaryGeometryMode: "exposed", capillaryGeometryWeight: .24,
       externalDriveMode: "radial-out", externalDriveWeight: .24, affineLoadMode: "none",
@@ -985,7 +998,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
   impingement: {
     label: "polycrystal impingement", summary: "Four dispersed observed nuclei, pose-interface following, multi-parent loop closure, and simultaneous compatible-front scheduling.",
     settings: { confinement: "box", geometryPreference: "strain", geometricStrainWeight: .16,
-      compositionPreference: "soft", chargePreference: "auto", surfacePreference: "soft", growthDrivingMode: "balanced", attachmentTopologyMode: "kink", habitAnisotropyMode: "roughening", defectPrecursorMode: "seam",
+      compositionPreference: "soft", chargePreference: "auto", surfacePreference: "soft", growthDrivingMode: "balanced", attachmentTopologyMode: "kink", habitAnisotropyMode: "roughening", defectPrecursorMode: "seam", coherencyMemoryMode: "relieve",
       frontMorphologyMode: "smooth", frontMorphologyWeight: .24, epitaxyTemplateMode: "none",
       capillaryGeometryMode: "pocket", capillaryGeometryWeight: .24,
       externalDriveMode: "none", affineLoadMode: "none", robustnessPreference: "margin", robustnessWeight: .12,
@@ -997,7 +1010,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
   "pore-fill": {
     label: "constricted-pore filling", summary: "Hard hourglass confinement with concavity filling, coordination healing, and parent-normal arrival accessibility.",
     settings: { confinement: "hourglass", geometryPreference: "strain", geometricStrainWeight: .16,
-      compositionPreference: "soft", chargePreference: "auto", surfacePreference: "strong", growthDrivingMode: "surface-limited", attachmentTopologyMode: "kink", defectPrecursorMode: "suppress",
+      compositionPreference: "soft", chargePreference: "auto", surfacePreference: "strong", growthDrivingMode: "surface-limited", attachmentTopologyMode: "kink", defectPrecursorMode: "suppress", coherencyMemoryMode: "isolate",
       frontMorphologyMode: "smooth", frontMorphologyWeight: .48, epitaxyTemplateMode: "none",
       capillaryGeometryMode: "pocket", capillaryGeometryWeight: .48,
       externalDriveMode: "none", affineLoadMode: "none", robustnessPreference: "margin", robustnessWeight: .24,
@@ -1011,7 +1024,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
 const GROWTH_PROTOCOL_CONTROL_IDS = new Set([
   "geometryPreferenceSelect", "strainWeightSelect", "compositionPreferenceSelect", "chargePreferenceSelect",
   "soluteSpeciesSelect", "solutePartitionSelect", "solutePartitionWeightSelect",
-  "surfacePreferenceSelect", "growthDrivingSelect", "growthDrivingWeightSelect", "attachmentTopologySelect", "attachmentTopologyWeightSelect", "habitAnisotropySelect", "habitAnisotropyWeightSelect", "defectPrecursorSelect", "defectPrecursorWeightSelect", "frontMorphologySelect", "frontMorphologyWeightSelect",
+  "surfacePreferenceSelect", "growthDrivingSelect", "growthDrivingWeightSelect", "attachmentTopologySelect", "attachmentTopologyWeightSelect", "habitAnisotropySelect", "habitAnisotropyWeightSelect", "defectPrecursorSelect", "defectPrecursorWeightSelect", "coherencyMemorySelect", "coherencyReachSelect", "coherencyMemoryWeightSelect", "frontMorphologySelect", "frontMorphologyWeightSelect",
   "capillaryGeometrySelect", "capillaryGeometryWeightSelect",
   "epitaxyTemplateSelect", "epitaxyWeightSelect", "externalDriveSelect", "externalDriveWeightSelect",
   "thermalFieldSelect", "thermalFieldWeightSelect",
@@ -5768,7 +5781,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-103",
+      buildId: "20260825-104",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -6266,6 +6279,32 @@ async function buildExperimentReceipt() {
         rateInferred: false,
         physicalTimeIntegrated: false,
       },
+      coherencyMemoryRanking: {
+        role: "target-blind finite-range cluster-graph memory of mismatch carried only by accepted placements",
+        mode: coherencyMemoryMode,
+        label: coherencyMemoryLabel(),
+        enabled: activeCoherencyMemoryWeight() > 0,
+        reachInClusterGraphHops: coherencyMemoryReach,
+        effectiveWeight: activeCoherencyMemoryWeight(),
+        hopWeight: "1/(1+hop)",
+        acceptedMeanScore: receiptRound(acceptedCoherencyMemoryScore / Math.max(1, acceptedDecisions)),
+        rejectedMeanScore: receiptRound(rejectedCoherencyMemoryScore / Math.max(1, rejectedDecisions)),
+        acceptedMeanInheritedMismatch: receiptRound(acceptedInheritedMismatch / Math.max(1, acceptedDecisions)),
+        rejectedMeanInheritedMismatch: receiptRound(rejectedInheritedMismatch / Math.max(1, rejectedDecisions)),
+        evaluations: coherencyMemoryEvaluations,
+        acceptedHistoryOnly: true,
+        candidateSetChanged: false,
+        candidateGeometryChanged: false,
+        hardAdmissionChanged: false,
+        heldoutTargetUsed: false,
+        stressInferred: false,
+        elasticEnergyInferred: false,
+        modulusInferred: false,
+        forceBalanceSolved: false,
+        relaxationIntegrated: false,
+        dislocationModeled: false,
+        physicalTimeIntegrated: false,
+      },
       mesoscopicFrontMorphologyRanking: {
         role: "target-blind soft ordering of unchanged exact actions by parent-local angular support and backing-depth geometry",
         mode: frontMorphologyMode,
@@ -6651,6 +6690,9 @@ function notebookInterventionFactors(receipt) {
       habitAnisotropy: [search.habitAnisotropyRanking?.mode, search.habitAnisotropyRanking?.effectiveWeight],
       actionDefectPrecursors: [search.actionDefectPrecursorRanking?.mode,
         search.actionDefectPrecursorRanking?.effectiveWeight],
+      coherencyMemory: [search.coherencyMemoryRanking?.mode,
+        search.coherencyMemoryRanking?.reachInClusterGraphHops,
+        search.coherencyMemoryRanking?.effectiveWeight],
       frontMorphology: [search.mesoscopicFrontMorphologyRanking?.mode,
         search.mesoscopicFrontMorphologyRanking?.effectiveWeight],
       capillaryGeometry: [search.discreteCapillaryGeometryRanking?.mode,
@@ -7884,6 +7926,66 @@ function defectPrecursorsForAction({ geometricStrain, surfaceCompletion, composi
     rateInferred: false, physicalTimeIntegrated: false };
 }
 
+function coherencyMemoryLabel(mode = coherencyMemoryMode) {
+  return ({ none: "local-history diagnostic", continue: "coherent-domain continuation",
+    relieve: "local mismatch relief", isolate: "strain-hotspot avoidance" })[mode]
+    || "local-history diagnostic";
+}
+
+function activeCoherencyMemoryWeight() {
+  return coherencyMemoryMode === "none" ? 0 : coherencyMemoryWeight;
+}
+
+function coherencyMemoryForCandidate(candidate, evaluation, { recordWork = true } = {}) {
+  const parent = placedClusters.find((placement) => placement.id === candidate.parentId);
+  const startIds = new Set([candidate.parentId]);
+  evaluation.merged.forEach(({ atom }) => (atom.clusterIds || []).forEach((id) => startIds.add(id)));
+  const visited = new Map([...startIds].filter(Number.isInteger).map((id) => [id, 0]));
+  let frontier = [...visited.keys()];
+  for (let hop = 0; hop < coherencyMemoryReach && frontier.length; hop++) {
+    const next = new Set();
+    frontier.forEach((id) => {
+      const placement = placedClusters.find((entry) => entry.id === id);
+      [placement?.parentId, ...placedClusters.filter((entry) => entry.parentId === id).map((entry) => entry.id)]
+        .filter(Number.isInteger).forEach((neighborId) => next.add(neighborId));
+      (placement?.atomIds || []).forEach((atomId) => {
+        const atom = atoms.find((entry) => entry.id === atomId);
+        (atom?.clusterIds || []).forEach((neighborId) => next.add(neighborId));
+      });
+    });
+    frontier = [...next].filter((id) => !visited.has(id));
+    frontier.forEach((id) => visited.set(id, hop + 1));
+  }
+  const memories = [...visited.entries()].map(([id, hop]) => {
+    const memory = placedClusters.find((entry) => entry.id === id)?.coherencyMemory;
+    return memory ? { ...memory, hop, weight: 1 / (1 + hop) } : null;
+  }).filter(Boolean);
+  const candidateAxis = candidate.position.clone().sub(parent?.position || new THREE.Vector3());
+  if (candidateAxis.lengthSq() < 1e-8) candidateAxis.set(0, 0, 1).applyQuaternion(candidate.rotation);
+  candidateAxis.normalize();
+  const candidateMismatch = Math.tanh(Math.max(0, evaluation.geometricStrain.total));
+  const totalWeight = memories.reduce((sum, memory) => sum + memory.weight, 0);
+  const inheritedMismatch = totalWeight ? memories.reduce((sum, memory) => sum
+    + memory.mismatch * memory.weight, 0) / totalWeight : 0;
+  const orientationAgreement = totalWeight ? memories.reduce((sum, memory) => sum
+    + Math.abs(candidateAxis.dot(new THREE.Vector3(...memory.axis))) * memory.weight, 0) / totalWeight : 0;
+  const mismatchGradient = Math.abs(candidateMismatch - inheritedMismatch);
+  const hotspot = memories.length ? Math.max(...memories.map((memory) => memory.mismatch)) : 0;
+  const score = !memories.length ? 0
+    : coherencyMemoryMode === "continue" ? THREE.MathUtils.clamp(orientationAgreement - mismatchGradient, -1, 1)
+      : coherencyMemoryMode === "relieve" ? THREE.MathUtils.clamp(2 * (inheritedMismatch - candidateMismatch), -1, 1)
+        : coherencyMemoryMode === "isolate" ? THREE.MathUtils.clamp(1 - inheritedMismatch - candidateMismatch, -1, 1) : 0;
+  if (recordWork) coherencyMemoryEvaluations++;
+  return { mode: coherencyMemoryMode, label: coherencyMemoryLabel(), enabled: coherencyMemoryMode !== "none",
+    reach: coherencyMemoryReach, score, support: memories.length, candidateMismatch, inheritedMismatch,
+    mismatchGradient, orientationAgreement, hotspot, candidateAxis: candidateAxis.toArray(),
+    graphHopWeights: "1/(1+hop)", acceptedHistoryOnly: true, actionGeometryChanged: false,
+    candidateSetChanged: false, hardAdmissionChanged: false, targetUsed: false,
+    stressInferred: false, elasticEnergyInferred: false, modulusInferred: false,
+    forceBalanceSolved: false, relaxationIntegrated: false, dislocationModeled: false,
+    physicalTimeIntegrated: false };
+}
+
 function activeFrontMorphologyWeight() {
   return frontMorphologyMode === "none" ? 0 : frontMorphologyWeight;
 }
@@ -8580,6 +8682,8 @@ function capturePolicyComparison(entries) {
       score: (entry) => entry.baseScore + activeHabitAnisotropyWeight() * entry.evaluation.habitAnisotropy.score },
     { id: "defect-precursors", label: `${defectPrecursorLabel()} ${activeDefectPrecursorWeight().toFixed(2)}`,
       score: (entry) => entry.baseScore + activeDefectPrecursorWeight() * entry.evaluation.defectPrecursors.score },
+    { id: "coherency-memory", label: `${coherencyMemoryLabel()} ${activeCoherencyMemoryWeight().toFixed(2)}`,
+      score: (entry) => entry.baseScore + activeCoherencyMemoryWeight() * entry.evaluation.coherencyMemory.score },
     { id: "front-morphology", label: `${frontMorphologyLabel()} ${activeFrontMorphologyWeight().toFixed(2)}`,
       score: (entry) => entry.baseScore + activeFrontMorphologyWeight() * entry.evaluation.frontMorphology.score },
     { id: "capillary-geometry", label: `${capillaryGeometryLabel()} ${activeCapillaryGeometryWeight().toFixed(2)}`,
@@ -8934,6 +9038,7 @@ function commutingFrontierBatch() {
         + activeAttachmentTopologyWeight() * evaluation.attachmentTopology.score
         + activeHabitAnisotropyWeight() * evaluation.habitAnisotropy.score
         + activeDefectPrecursorWeight() * evaluation.defectPrecursors.score
+        + activeCoherencyMemoryWeight() * evaluation.coherencyMemory.score
         + activeFrontMorphologyWeight() * evaluation.frontMorphology.score
         + activeCapillaryGeometryWeight() * evaluation.capillaryGeometry.score
         + activeEpitaxyWeight() * evaluation.epitaxyRegistry.score
@@ -9060,6 +9165,7 @@ function evaluateCandidate(candidate, {
   const microstructureCoupling = microstructureCouplingForCandidate(candidate, { fresh, merged });
   const loopClosure = mesoscopicLoopClosureForCandidate(candidate);
   const defectPrecursors = defectPrecursorsForAction({ geometricStrain, surfaceCompletion, compositionBalance, loopClosure }, { recordWork });
+  const coherencyMemory = coherencyMemoryForCandidate(candidate, { geometricStrain, merged }, { recordWork });
   const arrivalPath = geometricArrivalPathForCandidate(candidate, fresh);
   const feedExposure = feedstockExposureForFreshSites(fresh, { recordWork });
   const accepted = conflicts === 0 && boundaryFailures === 0 && merged.length >= 2
@@ -9068,7 +9174,7 @@ function evaluateCandidate(candidate, {
   return { accepted, sites, merged, fresh, conflicts, boundaryFailures, knownFailures, markingFallback,
     coordinationOverflows, angularViolations, geometricStrain, affineLoadedGeometricStrain,
     surfaceCompletion, bulkSurfaceDriving, attachmentTopology, habitAnisotropy, frontMorphology, capillaryGeometry, epitaxyRegistry, compositionBalance, formalChargeBalance,
-    externalDrive, thermalField, solutePartition, constraintRobustness, microstructureCoupling, loopClosure, defectPrecursors, arrivalPath, feedExposure,
+    externalDrive, thermalField, solutePartition, constraintRobustness, microstructureCoupling, loopClosure, defectPrecursors, coherencyMemory, arrivalPath, feedExposure,
     duplicateSites: canonical.duplicateSites,
     freshReferenceIndices: fresh.map((site) => site.referenceIndex).filter(Number.isInteger),
     reason: conflicts ? `${conflicts} hard-core/species conflicts` : boundaryFailures ? "outside confinement" : knownFailures ? `${knownFailures} sites outside known configuration` : coordinationOverflows.length ? `${coordinationOverflows.length} colored coordination capacities exceeded` : angularViolations.length ? `${angularViolations.length} colored angular envelopes violated` : merged.length < 2 ? "insufficient shared support" : fresh.length === 0 ? "duplicate covering" : !markingAccepted ? "marking mismatch" : "compatible overlap" };
@@ -9366,6 +9472,11 @@ function initializeOffLatticeSearch() {
   acceptedDefectPrecursorBurden = 0;
   rejectedDefectPrecursorBurden = 0;
   defectPrecursorEvaluations = 0;
+  acceptedCoherencyMemoryScore = 0;
+  rejectedCoherencyMemoryScore = 0;
+  acceptedInheritedMismatch = 0;
+  rejectedInheritedMismatch = 0;
+  coherencyMemoryEvaluations = 0;
   acceptedExternalDriveAlignment = 0;
   rejectedExternalDriveAlignment = 0;
   acceptedThermalFieldScore = 0;
@@ -9972,6 +10083,7 @@ function currentGrowthProtocolSettings() {
     attachmentTopologyMode, attachmentTopologyWeight,
     habitAnisotropyMode, habitAnisotropyWeight,
     defectPrecursorMode, defectPrecursorWeight,
+    coherencyMemoryMode, coherencyMemoryReach, coherencyMemoryWeight,
     frontMorphologyMode, frontMorphologyWeight, capillaryGeometryMode, capillaryGeometryWeight,
     epitaxyTemplateMode, epitaxyWeight,
     externalDriveMode, externalDriveWeight, thermalFieldMode, thermalFieldWeight,
@@ -10024,6 +10136,8 @@ function applyGrowthProtocol(mode) {
   attachmentTopologyMode = settings.attachmentTopologyMode; attachmentTopologyWeight = settings.attachmentTopologyWeight;
   habitAnisotropyMode = settings.habitAnisotropyMode; habitAnisotropyWeight = settings.habitAnisotropyWeight;
   defectPrecursorMode = settings.defectPrecursorMode; defectPrecursorWeight = settings.defectPrecursorWeight;
+  coherencyMemoryMode = settings.coherencyMemoryMode; coherencyMemoryReach = settings.coherencyMemoryReach;
+  coherencyMemoryWeight = settings.coherencyMemoryWeight;
   frontMorphologyMode = settings.frontMorphologyMode; frontMorphologyWeight = settings.frontMorphologyWeight;
   capillaryGeometryMode = settings.capillaryGeometryMode; capillaryGeometryWeight = settings.capillaryGeometryWeight;
   epitaxyTemplateMode = settings.epitaxyTemplateMode; epitaxyWeight = settings.epitaxyWeight;
@@ -10181,6 +10295,9 @@ function syncStageOptions() {
     habitAnisotropyWeightSelect.value = String(habitAnisotropyWeight);
     defectPrecursorSelect.value = defectPrecursorMode;
     defectPrecursorWeightSelect.value = String(defectPrecursorWeight);
+    coherencyMemorySelect.value = coherencyMemoryMode;
+    coherencyReachSelect.value = String(coherencyMemoryReach);
+    coherencyMemoryWeightSelect.value = String(coherencyMemoryWeight);
     frontMorphologySelect.value = frontMorphologyMode;
     frontMorphologyWeightSelect.value = String(frontMorphologyWeight);
     capillaryGeometrySelect.value = capillaryGeometryMode;
@@ -10223,6 +10340,9 @@ function syncStageOptions() {
     habitAnisotropyWeightSelect.disabled = finiteIceAnchorMode || habitAnisotropyMode === "none";
     defectPrecursorSelect.disabled = finiteIceAnchorMode;
     defectPrecursorWeightSelect.disabled = finiteIceAnchorMode || defectPrecursorMode === "none";
+    coherencyMemorySelect.disabled = finiteIceAnchorMode;
+    coherencyReachSelect.disabled = finiteIceAnchorMode || coherencyMemoryMode === "none";
+    coherencyMemoryWeightSelect.disabled = finiteIceAnchorMode || coherencyMemoryMode === "none";
     frontMorphologySelect.disabled = finiteIceAnchorMode;
     frontMorphologyWeightSelect.disabled = finiteIceAnchorMode || frontMorphologyMode === "none";
     capillaryGeometrySelect.disabled = finiteIceAnchorMode;
@@ -10266,6 +10386,8 @@ function syncStageOptions() {
       ? "off · 12-axis atlas reported" : `${habitAnisotropyLabel()} · weight ${habitAnisotropyWeight.toFixed(2)}`;
     defectPrecursorHint.textContent = defectPrecursorMode === "none"
       ? "off · burden reported" : `${defectPrecursorLabel()} · weight ${defectPrecursorWeight.toFixed(2)}`;
+    coherencyMemoryHint.textContent = coherencyMemoryMode === "none"
+      ? "off · local history reported" : `${coherencyMemoryLabel()} · R${coherencyMemoryReach} · weight ${coherencyMemoryWeight.toFixed(2)}`;
     const selectedSolute = soluteVocabulary.find((entry) => entry.species === resolvedSoluteSpecies());
     soluteSpeciesHint.textContent = selectedSolute
       ? `${selectedSolute.species} · ${(selectedSolute.fraction * 100).toFixed(1)}% observed`
@@ -10349,6 +10471,9 @@ function syncStageOptions() {
     const defectPrecursorUse = defectPrecursorMode === "none"
       ? " Action-generated geometric defect precursors are reported but contribute zero ranking weight."
       : ` A ${defectPrecursorWeight.toFixed(2)} soft ${defectPrecursorLabel()} term combines exposed coordination, local strain, composition drift, and incompatible multi-parent seams without assigning a defect identity.`;
+    const coherencyMemoryUse = coherencyMemoryMode === "none"
+      ? " Accepted local mismatch history is reported but contributes zero ranking weight."
+      : ` A ${coherencyMemoryWeight.toFixed(2)} soft ${coherencyMemoryLabel()} term transports sample-relative mismatch along ${coherencyMemoryReach} cluster-graph hop${coherencyMemoryReach === 1 ? "" : "s"}; it is not stress, modulus, or elastic energy.`;
     const externalDriveUse = externalDriveMode === "none"
       ? " No external direction is preferred."
       : ` A user-declared ${externalDriveModeLabel()} direction adds a ${externalDriveWeight.toFixed(2)} soft alignment term to the same actions; it is boundary/loading geometry, not a solved force field.`;
@@ -10386,8 +10511,8 @@ function syncStageOptions() {
     growthModeNote.textContent = finiteIceAnchorMode
       ? "This sealed ice gate executes primitive H₂O connection ports with mutually exclusive orientation domains. Clusters² is disabled because no stationary promoted ice production has been certified."
       : hierarchyEnabled
-      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${strainUse}${compositionUse}${solutePartitionUse}${chargeUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`
-      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}${solutePartitionUse}${chargeUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`;
+      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${strainUse}${compositionUse}${solutePartitionUse}${chargeUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`
+      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}${solutePartitionUse}${chargeUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`;
   }
 }
 
@@ -10427,6 +10552,11 @@ function resetCounters() {
   acceptedDefectPrecursorBurden = 0;
   rejectedDefectPrecursorBurden = 0;
   defectPrecursorEvaluations = 0;
+  acceptedCoherencyMemoryScore = 0;
+  rejectedCoherencyMemoryScore = 0;
+  acceptedInheritedMismatch = 0;
+  rejectedInheritedMismatch = 0;
+  coherencyMemoryEvaluations = 0;
   acceptedExternalDriveAlignment = 0;
   rejectedExternalDriveAlignment = 0;
   acceptedThermalFieldScore = 0;
@@ -10796,6 +10926,7 @@ function stateForCandidate(candidate, evaluation) {
     attachmentTopology: evaluation.attachmentTopology,
     habitAnisotropy: evaluation.habitAnisotropy,
     defectPrecursors: evaluation.defectPrecursors,
+    coherencyMemory: evaluation.coherencyMemory,
     frontMorphology: evaluation.frontMorphology,
     capillaryGeometry: evaluation.capillaryGeometry,
     epitaxyRegistry: evaluation.epitaxyRegistry,
@@ -10851,6 +10982,9 @@ function materializeCandidate(candidate, evaluation) {
       ? centerReferenceIndex : candidate.occurrenceIndex,
     parentId: candidate.parentId, ruleId: candidate.rule.id,
     depth: (parent?.depth || 0) + 1, atomIds: [],
+    coherencyMemory: { mismatch: evaluation.coherencyMemory.candidateMismatch,
+      axis: evaluation.coherencyMemory.candidateAxis, inheritedMismatch: evaluation.coherencyMemory.inheritedMismatch,
+      support: evaluation.coherencyMemory.support },
   };
   evaluation.merged.forEach(({ atom }) => {
     atom.clusterIds ||= [];
@@ -10923,6 +11057,7 @@ function performOffLatticeEvent() {
     attachmentTopology: evaluation.attachmentTopology,
     habitAnisotropy: evaluation.habitAnisotropy,
     defectPrecursors: evaluation.defectPrecursors,
+    coherencyMemory: evaluation.coherencyMemory,
   }));
   const mechanismDiagnostics = new Map(batch.map(({ candidate, evaluation }) =>
     [candidate, prepareGrowthMechanismDiagnostic(candidate, evaluation)]));
@@ -10952,6 +11087,8 @@ function performOffLatticeEvent() {
       rejectedHabitAnisotropyScore += snapshotEvaluation.habitAnisotropy.score;
       rejectedDefectPrecursorScore += snapshotEvaluation.defectPrecursors.score;
       rejectedDefectPrecursorBurden += snapshotEvaluation.defectPrecursors.burden;
+      rejectedCoherencyMemoryScore += snapshotEvaluation.coherencyMemory.score;
+      rejectedInheritedMismatch += snapshotEvaluation.coherencyMemory.inheritedMismatch;
       rejectedFrontMorphologyScore += snapshotEvaluation.frontMorphology.score;
       rejectedCapillaryGeometryScore += snapshotEvaluation.capillaryGeometry.score;
       rejectedEpitaxyRegistryScore += snapshotEvaluation.epitaxyRegistry.score;
@@ -11003,6 +11140,8 @@ function performOffLatticeEvent() {
     acceptedHabitAnisotropyScore += evaluation.habitAnisotropy.score;
     acceptedDefectPrecursorScore += evaluation.defectPrecursors.score;
     acceptedDefectPrecursorBurden += evaluation.defectPrecursors.burden;
+    acceptedCoherencyMemoryScore += evaluation.coherencyMemory.score;
+    acceptedInheritedMismatch += evaluation.coherencyMemory.inheritedMismatch;
     acceptedFrontMorphologyScore += evaluation.frontMorphology.score;
     acceptedCapillaryGeometryScore += evaluation.capillaryGeometry.score;
     acceptedEpitaxyRegistryScore += evaluation.epitaxyRegistry.score;
@@ -11612,6 +11751,28 @@ function rebuildWorld() {
           opacity: defectPrecursorMode === "none" ? .14 : .28 + .46 * precursor.burden, depthWrite: false }));
       halo.position.copy(candidate.p); decisionGroup.add(halo);
     }
+    if (candidateIndex < 12 && candidate.coherencyMemory?.support > 0) {
+      const memory = candidate.coherencyMemory;
+      const axis = new THREE.Vector3(...memory.candidateAxis).normalize();
+      const memoryColor = memory.score >= 0 ? 0x55c8ff : 0xff7f88;
+      const span = .22 + .55 * memory.inheritedMismatch;
+      const line = new THREE.Line(
+        new THREE.BufferGeometry().setFromPoints([
+          candidate.p.clone().addScaledVector(axis, -span),
+          candidate.p.clone().addScaledVector(axis, span),
+        ]),
+        new THREE.LineBasicMaterial({ color: memoryColor, transparent: true,
+          opacity: coherencyMemoryMode === "none" ? .18 : .72 }),
+      );
+      decisionGroup.add(line);
+      const memoryGlyph = new THREE.Mesh(new THREE.OctahedronGeometry(.20 + .18 * memory.hotspot, 0),
+        new THREE.MeshBasicMaterial({ color: memoryColor, wireframe: true, transparent: true,
+          opacity: .24 + .38 * Math.min(1, memory.support / 4), depthWrite: false }));
+      memoryGlyph.position.copy(candidate.p);
+      memoryGlyph.scale.set(1 + memory.orientationAgreement, .72, .72);
+      memoryGlyph.quaternion.setFromUnitVectors(new THREE.Vector3(1, 0, 0), axis);
+      decisionGroup.add(memoryGlyph);
+    }
     if (candidateIndex < 12 && candidate.arrivalAxis && candidate.arrivalSweepDistance > 0) {
       const axis = new THREE.Vector3(...candidate.arrivalAxis).normalize();
       const routePoints = candidate.arrivalRoutePoints?.length > 1
@@ -11761,6 +11922,10 @@ function physicsTranslationRecords(leap = null) {
       encoding: `${defectPrecursorLabel()}; 35% exposed coordination + 30% local strain + 15% composition drift + 20% incompatible multi-parent seam`,
       evidence: leap ? `Accepted mean precursor burden ${receiptRound(acceptedDefectPrecursorBurden / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedDefectPrecursorBurden / Math.max(1, rejectedDecisions), 4)}; ${defectPrecursorEvaluations.toLocaleString()} actions audited.` : "No action-generated precursor evaluated yet.",
       boundary: "This budget assigns no vacancy, antisite, stacking fault, or dislocation. It infers no formation energy, migration barrier, mobility, rate, or physical time." },
+    { id: "coherency-memory", process: "history-dependent coherency / local mismatch propagation", status: activeCoherencyMemoryWeight() > 0 ? "soft" : "open", role: activeCoherencyMemoryWeight() > 0 ? "accepted-history cluster-graph ordering" : "diagnostic",
+      encoding: `${coherencyMemoryLabel()}; R${coherencyMemoryReach} cluster-graph hops weighted 1/(1+hop)`,
+      evidence: leap ? `Accepted mean inherited mismatch ${receiptRound(acceptedInheritedMismatch / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedInheritedMismatch / Math.max(1, rejectedDecisions), 4)}; ${coherencyMemoryEvaluations.toLocaleString()} candidates audited.` : "No accepted-history coherency neighborhood evaluated yet.",
+      boundary: "This transports a bounded sample-relative geometric mismatch mark. It is not stress, strain energy, elastic modulus, force balance, relaxation, plasticity, a dislocation calculation, or physical time." },
     { id: "front-morphology", process: "capillarity / front-shape selection", status: activeFrontMorphologyWeight() > 0 ? "soft" : "open", role: activeFrontMorphologyWeight() > 0 ? "mesoscopic geometric ordering" : "diagnostic",
       encoding: `${frontMorphologyLabel()}; eight parent-local angular support sectors plus the normalized depth spread of atoms backing each candidate within 2.4dₙₙ`,
       evidence: leap ? `Accepted mean front score ${receiptRound(acceptedFrontMorphologyScore / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedFrontMorphologyScore / Math.max(1, rejectedDecisions), 4)}; ${frontMorphologyNeighborhoodChecks.toLocaleString()} neighbor checks.` : "No front candidate evaluated yet.",
@@ -12113,6 +12278,17 @@ function geometryConstraintEvidence(name, term, state, mode) {
         ? `Soft ${defectPrecursorLabel()} rank term with weight ${activeDefectPrecursorWeight().toFixed(2)}.` : "Diagnostic only; weight zero.",
       boundary: "A precursor burden is not a vacancy, antisite, stacking-fault, or dislocation assignment and carries no formation energy, barrier, mobility, rate, or time.",
     },
+    "coherency memory": {
+      observed: state?.coherencyMemory?.support
+        ? `${state.coherencyMemory.support} accepted placement memories within R${state.coherencyMemory.reach} · inherited mismatch ${state.coherencyMemory.inheritedMismatch.toFixed(3)}`
+        : "no accepted mismatch memory in the selected graph neighborhood",
+      encoding: state?.coherencyMemory
+        ? `candidate ${state.coherencyMemory.candidateMismatch.toFixed(3)} · gradient ${state.coherencyMemory.mismatchGradient.toFixed(3)} · axis agreement ${state.coherencyMemory.orientationAgreement.toFixed(3)}`
+        : "accepted-placement mismatch marks on the cluster graph",
+      searchRole: activeCoherencyMemoryWeight() > 0
+        ? `Soft ${coherencyMemoryLabel()} rank term with weight ${activeCoherencyMemoryWeight().toFixed(2)}.` : "Diagnostic only; weight zero.",
+      boundary: "This is bounded accepted-history geometry, not stress, elastic energy, modulus, force balance, relaxation, plasticity, dislocation mechanics, or time.",
+    },
     "front morphology": {
       observed: `${state?.frontMorphology?.neighborhoodAtoms ?? 0} placed atoms within 2.4dₙₙ · ${state?.frontMorphology?.angularSectors ?? 0}/8 occupied parent-local angular sectors`,
       encoding: state?.frontMorphology
@@ -12302,6 +12478,9 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "defect precursors", status: ranked(activeDefectPrecursorWeight() > 0),
       value: state.defectPrecursors ? `${signed(state.defectPrecursors.score)} · burden ${state.defectPrecursors.burden.toFixed(3)} · ${state.defectPrecursors.dominantPrecursor}` : "not evaluated",
       detail: activeDefectPrecursorWeight() > 0 ? `${defectPrecursorLabel()} · rank weight ${activeDefectPrecursorWeight().toFixed(2)}` : "diagnostic · identities withheld" },
+    { name: "coherency memory", status: ranked(activeCoherencyMemoryWeight() > 0),
+      value: state.coherencyMemory?.support ? `${signed(state.coherencyMemory.score)} · inherited ${state.coherencyMemory.inheritedMismatch.toFixed(3)} · ${state.coherencyMemory.support} marks` : "no inherited marks",
+      detail: activeCoherencyMemoryWeight() > 0 ? `${coherencyMemoryLabel()} · R${coherencyMemoryReach} · rank weight ${activeCoherencyMemoryWeight().toFixed(2)}` : "diagnostic · accepted history only" },
     { name: "front morphology", status: ranked(activeFrontMorphologyWeight() > 0),
       value: state.frontMorphology ? `${signed(state.frontMorphology.score)} · ${state.frontMorphology.angularSectors}/8 sectors` : "not evaluated",
       detail: activeFrontMorphologyWeight() > 0 ? `${frontMorphologyLabel()} · rank weight ${activeFrontMorphologyWeight().toFixed(2)}` : "diagnostic · no capillarity claim" },
@@ -12356,6 +12535,7 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "attachment topology", status: "diagnostic", value: "withheld", detail: "no executable front" },
     { name: "habit anisotropy", status: "diagnostic", value: "withheld", detail: "no recurring-rule direction atlas" },
     { name: "defect precursors", status: "diagnostic", value: "withheld", detail: "no executable action" },
+    { name: "coherency memory", status: "diagnostic", value: "withheld", detail: "no accepted growth history" },
     { name: "front morphology", status: "diagnostic", value: "withheld", detail: "no executable front" },
     { name: "capillary geometry", status: "diagnostic", value: "withheld", detail: "no executable front" },
     { name: "epitaxial registry", status: "diagnostic", value: "withheld", detail: "no executable supported-film front" },
@@ -12378,6 +12558,7 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "attachment topology", status: "diagnostic", value: "not used", detail: "specialized frozen trace" },
     { name: "habit anisotropy", status: "diagnostic", value: "not used", detail: "specialized frozen trace" },
     { name: "defect precursors", status: "diagnostic", value: "not used", detail: "specialized frozen trace" },
+    { name: "coherency memory", status: "diagnostic", value: "not used", detail: "specialized frozen trace" },
     { name: "front morphology", status: "diagnostic", value: "not used", detail: "specialized frozen trace" },
     { name: "capillary geometry", status: "diagnostic", value: "not used", detail: "specialized frozen trace" },
     { name: "epitaxial registry", status: "diagnostic", value: "not used", detail: "specialized frozen trace" },
@@ -12412,6 +12593,8 @@ function renderConstraintLedger(state, mode = "configured") {
       value: activeHabitAnisotropyWeight() > 0 ? habitAnisotropyLabel() : "diagnostic", detail: `weight ${activeHabitAnisotropyWeight().toFixed(2)}` },
     { name: "defect precursors", status: ranked(activeDefectPrecursorWeight() > 0),
       value: activeDefectPrecursorWeight() > 0 ? defectPrecursorLabel() : "diagnostic", detail: `weight ${activeDefectPrecursorWeight().toFixed(2)}` },
+    { name: "coherency memory", status: ranked(activeCoherencyMemoryWeight() > 0),
+      value: activeCoherencyMemoryWeight() > 0 ? coherencyMemoryLabel() : "diagnostic", detail: `R${coherencyMemoryReach} · weight ${activeCoherencyMemoryWeight().toFixed(2)}` },
     { name: "front morphology", status: ranked(activeFrontMorphologyWeight() > 0),
       value: activeFrontMorphologyWeight() > 0 ? frontMorphologyLabel() : "diagnostic", detail: `weight ${activeFrontMorphologyWeight().toFixed(2)}` },
     { name: "capillary geometry", status: ranked(activeCapillaryGeometryWeight() > 0),
@@ -13584,6 +13767,24 @@ defectPrecursorSelect.addEventListener("change", () => {
 defectPrecursorWeightSelect.addEventListener("change", () => {
   const value = Number(defectPrecursorWeightSelect.value);
   defectPrecursorWeight = [.12, .24, .48].includes(value) ? value : .24;
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+coherencyMemorySelect.addEventListener("change", () => {
+  const value = coherencyMemorySelect.value;
+  coherencyMemoryMode = ["continue", "relieve", "isolate"].includes(value) ? value : "none";
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+coherencyReachSelect.addEventListener("change", () => {
+  const value = Number(coherencyReachSelect.value);
+  coherencyMemoryReach = [1, 2, 3].includes(value) ? value : 2;
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+coherencyMemoryWeightSelect.addEventListener("change", () => {
+  const value = Number(coherencyMemoryWeightSelect.value);
+  coherencyMemoryWeight = [.12, .24, .48].includes(value) ? value : .24;
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
 });

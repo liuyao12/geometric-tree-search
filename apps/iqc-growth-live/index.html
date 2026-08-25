@@ -536,6 +536,31 @@
                 <option value="0.48">0.48 · strong</option>
               </select>
             </label>
+            <label class="field" for="coherencyMemorySelect">
+              <span>Coherency memory <b id="coherencyMemoryHint">off · local history reported</b></span>
+              <select id="coherencyMemorySelect">
+                <option value="none" selected>Off · report inherited mismatch</option>
+                <option value="continue">Continue coherent strain domain</option>
+                <option value="relieve">Favor local mismatch relief</option>
+                <option value="isolate">Avoid inherited strain hotspots</option>
+              </select>
+            </label>
+            <label class="field" for="coherencyReachSelect">
+              <span>Memory reach <b>cluster-graph hops</b></span>
+              <select id="coherencyReachSelect">
+                <option value="1">1 hop · incident parents</option>
+                <option value="2" selected>2 hops · local domain</option>
+                <option value="3">3 hops · mesoscopic probe</option>
+              </select>
+            </label>
+            <label class="field" for="coherencyMemoryWeightSelect">
+              <span>Memory weight <b>soft history rank</b></span>
+              <select id="coherencyMemoryWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
             <label class="field" for="frontMorphologySelect">
               <span>Mesoscopic front morphology <b id="frontMorphologyHint">neutral · diagnostic</b></span>
               <select id="frontMorphologySelect">
@@ -1241,7 +1266,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-103"></script>
+  <script type="module" src="./app.js?v=20260825-104"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

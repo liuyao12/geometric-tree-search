@@ -4089,3 +4089,27 @@ It calculates no formation energy, migration barrier, mobility, plastic
 relaxation, kinetic rate, or physical time. The receipt keeps the four raw
 components, fixed weights, accepted/rejected burden and score means, work, and
 all identity and energetic non-claims.
+
+## Finite-range coherency memory
+
+Per-action contact and angle strain used to disappear as soon as an attachment
+was accepted. The growth graph now carries a bounded, sample-relative mismatch
+mark on every accepted cluster placement. A later candidate gathers only
+already accepted marks within a user-selected radius of one, two, or three
+cluster-graph hops, weighted by `1 / (1 + hop)`. The descriptor reports the
+candidate mismatch, inherited mean and hotspot, mismatch gradient,
+rotation-equivariant axis agreement, and independent supporting placements.
+
+Three counterfactual orderings are available without changing the candidate
+set: continue a coherent strain domain, favor a lower-mismatch continuation, or
+avoid an inherited hotspot. A blue/coral axial octahedral glyph shows the local
+memory direction, support, and whether the selected action agrees with the
+active hypothesis. Only committed placements enter the memory; rejected and
+held-out geometry cannot influence a later score.
+
+This is deliberately a finite graph-memory model, not long-range elasticity.
+It does not infer stress, pressure, elastic modulus, Poisson ratio, strain
+energy, force balance, mechanical equilibrium, relaxation, plasticity,
+dislocation motion, or elapsed time. It cannot authorize a pose, alter emitted
+coordinates, relax an accepted structure, or override an exact collision,
+boundary, or connection certificate.
