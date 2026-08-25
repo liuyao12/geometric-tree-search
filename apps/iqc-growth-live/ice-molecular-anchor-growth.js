@@ -187,6 +187,7 @@ export function executeIceMolecularAnchorGrowth(artifact, caseId) {
     if (!accepted.length) {
       waves.push({ wave: waveIndex + 1, candidateAnchors: proposals.size, acceptedAnchors: 0,
         retainedOrientationHypotheses: 0, rejectedNonunanimousAnchors: rejectedNonunanimous,
+        rejectedCandidateAnchors: proposals.size,
         emittedAnchors: [] });
       break;
     }
@@ -205,7 +206,8 @@ export function executeIceMolecularAnchorGrowth(artifact, caseId) {
     });
     waves.push({ wave: waveIndex + 1, candidateAnchors: proposals.size,
       acceptedAnchors: accepted.length, retainedOrientationHypotheses: retained,
-      rejectedNonunanimousAnchors: rejectedNonunanimous, emittedAnchors });
+      rejectedNonunanimousAnchors: rejectedNonunanimous,
+      rejectedCandidateAnchors: proposals.size - accepted.length, emittedAnchors });
   }
   const emittedAnchors = [...anchorSites.entries()].filter(([key]) => !seedKeys.has(key)).map(([, site]) => site);
   const actualCounts = waves.map((wave) => wave.acceptedAnchors);
@@ -222,5 +224,16 @@ export function executeIceMolecularAnchorGrowth(artifact, caseId) {
     targetUsed: false,
     alternativesAreMutuallyExclusive: true,
     stationaryOrExponentialClaim: false,
+    artifactDigest: artifact.artifactDigest,
+    boundaryCenter: config.boundaryCenter.slice(),
+    boundaryRadius: config.boundaryRadius,
+    portCount: artifact.ports.length,
+    conformerTypes: 1,
+    moleculeLabel: "H₂O",
+    orientationSpecies: "H",
+    gapLabel: "O₆",
+    selectionRuleLabel: "orientation-domain unanimity",
+    fixedPointReason: "No parent orientation domain unanimously supports another non-conflicting oxygen anchor.",
+    provenance: { ...artifact.provenance },
   };
 }

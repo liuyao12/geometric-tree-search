@@ -93,7 +93,7 @@ def test_ice_gallery_uses_molecular_and_center_free_polyhedral_views() -> None:
     assert "executeIceMolecularAnchorGrowth(" in source
     assert "if (iceAnchorTrace) {\n    performIceAnchorEvent()" in source
     assert 'oracleMetric.textContent = "0"' in source
-    assert "mutually exclusive H₂O orientation hypotheses remain symbolic" in source
+    assert 'mutually exclusive ${iceAnchorTrace.moleculeLabel} orientation hypotheses remain symbolic' in source
     assert "Clusters² is disabled because no stationary promoted ice production has been certified" in source
     assert 'species === "H" || species === "D"' in source
     assert 'waterLabel: isotope === "D" ? "D₂O" : "H₂O"' in source

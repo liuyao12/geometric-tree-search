@@ -1,0 +1,119 @@
+{
+  "schema": "gcts-ice-vi-anchor-trace-v1",
+  "provenance": {
+    "fit": "one geometry-valid Ice VI D2O microstate; positions+species only",
+    "trainingMolecules": 123,
+    "conformerTypes": 5,
+    "frozenPorts": 84,
+    "directedTypePairs": 20,
+    "selectedParentWitnessThreshold": 2,
+    "calibrationCandidates": 683,
+    "calibrationCorrect": 23,
+    "calibrationWrong": 1,
+    "calibrationPrecision": 0.9583333333333334,
+    "trainEvalCenterSeparation": 34.92,
+    "requiredSeparation": 18.0,
+    "rawMoleculeIdOverlap": 0,
+    "traceDigest": "b3697a7107f50b3aed43e1d525c86444aec1a0857a10e94e11959786a6b305fa",
+    "targetUsed": false,
+    "materialLabelUsed": false,
+    "expectedFormulaUsed": false,
+    "latticeSiteIndicesUsed": false,
+    "energyOrPotentialUsed": false
+  },
+  "boundaryCenter": [26.668224, 26.668224, 27.30288],
+  "boundaryRadius": 9.0,
+  "seedAnchors": 23,
+  "seedSites": [
+    ["O", [23.1495, 24.511060992, 26.329873614]],
+    ["O", [23.1495, 26.2361, 24.174425]],
+    ["O", [23.1495, 26.2361, 29.862525]],
+    ["O", [23.1495, 27.956887520139, 26.336305014064]],
+    ["O", [24.511060992, 23.1495, 29.173923614]],
+    ["O", [24.515312479861, 29.3227, 29.180355014064]],
+    ["O", [24.874539008, 26.2361, 27.707076386]],
+    ["O", [26.2361, 23.1495, 27.018475]],
+    ["O", [26.2361, 24.874539008, 24.863026386]],
+    ["O", [26.2361, 24.874539008, 30.551126386]],
+    ["O", [26.2361, 27.597660992, 24.863026386]],
+    ["O", [26.2361, 27.597660992, 30.551126386]],
+    ["O", [26.2361, 29.3227, 27.018475]],
+    ["O", [27.597660992, 26.2361, 27.707076386]],
+    ["O", [27.956887520139, 23.1495, 29.180355014064]],
+    ["O", [27.961139008, 29.3227, 23.485823614]],
+    ["O", [27.961139008, 29.3227, 29.173923614]],
+    ["O", [29.3227, 24.511060992, 26.329873614]],
+    ["O", [29.3227, 26.2361, 24.174425]],
+    ["O", [29.3227, 26.2361, 29.862525]],
+    ["O", [29.3227, 27.956887520139, 26.336305014064]],
+    ["O", [29.3227, 30.684260992, 26.329873614]],
+    ["O", [31.047739008, 26.2361, 27.707076386]]
+  ],
+  "waves": [
+    {
+      "wave": 1,
+      "candidateAnchors": 186,
+      "acceptedAnchors": 4,
+      "retainedOrientationHypotheses": 20,
+      "rejectedCandidateAnchors": 182,
+      "candidateDigest": "51452d1974baf48dddac13931771c49f0d5a87b499ebb61e890965f03f414905",
+      "emittedAnchors": [
+        ["O", [21.424460992, 26.2361, 27.707076386]],
+        ["O", [26.2361, 31.043487520139, 24.856594985936]],
+        ["O", [26.2361, 21.424460992, 30.551126386]],
+        ["O", [26.2361, 31.043487520139, 30.544694985936]]
+      ]
+    },
+    {
+      "wave": 2,
+      "candidateAnchors": 316,
+      "acceptedAnchors": 3,
+      "retainedOrientationHypotheses": 18,
+      "rejectedCandidateAnchors": 313,
+      "candidateDigest": "1c9dee9cdb738182860f920c5a2b8ec15ee2ccf8663fdc9db31bc3295447b3db",
+      "emittedAnchors": [
+        ["O", [26.2361, 29.3227, 32.706575]],
+        ["O", [26.2361, 23.1495, 32.706575]],
+        ["O", [24.511060992, 29.3227, 23.485823614]]
+      ]
+    },
+    {
+      "wave": 3,
+      "candidateAnchors": 393,
+      "acceptedAnchors": 1,
+      "retainedOrientationHypotheses": 6,
+      "rejectedCandidateAnchors": 392,
+      "candidateDigest": "0a1aed1476f2b51d517c39a3440d07bf374ddec4b99c25c614ddb694390645a2",
+      "emittedAnchors": [
+        ["O", [26.2361, 29.3227, 21.330375]]
+      ]
+    },
+    {
+      "wave": 4,
+      "candidateAnchors": 408,
+      "acceptedAnchors": 0,
+      "retainedOrientationHypotheses": 0,
+      "rejectedCandidateAnchors": 408,
+      "candidateDigest": "e448c6d34914bdb98d7e23f3be6c2f71f99b967649096b79cb0349072d0d5133",
+      "emittedAnchors": []
+    }
+  ],
+  "emittedAnchors": [
+    ["O", [21.424460992, 26.2361, 27.707076386]],
+    ["O", [26.2361, 31.043487520139, 24.856594985936]],
+    ["O", [26.2361, 21.424460992, 30.551126386]],
+    ["O", [26.2361, 31.043487520139, 30.544694985936]],
+    ["O", [26.2361, 29.3227, 32.706575]],
+    ["O", [26.2361, 23.1495, 32.706575]],
+    ["O", [24.511060992, 29.3227, 23.485823614]],
+    ["O", [26.2361, 29.3227, 21.330375]]
+  ],
+  "anchorHypothesisCounts": [4, 5, 5, 6, 6, 6, 6, 6],
+  "unresolvedOrientationHypotheses": 8,
+  "resolvedOrientationHypotheses": 0,
+  "fixedPoint": true,
+  "expectedCounts": [4, 3, 1, 0],
+  "exactBackendCountParity": true,
+  "alternativesAreMutuallyExclusive": true,
+  "stationaryOrExponentialClaim": false
+}

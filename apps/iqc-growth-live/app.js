@@ -15,6 +15,10 @@ import {
   executeIceMolecularAnchorGrowth,
   validateIceMolecularPortArtifact,
 } from "./ice-molecular-anchor-growth.js";
+import {
+  executeFrozenIceViAnchorTrace,
+  validateIceViAnchorTraceArtifact,
+} from "./ice-vi-anchor-trace.js?v=20260824-1";
 import { discoverIrregularCover } from "./irregular-cover.js?v=20260824-1";
 import { generateAmorphousMixture } from "./amorphous-glass.js?v=20260824-1";
 import { powderStructureFactor, summarizeStructureFactor } from "./structure-observables.js?v=20260824-1";
@@ -68,6 +72,13 @@ const ICE_MOLECULAR_PORT_ARTIFACT = await fetch(new URL(
   return response.json();
 });
 validateIceMolecularPortArtifact(ICE_MOLECULAR_PORT_ARTIFACT);
+
+const ICE_VI_ANCHOR_TRACE_ARTIFACT = await fetch(new URL(
+  "./ice-vi-anchor-trace-artifact.json?v=20260824-1", import.meta.url)).then((response) => {
+  if (!response.ok) throw new Error(`Cannot load frozen Ice VI anchor trace: ${response.status}`);
+  return response.json();
+});
+validateIceViAnchorTraceArtifact(ICE_VI_ANCHOR_TRACE_ARTIFACT);
 
 const $ = (id) => document.getElementById(id);
 const viewport = $("viewport");
@@ -4823,7 +4834,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260824-56",
+      buildId: "20260824-58",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -5180,8 +5191,12 @@ async function buildExperimentReceipt() {
       localOracleCalls: oracleCalls,
       liveCertificate: liveGrowthCertificate(),
       finiteIceAnchorTrace: iceAnchorTrace ? {
-        artifactDigest: ICE_MOLECULAR_PORT_ARTIFACT.artifactDigest,
+        artifactDigest: iceAnchorTrace.artifactDigest,
         caseId: iceAnchorTrace.caseId,
+        moleculeLabel: iceAnchorTrace.moleculeLabel,
+        conformerTypes: iceAnchorTrace.conformerTypes,
+        frozenPorts: iceAnchorTrace.portCount,
+        selectionRule: iceAnchorTrace.selectionRuleLabel,
         seedAnchors: iceAnchorTrace.seedAnchors,
         waves: iceAnchorTrace.waves.map((wave) => ({
           wave: wave.wave,
@@ -5189,12 +5204,15 @@ async function buildExperimentReceipt() {
           acceptedAnchors: wave.acceptedAnchors,
           retainedOrientationHypotheses: wave.retainedOrientationHypotheses,
           rejectedNonunanimousAnchors: wave.rejectedNonunanimousAnchors,
+          rejectedCandidateAnchors: wave.rejectedCandidateAnchors,
+          candidateDigest: wave.candidateDigest,
         })),
         emittedAnchorCount: iceAnchorTrace.emittedAnchors.length,
         unresolvedOrientationDomains: iceAnchorTrace.unresolvedOrientationHypotheses,
         targetUsed: iceAnchorTrace.targetUsed,
         fixedPoint: iceAnchorTrace.fixedPoint,
         exactBackendCountParity: iceAnchorTrace.exactBackendCountParity,
+        provenance: iceAnchorTrace.provenance,
       } : null,
     } : { status: "stage not entered" },
     evidenceBoundary: {
@@ -6292,14 +6310,14 @@ function referenceCoverageCount() {
 }
 
 function iceAnchorScenePoint(point) {
-  const config = ICE_MOLECULAR_PORT_ARTIFACT.cases[scenarioSelect.value];
   const scale = .92 / currentMaterial().spacingA;
-  return new THREE.Vector3(...point).sub(new THREE.Vector3(...config.boundaryCenter)).multiplyScalar(scale);
+  return new THREE.Vector3(...point).sub(new THREE.Vector3(...iceAnchorTrace.boundaryCenter)).multiplyScalar(scale);
 }
 
 function initializeIceAnchorSearch() {
-  iceAnchorTrace = executeIceMolecularAnchorGrowth(
-    ICE_MOLECULAR_PORT_ARTIFACT, scenarioSelect.value);
+  iceAnchorTrace = scenarioSelect.value === "iceVI"
+    ? executeFrozenIceViAnchorTrace(ICE_VI_ANCHOR_TRACE_ARTIFACT)
+    : executeIceMolecularAnchorGrowth(ICE_MOLECULAR_PORT_ARTIFACT, scenarioSelect.value);
   if (!iceAnchorTrace.exactBackendCountParity || iceAnchorTrace.targetUsed) {
     throw new Error("Frozen browser ice continuation diverged from its sealed backend certificate");
   }
@@ -6965,7 +6983,8 @@ function enterPipelineStage(index, options = {}) {
   else if (pipelineStage === 2) atoms = makeRepresentatives().map((atom) => cloneAtom(atom));
   else if (pipelineStage === 3) atoms = makeRepresentatives().map((atom) => cloneAtom(atom));
   else if (currentMaterial().growthWithheld) atoms = referenceAtoms.map((atom) => cloneAtom(atom));
-  else if (learnedCover.molecular?.water && currentMaterial().icePolytype) initializeIceAnchorSearch();
+  else if (learnedCover.molecular?.water
+    && (currentMaterial().icePolytype || scenarioSelect.value === "iceVI")) initializeIceAnchorSearch();
   else initializeOffLatticeSearch();
   if (pipelineStage < 4) rebuildSpatialIndex();
   buildConfinement();
@@ -7076,13 +7095,15 @@ function updateStageNarrative() {
       `${overlapGrammar.reconstructionEdges} replay ports`,
     ];
     if (water) {
-      narratives[4].title = "Grow shared oxygen anchors; retain proton poses symbolically";
+      narratives[4].title = `Grow shared oxygen anchors; retain ${iceAnchorTrace?.orientationSpecies || "H"} poses symbolically`;
       narratives[4].phase = "sealed disjoint seed";
       narratives[4].decision = "Frozen molecular-port frontier initialized";
-      narratives[4].copy = `A positions-and-species-only Ih training window learned ${ICE_MOLECULAR_PORT_ARTIFACT.ports.length} proper-SE(3) connection ports. The browser recomputes a disjoint ${scenarioSelect.value === "iceIc" ? "cubic-ice transfer" : "hexagonal-ice"} anchor frontier without target coordinates.`;
-      narratives[4].caption = "Only oxygen anchors shared by mutually exclusive H₂O orientation hypotheses are displayed. Proton alternatives remain symbolic and parent-domain unanimity fails closed when the next connection is unsupported.";
+      narratives[4].copy = scenarioSelect.value === "iceVI"
+        ? `One positions-and-species-only Ice VI microstate learned ${iceAnchorTrace?.conformerTypes || 5} D₂O conformers and ${iceAnchorTrace?.portCount || 84} proper-SE(3) connection ports. The browser replays the frozen trace on a spatially disjoint microstate nucleus; target coordinates were opened only after the trace was sealed.`
+        : `A positions-and-species-only Ih training window learned ${ICE_MOLECULAR_PORT_ARTIFACT.ports.length} proper-SE(3) connection ports. The browser recomputes a disjoint ${scenarioSelect.value === "iceIc" ? "cubic-ice transfer" : "hexagonal-ice"} anchor frontier without target coordinates.`;
+      narratives[4].caption = `Only oxygen anchors shared by mutually exclusive ${iceAnchorTrace?.moleculeLabel || "H₂O"} orientation hypotheses are displayed. ${iceAnchorTrace?.orientationSpecies || "H"} alternatives remain symbolic and ${iceAnchorTrace?.selectionRuleLabel || "parent-domain unanimity"} fails closed when the next connection is unsupported.`;
       narratives[4].values = [
-        `${ICE_MOLECULAR_PORT_ARTIFACT.ports.length} frozen ports`,
+        `${iceAnchorTrace?.portCount || ICE_MOLECULAR_PORT_ARTIFACT.ports.length} frozen ports`,
         `${iceAnchorTrace?.seedAnchors || 0} seed O anchors`,
         "target calls 0",
         "stationary claim false",
@@ -7313,19 +7334,19 @@ function performIceAnchorEvent() {
   iceAnchorWaveIndex++;
   eventIndex += wave.candidateAnchors;
   if (!wave.acceptedAnchors) {
-    captionAction.textContent = `Safe fixed point after ${iceAnchorTrace.emittedAnchors.length} target-blind oxygen anchors. No parent orientation domain unanimously supports another site; unresolved proton poses are retained as alternatives, not drawn as simultaneous H atoms.`;
+    captionAction.textContent = `Safe fixed point after ${iceAnchorTrace.emittedAnchors.length} target-blind oxygen anchors. ${iceAnchorTrace.fixedPointReason} Unresolved ${iceAnchorTrace.orientationSpecies} poses are retained as alternatives, not drawn as simultaneous atoms.`;
     decisionBadge.className = "badge neutral";
     decisionBadge.textContent = "fixed point";
     decisionTitle.textContent = "Unsupported molecular continuation stops safely";
-    decisionCopy.textContent = "The frozen eight-port grammar has no unanimous next anchor. This finite certificate is not a stationary or exponential ice-growth rule.";
+    decisionCopy.textContent = `The frozen ${iceAnchorTrace.portCount}-port grammar has no supported next anchor. This finite certificate is not a stationary or exponential ice-growth rule.`;
     actionValue.textContent = `wave ${wave.wave} · 0 accepted`;
-    domainValue.textContent = `${wave.rejectedNonunanimousAnchors} non-unanimous anchors pruned`;
+    domainValue.textContent = `${wave.rejectedCandidateAnchors} unsupported or conflicting anchors pruned`;
     energyValue.textContent = "target calls 0";
     strainValue.textContent = "not used by frozen ice trace";
     compositionValue.textContent = "not used by frozen ice trace";
     chargeValue.textContent = "not used by frozen ice trace";
     surfaceValue.textContent = "not used by frozen ice trace";
-    resolverValue.textContent = "orientation-domain unanimity";
+    resolverValue.textContent = iceAnchorTrace.selectionRuleLabel;
     appendHistory("reject", { type: "reject", depth: wave.wave,
       action: "safe fixed point", family: "no unanimous parent domain" });
     growthStopReason = "Frozen molecular-port grammar reached its certified finite fixed point.";
@@ -7334,7 +7355,7 @@ function performIceAnchorEvent() {
     updatePipelineButtons();
     rebuildWorld();
     updateUI();
-    captionAction.textContent = `Safe fixed point after ${iceAnchorTrace.emittedAnchors.length} target-blind oxygen anchors. No parent orientation domain unanimously supports another site; unresolved proton poses are retained as alternatives, not drawn as simultaneous H atoms.`;
+    captionAction.textContent = `Safe fixed point after ${iceAnchorTrace.emittedAnchors.length} target-blind oxygen anchors. ${iceAnchorTrace.fixedPointReason} Unresolved ${iceAnchorTrace.orientationSpecies} poses are retained as alternatives, not drawn as simultaneous atoms.`;
     return;
   }
   wave.emittedAnchors.forEach(([species, point]) => {
@@ -7346,12 +7367,12 @@ function performIceAnchorEvent() {
   grammarDecisions += wave.acceptedAnchors;
   appendHistory("reuse", { type: "accept", depth: wave.wave,
     action: `${wave.acceptedAnchors} O anchors`,
-    family: `${wave.retainedOrientationHypotheses} mutually exclusive H₂O poses retained` });
-  captionAction.textContent = `Wave ${wave.wave}: ${wave.acceptedAnchors}/${wave.candidateAnchors} anchor candidates survive frozen proper-SE(3) ports and parent-domain unanimity. ${wave.retainedOrientationHypotheses} mutually exclusive H₂O orientation hypotheses remain symbolic; only their shared O atoms are displayed.`;
+    family: `${wave.retainedOrientationHypotheses} mutually exclusive ${iceAnchorTrace.moleculeLabel} poses retained` });
+  captionAction.textContent = `Wave ${wave.wave}: ${wave.acceptedAnchors}/${wave.candidateAnchors} anchor candidates survive frozen proper-SE(3) ports and ${iceAnchorTrace.selectionRuleLabel}. ${wave.retainedOrientationHypotheses} mutually exclusive ${iceAnchorTrace.moleculeLabel} orientation hypotheses remain symbolic; only their shared O atoms are displayed.`;
   updateDecision({ eventType: "reuse", accepted: true,
     state: { action: `${wave.acceptedAnchors} O-anchor placements`,
-      domain: `8 frozen molecular ports · wave ${wave.wave}` },
-    resolver: "orientation-domain unanimity", interval: [1, 1] });
+      domain: `${iceAnchorTrace.portCount} frozen molecular ports · wave ${wave.wave}` },
+    resolver: iceAnchorTrace.selectionRuleLabel, interval: [1, 1] });
   rebuildWorld();
   updateUI();
 }
@@ -7729,15 +7750,15 @@ function liveGrowthCertificate() {
       mode: "sealed molecular-anchor continuation",
       state: fixedPointReached ? "finite fixed point" : "target-blind execution",
       knownWindow: { status: "pass", title: `${iceAnchorTrace.seedAnchors} observed O anchors`,
-        detail: "Seed only; the complete H₂O / bridge / O₆ cover was certified in cluster identification." },
+        detail: `Seed only; the complete ${iceAnchorTrace.moleculeLabel} / bridge / ${iceAnchorTrace.gapLabel} cover was certified in cluster identification.` },
       continuation: { status: iceAnchorTrace.exactBackendCountParity ? "pass" : "open",
         title: `${accepted} exact emitted O anchors`,
         detail: `${processed.reduce((sum, wave) => sum + wave.candidateAnchors, 0)} frozen candidates processed · target calls 0` },
       hierarchy: { status: nonemptyWaves >= 2 ? "progress" : "open",
         title: `${nonemptyWaves} nonempty self-fed wave${nonemptyWaves === 1 ? "" : "s"}`,
         detail: fixedPointReached ? "Grammar exhausted safely; no supported successor remains." : "Execution has not yet reached its certified endpoint." },
-      claimBoundary: { status: "open", title: "O scaffold finite · proton / stationary open",
-        detail: "Mutually exclusive H₂O orientations stay symbolic; no clusters² or exponential ice claim." },
+      claimBoundary: { status: "open", title: `O scaffold finite · ${iceAnchorTrace.orientationSpecies} pose / stationary open`,
+        detail: `Mutually exclusive ${iceAnchorTrace.moleculeLabel} orientations stay symbolic; no clusters² or exponential ice claim.` },
       metrics: { seedSites: iceAnchorTrace.seedAnchors, emittedSites: accepted, processedWaves: processed.length,
         nonemptySelfFedWaves: nonemptyWaves, fixedPointReached, targetCalls: 0, exactBackendCountParity: iceAnchorTrace.exactBackendCountParity },
       benchmarkGate: benchmark.gate,
@@ -7866,7 +7887,7 @@ function updateUI() {
       const nextWave = iceAnchorTrace.waves[iceAnchorWaveIndex];
       const emitted = atoms.length - iceAnchorTrace.seedAnchors;
       stageEyebrow.textContent = "search · sealed molecular-port continuation";
-      stageTitle.textContent = "Grow shared oxygen anchors; retain proton poses symbolically";
+      stageTitle.textContent = `Grow shared oxygen anchors; retain ${iceAnchorTrace.orientationSpecies} poses symbolically`;
       phaseReadout.textContent = nextWave
         ? `wave ${nextWave.wave} · ${nextWave.candidateAnchors} candidates`
         : iceAnchorTrace.fixedPoint ? "safe finite fixed point" : "trace exhausted";
@@ -7932,7 +7953,7 @@ function renderLegend() {
     const hydrogenSwatch = document.createElement("i");
     hydrogenSwatch.className = "cluster-swatch";
     hydrogenSwatch.style.setProperty("--swatch", "#7f9e96");
-    hydrogen.append(hydrogenSwatch, document.createTextNode("H · mutually exclusive pose hypotheses (not materialized)"));
+    hydrogen.append(hydrogenSwatch, document.createTextNode(`${iceAnchorTrace.orientationSpecies} · mutually exclusive pose hypotheses (not materialized)`));
     speciesLegend.append(oxygen, hydrogen);
   } else if (pipelineStage === 3 && sectionModel) {
     legendHeading.textContent = "Local marking sections";
@@ -8500,8 +8521,23 @@ function animate(now) {
   renderer.render(scene, camera);
 }
 
+function applyLaunchParameters() {
+  const parameters = new URLSearchParams(window.location.search);
+  const material = parameters.get("material");
+  if (material && [...scenarioSelect.options].some((option) => option.value === material)) {
+    scenarioSelect.value = material;
+  }
+  if (scenarioSelect.value === "iceVI" && parameters.has("microstate")) {
+    const requested = Number.parseInt(parameters.get("microstate"), 10);
+    iceViMicrostateSeed = Number.isInteger(requested) && requested > 0 ? requested : 1;
+    iceViMicrostate = resolveIceViIceRuleMicrostate(iceViMicrostateSeed);
+  }
+  const requestedStage = Number.parseInt(parameters.get("stage"), 10);
+  return Number.isInteger(requestedStage) ? Math.max(0, Math.min(4, requestedStage)) : 0;
+}
+
 restoreMarkingLibrary();
 buildPeriodicTable();
-enterPipelineStage(0);
+enterPipelineStage(applyLaunchParameters());
 resize();
 requestAnimationFrame(animate);
