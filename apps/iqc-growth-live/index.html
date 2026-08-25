@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260825-42">
+  <link rel="stylesheet" href="./style.css?v=20260825-43">
   <script type="importmap">
     {
       "imports": {
@@ -546,6 +546,11 @@
                 <option value="4">Four dispersed observed nuclei</option>
               </select>
             </label>
+            <section id="nucleusInterfaceInspector" class="nucleus-interface-inspector" hidden>
+              <header><span><small>orientation relationship</small><strong>Nucleus-pair inspector</strong></span><b id="nucleusInterfaceState">no interface pair</b></header>
+              <div id="nucleusPairButtons" class="nucleus-pair-buttons" role="group" aria-label="Select a nucleus pair"></div>
+              <article id="nucleusPairDetail"></article>
+            </section>
             <label class="field" for="explorationScaleSelect">
               <span>Configurational path ensemble <b id="explorationScaleHint">greedy · T* = 0</b></span>
               <select id="explorationScaleSelect">
@@ -1020,7 +1025,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-87"></script>
+  <script type="module" src="./app.js?v=20260825-88"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

@@ -43,7 +43,7 @@ import {
   learnColoredDistanceEnvelopesEnsemble,
 } from "./colored-distance-envelopes.js?v=20260824-6";
 import { learnLocalPairDistanceUncertaintyEnsemble } from "./ensemble-geometry-uncertainty.js?v=20260824-1";
-import { classifyProperPoseOrbits } from "./proper-pose-orbits.js?v=20260824-1";
+import { classifyProperPoseOrbits, symmetryReducedMisorientation } from "./proper-pose-orbits.js?v=20260825-1";
 import {
   centeredStructuralWindow,
   inferPointSetDimension,
@@ -200,6 +200,10 @@ const growthNucleiSelect = $("growthNucleiSelect");
 const growthNucleiHint = $("growthNucleiHint");
 const nucleiBadge = $("nucleiBadge");
 const nucleiBadgeLabel = $("nucleiBadgeLabel");
+const nucleusInterfaceInspector = $("nucleusInterfaceInspector");
+const nucleusInterfaceState = $("nucleusInterfaceState");
+const nucleusPairButtons = $("nucleusPairButtons");
+const nucleusPairDetail = $("nucleusPairDetail");
 const growthSchedulingSelect = $("growthSchedulingSelect");
 const growthSchedulingHint = $("growthSchedulingHint");
 const trainVariantButton = $("trainVariantButton");
@@ -588,7 +592,8 @@ const frontierGroup = new THREE.Group();
 const decisionGroup = new THREE.Group();
 const externalDriveGroup = new THREE.Group();
 const unitCellGroup = new THREE.Group();
-world.add(confinementGroup, externalDriveGroup, unitCellGroup, bondGroup, atomGroup, clusterGroup, frontierGroup, decisionGroup);
+const interfaceGroup = new THREE.Group();
+world.add(confinementGroup, externalDriveGroup, unitCellGroup, bondGroup, atomGroup, clusterGroup, interfaceGroup, frontierGroup, decisionGroup);
 scene.add(world);
 
 const sphereGeometry = new THREE.SphereGeometry(0.18, 13, 9);
@@ -755,6 +760,7 @@ let requestedGrowthNuclei = 1;
 let initializedGrowthNuclei = 0;
 let coalescenceEvents = 0;
 let crossNucleusMergeContacts = 0;
+let selectedNucleusPairKey = null;
 let growthScheduling = "commuting";
 let nextMarkingId = 1;
 let geometryMode = "auto";
@@ -5518,7 +5524,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-87",
+      buildId: "20260825-88",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -6007,6 +6013,19 @@ async function buildExperimentReceipt() {
         orientations: "observed proper-SE(3) occurrence poses; no artificial grain rotation",
         coalescenceEvents,
         crossNucleusSharedSiteContacts: crossNucleusMergeContacts,
+        pairwiseOrientationRelationships: growthNucleusPairs().map((pair) => ({
+          nuclei: [pair.first.nucleusId, pair.second.nucleusId],
+          clusterTypes: [pair.first.type, pair.second.type],
+          comparableColoredMetricClass: pair.misorientation.comparable,
+          properSymmetryReducedMisorientationDegrees: pair.misorientation.angleDegrees === null
+            ? null : receiptRound(pair.misorientation.angleDegrees),
+          properGaugePairsMinimized: pair.misorientation.properGaugePairs,
+          improperRotationsQuotiented: false,
+          seedCenterSeparationAngstrom: receiptRound(pair.centerSeparationAngstrom),
+          sharedSpeciesLabeledSites: pair.sharedSites,
+          sharedSiteFractionOfSmallerLineage: receiptRound(pair.sharedSiteFraction),
+          targetUsed: false,
+        })),
         interfaceVisualization: "cyan rings mark sites shared by lineages from different initialized nuclei",
         exactSpeciesAndCollisionGatesPreserved: true,
         targetUsedToSelectSeeds: false,
@@ -7914,13 +7933,38 @@ function growthSeedType(occurrenceIndex) {
 
 function observedGrowthSeedIndices() {
   const requested = Math.max(1, requestedGrowthNuclei);
-  const first = overlapGrammar.replaySeedIndex;
+  const replaySeed = overlapGrammar.replaySeedIndex;
   const eligible = overlapGrammar.occurrences.map((occurrence, index) => ({ occurrence, index }))
     .filter(({ occurrence, index }) => occurrence?.position && growthSeedSites(index).length >= 2)
     .sort((a, b) => a.index - b.index);
+  const referenceSupports = new Map(eligible.map(({ occurrence, index }) => [index, new Set(canonicalKnownSites(
+    growthSeedSites(index).map((site) => ({ ...site,
+      p: site.local.clone().applyQuaternion(occurrence.rotation).add(occurrence.position) }))).sites
+    .map((site) => site.referenceIndex))]));
+  let first = replaySeed;
+  let pool = eligible;
+  if (requested > 1) {
+    const byType = new Map();
+    eligible.forEach((entry) => {
+      const type = growthSeedType(entry.index);
+      const group = byType.get(type) || [];
+      group.push(entry); byType.set(type, group);
+    });
+    const recurring = [...byType.entries()].filter(([, group]) => group.length >= requested)
+      .sort((a, b) => b[1].length - a[1].length || a[0] - b[0])[0];
+    if (recurring) {
+      pool = recurring[1];
+      first = pool.slice().sort((a, b) =>
+        a.occurrence.position.distanceToSquared(overlapGrammar.occurrences[replaySeed].position)
+        - b.occurrence.position.distanceToSquared(overlapGrammar.occurrences[replaySeed].position)
+        || a.index - b.index)[0].index;
+    }
+  }
   const selected = [first];
   while (selected.length < requested) {
-    const next = eligible.filter(({ index }) => !selected.includes(index))
+    const occupied = new Set(selected.flatMap((index) => [...(referenceSupports.get(index) || [])]));
+    const next = pool.filter(({ index }) => !selected.includes(index)
+        && [...(referenceSupports.get(index) || [])].every((referenceIndex) => !occupied.has(referenceIndex)))
       .map(({ occurrence, index }) => ({ index, minimumSeparation: Math.min(...selected.map((chosen) =>
         occurrence.position.distanceTo(overlapGrammar.occurrences[chosen].position))) }))
       .sort((a, b) => b.minimumSeparation - a.minimumSeparation || a.index - b.index)[0];
@@ -7928,6 +7972,75 @@ function observedGrowthSeedIndices() {
     selected.push(next.index);
   }
   return selected;
+}
+
+function growthNucleusOccurrence(placement) {
+  const sites = growthSeedSites(placement.occurrenceIndex);
+  return {
+    species: sites.map((site) => site.species),
+    positions: sites.map((site) => site.local.clone().applyQuaternion(placement.rotation)
+      .add(placement.position).toArray()),
+  };
+}
+
+function growthNucleusPairs() {
+  const nuclei = placedClusters.filter((placement) => placement.seedNucleus)
+    .sort((a, b) => a.nucleusId - b.nucleusId);
+  const pairs = [];
+  for (let first = 0; first < nuclei.length; first++) for (let second = first + 1; second < nuclei.length; second++) {
+    const a = nuclei[first]; const b = nuclei[second];
+    const misorientation = symmetryReducedMisorientation(growthNucleusOccurrence(a), growthNucleusOccurrence(b), {
+      metricToleranceFraction: effectiveClusterMetricTolerance(),
+    });
+    const atomsA = atoms.filter((atom) => atom.nucleusIds?.includes(a.nucleusId));
+    const atomsB = atoms.filter((atom) => atom.nucleusIds?.includes(b.nucleusId));
+    const shared = atoms.filter((atom) => atom.nucleusIds?.includes(a.nucleusId)
+      && atom.nucleusIds.includes(b.nucleusId));
+    pairs.push({ key: `${a.nucleusId}:${b.nucleusId}`, first: a, second: b, misorientation,
+      centerSeparationAngstrom: a.position.distanceTo(b.position) * referenceSpacingA / referenceSpacing,
+      sharedSites: shared.length, firstSites: atomsA.length, secondSites: atomsB.length,
+      sharedSiteFraction: shared.length / Math.max(1, Math.min(atomsA.length, atomsB.length)),
+      sameClusterType: a.type === b.type, targetUsed: false });
+  }
+  return pairs;
+}
+
+function renderNucleusInterfaceInspector() {
+  const pairs = pipelineStage === 4 ? growthNucleusPairs() : [];
+  nucleusInterfaceInspector.hidden = pairs.length === 0;
+  if (!pairs.length) return;
+  if (!pairs.some((pair) => pair.key === selectedNucleusPairKey)) selectedNucleusPairKey = pairs[0].key;
+  const selected = pairs.find((pair) => pair.key === selectedNucleusPairKey) || pairs[0];
+  nucleusInterfaceState.textContent = selected.sharedSites
+    ? `${selected.sharedSites} registered sites` : "domains separated";
+  nucleusPairButtons.replaceChildren();
+  pairs.forEach((pair) => {
+    const button = document.createElement("button"); button.type = "button";
+    button.classList.toggle("active", pair.key === selected.key);
+    button.setAttribute("aria-pressed", String(pair.key === selected.key));
+    button.textContent = `N${pair.first.nucleusId} ↔ N${pair.second.nucleusId}`;
+    button.addEventListener("click", () => {
+      selectedNucleusPairKey = pair.key;
+      renderNucleusInterfaceInspector();
+      rebuildWorld();
+    });
+    nucleusPairButtons.append(button);
+  });
+  nucleusPairDetail.replaceChildren();
+  const angle = selected.misorientation.comparable
+    ? `${selected.misorientation.angleDegrees.toFixed(2)}°` : "not comparable";
+  [
+    ["proper misorientation", angle, selected.misorientation.comparable
+      ? `${selected.misorientation.properGaugePairs} symmetry-gauge pairs minimized` : selected.misorientation.reason],
+    ["seed separation", `${selected.centerSeparationAngstrom.toFixed(2)} Å`, "observed occurrence centers"],
+    ["shared-site registry", `${selected.sharedSites} sites · ${(selected.sharedSiteFraction * 100).toFixed(1)}%`, `${selected.firstSites} / ${selected.secondSites} lineage sites`],
+    ["claim boundary", "geometric interface", "no grain label or interfacial energy"],
+  ].forEach(([label, value, detail]) => {
+    const row = document.createElement("div"); const small = document.createElement("small");
+    const strong = document.createElement("strong"); const span = document.createElement("span");
+    small.textContent = label; strong.textContent = value; span.textContent = detail;
+    row.append(small, strong, span); nucleusPairDetail.append(row);
+  });
 }
 
 function initializeOffLatticeSearch() {
@@ -7971,6 +8084,7 @@ function initializeOffLatticeSearch() {
   initializedGrowthNuclei = 0;
   coalescenceEvents = 0;
   crossNucleusMergeContacts = 0;
+  selectedNucleusPairKey = null;
   constraintNeighborhoodEvaluations = 0;
   constraintNeighborhoodSiteTotal = 0;
   maximumConstraintNeighborhoodSites = 0;
@@ -8005,6 +8119,8 @@ function initializeOffLatticeSearch() {
     placedClusters.push(seed);
   });
   initializedGrowthNuclei = placedClusters.length;
+  selectedNucleusPairKey = initializedGrowthNuclei > 1
+    ? `${placedClusters[0].nucleusId}:${placedClusters[1].nucleusId}` : null;
   placedClusters.forEach(enqueueRulesFromPlacement);
   replayIndex = referenceCoverageCount();
   const initialAudit = referenceCoverageAudit();
@@ -8529,6 +8645,7 @@ function syncStageOptions() {
     + 35 * Number(affineLoadMode !== "none") + 35 * Number(loopClosurePreference !== "none")
     + 35 * Number(arrivalPathMode !== "none") + 35 * Number(geometricExplorationScale > 0)}px`;
   nucleiBadgeLabel.textContent = `${initializedGrowthNuclei || requestedGrowthNuclei} nuclei · ${crossNucleusMergeContacts} interface contacts`;
+  renderNucleusInterfaceInspector();
   stageOptionsPanel.hidden = !visible;
   if (!visible) return;
   const clustering = pipelineStage === 1;
@@ -8767,6 +8884,7 @@ function resetCounters() {
   initializedGrowthNuclei = 0;
   coalescenceEvents = 0;
   crossNucleusMergeContacts = 0;
+  selectedNucleusPairKey = null;
   constraintNeighborhoodEvaluations = 0;
   constraintNeighborhoodSiteTotal = 0;
   maximumConstraintNeighborhoodSites = 0;
@@ -9589,6 +9707,7 @@ function rebuildWorld() {
   clearGroup(externalDriveGroup);
   clearGroup(unitCellGroup);
   clearGroup(bondGroup);
+  clearGroup(interfaceGroup);
   clearGroup(frontierGroup);
   clearGroup(decisionGroup);
   if (pipelineStage === 4 && externalDriveMode !== "none") {
@@ -9652,7 +9771,18 @@ function rebuildWorld() {
     });
   }
 
-  const interfaceSites = atoms.filter((atom) => atom.interfaceContact || (atom.nucleusIds?.length || 0) > 1);
+  const selectedPair = growthNucleusPairs().find((pair) => pair.key === selectedNucleusPairKey);
+  if (pipelineStage === 4 && selectedPair) {
+    const line = new THREE.Line(new THREE.BufferGeometry().setFromPoints([
+      selectedPair.first.position, selectedPair.second.position,
+    ]), new THREE.LineDashedMaterial({ color: 0x7ee1e8, dashSize: .22, gapSize: .13,
+      transparent: true, opacity: .55 }));
+    line.computeLineDistances();
+    interfaceGroup.add(line);
+  }
+  const interfaceSites = atoms.filter((atom) => selectedPair
+    ? atom.nucleusIds?.includes(selectedPair.first.nucleusId) && atom.nucleusIds.includes(selectedPair.second.nucleusId)
+    : atom.interfaceContact || (atom.nucleusIds?.length || 0) > 1);
   if (pipelineStage === 4 && interfaceSites.length) {
     const rings = new THREE.InstancedMesh(occupancyRingGeometry, interfaceRingMaterial, interfaceSites.length);
     interfaceSites.forEach((atom, index) => {

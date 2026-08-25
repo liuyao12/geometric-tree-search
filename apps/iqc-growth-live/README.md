@@ -3749,3 +3749,15 @@ domains, but it is not a grain-boundary classification, nucleation rate,
 interfacial energy, texture distribution, coarsening law, or elapsed physical
 time. The experiment receipt records requested and realized seed counts,
 selection provenance, interface contacts, and these explicit claim limits.
+
+For every nucleus pair, an interactive orientation-relationship inspector now
+reports seed-center separation, exact shared-site registry, and a proper
+symmetry-reduced misorientation. The angle is not taken from raw quaternions:
+the same intrinsic right-handed colored frames used by cluster identification
+are compared over every tied proper-symmetry gauge, and the minimum proper
+rotation is retained. Different colored metric classes and supports without a
+finite non-collinear frame fail closed as “not comparable”; reflections are
+never silently identified. Selecting a pair draws its center-to-center line
+and restricts cyan interface rings to sites shared by that pair. This is an
+orientation/registry diagnostic, not a CSL grain-boundary assignment or an
+interfacial-energy calculation.

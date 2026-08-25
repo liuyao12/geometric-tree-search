@@ -79,7 +79,14 @@ function intrinsicFrames(occurrence, toleranceFraction) {
   }
   if (!frames.length) return { frames: [], geometry };
   const canonicalKey = frames.reduce((best, frame) => best === null || frame.key < best ? frame.key : best, null);
-  return { frames: frames.filter((frame) => frame.key === canonicalKey), geometry };
+  const canonicalFrames = frames.filter((frame) => frame.key === canonicalKey);
+  canonicalFrames.forEach((frame) => {
+    frame.properCode = geometry.centered.map((position, index) => [
+      occurrence.species[index],
+      ...frame.axes.map((axis) => Math.round(dot(position, axis) / geometry.quantum)),
+    ].join(":")).sort().join("|");
+  });
+  return { frames: canonicalFrames, geometry };
 }
 
 function frameAngle(first, second) {
@@ -91,9 +98,62 @@ function frameOrbitDistance(first, second) {
   if (!first.frames.length || !second.frames.length) return Infinity;
   let best = Infinity;
   first.frames.forEach((firstFrame) => second.frames.forEach((secondFrame) => {
+    if (firstFrame.properCode !== secondFrame.properCode) return;
     best = Math.min(best, frameAngle(firstFrame, secondFrame));
   }));
   return best;
+}
+
+function coloredMetricClassKey(occurrence, toleranceFraction) {
+  const geometry = occurrenceGeometry(occurrence, toleranceFraction);
+  const pairDistances = [];
+  for (let first = 0; first < occurrence.species.length; first++) {
+    for (let second = first + 1; second < occurrence.species.length; second++) {
+      pairDistances.push([
+        [occurrence.species[first], occurrence.species[second]].sort().join("<>"),
+        Math.round(geometry.distances[first][second] / geometry.quantum),
+      ].join(":"));
+    }
+  }
+  return `${occurrence.species.slice().sort().join(",")}|${pairDistances.sort().join(",")}`;
+}
+
+/**
+ * Return the minimum proper-rotation angle between two colored occurrences
+ * after quotienting every tied intrinsic-frame gauge of the cluster. The
+ * comparison fails closed for different colored metric classes or supports
+ * without a finite non-collinear proper frame.
+ */
+export function symmetryReducedMisorientation(first, second, {
+  metricToleranceFraction = .025,
+} = {}) {
+  validateOccurrence(first);
+  validateOccurrence(second);
+  const firstKey = coloredMetricClassKey(first, metricToleranceFraction);
+  const secondKey = coloredMetricClassKey(second, metricToleranceFraction);
+  if (firstKey !== secondKey) return {
+    comparable: false, reason: "different colored metric classes",
+    angleRadians: null, angleDegrees: null, properGaugePairs: 0,
+    improperRotationsQuotiented: false,
+  };
+  const firstFrames = intrinsicFrames(first, metricToleranceFraction);
+  const secondFrames = intrinsicFrames(second, metricToleranceFraction);
+  if (!firstFrames.frames.length || !secondFrames.frames.length) return {
+    comparable: false, reason: "finite proper frame unavailable",
+    angleRadians: null, angleDegrees: null, properGaugePairs: 0,
+    improperRotationsQuotiented: false,
+  };
+  const properGaugePairs = firstFrames.frames.reduce((sum, firstFrame) => sum
+    + secondFrames.frames.filter((secondFrame) => firstFrame.properCode === secondFrame.properCode).length, 0);
+  const angleRadians = frameOrbitDistance(firstFrames, secondFrames);
+  return {
+    comparable: Number.isFinite(angleRadians),
+    reason: Number.isFinite(angleRadians) ? "symmetry-reduced proper-frame orbit" : "proper-frame comparison failed",
+    angleRadians: Number.isFinite(angleRadians) ? angleRadians : null,
+    angleDegrees: Number.isFinite(angleRadians) ? angleRadians * 180 / Math.PI : null,
+    properGaugePairs,
+    improperRotationsQuotiented: false,
+  };
 }
 
 function canonicalAxis(frame) {
