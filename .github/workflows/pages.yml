@@ -5,6 +5,15 @@ on:
     branches:
       - main
   workflow_dispatch:
+    inputs:
+      runner:
+        description: Deployment runner
+        required: true
+        default: ubuntu-latest
+        type: choice
+        options:
+          - ubuntu-latest
+          - gcts-pages-ephemeral
 
 permissions:
   contents: read
@@ -20,7 +29,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+    runs-on: ${{ inputs.runner == 'gcts-pages-ephemeral' && fromJSON('["self-hosted", "gcts-pages-ephemeral"]') || 'ubuntu-latest' }}
     steps:
       - name: Check out the release
         uses: actions/checkout@v4
