@@ -11,8 +11,8 @@ README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
 
 def test_score_ledger_contract() -> None:
-    assert 'buildId: "20260825-144"' in APP
-    assert 'app.js?v=20260825-144' in HTML
+    assert 'buildId: "20260825-145"' in APP
+    assert 'app.js?v=20260825-145' in HTML
     assert 'id="policyScoreLedger"' in HTML
     assert 'id="policyScoreLedgerState"' in HTML
     assert ".policy-score-term" in CSS

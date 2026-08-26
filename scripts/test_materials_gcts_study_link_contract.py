@@ -10,9 +10,9 @@ README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
 
 def test_study_link_contract() -> None:
-    assert 'buildId: "20260825-144"' in APP
-    assert 'app.js?v=20260825-144' in HTML
-    assert 'style.css?v=20260825-53' in HTML
+    assert 'buildId: "20260825-145"' in APP
+    assert 'app.js?v=20260825-145' in HTML
+    assert 'style.css?v=20260825-54' in HTML
     assert 'id="studyCompassShare"' in HTML
     assert "function shareableStudyUrl" in APP
     assert "function copyShareableStudyUrl" in APP
@@ -36,6 +36,8 @@ def test_study_link_contract() -> None:
     assert "unsupported recipe schema" in launch
     assert "unknown recipe" in launch
     assert "if (studyLaunchAudit) return 0" in launch
+    assert "function markingMatchesDraft" in APP
+    assert "compatibleMarkings().filter(markingMatchesDraft)" in APP
     assert "Build 144 adds a fail-closed" in README
     assert "contains no coordinates" in README
     assert "recipe control disables the link" in README

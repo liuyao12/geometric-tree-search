@@ -36,5 +36,5 @@ def test_notebook_exposes_coordinate_free_interface_observables():
     assert "interfacePassport:" in APP
     assert "interfaces: leap.after?.interfaces || null" in APP
     assert "Build 130" in README
-    assert 'buildId: "20260825-144"' in APP
-    assert 'app.js?v=20260825-144' in HTML
+    assert 'buildId: "20260825-145"' in APP
+    assert 'app.js?v=20260825-145' in HTML

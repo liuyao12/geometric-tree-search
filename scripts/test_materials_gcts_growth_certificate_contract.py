@@ -25,7 +25,8 @@ def test_growth_certificate_separates_replay_continuation_and_recurrence() -> No
 
     assert "function liveGrowthCertificate()" in source
     assert "function updateGrowthCertificate()" in source
-    assert "updateGrowthCertificate();" in source
+    assert "const growthCertificate = updateGrowthCertificate();" in source
+    assert "renderStudyOutcome(growthCertificate);" in source
     assert "liveCertificate: liveGrowthCertificate()" in source
     assert 'targetCalls: 0' in source
     assert 'targetCoordinatesUsed: false' in source

@@ -53,6 +53,19 @@ reconstruct the experiment; the full receipt remains the evidence artifact.
 Unknown recipes, unsupported schema versions, and invalid stage values fail
 closed with a visible status rather than partially applying state.
 
+Build 145 closes the guided study's scientific loop with a persistent
+**prediction audit**. Four separately status-coded records follow the complete
+cluster/residual representation, the bounded connection marking, the live
+finite structural response, and the independent frozen benchmark. The summary
+does not turn a visually plausible trace into a causal claim: it distinguishes
+preconditions from an executed response, labels finite continuation separately
+from stationarity, treats the amorphous case as control consistency rather than
+glass validation, and attributes the NaCl stationary result only to its held-out
+recurrence benchmark. Edited recipe controls invalidate the registered
+comparison without erasing the measurements. The same coordinate-free audit,
+including the explicit no-target/no-potential/no-physical-time separation, is
+stored with the study design in the experiment receipt.
+
 The right-hand **computational work laboratory** turns the scaling question into
 an explicit, inspectable comparison at 10×, 1,000×, and 100,000× the observed
 sample. It reports deterministic browser tree decisions and finite-neighborhood

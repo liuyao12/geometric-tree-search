@@ -111,6 +111,11 @@ const studyCompassObjective = $("studyCompassObjective");
 const studyCompassPrediction = $("studyCompassPrediction");
 const studyCompassInspect = $("studyCompassInspect");
 const studyCompassBoundary = $("studyCompassBoundary");
+const studyOutcome = $("studyOutcome");
+const studyOutcomeTitle = $("studyOutcomeTitle");
+const studyOutcomeStatus = $("studyOutcomeStatus");
+const studyOutcomeTiles = $("studyOutcomeTiles");
+const studyOutcomeInterpretation = $("studyOutcomeInterpretation");
 const studyCompassState = $("studyCompassState");
 const studyCompassNext = $("studyCompassNext");
 const viewport = $("viewport");
@@ -6570,6 +6575,7 @@ async function buildExperimentReceipt() {
   const coverVisible = pipelineStage >= 1;
   const markingVisible = pipelineStage >= 3;
   const searchVisible = pipelineStage >= 4;
+  const studyDesign = activeStudyRecipeAudit();
   const referenceSq = ensureStructureFactor(referenceStructuralStats);
   const referenceOrder = ensureOrientationalOrder(referenceStructuralStats);
   const trajectoryFrames = scenarioSelect.value === "imported" ? importedTrajectoryFrames() : [];
@@ -6619,7 +6625,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-144",
+      buildId: "20260825-145",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -6810,7 +6816,10 @@ async function buildExperimentReceipt() {
       stageName: ["sample configuration", "cluster identification", "rigid encoding", "GCTS learning", "material growth"][pipelineStage],
       reversibleProcessTimeline: processTimelineRecord(),
     },
-    studyDesign: activeStudyRecipeAudit() || {
+    studyDesign: studyDesign ? {
+      ...studyDesign,
+      predictionAudit: activeStudyOutcomeAudit(),
+    } : {
       status: "custom experiment",
       convenienceOnly: true,
       hiddenPhysicsAdded: false,
@@ -12815,6 +12824,15 @@ function compatibleMarkings() {
     && marking.coefficients.length === markingPrototypeTypes().length);
 }
 
+function markingMatchesDraft(marking) {
+  if (!marking?.config) return false;
+  const draftAuto = Number(markingDraft.channels) === 0;
+  return Number(marking.config.reach) === Number(markingDraft.reach)
+    && marking.config.representation === markingDraft.representation
+    && (draftAuto ? marking.config.channelMode === "auto"
+      : marking.config.channelMode !== "auto" && Number(marking.config.channels) === Number(markingDraft.channels));
+}
+
 function freezeCurrentMarking() {
   if (!sectionModel) return null;
   const config = { channels: sectionModel.channels, channelMode: sectionModel.channelMode,
@@ -13223,6 +13241,140 @@ async function copyShareableStudyUrl() {
   receiptStatus.textContent = `Study link copied · recipe schema v1 · paused stage ${pipelineStage}.`;
 }
 
+function activeStudyOutcomeAudit(growthCertificate = undefined) {
+  const recipe = MATERIALS_STUDY_RECIPES.find((entry) => entry.id === activeStudyRecipeId) || null;
+  if (!recipe) return null;
+  const recipeAudit = activeStudyRecipeAudit();
+  const benchmark = currentRecursiveBenchmark();
+  const knownSites = referenceCount();
+  const coverAvailable = pipelineStage >= 1;
+  const coveredSites = coverAvailable ? Math.min(knownSites, Number(learnedCover?.covered || 0)) : 0;
+  const coverComplete = coverAvailable && knownSites > 0 && coveredSites === knownSites;
+  const supportTypes = coverAvailable ? clusterGalleryTypes().length : 0;
+  const residualTypes = !coverAvailable ? 0 : learnedCover?.molecular
+    ? Number(learnedCover.molecular.voidClasses || 0)
+    : Number(learnedCover?.residualTypes?.length || 0) + Number(learnedCover?.voidBoundary?.classes || 0);
+  const markingAvailable = pipelineStage >= 3;
+  const sampleTarget = markingAvailable ? markingSampleCount() : 0;
+  const markingPoint = markingAvailable ? currentTrainingPoint() : null;
+  const markingFrozen = markingAvailable && trainingProgress >= sampleTarget;
+  const certificate = pipelineStage === 4 ? (growthCertificate === undefined ? liveGrowthCertificate() : growthCertificate) : null;
+  const certificateMetrics = certificate?.metrics || {};
+  const emittedSites = Number(certificateMetrics.emittedSites || certificateMetrics.generatedStructuralSites || 0);
+  const continuationSites = Number(certificateMetrics.geometricContinuationSites || certificateMetrics.emittedSites || 0);
+  const causalDepth = Number(certificateMetrics.maximumCausalDepth || certificateMetrics.nonemptySelfFedWaves || 0);
+  const finiteResponseObserved = pipelineStage === 4 && (emittedSites > 0 || continuationSites > 0);
+  const stationaryCrystalControl = recipe.id === "bulk-order" && benchmark.status === "pass";
+  const amorphousControlConsistent = recipe.id === "glass-control" && benchmark.gate === "negative control";
+  const settingsMatch = Boolean(recipeAudit?.settingsStillMatch);
+
+  const representation = !coverAvailable ? {
+    status: "open", title: "Cover not inspected", detail: `${knownSites.toLocaleString()} supplied sites · no cluster conclusion yet`,
+  } : {
+    status: coverComplete ? "pass" : "progress",
+    title: `${coveredSites.toLocaleString()} / ${knownSites.toLocaleString()} sites represented`,
+    detail: `${supportTypes} support class${supportTypes === 1 ? "" : "es"} · ${residualTypes} explicit residual/gap class${residualTypes === 1 ? "" : "es"}`,
+  };
+  const marking = !markingAvailable ? {
+    status: "open", title: "Marking not trained", detail: `${recipe.marking.representation} · reach ${recipe.marking.reach} · channels inferred from pose evidence`,
+  } : {
+    status: markingFrozen ? "pass" : "progress",
+    title: markingFrozen ? `${markingPoint.samples.toLocaleString()} samples · marking frozen`
+      : `${markingPoint.samples.toLocaleString()} / ${sampleTarget.toLocaleString()} samples`,
+    detail: `${sectionModel.channels} channels · validation mismatch ${markingPoint.validationLoss.toFixed(3)} · connection-valued, not energy`,
+  };
+  const live = pipelineStage < 4 ? {
+    status: "open", title: "Live response not measured", detail: "Advance deliberately to growth; this recipe never presses Play.",
+  } : certificate ? {
+    status: finiteResponseObserved ? "progress" : certificate.state === "growth withheld" ? "open" : "open",
+    title: certificate.continuation.title,
+    detail: `${certificate.hierarchy.title} · ${certificate.state}`,
+  } : {
+    status: "open", title: "Live response unavailable", detail: "No structured growth certificate is available.",
+  };
+  const benchmarkRecord = amorphousControlConsistent ? {
+    status: "progress", title: "Deterministic recursion rejected", detail: "Independent amorphous controls · consistency check, not force-field validation",
+  } : {
+    status: benchmark.status === "pass" ? "pass" : "open",
+    title: benchmark.gate,
+    detail: benchmark.status === "pass" ? "Independent frozen benchmark · separate from this viewport"
+      : "Independent benchmark boundary remains open or finite-only",
+  };
+
+  let status = "not evaluated"; let tone = "open"; let relationship = "preconditions-only";
+  let title = "Prediction awaits an executed structural response";
+  let interpretation = "Representation and marking evidence establish whether the experiment is well posed; they do not by themselves support the predicted material response.";
+  if (!settingsMatch) {
+    status = "edited study"; tone = "edited"; relationship = "recipe-diverged";
+    title = "Controls diverged from the curated prediction";
+    interpretation = "The measurements remain valid for the edited experiment, but the curated prediction is no longer the registered comparison. The receipt names every changed setting.";
+  } else if (pipelineStage < 4) {
+    status = coverComplete ? markingAvailable ? "marking evidence" : "representation ready" : "not evaluated";
+    tone = coverComplete ? "progress" : "open";
+    title = coverComplete ? "Preconditions measured; material response not yet executed" : "Prediction awaits a complete representation";
+  } else if (certificate?.state === "growth withheld") {
+    status = "withheld"; tone = "open"; relationship = "ambiguity-control";
+    title = "The input does not authorize a unique growth state";
+    interpretation = "Failing closed is the result: occupationally averaged coordinates cannot be promoted into fictitious simultaneous atoms or a unique molecular trajectory.";
+  } else if (stationaryCrystalControl) {
+    status = finiteResponseObserved ? "benchmark + finite response" : "benchmark only"; tone = "pass";
+    relationship = finiteResponseObserved ? "independent-benchmark-plus-live-finite-response" : "independent-benchmark-only";
+    title = "Stationary crystal recurrence is independently certified";
+    interpretation = finiteResponseObserved
+      ? "The live view adds a finite, target-blind structural response. The stationary certificate comes only from the separate held-out NaCl recurrence benchmark; neither result supplies physical time."
+      : "The independent NaCl recurrence benchmark passes, but this live study has not yet emitted a structural response. Reciprocal and orientational observables remain descriptive until it does.";
+  } else if (amorphousControlConsistent) {
+    status = "control consistent"; tone = "progress"; relationship = "negative-control-consistency";
+    title = "The hierarchy refuses deterministic stationary recursion";
+    interpretation = "That refusal is consistent with the registered negative-control prediction. It does not establish a thermodynamic glass, an amorphous ensemble distribution, or a kinetic glass transition.";
+  } else if (finiteResponseObserved) {
+    status = "finite response"; tone = "progress"; relationship = "finite-geometric-response";
+    title = recipe.id === "molecular-ice" ? "Finite molecular-framework response observed"
+      : recipe.id === "quasicrystal" ? "Finite aperiodic structural response observed"
+        : "Finite geometric response observed";
+    interpretation = recipe.id === "molecular-ice"
+      ? "The oxygen/molecular framework response is finite; unresolved proton poses, stationarity, thermodynamic stability, and kinetics remain outside the claim."
+      : recipe.id === "quasicrystal"
+        ? "The response is finite and target-blind; a generic stationary or exponential quasicrystal production remains open."
+        : `${recipe.boundary} The measured response is not a causal material model and carries no physical clock.`;
+  } else {
+    status = certificate?.metrics?.fixedPointReached ? "finite fixed point" : "no continuation yet";
+    tone = "open"; relationship = certificate?.metrics?.fixedPointReached ? "finite-grammar-exhaustion" : "growth-not-observed";
+    title = certificate?.metrics?.fixedPointReached ? "The frozen grammar exhausted without sustained continuation" : "No structural continuation has been measured yet";
+    interpretation = "An absent response is retained as evidence. It must not be upgraded using the recipe prediction, a target structure, or the independent benchmark.";
+  }
+
+  return {
+    recipeId: recipe.id, status, tone, title, relationship, interpretation,
+    prediction: recipe.prediction, settingsStillMatch: settingsMatch,
+    evidence: { representation, marking, live, benchmark: benchmarkRecord },
+    metrics: { knownSites, coveredSites, coverComplete, supportTypes, residualTypes,
+      markingSamples: markingPoint?.samples || 0, markingSampleTarget: sampleTarget, markingFrozen,
+      emittedSites, continuationSites, causalDepth, finiteResponseObserved },
+    separation: { liveResponseUsedToCertifyBenchmark: false, benchmarkUsedToSelectLiveActions: false,
+      targetCoordinatesUsedForOutcome: false, physicalPotentialUsed: false, physicalTimeInferred: false,
+      stationaryClaimFromFiniteResponse: false },
+  };
+}
+
+function renderStudyOutcome(growthCertificate = undefined) {
+  const outcome = activeStudyOutcomeAudit(growthCertificate);
+  studyOutcome.hidden = !outcome;
+  if (!outcome) return;
+  studyOutcomeTitle.textContent = outcome.title;
+  studyOutcomeStatus.textContent = outcome.status;
+  studyOutcomeStatus.className = outcome.tone;
+  studyOutcomeTiles.replaceChildren(...Object.entries(outcome.evidence).map(([id, record]) => {
+    const article = document.createElement("article"); article.className = record.status;
+    const label = document.createElement("small"); label.textContent = ({ representation: "01 · representation",
+      marking: "02 · marking", live: "03 · live response", benchmark: "04 · independent benchmark" })[id];
+    const titleElement = document.createElement("strong"); titleElement.textContent = record.title;
+    const detail = document.createElement("span"); detail.textContent = record.detail;
+    article.append(label, titleElement, detail); return article;
+  }));
+  studyOutcomeInterpretation.textContent = outcome.interpretation;
+}
+
 function renderStudyCompass() {
   const recipe = MATERIALS_STUDY_RECIPES.find((entry) => entry.id === activeStudyRecipeId) || null;
   const audit = activeStudyRecipeAudit();
@@ -13277,6 +13429,7 @@ function renderStudyCompass() {
     studyCompassNext.dataset.nextStage = "receipt";
     studyCompassNext.textContent = "Review receipt & notebook ↓";
   }
+  renderStudyOutcome();
 }
 
 function syncStageOptions() {
@@ -13874,8 +14027,10 @@ function enterPipelineStage(index, options = {}) {
   const compatibleActive = markingLibrary.find((marking) => marking.id === activeMarkingId
     && marking.materialKey === markingMaterialKey()
     && marking.vocabularyKey === currentVocabularyKey
-    && marking.coefficients.length === markingPrototypeTypes().length);
-  const growthMarking = compatibleActive || (pipelineStage === 4 ? compatibleMarkings().at(-1) : null);
+    && marking.coefficients.length === markingPrototypeTypes().length
+    && markingMatchesDraft(marking));
+  const growthMarking = compatibleActive || (pipelineStage === 4
+    ? compatibleMarkings().filter(markingMatchesDraft).at(-1) : null);
   if (pipelineStage === 4 && growthMarking) {
     activeMarkingId = growthMarking.id;
     markingDraft = { ...growthMarking.config,
@@ -17424,7 +17579,7 @@ function renderScalePassport() {
 function updateGrowthCertificate() {
   const certificate = liveGrowthCertificate();
   growthCertificateSection.hidden = !certificate;
-  if (!certificate) return;
+  if (!certificate) return null;
   growthCertificateState.textContent = certificate.state;
   const fill = (element, record) => {
     element.className = record.status;
@@ -17436,11 +17591,13 @@ function updateGrowthCertificate() {
   fill(certificateHierarchy, certificate.hierarchy);
   fill(certificateBoundary, certificate.claimBoundary);
   growthCertificateNote.textContent = `${certificate.mode} · benchmark gate: ${certificate.benchmarkGate}`;
+  return certificate;
 }
 
 function updateUI() {
   updateRecursiveBenchmark();
-  updateGrowthCertificate();
+  const growthCertificate = updateGrowthCertificate();
+  renderStudyOutcome(growthCertificate);
   renderComputationalCost();
   renderObservationProvenance();
   renderScalePassport();
