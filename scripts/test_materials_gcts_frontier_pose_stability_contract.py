@@ -11,8 +11,8 @@ README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
 
 def test_frontier_pose_stability_contract() -> None:
-    assert 'buildId: "20260825-130"' in APP
-    assert 'app.js?v=20260825-130' in HTML
+    assert 'buildId: "20260825-131"' in APP
+    assert 'app.js?v=20260825-131' in HTML
     assert 'id="policyPoseAuditLimit"' in HTML
     assert 'id="policyPoseAuditHint"' in HTML
     assert '<option value="0">Off · no perturbation trials</option>' in HTML

@@ -451,6 +451,20 @@
                 <option value="none">Off · unrestricted frontier drift</option>
               </select>
             </label>
+            <label class="field" for="feedstockSupplySelect">
+              <span>Feedstock inventory <b id="feedstockSupplyHint">open source · no depletion gate</b></span>
+              <select id="feedstockSupplySelect">
+                <option value="open" selected>Open source · composition rank only</option>
+                <option value="finite-1">Finite batch · 1× observed composition</option>
+                <option value="finite-4">Finite batch · 4× observed composition</option>
+                <option value="finite-16">Finite batch · 16× observed composition</option>
+              </select>
+            </label>
+            <section id="feedstockInventoryInspector" class="feedstock-inventory-inspector" aria-label="Species feedstock inventory">
+              <header><span><small>mass accounting</small><strong>Feedstock ledger</strong></span><b id="feedstockInventoryState">open source</b></header>
+              <div id="feedstockInventoryBars"></div>
+              <p>Only newly emitted sites consume inventory. The observed seed is fixed initial geometry.</p>
+            </section>
             <label class="field" for="soluteSpeciesSelect">
               <span>Partition species <b id="soluteSpeciesHint">choose a multicomponent sample</b></span>
               <select id="soluteSpeciesSelect"></select>
@@ -1179,6 +1193,7 @@
                 <option value="interfaceSites">largest registered interface · sites</option>
                 <option value="interfaceThickness">largest-interface thickness · Å</option>
                 <option value="interfaceExposure">largest-interface coordination deficit</option>
+                <option value="feedstockRemaining">feedstock remaining · atoms</option>
                 <option value="extent">maximum nucleus extent · Å</option>
                 <option value="anisotropy">relative shape anisotropy · κ²</option>
                 <option value="exposure">colored coordination deficit</option>
@@ -1407,7 +1422,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-130"></script>
+  <script type="module" src="./app.js?v=20260825-131"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

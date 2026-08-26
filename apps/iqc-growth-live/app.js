@@ -24,6 +24,8 @@ import { discoverIrregularCover } from "./irregular-cover.js?v=20260824-1";
 import { generateAmorphousMixture } from "./amorphous-glass.js?v=20260824-1";
 import { powderStructureFactor, summarizeStructureFactor } from "./structure-observables.js?v=20260824-1";
 import { compositionBalanceDelta, learnCompositionTarget } from "./composition-balance.js?v=20260824-1";
+import { consumeFeedstock, evaluateFeedstockDemand, feedstockReservoirSnapshot,
+  initializeFeedstockReservoir } from "./feedstock-reservoir.js?v=20260826-1";
 import { formalChargeBalanceDelta, learnFormalChargeTarget } from "./formal-charge-balance.js?v=20260824-1";
 import {
   discoverFiniteMolecularComponents,
@@ -179,6 +181,11 @@ const geometryPreferenceSelect = $("geometryPreferenceSelect");
 const strainWeightSelect = $("strainWeightSelect");
 const strainWeightHint = $("strainWeightHint");
 const compositionPreferenceSelect = $("compositionPreferenceSelect");
+const feedstockSupplySelect = $("feedstockSupplySelect");
+const feedstockSupplyHint = $("feedstockSupplyHint");
+const feedstockInventoryInspector = $("feedstockInventoryInspector");
+const feedstockInventoryState = $("feedstockInventoryState");
+const feedstockInventoryBars = $("feedstockInventoryBars");
 const soluteSpeciesSelect = $("soluteSpeciesSelect");
 const soluteSpeciesHint = $("soluteSpeciesHint");
 const solutePartitionSelect = $("solutePartitionSelect");
@@ -914,6 +921,7 @@ let geometryPreference = "strain";
 let growthProtocolMode = "custom";
 let geometricStrainWeight = DEFAULT_GEOMETRIC_STRAIN_WEIGHT;
 let compositionPreference = "soft";
+let feedstockSupplyMode = "open";
 let soluteSpecies = null;
 let solutePartitionMode = "none";
 let solutePartitionWeight = .24;
@@ -981,12 +989,14 @@ let coloredCoordinationEnvelopes = null;
 let coloredAngularEnvelopes = null;
 let ensemblePairDistanceUncertainty = null;
 let compositionTarget = null;
+let feedstockReservoir = null;
+let feedstockSupplyPrunes = 0;
 let formalChargeTarget = null;
 let suppliedFormalChargeBySpecies = new Map();
 
 const GROWTH_PROTOCOL_DEFAULTS = Object.freeze({
   confinement: "box", geometryPreference: "strain", geometricStrainWeight: .16,
-  compositionPreference: "soft", chargePreference: "auto", surfacePreference: "soft",
+  compositionPreference: "soft", feedstockSupplyMode: "open", chargePreference: "auto", surfacePreference: "soft",
   chargeGeometryMode: "none", chargeGeometryReach: 2.5, chargeGeometryWeight: .24,
   growthDrivingMode: "none", growthDrivingWeight: .24,
   attachmentTopologyMode: "none", attachmentTopologyWeight: .24,
@@ -1102,7 +1112,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
   },
 });
 const GROWTH_PROTOCOL_CONTROL_IDS = new Set([
-  "geometryPreferenceSelect", "strainWeightSelect", "compositionPreferenceSelect", "chargePreferenceSelect", "chargeGeometrySelect", "chargeGeometryReachSelect", "chargeGeometryWeightSelect",
+  "geometryPreferenceSelect", "strainWeightSelect", "compositionPreferenceSelect", "feedstockSupplySelect", "chargePreferenceSelect", "chargeGeometrySelect", "chargeGeometryReachSelect", "chargeGeometryWeightSelect",
   "soluteSpeciesSelect", "solutePartitionSelect", "solutePartitionWeightSelect",
   "surfacePreferenceSelect", "growthDrivingSelect", "growthDrivingWeightSelect", "attachmentTopologySelect", "attachmentTopologyWeightSelect", "habitAnisotropySelect", "habitAnisotropyWeightSelect", "defectPrecursorSelect", "defectPrecursorWeightSelect", "coherencyMemorySelect", "coherencyReachSelect", "coherencyMemoryWeightSelect", "frontMorphologySelect", "frontMorphologyWeightSelect",
   "capillaryGeometrySelect", "capillaryGeometryWeightSelect",
@@ -6167,7 +6177,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-130",
+      buildId: "20260825-131",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -6603,6 +6613,13 @@ async function buildExperimentReceipt() {
         targetReducedRatio: compositionTarget.reducedRatio,
         acceptedMeanScaledDelta: receiptRound(acceptedCompositionDelta / Math.max(1, acceptedDecisions)),
         rejectedMeanScaledDelta: receiptRound(rejectedCompositionDelta / Math.max(1, rejectedDecisions)),
+      },
+      feedstockInventory: {
+        role: feedstockSupplyMode === "open" ? "open source accounting; no admission gate"
+          : "hard species-count admission gate over newly emitted sites",
+        ...currentFeedstockSnapshot(), supplyPrunes: feedstockSupplyPrunes,
+        observedSeedConsumesInventory: false, candidateGeometryChanged: false,
+        branchAdmissionChanged: feedstockSupplyMode !== "open",
       },
       solutePartitionRanking: {
         role: "target-blind soft coupling of emitted selected-species fraction to declared thermal or solid-angle geometry",
@@ -7446,7 +7463,8 @@ function experimentNotebookSummary(receipt) {
   const trajectoryPoints = [{ step: initialLeapStep, status: initialLeapStep ? "retained-window start" : "seed", atoms: initialLeapState.atoms,
     clusters: initialLeapState.clusters || 0, frontier: initialLeapState.frontier || 0,
     acceptedThisLeap: 0, rejectedThisLeap: 0, cumulativeAccepted: 0, cumulativeRejected: 0, depth: 0,
-    morphology: initialLeapState.morphology || null, interfaces: initialLeapState.interfaces || null }];
+    morphology: initialLeapState.morphology || null, interfaces: initialLeapState.interfaces || null,
+    feedstock: initialLeapState.feedstock || null }];
   structuralLeaps.forEach((leap, index) => {
     cumulativeAccepted += leap.after?.accepted || 0;
     cumulativeRejected += leap.after?.rejected || 0;
@@ -7457,7 +7475,8 @@ function experimentNotebookSummary(receipt) {
       proposedSites: leap.proposal?.sites || 0,
       acceptedThisLeap: leap.after?.accepted || 0, rejectedThisLeap: leap.after?.rejected || 0,
       cumulativeAccepted, cumulativeRejected, depth: leap.after?.depth || 0,
-      morphology: leap.after?.morphology || null, interfaces: leap.after?.interfaces || null });
+      morphology: leap.after?.morphology || null, interfaces: leap.after?.interfaces || null,
+      feedstock: leap.after?.feedstock || null });
   });
   return {
     id: receipt.receiptSha256.slice(0, 16),
@@ -7496,6 +7515,7 @@ function experimentNotebookSummary(receipt) {
     trajectory: { alignment: "structural leap index", points: trajectoryPoints,
       morphologyPassport: "rotation/translation-invariant covariance spectrum + learned colored-coordination deficit",
       interfacePassport: "finite proper-misorientation registry, topology, thickness, chemistry, and coordination exposure",
+      feedstockPassport: "species-count inventory consumed only by newly emitted sites",
       massRadiusScaling: notebookMassRadiusScaling(trajectoryPoints),
       leapCount: structuralLeaps.length,
       totalLeapEvents: search?.structuralLeapHistory?.totalEvents ?? structuralLeaps.length,
@@ -7620,6 +7640,9 @@ const NOTEBOOK_TRAJECTORY_OBSERVABLES = {
   interfaceExposure: { label: "largest-interface coordination deficit",
     value: (point) => point.interfaces?.primaryPair?.coordinationDeficit,
     format: (value) => `${(100 * value).toFixed(1)}%` },
+  feedstockRemaining: { label: "feedstock remaining · atoms",
+    value: (point) => point.feedstock?.remainingAtoms,
+    format: (value) => Math.round(value).toLocaleString() },
   extent: { label: "maximum nucleus extent · Å", value: (point) => point.morphology?.maximumExtentAngstrom,
     format: (value) => `${value.toFixed(2)} Å` },
   anisotropy: { label: "relative shape anisotropy · κ²", value: (point) => point.morphology?.relativeShapeAnisotropy,
@@ -10545,6 +10568,39 @@ function compositionBalanceForFreshSites(rawFreshSites) {
     freshSites.map((site) => site.species), compositionTarget);
 }
 
+function feedstockSupplyForFreshSites(rawFreshSites) {
+  const freshSites = uniqueFreshSites(rawFreshSites);
+  return evaluateFeedstockDemand(feedstockReservoir, freshSites.map((site) => site.species));
+}
+
+function currentFeedstockSnapshot() {
+  return feedstockReservoirSnapshot(feedstockReservoir);
+}
+
+function consumeFeedstockForFreshSites(rawFreshSites) {
+  const freshSites = uniqueFreshSites(rawFreshSites);
+  const result = consumeFeedstock(feedstockReservoir, freshSites.map((site) => site.species));
+  feedstockReservoir = result.reservoir;
+  return result.audit;
+}
+
+function renderFeedstockInventory() {
+  if (!feedstockInventoryBars || !feedstockInventoryState || !feedstockSupplyHint) return;
+  const snapshot = currentFeedstockSnapshot();
+  feedstockInventoryBars.replaceChildren();
+  feedstockSupplyHint.textContent = snapshot.finite
+    ? `${snapshot.factor}× batch · hard species gate` : "open source · no depletion gate";
+  feedstockInventoryState.textContent = snapshot.finite
+    ? `${snapshot.remainingAtoms}/${snapshot.initialAtoms} atoms remain` : `${snapshot.admittedAtoms} emitted · open`;
+  snapshot.species.forEach((entry) => {
+    const row = document.createElement("div"); const symbol = document.createElement("code");
+    const track = document.createElement("i"); const fill = document.createElement("b"); const amount = document.createElement("em");
+    symbol.textContent = entry.symbol; fill.style.width = `${100 * (entry.remainingFraction ?? 1)}%`; track.append(fill);
+    amount.textContent = snapshot.finite ? `${entry.remaining}/${entry.initial}` : `${entry.consumed} used · ∞`;
+    row.append(symbol, track, amount); feedstockInventoryBars.append(row);
+  });
+}
+
 function suppliedFormalChargeForToken(token) {
   const embedded = formalChargeFromChemistryToken(token);
   if (embedded !== null) return embedded;
@@ -10645,7 +10701,7 @@ function rejectionIsOrderInvariant(candidate, evaluation) {
   const markingRejected = policySelect.value === "marked" && !candidate.markingAccepted;
   return evaluation.conflicts > 0 || evaluation.boundaryFailures > 0
     || evaluation.coordinationOverflows?.length > 0 || evaluation.angularViolations?.length > 0
-    || evaluation.fresh.length === 0 || markingRejected;
+    || evaluation.fresh.length === 0 || !evaluation.feedstockSupply?.admitted || markingRejected;
 }
 
 function commutingFrontierBatch() {
@@ -10713,6 +10769,7 @@ function commutingFrontierBatch() {
       if (!acceptedBatch.every((other) => sitesCanCommute(entry.sites, other.sites))) continue;
       const trial = [...acceptedBatch, entry];
       const trialFresh = uniqueFreshSites(trial.flatMap((trialEntry) => trialEntry.evaluation.fresh));
+      if (!feedstockSupplyForFreshSites(trialFresh).admitted) continue;
       const trialProjection = constraintProjectionForFreshSites(trialFresh);
       if (coordinationOverflowsForFreshSites(trialFresh, trialProjection).length
         || angularViolationsForFreshSites(trialFresh, trialProjection).length) continue;
@@ -10791,6 +10848,7 @@ function evaluateCandidate(candidate, {
   const capillaryGeometry = capillaryGeometryForFreshSites(fresh, { recordWork });
   const epitaxyRegistry = epitaxyRegistryForFreshSites(fresh, { recordWork });
   const compositionBalance = compositionBalanceForFreshSites(fresh);
+  const feedstockSupply = feedstockSupplyForFreshSites(fresh);
   const formalChargeBalance = formalChargeBalanceForFreshSites(fresh);
   const chargeGeometry = chargeGeometryForFreshSites(fresh, { recordWork });
   const externalDrive = externalDriveForCandidate(candidate);
@@ -10807,15 +10865,15 @@ function evaluateCandidate(candidate, {
   const feedExposure = feedstockExposureForFreshSites(fresh, { recordWork });
   const accepted = conflicts === 0 && boundaryFailures === 0 && merged.length >= 2
     && fresh.length > 0 && knownFailures === 0 && coordinationOverflows.length === 0
-    && angularViolations.length === 0 && (markingAccepted || markingFallback);
+    && angularViolations.length === 0 && feedstockSupply.admitted && (markingAccepted || markingFallback);
   return { accepted, sites, merged, fresh, conflicts, boundaryFailures, knownFailures, markingFallback,
     coordinationOverflows, angularViolations, geometricStrain, affineLoadedGeometricStrain,
-    surfaceCompletion, bulkSurfaceDriving, attachmentTopology, habitAnisotropy, frontMorphology, capillaryGeometry, epitaxyRegistry, compositionBalance, formalChargeBalance, chargeGeometry,
+    surfaceCompletion, bulkSurfaceDriving, attachmentTopology, habitAnisotropy, frontMorphology, capillaryGeometry, epitaxyRegistry, compositionBalance, feedstockSupply, formalChargeBalance, chargeGeometry,
     externalDrive, thermalField, solutePartition, constraintRobustness, interfaceAccommodation,
     microstructureCoupling, loopClosure, defectPrecursors, coherencyMemory, arrivalPath, feedExposure,
     duplicateSites: canonical.duplicateSites,
     freshReferenceIndices: fresh.map((site) => site.referenceIndex).filter(Number.isInteger),
-    reason: conflicts ? `${conflicts} hard-core/species conflicts` : boundaryFailures ? "outside confinement" : knownFailures ? `${knownFailures} sites outside known configuration` : coordinationOverflows.length ? `${coordinationOverflows.length} colored coordination capacities exceeded` : angularViolations.length ? `${angularViolations.length} colored angular envelopes violated` : merged.length < 2 ? "insufficient shared support" : fresh.length === 0 ? "duplicate covering" : !markingAccepted ? "marking mismatch" : "compatible overlap" };
+    reason: conflicts ? `${conflicts} hard-core/species conflicts` : boundaryFailures ? "outside confinement" : knownFailures ? `${knownFailures} sites outside known configuration` : coordinationOverflows.length ? `${coordinationOverflows.length} colored coordination capacities exceeded` : angularViolations.length ? `${angularViolations.length} colored angular envelopes violated` : !feedstockSupply.admitted ? `feedstock exhausted: ${feedstockSupply.limitingSpecies.join(" / ")}` : merged.length < 2 ? "insufficient shared support" : fresh.length === 0 ? "duplicate covering" : !markingAccepted ? "marking mismatch" : "compatible overlap" };
 }
 
 function referenceCoverageCount() {
@@ -11187,6 +11245,7 @@ function initializeOffLatticeSearch() {
   rejectedUnloadedGeometricStrain = 0;
   acceptedCompositionDelta = 0;
   rejectedCompositionDelta = 0;
+  feedstockSupplyPrunes = 0;
   acceptedSolutePartitionScore = 0;
   rejectedSolutePartitionScore = 0;
   solutePartitionEvaluations = 0;
@@ -11819,7 +11878,7 @@ function renderMolecularHypothesis() {
 function currentGrowthProtocolSettings() {
   return {
     confinement: confinementSelect.value, geometryPreference, geometricStrainWeight,
-    compositionPreference, soluteSpecies: resolvedSoluteSpecies(), solutePartitionMode, solutePartitionWeight,
+    compositionPreference, feedstockSupplyMode, soluteSpecies: resolvedSoluteSpecies(), solutePartitionMode, solutePartitionWeight,
     chargePreference, chargeGeometryMode, chargeGeometryReach, chargeGeometryWeight,
     surfacePreference, growthDrivingMode, growthDrivingWeight,
     attachmentTopologyMode, attachmentTopologyWeight,
@@ -11864,8 +11923,9 @@ function renderGrowthControlGroupSummaries() {
   const activeCount = (items) => items.filter(Boolean).length;
   growthCoreGroupState.textContent = `${markingSearchMode === "portfolio" ? "portfolio" : "single mark"} · ${geometryPreference === "strain" ? `strain ${geometricStrainWeight.toFixed(2)}` : "strain off"}`;
   const chemistryActive = activeCount([activeCompositionBalanceWeight() > 0,
-    activeSolutePartitionWeight() > 0, activeFormalChargeWeight() > 0, activeChargeGeometryWeight() > 0]);
-  growthChemistryGroupState.textContent = `${chemistryActive}/4 active${formalChargeTarget?.available ? " · charge supplied" : ""}`;
+    feedstockSupplyMode !== "open", activeSolutePartitionWeight() > 0,
+    activeFormalChargeWeight() > 0, activeChargeGeometryWeight() > 0]);
+  growthChemistryGroupState.textContent = `${chemistryActive}/5 active${formalChargeTarget?.available ? " · charge supplied" : ""}`;
   const interfaceActive = activeCount([activeSurfaceCompletionWeight() > 0, activeGrowthDrivingWeight() > 0,
     activeAttachmentTopologyWeight() > 0, activeHabitAnisotropyWeight() > 0,
     activeDefectPrecursorWeight() > 0, activeCoherencyMemoryWeight() > 0,
@@ -11891,7 +11951,8 @@ function applyGrowthProtocol(mode) {
   growthProtocolMode = mode;
   confinementSelect.value = settings.confinement;
   geometryPreference = settings.geometryPreference; geometricStrainWeight = settings.geometricStrainWeight;
-  compositionPreference = settings.compositionPreference; chargePreference = settings.chargePreference;
+  compositionPreference = settings.compositionPreference; feedstockSupplyMode = settings.feedstockSupplyMode;
+  chargePreference = settings.chargePreference;
   chargeGeometryMode = settings.chargeGeometryMode; chargeGeometryReach = settings.chargeGeometryReach;
   chargeGeometryWeight = settings.chargeGeometryWeight;
   solutePartitionMode = settings.solutePartitionMode; solutePartitionWeight = settings.solutePartitionWeight;
@@ -12061,6 +12122,8 @@ function syncStageOptions() {
     geometryPreferenceSelect.value = geometryPreference;
     strainWeightSelect.value = String(geometricStrainWeight);
     compositionPreferenceSelect.value = compositionPreference;
+    feedstockSupplySelect.value = feedstockSupplyMode;
+    renderFeedstockInventory();
     const soluteVocabulary = renderSoluteSpeciesOptions();
     solutePartitionSelect.value = solutePartitionMode;
     solutePartitionWeightSelect.value = String(solutePartitionWeight);
@@ -12109,6 +12172,7 @@ function syncStageOptions() {
     geometryPreferenceSelect.disabled = finiteIceAnchorMode;
     strainWeightSelect.disabled = finiteIceAnchorMode || geometryPreference !== "strain";
     compositionPreferenceSelect.disabled = finiteIceAnchorMode;
+    feedstockSupplySelect.disabled = finiteIceAnchorMode;
     soluteSpeciesSelect.disabled = finiteIceAnchorMode || soluteVocabulary.length < 2;
     solutePartitionSelect.disabled = finiteIceAnchorMode || soluteVocabulary.length < 2;
     solutePartitionWeightSelect.disabled = finiteIceAnchorMode || soluteVocabulary.length < 2 || solutePartitionMode === "none";
@@ -12236,6 +12300,9 @@ function syncStageOptions() {
     const compositionUse = compositionPreference === "none"
       ? " Composition drift is reported but contributes zero ranking weight."
       : ` A ${compositionPreference === "strong" ? "strong" : "balanced"} soft reservoir term favors the observed ${ratio} ratio without constraining an incomplete surface.`;
+    const inventoryUse = feedstockSupplyMode === "open"
+      ? " The external feedstock ledger is open and records consumption without limiting branches."
+      : ` A finite ${currentFeedstockSnapshot().factor}× observed-composition batch supplies newly emitted sites; an action or commuting batch that exceeds any species inventory is rejected atomically.`;
     const solutePartitionUse = activeSolutePartitionWeight() <= 0
       ? " Species-resolved partitioning contributes zero rank weight."
       : ` A ${solutePartitionWeight.toFixed(2)} soft ${solutePartitionLabel()} term couples emitted ${resolvedSoluteSpecies()} enrichment to the declared ${solutePartitionMode.includes("cold") || solutePartitionMode.includes("hot") ? "thermal" : "solid-angle"} geometry; it is not a chemical potential or partition coefficient.`;
@@ -12305,8 +12372,8 @@ function syncStageOptions() {
     growthModeNote.textContent = finiteIceAnchorMode
       ? "This sealed ice gate executes primitive H₂O connection ports with mutually exclusive orientation domains. Clusters² is disabled because no stationary promoted ice production has been certified."
       : hierarchyEnabled
-      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${strainUse}${compositionUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`
-      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`;
+      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${strainUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`
+      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`;
   }
 }
 
@@ -12324,6 +12391,7 @@ function resetCounters() {
   rejectedUnloadedGeometricStrain = 0;
   acceptedCompositionDelta = 0;
   rejectedCompositionDelta = 0;
+  feedstockSupplyPrunes = 0;
   acceptedSolutePartitionScore = 0;
   rejectedSolutePartitionScore = 0;
   solutePartitionEvaluations = 0;
@@ -12462,6 +12530,7 @@ function enterPipelineStage(index, options = {}) {
   coloredCoordinationEnvelopes = learnReferenceCoordinationEnvelopes(referenceAtoms);
   coloredAngularEnvelopes = learnReferenceAngularEnvelopes(referenceAtoms);
   compositionTarget = learnCompositionTarget(referenceAtoms.map((atom) => atom.species));
+  feedstockReservoir = initializeFeedstockReservoir(referenceAtoms.map((atom) => atom.species), feedstockSupplyMode);
   const chargeObservations = new Map();
   referenceAtoms.forEach((atom) => {
     const key = String(atom.species);
@@ -12729,6 +12798,7 @@ function stateForCandidate(candidate, evaluation) {
     geometricStrain: evaluation.geometricStrain,
     affineLoadedGeometricStrain: evaluation.affineLoadedGeometricStrain,
     compositionBalance: evaluation.compositionBalance,
+    feedstockSupply: evaluation.feedstockSupply,
     solutePartition: evaluation.solutePartition,
     formalChargeBalance: evaluation.formalChargeBalance,
     chargeGeometry: evaluation.chargeGeometry,
@@ -12840,7 +12910,8 @@ function materializeCandidate(candidate, evaluation) {
 
 function performOffLatticeEvent() {
   const before = { atoms: atoms.length, clusters: placedClusters.length, frontier: frontierCandidates.length,
-    morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot() };
+    morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
+    feedstock: currentFeedstockSnapshot() };
   const batch = commutingFrontierBatch();
   if (!batch.length) {
     recordStructuralLeap({ status: "fixed", label: "no geometrically admissible successor",
@@ -12848,7 +12919,8 @@ function performOffLatticeEvent() {
       tests: { summary: "finite frontier exhausted", detail: "Every frozen port is consumed, unsupported, conflicting, or outside the public domain." },
       after: { atoms: atoms.length, clusters: placedClusters.length, accepted: 0, rejected: 0,
         depth: Math.max(0, ...placedClusters.map((placement) => placement.depth || 0)),
-        morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot() },
+        morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
+        feedstock: currentFeedstockSnapshot() },
       claimBoundary: "This is a certified finite structural fixed point. It is not equilibrium, a stopping time, or evidence that a physical interface cannot advance by an unmodeled mechanism." });
     pauseGrowth("Frontier exhausted: no learned overlap rule remains geometrically admissible.");
     return;
@@ -12891,6 +12963,7 @@ function performOffLatticeEvent() {
       rejectedDecisions++;
       if (snapshotEvaluation.coordinationOverflows?.length) coordinationCapacityPrunes++;
       if (snapshotEvaluation.angularViolations?.length) angularEnvelopePrunes++;
+      if (!snapshotEvaluation.feedstockSupply?.admitted) feedstockSupplyPrunes++;
       rejectedGeometricStrain += effectiveGeometricStrain(snapshotEvaluation).total;
       rejectedUnloadedGeometricStrain += snapshotEvaluation.geometricStrain.total;
       rejectedCompositionDelta += snapshotEvaluation.compositionBalance.scaledDelta;
@@ -12939,6 +13012,7 @@ function performOffLatticeEvent() {
     proposedSitesInBatch += evaluation.sites.length;
     sharedInBatch += evaluation.merged.length;
     if (!evaluation.accepted) throw new Error("Commuting frontier batch lost permutation invariance");
+    consumeFeedstockForFreshSites(evaluation.fresh);
     const decision = cacheDecision(state, candidate.markingScore);
     const parentDepth = placedClusters.find((placement) => placement.id === candidate.parentId)?.depth || 0;
     recordGrowthMechanismEvent(candidate, evaluation, true, parentDepth + 1,
@@ -13001,7 +13075,8 @@ function performOffLatticeEvent() {
       detail: "Species/hard-core, overlap, novelty, public boundary, coordination, angle, and active marking were evaluated before any commit." },
     after: { atoms: atoms.length, clusters: placedClusters.length, accepted: acceptedInBatch, rejected: rejectedInBatch,
       depth: Math.max(0, ...placedClusters.map((placement) => placement.depth || 0)),
-      morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot() },
+      morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
+      feedstock: currentFeedstockSnapshot() },
     claimBoundary: "The accepted antichain is valid in every placement order and jumps directly to a certified structural state. No force trajectory, relaxation path, transition probability, or physical elapsed time was computed." });
   rebuildWorld();
   updateUI();
@@ -13011,7 +13086,7 @@ function performIceAnchorEvent() {
   const wave = iceAnchorTrace?.waves[iceAnchorWaveIndex];
   const before = { atoms: atoms.length, clusters: acceptedDecisions,
     frontier: wave?.candidateAnchors || 0, morphology: structuralMorphologySnapshot(),
-    interfaces: structuralInterfaceSnapshot() };
+    interfaces: structuralInterfaceSnapshot(), feedstock: currentFeedstockSnapshot() };
   if (!wave) {
     growthStopReason = "Certified molecular anchor trace exhausted at its safe fixed point.";
     setPlaying(false);
@@ -13047,7 +13122,8 @@ function performIceAnchorEvent() {
         detail: `${wave.rejectedCandidateAnchors} unsupported or conflicting candidates fail ${iceAnchorTrace.selectionRuleLabel}.` },
       after: { atoms: atoms.length, clusters: acceptedDecisions, accepted: 0,
         rejected: wave.rejectedCandidateAnchors, depth: wave.wave,
-        morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot() },
+        morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
+        feedstock: currentFeedstockSnapshot() },
       claimBoundary: `The frozen ${iceAnchorTrace.portCount}-port grammar reaches a finite structural fixed point. Unresolved ${iceAnchorTrace.orientationSpecies} motion, proton/deuteron barriers, entropy, and physical stopping time are not modeled.` });
     growthStopReason = "Frozen molecular-port grammar reached its certified finite fixed point.";
     setPlaying(false);
@@ -13080,7 +13156,8 @@ function performIceAnchorEvent() {
       detail: `${iceAnchorTrace.portCount} frozen proper-SE(3) ports + ${iceAnchorTrace.selectionRuleLabel}; ${wave.retainedOrientationHypotheses} mutually exclusive ${iceAnchorTrace.moleculeLabel} poses retained.` },
     after: { atoms: atoms.length, clusters: acceptedDecisions, accepted: wave.acceptedAnchors,
       rejected: wave.rejectedCandidateAnchors, depth: wave.wave,
-      morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot() },
+      morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
+      feedstock: currentFeedstockSnapshot() },
     claimBoundary: `The browser jumps to oxygen anchors shared by every surviving ${iceAnchorTrace.moleculeLabel} orientation domain. It does not integrate ${iceAnchorTrace.orientationSpecies} rearrangement, tunnelling, diffusion, relaxation, probability, or elapsed physical time.` });
   rebuildWorld();
   updateUI();
@@ -13899,10 +13976,13 @@ function physicsTranslationRecords(leap = null) {
         ? `${lastPolicyComparison.everyScoreDecompositionExact ? "Every" : "Not every"} counterfactual winner exactly reconciles Σ contributions with its displayed score; ${buildPolicyPhaseMap(lastPolicyComparison)?.basinCount || 0} attachment-action basins across 25 exact re-ranks; ${buildPolicySpatialField(lastPolicyComparison)?.points.length || 0} spatial candidate samples; frontier digest ${lastPolicyComparison.candidateDigest}.`
         : "Advance one material-growth update to create the ledger.",
       boundary: "Ledger terms are dimensionless geometric ranking hypotheses. They are not commensurate physical energies, forces, probabilities, rates, or a fitted thermodynamic free-energy functional." },
-    { id: "chemistry", process: "multicomponent reservoir / charge bookkeeping", status: chemistryTerms.length ? "soft" : "open", role: chemistryTerms.length ? "target-blind soft ordering" : "available but disabled",
-      encoding: chemistryTerms.join(" + ") || "no composition or supplied-formal-charge ranking term is active",
-      evidence: chemistryTerms.length ? `Reference reduced ratio ${compositionTarget?.reducedRatio || "unavailable"}; formal-charge coverage ${Math.round((formalChargeTarget?.coverage || 0) * 100)}%.` : "Candidate geometry is unchanged; this counterfactual policy contribution is zero.",
-      boundary: "These finite-reservoir summaries are not chemical potentials, oxidation-state inference, Coulomb energy, electron transfer, or redox thermodynamics." },
+    { id: "chemistry", process: "multicomponent reservoir / charge / feedstock bookkeeping",
+      status: feedstockSupplyMode !== "open" ? "hard" : chemistryTerms.length ? "soft" : "open",
+      role: feedstockSupplyMode !== "open" ? "hard species-count admission + optional soft composition ordering"
+        : chemistryTerms.length ? "target-blind soft ordering" : "available but disabled",
+      encoding: `${chemistryTerms.join(" + ") || "composition rank off"} + ${feedstockSupplyMode === "open" ? "open feedstock ledger" : `${currentFeedstockSnapshot().factor}× finite integer inventory`}`,
+      evidence: `Reference reduced ratio ${JSON.stringify(compositionTarget?.reducedRatio || {})}; formal-charge coverage ${Math.round((formalChargeTarget?.coverage || 0) * 100)}%; ${currentFeedstockSnapshot().admittedAtoms} atoms supplied and ${feedstockSupplyPrunes} actions pruned for depletion.`,
+      boundary: "Species inventory is exact bookkeeping, not concentration, chemical potential, oxidation-state inference, Coulomb energy, transport, flux, diffusion, reaction kinetics, or physical time." },
     { id: "charge-geometry", process: "screened ionic neighborhood / local charge-field geometry", status: activeChargeGeometryWeight() > 0 ? "soft" : formalChargeTarget?.available ? "open" : "unavailable", role: activeChargeGeometryWeight() > 0 ? "supplied-label finite-neighborhood ordering" : "diagnostic",
       encoding: formalChargeTarget?.available ? `${chargeGeometryLabel()}; R${chargeGeometryReach.toFixed(1)}dₙₙ with exp(-r/R)/(r/dₙₙ) radial weight` : "requires a complete explicitly supplied formal-charge channel",
       evidence: leap ? `Accepted mean score ${receiptRound(acceptedChargeGeometryScore / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedChargeGeometryScore / Math.max(1, rejectedDecisions), 4)}; ${chargeGeometryPairChecks.toLocaleString()} pair checks over ${chargeGeometrySiteEvaluations.toLocaleString()} emitted-site evaluations.` : "No spatial formal-charge neighborhood evaluated yet.",
@@ -14552,6 +14632,14 @@ function geometryConstraintEvidence(name, term, state, mode) {
         ? `Soft rank term with weight ${activeCompositionBalanceWeight().toFixed(2)}.` : "Diagnostic only; weight zero.",
       boundary: "Composition balancing is not a chemical potential, phase reservoir, reaction network, or charge-neutrality model.",
     },
+    "feedstock inventory": {
+      observed: feedstockSupplyMode === "open" ? "open external source declared"
+        : `${currentFeedstockSnapshot().initialAtoms} species-labelled atoms in the declared finite batch`,
+      encoding: "An integer counter per observed species; only the unique colored sites newly emitted by a committed action decrement it.",
+      searchRole: feedstockSupplyMode === "open" ? "Accounting only; no branch is rejected for depletion."
+        : "Hard gate: a whole action or commuting antichain is rejected atomically if any species demand exceeds its remaining count.",
+      boundary: "This is mass/species bookkeeping, not concentration, chemical potential, flux, transport, sticking probability, diffusion, or physical time.",
+    },
     "solute partition": {
       observed: state?.solutePartition?.species
         ? `${state.solutePartition.species}: ${(state.solutePartition.observedReferenceFraction * 100).toFixed(1)}% observed versus ${(state.solutePartition.emittedFraction * 100).toFixed(1)}% in this action`
@@ -14818,6 +14906,10 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "composition reservoir", status: ranked(activeCompositionBalanceWeight() > 0),
       value: state.compositionBalance ? signed(state.compositionBalance.scaledDelta) : "not evaluated",
       detail: activeCompositionBalanceWeight() > 0 ? `rank weight ${activeCompositionBalanceWeight().toFixed(2)}` : "diagnostic · cannot authorize geometry" },
+    { name: "feedstock inventory", status: state.feedstockSupply?.admitted ? "pass" : "fail",
+      value: state.feedstockSupply?.open ? "open source" : state.feedstockSupply?.admitted
+        ? `${state.feedstockSupply.requestedAtoms} supplied` : `short ${state.feedstockSupply.limitingSpecies.join(" / ")}`,
+      detail: feedstockSupplyMode === "open" ? "accounting only" : "hard species-count admission gate" },
     { name: "solute partition", status: ranked(activeSolutePartitionWeight() > 0),
       value: state.solutePartition?.species ? `${signed(state.solutePartition.score)} · ${state.solutePartition.species} ${(state.solutePartition.emittedFraction * 100).toFixed(0)}% emitted` : "unavailable",
       detail: activeSolutePartitionWeight() > 0 ? `${solutePartitionLabel()} · rank weight ${activeSolutePartitionWeight().toFixed(2)}` : "homogeneous · weight zero" },
@@ -14947,6 +15039,9 @@ function renderConstraintLedger(state, mode = "configured") {
       value: activeGeometricStrainWeight() > 0 ? "ranked" : "diagnostic", detail: `weight ${activeGeometricStrainWeight().toFixed(2)}` },
     { name: "composition reservoir", status: ranked(activeCompositionBalanceWeight() > 0),
       value: activeCompositionBalanceWeight() > 0 ? "ranked" : "diagnostic", detail: `weight ${activeCompositionBalanceWeight().toFixed(2)}` },
+    { name: "feedstock inventory", status: feedstockSupplyMode === "open" ? "diagnostic" : "pass",
+      value: feedstockSupplyMode === "open" ? "open source" : `${currentFeedstockSnapshot().remainingAtoms} atoms remain`,
+      detail: feedstockSupplyMode === "open" ? "accounting only" : "hard admission gate" },
     { name: "solute partition", status: ranked(activeSolutePartitionWeight() > 0),
       value: activeSolutePartitionWeight() > 0 ? `${resolvedSoluteSpecies()} · ${solutePartitionLabel()}` : "homogeneous", detail: `weight ${activeSolutePartitionWeight().toFixed(2)}` },
     { name: "formal-charge reservoir", status: ranked(activeFormalChargeWeight() > 0),
@@ -16513,6 +16608,12 @@ strainWeightSelect.addEventListener("change", () => {
 compositionPreferenceSelect.addEventListener("change", () => {
   const value = compositionPreferenceSelect.value;
   compositionPreference = value === "none" || value === "strong" ? value : "soft";
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+feedstockSupplySelect.addEventListener("change", () => {
+  feedstockSupplyMode = ["finite-1", "finite-4", "finite-16"].includes(feedstockSupplySelect.value)
+    ? feedstockSupplySelect.value : "open";
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
 });
