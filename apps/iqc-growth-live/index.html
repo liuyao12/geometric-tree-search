@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260826-69">
+  <link rel="stylesheet" href="./style.css?v=20260826-70">
   <script type="importmap">
     {
       "imports": {
@@ -1060,6 +1060,9 @@
                 <div class="bond-valence-path-heading"><span><small>retained structural states</small><strong>Coordination pathway</strong></span><b id="bondValencePathState">awaiting the first structural leap</b></div>
                 <svg id="bondValencePath" class="bond-valence-path" viewBox="0 0 240 100" role="group" aria-label="Inspect sampled scalar valence mismatch and vector-resultant magnitude across retained structural leaps"></svg>
                 <div id="bondValencePathReadout" class="bond-valence-path-readout" aria-live="polite"></div>
+                <div class="bond-valence-map-control"><label for="bondValenceMapSelect"><span><small>current structure</small><strong>3D coordination-defect map</strong></span><select id="bondValenceMapSelect"><option value="none" selected>Off · preserve element view</option><option value="scalar">Scalar · under / satisfied / over</option><option value="vector">Directional · resultant arrows</option></select></label><b id="bondValenceMapState">map off</b></div>
+                <div class="bond-valence-map-legend" aria-label="Bond-valence spatial map legend"><span><i class="under"></i>underbonded</span><span><i class="balanced"></i>near scalar/vector balance</span><span><i class="over"></i>overbonded / large resultant</span></div>
+                <div id="bondValenceMapExtremes" class="bond-valence-map-extremes" role="group" aria-label="Focus the strongest sampled coordination defects"></div>
                 <div class="bond-valence-scale"><span>underbonded</span><i></i><span>satisfied</span><i></i><span>overbonded</span></div>
                 <div id="bondValenceResiduals" class="bond-valence-residuals" aria-label="Before and after local valence residuals"></div>
                 <article id="bondValenceDetail" class="bond-valence-detail" aria-live="polite"></article>
@@ -1635,7 +1638,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260826-162"></script>
+  <script type="module" src="./app.js?v=20260826-163"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

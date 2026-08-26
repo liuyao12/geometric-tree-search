@@ -9,9 +9,9 @@ README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
 
 def test_charge_shape_leap_path_contract():
-    assert 'buildId: "20260826-162"' in APP
-    assert 'app.js?v=20260826-162' in HTML
-    assert 'style.css?v=20260826-69' in HTML
+    assert 'buildId: "20260826-163"' in APP
+    assert 'app.js?v=20260826-163' in HTML
+    assert 'style.css?v=20260826-70' in HTML
     assert "function structuralChargeMomentSnapshot" in APP
     assert APP.count("chargeMoment: structuralChargeMomentSnapshot()") >= 6
     assert "historyAlignment: \"discrete certified structural leap; not physical time\"" in APP

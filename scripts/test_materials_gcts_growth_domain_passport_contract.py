@@ -42,5 +42,5 @@ def test_growth_reach_is_receipt_visible_but_does_not_authorize_geometry():
     assert "physicalPotentialUsed: false" in ENV
     assert "Build 133" in README
     assert "novelty is no longer mislabeled as spatial continuation" in README
-    assert 'buildId: "20260826-162"' in APP
-    assert 'app.js?v=20260826-162' in HTML
+    assert 'buildId: "20260826-163"' in APP
+    assert 'app.js?v=20260826-163' in HTML

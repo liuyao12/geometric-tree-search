@@ -4842,3 +4842,16 @@ under the supplied oxidation states and spherical-ion hypothesis. It is not a
 free-energy surface, reaction coordinate, force trajectory, relaxation,
 kinetics, or physical time; finite crops have no inferred periodic images, and
 the pathway never changes candidate geometry, ranking, or admission.
+
+Build 163 turns the aggregate pathway into a spatial coordination-defect
+microscope. Scientists can keep standard element colors while overlaying a
+bounded sample of local scalar residuals as blue–mint–coral wire halos, or
+directional bond-valence resultants as magnitude halos plus arrows. The eight
+largest sampled defects are interactive: selecting one focuses the 3D camera
+target and highlights the same atom without changing the structure. Every map
+uses at most 320 radially stratified charged centers, exact spatial-index
+neighbors within checked parameter cutoffs, supplied oxidation states, and the
+physical angstrom scale. Receipts retain the sampling bound, resolved count,
+display scales, and exact neighborhood work. Halos and arrows are display-only;
+they are not forces, energy gradients, relaxation directions, periodic fields,
+or physical trajectories, and they never alter candidate rank or admission.

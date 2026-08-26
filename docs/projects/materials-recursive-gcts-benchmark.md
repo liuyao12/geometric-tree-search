@@ -5498,3 +5498,23 @@ direction, and does not alter candidate geometry, ranking, or hard admission.
 The directional axis retains the same spherical-ion caveat: electronic,
 lone-pair, or steric anisotropy may make a nonzero resultant physically
 meaningful.
+
+### Spatial bond-valence defect microscope
+
+The current structure can now be inspected without replacing standard element
+colors. Scalar mode surrounds up to 320 deterministically stratified charged
+centers with a diverging wire halo: blue is underbonded, mint is near scalar
+balance, and coral is overbonded. Directional mode colors the same halos by
+bond-valence-vector magnitude and adds an arrow in the resultant direction.
+The display scale is the sampled 90th percentile, bounded below by 0.1 valence
+units so one outlier cannot collapse the visible range. The eight strongest
+sampled sites can be selected to focus the 3D camera target.
+
+For each center the map queries the exact spatial index through the largest
+checked bond-valence cutoff and evaluates only explicitly supplied charged ion
+pairs in angstrom coordinates. The receipt records the mode, sample and
+resolution counts, cutoff, p90 display scale, context-site presentations, and
+distance work without storing coordinates. This is an analysis overlay: arrows
+are not forces, energy gradients, torques, or prescribed relaxation directions;
+the finite crop receives no invented periodic images, and the map cannot alter
+candidate geometry, ranking, hard admission, or search history.

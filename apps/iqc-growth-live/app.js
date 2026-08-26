@@ -32,7 +32,8 @@ import { chargeMomentSignature, compareChargeMomentGeometry } from "./global-cha
 import { incrementalIonicPairGeometry, incrementalIonicPairReachProfile,
   rankIonicPairReachProfiles } from "./ionic-pair-geometry.js?v=20260826-2";
 import { BOND_VALENCE_PARAMETERS, BOND_VALENCE_PROVENANCE,
-  MAXIMUM_BOND_VALENCE_DISTANCE, bondValenceStateSummary, incrementalBondValenceSatisfaction }
+  MAXIMUM_BOND_VALENCE_DISTANCE, bondValenceSums, bondValenceStateSummary,
+  incrementalBondValenceSatisfaction }
   from "./bond-valence-geometry.js?v=20260826-3";
 import {
   discoverFiniteMolecularComponents,
@@ -389,6 +390,9 @@ const bondValencePortrait = $("bondValencePortrait");
 const bondValencePathState = $("bondValencePathState");
 const bondValencePath = $("bondValencePath");
 const bondValencePathReadout = $("bondValencePathReadout");
+const bondValenceMapSelect = $("bondValenceMapSelect");
+const bondValenceMapState = $("bondValenceMapState");
+const bondValenceMapExtremes = $("bondValenceMapExtremes");
 const bondValenceResiduals = $("bondValenceResiduals");
 const bondValenceDetail = $("bondValenceDetail");
 const policySensitivityState = $("policySensitivityState");
@@ -1071,6 +1075,8 @@ let ionicPairReach = 8;
 let ionicPairWeight = .24;
 let bondValenceMode = "none";
 let bondValenceWeight = .24;
+let bondValenceMapMode = "none";
+let selectedBondValenceAtomId = null;
 let surfacePreference = "soft";
 let growthDrivingMode = "none";
 let growthDrivingWeight = .24;
@@ -6744,7 +6750,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-162",
+      buildId: "20260826-163",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7391,6 +7397,7 @@ async function buildExperimentReceipt() {
         sphericalIonHypothesisOnly: true, anisotropyCanBePhysical: true,
         lonePairsModeled: false, electronicAnisotropyModeled: false, stericAnisotropyModeled: false,
         forcesIntegrated: false, physicalTimeIntegrated: false,
+        spatialDefectMap: bondValenceSpatialFieldReceipt(),
       },
       surfaceCompletionRanking: {
         role: "target-blind soft ordering that favors healing sample-derived coordination deficits; not bond or surface energy",
@@ -12778,6 +12785,98 @@ function structuralBondValenceSnapshot(maximumCenters = 96) {
     analysisOnly: true, targetUsed: false, physicalTimeIntegrated: false };
 }
 
+function currentBondValenceSpatialField(maximumCenters = 320) {
+  if (bondValenceMapMode === "none") return { available: false, mode: "none",
+    reason: "3D coordination-defect map disabled", maximumCenters, targetUsed: false };
+  const eligibleIndices = formalChargeTarget?.available ? atoms.map((atom, index) =>
+    bondValenceElementToken(atom.species)
+      && Number.isFinite(suppliedFormalChargeForToken(atom.species))
+      && Math.abs(suppliedFormalChargeForToken(atom.species)) > 1e-12 ? index : null)
+    .filter(Number.isInteger) : [];
+  if (!eligibleIndices.length) return { available: false, mode: bondValenceMapMode,
+    reason: "complete supplied oxidation states required", maximumCenters, targetUsed: false };
+  const sampledIndices = radiallyStratifiedIndices(atoms, eligibleIndices, maximumCenters);
+  const scenePerAngstrom = referenceSpacing / Math.max(referenceSpacingA, 1e-12);
+  const cutoffSceneUnits = MAXIMUM_BOND_VALENCE_DISTANCE * scenePerAngstrom;
+  const toPhysical = (atom) => ({ species: bondValenceElementToken(atom.species),
+    charge: suppliedFormalChargeForToken(atom.species),
+    position: atom.p.toArray().map((value) => value / scenePerAngstrom) });
+  let distanceEvaluations = 0; let contextSitePresentations = 0;
+  const records = sampledIndices.map((centerIndex) => {
+    const atom = atoms[centerIndex];
+    const neighbors = nearbyAtoms(atom.p, cutoffSceneUnits).filter((neighbor) => neighbor !== atom
+      && bondValenceElementToken(neighbor.species)
+      && Number.isFinite(suppliedFormalChargeForToken(neighbor.species))
+      && Math.abs(suppliedFormalChargeForToken(neighbor.species)) > 1e-12);
+    const local = bondValenceSums([atom, ...neighbors].map(toPhysical));
+    distanceEvaluations += local.distanceEvaluations; contextSitePresentations += 1 + neighbors.length;
+    const center = local.sites[0];
+    return center?.resolved ? { atom, scalarResidual: center.residual,
+      absoluteScalarResidual: center.absoluteResidual, vectorSum: center.vectorSum,
+      vectorMagnitude: center.vectorMagnitude, normalizedVectorImbalance: center.normalizedVectorImbalance,
+      bondValenceSum: center.sum, targetValence: center.target, bondCount: center.bondCount } : null;
+  }).filter(Boolean);
+  const percentile90 = (values) => {
+    if (!values.length) return 0;
+    const sorted = [...values].sort((first, second) => first - second);
+    return sorted[Math.min(sorted.length - 1, Math.floor(.9 * sorted.length))];
+  };
+  const scalarScale = Math.max(.1, percentile90(records.map((record) => record.absoluteScalarResidual)));
+  const vectorScale = Math.max(.1, percentile90(records.map((record) => record.vectorMagnitude)));
+  return { available: records.length > 0, mode: bondValenceMapMode,
+    reason: records.length ? null : "no sampled center has a checked ion-pair neighbor",
+    sampledCenters: sampledIndices.length, resolvedCenters: records.length,
+    unresolvedCenters: sampledIndices.length - records.length, maximumCenters, records,
+    scalarScale, vectorScale, cutoffAngstrom: MAXIMUM_BOND_VALENCE_DISTANCE,
+    distanceEvaluations, contextSitePresentations,
+    sampling: "up to 320 radially stratified centers with complete finite checked-parameter neighbor halos",
+    suppliedOxidationStatesOnly: true, finiteObservationNoPeriodicImages: true,
+    elementColorsPreserved: true, candidateRankingChanged: false,
+    candidateGeometryChanged: false, hardAdmissionChanged: false,
+    targetUsed: false, physicalTimeIntegrated: false };
+}
+
+function bondValenceSpatialFieldReceipt() {
+  const field = currentBondValenceSpatialField();
+  return { role: "current-structure spatial microscope for local scalar and directional bond-valence imbalance",
+    mode: field.mode, available: field.available, reason: field.reason,
+    sampledCenters: field.sampledCenters || 0, resolvedCenters: field.resolvedCenters || 0,
+    maximumCenters: field.maximumCenters, scalarDisplayScale: receiptRound(field.scalarScale),
+    vectorDisplayScale: receiptRound(field.vectorScale), cutoffAngstrom: field.cutoffAngstrom,
+    contextSitePresentations: field.contextSitePresentations || 0,
+    distanceEvaluations: field.distanceEvaluations || 0,
+    sampling: field.sampling || "map disabled", elementColorsPreserved: true,
+    displayOnly: true, vectorArrowsAreForces: false, energyInferred: false,
+    candidateRankingChanged: false, candidateGeometryChanged: false,
+    hardAdmissionChanged: false, targetUsed: false, physicalTimeIntegrated: false };
+}
+
+function renderBondValenceMapExtremes(field) {
+  if (!bondValenceMapExtremes) return;
+  bondValenceMapExtremes.replaceChildren();
+  if (!field?.available) return;
+  const magnitude = (record) => bondValenceMapMode === "scalar"
+    ? record.absoluteScalarResidual : record.vectorMagnitude;
+  [...field.records].sort((first, second) => magnitude(second) - magnitude(first)
+    || String(first.atom.id).localeCompare(String(second.atom.id))).slice(0, 8).forEach((record) => {
+    const button = document.createElement("button"); button.type = "button";
+    button.classList.toggle("active", record.atom.id === selectedBondValenceAtomId);
+    button.setAttribute("aria-pressed", String(record.atom.id === selectedBondValenceAtomId));
+    const label = document.createElement("strong");
+    label.textContent = `${record.atom.species} · ${record.atom.id}`;
+    const value = document.createElement("span");
+    value.textContent = bondValenceMapMode === "scalar"
+      ? `Δs ${record.scalarResidual >= 0 ? "+" : ""}${record.scalarResidual.toFixed(2)} v.u.`
+      : `|V| ${record.vectorMagnitude.toFixed(2)} v.u.`;
+    button.append(label, value);
+    button.addEventListener("click", () => {
+      selectedBondValenceAtomId = record.atom.id;
+      controls.target.copy(record.atom.p); controls.update(); rebuildWorld();
+    });
+    bondValenceMapExtremes.append(button);
+  });
+}
+
 function batchRetainsNovelSites(entries) {
   if (!reconstructionCertified && replayIndex < referenceCount()) {
     const owners = new Map();
@@ -16369,6 +16468,55 @@ function rebuildWorld() {
     if (halos.instanceColor) halos.instanceColor.needsUpdate = true;
     atomGroup.add(halos);
   }
+  const bondValenceField = currentBondValenceSpatialField();
+  if (bondValenceField.available) {
+    const haloGeometry = new THREE.IcosahedronGeometry(.31, 1);
+    const haloMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true,
+      transparent: true, opacity: .68, depthWrite: false });
+    const halos = new THREE.InstancedMesh(haloGeometry, haloMaterial, bondValenceField.records.length);
+    const blue = new THREE.Color(0x6aa7ff); const mint = new THREE.Color(0x65e1bc);
+    const coral = new THREE.Color(0xff7b73);
+    bondValenceField.records.forEach((record, index) => {
+      const value = bondValenceMapMode === "scalar" ? record.scalarResidual : record.vectorMagnitude;
+      const scale = bondValenceMapMode === "scalar" ? bondValenceField.scalarScale : bondValenceField.vectorScale;
+      const relative = Math.max(-1, Math.min(1, value / Math.max(scale, 1e-12)));
+      const color = bondValenceMapMode === "scalar"
+        ? (relative < 0 ? mint.clone().lerp(blue, -relative) : mint.clone().lerp(coral, relative))
+        : mint.clone().lerp(coral, Math.max(0, relative));
+      if (record.atom.id === selectedBondValenceAtomId) color.set(0xffc169);
+      dummy.position.copy(record.atom.p); dummy.rotation.set(0, 0, 0);
+      dummy.scale.setScalar(elementScale(record.atom.species)
+        * (record.atom.id === selectedBondValenceAtomId ? 1.92 : 1.24 + .42 * Math.abs(relative)));
+      dummy.updateMatrix(); halos.setMatrixAt(index, dummy.matrix); halos.setColorAt(index, color);
+    });
+    halos.instanceMatrix.needsUpdate = true;
+    if (halos.instanceColor) halos.instanceColor.needsUpdate = true;
+    atomGroup.add(halos);
+    if (bondValenceMapMode === "vector") {
+      const segments = []; const heads = [];
+      bondValenceField.records.forEach((record) => {
+        const direction = new THREE.Vector3(...record.vectorSum);
+        if (direction.lengthSq() <= 1e-18) return;
+        const relative = Math.max(0, Math.min(1,
+          record.vectorMagnitude / Math.max(bondValenceField.vectorScale, 1e-12)));
+        const end = record.atom.p.clone().add(direction.normalize().multiplyScalar(.1 + .48 * Math.sqrt(relative)));
+        segments.push(record.atom.p, end); heads.push(end);
+      });
+      if (segments.length) atomGroup.add(new THREE.LineSegments(
+        new THREE.BufferGeometry().setFromPoints(segments),
+        new THREE.LineBasicMaterial({ color: 0xff9b70, transparent: true, opacity: .78, depthWrite: false }),
+      ));
+      if (heads.length) atomGroup.add(new THREE.Points(
+        new THREE.BufferGeometry().setFromPoints(heads),
+        new THREE.PointsMaterial({ color: 0xffd19a, size: .072, transparent: true,
+          opacity: .9, sizeAttenuation: true, depthWrite: false }),
+      ));
+    }
+    bondValenceMapState.textContent = `${bondValenceField.resolvedCenters}/${bondValenceField.sampledCenters} centers · p90 ${bondValenceMapMode === "scalar" ? `|Δs| ${bondValenceField.scalarScale.toFixed(2)}` : `|V| ${bondValenceField.vectorScale.toFixed(2)}`} v.u.`;
+  } else if (bondValenceMapState) {
+    bondValenceMapState.textContent = bondValenceMapMode === "none" ? "map off" : bondValenceField.reason;
+  }
+  renderBondValenceMapExtremes(bondValenceField);
   if (pipelineStage === 4 && !iceAnchorTrace && nucleationSiteLandscape.length) {
     const selectedLandscape = nucleationSiteLandscape.filter((entry) => entry.selected);
     const previewLandscape = nucleationSiteLandscape.filter((entry) => !entry.selected).slice(0, 24);
@@ -20413,6 +20561,12 @@ bondValenceWeightSelect.addEventListener("change", () => {
   bondValenceWeight = [.12, .24, .48].includes(value) ? value : .24;
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
+});
+bondValenceMapSelect.addEventListener("change", () => {
+  bondValenceMapMode = ["scalar", "vector"].includes(bondValenceMapSelect.value)
+    ? bondValenceMapSelect.value : "none";
+  selectedBondValenceAtomId = null;
+  rebuildWorld();
 });
 surfacePreferenceSelect.addEventListener("change", () => {
   const value = surfacePreferenceSelect.value;
