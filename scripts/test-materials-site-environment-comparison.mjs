@@ -2,12 +2,14 @@ import assert from "node:assert/strict";
 import { compareSiteEnvironments } from "../apps/iqc-growth-live/site-environment-comparison.js";
 
 const snapshot = (species, counts, shells, angles = [], order = [], depth = 0,
-  origin = "supplied observation / fitted seed") => ({
+  origin = "supplied observation / fitted seed", centrosymmetryAmplitude = .1) => ({
   species, origin, positionAngstrom: [999, 999, 999],
   localEnvironment: { coordination: counts.reduce((sum, entry) => sum + entry[1], 0),
     speciesCounts: counts, distanceShells: shells, angleShells: angles,
     orientationalOrder: order, orientationalDimension: 3,
-    orientationalDefinition: "Steinhardt q_l magnitude" },
+    orientationalDefinition: "Steinhardt q_l magnitude",
+    centrosymmetry: { resolved: true, reason: null, neighborCount: 6,
+      normalizedAmplitude: centrosymmetryAmplitude, exactOptimalPairing: true } },
   lineage: { causalDepth: depth, interfaceSite: false },
 });
 const constraint = (contactAngleMismatch, coordinationDeficit) => ({ summary: {
@@ -19,7 +21,7 @@ const comparison = compareSiteEnvironments({
   first: snapshot("Na", [["Cl", 2], ["Na", 1]], [["Cl", [1, 1.1]], ["Na", [1.5]]],
     [["Cl|Cl", [90, 180]]], [[4, .2], [6, .4], [12, .6]]),
   second: snapshot("Na", [["Cl", 3]], [["Cl", [1.02, 1.08, 1.6]]],
-    [["Cl|Cl", [60, 92, 170]]], [[4, .3], [6, .35], [12, .8]], 2, "GCTS-emitted structural site"),
+    [["Cl|Cl", [60, 92, 170]]], [[4, .3], [6, .35], [12, .8]], 2, "GCTS-emitted structural site", .25),
   firstConstraint: constraint(.1, 0), secondConstraint: constraint(.35, .2),
 });
 assert.equal(comparison.centerChemistry.sameSpecies, true);
@@ -32,6 +34,9 @@ assert.equal(comparison.angularShells.unmatchedAngles, 1);
 assert.equal(comparison.angularShells.rmsAngleDeltaDegrees, 7.2111);
 assert.equal(comparison.orientationalOrder.channels[0].delta, .1);
 assert.equal(comparison.orientationalOrder.channels[1].delta, -.05);
+assert.equal(comparison.centrosymmetry.comparable, true);
+assert.equal(comparison.centrosymmetry.amplitudeDelta, .15);
+assert.equal(comparison.centrosymmetry.exactOptimalPairing, true);
 assert.equal(comparison.constraintDelta.contactAngleMismatch, .25);
 assert.equal(comparison.lineage.depthDelta, 2);
 assert.equal(comparison.audit.targetUsed, false);
@@ -43,5 +48,9 @@ assert.match(comparison.comparisonDigest, /^[0-9a-f]{8}$/);
 const chemistry = compareSiteEnvironments({ first: snapshot("O", [], []), second: snapshot("H", [], []) });
 assert.equal(chemistry.centerChemistry.sameSpecies, false);
 assert.equal(chemistry.radialShells.rmsDistanceDeltaAngstrom, null);
+const differentShell = snapshot("O", [], []);
+differentShell.localEnvironment.centrosymmetry.neighborCount = 8;
+assert.equal(compareSiteEnvironments({ first: snapshot("O", [], []), second: differentShell })
+  .centrosymmetry.comparable, false);
 assert.throws(() => compareSiteEnvironments({ first: {} }), /required/);
 console.log("materials site environment comparison: passed");

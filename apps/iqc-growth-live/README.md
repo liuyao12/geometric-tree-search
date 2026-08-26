@@ -5324,3 +5324,19 @@ in 2D. These magnitudes and colored angles are invariant to translation and glob
 rotation. They remain finite structural fingerprints: sorted angle pairing does not recover
 neighbor identity or prove graph congruence, and q/psi values are not phase labels,
 crystallinity probabilities, energies, mechanisms, or kinetic variables.
+
+### Build 189 · site-resolved inversion asymmetry
+
+The A/B microscope now applies the portal's Kelchner centrosymmetry implementation to
+each selected site. It uses the same 1.32a first-shell vectors as the global structural
+observable, inherits the current automatic or explicit 4/6/8/12-neighbor shell choice,
+and solves the exact minimum-weight opposite-neighbor pairing. The displayed amplitude
+is divided by shell size, making it invariant to uniform scale as well as translation,
+proper rotation, and atom order.
+
+The comparison reports both amplitudes, their signed B-minus-A change, shell size, and
+whether either site was unresolved. This is useful for detecting broken inversion pairing
+at finite surfaces, interfaces, or distorted local environments. It remains deliberately
+unnamed evidence: centrosymmetry alone does not identify a dislocation, vacancy, stacking
+fault, grain boundary, or other defect, nor does it provide formation energy, stress,
+force, mechanism, probability, or physical time.

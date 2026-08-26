@@ -3376,7 +3376,8 @@ function siteProvenanceSnapshot(atom) {
   const snapshot = buildSiteProvenance({ atom, atoms, placements: placedClusters,
     sceneToAngstrom: referenceSpacingA / Math.max(referenceSpacing, 1e-12),
     neighborReachScene: reach, geometryLabel: resolvedGeometryLabel() });
-  const vectors = atoms.filter((entry) => entry.id !== atom.id && entry.p.distanceTo(atom.p) <= reach)
+  const orderReach = COORDINATION_CUTOFF * referenceSpacing;
+  const vectors = atoms.filter((entry) => entry.id !== atom.id && entry.p.distanceTo(atom.p) <= orderReach)
     .map((entry) => entry.p.clone().sub(atom.p).toArray());
   const dimension = referenceStructuralStats?.dimension || currentMaterial().intrinsicDimension || 3;
   const minimumNeighbors = dimension === 2 ? 2 : 3;
@@ -3384,9 +3385,24 @@ function siteProvenanceSnapshot(atom) {
   snapshot.localEnvironment.orientationalDimension = dimension;
   snapshot.localEnvironment.orientationalDefinition = dimension === 2
     ? "bond-orientational magnitude |psi_l|" : "Steinhardt q_l magnitude";
+  snapshot.localEnvironment.orientationalReachAngstrom = COORDINATION_CUTOFF * referenceSpacingA;
   snapshot.localEnvironment.orientationalOrder = vectors.length >= minimumNeighbors
     ? [4, 6, 12].map((harmonic) => [harmonic,
       localOrientationalOrder([vectors], dimension, { harmonic, planeNormal })[0]]) : [];
+  const shellInference = inferCentrosymmetryNeighborCount(referenceStructuralStats?.neighborCounts || [vectors.length], dimension);
+  const explicitShell = Number(centrosymmetryNeighborMode);
+  const neighborCount = centrosymmetryNeighborMode === "auto" ? shellInference.selectedNeighborCount : explicitShell;
+  const centrosymmetry = localCentrosymmetry([vectors], { neighborCount }).records[0];
+  snapshot.localEnvironment.centrosymmetry = {
+    resolved: centrosymmetry.resolved, reason: centrosymmetry.reason, neighborCount,
+    observedNeighbors: centrosymmetry.observedNeighbors,
+    normalizedAmplitude: centrosymmetry.normalizedAmplitude,
+    normalizedParameter: centrosymmetry.normalizedParameter,
+    selectedNeighborIndices: centrosymmetry.selectedNeighborIndices,
+    oppositePairs: centrosymmetry.pairs.length,
+    exactOptimalPairing: true, shellMode: centrosymmetryNeighborMode,
+    reachAngstrom: COORDINATION_CUTOFF * referenceSpacingA,
+  };
   return snapshot;
 }
 
@@ -3397,6 +3413,7 @@ function renderSiteEnvironmentComparison(firstAtom, secondAtom) {
   const radial = comparison.radialShells;
   const angular = comparison.angularShells;
   const constraints = comparison.constraintDelta;
+  const inversion = comparison.centrosymmetry;
   siteComparisonState.textContent = `${comparison.centerChemistry.first} A → ${comparison.centerChemistry.second} B · ${radial.matchedDistances} distances · ${angular.matchedAngles} angles matched`;
   siteComparisonGrid.replaceChildren(
     siteProvenanceTile("center chemistry", comparison.centerChemistry.sameSpecies ? "same species" : "different species",
@@ -3411,6 +3428,10 @@ function renderSiteEnvironmentComparison(firstAtom, secondAtom) {
       comparison.orientationalOrder.channels.filter((entry) => entry.delta !== null)
         .map((entry) => `${entry.harmonic}: ${entry.first.toFixed(3)} → ${entry.second.toFixed(3)}`).join(" · ") || "unresolved",
       comparison.orientationalOrder.definition),
+    siteProvenanceTile("inversion asymmetry", inversion.comparable
+      ? `${inversion.firstAmplitude.toFixed(3)} → ${inversion.secondAmplitude.toFixed(3)}` : "unresolved",
+      inversion.comparable ? `${inversion.neighborCount}-neighbor exact opposite pairing · Δ ${inversion.amplitudeDelta >= 0 ? "+" : ""}${inversion.amplitudeDelta.toFixed(3)}`
+        : `A: ${inversion.firstReason || "shell mismatch"} · B: ${inversion.secondReason || "shell mismatch"}`),
     siteProvenanceTile("constraint response", constraints.available ? `${constraints.contactAngleMismatch >= 0 ? "+" : ""}${constraints.contactAngleMismatch.toFixed(3)}` : "unavailable",
       "B − A contact + angle residual"),
     siteProvenanceTile("coordination deficit", constraints.available ? `${constraints.coordinationDeficit >= 0 ? "+" : ""}${constraints.coordinationDeficit.toFixed(3)}` : "unavailable",
@@ -3437,7 +3458,7 @@ function renderSiteEnvironmentComparison(firstAtom, secondAtom) {
     const status = document.createElement("em"); status.textContent = `${channel.matched} paired · ${channel.unmatched} unmatched`;
     row.append(label, value, status); siteComparisonChannels.append(row);
   });
-  siteComparisonBoundary.textContent = `comparison ${comparison.comparisonDigest} · finite colored radial and three-body angle shells plus ${comparison.orientationalOrder.definition}; translation and global rotation independent. Sorted angular pairing is descriptive and does not establish neighbor correspondence, local isometry, defect identity, energetic equivalence, or physical mechanism.`;
+  siteComparisonBoundary.textContent = `comparison ${comparison.comparisonDigest} · finite colored radial and three-body angle shells, ${comparison.orientationalOrder.definition}, and scale-normalized Kelchner centrosymmetry at the 1.32a structural shell; translation and global rotation independent. Sorted angular pairing is descriptive; inversion asymmetry is defect-sensitive but does not establish neighbor correspondence, local isometry, a named defect, formation energy, stress, energetic equivalence, or physical mechanism.`;
   siteEnvironmentComparison.hidden = false;
 }
 
@@ -8176,7 +8197,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-188",
+      buildId: "20260826-189",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,

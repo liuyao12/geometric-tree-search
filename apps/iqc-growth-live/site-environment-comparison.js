@@ -85,6 +85,12 @@ export function compareSiteEnvironments({ first, second, firstConstraint = null,
   const firstSummary = firstConstraint?.summary || {};
   const secondSummary = secondConstraint?.summary || {};
   const delta = (key) => rounded(finite(secondSummary[key]) - finite(firstSummary[key]));
+  const firstCentrosymmetry = first.localEnvironment.centrosymmetry || {};
+  const secondCentrosymmetry = second.localEnvironment.centrosymmetry || {};
+  const commonCentrosymmetryShell = firstCentrosymmetry.neighborCount === secondCentrosymmetry.neighborCount
+    ? firstCentrosymmetry.neighborCount : null;
+  const centrosymmetryComparable = Boolean(commonCentrosymmetryShell
+    && firstCentrosymmetry.resolved && secondCentrosymmetry.resolved);
   const comparison = {
     schema: 1,
     centerChemistry: { first: String(first.species), second: String(second.species),
@@ -106,6 +112,16 @@ export function compareSiteEnvironments({ first, second, firstConstraint = null,
       definition: first.localEnvironment.orientationalDefinition === second.localEnvironment.orientationalDefinition
         ? first.localEnvironment.orientationalDefinition : "dimension mismatch",
       channels: orientationalOrder },
+    centrosymmetry: { comparable: centrosymmetryComparable, neighborCount: commonCentrosymmetryShell,
+      firstResolved: firstCentrosymmetry.resolved === true, secondResolved: secondCentrosymmetry.resolved === true,
+      firstReason: firstCentrosymmetry.reason || null, secondReason: secondCentrosymmetry.reason || null,
+      firstAmplitude: firstCentrosymmetry.resolved ? rounded(firstCentrosymmetry.normalizedAmplitude) : null,
+      secondAmplitude: secondCentrosymmetry.resolved ? rounded(secondCentrosymmetry.normalizedAmplitude) : null,
+      amplitudeDelta: centrosymmetryComparable
+        ? rounded(secondCentrosymmetry.normalizedAmplitude - firstCentrosymmetry.normalizedAmplitude) : null,
+      exactOptimalPairing: firstCentrosymmetry.exactOptimalPairing === true
+        && secondCentrosymmetry.exactOptimalPairing === true,
+      uniformScaleInvariant: true, translationIndependent: true, globalRotationIndependent: true },
     constraintDelta: { available: Boolean(firstConstraint && secondConstraint),
       contactAngleMismatch: delta("contactAngleMismatch"), distanceMismatch: delta("distanceMismatch"),
       angleMismatch: delta("angleMismatch"), coordinationDeficit: delta("coordinationDeficit"),
@@ -117,6 +133,7 @@ export function compareSiteEnvironments({ first, second, firstConstraint = null,
     audit: { targetUsed: false, absoluteCoordinatesUsed: false, translationIndependent: true,
       globalRotationIndependent: true, fullLocalIsometryProved: false, defectIdentityInferred: false,
       angularPermutationResolved: false,
+      namedDefectClassified: false, defectFormationEnergyInferred: false,
       energyEquivalenceInferred: false, physicalMechanismInferred: false },
   };
   comparison.comparisonDigest = stableDigest(comparison);

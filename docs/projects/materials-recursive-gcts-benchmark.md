@@ -6001,3 +6001,27 @@ q/psi compresses angular symmetry into harmonic magnitudes. Neither establishes 
 colored point-set isometry, neighbor correspondence, defect species, phase, crystallinity
 probability, free energy, force, mechanism, rate, or physical time. The calculation is
 ephemeral and target-free and never enters search decisions.
+
+## Build 189: expose exact local centrosymmetry in the site comparison
+
+Build 189 adds a defect-sensitive geometric channel without adding a defect label. For
+both pinned sites, the portal takes the same neighbor vectors used by the validated global
+centrosymmetry observable: neighbors within the fixed 1.32a structural shell. Automatic
+shell selection is learned from the current reference neighbor-count population among the
+dimension-appropriate 4/6 choices in 2D or 6/8/12 choices in 3D; an explicit user shell
+selection is honored unchanged.
+
+For a resolved even shell, the Kelchner parameter is computed by exact minimum-weight
+perfect pairing of opposite-neighbor candidates. The normalized amplitude
+`sqrt(P / (2 sum_i |r_i|^2))` removes uniform scale and is also invariant to translation,
+proper rotation, and atom permutation. The site view reports shell size, resolved status,
+amplitude at A and B, and the signed B-minus-A response. A center with too few current
+neighbors remains explicitly unresolved; it is not assigned zero asymmetry.
+
+Centrosymmetry is sensitive to local inversion-symmetry breaking, which can occur near
+surfaces, interfaces, elastic distortions, thermal disorder, vacancies, dislocations,
+stacking faults, and grain boundaries. The scalar does not distinguish those causes. The
+portal therefore never converts it into a named defect, defect probability, formation
+energy, stress, force, mechanism, rate, or physical time, and it remains target-free and
+posthoc. The Build 188 q/psi calculation was simultaneously corrected to use this same
+validated 1.32a structural shell rather than the broader 1.45a provenance-display reach.
