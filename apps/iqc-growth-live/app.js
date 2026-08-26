@@ -6706,7 +6706,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-156",
+      buildId: "20260826-157",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7798,6 +7798,13 @@ async function buildExperimentReceipt() {
                 normalizedQuadrupole: receiptRound(portrait.current.quadrupoleMagnitude) },
               ranges: { maximumNormalizedDipole: receiptRound(portrait.maximumDipole),
                 maximumNormalizedQuadrupole: receiptRound(portrait.maximumQuadrupole) },
+              executedHistory: { retainedStates: portrait.history.length,
+                retainedLeapIndices: portrait.history.filter((state) => state.leapIndex >= 0)
+                  .map((state) => state.index),
+                alignment: portrait.historyAlignment, truncated: portrait.historyTruncated,
+                states: portrait.history.map((state) => ({ index: state.index, status: state.status,
+                  normalizedDipole: receiptRound(state.signature.dipoleMagnitude),
+                  normalizedQuadrupole: receiptRound(state.signature.quadrupoleMagnitude) })) },
               normalization: portrait.normalization,
               candidateSetChanged: portrait.candidateSetChanged,
               hardAdmissionChanged: portrait.hardAdmissionChanged,
@@ -11551,10 +11558,16 @@ function buildChargeShapePortrait(snapshot) {
       preview: candidate.preview }))
     .sort((first, second) => first.candidateKey.localeCompare(second.candidateKey));
   if (!points.length) return null;
+  const history = leapHistory.length && leapHistory[0].before?.chargeMoment?.available
+    ? [{ leapIndex: -1, index: Math.max(0, leapHistory[0].index - 1), status: "seed",
+      label: "seed", signature: leapHistory[0].before.chargeMoment },
+    ...leapHistory.filter((leap) => leap.after?.chargeMoment?.available).map((leap, leapIndex) => ({
+      leapIndex, index: leap.index, status: leap.status, label: `leap ${leap.index}`,
+      signature: leap.after.chargeMoment }))] : [];
   const maximumDipole = Math.max(1e-9, ...points.flatMap((point) => [point.before.dipoleMagnitude,
-    point.after.dipoleMagnitude]));
+    point.after.dipoleMagnitude]), ...history.map((state) => state.signature.dipoleMagnitude));
   const maximumQuadrupole = Math.max(1e-9, ...points.flatMap((point) => [point.before.quadrupoleMagnitude,
-    point.after.quadrupoleMagnitude]));
+    point.after.quadrupoleMagnitude]), ...history.map((state) => state.signature.quadrupoleMagnitude));
   points.forEach((point) => {
     point.normalizedX = point.after.dipoleMagnitude / maximumDipole;
     point.normalizedY = point.after.quadrupoleMagnitude / maximumQuadrupole;
@@ -11566,12 +11579,14 @@ function buildChargeShapePortrait(snapshot) {
         || first.candidateKey.localeCompare(second.candidateKey))[0].candidateKey;
   snapshot.chargeShapeCandidateKey = selectedCandidateKey;
   const current = points[0].before;
-  return { points, current, maximumDipole, maximumQuadrupole, selectedCandidateKey,
+  return { points, current, history, maximumDipole, maximumQuadrupole, selectedCandidateKey,
     candidateSetDigest: snapshot.candidateDigest, candidateSetChanged: false,
     hardAdmissionChanged: false, candidateGeometryChanged: false,
     suppliedFormalChargeOnly: true, targetUsed: false, executed: false,
     normalization: "|p|/(sum |q| Rrms); Frobenius(Q)/(sum |q| Rrms^2) about geometric centroid",
-    claimBoundary: "candidate transition portrait; not energy, electric field, polarization, dielectric response, trajectory, or physical time" };
+    historyAlignment: "discrete certified structural leap; not physical time",
+    historyTruncated: leapEventCount > leapHistory.length,
+    claimBoundary: "candidate transitions and executed structural states; not energy, electric field, polarization, dielectric response, trajectory, or physical time" };
 }
 
 function buildChargeShapePreview(snapshot) {
@@ -12357,6 +12372,16 @@ function activeChargeMomentWeight() {
 function currentChargeMomentSignature() {
   return chargeMomentSignature(atoms.map((atom) => ({ position: atom.p.toArray(),
     charge: suppliedFormalChargeForToken(atom.species) })));
+}
+
+function structuralChargeMomentSnapshot() {
+  const signature = currentChargeMomentSignature();
+  return { ...signature, suppliedFormalChargeOnly: true, coordinateFrameUsed: false,
+    translationInvariant: true, properRotationInvariant: true, uniformScaleInvariant: true,
+    candidateGeometryChanged: false, targetUsed: false,
+    electrostaticEnergyInferred: false, electrostaticPotentialSolved: false,
+    dielectricResponseInferred: false, electronicStructureModeled: false,
+    physicalTimeIntegrated: false };
 }
 
 function chargeMomentForFreshSites(rawFreshSites, { recordWork = true } = {}) {
@@ -15319,6 +15344,7 @@ function performOffLatticeEvent() {
   const before = { atoms: atoms.length, clusters: placedClusters.length, frontier: frontierCandidates.length,
     morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
     orientationalOrder: structuralOrientationalOrderSnapshot(), scattering: structuralScatteringSnapshot(),
+    chargeMoment: structuralChargeMomentSnapshot(),
     feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() };
   const batch = commutingFrontierBatch();
   if (!batch.length) {
@@ -15329,6 +15355,7 @@ function performOffLatticeEvent() {
         depth: Math.max(0, ...placedClusters.map((placement) => placement.depth || 0)),
         morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
         orientationalOrder: structuralOrientationalOrderSnapshot(), scattering: structuralScatteringSnapshot(),
+        chargeMoment: structuralChargeMomentSnapshot(),
         feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() },
       claimBoundary: "This is a certified finite structural fixed point. It is not equilibrium, a stopping time, or evidence that a physical interface cannot advance by an unmodeled mechanism." });
     pauseGrowth("Frontier exhausted: no learned overlap rule remains geometrically admissible.");
@@ -15494,6 +15521,7 @@ function performOffLatticeEvent() {
       depth: Math.max(0, ...placedClusters.map((placement) => placement.depth || 0)),
       morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
       orientationalOrder: structuralOrientationalOrderSnapshot(), scattering: structuralScatteringSnapshot(),
+      chargeMoment: structuralChargeMomentSnapshot(),
       feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() },
     claimBoundary: relaxation?.accepted
       ? "The accepted antichain is valid in every placement order. A bounded post-attachment constraint projection reduced the learned local contact-angle residual and re-passed every hard gate; it is not a force trajectory, energy minimization, probability, or physical elapsed time."
@@ -15507,6 +15535,7 @@ function performIceAnchorEvent() {
   const before = { atoms: atoms.length, clusters: acceptedDecisions,
     frontier: wave?.candidateAnchors || 0, morphology: structuralMorphologySnapshot(),
     orientationalOrder: structuralOrientationalOrderSnapshot(), scattering: structuralScatteringSnapshot(),
+    chargeMoment: structuralChargeMomentSnapshot(),
     interfaces: structuralInterfaceSnapshot(), feedstock: currentFeedstockSnapshot(),
     domain: currentGrowthDomainSnapshot() };
   if (!wave) {
@@ -15546,6 +15575,7 @@ function performIceAnchorEvent() {
         rejected: wave.rejectedCandidateAnchors, depth: wave.wave,
         morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
         orientationalOrder: structuralOrientationalOrderSnapshot(), scattering: structuralScatteringSnapshot(),
+        chargeMoment: structuralChargeMomentSnapshot(),
         feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() },
       claimBoundary: `The frozen ${iceAnchorTrace.portCount}-port grammar reaches a finite structural fixed point. Unresolved ${iceAnchorTrace.orientationSpecies} motion, proton/deuteron barriers, entropy, and physical stopping time are not modeled.` });
     growthStopReason = "Frozen molecular-port grammar reached its certified finite fixed point.";
@@ -15581,6 +15611,7 @@ function performIceAnchorEvent() {
       rejected: wave.rejectedCandidateAnchors, depth: wave.wave,
       morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
       orientationalOrder: structuralOrientationalOrderSnapshot(), scattering: structuralScatteringSnapshot(),
+      chargeMoment: structuralChargeMomentSnapshot(),
       feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() },
     claimBoundary: `The browser jumps to oxygen anchors shared by every surviving ${iceAnchorTrace.moleculeLabel} orientation domain. It does not integrate ${iceAnchorTrace.orientationSpecies} rearrangement, tunnelling, diffusion, relaxation, probability, or elapsed physical time.` });
   rebuildWorld();
@@ -16465,7 +16496,10 @@ function physicsTranslationRecords(leap = null) {
       encoding: formalChargeTarget?.available
         ? `${chargeMomentLabel()}; |p|/(Σ|q|Rrms) and ||Q||F/(Σ|q|Rrms²) about the geometric centroid, w=${activeChargeMomentWeight().toFixed(2)}`
         : "requires a complete explicitly supplied formal-charge channel",
-      evidence: leap ? `Accepted mean score ${receiptRound(acceptedChargeMomentScore / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedChargeMomentScore / Math.max(1, rejectedDecisions), 4)}; ${chargeMomentEvaluations.toLocaleString()} candidate evaluations over ${chargeMomentSitePresentations.toLocaleString()} site presentations.` : "No global charge-shape candidate evaluated yet.",
+      evidence: leap ? leap.before?.chargeMoment?.available && leap.after?.chargeMoment?.available
+        ? `This structural leap: p ${leap.before.chargeMoment.dipoleMagnitude.toFixed(4)} → ${leap.after.chargeMoment.dipoleMagnitude.toFixed(4)}; Q ${leap.before.chargeMoment.quadrupoleMagnitude.toFixed(4)} → ${leap.after.chargeMoment.quadrupoleMagnitude.toFixed(4)}. Accepted mean candidate score ${receiptRound(acceptedChargeMomentScore / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedChargeMomentScore / Math.max(1, rejectedDecisions), 4)}; ${chargeMomentEvaluations.toLocaleString()} evaluations.`
+        : `No complete supplied-charge moment exists for this structural state; ${chargeMomentEvaluations.toLocaleString()} candidate evaluations over ${chargeMomentSitePresentations.toLocaleString()} site presentations.`
+        : "No global charge-shape candidate evaluated yet.",
       boundary: "This is a translation-, proper-rotation-, and uniform-scale-invariant shape descriptor over supplied formal-charge labels. It uses no Coulomb kernel and is not electrostatic energy, polarization, dielectric screening, electric potential, charge transfer, electronic structure, force, rate, or physical time." },
     { id: "solute-partition", process: "solute partitioning / interfacial segregation", status: activeSolutePartitionWeight() > 0 ? "soft" : "open", role: activeSolutePartitionWeight() > 0 ? "species × spatial-field ordering" : "disabled",
       encoding: activeSolutePartitionWeight() > 0
@@ -16973,6 +17007,7 @@ function renderStructuralLeap(leap = null) {
   if (pipelineStage !== 4) return;
   const selected = leap || leapHistory[selectedLeapIndex] || null;
   renderMultiscaleOrderPathway();
+  renderChargeShapePortrait(policyComparisonHistory[selectedPolicySnapshotIndex] || lastPolicyComparison);
   leapHistoryElement.replaceChildren();
   leapHistory.slice(-8).forEach((entry, visibleIndex) => {
     const absoluteIndex = Math.max(0, leapHistory.length - 8) + visibleIndex;
@@ -16999,7 +17034,8 @@ function renderStructuralLeap(leap = null) {
       ["03 · certificate", "not evaluated", "geometry gates await one action"],
       ["04 · local symmetry", "not compared", "qℓ / |ψℓ| distributions await one leap"],
       ["05 · reciprocal structure", "not compared", "finite-observation S(q) awaits one leap"],
-      ["06 · after", "unchanged seed", "physical time unresolved"],
+      ["06 · global charge shape", "not compared", "supplied-charge moments await one leap"],
+      ["07 · after", "unchanged seed", "physical time unresolved"],
     ].forEach(([label, value, detail]) => {
       const card = document.createElement("article");
       const small = document.createElement("small"); small.textContent = label;
@@ -17029,12 +17065,21 @@ function renderStructuralLeap(leap = null) {
     reciprocal?.available
       ? `JS distance ${reciprocal.spectralShapeDistance.toFixed(3)} · q* ${reciprocal.peakQBefore.toFixed(2)} → ${reciprocal.peakQAfter.toFixed(2)} · peak prominence ${reciprocal.peakProminenceBefore.toFixed(2)} → ${reciprocal.peakProminenceAfter.toFixed(2)}`
       : reciprocal?.reason || "matching before/after geometric S(q) unavailable"]);
-  if (selected.relaxation) leapCards.push(["06 · local projection",
+  const chargeBefore = selected.before?.chargeMoment;
+  const chargeAfter = selected.after?.chargeMoment;
+  leapCards.push(["06 · global charge shape",
+    chargeBefore?.available && chargeAfter?.available
+      ? `p ${chargeBefore.dipoleMagnitude.toFixed(3)} → ${chargeAfter.dipoleMagnitude.toFixed(3)} · Q ${chargeBefore.quadrupoleMagnitude.toFixed(3)} → ${chargeAfter.quadrupoleMagnitude.toFixed(3)}`
+      : "supplied-charge moments unavailable",
+    chargeBefore?.available && chargeAfter?.available
+      ? "Translation-, proper-rotation-, and uniform-scale-invariant structural change; not electrostatic energy, polarization, or time."
+      : "A complete explicitly supplied formal-charge channel is required."]);
+  if (selected.relaxation) leapCards.push(["07 · local projection",
     selected.relaxation.accepted
       ? `strain ${selected.relaxation.strainBefore.toFixed(3)} → ${selected.relaxation.strainAfter.toFixed(3)}`
       : "rolled back · exact coordinates retained",
     `${selected.relaxation.movableSites} movable · max Δ ${selected.relaxation.maximumDisplacementAngstrom.toFixed(3)} Å · ${selected.relaxation.reason}`]);
-  leapCards.push([`${selected.relaxation ? "07" : "06"} · after`,
+  leapCards.push([`${selected.relaxation ? "08" : "07"} · after`,
     `${selected.after.atoms} atoms · ${selected.after.clusters} clusters`,
     `${selected.after.accepted} accepted · ${selected.after.rejected} rejected · causal depth ${selected.after.depth}`]);
   leapCards.forEach(([label, value, detail], index) => {
@@ -17045,7 +17090,7 @@ function renderStructuralLeap(leap = null) {
     const span = document.createElement("span"); span.textContent = detail;
     card.append(small, strong, span); leapFlow.append(card);
   });
-  leapClaimBoundary.textContent = `${selected.claimBoundary} Local qℓ / |ψℓ| and unit-weight geometric S(q) changes are rotation-invariant structural fingerprints, not phase-transition assignments, experimental diffraction intensities, latent heat, free-energy changes, rates, or clocks.`;
+  leapClaimBoundary.textContent = `${selected.claimBoundary} Local qℓ / |ψℓ| and unit-weight geometric S(q) changes are rotation-invariant structural fingerprints, not phase-transition assignments, experimental diffraction intensities, latent heat, free-energy changes, rates, or clocks. Supplied-charge dipole/quadrupole changes are translation-, proper-rotation-, and uniform-scale-invariant structural fingerprints, not electrostatic energy, polarization, dielectric response, charge transfer, electronic structure, force, rate, or physical time.`;
 }
 
 function radiallyStratifiedIndices(source, candidateIndices, maximumCenters) {
@@ -18148,6 +18193,31 @@ function renderChargeShapePortrait(snapshot) {
     chargeShapePortrait.append(make("line", { x1: left, y1: top + height * (1 - fraction),
       x2: left + width, y2: top + height * (1 - fraction), class: "grid" }));
   });
+  if (portrait.history.length > 1) chargeShapePortrait.append(make("polyline", {
+    points: portrait.history.map((state) => `${px(state.signature.dipoleMagnitude)},${py(state.signature.quadrupoleMagnitude)}`).join(" "),
+    class: "executed-path" }));
+  portrait.history.forEach((state) => {
+    const circle = make("circle", { cx: px(state.signature.dipoleMagnitude),
+      cy: py(state.signature.quadrupoleMagnitude), r: state.leapIndex < 0 ? 3.6 : 3.2,
+      class: `executed-state ${state.status}${state.leapIndex === selectedLeapIndex ? " selected" : ""}`,
+      tabindex: state.leapIndex < 0 ? -1 : 0, role: state.leapIndex < 0 ? "img" : "button",
+      "aria-label": `${state.label}: normalized dipole ${state.signature.dipoleMagnitude.toFixed(4)}; normalized quadrupole ${state.signature.quadrupoleMagnitude.toFixed(4)}; ${state.status}` });
+    const title = make("title");
+    title.textContent = `${state.label} · ${state.status} · p ${state.signature.dipoleMagnitude.toFixed(5)} · Q ${state.signature.quadrupoleMagnitude.toFixed(5)} · structural index, not physical time`;
+    circle.append(title);
+    if (state.leapIndex >= 0) {
+      const selectState = () => {
+        selectedLeapIndex = state.leapIndex;
+        renderStructuralLeap(leapHistory[selectedLeapIndex]);
+        renderChargeShapePortrait(snapshot);
+      };
+      circle.addEventListener("click", selectState);
+      circle.addEventListener("keydown", (event) => {
+        if (["Enter", " "].includes(event.key)) { event.preventDefault(); selectState(); }
+      });
+    }
+    chargeShapePortrait.append(circle);
+  });
   portrait.points.forEach((point) => {
     const direction = point.score >= 0 ? "improve" : "worsen";
     chargeShapePortrait.append(make("line", { x1: px(point.before.dipoleMagnitude),
@@ -18188,7 +18258,7 @@ function renderChargeShapePortrait(snapshot) {
     quadrupole.textContent = `quadrupole ${selected.before.quadrupoleMagnitude.toFixed(4)} → ${selected.after.quadrupoleMagnitude.toFixed(4)} · component ${selected.quadrupoleScore >= 0 ? "+" : ""}${selected.quadrupoleScore.toFixed(4)}`;
     chargeShapePortraitDetail.append(heading, score, dipole, quadrupole);
   }
-  chargeShapePortraitState.textContent = `${portrait.points.length} exact candidate${portrait.points.length === 1 ? "" : "s"} · ${portrait.candidateSetDigest} · target-free`;
+  chargeShapePortraitState.textContent = `${portrait.points.length} exact candidate${portrait.points.length === 1 ? "" : "s"} · ${portrait.history.length} executed state${portrait.history.length === 1 ? "" : "s"} · ${portrait.candidateSetDigest} · target-free`;
 }
 
 function renderPolicyWorkbenchState(snapshot, workbench = buildPolicyWorkbench(snapshot)) {
