@@ -9,8 +9,8 @@ DOCS = (ROOT / "docs/projects/materials-recursive-gcts-benchmark.md").read_text(
 
 
 def test_centrosymmetry_is_frozen_through_leaps_receipts_notebook_and_ledger():
-    assert 'buildId: "20260826-166"' in APP
-    assert 'app.js?v=20260826-166' in HTML
+    assert 'buildId: "20260826-167"' in APP
+    assert 'app.js?v=20260826-167' in HTML
     assert "function structuralCentrosymmetrySnapshot" in APP
     assert "function centrosymmetryTransition" in APP
     assert "frozen.centrosymmetryTransition = centrosymmetryTransition" in APP

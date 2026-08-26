@@ -65,9 +65,9 @@ def test_claim_boundary_does_not_turn_structure_differences_into_dynamics():
         assert token in APP
 
 
-def test_build_114_is_cache_busted():
-    assert 'buildId: "20260826-166"' in APP
-    assert 'app.js?v=20260826-166' in HTML
+def test_build_167_is_cache_busted():
+    assert 'buildId: "20260826-167"' in APP
+    assert 'app.js?v=20260826-167' in HTML
 
 
 if __name__ == "__main__":

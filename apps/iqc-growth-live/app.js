@@ -10,7 +10,7 @@ import {
   validateStructure,
 } from "./structure-io.js?v=20260826-7";
 import { randomNomadStructure } from "./structure-database.js?v=20260826-5";
-import { bestAffineNeighborhoodResidual } from "./relaxation-local-environment.js?v=20260825-1";
+import { bestAffineNeighborhoodResidual } from "./relaxation-local-environment.js?v=20260826-2";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -432,6 +432,7 @@ const relaxationDisplacementToggle = $("relaxationDisplacementToggle");
 const relaxationDisplacementToggleLabel = $("relaxationDisplacementToggleLabel");
 const relaxationLocalEnvironmentToggle = $("relaxationLocalEnvironmentToggle");
 const relaxationLocalEnvironmentToggleLabel = $("relaxationLocalEnvironmentToggleLabel");
+const relaxationLocalEnvironmentMetric = $("relaxationLocalEnvironmentMetric");
 const rotateToggle = $("rotateToggle");
 const downloadReceiptButton = $("downloadReceiptButton");
 const copyReceiptButton = $("copyReceiptButton");
@@ -1685,13 +1686,32 @@ function relaxationLocalEnvironmentField() {
     records.push({ sourceIndex: center, species: occupancyChemistryToken(source.atoms[center]),
       neighborCount: local.length, d2MinAngstromSquared,
       rootD2MinAngstrom: Math.sqrt(Math.max(0, d2MinAngstromSquared)),
+      normalizedRootD2Min: fit.normalizedRootD2Min,
+      bestAffine: fit.bestAffine,
+      fullRankSource: fit.fullRankSource,
+      normalizedSourceMomentDeterminant: fit.normalizedSourceMomentDeterminant,
+      deformationGradientDeterminant: fit.deformationGradientDeterminant,
+      localVolumeChangeFraction: fit.localVolumeChangeFraction,
+      meanNormalGreenLagrangeStrain: fit.meanNormalGreenLagrangeStrain,
+      deviatoricGreenLagrangeMagnitude: fit.deviatoricGreenLagrangeMagnitude,
+      equivalentShearStrain: fit.equivalentShearStrain,
+      orientationPreserving: fit.orientationPreserving,
       sourceNeighborIndices, targetNeighborIndices, sourceNeighborIdentities, targetNeighborIdentities,
       lostNeighborIndices, gainedNeighborIndices,
       neighborPersistenceFraction: 1 - lostNeighborIndices.length / neighborCount });
   }
   const ordered = records.map((record) => record.rootD2MinAngstrom).sort((first, second) => first - second);
-  const percentile = (fraction) => ordered[Math.min(ordered.length - 1,
-    Math.max(0, Math.round(fraction * (ordered.length - 1))))] || 0;
+  const percentileOf = (values, fraction) => {
+    const sorted = values.filter(Number.isFinite).sort((first, second) => first - second);
+    return sorted[Math.min(sorted.length - 1,
+      Math.max(0, Math.round(fraction * (sorted.length - 1))))] || 0;
+  };
+  const percentile = (fraction) => percentileOf(ordered, fraction);
+  const affineResolved = records.filter((record) => record.fullRankSource
+    && Number.isFinite(record.equivalentShearStrain) && Number.isFinite(record.localVolumeChangeFraction));
+  const equivalentShear = affineResolved.map((record) => record.equivalentShearStrain);
+  const localVolumeChange = affineResolved.map((record) => record.localVolumeChangeFraction);
+  const absoluteLocalVolumeChange = localVolumeChange.map(Math.abs);
   const lostPairSet = new Set(); const gainedPairSet = new Set();
   records.forEach((record) => {
     record.lostNeighborIndices.forEach((neighbor) => lostPairSet.add(
@@ -1709,6 +1729,16 @@ function relaxationLocalEnvironmentField() {
     medianRootD2MinAngstrom: percentile(.5),
     percentile90RootD2MinAngstrom: percentile(.9),
     maximumRootD2MinAngstrom: ordered.at(-1) || 0,
+    affineResolvedCenters: affineResolved.length,
+    affineResolvedFraction: affineResolved.length / Math.max(1, records.length),
+    rankDeficientCenters: records.length - affineResolved.length,
+    meanEquivalentShearStrain: equivalentShear.reduce((sum, value) => sum + value, 0)
+      / Math.max(1, equivalentShear.length),
+    percentile90EquivalentShearStrain: percentileOf(equivalentShear, .9),
+    meanLocalVolumeChangeFraction: localVolumeChange.reduce((sum, value) => sum + value, 0)
+      / Math.max(1, localVolumeChange.length),
+    percentile90AbsoluteLocalVolumeChangeFraction: percentileOf(absoluteLocalVolumeChange, .9),
+    orientationReversingCenters: affineResolved.filter((record) => !record.orientationPreserving).length,
     meanNeighborPersistenceFraction: records.reduce((sum, record) => sum
       + record.neighborPersistenceFraction, 0) / records.length,
     changedAtomCount: records.filter((record) => record.lostNeighborIndices.length > 0).length,
@@ -1718,8 +1748,12 @@ function relaxationLocalEnvironmentField() {
     uniqueGainedNeighborPairs: gainedPairs.length,
     lostNeighborPairs: lostPairs.map(decodePair),
     gainedNeighborPairs: gainedPairs.map(decodePair),
-    definition: "square root of mean residual after a regularized per-site best-affine fit from selected-frame neighbor vectors to final-frame neighbor vectors",
+    definition: "per-site least-squares deformation gradient from selected-frame neighbor vectors to their final-frame counterparts; Green–Lagrange deviatoric strain is the coherent component and square root of D²min is the residual RMS",
+    affineInvariantDefinition: "E = (FᵀF − I)/2; displayed shear is sqrt(2 Edev:Edev / 3); dilation is det(F) − 1",
     neighborIdentityDefinition: "identity overlap of the fixed 12-nearest periodic minimum-image neighbor ranking in selected and final structures; geometric adjacency only, not bond order",
+    rankDeficiencyPolicy: "3D affine strain is withheld when the unregularized source-neighbor moment does not span three dimensions; D²min remains available",
+    provenance: { authors: "Falk & Langer", year: 1998, doi: "10.1103/PhysRevE.57.7192",
+      role: "best-affine local-environment residual definition" },
     physicalTimeUsed: false,
   };
   relaxationLocalEnvironmentCache = { structure: importedStructure, frameIndex: importedFrameIndex, result };
@@ -1892,7 +1926,7 @@ function renderRelaxationSequence(frames, relaxation) {
       : "Selected-to-final displacement is unavailable for this sequence.";
   const localEnvironment = relaxationLocalEnvironmentField();
   relaxationLocalEnvironmentState.textContent = localEnvironment
-    ? `Local ${localEnvironment.neighborCount}-neighbor best-affine fit: median √D²min ${localEnvironment.medianRootD2MinAngstrom.toFixed(3)} Å · p90 ${localEnvironment.percentile90RootD2MinAngstrom.toFixed(3)} Å · max ${localEnvironment.maximumRootD2MinAngstrom.toFixed(3)} Å · neighbor identity ${(100 * localEnvironment.meanNeighborPersistenceFraction).toFixed(1)}% persistent (${localEnvironment.changedAtomCount}/${localEnvironment.records.length} cages changed).`
+    ? `Local ${localEnvironment.neighborCount}-neighbor deformation microscope: median √D²min ${localEnvironment.medianRootD2MinAngstrom.toFixed(3)} Å · p90 ${localEnvironment.percentile90RootD2MinAngstrom.toFixed(3)} Å · coherent Edev p90 ${localEnvironment.percentile90EquivalentShearStrain.toFixed(3)} · mean ΔV ${(100 * localEnvironment.meanLocalVolumeChangeFraction).toFixed(2)}% · ${localEnvironment.affineResolvedCenters}/${localEnvironment.records.length} full-rank cages · neighbor identity ${(100 * localEnvironment.meanNeighborPersistenceFraction).toFixed(1)}% persistent.`
     : "Local best-affine neighborhood residual is unavailable for the selected state.";
   relaxationSequenceChart.setAttribute("aria-label", `${frames.length} ordered archived relaxation snapshots; ${energies.length} have energy and ${availableForceFrames} have complete residual forces; snapshot ${importedFrameIndex + 1} selected`);
 }
@@ -6993,6 +7027,16 @@ async function buildExperimentReceipt() {
   const relaxationLocalEnvironmentRecords = relaxationLocalEnvironment?.records.map((record) => ({
     sourceIndex: record.sourceIndex, species: record.species, neighborCount: record.neighborCount,
     d2MinAngstromSquared: receiptRound(record.d2MinAngstromSquared, 10),
+    normalizedRootD2Min: receiptRound(record.normalizedRootD2Min, 10),
+    bestAffine: record.bestAffine.map((row) => row.map((value) => receiptRound(value, 10))),
+    fullRankSource: record.fullRankSource,
+    normalizedSourceMomentDeterminant: receiptRound(record.normalizedSourceMomentDeterminant, 10),
+    deformationGradientDeterminant: record.deformationGradientDeterminant === null
+      ? null : receiptRound(record.deformationGradientDeterminant, 10),
+    localVolumeChangeFraction: record.localVolumeChangeFraction === null
+      ? null : receiptRound(record.localVolumeChangeFraction, 10),
+    equivalentShearStrain: record.equivalentShearStrain === null
+      ? null : receiptRound(record.equivalentShearStrain, 10),
     sourceNeighborIndices: record.sourceNeighborIndices,
     targetNeighborIndices: record.targetNeighborIndices,
     sourceNeighborIdentities: record.sourceNeighborIdentities,
@@ -7005,7 +7049,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-166",
+      buildId: "20260826-167",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7174,9 +7218,21 @@ async function buildExperimentReceipt() {
           atomCount: relaxationLocalEnvironment.records.length,
           neighborCount: relaxationLocalEnvironment.neighborCount,
           definition: relaxationLocalEnvironment.definition,
+          affineInvariantDefinition: relaxationLocalEnvironment.affineInvariantDefinition,
+          rankDeficiencyPolicy: relaxationLocalEnvironment.rankDeficiencyPolicy,
+          provenance: relaxationLocalEnvironment.provenance,
           medianRootD2MinAngstrom: receiptRound(relaxationLocalEnvironment.medianRootD2MinAngstrom),
           percentile90RootD2MinAngstrom: receiptRound(relaxationLocalEnvironment.percentile90RootD2MinAngstrom),
           maximumRootD2MinAngstrom: receiptRound(relaxationLocalEnvironment.maximumRootD2MinAngstrom),
+          affineResolvedCenters: relaxationLocalEnvironment.affineResolvedCenters,
+          affineResolvedFraction: receiptRound(relaxationLocalEnvironment.affineResolvedFraction),
+          rankDeficientCenters: relaxationLocalEnvironment.rankDeficientCenters,
+          meanEquivalentShearStrain: receiptRound(relaxationLocalEnvironment.meanEquivalentShearStrain),
+          percentile90EquivalentShearStrain: receiptRound(relaxationLocalEnvironment.percentile90EquivalentShearStrain),
+          meanLocalVolumeChangeFraction: receiptRound(relaxationLocalEnvironment.meanLocalVolumeChangeFraction),
+          percentile90AbsoluteLocalVolumeChangeFraction: receiptRound(
+            relaxationLocalEnvironment.percentile90AbsoluteLocalVolumeChangeFraction),
+          orientationReversingCenters: relaxationLocalEnvironment.orientationReversingCenters,
           neighborIdentityDefinition: relaxationLocalEnvironment.neighborIdentityDefinition,
           meanNeighborPersistenceFraction: receiptRound(relaxationLocalEnvironment.meanNeighborPersistenceFraction),
           changedAtomCount: relaxationLocalEnvironment.changedAtomCount,
@@ -15328,9 +15384,10 @@ function syncStageOptions() {
     : "Selected → final displacement · unavailable";
   const localEnvironment = relaxationLocalEnvironmentField();
   relaxationLocalEnvironmentToggle.disabled = !localEnvironment;
+  relaxationLocalEnvironmentMetric.disabled = !localEnvironment;
   relaxationLocalEnvironmentToggleLabel.textContent = localEnvironment
-    ? `Local rearrangement √D²min + kNN exchange · p90 ${localEnvironment.percentile90RootD2MinAngstrom.toFixed(3)} Å`
-    : "Local rearrangement √D²min · unavailable";
+    ? `Local deformation F + √D²min + kNN exchange · ${localEnvironment.affineResolvedCenters}/${localEnvironment.records.length} strain-resolved`
+    : "Local deformation microscope · unavailable";
   externalDriveBadge.hidden = pipelineStage !== 4 || externalDriveMode === "none";
   externalDriveBadgeLabel.textContent = externalDriveModeLabel();
   externalDriveGlyph.textContent = ({ "z-plus": "↑", "z-minus": "↓",
@@ -17176,19 +17233,34 @@ function rebuildWorld() {
     });
     const visible = relaxationLocalEnvironment.records
       .map((record) => ({ record, atom: atomBySourceIndex.get(record.sourceIndex) }))
-      .filter((entry) => entry.atom);
+      .filter((entry) => entry.atom && (relaxationLocalEnvironmentMetric.value === "nonaffine"
+        || relaxationLocalEnvironmentMetric.value === "neighbor" || entry.record.fullRankSource));
     if (visible.length) {
       const geometry = new THREE.IcosahedronGeometry(.27, 1);
       const material = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true,
         transparent: true, opacity: .44, depthWrite: false });
       const halos = new THREE.InstancedMesh(geometry, material, visible.length);
-      const scale = Math.max(1e-12, relaxationLocalEnvironment.percentile90RootD2MinAngstrom);
+      const metric = relaxationLocalEnvironmentMetric.value;
+      const valueFor = (record) => metric === "shear" ? record.equivalentShearStrain
+        : metric === "dilation" ? record.localVolumeChangeFraction
+          : metric === "neighbor" ? 1 - record.neighborPersistenceFraction : record.rootD2MinAngstrom;
+      const scale = Math.max(1e-12, metric === "shear"
+        ? relaxationLocalEnvironment.percentile90EquivalentShearStrain
+        : metric === "dilation" ? relaxationLocalEnvironment.percentile90AbsoluteLocalVolumeChangeFraction
+          : metric === "neighbor" ? 1 : relaxationLocalEnvironment.percentile90RootD2MinAngstrom);
+      const lowColor = new THREE.Color(0x65e1bc); const middleColor = new THREE.Color(0xffc169);
+      const highColor = new THREE.Color(0xff6d71); const compressionColor = new THREE.Color(0x55c8ff);
       visible.forEach(({ record, atom }, index) => {
-        const relative = Math.max(0, Math.min(1, record.rootD2MinAngstrom / scale));
+        const value = valueFor(record);
+        const relative = Math.max(0, Math.min(1, Math.abs(value) / scale));
         dummy.position.copy(atom.p); dummy.rotation.set(0, 0, 0);
         dummy.scale.setScalar(.72 + .92 * Math.sqrt(relative)); dummy.updateMatrix();
         halos.setMatrixAt(index, dummy.matrix);
-        halos.setColorAt(index, new THREE.Color().setHSL(.53 + .35 * relative, .78, .58));
+        const color = metric === "dilation" && value < 0
+          ? lowColor.clone().lerp(compressionColor, relative)
+          : relative < .5 ? lowColor.clone().lerp(middleColor, relative * 2)
+            : middleColor.clone().lerp(highColor, relative * 2 - 1);
+        halos.setColorAt(index, color);
       });
       halos.instanceMatrix.needsUpdate = true;
       if (halos.instanceColor) halos.instanceColor.needsUpdate = true;
@@ -17528,12 +17600,12 @@ function physicsTranslationRecords(leap = null) {
       boundary: "The displacement field is a difference between archived structures, not a physical path. Archive order is not physical elapsed time. No velocity, integration step, optimizer clock, minimum-energy path, transition probability, or growth rate is inferred; energies are compared only within this one same-method archived sequence." },
     { id: "local-rearrangement", process: "localized rearrangement / environment change", status: relaxationLocalEnvironment ? "observed" : "unavailable", role: relaxationLocalEnvironment ? "archived structural-difference diagnostic" : "no paired local environments",
       encoding: relaxationLocalEnvironment
-        ? `${relaxationLocalEnvironment.neighborCount}-neighbor periodic minimum-image vectors; one regularized best-affine map per site; √D²min is the RMS residual in Å; selected/final kNN identity sets expose geometric neighbor exchange`
+        ? `${relaxationLocalEnvironment.neighborCount}-neighbor periodic minimum-image vectors; one Falk–Langer best-affine F per site; E=(FᵀF−I)/2 separates coherent deviatoric deformation from √D²min residual motion; selected/final kNN identity sets expose geometric neighbor exchange`
         : "no selected-to-final fixed-topology pair is available",
       evidence: relaxationLocalEnvironment
-        ? `Median √D²min ${relaxationLocalEnvironment.medianRootD2MinAngstrom.toFixed(3)} Å; p90 ${relaxationLocalEnvironment.percentile90RootD2MinAngstrom.toFixed(3)} Å; ${(100 * relaxationLocalEnvironment.meanNeighborPersistenceFraction).toFixed(1)}% directed-neighbor persistence; ${relaxationLocalEnvironment.uniqueLostNeighborPairs} lost and ${relaxationLocalEnvironment.uniqueGainedNeighborPairs} gained undirected kNN relations.`
+        ? `Median √D²min ${relaxationLocalEnvironment.medianRootD2MinAngstrom.toFixed(3)} Å; p90 ${relaxationLocalEnvironment.percentile90RootD2MinAngstrom.toFixed(3)} Å; coherent shear p90 ${relaxationLocalEnvironment.percentile90EquivalentShearStrain.toFixed(3)}; mean local det(F)−1 ${(100 * relaxationLocalEnvironment.meanLocalVolumeChangeFraction).toFixed(2)}%; ${relaxationLocalEnvironment.affineResolvedCenters}/${relaxationLocalEnvironment.records.length} full-rank cages; ${(100 * relaxationLocalEnvironment.meanNeighborPersistenceFraction).toFixed(1)}% directed-neighbor persistence.`
         : "No atom-resolved local rearrangement field is available.",
-      boundary: "D²min and kNN identity exchange are kinematic differences between two archived configurations. A nearest-neighbor ranking is not a chemical bond graph. Neither channel is plastic strain, a defect label, activation energy, mobility, a transition pathway, or elapsed time, and neither ranks or admits growth." },
+      boundary: "F, Green–Lagrange invariants, D²min, and kNN exchange are kinematic differences between two archived configurations. Rank-deficient cages withhold 3D strain. A nearest-neighbor ranking is not a chemical bond graph. These channels are not stress, elastic energy, modulus, plastic-strain identity, a defect label, activation energy, mobility, a transition pathway, or elapsed time, and none ranks or admits growth." },
     { id: "local-symmetry", process: "local orientational-symmetry evolution",
       status: localSymmetry?.available ? "observed" : "unavailable",
       role: localSymmetry?.available ? "post-leap structural fingerprint" : "awaiting paired local-order distributions",
@@ -21414,6 +21486,7 @@ mdScalingSelect.addEventListener("change", () => {
 [markingToggle, bondToggle, frontierToggle, forceToggle, relaxationDisplacementToggle,
   relaxationLocalEnvironmentToggle]
   .forEach((input) => input.addEventListener("change", rebuildWorld));
+relaxationLocalEnvironmentMetric.addEventListener("change", rebuildWorld);
 rotateToggle.addEventListener("change", () => { controls.autoRotate = rotateToggle.checked; });
 coordClearButton.addEventListener("click", () => selectCoordination(coordinationSelection));
 rdfPairSelect.addEventListener("change", () => {

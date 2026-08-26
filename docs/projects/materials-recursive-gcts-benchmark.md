@@ -5534,3 +5534,27 @@ The distribution and three-dimensional halo are linked: a histogram bin isolates
 The reference configuration now freezes one dimension-appropriate complete-shell choice for every growth-state comparison. Each retained before/after state carries the same exact-pairing centrosymmetry histogram and aggregate statistics; the leap certificate derives a Jensen–Shannon distance, mean and p90 changes, high-asymmetry-fraction change, and resolved-shell accounting. This makes the display reproducible across leap-frogged structural states without treating the discrete search index as elapsed time.
 
 Receipts, compact notebook trajectories, the interactive leap inspector, and the geometry-as-physics ledger all carry this evidence. The pathway remains a post-hoc validation channel and is never exposed to the growth ranker. A change in centrosymmetry is defect-sensitive evidence, but it is not a vacancy, interstitial, antisite, stacking-fault, dislocation, grain-boundary, stress, energy, temperature, transition-rate, or phase-transition assignment.
+
+## Build 167: coherent local deformation is separated from non-affine motion
+
+The imported fixed-topology ensemble now retains the complete per-site
+least-squares deformation audit rather than only its residual. Twelve paired
+minimum-image neighbor vectors determine the best local `F`; the portal derives
+`E=(FᵀF−I)/2`, the equivalent deviatoric invariant
+`sqrt(2 Edev:Edev / 3)`, signed volume change `det(F)−1`, physical and
+scale-normalized `√D²min`, and selected/final nearest-neighbor identity change.
+The best-affine residual is traced to Falk and Langer,
+[doi:10.1103/PhysRevE.57.7192](https://doi.org/10.1103/PhysRevE.57.7192).
+
+An interactive four-mode halo renders residual motion, coherent shear, signed
+dilation, or cage exchange on the atom scene. The receipt hashes the complete
+fitted local records, reports full-rank and withheld cages separately, and does
+not embed coordinates or tensors. An unregularized source-moment rank test is
+mandatory: regularization may stabilize `D²min` for planar data, but it may not
+authorize a three-dimensional strain value.
+
+This closes a geometric-observation gap only. No constitutive law converts the
+invariants into stress, energy, modulus, plasticity, defect identity, barrier,
+mobility, trajectory, growth rate, or physical time. The analysis is excluded
+from clustering, marking learning, candidate generation, ranking, and hard
+admission.

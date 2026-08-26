@@ -1321,6 +1321,12 @@
             <label><input id="forceToggle" type="checkbox" checked disabled><span id="forceToggleLabel">Residual forces · unavailable</span></label>
             <label><input id="relaxationDisplacementToggle" type="checkbox" checked disabled><span id="relaxationDisplacementToggleLabel">Selected → final displacement · unavailable</span></label>
             <label><input id="relaxationLocalEnvironmentToggle" type="checkbox" checked disabled><span id="relaxationLocalEnvironmentToggleLabel">Local rearrangement √D²min · unavailable</span></label>
+            <label class="local-deformation-layer"><span>Local deformation color</span><select id="relaxationLocalEnvironmentMetric" aria-label="Local deformation halo observable" disabled>
+              <option value="nonaffine">non-affine residual · √D²min</option>
+              <option value="shear">coherent deviatoric strain · Edev</option>
+              <option value="dilation">local volume change · det F − 1</option>
+              <option value="neighbor">neighbor exchange · 1 − persistence</option>
+            </select></label>
             <label><input id="rotateToggle" type="checkbox" checked><span>Auto rotate</span></label>
           </div>
         </section>
@@ -1657,7 +1663,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260826-166"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
+  <script type="module" src="./app.js?v=20260826-167"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260826-9"></script>
 </body>
 </html>

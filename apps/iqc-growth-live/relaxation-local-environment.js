@@ -23,6 +23,75 @@ function multiply(first, second) {
     (sum, value, inner) => sum + value * second[inner][column], 0)));
 }
 
+function transpose(matrix) {
+  return matrix[0].map((_, column) => matrix.map((row) => row[column]));
+}
+
+function determinant3(matrix) {
+  const [[a, b, c], [d, e, f], [g, h, i]] = matrix;
+  return a * (e * i - f * h) - b * (d * i - f * g) + c * (d * h - e * g);
+}
+
+function frobeniusSquared(matrix) {
+  return matrix.flat().reduce((sum, value) => sum + value * value, 0);
+}
+
+/**
+ * Rotation-invariant finite-strain scalars derived from a local deformation
+ * gradient.  Full 3D strain is intentionally withheld when the source
+ * neighborhood does not span 3D: regularization can stabilize D²min for a
+ * planar shell, but it cannot supply the missing out-of-plane deformation.
+ */
+export function affineDeformationInvariants(bestAffine, sourceVectors) {
+  if (!Array.isArray(bestAffine) || bestAffine.length !== 3
+      || !bestAffine.every((row) => Array.isArray(row) && row.length === 3 && row.every(Number.isFinite))
+      || !Array.isArray(sourceVectors) || !sourceVectors.length || !sourceVectors.every(finiteVector)) {
+    throw new Error("affine deformation invariants need a finite 3x3 map and finite source vectors");
+  }
+  const sourceMoment = Array.from({ length: 3 }, () => [0, 0, 0]);
+  sourceVectors.forEach((source) => {
+    for (let row = 0; row < 3; row++) for (let column = 0; column < 3; column++) {
+      sourceMoment[row][column] += source[row] * source[column];
+    }
+  });
+  const sourceTrace = sourceMoment[0][0] + sourceMoment[1][1] + sourceMoment[2][2];
+  const normalizedSourceMomentDeterminant = sourceTrace > 0
+    ? determinant3(sourceMoment) / ((sourceTrace / 3) ** 3) : 0;
+  const fullRankSource = Number.isFinite(normalizedSourceMomentDeterminant)
+    && normalizedSourceMomentDeterminant > 1e-8;
+  const deformationGradientDeterminant = determinant3(bestAffine);
+  if (!fullRankSource) return {
+    sourceMeanSquaredRadius: sourceTrace / sourceVectors.length,
+    normalizedSourceMomentDeterminant,
+    fullRankSource: false,
+    deformationGradientDeterminant: null,
+    localVolumeChangeFraction: null,
+    meanNormalGreenLagrangeStrain: null,
+    deviatoricGreenLagrangeMagnitude: null,
+    equivalentShearStrain: null,
+    orientationPreserving: null,
+  };
+  const rightCauchyGreen = multiply(transpose(bestAffine), bestAffine);
+  const greenLagrange = rightCauchyGreen.map((row, rowIndex) => row.map((value, columnIndex) =>
+    .5 * (value - Number(rowIndex === columnIndex))));
+  const trace = greenLagrange[0][0] + greenLagrange[1][1] + greenLagrange[2][2];
+  const meanNormal = trace / 3;
+  const deviatoric = greenLagrange.map((row, rowIndex) => row.map((value, columnIndex) =>
+    value - (rowIndex === columnIndex ? meanNormal : 0)));
+  const deviatoricSquared = frobeniusSquared(deviatoric);
+  return {
+    sourceMeanSquaredRadius: sourceTrace / sourceVectors.length,
+    normalizedSourceMomentDeterminant,
+    fullRankSource: true,
+    deformationGradientDeterminant,
+    localVolumeChangeFraction: deformationGradientDeterminant - 1,
+    meanNormalGreenLagrangeStrain: meanNormal,
+    deviatoricGreenLagrangeMagnitude: Math.sqrt(Math.max(0, deviatoricSquared)),
+    equivalentShearStrain: Math.sqrt(Math.max(0, 2 * deviatoricSquared / 3)),
+    orientationPreserving: deformationGradientDeterminant > 0,
+  };
+}
+
 function apply(matrix, vector) {
   return matrix.map((row) => row.reduce((sum, value, index) => sum + value * vector[index], 0));
 }
@@ -51,6 +120,9 @@ export function bestAffineNeighborhoodResidual(sourceVectors, targetVectors, reg
     return sum + predicted.reduce((residual, value, axis) => residual
       + (value - targetVectors[sample][axis]) ** 2, 0);
   }, 0) / sourceVectors.length;
+  const deformation = affineDeformationInvariants(bestAffine, sourceVectors);
+  const rootD2Min = Math.sqrt(Math.max(0, d2Min));
   return { bestAffine, d2Min, rootD2Min: Math.sqrt(Math.max(0, d2Min)),
-    neighborCount: sourceVectors.length, regularizer };
+    normalizedRootD2Min: rootD2Min / Math.sqrt(Math.max(1e-30, deformation.sourceMeanSquaredRadius)),
+    neighborCount: sourceVectors.length, regularizer, ...deformation };
 }

@@ -4875,3 +4875,28 @@ The implementation follows the centrosymmetry parameter introduced by Kelchner, 
 The defect-sensitive microscope now survives the same reproducibility path as the rest of the growth evidence. Every retained material-growth leap freezes a centrosymmetry snapshot on a shell inferred once from the reference configuration, so before/after distributions remain comparable even when the visible structure changes. The certificate reports mean and 90th-percentile inversion asymmetry, high-asymmetry fraction, resolved and unresolved centers, and a Jensen–Shannon distribution distance.
 
 Experiment receipts preserve the selected microscope shell and map state, while saved notebook trajectories can plot either mean inversion asymmetry or its leap-to-leap distribution shift. A dedicated physics-ledger row links the measurement, exact pairing, structural evidence, and claim boundary. These records remain post-hoc and target-blind: they never alter cluster identification, marking learning, candidate generation, ranking, or admission, and they do not name a defect or infer formation energy, stress, temperature, kinetics, or physical time.
+
+### Build 167 · local affine-deformation microscope
+
+Paired imported relaxation snapshots now expose the part of each local
+environment change that one affine deformation can explain separately from
+the residual rearrangement. For every atom, the portal fits a deformation
+gradient `F` from 12 paired periodic minimum-image neighbor vectors, evaluates
+the Green–Lagrange tensor `E=(FᵀF−I)/2`, and reports the rotation-invariant
+equivalent deviatoric strain, `det(F)−1` local dilation, normalized and physical
+`√D²min`, and neighbor-identity persistence. The definition follows Falk and
+Langer ([Phys. Rev. E 57, 7192 (1998)](https://doi.org/10.1103/PhysRevE.57.7192)).
+
+The layer control can color full-rank local cages by non-affine residual,
+coherent shear, signed dilation, or neighbor exchange while keeping standard
+element colors visible. Planar, collinear, or otherwise rank-deficient source
+shells retain `D²min` but explicitly withhold three-dimensional strain rather
+than allowing numerical regularization to invent a missing direction. Receipts
+hash every fitted map and preserve aggregate strain/residual evidence without
+embedding the maps or coordinates.
+
+These are kinematic differences between two supplied archived structures. They
+are not stress, elastic energy, modulus, a plastic-strain or named-defect
+assignment, a minimum-energy path, activation barrier, mobility, kinetics, or
+elapsed time. The microscope is post-hoc and never changes the cluster cover,
+marking, frozen candidate set, branch ranking, or hard admission.

@@ -186,10 +186,10 @@ const PHYSICS_MAP = {
   },
   defects: {
     status: "proved", label: "voids + defects", title: "Missing space remains an explicit geometric object",
-    physical: "Voids, interstitial boundaries, vacancies, incomplete crop boundaries, layer separation, and local incompatibilities.",
-    geometric: "Uncovered connected components become residual clusters; ring and void boundaries become support types; failed overlap, species, and exclusion tests become explicit rejection evidence.",
-    growth: "The search cannot silently drop uncovered atoms or accept a partial child as a complete cluster. Shared sites may satisfy multiple cover obligations exactly once.",
-    boundary: "A residual guarantees complete representation, not compression or physical stability. Defect formation energies and relaxation remain outside the current engine.",
+    physical: "Voids, interstitial boundaries, vacancies, incomplete crop boundaries, layer separation, local incompatibilities, and localized coherent/non-affine deformation between supplied snapshots.",
+    geometric: "Uncovered connected components become residual clusters; failed overlap tests become rejection evidence. For paired fixed-topology structures, a per-site Falk–Langer affine map separates Green–Lagrange shear/dilation from √D²min residual motion and kNN exchange.",
+    growth: "The search cannot silently drop uncovered atoms or accept a partial child as complete. The deformation microscope is posthoc: it colors full-rank cages by coherent shear, dilation, residual motion, or neighbor exchange without changing a branch.",
+    boundary: "A residual guarantees complete representation, not stability. Local F and D²min are kinematic snapshot differences—not stress, modulus, elastic or defect energy, plasticity identity, kinetics, or time. Rank-deficient cages withhold 3D strain.",
     systems: [
       ["NaCl", "Crop and cover boundaries", "Exact residual terminals", "No defect thermodynamics"],
       ["H₂O ice", "O₆ interstitial ring regions", "33 Ih / 39 Ic gap-boundary classes", "No vacancy relaxation"],
@@ -201,7 +201,7 @@ const PHYSICS_MAP = {
   kinetics: {
     status: "open", label: "thermodynamics + kinetics", title: "Leap-frogging dynamics is the approximation boundary",
     physical: "Temperature, pressure, chemical potentials, free-energy differences, diffusion barriers, nucleation rates, phonons, and time-dependent disorder.",
-    geometric: "Structural evidence, connection successes/failures, dimensionless contact/angle strain, composition drift, and optional supplied formal-charge drift are retained. Fixed-topology snapshot ensembles may pool within-frame contact, coordination, angle, and rigid-invariant local pair-distance fluctuation while one selected frame alone supplies the cluster grammar and growth seed.",
+    geometric: "Structural evidence, connection successes/failures, dimensionless contact/angle strain, composition drift, and optional supplied formal-charge drift are retained. Fixed-topology snapshot pairs may additionally expose local best-affine F, Green–Lagrange invariants, D²min, and neighbor exchange while one selected frame alone supplies the cluster grammar and growth seed.",
     growth: "Tree search jumps directly between geometrically certified states. Soft geometry may order legal branches; proposal checks and backtracks measure computational work, not elapsed physical time.",
     boundary: "The portal predicts structurally admissible continuation, not a growth rate or thermodynamic phase diagram. Snapshot order is not time, correlated frames are not claimed independent, and no velocity, force, or integration step is used. MD/DFT or experimental labels must calibrate kinetic claims separately.",
     systems: [
