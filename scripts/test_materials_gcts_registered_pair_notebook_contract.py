@@ -9,8 +9,8 @@ README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
 
 def test_registered_pair_notebook_contract():
-    assert 'buildId: "20260826-164"' in APP
-    assert 'app.js?v=20260826-164' in HTML
+    assert 'buildId: "20260826-165"' in APP
+    assert 'app.js?v=20260826-165' in HTML
     assert 'style.css?v=20260826-71' in HTML
 
     for field in ("question", "settings", "outcomes", "boundary", "autoExecuted"):

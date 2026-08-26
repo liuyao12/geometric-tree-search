@@ -37,6 +37,8 @@ import { BOND_VALENCE_PARAMETERS, BOND_VALENCE_PROVENANCE,
   from "./bond-valence-geometry.js?v=20260826-3";
 import { analyzeCollinearSpinGeometry, COLLINEAR_SPIN_PROVENANCE }
   from "./collinear-spin-geometry.js?v=20260826-1";
+import { CENTROSYMMETRY_PROVENANCE, inferCentrosymmetryNeighborCount, localCentrosymmetry }
+  from "./centrosymmetry-geometry.js?v=20260826-1";
 import {
   discoverFiniteMolecularComponents,
   discoverMolecularConnectionTopology,
@@ -494,6 +496,8 @@ const rdfPairSelect = $("rdfPairSelect");
 const structureObservableSelect = $("structureObservableSelect");
 const orientationalOrderSelect = $("orientationalOrderSelect");
 const orientationalOrderMapButton = $("orientationalOrderMapButton");
+const centrosymmetryNeighborSelect = $("centrosymmetryNeighborSelect");
+const centrosymmetryMapButton = $("centrosymmetryMapButton");
 const coordChart = $("coordChart");
 const coordEyebrow = $("coordEyebrow");
 const coordTitle = $("coordTitle");
@@ -889,6 +893,9 @@ let coordinationSelection = null;
 let orientationalOrderSelection = null;
 let orientationalOrderHarmonic = 6;
 let orientationalOrderMapEnabled = false;
+let centrosymmetrySelection = null;
+let centrosymmetryNeighborMode = "auto";
+let centrosymmetryMapEnabled = false;
 let learnedClusters = null;
 let learnedCover = null;
 let detectedUnitCell = null;
@@ -2616,7 +2623,8 @@ function calculateStructuralStats(source, spacing, periodic = false,
   if (!source.length) return { rdf, rdfByPair: {}, dimension: intrinsicDimension,
     maximumRadius: requestedMaximumRadius || RDF_MAX_RADIUS, edgeCorrection: periodic ? "periodic minimum image" : "finite-window translation",
     pairDistances, coordination, meanCoordination: 0, count: 0, neighborCounts: [], neighborLists: [],
-    neighborVectors: [], planeNormal: intrinsicDimension === 2 ? [0, 0, 1] : null, orientationalOrder: {} };
+    neighborVectors: [], planeNormal: intrinsicDimension === 2 ? [0, 0, 1] : null,
+    orientationalOrder: {}, centrosymmetry: {} };
 
   const neighbors = new Array(source.length).fill(0);
   const neighborLists = Array.from({ length: source.length }, () => []);
@@ -2715,7 +2723,7 @@ function calculateStructuralStats(source, spacing, periodic = false,
   return { rdf, rdfByPair, dimension: intrinsicDimension, maximumRadius,
     edgeCorrection: periodic ? "periodic minimum image" : "finite-window translation",
     pairDistances, coordination, meanCoordination, count: source.length, neighborCounts: neighbors, neighborLists,
-    neighborVectors, planeNormal: planeNormal?.toArray() || null, orientationalOrder: {} };
+    neighborVectors, planeNormal: planeNormal?.toArray() || null, orientationalOrder: {}, centrosymmetry: {} };
 }
 
 function ensureStructureFactor(stats) {
@@ -2747,6 +2755,30 @@ function ensureOrientationalOrder(stats, harmonic = orientationalOrderHarmonic) 
     };
   }
   return stats.orientationalOrder[harmonic];
+}
+
+function centrosymmetryShell(stats) {
+  const inference = inferCentrosymmetryNeighborCount(stats.neighborCounts || [], stats.dimension);
+  const explicit = Number(centrosymmetryNeighborMode);
+  return {
+    inference,
+    neighborCount: centrosymmetryNeighborMode === "auto" ? inference.selectedNeighborCount : explicit,
+  };
+}
+
+function ensureCentrosymmetry(stats, forcedNeighborCount = null) {
+  stats.centrosymmetry ||= {};
+  const shell = centrosymmetryShell(stats);
+  const neighborCount = forcedNeighborCount || shell.neighborCount;
+  const { inference } = shell;
+  if (!stats.centrosymmetry[neighborCount]) {
+    stats.centrosymmetry[neighborCount] = {
+      ...localCentrosymmetry(stats.neighborVectors || [], { neighborCount }),
+      inference,
+      shellMode: centrosymmetryNeighborMode,
+    };
+  }
+  return stats.centrosymmetry[neighborCount];
 }
 
 function currentLiveStructure() {
@@ -2939,6 +2971,7 @@ function selectCoordination(value) {
   if (pipelineStage === 2 || (pipelineStage === 4 && replayIndex === 0)) return;
   coordinationSelection = coordinationSelection === value ? null : value;
   orientationalOrderSelection = null;
+  centrosymmetrySelection = null;
   rebuildWorld();
   updateUI();
 }
@@ -2977,6 +3010,7 @@ function selectOrientationalOrderBin(value) {
   if (pipelineStage === 2 || (pipelineStage === 4 && replayIndex === 0)) return;
   orientationalOrderSelection = orientationalOrderSelection === value ? null : value;
   coordinationSelection = null;
+  centrosymmetrySelection = null;
   rebuildWorld();
   updateUI();
 }
@@ -3004,6 +3038,66 @@ function currentOrientationalOrderField() {
     unresolved: structure.source.filter((_, index) => !order.resolved[index]),
     analysisWindowAtoms: structure.source.length,
     preservesElementCoreColor: true,
+  };
+}
+
+function selectedCentrosymmetryDetail() {
+  if (centrosymmetrySelection === null || structureObservableSelection !== "centrosymmetry" || pipelineStage === 2) return null;
+  const structure = pipelineStage === 4
+    ? currentLiveStructure()
+    : { source: atoms, stats: referenceStructuralStats };
+  if (!structure.source.length || !structure.stats) return null;
+  const field = ensureCentrosymmetry(structure.stats);
+  const matching = field.records.filter((record) => record.resolved
+    && Math.min(field.bins - 1, Math.floor(record.normalizedAmplitude * field.bins)) === centrosymmetrySelection);
+  const centers = matching.map((record) => structure.source[record.centerIndex]);
+  const centerIds = new Set(centers.map((atom) => atom.id));
+  const neighbors = []; const neighborIds = new Set(); const edges = []; const edgeKeys = new Set();
+  matching.forEach((record) => {
+    const center = structure.source[record.centerIndex];
+    record.selectedNeighborIndices.forEach((localIndex) => {
+      const neighborIndex = structure.stats.neighborLists[record.centerIndex][localIndex];
+      const neighbor = structure.source[neighborIndex];
+      if (!neighbor) return;
+      if (!neighborIds.has(neighbor.id)) neighbors.push(neighbor);
+      neighborIds.add(neighbor.id);
+      const key = center.id < neighbor.id ? `${center.id}:${neighbor.id}` : `${neighbor.id}:${center.id}`;
+      if (!edgeKeys.has(key)) { edgeKeys.add(key); edges.push([center, neighbor]); }
+    });
+  });
+  return { ids: new Set([...centerIds, ...neighborIds]), centerIds, neighborIds,
+    matchCount: matching.length, centers, neighbors, edges };
+}
+
+function selectCentrosymmetryBin(value) {
+  if (pipelineStage === 2 || (pipelineStage === 4 && replayIndex === 0)) return;
+  centrosymmetrySelection = centrosymmetrySelection === value ? null : value;
+  coordinationSelection = null;
+  orientationalOrderSelection = null;
+  rebuildWorld();
+  updateUI();
+}
+
+function centrosymmetryHaloColor(value) {
+  const low = new THREE.Color(0x65e1bc);
+  const middle = new THREE.Color(0xffc169);
+  const high = new THREE.Color(0xff6f78);
+  return value <= .25 ? low.lerp(middle, value * 4)
+    : middle.lerp(high, Math.min(1, (value - .25) / .75));
+}
+
+function currentCentrosymmetryField() {
+  if (!centrosymmetryMapEnabled || structureObservableSelection !== "centrosymmetry"
+    || pipelineStage === 2 || pipelineStage === 3) return null;
+  const structure = pipelineStage === 4
+    ? currentLiveStructure()
+    : { source: atoms, stats: referenceStructuralStats };
+  if (!structure.source.length || !structure.stats) return null;
+  const field = ensureCentrosymmetry(structure.stats);
+  return {
+    ...field,
+    resolved: field.records.filter((record) => record.resolved)
+      .map((record) => ({ atom: structure.source[record.centerIndex], value: record.normalizedAmplitude })),
   };
 }
 
@@ -3081,6 +3175,8 @@ function renderTrainingStats() {
   rdfPairSelect.hidden = true;
   orientationalOrderSelect.hidden = true;
   orientationalOrderMapButton.hidden = true;
+  centrosymmetryNeighborSelect.hidden = true;
+  centrosymmetryMapButton.hidden = true;
   structureObservableSelect.hidden = true;
   rdfEyebrow.textContent = "GCTS training curve";
   rdfTitle.textContent = "section mismatch";
@@ -3146,10 +3242,16 @@ function renderStructureStats() {
   rdfPairSelect.hidden = structureObservableSelection !== "rdf";
   orientationalOrderSelect.hidden = structureObservableSelection !== "order";
   orientationalOrderMapButton.hidden = structureObservableSelection !== "order";
+  centrosymmetryNeighborSelect.hidden = structureObservableSelection !== "centrosymmetry";
+  centrosymmetryMapButton.hidden = structureObservableSelection !== "centrosymmetry";
   orientationalOrderSelect.value = String(orientationalOrderHarmonic);
   orientationalOrderMapButton.setAttribute("aria-pressed", String(orientationalOrderMapEnabled));
   orientationalOrderMapButton.textContent = orientationalOrderMapEnabled ? "hide blue → gold halos" : "show local-order halos";
   orientationalOrderMapButton.title = "Adds a blue-to-gold wire halo around resolved centers while retaining the standard element-colored atom core; unresolved surface centers intentionally receive no halo.";
+  centrosymmetryNeighborSelect.value = centrosymmetryNeighborMode;
+  centrosymmetryMapButton.setAttribute("aria-pressed", String(centrosymmetryMapEnabled));
+  centrosymmetryMapButton.textContent = centrosymmetryMapEnabled ? "hide mint → coral halos" : "show inversion-asymmetry halos";
+  centrosymmetryMapButton.title = "Maps normalized local inversion asymmetry. Mint is centrosymmetric; amber-to-coral highlights distorted environments. This is geometric evidence, not a defect identity or energy.";
   syncRdfPairOptions();
   const dimension = referenceStructuralStats.dimension;
   coordEyebrow.textContent = "first-shell coordination";
@@ -3166,7 +3268,50 @@ function renderStructureStats() {
   coordClearButton.hidden = coordinationSelection === null;
 
   rdfChart.replaceChildren();
-  if (structureObservableSelection === "order") {
+  if (structureObservableSelection === "centrosymmetry") {
+    const knownCsp = ensureCentrosymmetry(referenceStructuralStats);
+    const liveCsp = ensureCentrosymmetry(live, knownCsp.neighborCount);
+    const selectedDetail = selectedCentrosymmetryDetail();
+    rdfEyebrow.textContent = `${dimension}D defect-sensitive local geometry`;
+    rdfTitle.textContent = `inversion asymmetry · ${knownCsp.neighborCount}-neighbor shell`;
+    rdfChart.setAttribute("aria-label", "Distribution of normalized local centrosymmetry amplitude");
+    rdfStatus.textContent = centrosymmetrySelection === null
+      ? `mean ${knownCsp.meanAmplitude.toFixed(3)}${live.count ? ` → ${liveCsp.meanAmplitude.toFixed(3)}` : ""} · p90 ${knownCsp.percentile90Amplitude.toFixed(3)} · resolved ${knownCsp.resolvedCenters}/${referenceStructuralStats.count}`
+      : `${selectedDetail?.matchCount || 0} centers · ${selectedDetail?.edges.length || 0} paired-shell links`;
+    rdfStatus.title = `Exact minimum-weight opposite-neighbor pairing after Kelchner, Plimpton & Hamilton (${CENTROSYMMETRY_PROVENANCE.doi}). The displayed amplitude is scale-normalized and bounded; unresolved surface shells are excluded. It does not identify a defect species or estimate energy.`;
+    drawChartFrame(rdfChart, "inversion asymmetry", "P");
+    const maximum = Math.max(.05, ...knownCsp.histogram, ...liveCsp.histogram) * 1.08;
+    const barStep = 323 / knownCsp.bins;
+    if (centrosymmetrySelection !== null) rdfChart.append(svgNode("rect", {
+      x: 29 + centrosymmetrySelection * barStep + 1, y: 8, width: barStep - 2, height: 88, class: "coord-selection",
+    }));
+    knownCsp.histogram.forEach((value, index) => {
+      const height = Math.min(1, value / maximum) * 84;
+      rdfChart.append(svgNode("rect", { x: 29 + index * barStep + 2, y: 96 - height,
+        width: Math.max(1, barStep - 4), height, class: "coord-known" }));
+    });
+    if (live.count) liveCsp.histogram.forEach((value, index) => {
+      const height = Math.min(1, value / maximum) * 84;
+      rdfChart.append(svgNode("rect", { x: 29 + index * barStep + barStep * .28, y: 96 - height,
+        width: barStep * .44, height, class: "coord-live" }));
+    });
+    [0, .25, .5, .75, 1].forEach((tick) => rdfChart.append(svgNode("text", {
+      x: 29 + tick * 323, y: 108, class: "chart-label", "text-anchor": "middle",
+    }, tick.toFixed(tick ? 2 : 0))));
+    knownCsp.histogram.forEach((_, index) => {
+      const hit = svgNode("rect", { x: 29 + index * barStep, y: 8, width: barStep, height: 88,
+        class: "coord-hit", role: "button", tabindex: "0",
+        "aria-label": `inversion asymmetry ${(index / knownCsp.bins).toFixed(2)} to ${((index + 1) / knownCsp.bins).toFixed(2)}; inspect local shells`,
+        "aria-pressed": centrosymmetrySelection === index ? "true" : "false" });
+      hit.addEventListener("click", () => selectCentrosymmetryBin(index));
+      hit.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") { event.preventDefault(); selectCentrosymmetryBin(index); }
+      });
+      rdfChart.append(hit);
+    });
+    setChartLegend(rdfLegend, [["known-key", "known · inversion asymmetry"],
+      ["live-key", `${liveWindowLabel} · inversion asymmetry`], ["", "click a bin to inspect paired shells"]]);
+  } else if (structureObservableSelection === "order") {
     const knownOrder = ensureOrientationalOrder(referenceStructuralStats);
     const liveOrder = ensureOrientationalOrder(live);
     const symbol = dimension === 2 ? `|ψ${orientationalOrderHarmonic}|` : `q${orientationalOrderHarmonic}`;
@@ -6778,7 +6923,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-164",
+      buildId: "20260826-165",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -15621,6 +15766,7 @@ function resetCounters() {
   lastLiveStatsKey = "";
   coordinationSelection = null;
   orientationalOrderSelection = null;
+  centrosymmetrySelection = null;
   trainingProgress = 0;
   clusterDiscoveryTrace = null;
   clusterDiscoveryProgress = 0;
@@ -16597,7 +16743,7 @@ function rebuildWorld() {
     }
   }
   const dummy = new THREE.Object3D();
-  const selectedCoordination = selectedOrientationalOrderDetail() || selectedCoordinationDetail();
+  const selectedCoordination = selectedCentrosymmetryDetail() || selectedOrientationalOrderDetail() || selectedCoordinationDetail();
   const selectedIds = selectedCoordination?.ids || null;
   const addInstances = (source, material, scale = 1) => {
     if (!source.length) return;
@@ -16641,6 +16787,22 @@ function rebuildWorld() {
       dummy.updateMatrix();
       halos.setMatrixAt(index, dummy.matrix);
       halos.setColorAt(index, orientationalOrderHaloColor(value));
+    });
+    halos.instanceMatrix.needsUpdate = true;
+    if (halos.instanceColor) halos.instanceColor.needsUpdate = true;
+    atomGroup.add(halos);
+  }
+  const centrosymmetryField = currentCentrosymmetryField();
+  if (centrosymmetryField?.resolved.length) {
+    const halos = new THREE.InstancedMesh(orientationalOrderHaloGeometry, orientationalOrderHaloMaterial,
+      centrosymmetryField.resolved.length);
+    centrosymmetryField.resolved.forEach(({ atom, value }, index) => {
+      dummy.position.copy(atom.p);
+      dummy.rotation.set(0, 0, 0);
+      dummy.scale.setScalar(elementScale(atom.species) * (1.26 + .46 * Math.sqrt(value)));
+      dummy.updateMatrix();
+      halos.setMatrixAt(index, dummy.matrix);
+      halos.setColorAt(index, centrosymmetryHaloColor(value));
     });
     halos.instanceMatrix.needsUpdate = true;
     if (halos.instanceColor) halos.instanceColor.needsUpdate = true;
@@ -21103,10 +21265,11 @@ rdfPairSelect.addEventListener("change", () => {
   renderStructureStats();
 });
 structureObservableSelect.addEventListener("change", () => {
-  structureObservableSelection = ["rdf", "sq", "order"].includes(structureObservableSelect.value)
+  structureObservableSelection = ["rdf", "sq", "order", "centrosymmetry"].includes(structureObservableSelect.value)
     ? structureObservableSelect.value : "rdf";
   if (structureObservableSelection !== "order") orientationalOrderSelection = null;
-  if (structureObservableSelection === "order") coordinationSelection = null;
+  if (structureObservableSelection !== "centrosymmetry") centrosymmetrySelection = null;
+  if (["order", "centrosymmetry"].includes(structureObservableSelection)) coordinationSelection = null;
   rebuildWorld();
   renderStructureStats();
 });
@@ -21119,6 +21282,18 @@ orientationalOrderSelect.addEventListener("change", () => {
 });
 orientationalOrderMapButton.addEventListener("click", () => {
   orientationalOrderMapEnabled = !orientationalOrderMapEnabled;
+  rebuildWorld();
+  renderStructureStats();
+});
+centrosymmetryNeighborSelect.addEventListener("change", () => {
+  centrosymmetryNeighborMode = ["auto", "4", "6", "8", "12"].includes(centrosymmetryNeighborSelect.value)
+    ? centrosymmetryNeighborSelect.value : "auto";
+  centrosymmetrySelection = null;
+  rebuildWorld();
+  renderStructureStats();
+});
+centrosymmetryMapButton.addEventListener("click", () => {
+  centrosymmetryMapEnabled = !centrosymmetryMapEnabled;
   rebuildWorld();
   renderStructureStats();
 });

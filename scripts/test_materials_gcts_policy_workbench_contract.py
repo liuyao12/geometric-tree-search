@@ -11,8 +11,8 @@ README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
 
 def test_policy_workbench_contract() -> None:
-    assert 'buildId: "20260826-164"' in APP
-    assert 'app.js?v=20260826-164' in HTML
+    assert 'buildId: "20260826-165"' in APP
+    assert 'app.js?v=20260826-165' in HTML
     assert 'id="policyWorkbenchState"' in HTML
     assert 'id="policyWorkbenchReset"' in HTML
     assert "function buildPolicyWorkbench" in APP

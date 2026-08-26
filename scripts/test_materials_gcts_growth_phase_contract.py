@@ -71,7 +71,7 @@ def test_phase_inference_is_posthoc_traced_and_receipted() -> None:
     assert "truncates every prototype to the same atom count" in normalized_readme
     assert "curated material dimension is not consulted" in normalized_readme
     assert 'style.css?v=20260826-71' in html
-    assert 'app.js?v=20260826-164' in html
+    assert 'app.js?v=20260826-165' in html
 
 
 if __name__ == "__main__":
