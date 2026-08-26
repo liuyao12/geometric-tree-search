@@ -83,10 +83,29 @@ def test_structural_leaps_compare_finite_observation_reciprocal_space():
     assert "Build 138 pairs that local microscope with a reciprocal-space transition certificate" in README
 
 
+def test_multiscale_order_pathway_is_interactive_and_posthoc():
+    assert 'id="multiscalePathwayPlot"' in HTML
+    assert 'data-pathway-harmonic="4"' in HTML
+    assert 'data-pathway-harmonic="6"' in HTML
+    assert 'data-pathway-harmonic="12"' in HTML
+    assert 'value="reciprocalProminence">S(q) dominant-peak prominence' in HTML
+    assert "function renderMultiscaleOrderPathway()" in APP
+    assert "renderStructuralLeap(leapHistory[selectedLeapIndex])" in APP
+    assert 'role: point.leapIndex < 0 ? "img" : "button"' in APP
+    assert 'multiscaleOrderPathway: {' in APP
+    assert 'alignment: "structural leap index; no physical time"' in APP
+    assert 'phaseDiagramClaimed: false' in APP
+    assert 'reactionCoordinateClaimed: false' in APP
+    assert 'freeEnergyLandscapeClaimed: false' in APP
+    assert '.multiscale-pathway svg .path' in (APP_DIR / "style.css").read_text()
+    assert "Build 139 turns those paired observables into an interactive multiscale order pathway" in README
+
+
 if __name__ == "__main__":
     test_dimension_aware_orientational_order_is_exposed_interactively()
     test_structural_leaps_freeze_local_symmetry_change_without_using_it_for_growth()
     test_structural_leaps_compare_finite_observation_reciprocal_space()
+    test_multiscale_order_pathway_is_interactive_and_posthoc()
     test_order_is_rotation_invariant_posthoc_evidence_not_growth_physics()
     test_order_provenance_is_serialized()
     print("orientational-order portal contract: passed")

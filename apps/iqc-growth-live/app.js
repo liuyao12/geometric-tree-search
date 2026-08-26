@@ -434,6 +434,10 @@ const leapCertificateSection = $("leapCertificateSection");
 const leapCertificateState = $("leapCertificateState");
 const leapHistoryElement = $("leapHistory");
 const leapFlow = $("leapFlow");
+const multiscalePathwayState = $("multiscalePathwayState");
+const multiscalePathwayHarmonics = $("multiscalePathwayHarmonics");
+const multiscalePathwayPlot = $("multiscalePathwayPlot");
+const multiscalePathwayReadout = $("multiscalePathwayReadout");
 const leapMorphologyPassport = $("leapMorphologyPassport");
 const leapMorphologyState = $("leapMorphologyState");
 const leapMorphologySpectrum = $("leapMorphologySpectrum");
@@ -914,6 +918,7 @@ let selectedConstraintName = "species / hard core";
 let leapHistory = [];
 let selectedLeapIndex = -1;
 let leapEventCount = 0;
+let multiscalePathwayHarmonic = 6;
 let selectedLeapPhysicsId = "steric";
 let selectedLeapPhysicsFilter = "all";
 const MAXIMUM_RETAINED_STRUCTURAL_LEAPS = 24;
@@ -6499,7 +6504,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-138",
+      buildId: "20260825-139",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -6872,6 +6877,20 @@ async function buildExperimentReceipt() {
         usedAsGrowthInput: false,
         phaseProbabilityClaimed: false,
         freeEnergyClaimed: false,
+      },
+      multiscaleOrderPathway: {
+        role: "interactive posthoc comparison of local orientational order and finite-observation reciprocal-space peak prominence across certified structural states",
+        selectedHarmonic: multiscalePathwayHarmonic,
+        horizontalObservable: referenceStructuralStats.dimension === 2 ? `mean |psi${multiscalePathwayHarmonic}|` : `mean q${multiscalePathwayHarmonic}`,
+        verticalObservable: "unit-weight geometric S(q) dominant-peak prominence",
+        alignment: "structural leap index; no physical time",
+        pointSource: "before/after snapshots in structuralLeapCertificates",
+        interactiveLeapSelection: true,
+        properRotationInvariant: true,
+        usedAsGrowthInput: false,
+        phaseDiagramClaimed: false,
+        reactionCoordinateClaimed: false,
+        freeEnergyLandscapeClaimed: false,
       },
     },
     cover: coverVisible ? {
@@ -7845,6 +7864,7 @@ function experimentNotebookSummary(receipt) {
     acceptedThisLeap: 0, rejectedThisLeap: 0, cumulativeAccepted: 0, cumulativeRejected: 0, depth: 0,
     morphology: initialLeapState.morphology || null, interfaces: initialLeapState.interfaces || null,
     orientationalOrder: initialLeapState.orientationalOrder || null,
+    scattering: initialLeapState.scattering || null,
     feedstock: initialLeapState.feedstock || null, domain: initialLeapState.domain || null,
     relaxation: null, localSymmetryTransition: null, reciprocalSpaceTransition: null }];
   structuralLeaps.forEach((leap, index) => {
@@ -7859,6 +7879,7 @@ function experimentNotebookSummary(receipt) {
       cumulativeAccepted, cumulativeRejected, depth: leap.after?.depth || 0,
       morphology: leap.after?.morphology || null, interfaces: leap.after?.interfaces || null,
       orientationalOrder: leap.after?.orientationalOrder || null,
+      scattering: leap.after?.scattering || null,
       feedstock: leap.after?.feedstock || null, domain: leap.after?.domain || null,
       relaxation: leap.relaxation || null,
       localSymmetryTransition: leap.localSymmetryTransition || null,
@@ -8039,6 +8060,9 @@ const NOTEBOOK_TRAJECTORY_OBSERVABLES = {
     format: (value) => `${value.toFixed(3)} Å` },
   localOrder: { label: "mean local q₆ / |ψ₆|",
     value: (point) => point.orientationalOrder?.harmonics?.[6]?.mean,
+    format: (value) => value.toFixed(3) },
+  reciprocalProminence: { label: "S(q) dominant-peak prominence",
+    value: (point) => point.scattering?.summary?.peakProminence,
     format: (value) => value.toFixed(3) },
   localOrderShift: { label: "local-symmetry JS distance",
     value: (point) => point.localSymmetryTransition?.meanDistributionDistance,
@@ -14854,6 +14878,14 @@ leapPhysicsFilters.addEventListener("click", (event) => {
   renderLeapPhysics(leapHistory[selectedLeapIndex] || null);
 });
 
+multiscalePathwayHarmonics.addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-pathway-harmonic]");
+  const harmonic = Number(button?.dataset.pathwayHarmonic);
+  if (![4, 6, 12].includes(harmonic)) return;
+  multiscalePathwayHarmonic = harmonic;
+  renderMultiscaleOrderPathway();
+});
+
 function structuralMorphologySeries(selected = null) {
   const selectedPosition = selected
     ? leapHistory.findIndex((entry) => entry.index === selected.index) : leapHistory.length - 1;
@@ -15026,11 +15058,93 @@ function renderLeapMorphology(selected = null) {
   leapMorphologyBoundary.textContent = `${after.sampledCoordinationCenters} radially stratified sites audited. ${ensemble.lineageCount > 1 ? "The global R_g contains separation between nuclei; the largest-lineage audit isolates one nucleus. " : ""}Shared sites are apportioned fractionally for populations and included in every participating lineage shape. Dₘ fits finite structural states only${scaling.retainedWindowTruncated ? "; the retained history is truncated" : ""}. These observables are not physical surface area, asymptotic fractal dimension, equilibrium habit, Wulff shape, interfacial energy, nucleation rate, growth rate, kinetics, or elapsed time; no crystallographic grain identity is inferred.`;
 }
 
+function renderMultiscaleOrderPathway() {
+  if (!multiscalePathwayPlot) return;
+  const makeSvg = (name, attributes = {}) => {
+    const element = document.createElementNS("http://www.w3.org/2000/svg", name);
+    Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, value));
+    return element;
+  };
+  const records = leapHistory.length
+    ? [{ leapIndex: -1, index: 0, status: "seed", label: "seed", state: leapHistory[0].before },
+      ...leapHistory.map((leap, leapIndex) => ({ leapIndex, index: leap.index, status: leap.status,
+        label: `leap ${leap.index}`, state: leap.after }))]
+    : [{ leapIndex: -1, index: 0, status: "seed", label: "seed", state: {
+      orientationalOrder: structuralOrientationalOrderSnapshot(), scattering: structuralScatteringSnapshot() } }];
+  const points = records.map((record) => {
+    const order = record.state?.orientationalOrder;
+    const harmonic = order?.harmonics?.[multiscalePathwayHarmonic];
+    const prominence = record.state?.scattering?.summary?.peakProminence;
+    return { ...record, dimension: order?.dimension,
+      x: harmonic?.resolvedCenters > 0 ? harmonic.mean : null,
+      y: Number.isFinite(prominence) ? prominence : null,
+      resolvedCenters: harmonic?.resolvedCenters || 0,
+      atoms: record.state?.atoms || order?.analysisWindowAtoms || 0 };
+  }).filter((point) => Number.isFinite(point.x) && Number.isFinite(point.y));
+  multiscalePathwayPlot.replaceChildren();
+  const left = 39, right = 292, top = 10, bottom = 143;
+  const yValues = points.map((point) => point.y);
+  const yMinimum = yValues.length ? Math.min(...yValues) : 0;
+  const yMaximum = yValues.length ? Math.max(...yValues) : 1;
+  const yPadding = Math.max(.08, (yMaximum - yMinimum) * .15);
+  const yLow = Math.max(0, yMinimum - yPadding);
+  const yHigh = Math.max(yLow + .16, yMaximum + yPadding);
+  const xPosition = (value) => left + Math.max(0, Math.min(1, value)) * (right - left);
+  const yPosition = (value) => bottom - (value - yLow) / (yHigh - yLow) * (bottom - top);
+  [0, .25, .5, .75, 1].forEach((tick) => {
+    multiscalePathwayPlot.append(makeSvg("line", { x1: xPosition(tick), x2: xPosition(tick), y1: top, y2: bottom, class: "grid" }));
+    const label = makeSvg("text", { x: xPosition(tick), y: 154, class: "axis", "text-anchor": "middle" });
+    label.textContent = tick.toFixed(2); multiscalePathwayPlot.append(label);
+  });
+  for (let index = 0; index <= 4; index++) {
+    const value = yLow + index / 4 * (yHigh - yLow);
+    multiscalePathwayPlot.append(makeSvg("line", { x1: left, x2: right, y1: yPosition(value), y2: yPosition(value), class: "grid" }));
+    const label = makeSvg("text", { x: left - 4, y: yPosition(value) + 2, class: "axis", "text-anchor": "end" });
+    label.textContent = value.toFixed(2); multiscalePathwayPlot.append(label);
+  }
+  const symbol = points[0]?.dimension === 2 ? `|ψ${multiscalePathwayHarmonic}|` : `q${multiscalePathwayHarmonic}`;
+  const xAxis = makeSvg("text", { x: (left + right) / 2, y: 166, class: "axis", "text-anchor": "middle" });
+  xAxis.textContent = `mean local ${symbol}`; multiscalePathwayPlot.append(xAxis);
+  const yAxis = makeSvg("text", { x: 8, y: (top + bottom) / 2, class: "axis", "text-anchor": "middle",
+    transform: `rotate(-90 8 ${(top + bottom) / 2})` });
+  yAxis.textContent = "S(q) peak prominence"; multiscalePathwayPlot.append(yAxis);
+  if (points.length > 1) multiscalePathwayPlot.append(makeSvg("polyline", {
+    points: points.map((point) => `${xPosition(point.x)},${yPosition(point.y)}`).join(" "), class: "path" }));
+  points.forEach((point) => {
+    const circle = makeSvg("circle", { cx: xPosition(point.x), cy: yPosition(point.y), r: point.leapIndex < 0 ? 4 : 4.5,
+      class: `point ${point.status}${point.leapIndex === selectedLeapIndex ? " selected" : ""}`, tabindex: point.leapIndex < 0 ? -1 : 0,
+      role: point.leapIndex < 0 ? "img" : "button", "aria-label": `${point.label}: local ${symbol} ${point.x.toFixed(3)}, reciprocal peak prominence ${point.y.toFixed(3)}` });
+    const title = makeSvg("title"); title.textContent = `${point.label} · ${point.atoms} atoms · ${point.resolvedCenters} resolved centers`;
+    circle.append(title);
+    if (point.leapIndex >= 0) {
+      const selectPoint = () => { selectedLeapIndex = point.leapIndex; renderStructuralLeap(leapHistory[selectedLeapIndex]); };
+      circle.addEventListener("click", selectPoint);
+      circle.addEventListener("keydown", (event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); selectPoint(); } });
+    }
+    multiscalePathwayPlot.append(circle);
+  });
+  multiscalePathwayHarmonics.querySelectorAll("button").forEach((button) =>
+    button.setAttribute("aria-pressed", String(Number(button.dataset.pathwayHarmonic) === multiscalePathwayHarmonic)));
+  const selectedPoint = points.find((point) => point.leapIndex === selectedLeapIndex) || points.at(-1);
+  multiscalePathwayState.textContent = points.length > 1
+    ? `${points.length} states · ${symbol} ↔ S(q)` : `seed · ${symbol} ↔ S(q)`;
+  multiscalePathwayReadout.replaceChildren();
+  [["selected state", selectedPoint?.label || "unresolved"],
+    [`mean ${symbol}`, Number.isFinite(selectedPoint?.x) ? selectedPoint.x.toFixed(3) : "unresolved"],
+    ["peak prominence", Number.isFinite(selectedPoint?.y) ? selectedPoint.y.toFixed(3) : "unresolved"]]
+    .forEach(([label, value]) => {
+      const cell = document.createElement("span"); cell.textContent = label;
+      const strong = document.createElement("strong"); strong.textContent = value; cell.append(strong);
+      multiscalePathwayReadout.append(cell);
+    });
+}
+
 function renderStructuralLeap(leap = null) {
   if (!leapCertificateSection) return;
   leapCertificateSection.hidden = pipelineStage !== 4;
   if (pipelineStage !== 4) return;
   const selected = leap || leapHistory[selectedLeapIndex] || null;
+  renderMultiscaleOrderPathway();
   leapHistoryElement.replaceChildren();
   leapHistory.slice(-8).forEach((entry, visibleIndex) => {
     const absoluteIndex = Math.max(0, leapHistory.length - 8) + visibleIndex;
