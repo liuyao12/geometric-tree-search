@@ -299,6 +299,11 @@ assert.match(
 assert.doesNotMatch(sourceTilerHtml, /Learning Free-range/);
 assert.match(sourceTilerHtml, /<b>GCTS<\/b>/);
 assert.match(growthAppSource, /finite-patch witnesses, not space-tiling certificates/, "the catalog must not overstate a large GCTS patch");
+assert.match(
+  growthAppSource,
+  /periodic_exact_through\s*\n?\s*\?\?\s*figure\.census_candidate\.screening\.periodic_hnf_max_motif_tiles/,
+  "fresh survivor cards must fall back across the new and legacy exact-period fields"
+);
 assert.match(growthAppSource, /prioritizes independent repeated same-orientation translations/, "the catalog must explain the current crystal-rank policy");
 assert.match(growthAppSource, /all four old 10_45026 witnesses repeated 57 of 60 placements along one direction/, "the catalog must disclose the misleading collinear target witnesses");
 assert.match(growthAppSource, /recovered the known three-tile quotient of control 10_24775/, "the internal-period screen must expose its positive control");
