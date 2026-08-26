@@ -28,7 +28,7 @@ const FRESH_VOLUME9_BOUNDED = [
     voxels: [[0,0,0],[0,0,1],[0,0,2],[0,0,3],[0,1,0],[0,1,2],[0,2,0],[0,2,1],[0,3,0]],
     mirror_equivalent_id: null,
     description: "Fresh volume-nine bounded-unresolved representative with an independently verified radius-two corona.",
-    screening: { status: "inconclusive", certificate: null, census_stage: "volume9_fresh_bounded_2026_08_25", requires_mirrors: false, periodic_exact_through: 9, periodic_requested_through: 14, periodic_next_motif: 10, periodic_deep_hnf_visited: 18245, periodic_deep_nodes: 3870256, corona_completed_radius: 2, corona_completed_nodes: 26, corona_placements_considered: 2860, corona_completed_verified: true, isohedral_growth_horizon: 24 },
+    screening: { status: "inconclusive", certificate: null, census_stage: "volume9_fresh_bounded_2026_08_25", requires_mirrors: false, periodic_exact_through: 11, periodic_requested_through: 14, periodic_next_motif: 12, periodic_deep_hnf_visited: 18245, periodic_deep_nodes: 3870256, fresh_rerun_report: "data/polycube-volume9-fresh-census-2026-08-25.json", corona_completed_radius: 2, corona_completed_nodes: 26, corona_placements_considered: 2860, corona_completed_verified: true, isohedral_growth_horizon: 24 },
     shell_screening: { robust_completed_shell: 0, deepest_completed_shell: 0 }
   },
   {
@@ -36,7 +36,7 @@ const FRESH_VOLUME9_BOUNDED = [
     voxels: [[0,0,0],[0,0,1],[0,0,2],[0,1,0],[0,1,2],[0,2,0],[0,2,1],[1,0,1],[1,1,1]],
     mirror_equivalent_id: "p9-08214",
     description: "Fresh volume-nine bounded-unresolved representative; p9-08214 is its omitted enantiomer.",
-    screening: { status: "inconclusive", certificate: null, census_stage: "volume9_fresh_bounded_2026_08_25", requires_mirrors: false, periodic_exact_through: 9, periodic_requested_through: 14, periodic_next_motif: 10, periodic_deep_hnf_visited: 17069, periodic_deep_nodes: 406911, corona_completed_radius: 2, corona_completed_nodes: 35, corona_placements_considered: 4338, corona_completed_verified: true, isohedral_growth_horizon: 24 },
+    screening: { status: "inconclusive", certificate: null, census_stage: "volume9_fresh_bounded_2026_08_25", requires_mirrors: false, periodic_exact_through: 11, periodic_requested_through: 14, periodic_next_motif: 12, periodic_deep_hnf_visited: 17069, periodic_deep_nodes: 406911, fresh_rerun_report: "data/polycube-volume9-fresh-census-2026-08-25.json", corona_completed_radius: 2, corona_completed_nodes: 35, corona_placements_considered: 4338, corona_completed_verified: true, isohedral_growth_horizon: 24 },
     shell_screening: { robust_completed_shell: 0, deepest_completed_shell: 0 }
   },
   {
@@ -44,7 +44,7 @@ const FRESH_VOLUME9_BOUNDED = [
     voxels: [[0,0,0],[0,0,1],[0,0,2],[0,1,0],[0,1,2],[0,2,0],[0,2,1],[1,1,1],[1,1,2]],
     mirror_equivalent_id: "p9-08220",
     description: "Fresh volume-nine bounded-unresolved representative; p9-08220 is its omitted enantiomer.",
-    screening: { status: "inconclusive", certificate: null, census_stage: "volume9_fresh_bounded_2026_08_25", requires_mirrors: false, periodic_exact_through: 9, periodic_requested_through: 14, periodic_next_motif: 10, periodic_deep_hnf_visited: 19667, periodic_deep_nodes: 248874, corona_completed_radius: 2, corona_completed_nodes: 24, corona_placements_considered: 4517, corona_completed_verified: true, isohedral_growth_horizon: 24 },
+    screening: { status: "inconclusive", certificate: null, census_stage: "volume9_fresh_bounded_2026_08_25", requires_mirrors: false, periodic_exact_through: 11, periodic_requested_through: 14, periodic_next_motif: 12, periodic_deep_hnf_visited: 19667, periodic_deep_nodes: 248874, fresh_rerun_report: "data/polycube-volume9-fresh-census-2026-08-25.json", corona_completed_radius: 2, corona_completed_nodes: 24, corona_placements_considered: 4517, corona_completed_verified: true, isohedral_growth_horizon: 24 },
     shell_screening: { robust_completed_shell: 0, deepest_completed_shell: 0 }
   },
   {
@@ -52,7 +52,7 @@ const FRESH_VOLUME9_BOUNDED = [
     voxels: [[0,0,0],[0,0,1],[0,0,5],[0,0,6],[0,1,1],[0,1,2],[0,1,3],[0,1,4],[0,1,5]],
     mirror_equivalent_id: null,
     description: "Fresh achiral volume-nine bounded-unresolved representative with a verified radius-two corona.",
-    screening: { status: "inconclusive", certificate: null, census_stage: "volume9_fresh_bounded_2026_08_25", requires_mirrors: false, periodic_exact_through: 9, periodic_requested_through: 14, periodic_next_motif: 10, periodic_deep_hnf_visited: 19561, periodic_deep_nodes: 3531855, corona_completed_radius: 2, corona_completed_nodes: 33, corona_placements_considered: 3600, corona_completed_verified: true, isohedral_growth_horizon: 24 },
+    screening: { status: "inconclusive", certificate: null, census_stage: "volume9_fresh_bounded_2026_08_25", requires_mirrors: false, periodic_exact_through: 11, periodic_requested_through: 14, periodic_next_motif: 12, periodic_deep_hnf_visited: 19561, periodic_deep_nodes: 3531855, fresh_rerun_report: "data/polycube-volume9-fresh-census-2026-08-25.json", corona_completed_radius: 2, corona_completed_nodes: 33, corona_placements_considered: 3600, corona_completed_verified: true, isohedral_growth_horizon: 24 },
     shell_screening: { robust_completed_shell: 0, deepest_completed_shell: 0 }
   },
   {
@@ -60,7 +60,7 @@ const FRESH_VOLUME9_BOUNDED = [
     voxels: [[0,0,0],[0,0,1],[0,1,0],[1,0,1],[1,1,1],[1,1,2],[2,0,1],[2,0,2],[3,0,1]],
     mirror_equivalent_id: "p9-24830",
     description: "Fresh volume-nine bounded-unresolved representative; p9-24830 is its omitted enantiomer.",
-    screening: { status: "inconclusive", certificate: null, census_stage: "volume9_fresh_bounded_2026_08_25", requires_mirrors: false, periodic_exact_through: 8, periodic_requested_through: 14, periodic_next_motif: 9, periodic_deep_hnf_visited: 6183, periodic_deep_nodes: 3223464, corona_completed_radius: 2, corona_completed_nodes: 25, corona_placements_considered: 4926, corona_completed_verified: true, isohedral_growth_horizon: 24 },
+    screening: { status: "inconclusive", certificate: null, census_stage: "volume9_fresh_bounded_2026_08_25", requires_mirrors: false, periodic_exact_through: 9, periodic_requested_through: 14, periodic_next_motif: 10, periodic_deep_hnf_visited: 6183, periodic_deep_nodes: 3223464, fresh_rerun_report: "data/polycube-volume9-fresh-census-2026-08-25.json", corona_completed_radius: 2, corona_completed_nodes: 25, corona_placements_considered: 4926, corona_completed_verified: true, isohedral_growth_horizon: 24 },
     shell_screening: { robust_completed_shell: 0, deepest_completed_shell: 0 }
   },
   {
@@ -68,7 +68,7 @@ const FRESH_VOLUME9_BOUNDED = [
     voxels: [[0,0,2],[0,1,2],[0,2,0],[0,2,1],[0,2,2],[0,2,3],[0,2,4],[0,3,2],[0,4,2]],
     mirror_equivalent_id: null,
     description: "Fresh highly symmetric achiral volume-nine bounded-unresolved representative with a verified radius-two corona.",
-    screening: { status: "inconclusive", certificate: null, census_stage: "volume9_fresh_bounded_2026_08_25", requires_mirrors: false, periodic_exact_through: 11, periodic_requested_through: 14, periodic_next_motif: 12, periodic_deep_hnf_visited: 63456, periodic_deep_nodes: 908937, corona_completed_radius: 2, corona_completed_nodes: 183, corona_placements_considered: 784, corona_completed_verified: true, isohedral_growth_horizon: 24 },
+    screening: { status: "inconclusive", certificate: null, census_stage: "volume9_fresh_bounded_2026_08_25", requires_mirrors: false, periodic_exact_through: 11, periodic_requested_through: 14, periodic_next_motif: 12, periodic_deep_hnf_visited: 63456, periodic_deep_nodes: 908937, fresh_rerun_report: "data/polycube-volume9-fresh-census-2026-08-25.json", corona_completed_radius: 2, corona_completed_nodes: 183, corona_placements_considered: 784, corona_completed_verified: true, isohedral_growth_horizon: 24 },
     shell_screening: { robust_completed_shell: 0, deepest_completed_shell: 0 }
   }
 ];

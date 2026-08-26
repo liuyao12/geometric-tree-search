@@ -443,8 +443,6 @@ for (let index = 0; index < candidates.length; index++) {
       }
       if (obstruction?.certified_non_tiler) {
         classification = "non_tiler";
-      } else if (isohedral?.success) {
-        classification = "isohedral_lead";
       }
     }
   }
