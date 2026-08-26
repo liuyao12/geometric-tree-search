@@ -5978,3 +5978,26 @@ displayed coordinate-free result but is not persisted as a new training label. N
 force, defect identity, kinetic mechanism, statistical independence, or physical material
 equivalence is inferred, and selecting or pinning sites never changes candidate generation,
 ranking, admission, or execution.
+
+## Build 188: add colored angular topology to the site-pair microscope
+
+Build 188 closes a specific insufficiency in the Build 187 radial comparison. Equal colored
+distance multisets need not imply equal angular geometry. The site-provenance transform now
+enumerates every finite neighbor–center–neighbor angle and groups angles by the unordered
+species pair on the two rays. Comparison uses minimum-cost monotone pairing within each
+sorted colored channel, reporting paired count, unmatched count, and RMS angular shift.
+This prevents an extra early angle from displacing every later match while retaining a
+deterministic, permutation-independent calculation.
+
+The inspector also reuses the validated `localOrientationalOrder` implementation on exactly
+the same neighbor vectors. Three-dimensional sites expose Steinhardt q4, q6, and q12 through
+the Legendre addition theorem; inferred two-dimensional sites expose |psi4|, |psi6|, and
+|psi12| in the intrinsic plane. Unresolved centers with fewer than three 3D or two 2D
+neighbors remain unavailable rather than receiving the misleading single-bond value one.
+
+Both channels are invariant to translation and global proper rotation, but they answer
+different questions. Colored angle shells remain inspectable three-body evidence, whereas
+q/psi compresses angular symmetry into harmonic magnitudes. Neither establishes an exact
+colored point-set isometry, neighbor correspondence, defect species, phase, crystallinity
+probability, free energy, force, mechanism, rate, or physical time. The calculation is
+ephemeral and target-free and never enters search decisions.

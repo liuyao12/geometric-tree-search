@@ -29,5 +29,9 @@ const supplied = buildSiteProvenance({ atom: atoms[0], atoms, placements,
   sceneToAngstrom: 2, neighborReachScene: 1.1 });
 assert.equal(supplied.origin, "supplied observation / fitted seed");
 assert.equal(supplied.observedReferenceIndex, 7);
+const angular = buildSiteProvenance({ atom: atoms[0], atoms, placements,
+  sceneToAngstrom: 2, neighborReachScene: 2.1 });
+assert.deepEqual(angular.localEnvironment.distanceShells, [["Cl", [2]], ["Na", [4]]]);
+assert.deepEqual(angular.localEnvironment.angleShells, [["Cl|Na", [90]]]);
 assert.throws(() => buildSiteProvenance({ atom: null, atoms, neighborReachScene: 1 }), /required/);
 console.log("materials site provenance: passed");

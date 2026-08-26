@@ -26,6 +26,9 @@ def test_comparison_uses_colored_coordination_radial_shells_and_lineage():
     assert "distanceShells" in (ROOT / "apps/iqc-growth-live/site-provenance.js").read_text()
     assert "speciesCounts" in MODULE
     assert "rmsDistanceDeltaAngstrom" in MODULE
+    assert "rmsAngleDeltaDegrees" in MODULE
+    assert "orientationalOrder" in MODULE
+    assert "localOrientationalOrder" in APP
     assert "contactAngleMismatch" in MODULE
     assert "coordinationDeficit" in MODULE
     assert "depthDelta" in MODULE
@@ -41,14 +44,15 @@ def test_coordinate_free_claims_fail_closed():
     assert "defectIdentityInferred: false" in MODULE
     assert "energyEquivalenceInferred: false" in MODULE
     assert "physicalMechanismInferred: false" in MODULE
+    assert "angularPermutationResolved: false" in MODULE
     assert "positionAngstrom" not in MODULE
-    assert "not a proof of local isometry" in APP
+    assert "does not establish neighbor correspondence, local isometry" in APP
 
 
-def test_build_187_assets_and_narrative():
-    assert 'buildId: "20260826-187"' in APP
-    assert 'app.js?v=20260826-187' in HTML
-    assert 'style.css?v=20260826-84' in HTML
+def test_build_188_assets_and_narrative():
+    assert 'buildId: "20260826-188"' in APP
+    assert 'app.js?v=20260826-188' in HTML
+    assert 'style.css?v=20260826-85' in HTML
     assert 'site-environment-comparison.js?v=20260826-1' in APP
-    assert "Build 187" in README
-    assert "Build 187" in DOCS
+    assert "Build 188" in README
+    assert "Build 188" in DOCS

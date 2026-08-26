@@ -31,6 +31,20 @@ export function buildSiteProvenance({ atom, atoms, placements = [], sceneToAngst
     if (!distanceShells.has(neighbor.species)) distanceShells.set(neighbor.species, []);
     distanceShells.get(neighbor.species).push(rounded(distanceScene * sceneToAngstrom));
   });
+  const angleShells = new Map();
+  for (let first = 0; first < neighbors.length; first++) {
+    for (let second = first + 1; second < neighbors.length; second++) {
+      const left = xyz(neighbors[first].atom.p).map((value, axis) => value - position[axis]);
+      const right = xyz(neighbors[second].atom.p).map((value, axis) => value - position[axis]);
+      const denominator = neighbors[first].distanceScene * neighbors[second].distanceScene;
+      if (!(denominator > 1e-12)) continue;
+      const cosine = Math.max(-1, Math.min(1,
+        left.reduce((sum, value, axis) => sum + value * right[axis], 0) / denominator));
+      const key = [neighbors[first].atom.species, neighbors[second].atom.species].sort().join("|");
+      if (!angleShells.has(key)) angleShells.set(key, []);
+      angleShells.get(key).push(rounded(Math.acos(cosine) * 180 / Math.PI, 3));
+    }
+  }
   const clusterIds = [...new Set(atom.clusterIds || [])].sort((first, second) => first - second);
   const nucleusIds = [...new Set(atom.nucleusIds || [])].sort((first, second) => first - second);
   const creator = placements.find((placement) => placement.id === atom.createdByClusterId)
@@ -51,6 +65,8 @@ export function buildSiteProvenance({ atom, atoms, placements = [], sceneToAngst
       coordination: neighbors.length,
       speciesCounts: [...speciesCounts.entries()].sort(([first], [second]) => first.localeCompare(second)),
       distanceShells: [...distanceShells.entries()].sort(([first], [second]) => first.localeCompare(second)),
+      angleShells: [...angleShells.entries()].sort(([first], [second]) => first.localeCompare(second))
+        .map(([key, values]) => [key, values.sort((first, second) => first - second)]),
       nearest: neighbors.slice(0, 8).map(({ atom: neighbor, distanceScene }) => ({
         siteId: neighbor.id, species: neighbor.species,
         distanceAngstrom: rounded(distanceScene * sceneToAngstrom),

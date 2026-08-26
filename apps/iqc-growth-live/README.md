@@ -5309,3 +5309,18 @@ rotation, and atom display order. The reported RMS is a descriptive pairing of f
 radial shells—not an optimal point-set registration or proof of local isometry. The view
 does not infer a defect class, energy equivalence, force, mechanism, physical time, or an
 independent materials sample, and it cannot change the frozen search.
+
+### Build 188 · colored angular topology and local orientational order
+
+The A/B microscope now resolves the ambiguity left by radial shells. For every selected
+center it constructs all neighbor–center–neighbor angles within the same finite reach,
+groups them by the unordered pair of neighbor species, and compares the sorted shells
+with a minimum-cost monotone pairing. The panel reports matched and unmatched angles plus
+the RMS angular displacement for each colored three-body channel.
+
+The same neighbor vectors are also evaluated with the portal's established dimension-aware
+local-order contract: Steinhardt q4/q6/q12 in 3D or bond-orientational |psi4|/|psi6|/|psi12|
+in 2D. These magnitudes and colored angles are invariant to translation and global proper
+rotation. They remain finite structural fingerprints: sorted angle pairing does not recover
+neighbor identity or prove graph congruence, and q/psi values are not phase labels,
+crystallinity probabilities, energies, mechanisms, or kinetic variables.

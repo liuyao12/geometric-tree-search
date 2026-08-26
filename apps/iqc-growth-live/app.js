@@ -3372,9 +3372,22 @@ function renderSelectedSiteHighlight() {
 }
 
 function siteProvenanceSnapshot(atom) {
-  return buildSiteProvenance({ atom, atoms, placements: placedClusters,
+  const reach = 1.45 * referenceSpacing;
+  const snapshot = buildSiteProvenance({ atom, atoms, placements: placedClusters,
     sceneToAngstrom: referenceSpacingA / Math.max(referenceSpacing, 1e-12),
-    neighborReachScene: 1.45 * referenceSpacing, geometryLabel: resolvedGeometryLabel() });
+    neighborReachScene: reach, geometryLabel: resolvedGeometryLabel() });
+  const vectors = atoms.filter((entry) => entry.id !== atom.id && entry.p.distanceTo(atom.p) <= reach)
+    .map((entry) => entry.p.clone().sub(atom.p).toArray());
+  const dimension = referenceStructuralStats?.dimension || currentMaterial().intrinsicDimension || 3;
+  const minimumNeighbors = dimension === 2 ? 2 : 3;
+  const planeNormal = dimension === 2 ? intrinsicPlaneNormal(atoms)?.toArray() || [0, 0, 1] : [0, 0, 1];
+  snapshot.localEnvironment.orientationalDimension = dimension;
+  snapshot.localEnvironment.orientationalDefinition = dimension === 2
+    ? "bond-orientational magnitude |psi_l|" : "Steinhardt q_l magnitude";
+  snapshot.localEnvironment.orientationalOrder = vectors.length >= minimumNeighbors
+    ? [4, 6, 12].map((harmonic) => [harmonic,
+      localOrientationalOrder([vectors], dimension, { harmonic, planeNormal })[0]]) : [];
+  return snapshot;
 }
 
 function renderSiteEnvironmentComparison(firstAtom, secondAtom) {
@@ -3382,8 +3395,9 @@ function renderSiteEnvironmentComparison(firstAtom, secondAtom) {
     second: siteProvenanceSnapshot(secondAtom), firstConstraint: selectedSiteConstraintAudit(firstAtom),
     secondConstraint: selectedSiteConstraintAudit(secondAtom) });
   const radial = comparison.radialShells;
+  const angular = comparison.angularShells;
   const constraints = comparison.constraintDelta;
-  siteComparisonState.textContent = `${comparison.centerChemistry.first} A → ${comparison.centerChemistry.second} B · ${radial.matchedDistances} colored distances matched`;
+  siteComparisonState.textContent = `${comparison.centerChemistry.first} A → ${comparison.centerChemistry.second} B · ${radial.matchedDistances} distances · ${angular.matchedAngles} angles matched`;
   siteComparisonGrid.replaceChildren(
     siteProvenanceTile("center chemistry", comparison.centerChemistry.sameSpecies ? "same species" : "different species",
       `${comparison.centerChemistry.first} → ${comparison.centerChemistry.second}`),
@@ -3391,6 +3405,12 @@ function renderSiteEnvironmentComparison(firstAtom, secondAtom) {
       `${comparison.coordination.firstTotal} → ${comparison.coordination.secondTotal} neighbors`),
     siteProvenanceTile("radial shell mismatch", radial.rmsDistanceDeltaAngstrom === null ? "unavailable" : `${radial.rmsDistanceDeltaAngstrom} Å RMS`,
       `${radial.matchedDistances} paired · ${radial.unmatchedDistances} unmatched`),
+    siteProvenanceTile("colored angle topology", angular.rmsAngleDeltaDegrees === null ? "unavailable" : `${angular.rmsAngleDeltaDegrees}° RMS`,
+      `${angular.matchedAngles} paired · ${angular.unmatchedAngles} unmatched`),
+    siteProvenanceTile(comparison.orientationalOrder.dimension === 2 ? "local |psi_l|" : "local q_l",
+      comparison.orientationalOrder.channels.filter((entry) => entry.delta !== null)
+        .map((entry) => `${entry.harmonic}: ${entry.first.toFixed(3)} → ${entry.second.toFixed(3)}`).join(" · ") || "unresolved",
+      comparison.orientationalOrder.definition),
     siteProvenanceTile("constraint response", constraints.available ? `${constraints.contactAngleMismatch >= 0 ? "+" : ""}${constraints.contactAngleMismatch.toFixed(3)}` : "unavailable",
       "B − A contact + angle residual"),
     siteProvenanceTile("coordination deficit", constraints.available ? `${constraints.coordinationDeficit >= 0 ? "+" : ""}${constraints.coordinationDeficit.toFixed(3)}` : "unavailable",
@@ -3407,7 +3427,17 @@ function renderSiteEnvironmentComparison(firstAtom, secondAtom) {
     const status = document.createElement("em"); status.textContent = `Δ ${channel.delta >= 0 ? "+" : ""}${channel.delta}`;
     row.append(label, value, status); siteComparisonChannels.append(row);
   });
-  siteComparisonBoundary.textContent = `comparison ${comparison.comparisonDigest} · finite colored radial shells only; translation and global rotation independent, but not a proof of local isometry, defect identity, energetic equivalence, or physical mechanism.`;
+  comparison.angularShells.channels.slice().sort((first, second) => second.unmatched - first.unmatched
+    || (second.rmsAngleDeltaDegrees ?? -1) - (first.rmsAngleDeltaDegrees ?? -1)).slice(0, 6).forEach((channel) => {
+    const row = document.createElement("span");
+    row.className = channel.unmatched === 0 && (channel.rmsAngleDeltaDegrees ?? 0) <= 1e-6 ? "pass" : "warn";
+    const label = document.createElement("small"); label.textContent = channel.speciesPair.replace("|", "–");
+    const value = document.createElement("strong"); value.textContent = channel.rmsAngleDeltaDegrees === null
+      ? "no paired angles" : `${channel.rmsAngleDeltaDegrees}° RMS`;
+    const status = document.createElement("em"); status.textContent = `${channel.matched} paired · ${channel.unmatched} unmatched`;
+    row.append(label, value, status); siteComparisonChannels.append(row);
+  });
+  siteComparisonBoundary.textContent = `comparison ${comparison.comparisonDigest} · finite colored radial and three-body angle shells plus ${comparison.orientationalOrder.definition}; translation and global rotation independent. Sorted angular pairing is descriptive and does not establish neighbor correspondence, local isometry, defect identity, energetic equivalence, or physical mechanism.`;
   siteEnvironmentComparison.hidden = false;
 }
 
@@ -8146,7 +8176,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-187",
+      buildId: "20260826-188",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
