@@ -851,6 +851,10 @@
               <header><span><small>orientation relationship</small><strong>Nucleus-pair inspector</strong></span><b id="nucleusInterfaceState">no interface pair</b></header>
               <div id="nucleusPairButtons" class="nucleus-pair-buttons" role="group" aria-label="Select a nucleus pair"></div>
               <div id="nucleusInterfaceProfile" class="nucleus-interface-profile" aria-label="Axial shared-site profile"></div>
+              <section class="nucleus-interface-evolution" aria-label="Interface evolution across structural leaps">
+                <header><small>structural-leap history</small><b id="nucleusInterfaceEvolutionState">seed state</b></header>
+                <div id="nucleusInterfaceEvolution" class="nucleus-interface-evolution-plot"></div>
+              </section>
               <article id="nucleusPairDetail"></article>
             </section>
             <label class="field" for="explorationScaleSelect">
@@ -1172,6 +1176,9 @@
                 <option value="lineageRadius">largest-nucleus radius · Å</option>
                 <option value="nuclei">effective nucleus count</option>
                 <option value="shared">shared interface fraction</option>
+                <option value="interfaceSites">largest registered interface · sites</option>
+                <option value="interfaceThickness">largest-interface thickness · Å</option>
+                <option value="interfaceExposure">largest-interface coordination deficit</option>
                 <option value="extent">maximum nucleus extent · Å</option>
                 <option value="anisotropy">relative shape anisotropy · κ²</option>
                 <option value="exposure">colored coordination deficit</option>
@@ -1400,7 +1407,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-129"></script>
+  <script type="module" src="./app.js?v=20260825-130"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

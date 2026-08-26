@@ -37,7 +37,7 @@ const ENVIRONMENTS = {
     shortLabel: "supported half-space",
     shape: "bounded half-space above a plane",
     parameters: { lateralHalfExtents: [8.35, 8.35], lowerZ: -3.2, upperZ: 8.35 },
-    note: "The lower plane is an excluded support. An optional separately declared 2D registry may rank the interface, but no substrate atoms, chemistry, adhesion, or interface energy are invented.",
+    note: "The lower plane is an excluded support. An optional separately declared 2D registry may rank the interface. No substrate atoms, chemistry, adhesion, or interface energy are invented.",
   },
   hourglass: {
     id: "hourglass",

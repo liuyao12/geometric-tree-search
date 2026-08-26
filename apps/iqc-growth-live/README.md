@@ -4555,3 +4555,5 @@ mode, term or composite selection, multipliers, normalization, signed range,
 counts, every candidate digest, every per-term contribution and its exact sum,
 and explicit invariants that geometry, admission, execution, and continuity
 inference remain unchanged or false.
+
+Build 130 turns the finite nucleus-pair passport into a structural-leap history. Every before/after certificate now freezes the proper-misorientation registry, connected contact patches, axial thickness, tangential spread, chemistry, and coordination exposure for each observed pair. The live pair selector drives a compact four-channel evolution strip, and saved notebook runs can compare the largest registered interface by site count, thickness, or exposure. The horizontal coordinate is explicitly a discrete GCTS structural leap: no grain identity, boundary energy, mobility, kinetics, or elapsed time is inferred.

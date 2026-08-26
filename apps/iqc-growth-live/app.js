@@ -274,6 +274,8 @@ const nucleusInterfaceState = $("nucleusInterfaceState");
 const nucleusPairButtons = $("nucleusPairButtons");
 const nucleusPairDetail = $("nucleusPairDetail");
 const nucleusInterfaceProfile = $("nucleusInterfaceProfile");
+const nucleusInterfaceEvolution = $("nucleusInterfaceEvolution");
+const nucleusInterfaceEvolutionState = $("nucleusInterfaceEvolutionState");
 const growthSchedulingSelect = $("growthSchedulingSelect");
 const growthSchedulingHint = $("growthSchedulingHint");
 const trainVariantButton = $("trainVariantButton");
@@ -6165,7 +6167,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-129",
+      buildId: "20260825-130",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7444,7 +7446,7 @@ function experimentNotebookSummary(receipt) {
   const trajectoryPoints = [{ step: initialLeapStep, status: initialLeapStep ? "retained-window start" : "seed", atoms: initialLeapState.atoms,
     clusters: initialLeapState.clusters || 0, frontier: initialLeapState.frontier || 0,
     acceptedThisLeap: 0, rejectedThisLeap: 0, cumulativeAccepted: 0, cumulativeRejected: 0, depth: 0,
-    morphology: initialLeapState.morphology || null }];
+    morphology: initialLeapState.morphology || null, interfaces: initialLeapState.interfaces || null }];
   structuralLeaps.forEach((leap, index) => {
     cumulativeAccepted += leap.after?.accepted || 0;
     cumulativeRejected += leap.after?.rejected || 0;
@@ -7455,7 +7457,7 @@ function experimentNotebookSummary(receipt) {
       proposedSites: leap.proposal?.sites || 0,
       acceptedThisLeap: leap.after?.accepted || 0, rejectedThisLeap: leap.after?.rejected || 0,
       cumulativeAccepted, cumulativeRejected, depth: leap.after?.depth || 0,
-      morphology: leap.after?.morphology || null });
+      morphology: leap.after?.morphology || null, interfaces: leap.after?.interfaces || null });
   });
   return {
     id: receipt.receiptSha256.slice(0, 16),
@@ -7493,6 +7495,7 @@ function experimentNotebookSummary(receipt) {
     physicalTimeModeled: receipt.evidenceBoundary.physicalElapsedTimeModeled,
     trajectory: { alignment: "structural leap index", points: trajectoryPoints,
       morphologyPassport: "rotation/translation-invariant covariance spectrum + learned colored-coordination deficit",
+      interfacePassport: "finite proper-misorientation registry, topology, thickness, chemistry, and coordination exposure",
       massRadiusScaling: notebookMassRadiusScaling(trajectoryPoints),
       leapCount: structuralLeaps.length,
       totalLeapEvents: search?.structuralLeapHistory?.totalEvents ?? structuralLeaps.length,
@@ -7607,6 +7610,15 @@ const NOTEBOOK_TRAJECTORY_OBSERVABLES = {
     format: (value) => value.toFixed(2) },
   shared: { label: "shared interface fraction",
     value: (point) => point.morphology?.lineageEnsemble?.sharedInterfaceFraction,
+    format: (value) => `${(100 * value).toFixed(1)}%` },
+  interfaceSites: { label: "largest registered interface · sites",
+    value: (point) => point.interfaces?.primaryPair?.sharedSites,
+    format: (value) => Math.round(value).toLocaleString() },
+  interfaceThickness: { label: "largest-interface axial thickness · Å",
+    value: (point) => point.interfaces?.primaryPair?.axialThicknessRms,
+    format: (value) => `${value.toFixed(2)} Å` },
+  interfaceExposure: { label: "largest-interface coordination deficit",
+    value: (point) => point.interfaces?.primaryPair?.coordinationDeficit,
     format: (value) => `${(100 * value).toFixed(1)}%` },
   extent: { label: "maximum nucleus extent · Å", value: (point) => point.morphology?.maximumExtentAngstrom,
     format: (value) => `${value.toFixed(2)} Å` },
@@ -11094,6 +11106,69 @@ function renderNucleusInterfaceInspector() {
   });
   nucleusInterfaceProfile.setAttribute("aria-label",
     `Seven-bin axial shared-site profile; ${geometry.sharedSiteCount} total registered sites`);
+  renderNucleusInterfaceEvolution(selected.key);
+}
+
+function structuralInterfaceSnapshot() {
+  const pairs = growthNucleusPairs().map((pair) => ({
+    key: pair.key, nuclei: [pair.first.nucleusId, pair.second.nucleusId],
+    misorientationDegrees: pair.misorientation.comparable
+      ? receiptRound(pair.misorientation.angleDegrees) : null,
+    properGaugePairs: pair.misorientation.properGaugePairs || 0,
+    sharedSites: pair.sharedSites, sharedSiteFraction: receiptRound(pair.sharedSiteFraction),
+    registryTopology: pair.interfaceGeometry.registryTopology,
+    componentCount: pair.interfaceGeometry.componentCount,
+    axialThicknessRms: pair.interfaceGeometry.axialThicknessRms,
+    axialSpan: pair.interfaceGeometry.axialSpan,
+    tangentialRadiusRms: pair.interfaceGeometry.tangentialRadiusRms,
+    coordinationDeficit: pair.interfaceGeometry.coordinationDeficit,
+    chemistry: pair.interfaceGeometry.chemistry,
+    profile: [...pair.interfaceGeometry.profile], targetUsed: false,
+  })).sort((first, second) => second.sharedSites - first.sharedSites || first.key.localeCompare(second.key));
+  return { pairCount: pairs.length, coalescedPairCount: pairs.filter((pair) => pair.sharedSites > 0).length,
+    totalSharedSites: pairs.reduce((sum, pair) => sum + pair.sharedSites, 0), pairs,
+    primaryPair: pairs[0] || null, alignment: "structural leap index",
+    coordinateFrameUsed: false, targetUsed: false, physicalTimeModeled: false,
+    grainIdentityInferred: false, interfacialEnergyInferred: false, mobilityInferred: false };
+}
+
+function interfaceEvolutionForPair(pairKey) {
+  const states = [];
+  if (leapHistory[0]?.before?.interfaces) states.push({
+    step: Math.max(0, leapHistory[0].index - 1),
+    pair: leapHistory[0].before.interfaces.pairs.find((pair) => pair.key === pairKey) || null,
+  });
+  leapHistory.forEach((leap) => {
+    if (leap.after?.interfaces) states.push({ step: leap.index,
+      pair: leap.after.interfaces.pairs.find((pair) => pair.key === pairKey) || null });
+  });
+  return states;
+}
+
+function renderNucleusInterfaceEvolution(pairKey) {
+  if (!nucleusInterfaceEvolution || !nucleusInterfaceEvolutionState) return;
+  const states = interfaceEvolutionForPair(pairKey);
+  nucleusInterfaceEvolution.replaceChildren();
+  nucleusInterfaceEvolutionState.textContent = states.length
+    ? `${states.length} certified state${states.length === 1 ? "" : "s"}` : "seed state";
+  const maxima = {
+    sites: Math.max(1, ...states.map((state) => state.pair?.sharedSites || 0)),
+    components: Math.max(1, ...states.map((state) => state.pair?.componentCount || 0)),
+    thickness: Math.max(1e-9, ...states.map((state) => state.pair?.axialThicknessRms || 0)),
+  };
+  states.slice(-12).forEach((state) => {
+    const column = document.createElement("div"); const label = document.createElement("small");
+    const tracks = document.createElement("span"); const pair = state.pair;
+    label.textContent = `L${state.step}`;
+    [["sites", pair?.sharedSites || 0, maxima.sites], ["patches", pair?.componentCount || 0, maxima.components],
+      ["thickness", pair?.axialThicknessRms || 0, maxima.thickness],
+      ["exposure", pair?.coordinationDeficit || 0, 1]].forEach(([name, value, maximum]) => {
+      const track = document.createElement("i"); const fill = document.createElement("b");
+      track.dataset.metric = name; fill.style.width = `${100 * value / maximum}%`; track.append(fill); tracks.append(track);
+    });
+    column.title = `structural leap ${state.step}: ${pair?.sharedSites || 0} registered sites · ${pair?.componentCount || 0} patches · ${Number.isFinite(pair?.axialThicknessRms) ? `${pair.axialThicknessRms.toFixed(2)} Å thick` : "thickness unresolved"}`;
+    column.append(label, tracks); nucleusInterfaceEvolution.append(column);
+  });
 }
 
 function initializeOffLatticeSearch() {
@@ -12765,7 +12840,7 @@ function materializeCandidate(candidate, evaluation) {
 
 function performOffLatticeEvent() {
   const before = { atoms: atoms.length, clusters: placedClusters.length, frontier: frontierCandidates.length,
-    morphology: structuralMorphologySnapshot() };
+    morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot() };
   const batch = commutingFrontierBatch();
   if (!batch.length) {
     recordStructuralLeap({ status: "fixed", label: "no geometrically admissible successor",
@@ -12773,7 +12848,7 @@ function performOffLatticeEvent() {
       tests: { summary: "finite frontier exhausted", detail: "Every frozen port is consumed, unsupported, conflicting, or outside the public domain." },
       after: { atoms: atoms.length, clusters: placedClusters.length, accepted: 0, rejected: 0,
         depth: Math.max(0, ...placedClusters.map((placement) => placement.depth || 0)),
-        morphology: structuralMorphologySnapshot() },
+        morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot() },
       claimBoundary: "This is a certified finite structural fixed point. It is not equilibrium, a stopping time, or evidence that a physical interface cannot advance by an unmodeled mechanism." });
     pauseGrowth("Frontier exhausted: no learned overlap rule remains geometrically admissible.");
     return;
@@ -12926,7 +13001,7 @@ function performOffLatticeEvent() {
       detail: "Species/hard-core, overlap, novelty, public boundary, coordination, angle, and active marking were evaluated before any commit." },
     after: { atoms: atoms.length, clusters: placedClusters.length, accepted: acceptedInBatch, rejected: rejectedInBatch,
       depth: Math.max(0, ...placedClusters.map((placement) => placement.depth || 0)),
-      morphology: structuralMorphologySnapshot() },
+      morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot() },
     claimBoundary: "The accepted antichain is valid in every placement order and jumps directly to a certified structural state. No force trajectory, relaxation path, transition probability, or physical elapsed time was computed." });
   rebuildWorld();
   updateUI();
@@ -12935,7 +13010,8 @@ function performOffLatticeEvent() {
 function performIceAnchorEvent() {
   const wave = iceAnchorTrace?.waves[iceAnchorWaveIndex];
   const before = { atoms: atoms.length, clusters: acceptedDecisions,
-    frontier: wave?.candidateAnchors || 0, morphology: structuralMorphologySnapshot() };
+    frontier: wave?.candidateAnchors || 0, morphology: structuralMorphologySnapshot(),
+    interfaces: structuralInterfaceSnapshot() };
   if (!wave) {
     growthStopReason = "Certified molecular anchor trace exhausted at its safe fixed point.";
     setPlaying(false);
@@ -12971,7 +13047,7 @@ function performIceAnchorEvent() {
         detail: `${wave.rejectedCandidateAnchors} unsupported or conflicting candidates fail ${iceAnchorTrace.selectionRuleLabel}.` },
       after: { atoms: atoms.length, clusters: acceptedDecisions, accepted: 0,
         rejected: wave.rejectedCandidateAnchors, depth: wave.wave,
-        morphology: structuralMorphologySnapshot() },
+        morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot() },
       claimBoundary: `The frozen ${iceAnchorTrace.portCount}-port grammar reaches a finite structural fixed point. Unresolved ${iceAnchorTrace.orientationSpecies} motion, proton/deuteron barriers, entropy, and physical stopping time are not modeled.` });
     growthStopReason = "Frozen molecular-port grammar reached its certified finite fixed point.";
     setPlaying(false);
@@ -13004,7 +13080,7 @@ function performIceAnchorEvent() {
       detail: `${iceAnchorTrace.portCount} frozen proper-SE(3) ports + ${iceAnchorTrace.selectionRuleLabel}; ${wave.retainedOrientationHypotheses} mutually exclusive ${iceAnchorTrace.moleculeLabel} poses retained.` },
     after: { atoms: atoms.length, clusters: acceptedDecisions, accepted: wave.acceptedAnchors,
       rejected: wave.rejectedCandidateAnchors, depth: wave.wave,
-      morphology: structuralMorphologySnapshot() },
+      morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot() },
     claimBoundary: `The browser jumps to oxygen anchors shared by every surviving ${iceAnchorTrace.moleculeLabel} orientation domain. It does not integrate ${iceAnchorTrace.orientationSpecies} rearrangement, tunnelling, diffusion, relaxation, probability, or elapsed physical time.` });
   rebuildWorld();
   updateUI();
