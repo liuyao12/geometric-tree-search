@@ -11,8 +11,8 @@ README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
 
 def test_notebook_trajectory_contract() -> None:
-    assert 'buildId: "20260826-159"' in APP
-    assert 'app.js?v=20260826-159' in HTML
+    assert 'buildId: "20260826-160"' in APP
+    assert 'app.js?v=20260826-160' in HTML
     for element_id in ("notebookTrajectoryAudit", "notebookTrajectoryPlot", "notebookTrajectorySummary",
                        "notebookTrajectoryHarmonics", "notebookTrajectoryStateDetail"):
         assert f'id="{element_id}"' in HTML

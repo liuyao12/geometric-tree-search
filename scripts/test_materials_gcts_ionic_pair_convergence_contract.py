@@ -10,9 +10,9 @@ MODULE = (ROOT / "apps/iqc-growth-live/ionic-pair-geometry.js").read_text()
 
 
 def test_ionic_pair_cutoff_convergence_contract():
-    assert 'buildId: "20260826-159"' in APP
-    assert 'app.js?v=20260826-159' in HTML
-    assert 'style.css?v=20260826-66' in HTML
+    assert 'buildId: "20260826-160"' in APP
+    assert 'app.js?v=20260826-160' in HTML
+    assert 'style.css?v=20260826-67' in HTML
     assert 'incrementalIonicPairReachProfile' in MODULE
     assert 'export function rankIonicPairReachProfiles' in MODULE
     assert 'rankIonicPairReachProfiles(candidates.map' in APP

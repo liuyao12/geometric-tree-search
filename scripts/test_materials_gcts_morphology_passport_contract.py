@@ -11,8 +11,8 @@ README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
 
 def test_morphology_passport_contract() -> None:
-    assert 'buildId: "20260826-159"' in APP
-    assert 'app.js?v=20260826-159' in HTML
+    assert 'buildId: "20260826-160"' in APP
+    assert 'app.js?v=20260826-160' in HTML
     assert 'id="notebookTrajectoryObservable"' in HTML
     for observable in ("atoms", "radius", "extent", "anisotropy", "exposure", "dimension"):
         assert f'value="{observable}"' in HTML

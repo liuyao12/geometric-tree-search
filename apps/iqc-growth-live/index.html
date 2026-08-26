@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260826-66">
+  <link rel="stylesheet" href="./style.css?v=20260826-67">
   <script type="importmap">
     {
       "imports": {
@@ -625,6 +625,21 @@
                 <option value="0.48">0.48 · strong</option>
               </select>
             </label>
+            <label class="field" for="bondValenceSelect">
+              <span>Bond-valence satisfaction <b id="bondValenceHint">off · checked IUCr pairs only</b></span>
+              <select id="bondValenceSelect">
+                <option value="none" selected>Off · local residual reported</option>
+                <option value="satisfy">Favor lower local valence-sum residual</option>
+              </select>
+            </label>
+            <label class="field" for="bondValenceWeightSelect">
+              <span>Bond-valence weight <b>soft physical-distance rank</b></span>
+              <select id="bondValenceWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
               </div>
             </details>
             <details class="growth-control-group">
@@ -1035,6 +1050,14 @@
                 <div class="ionic-convergence-legend"><span><i class="candidate"></i>exact candidate</span><span><i class="selected"></i>selected pose</span><span><i class="winner"></i>best at reach</span></div>
                 <article id="ionicConvergenceDetail" class="ionic-convergence-detail" aria-live="polite"></article>
                 <p>The same frozen candidates are re-evaluated at 2, 4, 8d<sub>nn</sub> and the global finite crop. Rank reversals diagnose cutoff sensitivity; they are not Ewald convergence, dielectric screening, electrostatic energy, or a thermodynamic limit.</p>
+              </section>
+              <section class="bond-valence-card" aria-label="Local bond-valence residual audit">
+                <header><span><small>oxidation-state geometry</small><strong>Local valence-sum residual</strong></span><b id="bondValenceState">awaiting a supported ionic frontier</b></header>
+                <div id="bondValenceCandidates" class="bond-valence-candidates" role="group" aria-label="Preview exact bond-valence candidates"></div>
+                <div class="bond-valence-scale"><span>underbonded</span><i></i><span>satisfied</span><i></i><span>overbonded</span></div>
+                <div id="bondValenceResiduals" class="bond-valence-residuals" aria-label="Before and after local valence residuals"></div>
+                <article id="bondValenceDetail" class="bond-valence-detail" aria-live="polite"></article>
+                <p>Bars compare |Σexp[(R₀−R)/B]−|oxidation state|| before and after one unchanged exact attachment. Parameters are checked, explicitly ranged IUCr entries; missing chemistry fails closed. This is not bond energy, electron density, force, redox, relaxation, or physical time.</p>
               </section>
               <div class="policy-sensitivity-heading"><small>pathway sensitivity</small><strong id="policySensitivityState">no evaluated frontiers</strong></div>
               <div id="policyHistory" class="policy-history" role="group" aria-label="Inspect policy disagreement on recent frozen frontiers"></div>
@@ -1606,7 +1629,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260826-159"></script>
+  <script type="module" src="./app.js?v=20260826-160"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

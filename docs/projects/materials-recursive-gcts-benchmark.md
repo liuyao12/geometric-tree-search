@@ -5442,3 +5442,18 @@ experimental while its expanded receipt serializes every second-frontier
 alternative and channel score before any future target. Another fresh nucleus
 should be consumed only after the upstream policy shows positive grouped
 evidence beyond merely preserving existing paths.
+
+### Local bond-valence satisfaction channel
+
+The browser laboratory now has an opt-in local bond-valence-sum residual for
+candidate ordering. It uses exact supplied oxidation states and checked
+`bvparm2020` cation-anion parameter ranges in physical angstrom coordinates,
+computes `s = exp((R0 - R) / B)`, and compares the total absolute valence-sum
+residual on the sites changed by an exact attachment. Unsupported pairs,
+occupational alternatives, and missing charge labels fail closed. The frozen
+candidate set, exact proper-SE(3) poses, collision gates, and hard admission are
+unchanged; only an explicitly enabled soft score can alter ordering. The work
+ledger and receipt retain parameter provenance, local before/after residuals,
+unsupported pairs, score contribution, and exact evaluation counts. This
+finite local descriptor is not an energy, electron-density or charge-transfer
+model, force calculation, relaxation, rate, or physical clock.

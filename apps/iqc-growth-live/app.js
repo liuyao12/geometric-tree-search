@@ -31,6 +31,9 @@ import { formalChargeBalanceDelta, learnFormalChargeTarget } from "./formal-char
 import { chargeMomentSignature, compareChargeMomentGeometry } from "./global-charge-moments.js?v=20260826-1";
 import { incrementalIonicPairGeometry, incrementalIonicPairReachProfile,
   rankIonicPairReachProfiles } from "./ionic-pair-geometry.js?v=20260826-2";
+import { BOND_VALENCE_PARAMETERS, BOND_VALENCE_PROVENANCE,
+  MAXIMUM_BOND_VALENCE_DISTANCE, incrementalBondValenceSatisfaction }
+  from "./bond-valence-geometry.js?v=20260826-1";
 import {
   discoverFiniteMolecularComponents,
   discoverMolecularConnectionTopology,
@@ -254,6 +257,9 @@ const ionicPairSelect = $("ionicPairSelect");
 const ionicPairReachSelect = $("ionicPairReachSelect");
 const ionicPairWeightSelect = $("ionicPairWeightSelect");
 const ionicPairHint = $("ionicPairHint");
+const bondValenceSelect = $("bondValenceSelect");
+const bondValenceWeightSelect = $("bondValenceWeightSelect");
+const bondValenceHint = $("bondValenceHint");
 const surfacePreferenceSelect = $("surfacePreferenceSelect");
 const growthDrivingSelect = $("growthDrivingSelect");
 const growthDrivingWeightSelect = $("growthDrivingWeightSelect");
@@ -377,6 +383,10 @@ const chargeShapePortraitDetail = $("chargeShapePortraitDetail");
 const ionicConvergenceState = $("ionicConvergenceState");
 const ionicConvergencePlot = $("ionicConvergencePlot");
 const ionicConvergenceDetail = $("ionicConvergenceDetail");
+const bondValenceState = $("bondValenceState");
+const bondValenceCandidates = $("bondValenceCandidates");
+const bondValenceResiduals = $("bondValenceResiduals");
+const bondValenceDetail = $("bondValenceDetail");
 const policySensitivityState = $("policySensitivityState");
 const policyHistoryElement = $("policyHistory");
 const policyPreviewState = $("policyPreviewState");
@@ -900,6 +910,10 @@ let acceptedIonicPairScore = 0;
 let rejectedIonicPairScore = 0;
 let ionicPairEvaluations = 0;
 let ionicPairDistanceEvaluations = 0;
+let acceptedBondValenceScore = 0;
+let rejectedBondValenceScore = 0;
+let bondValenceEvaluations = 0;
+let bondValenceDistanceEvaluations = 0;
 let acceptedSurfaceDeficit = 0;
 let rejectedSurfaceDeficit = 0;
 let acceptedGrowthDrivingScore = 0;
@@ -1051,6 +1065,8 @@ let chargeMomentWeight = .24;
 let ionicPairMode = "none";
 let ionicPairReach = 8;
 let ionicPairWeight = .24;
+let bondValenceMode = "none";
+let bondValenceWeight = .24;
 let surfacePreference = "soft";
 let growthDrivingMode = "none";
 let growthDrivingWeight = .24;
@@ -1123,6 +1139,7 @@ const GROWTH_PROTOCOL_DEFAULTS = Object.freeze({
   chargeGeometryMode: "none", chargeGeometryReach: 2.5, chargeGeometryWeight: .24,
   chargeMomentMode: "none", chargeMomentWeight: .24,
   ionicPairMode: "none", ionicPairReach: 8, ionicPairWeight: .24,
+  bondValenceMode: "none", bondValenceWeight: .24,
   growthDrivingMode: "none", growthDrivingWeight: .24,
   attachmentTopologyMode: "none", attachmentTopologyWeight: .24,
   habitAnisotropyMode: "none", habitAnisotropyWeight: .24,
@@ -1372,7 +1389,7 @@ const MATERIALS_STUDY_COMPARISONS = Object.freeze({
 });
 
 const GROWTH_PROTOCOL_CONTROL_IDS = new Set([
-  "growthDomainScaleSelect", "geometryPreferenceSelect", "strainWeightSelect", "structuralRelaxationSelect", "compositionPreferenceSelect", "feedstockSupplySelect", "chargePreferenceSelect", "chargeGeometrySelect", "chargeGeometryReachSelect", "chargeGeometryWeightSelect", "chargeMomentSelect", "chargeMomentWeightSelect", "ionicPairSelect", "ionicPairReachSelect", "ionicPairWeightSelect",
+  "growthDomainScaleSelect", "geometryPreferenceSelect", "strainWeightSelect", "structuralRelaxationSelect", "compositionPreferenceSelect", "feedstockSupplySelect", "chargePreferenceSelect", "chargeGeometrySelect", "chargeGeometryReachSelect", "chargeGeometryWeightSelect", "chargeMomentSelect", "chargeMomentWeightSelect", "ionicPairSelect", "ionicPairReachSelect", "ionicPairWeightSelect", "bondValenceSelect", "bondValenceWeightSelect",
   "soluteSpeciesSelect", "solutePartitionSelect", "solutePartitionWeightSelect",
   "surfacePreferenceSelect", "growthDrivingSelect", "growthDrivingWeightSelect", "attachmentTopologySelect", "attachmentTopologyWeightSelect", "habitAnisotropySelect", "habitAnisotropyWeightSelect", "defectPrecursorSelect", "defectPrecursorWeightSelect", "coherencyMemorySelect", "coherencyReachSelect", "coherencyMemoryWeightSelect", "frontMorphologySelect", "frontMorphologyWeightSelect",
   "capillaryGeometrySelect", "capillaryGeometryWeightSelect",
@@ -6723,7 +6740,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-159",
+      buildId: "20260826-160",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7343,6 +7360,26 @@ async function buildExperimentReceipt() {
         polarizationModeled: false, chargeTransferModeled: false,
         electronicStructureModeled: false, physicalTimeIntegrated: false,
       },
+      bondValenceSatisfactionRanking: {
+        role: "target-blind local empirical valence-sum residual over unchanged exact candidates",
+        mode: bondValenceMode, label: bondValenceLabel(),
+        available: formalChargeTarget.available, enabled: activeBondValenceWeight() > 0,
+        effectiveWeight: activeBondValenceWeight(),
+        scoreDefinition: "signed reduction of local sum |Σ exp((R0-R)/B) - |oxidation state||, including isolated emitted-site baseline",
+        provenance: BOND_VALENCE_PROVENANCE,
+        curatedParameterRows: BOND_VALENCE_PARAMETERS.length,
+        parameterPolicy: "exact species + exact supplied oxidation state + explicit distance range; unsupported pairs fail closed",
+        acceptedMeanScore: receiptRound(acceptedBondValenceScore / Math.max(1, acceptedDecisions)),
+        rejectedMeanScore: receiptRound(rejectedBondValenceScore / Math.max(1, rejectedDecisions)),
+        evaluations: bondValenceEvaluations, distanceEvaluations: bondValenceDistanceEvaluations,
+        suppliedOxidationStatesOnly: true, oxidationStatesInferred: false,
+        physicalAngstromScaleRequired: true, uniformScaleInvariant: false,
+        candidateSetChanged: false, candidateGeometryChanged: false,
+        hardAdmissionChanged: false, heldoutTargetUsed: false,
+        bondEnergyInferred: false, electrostaticEnergyInferred: false,
+        electronDensityModeled: false, chargeTransferModeled: false,
+        forcesIntegrated: false, physicalTimeIntegrated: false,
+      },
       surfaceCompletionRanking: {
         role: "target-blind soft ordering that favors healing sample-derived coordination deficits; not bond or surface energy",
         mode: surfacePreference,
@@ -7880,6 +7917,31 @@ async function buildExperimentReceipt() {
               claimBoundary: audit.claimBoundary,
             } : null;
           })(),
+          bondValenceResidualAudit: (() => {
+            const preview = buildBondValencePreview(snapshot);
+            const audit = preview?.candidate?.bondValence;
+            return audit ? {
+              role: "selected exact-candidate local valence-sum before/after audit",
+              candidateDigest: preview.candidate.candidateDigest,
+              score: receiptRound(audit.rawScore),
+              beforeBurden: receiptRound(audit.beforeBurden),
+              afterBurden: receiptRound(audit.afterBurden),
+              addedBondCount: audit.addedBondCount,
+              affectedExistingSites: audit.affectedExistingSites,
+              addedSites: audit.addedSites,
+              parameters: audit.usedParameters.map((record) => ({ cation: record.cation,
+                cationCharge: record.cationCharge, anion: record.anion,
+                anionCharge: record.anionCharge, R0Angstrom: record.r0,
+                BAngstrom: record.b, minimumDistanceAngstrom: record.minimumDistance,
+                maximumDistanceAngstrom: record.maximumDistance,
+                reference: record.reference })),
+              missingPairTypes: audit.missingPairTypes,
+              provenance: BOND_VALENCE_PROVENANCE,
+              candidateSetChanged: false, hardAdmissionChanged: false,
+              candidateGeometryChanged: false, targetUsed: false,
+              bondEnergyInferred: false, physicalTimeIntegrated: false,
+            } : null;
+          })(),
           decisionPhaseMap: (() => {
             const phaseMap = buildPolicyPhaseMap(snapshot);
             return phaseMap ? {
@@ -8147,6 +8209,9 @@ function notebookInterventionFactors(receipt) {
       ionicPair: [search.incrementalIonicPairRanking?.mode,
         search.incrementalIonicPairRanking?.reachNearestNeighborUnits,
         search.incrementalIonicPairRanking?.effectiveWeight],
+      bondValence: [search.bondValenceSatisfactionRanking?.mode,
+        search.bondValenceSatisfactionRanking?.effectiveWeight,
+        search.bondValenceSatisfactionRanking?.provenance?.revision],
       surface: [search.surfaceCompletionRanking?.mode, search.surfaceCompletionRanking?.effectiveWeight],
       bulkSurfaceDriving: [search.bulkSurfaceDrivingRanking?.mode, search.bulkSurfaceDrivingRanking?.effectiveWeight],
       attachmentTopology: [search.attachmentTopologyRanking?.mode, search.attachmentTopologyRanking?.effectiveWeight],
@@ -11223,6 +11288,8 @@ function activeCandidateScoreTerms(entry, includeExploration = true) {
       activeChargeMomentWeight(), "soft supplied-charge nonlocal geometry", "Not Coulomb energy, dielectric response, or electronic structure."),
     scoreTerm("ionic-pair", "incremental ionic pair", evaluation.ionicPair.score,
       activeIonicPairWeight(), "soft supplied-charge 1/r pair geometry", "No dielectric, periodic images, Ewald sum, polarization, or electronic energy."),
+    scoreTerm("bond-valence", "local bond-valence residual", evaluation.bondValence.score,
+      activeBondValenceWeight(), "soft checked ion-pair distance ordering", "Empirical valence-sum validation; not bond energy, force, electron density, redox, or dynamics."),
     scoreTerm("surface", "surface completion", evaluation.surfaceCompletion.scaledDelta,
       -activeSurfaceCompletionWeight(), "soft coordination-deficit ordering", "Not surface energy."),
     scoreTerm("bulk-surface", "bulk–surface driving", evaluation.bulkSurfaceDriving.score,
@@ -11272,6 +11339,7 @@ function oneFactorPolicyTerm(policyId, entry, label) {
     "charge-geometry": [evaluation.chargeGeometry.score, activeChargeGeometryWeight()],
     "charge-moment": [evaluation.chargeMoment.score, activeChargeMomentWeight()],
     "ionic-pair": [evaluation.ionicPair.score, activeIonicPairWeight()],
+    "bond-valence": [evaluation.bondValence.score, activeBondValenceWeight()],
     surface: [evaluation.surfaceCompletion.scaledDelta, -.18],
     "bulk-surface-driving": [evaluation.bulkSurfaceDriving.score, activeGrowthDrivingWeight()],
     "attachment-topology": [evaluation.attachmentTopology.score, activeAttachmentTopologyWeight()],
@@ -11803,6 +11871,8 @@ function capturePolicyComparison(entries) {
       score: (entry) => entry.baseScore + activeChargeMomentWeight() * entry.evaluation.chargeMoment.score },
     { id: "ionic-pair", label: `${ionicPairLabel()} ${activeIonicPairWeight().toFixed(2)}`,
       score: (entry) => entry.baseScore + activeIonicPairWeight() * entry.evaluation.ionicPair.score },
+    { id: "bond-valence", label: `${bondValenceLabel()} ${activeBondValenceWeight().toFixed(2)}`,
+      score: (entry) => entry.baseScore + activeBondValenceWeight() * entry.evaluation.bondValence.score },
     { id: "surface", label: "surface 0.18", score: (entry) => entry.baseScore - .18 * entry.evaluation.surfaceCompletion.scaledDelta },
     { id: "bulk-surface-driving", label: `${growthDrivingLabel()} ${activeGrowthDrivingWeight().toFixed(2)}`,
       score: (entry) => entry.baseScore + activeGrowthDrivingWeight() * entry.evaluation.bulkSurfaceDriving.score },
@@ -11885,6 +11955,7 @@ function capturePolicyComparison(entries) {
           quadrupoleMagnitude: entry.evaluation.chargeMoment.after.quadrupoleMagnitude },
       } : { available: false, reason: entry.evaluation.chargeMoment.reason || "unavailable" },
       ionicPairProfile: ionicPairReachProfileForFreshSites(entry.evaluation.fresh),
+      bondValence: entry.evaluation.bondValence,
       freshSites: entry.evaluation.fresh.map((site) => ({ species: site.species, p: site.p.clone() })),
       fullSites: entry.evaluation.sites.map((site) => ({ species: site.species, p: site.p.clone() })),
       preview: { p: entry.candidate.position.clone(), rotation: entry.candidate.rotation.clone(), type: entry.candidate.type },
@@ -12590,6 +12661,50 @@ function ionicPairReachProfileForFreshSites(rawFreshSites) {
   });
 }
 
+function bondValenceLabel() {
+  return bondValenceMode === "satisfy" ? "IUCr bond-valence satisfaction" : "bond-valence diagnostic";
+}
+
+function activeBondValenceWeight() {
+  return bondValenceMode === "none" || !formalChargeTarget?.available ? 0 : bondValenceWeight;
+}
+
+function bondValenceElementToken(token) {
+  const match = String(token).match(/^([A-Z][a-z]?)(?:\^[+-]\d+(?:\.\d+)?)?$/);
+  return match?.[1] || null;
+}
+
+function bondValenceForFreshSites(rawFreshSites, { recordWork = true } = {}) {
+  const freshSites = uniqueFreshSites(rawFreshSites);
+  const chargesResolved = Boolean(formalChargeTarget?.available && freshSites.length
+    && freshSites.every((site) => bondValenceElementToken(site.species)
+      && Number.isFinite(suppliedFormalChargeForToken(site.species))));
+  if (!chargesResolved) return { available: false, enabled: false, mode: bondValenceMode,
+    label: bondValenceLabel(), score: 0, rawScore: 0, affectedSites: [], distanceEvaluations: 0,
+    reason: !formalChargeTarget?.available ? "complete supplied oxidation-state channel unavailable"
+      : !freshSites.length ? "candidate adds no sites" : "candidate oxidation state unresolved",
+    targetUsed: false, candidateGeometryChanged: false, hardAdmissionChanged: false,
+    oxidationStatesInferred: false, bondEnergyInferred: false, physicalTimeIntegrated: false };
+  const scenePerAngstrom = referenceSpacing / Math.max(referenceSpacingA, 1e-12);
+  const cutoff = MAXIMUM_BOND_VALENCE_DISTANCE * scenePerAngstrom;
+  const localAtoms = new Set();
+  freshSites.forEach((site) => nearbyAtoms(site.p, cutoff).forEach((atom) => localAtoms.add(atom)));
+  [...localAtoms].forEach((atom) => nearbyAtoms(atom.p, cutoff).forEach((neighbor) => localAtoms.add(neighbor)));
+  const toPhysical = (site) => ({ species: bondValenceElementToken(site.species),
+    charge: suppliedFormalChargeForToken(site.species),
+    position: site.p.toArray().map((value) => value / scenePerAngstrom) });
+  const result = incrementalBondValenceSatisfaction([...localAtoms].map(toPhysical), freshSites.map(toPhysical));
+  if (recordWork) {
+    bondValenceEvaluations++;
+    bondValenceDistanceEvaluations += result.distanceEvaluations || 0;
+  }
+  return { ...result, mode: bondValenceMode, label: bondValenceLabel(),
+    enabled: bondValenceMode !== "none", rawScore: result.score || 0,
+    score: bondValenceMode === "none" ? 0 : result.score || 0,
+    localCurrentSites: localAtoms.size,
+    physicalScaleAngstromPerSceneUnit: referenceSpacingA / Math.max(referenceSpacing, 1e-12) };
+}
+
 function batchRetainsNovelSites(entries) {
   if (!reconstructionCertified && replayIndex < referenceCount()) {
     const owners = new Map();
@@ -12630,6 +12745,7 @@ function commutingFrontierBatch() {
         + activeChargeGeometryWeight() * evaluation.chargeGeometry.score
         + activeChargeMomentWeight() * evaluation.chargeMoment.score
         + activeIonicPairWeight() * evaluation.ionicPair.score
+        + activeBondValenceWeight() * evaluation.bondValence.score
         - activeSurfaceCompletionWeight() * evaluation.surfaceCompletion.scaledDelta
         + activeGrowthDrivingWeight() * evaluation.bulkSurfaceDriving.score
         + activeAttachmentTopologyWeight() * evaluation.attachmentTopology.score
@@ -12761,6 +12877,7 @@ function evaluateCandidate(candidate, {
   const chargeGeometry = chargeGeometryForFreshSites(fresh, { recordWork });
   const chargeMoment = chargeMomentForFreshSites(fresh, { recordWork });
   const ionicPair = ionicPairForFreshSites(fresh, { recordWork });
+  const bondValence = bondValenceForFreshSites(fresh, { recordWork });
   const externalDrive = externalDriveForCandidate(candidate);
   const thermalField = reducedThermalFieldForCandidate(candidate, { recordWork });
   const solutePartition = solutePartitionForFreshSites(fresh, thermalField, capillaryGeometry, { recordWork });
@@ -12778,7 +12895,7 @@ function evaluateCandidate(candidate, {
     && angularViolations.length === 0 && feedstockSupply.admitted && (markingAccepted || markingFallback);
   return { accepted, sites, merged, fresh, conflicts, boundaryFailures, knownFailures, markingFallback,
     coordinationOverflows, angularViolations, geometricStrain, affineLoadedGeometricStrain,
-    surfaceCompletion, bulkSurfaceDriving, attachmentTopology, habitAnisotropy, frontMorphology, capillaryGeometry, epitaxyRegistry, compositionBalance, feedstockSupply, formalChargeBalance, chargeGeometry, chargeMoment, ionicPair,
+    surfaceCompletion, bulkSurfaceDriving, attachmentTopology, habitAnisotropy, frontMorphology, capillaryGeometry, epitaxyRegistry, compositionBalance, feedstockSupply, formalChargeBalance, chargeGeometry, chargeMoment, ionicPair, bondValence,
     externalDrive, thermalField, solutePartition, constraintRobustness, interfaceAccommodation,
     microstructureCoupling, loopClosure, defectPrecursors, coherencyMemory, arrivalPath, feedExposure,
     duplicateSites: canonical.duplicateSites,
@@ -13177,6 +13294,10 @@ function initializeOffLatticeSearch() {
   rejectedIonicPairScore = 0;
   ionicPairEvaluations = 0;
   ionicPairDistanceEvaluations = 0;
+  acceptedBondValenceScore = 0;
+  rejectedBondValenceScore = 0;
+  bondValenceEvaluations = 0;
+  bondValenceDistanceEvaluations = 0;
   acceptedSurfaceDeficit = 0;
   rejectedSurfaceDeficit = 0;
   acceptedGrowthDrivingScore = 0;
@@ -13814,6 +13935,7 @@ function currentGrowthProtocolSettings() {
     compositionPreference, feedstockSupplyMode, soluteSpecies: resolvedSoluteSpecies(), solutePartitionMode, solutePartitionWeight,
     chargePreference, chargeGeometryMode, chargeGeometryReach, chargeGeometryWeight,
     chargeMomentMode, chargeMomentWeight, ionicPairMode, ionicPairReach, ionicPairWeight,
+    bondValenceMode, bondValenceWeight,
     surfacePreference, growthDrivingMode, growthDrivingWeight,
     attachmentTopologyMode, attachmentTopologyWeight,
     habitAnisotropyMode, habitAnisotropyWeight,
@@ -13859,8 +13981,8 @@ function renderGrowthControlGroupSummaries() {
   const chemistryActive = activeCount([activeCompositionBalanceWeight() > 0,
     feedstockSupplyMode !== "open", activeSolutePartitionWeight() > 0,
     activeFormalChargeWeight() > 0, activeChargeGeometryWeight() > 0,
-    activeChargeMomentWeight() > 0, activeIonicPairWeight() > 0]);
-  growthChemistryGroupState.textContent = `${chemistryActive}/7 active${formalChargeTarget?.available ? " · charge supplied" : ""}`;
+    activeChargeMomentWeight() > 0, activeIonicPairWeight() > 0, activeBondValenceWeight() > 0]);
+  growthChemistryGroupState.textContent = `${chemistryActive}/8 active${formalChargeTarget?.available ? " · charge supplied" : ""}`;
   const interfaceActive = activeCount([activeSurfaceCompletionWeight() > 0, activeGrowthDrivingWeight() > 0,
     activeAttachmentTopologyWeight() > 0, activeHabitAnisotropyWeight() > 0,
     activeDefectPrecursorWeight() > 0, activeCoherencyMemoryWeight() > 0,
@@ -13895,6 +14017,7 @@ function applyGrowthProtocol(mode, options = {}) {
   chargeMomentMode = settings.chargeMomentMode; chargeMomentWeight = settings.chargeMomentWeight;
   ionicPairMode = settings.ionicPairMode; ionicPairReach = settings.ionicPairReach;
   ionicPairWeight = settings.ionicPairWeight;
+  bondValenceMode = settings.bondValenceMode; bondValenceWeight = settings.bondValenceWeight;
   solutePartitionMode = settings.solutePartitionMode; solutePartitionWeight = settings.solutePartitionWeight;
   surfacePreference = settings.surfacePreference;
   growthDrivingMode = settings.growthDrivingMode; growthDrivingWeight = settings.growthDrivingWeight;
@@ -14733,6 +14856,8 @@ function syncStageOptions() {
     ionicPairSelect.value = ionicPairMode;
     ionicPairReachSelect.value = String(ionicPairReach);
     ionicPairWeightSelect.value = String(ionicPairWeight);
+    bondValenceSelect.value = bondValenceMode;
+    bondValenceWeightSelect.value = String(bondValenceWeight);
     surfacePreferenceSelect.value = surfacePreference;
     growthDrivingSelect.value = growthDrivingMode;
     growthDrivingWeightSelect.value = String(growthDrivingWeight);
@@ -14788,6 +14913,8 @@ function syncStageOptions() {
     ionicPairSelect.disabled = finiteIceAnchorMode || !formalChargeTarget?.available;
     ionicPairReachSelect.disabled = finiteIceAnchorMode || !formalChargeTarget?.available || ionicPairMode === "none";
     ionicPairWeightSelect.disabled = finiteIceAnchorMode || !formalChargeTarget?.available || ionicPairMode === "none";
+    bondValenceSelect.disabled = finiteIceAnchorMode || !formalChargeTarget?.available;
+    bondValenceWeightSelect.disabled = finiteIceAnchorMode || !formalChargeTarget?.available || bondValenceMode === "none";
     surfacePreferenceSelect.disabled = finiteIceAnchorMode;
     growthDrivingSelect.disabled = finiteIceAnchorMode;
     growthDrivingWeightSelect.disabled = finiteIceAnchorMode || growthDrivingMode === "none";
@@ -14844,6 +14971,17 @@ function syncStageOptions() {
     ionicPairHint.textContent = !formalChargeTarget?.available ? "requires complete supplied charge"
       : ionicPairMode === "none" ? "off · 1/r geometry reported"
         : `${ionicPairLabel()} · ${ionicPairReach === "global" ? "global finite" : `${ionicPairReach}dₙₙ`} · weight ${ionicPairWeight.toFixed(2)}`;
+    const availableIonStates = new Set([...suppliedFormalChargeBySpecies].map(([token, charge]) => {
+      const element = bondValenceElementToken(token);
+      return element ? `${element}|${charge}` : null;
+    }).filter(Boolean));
+    const availableBondValencePairs = BOND_VALENCE_PARAMETERS.filter((record) =>
+      availableIonStates.has(`${record.cation}|${record.cationCharge}`)
+        && availableIonStates.has(`${record.anion}|${record.anionCharge}`));
+    bondValenceHint.textContent = !formalChargeTarget?.available ? "requires complete supplied oxidation states"
+      : !availableBondValencePairs.length ? "no checked parameter for this chemistry · fails closed"
+        : bondValenceMode === "none" ? `${availableBondValencePairs.length} checked parameter range${availableBondValencePairs.length === 1 ? "" : "s"} · diagnostic only`
+          : `${availableBondValencePairs.length} checked parameter range${availableBondValencePairs.length === 1 ? "" : "s"} · weight ${bondValenceWeight.toFixed(2)}`;
     growthDrivingHint.textContent = growthDrivingMode === "none"
       ? "off · geometry reported" : `${growthDrivingLabel()} · bulk ${(100 * growthDrivingBulkShare()).toFixed(0)}% · weight ${growthDrivingWeight.toFixed(2)}`;
     attachmentTopologyHint.textContent = attachmentTopologyMode === "none"
@@ -14940,6 +15078,10 @@ function syncStageOptions() {
       ? " No complete supplied formal-charge channel exists, so ionic-pair geometry fails closed."
       : ionicPairMode === "none" ? " Incremental signed 1/r ionic-pair geometry is reported but contributes zero ranking weight."
         : ` A ${ionicPairWeight.toFixed(2)} soft ${ionicPairLabel()} term ranks the incremental signed formal-charge pair sum within ${ionicPairReach === "global" ? "the finite configuration" : `${ionicPairReach}dₙₙ`}; no dielectric, periodic images, Ewald sum, polarization, or electronic energy is inferred.`;
+    const bondValenceUse = !formalChargeTarget?.available
+      ? " No complete supplied oxidation-state channel exists, so bond-valence geometry fails closed."
+      : bondValenceMode === "none" ? " Checked IUCr bond-valence residuals are reported where parameters exist but contribute zero ranking weight."
+        : ` A ${bondValenceWeight.toFixed(2)} soft ${bondValenceLabel()} term favors lower local valence-sum residual at the physical Å scale; exact unsupported ion pairs fail closed, and no bond energy, redox process, force, or dynamics is inferred.`;
     const surfaceUse = surfacePreference === "none"
       ? " Coordination deficit is reported but contributes zero ranking weight."
       : ` A ${surfacePreference === "strong" ? "strong" : "balanced"} soft surface-completion term favors actions that heal observed coordination deficits without requiring a complete frontier shell.`;
@@ -14997,8 +15139,8 @@ function syncStageOptions() {
     growthModeNote.textContent = finiteIceAnchorMode
       ? "This sealed ice gate executes primitive H₂O connection ports with mutually exclusive orientation domains. Clusters² is disabled because no stationary promoted ice production has been certified."
       : hierarchyEnabled
-      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${ionicPairUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`
-      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${ionicPairUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`;
+      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${ionicPairUse}${bondValenceUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`
+      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${ionicPairUse}${bondValenceUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`;
   }
 }
 
@@ -15034,6 +15176,10 @@ function resetCounters() {
   rejectedIonicPairScore = 0;
   ionicPairEvaluations = 0;
   ionicPairDistanceEvaluations = 0;
+  acceptedBondValenceScore = 0;
+  rejectedBondValenceScore = 0;
+  bondValenceEvaluations = 0;
+  bondValenceDistanceEvaluations = 0;
   acceptedSurfaceDeficit = 0;
   rejectedSurfaceDeficit = 0;
   acceptedGrowthDrivingScore = 0;
@@ -15442,6 +15588,7 @@ function stateForCandidate(candidate, evaluation) {
     chargeGeometry: evaluation.chargeGeometry,
     chargeMoment: evaluation.chargeMoment,
     ionicPair: evaluation.ionicPair,
+    bondValence: evaluation.bondValence,
     surfaceCompletion: evaluation.surfaceCompletion,
     bulkSurfaceDriving: evaluation.bulkSurfaceDriving,
     attachmentTopology: evaluation.attachmentTopology,
@@ -15589,6 +15736,7 @@ function performOffLatticeEvent() {
     chargeGeometry: evaluation.chargeGeometry,
     chargeMoment: evaluation.chargeMoment,
     ionicPair: evaluation.ionicPair,
+    bondValence: evaluation.bondValence,
     attachmentTopology: evaluation.attachmentTopology,
     habitAnisotropy: evaluation.habitAnisotropy,
     defectPrecursors: evaluation.defectPrecursors,
@@ -15622,6 +15770,7 @@ function performOffLatticeEvent() {
       rejectedChargeGeometryScore += snapshotEvaluation.chargeGeometry.score;
       rejectedChargeMomentScore += snapshotEvaluation.chargeMoment.score;
       rejectedIonicPairScore += snapshotEvaluation.ionicPair.score;
+      rejectedBondValenceScore += snapshotEvaluation.bondValence.score;
       rejectedSurfaceDeficit += snapshotEvaluation.surfaceCompletion.scaledDelta;
       rejectedGrowthDrivingScore += snapshotEvaluation.bulkSurfaceDriving.score;
       rejectedAttachmentTopologyScore += snapshotEvaluation.attachmentTopology.score;
@@ -15680,6 +15829,7 @@ function performOffLatticeEvent() {
     acceptedChargeGeometryScore += evaluation.chargeGeometry.score;
     acceptedChargeMomentScore += evaluation.chargeMoment.score;
     acceptedIonicPairScore += evaluation.ionicPair.score;
+    acceptedBondValenceScore += evaluation.bondValence.score;
     acceptedSurfaceDeficit += evaluation.surfaceCompletion.scaledDelta;
     acceptedGrowthDrivingScore += evaluation.bulkSurfaceDriving.score;
     acceptedAttachmentTopologyScore += evaluation.attachmentTopology.score;
@@ -16722,6 +16872,14 @@ function physicsTranslationRecords(leap = null) {
         : "requires a complete explicitly supplied formal-charge channel",
       evidence: leap ? `Accepted mean score ${receiptRound(acceptedIonicPairScore / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedIonicPairScore / Math.max(1, rejectedDecisions), 4)}; ${ionicPairEvaluations.toLocaleString()} candidate evaluations and ${ionicPairDistanceEvaluations.toLocaleString()} pair-distance evaluations.` : "No incremental ionic-pair candidate evaluated yet.",
       boundary: "The dimensionless kernel is translation-, proper-rotation-, and uniform-scale-invariant and omits the candidate-independent current–current constant. No Coulomb prefactor, dielectric response, periodic images, Ewald sum, neutralizing background, polarization, charge transfer, electronic structure, electrostatic energy, potential, force, rate, or physical time is inferred." },
+    { id: "bond-valence", process: "local bond-valence satisfaction / oxidation-state geometry",
+      status: activeBondValenceWeight() > 0 ? "soft" : formalChargeTarget?.available ? "open" : "unavailable",
+      role: activeBondValenceWeight() > 0 ? "checked empirical ion-pair distance ordering" : "diagnostic",
+      encoding: formalChargeTarget?.available
+        ? `${bondValenceLabel()}; s=exp((R₀-R)/B), exact supplied ion states and explicit IUCr distance ranges, w=${activeBondValenceWeight().toFixed(2)}`
+        : "requires a complete explicitly supplied oxidation-state channel",
+      evidence: leap ? `Accepted mean score ${receiptRound(acceptedBondValenceScore / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedBondValenceScore / Math.max(1, rejectedDecisions), 4)}; ${bondValenceEvaluations.toLocaleString()} candidate evaluations and ${bondValenceDistanceEvaluations.toLocaleString()} pair-distance evaluations.` : "No local bond-valence candidate evaluated yet.",
+      boundary: "The empirical valence sum validates local geometry against supplied oxidation states. Unsupported ion pairs fail closed. It is not bond energy, electron density, charge transfer, redox inference, force, relaxation, kinetics, or physical time." },
     { id: "solute-partition", process: "solute partitioning / interfacial segregation", status: activeSolutePartitionWeight() > 0 ? "soft" : "open", role: activeSolutePartitionWeight() > 0 ? "species × spatial-field ordering" : "disabled",
       encoding: activeSolutePartitionWeight() > 0
         ? `${resolvedSoluteSpecies()} enrichment relative to its observed fraction × ${solutePartitionLabel()} spatial score, w=${activeSolutePartitionWeight().toFixed(2)}`
@@ -16858,6 +17016,7 @@ const PHYSICS_CONTROL_ROUTES = Object.freeze({
   "charge-geometry": { stage: 4, controlId: "chargeGeometrySelect", label: "Configure charge geometry" },
   "charge-moment": { stage: 4, controlId: "chargeMomentSelect", label: "Configure global charge shape" },
   "ionic-pair": { stage: 4, controlId: "ionicPairSelect", label: "Configure ionic pair geometry" },
+  "bond-valence": { stage: 4, controlId: "bondValenceSelect", label: "Configure bond-valence satisfaction" },
   "solute-partition": { stage: 4, controlId: "solutePartitionSelect", label: "Configure partition geometry" },
   surface: { stage: 4, controlId: "surfacePreferenceSelect", label: "Configure interface completion" },
   "bulk-surface-driving": { stage: 4, controlId: "growthDrivingSelect", label: "Configure reduced driving" },
@@ -17625,6 +17784,17 @@ function geometryConstraintEvidence(name, term, state, mode) {
         ? `Soft ${ionicPairLabel()} rank term with weight ${activeIonicPairWeight().toFixed(2)}.` : "Unavailable or diagnostic only.",
       boundary: "This uses a dimensionless 1/r formal-charge kernel, but no Coulomb prefactor, dielectric response, periodic images, Ewald sum, neutralizing background, polarization, charge transfer, electronic structure, electrostatic energy, potential, force, rate, or time.",
     },
+    "bond-valence geometry": {
+      observed: state?.bondValence?.available
+        ? `${state.bondValence.addedBondCount} checked bonds · residual burden ${state.bondValence.beforeBurden.toFixed(3)} → ${state.bondValence.afterBurden.toFixed(3)}`
+        : state?.bondValence?.reason || "complete supplied oxidation-state channel or checked ion pair unavailable",
+      encoding: state?.bondValence?.available
+        ? `${state.bondValence.usedParameters.map((record) => `${record.cation}–${record.anion} R₀=${record.r0} Å B=${record.b} Å`).join(" · ")}; physical Å scale retained`
+        : "No parameter is guessed for unsupported species/oxidation-state pairs.",
+      searchRole: activeBondValenceWeight() > 0
+        ? `Soft ${bondValenceLabel()} rank term with weight ${activeBondValenceWeight().toFixed(2)}.` : "Unavailable or diagnostic only.",
+      boundary: "The empirical valence sum is a structural validation descriptor, not bond energy, electron density, charge transfer, redox chemistry, force, relaxation, rate, or physical time.",
+    },
     "surface completion": {
       observed: `${coordinationRecords.length} learned bulk coordination channels define local deficit relative to the sample`,
       encoding: "A candidate receives credit for healing existing coordination deficits and cost for creating new exposed deficits.",
@@ -17878,6 +18048,9 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "ionic pair geometry", status: ranked(activeIonicPairWeight() > 0),
       value: state.ionicPair?.available ? `${signed(state.ionicPair.score)} · sum ${signed(state.ionicPair.signedPairSum)} · ${state.ionicPair.pairCount} pairs` : "unavailable",
       detail: activeIonicPairWeight() > 0 ? `${ionicPairLabel()} · ${ionicPairReach === "global" ? "global finite" : `R${ionicPairReach}dₙₙ`} · rank weight ${activeIonicPairWeight().toFixed(2)}` : state.ionicPair?.reason || "diagnostic" },
+    { name: "bond-valence geometry", status: ranked(activeBondValenceWeight() > 0),
+      value: state.bondValence?.available ? `${signed(state.bondValence.rawScore)} · ${state.bondValence.beforeBurden.toFixed(2)}→${state.bondValence.afterBurden.toFixed(2)} · ${state.bondValence.addedBondCount} bonds` : "unavailable",
+      detail: activeBondValenceWeight() > 0 ? `${bondValenceLabel()} · rank weight ${activeBondValenceWeight().toFixed(2)}` : state.bondValence?.reason || "diagnostic" },
     { name: "surface completion", status: ranked(activeSurfaceCompletionWeight() > 0),
       value: state.surfaceCompletion ? signed(state.surfaceCompletion.scaledDelta) : "not evaluated",
       detail: activeSurfaceCompletionWeight() > 0 ? `rank weight ${activeSurfaceCompletionWeight().toFixed(2)}` : "diagnostic · cannot authorize geometry" },
@@ -18015,6 +18188,9 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "ionic pair geometry", status: ranked(activeIonicPairWeight() > 0),
       value: activeIonicPairWeight() > 0 ? ionicPairLabel() : formalChargeTarget?.available ? "diagnostic" : "unavailable",
       detail: formalChargeTarget?.available ? `${ionicPairReach === "global" ? "global finite reach" : `R${ionicPairReach}dₙₙ`} · weight ${activeIonicPairWeight().toFixed(2)}` : "no complete supplied oxidation-state channel" },
+    { name: "bond-valence geometry", status: ranked(activeBondValenceWeight() > 0),
+      value: activeBondValenceWeight() > 0 ? bondValenceLabel() : formalChargeTarget?.available ? "diagnostic / fail-closed" : "unavailable",
+      detail: formalChargeTarget?.available ? `${BOND_VALENCE_PARAMETERS.length} explicit ranged parameter rows · weight ${activeBondValenceWeight().toFixed(2)}` : "no complete supplied oxidation-state channel" },
     { name: "surface completion", status: ranked(activeSurfaceCompletionWeight() > 0),
       value: activeSurfaceCompletionWeight() > 0 ? "ranked" : "diagnostic", detail: `weight ${activeSurfaceCompletionWeight().toFixed(2)}` },
     { name: "bulk–surface driving", status: ranked(activeGrowthDrivingWeight() > 0),
@@ -18569,6 +18745,79 @@ function renderIonicPairConvergence(snapshot) {
   ionicConvergenceState.textContent = `${audit.points.length} exact candidates · ${audit.uniqueWinners} reach winner${audit.uniqueWinners === 1 ? "" : "s"} · ${audit.rankReversalCandidates} rank-sensitive · ${audit.candidateSetDigest}`;
 }
 
+function buildBondValencePreview(snapshot) {
+  const supported = snapshot?.workbenchCandidates?.filter((candidate) => candidate.bondValence?.available) || [];
+  if (!supported.length) return null;
+  const activeKey = snapshot.policies?.find((policy) => policy.id === "active")?.candidateKey;
+  const candidateKey = snapshot.bondValenceCandidateKey
+    || (supported.some((candidate) => candidate.candidateKey === activeKey) ? activeKey : null)
+    || [...supported].sort((first, second) => second.bondValence.rawScore - first.bondValence.rawScore
+      || first.candidateKey.localeCompare(second.candidateKey))[0].candidateKey;
+  snapshot.bondValenceCandidateKey = candidateKey;
+  const candidate = supported.find((entry) => entry.candidateKey === candidateKey) || supported[0];
+  return { id: "bond-valence", label: bondValenceLabel(), action: candidate.action,
+    candidateKey: candidate.candidateKey, score: candidate.bondValence.rawScore,
+    bondValenceScore: candidate.bondValence.rawScore,
+    scoreTerms: candidate.scoreTerms, scoreTermTotal: candidate.baselineScore,
+    scoreDecompositionExact: true, preview: candidate.preview, candidate };
+}
+
+function renderBondValenceResiduals(snapshot) {
+  bondValenceCandidates.replaceChildren(); bondValenceResiduals.replaceChildren(); bondValenceDetail.replaceChildren();
+  const supported = snapshot?.workbenchCandidates?.filter((candidate) => candidate.bondValence?.available) || [];
+  const preview = buildBondValencePreview(snapshot);
+  if (!preview) {
+    bondValenceState.textContent = formalChargeTarget?.available
+      ? "no checked ion pair on this frontier · fails closed" : "complete supplied oxidation states required";
+    return;
+  }
+  [...supported].sort((first, second) => second.bondValence.rawScore - first.bondValence.rawScore
+    || first.candidateKey.localeCompare(second.candidateKey)).slice(0, 12).forEach((candidate) => {
+    const button = document.createElement("button"); button.type = "button";
+    button.classList.toggle("active", candidate.candidateKey === preview.candidateKey);
+    button.setAttribute("aria-pressed", String(candidate.candidateKey === preview.candidateKey));
+    const label = document.createElement("strong"); label.textContent = candidate.action;
+    const score = document.createElement("span");
+    score.textContent = `${signed(candidate.bondValence.rawScore)} · ${candidate.bondValence.addedBondCount} bonds`;
+    button.append(label, score);
+    button.addEventListener("click", () => {
+      snapshot.bondValenceCandidateKey = candidate.candidateKey;
+      previewPolicyWinner(buildBondValencePreview(snapshot), snapshot);
+    });
+    bondValenceCandidates.append(button);
+  });
+  const audit = preview.candidate.bondValence;
+  const displayed = [...audit.affectedSites]
+    .sort((first, second) => second.after.absoluteResidual - first.after.absoluteResidual)
+    .slice(0, 16);
+  const scale = Math.max(1, ...displayed.flatMap((record) =>
+    [Math.abs(record.before.residual), Math.abs(record.after.residual)]));
+  displayed.forEach((record) => {
+    const row = document.createElement("div"); row.className = "bond-valence-residual-row";
+    const label = document.createElement("code");
+    label.textContent = `${record.after.species}${record.after.charge >= 0 ? "+" : ""}${record.after.charge} · ${record.role === "added" ? "new" : "local"}`;
+    const track = document.createElement("div"); track.className = "bond-valence-residual-track";
+    [["before", record.before.residual], ["after", record.after.residual]].forEach(([kind, residual]) => {
+      const bar = document.createElement("i"); bar.className = `${kind}${residual < 0 ? " negative" : ""}`;
+      const width = 50 * Math.abs(residual) / scale;
+      bar.style.width = `${width}%`; bar.style.left = residual < 0 ? `${50 - width}%` : "50%";
+      bar.title = `${kind}: Σs ${kind === "before" ? record.before.sum : record.after.sum} · residual ${residual}`;
+      track.append(bar);
+    });
+    const value = document.createElement("b");
+    value.textContent = `${record.before.absoluteResidual.toFixed(2)}→${record.after.absoluteResidual.toFixed(2)}`;
+    row.append(label, track, value); bondValenceResiduals.append(row);
+  });
+  const heading = document.createElement("strong"); heading.textContent = preview.action;
+  const score = document.createElement("b"); score.textContent = signed(audit.rawScore);
+  const burden = document.createElement("span");
+  burden.textContent = `absolute residual burden ${audit.beforeBurden.toFixed(3)} → ${audit.afterBurden.toFixed(3)} · ${audit.addedBondCount} newly evaluated bonds · ${audit.affectedExistingSites} existing + ${audit.addedSites} emitted sites`;
+  const parameters = document.createElement("span");
+  parameters.textContent = `${audit.usedParameters.map((record) => `${record.cation}${record.cationCharge >= 0 ? "+" : ""}${record.cationCharge}–${record.anion}${record.anionCharge}: R₀ ${record.r0} Å, B ${record.b} Å`).join(" · ")}${audit.missingPairTypes.length ? ` · unsupported ${audit.missingPairTypes.join(", ")}` : ""}`;
+  bondValenceDetail.append(heading, score, burden, parameters);
+  bondValenceState.textContent = `${supported.length} supported exact candidate${supported.length === 1 ? "" : "s"} · ${BOND_VALENCE_PROVENANCE.dataset} · ${snapshot.candidateDigest}`;
+}
+
 function renderPolicyWorkbenchState(snapshot, workbench = buildPolicyWorkbench(snapshot)) {
   if (!snapshot || !workbench) {
     policyWorkbenchState.textContent = "awaiting a frozen frontier";
@@ -18628,6 +18877,7 @@ function renderPolicyComparison() {
     renderPolicySpatialField(null);
     renderChargeShapePortrait(null);
     renderIonicPairConvergence(null);
+    renderBondValenceResiduals(null);
     return;
   }
   if (iceAnchorTrace) {
@@ -18646,6 +18896,7 @@ function renderPolicyComparison() {
     renderPolicySpatialField(null);
     renderChargeShapePortrait(null);
     renderIonicPairConvergence(null);
+    renderBondValenceResiduals(null);
     return;
   }
   if (!lastPolicyComparison) {
@@ -18664,6 +18915,7 @@ function renderPolicyComparison() {
     renderPolicySpatialField(null);
     renderChargeShapePortrait(null);
     renderIonicPairConvergence(null);
+    renderBondValenceResiduals(null);
     return;
   }
   const snapshot = policyComparisonHistory[selectedPolicySnapshotIndex] || lastPolicyComparison;
@@ -18674,6 +18926,8 @@ function renderPolicyComparison() {
   const chargeShapePreview = selectedPolicyPreviewId === "charge-shape" ? buildChargeShapePreview(snapshot) : null;
   const ionicConvergencePreview = selectedPolicyPreviewId === "ionic-convergence"
     ? buildIonicPairConvergencePreview(snapshot) : null;
+  const bondValencePreview = selectedPolicyPreviewId === "bond-valence"
+    ? buildBondValencePreview(snapshot) : null;
   policyComparisonState.textContent = `${snapshot.frontier} candidates · ${snapshot.admissible} admitted · ${snapshot.uniqueTopActions} winner${snapshot.uniqueTopActions === 1 ? "" : "s"}`
     + `${snapshot.referenceGuided ? " · target-aware replay" : " · target-blind frontier"}`;
   snapshot.policies.forEach((policy) => {
@@ -18731,6 +18985,17 @@ function renderPolicyComparison() {
     row.append(label, action, score); policyComparison.append(row);
     row.addEventListener("click", () => previewPolicyWinner(ionicConvergencePreview, snapshot));
   }
+  if (bondValencePreview) {
+    const row = document.createElement("button"); row.type = "button";
+    row.classList.toggle("active", selectedPolicyPreviewId === "bond-valence");
+    row.setAttribute("aria-pressed", String(selectedPolicyPreviewId === "bond-valence"));
+    row.title = "Preview this exact local bond-valence candidate; this never executes";
+    const label = document.createElement("small"); label.textContent = bondValencePreview.label;
+    const action = document.createElement("strong"); action.textContent = bondValencePreview.action;
+    const score = document.createElement("em"); score.textContent = bondValencePreview.bondValenceScore.toFixed(3);
+    row.append(label, action, score); policyComparison.append(row);
+    row.addEventListener("click", () => previewPolicyWinner(bondValencePreview, snapshot));
+  }
   if (paretoPreview) {
     const row = document.createElement("button"); row.type = "button";
     row.classList.toggle("active", selectedPolicyPreviewId === "pareto");
@@ -18757,6 +19022,7 @@ function renderPolicyComparison() {
     : selectedPolicyPreviewId === "spatial" && spatialPreview ? spatialPreview
     : selectedPolicyPreviewId === "charge-shape" && chargeShapePreview ? chargeShapePreview
     : selectedPolicyPreviewId === "ionic-convergence" && ionicConvergencePreview ? ionicConvergencePreview
+    : selectedPolicyPreviewId === "bond-valence" && bondValencePreview ? bondValencePreview
     : selectedPolicyPreviewId === "pareto" && paretoPreview ? paretoPreview
     : selectedPolicyPreviewId === "omission" && omissionPreview ? omissionPreview
     : snapshot.policies.find((policy) => policy.id === selectedPolicyPreviewId)
@@ -18768,6 +19034,7 @@ function renderPolicyComparison() {
   renderPolicySpatialField(snapshot);
   renderChargeShapePortrait(snapshot);
   renderIonicPairConvergence(snapshot);
+  renderBondValenceResiduals(snapshot);
   const sensitive = policyComparisonHistory.filter((entry) => entry.uniqueTopActions > 1).length;
   const meanWinners = policyComparisonHistory.reduce((sum, entry) => sum + entry.uniqueTopActions, 0)
     / Math.max(1, policyComparisonHistory.length);
@@ -18791,12 +19058,13 @@ function renderPolicyComparison() {
   const selectedPolicy = selectedPolicyPreviewId === "workbench" ? workbench
     : selectedPolicyPreviewId === "spatial" && spatialPreview ? spatialPreview
     : selectedPolicyPreviewId === "charge-shape" && chargeShapePreview ? chargeShapePreview
+    : selectedPolicyPreviewId === "bond-valence" && bondValencePreview ? bondValencePreview
     : selectedPolicyPreviewId === "pareto" && paretoPreview ? paretoPreview
     : selectedPolicyPreviewId === "omission" && omissionPreview ? omissionPreview
     : snapshot.policies.find((policy) => policy.id === selectedPolicyPreviewId) || snapshot.policies.at(-1);
   policyPreviewState.textContent = `${selectedPolicy.label}: ${selectedPolicy.action} · frontier ${snapshot.candidateDigest} · candidate set target-free`
     + `${snapshot.rankingTargetUsed ? " · replay score reference-guided" : " · ranking target-free"}`
-    + `${["workbench", "spatial", "charge-shape", "pareto", "omission"].includes(selectedPolicy.id) ? " · counterfactual preview only · not executed" : ""}`;
+    + `${["workbench", "spatial", "charge-shape", "bond-valence", "pareto", "omission"].includes(selectedPolicy.id) ? " · counterfactual preview only · not executed" : ""}`;
 }
 
 function liveGrowthCertificate() {
@@ -19903,6 +20171,17 @@ ionicPairReachSelect.addEventListener("change", () => {
 ionicPairWeightSelect.addEventListener("change", () => {
   const value = Number(ionicPairWeightSelect.value);
   ionicPairWeight = [.12, .24, .48].includes(value) ? value : .24;
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+bondValenceSelect.addEventListener("change", () => {
+  bondValenceMode = bondValenceSelect.value === "satisfy" ? "satisfy" : "none";
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+bondValenceWeightSelect.addEventListener("change", () => {
+  const value = Number(bondValenceWeightSelect.value);
+  bondValenceWeight = [.12, .24, .48].includes(value) ? value : .24;
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
 });

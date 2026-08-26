@@ -4794,3 +4794,20 @@ candidate-set digest, winner changes, rank-sensitive candidate count, selected
 curve, and all nonmutation gates. This diagnoses finite-cutoff sensitivity—it
 does not establish Ewald convergence, dielectric screening, electrostatic
 energy, an infinite periodic sum, or a thermodynamic limit.
+
+Build 160 adds an optional local bond-valence-sum residual as a more chemically
+specific physics-to-geometry channel. It evaluates only exact supplied
+oxidation states and explicitly checked cation-anion parameter ranges using
+`s = exp((R0 - R) / B)` in physical angstrom coordinates. For each unchanged
+hard-admitted candidate, the app measures the absolute valence-sum residual on
+affected existing sites and newly emitted sites before and after attachment;
+the normalized residual reduction may be inspected or used as a soft ranking
+term. A clickable candidate card shows the local before/after residuals,
+supported parameter values, unsupported species pairs, exact candidate digest,
+and unchanged proper-SE(3) pose. Mixed oxidation states remain distinct, and
+occupational alternatives or unparameterized pairs fail closed rather than
+receiving guessed chemistry. The checked entries are pinned to the IUCr
+`bvparm2020` parameter table with its source hash retained in the receipt.
+This is local bond-valence bookkeeping—not an interatomic energy, electron
+density, charge transfer, force, relaxation, kinetics, or physical time—and it
+never changes candidate geometry or hard admission.

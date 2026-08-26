@@ -9,8 +9,8 @@ README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
 
 def test_global_charge_moments_contract():
-    assert 'buildId: "20260826-159"' in APP
-    assert 'app.js?v=20260826-159' in HTML
+    assert 'buildId: "20260826-160"' in APP
+    assert 'app.js?v=20260826-160' in HTML
     for control in ("chargeMomentSelect", "chargeMomentWeightSelect", "chargeMomentHint"):
         assert f'id="{control}"' in HTML
         assert f'$("{control}")' in APP
