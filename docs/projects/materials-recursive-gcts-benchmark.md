@@ -5704,3 +5704,28 @@ generation, hard admission, coordinate changes, physical potential use, and
 kinetics. This makes external calculation evidence experimentally usable while
 retaining a sharp boundary: it is a transferred rank hypothesis, not an energy
 functional, force field, barrier model, trajectory, or clock.
+
+## Build 175: deployment abstains outside frozen geometric support
+
+The source artifact now includes per-channel minima and maxima in addition to
+means, scales, coefficients, and target normalization. Support is the frozen
+axis-aligned three-feature box with a predeclared `0.25` source-standard-
+deviation margin. No target statistic expands this box. Cross-archive promotion
+adds two independent requirements: at least five target frames must be inside
+support and supported frames must comprise at least `80%` of all paired target
+frames. Rank transfer and positive `Q²` remain necessary but are no longer
+sufficient on their own.
+
+Candidate-level use follows the same rule. Each emitted cluster is mapped to
+the identical colored distance, angle, and coordination features, audited
+against frozen source bounds, and scored only when supported. An unsupported
+candidate produces a zero external term rather than an extrapolated value;
+the grammar, other score channels, and exact geometric gates continue normally.
+The workbench snapshot and receipt preserve supported and abstained counts,
+coverage, maximum standardized excess, and target-frame support decisions.
+
+This is a deterministic domain-of-applicability guard, not probabilistic
+uncertainty quantification. It makes the calibrated hypothesis more honest by
+refusing unsupported use, while still making no claim of a potential, force,
+barrier, dynamics, kinetics, or generalization beyond the tested archive
+domain.

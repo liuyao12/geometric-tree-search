@@ -14,11 +14,24 @@ DOCS = (ROOT / "docs" / "projects" / "materials-recursive-gcts-benchmark.md").re
 def test_promotion_gate_is_predeclared_and_no_refit():
     assert "export const GEOMETRY_SURROGATE_PROMOTION_GATE" in CALIBRATION
     assert "minimumTargetFrames: 5" in CALIBRATION
+    assert "minimumSupportedTargetFrames: 5" in CALIBRATION
+    assert "minimumFeatureSupportCoverage: .8" in CALIBRATION
     assert "minimumPredictionSpearman: .8" in CALIBRATION
     assert "minimumPredictiveQSquared: 0" in CALIBRATION
     assert "transfer?.refitPerformed === false" in CALIBRATION
     assert "transfer?.targetValuesUsedForPrediction === false" in CALIBRATION
     assert "transfer.predictiveQSquared >" in CALIBRATION
+
+
+def test_source_support_is_frozen_and_outside_candidates_abstain():
+    assert "GEOMETRY_SURROGATE_SUPPORT_MARGIN_STANDARD_DEVIATIONS = .25" in CALIBRATION
+    assert "export function frozenGeometryFeatureSupport" in CALIBRATION
+    assert "featureMinimums" in CALIBRATION
+    assert "featureMaximums" in CALIBRATION
+    assert "support.inSupport ? Math.max(-3, Math.min(3, standardized)) : 0" in CALIBRATION
+    assert "abstained: !support.inSupport" in CALIBRATION
+    assert "currentExternalCandidateSupportAudit" in APP
+    assert "currentFrontierAbstainedCandidates" in APP
 
 
 def test_candidate_channels_reuse_exact_archive_mismatch_field():
@@ -53,9 +66,11 @@ def test_receipt_and_public_boundary_distinguish_rank_from_physics():
     assert "Build 174" in DOCS
 
 
-def test_build_174_is_versioned():
-    assert 'buildId: "20260826-174"' in APP
-    assert 'app.js?v=20260826-174' in HTML
+def test_build_175_is_versioned():
+    assert 'buildId: "20260826-175"' in APP
+    assert 'app.js?v=20260826-175' in HTML
     assert 'style.css?v=20260826-72' in HTML
-    assert 'evidence-atlas.js?v=20260826-16' in HTML
-    assert 'geometry-calculation-calibration.js?v=20260826-4' in APP
+    assert 'evidence-atlas.js?v=20260826-17' in HTML
+    assert 'geometry-calculation-calibration.js?v=20260826-5' in APP
+    assert "Build 175" in README
+    assert "Build 175" in DOCS

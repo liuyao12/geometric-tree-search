@@ -5064,3 +5064,26 @@ This is a calibrated ranking hypothesis, not a learned interatomic potential.
 It cannot emit a new geometry, relax an atom, infer a barrier, integrate a
 force, or supply kinetics or physical time. One successful compatible transfer
 does not establish broad chemical or method generalization.
+
+### Build 175 · frozen feature support and candidate abstention
+
+Promotion now tests applicability as well as predictive ordering. Every newly
+pinned artifact freezes the observed minimum and maximum of each distance,
+angle, and coordination channel. A fixed `0.25` source-standard-deviation
+margin absorbs small numerical differences without adapting to the target. The
+second archive must contain at least five supported frames and at least `80%`
+of all paired frames must lie inside that frozen feature box; otherwise the
+promotion control fails closed even when rank correlation looks favorable.
+
+The same support audit runs on every frozen growth candidate. Supported
+candidates receive the Build 174 dimensionless soft term. Outside-support
+candidates receive exactly zero external-calibration contribution and are
+reported as abstentions; their raw grammar score and all other geometric terms
+remain available. The growth-stage summary shows supported/evaluated counts,
+and the experiment receipt hashes target support decisions and records current
+frontier coverage, excess distance, margins, and abstentions.
+
+The feature box is deliberately a conservative applicability boundary, not a
+Bayesian uncertainty, confidence interval, or guarantee of accuracy. It stops
+unobserved extrapolation from masquerading as calibrated physics while leaving
+candidate generation, hard admission, and geometry unchanged.

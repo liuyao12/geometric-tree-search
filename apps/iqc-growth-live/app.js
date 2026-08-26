@@ -13,9 +13,10 @@ import { randomNomadStructure } from "./structure-database.js?v=20260826-6";
 import { bestAffineNeighborhoodResidual } from "./relaxation-local-environment.js?v=20260826-2";
 import { assessGeometrySurrogatePromotion, evaluateFrozenGeometrySurrogate,
   frozenGeometrySurrogateArtifact, frozenGeometrySurrogatePreference,
+  GEOMETRY_SURROGATE_SUPPORT_MARGIN_STANDARD_DEVIATIONS,
   geometryCalculationCalibration, geometryCalculationSurrogate, geometryReferenceIndices,
   geometrySurrogateCompatibilityDifferences, geometrySurrogateCompatibilityKey }
-  from "./geometry-calculation-calibration.js?v=20260826-4";
+  from "./geometry-calculation-calibration.js?v=20260826-5";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -2006,6 +2007,15 @@ function externalCalibrationForFreshSites(rawFreshSites, projection) {
     physicalPotentialUsed: false, physicalTimeIntegrated: false };
 }
 
+function currentExternalCandidateSupportAudit() {
+  const rows = (lastPolicyComparison?.workbenchCandidates || [])
+    .map((candidate) => candidate.externalCalibration).filter((entry) => entry?.available);
+  const supported = rows.filter((entry) => entry.inFeatureSupport).length;
+  return { evaluatedCandidates: rows.length, supportedCandidates: supported,
+    abstainedCandidates: rows.length - supported,
+    coverage: rows.length ? supported / rows.length : null };
+}
+
 function renderRelaxationCalibrationLibrary(calibration, surrogate) {
   const existing = relaxationCalibrationSourceId;
   relaxationCalibrationLibrarySelect.replaceChildren(new Option("No pinned source", ""));
@@ -2052,11 +2062,11 @@ function renderRelaxationCalibrationLibrary(calibration, surrogate) {
   relaxationCalibrationPromote.classList.toggle("active", active);
   relaxationCalibrationPromote.textContent = active ? "GCTS mark active" : "Use as GCTS mark";
   relaxationCalibrationPromotionState.textContent = promotion.eligible
-    ? `Promotion gate passed · n≥${promotion.gate.thresholds.minimumTargetFrames}, ρ≥${promotion.gate.thresholds.minimumPredictionSpearman.toFixed(2)}, Q²>0. Opt-in adds a bounded ${EXTERNAL_CALIBRATION_MARKING_WEIGHT.toFixed(2)} rank term only; candidates and hard gates are unchanged.`
+    ? `Promotion gate passed · ${promotion.audit.transfer.supportedFrames}/${promotion.audit.transfer.pairedFrames} target frames inside frozen feature support · nₛ≥${promotion.gate.thresholds.minimumSupportedTargetFrames}, coverage≥${Math.round(100 * promotion.gate.thresholds.minimumFeatureSupportCoverage)}%, ρ≥${promotion.gate.thresholds.minimumPredictionSpearman.toFixed(2)}, Q²>0. Opt-in adds a bounded ${EXTERNAL_CALIBRATION_MARKING_WEIGHT.toFixed(2)} rank term only; candidates and hard gates are unchanged.`
     : `Not promotable · failed ${promotion.gate.failedChecks.join(", ") || "cross-archive gate"}. Growth ranking remains unchanged.`;
   const formatted = (value) => Number.isFinite(value) ? `${value >= 0 ? "+" : ""}${value.toFixed(3)}` : "unresolved";
   relaxationCalibrationTransferState.textContent = transfer.available
-    ? `Frozen ${source.compatibility.targetMode} transfer · ${transfer.pairedFrames} target frames · ρ ${formatted(transfer.predictionSpearman)} · Q² ${formatted(transfer.predictiveQSquared)} · MAE ${transfer.meanAbsoluteError.toPrecision(3)} · no refit.`
+    ? `Frozen ${source.compatibility.targetMode} transfer · ${transfer.pairedFrames} target frames · support ${transfer.supportedFrames}/${transfer.pairedFrames} (${(100 * transfer.featureSupportCoverage).toFixed(0)}%) · ρ ${formatted(transfer.predictionSpearman)} · Q² ${formatted(transfer.predictiveQSquared)} · MAE ${transfer.meanAbsoluteError.toPrecision(3)} · no refit.`
     : `Frozen transfer withheld: ${transfer.reason}.`;
 }
 
@@ -7592,6 +7602,7 @@ async function buildExperimentReceipt() {
       ? relaxationGeometryCalibration.forceSurrogate : relaxationGeometryCalibration.energySurrogate) : null;
   const externalCalibrationPromotionAudit = externalCalibrationPromotion();
   const externalCalibrationPromotionActive = Boolean(activeExternalCalibrationPromotion());
+  const externalCalibrationCandidateSupportAudit = currentExternalCandidateSupportAudit();
   const relaxationGeometryCalibrationRecords = relaxationGeometryCalibration?.records.map((record) => ({
     frameIndexZeroBased: record.frameIndex,
     meanContactAngleMismatch: receiptRound(record.meanContactAngleMismatch, 10),
@@ -7648,9 +7659,12 @@ async function buildExperimentReceipt() {
         ...source.artifact,
         featureMeans: source.artifact.featureMeans.map((value) => receiptRound(value, 10)),
         featureScales: source.artifact.featureScales.map((value) => receiptRound(value, 10)),
+        featureMinimums: source.artifact.featureMinimums?.map((value) => receiptRound(value, 10)) || null,
+        featureMaximums: source.artifact.featureMaximums?.map((value) => receiptRound(value, 10)) || null,
         standardizedCoefficients: source.artifact.standardizedCoefficients
           .map((value) => receiptRound(value, 10)),
         targetMean: receiptRound(source.artifact.targetMean, 10),
+        targetScale: receiptRound(source.artifact.targetScale, 10),
       },
       sourcePreflight: Object.fromEntries(Object.entries(source.sourcePreflight).map(([key, value]) =>
         [key, typeof value === "number" ? receiptRound(value, 10) : value])),
@@ -7661,6 +7675,9 @@ async function buildExperimentReceipt() {
   const relaxationTransferPredictions = activeRelaxationTransferAudit?.transfer?.predictions?.map((prediction) => ({
     recordIndex: prediction.recordIndex, observed: receiptRound(prediction.observed, 10),
     predicted: receiptRound(prediction.predicted, 10),
+    inFeatureSupport: prediction.featureSupport?.inSupport || false,
+    maximumStandardizedExcess: Number.isFinite(prediction.featureSupport?.maximumStandardizedExcess)
+      ? receiptRound(prediction.featureSupport.maximumStandardizedExcess, 10) : null,
   })) || [];
   const relaxationTransferPredictionsSha256 = relaxationTransferPredictions.length
     ? await receiptSha256(JSON.stringify(relaxationTransferPredictions)) : null;
@@ -7681,7 +7698,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-174",
+      buildId: "20260826-175",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7958,6 +7975,9 @@ async function buildExperimentReceipt() {
               differences: activeRelaxationTransferAudit.differences,
               available: activeRelaxationTransferAudit.transfer?.available || false,
               pairedFrames: activeRelaxationTransferAudit.transfer?.pairedFrames || 0,
+              supportedFrames: activeRelaxationTransferAudit.transfer?.supportedFrames || 0,
+              featureSupportCoverage: Number.isFinite(activeRelaxationTransferAudit.transfer?.featureSupportCoverage)
+                ? receiptRound(activeRelaxationTransferAudit.transfer.featureSupportCoverage, 10) : null,
               predictionSpearman: Number.isFinite(activeRelaxationTransferAudit.transfer?.predictionSpearman)
                 ? receiptRound(activeRelaxationTransferAudit.transfer.predictionSpearman, 10) : null,
               predictiveQSquared: Number.isFinite(activeRelaxationTransferAudit.transfer?.predictiveQSquared)
@@ -8422,6 +8442,21 @@ async function buildExperimentReceipt() {
         featureKeys: RELAXATION_SURROGATE_FEATURES,
         exactCandidateFeatureDefinitionsSharedWithArchiveSurrogate: true,
         promotionGate: externalCalibrationPromotionAudit.gate,
+        frozenSourceSupport: {
+          marginStandardDeviations: GEOMETRY_SURROGATE_SUPPORT_MARGIN_STANDARD_DEVIATIONS,
+          axisAlignedPerFeatureBounds: true,
+          targetArchiveSupportedFrames: externalCalibrationPromotionAudit.audit?.transfer?.supportedFrames || 0,
+          targetArchiveFeatureSupportCoverage: Number.isFinite(
+            externalCalibrationPromotionAudit.audit?.transfer?.featureSupportCoverage)
+            ? receiptRound(externalCalibrationPromotionAudit.audit.transfer.featureSupportCoverage, 10) : null,
+          currentFrontierEvaluatedCandidates: externalCalibrationCandidateSupportAudit.evaluatedCandidates,
+          currentFrontierSupportedCandidates: externalCalibrationCandidateSupportAudit.supportedCandidates,
+          currentFrontierAbstainedCandidates: externalCalibrationCandidateSupportAudit.abstainedCandidates,
+          currentFrontierCoverage: Number.isFinite(externalCalibrationCandidateSupportAudit.coverage)
+            ? receiptRound(externalCalibrationCandidateSupportAudit.coverage, 10) : null,
+          outsideSupportScore: 0,
+          uncertaintyProbabilityClaimed: false,
+        },
         configuredWeight: externalCalibrationPromotionActive ? EXTERNAL_CALIBRATION_MARKING_WEIGHT : 0,
         candidateSetChanged: false,
         candidateCoordinatesChanged: false,
@@ -13215,6 +13250,16 @@ function capturePolicyComparison(entries) {
       } : { available: false, reason: entry.evaluation.chargeMoment.reason || "unavailable" },
       ionicPairProfile: ionicPairReachProfileForFreshSites(entry.evaluation.fresh),
       bondValence: entry.evaluation.bondValence,
+      externalCalibration: entry.evaluation.externalCalibration.available ? {
+        available: true,
+        score: entry.evaluation.externalCalibration.score,
+        predicted: entry.evaluation.externalCalibration.predicted,
+        standardized: entry.evaluation.externalCalibration.standardized,
+        inFeatureSupport: entry.evaluation.externalCalibration.inFeatureSupport,
+        abstained: entry.evaluation.externalCalibration.abstained,
+        maximumStandardizedExcess: entry.evaluation.externalCalibration.featureSupport
+          ?.maximumStandardizedExcess ?? null,
+      } : { available: false },
       freshSites: entry.evaluation.fresh.map((site) => ({ species: site.species, p: site.p.clone() })),
       fullSites: entry.evaluation.sites.map((site) => ({ species: site.species, p: site.p.clone() })),
       preview: { p: entry.candidate.position.clone(), rotation: entry.candidate.rotation.clone(), type: entry.candidate.type },
@@ -16555,7 +16600,8 @@ function syncStageOptions() {
       ? "choose supported-film geometry"
       : epitaxyTemplateMode === "none" ? "inert excluded plane · registry off"
         : `${epitaxyTemplateLabel()} · weight ${epitaxyWeight.toFixed(2)}`;
-    stageOptionsState.textContent = `${growthProtocolMode === "custom" ? "custom" : GROWTH_PROTOCOLS[growthProtocolMode].label} · ${activeExternalCalibrationPromotion() ? "external geometry mark" : policySelect.value === "marked" && active ? active.name.split(" · ")[0] : "baseline"} · ${geometryPreference === "strain" ? `strain ${geometricStrainWeight.toFixed(2)}` : "no strain"}`;
+    const externalCandidateSupport = currentExternalCandidateSupportAudit();
+    stageOptionsState.textContent = `${growthProtocolMode === "custom" ? "custom" : GROWTH_PROTOCOLS[growthProtocolMode].label} · ${activeExternalCalibrationPromotion() ? `external geometry ${externalCandidateSupport.supportedCandidates}/${externalCandidateSupport.evaluatedCandidates || "—"}` : policySelect.value === "marked" && active ? active.name.split(" · ")[0] : "baseline"} · ${geometryPreference === "strain" ? `strain ${geometricStrainWeight.toFixed(2)}` : "no strain"}`;
     primitiveGrowthButton.classList.toggle("active", finiteIceAnchorMode || !hierarchyEnabled);
     primitiveGrowthButton.setAttribute("aria-pressed", String(finiteIceAnchorMode || !hierarchyEnabled));
     hierarchicalGrowthButton.classList.toggle("active", !finiteIceAnchorMode && hierarchyEnabled);
@@ -16563,7 +16609,7 @@ function syncStageOptions() {
     hierarchicalGrowthButton.disabled = finiteIceAnchorMode;
     primitiveGrowthButton.disabled = finiteIceAnchorMode;
     const markingUse = activeExternalCalibrationPromotion()
-      ? `The selected cross-archive geometry mark contributes a bounded ${EXTERNAL_CALIBRATION_MARKING_WEIGHT.toFixed(2)} soft rank term over the unchanged candidate set. It passed a frozen no-refit transfer gate but is not a physical potential or hard admission rule.`
+      ? `The selected cross-archive geometry mark contributes a bounded ${EXTERNAL_CALIBRATION_MARKING_WEIGHT.toFixed(2)} soft rank term to ${externalCandidateSupport.supportedCandidates}/${externalCandidateSupport.evaluatedCandidates || "—"} current candidates inside frozen source support and abstains on the rest. It passed a frozen no-refit transfer gate but is not a physical potential or hard admission rule.`
       : markingSearchMode === "portfolio"
       ? `The ${compatibleMarkings().length || 1}-mark compatible library scores each unchanged action; any trained mark may admit it.`
       : "The selected vocabulary-compatible marking ranks and prunes the unchanged candidate placements.";
