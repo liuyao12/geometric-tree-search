@@ -5239,3 +5239,20 @@ intervention audit must independently confirm the same input digest and exactly 
 changed registered multiplier before an outcome difference is called one-factor.
 Turning off an encoded term tests the model representation—not removal of the underlying
 physical mechanism, potential energy, barrier, kinetics, or physical time.
+
+### Build 184 · matched-horizon outcome for the registered ablation
+
+The experiment notebook now closes the baseline/ablation loop. When two saved runs carry
+the same registered hypothesis pair, it identifies their arms independent of selection
+order and verifies the same observed-input SHA-256, intact registration, executed
+target-blind histories, and byte-identical recorded controls apart from the registered
+multiplier. Any failed check withholds every delta rather than falling back to an ordinary
+side-by-side comparison.
+
+Valid pairs are aligned at the largest common number of discrete structural updates,
+provided neither retained history is truncated. The interactive outcome card reports
+baseline, ablation, and ablation-minus-baseline values for explicit sites, placed clusters,
+causal depth, accepted and rejected actions, geometric S(q) peak prominence, and local
+q6/|psi6| order, together with frontier and comparison digests. This is a response of the
+encoded search model at a matched update horizon. It is not physical time, energy,
+kinetics, removal of a physical interaction, or proof of a causal physical mechanism.

@@ -5889,3 +5889,26 @@ intervention-factor ledger treats the registered arm/multiplier as an explicit s
 factor and still compares every other recorded control. Outcome attribution is withheld
 if the input or another control changed. This is an ablation of a geometry-encoded model
 term, not a claim that a physical mechanism can literally be removed from the material.
+
+## Build 184: fail-closed outcome attribution at a common search horizon
+
+Build 184 adds a pure comparison contract for the registered score-channel experiment.
+It accepts exactly one baseline and one ablation summary and requires the same frozen
+pair, matrix mode, candidate-set digest, audit digest, scenario and structure SHA-256.
+Both arms must have executed, remain target-free, retain complete histories, and differ
+in exactly one recorded intervention factor: `hypothesisSeparation`. The contract is
+selection-order invariant and emits a deterministic comparison digest. Failure at any
+gate yields no numerical response.
+
+The common horizon is `min(baseline structural leaps, ablation structural leaps)`, with
+the seed stored at point zero. At that exact point the portal compares explicit structural
+sites, cluster placements, accepted-parent lineage depth, cumulative accepted/rejected
+actions, unit-weight geometric powder-S(q) peak prominence, and proper-rotation-invariant
+local q6/|psi6| order. Missing optional observables stay unavailable rather than being
+imputed. No candidate rows are pooled, no search is replayed, and coordinates remain
+outside the notebook summary.
+
+This produces a controlled response of one encoded scoring term under recorded browser
+conditions. The horizontal alignment is a discrete GCTS update count—not seconds—and
+the result does not identify a physical energy contribution, barrier, kinetic law,
+causal materials mechanism, or statistical effect across independent specimens.

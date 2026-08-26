@@ -23,6 +23,8 @@ import { policyIdentifiabilityAcrossArms, policyIdentifiabilityAudit, policyIden
 import { applyHypothesisSeparationMultipliers as applyFrozenHypothesisSeparationMultipliers,
   validateHypothesisSeparationExperiment }
   from "./hypothesis-separation.js?v=20260826-1";
+import { compareHypothesisSeparationOutcomes }
+  from "./hypothesis-separation-outcome.js?v=20260826-1";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -493,6 +495,7 @@ const clearNotebookButton = $("clearNotebookButton");
 const notebookState = $("notebookState");
 const notebookEntries = $("notebookEntries");
 const notebookComparison = $("notebookComparison");
+const notebookHypothesisOutcome = $("notebookHypothesisOutcome");
 const notebookInterventionAudit = $("notebookInterventionAudit");
 const notebookPhysicsAudit = $("notebookPhysicsAudit");
 const notebookPhysicsFilters = $("notebookPhysicsFilters");
@@ -7896,7 +7899,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-183",
+      buildId: "20260826-184",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -10991,6 +10994,54 @@ function renderNotebookControlledSweep(entries) {
   notebookSweepSummary.append(settingLedger, boundary);
 }
 
+function formatHypothesisOutcomeValue(value, unit) {
+  if (value === null || value === undefined || !Number.isFinite(Number(value))) return "not retained";
+  const number = Number(value);
+  const digits = Number.isInteger(number) ? 0 : 4;
+  return `${number.toLocaleString(undefined, { maximumFractionDigits: digits })}${unit ? ` ${unit}` : ""}`;
+}
+
+function renderNotebookHypothesisOutcome(selected) {
+  const audit = compareHypothesisSeparationOutcomes(selected);
+  notebookHypothesisOutcome.className = `notebook-hypothesis-outcome ${audit.comparable ? "matched" : "waiting"}`;
+  notebookHypothesisOutcome.replaceChildren();
+  const header = document.createElement("header");
+  const eyebrow = document.createElement("small"); eyebrow.textContent = "registered hypothesis outcome";
+  const title = document.createElement("strong");
+  title.textContent = audit.comparable ? `${audit.experiment.ablatedTermId} ×0 response` : "baseline + ablation required";
+  const detail = document.createElement("span"); detail.textContent = audit.detail;
+  header.append(eyebrow, title, detail); notebookHypothesisOutcome.append(header);
+  if (!audit.comparable) {
+    const reason = document.createElement("p");
+    reason.textContent = `Gate closed · ${audit.reason || "comparison unavailable"}. No outcome delta is reported.`;
+    notebookHypothesisOutcome.append(reason); return;
+  }
+  const identity = document.createElement("div"); identity.className = "notebook-hypothesis-identity";
+  [["matched horizon", `${audit.commonUpdates} structural updates`],
+    ["registered pair", `${audit.experiment.ablatedTermId} ↔ ${audit.experiment.retainedComparisonTermId}`],
+    ["frontier audit", audit.experiment.sourceAuditDigest], ["comparison", audit.comparisonDigest]].forEach(([label, value]) => {
+    const tile = document.createElement("span");
+    const small = document.createElement("small"); small.textContent = label;
+    const strong = document.createElement("strong"); strong.textContent = value;
+    tile.append(small, strong); identity.append(tile);
+  });
+  const grid = document.createElement("div"); grid.className = "notebook-hypothesis-grid";
+  audit.metrics.forEach((metric) => {
+    const tile = document.createElement("article");
+    const label = document.createElement("small"); label.textContent = metric.label;
+    const delta = document.createElement("strong");
+    delta.textContent = metric.delta === null ? "not comparable"
+      : `${metric.delta > 0 ? "+" : ""}${formatHypothesisOutcomeValue(metric.delta, metric.unit)}`;
+    delta.className = metric.delta === null ? "unavailable" : metric.delta > 0 ? "positive" : metric.delta < 0 ? "negative" : "zero";
+    const values = document.createElement("span");
+    values.textContent = `baseline ${formatHypothesisOutcomeValue(metric.baseline, metric.unit)} · ablation ${formatHypothesisOutcomeValue(metric.ablation, metric.unit)}`;
+    const source = document.createElement("em"); source.textContent = metric.provenance;
+    tile.append(label, delta, values, source); grid.append(tile);
+  });
+  const boundary = document.createElement("p"); boundary.textContent = audit.boundary;
+  notebookHypothesisOutcome.append(identity, grid, boundary);
+}
+
 function renderExperimentNotebook() {
   notebookState.textContent = `${experimentNotebookEntries.length}/${MAX_EXPERIMENT_NOTEBOOK_ENTRIES} saved runs`;
   clearNotebookButton.disabled = experimentNotebookEntries.length === 0;
@@ -11020,6 +11071,7 @@ function renderExperimentNotebook() {
   const selected = selectedNotebookEntryIds.map((id) => experimentNotebookEntries.find((entry) => entry.id === id)).filter(Boolean);
   notebookComparison.replaceChildren();
   renderNotebookInterventionAudit(selected);
+  renderNotebookHypothesisOutcome(selected);
   renderNotebookPhysicsAudit(selected);
   renderNotebookTrajectoryAudit(selected);
   renderNotebookControlledSweep(experimentNotebookEntries);
