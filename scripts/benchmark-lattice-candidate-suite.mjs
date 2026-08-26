@@ -10,6 +10,7 @@ import {
   LATTICE_POLYHEDRON_SURVIVORS
 } from "../assets/lattice-polyhedron-survivors.js";
 import { POLYCUBE_GCTS_CANDIDATES } from "../assets/polycube-census-candidates.js";
+import { searchPolycubeCorona } from "../assets/polycube-corona-search.js";
 
 const args = new Map(process.argv.slice(2).map(argument => {
   const separator = argument.indexOf("=");
@@ -149,7 +150,6 @@ const censusCases = (requestedIds.size ? [...requestedIds] : defaultIds)
         : ["translational", "isohedral", "free_range", "gcts", "rl", "gcts_rl", "restart_dfs", "ilds", "uct", "beam", "free_range_no_brainer", "free_range_unbanded"]
   }));
 const specialCases = includeSpecial ? [
-  { id: "corner_tetra", family: "control", expected: "certified_non_tiler", lanes: ["free_range"] },
   { id: "scd_conway", family: "control", expected: "known_aperiodic_construction", lanes: ["free_range"] }
 ] : [];
 const cases = [...censusCases, ...specialCases]
@@ -210,6 +210,7 @@ const configFor = (benchmarkCase, lane, seed, proposalProgram = null, searchOpti
   enumerate_successors_only: searchOptions.enumerateSuccessorsOnly === true,
   initial_patch: searchOptions.initialPatch ?? null,
   initial_patch_relative_to_root: false,
+  initial_patch_require_face_connectivity: lane !== "beam",
   face_order: faceOrder,
   exhaustive: true,
   agent_exhaustive: true,
@@ -217,11 +218,11 @@ const configFor = (benchmarkCase, lane, seed, proposalProgram = null, searchOpti
   agent_ucb_alpha: lane === "rl" || lane === "gcts_rl" ? 0 : null,
   forced_move_layer_lag_cap:
     lane === "free_range_unbanded"
-    || (criterion === "shell" && ["gcts", "rl", "gcts_rl"].includes(lane))
+    || (criterion === "shell" && ["free_range", "gcts", "rl", "gcts_rl"].includes(lane))
       ? 0
       : 2,
   generic_complete_shell_enumeration:
-    criterion === "shell" && ["gcts", "rl", "gcts_rl"].includes(lane),
+    criterion === "shell" && ["free_range", "gcts", "rl", "gcts_rl"].includes(lane),
   generic_connected_patch_enumeration: connectedPatchEnumeration && lane === "free_range_unbanded",
   generic_failure_memo: lane === "uct" ? false : failureMemo,
   generic_failure_memo_symmetry: failureMemoSymmetry,
@@ -896,6 +897,17 @@ const freeRangePortfolio = id => {
     combinedBacktracks: trials.reduce((sum, row) => sum + row.backtracks, 0)
   };
 };
+// A finite connected patch cannot serve as a non-tiling oracle: even a
+// genuine non-tiler may admit arbitrarily many partial copies.  Use the
+// independent, exhaustive radius-two corona solver for the negative control.
+const nonTilerControlVoxels = [[0,0,0],[0,0,1],[0,0,2],[0,1,0],[0,1,2],[0,2,0],[0,2,1],[1,1,1],[1,2,1],[1,2,2]];
+const nonTilerControlResult = includeSpecial ? searchPolycubeCorona(nonTilerControlVoxels, {
+  layers: 2,
+  nodeLimit: 500,
+  timeLimitMs: 5000,
+  nogoods: true,
+  conflictBackjumping: true
+}) : null;
 const controlGates = {
   translationalControl: cases.some(item => item.id === "8_2480")
     ? rowFor("8_2480", "translational")?.resultKind === "certified_tiling"
@@ -904,7 +916,7 @@ const controlGates = {
     ? rowFor("10_27010", "isohedral")?.certificatePatchSize === 24
     : true,
   nonTilerControl: includeSpecial
-    ? rowFor("corner_tetra", "free_range")?.canTile === false
+    ? nonTilerControlResult?.certified_non_tiler === true
     : true,
   aperiodicControl: includeSpecial
     ? rowFor("scd_conway", "free_range")?.resultKind === "known_aperiodic_construction"
@@ -996,6 +1008,14 @@ const summary = {
   gctsGrowthComparisons,
   gctsGrowthGatePassed,
   controls: controlGates,
+  controlEvidence: {
+    nonTiler: nonTilerControlResult ? {
+      method: "independent_exhaustive_radius_two_corona",
+      certifiedNonTiler: nonTilerControlResult.certified_non_tiler === true,
+      stoppedBy: nonTilerControlResult.stopped_by ?? null,
+      visitedNodes: nonTilerControlResult.nodes ?? null
+    } : null
+  },
   controlGatesPassed: Object.values(controlGates).every(Boolean),
   candidates: candidateSummaries,
   // Kept as a compatibility alias for archived benchmark consumers. These are

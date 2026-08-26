@@ -1674,7 +1674,8 @@ function renderSystemTileList() {
           : certificate === "complete_radius3_obstruction"
             ? `complete radius 3→4 obstruction · ${figure.census_candidate.volume} cubes`
           : figure.census_candidate.kind === "polycube_census"
-          ? `period > ${figure.census_candidate.screening.periodic_hnf_max_motif_tiles} · corona radius ${figure.census_candidate.screening.corona_completed_radius} · ${figure.census_candidate.volume} cubes`
+          ? `period > ${figure.census_candidate.screening.periodic_exact_through
+            ?? figure.census_candidate.screening.periodic_hnf_max_motif_tiles} · corona radius ${figure.census_candidate.screening.corona_completed_radius} · ${figure.census_candidate.volume} cubes`
           : ["finite_extendable_shell_obstruction", "finite_shell_obstruction"].includes(certificate)
             ? `${certificate === "finite_shell_obstruction" ? "complete-shell" : "dead-face shell"} ${figure.census_candidate.screening.shell_depth} obstruction · ${figure.census_candidate.lattice_points} points`
             : `survivor ${figure.census_candidate.survivor_priority}/${figure.census_candidate.survivor_count ?? 1} · ${figure.census_candidate.lattice_points} points`;

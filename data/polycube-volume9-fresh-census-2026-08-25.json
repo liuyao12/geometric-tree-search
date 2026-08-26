@@ -1,5 +1,5 @@
 {
-  "schema": "gcts.z3_polycube_fresh_census.v1",
+  "schema": "gcts.z3_polycube_fresh_census.v2",
   "date": "2026-08-25",
   "model": {
     "lattice": "Z3 unit voxels",
@@ -20,7 +20,7 @@
     { "requested_motif_range": [1, 2], "periodic_certificates": 47160, "bounded_unresolved": 1151 },
     { "requested_motif_range": [3, 4], "periodic_certificates": 1040, "bounded_unresolved": 111 },
     { "requested_motif_range": [5, 6], "periodic_certificates": 75, "bounded_unresolved": 36 },
-    { "requested_motif_range": [7, 8], "periodic_certificates": 25, "bounded_unresolved": 11 }
+    { "requested_motif_range": [7, 8], "periodic_certificates": 25, "bounded_unresolved": 11, "note": "The initial 30-second CPU pass found 23; two known positives stopped on time and were independently rerun to verified eight-copy certificates." }
   ],
   "certificate_policy": {
     "periodic_positive": "accepted only after independent Cramer-rule quotient replay",
@@ -31,12 +31,12 @@
   },
   "final_one_sided_candidates": 11,
   "final_free_representatives": [
-    { "id": "p9-02127", "mirror_partner_id": "p9-02127", "periodic_exact_through": 9, "next_domain_incomplete": 10 },
-    { "id": "p9-08203", "mirror_partner_id": "p9-08214", "periodic_exact_through": 9, "next_domain_incomplete": 10 },
-    { "id": "p9-08219", "mirror_partner_id": "p9-08220", "periodic_exact_through": 9, "next_domain_incomplete": 10 },
-    { "id": "p9-20656", "mirror_partner_id": "p9-20656", "periodic_exact_through": 9, "next_domain_incomplete": 10 },
-    { "id": "p9-24025", "mirror_partner_id": "p9-24830", "periodic_exact_through": 8, "next_domain_incomplete": 9 },
-    { "id": "p9-42947", "mirror_partner_id": "p9-42969", "periodic_exact_through": 14, "next_domain_incomplete": 15, "note": "The deeper bound is independently retained from the earlier gap-audited 52-shard campaign; the fresh run also independently reconfirmed the complete domains through eight." },
+    { "id": "p9-02127", "mirror_partner_id": "p9-02127", "periodic_exact_through": 11, "next_domain_incomplete": 12 },
+    { "id": "p9-08203", "mirror_partner_id": "p9-08214", "periodic_exact_through": 11, "next_domain_incomplete": 12 },
+    { "id": "p9-08219", "mirror_partner_id": "p9-08220", "periodic_exact_through": 11, "next_domain_incomplete": 12 },
+    { "id": "p9-20656", "mirror_partner_id": "p9-20656", "periodic_exact_through": 11, "next_domain_incomplete": 12 },
+    { "id": "p9-24025", "mirror_partner_id": "p9-24830", "periodic_exact_through": 9, "next_domain_incomplete": 10 },
+    { "id": "p9-42947", "mirror_partner_id": "p9-42969", "periodic_exact_through": 14, "next_domain_incomplete": 15, "note": "The deeper bound is independently retained from the earlier gap-audited 52-shard campaign; the fresh rerun independently reconfirmed the complete domains through eleven." },
     { "id": "p9-48258", "mirror_partner_id": "p9-48258", "periodic_exact_through": 11, "next_domain_incomplete": 12 }
   ],
   "bounded_structural_screen": {
@@ -45,6 +45,28 @@
     "corona_radius": 2,
     "verified_corona_witnesses": 11,
     "certified_non_tilers": 0
+  },
+  "fresh_rerun": {
+    "manifest_regenerated": true,
+    "manifest_candidate_key_sha256_reproduced": true,
+    "periodic_budget_clock": "cpu",
+    "periodic_exact_cover_backend": "scan",
+    "periodic_certificate_verifier": "independent_cramers_rule_quotient_partition",
+    "stage_1_2": { "time_limit_ms": 1000, "node_limit": 20000, "gap_free_shards": 8 },
+    "stage_3_4": { "time_limit_ms": 3000, "node_limit": 100000, "gap_free_shards": 8 },
+    "stage_5_6": { "time_limit_ms": 10000, "node_limit": 500000, "gap_free_shards": 8 },
+    "stage_7_8": { "time_limit_ms": 30000, "node_limit": 2000000, "gap_free_shards": 8, "timed_positive_retries": 2 },
+    "deep_domains": {
+      "copy_9": "exactly exhausted for all 11 one-sided survivors, including cursor-resumed runs",
+      "copy_10": "exactly exhausted for nine survivors; p9-24025 and p9-24830 were not attempted after copy 9",
+      "copy_11": "exactly exhausted for the same nine survivors, including cursor-resumed runs"
+    },
+    "structural": {
+      "isohedral_horizon_tiles": 24,
+      "isohedral_certificates": 0,
+      "radius_two_corona_witnesses": 11,
+      "radius_two_non_tiling_obstructions": 0
+    }
   },
   "audit": {
     "gap_free_shards": true,
