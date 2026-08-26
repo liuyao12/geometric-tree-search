@@ -6683,7 +6683,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-147",
+      buildId: "20260825-148",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7974,12 +7974,15 @@ function notebookInterventionFactors(receipt) {
     }) },
     marking: { label: "GCTS marking", role: "learned representation", value: serialized({
       config: receipt.marking.config,
-      searchMode: receipt.marking.searchMode,
       activeId: activeMarking?.id || null,
       vocabularyKey: activeMarking?.vocabularyKey || null,
     }) },
     ranking: { label: "frontier ranking", role: "search", value: search?.policy || "not entered" },
-    protocol: { label: "growth protocol", role: "experiment", value: serialized(search?.experimentProtocol || null) },
+    protocol: { label: "growth protocol", role: "experiment", value: serialized(search?.experimentProtocol ? {
+      id: search.experimentProtocol.id,
+      label: search.experimentProtocol.label,
+      preset: search.experimentProtocol.preset,
+    } : null) },
     relaxation: { label: "post-attachment constraint projection", role: "geometry", value: serialized(search?.postAttachmentConstraintProjection ? {
       mode: search.postAttachmentConstraintProjection.mode,
       displacementFractionOfNearestNeighbor: search.postAttachmentConstraintProjection.displacementFractionOfNearestNeighbor,
@@ -8020,6 +8023,10 @@ function notebookInterventionFactors(receipt) {
         search.configurationalPathEnsemble?.seed],
     } : null) },
     scheduling: { label: "tree scheduling", role: "search", value: serialized(search?.scheduling || null) },
+    nucleation: { label: "growth nuclei", role: "geometry", value: serialized(search ? {
+      requestedNuclei: search.multiNucleusGrowth?.requestedNuclei,
+      siteMode: search.multiNucleusGrowth?.selection?.mode,
+    } : null) },
     hierarchy: { label: "clusters² promotion", role: "search", value: String(search?.hierarchyEnabled ?? "not entered") },
     structuralObservable: { label: "posthoc structural observable", role: "analysis only", value: serialized({
       selectedView: receipt.structuralEvidence?.selectedView,
@@ -8114,9 +8121,13 @@ function experimentNotebookSummary(receipt) {
       recipeLabel: receipt.studyDesign.label,
       settingsStillMatch: receipt.studyDesign.settingsStillMatch,
       factor: receipt.studyDesign.registeredComparison?.factor || null,
+      question: receipt.studyDesign.registeredComparison?.question || null,
       armId: receipt.studyDesign.registeredComparison?.activeArmId || null,
       armLabel: receipt.studyDesign.registeredComparison?.activeArmLabel || null,
-      autoExecuted: false,
+      settings: { ...(receipt.studyDesign.registeredComparison?.settings || {}) },
+      outcomes: [...(receipt.studyDesign.registeredComparison?.outcomes || [])],
+      boundary: receipt.studyDesign.registeredComparison?.boundary || receipt.studyDesign.claimBoundary || null,
+      autoExecuted: receipt.studyDesign.registeredComparison?.autoExecuted ?? false,
     } : null,
     physicalTimeModeled: receipt.evidenceBoundary.physicalElapsedTimeModeled,
     trajectory: { alignment: "structural leap index", points: trajectoryPoints,
@@ -8230,6 +8241,49 @@ function notebookInterventionComparison(first, second) {
   };
 }
 
+function notebookRegisteredPairAudit(first, second, intervention = notebookInterventionComparison(first, second)) {
+  const a = first.registeredStudy;
+  const b = second.registeredStudy;
+  const metadataAvailable = Boolean(a?.recipeId && b?.recipeId && a?.factor && b?.factor && a?.armId && b?.armId);
+  if (!metadataAvailable) return {
+    status: "unavailable", valid: false, title: "registered pair unavailable",
+    detail: "At least one saved run predates the registered-arm receipt. Save both configured arms again to certify the pair.",
+    question: a?.question || b?.question || null, factor: a?.factor || b?.factor || null,
+    outcomes: a?.outcomes || b?.outcomes || [], boundary: a?.boundary || b?.boundary || null,
+  };
+  const sameRecipe = a.recipeId === b.recipeId;
+  const sameFactor = a.factor === b.factor;
+  const armSet = new Set([a.armId, b.armId]);
+  const complementaryArms = armSet.size === 2 && armSet.has("reference") && armSet.has("contrast");
+  const settingsIntact = a.settingsStillMatch === true && b.settingsStillMatch === true;
+  const explicitlyPaused = a.autoExecuted === false && b.autoExecuted === false;
+  const metadataAgrees = a.question === b.question && a.boundary === b.boundary
+    && JSON.stringify(a.outcomes || []) === JSON.stringify(b.outcomes || []);
+  const oneRecordedFactor = intervention.sameInput && intervention.changedFactors.length === 1;
+  const valid = sameRecipe && sameFactor && complementaryArms && settingsIntact && explicitlyPaused
+    && metadataAgrees && oneRecordedFactor;
+  const failed = [
+    [sameRecipe, "same registered recipe"], [sameFactor, "same declared factor"],
+    [complementaryArms, "reference + contrast arms"], [settingsIntact, "intact arm settings"],
+    [explicitlyPaused, "explicit paused configuration"], [metadataAgrees, "matching preregistration metadata"],
+    [intervention.sameInput, "identical observed-input SHA-256"],
+    [intervention.changedFactors.length === 1, "exactly one recorded intervention"],
+  ].filter(([passes]) => !passes).map(([, label]) => label);
+  const reference = a.armId === "reference" ? a : b;
+  const contrast = a.armId === "contrast" ? a : b;
+  return {
+    status: valid ? "registered" : "invalid", valid,
+    title: valid ? "registered reference ↔ contrast pair" : "registered pair not certified",
+    detail: valid
+      ? `${a.factor} is the predeclared factor, the observed input is identical, and exactly one recorded intervention changed.`
+      : `Fail-closed checks: ${failed.join(" · ") || "registered metadata is incomplete"}.`,
+    recipeId: a.recipeId, recipeLabel: a.recipeLabel, factor: a.factor, question: a.question,
+    outcomes: [...(a.outcomes || [])], boundary: a.boundary,
+    referenceLabel: reference.armLabel || "reference", contrastLabel: contrast.armLabel || "contrast",
+    autoExecuted: false,
+  };
+}
+
 function signedNotebookDelta(value) {
   if (!Number.isFinite(value)) return "—";
   const rounded = Math.abs(value) < 10 && !Number.isInteger(value) ? Number(value.toFixed(2)) : Math.round(value);
@@ -8335,7 +8389,9 @@ function renderNotebookInterventionAudit(selected) {
     return;
   }
   const audit = notebookInterventionComparison(selected[0], selected[1]);
+  const registered = notebookRegisteredPairAudit(selected[0], selected[1], audit);
   notebookInterventionAudit.className = `notebook-intervention-audit ${audit.status}`;
+  notebookInterventionAudit.classList.toggle("registered-pair", registered.valid);
   title.textContent = audit.title;
   detail.textContent = audit.detail;
   const identity = document.createElement("div"); identity.className = "notebook-input-identity";
@@ -8347,6 +8403,33 @@ function renderNotebookInterventionAudit(selected) {
   else {
     const chip = document.createElement("span"); chip.textContent = "no recorded factor change"; factors.appendChild(chip);
   }
+  const registeredCard = document.createElement("section");
+  registeredCard.className = `notebook-registered-pair ${registered.status}`;
+  const registeredHeader = document.createElement("header");
+  const registeredKind = document.createElement("small"); registeredKind.textContent = "registered study pair";
+  const registeredTitle = document.createElement("strong"); registeredTitle.textContent = registered.title;
+  const registeredFactor = document.createElement("b"); registeredFactor.textContent = registered.factor || "legacy run";
+  registeredHeader.append(registeredKind, registeredTitle, registeredFactor);
+  const registeredQuestion = document.createElement("p");
+  registeredQuestion.textContent = registered.question || registered.detail;
+  const registeredArms = document.createElement("div"); registeredArms.className = "notebook-registered-arms";
+  const referenceArm = document.createElement("span");
+  const referenceKind = document.createElement("small"); referenceKind.textContent = "reference";
+  const referenceLabel = document.createElement("strong"); referenceLabel.textContent = registered.referenceLabel || "unavailable";
+  referenceArm.append(referenceKind, referenceLabel);
+  const arrow = document.createElement("i"); arrow.textContent = "↔";
+  const contrastArm = document.createElement("span");
+  const contrastKind = document.createElement("small"); contrastKind.textContent = "contrast";
+  const contrastLabel = document.createElement("strong"); contrastLabel.textContent = registered.contrastLabel || "unavailable";
+  contrastArm.append(contrastKind, contrastLabel);
+  registeredArms.append(referenceArm, arrow, contrastArm);
+  const registeredOutcomes = document.createElement("div"); registeredOutcomes.className = "notebook-registered-outcomes";
+  (registered.outcomes || []).forEach((outcome) => {
+    const chip = document.createElement("span"); chip.textContent = outcome; registeredOutcomes.appendChild(chip);
+  });
+  const registeredBoundary = document.createElement("em");
+  registeredBoundary.textContent = `${registered.detail}${registered.boundary ? ` Claim boundary: ${registered.boundary}` : ""}`;
+  registeredCard.append(registeredHeader, registeredQuestion, registeredArms, registeredOutcomes, registeredBoundary);
   const outcomes = document.createElement("div"); outcomes.className = "notebook-outcome-deltas";
   audit.outcomes.forEach((outcome) => {
     const tile = document.createElement("span");
@@ -8357,7 +8440,7 @@ function renderNotebookInterventionAudit(selected) {
   boundary.textContent = audit.causalAttributionAllowed
     ? "Causal interpretation is limited to this recorded one-factor intervention; hidden experimental confounders are not excluded."
     : "Outcome deltas remain visible, but the portal does not attribute them causally.";
-  notebookInterventionAudit.append(identity, factors, outcomes, boundary);
+  notebookInterventionAudit.append(identity, factors, registeredCard, outcomes, boundary);
 }
 
 function notebookTrajectoryComparison(first, second) {

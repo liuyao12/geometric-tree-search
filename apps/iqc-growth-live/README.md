@@ -97,6 +97,24 @@ settings, and `autoExecuted: false`. Compact share links remain reference-only;
 contrast arms require the full receipt so their provenance cannot be silently
 lost.
 
+Build 148 closes that registered comparison inside the saved-run notebook.
+When two runs are selected, a separate fail-closed audit now verifies that they
+use the same observed-input SHA-256, belong to the same guided recipe and
+declared factor, retain intact registered settings, explicitly represent the
+reference and contrast arms, remained paused when configured, and differ in
+exactly one recorded intervention. A passing pair restates the predeclared
+scientific question, names both arms, lists the outcomes chosen before growth,
+and displays the original claim boundary alongside the observed deltas. Legacy,
+edited, same-arm, different-input, multi-factor, or metadata-inconsistent pairs
+remain visible but are not certified as registered comparisons. This audit does
+not upgrade a finite browser response into thermodynamic, kinetic, or
+specimen-level causality; it makes the experimental provenance of the visual
+comparison explicit. The notebook factorization is correspondingly orthogonal:
+protocol identity no longer embeds every individual protocol setting, marking
+capacity no longer duplicates the selected search policy, and nucleus count is
+an explicit geometry factor. Browser regression checks confirm that all eight
+registered arm pairs resolve to exactly their declared single factor.
+
 The right-hand **computational work laboratory** turns the scaling question into
 an explicit, inspectable comparison at 10×, 1,000×, and 100,000× the observed
 sample. It reports deterministic browser tree decisions and finite-neighborhood

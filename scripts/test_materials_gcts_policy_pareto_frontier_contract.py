@@ -11,8 +11,8 @@ README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
 
 def test_policy_pareto_frontier_contract() -> None:
-    assert 'buildId: "20260825-147"' in APP
-    assert 'app.js?v=20260825-147' in HTML
+    assert 'buildId: "20260825-148"' in APP
+    assert 'app.js?v=20260825-148' in HTML
     for element_id in (
         "policyParetoState", "policyParetoX", "policyParetoY",
         "policyParetoPlot", "policyParetoDetail",
