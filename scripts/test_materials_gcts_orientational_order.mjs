@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import {
+  compareStructureFactors,
   jensenShannonDistance,
   legendrePolynomial,
   localOrientationalOrder,
@@ -58,8 +59,19 @@ close(jensenShannonDistance([2, 3], [4, 6]), 0);
 assert.ok(jensenShannonDistance([.8, .2], [.5, .5]) > 0
   && jensenShannonDistance([.8, .2], [.5, .5]) < 1);
 
+const firstFactor = { dimension: 3, q: [2, 3], values: [1, 0],
+  summary: { peakQ: 2, peakProminence: 2, highQMean: 0 } };
+const secondFactor = { dimension: 3, q: [2, 3], values: [0, 1],
+  summary: { peakQ: 3, peakProminence: 3, highQMean: 1 } };
+const factorChange = compareStructureFactors(firstFactor, secondFactor);
+close(factorChange.spectralShapeDistance, 1);
+close(factorChange.peakQDelta, 1);
+close(factorChange.peakProminenceDelta, 1);
+close(factorChange.highQMeanDelta, 1);
+
 assert.throws(() => localOrientationalOrder([[[0, 0, 0]]], 4), /dimension/);
 assert.throws(() => orientationalOrderDistribution([Number.NaN]), /finite/);
 assert.throws(() => jensenShannonDistance([1], [1, 0]), /equal/);
+assert.throws(() => compareStructureFactors(firstFactor, { ...secondFactor, q: [2, 4] }), /matching/);
 
 console.log("orientational-order observable: passed");

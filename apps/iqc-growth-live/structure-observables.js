@@ -78,6 +78,27 @@ export function summarizeStructureFactor(structureFactor) {
   };
 }
 
+export function compareStructureFactors(first, second) {
+  const comparable = first?.values?.length && first.values.length === second?.values?.length
+    && first.dimension === second.dimension && first.q?.every((value, index) =>
+      Math.abs(value - second.q[index]) <= 1e-10);
+  if (!comparable) throw new Error("structure-factor comparison requires matching dimension and q grid");
+  const firstSummary = first.summary || summarizeStructureFactor(first);
+  const secondSummary = second.summary || summarizeStructureFactor(second);
+  return {
+    spectralShapeDistance: jensenShannonDistance(first.values, second.values),
+    peakQBefore: firstSummary.peakQ,
+    peakQAfter: secondSummary.peakQ,
+    peakQDelta: secondSummary.peakQ - firstSummary.peakQ,
+    peakProminenceBefore: firstSummary.peakProminence,
+    peakProminenceAfter: secondSummary.peakProminence,
+    peakProminenceDelta: secondSummary.peakProminence - firstSummary.peakProminence,
+    highQMeanBefore: firstSummary.highQMean,
+    highQMeanAfter: secondSummary.highQMean,
+    highQMeanDelta: secondSummary.highQMean - firstSummary.highQMean,
+  };
+}
+
 export function legendrePolynomial(order, value) {
   if (!Number.isInteger(order) || order < 0) throw new Error("Legendre order must be a non-negative integer");
   if (!Number.isFinite(value)) throw new Error("Legendre input must be finite");

@@ -11,8 +11,8 @@ README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
 
 def test_policy_omission_attribution_contract() -> None:
-    assert 'buildId: "20260825-137"' in APP
-    assert 'app.js?v=20260825-137' in HTML
+    assert 'buildId: "20260825-138"' in APP
+    assert 'app.js?v=20260825-138' in HTML
     for element_id in ("policyOmissionState", "policyOmissionList", "policyOmissionDetail"):
         assert f'id="{element_id}"' in HTML
     assert "function buildPolicyOmissionAudit" in APP

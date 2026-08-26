@@ -22,8 +22,8 @@ import {
 } from "./ice-vi-anchor-trace.js?v=20260824-1";
 import { discoverIrregularCover } from "./irregular-cover.js?v=20260824-1";
 import { generateAmorphousMixture } from "./amorphous-glass.js?v=20260824-1";
-import { jensenShannonDistance, localOrientationalOrder, orientationalOrderDistribution,
-  powderStructureFactor, summarizeStructureFactor } from "./structure-observables.js?v=20260825-3";
+import { compareStructureFactors, jensenShannonDistance, localOrientationalOrder, orientationalOrderDistribution,
+  powderStructureFactor, summarizeStructureFactor } from "./structure-observables.js?v=20260825-4";
 import { compositionBalanceDelta, learnCompositionTarget } from "./composition-balance.js?v=20260824-1";
 import { consumeFeedstock, evaluateFeedstockDemand, feedstockReservoirSnapshot,
   initializeFeedstockReservoir } from "./feedstock-reservoir.js?v=20260826-1";
@@ -2517,6 +2517,26 @@ function structuralOrientationalOrderSnapshot() {
   };
 }
 
+function structuralScatteringSnapshot() {
+  if (pipelineStage !== 4) return null;
+  const { stats } = currentLiveStructure();
+  if (!stats?.count) return null;
+  const structureFactor = ensureStructureFactor(stats);
+  return {
+    dimension: stats.dimension,
+    analysisWindowAtoms: stats.count,
+    q: [...structureFactor.q],
+    values: [...structureFactor.values],
+    qMin: structureFactor.qMin,
+    qMax: structureFactor.qMax,
+    summary: { ...structureFactor.summary },
+    normalization: "finite-observation Debye average with unit scattering weights",
+    speciesFormFactorsUsed: false,
+    instrumentResponseUsed: false,
+    usedAsGrowthInput: false,
+  };
+}
+
 function localSymmetryTransition(before, after) {
   if (!before?.harmonics || !after?.harmonics || before.dimension !== after.dimension) {
     return { available: false, reason: "matching dimension-aware local-order snapshots unavailable",
@@ -2574,6 +2594,37 @@ function localSymmetryTransition(before, after) {
     phaseTransitionClaimed: false,
     latentHeatClaimed: false,
     kineticsClaimed: false,
+  };
+}
+
+function reciprocalSpaceTransition(before, after) {
+  const comparable = before?.values?.length && before.values.length === after?.values?.length
+    && before.dimension === after.dimension && before.q?.every((value, index) =>
+      Math.abs(value - after.q[index]) <= 1e-10);
+  if (!comparable) return { available: false, reason: "matching finite-observation S(q) grids unavailable",
+    targetUsed: false, usedAsGrowthInput: false };
+  const change = compareStructureFactors(before, after);
+  const { spectralShapeDistance, peakQDelta, peakProminenceDelta } = change;
+  const qSpan = Math.max(1e-9, after.qMax - after.qMin);
+  let phenotype = "reciprocal-space fingerprint retained";
+  if (Math.abs(peakQDelta) / qSpan >= .025) phenotype = "dominant geometric peak shifted";
+  else if (peakProminenceDelta >= .15) phenotype = "dominant geometric peak sharpened";
+  else if (peakProminenceDelta <= -.15) phenotype = "dominant geometric peak weakened";
+  else if (spectralShapeDistance >= .05) phenotype = "reciprocal-space weight redistributed";
+  return {
+    available: true,
+    dimension: after.dimension,
+    phenotype,
+    ...change,
+    analysisWindowBefore: before.analysisWindowAtoms,
+    analysisWindowAfter: after.analysisWindowAtoms,
+    unitScatteringWeights: true,
+    properRotationInvariant: true,
+    targetUsed: false,
+    usedAsGrowthInput: false,
+    experimentalIntensityClaimed: false,
+    phaseTransitionClaimed: false,
+    correlationLengthClaimed: false,
   };
 }
 
@@ -6448,7 +6499,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-137",
+      buildId: "20260825-138",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7439,6 +7490,7 @@ async function buildExperimentReceipt() {
         index: leap.index, status: leap.status, label: leap.label,
         before: leap.before, proposal: leap.proposal, tests: leap.tests,
         relaxation: leap.relaxation || null, localSymmetryTransition: leap.localSymmetryTransition || null,
+        reciprocalSpaceTransition: leap.reciprocalSpaceTransition || null,
         after: leap.after,
         targetUsed: leap.targetUsed, physicalTimeModeled: leap.physicalTimeModeled,
         dynamicsIntegrated: leap.dynamicsIntegrated, claimBoundary: leap.claimBoundary,
@@ -7794,7 +7846,7 @@ function experimentNotebookSummary(receipt) {
     morphology: initialLeapState.morphology || null, interfaces: initialLeapState.interfaces || null,
     orientationalOrder: initialLeapState.orientationalOrder || null,
     feedstock: initialLeapState.feedstock || null, domain: initialLeapState.domain || null,
-    relaxation: null, localSymmetryTransition: null }];
+    relaxation: null, localSymmetryTransition: null, reciprocalSpaceTransition: null }];
   structuralLeaps.forEach((leap, index) => {
     cumulativeAccepted += leap.after?.accepted || 0;
     cumulativeRejected += leap.after?.rejected || 0;
@@ -7809,7 +7861,8 @@ function experimentNotebookSummary(receipt) {
       orientationalOrder: leap.after?.orientationalOrder || null,
       feedstock: leap.after?.feedstock || null, domain: leap.after?.domain || null,
       relaxation: leap.relaxation || null,
-      localSymmetryTransition: leap.localSymmetryTransition || null });
+      localSymmetryTransition: leap.localSymmetryTransition || null,
+      reciprocalSpaceTransition: leap.reciprocalSpaceTransition || null });
   });
   return {
     id: receipt.receiptSha256.slice(0, 16),
@@ -7989,6 +8042,9 @@ const NOTEBOOK_TRAJECTORY_OBSERVABLES = {
     format: (value) => value.toFixed(3) },
   localOrderShift: { label: "local-symmetry JS distance",
     value: (point) => point.localSymmetryTransition?.meanDistributionDistance,
+    format: (value) => value.toFixed(3) },
+  scatteringShift: { label: "reciprocal-space JS distance",
+    value: (point) => point.reciprocalSpaceTransition?.spectralShapeDistance,
     format: (value) => value.toFixed(3) },
   extent: { label: "maximum nucleus extent · Å", value: (point) => point.morphology?.maximumExtentAngstrom,
     format: (value) => `${value.toFixed(2)} Å` },
@@ -13489,7 +13545,7 @@ function performOffLatticeEvent() {
   const relaxationAuthorized = reconstructionCertified;
   const before = { atoms: atoms.length, clusters: placedClusters.length, frontier: frontierCandidates.length,
     morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
-    orientationalOrder: structuralOrientationalOrderSnapshot(),
+    orientationalOrder: structuralOrientationalOrderSnapshot(), scattering: structuralScatteringSnapshot(),
     feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() };
   const batch = commutingFrontierBatch();
   if (!batch.length) {
@@ -13499,7 +13555,7 @@ function performOffLatticeEvent() {
       after: { atoms: atoms.length, clusters: placedClusters.length, accepted: 0, rejected: 0,
         depth: Math.max(0, ...placedClusters.map((placement) => placement.depth || 0)),
         morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
-        orientationalOrder: structuralOrientationalOrderSnapshot(),
+        orientationalOrder: structuralOrientationalOrderSnapshot(), scattering: structuralScatteringSnapshot(),
         feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() },
       claimBoundary: "This is a certified finite structural fixed point. It is not equilibrium, a stopping time, or evidence that a physical interface cannot advance by an unmodeled mechanism." });
     pauseGrowth("Frontier exhausted: no learned overlap rule remains geometrically admissible.");
@@ -13660,7 +13716,7 @@ function performOffLatticeEvent() {
     after: { atoms: atoms.length, clusters: placedClusters.length, accepted: acceptedInBatch, rejected: rejectedInBatch,
       depth: Math.max(0, ...placedClusters.map((placement) => placement.depth || 0)),
       morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
-      orientationalOrder: structuralOrientationalOrderSnapshot(),
+      orientationalOrder: structuralOrientationalOrderSnapshot(), scattering: structuralScatteringSnapshot(),
       feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() },
     claimBoundary: relaxation?.accepted
       ? "The accepted antichain is valid in every placement order. A bounded post-attachment constraint projection reduced the learned local contact-angle residual and re-passed every hard gate; it is not a force trajectory, energy minimization, probability, or physical elapsed time."
@@ -13673,7 +13729,7 @@ function performIceAnchorEvent() {
   const wave = iceAnchorTrace?.waves[iceAnchorWaveIndex];
   const before = { atoms: atoms.length, clusters: acceptedDecisions,
     frontier: wave?.candidateAnchors || 0, morphology: structuralMorphologySnapshot(),
-    orientationalOrder: structuralOrientationalOrderSnapshot(),
+    orientationalOrder: structuralOrientationalOrderSnapshot(), scattering: structuralScatteringSnapshot(),
     interfaces: structuralInterfaceSnapshot(), feedstock: currentFeedstockSnapshot(),
     domain: currentGrowthDomainSnapshot() };
   if (!wave) {
@@ -13712,7 +13768,7 @@ function performIceAnchorEvent() {
       after: { atoms: atoms.length, clusters: acceptedDecisions, accepted: 0,
         rejected: wave.rejectedCandidateAnchors, depth: wave.wave,
         morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
-        orientationalOrder: structuralOrientationalOrderSnapshot(),
+        orientationalOrder: structuralOrientationalOrderSnapshot(), scattering: structuralScatteringSnapshot(),
         feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() },
       claimBoundary: `The frozen ${iceAnchorTrace.portCount}-port grammar reaches a finite structural fixed point. Unresolved ${iceAnchorTrace.orientationSpecies} motion, proton/deuteron barriers, entropy, and physical stopping time are not modeled.` });
     growthStopReason = "Frozen molecular-port grammar reached its certified finite fixed point.";
@@ -13747,7 +13803,7 @@ function performIceAnchorEvent() {
     after: { atoms: atoms.length, clusters: acceptedDecisions, accepted: wave.acceptedAnchors,
       rejected: wave.rejectedCandidateAnchors, depth: wave.wave,
       morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
-      orientationalOrder: structuralOrientationalOrderSnapshot(),
+      orientationalOrder: structuralOrientationalOrderSnapshot(), scattering: structuralScatteringSnapshot(),
       feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() },
     claimBoundary: `The browser jumps to oxygen anchors shared by every surviving ${iceAnchorTrace.moleculeLabel} orientation domain. It does not integrate ${iceAnchorTrace.orientationSpecies} rearrangement, tunnelling, diffusion, relaxation, probability, or elapsed physical time.` });
   rebuildWorld();
@@ -14539,6 +14595,7 @@ function physicsTranslationRecords(leap = null) {
   const relaxationDisplacement = relaxationDisplacementField();
   const relaxationLocalEnvironment = relaxationLocalEnvironmentField();
   const localSymmetry = leap?.localSymmetryTransition || null;
+  const reciprocalSpace = leap?.reciprocalSpaceTransition || null;
   return [
     { id: "steric", process: "short-range repulsion / species contact", status: "hard", role: "hard admission gate",
       encoding: `${coloredDistanceEnvelopes?.records?.length || 0} colored pair envelopes with exact species coincidence and learned hard-exclusion radii`,
@@ -14582,6 +14639,16 @@ function physicsTranslationRecords(leap = null) {
         ? `${localSymmetry.phenotype}; mean distribution distance ${localSymmetry.meanDistributionDistance.toFixed(3)}; resolved centers ${localSymmetry.resolvedBefore} → ${localSymmetry.resolvedAfter}.`
         : "Execute one structural leap to compare local-symmetry fingerprints.",
       boundary: "This compares local geometric fingerprints. It is not a crystallization or phase-transition label, order-parameter free energy, latent heat, entropy, transition probability, rate, or physical time, and it never ranks or admits growth." },
+    { id: "reciprocal-space", process: "medium-/long-range positional-order evolution",
+      status: reciprocalSpace?.available ? "observed" : "unavailable",
+      role: reciprocalSpace?.available ? "post-leap finite-observation scattering fingerprint" : "awaiting paired geometric S(q)",
+      encoding: reciprocalSpace?.available
+        ? `${reciprocalSpace.dimension}D Debye powder average on a fixed 48-point q grid with unit scattering weights; normalized Jensen–Shannon spectral-shape distance`
+        : "no matching before/after geometric S(q) grids",
+      evidence: reciprocalSpace?.available
+        ? `${reciprocalSpace.phenotype}; spectral distance ${reciprocalSpace.spectralShapeDistance.toFixed(3)}; dominant q ${reciprocalSpace.peakQBefore.toFixed(2)} → ${reciprocalSpace.peakQAfter.toFixed(2)}; prominence ${reciprocalSpace.peakProminenceBefore.toFixed(2)} → ${reciprocalSpace.peakProminenceAfter.toFixed(2)}.`
+        : "Execute one structural leap to compare reciprocal-space fingerprints.",
+      boundary: "This is a unit-weight geometric powder average of a finite coordinate window. It is not X-ray or neutron intensity, a structure refinement, correlation length, crystallization/phase-transition label, free energy, kinetics, or physical time, and it never ranks or admits growth." },
     { id: "constraint-projection", process: "post-attachment local structural accommodation",
       status: lastStructuralRelaxation?.accepted ? "learned" : structuralRelaxationMode === "off" ? "open" : "sampled",
       role: lastStructuralRelaxation?.accepted ? "target-blind bounded coordinate projection" : structuralRelaxationMode === "off" ? "disabled" : "fail-closed projection attempt",
@@ -14989,7 +15056,8 @@ function renderStructuralLeap(leap = null) {
       ["02 · proposal", "frontier not sampled", `${frontierCandidates.length} frozen candidates`],
       ["03 · certificate", "not evaluated", "geometry gates await one action"],
       ["04 · local symmetry", "not compared", "qℓ / |ψℓ| distributions await one leap"],
-      ["05 · after", "unchanged seed", "physical time unresolved"],
+      ["05 · reciprocal structure", "not compared", "finite-observation S(q) awaits one leap"],
+      ["06 · after", "unchanged seed", "physical time unresolved"],
     ].forEach(([label, value, detail]) => {
       const card = document.createElement("article");
       const small = document.createElement("small"); small.textContent = label;
@@ -15013,12 +15081,18 @@ function renderStructuralLeap(leap = null) {
     symmetry?.available
       ? `${symmetry.harmonics.map((record) => `${symmetry.dimension === 2 ? "|ψ" : "q"}${record.harmonic}${symmetry.dimension === 2 ? "|" : ""} Δ${signedOrder(record.meanDelta)}`).join(" · ")} · JS distance ${symmetry.meanDistributionDistance.toFixed(3)} · resolved ${symmetry.resolvedBefore} → ${symmetry.resolvedAfter}`
       : symmetry?.reason || "matching before/after distributions unavailable"]);
-  if (selected.relaxation) leapCards.push(["05 · local projection",
+  const reciprocal = selected.reciprocalSpaceTransition;
+  leapCards.push(["05 · reciprocal structure",
+    reciprocal?.available ? reciprocal.phenotype : "S(q) unresolved",
+    reciprocal?.available
+      ? `JS distance ${reciprocal.spectralShapeDistance.toFixed(3)} · q* ${reciprocal.peakQBefore.toFixed(2)} → ${reciprocal.peakQAfter.toFixed(2)} · peak prominence ${reciprocal.peakProminenceBefore.toFixed(2)} → ${reciprocal.peakProminenceAfter.toFixed(2)}`
+      : reciprocal?.reason || "matching before/after geometric S(q) unavailable"]);
+  if (selected.relaxation) leapCards.push(["06 · local projection",
     selected.relaxation.accepted
       ? `strain ${selected.relaxation.strainBefore.toFixed(3)} → ${selected.relaxation.strainAfter.toFixed(3)}`
       : "rolled back · exact coordinates retained",
     `${selected.relaxation.movableSites} movable · max Δ ${selected.relaxation.maximumDisplacementAngstrom.toFixed(3)} Å · ${selected.relaxation.reason}`]);
-  leapCards.push([`${selected.relaxation ? "06" : "05"} · after`,
+  leapCards.push([`${selected.relaxation ? "07" : "06"} · after`,
     `${selected.after.atoms} atoms · ${selected.after.clusters} clusters`,
     `${selected.after.accepted} accepted · ${selected.after.rejected} rejected · causal depth ${selected.after.depth}`]);
   leapCards.forEach(([label, value, detail], index) => {
@@ -15029,7 +15103,7 @@ function renderStructuralLeap(leap = null) {
     const span = document.createElement("span"); span.textContent = detail;
     card.append(small, strong, span); leapFlow.append(card);
   });
-  leapClaimBoundary.textContent = `${selected.claimBoundary} Local qℓ / |ψℓ| change is a rotation-invariant structural fingerprint, not a phase-transition assignment, latent heat, free-energy change, rate, or clock.`;
+  leapClaimBoundary.textContent = `${selected.claimBoundary} Local qℓ / |ψℓ| and unit-weight geometric S(q) changes are rotation-invariant structural fingerprints, not phase-transition assignments, experimental diffraction intensities, latent heat, free-energy changes, rates, or clocks.`;
 }
 
 function radiallyStratifiedIndices(source, candidateIndices, maximumCenters) {
@@ -15160,6 +15234,8 @@ function recordStructuralLeap(leap) {
     physicalTimeModeled: false, dynamicsIntegrated: false };
   frozen.localSymmetryTransition = localSymmetryTransition(
     frozen.before?.orientationalOrder, frozen.after?.orientationalOrder);
+  frozen.reciprocalSpaceTransition = reciprocalSpaceTransition(
+    frozen.before?.scattering, frozen.after?.scattering);
   frozen.physicsTranslation = physicsTranslationRecords(frozen);
   leapHistory.push(frozen);
   if (leapHistory.length > MAXIMUM_RETAINED_STRUCTURAL_LEAPS) leapHistory.shift();

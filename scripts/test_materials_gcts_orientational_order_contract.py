@@ -64,12 +64,29 @@ def test_structural_leaps_freeze_local_symmetry_change_without_using_it_for_grow
     assert 'kineticsClaimed: false' in APP
     assert 'targetUsed: false' in APP
     assert 'usedAsGrowthInput: false' in APP
-    assert "Local qℓ / |ψℓ| change is a rotation-invariant structural fingerprint" in APP
+    assert "Local qℓ / |ψℓ| and unit-weight geometric S(q) changes are rotation-invariant structural fingerprints" in APP
+
+
+def test_structural_leaps_compare_finite_observation_reciprocal_space():
+    assert 'value="scatteringShift">reciprocal-space JS distance' in HTML
+    assert "function structuralScatteringSnapshot()" in APP
+    assert "function reciprocalSpaceTransition(before, after)" in APP
+    assert "compareStructureFactors(before, after)" in APP
+    assert "export function compareStructureFactors" in MODULE
+    assert "scattering: structuralScatteringSnapshot()" in APP
+    assert "frozen.reciprocalSpaceTransition = reciprocalSpaceTransition(" in APP
+    assert "reciprocalSpaceTransition: leap.reciprocalSpaceTransition || null" in APP
+    assert 'id: "reciprocal-space"' in APP
+    assert 'experimentalIntensityClaimed: false' in APP
+    assert 'correlationLengthClaimed: false' in APP
+    assert "unit-weight geometric S(q) changes are rotation-invariant structural fingerprints" in APP
+    assert "Build 138 pairs that local microscope with a reciprocal-space transition certificate" in README
 
 
 if __name__ == "__main__":
     test_dimension_aware_orientational_order_is_exposed_interactively()
     test_structural_leaps_freeze_local_symmetry_change_without_using_it_for_growth()
+    test_structural_leaps_compare_finite_observation_reciprocal_space()
     test_order_is_rotation_invariant_posthoc_evidence_not_growth_physics()
     test_order_provenance_is_serialized()
     print("orientational-order portal contract: passed")

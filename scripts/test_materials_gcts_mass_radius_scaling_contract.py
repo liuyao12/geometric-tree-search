@@ -12,8 +12,8 @@ README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
 
 def test_mass_radius_scaling_contract() -> None:
-    assert 'buildId: "20260825-137"' in APP
-    assert 'app.js?v=20260825-137' in HTML
+    assert 'buildId: "20260825-138"' in APP
+    assert 'app.js?v=20260825-138' in HTML
     assert 'id="leapMorphologyScaling"' in HTML
     assert '$("leapMorphologyScaling")' in APP
     assert "export function finiteMassRadiusScaling" in PHASE
