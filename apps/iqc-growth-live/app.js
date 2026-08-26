@@ -29,6 +29,7 @@ import { consumeFeedstock, evaluateFeedstockDemand, feedstockReservoirSnapshot,
   initializeFeedstockReservoir } from "./feedstock-reservoir.js?v=20260826-1";
 import { formalChargeBalanceDelta, learnFormalChargeTarget } from "./formal-charge-balance.js?v=20260824-1";
 import { chargeMomentSignature, compareChargeMomentGeometry } from "./global-charge-moments.js?v=20260826-1";
+import { incrementalIonicPairGeometry } from "./ionic-pair-geometry.js?v=20260826-1";
 import {
   discoverFiniteMolecularComponents,
   discoverMolecularConnectionTopology,
@@ -248,6 +249,10 @@ const chargeGeometryHint = $("chargeGeometryHint");
 const chargeMomentSelect = $("chargeMomentSelect");
 const chargeMomentWeightSelect = $("chargeMomentWeightSelect");
 const chargeMomentHint = $("chargeMomentHint");
+const ionicPairSelect = $("ionicPairSelect");
+const ionicPairReachSelect = $("ionicPairReachSelect");
+const ionicPairWeightSelect = $("ionicPairWeightSelect");
+const ionicPairHint = $("ionicPairHint");
 const surfacePreferenceSelect = $("surfacePreferenceSelect");
 const growthDrivingSelect = $("growthDrivingSelect");
 const growthDrivingWeightSelect = $("growthDrivingWeightSelect");
@@ -887,6 +892,10 @@ let acceptedChargeMomentScore = 0;
 let rejectedChargeMomentScore = 0;
 let chargeMomentEvaluations = 0;
 let chargeMomentSitePresentations = 0;
+let acceptedIonicPairScore = 0;
+let rejectedIonicPairScore = 0;
+let ionicPairEvaluations = 0;
+let ionicPairDistanceEvaluations = 0;
 let acceptedSurfaceDeficit = 0;
 let rejectedSurfaceDeficit = 0;
 let acceptedGrowthDrivingScore = 0;
@@ -1035,6 +1044,9 @@ let chargeGeometryReach = 2.5;
 let chargeGeometryWeight = .24;
 let chargeMomentMode = "none";
 let chargeMomentWeight = .24;
+let ionicPairMode = "none";
+let ionicPairReach = 8;
+let ionicPairWeight = .24;
 let surfacePreference = "soft";
 let growthDrivingMode = "none";
 let growthDrivingWeight = .24;
@@ -1106,6 +1118,7 @@ const GROWTH_PROTOCOL_DEFAULTS = Object.freeze({
   compositionPreference: "soft", feedstockSupplyMode: "open", chargePreference: "auto", surfacePreference: "soft",
   chargeGeometryMode: "none", chargeGeometryReach: 2.5, chargeGeometryWeight: .24,
   chargeMomentMode: "none", chargeMomentWeight: .24,
+  ionicPairMode: "none", ionicPairReach: 8, ionicPairWeight: .24,
   growthDrivingMode: "none", growthDrivingWeight: .24,
   attachmentTopologyMode: "none", attachmentTopologyWeight: .24,
   habitAnisotropyMode: "none", habitAnisotropyWeight: .24,
@@ -1355,7 +1368,7 @@ const MATERIALS_STUDY_COMPARISONS = Object.freeze({
 });
 
 const GROWTH_PROTOCOL_CONTROL_IDS = new Set([
-  "growthDomainScaleSelect", "geometryPreferenceSelect", "strainWeightSelect", "structuralRelaxationSelect", "compositionPreferenceSelect", "feedstockSupplySelect", "chargePreferenceSelect", "chargeGeometrySelect", "chargeGeometryReachSelect", "chargeGeometryWeightSelect", "chargeMomentSelect", "chargeMomentWeightSelect",
+  "growthDomainScaleSelect", "geometryPreferenceSelect", "strainWeightSelect", "structuralRelaxationSelect", "compositionPreferenceSelect", "feedstockSupplySelect", "chargePreferenceSelect", "chargeGeometrySelect", "chargeGeometryReachSelect", "chargeGeometryWeightSelect", "chargeMomentSelect", "chargeMomentWeightSelect", "ionicPairSelect", "ionicPairReachSelect", "ionicPairWeightSelect",
   "soluteSpeciesSelect", "solutePartitionSelect", "solutePartitionWeightSelect",
   "surfacePreferenceSelect", "growthDrivingSelect", "growthDrivingWeightSelect", "attachmentTopologySelect", "attachmentTopologyWeightSelect", "habitAnisotropySelect", "habitAnisotropyWeightSelect", "defectPrecursorSelect", "defectPrecursorWeightSelect", "coherencyMemorySelect", "coherencyReachSelect", "coherencyMemoryWeightSelect", "frontMorphologySelect", "frontMorphologyWeightSelect",
   "capillaryGeometrySelect", "capillaryGeometryWeightSelect",
@@ -6706,7 +6719,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-157",
+      buildId: "20260826-158",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7303,6 +7316,28 @@ async function buildExperimentReceipt() {
         dielectricResponseInferred: false,
         electronicStructureModeled: false,
         physicalTimeIntegrated: false,
+      },
+      incrementalIonicPairRanking: {
+        role: "target-blind incremental signed formal-charge pair geometry over unchanged exact candidates",
+        mode: ionicPairMode, label: ionicPairLabel(),
+        available: formalChargeTarget.available, enabled: activeIonicPairWeight() > 0,
+        reachNearestNeighborUnits: ionicPairReach,
+        reachAngstrom: ionicPairReach === "global" ? "global finite configuration"
+          : receiptRound(ionicPairReach * referenceSpacingA),
+        effectiveWeight: activeIonicPairWeight(),
+        scoreDefinition: "negative normalized sum q_i q_j/(r_ij/d_nn) over pairs involving at least one emitted site",
+        acceptedMeanScore: receiptRound(acceptedIonicPairScore / Math.max(1, acceptedDecisions)),
+        rejectedMeanScore: receiptRound(rejectedIonicPairScore / Math.max(1, rejectedDecisions)),
+        evaluations: ionicPairEvaluations, distanceEvaluations: ionicPairDistanceEvaluations,
+        incrementalPairsOnly: true, currentCurrentConstantOmitted: true,
+        suppliedFormalChargeOnly: true, candidateSetChanged: false,
+        candidateGeometryChanged: false, hardAdmissionChanged: false, heldoutTargetUsed: false,
+        coulombKernelUsed: true, coulombPrefactorApplied: false,
+        dielectricConstantApplied: false, periodicImagesUsed: false,
+        ewaldSummationUsed: false, neutralizingBackgroundUsed: false,
+        electrostaticEnergyInferred: false, electrostaticPotentialSolved: false,
+        polarizationModeled: false, chargeTransferModeled: false,
+        electronicStructureModeled: false, physicalTimeIntegrated: false,
       },
       surfaceCompletionRanking: {
         role: "target-blind soft ordering that favors healing sample-derived coordination deficits; not bond or surface energy",
@@ -8078,6 +8113,9 @@ function notebookInterventionFactors(receipt) {
         search.suppliedChargeGeometryRanking?.effectiveWeight],
       chargeMoment: [search.globalChargeMomentRanking?.mode,
         search.globalChargeMomentRanking?.effectiveWeight],
+      ionicPair: [search.incrementalIonicPairRanking?.mode,
+        search.incrementalIonicPairRanking?.reachNearestNeighborUnits,
+        search.incrementalIonicPairRanking?.effectiveWeight],
       surface: [search.surfaceCompletionRanking?.mode, search.surfaceCompletionRanking?.effectiveWeight],
       bulkSurfaceDriving: [search.bulkSurfaceDrivingRanking?.mode, search.bulkSurfaceDrivingRanking?.effectiveWeight],
       attachmentTopology: [search.attachmentTopologyRanking?.mode, search.attachmentTopologyRanking?.effectiveWeight],
@@ -11152,6 +11190,8 @@ function activeCandidateScoreTerms(entry, includeExploration = true) {
       activeChargeGeometryWeight(), "soft supplied-charge geometry", "Not Coulomb energy or electric field."),
     scoreTerm("charge-moment", "global charge shape", evaluation.chargeMoment.score,
       activeChargeMomentWeight(), "soft supplied-charge nonlocal geometry", "Not Coulomb energy, dielectric response, or electronic structure."),
+    scoreTerm("ionic-pair", "incremental ionic pair", evaluation.ionicPair.score,
+      activeIonicPairWeight(), "soft supplied-charge 1/r pair geometry", "No dielectric, periodic images, Ewald sum, polarization, or electronic energy."),
     scoreTerm("surface", "surface completion", evaluation.surfaceCompletion.scaledDelta,
       -activeSurfaceCompletionWeight(), "soft coordination-deficit ordering", "Not surface energy."),
     scoreTerm("bulk-surface", "bulk–surface driving", evaluation.bulkSurfaceDriving.score,
@@ -11200,6 +11240,7 @@ function oneFactorPolicyTerm(policyId, entry, label) {
     charge: [evaluation.formalChargeBalance.scaledDelta, -.25],
     "charge-geometry": [evaluation.chargeGeometry.score, activeChargeGeometryWeight()],
     "charge-moment": [evaluation.chargeMoment.score, activeChargeMomentWeight()],
+    "ionic-pair": [evaluation.ionicPair.score, activeIonicPairWeight()],
     surface: [evaluation.surfaceCompletion.scaledDelta, -.18],
     "bulk-surface-driving": [evaluation.bulkSurfaceDriving.score, activeGrowthDrivingWeight()],
     "attachment-topology": [evaluation.attachmentTopology.score, activeAttachmentTopologyWeight()],
@@ -11672,6 +11713,8 @@ function capturePolicyComparison(entries) {
       score: (entry) => entry.baseScore + activeChargeGeometryWeight() * entry.evaluation.chargeGeometry.score },
     { id: "charge-moment", label: `${chargeMomentLabel()} ${activeChargeMomentWeight().toFixed(2)}`,
       score: (entry) => entry.baseScore + activeChargeMomentWeight() * entry.evaluation.chargeMoment.score },
+    { id: "ionic-pair", label: `${ionicPairLabel()} ${activeIonicPairWeight().toFixed(2)}`,
+      score: (entry) => entry.baseScore + activeIonicPairWeight() * entry.evaluation.ionicPair.score },
     { id: "surface", label: "surface 0.18", score: (entry) => entry.baseScore - .18 * entry.evaluation.surfaceCompletion.scaledDelta },
     { id: "bulk-surface-driving", label: `${growthDrivingLabel()} ${activeGrowthDrivingWeight().toFixed(2)}`,
       score: (entry) => entry.baseScore + activeGrowthDrivingWeight() * entry.evaluation.bulkSurfaceDriving.score },
@@ -12406,6 +12449,41 @@ function chargeMomentForFreshSites(rawFreshSites, { recordWork = true } = {}) {
     normalization: "|p|/(Σ|q| Rrms); ||Q||F/(Σ|q| Rrms²) about the geometric centroid" };
 }
 
+function ionicPairLabel() {
+  return ionicPairMode === "madelung" ? "incremental Madelung-like geometry" : "ionic-pair diagnostic";
+}
+
+function activeIonicPairWeight() {
+  return ionicPairMode === "none" || !formalChargeTarget?.available ? 0 : ionicPairWeight;
+}
+
+function ionicPairForFreshSites(rawFreshSites, { recordWork = true } = {}) {
+  const freshSites = uniqueFreshSites(rawFreshSites);
+  const available = Boolean(formalChargeTarget?.available && freshSites.length
+    && freshSites.every((site) => Number.isFinite(suppliedFormalChargeForToken(site.species))));
+  if (!available) return { available: false, enabled: false, mode: ionicPairMode,
+    label: ionicPairLabel(), score: 0, pairCount: 0, distanceEvaluations: 0,
+    reason: !formalChargeTarget?.available ? "complete supplied formal-charge channel unavailable"
+      : !freshSites.length ? "candidate adds no sites" : "candidate charge unresolved",
+    targetUsed: false, candidateGeometryChanged: false, hardAdmissionChanged: false,
+    coulombKernelUsed: false, electrostaticEnergyInferred: false,
+    dielectricResponseInferred: false, electronicStructureModeled: false,
+    physicalTimeIntegrated: false };
+  const currentSites = atoms.map((atom) => ({ position: atom.p.toArray(),
+    charge: suppliedFormalChargeForToken(atom.species) }));
+  const addedSites = freshSites.map((site) => ({ position: site.p.toArray(),
+    charge: suppliedFormalChargeForToken(site.species) }));
+  const result = incrementalIonicPairGeometry(currentSites, addedSites, {
+    nearestNeighborScale: referenceSpacing,
+    reachNearestNeighborUnits: ionicPairReach,
+  });
+  if (recordWork) { ionicPairEvaluations++; ionicPairDistanceEvaluations += result.distanceEvaluations || 0; }
+  return { ...result, enabled: ionicPairMode !== "none", mode: ionicPairMode,
+    label: ionicPairLabel(), score: ionicPairMode === "none" ? 0 : result.score,
+    reachAngstrom: ionicPairReach === "global" ? "global"
+      : ionicPairReach * referenceSpacingA };
+}
+
 function batchRetainsNovelSites(entries) {
   if (!reconstructionCertified && replayIndex < referenceCount()) {
     const owners = new Map();
@@ -12445,6 +12523,7 @@ function commutingFrontierBatch() {
         - activeFormalChargeWeight() * evaluation.formalChargeBalance.scaledDelta
         + activeChargeGeometryWeight() * evaluation.chargeGeometry.score
         + activeChargeMomentWeight() * evaluation.chargeMoment.score
+        + activeIonicPairWeight() * evaluation.ionicPair.score
         - activeSurfaceCompletionWeight() * evaluation.surfaceCompletion.scaledDelta
         + activeGrowthDrivingWeight() * evaluation.bulkSurfaceDriving.score
         + activeAttachmentTopologyWeight() * evaluation.attachmentTopology.score
@@ -12575,6 +12654,7 @@ function evaluateCandidate(candidate, {
   const formalChargeBalance = formalChargeBalanceForFreshSites(fresh);
   const chargeGeometry = chargeGeometryForFreshSites(fresh, { recordWork });
   const chargeMoment = chargeMomentForFreshSites(fresh, { recordWork });
+  const ionicPair = ionicPairForFreshSites(fresh, { recordWork });
   const externalDrive = externalDriveForCandidate(candidate);
   const thermalField = reducedThermalFieldForCandidate(candidate, { recordWork });
   const solutePartition = solutePartitionForFreshSites(fresh, thermalField, capillaryGeometry, { recordWork });
@@ -12592,7 +12672,7 @@ function evaluateCandidate(candidate, {
     && angularViolations.length === 0 && feedstockSupply.admitted && (markingAccepted || markingFallback);
   return { accepted, sites, merged, fresh, conflicts, boundaryFailures, knownFailures, markingFallback,
     coordinationOverflows, angularViolations, geometricStrain, affineLoadedGeometricStrain,
-    surfaceCompletion, bulkSurfaceDriving, attachmentTopology, habitAnisotropy, frontMorphology, capillaryGeometry, epitaxyRegistry, compositionBalance, feedstockSupply, formalChargeBalance, chargeGeometry, chargeMoment,
+    surfaceCompletion, bulkSurfaceDriving, attachmentTopology, habitAnisotropy, frontMorphology, capillaryGeometry, epitaxyRegistry, compositionBalance, feedstockSupply, formalChargeBalance, chargeGeometry, chargeMoment, ionicPair,
     externalDrive, thermalField, solutePartition, constraintRobustness, interfaceAccommodation,
     microstructureCoupling, loopClosure, defectPrecursors, coherencyMemory, arrivalPath, feedExposure,
     duplicateSites: canonical.duplicateSites,
@@ -12987,6 +13067,10 @@ function initializeOffLatticeSearch() {
   rejectedChargeMomentScore = 0;
   chargeMomentEvaluations = 0;
   chargeMomentSitePresentations = 0;
+  acceptedIonicPairScore = 0;
+  rejectedIonicPairScore = 0;
+  ionicPairEvaluations = 0;
+  ionicPairDistanceEvaluations = 0;
   acceptedSurfaceDeficit = 0;
   rejectedSurfaceDeficit = 0;
   acceptedGrowthDrivingScore = 0;
@@ -13623,7 +13707,7 @@ function currentGrowthProtocolSettings() {
     structuralRelaxationMode,
     compositionPreference, feedstockSupplyMode, soluteSpecies: resolvedSoluteSpecies(), solutePartitionMode, solutePartitionWeight,
     chargePreference, chargeGeometryMode, chargeGeometryReach, chargeGeometryWeight,
-    chargeMomentMode, chargeMomentWeight,
+    chargeMomentMode, chargeMomentWeight, ionicPairMode, ionicPairReach, ionicPairWeight,
     surfacePreference, growthDrivingMode, growthDrivingWeight,
     attachmentTopologyMode, attachmentTopologyWeight,
     habitAnisotropyMode, habitAnisotropyWeight,
@@ -13669,8 +13753,8 @@ function renderGrowthControlGroupSummaries() {
   const chemistryActive = activeCount([activeCompositionBalanceWeight() > 0,
     feedstockSupplyMode !== "open", activeSolutePartitionWeight() > 0,
     activeFormalChargeWeight() > 0, activeChargeGeometryWeight() > 0,
-    activeChargeMomentWeight() > 0]);
-  growthChemistryGroupState.textContent = `${chemistryActive}/6 active${formalChargeTarget?.available ? " · charge supplied" : ""}`;
+    activeChargeMomentWeight() > 0, activeIonicPairWeight() > 0]);
+  growthChemistryGroupState.textContent = `${chemistryActive}/7 active${formalChargeTarget?.available ? " · charge supplied" : ""}`;
   const interfaceActive = activeCount([activeSurfaceCompletionWeight() > 0, activeGrowthDrivingWeight() > 0,
     activeAttachmentTopologyWeight() > 0, activeHabitAnisotropyWeight() > 0,
     activeDefectPrecursorWeight() > 0, activeCoherencyMemoryWeight() > 0,
@@ -13703,6 +13787,8 @@ function applyGrowthProtocol(mode, options = {}) {
   chargeGeometryMode = settings.chargeGeometryMode; chargeGeometryReach = settings.chargeGeometryReach;
   chargeGeometryWeight = settings.chargeGeometryWeight;
   chargeMomentMode = settings.chargeMomentMode; chargeMomentWeight = settings.chargeMomentWeight;
+  ionicPairMode = settings.ionicPairMode; ionicPairReach = settings.ionicPairReach;
+  ionicPairWeight = settings.ionicPairWeight;
   solutePartitionMode = settings.solutePartitionMode; solutePartitionWeight = settings.solutePartitionWeight;
   surfacePreference = settings.surfacePreference;
   growthDrivingMode = settings.growthDrivingMode; growthDrivingWeight = settings.growthDrivingWeight;
@@ -14538,6 +14624,9 @@ function syncStageOptions() {
     chargeGeometryWeightSelect.value = String(chargeGeometryWeight);
     chargeMomentSelect.value = chargeMomentMode;
     chargeMomentWeightSelect.value = String(chargeMomentWeight);
+    ionicPairSelect.value = ionicPairMode;
+    ionicPairReachSelect.value = String(ionicPairReach);
+    ionicPairWeightSelect.value = String(ionicPairWeight);
     surfacePreferenceSelect.value = surfacePreference;
     growthDrivingSelect.value = growthDrivingMode;
     growthDrivingWeightSelect.value = String(growthDrivingWeight);
@@ -14590,6 +14679,9 @@ function syncStageOptions() {
     chargeGeometryWeightSelect.disabled = finiteIceAnchorMode || !formalChargeTarget?.available || chargeGeometryMode === "none";
     chargeMomentSelect.disabled = finiteIceAnchorMode || !formalChargeTarget?.available;
     chargeMomentWeightSelect.disabled = finiteIceAnchorMode || !formalChargeTarget?.available || chargeMomentMode === "none";
+    ionicPairSelect.disabled = finiteIceAnchorMode || !formalChargeTarget?.available;
+    ionicPairReachSelect.disabled = finiteIceAnchorMode || !formalChargeTarget?.available || ionicPairMode === "none";
+    ionicPairWeightSelect.disabled = finiteIceAnchorMode || !formalChargeTarget?.available || ionicPairMode === "none";
     surfacePreferenceSelect.disabled = finiteIceAnchorMode;
     growthDrivingSelect.disabled = finiteIceAnchorMode;
     growthDrivingWeightSelect.disabled = finiteIceAnchorMode || growthDrivingMode === "none";
@@ -14643,6 +14735,9 @@ function syncStageOptions() {
     chargeMomentHint.textContent = !formalChargeTarget?.available ? "requires complete supplied charge"
       : chargeMomentMode === "none" ? "off · multipoles reported"
         : `${chargeMomentLabel()} · global · weight ${chargeMomentWeight.toFixed(2)}`;
+    ionicPairHint.textContent = !formalChargeTarget?.available ? "requires complete supplied charge"
+      : ionicPairMode === "none" ? "off · 1/r geometry reported"
+        : `${ionicPairLabel()} · ${ionicPairReach === "global" ? "global finite" : `${ionicPairReach}dₙₙ`} · weight ${ionicPairWeight.toFixed(2)}`;
     growthDrivingHint.textContent = growthDrivingMode === "none"
       ? "off · geometry reported" : `${growthDrivingLabel()} · bulk ${(100 * growthDrivingBulkShare()).toFixed(0)}% · weight ${growthDrivingWeight.toFixed(2)}`;
     attachmentTopologyHint.textContent = attachmentTopologyMode === "none"
@@ -14735,6 +14830,10 @@ function syncStageOptions() {
       ? " No complete supplied formal-charge channel exists, so global ionic charge-shape ordering fails closed."
       : chargeMomentMode === "none" ? " Global charge dipole and quadrupole geometry is reported but contributes zero ranking weight."
         : ` A ${chargeMomentWeight.toFixed(2)} soft ${chargeMomentLabel()} term compares normalized global charge-shape moments; it is not Coulomb energy, polarization, dielectric response, or electronic structure.`;
+    const ionicPairUse = !formalChargeTarget?.available
+      ? " No complete supplied formal-charge channel exists, so ionic-pair geometry fails closed."
+      : ionicPairMode === "none" ? " Incremental signed 1/r ionic-pair geometry is reported but contributes zero ranking weight."
+        : ` A ${ionicPairWeight.toFixed(2)} soft ${ionicPairLabel()} term ranks the incremental signed formal-charge pair sum within ${ionicPairReach === "global" ? "the finite configuration" : `${ionicPairReach}dₙₙ`}; no dielectric, periodic images, Ewald sum, polarization, or electronic energy is inferred.`;
     const surfaceUse = surfacePreference === "none"
       ? " Coordination deficit is reported but contributes zero ranking weight."
       : ` A ${surfacePreference === "strong" ? "strong" : "balanced"} soft surface-completion term favors actions that heal observed coordination deficits without requiring a complete frontier shell.`;
@@ -14792,8 +14891,8 @@ function syncStageOptions() {
     growthModeNote.textContent = finiteIceAnchorMode
       ? "This sealed ice gate executes primitive H₂O connection ports with mutually exclusive orientation domains. Clusters² is disabled because no stationary promoted ice production has been certified."
       : hierarchyEnabled
-      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`
-      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`;
+      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${ionicPairUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`
+      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${ionicPairUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`;
   }
 }
 
@@ -14825,6 +14924,10 @@ function resetCounters() {
   rejectedChargeMomentScore = 0;
   chargeMomentEvaluations = 0;
   chargeMomentSitePresentations = 0;
+  acceptedIonicPairScore = 0;
+  rejectedIonicPairScore = 0;
+  ionicPairEvaluations = 0;
+  ionicPairDistanceEvaluations = 0;
   acceptedSurfaceDeficit = 0;
   rejectedSurfaceDeficit = 0;
   acceptedGrowthDrivingScore = 0;
@@ -15232,6 +15335,7 @@ function stateForCandidate(candidate, evaluation) {
     formalChargeBalance: evaluation.formalChargeBalance,
     chargeGeometry: evaluation.chargeGeometry,
     chargeMoment: evaluation.chargeMoment,
+    ionicPair: evaluation.ionicPair,
     surfaceCompletion: evaluation.surfaceCompletion,
     bulkSurfaceDriving: evaluation.bulkSurfaceDriving,
     attachmentTopology: evaluation.attachmentTopology,
@@ -15378,6 +15482,7 @@ function performOffLatticeEvent() {
     solutePartition: evaluation.solutePartition,
     chargeGeometry: evaluation.chargeGeometry,
     chargeMoment: evaluation.chargeMoment,
+    ionicPair: evaluation.ionicPair,
     attachmentTopology: evaluation.attachmentTopology,
     habitAnisotropy: evaluation.habitAnisotropy,
     defectPrecursors: evaluation.defectPrecursors,
@@ -15410,6 +15515,7 @@ function performOffLatticeEvent() {
       rejectedFormalChargeDelta += snapshotEvaluation.formalChargeBalance.scaledDelta;
       rejectedChargeGeometryScore += snapshotEvaluation.chargeGeometry.score;
       rejectedChargeMomentScore += snapshotEvaluation.chargeMoment.score;
+      rejectedIonicPairScore += snapshotEvaluation.ionicPair.score;
       rejectedSurfaceDeficit += snapshotEvaluation.surfaceCompletion.scaledDelta;
       rejectedGrowthDrivingScore += snapshotEvaluation.bulkSurfaceDriving.score;
       rejectedAttachmentTopologyScore += snapshotEvaluation.attachmentTopology.score;
@@ -15467,6 +15573,7 @@ function performOffLatticeEvent() {
     acceptedFormalChargeDelta += evaluation.formalChargeBalance.scaledDelta;
     acceptedChargeGeometryScore += evaluation.chargeGeometry.score;
     acceptedChargeMomentScore += evaluation.chargeMoment.score;
+    acceptedIonicPairScore += evaluation.ionicPair.score;
     acceptedSurfaceDeficit += evaluation.surfaceCompletion.scaledDelta;
     acceptedGrowthDrivingScore += evaluation.bulkSurfaceDriving.score;
     acceptedAttachmentTopologyScore += evaluation.attachmentTopology.score;
@@ -16501,6 +16608,14 @@ function physicsTranslationRecords(leap = null) {
         : `No complete supplied-charge moment exists for this structural state; ${chargeMomentEvaluations.toLocaleString()} candidate evaluations over ${chargeMomentSitePresentations.toLocaleString()} site presentations.`
         : "No global charge-shape candidate evaluated yet.",
       boundary: "This is a translation-, proper-rotation-, and uniform-scale-invariant shape descriptor over supplied formal-charge labels. It uses no Coulomb kernel and is not electrostatic energy, polarization, dielectric screening, electric potential, charge transfer, electronic structure, force, rate, or physical time." },
+    { id: "ionic-pair", process: "incremental ionic pair interaction geometry / finite Madelung-like ordering",
+      status: activeIonicPairWeight() > 0 ? "soft" : formalChargeTarget?.available ? "open" : "unavailable",
+      role: activeIonicPairWeight() > 0 ? "supplied-label incremental 1/r ordering" : "diagnostic",
+      encoding: formalChargeTarget?.available
+        ? `${ionicPairLabel()}; signed qᵢqⱼ/(rᵢⱼ/dₙₙ) over pairs involving emitted sites within ${ionicPairReach === "global" ? "the finite configuration" : `${ionicPairReach}dₙₙ`}, w=${activeIonicPairWeight().toFixed(2)}`
+        : "requires a complete explicitly supplied formal-charge channel",
+      evidence: leap ? `Accepted mean score ${receiptRound(acceptedIonicPairScore / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedIonicPairScore / Math.max(1, rejectedDecisions), 4)}; ${ionicPairEvaluations.toLocaleString()} candidate evaluations and ${ionicPairDistanceEvaluations.toLocaleString()} pair-distance evaluations.` : "No incremental ionic-pair candidate evaluated yet.",
+      boundary: "The dimensionless kernel is translation-, proper-rotation-, and uniform-scale-invariant and omits the candidate-independent current–current constant. No Coulomb prefactor, dielectric response, periodic images, Ewald sum, neutralizing background, polarization, charge transfer, electronic structure, electrostatic energy, potential, force, rate, or physical time is inferred." },
     { id: "solute-partition", process: "solute partitioning / interfacial segregation", status: activeSolutePartitionWeight() > 0 ? "soft" : "open", role: activeSolutePartitionWeight() > 0 ? "species × spatial-field ordering" : "disabled",
       encoding: activeSolutePartitionWeight() > 0
         ? `${resolvedSoluteSpecies()} enrichment relative to its observed fraction × ${solutePartitionLabel()} spatial score, w=${activeSolutePartitionWeight().toFixed(2)}`
@@ -16636,6 +16751,7 @@ const PHYSICS_CONTROL_ROUTES = Object.freeze({
   chemistry: { stage: 4, controlId: "compositionPreferenceSelect", label: "Configure reservoirs" },
   "charge-geometry": { stage: 4, controlId: "chargeGeometrySelect", label: "Configure charge geometry" },
   "charge-moment": { stage: 4, controlId: "chargeMomentSelect", label: "Configure global charge shape" },
+  "ionic-pair": { stage: 4, controlId: "ionicPairSelect", label: "Configure ionic pair geometry" },
   "solute-partition": { stage: 4, controlId: "solutePartitionSelect", label: "Configure partition geometry" },
   surface: { stage: 4, controlId: "surfacePreferenceSelect", label: "Configure interface completion" },
   "bulk-surface-driving": { stage: 4, controlId: "growthDrivingSelect", label: "Configure reduced driving" },
@@ -17392,6 +17508,17 @@ function geometryConstraintEvidence(name, term, state, mode) {
         ? `Soft ${chargeMomentLabel()} rank term with weight ${activeChargeMomentWeight().toFixed(2)}.` : "Unavailable or diagnostic only.",
       boundary: "This proper-rotation- and uniform-scale-invariant descriptor is not Coulomb energy, polarization, dielectric response, charge transfer, electronic structure, force, rate, or time.",
     },
+    "ionic pair geometry": {
+      observed: state?.ionicPair?.available
+        ? `${state.ionicPair.pairCount} incremental pairs · ${state.ionicPair.distanceEvaluations} distance evaluations · signed sum ${signed(state.ionicPair.signedPairSum)}`
+        : state?.ionicPair?.reason || "complete supplied formal-charge channel unavailable",
+      encoding: state?.ionicPair?.available
+        ? `dimensionless qᵢqⱼ/(rᵢⱼ/dₙₙ), ${state.ionicPair.reachNearestNeighborUnits === "global" ? "global finite reach" : `R${Number(state.ionicPair.reachNearestNeighborUnits).toFixed(1)}dₙₙ`}; current–current pairs omitted`
+        : "No incremental ionic-pair descriptor is fitted from incomplete labels.",
+      searchRole: activeIonicPairWeight() > 0
+        ? `Soft ${ionicPairLabel()} rank term with weight ${activeIonicPairWeight().toFixed(2)}.` : "Unavailable or diagnostic only.",
+      boundary: "This uses a dimensionless 1/r formal-charge kernel, but no Coulomb prefactor, dielectric response, periodic images, Ewald sum, neutralizing background, polarization, charge transfer, electronic structure, electrostatic energy, potential, force, rate, or time.",
+    },
     "surface completion": {
       observed: `${coordinationRecords.length} learned bulk coordination channels define local deficit relative to the sample`,
       encoding: "A candidate receives credit for healing existing coordination deficits and cost for creating new exposed deficits.",
@@ -17642,6 +17769,9 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "global charge shape", status: ranked(activeChargeMomentWeight() > 0),
       value: state.chargeMoment?.available ? `${signed(state.chargeMoment.score)} · p ${state.chargeMoment.after?.dipoleMagnitude?.toFixed(3) ?? "n/a"} · Q ${state.chargeMoment.after?.quadrupoleMagnitude?.toFixed(3) ?? "n/a"}` : "unavailable",
       detail: activeChargeMomentWeight() > 0 ? `${chargeMomentLabel()} · rank weight ${activeChargeMomentWeight().toFixed(2)}` : state.chargeMoment?.reason || "diagnostic" },
+    { name: "ionic pair geometry", status: ranked(activeIonicPairWeight() > 0),
+      value: state.ionicPair?.available ? `${signed(state.ionicPair.score)} · sum ${signed(state.ionicPair.signedPairSum)} · ${state.ionicPair.pairCount} pairs` : "unavailable",
+      detail: activeIonicPairWeight() > 0 ? `${ionicPairLabel()} · ${ionicPairReach === "global" ? "global finite" : `R${ionicPairReach}dₙₙ`} · rank weight ${activeIonicPairWeight().toFixed(2)}` : state.ionicPair?.reason || "diagnostic" },
     { name: "surface completion", status: ranked(activeSurfaceCompletionWeight() > 0),
       value: state.surfaceCompletion ? signed(state.surfaceCompletion.scaledDelta) : "not evaluated",
       detail: activeSurfaceCompletionWeight() > 0 ? `rank weight ${activeSurfaceCompletionWeight().toFixed(2)}` : "diagnostic · cannot authorize geometry" },
@@ -17776,6 +17906,9 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "global charge shape", status: ranked(activeChargeMomentWeight() > 0),
       value: activeChargeMomentWeight() > 0 ? chargeMomentLabel() : formalChargeTarget?.available ? "diagnostic" : "unavailable",
       detail: formalChargeTarget?.available ? `global normalized moments · weight ${activeChargeMomentWeight().toFixed(2)}` : "no complete supplied oxidation-state channel" },
+    { name: "ionic pair geometry", status: ranked(activeIonicPairWeight() > 0),
+      value: activeIonicPairWeight() > 0 ? ionicPairLabel() : formalChargeTarget?.available ? "diagnostic" : "unavailable",
+      detail: formalChargeTarget?.available ? `${ionicPairReach === "global" ? "global finite reach" : `R${ionicPairReach}dₙₙ`} · weight ${activeIonicPairWeight().toFixed(2)}` : "no complete supplied oxidation-state channel" },
     { name: "surface completion", status: ranked(activeSurfaceCompletionWeight() > 0),
       value: activeSurfaceCompletionWeight() > 0 ? "ranked" : "diagnostic", detail: `weight ${activeSurfaceCompletionWeight().toFixed(2)}` },
     { name: "bulk–surface driving", status: ranked(activeGrowthDrivingWeight() > 0),
@@ -19559,6 +19692,24 @@ chargeMomentSelect.addEventListener("change", () => {
 chargeMomentWeightSelect.addEventListener("change", () => {
   const value = Number(chargeMomentWeightSelect.value);
   chargeMomentWeight = [.12, .24, .48].includes(value) ? value : .24;
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+ionicPairSelect.addEventListener("change", () => {
+  ionicPairMode = ionicPairSelect.value === "madelung" ? "madelung" : "none";
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+ionicPairReachSelect.addEventListener("change", () => {
+  const raw = ionicPairReachSelect.value;
+  const value = raw === "global" ? "global" : Number(raw);
+  ionicPairReach = value === "global" || [4, 8].includes(value) ? value : 8;
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+ionicPairWeightSelect.addEventListener("change", () => {
+  const value = Number(ionicPairWeightSelect.value);
+  ionicPairWeight = [.12, .24, .48].includes(value) ? value : .24;
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
 });

@@ -602,6 +602,29 @@
                 <option value="0.48">0.48 · strong</option>
               </select>
             </label>
+            <label class="field" for="ionicPairSelect">
+              <span>Incremental ionic-pair geometry <b id="ionicPairHint">off · 1/r geometry reported</b></span>
+              <select id="ionicPairSelect">
+                <option value="none" selected>Off · signed pair sum reported</option>
+                <option value="madelung">Madelung-like · favor lower signed 1/r sum</option>
+              </select>
+            </label>
+            <label class="field" for="ionicPairReachSelect">
+              <span>Ionic-pair reach <b>nearest-neighbor units</b></span>
+              <select id="ionicPairReachSelect">
+                <option value="4">4dₙₙ · local–mesoscopic</option>
+                <option value="8" selected>8dₙₙ · extended</option>
+                <option value="global">Global finite configuration</option>
+              </select>
+            </label>
+            <label class="field" for="ionicPairWeightSelect">
+              <span>Ionic-pair weight <b>soft rank only</b></span>
+              <select id="ionicPairWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
               </div>
             </details>
             <details class="growth-control-group">
@@ -1576,7 +1599,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260826-157"></script>
+  <script type="module" src="./app.js?v=20260826-158"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

@@ -50,7 +50,7 @@ def test_microstructure_audit_is_visible_reproducible_and_non_generative() -> No
     assert "candidateGeometryChanged: false" in search_logic
     assert "heldoutTargetUsed: false" in search_logic
     assert "const { adjacencyReach, coordinationBaselines, siteRoles, ...audit }" in source
-    assert 'app.js?v=20260826-157' in html
+    assert 'app.js?v=20260826-158' in html
 
 
 if __name__ == "__main__":

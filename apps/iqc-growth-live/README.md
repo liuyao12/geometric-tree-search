@@ -4768,3 +4768,17 @@ Build 155 adds an optional global ionic charge-shape layer for structures with a
 Build 156 makes that nonlocal geometry explorable on every frozen growth frontier. A live dipole–quadrupole portrait places the current solid at a gold reference point and draws the exact before→after transition for every hard-admitted charged candidate; mint endpoints improve the selected global charge-shape score and coral endpoints worsen it. Scientists can inspect exact normalized moment values, component scores, and the frontier digest, then click or keyboard-select an endpoint to preview its unchanged proper-SE(3) attachment pose in the 3D scene. The coordinate-free experiment receipt retains the candidate count, selected candidate digest, normalization, ranges, and all nonmutation and target-use gates. The arrows are discrete candidate comparisons—not trajectories, electric fields, electrostatic energies, polarization paths, dielectric response, or physical time.
 
 Build 157 separates proposed charge-shape changes from the geometry that actually executed. Every retained structural leap now freezes the solid’s normalized supplied-charge dipole and quadrupole alongside local orientational order, geometric S(q), morphology, interfaces, feedstock, and domain state. A violet path through the dipole–quadrupole portrait connects the seed and retained accepted, rejected, or fixed-point structural states; selecting a history point reopens the same full leap certificate, where a dedicated charge-shape row shows its exact before→after values. Candidate rays remain independently clickable and unexecuted. Receipts retain the coordinate-free state series, structural-leap indices, truncation status, and explicit search-update alignment. This is a discrete structural pathway, never an electrostatic-energy or polarization path, molecular-dynamics trajectory, rate, or physical clock.
+
+Build 158 adds an optional dimensionless incremental ionic-pair geometry for
+systems with complete supplied formal charges. Every unchanged exact candidate
+is evaluated with the signed `q_i q_j/(r_ij/d_nn)` sum over pairs involving at
+least one newly emitted site, using a declared 4d_nn, 8d_nn, or global finite
+reach. The candidate-independent current-current contribution is omitted, and
+the signed sum is normalized by its absolute pair sum before it can enter the
+soft ordering. The decision ledger, physics translation, receipts, and work
+counters retain the mode, reach, weight, attractive/repulsive magnitudes, pair
+count, and explicit O(Nk) distance work. Candidate geometry and every hard gate
+remain unchanged. This is a finite Madelung-like geometric rank, not an
+electrostatic energy: it supplies no Coulomb prefactor, dielectric response,
+periodic images, Ewald sum, neutralizing background, polarization, charge
+transfer, electronic structure, potential, force, rate, or physical time.

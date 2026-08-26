@@ -24,6 +24,7 @@ def test_physics_control_routes_contract():
         "chemistry": "compositionPreferenceSelect",
         "charge-geometry": "chargeGeometrySelect",
         "charge-moment": "chargeMomentSelect",
+        "ionic-pair": "ionicPairSelect",
         "solute-partition": "solutePartitionSelect",
         "bulk-surface-driving": "growthDrivingSelect",
         "attachment-topology": "attachmentTopologySelect",
