@@ -12,6 +12,7 @@ README = (APP_DIR / "README.md").read_text()
 def test_dimension_aware_orientational_order_is_exposed_interactively():
     assert '<option value="order">local order · qℓ / ψℓ</option>' in HTML
     assert 'id="orientationalOrderSelect"' in HTML
+    assert 'id="orientationalOrderMapButton"' in HTML
     for harmonic in (4, 6, 12):
         assert f'<option value="{harmonic}"' in HTML
     assert "export function localOrientationalOrder" in MODULE
@@ -19,6 +20,10 @@ def test_dimension_aware_orientational_order_is_exposed_interactively():
     assert "Math.atan2(y, x) * harmonic" in MODULE
     assert "selectOrientationalOrderBin(index)" in APP
     assert "show matching local shells" in APP
+    assert "currentOrientationalOrderField()" in APP
+    assert "orientationalOrderHaloColor(value)" in APP
+    assert "new THREE.IcosahedronGeometry(.25, 0)" in APP
+    assert "unresolved surface centers intentionally receive no halo" in APP
     assert '<option value="localOrder">mean local q₆ / |ψ₆|</option>' in HTML
     assert "orientationalOrder: structuralOrientationalOrderSnapshot()" in APP
     assert 'localOrder: { label: "mean local q₆ / |ψ₆|"' in APP
@@ -30,6 +35,9 @@ def test_order_is_rotation_invariant_posthoc_evidence_not_growth_physics():
     assert "usedAsGrowthInput: false" in APP
     assert "phaseProbabilityClaimed: false" in APP
     assert "freeEnergyClaimed: false" in APP
+    assert "elementCoreColorsPreserved: true" in APP
+    assert "coordinatesChanged: false" in APP
+    assert "candidateGeometryChanged: false" in APP
     assert "structural fingerprints—not phase" in README
 
 

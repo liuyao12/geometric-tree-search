@@ -11,8 +11,8 @@ README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
 
 def test_policy_phase_map_contract() -> None:
-    assert 'buildId: "20260825-135"' in APP
-    assert 'app.js?v=20260825-135' in HTML
+    assert 'buildId: "20260825-136"' in APP
+    assert 'app.js?v=20260825-136' in HTML
     assert 'id="policyPhaseX"' in HTML
     assert 'id="policyPhaseY"' in HTML
     assert 'id="policyPhaseMap"' in HTML

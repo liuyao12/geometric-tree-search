@@ -409,6 +409,7 @@ const rdfLegend = $("rdfLegend");
 const rdfPairSelect = $("rdfPairSelect");
 const structureObservableSelect = $("structureObservableSelect");
 const orientationalOrderSelect = $("orientationalOrderSelect");
+const orientationalOrderMapButton = $("orientationalOrderMapButton");
 const coordChart = $("coordChart");
 const coordEyebrow = $("coordEyebrow");
 const coordTitle = $("coordTitle");
@@ -743,6 +744,7 @@ world.add(confinementGroup, externalDriveGroup, unitCellGroup, bondGroup, atomGr
 scene.add(world);
 
 const sphereGeometry = new THREE.SphereGeometry(0.18, 13, 9);
+const orientationalOrderHaloGeometry = new THREE.IcosahedronGeometry(.25, 0);
 const occupancyRingGeometry = new THREE.TorusGeometry(0.235, 0.012, 5, 24);
 const candidateGeometry = new THREE.SphereGeometry(0.24, 12, 8);
 const blueMaterial = new THREE.MeshStandardMaterial({ color: COLORS.blue, roughness: 0.28, metalness: 0.18, emissive: 0x0b526d, emissiveIntensity: 0.32 });
@@ -765,6 +767,8 @@ const clusterMaterials = CLUSTER_COLORS.map((color) => new THREE.MeshStandardMat
 const markingMaterials = new Map();
 const candidateMaterial = new THREE.MeshBasicMaterial({ color: COLORS.violet, wireframe: true, transparent: true, opacity: 0.92 });
 const rejectedMaterial = new THREE.MeshBasicMaterial({ color: COLORS.red, wireframe: true, transparent: true, opacity: 0.92 });
+const orientationalOrderHaloMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff,
+  wireframe: true, transparent: true, opacity: .9, depthWrite: false });
 
 let pipelineStage = 0;
 let pipelineAuto = false;
@@ -796,6 +800,7 @@ let lastLiveStatsKey = "";
 let coordinationSelection = null;
 let orientationalOrderSelection = null;
 let orientationalOrderHarmonic = 6;
+let orientationalOrderMapEnabled = false;
 let learnedClusters = null;
 let learnedCover = null;
 let detectedUnitCell = null;
@@ -2593,6 +2598,32 @@ function selectOrientationalOrderBin(value) {
   updateUI();
 }
 
+function orientationalOrderHaloColor(value) {
+  const low = new THREE.Color(0x4ec5e8);
+  const middle = new THREE.Color(0xc69cff);
+  const high = new THREE.Color(0xffd56a);
+  return value <= .5 ? low.lerp(middle, Math.max(0, value) * 2)
+    : middle.lerp(high, Math.min(1, value) * 2 - 1);
+}
+
+function currentOrientationalOrderField() {
+  if (!orientationalOrderMapEnabled || structureObservableSelection !== "order" || pipelineStage === 2 || pipelineStage === 3) return null;
+  const structure = pipelineStage === 4
+    ? currentLiveStructure()
+    : { source: atoms, stats: referenceStructuralStats };
+  if (!structure.source.length || !structure.stats) return null;
+  const order = ensureOrientationalOrder(structure.stats);
+  return {
+    harmonic: orientationalOrderHarmonic,
+    dimension: structure.stats.dimension,
+    resolved: structure.source.map((atom, index) => ({ atom, value: order.values[index] }))
+      .filter((_, index) => order.resolved[index]),
+    unresolved: structure.source.filter((_, index) => !order.resolved[index]),
+    analysisWindowAtoms: structure.source.length,
+    preservesElementCoreColor: true,
+  };
+}
+
 function svgNode(tag, attributes = {}, text = "") {
   const node = document.createElementNS("http://www.w3.org/2000/svg", tag);
   Object.entries(attributes).forEach(([name, value]) => node.setAttribute(name, value));
@@ -2666,6 +2697,7 @@ function renderTrainingStats() {
   const totalSamples = markingSampleCount();
   rdfPairSelect.hidden = true;
   orientationalOrderSelect.hidden = true;
+  orientationalOrderMapButton.hidden = true;
   structureObservableSelect.hidden = true;
   rdfEyebrow.textContent = "GCTS training curve";
   rdfTitle.textContent = "section mismatch";
@@ -2730,7 +2762,11 @@ function renderStructureStats() {
   structureObservableSelect.value = structureObservableSelection;
   rdfPairSelect.hidden = structureObservableSelection !== "rdf";
   orientationalOrderSelect.hidden = structureObservableSelection !== "order";
+  orientationalOrderMapButton.hidden = structureObservableSelection !== "order";
   orientationalOrderSelect.value = String(orientationalOrderHarmonic);
+  orientationalOrderMapButton.setAttribute("aria-pressed", String(orientationalOrderMapEnabled));
+  orientationalOrderMapButton.textContent = orientationalOrderMapEnabled ? "hide blue → gold halos" : "show local-order halos";
+  orientationalOrderMapButton.title = "Adds a blue-to-gold wire halo around resolved centers while retaining the standard element-colored atom core; unresolved surface centers intentionally receive no halo.";
   syncRdfPairOptions();
   const dimension = referenceStructuralStats.dimension;
   coordEyebrow.textContent = "first-shell coordination";
@@ -6349,7 +6385,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-135",
+      buildId: "20260825-136",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -6711,6 +6747,13 @@ async function buildExperimentReceipt() {
         resolvedCenters: referenceOrder.count,
         unresolvedCenters: referenceOrder.unresolvedCount,
         resolvedFraction: receiptRound(referenceOrder.resolvedFraction),
+        spatialMap: {
+          enabled: orientationalOrderMapEnabled,
+          colormap: "sequential blue → violet → gold wire halos; unresolved centers unhaloed",
+          elementCoreColorsPreserved: true,
+          coordinatesChanged: false,
+          candidateGeometryChanged: false,
+        },
         properRotationInvariant: true,
         usedAsGrowthInput: false,
         phaseProbabilityClaimed: false,
@@ -7656,6 +7699,7 @@ function notebookInterventionFactors(receipt) {
       selectedView: receipt.structuralEvidence?.selectedView,
       rdfPair: receipt.structuralEvidence?.rdf?.pair,
       orientationalHarmonic: receipt.structuralEvidence?.localOrientationalOrder?.harmonic,
+      orientationalSpatialMapEnabled: receipt.structuralEvidence?.localOrientationalOrder?.spatialMap?.enabled,
     }) },
     costModel: { label: "cost estimate assumptions", role: "analysis only", value: serialized(cost?.assumptions || null) },
   };
@@ -13941,6 +13985,22 @@ function rebuildWorld() {
     });
   }
 
+  const localOrderField = currentOrientationalOrderField();
+  if (localOrderField?.resolved.length) {
+    const halos = new THREE.InstancedMesh(orientationalOrderHaloGeometry, orientationalOrderHaloMaterial,
+      localOrderField.resolved.length);
+    localOrderField.resolved.forEach(({ atom, value }, index) => {
+      dummy.position.copy(atom.p);
+      dummy.rotation.set(0, 0, 0);
+      dummy.scale.setScalar(elementScale(atom.species) * 1.38);
+      dummy.updateMatrix();
+      halos.setMatrixAt(index, dummy.matrix);
+      halos.setColorAt(index, orientationalOrderHaloColor(value));
+    });
+    halos.instanceMatrix.needsUpdate = true;
+    if (halos.instanceColor) halos.instanceColor.needsUpdate = true;
+    atomGroup.add(halos);
+  }
   if (pipelineStage === 4 && !iceAnchorTrace && nucleationSiteLandscape.length) {
     const selectedLandscape = nucleationSiteLandscape.filter((entry) => entry.selected);
     const previewLandscape = nucleationSiteLandscape.filter((entry) => !entry.selected).slice(0, 24);
@@ -17491,6 +17551,11 @@ orientationalOrderSelect.addEventListener("change", () => {
   const harmonic = Number(orientationalOrderSelect.value);
   orientationalOrderHarmonic = [4, 6, 12].includes(harmonic) ? harmonic : 6;
   orientationalOrderSelection = null;
+  rebuildWorld();
+  renderStructureStats();
+});
+orientationalOrderMapButton.addEventListener("click", () => {
+  orientationalOrderMapEnabled = !orientationalOrderMapEnabled;
   rebuildWorld();
   renderStructureStats();
 });

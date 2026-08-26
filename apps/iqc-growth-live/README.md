@@ -976,6 +976,14 @@ Under-coordinated centers with fewer than two in-plane or three 3D neighbors
 remain explicitly unresolved instead of contributing the spuriously perfect
 single-bond value one.
 
+An opt-in spatial field places a sequential blue → violet → gold wire halo
+around each resolved center; unresolved centers intentionally receive no halo.
+The ordinary element-colored atom remains visible inside every halo, so
+chemistry is never replaced by the scalar overlay. The map uses the same
+analysis window and harmonic as the histogram and changes no coordinate,
+cluster, candidate pose, admission gate, branch score, or growth result. Its
+state and colormap provenance are recorded as analysis-only receipt fields.
+
 The same card can switch to a finite-observation geometric powder structure
 factor. It evaluates the Debye pair sum with `sin(qr)/(qr)` in 3D and the
 correct `J0(qr)` orientational kernel for intrinsically 2D materials. The
@@ -4585,3 +4593,5 @@ Build 133 tightens that accounting: novelty is no longer mislabeled as spatial c
 Build 134 adds an optional geometry-only post-attachment accommodation step. It never touches the supplied/known-window replay or any previously placed atom. After a target-blind structural leap, only the newly emitted sites may move, under a user-selected 2.5%, 5%, or 8% nearest-neighbor displacement cap and a bounded deterministic iteration count. A train-derived colored contact residual proposes the displacement; the entire proposal is committed only when the full learned contact-plus-angle strain decreases and species-specific hard exclusion, coordination capacity, angular bands, public boundary, exact cluster topology, and frozen proper-port identity all remain valid. Any failure atomically restores the exact template coordinates. The structural-leap card, physics map, notebook trajectory, live certificate, and experiment receipt retain the before/after strain, displacement cap, iteration count, rollback reason, and explicit target/force/time nonclaims. This leap-frogs to a locally more compatible structural state, but is not an interatomic potential, energy minimization, mechanical equilibrium, MD integration, diffusion mechanism, probability, rate, or physical elapsed time.
 
 Build 135 adds a dimension-aware local orientational-order microscope beside RDF and geometric powder S(q). Three-dimensional samples use the proper-rotation-invariant Steinhardt q_l magnitude evaluated through the Legendre addition theorem; intrinsic 2D samples use the in-plane bond-order magnitude |psi_l|. Scientists can switch among l=4, 6, and 12, compare known and explicitly grown distributions, and click any histogram interval to isolate every matching center, first-shell neighbor, and contributing bond in the 3D scene. NaCl recovers its expected q6≈0.354 simple-cubic/rocksalt local value, while the hexagonal sheets in the 30-degree hBN control give |psi6|=1 independent of their global orientation. The harmonic, cutoff, moments, and explicit nonclaims are receipt-visible. The descriptor is posthoc geometric evidence, never a phase label, crystallinity probability, energy, or branch score.
+
+Build 136 turns that statistic into an opt-in spatial microscope without sacrificing chemistry. Every resolved center receives a proper-motion-invariant blue → violet → gold icosahedral wire cage keyed to its current q_l or |psi_l| value; the standard element-colored atom remains visible inside. Under-coordinated centers receive no cage and remain counted as unresolved, preventing a one-bond surface site from masquerading as perfect order. The field follows the same 216-site analysis window, harmonic, and neighbor cutoff as the histogram. Enabling it changes no atom, cluster, port, candidate, admission decision, branch score, or growth result, and the receipt records the field, colormap, preserved element cores, and geometry nonmutation as analysis-only state.
