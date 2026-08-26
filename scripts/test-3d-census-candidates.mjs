@@ -149,6 +149,11 @@ assert.match(
   /type === "pause"[\s\S]*?stopToken\.manual_pause = true/,
   "Pause must preserve each live worker at a safe generator checkpoint"
 );
+assert.match(
+  growthAppSource,
+  /function stopActiveRunAfterSelectionChange\(\)[\s\S]*?stopGrowthBenchmark[\s\S]*?growthSeries\.clear\(\)[\s\S]*?setRunButton\(\)/,
+  "selecting another tile must discard the old benchmark and restore Run"
+);
 assert.match(growthWorkerSource, /generic_failure_memo: !!mode\.proof \|\| exactLearningShell/, "proof and exact learning shell lanes must memoize exact failures");
 assert.match(
   growthWorkerSource,
