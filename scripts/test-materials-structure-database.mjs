@@ -21,7 +21,7 @@ const entry = {
     symmetry: { crystal_system: "cubic", space_group_number: 225, space_group_symbol: "Fm-3m" },
   } },
 };
-const archive = { data: { archive: { run: [{ program: { name: "VASP", version: "test-version" }, system: [{ atoms: {
+const archive = { data: { archive: { run: [{ program: { name: "VASP", version: "test-version" }, method: [{ electronic: { method: "DFT" }, dft: { basis_set_type: "plane waves" } }], system: [{ atoms: {
   labels: ["Na", "Cl"],
   positions: [[0, 0, 0], [2.82e-10, 0, 0]],
   lattice_vectors: [[5.64e-10, 0, 0], [0, 5.64e-10, 0], [0, 0, 5.64e-10]],
@@ -37,6 +37,9 @@ assert.equal(primitive.metadata.spaceGroupNumber, 225);
 assert.equal(primitive.metadata.materialId, "test-material");
 assert.equal(primitive.metadata.calculation.programName, "VASP");
 assert.equal(primitive.metadata.calculation.systemReference, "/run/0/system/0");
+assert.equal(primitive.metadata.calculation.methodRecordAvailable, true);
+assert.equal(primitive.metadata.calculation.methodCanonicalJson,
+  '{"dft":{"basis_set_type":"plane waves"},"electronic":{"method":"DFT"}}');
 assert.ok(Math.abs(primitive.metadata.calculation.totalEnergyElectronVolt + 20) < 1e-12);
 assert.ok(Math.abs(primitive.metadata.calculation.energyPerPrimitiveAtomElectronVolt + 10) < 1e-12);
 assert.ok(Math.abs(primitive.metadata.calculation.forceRmsElectronVoltPerAngstrom - Math.sqrt(2.5)) < 1e-12);
@@ -101,6 +104,7 @@ const relaxationCalculations = [-18, -19.5, -20].map((energyEv, step) => ({
   forces: { total: { value: [[0, (3 - step) * 1.602176634e-9, 0], [0, 0, -(3 - step) * 1.602176634e-9]] } },
 }));
 const relaxationArchive = { data: { archive: { run: [{ program: { name: "VASP", version: "relax-test" },
+  method: [{ electronic: { method: "DFT" }, dft: { basis_set_type: "plane waves" } }],
   system: relaxationSystems, calculation: relaxationCalculations }] } } };
 const relaxation = nomadArchiveToStructure(relaxationEntry, relaxationArchive);
 assert.equal(relaxation.frames.length, 3);

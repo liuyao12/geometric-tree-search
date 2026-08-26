@@ -145,7 +145,15 @@ function nomadSymbols(atomsData) {
   });
 }
 
-function nomadCalculationRecord(calculation, atomCount, program, runIndex, calculationIndex, systemIndex) {
+function canonicalJson(value) {
+  if (Array.isArray(value)) return `[${value.map(canonicalJson).join(",")}]`;
+  if (value && typeof value === "object") return `{${Object.keys(value).sort()
+    .filter((key) => value[key] !== undefined).map((key) => `${JSON.stringify(key)}:${canonicalJson(value[key])}`).join(",")}}`;
+  return JSON.stringify(value);
+}
+
+function nomadCalculationRecord(calculation, atomCount, program, methodRecord,
+  runIndex, calculationIndex, systemIndex) {
   const totalEnergyJoule = Number(calculation?.energy?.total?.value);
   const totalEnergyElectronVolt = Number.isFinite(totalEnergyJoule)
     ? totalEnergyJoule / JOULE_PER_ELECTRON_VOLT : null;
@@ -175,6 +183,9 @@ function nomadCalculationRecord(calculation, atomCount, program, runIndex, calcu
       pairedSystemPath: `run/${runIndex}/system/${systemIndex}`,
       systemReference: calculation?.system_ref || null,
       methodReference: calculation?.method_ref || null,
+      methodRecordAvailable: Boolean(methodRecord),
+      methodCanonicalJson: methodRecord ? canonicalJson(methodRecord) : null,
+      methodCompatibilityPolicy: "exact canonical normalized NOMAD method record",
       programName: program.name || null,
       programVersion: program.version || null,
       totalEnergyElectronVolt,
@@ -207,6 +218,16 @@ function nomadCalculationRecord(calculation, atomCount, program, runIndex, calcu
 function referencedSystemIndex(reference) {
   const match = String(reference || "").match(/\/system\/(\d+)(?:$|[#/?])/);
   return match ? Number(match[1]) : null;
+}
+
+function referencedMethodIndex(reference) {
+  const match = String(reference || "").match(/\/method\/(\d+)(?:$|[#/?])/);
+  return match ? Number(match[1]) : null;
+}
+
+function methodForCalculation(run, calculation) {
+  const index = referencedMethodIndex(calculation?.method_ref);
+  return Number.isInteger(index) ? run.method?.[index] || null : null;
 }
 
 function calculationForSystem(run, systemIndex) {
@@ -271,7 +292,8 @@ export function nomadArchiveToStructure(entry, archiveResponse) {
   const makeRecordFrame = (record, retainedIndex) => {
     const paired = calculationForSystem(selectedRun, record.systemIndex);
     const calculationRecord = nomadCalculationRecord(paired.calculation, record.atomsData.positions.length,
-      program, selectedRunIndex, paired.index, record.systemIndex);
+      program, methodForCalculation(selectedRun, paired.calculation),
+      selectedRunIndex, paired.index, record.systemIndex);
     return nomadFrame(record.atomsData, record.symbols, calculationRecord,
       `NOMAD relaxation snapshot ${retainedIndex + 1} / ${retainedRecords.length}`,
       { frameIndex: retainedIndex, nomadSystemIndex: record.systemIndex, nomadCalculationIndex: paired.index,

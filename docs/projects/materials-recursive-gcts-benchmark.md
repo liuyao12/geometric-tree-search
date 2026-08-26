@@ -5654,3 +5654,27 @@ belong to one correlated archive, this is not independent or transferable
 validation. The model is excluded from clustering, marking, search ranking,
 and admission and is not an interatomic potential, energy functional, force
 field, reaction coordinate, causal mechanism, dynamics, kinetics, or time.
+
+## Build 173: a frozen surrogate can face another calculation archive
+
+The browser can now retain up to eight fitted geometric surrogate artifacts in
+a session. Each artifact contains only its fixed three-feature normalization,
+ridge coefficients, intercept, source-pair count, target quantity, and geometry
+reference. A different NOMAD entry is evaluated with those numbers unchanged;
+its energy or force values enter only the subsequent scoring calculation. The
+same entry is explicitly rejected as a transfer target.
+
+Cross-archive evaluation is fail-closed unless reduced occupational chemistry,
+periodic axes, units, feature schema, target, reference mode, program name and
+version, and the exact canonical normalized NOMAD method record all agree.
+Method records are canonicalized recursively with sorted object keys; their
+SHA-256 is retained while raw method JSON is omitted from the receipt. Relative
+energies are still local to each archive and absolute energies are never
+compared across entries.
+
+The receipt hashes source artifacts and target predictions and records that no
+refit or target-assisted prediction occurred. One compatible transfer does not
+establish generalization across chemistry or electronic-structure methods and
+does not create a potential, force field, reaction coordinate, causal model,
+dynamics, kinetics, or time. The library remains diagnostic and unavailable to
+cluster discovery, GCTS marking, search ranking, and admission.

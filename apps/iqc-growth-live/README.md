@@ -5014,3 +5014,28 @@ out is not independent validation or evidence of transfer. The surrogate is
 never made available to cluster discovery, GCTS marking, candidate ranking, or
 admission and is not an interatomic potential, force field, energy functional,
 reaction coordinate, causal model, dynamics, kinetics, or physical time.
+
+### Build 173 · frozen cross-archive geometry calibration
+
+A session calibration library now separates within-archive preflight from an
+actual no-refit target. After a relaxation sequence passes the five-frame
+surrogate gate, **Pin this archive** freezes its feature means/scales, three
+coefficients, intercept, target quantity, and reference mode. Loading another
+NOMAD relaxation archive evaluates that exact artifact before using the new
+energy or force values for post-hoc scoring. The source entry itself is refused
+as a target, so resubstitution cannot be presented as transfer.
+
+Compatibility is intentionally strict: occupational reduced composition,
+periodic axes, energy/force units, target quantity, geometric reference mode,
+feature schema, calculation program and version, and the complete canonical
+normalized NOMAD method record must match exactly. A missing method record or
+version fails closed. Up to eight pinned artifacts remain in the browser
+session; the receipt hashes their serialized parameters, method records, and
+any target predictions without embedding the method JSON or predictions.
+
+Relative energy remains defined within each archive; absolute energies are
+never compared between entries. A successful compatible target is stronger
+than leave-one-frame-out evidence but is still one calculation-domain test,
+not universal validation, a causal mechanism, interatomic potential, force
+field, reaction coordinate, kinetics, or physical time. Frozen surrogates are
+never exposed to clustering, GCTS marking, candidate ranking, or admission.

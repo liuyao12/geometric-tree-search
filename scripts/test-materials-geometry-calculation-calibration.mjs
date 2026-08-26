@@ -1,5 +1,7 @@
 import assert from "node:assert/strict";
-import { geometryCalculationCalibration, geometryCalculationSurrogate, geometryReferenceIndices }
+import { evaluateFrozenGeometrySurrogate, frozenGeometrySurrogateArtifact,
+  geometryCalculationCalibration, geometryCalculationSurrogate, geometryReferenceIndices,
+  geometrySurrogateCompatibilityDifferences, geometrySurrogateCompatibilityKey }
   from "../apps/iqc-growth-live/geometry-calculation-calibration.js";
 
 const monotone = [
@@ -52,5 +54,30 @@ const shortSurrogate = geometryCalculationSurrogate(surrogateRecords.slice(0, 4)
   ["distance", "angle", "coordination"], "energy");
 assert.equal(shortSurrogate.available, false);
 assert.equal(shortSurrogate.requiredPairs, 5);
+const artifact = frozenGeometrySurrogateArtifact(surrogate);
+const transfer = evaluateFrozenGeometrySurrogate(surrogateRecords.map((record) => ({
+  ...record, distance: record.distance + .25,
+  energy: 2 * (record.distance + .25) - .5 * record.angle + .25 * record.coordination,
+})), artifact);
+assert.equal(transfer.available, true);
+assert.equal(transfer.refitPerformed, false);
+assert.equal(transfer.targetValuesUsedForPrediction, false);
+assert.ok(transfer.predictionSpearman > .99);
+assert.ok(transfer.meanAbsoluteError < 1e-3);
+assert.throws(() => evaluateFrozenGeometrySurrogate(surrogateRecords, { ...artifact, featureScales: [0, 1, 1] }),
+  /invalid frozen/);
+const compatibility = {
+  targetMode: "energy", targetKey: "relativeEnergyElectronVoltPerPrimitiveAtom",
+  referenceMode: "pooled", featureSchema: "distance|angle|coordination",
+  reducedComposition: '{"Cl":1,"Na":1}', periodicAxes: "[true,true,true]",
+  programName: "VASP", programVersion: "6.4", methodCanonicalJson: '{"dft":{"xc":"PBE"}}',
+  energyUnit: "eV", forceUnit: "eV/Å",
+};
+assert.equal(geometrySurrogateCompatibilityKey({ ...compatibility }),
+  geometrySurrogateCompatibilityKey({ ...compatibility }));
+assert.deepEqual(geometrySurrogateCompatibilityDifferences(compatibility,
+  { ...compatibility, methodCanonicalJson: '{"dft":{"xc":"LDA"}}' }), ["methodCanonicalJson"]);
+assert.throws(() => geometrySurrogateCompatibilityKey({ ...compatibility, programVersion: null }),
+  /complete geometry surrogate provenance/);
 
 console.log("geometry/calculation calibration statistics: passed");

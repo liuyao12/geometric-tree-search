@@ -38,14 +38,13 @@ def test_prediction_overlay_and_receipt_are_auditable():
     assert "geometricSurrogatePreflight:" in APP
     assert "relaxationSurrogatePredictionsSha256" in APP
     assert "predictionsEmbedded: false" in APP
-    assert "fixed ridge surrogate explicitly fits archived labels" in ATLAS
+    assert "fixed ridge surrogate fits source labels" in ATLAS
 
 
 def test_build_172_is_versioned_and_documented():
-    assert 'buildId: "20260826-172"' in APP
-    assert 'app.js?v=20260826-172' in HTML
-    assert 'geometry-calculation-calibration.js?v=20260826-2' in APP
-    assert 'evidence-atlas.js?v=20260826-14' in HTML
+    assert 'buildId: "20260826-173"' in APP
+    assert 'app.js?v=20260826-173' in HTML
+    assert 'geometry-calculation-calibration.js?v=20260826-3' in APP
+    assert 'evidence-atlas.js?v=20260826-15' in HTML
     assert "Build 172" in README
     assert "Build 172" in DOCS
-

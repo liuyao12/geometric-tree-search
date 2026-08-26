@@ -9,10 +9,12 @@ import {
   parseStructureText,
   validateStructure,
 } from "./structure-io.js?v=20260826-7";
-import { randomNomadStructure } from "./structure-database.js?v=20260826-5";
+import { randomNomadStructure } from "./structure-database.js?v=20260826-6";
 import { bestAffineNeighborhoodResidual } from "./relaxation-local-environment.js?v=20260826-2";
-import { geometryCalculationCalibration, geometryCalculationSurrogate, geometryReferenceIndices }
-  from "./geometry-calculation-calibration.js?v=20260826-2";
+import { evaluateFrozenGeometrySurrogate, frozenGeometrySurrogateArtifact,
+  geometryCalculationCalibration, geometryCalculationSurrogate, geometryReferenceIndices,
+  geometrySurrogateCompatibilityDifferences, geometrySurrogateCompatibilityKey }
+  from "./geometry-calculation-calibration.js?v=20260826-3";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -166,6 +168,9 @@ const relaxationCalibrationChart = $("relaxationCalibrationChart");
 const relaxationCalibrationBoundary = $("relaxationCalibrationBoundary");
 const relaxationSurrogateState = $("relaxationSurrogateState");
 const relaxationSurrogateCoefficients = $("relaxationSurrogateCoefficients");
+const relaxationCalibrationLibrarySelect = $("relaxationCalibrationLibrarySelect");
+const relaxationCalibrationPin = $("relaxationCalibrationPin");
+const relaxationCalibrationTransferState = $("relaxationCalibrationTransferState");
 const measurementConditions = $("measurementConditions");
 const measurementConditionChips = $("measurementConditionChips");
 const publishedFixtureProvenance = $("publishedFixtureProvenance");
@@ -1076,6 +1081,10 @@ let relaxationGeometryCalibrationCache = null;
 let relaxationCalibrationMetricMode = "energy";
 let relaxationCalibrationReferenceMode = "final";
 const RELAXATION_SURROGATE_FEATURES = ["meanDistanceMismatch", "meanAngleMismatch", "meanCoordinationDeficit"];
+let relaxationCalibrationLibrary = [];
+let relaxationCalibrationSourceId = "";
+let relaxationCalibrationLibraryCounter = 0;
+let activeRelaxationTransferAudit = null;
 let localConstraintMismatchCache = null;
 let atomGeometryRevision = 0;
 let iceViMicrostate = null;
@@ -1889,6 +1898,102 @@ function relaxationGeometryCalculationCalibration(requestedReferenceMode = relax
   return result;
 }
 
+function calibrationArchiveCompatibility(calibration, targetMode = relaxationCalibrationMetricMode) {
+  const frames = importedTrajectoryFrames();
+  if (scenarioSelect.value !== "imported" || !importedStructure?.metadata?.entryId || !calibration) {
+    return { available: false, reason: "a public database archive with an entry ID is required" };
+  }
+  const calculations = frames.map((frame) => frame.metadata?.calculation || {});
+  const first = calculations[0] || {};
+  if (!first.programName || !first.programVersion || !first.methodCanonicalJson) {
+    return { available: false, reason: "program version and normalized method record are required" };
+  }
+  if (calculations.some((calculation) => calculation.programName !== first.programName
+      || calculation.programVersion !== first.programVersion
+      || calculation.methodCanonicalJson !== first.methodCanonicalJson)) {
+    return { available: false, reason: "calculation provenance changes within this archive" };
+  }
+  const species = frames[0].atoms.map(occupancyChemistryToken);
+  const counts = new Map(); species.forEach((token) => counts.set(token, (counts.get(token) || 0) + 1));
+  const gcd = (firstValue, secondValue) => secondValue ? gcd(secondValue, firstValue % secondValue) : firstValue;
+  const divisor = [...counts.values()].reduce((value, count) => gcd(value, count));
+  const reducedComposition = Object.fromEntries([...counts.entries()].sort(([a], [b]) => a.localeCompare(b))
+    .map(([token, count]) => [token, count / divisor]));
+  const compatibility = {
+    targetMode,
+    targetKey: targetMode === "force" ? "forceRmsElectronVoltPerAngstrom"
+      : "relativeEnergyElectronVoltPerPrimitiveAtom",
+    referenceMode: calibration.referenceMode,
+    featureSchema: RELAXATION_SURROGATE_FEATURES.join("|"),
+    reducedComposition: JSON.stringify(reducedComposition),
+    periodicAxes: JSON.stringify(frames[0].pbc || [false, false, false]),
+    programName: first.programName,
+    programVersion: first.programVersion,
+    methodCanonicalJson: first.methodCanonicalJson,
+    energyUnit: first.energyUnit,
+    forceUnit: first.forceUnit,
+  };
+  return {
+    available: true,
+    entryId: importedStructure.metadata.entryId,
+    materialName: importedStructure.name || importedStructure.metadata.formula || "public archive",
+    compatibility,
+    key: geometrySurrogateCompatibilityKey(compatibility),
+  };
+}
+
+function calibrationCompatibilityDifferences(source, current) {
+  const labels = {
+    targetMode: "target quantity", targetKey: "target field", referenceMode: "geometry reference", featureSchema: "feature schema",
+    reducedComposition: "reduced composition", periodicAxes: "periodic axes", programName: "program",
+    programVersion: "program version", methodCanonicalJson: "normalized calculation method",
+    energyUnit: "energy unit", forceUnit: "force unit",
+  };
+  return geometrySurrogateCompatibilityDifferences(source, current).map((key) => labels[key] || key);
+}
+
+function renderRelaxationCalibrationLibrary(calibration, surrogate) {
+  const existing = relaxationCalibrationSourceId;
+  relaxationCalibrationLibrarySelect.replaceChildren(new Option("No pinned source", ""));
+  relaxationCalibrationLibrary.forEach((source) => {
+    relaxationCalibrationLibrarySelect.append(new Option(source.label, source.id));
+  });
+  relaxationCalibrationSourceId = relaxationCalibrationLibrary.some((source) => source.id === existing) ? existing : "";
+  relaxationCalibrationLibrarySelect.value = relaxationCalibrationSourceId;
+  const current = calibrationArchiveCompatibility(calibration);
+  relaxationCalibrationPin.disabled = !surrogate?.available || !current.available;
+  activeRelaxationTransferAudit = null;
+  const source = relaxationCalibrationLibrary.find((entry) => entry.id === relaxationCalibrationSourceId);
+  if (!source) {
+    relaxationCalibrationTransferState.textContent = current.available
+      ? "Pin this fitted archive, then load another compatible entry for a frozen no-refit test."
+      : `Cross-archive pinning withheld: ${current.reason}.`;
+    return;
+  }
+  if (!current.available) {
+    relaxationCalibrationTransferState.textContent = `Frozen source retained · target withheld: ${current.reason}.`;
+    return;
+  }
+  if (source.entryId === current.entryId) {
+    relaxationCalibrationTransferState.textContent = "Source archive is still active. Load a different compatible NOMAD entry; resubstitution is not reported as transfer.";
+    return;
+  }
+  const differences = calibrationCompatibilityDifferences(source.compatibility, current.compatibility);
+  if (differences.length) {
+    relaxationCalibrationTransferState.textContent = `Fail closed · incompatible ${differences.join(", ")}. No prediction was made.`;
+    activeRelaxationTransferAudit = { sourceEntryId: source.entryId, targetEntryId: current.entryId,
+      compatible: false, differences, refitPerformed: false };
+    return;
+  }
+  const transfer = evaluateFrozenGeometrySurrogate(calibration.records, source.artifact);
+  activeRelaxationTransferAudit = { sourceEntryId: source.entryId, targetEntryId: current.entryId,
+    sourceId: source.id, compatible: true, differences: [], transfer };
+  const formatted = (value) => Number.isFinite(value) ? `${value >= 0 ? "+" : ""}${value.toFixed(3)}` : "unresolved";
+  relaxationCalibrationTransferState.textContent = transfer.available
+    ? `Frozen ${source.compatibility.targetMode} transfer · ${transfer.pairedFrames} target frames · ρ ${formatted(transfer.predictionSpearman)} · Q² ${formatted(transfer.predictiveQSquared)} · MAE ${transfer.meanAbsoluteError.toPrecision(3)} · no refit.`
+    : `Frozen transfer withheld: ${transfer.reason}.`;
+}
+
 function currentLocalConstraintMismatchField() {
   if (!atoms.length || !coloredDistanceEnvelopes?.records?.length
       || !coloredCoordinationEnvelopes?.records?.length || !coloredAngularEnvelopes?.records?.length) return null;
@@ -2130,6 +2235,7 @@ function renderRelaxationCalibration() {
     relaxationCalibrationTitle.textContent = "Geometry-reference calibration";
     relaxationCalibrationState.textContent = "At least three fixed-topology paired geometry/calculation snapshots are required.";
     relaxationSurrogateState.textContent = "Five paired frames are required for the geometry-only surrogate preflight.";
+    renderRelaxationCalibrationLibrary(null, null);
     relaxationCalibrationBoundary.textContent = "No calibration is inferred from an unpaired or short archive sequence.";
     return;
   }
@@ -2155,6 +2261,7 @@ function renderRelaxationCalibration() {
   } else {
     relaxationSurrogateState.textContent = `Geometry-only surrogate withheld: ${surrogate.pairedFrames}/${surrogate.requiredPairs} paired frames (${surrogate.reason}).`;
   }
+  renderRelaxationCalibrationLibrary(calibration, surrogate);
   relaxationCalibrationBoundary.textContent = `${calibration.referenceRole}. Correlation is descriptive within one correlated sequence—not independent validation, prediction, causality, an energy/force model, kinetics, or time.`;
   if (!records.length) return;
   const xs = records.map((record) => record.meanContactAngleMismatch);
@@ -7463,6 +7570,32 @@ async function buildExperimentReceipt() {
           ? receiptRound(calibration.forceCalibration.pearson, 10) : null,
       } : null;
     }).filter(Boolean) : [];
+  const relaxationCalibrationLibraryRecords = relaxationCalibrationLibrary.map((source) => {
+    const { methodCanonicalJson: omittedMethodRecord, ...compatibility } = source.compatibility;
+    return {
+      id: source.id, label: source.label, sourceEntryId: source.entryId,
+      compatibility: { ...compatibility, methodCanonicalSha256: source.methodCanonicalSha256,
+        methodCanonicalRecordEmbedded: false },
+      artifact: {
+        ...source.artifact,
+        featureMeans: source.artifact.featureMeans.map((value) => receiptRound(value, 10)),
+        featureScales: source.artifact.featureScales.map((value) => receiptRound(value, 10)),
+        standardizedCoefficients: source.artifact.standardizedCoefficients
+          .map((value) => receiptRound(value, 10)),
+        targetMean: receiptRound(source.artifact.targetMean, 10),
+      },
+      sourcePreflight: Object.fromEntries(Object.entries(source.sourcePreflight).map(([key, value]) =>
+        [key, typeof value === "number" ? receiptRound(value, 10) : value])),
+    };
+  });
+  const relaxationCalibrationLibrarySha256 = relaxationCalibrationLibraryRecords.length
+    ? await receiptSha256(JSON.stringify(relaxationCalibrationLibraryRecords)) : null;
+  const relaxationTransferPredictions = activeRelaxationTransferAudit?.transfer?.predictions?.map((prediction) => ({
+    recordIndex: prediction.recordIndex, observed: receiptRound(prediction.observed, 10),
+    predicted: receiptRound(prediction.predicted, 10),
+  })) || [];
+  const relaxationTransferPredictionsSha256 = relaxationTransferPredictions.length
+    ? await receiptSha256(JSON.stringify(relaxationTransferPredictions)) : null;
   const localConstraintMismatch = currentLocalConstraintMismatchField();
   const localConstraintMismatchRecords = localConstraintMismatch?.records.map((record) => ({
     atomId: record.atomId, species: record.species,
@@ -7480,7 +7613,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-172",
+      buildId: "20260826-173",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7739,6 +7872,37 @@ async function buildExperimentReceipt() {
             geometryEnvelopeFitUsesCalculationLabels: false,
             correlatedArchiveFrames: true,
             independentValidationClaimed: false,
+            usedForGrowth: false,
+          },
+          frozenCrossArchiveLibrary: {
+            capacity: 8,
+            sourceCount: relaxationCalibrationLibraryRecords.length,
+            selectedSourceId: relaxationCalibrationSourceId || null,
+            sourceArtifactsSha256: relaxationCalibrationLibrarySha256,
+            sourceArtifacts: relaxationCalibrationLibraryRecords,
+            exactProgramVersionAndCanonicalMethodRequired: true,
+            sameReducedCompositionRequired: true,
+            sameReferenceModeAndTargetRequired: true,
+            activeTransfer: activeRelaxationTransferAudit ? {
+              sourceEntryId: activeRelaxationTransferAudit.sourceEntryId,
+              targetEntryId: activeRelaxationTransferAudit.targetEntryId,
+              compatible: activeRelaxationTransferAudit.compatible,
+              differences: activeRelaxationTransferAudit.differences,
+              available: activeRelaxationTransferAudit.transfer?.available || false,
+              pairedFrames: activeRelaxationTransferAudit.transfer?.pairedFrames || 0,
+              predictionSpearman: Number.isFinite(activeRelaxationTransferAudit.transfer?.predictionSpearman)
+                ? receiptRound(activeRelaxationTransferAudit.transfer.predictionSpearman, 10) : null,
+              predictiveQSquared: Number.isFinite(activeRelaxationTransferAudit.transfer?.predictiveQSquared)
+                ? receiptRound(activeRelaxationTransferAudit.transfer.predictiveQSquared, 10) : null,
+              meanAbsoluteError: Number.isFinite(activeRelaxationTransferAudit.transfer?.meanAbsoluteError)
+                ? receiptRound(activeRelaxationTransferAudit.transfer.meanAbsoluteError, 10) : null,
+              predictionSha256: relaxationTransferPredictionsSha256,
+              predictionsEmbedded: false,
+              refitPerformed: false,
+              targetValuesUsedForPrediction: false,
+              targetValuesUsedForPosthocScoring: Boolean(activeRelaxationTransferAudit.transfer?.available),
+            } : null,
+            absoluteEnergyComparedAcrossEntries: false,
             usedForGrowth: false,
           },
           geometryFitUsesEnergyOrForce: false,
@@ -18207,12 +18371,12 @@ function physicsTranslationRecords(leap = null) {
       status: relaxationGeometryCalibration ? "observed" : "unavailable",
       role: relaxationGeometryCalibration ? "descriptive final-frame-reference diagnostic" : "no paired geometry/calculation series",
       encoding: relaxationGeometryCalibration
-        ? `${relaxationGeometryCalibration.sampledCentersPerFrame} deterministic centers/frame; ${relaxationGeometryCalibration.referenceLabel} colored contact, coordination, and angle envelopes; final / first / pooled reference modes remain selectable; Spearman and Pearson associations stay separate for same-run relative energy and residual-force RMS`
+        ? `${relaxationGeometryCalibration.sampledCentersPerFrame} deterministic centers/frame; ${relaxationGeometryCalibration.referenceLabel} colored contact, coordination, and angle envelopes; final / first / pooled reference modes remain selectable; fixed leave-one-frame-out ridge plus an exact-provenance frozen cross-archive library`
         : "requires at least three fixed-topology archived frames with paired geometry and calculation metadata",
       evidence: relaxationGeometryCalibration
-        ? `Energy ρ ${Number.isFinite(relaxationGeometryCalibration.energyCalibration.spearman) ? relaxationGeometryCalibration.energyCalibration.spearman.toFixed(3) : "unresolved"} (n=${relaxationGeometryCalibration.energyCalibration.pairedFrames}); force ρ ${Number.isFinite(relaxationGeometryCalibration.forceCalibration.spearman) ? relaxationGeometryCalibration.forceCalibration.spearman.toFixed(3) : "unresolved"} (n=${relaxationGeometryCalibration.forceCalibration.pairedFrames}). ${relaxationGeometrySurrogate?.available ? `Selected-channel leave-one-frame-out surrogate: ρ ${Number.isFinite(relaxationGeometrySurrogate.predictionSpearman) ? relaxationGeometrySurrogate.predictionSpearman.toFixed(3) : "unresolved"}, Q² ${Number.isFinite(relaxationGeometrySurrogate.crossValidatedQSquared) ? relaxationGeometrySurrogate.crossValidatedQSquared.toFixed(3) : "unresolved"}, MAE ${relaxationGeometrySurrogate.meanAbsoluteError.toPrecision(3)}.` : `Surrogate withheld: ${relaxationGeometrySurrogate?.pairedFrames || 0}/${relaxationGeometrySurrogate?.requiredPairs || 5} paired frames.`}`
+        ? `Energy ρ ${Number.isFinite(relaxationGeometryCalibration.energyCalibration.spearman) ? relaxationGeometryCalibration.energyCalibration.spearman.toFixed(3) : "unresolved"} (n=${relaxationGeometryCalibration.energyCalibration.pairedFrames}); force ρ ${Number.isFinite(relaxationGeometryCalibration.forceCalibration.spearman) ? relaxationGeometryCalibration.forceCalibration.spearman.toFixed(3) : "unresolved"} (n=${relaxationGeometryCalibration.forceCalibration.pairedFrames}). ${relaxationGeometrySurrogate?.available ? `Selected-channel leave-one-frame-out surrogate: ρ ${Number.isFinite(relaxationGeometrySurrogate.predictionSpearman) ? relaxationGeometrySurrogate.predictionSpearman.toFixed(3) : "unresolved"}, Q² ${Number.isFinite(relaxationGeometrySurrogate.crossValidatedQSquared) ? relaxationGeometrySurrogate.crossValidatedQSquared.toFixed(3) : "unresolved"}, MAE ${relaxationGeometrySurrogate.meanAbsoluteError.toPrecision(3)}.` : `Surrogate withheld: ${relaxationGeometrySurrogate?.pairedFrames || 0}/${relaxationGeometrySurrogate?.requiredPairs || 5} paired frames.`}${activeRelaxationTransferAudit?.transfer?.available ? ` Frozen cross-archive target: ρ ${Number.isFinite(activeRelaxationTransferAudit.transfer.predictionSpearman) ? activeRelaxationTransferAudit.transfer.predictionSpearman.toFixed(3) : "unresolved"}, Q² ${Number.isFinite(activeRelaxationTransferAudit.transfer.predictiveQSquared) ? activeRelaxationTransferAudit.transfer.predictiveQSquared.toFixed(3) : "unresolved"}, no refit.` : ""}`
         : "No final-frame-reference geometry/calculation pairing is available.",
-      boundary: "Final, first, and pooled reference modes are geometry-only sensitivity choices, not calculation-label-selected models. The fixed three-channel ridge explicitly does fit calculation labels, but only for a correlated leave-one-frame-out preflight and never for growth. Neither association nor surrogate establishes independent validation, transferable prediction, causality, an interatomic potential, force field, reaction coordinate, physical trajectory, kinetics, or time." },
+      boundary: "Final, first, and pooled reference modes are geometry-only sensitivity choices, not calculation-label-selected models. The fixed three-channel ridge explicitly fits source calculation labels. Cross-archive evaluation freezes it and requires exact reduced composition, program/version, canonical normalized method record, units, target, and reference; target labels score only afterward. A single transfer still does not establish broad validation, causality, an interatomic potential, force field, reaction coordinate, physical trajectory, kinetics, or time, and no fitted model enters growth." },
     { id: "local-rearrangement", process: "localized rearrangement / environment change", status: relaxationLocalEnvironment ? "observed" : "unavailable", role: relaxationLocalEnvironment ? "archived structural-difference diagnostic" : "no paired local environments",
       encoding: relaxationLocalEnvironment
         ? `${relaxationLocalEnvironment.neighborCount}-neighbor periodic minimum-image vectors; one Falk–Langer best-affine F per site; E=(FᵀF−I)/2 separates coherent deviatoric deformation from √D²min residual motion; selected/final kNN identity sets expose geometric neighbor exchange`
@@ -21557,6 +21721,40 @@ relaxationCalibrationMetric.addEventListener("change", () => {
 relaxationCalibrationReference.addEventListener("change", () => {
   relaxationCalibrationReferenceMode = ["first", "pooled"].includes(relaxationCalibrationReference.value)
     ? relaxationCalibrationReference.value : "final";
+  renderRelaxationCalibration();
+});
+relaxationCalibrationPin.addEventListener("click", async () => {
+  const calibration = relaxationGeometryCalculationCalibration();
+  const surrogate = calibration && (relaxationCalibrationMetricMode === "force"
+    ? calibration.forceSurrogate : calibration.energySurrogate);
+  const current = calibrationArchiveCompatibility(calibration);
+  if (!surrogate?.available || !current.available) {
+    renderRelaxationCalibration(); return;
+  }
+  const duplicate = relaxationCalibrationLibrary.find((source) => source.entryId === current.entryId
+    && source.key === current.key);
+  const source = {
+    id: duplicate?.id || `calibration-${++relaxationCalibrationLibraryCounter}`,
+    label: `${current.materialName} · ${current.compatibility.targetMode} · ${current.compatibility.referenceMode} · ${current.compatibility.programName} ${current.compatibility.programVersion}`,
+    entryId: current.entryId,
+    compatibility: current.compatibility,
+    key: current.key,
+    methodCanonicalSha256: await receiptSha256(current.compatibility.methodCanonicalJson),
+    artifact: frozenGeometrySurrogateArtifact(surrogate),
+    sourcePreflight: {
+      pairedFrames: surrogate.pairedFrames,
+      leaveOneFrameOutSpearman: surrogate.predictionSpearman,
+      leaveOneFrameOutQSquared: surrogate.crossValidatedQSquared,
+      leaveOneFrameOutMeanAbsoluteError: surrogate.meanAbsoluteError,
+    },
+  };
+  relaxationCalibrationLibrary = [source, ...relaxationCalibrationLibrary
+    .filter((entry) => entry.id !== source.id)].slice(0, 8);
+  relaxationCalibrationSourceId = source.id;
+  renderRelaxationCalibration();
+});
+relaxationCalibrationLibrarySelect.addEventListener("change", () => {
+  relaxationCalibrationSourceId = relaxationCalibrationLibrarySelect.value;
   renderRelaxationCalibration();
 });
 periodicTableButton.addEventListener("click", () => setPeriodicTableOpen(periodicTablePanel.hidden));

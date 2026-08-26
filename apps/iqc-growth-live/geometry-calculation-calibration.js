@@ -171,3 +171,83 @@ export function geometryCalculationSurrogate(records, featureKeys, targetKey, {
     },
   };
 }
+
+export function frozenGeometrySurrogateArtifact(surrogate) {
+  if (!surrogate?.available || !surrogate.fullModel) throw new Error("only an available fitted surrogate can be frozen");
+  return {
+    schema: "gcts-frozen-geometry-calculation-surrogate-v1",
+    featureKeys: [...surrogate.featureKeys], targetKey: surrogate.targetKey,
+    ridge: surrogate.ridge, sourcePairedFrames: surrogate.pairedFrames,
+    featureMeans: [...surrogate.fullModel.featureMeans],
+    featureScales: [...surrogate.fullModel.featureScales],
+    standardizedCoefficients: [...surrogate.fullModel.standardizedCoefficients],
+    targetMean: surrogate.fullModel.targetMean,
+    geometryOnlyAtEvaluation: true,
+  };
+}
+
+/** Score a separately supplied archive with one already frozen artifact. No
+ * target value participates in prediction and no coefficient is refitted. */
+export function evaluateFrozenGeometrySurrogate(records, artifact) {
+  if (artifact?.schema !== "gcts-frozen-geometry-calculation-surrogate-v1"
+      || !Array.isArray(artifact.featureKeys) || !artifact.featureKeys.length
+      || !Array.isArray(artifact.featureMeans) || !Array.isArray(artifact.featureScales)
+      || !Array.isArray(artifact.standardizedCoefficients)
+      || [artifact.featureMeans, artifact.featureScales, artifact.standardizedCoefficients]
+        .some((values) => values.length !== artifact.featureKeys.length)
+      || !artifact.featureMeans.every(Number.isFinite) || !artifact.featureScales.every((value) => value > 0)
+      || !artifact.standardizedCoefficients.every(Number.isFinite) || !Number.isFinite(artifact.targetMean)) {
+    throw new Error("invalid frozen geometry surrogate artifact");
+  }
+  const rows = records.map((record, recordIndex) => ({ record, recordIndex }))
+    .filter(({ record }) => artifact.featureKeys.every((key) => Number.isFinite(record[key]))
+      && Number.isFinite(record[artifact.targetKey]));
+  const predictions = rows.map(({ record, recordIndex }) => ({
+    recordIndex,
+    observed: record[artifact.targetKey],
+    predicted: artifact.targetMean + artifact.standardizedCoefficients.reduce((sum, coefficient, feature) =>
+      sum + coefficient * (record[artifact.featureKeys[feature]] - artifact.featureMeans[feature])
+        / artifact.featureScales[feature], 0),
+  }));
+  if (!predictions.length) return {
+    available: false, reason: "no compatible target pairs", pairedFrames: 0,
+    refitPerformed: false, targetValuesUsedForPrediction: false,
+  };
+  const residuals = predictions.map((prediction) => prediction.predicted - prediction.observed);
+  const observedMean = mean(predictions.map((prediction) => prediction.observed));
+  const squaredError = residuals.reduce((sum, value) => sum + value * value, 0);
+  const totalSquares = predictions.reduce((sum, prediction) => sum
+    + (prediction.observed - observedMean) ** 2, 0);
+  const association = geometryCalculationCalibration(predictions, "predicted", "observed");
+  return {
+    available: true, pairedFrames: predictions.length, predictions,
+    meanAbsoluteError: mean(residuals.map(Math.abs)),
+    rootMeanSquaredError: Math.sqrt(mean(residuals.map((value) => value * value))),
+    predictionPearson: association.pearson,
+    predictionSpearman: association.spearman,
+    predictiveQSquared: totalSquares > 1e-24 ? 1 - squaredError / totalSquares : null,
+    refitPerformed: false,
+    targetValuesUsedForPrediction: false,
+    targetValuesUsedForPosthocScoring: true,
+    physicalCausalityClaimed: false,
+    usedForGrowth: false,
+  };
+}
+
+export const GEOMETRY_SURROGATE_COMPATIBILITY_FIELDS = Object.freeze([
+  "targetMode", "targetKey", "referenceMode", "featureSchema", "reducedComposition",
+  "periodicAxes", "programName", "programVersion", "methodCanonicalJson", "energyUnit", "forceUnit",
+]);
+
+export function geometrySurrogateCompatibilityKey(record) {
+  if (!record || GEOMETRY_SURROGATE_COMPATIBILITY_FIELDS.some((field) =>
+    record[field] === null || record[field] === undefined || record[field] === "")) {
+    throw new Error("complete geometry surrogate provenance is required");
+  }
+  return JSON.stringify(Object.fromEntries(GEOMETRY_SURROGATE_COMPATIBILITY_FIELDS
+    .map((field) => [field, record[field]])));
+}
+
+export function geometrySurrogateCompatibilityDifferences(source, target) {
+  return GEOMETRY_SURROGATE_COMPATIBILITY_FIELDS.filter((field) => source?.[field] !== target?.[field]);
+}
