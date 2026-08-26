@@ -100,6 +100,18 @@ const studyGuide = $("studyGuide");
 const studyGuideClose = $("studyGuideClose");
 const studyRecipeList = $("studyRecipeList");
 const studyRecipeDetail = $("studyRecipeDetail");
+const studyCompass = $("studyCompass");
+const studyCompassKind = $("studyCompassKind");
+const studyCompassQuestion = $("studyCompassQuestion");
+const studyCompassIntegrity = $("studyCompassIntegrity");
+const studyCompassGuideButton = $("studyCompassGuideButton");
+const studyCompassProgress = $("studyCompassProgress");
+const studyCompassObjective = $("studyCompassObjective");
+const studyCompassPrediction = $("studyCompassPrediction");
+const studyCompassInspect = $("studyCompassInspect");
+const studyCompassBoundary = $("studyCompassBoundary");
+const studyCompassState = $("studyCompassState");
+const studyCompassNext = $("studyCompassNext");
 const viewport = $("viewport");
 const scenarioSelect = $("scenarioSelect");
 const iceViMicrostateControls = $("iceViMicrostateControls");
@@ -1175,6 +1187,7 @@ const MATERIALS_STUDY_RECIPES = Object.freeze([
   { id: "bulk-order", kind: "crystal", label: "Bulk structural continuation",
     question: "Can local cluster connections recover bulk translational order?",
     summary: "Use rocksalt as the stationary positive control, then compare local q₆ and geometric S(q) as explicit growth leaves the observation window.",
+    prediction: "If the periodic connection grammar is transferable, one finite translation/port rule should recur across scales while q₆ and sharp reciprocal peaks remain coherent.",
     scenario: "competition", geometryMode: "auto", marking: { channels: 0, reach: 2, representation: "ports" },
     protocol: "bulk", observable: "sq", harmonic: 6,
     encodings: ["colored distance / angle envelopes", "finite proper-pose ports", "stationary clusters² audit"],
@@ -1184,6 +1197,7 @@ const MATERIALS_STUDY_RECIPES = Object.freeze([
   { id: "molecular-ice", kind: "molecular", label: "Molecular ice topology",
     question: "Do recurring H₂O clusters and explicit gap classes cover and continue an ice framework?",
     summary: "Start from hexagonal ice, verify finite H₂O component discovery and complete coverage, then inspect molecular connection ports rather than atom-centred shells.",
+    prediction: "If molecule-first geometry is appropriate, recurrent H₂O components should remain intact while explicit bridge and void classes close the complete periodic cover.",
     scenario: "iceIh", geometryMode: "auto", marking: { channels: 0, reach: 2, representation: "ports" },
     protocol: "bulk", observable: "order", harmonic: 6,
     encodings: ["finite molecular components", "gap / residual terminals", "whole-molecule connection ports"],
@@ -1193,6 +1207,7 @@ const MATERIALS_STUDY_RECIPES = Object.freeze([
   { id: "quasicrystal", kind: "quasicrystal", label: "Aperiodic structural continuation",
     question: "Can a finite-rank aperiodic pose grammar continue quasicrystalline order without a unit cell?",
     summary: "Use the published Cd–Yb physical-space crop, force the finite-module hypothesis, learn extended port context, and inspect exact finite continuation versus the still-red stationary rule.",
+    prediction: "If local finite-module ports capture the aperiodic order, they should continue unseen sites with high precision while translation-cell inference remains absent.",
     scenario: "cdyb", geometryMode: "module", marking: { channels: 0, reach: 3, representation: "ports" },
     protocol: "bulk", observable: "sq", harmonic: 12,
     encodings: ["finite-rank non-periodic module", "proper-SE(3) overlap ports", "hierarchical promotion"],
@@ -1202,6 +1217,7 @@ const MATERIALS_STUDY_RECIPES = Object.freeze([
   { id: "moire", kind: "2D", label: "Moiré registry and 2D order",
     question: "How does a twisted bilayer encode local registry and long-range in-plane order?",
     summary: "Use the 30° hBN bilayer with a finite-module hypothesis and a chiral local section; compare ψ₆, 2D S(q), and registry-sensitive cluster connections.",
+    prediction: "If twist is encoded by local registry classes, the pose atlas and chiral connection sections should separate recurrent registries while preserving sixfold in-plane order.",
     scenario: "moire", geometryMode: "module", marking: { channels: 0, reach: 3, representation: "chiral-halo" },
     protocol: "bulk", observable: "order", harmonic: 6,
     encodings: ["intrinsic 2D neighborhood", "proper in-plane orientation", "chiral radial / angular section"],
@@ -1211,6 +1227,7 @@ const MATERIALS_STUDY_RECIPES = Object.freeze([
   { id: "epitaxy", kind: "interface", label: "Coherent and misfit epitaxy",
     question: "Which attachment geometries survive a declared crystalline support?",
     summary: "Use aligned hBN with the coherent-film bundle, then compare against the misfit-film protocol as a controlled response study.",
+    prediction: "If template registry controls attachment order, coherent and +5% misfit interventions should rerank the same hard-admitted actions and alter seam/registry observables.",
     scenario: "hbn", geometryMode: "auto", marking: { channels: 0, reach: 2, representation: "ports" },
     protocol: "epitaxy", observable: "order", harmonic: 6,
     encodings: ["hard supported-film boundary", "hexagonal registry score", "proper misorientation + coherency memory"],
@@ -1220,6 +1237,7 @@ const MATERIALS_STUDY_RECIPES = Object.freeze([
   { id: "impingement", kind: "microstructure", label: "Polycrystal impingement",
     question: "How do independently oriented nuclei meet, share sites, and close loops?",
     summary: "Seed four dispersed NaCl nuclei in an off-lattice pose space and inspect interface registry, shared-site accounting, loop closure, and conflict-free antichains.",
+    prediction: "If local ports remain compatible across nuclei, commuting attachments should coalesce through shared sites; incompatible orientations should concentrate finite seam and loop burden.",
     scenario: "competition", geometryMode: "offlattice", marking: { channels: 0, reach: 3, representation: "ports" },
     protocol: "impingement", observable: "order", harmonic: 6,
     encodings: ["multiple proper-pose nuclei", "interface-following soft geometry", "multi-parent loop closure"],
@@ -1229,6 +1247,7 @@ const MATERIALS_STUDY_RECIPES = Object.freeze([
   { id: "pore-fill", kind: "confinement", label: "Constricted-pore filling",
     question: "How does hard confinement change accessible attachment geometry?",
     summary: "Place rocksalt growth in an hourglass boundary and rank concavity filling, coordination healing, and free-volume arrival without adding a wall potential.",
+    prediction: "If confinement alone selects the frontier, the unchanged local grammar should shift accepted actions toward accessible concavities and reject wall-crossing placements exactly.",
     scenario: "competition", geometryMode: "offlattice", marking: { channels: 0, reach: 2, representation: "halo" },
     protocol: "pore-fill", observable: "rdf", harmonic: 6,
     encodings: ["hard hourglass public boundary", "solid-angle capillary proxy", "free-volume arrival path"],
@@ -1238,6 +1257,7 @@ const MATERIALS_STUDY_RECIPES = Object.freeze([
   { id: "glass-control", kind: "negative control", label: "Amorphous recursion control",
     question: "When should a structural continuation grammar refuse hierarchical recursion?",
     summary: "Use the deterministic Cu–Zr glass and an off-lattice local halo to test whether recurring supports, ports, and stationarity correctly remain weak or absent.",
+    prediction: "If recurrence is genuinely structural rather than memorized, the amorphous control should require more residuals and refuse a stable stationary clusters² production.",
     scenario: "random", geometryMode: "offlattice", marking: { channels: 0, reach: 2, representation: "halo" },
     protocol: "bulk", observable: "rdf", harmonic: 6,
     encodings: ["colored hard-core geometry", "irregular local supports", "explicit residual coverage"],
@@ -6597,7 +6617,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-142",
+      buildId: "20260825-143",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -13071,7 +13091,7 @@ function activeStudyRecipeAudit() {
     structuralObservable: structureObservableSelection === recipe.observable,
     orientationalHarmonic: orientationalOrderHarmonic === recipe.harmonic,
   };
-  return { id: recipe.id, label: recipe.label, question: recipe.question, kind: recipe.kind,
+  return { id: recipe.id, label: recipe.label, question: recipe.question, prediction: recipe.prediction, kind: recipe.kind,
     route: [...recipe.route], encodings: [...recipe.encodings], observables: [...recipe.observables],
     claimBoundary: recipe.boundary, convenienceOnly: true, hiddenPhysicsAdded: false,
     candidateGeometryAuthorized: false, settingsStillMatch: Object.values(checks).every(Boolean), checks };
@@ -13147,6 +13167,86 @@ function applyStudyRecipe(recipeId) {
   receiptStatus.textContent = `${recipe.label} configured · begin from the supplied positions; no growth has run.`;
 }
 
+const STUDY_STAGE_SEQUENCE = Object.freeze([
+  { stage: 0, short: "positions", label: "Known positions" },
+  { stage: 1, short: "cover", label: "Cluster cover" },
+  { stage: 3, short: "mark", label: "GCTS marking" },
+  { stage: 4, short: "grow", label: "Material growth" },
+]);
+
+const STUDY_STAGE_GUIDANCE = Object.freeze({
+  0: {
+    objective: "Audit exactly what is supplied before learning: species, Cartesian positions, provenance, dimensionality, uncertainty, and the public observation/growth boundary.",
+    inspect: "input identity · species/occupancy channels · nearest-neighbor scale · measurement provenance · observation envelope",
+    boundary: "No phase, cluster, unit-cell, energy, or dynamical label is supplied to the learner.",
+  },
+  1: {
+    objective: "Watch candidate relations appear, fail, and settle into a complete recurring cover; require every supplied atom to belong to a support or explicit residual/gap class.",
+    inspect: "cover completeness · support recurrence · residual classes · molecular components · proper-pose atlas",
+    boundary: "A recurring geometric support is a representation class, not a bonded species, stable motif, or free-energy minimum.",
+  },
+  3: {
+    objective: "Train a bounded connection-valued section on each separate cluster scene, then freeze the selected channels, reach, representation, and validation trace to the library.",
+    inspect: "training curve · sample count · per-cluster level sets · compatible/failing ports · held-out marking response",
+    boundary: "The marking ranks or rejects connections among already authorized geometric actions; it is not a physical potential and cannot invent a placement.",
+  },
+  4: {
+    objective: "Execute the frozen off-lattice covering search, inspect commuting actions and conflicts, then compare structural leaps and controlled interventions in the notebook.",
+    inspect: "novel-site precision/recall · structural microscope · frontier work · clusters² activity · receipt and claim ledger",
+    boundary: "Leap-frogged structural continuation has no physical clock; explicit atoms remain O(N), and recursion or exponential growth requires its own held-out certificate.",
+  },
+});
+
+function renderStudyCompass() {
+  const recipe = MATERIALS_STUDY_RECIPES.find((entry) => entry.id === activeStudyRecipeId) || null;
+  const audit = activeStudyRecipeAudit();
+  const stage = STUDY_STAGE_SEQUENCE.some((entry) => entry.stage === pipelineStage) ? pipelineStage
+    : pipelineStage < 3 ? 1 : 3;
+  const guidance = STUDY_STAGE_GUIDANCE[stage];
+  studyCompass.classList.toggle("custom", !recipe);
+  studyCompassKind.textContent = recipe ? `${recipe.kind} investigation · ${recipe.label}` : "custom investigation";
+  studyCompassQuestion.textContent = recipe?.question || "Choose a scientific question or continue with independent controls.";
+  const mismatchKeys = audit ? Object.entries(audit.checks).filter(([, matches]) => !matches).map(([key]) => key) : [];
+  studyCompassIntegrity.textContent = !audit ? "receipt-visible controls"
+    : audit.settingsStillMatch ? "recipe intact" : `${mismatchKeys.length} edited setting${mismatchKeys.length === 1 ? "" : "s"}`;
+  studyCompassIntegrity.className = audit && !audit.settingsStillMatch ? "edited" : audit ? "intact" : "";
+  studyCompassProgress.replaceChildren(...STUDY_STAGE_SEQUENCE.map((entry, index) => {
+    const button = document.createElement("button"); button.type = "button";
+    button.dataset.studyStage = String(entry.stage);
+    button.classList.toggle("active", entry.stage === pipelineStage);
+    button.classList.toggle("complete", entry.stage < pipelineStage);
+    button.setAttribute("aria-current", entry.stage === pipelineStage ? "step" : "false");
+    const number = document.createElement("small"); number.textContent = String(index + 1).padStart(2, "0");
+    const label = document.createElement("strong"); label.textContent = entry.label;
+    button.append(number, label);
+    button.addEventListener("click", () => enterPipelineStage(entry.stage));
+    return button;
+  }));
+  studyCompassObjective.textContent = guidance.objective;
+  studyCompassPrediction.textContent = recipe?.prediction
+    || "Define a falsifiable geometric response before treating a structural change as evidence.";
+  const recipeProbe = !recipe ? "" : stage === 0 ? ` · ${recipe.encodings[0]}`
+    : stage === 1 ? ` · ${recipe.encodings.slice(0, 2).join(" · ")}`
+      : stage === 3 ? ` · ${recipe.marking.representation}, R${recipe.marking.reach}, auto channel rank`
+        : ` · ${recipe.observables.slice(0, 4).join(" · ")}`;
+  studyCompassInspect.textContent = `${guidance.inspect}${recipeProbe}`;
+  studyCompassBoundary.textContent = stage === 4 && recipe ? recipe.boundary : guidance.boundary;
+  studyCompassState.textContent = !audit
+    ? "No guided recipe is active; every control remains available and receipt-visible."
+    : audit.settingsStillMatch
+      ? `Recipe controls still match · convenience only · nothing runs automatically.`
+      : `Edited experiment · diverged controls: ${mismatchKeys.join(", ")} · receipt preserves the mismatch.`;
+  const currentIndex = STUDY_STAGE_SEQUENCE.findIndex((entry) => entry.stage === pipelineStage);
+  if (currentIndex >= 0 && currentIndex < STUDY_STAGE_SEQUENCE.length - 1) {
+    const next = STUDY_STAGE_SEQUENCE[currentIndex + 1];
+    studyCompassNext.dataset.nextStage = String(next.stage);
+    studyCompassNext.textContent = `Inspect ${next.short} →`;
+  } else {
+    studyCompassNext.dataset.nextStage = "receipt";
+    studyCompassNext.textContent = "Review receipt & notebook ↓";
+  }
+}
+
 function syncStageOptions() {
   const visible = pipelineStage === 1 || pipelineStage === 3 || pipelineStage === 4;
   growthDomainScaleSelect.value = String(growthDomainScale);
@@ -13207,6 +13307,7 @@ function syncStageOptions() {
   renderNucleusInterfaceInspector();
   renderNucleationLandscapeInspector();
   stageOptionsPanel.hidden = !visible;
+  renderStudyCompass();
   if (!visible) return;
   const clustering = pipelineStage === 1;
   const training = pipelineStage === 3;
@@ -18383,6 +18484,14 @@ document.addEventListener("keydown", (event) => {
 studyGuideButton.addEventListener("click", () => setStudyGuideOpen(studyGuide.hidden));
 studyGuideClose.addEventListener("click", () => setStudyGuideOpen(false));
 studyGuide.addEventListener("pointerdown", (event) => { if (event.target === studyGuide) setStudyGuideOpen(false); });
+studyCompassGuideButton.addEventListener("click", () => setStudyGuideOpen(true));
+studyCompassNext.addEventListener("click", () => {
+  if (studyCompassNext.dataset.nextStage === "receipt") {
+    document.querySelector(".receipt-section")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    return;
+  }
+  enterPipelineStage(Number(studyCompassNext.dataset.nextStage));
+});
 document.addEventListener("pointerdown", (event) => {
   if (periodicTablePanel.hidden) return;
   if (periodicTablePanel.contains(event.target) || periodicTableButton.contains(event.target)) return;

@@ -30,6 +30,17 @@ receipt records whether it still matches the recipe, and each card states the
 claim boundary. A recipe adds no hidden physics and never authorizes candidate
 geometry or upgrades a benchmark claim.
 
+Build 143 keeps that study design visible after configuration. A persistent
+**investigation compass** follows the active question through known positions,
+cluster covering, marking learning, and material growth. At every stage it
+states the immediate objective, the falsifiable geometric prediction, the
+measurements to inspect before advancing, and the interpretation limit. Its
+four stage buttons navigate but never press Play. A live integrity badge reports
+whether the current controls still match the recipe; edited controls are named
+in the compass and retained as mismatches in the receipt. The final handoff
+points to the existing receipt/notebook so controlled comparisons remain
+separate from visual impressions.
+
 The right-hand **computational work laboratory** turns the scaling question into
 an explicit, inspectable comparison at 10×, 1,000×, and 100,000× the observed
 sample. It reports deterministic browser tree decisions and finite-neighborhood

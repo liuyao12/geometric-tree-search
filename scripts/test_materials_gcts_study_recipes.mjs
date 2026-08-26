@@ -28,6 +28,7 @@ for (const recipe of recipes) {
   assert.ok(observables.has(recipe.observable), `${recipe.id}: known structural microscope`);
   assert.ok(recipe.encodings.length >= 3, `${recipe.id}: geometry encoding manifest`);
   assert.ok(recipe.observables.length >= 4, `${recipe.id}: observable manifest`);
+  assert.ok(recipe.prediction.length > 100, `${recipe.id}: falsifiable geometric prediction`);
   assert.ok(recipe.route[0], `${recipe.id}: explicit pipeline route`);
   assert.ok(recipe.boundary.length > 70, `${recipe.id}: material claim boundary`);
 }
