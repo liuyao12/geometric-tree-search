@@ -5831,3 +5831,22 @@ solid, or execute the historical action. Receipt records include frontier and au
 digests plus explicit false claims for physical time and mechanism persistence.
 The x-axis is discrete GCTS structural-update order, never seconds or an inferred
 growth rate.
+
+## Build 181: registered-arm hypothesis contrast without frontier pooling
+
+The compact experiment notebook now preserves the latest raw and conditioned
+hypothesis-identifiability summaries plus the selected-pair trajectory. It stores
+term and audit metadata, coefficients, candidate counts, receipt/frontier digests,
+and claim boundaries; it does not store candidate rows or coordinates.
+
+When both registered study arms have executed receipts, the response panel evaluates
+the reference arm's preselected pair in each separately frozen arm. Comparison is
+allowed only when both receipts contain that pair under the same conditioning-variable
+acceptance schema. The panel reports per-arm Spearman coefficients and classifications,
+the coefficient range, sign agreement, and provenance digests. Missing support or a
+schema mismatch is rendered as withheld rather than replaced by another pair.
+
+This is a descriptive registered-arm contrast. It does not pool candidate sets,
+regenerate a frontier, replay search, infer a causal intervention effect, or establish
+cross-material universality. Multiple configured arms can share the same source
+structure and are not silently treated as statistically independent samples.

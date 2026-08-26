@@ -5191,3 +5191,19 @@ coefficients, gaps, run length, and false flags for target use, coordinate embed
 candidate regeneration, search replay, physical time, and mechanism persistence.
 This distinguishes transient from recurring score redundancy while remaining a
 descriptive structural-update history—not a kinetic time series or proof of mechanism.
+
+### Build 181 · compare the same geometric hypotheses across registered arms
+
+Saving a study arm now retains the latest raw and conditioned identifiability summaries
+and the selected-pair trajectory as a coordinate-free notebook record. Once both
+registered arms have executed receipts, the response panel asks the same preselected
+hypothesis pair of each independently frozen frontier and reports each Spearman
+coefficient, candidate count, frontier digest, classification, and the descriptive
+coefficient range.
+
+The comparison fails closed when a pair is absent or the conditioning schemas differ.
+Candidate rows and coordinates are not copied into the notebook, candidate sets are
+never pooled, and neither search nor ranking is replayed. The displayed contrast is
+therefore evidence that a score-channel redundancy is arm-specific or recurring under
+the registered intervention; it is not a causal effect, an independent-material
+replicate, or a universality claim.

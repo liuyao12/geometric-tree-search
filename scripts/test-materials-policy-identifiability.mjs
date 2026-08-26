@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { policyIdentifiabilityAudit, policyIdentifiabilityTrajectory }
+import { policyIdentifiabilityAcrossArms, policyIdentifiabilityAudit, policyIdentifiabilityTrajectory }
   from "../apps/iqc-growth-live/policy-identifiability.js";
 
 const term = (id, contribution, weight = 1) => ({ id, label: id, contribution, weight,
@@ -71,4 +71,33 @@ assert.equal(trajectory.searchReplayed, false);
 assert.equal(trajectory.targetUsed, false);
 assert.match(trajectory.interpretation, /not temporal dynamics/);
 assert.equal(policyIdentifiabilityTrajectory([], { firstId: "x", secondId: "x" }), null);
+
+const compact = (source) => ({ latest: { frontierIndex: 7, candidateSetDigest: source.candidateSetDigest,
+  modes: { conditional: { candidateCount: source.candidateCount, auditDigest: source.auditDigest,
+    conditioningVariables: source.conditioningVariables,
+    pairs: source.pairs.filter((entry) => !entry.diagonal) } } } });
+const across = policyIdentifiabilityAcrossArms([
+  { armId: "reference", label: "reference", material: "NaCl", receiptSha256: "a".repeat(64),
+    identifiability: compact(conditioned) },
+  { armId: "contrast", label: "contrast", material: "NaCl", receiptSha256: "b".repeat(64),
+    identifiability: compact(conditioned) },
+], { firstId: "x", secondId: "y" });
+assert.equal(across.comparable, true);
+assert.equal(across.coefficientRange, 0);
+assert.equal(across.candidateSetsPooled, false);
+assert.equal(across.searchReplayed, false);
+assert.equal(across.targetUsed, false);
+assert.equal(across.causalEffectInferred, false);
+assert.match(across.comparisonDigest, /^[0-9a-f]{8}$/);
+assert.match(across.interpretation, /not a pooled estimate/);
+const incompatible = policyIdentifiabilityAcrossArms([
+  across.records[0] && { armId: "reference", identifiability: compact(conditioned) },
+  { armId: "contrast", identifiability: { latest: { modes: { conditional: {
+    ...compact(conditioned).latest.modes.conditional,
+    conditioningVariables: [{ id: "different-control", accepted: true, rankAccepted: true }],
+  } } } } },
+], { firstId: "x", secondId: "y" });
+assert.equal(incompatible.comparable, false);
+assert.equal(incompatible.compatibleConditioning, false);
+assert.match(incompatible.interpretation, /withheld/);
 console.log("policy identifiability audit passed");

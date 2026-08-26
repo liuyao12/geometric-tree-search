@@ -239,3 +239,61 @@ export function policyIdentifiabilityTrajectory(records, { firstId, secondId } =
     interpretation: "descriptive identifiability history over immutable frozen frontiers; not temporal dynamics or mechanism persistence",
   };
 }
+
+function compactPair(mode, firstId, secondId) {
+  return mode?.pairs?.find((entry) => (entry.firstId === firstId && entry.secondId === secondId)
+    || (entry.firstId === secondId && entry.secondId === firstId)) || null;
+}
+
+function conditioningSignature(mode) {
+  return JSON.stringify((mode?.conditioningVariables || []).map((entry) => ({
+    id: entry.id, accepted: entry.accepted, rankAccepted: entry.rankAccepted,
+  })));
+}
+
+/**
+ * Compare one preselected pair across independently frozen receipt summaries.
+ * Candidate rows are never pooled and this function accepts no coordinates or labels.
+ */
+export function policyIdentifiabilityAcrossArms(arms, { firstId, secondId, mode = "conditional" } = {}) {
+  if (!Array.isArray(arms) || arms.length < 2 || !firstId || !secondId || firstId === secondId) return null;
+  if (!["raw", "conditional"].includes(mode)) throw new Error(`Unknown identifiability mode ${mode}`);
+  const records = arms.map((arm) => {
+    const modeAudit = arm?.identifiability?.latest?.modes?.[mode] || null;
+    const pair = compactPair(modeAudit, firstId, secondId);
+    return {
+      armId: String(arm?.armId || ""), label: String(arm?.label || arm?.armId || "arm"),
+      material: String(arm?.material || "unspecified material"),
+      receiptSha256: arm?.receiptSha256 || null,
+      frontierIndex: arm?.identifiability?.latest?.frontierIndex ?? null,
+      candidateSetDigest: arm?.identifiability?.latest?.candidateSetDigest || null,
+      auditDigest: modeAudit?.auditDigest || null,
+      candidateCount: modeAudit?.candidateCount || 0,
+      conditioningSignature: conditioningSignature(modeAudit),
+      available: Boolean(pair && pair.pearson !== null && pair.spearman !== null),
+      pearson: pair?.pearson ?? null, spearman: pair?.spearman ?? null,
+      classification: pair?.classification || "unavailable",
+    };
+  });
+  const referenceSignature = records[0].conditioningSignature;
+  const compatibleConditioning = records.every((record) => record.conditioningSignature === referenceSignature);
+  const available = records.filter((record) => record.available);
+  const comparable = compatibleConditioning && available.length === records.length;
+  const coefficients = available.map((record) => record.spearman);
+  const range = comparable ? Math.max(...coefficients) - Math.min(...coefficients) : null;
+  const signContrast = comparable && new Set(coefficients.map((value) => Math.sign(value))).size > 1;
+  const serialized = JSON.stringify({ firstId, secondId, mode, compatibleConditioning,
+    records: records.map((record) => [record.armId, record.receiptSha256, record.candidateSetDigest,
+      record.auditDigest, record.candidateCount, record.spearman]) });
+  return {
+    firstId, secondId, mode, records, comparable, compatibleConditioning,
+    coefficientRange: range, signContrast,
+    comparisonDigest: fnv1a(serialized),
+    candidateSetsPooled: false, candidatesRegenerated: false, searchReplayed: false,
+    coordinatesEmbedded: false, targetUsed: false, executed: false,
+    causalEffectInferred: false, crossMaterialUniversalityInferred: false,
+    interpretation: comparable
+      ? "descriptive contrast of the same preselected score-channel pair across separately frozen receipt frontiers; not a pooled estimate, causal effect, or universality claim"
+      : "comparison withheld until every arm contains the same pair under a compatible frozen conditioning schema",
+  };
+}

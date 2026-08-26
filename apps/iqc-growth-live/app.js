@@ -18,8 +18,8 @@ import { assessGeometrySurrogatePromotion, evaluateFrozenGeometrySurrogate,
   geometryCalculationCalibration, geometryCalculationSurrogate, geometryReferenceIndices,
   geometrySurrogateCompatibilityDifferences, geometrySurrogateCompatibilityKey }
   from "./geometry-calculation-calibration.js?v=20260826-6";
-import { policyIdentifiabilityAudit, policyIdentifiabilityTrajectory }
-  from "./policy-identifiability.js?v=20260826-3";
+import { policyIdentifiabilityAcrossArms, policyIdentifiabilityAudit, policyIdentifiabilityTrajectory }
+  from "./policy-identifiability.js?v=20260826-4";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -7885,7 +7885,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-180",
+      buildId: "20260826-181",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -9902,6 +9902,9 @@ function experimentNotebookSummary(receipt) {
     ? "stationary structural production certified"
     : certificate?.state || receipt.evidenceBoundary.benchmarkGate || "structural evidence only";
   const structuralLeaps = search?.structuralLeapCertificates || [];
+  const policySnapshots = search?.policySensitivity?.snapshots || [];
+  const latestPolicySnapshot = policySnapshots.at(-1) || null;
+  const selectedHypothesisTrajectory = search?.policySensitivity?.selectedHypothesisTrajectory || null;
   const totalStructuralLeapEvents = search?.structuralLeapHistory?.totalEvents ?? structuralLeaps.length;
   const executionEvidence = {
     stageEntered: Boolean(search),
@@ -9986,6 +9989,19 @@ function experimentNotebookSummary(receipt) {
     physicsManifest: notebookPhysicsManifest(structuralLeaps),
     registeredOutcomeObservations: notebookRegisteredOutcomeObservations(receipt, trajectoryPoints,
       generatedSites, causalDepth),
+    policyIdentifiability: latestPolicySnapshot?.hypothesisIdentifiability ? {
+      latest: {
+        frontierIndex: latestPolicySnapshot.index,
+        candidateSetDigest: latestPolicySnapshot.candidateSetDigest,
+        rankingMode: latestPolicySnapshot.rankingMode,
+        modes: latestPolicySnapshot.hypothesisIdentifiability.modes,
+      },
+      selectedTrajectory: selectedHypothesisTrajectory,
+      storedFrontiers: policySnapshots.length,
+      candidateCoordinatesEmbedded: false,
+      candidateRowsEmbedded: false,
+      targetUsed: false,
+    } : null,
     registeredStudy: receipt.studyDesign?.id ? {
       recipeId: receipt.studyDesign.id,
       recipeLabel: receipt.studyDesign.label,
@@ -11008,19 +11024,25 @@ async function saveCurrentExperimentNotebookEntry() {
   receiptStatus.textContent = "Freezing coordinate-free run summary…";
   try {
     const receipt = await buildExperimentReceipt();
+    const currentSummary = experimentNotebookSummary(receipt);
     const duplicate = experimentNotebookEntries.find((entry) => entry.experimentStateSha256 === receipt.experimentStateSha256);
     if (duplicate) {
       const morphologyUpgradeNeeded = duplicate.trajectory?.points?.length
         && duplicate.trajectory.points.some((point) => !point.morphology);
       const scalingUpgradeNeeded = duplicate.trajectory?.points?.length
         && !duplicate.trajectory.massRadiusScaling;
-      if (!duplicate.trajectory?.points?.length || morphologyUpgradeNeeded || scalingUpgradeNeeded) {
-        Object.assign(duplicate, experimentNotebookSummary(receipt));
+      const identifiabilityUpgradeNeeded = currentSummary.policyIdentifiability
+        && !duplicate.policyIdentifiability;
+      if (!duplicate.trajectory?.points?.length || morphologyUpgradeNeeded || scalingUpgradeNeeded
+          || identifiabilityUpgradeNeeded) {
+        Object.assign(duplicate, currentSummary);
         persistExperimentNotebook();
         receiptStatus.textContent = morphologyUpgradeNeeded
           ? "Existing run upgraded with its coordinate-free morphology passport."
           : scalingUpgradeNeeded
             ? "Existing run upgraded with its finite mass–radius audit."
+            : identifiabilityUpgradeNeeded
+              ? "Existing run upgraded with its coordinate-free hypothesis-identifiability audit."
             : "Existing run upgraded with its coordinate-free structural-leap history.";
       }
       selectedNotebookEntryIds = [duplicate.id];
@@ -11028,7 +11050,7 @@ async function saveCurrentExperimentNotebookEntry() {
         receiptStatus.textContent = "This exact experiment state is already saved.";
       }
     } else {
-      const entry = experimentNotebookSummary(receipt);
+      const entry = currentSummary;
       experimentNotebookEntries.push(entry);
       selectedNotebookEntryIds = [...selectedNotebookEntryIds.slice(-1), entry.id];
       persistExperimentNotebook();
@@ -16006,6 +16028,63 @@ function formatRegisteredOutcome(record, signed = false) {
   return `${signed && value > 0 ? "+" : ""}${formatted}${percent ? "%" : ""}`;
 }
 
+function notebookArmIdentifiabilityComparison(reference, contrast) {
+  const selected = reference?.policyIdentifiability?.selectedTrajectory;
+  const modeAudit = reference?.policyIdentifiability?.latest?.modes?.conditional;
+  const firstId = selected?.firstTerm?.id || modeAudit?.strongestPair?.firstId;
+  const secondId = selected?.secondTerm?.id || modeAudit?.strongestPair?.secondId;
+  if (!firstId || !secondId) return null;
+  const labelFor = (id) => selected?.firstTerm?.id === id ? selected.firstTerm.label
+    : selected?.secondTerm?.id === id ? selected.secondTerm.label
+      : modeAudit?.activeVaryingTerms?.find((term) => term.id === id)?.label || id;
+  const comparison = policyIdentifiabilityAcrossArms([
+    { armId: "reference", label: reference.registeredStudy?.armLabel || "reference",
+      material: reference.material, receiptSha256: reference.receiptSha256,
+      identifiability: reference.policyIdentifiability },
+    { armId: "contrast", label: contrast.registeredStudy?.armLabel || "contrast",
+      material: contrast.material, receiptSha256: contrast.receiptSha256,
+      identifiability: contrast.policyIdentifiability },
+  ], { firstId, secondId, mode: "conditional" });
+  return comparison ? { ...comparison, firstLabel: labelFor(firstId), secondLabel: labelFor(secondId) } : null;
+}
+
+function renderStudyIdentifiabilityComparison(reference, contrast) {
+  const comparison = notebookArmIdentifiabilityComparison(reference, contrast);
+  const section = document.createElement("section"); section.className = "study-identifiability-comparison";
+  const header = document.createElement("header");
+  const title = document.createElement("span");
+  const eyebrow = document.createElement("small"); eyebrow.textContent = "same hypothesis pair across saved arms";
+  const heading = document.createElement("strong");
+  heading.textContent = comparison ? `${comparison.firstLabel} ↔ ${comparison.secondLabel}` : "Save a frozen frontier audit in both arms";
+  title.append(eyebrow, heading);
+  const badge = document.createElement("b"); badge.textContent = comparison?.comparable ? "comparable" : "withheld";
+  header.append(title, badge); section.append(header);
+  if (!comparison?.comparable) {
+    const note = document.createElement("p");
+    note.textContent = comparison?.interpretation
+      || "Both arms need the same target-blind pair under the same structural conditioning schema.";
+    section.append(note); return section;
+  }
+  const grid = document.createElement("div"); grid.className = "study-identifiability-arms";
+  comparison.records.forEach((record) => {
+    const card = document.createElement("article");
+    const label = document.createElement("small"); label.textContent = record.label;
+    const value = document.createElement("strong"); value.textContent = `ρ ${record.spearman.toFixed(3)}`;
+    const detail = document.createElement("span");
+    detail.textContent = `${record.classification.replaceAll("-", " ")} · n=${record.candidateCount} · ${record.candidateSetDigest?.slice(0, 8) || "no digest"}…`;
+    card.append(label, value, detail); grid.append(card);
+  });
+  const contrastCard = document.createElement("article"); contrastCard.className = "contrast";
+  const contrastLabel = document.createElement("small"); contrastLabel.textContent = "descriptive contrast";
+  const contrastValue = document.createElement("strong");
+  contrastValue.textContent = `Δρ ${comparison.coefficientRange.toFixed(3)}`;
+  const contrastDetail = document.createElement("span");
+  contrastDetail.textContent = comparison.signContrast ? "rank-correlation sign differs" : "same rank-correlation sign";
+  contrastCard.append(contrastLabel, contrastValue, contrastDetail); grid.append(contrastCard);
+  const boundary = document.createElement("p"); boundary.textContent = comparison.interpretation;
+  section.append(grid, boundary); return section;
+}
+
 function renderStudyComparisonResponse(recipeId, comparison) {
   const reference = studyArmNotebookEvidence(recipeId, "reference").latest;
   const contrast = studyArmNotebookEvidence(recipeId, "contrast").latest;
@@ -16055,7 +16134,8 @@ function renderStudyComparisonResponse(recipeId, comparison) {
   });
   const boundary = document.createElement("p");
   boundary.textContent = "Values come from saved executed receipts on the identical observed input. A dash is retained when the compact notebook cannot certify the predeclared outcome; no proxy is invented.";
-  studyComparisonResponse.append(header, outcomes, boundary);
+  studyComparisonResponse.append(header, outcomes,
+    renderStudyIdentifiabilityComparison(reference, contrast), boundary);
 }
 
 function renderStudyComparisonProgress(recipeId, comparison) {
