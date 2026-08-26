@@ -692,6 +692,7 @@ body.study-guide-open { overflow: hidden; }
 .relaxation-calibration header span small,.relaxation-calibration header span strong { display: block; }
 .relaxation-calibration header small { color: #7d6fa2; font: 5px var(--mono); text-transform: uppercase; }
 .relaxation-calibration header strong { margin-top: 2px; color: #b9a4e8; font: 7px var(--mono); font-weight: 400; }
+.relaxation-calibration-selects { display: grid; gap: 3px; }
 .relaxation-calibration select { max-width: 138px; height: 21px; padding: 0 4px; border: 1px solid rgba(181,148,255,.2); background: #071415; color: #8e83ac; font: 5px var(--mono); }
 .relaxation-calibration > div { margin-top: 5px; color: #8c84a3; font: 5px/1.4 var(--mono); }
 .relaxation-calibration svg { height: 104px; margin-top: 3px; }

@@ -5617,3 +5617,20 @@ records that energy and force never fit the geometry or rank growth. This is a
 descriptive final-frame-referenced association within one correlated archive,
 not independent validation, prediction, causal evidence, an energy model,
 force field, reaction coordinate, physical trajectory, kinetics, or time.
+
+## Build 171: geometry-reference sensitivity is explicit
+
+The archived-calculation inspector now repeats its mismatch analysis with
+three label-free geometric references: the final frame, the first frame, and
+the pooled fixed-topology ensemble. Each mode learns distance, coordination,
+and angular envelopes through the same code path and evaluates the same
+deterministic centers. The interactive control makes reference dependence
+visible while the receipt freezes the selected mode and all three energy/force
+Pearson and Spearman summaries.
+
+Neither energy nor residual force selects the reference or fits an envelope.
+This is still a within-archive sensitivity study: frames are correlated, pooled
+evaluation is descriptive rather than held out, and frame order is not elapsed
+time. Reference robustness therefore does not establish prediction, causality,
+an interatomic potential, force field, reaction coordinate, growth rank,
+kinetics, or thermodynamic validity.

@@ -11,7 +11,7 @@ import {
 } from "./structure-io.js?v=20260826-7";
 import { randomNomadStructure } from "./structure-database.js?v=20260826-5";
 import { bestAffineNeighborhoodResidual } from "./relaxation-local-environment.js?v=20260826-2";
-import { geometryCalculationCalibration }
+import { geometryCalculationCalibration, geometryReferenceIndices }
   from "./geometry-calculation-calibration.js?v=20260826-1";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
@@ -159,6 +159,8 @@ const relaxationSequenceChart = $("relaxationSequenceChart");
 const relaxationDisplacementState = $("relaxationDisplacementState");
 const relaxationLocalEnvironmentState = $("relaxationLocalEnvironmentState");
 const relaxationCalibrationMetric = $("relaxationCalibrationMetric");
+const relaxationCalibrationReference = $("relaxationCalibrationReference");
+const relaxationCalibrationTitle = $("relaxationCalibrationTitle");
 const relaxationCalibrationState = $("relaxationCalibrationState");
 const relaxationCalibrationChart = $("relaxationCalibrationChart");
 const relaxationCalibrationBoundary = $("relaxationCalibrationBoundary");
@@ -1070,6 +1072,7 @@ let ensembleEvidenceMode = "all";
 let relaxationLocalEnvironmentCache = null;
 let relaxationGeometryCalibrationCache = null;
 let relaxationCalibrationMetricMode = "energy";
+let relaxationCalibrationReferenceMode = "final";
 let localConstraintMismatchCache = null;
 let atomGeometryRevision = 0;
 let iceViMicrostate = null;
@@ -1777,9 +1780,12 @@ function relaxationLocalEnvironmentField() {
   return result;
 }
 
-function relaxationGeometryCalculationCalibration() {
-  if (relaxationGeometryCalibrationCache?.structure === importedStructure) {
-    return relaxationGeometryCalibrationCache.result;
+function relaxationGeometryCalculationCalibration(requestedReferenceMode = relaxationCalibrationReferenceMode) {
+  const referenceMode = ["final", "first", "pooled"].includes(requestedReferenceMode)
+    ? requestedReferenceMode : "final";
+  if (relaxationGeometryCalibrationCache?.structure === importedStructure
+      && relaxationGeometryCalibrationCache.results.has(referenceMode)) {
+    return relaxationGeometryCalibrationCache.results.get(referenceMode);
   }
   const frames = importedTrajectoryFrames();
   if (scenarioSelect.value !== "imported" || frames.length < 3) return null;
@@ -1802,15 +1808,19 @@ function relaxationGeometryCalculationCalibration() {
     });
     return fractional.applyMatrix3(context.matrix);
   };
-  const finalContext = contextFor(finalFrame);
-  const finalEvidence = [{
-    species,
-    distance: (first, second) => vectorFor(finalFrame, finalContext, first, second).length(),
-    displacement: (first, second) => vectorFor(finalFrame, finalContext, first, second).toArray(),
-  }];
-  const distanceModel = learnColoredDistanceEnvelopesEnsemble(finalEvidence);
-  const coordinationModel = learnColoredCoordinationEnvelopesEnsemble(finalEvidence, distanceModel);
-  const angularModel = learnColoredAngularEnvelopesEnsemble(finalEvidence, coordinationModel);
+  const geometryEvidence = frames.map((frame) => {
+    const context = contextFor(frame);
+    return {
+      species,
+      distance: (first, second) => vectorFor(frame, context, first, second).length(),
+      displacement: (first, second) => vectorFor(frame, context, first, second).toArray(),
+    };
+  });
+  const referenceIndices = geometryReferenceIndices(geometryEvidence.length, referenceMode);
+  const referenceEvidence = referenceIndices.map((index) => geometryEvidence[index]);
+  const distanceModel = learnColoredDistanceEnvelopesEnsemble(referenceEvidence);
+  const coordinationModel = learnColoredCoordinationEnvelopesEnsemble(referenceEvidence, distanceModel);
+  const angularModel = learnColoredAngularEnvelopesEnsemble(referenceEvidence, coordinationModel);
   const maximumCenters = 256;
   const centerIndices = species.length <= maximumCenters
     ? species.map((_, index) => index)
@@ -1844,8 +1854,12 @@ function relaxationGeometryCalculationCalibration() {
   const result = {
     records, energyCalibration, forceCalibration,
     frameCount: frames.length,
-    referenceFrameIndex: frames.length - 1,
-    referenceRole: "final archived geometry supplies colored distance, coordination, and angle envelopes; calculation labels do not fit those envelopes",
+    referenceMode,
+    referenceFrameIndex: referenceMode === "pooled" ? null : referenceMode === "first" ? 0 : frames.length - 1,
+    referenceFrameCount: referenceEvidence.length,
+    referenceLabel: referenceMode === "pooled" ? `pooled ${frames.length}-frame geometry`
+      : `${referenceMode} archived frame`,
+    referenceRole: `${referenceMode === "pooled" ? "all archived geometries independently pool" : `${referenceMode} archived geometry supplies`} colored distance, coordination, and angle envelopes; calculation labels do not fit those envelopes`,
     sampledCentersPerFrame: centerIndices.length,
     centerSamplingPolicy: species.length <= maximumCenters ? "all centers"
       : `${maximumCenters} deterministic atom-index quantiles`,
@@ -1857,7 +1871,10 @@ function relaxationGeometryCalculationCalibration() {
     predictiveValidationPerformed: false,
     physicalCausalityClaimed: false,
   };
-  relaxationGeometryCalibrationCache = { structure: importedStructure, result };
+  if (relaxationGeometryCalibrationCache?.structure !== importedStructure) {
+    relaxationGeometryCalibrationCache = { structure: importedStructure, results: new Map() };
+  }
+  relaxationGeometryCalibrationCache.results.set(referenceMode, result);
   return result;
 }
 
@@ -2030,6 +2047,7 @@ function renderRelaxationSequence(frames, relaxation) {
   relaxationSequenceChart.replaceChildren();
   if (!visible) return;
   relaxationCalibrationMetric.value = relaxationCalibrationMetricMode;
+  relaxationCalibrationReference.value = relaxationCalibrationReferenceMode;
   const svg = (name, attributes = {}) => {
     const element = document.createElementNS("http://www.w3.org/2000/svg", name);
     Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, String(value)));
@@ -2097,18 +2115,20 @@ function renderRelaxationCalibration() {
     return element;
   };
   if (!calibration) {
+    relaxationCalibrationTitle.textContent = "Geometry-reference calibration";
     relaxationCalibrationState.textContent = "At least three fixed-topology paired geometry/calculation snapshots are required.";
     relaxationCalibrationBoundary.textContent = "No calibration is inferred from an unpaired or short archive sequence.";
     return;
   }
   const forceMode = relaxationCalibrationMetricMode === "force";
+  relaxationCalibrationTitle.textContent = `${calibration.referenceLabel} reference study`;
   const yKey = forceMode ? "forceRmsElectronVoltPerAngstrom" : "relativeEnergyElectronVoltPerPrimitiveAtom";
   const summary = forceMode ? calibration.forceCalibration : calibration.energyCalibration;
   const records = calibration.records.filter((record) => Number.isFinite(record.meanContactAngleMismatch)
     && Number.isFinite(record[yKey]));
   const correlation = (value) => Number.isFinite(value) ? `${value >= 0 ? "+" : ""}${value.toFixed(3)}` : "unresolved";
   relaxationCalibrationState.textContent = `${summary.pairedFrames}/${calibration.frameCount} paired frames · Spearman ρ ${correlation(summary.spearman)} · Pearson r ${correlation(summary.pearson)} · ${calibration.sampledCentersPerFrame} centers/frame`;
-  relaxationCalibrationBoundary.textContent = `Geometry envelopes are fitted only to final archived frame ${calibration.referenceFrameIndex + 1}; energy/force labels never fit them. Correlation is descriptive within one correlated sequence—not independent validation, prediction, causality, an energy/force model, kinetics, or time.`;
+  relaxationCalibrationBoundary.textContent = `${calibration.referenceRole}. Correlation is descriptive within one correlated sequence—not independent validation, prediction, causality, an energy/force model, kinetics, or time.`;
   if (!records.length) return;
   const xs = records.map((record) => record.meanContactAngleMismatch);
   const ys = records.map((record) => record[yKey]);
@@ -7367,6 +7387,25 @@ async function buildExperimentReceipt() {
   })) || [];
   const relaxationGeometryCalibrationSha256 = relaxationGeometryCalibrationRecords.length
     ? await receiptSha256(JSON.stringify(relaxationGeometryCalibrationRecords)) : null;
+  const relaxationGeometryReferenceSensitivity = trajectoryFrames.length >= 3
+    ? ["final", "first", "pooled"].map((referenceMode) => {
+      const calibration = relaxationGeometryCalculationCalibration(referenceMode);
+      return calibration ? {
+        referenceMode,
+        referenceFrameIndexZeroBased: calibration.referenceFrameIndex,
+        referenceFrameCount: calibration.referenceFrameCount,
+        energyPairedFrames: calibration.energyCalibration.pairedFrames,
+        energySpearman: Number.isFinite(calibration.energyCalibration.spearman)
+          ? receiptRound(calibration.energyCalibration.spearman, 10) : null,
+        energyPearson: Number.isFinite(calibration.energyCalibration.pearson)
+          ? receiptRound(calibration.energyCalibration.pearson, 10) : null,
+        forcePairedFrames: calibration.forceCalibration.pairedFrames,
+        forceSpearman: Number.isFinite(calibration.forceCalibration.spearman)
+          ? receiptRound(calibration.forceCalibration.spearman, 10) : null,
+        forcePearson: Number.isFinite(calibration.forceCalibration.pearson)
+          ? receiptRound(calibration.forceCalibration.pearson, 10) : null,
+      } : null;
+    }).filter(Boolean) : [];
   const localConstraintMismatch = currentLocalConstraintMismatchField();
   const localConstraintMismatchRecords = localConstraintMismatch?.records.map((record) => ({
     atomId: record.atomId, species: record.species,
@@ -7384,7 +7423,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-170",
+      buildId: "20260826-171",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7584,7 +7623,9 @@ async function buildExperimentReceipt() {
           usedForGrowth: false,
         } : null,
         geometryCalculationCalibration: relaxationGeometryCalibration ? {
+          selectedReferenceMode: relaxationGeometryCalibration.referenceMode,
           referenceFrameIndexZeroBased: relaxationGeometryCalibration.referenceFrameIndex,
+          referenceFrameCount: relaxationGeometryCalibration.referenceFrameCount,
           referenceRole: relaxationGeometryCalibration.referenceRole,
           frameCount: relaxationGeometryCalibration.frameCount,
           sampledCentersPerFrame: relaxationGeometryCalibration.sampledCentersPerFrame,
@@ -7596,6 +7637,8 @@ async function buildExperimentReceipt() {
             .map(([key, value]) => [key, typeof value === "number" ? receiptRound(value, 10) : value])),
           recordSha256: relaxationGeometryCalibrationSha256,
           recordsEmbedded: false,
+          referenceSensitivity: relaxationGeometryReferenceSensitivity,
+          referenceSensitivityModesSelectedWithoutCalculationLabels: true,
           geometryFitUsesEnergyOrForce: false,
           labelsUsedToRankGrowth: false,
           independentSamplesClaimed: false,
@@ -18062,12 +18105,12 @@ function physicsTranslationRecords(leap = null) {
       status: relaxationGeometryCalibration ? "observed" : "unavailable",
       role: relaxationGeometryCalibration ? "descriptive final-frame-reference diagnostic" : "no paired geometry/calculation series",
       encoding: relaxationGeometryCalibration
-        ? `${relaxationGeometryCalibration.sampledCentersPerFrame} deterministic centers/frame; final-frame colored contact, coordination, and angle envelopes; Spearman and Pearson associations kept separate for same-run relative energy and residual-force RMS`
+        ? `${relaxationGeometryCalibration.sampledCentersPerFrame} deterministic centers/frame; ${relaxationGeometryCalibration.referenceLabel} colored contact, coordination, and angle envelopes; final / first / pooled reference modes remain selectable; Spearman and Pearson associations stay separate for same-run relative energy and residual-force RMS`
         : "requires at least three fixed-topology archived frames with paired geometry and calculation metadata",
       evidence: relaxationGeometryCalibration
         ? `Energy ρ ${Number.isFinite(relaxationGeometryCalibration.energyCalibration.spearman) ? relaxationGeometryCalibration.energyCalibration.spearman.toFixed(3) : "unresolved"} (n=${relaxationGeometryCalibration.energyCalibration.pairedFrames}); force ρ ${Number.isFinite(relaxationGeometryCalibration.forceCalibration.spearman) ? relaxationGeometryCalibration.forceCalibration.spearman.toFixed(3) : "unresolved"} (n=${relaxationGeometryCalibration.forceCalibration.pairedFrames}).`
         : "No final-frame-reference geometry/calculation pairing is available.",
-      boundary: "The final archived geometry defines the mismatch reference, so this is a target-relative descriptive association inside one correlated calculation archive. Labels never fit the geometry, rank growth, or establish independent validation, prediction, causality, an interatomic potential, force field, reaction coordinate, physical trajectory, kinetics, or time." },
+      boundary: "Final, first, and pooled reference modes are geometry-only sensitivity choices, not calculation-label-selected models. Every association remains descriptive inside one correlated calculation archive. Labels never fit the geometry, rank growth, or establish independent validation, prediction, causality, an interatomic potential, force field, reaction coordinate, physical trajectory, kinetics, or time." },
     { id: "local-rearrangement", process: "localized rearrangement / environment change", status: relaxationLocalEnvironment ? "observed" : "unavailable", role: relaxationLocalEnvironment ? "archived structural-difference diagnostic" : "no paired local environments",
       encoding: relaxationLocalEnvironment
         ? `${relaxationLocalEnvironment.neighborCount}-neighbor periodic minimum-image vectors; one Falk–Langer best-affine F per site; E=(FᵀF−I)/2 separates coherent deviatoric deformation from √D²min residual motion; selected/final kNN identity sets expose geometric neighbor exchange`
@@ -21407,6 +21450,11 @@ ensembleEvidenceSelect.addEventListener("change", () => {
 });
 relaxationCalibrationMetric.addEventListener("change", () => {
   relaxationCalibrationMetricMode = relaxationCalibrationMetric.value === "force" ? "force" : "energy";
+  renderRelaxationCalibration();
+});
+relaxationCalibrationReference.addEventListener("change", () => {
+  relaxationCalibrationReferenceMode = ["first", "pooled"].includes(relaxationCalibrationReference.value)
+    ? relaxationCalibrationReference.value : "final";
   renderRelaxationCalibration();
 });
 periodicTableButton.addEventListener("click", () => setPeriodicTableOpen(periodicTablePanel.hidden));

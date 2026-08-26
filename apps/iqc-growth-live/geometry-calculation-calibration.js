@@ -3,6 +3,15 @@ function finitePairs(records, xKey, yKey) {
     .filter(({ x, y }) => Number.isFinite(x) && Number.isFinite(y));
 }
 
+/** Geometry-only reference selection. Calculation labels are deliberately not
+ * accepted by this API, so they cannot select a reference frame. */
+export function geometryReferenceIndices(frameCount, requestedMode = "final") {
+  if (!Number.isInteger(frameCount) || frameCount < 1) throw new Error("reference selection requires frames");
+  const mode = ["final", "first", "pooled"].includes(requestedMode) ? requestedMode : "final";
+  return mode === "pooled" ? Array.from({ length: frameCount }, (_, index) => index)
+    : [mode === "first" ? 0 : frameCount - 1];
+}
+
 function mean(values) {
   return values.reduce((sum, value) => sum + value, 0) / Math.max(1, values.length);
 }

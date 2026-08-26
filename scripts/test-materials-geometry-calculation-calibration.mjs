@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { geometryCalculationCalibration }
+import { geometryCalculationCalibration, geometryReferenceIndices }
   from "../apps/iqc-growth-live/geometry-calculation-calibration.js";
 
 const monotone = [
@@ -27,5 +27,11 @@ const missing = geometryCalculationCalibration([{ x: 1, y: null }, { x: 2, y: 3 
 assert.equal(missing.pairedFrames, 1);
 assert.equal(missing.pearson, null);
 assert.equal(missing.spearman, null);
+
+assert.deepEqual(geometryReferenceIndices(4, "final"), [3]);
+assert.deepEqual(geometryReferenceIndices(4, "first"), [0]);
+assert.deepEqual(geometryReferenceIndices(4, "pooled"), [0, 1, 2, 3]);
+assert.deepEqual(geometryReferenceIndices(4, "unknown"), [3]);
+assert.throws(() => geometryReferenceIndices(0, "pooled"), /requires frames/);
 
 console.log("geometry/calculation calibration statistics: passed");

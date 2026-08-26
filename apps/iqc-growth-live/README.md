@@ -4973,3 +4973,20 @@ one archived calculation sequence, the final frame is the geometric reference,
 and archive order is not time. The panel therefore claims no independent
 validation, prediction, causality, interatomic potential, force field, reaction
 coordinate, kinetics, or physical trajectory.
+
+### Build 171 · geometry-reference sensitivity study
+
+The geometry/calculation panel no longer relies on one privileged reference.
+Its new control recomputes the identical per-frame mismatch against envelopes
+learned from the final archived frame, the first archived frame, or every frame
+pooled as independent geometric observations. Energy and force metadata never
+choose a reference or fit any envelope. The plot, correlations, point-to-frame
+interaction, and sampling policy remain unchanged, so the effect of reference
+choice is directly visible rather than hidden in a new model.
+
+The receipt stores the selected mode plus Pearson and Spearman summaries for
+all three geometry-only references. This is a sensitivity analysis, not three
+independent validations: the same correlated archive frames are reused, the
+pooled mode evaluates geometries that helped define its envelopes, and archive
+order is not physical time. No mode creates an energy surrogate, force field,
+reaction coordinate, branch rank, causal inference, or kinetics claim.
