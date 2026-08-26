@@ -5956,3 +5956,25 @@ The calculation is target-free and posthoc. Contact/angle residual remains a geo
 search proxy; coordination deficit may intentionally describe an incomplete growth front.
 No displayed value is an energy, force, stress, surface energy, defect identity, posterior
 probability, or kinetic observable, and the inspector never feeds back into execution.
+
+## Build 187: compare two colored local environments in the visible solid
+
+Build 187 turns the site audit into a comparative microscope. A scientist can pin one
+explicit site and select a second while retaining both highlights in the shared 3D scene.
+The pure comparison contract reports center-species agreement, per-species coordination
+deltas, matched and unmatched colored neighbor distances, RMS radial-shell displacement,
+changes in contact/angle mismatch and coordination deficit, and supplied-versus-emitted
+lineage with causal-depth and interface transitions.
+
+The comparison intentionally discards Cartesian positions. It sorts distances separately
+within every neighbor-species channel, making the result invariant to global translation,
+proper rotation, and input order. This is suitable for questions such as whether an emitted
+frontier site has approached the finite colored shell of a supplied bulk site. It is not a
+full colored-graph congruence test: indexed radial pairing can hide angular rearrangement,
+and different reaches or incomplete fronts can leave unmatched neighbors.
+
+The comparison is ephemeral, target-free, and posthoc. Its compact digest identifies the
+displayed coordinate-free result but is not persisted as a new training label. No energy,
+force, defect identity, kinetic mechanism, statistical independence, or physical material
+equivalence is inferred, and selecting or pinning sites never changes candidate generation,
+ranking, admission, or execution.

@@ -5293,3 +5293,19 @@ These are dimensionless residuals and finite admissibility envelopes learned fro
 They are not pair potentials, forces, stress, elastic or surface energy, defect labels,
 or proof of a microscopic mechanism. Site selection remains target-free, ephemeral, and
 cannot change candidate generation, ranking, admission, or growth.
+
+### Build 187 · coordinate-free comparison of two visible sites
+
+The site microscope now supports a direct A/B materials comparison. Pin any current atom
+as site A, then click or cycle to site B. Separate mint and white rings keep the reference
+and comparison sites visible while the panel contrasts center chemistry, species-resolved
+coordination, sorted colored neighbor-distance shells, learned constraint residuals,
+frontier deficit, and GCTS causal lineage. This makes bulk/frontier, seed/emitted, and
+single-nucleus/interface comparisons possible without leaving the live structure.
+
+Absolute positions never enter the comparison object. Species-labelled radial distances
+are sorted within each channel, so the result is invariant to translation, global proper
+rotation, and atom display order. The reported RMS is a descriptive pairing of finite
+radial shells—not an optimal point-set registration or proof of local isometry. The view
+does not infer a defect class, energy equivalence, force, mechanism, physical time, or an
+independent materials sample, and it cannot change the frozen search.

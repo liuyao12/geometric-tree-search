@@ -27,6 +27,7 @@ import { compareHypothesisSeparationOutcomes }
   from "./hypothesis-separation-outcome.js?v=20260826-1";
 import { buildSiteProvenance } from "./site-provenance.js?v=20260826-1";
 import { buildSiteConstraintAudit } from "./site-constraint-audit.js?v=20260826-1";
+import { compareSiteEnvironments } from "./site-environment-comparison.js?v=20260826-1";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -525,12 +526,20 @@ const viewportHint = $("viewportHint");
 const siteProvenanceInspector = $("siteProvenanceInspector");
 const siteProvenanceNext = $("siteProvenanceNext");
 const siteProvenanceClose = $("siteProvenanceClose");
+const siteProvenancePin = $("siteProvenancePin");
+const siteProvenanceCycle = $("siteProvenanceCycle");
 const siteProvenanceState = $("siteProvenanceState");
 const siteProvenanceGrid = $("siteProvenanceGrid");
 const siteProvenanceBoundary = $("siteProvenanceBoundary");
 const siteConstraintState = $("siteConstraintState");
 const siteConstraintMeters = $("siteConstraintMeters");
 const siteConstraintChannels = $("siteConstraintChannels");
+const siteEnvironmentComparison = $("siteEnvironmentComparison");
+const siteComparisonState = $("siteComparisonState");
+const siteComparisonGrid = $("siteComparisonGrid");
+const siteComparisonChannels = $("siteComparisonChannels");
+const siteComparisonBoundary = $("siteComparisonBoundary");
+const siteComparisonClear = $("siteComparisonClear");
 const unitCellBadge = $("unitCellBadge");
 const captionAction = $("captionAction");
 const processTimeline = $("processTimeline");
@@ -960,11 +969,28 @@ renderer.domElement.addEventListener("pointerup", (event) => {
   if (atom) inspectSite(atom);
 });
 siteProvenanceClose.addEventListener("click", closeSiteProvenanceInspector);
-siteProvenanceNext.addEventListener("click", () => {
+siteProvenancePin.addEventListener("click", () => {
+  if (selectedSiteId === null) return;
+  pinnedSiteId = selectedSiteId;
+  siteProvenancePin.textContent = "A pinned · select B";
+  siteProvenancePin.classList.add("active");
+  siteEnvironmentComparison.hidden = true;
+  renderSelectedSiteHighlight();
+});
+siteComparisonClear.addEventListener("click", () => {
+  pinnedSiteId = null;
+  siteProvenancePin.textContent = "pin as site A";
+  siteProvenancePin.classList.remove("active");
+  siteEnvironmentComparison.hidden = true;
+  renderSelectedSiteHighlight();
+});
+function cycleInspectedSite() {
   if (!atoms.length) return;
   const current = atoms.findIndex((atom) => atom.id === selectedSiteId);
   inspectSite(atoms[(current + 1) % atoms.length]);
-});
+}
+siteProvenanceNext.addEventListener("click", cycleInspectedSite);
+siteProvenanceCycle.addEventListener("click", cycleInspectedSite);
 scene.add(new THREE.HemisphereLight(0xb9fff0, 0x091011, 1.25));
 const keyLight = new THREE.DirectionalLight(0xffffff, 2.2);
 keyLight.position.set(8, 13, 9);
@@ -1017,6 +1043,8 @@ const orientationalOrderHaloMaterial = new THREE.MeshBasicMaterial({ color: 0xff
 const siteSelectionGeometry = new THREE.SphereGeometry(.31, 16, 10);
 const siteSelectionMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true,
   transparent: true, opacity: .96, depthWrite: false });
+const pinnedSiteSelectionMaterial = new THREE.MeshBasicMaterial({ color: COLORS.mint, wireframe: true,
+  transparent: true, opacity: .96, depthWrite: false });
 
 let pipelineStage = 0;
 let pipelineAuto = false;
@@ -1024,6 +1052,7 @@ let stageElapsed = 0;
 let playing = false;
 let atoms = [];
 let selectedSiteId = null;
+let pinnedSiteId = null;
 let referenceAtoms = [];
 let replayIndex = 0;
 let extensionIndex = 0;
@@ -3318,22 +3347,68 @@ function siteProvenanceTile(label, value, detail) {
 
 function closeSiteProvenanceInspector() {
   selectedSiteId = null;
+  pinnedSiteId = null;
   clearGroup(siteSelectionGroup);
   siteProvenanceNext.hidden = pipelineStage === 3;
   siteProvenanceNext.disabled = atoms.length === 0;
   siteProvenanceInspector.hidden = true;
+  siteEnvironmentComparison.hidden = true;
+  siteProvenancePin.textContent = "pin as site A";
+  siteProvenancePin.classList.remove("active");
   viewportHint.textContent = pipelineStage === 3 ? "each card rotates independently" : "drag to orbit · wheel to zoom · click an atom";
 }
 
 function renderSelectedSiteHighlight() {
   clearGroup(siteSelectionGroup);
-  if (selectedSiteId === null) return;
-  const atom = atoms.find((entry) => entry.id === selectedSiteId);
-  if (!atom) { closeSiteProvenanceInspector(); return; }
-  const marker = new THREE.Mesh(siteSelectionGeometry, siteSelectionMaterial);
-  marker.position.copy(atom.p);
-  marker.scale.setScalar(elementScale(atom.species) * 1.15);
-  siteSelectionGroup.add(marker);
+  [[pinnedSiteId, pinnedSiteSelectionMaterial, 1.32], [selectedSiteId, siteSelectionMaterial, 1.15]]
+    .forEach(([siteId, material, scale]) => {
+      if (siteId === null || (siteId === selectedSiteId && material === pinnedSiteSelectionMaterial)) return;
+      const atom = atoms.find((entry) => entry.id === siteId);
+      if (!atom) return;
+      const marker = new THREE.Mesh(siteSelectionGeometry, material);
+      marker.position.copy(atom.p); marker.scale.setScalar(elementScale(atom.species) * scale);
+      siteSelectionGroup.add(marker);
+    });
+}
+
+function siteProvenanceSnapshot(atom) {
+  return buildSiteProvenance({ atom, atoms, placements: placedClusters,
+    sceneToAngstrom: referenceSpacingA / Math.max(referenceSpacing, 1e-12),
+    neighborReachScene: 1.45 * referenceSpacing, geometryLabel: resolvedGeometryLabel() });
+}
+
+function renderSiteEnvironmentComparison(firstAtom, secondAtom) {
+  const comparison = compareSiteEnvironments({ first: siteProvenanceSnapshot(firstAtom),
+    second: siteProvenanceSnapshot(secondAtom), firstConstraint: selectedSiteConstraintAudit(firstAtom),
+    secondConstraint: selectedSiteConstraintAudit(secondAtom) });
+  const radial = comparison.radialShells;
+  const constraints = comparison.constraintDelta;
+  siteComparisonState.textContent = `${comparison.centerChemistry.first} A → ${comparison.centerChemistry.second} B · ${radial.matchedDistances} colored distances matched`;
+  siteComparisonGrid.replaceChildren(
+    siteProvenanceTile("center chemistry", comparison.centerChemistry.sameSpecies ? "same species" : "different species",
+      `${comparison.centerChemistry.first} → ${comparison.centerChemistry.second}`),
+    siteProvenanceTile("colored coordination", `L1 difference ${comparison.coordination.l1Difference}`,
+      `${comparison.coordination.firstTotal} → ${comparison.coordination.secondTotal} neighbors`),
+    siteProvenanceTile("radial shell mismatch", radial.rmsDistanceDeltaAngstrom === null ? "unavailable" : `${radial.rmsDistanceDeltaAngstrom} Å RMS`,
+      `${radial.matchedDistances} paired · ${radial.unmatchedDistances} unmatched`),
+    siteProvenanceTile("constraint response", constraints.available ? `${constraints.contactAngleMismatch >= 0 ? "+" : ""}${constraints.contactAngleMismatch.toFixed(3)}` : "unavailable",
+      "B − A contact + angle residual"),
+    siteProvenanceTile("coordination deficit", constraints.available ? `${constraints.coordinationDeficit >= 0 ? "+" : ""}${constraints.coordinationDeficit.toFixed(3)}` : "unavailable",
+      "B − A colored frontier deficit"),
+    siteProvenanceTile("GCTS lineage", `depth ${comparison.lineage.firstDepth} → ${comparison.lineage.secondDepth}`,
+      `${comparison.lineage.firstOrigin} → ${comparison.lineage.secondOrigin}`),
+  );
+  siteComparisonChannels.replaceChildren();
+  comparison.coordination.channels.forEach((channel) => {
+    const row = document.createElement("span");
+    row.className = channel.delta === 0 ? "pass" : "warn";
+    const label = document.createElement("small"); label.textContent = channel.species;
+    const value = document.createElement("strong"); value.textContent = `${channel.first} → ${channel.second}`;
+    const status = document.createElement("em"); status.textContent = `Δ ${channel.delta >= 0 ? "+" : ""}${channel.delta}`;
+    row.append(label, value, status); siteComparisonChannels.append(row);
+  });
+  siteComparisonBoundary.textContent = `comparison ${comparison.comparisonDigest} · finite colored radial shells only; translation and global rotation independent, but not a proof of local isometry, defect identity, energetic equivalence, or physical mechanism.`;
+  siteEnvironmentComparison.hidden = false;
 }
 
 function selectedSiteConstraintAudit(atom) {
@@ -3407,9 +3482,7 @@ function renderSiteConstraintAudit(audit) {
 
 function inspectSite(atom) {
   selectedSiteId = atom.id;
-  const snapshot = buildSiteProvenance({ atom, atoms, placements: placedClusters,
-    sceneToAngstrom: referenceSpacingA / Math.max(referenceSpacing, 1e-12),
-    neighborReachScene: 1.45 * referenceSpacing, geometryLabel: resolvedGeometryLabel() });
+  const snapshot = siteProvenanceSnapshot(atom);
   const [x, y, z] = snapshot.positionAngstrom;
   const environment = snapshot.localEnvironment;
   const lineage = snapshot.lineage;
@@ -3432,6 +3505,9 @@ function inspectSite(atom) {
         : snapshot.observedReferenceIndex === null ? "not created by a retained growth action" : `input reference site ${snapshot.observedReferenceIndex}`),
   );
   renderSiteConstraintAudit(selectedSiteConstraintAudit(atom));
+  const pinnedAtom = atoms.find((entry) => entry.id === pinnedSiteId);
+  if (pinnedAtom && pinnedAtom.id !== atom.id) renderSiteEnvironmentComparison(pinnedAtom, atom);
+  else siteEnvironmentComparison.hidden = true;
   siteProvenanceBoundary.textContent = "This is a click-derived audit of the current explicit structure. Coordinates and neighbors are not persisted in the notebook or receipt; no target, energy, force, defect identity, or physical mechanism is inferred.";
   siteProvenanceInspector.hidden = false;
   viewportHint.textContent = "selected site ring · click another atom or close inspector";
@@ -8070,7 +8146,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-186",
+      buildId: "20260826-187",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,

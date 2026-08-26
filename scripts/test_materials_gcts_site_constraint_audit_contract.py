@@ -46,9 +46,9 @@ def test_site_constraint_claims_fail_closed():
 
 
 def test_build_186_assets_and_narrative():
-    assert 'buildId: "20260826-186"' in APP
-    assert 'app.js?v=20260826-186' in HTML
-    assert 'style.css?v=20260826-83' in HTML
+    assert 'buildId: "20260826-187"' in APP
+    assert 'app.js?v=20260826-187' in HTML
+    assert 'style.css?v=20260826-84' in HTML
     assert 'site-constraint-audit.js?v=20260826-1' in APP
     assert "Build 186" in README
     assert "Build 186" in DOCS

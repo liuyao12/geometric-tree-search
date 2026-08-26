@@ -26,6 +26,11 @@ export function buildSiteProvenance({ atom, atoms, placements = [], sceneToAngst
   const speciesCounts = new Map();
   neighbors.forEach(({ atom: neighbor }) => speciesCounts.set(neighbor.species,
     (speciesCounts.get(neighbor.species) || 0) + 1));
+  const distanceShells = new Map();
+  neighbors.forEach(({ atom: neighbor, distanceScene }) => {
+    if (!distanceShells.has(neighbor.species)) distanceShells.set(neighbor.species, []);
+    distanceShells.get(neighbor.species).push(rounded(distanceScene * sceneToAngstrom));
+  });
   const clusterIds = [...new Set(atom.clusterIds || [])].sort((first, second) => first - second);
   const nucleusIds = [...new Set(atom.nucleusIds || [])].sort((first, second) => first - second);
   const creator = placements.find((placement) => placement.id === atom.createdByClusterId)
@@ -45,6 +50,7 @@ export function buildSiteProvenance({ atom, atoms, placements = [], sceneToAngst
       reachAngstrom: rounded(neighborReachScene * sceneToAngstrom),
       coordination: neighbors.length,
       speciesCounts: [...speciesCounts.entries()].sort(([first], [second]) => first.localeCompare(second)),
+      distanceShells: [...distanceShells.entries()].sort(([first], [second]) => first.localeCompare(second)),
       nearest: neighbors.slice(0, 8).map(({ atom: neighbor, distanceScene }) => ({
         siteId: neighbor.id, species: neighbor.species,
         distanceAngstrom: rounded(distanceScene * sceneToAngstrom),

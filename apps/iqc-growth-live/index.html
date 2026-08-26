@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260826-83">
+  <link rel="stylesheet" href="./style.css?v=20260826-84">
   <script type="importmap">
     {
       "imports": {
@@ -1494,12 +1494,18 @@
           <div id="epitaxyBadge" class="epitaxy-badge" hidden><i>▦</i><span><b id="epitaxyBadgeLabel">hexagonal template</b><small>declared registry · no adhesion energy</small></span></div>
           <div class="axis-labels" aria-hidden="true"><span class="x">x</span><span class="y">y</span><span class="z">z</span></div>
           <article id="siteProvenanceInspector" class="site-provenance-inspector" hidden aria-live="polite">
-            <header><span><small>site provenance microscope</small><strong id="siteProvenanceState">select an atom</strong></span><button id="siteProvenanceClose" type="button" aria-label="Close site inspector">×</button></header>
+            <header><span><small>site provenance microscope</small><strong id="siteProvenanceState">select an atom</strong></span><div class="site-provenance-actions"><button id="siteProvenancePin" type="button">pin as site A</button><button id="siteProvenanceCycle" type="button">next B</button><button id="siteProvenanceClose" type="button" aria-label="Close site inspector">×</button></div></header>
             <div id="siteProvenanceGrid" class="site-provenance-grid"></div>
             <section class="site-constraint-audit" aria-label="Selected site learned geometric constraints">
               <header><small>learned local geometry</small><strong id="siteConstraintState">awaiting site</strong></header>
               <div id="siteConstraintMeters" class="site-constraint-meters"></div>
               <div id="siteConstraintChannels" class="site-constraint-channels"></div>
+            </section>
+            <section id="siteEnvironmentComparison" class="site-environment-comparison" aria-label="Coordinate-free comparison of two selected sites" hidden>
+              <header><span><small>site A ↔ site B</small><strong id="siteComparisonState">pin A, then select B</strong></span><button id="siteComparisonClear" type="button">clear</button></header>
+              <div id="siteComparisonGrid" class="site-provenance-grid"></div>
+              <div id="siteComparisonChannels" class="site-constraint-channels"></div>
+              <p id="siteComparisonBoundary"></p>
             </section>
             <p id="siteProvenanceBoundary">Click-derived local geometry only; not stored in the receipt.</p>
           </article>
@@ -1722,7 +1728,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260826-186"></script>
+  <script type="module" src="./app.js?v=20260826-187"></script>
   <script type="module" src="./evidence-atlas.js?v=20260826-19"></script>
 </body>
 </html>
