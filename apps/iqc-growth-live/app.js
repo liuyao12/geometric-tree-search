@@ -44,7 +44,7 @@ import {
   learnColoredDistanceEnvelopesEnsemble,
 } from "./colored-distance-envelopes.js?v=20260824-6";
 import { learnLocalPairDistanceUncertaintyEnsemble } from "./ensemble-geometry-uncertainty.js?v=20260824-1";
-import { interfaceGeometryAudit } from "./interface-geometry.js?v=20260825-1";
+import { interfaceAccommodationScore, interfaceGeometryAudit } from "./interface-geometry.js?v=20260825-1";
 import { classifyProperPoseOrbits, symmetryReducedMisorientation } from "./proper-pose-orbits.js?v=20260825-1";
 import {
   centeredStructuralWindow,
@@ -4735,7 +4735,7 @@ function renderGrowthMechanismAudit() {
     const empty = document.createElement("p"); empty.textContent = "Advance one tree-search update to map its local geometric environment."; growthMechanismLedger.appendChild(empty);
   }
   renderGrowthUncertaintyBudget();
-  growthMechanismBoundary.textContent = `Phenotypes and uncertainty budgets are assigned after the candidate geometry and decision are frozen. Up to ${MAXIMUM_POSE_AUDITS_PER_LEAP} deterministic pose audits replay hard geometry at the larger of measured pair uncertainty and half the resolved isometry tolerance; the capped set is retained in encounter order, target-blind, and never changes admission or rank. This is a bounded sensitivity audit, not a posterior probability, confidence interval, thermal ensemble, dynamics, or calibrated robustness certificate. ${activeMicrostructureCouplingWeight() > 0 ? `The declared ${microstructureCouplingLabel()} experiment uses only proximity to frozen input-derived roles as a soft rank term over unchanged actions.` : "Proximity to heterogeneous-geometry roles is diagnostic only."} ${activeFrontMorphologyWeight() > 0 ? `The ${frontMorphologyLabel()} experiment uses parent-local angular support as another soft ordering term.` : "Front morphology is diagnostic only."} ${activeCapillaryGeometryWeight() > 0 ? `The ${capillaryGeometryLabel()} experiment uses finite 3D solid-angle occupancy around emitted sites.` : "Discrete capillary geometry is diagnostic only."} ${activeThermalFieldWeight() > 0 ? `The ${thermalFieldLabel()} experiment supplies a declared reduced scalar field relative to the observed seed.` : "The thermal-field control is isothermal."} ${activeEpitaxyWeight() > 0 ? `The declared ${epitaxyTemplateLabel()} contributes an interfacial registry score without substrate atoms.` : "No epitaxial template ranks the frontier."} ${activeFeedExposureWeight() > 0 ? `The ${feedExposureLabel()} contributes finite-ray geometric visibility.` : "No source-ray shadowing term ranks the frontier."} No defect identity, differential mean curvature, adhesion, interface energy, Kelvin temperature, heat flow, flux, physical mechanism, formation energy, mobility, or rate is inferred.`;
+  growthMechanismBoundary.textContent = `Phenotypes and uncertainty budgets are assigned after the candidate geometry and decision are frozen. Up to ${MAXIMUM_POSE_AUDITS_PER_LEAP} deterministic pose audits replay hard geometry at the larger of measured pair uncertainty and half the resolved isometry tolerance; the capped set is retained in encounter order, target-blind, and never changes admission or rank. This is a bounded sensitivity audit, not a posterior probability, confidence interval, thermal ensemble, dynamics, or calibrated robustness certificate. ${activeMicrostructureCouplingWeight() > 0 ? microstructureCouplingMode === "interface-accommodate" ? `The declared ${microstructureCouplingLabel()} experiment projects only candidate-induced shared lineage membership and ranks support, contact connectivity, and proper misorientation over unchanged actions.` : `The declared ${microstructureCouplingLabel()} experiment uses only proximity to frozen input-derived roles as a soft rank term over unchanged actions.` : "Heterogeneous-geometry and interface-accommodation descriptors are diagnostic only."} ${activeFrontMorphologyWeight() > 0 ? `The ${frontMorphologyLabel()} experiment uses parent-local angular support as another soft ordering term.` : "Front morphology is diagnostic only."} ${activeCapillaryGeometryWeight() > 0 ? `The ${capillaryGeometryLabel()} experiment uses finite 3D solid-angle occupancy around emitted sites.` : "Discrete capillary geometry is diagnostic only."} ${activeThermalFieldWeight() > 0 ? `The ${thermalFieldLabel()} experiment supplies a declared reduced scalar field relative to the observed seed.` : "The thermal-field control is isothermal."} ${activeEpitaxyWeight() > 0 ? `The declared ${epitaxyTemplateLabel()} contributes an interfacial registry score without substrate atoms.` : "No epitaxial template ranks the frontier."} ${activeFeedExposureWeight() > 0 ? `The ${feedExposureLabel()} contributes finite-ray geometric visibility.` : "No source-ray shadowing term ranks the frontier."} No defect identity, differential mean curvature, adhesion, interface energy, Kelvin temperature, heat flow, flux, physical mechanism, formation energy, mobility, or rate is inferred.`;
 }
 
 function clusterPlacementIndices(cluster) {
@@ -6165,7 +6165,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-128",
+      buildId: "20260825-129",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -6917,20 +6917,28 @@ async function buildExperimentReceipt() {
         perturbationEnsembleUsedForRanking: false,
       },
       microstructureCouplingRanking: {
-        role: "user-declared soft coupling to frozen input-derived heterogeneous-geometry roles over unchanged exact actions",
+        role: microstructureCouplingMode === "interface-accommodate"
+          ? "user-declared target-blind soft ordering by projected cross-lineage shared-site registry over unchanged exact actions"
+          : "user-declared soft coupling to frozen input-derived heterogeneous-geometry roles over unchanged exact actions",
         mode: microstructureCouplingMode,
         label: microstructureCouplingLabel(),
         enabled: activeMicrostructureCouplingWeight() > 0,
         effectiveWeight: activeMicrostructureCouplingWeight(),
         acceptedMeanScore: receiptRound(acceptedMicrostructureCouplingScore / Math.max(1, acceptedDecisions)),
         rejectedMeanScore: receiptRound(rejectedMicrostructureCouplingScore / Math.max(1, rejectedDecisions)),
-        observedInputGeometryUsed: true,
+        observedInputGeometryUsed: microstructureCouplingMode !== "interface-accommodate",
+        alreadyPlacedLineageGeometryUsed: microstructureCouplingMode === "interface-accommodate",
+        interfaceAccommodationFormula: microstructureCouplingMode === "interface-accommodate"
+          ? "mean[0.40 registered-support + 0.35 colored-contact connectivity + 0.25 proper-misorientation compatibility]"
+          : null,
         heldoutTargetUsed: false,
         defectLabelsUsed: false,
         candidateGeometryChanged: false,
         hardAdmissionChanged: false,
         formationEnergyInferred: false,
+        grainBoundaryEnergyInferred: false,
         mobilityInferred: false,
+        physicalTimeIntegrated: false,
       },
       mesoscopicLoopClosureRanking: {
         role: "target-blind multi-parent consensus over complete transformed colored site sets from frozen proper-SE(3) connection rules",
@@ -9167,6 +9175,7 @@ function activeMicrostructureCouplingWeight() {
 
 function microstructureCouplingLabel(mode = microstructureCouplingMode) {
   return ({ none: "neutral", "gap-heal": "gap healing", "interface-follow": "pose-interface following",
+    "interface-accommodate": "cross-lineage registry accommodation",
     "anomaly-avoid": "coordination-anomaly avoidance", "occupancy-follow": "occupational-front following" })[mode] || "neutral";
 }
 
@@ -9184,20 +9193,92 @@ function microstructureCouplingForCandidate(candidate, evaluation) {
   let rawSignal = 0;
   if (microstructureCouplingMode === "gap-heal") rawSignal = counts.gap + counts.residual;
   else if (microstructureCouplingMode === "interface-follow") rawSignal = counts.interface;
+  else if (microstructureCouplingMode === "interface-accommodate") rawSignal = evaluation.interfaceAccommodation.score;
   else if (microstructureCouplingMode === "anomaly-avoid") rawSignal = -counts.anomaly;
   else if (microstructureCouplingMode === "occupancy-follow") rawSignal = counts.occupancy + counts.vacancy;
   return {
     mode: microstructureCouplingMode,
     label: microstructureCouplingLabel(),
     rawSignal,
-    score: Math.sign(rawSignal) * Math.tanh(Math.abs(rawSignal) / 2),
+    score: microstructureCouplingMode === "interface-accommodate" ? rawSignal
+      : Math.sign(rawSignal) * Math.tanh(Math.abs(rawSignal) / 2),
     nearbyRoleCounts: { ...counts },
+    dynamicInterfaceAccommodation: microstructureCouplingMode === "interface-accommodate"
+      ? evaluation.interfaceAccommodation : null,
     reachAngstrom: neighborhood.reach * referenceSpacingA / Math.max(referenceSpacing, 1e-12),
-    observedInputGeometryUsed: true,
+    observedInputGeometryUsed: microstructureCouplingMode !== "interface-accommodate",
+    alreadyPlacedLineageGeometryUsed: microstructureCouplingMode === "interface-accommodate",
     heldoutTargetUsed: false,
     defectLabelsUsed: false,
     candidateGeometryChanged: false,
     hardAdmissionChanged: false,
+  };
+}
+
+function interfaceAccommodationForCandidate(candidate, evaluation) {
+  const parent = placedClusters.find((placement) => placement.id === candidate.parentId);
+  const parentNucleus = parent?.nucleusId || 1;
+  const seedByNucleus = new Map(placedClusters.filter((placement) => placement.seedNucleus)
+    .map((placement) => [placement.nucleusId, placement]));
+  const touched = new Map();
+  evaluation.merged.forEach(({ atom }) => (atom.nucleusIds || []).forEach((nucleusId) => {
+    if (nucleusId === parentNucleus) return;
+    const atomsForPair = touched.get(nucleusId) || new Set();
+    atomsForPair.add(atom); touched.set(nucleusId, atomsForPair);
+  }));
+  if (!touched.size) return {
+    parentNucleus, touchedNuclei: [], pairAudits: [], newlyRegisteredSites: 0, score: 0,
+    scoringFormula: "mean[0.40 registered-support + 0.35 colored-contact connectivity + 0.25 proper-misorientation compatibility]",
+    candidateSetChanged: false, candidateGeometryChanged: false, hardAdmissionChanged: false,
+    targetUsed: false, grainBoundaryEnergyInferred: false, mobilityInferred: false,
+    physicalTimeIntegrated: false,
+  };
+  const positions = atoms.map((atom) => atom.p.toArray());
+  const species = atoms.map((atom) => atom.species);
+  const beforeMemberships = atoms.map((atom) => [...new Set(atom.nucleusIds || [])]);
+  const afterMemberships = beforeMemberships.map((ids) => [...ids]);
+  const atomIndices = new Map(atoms.map((atom, index) => [atom, index]));
+  touched.forEach((pairAtoms) => pairAtoms.forEach((atom) => {
+    const index = atomIndices.get(atom);
+    if (Number.isInteger(index) && !afterMemberships[index].includes(parentNucleus)) {
+      afterMemberships[index].push(parentNucleus);
+    }
+  }));
+  const scaleToAngstrom = referenceSpacingA / Math.max(referenceSpacing, 1e-12);
+  const contactCutoff = (firstSpecies, secondSpecies) =>
+    coordinationEnvelopeFor(coloredCoordinationEnvelopes, firstSpecies, secondSpecies)?.contactCutoff || null;
+  const pairAudits = [...touched.entries()].map(([otherNucleus, pairAtoms]) => {
+    const firstSeed = seedByNucleus.get(parentNucleus); const secondSeed = seedByNucleus.get(otherNucleus);
+    if (!firstSeed || !secondSeed) return null;
+    const common = { positions, species, firstNucleusId: parentNucleus, secondNucleusId: otherNucleus,
+      firstCenter: firstSeed.position.toArray(), secondCenter: secondSeed.position.toArray(),
+      lengthScale: scaleToAngstrom, contactCutoff };
+    const before = interfaceGeometryAudit({ ...common, memberships: beforeMemberships });
+    const after = interfaceGeometryAudit({ ...common, memberships: afterMemberships });
+    const misorientation = symmetryReducedMisorientation(growthNucleusOccurrence(firstSeed),
+      growthNucleusOccurrence(secondSeed), { metricToleranceFraction: effectiveClusterMetricTolerance() });
+    const newlyRegisteredSites = [...pairAtoms].filter((atom) =>
+      !(atom.nucleusIds || []).includes(parentNucleus)).length;
+    const scoring = interfaceAccommodationScore({ newlyRegisteredSites,
+      componentCount: after.componentCount, properMisorientationDegrees: misorientation.angleDegrees,
+      comparable: misorientation.comparable });
+    return {
+      nuclei: [parentNucleus, otherNucleus], newlyRegisteredSites,
+      beforeSharedSites: before.sharedSiteCount, afterSharedSites: after.sharedSiteCount,
+      beforeComponents: before.componentCount, afterComponents: after.componentCount,
+      supportScore: scoring.supportScore, connectivityScore: scoring.connectivityScore,
+      orientationScore: scoring.orientationScore, score: scoring.score,
+      properMisorientationDegrees: misorientation.angleDegrees,
+    };
+  }).filter(Boolean);
+  return {
+    parentNucleus, touchedNuclei: pairAudits.map((audit) => audit.nuclei[1]), pairAudits,
+    newlyRegisteredSites: pairAudits.reduce((sum, audit) => sum + audit.newlyRegisteredSites, 0),
+    score: pairAudits.length ? pairAudits.reduce((sum, audit) => sum + audit.score, 0) / pairAudits.length : 0,
+    scoringFormula: "mean[0.40 registered-support + 0.35 colored-contact connectivity + 0.25 proper-misorientation compatibility]",
+    candidateSetChanged: false, candidateGeometryChanged: false, hardAdmissionChanged: false,
+    targetUsed: false, grainBoundaryEnergyInferred: false, mobilityInferred: false,
+    physicalTimeIntegrated: false,
   };
 }
 
@@ -10704,7 +10785,9 @@ function evaluateCandidate(candidate, {
   const thermalField = reducedThermalFieldForCandidate(candidate, { recordWork });
   const solutePartition = solutePartitionForFreshSites(fresh, thermalField, capillaryGeometry, { recordWork });
   const constraintRobustness = constraintRobustnessForCandidate(fresh, merged);
-  const microstructureCoupling = microstructureCouplingForCandidate(candidate, { fresh, merged });
+  const interfaceAccommodation = interfaceAccommodationForCandidate(candidate, { fresh, merged });
+  const microstructureCoupling = microstructureCouplingForCandidate(candidate,
+    { fresh, merged, interfaceAccommodation });
   const loopClosure = mesoscopicLoopClosureForCandidate(candidate);
   const defectPrecursors = defectPrecursorsForAction({ geometricStrain, surfaceCompletion, compositionBalance, loopClosure }, { recordWork });
   const coherencyMemory = coherencyMemoryForCandidate(candidate, { geometricStrain, merged }, { recordWork });
@@ -10716,7 +10799,8 @@ function evaluateCandidate(candidate, {
   return { accepted, sites, merged, fresh, conflicts, boundaryFailures, knownFailures, markingFallback,
     coordinationOverflows, angularViolations, geometricStrain, affineLoadedGeometricStrain,
     surfaceCompletion, bulkSurfaceDriving, attachmentTopology, habitAnisotropy, frontMorphology, capillaryGeometry, epitaxyRegistry, compositionBalance, formalChargeBalance, chargeGeometry,
-    externalDrive, thermalField, solutePartition, constraintRobustness, microstructureCoupling, loopClosure, defectPrecursors, coherencyMemory, arrivalPath, feedExposure,
+    externalDrive, thermalField, solutePartition, constraintRobustness, interfaceAccommodation,
+    microstructureCoupling, loopClosure, defectPrecursors, coherencyMemory, arrivalPath, feedExposure,
     duplicateSites: canonical.duplicateSites,
     freshReferenceIndices: fresh.map((site) => site.referenceIndex).filter(Number.isInteger),
     reason: conflicts ? `${conflicts} hard-core/species conflicts` : boundaryFailures ? "outside confinement" : knownFailures ? `${knownFailures} sites outside known configuration` : coordinationOverflows.length ? `${coordinationOverflows.length} colored coordination capacities exceeded` : angularViolations.length ? `${angularViolations.length} colored angular envelopes violated` : merged.length < 2 ? "insufficient shared support" : fresh.length === 0 ? "duplicate covering" : !markingAccepted ? "marking mismatch" : "compatible overlap" };
@@ -12118,7 +12202,9 @@ function syncStageOptions() {
       : " Constraint margins are reported but contribute zero ranking weight.";
     const microstructureUse = microstructureCouplingMode === "none"
       ? " Heterogeneous-geometry correlations remain post-decision diagnostics."
-      : ` A user-declared ${microstructureCouplingLabel()} hypothesis adds a ${microstructureCouplingWeight.toFixed(2)} soft term from frozen input-derived roles; no defect identity or formation energy is assumed.`;
+      : microstructureCouplingMode === "interface-accommodate"
+        ? ` A user-declared ${microstructureCouplingLabel()} hypothesis adds a ${microstructureCouplingWeight.toFixed(2)} soft term from candidate-projected shared-site support, colored-contact connectivity, and proper misorientation; it changes neither candidate geometry nor hard admission and is not interfacial energy.`
+        : ` A user-declared ${microstructureCouplingLabel()} hypothesis adds a ${microstructureCouplingWeight.toFixed(2)} soft term from frozen input-derived roles; no defect identity or formation energy is assumed.`;
     const loopClosureUse = loopClosurePreference === "consensus"
       ? ` A ${loopClosureWeight.toFixed(2)} mesoscopic term rewards independent frozen-rule paths that close onto the same proper-SE(3) pose and penalizes nearby incompatible paths.`
       : " Multi-parent loop closure is reported but contributes zero rank weight.";
@@ -12546,6 +12632,7 @@ function nucleusInterfaceForCandidate(candidate, evaluation) {
   }));
   return { parentNucleus, otherNuclei: [...otherNuclei].sort((a, b) => a - b),
     crossNucleusContacts, coalescenceCandidate: otherNuclei.size > 0,
+    accommodation: evaluation.interfaceAccommodation,
     seedSelectionTargetUsed: false, interfacialEnergyInferred: false };
 }
 
@@ -12582,6 +12669,7 @@ function stateForCandidate(candidate, evaluation) {
     externalDrive: evaluation.externalDrive,
     thermalField: evaluation.thermalField,
     constraintRobustness: evaluation.constraintRobustness,
+    interfaceAccommodation: evaluation.interfaceAccommodation,
     microstructureCoupling: evaluation.microstructureCoupling,
     loopClosure: evaluation.loopClosure,
     arrivalPath: evaluation.arrivalPath,
@@ -14539,17 +14627,21 @@ function geometryConstraintEvidence(name, term, state, mode) {
       boundary: "Margin ordering does not sample a pose ensemble and is not temperature, probability, energy, or a physical stability certificate. The separate post-decision pose audit remains validation only.",
     },
     "microstructure coupling": {
-      observed: `${microstructureEvidence?.gapBoundaryAtoms || 0} gap-boundary atoms · ${microstructureEvidence?.literalOnlyAtoms || 0} literal-only · ${microstructureEvidence?.crossPoseContacts || 0} cross-pose contacts · ${microstructureEvidence?.coordinationAnomalyAtoms || 0} coordination candidates`,
-      encoding: `${microstructureCouplingLabel()} converts the count of nearby frozen input-derived roles into a bounded signed score.`,
+      observed: microstructureCouplingMode === "interface-accommodate"
+        ? `${state?.interfaceAccommodation?.newlyRegisteredSites || 0} newly registered cross-lineage sites · ${state?.interfaceAccommodation?.pairAudits?.length || 0} touched nucleus pairs`
+        : `${microstructureEvidence?.gapBoundaryAtoms || 0} gap-boundary atoms · ${microstructureEvidence?.literalOnlyAtoms || 0} literal-only · ${microstructureEvidence?.crossPoseContacts || 0} cross-pose contacts · ${microstructureEvidence?.coordinationAnomalyAtoms || 0} coordination candidates`,
+      encoding: microstructureCouplingMode === "interface-accommodate"
+        ? "Projected shared-site support (40%), colored-contact connectivity (35%), and proper-symmetry-reduced misorientation compatibility (25%) form a bounded score."
+        : `${microstructureCouplingLabel()} converts the count of nearby frozen input-derived roles into a bounded signed score.`,
       searchRole: activeMicrostructureCouplingWeight() > 0
         ? `Soft rank term with weight ${activeMicrostructureCouplingWeight().toFixed(2)} over unchanged exact actions.` : "Post-decision diagnostic only; weight zero.",
-      boundary: "A spatial role is not a defect label. This experiment infers no formation energy, migration barrier, mobility, grain identity, or mechanism.",
+      boundary: "A spatial role or registry score is not a defect label or grain-boundary energy. This experiment infers no formation energy, migration barrier, mobility, grain identity, or mechanism.",
     },
     "multi-nucleus interface": {
       observed: `${initializedGrowthNuclei || requestedGrowthNuclei} initialized observed pose domains · ${crossNucleusMergeContacts} shared-site contacts so far`,
       encoding: `${nucleationSiteLabel()} chooses only among fitted observed occurrences using boundary margin or frozen local-role evidence. Additional nuclei use atom-disjoint farthest traversal. Each placement inherits its seed lineage.`,
       searchRole: state?.nucleusInterface?.coalescenceCandidate
-        ? `Diagnostic interface event with ${state.nucleusInterface.crossNucleusContacts} cross-lineage shared-site contact${state.nucleusInterface.crossNucleusContacts === 1 ? "" : "s"}.`
+        ? `${microstructureCouplingMode === "interface-accommodate" ? "Soft-ranked" : "Diagnostic"} interface event with ${state.nucleusInterface.crossNucleusContacts} cross-lineage shared-site contact${state.nucleusInterface.crossNucleusContacts === 1 ? "" : "s"}${microstructureCouplingMode === "interface-accommodate" ? ` · accommodation ${state.interfaceAccommodation.score >= 0 ? "+" : ""}${state.interfaceAccommodation.score.toFixed(3)}` : ""}.`
         : "Diagnostic only; the candidate remains within one initialized lineage.",
       boundary: "Lineage contact is not a grain-boundary classification, interfacial energy, misorientation distribution, nucleation probability, coarsening law, or physical time.",
     },
@@ -14698,9 +14790,12 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "microstructure coupling", status: ranked(activeMicrostructureCouplingWeight() > 0),
       value: state.microstructureCoupling ? `${signed(state.microstructureCoupling.score)} · ${state.microstructureCoupling.label}` : "not evaluated",
       detail: activeMicrostructureCouplingWeight() > 0 ? `rank weight ${activeMicrostructureCouplingWeight().toFixed(2)} · labels withheld` : "diagnostic · labels withheld" },
-    { name: "multi-nucleus interface", status: state.nucleusInterface?.coalescenceCandidate ? "interface" : "diagnostic",
-      value: state.nucleusInterface ? `${state.nucleusInterface.crossNucleusContacts} cross-lineage contacts · parent N${state.nucleusInterface.parentNucleus}` : "not evaluated",
-      detail: `${initializedGrowthNuclei || requestedGrowthNuclei} observed nuclei · diagnostic only · no interfacial energy` },
+    { name: "multi-nucleus interface", status: microstructureCouplingMode === "interface-accommodate"
+      ? "ranked" : state.nucleusInterface?.coalescenceCandidate ? "interface" : "diagnostic",
+      value: state.nucleusInterface ? `${state.nucleusInterface.crossNucleusContacts} cross-lineage contacts · parent N${state.nucleusInterface.parentNucleus}${microstructureCouplingMode === "interface-accommodate" ? ` · ${signed(state.interfaceAccommodation.score)}` : ""}` : "not evaluated",
+      detail: microstructureCouplingMode === "interface-accommodate"
+        ? `${initializedGrowthNuclei || requestedGrowthNuclei} observed nuclei · rank weight ${activeMicrostructureCouplingWeight().toFixed(2)} · unchanged hard gates`
+        : `${initializedGrowthNuclei || requestedGrowthNuclei} observed nuclei · diagnostic only · no interfacial energy` },
     { name: "mesoscopic loop closure", status: ranked(activeLoopClosureWeight() > 0),
       value: state.loopClosure ? `${signed(state.loopClosure.score)} · ${state.loopClosure.independentCompatiblePaths} support / ${state.loopClosure.independentConflictingPaths} conflict` : "not evaluated",
       detail: activeLoopClosureWeight() > 0 ? `rank weight ${activeLoopClosureWeight().toFixed(2)} · generating parent excluded` : "diagnostic · local-only ordering" },
@@ -16547,7 +16642,7 @@ robustnessWeightSelect.addEventListener("change", () => {
 });
 microstructureCouplingSelect.addEventListener("change", () => {
   const value = microstructureCouplingSelect.value;
-  microstructureCouplingMode = ["gap-heal", "interface-follow", "anomaly-avoid", "occupancy-follow"].includes(value)
+  microstructureCouplingMode = ["gap-heal", "interface-follow", "interface-accommodate", "anomaly-avoid", "occupancy-follow"].includes(value)
     ? value : "none";
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();

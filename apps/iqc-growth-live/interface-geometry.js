@@ -96,3 +96,17 @@ export function interfaceGeometryAudit({
     interfaceMobilityInferred: false, physicalTimeIntegrated: false,
   };
 }
+
+export function interfaceAccommodationScore({
+  newlyRegisteredSites, componentCount, properMisorientationDegrees, comparable,
+}) {
+  const supportScore = 1 - Math.exp(-Math.max(0, newlyRegisteredSites) / 2);
+  const connectivityScore = Number.isInteger(componentCount) && componentCount > 0
+    ? Math.max(-1, Math.min(1, 2 / componentCount - 1)) : 0;
+  const orientationScore = comparable && Number.isFinite(properMisorientationDegrees)
+    ? Math.max(-1, Math.min(1, 1 - 2 * properMisorientationDegrees / 180)) : 0;
+  const score = Math.max(-1, Math.min(1,
+    .4 * supportScore + .35 * connectivityScore + .25 * orientationScore));
+  return { score, supportScore, connectivityScore, orientationScore,
+    formula: "0.40 registered-support + 0.35 colored-contact connectivity + 0.25 proper-misorientation compatibility" };
+}

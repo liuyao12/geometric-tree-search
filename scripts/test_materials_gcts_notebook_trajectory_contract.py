@@ -11,8 +11,8 @@ README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
 
 def test_notebook_trajectory_contract() -> None:
-    assert 'buildId: "20260825-128"' in APP
-    assert 'app.js?v=20260825-128' in HTML
+    assert 'buildId: "20260825-129"' in APP
+    assert 'app.js?v=20260825-129' in HTML
     for element_id in ("notebookTrajectoryAudit", "notebookTrajectoryPlot", "notebookTrajectorySummary"):
         assert f'id="{element_id}"' in HTML
     assert "const structuralLeaps = search?.structuralLeapCertificates || []" in APP

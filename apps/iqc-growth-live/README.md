@@ -262,6 +262,19 @@ fitted macroscopic boundary normal, and the finite registered contact zone is
 not promoted to a grain-boundary identity, physical area, interfacial energy,
 mobility, coarsening law, or elapsed time.
 
+Build 129 makes that interface evidence available as an optional **geometric
+accommodation hypothesis** in tree-search ranking. Before selection, each exact
+candidate projects only the lineage memberships it would add at already
+coincident colored sites. A bounded score combines newly registered support
+(40%), connected colored-contact registry (35%), and proper-symmetry-reduced
+seed misorientation compatibility (25%). The option ranks the same frozen
+candidate actions with a user-selected soft weight; it does not create or move
+sites, relax an interface, or alter collision, species, confinement,
+coordination, angle, or marking admission. The score and decomposition appear
+in the decision evidence and receipt. It is a declared geometric proxy—not a
+grain-boundary energy, mobility, force, thermodynamic driving force, or time
+integration.
+
 The notebook never restores or executes a run, never stores atom
 coordinates, and never substitutes for the downloadable receipt. Clearing it is
 a two-click action and does not affect downloaded files or the marking library.

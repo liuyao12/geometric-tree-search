@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { interfaceGeometryAudit } from "../apps/iqc-growth-live/interface-geometry.js";
+import { interfaceAccommodationScore, interfaceGeometryAudit } from "../apps/iqc-growth-live/interface-geometry.js";
 
 const positions = [[-2, 0, 0], [2, 0, 0], [-.25, -1, 0], [.25, 1, 0], [0, 0, .5]];
 const species = ["Na", "Na", "Cl", "Cl", "Na"];
@@ -31,7 +31,17 @@ for (const field of ["centerSeparation", "axialCentroidOffset", "axialThicknessR
 assert.deepEqual(transformed.profile, audit.profile);
 assert.deepEqual(transformed.chemistry, audit.chemistry);
 
+const coherent = interfaceAccommodationScore({ newlyRegisteredSites: 4, componentCount: 1,
+  properMisorientationDegrees: 0, comparable: true });
+const fragmented = interfaceAccommodationScore({ newlyRegisteredSites: 1, componentCount: 5,
+  properMisorientationDegrees: 75, comparable: true });
+const noContact = interfaceAccommodationScore({ newlyRegisteredSites: 0, componentCount: 0,
+  properMisorientationDegrees: null, comparable: false });
+assert.ok(coherent.score > fragmented.score);
+assert.ok(fragmented.score >= -1 && fragmented.score <= 1);
+assert.equal(noContact.score, 0);
+
 console.log("nucleus-interface geometry audit: passed", {
   thickness: audit.axialThicknessRms, tangentialRms: audit.tangentialRadiusRms,
-  chemistry: audit.chemistry,
+  chemistry: audit.chemistry, coherentAccommodation: coherent.score,
 });

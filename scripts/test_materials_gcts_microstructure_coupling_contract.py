@@ -19,7 +19,7 @@ def test_microstructure_coupling_ranks_but_does_not_relabel_geometry() -> None:
         "growthMechanismCanvas",
     ):
         assert f'id="{element_id}"' in HTML
-    for mode in ("none", "gap-heal", "interface-follow", "anomaly-avoid", "occupancy-follow"):
+    for mode in ("none", "gap-heal", "interface-follow", "interface-accommodate", "anomaly-avoid", "occupancy-follow"):
         assert f'value="{mode}"' in HTML
     for weight in ("0.12", "0.24", "0.48"):
         assert f'value="{weight}"' in HTML
@@ -34,7 +34,8 @@ def test_microstructure_coupling_ranks_but_does_not_relabel_geometry() -> None:
     assert "branchRankingMode: microstructureCouplingMode" in APP
 
     for nonclaim in (
-        "observedInputGeometryUsed: true",
+        'observedInputGeometryUsed: microstructureCouplingMode !== "interface-accommodate"',
+        'alreadyPlacedLineageGeometryUsed: microstructureCouplingMode === "interface-accommodate"',
         "heldoutTargetUsed: false",
         "defectLabelsUsed: false",
         "candidateGeometryChanged: false",
