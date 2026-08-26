@@ -35,13 +35,18 @@ def test_cross_arm_comparison_is_fail_closed_and_noncausal():
     assert "renderStudyIdentifiabilityComparison" in APP
     assert "same hypothesis pair across saved arms" in APP
     assert "descriptive contrast" in APP
+    assert "renderNotebookIdentifiabilityComparison" in APP
+    assert "cross-run hypothesis transfer audit" in APP
+    assert "notebookComparison.append(renderNotebookIdentifiabilityComparison" in APP
+    assert "audit ${comparison.comparisonDigest}" in APP
     assert ".study-identifiability-comparison" in STYLE
-    assert "Build 181" in README
-    assert "Build 181" in DOCS
+    assert ".notebook-identifiability-comparison" in STYLE
+    assert "Build 182" in README
+    assert "Build 182" in DOCS
 
 
-def test_build_181_assets_are_cache_busted():
-    assert 'buildId: "20260826-181"' in APP
-    assert 'app.js?v=20260826-181' in HTML
-    assert 'style.css?v=20260826-78' in HTML
+def test_build_182_assets_are_cache_busted():
+    assert 'buildId: "20260826-182"' in APP
+    assert 'app.js?v=20260826-182' in HTML
+    assert 'style.css?v=20260826-79' in HTML
     assert 'policy-identifiability.js?v=20260826-4' in APP

@@ -5207,3 +5207,18 @@ never pooled, and neither search nor ranking is replayed. The displayed contrast
 therefore evidence that a score-channel redundancy is arm-specific or recurring under
 the registered intervention; it is not a causal effect, an independent-material
 replicate, or a universality claim.
+
+### Build 182 · transfer the hypothesis audit across any two saved materials
+
+The general experiment notebook now applies the same fail-closed comparison to any
+two selected coordinate-free run summaries, including different materials. The first
+selected run pre-registers the hypothesis pair; the second must contain that exact
+pair under the same conditioned-control acceptance pattern. A compact three-card
+audit reports each material's coefficient, classification, candidate count, frontier
+digest, the coefficient range, sign agreement, and a deterministic comparison digest.
+
+This is a transfer diagnostic, not data pooling. Each material retains its own frozen
+candidate set and receipt identity; the comparison never imports candidate rows,
+coordinates, target labels, or actions from either run. A difference can motivate a
+material-specific encoding hypothesis, but it does not establish universality, causal
+physics, or statistical independence between saved browser runs.

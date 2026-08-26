@@ -7885,7 +7885,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-181",
+      buildId: "20260826-182",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -11014,6 +11014,7 @@ function renderExperimentNotebook() {
     row.classList.toggle("same", firstValue.textContent === secondValue.textContent);
     row.append(name, firstValue, secondValue); notebookComparison.append(row);
   });
+  notebookComparison.append(renderNotebookIdentifiabilityComparison(selected[0], selected[1]));
 }
 
 async function saveCurrentExperimentNotebookEntry() {
@@ -16028,7 +16029,7 @@ function formatRegisteredOutcome(record, signed = false) {
   return `${signed && value > 0 ? "+" : ""}${formatted}${percent ? "%" : ""}`;
 }
 
-function notebookArmIdentifiabilityComparison(reference, contrast) {
+function notebookArmIdentifiabilityComparison(reference, contrast, labels = {}) {
   const selected = reference?.policyIdentifiability?.selectedTrajectory;
   const modeAudit = reference?.policyIdentifiability?.latest?.modes?.conditional;
   const firstId = selected?.firstTerm?.id || modeAudit?.strongestPair?.firstId;
@@ -16038,22 +16039,25 @@ function notebookArmIdentifiabilityComparison(reference, contrast) {
     : selected?.secondTerm?.id === id ? selected.secondTerm.label
       : modeAudit?.activeVaryingTerms?.find((term) => term.id === id)?.label || id;
   const comparison = policyIdentifiabilityAcrossArms([
-    { armId: "reference", label: reference.registeredStudy?.armLabel || "reference",
+    { armId: "reference", label: labels.first || reference.registeredStudy?.armLabel || "reference",
       material: reference.material, receiptSha256: reference.receiptSha256,
       identifiability: reference.policyIdentifiability },
-    { armId: "contrast", label: contrast.registeredStudy?.armLabel || "contrast",
+    { armId: "contrast", label: labels.second || contrast.registeredStudy?.armLabel || "contrast",
       material: contrast.material, receiptSha256: contrast.receiptSha256,
       identifiability: contrast.policyIdentifiability },
   ], { firstId, secondId, mode: "conditional" });
   return comparison ? { ...comparison, firstLabel: labelFor(firstId), secondLabel: labelFor(secondId) } : null;
 }
 
-function renderStudyIdentifiabilityComparison(reference, contrast) {
-  const comparison = notebookArmIdentifiabilityComparison(reference, contrast);
-  const section = document.createElement("section"); section.className = "study-identifiability-comparison";
+function renderReceiptIdentifiabilityComparison(reference, contrast, options = {}) {
+  const comparison = notebookArmIdentifiabilityComparison(reference, contrast,
+    { first: options.firstLabel, second: options.secondLabel });
+  const section = document.createElement("section");
+  section.className = `study-identifiability-comparison ${options.className || ""}`.trim();
   const header = document.createElement("header");
   const title = document.createElement("span");
-  const eyebrow = document.createElement("small"); eyebrow.textContent = "same hypothesis pair across saved arms";
+  const eyebrow = document.createElement("small");
+  eyebrow.textContent = options.eyebrow || "same hypothesis pair across saved arms";
   const heading = document.createElement("strong");
   heading.textContent = comparison ? `${comparison.firstLabel} ↔ ${comparison.secondLabel}` : "Save a frozen frontier audit in both arms";
   title.append(eyebrow, heading);
@@ -16079,10 +16083,23 @@ function renderStudyIdentifiabilityComparison(reference, contrast) {
   const contrastValue = document.createElement("strong");
   contrastValue.textContent = `Δρ ${comparison.coefficientRange.toFixed(3)}`;
   const contrastDetail = document.createElement("span");
-  contrastDetail.textContent = comparison.signContrast ? "rank-correlation sign differs" : "same rank-correlation sign";
+  contrastDetail.textContent = `${comparison.signContrast ? "rank-correlation sign differs" : "same rank-correlation sign"} · audit ${comparison.comparisonDigest}`;
   contrastCard.append(contrastLabel, contrastValue, contrastDetail); grid.append(contrastCard);
   const boundary = document.createElement("p"); boundary.textContent = comparison.interpretation;
   section.append(grid, boundary); return section;
+}
+
+function renderStudyIdentifiabilityComparison(reference, contrast) {
+  return renderReceiptIdentifiabilityComparison(reference, contrast);
+}
+
+function renderNotebookIdentifiabilityComparison(first, second) {
+  return renderReceiptIdentifiabilityComparison(first, second, {
+    className: "notebook-identifiability-comparison",
+    firstLabel: first.material,
+    secondLabel: second.material,
+    eyebrow: "cross-run hypothesis transfer audit",
+  });
 }
 
 function renderStudyComparisonResponse(recipeId, comparison) {

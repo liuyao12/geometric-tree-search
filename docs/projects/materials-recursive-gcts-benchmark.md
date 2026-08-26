@@ -5850,3 +5850,22 @@ This is a descriptive registered-arm contrast. It does not pool candidate sets,
 regenerate a frontier, replay search, infer a causal intervention effect, or establish
 cross-material universality. Multiple configured arms can share the same source
 structure and are not silently treated as statistically independent samples.
+
+## Build 182: cross-material transfer in the general experiment notebook
+
+The ordinary two-run notebook comparison now includes the same preselected-pair
+identifiability contract used by registered arms. The first selected receipt supplies
+the pair and structural-conditioning mode; the second receipt is queried only for
+that exact pair. The result is unavailable if either run predates coordinate-free
+identifiability summaries, the pair is absent, or conditioning acceptance differs.
+
+For compatible runs the portal displays per-material Spearman coefficients,
+classifications, candidate counts, candidate-set digests, coefficient range, sign
+agreement, and a deterministic cross-run comparison digest. Candidate ledgers remain
+separate and are not persisted in the notebook. No candidate is regenerated, no search
+is replayed, and neither ranking nor execution is performed.
+
+Cross-material agreement is therefore descriptive transfer evidence only. It neither
+proves that the underlying physical mechanisms are universal nor treats saved runs as
+independent specimens. Divergence identifies a useful next materials hypothesis—the
+geometric proxy may be environment-specific—but is not itself a causal explanation.
