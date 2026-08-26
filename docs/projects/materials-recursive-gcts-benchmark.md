@@ -5599,3 +5599,21 @@ calibration remain outside the model. The receipt hashes the selected curve and
 records every omitted channel. Retained structural-leap comparisons stay on
 the immutable unit-weight basis, and no scattering value enters GCTS learning
 or execution.
+
+## Build 170: a geometric descriptor is checked against archived calculations
+
+For an imported fixed-topology relaxation archive with at least three frames,
+the browser fits colored contact-length, coordination, and angular envelopes
+to the final archived geometry only. It evaluates the same deterministic set
+of at most 256 atom-index-quantile centers in every frame using periodic
+minimum-image vectors, then pairs mean contact-plus-angle mismatch with
+same-run relative energy per primitive atom and residual-force RMS. An
+interactive scatter plot reports paired counts, Pearson correlation, Spearman
+rank correlation, and an ordinary least-squares guide; its points select the
+corresponding archived structures.
+
+The receipt hashes the per-frame geometric/calculation records and explicitly
+records that energy and force never fit the geometry or rank growth. This is a
+descriptive final-frame-referenced association within one correlated archive,
+not independent validation, prediction, causal evidence, an energy model,
+force field, reaction coordinate, physical trajectory, kinetics, or time.

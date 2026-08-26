@@ -687,6 +687,20 @@ body.study-guide-open { overflow: hidden; }
 .relaxation-neighbor-legend span:nth-child(2)::before { background: var(--mint); }
 .relaxation-neighbor-legend span:nth-child(3)::before { background: #b995ff; }
 .relaxation-sequence p { margin: 5px 0 0; color: #687e78; font: 5px/1.45 var(--mono); }
+.relaxation-calibration { margin-top: 7px; padding: 7px; border: 1px solid rgba(181,148,255,.16); background: rgba(181,148,255,.025); }
+.relaxation-calibration header { display: flex; align-items: start; justify-content: space-between; gap: 7px; }
+.relaxation-calibration header span small,.relaxation-calibration header span strong { display: block; }
+.relaxation-calibration header small { color: #7d6fa2; font: 5px var(--mono); text-transform: uppercase; }
+.relaxation-calibration header strong { margin-top: 2px; color: #b9a4e8; font: 7px var(--mono); font-weight: 400; }
+.relaxation-calibration select { max-width: 138px; height: 21px; padding: 0 4px; border: 1px solid rgba(181,148,255,.2); background: #071415; color: #8e83ac; font: 5px var(--mono); }
+.relaxation-calibration > div { margin-top: 5px; color: #8c84a3; font: 5px/1.4 var(--mono); }
+.relaxation-calibration svg { height: 104px; margin-top: 3px; }
+.relaxation-calibration .calibration-axis { stroke: rgba(181,148,255,.22); stroke-width: .8; }
+.relaxation-calibration .calibration-fit { stroke: rgba(255,193,105,.62); stroke-width: 1; stroke-dasharray: 3 2; }
+.relaxation-calibration .calibration-point { fill: rgba(101,225,188,.68); stroke: #d9fff3; stroke-width: .5; cursor: pointer; }
+.relaxation-calibration .calibration-point.active { fill: #ffbf6b; stroke: #fff0cf; stroke-width: 1; }
+.relaxation-calibration .calibration-label { fill: #6f6981; font: 5px var(--mono); }
+.relaxation-calibration p { padding-top: 5px; border-top: 1px solid rgba(181,148,255,.1); color: #6d6879; }
 .growth-group-actions { display: flex; gap: 6px; margin: 5px 0 8px; }
 .growth-group-actions button { flex: 1; min-height: 26px; padding: 5px 7px; border: 1px solid rgba(126,225,232,.18); color: #74968d; background: rgba(6,13,12,.36); font: 6px var(--mono); letter-spacing: .03em; cursor: pointer; }
 .growth-group-actions button:hover,.growth-group-actions button:focus-visible { border-color: rgba(101,225,188,.5); color: #b8e8d9; outline: none; }

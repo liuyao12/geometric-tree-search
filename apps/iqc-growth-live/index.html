@@ -300,6 +300,12 @@
               <div id="relaxationDisplacementState" class="relaxation-displacement-state">Select an earlier snapshot to compare its geometry with the final archived state.</div>
               <div id="relaxationLocalEnvironmentState" class="relaxation-displacement-state">Local best-affine neighborhood residual is unavailable.</div>
               <div class="relaxation-neighbor-legend"><span>lost kNN relation</span><span>gained kNN relation</span><span>halo = √D²min</span></div>
+              <section class="relaxation-calibration" aria-label="Geometry and external calculation calibration">
+                <header><span><small>geometry ↔ external calculation</small><strong>Final-frame-reference calibration</strong></span><select id="relaxationCalibrationMetric" aria-label="External calculation quantity"><option value="energy">relative energy / primitive atom</option><option value="force">residual-force RMS</option></select></header>
+                <div id="relaxationCalibrationState">At least three paired geometry/calculation snapshots are required.</div>
+                <svg id="relaxationCalibrationChart" viewBox="0 0 280 104" role="img" aria-label="Geometric mismatch against an external calculation quantity"></svg>
+                <p id="relaxationCalibrationBoundary">Descriptive within one correlated archive sequence; not independent validation, an energy model, a force field, or physical time.</p>
+              </section>
               <p>Ordered calculation snapshots are geometric evidence, not physical-time integration. Click a point to inspect that archived state.</p>
             </div>
             <p id="ensembleStatus" class="control-note">Frames contribute contact, coordination, and angle observations; growth starts from only the selected frame.</p>
@@ -1673,7 +1679,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260826-169"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260826-11"></script>
+  <script type="module" src="./app.js?v=20260826-170"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260826-12"></script>
 </body>
 </html>

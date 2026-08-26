@@ -11,6 +11,8 @@ import {
 } from "./structure-io.js?v=20260826-7";
 import { randomNomadStructure } from "./structure-database.js?v=20260826-5";
 import { bestAffineNeighborhoodResidual } from "./relaxation-local-environment.js?v=20260826-2";
+import { geometryCalculationCalibration }
+  from "./geometry-calculation-calibration.js?v=20260826-1";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -156,6 +158,10 @@ const relaxationSequenceState = $("relaxationSequenceState");
 const relaxationSequenceChart = $("relaxationSequenceChart");
 const relaxationDisplacementState = $("relaxationDisplacementState");
 const relaxationLocalEnvironmentState = $("relaxationLocalEnvironmentState");
+const relaxationCalibrationMetric = $("relaxationCalibrationMetric");
+const relaxationCalibrationState = $("relaxationCalibrationState");
+const relaxationCalibrationChart = $("relaxationCalibrationChart");
+const relaxationCalibrationBoundary = $("relaxationCalibrationBoundary");
 const measurementConditions = $("measurementConditions");
 const measurementConditionChips = $("measurementConditionChips");
 const publishedFixtureProvenance = $("publishedFixtureProvenance");
@@ -1062,6 +1068,8 @@ let importedStructure = null;
 let importedFrameIndex = 0;
 let ensembleEvidenceMode = "all";
 let relaxationLocalEnvironmentCache = null;
+let relaxationGeometryCalibrationCache = null;
+let relaxationCalibrationMetricMode = "energy";
 let localConstraintMismatchCache = null;
 let atomGeometryRevision = 0;
 let iceViMicrostate = null;
@@ -1769,6 +1777,90 @@ function relaxationLocalEnvironmentField() {
   return result;
 }
 
+function relaxationGeometryCalculationCalibration() {
+  if (relaxationGeometryCalibrationCache?.structure === importedStructure) {
+    return relaxationGeometryCalibrationCache.result;
+  }
+  const frames = importedTrajectoryFrames();
+  if (scenarioSelect.value !== "imported" || frames.length < 3) return null;
+  const finalFrame = frames.at(-1);
+  const species = finalFrame.atoms.map(occupancyChemistryToken);
+  if (frames.some((frame) => frame.atoms.length !== finalFrame.atoms.length
+      || frame.atoms.some((atom, index) => occupancyChemistryToken(atom) !== species[index]))) return null;
+  const contextFor = (frame) => periodicContextFromSceneCell(
+    frame.cell?.map((vector) => new THREE.Vector3(...vector)) || null,
+    frame.pbc || [false, false, false],
+  );
+  const vectorFor = (frame, context, first, second) => {
+    const vector = new THREE.Vector3(...frame.atoms[second].position)
+      .sub(new THREE.Vector3(...frame.atoms[first].position));
+    if (!context.matrix) return vector;
+    const fractional = vector.applyMatrix3(context.inverse);
+    context.pbc.forEach((periodic, axis) => {
+      if (periodic) fractional.setComponent(axis,
+        fractional.getComponent(axis) - Math.round(fractional.getComponent(axis)));
+    });
+    return fractional.applyMatrix3(context.matrix);
+  };
+  const finalContext = contextFor(finalFrame);
+  const finalEvidence = [{
+    species,
+    distance: (first, second) => vectorFor(finalFrame, finalContext, first, second).length(),
+    displacement: (first, second) => vectorFor(finalFrame, finalContext, first, second).toArray(),
+  }];
+  const distanceModel = learnColoredDistanceEnvelopesEnsemble(finalEvidence);
+  const coordinationModel = learnColoredCoordinationEnvelopesEnsemble(finalEvidence, distanceModel);
+  const angularModel = learnColoredAngularEnvelopesEnsemble(finalEvidence, coordinationModel);
+  const maximumCenters = 256;
+  const centerIndices = species.length <= maximumCenters
+    ? species.map((_, index) => index)
+    : Array.from({ length: maximumCenters }, (_, sample) => Math.min(species.length - 1,
+      Math.floor((sample + .5) * species.length / maximumCenters)));
+  const finalEnergy = finalFrame.metadata?.calculation?.energyPerPrimitiveAtomElectronVolt;
+  const records = frames.map((frame, frameIndex) => {
+    const context = contextFor(frame);
+    const field = coloredLocalConstraintMismatch(species,
+      (first, second) => vectorFor(frame, context, first, second).toArray(),
+      distanceModel, coordinationModel, angularModel, { centerIndices });
+    const calculation = frame.metadata?.calculation || {};
+    const energy = calculation.energyPerPrimitiveAtomElectronVolt;
+    return {
+      frameIndex,
+      meanContactAngleMismatch: field.meanContactAngleMismatch,
+      percentile90ContactAngleMismatch: field.percentile90ContactAngleMismatch,
+      meanCoordinationDeficit: field.meanCoordinationDeficit,
+      relativeEnergyElectronVoltPerPrimitiveAtom: Number.isFinite(energy) && Number.isFinite(finalEnergy)
+        ? energy - finalEnergy : null,
+      forceRmsElectronVoltPerAngstrom: calculation.forceCoverage > 0
+        && Number.isFinite(calculation.forceRmsElectronVoltPerAngstrom)
+        ? calculation.forceRmsElectronVoltPerAngstrom : null,
+      geometryCenters: field.sampledCenters,
+    };
+  });
+  const energyCalibration = geometryCalculationCalibration(records, "meanContactAngleMismatch",
+    "relativeEnergyElectronVoltPerPrimitiveAtom");
+  const forceCalibration = geometryCalculationCalibration(records, "meanContactAngleMismatch",
+    "forceRmsElectronVoltPerAngstrom");
+  const result = {
+    records, energyCalibration, forceCalibration,
+    frameCount: frames.length,
+    referenceFrameIndex: frames.length - 1,
+    referenceRole: "final archived geometry supplies colored distance, coordination, and angle envelopes; calculation labels do not fit those envelopes",
+    sampledCentersPerFrame: centerIndices.length,
+    centerSamplingPolicy: species.length <= maximumCenters ? "all centers"
+      : `${maximumCenters} deterministic atom-index quantiles`,
+    fixedTopologyRequired: true,
+    geometryFitUsesEnergyOrForce: false,
+    labelsUsedToRankGrowth: false,
+    physicalTimeUsed: false,
+    independentSamplesClaimed: false,
+    predictiveValidationPerformed: false,
+    physicalCausalityClaimed: false,
+  };
+  relaxationGeometryCalibrationCache = { structure: importedStructure, result };
+  return result;
+}
+
 function currentLocalConstraintMismatchField() {
   if (!atoms.length || !coloredDistanceEnvelopes?.records?.length
       || !coloredCoordinationEnvelopes?.records?.length || !coloredAngularEnvelopes?.records?.length) return null;
@@ -1937,6 +2029,7 @@ function renderRelaxationSequence(frames, relaxation) {
   relaxationSequence.hidden = !visible;
   relaxationSequenceChart.replaceChildren();
   if (!visible) return;
+  relaxationCalibrationMetric.value = relaxationCalibrationMetricMode;
   const svg = (name, attributes = {}) => {
     const element = document.createElementNS("http://www.w3.org/2000/svg", name);
     Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, String(value)));
@@ -1990,7 +2083,68 @@ function renderRelaxationSequence(frames, relaxation) {
   relaxationLocalEnvironmentState.textContent = localEnvironment
     ? `Local ${localEnvironment.neighborCount}-neighbor deformation microscope: median √D²min ${localEnvironment.medianRootD2MinAngstrom.toFixed(3)} Å · p90 ${localEnvironment.percentile90RootD2MinAngstrom.toFixed(3)} Å · coherent Edev p90 ${localEnvironment.percentile90EquivalentShearStrain.toFixed(3)} · mean ΔV ${(100 * localEnvironment.meanLocalVolumeChangeFraction).toFixed(2)}% · ${localEnvironment.affineResolvedCenters}/${localEnvironment.records.length} full-rank cages · neighbor identity ${(100 * localEnvironment.meanNeighborPersistenceFraction).toFixed(1)}% persistent.`
     : "Local best-affine neighborhood residual is unavailable for the selected state.";
+  renderRelaxationCalibration();
   relaxationSequenceChart.setAttribute("aria-label", `${frames.length} ordered archived relaxation snapshots; ${energies.length} have energy and ${availableForceFrames} have complete residual forces; snapshot ${importedFrameIndex + 1} selected`);
+}
+
+function renderRelaxationCalibration() {
+  const calibration = relaxationGeometryCalculationCalibration();
+  relaxationCalibrationChart.replaceChildren();
+  const svg = (name, attributes = {}, text = "") => {
+    const element = document.createElementNS("http://www.w3.org/2000/svg", name);
+    Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, String(value)));
+    if (text) element.textContent = text;
+    return element;
+  };
+  if (!calibration) {
+    relaxationCalibrationState.textContent = "At least three fixed-topology paired geometry/calculation snapshots are required.";
+    relaxationCalibrationBoundary.textContent = "No calibration is inferred from an unpaired or short archive sequence.";
+    return;
+  }
+  const forceMode = relaxationCalibrationMetricMode === "force";
+  const yKey = forceMode ? "forceRmsElectronVoltPerAngstrom" : "relativeEnergyElectronVoltPerPrimitiveAtom";
+  const summary = forceMode ? calibration.forceCalibration : calibration.energyCalibration;
+  const records = calibration.records.filter((record) => Number.isFinite(record.meanContactAngleMismatch)
+    && Number.isFinite(record[yKey]));
+  const correlation = (value) => Number.isFinite(value) ? `${value >= 0 ? "+" : ""}${value.toFixed(3)}` : "unresolved";
+  relaxationCalibrationState.textContent = `${summary.pairedFrames}/${calibration.frameCount} paired frames · Spearman ρ ${correlation(summary.spearman)} · Pearson r ${correlation(summary.pearson)} · ${calibration.sampledCentersPerFrame} centers/frame`;
+  relaxationCalibrationBoundary.textContent = `Geometry envelopes are fitted only to final archived frame ${calibration.referenceFrameIndex + 1}; energy/force labels never fit them. Correlation is descriptive within one correlated sequence—not independent validation, prediction, causality, an energy/force model, kinetics, or time.`;
+  if (!records.length) return;
+  const xs = records.map((record) => record.meanContactAngleMismatch);
+  const ys = records.map((record) => record[yKey]);
+  const xMin = Math.min(...xs); const xMax = Math.max(...xs);
+  const yMin = Math.min(...ys); const yMax = Math.max(...ys);
+  const xSpan = Math.max(1e-12, xMax - xMin); const ySpan = Math.max(1e-12, yMax - yMin);
+  const x = (value) => 28 + (value - xMin) / xSpan * 240;
+  const y = (value) => 84 - (value - yMin) / ySpan * 68;
+  relaxationCalibrationChart.append(
+    svg("line", { x1: 28, y1: 84, x2: 270, y2: 84, class: "calibration-axis" }),
+    svg("line", { x1: 28, y1: 14, x2: 28, y2: 84, class: "calibration-axis" }),
+    svg("text", { x: 269, y: 98, class: "calibration-label", "text-anchor": "end" }, "mean contact+angle mismatch"),
+    svg("text", { x: 29, y: 10, class: "calibration-label" }, forceMode ? "Fᵣₘₛ (eV/Å)" : "ΔE (eV/primitive atom)"),
+    svg("text", { x: 28, y: 94, class: "calibration-label", "text-anchor": "middle" }, xMin.toFixed(2)),
+    svg("text", { x: 268, y: 94, class: "calibration-label", "text-anchor": "middle" }, xMax.toFixed(2)),
+  );
+  if (Number.isFinite(summary.slope) && Number.isFinite(summary.intercept)) {
+    const firstY = summary.intercept + summary.slope * xMin;
+    const secondY = summary.intercept + summary.slope * xMax;
+    relaxationCalibrationChart.append(svg("line", {
+      x1: x(xMin), y1: y(firstY), x2: x(xMax), y2: y(secondY), class: "calibration-fit",
+    }));
+  }
+  records.forEach((record) => {
+    const point = svg("circle", { cx: x(record.meanContactAngleMismatch), cy: y(record[yKey]),
+      r: record.frameIndex === importedFrameIndex ? 3.8 : 2.7,
+      class: record.frameIndex === importedFrameIndex ? "calibration-point active" : "calibration-point",
+      tabindex: 0,
+      "aria-label": `Inspect archived snapshot ${record.frameIndex + 1}; mismatch ${record.meanContactAngleMismatch.toFixed(3)}; ${forceMode ? "force RMS" : "relative energy"} ${record[yKey].toPrecision(4)}` });
+    point.addEventListener("click", () => selectImportedFrame(record.frameIndex));
+    point.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") selectImportedFrame(record.frameIndex);
+    });
+    relaxationCalibrationChart.append(point);
+  });
+  relaxationCalibrationChart.setAttribute("aria-label", `${records.length} archived frames: final-frame-reference geometric mismatch against ${forceMode ? "residual force RMS" : "same-run relative energy per primitive atom"}`);
 }
 
 function selectImportedFrame(index) {
@@ -7199,6 +7353,20 @@ async function buildExperimentReceipt() {
   })) || [];
   const relaxationLocalEnvironmentSha256 = relaxationLocalEnvironmentRecords.length
     ? await receiptSha256(JSON.stringify(relaxationLocalEnvironmentRecords)) : null;
+  const relaxationGeometryCalibration = relaxationGeometryCalculationCalibration();
+  const relaxationGeometryCalibrationRecords = relaxationGeometryCalibration?.records.map((record) => ({
+    frameIndexZeroBased: record.frameIndex,
+    meanContactAngleMismatch: receiptRound(record.meanContactAngleMismatch, 10),
+    percentile90ContactAngleMismatch: receiptRound(record.percentile90ContactAngleMismatch, 10),
+    meanCoordinationDeficit: receiptRound(record.meanCoordinationDeficit, 10),
+    relativeEnergyElectronVoltPerPrimitiveAtom: Number.isFinite(record.relativeEnergyElectronVoltPerPrimitiveAtom)
+      ? receiptRound(record.relativeEnergyElectronVoltPerPrimitiveAtom, 10) : null,
+    forceRmsElectronVoltPerAngstrom: Number.isFinite(record.forceRmsElectronVoltPerAngstrom)
+      ? receiptRound(record.forceRmsElectronVoltPerAngstrom, 10) : null,
+    geometryCenters: record.geometryCenters,
+  })) || [];
+  const relaxationGeometryCalibrationSha256 = relaxationGeometryCalibrationRecords.length
+    ? await receiptSha256(JSON.stringify(relaxationGeometryCalibrationRecords)) : null;
   const localConstraintMismatch = currentLocalConstraintMismatchField();
   const localConstraintMismatchRecords = localConstraintMismatch?.records.map((record) => ({
     atomId: record.atomId, species: record.species,
@@ -7216,7 +7384,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-169",
+      buildId: "20260826-170",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7410,6 +7578,29 @@ async function buildExperimentReceipt() {
           recordSha256: relaxationLocalEnvironmentSha256,
           recordsEmbedded: false,
           localBestAffineMapsEmbedded: false,
+          physicalTimeUsed: false,
+          usedForClusterIdentification: false,
+          usedForMarkingLearning: false,
+          usedForGrowth: false,
+        } : null,
+        geometryCalculationCalibration: relaxationGeometryCalibration ? {
+          referenceFrameIndexZeroBased: relaxationGeometryCalibration.referenceFrameIndex,
+          referenceRole: relaxationGeometryCalibration.referenceRole,
+          frameCount: relaxationGeometryCalibration.frameCount,
+          sampledCentersPerFrame: relaxationGeometryCalibration.sampledCentersPerFrame,
+          centerSamplingPolicy: relaxationGeometryCalibration.centerSamplingPolicy,
+          xQuantity: "mean colored contact-length + angle mismatch",
+          energy: Object.fromEntries(Object.entries(relaxationGeometryCalibration.energyCalibration)
+            .map(([key, value]) => [key, typeof value === "number" ? receiptRound(value, 10) : value])),
+          force: Object.fromEntries(Object.entries(relaxationGeometryCalibration.forceCalibration)
+            .map(([key, value]) => [key, typeof value === "number" ? receiptRound(value, 10) : value])),
+          recordSha256: relaxationGeometryCalibrationSha256,
+          recordsEmbedded: false,
+          geometryFitUsesEnergyOrForce: false,
+          labelsUsedToRankGrowth: false,
+          independentSamplesClaimed: false,
+          predictiveValidationPerformed: false,
+          physicalCausalityClaimed: false,
           physicalTimeUsed: false,
           usedForClusterIdentification: false,
           usedForMarkingLearning: false,
@@ -17815,6 +18006,7 @@ function physicsTranslationRecords(leap = null) {
   const relaxation = scenarioSelect.value === "imported" ? importedStructure?.metadata?.relaxationSequence : null;
   const relaxationDisplacement = relaxationDisplacementField();
   const relaxationLocalEnvironment = relaxationLocalEnvironmentField();
+  const relaxationGeometryCalibration = relaxationGeometryCalculationCalibration();
   const localConstraintMismatch = currentLocalConstraintMismatchField();
   const localSymmetry = leap?.localSymmetryTransition || null;
   const centrosymmetry = leap?.centrosymmetryTransition || null;
@@ -17866,6 +18058,16 @@ function physicsTranslationRecords(leap = null) {
         ? `${evidenceFrameCount()} frame${evidenceFrameCount() === 1 ? "" : "s"} currently supply geometric envelopes; the displayed frame alone supplies the cover, grammar, and growth seed.${relaxationDisplacement ? ` Selected → final non-affine RMS ${relaxationDisplacement.nonAffineRmsAngstrom.toFixed(3)} Å; affine RMS ${relaxationDisplacement.affineRmsAngstrom.toFixed(3)} Å${Number.isFinite(relaxationDisplacement.volumeChangeFraction) ? `; ΔV ${(100 * relaxationDisplacement.volumeChangeFraction).toFixed(2)}%` : ""}.` : ""}`
         : "No cross-frame structural variability is available.",
       boundary: "The displacement field is a difference between archived structures, not a physical path. Archive order is not physical elapsed time. No velocity, integration step, optimizer clock, minimum-energy path, transition probability, or growth rate is inferred; energies are compared only within this one same-method archived sequence." },
+    { id: "geometry-calculation-calibration", process: "sample-relative geometry / external calculation association",
+      status: relaxationGeometryCalibration ? "observed" : "unavailable",
+      role: relaxationGeometryCalibration ? "descriptive final-frame-reference diagnostic" : "no paired geometry/calculation series",
+      encoding: relaxationGeometryCalibration
+        ? `${relaxationGeometryCalibration.sampledCentersPerFrame} deterministic centers/frame; final-frame colored contact, coordination, and angle envelopes; Spearman and Pearson associations kept separate for same-run relative energy and residual-force RMS`
+        : "requires at least three fixed-topology archived frames with paired geometry and calculation metadata",
+      evidence: relaxationGeometryCalibration
+        ? `Energy ρ ${Number.isFinite(relaxationGeometryCalibration.energyCalibration.spearman) ? relaxationGeometryCalibration.energyCalibration.spearman.toFixed(3) : "unresolved"} (n=${relaxationGeometryCalibration.energyCalibration.pairedFrames}); force ρ ${Number.isFinite(relaxationGeometryCalibration.forceCalibration.spearman) ? relaxationGeometryCalibration.forceCalibration.spearman.toFixed(3) : "unresolved"} (n=${relaxationGeometryCalibration.forceCalibration.pairedFrames}).`
+        : "No final-frame-reference geometry/calculation pairing is available.",
+      boundary: "The final archived geometry defines the mismatch reference, so this is a target-relative descriptive association inside one correlated calculation archive. Labels never fit the geometry, rank growth, or establish independent validation, prediction, causality, an interatomic potential, force field, reaction coordinate, physical trajectory, kinetics, or time." },
     { id: "local-rearrangement", process: "localized rearrangement / environment change", status: relaxationLocalEnvironment ? "observed" : "unavailable", role: relaxationLocalEnvironment ? "archived structural-difference diagnostic" : "no paired local environments",
       encoding: relaxationLocalEnvironment
         ? `${relaxationLocalEnvironment.neighborCount}-neighbor periodic minimum-image vectors; one Falk–Langer best-affine F per site; E=(FᵀF−I)/2 separates coherent deviatoric deformation from √D²min residual motion; selected/final kNN identity sets expose geometric neighbor exchange`
@@ -21202,6 +21404,10 @@ ensembleFrameSelect.addEventListener("change", () => {
 ensembleEvidenceSelect.addEventListener("change", () => {
   ensembleEvidenceMode = ensembleEvidenceSelect.value === "selected" ? "selected" : "all";
   enterPipelineStage(0);
+});
+relaxationCalibrationMetric.addEventListener("change", () => {
+  relaxationCalibrationMetricMode = relaxationCalibrationMetric.value === "force" ? "force" : "energy";
+  renderRelaxationCalibration();
 });
 periodicTableButton.addEventListener("click", () => setPeriodicTableOpen(periodicTablePanel.hidden));
 periodicCloseButton.addEventListener("click", () => setPeriodicTableOpen(false));

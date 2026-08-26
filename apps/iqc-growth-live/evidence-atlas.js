@@ -200,10 +200,10 @@ const PHYSICS_MAP = {
   },
   kinetics: {
     status: "open", label: "thermodynamics + kinetics", title: "Leap-frogging dynamics is the approximation boundary",
-    physical: "Temperature, pressure, chemical potentials, free-energy differences, diffusion barriers, nucleation rates, phonons, and time-dependent disorder.",
+    physical: "Temperature, pressure, chemical potentials, free-energy differences, diffusion barriers, nucleation rates, phonons, and time-dependent disorder. Imported relaxation archives can compare final-frame-referenced geometric mismatch with same-run relative energy or residual-force RMS.",
     geometric: "Structural evidence, connection successes/failures, dimensionless contact/angle strain, composition drift, and optional supplied formal-charge drift are retained. Fixed-topology snapshot pairs may additionally expose local best-affine F, Green–Lagrange invariants, D²min, and neighbor exchange while one selected frame alone supplies the cluster grammar and growth seed.",
     growth: "Tree search jumps directly between geometrically certified states. Soft geometry may order legal branches; proposal checks and backtracks measure computational work, not elapsed physical time.",
-    boundary: "The portal predicts structurally admissible continuation, not a growth rate or thermodynamic phase diagram. Snapshot order is not time, correlated frames are not claimed independent, and no velocity, force, or integration step is used. MD/DFT or experimental labels must calibrate kinetic claims separately.",
+    boundary: "The portal predicts structurally admissible continuation, not a growth rate or thermodynamic phase diagram. The geometry/calculation scatter is descriptive within one correlated archive: the final structure defines the geometric reference, labels never fit or rank growth, and correlation is not independent validation, prediction, causality, a potential, a force field, kinetics, or time. MD/DFT or experimental labels must calibrate kinetic claims separately.",
     systems: [
       ["NaCl", "Exact structural recurrence", "Symbolic scale leap", "No physical growth time"],
       ["H₂O ice", "Ice-rule-compatible scaffold", "Exact finite O-anchor leap", "No proton barrier or entropy"],

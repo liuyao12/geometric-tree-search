@@ -4953,3 +4953,23 @@ complete curve without embedding it. Structural-leap comparisons deliberately
 remain unit-weight so changing the interactive view cannot rewrite retained
 history. All scattering channels are post-hoc and never affect clustering,
 marking, growth ranking, or admission.
+
+### Build 170 · geometry ↔ external-calculation calibration
+
+Imported fixed-topology relaxation archives now include an interactive
+final-frame-reference scatter plot. The final archived geometry alone defines
+colored contact-length, coordination, and angle envelopes; every archived
+snapshot is then scored against those geometric envelopes and paired, when
+available, with same-run relative energy per primitive atom or residual-force
+RMS. Clicking a point selects that archived structure. Pearson and Spearman
+associations, paired-frame counts, deterministic center sampling, and a digest
+of the per-frame records are preserved in the experiment receipt and physical
+translation ledger.
+
+This is deliberately a descriptive target-relative diagnostic. Calculation
+labels never fit the geometric envelopes, rank a growth action, or enter the
+cluster cover, marking, or search. The frames are correlated observations from
+one archived calculation sequence, the final frame is the geometric reference,
+and archive order is not time. The panel therefore claims no independent
+validation, prediction, causality, interatomic potential, force field, reaction
+coordinate, kinetics, or physical trajectory.
