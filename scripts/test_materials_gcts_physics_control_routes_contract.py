@@ -23,6 +23,7 @@ def test_physics_control_routes_contract():
         "connection": "markingRepresentationSelect",
         "chemistry": "compositionPreferenceSelect",
         "charge-geometry": "chargeGeometrySelect",
+        "charge-moment": "chargeMomentSelect",
         "solute-partition": "solutePartitionSelect",
         "bulk-surface-driving": "growthDrivingSelect",
         "attachment-topology": "attachmentTopologySelect",

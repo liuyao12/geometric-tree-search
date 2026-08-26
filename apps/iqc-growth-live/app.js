@@ -28,6 +28,7 @@ import { compositionBalanceDelta, learnCompositionTarget } from "./composition-b
 import { consumeFeedstock, evaluateFeedstockDemand, feedstockReservoirSnapshot,
   initializeFeedstockReservoir } from "./feedstock-reservoir.js?v=20260826-1";
 import { formalChargeBalanceDelta, learnFormalChargeTarget } from "./formal-charge-balance.js?v=20260824-1";
+import { chargeMomentSignature, compareChargeMomentGeometry } from "./global-charge-moments.js?v=20260826-1";
 import {
   discoverFiniteMolecularComponents,
   discoverMolecularConnectionTopology,
@@ -244,6 +245,9 @@ const chargeGeometrySelect = $("chargeGeometrySelect");
 const chargeGeometryReachSelect = $("chargeGeometryReachSelect");
 const chargeGeometryWeightSelect = $("chargeGeometryWeightSelect");
 const chargeGeometryHint = $("chargeGeometryHint");
+const chargeMomentSelect = $("chargeMomentSelect");
+const chargeMomentWeightSelect = $("chargeMomentWeightSelect");
+const chargeMomentHint = $("chargeMomentHint");
 const surfacePreferenceSelect = $("surfacePreferenceSelect");
 const growthDrivingSelect = $("growthDrivingSelect");
 const growthDrivingWeightSelect = $("growthDrivingWeightSelect");
@@ -876,6 +880,10 @@ let acceptedChargeGeometryScore = 0;
 let rejectedChargeGeometryScore = 0;
 let chargeGeometryPairChecks = 0;
 let chargeGeometrySiteEvaluations = 0;
+let acceptedChargeMomentScore = 0;
+let rejectedChargeMomentScore = 0;
+let chargeMomentEvaluations = 0;
+let chargeMomentSitePresentations = 0;
 let acceptedSurfaceDeficit = 0;
 let rejectedSurfaceDeficit = 0;
 let acceptedGrowthDrivingScore = 0;
@@ -1022,6 +1030,8 @@ let chargePreference = "auto";
 let chargeGeometryMode = "none";
 let chargeGeometryReach = 2.5;
 let chargeGeometryWeight = .24;
+let chargeMomentMode = "none";
+let chargeMomentWeight = .24;
 let surfacePreference = "soft";
 let growthDrivingMode = "none";
 let growthDrivingWeight = .24;
@@ -1092,6 +1102,7 @@ const GROWTH_PROTOCOL_DEFAULTS = Object.freeze({
   structuralRelaxationMode: "balanced",
   compositionPreference: "soft", feedstockSupplyMode: "open", chargePreference: "auto", surfacePreference: "soft",
   chargeGeometryMode: "none", chargeGeometryReach: 2.5, chargeGeometryWeight: .24,
+  chargeMomentMode: "none", chargeMomentWeight: .24,
   growthDrivingMode: "none", growthDrivingWeight: .24,
   attachmentTopologyMode: "none", attachmentTopologyWeight: .24,
   habitAnisotropyMode: "none", habitAnisotropyWeight: .24,
@@ -1341,7 +1352,7 @@ const MATERIALS_STUDY_COMPARISONS = Object.freeze({
 });
 
 const GROWTH_PROTOCOL_CONTROL_IDS = new Set([
-  "growthDomainScaleSelect", "geometryPreferenceSelect", "strainWeightSelect", "structuralRelaxationSelect", "compositionPreferenceSelect", "feedstockSupplySelect", "chargePreferenceSelect", "chargeGeometrySelect", "chargeGeometryReachSelect", "chargeGeometryWeightSelect",
+  "growthDomainScaleSelect", "geometryPreferenceSelect", "strainWeightSelect", "structuralRelaxationSelect", "compositionPreferenceSelect", "feedstockSupplySelect", "chargePreferenceSelect", "chargeGeometrySelect", "chargeGeometryReachSelect", "chargeGeometryWeightSelect", "chargeMomentSelect", "chargeMomentWeightSelect",
   "soluteSpeciesSelect", "solutePartitionSelect", "solutePartitionWeightSelect",
   "surfacePreferenceSelect", "growthDrivingSelect", "growthDrivingWeightSelect", "attachmentTopologySelect", "attachmentTopologyWeightSelect", "habitAnisotropySelect", "habitAnisotropyWeightSelect", "defectPrecursorSelect", "defectPrecursorWeightSelect", "coherencyMemorySelect", "coherencyReachSelect", "coherencyMemoryWeightSelect", "frontMorphologySelect", "frontMorphologyWeightSelect",
   "capillaryGeometrySelect", "capillaryGeometryWeightSelect",
@@ -6692,7 +6703,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-154",
+      buildId: "20260826-155",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7263,6 +7274,31 @@ async function buildExperimentReceipt() {
         dielectricConstantInferred: false,
         debyeLengthInferred: false,
         chargeTransferModeled: false,
+        physicalTimeIntegrated: false,
+      },
+      globalChargeMomentRanking: {
+        role: "target-blind translation-, proper-rotation-, and uniform-scale-invariant global geometry over explicitly supplied formal-charge labels",
+        mode: chargeMomentMode,
+        label: chargeMomentLabel(),
+        available: formalChargeTarget.available,
+        enabled: activeChargeMomentWeight() > 0,
+        effectiveWeight: activeChargeMomentWeight(),
+        currentSignature: currentChargeMomentSignature(),
+        normalization: "|p|/(Σ|q| Rrms); ||Q||F/(Σ|q| Rrms²) about the geometric centroid",
+        acceptedMeanScore: receiptRound(acceptedChargeMomentScore / Math.max(1, acceptedDecisions)),
+        rejectedMeanScore: receiptRound(rejectedChargeMomentScore / Math.max(1, rejectedDecisions)),
+        evaluations: chargeMomentEvaluations,
+        sitePresentations: chargeMomentSitePresentations,
+        suppliedFormalChargeOnly: true,
+        candidateSetChanged: false,
+        candidateGeometryChanged: false,
+        hardAdmissionChanged: false,
+        heldoutTargetUsed: false,
+        coulombKernelUsed: false,
+        electrostaticEnergyInferred: false,
+        electrostaticPotentialSolved: false,
+        dielectricResponseInferred: false,
+        electronicStructureModeled: false,
         physicalTimeIntegrated: false,
       },
       surfaceCompletionRanking: {
@@ -8009,6 +8045,8 @@ function notebookInterventionFactors(receipt) {
       chargeGeometry: [search.suppliedChargeGeometryRanking?.mode,
         search.suppliedChargeGeometryRanking?.reachNearestNeighborUnits,
         search.suppliedChargeGeometryRanking?.effectiveWeight],
+      chargeMoment: [search.globalChargeMomentRanking?.mode,
+        search.globalChargeMomentRanking?.effectiveWeight],
       surface: [search.surfaceCompletionRanking?.mode, search.surfaceCompletionRanking?.effectiveWeight],
       bulkSurfaceDriving: [search.bulkSurfaceDrivingRanking?.mode, search.bulkSurfaceDrivingRanking?.effectiveWeight],
       attachmentTopology: [search.attachmentTopologyRanking?.mode, search.attachmentTopologyRanking?.effectiveWeight],
@@ -11081,6 +11119,8 @@ function activeCandidateScoreTerms(entry, includeExploration = true) {
       -activeFormalChargeWeight(), "soft supplied-label bookkeeping", "Not electrostatic energy or charge transfer."),
     scoreTerm("charge-geometry", "charge neighborhood", evaluation.chargeGeometry.score,
       activeChargeGeometryWeight(), "soft supplied-charge geometry", "Not Coulomb energy or electric field."),
+    scoreTerm("charge-moment", "global charge shape", evaluation.chargeMoment.score,
+      activeChargeMomentWeight(), "soft supplied-charge nonlocal geometry", "Not Coulomb energy, dielectric response, or electronic structure."),
     scoreTerm("surface", "surface completion", evaluation.surfaceCompletion.scaledDelta,
       -activeSurfaceCompletionWeight(), "soft coordination-deficit ordering", "Not surface energy."),
     scoreTerm("bulk-surface", "bulk–surface driving", evaluation.bulkSurfaceDriving.score,
@@ -11128,6 +11168,7 @@ function oneFactorPolicyTerm(policyId, entry, label) {
     "solute-partition": [evaluation.solutePartition.score, activeSolutePartitionWeight()],
     charge: [evaluation.formalChargeBalance.scaledDelta, -.25],
     "charge-geometry": [evaluation.chargeGeometry.score, activeChargeGeometryWeight()],
+    "charge-moment": [evaluation.chargeMoment.score, activeChargeMomentWeight()],
     surface: [evaluation.surfaceCompletion.scaledDelta, -.18],
     "bulk-surface-driving": [evaluation.bulkSurfaceDriving.score, activeGrowthDrivingWeight()],
     "attachment-topology": [evaluation.attachmentTopology.score, activeAttachmentTopologyWeight()],
@@ -11541,6 +11582,8 @@ function capturePolicyComparison(entries) {
     { id: "charge", label: "formal charge 0.25", score: (entry) => entry.baseScore - .25 * entry.evaluation.formalChargeBalance.scaledDelta },
     { id: "charge-geometry", label: `${chargeGeometryLabel()} ${activeChargeGeometryWeight().toFixed(2)}`,
       score: (entry) => entry.baseScore + activeChargeGeometryWeight() * entry.evaluation.chargeGeometry.score },
+    { id: "charge-moment", label: `${chargeMomentLabel()} ${activeChargeMomentWeight().toFixed(2)}`,
+      score: (entry) => entry.baseScore + activeChargeMomentWeight() * entry.evaluation.chargeMoment.score },
     { id: "surface", label: "surface 0.18", score: (entry) => entry.baseScore - .18 * entry.evaluation.surfaceCompletion.scaledDelta },
     { id: "bulk-surface-driving", label: `${growthDrivingLabel()} ${activeGrowthDrivingWeight().toFixed(2)}`,
       score: (entry) => entry.baseScore + activeGrowthDrivingWeight() * entry.evaluation.bulkSurfaceDriving.score },
@@ -12218,6 +12261,43 @@ function chargeGeometryForFreshSites(rawFreshSites, { recordWork = true } = {}) 
     debyeLengthInferred: false, chargeTransferModeled: false, physicalTimeIntegrated: false };
 }
 
+function chargeMomentLabel(mode = chargeMomentMode) {
+  return ({ none: "global charge-shape diagnostic", dipole: "normalized dipole suppression",
+    quadrupole: "quadrupole-anisotropy suppression", combined: "combined global charge shape" })[mode]
+    || "global charge-shape diagnostic";
+}
+
+function activeChargeMomentWeight() {
+  return chargeMomentMode === "none" || !formalChargeTarget?.available ? 0 : chargeMomentWeight;
+}
+
+function currentChargeMomentSignature() {
+  return chargeMomentSignature(atoms.map((atom) => ({ position: atom.p.toArray(),
+    charge: suppliedFormalChargeForToken(atom.species) })));
+}
+
+function chargeMomentForFreshSites(rawFreshSites, { recordWork = true } = {}) {
+  const freshSites = uniqueFreshSites(rawFreshSites);
+  const available = Boolean(formalChargeTarget?.available && freshSites.length
+    && freshSites.every((site) => Number.isFinite(suppliedFormalChargeForToken(site.species))));
+  if (!available) return { mode: chargeMomentMode, label: chargeMomentLabel(), enabled: false,
+    available: false, reason: !formalChargeTarget?.available ? "complete supplied formal-charge channel unavailable"
+      : !freshSites.length ? "candidate adds no sites" : "candidate charge unresolved",
+    score: 0, dipoleScore: 0, quadrupoleScore: 0, addedSites: freshSites.length,
+    targetUsed: false, candidateGeometryChanged: false, hardAdmissionChanged: false,
+    electrostaticEnergyInferred: false, electrostaticPotentialSolved: false,
+    dielectricResponseInferred: false, electronicStructureModeled: false, physicalTimeIntegrated: false };
+  const currentSites = atoms.map((atom) => ({ position: atom.p.toArray(),
+    charge: suppliedFormalChargeForToken(atom.species) }));
+  const addedSites = freshSites.map((site) => ({ position: site.p.toArray(),
+    charge: suppliedFormalChargeForToken(site.species) }));
+  const result = compareChargeMomentGeometry(currentSites, addedSites, chargeMomentMode);
+  if (recordWork) { chargeMomentEvaluations++; chargeMomentSitePresentations += currentSites.length + addedSites.length; }
+  return { ...result, label: chargeMomentLabel(), enabled: chargeMomentMode !== "none",
+    suppliedFormalChargeOnly: true,
+    normalization: "|p|/(Σ|q| Rrms); ||Q||F/(Σ|q| Rrms²) about the geometric centroid" };
+}
+
 function batchRetainsNovelSites(entries) {
   if (!reconstructionCertified && replayIndex < referenceCount()) {
     const owners = new Map();
@@ -12256,6 +12336,7 @@ function commutingFrontierBatch() {
         + activeSolutePartitionWeight() * evaluation.solutePartition.score
         - activeFormalChargeWeight() * evaluation.formalChargeBalance.scaledDelta
         + activeChargeGeometryWeight() * evaluation.chargeGeometry.score
+        + activeChargeMomentWeight() * evaluation.chargeMoment.score
         - activeSurfaceCompletionWeight() * evaluation.surfaceCompletion.scaledDelta
         + activeGrowthDrivingWeight() * evaluation.bulkSurfaceDriving.score
         + activeAttachmentTopologyWeight() * evaluation.attachmentTopology.score
@@ -12385,6 +12466,7 @@ function evaluateCandidate(candidate, {
   const feedstockSupply = feedstockSupplyForFreshSites(fresh);
   const formalChargeBalance = formalChargeBalanceForFreshSites(fresh);
   const chargeGeometry = chargeGeometryForFreshSites(fresh, { recordWork });
+  const chargeMoment = chargeMomentForFreshSites(fresh, { recordWork });
   const externalDrive = externalDriveForCandidate(candidate);
   const thermalField = reducedThermalFieldForCandidate(candidate, { recordWork });
   const solutePartition = solutePartitionForFreshSites(fresh, thermalField, capillaryGeometry, { recordWork });
@@ -12402,7 +12484,7 @@ function evaluateCandidate(candidate, {
     && angularViolations.length === 0 && feedstockSupply.admitted && (markingAccepted || markingFallback);
   return { accepted, sites, merged, fresh, conflicts, boundaryFailures, knownFailures, markingFallback,
     coordinationOverflows, angularViolations, geometricStrain, affineLoadedGeometricStrain,
-    surfaceCompletion, bulkSurfaceDriving, attachmentTopology, habitAnisotropy, frontMorphology, capillaryGeometry, epitaxyRegistry, compositionBalance, feedstockSupply, formalChargeBalance, chargeGeometry,
+    surfaceCompletion, bulkSurfaceDriving, attachmentTopology, habitAnisotropy, frontMorphology, capillaryGeometry, epitaxyRegistry, compositionBalance, feedstockSupply, formalChargeBalance, chargeGeometry, chargeMoment,
     externalDrive, thermalField, solutePartition, constraintRobustness, interfaceAccommodation,
     microstructureCoupling, loopClosure, defectPrecursors, coherencyMemory, arrivalPath, feedExposure,
     duplicateSites: canonical.duplicateSites,
@@ -12793,6 +12875,10 @@ function initializeOffLatticeSearch() {
   rejectedChargeGeometryScore = 0;
   chargeGeometryPairChecks = 0;
   chargeGeometrySiteEvaluations = 0;
+  acceptedChargeMomentScore = 0;
+  rejectedChargeMomentScore = 0;
+  chargeMomentEvaluations = 0;
+  chargeMomentSitePresentations = 0;
   acceptedSurfaceDeficit = 0;
   rejectedSurfaceDeficit = 0;
   acceptedGrowthDrivingScore = 0;
@@ -13429,6 +13515,7 @@ function currentGrowthProtocolSettings() {
     structuralRelaxationMode,
     compositionPreference, feedstockSupplyMode, soluteSpecies: resolvedSoluteSpecies(), solutePartitionMode, solutePartitionWeight,
     chargePreference, chargeGeometryMode, chargeGeometryReach, chargeGeometryWeight,
+    chargeMomentMode, chargeMomentWeight,
     surfacePreference, growthDrivingMode, growthDrivingWeight,
     attachmentTopologyMode, attachmentTopologyWeight,
     habitAnisotropyMode, habitAnisotropyWeight,
@@ -13473,8 +13560,9 @@ function renderGrowthControlGroupSummaries() {
   growthCoreGroupState.textContent = `${markingSearchMode === "portfolio" ? "portfolio" : "single mark"} · ${geometryPreference === "strain" ? `strain ${geometricStrainWeight.toFixed(2)}` : "strain off"} · projection ${structuralRelaxationMode}`;
   const chemistryActive = activeCount([activeCompositionBalanceWeight() > 0,
     feedstockSupplyMode !== "open", activeSolutePartitionWeight() > 0,
-    activeFormalChargeWeight() > 0, activeChargeGeometryWeight() > 0]);
-  growthChemistryGroupState.textContent = `${chemistryActive}/5 active${formalChargeTarget?.available ? " · charge supplied" : ""}`;
+    activeFormalChargeWeight() > 0, activeChargeGeometryWeight() > 0,
+    activeChargeMomentWeight() > 0]);
+  growthChemistryGroupState.textContent = `${chemistryActive}/6 active${formalChargeTarget?.available ? " · charge supplied" : ""}`;
   const interfaceActive = activeCount([activeSurfaceCompletionWeight() > 0, activeGrowthDrivingWeight() > 0,
     activeAttachmentTopologyWeight() > 0, activeHabitAnisotropyWeight() > 0,
     activeDefectPrecursorWeight() > 0, activeCoherencyMemoryWeight() > 0,
@@ -13506,6 +13594,7 @@ function applyGrowthProtocol(mode, options = {}) {
   chargePreference = settings.chargePreference;
   chargeGeometryMode = settings.chargeGeometryMode; chargeGeometryReach = settings.chargeGeometryReach;
   chargeGeometryWeight = settings.chargeGeometryWeight;
+  chargeMomentMode = settings.chargeMomentMode; chargeMomentWeight = settings.chargeMomentWeight;
   solutePartitionMode = settings.solutePartitionMode; solutePartitionWeight = settings.solutePartitionWeight;
   surfacePreference = settings.surfacePreference;
   growthDrivingMode = settings.growthDrivingMode; growthDrivingWeight = settings.growthDrivingWeight;
@@ -14339,6 +14428,8 @@ function syncStageOptions() {
     chargeGeometrySelect.value = chargeGeometryMode;
     chargeGeometryReachSelect.value = String(chargeGeometryReach);
     chargeGeometryWeightSelect.value = String(chargeGeometryWeight);
+    chargeMomentSelect.value = chargeMomentMode;
+    chargeMomentWeightSelect.value = String(chargeMomentWeight);
     surfacePreferenceSelect.value = surfacePreference;
     growthDrivingSelect.value = growthDrivingMode;
     growthDrivingWeightSelect.value = String(growthDrivingWeight);
@@ -14389,6 +14480,8 @@ function syncStageOptions() {
     chargeGeometrySelect.disabled = finiteIceAnchorMode || !formalChargeTarget?.available;
     chargeGeometryReachSelect.disabled = finiteIceAnchorMode || !formalChargeTarget?.available || chargeGeometryMode === "none";
     chargeGeometryWeightSelect.disabled = finiteIceAnchorMode || !formalChargeTarget?.available || chargeGeometryMode === "none";
+    chargeMomentSelect.disabled = finiteIceAnchorMode || !formalChargeTarget?.available;
+    chargeMomentWeightSelect.disabled = finiteIceAnchorMode || !formalChargeTarget?.available || chargeMomentMode === "none";
     surfacePreferenceSelect.disabled = finiteIceAnchorMode;
     growthDrivingSelect.disabled = finiteIceAnchorMode;
     growthDrivingWeightSelect.disabled = finiteIceAnchorMode || growthDrivingMode === "none";
@@ -14439,6 +14532,9 @@ function syncStageOptions() {
     chargeGeometryHint.textContent = !formalChargeTarget?.available ? "requires complete supplied charge"
       : chargeGeometryMode === "none" ? "off · spatial charge reported"
         : `${chargeGeometryLabel()} · R${chargeGeometryReach.toFixed(1)}dₙₙ · weight ${chargeGeometryWeight.toFixed(2)}`;
+    chargeMomentHint.textContent = !formalChargeTarget?.available ? "requires complete supplied charge"
+      : chargeMomentMode === "none" ? "off · multipoles reported"
+        : `${chargeMomentLabel()} · global · weight ${chargeMomentWeight.toFixed(2)}`;
     growthDrivingHint.textContent = growthDrivingMode === "none"
       ? "off · geometry reported" : `${growthDrivingLabel()} · bulk ${(100 * growthDrivingBulkShare()).toFixed(0)}% · weight ${growthDrivingWeight.toFixed(2)}`;
     attachmentTopologyHint.textContent = attachmentTopologyMode === "none"
@@ -14527,6 +14623,10 @@ function syncStageOptions() {
       ? " No complete supplied formal-charge channel exists, so spatial ionic ordering fails closed."
       : chargeGeometryMode === "none" ? " Finite charge-neighborhood geometry is reported but contributes zero ranking weight."
         : ` A ${chargeGeometryWeight.toFixed(2)} soft ${chargeGeometryLabel()} term uses explicitly supplied formal charges within ${chargeGeometryReach.toFixed(1)}dₙₙ; its exponential window is not a Debye length or electrostatic energy.`;
+    const chargeMomentUse = !formalChargeTarget?.available
+      ? " No complete supplied formal-charge channel exists, so global ionic charge-shape ordering fails closed."
+      : chargeMomentMode === "none" ? " Global charge dipole and quadrupole geometry is reported but contributes zero ranking weight."
+        : ` A ${chargeMomentWeight.toFixed(2)} soft ${chargeMomentLabel()} term compares normalized global charge-shape moments; it is not Coulomb energy, polarization, dielectric response, or electronic structure.`;
     const surfaceUse = surfacePreference === "none"
       ? " Coordination deficit is reported but contributes zero ranking weight."
       : ` A ${surfacePreference === "strong" ? "strong" : "balanced"} soft surface-completion term favors actions that heal observed coordination deficits without requiring a complete frontier shell.`;
@@ -14584,8 +14684,8 @@ function syncStageOptions() {
     growthModeNote.textContent = finiteIceAnchorMode
       ? "This sealed ice gate executes primitive H₂O connection ports with mutually exclusive orientation domains. Clusters² is disabled because no stationary promoted ice production has been certified."
       : hierarchyEnabled
-      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`
-      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`;
+      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`
+      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`;
   }
 }
 
@@ -14613,6 +14713,10 @@ function resetCounters() {
   rejectedChargeGeometryScore = 0;
   chargeGeometryPairChecks = 0;
   chargeGeometrySiteEvaluations = 0;
+  acceptedChargeMomentScore = 0;
+  rejectedChargeMomentScore = 0;
+  chargeMomentEvaluations = 0;
+  chargeMomentSitePresentations = 0;
   acceptedSurfaceDeficit = 0;
   rejectedSurfaceDeficit = 0;
   acceptedGrowthDrivingScore = 0;
@@ -15019,6 +15123,7 @@ function stateForCandidate(candidate, evaluation) {
     solutePartition: evaluation.solutePartition,
     formalChargeBalance: evaluation.formalChargeBalance,
     chargeGeometry: evaluation.chargeGeometry,
+    chargeMoment: evaluation.chargeMoment,
     surfaceCompletion: evaluation.surfaceCompletion,
     bulkSurfaceDriving: evaluation.bulkSurfaceDriving,
     attachmentTopology: evaluation.attachmentTopology,
@@ -15162,6 +15267,7 @@ function performOffLatticeEvent() {
     thermalField: evaluation.thermalField,
     solutePartition: evaluation.solutePartition,
     chargeGeometry: evaluation.chargeGeometry,
+    chargeMoment: evaluation.chargeMoment,
     attachmentTopology: evaluation.attachmentTopology,
     habitAnisotropy: evaluation.habitAnisotropy,
     defectPrecursors: evaluation.defectPrecursors,
@@ -15193,6 +15299,7 @@ function performOffLatticeEvent() {
       rejectedSolutePartitionScore += snapshotEvaluation.solutePartition.score;
       rejectedFormalChargeDelta += snapshotEvaluation.formalChargeBalance.scaledDelta;
       rejectedChargeGeometryScore += snapshotEvaluation.chargeGeometry.score;
+      rejectedChargeMomentScore += snapshotEvaluation.chargeMoment.score;
       rejectedSurfaceDeficit += snapshotEvaluation.surfaceCompletion.scaledDelta;
       rejectedGrowthDrivingScore += snapshotEvaluation.bulkSurfaceDriving.score;
       rejectedAttachmentTopologyScore += snapshotEvaluation.attachmentTopology.score;
@@ -15249,6 +15356,7 @@ function performOffLatticeEvent() {
     acceptedSolutePartitionScore += evaluation.solutePartition.score;
     acceptedFormalChargeDelta += evaluation.formalChargeBalance.scaledDelta;
     acceptedChargeGeometryScore += evaluation.chargeGeometry.score;
+    acceptedChargeMomentScore += evaluation.chargeMoment.score;
     acceptedSurfaceDeficit += evaluation.surfaceCompletion.scaledDelta;
     acceptedGrowthDrivingScore += evaluation.bulkSurfaceDriving.score;
     acceptedAttachmentTopologyScore += evaluation.attachmentTopology.score;
@@ -16268,6 +16376,14 @@ function physicsTranslationRecords(leap = null) {
       encoding: formalChargeTarget?.available ? `${chargeGeometryLabel()}; R${chargeGeometryReach.toFixed(1)}dₙₙ with exp(-r/R)/(r/dₙₙ) radial weight` : "requires a complete explicitly supplied formal-charge channel",
       evidence: leap ? `Accepted mean score ${receiptRound(acceptedChargeGeometryScore / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedChargeGeometryScore / Math.max(1, rejectedDecisions), 4)}; ${chargeGeometryPairChecks.toLocaleString()} pair checks over ${chargeGeometrySiteEvaluations.toLocaleString()} emitted-site evaluations.` : "No spatial formal-charge neighborhood evaluated yet.",
       boundary: "Formal charges are preserved input labels, never inferred. The finite exponential window is not a Debye length, dielectric screening, Coulomb energy, electrostatic potential, charge transfer, force, rate, or time." },
+    { id: "charge-moment", process: "global ionic multipole geometry / nonlocal charge shape",
+      status: activeChargeMomentWeight() > 0 ? "soft" : formalChargeTarget?.available ? "open" : "unavailable",
+      role: activeChargeMomentWeight() > 0 ? "supplied-label global geometric ordering" : "diagnostic",
+      encoding: formalChargeTarget?.available
+        ? `${chargeMomentLabel()}; |p|/(Σ|q|Rrms) and ||Q||F/(Σ|q|Rrms²) about the geometric centroid, w=${activeChargeMomentWeight().toFixed(2)}`
+        : "requires a complete explicitly supplied formal-charge channel",
+      evidence: leap ? `Accepted mean score ${receiptRound(acceptedChargeMomentScore / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedChargeMomentScore / Math.max(1, rejectedDecisions), 4)}; ${chargeMomentEvaluations.toLocaleString()} candidate evaluations over ${chargeMomentSitePresentations.toLocaleString()} site presentations.` : "No global charge-shape candidate evaluated yet.",
+      boundary: "This is a translation-, proper-rotation-, and uniform-scale-invariant shape descriptor over supplied formal-charge labels. It uses no Coulomb kernel and is not electrostatic energy, polarization, dielectric screening, electric potential, charge transfer, electronic structure, force, rate, or physical time." },
     { id: "solute-partition", process: "solute partitioning / interfacial segregation", status: activeSolutePartitionWeight() > 0 ? "soft" : "open", role: activeSolutePartitionWeight() > 0 ? "species × spatial-field ordering" : "disabled",
       encoding: activeSolutePartitionWeight() > 0
         ? `${resolvedSoluteSpecies()} enrichment relative to its observed fraction × ${solutePartitionLabel()} spatial score, w=${activeSolutePartitionWeight().toFixed(2)}`
@@ -16402,6 +16518,7 @@ const PHYSICS_CONTROL_ROUTES = Object.freeze({
   connection: { stage: 3, controlId: "markingRepresentationSelect", label: "Configure GCTS section" },
   chemistry: { stage: 4, controlId: "compositionPreferenceSelect", label: "Configure reservoirs" },
   "charge-geometry": { stage: 4, controlId: "chargeGeometrySelect", label: "Configure charge geometry" },
+  "charge-moment": { stage: 4, controlId: "chargeMomentSelect", label: "Configure global charge shape" },
   "solute-partition": { stage: 4, controlId: "solutePartitionSelect", label: "Configure partition geometry" },
   surface: { stage: 4, controlId: "surfacePreferenceSelect", label: "Configure interface completion" },
   "bulk-surface-driving": { stage: 4, controlId: "growthDrivingSelect", label: "Configure reduced driving" },
@@ -17136,6 +17253,17 @@ function geometryConstraintEvidence(name, term, state, mode) {
         ? `Soft ${chargeGeometryLabel()} rank term with weight ${activeChargeGeometryWeight().toFixed(2)}.` : "Unavailable or diagnostic only.",
       boundary: "The exponential radial window is a declared finite geometric weight, not a Debye length. No Coulomb energy, potential, dielectric response, charge transfer, force, rate, or time is inferred.",
     },
+    "global charge shape": {
+      observed: state?.chargeMoment?.available
+        ? `dipole ${state.chargeMoment.after?.dipoleMagnitude?.toFixed(4) ?? "n/a"} · quadrupole ${state.chargeMoment.after?.quadrupoleMagnitude?.toFixed(4) ?? "n/a"}`
+        : state?.chargeMoment?.reason || "complete supplied formal-charge channel unavailable",
+      encoding: state?.chargeMoment?.available
+        ? "Normalized dipole and traceless-quadrupole magnitudes about the geometric centroid."
+        : "No global charge-shape descriptor is fitted from incomplete labels.",
+      searchRole: activeChargeMomentWeight() > 0
+        ? `Soft ${chargeMomentLabel()} rank term with weight ${activeChargeMomentWeight().toFixed(2)}.` : "Unavailable or diagnostic only.",
+      boundary: "This proper-rotation- and uniform-scale-invariant descriptor is not Coulomb energy, polarization, dielectric response, charge transfer, electronic structure, force, rate, or time.",
+    },
     "surface completion": {
       observed: `${coordinationRecords.length} learned bulk coordination channels define local deficit relative to the sample`,
       encoding: "A candidate receives credit for healing existing coordination deficits and cost for creating new exposed deficits.",
@@ -17383,6 +17511,9 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "charge geometry", status: ranked(activeChargeGeometryWeight() > 0),
       value: state.chargeGeometry?.available ? `${signed(state.chargeGeometry.score)} · pair ${signed(state.chargeGeometry.pairCompatibility)} · field ${state.chargeGeometry.meanFieldImbalance.toFixed(3)}` : "unavailable",
       detail: activeChargeGeometryWeight() > 0 ? `${chargeGeometryLabel()} · R${chargeGeometryReach.toFixed(1)}dₙₙ · rank weight ${activeChargeGeometryWeight().toFixed(2)}` : state.chargeGeometry?.reason || "diagnostic" },
+    { name: "global charge shape", status: ranked(activeChargeMomentWeight() > 0),
+      value: state.chargeMoment?.available ? `${signed(state.chargeMoment.score)} · p ${state.chargeMoment.after?.dipoleMagnitude?.toFixed(3) ?? "n/a"} · Q ${state.chargeMoment.after?.quadrupoleMagnitude?.toFixed(3) ?? "n/a"}` : "unavailable",
+      detail: activeChargeMomentWeight() > 0 ? `${chargeMomentLabel()} · rank weight ${activeChargeMomentWeight().toFixed(2)}` : state.chargeMoment?.reason || "diagnostic" },
     { name: "surface completion", status: ranked(activeSurfaceCompletionWeight() > 0),
       value: state.surfaceCompletion ? signed(state.surfaceCompletion.scaledDelta) : "not evaluated",
       detail: activeSurfaceCompletionWeight() > 0 ? `rank weight ${activeSurfaceCompletionWeight().toFixed(2)}` : "diagnostic · cannot authorize geometry" },
@@ -17514,6 +17645,9 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "charge geometry", status: ranked(activeChargeGeometryWeight() > 0),
       value: activeChargeGeometryWeight() > 0 ? chargeGeometryLabel() : formalChargeTarget?.available ? "diagnostic" : "unavailable",
       detail: formalChargeTarget?.available ? `R${chargeGeometryReach.toFixed(1)}dₙₙ · weight ${activeChargeGeometryWeight().toFixed(2)}` : "no complete supplied oxidation-state channel" },
+    { name: "global charge shape", status: ranked(activeChargeMomentWeight() > 0),
+      value: activeChargeMomentWeight() > 0 ? chargeMomentLabel() : formalChargeTarget?.available ? "diagnostic" : "unavailable",
+      detail: formalChargeTarget?.available ? `global normalized moments · weight ${activeChargeMomentWeight().toFixed(2)}` : "no complete supplied oxidation-state channel" },
     { name: "surface completion", status: ranked(activeSurfaceCompletionWeight() > 0),
       value: activeSurfaceCompletionWeight() > 0 ? "ranked" : "diagnostic", detail: `weight ${activeSurfaceCompletionWeight().toFixed(2)}` },
     { name: "bulk–surface driving", status: ranked(activeGrowthDrivingWeight() > 0),
@@ -19170,6 +19304,18 @@ chargeGeometryReachSelect.addEventListener("change", () => {
 chargeGeometryWeightSelect.addEventListener("change", () => {
   const value = Number(chargeGeometryWeightSelect.value);
   chargeGeometryWeight = [.12, .24, .48].includes(value) ? value : .24;
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+chargeMomentSelect.addEventListener("change", () => {
+  const value = chargeMomentSelect.value;
+  chargeMomentMode = ["dipole", "quadrupole", "combined"].includes(value) ? value : "none";
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+chargeMomentWeightSelect.addEventListener("change", () => {
+  const value = Number(chargeMomentWeightSelect.value);
+  chargeMomentWeight = [.12, .24, .48].includes(value) ? value : .24;
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
 });

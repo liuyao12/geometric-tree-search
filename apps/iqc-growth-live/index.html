@@ -585,6 +585,23 @@
                 <option value="0.48">0.48 · strong</option>
               </select>
             </label>
+            <label class="field" for="chargeMomentSelect">
+              <span>Global charge-shape geometry <b id="chargeMomentHint">requires complete supplied charge</b></span>
+              <select id="chargeMomentSelect">
+                <option value="none" selected>Off · multipoles reported</option>
+                <option value="dipole">Suppress normalized charge dipole</option>
+                <option value="quadrupole">Suppress quadrupole anisotropy</option>
+                <option value="combined">Combined global charge shape</option>
+              </select>
+            </label>
+            <label class="field" for="chargeMomentWeightSelect">
+              <span>Global charge-shape weight <b>soft nonlocal rank</b></span>
+              <select id="chargeMomentWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
               </div>
             </details>
             <details class="growth-control-group">
@@ -1552,7 +1569,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260826-154"></script>
+  <script type="module" src="./app.js?v=20260826-155"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>
