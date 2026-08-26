@@ -11,9 +11,9 @@ README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
 
 def test_notebook_physics_manifest_contract() -> None:
-    assert 'buildId: "20260826-153"' in APP
-    assert 'app.js?v=20260826-153' in HTML
-    assert 'style.css?v=20260826-62' in HTML
+    assert 'buildId: "20260826-154"' in APP
+    assert 'app.js?v=20260826-154' in HTML
+    assert 'style.css?v=20260826-63' in HTML
     for element_id in ("notebookPhysicsAudit", "notebookPhysicsFilters", "notebookPhysicsMatrix", "notebookPhysicsDetail"):
         assert f'id="{element_id}"' in HTML
     for filter_name in ("changed", "all", "open"):
@@ -21,17 +21,22 @@ def test_notebook_physics_manifest_contract() -> None:
     assert "function notebookPhysicsManifest" in APP
     assert "physicsManifest: notebookPhysicsManifest(structuralLeaps)" in APP
     assert "function notebookPhysicsComparison" in APP
+    assert "function notebookPhysicsLayerHistory" in APP
+    assert "function renderNotebookPhysicsEvolution" in APP
     assert "function renderNotebookPhysicsAudit" in APP
     assert "renderNotebookPhysicsAudit(selected)" in APP
     assert 'coordinatesEmbedded === false' in APP
     assert 'targetUsed === false' in APP
     assert 'physicalTimeModeled: false' in APP
+    assert 'historyAlignment: "discrete structural-leap index; not physical time"' in APP
+    assert 'targetUsed: structuralLeaps.some((entry) => entry.targetUsed === true)' in APP
     assert 'status/role/encoding define configuration; evidence defines response' in APP
     assert 'It does not compare physical energies, infer omitted mechanisms, or align structural leaps to elapsed time.' in APP
     assert ".notebook-physics-audit" in CSS
     assert ".notebook-physics-matrix" in CSS
     assert ".notebook-physics-detail" in CSS
-    assert "Build 153" in README
+    assert ".notebook-physics-evolution-track" in CSS
+    assert "Build 154" in README
     assert "physics-manifest comparison" in README
 
 

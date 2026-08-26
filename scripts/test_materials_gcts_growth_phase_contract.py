@@ -70,8 +70,8 @@ def test_phase_inference_is_posthoc_traced_and_receipted() -> None:
     assert "a tied or under-supported numerical leader is never promoted" in normalized_readme
     assert "truncates every prototype to the same atom count" in normalized_readme
     assert "curated material dimension is not consulted" in normalized_readme
-    assert 'style.css?v=20260826-62' in html
-    assert 'app.js?v=20260826-153' in html
+    assert 'style.css?v=20260826-63' in html
+    assert 'app.js?v=20260826-154' in html
 
 
 if __name__ == "__main__":

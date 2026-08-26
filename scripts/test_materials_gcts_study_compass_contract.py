@@ -11,9 +11,9 @@ README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
 
 def test_study_compass_contract() -> None:
-    assert 'buildId: "20260826-153"' in APP
-    assert 'app.js?v=20260826-153' in HTML
-    assert 'style.css?v=20260826-62' in HTML
+    assert 'buildId: "20260826-154"' in APP
+    assert 'app.js?v=20260826-154' in HTML
+    assert 'style.css?v=20260826-63' in HTML
     for element_id in (
         "studyCompass", "studyCompassKind", "studyCompassQuestion",
         "studyCompassIntegrity", "studyCompassShare", "studyCompassGuideButton", "studyCompassProgress",

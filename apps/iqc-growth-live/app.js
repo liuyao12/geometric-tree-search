@@ -6692,7 +6692,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-153",
+      buildId: "20260826-154",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -8112,21 +8112,32 @@ function notebookPhysicsManifest(structuralLeaps = []) {
   const leap = structuralLeaps.at(-1);
   const records = leap?.physicsTranslation;
   if (!Array.isArray(records) || !records.length) return null;
+  const projectRecord = (record) => ({
+    id: record.id,
+    process: record.process,
+    status: record.status,
+    role: record.role,
+    encoding: record.encoding,
+    evidence: record.evidence,
+    boundary: record.boundary,
+  });
+  const history = structuralLeaps.filter((entry) => Array.isArray(entry.physicsTranslation)
+    && entry.physicsTranslation.length).map((entry) => ({
+    leapIndex: entry.index,
+    leapStatus: entry.status,
+    leapLabel: entry.label,
+    records: entry.physicsTranslation.map(projectRecord),
+  }));
   return {
-    schema: 1,
+    schema: 2,
     sourceLeapIndex: leap.index,
     sourceLeapStatus: leap.status,
-    records: records.map((record) => ({
-      id: record.id,
-      process: record.process,
-      status: record.status,
-      role: record.role,
-      encoding: record.encoding,
-      evidence: record.evidence,
-      boundary: record.boundary,
-    })),
+    records: records.map(projectRecord),
+    history,
+    historyAlignment: "discrete structural-leap index; not physical time",
+    retainedLeapCount: history.length,
     coordinatesEmbedded: false,
-    targetUsed: leap.targetUsed === true,
+    targetUsed: structuralLeaps.some((entry) => entry.targetUsed === true),
     physicalTimeModeled: false,
   };
 }
@@ -8574,7 +8585,8 @@ function renderNotebookInterventionAudit(selected) {
 function notebookPhysicsComparison(first, second) {
   const firstManifest = first?.physicsManifest;
   const secondManifest = second?.physicsManifest;
-  const available = firstManifest?.schema === 1 && secondManifest?.schema === 1
+  const available = Number(firstManifest?.schema) >= 1 && Number(secondManifest?.schema) >= 1
+    && Array.isArray(firstManifest.records) && Array.isArray(secondManifest.records)
     && firstManifest.coordinatesEmbedded === false && secondManifest.coordinatesEmbedded === false
     && firstManifest.targetUsed === false && secondManifest.targetUsed === false;
   if (!available) return { available: false, records: [], configurationChanges: 0, responseChanges: 0, openCount: 0 };
@@ -8595,6 +8607,57 @@ function notebookPhysicsComparison(first, second) {
     configurationChanges: records.filter((record) => record.configurationChanged).length,
     responseChanges: records.filter((record) => record.responseChanged).length,
     openCount: records.filter((record) => record.open).length };
+}
+
+function notebookPhysicsLayerHistory(manifest, layerId) {
+  if (manifest?.schema !== 2 || !Array.isArray(manifest.history) || manifest.targetUsed !== false
+    || manifest.coordinatesEmbedded !== false) return { available: false, snapshots: [], changeCount: 0 };
+  let previous = null;
+  const snapshots = manifest.history.map((entry) => {
+    const record = entry.records?.find((candidate) => candidate.id === layerId) || null;
+    const configurationChanged = Boolean(previous && (!record || previous.status !== record.status
+      || previous.role !== record.role || previous.encoding !== record.encoding));
+    const responseChanged = Boolean(previous && previous.evidence !== record?.evidence);
+    const snapshot = { leapIndex: entry.leapIndex, leapStatus: entry.leapStatus,
+      leapLabel: entry.leapLabel, record, configurationChanged, responseChanged };
+    previous = record;
+    return snapshot;
+  });
+  return { available: true, snapshots,
+    changeCount: snapshots.filter((snapshot) => snapshot.configurationChanged || snapshot.responseChanged).length };
+}
+
+function renderNotebookPhysicsEvolution(container, manifest, layerId) {
+  const evolution = notebookPhysicsLayerHistory(manifest, layerId);
+  const wrapper = document.createElement("div"); wrapper.className = "notebook-physics-evolution";
+  const label = document.createElement("small"); label.textContent = "retained structural-leap evolution";
+  wrapper.append(label);
+  if (!evolution.available) {
+    const legacy = document.createElement("p");
+    legacy.textContent = "Final manifest only · save this executed run again to add the Build 154 leap history.";
+    wrapper.append(legacy); container.append(wrapper); return;
+  }
+  const summary = document.createElement("strong");
+  summary.textContent = `${evolution.snapshots.length} retained updates · ${evolution.changeCount} change${evolution.changeCount === 1 ? "" : "s"}`;
+  const track = document.createElement("div"); track.className = "notebook-physics-evolution-track";
+  const readout = document.createElement("p");
+  const activate = (snapshot, button) => {
+    track.querySelectorAll("button").forEach((candidate) => candidate.classList.toggle("active", candidate === button));
+    readout.textContent = snapshot.record
+      ? `leap ${snapshot.leapIndex} · ${snapshot.leapStatus} · ${snapshot.record.status} · ${snapshot.record.evidence}`
+      : `leap ${snapshot.leapIndex} · ${snapshot.leapStatus} · layer absent`;
+  };
+  evolution.snapshots.forEach((snapshot, index) => {
+    const button = document.createElement("button"); button.type = "button";
+    button.className = snapshot.configurationChanged ? "configuration-change" : snapshot.responseChanged ? "response-change" : "same";
+    button.textContent = String(snapshot.leapIndex);
+    button.title = `structural leap ${snapshot.leapIndex} · ${snapshot.leapStatus}${snapshot.configurationChanged ? " · encoding changed" : snapshot.responseChanged ? " · response changed" : " · unchanged"}`;
+    button.setAttribute("aria-label", button.title);
+    button.addEventListener("click", () => activate(snapshot, button));
+    track.append(button);
+    if (index === evolution.snapshots.length - 1) activate(snapshot, button);
+  });
+  wrapper.append(summary, track, readout); container.append(wrapper);
 }
 
 function renderNotebookPhysicsAudit(selected) {
@@ -8652,13 +8715,16 @@ function renderNotebookPhysicsAudit(selected) {
   const detailTitle = document.createElement("strong"); detailTitle.textContent = selectedRecord.process;
   const detailState = document.createElement("span"); detailState.textContent = selectedRecord.configurationChanged ? "configuration changed" : selectedRecord.responseChanged ? "same encoding · response changed" : "same encoding and response";
   detailHeader.append(detailTitle, detailState); notebookPhysicsDetail.append(detailHeader);
-  [["run 1", selectedRecord.first], ["run 2", selectedRecord.second]].forEach(([label, record]) => {
+  [["run 1", selectedRecord.first, selected[0]?.physicsManifest],
+    ["run 2", selectedRecord.second, selected[1]?.physicsManifest]].forEach(([label, record, manifest]) => {
     const column = document.createElement("section"); const headingElement = document.createElement("small"); headingElement.textContent = label;
     const state = document.createElement("strong"); state.textContent = record ? `${record.status} · ${record.role}` : "absent";
     const encoding = document.createElement("p"); encoding.textContent = record?.encoding || "No record in this manifest.";
     const evidence = document.createElement("p"); evidence.textContent = record?.evidence || "No structural response recorded.";
     const boundary = document.createElement("em"); boundary.textContent = record?.boundary || "No claim boundary recorded.";
-    column.append(headingElement, state, encoding, evidence, boundary); notebookPhysicsDetail.append(column);
+    column.append(headingElement, state, encoding, evidence, boundary);
+    renderNotebookPhysicsEvolution(column, manifest, selectedRecord.id);
+    notebookPhysicsDetail.append(column);
   });
   const boundary = document.createElement("p");
   boundary.textContent = "This compares recorded geometric encodings and their finite response evidence. It does not compare physical energies, infer omitted mechanisms, or align structural leaps to elapsed time.";
