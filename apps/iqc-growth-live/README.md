@@ -4828,3 +4828,17 @@ spherically symmetric coordination spheres. Lone pairs and electronic or
 steric anisotropy can make a nonzero resultant physically meaningful, so the
 portal exposes the vector as a testable hypothesis—not a universal defect,
 force, torque, energy, relaxation direction, or dynamical law.
+
+Build 162 follows those two coordination diagnostics through the material's
+retained structural leaps. At the seed and after every accepted, rejected, or
+fixed-point search update, the app samples at most 96 radially stratified
+charged centers and evaluates each center against its complete finite
+checked-parameter neighbor halo. An interactive pathway plots RMS scalar
+valence mismatch against mean vector-resultant magnitude; every retained point
+can reopen the corresponding full leap certificate. The receipt preserves the
+resolved-center count, parameter and missing-pair audit, exact distance work,
+and coordinate-free center records. Lower-left means lower sampled mismatch
+under the supplied oxidation states and spherical-ion hypothesis. It is not a
+free-energy surface, reaction coordinate, force trajectory, relaxation,
+kinetics, or physical time; finite crops have no inferred periodic images, and
+the pathway never changes candidate geometry, ranking, or admission.

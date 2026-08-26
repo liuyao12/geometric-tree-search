@@ -11,9 +11,9 @@ README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
 
 def test_notebook_physics_manifest_contract() -> None:
-    assert 'buildId: "20260826-161"' in APP
-    assert 'app.js?v=20260826-161' in HTML
-    assert 'style.css?v=20260826-68' in HTML
+    assert 'buildId: "20260826-162"' in APP
+    assert 'app.js?v=20260826-162' in HTML
+    assert 'style.css?v=20260826-69' in HTML
     for element_id in ("notebookPhysicsAudit", "notebookPhysicsFilters", "notebookPhysicsMatrix", "notebookPhysicsDetail"):
         assert f'id="{element_id}"' in HTML
     for filter_name in ("changed", "all", "open"):

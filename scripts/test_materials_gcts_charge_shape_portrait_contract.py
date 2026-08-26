@@ -9,9 +9,9 @@ README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
 
 def test_charge_shape_portrait_contract():
-    assert 'buildId: "20260826-161"' in APP
-    assert 'app.js?v=20260826-161' in HTML
-    assert 'style.css?v=20260826-68' in HTML
+    assert 'buildId: "20260826-162"' in APP
+    assert 'app.js?v=20260826-162' in HTML
+    assert 'style.css?v=20260826-69' in HTML
     for element_id in ("chargeShapePortraitState", "chargeShapePortrait", "chargeShapePortraitDetail"):
         assert f'id="{element_id}"' in HTML
         assert f'$("{element_id}")' in APP

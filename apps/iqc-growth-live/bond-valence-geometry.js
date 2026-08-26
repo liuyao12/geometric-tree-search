@@ -139,6 +139,46 @@ export function bondValenceSums(sites = []) {
   };
 }
 
+export function bondValenceStateSummary(centerNeighborhoods = []) {
+  const records = [];
+  const usedParameters = new Map(); const missingPairTypes = new Set();
+  let distanceEvaluations = 0; let contextSitePresentations = 0;
+  centerNeighborhoods.forEach((neighborhood) => {
+    if (!Array.isArray(neighborhood) || !neighborhood.length || !finiteSite(neighborhood[0])) return;
+    const valid = neighborhood.filter(finiteSite);
+    if (!valid.length) return;
+    const local = bondValenceSums(valid);
+    distanceEvaluations += local.distanceEvaluations;
+    contextSitePresentations += valid.length;
+    local.usedParameters.forEach((record) => usedParameters.set(record.key, record));
+    local.missingPairTypes.forEach((pair) => missingPairTypes.add(pair));
+    const record = local.sites[0];
+    if (record?.resolved) records.push({ species: record.species, charge: record.charge,
+      scalarResidual: record.residual, absoluteScalarResidual: record.absoluteResidual,
+      vectorMagnitude: record.vectorMagnitude,
+      normalizedVectorImbalance: record.normalizedVectorImbalance,
+      bondCount: record.bondCount });
+  });
+  const squareMean = (values) => values.length
+    ? Math.sqrt(values.reduce((sum, value) => sum + value * value, 0) / values.length) : null;
+  const mean = (values) => values.length
+    ? values.reduce((sum, value) => sum + value, 0) / values.length : null;
+  return { available: records.length > 0,
+    reason: records.length ? null : "no supplied center has a checked ion-pair neighbor",
+    suppliedCenters: centerNeighborhoods.length, resolvedCenters: records.length,
+    unresolvedCenters: centerNeighborhoods.length - records.length,
+    sampledRmsValenceMismatch: squareMean(records.map((record) => record.scalarResidual)),
+    sampledMeanAbsoluteValenceMismatch: mean(records.map((record) => record.absoluteScalarResidual)),
+    sampledMeanVectorMagnitude: mean(records.map((record) => record.vectorMagnitude)),
+    sampledRmsVectorMagnitude: squareMean(records.map((record) => record.vectorMagnitude)),
+    sampledMeanNormalizedVectorImbalance: mean(records.map((record) => record.normalizedVectorImbalance)),
+    centerRecords: records,
+    usedParameters: [...usedParameters.values()], missingPairTypes: [...missingPairTypes].sort(),
+    contextSitePresentations, distanceEvaluations,
+    coordinateFrameUsed: false, translationInvariant: true, properRotationInvariant: true,
+    targetUsed: false, physicalTimeIntegrated: false };
+}
+
 export function incrementalBondValenceSatisfaction(currentSites = [], addedSites = []) {
   const current = currentSites.filter(finiteSite);
   const added = addedSites.filter(finiteSite);

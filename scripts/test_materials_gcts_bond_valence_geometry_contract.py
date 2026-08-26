@@ -6,6 +6,7 @@ MODULE = (ROOT / "apps/iqc-growth-live/bond-valence-geometry.js").read_text()
 
 def test_bond_valence_module_is_target_blind_and_fail_closed():
     assert "incrementalBondValenceSatisfaction" in MODULE
+    assert "export function bondValenceStateSummary" in MODULE
     assert "vectorScore" in MODULE
     assert "combinedScore" in MODULE
     assert "V_i = sum_j s_ij rhat_ij" in MODULE

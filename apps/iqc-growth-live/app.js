@@ -32,8 +32,8 @@ import { chargeMomentSignature, compareChargeMomentGeometry } from "./global-cha
 import { incrementalIonicPairGeometry, incrementalIonicPairReachProfile,
   rankIonicPairReachProfiles } from "./ionic-pair-geometry.js?v=20260826-2";
 import { BOND_VALENCE_PARAMETERS, BOND_VALENCE_PROVENANCE,
-  MAXIMUM_BOND_VALENCE_DISTANCE, incrementalBondValenceSatisfaction }
-  from "./bond-valence-geometry.js?v=20260826-2";
+  MAXIMUM_BOND_VALENCE_DISTANCE, bondValenceStateSummary, incrementalBondValenceSatisfaction }
+  from "./bond-valence-geometry.js?v=20260826-3";
 import {
   discoverFiniteMolecularComponents,
   discoverMolecularConnectionTopology,
@@ -386,6 +386,9 @@ const ionicConvergenceDetail = $("ionicConvergenceDetail");
 const bondValenceState = $("bondValenceState");
 const bondValenceCandidates = $("bondValenceCandidates");
 const bondValencePortrait = $("bondValencePortrait");
+const bondValencePathState = $("bondValencePathState");
+const bondValencePath = $("bondValencePath");
+const bondValencePathReadout = $("bondValencePathReadout");
 const bondValenceResiduals = $("bondValenceResiduals");
 const bondValenceDetail = $("bondValenceDetail");
 const policySensitivityState = $("policySensitivityState");
@@ -6741,7 +6744,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-161",
+      buildId: "20260826-162",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7828,6 +7831,7 @@ async function buildExperimentReceipt() {
         truncated: leapEventCount > leapHistory.length,
         alignment: "discrete GCTS search update; not physical time" },
       structuralMassRadiusScaling: receiptMassRadiusScaling(),
+      bondValenceStructuralPathway: bondValenceStructuralPathwayReceipt(),
       structuralLeapCertificates: leapHistory.map((leap) => ({
         index: leap.index, status: leap.status, label: leap.label,
         before: leap.before, proposal: leap.proposal, tests: leap.tests,
@@ -12706,7 +12710,8 @@ function bondValenceForFreshSites(rawFreshSites, { recordWork = true } = {}) {
   const freshSites = uniqueFreshSites(rawFreshSites);
   const chargesResolved = Boolean(formalChargeTarget?.available && freshSites.length
     && freshSites.every((site) => bondValenceElementToken(site.species)
-      && Number.isFinite(suppliedFormalChargeForToken(site.species))));
+      && Number.isFinite(suppliedFormalChargeForToken(site.species))
+      && Math.abs(suppliedFormalChargeForToken(site.species)) > 1e-12));
   if (!chargesResolved) return { available: false, enabled: false, mode: bondValenceMode,
     label: bondValenceLabel(), score: 0, rawScore: 0, affectedSites: [], distanceEvaluations: 0,
     reason: !formalChargeTarget?.available ? "complete supplied oxidation-state channel unavailable"
@@ -12733,6 +12738,44 @@ function bondValenceForFreshSites(rawFreshSites, { recordWork = true } = {}) {
     score: bondValenceMode === "none" ? 0 : selectedScore || 0,
     localCurrentSites: localAtoms.size,
     physicalScaleAngstromPerSceneUnit: referenceSpacingA / Math.max(referenceSpacing, 1e-12) };
+}
+
+function structuralBondValenceSnapshot(maximumCenters = 96) {
+  const eligibleIndices = formalChargeTarget?.available ? atoms.map((atom, index) =>
+    bondValenceElementToken(atom.species)
+      && Number.isFinite(suppliedFormalChargeForToken(atom.species))
+      && Math.abs(suppliedFormalChargeForToken(atom.species)) > 1e-12 ? index : null)
+    .filter(Number.isInteger) : [];
+  if (!eligibleIndices.length) return { available: false,
+    reason: "complete exact oxidation-state channel unavailable", sampledCenters: 0,
+    resolvedCenters: 0, maximumCenters, targetUsed: false, analysisOnly: true };
+  const sampledIndices = radiallyStratifiedIndices(atoms, eligibleIndices, maximumCenters);
+  const scenePerAngstrom = referenceSpacing / Math.max(referenceSpacingA, 1e-12);
+  const cutoffSceneUnits = MAXIMUM_BOND_VALENCE_DISTANCE * scenePerAngstrom;
+  const toPhysical = (atom) => ({ species: bondValenceElementToken(atom.species),
+    charge: suppliedFormalChargeForToken(atom.species),
+    position: atom.p.toArray().map((value) => value / scenePerAngstrom) });
+  const neighborhoods = sampledIndices.map((centerIndex) => {
+    const center = atoms[centerIndex];
+    const neighbors = nearbyAtoms(center.p, cutoffSceneUnits).filter((atom) => atom !== center
+      && bondValenceElementToken(atom.species)
+      && Number.isFinite(suppliedFormalChargeForToken(atom.species))
+      && Math.abs(suppliedFormalChargeForToken(atom.species)) > 1e-12);
+    return [center, ...neighbors].map(toPhysical);
+  });
+  const summary = bondValenceStateSummary(neighborhoods);
+  return { ...summary,
+    sampledCenters: sampledIndices.length,
+    unresolvedCenters: sampledIndices.length - summary.resolvedCenters, maximumCenters,
+    cutoffAngstrom: MAXIMUM_BOND_VALENCE_DISTANCE,
+    sampling: "up to 96 radially stratified centers; each center uses its complete finite neighbor halo within the largest checked parameter cutoff",
+    suppliedOxidationStatesOnly: true, oxidationStatesInferred: false,
+    finiteObservationNoPeriodicImages: true, coordinateFrameUsed: false,
+    translationInvariant: true, properRotationInvariant: true, uniformScaleInvariant: false,
+    physicalAngstromScaleRequired: true, sphericalIonHypothesisOnly: true,
+    anisotropyCanBePhysical: true, candidateRankingChanged: false,
+    candidateGeometryChanged: false, hardAdmissionChanged: false,
+    analysisOnly: true, targetUsed: false, physicalTimeIntegrated: false };
 }
 
 function batchRetainsNovelSites(entries) {
@@ -15731,7 +15774,7 @@ function performOffLatticeEvent() {
   const before = { atoms: atoms.length, clusters: placedClusters.length, frontier: frontierCandidates.length,
     morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
     orientationalOrder: structuralOrientationalOrderSnapshot(), scattering: structuralScatteringSnapshot(),
-    chargeMoment: structuralChargeMomentSnapshot(),
+    chargeMoment: structuralChargeMomentSnapshot(), bondValenceState: structuralBondValenceSnapshot(),
     feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() };
   const batch = commutingFrontierBatch();
   if (!batch.length) {
@@ -15742,7 +15785,7 @@ function performOffLatticeEvent() {
         depth: Math.max(0, ...placedClusters.map((placement) => placement.depth || 0)),
         morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
         orientationalOrder: structuralOrientationalOrderSnapshot(), scattering: structuralScatteringSnapshot(),
-        chargeMoment: structuralChargeMomentSnapshot(),
+        chargeMoment: structuralChargeMomentSnapshot(), bondValenceState: structuralBondValenceSnapshot(),
         feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() },
       claimBoundary: "This is a certified finite structural fixed point. It is not equilibrium, a stopping time, or evidence that a physical interface cannot advance by an unmodeled mechanism." });
     pauseGrowth("Frontier exhausted: no learned overlap rule remains geometrically admissible.");
@@ -15914,7 +15957,7 @@ function performOffLatticeEvent() {
       depth: Math.max(0, ...placedClusters.map((placement) => placement.depth || 0)),
       morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
       orientationalOrder: structuralOrientationalOrderSnapshot(), scattering: structuralScatteringSnapshot(),
-      chargeMoment: structuralChargeMomentSnapshot(),
+      chargeMoment: structuralChargeMomentSnapshot(), bondValenceState: structuralBondValenceSnapshot(),
       feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() },
     claimBoundary: relaxation?.accepted
       ? "The accepted antichain is valid in every placement order. A bounded post-attachment constraint projection reduced the learned local contact-angle residual and re-passed every hard gate; it is not a force trajectory, energy minimization, probability, or physical elapsed time."
@@ -15928,7 +15971,7 @@ function performIceAnchorEvent() {
   const before = { atoms: atoms.length, clusters: acceptedDecisions,
     frontier: wave?.candidateAnchors || 0, morphology: structuralMorphologySnapshot(),
     orientationalOrder: structuralOrientationalOrderSnapshot(), scattering: structuralScatteringSnapshot(),
-    chargeMoment: structuralChargeMomentSnapshot(),
+    chargeMoment: structuralChargeMomentSnapshot(), bondValenceState: structuralBondValenceSnapshot(),
     interfaces: structuralInterfaceSnapshot(), feedstock: currentFeedstockSnapshot(),
     domain: currentGrowthDomainSnapshot() };
   if (!wave) {
@@ -15968,7 +16011,7 @@ function performIceAnchorEvent() {
         rejected: wave.rejectedCandidateAnchors, depth: wave.wave,
         morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
         orientationalOrder: structuralOrientationalOrderSnapshot(), scattering: structuralScatteringSnapshot(),
-        chargeMoment: structuralChargeMomentSnapshot(),
+        chargeMoment: structuralChargeMomentSnapshot(), bondValenceState: structuralBondValenceSnapshot(),
         feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() },
       claimBoundary: `The frozen ${iceAnchorTrace.portCount}-port grammar reaches a finite structural fixed point. Unresolved ${iceAnchorTrace.orientationSpecies} motion, proton/deuteron barriers, entropy, and physical stopping time are not modeled.` });
     growthStopReason = "Frozen molecular-port grammar reached its certified finite fixed point.";
@@ -16004,7 +16047,7 @@ function performIceAnchorEvent() {
       rejected: wave.rejectedCandidateAnchors, depth: wave.wave,
       morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
       orientationalOrder: structuralOrientationalOrderSnapshot(), scattering: structuralScatteringSnapshot(),
-      chargeMoment: structuralChargeMomentSnapshot(),
+      chargeMoment: structuralChargeMomentSnapshot(), bondValenceState: structuralBondValenceSnapshot(),
       feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() },
     claimBoundary: `The browser jumps to oxygen anchors shared by every surviving ${iceAnchorTrace.moleculeLabel} orientation domain. It does not integrate ${iceAnchorTrace.orientationSpecies} rearrangement, tunnelling, diffusion, relaxation, probability, or elapsed physical time.` });
   rebuildWorld();
@@ -16797,6 +16840,8 @@ function physicsTranslationRecords(leap = null) {
   const relaxationLocalEnvironment = relaxationLocalEnvironmentField();
   const localSymmetry = leap?.localSymmetryTransition || null;
   const reciprocalSpace = leap?.reciprocalSpaceTransition || null;
+  const bondValenceStateBefore = leap?.before?.bondValenceState || null;
+  const bondValenceStateAfter = leap?.after?.bondValenceState || null;
   return [
     { id: "steric", process: "short-range repulsion / species contact", status: "hard", role: "hard admission gate",
       encoding: `${coloredDistanceEnvelopes?.records?.length || 0} colored pair envelopes with exact species coincidence and learned hard-exclusion radii`,
@@ -16908,7 +16953,7 @@ function physicsTranslationRecords(leap = null) {
       encoding: formalChargeTarget?.available
         ? `${bondValenceLabel()}; s=exp((R₀-R)/B), V=Σs r̂, exact supplied ion states and explicit IUCr distance ranges, w=${activeBondValenceWeight().toFixed(2)}`
         : "requires a complete explicitly supplied oxidation-state channel",
-      evidence: leap ? `Accepted mean score ${receiptRound(acceptedBondValenceScore / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedBondValenceScore / Math.max(1, rejectedDecisions), 4)}; ${bondValenceEvaluations.toLocaleString()} candidate evaluations and ${bondValenceDistanceEvaluations.toLocaleString()} pair-distance evaluations.` : "No local bond-valence candidate evaluated yet.",
+      evidence: leap ? `Accepted mean score ${receiptRound(acceptedBondValenceScore / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedBondValenceScore / Math.max(1, rejectedDecisions), 4)}; ${bondValenceEvaluations.toLocaleString()} candidate evaluations and ${bondValenceDistanceEvaluations.toLocaleString()} pair-distance evaluations.${bondValenceStateBefore?.available && bondValenceStateAfter?.available ? ` Sampled state RMS Δs ${bondValenceStateBefore.sampledRmsValenceMismatch.toFixed(3)} → ${bondValenceStateAfter.sampledRmsValenceMismatch.toFixed(3)} v.u.; mean |V| ${bondValenceStateBefore.sampledMeanVectorMagnitude.toFixed(3)} → ${bondValenceStateAfter.sampledMeanVectorMagnitude.toFixed(3)} v.u.` : ""}` : "No local bond-valence candidate evaluated yet.",
       boundary: "The empirical scalar sum validates local bond-length geometry; the vector resultant tests spherical-ion coordination balance. Lone pairs and electronic or steric anisotropy can make a nonzero vector physical and are not modeled. Unsupported ion pairs fail closed. Neither channel is bond energy, electron density, charge transfer, redox inference, force, relaxation, kinetics, or physical time." },
     { id: "solute-partition", process: "solute partitioning / interfacial segregation", status: activeSolutePartitionWeight() > 0 ? "soft" : "open", role: activeSolutePartitionWeight() > 0 ? "species × spatial-field ordering" : "disabled",
       encoding: activeSolutePartitionWeight() > 0
@@ -17412,6 +17457,101 @@ function renderMultiscaleOrderPathway() {
     });
 }
 
+function renderBondValenceStructuralPathway() {
+  if (!bondValencePath || !bondValencePathState || !bondValencePathReadout) return;
+  bondValencePath.replaceChildren(); bondValencePathReadout.replaceChildren();
+  const states = [];
+  const initial = leapHistory[0]?.before?.bondValenceState;
+  if (initial?.available) states.push({ label: "seed", leapIndex: null, snapshot: initial });
+  leapHistory.forEach((leap, leapIndex) => {
+    if (leap.after?.bondValenceState?.available) states.push({
+      label: `leap ${leap.index} · ${leap.status}`, leapIndex, snapshot: leap.after.bondValenceState });
+  });
+  if (!states.length) {
+    bondValencePathState.textContent = formalChargeTarget?.available
+      ? "no checked ion-pair state in retained leaps" : "complete supplied oxidation states required";
+    return;
+  }
+  const namespace = "http://www.w3.org/2000/svg";
+  const make = (name, attributes = {}) => {
+    const element = document.createElementNS(namespace, name);
+    Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, String(value)));
+    return element;
+  };
+  const left = 28; const top = 8; const width = 198; const height = 70;
+  const maximumScalar = Math.max(.05, ...states.map((state) => state.snapshot.sampledRmsValenceMismatch));
+  const maximumVector = Math.max(.05, ...states.map((state) => state.snapshot.sampledMeanVectorMagnitude));
+  const px = (value) => left + width * Math.max(0, Math.min(1, value / maximumScalar));
+  const py = (value) => top + height * (1 - Math.max(0, Math.min(1, value / maximumVector)));
+  bondValencePath.append(make("line", { x1: left, y1: top + height, x2: left + width, y2: top + height, class: "axis" }),
+    make("line", { x1: left, y1: top, x2: left, y2: top + height, class: "axis" }));
+  const xLabel = make("text", { x: left + width, y: 94, class: "axis-label", "text-anchor": "end" });
+  xLabel.textContent = "sampled RMS valence mismatch →";
+  const yLabel = make("text", { x: 8, y: top + height / 2, class: "axis-label", "text-anchor": "middle",
+    transform: `rotate(-90 8 ${top + height / 2})` });
+  yLabel.textContent = "mean vector resultant →"; bondValencePath.append(xLabel, yLabel);
+  if (states.length > 1) bondValencePath.append(make("path", { d: states.map((state, index) =>
+    `${index ? "L" : "M"}${px(state.snapshot.sampledRmsValenceMismatch)},${py(state.snapshot.sampledMeanVectorMagnitude)}`).join(" "),
+  class: "history-line" }));
+  states.forEach((state, index) => {
+    const selected = state.leapIndex !== null && state.leapIndex === selectedLeapIndex;
+    const point = make("circle", { cx: px(state.snapshot.sampledRmsValenceMismatch),
+      cy: py(state.snapshot.sampledMeanVectorMagnitude), r: selected ? 3.8 : index ? 2.8 : 3.2,
+      class: `history-point${selected ? " selected" : ""}`, tabindex: state.leapIndex === null ? -1 : 0,
+      role: state.leapIndex === null ? "img" : "button",
+      "aria-label": `${state.label}; RMS valence mismatch ${state.snapshot.sampledRmsValenceMismatch.toFixed(3)}; mean vector resultant ${state.snapshot.sampledMeanVectorMagnitude.toFixed(3)}` });
+    const title = make("title"); title.textContent = `${state.label} · RMS Δs ${state.snapshot.sampledRmsValenceMismatch.toFixed(3)} · mean |V| ${state.snapshot.sampledMeanVectorMagnitude.toFixed(3)} v.u.`;
+    point.append(title);
+    if (state.leapIndex !== null) {
+      const select = () => { selectedLeapIndex = state.leapIndex; renderStructuralLeap(leapHistory[selectedLeapIndex]); };
+      point.addEventListener("click", select);
+      point.addEventListener("keydown", (event) => {
+        if (["Enter", " "].includes(event.key)) { event.preventDefault(); select(); }
+      });
+    }
+    bondValencePath.append(point);
+  });
+  const selected = states.find((state) => state.leapIndex === selectedLeapIndex) || states.at(-1);
+  [["state", selected.label], ["RMS Δs", `${selected.snapshot.sampledRmsValenceMismatch.toFixed(3)} v.u.`],
+    ["mean |V|", `${selected.snapshot.sampledMeanVectorMagnitude.toFixed(3)} v.u.`],
+    ["resolved centers", `${selected.snapshot.resolvedCenters}/${selected.snapshot.sampledCenters}`],
+    ["neighbor work", `${selected.snapshot.distanceEvaluations} distances`],
+    ["scope", "finite sampled halo"]].forEach(([label, value]) => {
+      const cell = document.createElement("span"); cell.textContent = label;
+      const strong = document.createElement("strong"); strong.textContent = value; cell.append(strong);
+      bondValencePathReadout.append(cell);
+    });
+  bondValencePathState.textContent = `${states.length} retained state${states.length === 1 ? "" : "s"} · lower-left is lower sampled mismatch · not physical time`;
+}
+
+function bondValenceStructuralPathwayReceipt() {
+  const states = [];
+  const add = (label, leapIndex, status, snapshot) => {
+    if (!snapshot?.available) return;
+    states.push({ label, leapIndex, status,
+      sampledCenters: snapshot.sampledCenters, resolvedCenters: snapshot.resolvedCenters,
+      sampledRmsValenceMismatch: receiptRound(snapshot.sampledRmsValenceMismatch),
+      sampledMeanAbsoluteValenceMismatch: receiptRound(snapshot.sampledMeanAbsoluteValenceMismatch),
+      sampledMeanVectorMagnitude: receiptRound(snapshot.sampledMeanVectorMagnitude),
+      sampledRmsVectorMagnitude: receiptRound(snapshot.sampledRmsVectorMagnitude),
+      sampledMeanNormalizedVectorImbalance: receiptRound(snapshot.sampledMeanNormalizedVectorImbalance),
+      contextSitePresentations: snapshot.contextSitePresentations,
+      distanceEvaluations: snapshot.distanceEvaluations,
+      missingPairTypes: snapshot.missingPairTypes });
+  };
+  add("seed", 0, "seed", leapHistory[0]?.before?.bondValenceState);
+  leapHistory.forEach((leap) => add(`leap ${leap.index}`, leap.index, leap.status, leap.after?.bondValenceState));
+  return { role: "sampled scalar and vector bond-valence state across discrete structural leaps",
+    states, retainedStates: states.length, maximumCentersPerState: 96,
+    sampling: "radially stratified centers with complete finite checked-parameter neighbor halo",
+    alignment: "discrete GCTS structural leap; not physical time",
+    finiteObservationNoPeriodicImages: true, suppliedOxidationStatesOnly: true,
+    coordinateFrameUsed: false, candidateRankingChanged: false,
+    candidateGeometryChanged: false, hardAdmissionChanged: false,
+    sphericalIonHypothesisOnly: true, anisotropyCanBePhysical: true,
+    targetUsed: false, physicalTimeIntegrated: false };
+}
+
 function renderStructuralLeap(leap = null) {
   if (!leapCertificateSection) return;
   leapCertificateSection.hidden = pipelineStage !== 4;
@@ -17419,6 +17559,7 @@ function renderStructuralLeap(leap = null) {
   const selected = leap || leapHistory[selectedLeapIndex] || null;
   renderMultiscaleOrderPathway();
   renderChargeShapePortrait(policyComparisonHistory[selectedPolicySnapshotIndex] || lastPolicyComparison);
+  renderBondValenceStructuralPathway();
   leapHistoryElement.replaceChildren();
   leapHistory.slice(-8).forEach((entry, visibleIndex) => {
     const absoluteIndex = Math.max(0, leapHistory.length - 8) + visibleIndex;
@@ -17446,7 +17587,8 @@ function renderStructuralLeap(leap = null) {
       ["04 · local symmetry", "not compared", "qℓ / |ψℓ| distributions await one leap"],
       ["05 · reciprocal structure", "not compared", "finite-observation S(q) awaits one leap"],
       ["06 · global charge shape", "not compared", "supplied-charge moments await one leap"],
-      ["07 · after", "unchanged seed", "physical time unresolved"],
+      ["07 · bond-valence coordination", "not compared", "checked scalar/vector state awaits one leap"],
+      ["08 · after", "unchanged seed", "physical time unresolved"],
     ].forEach(([label, value, detail]) => {
       const card = document.createElement("article");
       const small = document.createElement("small"); small.textContent = label;
@@ -17485,12 +17627,21 @@ function renderStructuralLeap(leap = null) {
     chargeBefore?.available && chargeAfter?.available
       ? "Translation-, proper-rotation-, and uniform-scale-invariant structural change; not electrostatic energy, polarization, or time."
       : "A complete explicitly supplied formal-charge channel is required."]);
-  if (selected.relaxation) leapCards.push(["07 · local projection",
+  const bondValenceBefore = selected.before?.bondValenceState;
+  const bondValenceAfter = selected.after?.bondValenceState;
+  leapCards.push(["07 · bond-valence coordination",
+    bondValenceBefore?.available && bondValenceAfter?.available
+      ? `RMS Δs ${bondValenceBefore.sampledRmsValenceMismatch.toFixed(3)} → ${bondValenceAfter.sampledRmsValenceMismatch.toFixed(3)} v.u.`
+      : "checked scalar/vector state unavailable",
+    bondValenceBefore?.available && bondValenceAfter?.available
+      ? `mean |Σs r̂| ${bondValenceBefore.sampledMeanVectorMagnitude.toFixed(3)} → ${bondValenceAfter.sampledMeanVectorMagnitude.toFixed(3)} v.u. · resolved centers ${bondValenceBefore.resolvedCenters} → ${bondValenceAfter.resolvedCenters}; finite sampled geometry, not energy or time.`
+      : bondValenceAfter?.reason || bondValenceBefore?.reason || "A complete exact oxidation-state channel and checked ion pairs are required."]);
+  if (selected.relaxation) leapCards.push(["08 · local projection",
     selected.relaxation.accepted
       ? `strain ${selected.relaxation.strainBefore.toFixed(3)} → ${selected.relaxation.strainAfter.toFixed(3)}`
       : "rolled back · exact coordinates retained",
     `${selected.relaxation.movableSites} movable · max Δ ${selected.relaxation.maximumDisplacementAngstrom.toFixed(3)} Å · ${selected.relaxation.reason}`]);
-  leapCards.push([`${selected.relaxation ? "08" : "07"} · after`,
+  leapCards.push([`${selected.relaxation ? "09" : "08"} · after`,
     `${selected.after.atoms} atoms · ${selected.after.clusters} clusters`,
     `${selected.after.accepted} accepted · ${selected.after.rejected} rejected · causal depth ${selected.after.depth}`]);
   leapCards.forEach(([label, value, detail], index) => {
@@ -17501,7 +17652,7 @@ function renderStructuralLeap(leap = null) {
     const span = document.createElement("span"); span.textContent = detail;
     card.append(small, strong, span); leapFlow.append(card);
   });
-  leapClaimBoundary.textContent = `${selected.claimBoundary} Local qℓ / |ψℓ| and unit-weight geometric S(q) changes are rotation-invariant structural fingerprints, not phase-transition assignments, experimental diffraction intensities, latent heat, free-energy changes, rates, or clocks. Supplied-charge dipole/quadrupole changes are translation-, proper-rotation-, and uniform-scale-invariant structural fingerprints, not electrostatic energy, polarization, dielectric response, charge transfer, electronic structure, force, rate, or physical time.`;
+  leapClaimBoundary.textContent = `${selected.claimBoundary} Local qℓ / |ψℓ| and unit-weight geometric S(q) changes are rotation-invariant structural fingerprints, not phase-transition assignments, experimental diffraction intensities, latent heat, free-energy changes, rates, or clocks. Supplied-charge dipole/quadrupole changes are translation-, proper-rotation-, and uniform-scale-invariant structural fingerprints, not electrostatic energy, polarization, dielectric response, charge transfer, electronic structure, force, rate, or physical time. Sampled bond-valence scalar/vector changes retain the physical Å scale; vector balance is a spherical-ion hypothesis and neither channel is energy, force, relaxation, or time.`;
 }
 
 function radiallyStratifiedIndices(source, candidateIndices, maximumCenters) {

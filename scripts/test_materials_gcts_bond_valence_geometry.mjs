@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
-import { bondValenceParameter, bondValenceSums, incrementalBondValenceSatisfaction,
+import { bondValenceParameter, bondValenceSums, bondValenceStateSummary,
+  incrementalBondValenceSatisfaction,
   BOND_VALENCE_PROVENANCE } from "../apps/iqc-growth-live/bond-valence-geometry.js";
 
 const site = (species, charge, position) => ({ species, charge, position });
@@ -15,6 +16,23 @@ assert.equal(nacl.usedParameters[0].r0, 2.15);
 assert.equal(nacl.usedParameters[0].b, .37);
 assert.ok(nacl.sites[0].vectorMagnitude < 1e-12);
 assert.ok(nacl.meanVectorMagnitude > 0);
+
+const neighborhoods = [[na, ...chlorideShell],
+  ...chlorideShell.map((chloride) => [chloride, na])];
+const state = bondValenceStateSummary(neighborhoods);
+assert.equal(state.available, true);
+assert.equal(state.suppliedCenters, 7);
+assert.equal(state.resolvedCenters, 7);
+assert.ok(Number.isFinite(state.sampledRmsValenceMismatch));
+assert.ok(Number.isFinite(state.sampledMeanVectorMagnitude));
+assert.ok(state.centerRecords[0].vectorMagnitude < 1e-12);
+const transform = ([x, y, z]) => [-y + 8, x - 3, z + 4];
+const transformedState = bondValenceStateSummary(neighborhoods.map((neighborhood) =>
+  neighborhood.map((record) => ({ ...record, position: transform(record.position) }))));
+assert.ok(Math.abs(transformedState.sampledRmsValenceMismatch
+  - state.sampledRmsValenceMismatch) < 1e-12);
+assert.ok(Math.abs(transformedState.sampledMeanVectorMagnitude
+  - state.sampledMeanVectorMagnitude) < 1e-12);
 
 const incremental = incrementalBondValenceSatisfaction(chlorideShell, [na]);
 assert.equal(incremental.available, true);
@@ -56,6 +74,10 @@ const unsupported = incrementalBondValenceSatisfaction(
   [site("Cd", 2, [0, 0, 0])], [site("Yb", -2, [2.8, 0, 0])]);
 assert.equal(unsupported.available, false);
 assert.match(unsupported.reason, /no checked bond-valence parameter/);
+const unsupportedState = bondValenceStateSummary([
+  [site("Cd", 2, [0, 0, 0]), site("Yb", -2, [2.8, 0, 0])],
+]);
+assert.equal(unsupportedState.available, false);
 assert.equal(BOND_VALENCE_PROVENANCE.revision, "2020-11-25");
 assert.equal(BOND_VALENCE_PROVENANCE.vectorRuleDoi, "10.1107/S0108768106026553");
 assert.match(BOND_VALENCE_PROVENANCE.vectorRuleCaveat, /anisotropy/);

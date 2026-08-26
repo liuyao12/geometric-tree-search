@@ -5475,3 +5475,26 @@ is expected only under the spherical-ion coordination hypothesis. Lone-pair,
 electronic, and steric anisotropy are explicitly unmodeled and may make a
 nonzero vector physical; no force, torque, energy, relaxation, or time is
 inferred.
+
+### Bond-valence state across structural leaps
+
+The structural-leap audit now freezes a bounded full-state coordination
+snapshot before and after each retained GCTS update. Up to 96 centers with
+complete supplied oxidation states are chosen by deterministic radial
+stratification. For every sampled center, all charged neighbors inside the
+largest checked bond-valence cutoff are obtained from the exact spatial index;
+the center's scalar mismatch and vector resultant are then evaluated in
+angstrom coordinates. The aggregate reports RMS scalar mismatch, mean absolute
+mismatch, mean and RMS vector magnitude, normalized vector imbalance, resolved
+and unresolved centers, checked/missing pair types, context-site presentations,
+and exact distance evaluations.
+
+The browser renders these discrete states as an interactive scalar-versus-vector
+path. The state index is a structural search leap, not elapsed time, and the
+connected line is visual correspondence rather than an interpolated physical
+trajectory. The observation is finite and does not synthesize periodic images.
+It uses only supplied oxidation states, does not infer an energy or relaxation
+direction, and does not alter candidate geometry, ranking, or hard admission.
+The directional axis retains the same spherical-ion caveat: electronic,
+lone-pair, or steric anisotropy may make a nonzero resultant physically
+meaningful.

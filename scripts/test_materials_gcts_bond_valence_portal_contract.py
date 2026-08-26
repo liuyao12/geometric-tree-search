@@ -7,7 +7,7 @@ CSS = (ROOT / "apps/iqc-growth-live/style.css").read_text()
 
 
 def test_bond_valence_is_an_explicit_optional_growth_channel():
-    assert 'from "./bond-valence-geometry.js?v=20260826-2"' in APP
+    assert 'from "./bond-valence-geometry.js?v=20260826-3"' in APP
     assert 'const bondValenceSelect = $("bondValenceSelect")' in APP
     assert 'activeBondValenceWeight() * evaluation.bondValence.score' in APP
     assert 'scoreTerm("bond-valence", bondValenceLabel()' in APP
