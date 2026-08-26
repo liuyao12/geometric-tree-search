@@ -19,7 +19,7 @@ import { assessGeometrySurrogatePromotion, evaluateFrozenGeometrySurrogate,
   geometrySurrogateCompatibilityDifferences, geometrySurrogateCompatibilityKey }
   from "./geometry-calculation-calibration.js?v=20260826-6";
 import { policyIdentifiabilityAudit }
-  from "./policy-identifiability.js?v=20260826-1";
+  from "./policy-identifiability.js?v=20260826-2";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -399,6 +399,8 @@ const policyPhaseX = $("policyPhaseX");
 const policyPhaseY = $("policyPhaseY");
 const policyPhaseMap = $("policyPhaseMap");
 const policyIdentifiabilityState = $("policyIdentifiabilityState");
+const policyIdentifiabilityRaw = $("policyIdentifiabilityRaw");
+const policyIdentifiabilityConditional = $("policyIdentifiabilityConditional");
 const policyIdentifiabilityMatrix = $("policyIdentifiabilityMatrix");
 const policyIdentifiabilityDetail = $("policyIdentifiabilityDetail");
 const policyParetoState = $("policyParetoState");
@@ -7881,7 +7883,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-178",
+      buildId: "20260826-179",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -9452,42 +9454,26 @@ async function buildExperimentReceipt() {
             } : null;
           })(),
           hypothesisIdentifiability: (() => {
-            const audit = buildPolicyIdentifiabilityAudit(snapshot);
-            return audit ? {
-              role: "target-blind local identifiability audit of active signed geometric ranking channels over one frozen hard-admitted frontier",
-              candidateCount: audit.candidateCount,
-              activeVaryingTerms: audit.terms.map((term) => ({ id: term.id, label: term.label,
-                role: term.role, claimBoundary: term.claimBoundary,
-                meanContribution: receiptRound(term.mean),
-                standardDeviation: receiptRound(term.standardDeviation),
-                minimumContribution: receiptRound(term.minimum),
-                maximumContribution: receiptRound(term.maximum) })),
-              withheldTerms: audit.withheld,
-              pairCount: audit.pairs.filter((pair) => pair.row < pair.column).length,
-              nearRedundantPairs: audit.nearRedundantPairs,
-              locallyDistinctPairs: audit.locallyDistinctPairs,
-              strongestPair: audit.strongestPair ? { firstId: audit.strongestPair.firstId,
-                secondId: audit.strongestPair.secondId,
-                pearson: receiptRound(audit.strongestPair.pearson),
-                spearman: receiptRound(audit.strongestPair.spearman),
-                classification: audit.strongestPair.classification } : null,
-              pairs: audit.pairs.filter((pair) => pair.row < pair.column).map((pair) => ({
-                firstId: pair.firstId, secondId: pair.secondId, sampleCount: pair.sampleCount,
-                pearson: pair.pearson === null ? null : receiptRound(pair.pearson),
-                spearman: pair.spearman === null ? null : receiptRound(pair.spearman),
-                classification: pair.classification })),
-              candidateSetDigest: audit.candidateSetDigest,
-              auditDigest: audit.auditDigest,
-              targetAwareTermsExcluded: audit.targetAwareTermsExcluded,
-              candidateSetChanged: audit.candidateSetChanged,
-              hardAdmissionChanged: audit.hardAdmissionChanged,
-              candidateGeometryChanged: audit.candidateGeometryChanged,
-              coordinatesEmbedded: audit.coordinatesEmbedded,
-              targetUsed: audit.targetUsed,
-              executed: audit.executed,
+            const rawAudit = buildPolicyIdentifiabilityAudit(snapshot, "raw");
+            const conditionalAudit = buildPolicyIdentifiabilityAudit(snapshot, "conditional");
+            return rawAudit && conditionalAudit ? {
+              role: "raw and structurally conditioned target-blind identifiability audits over one frozen hard-admitted frontier",
+              selectedDisplayMode: snapshot.identifiabilityMode || "conditional",
+              candidateSetDigest: snapshot.candidateDigest,
+              modes: { raw: receiptPolicyIdentifiabilityMode(rawAudit),
+                conditional: receiptPolicyIdentifiabilityMode(conditionalAudit) },
+              conditioningRule: "orthogonal linear projection with intercept; raw Pearson controls use raw variables and partial Spearman controls use average-ranked variables",
+              structuralControls: ["frozen grammar / marking priority", "exact emitted species-labelled site count"],
+              targetAwareTermsExcluded: conditionalAudit.targetAwareTermsExcluded,
+              candidateSetChanged: false,
+              hardAdmissionChanged: false,
+              candidateGeometryChanged: false,
+              coordinatesEmbedded: false,
+              targetUsed: false,
+              executed: false,
               causalIndependenceInferred: false,
               physicalIndependenceInferred: false,
-              interpretation: audit.interpretation,
+              energyDecompositionInferred: false,
             } : null;
           })(),
           candidateTradeoffMap: (() => {
@@ -12985,16 +12971,57 @@ function buildPolicyPhaseMap(snapshot) {
     executed: false, selectionRule: snapshot.phaseMapAxes.selectionRule };
 }
 
-function buildPolicyIdentifiabilityAudit(snapshot) {
+function buildPolicyIdentifiabilityAudit(snapshot, requestedMode = null) {
   if (!snapshot?.workbenchCandidates?.length) return null;
-  const candidates = snapshot.workbenchCandidates.map((candidate) => ({
-    candidateKey: candidate.candidateKey,
-    scoreTerms: workbenchCandidateTerms(snapshot, candidate),
+  const mode = requestedMode || snapshot.identifiabilityMode || "conditional";
+  const termRows = snapshot.workbenchCandidates.map((candidate) => workbenchCandidateTerms(snapshot, candidate));
+  const candidates = snapshot.workbenchCandidates.map((candidate, index) => ({
+    candidateKey: candidate.candidateKey, scoreTerms: termRows[index],
   }));
   return policyIdentifiabilityAudit(candidates, {
     candidateSetDigest: snapshot.candidateDigest,
     excludedTermIds: ["known-window-gain", "exploration"],
+    mode,
+    conditioningVariables: [
+      { id: "grammar-priority", label: "frozen grammar / marking priority",
+        values: termRows.map((terms) => terms.find((term) => term.id === "grammar-priority")?.contribution || 0) },
+      { id: "emitted-site-count", label: "exact emitted species-labelled sites",
+        values: snapshot.workbenchCandidates.map((candidate) => candidate.freshSites.length) },
+    ],
   });
+}
+
+function receiptPolicyIdentifiabilityMode(audit) {
+  if (!audit) return null;
+  return {
+    mode: audit.mode,
+    candidateCount: audit.candidateCount,
+    conditioningVariables: audit.conditioningVariables,
+    activeVaryingTerms: audit.terms.map((term) => ({ id: term.id, label: term.label,
+      role: term.role, claimBoundary: term.claimBoundary,
+      rawMeanContribution: receiptRound(term.rawMean),
+      rawStandardDeviation: receiptRound(term.rawStandardDeviation),
+      residualMeanContribution: receiptRound(term.mean),
+      residualStandardDeviation: receiptRound(term.standardDeviation),
+      minimumContribution: receiptRound(term.minimum),
+      maximumContribution: receiptRound(term.maximum) })),
+    withheldTerms: audit.withheld,
+    pairCount: audit.pairs.filter((pair) => pair.row < pair.column).length,
+    nearRedundantPairs: audit.nearRedundantPairs,
+    locallyDistinctPairs: audit.locallyDistinctPairs,
+    strongestPair: audit.strongestPair ? { firstId: audit.strongestPair.firstId,
+      secondId: audit.strongestPair.secondId,
+      pearson: receiptRound(audit.strongestPair.pearson),
+      spearman: receiptRound(audit.strongestPair.spearman),
+      classification: audit.strongestPair.classification } : null,
+    pairs: audit.pairs.filter((pair) => pair.row < pair.column).map((pair) => ({
+      firstId: pair.firstId, secondId: pair.secondId, sampleCount: pair.sampleCount,
+      pearson: pair.pearson === null ? null : receiptRound(pair.pearson),
+      spearman: pair.spearman === null ? null : receiptRound(pair.spearman),
+      classification: pair.classification })),
+    auditDigest: audit.auditDigest,
+    interpretation: audit.interpretation,
+  };
 }
 
 function workbenchCandidateTerms(snapshot, candidate) {
@@ -20561,6 +20588,18 @@ function renderPolicyPhaseMap(snapshot) {
 
 function renderPolicyIdentifiabilityAudit(snapshot) {
   policyIdentifiabilityMatrix.replaceChildren(); policyIdentifiabilityDetail.replaceChildren();
+  const mode = snapshot?.identifiabilityMode || "conditional";
+  policyIdentifiabilityRaw.disabled = !snapshot; policyIdentifiabilityConditional.disabled = !snapshot;
+  policyIdentifiabilityRaw.setAttribute("aria-pressed", String(mode === "raw"));
+  policyIdentifiabilityConditional.setAttribute("aria-pressed", String(mode === "conditional"));
+  policyIdentifiabilityRaw.onclick = snapshot ? () => {
+    snapshot.identifiabilityMode = "raw"; snapshot.identifiabilityPairKey = null;
+    renderPolicyIdentifiabilityAudit(snapshot);
+  } : null;
+  policyIdentifiabilityConditional.onclick = snapshot ? () => {
+    snapshot.identifiabilityMode = "conditional"; snapshot.identifiabilityPairKey = null;
+    renderPolicyIdentifiabilityAudit(snapshot);
+  } : null;
   const audit = buildPolicyIdentifiabilityAudit(snapshot);
   if (!audit) {
     policyIdentifiabilityState.textContent = "awaiting a frozen frontier";
@@ -20578,7 +20617,7 @@ function renderPolicyIdentifiabilityAudit(snapshot) {
   const chosenKey = selectable.some((pair) => pairKey(pair) === snapshot.identifiabilityPairKey)
     ? snapshot.identifiabilityPairKey : audit.strongestPair ? pairKey(audit.strongestPair) : null;
   snapshot.identifiabilityPairKey = chosenKey;
-  policyIdentifiabilityState.textContent = `${audit.terms.length} varying · ${audit.nearRedundantPairs} |ρ|≥.90 · ${audit.withheld.length} withheld`;
+  policyIdentifiabilityState.textContent = `${audit.mode === "conditional" ? "conditional" : "raw"} · ${audit.terms.length} varying · ${audit.nearRedundantPairs} |ρ|≥.90 · ${audit.withheld.length} withheld`;
   const table = document.createElement("table");
   const header = document.createElement("thead"); const headerRow = document.createElement("tr");
   const corner = document.createElement("th"); corner.textContent = "ρ"; headerRow.append(corner);
@@ -20619,7 +20658,11 @@ function renderPolicyIdentifiabilityAudit(snapshot) {
     const coefficients = document.createElement("span");
     coefficients.textContent = `Pearson r ${selected.pearson === null ? "unresolved" : selected.pearson.toFixed(4)} · Spearman ρ ${selected.spearman === null ? "unresolved" : selected.spearman.toFixed(4)} · n=${selected.sampleCount} exact candidates`;
     const boundary = document.createElement("span");
-    boundary.textContent = `Same frontier ${audit.candidateSetDigest} · audit ${audit.auditDigest} · no target, coordinates, candidate geometry, admission, fitting, or execution. Local score redundancy does not establish causal or physical dependence.`;
+    const conditioning = audit.conditioningVariables.filter((variable) => variable.accepted)
+      .map((variable) => variable.label).join(" + ");
+    boundary.textContent = `Same frontier ${audit.candidateSetDigest} · audit ${audit.auditDigest}`
+      + `${audit.mode === "conditional" ? ` · linear projection removed ${conditioning || "no varying structural control"}` : " · unconditioned signed contributions"}`
+      + " · no target, coordinates, candidate geometry, admission, fitting, or execution. Residual correlation does not establish causal or physical dependence.";
     policyIdentifiabilityDetail.append(heading, status, coefficients, boundary);
   }
 }

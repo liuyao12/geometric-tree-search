@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260826-75">
+  <link rel="stylesheet" href="./style.css?v=20260826-76">
   <script type="importmap">
     {
       "imports": {
@@ -1039,6 +1039,7 @@
               </section>
               <section class="policy-identifiability-card" aria-label="Frozen-frontier physics hypothesis identifiability">
                 <header><span><small>same-candidate hypothesis audit</small><strong>Are the geometry channels independent?</strong></span><b id="policyIdentifiabilityState">awaiting a frozen frontier</b></header>
+                <div class="policy-identifiability-modes" role="group" aria-label="Identifiability conditioning mode"><button id="policyIdentifiabilityRaw" type="button" aria-pressed="false">Raw channel correlation</button><button id="policyIdentifiabilityConditional" type="button" aria-pressed="true">Condition on grammar + action size</button></div>
                 <div id="policyIdentifiabilityMatrix" class="policy-identifiability-matrix" role="group" aria-label="Pearson and rank correlation matrix for active target-blind geometry channels"></div>
                 <article id="policyIdentifiabilityDetail" class="policy-identifiability-detail" aria-live="polite"></article>
                 <p>Cells compare signed ranking contributions on the identical hard-admitted frontier. Target-aware replay, exploration, zero-weight, and constant channels are withheld. Correlation reveals local redundancy—not causal or physical independence.</p>
@@ -1700,7 +1701,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260826-178"></script>
+  <script type="module" src="./app.js?v=20260826-179"></script>
   <script type="module" src="./evidence-atlas.js?v=20260826-19"></script>
 </body>
 </html>

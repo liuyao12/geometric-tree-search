@@ -5799,3 +5799,19 @@ withheld reasons, all pairwise coefficients and classifications, the unchanged
 candidate-set digest, and a coordinate-free audit digest. Correlation is interpreted
 only as local identifiability of geometric ranking proxies on this one frontier—not
 causal independence, physical independence, an energy Hessian, or parameter fitting.
+
+## Build 179: condition identifiability on structural grammar and action size
+
+Build 179 adds a second, default matrix mode. Before correlating two soft physics
+channels it projects each signed contribution away from the frozen grammar/marking
+priority and exact emitted species-labelled site count. The implementation forms a
+deterministic orthonormal basis from centered controls, drops constant or collinear
+axes, and residualizes without ridge tuning. Partial Spearman is computed by applying
+the corresponding projection to average-ranked channels and controls.
+
+The raw mode remains available for comparison. Both modes consume the same immutable
+candidate rows, share the candidate digest, and cannot affect admission, geometry,
+weights, ranking, or execution. Receipts preserve both complete matrices, control
+acceptance diagnostics, raw and residual spreads, and separate coordinate-free audit
+digests. The result is a local conditional-identifiability diagnostic—not proof that
+the controls remove all confounding, and not causal inference or thermodynamics.

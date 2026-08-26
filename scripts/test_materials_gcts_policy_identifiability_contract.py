@@ -30,23 +30,35 @@ def test_matrix_reports_linear_and_rank_correlation_with_claim_boundaries():
     assert "not causal or physical independence" in MODULE
     assert "causalIndependenceInferred: false" in APP
     assert "physicalIndependenceInferred: false" in APP
+    assert "orthonormalBasis" in MODULE
+    assert "residualize" in MODULE
+    assert 'mode = "raw"' in MODULE
+    assert '"conditional"' in MODULE
+    assert "constant-or-collinear" in MODULE
+    assert "explained-by-conditioning" in MODULE
 
 
 def test_portal_exposes_interactive_matrix_and_receipt_audit():
     for identifier in ("policyIdentifiabilityState", "policyIdentifiabilityMatrix",
-                       "policyIdentifiabilityDetail"):
+                       "policyIdentifiabilityDetail", "policyIdentifiabilityRaw",
+                       "policyIdentifiabilityConditional"):
         assert f'id="{identifier}"' in HTML
         assert f'$("{identifier}")' in APP
     assert "Are the geometry channels independent?" in HTML
     assert "renderPolicyIdentifiabilityAudit(snapshot)" in APP
     assert "hypothesisIdentifiability:" in APP
+    assert "receiptPolicyIdentifiabilityMode" in APP
+    assert 'modes: { raw:' in APP
+    assert 'conditional: receiptPolicyIdentifiabilityMode' in APP
+    assert "exact emitted species-labelled sites" in APP
+    assert "frozen grammar / marking priority" in APP
     assert ".policy-identifiability-matrix" in STYLE
-    assert "Build 178" in README
-    assert "Build 178" in DOCS
+    assert "Build 179" in README
+    assert "Build 179" in DOCS
 
 
-def test_build_178_assets_are_cache_busted():
-    assert 'buildId: "20260826-178"' in APP
-    assert 'app.js?v=20260826-178' in HTML
-    assert 'style.css?v=20260826-75' in HTML
-    assert 'policy-identifiability.js?v=20260826-1' in APP
+def test_build_179_assets_are_cache_busted():
+    assert 'buildId: "20260826-179"' in APP
+    assert 'app.js?v=20260826-179' in HTML
+    assert 'style.css?v=20260826-76' in HTML
+    assert 'policy-identifiability.js?v=20260826-2' in APP

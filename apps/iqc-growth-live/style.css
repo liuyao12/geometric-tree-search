@@ -22,6 +22,7 @@
 .policy-identifiability-card header small { color: #52786e; font: 5px var(--mono); text-transform: uppercase; }
 .policy-identifiability-card header strong { margin-top: 3px; color: #a6c9bf; font: 6px var(--mono); font-weight: 400; }
 .policy-identifiability-card header b { max-width: 156px; color: #718f87; font: 5px/1.3 var(--mono); font-weight: 400; text-align: right; }
+.policy-identifiability-modes { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 3px; margin-top: 5px; }.policy-identifiability-modes button { min-width: 0; padding: 4px 5px; border: 1px solid rgba(101,225,188,.13); background: rgba(5,15,17,.68); color: #678179; font: 5px var(--mono); cursor: pointer; }.policy-identifiability-modes button:hover,.policy-identifiability-modes button:focus-visible,.policy-identifiability-modes button[aria-pressed="true"] { border-color: rgba(101,225,188,.55); background: rgba(101,225,188,.05); color: #b4d8ce; outline: none; }.policy-identifiability-modes button:disabled { opacity: .35; cursor: default; }
 .policy-identifiability-matrix { max-height: 240px; margin-top: 5px; border: 1px solid rgba(101,225,188,.08); overflow: auto; background: rgba(4,12,14,.66); }
 .policy-identifiability-matrix:empty { display: none; }
 .policy-identifiability-matrix table { width: 100%; min-width: max-content; border-collapse: separate; border-spacing: 1px; color: #78938b; font: 4px var(--mono); }

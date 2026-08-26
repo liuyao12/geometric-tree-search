@@ -5159,3 +5159,20 @@ experiment receipt stores every pair and the exclusions. A high correlation mean
 the two proxies are locally difficult to identify separately on this candidate set;
 it is not evidence that the underlying physical mechanisms are causally or
 physically dependent.
+
+### Build 179 · conditional hypothesis identifiability
+
+The hypothesis matrix now distinguishes raw association from association remaining
+after two pre-ranking structural controls. “Condition on grammar + action size”
+removes the frozen grammar/marking priority and the exact emitted species-labelled
+site count by an orthogonal linear projection. Pearson correlation is computed on
+raw residual contributions; partial Spearman correlation applies the same projection
+to average ranks. Constant or collinear controls are reported rather than forced
+into an unstable fit.
+
+The raw and conditional modes share exactly the same candidate records and never
+re-rank or execute them. Both matrices, accepted/dropped conditioning variables,
+residual ranges, coefficients, exclusions, and independent audit digests are stored
+in the receipt. This answers whether two proxies remain locally inseparable after
+obvious structural scale is removed; it is still not causal adjustment, mechanism
+identification, an energy decomposition, or a physical independence test.

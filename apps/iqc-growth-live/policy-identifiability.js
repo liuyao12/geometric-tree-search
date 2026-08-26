@@ -43,6 +43,34 @@ function correlation(first, second, epsilon = DEFAULT_EPSILON) {
   return Math.max(-1, Math.min(1, covariance / denominator));
 }
 
+function orthonormalBasis(variables, epsilon = DEFAULT_EPSILON) {
+  const basis = [];
+  const records = variables.map((variable) => {
+    let vector = variable.values.map(finiteNumber);
+    const center = mean(vector); vector = vector.map((value) => value - center);
+    basis.forEach((axis) => {
+      const projection = vector.reduce((sum, value, index) => sum + value * axis[index], 0);
+      vector = vector.map((value, index) => value - projection * axis[index]);
+    });
+    const norm = Math.sqrt(vector.reduce((sum, value) => sum + value * value, 0));
+    const accepted = norm > epsilon;
+    if (accepted) basis.push(vector.map((value) => value / norm));
+    return { id: variable.id, label: variable.label, accepted,
+      reason: accepted ? "used" : "constant-or-collinear" };
+  });
+  return { basis, records };
+}
+
+function residualize(values, basis) {
+  const center = mean(values);
+  let residuals = values.map((value) => value - center);
+  basis.forEach((axis) => {
+    const projection = residuals.reduce((sum, value, index) => sum + value * axis[index], 0);
+    residuals = residuals.map((value, index) => value - projection * axis[index]);
+  });
+  return residuals;
+}
+
 function pairClass(spearman, diagonal) {
   if (diagonal) return "self";
   if (spearman === null) return "unresolved";
@@ -68,13 +96,27 @@ function fnv1a(serialized) {
  */
 export function policyIdentifiabilityAudit(candidates, {
   excludedTermIds = ["known-window-gain", "exploration"],
+  conditioningVariables = [],
+  mode = "raw",
   epsilon = DEFAULT_EPSILON,
   candidateSetDigest = null,
 } = {}) {
   if (!Array.isArray(candidates) || candidates.length < 2) return null;
+  if (!["raw", "conditional"].includes(mode)) throw new Error(`Unknown identifiability mode ${mode}`);
   const keys = candidates.map((candidate, index) => String(candidate.candidateKey ?? index));
   if (new Set(keys).size !== keys.length) throw new Error("Identifiability audit requires unique candidate keys");
   const excluded = new Set(excludedTermIds);
+  const controls = conditioningVariables.map((variable) => {
+    if (!variable?.id || !Array.isArray(variable.values) || variable.values.length !== candidates.length) {
+      throw new Error("Every conditioning variable requires an id and one value per candidate");
+    }
+    return { id: String(variable.id), label: String(variable.label || variable.id),
+      values: variable.values.map(finiteNumber) };
+  });
+  const rawProjection = orthonormalBasis(controls, epsilon);
+  const rankProjection = orthonormalBasis(controls.map((control) => ({ ...control,
+    values: averageRanks(control.values) })), epsilon);
+  const conditioningIds = new Set(controls.map((control) => control.id));
   const firstTerms = Array.isArray(candidates[0].scoreTerms) ? candidates[0].scoreTerms : [];
   const withheld = [];
   const terms = [];
@@ -82,15 +124,21 @@ export function policyIdentifiabilityAudit(candidates, {
     const id = String(prototype.id);
     const rows = candidates.map((candidate) => candidate.scoreTerms?.find((term) => term.id === id));
     const complete = rows.every(Boolean);
-    const values = rows.map((row) => finiteNumber(row?.contribution));
+    const rawValues = rows.map((row) => finiteNumber(row?.contribution));
     const weights = rows.map((row) => finiteNumber(row?.weight));
+    const values = mode === "conditional" ? residualize(rawValues, rawProjection.basis) : rawValues;
+    const rankValues = mode === "conditional"
+      ? residualize(averageRanks(rawValues), rankProjection.basis) : averageRanks(rawValues);
     const stats = moments(values);
     const reason = excluded.has(id) ? "excluded-by-target-blind-contract"
       : !complete ? "missing-on-one-or-more-candidates"
         : weights.every((weight) => Math.abs(weight) <= epsilon) ? "inactive-zero-weight"
-          : stats.maximum - stats.minimum <= epsilon ? "constant-on-this-frontier" : null;
+          : mode === "conditional" && conditioningIds.has(id) ? "conditioning-variable"
+            : stats.maximum - stats.minimum <= epsilon ? mode === "conditional"
+              ? "explained-by-conditioning" : "constant-on-this-frontier" : null;
     const summary = { id, label: String(prototype.label || id), role: prototype.role || "",
-      claimBoundary: prototype.claimBoundary || "", values, weights, ...stats };
+      claimBoundary: prototype.claimBoundary || "", values, rankValues, weights,
+      rawMean: mean(rawValues), rawStandardDeviation: moments(rawValues).standardDeviation, ...stats };
     if (reason) withheld.push({ id, label: summary.label, reason });
     else terms.push(summary);
   });
@@ -98,8 +146,7 @@ export function policyIdentifiabilityAudit(candidates, {
   terms.forEach((first, row) => terms.forEach((second, column) => {
     const diagonal = row === column;
     const pearson = diagonal ? 1 : correlation(first.values, second.values, epsilon);
-    const spearman = diagonal ? 1
-      : correlation(averageRanks(first.values), averageRanks(second.values), epsilon);
+    const spearman = diagonal ? 1 : correlation(first.rankValues, second.rankValues, epsilon);
     pairs.push({ row, column, firstId: first.id, secondId: second.id,
       firstLabel: first.label, secondLabel: second.label, sampleCount: candidates.length,
       pearson, spearman, classification: pairClass(spearman, diagonal), diagonal });
@@ -108,7 +155,8 @@ export function policyIdentifiabilityAudit(candidates, {
   const strongest = [...independentPairs].sort((first, second) =>
     Math.abs(second.spearman) - Math.abs(first.spearman)
       || first.firstId.localeCompare(second.firstId) || first.secondId.localeCompare(second.secondId))[0] || null;
-  const serialized = JSON.stringify({ candidateSetDigest, keys: [...keys].sort(),
+  const serialized = JSON.stringify({ candidateSetDigest, mode, keys: [...keys].sort(),
+    conditioning: controls.map((control) => control.id),
     terms: terms.map((term) => term.id),
     pairs: independentPairs.map((pair) => [pair.firstId, pair.secondId,
       Number(pair.pearson.toFixed(12)), Number(pair.spearman.toFixed(12))]) });
@@ -116,7 +164,12 @@ export function policyIdentifiabilityAudit(candidates, {
     candidateCount: candidates.length,
     candidateSetDigest,
     auditDigest: fnv1a(serialized),
-    terms: terms.map(({ values, weights, ...term }) => term),
+    mode,
+    conditioningVariables: mode === "conditional" ? rawProjection.records.map((record, index) => ({
+      ...record, rankAccepted: rankProjection.records[index].accepted,
+      rankReason: rankProjection.records[index].reason,
+    })) : [],
+    terms: terms.map(({ values, rankValues, weights, ...term }) => term),
     pairs,
     withheld,
     strongestPair: strongest,
@@ -130,7 +183,8 @@ export function policyIdentifiabilityAudit(candidates, {
     coordinatesEmbedded: false,
     targetUsed: false,
     executed: false,
-    interpretation: "local rank identifiability on one frozen frontier; not causal or physical independence",
+    interpretation: mode === "conditional"
+      ? "local residual identifiability after linear projection of declared structural controls; not causal or physical independence"
+      : "local rank identifiability on one frozen frontier; not causal or physical independence",
   };
 }
-

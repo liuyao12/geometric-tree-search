@@ -32,4 +32,26 @@ assert.match(audit.auditDigest, /^[0-9a-f]{8}$/);
 
 assert.equal(policyIdentifiabilityAudit([rows[0]]), null);
 assert.throws(() => policyIdentifiabilityAudit([rows[0], { ...rows[1], candidateKey: "c0" }]), /unique/);
+
+const z = [-2, -1, 0, 0, 1, 2];
+const u = [1, -2, 1, -1, 2, -1];
+const conditionalRows = z.map((value, index) => ({ candidateKey: `p${index}`, scoreTerms: [
+  term("x", 5 * value + u[index]), term("y", 5 * value - u[index]),
+] }));
+const rawConfounded = policyIdentifiabilityAudit(conditionalRows, { candidateSetDigest: "confounded" });
+const conditioned = policyIdentifiabilityAudit(conditionalRows, {
+  candidateSetDigest: "confounded", mode: "conditional",
+  conditioningVariables: [
+    { id: "grammar-priority", label: "grammar", values: z },
+    { id: "emitted-site-count", label: "size", values: Array(z.length).fill(4) },
+  ],
+});
+assert.ok(rawConfounded.pairs.find((entry) => entry.firstId === "x" && entry.secondId === "y").pearson > .8);
+assert.ok(Math.abs(conditioned.pairs.find((entry) => entry.firstId === "x" && entry.secondId === "y").pearson + 1) < 1e-12);
+assert.equal(conditioned.conditioningVariables[0].accepted, true);
+assert.equal(conditioned.conditioningVariables[1].accepted, false);
+assert.equal(conditioned.conditioningVariables[1].reason, "constant-or-collinear");
+assert.notEqual(conditioned.auditDigest, rawConfounded.auditDigest);
+assert.match(conditioned.interpretation, /linear projection/);
+assert.throws(() => policyIdentifiabilityAudit(conditionalRows, { mode: "invented" }), /Unknown/);
 console.log("policy identifiability audit passed");
