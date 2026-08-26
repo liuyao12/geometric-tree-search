@@ -62,6 +62,10 @@ import {
   growthEnvironmentSpec,
   scaledGrowthEnvironmentSpec,
 } from "./growth-environments.js?v=20260826-4";
+import {
+  classifyObservationSites,
+  fitObservationEnvelope,
+} from "./observation-envelope.js?v=20260826-1";
 import { auditGeometricMicrostructure } from "./microstructure-audit.js?v=20260824-1";
 import { CDYB_BROWSER_FIXTURE } from "./cdyb-browser-fixture.js?v=20260824-1";
 import {
@@ -6185,7 +6189,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-132",
+      buildId: "20260825-133",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -10624,21 +10628,62 @@ function publicDomainCharacteristicReach(spec) {
   return Math.min(parameters.halfLength, parameters.throatRadius);
 }
 
+function currentObservationEnvelope() {
+  const points = referenceAtoms.map((atom) => atom.p.toArray());
+  if (currentMaterial().publishedFixture === "cdyb-offcenter-r14") {
+    return fitObservationEnvelope(points, {
+      shape: "sphere", center: [0, 0, 0],
+      radius: CDYB_BROWSER_FIXTURE.crop.radiusAngstrom * .92 / MATERIALS.cdyb.spacingA,
+    });
+  }
+  if (currentMaterial().intrinsicDimension === 2) {
+    return fitObservationEnvelope(points, { shape: "slab", padding: referenceSpacing * .5 });
+  }
+  const importedPeriodic = scenarioSelect.value === "imported"
+    && Boolean(currentImportedFrame()?.pbc?.some(Boolean));
+  const finitePeriodicWindow = Boolean(currentMaterial().periodicWindow || importedPeriodic
+    || scenarioSelect.value === "random");
+  return fitObservationEnvelope(points, {
+    shape: "box", padding: referenceSpacing * (finitePeriodicWindow ? .5 : .25),
+    source: finitePeriodicWindow ? "finite periodic observation cell" : "empirical finite box envelope",
+  });
+}
+
+function observationEnvelopeDimensions(envelope) {
+  if (envelope.shape === "sphere") return [2 * envelope.radius, 2 * envelope.radius, 2 * envelope.radius];
+  if (envelope.shape === "slab") return [2 * envelope.planarRadius, 2 * envelope.planarRadius, 2 * envelope.halfThickness];
+  return envelope.halfExtents?.map((value) => 2 * value) || [0, 0, 0];
+}
+
 function currentGrowthDomainSnapshot() {
   const spec = scaledGrowthEnvironmentSpec(confinementSelect.value, growthDomainScale);
   const sceneToAngstrom = referenceSpacingA / Math.max(referenceSpacing, 1e-12);
-  const observationRadius = referenceAtoms.length
-    ? Math.max(...referenceAtoms.map((atom) => atom.p.length())) : 0;
+  const observationEnvelope = currentObservationEnvelope();
+  const observationClassification = pipelineStage === 4
+    ? classifyObservationSites(atoms.map((atom) => ({
+      known: Number.isInteger(atom.referenceIndex), position: atom.p.toArray(),
+    })), observationEnvelope, MERGE_TOLERANCE)
+    : { known: 0, novel: 0, novelInside: 0, beyond: 0, minimumNovelMargin: null, maximumExcursion: 0 };
   const publicReach = publicDomainCharacteristicReach(spec);
   const audit = pipelineStage === 4 ? referenceCoverageAudit() : null;
-  const continuationAtoms = pipelineStage === 4
-    ? atoms.filter((atom) => !Number.isInteger(atom.referenceIndex)).length : 0;
   const margins = pipelineStage === 4 ? atoms.map((atom) =>
     growthEnvironmentSignedMargin(confinementSelect.value, atom.p, growthDomainScale)) : [];
   return {
     environment: spec.id, shape: spec.shape, publicReachScale: growthDomainScale,
     observedSites: referenceCount(), replayedObservedSites: audit?.matched ?? referenceCount(),
-    continuationAtoms, observationRadiusAngstrom: receiptRound(observationRadius * sceneToAngstrom),
+    novelStructuralAtoms: observationClassification.novel,
+    novelInsideObservationAtoms: observationClassification.novelInside,
+    geometricContinuationAtoms: observationClassification.beyond,
+    continuationAtoms: observationClassification.beyond,
+    observationEnvelopeShape: observationEnvelope.shape,
+    observationEnvelopeSource: observationEnvelope.source,
+    observationEnvelopePaddingAngstrom: receiptRound(observationEnvelope.padding * sceneToAngstrom),
+    observationEnvelopeDimensionsAngstrom: observationEnvelopeDimensions(observationEnvelope)
+      .map((value) => receiptRound(value * sceneToAngstrom)),
+    observationCharacteristicReachAngstrom: receiptRound(observationEnvelope.characteristicReach * sceneToAngstrom),
+    minimumNovelObservationMarginAngstrom: observationClassification.minimumNovelMargin === null
+      ? null : receiptRound(observationClassification.minimumNovelMargin * sceneToAngstrom),
+    maximumObservationExcursionAngstrom: receiptRound(observationClassification.maximumExcursion * sceneToAngstrom),
     publicCharacteristicReachAngstrom: receiptRound(publicReach * sceneToAngstrom),
     currentMinimumBoundaryMarginAngstrom: margins.length ? receiptRound(Math.min(...margins) * sceneToAngstrom) : null,
     targetUsedForContinuation: false, inputCoordinatesEmbedded: false,
@@ -10651,23 +10696,24 @@ function renderGrowthDomainPassport() {
   const snapshot = currentGrowthDomainSnapshot(); const knownFraction = snapshot.observedSites
     ? snapshot.replayedObservedSites / snapshot.observedSites : 0;
   const reachFraction = snapshot.publicCharacteristicReachAngstrom
-    ? Math.min(1, snapshot.observationRadiusAngstrom / snapshot.publicCharacteristicReachAngstrom) : 0;
+    ? Math.min(1, snapshot.observationCharacteristicReachAngstrom / snapshot.publicCharacteristicReachAngstrom) : 0;
   growthDomainScaleHint.textContent = `${snapshot.publicReachScale}× certified domain`;
   growthDomainPassportState.textContent = pipelineStage === 4
-    ? `${snapshot.replayedObservedSites} known + ${snapshot.continuationAtoms} outside`
+    ? `${snapshot.replayedObservedSites} known · ${snapshot.novelInsideObservationAtoms} internal novel · ${snapshot.geometricContinuationAtoms} beyond`
     : `${snapshot.observedSites} observed sites`;
   growthDomainPassportBars.replaceChildren();
   [
-    ["observation radius", reachFraction, `${snapshot.observationRadiusAngstrom.toFixed(1)} / ${snapshot.publicCharacteristicReachAngstrom.toFixed(1)} Å`],
+    ["observation / public reach", reachFraction, `${snapshot.observationCharacteristicReachAngstrom.toFixed(1)} / ${snapshot.publicCharacteristicReachAngstrom.toFixed(1)} Å`],
     ["known replay", knownFraction, `${snapshot.replayedObservedSites}/${snapshot.observedSites}`],
-    ["outside crop", Math.min(1, snapshot.continuationAtoms / Math.max(1, snapshot.observedSites)), `${snapshot.continuationAtoms} sites`],
+    ["novel inside envelope", Math.min(1, snapshot.novelInsideObservationAtoms / Math.max(1, snapshot.observedSites)), `${snapshot.novelInsideObservationAtoms} sites`],
+    ["beyond observation", Math.min(1, snapshot.geometricContinuationAtoms / Math.max(1, snapshot.observedSites)), `${snapshot.geometricContinuationAtoms} sites`],
   ].forEach(([label, fraction, value]) => {
     const row = document.createElement("div"); const key = document.createElement("small");
     const track = document.createElement("i"); const fill = document.createElement("b"); const datum = document.createElement("em");
     key.textContent = label; fill.style.width = `${100 * Math.max(0, Math.min(1, fraction))}%`; track.append(fill);
     datum.textContent = value; row.append(key, track, datum); growthDomainPassportBars.append(row);
   });
-  growthDomainPassportNote.textContent = `${snapshot.shape} · ${snapshot.publicReachScale}× public reach. Supplied positions guide only known-window replay; outside-crop sites come from frozen recurring ports and hard geometric admission. The boundary is declared geometry, not a surface potential or physical time horizon.`;
+  growthDomainPassportNote.textContent = `${snapshot.observationEnvelopeShape} observation envelope (${snapshot.observationEnvelopeSource}) → ${snapshot.shape} · ${snapshot.publicReachScale}× public reach. Novel sites inside the envelope are reported separately; only sites beyond its signed boundary count as geometric continuation. The public boundary is declared geometry, not a surface potential or physical time horizon.`;
 }
 
 function suppliedFormalChargeForToken(token) {
@@ -15748,18 +15794,26 @@ function liveGrowthCertificate() {
     };
   }
   const audit = referenceCoverageAudit();
-  const generatedSites = atoms.filter((atom) => !Number.isInteger(atom.referenceIndex)).length;
+  const domain = currentGrowthDomainSnapshot();
+  const generatedSites = domain.novelStructuralAtoms;
+  const insideNovelSites = domain.novelInsideObservationAtoms;
+  const continuationSites = domain.geometricContinuationAtoms;
   const maximumDepth = Math.max(0, ...placedClusters.map((placement) => placement.depth || 0));
   const fixedPointReached = reconstructionCertified && frontierCandidates.length === 0 && placedClusters.length > 0;
   const stationaryBenchmark = scenarioSelect.value === "competition" && benchmark.status === "pass";
   return {
     mode: "off-lattice covering search",
-    state: fixedPointReached ? "finite fixed point" : reconstructionCertified ? "unseen continuation" : "known-window replay",
+    state: fixedPointReached ? "finite fixed point" : continuationSites ? "geometric continuation"
+      : generatedSites ? "novel structure inside observation" : reconstructionCertified ? "ready for continuation" : "known-window replay",
     knownWindow: { status: reconstructionCertified ? "pass" : "progress",
       title: `${audit.matched} / ${referenceCount()} known sites`,
       detail: `${audit.missing} missing · ${audit.duplicateAtoms} duplicates · ${audit.extraneousAtoms} extraneous during replay` },
-    continuation: { status: generatedSites ? "progress" : "open", title: `${generatedSites} target-blind structural sites`,
-      detail: generatedSites ? "Outside the supplied window; geometrically certified but not labeled physically correct." : "No outside-window site has been committed yet." },
+    continuation: { status: continuationSites ? "progress" : "open",
+      title: `${continuationSites} beyond observation · ${insideNovelSites} novel inside`,
+      detail: continuationSites
+        ? `${generatedSites} target-blind novel sites total; only signed-envelope crossings count as spatial continuation.`
+        : generatedSites ? "Novel target-blind sites remain inside the finite observation envelope; spatial continuation is not yet established."
+          : "No site beyond the observation envelope has been committed yet." },
     hierarchy: { status: maximumDepth >= 2 ? "progress" : "open",
       title: `${placedClusters.length} placements · causal depth ${maximumDepth}`,
       detail: hierarchyEnabled ? "Accepted clusters may expose frozen ports and self-feed." : "Primitive-only mode deliberately prevents recursive self-feed." },
@@ -15769,7 +15823,10 @@ function liveGrowthCertificate() {
         ? "NaCl recurrence is independently certified, but this viewport trace is not itself a physical-time trajectory."
         : "No potential, elapsed physical time, growth rate, or stationary/exponential rule is inferred from this animation." },
     metrics: { knownMatchedSites: audit.matched, knownInputSites: referenceCount(), exactKnownWindowReplay: reconstructionCertified,
-      generatedStructuralSites: generatedSites, placedClusters: placedClusters.length, maximumCausalDepth: maximumDepth,
+      generatedStructuralSites: generatedSites, novelInsideObservationSites: insideNovelSites,
+      geometricContinuationSites: continuationSites,
+      maximumObservationExcursionAngstrom: domain.maximumObservationExcursionAngstrom,
+      placedClusters: placedClusters.length, maximumCausalDepth: maximumDepth,
       fixedPointReached, targetCoordinatesUsed: false, physicalPotentialUsed: false },
     benchmarkGate: benchmark.gate,
   };
