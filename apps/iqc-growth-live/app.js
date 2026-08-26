@@ -29,6 +29,7 @@ import { buildSiteProvenance } from "./site-provenance.js?v=20260826-2";
 import { buildSiteConstraintAudit } from "./site-constraint-audit.js?v=20260826-1";
 import { compareSiteEnvironments } from "./site-environment-comparison.js?v=20260826-3";
 import { buildSiteCreationPhysicsAudit } from "./site-creation-physics-audit.js?v=20260826-1";
+import { buildSiteCreationResponse } from "./site-creation-response.js?v=20260826-1";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -544,6 +545,9 @@ const siteComparisonClear = $("siteComparisonClear");
 const siteCreationPhysicsState = $("siteCreationPhysicsState");
 const siteCreationPhysicsRows = $("siteCreationPhysicsRows");
 const siteCreationPhysicsBoundary = $("siteCreationPhysicsBoundary");
+const siteCreationResponseState = $("siteCreationResponseState");
+const siteCreationResponseGrid = $("siteCreationResponseGrid");
+const siteCreationResponseBoundary = $("siteCreationResponseBoundary");
 const unitCellBadge = $("unitCellBadge");
 const captionAction = $("captionAction");
 const processTimeline = $("processTimeline");
@@ -3568,6 +3572,53 @@ function renderSiteCreationPhysicsAudit(decisionEvidence) {
     : "Supplied sites precede GCTS ranking. Their current structural fingerprints remain inspectable, but no creation-time physics ledger is invented.";
 }
 
+function selectedSiteCreationResponse(atom) {
+  const creation = atom.creationGeometry;
+  if (!creation) return buildSiteCreationResponse(null, null);
+  const sceneToAngstrom = referenceSpacingA / Math.max(referenceSpacing, 1e-12);
+  const reachScene = creation.reachAngstrom / sceneToAngstrom;
+  return buildSiteCreationResponse(creation, {
+    centerPositionAngstrom: atom.p.toArray().map((value) => value * sceneToAngstrom),
+    neighbors: atoms.filter((neighbor) => neighbor.id !== atom.id
+      && neighbor.p.distanceTo(atom.p) <= reachScene).sort((first, second) => first.id - second.id)
+      .map((neighbor) => ({ siteId: neighbor.id, species: neighbor.species,
+        vectorAngstrom: neighbor.p.clone().sub(atom.p).toArray().map((value) => value * sceneToAngstrom) })),
+  });
+}
+
+function responseValue(value, unit = "") {
+  return Number.isFinite(value) ? `${value.toFixed(4)}${unit}` : "unresolved";
+}
+
+function renderSiteCreationResponse(audit) {
+  siteCreationResponseState.textContent = audit.status;
+  siteCreationResponseGrid.replaceChildren();
+  if (!audit.available) {
+    siteCreationResponseGrid.append(siteProvenanceTile("creation shell", "not applicable",
+      "supplied geometry has no leap-frogged attachment state"));
+    siteCreationResponseBoundary.textContent = "No before/after response is invented for supplied sites.";
+    return;
+  }
+  siteCreationResponseGrid.append(
+    siteProvenanceTile("center displacement", responseValue(audit.centerDisplacementAngstrom, " Å"),
+      "creation position → current explicit position"),
+    siteProvenanceTile("neighbor identity", `${audit.persistentNeighborCount}/${audit.creationNeighborCount} retained`,
+      `${audit.lostNeighborCount} left shell · ${audit.gainedNeighborCount} entered shell`),
+    siteProvenanceTile("radial shell drift", responseValue(audit.radialRmsAngstrom, " Å RMS"),
+      `${audit.persistentNeighborCount} exact atom-ID pairs`),
+    siteProvenanceTile("non-affine response", responseValue(audit.rootD2MinAngstrom, " Å √D²min"),
+      audit.affineResolved ? `normalized ${responseValue(audit.normalizedRootD2Min)}`
+        : "finite residual available; full 3D strain unresolved"),
+    siteProvenanceTile("equivalent shear", responseValue(audit.equivalentShearStrain),
+      audit.affineResolved ? "Green–Lagrange invariant of the best local affine map" : "rank-deficient creation shell"),
+    siteProvenanceTile("local volume response", Number.isFinite(audit.localVolumeChangeFraction)
+      ? `${audit.localVolumeChangeFraction >= 0 ? "+" : ""}${(100 * audit.localVolumeChangeFraction).toFixed(2)}%` : "unresolved",
+      audit.orientationPreserving === null ? "rank-deficient creation shell"
+        : audit.orientationPreserving ? "orientation-preserving affine fit" : "orientation-reversing fit"),
+  );
+  siteCreationResponseBoundary.textContent = `Exact persistent-neighbor identity pairing inside the frozen ${audit.reachAngstrom.toFixed(3)} Å creation shell. The response may combine the bounded post-attachment constraint projection and later shell completion; it is not a force trajectory, energy relaxation, rate, mechanism, or physical elapsed time.`;
+}
+
 function inspectSite(atom) {
   selectedSiteId = atom.id;
   const snapshot = siteProvenanceSnapshot(atom);
@@ -3594,6 +3645,7 @@ function inspectSite(atom) {
   );
   renderSiteConstraintAudit(selectedSiteConstraintAudit(atom));
   renderSiteCreationPhysicsAudit(snapshot.decisionEvidence);
+  renderSiteCreationResponse(selectedSiteCreationResponse(atom));
   const pinnedAtom = atoms.find((entry) => entry.id === pinnedSiteId);
   if (pinnedAtom && pinnedAtom.id !== atom.id) renderSiteEnvironmentComparison(pinnedAtom, atom);
   else siteEnvironmentComparison.hidden = true;
@@ -8235,7 +8287,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-191",
+      buildId: "20260826-192",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -18108,6 +18160,25 @@ function frozenCreationAdmissionGates(evaluation) {
   ];
 }
 
+function freezeCreationGeometryForAtoms(atomIds) {
+  const selected = new Set(atomIds);
+  const sceneToAngstrom = referenceSpacingA / Math.max(referenceSpacing, 1e-12);
+  const reachScene = COORDINATION_CUTOFF * referenceSpacing;
+  atoms.filter((atom) => selected.has(atom.id)).forEach((atom) => {
+    atom.creationGeometry = {
+      schema: 1,
+      centerPositionAngstrom: atom.p.toArray().map((value) => receiptRound(value * sceneToAngstrom)),
+      reachAngstrom: receiptRound(reachScene * sceneToAngstrom),
+      neighbors: atoms.filter((neighbor) => neighbor.id !== atom.id
+        && neighbor.p.distanceTo(atom.p) <= reachScene).sort((first, second) => first.id - second.id)
+        .map((neighbor) => ({ siteId: neighbor.id, species: neighbor.species,
+          vectorAngstrom: neighbor.p.clone().sub(atom.p).toArray()
+            .map((value) => receiptRound(value * sceneToAngstrom)) })),
+      targetUsed: false, physicalDynamicsIntegrated: false,
+    };
+  });
+}
+
 function materializeCandidate(candidate, evaluation) {
   const parent = placedClusters.find((placement) => placement.id === candidate.parentId);
   const centerReferenceIndex = evaluation.sites.find((site) => site.center)?.referenceIndex;
@@ -18348,6 +18419,7 @@ function performOffLatticeEvent() {
     lastDecision = { eventType: decision.reuse ? "reuse" : "accept", accepted: true, state,
       resolver: decision.resolver, energy: candidate.markingScore, interval: decision.interval };
   });
+  freezeCreationGeometryForAtoms(freshAtomIdsInBatch);
   const relaxation = projectAcceptedBatchGeometry(freshAtomIdsInBatch, relaxationAuthorized);
   selectedKeys.forEach((key) => frontierCandidateKeys.delete(key));
   eventIndex += batch.length;

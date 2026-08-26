@@ -6064,3 +6064,27 @@ search. Its signed subtotal is a search-ordering score, not physical energy or p
 probability. No force, barrier, rate, trajectory, or physical time is integrated. The
 feature is therefore evidence of which finite geometric surrogates and hard constraints
 actually governed a leap-frogged move, not a claim that molecular dynamics was performed.
+
+## Build 192: pair creation geometry with the current local response
+
+Build 192 adds a true before/after structural audit for emitted atoms. After every accepted
+commuting batch has been materialized but before the optional bounded contact/angle
+projection, the engine freezes each new atom's colored 1.32a neighbor shell. The record
+contains immutable atom IDs, species, center-relative vectors, the center position, and
+the finite reach. It is session-local inspection state and is not serialized into the
+scientific receipt or used by future candidate ranking.
+
+At inspection time the current shell is paired to the creation shell by exact atom ID and
+species—not by nearest-neighbor guessing. The response reports center displacement,
+retained/lost/gained shell membership, RMS radial drift, and a least-squares local affine
+map over persistent neighbor vectors. √D²min measures the residual after the best affine
+map. When the creation cage spans three dimensions, the portal additionally reports the
+Green–Lagrange equivalent shear and determinant-minus-one local volume response. Planar or
+otherwise rank-deficient cages keep the residual but withhold those 3D strain invariants.
+
+The current shell can include neighbors attached in later leaps, so the audit deliberately
+does not label all change “relaxation.” It separates exact persistent-neighbor deformation
+from shell gain/loss and states that the combined response may reflect both the bounded
+post-attachment projection and subsequent structural completion. It is not a force
+trajectory, energy relaxation, atomistic mechanism, kinetic rate, probability, or elapsed
+physical time, and it remains target-free.

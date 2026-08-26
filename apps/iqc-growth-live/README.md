@@ -5367,3 +5367,20 @@ ledger is deliberately fail-closed about interpretation: its dimensionless geome
 scores are not energies, probabilities, forces, barriers, rates, integrated dynamics, or
 physical time. They expose how physics was encoded into search ordering and admissibility;
 they do not claim that the leap-frogged trajectory was simulated.
+
+### Build 192 · creation-to-current local geometry response
+
+Every newly emitted atom now retains a session-local snapshot of its exact colored
+1.32a neighborhood immediately after the order-independent placement batch is committed
+and before the optional bounded contact/angle projection. Selecting that atom later pairs
+neighbors by immutable atom identity and reports center displacement, retained/lost/gained
+shell members, radial-shell RMS drift, affine-subtracted √D²min, and—only for a full-rank
+three-dimensional creation cage—Green–Lagrange equivalent shear and local volume response.
+
+This closes the loop between the Build 191 creation receipt and the current explicit solid:
+the scientist can distinguish a stable attachment shell, bounded projection response, and
+later shell completion. The snapshot is ephemeral and excluded from the saved receipt.
+The comparison may combine post-attachment projection with subsequent geometric growth;
+it is not an energy minimization, force trajectory, mechanism assignment, kinetic rate,
+or measure of physical elapsed time. Rank-deficient cages retain the non-affine residual
+while three-dimensional strain invariants fail closed.
