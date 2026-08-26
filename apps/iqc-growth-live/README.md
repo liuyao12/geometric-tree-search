@@ -5384,3 +5384,23 @@ The comparison may combine post-attachment projection with subsequent geometric 
 it is not an energy minimization, force trajectory, mechanism assignment, kinetic rate,
 or measure of physical elapsed time. Rank-deficient cages retain the non-affine residual
 while three-dimensional strain invariants fail closed.
+
+### Build 193 · interactive local structural pathway
+
+The site microscope now turns the creation/current response into a bounded structural-leap
+pathway. After each committed batch, only emitted atoms whose 1.32a shell was touched are
+re-evaluated. Identical consecutive local states are deduplicated, and at most 24 changed
+states per atom are retained. The interactive plot overlays radial-shell drift and √D²min,
+marks gained/lost shell membership, and links each point to the exact search-leap index.
+
+This is deliberately not a copied trajectory of the whole solid. It records only affected
+local states, uses the exact atom-identity correspondence established at creation, and
+remains session-local. A default NaCl replay check showed a site created at leap 1 and one
+new shell neighbor at leap 2 while retaining all five creation neighbors. Leap index is
+algorithmic search order—not physical time—and the path does not integrate forces, energy,
+rates, probabilities, or dynamics.
+
+The same runtime exercise exposed and fixed a pre-existing workbench rendering error: the
+ionic-pair and bond-valence panels referenced a signed-number formatter that was scoped to
+another renderer. The formatter is now shared, and the growth-stage browser check completes
+without page errors.

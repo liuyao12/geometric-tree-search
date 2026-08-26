@@ -30,6 +30,8 @@ import { buildSiteConstraintAudit } from "./site-constraint-audit.js?v=20260826-
 import { compareSiteEnvironments } from "./site-environment-comparison.js?v=20260826-3";
 import { buildSiteCreationPhysicsAudit } from "./site-creation-physics-audit.js?v=20260826-1";
 import { buildSiteCreationResponse } from "./site-creation-response.js?v=20260826-1";
+import { appendSiteStructuralHistory, summarizeSiteStructuralHistory }
+  from "./site-structural-history.js?v=20260826-1";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -127,6 +129,7 @@ const ICE_VI_ANCHOR_TRACE_ARTIFACT = await fetch(new URL(
 validateIceViAnchorTraceArtifact(ICE_VI_ANCHOR_TRACE_ARTIFACT);
 
 const $ = (id) => document.getElementById(id);
+const signed = (value, digits = 3) => `${Number(value || 0) >= 0 ? "+" : ""}${Number(value || 0).toFixed(digits)}`;
 const studyGuideButton = $("studyGuideButton");
 const studyGuide = $("studyGuide");
 const studyGuideClose = $("studyGuideClose");
@@ -548,6 +551,10 @@ const siteCreationPhysicsBoundary = $("siteCreationPhysicsBoundary");
 const siteCreationResponseState = $("siteCreationResponseState");
 const siteCreationResponseGrid = $("siteCreationResponseGrid");
 const siteCreationResponseBoundary = $("siteCreationResponseBoundary");
+const siteStructuralHistoryState = $("siteStructuralHistoryState");
+const siteStructuralHistoryPlot = $("siteStructuralHistoryPlot");
+const siteStructuralHistorySteps = $("siteStructuralHistorySteps");
+const siteStructuralHistoryBoundary = $("siteStructuralHistoryBoundary");
 const unitCellBadge = $("unitCellBadge");
 const captionAction = $("captionAction");
 const processTimeline = $("processTimeline");
@@ -1226,6 +1233,8 @@ let selectedConstraintName = "species / hard core";
 let leapHistory = [];
 let selectedLeapIndex = -1;
 let leapEventCount = 0;
+let siteStructuralHistories = new Map();
+let pendingSiteHistoryIds = new Set();
 let multiscalePathwayHarmonic = 6;
 let selectedLeapPhysicsId = "steric";
 let selectedLeapPhysicsFilter = "all";
@@ -3619,6 +3628,60 @@ function renderSiteCreationResponse(audit) {
   siteCreationResponseBoundary.textContent = `Exact persistent-neighbor identity pairing inside the frozen ${audit.reachAngstrom.toFixed(3)} Å creation shell. The response may combine the bounded post-attachment constraint projection and later shell completion; it is not a force trajectory, energy relaxation, rate, mechanism, or physical elapsed time.`;
 }
 
+function renderSiteStructuralHistory(atom) {
+  const history = siteStructuralHistories.get(atom.id) || [];
+  const summary = summarizeSiteStructuralHistory(history);
+  siteStructuralHistoryPlot.replaceChildren(); siteStructuralHistorySteps.replaceChildren();
+  if (!summary.available) {
+    siteStructuralHistoryState.textContent = atom.creationGeometry
+      ? "creation state awaits its first recorded leap" : "supplied site · no emitted-site history";
+    siteStructuralHistoryBoundary.textContent = "No local structural pathway is reconstructed from an absent creation record.";
+    return;
+  }
+  siteStructuralHistoryState.textContent = `${summary.records} changed state${summary.records === 1 ? "" : "s"} · leap ${summary.firstLeap} → ${summary.lastLeap}`;
+  const left = 18; const top = 9; const width = 248; const height = 62;
+  const metricMaximum = Math.max(.001, ...history.flatMap((record) =>
+    [record.radialRmsAngstrom || 0, record.rootD2MinAngstrom || 0]));
+  const px = (index) => left + (history.length === 1 ? width / 2 : width * index / (history.length - 1));
+  const py = (value) => top + height * (1 - Math.min(1, (value || 0) / metricMaximum));
+  siteStructuralHistoryPlot.append(svgNode("line", { x1: left, y1: top + height, x2: left + width,
+    y2: top + height, class: "site-history-axis" }));
+  const series = [
+    ["radial", "radialRmsAngstrom"], ["nonaffine", "rootD2MinAngstrom"],
+  ];
+  series.forEach(([className, key]) => {
+    const path = history.map((record, index) => `${index ? "L" : "M"}${px(index)},${py(record[key])}`).join(" ");
+    siteStructuralHistoryPlot.append(svgNode("path", { d: path, class: `site-history-${className}` }));
+  });
+  const selectRecord = (selectedIndex) => {
+    [...siteStructuralHistorySteps.children].forEach((button, index) => button.classList.toggle("active", index === selectedIndex));
+    [...siteStructuralHistoryPlot.querySelectorAll("circle")].forEach((point, index) => point.classList.toggle("active", index === selectedIndex));
+    const record = history[selectedIndex];
+    siteStructuralHistoryState.textContent = `leap ${record.leapIndex} · ${record.persistentNeighborCount}/${record.creationNeighborCount} retained · ${record.gainedNeighborCount} gained · ${record.lostNeighborCount} lost`;
+  };
+  history.forEach((record, index) => {
+    const shellChange = record.gainedNeighborCount + record.lostNeighborCount;
+    const barHeight = Math.min(15, 3 * shellChange);
+    if (barHeight) siteStructuralHistoryPlot.append(svgNode("rect", { x: px(index) - 2, y: top + height - barHeight,
+      width: 4, height: barHeight, class: "site-history-shell" }));
+    const point = svgNode("circle", { cx: px(index), cy: py(record.rootD2MinAngstrom), r: 3,
+      class: "site-history-point", tabindex: 0, role: "button",
+      "aria-label": `Leap ${record.leapIndex}: non-affine residual ${record.rootD2MinAngstrom ?? "unresolved"} angstrom` });
+    point.addEventListener("click", () => selectRecord(index));
+    point.addEventListener("keydown", (event) => { if (event.key === "Enter" || event.key === " ") selectRecord(index); });
+    siteStructuralHistoryPlot.append(point);
+    const button = document.createElement("button"); button.type = "button";
+    const leap = document.createElement("small"); leap.textContent = `leap ${record.leapIndex}`;
+    const value = document.createElement("strong"); value.textContent = `√D² ${responseValue(record.rootD2MinAngstrom, " Å")}`;
+    const detail = document.createElement("em"); detail.textContent = `${record.gainedNeighborCount} gained · ${record.lostNeighborCount} lost`;
+    button.append(leap, value, detail); button.addEventListener("click", () => selectRecord(index));
+    siteStructuralHistorySteps.append(button);
+  });
+  selectRecord(history.length - 1);
+  siteStructuralHistoryPlot.setAttribute("aria-label", `${history.length} changed local structural states; orange radial drift, blue non-affine residual, bars shell membership changes`);
+  siteStructuralHistoryBoundary.textContent = `Affected-shell snapshots only · unchanged checks are deduplicated · at most ${MAXIMUM_RETAINED_STRUCTURAL_LEAPS} states retained. Leap index is search order, not physical time; the pathway does not integrate forces, energy, rates, or dynamics.`;
+}
+
 function inspectSite(atom) {
   selectedSiteId = atom.id;
   const snapshot = siteProvenanceSnapshot(atom);
@@ -3646,6 +3709,7 @@ function inspectSite(atom) {
   renderSiteConstraintAudit(selectedSiteConstraintAudit(atom));
   renderSiteCreationPhysicsAudit(snapshot.decisionEvidence);
   renderSiteCreationResponse(selectedSiteCreationResponse(atom));
+  renderSiteStructuralHistory(atom);
   const pinnedAtom = atoms.find((entry) => entry.id === pinnedSiteId);
   if (pinnedAtom && pinnedAtom.id !== atom.id) renderSiteEnvironmentComparison(pinnedAtom, atom);
   else siteEnvironmentComparison.hidden = true;
@@ -8287,7 +8351,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-192",
+      buildId: "20260826-193",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -17765,6 +17829,8 @@ function resetCounters() {
   leapHistory = [];
   selectedLeapIndex = -1;
   leapEventCount = 0;
+  siteStructuralHistories = new Map();
+  pendingSiteHistoryIds = new Set();
   selectedLeapPhysicsId = "steric";
   frozenPhysicsPreflightManifest = null;
   growthMechanismEvents = [];
@@ -18176,6 +18242,9 @@ function freezeCreationGeometryForAtoms(atomIds) {
             .map((value) => receiptRound(value * sceneToAngstrom)) })),
       targetUsed: false, physicalDynamicsIntegrated: false,
     };
+    pendingSiteHistoryIds.add(atom.id);
+    atoms.filter((neighbor) => neighbor.creationGeometry
+      && neighbor.p.distanceTo(atom.p) <= reachScene).forEach((neighbor) => pendingSiteHistoryIds.add(neighbor.id));
   });
 }
 
@@ -20567,9 +20636,36 @@ function structuralMorphologySnapshot(source = atoms) {
   };
 }
 
+function recordPendingSiteStructuralHistories(leap) {
+  pendingSiteHistoryIds.forEach((siteId) => {
+    const atom = atoms.find((entry) => entry.id === siteId);
+    if (!atom?.creationGeometry) return;
+    const response = selectedSiteCreationResponse(atom);
+    if (!response.available) return;
+    const previous = siteStructuralHistories.get(siteId) || [];
+    siteStructuralHistories.set(siteId, appendSiteStructuralHistory(previous, {
+      leapIndex: leap.index, label: leap.label, status: leap.status,
+      creationNeighborCount: response.creationNeighborCount,
+      currentNeighborCount: response.currentNeighborCount,
+      persistentNeighborCount: response.persistentNeighborCount,
+      lostNeighborCount: response.lostNeighborCount,
+      gainedNeighborCount: response.gainedNeighborCount,
+      centerDisplacementAngstrom: response.centerDisplacementAngstrom,
+      radialRmsAngstrom: response.radialRmsAngstrom,
+      rootD2MinAngstrom: response.rootD2MinAngstrom,
+      normalizedRootD2Min: response.normalizedRootD2Min,
+      affineResolved: response.affineResolved,
+      equivalentShearStrain: response.equivalentShearStrain,
+      localVolumeChangeFraction: response.localVolumeChangeFraction,
+    }, MAXIMUM_RETAINED_STRUCTURAL_LEAPS));
+  });
+  pendingSiteHistoryIds.clear();
+}
+
 function recordStructuralLeap(leap) {
   const frozen = { ...leap, index: ++leapEventCount, targetUsed: false,
     physicalTimeModeled: false, dynamicsIntegrated: false };
+  recordPendingSiteStructuralHistories(frozen);
   frozen.localSymmetryTransition = localSymmetryTransition(
     frozen.before?.orientationalOrder, frozen.after?.orientationalOrder);
   frozen.centrosymmetryTransition = centrosymmetryTransition(
@@ -21898,6 +21994,7 @@ function renderIonicPairConvergence(snapshot) {
     return;
   }
   const namespace = "http://www.w3.org/2000/svg";
+  const signed = (value) => `${value >= 0 ? "+" : ""}${Number(value || 0).toFixed(3)}`;
   const make = (name, attributes = {}) => {
     const element = document.createElementNS(namespace, name);
     Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, String(value)));

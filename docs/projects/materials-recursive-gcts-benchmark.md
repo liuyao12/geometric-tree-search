@@ -6088,3 +6088,30 @@ from shell gain/loss and states that the combined response may reflect both the 
 post-attachment projection and subsequent structural completion. It is not a force
 trajectory, energy relaxation, atomistic mechanism, kinetic rate, probability, or elapsed
 physical time, and it remains target-free.
+
+## Build 193: retain changed local states across structural leaps
+
+Build 193 extends the emitted-site response from two endpoints to a bounded, interactive
+local pathway. The global leap certificate does not store atomic coordinates, so it cannot
+honestly reconstruct a site's past shell. Instead, the executor maintains an ephemeral set
+of emitted sites affected by each newly committed batch: the new sites themselves and older
+emitted sites lying within the same 1.32a structural reach. After the optional bounded
+projection, those sites are reevaluated with the Build 192 exact-identity response.
+
+Per-site histories retain at most 24 changed records. A state signature over shell identity
+counts, center displacement, radial RMS, √D²min, equivalent shear, and volume response
+deduplicates unchanged checks. The UI plots radial drift and affine-subtracted residual,
+draws shell-gain/loss bars, and exposes keyboard-selectable leap points with exact local
+readouts. Supplied atoms have no such path because no creation record exists.
+
+The default three-dimensional NaCl runtime regression executes four genuine updates through
+the known-window certificate and scans emitted sites. It finds site 15 with two retained
+records: five of five creation neighbors persist, and one later neighbor enters the shell
+at leap 2. No browser page errors are accepted. The index is structural search order only;
+the local pathway is not elapsed time, a force/energy trajectory, a kinetic mechanism, or
+a statistical sample of independent material histories.
+
+Runtime QA also found an older JavaScript scope error in the ionic-pair/bond-valence
+workbench: several renderers used a signed-number formatter defined only inside another
+function. Build 193 promotes that pure formatter to shared application scope, preventing
+the diagnostics from interrupting the post-leap UI update.

@@ -40,9 +40,9 @@ def test_response_is_visible_and_claims_fail_closed():
 
 
 def test_build_192_assets_and_narrative():
-    assert 'buildId: "20260826-192"' in APP
-    assert 'app.js?v=20260826-192' in HTML
-    assert 'style.css?v=20260826-89' in HTML
+    assert 'buildId: "20260826-193"' in APP
+    assert 'app.js?v=20260826-193' in HTML
+    assert 'style.css?v=20260826-90' in HTML
     assert 'site-creation-response.js?v=20260826-1' in APP
     assert "Build 192" in README
     assert "Build 192" in DOCS

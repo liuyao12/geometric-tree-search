@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260826-89">
+  <link rel="stylesheet" href="./style.css?v=20260826-90">
   <script type="importmap">
     {
       "imports": {
@@ -1511,6 +1511,12 @@
               <div id="siteCreationResponseGrid" class="site-provenance-grid"></div>
               <p id="siteCreationResponseBoundary"></p>
             </section>
+            <section class="site-structural-history" aria-label="Selected site's changed local geometry across structural leaps">
+              <header><small>local structural pathway</small><strong id="siteStructuralHistoryState">awaiting site</strong></header>
+              <svg id="siteStructuralHistoryPlot" viewBox="0 0 284 84" role="group" aria-label="No local structural history selected"></svg>
+              <div id="siteStructuralHistorySteps" class="site-structural-history-steps"></div>
+              <p id="siteStructuralHistoryBoundary"></p>
+            </section>
             <section id="siteEnvironmentComparison" class="site-environment-comparison" aria-label="Coordinate-free comparison of two selected sites" hidden>
               <header><span><small>site A ↔ site B</small><strong id="siteComparisonState">pin A, then select B</strong></span><button id="siteComparisonClear" type="button">clear</button></header>
               <div id="siteComparisonGrid" class="site-provenance-grid"></div>
@@ -1738,7 +1744,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260826-192"></script>
+  <script type="module" src="./app.js?v=20260826-193"></script>
   <script type="module" src="./evidence-atlas.js?v=20260826-19"></script>
 </body>
 </html>

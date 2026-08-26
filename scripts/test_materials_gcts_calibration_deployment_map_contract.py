@@ -47,7 +47,7 @@ def test_public_narrative_keeps_claim_boundary():
 
 
 def test_build_176_is_versioned():
-    assert 'buildId: "20260826-192"' in APP
-    assert 'app.js?v=20260826-192' in HTML
-    assert 'style.css?v=20260826-89' in HTML
+    assert 'buildId: "20260826-193"' in APP
+    assert 'app.js?v=20260826-193' in HTML
+    assert 'style.css?v=20260826-90' in HTML
     assert 'evidence-atlas.js?v=20260826-19' in HTML
