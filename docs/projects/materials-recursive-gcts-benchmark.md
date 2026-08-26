@@ -5729,3 +5729,26 @@ uncertainty quantification. It makes the calibrated hypothesis more honest by
 refusing unsupported use, while still making no claim of a potential, force,
 barrier, dynamics, kinetics, or generalization beyond the tested archive
 domain.
+
+## Build 176: feature-space deployment and a matched rank intervention
+
+The calibration card now contains an interactive two-channel projection of the
+three-feature deployment domain. The plot draws the frozen source-support box,
+compatible target frames, and—after explicit mark activation—live candidate
+clusters. Supported and abstained points have different geometry and color.
+Users may choose distance–angle, distance–coordination, or angle–coordination
+axes without refitting the model or changing a support decision. Calculation
+labels are absent from this visualization.
+
+For every live frontier, an exact matched audit compares the active ranking
+with the same score after removing only the external-calibration term. Stable
+candidate-key tie breaking is used in both arms. The portal reports candidate
+count, frozen frontier digest, supported count, pairwise order inversions, and
+whether the top action changes. Both rankings are previews: no alternate arm
+is executed, candidate generation is shared, and hard admission is untouched.
+
+The receipt carries the plot mode and intervention record, including whether
+the ordinary known-window replay target was active. This visualization does
+not promote correlation to mechanism; it makes applicability and actual policy
+influence visible while preserving the existing no-potential, no-force,
+no-kinetics claim boundary.

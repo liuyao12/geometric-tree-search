@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { assessGeometrySurrogatePromotion, evaluateFrozenGeometrySurrogate,
   frozenGeometrySurrogateArtifact, frozenGeometrySurrogatePreference,
   frozenGeometryFeatureSupport,
+  matchedRankingTermIntervention,
   geometryCalculationCalibration, geometryCalculationSurrogate, geometryReferenceIndices,
   geometrySurrogateCompatibilityDifferences, geometrySurrogateCompatibilityKey }
   from "../apps/iqc-growth-live/geometry-calculation-calibration.js";
@@ -78,6 +79,23 @@ assert.equal(promotion.physicalPotentialValidated, false);
 const preference = frozenGeometrySurrogatePreference(surrogateRecords[0], artifact);
 assert.ok(Number.isFinite(preference.predicted));
 assert.ok(preference.score >= -3 && preference.score <= 3);
+
+const matchedRanking = matchedRankingTermIntervention([
+  { key: "candidate-a", withScore: 3, withoutScore: 1 },
+  { key: "candidate-b", withScore: 2, withoutScore: 2 },
+  { key: "candidate-c", withScore: 1, withoutScore: 0 },
+]);
+assert.equal(matchedRanking.withTermWinner.key, "candidate-a");
+assert.equal(matchedRanking.withoutTermWinner.key, "candidate-b");
+assert.equal(matchedRanking.winnerChanged, true);
+assert.equal(matchedRanking.rankInversions, 1);
+assert.equal(matchedRanking.candidateSetChanged, false);
+assert.equal(matchedRanking.hardAdmissionChanged, false);
+assert.equal(matchedRanking.executed, false);
+assert.throws(() => matchedRankingTermIntervention([
+  { key: "duplicate", withScore: 1, withoutScore: 0 },
+  { key: "duplicate", withScore: 0, withoutScore: 1 },
+]), /unique candidate keys/);
 assert.equal(preference.hardAdmissionChanged, false);
 assert.equal(preference.inFeatureSupport, true);
 const outOfSupport = frozenGeometrySurrogatePreference({ distance: 100, angle: 0, coordination: 0 }, artifact);

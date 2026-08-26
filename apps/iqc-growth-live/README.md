@@ -5087,3 +5087,26 @@ The feature box is deliberately a conservative applicability boundary, not a
 Bayesian uncertainty, confidence interval, or guarantee of accuracy. It stops
 unobserved extrapolation from masquerading as calibrated physics while leaving
 candidate generation, hard admission, and geometry unchanged.
+
+### Build 176 · interactive deployment map and matched ranking audit
+
+The frozen-surrogate panel now plots applicability directly in geometric
+feature space. Users can switch among distance × angle, distance × coordination,
+and angle × coordination views. A dashed rectangle is the frozen source box;
+green circles are compatible target-archive frames; violet diamonds are live
+growth candidates; hollow red points are support abstentions. Calculation
+targets are neither displayed nor used by this map.
+
+When the external mark is active, the panel also performs a matched
+intervention on the current frontier. It ranks the identical candidate records
+with the full active score and again after subtracting only the external-
+calibration contribution. The readout reports supported candidates, pairwise
+rank inversions, and whether the winner changes. The candidate-set digest,
+coordinates, and hard-admission result remain identical, and neither arm is
+executed by the audit.
+
+The experiment receipt records the selected axes, what populations were
+displayed, the common candidate digest, both winner keys, inversion count,
+support count, target-use status, and false flags for geometry/admission
+changes. This turns calibration deployment into something inspectable and
+falsifiable rather than an invisible coefficient in a large score stack.

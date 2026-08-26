@@ -311,6 +311,30 @@ export function frozenGeometrySurrogatePreference(record, artifact) {
     lowerPredictedTargetPreferred: true, hardAdmissionChanged: false, candidateGeometryChanged: false };
 }
 
+/** Compare one frozen candidate table with and without exactly one additive
+ * term. This is a preview audit; it never executes either ordering. */
+export function matchedRankingTermIntervention(records) {
+  if (!Array.isArray(records) || !records.length || records.some((record) =>
+    !record?.key || !Number.isFinite(record.withScore) || !Number.isFinite(record.withoutScore))) {
+    throw new Error("matched ranking intervention requires a finite frozen candidate table");
+  }
+  if (new Set(records.map((record) => record.key)).size !== records.length) {
+    throw new Error("matched ranking intervention requires unique candidate keys");
+  }
+  const stableRank = (key) => [...records].sort((first, second) => second[key] - first[key]
+    || first.key.localeCompare(second.key));
+  const withTerm = stableRank("withScore"); const withoutTerm = stableRank("withoutScore");
+  const withoutRanks = new Map(withoutTerm.map((row, index) => [row.key, index]));
+  let rankInversions = 0;
+  for (let first = 0; first < withTerm.length; first++) for (let second = first + 1;
+    second < withTerm.length; second++) {
+    if (withoutRanks.get(withTerm[first].key) > withoutRanks.get(withTerm[second].key)) rankInversions++;
+  }
+  return { candidates: records.length, withTermWinner: withTerm[0], withoutTermWinner: withoutTerm[0],
+    winnerChanged: withTerm[0].key !== withoutTerm[0].key, rankInversions,
+    candidateSetChanged: false, hardAdmissionChanged: false, executed: false };
+}
+
 /** Score a separately supplied archive with one already frozen artifact. No
  * target value participates in prediction and no coefficient is refitted. */
 export function evaluateFrozenGeometrySurrogate(records, artifact) {

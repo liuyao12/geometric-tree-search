@@ -54,11 +54,11 @@ def test_receipt_omits_method_record_and_keeps_transfer_posthoc():
     assert "exact canonical normalized method record" in ATLAS
 
 
-def test_build_175_retains_cross_archive_versioning_and_documentation():
-    assert 'buildId: "20260826-175"' in APP
-    assert 'app.js?v=20260826-175' in HTML
+def test_build_176_retains_cross_archive_versioning_and_documentation():
+    assert 'buildId: "20260826-176"' in APP
+    assert 'app.js?v=20260826-176' in HTML
     assert 'structure-database.js?v=20260826-6' in APP
-    assert 'geometry-calculation-calibration.js?v=20260826-5' in APP
-    assert 'evidence-atlas.js?v=20260826-17' in HTML
+    assert 'geometry-calculation-calibration.js?v=20260826-6' in APP
+    assert 'evidence-atlas.js?v=20260826-18' in HTML
     assert "Build 173" in README
     assert "Build 173" in DOCS

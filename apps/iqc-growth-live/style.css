@@ -717,6 +717,22 @@ body.study-guide-open { overflow: hidden; }
 .relaxation-calibration-library button:disabled { opacity: .38; }
 .relaxation-calibration-library select { width: 100%; max-width: none; margin-top: 4px; }
 .relaxation-calibration-library > div { margin-top: 4px; color: #718096; font: 5px/1.4 var(--mono); }
+.relaxation-support-map { margin-top: 6px; padding-top: 5px; border-top: 1px solid rgba(98,172,255,.12); }
+.relaxation-support-map header { align-items: end; }
+.relaxation-support-map select { width: auto; max-width: 104px; margin: 0; }
+.relaxation-support-map svg { height: 104px; margin-top: 2px; }
+.support-box { fill: rgba(98,172,255,.04); stroke: rgba(98,172,255,.55); stroke-width: .9; stroke-dasharray: 3 2; }
+.support-target { fill: #65e1bc; stroke: #d9fff3; stroke-width: .55; }
+.support-candidate { fill: #b995ff; stroke: #f0e7ff; stroke-width: .55; }
+.support-abstain { fill: #071415; stroke: #ff826f; stroke-width: 1; }
+.support-axis { stroke: rgba(98,172,255,.18); stroke-width: .7; }
+.support-label { fill: #65768a; font: 5px var(--mono); }
+.relaxation-support-legend { display: flex; flex-wrap: wrap; gap: 7px; color: #647482; font: 5px var(--mono); }
+.relaxation-support-legend span { display: inline-flex; align-items: center; gap: 3px; }
+.relaxation-support-legend span::before { content: ""; width: 6px; height: 6px; border: 1px dashed #62acff; }
+.relaxation-support-legend span:nth-child(2)::before { border: 0; border-radius: 50%; background: #65e1bc; }
+.relaxation-support-legend span:nth-child(3)::before { border: 0; background: #b995ff; transform: rotate(45deg); }
+.relaxation-support-legend span:nth-child(4)::before { border: 1px solid #ff826f; border-radius: 50%; background: transparent; }
 .relaxation-calibration p { padding-top: 5px; border-top: 1px solid rgba(181,148,255,.1); color: #6d6879; }
 .growth-group-actions { display: flex; gap: 6px; margin: 5px 0 8px; }
 .growth-group-actions button { flex: 1; min-height: 26px; padding: 5px 7px; border: 1px solid rgba(126,225,232,.18); color: #74968d; background: rgba(6,13,12,.36); font: 6px var(--mono); letter-spacing: .03em; cursor: pointer; }

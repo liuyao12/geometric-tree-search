@@ -66,11 +66,11 @@ def test_receipt_and_public_boundary_distinguish_rank_from_physics():
     assert "Build 174" in DOCS
 
 
-def test_build_175_is_versioned():
-    assert 'buildId: "20260826-175"' in APP
-    assert 'app.js?v=20260826-175' in HTML
-    assert 'style.css?v=20260826-72' in HTML
-    assert 'evidence-atlas.js?v=20260826-17' in HTML
-    assert 'geometry-calculation-calibration.js?v=20260826-5' in APP
+def test_build_176_retains_external_calibration_marking():
+    assert 'buildId: "20260826-176"' in APP
+    assert 'app.js?v=20260826-176' in HTML
+    assert 'style.css?v=20260826-73' in HTML
+    assert 'evidence-atlas.js?v=20260826-18' in HTML
+    assert 'geometry-calculation-calibration.js?v=20260826-6' in APP
     assert "Build 175" in README
     assert "Build 175" in DOCS

@@ -14,9 +14,10 @@ import { bestAffineNeighborhoodResidual } from "./relaxation-local-environment.j
 import { assessGeometrySurrogatePromotion, evaluateFrozenGeometrySurrogate,
   frozenGeometrySurrogateArtifact, frozenGeometrySurrogatePreference,
   GEOMETRY_SURROGATE_SUPPORT_MARGIN_STANDARD_DEVIATIONS,
+  matchedRankingTermIntervention,
   geometryCalculationCalibration, geometryCalculationSurrogate, geometryReferenceIndices,
   geometrySurrogateCompatibilityDifferences, geometrySurrogateCompatibilityKey }
-  from "./geometry-calculation-calibration.js?v=20260826-5";
+  from "./geometry-calculation-calibration.js?v=20260826-6";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -175,6 +176,9 @@ const relaxationCalibrationPin = $("relaxationCalibrationPin");
 const relaxationCalibrationPromote = $("relaxationCalibrationPromote");
 const relaxationCalibrationTransferState = $("relaxationCalibrationTransferState");
 const relaxationCalibrationPromotionState = $("relaxationCalibrationPromotionState");
+const relaxationCalibrationFeaturePair = $("relaxationCalibrationFeaturePair");
+const relaxationCalibrationSupportChart = $("relaxationCalibrationSupportChart");
+const relaxationCalibrationDeploymentState = $("relaxationCalibrationDeploymentState");
 const measurementConditions = $("measurementConditions");
 const measurementConditionChips = $("measurementConditionChips");
 const publishedFixtureProvenance = $("publishedFixtureProvenance");
@@ -1090,6 +1094,7 @@ let relaxationCalibrationSourceId = "";
 let relaxationCalibrationLibraryCounter = 0;
 let activeRelaxationTransferAudit = null;
 let activeExternalCalibrationMarkingId = "";
+let relaxationCalibrationFeaturePairMode = "distance-angle";
 const EXTERNAL_CALIBRATION_MARKING_WEIGHT = .18;
 let localConstraintMismatchCache = null;
 let atomGeometryRevision = 0;
@@ -2016,6 +2021,104 @@ function currentExternalCandidateSupportAudit() {
     coverage: rows.length ? supported / rows.length : null };
 }
 
+function externalCalibrationRankingInterventionAudit() {
+  const candidates = (lastPolicyComparison?.workbenchCandidates || [])
+    .filter((candidate) => candidate.externalCalibration?.available);
+  if (!candidates.length) return { available: false, reason: "no calibrated live frontier" };
+  const rows = candidates.map((candidate) => {
+    const term = candidate.scoreTerms.find((entry) => entry.id === "external-calibration");
+    const contribution = term?.contribution || 0;
+    return { key: candidate.candidateKey, action: candidate.action,
+      withScore: candidate.baselineScore, withoutScore: candidate.baselineScore - contribution,
+      contribution, supported: candidate.externalCalibration.inFeatureSupport };
+  });
+  const matched = matchedRankingTermIntervention(rows);
+  return { available: true, candidates: rows.length,
+    candidateSetDigest: lastPolicyComparison.candidateDigest,
+    candidateSetChanged: false, hardAdmissionChanged: false,
+    withMarkWinner: matched.withTermWinner, withoutMarkWinner: matched.withoutTermWinner,
+    winnerChanged: matched.winnerChanged,
+    rankInversions: matched.rankInversions, supportedCandidates: rows.filter((row) => row.supported).length,
+    targetUsed: lastPolicyComparison.rankingTargetUsed,
+    executed: false };
+}
+
+function renderRelaxationCalibrationSupportMap(calibration) {
+  relaxationCalibrationSupportChart.replaceChildren();
+  relaxationCalibrationFeaturePair.value = relaxationCalibrationFeaturePairMode;
+  const source = relaxationCalibrationLibrary.find((entry) => entry.id === relaxationCalibrationSourceId);
+  const artifact = source?.artifact;
+  if (!artifact?.featureMinimums || !artifact?.featureMaximums) {
+    relaxationCalibrationDeploymentState.textContent = "No v3 frozen source support selected.";
+    relaxationCalibrationSupportChart.setAttribute("aria-label", "No frozen source feature support selected");
+    return;
+  }
+  const axes = {
+    "distance-angle": ["meanDistanceMismatch", "meanAngleMismatch", "distance mismatch", "angle mismatch"],
+    "distance-coordination": ["meanDistanceMismatch", "meanCoordinationDeficit", "distance mismatch", "coordination deficit"],
+    "angle-coordination": ["meanAngleMismatch", "meanCoordinationDeficit", "angle mismatch", "coordination deficit"],
+  }[relaxationCalibrationFeaturePairMode];
+  const [xKey, yKey, xLabel, yLabel] = axes;
+  const xIndex = artifact.featureKeys.indexOf(xKey); const yIndex = artifact.featureKeys.indexOf(yKey);
+  if (xIndex < 0 || yIndex < 0) {
+    relaxationCalibrationDeploymentState.textContent = "Selected axes are absent from this frozen feature schema.";
+    return;
+  }
+  const marginX = GEOMETRY_SURROGATE_SUPPORT_MARGIN_STANDARD_DEVIATIONS * artifact.featureScales[xIndex];
+  const marginY = GEOMETRY_SURROGATE_SUPPORT_MARGIN_STANDARD_DEVIATIONS * artifact.featureScales[yIndex];
+  const bounds = { x0: artifact.featureMinimums[xIndex] - marginX,
+    x1: artifact.featureMaximums[xIndex] + marginX,
+    y0: artifact.featureMinimums[yIndex] - marginY,
+    y1: artifact.featureMaximums[yIndex] + marginY };
+  const transferPredictions = activeRelaxationTransferAudit?.transfer?.predictions || [];
+  const targets = (activeRelaxationTransferAudit?.transfer?.available ? transferPredictions : [])
+    .map((prediction) => ({ record: calibration?.records?.[prediction.recordIndex], prediction }))
+    .map(({ record, prediction }) => ({ x: record?.[xKey], y: record?.[yKey],
+      supported: prediction.featureSupport?.inSupport || false }))
+    .filter((point) => Number.isFinite(point.x) && Number.isFinite(point.y));
+  const candidates = (lastPolicyComparison?.workbenchCandidates || [])
+    .filter((candidate) => candidate.externalCalibration?.available)
+    .map((candidate) => ({ x: candidate.externalCalibration.features[xKey],
+      y: candidate.externalCalibration.features[yKey],
+      supported: candidate.externalCalibration.inFeatureSupport,
+      action: candidate.action }))
+    .filter((point) => Number.isFinite(point.x) && Number.isFinite(point.y));
+  const allX = [bounds.x0, bounds.x1, ...targets.map((point) => point.x), ...candidates.map((point) => point.x)];
+  const allY = [bounds.y0, bounds.y1, ...targets.map((point) => point.y), ...candidates.map((point) => point.y)];
+  let xMin = Math.min(...allX); let xMax = Math.max(...allX);
+  let yMin = Math.min(...allY); let yMax = Math.max(...allY);
+  const xPad = Math.max(1e-9, (xMax - xMin) * .08); const yPad = Math.max(1e-9, (yMax - yMin) * .08);
+  xMin -= xPad; xMax += xPad; yMin -= yPad; yMax += yPad;
+  const x = (value) => 30 + (value - xMin) / Math.max(1e-12, xMax - xMin) * 238;
+  const y = (value) => 84 - (value - yMin) / Math.max(1e-12, yMax - yMin) * 68;
+  const svg = (name, attributes, text = "") => {
+    const element = document.createElementNS("http://www.w3.org/2000/svg", name);
+    Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, String(value)));
+    if (text) element.textContent = text; return element;
+  };
+  relaxationCalibrationSupportChart.append(
+    svg("line", { x1: 30, y1: 84, x2: 270, y2: 84, class: "support-axis" }),
+    svg("line", { x1: 30, y1: 12, x2: 30, y2: 84, class: "support-axis" }),
+    svg("rect", { x: x(bounds.x0), y: y(bounds.y1), width: Math.max(1, x(bounds.x1) - x(bounds.x0)),
+      height: Math.max(1, y(bounds.y0) - y(bounds.y1)), class: "support-box" }),
+    svg("text", { x: 268, y: 98, class: "support-label", "text-anchor": "end" }, xLabel),
+    svg("text", { x: 31, y: 9, class: "support-label" }, yLabel),
+  );
+  targets.forEach((point) => relaxationCalibrationSupportChart.append(svg("circle", {
+    cx: x(point.x), cy: y(point.y), r: 2.6, class: point.supported ? "support-target" : "support-abstain",
+  })));
+  candidates.forEach((point) => relaxationCalibrationSupportChart.append(svg("rect", {
+    x: x(point.x) - 2.4, y: y(point.y) - 2.4, width: 4.8, height: 4.8,
+    transform: `rotate(45 ${x(point.x)} ${y(point.y)})`,
+    class: point.supported ? "support-candidate" : "support-abstain",
+  })));
+  const intervention = externalCalibrationRankingInterventionAudit();
+  relaxationCalibrationDeploymentState.textContent = intervention.available
+    ? `${targets.filter((point) => point.supported).length}/${targets.length} target frames · ${intervention.supportedCandidates}/${intervention.candidates} live candidates supported · ${intervention.rankInversions} pairwise rank inversion${intervention.rankInversions === 1 ? "" : "s"} · winner ${intervention.winnerChanged ? "changed" : "unchanged"} without the mark.`
+    : `${targets.filter((point) => point.supported).length}/${targets.length || "—"} compatible target frames inside source support · activate the promoted mark during growth to overlay and audit live candidates.`;
+  relaxationCalibrationSupportChart.setAttribute("aria-label", `${xLabel} by ${yLabel}: frozen source support, ${targets.length} target frames, ${candidates.length} live candidates`);
+}
+
 function renderRelaxationCalibrationLibrary(calibration, surrogate) {
   const existing = relaxationCalibrationSourceId;
   relaxationCalibrationLibrarySelect.replaceChildren(new Option("No pinned source", ""));
@@ -2036,14 +2139,17 @@ function renderRelaxationCalibrationLibrary(calibration, surrogate) {
     relaxationCalibrationTransferState.textContent = current.available
       ? "Pin this fitted archive, then load another compatible entry for a frozen no-refit test."
       : `Cross-archive pinning withheld: ${current.reason}.`;
+    renderRelaxationCalibrationSupportMap(calibration);
     return;
   }
   if (!current.available) {
     relaxationCalibrationTransferState.textContent = `Frozen source retained · target withheld: ${current.reason}.`;
+    renderRelaxationCalibrationSupportMap(calibration);
     return;
   }
   if (source.entryId === current.entryId) {
     relaxationCalibrationTransferState.textContent = "Source archive is still active. Load a different compatible NOMAD entry; resubstitution is not reported as transfer.";
+    renderRelaxationCalibrationSupportMap(calibration);
     return;
   }
   const differences = calibrationCompatibilityDifferences(source.compatibility, current.compatibility);
@@ -2051,6 +2157,7 @@ function renderRelaxationCalibrationLibrary(calibration, surrogate) {
     relaxationCalibrationTransferState.textContent = `Fail closed · incompatible ${differences.join(", ")}. No prediction was made.`;
     activeRelaxationTransferAudit = { sourceEntryId: source.entryId, targetEntryId: current.entryId,
       compatible: false, differences, refitPerformed: false };
+    renderRelaxationCalibrationSupportMap(calibration);
     return;
   }
   const transfer = evaluateFrozenGeometrySurrogate(calibration.records, source.artifact);
@@ -2068,6 +2175,7 @@ function renderRelaxationCalibrationLibrary(calibration, surrogate) {
   relaxationCalibrationTransferState.textContent = transfer.available
     ? `Frozen ${source.compatibility.targetMode} transfer · ${transfer.pairedFrames} target frames · support ${transfer.supportedFrames}/${transfer.pairedFrames} (${(100 * transfer.featureSupportCoverage).toFixed(0)}%) · ρ ${formatted(transfer.predictionSpearman)} · Q² ${formatted(transfer.predictiveQSquared)} · MAE ${transfer.meanAbsoluteError.toPrecision(3)} · no refit.`
     : `Frozen transfer withheld: ${transfer.reason}.`;
+  renderRelaxationCalibrationSupportMap(calibration);
 }
 
 function currentLocalConstraintMismatchField() {
@@ -7603,6 +7711,7 @@ async function buildExperimentReceipt() {
   const externalCalibrationPromotionAudit = externalCalibrationPromotion();
   const externalCalibrationPromotionActive = Boolean(activeExternalCalibrationPromotion());
   const externalCalibrationCandidateSupportAudit = currentExternalCandidateSupportAudit();
+  const externalCalibrationInterventionAudit = externalCalibrationRankingInterventionAudit();
   const relaxationGeometryCalibrationRecords = relaxationGeometryCalibration?.records.map((record) => ({
     frameIndexZeroBased: record.frameIndex,
     meanContactAngleMismatch: receiptRound(record.meanContactAngleMismatch, 10),
@@ -7698,7 +7807,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-175",
+      buildId: "20260826-176",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -8457,6 +8566,26 @@ async function buildExperimentReceipt() {
           outsideSupportScore: 0,
           uncertaintyProbabilityClaimed: false,
         },
+        deploymentMap: {
+          selectedFeaturePair: relaxationCalibrationFeaturePairMode,
+          sourceSupportDisplayed: Boolean(externalCalibrationPromotionAudit.source?.artifact?.featureMinimums),
+          targetFramesDisplayedOnlyAfterCompatibleFrozenEvaluation: true,
+          liveCandidatesDisplayedOnlyAfterOptInEvaluation: true,
+          calculationTargetValuesDisplayedOrUsed: false,
+        },
+        matchedRankingIntervention: externalCalibrationInterventionAudit.available ? {
+          candidateSetDigest: externalCalibrationInterventionAudit.candidateSetDigest,
+          candidateCount: externalCalibrationInterventionAudit.candidates,
+          supportedCandidates: externalCalibrationInterventionAudit.supportedCandidates,
+          withMarkWinnerKey: externalCalibrationInterventionAudit.withMarkWinner.key,
+          withoutMarkWinnerKey: externalCalibrationInterventionAudit.withoutMarkWinner.key,
+          winnerChanged: externalCalibrationInterventionAudit.winnerChanged,
+          pairwiseRankInversions: externalCalibrationInterventionAudit.rankInversions,
+          candidateSetChanged: false,
+          hardAdmissionChanged: false,
+          targetUsed: externalCalibrationInterventionAudit.targetUsed,
+          executed: false,
+        } : { available: false, reason: externalCalibrationInterventionAudit.reason },
         configuredWeight: externalCalibrationPromotionActive ? EXTERNAL_CALIBRATION_MARKING_WEIGHT : 0,
         candidateSetChanged: false,
         candidateCoordinatesChanged: false,
@@ -13255,6 +13384,7 @@ function capturePolicyComparison(entries) {
         score: entry.evaluation.externalCalibration.score,
         predicted: entry.evaluation.externalCalibration.predicted,
         standardized: entry.evaluation.externalCalibration.standardized,
+        features: { ...entry.evaluation.externalCalibration.features },
         inFeatureSupport: entry.evaluation.externalCalibration.inFeatureSupport,
         abstained: entry.evaluation.externalCalibration.abstained,
         maximumStandardizedExcess: entry.evaluation.externalCalibration.featureSupport
@@ -13295,6 +13425,9 @@ function capturePolicyComparison(entries) {
   if (policyComparisonHistory.length > 48) policyComparisonHistory.shift();
   selectedPolicySnapshotIndex = policyComparisonHistory.length - 1;
   selectedPolicyPreviewId = "active";
+  if (activeExternalCalibrationPromotion()) {
+    renderRelaxationCalibrationSupportMap(relaxationGeometryCalculationCalibration());
+  }
 }
 
 function candidateSites(candidate) {
@@ -21883,6 +22016,12 @@ relaxationCalibrationMetric.addEventListener("change", () => {
 relaxationCalibrationReference.addEventListener("change", () => {
   relaxationCalibrationReferenceMode = ["first", "pooled"].includes(relaxationCalibrationReference.value)
     ? relaxationCalibrationReference.value : "final";
+  renderRelaxationCalibration();
+});
+relaxationCalibrationFeaturePair.addEventListener("change", () => {
+  relaxationCalibrationFeaturePairMode = ["distance-coordination", "angle-coordination"]
+    .includes(relaxationCalibrationFeaturePair.value)
+    ? relaxationCalibrationFeaturePair.value : "distance-angle";
   renderRelaxationCalibration();
 });
 relaxationCalibrationPin.addEventListener("click", async () => {
