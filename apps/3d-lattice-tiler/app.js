@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260825-unified-run-v222";
+} from "./engine.js?v=20260825-selection-reset-v223";
 
 const $ = (id) => document.getElementById(id);
 
@@ -1268,6 +1268,11 @@ function hasRunnableSelection() {
 }
 
 function stopActiveRunAfterSelectionChange() {
+  if (growthRunning || growthWorkers.size) stopGrowthBenchmark("Selection changed; benchmark discarded.");
+  growthPaused = false;
+  growthPausedModes.clear();
+  growthSeries.clear();
+  growthInspection = { modeId: selectedGrowthMode(), pointIndex: null };
   if (running || paused || solverWorkerActive) {
     runSeq += 1;
     stopSolverWorker();
@@ -1277,6 +1282,7 @@ function stopActiveRunAfterSelectionChange() {
   }
   isFinished = false;
   resetRunView();
+  renderGrowthChart();
   setStatus(hasRunnableSelection() ? "Ready" : "Choose a figure or enable a custom lattice tile.");
   setRunButton();
 }
@@ -3063,7 +3069,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260825-unified-run-v222", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260825-selection-reset-v223", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3824,7 +3830,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260825-unified-run-v222", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260825-selection-reset-v223", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     setRunButton();
     worker.addEventListener("message", event => {

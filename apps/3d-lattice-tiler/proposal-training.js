@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260825-unified-run-v222";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260825-selection-reset-v223";
 import {
   createInitialProposalPopulation,
   growthCurveArea,
