@@ -6,6 +6,9 @@ MODULE = (ROOT / "apps/iqc-growth-live/bond-valence-geometry.js").read_text()
 
 def test_bond_valence_module_is_target_blind_and_fail_closed():
     assert "incrementalBondValenceSatisfaction" in MODULE
+    assert "vectorScore" in MODULE
+    assert "combinedScore" in MODULE
+    assert "V_i = sum_j s_ij rhat_ij" in MODULE
     assert "no checked bond-valence parameter connects the candidate" in MODULE
     assert "oxidationStatesInferred: false" in MODULE
     assert "uniformScaleInvariant: false" in MODULE
@@ -22,3 +25,6 @@ def test_bond_valence_provenance_and_claim_boundary_are_explicit():
     assert "bondEnergyInferred: false" in MODULE
     assert "electronDensityModeled: false" in MODULE
     assert "chargeTransferModeled: false" in MODULE
+    assert "10.1107/S0108768106026553" in MODULE
+    assert "anisotropyCanBePhysical: true" in MODULE
+    assert "lonePairModeled: false" in MODULE

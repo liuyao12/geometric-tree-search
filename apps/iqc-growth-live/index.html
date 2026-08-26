@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260826-67">
+  <link rel="stylesheet" href="./style.css?v=20260826-68">
   <script type="importmap">
     {
       "imports": {
@@ -626,14 +626,16 @@
               </select>
             </label>
             <label class="field" for="bondValenceSelect">
-              <span>Bond-valence satisfaction <b id="bondValenceHint">off · checked IUCr pairs only</b></span>
+              <span>Bond-valence satisfaction <b id="bondValenceHint">off · checked IUCr parameter ranges only</b></span>
               <select id="bondValenceSelect">
                 <option value="none" selected>Off · local residual reported</option>
-                <option value="satisfy">Favor lower local valence-sum residual</option>
+                <option value="satisfy">Favor scalar valence-sum satisfaction</option>
+                <option value="vector">Favor balanced bond-valence vectors</option>
+                <option value="combined">Combine scalar + vector satisfaction</option>
               </select>
             </label>
             <label class="field" for="bondValenceWeightSelect">
-              <span>Bond-valence weight <b>soft physical-distance rank</b></span>
+              <span>Bond-valence weight <b>soft coordination-geometry rank</b></span>
               <select id="bondValenceWeightSelect">
                 <option value="0.12">0.12 · weak</option>
                 <option value="0.24" selected>0.24 · balanced</option>
@@ -1051,13 +1053,14 @@
                 <article id="ionicConvergenceDetail" class="ionic-convergence-detail" aria-live="polite"></article>
                 <p>The same frozen candidates are re-evaluated at 2, 4, 8d<sub>nn</sub> and the global finite crop. Rank reversals diagnose cutoff sensitivity; they are not Ewald convergence, dielectric screening, electrostatic energy, or a thermodynamic limit.</p>
               </section>
-              <section class="bond-valence-card" aria-label="Local bond-valence residual audit">
-                <header><span><small>oxidation-state geometry</small><strong>Local valence-sum residual</strong></span><b id="bondValenceState">awaiting a supported ionic frontier</b></header>
+              <section class="bond-valence-card" aria-label="Local scalar and vector bond-valence audit">
+                <header><span><small>oxidation-state coordination geometry</small><strong>Valence-sum &amp; vector balance</strong></span><b id="bondValenceState">awaiting a supported ionic frontier</b></header>
                 <div id="bondValenceCandidates" class="bond-valence-candidates" role="group" aria-label="Preview exact bond-valence candidates"></div>
+                <svg id="bondValencePortrait" class="bond-valence-portrait" viewBox="0 0 240 112" role="group" aria-label="Click an exact candidate to compare scalar valence satisfaction and vector balance"></svg>
                 <div class="bond-valence-scale"><span>underbonded</span><i></i><span>satisfied</span><i></i><span>overbonded</span></div>
                 <div id="bondValenceResiduals" class="bond-valence-residuals" aria-label="Before and after local valence residuals"></div>
                 <article id="bondValenceDetail" class="bond-valence-detail" aria-live="polite"></article>
-                <p>Bars compare |Σexp[(R₀−R)/B]−|oxidation state|| before and after one unchanged exact attachment. Parameters are checked, explicitly ranged IUCr entries; missing chemistry fails closed. This is not bond energy, electron density, force, redox, relaxation, or physical time.</p>
+                <p>The portrait separates scalar valence-sum satisfaction from the magnitude of Σsᵢⱼr̂ᵢⱼ. A near-zero vector is expected only for a stable spherically symmetric coordination sphere; lone pairs and electronic or steric anisotropy can make a nonzero result meaningful. Parameters are checked IUCr entries and missing chemistry fails closed. This is not bond energy, electron density, force, redox, relaxation, or physical time.</p>
               </section>
               <div class="policy-sensitivity-heading"><small>pathway sensitivity</small><strong id="policySensitivityState">no evaluated frontiers</strong></div>
               <div id="policyHistory" class="policy-history" role="group" aria-label="Inspect policy disagreement on recent frozen frontiers"></div>
@@ -1629,7 +1632,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260826-160"></script>
+  <script type="module" src="./app.js?v=20260826-161"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

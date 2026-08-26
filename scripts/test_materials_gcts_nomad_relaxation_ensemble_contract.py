@@ -89,10 +89,10 @@ def test_scientific_nonclaims_and_mocked_sequence_regression_are_documented():
 
 
 def test_build_114_is_cache_busted():
-    assert 'buildId: "20260826-160"' in APP
+    assert 'buildId: "20260826-161"' in APP
     assert 'structure-io.js?v=20260825-6' in APP
     assert 'structure-database.js?v=20260825-4' in APP
-    assert 'app.js?v=20260826-160' in HTML
+    assert 'app.js?v=20260826-161' in HTML
 
 
 if __name__ == "__main__":

@@ -33,7 +33,7 @@ import { incrementalIonicPairGeometry, incrementalIonicPairReachProfile,
   rankIonicPairReachProfiles } from "./ionic-pair-geometry.js?v=20260826-2";
 import { BOND_VALENCE_PARAMETERS, BOND_VALENCE_PROVENANCE,
   MAXIMUM_BOND_VALENCE_DISTANCE, incrementalBondValenceSatisfaction }
-  from "./bond-valence-geometry.js?v=20260826-1";
+  from "./bond-valence-geometry.js?v=20260826-2";
 import {
   discoverFiniteMolecularComponents,
   discoverMolecularConnectionTopology,
@@ -385,6 +385,7 @@ const ionicConvergencePlot = $("ionicConvergencePlot");
 const ionicConvergenceDetail = $("ionicConvergenceDetail");
 const bondValenceState = $("bondValenceState");
 const bondValenceCandidates = $("bondValenceCandidates");
+const bondValencePortrait = $("bondValencePortrait");
 const bondValenceResiduals = $("bondValenceResiduals");
 const bondValenceDetail = $("bondValenceDetail");
 const policySensitivityState = $("policySensitivityState");
@@ -6740,7 +6741,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-160",
+      buildId: "20260826-161",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7361,11 +7362,17 @@ async function buildExperimentReceipt() {
         electronicStructureModeled: false, physicalTimeIntegrated: false,
       },
       bondValenceSatisfactionRanking: {
-        role: "target-blind local empirical valence-sum residual over unchanged exact candidates",
+        role: "target-blind local scalar and vector bond-valence geometry over unchanged exact candidates",
         mode: bondValenceMode, label: bondValenceLabel(),
         available: formalChargeTarget.available, enabled: activeBondValenceWeight() > 0,
         effectiveWeight: activeBondValenceWeight(),
-        scoreDefinition: "signed reduction of local sum |Σ exp((R0-R)/B) - |oxidation state||, including isolated emitted-site baseline",
+        scoreDefinition: bondValenceMode === "vector"
+          ? "signed reduction of local bond-valence vector-resultant burden |Σ s_ij rhat_ij|"
+          : bondValenceMode === "combined"
+            ? "equal mean of scalar valence-sum satisfaction and vector-resultant balance scores"
+            : "signed reduction of local sum |Σ exp((R0-R)/B) - |oxidation state||, including isolated emitted-site baseline",
+        scalarScoreDefinition: "signed reduction of local absolute valence-sum residual burden",
+        vectorScoreDefinition: "signed reduction of local |Σ s_ij rhat_ij| burden, with unresolved sites assigned their oxidation-state magnitude",
         provenance: BOND_VALENCE_PROVENANCE,
         curatedParameterRows: BOND_VALENCE_PARAMETERS.length,
         parameterPolicy: "exact species + exact supplied oxidation state + explicit distance range; unsupported pairs fail closed",
@@ -7378,6 +7385,8 @@ async function buildExperimentReceipt() {
         hardAdmissionChanged: false, heldoutTargetUsed: false,
         bondEnergyInferred: false, electrostaticEnergyInferred: false,
         electronDensityModeled: false, chargeTransferModeled: false,
+        sphericalIonHypothesisOnly: true, anisotropyCanBePhysical: true,
+        lonePairsModeled: false, electronicAnisotropyModeled: false, stericAnisotropyModeled: false,
         forcesIntegrated: false, physicalTimeIntegrated: false,
       },
       surfaceCompletionRanking: {
@@ -7921,14 +7930,27 @@ async function buildExperimentReceipt() {
             const preview = buildBondValencePreview(snapshot);
             const audit = preview?.candidate?.bondValence;
             return audit ? {
-              role: "selected exact-candidate local valence-sum before/after audit",
+              role: "selected exact-candidate scalar and vector bond-valence before/after audit",
               candidateDigest: preview.candidate.candidateDigest,
               score: receiptRound(audit.rawScore),
               beforeBurden: receiptRound(audit.beforeBurden),
               afterBurden: receiptRound(audit.afterBurden),
+              scalarScore: receiptRound(audit.scalarScore),
+              vectorScore: receiptRound(audit.vectorScore),
+              combinedScore: receiptRound(audit.combinedScore),
+              beforeVectorBurden: receiptRound(audit.beforeVectorBurden),
+              afterVectorBurden: receiptRound(audit.afterVectorBurden),
               addedBondCount: audit.addedBondCount,
               affectedExistingSites: audit.affectedExistingSites,
               addedSites: audit.addedSites,
+              affectedSiteResiduals: audit.affectedSites.map((record) => ({
+                role: record.role, species: record.after.species, charge: record.after.charge,
+                beforeScalarResidual: receiptRound(record.before.residual),
+                afterScalarResidual: receiptRound(record.after.residual),
+                beforeVectorMagnitude: receiptRound(record.before.vectorMagnitude),
+                afterVectorMagnitude: receiptRound(record.after.vectorMagnitude),
+                bondCountAfter: record.after.bondCount,
+              })),
               parameters: audit.usedParameters.map((record) => ({ cation: record.cation,
                 cationCharge: record.cationCharge, anion: record.anion,
                 anionCharge: record.anionCharge, R0Angstrom: record.r0,
@@ -7939,6 +7961,9 @@ async function buildExperimentReceipt() {
               provenance: BOND_VALENCE_PROVENANCE,
               candidateSetChanged: false, hardAdmissionChanged: false,
               candidateGeometryChanged: false, targetUsed: false,
+              sphericalIonHypothesisOnly: true, anisotropyCanBePhysical: true,
+              lonePairsModeled: false, electronicAnisotropyModeled: false,
+              stericAnisotropyModeled: false,
               bondEnergyInferred: false, physicalTimeIntegrated: false,
             } : null;
           })(),
@@ -11288,8 +11313,8 @@ function activeCandidateScoreTerms(entry, includeExploration = true) {
       activeChargeMomentWeight(), "soft supplied-charge nonlocal geometry", "Not Coulomb energy, dielectric response, or electronic structure."),
     scoreTerm("ionic-pair", "incremental ionic pair", evaluation.ionicPair.score,
       activeIonicPairWeight(), "soft supplied-charge 1/r pair geometry", "No dielectric, periodic images, Ewald sum, polarization, or electronic energy."),
-    scoreTerm("bond-valence", "local bond-valence residual", evaluation.bondValence.score,
-      activeBondValenceWeight(), "soft checked ion-pair distance ordering", "Empirical valence-sum validation; not bond energy, force, electron density, redox, or dynamics."),
+    scoreTerm("bond-valence", bondValenceLabel(), evaluation.bondValence.score,
+      activeBondValenceWeight(), "soft checked coordination-geometry ordering", "Scalar sum and spherical-ion vector-balance hypothesis; not bond energy, force, electron density, redox, or dynamics."),
     scoreTerm("surface", "surface completion", evaluation.surfaceCompletion.scaledDelta,
       -activeSurfaceCompletionWeight(), "soft coordination-deficit ordering", "Not surface energy."),
     scoreTerm("bulk-surface", "bulk–surface driving", evaluation.bulkSurfaceDriving.score,
@@ -12662,7 +12687,10 @@ function ionicPairReachProfileForFreshSites(rawFreshSites) {
 }
 
 function bondValenceLabel() {
-  return bondValenceMode === "satisfy" ? "IUCr bond-valence satisfaction" : "bond-valence diagnostic";
+  return bondValenceMode === "satisfy" ? "scalar valence-sum satisfaction"
+    : bondValenceMode === "vector" ? "bond-valence vector balance"
+      : bondValenceMode === "combined" ? "scalar + vector bond-valence satisfaction"
+        : "bond-valence diagnostic";
 }
 
 function activeBondValenceWeight() {
@@ -12698,9 +12726,11 @@ function bondValenceForFreshSites(rawFreshSites, { recordWork = true } = {}) {
     bondValenceEvaluations++;
     bondValenceDistanceEvaluations += result.distanceEvaluations || 0;
   }
+  const selectedScore = bondValenceMode === "vector" ? result.vectorScore
+    : bondValenceMode === "combined" ? result.combinedScore : result.scalarScore;
   return { ...result, mode: bondValenceMode, label: bondValenceLabel(),
-    enabled: bondValenceMode !== "none", rawScore: result.score || 0,
-    score: bondValenceMode === "none" ? 0 : result.score || 0,
+    enabled: bondValenceMode !== "none", rawScore: selectedScore || 0,
+    score: bondValenceMode === "none" ? 0 : selectedScore || 0,
     localCurrentSites: localAtoms.size,
     physicalScaleAngstromPerSceneUnit: referenceSpacingA / Math.max(referenceSpacing, 1e-12) };
 }
@@ -15080,8 +15110,8 @@ function syncStageOptions() {
         : ` A ${ionicPairWeight.toFixed(2)} soft ${ionicPairLabel()} term ranks the incremental signed formal-charge pair sum within ${ionicPairReach === "global" ? "the finite configuration" : `${ionicPairReach}dₙₙ`}; no dielectric, periodic images, Ewald sum, polarization, or electronic energy is inferred.`;
     const bondValenceUse = !formalChargeTarget?.available
       ? " No complete supplied oxidation-state channel exists, so bond-valence geometry fails closed."
-      : bondValenceMode === "none" ? " Checked IUCr bond-valence residuals are reported where parameters exist but contribute zero ranking weight."
-        : ` A ${bondValenceWeight.toFixed(2)} soft ${bondValenceLabel()} term favors lower local valence-sum residual at the physical Å scale; exact unsupported ion pairs fail closed, and no bond energy, redox process, force, or dynamics is inferred.`;
+      : bondValenceMode === "none" ? " Checked IUCr scalar bond-valence residuals and vector resultants are reported where parameters exist but contribute zero ranking weight."
+        : ` A ${bondValenceWeight.toFixed(2)} soft ${bondValenceLabel()} term compares scalar valence-sum and/or vector-resultant burden at the physical Å scale; exact unsupported ion pairs fail closed. Vector balance is a spherical-ion hypothesis—lone-pair, electronic, and steric anisotropy may be physical—and no bond energy, redox process, force, or dynamics is inferred.`;
     const surfaceUse = surfacePreference === "none"
       ? " Coordination deficit is reported but contributes zero ranking weight."
       : ` A ${surfacePreference === "strong" ? "strong" : "balanced"} soft surface-completion term favors actions that heal observed coordination deficits without requiring a complete frontier shell.`;
@@ -16872,14 +16902,14 @@ function physicsTranslationRecords(leap = null) {
         : "requires a complete explicitly supplied formal-charge channel",
       evidence: leap ? `Accepted mean score ${receiptRound(acceptedIonicPairScore / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedIonicPairScore / Math.max(1, rejectedDecisions), 4)}; ${ionicPairEvaluations.toLocaleString()} candidate evaluations and ${ionicPairDistanceEvaluations.toLocaleString()} pair-distance evaluations.` : "No incremental ionic-pair candidate evaluated yet.",
       boundary: "The dimensionless kernel is translation-, proper-rotation-, and uniform-scale-invariant and omits the candidate-independent current–current constant. No Coulomb prefactor, dielectric response, periodic images, Ewald sum, neutralizing background, polarization, charge transfer, electronic structure, electrostatic energy, potential, force, rate, or physical time is inferred." },
-    { id: "bond-valence", process: "local bond-valence satisfaction / oxidation-state geometry",
+    { id: "bond-valence", process: "local scalar + vector bond-valence satisfaction / coordination geometry",
       status: activeBondValenceWeight() > 0 ? "soft" : formalChargeTarget?.available ? "open" : "unavailable",
       role: activeBondValenceWeight() > 0 ? "checked empirical ion-pair distance ordering" : "diagnostic",
       encoding: formalChargeTarget?.available
-        ? `${bondValenceLabel()}; s=exp((R₀-R)/B), exact supplied ion states and explicit IUCr distance ranges, w=${activeBondValenceWeight().toFixed(2)}`
+        ? `${bondValenceLabel()}; s=exp((R₀-R)/B), V=Σs r̂, exact supplied ion states and explicit IUCr distance ranges, w=${activeBondValenceWeight().toFixed(2)}`
         : "requires a complete explicitly supplied oxidation-state channel",
       evidence: leap ? `Accepted mean score ${receiptRound(acceptedBondValenceScore / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedBondValenceScore / Math.max(1, rejectedDecisions), 4)}; ${bondValenceEvaluations.toLocaleString()} candidate evaluations and ${bondValenceDistanceEvaluations.toLocaleString()} pair-distance evaluations.` : "No local bond-valence candidate evaluated yet.",
-      boundary: "The empirical valence sum validates local geometry against supplied oxidation states. Unsupported ion pairs fail closed. It is not bond energy, electron density, charge transfer, redox inference, force, relaxation, kinetics, or physical time." },
+      boundary: "The empirical scalar sum validates local bond-length geometry; the vector resultant tests spherical-ion coordination balance. Lone pairs and electronic or steric anisotropy can make a nonzero vector physical and are not modeled. Unsupported ion pairs fail closed. Neither channel is bond energy, electron density, charge transfer, redox inference, force, relaxation, kinetics, or physical time." },
     { id: "solute-partition", process: "solute partitioning / interfacial segregation", status: activeSolutePartitionWeight() > 0 ? "soft" : "open", role: activeSolutePartitionWeight() > 0 ? "species × spatial-field ordering" : "disabled",
       encoding: activeSolutePartitionWeight() > 0
         ? `${resolvedSoluteSpecies()} enrichment relative to its observed fraction × ${solutePartitionLabel()} spatial score, w=${activeSolutePartitionWeight().toFixed(2)}`
@@ -17786,14 +17816,14 @@ function geometryConstraintEvidence(name, term, state, mode) {
     },
     "bond-valence geometry": {
       observed: state?.bondValence?.available
-        ? `${state.bondValence.addedBondCount} checked bonds · residual burden ${state.bondValence.beforeBurden.toFixed(3)} → ${state.bondValence.afterBurden.toFixed(3)}`
+        ? `${state.bondValence.addedBondCount} checked bonds · scalar burden ${state.bondValence.beforeBurden.toFixed(3)} → ${state.bondValence.afterBurden.toFixed(3)} · vector burden ${state.bondValence.beforeVectorBurden.toFixed(3)} → ${state.bondValence.afterVectorBurden.toFixed(3)} v.u.`
         : state?.bondValence?.reason || "complete supplied oxidation-state channel or checked ion pair unavailable",
       encoding: state?.bondValence?.available
-        ? `${state.bondValence.usedParameters.map((record) => `${record.cation}–${record.anion} R₀=${record.r0} Å B=${record.b} Å`).join(" · ")}; physical Å scale retained`
+        ? `${state.bondValence.usedParameters.map((record) => `${record.cation}–${record.anion} R₀=${record.r0} Å B=${record.b} Å`).join(" · ")}; s=exp((R₀-R)/B), V=Σs r̂; physical Å scale retained`
         : "No parameter is guessed for unsupported species/oxidation-state pairs.",
       searchRole: activeBondValenceWeight() > 0
         ? `Soft ${bondValenceLabel()} rank term with weight ${activeBondValenceWeight().toFixed(2)}.` : "Unavailable or diagnostic only.",
-      boundary: "The empirical valence sum is a structural validation descriptor, not bond energy, electron density, charge transfer, redox chemistry, force, relaxation, rate, or physical time.",
+      boundary: "The scalar valence sum and vector resultant are structural coordination descriptors. Vector balance assumes a spherically symmetric ion; lone-pair, electronic, and steric anisotropy can be physical and are not modeled. These are not bond energy, electron density, charge transfer, redox chemistry, force, relaxation, rate, or physical time.",
     },
     "surface completion": {
       observed: `${coordinationRecords.length} learned bulk coordination channels define local deficit relative to the sample`,
@@ -18049,7 +18079,7 @@ function renderConstraintLedger(state, mode = "configured") {
       value: state.ionicPair?.available ? `${signed(state.ionicPair.score)} · sum ${signed(state.ionicPair.signedPairSum)} · ${state.ionicPair.pairCount} pairs` : "unavailable",
       detail: activeIonicPairWeight() > 0 ? `${ionicPairLabel()} · ${ionicPairReach === "global" ? "global finite" : `R${ionicPairReach}dₙₙ`} · rank weight ${activeIonicPairWeight().toFixed(2)}` : state.ionicPair?.reason || "diagnostic" },
     { name: "bond-valence geometry", status: ranked(activeBondValenceWeight() > 0),
-      value: state.bondValence?.available ? `${signed(state.bondValence.rawScore)} · ${state.bondValence.beforeBurden.toFixed(2)}→${state.bondValence.afterBurden.toFixed(2)} · ${state.bondValence.addedBondCount} bonds` : "unavailable",
+      value: state.bondValence?.available ? `${signed(state.bondValence.rawScore)} · Σ ${signed(state.bondValence.scalarScore)} · V ${signed(state.bondValence.vectorScore)} · ${state.bondValence.addedBondCount} bonds` : "unavailable",
       detail: activeBondValenceWeight() > 0 ? `${bondValenceLabel()} · rank weight ${activeBondValenceWeight().toFixed(2)}` : state.bondValence?.reason || "diagnostic" },
     { name: "surface completion", status: ranked(activeSurfaceCompletionWeight() > 0),
       value: state.surfaceCompletion ? signed(state.surfaceCompletion.scaledDelta) : "not evaluated",
@@ -18763,7 +18793,8 @@ function buildBondValencePreview(snapshot) {
 }
 
 function renderBondValenceResiduals(snapshot) {
-  bondValenceCandidates.replaceChildren(); bondValenceResiduals.replaceChildren(); bondValenceDetail.replaceChildren();
+  bondValenceCandidates.replaceChildren(); bondValencePortrait.replaceChildren();
+  bondValenceResiduals.replaceChildren(); bondValenceDetail.replaceChildren();
   const supported = snapshot?.workbenchCandidates?.filter((candidate) => candidate.bondValence?.available) || [];
   const preview = buildBondValencePreview(snapshot);
   if (!preview) {
@@ -18771,6 +18802,10 @@ function renderBondValenceResiduals(snapshot) {
       ? "no checked ion pair on this frontier · fails closed" : "complete supplied oxidation states required";
     return;
   }
+  const selectCandidate = (candidate) => {
+    snapshot.bondValenceCandidateKey = candidate.candidateKey;
+    previewPolicyWinner(buildBondValencePreview(snapshot), snapshot);
+  };
   [...supported].sort((first, second) => second.bondValence.rawScore - first.bondValence.rawScore
     || first.candidateKey.localeCompare(second.candidateKey)).slice(0, 12).forEach((candidate) => {
     const button = document.createElement("button"); button.type = "button";
@@ -18778,13 +18813,45 @@ function renderBondValenceResiduals(snapshot) {
     button.setAttribute("aria-pressed", String(candidate.candidateKey === preview.candidateKey));
     const label = document.createElement("strong"); label.textContent = candidate.action;
     const score = document.createElement("span");
-    score.textContent = `${signed(candidate.bondValence.rawScore)} · ${candidate.bondValence.addedBondCount} bonds`;
+    score.textContent = `Σ ${signed(candidate.bondValence.scalarScore)} · V ${signed(candidate.bondValence.vectorScore)}`;
     button.append(label, score);
-    button.addEventListener("click", () => {
-      snapshot.bondValenceCandidateKey = candidate.candidateKey;
-      previewPolicyWinner(buildBondValencePreview(snapshot), snapshot);
-    });
+    button.addEventListener("click", () => selectCandidate(candidate));
     bondValenceCandidates.append(button);
+  });
+  const namespace = "http://www.w3.org/2000/svg";
+  const make = (name, attributes = {}) => {
+    const element = document.createElementNS(namespace, name);
+    Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, String(value)));
+    return element;
+  };
+  const left = 24; const top = 10; const width = 204; const height = 78;
+  const px = (value) => left + width * (.5 + .5 * Math.max(-1, Math.min(1, value)));
+  const py = (value) => top + height * (.5 - .5 * Math.max(-1, Math.min(1, value)));
+  bondValencePortrait.append(make("rect", { x: left, y: top, width, height, class: "plot-area" }),
+    make("line", { x1: px(0), y1: top, x2: px(0), y2: top + height, class: "axis" }),
+    make("line", { x1: left, y1: py(0), x2: left + width, y2: py(0), class: "axis" }));
+  const xLabel = make("text", { x: left + width, y: 106, class: "axis-label", "text-anchor": "end" });
+  xLabel.textContent = "scalar valence-sum satisfaction →";
+  const yLabel = make("text", { x: 7, y: top + height / 2, class: "axis-label", "text-anchor": "middle",
+    transform: `rotate(-90 7 ${top + height / 2})` });
+  yLabel.textContent = "vector balance →"; bondValencePortrait.append(xLabel, yLabel);
+  supported.forEach((candidate) => {
+    const selected = candidate.candidateKey === preview.candidateKey;
+    if (selected) bondValencePortrait.append(
+      make("line", { x1: px(candidate.bondValence.scalarScore), y1: py(candidate.bondValence.vectorScore),
+        x2: px(candidate.bondValence.scalarScore), y2: py(0), class: "selected-guide" }),
+      make("line", { x1: px(0), y1: py(candidate.bondValence.vectorScore),
+        x2: px(candidate.bondValence.scalarScore), y2: py(candidate.bondValence.vectorScore), class: "selected-guide" }));
+    const point = make("circle", { cx: px(candidate.bondValence.scalarScore),
+      cy: py(candidate.bondValence.vectorScore), r: selected ? 4 : 2.6,
+      class: selected ? "candidate selected" : "candidate", tabindex: 0, role: "button",
+      "aria-label": `${candidate.action}; scalar ${candidate.bondValence.scalarScore.toFixed(3)}; vector ${candidate.bondValence.vectorScore.toFixed(3)}` });
+    const title = make("title"); title.textContent = `${candidate.action} · scalar ${signed(candidate.bondValence.scalarScore)} · vector ${signed(candidate.bondValence.vectorScore)}`;
+    point.append(title); point.addEventListener("click", () => selectCandidate(candidate));
+    point.addEventListener("keydown", (event) => {
+      if (["Enter", " "].includes(event.key)) { event.preventDefault(); selectCandidate(candidate); }
+    });
+    bondValencePortrait.append(point);
   });
   const audit = preview.candidate.bondValence;
   const displayed = [...audit.affectedSites]
@@ -18812,9 +18879,19 @@ function renderBondValenceResiduals(snapshot) {
   const score = document.createElement("b"); score.textContent = signed(audit.rawScore);
   const burden = document.createElement("span");
   burden.textContent = `absolute residual burden ${audit.beforeBurden.toFixed(3)} → ${audit.afterBurden.toFixed(3)} · ${audit.addedBondCount} newly evaluated bonds · ${audit.affectedExistingSites} existing + ${audit.addedSites} emitted sites`;
+  const vector = document.createElement("span");
+  vector.textContent = `vector-resultant burden ${audit.beforeVectorBurden.toFixed(3)} → ${audit.afterVectorBurden.toFixed(3)} v.u. · scalar ${signed(audit.scalarScore)} · vector ${signed(audit.vectorScore)} · combined ${signed(audit.combinedScore)}`;
   const parameters = document.createElement("span");
   parameters.textContent = `${audit.usedParameters.map((record) => `${record.cation}${record.cationCharge >= 0 ? "+" : ""}${record.cationCharge}–${record.anion}${record.anionCharge}: R₀ ${record.r0} Å, B ${record.b} Å`).join(" · ")}${audit.missingPairTypes.length ? ` · unsupported ${audit.missingPairTypes.join(", ")}` : ""}`;
-  bondValenceDetail.append(heading, score, burden, parameters);
+  const caveat = document.createElement("span");
+  caveat.textContent = "Near-zero vector balance is a spherical-ion coordination hypothesis; lone-pair, electronic, or steric anisotropy is not modeled and can make a nonzero resultant physical.";
+  const provenance = document.createElement("span"); provenance.className = "bond-valence-provenance";
+  const parameterLink = document.createElement("a"); parameterLink.href = BOND_VALENCE_PROVENANCE.source;
+  parameterLink.target = "_blank"; parameterLink.rel = "noreferrer"; parameterLink.textContent = "IUCr bvparm2020 parameters ↗";
+  const vectorLink = document.createElement("a"); vectorLink.href = `https://doi.org/${BOND_VALENCE_PROVENANCE.vectorRuleDoi}`;
+  vectorLink.target = "_blank"; vectorLink.rel = "noreferrer"; vectorLink.textContent = "vector rule · Harvey et al. 2006 ↗";
+  provenance.append(parameterLink, vectorLink);
+  bondValenceDetail.append(heading, score, burden, vector, parameters, caveat, provenance);
   bondValenceState.textContent = `${supported.length} supported exact candidate${supported.length === 1 ? "" : "s"} · ${BOND_VALENCE_PROVENANCE.dataset} · ${snapshot.candidateDigest}`;
 }
 
@@ -20175,7 +20252,8 @@ ionicPairWeightSelect.addEventListener("change", () => {
   else syncStageOptions();
 });
 bondValenceSelect.addEventListener("change", () => {
-  bondValenceMode = bondValenceSelect.value === "satisfy" ? "satisfy" : "none";
+  bondValenceMode = ["satisfy", "vector", "combined"].includes(bondValenceSelect.value)
+    ? bondValenceSelect.value : "none";
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
 });

@@ -10,9 +10,9 @@ README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
 
 def test_study_link_contract() -> None:
-    assert 'buildId: "20260826-160"' in APP
-    assert 'app.js?v=20260826-160' in HTML
-    assert 'style.css?v=20260826-67' in HTML
+    assert 'buildId: "20260826-161"' in APP
+    assert 'app.js?v=20260826-161' in HTML
+    assert 'style.css?v=20260826-68' in HTML
     assert 'id="studyCompassShare"' in HTML
     assert "function shareableStudyUrl" in APP
     assert "function copyShareableStudyUrl" in APP

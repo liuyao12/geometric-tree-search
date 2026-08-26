@@ -4811,3 +4811,20 @@ receiving guessed chemistry. The checked entries are pinned to the IUCr
 This is local bond-valence bookkeeping—not an interatomic energy, electron
 density, charge transfer, force, relaxation, kinetics, or physical time—and it
 never changes candidate geometry or hard admission.
+
+Build 161 adds the directional constraint that the scalar sum cannot see. Each
+checked bond valence is also treated as a vector along its bond direction,
+`V_i = Σ_j s_ij r̂_ij`, following Harvey, Baggio & Baggio,
+*Acta Crystallographica B* **62** (2006), 1038–1042,
+[doi:10.1107/S0108768106026553](https://doi.org/10.1107/S0108768106026553).
+The app compares scalar valence-sum satisfaction with vector-resultant balance
+for every unchanged exact candidate in a clickable two-axis coordination
+portrait. Scientists may rank by the scalar rule, the vector rule, or their
+equal combination; the residual inspector retains both before/after burdens,
+all exact scores, and both primary provenance links. Translation and proper
+rotation leave the score invariant, while the physical angstrom scale remains
+essential. The near-zero vector rule is deliberately scoped to stable,
+spherically symmetric coordination spheres. Lone pairs and electronic or
+steric anisotropy can make a nonzero resultant physically meaningful, so the
+portal exposes the vector as a testable hypothesis—not a universal defect,
+force, torque, energy, relaxation direction, or dynamical law.

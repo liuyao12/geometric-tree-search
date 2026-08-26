@@ -13,10 +13,15 @@ assert.equal(nacl.pairCount, 6);
 assert.ok(Math.abs(nacl.sites[0].sum - .9801) < .01);
 assert.equal(nacl.usedParameters[0].r0, 2.15);
 assert.equal(nacl.usedParameters[0].b, .37);
+assert.ok(nacl.sites[0].vectorMagnitude < 1e-12);
+assert.ok(nacl.meanVectorMagnitude > 0);
 
 const incremental = incrementalBondValenceSatisfaction(chlorideShell, [na]);
 assert.equal(incremental.available, true);
 assert.ok(incremental.score > 0);
+assert.ok(incremental.vectorScore > 0);
+assert.ok(incremental.combinedScore > 0);
+assert.ok(incremental.afterVectorBurden < incremental.beforeVectorBurden);
 assert.equal(incremental.resolvedAddedSites, 1);
 assert.equal(incremental.addedBondCount, 6);
 assert.equal(incremental.uniformScaleInvariant, false);
@@ -28,10 +33,16 @@ const translated = incrementalBondValenceSatisfaction(
   chlorideShell.map((record) => ({ ...record, position: record.position.map((value, axis) => value + [8, -3, 4][axis]) })),
   [{ ...na, position: [8, -3, 4] }]);
 assert.ok(Math.abs(translated.score - incremental.score) < 1e-12);
+assert.ok(Math.abs(translated.vectorScore - incremental.vectorScore) < 1e-12);
 
 const rotated = incrementalBondValenceSatisfaction(
   chlorideShell.map((record) => ({ ...record, position: [-record.position[1], record.position[0], record.position[2]] })), [na]);
 assert.ok(Math.abs(rotated.score - incremental.score) < 1e-12);
+assert.ok(Math.abs(rotated.vectorScore - incremental.vectorScore) < 1e-12);
+
+const asymmetric = incrementalBondValenceSatisfaction(chlorideShell.slice(0, 3), [na]);
+assert.equal(asymmetric.available, true);
+assert.ok(asymmetric.vectorScore < incremental.vectorScore);
 
 const scaled = incrementalBondValenceSatisfaction(
   chlorideShell.map((record) => ({ ...record, position: record.position.map((value) => 1.1 * value) })), [na]);
@@ -46,5 +57,7 @@ const unsupported = incrementalBondValenceSatisfaction(
 assert.equal(unsupported.available, false);
 assert.match(unsupported.reason, /no checked bond-valence parameter/);
 assert.equal(BOND_VALENCE_PROVENANCE.revision, "2020-11-25");
+assert.equal(BOND_VALENCE_PROVENANCE.vectorRuleDoi, "10.1107/S0108768106026553");
+assert.match(BOND_VALENCE_PROVENANCE.vectorRuleCaveat, /anisotropy/);
 
 console.log("bond-valence geometry tests passed");

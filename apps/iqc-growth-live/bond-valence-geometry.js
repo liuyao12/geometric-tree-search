@@ -9,6 +9,10 @@ export const BOND_VALENCE_PROVENANCE = Object.freeze({
   source: "https://www.iucr.org/resources/data/data-sets/bond-valence-parameters",
   sha256: "6f921b6fd20b00fdbe4705a38f02e5c45ae91f1c39be55eb6b0620a454875b89",
   equation: "s = exp((R0 - R) / B)",
+  vectorEquation: "V_i = sum_j s_ij rhat_ij",
+  vectorRuleDoi: "10.1107/S0108768106026553",
+  vectorRuleScope: "near-zero resultant is expected for a stable spherically symmetric coordination sphere",
+  vectorRuleCaveat: "lone pairs and electronic or steric anisotropy can produce a physically meaningful nonzero resultant",
   units: "angstrom and valence units",
 });
 
@@ -73,6 +77,7 @@ function siteKey(site) {
 export function bondValenceSums(sites = []) {
   const valid = sites.filter(finiteSite);
   const sums = new Array(valid.length).fill(0);
+  const vectors = valid.map(() => [0, 0, 0]);
   const bondCounts = new Array(valid.length).fill(0);
   const usedParameters = new Map();
   const missingPairTypes = new Set();
@@ -92,6 +97,11 @@ export function bondValenceSums(sites = []) {
     }
     const valence = Math.exp((parameter.r0 - separation) / parameter.b);
     sums[first] += valence; sums[second] += valence;
+    for (let axis = 0; axis < 3; axis++) {
+      const component = valence * (valid[second].position[axis] - valid[first].position[axis]) / separation;
+      vectors[first][axis] += component;
+      vectors[second][axis] -= component;
+    }
     bondCounts[first]++; bondCounts[second]++; pairCount++;
     const parameterKey = `${parameter.cation}+${parameter.cationCharge}/${parameter.anion}${parameter.anionCharge}`;
     usedParameters.set(parameterKey, parameter);
@@ -99,8 +109,12 @@ export function bondValenceSums(sites = []) {
   const records = valid.map((site, index) => {
     const target = Math.abs(site.charge);
     const residual = sums[index] - target;
+    const vectorMagnitude = Math.hypot(...vectors[index]);
     return { species: site.species, charge: site.charge, position: [...site.position],
       target, sum: sums[index], residual, absoluteResidual: Math.abs(residual),
+      vectorSum: [...vectors[index]], vectorMagnitude,
+      normalizedVectorImbalance: bondCounts[index] > 0
+        ? vectorMagnitude / Math.max(sums[index], target, 1e-12) : null,
       bondCount: bondCounts[index], resolved: bondCounts[index] > 0,
       state: residual < -.1 ? "underbonded" : residual > .1 ? "overbonded" : "satisfied" };
   });
@@ -116,6 +130,10 @@ export function bondValenceSums(sites = []) {
       ? resolved.reduce((sum, record) => sum + record.absoluteResidual, 0) / resolved.length : null,
     maximumAbsoluteResidual: resolved.length
       ? Math.max(...resolved.map((record) => record.absoluteResidual)) : null,
+    meanVectorMagnitude: resolved.length
+      ? resolved.reduce((sum, record) => sum + record.vectorMagnitude, 0) / resolved.length : null,
+    maximumVectorMagnitude: resolved.length
+      ? Math.max(...resolved.map((record) => record.vectorMagnitude)) : null,
     usedParameters: [...usedParameters.entries()].map(([key, value]) => ({ key, ...value })),
     missingPairTypes: [...missingPairTypes].sort(),
   };
@@ -155,15 +173,27 @@ export function incrementalBondValenceSatisfaction(currentSites = [], addedSites
     + addedRecords.reduce((sum, record) => sum + record.absoluteResidual, 0);
   const denominator = Math.max(beforeBurden + afterBurden, 1e-12);
   const score = (beforeBurden - afterBurden) / denominator;
+  const beforeVectorBurden = [...affectedCurrentIndices].reduce((sum, index) =>
+    sum + (before.sites[index].resolved ? before.sites[index].vectorMagnitude : before.sites[index].target), 0)
+    + added.reduce((sum, site) => sum + Math.abs(site.charge), 0);
+  const afterVectorBurden = [...affectedCurrentIndices].reduce((sum, index) =>
+    sum + after.sites[index].vectorMagnitude, 0)
+    + addedRecords.reduce((sum, record) => sum + record.vectorMagnitude, 0);
+  const vectorDenominator = Math.max(beforeVectorBurden + afterVectorBurden, 1e-12);
+  const vectorScore = (beforeVectorBurden - afterVectorBurden) / vectorDenominator;
+  const combinedScore = .5 * (score + vectorScore);
   const affectedSites = [
     ...[...affectedCurrentIndices].map((index) => ({ role: "existing", before: before.sites[index], after: after.sites[index] })),
     ...addedRecords.map((record) => ({ role: "added", before: {
       ...record, sum: 0, residual: -record.target, absoluteResidual: record.target,
+      vectorSum: null, vectorMagnitude: record.target, normalizedVectorImbalance: 1,
       bondCount: 0, resolved: false, state: "underbonded" }, after: record })),
   ];
   return {
-    available: true, score, beforeBurden, afterBurden,
+    available: true, score, scalarScore: score, vectorScore, combinedScore,
+    beforeBurden, afterBurden, beforeVectorBurden, afterVectorBurden,
     burdenReduction: beforeBurden - afterBurden,
+    vectorBurdenReduction: beforeVectorBurden - afterVectorBurden,
     affectedSites, affectedExistingSites: affectedCurrentIndices.size,
     addedSites: added.length, resolvedAddedSites: resolvedAdded.length,
     pairCountBefore: before.pairCount, pairCountAfter: after.pairCount,
@@ -178,6 +208,11 @@ export function incrementalBondValenceSatisfaction(currentSites = [], addedSites
     properRotationInvariant: true,
     uniformScaleInvariant: false,
     physicalAngstromScaleRequired: true,
+    vectorRuleScope: BOND_VALENCE_PROVENANCE.vectorRuleScope,
+    anisotropyCanBePhysical: true,
+    lonePairModeled: false,
+    electronicAnisotropyModeled: false,
+    stericAnisotropyModeled: false,
     candidateGeometryChanged: false,
     hardAdmissionChanged: false,
     targetUsed: false,

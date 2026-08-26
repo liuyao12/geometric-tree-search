@@ -5457,3 +5457,21 @@ ledger and receipt retain parameter provenance, local before/after residuals,
 unsupported pairs, score contribution, and exact evaluation counts. This
 finite local descriptor is not an energy, electron-density or charge-transfer
 model, force calculation, relaxation, rate, or physical clock.
+
+### Directional bond-valence coordination balance
+
+The same frozen frontier now also evaluates the proper-rotation-invariant bond
+valence vector resultant `V_i = Σ_j s_ij r̂_ij` for each affected local site,
+following Harvey *et al.* (2006),
+[doi:10.1107/S0108768106026553](https://doi.org/10.1107/S0108768106026553).
+An unresolved affected or emitted ion receives its supplied oxidation-state
+magnitude as the explicit baseline burden; a resolved site contributes the
+magnitude of its vector resultant. The selected soft score can be scalar,
+vector, or the equal mean of both, without changing the exact candidate set,
+proper-SE(3) pose, collision tests, or hard admission. A live two-axis portrait
+shows every candidate's scalar and vector score and retains all resultants,
+parameter rows, work counts, and provenance in the receipt. Near-zero balance
+is expected only under the spherical-ion coordination hypothesis. Lone-pair,
+electronic, and steric anisotropy are explicitly unmodeled and may make a
+nonzero vector physical; no force, torque, energy, relaxation, or time is
+inferred.
