@@ -95,6 +95,7 @@ function fitStandardizedRidge(rows, featureKeys, targetKey, ridge) {
     return Math.sqrt(variance) > 1e-12 ? Math.sqrt(variance) : 1;
   });
   const targetMean = mean(rows.map((row) => row.record[targetKey]));
+  const targetScale = Math.sqrt(mean(rows.map((row) => (row.record[targetKey] - targetMean) ** 2))) || 1;
   const normalized = rows.map(({ record }) => featureKeys.map((key, feature) =>
     (record[key] - featureMeans[feature]) / featureScales[feature]));
   const matrix = featureKeys.map((_, first) => featureKeys.map((__, second) =>
@@ -104,7 +105,7 @@ function fitStandardizedRidge(rows, featureKeys, targetKey, ridge) {
   const coefficients = solveLinearSystem(matrix, vector);
   if (!coefficients) return null;
   return {
-    featureMeans, featureScales, standardizedCoefficients: coefficients, targetMean,
+    featureMeans, featureScales, standardizedCoefficients: coefficients, targetMean, targetScale,
     predict: (record) => targetMean + coefficients.reduce((sum, coefficient, feature) =>
       sum + coefficient * (record[featureKeys[feature]] - featureMeans[feature]) / featureScales[feature], 0),
   };
@@ -168,6 +169,7 @@ export function geometryCalculationSurrogate(records, featureKeys, targetKey, {
       featureScales: fullModel.featureScales,
       standardizedCoefficients: fullModel.standardizedCoefficients,
       targetMean: fullModel.targetMean,
+      targetScale: fullModel.targetScale,
     },
   };
 }
@@ -175,39 +177,101 @@ export function geometryCalculationSurrogate(records, featureKeys, targetKey, {
 export function frozenGeometrySurrogateArtifact(surrogate) {
   if (!surrogate?.available || !surrogate.fullModel) throw new Error("only an available fitted surrogate can be frozen");
   return {
-    schema: "gcts-frozen-geometry-calculation-surrogate-v1",
+    schema: "gcts-frozen-geometry-calculation-surrogate-v2",
     featureKeys: [...surrogate.featureKeys], targetKey: surrogate.targetKey,
     ridge: surrogate.ridge, sourcePairedFrames: surrogate.pairedFrames,
     featureMeans: [...surrogate.fullModel.featureMeans],
     featureScales: [...surrogate.fullModel.featureScales],
     standardizedCoefficients: [...surrogate.fullModel.standardizedCoefficients],
     targetMean: surrogate.fullModel.targetMean,
+    targetScale: surrogate.fullModel.targetScale,
     geometryOnlyAtEvaluation: true,
   };
 }
 
-/** Score a separately supplied archive with one already frozen artifact. No
- * target value participates in prediction and no coefficient is refitted. */
-export function evaluateFrozenGeometrySurrogate(records, artifact) {
-  if (artifact?.schema !== "gcts-frozen-geometry-calculation-surrogate-v1"
-      || !Array.isArray(artifact.featureKeys) || !artifact.featureKeys.length
+function validateFrozenArtifact(artifact) {
+  const supportedSchema = artifact?.schema === "gcts-frozen-geometry-calculation-surrogate-v1"
+    || artifact?.schema === "gcts-frozen-geometry-calculation-surrogate-v2";
+  if (!supportedSchema || !Array.isArray(artifact.featureKeys) || !artifact.featureKeys.length
       || !Array.isArray(artifact.featureMeans) || !Array.isArray(artifact.featureScales)
       || !Array.isArray(artifact.standardizedCoefficients)
       || [artifact.featureMeans, artifact.featureScales, artifact.standardizedCoefficients]
         .some((values) => values.length !== artifact.featureKeys.length)
       || !artifact.featureMeans.every(Number.isFinite) || !artifact.featureScales.every((value) => value > 0)
-      || !artifact.standardizedCoefficients.every(Number.isFinite) || !Number.isFinite(artifact.targetMean)) {
+      || !artifact.standardizedCoefficients.every(Number.isFinite) || !Number.isFinite(artifact.targetMean)
+      || (artifact.schema.endsWith("-v2") && !(Number.isFinite(artifact.targetScale) && artifact.targetScale > 0))) {
     throw new Error("invalid frozen geometry surrogate artifact");
   }
+}
+
+/** Predict from geometry alone with an already frozen archive artifact. */
+export function predictFrozenGeometrySurrogate(record, artifact) {
+  validateFrozenArtifact(artifact);
+  if (!record || !artifact.featureKeys.every((key) => Number.isFinite(record[key]))) {
+    throw new Error("frozen geometry surrogate prediction requires every geometric feature");
+  }
+  return artifact.targetMean + artifact.standardizedCoefficients.reduce((sum, coefficient, feature) =>
+    sum + coefficient * (record[artifact.featureKeys[feature]] - artifact.featureMeans[feature])
+      / artifact.featureScales[feature], 0);
+}
+
+export const GEOMETRY_SURROGATE_PROMOTION_GATE = Object.freeze({
+  minimumTargetFrames: 5,
+  minimumPredictionSpearman: .8,
+  minimumPredictiveQSquared: 0,
+});
+
+/** A predeclared, no-refit cross-archive gate. Passing makes the artifact
+ * eligible for opt-in ranking; it does not validate a potential or kinetics. */
+export function assessGeometrySurrogatePromotion(transfer) {
+  const checks = {
+    frozenEvaluationAvailable: Boolean(transfer?.available),
+    noRefit: transfer?.refitPerformed === false,
+    predictionDidNotUseTargetValues: transfer?.targetValuesUsedForPrediction === false,
+    enoughTargetFrames: Number.isInteger(transfer?.pairedFrames)
+      && transfer.pairedFrames >= GEOMETRY_SURROGATE_PROMOTION_GATE.minimumTargetFrames,
+    rankTransfer: Number.isFinite(transfer?.predictionSpearman)
+      && transfer.predictionSpearman >= GEOMETRY_SURROGATE_PROMOTION_GATE.minimumPredictionSpearman,
+    positivePredictiveSkill: Number.isFinite(transfer?.predictiveQSquared)
+      && transfer.predictiveQSquared > GEOMETRY_SURROGATE_PROMOTION_GATE.minimumPredictiveQSquared,
+  };
+  const failedChecks = Object.entries(checks).filter(([, passed]) => !passed).map(([name]) => name);
+  return {
+    eligible: failedChecks.length === 0,
+    checks,
+    failedChecks,
+    thresholds: { ...GEOMETRY_SURROGATE_PROMOTION_GATE },
+    role: "eligibility gate for an opt-in soft ranking hypothesis over an unchanged candidate set",
+    physicalPotentialValidated: false,
+    kineticsValidated: false,
+  };
+}
+
+/** Lower predicted target values are preferred. The source-target standard
+ * deviation makes this dimensionless and the clamp prevents one fitted model
+ * from overwhelming the structural grammar. */
+export function frozenGeometrySurrogatePreference(record, artifact) {
+  validateFrozenArtifact(artifact);
+  if (!(Number.isFinite(artifact.targetScale) && artifact.targetScale > 0)) {
+    throw new Error("dimensionless growth preference requires a v2 artifact target scale");
+  }
+  const predicted = predictFrozenGeometrySurrogate(record, artifact);
+  const standardized = (artifact.targetMean - predicted) / artifact.targetScale;
+  return { predicted, standardized, score: Math.max(-3, Math.min(3, standardized)),
+    lowerPredictedTargetPreferred: true, hardAdmissionChanged: false, candidateGeometryChanged: false };
+}
+
+/** Score a separately supplied archive with one already frozen artifact. No
+ * target value participates in prediction and no coefficient is refitted. */
+export function evaluateFrozenGeometrySurrogate(records, artifact) {
+  validateFrozenArtifact(artifact);
   const rows = records.map((record, recordIndex) => ({ record, recordIndex }))
     .filter(({ record }) => artifact.featureKeys.every((key) => Number.isFinite(record[key]))
       && Number.isFinite(record[artifact.targetKey]));
   const predictions = rows.map(({ record, recordIndex }) => ({
     recordIndex,
     observed: record[artifact.targetKey],
-    predicted: artifact.targetMean + artifact.standardizedCoefficients.reduce((sum, coefficient, feature) =>
-      sum + coefficient * (record[artifact.featureKeys[feature]] - artifact.featureMeans[feature])
-        / artifact.featureScales[feature], 0),
+    predicted: predictFrozenGeometrySurrogate(record, artifact),
   }));
   if (!predictions.length) return {
     available: false, reason: "no compatible target pairs", pairedFrames: 0,

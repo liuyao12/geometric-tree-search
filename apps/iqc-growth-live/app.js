@@ -11,10 +11,11 @@ import {
 } from "./structure-io.js?v=20260826-7";
 import { randomNomadStructure } from "./structure-database.js?v=20260826-6";
 import { bestAffineNeighborhoodResidual } from "./relaxation-local-environment.js?v=20260826-2";
-import { evaluateFrozenGeometrySurrogate, frozenGeometrySurrogateArtifact,
+import { assessGeometrySurrogatePromotion, evaluateFrozenGeometrySurrogate,
+  frozenGeometrySurrogateArtifact, frozenGeometrySurrogatePreference,
   geometryCalculationCalibration, geometryCalculationSurrogate, geometryReferenceIndices,
   geometrySurrogateCompatibilityDifferences, geometrySurrogateCompatibilityKey }
-  from "./geometry-calculation-calibration.js?v=20260826-3";
+  from "./geometry-calculation-calibration.js?v=20260826-4";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -170,7 +171,9 @@ const relaxationSurrogateState = $("relaxationSurrogateState");
 const relaxationSurrogateCoefficients = $("relaxationSurrogateCoefficients");
 const relaxationCalibrationLibrarySelect = $("relaxationCalibrationLibrarySelect");
 const relaxationCalibrationPin = $("relaxationCalibrationPin");
+const relaxationCalibrationPromote = $("relaxationCalibrationPromote");
 const relaxationCalibrationTransferState = $("relaxationCalibrationTransferState");
+const relaxationCalibrationPromotionState = $("relaxationCalibrationPromotionState");
 const measurementConditions = $("measurementConditions");
 const measurementConditionChips = $("measurementConditionChips");
 const publishedFixtureProvenance = $("publishedFixtureProvenance");
@@ -1085,6 +1088,8 @@ let relaxationCalibrationLibrary = [];
 let relaxationCalibrationSourceId = "";
 let relaxationCalibrationLibraryCounter = 0;
 let activeRelaxationTransferAudit = null;
+let activeExternalCalibrationMarkingId = "";
+const EXTERNAL_CALIBRATION_MARKING_WEIGHT = .18;
 let localConstraintMismatchCache = null;
 let atomGeometryRevision = 0;
 let iceViMicrostate = null;
@@ -1952,6 +1957,55 @@ function calibrationCompatibilityDifferences(source, current) {
   return geometrySurrogateCompatibilityDifferences(source, current).map((key) => labels[key] || key);
 }
 
+function externalCalibrationPromotion() {
+  const audit = activeRelaxationTransferAudit;
+  const source = relaxationCalibrationLibrary.find((entry) => entry.id === audit?.sourceId);
+  const gate = assessGeometrySurrogatePromotion(audit?.transfer);
+  const id = source && audit?.targetEntryId
+    ? `external-calibration:${source.id}:${audit.targetEntryId}` : "";
+  return { id, source, audit, gate,
+    eligible: Boolean(id && audit?.compatible && source?.artifact && gate.eligible) };
+}
+
+function activeExternalCalibrationPromotion() {
+  const promotion = externalCalibrationPromotion();
+  return promotion.eligible && promotion.id === activeExternalCalibrationMarkingId ? promotion : null;
+}
+
+function calibratedGeometryFeaturesForFreshSites(rawFreshSites,
+  projection = constraintProjectionForFreshSites(rawFreshSites)) {
+  const { projected, freshIndices } = projection;
+  if (!freshIndices.length || !coloredAngularEnvelopes) return null;
+  const field = coloredLocalConstraintMismatch(projected.map((site) => site.species),
+    (first, second) => projected[second].p.clone().sub(projected[first].p).toArray(),
+    coloredDistanceEnvelopes, coloredCoordinationEnvelopes, coloredAngularEnvelopes,
+    { centerIndices: freshIndices });
+  const average = (key) => field.records.reduce((sum, record) => sum + record[key], 0)
+    / Math.max(1, field.records.length);
+  return {
+    meanDistanceMismatch: average("distance"),
+    meanAngleMismatch: average("angle"),
+    meanCoordinationDeficit: field.meanCoordinationDeficit,
+    sampledCenters: field.sampledCenters,
+    sameDefinitionsAsArchiveSurrogate: true,
+  };
+}
+
+function externalCalibrationForFreshSites(rawFreshSites, projection) {
+  const promotion = activeExternalCalibrationPromotion();
+  if (!promotion) return { available: false, score: 0, features: null,
+    weight: 0, hardAdmissionChanged: false, candidateGeometryChanged: false };
+  const features = calibratedGeometryFeaturesForFreshSites(rawFreshSites, projection);
+  if (!features) return { available: false, score: 0, features,
+    weight: 0, hardAdmissionChanged: false, candidateGeometryChanged: false };
+  const preference = frozenGeometrySurrogatePreference(features, promotion.source.artifact);
+  return { available: true, ...preference, features, weight: EXTERNAL_CALIBRATION_MARKING_WEIGHT,
+    markingId: promotion.id, sourceEntryId: promotion.source.entryId,
+    targetEntryId: promotion.audit.targetEntryId, gate: promotion.gate,
+    candidateSetChanged: false, targetValuesUsedForCandidatePrediction: false,
+    physicalPotentialUsed: false, physicalTimeIntegrated: false };
+}
+
 function renderRelaxationCalibrationLibrary(calibration, surrogate) {
   const existing = relaxationCalibrationSourceId;
   relaxationCalibrationLibrarySelect.replaceChildren(new Option("No pinned source", ""));
@@ -1963,6 +2017,10 @@ function renderRelaxationCalibrationLibrary(calibration, surrogate) {
   const current = calibrationArchiveCompatibility(calibration);
   relaxationCalibrationPin.disabled = !surrogate?.available || !current.available;
   activeRelaxationTransferAudit = null;
+  relaxationCalibrationPromote.disabled = true;
+  relaxationCalibrationPromote.classList.remove("active");
+  relaxationCalibrationPromote.textContent = "Use as GCTS mark";
+  relaxationCalibrationPromotionState.textContent = "Growth ranking remains disconnected until a different compatible archive passes the frozen promotion gate.";
   const source = relaxationCalibrationLibrary.find((entry) => entry.id === relaxationCalibrationSourceId);
   if (!source) {
     relaxationCalibrationTransferState.textContent = current.available
@@ -1988,6 +2046,14 @@ function renderRelaxationCalibrationLibrary(calibration, surrogate) {
   const transfer = evaluateFrozenGeometrySurrogate(calibration.records, source.artifact);
   activeRelaxationTransferAudit = { sourceEntryId: source.entryId, targetEntryId: current.entryId,
     sourceId: source.id, compatible: true, differences: [], transfer };
+  const promotion = externalCalibrationPromotion();
+  relaxationCalibrationPromote.disabled = !promotion.eligible;
+  const active = promotion.eligible && promotion.id === activeExternalCalibrationMarkingId;
+  relaxationCalibrationPromote.classList.toggle("active", active);
+  relaxationCalibrationPromote.textContent = active ? "GCTS mark active" : "Use as GCTS mark";
+  relaxationCalibrationPromotionState.textContent = promotion.eligible
+    ? `Promotion gate passed · n≥${promotion.gate.thresholds.minimumTargetFrames}, ρ≥${promotion.gate.thresholds.minimumPredictionSpearman.toFixed(2)}, Q²>0. Opt-in adds a bounded ${EXTERNAL_CALIBRATION_MARKING_WEIGHT.toFixed(2)} rank term only; candidates and hard gates are unchanged.`
+    : `Not promotable · failed ${promotion.gate.failedChecks.join(", ") || "cross-archive gate"}. Growth ranking remains unchanged.`;
   const formatted = (value) => Number.isFinite(value) ? `${value >= 0 ? "+" : ""}${value.toFixed(3)}` : "unresolved";
   relaxationCalibrationTransferState.textContent = transfer.available
     ? `Frozen ${source.compatibility.targetMode} transfer · ${transfer.pairedFrames} target frames · ρ ${formatted(transfer.predictionSpearman)} · Q² ${formatted(transfer.predictiveQSquared)} · MAE ${transfer.meanAbsoluteError.toPrecision(3)} · no refit.`
@@ -7524,6 +7590,8 @@ async function buildExperimentReceipt() {
   const relaxationGeometrySurrogate = relaxationGeometryCalibration
     ? (relaxationCalibrationMetricMode === "force"
       ? relaxationGeometryCalibration.forceSurrogate : relaxationGeometryCalibration.energySurrogate) : null;
+  const externalCalibrationPromotionAudit = externalCalibrationPromotion();
+  const externalCalibrationPromotionActive = Boolean(activeExternalCalibrationPromotion());
   const relaxationGeometryCalibrationRecords = relaxationGeometryCalibration?.records.map((record) => ({
     frameIndexZeroBased: record.frameIndex,
     meanContactAngleMismatch: receiptRound(record.meanContactAngleMismatch, 10),
@@ -7613,7 +7681,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-173",
+      buildId: "20260826-174",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7657,7 +7725,7 @@ async function buildExperimentReceipt() {
         usedForMarkingLearning: false,
         usedForCandidateGeneration: false,
         usedForAdmission: false,
-        usedForBranchRanking: false,
+        usedForBranchRanking: externalCalibrationPromotionActive,
         usedForRelaxation: false,
         usedForClassification: false,
       } : null,
@@ -7901,19 +7969,29 @@ async function buildExperimentReceipt() {
               refitPerformed: false,
               targetValuesUsedForPrediction: false,
               targetValuesUsedForPosthocScoring: Boolean(activeRelaxationTransferAudit.transfer?.available),
+              promotionGate: externalCalibrationPromotionAudit.gate,
+              eligibleAsGrowthMark: externalCalibrationPromotionAudit.eligible,
+              promotedAsGrowthMark: externalCalibrationPromotionActive,
+              growthMarkingId: externalCalibrationPromotionActive
+                ? externalCalibrationPromotionAudit.id : null,
+              growthRankingWeight: externalCalibrationPromotionActive
+                ? EXTERNAL_CALIBRATION_MARKING_WEIGHT : 0,
             } : null,
             absoluteEnergyComparedAcrossEntries: false,
-            usedForGrowth: false,
+            usedForGrowth: externalCalibrationPromotionActive,
+            usedForCandidateGeneration: false,
+            usedForHardAdmission: false,
+            candidateGeometryChanged: false,
           },
           geometryFitUsesEnergyOrForce: false,
-          labelsUsedToRankGrowth: false,
+          labelsUsedToRankGrowth: externalCalibrationPromotionActive,
           independentSamplesClaimed: false,
           predictiveValidationPerformed: false,
           physicalCausalityClaimed: false,
           physicalTimeUsed: false,
           usedForClusterIdentification: false,
           usedForMarkingLearning: false,
-          usedForGrowth: false,
+          usedForGrowth: externalCalibrationPromotionActive,
         } : null,
         framesUsedForDistanceCoordinationAngleEnvelopes: coloredDistanceEnvelopes.frameCount,
         framesUsedForClusterCover: 1,
@@ -8332,6 +8410,25 @@ async function buildExperimentReceipt() {
         candidateCoordinatesChanged: false,
         hardAdmissionChanged: false,
         modulusOrStressInferred: false,
+      },
+      externallyCalibratedGeometryRanking: {
+        role: "opt-in soft ordering from a frozen no-refit cross-archive geometry surrogate",
+        available: externalCalibrationPromotionAudit.eligible,
+        active: externalCalibrationPromotionActive,
+        markingId: externalCalibrationPromotionActive ? externalCalibrationPromotionAudit.id : null,
+        sourceEntryId: externalCalibrationPromotionAudit.source?.entryId || null,
+        targetEntryId: externalCalibrationPromotionAudit.audit?.targetEntryId || null,
+        targetMode: externalCalibrationPromotionAudit.source?.compatibility?.targetMode || null,
+        featureKeys: RELAXATION_SURROGATE_FEATURES,
+        exactCandidateFeatureDefinitionsSharedWithArchiveSurrogate: true,
+        promotionGate: externalCalibrationPromotionAudit.gate,
+        configuredWeight: externalCalibrationPromotionActive ? EXTERNAL_CALIBRATION_MARKING_WEIGHT : 0,
+        candidateSetChanged: false,
+        candidateCoordinatesChanged: false,
+        hardAdmissionChanged: false,
+        targetValuesUsedForCandidatePrediction: false,
+        physicalPotentialUsed: false,
+        kineticsOrPhysicalTimeInferred: false,
       },
       postAttachmentConstraintProjection: {
         role: "target-blind bounded accommodation of newly emitted post-replay sites in the learned contact-angle geometry",
@@ -12431,6 +12528,9 @@ function activeCandidateScoreTerms(entry, includeExploration = true) {
   const terms = [...baseCandidateScoreTerms(entry),
     scoreTerm("geometric-strain", "contact + angle strain", effectiveGeometricStrain(evaluation).total,
       -activeGeometricStrainWeight(), "soft local metric ordering", "Dimensionless mismatch, not elastic energy."),
+    scoreTerm("external-calibration", "externally calibrated geometry", evaluation.externalCalibration.score,
+      evaluation.externalCalibration.weight, "cross-archive-gated soft geometry ordering",
+      "Frozen calculation association; not a potential, force, barrier, kinetics, or admission rule."),
     scoreTerm("composition", "composition balance", evaluation.compositionBalance.scaledDelta,
       -activeCompositionBalanceWeight(), "soft finite-reservoir ordering", "Not chemical potential or free energy."),
     scoreTerm("solute-partition", "solute partition", evaluation.solutePartition.score,
@@ -12487,6 +12587,7 @@ function oneFactorPolicyTerm(policyId, entry, label) {
   const evaluation = entry.evaluation;
   const specs = {
     elastic: [evaluation.geometricStrain.total, -.16],
+    "external-calibration": [evaluation.externalCalibration.score, evaluation.externalCalibration.weight],
     "affine-load": [effectiveGeometricStrain(evaluation).total, -.16],
     composition: [evaluation.compositionBalance.scaledDelta, -.35],
     "solute-partition": [evaluation.solutePartition.score, activeSolutePartitionWeight()],
@@ -13014,6 +13115,9 @@ function capturePolicyComparison(entries) {
   const policies = [
     { id: "grammar", label: "mark + recurrence", score: (entry) => entry.baseScore },
     { id: "elastic", label: "elastic 0.16", score: (entry) => entry.baseScore - .16 * entry.evaluation.geometricStrain.total },
+    { id: "external-calibration", label: `external geometry ${EXTERNAL_CALIBRATION_MARKING_WEIGHT.toFixed(2)}`,
+      score: (entry) => entry.baseScore + entry.evaluation.externalCalibration.weight
+        * entry.evaluation.externalCalibration.score },
     { id: "affine-load", label: `${affineLoadModeLabel()} metric`,
       score: (entry) => entry.baseScore - .16 * effectiveGeometricStrain(entry.evaluation).total },
     { id: "composition", label: "composition 0.35", score: (entry) => entry.baseScore - .35 * entry.evaluation.compositionBalance.scaledDelta },
@@ -14137,6 +14241,7 @@ function commutingFrontierBatch() {
     const baseScore = dynamicPriority + 2.5 * referenceGain;
     const score = baseScore
         - activeGeometricStrainWeight() * effectiveGeometricStrain(evaluation).total
+        + evaluation.externalCalibration.weight * evaluation.externalCalibration.score
         - activeCompositionBalanceWeight() * evaluation.compositionBalance.scaledDelta
         + activeSolutePartitionWeight() * evaluation.solutePartition.score
         - activeFormalChargeWeight() * evaluation.formalChargeBalance.scaledDelta
@@ -14261,6 +14366,7 @@ function evaluateCandidate(candidate, {
   const coordinationOverflows = reconstructing ? [] : coordinationOverflowsForFreshSites(fresh, constraintProjection);
   const angularViolations = reconstructing ? [] : angularViolationsForFreshSites(fresh, constraintProjection);
   const geometricStrain = geometricStrainForFreshSites(fresh, constraintProjection);
+  const externalCalibration = externalCalibrationForFreshSites(fresh, constraintProjection);
   const affineLoadedGeometricStrain = affineLoadedGeometricStrainForFreshSites(fresh, constraintProjection);
   const surfaceCompletion = surfaceCompletionForFreshSites(fresh, constraintProjection);
   const bulkSurfaceDriving = bulkSurfaceDrivingForCandidate(fresh, surfaceCompletion, { recordWork });
@@ -14292,7 +14398,7 @@ function evaluateCandidate(candidate, {
     && fresh.length > 0 && knownFailures === 0 && coordinationOverflows.length === 0
     && angularViolations.length === 0 && feedstockSupply.admitted && (markingAccepted || markingFallback);
   return { accepted, sites, merged, fresh, conflicts, boundaryFailures, knownFailures, markingFallback,
-    coordinationOverflows, angularViolations, geometricStrain, affineLoadedGeometricStrain,
+    coordinationOverflows, angularViolations, geometricStrain, externalCalibration, affineLoadedGeometricStrain,
     surfaceCompletion, bulkSurfaceDriving, attachmentTopology, habitAnisotropy, frontMorphology, capillaryGeometry, epitaxyRegistry, compositionBalance, feedstockSupply, formalChargeBalance, chargeGeometry, chargeMoment, ionicPair, bondValence,
     externalDrive, thermalField, solutePartition, constraintRobustness, interfaceAccommodation,
     microstructureCoupling, loopClosure, defectPrecursors, coherencyMemory, arrivalPath, feedExposure,
@@ -15239,6 +15345,7 @@ function restartMarkingTraining() {
 
 function renderMarkingLibrary() {
   const compatible = compatibleMarkings();
+  const external = externalCalibrationPromotion();
   markingLibrarySelect.replaceChildren();
   const baseline = document.createElement("option");
   baseline.value = "action";
@@ -15248,16 +15355,23 @@ function renderMarkingLibrary() {
   oracle.value = "direct";
   oracle.textContent = "Exact local oracle · diagnostic ceiling";
   markingLibrarySelect.appendChild(oracle);
+  if (external.eligible) {
+    const option = document.createElement("option");
+    option.value = external.id;
+    option.textContent = `External geometry · ${external.source.compatibility.targetMode} · ρ ${external.audit.transfer.predictionSpearman.toFixed(2)} · soft rank only`;
+    markingLibrarySelect.appendChild(option);
+  }
   compatible.forEach((marking) => {
     const option = document.createElement("option");
     option.value = marking.id;
     option.textContent = `${marking.name} · loss ${marking.validationLoss.toFixed(3)}`;
     markingLibrarySelect.appendChild(option);
   });
-  const wanted = policySelect.value === "marked" ? activeMarkingId : policySelect.value;
+  const wanted = activeExternalCalibrationPromotion()?.id
+    || (policySelect.value === "marked" ? activeMarkingId : policySelect.value);
   markingLibrarySelect.value = [...markingLibrarySelect.options].some((option) => option.value === wanted)
     ? wanted : compatible.at(-1)?.id || "action";
-  markingLibraryCount.textContent = `${compatible.length} compatible · ${markingLibrary.length} saved`;
+  markingLibraryCount.textContent = `${compatible.length} learned${external.eligible ? " + 1 cross-archive" : ""} · ${markingLibrary.length} saved`;
 }
 
 function renderPoseAtlas() {
@@ -16441,14 +16555,16 @@ function syncStageOptions() {
       ? "choose supported-film geometry"
       : epitaxyTemplateMode === "none" ? "inert excluded plane · registry off"
         : `${epitaxyTemplateLabel()} · weight ${epitaxyWeight.toFixed(2)}`;
-    stageOptionsState.textContent = `${growthProtocolMode === "custom" ? "custom" : GROWTH_PROTOCOLS[growthProtocolMode].label} · ${policySelect.value === "marked" && active ? active.name.split(" · ")[0] : "baseline"} · ${geometryPreference === "strain" ? `strain ${geometricStrainWeight.toFixed(2)}` : "no strain"}`;
+    stageOptionsState.textContent = `${growthProtocolMode === "custom" ? "custom" : GROWTH_PROTOCOLS[growthProtocolMode].label} · ${activeExternalCalibrationPromotion() ? "external geometry mark" : policySelect.value === "marked" && active ? active.name.split(" · ")[0] : "baseline"} · ${geometryPreference === "strain" ? `strain ${geometricStrainWeight.toFixed(2)}` : "no strain"}`;
     primitiveGrowthButton.classList.toggle("active", finiteIceAnchorMode || !hierarchyEnabled);
     primitiveGrowthButton.setAttribute("aria-pressed", String(finiteIceAnchorMode || !hierarchyEnabled));
     hierarchicalGrowthButton.classList.toggle("active", !finiteIceAnchorMode && hierarchyEnabled);
     hierarchicalGrowthButton.setAttribute("aria-pressed", String(!finiteIceAnchorMode && hierarchyEnabled));
     hierarchicalGrowthButton.disabled = finiteIceAnchorMode;
     primitiveGrowthButton.disabled = finiteIceAnchorMode;
-    const markingUse = markingSearchMode === "portfolio"
+    const markingUse = activeExternalCalibrationPromotion()
+      ? `The selected cross-archive geometry mark contributes a bounded ${EXTERNAL_CALIBRATION_MARKING_WEIGHT.toFixed(2)} soft rank term over the unchanged candidate set. It passed a frozen no-refit transfer gate but is not a physical potential or hard admission rule.`
+      : markingSearchMode === "portfolio"
       ? `The ${compatibleMarkings().length || 1}-mark compatible library scores each unchanged action; any trained mark may admit it.`
       : "The selected vocabulary-compatible marking ranks and prunes the unchanged candidate placements.";
     const strainUse = geometryPreference === "strain"
@@ -21757,6 +21873,18 @@ relaxationCalibrationLibrarySelect.addEventListener("change", () => {
   relaxationCalibrationSourceId = relaxationCalibrationLibrarySelect.value;
   renderRelaxationCalibration();
 });
+relaxationCalibrationPromote.addEventListener("click", () => {
+  const promotion = externalCalibrationPromotion();
+  if (!promotion.eligible) return;
+  activeExternalCalibrationMarkingId = activeExternalCalibrationMarkingId === promotion.id ? "" : promotion.id;
+  if (activeExternalCalibrationMarkingId) {
+    policySelect.value = "action";
+    markingSearchMode = "single";
+  }
+  renderRelaxationCalibration();
+  renderMarkingLibrary();
+  if (pipelineStage === 4) enterPipelineStage(4);
+});
 periodicTableButton.addEventListener("click", () => setPeriodicTableOpen(periodicTablePanel.hidden));
 periodicCloseButton.addEventListener("click", () => setPeriodicTableOpen(false));
 periodicClearButton.addEventListener("click", () => {
@@ -21874,6 +22002,15 @@ saveMarkingButton.addEventListener("click", () => {
 });
 markingLibrarySelect.addEventListener("change", () => {
   const value = markingLibrarySelect.value;
+  const external = externalCalibrationPromotion();
+  if (external.eligible && value === external.id) {
+    activeExternalCalibrationMarkingId = external.id;
+    policySelect.value = "action";
+    markingSearchMode = "single";
+    if (pipelineStage === 4) enterPipelineStage(4);
+    return;
+  }
+  activeExternalCalibrationMarkingId = "";
   if (value === "action" || value === "direct") {
     policySelect.value = value;
   } else {

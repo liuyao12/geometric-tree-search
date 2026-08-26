@@ -5038,4 +5038,29 @@ never compared between entries. A successful compatible target is stronger
 than leave-one-frame-out evidence but is still one calculation-domain test,
 not universal validation, a causal mechanism, interatomic potential, force
 field, reaction coordinate, kinetics, or physical time. Frozen surrogates are
-never exposed to clustering, GCTS marking, candidate ranking, or admission.
+never exposed to clustering, GCTS marking, candidate ranking, or admission in
+Build 173.
+
+### Build 174 · cross-archive calibration becomes an opt-in GCTS hypothesis
+
+A frozen surrogate may now cross the diagnostic-to-search boundary only after
+a predeclared second-archive gate passes: at least five compatible target
+frames, Spearman prediction rank correlation of at least `0.80`, positive
+predictive `Q²`, no refit, and no target value used in prediction. Passing the
+gate adds **Use as GCTS mark** to the calibration library and the main marking
+selector. Activation is explicit; a passing artifact is never enabled merely
+because it exists.
+
+Each candidate is projected onto the exact same three definitions used by the
+archive surrogate: mean colored distance mismatch, mean colored angle mismatch,
+and mean coordination deficit over newly emitted sites. The frozen source
+coefficients produce a dimensionless, bounded soft preference with weight
+`0.18`. Candidate enumeration, coordinates, collision checks, colored
+coordination/angular constraints, feedstock checks, and hard admission are
+unchanged. The policy ledger and experiment receipt expose the term, gate,
+source/target entries, feature schema, and all claim boundaries.
+
+This is a calibrated ranking hypothesis, not a learned interatomic potential.
+It cannot emit a new geometry, relax an atom, infer a barrier, integrate a
+force, or supply kinetics or physical time. One successful compatible transfer
+does not establish broad chemical or method generalization.

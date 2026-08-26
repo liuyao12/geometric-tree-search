@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
-import { evaluateFrozenGeometrySurrogate, frozenGeometrySurrogateArtifact,
+import { assessGeometrySurrogatePromotion, evaluateFrozenGeometrySurrogate,
+  frozenGeometrySurrogateArtifact, frozenGeometrySurrogatePreference,
   geometryCalculationCalibration, geometryCalculationSurrogate, geometryReferenceIndices,
   geometrySurrogateCompatibilityDifferences, geometrySurrogateCompatibilityKey }
   from "../apps/iqc-growth-live/geometry-calculation-calibration.js";
@@ -55,6 +56,8 @@ const shortSurrogate = geometryCalculationSurrogate(surrogateRecords.slice(0, 4)
 assert.equal(shortSurrogate.available, false);
 assert.equal(shortSurrogate.requiredPairs, 5);
 const artifact = frozenGeometrySurrogateArtifact(surrogate);
+assert.equal(artifact.schema, "gcts-frozen-geometry-calculation-surrogate-v2");
+assert.ok(artifact.targetScale > 0);
 const transfer = evaluateFrozenGeometrySurrogate(surrogateRecords.map((record) => ({
   ...record, distance: record.distance + .25,
   energy: 2 * (record.distance + .25) - .5 * record.angle + .25 * record.coordination,
@@ -64,6 +67,15 @@ assert.equal(transfer.refitPerformed, false);
 assert.equal(transfer.targetValuesUsedForPrediction, false);
 assert.ok(transfer.predictionSpearman > .99);
 assert.ok(transfer.meanAbsoluteError < 1e-3);
+const promotion = assessGeometrySurrogatePromotion(transfer);
+assert.equal(promotion.eligible, true);
+assert.equal(promotion.physicalPotentialValidated, false);
+const preference = frozenGeometrySurrogatePreference(surrogateRecords[0], artifact);
+assert.ok(Number.isFinite(preference.predicted));
+assert.ok(preference.score >= -3 && preference.score <= 3);
+assert.equal(preference.hardAdmissionChanged, false);
+assert.equal(assessGeometrySurrogatePromotion({ ...transfer, predictionSpearman: .79 }).eligible, false);
+assert.equal(assessGeometrySurrogatePromotion({ ...transfer, predictiveQSquared: 0 }).eligible, false);
 assert.throws(() => evaluateFrozenGeometrySurrogate(surrogateRecords, { ...artifact, featureScales: [0, 1, 1] }),
   /invalid frozen/);
 const compatibility = {

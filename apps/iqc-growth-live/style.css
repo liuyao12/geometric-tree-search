@@ -711,7 +711,9 @@ body.study-guide-open { overflow: hidden; }
 .relaxation-surrogate-coefficients b { margin-top: 2px; color: #62acff; font: 6px var(--mono); font-weight: 400; }
 .relaxation-calibration-library { margin-top: 5px; padding: 5px; border: 1px solid rgba(98,172,255,.13); background: rgba(98,172,255,.025); }
 .relaxation-calibration-library header { align-items: center; }
+.relaxation-calibration-actions { display: flex; gap: 3px; }
 .relaxation-calibration-library button { min-height: 21px; padding: 0 6px; border: 1px solid rgba(98,172,255,.24); background: #071415; color: #62acff; font: 5px var(--mono); }
+.relaxation-calibration-library button.active { border-color: rgba(90,226,168,.55); color: #5ae2a8; background: rgba(90,226,168,.07); }
 .relaxation-calibration-library button:disabled { opacity: .38; }
 .relaxation-calibration-library select { width: 100%; max-width: none; margin-top: 4px; }
 .relaxation-calibration-library > div { margin-top: 4px; color: #718096; font: 5px/1.4 var(--mono); }

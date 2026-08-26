@@ -5676,5 +5676,31 @@ The receipt hashes source artifacts and target predictions and records that no
 refit or target-assisted prediction occurred. One compatible transfer does not
 establish generalization across chemistry or electronic-structure methods and
 does not create a potential, force field, reaction coordinate, causal model,
-dynamics, kinetics, or time. The library remains diagnostic and unavailable to
-cluster discovery, GCTS marking, search ranking, and admission.
+dynamics, kinetics, or time. In Build 173 the library remains diagnostic and
+unavailable to cluster discovery, GCTS marking, search ranking, and admission.
+
+## Build 174: a transferred geometric surrogate can be promoted—explicitly
+
+The frozen cross-archive library now has a fixed promotion rule rather than an
+informal visual judgment. A different exactly compatible archive must provide
+at least five scored frames, no-refit Spearman prediction correlation at least
+`0.80`, and predictive `Q² > 0`; target values remain post-hoc scoring labels
+and never enter prediction. Failed checks are named and the control remains
+disabled. A passing result merely makes an opt-in **Use as GCTS mark** action
+available.
+
+Growth candidates are evaluated with the same colored local constraint field
+used for archive frames. The emitted sites supply mean distance mismatch, mean
+angle mismatch, and mean coordination deficit to the frozen source model. Its
+prediction is centered and scaled by the source target distribution, clipped
+to a bounded dimensionless preference, and enters the existing score ledger at
+fixed weight `0.18`. Enumeration and every hard geometric gate precede and
+remain independent of this term; the candidate-set digest, poses, coordinates,
+and admission decisions are not altered by promotion.
+
+The receipt records eligibility, activation, thresholds, source and target
+entry IDs, feature definitions, and explicit false flags for candidate
+generation, hard admission, coordinate changes, physical potential use, and
+kinetics. This makes external calculation evidence experimentally usable while
+retaining a sharp boundary: it is a transferred rank hypothesis, not an energy
+functional, force field, barrier model, trajectory, or clock.
