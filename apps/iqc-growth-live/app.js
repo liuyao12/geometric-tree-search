@@ -6686,7 +6686,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-151",
+      buildId: "20260826-152",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -16199,6 +16199,58 @@ function physicsEvidenceClass(record) {
   return "unresolved physical layer";
 }
 
+const PHYSICS_CONTROL_ROUTES = Object.freeze({
+  steric: { stage: 1, controlId: "clusterToleranceSelect", label: "Open metric tolerance" },
+  local: { stage: 1, controlId: "geometryModeSelect", label: "Open support geometry" },
+  "calculation-forces": { stage: 0, controlId: "scenarioSelect", label: "Choose supplied calculation data" },
+  "relaxation-ensemble": { stage: 0, controlId: "scenarioSelect", label: "Choose a relaxation ensemble" },
+  "local-rearrangement": { stage: 0, controlId: "scenarioSelect", label: "Choose paired structural snapshots" },
+  "local-symmetry": { stage: 4, controlId: "structureObservableSelect", label: "Open structural microscope" },
+  "reciprocal-space": { stage: 4, controlId: "structureObservableSelect", label: "Open structural microscope" },
+  "constraint-projection": { stage: 4, controlId: "structuralRelaxationSelect", label: "Configure local projection" },
+  connection: { stage: 3, controlId: "markingRepresentationSelect", label: "Configure GCTS section" },
+  chemistry: { stage: 4, controlId: "compositionPreferenceSelect", label: "Configure reservoirs" },
+  "charge-geometry": { stage: 4, controlId: "chargeGeometrySelect", label: "Configure charge geometry" },
+  "solute-partition": { stage: 4, controlId: "solutePartitionSelect", label: "Configure partition geometry" },
+  surface: { stage: 4, controlId: "surfacePreferenceSelect", label: "Configure interface completion" },
+  "bulk-surface-driving": { stage: 4, controlId: "growthDrivingSelect", label: "Configure reduced driving" },
+  "attachment-topology": { stage: 4, controlId: "attachmentTopologySelect", label: "Configure terrace / step / kink" },
+  "habit-anisotropy": { stage: 4, controlId: "habitAnisotropySelect", label: "Configure habit atlas" },
+  "defect-precursors": { stage: 4, controlId: "defectPrecursorSelect", label: "Configure precursor burden" },
+  "coherency-memory": { stage: 4, controlId: "coherencyMemorySelect", label: "Configure coherency memory" },
+  "front-morphology": { stage: 4, controlId: "frontMorphologySelect", label: "Configure front morphology" },
+  "capillary-geometry": { stage: 4, controlId: "capillaryGeometrySelect", label: "Configure solid-angle geometry" },
+  epitaxy: { stage: 4, controlId: "epitaxyTemplateSelect", label: "Configure support registry" },
+  affine: { stage: 4, controlId: "affineLoadSelect", label: "Configure affine metric" },
+  drive: { stage: 4, controlId: "externalDriveSelect", label: "Configure directional drive" },
+  "thermal-field": { stage: 4, controlId: "thermalFieldSelect", label: "Configure reduced thermal field" },
+  robustness: { stage: 4, controlId: "robustnessPreferenceSelect", label: "Configure geometric margin" },
+  microstructure: { stage: 4, controlId: "microstructureCouplingSelect", label: "Configure microstructure coupling" },
+  "multi-nucleus": { stage: 4, controlId: "growthNucleiSelect", label: "Configure nuclei" },
+  "loop-closure": { stage: 4, controlId: "loopClosurePreferenceSelect", label: "Configure loop closure" },
+  "feed-exposure": { stage: 4, controlId: "feedExposureSelect", label: "Configure source visibility" },
+  kinetics: { stage: 4, controlId: "arrivalPathSelect", label: "Configure arrival-path proxy" },
+  "path-ensemble": { stage: 4, controlId: "explorationScaleSelect", label: "Configure path ensemble" },
+});
+
+function openPhysicsControlRoute(recordId) {
+  const route = PHYSICS_CONTROL_ROUTES[recordId];
+  if (!route) return;
+  if (pipelineStage !== route.stage) enterPipelineStage(route.stage);
+  requestAnimationFrame(() => {
+    const control = $(route.controlId);
+    if (!control) return;
+    const group = control.closest("details");
+    if (group) group.open = true;
+    control.scrollIntoView({ behavior: "smooth", block: "center" });
+    control.focus({ preventScroll: true });
+    control.classList.remove("physics-control-target");
+    requestAnimationFrame(() => control.classList.add("physics-control-target"));
+    window.setTimeout(() => control.classList.remove("physics-control-target"), 1800);
+    receiptStatus.textContent = `${route.label} · routed from the physics manifest · no setting changed.`;
+  });
+}
+
 function renderLeapPhysics(leap = null) {
   const records = leap?.physicsTranslation || physicsTranslationRecords(leap);
   const counts = records.reduce((result, record) => {
@@ -16239,6 +16291,20 @@ function renderLeapPhysics(leap = null) {
     const row = document.createElement("div"); const key = document.createElement("b"); const value = document.createElement("p");
     key.textContent = label; value.textContent = copy; row.append(key, value); leapPhysicsDetail.append(row);
   });
+  const route = PHYSICS_CONTROL_ROUTES[selected.id];
+  const actions = document.createElement("footer"); actions.className = "leap-physics-actions";
+  if (route) {
+    const button = document.createElement("button"); button.type = "button";
+    button.textContent = `${route.label} →`;
+    button.title = `Navigate to pipeline stage ${route.stage} and focus the exact control. This changes no setting.`;
+    button.addEventListener("click", () => openPhysicsControlRoute(selected.id));
+    actions.append(button);
+  } else {
+    const open = document.createElement("span");
+    open.textContent = "No local control · requires external physics or a new geometric state variable";
+    actions.append(open);
+  }
+  leapPhysicsDetail.append(actions);
 }
 
 leapPhysicsFilters.addEventListener("click", (event) => {

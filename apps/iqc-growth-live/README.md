@@ -155,6 +155,22 @@ fail closed until the executed arm is saved again. This is a direct response
 summary, not a hidden target scorer or a conversion of geometry into energy,
 rate, or physical time.
 
+Build 152 makes the live **physics → geometry translation** operational. Each
+physical-layer record now routes to the exact pipeline control that implements
+its current surrogate: metric tolerance, support geometry, GCTS section,
+composition and charge reservoirs, solute partitioning, interface completion,
+reduced bulk/surface driving, terrace/step/kink topology, habit atlas, precursor
+and coherency memory, front and solid-angle geometry, support registry, affine
+metric, directional and thermal fields, uncertainty margin, microstructure,
+nuclei, loop closure, feed exposure, arrival-path clearance, or path ensemble.
+The route opens the relevant stage and collapsed control group, scrolls to and
+briefly highlights the setting, and leaves its value untouched. Observational
+layers route to the structural microscope or supplied-data selector. Truly open
+long-range physics keeps an explicit `no local control` boundary rather than
+pretending a slider exists. The manifest therefore connects scientific meaning,
+current evidence, approximation boundary, and experimental action without
+silently changing the experiment.
+
 The right-hand **computational work laboratory** turns the scaling question into
 an explicit, inspectable comparison at 10×, 1,000×, and 100,000× the observed
 sample. It reports deterministic browser tree decisions and finite-neighborhood
