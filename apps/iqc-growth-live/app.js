@@ -22,8 +22,8 @@ import {
 } from "./ice-vi-anchor-trace.js?v=20260824-1";
 import { discoverIrregularCover } from "./irregular-cover.js?v=20260824-1";
 import { generateAmorphousMixture } from "./amorphous-glass.js?v=20260824-1";
-import { localOrientationalOrder, orientationalOrderDistribution,
-  powderStructureFactor, summarizeStructureFactor } from "./structure-observables.js?v=20260825-2";
+import { jensenShannonDistance, localOrientationalOrder, orientationalOrderDistribution,
+  powderStructureFactor, summarizeStructureFactor } from "./structure-observables.js?v=20260825-3";
 import { compositionBalanceDelta, learnCompositionTarget } from "./composition-balance.js?v=20260824-1";
 import { consumeFeedstock, evaluateFeedstockDemand, feedstockReservoirSnapshot,
   initializeFeedstockReservoir } from "./feedstock-reservoir.js?v=20260826-1";
@@ -2503,14 +2503,77 @@ function structuralOrientationalOrderSnapshot() {
   const harmonics = Object.fromEntries([4, 6, 12].map((harmonic) => {
     const order = ensureOrientationalOrder(stats, harmonic);
     return [harmonic, { mean: order.mean, median: order.median, highFraction: order.highFraction,
-      resolvedCenters: order.count, unresolvedCenters: order.unresolvedCount }];
+      histogram: [...order.histogram], bins: order.bins,
+      resolvedCenters: order.count, unresolvedCenters: order.unresolvedCount,
+      resolvedFraction: order.resolvedFraction }];
   }));
   return {
     dimension: stats.dimension,
     definition: stats.dimension === 2 ? "bond-orientational magnitude |psi_l|" : "Steinhardt q_l magnitude",
     neighborCutoffInNearestNeighborUnits: COORDINATION_CUTOFF,
+    analysisWindowAtoms: stats.count,
     harmonics,
     usedAsGrowthInput: false,
+  };
+}
+
+function localSymmetryTransition(before, after) {
+  if (!before?.harmonics || !after?.harmonics || before.dimension !== after.dimension) {
+    return { available: false, reason: "matching dimension-aware local-order snapshots unavailable",
+      targetUsed: false, usedAsGrowthInput: false };
+  }
+  const harmonicRecords = [4, 6, 12].map((harmonic) => {
+    const first = before.harmonics[harmonic];
+    const second = after.harmonics[harmonic];
+    const comparable = first?.histogram?.length && first.histogram.length === second?.histogram?.length;
+    return {
+      harmonic,
+      meanBefore: first?.mean ?? 0,
+      meanAfter: second?.mean ?? 0,
+      meanDelta: (second?.mean ?? 0) - (first?.mean ?? 0),
+      distributionDistance: comparable ? jensenShannonDistance(first.histogram, second.histogram) : null,
+      resolvedBefore: first?.resolvedCenters || 0,
+      resolvedAfter: second?.resolvedCenters || 0,
+    };
+  });
+  const comparableDistances = harmonicRecords.map((record) => record.distributionDistance)
+    .filter(Number.isFinite);
+  const meanDistributionDistance = comparableDistances.reduce((sum, value) => sum + value, 0)
+    / Math.max(1, comparableDistances.length);
+  const dominant = [...harmonicRecords].sort((first, second) =>
+    Math.abs(second.meanDelta) - Math.abs(first.meanDelta) || first.harmonic - second.harmonic)[0];
+  const beforeResolved = before.harmonics[6]?.resolvedCenters || 0;
+  const afterResolved = after.harmonics[6]?.resolvedCenters || 0;
+  const beforeResolvedFraction = beforeResolved / Math.max(1, before.analysisWindowAtoms || 0);
+  const afterResolvedFraction = afterResolved / Math.max(1, after.analysisWindowAtoms || 0);
+  const resolvedFractionDelta = afterResolvedFraction - beforeResolvedFraction;
+  const symbol = after.dimension === 2 ? "|ψ" : "q";
+  let phenotype = "local-symmetry fingerprint retained";
+  if (resolvedFractionDelta >= .05) phenotype = "more local environments resolved";
+  else if (resolvedFractionDelta <= -.05) phenotype = "more local environments unresolved";
+  else if (meanDistributionDistance >= .08 && Math.abs(dominant.meanDelta) < .02) phenotype = "local-symmetry distribution redistributed";
+  else if (dominant.meanDelta >= .02) phenotype = `${symbol}${dominant.harmonic}${after.dimension === 2 ? "|" : ""} magnitude increased`;
+  else if (dominant.meanDelta <= -.02) phenotype = `${symbol}${dominant.harmonic}${after.dimension === 2 ? "|" : ""} magnitude decreased`;
+  return {
+    available: true,
+    dimension: after.dimension,
+    phenotype,
+    harmonics: harmonicRecords,
+    meanDistributionDistance,
+    resolvedBefore: beforeResolved,
+    resolvedAfter: afterResolved,
+    resolvedFractionBefore: beforeResolvedFraction,
+    resolvedFractionAfter: afterResolvedFraction,
+    resolvedFractionDelta,
+    analysisWindowBefore: before.analysisWindowAtoms,
+    analysisWindowAfter: after.analysisWindowAtoms,
+    neighborCutoffInNearestNeighborUnits: after.neighborCutoffInNearestNeighborUnits,
+    properRotationInvariant: true,
+    targetUsed: false,
+    usedAsGrowthInput: false,
+    phaseTransitionClaimed: false,
+    latentHeatClaimed: false,
+    kineticsClaimed: false,
   };
 }
 
@@ -6385,7 +6448,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-136",
+      buildId: "20260825-137",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7375,7 +7438,8 @@ async function buildExperimentReceipt() {
       structuralLeapCertificates: leapHistory.map((leap) => ({
         index: leap.index, status: leap.status, label: leap.label,
         before: leap.before, proposal: leap.proposal, tests: leap.tests,
-        relaxation: leap.relaxation || null, after: leap.after,
+        relaxation: leap.relaxation || null, localSymmetryTransition: leap.localSymmetryTransition || null,
+        after: leap.after,
         targetUsed: leap.targetUsed, physicalTimeModeled: leap.physicalTimeModeled,
         dynamicsIntegrated: leap.dynamicsIntegrated, claimBoundary: leap.claimBoundary,
         physicsTranslation: leap.physicsTranslation,
@@ -7730,7 +7794,7 @@ function experimentNotebookSummary(receipt) {
     morphology: initialLeapState.morphology || null, interfaces: initialLeapState.interfaces || null,
     orientationalOrder: initialLeapState.orientationalOrder || null,
     feedstock: initialLeapState.feedstock || null, domain: initialLeapState.domain || null,
-    relaxation: null }];
+    relaxation: null, localSymmetryTransition: null }];
   structuralLeaps.forEach((leap, index) => {
     cumulativeAccepted += leap.after?.accepted || 0;
     cumulativeRejected += leap.after?.rejected || 0;
@@ -7744,7 +7808,8 @@ function experimentNotebookSummary(receipt) {
       morphology: leap.after?.morphology || null, interfaces: leap.after?.interfaces || null,
       orientationalOrder: leap.after?.orientationalOrder || null,
       feedstock: leap.after?.feedstock || null, domain: leap.after?.domain || null,
-      relaxation: leap.relaxation || null });
+      relaxation: leap.relaxation || null,
+      localSymmetryTransition: leap.localSymmetryTransition || null });
   });
   return {
     id: receipt.receiptSha256.slice(0, 16),
@@ -7921,6 +7986,9 @@ const NOTEBOOK_TRAJECTORY_OBSERVABLES = {
     format: (value) => `${value.toFixed(3)} Å` },
   localOrder: { label: "mean local q₆ / |ψ₆|",
     value: (point) => point.orientationalOrder?.harmonics?.[6]?.mean,
+    format: (value) => value.toFixed(3) },
+  localOrderShift: { label: "local-symmetry JS distance",
+    value: (point) => point.localSymmetryTransition?.meanDistributionDistance,
     format: (value) => value.toFixed(3) },
   extent: { label: "maximum nucleus extent · Å", value: (point) => point.morphology?.maximumExtentAngstrom,
     format: (value) => `${value.toFixed(2)} Å` },
@@ -14470,6 +14538,7 @@ function physicsTranslationRecords(leap = null) {
   const relaxation = scenarioSelect.value === "imported" ? importedStructure?.metadata?.relaxationSequence : null;
   const relaxationDisplacement = relaxationDisplacementField();
   const relaxationLocalEnvironment = relaxationLocalEnvironmentField();
+  const localSymmetry = leap?.localSymmetryTransition || null;
   return [
     { id: "steric", process: "short-range repulsion / species contact", status: "hard", role: "hard admission gate",
       encoding: `${coloredDistanceEnvelopes?.records?.length || 0} colored pair envelopes with exact species coincidence and learned hard-exclusion radii`,
@@ -14503,6 +14572,16 @@ function physicsTranslationRecords(leap = null) {
         ? `Median √D²min ${relaxationLocalEnvironment.medianRootD2MinAngstrom.toFixed(3)} Å; p90 ${relaxationLocalEnvironment.percentile90RootD2MinAngstrom.toFixed(3)} Å; ${(100 * relaxationLocalEnvironment.meanNeighborPersistenceFraction).toFixed(1)}% directed-neighbor persistence; ${relaxationLocalEnvironment.uniqueLostNeighborPairs} lost and ${relaxationLocalEnvironment.uniqueGainedNeighborPairs} gained undirected kNN relations.`
         : "No atom-resolved local rearrangement field is available.",
       boundary: "D²min and kNN identity exchange are kinematic differences between two archived configurations. A nearest-neighbor ranking is not a chemical bond graph. Neither channel is plastic strain, a defect label, activation energy, mobility, a transition pathway, or elapsed time, and neither ranks or admits growth." },
+    { id: "local-symmetry", process: "local orientational-symmetry evolution",
+      status: localSymmetry?.available ? "observed" : "unavailable",
+      role: localSymmetry?.available ? "post-leap structural fingerprint" : "awaiting paired local-order distributions",
+      encoding: localSymmetry?.available
+        ? `${localSymmetry.dimension}D proper-motion-invariant q₄/q₆/q₁₂ or |ψ₄|/|ψ₆|/|ψ₁₂| distributions over resolved first-shell centers; Jensen–Shannon distance uses fixed 24-bin normalized histograms`
+        : "no matching before/after dimension-aware local-order snapshots",
+      evidence: localSymmetry?.available
+        ? `${localSymmetry.phenotype}; mean distribution distance ${localSymmetry.meanDistributionDistance.toFixed(3)}; resolved centers ${localSymmetry.resolvedBefore} → ${localSymmetry.resolvedAfter}.`
+        : "Execute one structural leap to compare local-symmetry fingerprints.",
+      boundary: "This compares local geometric fingerprints. It is not a crystallization or phase-transition label, order-parameter free energy, latent heat, entropy, transition probability, rate, or physical time, and it never ranks or admits growth." },
     { id: "constraint-projection", process: "post-attachment local structural accommodation",
       status: lastStructuralRelaxation?.accepted ? "learned" : structuralRelaxationMode === "off" ? "open" : "sampled",
       role: lastStructuralRelaxation?.accepted ? "target-blind bounded coordinate projection" : structuralRelaxationMode === "off" ? "disabled" : "fail-closed projection attempt",
@@ -14909,7 +14988,8 @@ function renderStructuralLeap(leap = null) {
       ["01 · before", `${atoms.length} explicit atoms`, `${placedClusters.length} placed clusters`],
       ["02 · proposal", "frontier not sampled", `${frontierCandidates.length} frozen candidates`],
       ["03 · certificate", "not evaluated", "geometry gates await one action"],
-      ["04 · after", "unchanged seed", "physical time unresolved"],
+      ["04 · local symmetry", "not compared", "qℓ / |ψℓ| distributions await one leap"],
+      ["05 · after", "unchanged seed", "physical time unresolved"],
     ].forEach(([label, value, detail]) => {
       const card = document.createElement("article");
       const small = document.createElement("small"); small.textContent = label;
@@ -14926,12 +15006,19 @@ function renderStructuralLeap(leap = null) {
     ["02 · proposed leap", selected.label, `${selected.proposal.candidates} candidates · ${selected.proposal.sites} colored sites · ${selected.proposal.shared} shared + ${selected.proposal.fresh} new`],
     ["03 · geometric certificate", selected.tests.summary, selected.tests.detail],
   ];
-  if (selected.relaxation) leapCards.push(["04 · local projection",
+  const symmetry = selected.localSymmetryTransition;
+  const signedOrder = (value) => `${value >= 0 ? "+" : ""}${value.toFixed(3)}`;
+  leapCards.push(["04 · local symmetry",
+    symmetry?.available ? symmetry.phenotype : "local order unresolved",
+    symmetry?.available
+      ? `${symmetry.harmonics.map((record) => `${symmetry.dimension === 2 ? "|ψ" : "q"}${record.harmonic}${symmetry.dimension === 2 ? "|" : ""} Δ${signedOrder(record.meanDelta)}`).join(" · ")} · JS distance ${symmetry.meanDistributionDistance.toFixed(3)} · resolved ${symmetry.resolvedBefore} → ${symmetry.resolvedAfter}`
+      : symmetry?.reason || "matching before/after distributions unavailable"]);
+  if (selected.relaxation) leapCards.push(["05 · local projection",
     selected.relaxation.accepted
       ? `strain ${selected.relaxation.strainBefore.toFixed(3)} → ${selected.relaxation.strainAfter.toFixed(3)}`
       : "rolled back · exact coordinates retained",
     `${selected.relaxation.movableSites} movable · max Δ ${selected.relaxation.maximumDisplacementAngstrom.toFixed(3)} Å · ${selected.relaxation.reason}`]);
-  leapCards.push([`${selected.relaxation ? "05" : "04"} · after`,
+  leapCards.push([`${selected.relaxation ? "06" : "05"} · after`,
     `${selected.after.atoms} atoms · ${selected.after.clusters} clusters`,
     `${selected.after.accepted} accepted · ${selected.after.rejected} rejected · causal depth ${selected.after.depth}`]);
   leapCards.forEach(([label, value, detail], index) => {
@@ -14942,7 +15029,7 @@ function renderStructuralLeap(leap = null) {
     const span = document.createElement("span"); span.textContent = detail;
     card.append(small, strong, span); leapFlow.append(card);
   });
-  leapClaimBoundary.textContent = selected.claimBoundary;
+  leapClaimBoundary.textContent = `${selected.claimBoundary} Local qℓ / |ψℓ| change is a rotation-invariant structural fingerprint, not a phase-transition assignment, latent heat, free-energy change, rate, or clock.`;
 }
 
 function radiallyStratifiedIndices(source, candidateIndices, maximumCenters) {
@@ -15071,6 +15158,8 @@ function structuralMorphologySnapshot(source = atoms) {
 function recordStructuralLeap(leap) {
   const frozen = { ...leap, index: ++leapEventCount, targetUsed: false,
     physicalTimeModeled: false, dynamicsIntegrated: false };
+  frozen.localSymmetryTransition = localSymmetryTransition(
+    frozen.before?.orientationalOrder, frozen.after?.orientationalOrder);
   frozen.physicsTranslation = physicsTranslationRecords(frozen);
   leapHistory.push(frozen);
   if (leapHistory.length > MAXIMUM_RETAINED_STRUCTURAL_LEAPS) leapHistory.shift();

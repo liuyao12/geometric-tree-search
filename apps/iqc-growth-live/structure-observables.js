@@ -178,3 +178,22 @@ export function orientationalOrderDistribution(values, bins = DEFAULT_ORDER_BINS
   const highFraction = values.filter((value) => value >= .7).length / Math.max(1, values.length);
   return { histogram, mean, median, highFraction, bins, count: values.length };
 }
+
+export function jensenShannonDistance(first, second) {
+  if (!Array.isArray(first) || !Array.isArray(second) || first.length !== second.length || !first.length) {
+    throw new Error("Jensen-Shannon distance requires equal non-empty distributions");
+  }
+  if ([...first, ...second].some((value) => !Number.isFinite(value) || value < 0)) {
+    throw new Error("Jensen-Shannon distance requires finite non-negative weights");
+  }
+  const firstTotal = first.reduce((sum, value) => sum + value, 0);
+  const secondTotal = second.reduce((sum, value) => sum + value, 0);
+  if (!firstTotal && !secondTotal) return 0;
+  if (!firstTotal || !secondTotal) return 1;
+  const p = first.map((value) => value / firstTotal);
+  const q = second.map((value) => value / secondTotal);
+  const midpoint = p.map((value, index) => (value + q[index]) / 2);
+  const divergence = (distribution) => distribution.reduce((sum, value, index) =>
+    sum + (value > 0 ? value * Math.log2(value / midpoint[index]) : 0), 0);
+  return Math.min(1, Math.sqrt(Math.max(0, (divergence(p) + divergence(q)) / 2)));
+}

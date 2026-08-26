@@ -52,8 +52,24 @@ def test_order_provenance_is_serialized():
     assert 'structuralObservable: { label: "posthoc structural observable", role: "analysis only"' in APP
 
 
+def test_structural_leaps_freeze_local_symmetry_change_without_using_it_for_growth():
+    assert 'value="localOrderShift">local-symmetry JS distance' in HTML
+    assert "function localSymmetryTransition(before, after)" in APP
+    assert "jensenShannonDistance(first.histogram, second.histogram)" in APP
+    assert "frozen.localSymmetryTransition = localSymmetryTransition(" in APP
+    assert "localSymmetryTransition: leap.localSymmetryTransition || null" in APP
+    assert 'id: "local-symmetry"' in APP
+    assert 'phaseTransitionClaimed: false' in APP
+    assert 'latentHeatClaimed: false' in APP
+    assert 'kineticsClaimed: false' in APP
+    assert 'targetUsed: false' in APP
+    assert 'usedAsGrowthInput: false' in APP
+    assert "Local qℓ / |ψℓ| change is a rotation-invariant structural fingerprint" in APP
+
+
 if __name__ == "__main__":
     test_dimension_aware_orientational_order_is_exposed_interactively()
+    test_structural_leaps_freeze_local_symmetry_change_without_using_it_for_growth()
     test_order_is_rotation_invariant_posthoc_evidence_not_growth_physics()
     test_order_provenance_is_serialized()
     print("orientational-order portal contract: passed")

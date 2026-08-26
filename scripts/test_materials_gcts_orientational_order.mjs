@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import {
+  jensenShannonDistance,
   legendrePolynomial,
   localOrientationalOrder,
   orientationalOrderDistribution,
@@ -50,7 +51,15 @@ close(distribution.median, .5);
 close(distribution.highFraction, .4);
 assert.equal(distribution.histogram.length, 4);
 
+close(jensenShannonDistance([.2, .3, .5], [.2, .3, .5]), 0);
+close(jensenShannonDistance([1, 0], [0, 1]), 1);
+close(jensenShannonDistance([0, 0], [0, 0]), 0);
+close(jensenShannonDistance([2, 3], [4, 6]), 0);
+assert.ok(jensenShannonDistance([.8, .2], [.5, .5]) > 0
+  && jensenShannonDistance([.8, .2], [.5, .5]) < 1);
+
 assert.throws(() => localOrientationalOrder([[[0, 0, 0]]], 4), /dimension/);
 assert.throws(() => orientationalOrderDistribution([Number.NaN]), /finite/);
+assert.throws(() => jensenShannonDistance([1], [1, 0]), /equal/);
 
 console.log("orientational-order observable: passed");
