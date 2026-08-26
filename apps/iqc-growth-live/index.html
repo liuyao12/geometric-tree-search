@@ -294,6 +294,19 @@
             </select>
             <small id="confinementNote" class="control-note">A finite public bulk window. Its faces are search boundaries, not inferred crystal surfaces or periodic images.</small>
           </label>
+          <label class="field" for="growthDomainScaleSelect">
+            <span>Public search reach <b id="growthDomainScaleHint">1× certified domain</b></span>
+            <select id="growthDomainScaleSelect">
+              <option value="1" selected>1× · responsive finite domain</option>
+              <option value="2">2× · extended structural continuation</option>
+              <option value="4">4× · large explicit growth domain</option>
+            </select>
+          </label>
+          <section id="growthDomainPassport" class="growth-domain-passport" aria-label="Observation and public growth domains">
+            <header><span><small>domain separation</small><strong>Observation → growth</strong></span><b id="growthDomainPassportState">awaiting sample</b></header>
+            <div id="growthDomainPassportBars"></div>
+            <p id="growthDomainPassportNote">The supplied atom crop is evidence; the larger public domain is a declared search boundary.</p>
+          </section>
           <select id="policySelect" hidden aria-hidden="true">
             <option value="marked">Local-section GCTS marking</option>
             <option value="direct">Exact local oracle</option>
@@ -1194,6 +1207,7 @@
                 <option value="interfaceThickness">largest-interface thickness · Å</option>
                 <option value="interfaceExposure">largest-interface coordination deficit</option>
                 <option value="feedstockRemaining">feedstock remaining · atoms</option>
+                <option value="continuationSites">outside-observation continuation · sites</option>
                 <option value="extent">maximum nucleus extent · Å</option>
                 <option value="anisotropy">relative shape anisotropy · κ²</option>
                 <option value="exposure">colored coordination deficit</option>
@@ -1422,7 +1436,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-131"></script>
+  <script type="module" src="./app.js?v=20260825-132"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

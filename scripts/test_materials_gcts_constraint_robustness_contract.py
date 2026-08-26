@@ -23,10 +23,10 @@ def test_constraint_robustness_is_soft_target_blind_ordering() -> None:
     for weight in ("0.12", "0.24", "0.48"):
         assert f'value="{weight}"' in HTML
 
-    assert "export function growthEnvironmentSignedMargin(id, point)" in ENVIRONMENTS
+    assert "export function growthEnvironmentSignedMargin(id, point, scale = 1)" in ENVIRONMENTS
     assert "function constraintRobustnessForCandidate(fresh, merged)" in APP
     assert "coloredPairExclusion(site.species, atom.species)" in APP
-    assert "growthEnvironmentSignedMargin(confinementSelect.value, site.p)" in APP
+    assert "growthEnvironmentSignedMargin(confinementSelect.value, site.p, growthDomainScale)" in APP
     assert "MERGE_TOLERANCE - site.p.distanceTo(atom.p)" in APP
     assert "Math.tanh(normalizedMinimum / 2)" in APP
     assert "+ activeRobustnessWeight() * evaluation.constraintRobustness.score" in APP

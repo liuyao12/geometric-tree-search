@@ -57,8 +57,24 @@ export function growthEnvironmentSpec(id) {
   return spec;
 }
 
-export function growthEnvironmentContains(id, point) {
-  const { shape, parameters } = growthEnvironmentSpec(id);
+export function scaledGrowthEnvironmentSpec(id, scale = 1) {
+  const spec = growthEnvironmentSpec(id);
+  const factor = Number(scale);
+  if (![1, 2, 4].includes(factor)) throw new Error(`Unsupported public growth reach: ${scale}`);
+  const parameters = JSON.parse(JSON.stringify(spec.parameters));
+  if (parameters.halfExtents) parameters.halfExtents = parameters.halfExtents.map((value) => value * factor);
+  if (Number.isFinite(parameters.radius)) parameters.radius *= factor;
+  if (Number.isFinite(parameters.halfLength)) parameters.halfLength *= factor;
+  if (parameters.lateralHalfExtents) {
+    parameters.lateralHalfExtents = parameters.lateralHalfExtents.map((value) => value * factor);
+    parameters.upperZ = parameters.lowerZ + (parameters.upperZ - parameters.lowerZ) * factor;
+  }
+  if (Number.isFinite(parameters.throatRadius)) parameters.throatRadius *= factor;
+  return { ...spec, parameters, publicReachScale: factor };
+}
+
+export function growthEnvironmentContains(id, point, scale = 1) {
+  const { shape, parameters } = scaledGrowthEnvironmentSpec(id, scale);
   const x = Number(point?.x ?? point?.[0]);
   const y = Number(point?.y ?? point?.[1]);
   const z = Number(point?.z ?? point?.[2]);
@@ -84,8 +100,8 @@ export function growthEnvironmentContains(id, point) {
   throw new Error(`Unsupported growth-domain shape: ${shape}`);
 }
 
-export function growthEnvironmentSignedMargin(id, point) {
-  const { shape, parameters } = growthEnvironmentSpec(id);
+export function growthEnvironmentSignedMargin(id, point, scale = 1) {
+  const { shape, parameters } = scaledGrowthEnvironmentSpec(id, scale);
   const x = Number(point?.x ?? point?.[0]);
   const y = Number(point?.y ?? point?.[1]);
   const z = Number(point?.z ?? point?.[2]);
@@ -109,13 +125,14 @@ export function growthEnvironmentSignedMargin(id, point) {
   throw new Error(`Unsupported growth-domain shape: ${shape}`);
 }
 
-export function growthEnvironmentAudit(id) {
-  const spec = growthEnvironmentSpec(id);
+export function growthEnvironmentAudit(id, scale = 1) {
+  const spec = scaledGrowthEnvironmentSpec(id, scale);
   return {
     id: spec.id,
     label: spec.label,
     shape: spec.shape,
     parametersSceneUnits: JSON.parse(JSON.stringify(spec.parameters)),
+    publicReachScale: spec.publicReachScale,
     admissionRole: "hard target-independent public-boundary gate",
     affectsCandidateGeometry: false,
     affectsCandidateAdmission: true,

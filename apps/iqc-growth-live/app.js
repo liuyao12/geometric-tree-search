@@ -60,7 +60,8 @@ import {
   growthEnvironmentContains,
   growthEnvironmentSignedMargin,
   growthEnvironmentSpec,
-} from "./growth-environments.js?v=20260825-3";
+  scaledGrowthEnvironmentSpec,
+} from "./growth-environments.js?v=20260826-4";
 import { auditGeometricMicrostructure } from "./microstructure-audit.js?v=20260824-1";
 import { CDYB_BROWSER_FIXTURE } from "./cdyb-browser-fixture.js?v=20260824-1";
 import {
@@ -131,6 +132,12 @@ const databaseSourceLink = $("databaseSourceLink");
 const confinementSelect = $("confinementSelect");
 const confinementHint = $("confinementHint");
 const confinementNote = $("confinementNote");
+const growthDomainScaleSelect = $("growthDomainScaleSelect");
+const growthDomainScaleHint = $("growthDomainScaleHint");
+const growthDomainPassport = $("growthDomainPassport");
+const growthDomainPassportState = $("growthDomainPassportState");
+const growthDomainPassportBars = $("growthDomainPassportBars");
+const growthDomainPassportNote = $("growthDomainPassportNote");
 const policySelect = $("policySelect");
 const stageOptionsPanel = $("stageOptionsPanel");
 const stageOptionsEyebrow = $("stageOptionsEyebrow");
@@ -921,6 +928,7 @@ let geometryPreference = "strain";
 let growthProtocolMode = "custom";
 let geometricStrainWeight = DEFAULT_GEOMETRIC_STRAIN_WEIGHT;
 let compositionPreference = "soft";
+let growthDomainScale = 1;
 let feedstockSupplyMode = "open";
 let soluteSpecies = null;
 let solutePartitionMode = "none";
@@ -995,7 +1003,7 @@ let formalChargeTarget = null;
 let suppliedFormalChargeBySpecies = new Map();
 
 const GROWTH_PROTOCOL_DEFAULTS = Object.freeze({
-  confinement: "box", geometryPreference: "strain", geometricStrainWeight: .16,
+  confinement: "box", growthDomainScale: 1, geometryPreference: "strain", geometricStrainWeight: .16,
   compositionPreference: "soft", feedstockSupplyMode: "open", chargePreference: "auto", surfacePreference: "soft",
   chargeGeometryMode: "none", chargeGeometryReach: 2.5, chargeGeometryWeight: .24,
   growthDrivingMode: "none", growthDrivingWeight: .24,
@@ -1112,7 +1120,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
   },
 });
 const GROWTH_PROTOCOL_CONTROL_IDS = new Set([
-  "geometryPreferenceSelect", "strainWeightSelect", "compositionPreferenceSelect", "feedstockSupplySelect", "chargePreferenceSelect", "chargeGeometrySelect", "chargeGeometryReachSelect", "chargeGeometryWeightSelect",
+  "growthDomainScaleSelect", "geometryPreferenceSelect", "strainWeightSelect", "compositionPreferenceSelect", "feedstockSupplySelect", "chargePreferenceSelect", "chargeGeometrySelect", "chargeGeometryReachSelect", "chargeGeometryWeightSelect",
   "soluteSpeciesSelect", "solutePartitionSelect", "solutePartitionWeightSelect",
   "surfacePreferenceSelect", "growthDrivingSelect", "growthDrivingWeightSelect", "attachmentTopologySelect", "attachmentTopologyWeightSelect", "habitAnisotropySelect", "habitAnisotropyWeightSelect", "defectPrecursorSelect", "defectPrecursorWeightSelect", "coherencyMemorySelect", "coherencyReachSelect", "coherencyMemoryWeightSelect", "frontMorphologySelect", "frontMorphologyWeightSelect",
   "capillaryGeometrySelect", "capillaryGeometryWeightSelect",
@@ -6006,7 +6014,7 @@ function renderComputationalCost() {
 }
 
 function receiptExternalGeometry() {
-  const audit = growthEnvironmentAudit(confinementSelect.value);
+  const audit = growthEnvironmentAudit(confinementSelect.value, growthDomainScale);
   const scale = referenceSpacingA / Math.max(referenceSpacing, 1e-12);
   const source = audit.parametersSceneUnits;
   let parametersAngstrom;
@@ -6177,7 +6185,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-131",
+      buildId: "20260825-132",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -6191,6 +6199,7 @@ async function buildExperimentReceipt() {
       composition: receiptComposition(referenceAtoms),
       atomCount: referenceAtoms.length,
       externalGeometry: receiptExternalGeometry(),
+      observationToGrowthDomain: currentGrowthDomainSnapshot(),
       recordedMeasurementConditions: recordedConditions ? {
         provenance: recordedConditions.provenance || "recorded diffraction/cell-measurement conditions",
         temperatureKelvin: recordedConditions.temperature?.value ?? null,
@@ -7464,7 +7473,7 @@ function experimentNotebookSummary(receipt) {
     clusters: initialLeapState.clusters || 0, frontier: initialLeapState.frontier || 0,
     acceptedThisLeap: 0, rejectedThisLeap: 0, cumulativeAccepted: 0, cumulativeRejected: 0, depth: 0,
     morphology: initialLeapState.morphology || null, interfaces: initialLeapState.interfaces || null,
-    feedstock: initialLeapState.feedstock || null }];
+    feedstock: initialLeapState.feedstock || null, domain: initialLeapState.domain || null }];
   structuralLeaps.forEach((leap, index) => {
     cumulativeAccepted += leap.after?.accepted || 0;
     cumulativeRejected += leap.after?.rejected || 0;
@@ -7476,7 +7485,7 @@ function experimentNotebookSummary(receipt) {
       acceptedThisLeap: leap.after?.accepted || 0, rejectedThisLeap: leap.after?.rejected || 0,
       cumulativeAccepted, cumulativeRejected, depth: leap.after?.depth || 0,
       morphology: leap.after?.morphology || null, interfaces: leap.after?.interfaces || null,
-      feedstock: leap.after?.feedstock || null });
+      feedstock: leap.after?.feedstock || null, domain: leap.after?.domain || null });
   });
   return {
     id: receipt.receiptSha256.slice(0, 16),
@@ -7516,6 +7525,7 @@ function experimentNotebookSummary(receipt) {
       morphologyPassport: "rotation/translation-invariant covariance spectrum + learned colored-coordination deficit",
       interfacePassport: "finite proper-misorientation registry, topology, thickness, chemistry, and coordination exposure",
       feedstockPassport: "species-count inventory consumed only by newly emitted sites",
+      domainPassport: "supplied observation separated from the declared target-blind public growth domain",
       massRadiusScaling: notebookMassRadiusScaling(trajectoryPoints),
       leapCount: structuralLeaps.length,
       totalLeapEvents: search?.structuralLeapHistory?.totalEvents ?? structuralLeaps.length,
@@ -7642,6 +7652,9 @@ const NOTEBOOK_TRAJECTORY_OBSERVABLES = {
     format: (value) => `${(100 * value).toFixed(1)}%` },
   feedstockRemaining: { label: "feedstock remaining · atoms",
     value: (point) => point.feedstock?.remainingAtoms,
+    format: (value) => Math.round(value).toLocaleString() },
+  continuationSites: { label: "outside-observation continuation · sites",
+    value: (point) => point.domain?.continuationAtoms,
     format: (value) => Math.round(value).toLocaleString() },
   extent: { label: "maximum nucleus extent · Å", value: (point) => point.morphology?.maximumExtentAngstrom,
     format: (value) => `${value.toFixed(2)} Å` },
@@ -8642,7 +8655,7 @@ function canonicalKnownSites(sites, context = scenePeriodicContext()) {
 }
 
 function insideGrowthDomain(position) {
-  return growthEnvironmentContains(confinementSelect.value, position);
+  return growthEnvironmentContains(confinementSelect.value, position, growthDomainScale);
 }
 
 function frontierSector(position) {
@@ -9686,7 +9699,7 @@ function constraintRobustnessForCandidate(fresh, merged) {
     contactMargins.push(site.p.distanceTo(atom.p) - coloredPairExclusion(site.species, atom.species));
   }));
   const overlapMargins = merged.map(({ site, atom }) => MERGE_TOLERANCE - site.p.distanceTo(atom.p));
-  const boundaryMargins = fresh.map((site) => growthEnvironmentSignedMargin(confinementSelect.value, site.p));
+  const boundaryMargins = fresh.map((site) => growthEnvironmentSignedMargin(confinementSelect.value, site.p, growthDomainScale));
   const minimum = (values) => values.length ? Math.min(...values) : null;
   const componentsScene = {
     contactClearance: minimum(contactMargins),
@@ -10601,6 +10614,62 @@ function renderFeedstockInventory() {
   });
 }
 
+function publicDomainCharacteristicReach(spec) {
+  const parameters = spec.parameters;
+  if (parameters.halfExtents) return Math.min(...parameters.halfExtents);
+  if (Number.isFinite(parameters.radius) && Number.isFinite(parameters.halfLength)) return Math.min(parameters.radius, parameters.halfLength);
+  if (Number.isFinite(parameters.radius)) return parameters.radius;
+  if (parameters.lateralHalfExtents) return Math.min(...parameters.lateralHalfExtents,
+    parameters.upperZ - parameters.lowerZ);
+  return Math.min(parameters.halfLength, parameters.throatRadius);
+}
+
+function currentGrowthDomainSnapshot() {
+  const spec = scaledGrowthEnvironmentSpec(confinementSelect.value, growthDomainScale);
+  const sceneToAngstrom = referenceSpacingA / Math.max(referenceSpacing, 1e-12);
+  const observationRadius = referenceAtoms.length
+    ? Math.max(...referenceAtoms.map((atom) => atom.p.length())) : 0;
+  const publicReach = publicDomainCharacteristicReach(spec);
+  const audit = pipelineStage === 4 ? referenceCoverageAudit() : null;
+  const continuationAtoms = pipelineStage === 4
+    ? atoms.filter((atom) => !Number.isInteger(atom.referenceIndex)).length : 0;
+  const margins = pipelineStage === 4 ? atoms.map((atom) =>
+    growthEnvironmentSignedMargin(confinementSelect.value, atom.p, growthDomainScale)) : [];
+  return {
+    environment: spec.id, shape: spec.shape, publicReachScale: growthDomainScale,
+    observedSites: referenceCount(), replayedObservedSites: audit?.matched ?? referenceCount(),
+    continuationAtoms, observationRadiusAngstrom: receiptRound(observationRadius * sceneToAngstrom),
+    publicCharacteristicReachAngstrom: receiptRound(publicReach * sceneToAngstrom),
+    currentMinimumBoundaryMarginAngstrom: margins.length ? receiptRound(Math.min(...margins) * sceneToAngstrom) : null,
+    targetUsedForContinuation: false, inputCoordinatesEmbedded: false,
+    publicBoundaryDeclared: true, periodicImagesImplied: false, physicalTimeModeled: false,
+  };
+}
+
+function renderGrowthDomainPassport() {
+  if (!growthDomainPassportBars || !growthDomainPassportState) return;
+  const snapshot = currentGrowthDomainSnapshot(); const knownFraction = snapshot.observedSites
+    ? snapshot.replayedObservedSites / snapshot.observedSites : 0;
+  const reachFraction = snapshot.publicCharacteristicReachAngstrom
+    ? Math.min(1, snapshot.observationRadiusAngstrom / snapshot.publicCharacteristicReachAngstrom) : 0;
+  growthDomainScaleHint.textContent = `${snapshot.publicReachScale}× certified domain`;
+  growthDomainPassportState.textContent = pipelineStage === 4
+    ? `${snapshot.replayedObservedSites} known + ${snapshot.continuationAtoms} outside`
+    : `${snapshot.observedSites} observed sites`;
+  growthDomainPassportBars.replaceChildren();
+  [
+    ["observation radius", reachFraction, `${snapshot.observationRadiusAngstrom.toFixed(1)} / ${snapshot.publicCharacteristicReachAngstrom.toFixed(1)} Å`],
+    ["known replay", knownFraction, `${snapshot.replayedObservedSites}/${snapshot.observedSites}`],
+    ["outside crop", Math.min(1, snapshot.continuationAtoms / Math.max(1, snapshot.observedSites)), `${snapshot.continuationAtoms} sites`],
+  ].forEach(([label, fraction, value]) => {
+    const row = document.createElement("div"); const key = document.createElement("small");
+    const track = document.createElement("i"); const fill = document.createElement("b"); const datum = document.createElement("em");
+    key.textContent = label; fill.style.width = `${100 * Math.max(0, Math.min(1, fraction))}%`; track.append(fill);
+    datum.textContent = value; row.append(key, track, datum); growthDomainPassportBars.append(row);
+  });
+  growthDomainPassportNote.textContent = `${snapshot.shape} · ${snapshot.publicReachScale}× public reach. Supplied positions guide only known-window replay; outside-crop sites come from frozen recurring ports and hard geometric admission. The boundary is declared geometry, not a surface potential or physical time horizon.`;
+}
+
 function suppliedFormalChargeForToken(token) {
   const embedded = formalChargeFromChemistryToken(token);
   if (embedded !== null) return embedded;
@@ -10997,7 +11066,7 @@ function observedGrowthSeedIndices() {
     const support = [...(referenceSupports.get(entry.index) || [])];
     const roles = support.map((index) => roleByIndex.get(index)).filter(Boolean);
     return { ...entry,
-      boundaryMargin: growthEnvironmentSignedMargin(confinementSelect.value, entry.occurrence.position),
+      boundaryMargin: growthEnvironmentSignedMargin(confinementSelect.value, entry.occurrence.position, growthDomainScale),
       gapEvidence: roles.filter((role) => role.gapBoundary || role.literalTerminal).length,
       interfaceEvidence: roles.filter((role) => role.poseInterface).length,
       centroidDistance: entry.occurrence.position.distanceTo(centroid),
@@ -11416,7 +11485,7 @@ function buildConfinement() {
   confinementGroup.rotation.set(0, 0, 0);
   const renderScale = pipelineStage === 4 ? 1 : .55;
   const material = new THREE.LineBasicMaterial({ color: COLORS.line, transparent: true, opacity: 0.36 });
-  const spec = growthEnvironmentSpec(confinementSelect.value);
+  const spec = scaledGrowthEnvironmentSpec(confinementSelect.value, growthDomainScale);
   confinementHint.textContent = spec.shortLabel;
   confinementNote.textContent = spec.note;
   if (spec.shape === "orthorhombic box" || spec.shape === "orthorhombic slab") {
@@ -11877,7 +11946,7 @@ function renderMolecularHypothesis() {
 
 function currentGrowthProtocolSettings() {
   return {
-    confinement: confinementSelect.value, geometryPreference, geometricStrainWeight,
+    confinement: confinementSelect.value, growthDomainScale, geometryPreference, geometricStrainWeight,
     compositionPreference, feedstockSupplyMode, soluteSpecies: resolvedSoluteSpecies(), solutePartitionMode, solutePartitionWeight,
     chargePreference, chargeGeometryMode, chargeGeometryReach, chargeGeometryWeight,
     surfacePreference, growthDrivingMode, growthDrivingWeight,
@@ -11950,6 +12019,7 @@ function applyGrowthProtocol(mode) {
   const settings = { ...GROWTH_PROTOCOL_DEFAULTS, ...protocol.settings };
   growthProtocolMode = mode;
   confinementSelect.value = settings.confinement;
+  growthDomainScale = settings.growthDomainScale;
   geometryPreference = settings.geometryPreference; geometricStrainWeight = settings.geometricStrainWeight;
   compositionPreference = settings.compositionPreference; feedstockSupplyMode = settings.feedstockSupplyMode;
   chargePreference = settings.chargePreference;
@@ -11985,6 +12055,8 @@ function applyGrowthProtocol(mode) {
 
 function syncStageOptions() {
   const visible = pipelineStage === 1 || pipelineStage === 3 || pipelineStage === 4;
+  growthDomainScaleSelect.value = String(growthDomainScale);
+  renderGrowthDomainPassport();
   const calculation = activeCalculationProvenance();
   forceToggle.disabled = !(calculation?.forceCoverage > 0);
   forceToggleLabel.textContent = calculation?.forceCoverage > 0
@@ -12519,7 +12591,8 @@ function enterPipelineStage(index, options = {}) {
   setPlaying(false);
   resetCounters();
   if (scenarioSelect.value === "imported") syncImportedFrameMaterial();
-  rngState = 0x8f23ab17 ^ scenarioSelect.selectedIndex * 0x91e10da5 ^ confinementSelect.selectedIndex * 0x734a9d;
+  rngState = 0x8f23ab17 ^ scenarioSelect.selectedIndex * 0x91e10da5
+    ^ confinementSelect.selectedIndex * 0x734a9d ^ growthDomainScale * 0x45d9f3b;
   referenceAtoms = makeReferenceConfiguration();
   referenceSpacing = scenarioSelect.value === "imported" ? .92 : medianNearestSpacing(referenceAtoms);
   referenceSpacingA = scenarioSelect.value === "imported"
@@ -12627,7 +12700,7 @@ function updateStageNarrative() {
   decisionEyebrow.textContent = "pipeline stage";
   decisionBadge.className = "badge neutral";
   const material = currentMaterial();
-  const externalGeometry = growthEnvironmentSpec(confinementSelect.value);
+  const externalGeometry = scaledGrowthEnvironmentSpec(confinementSelect.value, growthDomainScale);
   const clusterCount = markingPrototypeTypes().length;
   const trainingPoint = trainedMarking ? currentTrainingPoint() : { samples: 0, discovered: 0, reusable: 0, overlaps: 0 };
   const narratives = [
@@ -12911,7 +12984,7 @@ function materializeCandidate(candidate, evaluation) {
 function performOffLatticeEvent() {
   const before = { atoms: atoms.length, clusters: placedClusters.length, frontier: frontierCandidates.length,
     morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
-    feedstock: currentFeedstockSnapshot() };
+    feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() };
   const batch = commutingFrontierBatch();
   if (!batch.length) {
     recordStructuralLeap({ status: "fixed", label: "no geometrically admissible successor",
@@ -12920,7 +12993,7 @@ function performOffLatticeEvent() {
       after: { atoms: atoms.length, clusters: placedClusters.length, accepted: 0, rejected: 0,
         depth: Math.max(0, ...placedClusters.map((placement) => placement.depth || 0)),
         morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
-        feedstock: currentFeedstockSnapshot() },
+        feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() },
       claimBoundary: "This is a certified finite structural fixed point. It is not equilibrium, a stopping time, or evidence that a physical interface cannot advance by an unmodeled mechanism." });
     pauseGrowth("Frontier exhausted: no learned overlap rule remains geometrically admissible.");
     return;
@@ -13076,7 +13149,7 @@ function performOffLatticeEvent() {
     after: { atoms: atoms.length, clusters: placedClusters.length, accepted: acceptedInBatch, rejected: rejectedInBatch,
       depth: Math.max(0, ...placedClusters.map((placement) => placement.depth || 0)),
       morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
-      feedstock: currentFeedstockSnapshot() },
+      feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() },
     claimBoundary: "The accepted antichain is valid in every placement order and jumps directly to a certified structural state. No force trajectory, relaxation path, transition probability, or physical elapsed time was computed." });
   rebuildWorld();
   updateUI();
@@ -13086,7 +13159,8 @@ function performIceAnchorEvent() {
   const wave = iceAnchorTrace?.waves[iceAnchorWaveIndex];
   const before = { atoms: atoms.length, clusters: acceptedDecisions,
     frontier: wave?.candidateAnchors || 0, morphology: structuralMorphologySnapshot(),
-    interfaces: structuralInterfaceSnapshot(), feedstock: currentFeedstockSnapshot() };
+    interfaces: structuralInterfaceSnapshot(), feedstock: currentFeedstockSnapshot(),
+    domain: currentGrowthDomainSnapshot() };
   if (!wave) {
     growthStopReason = "Certified molecular anchor trace exhausted at its safe fixed point.";
     setPlaying(false);
@@ -13123,7 +13197,7 @@ function performIceAnchorEvent() {
       after: { atoms: atoms.length, clusters: acceptedDecisions, accepted: 0,
         rejected: wave.rejectedCandidateAnchors, depth: wave.wave,
         morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
-        feedstock: currentFeedstockSnapshot() },
+        feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() },
       claimBoundary: `The frozen ${iceAnchorTrace.portCount}-port grammar reaches a finite structural fixed point. Unresolved ${iceAnchorTrace.orientationSpecies} motion, proton/deuteron barriers, entropy, and physical stopping time are not modeled.` });
     growthStopReason = "Frozen molecular-port grammar reached its certified finite fixed point.";
     setPlaying(false);
@@ -13157,7 +13231,7 @@ function performIceAnchorEvent() {
     after: { atoms: atoms.length, clusters: acceptedDecisions, accepted: wave.acceptedAnchors,
       rejected: wave.rejectedCandidateAnchors, depth: wave.wave,
       morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
-      feedstock: currentFeedstockSnapshot() },
+      feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() },
     claimBoundary: `The browser jumps to oxygen anchors shared by every surviving ${iceAnchorTrace.moleculeLabel} orientation domain. It does not integrate ${iceAnchorTrace.orientationSpecies} rearrangement, tunnelling, diffusion, relaxation, probability, or elapsed physical time.` });
   rebuildWorld();
   updateUI();
@@ -14571,7 +14645,7 @@ function geometryConstraintEvidence(name, term, state, mode) {
   const signed = (value) => `${value >= 0 ? "+" : ""}${Number(value || 0).toFixed(3)}`;
   const ratio = compositionTarget?.reducedRatio
     ? Object.entries(compositionTarget.reducedRatio).map(([symbol, count]) => `${symbol}:${count}`).join(" · ") : "unavailable";
-  const environment = growthEnvironmentSpec(confinementSelect.value);
+  const environment = scaledGrowthEnvironmentSpec(confinementSelect.value, growthDomainScale);
   const generic = {
     observed: `${presentations.toLocaleString()} species-labelled position presentations · ${frameCount} within-frame observation${frameCount === 1 ? "" : "s"}`,
     encoding: term.detail,
@@ -16532,6 +16606,12 @@ loadEnsembleFixtureButton.addEventListener("click", async () => {
   }
 });
 confinementSelect.addEventListener("change", () => {
+  growthProtocolMode = "custom";
+  enterPipelineStage(pipelineStage);
+});
+growthDomainScaleSelect.addEventListener("change", () => {
+  const value = Number(growthDomainScaleSelect.value);
+  growthDomainScale = [1, 2, 4].includes(value) ? value : 1;
   growthProtocolMode = "custom";
   enterPipelineStage(pipelineStage);
 });

@@ -17,8 +17,8 @@ def test_external_geometry_drives_render_search_and_receipt() -> None:
         assert f'<option value="{mode}">' in html
         assert f"{mode}: {{" in environments
 
-    assert "growthEnvironmentContains(confinementSelect.value, position)" in source
-    assert "const spec = growthEnvironmentSpec(confinementSelect.value)" in source
+    assert "growthEnvironmentContains(confinementSelect.value, position, growthDomainScale)" in source
+    assert "const spec = scaledGrowthEnvironmentSpec(confinementSelect.value, growthDomainScale)" in source
     assert "externalGeometry: receiptExternalGeometry()" in source
     assert "parametersAngstrom" in source
     assert 'admissionRole: "hard target-independent public-boundary gate"' in environments
@@ -27,7 +27,7 @@ def test_external_geometry_drives_render_search_and_receipt() -> None:
     assert "epitaxialRegistryModeled: false" in environments
     assert "surfaceEnergyModeled: false" in environments
     assert "External geometry as a hard public boundary" in readme
-    assert 'app.js?v=20260825-131' in html
+    assert 'app.js?v=20260825-132' in html
 
 
 if __name__ == "__main__":

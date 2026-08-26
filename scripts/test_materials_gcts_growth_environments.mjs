@@ -3,7 +3,9 @@ import {
   GROWTH_ENVIRONMENT_IDS,
   growthEnvironmentAudit,
   growthEnvironmentContains,
+  growthEnvironmentSignedMargin,
   growthEnvironmentSpec,
+  scaledGrowthEnvironmentSpec,
 } from "../apps/iqc-growth-live/growth-environments.js";
 
 assert.deepEqual(GROWTH_ENVIRONMENT_IDS, ["box", "sphere", "cylinder", "slab", "substrate", "hourglass"]);
@@ -35,6 +37,11 @@ assert.equal(growthEnvironmentContains("hourglass", [0, 2.251, 0]), false);
 assert.equal(growthEnvironmentContains("hourglass", [8, 6.8, 0]), true);
 
 assert.match(growthEnvironmentSpec("substrate").note, /No substrate atoms/);
+assert.deepEqual(scaledGrowthEnvironmentSpec("box", 2).parameters.halfExtents, [16.7, 16.7, 16.7]);
+assert.equal(growthEnvironmentContains("box", [12, 0, 0], 1), false);
+assert.equal(growthEnvironmentContains("box", [12, 0, 0], 2), true);
+assert.equal(growthEnvironmentSignedMargin("sphere", [10, 0, 0], 2), 7.600000000000001);
+assert.equal(growthEnvironmentAudit("box", 4).publicReachScale, 4);
 assert.throws(() => growthEnvironmentSpec("unknown"), /Unknown growth environment/);
 assert.throws(() => growthEnvironmentContains("box", [0, Number.NaN, 0]), /three finite coordinates/);
 
