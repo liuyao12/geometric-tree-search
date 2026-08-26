@@ -958,6 +958,24 @@ radius. Beyond 216 atoms, the live chart uses a contiguous 216-atom central
 window. Coordination bins remain interactive and highlight every matching
 center, all current neighbors, and their connecting segments.
 
+The real-space card also exposes a **local orientational-order microscope**.
+For three-dimensional structures it evaluates the rotation-invariant
+Steinhardt `q_l` magnitude through the Legendre addition theorem; for
+intrinsically two-dimensional structures it evaluates the in-plane bond-order
+magnitude `|psi_l|`. The scientist can switch among `l=4`, `6`, and `12` to
+probe cubic/square, close-packed/hexatic, and icosahedral/dodecagonal local
+symmetry without supplying a global crystal frame. Every distribution compares
+the known window with the explicit grown window. Clicking a histogram bin
+highlights every matching center, its current first-shell neighbors, and the
+actual bonds used by the descriptor in the 3D scene. The nearest-neighbor
+cutoff, harmonic, resolved-center count, distribution moments, and claim boundary are serialized in
+the experiment receipt; saved-run trajectories can compare the mean local
+`q6` / `|psi6|` after each discrete structural leap. These values are structural fingerprints—not phase
+labels, crystallinity probabilities, free energies, or growth scores.
+Under-coordinated centers with fewer than two in-plane or three 3D neighbors
+remain explicitly unresolved instead of contributing the spuriously perfect
+single-bond value one.
+
 The same card can switch to a finite-observation geometric powder structure
 factor. It evaluates the Debye pair sum with `sin(qr)/(qr)` in 3D and the
 correct `J0(qr)` orientational kernel for intrinsically 2D materials. The
@@ -990,7 +1008,7 @@ amorphous interpretation. This remains a posthoc prototype match, not an
 independent phase determination. A publishable evaluator still needs `spglib`
 or a fully certified translation analysis for crystals, indexed reciprocal
 modules and experimental diffraction for quasicrystals, and chemically
-weighted scattering plus local-motif tests for glasses.
+weighted scattering plus probe-specific local-topology validation for glasses.
 
 The order card now keeps the inference auditable as growth proceeds. It plots
 confidence against the live atom count, shows the contiguous analysis-window
@@ -4565,3 +4583,5 @@ Build 132 separates the supplied observation from the public growth domain. A ne
 Build 133 tightens that accounting: novelty is no longer mislabeled as spatial continuation. The input becomes an explicit finite observation envelope—a half-neighbor-padded box for finite periodic/generic windows, a finite slab for 2D samples, or the published spherical crop when that geometry is supplied. Every generated site is classified by signed envelope margin as either novel-but-inside or genuinely beyond the observation. The live passport, leap snapshots, notebook observable, certificate, and receipt expose both counts, the envelope provenance and dimensions, and the maximum excursion. No raw input coordinates enter the receipt. Crossing the empirical envelope is geometric continuation, not proof that the emitted structure is physically correct, stable, or kinetically reachable.
 
 Build 134 adds an optional geometry-only post-attachment accommodation step. It never touches the supplied/known-window replay or any previously placed atom. After a target-blind structural leap, only the newly emitted sites may move, under a user-selected 2.5%, 5%, or 8% nearest-neighbor displacement cap and a bounded deterministic iteration count. A train-derived colored contact residual proposes the displacement; the entire proposal is committed only when the full learned contact-plus-angle strain decreases and species-specific hard exclusion, coordination capacity, angular bands, public boundary, exact cluster topology, and frozen proper-port identity all remain valid. Any failure atomically restores the exact template coordinates. The structural-leap card, physics map, notebook trajectory, live certificate, and experiment receipt retain the before/after strain, displacement cap, iteration count, rollback reason, and explicit target/force/time nonclaims. This leap-frogs to a locally more compatible structural state, but is not an interatomic potential, energy minimization, mechanical equilibrium, MD integration, diffusion mechanism, probability, rate, or physical elapsed time.
+
+Build 135 adds a dimension-aware local orientational-order microscope beside RDF and geometric powder S(q). Three-dimensional samples use the proper-rotation-invariant Steinhardt q_l magnitude evaluated through the Legendre addition theorem; intrinsic 2D samples use the in-plane bond-order magnitude |psi_l|. Scientists can switch among l=4, 6, and 12, compare known and explicitly grown distributions, and click any histogram interval to isolate every matching center, first-shell neighbor, and contributing bond in the 3D scene. NaCl recovers its expected q6≈0.354 simple-cubic/rocksalt local value, while the hexagonal sheets in the 30-degree hBN control give |psi6|=1 independent of their global orientation. The harmonic, cutoff, moments, and explicit nonclaims are receipt-visible. The descriptor is posthoc geometric evidence, never a phase label, crystallinity probability, energy, or branch score.

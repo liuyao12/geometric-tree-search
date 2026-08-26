@@ -22,7 +22,8 @@ import {
 } from "./ice-vi-anchor-trace.js?v=20260824-1";
 import { discoverIrregularCover } from "./irregular-cover.js?v=20260824-1";
 import { generateAmorphousMixture } from "./amorphous-glass.js?v=20260824-1";
-import { powderStructureFactor, summarizeStructureFactor } from "./structure-observables.js?v=20260824-1";
+import { localOrientationalOrder, orientationalOrderDistribution,
+  powderStructureFactor, summarizeStructureFactor } from "./structure-observables.js?v=20260825-2";
 import { compositionBalanceDelta, learnCompositionTarget } from "./composition-balance.js?v=20260824-1";
 import { consumeFeedstock, evaluateFeedstockDemand, feedstockReservoirSnapshot,
   initializeFeedstockReservoir } from "./feedstock-reservoir.js?v=20260826-1";
@@ -407,6 +408,7 @@ const rdfStatus = $("rdfStatus");
 const rdfLegend = $("rdfLegend");
 const rdfPairSelect = $("rdfPairSelect");
 const structureObservableSelect = $("structureObservableSelect");
+const orientationalOrderSelect = $("orientationalOrderSelect");
 const coordChart = $("coordChart");
 const coordEyebrow = $("coordEyebrow");
 const coordTitle = $("coordTitle");
@@ -792,6 +794,8 @@ let referenceStructuralStats = null;
 let liveStructuralStats = null;
 let lastLiveStatsKey = "";
 let coordinationSelection = null;
+let orientationalOrderSelection = null;
+let orientationalOrderHarmonic = 6;
 let learnedClusters = null;
 let learnedCover = null;
 let detectedUnitCell = null;
@@ -2337,10 +2341,12 @@ function calculateStructuralStats(source, spacing, periodic = false,
   const coordination = new Array(13).fill(0);
   if (!source.length) return { rdf, rdfByPair: {}, dimension: intrinsicDimension,
     maximumRadius: requestedMaximumRadius || RDF_MAX_RADIUS, edgeCorrection: periodic ? "periodic minimum image" : "finite-window translation",
-    pairDistances, coordination, meanCoordination: 0, count: 0, neighborCounts: [], neighborLists: [] };
+    pairDistances, coordination, meanCoordination: 0, count: 0, neighborCounts: [], neighborLists: [],
+    neighborVectors: [], planeNormal: intrinsicDimension === 2 ? [0, 0, 1] : null, orientationalOrder: {} };
 
   const neighbors = new Array(source.length).fill(0);
   const neighborLists = Array.from({ length: source.length }, () => []);
+  const neighborVectors = Array.from({ length: source.length }, () => []);
   const minimum = new THREE.Vector3(Infinity, Infinity, Infinity);
   const maximum = new THREE.Vector3(-Infinity, -Infinity, -Infinity);
   source.forEach((atom) => {
@@ -2392,6 +2398,8 @@ function calculateStructuralStats(source, spacing, periodic = false,
         neighbors[second]++;
         neighborLists[first].push(second);
         neighborLists[second].push(first);
+        neighborVectors[first].push(vector.toArray());
+        neighborVectors[second].push(vector.clone().multiplyScalar(-1).toArray());
       }
     }
   }
@@ -2432,7 +2440,8 @@ function calculateStructuralStats(source, spacing, periodic = false,
   const meanCoordination = neighbors.reduce((sum, value) => sum + value, 0) / source.length;
   return { rdf, rdfByPair, dimension: intrinsicDimension, maximumRadius,
     edgeCorrection: periodic ? "periodic minimum image" : "finite-window translation",
-    pairDistances, coordination, meanCoordination, count: source.length, neighborCounts: neighbors, neighborLists };
+    pairDistances, coordination, meanCoordination, count: source.length, neighborCounts: neighbors, neighborLists,
+    neighborVectors, planeNormal: planeNormal?.toArray() || null, orientationalOrder: {} };
 }
 
 function ensureStructureFactor(stats) {
@@ -2441,6 +2450,29 @@ function ensureStructureFactor(stats) {
     stats.structureFactor.summary = summarizeStructureFactor(stats.structureFactor);
   }
   return stats.structureFactor;
+}
+
+function ensureOrientationalOrder(stats, harmonic = orientationalOrderHarmonic) {
+  stats.orientationalOrder ||= {};
+  if (!stats.orientationalOrder[harmonic]) {
+    const values = localOrientationalOrder(stats.neighborVectors || [], stats.dimension, {
+      harmonic,
+      planeNormal: stats.planeNormal || [0, 0, 1],
+    });
+    const minimumNeighbors = stats.dimension === 2 ? 2 : 3;
+    const resolved = (stats.neighborVectors || []).map((vectors) => vectors.length >= minimumNeighbors);
+    const resolvedValues = values.filter((_, index) => resolved[index]);
+    stats.orientationalOrder[harmonic] = {
+      harmonic,
+      values,
+      resolved,
+      minimumNeighbors,
+      unresolvedCount: values.length - resolvedValues.length,
+      resolvedFraction: resolvedValues.length / Math.max(1, values.length),
+      ...orientationalOrderDistribution(resolvedValues),
+    };
+  }
+  return stats.orientationalOrder[harmonic];
 }
 
 function currentLiveStructure() {
@@ -2457,6 +2489,24 @@ function currentLiveStructure() {
   }
   return { source, stats: liveStructuralStats || calculateStructuralStats([], referenceSpacing, false,
     currentMaterial().intrinsicDimension === 2 ? 2 : 3, referenceStructuralStats?.maximumRadius || RDF_MAX_RADIUS) };
+}
+
+function structuralOrientationalOrderSnapshot() {
+  if (pipelineStage !== 4) return null;
+  const { stats } = currentLiveStructure();
+  if (!stats?.count) return null;
+  const harmonics = Object.fromEntries([4, 6, 12].map((harmonic) => {
+    const order = ensureOrientationalOrder(stats, harmonic);
+    return [harmonic, { mean: order.mean, median: order.median, highFraction: order.highFraction,
+      resolvedCenters: order.count, unresolvedCenters: order.unresolvedCount }];
+  }));
+  return {
+    dimension: stats.dimension,
+    definition: stats.dimension === 2 ? "bond-orientational magnitude |psi_l|" : "Steinhardt q_l magnitude",
+    neighborCutoffInNearestNeighborUnits: COORDINATION_CUTOFF,
+    harmonics,
+    usedAsGrowthInput: false,
+  };
 }
 
 function selectedCoordinationDetail() {
@@ -2500,6 +2550,45 @@ function selectedCoordinationDetail() {
 function selectCoordination(value) {
   if (pipelineStage === 2 || (pipelineStage === 4 && replayIndex === 0)) return;
   coordinationSelection = coordinationSelection === value ? null : value;
+  orientationalOrderSelection = null;
+  rebuildWorld();
+  updateUI();
+}
+
+function selectedOrientationalOrderDetail() {
+  if (orientationalOrderSelection === null || structureObservableSelection !== "order" || pipelineStage === 2) return null;
+  const structure = pipelineStage === 4
+    ? currentLiveStructure()
+    : { source: atoms, stats: referenceStructuralStats };
+  if (!structure.source.length || !structure.stats) return null;
+  const order = ensureOrientationalOrder(structure.stats);
+  const matching = structure.source.map((atom, index) => ({ atom, index }))
+    .filter(({ index }) => order.resolved[index] && Math.min(order.bins - 1,
+      Math.floor(Math.max(0, Math.min(1, order.values[index] || 0)) * order.bins)) === orientationalOrderSelection);
+  if (!matching.length) return { ids: new Set(), centerIds: new Set(), neighborIds: new Set(), matchCount: 0, centers: [], neighbors: [], edges: [] };
+  const centers = matching.map(({ atom }) => atom);
+  const centerIds = new Set(centers.map((atom) => atom.id));
+  const neighborIds = new Set();
+  const neighbors = [];
+  const edges = [];
+  const edgeKeys = new Set();
+  matching.forEach(({ atom: center, index }) => {
+    structure.stats.neighborLists[index].forEach((neighborIndex) => {
+      const neighbor = structure.source[neighborIndex];
+      if (!neighborIds.has(neighbor.id)) neighbors.push(neighbor);
+      neighborIds.add(neighbor.id);
+      const key = center.id < neighbor.id ? `${center.id}:${neighbor.id}` : `${neighbor.id}:${center.id}`;
+      if (!edgeKeys.has(key)) { edgeKeys.add(key); edges.push([center, neighbor]); }
+    });
+  });
+  return { ids: new Set([...centerIds, ...neighborIds]), centerIds, neighborIds,
+    matchCount: matching.length, centers, neighbors, edges };
+}
+
+function selectOrientationalOrderBin(value) {
+  if (pipelineStage === 2 || (pipelineStage === 4 && replayIndex === 0)) return;
+  orientationalOrderSelection = orientationalOrderSelection === value ? null : value;
+  coordinationSelection = null;
   rebuildWorld();
   updateUI();
 }
@@ -2576,6 +2665,7 @@ function renderTrainingStats() {
   const visibleCurve = sectionModel.curve.slice(0, trainingProgress);
   const totalSamples = markingSampleCount();
   rdfPairSelect.hidden = true;
+  orientationalOrderSelect.hidden = true;
   structureObservableSelect.hidden = true;
   rdfEyebrow.textContent = "GCTS training curve";
   rdfTitle.textContent = "section mismatch";
@@ -2639,6 +2729,8 @@ function renderStructureStats() {
   structureObservableSelect.hidden = false;
   structureObservableSelect.value = structureObservableSelection;
   rdfPairSelect.hidden = structureObservableSelection !== "rdf";
+  orientationalOrderSelect.hidden = structureObservableSelection !== "order";
+  orientationalOrderSelect.value = String(orientationalOrderHarmonic);
   syncRdfPairOptions();
   const dimension = referenceStructuralStats.dimension;
   coordEyebrow.textContent = "first-shell coordination";
@@ -2655,7 +2747,58 @@ function renderStructureStats() {
   coordClearButton.hidden = coordinationSelection === null;
 
   rdfChart.replaceChildren();
-  if (structureObservableSelection === "sq") {
+  if (structureObservableSelection === "order") {
+    const knownOrder = ensureOrientationalOrder(referenceStructuralStats);
+    const liveOrder = ensureOrientationalOrder(live);
+    const symbol = dimension === 2 ? `|ψ${orientationalOrderHarmonic}|` : `q${orientationalOrderHarmonic}`;
+    rdfEyebrow.textContent = `${dimension}D first-shell orientational order`;
+    rdfTitle.textContent = `${symbol} · rotationally invariant local geometry`;
+    rdfChart.setAttribute("aria-label", `Distribution of local ${symbol} for known positions and live reconstruction`);
+    const selectedOrderDetail = selectedOrientationalOrderDetail();
+    rdfStatus.textContent = orientationalOrderSelection === null
+      ? `mean ${knownOrder.mean.toFixed(2)}${live.count ? ` → ${liveOrder.mean.toFixed(2)}` : ""} · resolved ${knownOrder.count}/${referenceStructuralStats.count}`
+      : `${selectedOrderDetail?.matchCount || 0} centers · ${selectedOrderDetail?.edges.length || 0} first-shell bonds`;
+    rdfStatus.title = dimension === 2
+      ? `Magnitude of the ${orientationalOrderHarmonic}-fold complex bond-order average in the inferred material plane. It is orientation invariant and uses neighbors within 1.32a.`
+      : `Steinhardt q${orientationalOrderHarmonic} magnitude evaluated through the Legendre addition theorem for neighbors within 1.32a. It is rotation invariant; it is not a phase label, free energy, or crystallinity probability.`;
+    drawChartFrame(rdfChart, symbol, "P");
+    const maximum = Math.max(.05, ...knownOrder.histogram, ...liveOrder.histogram) * 1.08;
+    const barStep = 323 / knownOrder.bins;
+    if (orientationalOrderSelection !== null) {
+      const x = 29 + orientationalOrderSelection * barStep + 1;
+      rdfChart.append(svgNode("rect", { x, y: 8, width: barStep - 2, height: 88, class: "coord-selection" }));
+    }
+    knownOrder.histogram.forEach((value, index) => {
+      const height = Math.min(1, value / maximum) * 84;
+      const x = 29 + index * barStep + 2;
+      rdfChart.append(svgNode("rect", { x, y: 96 - height,
+        width: Math.max(1, barStep - 4), height, class: "coord-known" }));
+    });
+    if (live.count) liveOrder.histogram.forEach((value, index) => {
+      const height = Math.min(1, value / maximum) * 84;
+      const x = 29 + index * barStep + barStep * .28;
+      rdfChart.append(svgNode("rect", { x, y: 96 - height,
+        width: barStep * .44, height, class: "coord-live" }));
+    });
+    [0, .25, .5, .75, 1].forEach((tick) => {
+      const x = 29 + tick * 323;
+      rdfChart.append(svgNode("text", { x, y: 108, class: "chart-label", "text-anchor": "middle" }, tick.toFixed(tick ? 2 : 0)));
+    });
+    knownOrder.histogram.forEach((_, index) => {
+      const hit = svgNode("rect", {
+        x: 29 + index * barStep, y: 8, width: barStep, height: 88,
+        class: "coord-hit", role: "button", tabindex: "0",
+        "aria-label": `${symbol} ${(index / knownOrder.bins).toFixed(2)} to ${((index + 1) / knownOrder.bins).toFixed(2)}; show matching local shells`,
+        "aria-pressed": orientationalOrderSelection === index ? "true" : "false",
+      });
+      hit.addEventListener("click", () => selectOrientationalOrderBin(index));
+      hit.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") { event.preventDefault(); selectOrientationalOrderBin(index); }
+      });
+      rdfChart.append(hit);
+    });
+    setChartLegend(rdfLegend, [["known-key", `known · ${symbol}`], ["live-key", `${liveWindowLabel} · ${symbol}`], ["", "click a bin to inspect its shells"]]);
+  } else if (structureObservableSelection === "sq") {
     const knownSq = ensureStructureFactor(referenceStructuralStats);
     const liveSq = ensureStructureFactor(live);
     rdfEyebrow.textContent = `${dimension}D finite-observation powder average`;
@@ -6158,6 +6301,7 @@ async function buildExperimentReceipt() {
   const markingVisible = pipelineStage >= 3;
   const searchVisible = pipelineStage >= 4;
   const referenceSq = ensureStructureFactor(referenceStructuralStats);
+  const referenceOrder = ensureOrientationalOrder(referenceStructuralStats);
   const trajectoryFrames = scenarioSelect.value === "imported" ? importedTrajectoryFrames() : [];
   const recordedConditions = activeMeasurementConditions();
   const externalCalculation = activeCalculationProvenance();
@@ -6205,7 +6349,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-134",
+      buildId: "20260825-135",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -6553,6 +6697,24 @@ async function buildExperimentReceipt() {
         xrayFormFactorsUsed: false,
         neutronScatteringLengthsUsed: false,
         experimentalIntensityClaimed: false,
+      },
+      localOrientationalOrder: {
+        dimension: referenceStructuralStats.dimension,
+        definition: referenceStructuralStats.dimension === 2 ? "bond-orientational magnitude |psi_l|" : "Steinhardt q_l magnitude via Legendre addition theorem",
+        harmonic: orientationalOrderHarmonic,
+        neighborCutoffInNearestNeighborUnits: COORDINATION_CUTOFF,
+        bins: referenceOrder.bins,
+        mean: receiptRound(referenceOrder.mean),
+        median: receiptRound(referenceOrder.median),
+        highOrderFractionAtLeastPointSeven: receiptRound(referenceOrder.highFraction),
+        minimumNeighborsForResolvedValue: referenceOrder.minimumNeighbors,
+        resolvedCenters: referenceOrder.count,
+        unresolvedCenters: referenceOrder.unresolvedCount,
+        resolvedFraction: receiptRound(referenceOrder.resolvedFraction),
+        properRotationInvariant: true,
+        usedAsGrowthInput: false,
+        phaseProbabilityClaimed: false,
+        freeEnergyClaimed: false,
       },
     },
     cover: coverVisible ? {
@@ -7490,6 +7652,11 @@ function notebookInterventionFactors(receipt) {
     } : null) },
     scheduling: { label: "tree scheduling", role: "search", value: serialized(search?.scheduling || null) },
     hierarchy: { label: "clusters² promotion", role: "search", value: String(search?.hierarchyEnabled ?? "not entered") },
+    structuralObservable: { label: "posthoc structural observable", role: "analysis only", value: serialized({
+      selectedView: receipt.structuralEvidence?.selectedView,
+      rdfPair: receipt.structuralEvidence?.rdf?.pair,
+      orientationalHarmonic: receipt.structuralEvidence?.localOrientationalOrder?.harmonic,
+    }) },
     costModel: { label: "cost estimate assumptions", role: "analysis only", value: serialized(cost?.assumptions || null) },
   };
 }
@@ -7517,6 +7684,7 @@ function experimentNotebookSummary(receipt) {
     clusters: initialLeapState.clusters || 0, frontier: initialLeapState.frontier || 0,
     acceptedThisLeap: 0, rejectedThisLeap: 0, cumulativeAccepted: 0, cumulativeRejected: 0, depth: 0,
     morphology: initialLeapState.morphology || null, interfaces: initialLeapState.interfaces || null,
+    orientationalOrder: initialLeapState.orientationalOrder || null,
     feedstock: initialLeapState.feedstock || null, domain: initialLeapState.domain || null,
     relaxation: null }];
   structuralLeaps.forEach((leap, index) => {
@@ -7530,6 +7698,7 @@ function experimentNotebookSummary(receipt) {
       acceptedThisLeap: leap.after?.accepted || 0, rejectedThisLeap: leap.after?.rejected || 0,
       cumulativeAccepted, cumulativeRejected, depth: leap.after?.depth || 0,
       morphology: leap.after?.morphology || null, interfaces: leap.after?.interfaces || null,
+      orientationalOrder: leap.after?.orientationalOrder || null,
       feedstock: leap.after?.feedstock || null, domain: leap.after?.domain || null,
       relaxation: leap.relaxation || null });
   });
@@ -7706,6 +7875,9 @@ const NOTEBOOK_TRAJECTORY_OBSERVABLES = {
   relaxationDisplacement: { label: "post-attachment maximum displacement · Å",
     value: (point) => point.relaxation?.maximumDisplacementAngstrom,
     format: (value) => `${value.toFixed(3)} Å` },
+  localOrder: { label: "mean local q₆ / |ψ₆|",
+    value: (point) => point.orientationalOrder?.harmonics?.[6]?.mean,
+    format: (value) => value.toFixed(3) },
   extent: { label: "maximum nucleus extent · Å", value: (point) => point.morphology?.maximumExtentAngstrom,
     format: (value) => `${value.toFixed(2)} Å` },
   anisotropy: { label: "relative shape anisotropy · κ²", value: (point) => point.morphology?.relativeShapeAnisotropy,
@@ -12781,6 +12953,7 @@ function resetCounters() {
   liveStructuralStats = null;
   lastLiveStatsKey = "";
   coordinationSelection = null;
+  orientationalOrderSelection = null;
   trainingProgress = 0;
   clusterDiscoveryTrace = null;
   clusterDiscoveryProgress = 0;
@@ -13204,6 +13377,7 @@ function performOffLatticeEvent() {
   const relaxationAuthorized = reconstructionCertified;
   const before = { atoms: atoms.length, clusters: placedClusters.length, frontier: frontierCandidates.length,
     morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
+    orientationalOrder: structuralOrientationalOrderSnapshot(),
     feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() };
   const batch = commutingFrontierBatch();
   if (!batch.length) {
@@ -13213,6 +13387,7 @@ function performOffLatticeEvent() {
       after: { atoms: atoms.length, clusters: placedClusters.length, accepted: 0, rejected: 0,
         depth: Math.max(0, ...placedClusters.map((placement) => placement.depth || 0)),
         morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
+        orientationalOrder: structuralOrientationalOrderSnapshot(),
         feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() },
       claimBoundary: "This is a certified finite structural fixed point. It is not equilibrium, a stopping time, or evidence that a physical interface cannot advance by an unmodeled mechanism." });
     pauseGrowth("Frontier exhausted: no learned overlap rule remains geometrically admissible.");
@@ -13373,6 +13548,7 @@ function performOffLatticeEvent() {
     after: { atoms: atoms.length, clusters: placedClusters.length, accepted: acceptedInBatch, rejected: rejectedInBatch,
       depth: Math.max(0, ...placedClusters.map((placement) => placement.depth || 0)),
       morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
+      orientationalOrder: structuralOrientationalOrderSnapshot(),
       feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() },
     claimBoundary: relaxation?.accepted
       ? "The accepted antichain is valid in every placement order. A bounded post-attachment constraint projection reduced the learned local contact-angle residual and re-passed every hard gate; it is not a force trajectory, energy minimization, probability, or physical elapsed time."
@@ -13385,6 +13561,7 @@ function performIceAnchorEvent() {
   const wave = iceAnchorTrace?.waves[iceAnchorWaveIndex];
   const before = { atoms: atoms.length, clusters: acceptedDecisions,
     frontier: wave?.candidateAnchors || 0, morphology: structuralMorphologySnapshot(),
+    orientationalOrder: structuralOrientationalOrderSnapshot(),
     interfaces: structuralInterfaceSnapshot(), feedstock: currentFeedstockSnapshot(),
     domain: currentGrowthDomainSnapshot() };
   if (!wave) {
@@ -13423,6 +13600,7 @@ function performIceAnchorEvent() {
       after: { atoms: atoms.length, clusters: acceptedDecisions, accepted: 0,
         rejected: wave.rejectedCandidateAnchors, depth: wave.wave,
         morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
+        orientationalOrder: structuralOrientationalOrderSnapshot(),
         feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() },
       claimBoundary: `The frozen ${iceAnchorTrace.portCount}-port grammar reaches a finite structural fixed point. Unresolved ${iceAnchorTrace.orientationSpecies} motion, proton/deuteron barriers, entropy, and physical stopping time are not modeled.` });
     growthStopReason = "Frozen molecular-port grammar reached its certified finite fixed point.";
@@ -13457,6 +13635,7 @@ function performIceAnchorEvent() {
     after: { atoms: atoms.length, clusters: acceptedDecisions, accepted: wave.acceptedAnchors,
       rejected: wave.rejectedCandidateAnchors, depth: wave.wave,
       morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
+      orientationalOrder: structuralOrientationalOrderSnapshot(),
       feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() },
     claimBoundary: `The browser jumps to oxygen anchors shared by every surviving ${iceAnchorTrace.moleculeLabel} orientation domain. It does not integrate ${iceAnchorTrace.orientationSpecies} rearrangement, tunnelling, diffusion, relaxation, probability, or elapsed physical time.` });
   rebuildWorld();
@@ -13729,7 +13908,7 @@ function rebuildWorld() {
     }
   }
   const dummy = new THREE.Object3D();
-  const selectedCoordination = selectedCoordinationDetail();
+  const selectedCoordination = selectedOrientationalOrderDetail() || selectedCoordinationDetail();
   const selectedIds = selectedCoordination?.ids || null;
   const addInstances = (source, material, scale = 1) => {
     if (!source.length) return;
@@ -17301,7 +17480,18 @@ rdfPairSelect.addEventListener("change", () => {
   renderStructureStats();
 });
 structureObservableSelect.addEventListener("change", () => {
-  structureObservableSelection = structureObservableSelect.value === "sq" ? "sq" : "rdf";
+  structureObservableSelection = ["rdf", "sq", "order"].includes(structureObservableSelect.value)
+    ? structureObservableSelect.value : "rdf";
+  if (structureObservableSelection !== "order") orientationalOrderSelection = null;
+  if (structureObservableSelection === "order") coordinationSelection = null;
+  rebuildWorld();
+  renderStructureStats();
+});
+orientationalOrderSelect.addEventListener("change", () => {
+  const harmonic = Number(orientationalOrderSelect.value);
+  orientationalOrderHarmonic = [4, 6, 12].includes(harmonic) ? harmonic : 6;
+  orientationalOrderSelection = null;
+  rebuildWorld();
   renderStructureStats();
 });
 document.addEventListener("keydown", (event) => {

@@ -1219,6 +1219,7 @@
                 <option value="feedstockRemaining">feedstock remaining · atoms</option>
                 <option value="continuationSites">outside-observation continuation · sites</option>
                 <option value="relaxationDisplacement">post-attachment maximum displacement · Å</option>
+                <option value="localOrder">mean local q₆ / |ψ₆|</option>
                 <option value="extent">maximum nucleus extent · Å</option>
                 <option value="anisotropy">relative shape anisotropy · κ²</option>
                 <option value="exposure">colored coordination deficit</option>
@@ -1288,8 +1289,14 @@
                 <select id="structureObservableSelect" aria-label="Structural observable">
                   <option value="rdf">real space · RDF</option>
                   <option value="sq">reciprocal space · S(q)</option>
+                  <option value="order">local order · qℓ / ψℓ</option>
                 </select>
                 <select id="rdfPairSelect" aria-label="Radial distribution species pair"><option value="all">all element pairs</option></select>
+                <select id="orientationalOrderSelect" aria-label="Orientational-order harmonic" hidden>
+                  <option value="4">ℓ = 4 · cubic / square-sensitive</option>
+                  <option value="6" selected>ℓ = 6 · close-packed / hexatic</option>
+                  <option value="12">ℓ = 12 · icosahedral / dodecagonal</option>
+                </select>
                 <span id="rdfStatus">known 216 · live 0</span>
               </div>
             </div>
@@ -1447,7 +1454,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-134"></script>
+  <script type="module" src="./app.js?v=20260825-135"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

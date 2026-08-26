@@ -1,6 +1,7 @@
 const DEFAULT_Q_MIN = 2;
 const DEFAULT_Q_MAX = 20;
 const DEFAULT_Q_BINS = 48;
+const DEFAULT_ORDER_BINS = 24;
 
 // Numerical Recipes' rational/asymptotic approximation.  The 2D isotropic
 // powder average is J0(qr); using cos(qr) would silently apply a 1D model.
@@ -75,4 +76,105 @@ export function summarizeStructureFactor(structureFactor) {
     peakProminence: strongest.value / Math.max(1e-9, background),
     highQMean,
   };
+}
+
+export function legendrePolynomial(order, value) {
+  if (!Number.isInteger(order) || order < 0) throw new Error("Legendre order must be a non-negative integer");
+  if (!Number.isFinite(value)) throw new Error("Legendre input must be finite");
+  const x = Math.max(-1, Math.min(1, value));
+  if (order === 0) return 1;
+  if (order === 1) return x;
+  let previous = 1;
+  let current = x;
+  for (let degree = 2; degree <= order; degree++) {
+    const next = ((2 * degree - 1) * x * current - (degree - 1) * previous) / degree;
+    previous = current;
+    current = next;
+  }
+  return current;
+}
+
+function normalizedVector(vector) {
+  if (!Array.isArray(vector) || vector.length !== 3 || vector.some((value) => !Number.isFinite(value))) {
+    throw new Error("orientational-order neighbor vectors must be finite Cartesian triples");
+  }
+  const length = Math.hypot(...vector);
+  return length > 1e-12 ? vector.map((value) => value / length) : null;
+}
+
+function planeBasis(normal) {
+  const unitNormal = normalizedVector(normal || [0, 0, 1]);
+  if (!unitNormal) throw new Error("2D orientational order requires a non-zero plane normal");
+  const reference = Math.abs(unitNormal[2]) < .9 ? [0, 0, 1] : [0, 1, 0];
+  const first = normalizedVector([
+    reference[1] * unitNormal[2] - reference[2] * unitNormal[1],
+    reference[2] * unitNormal[0] - reference[0] * unitNormal[2],
+    reference[0] * unitNormal[1] - reference[1] * unitNormal[0],
+  ]);
+  const second = [
+    unitNormal[1] * first[2] - unitNormal[2] * first[1],
+    unitNormal[2] * first[0] - unitNormal[0] * first[2],
+    unitNormal[0] * first[1] - unitNormal[1] * first[0],
+  ];
+  return [first, second, unitNormal];
+}
+
+/**
+ * Dimension-aware local orientational order.  In 3D this evaluates the
+ * rotational invariant Steinhardt q_l magnitude through the Legendre
+ * addition theorem, avoiding any global reference frame.  In 2D it evaluates
+ * the l-fold bond-orientational magnitude |psi_l| in the inferred material
+ * plane.  Values lie in [0, 1]; this is a structural descriptor, not an energy.
+ */
+export function localOrientationalOrder(neighborVectorsByCenter, dimension = 3, {
+  harmonic = 6,
+  planeNormal = [0, 0, 1],
+} = {}) {
+  if (!Array.isArray(neighborVectorsByCenter)) throw new Error("local orientational order requires one neighbor-vector list per center");
+  if (dimension !== 2 && dimension !== 3) throw new Error("local orientational order supports intrinsic dimension 2 or 3");
+  if (!Number.isInteger(harmonic) || harmonic < 1) throw new Error("orientational harmonic must be a positive integer");
+  const basis = dimension === 2 ? planeBasis(planeNormal) : null;
+  return neighborVectorsByCenter.map((vectors) => {
+    if (!Array.isArray(vectors)) throw new Error("each orientational-order center requires an array of neighbor vectors");
+    const unit = vectors.map(normalizedVector).filter(Boolean);
+    if (!unit.length) return 0;
+    if (dimension === 2) {
+      let real = 0;
+      let imaginary = 0;
+      unit.forEach((vector) => {
+        const normalComponent = vector[0] * basis[2][0] + vector[1] * basis[2][1] + vector[2] * basis[2][2];
+        const projected = vector.map((value, axis) => value - normalComponent * basis[2][axis]);
+        const x = projected[0] * basis[0][0] + projected[1] * basis[0][1] + projected[2] * basis[0][2];
+        const y = projected[0] * basis[1][0] + projected[1] * basis[1][1] + projected[2] * basis[1][2];
+        const angle = Math.atan2(y, x) * harmonic;
+        real += Math.cos(angle);
+        imaginary += Math.sin(angle);
+      });
+      return Math.min(1, Math.hypot(real, imaginary) / unit.length);
+    }
+    let invariant = 0;
+    unit.forEach((first) => unit.forEach((second) => {
+      invariant += legendrePolynomial(harmonic,
+        first[0] * second[0] + first[1] * second[1] + first[2] * second[2]);
+    }));
+    return Math.min(1, Math.sqrt(Math.max(0, invariant / (unit.length * unit.length))));
+  });
+}
+
+export function orientationalOrderDistribution(values, bins = DEFAULT_ORDER_BINS) {
+  if (!Array.isArray(values) || values.some((value) => !Number.isFinite(value))) {
+    throw new Error("orientational-order distribution requires finite values");
+  }
+  if (!Number.isInteger(bins) || bins < 2) throw new Error("orientational-order distribution requires at least two bins");
+  const histogram = new Array(bins).fill(0);
+  values.forEach((value) => {
+    const index = Math.min(bins - 1, Math.max(0, Math.floor(Math.max(0, Math.min(1, value)) * bins)));
+    histogram[index]++;
+  });
+  if (values.length) histogram.forEach((value, index) => { histogram[index] = value / values.length; });
+  const sorted = [...values].sort((first, second) => first - second);
+  const mean = values.reduce((sum, value) => sum + value, 0) / Math.max(1, values.length);
+  const median = sorted.length ? sorted[Math.floor((sorted.length - 1) / 2)] : 0;
+  const highFraction = values.filter((value) => value >= .7).length / Math.max(1, values.length);
+  return { histogram, mean, median, highFraction, bins, count: values.length };
 }
