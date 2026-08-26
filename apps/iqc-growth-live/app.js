@@ -66,6 +66,7 @@ import {
   classifyObservationSites,
   fitObservationEnvelope,
 } from "./observation-envelope.js?v=20260826-1";
+import { relaxLocalContactGeometry } from "./local-constraint-relaxation.js?v=20260826-1";
 import { auditGeometricMicrostructure } from "./microstructure-audit.js?v=20260824-1";
 import { CDYB_BROWSER_FIXTURE } from "./cdyb-browser-fixture.js?v=20260824-1";
 import {
@@ -191,6 +192,9 @@ const markingSearchModeSelect = $("markingSearchModeSelect");
 const geometryPreferenceSelect = $("geometryPreferenceSelect");
 const strainWeightSelect = $("strainWeightSelect");
 const strainWeightHint = $("strainWeightHint");
+const structuralRelaxationSelect = $("structuralRelaxationSelect");
+const structuralRelaxationHint = $("structuralRelaxationHint");
+const structuralRelaxationState = $("structuralRelaxationState");
 const compositionPreferenceSelect = $("compositionPreferenceSelect");
 const feedstockSupplySelect = $("feedstockSupplySelect");
 const feedstockSupplyHint = $("feedstockSupplyHint");
@@ -531,6 +535,12 @@ const COLLISION_TOLERANCE = .46;
 const COMMUTING_SITE_TOLERANCE = 1e-4;
 const SPATIAL_CELL = .52;
 const DEFAULT_GEOMETRIC_STRAIN_WEIGHT = .16;
+const STRUCTURAL_RELAXATION_MODES = Object.freeze({
+  off: Object.freeze({ label: "off", displacementFraction: 0, iterations: 0 }),
+  gentle: Object.freeze({ label: "gentle", displacementFraction: .025, iterations: 6 }),
+  balanced: Object.freeze({ label: "balanced", displacementFraction: .05, iterations: 12 }),
+  strong: Object.freeze({ label: "strong", displacementFraction: .08, iterations: 20 }),
+});
 const RDF_BINS = 38;
 const RDF_MAX_RADIUS = 4.2;
 const COORDINATION_CUTOFF = 1.32;
@@ -931,6 +941,11 @@ let mdWorkScaling = "local";
 let geometryPreference = "strain";
 let growthProtocolMode = "custom";
 let geometricStrainWeight = DEFAULT_GEOMETRIC_STRAIN_WEIGHT;
+let structuralRelaxationMode = "balanced";
+let lastStructuralRelaxation = null;
+let structuralRelaxationAttempts = 0;
+let structuralRelaxationAccepted = 0;
+let structuralRelaxationRejected = 0;
 let compositionPreference = "soft";
 let growthDomainScale = 1;
 let feedstockSupplyMode = "open";
@@ -1008,6 +1023,7 @@ let suppliedFormalChargeBySpecies = new Map();
 
 const GROWTH_PROTOCOL_DEFAULTS = Object.freeze({
   confinement: "box", growthDomainScale: 1, geometryPreference: "strain", geometricStrainWeight: .16,
+  structuralRelaxationMode: "balanced",
   compositionPreference: "soft", feedstockSupplyMode: "open", chargePreference: "auto", surfacePreference: "soft",
   chargeGeometryMode: "none", chargeGeometryReach: 2.5, chargeGeometryWeight: .24,
   growthDrivingMode: "none", growthDrivingWeight: .24,
@@ -1124,7 +1140,7 @@ const GROWTH_PROTOCOLS = Object.freeze({
   },
 });
 const GROWTH_PROTOCOL_CONTROL_IDS = new Set([
-  "growthDomainScaleSelect", "geometryPreferenceSelect", "strainWeightSelect", "compositionPreferenceSelect", "feedstockSupplySelect", "chargePreferenceSelect", "chargeGeometrySelect", "chargeGeometryReachSelect", "chargeGeometryWeightSelect",
+  "growthDomainScaleSelect", "geometryPreferenceSelect", "strainWeightSelect", "structuralRelaxationSelect", "compositionPreferenceSelect", "feedstockSupplySelect", "chargePreferenceSelect", "chargeGeometrySelect", "chargeGeometryReachSelect", "chargeGeometryWeightSelect",
   "soluteSpeciesSelect", "solutePartitionSelect", "solutePartitionWeightSelect",
   "surfacePreferenceSelect", "growthDrivingSelect", "growthDrivingWeightSelect", "attachmentTopologySelect", "attachmentTopologyWeightSelect", "habitAnisotropySelect", "habitAnisotropyWeightSelect", "defectPrecursorSelect", "defectPrecursorWeightSelect", "coherencyMemorySelect", "coherencyReachSelect", "coherencyMemoryWeightSelect", "frontMorphologySelect", "frontMorphologyWeightSelect",
   "capillaryGeometrySelect", "capillaryGeometryWeightSelect",
@@ -6189,7 +6205,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-133",
+      buildId: "20260825-134",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -6618,6 +6634,24 @@ async function buildExperimentReceipt() {
         candidateCoordinatesChanged: false,
         hardAdmissionChanged: false,
         modulusOrStressInferred: false,
+      },
+      postAttachmentConstraintProjection: {
+        role: "target-blind bounded accommodation of newly emitted post-replay sites in the learned contact-angle geometry",
+        mode: structuralRelaxationMode,
+        displacementFractionOfNearestNeighbor: structuralRelaxationSpec().displacementFraction,
+        maximumIterations: structuralRelaxationSpec().iterations,
+        attempts: structuralRelaxationAttempts,
+        accepted: structuralRelaxationAccepted,
+        rolledBack: structuralRelaxationRejected,
+        latest: lastStructuralRelaxation,
+        movesKnownReplaySites: false,
+        movesPreexistingSites: false,
+        exactClusterTopologyRetained: true,
+        properPortTopologyRetained: true,
+        targetUsed: false,
+        physicalPotentialUsed: false,
+        forceIntegrated: false,
+        physicalTimeModeled: false,
       },
       compositionBalanceRanking: {
         role: "target-blind soft ordering toward the observed multicomponent reservoir; never a hard surface constraint",
@@ -7135,7 +7169,8 @@ async function buildExperimentReceipt() {
       structuralMassRadiusScaling: receiptMassRadiusScaling(),
       structuralLeapCertificates: leapHistory.map((leap) => ({
         index: leap.index, status: leap.status, label: leap.label,
-        before: leap.before, proposal: leap.proposal, tests: leap.tests, after: leap.after,
+        before: leap.before, proposal: leap.proposal, tests: leap.tests,
+        relaxation: leap.relaxation || null, after: leap.after,
         targetUsed: leap.targetUsed, physicalTimeModeled: leap.physicalTimeModeled,
         dynamicsIntegrated: leap.dynamicsIntegrated, claimBoundary: leap.claimBoundary,
         physicsTranslation: leap.physicsTranslation,
@@ -7414,6 +7449,11 @@ function notebookInterventionFactors(receipt) {
     }) },
     ranking: { label: "frontier ranking", role: "search", value: search?.policy || "not entered" },
     protocol: { label: "growth protocol", role: "experiment", value: serialized(search?.experimentProtocol || null) },
+    relaxation: { label: "post-attachment constraint projection", role: "geometry", value: serialized(search?.postAttachmentConstraintProjection ? {
+      mode: search.postAttachmentConstraintProjection.mode,
+      displacementFractionOfNearestNeighbor: search.postAttachmentConstraintProjection.displacementFractionOfNearestNeighbor,
+      maximumIterations: search.postAttachmentConstraintProjection.maximumIterations,
+    } : null) },
     softPhysics: { label: "soft physics ordering", role: "search", value: serialized(search ? {
       strain: [search.geometricStrainRanking?.mode, search.geometricStrainRanking?.effectiveWeight,
         search.geometricStrainRanking?.affineLoadMode, search.geometricStrainRanking?.prescribedStrainMagnitude],
@@ -7477,7 +7517,8 @@ function experimentNotebookSummary(receipt) {
     clusters: initialLeapState.clusters || 0, frontier: initialLeapState.frontier || 0,
     acceptedThisLeap: 0, rejectedThisLeap: 0, cumulativeAccepted: 0, cumulativeRejected: 0, depth: 0,
     morphology: initialLeapState.morphology || null, interfaces: initialLeapState.interfaces || null,
-    feedstock: initialLeapState.feedstock || null, domain: initialLeapState.domain || null }];
+    feedstock: initialLeapState.feedstock || null, domain: initialLeapState.domain || null,
+    relaxation: null }];
   structuralLeaps.forEach((leap, index) => {
     cumulativeAccepted += leap.after?.accepted || 0;
     cumulativeRejected += leap.after?.rejected || 0;
@@ -7489,7 +7530,8 @@ function experimentNotebookSummary(receipt) {
       acceptedThisLeap: leap.after?.accepted || 0, rejectedThisLeap: leap.after?.rejected || 0,
       cumulativeAccepted, cumulativeRejected, depth: leap.after?.depth || 0,
       morphology: leap.after?.morphology || null, interfaces: leap.after?.interfaces || null,
-      feedstock: leap.after?.feedstock || null, domain: leap.after?.domain || null });
+      feedstock: leap.after?.feedstock || null, domain: leap.after?.domain || null,
+      relaxation: leap.relaxation || null });
   });
   return {
     id: receipt.receiptSha256.slice(0, 16),
@@ -7530,6 +7572,7 @@ function experimentNotebookSummary(receipt) {
       interfacePassport: "finite proper-misorientation registry, topology, thickness, chemistry, and coordination exposure",
       feedstockPassport: "species-count inventory consumed only by newly emitted sites",
       domainPassport: "supplied observation separated from the declared target-blind public growth domain",
+      relaxationPassport: "bounded target-blind local constraint projection with atomic rollback on any hard-gate failure",
       massRadiusScaling: notebookMassRadiusScaling(trajectoryPoints),
       leapCount: structuralLeaps.length,
       totalLeapEvents: search?.structuralLeapHistory?.totalEvents ?? structuralLeaps.length,
@@ -7660,6 +7703,9 @@ const NOTEBOOK_TRAJECTORY_OBSERVABLES = {
   continuationSites: { label: "outside-observation continuation · sites",
     value: (point) => point.domain?.continuationAtoms,
     format: (value) => Math.round(value).toLocaleString() },
+  relaxationDisplacement: { label: "post-attachment maximum displacement · Å",
+    value: (point) => point.relaxation?.maximumDisplacementAngstrom,
+    format: (value) => `${value.toFixed(3)} Å` },
   extent: { label: "maximum nucleus extent · Å", value: (point) => point.morphology?.maximumExtentAngstrom,
     format: (value) => `${value.toFixed(2)} Å` },
   anisotropy: { label: "relative shape anisotropy · κ²", value: (point) => point.morphology?.relativeShapeAnisotropy,
@@ -10436,6 +10482,113 @@ function geometricStrainForFreshSites(rawFreshSites, projection = constraintProj
     coloredDistanceEnvelopes, coloredCoordinationEnvelopes, coloredAngularEnvelopes, affectedIndices);
 }
 
+function structuralRelaxationSpec() {
+  return STRUCTURAL_RELAXATION_MODES[structuralRelaxationMode] || STRUCTURAL_RELAXATION_MODES.balanced;
+}
+
+function localConstraintState(localAtoms, movableAtoms, proposedById) {
+  const positions = localAtoms.map((atom) => proposedById.get(atom.id) || atom.p);
+  const species = localAtoms.map((atom) => atom.species);
+  const indexByAtom = new Map(localAtoms.map((atom, index) => [atom, index]));
+  const affectedAtoms = new Set(movableAtoms);
+  movableAtoms.forEach((atom) => localAtoms.forEach((neighbor) => {
+    if (neighbor === atom) return;
+    const envelope = coordinationEnvelopeFor(coloredCoordinationEnvelopes, atom.species, neighbor.species);
+    if (envelope && positions[indexByAtom.get(atom)].distanceTo(positions[indexByAtom.get(neighbor)]) <= envelope.contactCutoff) {
+      affectedAtoms.add(neighbor);
+    }
+  }));
+  const affectedIndices = [...affectedAtoms].map((atom) => indexByAtom.get(atom));
+  const overflows = [];
+  affectedIndices.forEach((centerIndex) => {
+    const centerSpecies = species[centerIndex];
+    coloredCoordinationEnvelopes.records.filter((record) => record.centerSpecies === centerSpecies)
+      .forEach((envelope) => {
+        const count = species.reduce((total, neighborSpecies, neighborIndex) => total
+          + (neighborIndex !== centerIndex && neighborSpecies === envelope.neighborSpecies
+            && positions[centerIndex].distanceTo(positions[neighborIndex]) <= envelope.contactCutoff ? 1 : 0), 0);
+        if (count > envelope.maximumObserved) overflows.push({ centerIndex, envelope, count });
+      });
+  });
+  const angularViolations = coloredAngularEnvelopes ? coloredAngularViolations(species,
+    (first, second) => positions[second].clone().sub(positions[first]),
+    coloredCoordinationEnvelopes, coloredAngularEnvelopes, affectedIndices) : [];
+  const strain = coloredAngularEnvelopes ? coloredGeometricStrain(species,
+    (first, second) => positions[second].clone().sub(positions[first]),
+    coloredDistanceEnvelopes, coloredCoordinationEnvelopes, coloredAngularEnvelopes, affectedIndices)
+    : { total: 0, distance: 0, angle: 0, contactTerms: 0, angleTerms: 0 };
+  return { strain, overflows, angularViolations, affectedIndices };
+}
+
+function projectAcceptedBatchGeometry(freshAtomIds, authorized) {
+  const spec = structuralRelaxationSpec();
+  if (!authorized || !spec.displacementFraction || !freshAtomIds.length || !coloredDistanceEnvelopes) return null;
+  structuralRelaxationAttempts++;
+  const movableIdSet = new Set(freshAtomIds);
+  const movableAtoms = atoms.filter((atom) => movableIdSet.has(atom.id));
+  const cap = Math.min(referenceSpacing * spec.displacementFraction, MERGE_TOLERANCE * .45);
+  const reach = (coloredCoordinationEnvelopes?.maximumCutoff || 2 * referenceSpacing) + cap;
+  const localSet = new Set(movableAtoms);
+  movableAtoms.forEach((atom) => nearbyAtoms(atom.p, reach).forEach((neighbor) => localSet.add(neighbor)));
+  [...localSet].forEach((atom) => nearbyAtoms(atom.p, reach).forEach((neighbor) => localSet.add(neighbor)));
+  const localAtoms = [...localSet].sort((first, second) => first.id - second.id);
+  const input = localAtoms.map((atom) => ({
+    species: atom.species, position: atom.p.toArray(), movable: movableIdSet.has(atom.id),
+  }));
+  const proposal = relaxLocalContactGeometry(input, coloredDistanceEnvelopes, {
+    displacementCap: cap, maximumIterations: spec.iterations,
+  });
+  const proposedById = new Map(localAtoms.map((atom, index) => [atom.id,
+    new THREE.Vector3(...proposal.positions[index])]));
+  const before = localConstraintState(localAtoms, movableAtoms, new Map());
+  const after = localConstraintState(localAtoms, movableAtoms, proposedById);
+  const strainDecreased = proposal.accepted && after.strain.total < before.strain.total - 1e-9;
+  const coordinationCapacityPassed = after.overflows.length === 0;
+  const angularEnvelopePassed = after.angularViolations.length === 0;
+  const publicBoundaryPassed = movableAtoms.every((atom) => insideGrowthDomain(proposedById.get(atom.id)));
+  const hardExclusionPassed = movableAtoms.every((atom) => {
+    const proposed = proposedById.get(atom.id);
+    return atoms.every((other) => other === atom
+      || proposed.distanceTo(proposedById.get(other.id) || other.p)
+        >= coloredPairExclusion(atom.species, other.species) - 1e-10);
+  });
+  const hardCompatible = proposal.accepted && strainDecreased && coordinationCapacityPassed
+    && angularEnvelopePassed && publicBoundaryPassed && hardExclusionPassed;
+  const reason = !proposal.accepted ? proposal.reason
+    : !strainDecreased ? "full contact-angle strain did not decrease"
+      : !coordinationCapacityPassed ? "coordination capacity would be exceeded"
+        : !angularEnvelopePassed ? "angular envelope would be violated"
+          : !publicBoundaryPassed ? "public boundary would be crossed"
+            : !hardExclusionPassed ? "colored hard exclusion would be violated"
+              : "monotone local constraint projection certified";
+  const sceneToAngstrom = referenceSpacingA / Math.max(referenceSpacing, 1e-12);
+  const audit = {
+    mode: structuralRelaxationMode, attempted: true, accepted: hardCompatible,
+    reason,
+    movableSites: movableAtoms.length, neighborhoodSites: localAtoms.length,
+    contactTerms: proposal.contactTerms || 0, iterations: proposal.iterations || 0,
+    strainBefore: before.strain.total, strainAfter: hardCompatible ? after.strain.total : before.strain.total,
+    distanceStrainBefore: before.strain.distance, distanceStrainAfter: hardCompatible ? after.strain.distance : before.strain.distance,
+    angleStrainBefore: before.strain.angle, angleStrainAfter: hardCompatible ? after.strain.angle : before.strain.angle,
+    maximumDisplacementAngstrom: hardCompatible ? proposal.maximumDisplacement * sceneToAngstrom : 0,
+    rmsDisplacementAngstrom: hardCompatible ? proposal.rmsDisplacement * sceneToAngstrom : 0,
+    displacementCapAngstrom: cap * sceneToAngstrom,
+    contactAngleStrainDecreased: strainDecreased,
+    hardExclusionPassed, coordinationCapacityPassed,
+    angularEnvelopePassed, publicBoundaryPassed,
+    exactClusterTopologyRetained: true, properPortTopologyRetained: true,
+    targetUsed: false, physicalPotentialUsed: false, forceIntegrated: false,
+    elapsedPhysicalTimeModeled: false,
+  };
+  if (hardCompatible) {
+    movableAtoms.forEach((atom) => atom.p.copy(proposedById.get(atom.id)));
+    rebuildSpatialIndex();
+    structuralRelaxationAccepted++;
+  } else structuralRelaxationRejected++;
+  lastStructuralRelaxation = audit;
+  return audit;
+}
+
 function affineLoadedGeometricStrainForFreshSites(rawFreshSites,
   projection = constraintProjectionForFreshSites(rawFreshSites)) {
   if (affineLoadMode === "none") return geometricStrainForFreshSites(rawFreshSites, projection);
@@ -11358,6 +11511,10 @@ function initializeOffLatticeSearch() {
   rejectedGeometricStrain = 0;
   acceptedUnloadedGeometricStrain = 0;
   rejectedUnloadedGeometricStrain = 0;
+  lastStructuralRelaxation = null;
+  structuralRelaxationAttempts = 0;
+  structuralRelaxationAccepted = 0;
+  structuralRelaxationRejected = 0;
   acceptedCompositionDelta = 0;
   rejectedCompositionDelta = 0;
   feedstockSupplyPrunes = 0;
@@ -11993,6 +12150,7 @@ function renderMolecularHypothesis() {
 function currentGrowthProtocolSettings() {
   return {
     confinement: confinementSelect.value, growthDomainScale, geometryPreference, geometricStrainWeight,
+    structuralRelaxationMode,
     compositionPreference, feedstockSupplyMode, soluteSpecies: resolvedSoluteSpecies(), solutePartitionMode, solutePartitionWeight,
     chargePreference, chargeGeometryMode, chargeGeometryReach, chargeGeometryWeight,
     surfacePreference, growthDrivingMode, growthDrivingWeight,
@@ -12036,7 +12194,7 @@ function renderGrowthProtocolSummary() {
 
 function renderGrowthControlGroupSummaries() {
   const activeCount = (items) => items.filter(Boolean).length;
-  growthCoreGroupState.textContent = `${markingSearchMode === "portfolio" ? "portfolio" : "single mark"} · ${geometryPreference === "strain" ? `strain ${geometricStrainWeight.toFixed(2)}` : "strain off"}`;
+  growthCoreGroupState.textContent = `${markingSearchMode === "portfolio" ? "portfolio" : "single mark"} · ${geometryPreference === "strain" ? `strain ${geometricStrainWeight.toFixed(2)}` : "strain off"} · projection ${structuralRelaxationMode}`;
   const chemistryActive = activeCount([activeCompositionBalanceWeight() > 0,
     feedstockSupplyMode !== "open", activeSolutePartitionWeight() > 0,
     activeFormalChargeWeight() > 0, activeChargeGeometryWeight() > 0]);
@@ -12067,6 +12225,7 @@ function applyGrowthProtocol(mode) {
   confinementSelect.value = settings.confinement;
   growthDomainScale = settings.growthDomainScale;
   geometryPreference = settings.geometryPreference; geometricStrainWeight = settings.geometricStrainWeight;
+  structuralRelaxationMode = settings.structuralRelaxationMode;
   compositionPreference = settings.compositionPreference; feedstockSupplyMode = settings.feedstockSupplyMode;
   chargePreference = settings.chargePreference;
   chargeGeometryMode = settings.chargeGeometryMode; chargeGeometryReach = settings.chargeGeometryReach;
@@ -12239,6 +12398,15 @@ function syncStageOptions() {
     const finiteIceAnchorMode = Boolean(iceAnchorTrace);
     geometryPreferenceSelect.value = geometryPreference;
     strainWeightSelect.value = String(geometricStrainWeight);
+    structuralRelaxationSelect.value = structuralRelaxationMode;
+    const relaxationSpec = STRUCTURAL_RELAXATION_MODES[structuralRelaxationMode];
+    structuralRelaxationHint.textContent = relaxationSpec.displacementFraction
+      ? `${Math.round(100 * relaxationSpec.displacementFraction)}% dₙₙ cap` : "exact coordinates";
+    structuralRelaxationState.textContent = lastStructuralRelaxation
+      ? `${lastStructuralRelaxation.accepted ? "accepted" : "rolled back"} · ${lastStructuralRelaxation.movableSites} new sites · strain ${lastStructuralRelaxation.strainBefore.toFixed(3)} → ${lastStructuralRelaxation.strainAfter.toFixed(3)} · max Δ ${lastStructuralRelaxation.maximumDisplacementAngstrom.toFixed(3)} Å`
+      : relaxationSpec.displacementFraction
+        ? "Ready after known-window replay; the full local projection rolls back unless every hard geometric certificate remains valid."
+        : "Off: exact frozen-template coordinates are retained.";
     compositionPreferenceSelect.value = compositionPreference;
     feedstockSupplySelect.value = feedstockSupplyMode;
     renderFeedstockInventory();
@@ -12289,6 +12457,7 @@ function syncStageOptions() {
     growthSchedulingSelect.value = growthScheduling;
     geometryPreferenceSelect.disabled = finiteIceAnchorMode;
     strainWeightSelect.disabled = finiteIceAnchorMode || geometryPreference !== "strain";
+    structuralRelaxationSelect.disabled = finiteIceAnchorMode;
     compositionPreferenceSelect.disabled = finiteIceAnchorMode;
     feedstockSupplySelect.disabled = finiteIceAnchorMode;
     soluteSpeciesSelect.disabled = finiteIceAnchorMode || soluteVocabulary.length < 2;
@@ -12414,6 +12583,9 @@ function syncStageOptions() {
     const strainUse = geometryPreference === "strain"
       ? ` A frozen sample-derived contact/angle strain adds a ${geometricStrainWeight.toFixed(2)} soft ordering term over that same candidate set${affineLoadMode === "none" ? "." : ` after the metric is transformed by the declared ${Math.round(affineLoadMagnitude * 100)}% ${affineLoadModeLabel()}; coordinates and hard gates stay unchanged.`}`
       : " Geometric strain is reported but contributes zero ranking weight for this ablation.";
+    const relaxationUse = structuralRelaxationMode === "off"
+      ? " Post-attachment projection is disabled; exact template coordinates are retained."
+      : ` After known-window replay, atoms newly emitted in one leap may move by at most ${Math.round(100 * structuralRelaxationSpec().displacementFraction)}% dₙₙ through ${structuralRelaxationSpec().iterations} deterministic contact-residual iterations. The whole projection rolls back unless full contact-angle strain decreases and every hard gate remains valid; this is not a force or MD step.`;
     const ratio = Object.entries(compositionTarget.reducedRatio).map(([symbol, count]) => `${symbol}${count === 1 ? "" : count}`).join("");
     const compositionUse = compositionPreference === "none"
       ? " Composition drift is reported but contributes zero ranking weight."
@@ -12490,8 +12662,8 @@ function syncStageOptions() {
     growthModeNote.textContent = finiteIceAnchorMode
       ? "This sealed ice gate executes primitive H₂O connection ports with mutually exclusive orientation domains. Clusters² is disabled because no stationary promoted ice production has been certified."
       : hierarchyEnabled
-      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${strainUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`
-      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`;
+      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`
+      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`;
   }
 }
 
@@ -12982,7 +13154,7 @@ function materializeCandidate(candidate, evaluation) {
       && learnedClusters.labels[centerReferenceIndex] === candidate.type
       ? centerReferenceIndex : candidate.occurrenceIndex,
     parentId: candidate.parentId, ruleId: candidate.rule.id,
-    depth: (parent?.depth || 0) + 1, atomIds: [],
+    depth: (parent?.depth || 0) + 1, atomIds: [], freshAtomIds: [],
     coherencyMemory: { mismatch: evaluation.coherencyMemory.candidateMismatch,
       axis: evaluation.coherencyMemory.candidateAxis, inheritedMismatch: evaluation.coherencyMemory.inheritedMismatch,
       support: evaluation.coherencyMemory.support },
@@ -13006,6 +13178,7 @@ function materializeCandidate(candidate, evaluation) {
     atom.clusterIds = [placement.id];
     atom.nucleusIds = [placement.nucleusId];
     placement.atomIds.push(atom.id);
+    placement.freshAtomIds.push(atom.id);
     indexAtom(atom);
   });
   placedClusters.push(placement);
@@ -13028,6 +13201,7 @@ function materializeCandidate(candidate, evaluation) {
 }
 
 function performOffLatticeEvent() {
+  const relaxationAuthorized = reconstructionCertified;
   const before = { atoms: atoms.length, clusters: placedClusters.length, frontier: frontierCandidates.length,
     morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
     feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() };
@@ -13072,6 +13246,7 @@ function performOffLatticeEvent() {
   let freshInBatch = 0;
   let sharedInBatch = 0;
   let proposedSitesInBatch = 0;
+  const freshAtomIdsInBatch = [];
   let lastDecision = null;
   batch.forEach(({ candidate, evaluation: snapshotEvaluation }) => {
     let evaluation = snapshotEvaluation;
@@ -13137,6 +13312,7 @@ function performOffLatticeEvent() {
     recordGrowthMechanismEvent(candidate, evaluation, true, parentDepth + 1,
       mechanismDiagnostics.get(candidate));
     const placement = materializeCandidate(candidate, evaluation);
+    freshAtomIdsInBatch.push(...placement.freshAtomIds);
     acceptedDecisions++;
     acceptedGeometricStrain += effectiveGeometricStrain(evaluation).total;
     acceptedUnloadedGeometricStrain += evaluation.geometricStrain.total;
@@ -13175,6 +13351,7 @@ function performOffLatticeEvent() {
     lastDecision = { eventType: decision.reuse ? "reuse" : "accept", accepted: true, state,
       resolver: decision.resolver, energy: candidate.markingScore, interval: decision.interval };
   });
+  const relaxation = projectAcceptedBatchGeometry(freshAtomIdsInBatch, relaxationAuthorized);
   selectedKeys.forEach((key) => frontierCandidateKeys.delete(key));
   eventIndex += batch.length;
   captionAction.textContent = reconstructionCertified
@@ -13192,11 +13369,14 @@ function performOffLatticeEvent() {
         .reduce((sum, { evaluation }) => sum + evaluation.fresh.length, 0) },
     tests: { summary: `${acceptedInBatch} passed · ${rejectedInBatch} pruned`,
       detail: "Species/hard-core, overlap, novelty, public boundary, coordination, angle, and active marking were evaluated before any commit." },
+    relaxation,
     after: { atoms: atoms.length, clusters: placedClusters.length, accepted: acceptedInBatch, rejected: rejectedInBatch,
       depth: Math.max(0, ...placedClusters.map((placement) => placement.depth || 0)),
       morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
       feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() },
-    claimBoundary: "The accepted antichain is valid in every placement order and jumps directly to a certified structural state. No force trajectory, relaxation path, transition probability, or physical elapsed time was computed." });
+    claimBoundary: relaxation?.accepted
+      ? "The accepted antichain is valid in every placement order. A bounded post-attachment constraint projection reduced the learned local contact-angle residual and re-passed every hard gate; it is not a force trajectory, energy minimization, probability, or physical elapsed time."
+      : "The accepted antichain is valid in every placement order and jumps directly to a certified structural state. No force trajectory, energy minimization, transition probability, or physical elapsed time was computed." });
   rebuildWorld();
   updateUI();
 }
@@ -14084,6 +14264,16 @@ function physicsTranslationRecords(leap = null) {
         ? `Median √D²min ${relaxationLocalEnvironment.medianRootD2MinAngstrom.toFixed(3)} Å; p90 ${relaxationLocalEnvironment.percentile90RootD2MinAngstrom.toFixed(3)} Å; ${(100 * relaxationLocalEnvironment.meanNeighborPersistenceFraction).toFixed(1)}% directed-neighbor persistence; ${relaxationLocalEnvironment.uniqueLostNeighborPairs} lost and ${relaxationLocalEnvironment.uniqueGainedNeighborPairs} gained undirected kNN relations.`
         : "No atom-resolved local rearrangement field is available.",
       boundary: "D²min and kNN identity exchange are kinematic differences between two archived configurations. A nearest-neighbor ranking is not a chemical bond graph. Neither channel is plastic strain, a defect label, activation energy, mobility, a transition pathway, or elapsed time, and neither ranks or admits growth." },
+    { id: "constraint-projection", process: "post-attachment local structural accommodation",
+      status: lastStructuralRelaxation?.accepted ? "learned" : structuralRelaxationMode === "off" ? "open" : "sampled",
+      role: lastStructuralRelaxation?.accepted ? "target-blind bounded coordinate projection" : structuralRelaxationMode === "off" ? "disabled" : "fail-closed projection attempt",
+      encoding: structuralRelaxationMode === "off"
+        ? "exact frozen-template coordinates; no post-attachment displacement"
+        : `${structuralRelaxationSpec().iterations} deterministic contact-residual iterations with total displacement capped at ${Math.round(100 * structuralRelaxationSpec().displacementFraction)}% dₙₙ and below half the exact merge tolerance; only atoms emitted in the current post-replay leap are movable`,
+      evidence: lastStructuralRelaxation
+        ? `${lastStructuralRelaxation.accepted ? "Accepted" : "Rolled back"}: ${lastStructuralRelaxation.movableSites} movable / ${lastStructuralRelaxation.neighborhoodSites} local sites; strain ${lastStructuralRelaxation.strainBefore.toFixed(4)} → ${lastStructuralRelaxation.strainAfter.toFixed(4)}; max Δ ${lastStructuralRelaxation.maximumDisplacementAngstrom.toFixed(4)} Å. ${structuralRelaxationAccepted}/${structuralRelaxationAttempts} attempts accepted.`
+        : "No post-replay attachment batch has requested a local projection yet.",
+      boundary: "This minimizes a finite sample-learned geometric contact residual and then rechecks hard exclusion, coordination, angle, boundary, exact topology, and port identity. It is not an interatomic potential, force balance, energy minimization, mechanical equilibrium, MD trajectory, diffusion event, transition probability, or elapsed physical time." },
     { id: "connection", process: "cluster attachment preference", status: policySelect.value === "action" ? "open" : "learned", role: policySelect.value === "action" ? "ablated" : "learned local connection gate / rank",
       encoding: `${markingMode}; ${sectionModel?.channels || 0} channels, reach ${sectionModel?.reach || 0}, transported in cluster-local proper-SE(3) frames`,
       evidence: leap ? `${leap.proposal.shared} shared and ${leap.proposal.fresh} proposed fresh sites were checked through the frozen port grammar.` : "No attachment scored yet.",
@@ -14492,12 +14682,20 @@ function renderStructuralLeap(leap = null) {
     return;
   }
   leapCertificateState.textContent = `${selected.status} · leap ${selected.index}`;
-  [
+  const leapCards = [
     ["01 · before", `${selected.before.atoms} atoms · ${selected.before.clusters} clusters`, `${selected.before.frontier} frozen frontier candidates`],
     ["02 · proposed leap", selected.label, `${selected.proposal.candidates} candidates · ${selected.proposal.sites} colored sites · ${selected.proposal.shared} shared + ${selected.proposal.fresh} new`],
     ["03 · geometric certificate", selected.tests.summary, selected.tests.detail],
-    ["04 · after", `${selected.after.atoms} atoms · ${selected.after.clusters} clusters`, `${selected.after.accepted} accepted · ${selected.after.rejected} rejected · causal depth ${selected.after.depth}`],
-  ].forEach(([label, value, detail], index) => {
+  ];
+  if (selected.relaxation) leapCards.push(["04 · local projection",
+    selected.relaxation.accepted
+      ? `strain ${selected.relaxation.strainBefore.toFixed(3)} → ${selected.relaxation.strainAfter.toFixed(3)}`
+      : "rolled back · exact coordinates retained",
+    `${selected.relaxation.movableSites} movable · max Δ ${selected.relaxation.maximumDisplacementAngstrom.toFixed(3)} Å · ${selected.relaxation.reason}`]);
+  leapCards.push([`${selected.relaxation ? "05" : "04"} · after`,
+    `${selected.after.atoms} atoms · ${selected.after.clusters} clusters`,
+    `${selected.after.accepted} accepted · ${selected.after.rejected} rejected · causal depth ${selected.after.depth}`]);
+  leapCards.forEach(([label, value, detail], index) => {
     const card = document.createElement("article");
     if (index === 2) card.className = selected.status;
     const small = document.createElement("small"); small.textContent = label;
@@ -15827,6 +16025,10 @@ function liveGrowthCertificate() {
       geometricContinuationSites: continuationSites,
       maximumObservationExcursionAngstrom: domain.maximumObservationExcursionAngstrom,
       placedClusters: placedClusters.length, maximumCausalDepth: maximumDepth,
+      postAttachmentProjectionMode: structuralRelaxationMode,
+      postAttachmentProjectionAttempts: structuralRelaxationAttempts,
+      postAttachmentProjectionAccepted: structuralRelaxationAccepted,
+      latestPostAttachmentProjection: lastStructuralRelaxation,
       fixedPointReached, targetCoordinatesUsed: false, physicalPotentialUsed: false },
     benchmarkGate: benchmark.gate,
   };
@@ -16739,6 +16941,12 @@ geometryPreferenceSelect.addEventListener("change", () => {
 strainWeightSelect.addEventListener("change", () => {
   const value = Number(strainWeightSelect.value);
   geometricStrainWeight = [.08, .16, .32].includes(value) ? value : DEFAULT_GEOMETRIC_STRAIN_WEIGHT;
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+structuralRelaxationSelect.addEventListener("change", () => {
+  structuralRelaxationMode = STRUCTURAL_RELAXATION_MODES[structuralRelaxationSelect.value]
+    ? structuralRelaxationSelect.value : "balanced";
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
 });

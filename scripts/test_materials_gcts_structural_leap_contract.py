@@ -34,7 +34,8 @@ def test_structural_leaps_separate_geometry_from_dynamics() -> None:
     assert "structuralLeapCertificates: leapHistory.map" in source
     assert "pairwise-commuting whole-cluster actions" in source
     assert "valid in every placement order" in source
-    assert "No force trajectory, relaxation path, transition probability" in source
+    assert "No force trajectory, energy minimization, transition probability" in source
+    assert "A bounded post-attachment constraint projection reduced the learned local contact-angle residual" in source
     assert "finite structural fixed point" in source
     assert "shared oxygen-anchor leap" in source
     assert "tunnelling, diffusion, relaxation, probability" in source
