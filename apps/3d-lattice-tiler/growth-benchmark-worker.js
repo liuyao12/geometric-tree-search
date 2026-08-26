@@ -1,7 +1,7 @@
-import { createTilingStream, preprocessTilingSystem, tileSpecs } from "./engine.js?v=20260825-resumable-clock-v221";
+import { createTilingStream, preprocessTilingSystem, tileSpecs } from "./engine.js?v=20260825-unified-run-v222";
 
 let activeSequence = 0;
-let stopToken = { stop: false, additional_time_ms: 0 };
+let stopToken = { stop: false, manual_pause: false, additional_time_ms: 0 };
 let preparedRun = null;
 const HISTORY_BATCH_LIMIT = 256;
 const HISTORY_BATCH_INTERVAL_MS = 200;
@@ -198,8 +198,9 @@ async function runMode(sequence, run, preparedSystem, preprocessingMilliseconds,
   const searchElapsedMilliseconds = () => Math.max(0, epochNow() - started - pausedMilliseconds);
   const awaitClockBudget = async () => {
     while (
-      Number.isFinite(baseClockBudgetMs)
-      && searchElapsedMilliseconds() >= baseClockBudgetMs + (Number(stopToken.additional_time_ms) || 0)
+      (stopToken.manual_pause
+        || (Number.isFinite(baseClockBudgetMs)
+          && searchElapsedMilliseconds() >= baseClockBudgetMs + (Number(stopToken.additional_time_ms) || 0)))
       && !stopToken.stop
     ) {
       flushHistory();
@@ -379,7 +380,12 @@ self.onmessage = event => {
   if (type === "extend-time" && sequence === activeSequence) {
     stopToken.additional_time_ms = Math.max(0, Number(stopToken.additional_time_ms) || 0)
       + Math.max(0, Number(additionalTimeMs) || 0);
+    stopToken.manual_pause = false;
     stopToken.resume_clock?.();
+    return;
+  }
+  if (type === "pause" && sequence === activeSequence) {
+    stopToken.manual_pause = true;
     return;
   }
   if (type === "stop") {
@@ -391,7 +397,7 @@ self.onmessage = event => {
   if (type === "prepare" && MODES[modeId]) {
     stopToken.stop = true;
     activeSequence = sequence;
-    stopToken = { stop: false, additional_time_ms: 0 };
+    stopToken = { stop: false, manual_pause: false, additional_time_ms: 0 };
     try {
       const run = configureMode(config, MODES[modeId]);
       const preprocessingStarted = performance.now();

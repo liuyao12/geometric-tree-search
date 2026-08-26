@@ -136,7 +136,18 @@ assert.match(
 assert.match(
   growthAppSource,
   /function extendGrowthBenchmark\(\)[\s\S]*?type: "extend-time"[\s\S]*?additionalTimeMs/,
-  "the Continue control must add clock time to every active lane"
+  "Continue must add clock time to every active lane"
+);
+assert.doesNotMatch(sourceTilerHtml, /id="continueButton"/, "Run, Pause, and Continue must be one button");
+assert.match(
+  growthAppSource,
+  /if \(!growthRunning\) startGrowthBenchmark\(\);[\s\S]*?else if \(growthPaused\) extendGrowthBenchmark\(\);[\s\S]*?else pauseGrowthBenchmark\(\);/,
+  "the unified control must cycle through Run, Pause, and Continue"
+);
+assert.match(
+  growthWorkerSource,
+  /type === "pause"[\s\S]*?stopToken\.manual_pause = true/,
+  "Pause must preserve each live worker at a safe generator checkpoint"
 );
 assert.match(growthWorkerSource, /generic_failure_memo: !!mode\.proof \|\| exactLearningShell/, "proof and exact learning shell lanes must memoize exact failures");
 assert.match(
