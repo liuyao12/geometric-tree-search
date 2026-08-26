@@ -11,9 +11,9 @@ README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
 
 def test_study_guide_contract() -> None:
-    assert 'buildId: "20260825-146"' in APP
-    assert 'app.js?v=20260825-146' in HTML
-    assert 'style.css?v=20260825-55' in HTML
+    assert 'buildId: "20260825-147"' in APP
+    assert 'app.js?v=20260825-147' in HTML
+    assert 'style.css?v=20260825-56' in HTML
     for element_id in ("studyGuideButton", "studyGuide", "studyGuideClose",
                        "studyRecipeList", "studyRecipeDetail"):
         assert f'id="{element_id}"' in HTML

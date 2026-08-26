@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 
 const app = fs.readFileSync(new URL("../apps/iqc-growth-live/app.js", import.meta.url), "utf8");
-const match = app.match(/const MATERIALS_STUDY_RECIPES = Object\.freeze\((\[[\s\S]*?\])\);\n\nconst GROWTH_PROTOCOL_CONTROL_IDS/);
+const match = app.match(/const MATERIALS_STUDY_RECIPES = Object\.freeze\((\[[\s\S]*?\])\);\n\nconst MATERIALS_STUDY_COMPARISONS/);
 assert.ok(match, "study recipe table remains extractable");
 const recipes = Function(`"use strict"; return (${match[1]});`)();
 

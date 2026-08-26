@@ -116,6 +116,12 @@ const studyOutcomeTitle = $("studyOutcomeTitle");
 const studyOutcomeStatus = $("studyOutcomeStatus");
 const studyOutcomeTiles = $("studyOutcomeTiles");
 const studyOutcomeInterpretation = $("studyOutcomeInterpretation");
+const studyComparison = $("studyComparison");
+const studyComparisonQuestion = $("studyComparisonQuestion");
+const studyComparisonFactor = $("studyComparisonFactor");
+const studyComparisonArms = $("studyComparisonArms");
+const studyComparisonOutcomes = $("studyComparisonOutcomes");
+const studyComparisonBoundary = $("studyComparisonBoundary");
 const studyCompassState = $("studyCompassState");
 const studyCompassNext = $("studyCompassNext");
 const viewport = $("viewport");
@@ -944,6 +950,7 @@ let notebookTrajectoryHarmonic = 6;
 let notebookSweepFactorKey = null;
 let selectedStudyRecipeId = "bulk-order";
 let activeStudyRecipeId = null;
+let activeStudyArmId = "reference";
 let studyLaunchAudit = null;
 let atomSpatialIndex = new Map();
 let trainingProgress = 0;
@@ -1272,6 +1279,57 @@ const MATERIALS_STUDY_RECIPES = Object.freeze([
     route: ["sample", "cover", "mark", "negative growth control"],
     boundary: "Failure to compress or recurse is the intended control; the fixture is not a calibrated metallic-glass force field or kinetic glass-transition model." },
 ]);
+
+const MATERIALS_STUDY_COMPARISONS = Object.freeze({
+  "bulk-order": { factor: "clusters² promotion", question: "Does hierarchical promotion add causal depth beyond primitive placements?",
+    arms: [
+      { id: "reference", label: "hierarchical grammar", summary: "Frozen marking with clusters² promotion enabled.", settings: { hierarchyEnabled: true } },
+      { id: "contrast", label: "primitive-only ablation", summary: "Same geometry and marking; recursive promotion disabled.", settings: { hierarchyEnabled: false } },
+    ], outcomes: ["continuation sites", "causal depth", "frontier work"],
+    boundary: "This isolates the execution representation, not the validity of the independently certified stationary NaCl rule." },
+  "molecular-ice": { factor: "connection marking", question: "Does the learned port section reject unsupported molecular-anchor actions?",
+    arms: [
+      { id: "reference", label: "GCTS-marked ports", summary: "Use the frozen molecule/bridge connection section.", settings: { policy: "marked" } },
+      { id: "contrast", label: "colored-action baseline", summary: "Keep the same authorized poses without the learned local section.", settings: { policy: "action" } },
+    ], outcomes: ["exact oxygen anchors", "rejected poses", "orientation domains"],
+    boundary: "This tests geometric action ordering; it is not a proton-dynamics, energy, or rate comparison." },
+  quasicrystal: { factor: "clusters² promotion", question: "Does promoted recurrence extend aperiodic continuation beyond primitive ports?",
+    arms: [
+      { id: "reference", label: "hierarchical grammar", summary: "Finite-module ports with clusters² promotion enabled.", settings: { hierarchyEnabled: true } },
+      { id: "contrast", label: "primitive-only ablation", summary: "Same module, marking, and boundary; no macro promotion.", settings: { hierarchyEnabled: false } },
+    ], outcomes: ["continuation precision", "causal depth", "S(q) response"],
+    boundary: "Finite differences do not certify a stationary or exponential quasicrystal production." },
+  moire: { factor: "marking chirality", question: "Does the mirror-odd channel separate twisted-bilayer registry classes?",
+    arms: [
+      { id: "reference", label: "chiral local halo", summary: "Proper-rotation halo plus mirror-odd connection channel.", settings: { markingRepresentation: "chiral-halo" } },
+      { id: "contrast", label: "achiral halo", summary: "Same sample, reach, and channel selection without the pseudoscalar channel.", settings: { markingRepresentation: "halo" } },
+    ], outcomes: ["held-out mismatch", "registry failures", "|ψ6| response"],
+    boundary: "Changing the representation requires a separately trained marking; it does not model electronic or interlayer energy." },
+  epitaxy: { factor: "substrate registry", question: "How does a declared +5% support mismatch rerank otherwise identical film actions?",
+    arms: [
+      { id: "reference", label: "coherent template", summary: "Declared hexagonal support at the film reference spacing.", settings: { epitaxyTemplateMode: "hex-coherent" } },
+      { id: "contrast", label: "+5% misfit template", summary: "Only the declared template spacing changes; all other protocol controls stay fixed.", settings: { epitaxyTemplateMode: "hex-mismatch" } },
+    ], outcomes: ["registry score", "seam burden", "|ψ6| response"],
+    boundary: "This is a one-factor geometric registry intervention, not elastic relaxation, adhesion, or dislocation dynamics." },
+  impingement: { factor: "nucleus count", question: "Which interface and loop burdens arise only when independent nuclei impinge?",
+    arms: [
+      { id: "reference", label: "four nuclei", summary: "Four dispersed nuclei under the impingement protocol.", settings: { requestedGrowthNuclei: 4 } },
+      { id: "contrast", label: "single nucleus", summary: "The same protocol with one nucleus; interface controls remain unchanged.", settings: { requestedGrowthNuclei: 1 } },
+    ], outcomes: ["effective nuclei", "shared-site fraction", "loop burden"],
+    boundary: "Finite registry and coordination interfaces are not grain-boundary energy, mobility, or coarsening kinetics." },
+  "pore-fill": { factor: "hard confinement", question: "Which accepted actions are selected by the hourglass boundary alone?",
+    arms: [
+      { id: "reference", label: "hourglass pore", summary: "Hard constricted public boundary with the pore-filling ranking bundle.", settings: { confinement: "hourglass" } },
+      { id: "contrast", label: "unconstricted box", summary: "Only the hard public boundary changes to a box.", settings: { confinement: "box" } },
+    ], outcomes: ["boundary rejections", "pocket filling", "RDF response"],
+    boundary: "This isolates accessible geometry; it supplies no wall chemistry, pressure, wetting, or transport rate." },
+  "glass-control": { factor: "connection marking", question: "Does a learned local section create unsupported determinism in the amorphous control?",
+    arms: [
+      { id: "reference", label: "GCTS local halo", summary: "Use the trained off-lattice connection section.", settings: { policy: "marked" } },
+      { id: "contrast", label: "colored-action baseline", summary: "Keep authorized geometry but remove the learned section score.", settings: { policy: "action" } },
+    ], outcomes: ["residual fraction", "false continuation", "RDF tail"],
+    boundary: "A null or finite difference is a geometric control result, not a calibrated metallic-glass ensemble or transition." },
+});
 
 const GROWTH_PROTOCOL_CONTROL_IDS = new Set([
   "growthDomainScaleSelect", "geometryPreferenceSelect", "strainWeightSelect", "structuralRelaxationSelect", "compositionPreferenceSelect", "feedstockSupplySelect", "chargePreferenceSelect", "chargeGeometrySelect", "chargeGeometryReachSelect", "chargeGeometryWeightSelect",
@@ -6625,7 +6683,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-146",
+      buildId: "20260825-147",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -8051,6 +8109,15 @@ function experimentNotebookSummary(receipt) {
     classificationConfidence: classification?.current?.confidence ?? 0,
     strongestClaim,
     benchmarkGate: receipt.evidenceBoundary.benchmarkGate,
+    registeredStudy: receipt.studyDesign?.id ? {
+      recipeId: receipt.studyDesign.id,
+      recipeLabel: receipt.studyDesign.label,
+      settingsStillMatch: receipt.studyDesign.settingsStillMatch,
+      factor: receipt.studyDesign.registeredComparison?.factor || null,
+      armId: receipt.studyDesign.registeredComparison?.activeArmId || null,
+      armLabel: receipt.studyDesign.registeredComparison?.activeArmLabel || null,
+      autoExecuted: false,
+    } : null,
     physicalTimeModeled: receipt.evidenceBoundary.physicalElapsedTimeModeled,
     trajectory: { alignment: "structural leap index", points: trajectoryPoints,
       multiscaleOrderPathway: {
@@ -8763,7 +8830,7 @@ function renderExperimentNotebook() {
     button.classList.toggle("active", selected);
     button.setAttribute("aria-pressed", String(selected));
     button.title = `Receipt ${entry.receiptSha256}; coordinates excluded`;
-    const number = document.createElement("small"); number.textContent = `run ${index + 1} · stage ${entry.stageOrdinal}`;
+    const number = document.createElement("small"); number.textContent = `run ${index + 1} · stage ${entry.stageOrdinal}${entry.registeredStudy?.armLabel ? ` · ${entry.registeredStudy.armLabel}` : ""}`;
     const material = document.createElement("strong"); material.textContent = entry.material;
     const state = document.createElement("span"); state.textContent = `${entry.explicitSites.toLocaleString()} sites · ${entry.marking}`;
     const claim = document.createElement("em"); claim.textContent = entry.strongestClaim;
@@ -13099,21 +13166,43 @@ function selectedStudyRecipe() {
     || MATERIALS_STUDY_RECIPES[0];
 }
 
+function studyComparisonForRecipe(recipeId = activeStudyRecipeId) {
+  return MATERIALS_STUDY_COMPARISONS[recipeId] || null;
+}
+
+function activeStudyComparisonArm(recipeId = activeStudyRecipeId) {
+  const comparison = studyComparisonForRecipe(recipeId);
+  return comparison?.arms.find((arm) => arm.id === activeStudyArmId) || comparison?.arms[0] || null;
+}
+
 function activeStudyRecipeAudit() {
   const recipe = MATERIALS_STUDY_RECIPES.find((entry) => entry.id === activeStudyRecipeId);
   if (!recipe) return null;
+  const comparison = studyComparisonForRecipe(recipe.id);
+  const arm = activeStudyComparisonArm(recipe.id);
+  const armSettings = arm?.settings || {};
+  const expectedMarking = { ...recipe.marking,
+    representation: armSettings.markingRepresentation || recipe.marking.representation };
   const checks = {
     sample: scenarioSelect.value === recipe.scenario,
     geometryHypothesis: geometryMode === recipe.geometryMode,
-    markingChannels: Number(markingDraft.channels) === Number(recipe.marking.channels),
-    markingReach: Number(markingDraft.reach) === Number(recipe.marking.reach),
-    markingRepresentation: markingDraft.representation === recipe.marking.representation,
+    markingChannels: Number(markingDraft.channels) === Number(expectedMarking.channels),
+    markingReach: Number(markingDraft.reach) === Number(expectedMarking.reach),
+    markingRepresentation: markingDraft.representation === expectedMarking.representation,
     growthProtocol: growthProtocolMode === recipe.protocol,
     structuralObservable: structureObservableSelection === recipe.observable,
     orientationalHarmonic: orientationalOrderHarmonic === recipe.harmonic,
   };
+  if (armSettings.hierarchyEnabled !== undefined) checks.comparisonHierarchy = hierarchyEnabled === armSettings.hierarchyEnabled;
+  if (armSettings.policy) checks.comparisonPolicy = policySelect.value === armSettings.policy;
+  if (armSettings.epitaxyTemplateMode) checks.comparisonEpitaxyTemplate = epitaxyTemplateMode === armSettings.epitaxyTemplateMode;
+  if (armSettings.requestedGrowthNuclei) checks.comparisonNuclei = requestedGrowthNuclei === armSettings.requestedGrowthNuclei;
+  if (armSettings.confinement) checks.comparisonBoundary = confinementSelect.value === armSettings.confinement;
   return { id: recipe.id, label: recipe.label, question: recipe.question, prediction: recipe.prediction, kind: recipe.kind,
     route: [...recipe.route], encodings: [...recipe.encodings], observables: [...recipe.observables],
+    registeredComparison: comparison ? { factor: comparison.factor, question: comparison.question,
+      activeArmId: arm.id, activeArmLabel: arm.label, settings: { ...arm.settings },
+      outcomes: [...comparison.outcomes], boundary: comparison.boundary, autoExecuted: false } : null,
     claimBoundary: recipe.boundary, convenienceOnly: true, hiddenPhysicsAdded: false,
     candidateGeometryAuthorized: false, recipeSchemaVersion: 1,
     reconstructedFromUrl: Boolean(studyLaunchAudit?.loaded),
@@ -13171,6 +13260,16 @@ function setStudyGuideOpen(open) {
   if (open) renderStudyGuide();
 }
 
+function applyStudyArmSettings(arm) {
+  const settings = arm?.settings || {};
+  if (settings.markingRepresentation) markingDraft = { ...markingDraft, representation: settings.markingRepresentation };
+  if (settings.policy) policySelect.value = settings.policy;
+  if (settings.hierarchyEnabled !== undefined) hierarchyEnabled = settings.hierarchyEnabled;
+  if (settings.epitaxyTemplateMode) epitaxyTemplateMode = settings.epitaxyTemplateMode;
+  if (settings.requestedGrowthNuclei) requestedGrowthNuclei = settings.requestedGrowthNuclei;
+  if (settings.confinement) confinementSelect.value = settings.confinement;
+}
+
 function applyStudyRecipe(recipeId) {
   const recipe = MATERIALS_STUDY_RECIPES.find((entry) => entry.id === recipeId);
   if (!recipe) return;
@@ -13184,10 +13283,24 @@ function applyStudyRecipe(recipeId) {
   structureObservableSelection = recipe.observable;
   orientationalOrderHarmonic = recipe.harmonic;
   applyGrowthProtocol(recipe.protocol);
+  activeStudyArmId = "reference";
+  applyStudyArmSettings(MATERIALS_STUDY_COMPARISONS[recipe.id]?.arms[0]);
   activeStudyRecipeId = recipe.id;
   enterPipelineStage(0);
   setStudyGuideOpen(false);
   receiptStatus.textContent = `${recipe.label} configured · begin from the supplied positions; no growth has run.`;
+}
+
+function applyStudyComparisonArm(recipeId, armId) {
+  const recipe = MATERIALS_STUDY_RECIPES.find((entry) => entry.id === recipeId);
+  const comparison = studyComparisonForRecipe(recipeId);
+  const arm = comparison?.arms.find((entry) => entry.id === armId);
+  if (!recipe || !arm) return;
+  applyStudyRecipe(recipeId);
+  activeStudyArmId = arm.id;
+  applyStudyArmSettings(arm);
+  enterPipelineStage(0);
+  receiptStatus.textContent = `${recipe.label} · ${arm.label} configured at known positions · registered factor: ${comparison.factor} · nothing executed.`;
 }
 
 const STUDY_STAGE_SEQUENCE = Object.freeze([
@@ -13222,6 +13335,7 @@ const STUDY_STAGE_GUIDANCE = Object.freeze({
 
 function shareableStudyUrl(audit = activeStudyRecipeAudit()) {
   if (!audit?.settingsStillMatch || scenarioSelect.value === "imported"
+    || activeStudyArmId !== "reference"
     || !STUDY_STAGE_SEQUENCE.some((entry) => entry.stage === pipelineStage)) return null;
   const url = new URL(window.location.href);
   url.search = ""; url.hash = "";
@@ -13471,7 +13585,7 @@ function activeStudyOutcomeAudit(growthCertificate = undefined) {
 function renderStudyOutcome(growthCertificate = undefined) {
   const outcome = activeStudyOutcomeAudit(growthCertificate);
   studyOutcome.hidden = !outcome;
-  if (!outcome) return;
+  if (!outcome) { studyComparison.hidden = true; return; }
   studyOutcomeTitle.textContent = outcome.title;
   studyOutcomeStatus.textContent = outcome.status;
   studyOutcomeStatus.className = outcome.tone;
@@ -13485,6 +13599,27 @@ function renderStudyOutcome(growthCertificate = undefined) {
     article.append(label, titleElement, detail); return article;
   }));
   studyOutcomeInterpretation.textContent = outcome.interpretation;
+  const comparison = studyComparisonForRecipe(outcome.recipeId);
+  const activeArm = activeStudyComparisonArm(outcome.recipeId);
+  studyComparison.hidden = !comparison;
+  if (!comparison) return;
+  studyComparisonQuestion.textContent = comparison.question;
+  studyComparisonFactor.textContent = comparison.factor;
+  studyComparisonArms.replaceChildren(...comparison.arms.map((arm, index) => {
+    const button = document.createElement("button"); button.type = "button";
+    button.classList.toggle("active", arm.id === activeArm.id);
+    button.setAttribute("aria-pressed", String(arm.id === activeArm.id));
+    button.title = "Configure this registered arm from the same known positions; nothing executes automatically.";
+    const kind = document.createElement("small"); kind.textContent = index ? "contrast arm" : "reference arm";
+    const label = document.createElement("strong"); label.textContent = arm.label;
+    const summary = document.createElement("span"); summary.textContent = arm.summary;
+    const state = document.createElement("b"); state.textContent = arm.id === activeArm.id ? "configured" : "configure";
+    button.append(kind, label, summary, state);
+    button.addEventListener("click", () => applyStudyComparisonArm(outcome.recipeId, arm.id));
+    return button;
+  }));
+  studyComparisonOutcomes.textContent = `Compare only: ${comparison.outcomes.join(" · ")} · save each completed arm to the notebook for a one-factor audit.`;
+  studyComparisonBoundary.textContent = `${comparison.boundary} Arm selection resets to known positions and never presses Play.`;
 }
 
 function renderStudyCompass() {
@@ -13498,14 +13633,16 @@ function renderStudyCompass() {
   studyCompassQuestion.textContent = recipe?.question || "Choose a scientific question or continue with independent controls.";
   const mismatchKeys = audit ? Object.entries(audit.checks).filter(([, matches]) => !matches).map(([key]) => key) : [];
   studyCompassIntegrity.textContent = !audit ? "receipt-visible controls"
-    : audit.settingsStillMatch ? "recipe intact" : `${mismatchKeys.length} edited setting${mismatchKeys.length === 1 ? "" : "s"}`;
+    : audit.settingsStillMatch ? activeStudyArmId === "reference" ? "recipe intact" : "contrast intact"
+      : `${mismatchKeys.length} edited setting${mismatchKeys.length === 1 ? "" : "s"}`;
   studyCompassIntegrity.className = audit && !audit.settingsStillMatch ? "edited" : audit ? "intact" : "";
   const shareUrl = shareableStudyUrl(audit);
   studyCompassShare.disabled = !shareUrl;
   studyCompassShare.textContent = shareUrl ? "Copy study link" : "Recipe link unavailable";
   studyCompassShare.title = shareUrl
     ? "Copies a versioned curated-recipe and paused-stage URL; it contains no coordinates, learned weights, or growth history."
-    : "Edited/custom studies require the full receipt; the compact recipe link fails closed.";
+    : activeStudyArmId !== "reference" ? "Registered contrast arms require the full receipt and notebook; the compact reference-recipe link fails closed."
+      : "Edited/custom studies require the full receipt; the compact recipe link fails closed.";
   studyCompassProgress.replaceChildren(...STUDY_STAGE_SEQUENCE.map((entry, index) => {
     const button = document.createElement("button"); button.type = "button";
     button.dataset.studyStage = String(entry.stage);
@@ -13530,7 +13667,7 @@ function renderStudyCompass() {
   studyCompassState.textContent = !audit
     ? "No guided recipe is active; every control remains available and receipt-visible."
     : audit.settingsStillMatch
-      ? `Recipe controls still match · convenience only · nothing runs automatically.`
+      ? `${audit.registeredComparison?.activeArmLabel || "Recipe"} controls match · registered ${audit.registeredComparison?.factor || "study"} arm · nothing runs automatically.`
       : `Edited experiment · diverged controls: ${mismatchKeys.join(", ")} · receipt preserves the mismatch.`;
   const currentIndex = STUDY_STAGE_SEQUENCE.findIndex((entry) => entry.stage === pipelineStage);
   if (currentIndex >= 0 && currentIndex < STUDY_STAGE_SEQUENCE.length - 1) {
@@ -18875,6 +19012,8 @@ function applyLaunchParameters() {
       structureObservableSelection = requestedRecipe.observable;
       orientationalOrderHarmonic = requestedRecipe.harmonic;
       applyGrowthProtocol(requestedRecipe.protocol, { sync: false });
+      activeStudyArmId = "reference";
+      applyStudyArmSettings(MATERIALS_STUDY_COMPARISONS[requestedRecipe.id]?.arms[0]);
       studyLaunchAudit = { loaded: true, schemaVersion: 1, recipeId: requestedRecipe.id,
         coordinatesEmbedded: false, learnedWeightsEmbedded: false, growthHistoryEmbedded: false };
     } else {

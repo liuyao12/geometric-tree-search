@@ -82,6 +82,21 @@ rather than mixing O and H positions at the O–H scale. Before the first emitte
 site, every microscope reports only its input baseline and explicitly refuses
 to present a small growth nucleus as an evolved material response.
 
+Build 147 adds a persistent **registered comparison** to every guided study.
+Each recipe now has a named reference and contrast arm, one declared factor,
+predeclared outcome fields, and a comparison-specific claim boundary. The arms
+cover clusters² on/off, GCTS marking versus colored-action ordering,
+chiral-versus-achiral moiré sections, coherent versus +5% template registry,
+four versus one nucleus, and hourglass versus box confinement. Selecting an arm
+always returns to the identical known positions, applies only its registered
+setting, and remains paused; it never reuses growth history or presses Play.
+Completed arms can be saved to the existing notebook, where input SHA-256 and
+all intervention factors decide whether a comparison is truly one-factor or
+merely descriptive. The receipt and notebook record recipe, factor, arm, exact
+settings, and `autoExecuted: false`. Compact share links remain reference-only;
+contrast arms require the full receipt so their provenance cannot be silently
+lost.
+
 The right-hand **computational work laboratory** turns the scaling question into
 an explicit, inspectable comparison at 10×, 1,000×, and 100,000× the observed
 sample. It reports deterministic browser tree decisions and finite-neighborhood
