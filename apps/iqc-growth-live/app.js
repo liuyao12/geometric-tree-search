@@ -373,6 +373,11 @@ const notebookTrajectoryHarmonics = $("notebookTrajectoryHarmonics");
 const notebookTrajectoryPlot = $("notebookTrajectoryPlot");
 const notebookTrajectoryStateDetail = $("notebookTrajectoryStateDetail");
 const notebookTrajectorySummary = $("notebookTrajectorySummary");
+const notebookSweepAudit = $("notebookSweepAudit");
+const notebookSweepFactor = $("notebookSweepFactor");
+const notebookSweepOutcome = $("notebookSweepOutcome");
+const notebookSweepPlot = $("notebookSweepPlot");
+const notebookSweepSummary = $("notebookSweepSummary");
 const runStateText = $("runStateText");
 const stageEyebrow = $("stageEyebrow");
 const stageTitle = $("stageTitle");
@@ -913,6 +918,7 @@ let experimentNotebookEntries = [];
 let selectedNotebookEntryIds = [];
 let notebookTrajectoryMode = "series";
 let notebookTrajectoryHarmonic = 6;
+let notebookSweepFactorKey = null;
 let atomSpatialIndex = new Map();
 let trainingProgress = 0;
 let clusterDiscoveryTrace = null;
@@ -6508,7 +6514,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-140",
+      buildId: "20260825-141",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7775,7 +7781,10 @@ function notebookInterventionFactors(receipt) {
   return {
     pipeline: { label: "pipeline extent", role: "execution", value: `${receipt.pipeline.stageName}:${receipt.pipeline.visibleStage}` },
     boundary: { label: "external boundary", role: "geometry", value: serialized({
-      kind: receipt.input.externalGeometry?.kind,
+      id: receipt.input.externalGeometry?.id,
+      label: receipt.input.externalGeometry?.label,
+      shape: receipt.input.externalGeometry?.shape,
+      publicReachScale: receipt.input.externalGeometry?.publicReachScale,
       periodic: receipt.input.periodicBoundary,
       parametersAngstrom: receipt.input.externalGeometry?.parametersAngstrom,
     }) },
@@ -8431,6 +8440,200 @@ function renderNotebookTrajectoryAudit(selected) {
   notebookTrajectorySummary.append(boundary);
 }
 
+const NOTEBOOK_SWEEP_OUTCOMES = {
+  generatedSites: { label: "generated structural sites", value: (entry) => entry.generatedSites,
+    format: (value) => Math.round(value).toLocaleString() },
+  acceptedDecisions: { label: "accepted branches", value: (entry) => entry.acceptedDecisions,
+    format: (value) => Math.round(value).toLocaleString() },
+  rejectedDecisions: { label: "rejected branches", value: (entry) => entry.rejectedDecisions,
+    format: (value) => Math.round(value).toLocaleString() },
+  causalDepth: { label: "causal depth", value: (entry) => entry.causalDepth,
+    format: (value) => Math.round(value).toLocaleString() },
+  localConstraintEvaluations: { label: "local geometric tests", value: (entry) => entry.localConstraintEvaluations,
+    format: (value) => Math.round(value).toLocaleString() },
+  classificationConfidence: { label: "classification confidence", value: (entry) => entry.classificationConfidence,
+    format: (value) => `${(100 * value).toFixed(1)}%` },
+  localOrder: { label: "final mean local q₆ / |ψ₆|",
+    value: (entry) => entry.trajectory?.points?.at(-1)?.orientationalOrder?.harmonics?.[6]?.mean,
+    format: (value) => value.toFixed(3) },
+  reciprocalProminence: { label: "final S(q) peak prominence",
+    value: (entry) => entry.trajectory?.points?.at(-1)?.scattering?.summary?.peakProminence,
+    format: (value) => value.toFixed(3) },
+};
+
+function notebookStringHash(value) {
+  let hash = 2166136261;
+  for (let index = 0; index < value.length; index++) {
+    hash ^= value.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
+  }
+  return (hash >>> 0).toString(16).padStart(8, "0");
+}
+
+function notebookControlledResponseSweeps(entries = []) {
+  const inputGroups = new Map();
+  entries.filter((entry) => entry.inputIdentity && entry.interventionFactors)
+    .forEach((entry) => {
+      if (!inputGroups.has(entry.inputIdentity)) inputGroups.set(entry.inputIdentity, []);
+      inputGroups.get(entry.inputIdentity).push(entry);
+    });
+  const excludedFactors = new Set(["pipeline", "structuralObservable", "costModel"]);
+  const candidates = [];
+  inputGroups.forEach((inputEntries, inputIdentity) => {
+    if (inputEntries.length < 3) return;
+    const factorKeys = [...new Set(inputEntries.flatMap((entry) => Object.keys(entry.interventionFactors)))].sort();
+    factorKeys.filter((key) => !excludedFactors.has(key)
+      && inputEntries.some((entry) => entry.interventionFactors[key]?.role !== "analysis only"))
+      .forEach((factorKey) => {
+        const controlledGroups = new Map();
+        inputEntries.forEach((entry) => {
+          const controlSignature = JSON.stringify(factorKeys.filter((key) => key !== factorKey && !excludedFactors.has(key))
+            .map((key) => [key, entry.interventionFactors[key]?.value ?? "__missing__"]));
+          if (!controlledGroups.has(controlSignature)) controlledGroups.set(controlSignature, []);
+          controlledGroups.get(controlSignature).push(entry);
+        });
+        controlledGroups.forEach((controlledEntries, controlSignature) => {
+          if (controlledEntries.length < 3) return;
+          const settingMap = new Map();
+          controlledEntries.forEach((entry) => {
+            const factorValue = entry.interventionFactors[factorKey]?.value ?? "__missing__";
+            if (!settingMap.has(factorValue)) settingMap.set(factorValue, []);
+            settingMap.get(factorValue).push(entry);
+          });
+          if (settingMap.size < 3) return;
+          const settings = [...settingMap.entries()].sort(([first], [second]) => first.localeCompare(second))
+            .map(([value, settingEntries], index) => ({ code: String.fromCharCode(65 + index), value,
+              valueDigest: notebookStringHash(value), entries: settingEntries }));
+          const factor = controlledEntries.map((entry) => entry.interventionFactors[factorKey]).find(Boolean)
+            || { label: factorKey, role: "legacy" };
+          const id = `${factorKey}:${notebookStringHash(inputIdentity)}:${notebookStringHash(controlSignature)}`;
+          candidates.push({ id, factorKey, factorLabel: factor.label, factorRole: factor.role,
+            inputIdentity, inputStructureSha256: controlledEntries[0].inputStructureSha256,
+            material: controlledEntries[0].material, entries: controlledEntries, settings,
+            fixedFactorCount: factorKeys.filter((key) => key !== factorKey && !excludedFactors.has(key)).length,
+            controlled: true, coordinatesEmbedded: false, physicalTimeModeled: false });
+        });
+      });
+  });
+  return candidates.sort((first, second) => second.entries.length - first.entries.length
+    || second.settings.length - first.settings.length || first.factorLabel.localeCompare(second.factorLabel));
+}
+
+function compactNotebookSweepSetting(value) {
+  if (value === "__missing__") return "legacy missing value";
+  try {
+    const parsed = JSON.parse(value);
+    const flattened = [];
+    const visit = (item, path = "") => {
+      if (flattened.length >= 4) return;
+      if (item === null || typeof item !== "object") flattened.push(`${path || "value"}=${String(item)}`);
+      else if (Array.isArray(item)) item.slice(0, 3).forEach((child, index) => visit(child, `${path || "value"}[${index}]`));
+      else Object.entries(item).slice(0, 5).forEach(([key, child]) => visit(child, path ? `${path}.${key}` : key));
+    };
+    visit(parsed);
+    const compact = flattened.join(" · ") || value;
+    return compact.length > 66 ? `${compact.slice(0, 63)}…` : compact;
+  } catch (_) {
+    return value.length > 66 ? `${value.slice(0, 63)}…` : value;
+  }
+}
+
+function renderNotebookControlledSweep(entries) {
+  notebookSweepPlot.replaceChildren(); notebookSweepSummary.replaceChildren();
+  const header = notebookSweepAudit.querySelector("header");
+  const title = header.querySelector("strong"); const detail = header.querySelector("span");
+  const candidates = notebookControlledResponseSweeps(entries);
+  notebookSweepFactor.replaceChildren(...candidates.map((candidate) => {
+    const option = document.createElement("option"); option.value = candidate.id;
+    option.textContent = `${candidate.factorLabel} · ${candidate.settings.length} settings / ${candidate.entries.length} runs`;
+    return option;
+  }));
+  if (!candidates.length) {
+    notebookSweepAudit.className = "notebook-sweep-audit waiting";
+    notebookSweepFactor.disabled = true; notebookSweepFactorKey = null;
+    title.textContent = "save at least three controlled settings";
+    detail.textContent = "Use one observed input and vary exactly one geometry, marking, search, protocol, relaxation, scheduling, or hierarchy factor across at least three saved runs.";
+    return;
+  }
+  notebookSweepFactor.disabled = false;
+  if (!candidates.some((candidate) => candidate.id === notebookSweepFactorKey)) notebookSweepFactorKey = candidates[0].id;
+  notebookSweepFactor.value = notebookSweepFactorKey;
+  const sweep = candidates.find((candidate) => candidate.id === notebookSweepFactorKey);
+  const outcome = NOTEBOOK_SWEEP_OUTCOMES[notebookSweepOutcome.value] || NOTEBOOK_SWEEP_OUTCOMES.generatedSites;
+  const observations = sweep.settings.flatMap((setting) => setting.entries.map((entry) => ({ setting, entry,
+    value: outcome.value(entry) })));
+  if (!observations.every((observation) => Number.isFinite(observation.value))) {
+    notebookSweepAudit.className = "notebook-sweep-audit unavailable";
+    title.textContent = `${outcome.label} unavailable`;
+    detail.textContent = "At least one saved run predates this coordinate-free outcome. Save that state again or choose another outcome.";
+    return;
+  }
+  const settingSummaries = sweep.settings.map((setting) => {
+    const values = setting.entries.map((entry) => outcome.value(entry));
+    return { ...setting, values, minimum: Math.min(...values), maximum: Math.max(...values),
+      mean: values.reduce((sum, value) => sum + value, 0) / values.length };
+  });
+  const values = observations.map((observation) => observation.value);
+  const minimum = Math.min(...values); const maximum = Math.max(...values); const range = Math.max(1e-9, maximum - minimum);
+  notebookSweepAudit.className = "notebook-sweep-audit controlled";
+  title.textContent = `${sweep.factorLabel} · ${outcome.label}`;
+  detail.textContent = `${sweep.entries.length} runs from one input SHA-256 · ${sweep.settings.length} categorical settings · ${sweep.fixedFactorCount} other recorded interventions held byte-identical`;
+  const svg = notebookSweepPlot; const namespace = "http://www.w3.org/2000/svg";
+  const makeSvg = (name, attributes = {}) => {
+    const element = document.createElementNS(namespace, name);
+    Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, value));
+    return element;
+  };
+  svg.setAttribute("aria-label", `${outcome.label} across controlled categorical settings of ${sweep.factorLabel}`);
+  const left = 34; const top = 9; const width = 232; const height = 76;
+  const x = (index) => left + width * (index + .5) / settingSummaries.length;
+  const y = (value) => top + height * (1 - (value - minimum) / range);
+  [0, .5, 1].forEach((fraction) => svg.append(makeSvg("line", { x1: left, x2: left + width,
+    y1: top + fraction * height, y2: top + fraction * height, class: "grid" })));
+  settingSummaries.forEach((setting, settingIndex) => {
+    const center = x(settingIndex);
+    svg.append(makeSvg("line", { x1: center, x2: center, y1: y(setting.minimum), y2: y(setting.maximum), class: "range" }));
+    svg.append(makeSvg("line", { x1: center - 7, x2: center + 7, y1: y(setting.mean), y2: y(setting.mean), class: "mean" }));
+    setting.entries.forEach((entry, replicateIndex) => {
+      const offset = setting.entries.length === 1 ? 0 : 8 * (replicateIndex / (setting.entries.length - 1) - .5);
+      const value = outcome.value(entry);
+      const circle = makeSvg("circle", { cx: center + offset, cy: y(value), r: 2.6, class: "sample",
+        tabindex: "0", role: "img", "aria-label": `${setting.code}, ${outcome.label}: ${outcome.format(value)}` });
+      const tooltip = makeSvg("title");
+      tooltip.textContent = `${setting.code} · ${compactNotebookSweepSetting(setting.value)} · ${outcome.label}: ${outcome.format(value)} · receipt ${entry.receiptSha256.slice(0, 10)}`;
+      circle.append(tooltip); svg.append(circle);
+    });
+    const code = makeSvg("text", { x: center, y: 98, class: "setting", "text-anchor": "middle" }); code.textContent = setting.code;
+    svg.append(code);
+  });
+  const topLabel = makeSvg("text", { x: left - 4, y: top + 3, class: "axis", "text-anchor": "end" }); topLabel.textContent = outcome.format(maximum);
+  const bottomLabel = makeSvg("text", { x: left - 4, y: top + height + 2, class: "axis", "text-anchor": "end" }); bottomLabel.textContent = outcome.format(minimum);
+  const xLabel = makeSvg("text", { x: left + width / 2, y: 110, class: "axis", "text-anchor": "middle" }); xLabel.textContent = `${sweep.factorLabel} · categorical settings →`;
+  svg.append(topLabel, bottomLabel, xLabel);
+  const meanValues = settingSummaries.map((setting) => setting.mean);
+  const tiles = [
+    ["recorded factor role", sweep.factorRole, "one varying intervention"],
+    ["settings / runs", `${sweep.settings.length} / ${sweep.entries.length}`, "categorical · no interpolation"],
+    ["mean response span", outcome.format(Math.max(...meanValues) - Math.min(...meanValues)), `maximum mean − minimum mean`],
+    ["replicates per setting", `${Math.min(...sweep.settings.map((setting) => setting.entries.length))}–${Math.max(...sweep.settings.map((setting) => setting.entries.length))}`, "saved runs · not independent samples"],
+    ["fixed recorded factors", String(sweep.fixedFactorCount), "byte-identical values"],
+    ["observed input", sweep.inputStructureSha256.slice(0, 12), "identical SHA-256"],
+  ];
+  tiles.forEach(([label, value, note]) => {
+    const tile = document.createElement("span"); tile.innerHTML = `<small>${label}</small><strong>${value}</strong><em>${note}</em>`;
+    notebookSweepSummary.append(tile);
+  });
+  const settingLedger = document.createElement("div"); settingLedger.className = "notebook-sweep-settings";
+  sweep.settings.forEach((setting) => {
+    const row = document.createElement("span"); row.title = setting.value;
+    row.innerHTML = `<b>${setting.code}</b><strong>${compactNotebookSweepSetting(setting.value)}</strong><em>${setting.entries.length} run${setting.entries.length === 1 ? "" : "s"} · ${setting.valueDigest}</em>`;
+    settingLedger.append(row);
+  });
+  const boundary = document.createElement("p");
+  boundary.textContent = "This is a recorded one-factor geometric response study over categorical settings. It does not interpolate between settings, exclude hidden confounders, establish thermodynamic or kinetic causality, estimate uncertainty from independent specimens, or define a phase diagram, free-energy surface, rate, or physical time.";
+  notebookSweepSummary.append(settingLedger, boundary);
+}
+
 function renderExperimentNotebook() {
   notebookState.textContent = `${experimentNotebookEntries.length}/${MAX_EXPERIMENT_NOTEBOOK_ENTRIES} saved runs`;
   clearNotebookButton.disabled = experimentNotebookEntries.length === 0;
@@ -8459,6 +8662,7 @@ function renderExperimentNotebook() {
   notebookComparison.replaceChildren();
   renderNotebookInterventionAudit(selected);
   renderNotebookTrajectoryAudit(selected);
+  renderNotebookControlledSweep(experimentNotebookEntries);
   if (selected.length !== 2) {
     const note = document.createElement("p");
     note.textContent = selected.length ? "Select one more saved run to compare." : "Select two saved runs to compare.";
@@ -17436,6 +17640,11 @@ notebookTrajectoryHarmonics.querySelectorAll("[data-notebook-pathway-harmonic]")
   notebookTrajectoryHarmonic = Number(button.dataset.notebookPathwayHarmonic);
   renderExperimentNotebook();
 }));
+notebookSweepFactor.addEventListener("change", () => {
+  notebookSweepFactorKey = notebookSweepFactor.value;
+  renderExperimentNotebook();
+});
+notebookSweepOutcome.addEventListener("change", renderExperimentNotebook);
 scenarioSelect.addEventListener("change", () => {
   renderEnsembleControls();
   renderIceViMicrostateControls();

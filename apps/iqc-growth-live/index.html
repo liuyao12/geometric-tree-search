@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260825-49">
+  <link rel="stylesheet" href="./style.css?v=20260825-50">
   <script type="importmap">
     {
       "imports": {
@@ -1245,6 +1245,24 @@
             <div id="notebookTrajectoryStateDetail" class="notebook-trajectory-state" aria-live="polite"></div>
             <div id="notebookTrajectorySummary" class="notebook-trajectory-summary"></div>
           </article>
+          <article id="notebookSweepAudit" class="notebook-sweep-audit waiting" aria-live="polite">
+            <header><small>controlled response study</small><strong>save at least three comparable runs</strong><span>one recorded geometric intervention may vary while the input and every other non-analysis factor remain fixed</span></header>
+            <div class="notebook-sweep-toolbar">
+              <label>intervention<select id="notebookSweepFactor" aria-label="Controlled response intervention" disabled></select></label>
+              <label>outcome<select id="notebookSweepOutcome" aria-label="Controlled response outcome">
+                <option value="generatedSites">generated structural sites</option>
+                <option value="acceptedDecisions">accepted branches</option>
+                <option value="rejectedDecisions">rejected branches</option>
+                <option value="causalDepth">causal depth</option>
+                <option value="localConstraintEvaluations">local geometric tests</option>
+                <option value="classificationConfidence">classification confidence</option>
+                <option value="localOrder">final mean local q₆ / |ψ₆|</option>
+                <option value="reciprocalProminence">final S(q) peak prominence</option>
+              </select></label>
+            </div>
+            <svg id="notebookSweepPlot" viewBox="0 0 280 118" role="img" aria-label="Controlled geometric intervention response across saved runs"></svg>
+            <div id="notebookSweepSummary" class="notebook-sweep-summary"></div>
+          </article>
         </section>
 
         <section class="legend-section">
@@ -1482,7 +1500,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-140"></script>
+  <script type="module" src="./app.js?v=20260825-141"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>
