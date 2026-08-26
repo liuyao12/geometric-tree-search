@@ -25,6 +25,7 @@ import { applyHypothesisSeparationMultipliers as applyFrozenHypothesisSeparation
   from "./hypothesis-separation.js?v=20260826-1";
 import { compareHypothesisSeparationOutcomes }
   from "./hypothesis-separation-outcome.js?v=20260826-1";
+import { buildSiteProvenance } from "./site-provenance.js?v=20260826-1";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -520,6 +521,12 @@ const eventCounter = $("eventCounter");
 const phaseReadout = $("phaseReadout");
 const clusterGallery = $("clusterGallery");
 const viewportHint = $("viewportHint");
+const siteProvenanceInspector = $("siteProvenanceInspector");
+const siteProvenanceNext = $("siteProvenanceNext");
+const siteProvenanceClose = $("siteProvenanceClose");
+const siteProvenanceState = $("siteProvenanceState");
+const siteProvenanceGrid = $("siteProvenanceGrid");
+const siteProvenanceBoundary = $("siteProvenanceBoundary");
 const unitCellBadge = $("unitCellBadge");
 const captionAction = $("captionAction");
 const processTimeline = $("processTimeline");
@@ -929,6 +936,31 @@ controls.autoRotate = true;
 controls.autoRotateSpeed = 0.38;
 controls.minDistance = 5;
 controls.maxDistance = 55;
+const siteRaycaster = new THREE.Raycaster();
+const sitePointer = new THREE.Vector2();
+let sitePointerStart = null;
+renderer.domElement.addEventListener("pointerdown", (event) => {
+  sitePointerStart = { x: event.clientX, y: event.clientY };
+});
+renderer.domElement.addEventListener("pointerup", (event) => {
+  if (renderer.isFallback || pipelineStage === 3 || !sitePointerStart
+      || Math.hypot(event.clientX - sitePointerStart.x, event.clientY - sitePointerStart.y) > 5) return;
+  const bounds = renderer.domElement.getBoundingClientRect();
+  sitePointer.set(((event.clientX - bounds.left) / bounds.width) * 2 - 1,
+    -((event.clientY - bounds.top) / bounds.height) * 2 + 1);
+  siteRaycaster.setFromCamera(sitePointer, camera);
+  const pickable = atomGroup.children.filter((child) => child.userData.siteProvenancePickable === true);
+  const hit = siteRaycaster.intersectObjects(pickable, false).find((entry) => Number.isInteger(entry.instanceId));
+  const atomId = hit?.object?.userData?.atomIds?.[hit.instanceId];
+  const atom = atoms.find((entry) => entry.id === atomId);
+  if (atom) inspectSite(atom);
+});
+siteProvenanceClose.addEventListener("click", closeSiteProvenanceInspector);
+siteProvenanceNext.addEventListener("click", () => {
+  if (!atoms.length) return;
+  const current = atoms.findIndex((atom) => atom.id === selectedSiteId);
+  inspectSite(atoms[(current + 1) % atoms.length]);
+});
 scene.add(new THREE.HemisphereLight(0xb9fff0, 0x091011, 1.25));
 const keyLight = new THREE.DirectionalLight(0xffffff, 2.2);
 keyLight.position.set(8, 13, 9);
@@ -948,7 +980,8 @@ const externalDriveGroup = new THREE.Group();
 const unitCellGroup = new THREE.Group();
 const interfaceGroup = new THREE.Group();
 const nucleationGroup = new THREE.Group();
-world.add(confinementGroup, externalDriveGroup, unitCellGroup, bondGroup, atomGroup, clusterGroup, interfaceGroup, nucleationGroup, frontierGroup, decisionGroup);
+const siteSelectionGroup = new THREE.Group();
+world.add(confinementGroup, externalDriveGroup, unitCellGroup, bondGroup, atomGroup, clusterGroup, interfaceGroup, nucleationGroup, frontierGroup, decisionGroup, siteSelectionGroup);
 scene.add(world);
 
 const sphereGeometry = new THREE.SphereGeometry(0.18, 13, 9);
@@ -977,12 +1010,16 @@ const candidateMaterial = new THREE.MeshBasicMaterial({ color: COLORS.violet, wi
 const rejectedMaterial = new THREE.MeshBasicMaterial({ color: COLORS.red, wireframe: true, transparent: true, opacity: 0.92 });
 const orientationalOrderHaloMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff,
   wireframe: true, transparent: true, opacity: .9, depthWrite: false });
+const siteSelectionGeometry = new THREE.SphereGeometry(.31, 16, 10);
+const siteSelectionMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true,
+  transparent: true, opacity: .96, depthWrite: false });
 
 let pipelineStage = 0;
 let pipelineAuto = false;
 let stageElapsed = 0;
 let playing = false;
 let atoms = [];
+let selectedSiteId = null;
 let referenceAtoms = [];
 let replayIndex = 0;
 let extensionIndex = 0;
@@ -3265,6 +3302,66 @@ function addAtom(position, species, family, parent = null, seed = false) {
   const atom = { id: nextAtomId++, p: position.clone(), species, family, parent, seed, depth: parent ? parent.depth + 1 : 0, attempts: 0 };
   atoms.push(atom);
   return atom;
+}
+
+function siteProvenanceTile(label, value, detail) {
+  const tile = document.createElement("span");
+  const small = document.createElement("small"); small.textContent = label;
+  const strong = document.createElement("strong"); strong.textContent = value;
+  const em = document.createElement("em"); em.textContent = detail;
+  tile.append(small, strong, em); return tile;
+}
+
+function closeSiteProvenanceInspector() {
+  selectedSiteId = null;
+  clearGroup(siteSelectionGroup);
+  siteProvenanceNext.hidden = pipelineStage === 3;
+  siteProvenanceNext.disabled = atoms.length === 0;
+  siteProvenanceInspector.hidden = true;
+  viewportHint.textContent = pipelineStage === 3 ? "each card rotates independently" : "drag to orbit · wheel to zoom · click an atom";
+}
+
+function renderSelectedSiteHighlight() {
+  clearGroup(siteSelectionGroup);
+  if (selectedSiteId === null) return;
+  const atom = atoms.find((entry) => entry.id === selectedSiteId);
+  if (!atom) { closeSiteProvenanceInspector(); return; }
+  const marker = new THREE.Mesh(siteSelectionGeometry, siteSelectionMaterial);
+  marker.position.copy(atom.p);
+  marker.scale.setScalar(elementScale(atom.species) * 1.15);
+  siteSelectionGroup.add(marker);
+}
+
+function inspectSite(atom) {
+  selectedSiteId = atom.id;
+  const snapshot = buildSiteProvenance({ atom, atoms, placements: placedClusters,
+    sceneToAngstrom: referenceSpacingA / Math.max(referenceSpacing, 1e-12),
+    neighborReachScene: 1.45 * referenceSpacing, geometryLabel: resolvedGeometryLabel() });
+  const [x, y, z] = snapshot.positionAngstrom;
+  const environment = snapshot.localEnvironment;
+  const lineage = snapshot.lineage;
+  const evidence = snapshot.decisionEvidence;
+  siteProvenanceState.textContent = `${snapshot.species} · site ${snapshot.siteId} · ${snapshot.origin}`;
+  siteProvenanceGrid.replaceChildren(
+    siteProvenanceTile("Cartesian position", `${x}, ${y}, ${z} Å`, `${snapshot.geometryLabel} · ephemeral viewport coordinate`),
+    siteProvenanceTile("colored neighborhood", `${environment.coordination} within ${environment.reachAngstrom} Å`,
+      environment.speciesCounts.map(([species, count]) => `${species}${count}`).join(" · ") || "isolated in current explicit state"),
+    siteProvenanceTile("nearest sites", environment.nearest.slice(0, 4)
+      .map((entry) => `${entry.species} ${entry.distanceAngstrom} Å`).join(" · ") || "none", "exact current species-labelled distances"),
+    siteProvenanceTile("GCTS lineage", lineage.creatorClusterId === null ? "supplied / seed" : `C${(lineage.creatorClusterType ?? 0) + 1} · R${lineage.ruleId} · depth ${lineage.causalDepth}`,
+      lineage.creatorClusterId === null ? `${lineage.clusterMemberships.length} fitted cluster memberships`
+        : `parent ${lineage.parentClusterId} → placement ${lineage.creatorClusterId}`),
+    siteProvenanceTile("overlap + nuclei", `${lineage.clusterMemberships.length} clusters · ${lineage.nucleusIds.length} nuclei`,
+      `${lineage.sharedClusterSite ? "shared overlap site" : "single support"} · ${lineage.interfaceSite ? "multi-nucleus interface" : "one nucleus"}`),
+    siteProvenanceTile("creation evidence", evidence
+      ? `${evidence.sharedSites} shared + ${evidence.emittedSites} emitted · mark ${evidence.markingScore}` : "observed geometry",
+      evidence ? `contact/angle residual ${evidence.contactAngleStrain} · loop witnesses ${evidence.loopClosureWitnesses}`
+        : snapshot.observedReferenceIndex === null ? "not created by a retained growth action" : `input reference site ${snapshot.observedReferenceIndex}`),
+  );
+  siteProvenanceBoundary.textContent = "This is a click-derived audit of the current explicit structure. Coordinates and neighbors are not persisted in the notebook or receipt; no target, energy, force, defect identity, or physical mechanism is inferred.";
+  siteProvenanceInspector.hidden = false;
+  viewportHint.textContent = "selected site ring · click another atom or close inspector";
+  renderSelectedSiteHighlight();
 }
 
 function copyReferenceScalarSpin(atom, referenceIndex) {
@@ -7899,7 +7996,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-184",
+      buildId: "20260826-185",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -17473,7 +17570,7 @@ function enterPipelineStage(index, options = {}) {
   viewportHint.textContent = pipelineStage === 3
     ? "one evolving marking scene per cluster · scroll for all types"
     : pipelineStage === 1 ? "full configuration · tentative → rejected → settled supports"
-      : "drag to orbit · wheel to zoom";
+      : "drag to orbit · wheel to zoom · click an atom";
   if (pipelineStage === 3) rebuildClusterGallery();
   buildClusterOverlay();
   updateStageNarrative();
@@ -17754,6 +17851,16 @@ function materializeCandidate(candidate, evaluation) {
     coherencyMemory: { mismatch: evaluation.coherencyMemory.candidateMismatch,
       axis: evaluation.coherencyMemory.candidateAxis, inheritedMismatch: evaluation.coherencyMemory.inheritedMismatch,
       support: evaluation.coherencyMemory.support },
+    decisionEvidence: {
+      markingScore: Number.isFinite(candidate.markingScore) ? receiptRound(candidate.markingScore) : null,
+      markingAccepted: candidate.markingAccepted,
+      sharedSites: evaluation.merged.length, emittedSites: evaluation.fresh.length,
+      contactAngleStrain: receiptRound(evaluation.geometricStrain.total),
+      compositionDistanceDelta: receiptRound(evaluation.compositionBalance.scaledDelta),
+      surfaceCoordinationDelta: receiptRound(evaluation.surfaceCompletion.scaledDelta),
+      loopClosureWitnesses: evaluation.loopClosure.independentCompatiblePaths,
+      targetUsed: false, physicalEnergyInferred: false,
+    },
   };
   evaluation.merged.forEach(({ atom }) => {
     atom.clusterIds ||= [];
@@ -17774,6 +17881,9 @@ function materializeCandidate(candidate, evaluation) {
     copyReferenceScalarSpin(atom, site.referenceIndex);
     atom.clusterIds = [placement.id];
     atom.nucleusIds = [placement.nucleusId];
+    atom.createdByClusterId = placement.id;
+    atom.createdByRuleId = placement.ruleId;
+    atom.createdAtLeap = leapEventCount + 1;
     placement.atomIds.push(atom.id);
     placement.freshAtomIds.push(atom.id);
     indexAtom(atom);
@@ -18303,6 +18413,9 @@ function rebuildWorld() {
   clearGroup(nucleationGroup);
   clearGroup(frontierGroup);
   clearGroup(decisionGroup);
+  clearGroup(siteSelectionGroup);
+  siteProvenanceNext.hidden = pipelineStage === 3;
+  siteProvenanceNext.disabled = atoms.length === 0;
   if (pipelineStage === 4 && externalDriveMode !== "none") {
     const origin = placedClusters[0]?.position?.clone() || new THREE.Vector3();
     const extent = Math.max(4.5, ...atoms.map((atom) => atom.p.distanceTo(origin))) * .9;
@@ -18367,6 +18480,8 @@ function rebuildWorld() {
       mesh.setMatrixAt(index, dummy.matrix);
     });
     mesh.instanceMatrix.needsUpdate = true;
+    mesh.userData.atomIds = source.map((atom) => atom.id);
+    mesh.userData.siteProvenancePickable = true;
     atomGroup.add(mesh);
   };
   if (selectedIds) {
@@ -18386,6 +18501,7 @@ function rebuildWorld() {
       addInstances(atoms.filter((atom) => atom.species === symbol), getElementMaterial(symbol), (atom) => elementScale(atom.species));
     });
   }
+  renderSelectedSiteHighlight();
 
   const currentMismatch = localConstraintMismatchToggle.checked
     ? currentLocalConstraintMismatchField() : null;

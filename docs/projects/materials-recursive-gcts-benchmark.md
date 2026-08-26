@@ -5912,3 +5912,25 @@ This produces a controlled response of one encoded scoring term under recorded b
 conditions. The horizontal alignment is a discrete GCTS update count—not seconds—and
 the result does not identify a physical energy contribution, barrier, kinetic law,
 causal materials mechanism, or statistical effect across independent specimens.
+
+## Build 185: site-resolved provenance from the visible solid
+
+Build 185 makes every rendered atom auditable. Each instanced atom mesh carries only its
+live atom ID for picking; a raycast resolves that ID back to the authoritative explicit
+structure. A pure site-provenance transform then computes the position in ångströms,
+colored coordination and nearest distances from current sites, not from a target or a
+hidden reference configuration.
+
+The transform joins the selected atom to retained cluster placements. It reports whether
+the site was supplied or emitted, its creator cluster type and exact frozen rule, parent
+placement, causal depth, all overlapping cluster memberships, nucleus memberships, and
+interface status. Newly emitted atoms retain a compact creation record: marking score and
+gate, shared/fresh counts, contact-angle residual, composition and surface deltas, and
+loop-closure witness count. The selected atom receives a separate wireframe highlight;
+dragging still orbits, while a short click selects.
+
+This inspector is deliberately ephemeral. Its absolute coordinates are not persisted in
+the coordinate-free notebook or experiment receipt, and selection does not alter ranking,
+admission, geometry, or search. Local provenance supports scientific debugging of the
+geometric encoding; it is not a defect classifier, energy/force calculation, atomistic
+mechanism assignment, or causal explanation of growth.

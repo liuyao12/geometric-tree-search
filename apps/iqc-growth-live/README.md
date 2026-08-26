@@ -5256,3 +5256,19 @@ causal depth, accepted and rejected actions, geometric S(q) peak prominence, and
 q6/|psi6| order, together with frontier and comparison digests. This is a response of the
 encoded search model at a matched update horizon. It is not physical time, energy,
 kinetics, removal of a physical interaction, or proof of a causal physical mechanism.
+
+### Build 185 · click-to-audit site provenance
+
+The live 3D configuration is now a forensic materials view rather than a passive rendering.
+Clicking an atom opens a site-provenance microscope and highlights the exact selected site.
+The inspector distinguishes supplied/fitted seed sites from sites emitted by GCTS, reports
+the current Cartesian position in ångströms, exact colored neighbors within 1.45 observed
+nearest-neighbor spacings, and the nearest species-labelled distances.
+
+For generated sites it follows the retained cover graph back through creator cluster,
+frozen rule, parent placement, causal depth, cluster-overlap memberships, nucleus lineage,
+and multi-nucleus interface status. The creation card exposes the signed marking score,
+shared/emitted site counts, contact-angle residual, and independent loop witnesses frozen
+with that placement. Picking reads only the current explicit structure. Coordinates remain
+ephemeral and never enter the compact notebook or receipt; the panel does not infer an
+energy, force, defect identity, or physical mechanism from local geometry.
