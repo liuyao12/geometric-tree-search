@@ -398,6 +398,10 @@ const notebookState = $("notebookState");
 const notebookEntries = $("notebookEntries");
 const notebookComparison = $("notebookComparison");
 const notebookInterventionAudit = $("notebookInterventionAudit");
+const notebookPhysicsAudit = $("notebookPhysicsAudit");
+const notebookPhysicsFilters = $("notebookPhysicsFilters");
+const notebookPhysicsMatrix = $("notebookPhysicsMatrix");
+const notebookPhysicsDetail = $("notebookPhysicsDetail");
 const notebookTrajectoryAudit = $("notebookTrajectoryAudit");
 const notebookTrajectoryObservable = $("notebookTrajectoryObservable");
 const notebookTrajectoryHarmonics = $("notebookTrajectoryHarmonics");
@@ -950,6 +954,8 @@ let experimentNotebookEntries = [];
 let selectedNotebookEntryIds = [];
 let notebookTrajectoryMode = "series";
 let notebookTrajectoryHarmonic = 6;
+let notebookPhysicsFilter = "changed";
+let selectedNotebookPhysicsId = null;
 let notebookSweepFactorKey = null;
 let selectedStudyRecipeId = "bulk-order";
 let activeStudyRecipeId = null;
@@ -6686,7 +6692,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-152",
+      buildId: "20260826-153",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -8102,6 +8108,29 @@ function notebookRegisteredOutcomeObservations(receipt, trajectoryPoints, genera
   return values[recipeId] || {};
 }
 
+function notebookPhysicsManifest(structuralLeaps = []) {
+  const leap = structuralLeaps.at(-1);
+  const records = leap?.physicsTranslation;
+  if (!Array.isArray(records) || !records.length) return null;
+  return {
+    schema: 1,
+    sourceLeapIndex: leap.index,
+    sourceLeapStatus: leap.status,
+    records: records.map((record) => ({
+      id: record.id,
+      process: record.process,
+      status: record.status,
+      role: record.role,
+      encoding: record.encoding,
+      evidence: record.evidence,
+      boundary: record.boundary,
+    })),
+    coordinatesEmbedded: false,
+    targetUsed: leap.targetUsed === true,
+    physicalTimeModeled: false,
+  };
+}
+
 function experimentNotebookSummary(receipt) {
   const cover = receipt.cover?.inputAtoms ? receipt.cover : null;
   const search = receipt.search?.explicitSites === undefined ? null : receipt.search;
@@ -8193,6 +8222,7 @@ function experimentNotebookSummary(receipt) {
     strongestClaim,
     benchmarkGate: receipt.evidenceBoundary.benchmarkGate,
     executionEvidence,
+    physicsManifest: notebookPhysicsManifest(structuralLeaps),
     registeredOutcomeObservations: notebookRegisteredOutcomeObservations(receipt, trajectoryPoints,
       generatedSites, causalDepth),
     registeredStudy: receipt.studyDesign?.id ? {
@@ -8539,6 +8569,100 @@ function renderNotebookInterventionAudit(selected) {
     ? "Causal interpretation is limited to this recorded one-factor intervention; hidden experimental confounders are not excluded."
     : "Outcome deltas remain visible, but the portal does not attribute them causally.";
   notebookInterventionAudit.append(identity, factors, registeredCard, outcomes, boundary);
+}
+
+function notebookPhysicsComparison(first, second) {
+  const firstManifest = first?.physicsManifest;
+  const secondManifest = second?.physicsManifest;
+  const available = firstManifest?.schema === 1 && secondManifest?.schema === 1
+    && firstManifest.coordinatesEmbedded === false && secondManifest.coordinatesEmbedded === false
+    && firstManifest.targetUsed === false && secondManifest.targetUsed === false;
+  if (!available) return { available: false, records: [], configurationChanges: 0, responseChanges: 0, openCount: 0 };
+  const firstById = new Map(firstManifest.records.map((record) => [record.id, record]));
+  const secondById = new Map(secondManifest.records.map((record) => [record.id, record]));
+  const ids = [...new Set([...firstById.keys(), ...secondById.keys()])];
+  const records = ids.map((id) => {
+    const firstRecord = firstById.get(id) || null;
+    const secondRecord = secondById.get(id) || null;
+    const configurationChanged = !firstRecord || !secondRecord || firstRecord.status !== secondRecord.status
+      || firstRecord.role !== secondRecord.role || firstRecord.encoding !== secondRecord.encoding;
+    const responseChanged = firstRecord?.evidence !== secondRecord?.evidence;
+    const open = [firstRecord?.status, secondRecord?.status].some((status) => ["open", "unavailable"].includes(status));
+    return { id, process: firstRecord?.process || secondRecord?.process || id,
+      first: firstRecord, second: secondRecord, configurationChanged, responseChanged, open };
+  });
+  return { available: true, records,
+    configurationChanges: records.filter((record) => record.configurationChanged).length,
+    responseChanges: records.filter((record) => record.responseChanged).length,
+    openCount: records.filter((record) => record.open).length };
+}
+
+function renderNotebookPhysicsAudit(selected) {
+  notebookPhysicsMatrix.replaceChildren(); notebookPhysicsDetail.replaceChildren();
+  const heading = notebookPhysicsAudit.querySelector("header");
+  const title = heading.querySelector("strong"); const summary = heading.querySelector("span");
+  if (selected.length !== 2) {
+    notebookPhysicsAudit.className = "notebook-physics-audit waiting";
+    title.textContent = "select two executed runs";
+    summary.textContent = "The comparison uses coordinate-free manifests frozen with each structural leap.";
+    return;
+  }
+  const comparison = notebookPhysicsComparison(selected[0], selected[1]);
+  if (!comparison.available) {
+    notebookPhysicsAudit.className = "notebook-physics-audit unavailable";
+    title.textContent = "physics manifest unavailable";
+    summary.textContent = "At least one run predates Build 153, has no executed leap manifest, or fails the no-coordinate/no-target gate. Save both executed states again.";
+    return;
+  }
+  notebookPhysicsAudit.className = `notebook-physics-audit ${selected[0].inputIdentity === selected[1].inputIdentity ? "controlled" : "descriptive"}`;
+  title.textContent = `${comparison.configurationChanges} encoding change${comparison.configurationChanges === 1 ? "" : "s"} · ${comparison.responseChanges} response change${comparison.responseChanges === 1 ? "" : "s"}`;
+  summary.textContent = `${comparison.records.length} physical layers · ${comparison.openCount} open in at least one run · status/role/encoding define configuration; evidence defines response`;
+  notebookPhysicsFilters.querySelectorAll("button[data-notebook-physics-filter]").forEach((button) => {
+    const filter = button.dataset.notebookPhysicsFilter;
+    const count = filter === "all" ? comparison.records.length : filter === "changed"
+      ? comparison.configurationChanges : comparison.openCount;
+    button.textContent = `${filter === "open" ? "open boundary" : filter} · ${count}`;
+    button.classList.toggle("active", filter === notebookPhysicsFilter);
+    button.setAttribute("aria-pressed", String(filter === notebookPhysicsFilter));
+  });
+  const visible = comparison.records.filter((record) => notebookPhysicsFilter === "all"
+    || notebookPhysicsFilter === "changed" && record.configurationChanged
+    || notebookPhysicsFilter === "open" && record.open);
+  if (!visible.some((record) => record.id === selectedNotebookPhysicsId)) selectedNotebookPhysicsId = visible[0]?.id || null;
+  if (!visible.length) {
+    const empty = document.createElement("p");
+    empty.textContent = notebookPhysicsFilter === "changed"
+      ? "The two saved runs use the same physics-to-geometry manifest. Any response difference occurs within unchanged encodings."
+      : "No physical layer matches this filter.";
+    notebookPhysicsMatrix.append(empty); return;
+  }
+  visible.forEach((record) => {
+    const button = document.createElement("button"); button.type = "button";
+    button.className = `${record.configurationChanged ? "changed" : "same"}${record.id === selectedNotebookPhysicsId ? " active" : ""}`;
+    button.setAttribute("aria-pressed", String(record.id === selectedNotebookPhysicsId));
+    const process = document.createElement("strong"); process.textContent = record.process;
+    const states = document.createElement("span"); states.textContent = `${record.first?.status || "absent"} → ${record.second?.status || "absent"}`;
+    const badge = document.createElement("small"); badge.textContent = record.configurationChanged ? "encoding changed" : record.responseChanged ? "response changed" : "same";
+    button.append(process, states, badge);
+    button.addEventListener("click", () => { selectedNotebookPhysicsId = record.id; renderNotebookPhysicsAudit(selected); });
+    notebookPhysicsMatrix.append(button);
+  });
+  const selectedRecord = visible.find((record) => record.id === selectedNotebookPhysicsId) || visible[0];
+  const detailHeader = document.createElement("header");
+  const detailTitle = document.createElement("strong"); detailTitle.textContent = selectedRecord.process;
+  const detailState = document.createElement("span"); detailState.textContent = selectedRecord.configurationChanged ? "configuration changed" : selectedRecord.responseChanged ? "same encoding · response changed" : "same encoding and response";
+  detailHeader.append(detailTitle, detailState); notebookPhysicsDetail.append(detailHeader);
+  [["run 1", selectedRecord.first], ["run 2", selectedRecord.second]].forEach(([label, record]) => {
+    const column = document.createElement("section"); const headingElement = document.createElement("small"); headingElement.textContent = label;
+    const state = document.createElement("strong"); state.textContent = record ? `${record.status} · ${record.role}` : "absent";
+    const encoding = document.createElement("p"); encoding.textContent = record?.encoding || "No record in this manifest.";
+    const evidence = document.createElement("p"); evidence.textContent = record?.evidence || "No structural response recorded.";
+    const boundary = document.createElement("em"); boundary.textContent = record?.boundary || "No claim boundary recorded.";
+    column.append(headingElement, state, encoding, evidence, boundary); notebookPhysicsDetail.append(column);
+  });
+  const boundary = document.createElement("p");
+  boundary.textContent = "This compares recorded geometric encodings and their finite response evidence. It does not compare physical energies, infer omitted mechanisms, or align structural leaps to elapsed time.";
+  notebookPhysicsDetail.append(boundary);
 }
 
 function notebookTrajectoryComparison(first, second) {
@@ -9029,6 +9153,7 @@ function renderExperimentNotebook() {
   const selected = selectedNotebookEntryIds.map((id) => experimentNotebookEntries.find((entry) => entry.id === id)).filter(Boolean);
   notebookComparison.replaceChildren();
   renderNotebookInterventionAudit(selected);
+  renderNotebookPhysicsAudit(selected);
   renderNotebookTrajectoryAudit(selected);
   renderNotebookControlledSweep(experimentNotebookEntries);
   if (selected.length !== 2) {
@@ -18730,6 +18855,13 @@ clearNotebookButton.addEventListener("click", () => {
   renderStudyOutcome();
 });
 notebookTrajectoryObservable.addEventListener("change", renderExperimentNotebook);
+notebookPhysicsFilters.addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-notebook-physics-filter]");
+  if (!button) return;
+  const filter = button.dataset.notebookPhysicsFilter;
+  notebookPhysicsFilter = ["changed", "all", "open"].includes(filter) ? filter : "changed";
+  renderExperimentNotebook();
+});
 document.querySelectorAll("[data-notebook-trajectory-mode]").forEach((button) => button.addEventListener("click", () => {
   notebookTrajectoryMode = button.dataset.notebookTrajectoryMode;
   renderExperimentNotebook();

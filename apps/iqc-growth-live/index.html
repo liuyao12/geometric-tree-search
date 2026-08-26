@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260826-61">
+  <link rel="stylesheet" href="./style.css?v=20260826-62">
   <script type="importmap">
     {
       "imports": {
@@ -1246,6 +1246,16 @@
           <article id="notebookInterventionAudit" class="notebook-intervention-audit" aria-live="polite">
             <header><small>intervention audit</small><strong>select two runs</strong><span>input identity and changed assumptions will be checked before any causal comparison</span></header>
           </article>
+          <article id="notebookPhysicsAudit" class="notebook-physics-audit waiting" aria-live="polite">
+            <header><small>physics-manifest comparison</small><strong>select two executed runs</strong><span>hard constraints, learned evidence, declared hypotheses, diagnostics, and open boundaries will be compared without coordinates</span></header>
+            <div id="notebookPhysicsFilters" class="notebook-physics-filters" role="group" aria-label="Physics manifest comparison filter">
+              <button type="button" data-notebook-physics-filter="changed" aria-pressed="true">changed</button>
+              <button type="button" data-notebook-physics-filter="all" aria-pressed="false">all</button>
+              <button type="button" data-notebook-physics-filter="open" aria-pressed="false">open boundary</button>
+            </div>
+            <div id="notebookPhysicsMatrix" class="notebook-physics-matrix" role="group" aria-label="Compared physical information layers"></div>
+            <div id="notebookPhysicsDetail" class="notebook-physics-detail"></div>
+          </article>
           <article id="notebookTrajectoryAudit" class="notebook-trajectory-audit" aria-live="polite">
             <header><small>structural-leap comparison</small><strong>select two runs</strong><span>coordinate-free leap histories will be aligned by search update, never by physical time</span></header>
             <div class="notebook-trajectory-toolbar">
@@ -1542,7 +1552,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260826-152"></script>
+  <script type="module" src="./app.js?v=20260826-153"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>
