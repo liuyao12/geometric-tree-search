@@ -36,5 +36,5 @@ def test_inventory_is_visible_in_leaps_notebook_and_receipt():
     assert "chemicalPotentialInferred: false" in MODULE
     assert "physicalTimeModeled: false" in MODULE
     assert "Build 131" in README
-    assert 'buildId: "20260825-148"' in APP
-    assert 'app.js?v=20260825-148' in HTML
+    assert 'buildId: "20260825-149"' in APP
+    assert 'app.js?v=20260825-149' in HTML

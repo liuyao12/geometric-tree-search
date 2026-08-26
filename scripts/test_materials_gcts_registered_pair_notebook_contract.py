@@ -9,9 +9,9 @@ README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
 
 def test_registered_pair_notebook_contract():
-    assert 'buildId: "20260825-148"' in APP
-    assert 'app.js?v=20260825-148' in HTML
-    assert 'style.css?v=20260825-57' in HTML
+    assert 'buildId: "20260825-149"' in APP
+    assert 'app.js?v=20260825-149' in HTML
+    assert 'style.css?v=20260825-58' in HTML
 
     for field in ("question", "settings", "outcomes", "boundary", "autoExecuted"):
         assert field in APP[APP.index("registeredStudy:"):APP.index("physicalTimeModeled:", APP.index("registeredStudy:"))]
@@ -22,7 +22,6 @@ def test_registered_pair_notebook_contract():
     assert "intervention.sameInput" in APP
     assert "settingsStillMatch === true" in APP
     assert "autoExecuted === false" in APP
-    assert 'status: valid ? "registered" : "invalid"' in APP
     assert "notebook-registered-pair" in APP
     assert "notebook-registered-arms" in APP
     assert "notebook-registered-outcomes" in APP
@@ -31,6 +30,12 @@ def test_registered_pair_notebook_contract():
     assert "registered.boundary" in APP
     assert "registered pair unavailable" in APP
     assert "registered pair not certified" in APP
+    assert "const executionEvidence =" in APP
+    assert "totalStructuralLeapEvents > 0" in APP
+    assert 'status: responseComparable ? "registered" : valid ? "registered-unexecuted" : "invalid"' in APP
+    assert "registered design · execute both arms" in APP
+    assert "response-comparable" in APP
+    assert "outcome attribution awaits at least one structural leap or audited fixed point" in APP
 
     factors = APP[APP.index("function notebookInterventionFactors"):APP.index("function experimentNotebookSummary")]
     marking_factor = factors[factors.index('marking: { label: "GCTS marking"'):factors.index('ranking: { label: "frontier ranking"')]
@@ -41,6 +46,8 @@ def test_registered_pair_notebook_contract():
     assert "search.multiNucleusGrowth?.requestedNuclei" in factors
 
     for selector in (".notebook-intervention-audit.registered-pair", ".notebook-registered-pair.registered",
+                     ".notebook-intervention-audit.registered-pair.response-comparable",
+                     ".notebook-registered-pair.registered-unexecuted",
                      ".notebook-registered-arms", ".notebook-registered-outcomes"):
         assert selector in CSS
 
@@ -48,6 +55,7 @@ def test_registered_pair_notebook_contract():
     assert "exactly one recorded intervention" in README
     assert "Legacy,\nedited, same-arm, different-input, multi-factor" in README
     assert "Browser regression checks confirm that all eight" in README
+    assert "Build 149 separates a valid registered design from an executed response pair" in README
 
 
 if __name__ == "__main__":

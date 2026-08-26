@@ -6683,7 +6683,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-148",
+      buildId: "20260825-149",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -8052,6 +8052,18 @@ function experimentNotebookSummary(receipt) {
     ? "stationary structural production certified"
     : certificate?.state || receipt.evidenceBoundary.benchmarkGate || "structural evidence only";
   const structuralLeaps = search?.structuralLeapCertificates || [];
+  const totalStructuralLeapEvents = search?.structuralLeapHistory?.totalEvents ?? structuralLeaps.length;
+  const executionEvidence = {
+    stageEntered: Boolean(search),
+    executed: Boolean(search && totalStructuralLeapEvents > 0),
+    structuralLeapEvents: totalStructuralLeapEvents,
+    acceptedDecisions: search?.acceptedDecisions ?? 0,
+    rejectedDecisions: search?.rejectedDecisions ?? 0,
+    fixedPointObserved: structuralLeaps.some((leap) => leap.status === "fixed")
+      || certificate?.metrics?.fixedPointReached === true,
+    targetUsed: structuralLeaps.some((leap) => leap.targetUsed),
+    physicalTimeModeled: false,
+  };
   let cumulativeAccepted = 0; let cumulativeRejected = 0;
   const initialLeapState = structuralLeaps[0]?.before || {
     atoms: search?.explicitSites ?? receipt.input.atomCount, clusters: 0, frontier: 0,
@@ -8116,6 +8128,7 @@ function experimentNotebookSummary(receipt) {
     classificationConfidence: classification?.current?.confidence ?? 0,
     strongestClaim,
     benchmarkGate: receipt.evidenceBoundary.benchmarkGate,
+    executionEvidence,
     registeredStudy: receipt.studyDesign?.id ? {
       recipeId: receipt.studyDesign.id,
       recipeLabel: receipt.studyDesign.label,
@@ -8246,7 +8259,8 @@ function notebookRegisteredPairAudit(first, second, intervention = notebookInter
   const b = second.registeredStudy;
   const metadataAvailable = Boolean(a?.recipeId && b?.recipeId && a?.factor && b?.factor && a?.armId && b?.armId);
   if (!metadataAvailable) return {
-    status: "unavailable", valid: false, title: "registered pair unavailable",
+    status: "unavailable", valid: false, responseComparable: false, metadataAvailable: false,
+    title: "registered pair unavailable",
     detail: "At least one saved run predates the registered-arm receipt. Save both configured arms again to certify the pair.",
     question: a?.question || b?.question || null, factor: a?.factor || b?.factor || null,
     outcomes: a?.outcomes || b?.outcomes || [], boundary: a?.boundary || b?.boundary || null,
@@ -8262,6 +8276,11 @@ function notebookRegisteredPairAudit(first, second, intervention = notebookInter
   const oneRecordedFactor = intervention.sameInput && intervention.changedFactors.length === 1;
   const valid = sameRecipe && sameFactor && complementaryArms && settingsIntact && explicitlyPaused
     && metadataAgrees && oneRecordedFactor;
+  const referenceEntry = a.armId === "reference" ? first : second;
+  const contrastEntry = a.armId === "contrast" ? first : second;
+  const referenceExecuted = referenceEntry.executionEvidence?.executed === true;
+  const contrastExecuted = contrastEntry.executionEvidence?.executed === true;
+  const responseComparable = valid && referenceExecuted && contrastExecuted;
   const failed = [
     [sameRecipe, "same registered recipe"], [sameFactor, "same declared factor"],
     [complementaryArms, "reference + contrast arms"], [settingsIntact, "intact arm settings"],
@@ -8269,17 +8288,24 @@ function notebookRegisteredPairAudit(first, second, intervention = notebookInter
     [intervention.sameInput, "identical observed-input SHA-256"],
     [intervention.changedFactors.length === 1, "exactly one recorded intervention"],
   ].filter(([passes]) => !passes).map(([, label]) => label);
-  const reference = a.armId === "reference" ? a : b;
-  const contrast = a.armId === "contrast" ? a : b;
+  const reference = referenceEntry.registeredStudy;
+  const contrast = contrastEntry.registeredStudy;
+  const missingExecutions = [!referenceExecuted && "reference", !contrastExecuted && "contrast"].filter(Boolean);
   return {
-    status: valid ? "registered" : "invalid", valid,
-    title: valid ? "registered reference ↔ contrast pair" : "registered pair not certified",
-    detail: valid
-      ? `${a.factor} is the predeclared factor, the observed input is identical, and exactly one recorded intervention changed.`
+    status: responseComparable ? "registered" : valid ? "registered-unexecuted" : "invalid",
+    valid, responseComparable, metadataAvailable: true,
+    title: responseComparable ? "executed registered reference ↔ contrast pair"
+      : valid ? "registered design · execute both arms" : "registered pair not certified",
+    detail: responseComparable
+      ? `${a.factor} is the predeclared factor, both arms contain structural-leap evidence, and their observed input is identical.`
+      : valid
+        ? `The one-factor design is registered, but the ${missingExecutions.join(" and ")} arm${missingExecutions.length === 1 ? " has" : "s have"} no executed structural leap or audited fixed point.`
       : `Fail-closed checks: ${failed.join(" · ") || "registered metadata is incomplete"}.`,
     recipeId: a.recipeId, recipeLabel: a.recipeLabel, factor: a.factor, question: a.question,
     outcomes: [...(a.outcomes || [])], boundary: a.boundary,
     referenceLabel: reference.armLabel || "reference", contrastLabel: contrast.armLabel || "contrast",
+    referenceExecution: referenceEntry.executionEvidence || null,
+    contrastExecution: contrastEntry.executionEvidence || null,
     autoExecuted: false,
   };
 }
@@ -8392,6 +8418,7 @@ function renderNotebookInterventionAudit(selected) {
   const registered = notebookRegisteredPairAudit(selected[0], selected[1], audit);
   notebookInterventionAudit.className = `notebook-intervention-audit ${audit.status}`;
   notebookInterventionAudit.classList.toggle("registered-pair", registered.valid);
+  notebookInterventionAudit.classList.toggle("response-comparable", registered.responseComparable);
   title.textContent = audit.title;
   detail.textContent = audit.detail;
   const identity = document.createElement("div"); identity.className = "notebook-input-identity";
@@ -8428,7 +8455,10 @@ function renderNotebookInterventionAudit(selected) {
     const chip = document.createElement("span"); chip.textContent = outcome; registeredOutcomes.appendChild(chip);
   });
   const registeredBoundary = document.createElement("em");
-  registeredBoundary.textContent = `${registered.detail}${registered.boundary ? ` Claim boundary: ${registered.boundary}` : ""}`;
+  const executionReadout = registered.metadataAvailable
+    ? ` Execution evidence: reference ${registered.referenceExecution?.structuralLeapEvents || 0} leap${registered.referenceExecution?.structuralLeapEvents === 1 ? "" : "s"}; contrast ${registered.contrastExecution?.structuralLeapEvents || 0}.`
+    : "";
+  registeredBoundary.textContent = `${registered.detail}${executionReadout}${registered.boundary ? ` Claim boundary: ${registered.boundary}` : ""}`;
   registeredCard.append(registeredHeader, registeredQuestion, registeredArms, registeredOutcomes, registeredBoundary);
   const outcomes = document.createElement("div"); outcomes.className = "notebook-outcome-deltas";
   audit.outcomes.forEach((outcome) => {
@@ -8437,7 +8467,9 @@ function renderNotebookInterventionAudit(selected) {
     outcomes.appendChild(tile);
   });
   const boundary = document.createElement("p");
-  boundary.textContent = audit.causalAttributionAllowed
+  boundary.textContent = registered.valid && !registered.responseComparable
+    ? "The registered one-factor design passes, but outcome attribution awaits at least one structural leap or audited fixed point in each arm."
+    : audit.causalAttributionAllowed
     ? "Causal interpretation is limited to this recorded one-factor intervention; hidden experimental confounders are not excluded."
     : "Outcome deltas remain visible, but the portal does not attribute them causally.";
   notebookInterventionAudit.append(identity, factors, registeredCard, outcomes, boundary);

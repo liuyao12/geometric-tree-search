@@ -115,6 +115,18 @@ capacity no longer duplicates the selected search policy, and nucleus count is
 an explicit geometry factor. Browser regression checks confirm that all eight
 registered arm pairs resolve to exactly their declared single factor.
 
+Build 149 separates a valid registered design from an executed response pair.
+Every notebook summary now carries explicit search-stage evidence: whether the
+growth stage was entered, how many structural-leap records were produced, the
+accepted/rejected decision counts, and whether an audited finite fixed point
+was reached. The reference/contrast metadata may pass while the response gate
+remains amber; both arms must contain at least one structural leap (an accepted
+or rejected batch, or a zero-growth fixed-point audit) before observed outcome
+deltas become comparable. Merely navigating to material growth and saving two
+zero-event states no longer looks like a completed experiment. This is an
+execution-evidence gate, not a requirement that growth succeed, and it still
+does not turn structural leaps into physical time or dynamical trajectories.
+
 The right-hand **computational work laboratory** turns the scaling question into
 an explicit, inspectable comparison at 10×, 1,000×, and 100,000× the observed
 sample. It reports deterministic browser tree decisions and finite-neighborhood

@@ -16,12 +16,14 @@ const study = (armId, overrides = {}) => ({
   outcomes: ["accepted branches", "causal depth"],
   boundary: "Finite structural comparison only.", autoExecuted: false, ...overrides,
 });
-const entry = (armId, overrides = {}) => ({ registeredStudy: study(armId, overrides) });
+const entry = (armId, overrides = {}, executed = true) => ({ registeredStudy: study(armId, overrides),
+  executionEvidence: { executed, structuralLeapEvents: executed ? 2 : 0, fixedPointObserved: false } });
 const controlled = { sameInput: true, changedFactors: [{ key: "hierarchy", label: "hierarchy" }] };
 
 const passing = notebookRegisteredPairAudit(entry("reference"), entry("contrast"), controlled);
 assert.equal(passing.valid, true);
 assert.equal(passing.status, "registered");
+assert.equal(passing.responseComparable, true);
 assert.equal(passing.referenceLabel, "hierarchical");
 assert.equal(passing.contrastLabel, "primitive only");
 assert.deepEqual(passing.outcomes, ["accepted branches", "causal depth"]);
@@ -37,5 +39,10 @@ assert.equal(notebookRegisteredPairAudit(entry("reference"), entry("contrast"),
   { sameInput: false, changedFactors: [{}] }).valid, false, "different input geometry fails closed");
 assert.equal(notebookRegisteredPairAudit({}, entry("contrast"), controlled).status, "unavailable",
   "legacy summaries remain visibly uncertified");
+const unexecuted = notebookRegisteredPairAudit(entry("reference", {}, false), entry("contrast"), controlled);
+assert.equal(unexecuted.valid, true, "the registered experimental design remains valid");
+assert.equal(unexecuted.responseComparable, false, "an untouched arm has no comparable response");
+assert.equal(unexecuted.status, "registered-unexecuted");
+assert.match(unexecuted.detail, /reference arm has no executed structural leap/);
 
 console.log("registered study pair audit passed");
