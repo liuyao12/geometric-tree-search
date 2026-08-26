@@ -19,6 +19,9 @@ def test_identifiability_matrix_is_target_blind_and_candidate_frozen():
     assert "targetUsed: false" in MODULE
     assert "executed: false" in MODULE
     assert "unique candidate keys" in MODULE
+    assert "policyIdentifiabilityTrajectory" in MODULE
+    assert "candidatesRegenerated: false" in MODULE
+    assert "searchReplayed: false" in MODULE
 
 
 def test_matrix_reports_linear_and_rank_correlation_with_claim_boundaries():
@@ -41,7 +44,8 @@ def test_matrix_reports_linear_and_rank_correlation_with_claim_boundaries():
 def test_portal_exposes_interactive_matrix_and_receipt_audit():
     for identifier in ("policyIdentifiabilityState", "policyIdentifiabilityMatrix",
                        "policyIdentifiabilityDetail", "policyIdentifiabilityRaw",
-                       "policyIdentifiabilityConditional"):
+                       "policyIdentifiabilityConditional", "policyIdentifiabilityHistoryState",
+                       "policyIdentifiabilityHistory"):
         assert f'id="{identifier}"' in HTML
         assert f'$("{identifier}")' in APP
     assert "Are the geometry channels independent?" in HTML
@@ -52,13 +56,18 @@ def test_portal_exposes_interactive_matrix_and_receipt_audit():
     assert 'conditional: receiptPolicyIdentifiabilityMode' in APP
     assert "exact emitted species-labelled sites" in APP
     assert "frozen grammar / marking priority" in APP
+    assert "buildPolicyIdentifiabilityHistory" in APP
+    assert "renderPolicyIdentifiabilityHistory" in APP
+    assert "selectedHypothesisTrajectory:" in APP
+    assert "physicalTimeInferred: false" in APP
+    assert "mechanismPersistenceInferred: false" in APP
     assert ".policy-identifiability-matrix" in STYLE
-    assert "Build 179" in README
-    assert "Build 179" in DOCS
+    assert "Build 180" in README
+    assert "Build 180" in DOCS
 
 
-def test_build_179_assets_are_cache_busted():
-    assert 'buildId: "20260826-179"' in APP
-    assert 'app.js?v=20260826-179' in HTML
-    assert 'style.css?v=20260826-76' in HTML
-    assert 'policy-identifiability.js?v=20260826-2' in APP
+def test_build_180_assets_are_cache_busted():
+    assert 'buildId: "20260826-180"' in APP
+    assert 'app.js?v=20260826-180' in HTML
+    assert 'style.css?v=20260826-77' in HTML
+    assert 'policy-identifiability.js?v=20260826-3' in APP

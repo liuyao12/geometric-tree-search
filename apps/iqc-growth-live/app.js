@@ -18,8 +18,8 @@ import { assessGeometrySurrogatePromotion, evaluateFrozenGeometrySurrogate,
   geometryCalculationCalibration, geometryCalculationSurrogate, geometryReferenceIndices,
   geometrySurrogateCompatibilityDifferences, geometrySurrogateCompatibilityKey }
   from "./geometry-calculation-calibration.js?v=20260826-6";
-import { policyIdentifiabilityAudit }
-  from "./policy-identifiability.js?v=20260826-2";
+import { policyIdentifiabilityAudit, policyIdentifiabilityTrajectory }
+  from "./policy-identifiability.js?v=20260826-3";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -403,6 +403,8 @@ const policyIdentifiabilityRaw = $("policyIdentifiabilityRaw");
 const policyIdentifiabilityConditional = $("policyIdentifiabilityConditional");
 const policyIdentifiabilityMatrix = $("policyIdentifiabilityMatrix");
 const policyIdentifiabilityDetail = $("policyIdentifiabilityDetail");
+const policyIdentifiabilityHistoryState = $("policyIdentifiabilityHistoryState");
+const policyIdentifiabilityHistory = $("policyIdentifiabilityHistory");
 const policyParetoState = $("policyParetoState");
 const policyParetoX = $("policyParetoX");
 const policyParetoY = $("policyParetoY");
@@ -7883,7 +7885,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-179",
+      buildId: "20260826-180",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -9619,6 +9621,39 @@ async function buildExperimentReceipt() {
               claimBoundary: term.claimBoundary })),
           })),
         })),
+        selectedHypothesisTrajectory: (() => {
+          const selectedSnapshot = policyComparisonHistory[selectedPolicySnapshotIndex] || lastPolicyComparison;
+          const audit = buildPolicyIdentifiabilityAudit(selectedSnapshot);
+          const trajectory = buildPolicyIdentifiabilityHistory(selectedSnapshot, audit);
+          return trajectory ? {
+            role: "selected pair correlation through the retained immutable frontier archive",
+            mode: trajectory.mode,
+            firstTerm: { id: trajectory.firstId, label: trajectory.firstLabel },
+            secondTerm: { id: trajectory.secondId, label: trajectory.secondLabel },
+            storedFrontiers: trajectory.storedFrontiers,
+            availableFrontiers: trajectory.availableFrontiers,
+            unavailableFrontiers: trajectory.unavailableFrontiers,
+            nearRedundantFrontiers: trajectory.nearRedundantFrontiers,
+            locallyDistinctFrontiers: trajectory.locallyDistinctFrontiers,
+            signChanges: trajectory.signChanges,
+            longestNearRedundantRun: trajectory.longestNearRedundantRun,
+            points: trajectory.points.map((point) => ({ frontierIndex: point.frontierIndex,
+              candidateSetDigest: point.candidateSetDigest, auditDigest: point.auditDigest,
+              candidateCount: point.candidateCount, available: point.available,
+              pearson: point.pearson === null ? null : receiptRound(point.pearson),
+              spearman: point.spearman === null ? null : receiptRound(point.spearman),
+              classification: point.classification })),
+            candidateSetsChanged: trajectory.candidateSetsChanged,
+            candidatesRegenerated: trajectory.candidatesRegenerated,
+            searchReplayed: trajectory.searchReplayed,
+            coordinatesEmbedded: trajectory.coordinatesEmbedded,
+            targetUsed: trajectory.targetUsed,
+            executed: trajectory.executed,
+            physicalTimeInferred: false,
+            mechanismPersistenceInferred: false,
+            interpretation: trajectory.interpretation,
+          } : null;
+        })(),
       },
       finiteIceAnchorTrace: iceAnchorTrace ? {
         artifactDigest: iceAnchorTrace.artifactDigest,
@@ -13022,6 +13057,26 @@ function receiptPolicyIdentifiabilityMode(audit) {
     auditDigest: audit.auditDigest,
     interpretation: audit.interpretation,
   };
+}
+
+function buildPolicyIdentifiabilityHistory(snapshot, audit = buildPolicyIdentifiabilityAudit(snapshot)) {
+  if (!snapshot || !audit) return null;
+  const selectedIds = snapshot.identifiabilityPairKey?.split("::") || [];
+  const firstId = selectedIds[0] || audit.strongestPair?.firstId;
+  const secondId = selectedIds[1] || audit.strongestPair?.secondId;
+  if (!firstId || !secondId || firstId === secondId) return null;
+  const mode = audit.mode;
+  const records = policyComparisonHistory.map((historySnapshot) => ({
+    frontierIndex: historySnapshot.index,
+    candidateSetDigest: historySnapshot.candidateDigest,
+    audit: buildPolicyIdentifiabilityAudit(historySnapshot, mode),
+  }));
+  const trajectory = policyIdentifiabilityTrajectory(records, { firstId, secondId });
+  if (!trajectory) return null;
+  const labelFor = (id) => audit.terms.find((term) => term.id === id)?.label
+    || snapshot.workbenchCandidates[0]?.scoreTerms.find((term) => term.id === id)?.label || id;
+  return { ...trajectory, mode, firstLabel: labelFor(firstId), secondLabel: labelFor(secondId),
+    selectedHistoryIndex: policyComparisonHistory.indexOf(snapshot) };
 }
 
 function workbenchCandidateTerms(snapshot, candidate) {
@@ -20586,8 +20641,66 @@ function renderPolicyPhaseMap(snapshot) {
   });
 }
 
+function renderPolicyIdentifiabilityHistory(snapshot, audit) {
+  policyIdentifiabilityHistory.replaceChildren();
+  const trajectory = buildPolicyIdentifiabilityHistory(snapshot, audit);
+  if (!trajectory) {
+    policyIdentifiabilityHistoryState.textContent = "awaiting a selected pair";
+    return;
+  }
+  policyIdentifiabilityHistoryState.textContent = `${trajectory.availableFrontiers}/${trajectory.storedFrontiers} observed · ${trajectory.nearRedundantFrontiers} |ρ|≥.90 · ${trajectory.signChanges} sign changes`;
+  const namespace = "http://www.w3.org/2000/svg";
+  const make = (name, attributes = {}) => {
+    const element = document.createElementNS(namespace, name);
+    Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, String(value)));
+    return element;
+  };
+  const left = 24; const top = 7; const width = 208; const height = 66;
+  const x = (historyIndex) => left + width * (trajectory.storedFrontiers <= 1 ? .5
+    : historyIndex / (trajectory.storedFrontiers - 1));
+  const y = (correlation) => top + height * (1 - (correlation + 1) / 2);
+  [-1, 0, 1].forEach((value) => {
+    policyIdentifiabilityHistory.append(make("line", { x1: left, y1: y(value),
+      x2: left + width, y2: y(value), class: value === 0 ? "zero" : "grid" }));
+    const label = make("text", { x: left - 3, y: y(value) + 2, "text-anchor": "end", class: "axis-label" });
+    label.textContent = value === 1 ? "+1" : String(value); policyIdentifiabilityHistory.append(label);
+  });
+  let pathData = ""; let previousAvailable = false;
+  trajectory.points.forEach((point) => {
+    if (!point.available) { previousAvailable = false; return; }
+    pathData += `${previousAvailable ? " L" : " M"}${x(point.historyIndex).toFixed(2)} ${y(point.spearman).toFixed(2)}`;
+    previousAvailable = true;
+  });
+  if (pathData) policyIdentifiabilityHistory.append(make("path", { d: pathData.trim(), class: "trajectory" }));
+  trajectory.points.forEach((point) => {
+    if (!point.available) return;
+    const circle = make("circle", { cx: x(point.historyIndex), cy: y(point.spearman), r: 3.2,
+      tabindex: 0, role: "button", class: `${Math.abs(point.spearman) >= .9 ? "redundant" : Math.abs(point.spearman) <= .2 ? "distinct" : "related"}${point.historyIndex === trajectory.selectedHistoryIndex ? " selected" : ""}`,
+      "aria-label": `Frontier ${point.frontierIndex}; Spearman ${point.spearman.toFixed(3)}; ${point.classification}` });
+    const title = make("title");
+    title.textContent = `frontier ${point.frontierIndex} · n=${point.candidateCount} · ρ ${point.spearman.toFixed(4)} · r ${point.pearson.toFixed(4)} · ${point.candidateSetDigest}`;
+    circle.append(title);
+    const select = () => {
+      const historical = policyComparisonHistory[point.historyIndex]; if (!historical) return;
+      historical.identifiabilityMode = trajectory.mode;
+      historical.identifiabilityPairKey = `${trajectory.firstId}::${trajectory.secondId}`;
+      selectedPolicySnapshotIndex = point.historyIndex; selectedPolicyPreviewId = "active";
+      renderPolicyComparison();
+    };
+    circle.addEventListener("click", select);
+    circle.addEventListener("keydown", (event) => {
+      if (["Enter", " "].includes(event.key)) { event.preventDefault(); select(); }
+    });
+    policyIdentifiabilityHistory.append(circle);
+  });
+  const pairLabel = make("text", { x: left + width / 2, y: 88, "text-anchor": "middle", class: "pair-label" });
+  pairLabel.textContent = `${trajectory.firstLabel} ↔ ${trajectory.secondLabel} · ${trajectory.mode}`;
+  policyIdentifiabilityHistory.append(pairLabel);
+}
+
 function renderPolicyIdentifiabilityAudit(snapshot) {
   policyIdentifiabilityMatrix.replaceChildren(); policyIdentifiabilityDetail.replaceChildren();
+  policyIdentifiabilityHistory.replaceChildren();
   const mode = snapshot?.identifiabilityMode || "conditional";
   policyIdentifiabilityRaw.disabled = !snapshot; policyIdentifiabilityConditional.disabled = !snapshot;
   policyIdentifiabilityRaw.setAttribute("aria-pressed", String(mode === "raw"));
@@ -20603,6 +20716,7 @@ function renderPolicyIdentifiabilityAudit(snapshot) {
   const audit = buildPolicyIdentifiabilityAudit(snapshot);
   if (!audit) {
     policyIdentifiabilityState.textContent = "awaiting a frozen frontier";
+    policyIdentifiabilityHistoryState.textContent = "awaiting a selected pair";
     return;
   }
   if (!audit.terms.length) {
@@ -20610,6 +20724,7 @@ function renderPolicyIdentifiabilityAudit(snapshot) {
     const message = document.createElement("span");
     message.textContent = "No active target-blind score term varies across at least two candidates on this frontier.";
     policyIdentifiabilityDetail.append(message);
+    renderPolicyIdentifiabilityHistory(snapshot, audit);
     return;
   }
   const pairKey = (pair) => `${pair.firstId}::${pair.secondId}`;
@@ -20665,6 +20780,7 @@ function renderPolicyIdentifiabilityAudit(snapshot) {
       + " · no target, coordinates, candidate geometry, admission, fitting, or execution. Residual correlation does not establish causal or physical dependence.";
     policyIdentifiabilityDetail.append(heading, status, coefficients, boundary);
   }
+  renderPolicyIdentifiabilityHistory(snapshot, audit);
 }
 
 function selectPolicyParetoAxis(snapshot, axis, termId) {

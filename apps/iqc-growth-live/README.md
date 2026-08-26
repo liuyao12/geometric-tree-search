@@ -5176,3 +5176,18 @@ residual ranges, coefficients, exclusions, and independent audit digests are sto
 in the receipt. This answers whether two proxies remain locally inseparable after
 obvious structural scale is removed; it is still not causal adjustment, mechanism
 identification, an energy decomposition, or a physical independence test.
+
+### Build 180 · correlation through structural growth
+
+The selected raw or conditioned hypothesis pair now has a trajectory across the
+retained frozen-frontier archive. Every point is recomputed from the candidate rows
+stored at that structural update; unavailable terms remain visible as gaps. The plot
+reports observed/frontier coverage, near-redundant frontiers, sign changes, and the
+longest consecutive near-redundant run. Clicking a point navigates to that archived
+matrix without regenerating candidates, replaying search, or executing an action.
+
+The receipt stores the selected pair, mode, per-frontier candidate and audit digests,
+coefficients, gaps, run length, and false flags for target use, coordinate embedding,
+candidate regeneration, search replay, physical time, and mechanism persistence.
+This distinguishes transient from recurring score redundancy while remaining a
+descriptive structural-update history—not a kinetic time series or proof of mechanism.

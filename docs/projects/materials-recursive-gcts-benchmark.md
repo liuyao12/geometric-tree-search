@@ -5815,3 +5815,19 @@ weights, ranking, or execution. Receipts preserve both complete matrices, contro
 acceptance diagnostics, raw and residual spreads, and separate coordinate-free audit
 digests. The result is a local conditional-identifiability diagnostic—not proof that
 the controls remove all confounding, and not causal inference or thermodynamics.
+
+## Build 180: follow hypothesis separability through structural updates
+
+Build 180 promotes a selected identifiability-matrix cell into a trajectory over the
+retained frontier archive. Each point independently reads the immutable candidate
+ledger and uses the currently selected raw or conditional contract. Missing pair
+support creates a gap rather than an imputed coefficient. The summary reports
+coverage, `|ρ| ≥ 0.9` counts, locally distinct counts, observed sign changes, and the
+longest consecutive near-redundant run.
+
+Historical points are navigable counterfactual records: selecting one changes the
+inspected snapshot but does not regenerate candidates, replay search, mutate the
+solid, or execute the historical action. Receipt records include frontier and audit
+digests plus explicit false claims for physical time and mechanism persistence.
+The x-axis is discrete GCTS structural-update order, never seconds or an inferred
+growth rate.

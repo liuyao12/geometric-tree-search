@@ -188,3 +188,54 @@ export function policyIdentifiabilityAudit(candidates, {
       : "local rank identifiability on one frozen frontier; not causal or physical independence",
   };
 }
+
+export function policyIdentifiabilityTrajectory(records, { firstId, secondId } = {}) {
+  if (!Array.isArray(records) || !firstId || !secondId || firstId === secondId) return null;
+  const points = records.map((record, historyIndex) => {
+    const audit = record?.audit || null;
+    const pair = audit?.pairs?.find((entry) => !entry.diagonal
+      && ((entry.firstId === firstId && entry.secondId === secondId)
+        || (entry.firstId === secondId && entry.secondId === firstId)));
+    return {
+      historyIndex,
+      frontierIndex: record?.frontierIndex ?? historyIndex,
+      candidateSetDigest: audit?.candidateSetDigest || record?.candidateSetDigest || null,
+      auditDigest: audit?.auditDigest || null,
+      candidateCount: audit?.candidateCount || 0,
+      available: Boolean(pair && pair.pearson !== null && pair.spearman !== null),
+      pearson: pair?.pearson ?? null,
+      spearman: pair?.spearman ?? null,
+      classification: pair?.classification || "unavailable",
+    };
+  });
+  const available = points.filter((point) => point.available);
+  let signChanges = 0;
+  for (let index = 1; index < available.length; index++) {
+    if (Math.sign(available[index - 1].spearman) !== Math.sign(available[index].spearman)) signChanges++;
+  }
+  let longestNearRedundantRun = 0; let currentRun = 0; let previousHistoryIndex = null;
+  points.forEach((point) => {
+    if (point.available && Math.abs(point.spearman) >= .9
+        && (previousHistoryIndex === null || point.historyIndex === previousHistoryIndex + 1)) currentRun++;
+    else currentRun = point.available && Math.abs(point.spearman) >= .9 ? 1 : 0;
+    longestNearRedundantRun = Math.max(longestNearRedundantRun, currentRun);
+    previousHistoryIndex = point.available ? point.historyIndex : null;
+  });
+  return {
+    firstId, secondId, points,
+    storedFrontiers: points.length,
+    availableFrontiers: available.length,
+    unavailableFrontiers: points.length - available.length,
+    nearRedundantFrontiers: available.filter((point) => Math.abs(point.spearman) >= .9).length,
+    locallyDistinctFrontiers: available.filter((point) => Math.abs(point.spearman) <= .2).length,
+    signChanges,
+    longestNearRedundantRun,
+    candidateSetsChanged: false,
+    candidatesRegenerated: false,
+    searchReplayed: false,
+    coordinatesEmbedded: false,
+    targetUsed: false,
+    executed: false,
+    interpretation: "descriptive identifiability history over immutable frozen frontiers; not temporal dynamics or mechanism persistence",
+  };
+}

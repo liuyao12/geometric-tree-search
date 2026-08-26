@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
-import { policyIdentifiabilityAudit } from "../apps/iqc-growth-live/policy-identifiability.js";
+import { policyIdentifiabilityAudit, policyIdentifiabilityTrajectory }
+  from "../apps/iqc-growth-live/policy-identifiability.js";
 
 const term = (id, contribution, weight = 1) => ({ id, label: id, contribution, weight,
   role: "test geometry", claimBoundary: "not energy" });
@@ -54,4 +55,20 @@ assert.equal(conditioned.conditioningVariables[1].reason, "constant-or-collinear
 assert.notEqual(conditioned.auditDigest, rawConfounded.auditDigest);
 assert.match(conditioned.interpretation, /linear projection/);
 assert.throws(() => policyIdentifiabilityAudit(conditionalRows, { mode: "invented" }), /Unknown/);
+const trajectory = policyIdentifiabilityTrajectory([
+  { frontierIndex: 4, audit: rawConfounded },
+  { frontierIndex: 5, audit: conditioned },
+  { frontierIndex: 6, audit: null, candidateSetDigest: "gap" },
+  { frontierIndex: 7, audit: rawConfounded },
+], { firstId: "x", secondId: "y" });
+assert.equal(trajectory.storedFrontiers, 4);
+assert.equal(trajectory.availableFrontiers, 3);
+assert.equal(trajectory.unavailableFrontiers, 1);
+assert.equal(trajectory.signChanges, 2);
+assert.equal(trajectory.points[2].classification, "unavailable");
+assert.equal(trajectory.candidatesRegenerated, false);
+assert.equal(trajectory.searchReplayed, false);
+assert.equal(trajectory.targetUsed, false);
+assert.match(trajectory.interpretation, /not temporal dynamics/);
+assert.equal(policyIdentifiabilityTrajectory([], { firstId: "x", secondId: "x" }), null);
 console.log("policy identifiability audit passed");
