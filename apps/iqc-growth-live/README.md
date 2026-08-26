@@ -5340,3 +5340,12 @@ at finite surfaces, interfaces, or distorted local environments. It remains deli
 unnamed evidence: centrosymmetry alone does not identify a dislocation, vacancy, stacking
 fault, grain boundary, or other defect, nor does it provide formation energy, stress,
 force, mechanism, probability, or physical time.
+
+### Build 190 · atomic site-module release coherence
+
+Public verification found that the Build 189 HTML and main application were current while
+the browser could reuse an older cached site-comparison module. The older schema correctly
+failed rather than inventing centrosymmetry values, but it left the A/B panel hidden. Build
+190 assigns new immutable subresource versions to both the expanded provenance schema and
+the centrosymmetry-aware comparison schema. Release contracts now require those versions
+alongside the main application build, preventing a split-schema Pages deployment.

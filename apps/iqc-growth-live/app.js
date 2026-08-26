@@ -25,9 +25,9 @@ import { applyHypothesisSeparationMultipliers as applyFrozenHypothesisSeparation
   from "./hypothesis-separation.js?v=20260826-1";
 import { compareHypothesisSeparationOutcomes }
   from "./hypothesis-separation-outcome.js?v=20260826-1";
-import { buildSiteProvenance } from "./site-provenance.js?v=20260826-1";
+import { buildSiteProvenance } from "./site-provenance.js?v=20260826-2";
 import { buildSiteConstraintAudit } from "./site-constraint-audit.js?v=20260826-1";
-import { compareSiteEnvironments } from "./site-environment-comparison.js?v=20260826-1";
+import { compareSiteEnvironments } from "./site-environment-comparison.js?v=20260826-3";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -8197,7 +8197,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-189",
+      buildId: "20260826-190",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,

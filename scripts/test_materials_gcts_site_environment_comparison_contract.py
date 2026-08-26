@@ -54,10 +54,11 @@ def test_coordinate_free_claims_fail_closed():
     assert "does not establish neighbor correspondence, local isometry" in APP
 
 
-def test_build_189_assets_and_narrative():
-    assert 'buildId: "20260826-189"' in APP
-    assert 'app.js?v=20260826-189' in HTML
-    assert 'style.css?v=20260826-86' in HTML
-    assert 'site-environment-comparison.js?v=20260826-1' in APP
-    assert "Build 189" in README
-    assert "Build 189" in DOCS
+def test_build_190_assets_and_narrative():
+    assert 'buildId: "20260826-190"' in APP
+    assert 'app.js?v=20260826-190' in HTML
+    assert 'style.css?v=20260826-87' in HTML
+    assert 'site-environment-comparison.js?v=20260826-3' in APP
+    assert 'site-provenance.js?v=20260826-2' in APP
+    assert "Build 190" in README
+    assert "Build 190" in DOCS

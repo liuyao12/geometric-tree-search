@@ -46,9 +46,9 @@ def test_site_audit_keeps_claims_and_storage_bounded():
 
 
 def test_build_185_assets_and_narrative():
-    assert 'buildId: "20260826-189"' in APP
-    assert 'app.js?v=20260826-189' in HTML
-    assert 'style.css?v=20260826-86' in HTML
-    assert 'site-provenance.js?v=20260826-1' in APP
+    assert 'buildId: "20260826-190"' in APP
+    assert 'app.js?v=20260826-190' in HTML
+    assert 'style.css?v=20260826-87' in HTML
+    assert 'site-provenance.js?v=20260826-2' in APP
     assert "Build 185" in README
     assert "Build 185" in DOCS

@@ -6025,3 +6025,17 @@ portal therefore never converts it into a named defect, defect probability, form
 energy, stress, force, mechanism, rate, or physical time, and it remains target-free and
 posthoc. The Build 188 q/psi calculation was simultaneously corrected to use this same
 validated 1.32a structural shell rather than the broader 1.45a provenance-display reach.
+
+## Build 190: bind site provenance and comparison schemas to the release
+
+The first public Build 189 interaction exposed a cache-coherency failure rather than a
+scientific-computation failure. The main application expected the new `centrosymmetry`
+comparison record, but its import URL still named the earlier immutable module version.
+A cached module returned the older fail-closed schema, so dereferencing the missing record
+stopped A/B rendering before any value was displayed or persisted.
+
+Build 190 advances the provenance subresource version for the angle-shell schema and the
+comparison subresource version for the angular/orientational/centrosymmetry schema. Static
+release contracts bind both versions to the main build marker. Public QA must exercise a
+fresh A/B selection after deployment and observe the exact-shell inversion-asymmetry card;
+checking only the HTML or main script version is no longer accepted as evidence.
