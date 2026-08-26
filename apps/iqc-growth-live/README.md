@@ -66,6 +66,22 @@ comparison without erasing the measurements. The same coordinate-free audit,
 including the explicit no-target/no-potential/no-physical-time separation, is
 stored with the study design in the experiment receipt.
 
+Build 146 adds the recipe's actual **structural microscope** to that audit.
+The selected observable is evaluated as an explicit known-input → current-live
+comparison: dimension-aware Steinhardt `q_l` or planar `|psi_l|` mean and
+distribution distance, finite-window geometric `S(q)` peak position/height and
+spectral distance, or the RDF tail mean and RMS departure from unity. These are
+posthoc structural measurements only. No phase threshold is applied, none of
+the values enters candidate ranking, and the receipt preserves the exact
+definition and numerical before/after metrics. The cards reiterate that the
+powder average has unit scattering weights and no instrument response, local
+order is not a crystallinity probability, and an amorphous RDF has short-range
+peaks rather than being flat at every radius. The molecular-ice recipe evaluates
+`q6` on the oxygen-anchor sublattice at its own O–O nearest-neighbor scale,
+rather than mixing O and H positions at the O–H scale. Before the first emitted
+site, every microscope reports only its input baseline and explicitly refuses
+to present a small growth nucleus as an evolved material response.
+
 The right-hand **computational work laboratory** turns the scaling question into
 an explicit, inspectable comparison at 10×, 1,000×, and 100,000× the observed
 sample. It reports deterministic browser tree decisions and finite-neighborhood

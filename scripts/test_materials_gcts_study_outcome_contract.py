@@ -12,9 +12,9 @@ README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
 
 def test_study_outcome_contract() -> None:
-    assert 'buildId: "20260825-145"' in APP
-    assert 'app.js?v=20260825-145' in HTML
-    assert 'style.css?v=20260825-54' in HTML
+    assert 'buildId: "20260825-146"' in APP
+    assert 'app.js?v=20260825-146' in HTML
+    assert 'style.css?v=20260825-55' in HTML
     for element_id in (
         "studyOutcome", "studyOutcomeTitle", "studyOutcomeStatus",
         "studyOutcomeTiles", "studyOutcomeInterpretation",
@@ -22,10 +22,26 @@ def test_study_outcome_contract() -> None:
         assert f'id="{element_id}"' in HTML
 
     assert "function activeStudyOutcomeAudit" in APP
+    assert "function recipeStructuralResponse" in APP
     assert "function renderStudyOutcome" in APP
     audit = APP[APP.index("function activeStudyOutcomeAudit"):APP.index("function renderStudyOutcome")]
-    for evidence_layer in ("representation", "marking", "live", "benchmark"):
+    for evidence_layer in ("representation", "marking", "microscope", "live", "benchmark"):
         assert evidence_layer in audit
+    microscope = APP[APP.index("function recipeStructuralResponse"):APP.index("function activeStudyOutcomeAudit")]
+    assert 'selected === "order"' in microscope
+    assert 'selected === "sq"' in microscope
+    assert "rdfTailSummary" in microscope
+    assert "phaseThresholdApplied: false" in microscope
+    assert "usedAsGrowthInput: false" in microscope
+    assert "unit weights; no form factors" in microscope
+    assert "not crystallinity probability" in microscope
+    assert "approaches one only at long range" in microscope
+    assert "responseSites <= 0" in microscope
+    assert "growth nucleus is not treated as an outcome" in microscope
+    assert "Unresolved surface or sparse centers are excluded" in microscope
+    assert 'recipe.id === "molecular-ice"' in microscope
+    assert 'referenceAtoms.filter((atom) => atom.species === "O")' in microscope
+    assert 'scope: oxygenAnchorScope ? "oxygen-anchor sublattice"' in microscope
     for separation in (
         "liveResponseUsedToCertifyBenchmark: false",
         "benchmarkUsedToSelectLiveActions: false",
@@ -44,6 +60,10 @@ def test_study_outcome_contract() -> None:
     assert "predictionAudit: activeStudyOutcomeAudit()" in APP
     assert ".study-outcome-tiles" in CSS
     assert "Build 145 closes the guided study's scientific loop" in README
+    assert "Build 146 adds the recipe's actual" in README
+    assert "No phase threshold is applied" in README
+    assert "oxygen-anchor sublattice" in README
+    assert "refuses" in README and "growth nucleus" in README
     assert "continuation separately" in README and "from stationarity" in README
 
 

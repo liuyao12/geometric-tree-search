@@ -11,9 +11,9 @@ README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
 
 def test_study_guide_contract() -> None:
-    assert 'buildId: "20260825-145"' in APP
-    assert 'app.js?v=20260825-145' in HTML
-    assert 'style.css?v=20260825-54' in HTML
+    assert 'buildId: "20260825-146"' in APP
+    assert 'app.js?v=20260825-146' in HTML
+    assert 'style.css?v=20260825-55' in HTML
     for element_id in ("studyGuideButton", "studyGuide", "studyGuideClose",
                        "studyRecipeList", "studyRecipeDetail"):
         assert f'id="{element_id}"' in HTML
@@ -28,7 +28,9 @@ def test_study_guide_contract() -> None:
     assert "candidateGeometryAuthorized: false" in APP
     assert "settingsStillMatch" in APP
     assert "no growth has run" in APP
-    assert "studyDesign: activeStudyRecipeAudit()" in APP
+    assert "const studyDesign = activeStudyRecipeAudit();" in APP
+    assert "studyDesign: studyDesign ?" in APP
+    assert "predictionAudit: activeStudyOutcomeAudit()" in APP
     assert ".study-guide-shell" in CSS
     assert ".study-recipe-manifest" in CSS
     assert ".study-recipe-boundary" in CSS

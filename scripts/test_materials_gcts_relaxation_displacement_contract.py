@@ -66,8 +66,8 @@ def test_claim_boundary_does_not_turn_structure_differences_into_dynamics():
 
 
 def test_build_114_is_cache_busted():
-    assert 'buildId: "20260825-145"' in APP
-    assert 'app.js?v=20260825-145' in HTML
+    assert 'buildId: "20260825-146"' in APP
+    assert 'app.js?v=20260825-146' in HTML
 
 
 if __name__ == "__main__":

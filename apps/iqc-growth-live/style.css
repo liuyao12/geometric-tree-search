@@ -136,7 +136,7 @@ a { color: inherit; }
 .study-outcome > header b.progress { border-color: rgba(255,193,105,.43); color: #ffc169; }
 .study-outcome > header b.open { border-color: rgba(255,109,113,.35); color: #ff999c; }
 .study-outcome > header b.edited { border-color: rgba(255,193,105,.43); color: #ffc169; }
-.study-outcome-tiles { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--line); }
+.study-outcome-tiles { display: grid; grid-template-columns: repeat(5,1fr); gap: 1px; background: var(--line); }
 .study-outcome-tiles article { min-width: 0; padding: 10px 11px 11px; background: rgba(5,16,17,.94); box-shadow: inset 0 2px transparent; }
 .study-outcome-tiles article.pass { box-shadow: inset 0 2px rgba(101,225,188,.72); }
 .study-outcome-tiles article.progress { box-shadow: inset 0 2px rgba(255,193,105,.72); }

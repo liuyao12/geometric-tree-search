@@ -6625,7 +6625,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-145",
+      buildId: "20260825-146",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -13241,6 +13241,116 @@ async function copyShareableStudyUrl() {
   receiptStatus.textContent = `Study link copied · recipe schema v1 · paused stage ${pipelineStage}.`;
 }
 
+function recipeStructuralResponse(recipe, growthCertificate = null) {
+  const selected = recipe.observable;
+  const harmonic = recipe.harmonic;
+  const oxygenAnchorScope = recipe.id === "molecular-ice";
+  const referenceScopeAtoms = oxygenAnchorScope
+    ? referenceAtoms.filter((atom) => atom.species === "O") : referenceAtoms;
+  const scopeSpacing = oxygenAnchorScope && referenceScopeAtoms.length > 1
+    ? medianNearestSpacing(referenceScopeAtoms) : referenceSpacing;
+  const microscopeReferenceStats = oxygenAnchorScope && referenceScopeAtoms.length > 1
+    ? calculateStructuralStats(referenceScopeAtoms, scopeSpacing, false, 3) : referenceStructuralStats;
+  const dimension = microscopeReferenceStats?.dimension || currentMaterial().intrinsicDimension || 3;
+  const symbol = dimension === 2 ? `|ψ${harmonic}|` : `q${harmonic}`;
+  const stagedLabel = selected === "sq" ? "geometric S(q)" : selected === "order" ? symbol : `g${dimension}D(r)`;
+  const base = { selected, harmonic, dimension, usedAsGrowthInput: false, phaseThresholdApplied: false,
+    scope: oxygenAnchorScope ? "oxygen-anchor sublattice" : "all displayed species",
+    physicalPotentialUsed: false, targetCoordinatesUsed: false };
+  if (pipelineStage < 4 || !microscopeReferenceStats) return {
+    ...base, status: "open", title: `${stagedLabel} staged`,
+    detail: "Input → current comparison begins only in material growth.",
+    metrics: null, boundary: "No structural response has been evaluated.",
+  };
+  if (currentMaterial().growthWithheld) return {
+    ...base, status: "open", title: `${stagedLabel} withheld`,
+    detail: "The occupational average is retained; no unique live structure is invented.",
+    metrics: null, boundary: "Average-site scattering or order is not a realized molecular microstate.",
+  };
+  const responseSites = Number(growthCertificate?.metrics?.emittedSites
+    || growthCertificate?.metrics?.generatedStructuralSites || 0);
+  if (responseSites <= 0) {
+    if (selected === "order") {
+      const known = ensureOrientationalOrder(microscopeReferenceStats, harmonic);
+      return { ...base, status: "open", title: `${symbol} baseline ${known.mean.toFixed(3)} · response pending`,
+        detail: `${known.count} resolved input ${oxygenAnchorScope ? "oxygen" : ""} centers · the growth nucleus is not treated as an outcome`,
+        metrics: { knownMean: known.mean, currentMean: null, knownResolvedCenters: known.count, responseSites: 0 },
+        boundary: "No emitted structural site exists; a seed-size effect is not reported as material evolution." };
+    }
+    if (selected === "sq") {
+      const known = ensureStructureFactor(microscopeReferenceStats);
+      return { ...base, status: "open", title: `S(q) baseline ${known.summary.peakHeight.toFixed(2)} · response pending`,
+        detail: `peak q·a ${known.summary.peakQ.toFixed(2)} · the growth nucleus is not compared with the full input`,
+        metrics: { knownPeakQ: known.summary.peakQ, knownPeakHeight: known.summary.peakHeight,
+          currentPeakQ: null, currentPeakHeight: null, responseSites: 0 },
+        boundary: "No emitted structural site exists; finite-window seed scattering is not reported as material evolution." };
+    }
+    const known = rdfTailSummary(microscopeReferenceStats.rdf);
+    return { ...base, status: "open", title: `RDF baseline ⟨g⟩ ${known.mean.toFixed(3)} · response pending`,
+      detail: `tail RMS from unity ${known.rmsFromUnity.toFixed(3)} · the growth nucleus is not treated as an outcome`,
+      metrics: { knownTailMean: known.mean, knownTailRmsFromUnity: known.rmsFromUnity,
+        currentTailMean: null, currentTailRmsFromUnity: null, responseSites: 0 },
+      boundary: "No emitted structural site exists; a nucleus-size RDF is not reported as material evolution." };
+  }
+  const live = oxygenAnchorScope ? (() => {
+    const source = atoms.filter((atom) => atom.species === "O");
+    const window = source.length > ANALYSIS_WINDOW_COUNT
+      ? [...source].sort((first, second) => first.p.lengthSq() - second.p.lengthSq()).slice(0, ANALYSIS_WINDOW_COUNT)
+      : source;
+    return calculateStructuralStats(window, scopeSpacing, false, 3, microscopeReferenceStats.maximumRadius);
+  })() : currentLiveStructure().stats;
+  if (!live?.count || live.count < 2) return {
+    ...base, status: "open", title: `${stagedLabel} unavailable`,
+    detail: "At least two live structural sites are required.", metrics: null,
+    boundary: "No phase inference is made from an empty or singleton window.",
+  };
+  if (selected === "order") {
+    const known = ensureOrientationalOrder(microscopeReferenceStats, harmonic);
+    const current = ensureOrientationalOrder(live, harmonic);
+    if (!current.count) return {
+      ...base, status: "open", title: `${symbol} unresolved in the current finite window`,
+      detail: `${responseSites} emitted sites · no center has the required first-shell neighbor count`,
+      metrics: { knownMean: known.mean, currentMean: null, knownResolvedCenters: known.count,
+        currentResolvedCenters: 0, responseSites },
+      boundary: "Unresolved surface or sparse centers are excluded rather than assigned zero local order.",
+    };
+    const distributionDistance = known.histogram.length === current.histogram.length
+      ? jensenShannonDistance(known.histogram, current.histogram) : null;
+    return {
+      ...base, status: "progress", title: `${symbol} mean ${known.mean.toFixed(3)} → ${current.mean.toFixed(3)}`,
+      detail: `${known.count} → ${current.count} resolved centers · distribution distance ${distributionDistance?.toFixed(3) ?? "—"}`,
+      metrics: { knownMean: known.mean, currentMean: current.mean, meanDelta: current.mean - known.mean,
+        knownResolvedCenters: known.count, currentResolvedCenters: current.count, distributionDistance },
+      boundary: `${symbol} is a rotation-invariant local geometric descriptor, not crystallinity probability, free energy, or a phase label.`,
+    };
+  }
+  if (selected === "sq") {
+    const known = ensureStructureFactor(microscopeReferenceStats);
+    const current = ensureStructureFactor(live);
+    const comparison = compareStructureFactors(known, current);
+    return {
+      ...base, status: "progress",
+      title: `S(q) peak ${known.summary.peakHeight.toFixed(2)} → ${current.summary.peakHeight.toFixed(2)}`,
+      detail: `q·a ${known.summary.peakQ.toFixed(2)} → ${current.summary.peakQ.toFixed(2)} · spectral distance ${comparison.spectralShapeDistance.toFixed(3)}`,
+      metrics: { knownPeakQ: known.summary.peakQ, currentPeakQ: current.summary.peakQ,
+        knownPeakHeight: known.summary.peakHeight, currentPeakHeight: current.summary.peakHeight,
+        knownPeakProminence: known.summary.peakProminence, currentPeakProminence: current.summary.peakProminence,
+        spectralShapeDistance: comparison.spectralShapeDistance },
+      boundary: "Finite-observation geometric powder average with unit weights; no form factors, Debye–Waller damping, or instrument response.",
+    };
+  }
+  const known = rdfTailSummary(microscopeReferenceStats.rdf);
+  const current = rdfTailSummary(live.rdf);
+  return {
+    ...base, status: "progress", title: `RDF tail ⟨g⟩ ${known.mean.toFixed(3)} → ${current.mean.toFixed(3)}`,
+    detail: `RMS from unity ${known.rmsFromUnity.toFixed(3)} → ${current.rmsFromUnity.toFixed(3)} · ${live.count} live sites`,
+    metrics: { knownTailMean: known.mean, currentTailMean: current.mean,
+      knownTailRmsFromUnity: known.rmsFromUnity, currentTailRmsFromUnity: current.rmsFromUnity,
+      pairSelection: "all", edgeCorrection: live.edgeCorrection },
+    boundary: "An amorphous RDF retains short-range peaks and approaches one only at long range; this finite tail is not a flat-RDF or phase criterion.",
+  };
+}
+
 function activeStudyOutcomeAudit(growthCertificate = undefined) {
   const recipe = MATERIALS_STUDY_RECIPES.find((entry) => entry.id === activeStudyRecipeId) || null;
   if (!recipe) return null;
@@ -13267,6 +13377,7 @@ function activeStudyOutcomeAudit(growthCertificate = undefined) {
   const stationaryCrystalControl = recipe.id === "bulk-order" && benchmark.status === "pass";
   const amorphousControlConsistent = recipe.id === "glass-control" && benchmark.gate === "negative control";
   const settingsMatch = Boolean(recipeAudit?.settingsStillMatch);
+  const microscope = recipeStructuralResponse(recipe, certificate);
 
   const representation = !coverAvailable ? {
     status: "open", title: "Cover not inspected", detail: `${knownSites.toLocaleString()} supplied sites · no cluster conclusion yet`,
@@ -13347,7 +13458,7 @@ function activeStudyOutcomeAudit(growthCertificate = undefined) {
   return {
     recipeId: recipe.id, status, tone, title, relationship, interpretation,
     prediction: recipe.prediction, settingsStillMatch: settingsMatch,
-    evidence: { representation, marking, live, benchmark: benchmarkRecord },
+    evidence: { representation, marking, microscope, live, benchmark: benchmarkRecord },
     metrics: { knownSites, coveredSites, coverComplete, supportTypes, residualTypes,
       markingSamples: markingPoint?.samples || 0, markingSampleTarget: sampleTarget, markingFrozen,
       emittedSites, continuationSites, causalDepth, finiteResponseObserved },
@@ -13367,7 +13478,8 @@ function renderStudyOutcome(growthCertificate = undefined) {
   studyOutcomeTiles.replaceChildren(...Object.entries(outcome.evidence).map(([id, record]) => {
     const article = document.createElement("article"); article.className = record.status;
     const label = document.createElement("small"); label.textContent = ({ representation: "01 · representation",
-      marking: "02 · marking", live: "03 · live response", benchmark: "04 · independent benchmark" })[id];
+      marking: "02 · marking", microscope: "03 · structural microscope",
+      live: "04 · live response", benchmark: "05 · independent benchmark" })[id];
     const titleElement = document.createElement("strong"); titleElement.textContent = record.title;
     const detail = document.createElement("span"); detail.textContent = record.detail;
     article.append(label, titleElement, detail); return article;
