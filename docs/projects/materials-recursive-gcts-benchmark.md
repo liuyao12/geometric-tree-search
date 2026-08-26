@@ -6115,3 +6115,27 @@ Runtime QA also found an older JavaScript scope error in the ionic-pair/bond-val
 workbench: several renderers used a signed-number formatter defined only inside another
 function. Build 193 promotes that pure formatter to shared application scope, preventing
 the diagnostics from interrupting the post-leap UI update.
+
+## Build 194: relate creation-time geometry channels to later local response
+
+Build 194 connects the Build 191 decision ledger to the Build 192/193 response evidence at
+the action-population level. The naive unit would be an emitted atom, but every atom from a
+whole-cluster action shares the same creation decision; treating those atoms as independent
+would multiply the apparent sample size. The portal therefore constructs exactly one record
+per accepted placement. Site-level center displacement, radial drift, √D²min, shell change,
+equivalent shear, and absolute local volume response are averaged within their owning action.
+
+For each nonzero-weight creation term and selected response, the portal computes Spearman
+rank correlation when at least four grouped placements contain finite values and variation
+in both axes. Constant channels fail closed. The interactive plot highlights the selected
+site's owning placement, and term buttons expose the strongest descriptive associations.
+Only the most recent 256 eligible placements are admitted to bound interactive work; the
+display reports grouped placement count separately from aggregated atom presentations.
+
+The default four-update NaCl runtime regression reaches the 216/216 known-window certificate
+without page errors. It provides 90 whole-cluster samples and 209 site-response presentations.
+Non-affine residual is constant and correctly unavailable. Shell membership change varies;
+the strongest displayed term is surface completion with Spearman ρ = −0.58325, followed by
+composition and formal-charge balance. These values are a deterministic within-run diagnostic,
+not causal effects, calibrated forecasts, independent material samples, energies, kinetics,
+or statistically generalizable coefficients.

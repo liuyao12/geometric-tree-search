@@ -32,6 +32,8 @@ import { buildSiteCreationPhysicsAudit } from "./site-creation-physics-audit.js?
 import { buildSiteCreationResponse } from "./site-creation-response.js?v=20260826-1";
 import { appendSiteStructuralHistory, summarizeSiteStructuralHistory }
   from "./site-structural-history.js?v=20260826-1";
+import { buildCreationResponseAssociation }
+  from "./creation-response-association.js?v=20260826-1";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -555,6 +557,11 @@ const siteStructuralHistoryState = $("siteStructuralHistoryState");
 const siteStructuralHistoryPlot = $("siteStructuralHistoryPlot");
 const siteStructuralHistorySteps = $("siteStructuralHistorySteps");
 const siteStructuralHistoryBoundary = $("siteStructuralHistoryBoundary");
+const sitePopulationResponseState = $("sitePopulationResponseState");
+const sitePopulationResponseOutcome = $("sitePopulationResponseOutcome");
+const sitePopulationResponsePlot = $("sitePopulationResponsePlot");
+const sitePopulationResponseTerms = $("sitePopulationResponseTerms");
+const sitePopulationResponseBoundary = $("sitePopulationResponseBoundary");
 const unitCellBadge = $("unitCellBadge");
 const captionAction = $("captionAction");
 const processTimeline = $("processTimeline");
@@ -999,6 +1006,12 @@ siteComparisonClear.addEventListener("click", () => {
   siteEnvironmentComparison.hidden = true;
   renderSelectedSiteHighlight();
 });
+sitePopulationResponseOutcome.addEventListener("change", () => {
+  selectedPopulationResponseOutcome = sitePopulationResponseOutcome.value;
+  selectedPopulationResponseTermId = null;
+  const atom = atoms.find((entry) => entry.id === selectedSiteId);
+  if (atom) renderPopulationResponseAssociation(atom);
+});
 function cycleInspectedSite() {
   if (!atoms.length) return;
   const current = atoms.findIndex((atom) => atom.id === selectedSiteId);
@@ -1235,6 +1248,8 @@ let selectedLeapIndex = -1;
 let leapEventCount = 0;
 let siteStructuralHistories = new Map();
 let pendingSiteHistoryIds = new Set();
+let selectedPopulationResponseOutcome = "nonaffine";
+let selectedPopulationResponseTermId = null;
 let multiscalePathwayHarmonic = 6;
 let selectedLeapPhysicsId = "steric";
 let selectedLeapPhysicsFilter = "all";
@@ -3682,6 +3697,88 @@ function renderSiteStructuralHistory(atom) {
   siteStructuralHistoryBoundary.textContent = `Affected-shell snapshots only · unchanged checks are deduplicated · at most ${MAXIMUM_RETAINED_STRUCTURAL_LEAPS} states retained. Leap index is search order, not physical time; the pathway does not integrate forces, energy, rates, or dynamics.`;
 }
 
+function finiteMean(values) {
+  const finite = values.filter(Number.isFinite);
+  return finite.length ? finite.reduce((sum, value) => sum + value, 0) / finite.length : null;
+}
+
+function creationResponseAssociationRecords() {
+  return placedClusters.filter((placement) => placement.decisionEvidence?.physicsTerms?.length
+    && placement.freshAtomIds?.length).slice(-256).map((placement) => {
+    const responses = placement.freshAtomIds.map((siteId) => atoms.find((atom) => atom.id === siteId))
+      .filter((atom) => atom?.creationGeometry).map(selectedSiteCreationResponse).filter((response) => response.available);
+    return {
+      placementId: placement.id, emittedSites: responses.length,
+      physicsTerms: placement.decisionEvidence.physicsTerms,
+      outcomes: {
+        nonaffine: finiteMean(responses.map((response) => response.rootD2MinAngstrom)),
+        radialDrift: finiteMean(responses.map((response) => response.radialRmsAngstrom)),
+        shellChange: finiteMean(responses.map((response) => response.gainedNeighborCount + response.lostNeighborCount)),
+        centerDisplacement: finiteMean(responses.map((response) => response.centerDisplacementAngstrom)),
+        equivalentShear: finiteMean(responses.map((response) => response.equivalentShearStrain)),
+        absoluteVolumeResponse: finiteMean(responses.map((response) => Number.isFinite(response.localVolumeChangeFraction)
+          ? Math.abs(response.localVolumeChangeFraction) : null)),
+      },
+    };
+  }).filter((record) => record.emittedSites > 0);
+}
+
+const POPULATION_RESPONSE_LABELS = Object.freeze({
+  nonaffine: "mean √D²min (Å)", radialDrift: "mean radial drift (Å)",
+  shellChange: "mean gained + lost neighbors", centerDisplacement: "mean center displacement (Å)",
+  equivalentShear: "mean equivalent shear", absoluteVolumeResponse: "mean |local ΔV/V|",
+});
+
+function renderPopulationResponseAssociation(atom) {
+  const audit = buildCreationResponseAssociation(creationResponseAssociationRecords());
+  sitePopulationResponsePlot.replaceChildren(); sitePopulationResponseTerms.replaceChildren();
+  sitePopulationResponseOutcome.value = selectedPopulationResponseOutcome;
+  const outcomeAssociations = audit.associations.filter((entry) => entry.outcomeId === selectedPopulationResponseOutcome);
+  if (!audit.available || !outcomeAssociations.length) {
+    sitePopulationResponseState.textContent = `${audit.placementSamples} grouped placement${audit.placementSamples === 1 ? "" : "s"} · variation/sample support unavailable`;
+    sitePopulationResponseBoundary.textContent = "At least four whole-cluster placements with variation in both an active creation term and the selected later response are required; no association is invented.";
+    return;
+  }
+  if (!outcomeAssociations.some((entry) => entry.termId === selectedPopulationResponseTermId)) {
+    selectedPopulationResponseTermId = outcomeAssociations[0].termId;
+  }
+  const selected = outcomeAssociations.find((entry) => entry.termId === selectedPopulationResponseTermId);
+  sitePopulationResponseState.textContent = `${audit.placementSamples} placements · ${audit.emittedSitePresentations} site responses · ρ ${selected.spearmanRho >= 0 ? "+" : ""}${selected.spearmanRho.toFixed(3)}`;
+  outcomeAssociations.slice(0, 8).forEach((association) => {
+    const button = document.createElement("button"); button.type = "button";
+    button.classList.toggle("active", association.termId === selected.termId);
+    const label = document.createElement("small"); label.textContent = association.termLabel;
+    const value = document.createElement("strong"); value.textContent = `ρ ${association.spearmanRho >= 0 ? "+" : ""}${association.spearmanRho.toFixed(3)}`;
+    const detail = document.createElement("em"); detail.textContent = `${association.sampleCount} placement actions`;
+    button.append(label, value, detail); button.addEventListener("click", () => {
+      selectedPopulationResponseTermId = association.termId; renderPopulationResponseAssociation(atom);
+    }); sitePopulationResponseTerms.append(button);
+  });
+  const left = 27; const top = 9; const width = 232; const height = 69;
+  const xs = selected.points.map((point) => point.x); const ys = selected.points.map((point) => point.y);
+  const xMinimum = Math.min(...xs); const xMaximum = Math.max(...xs);
+  const yMinimum = Math.min(...ys); const yMaximum = Math.max(...ys);
+  const px = (value) => left + width * (xMaximum === xMinimum ? .5 : (value - xMinimum) / (xMaximum - xMinimum));
+  const py = (value) => top + height * (1 - (yMaximum === yMinimum ? .5 : (value - yMinimum) / (yMaximum - yMinimum)));
+  sitePopulationResponsePlot.append(svgNode("line", { x1: left, y1: top + height, x2: left + width,
+    y2: top + height, class: "site-association-axis" }), svgNode("line", { x1: left, y1: top,
+    x2: left, y2: top + height, class: "site-association-axis" }));
+  selected.points.forEach((point) => {
+    const highlighted = atom.createdByClusterId === point.placementId;
+    const circle = svgNode("circle", { cx: px(point.x), cy: py(point.y), r: highlighted ? 4 : 2.6,
+      class: `site-association-point${highlighted ? " selected" : ""}` });
+    const title = svgNode("title", {}, `placement ${point.placementId} · contribution ${point.x.toFixed(4)} · response ${point.y.toFixed(4)} · ${point.emittedSites} sites`);
+    circle.append(title); sitePopulationResponsePlot.append(circle);
+  });
+  const xLabel = svgNode("text", { x: left + width, y: 91, class: "site-association-label", "text-anchor": "end" },
+    `${selected.termLabel} contribution →`);
+  const yLabel = svgNode("text", { x: 7, y: top + height / 2, class: "site-association-label", "text-anchor": "middle",
+    transform: `rotate(-90 7 ${top + height / 2})` }, POPULATION_RESPONSE_LABELS[selectedPopulationResponseOutcome]);
+  sitePopulationResponsePlot.append(xLabel, yLabel);
+  sitePopulationResponsePlot.setAttribute("aria-label", `${selected.sampleCount} whole-cluster placements: ${selected.termLabel} contribution versus ${POPULATION_RESPONSE_LABELS[selectedPopulationResponseOutcome]}, Spearman rho ${selected.spearmanRho}`);
+  sitePopulationResponseBoundary.textContent = `One grouped sample per accepted whole-cluster placement; ${audit.emittedSitePresentations} atom responses are aggregated, not treated as independent. Spearman ρ is descriptive within this finite deterministic run—not a causal effect, calibrated predictor, energy relation, kinetic law, or independent-material statistic.`;
+}
+
 function inspectSite(atom) {
   selectedSiteId = atom.id;
   const snapshot = siteProvenanceSnapshot(atom);
@@ -3710,6 +3807,7 @@ function inspectSite(atom) {
   renderSiteCreationPhysicsAudit(snapshot.decisionEvidence);
   renderSiteCreationResponse(selectedSiteCreationResponse(atom));
   renderSiteStructuralHistory(atom);
+  renderPopulationResponseAssociation(atom);
   const pinnedAtom = atoms.find((entry) => entry.id === pinnedSiteId);
   if (pinnedAtom && pinnedAtom.id !== atom.id) renderSiteEnvironmentComparison(pinnedAtom, atom);
   else siteEnvironmentComparison.hidden = true;
@@ -8351,7 +8449,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-193",
+      buildId: "20260826-194",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -17831,6 +17929,7 @@ function resetCounters() {
   leapEventCount = 0;
   siteStructuralHistories = new Map();
   pendingSiteHistoryIds = new Set();
+  selectedPopulationResponseTermId = null;
   selectedLeapPhysicsId = "steric";
   frozenPhysicsPreflightManifest = null;
   growthMechanismEvents = [];

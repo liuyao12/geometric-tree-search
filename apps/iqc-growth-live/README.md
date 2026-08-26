@@ -5404,3 +5404,20 @@ The same runtime exercise exposed and fixed a pre-existing workbench rendering e
 ionic-pair and bond-valence panels referenced a signed-number formatter that was scoped to
 another renderer. The formatter is now shared, and the growth-stage browser check completes
 without page errors.
+
+### Build 194 · creation-physics versus later-response microscope
+
+The emitted-site microscope now asks whether a geometry channel active at attachment is
+monotonically associated with later local response across the current run. It aggregates
+every site's exact creation/current audit back to its owning whole-cluster placement, so a
+placement emitting many atoms remains one sample. Scientists can switch among mean √D²min,
+radial drift, shell membership change, center displacement, equivalent shear, and absolute
+local volume response, then inspect the active creation terms ranked by Spearman ρ.
+
+The scatter plot highlights the selected site's creating placement and exposes each grouped
+action on hover. A four-update NaCl check produced 90 accepted-placement samples containing
+209 atom responses. Shell membership change varied and was descriptively associated with
+the surface-completion contribution at ρ = −0.583; the initially constant non-affine outcome
+correctly remained unavailable. This is one deterministic run with correlated placements,
+not 209 independent samples, a causal effect, calibrated predictor, energy relation, kinetic
+law, or population estimate for materials.
