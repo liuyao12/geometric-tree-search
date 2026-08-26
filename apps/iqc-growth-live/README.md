@@ -41,6 +41,18 @@ in the compass and retained as mismatches in the receipt. The final handoff
 points to the existing receipt/notebook so controlled comparisons remain
 separate from visual impressions.
 
+Build 144 adds a fail-closed **Copy study link** round trip for intact curated
+recipes. The compact URL stores only recipe schema version 1, recipe ID, and one
+of the four paused pipeline stages. Opening it deterministically reapplies the
+curated sample, support hypothesis, marking capacity/reach/representation,
+growth protocol, and structural microscope before building that stage. It
+contains no coordinates, imported material, learned marking coefficients,
+candidate choices, growth history, target labels, or notebook data. Editing any
+recipe control disables the link because those three URL fields would no longer
+reconstruct the experiment; the full receipt remains the evidence artifact.
+Unknown recipes, unsupported schema versions, and invalid stage values fail
+closed with a visible status rather than partially applying state.
+
 The right-hand **computational work laboratory** turns the scaling question into
 an explicit, inspectable comparison at 10×, 1,000×, and 100,000× the observed
 sample. It reports deterministic browser tree decisions and finite-neighborhood

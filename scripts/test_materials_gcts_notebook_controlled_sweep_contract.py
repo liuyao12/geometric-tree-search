@@ -11,9 +11,9 @@ README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
 
 def test_notebook_controlled_sweep_contract() -> None:
-    assert 'buildId: "20260825-143"' in APP
-    assert 'app.js?v=20260825-143' in HTML
-    assert 'style.css?v=20260825-52' in HTML
+    assert 'buildId: "20260825-144"' in APP
+    assert 'app.js?v=20260825-144' in HTML
+    assert 'style.css?v=20260825-53' in HTML
     for element_id in ("notebookSweepAudit", "notebookSweepFactor", "notebookSweepOutcome",
                        "notebookSweepPlot", "notebookSweepSummary"):
         assert f'id="{element_id}"' in HTML

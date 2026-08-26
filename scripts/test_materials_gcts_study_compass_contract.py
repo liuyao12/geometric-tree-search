@@ -11,12 +11,12 @@ README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
 
 def test_study_compass_contract() -> None:
-    assert 'buildId: "20260825-143"' in APP
-    assert 'app.js?v=20260825-143' in HTML
-    assert 'style.css?v=20260825-52' in HTML
+    assert 'buildId: "20260825-144"' in APP
+    assert 'app.js?v=20260825-144' in HTML
+    assert 'style.css?v=20260825-53' in HTML
     for element_id in (
         "studyCompass", "studyCompassKind", "studyCompassQuestion",
-        "studyCompassIntegrity", "studyCompassGuideButton", "studyCompassProgress",
+        "studyCompassIntegrity", "studyCompassShare", "studyCompassGuideButton", "studyCompassProgress",
         "studyCompassObjective", "studyCompassPrediction", "studyCompassInspect",
         "studyCompassBoundary", "studyCompassState", "studyCompassNext",
     ):
@@ -37,6 +37,7 @@ def test_study_compass_contract() -> None:
     assert "Build 143 keeps that study design visible" in README
     assert "navigate but never press Play" in README
     assert "mismatches in the receipt" in README
+
 
 
 if __name__ == "__main__":

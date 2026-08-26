@@ -21,7 +21,8 @@ def test_growth_protocols_expand_into_existing_controls() -> None:
 
     assert "const GROWTH_PROTOCOL_DEFAULTS = Object.freeze" in APP
     assert "const GROWTH_PROTOCOLS = Object.freeze" in APP
-    assert "function applyGrowthProtocol(mode)" in APP
+    assert "function applyGrowthProtocol(mode, options = {})" in APP
+    assert "if (options.sync === false) return" in APP
     assert "function currentGrowthProtocolSettings()" in APP
     assert "function growthProtocolManifest()" in APP
     assert "experimentProtocol: growthProtocolManifest()" in APP

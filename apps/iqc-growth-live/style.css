@@ -103,12 +103,13 @@ a { color: inherit; }
 .study-compass > header small, .study-compass > header strong { display: block; }
 .study-compass > header small { color: #b594ff; font: 7px var(--mono); text-transform: uppercase; letter-spacing: .12em; }
 .study-compass > header strong { max-width: 920px; margin-top: 5px; color: #d9e3e0; font-size: 13px; font-weight: 520; line-height: 1.35; }
-.study-compass > header > div { display: flex; align-items: center; gap: 9px; }
+.study-compass > header > div { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 9px; }
 .study-compass > header b { padding: 5px 8px; border: 1px solid var(--line); color: var(--faint); font: 6px var(--mono); font-weight: 400; text-transform: uppercase; white-space: nowrap; }
 .study-compass > header b.intact { border-color: rgba(101,225,188,.35); color: var(--mint); }
 .study-compass > header b.edited { border-color: rgba(255,193,105,.42); color: #ffc169; }
 .study-compass > header button, .study-compass > footer button { padding: 7px 11px; border: 1px solid rgba(181,148,255,.38); background: rgba(181,148,255,.07); color: #c9b3ff; font: 7px var(--mono); text-transform: uppercase; letter-spacing: .07em; cursor: pointer; white-space: nowrap; }
 .study-compass > header button:hover, .study-compass > footer button:hover { border-color: #c9b3ff; background: rgba(181,148,255,.14); }
+.study-compass > header button:disabled { border-color: var(--line); background: transparent; color: var(--faint); cursor: not-allowed; opacity: .7; }
 .study-compass > nav { display: grid; grid-template-columns: repeat(4,1fr); margin-top: 11px; border: 1px solid var(--line); }
 .study-compass > nav button { position: relative; display: grid; grid-template-columns: auto 1fr; gap: 8px; align-items: center; min-width: 0; padding: 8px 10px; border: 0; border-right: 1px solid var(--line); background: rgba(4,14,15,.45); color: var(--faint); text-align: left; cursor: pointer; }
 .study-compass > nav button:last-child { border-right: 0; }

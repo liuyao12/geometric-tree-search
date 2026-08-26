@@ -104,6 +104,7 @@ const studyCompass = $("studyCompass");
 const studyCompassKind = $("studyCompassKind");
 const studyCompassQuestion = $("studyCompassQuestion");
 const studyCompassIntegrity = $("studyCompassIntegrity");
+const studyCompassShare = $("studyCompassShare");
 const studyCompassGuideButton = $("studyCompassGuideButton");
 const studyCompassProgress = $("studyCompassProgress");
 const studyCompassObjective = $("studyCompassObjective");
@@ -938,6 +939,7 @@ let notebookTrajectoryHarmonic = 6;
 let notebookSweepFactorKey = null;
 let selectedStudyRecipeId = "bulk-order";
 let activeStudyRecipeId = null;
+let studyLaunchAudit = null;
 let atomSpatialIndex = new Map();
 let trainingProgress = 0;
 let clusterDiscoveryTrace = null;
@@ -6617,7 +6619,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-143",
+      buildId: "20260825-144",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -13028,11 +13030,11 @@ function renderGrowthControlGroupSummaries() {
   growthExecutionGroupState.textContent = `${executionActive}/5 active · ${growthScheduling}`;
 }
 
-function applyGrowthProtocol(mode) {
+function applyGrowthProtocol(mode, options = {}) {
   const protocol = GROWTH_PROTOCOLS[mode];
   if (!protocol) {
     growthProtocolMode = "custom";
-    renderGrowthProtocolSummary();
+    if (options.sync !== false) renderGrowthProtocolSummary();
     return;
   }
   const settings = { ...GROWTH_PROTOCOL_DEFAULTS, ...protocol.settings };
@@ -13069,6 +13071,7 @@ function applyGrowthProtocol(mode) {
   requestedGrowthNuclei = settings.requestedGrowthNuclei; nucleationSiteMode = settings.nucleationSiteMode;
   growthScheduling = settings.growthScheduling;
   hierarchyEnabled = settings.hierarchyEnabled;
+  if (options.sync === false) return;
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
 }
@@ -13094,7 +13097,9 @@ function activeStudyRecipeAudit() {
   return { id: recipe.id, label: recipe.label, question: recipe.question, prediction: recipe.prediction, kind: recipe.kind,
     route: [...recipe.route], encodings: [...recipe.encodings], observables: [...recipe.observables],
     claimBoundary: recipe.boundary, convenienceOnly: true, hiddenPhysicsAdded: false,
-    candidateGeometryAuthorized: false, settingsStillMatch: Object.values(checks).every(Boolean), checks };
+    candidateGeometryAuthorized: false, recipeSchemaVersion: 1,
+    reconstructedFromUrl: Boolean(studyLaunchAudit?.loaded),
+    settingsStillMatch: Object.values(checks).every(Boolean), checks };
 }
 
 function renderStudyGuide() {
@@ -13197,6 +13202,27 @@ const STUDY_STAGE_GUIDANCE = Object.freeze({
   },
 });
 
+function shareableStudyUrl(audit = activeStudyRecipeAudit()) {
+  if (!audit?.settingsStillMatch || scenarioSelect.value === "imported"
+    || !STUDY_STAGE_SEQUENCE.some((entry) => entry.stage === pipelineStage)) return null;
+  const url = new URL(window.location.href);
+  url.search = ""; url.hash = "";
+  url.searchParams.set("studyVersion", "1");
+  url.searchParams.set("study", audit.id);
+  url.searchParams.set("stage", String(pipelineStage));
+  return url.toString();
+}
+
+async function copyShareableStudyUrl() {
+  const url = shareableStudyUrl();
+  if (!url) {
+    receiptStatus.textContent = "Recipe link unavailable · restore the intact recipe or download the full receipt for this edited experiment.";
+    return;
+  }
+  await navigator.clipboard.writeText(url);
+  receiptStatus.textContent = `Study link copied · recipe schema v1 · paused stage ${pipelineStage}.`;
+}
+
 function renderStudyCompass() {
   const recipe = MATERIALS_STUDY_RECIPES.find((entry) => entry.id === activeStudyRecipeId) || null;
   const audit = activeStudyRecipeAudit();
@@ -13210,6 +13236,12 @@ function renderStudyCompass() {
   studyCompassIntegrity.textContent = !audit ? "receipt-visible controls"
     : audit.settingsStillMatch ? "recipe intact" : `${mismatchKeys.length} edited setting${mismatchKeys.length === 1 ? "" : "s"}`;
   studyCompassIntegrity.className = audit && !audit.settingsStillMatch ? "edited" : audit ? "intact" : "";
+  const shareUrl = shareableStudyUrl(audit);
+  studyCompassShare.disabled = !shareUrl;
+  studyCompassShare.textContent = shareUrl ? "Copy study link" : "Recipe link unavailable";
+  studyCompassShare.title = shareUrl
+    ? "Copies a versioned curated-recipe and paused-stage URL; it contains no coordinates, learned weights, or growth history."
+    : "Edited/custom studies require the full receipt; the compact recipe link fails closed.";
   studyCompassProgress.replaceChildren(...STUDY_STAGE_SEQUENCE.map((entry, index) => {
     const button = document.createElement("button"); button.type = "button";
     button.dataset.studyStage = String(entry.stage);
@@ -18485,6 +18517,9 @@ studyGuideButton.addEventListener("click", () => setStudyGuideOpen(studyGuide.hi
 studyGuideClose.addEventListener("click", () => setStudyGuideOpen(false));
 studyGuide.addEventListener("pointerdown", (event) => { if (event.target === studyGuide) setStudyGuideOpen(false); });
 studyCompassGuideButton.addEventListener("click", () => setStudyGuideOpen(true));
+studyCompassShare.addEventListener("click", () => copyShareableStudyUrl().catch((error) => {
+  receiptStatus.textContent = `Study link copy failed: ${error.message}`;
+}));
 studyCompassNext.addEventListener("click", () => {
   if (studyCompassNext.dataset.nextStage === "receipt") {
     document.querySelector(".receipt-section")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -18558,8 +18593,28 @@ function animate(now) {
 
 function applyLaunchParameters() {
   const parameters = new URLSearchParams(window.location.search);
+  const requestedStudyId = parameters.get("study");
+  const requestedStudyVersion = parameters.get("studyVersion");
+  const requestedRecipe = MATERIALS_STUDY_RECIPES.find((recipe) => recipe.id === requestedStudyId);
+  if (requestedStudyId) {
+    if (requestedStudyVersion === "1" && requestedRecipe) {
+      selectedStudyRecipeId = requestedRecipe.id;
+      activeStudyRecipeId = requestedRecipe.id;
+      scenarioSelect.value = requestedRecipe.scenario;
+      geometryMode = requestedRecipe.geometryMode;
+      markingDraft = { ...requestedRecipe.marking };
+      structureObservableSelection = requestedRecipe.observable;
+      orientationalOrderHarmonic = requestedRecipe.harmonic;
+      applyGrowthProtocol(requestedRecipe.protocol, { sync: false });
+      studyLaunchAudit = { loaded: true, schemaVersion: 1, recipeId: requestedRecipe.id,
+        coordinatesEmbedded: false, learnedWeightsEmbedded: false, growthHistoryEmbedded: false };
+    } else {
+      studyLaunchAudit = { loaded: false, schemaVersion: requestedStudyVersion || null,
+        recipeId: requestedStudyId, reason: requestedStudyVersion !== "1" ? "unsupported recipe schema" : "unknown recipe" };
+    }
+  }
   const material = parameters.get("material");
-  if (material && [...scenarioSelect.options].some((option) => option.value === material)) {
+  if (!requestedStudyId && material && [...scenarioSelect.options].some((option) => option.value === material)) {
     scenarioSelect.value = material;
   }
   if (scenarioSelect.value === "iceVI" && parameters.has("microstate")) {
@@ -18568,6 +18623,10 @@ function applyLaunchParameters() {
     iceViMicrostate = resolveIceViIceRuleMicrostate(iceViMicrostateSeed);
   }
   const requestedStage = Number.parseInt(parameters.get("stage"), 10);
+  if (studyLaunchAudit?.loaded) {
+    return STUDY_STAGE_SEQUENCE.some((entry) => entry.stage === requestedStage) ? requestedStage : 0;
+  }
+  if (studyLaunchAudit) return 0;
   return Number.isInteger(requestedStage) ? Math.max(0, Math.min(4, requestedStage)) : 0;
 }
 
@@ -18577,5 +18636,10 @@ renderExperimentNotebook();
 renderStudyGuide();
 buildPeriodicTable();
 enterPipelineStage(applyLaunchParameters());
+if (studyLaunchAudit?.loaded) {
+  receiptStatus.textContent = `${selectedStudyRecipe().label} reconstructed from recipe schema v1 · paused at stage ${pipelineStage} · no coordinates, learned weights, or growth history were embedded.`;
+} else if (studyLaunchAudit && !studyLaunchAudit.loaded) {
+  receiptStatus.textContent = `Study link ignored · ${studyLaunchAudit.reason}; no recipe settings were applied.`;
+}
 resize();
 requestAnimationFrame(animate);
