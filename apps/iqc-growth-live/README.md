@@ -5349,3 +5349,21 @@ failed rather than inventing centrosymmetry values, but it left the A/B panel hi
 190 assigns new immutable subresource versions to both the expanded provenance schema and
 the centrosymmetry-aware comparison schema. Release contracts now require those versions
 alongside the main application build, preventing a split-schema Pages deployment.
+
+### Build 191 · physics encoded at each emitted site
+
+The site microscope now preserves the actual target-free decision ledger used when a
+GCTS placement is admitted. For every emitted placement it records the active geometric
+physics channels, their raw values, the weights in force for that search, and their signed
+ranking contributions. Zero-weight channels remain visible as diagnostics rather than
+being presented as causal inputs. The inspector separately lists the hard admission gates:
+species-aware exclusion, public boundary, shared support, novel emission, known-window
+consistency, colored coordination and angular envelopes, feedstock, and the selected GCTS
+marking policy.
+
+This is creation-time evidence rather than a reconstruction from the final neighborhood.
+Supplied seed atoms therefore say explicitly that no GCTS creation ledger exists. The
+ledger is deliberately fail-closed about interpretation: its dimensionless geometry
+scores are not energies, probabilities, forces, barriers, rates, integrated dynamics, or
+physical time. They expose how physics was encoded into search ordering and admissibility;
+they do not claim that the leap-frogged trajectory was simulated.

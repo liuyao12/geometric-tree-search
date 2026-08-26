@@ -28,6 +28,7 @@ import { compareHypothesisSeparationOutcomes }
 import { buildSiteProvenance } from "./site-provenance.js?v=20260826-2";
 import { buildSiteConstraintAudit } from "./site-constraint-audit.js?v=20260826-1";
 import { compareSiteEnvironments } from "./site-environment-comparison.js?v=20260826-3";
+import { buildSiteCreationPhysicsAudit } from "./site-creation-physics-audit.js?v=20260826-1";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -540,6 +541,9 @@ const siteComparisonGrid = $("siteComparisonGrid");
 const siteComparisonChannels = $("siteComparisonChannels");
 const siteComparisonBoundary = $("siteComparisonBoundary");
 const siteComparisonClear = $("siteComparisonClear");
+const siteCreationPhysicsState = $("siteCreationPhysicsState");
+const siteCreationPhysicsRows = $("siteCreationPhysicsRows");
+const siteCreationPhysicsBoundary = $("siteCreationPhysicsBoundary");
 const unitCellBadge = $("unitCellBadge");
 const captionAction = $("captionAction");
 const processTimeline = $("processTimeline");
@@ -3531,6 +3535,39 @@ function renderSiteConstraintAudit(audit) {
   });
 }
 
+function renderSiteCreationPhysicsAudit(decisionEvidence) {
+  const audit = buildSiteCreationPhysicsAudit(decisionEvidence);
+  siteCreationPhysicsState.textContent = audit.status;
+  siteCreationPhysicsRows.replaceChildren();
+  if (!audit.available) {
+    const row = document.createElement("span"); row.className = "neutral";
+    const label = document.createElement("small"); label.textContent = "input role";
+    const value = document.createElement("strong"); value.textContent = "supplied / fitted";
+    const status = document.createElement("em"); status.textContent = "no creation score";
+    row.append(label, value, status); siteCreationPhysicsRows.append(row);
+  } else {
+    audit.activeTerms.slice(0, 10).forEach((term) => {
+      const row = document.createElement("span"); row.className = term.contribution >= 0 ? "pass" : "warn";
+      const label = document.createElement("small"); label.textContent = term.label;
+      const value = document.createElement("strong"); value.textContent = `${term.raw.toFixed(3)} × ${term.weight.toFixed(3)}`;
+      const status = document.createElement("em"); status.textContent = `${term.contribution >= 0 ? "+" : ""}${term.contribution.toFixed(3)}`;
+      row.title = `${term.role}. ${term.claimBoundary}`;
+      row.append(label, value, status); siteCreationPhysicsRows.append(row);
+    });
+    audit.admissionGates.forEach((gate) => {
+      const row = document.createElement("span"); row.className = gate.passed ? "gate" : "fail";
+      const label = document.createElement("small"); label.textContent = gate.label;
+      const value = document.createElement("strong"); value.textContent = String(gate.observed);
+      const status = document.createElement("em"); status.textContent = gate.passed ? "hard pass" : "hard fail";
+      row.title = gate.requirement;
+      row.append(label, value, status); siteCreationPhysicsRows.append(row);
+    });
+  }
+  siteCreationPhysicsBoundary.textContent = audit.available
+    ? `Frozen at placement · signed soft contribution ${audit.signedContribution >= 0 ? "+" : ""}${audit.signedContribution.toFixed(3)} · ${audit.diagnosticTerms.length} zero-weight channels remain diagnostic. Scores are geometry-encoded ordering terms, not energies, probabilities, forces, barriers, rates, dynamics, or physical time.`
+    : "Supplied sites precede GCTS ranking. Their current structural fingerprints remain inspectable, but no creation-time physics ledger is invented.";
+}
+
 function inspectSite(atom) {
   selectedSiteId = atom.id;
   const snapshot = siteProvenanceSnapshot(atom);
@@ -3556,6 +3593,7 @@ function inspectSite(atom) {
         : snapshot.observedReferenceIndex === null ? "not created by a retained growth action" : `input reference site ${snapshot.observedReferenceIndex}`),
   );
   renderSiteConstraintAudit(selectedSiteConstraintAudit(atom));
+  renderSiteCreationPhysicsAudit(snapshot.decisionEvidence);
   const pinnedAtom = atoms.find((entry) => entry.id === pinnedSiteId);
   if (pinnedAtom && pinnedAtom.id !== atom.id) renderSiteEnvironmentComparison(pinnedAtom, atom);
   else siteEnvironmentComparison.hidden = true;
@@ -8197,7 +8235,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-190",
+      buildId: "20260826-191",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -15194,7 +15232,7 @@ function evaluateCandidate(candidate, {
   const accepted = conflicts === 0 && boundaryFailures === 0 && merged.length >= 2
     && fresh.length > 0 && knownFailures === 0 && coordinationOverflows.length === 0
     && angularViolations.length === 0 && feedstockSupply.admitted && (markingAccepted || markingFallback);
-  return { accepted, sites, merged, fresh, conflicts, boundaryFailures, knownFailures, markingFallback,
+  return { accepted, sites, merged, fresh, conflicts, boundaryFailures, knownFailures, markingAccepted, markingFallback,
     coordinationOverflows, angularViolations, geometricStrain, externalCalibration, affineLoadedGeometricStrain,
     surfaceCompletion, bulkSurfaceDriving, attachmentTopology, habitAnisotropy, frontMorphology, capillaryGeometry, epitaxyRegistry, compositionBalance, feedstockSupply, formalChargeBalance, chargeGeometry, chargeMoment, ionicPair, bondValence,
     externalDrive, thermalField, solutePartition, constraintRobustness, interfaceAccommodation,
@@ -18037,6 +18075,39 @@ function appendHistory(type, entry) {
   if (stackHistory.length > 24) stackHistory.shift();
 }
 
+function frozenCreationPhysicsTerms(evaluation) {
+  return activeCandidateScoreTerms({ evaluation, dynamicPriority: 0, referenceGain: 0,
+    referenceGuided: false, explorationOffset: 0 }, false)
+    .filter((term) => !["grammar-priority", "known-window-gain"].includes(term.id))
+    .map((term) => ({ id: term.id, label: term.label, raw: receiptRound(term.raw),
+      weight: receiptRound(term.weight), contribution: receiptRound(term.contribution),
+      role: term.role, claimBoundary: term.claimBoundary }));
+}
+
+function frozenCreationAdmissionGates(evaluation) {
+  return [
+    { id: "hard-core", label: "species / hard core", observed: evaluation.conflicts,
+      passed: evaluation.conflicts === 0, requirement: "zero species-coincidence or exclusion conflicts" },
+    { id: "public-boundary", label: "public boundary", observed: evaluation.boundaryFailures,
+      passed: evaluation.boundaryFailures === 0, requirement: "every emitted site lies inside the declared public growth domain" },
+    { id: "shared-support", label: "shared support", observed: evaluation.merged.length,
+      passed: evaluation.merged.length >= 2, requirement: "at least two exact same-species shared sites" },
+    { id: "novel-emission", label: "novel emission", observed: evaluation.fresh.length,
+      passed: evaluation.fresh.length > 0, requirement: "at least one novel colored site" },
+    { id: "known-window", label: "known-window consistency", observed: evaluation.knownFailures,
+      passed: evaluation.knownFailures === 0, requirement: "zero sites outside the known configuration during labeled replay" },
+    { id: "coordination", label: "coordination capacity", observed: evaluation.coordinationOverflows.length,
+      passed: evaluation.coordinationOverflows.length === 0, requirement: "zero learned colored coordination-capacity overflows" },
+    { id: "angles", label: "angular support", observed: evaluation.angularViolations.length,
+      passed: evaluation.angularViolations.length === 0, requirement: "zero learned colored angular-envelope violations" },
+    { id: "feedstock", label: "feedstock supply", observed: evaluation.feedstockSupply.admitted,
+      passed: evaluation.feedstockSupply.admitted, requirement: "all emitted species remain available in the declared finite or open reservoir" },
+    { id: "marking", label: "GCTS marking", observed: evaluation.markingFallback ? "known-window fallback" : evaluation.markingAccepted ? "section accepted" : "unmarked policy",
+      passed: evaluation.markingFallback || policySelect.value !== "marked" || evaluation.markingAccepted !== false,
+      requirement: "selected marking admits the frozen action, except the explicit complete known-window fallback" },
+  ];
+}
+
 function materializeCandidate(candidate, evaluation) {
   const parent = placedClusters.find((placement) => placement.id === candidate.parentId);
   const centerReferenceIndex = evaluation.sites.find((site) => site.center)?.referenceIndex;
@@ -18060,6 +18131,8 @@ function materializeCandidate(candidate, evaluation) {
       compositionDistanceDelta: receiptRound(evaluation.compositionBalance.scaledDelta),
       surfaceCoordinationDelta: receiptRound(evaluation.surfaceCompletion.scaledDelta),
       loopClosureWitnesses: evaluation.loopClosure.independentCompatiblePaths,
+      physicsTerms: frozenCreationPhysicsTerms(evaluation),
+      admissionGates: frozenCreationAdmissionGates(evaluation),
       targetUsed: false, physicalEnergyInferred: false,
     },
   };

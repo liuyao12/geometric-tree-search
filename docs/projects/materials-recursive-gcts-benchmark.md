@@ -6039,3 +6039,28 @@ comparison subresource version for the angular/orientational/centrosymmetry sche
 release contracts bind both versions to the main build marker. Public QA must exercise a
 fresh A/B selection after deployment and observe the exact-shell inversion-asymmetry card;
 checking only the HTML or main script version is no longer accepted as evidence.
+
+## Build 191: expose the creation-time geometry-physics ledger per site
+
+Build 191 connects the selected-site microscope to the actual candidate evaluator rather
+than estimating an explanation after growth. When a placement is materialized, the portal
+freezes every enabled physics-ranking term returned by the common score decomposition:
+its raw dimensionless channel value, effective weight (including the active hypothesis
+arm), signed contribution, semantic role, and claim boundary. The record also retains
+zero-weight terms as explicitly diagnostic channels. Grammar priority, exploration, and
+known-window reconstruction bonuses remain outside the physics subtotal so that unlike
+quantities are not silently combined in the displayed number.
+
+Admission is audited separately. The frozen receipt records species-aware hard-core and
+coincidence checks, the declared public boundary, minimum shared support, nonempty novel
+emission, known-window consistency where applicable, colored coordination capacity,
+colored angular-envelope consistency, feedstock availability, and the chosen GCTS marking
+gate or explicit known-window fallback. Because the receipt belongs to an accepted
+placement, these gates should all pass; retaining them makes that assertion inspectable.
+
+The ledger is target-free and immutable after placement. It does not infer a receipt for
+supplied seed sites and it cannot alter later ranking, clustering, marking learning, or
+search. Its signed subtotal is a search-ordering score, not physical energy or posterior
+probability. No force, barrier, rate, trajectory, or physical time is integrated. The
+feature is therefore evidence of which finite geometric surrogates and hard constraints
+actually governed a leap-frogged move, not a claim that molecular dynamics was performed.
