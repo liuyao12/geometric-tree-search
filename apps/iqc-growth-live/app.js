@@ -238,6 +238,10 @@ const growthSearchOptions = $("growthSearchOptions");
 const growthProtocolSelect = $("growthProtocolSelect");
 const growthProtocolHint = $("growthProtocolHint");
 const growthProtocolSummary = $("growthProtocolSummary");
+const growthPhysicsPreflightState = $("growthPhysicsPreflightState");
+const growthPhysicsPreflightFilters = $("growthPhysicsPreflightFilters");
+const growthPhysicsPreflightMatrix = $("growthPhysicsPreflightMatrix");
+const growthPhysicsPreflightDetail = $("growthPhysicsPreflightDetail");
 const growthCoreGroupState = $("growthCoreGroupState");
 const growthChemistryGroupState = $("growthChemistryGroupState");
 const growthInterfaceGroupState = $("growthInterfaceGroupState");
@@ -826,14 +830,74 @@ const BALANCE_DIRECTIONS = [
   [PHI, 0, 1], [PHI, 0, -1], [-PHI, 0, 1], [-PHI, 0, -1],
 ].map((v) => new THREE.Vector3(...v).normalize());
 
+function fallbackViewportRenderer() {
+  const canvas = document.createElement("canvas");
+  canvas.className = "viewport-renderer viewport-renderer-fallback";
+  canvas.setAttribute("role", "img");
+  canvas.setAttribute("aria-label", "Three-dimensional view unavailable; all scientific controls, plots, and receipts remain active");
+  canvas.tabIndex = 0;
+  const context = canvas.getContext("2d");
+  let pixelRatio = 1; let dirty = true;
+  const draw = () => {
+    if (!dirty) return;
+    const width = canvas.width / pixelRatio; const height = canvas.height / pixelRatio;
+    if (!context || width <= 0 || height <= 0) return;
+    dirty = false;
+    context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+    const background = context.createRadialGradient(width * .48, height * .44, 8,
+      width * .5, height * .5, Math.max(width, height) * .62);
+    background.addColorStop(0, "#12262a"); background.addColorStop(1, "#050d0f");
+    context.fillStyle = background; context.fillRect(0, 0, width, height);
+    const radius = Math.min(width, height) * .19;
+    context.lineWidth = 1; context.strokeStyle = "rgba(101,225,188,.24)";
+    context.beginPath(); context.arc(width * .5, height * .43, radius, 0, Math.PI * 2); context.stroke();
+    const colors = ["#55c8ff", "#b594ff", "#65e1bc", "#f0c96a"];
+    for (let index = 0; index < 18; index++) {
+      const angle = index * Math.PI * 2 / 18; const shell = index % 3 === 0 ? .55 : 1;
+      const x = width * .5 + Math.cos(angle) * radius * shell;
+      const y = height * .43 + Math.sin(angle) * radius * shell * .68;
+      context.fillStyle = colors[index % colors.length]; context.globalAlpha = .72;
+      context.beginPath(); context.arc(x, y, 2.2 + (index % 3), 0, Math.PI * 2); context.fill();
+    }
+    context.globalAlpha = 1; context.textAlign = "center";
+    context.fillStyle = "#b7cbc5"; context.font = "11px ui-monospace, SFMono-Regular, Menlo, monospace";
+    context.fillText("3D VIEW UNAVAILABLE", width * .5, height * .76);
+    context.fillStyle = "#657d76"; context.font = "9px ui-monospace, SFMono-Regular, Menlo, monospace";
+    context.fillText("scientific controls · plots · receipts remain active", width * .5, height * .82);
+  };
+  return { domElement: canvas, isFallback: true,
+    setPixelRatio(value) { pixelRatio = Math.max(1, Number(value) || 1); },
+    setSize(width, height, updateStyle = true) {
+      canvas.width = Math.max(1, Math.round(width * pixelRatio));
+      canvas.height = Math.max(1, Math.round(height * pixelRatio));
+      if (updateStyle !== false) { canvas.style.width = `${width}px`; canvas.style.height = `${height}px`; }
+      dirty = true;
+      draw();
+    },
+    render: draw };
+}
+
+function materialsViewportRenderer() {
+  let supported = false;
+  try {
+    const probe = document.createElement("canvas");
+    supported = Boolean(probe.getContext("webgl2") || probe.getContext("webgl"));
+  } catch { supported = false; }
+  if (supported) {
+    try { return new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" }); }
+    catch { /* fall through to a non-WebGL scientific portal */ }
+  }
+  return fallbackViewportRenderer();
+}
+
 const scene = new THREE.Scene();
 scene.background = null;
 scene.fog = new THREE.FogExp2(0x061011, 0.021);
 const camera = new THREE.PerspectiveCamera(46, 1, 0.1, 120);
 camera.position.set(12.5, 9.5, 13.5);
-const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
+const renderer = materialsViewportRenderer();
 renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-renderer.outputColorSpace = THREE.SRGBColorSpace;
+if (!renderer.isFallback) renderer.outputColorSpace = THREE.SRGBColorSpace;
 viewport.prepend(renderer.domElement);
 
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -1064,6 +1128,9 @@ let leapEventCount = 0;
 let multiscalePathwayHarmonic = 6;
 let selectedLeapPhysicsId = "steric";
 let selectedLeapPhysicsFilter = "all";
+let selectedGrowthPhysicsPreflightId = "steric";
+let selectedGrowthPhysicsPreflightFilter = "all";
+let frozenPhysicsPreflightManifest = null;
 const MAXIMUM_RETAINED_STRUCTURAL_LEAPS = 24;
 let growthMechanismEvents = [];
 let growthMechanismTotals = {};
@@ -7802,13 +7869,18 @@ async function buildExperimentReceipt() {
   })) || [];
   const localConstraintMismatchSha256 = localConstraintMismatchRecords.length
     ? await receiptSha256(JSON.stringify(localConstraintMismatchRecords)) : null;
+  const physicsPreflightManifest = frozenPhysicsPreflightManifest || currentPhysicsPreflightManifest();
+  const physicsPreflightManifestSha256 = await receiptSha256(JSON.stringify(physicsPreflightManifest));
   const receipt = {
     schema: "gcts-materials-growth-receipt-v1",
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-176",
+      buildId: "20260826-177",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
+      visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
+        webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
+        scientificCalculationsChangedByFallback: false },
     },
     input: {
       sourceKind: scenarioSelect.value === "imported"
@@ -8502,6 +8574,9 @@ async function buildExperimentReceipt() {
     search: searchVisible ? {
       policy: policySelect.value,
       experimentProtocol: growthProtocolManifest(),
+      physicsPreflightManifest: { ...physicsPreflightManifest,
+        sha256: physicsPreflightManifestSha256,
+        frozenBeforeFirstStructuralAction: Boolean(frozenPhysicsPreflightManifest) },
       hierarchyEnabled: Boolean(hierarchyEnabled && !iceAnchorTrace),
       markingLibraryMode: markingSearchMode,
       scheduling: {
@@ -16735,6 +16810,7 @@ function syncStageOptions() {
         : `${epitaxyTemplateLabel()} · weight ${epitaxyWeight.toFixed(2)}`;
     const externalCandidateSupport = currentExternalCandidateSupportAudit();
     stageOptionsState.textContent = `${growthProtocolMode === "custom" ? "custom" : GROWTH_PROTOCOLS[growthProtocolMode].label} · ${activeExternalCalibrationPromotion() ? `external geometry ${externalCandidateSupport.supportedCandidates}/${externalCandidateSupport.evaluatedCandidates || "—"}` : policySelect.value === "marked" && active ? active.name.split(" · ")[0] : "baseline"} · ${geometryPreference === "strain" ? `strain ${geometricStrainWeight.toFixed(2)}` : "no strain"}`;
+    renderGrowthPhysicsPreflight();
     primitiveGrowthButton.classList.toggle("active", finiteIceAnchorMode || !hierarchyEnabled);
     primitiveGrowthButton.setAttribute("aria-pressed", String(finiteIceAnchorMode || !hierarchyEnabled));
     hierarchicalGrowthButton.classList.toggle("active", !finiteIceAnchorMode && hierarchyEnabled);
@@ -16981,6 +17057,7 @@ function resetCounters() {
   selectedLeapIndex = -1;
   leapEventCount = 0;
   selectedLeapPhysicsId = "steric";
+  frozenPhysicsPreflightManifest = null;
   growthMechanismEvents = [];
   growthMechanismTotals = {};
   growthPoseAuditsByLeap = new Map();
@@ -18611,6 +18688,10 @@ function physicsTranslationRecords(leap = null) {
   const relaxationDisplacement = relaxationDisplacementField();
   const relaxationLocalEnvironment = relaxationLocalEnvironmentField();
   const relaxationGeometryCalibration = relaxationGeometryCalculationCalibration();
+  const relaxationGeometrySurrogate = relaxationGeometryCalibration
+    ? (relaxationCalibrationMetricMode === "force"
+      ? relaxationGeometryCalibration.forceSurrogate : relaxationGeometryCalibration.energySurrogate)
+    : null;
   const localConstraintMismatch = currentLocalConstraintMismatchField();
   const localSymmetry = leap?.localSymmetryTransition || null;
   const centrosymmetry = leap?.centrosymmetryTransition || null;
@@ -18671,7 +18752,7 @@ function physicsTranslationRecords(leap = null) {
       evidence: relaxationGeometryCalibration
         ? `Energy ρ ${Number.isFinite(relaxationGeometryCalibration.energyCalibration.spearman) ? relaxationGeometryCalibration.energyCalibration.spearman.toFixed(3) : "unresolved"} (n=${relaxationGeometryCalibration.energyCalibration.pairedFrames}); force ρ ${Number.isFinite(relaxationGeometryCalibration.forceCalibration.spearman) ? relaxationGeometryCalibration.forceCalibration.spearman.toFixed(3) : "unresolved"} (n=${relaxationGeometryCalibration.forceCalibration.pairedFrames}). ${relaxationGeometrySurrogate?.available ? `Selected-channel leave-one-frame-out surrogate: ρ ${Number.isFinite(relaxationGeometrySurrogate.predictionSpearman) ? relaxationGeometrySurrogate.predictionSpearman.toFixed(3) : "unresolved"}, Q² ${Number.isFinite(relaxationGeometrySurrogate.crossValidatedQSquared) ? relaxationGeometrySurrogate.crossValidatedQSquared.toFixed(3) : "unresolved"}, MAE ${relaxationGeometrySurrogate.meanAbsoluteError.toPrecision(3)}.` : `Surrogate withheld: ${relaxationGeometrySurrogate?.pairedFrames || 0}/${relaxationGeometrySurrogate?.requiredPairs || 5} paired frames.`}${activeRelaxationTransferAudit?.transfer?.available ? ` Frozen cross-archive target: ρ ${Number.isFinite(activeRelaxationTransferAudit.transfer.predictionSpearman) ? activeRelaxationTransferAudit.transfer.predictionSpearman.toFixed(3) : "unresolved"}, Q² ${Number.isFinite(activeRelaxationTransferAudit.transfer.predictiveQSquared) ? activeRelaxationTransferAudit.transfer.predictiveQSquared.toFixed(3) : "unresolved"}, no refit.` : ""}`
         : "No final-frame-reference geometry/calculation pairing is available.",
-      boundary: "Final, first, and pooled reference modes are geometry-only sensitivity choices, not calculation-label-selected models. The fixed three-channel ridge explicitly fits source calculation labels. Cross-archive evaluation freezes it and requires exact reduced composition, program/version, canonical normalized method record, units, target, and reference; target labels score only afterward. A single transfer still does not establish broad validation, causality, an interatomic potential, force field, reaction coordinate, physical trajectory, kinetics, or time, and no fitted model enters growth." },
+      boundary: "Final, first, and pooled reference modes are geometry-only sensitivity choices, not calculation-label-selected models. The fixed three-channel ridge explicitly fits source calculation labels. Cross-archive evaluation freezes it and requires exact reduced composition, program/version, canonical normalized method record, units, target, and reference; target labels score only afterward. Only an explicitly selected surrogate that passes the fixed transfer and feature-support gates may contribute one bounded soft rank term over unchanged candidates, with abstention outside source support. A single transfer still does not establish broad validation, causality, an interatomic potential, force field, reaction coordinate, physical trajectory, kinetics, or time." },
     { id: "local-rearrangement", process: "localized rearrangement / environment change", status: relaxationLocalEnvironment ? "observed" : "unavailable", role: relaxationLocalEnvironment ? "archived structural-difference diagnostic" : "no paired local environments",
       encoding: relaxationLocalEnvironment
         ? `${relaxationLocalEnvironment.neighborCount}-neighbor periodic minimum-image vectors; one Falk–Langer best-affine F per site; E=(FᵀF−I)/2 separates coherent deviatoric deformation from √D²min residual motion; selected/final kNN identity sets expose geometric neighbor exchange`
@@ -18950,6 +19031,94 @@ function openPhysicsControlRoute(recordId) {
     receiptStatus.textContent = `${route.label} · routed from the physics manifest · no setting changed.`;
   });
 }
+
+function physicsManifestRecord(record) {
+  return { id: record.id, process: record.process, status: record.status, role: record.role,
+    encoding: record.encoding, evidence: record.evidence, boundary: record.boundary };
+}
+
+function currentPhysicsPreflightManifest() {
+  const records = physicsTranslationRecords(null).map(physicsManifestRecord);
+  const counts = records.reduce((result, record) => {
+    result[physicsEvidenceBucket(record)] += 1;
+    return result;
+  }, { structural: 0, hypothesis: 0, open: 0 });
+  return { schema: 1, records, counts,
+    generatedBeforeActionExecution: true, coordinatesEmbedded: false,
+    candidateGeometryEmbedded: false, candidateSetInspected: false, targetUsed: false,
+    physicalTimeModeled: false };
+}
+
+function renderGrowthPhysicsPreflight() {
+  if (!frozenPhysicsPreflightManifest || leapEventCount === 0) {
+    frozenPhysicsPreflightManifest = currentPhysicsPreflightManifest();
+  }
+  const manifest = frozenPhysicsPreflightManifest;
+  const { records, counts } = manifest;
+  growthPhysicsPreflightState.textContent = `${counts.structural} observed/learned · ${counts.hypothesis} declared · ${counts.open} open`;
+  growthPhysicsPreflightFilters.querySelectorAll("button[data-preflight-physics-filter]").forEach((button) => {
+    const filter = button.dataset.preflightPhysicsFilter;
+    const count = filter === "all" ? records.length : counts[filter];
+    button.classList.toggle("active", filter === selectedGrowthPhysicsPreflightFilter);
+    button.setAttribute("aria-pressed", String(filter === selectedGrowthPhysicsPreflightFilter));
+    button.textContent = `${filter === "all" ? "all" : filter === "structural" ? "observed + learned" : filter === "hypothesis" ? "declared hypotheses" : "open boundary"} · ${count}`;
+  });
+  const visibleRecords = selectedGrowthPhysicsPreflightFilter === "all"
+    ? records : records.filter((record) => physicsEvidenceBucket(record) === selectedGrowthPhysicsPreflightFilter);
+  if (!visibleRecords.some((record) => record.id === selectedGrowthPhysicsPreflightId)) {
+    selectedGrowthPhysicsPreflightId = visibleRecords[0]?.id || "steric";
+  }
+  growthPhysicsPreflightMatrix.replaceChildren();
+  visibleRecords.forEach((record) => {
+    const button = document.createElement("button"); button.type = "button";
+    button.className = `${record.status}${record.id === selectedGrowthPhysicsPreflightId ? " active" : ""}`;
+    button.setAttribute("aria-pressed", String(record.id === selectedGrowthPhysicsPreflightId));
+    const small = document.createElement("small"); small.textContent = record.role;
+    const strong = document.createElement("strong"); strong.textContent = record.process;
+    const span = document.createElement("span"); span.textContent = record.status;
+    button.append(small, strong, span);
+    button.addEventListener("click", () => {
+      selectedGrowthPhysicsPreflightId = record.id; renderGrowthPhysicsPreflight();
+    });
+    growthPhysicsPreflightMatrix.append(button);
+  });
+  const selected = visibleRecords.find((record) => record.id === selectedGrowthPhysicsPreflightId)
+    || visibleRecords[0];
+  growthPhysicsPreflightDetail.replaceChildren();
+  if (!selected) return;
+  const header = document.createElement("header");
+  const small = document.createElement("small"); small.textContent = `${selected.status} · ${selected.role}`;
+  const strong = document.createElement("strong"); strong.textContent = selected.process;
+  header.append(small, strong); growthPhysicsPreflightDetail.append(header);
+  [["evidence class", physicsEvidenceClass(selected)], ["geometric encoding", selected.encoding],
+    ["pre-growth evidence", selected.evidence], ["claim boundary", selected.boundary]].forEach(([label, copy]) => {
+    const row = document.createElement("div"); const key = document.createElement("b");
+    const value = document.createElement("p"); key.textContent = label; value.textContent = copy;
+    row.append(key, value); growthPhysicsPreflightDetail.append(row);
+  });
+  const route = PHYSICS_CONTROL_ROUTES[selected.id];
+  const actions = document.createElement("footer"); actions.className = "leap-physics-actions";
+  if (route) {
+    const button = document.createElement("button"); button.type = "button";
+    button.textContent = `${route.label} →`;
+    button.title = "Focus the exact control without changing its value.";
+    button.addEventListener("click", () => openPhysicsControlRoute(selected.id));
+    actions.append(button);
+  } else {
+    const open = document.createElement("span");
+    open.textContent = "No local control · requires external physics or a new geometric state variable";
+    actions.append(open);
+  }
+  growthPhysicsPreflightDetail.append(actions);
+}
+
+growthPhysicsPreflightFilters.addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-preflight-physics-filter]");
+  if (!button) return;
+  selectedGrowthPhysicsPreflightFilter = ["structural", "hypothesis", "open"]
+    .includes(button.dataset.preflightPhysicsFilter) ? button.dataset.preflightPhysicsFilter : "all";
+  renderGrowthPhysicsPreflight();
+});
 
 function renderLeapPhysics(leap = null) {
   const records = leap?.physicsTranslation || physicsTranslationRecords(leap);

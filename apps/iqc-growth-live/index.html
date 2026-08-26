@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260826-73">
+  <link rel="stylesheet" href="./style.css?v=20260826-74">
   <script type="importmap">
     {
       "imports": {
@@ -470,6 +470,18 @@
             <article id="growthProtocolSummary" class="growth-protocol-summary" aria-live="polite">
               <span><b>custom experiment</b><small>Every search control remains independent and receipt-visible.</small></span>
             </article>
+            <section class="growth-physics-preflight" aria-label="Pre-growth physics manifest">
+              <header><span><small>before the first structural leap</small><strong>Physics → geometry preflight</strong></span><b id="growthPhysicsPreflightState">classifying current controls</b></header>
+              <div id="growthPhysicsPreflightFilters" class="leap-physics-filters" role="group" aria-label="Filter the pre-growth physics manifest">
+                <button class="active" type="button" data-preflight-physics-filter="all" aria-pressed="true">all</button>
+                <button type="button" data-preflight-physics-filter="structural" aria-pressed="false">observed + learned</button>
+                <button type="button" data-preflight-physics-filter="hypothesis" aria-pressed="false">declared hypotheses</button>
+                <button type="button" data-preflight-physics-filter="open" aria-pressed="false">open boundary</button>
+              </div>
+              <div id="growthPhysicsPreflightMatrix" class="leap-physics-matrix" role="group" aria-label="Inspect physical roles encoded or left open before growth"></div>
+              <article id="growthPhysicsPreflightDetail" class="leap-physics-detail" aria-live="polite"></article>
+              <p>The manifest is frozen from the current controls before the first structural action executes. It never reads candidate records. Its coordinate-free record and SHA-256 digest enter the experiment receipt; routing to a control changes no setting.</p>
+            </section>
             <div class="growth-group-actions" role="group" aria-label="Growth control sections">
               <button id="expandGrowthGroupsButton" type="button">Expand all physics</button>
               <button id="collapseGrowthGroupsButton" type="button">Collapse to overview</button>
@@ -1682,7 +1694,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260826-176"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260826-18"></script>
+  <script type="module" src="./app.js?v=20260826-177"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260826-19"></script>
 </body>
 </html>

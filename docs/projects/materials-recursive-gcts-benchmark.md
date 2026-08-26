@@ -5752,3 +5752,33 @@ the ordinary known-window replay target was active. This visualization does
 not promote correlation to mechanism; it makes applicability and actual policy
 influence visible while preserving the existing no-potential, no-force,
 no-kinetics claim boundary.
+
+## Build 177: audit the encoded physical question before growth
+
+Stage 4 now renders the complete physics-to-geometry manifest before any
+frontier is enumerated. Its records are generated directly from the current
+sample channels and experiment controls, then partitioned into
+observed/learned constraints, declared soft hypotheses, and open boundaries.
+Each record exposes the physical process being approximated, the exact
+geometric representation, the available evidence, and the strongest claim the
+representation does not support. A route button focuses the responsible
+control without mutating it.
+
+The same schema continues into every structural-leap certificate, so preflight
+intent and post-event evidence can be compared without inventing a physical
+clock. The experiment receipt embeds the coordinate-free preflight record and
+its SHA-256 digest and explicitly records that it was frozen from current
+controls before the first structural action, contains no candidate geometry,
+inspected no candidate record or target, and models no physical time.
+
+This closes a usability gap, not a physics gap: missing temperature-dependent
+potentials, chemical potentials, nonlocal electronic response, barriers,
+rates, and transport remain red/open records. The portal now makes those
+omissions auditable before search rather than revealing them only after a
+structural leap.
+
+Build 177 also fails over cleanly when WebGL is unavailable. A non-WebGL status
+canvas replaces only the 3D rendering surface; the scientific workflow,
+calculations, evidence panels, plots, and receipts continue to initialize. The
+receipt distinguishes interactive WebGL from the fallback and explicitly
+states that the renderer choice changes no scientific calculation.

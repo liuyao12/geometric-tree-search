@@ -5110,3 +5110,34 @@ displayed, the common candidate digest, both winner keys, inversion count,
 support count, target-use status, and false flags for geometry/admission
 changes. This turns calibration deployment into something inspectable and
 falsifiable rather than an invisible coefficient in a large score stack.
+
+### Build 177 · pre-growth physics → geometry manifest
+
+The material-growth stage now exposes the full physics translation before the
+first candidate is generated. The preflight classifies every current channel
+as observed/learned structural evidence, a user-declared soft hypothesis, or
+an unresolved physical boundary. Filters reveal the active balance, and every
+tile expands into its evidence class, exact geometric encoding, current
+pre-growth evidence, and claim boundary. When a corresponding control exists,
+one button routes to it without changing its value.
+
+This is the same record used by the post-leap physics matrix, not a second
+interpretation layer. The coordinate-free preflight is frozen from the current
+controls before the first structural action executes, SHA-256 hashed into the
+experiment receipt, and marked with explicit false flags for embedded
+coordinates, candidate inspection, target use, and physical-time modeling.
+A researcher can therefore audit the physical question encoded by the
+experiment before allowing GCTS to make a structural leap.
+
+The manifest does not make open physics disappear. Temperature, pressure,
+chemical potential, collective electronic response, barriers, rates, and time
+remain open unless an explicit supplied channel or declared geometric proxy is
+present; the UI keeps those omissions visible rather than silently folding them
+into a score.
+
+The same build also separates visualization capability from scientific
+capability. If WebGL cannot be created, the portal substitutes an accessible
+2D status canvas instead of aborting module initialization. Sample selection,
+clustering, marking controls, search calculations, plots, evidence inspection,
+and receipt export remain active; the receipt records the renderer mode and
+that the fallback changes no scientific calculation.
