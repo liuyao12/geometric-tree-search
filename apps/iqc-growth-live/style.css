@@ -62,6 +62,8 @@ a { color: inherit; }
 .method-link { justify-self: end; color: var(--muted); font: 9px var(--mono); text-decoration: none; letter-spacing: .04em; }
 .method-link:hover { color: var(--mint); }
 .topbar-actions { justify-self: end; display: flex; align-items: center; gap: 15px; }
+.study-guide-launch { padding: 7px 11px; border: 1px solid rgba(181,148,255,.42); background: rgba(181,148,255,.08); color: #c9b3ff; font: 8px var(--mono); text-transform: uppercase; letter-spacing: .09em; cursor: pointer; }
+.study-guide-launch:hover { border-color: #c9b3ff; background: rgba(181,148,255,.15); }
 .atlas-launch { padding: 7px 11px; border: 1px solid rgba(101,225,188,.38); background: rgba(101,225,188,.07); color: var(--mint); font: 8px var(--mono); text-transform: uppercase; letter-spacing: .09em; cursor: pointer; }
 .atlas-launch:hover { border-color: var(--mint); background: rgba(101,225,188,.13); }
 
@@ -98,6 +100,43 @@ a { color: inherit; }
 body.atlas-open { overflow: hidden; }
 .evidence-atlas { position: fixed; z-index: 100; inset: 0; padding: clamp(10px, 2vw, 28px); background: rgba(2,8,9,.88); backdrop-filter: blur(18px); }
 .evidence-atlas[hidden] { display: none; }
+
+body.study-guide-open { overflow: hidden; }
+.study-guide { position: fixed; z-index: 105; inset: 0; padding: clamp(10px, 3vw, 44px); background: rgba(2,7,9,.9); backdrop-filter: blur(20px); }
+.study-guide[hidden] { display: none; }
+.study-guide-shell { display: grid; grid-template-rows: auto minmax(0,1fr); width: min(1180px,100%); height: min(800px,100%); margin: auto; overflow: hidden; border: 1px solid rgba(181,148,255,.33); background: radial-gradient(circle at 84% 0, rgba(181,148,255,.15), transparent 28rem), radial-gradient(circle at 8% 90%, rgba(101,225,188,.09), transparent 30rem), #071213; box-shadow: 0 32px 100px rgba(0,0,0,.68); }
+.study-guide-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; padding: 22px 26px 18px; border-bottom: 1px solid var(--line); }
+.study-guide-header .eyebrow { color: #c9b3ff; }
+.study-guide-header h1 { margin: 5px 0 0; font-size: clamp(20px,2.5vw,32px); font-weight: 430; letter-spacing: -.04em; }
+.study-guide-header button { flex: 0 0 auto; width: 38px; height: 38px; border: 1px solid var(--line-strong); background: rgba(5,15,16,.7); color: var(--muted); font: 23px/1 var(--mono); cursor: pointer; }
+.study-guide-header button:hover { border-color: #c9b3ff; color: #c9b3ff; }
+.study-guide-body { display: grid; grid-template-columns: 320px minmax(0,1fr); min-height: 0; }
+.study-recipe-list { min-height: 0; overflow: auto; border-right: 1px solid var(--line); background: rgba(4,13,14,.64); }
+.study-recipe-list button { display: grid; width: 100%; padding: 15px 18px; border: 0; border-bottom: 1px solid var(--line); background: transparent; color: var(--muted); text-align: left; cursor: pointer; }
+.study-recipe-list button:hover, .study-recipe-list button.active { background: linear-gradient(90deg, rgba(181,148,255,.13), rgba(181,148,255,.025)); color: var(--ink); box-shadow: inset 2px 0 #b594ff; }
+.study-recipe-list small { color: #a98ce8; font: 7px var(--mono); text-transform: uppercase; letter-spacing: .11em; }
+.study-recipe-list strong { margin-top: 5px; font-size: 12px; font-weight: 540; }
+.study-recipe-list span { margin-top: 5px; color: var(--faint); font-size: 9px; line-height: 1.4; }
+.study-recipe-detail { min-height: 0; overflow: auto; padding: clamp(24px,4vw,48px); }
+.study-recipe-kind { color: #b594ff; font: 8px var(--mono); text-transform: uppercase; letter-spacing: .13em; }
+.study-recipe-detail h2 { max-width: 780px; margin: 11px 0 0; font-size: clamp(23px,3.4vw,40px); font-weight: 430; line-height: 1.08; letter-spacing: -.045em; }
+.study-recipe-summary { max-width: 760px; margin: 15px 0 0; color: #91a8a2; font-size: 12px; line-height: 1.65; }
+.study-recipe-manifest { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); margin-top: 24px; border: 1px solid var(--line); }
+.study-recipe-manifest > span { min-width: 0; padding: 10px 12px; border-right: 1px solid var(--line); }
+.study-recipe-manifest > span:last-child { border-right: 0; }
+.study-recipe-manifest small, .study-recipe-manifest strong { display: block; overflow: hidden; text-overflow: ellipsis; }
+.study-recipe-manifest small, .study-recipe-columns > section > small { color: var(--faint); font: 6px var(--mono); text-transform: uppercase; letter-spacing: .11em; }
+.study-recipe-manifest strong { margin-top: 5px; color: #c5d4d0; font-size: 9px; white-space: nowrap; }
+.study-recipe-columns { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 18px; }
+.study-recipe-columns section { padding: 14px; border: 1px solid var(--line); background: rgba(4,14,15,.48); }
+.study-recipe-columns ul { margin: 10px 0 0; padding: 0; list-style: none; }
+.study-recipe-columns li { position: relative; padding: 5px 0 5px 12px; color: #9fb2ad; font-size: 9px; line-height: 1.35; }
+.study-recipe-columns li::before { content: ""; position: absolute; top: 10px; left: 0; width: 4px; height: 4px; border-radius: 50%; background: var(--mint); }
+.study-recipe-boundary { display: grid; grid-template-columns: 112px 1fr; gap: 15px; margin: 18px 0 0; padding: 13px 15px; border-left: 2px solid var(--red); background: rgba(255,109,119,.055); color: #9eb0ac; font-size: 9px; line-height: 1.5; }
+.study-recipe-boundary b { color: var(--red); font: 7px var(--mono); text-transform: uppercase; letter-spacing: .1em; }
+.study-recipe-apply { margin-top: 20px; padding: 12px 17px; border: 1px solid rgba(101,225,188,.42); background: rgba(101,225,188,.1); color: var(--mint); font: 8px var(--mono); text-transform: uppercase; letter-spacing: .09em; cursor: pointer; }
+.study-recipe-apply:hover { border-color: var(--mint); background: rgba(101,225,188,.17); }
+.study-recipe-detail > em { display: block; margin-top: 9px; color: var(--faint); font: 7px var(--mono); font-style: normal; line-height: 1.5; }
 .atlas-shell { position: relative; display: grid; grid-template-rows: auto auto minmax(0,1fr); width: min(1480px, 100%); height: 100%; margin: auto; overflow: hidden; border: 1px solid rgba(101,225,188,.28); background: radial-gradient(circle at 82% -10%, rgba(85,200,255,.13), transparent 34rem), radial-gradient(circle at 12% 18%, rgba(101,225,188,.10), transparent 30rem), #071314; box-shadow: 0 30px 90px rgba(0,0,0,.62); }
 .atlas-shell::before { content: ""; position: absolute; inset: 0; opacity: .08; pointer-events: none; background-image: linear-gradient(rgba(101,225,188,.22) 1px, transparent 1px), linear-gradient(90deg, rgba(101,225,188,.22) 1px, transparent 1px); background-size: 48px 48px; mask-image: linear-gradient(90deg, black, transparent 68%); }
 .atlas-header, .atlas-tabs, .atlas-scroll { position: relative; z-index: 1; }
@@ -913,6 +952,10 @@ body.atlas-open { overflow: hidden; }
   .matrix-head, .matrix-row { grid-template-columns: .8fr repeat(4,1fr); }
   .system-dashboard { grid-template-columns: 1fr; }
   .physics-map-tabs { grid-template-columns: repeat(3,1fr); }
+  .study-guide-body { grid-template-columns: 255px minmax(0,1fr); }
+  .study-recipe-manifest { grid-template-columns: repeat(3,1fr); }
+  .study-recipe-manifest > span:nth-child(3) { border-right: 0; }
+  .study-recipe-manifest > span:nth-child(n+4) { border-top: 1px solid var(--line); }
 }
 
 @media (max-width: 640px) {
@@ -920,7 +963,7 @@ body.atlas-open { overflow: hidden; }
   .brand-art { display: none; }
   .method-link { display: none; }
   .topbar-actions { gap: 0; }
-  .atlas-launch { font-size: 7px; }
+  .atlas-launch, .study-guide-launch { padding-inline: 8px; font-size: 7px; }
   .pipeline-nav { grid-template-columns: repeat(4, 150px); }
   .evidence-ribbon { grid-template-columns: 1fr auto; }
   .evidence-ribbon > div:nth-child(2), .evidence-ribbon > div:nth-child(3) { display: none; }
@@ -954,6 +997,15 @@ body.atlas-open { overflow: hidden; }
   .physics-map-detail h2 { margin-top: 8px; }
   .physics-system-table { overflow-x: auto; }
   .physics-system-head,.physics-system-table > div { min-width: 720px; }
+  .study-guide { padding: 0; }
+  .study-guide-shell { width: 100%; height: 100%; border: 0; }
+  .study-guide-header { padding: 17px 15px 14px; }
+  .study-guide-body { grid-template-columns: 1fr; grid-template-rows: auto minmax(0,1fr); }
+  .study-recipe-list { display: flex; min-height: auto; overflow: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+  .study-recipe-list button { flex: 0 0 190px; border-right: 1px solid var(--line); border-bottom: 0; }
+  .study-recipe-list button:hover, .study-recipe-list button.active { box-shadow: inset 0 -2px #b594ff; }
+  .study-recipe-detail { padding: 22px 15px 40px; }
+  .study-recipe-columns { grid-template-columns: 1fr; }
   .growth-legend { flex-wrap: wrap; }
   .growth-legend small { width: 100%; margin-left: 0; }
   .lab-grid { display: block; }
@@ -1002,4 +1054,10 @@ body.atlas-open { overflow: hidden; }
   .notebook-sweep-toolbar { grid-template-columns: 1fr; }
   .atlas-scoreboard, .system-tabs, .gcts-anatomy { grid-template-columns: 1fr; }
   .atlas-title-block h1 { font-size: 26px; }
+  .study-guide-launch { max-width: 78px; overflow: hidden; white-space: nowrap; }
+  .study-recipe-manifest { grid-template-columns: 1fr 1fr; }
+  .study-recipe-manifest > span { border-top: 1px solid var(--line); }
+  .study-recipe-manifest > span:nth-child(odd) { border-right: 1px solid var(--line); }
+  .study-recipe-manifest > span:nth-child(even) { border-right: 0; }
+  .study-recipe-boundary { grid-template-columns: 1fr; gap: 6px; }
 }

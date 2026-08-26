@@ -78,7 +78,7 @@ def test_experiment_receipt_is_reproducible_and_claim_bounded() -> None:
     assert 'id="chargeValue"' in html
     assert 'id="surfaceValue"' in html
     assert 'type="text"' not in html[html.index('class="receipt-section"'):html.index('class="legend-section"')]
-    assert 'app.js?v=20260825-141' in html
+    assert 'app.js?v=20260825-142' in html
     assert "externalGeometry: receiptExternalGeometry()" in source
     assert 'candidateGeometryChangedByScheduling: false' in source
     assert 'surfaceCompletionRanking: {' in source

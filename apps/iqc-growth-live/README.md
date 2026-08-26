@@ -18,6 +18,18 @@ the GCTS anatomy view explains covers, oriented ports, markings, search, and
 promotion; and the claim ledger keeps proved, measured, and open results visibly
 separate. Its numbers are frozen benchmark results, not recomputed browser demos.
 
+Build 142 adds a question-driven **Study guide** beside the Evidence Atlas. It
+offers eight materials-science investigations spanning a crystalline positive
+control, molecular ice topology, aperiodic Cd–Yb continuation, moiré registry,
+epitaxy, polycrystal impingement, constricted-pore filling, and an amorphous
+recursion control. Each recipe is an inspectable convenience bundle over the
+existing sample, support hypothesis, marking reach/representation, growth
+protocol, and structural microscope. Applying one returns to the supplied
+positions and starts nothing automatically. Every choice remains editable, the
+receipt records whether it still matches the recipe, and each card states the
+claim boundary. A recipe adds no hidden physics and never authorizes candidate
+geometry or upgrades a benchmark claim.
+
 The right-hand **computational work laboratory** turns the scaling question into
 an explicit, inspectable comparison at 10×, 1,000×, and 100,000× the observed
 sample. It reports deterministic browser tree decisions and finite-neighborhood

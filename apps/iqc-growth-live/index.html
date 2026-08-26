@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260825-50">
+  <link rel="stylesheet" href="./style.css?v=20260825-51">
   <script type="importmap">
     {
       "imports": {
@@ -26,6 +26,7 @@
       </a>
       <div class="run-state"><i id="runStateDot"></i><span id="runStateText">Paused at seed</span></div>
       <div class="topbar-actions">
+        <button id="studyGuideButton" class="study-guide-launch" type="button" aria-controls="studyGuide" aria-expanded="false">Study guide</button>
         <button id="evidenceAtlasButton" class="atlas-launch" type="button" aria-controls="evidenceAtlas" aria-expanded="false">Evidence atlas</button>
         <a class="method-link" href="#auditedBenchmark">Methods ↓</a>
       </div>
@@ -166,6 +167,19 @@
             <div id="claimLedger" class="claim-ledger"></div>
             <a class="atlas-method-link" href="#auditedBenchmark" id="atlasMethodLink">Open the exhaustive methods and limitations ledger ↓</a>
           </section>
+        </div>
+      </div>
+    </section>
+
+    <section id="studyGuide" class="study-guide" hidden aria-label="Materials-science study guide" aria-modal="true" role="dialog">
+      <div class="study-guide-shell">
+        <header class="study-guide-header">
+          <div><p class="eyebrow">question → geometry → observable</p><h1>Design a structural-growth investigation</h1><p>Choose a scientific question. The guide composes existing receipt-visible controls and returns you to the known positions before anything runs.</p></div>
+          <button id="studyGuideClose" type="button" aria-label="Close study guide">×</button>
+        </header>
+        <div class="study-guide-body">
+          <nav id="studyRecipeList" class="study-recipe-list" aria-label="Study questions"></nav>
+          <article id="studyRecipeDetail" class="study-recipe-detail" aria-live="polite"></article>
         </div>
       </div>
     </section>
@@ -1500,7 +1514,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-141"></script>
+  <script type="module" src="./app.js?v=20260825-142"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>
