@@ -5869,3 +5869,23 @@ Cross-material agreement is therefore descriptive transfer evidence only. It nei
 proves that the underlying physical mechanisms are universal nor treats saved runs as
 independent specimens. Divergence identifies a useful next materials hypothesis—the
 geometric proxy may be environment-specific—but is not itself a causal explanation.
+
+## Build 183: from local correlation to a registered structural intervention
+
+An off-diagonal cell in the frozen-frontier identifiability matrix can now be promoted
+to a user-launched baseline / ablation experiment. The selected ordering is meaningful:
+the first channel becomes the ablated channel and the second is retained as its local
+comparison. The registration freezes pair labels and IDs, matrix mode, source frontier,
+candidate-set and audit digests, scenario, and the current growth-control serialization.
+
+Configuring either arm returns to supplied positions and never auto-executes. During
+the ablation arm, a pure target-free transform sets only the chosen score term's weight
+and signed contribution to zero. All exact candidate templates, proper-pose classes,
+hard gates, scheduling, and other weights remain unchanged. The transform is independently
+unit-tested for immutability, invalid-manifest failover, and target-taint rejection.
+
+Receipts and compact notebook summaries preserve the experiment manifest. The notebook
+intervention-factor ledger treats the registered arm/multiplier as an explicit search
+factor and still compares every other recorded control. Outcome attribution is withheld
+if the input or another control changed. This is an ablation of a geometry-encoded model
+term, not a claim that a physical mechanism can literally be removed from the material.

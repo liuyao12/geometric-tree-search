@@ -5222,3 +5222,20 @@ candidate set and receipt identity; the comparison never imports candidate rows,
 coordinates, target labels, or actions from either run. A difference can motivate a
 material-specific encoding hypothesis, but it does not establish universality, causal
 physics, or statistical independence between saved browser runs.
+
+### Build 183 · register a score-channel separation experiment
+
+The identifiability matrix now leads to an executable scientific control rather than
+ending at correlation. Any selected target-blind pair can register a two-arm experiment:
+the baseline retains both channels, while the ablation arm multiplies the first selected
+channel by zero and leaves the comparison channel unchanged. Registration records the
+pair, raw/conditioned mode, source frontier and audit digests, current growth controls,
+and selected arm, then returns to the supplied positions without pressing Play.
+
+The multiplier is applied only to signed soft-ranking terms. Candidate geometry, frozen
+ports, hard admission, local collision checks, target access, and the remaining score
+channels are unchanged. Each arm is run and saved separately; the notebook's existing
+intervention audit must independently confirm the same input digest and exactly one
+changed registered multiplier before an outcome difference is called one-factor.
+Turning off an encoded term tests the model representation—not removal of the underlying
+physical mechanism, potential energy, barrier, kinetics, or physical time.

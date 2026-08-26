@@ -20,6 +20,9 @@ import { assessGeometrySurrogatePromotion, evaluateFrozenGeometrySurrogate,
   from "./geometry-calculation-calibration.js?v=20260826-6";
 import { policyIdentifiabilityAcrossArms, policyIdentifiabilityAudit, policyIdentifiabilityTrajectory }
   from "./policy-identifiability.js?v=20260826-4";
+import { applyHypothesisSeparationMultipliers as applyFrozenHypothesisSeparationMultipliers,
+  validateHypothesisSeparationExperiment }
+  from "./hypothesis-separation.js?v=20260826-1";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -403,6 +406,13 @@ const policyIdentifiabilityRaw = $("policyIdentifiabilityRaw");
 const policyIdentifiabilityConditional = $("policyIdentifiabilityConditional");
 const policyIdentifiabilityMatrix = $("policyIdentifiabilityMatrix");
 const policyIdentifiabilityDetail = $("policyIdentifiabilityDetail");
+const policySeparationState = $("policySeparationState");
+const policySeparationArm = $("policySeparationArm");
+const policySeparationRegister = $("policySeparationRegister");
+const policySeparationBaseline = $("policySeparationBaseline");
+const policySeparationAblation = $("policySeparationAblation");
+const policySeparationClear = $("policySeparationClear");
+const policySeparationBoundary = $("policySeparationBoundary");
 const policyIdentifiabilityHistoryState = $("policyIdentifiabilityHistoryState");
 const policyIdentifiabilityHistory = $("policyIdentifiabilityHistory");
 const policyParetoState = $("policyParetoState");
@@ -1111,6 +1121,7 @@ let policyComparisonHistory = [];
 let selectedPolicySnapshotIndex = -1;
 let selectedPolicyPreviewId = "active";
 let policySnapshotCount = 0;
+let hypothesisSeparationExperiment = null;
 let selectedScalePassportId = null;
 let selectedScalePassportStage = -1;
 let selectedObservationProvenanceId = null;
@@ -7885,7 +7896,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-182",
+      buildId: "20260826-183",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -8583,6 +8594,7 @@ async function buildExperimentReceipt() {
     search: searchVisible ? {
       policy: policySelect.value,
       experimentProtocol: growthProtocolManifest(),
+      hypothesisSeparationExperiment: hypothesisSeparationReceipt(),
       physicsPreflightManifest: { ...physicsPreflightManifest,
         sha256: physicsPreflightManifestSha256,
         frozenBeforeFirstStructuralAction: Boolean(frozenPhysicsPreflightManifest) },
@@ -9777,6 +9789,20 @@ function notebookInterventionFactors(receipt) {
       pathEnsemble: [search.configurationalPathEnsemble?.dimensionlessExplorationScale,
         search.configurationalPathEnsemble?.seed],
     } : null) },
+    hypothesisSeparation: { label: "registered score-channel ablation", role: "search", value: serialized(
+      search?.hypothesisSeparationExperiment ? {
+        schema: search.hypothesisSeparationExperiment.schema,
+        pair: search.hypothesisSeparationExperiment.pair,
+        ablatedTermId: search.hypothesisSeparationExperiment.ablatedTermId,
+        retainedComparisonTermId: search.hypothesisSeparationExperiment.retainedComparisonTermId,
+        mode: search.hypothesisSeparationExperiment.mode,
+        sourceCandidateSetDigest: search.hypothesisSeparationExperiment.sourceCandidateSetDigest,
+        sourceAuditDigest: search.hypothesisSeparationExperiment.sourceAuditDigest,
+        arm: search.hypothesisSeparationExperiment.arm,
+        activeMultiplier: search.hypothesisSeparationExperiment.activeMultiplier,
+        settingsStillMatch: search.hypothesisSeparationExperiment.settingsStillMatch,
+        inputScenarioStillMatches: search.hypothesisSeparationExperiment.inputScenarioStillMatches,
+      } : null) },
     scheduling: { label: "tree scheduling", role: "search", value: serialized(search?.scheduling || null) },
     nucleation: { label: "growth nuclei", role: "geometry", value: serialized(search ? {
       requestedNuclei: search.multiNucleusGrowth?.requestedNuclei,
@@ -9989,6 +10015,7 @@ function experimentNotebookSummary(receipt) {
     physicsManifest: notebookPhysicsManifest(structuralLeaps),
     registeredOutcomeObservations: notebookRegisteredOutcomeObservations(receipt, trajectoryPoints,
       generatedSites, causalDepth),
+    hypothesisSeparationExperiment: search?.hypothesisSeparationExperiment || null,
     policyIdentifiability: latestPolicySnapshot?.hypothesisIdentifiability ? {
       latest: {
         frontierIndex: latestPolicySnapshot.index,
@@ -10973,7 +11000,9 @@ function renderExperimentNotebook() {
     button.classList.toggle("active", selected);
     button.setAttribute("aria-pressed", String(selected));
     button.title = `Receipt ${entry.receiptSha256}; coordinates excluded`;
-    const number = document.createElement("small"); number.textContent = `run ${index + 1} · stage ${entry.stageOrdinal}${entry.registeredStudy?.armLabel ? ` · ${entry.registeredStudy.armLabel}` : ""}`;
+    const number = document.createElement("small");
+    const experimentArm = entry.hypothesisSeparationExperiment?.arm;
+    number.textContent = `run ${index + 1} · stage ${entry.stageOrdinal}${entry.registeredStudy?.armLabel ? ` · ${entry.registeredStudy.armLabel}` : experimentArm ? ` · hypothesis ${experimentArm}` : ""}`;
     const material = document.createElement("strong"); material.textContent = entry.material;
     const state = document.createElement("span"); state.textContent = `${entry.explicitSites.toLocaleString()} sites · ${entry.marking}`;
     const claim = document.createElement("em"); claim.textContent = entry.strongestClaim;
@@ -12850,6 +12879,10 @@ function baseCandidateScoreTerms(entry) {
   ];
 }
 
+function applyHypothesisSeparationMultipliers(terms) {
+  return applyFrozenHypothesisSeparationMultipliers(terms, hypothesisSeparationExperiment);
+}
+
 function activeCandidateScoreTerms(entry, includeExploration = true) {
   const evaluation = entry.evaluation;
   const terms = [...baseCandidateScoreTerms(entry),
@@ -12907,7 +12940,7 @@ function activeCandidateScoreTerms(entry, includeExploration = true) {
   ];
   if (includeExploration) terms.push(scoreTerm("exploration", "path exploration", entry.explorationOffset, 1,
     "seeded configurational sampling offset", "Not temperature, Boltzmann probability, or physical noise."));
-  return terms;
+  return applyHypothesisSeparationMultipliers(terms);
 }
 
 function oneFactorPolicyTerm(policyId, entry, label) {
@@ -16279,6 +16312,7 @@ function applyStudyArmSettings(arm) {
 function applyStudyRecipe(recipeId) {
   const recipe = MATERIALS_STUDY_RECIPES.find((entry) => entry.id === recipeId);
   if (!recipe) return;
+  hypothesisSeparationExperiment = null;
   selectedStudyRecipeId = recipe.id;
   scenarioSelect.value = recipe.scenario;
   if (recipe.scenario === "iceVI") iceViMicrostate = null;
@@ -18934,6 +18968,16 @@ function physicsTranslationRecords(leap = null) {
   const bondValenceStateBefore = leap?.before?.bondValenceState || null;
   const bondValenceStateAfter = leap?.after?.bondValenceState || null;
   return [
+    { id: "hypothesis-separation", process: "controlled separation of correlated geometry-encoded ranking hypotheses",
+      status: hypothesisSeparationExperiment ? "soft" : "open",
+      role: hypothesisSeparationExperiment ? "registered one-channel score intervention" : "no registered separation arm",
+      encoding: hypothesisSeparationExperiment
+        ? `${hypothesisSeparationExperiment.ablatedTermLabel} is ${hypothesisSeparationExperiment.arm === "ablation" ? "multiplied by zero" : "retained at baseline"}; ${hypothesisSeparationExperiment.retainedComparisonTermLabel} remains unchanged; source ${hypothesisSeparationExperiment.mode} audit ${hypothesisSeparationExperiment.sourceAuditDigest}`
+        : "select a target-blind identifiability-matrix pair, then register a baseline / first-channel ×0 comparison",
+      evidence: hypothesisSeparationExperiment
+        ? `${hypothesisSeparationSettingsStillMatch() ? "Registered growth controls still match." : "One or more other growth controls changed."} Input identity and one-factor validity are checked only after both executed arms are saved.`
+        : "No score-channel separation experiment is active.",
+      boundary: "Multiplying one geometric ranking contribution by zero tests this encoded model term, not removal of the underlying physical mechanism. It changes no candidate geometry or hard admission, supplies no target, and infers no energy, kinetics, or time." },
     { id: "steric", process: "short-range repulsion / species contact", status: "hard", role: "hard admission gate",
       encoding: `${coloredDistanceEnvelopes?.records?.length || 0} colored pair envelopes with exact species coincidence and learned hard-exclusion radii`,
       evidence: leapResult,
@@ -20795,10 +20839,101 @@ function renderPolicyIdentifiabilityHistory(snapshot, audit) {
   policyIdentifiabilityHistory.append(pairLabel);
 }
 
+function hypothesisSeparationSettingsStillMatch(experiment = hypothesisSeparationExperiment) {
+  return Boolean(experiment && JSON.stringify(currentGrowthProtocolSettings()) === experiment.growthSettingsJson);
+}
+
+function hypothesisSeparationReceipt() {
+  if (!validateHypothesisSeparationExperiment(hypothesisSeparationExperiment)) return null;
+  return { ...hypothesisSeparationExperiment,
+    activeMultiplier: hypothesisSeparationExperiment.arm === "ablation" ? 0 : 1,
+    settingsStillMatch: hypothesisSeparationSettingsStillMatch(),
+    inputScenarioStillMatches: scenarioSelect.value === hypothesisSeparationExperiment.scenarioId,
+    candidateGeometryChanged: false,
+    hardAdmissionChanged: false,
+    targetUsed: false,
+    autoExecuted: false,
+  };
+}
+
+function configureHypothesisSeparationArm(arm) {
+  if (!validateHypothesisSeparationExperiment(hypothesisSeparationExperiment)
+      || !["baseline", "ablation"].includes(arm)) return;
+  hypothesisSeparationExperiment = { ...hypothesisSeparationExperiment, arm };
+  activeStudyRecipeId = null;
+  enterPipelineStage(0);
+  const multiplier = arm === "ablation" ? "×0" : "×1";
+  receiptStatus.textContent = `${hypothesisSeparationExperiment.ablatedTermLabel} ${multiplier} ${arm} configured at supplied positions · no growth executed.`;
+}
+
+function clearHypothesisSeparationExperiment() {
+  if (!hypothesisSeparationExperiment) return;
+  hypothesisSeparationExperiment = null;
+  enterPipelineStage(0);
+  receiptStatus.textContent = "Hypothesis-separation experiment cleared at supplied positions · no growth executed.";
+}
+
+function registerHypothesisSeparationExperiment(snapshot, audit, selected) {
+  if (!snapshot || !audit || !selected || selected.diagonal) return;
+  hypothesisSeparationExperiment = {
+    schema: 1,
+    experimentKind: "single-score-channel ablation",
+    pair: { firstId: selected.firstId, firstLabel: selected.firstLabel,
+      secondId: selected.secondId, secondLabel: selected.secondLabel },
+    ablatedTermId: selected.firstId,
+    ablatedTermLabel: selected.firstLabel,
+    retainedComparisonTermId: selected.secondId,
+    retainedComparisonTermLabel: selected.secondLabel,
+    mode: audit.mode,
+    sourceFrontierIndex: snapshot.index,
+    sourceCandidateSetDigest: audit.candidateSetDigest,
+    sourceAuditDigest: audit.auditDigest,
+    sourcePearson: selected.pearson,
+    sourceSpearman: selected.spearman,
+    scenarioId: scenarioSelect.value,
+    growthSettingsJson: JSON.stringify(currentGrowthProtocolSettings()),
+    arm: "baseline",
+    registrationRule: "user-selected target-blind matrix pair; first channel is multiplied by zero only in the ablation arm",
+    candidateRowsEmbedded: false,
+    coordinatesEmbedded: false,
+    targetUsed: false,
+  };
+  configureHypothesisSeparationArm("baseline");
+}
+
+function renderHypothesisSeparationExperiment(snapshot, audit = null, selected = null) {
+  const experiment = hypothesisSeparationExperiment;
+  policySeparationRegister.disabled = !snapshot || !audit || !selected;
+  policySeparationBaseline.disabled = !experiment;
+  policySeparationAblation.disabled = !experiment;
+  policySeparationClear.disabled = !experiment;
+  policySeparationBaseline.classList.toggle("active", experiment?.arm === "baseline");
+  policySeparationAblation.classList.toggle("active", experiment?.arm === "ablation");
+  policySeparationRegister.textContent = selected
+    ? `Register ${selected.firstLabel} ×0 test` : "Register selected-channel ablation";
+  policySeparationRegister.onclick = selected
+    ? () => registerHypothesisSeparationExperiment(snapshot, audit, selected) : null;
+  policySeparationBaseline.onclick = experiment ? () => configureHypothesisSeparationArm("baseline") : null;
+  policySeparationAblation.onclick = experiment ? () => configureHypothesisSeparationArm("ablation") : null;
+  policySeparationClear.onclick = experiment ? clearHypothesisSeparationExperiment : null;
+  if (!experiment) {
+    policySeparationState.textContent = selected
+      ? `${selected.firstLabel} conditioned on ${selected.secondLabel}` : "select a hypothesis pair";
+    policySeparationArm.textContent = "not registered";
+    policySeparationBoundary.textContent = "Registration freezes the selected pair and current growth controls, resets to the supplied positions, and executes nothing. Save an executed baseline before configuring the ablation arm.";
+    return;
+  }
+  policySeparationState.textContent = `${experiment.ablatedTermLabel} ×0 | ${experiment.retainedComparisonTermLabel} retained`;
+  policySeparationArm.textContent = `${experiment.arm} · ${experiment.mode}`;
+  const settingsState = hypothesisSeparationSettingsStillMatch(experiment) ? "registered controls intact" : "other controls changed";
+  policySeparationBoundary.textContent = `${settingsState} · source frontier ${experiment.sourceFrontierIndex} · ${experiment.sourceCandidateSetDigest} · audit ${experiment.sourceAuditDigest}. The notebook must verify identical input and exactly one changed multiplier; this is a structural ranking intervention, not removal of physical mechanism, energy, or kinetics.`;
+}
+
 function renderPolicyIdentifiabilityAudit(snapshot) {
   policyIdentifiabilityMatrix.replaceChildren(); policyIdentifiabilityDetail.replaceChildren();
   policyIdentifiabilityHistory.replaceChildren();
   const mode = snapshot?.identifiabilityMode || "conditional";
+  renderHypothesisSeparationExperiment(snapshot);
   policyIdentifiabilityRaw.disabled = !snapshot; policyIdentifiabilityConditional.disabled = !snapshot;
   policyIdentifiabilityRaw.setAttribute("aria-pressed", String(mode === "raw"));
   policyIdentifiabilityConditional.setAttribute("aria-pressed", String(mode === "conditional"));
@@ -20877,6 +21012,7 @@ function renderPolicyIdentifiabilityAudit(snapshot) {
       + " · no target, coordinates, candidate geometry, admission, fitting, or execution. Residual correlation does not establish causal or physical dependence.";
     policyIdentifiabilityDetail.append(heading, status, coefficients, boundary);
   }
+  renderHypothesisSeparationExperiment(snapshot, audit, selected);
   renderPolicyIdentifiabilityHistory(snapshot, audit);
 }
 
@@ -22535,11 +22671,13 @@ notebookSweepFactor.addEventListener("change", () => {
 });
 notebookSweepOutcome.addEventListener("change", renderExperimentNotebook);
 scenarioSelect.addEventListener("change", () => {
+  hypothesisSeparationExperiment = null;
   renderEnsembleControls();
   renderIceViMicrostateControls();
   enterPipelineStage(0);
 });
 iceViMicrostateButton.addEventListener("click", () => {
+  hypothesisSeparationExperiment = null;
   iceViMicrostateSeed++;
   iceViMicrostate = resolveIceViIceRuleMicrostate(iceViMicrostateSeed);
   orderPrototypeLibrary = null;
@@ -22547,12 +22685,14 @@ iceViMicrostateButton.addEventListener("click", () => {
   enterPipelineStage(0);
 });
 iceViAverageButton.addEventListener("click", () => {
+  hypothesisSeparationExperiment = null;
   iceViMicrostate = null;
   orderPrototypeLibrary = null;
   renderIceViMicrostateControls();
   enterPipelineStage(0);
 });
 ensembleFrameSelect.addEventListener("change", () => {
+  hypothesisSeparationExperiment = null;
   selectImportedFrame(Number(ensembleFrameSelect.value) || 0);
 });
 ensembleEvidenceSelect.addEventListener("change", () => {
