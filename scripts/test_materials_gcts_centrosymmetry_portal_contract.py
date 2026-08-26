@@ -8,8 +8,8 @@ MODULE = (ROOT / "apps/iqc-growth-live/centrosymmetry-geometry.js").read_text()
 
 
 def test_centrosymmetry_microscope_is_public_and_explicitly_bounded():
-    assert 'buildId: "20260826-165"' in APP
-    assert 'app.js?v=20260826-165' in HTML
+    assert 'buildId: "20260826-166"' in APP
+    assert 'app.js?v=20260826-166' in HTML
     assert 'value="centrosymmetry"' in HTML
     assert 'id="centrosymmetryNeighborSelect"' in HTML
     assert 'id="centrosymmetryMapButton"' in HTML

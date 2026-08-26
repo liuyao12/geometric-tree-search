@@ -2818,6 +2818,42 @@ function structuralOrientationalOrderSnapshot() {
   };
 }
 
+function structuralCentrosymmetrySnapshot() {
+  if (pipelineStage !== 4) return null;
+  const { stats } = currentLiveStructure();
+  if (!stats?.count || !referenceStructuralStats?.count) return null;
+  const inference = inferCentrosymmetryNeighborCount(referenceStructuralStats.neighborCounts || [],
+    referenceStructuralStats.dimension);
+  const neighborCount = inference.selectedNeighborCount;
+  const field = localCentrosymmetry(stats.neighborVectors || [], { neighborCount });
+  return {
+    dimension: stats.dimension,
+    neighborCount,
+    shellSelection: "reference-configuration complete-shell inference",
+    shellInferenceCandidates: inference.candidates,
+    neighborCutoffInNearestNeighborUnits: COORDINATION_CUTOFF,
+    normalizedAmplitudeDefinition: "sqrt(sum |r_i+r_j|^2 / (2 sum |r_i|^2)) after exact minimum-weight pairing",
+    bins: field.bins,
+    histogram: [...field.histogram],
+    meanAmplitude: field.meanAmplitude,
+    medianAmplitude: field.medianAmplitude,
+    percentile90Amplitude: field.percentile90Amplitude,
+    highAsymmetryFraction: field.highAsymmetryFraction,
+    resolvedCenters: field.resolvedCenters,
+    unresolvedCenters: field.unresolvedCenters,
+    resolvedFraction: field.resolvedFraction,
+    analysisWindowAtoms: stats.count,
+    exactOptimalPairing: true,
+    translationInvariant: true,
+    properRotationInvariant: true,
+    atomPermutationInvariant: true,
+    uniformScaleInvariant: true,
+    provenance: CENTROSYMMETRY_PROVENANCE,
+    targetUsed: false,
+    usedAsGrowthInput: false,
+  };
+}
+
 function structuralScatteringSnapshot() {
   if (pipelineStage !== 4) return null;
   const { stats } = currentLiveStructure();
@@ -2894,6 +2930,51 @@ function localSymmetryTransition(before, after) {
     usedAsGrowthInput: false,
     phaseTransitionClaimed: false,
     latentHeatClaimed: false,
+    kineticsClaimed: false,
+  };
+}
+
+function centrosymmetryTransition(before, after) {
+  const comparable = before?.histogram?.length && before.histogram.length === after?.histogram?.length
+    && before.dimension === after.dimension && before.neighborCount === after.neighborCount;
+  if (!comparable) return { available: false,
+    reason: "matching dimension- and shell-resolved centrosymmetry snapshots unavailable",
+    targetUsed: false, usedAsGrowthInput: false };
+  const distributionDistance = jensenShannonDistance(before.histogram, after.histogram);
+  const meanDelta = after.meanAmplitude - before.meanAmplitude;
+  const percentile90Delta = after.percentile90Amplitude - before.percentile90Amplitude;
+  const highAsymmetryFractionDelta = after.highAsymmetryFraction - before.highAsymmetryFraction;
+  let phenotype = "local inversion-asymmetry distribution retained";
+  if (meanDelta >= .015 || percentile90Delta >= .025) phenotype = "local inversion asymmetry increased";
+  else if (meanDelta <= -.015 || percentile90Delta <= -.025) phenotype = "local inversion asymmetry decreased";
+  else if (distributionDistance >= .05) phenotype = "local inversion-asymmetry distribution redistributed";
+  return {
+    available: true,
+    dimension: after.dimension,
+    neighborCount: after.neighborCount,
+    phenotype,
+    meanBefore: before.meanAmplitude,
+    meanAfter: after.meanAmplitude,
+    meanDelta,
+    percentile90Before: before.percentile90Amplitude,
+    percentile90After: after.percentile90Amplitude,
+    percentile90Delta,
+    highAsymmetryFractionBefore: before.highAsymmetryFraction,
+    highAsymmetryFractionAfter: after.highAsymmetryFraction,
+    highAsymmetryFractionDelta,
+    distributionDistance,
+    resolvedBefore: before.resolvedCenters,
+    resolvedAfter: after.resolvedCenters,
+    unresolvedBefore: before.unresolvedCenters,
+    unresolvedAfter: after.unresolvedCenters,
+    exactOptimalPairing: true,
+    properRotationInvariant: true,
+    uniformScaleInvariant: true,
+    targetUsed: false,
+    usedAsGrowthInput: false,
+    namedDefectClaimed: false,
+    defectEnergyClaimed: false,
+    phaseTransitionClaimed: false,
     kineticsClaimed: false,
   };
 }
@@ -6868,6 +6949,7 @@ async function buildExperimentReceipt() {
   const studyDesign = activeStudyRecipeAudit();
   const referenceSq = ensureStructureFactor(referenceStructuralStats);
   const referenceOrder = ensureOrientationalOrder(referenceStructuralStats);
+  const referenceCentrosymmetry = ensureCentrosymmetry(referenceStructuralStats);
   const trajectoryFrames = scenarioSelect.value === "imported" ? importedTrajectoryFrames() : [];
   const recordedConditions = activeMeasurementConditions();
   const externalCalculation = activeCalculationProvenance();
@@ -6923,7 +7005,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-165",
+      buildId: "20260826-166",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7345,6 +7427,39 @@ async function buildExperimentReceipt() {
         usedAsGrowthInput: false,
         phaseProbabilityClaimed: false,
         freeEnergyClaimed: false,
+      },
+      localCentrosymmetry: {
+        dimension: referenceStructuralStats.dimension,
+        definition: "Kelchner centrosymmetry sum with exact minimum-weight opposite-neighbor pairing; displayed as a bounded scale-normalized inversion-asymmetry amplitude",
+        provenance: CENTROSYMMETRY_PROVENANCE,
+        neighborCount: referenceCentrosymmetry.neighborCount,
+        shellSelection: referenceCentrosymmetry.shellMode,
+        shellInferenceCandidates: referenceCentrosymmetry.inference.candidates,
+        neighborCutoffInNearestNeighborUnits: COORDINATION_CUTOFF,
+        bins: referenceCentrosymmetry.bins,
+        meanAmplitude: receiptRound(referenceCentrosymmetry.meanAmplitude),
+        medianAmplitude: receiptRound(referenceCentrosymmetry.medianAmplitude),
+        percentile90Amplitude: receiptRound(referenceCentrosymmetry.percentile90Amplitude),
+        highAsymmetryFractionAtLeastPointTwoFive: receiptRound(referenceCentrosymmetry.highAsymmetryFraction),
+        resolvedCenters: referenceCentrosymmetry.resolvedCenters,
+        unresolvedCenters: referenceCentrosymmetry.unresolvedCenters,
+        resolvedFraction: receiptRound(referenceCentrosymmetry.resolvedFraction),
+        exactOptimalPairing: true,
+        spatialMap: {
+          enabled: centrosymmetryMapEnabled,
+          colormap: "sequential mint → amber → coral wire halos; unresolved centers unhaloed",
+          elementCoreColorsPreserved: true,
+          coordinatesChanged: false,
+          candidateGeometryChanged: false,
+        },
+        translationInvariant: true,
+        properRotationInvariant: true,
+        atomPermutationInvariant: true,
+        uniformScaleInvariant: true,
+        usedAsGrowthInput: false,
+        namedDefectClaimed: false,
+        defectEnergyClaimed: false,
+        phaseProbabilityClaimed: false,
       },
       multiscaleOrderPathway: {
         role: "interactive posthoc comparison of local orientational order and finite-observation reciprocal-space peak prominence across certified structural states",
@@ -8056,6 +8171,7 @@ async function buildExperimentReceipt() {
         index: leap.index, status: leap.status, label: leap.label,
         before: leap.before, proposal: leap.proposal, tests: leap.tests,
         relaxation: leap.relaxation || null, localSymmetryTransition: leap.localSymmetryTransition || null,
+        centrosymmetryTransition: leap.centrosymmetryTransition || null,
         reciprocalSpaceTransition: leap.reciprocalSpaceTransition || null,
         after: leap.after,
         targetUsed: leap.targetUsed, physicalTimeModeled: leap.physicalTimeModeled,
@@ -8496,6 +8612,8 @@ function notebookInterventionFactors(receipt) {
       rdfPair: receipt.structuralEvidence?.rdf?.pair,
       orientationalHarmonic: receipt.structuralEvidence?.localOrientationalOrder?.harmonic,
       orientationalSpatialMapEnabled: receipt.structuralEvidence?.localOrientationalOrder?.spatialMap?.enabled,
+      centrosymmetryNeighborCount: receipt.structuralEvidence?.localCentrosymmetry?.neighborCount,
+      centrosymmetrySpatialMapEnabled: receipt.structuralEvidence?.localCentrosymmetry?.spatialMap?.enabled,
     }) },
     costModel: { label: "cost estimate assumptions", role: "analysis only", value: serialized(cost?.assumptions || null) },
   };
@@ -8630,9 +8748,11 @@ function experimentNotebookSummary(receipt) {
     acceptedThisLeap: 0, rejectedThisLeap: 0, cumulativeAccepted: 0, cumulativeRejected: 0, depth: 0,
     morphology: initialLeapState.morphology || null, interfaces: initialLeapState.interfaces || null,
     orientationalOrder: initialLeapState.orientationalOrder || null,
+    centrosymmetry: initialLeapState.centrosymmetry || null,
     scattering: initialLeapState.scattering || null,
     feedstock: initialLeapState.feedstock || null, domain: initialLeapState.domain || null,
-    relaxation: null, localSymmetryTransition: null, reciprocalSpaceTransition: null }];
+    relaxation: null, localSymmetryTransition: null, centrosymmetryTransition: null,
+    reciprocalSpaceTransition: null }];
   structuralLeaps.forEach((leap, index) => {
     cumulativeAccepted += leap.after?.accepted || 0;
     cumulativeRejected += leap.after?.rejected || 0;
@@ -8645,10 +8765,12 @@ function experimentNotebookSummary(receipt) {
       cumulativeAccepted, cumulativeRejected, depth: leap.after?.depth || 0,
       morphology: leap.after?.morphology || null, interfaces: leap.after?.interfaces || null,
       orientationalOrder: leap.after?.orientationalOrder || null,
+      centrosymmetry: leap.after?.centrosymmetry || null,
       scattering: leap.after?.scattering || null,
       feedstock: leap.after?.feedstock || null, domain: leap.after?.domain || null,
       relaxation: leap.relaxation || null,
       localSymmetryTransition: leap.localSymmetryTransition || null,
+      centrosymmetryTransition: leap.centrosymmetryTransition || null,
       reciprocalSpaceTransition: leap.reciprocalSpaceTransition || null });
   });
   return {
@@ -8910,11 +9032,17 @@ const NOTEBOOK_TRAJECTORY_OBSERVABLES = {
   localOrder: { label: "mean local q₆ / |ψ₆|",
     value: (point) => point.orientationalOrder?.harmonics?.[6]?.mean,
     format: (value) => value.toFixed(3) },
+  centrosymmetry: { label: "mean local inversion asymmetry",
+    value: (point) => point.centrosymmetry?.meanAmplitude,
+    format: (value) => value.toFixed(3) },
   reciprocalProminence: { label: "S(q) dominant-peak prominence",
     value: (point) => point.scattering?.summary?.peakProminence,
     format: (value) => value.toFixed(3) },
   localOrderShift: { label: "local-symmetry JS distance",
     value: (point) => point.localSymmetryTransition?.meanDistributionDistance,
+    format: (value) => value.toFixed(3) },
+  centrosymmetryShift: { label: "centrosymmetry JS distance",
+    value: (point) => point.centrosymmetryTransition?.distributionDistance,
     format: (value) => value.toFixed(3) },
   scatteringShift: { label: "reciprocal-space JS distance",
     value: (point) => point.reciprocalSpaceTransition?.spectralShapeDistance,
@@ -16196,7 +16324,8 @@ function performOffLatticeEvent() {
   const relaxationAuthorized = reconstructionCertified;
   const before = { atoms: atoms.length, clusters: placedClusters.length, frontier: frontierCandidates.length,
     morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
-    orientationalOrder: structuralOrientationalOrderSnapshot(), scattering: structuralScatteringSnapshot(),
+    orientationalOrder: structuralOrientationalOrderSnapshot(), centrosymmetry: structuralCentrosymmetrySnapshot(),
+    scattering: structuralScatteringSnapshot(),
     chargeMoment: structuralChargeMomentSnapshot(), bondValenceState: structuralBondValenceSnapshot(),
     feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() };
   const batch = commutingFrontierBatch();
@@ -16207,7 +16336,8 @@ function performOffLatticeEvent() {
       after: { atoms: atoms.length, clusters: placedClusters.length, accepted: 0, rejected: 0,
         depth: Math.max(0, ...placedClusters.map((placement) => placement.depth || 0)),
         morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
-        orientationalOrder: structuralOrientationalOrderSnapshot(), scattering: structuralScatteringSnapshot(),
+        orientationalOrder: structuralOrientationalOrderSnapshot(), centrosymmetry: structuralCentrosymmetrySnapshot(),
+    scattering: structuralScatteringSnapshot(),
         chargeMoment: structuralChargeMomentSnapshot(), bondValenceState: structuralBondValenceSnapshot(),
         feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() },
       claimBoundary: "This is a certified finite structural fixed point. It is not equilibrium, a stopping time, or evidence that a physical interface cannot advance by an unmodeled mechanism." });
@@ -16379,7 +16509,8 @@ function performOffLatticeEvent() {
     after: { atoms: atoms.length, clusters: placedClusters.length, accepted: acceptedInBatch, rejected: rejectedInBatch,
       depth: Math.max(0, ...placedClusters.map((placement) => placement.depth || 0)),
       morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
-      orientationalOrder: structuralOrientationalOrderSnapshot(), scattering: structuralScatteringSnapshot(),
+      orientationalOrder: structuralOrientationalOrderSnapshot(), centrosymmetry: structuralCentrosymmetrySnapshot(),
+    scattering: structuralScatteringSnapshot(),
       chargeMoment: structuralChargeMomentSnapshot(), bondValenceState: structuralBondValenceSnapshot(),
       feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() },
     claimBoundary: relaxation?.accepted
@@ -16393,7 +16524,8 @@ function performIceAnchorEvent() {
   const wave = iceAnchorTrace?.waves[iceAnchorWaveIndex];
   const before = { atoms: atoms.length, clusters: acceptedDecisions,
     frontier: wave?.candidateAnchors || 0, morphology: structuralMorphologySnapshot(),
-    orientationalOrder: structuralOrientationalOrderSnapshot(), scattering: structuralScatteringSnapshot(),
+    orientationalOrder: structuralOrientationalOrderSnapshot(), centrosymmetry: structuralCentrosymmetrySnapshot(),
+    scattering: structuralScatteringSnapshot(),
     chargeMoment: structuralChargeMomentSnapshot(), bondValenceState: structuralBondValenceSnapshot(),
     interfaces: structuralInterfaceSnapshot(), feedstock: currentFeedstockSnapshot(),
     domain: currentGrowthDomainSnapshot() };
@@ -16433,7 +16565,8 @@ function performIceAnchorEvent() {
       after: { atoms: atoms.length, clusters: acceptedDecisions, accepted: 0,
         rejected: wave.rejectedCandidateAnchors, depth: wave.wave,
         morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
-        orientationalOrder: structuralOrientationalOrderSnapshot(), scattering: structuralScatteringSnapshot(),
+        orientationalOrder: structuralOrientationalOrderSnapshot(), centrosymmetry: structuralCentrosymmetrySnapshot(),
+    scattering: structuralScatteringSnapshot(),
         chargeMoment: structuralChargeMomentSnapshot(), bondValenceState: structuralBondValenceSnapshot(),
         feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() },
       claimBoundary: `The frozen ${iceAnchorTrace.portCount}-port grammar reaches a finite structural fixed point. Unresolved ${iceAnchorTrace.orientationSpecies} motion, proton/deuteron barriers, entropy, and physical stopping time are not modeled.` });
@@ -16469,7 +16602,8 @@ function performIceAnchorEvent() {
     after: { atoms: atoms.length, clusters: acceptedDecisions, accepted: wave.acceptedAnchors,
       rejected: wave.rejectedCandidateAnchors, depth: wave.wave,
       morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
-      orientationalOrder: structuralOrientationalOrderSnapshot(), scattering: structuralScatteringSnapshot(),
+      orientationalOrder: structuralOrientationalOrderSnapshot(), centrosymmetry: structuralCentrosymmetrySnapshot(),
+    scattering: structuralScatteringSnapshot(),
       chargeMoment: structuralChargeMomentSnapshot(), bondValenceState: structuralBondValenceSnapshot(),
       feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() },
     claimBoundary: `The browser jumps to oxygen anchors shared by every surviving ${iceAnchorTrace.moleculeLabel} orientation domain. It does not integrate ${iceAnchorTrace.orientationSpecies} rearrangement, tunnelling, diffusion, relaxation, probability, or elapsed physical time.` });
@@ -17353,6 +17487,7 @@ function physicsTranslationRecords(leap = null) {
   const relaxationDisplacement = relaxationDisplacementField();
   const relaxationLocalEnvironment = relaxationLocalEnvironmentField();
   const localSymmetry = leap?.localSymmetryTransition || null;
+  const centrosymmetry = leap?.centrosymmetryTransition || null;
   const reciprocalSpace = leap?.reciprocalSpaceTransition || null;
   const bondValenceStateBefore = leap?.before?.bondValenceState || null;
   const bondValenceStateAfter = leap?.after?.bondValenceState || null;
@@ -17409,6 +17544,16 @@ function physicsTranslationRecords(leap = null) {
         ? `${localSymmetry.phenotype}; mean distribution distance ${localSymmetry.meanDistributionDistance.toFixed(3)}; resolved centers ${localSymmetry.resolvedBefore} → ${localSymmetry.resolvedAfter}.`
         : "Execute one structural leap to compare local-symmetry fingerprints.",
       boundary: "This compares local geometric fingerprints. It is not a crystallization or phase-transition label, order-parameter free energy, latent heat, entropy, transition probability, rate, or physical time, and it never ranks or admits growth." },
+    { id: "centrosymmetry", process: "local inversion symmetry / defect-sensitive geometry",
+      status: centrosymmetry?.available ? "observed" : "unavailable",
+      role: centrosymmetry?.available ? "post-leap defect-sensitive geometric fingerprint" : "awaiting paired centrosymmetry distributions",
+      encoding: centrosymmetry?.available
+        ? `${centrosymmetry.neighborCount}-neighbor exact minimum-weight opposite-pairing; bounded scale-normalized amplitude; Jensen–Shannon distance over fixed 24-bin histograms`
+        : "no matching before/after dimension- and shell-resolved centrosymmetry snapshots",
+      evidence: centrosymmetry?.available
+        ? `${centrosymmetry.phenotype}; mean ${centrosymmetry.meanBefore.toFixed(3)} → ${centrosymmetry.meanAfter.toFixed(3)}; p90 ${centrosymmetry.percentile90Before.toFixed(3)} → ${centrosymmetry.percentile90After.toFixed(3)}; distribution distance ${centrosymmetry.distributionDistance.toFixed(3)}; resolved centers ${centrosymmetry.resolvedBefore} → ${centrosymmetry.resolvedAfter}.`
+        : "Execute one structural leap to compare local inversion-asymmetry fingerprints.",
+      boundary: "Centrosymmetry is defect-sensitive local geometry, not a named vacancy, interstitial, antisite, stacking fault, dislocation, grain boundary, formation energy, stress, temperature, transition rate, or physical time. It never ranks or admits growth." },
     { id: "reciprocal-space", process: "medium-/long-range positional-order evolution",
       status: reciprocalSpace?.available ? "observed" : "unavailable",
       role: reciprocalSpace?.available ? "post-leap finite-observation scattering fingerprint" : "awaiting paired geometric S(q)",
@@ -17611,6 +17756,7 @@ const PHYSICS_CONTROL_ROUTES = Object.freeze({
   "relaxation-ensemble": { stage: 0, controlId: "scenarioSelect", label: "Choose a relaxation ensemble" },
   "local-rearrangement": { stage: 0, controlId: "scenarioSelect", label: "Choose paired structural snapshots" },
   "local-symmetry": { stage: 4, controlId: "structureObservableSelect", label: "Open structural microscope" },
+  centrosymmetry: { stage: 4, controlId: "structureObservableSelect", label: "Open defect-geometry microscope" },
   "reciprocal-space": { stage: 4, controlId: "structureObservableSelect", label: "Open structural microscope" },
   "constraint-projection": { stage: 4, controlId: "structuralRelaxationSelect", label: "Configure local projection" },
   connection: { stage: 3, controlId: "markingRepresentationSelect", label: "Configure GCTS section" },
@@ -17915,7 +18061,8 @@ function renderMultiscaleOrderPathway() {
       ...leapHistory.map((leap, leapIndex) => ({ leapIndex, index: leap.index, status: leap.status,
         label: `leap ${leap.index}`, state: leap.after }))]
     : [{ leapIndex: -1, index: 0, status: "seed", label: "seed", state: {
-      orientationalOrder: structuralOrientationalOrderSnapshot(), scattering: structuralScatteringSnapshot() } }];
+      orientationalOrder: structuralOrientationalOrderSnapshot(), centrosymmetry: structuralCentrosymmetrySnapshot(),
+    scattering: structuralScatteringSnapshot() } }];
   const points = records.map((record) => {
     const order = record.state?.orientationalOrder;
     const harmonic = order?.harmonics?.[multiscalePathwayHarmonic];
@@ -18112,10 +18259,11 @@ function renderStructuralLeap(leap = null) {
       ["02 · proposal", "frontier not sampled", `${frontierCandidates.length} frozen candidates`],
       ["03 · certificate", "not evaluated", "geometry gates await one action"],
       ["04 · local symmetry", "not compared", "qℓ / |ψℓ| distributions await one leap"],
-      ["05 · reciprocal structure", "not compared", "finite-observation S(q) awaits one leap"],
-      ["06 · global charge shape", "not compared", "supplied-charge moments await one leap"],
-      ["07 · bond-valence coordination", "not compared", "checked scalar/vector state awaits one leap"],
-      ["08 · after", "unchanged seed", "physical time unresolved"],
+      ["05 · inversion asymmetry", "not compared", "centrosymmetry distributions await one leap"],
+      ["06 · reciprocal structure", "not compared", "finite-observation S(q) awaits one leap"],
+      ["07 · global charge shape", "not compared", "supplied-charge moments await one leap"],
+      ["08 · bond-valence coordination", "not compared", "checked scalar/vector state awaits one leap"],
+      ["09 · after", "unchanged seed", "physical time unresolved"],
     ].forEach(([label, value, detail]) => {
       const card = document.createElement("article");
       const small = document.createElement("small"); small.textContent = label;
@@ -18139,15 +18287,21 @@ function renderStructuralLeap(leap = null) {
     symmetry?.available
       ? `${symmetry.harmonics.map((record) => `${symmetry.dimension === 2 ? "|ψ" : "q"}${record.harmonic}${symmetry.dimension === 2 ? "|" : ""} Δ${signedOrder(record.meanDelta)}`).join(" · ")} · JS distance ${symmetry.meanDistributionDistance.toFixed(3)} · resolved ${symmetry.resolvedBefore} → ${symmetry.resolvedAfter}`
       : symmetry?.reason || "matching before/after distributions unavailable"]);
+  const centrosymmetry = selected.centrosymmetryTransition;
+  leapCards.push(["05 · inversion asymmetry",
+    centrosymmetry?.available ? centrosymmetry.phenotype : "centrosymmetry unresolved",
+    centrosymmetry?.available
+      ? `${centrosymmetry.neighborCount}-neighbor exact pairing · mean ${centrosymmetry.meanBefore.toFixed(3)} → ${centrosymmetry.meanAfter.toFixed(3)} · p90 ${centrosymmetry.percentile90Before.toFixed(3)} → ${centrosymmetry.percentile90After.toFixed(3)} · JS distance ${centrosymmetry.distributionDistance.toFixed(3)} · resolved ${centrosymmetry.resolvedBefore} → ${centrosymmetry.resolvedAfter}`
+      : centrosymmetry?.reason || "matching before/after inversion-asymmetry distributions unavailable"]);
   const reciprocal = selected.reciprocalSpaceTransition;
-  leapCards.push(["05 · reciprocal structure",
+  leapCards.push(["06 · reciprocal structure",
     reciprocal?.available ? reciprocal.phenotype : "S(q) unresolved",
     reciprocal?.available
       ? `JS distance ${reciprocal.spectralShapeDistance.toFixed(3)} · q* ${reciprocal.peakQBefore.toFixed(2)} → ${reciprocal.peakQAfter.toFixed(2)} · peak prominence ${reciprocal.peakProminenceBefore.toFixed(2)} → ${reciprocal.peakProminenceAfter.toFixed(2)}`
       : reciprocal?.reason || "matching before/after geometric S(q) unavailable"]);
   const chargeBefore = selected.before?.chargeMoment;
   const chargeAfter = selected.after?.chargeMoment;
-  leapCards.push(["06 · global charge shape",
+  leapCards.push(["07 · global charge shape",
     chargeBefore?.available && chargeAfter?.available
       ? `p ${chargeBefore.dipoleMagnitude.toFixed(3)} → ${chargeAfter.dipoleMagnitude.toFixed(3)} · Q ${chargeBefore.quadrupoleMagnitude.toFixed(3)} → ${chargeAfter.quadrupoleMagnitude.toFixed(3)}`
       : "supplied-charge moments unavailable",
@@ -18156,19 +18310,19 @@ function renderStructuralLeap(leap = null) {
       : "A complete explicitly supplied formal-charge channel is required."]);
   const bondValenceBefore = selected.before?.bondValenceState;
   const bondValenceAfter = selected.after?.bondValenceState;
-  leapCards.push(["07 · bond-valence coordination",
+  leapCards.push(["08 · bond-valence coordination",
     bondValenceBefore?.available && bondValenceAfter?.available
       ? `RMS Δs ${bondValenceBefore.sampledRmsValenceMismatch.toFixed(3)} → ${bondValenceAfter.sampledRmsValenceMismatch.toFixed(3)} v.u.`
       : "checked scalar/vector state unavailable",
     bondValenceBefore?.available && bondValenceAfter?.available
       ? `mean |Σs r̂| ${bondValenceBefore.sampledMeanVectorMagnitude.toFixed(3)} → ${bondValenceAfter.sampledMeanVectorMagnitude.toFixed(3)} v.u. · resolved centers ${bondValenceBefore.resolvedCenters} → ${bondValenceAfter.resolvedCenters}; finite sampled geometry, not energy or time.`
       : bondValenceAfter?.reason || bondValenceBefore?.reason || "A complete exact oxidation-state channel and checked ion pairs are required."]);
-  if (selected.relaxation) leapCards.push(["08 · local projection",
+  if (selected.relaxation) leapCards.push(["09 · local projection",
     selected.relaxation.accepted
       ? `strain ${selected.relaxation.strainBefore.toFixed(3)} → ${selected.relaxation.strainAfter.toFixed(3)}`
       : "rolled back · exact coordinates retained",
     `${selected.relaxation.movableSites} movable · max Δ ${selected.relaxation.maximumDisplacementAngstrom.toFixed(3)} Å · ${selected.relaxation.reason}`]);
-  leapCards.push([`${selected.relaxation ? "09" : "08"} · after`,
+  leapCards.push([`${selected.relaxation ? "10" : "09"} · after`,
     `${selected.after.atoms} atoms · ${selected.after.clusters} clusters`,
     `${selected.after.accepted} accepted · ${selected.after.rejected} rejected · causal depth ${selected.after.depth}`]);
   leapCards.forEach(([label, value, detail], index) => {
@@ -18179,7 +18333,7 @@ function renderStructuralLeap(leap = null) {
     const span = document.createElement("span"); span.textContent = detail;
     card.append(small, strong, span); leapFlow.append(card);
   });
-  leapClaimBoundary.textContent = `${selected.claimBoundary} Local qℓ / |ψℓ| and unit-weight geometric S(q) changes are rotation-invariant structural fingerprints, not phase-transition assignments, experimental diffraction intensities, latent heat, free-energy changes, rates, or clocks. Supplied-charge dipole/quadrupole changes are translation-, proper-rotation-, and uniform-scale-invariant structural fingerprints, not electrostatic energy, polarization, dielectric response, charge transfer, electronic structure, force, rate, or physical time. Sampled bond-valence scalar/vector changes retain the physical Å scale; vector balance is a spherical-ion hypothesis and neither channel is energy, force, relaxation, or time.`;
+  leapClaimBoundary.textContent = `${selected.claimBoundary} Local qℓ / |ψℓ| and unit-weight geometric S(q) changes are rotation-invariant structural fingerprints, not phase-transition assignments, experimental diffraction intensities, latent heat, free-energy changes, rates, or clocks. Centrosymmetry changes are proper-rotation- and uniform-scale-invariant defect-sensitive fingerprints, but they are not named defects, a defect classifier, formation energy, stress, temperature, kinetics, or physical time. Supplied-charge dipole/quadrupole changes are translation-, proper-rotation-, and uniform-scale-invariant structural fingerprints, not electrostatic energy, polarization, dielectric response, charge transfer, electronic structure, force, rate, or physical time. Sampled bond-valence scalar/vector changes retain the physical Å scale; vector balance is a spherical-ion hypothesis and neither channel is energy, force, relaxation, or time.`;
 }
 
 function radiallyStratifiedIndices(source, candidateIndices, maximumCenters) {
@@ -18310,6 +18464,8 @@ function recordStructuralLeap(leap) {
     physicalTimeModeled: false, dynamicsIntegrated: false };
   frozen.localSymmetryTransition = localSymmetryTransition(
     frozen.before?.orientationalOrder, frozen.after?.orientationalOrder);
+  frozen.centrosymmetryTransition = centrosymmetryTransition(
+    frozen.before?.centrosymmetry, frozen.after?.centrosymmetry);
   frozen.reciprocalSpaceTransition = reciprocalSpaceTransition(
     frozen.before?.scattering, frozen.after?.scattering);
   frozen.physicsTranslation = physicsTranslationRecords(frozen);
