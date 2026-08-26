@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260826-70">
+  <link rel="stylesheet" href="./style.css?v=20260826-71">
   <script type="importmap">
     {
       "imports": {
@@ -229,6 +229,7 @@
               <button type="button" data-element-preset="Na,Cl">NaCl</button>
               <button type="button" data-element-preset="Al,Cu,Fe">Al–Cu–Fe</button>
               <button type="button" data-element-preset="Cu,Zr">Cu–Zr</button>
+              <button type="button" data-element-preset="Fe">Fe · magnetic data probe</button>
             </div>
             <button id="randomMaterialButton" class="database-button" type="button">Find a random matching structure</button>
             <div id="databaseStatus" class="import-status" role="status" aria-live="polite">Queries public bulk entries containing exactly the selected elements.</div>
@@ -1068,6 +1069,15 @@
                 <article id="bondValenceDetail" class="bond-valence-detail" aria-live="polite"></article>
                 <p>The portrait separates scalar valence-sum satisfaction from the magnitude of Σsᵢⱼr̂ᵢⱼ. A near-zero vector is expected only for a stable spherically symmetric coordination sphere; lone pairs and electronic or steric anisotropy can make a nonzero result meaningful. Parameters are checked IUCr entries and missing chemistry fails closed. This is not bond energy, electron density, force, redox, relaxation, or physical time.</p>
               </section>
+              <section class="spin-geometry-card" aria-label="Collinear scalar spin geometry audit">
+                <header><span><small>explicit electronic-structure label geometry</small><strong>Collinear spin texture</strong></span><b id="spinGeometryState">explicit atomic spins unavailable</b></header>
+                <div class="spin-map-control"><label for="spinMapSelect"><span><small>current supplied sites</small><strong>3D scalar-spin map</strong></span><select id="spinMapSelect"><option value="none" selected>Off · preserve element view</option><option value="polarity">Signed scalar population</option><option value="correlation">Local pair correlation</option></select></label><b id="spinMapState">map off</b></div>
+                <div class="spin-map-legend"><span><i class="negative"></i>negative scalar</span><span><i class="neutral"></i>near zero / uncorrelated</span><span><i class="positive"></i>positive scalar</span></div>
+                <svg id="spinCorrelationPlot" class="spin-correlation-plot" viewBox="0 0 240 112" role="img" aria-label="Finite-crop radial correlation of supplied scalar atomic spins"></svg>
+                <div id="spinMapExtremes" class="spin-map-extremes" role="group" aria-label="Focus strongly polarized or correlated supplied sites"></div>
+                <article id="spinGeometryDetail" class="spin-geometry-detail" aria-live="polite"></article>
+                <p>Only explicit signed scalar atomic spin populations are used. Pair correlation is geometric and invariant to translation, proper rotation, atom order, and a global sign reversal. NOMAD does not supply a vector axis or guaranteed unit here, so the map has no arrows and claims no magnetic moment in μ<sub>B</sub>, exchange energy, Hamiltonian, Curie/Néel temperature, domain state, force, or growth preference.</p>
+              </section>
               <div class="policy-sensitivity-heading"><small>pathway sensitivity</small><strong id="policySensitivityState">no evaluated frontiers</strong></div>
               <div id="policyHistory" class="policy-history" role="group" aria-label="Inspect policy disagreement on recent frozen frontiers"></div>
               <p id="policyPreviewState">Select a policy row to preview its winner in the 3D scene.</p>
@@ -1638,7 +1648,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260826-163"></script>
+  <script type="module" src="./app.js?v=20260826-164"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

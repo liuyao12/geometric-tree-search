@@ -8,8 +8,8 @@ import {
   isotropicPairDistanceUncertaintyA,
   parseStructureText,
   validateStructure,
-} from "./structure-io.js?v=20260825-6";
-import { randomNomadStructure } from "./structure-database.js?v=20260825-4";
+} from "./structure-io.js?v=20260826-7";
+import { randomNomadStructure } from "./structure-database.js?v=20260826-5";
 import { bestAffineNeighborhoodResidual } from "./relaxation-local-environment.js?v=20260825-1";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
@@ -35,6 +35,8 @@ import { BOND_VALENCE_PARAMETERS, BOND_VALENCE_PROVENANCE,
   MAXIMUM_BOND_VALENCE_DISTANCE, bondValenceSums, bondValenceStateSummary,
   incrementalBondValenceSatisfaction }
   from "./bond-valence-geometry.js?v=20260826-3";
+import { analyzeCollinearSpinGeometry, COLLINEAR_SPIN_PROVENANCE }
+  from "./collinear-spin-geometry.js?v=20260826-1";
 import {
   discoverFiniteMolecularComponents,
   discoverMolecularConnectionTopology,
@@ -395,6 +397,12 @@ const bondValenceMapState = $("bondValenceMapState");
 const bondValenceMapExtremes = $("bondValenceMapExtremes");
 const bondValenceResiduals = $("bondValenceResiduals");
 const bondValenceDetail = $("bondValenceDetail");
+const spinGeometryState = $("spinGeometryState");
+const spinMapSelect = $("spinMapSelect");
+const spinMapState = $("spinMapState");
+const spinCorrelationPlot = $("spinCorrelationPlot");
+const spinMapExtremes = $("spinMapExtremes");
+const spinGeometryDetail = $("spinGeometryDetail");
 const policySensitivityState = $("policySensitivityState");
 const policyHistoryElement = $("policyHistory");
 const policyPreviewState = $("policyPreviewState");
@@ -1077,6 +1085,9 @@ let bondValenceMode = "none";
 let bondValenceWeight = .24;
 let bondValenceMapMode = "none";
 let selectedBondValenceAtomId = null;
+let spinMapMode = "none";
+let selectedSpinAtomId = null;
+let spinGeometryCache = null;
 let surfacePreference = "soft";
 let growthDrivingMode = "none";
 let growthDrivingWeight = .24;
@@ -2072,7 +2083,9 @@ function importSummary(structure, validation) {
   const calculation = structure.metadata?.calculation;
   const calculationSummary = calculation?.available
     ? ` · ${calculation.programName || "calculation"}${calculation.forceCoverage > 0
-      ? ` · Fᵣₘₛ ${calculation.forceRmsElectronVoltPerAngstrom.toExponential(2)} eV/Å` : " · forces unavailable"}` : "";
+      ? ` · Fᵣₘₛ ${calculation.forceRmsElectronVoltPerAngstrom.toExponential(2)} eV/Å` : " · forces unavailable"}${calculation.spinCoverage > 0
+      ? ` · scalar spin ${calculation.atomicSpinCount} sites` : ""}` : validation.scalarSpinSites
+        ? ` · scalar spin ${validation.scalarSpinSites} sites` : "";
   return `${structure.format} · ${validation.atomCount} sites · ${composition}${disorder}${thermal}${charge}${trajectory}${conditions}${calculationSummary} · PBC ${periodicity} · dₙₙ ${validation.medianNearestDistance.toFixed(3)} Å${warnings}`;
 }
 
@@ -2136,7 +2149,7 @@ function activateImportedStructure(parsed, filename, statusElement = importStatu
         ? `${parsed.metadata.spaceGroup || "space group"} · #${parsed.metadata.spaceGroupNumber}`
         : parsed.metadata?.spaceGroup || "not supplied",
       audit: "emergent structure audit",
-      note: `Imported from ${filename}; no structure class, space group, or cluster vocabulary is supplied to growth. Mixed and partial sites remain occupational alternatives rather than coincident atoms or a silently selected element. Supplied formal oxidation states remain chemistry channels; missing states are never guessed.`,
+      note: `Imported from ${filename}; no structure class, space group, or cluster vocabulary is supplied to growth. Mixed and partial sites remain occupational alternatives rather than coincident atoms or a silently selected element. Supplied formal oxidation states remain chemistry channels; missing states are never guessed. Explicit scalar atomic spins remain diagnostic labels and never become invented vectors or a growth score.`,
     },
   };
   syncImportedFrameMaterial();
@@ -2554,6 +2567,12 @@ function addAtom(position, species, family, parent = null, seed = false) {
   const atom = { id: nextAtomId++, p: position.clone(), species, family, parent, seed, depth: parent ? parent.depth + 1 : 0, attempts: 0 };
   atoms.push(atom);
   return atom;
+}
+
+function copyReferenceScalarSpin(atom, referenceIndex) {
+  const reference = Number.isInteger(referenceIndex) ? referenceAtoms[referenceIndex] : null;
+  atom.calculationSpin = reference && Number.isFinite(reference.calculationSpin)
+    ? reference.calculationSpin : null;
 }
 
 function medianNearestSpacing(source) {
@@ -3581,6 +3600,7 @@ function makeImportedFrameReference(frame = currentImportedFrame(), sceneScale =
         thermalSigmaAxesA: atom.thermalSigmaAxesA?.slice() || null,
         thermalAxesCartesian: atom.thermalAxesCartesian?.map((axis) => axis.slice()) || null,
         calculationForceEvPerAngstrom: atom.calculationForceEvPerAngstrom?.slice() || null,
+        calculationSpin: Number.isFinite(atom.calculationSpin) ? atom.calculationSpin : null,
         family: "imported", sourceIndex,
       };
     }).sort((first, second) => first.p.lengthSq() - second.p.lengthSq()
@@ -6712,6 +6732,12 @@ async function buildExperimentReceipt() {
     : [];
   const calculationForceSha256 = calculationForceRecords.length
     ? await receiptSha256(JSON.stringify(calculationForceRecords)) : null;
+  const scalarSpinRecords = referenceAtoms.filter((atom) => Number.isFinite(atom.calculationSpin))
+    .map((atom) => ({ sourceIndex: atom.sourceIndex, species: atom.displaySpecies || atom.species,
+      scalarSpin: receiptRound(atom.calculationSpin, 10) }));
+  const scalarSpinSha256 = scalarSpinRecords.length
+    ? await receiptSha256(JSON.stringify(scalarSpinRecords)) : null;
+  const scalarSpinGeometry = referenceCollinearSpinGeometry();
   const trajectoryFrameDigests = trajectoryFrames.length > 1
     ? await Promise.all(trajectoryFrames.map((frame) => structureDigest(makeImportedFrameReference(frame, 1), "angstrom")))
     : [];
@@ -6724,6 +6750,8 @@ async function buildExperimentReceipt() {
         ? receiptRound(frame.metadata.calculation.energyPerPrimitiveAtomElectronVolt, 10) : null,
       forceVectorsEvPerAngstrom: frame.atoms.map((atom) => atom.calculationForceEvPerAngstrom
         ?.map((value) => receiptRound(value, 10)) || null),
+      scalarAtomicSpins: frame.atoms.map((atom) => Number.isFinite(atom.calculationSpin)
+        ? receiptRound(atom.calculationSpin, 10) : null),
     })));
   }
   const relaxationDisplacement = relaxationDisplacementField();
@@ -6750,7 +6778,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-163",
+      buildId: "20260826-164",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -6786,7 +6814,10 @@ async function buildExperimentReceipt() {
         forceVectorCount: calculationForceRecords.length,
         forceVectorsSha256: calculationForceSha256,
         perSiteVectorsEmbedded: false,
-        displayedAsGeometry: externalCalculation.forceCoverage > 0,
+        scalarSpinCount: scalarSpinRecords.length,
+        scalarSpinsSha256: scalarSpinSha256,
+        perSiteScalarSpinsEmbedded: false,
+        displayedAsGeometry: externalCalculation.forceCoverage > 0 || scalarSpinRecords.length > 0,
         usedForClusterIdentification: false,
         usedForMarkingLearning: false,
         usedForCandidateGeneration: false,
@@ -6795,6 +6826,43 @@ async function buildExperimentReceipt() {
         usedForRelaxation: false,
         usedForClassification: false,
       } : null,
+      collinearSpinGeometry: {
+        available: scalarSpinGeometry.available,
+        reason: scalarSpinGeometry.reason || null,
+        provenance: COLLINEAR_SPIN_PROVENANCE,
+        suppliedSiteCount: scalarSpinGeometry.suppliedSites || 0,
+        inputSiteCount: scalarSpinGeometry.inputSites || referenceAtoms.length,
+        coverage: receiptRound(scalarSpinGeometry.coverage || 0),
+        positiveSites: scalarSpinGeometry.positiveSites || 0,
+        negativeSites: scalarSpinGeometry.negativeSites || 0,
+        nearZeroSites: scalarSpinGeometry.nearZeroSites || 0,
+        normalizedSignedSum: scalarSpinGeometry.available
+          ? receiptRound(scalarSpinGeometry.netPolarization) : null,
+        weightedPairCorrelation: scalarSpinGeometry.weightedPairCorrelation === null
+          || scalarSpinGeometry.weightedPairCorrelation === undefined ? null
+            : receiptRound(scalarSpinGeometry.weightedPairCorrelation),
+        maximumReachAngstrom: scalarSpinGeometry.maximumReach
+          ? receiptRound(scalarSpinGeometry.maximumReach) : null,
+        checkedFiniteCropPairs: scalarSpinGeometry.checkedPairs || 0,
+        scalarValuesSha256: scalarSpinSha256,
+        perSiteValuesEmbedded: false,
+        displayMode: spinMapMode,
+        displayedAsScalarHalos: spinMapMode !== "none" && scalarSpinGeometry.available,
+        vectorArrowsDisplayed: false,
+        archiveUnitInferred: false,
+        quantizationAxisInferred: false,
+        periodicImagesSummed: false,
+        usedForClusterIdentification: false,
+        usedForMarkingLearning: false,
+        usedForCandidateGeneration: false,
+        usedForAdmission: false,
+        usedForBranchRanking: false,
+        usedForClassification: false,
+        targetUsed: false,
+        magneticHamiltonianInferred: false,
+        exchangeEnergyInferred: false,
+        orderingTemperatureInferred: false,
+      },
       crystallographicOccupancy: scenarioSelect.value === "imported" ? {
         representation: "one geometric site with a finite element-fraction alternative set; vacancy retained explicitly",
         mixedSites: importedStructure?.validation?.mixedOccupancySites || 0,
@@ -10031,6 +10099,7 @@ function indexAtom(atom) {
 function rebuildSpatialIndex() {
   atomSpatialIndex = new Map();
   atoms.forEach(indexAtom);
+  spinGeometryCache = null;
 }
 
 function nearbyAtoms(position, radius = COLLISION_TOLERANCE) {
@@ -12877,6 +12946,113 @@ function renderBondValenceMapExtremes(field) {
   });
 }
 
+function currentCollinearSpinGeometry() {
+  const spinAtoms = atoms.filter((atom) => Number.isFinite(atom.calculationSpin));
+  const signature = `${referenceSpacingA.toFixed(8)}|${atoms.length}|${spinAtoms.map((atom) =>
+    `${atom.id}:${atom.calculationSpin}`).join("|")}`;
+  if (spinGeometryCache?.signature === signature) return spinGeometryCache.audit;
+  const sceneToAngstrom = referenceSpacingA / Math.max(referenceSpacing, 1e-12);
+  const atomById = new Map(atoms.map((atom) => [atom.id, atom]));
+  const audit = analyzeCollinearSpinGeometry(atoms.map((atom) => ({
+    species: atom.displaySpecies || atom.species,
+    position: atom.p.toArray().map((value) => value * sceneToAngstrom),
+    spin: atom.calculationSpin,
+    sourceIndex: atom.id,
+  })), { maximumReach: 5 * referenceSpacingA, binCount: 12 });
+  audit.records = audit.available ? audit.localRecords.map((record) => ({ ...record, atom: atomById.get(record.sourceIndex) }))
+    .filter((record) => record.atom) : [];
+  audit.displayMode = spinMapMode;
+  audit.elementColorsPreserved = true;
+  audit.displayOnly = true;
+  spinGeometryCache = { signature, audit };
+  return audit;
+}
+
+function referenceCollinearSpinGeometry() {
+  return analyzeCollinearSpinGeometry(referenceAtoms.map((atom, index) => ({
+    species: atom.displaySpecies || atom.species,
+    position: atom.pA?.toArray() || atom.p.toArray().map((value) =>
+      value * referenceSpacingA / Math.max(referenceSpacing, 1e-12)),
+    spin: atom.calculationSpin,
+    sourceIndex: Number.isInteger(atom.sourceIndex) ? atom.sourceIndex : index,
+  })), { maximumReach: 5 * referenceSpacingA, binCount: 12 });
+}
+
+function renderSpinMapExtremes(audit) {
+  spinMapExtremes.replaceChildren();
+  if (!audit.available || spinMapMode === "none") return;
+  const magnitude = (record) => spinMapMode === "polarity" ? Math.abs(record.spin)
+    : Math.abs(record.localCorrelation ?? 0);
+  [...audit.records].sort((first, second) => magnitude(second) - magnitude(first)
+    || String(first.atom.id).localeCompare(String(second.atom.id))).slice(0, 8).forEach((record) => {
+    const button = document.createElement("button"); button.type = "button";
+    button.classList.toggle("active", record.atom.id === selectedSpinAtomId);
+    button.setAttribute("aria-pressed", String(record.atom.id === selectedSpinAtomId));
+    const label = document.createElement("strong"); label.textContent = `${record.atom.species} · ${record.atom.id}`;
+    const value = document.createElement("span");
+    value.textContent = spinMapMode === "polarity" ? `s ${record.spin >= 0 ? "+" : ""}${record.spin.toFixed(3)}`
+      : `Cᵢ ${record.localCorrelation === null ? "—" : record.localCorrelation.toFixed(3)}`;
+    button.append(label, value);
+    button.addEventListener("click", () => {
+      selectedSpinAtomId = record.atom.id;
+      controls.target.copy(record.atom.p); controls.update(); rebuildWorld();
+    });
+    spinMapExtremes.append(button);
+  });
+}
+
+function renderCollinearSpinGeometry() {
+  const audit = currentCollinearSpinGeometry();
+  spinCorrelationPlot.replaceChildren(); spinGeometryDetail.replaceChildren();
+  spinMapSelect.disabled = !audit.available;
+  if (!audit.available) {
+    spinGeometryState.textContent = "explicit atomic spins unavailable";
+    spinMapState.textContent = spinMapMode === "none" ? "map off" : audit.reason;
+    renderSpinMapExtremes(audit); return;
+  }
+  const namespace = "http://www.w3.org/2000/svg";
+  const make = (name, attributes = {}) => {
+    const element = document.createElementNS(namespace, name);
+    Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, String(value)));
+    return element;
+  };
+  const left = 25; const top = 10; const width = 203; const height = 78;
+  const px = (value) => left + width * value / Math.max(audit.maximumReach, 1e-12);
+  const py = (value) => top + height * (.5 - .5 * Math.max(-1, Math.min(1, value)));
+  spinCorrelationPlot.append(make("rect", { x: left, y: top, width, height, class: "plot-area" }),
+    make("line", { x1: left, y1: py(0), x2: left + width, y2: py(0), class: "axis" }));
+  const samples = audit.radialCorrelation.filter((bin) => bin.correlation !== null)
+    .map((bin) => ({ ...bin, center: .5 * (bin.minimumDistance + bin.maximumDistance) }));
+  if (samples.length) spinCorrelationPlot.append(make("path", { class: "curve",
+    d: samples.map((sample, index) => `${index ? "L" : "M"}${px(sample.center)},${py(sample.correlation)}`).join(" ") }));
+  samples.forEach((sample) => {
+    const point = make("circle", { cx: px(sample.center), cy: py(sample.correlation), r: 2.4, class: "sample" });
+    const title = make("title"); title.textContent = `${sample.minimumDistance.toFixed(2)}–${sample.maximumDistance.toFixed(2)} Å · C ${sample.correlation.toFixed(3)} · ${sample.pairCount} pairs`;
+    point.append(title); spinCorrelationPlot.append(point);
+  });
+  const xLabel = make("text", { x: left + width, y: 106, class: "axis-label", "text-anchor": "end" });
+  xLabel.textContent = `separation r (Å) →`;
+  const yLabel = make("text", { x: 7, y: top + height / 2, class: "axis-label", "text-anchor": "middle",
+    transform: `rotate(-90 7 ${top + height / 2})` });
+  yLabel.textContent = "weighted C(r)"; spinCorrelationPlot.append(xLabel, yLabel);
+  const heading = document.createElement("strong");
+  heading.textContent = `${audit.suppliedSites}/${audit.inputSites} displayed sites carry explicit scalar spins`;
+  const populations = document.createElement("span");
+  populations.textContent = `${audit.positiveSites} positive · ${audit.negativeSites} negative · ${audit.nearZeroSites} near zero · normalized signed sum ${audit.netPolarization >= 0 ? "+" : ""}${audit.netPolarization.toFixed(3)}`;
+  const pairs = document.createElement("span");
+  pairs.textContent = `${audit.checkedPairs.toLocaleString()} finite-crop pairs through ${audit.maximumReach.toFixed(2)} Å · weighted pair correlation ${audit.weightedPairCorrelation === null ? "—" : audit.weightedPairCorrelation.toFixed(3)}`;
+  const caveat = document.createElement("span");
+  caveat.textContent = "Archive scalar sign/magnitude preserved; no quantization axis, vector moment, periodic magnetic sum, exchange coupling, energy, temperature, or growth score inferred.";
+  const link = document.createElement("a"); link.href = COLLINEAR_SPIN_PROVENANCE.source;
+  link.target = "_blank"; link.rel = "noreferrer"; link.textContent = "NOMAD Charges.spins schema ↗";
+  spinGeometryDetail.append(heading, populations, pairs, caveat, link);
+  spinGeometryState.textContent = `${audit.suppliedSites} scalar spins · ${(100 * audit.coverage).toFixed(0)}% displayed-site coverage`;
+  spinMapState.textContent = spinMapMode === "none" ? "map off"
+    : spinMapMode === "polarity" ? `|s|max ${audit.maximumAbsoluteSpin.toFixed(3)} · archive-native units`
+      : `local Cᵢ over R=${audit.maximumReach.toFixed(2)} Å`;
+  renderSpinMapExtremes(audit);
+}
+
 function batchRetainsNovelSites(entries) {
   if (!reconstructionCertified && replayIndex < referenceCount()) {
     const owners = new Map();
@@ -13561,6 +13737,7 @@ function initializeOffLatticeSearch() {
         .find((atom) => atom.species === site.species && atom.p.distanceTo(site.p) <= MERGE_TOLERANCE);
       const atom = existing || addAtom(site.p, site.species, `C${seedType + 1}`, null, true);
       atom.referenceIndex = site.referenceIndex;
+      copyReferenceScalarSpin(atom, site.referenceIndex);
       atom.clusterIds ||= [];
       if (!atom.clusterIds.includes(seed.id)) atom.clusterIds.push(seed.id);
       atom.nucleusIds ||= [];
@@ -15843,6 +16020,7 @@ function materializeCandidate(candidate, evaluation) {
   evaluation.fresh.forEach((site) => {
     const atom = addAtom(site.p, site.species, `C${candidate.type + 1}`, nearestParent(site.p));
     if (Number.isInteger(site.referenceIndex)) atom.referenceIndex = site.referenceIndex;
+    copyReferenceScalarSpin(atom, site.referenceIndex);
     atom.clusterIds = [placement.id];
     atom.nucleusIds = [placement.nucleusId];
     placement.atomIds.push(atom.id);
@@ -16517,6 +16695,31 @@ function rebuildWorld() {
     bondValenceMapState.textContent = bondValenceMapMode === "none" ? "map off" : bondValenceField.reason;
   }
   renderBondValenceMapExtremes(bondValenceField);
+  const spinField = currentCollinearSpinGeometry();
+  if (spinField.available && spinMapMode !== "none" && spinField.records.length) {
+    const haloGeometry = new THREE.IcosahedronGeometry(.34, 1);
+    const haloMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true,
+      transparent: true, opacity: .72, depthWrite: false });
+    const halos = new THREE.InstancedMesh(haloGeometry, haloMaterial, spinField.records.length);
+    const negative = new THREE.Color(0x6aa7ff); const neutral = new THREE.Color(0x9fa8b8);
+    const positive = new THREE.Color(0xff7b91);
+    spinField.records.forEach((record, index) => {
+      const value = spinMapMode === "polarity"
+        ? record.spin / Math.max(spinField.maximumAbsoluteSpin, 1e-12)
+        : record.localCorrelation ?? 0;
+      const clamped = Math.max(-1, Math.min(1, value));
+      const color = clamped < 0 ? neutral.clone().lerp(negative, -clamped)
+        : neutral.clone().lerp(positive, clamped);
+      if (record.atom.id === selectedSpinAtomId) color.set(0xffc169);
+      dummy.position.copy(record.atom.p); dummy.rotation.set(0, 0, 0);
+      dummy.scale.setScalar(elementScale(record.atom.species)
+        * (record.atom.id === selectedSpinAtomId ? 1.98 : 1.28 + .46 * Math.abs(clamped)));
+      dummy.updateMatrix(); halos.setMatrixAt(index, dummy.matrix); halos.setColorAt(index, color);
+    });
+    halos.instanceMatrix.needsUpdate = true;
+    if (halos.instanceColor) halos.instanceColor.needsUpdate = true;
+    atomGroup.add(halos);
+  }
   if (pipelineStage === 4 && !iceAnchorTrace && nucleationSiteLandscape.length) {
     const selectedLandscape = nucleationSiteLandscape.filter((entry) => entry.selected);
     const previewLandscape = nucleationSiteLandscape.filter((entry) => !entry.selected).slice(0, 24);
@@ -16983,6 +17186,7 @@ function physicsTranslationRecords(leap = null) {
     ? `${leap.tests.summary}; ${leap.after.accepted} accepted and ${leap.after.rejected} rejected in the displayed leap.`
     : "Awaiting the first frozen frontier evaluation.";
   const calculation = activeCalculationProvenance();
+  const spinGeometry = referenceCollinearSpinGeometry();
   const relaxation = scenarioSelect.value === "imported" ? importedStructure?.metadata?.relaxationSequence : null;
   const relaxationDisplacement = relaxationDisplacementField();
   const relaxationLocalEnvironment = relaxationLocalEnvironmentField();
@@ -17007,6 +17211,16 @@ function physicsTranslationRecords(leap = null) {
         ? `${Math.round(calculation.forceCoverage * referenceCount())}/${referenceCount()} sites; RMS ${calculation.forceRmsElectronVoltPerAngstrom.toExponential(3)} eV/Å; maximum ${calculation.forceMaximumElectronVoltPerAngstrom.toExponential(3)} eV/Å.`
         : "No calculation-force vector is available for this material.",
       boundary: "Residual forces diagnose the supplied calculation state only. They never rank, admit, displace, relax, or extrapolate a growth action; total energies are not compared across entries, methods, or compositions." },
+    { id: "collinear-spin", process: "collinear magnetic-order geometry / scalar spin texture",
+      status: spinGeometry.available ? "explicit" : "unavailable",
+      role: spinGeometry.available ? "external scalar-label diagnostic" : "no scalar spin channel",
+      encoding: spinGeometry.available
+        ? `${spinGeometry.suppliedSites}/${spinGeometry.inputSites} supplied site scalars; normalized signed sum ${spinGeometry.netPolarization >= 0 ? "+" : ""}${spinGeometry.netPolarization.toFixed(3)}; |sᵢsⱼ|-weighted C(r) through ${spinGeometry.maximumReach.toFixed(2)} Å`
+        : "no explicit finite per-atom scalar spin population accompanies the active structural record",
+      evidence: spinGeometry.available
+        ? `${spinGeometry.positiveSites} positive, ${spinGeometry.negativeSites} negative, ${spinGeometry.nearZeroSites} near-zero sites; ${spinGeometry.checkedPairs.toLocaleString()} finite-crop pairs. Values are preserved in archive-native scalar units.`
+        : "No collinear scalar spin geometry is available for this material.",
+      boundary: "Scalar sign is not a 3D vector direction. The schema does not guarantee a magnetic-moment unit or quantization axis. This diagnostic never ranks growth and is not a spin Hamiltonian, exchange energy, magnetic domain assignment, Curie/Néel temperature, spin dynamics, force, rate, or physical time." },
     { id: "relaxation-ensemble", process: "geometry-optimization path / structural variability", status: relaxation?.available ? "observed" : "unavailable", role: relaxation?.available ? "fixed-topology geometric ensemble" : "single structural state",
       encoding: relaxation?.available
         ? `${relaxation.retainedFrameCount}/${relaxation.originalSystemCount} ordered NOMAD system/calculation snapshots; same-run relative energy, residual-force curves, and a variable-cell-safe selected-to-final affine/non-affine decomposition remain provenance channels`
@@ -17202,9 +17416,11 @@ function physicsTranslationRecords(leap = null) {
       evidence: leap ? `Accepted mean ordering offset ${receiptRound(acceptedExplorationOffset / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedExplorationOffset / Math.max(1, rejectedDecisions), 4)}.` : "No branch order has been sampled yet.",
       boundary: "T* is not Kelvin temperature. These offsets are not energy, Boltzmann weights, equilibrium probabilities, free energy, kinetics, or physical time." },
     { id: "long-range", process: "long-range elasticity, electrostatics, and electronic response", status: "open", role: "outside the bounded local grammar",
-      encoding: `local constraint reach is at most ${coloredCoordinationEnvelopes ? (coloredCoordinationEnvelopes.maximumCutoff * referenceSpacingA / referenceSpacing).toFixed(2) : "—"} Å; ${[affineLoadMode === "none" ? null : `${affineLoadModeLabel()} metric`, activeExternalDriveWeight() > 0 ? `${externalDriveModeLabel()} drive` : null].filter(Boolean).join(" + ") || "no external condition"} is imposed geometrically, but nonlocal material response is unsolved`,
-      evidence: "The portal reports this omission instead of silently folding it into a local score.",
-      boundary: "Collective strain, defects, polarization, screening, magnetism, excited states, and nonlocal charge redistribution require external physics or new geometric state variables." },
+      encoding: `local constraint reach is at most ${coloredCoordinationEnvelopes ? (coloredCoordinationEnvelopes.maximumCutoff * referenceSpacingA / referenceSpacing).toFixed(2) : "—"} Å; ${[affineLoadMode === "none" ? null : `${affineLoadModeLabel()} metric`, activeExternalDriveWeight() > 0 ? `${externalDriveModeLabel()} drive` : null].filter(Boolean).join(" + ") || "no external condition"} is imposed geometrically, but nonlocal material response is unsolved${spinGeometry.available ? "; supplied scalar-spin pair geometry is diagnostic only" : ""}`,
+      evidence: spinGeometry.available
+        ? `The explicit collinear-spin row preserves ${spinGeometry.suppliedSites} scalar labels and a finite C(r), while this row keeps magnetic interactions and collective response open.`
+        : "The portal reports this omission instead of silently folding it into a local score.",
+      boundary: "Collective strain, defects, polarization, screening, magnetic interactions and domains, excited states, and nonlocal charge redistribution require external physics or new geometric state variables. A supplied scalar-spin texture does not close that boundary." },
   ];
 }
 
@@ -17229,6 +17445,7 @@ const PHYSICS_CONTROL_ROUTES = Object.freeze({
   steric: { stage: 1, controlId: "clusterToleranceSelect", label: "Open metric tolerance" },
   local: { stage: 1, controlId: "geometryModeSelect", label: "Open support geometry" },
   "calculation-forces": { stage: 0, controlId: "scenarioSelect", label: "Choose supplied calculation data" },
+  "collinear-spin": { stage: 0, controlId: "spinMapSelect", label: "Inspect supplied scalar-spin geometry" },
   "relaxation-ensemble": { stage: 0, controlId: "scenarioSelect", label: "Choose a relaxation ensemble" },
   "local-rearrangement": { stage: 0, controlId: "scenarioSelect", label: "Choose paired structural snapshots" },
   "local-symmetry": { stage: 4, controlId: "structureObservableSelect", label: "Open structural microscope" },
@@ -18592,6 +18809,7 @@ function previewPolicyWinner(policy, snapshot) {
     policyPreviewState.textContent = `${policy.label}: no hard-admitted action on frontier ${snapshot.candidateDigest}`;
   }
   renderPolicyComparison();
+  renderCollinearSpinGeometry();
 }
 
 function cyclePolicyWorkbenchTerm(snapshot, termId) {
@@ -19557,6 +19775,7 @@ function observationProvenanceRecords() {
   const growthReady = pipelineStage >= 4;
   const importedFrames = importedTrajectoryFrames();
   const calculation = activeCalculationProvenance();
+  const spinGeometry = referenceCollinearSpinGeometry();
   const relaxation = scenarioSelect.value === "imported" ? importedStructure?.metadata?.relaxationSequence : null;
   const displacementField = relaxationDisplacementField();
   const localEnvironmentField = relaxationLocalEnvironmentField();
@@ -19573,6 +19792,18 @@ function observationProvenanceRecords() {
       transform: calculation?.forceCoverage > 0 ? "SI archive forces are converted once to eV/Å and transported as site-local Cartesian vectors; arrow lengths are normalized only in the viewport." : "No force geometry is constructed.",
       use: "Diagnostic layer and receipt provenance only; excluded from clustering, marking fit, candidate generation, admission, ranking, and structural classification.",
       boundary: "One method-dependent residual-force snapshot is not a force field, relaxation trajectory, phonon model, free energy, barrier, rate, or transferable force predictor." },
+    { id: "collinear-spin", short: "scalar spin", status: spinGeometry.available ? "recorded" : "unavailable",
+      value: spinGeometry.available
+        ? `${spinGeometry.suppliedSites}/${spinGeometry.inputSites} sites · C ${spinGeometry.weightedPairCorrelation === null ? "—" : spinGeometry.weightedPairCorrelation.toFixed(3)}`
+        : "no explicit scalar atomic spins",
+      observed: spinGeometry.available
+        ? `Signed scalar atomic spin populations are preserved for ${spinGeometry.suppliedSites} supplied sites in archive-native values.`
+        : "The active structural record supplies no finite per-atom scalar spin population.",
+      transform: spinGeometry.available
+        ? `A finite-crop |sᵢsⱼ|-weighted radial sign correlation is evaluated through ${spinGeometry.maximumReach.toFixed(2)} Å; display halos retain element colors and add no vector arrows.`
+        : "No magnetic-order geometry is constructed.",
+      use: "Interactive diagnostic and receipt provenance only; excluded from clustering, marking fit, candidate generation, admission, branch ranking, and structural classification.",
+      boundary: "A collinear scalar label has no supplied 3D axis or guaranteed moment unit. It is not a magnetic Hamiltonian, exchange interaction, domain solution, ordering temperature, spin dynamics, force, rate, or physical time." },
     { id: "samples", short: "samples", status: frames > 1 ? "measured" : "single",
       value: frames > 1 ? `${frames} fixed-topology ${relaxation?.available ? "relaxation snapshots" : "frames"}` : "1 structural frame",
       observed: scenarioSelect.value === "imported" && importedFrames.length > 1
@@ -19764,6 +19995,7 @@ function updateUI() {
   renderObservationProvenance();
   renderScalePassport();
   renderPolicyComparison();
+  renderCollinearSpinGeometry();
   renderStructuralLeap();
   renderGrowthMechanismAudit();
   updateProcessTimeline();
@@ -20567,6 +20799,12 @@ bondValenceMapSelect.addEventListener("change", () => {
     ? bondValenceMapSelect.value : "none";
   selectedBondValenceAtomId = null;
   rebuildWorld();
+});
+spinMapSelect.addEventListener("change", () => {
+  spinMapMode = ["polarity", "correlation"].includes(spinMapSelect.value)
+    ? spinMapSelect.value : "none";
+  selectedSpinAtomId = null;
+  renderCollinearSpinGeometry(); rebuildWorld();
 });
 surfacePreferenceSelect.addEventListener("change", () => {
   const value = surfacePreferenceSelect.value;

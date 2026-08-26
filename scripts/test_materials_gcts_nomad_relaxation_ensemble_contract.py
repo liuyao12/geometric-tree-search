@@ -18,7 +18,7 @@ def test_nomad_query_selects_full_runs_only_for_geometry_optimizations():
     assert '"results.properties.geometry_optimization.final_energy_difference"' in DATABASE
     assert 'const hasRelaxation = Boolean(entry.results?.properties?.geometry_optimization)' in DATABASE
     assert 'system: { atoms: "*" }' in DATABASE
-    assert 'calculation: { energy: "*", forces: "*", system_ref: "*", method_ref: "*" }' in DATABASE
+    assert 'calculation: { energy: "*", forces: "*", charges: "*", system_ref: "*", method_ref: "*" }' in DATABASE
     assert '"system[-1]": { atoms: "*" }' in DATABASE
     assert 'MAX_NOMAD_RESPONSE_BYTES = 32 * 1024 * 1024' in DATABASE
 
@@ -89,10 +89,10 @@ def test_scientific_nonclaims_and_mocked_sequence_regression_are_documented():
 
 
 def test_build_114_is_cache_busted():
-    assert 'buildId: "20260826-163"' in APP
-    assert 'structure-io.js?v=20260825-6' in APP
-    assert 'structure-database.js?v=20260825-4' in APP
-    assert 'app.js?v=20260826-163' in HTML
+    assert 'buildId: "20260826-164"' in APP
+    assert 'structure-io.js?v=20260826-7' in APP
+    assert 'structure-database.js?v=20260826-5' in APP
+    assert 'app.js?v=20260826-164' in HTML
 
 
 if __name__ == "__main__":

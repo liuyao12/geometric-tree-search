@@ -9,9 +9,9 @@ README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
 
 def test_study_arm_progress_contract():
-    assert 'buildId: "20260826-163"' in APP
-    assert 'app.js?v=20260826-163' in HTML
-    assert 'style.css?v=20260826-70' in HTML
+    assert 'buildId: "20260826-164"' in APP
+    assert 'app.js?v=20260826-164' in HTML
+    assert 'style.css?v=20260826-71' in HTML
     assert 'id="studyComparisonProgress"' in HTML
     assert 'aria-label="Saved and executed arm progress"' in HTML
 

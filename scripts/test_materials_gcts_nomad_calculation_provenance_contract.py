@@ -16,7 +16,7 @@ def test_nomad_calculation_vectors_remain_diagnostic_geometry() -> None:
 
     assert 'const JOULE_PER_ELECTRON_VOLT = 1.602176634e-19' in database
     assert 'const NEWTON_PER_ELECTRON_VOLT_PER_ANGSTROM = 1.602176634e-9' in database
-    assert '"calculation[-1]": { energy: "*", forces: "*", system_ref: "*", method_ref: "*" }' in database
+    assert '"calculation[-1]": { energy: "*", forces: "*", charges: "*", system_ref: "*", method_ref: "*" }' in database
     assert "calculationForceEvPerAngstrom" in database
     assert "forceRmsElectronVoltPerAngstrom" in database
     assert 'forcesUsedForGrowth: false' in database

@@ -156,8 +156,19 @@ function nomadCalculationRecord(calculation, atomCount, program, runIndex, calcu
     ? rawForces.map((vector) => vector.map((component) =>
       Number(component) / NEWTON_PER_ELECTRON_VOLT_PER_ANGSTROM)) : null;
   const forceMagnitudes = forceVectors?.map((vector) => Math.hypot(...vector)) || [];
+  const chargeRecords = Array.isArray(calculation?.charges) ? calculation.charges : [];
+  let spinRecord = null;
+  let spinRecordIndex = null;
+  for (let index = chargeRecords.length - 1; index >= 0; index--) {
+    const rawSpins = chargeRecords[index]?.spins;
+    if (Array.isArray(rawSpins) && rawSpins.length === atomCount
+      && rawSpins.every((value) => Number.isFinite(Number(value)))) {
+      spinRecord = chargeRecords[index]; spinRecordIndex = index; break;
+    }
+  }
+  const atomicSpins = spinRecord?.spins?.map(Number) || null;
   return {
-    forceVectors,
+    forceVectors, atomicSpins,
     provenance: {
       available: Boolean(calculation),
       sourcePath: calculationIndex === null ? null : `run/${runIndex}/calculation/${calculationIndex}`,
@@ -172,6 +183,19 @@ function nomadCalculationRecord(calculation, atomCount, program, runIndex, calcu
       forceRmsElectronVoltPerAngstrom: forceMagnitudes.length
         ? Math.sqrt(forceMagnitudes.reduce((sum, value) => sum + value * value, 0) / forceMagnitudes.length) : null,
       forceMaximumElectronVoltPerAngstrom: forceMagnitudes.length ? Math.max(...forceMagnitudes) : null,
+      spinCoverage: atomicSpins ? 1 : 0,
+      atomicSpinCount: atomicSpins?.length || 0,
+      atomicSpinMinimum: atomicSpins ? Math.min(...atomicSpins) : null,
+      atomicSpinMaximum: atomicSpins ? Math.max(...atomicSpins) : null,
+      atomicSpinAbsoluteSum: atomicSpins
+        ? atomicSpins.reduce((sum, value) => sum + Math.abs(value), 0) : null,
+      atomicSpinSourcePath: spinRecordIndex === null || calculationIndex === null ? null
+        : `run/${runIndex}/calculation/${calculationIndex}/charges/${spinRecordIndex}/spins`,
+      atomicSpinAnalysisMethod: spinRecord?.analysis_method || null,
+      atomicSpinQuantityKind: "signed collinear atomic spin population",
+      atomicSpinUnit: null,
+      atomicSpinAxisAvailable: false,
+      atomicSpinsUsedForGrowth: false,
       energyUnit: "eV",
       forceUnit: "eV/Å",
       forcesUsedForGrowth: false,
@@ -210,6 +234,7 @@ function nomadFrame(atomsData, symbols, calculationRecord, name, metadata = {}) 
       occupancy: 1, occupancyTotal: 1,
       occupancyAlternatives: [{ species: symbols[index], fraction: 1 }],
       calculationForceEvPerAngstrom: calculationRecord.forceVectors?.[index] || null,
+      calculationSpin: calculationRecord.atomicSpins?.[index] ?? null,
     })),
     cell: atomsData.lattice_vectors.map((vector) => vector.map((value) => value * 1e10)),
     pbc: atomsData.periodic?.map(Boolean) || [true, true, true],
@@ -314,11 +339,11 @@ export async function randomNomadStructure(elementValues, options = {}) {
         required: { run: hasRelaxation ? {
           program: "*",
           system: { atoms: "*" },
-          calculation: { energy: "*", forces: "*", system_ref: "*", method_ref: "*" },
+          calculation: { energy: "*", forces: "*", charges: "*", system_ref: "*", method_ref: "*" },
         } : {
           program: "*",
           "system[-1]": { atoms: "*" },
-          "calculation[-1]": { energy: "*", forces: "*", system_ref: "*", method_ref: "*" },
+          "calculation[-1]": { energy: "*", forces: "*", charges: "*", system_ref: "*", method_ref: "*" },
         } },
       }, fetchImpl);
       const primitive = nomadArchiveToStructure(entry, archive);

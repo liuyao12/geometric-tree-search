@@ -8,6 +8,13 @@ function numeric(value, label) {
   return result;
 }
 
+function optionalScalarSpin(value) {
+  if (value === undefined || value === null || value === "" || value === "." || value === "?") return null;
+  const spin = Number(value);
+  if (!Number.isFinite(spin)) throw new Error(`Invalid scalar atomic spin: ${value}`);
+  return spin;
+}
+
 function tokens(line) {
   return [...String(line).matchAll(/'(?:[^']|'')*'|"(?:[^"]|"")*"|\S+/g)].map((match) => {
     const value = match[0];
@@ -705,6 +712,7 @@ function jsonFrameRecord(frameValue, root, filename, frameIndex) {
       thermalSigmaA: atom.thermalSigmaA,
       })),
     position: (atom.position || atom.xyz || atom.cartesian).map(Number),
+    calculationSpin: optionalScalarSpin(atom.calculationSpin ?? atom.atomicSpin ?? atom.spin),
   }));
   else {
     const positions = frame.positions;
@@ -720,6 +728,8 @@ function jsonFrameRecord(frameValue, root, filename, frameIndex) {
       Array.isArray(frame.formalCharges || root.formalCharges)
         ? (frame.formalCharges || root.formalCharges)[index] : null),
     position: position.map(Number),
+    calculationSpin: optionalScalarSpin(Array.isArray(frame.spins || root.spins)
+      ? (frame.spins || root.spins)[index] : null),
     }));
   }
   return {
@@ -835,6 +845,7 @@ export function validateStructure(structure, options = {}) {
   let totalOccupiedFraction = 0;
   let netFormalCharge = 0;
   let chargeResolvedSites = 0;
+  let scalarSpinSites = 0;
   structure?.atoms?.forEach((atom, index) => {
     let normalized = null;
     try {
@@ -848,6 +859,10 @@ export function validateStructure(structure, options = {}) {
       errors.push(`Atom ${index + 1} has an invalid occupational element symbol`);
     }
     if (!Array.isArray(atom.position) || atom.position.length !== 3 || atom.position.some((value) => !Number.isFinite(Number(value)))) errors.push(`Atom ${index + 1} has invalid Cartesian coordinates`);
+    if (atom.calculationSpin !== undefined && atom.calculationSpin !== null) {
+      if (!Number.isFinite(Number(atom.calculationSpin))) errors.push(`Atom ${index + 1} has an invalid scalar atomic spin`);
+      else scalarSpinSites++;
+    }
     normalized?.occupancyAlternatives.forEach((entry) => {
       elementCounts[entry.species] = (elementCounts[entry.species] || 0) + entry.fraction;
       siteElementCounts[entry.species] = (siteElementCounts[entry.species] || 0) + 1;
@@ -884,6 +899,7 @@ export function validateStructure(structure, options = {}) {
   const formalChargeCoverage = formalChargeKnownOccupancy / Math.max(totalOccupiedFraction, 1e-12);
   if (formalChargeKnownOccupancy > 0) warnings.push(`Formal oxidation-state coverage is ${(formalChargeCoverage * 100).toFixed(1)}%; net supplied-cell formal charge ${netFormalCharge >= 0 ? "+" : ""}${Number(netFormalCharge.toFixed(6))}`);
   if (formalChargeCoverage >= .999999 && Math.abs(netFormalCharge) > 1e-5) warnings.push("Fully charge-resolved supplied cell is not formally neutral; this is retained as input evidence, not corrected");
+  if (scalarSpinSites) warnings.push(`${scalarSpinSites} site${scalarSpinSites === 1 ? "" : "s"} preserve signed scalar atomic spin populations; no vector axis or magnetic Hamiltonian is inferred`);
   if (measurementConditions) {
     const recorded = [
       measurementTemperatureKelvin !== null ? `${Number(measurementTemperatureKelvin)} K` : null,
@@ -925,7 +941,8 @@ export function validateStructure(structure, options = {}) {
     maximumThermalSigmaA: thermalSigmas.at(-1) || 0,
     anisotropicDisplacementSites,
     maximumThermalAxisSigmaA: Math.max(0, ...thermalAxisSigmas),
-    formalChargeCoverage, chargeResolvedSites,
+    formalChargeCoverage, chargeResolvedSites, scalarSpinSites,
+    scalarSpinCoverage: scalarSpinSites / Math.max(1, structure?.atoms?.length || 0),
     netFormalCharge,
     trajectoryFrameCount, trajectoryTopologyConsistent, trajectoryVariableCell,
     trajectoryAtomPresentations,

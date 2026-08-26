@@ -5518,3 +5518,8 @@ distance work without storing coordinates. This is an analysis overlay: arrows
 are not forces, energy gradients, torques, or prescribed relaxation directions;
 the finite crop receives no invented periodic images, and the map cannot alter
 candidate geometry, ranking, hard admission, or search history.
+## Build 164: scalar-spin geometry is now a preserved observation channel
+
+The browser portal now retains explicit per-atom collinear spin scalars from NOMAD `calculation.charges[].spins` and lossless JSON inputs. It analyzes only the supplied scalar field: signed-site counts, normalized net signed population, and finite-crop distance-binned pair correlation `Σsᵢsⱼ/Σ|sᵢsⱼ|`. The 3D microscope adds polarity or local-correlation halos without replacing standard element colors. The experiment receipt hashes the ordered scalar records, records the NOMAD archive path and analysis method when present, and explicitly denies use in fitting or execution.
+
+This closes a data/provenance and geometric-observation gap, not the magnetic-physics gate. The upstream schema defines a scalar `n_atoms` quantity and does not guarantee a vector axis or unit, so the portal does not label it μB and draws no spin arrows. No exchange model, magnetic Hamiltonian, periodic spin sum, domain structure, ordering temperature, spin dynamics, force, or growth preference is inferred. Collective magnetism remains in the open long-range/electronic-response row. Primary source: [NOMAD schema source](https://github.com/nomad-coe/nomad-schema-plugin-run/blob/0f1000184032b742da8b7f0421b5605a5b086918/runschema/calculation.py).

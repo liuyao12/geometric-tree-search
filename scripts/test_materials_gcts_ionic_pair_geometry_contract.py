@@ -9,8 +9,8 @@ MODULE = (ROOT / "apps/iqc-growth-live/ionic-pair-geometry.js").read_text()
 
 
 def test_incremental_ionic_pair_geometry_contract():
-    assert 'buildId: "20260826-163"' in APP
-    assert 'app.js?v=20260826-163' in HTML
+    assert 'buildId: "20260826-164"' in APP
+    assert 'app.js?v=20260826-164' in HTML
     assert 'from "./ionic-pair-geometry.js?v=20260826-2"' in APP
     assert "export function incrementalIonicPairGeometry" in MODULE
     assert "export function incrementalIonicPairReachProfile" in MODULE

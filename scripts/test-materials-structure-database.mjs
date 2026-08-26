@@ -29,6 +29,7 @@ const archive = { data: { archive: { run: [{ program: { name: "VASP", version: "
 } }], calculation: [{ system_ref: "/run/0/system/0", method_ref: "/run/0/method/0",
   energy: { total: { value: -3.204353268e-18 } },
   forces: { total: { value: [[0, 1.602176634e-9, 0], [0, 0, -3.204353268e-9]] } },
+  charges: [{ analysis_method: "Bader", spins: [1.25, -1.25] }],
 }] }] } } };
 const primitive = nomadArchiveToStructure(entry, archive);
 assert.ok(Math.abs(primitive.atoms[1].position[0] - 2.82) < 1e-12);
@@ -42,6 +43,15 @@ assert.ok(Math.abs(primitive.metadata.calculation.forceRmsElectronVoltPerAngstro
 assert.equal(primitive.metadata.calculation.forceMaximumElectronVoltPerAngstrom, 2);
 assert.deepEqual(primitive.atoms[0].calculationForceEvPerAngstrom, [0, 1, 0]);
 assert.deepEqual(primitive.atoms[1].calculationForceEvPerAngstrom, [0, 0, -2]);
+assert.equal(primitive.atoms[0].calculationSpin, 1.25);
+assert.equal(primitive.atoms[1].calculationSpin, -1.25);
+assert.equal(primitive.metadata.calculation.spinCoverage, 1);
+assert.equal(primitive.metadata.calculation.atomicSpinCount, 2);
+assert.equal(primitive.metadata.calculation.atomicSpinSourcePath, "run/0/calculation/0/charges/0/spins");
+assert.equal(primitive.metadata.calculation.atomicSpinAnalysisMethod, "Bader");
+assert.equal(primitive.metadata.calculation.atomicSpinUnit, null);
+assert.equal(primitive.metadata.calculation.atomicSpinAxisAvailable, false);
+assert.equal(primitive.metadata.calculation.atomicSpinsUsedForGrowth, false);
 assert.equal(primitive.metadata.calculation.forcesUsedForGrowth, false);
 assert.equal(primitive.metadata.calculation.absoluteEnergyComparedAcrossEntries, false);
 
@@ -51,6 +61,7 @@ assert.equal(expanded.atoms.length, 128);
 assert.deepEqual(expanded.metadata.repetitions, [4, 4, 4]);
 assert.ok(Math.abs(expanded.cell[0][0] - 22.56) < 1e-12);
 assert.deepEqual(expanded.atoms[2].calculationForceEvPerAngstrom, [0, 1, 0]);
+assert.equal(expanded.atoms[2].calculationSpin, 1.25);
 
 const calls = [];
 const fakeFetch = async (url, options) => {
@@ -67,7 +78,7 @@ assert.equal(calls.length, 2);
 assert.equal(calls[0].body.query.and[1]["results.material.n_elements"], 2);
 assert.deepEqual(calls[1].body.required.run["system[-1]"], { atoms: "*" });
 assert.deepEqual(calls[1].body.required.run["calculation[-1]"], {
-  energy: "*", forces: "*", system_ref: "*", method_ref: "*",
+  energy: "*", forces: "*", charges: "*", system_ref: "*", method_ref: "*",
 });
 
 const relaxationEntry = {
@@ -147,7 +158,7 @@ const sampledRelaxation = await randomNomadStructure(["Na", "Cl"], { fetchImpl: 
 assert.equal(sampledRelaxation.structure.frames.length, 3);
 assert.deepEqual(relaxationCalls[1].body.required.run.system, { atoms: "*" });
 assert.deepEqual(relaxationCalls[1].body.required.run.calculation, {
-  energy: "*", forces: "*", system_ref: "*", method_ref: "*",
+  energy: "*", forces: "*", charges: "*", system_ref: "*", method_ref: "*",
 });
 assert.equal(relaxationCalls[1].body.required.run["system[-1]"], undefined);
 

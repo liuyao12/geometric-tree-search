@@ -298,10 +298,19 @@ const json = JSON.stringify({
   pbc: [true, true, true],
   species: ["Fe", "Fe"],
   positions: [[0, 0, 0], [1.435, 1.435, 1.435]],
+  spins: [2.2, -2.2],
 });
 const parsedJson = parseStructureText(json, "iron.json");
 assert.equal(parsedJson.atoms.length, 2);
-assert.equal(validateStructure(parsedJson).valid, true);
+assert.deepEqual(parsedJson.atoms.map((atom) => atom.calculationSpin), [2.2, -2.2]);
+const parsedJsonValidation = validateStructure(parsedJson);
+assert.equal(parsedJsonValidation.valid, true);
+assert.equal(parsedJsonValidation.scalarSpinSites, 2);
+assert.equal(parsedJsonValidation.scalarSpinCoverage, 1);
+assert.ok(parsedJsonValidation.warnings.some((warning) => warning.includes("scalar atomic spin")));
+assert.throws(() => parseStructureText(JSON.stringify({
+  species: ["Fe"], positions: [[0, 0, 0]], spins: ["not-a-spin"],
+}), "invalid-spin.json"), /Invalid scalar atomic spin/);
 
 const duplicate = parseStructureText(JSON.stringify({
   atoms: [{ species: "C", position: [0, 0, 0] }, { species: "C", position: [0.01, 0, 0] }],
