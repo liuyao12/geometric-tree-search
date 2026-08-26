@@ -139,6 +139,22 @@ checklist immediately. The checklist is guidance over receipt evidence—not an
 autorun system, a target-aware branch chooser, or a claim that one leap is a
 complete physical growth experiment.
 
+Build 151 turns a ready response pair into an immediate scientific readout in
+the study card. The three predeclared outcomes are evaluated in explicit
+reference-minus-contrast order from receipt-native fields: continuation and
+tree-search work, sealed ice-anchor counts, marking holdout mismatch,
+proper-rotation-invariant local order, finite-window geometric `S(q)`,
+epitaxial and seam surrogates, lineage sharing, loop witnesses, hard-boundary
+prunes, solid-angle pocket scores, and the RDF tail where applicable. Each tile
+shows both arm values, their signed difference, provenance on hover, and the
+observable's geometric claim boundary. If the compact notebook cannot certify
+an outcome—such as target-defined continuation precision or false growth—the
+tile says `not certified`; the portal never substitutes a convenient proxy.
+Legacy notebook runs receive only fields that were already stored and otherwise
+fail closed until the executed arm is saved again. This is a direct response
+summary, not a hidden target scorer or a conversion of geometry into energy,
+rate, or physical time.
+
 The right-hand **computational work laboratory** turns the scaling question into
 an explicit, inspectable comparison at 10×, 1,000×, and 100,000× the observed
 sample. It reports deterministic browser tree decisions and finite-neighborhood

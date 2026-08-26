@@ -121,6 +121,7 @@ const studyComparisonQuestion = $("studyComparisonQuestion");
 const studyComparisonFactor = $("studyComparisonFactor");
 const studyComparisonArms = $("studyComparisonArms");
 const studyComparisonProgress = $("studyComparisonProgress");
+const studyComparisonResponse = $("studyComparisonResponse");
 const studyComparisonOutcomes = $("studyComparisonOutcomes");
 const studyComparisonBoundary = $("studyComparisonBoundary");
 const studyCompassState = $("studyCompassState");
@@ -936,6 +937,7 @@ let epitaxyRegistrySiteChecks = 0;
 let constraintNeighborhoodEvaluations = 0;
 let constraintNeighborhoodSiteTotal = 0;
 let maximumConstraintNeighborhoodSites = 0;
+let publicBoundaryPrunes = 0;
 let lastPolicyComparison = null;
 let policyComparisonHistory = [];
 let selectedPolicySnapshotIndex = -1;
@@ -6684,7 +6686,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-150",
+      buildId: "20260826-151",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7120,6 +7122,7 @@ async function buildExperimentReceipt() {
         learnedChiralPortClasses: Object.keys(sectionModel.representationState?.chiralPreferences || {}).length,
         fitSamples: sectionModel.fitCount ?? sectionModel.curve.length,
         holdoutSamples: sectionModel.holdoutCount ?? 0,
+        validationMismatch: receiptRound(currentTrainingPoint().validationLoss),
       } : null,
     },
     search: searchVisible ? {
@@ -7144,6 +7147,7 @@ async function buildExperimentReceipt() {
       rejectedDecisions,
       coordinationCapacityPrunes,
       angularEnvelopePrunes,
+      publicBoundaryPrunes,
       geometricStrainRanking: {
         role: "target-blind soft ordering of the unchanged exact candidate set; not energy or admissibility",
         mode: geometryPreference,
@@ -8039,6 +8043,65 @@ function notebookInterventionFactors(receipt) {
   };
 }
 
+function notebookOutcomeRecord(value, unit, provenance, limitation = null) {
+  return Number.isFinite(value)
+    ? { available: true, value, unit, provenance, limitation }
+    : { available: false, value: null, unit, provenance, limitation: limitation || "Not recorded in the compact notebook summary." };
+}
+
+function notebookRegisteredOutcomeObservations(receipt, trajectoryPoints, generatedSites, causalDepth) {
+  const recipeId = receipt.studyDesign?.id;
+  if (!recipeId) return {};
+  const search = receipt.search?.explicitSites === undefined ? null : receipt.search;
+  const final = trajectoryPoints.at(-1) || null;
+  const microscope = receipt.studyDesign?.predictionAudit?.evidence?.microscope?.metrics || null;
+  const trace = search?.finiteIceAnchorTrace || null;
+  const rejectedIcePoses = trace?.waves?.reduce((sum, wave) => sum + (wave.rejectedCandidateAnchors || 0), 0);
+  const values = {
+    "bulk-order": {
+      "continuation sites": notebookOutcomeRecord(final?.domain?.continuationAtoms ?? generatedSites, "sites", "final certified structural-leap domain snapshot"),
+      "causal depth": notebookOutcomeRecord(causalDepth, "levels", "maximum parent→child depth in the live certificate"),
+      "frontier work": notebookOutcomeRecord(search?.localConstraintWork?.evaluations, "tests", "target-blind local constraint evaluations"),
+    },
+    "molecular-ice": {
+      "exact oxygen anchors": notebookOutcomeRecord(trace?.emittedAnchorCount, "O anchors", "sealed finite molecular-anchor trace"),
+      "rejected poses": notebookOutcomeRecord(rejectedIcePoses, "anchor poses", "unsupported or conflicting candidates in sealed ice waves"),
+      "orientation domains": notebookOutcomeRecord(trace?.unresolvedOrientationDomains, "domains", "mutually exclusive proton/deuteron pose domains retained symbolically"),
+    },
+    quasicrystal: {
+      "continuation precision": notebookOutcomeRecord(null, "fraction", "not scored", "No target coordinates enter live growth, so continuation precision requires a separate sealed scorer."),
+      "causal depth": notebookOutcomeRecord(causalDepth, "levels", "maximum parent→child depth in the live certificate"),
+      "S(q) response": notebookOutcomeRecord(final?.scattering?.summary?.peakProminence, "peak prominence", "final finite-window unit-weight geometric S(q)"),
+    },
+    moire: {
+      "held-out mismatch": notebookOutcomeRecord(receipt.marking?.learned?.validationMismatch, "loss", "frozen marking holdout section"),
+      "registry failures": notebookOutcomeRecord(search?.rejectedDecisions, "all rejected actions", "tree-search decision ledger", "The compact summary does not isolate registry-only failures."),
+      "|ψ6| response": notebookOutcomeRecord(final?.orientationalOrder?.harmonics?.[6]?.mean, "mean |ψ₆|", "final proper-rotation-invariant local-order snapshot"),
+    },
+    epitaxy: {
+      "registry score": notebookOutcomeRecord(search?.epitaxialRegistryRanking?.acceptedMeanScore, "mean score", "accepted unchanged actions against the declared support template"),
+      "seam burden": notebookOutcomeRecord(search?.actionDefectPrecursorRanking?.acceptedMeanBurden, "mean burden", "accepted action-generated geometric precursor burden", "Geometric seam surrogate; not a dislocation or interface energy."),
+      "|ψ6| response": notebookOutcomeRecord(final?.orientationalOrder?.harmonics?.[6]?.mean, "mean |ψ₆|", "final proper-rotation-invariant local-order snapshot"),
+    },
+    impingement: {
+      "effective nuclei": notebookOutcomeRecord(final?.morphology?.lineageEnsemble?.effectiveNucleusCount, "effective count", "final lineage population participation ratio"),
+      "shared-site fraction": notebookOutcomeRecord(final?.morphology?.lineageEnsemble?.sharedInterfaceFraction, "fraction", "final exact shared-lineage site accounting"),
+      "loop burden": notebookOutcomeRecord(search?.mesoscopicLoopClosureRanking?.acceptedMeanIndependentCompatiblePaths, "paths/action", "accepted independent frozen-port closure witnesses", "Bounded graph-loop geometry; not elastic energy."),
+    },
+    "pore-fill": {
+      "boundary rejections": notebookOutcomeRecord(search?.publicBoundaryPrunes, "actions", "rejected frozen actions with at least one site outside the public domain"),
+      "pocket filling": notebookOutcomeRecord(search?.discreteCapillaryGeometryRanking?.acceptedMeanScore, "mean score", "accepted local occupied-solid-angle pocket score", "Finite solid-angle surrogate; not capillary pressure."),
+      "RDF response": notebookOutcomeRecord(microscope?.currentTailRmsFromUnity, "tail RMS from 1", "posthoc finite-window RDF tail"),
+    },
+    "glass-control": {
+      "residual fraction": notebookOutcomeRecord(null, "fraction", "not scored", "The cover certifies explicit gap classes, but this notebook schema does not yet store their unique atom-union fraction."),
+      "false continuation": notebookOutcomeRecord(null, "sites", "not scored", "A target-free live run cannot label emitted sites false; that requires a separate sealed external scorer."),
+      "RDF tail": notebookOutcomeRecord(microscope?.currentTailRmsFromUnity, "tail RMS from 1", "posthoc finite-window RDF tail"),
+    },
+  };
+  return values[recipeId] || {};
+}
+
 function experimentNotebookSummary(receipt) {
   const cover = receipt.cover?.inputAtoms ? receipt.cover : null;
   const search = receipt.search?.explicitSites === undefined ? null : receipt.search;
@@ -8130,6 +8193,8 @@ function experimentNotebookSummary(receipt) {
     strongestClaim,
     benchmarkGate: receipt.evidenceBoundary.benchmarkGate,
     executionEvidence,
+    registeredOutcomeObservations: notebookRegisteredOutcomeObservations(receipt, trajectoryPoints,
+      generatedSites, causalDepth),
     registeredStudy: receipt.studyDesign?.id ? {
       recipeId: receipt.studyDesign.id,
       recipeLabel: receipt.studyDesign.label,
@@ -12606,6 +12671,7 @@ function initializeOffLatticeSearch() {
   constraintNeighborhoodEvaluations = 0;
   constraintNeighborhoodSiteTotal = 0;
   maximumConstraintNeighborhoodSites = 0;
+  publicBoundaryPrunes = 0;
   lastPolicyComparison = null;
   policyComparisonHistory = [];
   selectedPolicySnapshotIndex = -1;
@@ -13305,6 +13371,86 @@ function studyArmNotebookEvidence(recipeId, armId) {
   };
 }
 
+function legacyNotebookOutcomeRecord(entry, outcome) {
+  const final = entry?.trajectory?.points?.at(-1) || null;
+  const legacy = {
+    "continuation sites": notebookOutcomeRecord(entry?.generatedSites, "sites", "legacy notebook structural-site count"),
+    "causal depth": notebookOutcomeRecord(entry?.causalDepth, "levels", "legacy notebook causal-depth field"),
+    "frontier work": notebookOutcomeRecord(entry?.localConstraintEvaluations, "tests", "legacy notebook local-test field"),
+    "S(q) response": notebookOutcomeRecord(final?.scattering?.summary?.peakProminence, "peak prominence", "legacy final geometric S(q) snapshot"),
+    "|ψ6| response": notebookOutcomeRecord(final?.orientationalOrder?.harmonics?.[6]?.mean, "mean |ψ₆|", "legacy final local-order snapshot"),
+    "effective nuclei": notebookOutcomeRecord(final?.morphology?.lineageEnsemble?.effectiveNucleusCount, "effective count", "legacy final lineage snapshot"),
+    "shared-site fraction": notebookOutcomeRecord(final?.morphology?.lineageEnsemble?.sharedInterfaceFraction, "fraction", "legacy final lineage snapshot"),
+  };
+  return legacy[outcome] || notebookOutcomeRecord(null, "—", "not recorded",
+    "This saved run predates the registered-outcome notebook schema; save the executed arm again or inspect its full receipt.");
+}
+
+function notebookRegisteredOutcomeRecord(entry, outcome) {
+  return entry?.registeredOutcomeObservations?.[outcome] || legacyNotebookOutcomeRecord(entry, outcome);
+}
+
+function formatRegisteredOutcome(record, signed = false) {
+  if (!record?.available || !Number.isFinite(record.value)) return "—";
+  const percent = record.unit === "fraction";
+  const value = percent ? 100 * record.value : record.value;
+  const digits = percent || Math.abs(value) < 10 ? 3 : Number.isInteger(value) ? 0 : 2;
+  const formatted = value.toLocaleString(undefined, { maximumFractionDigits: digits, minimumFractionDigits: digits && !Number.isInteger(value) ? Math.min(3, digits) : 0 });
+  return `${signed && value > 0 ? "+" : ""}${formatted}${percent ? "%" : ""}`;
+}
+
+function renderStudyComparisonResponse(recipeId, comparison) {
+  const reference = studyArmNotebookEvidence(recipeId, "reference").latest;
+  const contrast = studyArmNotebookEvidence(recipeId, "contrast").latest;
+  studyComparisonResponse.replaceChildren();
+  if (!reference || !contrast) {
+    studyComparisonResponse.className = "study-comparison-response waiting";
+    const note = document.createElement("p");
+    note.textContent = "Measured response appears here after both registered arms are executed and saved.";
+    studyComparisonResponse.append(note); return;
+  }
+  const intervention = notebookInterventionComparison(reference, contrast);
+  const audit = notebookRegisteredPairAudit(reference, contrast, intervention);
+  if (!audit.responseComparable) {
+    studyComparisonResponse.className = "study-comparison-response waiting";
+    const note = document.createElement("p"); note.textContent = audit.detail;
+    studyComparisonResponse.append(note); return;
+  }
+  studyComparisonResponse.className = "study-comparison-response ready";
+  const header = document.createElement("header");
+  const title = document.createElement("span");
+  const eyebrow = document.createElement("small"); eyebrow.textContent = "measured registered response";
+  const direction = document.createElement("strong"); direction.textContent = "reference − contrast";
+  title.append(eyebrow, direction);
+  const badge = document.createElement("b"); badge.textContent = "receipt-native";
+  header.append(title, badge);
+  const outcomes = document.createElement("div"); outcomes.className = "study-comparison-response-grid";
+  comparison.outcomes.forEach((outcome) => {
+    const referenceRecord = notebookRegisteredOutcomeRecord(reference, outcome);
+    const contrastRecord = notebookRegisteredOutcomeRecord(contrast, outcome);
+    const comparable = referenceRecord.available && contrastRecord.available
+      && referenceRecord.unit === contrastRecord.unit;
+    const tile = document.createElement("article"); tile.className = comparable ? "available" : "unavailable";
+    const label = document.createElement("small"); label.textContent = outcome;
+    const values = document.createElement("strong");
+    values.textContent = comparable
+      ? `${formatRegisteredOutcome(referenceRecord)} ↔ ${formatRegisteredOutcome(contrastRecord)}` : "not certified";
+    const delta = document.createElement("em");
+    if (comparable) {
+      const deltaRecord = { ...referenceRecord, value: referenceRecord.value - contrastRecord.value };
+      delta.textContent = `Δ ${formatRegisteredOutcome(deltaRecord, true)} ${referenceRecord.unit}`;
+      tile.title = `${referenceRecord.provenance}. ${referenceRecord.limitation || ""}`.trim();
+    } else {
+      delta.textContent = referenceRecord.limitation || contrastRecord.limitation || "Outcome unavailable.";
+      tile.title = delta.textContent;
+    }
+    tile.append(label, values, delta); outcomes.append(tile);
+  });
+  const boundary = document.createElement("p");
+  boundary.textContent = "Values come from saved executed receipts on the identical observed input. A dash is retained when the compact notebook cannot certify the predeclared outcome; no proxy is invented.";
+  studyComparisonResponse.append(header, outcomes, boundary);
+}
+
 function renderStudyComparisonProgress(recipeId, comparison) {
   const records = comparison.arms.map((arm) => ({ arm, evidence: studyArmNotebookEvidence(recipeId, arm.id) }));
   const designSaved = records.every(({ evidence }) => evidence.savedRuns > 0);
@@ -13328,6 +13474,7 @@ function renderStudyComparisonProgress(recipeId, comparison) {
     ? "Both registered arms have saved structural-leap or fixed-point evidence."
     : "A comparable response requires at least one structural leap or audited fixed point in each arm.";
   studyComparisonProgress.replaceChildren(...armRecords, pair);
+  renderStudyComparisonResponse(recipeId, comparison);
 }
 
 function activeStudyRecipeAudit() {
@@ -14344,6 +14491,7 @@ function resetCounters() {
   constraintNeighborhoodEvaluations = 0;
   constraintNeighborhoodSiteTotal = 0;
   maximumConstraintNeighborhoodSites = 0;
+  publicBoundaryPrunes = 0;
   lastPolicyComparison = null;
   policyComparisonHistory = [];
   selectedPolicySnapshotIndex = -1;
@@ -14844,6 +14992,7 @@ function performOffLatticeEvent() {
       proposedSitesInBatch += snapshotEvaluation.sites.length;
       sharedInBatch += snapshotEvaluation.merged.length;
       rejectedDecisions++;
+      if (snapshotEvaluation.boundaryFailures > 0) publicBoundaryPrunes++;
       if (snapshotEvaluation.coordinationOverflows?.length) coordinationCapacityPrunes++;
       if (snapshotEvaluation.angularViolations?.length) angularEnvelopePrunes++;
       if (!snapshotEvaluation.feedstockSupply?.admitted) feedstockSupplyPrunes++;

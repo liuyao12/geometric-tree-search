@@ -25,9 +25,9 @@ def test_published_cdyb_is_a_selectable_positions_only_sample() -> None:
     assert 'phaseLabelUsedByLearner: false' in app
     assert 'cutAndProjectCoordinatesEmbedded: false' in app
     assert 'sourceSitesEmbedded: false' in app
-    assert 'buildId: "20260826-150"' in app
-    assert 'app.js?v=20260826-150' in html
-    assert 'style.css?v=20260826-59' in html
+    assert 'buildId: "20260826-151"' in app
+    assert 'app.js?v=20260826-151' in html
+    assert 'style.css?v=20260826-60' in html
     assert 'id="publishedFixtureProvenance"' in html
     assert 'id="publishedFixtureArticle"' in html
     assert 'function renderPublishedFixtureProvenance()' in app

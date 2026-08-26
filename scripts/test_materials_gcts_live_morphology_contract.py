@@ -11,8 +11,8 @@ README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
 
 def test_live_morphology_contract() -> None:
-    assert 'buildId: "20260826-150"' in APP
-    assert 'app.js?v=20260826-150' in HTML
+    assert 'buildId: "20260826-151"' in APP
+    assert 'app.js?v=20260826-151' in HTML
     for element_id in (
         "leapMorphologyPassport",
         "leapMorphologyState",
