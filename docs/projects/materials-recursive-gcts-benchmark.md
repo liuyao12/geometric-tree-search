@@ -5578,3 +5578,24 @@ surface, finite crop, unfilled frontier, and bulk defect can produce the same
 signal. The map therefore makes geometric incompatibility inspectable while
 explicitly withholding stress, force, elastic/frustration energy, bond order,
 defect identity, kinetics, and physical time.
+
+## Build 169: chemistry-resolved finite Debye scattering
+
+The structural-observable card now supports arbitrary real site weights in its
+dimension-aware finite Debye average. The normalization is
+`I(q)/Σᵢwᵢ² = 1 + 2Σᵢ<ⱼwᵢwⱼK_d(qrᵢⱼ)/Σᵢwᵢ²`, with the same `sin(qr)/(qr)`
+three-dimensional kernel and `J₀(qr)` intrinsic-two-dimensional kernel used by
+the unit-weight control. Tests prove unit-weight parity, invariance to common
+weight rescaling, non-negativity, and sensitivity of signed chemical contrast
+to alternating multicomponent order.
+
+The interactive channels are all-site unit density, per-chemistry-token
+sublattice density, constant atomic-number weighting, and composition-centered
+atomic-number contrast. The last two are intentionally called proxies: no
+q-dependent atomic X-ray form factor or neutron coherent scattering length is
+present. Refined occupancy amplitudes, anomalous terms, Debye–Waller factors,
+instrument resolution, absorption, preferred orientation, and intensity
+calibration remain outside the model. The receipt hashes the selected curve and
+records every omitted channel. Retained structural-leap comparisons stay on
+the immutable unit-weight basis, and no scattering value enters GCTS learning
+or execution.

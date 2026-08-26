@@ -4,6 +4,7 @@ import {
   besselJ0,
   powderStructureFactor,
   summarizeStructureFactor,
+  weightedPowderStructureFactor,
 } from "../apps/iqc-growth-live/structure-observables.js";
 
 function pairDistances(positions, spacing = 1) {
@@ -36,6 +37,33 @@ const cubicSq = powderStructureFactor(pairDistances(cubic), cubic.length, 3);
 const cubicSummary = summarizeStructureFactor(cubicSq);
 assert.ok(cubicSummary.peakHeight > 2 * glassSummary.peakHeight,
   "periodic order should have a substantially sharper powder peak than the glass control");
+
+const cubicDistances = pairDistances(cubic);
+const unitWeightedCubic = weightedPowderStructureFactor(cubicDistances.map((distance) => ({
+  distance, weightProduct: 1,
+})), cubic.length, 3);
+assert.ok(unitWeightedCubic.values.every((value, index) => Math.abs(value - cubicSq.values[index]) < 1e-12),
+  "all-unit weighted Debye scattering must reproduce the established geometric S(q)");
+const rescaledWeightedCubic = weightedPowderStructureFactor(cubicDistances.map((distance) => ({
+  distance, weightProduct: 49,
+})), cubic.length * 49, 3);
+assert.ok(rescaledWeightedCubic.values.every((value, index) =>
+  Math.abs(value - unitWeightedCubic.values[index]) < 1e-12),
+  "a common scattering-weight rescaling must cancel under squared-self normalization");
+const binaryLinePositions = [[0, 0, 0], [1, 0, 0], [2, 0, 0], [3, 0, 0]];
+const binaryWeights = [1, -1, 1, -1];
+const binaryTerms = [];
+for (let first = 0; first < binaryLinePositions.length; first++) {
+  for (let second = first + 1; second < binaryLinePositions.length; second++) binaryTerms.push({
+    distance: second - first,
+    weightProduct: binaryWeights[first] * binaryWeights[second],
+  });
+}
+const chemicalContrast = weightedPowderStructureFactor(binaryTerms, 4, 3);
+assert.ok(chemicalContrast.values.every((value) => Number.isFinite(value) && value >= 0));
+assert.ok(chemicalContrast.values.some((value, index) =>
+  Math.abs(value - powderStructureFactor(pairDistances(binaryLinePositions), 4, 3).values[index]) > .1),
+"composition-centered signed weights must expose chemical ordering hidden by unit density contrast");
 
 const planarHexagonal = [];
 for (let i = -7; i <= 7; i++) for (let j = -7; j <= 7; j++) {

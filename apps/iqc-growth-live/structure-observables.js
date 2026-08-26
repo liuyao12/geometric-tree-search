@@ -59,6 +59,38 @@ export function powderStructureFactor(pairDistances, atomCount, dimension = 3, {
   return { q, values, dimension, qMin, qMax };
 }
 
+/**
+ * Finite-observation Debye powder average for arbitrary real per-site
+ * scattering weights. `pairTerms` contains each unordered i<j pair once and
+ * `selfWeightSquares` is sum_i w_i^2.  Normalization therefore preserves a
+ * unit high-q self baseline and is invariant to a common rescaling of all
+ * weights. Signed weights are allowed for a declared chemical-contrast view;
+ * the result remains an orientationally averaged squared amplitude, not a
+ * calibrated X-ray or neutron intensity.
+ */
+export function weightedPowderStructureFactor(pairTerms, selfWeightSquares, dimension = 3, {
+  qMin = DEFAULT_Q_MIN,
+  qMax = DEFAULT_Q_MAX,
+  bins = DEFAULT_Q_BINS,
+} = {}) {
+  if (!Array.isArray(pairTerms) || pairTerms.some((term) => !Number.isFinite(term?.distance)
+      || !Number.isFinite(term?.weightProduct))) {
+    throw new Error("weighted powder S(q) requires finite distance/weight pair terms");
+  }
+  if (!(Number.isFinite(selfWeightSquares) && selfWeightSquares > 0)) {
+    throw new Error("weighted powder S(q) requires positive total squared self weight");
+  }
+  if (dimension !== 2 && dimension !== 3) throw new Error("weighted powder S(q) supports intrinsic dimension 2 or 3");
+  if (!(qMax > qMin) || bins < 2) throw new Error("weighted powder S(q) requires a finite q interval");
+  const q = Array.from({ length: bins }, (_, index) => qMin + index / (bins - 1) * (qMax - qMin));
+  const values = q.map((waveNumber) => {
+    const pairSum = pairTerms.reduce((sum, term) => sum
+      + term.weightProduct * powderKernel(waveNumber * term.distance, dimension), 0);
+    return Math.max(0, 1 + 2 * pairSum / selfWeightSquares);
+  });
+  return { q, values, dimension, qMin, qMax, selfWeightSquares };
+}
+
 export function summarizeStructureFactor(structureFactor) {
   const { q, values } = structureFactor;
   if (!values.length) return { peakQ: 0, peakHeight: 0, peakProminence: 0, highQMean: 0 };

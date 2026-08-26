@@ -4926,3 +4926,30 @@ dimensionless, sample-relative geometric residuals—not stress, force, elastic
 or frustration energy, bond order, a named defect, a trajectory, kinetics, or
 physical time. The overlay is post-hoc and cannot change candidate generation,
 ranking, admission, or already committed geometry.
+
+### Build 169 · multicomponent reciprocal-space contrast
+
+The finite-observation Debye powder view now retains chemistry instead of
+collapsing every site to the same scattering weight. A new reciprocal-space
+selector switches the identical position set among four auditable channels:
+unit-weight number density, one chemistry-token sublattice at a time, constant
+atomic-number weighting, and composition-centered `Z−⟨Z⟩` contrast. Every
+weighted curve is normalized by `Σᵢwᵢ²`, so its high-q self term is one and a
+common rescaling of all weights cancels exactly. Signed centered weights expose
+chemical ordering that can be hidden by the total number-density channel.
+
+This is a generalized finite Debye squared-amplitude calculation, not an
+experimental diffraction simulator. Constant `Z` is labeled only as the
+neutral-atom forward-electron-count / low-q proxy; it does not replace a
+q-dependent atomic form factor. The portal does not apply neutron scattering
+lengths, anomalous dispersion, refined occupational amplitudes, thermal
+Debye–Waller damping, polarization/Lorentz corrections, absorption, reciprocal
+resolution, preferred orientation, or instrument response. A selected-element
+curve is an isolated sublattice view and omits cross-species correlations.
+
+The experiment receipt freezes the selected weighting definition, nonzero-site
+count, signed-weight status, peak summary, omitted physics, and a hash of the
+complete curve without embedding it. Structural-leap comparisons deliberately
+remain unit-weight so changing the interactive view cannot rewrite retained
+history. All scattering channels are post-hoc and never affect clustering,
+marking, growth ranking, or admission.

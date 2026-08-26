@@ -172,10 +172,10 @@ const PHYSICS_MAP = {
   },
   order: {
     status: "progress", label: "long-range order", title: "Lattice, module, or metric order is inferred—not prescribed",
-    physical: "Periodic translation order, aperiodic long-range coherence, two-dimensional layers, and the absence of a unique amorphous continuation.",
-    geometric: "Auto mode tests a translation lattice, a finite-rank module, or an unrestricted metric point set. Local ports remain proper-SE(3) objects in every mode.",
-    growth: "Repeated productions may be promoted across scales. Exponential representation requires the same exact production and learned scale over three consecutive levels.",
-    boundary: "Deep compression alone is not stationarity. The ideal and Cd–Yb quasicrystals still have zero certified three-scale stationary productions.",
+    physical: "Periodic translation order, aperiodic long-range coherence, chemical sublattice order, two-dimensional layers, and the absence of a unique amorphous continuation.",
+    geometric: "Auto mode tests a translation lattice, a finite-rank module, or an unrestricted metric point set. Local ports remain proper-SE(3) objects in every mode. Reciprocal-space inspection decomposes the finite Debye sum into unit number density, selected chemistry-token sublattices, constant-Z low-q proxy, or composition-centered Z contrast.",
+    growth: "Repeated productions may be promoted across scales. Exponential representation requires the same exact production and learned scale over three consecutive levels. All reciprocal-space channels remain posthoc evidence and never rank a branch.",
+    boundary: "Deep compression alone is not stationarity. The ideal and Cd–Yb quasicrystals still have zero certified three-scale stationary productions. Constant Z is not a q-dependent atomic form factor; no neutron length, occupancy-weighted amplitude, anomalous term, Debye–Waller damping, or instrument response is used.",
     systems: [
       ["NaCl", "Periodic translation group", "Learned radix-2, 8-child rule", "Stationary gate green"],
       ["H₂O ice", "Periodic oxygen network", "Finite molecular-port continuation", "Promoted ice recurrence open"],
