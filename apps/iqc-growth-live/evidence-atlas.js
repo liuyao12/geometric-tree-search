@@ -186,10 +186,10 @@ const PHYSICS_MAP = {
   },
   defects: {
     status: "proved", label: "voids + defects", title: "Missing space remains an explicit geometric object",
-    physical: "Voids, interstitial boundaries, vacancies, incomplete crop boundaries, layer separation, local incompatibilities, and localized coherent/non-affine deformation between supplied snapshots.",
-    geometric: "Uncovered connected components become residual clusters; failed overlap tests become rejection evidence. For paired fixed-topology structures, a per-site Falk–Langer affine map separates Green–Lagrange shear/dilation from √D²min residual motion and kNN exchange.",
-    growth: "The search cannot silently drop uncovered atoms or accept a partial child as complete. The deformation microscope is posthoc: it colors full-rank cages by coherent shear, dilation, residual motion, or neighbor exchange without changing a branch.",
-    boundary: "A residual guarantees complete representation, not stability. Local F and D²min are kinematic snapshot differences—not stress, modulus, elastic or defect energy, plasticity identity, kinetics, or time. Rank-deficient cages withhold 3D strain.",
+    physical: "Voids, interstitial boundaries, vacancies, incomplete crop boundaries, layer separation, local incompatibilities, current-state contact/angle mismatch, and localized coherent/non-affine deformation between supplied snapshots.",
+    geometric: "Uncovered connected components become residual clusters; failed overlap tests become rejection evidence. Every current site can be compared with frozen colored contact-length, separated angle-mode, and ordered coordination envelopes without atom identity across time. For paired fixed-topology structures, a Falk–Langer affine map additionally separates Green–Lagrange shear/dilation from √D²min residual motion and kNN exchange.",
+    growth: "The search cannot silently drop uncovered atoms or accept a partial child as complete. The current-state mismatch map and paired deformation microscope are posthoc: they color sample-relative compatibility, surface shortfall, coherent shear, dilation, residual motion, or neighbor exchange without changing a branch.",
+    boundary: "A residual guarantees complete representation, not stability; coordination shortfall can simply be a free surface. Current geometric mismatch is not frustration energy, stress, or a defect label. Local F and D²min are kinematic snapshot differences—not modulus, elastic or defect energy, plasticity identity, kinetics, or time. Rank-deficient cages withhold 3D strain.",
     systems: [
       ["NaCl", "Crop and cover boundaries", "Exact residual terminals", "No defect thermodynamics"],
       ["H₂O ice", "O₆ interstitial ring regions", "33 Ih / 39 Ic gap-boundary classes", "No vacancy relaxation"],

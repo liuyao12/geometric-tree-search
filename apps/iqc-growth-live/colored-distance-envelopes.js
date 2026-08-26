@@ -429,3 +429,98 @@ export function coloredGeometricStrain(species, displacement, distanceModel, coo
     angleTerms: angleTerms.length,
   };
 }
+
+/**
+ * Resolve the same sample-learned contact/angle residual center by center.
+ * The optional neighbor enumerator lets a large live solid use a spatial index
+ * without changing the observable.  Coordination deficit is retained as a
+ * separate surface/completeness channel and is never folded into the
+ * contact-angle score used by tree-search ranking.
+ */
+export function coloredLocalConstraintMismatch(species, displacement, distanceModel,
+  coordinationModel, angularModel, {
+    centerIndices = species.map((_, index) => index),
+    neighborIndices = (center) => species.map((_, index) => index).filter((index) => index !== center),
+  } = {}) {
+  if (!Array.isArray(species) || typeof displacement !== "function"
+      || typeof neighborIndices !== "function") {
+    throw new Error("local constraint mismatch requires species, displacement, and neighbor enumeration");
+  }
+  const records = [...new Set(centerIndices)].filter((center) => Number.isInteger(center)
+      && center >= 0 && center < species.length).map((center) => {
+    const candidates = [...new Set(neighborIndices(center))].filter((neighbor) => Number.isInteger(neighbor)
+      && neighbor >= 0 && neighbor < species.length && neighbor !== center);
+    const neighbors = candidates.map((neighbor) => {
+      const neighborSpecies = species[neighbor];
+      const coordination = coordinationEnvelopeFor(coordinationModel, species[center], neighborSpecies);
+      if (!coordination) return null;
+      const vector = displacement(center, neighbor);
+      const norm = Math.hypot(...vectorComponents(vector));
+      return Number.isFinite(norm) && norm <= coordination.contactCutoff
+        ? { neighbor, neighborSpecies, vector, norm } : null;
+    }).filter(Boolean);
+    const distanceTerms = [];
+    neighbors.forEach(({ neighborSpecies, norm }) => {
+      const envelope = distanceModel?.byKey?.[pairKey(species[center], neighborSpecies)];
+      if (!envelope) return;
+      distanceTerms.push(boundedSquare((norm - envelope.typicalContact) / envelope.contactScale));
+    });
+    const angleTerms = [];
+    for (let first = 0; first < neighbors.length - 1; first++) for (let second = first + 1;
+      second < neighbors.length; second++) {
+      const envelope = angularEnvelopeFor(angularModel, species[center],
+        neighbors[first].neighborSpecies, neighbors[second].neighborSpecies);
+      if (!envelope) continue;
+      const degrees = angleDegrees(neighbors[first].vector, neighbors[second].vector);
+      if (!Number.isFinite(degrees)) continue;
+      const normalized = Math.min(...envelope.bands.map((band) => {
+        const mode = (band.observedMinimum + band.observedMaximum) / 2;
+        const scale = Math.max(angularModel.config.toleranceDegrees,
+          (band.observedMaximum - band.observedMinimum) / 2 + angularModel.config.toleranceDegrees);
+        return Math.abs(degrees - mode) / scale;
+      }));
+      angleTerms.push(boundedSquare(normalized));
+    }
+    const coordinationTerms = (coordinationModel?.records || [])
+      .filter((record) => record.centerSpecies === species[center] && record.medianObserved > 0)
+      .map((record) => {
+        const observed = neighbors.filter((neighbor) => neighbor.neighborSpecies === record.neighborSpecies).length;
+        return Math.max(0, record.medianObserved - observed) / record.medianObserved;
+      });
+    const mean = (values) => values.reduce((sum, value) => sum + value, 0) / Math.max(1, values.length);
+    const distance = mean(distanceTerms);
+    const angle = mean(angleTerms);
+    const coordinationDeficit = mean(coordinationTerms);
+    return {
+      center,
+      species: species[center],
+      contactAngleMismatch: .55 * distance + .45 * angle,
+      distance,
+      angle,
+      coordinationDeficit,
+      contactTerms: distanceTerms.length,
+      angleTerms: angleTerms.length,
+      coordinationTerms: coordinationTerms.length,
+      neighborCount: neighbors.length,
+    };
+  });
+  const percentile = (key, fraction) => {
+    const ordered = records.map((record) => record[key]).filter(Number.isFinite).sort((a, b) => a - b);
+    return ordered[Math.min(ordered.length - 1,
+      Math.max(0, Math.round(fraction * (ordered.length - 1))))] || 0;
+  };
+  const mean = (key) => records.reduce((sum, record) => sum + record[key], 0) / Math.max(1, records.length);
+  return {
+    records,
+    sampledCenters: records.length,
+    meanContactAngleMismatch: mean("contactAngleMismatch"),
+    percentile90ContactAngleMismatch: percentile("contactAngleMismatch", .9),
+    percentile90DistanceMismatch: percentile("distance", .9),
+    percentile90AngleMismatch: percentile("angle", .9),
+    meanCoordinationDeficit: mean("coordinationDeficit"),
+    percentile90CoordinationDeficit: percentile("coordinationDeficit", .9),
+    definition: "per-center dimensionless residual to frozen colored contact-length and separated angle-mode envelopes; coordination deficit is reported separately",
+    targetUsed: false,
+    physicalPotentialUsed: false,
+  };
+}

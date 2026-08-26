@@ -51,12 +51,13 @@ import {
   coloredAngularViolations,
   coloredCoordinationDeficit,
   coloredGeometricStrain,
+  coloredLocalConstraintMismatch,
   coordinationEnvelopeFor,
   exclusionForPair,
   learnColoredAngularEnvelopesEnsemble,
   learnColoredCoordinationEnvelopesEnsemble,
   learnColoredDistanceEnvelopesEnsemble,
-} from "./colored-distance-envelopes.js?v=20260824-6";
+} from "./colored-distance-envelopes.js?v=20260826-7";
 import { learnLocalPairDistanceUncertaintyEnsemble } from "./ensemble-geometry-uncertainty.js?v=20260824-1";
 import { interfaceAccommodationScore, interfaceGeometryAudit } from "./interface-geometry.js?v=20260825-1";
 import { classifyProperPoseOrbits, symmetryReducedMisorientation } from "./proper-pose-orbits.js?v=20260825-1";
@@ -433,6 +434,9 @@ const relaxationDisplacementToggleLabel = $("relaxationDisplacementToggleLabel")
 const relaxationLocalEnvironmentToggle = $("relaxationLocalEnvironmentToggle");
 const relaxationLocalEnvironmentToggleLabel = $("relaxationLocalEnvironmentToggleLabel");
 const relaxationLocalEnvironmentMetric = $("relaxationLocalEnvironmentMetric");
+const localConstraintMismatchToggle = $("localConstraintMismatchToggle");
+const localConstraintMismatchToggleLabel = $("localConstraintMismatchToggleLabel");
+const localConstraintMismatchMetric = $("localConstraintMismatchMetric");
 const rotateToggle = $("rotateToggle");
 const downloadReceiptButton = $("downloadReceiptButton");
 const copyReceiptButton = $("copyReceiptButton");
@@ -1056,6 +1060,8 @@ let importedStructure = null;
 let importedFrameIndex = 0;
 let ensembleEvidenceMode = "all";
 let relaxationLocalEnvironmentCache = null;
+let localConstraintMismatchCache = null;
+let atomGeometryRevision = 0;
 let iceViMicrostate = null;
 let iceViMicrostateSeed = 0;
 let selectedDatabaseElements = ["Na", "Cl"];
@@ -1757,6 +1763,59 @@ function relaxationLocalEnvironmentField() {
     physicalTimeUsed: false,
   };
   relaxationLocalEnvironmentCache = { structure: importedStructure, frameIndex: importedFrameIndex, result };
+  return result;
+}
+
+function currentLocalConstraintMismatchField() {
+  if (!atoms.length || !coloredDistanceEnvelopes?.records?.length
+      || !coloredCoordinationEnvelopes?.records?.length || !coloredAngularEnvelopes?.records?.length) return null;
+  if (localConstraintMismatchCache?.revision === atomGeometryRevision
+      && localConstraintMismatchCache?.distanceModel === coloredDistanceEnvelopes
+      && localConstraintMismatchCache?.coordinationModel === coloredCoordinationEnvelopes
+      && localConstraintMismatchCache?.angularModel === coloredAngularEnvelopes) {
+    return localConstraintMismatchCache.result;
+  }
+  const maximumDisplayedCenters = 1200;
+  const ordered = atoms.map((atom, index) => ({ atom, index }))
+    .sort((first, second) => first.atom.id - second.atom.id || first.index - second.index);
+  const selected = ordered.length <= maximumDisplayedCenters ? ordered
+    : Array.from({ length: maximumDisplayedCenters }, (_, sample) =>
+      ordered[Math.min(ordered.length - 1,
+        Math.floor((sample + .5) * ordered.length / maximumDisplayedCenters))]);
+  const indexByAtom = new Map(atoms.map((atom, index) => [atom, index]));
+  const reach = coloredCoordinationEnvelopes.maximumCutoff;
+  const field = coloredLocalConstraintMismatch(
+    atoms.map((atom) => atom.species),
+    (first, second) => atoms[second].p.clone().sub(atoms[first].p),
+    coloredDistanceEnvelopes,
+    coloredCoordinationEnvelopes,
+    coloredAngularEnvelopes,
+    {
+      centerIndices: selected.map((entry) => entry.index),
+      neighborIndices: (center) => nearbyAtoms(atoms[center].p, reach)
+        .map((atom) => indexByAtom.get(atom)).filter(Number.isInteger),
+    },
+  );
+  const result = {
+    ...field,
+    records: field.records.map((record) => ({ ...record, atom: atoms[record.center],
+      atomId: atoms[record.center].id })),
+    totalCenters: atoms.length,
+    samplingPolicy: atoms.length <= maximumDisplayedCenters
+      ? "all current sites" : `${maximumDisplayedCenters} deterministic atom-ID quantiles`,
+    maximumDisplayedCenters,
+    geometryRevision: atomGeometryRevision,
+    contactAngleDefinition: "0.55 mean squared normalized colored contact-length residual + 0.45 mean squared normalized separated angle-mode residual; each term capped at 16",
+    coordinationDefinition: "mean fractional shortfall from the observed median ordered colored coordination; reported separately because a growing surface may be intentionally incomplete",
+    useInSearch: "diagnostic field only; candidate ranking uses the same frozen contact-angle residual before placement",
+    boundaries: {
+      physicalPotential: false, stress: false, elasticEnergy: false, force: false,
+      defectIdentity: false, physicalTime: false, kinetics: false,
+    },
+  };
+  localConstraintMismatchCache = { revision: atomGeometryRevision,
+    distanceModel: coloredDistanceEnvelopes, coordinationModel: coloredCoordinationEnvelopes,
+    angularModel: coloredAngularEnvelopes, result };
   return result;
 }
 
@@ -7044,12 +7103,24 @@ async function buildExperimentReceipt() {
   })) || [];
   const relaxationLocalEnvironmentSha256 = relaxationLocalEnvironmentRecords.length
     ? await receiptSha256(JSON.stringify(relaxationLocalEnvironmentRecords)) : null;
+  const localConstraintMismatch = currentLocalConstraintMismatchField();
+  const localConstraintMismatchRecords = localConstraintMismatch?.records.map((record) => ({
+    atomId: record.atomId, species: record.species,
+    contactAngleMismatch: receiptRound(record.contactAngleMismatch, 10),
+    distanceMismatch: receiptRound(record.distance, 10),
+    angleMismatch: receiptRound(record.angle, 10),
+    coordinationDeficit: receiptRound(record.coordinationDeficit, 10),
+    contactTerms: record.contactTerms, angleTerms: record.angleTerms,
+    coordinationTerms: record.coordinationTerms, neighborCount: record.neighborCount,
+  })) || [];
+  const localConstraintMismatchSha256 = localConstraintMismatchRecords.length
+    ? await receiptSha256(JSON.stringify(localConstraintMismatchRecords)) : null;
   const receipt = {
     schema: "gcts-materials-growth-receipt-v1",
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-167",
+      buildId: "20260826-168",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7517,6 +7588,35 @@ async function buildExperimentReceipt() {
         defectEnergyClaimed: false,
         phaseProbabilityClaimed: false,
       },
+      currentLocalConstraintMismatch: localConstraintMismatch ? {
+        role: "identity-free posthoc spatial map of the same sample-learned local geometry used to audit candidate compatibility",
+        definition: localConstraintMismatch.definition,
+        contactAngleDefinition: localConstraintMismatch.contactAngleDefinition,
+        coordinationDefinition: localConstraintMismatch.coordinationDefinition,
+        totalCurrentCenters: localConstraintMismatch.totalCenters,
+        sampledCenters: localConstraintMismatch.sampledCenters,
+        samplingPolicy: localConstraintMismatch.samplingPolicy,
+        meanContactAngleMismatch: receiptRound(localConstraintMismatch.meanContactAngleMismatch),
+        percentile90ContactAngleMismatch: receiptRound(localConstraintMismatch.percentile90ContactAngleMismatch),
+        percentile90DistanceMismatch: receiptRound(localConstraintMismatch.percentile90DistanceMismatch),
+        percentile90AngleMismatch: receiptRound(localConstraintMismatch.percentile90AngleMismatch),
+        meanCoordinationDeficit: receiptRound(localConstraintMismatch.meanCoordinationDeficit),
+        percentile90CoordinationDeficit: receiptRound(localConstraintMismatch.percentile90CoordinationDeficit),
+        displayedMetric: localConstraintMismatchMetric.value,
+        displayEnabled: localConstraintMismatchToggle.checked,
+        recordSha256: localConstraintMismatchSha256,
+        recordsEmbedded: false,
+        properRotationInvariant: true,
+        translationInvariant: true,
+        atomIdentityAcrossFramesRequired: false,
+        usedToAdmitGrowth: false,
+        usedToRankCurrentGrowth: false,
+        physicalPotentialUsed: false,
+        stressInferred: false,
+        elasticEnergyInferred: false,
+        defectIdentityInferred: false,
+        physicalTimeUsed: false,
+      } : null,
       multiscaleOrderPathway: {
         role: "interactive posthoc comparison of local orientational order and finite-observation reciprocal-space peak prominence across certified structural states",
         selectedHarmonic: multiscalePathwayHarmonic,
@@ -10423,6 +10523,8 @@ function indexAtom(atom) {
   const bucket = atomSpatialIndex.get(key) || [];
   bucket.push(atom);
   atomSpatialIndex.set(key, bucket);
+  atomGeometryRevision++;
+  localConstraintMismatchCache = null;
 }
 
 function rebuildSpatialIndex() {
@@ -15377,6 +15479,12 @@ function syncStageOptions() {
   forceToggle.disabled = !(calculation?.forceCoverage > 0);
   forceToggleLabel.textContent = calculation?.forceCoverage > 0
     ? `Residual forces · ${calculation.programName || "calculation"}` : "Residual forces · unavailable";
+  const currentMismatch = currentLocalConstraintMismatchField();
+  localConstraintMismatchToggle.disabled = !currentMismatch;
+  localConstraintMismatchMetric.disabled = !currentMismatch;
+  localConstraintMismatchToggleLabel.textContent = currentMismatch
+    ? `Current local constraint mismatch · ${currentMismatch.sampledCenters}/${currentMismatch.totalCenters} sites · p90 ${currentMismatch.percentile90ContactAngleMismatch.toFixed(2)}`
+    : "Current local constraint mismatch · unavailable";
   const displacement = relaxationDisplacementField();
   relaxationDisplacementToggle.disabled = !displacement;
   relaxationDisplacementToggleLabel.textContent = displacement
@@ -16967,6 +17075,36 @@ function rebuildWorld() {
     });
   }
 
+  const currentMismatch = localConstraintMismatchToggle.checked
+    ? currentLocalConstraintMismatchField() : null;
+  if (currentMismatch?.records.length) {
+    const geometry = new THREE.IcosahedronGeometry(.29, 1);
+    const material = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true,
+      transparent: true, opacity: .54, depthWrite: false });
+    const halos = new THREE.InstancedMesh(geometry, material, currentMismatch.records.length);
+    const metric = localConstraintMismatchMetric.value;
+    const valueFor = (record) => metric === "distance" ? record.distance
+      : metric === "angle" ? record.angle
+        : metric === "coordination" ? record.coordinationDeficit : record.contactAngleMismatch;
+    const scale = Math.max(1e-12, metric === "distance" ? currentMismatch.percentile90DistanceMismatch
+      : metric === "angle" ? currentMismatch.percentile90AngleMismatch
+        : metric === "coordination" ? currentMismatch.percentile90CoordinationDeficit
+          : currentMismatch.percentile90ContactAngleMismatch);
+    const low = new THREE.Color(0x65e1bc); const middle = new THREE.Color(0xffc169);
+    const high = new THREE.Color(0xff6d71);
+    currentMismatch.records.forEach((record, index) => {
+      const relative = Math.max(0, Math.min(1, valueFor(record) / scale));
+      dummy.position.copy(record.atom.p); dummy.rotation.set(0, 0, 0);
+      dummy.scale.setScalar(elementScale(record.atom.species) * (1.22 + .64 * Math.sqrt(relative)));
+      dummy.updateMatrix(); halos.setMatrixAt(index, dummy.matrix);
+      halos.setColorAt(index, relative < .5 ? low.clone().lerp(middle, relative * 2)
+        : middle.clone().lerp(high, relative * 2 - 1));
+    });
+    halos.instanceMatrix.needsUpdate = true;
+    if (halos.instanceColor) halos.instanceColor.needsUpdate = true;
+    atomGroup.add(halos);
+  }
+
   const localOrderField = currentOrientationalOrderField();
   if (localOrderField?.resolved.length) {
     const halos = new THREE.InstancedMesh(orientationalOrderHaloGeometry, orientationalOrderHaloMaterial,
@@ -17558,6 +17696,7 @@ function physicsTranslationRecords(leap = null) {
   const relaxation = scenarioSelect.value === "imported" ? importedStructure?.metadata?.relaxationSequence : null;
   const relaxationDisplacement = relaxationDisplacementField();
   const relaxationLocalEnvironment = relaxationLocalEnvironmentField();
+  const localConstraintMismatch = currentLocalConstraintMismatchField();
   const localSymmetry = leap?.localSymmetryTransition || null;
   const centrosymmetry = leap?.centrosymmetryTransition || null;
   const reciprocalSpace = leap?.reciprocalSpaceTransition || null;
@@ -17572,6 +17711,16 @@ function physicsTranslationRecords(leap = null) {
       encoding: `${coloredCoordinationEnvelopes?.records?.length || 0} ordered coordination bounds + ${coloredAngularEnvelopes?.records?.length || 0} colored angular bands within the sample-derived reach`,
       evidence: `${coordinationCapacityPrunes} coordination and ${angularEnvelopePrunes} angular prunes have occurred in this run.`,
       boundary: "Coordination and angle envelopes constrain local topology but do not calculate bond order, bond energy, hybridization, or electronic structure." },
+    { id: "local-mismatch-map", process: "current-state local geometric compatibility / frontier incompleteness",
+      status: localConstraintMismatch ? "observed" : "unavailable",
+      role: localConstraintMismatch ? "identity-free posthoc spatial diagnostic" : "no learned local envelopes",
+      encoding: localConstraintMismatch
+        ? `${localConstraintMismatch.sampledCenters}/${localConstraintMismatch.totalCenters} deterministic centers; colored contact-length residual, separated angle-mode residual, and ordered coordination shortfall remain distinct`
+        : "no current per-site contact/angle/coordination residual is available",
+      evidence: localConstraintMismatch
+        ? `Mean contact+angle residual ${localConstraintMismatch.meanContactAngleMismatch.toFixed(3)}; p90 ${localConstraintMismatch.percentile90ContactAngleMismatch.toFixed(3)}; mean ordered coordination shortfall ${localConstraintMismatch.meanCoordinationDeficit.toFixed(3)}.`
+        : "Enter a stage with learned colored local geometry to resolve this field.",
+      boundary: "This field compares the current solid with sample-learned geometric envelopes. Coordination shortfall can simply mark a free surface. It is not stress, force, elastic or defect energy, bond order, a named defect, a physical trajectory, kinetics, or time; it never changes an admitted branch." },
     { id: "calculation-forces", process: "external relaxation / residual-force geometry", status: calculation?.forceCoverage > 0 ? "explicit" : "unavailable", role: calculation?.forceCoverage > 0 ? "external calculation diagnostic" : "no force channel",
       encoding: calculation?.forceCoverage > 0
         ? `${calculation.programName || "public calculation"}; per-site Cartesian vectors in eV/Å, displayed with direction preserved and length normalized only for visibility`
@@ -21483,9 +21632,10 @@ mdScalingSelect.addEventListener("change", () => {
     candidate.setAttribute("aria-pressed", String(candidate === button)));
   drawGrowthMechanismMap();
 }));
-[markingToggle, bondToggle, frontierToggle, forceToggle, relaxationDisplacementToggle,
+[markingToggle, bondToggle, frontierToggle, forceToggle, localConstraintMismatchToggle, relaxationDisplacementToggle,
   relaxationLocalEnvironmentToggle]
   .forEach((input) => input.addEventListener("change", rebuildWorld));
+localConstraintMismatchMetric.addEventListener("change", rebuildWorld);
 relaxationLocalEnvironmentMetric.addEventListener("change", rebuildWorld);
 rotateToggle.addEventListener("change", () => { controls.autoRotate = rotateToggle.checked; });
 coordClearButton.addEventListener("click", () => selectCoordination(coordinationSelection));

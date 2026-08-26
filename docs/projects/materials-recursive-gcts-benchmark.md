@@ -5558,3 +5558,23 @@ invariants into stress, energy, modulus, plasticity, defect identity, barrier,
 mobility, trajectory, growth rate, or physical time. The analysis is excluded
 from clustering, marking learning, candidate generation, ranking, and hard
 admission.
+
+## Build 168: sample-relative local mismatch survives into the grown state
+
+The live portal now projects its frozen colored contact, coordination, and
+three-body angle envelopes back onto the current explicit solid. Each inspected
+center retains the contact-length residual, separated angle-mode residual,
+their established 0.55/0.45 ranking combination, and the ordered coordination
+shortfall as distinct values. A spatial-index neighbor callback makes the
+definition identical for small and large observations without an all-pairs
+scan. Up to 1,200 deterministic centers are displayed and the receipt records
+both coverage and sampling policy.
+
+This diagnostic requires no atom correspondence between structural states, so
+it remains available during leap-frogged growth where new atoms have no prior
+identity. It does not feed its post-commit values back into the search. In
+particular, coordination shortfall is not silently treated as strain: a free
+surface, finite crop, unfilled frontier, and bulk defect can produce the same
+signal. The map therefore makes geometric incompatibility inspectable while
+explicitly withholding stress, force, elastic/frustration energy, bond order,
+defect identity, kinetics, and physical time.

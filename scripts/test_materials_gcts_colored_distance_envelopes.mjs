@@ -5,6 +5,7 @@ import {
   coloredAngularViolations,
   coloredCoordinationDeficit,
   coloredGeometricStrain,
+  coloredLocalConstraintMismatch,
   coordinationEnvelopeFor,
   exclusionForPair,
   learnColoredAngularEnvelopes,
@@ -123,9 +124,46 @@ const distortedStrain = coloredGeometricStrain(octahedralSpecies, (first, second
 octahedralPairs, octahedralCoordination, octahedralAngles, [0]);
 assert.ok(distortedStrain.total > exactStrain.total,
   "the soft geometric ranking must prefer the supplied octahedron to its distorted alternative");
+const exactLocalMismatch = coloredLocalConstraintMismatch(octahedralSpecies, octahedralDisplacement,
+  octahedralPairs, octahedralCoordination, octahedralAngles, { centerIndices: [0] });
+const distortedLocalMismatch = coloredLocalConstraintMismatch(octahedralSpecies, (first, second) =>
+  distortedPositions[second].map((value, axis) => value - distortedPositions[first][axis]),
+octahedralPairs, octahedralCoordination, octahedralAngles, { centerIndices: [0] });
+assert.equal(exactLocalMismatch.records.length, 1);
+assert.equal(exactLocalMismatch.records[0].coordinationDeficit, 0);
+assert.ok(distortedLocalMismatch.records[0].contactAngleMismatch
+  > exactLocalMismatch.records[0].contactAngleMismatch,
+"the local field must expose the distorted center without changing the frozen envelopes");
+const partialLocalMismatch = coloredLocalConstraintMismatch(partialOctahedralSpecies,
+  (first, second) => partialOctahedralPositions[second]
+    .map((value, axis) => value - partialOctahedralPositions[first][axis]),
+octahedralPairs, octahedralCoordination, octahedralAngles, { centerIndices: [0] });
+assert.equal(partialLocalMismatch.records[0].coordinationDeficit, .5,
+  "the local field must keep frontier incompleteness separate from contact-angle mismatch");
+const localNeighborAudit = coloredLocalConstraintMismatch(octahedralSpecies, octahedralDisplacement,
+  octahedralPairs, octahedralCoordination, octahedralAngles, {
+    centerIndices: [0], neighborIndices: () => [1, 2, 3, 4, 5, 6],
+  });
+assert.deepEqual(localNeighborAudit.records, exactLocalMismatch.records,
+  "spatially enumerated neighborhoods must reproduce full enumeration exactly");
+const rotatedOctahedron = octahedralPositions.map(([x, y, z]) => [-y, x, z]);
+const rotatedLocalMismatch = coloredLocalConstraintMismatch(octahedralSpecies, (first, second) =>
+  rotatedOctahedron[second].map((value, axis) => value - rotatedOctahedron[first][axis]),
+octahedralPairs, octahedralCoordination, octahedralAngles, { centerIndices: [0] });
+assert.deepEqual(rotatedLocalMismatch.records, exactLocalMismatch.records,
+  "the local constraint field must be invariant to a proper global rotation");
+const reversedOctahedralSpecies = octahedralSpecies.slice().reverse();
+const reversedOctahedralPositions = octahedralPositions.slice().reverse();
+const reversedLocalMismatch = coloredLocalConstraintMismatch(reversedOctahedralSpecies,
+  (first, second) => reversedOctahedralPositions[second]
+    .map((value, axis) => value - reversedOctahedralPositions[first][axis]),
+octahedralPairs, octahedralCoordination, octahedralAngles, { centerIndices: [6] });
+const withoutIdentity = ({ center, ...record }) => record;
+assert.deepEqual(withoutIdentity(reversedLocalMismatch.records[0]),
+  withoutIdentity(exactLocalMismatch.records[0]),
+  "the local constraint field must be invariant to atom permutation");
 assert.equal(exactStrain.contactTerms, 6);
 assert.equal(exactStrain.angleTerms, 15);
-const rotatedOctahedron = octahedralPositions.map(([x, y, z]) => [-y, x, z]);
 const rotatedStrain = coloredGeometricStrain(octahedralSpecies, (first, second) =>
   rotatedOctahedron[second].map((value, axis) => value - rotatedOctahedron[first][axis]),
 octahedralPairs, octahedralCoordination, octahedralAngles, [0]);

@@ -4900,3 +4900,29 @@ are not stress, elastic energy, modulus, a plastic-strain or named-defect
 assignment, a minimum-energy path, activation barrier, mobility, kinetics, or
 elapsed time. The microscope is post-hoc and never changes the cluster cover,
 marking, frozen candidate set, branch ranking, or hard admission.
+
+### Build 168 · current-state geometric compatibility field
+
+The contact and angle evidence used to judge a proposed attachment can now be
+inspected over the current solid after the attachment has been committed. For
+each displayed site, the portal queries the exact spatial index through the
+largest learned colored coordination cutoff and reports four independent
+channels: the existing 55/45 contact-plus-angle residual, its colored
+contact-length component, its separated angle-mode component, and ordered
+coordination shortfall from the observed median. The first three compare local
+geometry with the supplied sample; the last is deliberately separate because a
+growing free surface can be incomplete without being a distorted bulk cage.
+
+The field is translation-, proper-rotation-, and atom-permutation-invariant and
+does not require atom identity across snapshots. All current sites are used up
+to 1,200 centers; larger solids use deterministic atom-ID quantiles, and the
+sample/total count and policy are shown and receipt-visible. Mint-to-amber-to-
+coral wire halos preserve standard element colors. Every retained record is
+hashed in the receipt without embedding coordinates.
+
+This closes an important observability gap between candidate scoring and the
+grown structure, but it does not add a constitutive model. The values are
+dimensionless, sample-relative geometric residuals—not stress, force, elastic
+or frustration energy, bond order, a named defect, a trajectory, kinetics, or
+physical time. The overlay is post-hoc and cannot change candidate generation,
+ranking, admission, or already committed geometry.
