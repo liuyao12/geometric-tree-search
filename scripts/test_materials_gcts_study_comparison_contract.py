@@ -12,9 +12,9 @@ README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
 
 def test_registered_study_comparison_contract() -> None:
-    assert 'buildId: "20260826-155"' in APP
-    assert 'app.js?v=20260826-155' in HTML
-    assert 'style.css?v=20260826-63' in HTML
+    assert 'buildId: "20260826-156"' in APP
+    assert 'app.js?v=20260826-156' in HTML
+    assert 'style.css?v=20260826-64' in HTML
     for element_id in (
         "studyComparison", "studyComparisonQuestion", "studyComparisonFactor",
         "studyComparisonArms", "studyComparisonOutcomes", "studyComparisonBoundary",

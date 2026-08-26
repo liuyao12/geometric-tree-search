@@ -12,8 +12,8 @@ MODULE = (ROOT / "apps/iqc-growth-live/interface-geometry.js").read_text()
 
 
 def test_interface_geometry_contract() -> None:
-    assert 'buildId: "20260826-155"' in APP
-    assert 'app.js?v=20260826-155' in HTML
+    assert 'buildId: "20260826-156"' in APP
+    assert 'app.js?v=20260826-156' in HTML
     assert 'from "./interface-geometry.js?v=20260825-1"' in APP
     assert "export function interfaceGeometryAudit" in MODULE
     assert "export function interfaceAccommodationScore" in MODULE

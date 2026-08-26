@@ -365,6 +365,9 @@ const policySpatialTerm = $("policySpatialTerm");
 const policySpatialToggle = $("policySpatialToggle");
 const policySpatialExtremes = $("policySpatialExtremes");
 const policySpatialDecomposition = $("policySpatialDecomposition");
+const chargeShapePortraitState = $("chargeShapePortraitState");
+const chargeShapePortrait = $("chargeShapePortrait");
+const chargeShapePortraitDetail = $("chargeShapePortraitDetail");
 const policySensitivityState = $("policySensitivityState");
 const policyHistoryElement = $("policyHistory");
 const policyPreviewState = $("policyPreviewState");
@@ -6703,7 +6706,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-155",
+      buildId: "20260826-156",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7781,6 +7784,27 @@ async function buildExperimentReceipt() {
               candidateGeometryChanged: false,
               executed: intervention.executed,
               targetUsedToChooseMultipliers: false,
+            } : null;
+          })(),
+          globalChargeShapePortrait: (() => {
+            const portrait = buildChargeShapePortrait(snapshot);
+            return portrait ? {
+              role: "candidate-resolved global supplied-charge dipole–quadrupole transition portrait",
+              candidateCount: portrait.points.length,
+              candidateSetDigest: portrait.candidateSetDigest,
+              selectedCandidateDigest: portrait.points.find((point) =>
+                point.candidateKey === portrait.selectedCandidateKey)?.candidateDigest || null,
+              current: { normalizedDipole: receiptRound(portrait.current.dipoleMagnitude),
+                normalizedQuadrupole: receiptRound(portrait.current.quadrupoleMagnitude) },
+              ranges: { maximumNormalizedDipole: receiptRound(portrait.maximumDipole),
+                maximumNormalizedQuadrupole: receiptRound(portrait.maximumQuadrupole) },
+              normalization: portrait.normalization,
+              candidateSetChanged: portrait.candidateSetChanged,
+              hardAdmissionChanged: portrait.hardAdmissionChanged,
+              candidateGeometryChanged: portrait.candidateGeometryChanged,
+              suppliedFormalChargeOnly: portrait.suppliedFormalChargeOnly,
+              targetUsed: portrait.targetUsed, executed: portrait.executed,
+              claimBoundary: portrait.claimBoundary,
             } : null;
           })(),
           decisionPhaseMap: (() => {
@@ -11516,6 +11540,55 @@ function buildPolicySpatialPreview(snapshot) {
     candidateSetChanged: false, hardAdmissionChanged: false, executed: false };
 }
 
+function buildChargeShapePortrait(snapshot) {
+  if (!snapshot?.workbenchCandidates?.length) return null;
+  const points = snapshot.workbenchCandidates.filter((candidate) => candidate.chargeMoment?.available)
+    .map((candidate) => ({ candidateKey: candidate.candidateKey,
+      candidateDigest: candidate.candidateDigest, action: candidate.action,
+      score: candidate.chargeMoment.score, dipoleScore: candidate.chargeMoment.dipoleScore,
+      quadrupoleScore: candidate.chargeMoment.quadrupoleScore,
+      before: { ...candidate.chargeMoment.before }, after: { ...candidate.chargeMoment.after },
+      preview: candidate.preview }))
+    .sort((first, second) => first.candidateKey.localeCompare(second.candidateKey));
+  if (!points.length) return null;
+  const maximumDipole = Math.max(1e-9, ...points.flatMap((point) => [point.before.dipoleMagnitude,
+    point.after.dipoleMagnitude]));
+  const maximumQuadrupole = Math.max(1e-9, ...points.flatMap((point) => [point.before.quadrupoleMagnitude,
+    point.after.quadrupoleMagnitude]));
+  points.forEach((point) => {
+    point.normalizedX = point.after.dipoleMagnitude / maximumDipole;
+    point.normalizedY = point.after.quadrupoleMagnitude / maximumQuadrupole;
+  });
+  const activeCandidateKey = snapshot.policies.find((policy) => policy.id === "active")?.candidateKey;
+  const selectedCandidateKey = points.some((point) => point.candidateKey === snapshot.chargeShapeCandidateKey)
+    ? snapshot.chargeShapeCandidateKey : points.some((point) => point.candidateKey === activeCandidateKey)
+      ? activeCandidateKey : [...points].sort((first, second) => second.score - first.score
+        || first.candidateKey.localeCompare(second.candidateKey))[0].candidateKey;
+  snapshot.chargeShapeCandidateKey = selectedCandidateKey;
+  const current = points[0].before;
+  return { points, current, maximumDipole, maximumQuadrupole, selectedCandidateKey,
+    candidateSetDigest: snapshot.candidateDigest, candidateSetChanged: false,
+    hardAdmissionChanged: false, candidateGeometryChanged: false,
+    suppliedFormalChargeOnly: true, targetUsed: false, executed: false,
+    normalization: "|p|/(sum |q| Rrms); Frobenius(Q)/(sum |q| Rrms^2) about geometric centroid",
+    claimBoundary: "candidate transition portrait; not energy, electric field, polarization, dielectric response, trajectory, or physical time" };
+}
+
+function buildChargeShapePreview(snapshot) {
+  const portrait = buildChargeShapePortrait(snapshot);
+  const point = portrait?.points.find((candidate) => candidate.candidateKey === portrait.selectedCandidateKey);
+  const candidate = snapshot?.workbenchCandidates?.find((entry) => entry.candidateKey === point?.candidateKey);
+  if (!portrait || !point || !candidate) return null;
+  const scoreTerms = workbenchCandidateTerms(snapshot, candidate);
+  const score = scoreTerms.reduce((sum, term) => sum + term.contribution, 0);
+  return { id: "charge-shape", label: "charge-shape candidate", action: candidate.action,
+    candidateKey: candidate.candidateKey, candidateDigest: candidate.candidateDigest,
+    score, scoreTerms, scoreTermTotal: score, scoreDecompositionExact: true,
+    preview: candidate.preview, chargeShapeScore: point.score,
+    candidateSetDigest: portrait.candidateSetDigest, candidateSetChanged: false,
+    hardAdmissionChanged: false, executed: false };
+}
+
 function activePolicySpatialField() {
   if (pipelineStage !== 4 || iceAnchorTrace) return null;
   return buildPolicySpatialField(policyComparisonHistory[selectedPolicySnapshotIndex] || lastPolicyComparison);
@@ -11655,6 +11728,16 @@ function capturePolicyComparison(entries) {
       baselineScore: entry.selectionScore,
       scoreTerms,
       boundedPoseAudit: frontierPoseAudits.get(entry.candidate.key) || null,
+      chargeMoment: entry.evaluation.chargeMoment.available ? {
+        available: true, mode: entry.evaluation.chargeMoment.mode,
+        score: entry.evaluation.chargeMoment.score,
+        dipoleScore: entry.evaluation.chargeMoment.dipoleScore,
+        quadrupoleScore: entry.evaluation.chargeMoment.quadrupoleScore,
+        before: { dipoleMagnitude: entry.evaluation.chargeMoment.before.dipoleMagnitude,
+          quadrupoleMagnitude: entry.evaluation.chargeMoment.before.quadrupoleMagnitude },
+        after: { dipoleMagnitude: entry.evaluation.chargeMoment.after.dipoleMagnitude,
+          quadrupoleMagnitude: entry.evaluation.chargeMoment.after.quadrupoleMagnitude },
+      } : { available: false, reason: entry.evaluation.chargeMoment.reason || "unavailable" },
       freshSites: entry.evaluation.fresh.map((site) => ({ species: site.species, p: site.p.clone() })),
       fullSites: entry.evaluation.sites.map((site) => ({ species: site.species, p: site.p.clone() })),
       preview: { p: entry.candidate.position.clone(), rotation: entry.candidate.rotation.clone(), type: entry.candidate.type },
@@ -18036,6 +18119,78 @@ function renderPolicySpatialField(snapshot) {
   renderPolicySpatialDecomposition(snapshot, field);
 }
 
+function previewChargeShapeCandidate(snapshot, candidateKey) {
+  snapshot.chargeShapeCandidateKey = candidateKey;
+  selectedPolicyPreviewId = "charge-shape";
+  previewPolicyWinner(buildChargeShapePreview(snapshot), snapshot);
+}
+
+function renderChargeShapePortrait(snapshot) {
+  chargeShapePortrait.replaceChildren(); chargeShapePortraitDetail.replaceChildren();
+  const portrait = buildChargeShapePortrait(snapshot);
+  if (!portrait) {
+    chargeShapePortraitState.textContent = formalChargeTarget?.available
+      ? "advance one charged frontier" : "complete supplied charge required";
+    return;
+  }
+  const namespace = "http://www.w3.org/2000/svg";
+  const make = (name, attributes = {}) => {
+    const element = document.createElementNS(namespace, name);
+    Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, String(value)));
+    return element;
+  };
+  const left = 28; const top = 8; const width = 204; const height = 116;
+  const px = (dipole) => left + width * dipole / portrait.maximumDipole;
+  const py = (quadrupole) => top + height * (1 - quadrupole / portrait.maximumQuadrupole);
+  [0, .25, .5, .75, 1].forEach((fraction) => {
+    chargeShapePortrait.append(make("line", { x1: left + width * fraction, y1: top,
+      x2: left + width * fraction, y2: top + height, class: "grid" }));
+    chargeShapePortrait.append(make("line", { x1: left, y1: top + height * (1 - fraction),
+      x2: left + width, y2: top + height * (1 - fraction), class: "grid" }));
+  });
+  portrait.points.forEach((point) => {
+    const direction = point.score >= 0 ? "improve" : "worsen";
+    chargeShapePortrait.append(make("line", { x1: px(point.before.dipoleMagnitude),
+      y1: py(point.before.quadrupoleMagnitude), x2: px(point.after.dipoleMagnitude),
+      y2: py(point.after.quadrupoleMagnitude), class: `transition ${direction}` }));
+  });
+  const current = make("path", { d: `M${px(portrait.current.dipoleMagnitude)},${py(portrait.current.quadrupoleMagnitude) - 5} l1.5,3.2 3.5,.4 -2.6,2.4 .7,3.5 -3.1,-1.8 -3.1,1.8 .7,-3.5 -2.6,-2.4 3.5,-.4 z`, class: "current" });
+  const currentTitle = make("title");
+  currentTitle.textContent = `current solid · dipole ${portrait.current.dipoleMagnitude.toFixed(5)} · quadrupole ${portrait.current.quadrupoleMagnitude.toFixed(5)}`;
+  current.append(currentTitle); chargeShapePortrait.append(current);
+  portrait.points.forEach((point) => {
+    const direction = point.score >= 0 ? "improve" : "worsen";
+    const circle = make("circle", { cx: px(point.after.dipoleMagnitude),
+      cy: py(point.after.quadrupoleMagnitude), r: point.candidateKey === portrait.selectedCandidateKey ? 4 : 2.7,
+      class: `candidate ${direction}${point.candidateKey === portrait.selectedCandidateKey ? " selected" : ""}`,
+      tabindex: 0, role: "button", "aria-label": `${point.action}; normalized dipole ${point.after.dipoleMagnitude.toFixed(4)}; normalized quadrupole ${point.after.quadrupoleMagnitude.toFixed(4)}; charge-shape score ${point.score.toFixed(4)}` });
+    const title = make("title");
+    title.textContent = `${point.action} · p ${point.before.dipoleMagnitude.toFixed(4)} → ${point.after.dipoleMagnitude.toFixed(4)} · Q ${point.before.quadrupoleMagnitude.toFixed(4)} → ${point.after.quadrupoleMagnitude.toFixed(4)} · score ${point.score >= 0 ? "+" : ""}${point.score.toFixed(4)}`;
+    circle.append(title);
+    circle.addEventListener("click", () => previewChargeShapeCandidate(snapshot, point.candidateKey));
+    circle.addEventListener("keydown", (event) => {
+      if (["Enter", " "].includes(event.key)) { event.preventDefault(); previewChargeShapeCandidate(snapshot, point.candidateKey); }
+    });
+    chargeShapePortrait.append(circle);
+  });
+  const xLabel = make("text", { x: left + width / 2, y: 145, class: "axis-label", "text-anchor": "middle" });
+  xLabel.textContent = "normalized dipole |p| →"; chargeShapePortrait.append(xLabel);
+  const yLabel = make("text", { x: 7, y: top + height / 2, class: "axis-label", "text-anchor": "middle",
+    transform: `rotate(-90 7 ${top + height / 2})` });
+  yLabel.textContent = "quadrupole anisotropy →"; chargeShapePortrait.append(yLabel);
+  const selected = portrait.points.find((point) => point.candidateKey === portrait.selectedCandidateKey);
+  if (selected) {
+    const heading = document.createElement("strong"); heading.textContent = selected.action;
+    const score = document.createElement("b"); score.textContent = `${selected.score >= 0 ? "+" : ""}${selected.score.toFixed(4)}`;
+    const dipole = document.createElement("span");
+    dipole.textContent = `dipole ${selected.before.dipoleMagnitude.toFixed(4)} → ${selected.after.dipoleMagnitude.toFixed(4)} · component ${selected.dipoleScore >= 0 ? "+" : ""}${selected.dipoleScore.toFixed(4)}`;
+    const quadrupole = document.createElement("span");
+    quadrupole.textContent = `quadrupole ${selected.before.quadrupoleMagnitude.toFixed(4)} → ${selected.after.quadrupoleMagnitude.toFixed(4)} · component ${selected.quadrupoleScore >= 0 ? "+" : ""}${selected.quadrupoleScore.toFixed(4)}`;
+    chargeShapePortraitDetail.append(heading, score, dipole, quadrupole);
+  }
+  chargeShapePortraitState.textContent = `${portrait.points.length} exact candidate${portrait.points.length === 1 ? "" : "s"} · ${portrait.candidateSetDigest} · target-free`;
+}
+
 function renderPolicyWorkbenchState(snapshot, workbench = buildPolicyWorkbench(snapshot)) {
   if (!snapshot || !workbench) {
     policyWorkbenchState.textContent = "awaiting a frozen frontier";
@@ -18093,6 +18248,7 @@ function renderPolicyComparison() {
     renderPolicyParetoMap(null);
     renderPolicyOmissionAudit(null);
     renderPolicySpatialField(null);
+    renderChargeShapePortrait(null);
     return;
   }
   if (iceAnchorTrace) {
@@ -18109,6 +18265,7 @@ function renderPolicyComparison() {
     renderPolicyParetoMap(null);
     renderPolicyOmissionAudit(null);
     renderPolicySpatialField(null);
+    renderChargeShapePortrait(null);
     return;
   }
   if (!lastPolicyComparison) {
@@ -18125,6 +18282,7 @@ function renderPolicyComparison() {
     renderPolicyParetoMap(null);
     renderPolicyOmissionAudit(null);
     renderPolicySpatialField(null);
+    renderChargeShapePortrait(null);
     return;
   }
   const snapshot = policyComparisonHistory[selectedPolicySnapshotIndex] || lastPolicyComparison;
@@ -18132,6 +18290,7 @@ function renderPolicyComparison() {
   const paretoPreview = snapshot.paretoPreviewCandidateKey ? buildPolicyParetoPreview(snapshot) : null;
   const omissionPreview = selectedPolicyPreviewId === "omission" ? buildPolicyOmissionPreview(snapshot) : null;
   const spatialPreview = buildPolicySpatialPreview(snapshot);
+  const chargeShapePreview = selectedPolicyPreviewId === "charge-shape" ? buildChargeShapePreview(snapshot) : null;
   policyComparisonState.textContent = `${snapshot.frontier} candidates · ${snapshot.admissible} admitted · ${snapshot.uniqueTopActions} winner${snapshot.uniqueTopActions === 1 ? "" : "s"}`
     + `${snapshot.referenceGuided ? " · target-aware replay" : " · target-blind frontier"}`;
   snapshot.policies.forEach((policy) => {
@@ -18167,6 +18326,17 @@ function renderPolicyComparison() {
     row.append(label, action, score); policyComparison.append(row);
     row.addEventListener("click", () => previewPolicyWinner(spatialPreview, snapshot));
   }
+  if (chargeShapePreview) {
+    const row = document.createElement("button"); row.type = "button";
+    row.classList.toggle("active", selectedPolicyPreviewId === "charge-shape");
+    row.setAttribute("aria-pressed", String(selectedPolicyPreviewId === "charge-shape"));
+    row.title = "Preview this exact global charge-shape candidate; this never executes";
+    const label = document.createElement("small"); label.textContent = chargeShapePreview.label;
+    const action = document.createElement("strong"); action.textContent = chargeShapePreview.action;
+    const score = document.createElement("em"); score.textContent = chargeShapePreview.chargeShapeScore.toFixed(3);
+    row.append(label, action, score); policyComparison.append(row);
+    row.addEventListener("click", () => previewPolicyWinner(chargeShapePreview, snapshot));
+  }
   if (paretoPreview) {
     const row = document.createElement("button"); row.type = "button";
     row.classList.toggle("active", selectedPolicyPreviewId === "pareto");
@@ -18191,6 +18361,7 @@ function renderPolicyComparison() {
   }
   const selectedScorePolicy = selectedPolicyPreviewId === "workbench" ? workbench
     : selectedPolicyPreviewId === "spatial" && spatialPreview ? spatialPreview
+    : selectedPolicyPreviewId === "charge-shape" && chargeShapePreview ? chargeShapePreview
     : selectedPolicyPreviewId === "pareto" && paretoPreview ? paretoPreview
     : selectedPolicyPreviewId === "omission" && omissionPreview ? omissionPreview
     : snapshot.policies.find((policy) => policy.id === selectedPolicyPreviewId)
@@ -18200,6 +18371,7 @@ function renderPolicyComparison() {
   renderPolicyParetoMap(snapshot);
   renderPolicyOmissionAudit(snapshot);
   renderPolicySpatialField(snapshot);
+  renderChargeShapePortrait(snapshot);
   const sensitive = policyComparisonHistory.filter((entry) => entry.uniqueTopActions > 1).length;
   const meanWinners = policyComparisonHistory.reduce((sum, entry) => sum + entry.uniqueTopActions, 0)
     / Math.max(1, policyComparisonHistory.length);
@@ -18222,12 +18394,13 @@ function renderPolicyComparison() {
   });
   const selectedPolicy = selectedPolicyPreviewId === "workbench" ? workbench
     : selectedPolicyPreviewId === "spatial" && spatialPreview ? spatialPreview
+    : selectedPolicyPreviewId === "charge-shape" && chargeShapePreview ? chargeShapePreview
     : selectedPolicyPreviewId === "pareto" && paretoPreview ? paretoPreview
     : selectedPolicyPreviewId === "omission" && omissionPreview ? omissionPreview
     : snapshot.policies.find((policy) => policy.id === selectedPolicyPreviewId) || snapshot.policies.at(-1);
   policyPreviewState.textContent = `${selectedPolicy.label}: ${selectedPolicy.action} · frontier ${snapshot.candidateDigest} · candidate set target-free`
     + `${snapshot.rankingTargetUsed ? " · replay score reference-guided" : " · ranking target-free"}`
-    + `${["workbench", "spatial", "pareto", "omission"].includes(selectedPolicy.id) ? " · counterfactual preview only · not executed" : ""}`;
+    + `${["workbench", "spatial", "charge-shape", "pareto", "omission"].includes(selectedPolicy.id) ? " · counterfactual preview only · not executed" : ""}`;
 }
 
 function liveGrowthCertificate() {
