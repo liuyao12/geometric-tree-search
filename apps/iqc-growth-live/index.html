@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260825-48">
+  <link rel="stylesheet" href="./style.css?v=20260825-49">
   <script type="importmap">
     {
       "imports": {
@@ -1206,8 +1206,13 @@
           </article>
           <article id="notebookTrajectoryAudit" class="notebook-trajectory-audit" aria-live="polite">
             <header><small>structural-leap comparison</small><strong>select two runs</strong><span>coordinate-free leap histories will be aligned by search update, never by physical time</span></header>
-            <label class="notebook-trajectory-observable">observable
-              <select id="notebookTrajectoryObservable" aria-label="Structural-leap comparison observable">
+            <div class="notebook-trajectory-toolbar">
+              <div class="notebook-trajectory-modes" role="group" aria-label="Notebook trajectory view">
+                <button type="button" data-notebook-trajectory-mode="series" aria-pressed="true">leap series</button>
+                <button type="button" data-notebook-trajectory-mode="pathway" aria-pressed="false">order pathway</button>
+              </div>
+              <label class="notebook-trajectory-observable">observable
+                <select id="notebookTrajectoryObservable" aria-label="Structural-leap comparison observable">
                 <option value="atoms">explicit atoms</option>
                 <option value="radius">radius of gyration · Å</option>
                 <option value="lineageRadius">largest-nucleus radius · Å</option>
@@ -1227,9 +1232,17 @@
                 <option value="anisotropy">relative shape anisotropy · κ²</option>
                 <option value="exposure">colored coordination deficit</option>
                 <option value="dimension">inferred structural dimension</option>
-              </select>
-            </label>
+                </select>
+              </label>
+              <div id="notebookTrajectoryHarmonics" class="notebook-trajectory-harmonics" role="group" aria-label="Local orientational harmonic" hidden>
+                <span>local order</span>
+                <button type="button" data-notebook-pathway-harmonic="4" aria-pressed="false">q₄ / ψ₄</button>
+                <button type="button" data-notebook-pathway-harmonic="6" aria-pressed="true">q₆ / ψ₆</button>
+                <button type="button" data-notebook-pathway-harmonic="12" aria-pressed="false">q₁₂ / ψ₁₂</button>
+              </div>
+            </div>
             <svg id="notebookTrajectoryPlot" viewBox="0 0 280 118" role="img" aria-label="Explicit atoms represented after each structural leap"></svg>
+            <div id="notebookTrajectoryStateDetail" class="notebook-trajectory-state" aria-live="polite"></div>
             <div id="notebookTrajectorySummary" class="notebook-trajectory-summary"></div>
           </article>
         </section>
@@ -1469,7 +1482,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260825-139"></script>
+  <script type="module" src="./app.js?v=20260825-140"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

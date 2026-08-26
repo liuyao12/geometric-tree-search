@@ -369,7 +369,9 @@ const notebookComparison = $("notebookComparison");
 const notebookInterventionAudit = $("notebookInterventionAudit");
 const notebookTrajectoryAudit = $("notebookTrajectoryAudit");
 const notebookTrajectoryObservable = $("notebookTrajectoryObservable");
+const notebookTrajectoryHarmonics = $("notebookTrajectoryHarmonics");
 const notebookTrajectoryPlot = $("notebookTrajectoryPlot");
+const notebookTrajectoryStateDetail = $("notebookTrajectoryStateDetail");
 const notebookTrajectorySummary = $("notebookTrajectorySummary");
 const runStateText = $("runStateText");
 const stageEyebrow = $("stageEyebrow");
@@ -909,6 +911,8 @@ let selectedScalePassportStage = -1;
 let selectedObservationProvenanceId = null;
 let experimentNotebookEntries = [];
 let selectedNotebookEntryIds = [];
+let notebookTrajectoryMode = "series";
+let notebookTrajectoryHarmonic = 6;
 let atomSpatialIndex = new Map();
 let trainingProgress = 0;
 let clusterDiscoveryTrace = null;
@@ -6504,7 +6508,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-139",
+      buildId: "20260825-140",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7920,6 +7924,16 @@ function experimentNotebookSummary(receipt) {
     benchmarkGate: receipt.evidenceBoundary.benchmarkGate,
     physicalTimeModeled: receipt.evidenceBoundary.physicalElapsedTimeModeled,
     trajectory: { alignment: "structural leap index", points: trajectoryPoints,
+      multiscaleOrderPathway: {
+        horizontalObservable: "mean local q_l in 3D or |psi_l| in 2D",
+        verticalObservable: "unit-weight geometric S(q) dominant-peak prominence",
+        availableHarmonics: [4, 6, 12],
+        pointProvenance: "seed plus retained accepted, rejected, and fixed structural-leap states",
+        properRotationInvariant: true,
+        structuralProjectionOnly: true,
+        phaseDiagram: false,
+        physicalTimeModeled: false,
+      },
       morphologyPassport: "rotation/translation-invariant covariance spectrum + learned colored-coordination deficit",
       interfacePassport: "finite proper-misorientation registry, topology, thickness, chemistry, and coordination exposure",
       feedstockPassport: "species-count inventory consumed only by newly emitted sites",
@@ -8188,8 +8202,65 @@ function notebookTrajectoryComparison(first, second) {
     physicalTimeModeled: false, dynamicsIntegrated: false, coordinatesEmbedded: false };
 }
 
+function notebookMultiscaleOrderPathway(comparison, harmonic = 6) {
+  const project = (points) => points.map((point) => ({
+    point,
+    localOrder: point.orientationalOrder?.harmonics?.[harmonic]?.mean,
+    reciprocalProminence: point.scattering?.summary?.peakProminence,
+  }));
+  const first = project(comparison.firstPoints); const second = project(comparison.secondPoints);
+  const all = [...first, ...second];
+  if (all.length < 2 || !all.every((state) => Number.isFinite(state.localOrder)
+    && Number.isFinite(state.reciprocalProminence))) return null;
+  const localValues = all.map((state) => state.localOrder);
+  const reciprocalValues = all.map((state) => state.reciprocalProminence);
+  const localMinimum = Math.min(...localValues); const localMaximum = Math.max(...localValues);
+  const reciprocalMinimum = Math.min(...reciprocalValues); const reciprocalMaximum = Math.max(...reciprocalValues);
+  const localRange = Math.max(1e-9, localMaximum - localMinimum);
+  const reciprocalRange = Math.max(1e-9, reciprocalMaximum - reciprocalMinimum);
+  const summarize = (states) => {
+    const initial = states[0]; const final = states.at(-1);
+    const normalizedPathLength = states.slice(1).reduce((total, state, index) => {
+      const previous = states[index];
+      return total + Math.hypot((state.localOrder - previous.localOrder) / localRange,
+        (state.reciprocalProminence - previous.reciprocalProminence) / reciprocalRange);
+    }, 0);
+    return { initial, final, normalizedPathLength,
+      localShift: final.localOrder - initial.localOrder,
+      reciprocalShift: final.reciprocalProminence - initial.reciprocalProminence };
+  };
+  const firstSummary = summarize(first); const secondSummary = summarize(second);
+  return { harmonic, first, second, firstSummary, secondSummary,
+    localMinimum, localMaximum, localRange,
+    reciprocalMinimum, reciprocalMaximum, reciprocalRange,
+    finalNormalizedSeparation: Math.hypot(
+      (secondSummary.final.localOrder - firstSummary.final.localOrder) / localRange,
+      (secondSummary.final.reciprocalProminence - firstSummary.final.reciprocalProminence) / reciprocalRange),
+    properRotationInvariant: true,
+    physicalTimeModeled: false,
+    phaseDiagram: false };
+}
+
+function showNotebookPathwayState(entry, state, harmonic) {
+  notebookTrajectoryStateDetail.replaceChildren();
+  const label = document.createElement("small"); label.textContent = `run ${entry === null ? "—" : entry.material} · retained state`;
+  const value = document.createElement("strong");
+  value.textContent = `leap ${state.point.step} · q${harmonic}/ψ${harmonic} ${state.localOrder.toFixed(3)} · S(q) ${state.reciprocalProminence.toFixed(3)}`;
+  const note = document.createElement("span");
+  note.textContent = `${state.point.status} · ${state.point.atoms.toLocaleString()} atoms · ${state.point.clusters} clusters · depth ${state.point.depth} · +${state.point.acceptedThisLeap}/−${state.point.rejectedThisLeap} branches`;
+  notebookTrajectoryStateDetail.append(label, value, note);
+}
+
 function renderNotebookTrajectoryAudit(selected) {
-  notebookTrajectoryPlot.replaceChildren(); notebookTrajectorySummary.replaceChildren();
+  notebookTrajectoryPlot.replaceChildren(); notebookTrajectoryStateDetail.replaceChildren(); notebookTrajectorySummary.replaceChildren();
+  document.querySelectorAll("[data-notebook-trajectory-mode]").forEach((button) => {
+    button.setAttribute("aria-pressed", String(button.dataset.notebookTrajectoryMode === notebookTrajectoryMode));
+  });
+  notebookTrajectoryObservable.closest("label").hidden = notebookTrajectoryMode !== "series";
+  notebookTrajectoryHarmonics.hidden = notebookTrajectoryMode !== "pathway";
+  notebookTrajectoryHarmonics.querySelectorAll("[data-notebook-pathway-harmonic]").forEach((button) => {
+    button.setAttribute("aria-pressed", String(Number(button.dataset.notebookPathwayHarmonic) === notebookTrajectoryHarmonic));
+  });
   const heading = notebookTrajectoryAudit.querySelector("header");
   const title = heading.querySelector("strong"); const detail = heading.querySelector("span");
   if (selected.length !== 2) {
@@ -8210,6 +8281,79 @@ function renderNotebookTrajectoryAudit(selected) {
   detail.textContent = comparison.sameInput
     ? `${comparison.alignedSteps} aligned states from one observed input · protocol effects remain model-dependent${comparison.historyTruncated ? " · at least one 24-leap history is truncated" : ""}`
     : "Observed input digests differ; trajectories are shown descriptively and cannot be attributed to the protocol.";
+  const svg = notebookTrajectoryPlot; const svgNamespace = "http://www.w3.org/2000/svg";
+  const makeSvg = (name, attributes = {}) => {
+    const element = document.createElementNS(svgNamespace, name);
+    Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, value));
+    return element;
+  };
+  if (notebookTrajectoryMode === "pathway") {
+    const pathway = notebookMultiscaleOrderPathway(comparison, notebookTrajectoryHarmonic);
+    if (!pathway) {
+      notebookTrajectoryAudit.className = "notebook-trajectory-audit unavailable";
+      title.textContent = "multiscale order pathway unavailable";
+      detail.textContent = "At least one saved run predates the paired local-order and geometric S(q) state passport; save that run again to compare it.";
+      return;
+    }
+    title.textContent = `q${pathway.harmonic}/ψ${pathway.harmonic} versus geometric S(q)`;
+    detail.textContent = comparison.sameInput
+      ? "Two protocols are overlaid on one structural projection of the same observed configuration."
+      : "Two observed configurations are overlaid descriptively; separation is not a protocol effect.";
+    svg.setAttribute("aria-label", `Mean local q${pathway.harmonic} or psi${pathway.harmonic} versus geometric S(q) peak prominence for two saved runs`);
+    const left = 35; const top = 8; const width = 232; const height = 82;
+    const x = (value) => left + width * (value - pathway.localMinimum) / pathway.localRange;
+    const y = (value) => top + height * (1 - (value - pathway.reciprocalMinimum) / pathway.reciprocalRange);
+    [0, .5, 1].forEach((fraction) => {
+      svg.append(makeSvg("line", { x1: left, x2: left + width, y1: top + height * fraction,
+        y2: top + height * fraction, class: "grid" }));
+      svg.append(makeSvg("line", { x1: left + width * fraction, x2: left + width * fraction,
+        y1: top, y2: top + height, class: "grid" }));
+    });
+    [[pathway.first, "first", selected[0]], [pathway.second, "second", selected[1]]]
+      .forEach(([states, className, entry]) => {
+        svg.append(makeSvg("path", { class: className,
+          d: states.map((state, index) => `${index ? "L" : "M"}${x(state.localOrder).toFixed(2)},${y(state.reciprocalProminence).toFixed(2)}`).join(" ") }));
+        states.forEach((state) => {
+          const circle = makeSvg("circle", { cx: x(state.localOrder), cy: y(state.reciprocalProminence),
+            r: state.point.status === "fixed" ? 3.2 : 2.4, class: `${className} ${state.point.status}`,
+            tabindex: "0", role: "button", "aria-label": `${entry.material}, leap ${state.point.step}` });
+          const tooltip = makeSvg("title");
+          tooltip.textContent = `${entry.material} · leap ${state.point.step} · q${pathway.harmonic}/ψ${pathway.harmonic} ${state.localOrder.toFixed(3)} · S(q) prominence ${state.reciprocalProminence.toFixed(3)} · ${state.point.status}`;
+          circle.append(tooltip);
+          circle.addEventListener("click", () => showNotebookPathwayState(entry, state, pathway.harmonic));
+          circle.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") { event.preventDefault(); showNotebookPathwayState(entry, state, pathway.harmonic); }
+          });
+          svg.append(circle);
+        });
+      });
+    const xMinimum = makeSvg("text", { x: left, y: 99, class: "axis" }); xMinimum.textContent = pathway.localMinimum.toFixed(3);
+    const xMaximum = makeSvg("text", { x: left + width, y: 99, class: "axis", "text-anchor": "end" }); xMaximum.textContent = pathway.localMaximum.toFixed(3);
+    const xLabel = makeSvg("text", { x: left + width / 2, y: 107, class: "axis", "text-anchor": "middle" }); xLabel.textContent = `mean local q${pathway.harmonic} / |ψ${pathway.harmonic}| →`;
+    const yTop = makeSvg("text", { x: left - 4, y: top + 3, class: "axis", "text-anchor": "end" }); yTop.textContent = pathway.reciprocalMaximum.toFixed(2);
+    const yBottom = makeSvg("text", { x: left - 4, y: top + height + 2, class: "axis", "text-anchor": "end" }); yBottom.textContent = pathway.reciprocalMinimum.toFixed(2);
+    const legendFirst = makeSvg("text", { x: left, y: 116, class: "legend first" }); legendFirst.textContent = `1 · ${selected[0].material}`;
+    const legendSecond = makeSvg("text", { x: left + width, y: 116, class: "legend second", "text-anchor": "end" }); legendSecond.textContent = `2 · ${selected[1].material}`;
+    svg.append(xMinimum, xMaximum, xLabel, yTop, yBottom, legendFirst, legendSecond);
+    showNotebookPathwayState(selected[1], pathway.second.at(-1), pathway.harmonic);
+    const pathwayTiles = [
+      ["run 1 local-order shift", signedNotebookDelta(pathway.firstSummary.localShift), `q${pathway.harmonic}/ψ${pathway.harmonic} · final ${pathway.firstSummary.final.localOrder.toFixed(3)}`],
+      ["run 2 local-order shift", signedNotebookDelta(pathway.secondSummary.localShift), `q${pathway.harmonic}/ψ${pathway.harmonic} · final ${pathway.secondSummary.final.localOrder.toFixed(3)}`],
+      ["run 1 S(q) shift", signedNotebookDelta(pathway.firstSummary.reciprocalShift), `final prominence ${pathway.firstSummary.final.reciprocalProminence.toFixed(3)}`],
+      ["run 2 S(q) shift", signedNotebookDelta(pathway.secondSummary.reciprocalShift), `final prominence ${pathway.secondSummary.final.reciprocalProminence.toFixed(3)}`],
+      ["normalized path length", `${pathway.firstSummary.normalizedPathLength.toFixed(2)} → ${pathway.secondSummary.normalizedPathLength.toFixed(2)}`, "run 1 → run 2 · display-range normalized"],
+      ["final pathway separation", pathway.finalNormalizedSeparation.toFixed(2), "display-range normalized · descriptive"],
+    ];
+    pathwayTiles.forEach(([label, value, note]) => {
+      const tile = document.createElement("span");
+      tile.innerHTML = `<small>${label}</small><strong>${value}</strong><em>${note}</em>`;
+      notebookTrajectorySummary.append(tile);
+    });
+    const boundary = document.createElement("p");
+    boundary.textContent = "This overlay couples proper-rotation-invariant local orientational order to unit-weight finite-observation geometric S(q) peak prominence. It is a structural projection—not a phase diagram, reaction coordinate, free-energy landscape, crystallization probability, kinetics, or physical time—and it never changes growth or ranking.";
+    notebookTrajectorySummary.append(boundary);
+    return;
+  }
   const observable = selectedNotebookTrajectoryObservable();
   const selectedObservableKey = notebookTrajectoryObservable?.value || "atoms";
   const observableValues = [...comparison.firstPoints, ...comparison.secondPoints]
@@ -8220,13 +8364,7 @@ function renderNotebookTrajectoryAudit(selected) {
     detail.textContent = "This saved run predates Build 124. Save the unchanged state again to upgrade its coordinate-free morphology history.";
     return;
   }
-  const svg = notebookTrajectoryPlot; const svgNamespace = "http://www.w3.org/2000/svg";
   svg.setAttribute("aria-label", `${observable.label} after each structural leap`);
-  const makeSvg = (name, attributes = {}) => {
-    const element = document.createElementNS(svgNamespace, name);
-    Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, value));
-    return element;
-  };
   const minimumValue = Math.min(...observableValues);
   const maximumValue = Math.max(...observableValues);
   const observableRange = Math.max(1e-9, maximumValue - minimumValue);
@@ -17290,6 +17428,14 @@ clearNotebookButton.addEventListener("click", () => {
   renderExperimentNotebook();
 });
 notebookTrajectoryObservable.addEventListener("change", renderExperimentNotebook);
+document.querySelectorAll("[data-notebook-trajectory-mode]").forEach((button) => button.addEventListener("click", () => {
+  notebookTrajectoryMode = button.dataset.notebookTrajectoryMode;
+  renderExperimentNotebook();
+}));
+notebookTrajectoryHarmonics.querySelectorAll("[data-notebook-pathway-harmonic]").forEach((button) => button.addEventListener("click", () => {
+  notebookTrajectoryHarmonic = Number(button.dataset.notebookPathwayHarmonic);
+  renderExperimentNotebook();
+}));
 scenarioSelect.addEventListener("change", () => {
   renderEnsembleControls();
   renderIceViMicrostateControls();
