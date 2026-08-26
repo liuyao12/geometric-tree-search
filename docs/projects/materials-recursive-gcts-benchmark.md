@@ -5634,3 +5634,23 @@ evaluation is descriptive rather than held out, and frame order is not elapsed
 time. Reference robustness therefore does not establish prediction, causality,
 an interatomic potential, force field, reaction coordinate, growth rank,
 kinetics, or thermodynamic validity.
+
+## Build 172: a compact geometric state faces a predictive preflight
+
+Each archived frame now supplies three aggregate geometric features under the
+selected final/first/pooled reference: mean contact-length mismatch, mean angle
+mismatch, and mean coordination deficit. A fixed standardized ridge model
+(`lambda=1`) maps those values separately to same-run relative energy and
+residual-force RMS. With at least five complete pairs, every displayed
+prediction is produced by a fit that excludes that frame. The portal reports
+leave-one-frame-out Spearman correlation, Pearson correlation, MAE, RMSE,
+`Q²`, and the full-fit standardized coefficients, and draws the prediction
+residuals directly on the interactive scatter.
+
+The experiment receipt hashes the withheld predictions and records the exact
+features and fixed regularization. Calculation labels do fit this diagnostic
+surrogate, while they still never fit the geometric envelopes. Because folds
+belong to one correlated archive, this is not independent or transferable
+validation. The model is excluded from clustering, marking, search ranking,
+and admission and is not an interatomic potential, energy functional, force
+field, reaction coordinate, causal mechanism, dynamics, kinetics, or time.

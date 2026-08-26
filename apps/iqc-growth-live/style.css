@@ -698,9 +698,17 @@ body.study-guide-open { overflow: hidden; }
 .relaxation-calibration svg { height: 104px; margin-top: 3px; }
 .relaxation-calibration .calibration-axis { stroke: rgba(181,148,255,.22); stroke-width: .8; }
 .relaxation-calibration .calibration-fit { stroke: rgba(255,193,105,.62); stroke-width: 1; stroke-dasharray: 3 2; }
+.relaxation-calibration .calibration-prediction-link { stroke: rgba(98,172,255,.28); stroke-width: .65; }
+.relaxation-calibration .calibration-prediction { fill: #071415; stroke: rgba(98,172,255,.9); stroke-width: 1; }
 .relaxation-calibration .calibration-point { fill: rgba(101,225,188,.68); stroke: #d9fff3; stroke-width: .5; cursor: pointer; }
 .relaxation-calibration .calibration-point.active { fill: #ffbf6b; stroke: #fff0cf; stroke-width: 1; }
 .relaxation-calibration .calibration-label { fill: #6f6981; font: 5px var(--mono); }
+.relaxation-surrogate-state { padding-top: 4px; border-top: 1px solid rgba(98,172,255,.1); }
+.relaxation-surrogate-coefficients { display: grid; grid-template-columns: repeat(3,1fr); gap: 4px; margin-top: 4px; }
+.relaxation-surrogate-coefficients span { min-width: 0; }
+.relaxation-surrogate-coefficients small,.relaxation-surrogate-coefficients b { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.relaxation-surrogate-coefficients small { color: #686e82; font: 5px var(--mono); }
+.relaxation-surrogate-coefficients b { margin-top: 2px; color: #62acff; font: 6px var(--mono); font-weight: 400; }
 .relaxation-calibration p { padding-top: 5px; border-top: 1px solid rgba(181,148,255,.1); color: #6d6879; }
 .growth-group-actions { display: flex; gap: 6px; margin: 5px 0 8px; }
 .growth-group-actions button { flex: 1; min-height: 26px; padding: 5px 7px; border: 1px solid rgba(126,225,232,.18); color: #74968d; background: rgba(6,13,12,.36); font: 6px var(--mono); letter-spacing: .03em; cursor: pointer; }

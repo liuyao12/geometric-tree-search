@@ -11,8 +11,8 @@ import {
 } from "./structure-io.js?v=20260826-7";
 import { randomNomadStructure } from "./structure-database.js?v=20260826-5";
 import { bestAffineNeighborhoodResidual } from "./relaxation-local-environment.js?v=20260826-2";
-import { geometryCalculationCalibration, geometryReferenceIndices }
-  from "./geometry-calculation-calibration.js?v=20260826-1";
+import { geometryCalculationCalibration, geometryCalculationSurrogate, geometryReferenceIndices }
+  from "./geometry-calculation-calibration.js?v=20260826-2";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -164,6 +164,8 @@ const relaxationCalibrationTitle = $("relaxationCalibrationTitle");
 const relaxationCalibrationState = $("relaxationCalibrationState");
 const relaxationCalibrationChart = $("relaxationCalibrationChart");
 const relaxationCalibrationBoundary = $("relaxationCalibrationBoundary");
+const relaxationSurrogateState = $("relaxationSurrogateState");
+const relaxationSurrogateCoefficients = $("relaxationSurrogateCoefficients");
 const measurementConditions = $("measurementConditions");
 const measurementConditionChips = $("measurementConditionChips");
 const publishedFixtureProvenance = $("publishedFixtureProvenance");
@@ -1073,6 +1075,7 @@ let relaxationLocalEnvironmentCache = null;
 let relaxationGeometryCalibrationCache = null;
 let relaxationCalibrationMetricMode = "energy";
 let relaxationCalibrationReferenceMode = "final";
+const RELAXATION_SURROGATE_FEATURES = ["meanDistanceMismatch", "meanAngleMismatch", "meanCoordinationDeficit"];
 let localConstraintMismatchCache = null;
 let atomGeometryRevision = 0;
 let iceViMicrostate = null;
@@ -1834,9 +1837,13 @@ function relaxationGeometryCalculationCalibration(requestedReferenceMode = relax
       distanceModel, coordinationModel, angularModel, { centerIndices });
     const calculation = frame.metadata?.calculation || {};
     const energy = calculation.energyPerPrimitiveAtomElectronVolt;
+    const fieldMean = (key) => field.records.reduce((sum, record) => sum + record[key], 0)
+      / Math.max(1, field.records.length);
     return {
       frameIndex,
       meanContactAngleMismatch: field.meanContactAngleMismatch,
+      meanDistanceMismatch: fieldMean("distance"),
+      meanAngleMismatch: fieldMean("angle"),
       percentile90ContactAngleMismatch: field.percentile90ContactAngleMismatch,
       meanCoordinationDeficit: field.meanCoordinationDeficit,
       relativeEnergyElectronVoltPerPrimitiveAtom: Number.isFinite(energy) && Number.isFinite(finalEnergy)
@@ -1851,8 +1858,12 @@ function relaxationGeometryCalculationCalibration(requestedReferenceMode = relax
     "relativeEnergyElectronVoltPerPrimitiveAtom");
   const forceCalibration = geometryCalculationCalibration(records, "meanContactAngleMismatch",
     "forceRmsElectronVoltPerAngstrom");
+  const energySurrogate = geometryCalculationSurrogate(records, RELAXATION_SURROGATE_FEATURES,
+    "relativeEnergyElectronVoltPerPrimitiveAtom", { ridge: 1, minimumPairs: 5 });
+  const forceSurrogate = geometryCalculationSurrogate(records, RELAXATION_SURROGATE_FEATURES,
+    "forceRmsElectronVoltPerAngstrom", { ridge: 1, minimumPairs: 5 });
   const result = {
-    records, energyCalibration, forceCalibration,
+    records, energyCalibration, forceCalibration, energySurrogate, forceSurrogate,
     frameCount: frames.length,
     referenceMode,
     referenceFrameIndex: referenceMode === "pooled" ? null : referenceMode === "first" ? 0 : frames.length - 1,
@@ -2108,6 +2119,7 @@ function renderRelaxationSequence(frames, relaxation) {
 function renderRelaxationCalibration() {
   const calibration = relaxationGeometryCalculationCalibration();
   relaxationCalibrationChart.replaceChildren();
+  relaxationSurrogateCoefficients.replaceChildren();
   const svg = (name, attributes = {}, text = "") => {
     const element = document.createElementNS("http://www.w3.org/2000/svg", name);
     Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, String(value)));
@@ -2117,6 +2129,7 @@ function renderRelaxationCalibration() {
   if (!calibration) {
     relaxationCalibrationTitle.textContent = "Geometry-reference calibration";
     relaxationCalibrationState.textContent = "At least three fixed-topology paired geometry/calculation snapshots are required.";
+    relaxationSurrogateState.textContent = "Five paired frames are required for the geometry-only surrogate preflight.";
     relaxationCalibrationBoundary.textContent = "No calibration is inferred from an unpaired or short archive sequence.";
     return;
   }
@@ -2124,14 +2137,31 @@ function renderRelaxationCalibration() {
   relaxationCalibrationTitle.textContent = `${calibration.referenceLabel} reference study`;
   const yKey = forceMode ? "forceRmsElectronVoltPerAngstrom" : "relativeEnergyElectronVoltPerPrimitiveAtom";
   const summary = forceMode ? calibration.forceCalibration : calibration.energyCalibration;
+  const surrogate = forceMode ? calibration.forceSurrogate : calibration.energySurrogate;
   const records = calibration.records.filter((record) => Number.isFinite(record.meanContactAngleMismatch)
     && Number.isFinite(record[yKey]));
   const correlation = (value) => Number.isFinite(value) ? `${value >= 0 ? "+" : ""}${value.toFixed(3)}` : "unresolved";
   relaxationCalibrationState.textContent = `${summary.pairedFrames}/${calibration.frameCount} paired frames · Spearman ρ ${correlation(summary.spearman)} · Pearson r ${correlation(summary.pearson)} · ${calibration.sampledCentersPerFrame} centers/frame`;
+  if (surrogate.available) {
+    relaxationSurrogateState.textContent = `Hollow blue = held-out prediction · fixed 3-channel ridge · ρ ${correlation(surrogate.predictionSpearman)} · Q² ${correlation(surrogate.crossValidatedQSquared)} · MAE ${surrogate.meanAbsoluteError.toPrecision(3)}. Correlated-archive preflight only.`;
+    const labels = ["contact length", "angle mode", "coordination"];
+    surrogate.fullModel.standardizedCoefficients.forEach((coefficient, index) => {
+      const span = document.createElement("span");
+      const small = document.createElement("small"); small.textContent = labels[index];
+      const value = document.createElement("b");
+      value.textContent = `${coefficient >= 0 ? "+" : ""}${coefficient.toPrecision(3)}`;
+      span.append(small, value); relaxationSurrogateCoefficients.append(span);
+    });
+  } else {
+    relaxationSurrogateState.textContent = `Geometry-only surrogate withheld: ${surrogate.pairedFrames}/${surrogate.requiredPairs} paired frames (${surrogate.reason}).`;
+  }
   relaxationCalibrationBoundary.textContent = `${calibration.referenceRole}. Correlation is descriptive within one correlated sequence—not independent validation, prediction, causality, an energy/force model, kinetics, or time.`;
   if (!records.length) return;
   const xs = records.map((record) => record.meanContactAngleMismatch);
-  const ys = records.map((record) => record[yKey]);
+  const predictionByFrame = surrogate.available ? new Map(surrogate.predictions.map((prediction) =>
+    [calibration.records[prediction.recordIndex].frameIndex, prediction.predicted])) : new Map();
+  const ys = records.flatMap((record) => [record[yKey], predictionByFrame.get(record.frameIndex)])
+    .filter(Number.isFinite);
   const xMin = Math.min(...xs); const xMax = Math.max(...xs);
   const yMin = Math.min(...ys); const yMax = Math.max(...ys);
   const xSpan = Math.max(1e-12, xMax - xMin); const ySpan = Math.max(1e-12, yMax - yMin);
@@ -2152,6 +2182,16 @@ function renderRelaxationCalibration() {
       x1: x(xMin), y1: y(firstY), x2: x(xMax), y2: y(secondY), class: "calibration-fit",
     }));
   }
+  if (surrogate.available) records.forEach((record) => {
+    const predicted = predictionByFrame.get(record.frameIndex);
+    if (!Number.isFinite(predicted)) return;
+    relaxationCalibrationChart.append(
+      svg("line", { x1: x(record.meanContactAngleMismatch), y1: y(record[yKey]),
+        x2: x(record.meanContactAngleMismatch), y2: y(predicted), class: "calibration-prediction-link" }),
+      svg("rect", { x: x(record.meanContactAngleMismatch) - 2.1, y: y(predicted) - 2.1,
+        width: 4.2, height: 4.2, class: "calibration-prediction" }),
+    );
+  });
   records.forEach((record) => {
     const point = svg("circle", { cx: x(record.meanContactAngleMismatch), cy: y(record[yKey]),
       r: record.frameIndex === importedFrameIndex ? 3.8 : 2.7,
@@ -7374,9 +7414,14 @@ async function buildExperimentReceipt() {
   const relaxationLocalEnvironmentSha256 = relaxationLocalEnvironmentRecords.length
     ? await receiptSha256(JSON.stringify(relaxationLocalEnvironmentRecords)) : null;
   const relaxationGeometryCalibration = relaxationGeometryCalculationCalibration();
+  const relaxationGeometrySurrogate = relaxationGeometryCalibration
+    ? (relaxationCalibrationMetricMode === "force"
+      ? relaxationGeometryCalibration.forceSurrogate : relaxationGeometryCalibration.energySurrogate) : null;
   const relaxationGeometryCalibrationRecords = relaxationGeometryCalibration?.records.map((record) => ({
     frameIndexZeroBased: record.frameIndex,
     meanContactAngleMismatch: receiptRound(record.meanContactAngleMismatch, 10),
+    meanDistanceMismatch: receiptRound(record.meanDistanceMismatch, 10),
+    meanAngleMismatch: receiptRound(record.meanAngleMismatch, 10),
     percentile90ContactAngleMismatch: receiptRound(record.percentile90ContactAngleMismatch, 10),
     meanCoordinationDeficit: receiptRound(record.meanCoordinationDeficit, 10),
     relativeEnergyElectronVoltPerPrimitiveAtom: Number.isFinite(record.relativeEnergyElectronVoltPerPrimitiveAtom)
@@ -7387,6 +7432,18 @@ async function buildExperimentReceipt() {
   })) || [];
   const relaxationGeometryCalibrationSha256 = relaxationGeometryCalibrationRecords.length
     ? await receiptSha256(JSON.stringify(relaxationGeometryCalibrationRecords)) : null;
+  const relaxationSurrogatePredictions = relaxationGeometryCalibration ? {
+    energy: relaxationGeometryCalibration.energySurrogate.predictions?.map((prediction) => ({
+      recordIndex: prediction.recordIndex, observed: receiptRound(prediction.observed, 10),
+      predicted: receiptRound(prediction.predicted, 10),
+    })) || [],
+    force: relaxationGeometryCalibration.forceSurrogate.predictions?.map((prediction) => ({
+      recordIndex: prediction.recordIndex, observed: receiptRound(prediction.observed, 10),
+      predicted: receiptRound(prediction.predicted, 10),
+    })) || [],
+  } : null;
+  const relaxationSurrogatePredictionsSha256 = relaxationSurrogatePredictions
+    ? await receiptSha256(JSON.stringify(relaxationSurrogatePredictions)) : null;
   const relaxationGeometryReferenceSensitivity = trajectoryFrames.length >= 3
     ? ["final", "first", "pooled"].map((referenceMode) => {
       const calibration = relaxationGeometryCalculationCalibration(referenceMode);
@@ -7423,7 +7480,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-171",
+      buildId: "20260826-172",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7639,6 +7696,51 @@ async function buildExperimentReceipt() {
           recordsEmbedded: false,
           referenceSensitivity: relaxationGeometryReferenceSensitivity,
           referenceSensitivityModesSelectedWithoutCalculationLabels: true,
+          geometricSurrogatePreflight: {
+            featureKeys: RELAXATION_SURROGATE_FEATURES,
+            fixedRidge: relaxationGeometryCalibration.energySurrogate.ridge,
+            requiredPairs: relaxationGeometryCalibration.energySurrogate.requiredPairs,
+            crossValidationKind: "leave-one-frame-out",
+            energy: {
+              available: relaxationGeometryCalibration.energySurrogate.available,
+              pairedFrames: relaxationGeometryCalibration.energySurrogate.pairedFrames,
+              meanAbsoluteError: relaxationGeometryCalibration.energySurrogate.available
+                ? receiptRound(relaxationGeometryCalibration.energySurrogate.meanAbsoluteError, 10) : null,
+              rootMeanSquaredError: relaxationGeometryCalibration.energySurrogate.available
+                ? receiptRound(relaxationGeometryCalibration.energySurrogate.rootMeanSquaredError, 10) : null,
+              crossValidatedQSquared: Number.isFinite(relaxationGeometryCalibration.energySurrogate.crossValidatedQSquared)
+                ? receiptRound(relaxationGeometryCalibration.energySurrogate.crossValidatedQSquared, 10) : null,
+              predictionPearson: Number.isFinite(relaxationGeometryCalibration.energySurrogate.predictionPearson)
+                ? receiptRound(relaxationGeometryCalibration.energySurrogate.predictionPearson, 10) : null,
+              predictionSpearman: Number.isFinite(relaxationGeometryCalibration.energySurrogate.predictionSpearman)
+                ? receiptRound(relaxationGeometryCalibration.energySurrogate.predictionSpearman, 10) : null,
+              standardizedCoefficients: relaxationGeometryCalibration.energySurrogate.fullModel
+                ?.standardizedCoefficients.map((value) => receiptRound(value, 10)) || null,
+            },
+            force: {
+              available: relaxationGeometryCalibration.forceSurrogate.available,
+              pairedFrames: relaxationGeometryCalibration.forceSurrogate.pairedFrames,
+              meanAbsoluteError: relaxationGeometryCalibration.forceSurrogate.available
+                ? receiptRound(relaxationGeometryCalibration.forceSurrogate.meanAbsoluteError, 10) : null,
+              rootMeanSquaredError: relaxationGeometryCalibration.forceSurrogate.available
+                ? receiptRound(relaxationGeometryCalibration.forceSurrogate.rootMeanSquaredError, 10) : null,
+              crossValidatedQSquared: Number.isFinite(relaxationGeometryCalibration.forceSurrogate.crossValidatedQSquared)
+                ? receiptRound(relaxationGeometryCalibration.forceSurrogate.crossValidatedQSquared, 10) : null,
+              predictionPearson: Number.isFinite(relaxationGeometryCalibration.forceSurrogate.predictionPearson)
+                ? receiptRound(relaxationGeometryCalibration.forceSurrogate.predictionPearson, 10) : null,
+              predictionSpearman: Number.isFinite(relaxationGeometryCalibration.forceSurrogate.predictionSpearman)
+                ? receiptRound(relaxationGeometryCalibration.forceSurrogate.predictionSpearman, 10) : null,
+              standardizedCoefficients: relaxationGeometryCalibration.forceSurrogate.fullModel
+                ?.standardizedCoefficients.map((value) => receiptRound(value, 10)) || null,
+            },
+            predictionSha256: relaxationSurrogatePredictionsSha256,
+            predictionsEmbedded: false,
+            calculationLabelsUsedForSurrogateFit: true,
+            geometryEnvelopeFitUsesCalculationLabels: false,
+            correlatedArchiveFrames: true,
+            independentValidationClaimed: false,
+            usedForGrowth: false,
+          },
           geometryFitUsesEnergyOrForce: false,
           labelsUsedToRankGrowth: false,
           independentSamplesClaimed: false,
@@ -18108,9 +18210,9 @@ function physicsTranslationRecords(leap = null) {
         ? `${relaxationGeometryCalibration.sampledCentersPerFrame} deterministic centers/frame; ${relaxationGeometryCalibration.referenceLabel} colored contact, coordination, and angle envelopes; final / first / pooled reference modes remain selectable; Spearman and Pearson associations stay separate for same-run relative energy and residual-force RMS`
         : "requires at least three fixed-topology archived frames with paired geometry and calculation metadata",
       evidence: relaxationGeometryCalibration
-        ? `Energy ρ ${Number.isFinite(relaxationGeometryCalibration.energyCalibration.spearman) ? relaxationGeometryCalibration.energyCalibration.spearman.toFixed(3) : "unresolved"} (n=${relaxationGeometryCalibration.energyCalibration.pairedFrames}); force ρ ${Number.isFinite(relaxationGeometryCalibration.forceCalibration.spearman) ? relaxationGeometryCalibration.forceCalibration.spearman.toFixed(3) : "unresolved"} (n=${relaxationGeometryCalibration.forceCalibration.pairedFrames}).`
+        ? `Energy ρ ${Number.isFinite(relaxationGeometryCalibration.energyCalibration.spearman) ? relaxationGeometryCalibration.energyCalibration.spearman.toFixed(3) : "unresolved"} (n=${relaxationGeometryCalibration.energyCalibration.pairedFrames}); force ρ ${Number.isFinite(relaxationGeometryCalibration.forceCalibration.spearman) ? relaxationGeometryCalibration.forceCalibration.spearman.toFixed(3) : "unresolved"} (n=${relaxationGeometryCalibration.forceCalibration.pairedFrames}). ${relaxationGeometrySurrogate?.available ? `Selected-channel leave-one-frame-out surrogate: ρ ${Number.isFinite(relaxationGeometrySurrogate.predictionSpearman) ? relaxationGeometrySurrogate.predictionSpearman.toFixed(3) : "unresolved"}, Q² ${Number.isFinite(relaxationGeometrySurrogate.crossValidatedQSquared) ? relaxationGeometrySurrogate.crossValidatedQSquared.toFixed(3) : "unresolved"}, MAE ${relaxationGeometrySurrogate.meanAbsoluteError.toPrecision(3)}.` : `Surrogate withheld: ${relaxationGeometrySurrogate?.pairedFrames || 0}/${relaxationGeometrySurrogate?.requiredPairs || 5} paired frames.`}`
         : "No final-frame-reference geometry/calculation pairing is available.",
-      boundary: "Final, first, and pooled reference modes are geometry-only sensitivity choices, not calculation-label-selected models. Every association remains descriptive inside one correlated calculation archive. Labels never fit the geometry, rank growth, or establish independent validation, prediction, causality, an interatomic potential, force field, reaction coordinate, physical trajectory, kinetics, or time." },
+      boundary: "Final, first, and pooled reference modes are geometry-only sensitivity choices, not calculation-label-selected models. The fixed three-channel ridge explicitly does fit calculation labels, but only for a correlated leave-one-frame-out preflight and never for growth. Neither association nor surrogate establishes independent validation, transferable prediction, causality, an interatomic potential, force field, reaction coordinate, physical trajectory, kinetics, or time." },
     { id: "local-rearrangement", process: "localized rearrangement / environment change", status: relaxationLocalEnvironment ? "observed" : "unavailable", role: relaxationLocalEnvironment ? "archived structural-difference diagnostic" : "no paired local environments",
       encoding: relaxationLocalEnvironment
         ? `${relaxationLocalEnvironment.neighborCount}-neighbor periodic minimum-image vectors; one Falk–Langer best-affine F per site; E=(FᵀF−I)/2 separates coherent deviatoric deformation from √D²min residual motion; selected/final kNN identity sets expose geometric neighbor exchange`

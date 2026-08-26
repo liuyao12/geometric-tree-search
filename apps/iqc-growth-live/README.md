@@ -4990,3 +4990,27 @@ independent validations: the same correlated archive frames are reused, the
 pooled mode evaluates geometries that helped define its envelopes, and archive
 order is not physical time. No mode creates an energy surrogate, force field,
 reaction coordinate, branch rank, causal inference, or kinetics claim.
+
+### Build 172 · geometric surrogate preflight against archived calculations
+
+The relaxation inspector now asks a stronger question than correlation: can a
+fixed three-number geometric state—mean colored contact-length mismatch, mean
+angle-mode mismatch, and mean coordination deficit—reconstruct the archived
+relative energy or residual-force RMS when each frame is withheld in turn? A
+standardized ridge model with fixed regularization is fitted separately in
+every leave-one-frame-out fold. At least five paired frames are required.
+
+Observed circles are joined to hollow blue leave-one-frame-out predictions in
+the scatter. The panel reports prediction rank correlation, cross-validated
+`Q²`, MAE, and the full-data standardized coefficients for interpretability.
+The receipt hashes every withheld prediction and stores the fixed features,
+regularization, coefficients, errors, and sample count without embedding the
+records.
+
+This preflight explicitly uses archived calculation labels to fit the small
+surrogate; only the underlying contact/angle/coordination envelopes remain
+label-free. Frames from one relaxation archive are correlated, so leaving one
+out is not independent validation or evidence of transfer. The surrogate is
+never made available to cluster discovery, GCTS marking, candidate ranking, or
+admission and is not an interatomic potential, force field, energy functional,
+reaction coordinate, causal model, dynamics, kinetics, or physical time.

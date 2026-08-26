@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { geometryCalculationCalibration, geometryReferenceIndices }
+import { geometryCalculationCalibration, geometryCalculationSurrogate, geometryReferenceIndices }
   from "../apps/iqc-growth-live/geometry-calculation-calibration.js";
 
 const monotone = [
@@ -33,5 +33,24 @@ assert.deepEqual(geometryReferenceIndices(4, "first"), [0]);
 assert.deepEqual(geometryReferenceIndices(4, "pooled"), [0, 1, 2, 3]);
 assert.deepEqual(geometryReferenceIndices(4, "unknown"), [3]);
 assert.throws(() => geometryReferenceIndices(0, "pooled"), /requires frames/);
+
+const surrogateRecords = Array.from({ length: 8 }, (_, index) => ({
+  distance: index,
+  angle: (index % 3) - 1,
+  coordination: index % 2,
+  energy: 2 * index - .5 * ((index % 3) - 1) + .25 * (index % 2),
+}));
+const surrogate = geometryCalculationSurrogate(surrogateRecords,
+  ["distance", "angle", "coordination"], "energy", { ridge: 1e-6 });
+assert.equal(surrogate.available, true);
+assert.equal(surrogate.predictions.length, 8);
+assert.ok(surrogate.predictionSpearman > .99);
+assert.ok(surrogate.meanAbsoluteError < 1e-3);
+assert.equal(surrogate.independentValidationClaimed, false);
+assert.equal(surrogate.usedForGrowth, false);
+const shortSurrogate = geometryCalculationSurrogate(surrogateRecords.slice(0, 4),
+  ["distance", "angle", "coordination"], "energy");
+assert.equal(shortSurrogate.available, false);
+assert.equal(shortSurrogate.requiredPairs, 5);
 
 console.log("geometry/calculation calibration statistics: passed");
