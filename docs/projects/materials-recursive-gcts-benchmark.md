@@ -5934,3 +5934,25 @@ the coordinate-free notebook or experiment receipt, and selection does not alter
 admission, geometry, or search. Local provenance supports scientific debugging of the
 geometric encoding; it is not a defect classifier, energy/force calculation, atomistic
 mechanism assignment, or causal explanation of growth.
+
+## Build 186: resolve learned geometric support at one visible site
+
+Build 186 connects the site picker to the frozen colored distance, ordered coordination,
+and angular envelopes. For the selected atom only, the portal evaluates the established
+`coloredLocalConstraintMismatch` contract with the same current explicit neighbors and
+then materializes its individual channel evidence. The aggregate therefore matches the
+existing spatial mismatch field rather than introducing a second definition.
+
+For every admitted contact the audit reports observed and typical length, learned lower
+and upper contact observations, and normalized mode residual. For each ordered species
+channel it reports count, observed median, hard maximum, and fractional frontier deficit.
+For each contact-neighbor pair it reports the angle and its nearest learned padded band.
+The view distinguishes within-mode, strained/off-mode, frontier-deficient, over-capacity,
+within-band, and outside-band states. Four compact meters preserve contact, angle, and
+coordination semantics, while a percentile places the site in the current deterministic
+center sample without changing the fitted envelopes.
+
+The calculation is target-free and posthoc. Contact/angle residual remains a geometric
+search proxy; coordination deficit may intentionally describe an incomplete growth front.
+No displayed value is an energy, force, stress, surface energy, defect identity, posterior
+probability, or kinetic observable, and the inspector never feeds back into execution.

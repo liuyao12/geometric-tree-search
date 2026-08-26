@@ -5272,3 +5272,24 @@ shared/emitted site counts, contact-angle residual, and independent loop witness
 with that placement. Picking reads only the current explicit structure. Coordinates remain
 ephemeral and never enter the compact notebook or receipt; the panel does not infer an
 energy, force, defect identity, or physical mechanism from local geometry.
+
+### Build 186 · selected-site learned-geometry audit
+
+The provenance microscope now answers whether the selected site's current neighborhood
+lies inside the geometry learned from the supplied configuration. It invokes the same
+colored local-constraint calculation used by the live mismatch field for that exact
+center, then expands the aggregate into inspectable contact, ordered-coordination, and
+three-body angle channels.
+
+Four meters keep unlike meanings separate: combined contact/angle mismatch, contact-length
+residual, separated angular-mode residual, and coordination deficit. Channel rows show
+observed versus typical colored contact lengths, current versus median/maximum ordered
+coordination, and observed angles versus unions of learned padded angle bands. A missing
+neighbor is labelled a permissible frontier deficit; over-capacity coordination and an
+angle outside every observed band remain distinct conflicts. The selected residual is
+also placed in the deterministic current-solid mismatch distribution.
+
+These are dimensionless residuals and finite admissibility envelopes learned from geometry.
+They are not pair potentials, forces, stress, elastic or surface energy, defect labels,
+or proof of a microscopic mechanism. Site selection remains target-free, ephemeral, and
+cannot change candidate generation, ranking, admission, or growth.

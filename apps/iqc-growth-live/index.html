@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260826-82">
+  <link rel="stylesheet" href="./style.css?v=20260826-83">
   <script type="importmap">
     {
       "imports": {
@@ -1496,6 +1496,11 @@
           <article id="siteProvenanceInspector" class="site-provenance-inspector" hidden aria-live="polite">
             <header><span><small>site provenance microscope</small><strong id="siteProvenanceState">select an atom</strong></span><button id="siteProvenanceClose" type="button" aria-label="Close site inspector">×</button></header>
             <div id="siteProvenanceGrid" class="site-provenance-grid"></div>
+            <section class="site-constraint-audit" aria-label="Selected site learned geometric constraints">
+              <header><small>learned local geometry</small><strong id="siteConstraintState">awaiting site</strong></header>
+              <div id="siteConstraintMeters" class="site-constraint-meters"></div>
+              <div id="siteConstraintChannels" class="site-constraint-channels"></div>
+            </section>
             <p id="siteProvenanceBoundary">Click-derived local geometry only; not stored in the receipt.</p>
           </article>
           <div class="viewport-caption"><span id="captionAction">Every point is an observed species and position; no cluster labels are supplied.</span></div>
@@ -1717,7 +1722,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260826-185"></script>
+  <script type="module" src="./app.js?v=20260826-186"></script>
   <script type="module" src="./evidence-atlas.js?v=20260826-19"></script>
 </body>
 </html>

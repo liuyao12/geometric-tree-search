@@ -26,6 +26,7 @@ import { applyHypothesisSeparationMultipliers as applyFrozenHypothesisSeparation
 import { compareHypothesisSeparationOutcomes }
   from "./hypothesis-separation-outcome.js?v=20260826-1";
 import { buildSiteProvenance } from "./site-provenance.js?v=20260826-1";
+import { buildSiteConstraintAudit } from "./site-constraint-audit.js?v=20260826-1";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -527,6 +528,9 @@ const siteProvenanceClose = $("siteProvenanceClose");
 const siteProvenanceState = $("siteProvenanceState");
 const siteProvenanceGrid = $("siteProvenanceGrid");
 const siteProvenanceBoundary = $("siteProvenanceBoundary");
+const siteConstraintState = $("siteConstraintState");
+const siteConstraintMeters = $("siteConstraintMeters");
+const siteConstraintChannels = $("siteConstraintChannels");
 const unitCellBadge = $("unitCellBadge");
 const captionAction = $("captionAction");
 const processTimeline = $("processTimeline");
@@ -3332,6 +3336,75 @@ function renderSelectedSiteHighlight() {
   siteSelectionGroup.add(marker);
 }
 
+function selectedSiteConstraintAudit(atom) {
+  if (!coloredDistanceEnvelopes?.records?.length || !coloredCoordinationEnvelopes?.records?.length
+      || !coloredAngularEnvelopes?.records?.length) return null;
+  const center = atoms.indexOf(atom);
+  if (center < 0) return null;
+  const reach = coloredCoordinationEnvelopes.maximumCutoff;
+  const neighborIndices = atoms.map((_, index) => index).filter((index) => index !== center
+    && atoms[index].p.distanceTo(atom.p) <= reach);
+  const field = coloredLocalConstraintMismatch(atoms.map((entry) => entry.species),
+    (first, second) => atoms[second].p.clone().sub(atoms[first].p),
+    coloredDistanceEnvelopes, coloredCoordinationEnvelopes, coloredAngularEnvelopes,
+    { centerIndices: [center], neighborIndices: () => neighborIndices });
+  const aggregate = field.records[0];
+  if (!aggregate) return null;
+  const distribution = currentLocalConstraintMismatchField()?.records || [];
+  const percentile = (key) => distribution.length
+    ? Math.round(100 * distribution.filter((record) => record[key] < aggregate[key] - 1e-12).length / distribution.length) : null;
+  return buildSiteConstraintAudit({ centerSpecies: atom.species,
+    neighbors: neighborIndices.map((index) => { const vector = atoms[index].p.clone().sub(atom.p); return {
+      siteId: atoms[index].id, species: atoms[index].species, distance: vector.length(), vector: vector.toArray(),
+    }; }),
+    distanceModel: coloredDistanceEnvelopes, coordinationModel: coloredCoordinationEnvelopes,
+    angularModel: coloredAngularEnvelopes, aggregate,
+    populationContext: { comparedCenters: distribution.length,
+      contactAnglePercentile: percentile("contactAngleMismatch"),
+      coordinationDeficitPercentile: percentile("coordinationDeficit") } });
+}
+
+function renderSiteConstraintAudit(audit) {
+  siteConstraintMeters.replaceChildren(); siteConstraintChannels.replaceChildren();
+  if (!audit) { siteConstraintState.textContent = "learned envelopes unavailable"; return; }
+  const context = audit.summary.populationContext;
+  siteConstraintState.textContent = `${audit.summary.status} · ${audit.channelCounts.contacts} contacts · ${audit.channelCounts.angles} angles`
+    + `${Number.isFinite(context?.contactAnglePercentile) ? ` · strain severity percentile ${context.contactAnglePercentile}` : ""}`;
+  const meters = [
+    ["contact + angle", audit.summary.contactAngleMismatch, 4, "dimensionless residual"],
+    ["contact length", audit.summary.distanceMismatch, 4, `${audit.summary.contactTerms} terms`],
+    ["angle modes", audit.summary.angleMismatch, 4, `${audit.summary.angleTerms} terms`],
+    ["coordination deficit", audit.summary.coordinationDeficit, 1, `${audit.summary.coordinationTerms} colored channels`],
+  ];
+  meters.forEach(([label, value, maximum, note]) => {
+    const tile = document.createElement("span");
+    tile.style.setProperty("--site-meter", `${Math.min(100, 100 * value / maximum)}%`);
+    tile.className = value <= .15 ? "pass" : value <= 1 ? "warn" : "fail";
+    const small = document.createElement("small"); small.textContent = label;
+    const strong = document.createElement("strong"); strong.textContent = Number(value).toFixed(3);
+    const bar = document.createElement("i");
+    const em = document.createElement("em"); em.textContent = note;
+    tile.append(small, strong, bar, em); siteConstraintMeters.append(tile);
+  });
+  const channels = [
+    ...audit.coordinationChannels.sort((first, second) => second.deficit - first.deficit),
+    ...audit.distanceChannels.sort((first, second) => second.normalizedResidual - first.normalizedResidual).slice(0, 4),
+    ...audit.angleChannels.sort((first, second) => second.deviationDegrees - first.deviationDegrees).slice(0, 4),
+  ].slice(0, 10);
+  channels.forEach((channel) => {
+    const row = document.createElement("span");
+    row.className = channel.status.includes("within") ? "pass"
+      : channel.status.includes("deficit") || channel.status === "strained" ? "warn" : "fail";
+    const label = document.createElement("small"); label.textContent = channel.species;
+    const value = document.createElement("strong");
+    value.textContent = channel.kind === "contact" ? `${channel.observed} / ${channel.expected}`
+      : channel.kind === "coordination" ? `${channel.observed} / ${channel.expected} · max ${channel.maximum}`
+        : `${channel.observed}° · Δ ${channel.deviationDegrees}°`;
+    const status = document.createElement("em"); status.textContent = channel.status;
+    row.append(label, value, status); siteConstraintChannels.append(row);
+  });
+}
+
 function inspectSite(atom) {
   selectedSiteId = atom.id;
   const snapshot = buildSiteProvenance({ atom, atoms, placements: placedClusters,
@@ -3358,6 +3431,7 @@ function inspectSite(atom) {
       evidence ? `contact/angle residual ${evidence.contactAngleStrain} · loop witnesses ${evidence.loopClosureWitnesses}`
         : snapshot.observedReferenceIndex === null ? "not created by a retained growth action" : `input reference site ${snapshot.observedReferenceIndex}`),
   );
+  renderSiteConstraintAudit(selectedSiteConstraintAudit(atom));
   siteProvenanceBoundary.textContent = "This is a click-derived audit of the current explicit structure. Coordinates and neighbors are not persisted in the notebook or receipt; no target, energy, force, defect identity, or physical mechanism is inferred.";
   siteProvenanceInspector.hidden = false;
   viewportHint.textContent = "selected site ring · click another atom or close inspector";
@@ -7996,7 +8070,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-185",
+      buildId: "20260826-186",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,

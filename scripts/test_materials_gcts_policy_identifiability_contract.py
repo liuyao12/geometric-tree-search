@@ -67,7 +67,7 @@ def test_portal_exposes_interactive_matrix_and_receipt_audit():
 
 
 def test_current_assets_are_cache_busted():
-    assert 'buildId: "20260826-185"' in APP
-    assert 'app.js?v=20260826-185' in HTML
-    assert 'style.css?v=20260826-82' in HTML
+    assert 'buildId: "20260826-186"' in APP
+    assert 'app.js?v=20260826-186' in HTML
+    assert 'style.css?v=20260826-83' in HTML
     assert 'policy-identifiability.js?v=20260826-4' in APP
