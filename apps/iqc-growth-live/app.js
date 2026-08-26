@@ -120,6 +120,7 @@ const studyComparison = $("studyComparison");
 const studyComparisonQuestion = $("studyComparisonQuestion");
 const studyComparisonFactor = $("studyComparisonFactor");
 const studyComparisonArms = $("studyComparisonArms");
+const studyComparisonProgress = $("studyComparisonProgress");
 const studyComparisonOutcomes = $("studyComparisonOutcomes");
 const studyComparisonBoundary = $("studyComparisonBoundary");
 const studyCompassState = $("studyCompassState");
@@ -6683,7 +6684,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260825-149",
+      buildId: "20260826-150",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -9022,6 +9023,7 @@ async function saveCurrentExperimentNotebookEntry() {
       receiptStatus.textContent = `Run ${experimentNotebookEntries.length} saved · coordinate-free summary · receipt ${entry.receiptSha256.slice(0, 10)}…`;
     }
     renderExperimentNotebook();
+    renderStudyOutcome();
   } catch (error) {
     receiptStatus.textContent = `Notebook save failed: ${error.message}`;
     console.error(error);
@@ -13290,6 +13292,44 @@ function activeStudyComparisonArm(recipeId = activeStudyRecipeId) {
   return comparison?.arms.find((arm) => arm.id === activeStudyArmId) || comparison?.arms[0] || null;
 }
 
+function studyArmNotebookEvidence(recipeId, armId) {
+  const runs = experimentNotebookEntries.filter((entry) => entry.scenarioId === scenarioSelect.value
+    && entry.registeredStudy?.recipeId === recipeId
+    && entry.registeredStudy?.armId === armId
+    && entry.registeredStudy?.settingsStillMatch === true);
+  const executed = runs.filter((entry) => entry.executionEvidence?.executed === true);
+  return {
+    savedRuns: runs.length,
+    executedRuns: executed.length,
+    latest: executed.at(-1) || runs.at(-1) || null,
+  };
+}
+
+function renderStudyComparisonProgress(recipeId, comparison) {
+  const records = comparison.arms.map((arm) => ({ arm, evidence: studyArmNotebookEvidence(recipeId, arm.id) }));
+  const designSaved = records.every(({ evidence }) => evidence.savedRuns > 0);
+  const responseReady = records.every(({ evidence }) => evidence.executedRuns > 0);
+  studyComparisonProgress.className = `study-comparison-progress ${responseReady ? "ready" : designSaved ? "design-saved" : "pending"}`;
+  const armRecords = records.map(({ arm, evidence }, index) => {
+    const item = document.createElement("span");
+    const kind = document.createElement("small"); kind.textContent = index ? "contrast" : "reference";
+    const value = document.createElement("strong"); value.textContent = evidence.executedRuns
+      ? `${evidence.executedRuns} executed response${evidence.executedRuns === 1 ? "" : "s"}`
+      : evidence.savedRuns ? `${evidence.savedRuns} saved design${evidence.savedRuns === 1 ? "" : "s"}` : "not saved";
+    const leapCount = evidence.latest?.executionEvidence?.structuralLeapEvents || 0;
+    const detail = document.createElement("em"); detail.textContent = evidence.latest
+      ? `${leapCount} structural leap${leapCount === 1 ? "" : "s"} · ${evidence.latest.receiptSha256.slice(0, 8)}…`
+      : `configure ${arm.label}, enter growth, execute ≥1 update, then save`;
+    item.append(kind, value, detail); return item;
+  });
+  const pair = document.createElement("b");
+  pair.textContent = responseReady ? "response pair ready" : designSaved ? "design saved · execute both" : "complete both arms";
+  pair.title = responseReady
+    ? "Both registered arms have saved structural-leap or fixed-point evidence."
+    : "A comparable response requires at least one structural leap or audited fixed point in each arm.";
+  studyComparisonProgress.replaceChildren(...armRecords, pair);
+}
+
 function activeStudyRecipeAudit() {
   const recipe = MATERIALS_STUDY_RECIPES.find((entry) => entry.id === activeStudyRecipeId);
   if (!recipe) return null;
@@ -13724,15 +13764,20 @@ function renderStudyOutcome(growthCertificate = undefined) {
     const button = document.createElement("button"); button.type = "button";
     button.classList.toggle("active", arm.id === activeArm.id);
     button.setAttribute("aria-pressed", String(arm.id === activeArm.id));
-    button.title = "Configure this registered arm from the same known positions; nothing executes automatically.";
+    const evidence = studyArmNotebookEvidence(outcome.recipeId, arm.id);
+    button.title = `${evidence.executedRuns ? `${evidence.executedRuns} executed response run${evidence.executedRuns === 1 ? "" : "s"} saved. ` : evidence.savedRuns ? `${evidence.savedRuns} unexecuted design run${evidence.savedRuns === 1 ? "" : "s"} saved. ` : ""}Configure this registered arm from the same known positions; prior growth is never reused and nothing executes automatically.`;
     const kind = document.createElement("small"); kind.textContent = index ? "contrast arm" : "reference arm";
     const label = document.createElement("strong"); label.textContent = arm.label;
     const summary = document.createElement("span"); summary.textContent = arm.summary;
-    const state = document.createElement("b"); state.textContent = arm.id === activeArm.id ? "configured" : "configure";
+    const state = document.createElement("b");
+    const savedState = evidence.executedRuns ? "response saved" : evidence.savedRuns ? "design saved" : null;
+    state.textContent = arm.id === activeArm.id ? savedState ? `configured · ${savedState}` : "configured"
+      : savedState || "configure";
     button.append(kind, label, summary, state);
     button.addEventListener("click", () => applyStudyComparisonArm(outcome.recipeId, arm.id));
     return button;
   }));
+  renderStudyComparisonProgress(outcome.recipeId, comparison);
   studyComparisonOutcomes.textContent = `Compare only: ${comparison.outcomes.join(" · ")} · save each completed arm to the notebook for a one-factor audit.`;
   studyComparisonBoundary.textContent = `${comparison.boundary} Arm selection resets to known positions and never presses Play.`;
 }
@@ -18467,6 +18512,7 @@ clearNotebookButton.addEventListener("click", () => {
   try { localStorage.removeItem(EXPERIMENT_NOTEBOOK_STORAGE); } catch (_) { /* local state is already cleared */ }
   receiptStatus.textContent = "Experiment notebook cleared. Downloaded receipts are unaffected.";
   renderExperimentNotebook();
+  renderStudyOutcome();
 });
 notebookTrajectoryObservable.addEventListener("change", renderExperimentNotebook);
 document.querySelectorAll("[data-notebook-trajectory-mode]").forEach((button) => button.addEventListener("click", () => {

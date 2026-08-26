@@ -127,6 +127,18 @@ zero-event states no longer looks like a completed experiment. This is an
 execution-evidence gate, not a requirement that growth succeed, and it still
 does not turn structural leaps into physical time or dynamical trajectories.
 
+Build 150 brings that execution audit back into the active study card. Each
+reference and contrast arm now reports whether it has no saved run, a saved
+design only, or one or more executed responses, including the latest receipt
+prefix and structural-leap count. A persistent pair badge advances from
+`complete both arms` to `design saved · execute both` and finally
+`response pair ready`. Selecting either arm still reconstructs it from the
+identical known positions, discards prior live growth, remains paused, and never
+replays the saved output. Saving or clearing the local notebook updates this
+checklist immediately. The checklist is guidance over receipt evidence—not an
+autorun system, a target-aware branch chooser, or a claim that one leap is a
+complete physical growth experiment.
+
 The right-hand **computational work laboratory** turns the scaling question into
 an explicit, inspectable comparison at 10×, 1,000×, and 100,000× the observed
 sample. It reports deterministic browser tree decisions and finite-neighborhood
