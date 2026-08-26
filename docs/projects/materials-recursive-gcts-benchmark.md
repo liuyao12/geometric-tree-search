@@ -5782,3 +5782,20 @@ canvas replaces only the 3D rendering surface; the scientific workflow,
 calculations, evidence panels, plots, and receipts continue to initialize. The
 receipt distinguishes interactive WebGL from the fallback and explicitly
 states that the renderer choice changes no scientific calculation.
+
+## Build 178: identify redundant geometry-encoded physics on one frontier
+
+Build 178 adds a target-blind hypothesis-identifiability audit to the Stage 4
+counterfactual workbench. It operates only after the exact hard-admitted candidate
+set is frozen. For each active and nonconstant signed score term it forms one value
+per candidate, then reports both Pearson contribution correlation and Spearman rank
+correlation for every pair. The interactive matrix is therefore sensitive to both
+linear duplication and monotone nonlinear duplication.
+
+Known-window replay, seeded exploration, inactive terms, and frontier-constant
+terms are explicitly withheld. The matrix cannot add, remove, move, rank, or execute
+an action; it has no target or coordinate input. The receipt stores term ranges,
+withheld reasons, all pairwise coefficients and classifications, the unchanged
+candidate-set digest, and a coordinate-free audit digest. Correlation is interpreted
+only as local identifiability of geometric ranking proxies on this one frontier—not
+causal independence, physical independence, an energy Hessian, or parameter fitting.

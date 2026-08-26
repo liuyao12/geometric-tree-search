@@ -16,6 +16,31 @@
   --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 }
 
+.policy-identifiability-card { margin-top: 5px; padding: 6px; border: 1px solid rgba(101,225,188,.13); background: radial-gradient(circle at 84% 16%,rgba(85,200,255,.035),transparent 50%),rgba(101,225,188,.01); }
+.policy-identifiability-card header { display: flex; align-items: end; justify-content: space-between; gap: 7px; }
+.policy-identifiability-card header span small,.policy-identifiability-card header span strong { display: block; }
+.policy-identifiability-card header small { color: #52786e; font: 5px var(--mono); text-transform: uppercase; }
+.policy-identifiability-card header strong { margin-top: 3px; color: #a6c9bf; font: 6px var(--mono); font-weight: 400; }
+.policy-identifiability-card header b { max-width: 156px; color: #718f87; font: 5px/1.3 var(--mono); font-weight: 400; text-align: right; }
+.policy-identifiability-matrix { max-height: 240px; margin-top: 5px; border: 1px solid rgba(101,225,188,.08); overflow: auto; background: rgba(4,12,14,.66); }
+.policy-identifiability-matrix:empty { display: none; }
+.policy-identifiability-matrix table { width: 100%; min-width: max-content; border-collapse: separate; border-spacing: 1px; color: #78938b; font: 4px var(--mono); }
+.policy-identifiability-matrix th { position: sticky; z-index: 2; max-width: 62px; padding: 3px; background: #071516; color: #6c8880; font-weight: 400; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.policy-identifiability-matrix thead th { top: 0; }
+.policy-identifiability-matrix tbody th { left: 0; text-align: right; }
+.policy-identifiability-matrix button { width: 27px; height: 22px; padding: 0; border: 1px solid transparent; color: rgba(229,244,240,.78); font: 4px var(--mono); cursor: pointer; }
+.policy-identifiability-matrix button.positive { background: rgba(101,225,188,var(--correlation-strength)); }
+.policy-identifiability-matrix button.negative { background: rgba(255,117,111,var(--correlation-strength)); }
+.policy-identifiability-matrix button.unresolved { background: rgba(124,117,142,.15); color: #6d6878; }
+.policy-identifiability-matrix button.diagonal { background: rgba(181,148,255,.22); color: #d8caf2; cursor: default; }
+.policy-identifiability-matrix button:hover,.policy-identifiability-matrix button:focus-visible,.policy-identifiability-matrix button.active { border-color: #f0f8f5; outline: none; box-shadow: inset 0 0 0 1px rgba(255,255,255,.14); }
+.policy-identifiability-detail { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 3px 6px; margin-top: 5px; padding: 4px 5px; border-left: 2px solid rgba(101,225,188,.48); background: rgba(101,225,188,.025); color: #758b84; font: 5px/1.4 var(--mono); }
+.policy-identifiability-detail:empty { display: none; }
+.policy-identifiability-detail strong { overflow: hidden; color: #afd0c7; font-weight: 400; text-overflow: ellipsis; white-space: nowrap; }
+.policy-identifiability-detail b { color: #78bba8; font: inherit; font-weight: 400; text-align: right; }
+.policy-identifiability-detail span { grid-column: 1 / -1; }
+.policy-identifiability-card > p { margin: 5px 0 0; color: #577068; font: 5px/1.4 var(--mono); }
+
 * { box-sizing: border-box; }
 html { min-width: 320px; scroll-behavior: smooth; background: var(--bg); }
 body {

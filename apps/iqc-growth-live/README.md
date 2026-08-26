@@ -5141,3 +5141,21 @@ capability. If WebGL cannot be created, the portal substitutes an accessible
 clustering, marking controls, search calculations, plots, evidence inspection,
 and receipt export remain active; the receipt records the renderer mode and
 that the fallback changes no scientific calculation.
+
+### Build 178 · frozen-frontier hypothesis identifiability
+
+The material-growth workbench now asks whether its active geometry-encoded physics
+channels actually distinguish different attachment actions. After one frontier is
+hard-admitted and frozen, an interactive square matrix computes both Pearson
+correlation of signed score contributions and Spearman correlation of candidate
+ranks for every active, varying, target-blind channel. Clicking any off-diagonal
+cell reports the two hypotheses, both coefficients, exact candidate count, frontier
+digest, and audit digest.
+
+The audit withholds known-window replay, seeded exploration, zero-weight channels,
+and channels constant on that frontier. It cannot alter candidates, geometry,
+hard admission, ranking weights, or execution, and embeds no coordinates. The
+experiment receipt stores every pair and the exclusions. A high correlation means
+the two proxies are locally difficult to identify separately on this candidate set;
+it is not evidence that the underlying physical mechanisms are causally or
+physically dependent.

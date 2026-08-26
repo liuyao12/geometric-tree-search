@@ -18,6 +18,8 @@ import { assessGeometrySurrogatePromotion, evaluateFrozenGeometrySurrogate,
   geometryCalculationCalibration, geometryCalculationSurrogate, geometryReferenceIndices,
   geometrySurrogateCompatibilityDifferences, geometrySurrogateCompatibilityKey }
   from "./geometry-calculation-calibration.js?v=20260826-6";
+import { policyIdentifiabilityAudit }
+  from "./policy-identifiability.js?v=20260826-1";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -396,6 +398,9 @@ const policyPhaseMapState = $("policyPhaseMapState");
 const policyPhaseX = $("policyPhaseX");
 const policyPhaseY = $("policyPhaseY");
 const policyPhaseMap = $("policyPhaseMap");
+const policyIdentifiabilityState = $("policyIdentifiabilityState");
+const policyIdentifiabilityMatrix = $("policyIdentifiabilityMatrix");
+const policyIdentifiabilityDetail = $("policyIdentifiabilityDetail");
 const policyParetoState = $("policyParetoState");
 const policyParetoX = $("policyParetoX");
 const policyParetoY = $("policyParetoY");
@@ -7876,7 +7881,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-177",
+      buildId: "20260826-178",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -9444,6 +9449,45 @@ async function buildExperimentReceipt() {
                 runnerUpMargin: receiptRound(cell.margin),
                 baseline: cell.baseline,
               })),
+            } : null;
+          })(),
+          hypothesisIdentifiability: (() => {
+            const audit = buildPolicyIdentifiabilityAudit(snapshot);
+            return audit ? {
+              role: "target-blind local identifiability audit of active signed geometric ranking channels over one frozen hard-admitted frontier",
+              candidateCount: audit.candidateCount,
+              activeVaryingTerms: audit.terms.map((term) => ({ id: term.id, label: term.label,
+                role: term.role, claimBoundary: term.claimBoundary,
+                meanContribution: receiptRound(term.mean),
+                standardDeviation: receiptRound(term.standardDeviation),
+                minimumContribution: receiptRound(term.minimum),
+                maximumContribution: receiptRound(term.maximum) })),
+              withheldTerms: audit.withheld,
+              pairCount: audit.pairs.filter((pair) => pair.row < pair.column).length,
+              nearRedundantPairs: audit.nearRedundantPairs,
+              locallyDistinctPairs: audit.locallyDistinctPairs,
+              strongestPair: audit.strongestPair ? { firstId: audit.strongestPair.firstId,
+                secondId: audit.strongestPair.secondId,
+                pearson: receiptRound(audit.strongestPair.pearson),
+                spearman: receiptRound(audit.strongestPair.spearman),
+                classification: audit.strongestPair.classification } : null,
+              pairs: audit.pairs.filter((pair) => pair.row < pair.column).map((pair) => ({
+                firstId: pair.firstId, secondId: pair.secondId, sampleCount: pair.sampleCount,
+                pearson: pair.pearson === null ? null : receiptRound(pair.pearson),
+                spearman: pair.spearman === null ? null : receiptRound(pair.spearman),
+                classification: pair.classification })),
+              candidateSetDigest: audit.candidateSetDigest,
+              auditDigest: audit.auditDigest,
+              targetAwareTermsExcluded: audit.targetAwareTermsExcluded,
+              candidateSetChanged: audit.candidateSetChanged,
+              hardAdmissionChanged: audit.hardAdmissionChanged,
+              candidateGeometryChanged: audit.candidateGeometryChanged,
+              coordinatesEmbedded: audit.coordinatesEmbedded,
+              targetUsed: audit.targetUsed,
+              executed: audit.executed,
+              causalIndependenceInferred: false,
+              physicalIndependenceInferred: false,
+              interpretation: audit.interpretation,
             } : null;
           })(),
           candidateTradeoffMap: (() => {
@@ -12939,6 +12983,18 @@ function buildPolicyPhaseMap(snapshot) {
     selectedAxesIncludeReferenceGuidedTerm: snapshot.rankingTargetUsed && [x, y].includes("known-window-gain"),
     rankingTargetUsed: snapshot.rankingTargetUsed,
     executed: false, selectionRule: snapshot.phaseMapAxes.selectionRule };
+}
+
+function buildPolicyIdentifiabilityAudit(snapshot) {
+  if (!snapshot?.workbenchCandidates?.length) return null;
+  const candidates = snapshot.workbenchCandidates.map((candidate) => ({
+    candidateKey: candidate.candidateKey,
+    scoreTerms: workbenchCandidateTerms(snapshot, candidate),
+  }));
+  return policyIdentifiabilityAudit(candidates, {
+    candidateSetDigest: snapshot.candidateDigest,
+    excludedTermIds: ["known-window-gain", "exploration"],
+  });
 }
 
 function workbenchCandidateTerms(snapshot, candidate) {
@@ -20503,6 +20559,71 @@ function renderPolicyPhaseMap(snapshot) {
   });
 }
 
+function renderPolicyIdentifiabilityAudit(snapshot) {
+  policyIdentifiabilityMatrix.replaceChildren(); policyIdentifiabilityDetail.replaceChildren();
+  const audit = buildPolicyIdentifiabilityAudit(snapshot);
+  if (!audit) {
+    policyIdentifiabilityState.textContent = "awaiting a frozen frontier";
+    return;
+  }
+  if (!audit.terms.length) {
+    policyIdentifiabilityState.textContent = `0 varying channels · ${audit.withheld.length} withheld`;
+    const message = document.createElement("span");
+    message.textContent = "No active target-blind score term varies across at least two candidates on this frontier.";
+    policyIdentifiabilityDetail.append(message);
+    return;
+  }
+  const pairKey = (pair) => `${pair.firstId}::${pair.secondId}`;
+  const selectable = audit.pairs.filter((pair) => !pair.diagonal);
+  const chosenKey = selectable.some((pair) => pairKey(pair) === snapshot.identifiabilityPairKey)
+    ? snapshot.identifiabilityPairKey : audit.strongestPair ? pairKey(audit.strongestPair) : null;
+  snapshot.identifiabilityPairKey = chosenKey;
+  policyIdentifiabilityState.textContent = `${audit.terms.length} varying · ${audit.nearRedundantPairs} |ρ|≥.90 · ${audit.withheld.length} withheld`;
+  const table = document.createElement("table");
+  const header = document.createElement("thead"); const headerRow = document.createElement("tr");
+  const corner = document.createElement("th"); corner.textContent = "ρ"; headerRow.append(corner);
+  audit.terms.forEach((term) => {
+    const cell = document.createElement("th"); cell.scope = "col"; cell.title = term.label;
+    cell.textContent = term.label.slice(0, 7); headerRow.append(cell);
+  });
+  header.append(headerRow); table.append(header);
+  const body = document.createElement("tbody");
+  audit.terms.forEach((term, rowIndex) => {
+    const row = document.createElement("tr"); const heading = document.createElement("th");
+    heading.scope = "row"; heading.title = term.label; heading.textContent = term.label.slice(0, 9); row.append(heading);
+    audit.terms.forEach((other, columnIndex) => {
+      const pair = audit.pairs.find((entry) => entry.row === rowIndex && entry.column === columnIndex);
+      const cell = document.createElement("td"); const button = document.createElement("button"); button.type = "button";
+      const value = pair.spearman; const magnitude = Math.abs(value ?? 0);
+      button.className = value === null ? "unresolved" : value < 0 ? "negative" : "positive";
+      button.classList.toggle("diagonal", pair.diagonal);
+      button.classList.toggle("active", !pair.diagonal && pairKey(pair) === chosenKey);
+      button.style.setProperty("--correlation-strength", (.08 + .72 * magnitude).toFixed(3));
+      button.textContent = value === null ? "—" : value.toFixed(2).replace(/^0/, "").replace(/^-0/, "−");
+      button.setAttribute("aria-label", `${term.label} versus ${other.label}; Spearman ${value === null ? "unresolved" : value.toFixed(3)}; ${pair.classification}`);
+      button.title = `${pair.sampleCount} identical candidates · Pearson ${pair.pearson === null ? "unresolved" : pair.pearson.toFixed(4)} · Spearman ${pair.spearman === null ? "unresolved" : pair.spearman.toFixed(4)} · ${pair.classification}`;
+      if (!pair.diagonal) button.addEventListener("click", () => {
+        snapshot.identifiabilityPairKey = pairKey(pair); renderPolicyIdentifiabilityAudit(snapshot);
+      });
+      else button.disabled = true;
+      cell.append(button); row.append(cell);
+    });
+    body.append(row);
+  });
+  table.append(body); policyIdentifiabilityMatrix.append(table);
+  const selected = selectable.find((pair) => pairKey(pair) === chosenKey);
+  if (selected) {
+    const heading = document.createElement("strong");
+    heading.textContent = `${selected.firstLabel} ↔ ${selected.secondLabel}`;
+    const status = document.createElement("b"); status.textContent = selected.classification.replaceAll("-", " ").toUpperCase();
+    const coefficients = document.createElement("span");
+    coefficients.textContent = `Pearson r ${selected.pearson === null ? "unresolved" : selected.pearson.toFixed(4)} · Spearman ρ ${selected.spearman === null ? "unresolved" : selected.spearman.toFixed(4)} · n=${selected.sampleCount} exact candidates`;
+    const boundary = document.createElement("span");
+    boundary.textContent = `Same frontier ${audit.candidateSetDigest} · audit ${audit.auditDigest} · no target, coordinates, candidate geometry, admission, fitting, or execution. Local score redundancy does not establish causal or physical dependence.`;
+    policyIdentifiabilityDetail.append(heading, status, coefficients, boundary);
+  }
+}
+
 function selectPolicyParetoAxis(snapshot, axis, termId) {
   const otherAxis = axis === "x" ? "y" : "x";
   snapshot.paretoAxes ||= { x: snapshot.phaseMapAxes.x, y: snapshot.phaseMapAxes.y };
@@ -21099,6 +21220,7 @@ function renderPolicyComparison() {
     policyPreviewState.textContent = "Select a policy row during material growth.";
     renderPolicyScoreLedger(null);
     renderPolicyPhaseMap(null);
+    renderPolicyIdentifiabilityAudit(null);
     renderPolicyParetoMap(null);
     renderPolicyOmissionAudit(null);
     renderPolicySpatialField(null);
@@ -21118,6 +21240,7 @@ function renderPolicyComparison() {
     policyPreviewState.textContent = `${iceAnchorTrace.selectionRuleLabel} is the only certified molecular-anchor policy in this trace.`;
     renderPolicyScoreLedger(null);
     renderPolicyPhaseMap(null);
+    renderPolicyIdentifiabilityAudit(null);
     renderPolicyParetoMap(null);
     renderPolicyOmissionAudit(null);
     renderPolicySpatialField(null);
@@ -21137,6 +21260,7 @@ function renderPolicyComparison() {
     policyPreviewState.textContent = "Select a policy row after the first frontier is frozen.";
     renderPolicyScoreLedger(null);
     renderPolicyPhaseMap(null);
+    renderPolicyIdentifiabilityAudit(null);
     renderPolicyParetoMap(null);
     renderPolicyOmissionAudit(null);
     renderPolicySpatialField(null);
@@ -21256,6 +21380,7 @@ function renderPolicyComparison() {
       || snapshot.policies.find((policy) => policy.id === "active") || snapshot.policies.at(-1);
   renderPolicyScoreLedger(selectedScorePolicy, snapshot);
   renderPolicyPhaseMap(snapshot);
+  renderPolicyIdentifiabilityAudit(snapshot);
   renderPolicyParetoMap(snapshot);
   renderPolicyOmissionAudit(snapshot);
   renderPolicySpatialField(snapshot);
