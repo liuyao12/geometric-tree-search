@@ -6867,39 +6867,51 @@ export const createTilingStream = (() => {
     };
     const applyInitialPatch = () => {
       if (!initialPatchDescriptors.length) return;
+      const requireFaceConnectedInitialPatch = config.initial_patch_require_face_connectivity !== false;
       searchStats.initial_patch_requested_tiles = initialPatchDescriptors.length;
       const root = initialPatchDescriptors[0];
       const rootOrient = resolvePatchOrientation(root);
       if ((root.prototile_idx ?? 0) !== startMove.prototile_idx || rootOrient !== startMove.orient) {
         throw new Error("The initial patch root does not match the normalized root tile");
       }
-      for (let index = 1; index < initialPatchDescriptors.length; index += 1) {
-        const descriptor = initialPatchDescriptors[index];
-        const prototileIdx = descriptor.prototile_idx ?? 0;
-        const tile = prototiles[prototileIdx];
-        const orient = resolvePatchOrientation(descriptor);
-        if (!tile || !orient || !Array.isArray(descriptor.translation) || descriptor.translation.length !== 3) {
-          throw new Error(`Invalid initial patch placement ${index}`);
+      const pending = initialPatchDescriptors.slice(1).map((descriptor, index) => ({
+        descriptor,
+        originalIndex: index + 1
+      }));
+      while (pending.length) {
+        let appliedPendingIndex = -1;
+        for (let pendingIndex = 0; pendingIndex < pending.length; pendingIndex += 1) {
+          const { descriptor, originalIndex } = pending[pendingIndex];
+          const prototileIdx = descriptor.prototile_idx ?? 0;
+          const tile = prototiles[prototileIdx];
+          const orient = resolvePatchOrientation(descriptor);
+          if (!tile || !orient || !Array.isArray(descriptor.translation) || descriptor.translation.length !== 3) {
+            throw new Error(`Invalid initial patch placement ${originalIndex}`);
+          }
+          const translation = config.initial_patch_relative_to_root === false
+            ? descriptor.translation.slice()
+            : vecAdd(startMove.translation, descriptor.translation);
+          if (tile.is_polycube ? !isPolycubeMoveTranslation(tile, translation) : !translation.every(Number.isInteger)) {
+            throw new Error(`Initial patch placement ${originalIndex} is off the configured lattice`);
+          }
+          const move = { prototile_idx: prototileIdx, orient, translation, is_forced: false };
+          const sharesFrontierFace = orient.faces.some((_, faceIdx) =>
+            state.frontier.has(translatedOrientedFaceKey(orient, faceIdx, translation))
+          );
+          if (requireFaceConnectedInitialPatch && !sharesFrontierFace) continue;
+          const validity = isMoveValid(move);
+          if (!validity.ok) {
+            throw new Error(`Initial patch placement ${originalIndex} is invalid: ${validity.reason ?? "geometry"}`);
+          }
+          move.occupancy_data = validity.occData;
+          applyMove(move, { countWork: false });
+          appliedPendingIndex = pendingIndex;
+          break;
         }
-        const translation = config.initial_patch_relative_to_root === false
-          ? descriptor.translation.slice()
-          : vecAdd(startMove.translation, descriptor.translation);
-        if (tile.is_polycube ? !isPolycubeMoveTranslation(tile, translation) : !translation.every(Number.isInteger)) {
-          throw new Error(`Initial patch placement ${index} is off the configured lattice`);
+        if (appliedPendingIndex < 0) {
+          throw new Error("The initial patch is not face-connected to its normalized root");
         }
-        const move = { prototile_idx: prototileIdx, orient, translation, is_forced: false };
-        const sharesFrontierFace = orient.faces.some((_, faceIdx) =>
-          state.frontier.has(translatedOrientedFaceKey(orient, faceIdx, translation))
-        );
-        if (!sharesFrontierFace) {
-          throw new Error(`Initial patch placement ${index} is not face-connected to its prefix`);
-        }
-        const validity = isMoveValid(move);
-        if (!validity.ok) {
-          throw new Error(`Initial patch placement ${index} is invalid: ${validity.reason ?? "geometry"}`);
-        }
-        move.occupancy_data = validity.occData;
-        applyMove(move, { countWork: false });
+        pending.splice(appliedPendingIndex, 1);
       }
       searchStats.initial_patch_applied_tiles = state.placements.length;
       searchStats.initial_patch_base_shell_depth = completeShellDepthStats().complete_shell_depth;

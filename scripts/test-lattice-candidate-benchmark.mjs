@@ -59,6 +59,11 @@ assert.deepEqual(controls.controls, {
   aperiodicControl: true
 });
 assert.equal(
+  controls.controlEvidence.nonTiler.method,
+  "independent_exhaustive_radius_two_corona"
+);
+assert.equal(controls.controlEvidence.nonTiler.stoppedBy, null);
+assert.equal(
   controls.rows.find(row => row.case === "10_27010" && row.lane === "isohedral")?.certificatePatchSize,
   24
 );
@@ -78,7 +83,7 @@ assert.ok(survivor.rows.every(row => row.largestPatch >= 1));
 assert.equal(survivor.rows.find(row => row.lane === "free_range")?.moveOrder, "balanced");
 assert.equal(survivor.rows.find(row => row.lane === "free_range_no_brainer")?.moveOrder, "no_brainer");
 assert.ok(["balanced", "no_brainer"].includes(survivor.unresolved[0].preferredFreeRangePolicy));
-assert.equal(survivor.schemaVersion, 23);
+assert.equal(survivor.schemaVersion, 24);
 assert.deepEqual(survivor.activeUnresolved, []);
 assert.deepEqual(survivor.configuration.seeds, [1, 2, 3]);
 assert.equal(survivor.configuration.faceOrder, "mrv");
@@ -92,10 +97,10 @@ assert.ok(coldGctsRows.every(row => row.learnedProgram === null && !row.reusedLe
 const coldRlRows = survivor.rows.filter(row => row.lane === "rl");
 const coldHybridRows = survivor.rows.filter(row => row.lane === "gcts_rl");
 assert.ok(coldRlRows.length > 0 && coldHybridRows.length > 0);
-assert.ok(coldRlRows.every(row => row.moveOrder === "rl" && row.agentPolicy === "cold_geometry"));
+assert.ok(coldRlRows.every(row => row.moveOrder === "rl" && row.agentPolicy === "cold_linucb"));
 assert.ok(coldRlRows.every(row => row.agentStartedEmpty && row.agentFeatureSchema === "anonymous_lattice_geometry_v1"));
 assert.ok(coldRlRows.every(row => !row.gctsFailureMarkingEnabled));
-assert.ok(coldHybridRows.every(row => row.moveOrder === "rl" && row.agentPolicy === "cold_geometry"));
+assert.ok(coldHybridRows.every(row => row.moveOrder === "rl" && row.agentPolicy === "cold_linucb"));
 assert.ok(coldHybridRows.every(row => row.agentStartedEmpty && row.agentFeatureSchema === "anonymous_lattice_geometry_v1"));
 assert.ok(coldHybridRows.every(row => row.gctsFailureMarkingEnabled && row.markingStartedEmpty));
 assert.equal(survivor.configuration.failureMemoSymmetry, "fixed");
