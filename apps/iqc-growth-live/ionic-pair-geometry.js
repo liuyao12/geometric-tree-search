@@ -55,3 +55,60 @@ export function incrementalIonicPairGeometry(currentSites = [], addedSites = [],
     polarizationModeled: false, chargeTransferModeled: false,
     electronicStructureModeled: false, physicalTimeIntegrated: false };
 }
+
+export function incrementalIonicPairReachProfile(currentSites = [], addedSites = [], options = {}) {
+  const reaches = [...new Set((options.reaches || [2, 4, 8, "global"])
+    .map((reach) => reach === "global" ? "global" : Number(reach)))]
+    .filter((reach) => reach === "global" || Number.isFinite(reach) && reach > 0);
+  const samples = reaches.map((reach) => incrementalIonicPairGeometry(currentSites, addedSites, {
+    nearestNeighborScale: options.nearestNeighborScale,
+    reachNearestNeighborUnits: reach,
+  }));
+  const available = samples.some((sample) => sample.available);
+  const scores = samples.filter((sample) => sample.available).map((sample) => sample.score);
+  const signedSums = samples.filter((sample) => sample.available).map((sample) => sample.signedPairSum);
+  return {
+    available,
+    samples: samples.map((sample, index) => ({ ...sample, reach: reaches[index] })),
+    scoreSpread: scores.length ? Math.max(...scores) - Math.min(...scores) : 0,
+    signedPairSumSpread: signedSums.length ? Math.max(...signedSums) - Math.min(...signedSums) : 0,
+    distanceEvaluations: samples.reduce((sum, sample) => sum + (sample.distanceEvaluations || 0), 0),
+    reaches,
+    fixedBeforeCandidateRanking: true,
+    candidateSetChanged: false,
+    candidateGeometryChanged: false,
+    hardAdmissionChanged: false,
+    targetUsed: false,
+    dielectricOrEwaldConvergenceInferred: false,
+    thermodynamicLimitInferred: false,
+  };
+}
+
+export function rankIonicPairReachProfiles(records = []) {
+  const usable = records.filter((record) => record?.candidateKey && record.profile?.samples?.length);
+  if (!usable.length) return { available: false, reaches: [], candidates: [], winners: [],
+    uniqueWinners: 0, adjacentWinnerChanges: 0, rankReversalCandidates: 0 };
+  const reaches = [...usable[0].profile.reaches];
+  const rankings = reaches.map((reach, index) => usable
+    .filter((record) => record.profile.samples[index]?.available)
+    .sort((first, second) => second.profile.samples[index].score - first.profile.samples[index].score
+      || first.candidateKey.localeCompare(second.candidateKey)));
+  const rankMaps = rankings.map((ranking) => new Map(ranking.map((record, index) => [record.candidateKey, index + 1])));
+  const candidates = usable.map((record) => ({ candidateKey: record.candidateKey,
+    ranks: rankMaps.map((rankMap) => rankMap.get(record.candidateKey) ?? null),
+  })).sort((first, second) => first.candidateKey.localeCompare(second.candidateKey));
+  const winners = rankings.map((ranking, index) => ({ reach: reaches[index],
+    candidateKey: ranking[0]?.candidateKey ?? null,
+    score: ranking[0]?.profile.samples[index].score ?? null }));
+  return {
+    available: true, reaches, candidates, winners,
+    uniqueWinners: new Set(winners.map((winner) => winner.candidateKey).filter(Boolean)).size,
+    adjacentWinnerChanges: winners.slice(1).filter((winner, index) =>
+      winner.candidateKey !== winners[index].candidateKey).length,
+    rankReversalCandidates: candidates.filter((candidate) =>
+      new Set(candidate.ranks.filter(Number.isFinite)).size > 1).length,
+    stableTieBreak: "candidate key lexical order",
+    candidateSetChanged: false, candidateGeometryChanged: false,
+    hardAdmissionChanged: false, targetUsed: false,
+  };
+}

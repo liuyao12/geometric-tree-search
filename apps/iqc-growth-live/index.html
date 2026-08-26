@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260826-65">
+  <link rel="stylesheet" href="./style.css?v=20260826-66">
   <script type="importmap">
     {
       "imports": {
@@ -1029,6 +1029,13 @@
                 <article id="chargeShapePortraitDetail" class="charge-shape-portrait-detail" aria-live="polite"></article>
                 <p>Axes are |p|/(Σ|q|R<sub>rms</sub>) and ||Q||<sub>F</sub>/(Σ|q|R<sub>rms</sub>²) about the geometric centroid. Lines are exact candidate transitions—not trajectories, electric fields, electrostatic energies, polarization, or physical time.</p>
               </section>
+              <section class="ionic-convergence-card" aria-label="Ionic-pair cutoff convergence audit">
+                <header><span><small>finite-reach sensitivity</small><strong>Ionic-pair cutoff audit</strong></span><b id="ionicConvergenceState">awaiting a charged frontier</b></header>
+                <svg id="ionicConvergencePlot" class="ionic-convergence-plot" viewBox="0 0 240 150" role="group" aria-label="Click an exact attachment candidate to inspect its ionic-pair score across finite reaches"></svg>
+                <div class="ionic-convergence-legend"><span><i class="candidate"></i>exact candidate</span><span><i class="selected"></i>selected pose</span><span><i class="winner"></i>best at reach</span></div>
+                <article id="ionicConvergenceDetail" class="ionic-convergence-detail" aria-live="polite"></article>
+                <p>The same frozen candidates are re-evaluated at 2, 4, 8d<sub>nn</sub> and the global finite crop. Rank reversals diagnose cutoff sensitivity; they are not Ewald convergence, dielectric screening, electrostatic energy, or a thermodynamic limit.</p>
+              </section>
               <div class="policy-sensitivity-heading"><small>pathway sensitivity</small><strong id="policySensitivityState">no evaluated frontiers</strong></div>
               <div id="policyHistory" class="policy-history" role="group" aria-label="Inspect policy disagreement on recent frozen frontiers"></div>
               <p id="policyPreviewState">Select a policy row to preview its winner in the 3D scene.</p>
@@ -1599,7 +1606,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260826-158"></script>
+  <script type="module" src="./app.js?v=20260826-159"></script>
   <script type="module" src="./evidence-atlas.js?v=20260824-8"></script>
 </body>
 </html>

@@ -9,10 +9,11 @@ MODULE = (ROOT / "apps/iqc-growth-live/ionic-pair-geometry.js").read_text()
 
 
 def test_incremental_ionic_pair_geometry_contract():
-    assert 'buildId: "20260826-158"' in APP
-    assert 'app.js?v=20260826-158' in HTML
-    assert 'from "./ionic-pair-geometry.js?v=20260826-1"' in APP
+    assert 'buildId: "20260826-159"' in APP
+    assert 'app.js?v=20260826-159' in HTML
+    assert 'from "./ionic-pair-geometry.js?v=20260826-2"' in APP
     assert "export function incrementalIonicPairGeometry" in MODULE
+    assert "export function incrementalIonicPairReachProfile" in MODULE
     assert "first.charge * second.charge / normalizedDistance" in MODULE
     assert "incrementalPairsOnly: true" in MODULE
     assert "currentCurrentConstantOmitted: true" in MODULE

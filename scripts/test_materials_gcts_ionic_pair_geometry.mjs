@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
-import { incrementalIonicPairGeometry } from "../apps/iqc-growth-live/ionic-pair-geometry.js";
+import { incrementalIonicPairGeometry, incrementalIonicPairReachProfile,
+  rankIonicPairReachProfiles } from "../apps/iqc-growth-live/ionic-pair-geometry.js";
 
 const current = [
   { position: [-1, 0, 0], charge: 1 },
@@ -39,5 +40,36 @@ assert.equal(incrementalIonicPairGeometry([], added,
   { nearestNeighborScale: 1, reachNearestNeighborUnits: 4 }).available, false);
 assert.equal(incrementalIonicPairGeometry(current, [],
   { nearestNeighborScale: 1, reachNearestNeighborUnits: 4 }).available, false);
+
+const profile = incrementalIonicPairReachProfile(current, added, {
+  nearestNeighborScale: 1,
+  reaches: [2, 4, 8, "global"],
+});
+assert.equal(profile.available, true);
+assert.deepEqual(profile.reaches, [2, 4, 8, "global"]);
+assert.equal(profile.samples.length, 4);
+assert.equal(profile.samples.at(-1).score, audit.score);
+assert.ok(profile.samples[0].pairCount <= profile.samples[1].pairCount);
+assert.ok(profile.samples[1].pairCount <= profile.samples[2].pairCount);
+assert.ok(profile.samples[2].pairCount <= profile.samples[3].pairCount);
+assert.equal(profile.candidateSetChanged, false);
+assert.equal(profile.targetUsed, false);
+assert.equal(profile.dielectricOrEwaldConvergenceInferred, false);
+
+const competing = incrementalIonicPairReachProfile(current,
+  [{ position: [0, 0, 0], charge: 1 }, { position: [0, -2, 0], charge: -1 }],
+  { nearestNeighborScale: 1, reaches: [2, 4, 8, "global"] });
+const ranked = rankIonicPairReachProfiles([
+  { candidateKey: "b", profile: competing }, { candidateKey: "a", profile },
+]);
+const permutedRanked = rankIonicPairReachProfiles([
+  { candidateKey: "a", profile }, { candidateKey: "b", profile: competing },
+]);
+assert.equal(ranked.available, true);
+assert.deepEqual(ranked.reaches, [2, 4, 8, "global"]);
+assert.deepEqual(ranked.winners, permutedRanked.winners);
+assert.deepEqual(ranked.candidates, permutedRanked.candidates);
+assert.equal(ranked.candidateSetChanged, false);
+assert.equal(ranked.targetUsed, false);
 
 console.log("ionic pair geometry: passed");

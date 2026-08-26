@@ -29,7 +29,8 @@ import { consumeFeedstock, evaluateFeedstockDemand, feedstockReservoirSnapshot,
   initializeFeedstockReservoir } from "./feedstock-reservoir.js?v=20260826-1";
 import { formalChargeBalanceDelta, learnFormalChargeTarget } from "./formal-charge-balance.js?v=20260824-1";
 import { chargeMomentSignature, compareChargeMomentGeometry } from "./global-charge-moments.js?v=20260826-1";
-import { incrementalIonicPairGeometry } from "./ionic-pair-geometry.js?v=20260826-1";
+import { incrementalIonicPairGeometry, incrementalIonicPairReachProfile,
+  rankIonicPairReachProfiles } from "./ionic-pair-geometry.js?v=20260826-2";
 import {
   discoverFiniteMolecularComponents,
   discoverMolecularConnectionTopology,
@@ -373,6 +374,9 @@ const policySpatialDecomposition = $("policySpatialDecomposition");
 const chargeShapePortraitState = $("chargeShapePortraitState");
 const chargeShapePortrait = $("chargeShapePortrait");
 const chargeShapePortraitDetail = $("chargeShapePortraitDetail");
+const ionicConvergenceState = $("ionicConvergenceState");
+const ionicConvergencePlot = $("ionicConvergencePlot");
+const ionicConvergenceDetail = $("ionicConvergenceDetail");
 const policySensitivityState = $("policySensitivityState");
 const policyHistoryElement = $("policyHistory");
 const policyPreviewState = $("policyPreviewState");
@@ -6719,7 +6723,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-158",
+      buildId: "20260826-159",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
     },
     input: {
@@ -7847,6 +7851,33 @@ async function buildExperimentReceipt() {
               suppliedFormalChargeOnly: portrait.suppliedFormalChargeOnly,
               targetUsed: portrait.targetUsed, executed: portrait.executed,
               claimBoundary: portrait.claimBoundary,
+            } : null;
+          })(),
+          ionicPairReachConvergence: (() => {
+            const audit = buildIonicPairConvergence(snapshot);
+            return audit ? {
+              role: "candidate-resolved finite-cutoff sensitivity audit over one unchanged frontier",
+              reachesNearestNeighborUnits: audit.reaches,
+              candidateCount: audit.points.length,
+              candidateSetDigest: audit.candidateSetDigest,
+              uniqueReachWinners: audit.uniqueWinners,
+              adjacentWinnerChanges: audit.winnerChanges,
+              rankReversalCandidates: audit.rankReversalCandidates,
+              maximumScoreSpread: receiptRound(audit.maximumScoreSpread),
+              distanceEvaluations: audit.distanceEvaluations,
+              winners: audit.winners.map((winner) => ({ reach: winner.reach,
+                candidateDigest: winner.candidateDigest, score: receiptRound(winner.score) })),
+              selectedCandidate: audit.points.find((point) => point.candidateKey === audit.selectedCandidateKey)?.samples
+                .map((sample) => ({ reach: sample.reach, score: receiptRound(sample.score),
+                  rank: sample.rank, pairCount: sample.pairCount })) || [],
+              fixedReachEnsemble: audit.fixedReachEnsemble,
+              candidateSetChanged: audit.candidateSetChanged,
+              hardAdmissionChanged: audit.hardAdmissionChanged,
+              candidateGeometryChanged: audit.candidateGeometryChanged,
+              targetUsed: audit.targetUsed, executed: audit.executed,
+              dielectricOrEwaldConvergenceInferred: audit.dielectricOrEwaldConvergenceInferred,
+              thermodynamicLimitInferred: audit.thermodynamicLimitInferred,
+              claimBoundary: audit.claimBoundary,
             } : null;
           })(),
           decisionPhaseMap: (() => {
@@ -11645,6 +11676,63 @@ function buildChargeShapePreview(snapshot) {
     hardAdmissionChanged: false, executed: false };
 }
 
+function buildIonicPairConvergence(snapshot) {
+  if (!snapshot?.workbenchCandidates?.length) return null;
+  const candidates = snapshot.workbenchCandidates.filter((candidate) => candidate.ionicPairProfile?.available);
+  if (!candidates.length) return null;
+  const rankingAudit = rankIonicPairReachProfiles(candidates.map((candidate) => ({
+    candidateKey: candidate.candidateKey, profile: candidate.ionicPairProfile })));
+  const reaches = rankingAudit.reaches;
+  const rankRecords = new Map(rankingAudit.candidates.map((candidate) => [candidate.candidateKey, candidate.ranks]));
+  const points = candidates.map((candidate) => ({
+    candidateKey: candidate.candidateKey, candidateDigest: candidate.candidateDigest,
+    action: candidate.action, preview: candidate.preview,
+    samples: candidate.ionicPairProfile.samples.map((sample, index) => ({
+      reach: reaches[index], available: sample.available, score: sample.score, signedPairSum: sample.signedPairSum,
+      normalizedSignedPairSum: sample.normalizedSignedPairSum, pairCount: sample.pairCount,
+      distanceEvaluations: sample.distanceEvaluations, rank: rankRecords.get(candidate.candidateKey)?.[index] ?? null,
+    })),
+    scoreSpread: candidate.ionicPairProfile.scoreSpread,
+  })).sort((first, second) => first.candidateKey.localeCompare(second.candidateKey));
+  const activeCandidateKey = snapshot.policies.find((policy) => policy.id === "active")?.candidateKey;
+  const selectedCandidateKey = points.some((point) => point.candidateKey === snapshot.ionicConvergenceCandidateKey)
+    ? snapshot.ionicConvergenceCandidateKey : points.some((point) => point.candidateKey === activeCandidateKey)
+      ? activeCandidateKey : rankingAudit.winners.at(-1).candidateKey;
+  snapshot.ionicConvergenceCandidateKey = selectedCandidateKey;
+  const candidateRecords = new Map(candidates.map((candidate) => [candidate.candidateKey, candidate]));
+  const winners = rankingAudit.winners.map((winner) => {
+    const candidate = candidateRecords.get(winner.candidateKey);
+    return { ...winner, candidateDigest: candidate?.candidateDigest || null,
+      action: candidate?.action || "no pair within reach", score: winner.score ?? 0 };
+  });
+  return { points, reaches, winners, selectedCandidateKey,
+    winnerChanges: rankingAudit.adjacentWinnerChanges,
+    rankReversalCandidates: rankingAudit.rankReversalCandidates,
+    uniqueWinners: rankingAudit.uniqueWinners,
+    maximumScoreSpread: Math.max(...points.map((point) => point.scoreSpread)),
+    distanceEvaluations: candidates.reduce((sum, candidate) => sum + candidate.ionicPairProfile.distanceEvaluations, 0),
+    candidateSetDigest: snapshot.candidateDigest, candidateSetChanged: false,
+    hardAdmissionChanged: false, candidateGeometryChanged: false, targetUsed: false, executed: false,
+    fixedReachEnsemble: true, dielectricOrEwaldConvergenceInferred: false,
+    thermodynamicLimitInferred: false,
+    claimBoundary: "finite-cutoff sensitivity of a dimensionless supplied-charge 1/r ordering; not Ewald convergence, dielectric response, electrostatic energy, or a thermodynamic limit" };
+}
+
+function buildIonicPairConvergencePreview(snapshot) {
+  const audit = buildIonicPairConvergence(snapshot);
+  const point = audit?.points.find((candidate) => candidate.candidateKey === audit.selectedCandidateKey);
+  const candidate = snapshot?.workbenchCandidates?.find((entry) => entry.candidateKey === point?.candidateKey);
+  if (!audit || !point || !candidate) return null;
+  const scoreTerms = workbenchCandidateTerms(snapshot, candidate);
+  const score = scoreTerms.reduce((sum, term) => sum + term.contribution, 0);
+  return { id: "ionic-convergence", label: "ionic reach candidate", action: candidate.action,
+    candidateKey: candidate.candidateKey, candidateDigest: candidate.candidateDigest,
+    score, scoreTerms, scoreTermTotal: score, scoreDecompositionExact: true,
+    preview: candidate.preview, ionicReachScore: point.samples.at(-1).score,
+    candidateSetDigest: audit.candidateSetDigest, candidateSetChanged: false,
+    hardAdmissionChanged: false, executed: false };
+}
+
 function activePolicySpatialField() {
   if (pipelineStage !== 4 || iceAnchorTrace) return null;
   return buildPolicySpatialField(policyComparisonHistory[selectedPolicySnapshotIndex] || lastPolicyComparison);
@@ -11796,6 +11884,7 @@ function capturePolicyComparison(entries) {
         after: { dipoleMagnitude: entry.evaluation.chargeMoment.after.dipoleMagnitude,
           quadrupoleMagnitude: entry.evaluation.chargeMoment.after.quadrupoleMagnitude },
       } : { available: false, reason: entry.evaluation.chargeMoment.reason || "unavailable" },
+      ionicPairProfile: ionicPairReachProfileForFreshSites(entry.evaluation.fresh),
       freshSites: entry.evaluation.fresh.map((site) => ({ species: site.species, p: site.p.clone() })),
       fullSites: entry.evaluation.sites.map((site) => ({ species: site.species, p: site.p.clone() })),
       preview: { p: entry.candidate.position.clone(), rotation: entry.candidate.rotation.clone(), type: entry.candidate.type },
@@ -12482,6 +12571,23 @@ function ionicPairForFreshSites(rawFreshSites, { recordWork = true } = {}) {
     label: ionicPairLabel(), score: ionicPairMode === "none" ? 0 : result.score,
     reachAngstrom: ionicPairReach === "global" ? "global"
       : ionicPairReach * referenceSpacingA };
+}
+
+function ionicPairReachProfileForFreshSites(rawFreshSites) {
+  const freshSites = uniqueFreshSites(rawFreshSites);
+  if (!formalChargeTarget?.available || !freshSites.length) return { available: false,
+    reason: "complete supplied-charge candidate unavailable", samples: [] };
+  const currentSites = atoms.map((atom) => ({ position: atom.p.toArray(),
+    charge: suppliedFormalChargeForToken(atom.species) }));
+  const addedSites = freshSites.map((site) => ({ position: site.p.toArray(),
+    charge: suppliedFormalChargeForToken(site.species) }));
+  if (![...currentSites, ...addedSites].every((site) => Number.isFinite(site.charge))) {
+    return { available: false, reason: "candidate charge unresolved", samples: [] };
+  }
+  return incrementalIonicPairReachProfile(currentSites, addedSites, {
+    nearestNeighborScale: referenceSpacing,
+    reaches: [2, 4, 8, "global"],
+  });
 }
 
 function batchRetainsNovelSites(entries) {
@@ -18394,6 +18500,75 @@ function renderChargeShapePortrait(snapshot) {
   chargeShapePortraitState.textContent = `${portrait.points.length} exact candidate${portrait.points.length === 1 ? "" : "s"} · ${portrait.history.length} executed state${portrait.history.length === 1 ? "" : "s"} · ${portrait.candidateSetDigest} · target-free`;
 }
 
+function previewIonicConvergenceCandidate(snapshot, candidateKey) {
+  snapshot.ionicConvergenceCandidateKey = candidateKey;
+  selectedPolicyPreviewId = "ionic-convergence";
+  previewPolicyWinner(buildIonicPairConvergencePreview(snapshot), snapshot);
+}
+
+function renderIonicPairConvergence(snapshot) {
+  ionicConvergencePlot.replaceChildren(); ionicConvergenceDetail.replaceChildren();
+  const audit = buildIonicPairConvergence(snapshot);
+  if (!audit) {
+    ionicConvergenceState.textContent = formalChargeTarget?.available
+      ? "advance one charged frontier" : "complete supplied charge required";
+    return;
+  }
+  const namespace = "http://www.w3.org/2000/svg";
+  const make = (name, attributes = {}) => {
+    const element = document.createElementNS(namespace, name);
+    Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, String(value)));
+    return element;
+  };
+  const left = 29; const top = 9; const width = 202; const height = 112;
+  const px = (index) => left + width * index / Math.max(1, audit.reaches.length - 1);
+  const py = (score) => top + height * (1 - (Math.max(-1, Math.min(1, score)) + 1) / 2);
+  audit.reaches.forEach((reach, index) => {
+    ionicConvergencePlot.append(make("line", { x1: px(index), y1: top, x2: px(index), y2: top + height, class: "grid" }));
+    const label = make("text", { x: px(index), y: 141, class: "axis-label", "text-anchor": "middle" });
+    label.textContent = reach === "global" ? "finite global" : `${reach}dₙₙ`; ionicConvergencePlot.append(label);
+  });
+  [-1, -.5, 0, .5, 1].forEach((score) => ionicConvergencePlot.append(make("line", {
+    x1: left, y1: py(score), x2: left + width, y2: py(score), class: score === 0 ? "zero" : "grid" })));
+  audit.points.forEach((point) => {
+    const coordinates = point.samples.map((sample, index) => `${px(index)},${py(sample.score)}`).join(" ");
+    const selected = point.candidateKey === audit.selectedCandidateKey;
+    ionicConvergencePlot.append(make("polyline", { points: coordinates,
+      class: `candidate-line${selected ? " selected" : ""}` }));
+    const hit = make("polyline", { points: coordinates, class: "candidate-hit", tabindex: 0, role: "button",
+      "aria-label": `${point.action}; ionic-pair score across reaches ${point.samples.map((sample) => sample.score.toFixed(3)).join(", ")}` });
+    const title = make("title"); title.textContent = `${point.action} · ranks ${point.samples.map((sample) => sample.rank).join(" → ")} · score spread ${point.scoreSpread.toFixed(4)}`;
+    hit.append(title);
+    const select = () => previewIonicConvergenceCandidate(snapshot, point.candidateKey);
+    hit.addEventListener("click", select);
+    hit.addEventListener("keydown", (event) => {
+      if (["Enter", " "].includes(event.key)) { event.preventDefault(); select(); }
+    });
+    ionicConvergencePlot.append(hit);
+    point.samples.forEach((sample, index) => ionicConvergencePlot.append(make("circle", {
+      cx: px(index), cy: py(sample.score), r: selected ? 2.6 : 1.6,
+      class: `sample${selected ? " selected" : ""}` })));
+  });
+  audit.winners.forEach((winner, index) => {
+    if (winner.candidateKey) ionicConvergencePlot.append(make("path", {
+      d: `M${px(index)},${py(winner.score) - 5} l3,5 -6,0 z`, class: "winner" }));
+  });
+  const yLabel = make("text", { x: 7, y: top + height / 2, class: "axis-label", "text-anchor": "middle",
+    transform: `rotate(-90 7 ${top + height / 2})` });
+  yLabel.textContent = "favor lower signed pair sum →"; ionicConvergencePlot.append(yLabel);
+  const selected = audit.points.find((point) => point.candidateKey === audit.selectedCandidateKey);
+  if (selected) {
+    const heading = document.createElement("strong"); heading.textContent = selected.action;
+    const spread = document.createElement("b"); spread.textContent = `Δscore ${selected.scoreSpread.toFixed(4)}`;
+    const scores = document.createElement("span");
+    scores.textContent = selected.samples.map((sample) => `${sample.reach === "global" ? "global" : `${sample.reach}dₙₙ`} ${sample.available ? `${signed(sample.score)} (rank ${sample.rank}/${audit.points.length}, ${sample.pairCount} pairs)` : "no pair in reach"}`).join(" · ");
+    const stability = document.createElement("span");
+    stability.textContent = `${new Set(selected.samples.map((sample) => sample.rank).filter(Number.isFinite)).size <= 1 ? "rank stable where defined" : "rank reverses"} across the fixed reach ensemble · preview only`;
+    ionicConvergenceDetail.append(heading, spread, scores, stability);
+  }
+  ionicConvergenceState.textContent = `${audit.points.length} exact candidates · ${audit.uniqueWinners} reach winner${audit.uniqueWinners === 1 ? "" : "s"} · ${audit.rankReversalCandidates} rank-sensitive · ${audit.candidateSetDigest}`;
+}
+
 function renderPolicyWorkbenchState(snapshot, workbench = buildPolicyWorkbench(snapshot)) {
   if (!snapshot || !workbench) {
     policyWorkbenchState.textContent = "awaiting a frozen frontier";
@@ -18452,6 +18627,7 @@ function renderPolicyComparison() {
     renderPolicyOmissionAudit(null);
     renderPolicySpatialField(null);
     renderChargeShapePortrait(null);
+    renderIonicPairConvergence(null);
     return;
   }
   if (iceAnchorTrace) {
@@ -18469,6 +18645,7 @@ function renderPolicyComparison() {
     renderPolicyOmissionAudit(null);
     renderPolicySpatialField(null);
     renderChargeShapePortrait(null);
+    renderIonicPairConvergence(null);
     return;
   }
   if (!lastPolicyComparison) {
@@ -18486,6 +18663,7 @@ function renderPolicyComparison() {
     renderPolicyOmissionAudit(null);
     renderPolicySpatialField(null);
     renderChargeShapePortrait(null);
+    renderIonicPairConvergence(null);
     return;
   }
   const snapshot = policyComparisonHistory[selectedPolicySnapshotIndex] || lastPolicyComparison;
@@ -18494,6 +18672,8 @@ function renderPolicyComparison() {
   const omissionPreview = selectedPolicyPreviewId === "omission" ? buildPolicyOmissionPreview(snapshot) : null;
   const spatialPreview = buildPolicySpatialPreview(snapshot);
   const chargeShapePreview = selectedPolicyPreviewId === "charge-shape" ? buildChargeShapePreview(snapshot) : null;
+  const ionicConvergencePreview = selectedPolicyPreviewId === "ionic-convergence"
+    ? buildIonicPairConvergencePreview(snapshot) : null;
   policyComparisonState.textContent = `${snapshot.frontier} candidates · ${snapshot.admissible} admitted · ${snapshot.uniqueTopActions} winner${snapshot.uniqueTopActions === 1 ? "" : "s"}`
     + `${snapshot.referenceGuided ? " · target-aware replay" : " · target-blind frontier"}`;
   snapshot.policies.forEach((policy) => {
@@ -18540,6 +18720,17 @@ function renderPolicyComparison() {
     row.append(label, action, score); policyComparison.append(row);
     row.addEventListener("click", () => previewPolicyWinner(chargeShapePreview, snapshot));
   }
+  if (ionicConvergencePreview) {
+    const row = document.createElement("button"); row.type = "button";
+    row.classList.toggle("active", selectedPolicyPreviewId === "ionic-convergence");
+    row.setAttribute("aria-pressed", String(selectedPolicyPreviewId === "ionic-convergence"));
+    row.title = "Preview this exact finite-reach ionic-pair candidate; this never executes";
+    const label = document.createElement("small"); label.textContent = ionicConvergencePreview.label;
+    const action = document.createElement("strong"); action.textContent = ionicConvergencePreview.action;
+    const score = document.createElement("em"); score.textContent = ionicConvergencePreview.ionicReachScore.toFixed(3);
+    row.append(label, action, score); policyComparison.append(row);
+    row.addEventListener("click", () => previewPolicyWinner(ionicConvergencePreview, snapshot));
+  }
   if (paretoPreview) {
     const row = document.createElement("button"); row.type = "button";
     row.classList.toggle("active", selectedPolicyPreviewId === "pareto");
@@ -18565,6 +18756,7 @@ function renderPolicyComparison() {
   const selectedScorePolicy = selectedPolicyPreviewId === "workbench" ? workbench
     : selectedPolicyPreviewId === "spatial" && spatialPreview ? spatialPreview
     : selectedPolicyPreviewId === "charge-shape" && chargeShapePreview ? chargeShapePreview
+    : selectedPolicyPreviewId === "ionic-convergence" && ionicConvergencePreview ? ionicConvergencePreview
     : selectedPolicyPreviewId === "pareto" && paretoPreview ? paretoPreview
     : selectedPolicyPreviewId === "omission" && omissionPreview ? omissionPreview
     : snapshot.policies.find((policy) => policy.id === selectedPolicyPreviewId)
@@ -18575,6 +18767,7 @@ function renderPolicyComparison() {
   renderPolicyOmissionAudit(snapshot);
   renderPolicySpatialField(snapshot);
   renderChargeShapePortrait(snapshot);
+  renderIonicPairConvergence(snapshot);
   const sensitive = policyComparisonHistory.filter((entry) => entry.uniqueTopActions > 1).length;
   const meanWinners = policyComparisonHistory.reduce((sum, entry) => sum + entry.uniqueTopActions, 0)
     / Math.max(1, policyComparisonHistory.length);

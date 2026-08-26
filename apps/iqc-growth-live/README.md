@@ -4782,3 +4782,15 @@ remain unchanged. This is a finite Madelung-like geometric rank, not an
 electrostatic energy: it supplies no Coulomb prefactor, dielectric response,
 periodic images, Ewald sum, neutralizing background, polarization, charge
 transfer, electronic structure, potential, force, rate, or physical time.
+
+Build 159 adds an interactive finite-reach convergence audit for that ionic
+geometry. Before execution, every hard-admitted candidate is re-evaluated on
+the identical frozen frontier at 2, 4, and 8 nearest-neighbor distances and at
+the global finite crop. A clickable score-versus-reach plot exposes the winner
+at each reach, every candidate rank, rank reversals, score spread, pair counts,
+and the exact distance-evaluation cost; selecting a curve previews its existing
+proper-SE(3) pose without committing it. The receipt retains the reach ensemble,
+candidate-set digest, winner changes, rank-sensitive candidate count, selected
+curve, and all nonmutation gates. This diagnoses finite-cutoff sensitivity—it
+does not establish Ewald convergence, dielectric screening, electrostatic
+energy, an infinite periodic sum, or a thermodynamic limit.
