@@ -19,6 +19,14 @@ the GCTS anatomy view explains covers, oriented ports, markings, search, and
 promotion; and the claim ledger keeps proved, measured, and open results visibly
 separate. Its numbers are frozen benchmark results, not recomputed browser demos.
 
+Build 245 carries the same reported crystallographic displacement evidence into
+the reciprocal-space inspector. A new **reported Ueq damping** view reduces
+Cartesian Uiso/Uij to the intrinsic-dimensional isotropic equivalent and
+attenuates only coherent Debye pair terms. Self scattering remains explicit;
+missing tensors use zero attenuation, and diffuse redistribution, form factors,
+instrument response, refinement, temperature inference, and dynamics remain
+outside the claim.
+
 Build 244 adds a **reported crystallographic displacement envelope** to the
 interstitial laboratory. Point, covalent-proxy, and sample-fitted contact
 models can now be inspected with 1σ, 2σ, or 3σ directional support

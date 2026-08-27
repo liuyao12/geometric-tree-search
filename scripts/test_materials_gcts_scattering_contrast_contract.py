@@ -37,7 +37,8 @@ def test_receipt_and_ledger_preserve_nonclaims_and_history_basis():
     assert "qDependentAtomicFormFactorsUsed: false" in APP
     assert "neutronScatteringLengthsUsed: false" in APP
     assert "occupancyWeightedScatteringUsed: false" in APP
-    assert "DebyeWallerDampingUsed: false" in APP
+    assert 'DebyeWallerDampingUsed: scatteringDisplacementMode === "reported"' in APP
+    assert "diffuseRedistributionIncluded: false" in APP
     assert "instrumentResponseUsed: false" in APP
     assert "usedAsGrowthInput: false" in APP
     assert "structural-leap comparison remains unit-weight" in APP
@@ -45,9 +46,9 @@ def test_receipt_and_ledger_preserve_nonclaims_and_history_basis():
 
 
 def test_build_169_is_retained_in_current_release():
-    assert 'buildId: "20260827-243"' in APP
-    assert 'app.js?v=20260827-243' in HTML
-    assert 'structure-observables.js?v=20260826-5' in APP
+    assert 'buildId: "20260827-245"' in APP
+    assert 'app.js?v=20260827-245' in HTML
+    assert 'structure-observables.js?v=20260827-6' in APP
     assert 'evidence-atlas.js?v=20260827-20' in HTML
     assert "chemical sublattice order" in ATLAS
     assert "Build 169" in README

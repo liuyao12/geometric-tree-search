@@ -13,6 +13,15 @@ amplification is `b > 1`, a level-`L` accepted macro placement represents
 approximately `b^L` atoms.  Materializing or exporting `N` atomic coordinates
 still has an unavoidable `O(N)` cost and must be reported separately.
 
+### Reported-displacement reciprocal-space view (Build 245)
+
+The finite-observation powder inspector can now apply coherent pair attenuation
+from the intrinsic-dimensional isotropic equivalent of reported Cartesian
+Uiso/Uij tensors. The mean-position curve remains available beside it. The
+self term is retained, unknown tensors use zero attenuation, and missing
+diffuse redistribution is stated explicitly; this is not a refinement,
+temperature inference, phonon model, force field, or dynamical trajectory.
+
 ### Reported crystallographic displacement envelopes (Build 244)
 
 The interstitial network now optionally subtracts directional

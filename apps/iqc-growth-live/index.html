@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260827-243">
+  <link rel="stylesheet" href="./style.css?v=20260827-245">
   <script type="importmap">
     {
       "imports": {
@@ -1665,6 +1665,10 @@
                 <select id="scatteringContrastSelect" aria-label="Reciprocal-space scattering contrast" hidden>
                   <option value="unit">all atoms · unit number density</option>
                 </select>
+                <select id="scatteringDisplacementSelect" aria-label="Crystallographic displacement treatment" hidden>
+                  <option value="mean">mean positions</option>
+                  <option value="reported">reported Ueq damping</option>
+                </select>
                 <select id="orientationalOrderSelect" aria-label="Orientational-order harmonic" hidden>
                   <option value="4">ℓ = 4 · cubic / square-sensitive</option>
                   <option value="6" selected>ℓ = 6 · close-packed / hexatic</option>
@@ -1916,7 +1920,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260827-243"></script>
+  <script type="module" src="./app.js?v=20260827-245"></script>
   <script type="module" src="./evidence-atlas.js?v=20260827-20"></script>
 </body>
 </html>

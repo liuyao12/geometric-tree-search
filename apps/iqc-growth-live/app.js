@@ -51,9 +51,10 @@ import {
 } from "./ice-vi-anchor-trace.js?v=20260824-1";
 import { discoverIrregularCover } from "./irregular-cover.js?v=20260824-1";
 import { generateAmorphousMixture } from "./amorphous-glass.js?v=20260824-1";
-import { compareStructureFactors, jensenShannonDistance, localOrientationalOrder, orientationalOrderDistribution,
-  powderStructureFactor, summarizeStructureFactor, weightedPowderStructureFactor }
-  from "./structure-observables.js?v=20260826-5";
+import { compareStructureFactors, displacementDampedWeightedPowderStructureFactor, jensenShannonDistance,
+  localOrientationalOrder, orientationalOrderDistribution, powderStructureFactor, summarizeStructureFactor,
+  weightedPowderStructureFactor }
+  from "./structure-observables.js?v=20260827-6";
 import { compositionBalanceDelta, compositionDrift, learnCompositionTarget } from "./composition-balance.js?v=20260824-1";
 import { consumeFeedstock, evaluateFeedstockDemand, feedstockReservoirSnapshot,
   initializeFeedstockReservoir } from "./feedstock-reservoir.js?v=20260827-2";
@@ -652,6 +653,7 @@ const rdfStatus = $("rdfStatus");
 const rdfLegend = $("rdfLegend");
 const rdfPairSelect = $("rdfPairSelect");
 const scatteringContrastSelect = $("scatteringContrastSelect");
+const scatteringDisplacementSelect = $("scatteringDisplacementSelect");
 const structureObservableSelect = $("structureObservableSelect");
 const orientationalOrderSelect = $("orientationalOrderSelect");
 const orientationalOrderMapButton = $("orientationalOrderMapButton");
@@ -1624,6 +1626,7 @@ let microstructureProjection = "xy";
 let selectedGalleryCluster = 0;
 let rdfPairSelection = "all";
 let scatteringContrastMode = "unit";
+let scatteringDisplacementMode = "mean";
 let structureObservableSelection = "rdf";
 let coloredDistanceEnvelopes = null;
 let fittedContactEnvelope = null;
@@ -4677,6 +4680,21 @@ function intrinsicPlaneNormal(source) {
   return new THREE.Vector3().crossVectors(axis, second.normalize()).normalize();
 }
 
+function atomMeanSquareDisplacementNormalized(atom, dimension, planeNormal, spacingAngstrom) {
+  const tensor = atom.uAnisoCartesianA2?.map((row) => row.slice())
+    || (Number.isFinite(atom.uIsoA2) ? [[atom.uIsoA2, 0, 0], [0, atom.uIsoA2, 0], [0, 0, atom.uIsoA2]] : null);
+  if (!tensor || !(Number.isFinite(spacingAngstrom) && spacingAngstrom > 0)) return null;
+  const trace = tensor[0][0] + tensor[1][1] + tensor[2][2];
+  let variance = trace / 3;
+  if (dimension === 2 && planeNormal) {
+    const normal = planeNormal.clone().normalize().toArray();
+    const normalVariance = normal.reduce((sum, first, row) => sum + first
+      * normal.reduce((inner, second, column) => inner + tensor[row][column] * second, 0), 0);
+    variance = (trace - normalVariance) / 2;
+  }
+  return Math.max(0, variance) / (spacingAngstrom * spacingAngstrom);
+}
+
 function calculateStructuralStats(source, spacing, periodic = false,
   intrinsicDimension = currentMaterial().intrinsicDimension === 2 ? 2 : 3, requestedMaximumRadius = null) {
   const rdf = new Array(RDF_BINS).fill(0);
@@ -4686,7 +4704,7 @@ function calculateStructuralStats(source, spacing, periodic = false,
   const coordination = new Array(13).fill(0);
   if (!source.length) return { rdf, rdfByPair: {}, dimension: intrinsicDimension,
     maximumRadius: requestedMaximumRadius || RDF_MAX_RADIUS, edgeCorrection: periodic ? "periodic minimum image" : "finite-window translation",
-    pairDistances, scatteringPairs, species: [], coordination, meanCoordination: 0, count: 0, neighborCounts: [], neighborLists: [],
+    pairDistances, scatteringPairs, species: [], meanSquareDisplacements: [], coordination, meanCoordination: 0, count: 0, neighborCounts: [], neighborLists: [],
     neighborVectors: [], planeNormal: intrinsicDimension === 2 ? [0, 0, 1] : null,
     orientationalOrder: {}, centrosymmetry: {} };
 
@@ -4704,6 +4722,8 @@ function calculateStructuralStats(source, spacing, periodic = false,
   const activeAxes = [0, 1, 2].sort((first, second) => paddedSize.getComponent(second) - paddedSize.getComponent(first))
     .slice(0, intrinsicDimension);
   const planeNormal = intrinsicDimension === 2 ? intrinsicPlaneNormal(source) : null;
+  const meanSquareDisplacements = source.map((atom) => atomMeanSquareDisplacementNormalized(atom,
+    intrinsicDimension, planeNormal, referenceSpacingA));
   const cell = periodic ? currentCell() : null;
   const normalizedCellLengths = cell?.map((vector) => vector.length() / referenceSpacingA) || [];
   const naturalMaximumRadius = periodic && normalizedCellLengths.length
@@ -4787,7 +4807,7 @@ function calculateStructuralStats(source, spacing, periodic = false,
   const meanCoordination = neighbors.reduce((sum, value) => sum + value, 0) / source.length;
   return { rdf, rdfByPair, dimension: intrinsicDimension, maximumRadius,
     edgeCorrection: periodic ? "periodic minimum image" : "finite-window translation",
-    pairDistances, scatteringPairs, species: source.map((atom) => atom.species),
+    pairDistances, scatteringPairs, species: source.map((atom) => atom.species), meanSquareDisplacements,
     coordination, meanCoordination, count: source.length, neighborCounts: neighbors, neighborLists,
     neighborVectors, planeNormal: planeNormal?.toArray() || null, orientationalOrder: {}, centrosymmetry: {} };
 }
@@ -4830,23 +4850,31 @@ function scatteringWeights(stats, mode = scatteringContrastMode) {
 }
 
 function ensureWeightedStructureFactor(stats, mode = scatteringContrastMode) {
-  if (mode === "unit") return ensureStructureFactor(stats);
+  if (mode === "unit" && scatteringDisplacementMode === "mean") return ensureStructureFactor(stats);
   stats.weightedStructureFactors ||= {};
-  if (stats.weightedStructureFactors[mode]) return stats.weightedStructureFactors[mode];
+  const cacheKey = `${mode}|${scatteringDisplacementMode}`;
+  if (stats.weightedStructureFactors[cacheKey]) return stats.weightedStructureFactors[cacheKey];
   const weights = scatteringWeights(stats, mode);
   const selfWeightSquares = weights.reduce((sum, value) => sum + value * value, 0);
   if (selfWeightSquares <= 1e-12) return null;
   const pairTerms = (stats.scatteringPairs || []).map((pair) => ({
     distance: pair.distance,
     weightProduct: weights[pair.first] * weights[pair.second],
+    meanSquareSum: (stats.meanSquareDisplacements?.[pair.first] || 0)
+      + (stats.meanSquareDisplacements?.[pair.second] || 0),
   })).filter((term) => Math.abs(term.weightProduct) > 1e-16);
-  const result = weightedPowderStructureFactor(pairTerms, selfWeightSquares, stats.dimension);
+  const result = scatteringDisplacementMode === "reported"
+    ? displacementDampedWeightedPowderStructureFactor(pairTerms, selfWeightSquares, stats.dimension)
+    : weightedPowderStructureFactor(pairTerms, selfWeightSquares, stats.dimension);
   result.summary = summarizeStructureFactor(result);
   result.mode = mode;
   result.channelLabel = scatteringChannelLabel(mode);
   result.nonzeroWeightedSites = weights.filter((value) => Math.abs(value) > 1e-12).length;
   result.signedWeights = weights.some((value) => value < 0);
-  stats.weightedStructureFactors[mode] = result;
+  result.displacementMode = scatteringDisplacementMode;
+  result.reportedDisplacementSites = (stats.meanSquareDisplacements || []).filter(Number.isFinite).length;
+  result.unknownDisplacementSitesUseZeroAttenuation = true;
+  stats.weightedStructureFactors[cacheKey] = result;
   return result;
 }
 
@@ -5577,6 +5605,7 @@ function renderTrainingStats() {
   const focusedHoldout = focusedProcessed.length - focusedFit;
   rdfPairSelect.hidden = true;
   scatteringContrastSelect.hidden = true;
+  scatteringDisplacementSelect.hidden = true;
   orientationalOrderSelect.hidden = true;
   orientationalOrderMapButton.hidden = true;
   centrosymmetryNeighborSelect.hidden = true;
@@ -5649,6 +5678,7 @@ function renderStructureStats() {
   structureObservableSelect.value = structureObservableSelection;
   rdfPairSelect.hidden = structureObservableSelection !== "rdf";
   scatteringContrastSelect.hidden = structureObservableSelection !== "sq";
+  scatteringDisplacementSelect.hidden = structureObservableSelection !== "sq";
   orientationalOrderSelect.hidden = structureObservableSelection !== "order";
   orientationalOrderMapButton.hidden = structureObservableSelection !== "order";
   centrosymmetryNeighborSelect.hidden = structureObservableSelection !== "centrosymmetry";
@@ -5663,6 +5693,10 @@ function renderStructureStats() {
   centrosymmetryMapButton.title = "Maps normalized local inversion asymmetry. Mint is centrosymmetric; amber-to-coral highlights distorted environments. This is geometric evidence, not a defect identity or energy.";
   syncRdfPairOptions();
   syncScatteringContrastOptions();
+  const reportedDisplacementCount = (referenceStructuralStats.meanSquareDisplacements || []).filter(Number.isFinite).length;
+  scatteringDisplacementSelect.querySelector('option[value="reported"]').disabled = !reportedDisplacementCount;
+  if (!reportedDisplacementCount) scatteringDisplacementMode = "mean";
+  scatteringDisplacementSelect.value = scatteringDisplacementMode;
   const dimension = referenceStructuralStats.dimension;
   coordEyebrow.textContent = "first-shell coordination";
   coordTitle.innerHTML = "P(z), r<sub>c</sub> = 1.32a";
@@ -5775,7 +5809,7 @@ function renderStructureStats() {
   } else if (structureObservableSelection === "sq") {
     const knownSq = ensureWeightedStructureFactor(referenceStructuralStats, scatteringContrastMode);
     const liveSq = live.count > 1 ? ensureWeightedStructureFactor(live, scatteringContrastMode) : null;
-    rdfEyebrow.textContent = `${dimension}D finite-observation powder average`;
+    rdfEyebrow.textContent = `${dimension}D finite-observation powder average${scatteringDisplacementMode === "reported" ? " · reported Ueq" : ""}`;
     rdfTitle.textContent = scatteringContrastMode === "unit" ? "geometric S(q) · unit number density"
       : scatteringContrastMode === "electron" ? "weighted Iᶻ(q) / ΣZ² · low-q proxy"
         : scatteringContrastMode === "chemical" ? "chemical IΔZ(q) / ΣΔZ² · centered contrast"
@@ -5783,14 +5817,17 @@ function renderStructureStats() {
     rdfChart.setAttribute("aria-label", `${scatteringChannelLabel()} finite-observation powder scattering for known positions and live reconstruction`);
     const summary = knownSq.summary;
     const liveSummary = liveSq?.summary || null;
-    rdfStatus.textContent = `peak qa ${summary.peakQ.toFixed(1)} · S ${summary.peakHeight.toFixed(1)}${liveSummary ? ` → ${liveSummary.peakHeight.toFixed(1)}` : ""}`;
+    rdfStatus.textContent = `peak qa ${summary.peakQ.toFixed(1)} · S ${summary.peakHeight.toFixed(1)}${liveSummary ? ` → ${liveSummary.peakHeight.toFixed(1)}` : ""}${scatteringDisplacementMode === "reported" ? ` · Ueq ${knownSq.reportedDisplacementSites}/${referenceStructuralStats.count}` : ""}`;
     rdfStatus.title = scatteringContrastMode === "electron"
       ? "Constant atomic-number weights equal the neutral-atom forward electron count only as a low-q proxy. They are not q-dependent X-ray form factors or calibrated intensity."
       : scatteringContrastMode === "chemical"
         ? "Signed Z−mean(Z) weights suppress the number-density channel and expose composition contrast. This is not a standard binary Bhatia–Thornton factor for arbitrary multicomponent chemistry."
         : scatteringContrastMode.startsWith("species:")
           ? "Unit scattering from only the selected chemistry-token sublattice; cross-species correlations are omitted."
-          : "Debye-style finite-window powder average of mean positions with unit atom weights.";
+          : scatteringDisplacementMode === "reported"
+            ? "Reported Cartesian Uiso/Uij tensors are reduced to the intrinsic-dimensional Ueq and attenuate coherent pair terms. Self scattering stays at one; missing tensors use zero attenuation, and diffuse redistribution is omitted."
+            : "Debye-style finite-window powder average of mean positions with unit atom weights.";
+    if (scatteringDisplacementMode === "reported") rdfStatus.title += " Coherent cross terms additionally use intrinsic-dimensional Ueq from reported Uiso/Uij tensors; missing tensors use zero attenuation. Diffuse redistribution and instrument response are omitted.";
     drawChartFrame(rdfChart, "q a", "S");
     const maximum = Math.max(1, ...knownSq.values, ...(liveSq?.values || [])) * 1.08;
     const unityY = 96 - Math.min(1, 1 / maximum) * 84;
@@ -9545,6 +9582,7 @@ async function buildExperimentReceipt() {
     || referenceSq;
   const displayedScatteringContrastMode = displayedSq === referenceSq ? "unit" : requestedScatteringContrastMode;
   const displayedSqSha256 = await receiptSha256(JSON.stringify({ mode: displayedScatteringContrastMode,
+    displacementMode: scatteringDisplacementMode,
     q: displayedSq.q.map((value) => receiptRound(value, 10)),
     values: displayedSq.values.map((value) => receiptRound(value, 10)) }));
   const referenceOrder = ensureOrientationalOrder(referenceStructuralStats);
@@ -9715,7 +9753,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-243",
+      buildId: "20260827-245",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -10278,7 +10316,14 @@ async function buildExperimentReceipt() {
           neutronScatteringLengthsUsed: false,
           occupancyWeightedScatteringUsed: false,
           anomalousDispersionUsed: false,
-          DebyeWallerDampingUsed: false,
+          DebyeWallerDampingUsed: scatteringDisplacementMode === "reported",
+          displacementMode: scatteringDisplacementMode,
+          reportedDisplacementSites: displayedSq.reportedDisplacementSites || 0,
+          missingDisplacementTensorsUseZeroAttenuation: true,
+          displacementReduction: scatteringDisplacementMode === "reported"
+            ? "intrinsic-dimensional isotropic-equivalent Ueq from reported Cartesian Uiso/Uij" : null,
+          coherentPairAttenuationOnly: scatteringDisplacementMode === "reported",
+          diffuseRedistributionIncluded: false,
           instrumentResponseUsed: false,
           usedAsGrowthInput: false,
         },
@@ -11913,7 +11958,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-243" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-245" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -28352,6 +28397,10 @@ rdfPairSelect.addEventListener("change", () => {
 });
 scatteringContrastSelect.addEventListener("change", () => {
   scatteringContrastMode = scatteringContrastSelect.value;
+  renderStructureStats();
+});
+scatteringDisplacementSelect.addEventListener("change", () => {
+  scatteringDisplacementMode = scatteringDisplacementSelect.value === "reported" ? "reported" : "mean";
   renderStructureStats();
 });
 structureObservableSelect.addEventListener("change", () => {

@@ -91,6 +91,39 @@ export function weightedPowderStructureFactor(pairTerms, selfWeightSquares, dime
   return { q, values, dimension, qMin, qMax, selfWeightSquares };
 }
 
+/**
+ * Coherent finite-observation powder term with an isotropic-equivalent
+ * crystallographic displacement attenuation on each i<j cross term.
+ * `meanSquareSum` is (Ueq_i + Ueq_j) / a^2 in the observation dimension.
+ * Self scattering remains one; diffuse intensity displaced from the coherent
+ * curve is not modeled. Missing tensors must be supplied explicitly as zero.
+ */
+export function displacementDampedWeightedPowderStructureFactor(pairTerms, selfWeightSquares,
+  dimension = 3, options = {}) {
+  if (!Array.isArray(pairTerms) || pairTerms.some((term) => !Number.isFinite(term?.distance)
+      || !Number.isFinite(term?.weightProduct) || !Number.isFinite(term?.meanSquareSum)
+      || term.meanSquareSum < 0)) {
+    throw new Error("displacement-damped powder S(q) requires finite pair geometry, weights, and Ueq sums");
+  }
+  if (!(Number.isFinite(selfWeightSquares) && selfWeightSquares > 0)) {
+    throw new Error("displacement-damped powder S(q) requires positive total squared self weight");
+  }
+  if (dimension !== 2 && dimension !== 3) throw new Error("displacement-damped powder S(q) supports intrinsic dimension 2 or 3");
+  const qMin = options.qMin ?? DEFAULT_Q_MIN;
+  const qMax = options.qMax ?? DEFAULT_Q_MAX;
+  const bins = options.bins ?? DEFAULT_Q_BINS;
+  if (!(qMax > qMin) || bins < 2) throw new Error("displacement-damped powder S(q) requires a finite q interval");
+  const q = Array.from({ length: bins }, (_, index) => qMin + index / (bins - 1) * (qMax - qMin));
+  const values = q.map((waveNumber) => {
+    const pairSum = pairTerms.reduce((sum, term) => sum + term.weightProduct
+      * Math.exp(-.5 * waveNumber * waveNumber * term.meanSquareSum)
+      * powderKernel(waveNumber * term.distance, dimension), 0);
+    return Math.max(0, 1 + 2 * pairSum / selfWeightSquares);
+  });
+  return { q, values, dimension, qMin, qMax, selfWeightSquares,
+    coherentDisplacementAttenuation: true, diffuseRedistributionIncluded: false };
+}
+
 export function summarizeStructureFactor(structureFactor) {
   const { q, values } = structureFactor;
   if (!values.length) return { peakQ: 0, peakHeight: 0, peakProminence: 0, highQMean: 0 };
