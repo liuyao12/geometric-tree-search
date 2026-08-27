@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Exact scalar-2 mixed substitution screen for connected three-copy A2 metatiles."""
+"""Exact scalar mixed-substitution screen for connected three-copy A2 metatiles."""
 
 from __future__ import annotations
 
@@ -10,7 +10,7 @@ import json
 import time
 from pathlib import Path
 
-from z3 import Bool, PbEq, SolverFor, sat, unsat
+from z3 import Bool, Not, Or, PbEq, SolverFor, is_true, sat, unsat
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -74,43 +74,72 @@ def enumerate_three_copy_metatiles(record):
 def placement_graph(target, tile_orientations):
     placements = SUBSTITUTION.candidate_placements(target, tile_orientations)
     cell_sets = [set(placement["cells"]) for placement in placements]
-    face_sets = []
+    cell_index = {cell: index for index, cell in enumerate(sorted(target))}
+    cell_masks = [
+        sum(1 << cell_index[cell] for cell in cells)
+        for cells in cell_sets
+    ]
     by_cell = {cell: [] for cell in target}
     for index, cells in enumerate(cell_sets):
-        faces = set()
         for q, r, k, kind in cells:
-            faces.update(TWO.cell_faces({"q": q, "r": r, "k": k, "kind": kind}))
             by_cell[(q, r, k, kind)].append(index)
-        face_sets.append(faces)
     adjacency = [set() for _ in placements]
-    for left in range(len(placements)):
-        for right in range(left + 1, len(placements)):
-            if (
-                cell_sets[left].isdisjoint(cell_sets[right])
-                and face_sets[left].intersection(face_sets[right])
-            ):
-                adjacency[left].add(right)
-                adjacency[right].add(left)
+    candidate_pairs = set()
+    for left, cells in enumerate(cell_sets):
+        boundary = set()
+        for q, r, k, kind in cells:
+            if kind == "u":
+                neighbors = (
+                    (q, r, k - 1, "u"), (q, r, k + 1, "u"),
+                    (q, r, k, "d"), (q - 1, r, k, "d"),
+                    (q, r - 1, k, "d"),
+                )
+            else:
+                neighbors = (
+                    (q, r, k - 1, "d"), (q, r, k + 1, "d"),
+                    (q, r, k, "u"), (q + 1, r, k, "u"),
+                    (q, r + 1, k, "u"),
+                )
+            boundary.update(neighbor for neighbor in neighbors if neighbor not in cells)
+        for neighbor in boundary:
+            for right in by_cell.get(neighbor, []):
+                if right <= left:
+                    continue
+                candidate_pairs.add((left, right))
+                if cell_masks[left] & cell_masks[right] == 0:
+                    adjacency[left].add(right)
+                    adjacency[right].add(left)
+    graph_sha256 = hashlib.sha256(json.dumps({
+        "placements": [
+            [placement["orientation_index"], placement["translation"]]
+            for placement in placements
+        ],
+        "adjacency": [sorted(neighbors) for neighbors in adjacency],
+    }, separators=(",", ":")).encode()).hexdigest()
     return {
         "placements": placements,
         "cell_sets": cell_sets,
+        "cell_index": cell_index,
+        "cell_masks": cell_masks,
         "adjacency": adjacency,
         "by_cell": by_cell,
+        "adjacency_candidate_pairs": len(candidate_pairs),
+        "sha256": graph_sha256,
     }
 
 
 def connected_triple_covering(graph, target_cell):
-    cell_sets = graph["cell_sets"]
+    cell_masks = graph["cell_masks"]
     adjacency = graph["adjacency"]
     checks = 0
     for first in graph["by_cell"].get(target_cell, []):
         for second in adjacency[first]:
-            pair_cells = cell_sets[first].union(cell_sets[second])
+            pair_mask = cell_masks[first] | cell_masks[second]
             for third in adjacency[first].union(adjacency[second]):
                 checks += 1
                 if third in (first, second):
                     continue
-                if pair_cells.isdisjoint(cell_sets[third]):
+                if pair_mask & cell_masks[third] == 0:
                     return (first, second, third), checks
     return None, checks
 
@@ -125,16 +154,22 @@ def first_uncovered_by_three_cluster(target, graph):
     return None, checks
 
 
-def replay_local_obstruction(target, tile_orientations, target_cell):
-    graph = placement_graph(target, tile_orientations)
+def replay_local_obstruction(target, tile_orientations, target_cell, graph=None):
+    reused_graph = graph is not None
+    graph = graph or placement_graph(target, tile_orientations)
     triple, checks = connected_triple_covering(graph, target_cell)
     return {
         "verified": triple is None,
-        "method": "independent_contained_monotile_placement_graph",
+        "method": (
+            "hashed_exhaustive_contained_monotile_graph_replay"
+            if reused_graph else "independent_contained_monotile_placement_graph"
+        ),
         "uncovered_cell": list(target_cell),
         "monotile_placements": len(graph["placements"]),
         "connected_triple_checks": checks,
         "unexpected_triple": list(triple) if triple is not None else None,
+        "placement_graph_sha256": graph["sha256"],
+        "adjacency_candidate_pairs": graph["adjacency_candidate_pairs"],
     }
 
 
@@ -142,21 +177,150 @@ def all_connected_triple_placements(graph):
     unions = {}
     cell_sets = graph["cell_sets"]
     adjacency = graph["adjacency"]
+    cell_masks = graph["cell_masks"]
     for first in range(len(cell_sets)):
         for second in adjacency[first]:
             if second <= first:
                 continue
-            pair_cells = cell_sets[first].union(cell_sets[second])
+            pair_mask = cell_masks[first] | cell_masks[second]
             for third in adjacency[first].union(adjacency[second]):
-                if third in (first, second) or not pair_cells.isdisjoint(cell_sets[third]):
+                if third in (first, second) or pair_mask & cell_masks[third]:
                     continue
                 indices = tuple(sorted((first, second, third)))
-                cells = frozenset(pair_cells.union(cell_sets[third]))
+                cells = frozenset(
+                    cell_sets[first].union(cell_sets[second], cell_sets[third])
+                )
                 unions.setdefault(cells, indices)
     return [
         {"cells": cells, "component_placement_indices": list(indices)}
         for cells, indices in unions.items()
     ]
+
+
+def partition_selected_placements(graph, selected):
+    selected_set = set(selected)
+    adjacency = graph["adjacency"]
+    triples = set()
+    for first in selected:
+        for second in adjacency[first].intersection(selected_set):
+            if second <= first:
+                continue
+            for third in (
+                adjacency[first].union(adjacency[second]).intersection(selected_set)
+            ):
+                if third in (first, second):
+                    continue
+                triples.add(tuple(sorted((first, second, third))))
+    by_placement = {index: [] for index in selected}
+    for triple in sorted(triples):
+        for index in triple:
+            by_placement[index].append(triple)
+    failed = set()
+
+    def visit(remaining):
+        if not remaining:
+            return []
+        signature = frozenset(remaining)
+        if signature in failed:
+            return None
+        choices = [
+            (sum(all(member in remaining for member in triple) for triple in by_placement[index]), index)
+            for index in remaining
+        ]
+        count, pivot = min(choices)
+        if count == 0:
+            failed.add(signature)
+            return None
+        for triple in by_placement[pivot]:
+            if not all(member in remaining for member in triple):
+                continue
+            suffix = visit(remaining.difference(triple))
+            if suffix is not None:
+                return [triple, *suffix]
+        failed.add(signature)
+        return None
+
+    solution = visit(set(selected))
+    return {
+        "result": "sat" if solution is not None else "unsat",
+        "solution": solution,
+        "connected_triples": len(triples),
+        "failed_states": len(failed),
+    }
+
+
+def compact_three_cluster_exact_cover(target, graph, timeout_ms, max_models=256):
+    started = time.monotonic()
+    variables = [Bool(f"compact_monotile_{index}") for index in range(len(graph["placements"]))]
+    incidence = {cell: [] for cell in target}
+    for index, placement in enumerate(graph["placements"]):
+        for cell in placement["cells"]:
+            incidence[cell].append(index)
+    solver = SolverFor("QF_FD")
+    for cell in sorted(target):
+        solver.add(PbEq([(variables[index], 1) for index in incidence[cell]], 1))
+    rejected_models = 0
+    partition_attempts = []
+    while rejected_models < max_models:
+        remaining_ms = timeout_ms - round((time.monotonic() - started) * 1000)
+        if remaining_ms <= 0:
+            return {
+                "result": "unknown",
+                "stopped_by": "time_limit",
+                "monotile_placements": len(variables),
+                "models_rejected": rejected_models,
+                "partition_attempts": partition_attempts,
+            }
+        solver.set(timeout=remaining_ms)
+        result = solver.check()
+        if result == unsat:
+            return {
+                "result": "unsat",
+                "monotile_placements": len(variables),
+                "models_rejected": rejected_models,
+                "partition_attempts": partition_attempts,
+            }
+        if result != sat:
+            return {
+                "result": "unknown",
+                "stopped_by": "solver_timeout",
+                "monotile_placements": len(variables),
+                "models_rejected": rejected_models,
+                "partition_attempts": partition_attempts,
+            }
+        model = solver.model()
+        selected = [
+            index for index, variable in enumerate(variables)
+            if is_true(model.eval(variable))
+        ]
+        partition = partition_selected_placements(graph, selected)
+        partition_attempts.append({
+            "selected_monotiles": len(selected),
+            "connected_triples": partition["connected_triples"],
+            "failed_states": partition["failed_states"],
+            "result": partition["result"],
+        })
+        if partition["result"] == "sat":
+            return {
+                "result": "sat",
+                "monotile_placements": len(variables),
+                "models_rejected": rejected_models,
+                "selected": selected,
+                "solution": partition["solution"],
+                "partition_attempts": partition_attempts,
+            }
+        solver.add(Or([
+            Not(variable) if index in selected else variable
+            for index, variable in enumerate(variables)
+        ]))
+        rejected_models += 1
+    return {
+        "result": "unknown",
+        "stopped_by": "model_limit",
+        "monotile_placements": len(variables),
+        "models_rejected": rejected_models,
+        "partition_attempts": partition_attempts,
+    }
 
 
 def identify_metatile_placement(metatile_cells, placed_cells):
@@ -273,7 +437,10 @@ def replay_unsat_with_independent_algorithm_x(target, placements, timeout_ms):
     }
 
 
-def screen_candidate(record, timeout_ms=30000, replay_timeout_ms=300000, progress_every=250):
+def screen_candidate(
+    record, timeout_ms=30000, replay_timeout_ms=300000, progress_every=250,
+    scale=2, seed_report=None, checkpoint_every=0, checkpoint_callback=None,
+):
     started = time.monotonic()
     enumerated = enumerate_three_copy_metatiles(record)
     metatiles = enumerated["metatiles"]
@@ -282,9 +449,54 @@ def screen_candidate(record, timeout_ms=30000, replay_timeout_ms=300000, progres
         for index, metatile in enumerate(metatiles)
     }
     tile_orientations = SUBSTITUTION.oriented_cells(record["cells"])
+    elapsed_base = 0
     parent_results = []
-    for parent_index, parent in enumerate(metatiles):
-        target = SUBSTITUTION.scaled_cells(parent["cells"], 2)
+    if seed_report is not None:
+        seed_screen = seed_report["three_copy_metatile_screen"]
+        if seed_report["id"] != record["id"]:
+            raise RuntimeError("checkpoint candidate id mismatch")
+        if seed_screen.get("scale") != scale:
+            raise RuntimeError("checkpoint inflation scale mismatch")
+        if seed_screen["canonical_sha256"] != enumerated["canonical_sha256"]:
+            raise RuntimeError("checkpoint metatile-family hash mismatch")
+        if seed_screen["symmetry_distinct_metatiles"] != len(metatiles):
+            raise RuntimeError("checkpoint metatile-family size mismatch")
+        parent_results = list(seed_screen["parent_results"])
+        if any(
+            result["parent_index"] != index
+            for index, result in enumerate(parent_results)
+        ):
+            raise RuntimeError("checkpoint parent results are not a consecutive prefix")
+        elapsed_base = seed_screen.get("milliseconds", 0)
+
+    def build_report(classification, certified, closed_alphabet):
+        return {
+            "id": record["id"],
+            "cells": record["cells"],
+            "classification": classification,
+            "three_copy_metatile_screen": {
+                "certified": certified,
+                "inflation": f"scalar_{scale}",
+                "scale": scale,
+                "family": "all_face_connected_three_copy_metatiles_modulo_proper_a2_isometry_and_translation",
+                "two_copy_parent_types": enumerated["two_copy_parent_types"],
+                "raw_three_copy_extensions": enumerated["raw_three_copy_extensions"],
+                "symmetry_distinct_metatiles": enumerated["symmetry_distinct_metatiles"],
+                "canonical_sha256": enumerated["canonical_sha256"],
+                "closed_alphabet": closed_alphabet,
+                "parents_completed": len(parent_results),
+                "parent_counts": {
+                    name: sum(result["classification"] == name for result in parent_results)
+                    for name in ("local_obstruction", "exact_unsat", "mixed_metatile_rule", "unresolved")
+                },
+                "milliseconds": elapsed_base + round((time.monotonic() - started) * 1000),
+                "parent_results": parent_results,
+            },
+        }
+
+    for parent_index in range(len(parent_results), len(metatiles)):
+        parent = metatiles[parent_index]
+        target = SUBSTITUTION.scaled_cells(parent["cells"], scale)
         graph = placement_graph(target, tile_orientations)
         uncovered, checks = first_uncovered_by_three_cluster(target, graph)
         common = {
@@ -294,7 +506,10 @@ def screen_candidate(record, timeout_ms=30000, replay_timeout_ms=300000, progres
             "local_connected_triple_checks": checks,
         }
         if uncovered is not None:
-            replay = replay_local_obstruction(target, tile_orientations, uncovered)
+            replay = replay_local_obstruction(
+                target, tile_orientations, uncovered,
+                graph if scale >= 3 else None,
+            )
             if not replay["verified"]:
                 raise RuntimeError(f"three-cluster local replay failed: {replay}")
             parent_results.append({
@@ -303,22 +518,70 @@ def screen_candidate(record, timeout_ms=30000, replay_timeout_ms=300000, progres
                 "local_obstruction_replay": replay,
             })
         else:
-            placements = all_connected_triple_placements(graph)
+            compact = None
+            if scale >= 3:
+                compact = compact_three_cluster_exact_cover(
+                    target, graph, timeout_ms
+                )
+                if compact["result"] == "sat":
+                    placements = []
+                    for triple in compact["solution"]:
+                        cells = frozenset().union(*(
+                            graph["cell_sets"][index] for index in triple
+                        ))
+                        placements.append({
+                            "cells": cells,
+                            "component_placement_indices": list(triple),
+                        })
+                    solved = {
+                        "result": "sat",
+                        "solution": list(range(len(placements))),
+                        "nodes": sum(
+                            attempt["failed_states"]
+                            for attempt in compact["partition_attempts"]
+                        ),
+                        "failed_states": sum(
+                            attempt["failed_states"]
+                            for attempt in compact["partition_attempts"]
+                        ),
+                    }
+                elif compact["result"] == "unsat":
+                    placements = graph["placements"]
+                    solved = {
+                        "result": "unsat",
+                        "solution": None,
+                        "nodes": 0,
+                        "failed_states": 0,
+                    }
+                else:
+                    placements = graph["placements"]
+                    solved = {
+                        "result": "unknown",
+                        "solution": None,
+                        "nodes": 0,
+                        "failed_states": 0,
+                    }
+            else:
+                placements = all_connected_triple_placements(graph)
+                solved = SUBSTITUTION.exact_cover(target, placements, timeout_ms)
             if progress_every:
                 print(
                     f"  {record['id']} parent {parent_index} exact fallback "
-                    f"({len(placements)} cluster placements)",
+                    f"({len(placements)} {'monotile' if compact and compact['result'] != 'sat' else 'cluster'} placements)",
                     flush=True,
                 )
-            solved = SUBSTITUTION.exact_cover(target, placements, timeout_ms)
             exact_common = {
                 **common,
-                "three_cluster_placements": len(placements),
+                "exact_encoding": "compact_monotile_cover_partition_cegar" if compact else "explicit_connected_triples",
+                "three_cluster_placements": len(placements) if compact is None or compact["result"] == "sat" else None,
+                "compact_exact": compact,
                 "nodes": solved["nodes"],
                 "failed_states": solved["failed_states"],
             }
             if solved["result"] == "sat":
-                replay = SUBSTITUTION.replay(target, placements, solved["solution"], 8)
+                replay = SUBSTITUTION.replay(
+                    target, placements, solved["solution"], scale ** 3
+                )
                 if not replay["verified"]:
                     raise RuntimeError(f"three-cluster substitution replay failed: {replay}")
                 rule = []
@@ -375,6 +638,14 @@ def screen_candidate(record, timeout_ms=30000, replay_timeout_ms=300000, progres
                 f"  {record['id']} parents {parent_index + 1}/{len(metatiles)}",
                 flush=True,
             )
+        if (
+            checkpoint_callback is not None and checkpoint_every > 0
+            and (
+                (parent_index + 1) % checkpoint_every == 0
+                or uncovered is None
+            )
+        ):
+            checkpoint_callback(build_report("partial", False, None))
 
     rules = {
         result["parent_index"]: result
@@ -405,32 +676,12 @@ def screen_candidate(record, timeout_ms=30000, replay_timeout_ms=300000, progres
         classification = "three_copy_metatile_substitution_system"
         certified = True
     elif not rules and not unknowns:
-        classification = "no_three_copy_metatile_scalar2_substitution"
+        classification = f"no_three_copy_metatile_scalar{scale}_substitution"
         certified = True
     else:
         classification = "unresolved"
         certified = False
-    return {
-        "id": record["id"],
-        "cells": record["cells"],
-        "classification": classification,
-        "three_copy_metatile_screen": {
-            "certified": certified,
-            "inflation": "scalar_2",
-            "family": "all_face_connected_three_copy_metatiles_modulo_proper_a2_isometry_and_translation",
-            "two_copy_parent_types": enumerated["two_copy_parent_types"],
-            "raw_three_copy_extensions": enumerated["raw_three_copy_extensions"],
-            "symmetry_distinct_metatiles": enumerated["symmetry_distinct_metatiles"],
-            "canonical_sha256": enumerated["canonical_sha256"],
-            "closed_alphabet": closed_alphabet,
-            "parent_counts": {
-                name: sum(result["classification"] == name for result in parent_results)
-                for name in ("local_obstruction", "exact_unsat", "mixed_metatile_rule", "unresolved")
-            },
-            "milliseconds": round((time.monotonic() - started) * 1000),
-            "parent_results": parent_results,
-        },
-    }
+    return build_report(classification, certified, closed_alphabet)
 
 
 def main():
@@ -441,7 +692,12 @@ def main():
     parser.add_argument("--timeout-ms", type=int, default=30000)
     parser.add_argument("--replay-timeout-ms", type=int, default=300000)
     parser.add_argument("--progress-every", type=int, default=250)
+    parser.add_argument("--scale", type=int, default=2)
+    parser.add_argument("--checkpoint-every", type=int, default=50)
+    parser.add_argument("--resume", action="store_true")
     args = parser.parse_args()
+    if args.scale < 2:
+        parser.error("scale must be at least two")
     requested = {value for value in args.ids.split(",") if value}
     records = [
         json.loads(line) for line in Path(args.input).read_text().splitlines()
@@ -454,8 +710,17 @@ def main():
     counts = {}
     with output.open("a") as stream:
         for index, record in enumerate(records, 1):
+            checkpoint = output.with_name(f"{output.name}.{record['id']}.checkpoint.ndjson")
+            seed_report = None
+            if args.resume and checkpoint.exists():
+                seed_report = json.loads(checkpoint.read_text())
+
+            def write_checkpoint(partial):
+                checkpoint.write_text(json.dumps(partial, separators=(",", ":")) + "\n")
+
             screened = screen_candidate(
-                record, args.timeout_ms, args.replay_timeout_ms, args.progress_every
+                record, args.timeout_ms, args.replay_timeout_ms, args.progress_every,
+                args.scale, seed_report, args.checkpoint_every, write_checkpoint,
             )
             classification = screened["classification"]
             counts[classification] = counts.get(classification, 0) + 1
@@ -463,6 +728,8 @@ def main():
             stream.flush()
             types = screened["three_copy_metatile_screen"]["symmetry_distinct_metatiles"]
             print(f"{index}/{len(records)} {record['id']} {classification} ({types} types)", flush=True)
+            if checkpoint.exists():
+                checkpoint.unlink()
     print(json.dumps({"records": len(records), "counts": counts, "output": str(output)}, indent=2))
 
 

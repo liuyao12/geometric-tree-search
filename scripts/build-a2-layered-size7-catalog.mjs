@@ -43,14 +43,21 @@ for (const scale of [2, 3]) {
     twoClusterSubstitutions.get(record.id).push(record);
   }
 }
-const threeClusterSubstitutions = new Map((await Promise.all([
-  "00128", "00211", "00232", "00235", "00694", "00755", "00777", "00809"
-].map(async id => {
-  const records = await readNdjson(
-    `data/a2-layered-size7-three-cluster-substitution-scalar2-a2lp_7_${id}.ndjson`
-  );
-  return records[0];
-}))).map(record => [record.id, record]));
+const threeClusterSubstitutions = new Map();
+for (const scale of [2, 3]) {
+  for (const id of [
+    "00128", "00211", "00232", "00235", "00694", "00755", "00777", "00809"
+  ]) {
+    const records = await readNdjson(
+      `data/a2-layered-size7-three-cluster-substitution-scalar${scale}-a2lp_7_${id}.ndjson`
+    );
+    const catalogRecord = { ...records[0], catalog_scale: scale };
+    if (!threeClusterSubstitutions.has(catalogRecord.id)) {
+      threeClusterSubstitutions.set(catalogRecord.id, []);
+    }
+    threeClusterSubstitutions.get(catalogRecord.id).push(catalogRecord);
+  }
+}
 const anisotropicById = new Map();
 for (const record of anisotropicSubstitutions) {
   if (!anisotropicById.has(record.id)) anisotropicById.set(record.id, []);
@@ -84,7 +91,7 @@ const candidates = selected.map((id, index) => {
   const substitutionScreens = substitutions.get(id) ?? [];
   const anisotropicScreens = anisotropicById.get(id) ?? [];
   const twoClusterScreens = twoClusterSubstitutions.get(id) ?? [];
-  const threeClusterScreen = threeClusterSubstitutions.get(id);
+  const threeClusterScreens = threeClusterSubstitutions.get(id) ?? [];
   const corona2States = Math.max(
     second.corona2_cegar.first_coronas_rejected,
     deepSecond?.corona2_cegar?.first_coronas_rejected ?? 0
@@ -138,7 +145,9 @@ const candidates = selected.map((id, index) => {
         record.substitution_classification === "lattice_substitution_rule"
       ) || twoClusterScreens.some(record =>
         record.classification === "two_copy_metatile_substitution_system"
-      ) || threeClusterScreen?.classification === "three_copy_metatile_substitution_system",
+      ) || threeClusterScreens.some(record =>
+        record.classification === "three_copy_metatile_substitution_system"
+      ),
       substitution_anisotropic_scale_range: [2, 8],
       substitution_anisotropic_inflations_excluded: anisotropicScreens.filter(record =>
         record.substitution_classification === "no_lattice_substitution_for_inflation"
@@ -153,11 +162,17 @@ const candidates = selected.map((id, index) => {
         (total, record) => total + (record.mixed_two_copy_metatile_screen?.metatile_types ?? 0), 0
       ),
       substitution_three_copy_metatile_types:
-        threeClusterScreen?.three_copy_metatile_screen?.symmetry_distinct_metatiles ?? 0,
-      substitution_three_copy_metatile_scalar_scales_excluded:
-        threeClusterScreen?.three_copy_metatile_screen?.certified ? [2] : [],
-      substitution_three_copy_metatile_exact_unsat_parents:
-        threeClusterScreen?.three_copy_metatile_screen?.parent_counts?.exact_unsat ?? 0,
+        threeClusterScreens[0]?.three_copy_metatile_screen?.symmetry_distinct_metatiles ?? 0,
+      substitution_three_copy_metatile_scalar_scales_excluded: threeClusterScreens
+        .filter(record => record.three_copy_metatile_screen?.certified)
+        .map(record => record.catalog_scale)
+        .sort((left, right) => left - right),
+      substitution_three_copy_metatile_exact_unsat_parents_by_scale: Object.fromEntries(
+        threeClusterScreens.map(record => [
+          record.catalog_scale,
+          record.three_copy_metatile_screen.parent_counts?.exact_unsat ?? 0
+        ])
+      ),
       periodic_report: "data/a2-layered-size7-periodic-z3-through4.ndjson",
       corona_report: "data/a2-layered-size7-corona1-z3.ndjson",
       corona2_report: deepSecond
@@ -178,9 +193,9 @@ const candidates = selected.map((id, index) => {
       substitution_two_copy_metatile_reports: twoClusterScreens.map(record =>
         `data/a2-layered-size7-two-cluster-substitution-scalar${record.mixed_two_copy_metatile_screen.scale}-focused.ndjson`
       ),
-      substitution_three_copy_metatile_report: threeClusterScreen
-        ? `data/a2-layered-size7-three-cluster-substitution-scalar2-${id}.ndjson`
-        : null
+      substitution_three_copy_metatile_reports: threeClusterScreens.map(record =>
+        `data/a2-layered-size7-three-cluster-substitution-scalar${record.catalog_scale}-${id}.ndjson`
+      )
     },
     shell_screening: { robust_completed_shell: 0, deepest_completed_shell: 0 }
   };

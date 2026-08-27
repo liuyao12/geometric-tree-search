@@ -41,6 +41,9 @@ def main():
         if record["id"] == report["id"]
     )
     screen = report["three_copy_metatile_screen"]
+    scale = screen.get("scale")
+    if scale is None:
+        scale = int(screen["inflation"].removeprefix("scalar_"))
     enumerated = THREE.enumerate_three_copy_metatiles(source)
     if enumerated["symmetry_distinct_metatiles"] != screen["symmetry_distinct_metatiles"]:
         raise RuntimeError("three-copy metatile count changed during residual replay")
@@ -54,7 +57,7 @@ def main():
         raise RuntimeError("residual does not carry a primary exact UNSAT result")
 
     parent = enumerated["metatiles"][args.parent_index]
-    target = THREE.SUBSTITUTION.scaled_cells(parent["cells"], 2)
+    target = THREE.SUBSTITUTION.scaled_cells(parent["cells"], scale)
     tile_orientations = THREE.SUBSTITUTION.oriented_cells(source["cells"])
     graph = THREE.placement_graph(target, tile_orientations)
     uncovered, _ = THREE.first_uncovered_by_three_cluster(target, graph)
@@ -90,7 +93,7 @@ def main():
         "prior_replay": prior_replay,
         "resolution": replay,
     })
-    report["classification"] = "no_three_copy_metatile_scalar2_substitution"
+    report["classification"] = f"no_three_copy_metatile_scalar{scale}_substitution"
     report_path.write_text(json.dumps(report, separators=(",", ":")) + "\n")
     print(json.dumps({
         "id": report["id"],

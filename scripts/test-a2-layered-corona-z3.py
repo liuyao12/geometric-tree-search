@@ -305,28 +305,71 @@ for scale in (2, 3):
     assert mixed["certified"] is True
     assert mixed["closed_alphabet"] == [0]
 
-three_cluster_unit = THREE_CLUSTER_SUBSTITUTION.screen_candidate(
-    cluster_unit, 10000, progress_every=0
+for scale in (2, 3):
+    three_cluster_unit = THREE_CLUSTER_SUBSTITUTION.screen_candidate(
+        cluster_unit, 10000, progress_every=0, scale=scale
+    )
+    three_unit_screen = three_cluster_unit["three_copy_metatile_screen"]
+    assert three_cluster_unit["classification"] == "three_copy_metatile_substitution_system"
+    assert three_unit_screen["scale"] == scale
+    assert three_unit_screen["symmetry_distinct_metatiles"] == 4
+    assert three_unit_screen["raw_three_copy_extensions"] == 48
+    assert three_unit_screen["canonical_sha256"] == (
+        "c26bcfa2c65e5907b2ea04a21450562bbe871eda8d19f885e2942123e33dfb22"
+    )
+    assert three_unit_screen["closed_alphabet"] == [0, 1, 2, 3]
+    assert three_unit_screen["parent_counts"] == {
+        "local_obstruction": 0,
+        "exact_unsat": 0,
+        "mixed_metatile_rule": 4,
+        "unresolved": 0,
+    }
+    assert all(
+        parent["replay"]["verified"] is True
+        and all("orientation_index" in child and "translation" in child for child in parent["rule"])
+        for parent in three_unit_screen["parent_results"]
+    )
+    if scale == 3:
+        checkpoint_seed = json.loads(json.dumps(three_cluster_unit))
+        checkpoint_seed["classification"] = "partial"
+        checkpoint_seed["three_copy_metatile_screen"]["certified"] = False
+        checkpoint_seed["three_copy_metatile_screen"]["parent_results"] = (
+            checkpoint_seed["three_copy_metatile_screen"]["parent_results"][:2]
+        )
+        resumed = THREE_CLUSTER_SUBSTITUTION.screen_candidate(
+            cluster_unit, 10000, progress_every=0, scale=3,
+            seed_report=checkpoint_seed,
+        )
+        assert resumed["classification"] == "three_copy_metatile_substitution_system"
+        assert resumed["three_copy_metatile_screen"]["parent_counts"] == (
+            three_unit_screen["parent_counts"]
+        )
+
+# The face index is an optimization only: on a scale-three control its graph
+# must be exactly the graph obtained by checking every placement pair.
+unit_metatile = THREE_CLUSTER_SUBSTITUTION.enumerate_three_copy_metatiles(cluster_unit)["metatiles"][0]
+unit_target = SUBSTITUTION.scaled_cells(unit_metatile["cells"], 3)
+unit_graph = THREE_CLUSTER_SUBSTITUTION.placement_graph(
+    unit_target, SUBSTITUTION.oriented_cells(cluster_unit["cells"])
 )
-three_unit_screen = three_cluster_unit["three_copy_metatile_screen"]
-assert three_cluster_unit["classification"] == "three_copy_metatile_substitution_system"
-assert three_unit_screen["symmetry_distinct_metatiles"] == 4
-assert three_unit_screen["raw_three_copy_extensions"] == 48
-assert three_unit_screen["canonical_sha256"] == (
-    "c26bcfa2c65e5907b2ea04a21450562bbe871eda8d19f885e2942123e33dfb22"
-)
-assert three_unit_screen["closed_alphabet"] == [0, 1, 2, 3]
-assert three_unit_screen["parent_counts"] == {
-    "local_obstruction": 0,
-    "exact_unsat": 0,
-    "mixed_metatile_rule": 4,
-    "unresolved": 0,
-}
-assert all(
-    parent["replay"]["verified"] is True
-    and all("orientation_index" in child and "translation" in child for child in parent["rule"])
-    for parent in three_unit_screen["parent_results"]
-)
+brute_adjacency = [set() for _ in unit_graph["placements"]]
+brute_faces = []
+for cells in unit_graph["cell_sets"]:
+    faces = set()
+    for q, r, k, kind in cells:
+        faces.update(THREE_CLUSTER_SUBSTITUTION.TWO.cell_faces({
+            "q": q, "r": r, "k": k, "kind": kind,
+        }))
+    brute_faces.append(faces)
+for left in range(len(unit_graph["placements"])):
+    for right in range(left + 1, len(unit_graph["placements"])):
+        if (
+            unit_graph["cell_sets"][left].isdisjoint(unit_graph["cell_sets"][right])
+            and brute_faces[left].intersection(brute_faces[right])
+        ):
+            brute_adjacency[left].add(right)
+            brute_adjacency[right].add(left)
+assert unit_graph["adjacency"] == brute_adjacency
 
 algorithm_x_target = {
     (0, 0, 0, "u"), (1, 0, 0, "u"), (2, 0, 0, "u"),
@@ -435,47 +478,51 @@ expected_three_metatile_hashes = {
     "a2lp_7_00809": "f4ef25d35f2283cc301e4d115a2d6539181835eb4cc76784ef2a9e3fad863870",
 }
 expected_three_exact_unsat = {
-    "a2lp_7_00128": 0,
-    "a2lp_7_00211": 246,
-    "a2lp_7_00232": 0,
-    "a2lp_7_00235": 6,
-    "a2lp_7_00694": 0,
-    "a2lp_7_00755": 0,
-    "a2lp_7_00777": 0,
-    "a2lp_7_00809": 0,
+    2: {
+        "a2lp_7_00128": 0, "a2lp_7_00211": 246,
+        "a2lp_7_00232": 0, "a2lp_7_00235": 6,
+        "a2lp_7_00694": 0, "a2lp_7_00755": 0,
+        "a2lp_7_00777": 0, "a2lp_7_00809": 0,
+    },
+    3: {
+        "a2lp_7_00128": 0, "a2lp_7_00211": 488,
+        "a2lp_7_00232": 0, "a2lp_7_00235": 484,
+        "a2lp_7_00694": 0, "a2lp_7_00755": 0,
+        "a2lp_7_00777": 0, "a2lp_7_00809": 0,
+    },
 }
-three_cluster_records = []
-for candidate_id in expected_three_metatile_types:
-    record = json.loads((
-        ROOT / "data" /
-        f"a2-layered-size7-three-cluster-substitution-scalar2-{candidate_id}.ndjson"
-    ).read_text())
-    screen = record["three_copy_metatile_screen"]
-    assert record["classification"] == "no_three_copy_metatile_scalar2_substitution"
-    assert screen["certified"] is True
-    assert screen["symmetry_distinct_metatiles"] == expected_three_metatile_types[candidate_id]
-    assert screen["canonical_sha256"] == expected_three_metatile_hashes[candidate_id]
-    assert screen["parent_counts"] == {
-        "local_obstruction": (
-            expected_three_metatile_types[candidate_id]
-            - expected_three_exact_unsat[candidate_id]
-        ),
-        "exact_unsat": expected_three_exact_unsat[candidate_id],
-        "mixed_metatile_rule": 0,
-        "unresolved": 0,
-    }
-    assert len(screen["parent_results"]) == expected_three_metatile_types[candidate_id]
-    assert all(
-        (
-            parent.get("local_obstruction_replay")
-            or parent.get("exact_unsat_replay")
-        )["verified"] is True
-        for parent in screen["parent_results"]
-    )
-    three_cluster_records.append(record)
+three_cluster_records = {2: [], 3: []}
+for scale in (2, 3):
+    for candidate_id in expected_three_metatile_types:
+        record = json.loads((
+            ROOT / "data" /
+            f"a2-layered-size7-three-cluster-substitution-scalar{scale}-{candidate_id}.ndjson"
+        ).read_text())
+        screen = record["three_copy_metatile_screen"]
+        exact_unsat = expected_three_exact_unsat[scale][candidate_id]
+        assert record["classification"] == f"no_three_copy_metatile_scalar{scale}_substitution"
+        assert screen["certified"] is True
+        assert screen.get("scale", 2) == scale
+        assert screen["symmetry_distinct_metatiles"] == expected_three_metatile_types[candidate_id]
+        assert screen["canonical_sha256"] == expected_three_metatile_hashes[candidate_id]
+        assert screen["parent_counts"] == {
+            "local_obstruction": expected_three_metatile_types[candidate_id] - exact_unsat,
+            "exact_unsat": exact_unsat,
+            "mixed_metatile_rule": 0,
+            "unresolved": 0,
+        }
+        assert len(screen["parent_results"]) == expected_three_metatile_types[candidate_id]
+        assert all(
+            (
+                parent.get("local_obstruction_replay")
+                or parent.get("exact_unsat_replay")
+            )["verified"] is True
+            for parent in screen["parent_results"]
+        )
+        three_cluster_records[scale].append(record)
 
 resolved_three = next(
-    record for record in three_cluster_records if record["id"] == "a2lp_7_00211"
+    record for record in three_cluster_records[2] if record["id"] == "a2lp_7_00211"
 )["three_copy_metatile_screen"]
 assert resolved_three["residual_resolutions"][0]["parent_index"] == 1168
 assert resolved_three["residual_resolutions"][0]["prior_replay"]["result"] == "unknown"
@@ -499,5 +546,5 @@ print("A2 layered corona regression passed", {
     "scalar_substitution_negatives": len(substitution_records),
     "anisotropic_substitution_negatives": len(anisotropic_records),
     "two_copy_metatile_parent_scale_cases": sum(expected_metatile_types.values()) * 2,
-    "three_copy_metatile_parent_cases": sum(expected_three_metatile_types.values()),
+    "three_copy_metatile_parent_scale_cases": sum(expected_three_metatile_types.values()) * 2,
 })

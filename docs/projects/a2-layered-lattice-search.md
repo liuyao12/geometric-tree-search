@@ -245,16 +245,36 @@ There are no rules and no unresolved parents, so the complete connected
 three-copy, scalar-2 mixed substitution family is certified negative for all
 eight candidates.
 
-One 38,873-placement `00211` parent exceeded the initial five-minute QF_FD
+One 38,873-placement scalar-2 `00211` parent exceeded the initial five-minute QF_FD
 replay. `scripts/resolve-a2-layered-three-cluster-residual.py` re-enumerates
 and hash-checks the full family, then independently proves that residual UNSAT
 with reverse target and branch order in 200 nodes. The report preserves the
 prior timeout and the resolving certificate. Per-candidate reports begin with
 `data/a2-layered-size7-three-cluster-substitution-scalar2-`.
 
-This still does not exclude connected clusters of four or more monotiles,
-scalar-3 substitutions of three-copy metatiles, or non-scalar metatile
-inflations.
+The same complete 64,009-parent alphabet has now also been screened at scalar
+inflation 3. Explicitly materializing every connected child triple would have
+created roughly 0.8 million placements for individual parents. The scalar-3
+runner instead solves the contained atomic-monotile exact cover (typically
+about 500--750 Boolean variables), partitions each selected placement graph
+into connected triples, and blocks any unpartitionable atomic tiling before
+continuing. Atomic UNSAT is independently replayed with reverse-order
+Algorithm X. Local witnesses reuse a SHA-256-receipted exhaustive placement
+graph whose boundary-neighbor index is regression-checked against brute
+all-pairs adjacency. Runs are hash-validated and resumable at consecutive
+parent prefixes.
+
+At scale 3, 63,037 parents have hash-receipted exhaustive local
+connected-triple obstructions and 972 are independently replayed atomic-cover UNSAT: 488 for
+`00211` and 484 for `00235`. There are no rules and no unresolved parents.
+Thus the complete connected three-copy mixed substitution family is certified
+negative at both scalar scales 2 and 3, covering 128,018 parent/scale cases.
+The scalar-3 per-candidate reports begin with
+`data/a2-layered-size7-three-cluster-substitution-scalar3-`.
+
+This still does not exclude connected clusters of four or more monotiles or
+non-scalar metatile inflations, and it is not a non-tiling proof for any of the
+eight candidates.
 
 The machine-readable screen is `data/a2-layered-size5-screen.ndjson`. Rebuild
 it with:
