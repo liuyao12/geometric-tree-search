@@ -50,8 +50,8 @@ def test_pose_port_rank_masks_and_saved_audits_are_explicit():
 
 
 def test_build_210_release_identity_is_coherent():
-    assert 'buildId: "20260827-264"' in APP
-    assert 'app.js?v=20260827-264' in HTML
+    assert 'buildId: "20260827-265"' in APP
+    assert 'app.js?v=20260827-265' in HTML
     assert "Build 210" in README
     assert "Build 210" in DOC
 

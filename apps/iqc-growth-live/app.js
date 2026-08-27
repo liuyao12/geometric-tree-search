@@ -44,9 +44,9 @@ import { blockedCreationResponseSurrogate, blockedCreationResponseValidation, bu
   crossRunHorizonReadinessAtlas,
   LOCAL_CREATION_CONTEXT_FEATURE_IDS }
   from "./creation-response-association.js?v=20260826-13";
-import { buildPhysicsCompressionMap, buildPhysicsEffectMatrix, buildPhysicsLineagePath,
+import { buildPhysicsCompressionMap, buildPhysicsEffectMatrix, buildPhysicsInvestigationProtocol, buildPhysicsLineagePath,
   PHYSICS_EFFECT_COLUMNS, PHYSICS_READINESS_STATES, physicsExecutionLineage }
-  from "./physics-compression-map.js?v=20260827-4";
+  from "./physics-compression-map.js?v=20260827-5";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -324,6 +324,10 @@ const growthPhysicsCompressionMap = $("growthPhysicsCompressionMap");
 const growthPhysicsPreflightFilters = $("growthPhysicsPreflightFilters");
 const growthPhysicsEffectFilters = $("growthPhysicsEffectFilters");
 const growthPhysicsReadinessFilters = $("growthPhysicsReadinessFilters");
+const growthPhysicsProtocolComposer = $("growthPhysicsProtocolComposer");
+const growthPhysicsProtocolState = $("growthPhysicsProtocolState");
+const growthPhysicsProtocolCoverage = $("growthPhysicsProtocolCoverage");
+const growthPhysicsProtocolSelection = $("growthPhysicsProtocolSelection");
 const growthPhysicsPreflightMatrix = $("growthPhysicsPreflightMatrix");
 const growthPhysicsPreflightDetail = $("growthPhysicsPreflightDetail");
 const growthCoreGroupState = $("growthCoreGroupState");
@@ -1550,6 +1554,7 @@ let selectedGrowthPhysicsPreflightFilter = "all";
 let selectedGrowthPhysicsEffectFilter = "all";
 let selectedGrowthPhysicsReadinessFilter = "all";
 let selectedPhysicsCompressionLane = "all";
+let physicsProtocolSelectedIds = null;
 let frozenPhysicsPreflightManifest = null;
 const MAXIMUM_RETAINED_STRUCTURAL_LEAPS = 24;
 let growthMechanismEvents = [];
@@ -10238,7 +10243,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-264",
+      buildId: "20260827-265",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -12505,7 +12510,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-264" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-265" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -21888,6 +21893,7 @@ function resetCounters() {
   pendingSiteHistoryIds = new Set();
   selectedPopulationResponseTermId = null;
   selectedLeapPhysicsId = "steric";
+  physicsProtocolSelectedIds = null;
   frozenPhysicsPreflightManifest = null;
   growthMechanismEvents = [];
   growthMechanismTotals = {};
@@ -24210,14 +24216,30 @@ function physicsManifestRecord(record) {
     executionLineage: physicsExecutionLineage(record) };
 }
 
+function physicsProtocolForRecords(records) {
+  const recordIds = new Set(records.map((record) => record.id));
+  if (!(physicsProtocolSelectedIds instanceof Set)) {
+    const matrix = buildPhysicsEffectMatrix(records);
+    physicsProtocolSelectedIds = new Set(matrix.rows
+      .filter((row) => row.readiness.id === "executing").map((row) => row.recordId));
+  } else {
+    physicsProtocolSelectedIds = new Set([...physicsProtocolSelectedIds]
+      .filter((recordId) => recordIds.has(recordId)));
+  }
+  return buildPhysicsInvestigationProtocol(records, [...physicsProtocolSelectedIds], {
+    intent: "structural-continuation",
+  });
+}
+
 function currentPhysicsPreflightManifest() {
   const records = physicsTranslationRecords(null).map(physicsManifestRecord);
   const counts = records.reduce((result, record) => {
     result[physicsEvidenceBucket(record)] += 1;
     return result;
   }, { structural: 0, hypothesis: 0, open: 0 });
-  return { schema: 1, records, counts, compressionMap: buildPhysicsCompressionMap(records),
+  return { schema: 2, records, counts, compressionMap: buildPhysicsCompressionMap(records),
     effectMatrix: buildPhysicsEffectMatrix(records),
+    investigationProtocol: physicsProtocolForRecords(records),
     generatedBeforeActionExecution: true, coordinatesEmbedded: false,
     candidateGeometryEmbedded: false, candidateSetInspected: false, targetUsed: false,
     physicalTimeModeled: false };
@@ -24258,6 +24280,50 @@ function renderPhysicsLineageFlow(container, record) {
   wrapper.append(track, readout, flags); container.append(wrapper);
 }
 
+function updatePhysicsProtocolSelection(recordIds) {
+  if (leapEventCount > 0) return;
+  physicsProtocolSelectedIds = new Set(recordIds);
+  frozenPhysicsPreflightManifest = null;
+  renderGrowthPhysicsPreflight();
+}
+
+function renderPhysicsProtocolComposer(manifest) {
+  const protocol = manifest.investigationProtocol || physicsProtocolForRecords(manifest.records);
+  const frozen = leapEventCount > 0;
+  const stateLabels = {
+    ready: "ready to execute", empty: "no layers selected", "configuration-required": "configuration required",
+    "evidence-required": "evidence required", "external-physics-required": "external physics required",
+    "evidence-only": "evidence only",
+  };
+  growthPhysicsProtocolState.textContent = `${frozen ? "frozen · " : "draft · "}${stateLabels[protocol.state] || protocol.state}`;
+  growthPhysicsProtocolState.className = protocol.readyToExecute ? "ready" : "pending";
+  growthPhysicsProtocolComposer.querySelectorAll("button[data-physics-protocol-preset]")
+    .forEach((button) => { button.disabled = frozen; });
+  growthPhysicsProtocolCoverage.replaceChildren(...PHYSICS_EFFECT_COLUMNS.slice(0, -1).map((column) => {
+    const cell = document.createElement("span");
+    const label = document.createElement("small"); label.textContent = column.label;
+    const value = document.createElement("strong");
+    value.textContent = String(protocol.effectCoverage[column.id]?.count || 0);
+    cell.append(label, value); return cell;
+  }));
+  const selectedById = new Map(protocol.selected.map((record) => [record.recordId, record]));
+  growthPhysicsProtocolSelection.replaceChildren();
+  if (!protocol.selectedRecordIds.length) {
+    const empty = document.createElement("span"); empty.className = "empty";
+    empty.textContent = "No physical layer selected · choose a preset or add one from its detail.";
+    growthPhysicsProtocolSelection.append(empty);
+  } else protocol.selectedRecordIds.forEach((recordId) => {
+    const record = selectedById.get(recordId);
+    const button = document.createElement("button"); button.type = "button"; button.disabled = frozen;
+    button.textContent = `${record?.process || recordId} · ${record?.readiness?.label || "unknown"} ×`;
+    button.title = frozen ? "Protocol frozen before the first structural action"
+      : `Remove ${record?.process || recordId} from the investigation protocol`;
+    button.addEventListener("click", () => updatePhysicsProtocolSelection(
+      protocol.selectedRecordIds.filter((candidate) => candidate !== recordId)));
+    growthPhysicsProtocolSelection.append(button);
+  });
+}
+
 function renderGrowthPhysicsPreflight() {
   if (!frozenPhysicsPreflightManifest || leapEventCount === 0) {
     frozenPhysicsPreflightManifest = currentPhysicsPreflightManifest();
@@ -24267,6 +24333,7 @@ function renderGrowthPhysicsPreflight() {
   const compressionMap = manifest.compressionMap || buildPhysicsCompressionMap(records);
   const effectMatrix = manifest.effectMatrix || buildPhysicsEffectMatrix(records);
   growthPhysicsPreflightState.textContent = `${counts.structural} observed/learned · ${counts.hypothesis} declared · ${counts.open} open · ${compressionMap.complete ? "scale map complete" : `${compressionMap.unclassifiedRecordIds.length} unclassified`}`;
+  renderPhysicsProtocolComposer(manifest);
   const compressionLanes = [{ id: "all", label: "all physical layers", short: "complete frozen manifest",
     recordIds: records.map((record) => record.id), recordCount: records.length, counts, state: "hybrid" },
   ...compressionMap.lanes];
@@ -24343,7 +24410,7 @@ function renderGrowthPhysicsPreflight() {
   visibleRecords.forEach((record) => {
     const row = effectRows.get(record.id);
     const button = document.createElement("button"); button.type = "button";
-    button.className = `${record.status} readiness-${row?.readiness?.id || "external"}${record.id === selectedGrowthPhysicsPreflightId ? " active" : ""}`;
+    button.className = `${record.status} readiness-${row?.readiness?.id || "external"}${record.id === selectedGrowthPhysicsPreflightId ? " active" : ""}${physicsProtocolSelectedIds?.has(record.id) ? " protocol-selected" : ""}`;
     button.setAttribute("aria-pressed", String(record.id === selectedGrowthPhysicsPreflightId));
     const small = document.createElement("small"); small.textContent = record.role;
     const strong = document.createElement("strong"); strong.textContent = record.process;
@@ -24385,6 +24452,20 @@ function renderGrowthPhysicsPreflight() {
   });
   const route = PHYSICS_CONTROL_ROUTES[selected.id];
   const actions = document.createElement("footer"); actions.className = "leap-physics-actions";
+  const protocolToggle = document.createElement("button"); protocolToggle.type = "button";
+  protocolToggle.className = "protocol-toggle";
+  const protocolHasRecord = physicsProtocolSelectedIds?.has(selected.id);
+  protocolToggle.textContent = protocolHasRecord ? "Remove from protocol" : "Add to protocol";
+  protocolToggle.disabled = leapEventCount > 0;
+  protocolToggle.title = leapEventCount > 0
+    ? "Protocol frozen before the first structural action"
+    : `${protocolHasRecord ? "Remove" : "Add"} this physical layer without changing its control value.`;
+  protocolToggle.addEventListener("click", () => {
+    const next = new Set(physicsProtocolSelectedIds || []);
+    if (next.has(selected.id)) next.delete(selected.id); else next.add(selected.id);
+    updatePhysicsProtocolSelection([...next]);
+  });
+  actions.append(protocolToggle);
   if (route) {
     const button = document.createElement("button"); button.type = "button";
     button.textContent = `${route.label} →`;
@@ -24424,6 +24505,20 @@ growthPhysicsReadinessFilters.addEventListener("click", (event) => {
   selectedGrowthPhysicsReadinessFilter = filter === "all"
     || PHYSICS_READINESS_STATES.some((state) => state.id === filter) ? filter : "all";
   renderGrowthPhysicsPreflight();
+});
+
+growthPhysicsProtocolComposer.addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-physics-protocol-preset]");
+  if (!button || leapEventCount > 0) return;
+  const records = physicsTranslationRecords(null).map(physicsManifestRecord);
+  const rows = buildPhysicsEffectMatrix(records).rows;
+  const preset = button.dataset.physicsProtocolPreset;
+  const selected = preset === "clear" ? [] : rows.filter((row) => row.readiness.id === "executing"
+    || (preset === "actionable" && row.readiness.id === "configurable")).map((row) => row.recordId);
+  updatePhysicsProtocolSelection(selected);
+  receiptStatus.textContent = preset === "clear"
+    ? "Physics protocol cleared · no control changed."
+    : `${selected.length} physical layers declared in the pre-growth protocol · no control changed.`;
 });
 
 function renderLeapPhysics(leap = null) {

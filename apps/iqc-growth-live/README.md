@@ -1,5 +1,24 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 265 · pre-growth physics protocol composer
+
+The readiness atlas is now an investigation-design surface rather than only an
+explanation. Before candidate enumeration, a materials scientist can declare
+which physical layers belong to the next structural-continuation protocol,
+start from the currently executing layers, include every locally actionable
+hypothesis, or clear the design and add layers individually. The composer shows
+coverage of admission, candidate geometry, seed state, ranking, and branch
+order while classifying every selected layer as executing, configurable,
+missing evidence, evidence-only, or external.
+
+Selection never toggles a control or fabricates evidence. A protocol is ready
+only when at least one selected layer executes and no selected layer still
+requires configuration, input, or external physics. The selected IDs,
+readiness blockers, execution-hook coverage, and claim boundary are embedded in
+the coordinate-free preflight manifest and its SHA-256 receipt digest. Editing
+stops after the first structural action, preserving a target-free preregistered
+investigation rather than a posthoc story.
+
 ## Build 264 · size-eight A₂ evidence frontier
 
 The Evidence Atlas now reads the latest layer-essential size-eight catalogue

@@ -1,5 +1,23 @@
 # Recursive GCTS benchmark for material growth
 
+### Pre-growth physics protocol composer (Build 265)
+
+The Stage 4 preflight now supports an explicit investigation protocol. Users
+select physical-manifest records before the candidate frontier exists, while
+the pure protocol compiler groups the selection by readiness and reports its
+coverage of hard admission, candidate geometry, initial state, ranking, and
+search order. Presets expose the currently executing set and the larger locally
+actionable set; individual records can be added or removed from their full
+evidence→encoding→execution→response→boundary trace.
+
+Protocol selection has no authority to change a control. Configurable,
+missing-evidence, evidence-only, and external rows remain visibly distinct, and
+the ready gate rejects a selection with unresolved requirements. At the first
+structural action the complete selection, blockers, effect coverage, negative
+claim boundary, and target-free invariants freeze inside preflight manifest
+schema 2. The existing receipt hashes that manifest, so a later run cannot
+silently rewrite which physical approximations were supposed to govern growth.
+
 ### Size-eight A₂ evidence frontier (Build 264)
 
 The browser evidence view now consumes the generated layer-essential

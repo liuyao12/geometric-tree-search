@@ -250,3 +250,76 @@ export function buildPhysicsEffectMatrix(records) {
     physicalTimeModeled: false,
   };
 }
+
+export function buildPhysicsInvestigationProtocol(records, selectedRecordIds, options = {}) {
+  if (!Array.isArray(records) || !Array.isArray(selectedRecordIds)) {
+    throw new Error("physics investigation protocol needs manifest records and selected record IDs");
+  }
+  const intent = options.intent || "structural-continuation";
+  if (!["structural-continuation", "hypothesis-comparison", "evidence-audit"].includes(intent)) {
+    throw new Error(`unsupported physics protocol intent: ${intent}`);
+  }
+  const recordsById = new Map(records.map((record) => [record.id, record]));
+  if (recordsById.size !== records.length) throw new Error("physics protocol records need unique IDs");
+  const selectedSet = new Set(selectedRecordIds);
+  if (selectedSet.size !== selectedRecordIds.length) throw new Error("physics protocol selection has duplicate IDs");
+  const unknown = selectedRecordIds.filter((recordId) => !recordsById.has(recordId));
+  if (unknown.length) throw new Error(`physics protocol selection has unknown IDs: ${unknown.join(", ")}`);
+
+  const matrix = buildPhysicsEffectMatrix(records);
+  const rowsById = new Map(matrix.rows.map((row) => [row.recordId, row]));
+  const selected = records.filter((record) => selectedSet.has(record.id)).map((record) => {
+    const row = rowsById.get(record.id);
+    return {
+      recordId: record.id,
+      process: record.process,
+      status: record.status,
+      laneId: row.laneId,
+      readiness: row.readiness,
+      effects: row.effects,
+      executionSummary: row.executionSummary,
+      controlRouteAvailable: Boolean(record.controlRouteAvailable),
+      controlRouteLabel: record.controlRouteLabel || null,
+    };
+  });
+  const readiness = Object.fromEntries(PHYSICS_READINESS_STATES.map((state) => [state.id,
+    selected.filter((record) => record.readiness.id === state.id).map((record) => record.recordId)]));
+  const effectCoverage = Object.fromEntries(PHYSICS_EFFECT_COLUMNS.map((column) => [column.id, {
+    count: selected.filter((record) => record.effects[column.id]).length,
+    recordIds: selected.filter((record) => record.effects[column.id]).map((record) => record.recordId),
+  }]));
+  const blockingIds = [...readiness.configurable, ...readiness.missingEvidence, ...readiness.external];
+  const executableIds = readiness.executing;
+  const state = selected.length === 0 ? "empty"
+    : readiness.external.length ? "external-physics-required"
+      : readiness.missingEvidence.length ? "evidence-required"
+        : readiness.configurable.length ? "configuration-required"
+          : executableIds.length ? "ready" : "evidence-only";
+  return {
+    schema: 1,
+    intent,
+    state,
+    readyToExecute: state === "ready",
+    selectedRecordIds: selected.map((record) => record.recordId),
+    selectedRecordCount: selected.length,
+    selected,
+    readiness,
+    readinessCounts: Object.fromEntries(Object.entries(readiness).map(([key, value]) => [key, value.length])),
+    effectCoverage,
+    executableRecordIds: executableIds,
+    blockingRecordIds: blockingIds,
+    evidenceOnlyRecordIds: readiness.evidenceOnly,
+    externalRecordIds: readiness.external,
+    executionObjectsCovered: PHYSICS_EFFECT_COLUMNS.slice(0, -1)
+      .filter((column) => effectCoverage[column.id].count > 0).map((column) => column.id),
+    completeManifestRecordCount: records.length,
+    selectionMadeBeforeCandidateEnumeration: true,
+    candidateSetInspected: false,
+    coordinatesEmbedded: false,
+    targetUsed: false,
+    physicalTimeModeled: false,
+    claimBoundary: state === "ready"
+      ? "Selected layers are active geometric execution hooks; this does not make them energies, rates, or dynamics."
+      : "Unready or evidence-only layers remain explicit and cannot silently change search execution.",
+  };
+}

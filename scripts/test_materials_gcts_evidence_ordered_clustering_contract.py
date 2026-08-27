@@ -40,7 +40,7 @@ def test_stage_separation_remains_explicit():
 
 
 def test_build_259_cache_and_narrative_contract():
-    assert 'buildId: "20260827-264"' in APP
-    assert "app.js?v=20260827-264" in HTML
-    assert "style.css?v=20260827-264" in HTML
+    assert 'buildId: "20260827-265"' in APP
+    assert "app.js?v=20260827-265" in HTML
+    assert "style.css?v=20260827-265" in HTML
     assert "Build 259 · evidence-ordered cluster discovery" in README
