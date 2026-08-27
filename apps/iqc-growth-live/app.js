@@ -76,6 +76,8 @@ import { BOND_VALENCE_PARAMETERS, BOND_VALENCE_PROVENANCE,
   from "./bond-valence-geometry.js?v=20260826-3";
 import { analyzeCollinearSpinGeometry, COLLINEAR_SPIN_PROVENANCE }
   from "./collinear-spin-geometry.js?v=20260826-1";
+import { scalarSpinCompatible, scalarSpinPolarity }
+  from "./collinear-spin-coloring.js?v=20260827-1";
 import { CENTROSYMMETRY_PROVENANCE, inferCentrosymmetryNeighborCount, localCentrosymmetry }
   from "./centrosymmetry-geometry.js?v=20260826-1";
 import {
@@ -304,6 +306,8 @@ const markingReachSelect = $("markingReachSelect");
 const markingReachHint = $("markingReachHint");
 const markingRepresentationSelect = $("markingRepresentationSelect");
 const markingRepresentationHint = $("markingRepresentationHint");
+const spinColoringSelect = $("spinColoringSelect");
+const spinColoringHint = $("spinColoringHint");
 const restartMarkingButton = $("restartMarkingButton");
 const saveMarkingButton = $("saveMarkingButton");
 const markingConfigNote = $("markingConfigNote");
@@ -1349,6 +1353,8 @@ let reconstructionCertified = false;
 let reconstructionMarkingFallbacks = 0;
 let coordinationCapacityPrunes = 0;
 let angularEnvelopePrunes = 0;
+let scalarSpinOverlapChecks = 0;
+let scalarSpinCompatibilityPrunes = 0;
 let acceptedGeometricStrain = 0;
 let rejectedGeometricStrain = 0;
 let acceptedUnloadedGeometricStrain = 0;
@@ -1544,7 +1550,7 @@ let iceViMicrostate = null;
 let iceViMicrostateSeed = 0;
 let selectedDatabaseElements = ["Na", "Cl"];
 let databaseCandidateSearch = null;
-let markingDraft = { channels: 0, reach: 2, representation: "sites" };
+let markingDraft = { channels: 0, reach: 2, representation: "sites", spinColoring: "preserve" };
 let markingLibrary = [];
 let activeMarkingId = null;
 let markingSearchMode = "single";
@@ -3384,7 +3390,7 @@ function activateImportedStructure(parsed, filename, statusElement = importStatu
         ? `NOMAD · ${parsed.metadata.nomadEvidenceLabel}` : "emergent structure audit",
       intrinsicDimension: parsed.metadata?.nomadStructureFamily === "twoD" ? 2 : 3,
       periodicWindow: Boolean(parsed.pbc?.some(Boolean)),
-      note: `Imported from ${filename}; no structure class, space group, or cluster vocabulary is supplied to growth. Mixed and partial sites remain occupational alternatives rather than coincident atoms or a silently selected element. Supplied formal oxidation states remain chemistry channels; missing states are never guessed. Explicit scalar atomic spins remain diagnostic labels and never become invented vectors or a growth score.`,
+      note: `Imported from ${filename}; no structure class, space group, or cluster vocabulary is supplied to growth. Mixed and partial sites remain occupational alternatives rather than coincident atoms or a silently selected element. Supplied formal oxidation states remain chemistry channels; missing states are never guessed. Explicit scalar atomic spins remain scalar labels: the selected marking may preserve their signs as exact overlap colors, but never turns them into vectors, energies, or a branch score.`,
     },
   };
   syncImportedFrameMaterial();
@@ -4667,10 +4673,13 @@ function inspectSite(atom) {
   renderSelectedSiteHighlight();
 }
 
-function copyReferenceScalarSpin(atom, referenceIndex) {
-  const reference = Number.isInteger(referenceIndex) ? referenceAtoms[referenceIndex] : null;
-  atom.calculationSpin = reference && Number.isFinite(reference.calculationSpin)
-    ? reference.calculationSpin : null;
+function copyPlacedScalarSpin(atom, site) {
+  const reference = Number.isInteger(site.referenceIndex) ? referenceAtoms[site.referenceIndex] : null;
+  const scalar = Number.isFinite(site.calculationSpin) ? site.calculationSpin
+    : Number.isFinite(reference?.calculationSpin) ? reference.calculationSpin : null;
+  atom.calculationSpin = scalar;
+  atom.scalarSpinTemplateReferenceIndex = Number.isInteger(site.referenceIndex) ? site.referenceIndex : null;
+  atom.scalarSpinColorTransported = Number.isFinite(scalar);
 }
 
 function medianNearestSpacing(source) {
@@ -4718,6 +4727,7 @@ function templateSiteFromReference(source, atomIndex, local, localFrameInverse, 
     species: atom.species,
     center,
     referenceIndex: atomIndex,
+    calculationSpin: Number.isFinite(atom.calculationSpin) ? atom.calculationSpin : null,
     uAnisoLocalA2: tensor ? rotateDisplacementTensor(tensor, localFrameInverse.toArray()) : null,
     displacementTensorSource: tensor ? (Array.isArray(atom.uAnisoCartesianA2) ? "reported Uij" : "reported Uiso") : null,
   };
@@ -8509,6 +8519,25 @@ function drawClusterCardDisplacementEllipses(context, projected, quaternion, sca
   }
 }
 
+function drawClusterCardScalarSpins(context, projected) {
+  if (!scalarSpinColoringActive()) return;
+  let drawn = 0;
+  projected.forEach((point) => {
+    const polarity = scalarSpinPolarity(point.atom.calculationSpin);
+    if (polarity === null) return;
+    context.save(); context.beginPath();
+    context.arc(point.x, point.y, 10.2 * point.perspective, 0, TAU);
+    context.strokeStyle = polarity > 0 ? "rgba(255,123,145,.92)"
+      : polarity < 0 ? "rgba(106,167,255,.92)" : "rgba(159,168,184,.75)";
+    context.lineWidth = 1.7; context.stroke(); context.restore(); drawn++;
+  });
+  if (drawn) {
+    context.save(); context.font = "9px ui-monospace, SFMono-Regular, Menlo, monospace";
+    context.fillStyle = "rgba(205,215,232,.82)";
+    context.fillText(`signed s · ${drawn}`, 8, 25); context.restore();
+  }
+}
+
 function drawClusterCardMarking(context, canvas, cluster, galleryIndex, quaternion) {
   if (pipelineStage !== 3 || !sectionModel || cluster.residual) return;
   const prototype = cluster.familyType ?? galleryIndex;
@@ -8606,6 +8635,7 @@ function drawClusterGallery(now) {
       context.stroke(); context.restore();
     });
     drawClusterCardDisplacementEllipses(context, projected, quaternion, scaleToScene);
+    drawClusterCardScalarSpins(context, projected);
     projected.sort((first, second) => first.z - second.z).forEach((point) => {
       const record = elementRecord(point.atom.species);
       const radius = 7.4 * point.perspective * Math.min(1.12, record.radius / 1.3);
@@ -9201,8 +9231,8 @@ const MARKING_REPRESENTATIONS = {
   whole: { label: "whole-cluster action", short: "whole action", exponent: 2, overlapWeight: .38,
     readout: "mean-dominant whole-template support" },
 };
-const MARKING_LIBRARY_STORAGE = "gcts-marking-library-v4";
-const MARKING_VOCABULARY_SCHEMA = 4;
+const MARKING_LIBRARY_STORAGE = "gcts-marking-library-v5";
+const MARKING_VOCABULARY_SCHEMA = 5;
 const EXPERIMENT_NOTEBOOK_STORAGE = "gcts-experiment-notebook-v1";
 const MAX_EXPERIMENT_NOTEBOOK_ENTRIES = 8;
 let notebookClearArmed = false;
@@ -9227,6 +9257,7 @@ function restoreMarkingLibrary() {
       && MARKING_REPRESENTATIONS[marking.config.representation])
       .map((marking) => ({ ...marking, config: {
         ...marking.config, geometryMode: marking.config.geometryMode || "auto",
+        spinColoring: marking.config.spinColoring === "ignore" ? "ignore" : "preserve",
       } }));
     activeMarkingId = stored.activeMarkingId || null;
     markingSearchMode = stored.searchMode === "portfolio" ? "portfolio" : "single";
@@ -9254,6 +9285,7 @@ function currentMarkingConfig() {
     channelMode: requestedChannels ? "manual" : "auto",
     reach: Number(markingDraft.reach),
     representation: markingDraft.representation,
+    spinColoring: scalarSpinColoringMode(),
     geometryMode,
     clusterToleranceMode,
     effectiveMetricToleranceFraction: effectiveClusterMetricTolerance(),
@@ -9883,7 +9915,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-249",
+      buildId: "20260827-250",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -9944,8 +9976,12 @@ async function buildExperimentReceipt() {
         displayedAsGeometry: externalCalculation.forceCoverage > 0 || scalarSpinRecords.length > 0,
         usedForClusterIdentification: false,
         usedForMarkingLearning: false,
+        scalarSpinColoringMode: scalarSpinColoringMode(),
+        scalarSpinUsedAsExactOverlapColor: scalarSpinRecords.length > 0 && scalarSpinColoringActive(),
+        scalarSpinOverlapChecks,
+        scalarSpinCompatibilityPrunes,
         usedForCandidateGeneration: false,
-        usedForAdmission: false,
+        usedForAdmission: scalarSpinRecords.length > 0 && scalarSpinColoringActive(),
         usedForBranchRanking: externalCalibrationPromotionActive,
         usedForRelaxation: false,
         usedForClassification: false,
@@ -9977,9 +10013,9 @@ async function buildExperimentReceipt() {
         quantizationAxisInferred: false,
         periodicImagesSummed: false,
         usedForClusterIdentification: false,
-        usedForMarkingLearning: false,
+        usedForMarkingLearning: scalarSpinColoringActive(),
         usedForCandidateGeneration: false,
-        usedForAdmission: false,
+        usedForAdmission: scalarSpinColoringActive(),
         usedForBranchRanking: false,
         usedForClassification: false,
         targetUsed: false,
@@ -10295,6 +10331,7 @@ async function buildExperimentReceipt() {
         directionalPairSigmaObservationCount: coloredDistanceEnvelopes.records
           .reduce((sum, record) => sum + record.directionalSigmaObservations, 0),
         clusterPoseTensorTransport: displacementTensorTransportAudit(),
+        collinearSpinColorTransport: scalarSpinColorTransportAudit(),
         growthHardContactRule: "each candidate pair recomputes one-sigma support along its live connecting direction",
         missingLiveTensorFallback: "frozen learned scalar pair exclusion",
         independentSiteCovarianceAssumed: true,
@@ -12112,7 +12149,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-249" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-250" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -14143,7 +14180,11 @@ function reducedCompositionKey() {
 
 function prototypeGeometryKey(prototype, index) {
   if (learnedCover?.occurrenceBased || learnedCover?.molecular) {
-    const sites = prototype.customSupport.map((atomIndex) => referenceAtoms[atomIndex].species);
+    const sites = prototype.customSupport.map((atomIndex) => {
+      const atom = referenceAtoms[atomIndex];
+      const polarity = scalarSpinColoringMode() === "preserve" ? scalarSpinPolarity(atom.calculationSpin) : null;
+      return `${atom.species}${polarity === null ? "" : polarity > 0 ? "[s+]" : polarity < 0 ? "[s-]" : "[s0]"}`;
+    });
     const distances = [];
     for (let first = 0; first < prototype.customVectors.length; first++) {
       for (let second = first + 1; second < prototype.customVectors.length; second++) {
@@ -14168,6 +14209,7 @@ function markingVocabularyKey() {
     metricToleranceAngstrom: clusterMetricToleranceAngstrom(),
     dimension: currentMaterial().intrinsicDimension || 3,
     composition: reducedCompositionKey(),
+    scalarSpinColoring: scalarSpinColoringMode(),
     prototypes: markingPrototypeTypes().map((prototype, index) => {
       const atlas = orientationAtlas.find((entry) => entry.cluster === index);
       return [
@@ -14185,9 +14227,16 @@ function markingVocabularyKey() {
 function ruleColoredSiteGeometry(rule) {
   const sites = rule.sites || overlapGrammar.templates[rule.to]?.sites || [];
   return sites.map((site) => {
-    const invariantNeighbors = sites.filter((other) => other !== site).map((other) =>
-      `${other.species}:${Math.round(site.local.distanceTo(other.local) * 1000)}`).sort();
-    const token = `${site.species}|${Math.round(site.local.length() * 1000)}|${invariantNeighbors.join(",")}`;
+    const invariantNeighbors = sites.filter((other) => other !== site).map((other) => {
+      const otherPolarity = scalarSpinColoringMode() === "preserve"
+        ? scalarSpinPolarity(other.calculationSpin) : null;
+      const otherSpin = otherPolarity === null ? ""
+        : otherPolarity > 0 ? "[s+]" : otherPolarity < 0 ? "[s-]" : "[s0]";
+      return `${other.species}${otherSpin}:${Math.round(site.local.distanceTo(other.local) * 1000)}`;
+    }).sort();
+    const polarity = scalarSpinColoringMode() === "preserve" ? scalarSpinPolarity(site.calculationSpin) : null;
+    const spin = polarity === null ? "" : polarity > 0 ? "[s+]" : polarity < 0 ? "[s-]" : "[s0]";
+    const token = `${site.species}${spin}|${Math.round(site.local.length() * 1000)}|${invariantNeighbors.join(",")}`;
     return {
       token,
       local: site.local,
@@ -14991,6 +15040,29 @@ function displacementTensorTransportAudit() {
   };
 }
 
+function scalarSpinColorTransportAudit() {
+  const templates = overlapGrammar?.templates || [];
+  const rules = overlapGrammar?.rules || [];
+  return {
+    mode: scalarSpinColoringMode(),
+    active: scalarSpinColoringActive(),
+    referenceScalarSpinSites: referenceAtoms.filter((atom) => Number.isFinite(atom.calculationSpin)).length,
+    templateScalarSpinSites: templates.reduce((sum, template) => sum
+      + (template.sites || []).filter((site) => Number.isFinite(site.calculationSpin)).length, 0),
+    ruleScalarSpinSites: rules.reduce((sum, rule) => sum
+      + (rule.sites || []).filter((site) => Number.isFinite(site.calculationSpin)).length, 0),
+    placedTransportedScalarSpinSites: atoms.filter((atom) => atom.scalarSpinColorTransported).length,
+    currentCandidateScalarSpinSites: currentCandidates.reduce((sum, candidate) => sum
+      + (candidate.spinSites?.length || 0), 0),
+    overlapChecks: scalarSpinOverlapChecks,
+    compatibilityPrunes: scalarSpinCompatibilityPrunes,
+    exactRule: "same signed scalar color at shared same-species sites",
+    scalarDoesNotRotateUnderProperPose: true,
+    vectorAxisInferred: false,
+    magneticEnergyInferred: false,
+  };
+}
+
 function referenceIndexForSite(site, context = scenePeriodicContext()) {
   let bestIndex = -1;
   let bestDistance2 = MERGE_TOLERANCE ** 2;
@@ -15049,6 +15121,7 @@ function canonicalKnownSites(sites, context = scenePeriodicContext()) {
       p: reference.p.clone(),
       species: reference.species,
       referenceIndex,
+      calculationSpin: Number.isFinite(reference.calculationSpin) ? reference.calculationSpin : null,
       uAnisoCartesianA2: atomDisplacementTensorAngstrom2(reference),
       displacementTensorSource: Array.isArray(reference.uAnisoCartesianA2)
         ? "reported Uij" : Number.isFinite(reference.uIsoA2) ? "reported Uiso" : null,
@@ -17130,7 +17203,8 @@ function capturePolicyComparison(entries) {
       scoreDecompositionExact: winner ? Math.abs(termTotal - winner.score) <= 1e-9 : true,
       preview: winner ? { p: winner.entry.candidate.position.clone(),
         rotation: winner.entry.candidate.rotation.clone(), type: winner.entry.candidate.type,
-        displacementSites: candidateDisplacementSites(winner.entry.evaluation.sites) } : null,
+        displacementSites: candidateDisplacementSites(winner.entry.evaluation.sites),
+        spinSites: candidateScalarSpinSites(winner.entry.evaluation.sites) } : null,
     };
   });
   if (!policies.every((policy) => policy.scoreDecompositionExact)) {
@@ -17175,7 +17249,8 @@ function capturePolicyComparison(entries) {
       freshSites: entry.evaluation.fresh.map((site) => ({ species: site.species, p: site.p.clone() })),
       fullSites: entry.evaluation.sites.map((site) => ({ species: site.species, p: site.p.clone() })),
       preview: { p: entry.candidate.position.clone(), rotation: entry.candidate.rotation.clone(),
-        type: entry.candidate.type, displacementSites: candidateDisplacementSites(entry.evaluation.sites) },
+        type: entry.candidate.type, displacementSites: candidateDisplacementSites(entry.evaluation.sites),
+        spinSites: candidateScalarSpinSites(entry.evaluation.sites) },
     };
   });
   const candidateDigest = frozenFrontierDigest(entries);
@@ -17219,11 +17294,34 @@ function candidateSites(candidate) {
   return (candidate.rule.sites || overlapGrammar.templates[candidate.type].sites).map((site) => ({
     species: site.species, center: site.center,
     p: site.local.clone().applyQuaternion(candidate.rotation).add(candidate.position),
+    calculationSpin: Number.isFinite(site.calculationSpin) ? site.calculationSpin : null,
+    scalarSpinTemplateReferenceIndex: site.referenceIndex,
     uAnisoCartesianA2: site.uAnisoLocalA2
       ? rotateDisplacementTensor(site.uAnisoLocalA2, candidate.rotation.toArray()) : null,
     displacementTensorSource: site.displacementTensorSource,
     displacementTemplateReferenceIndex: site.referenceIndex,
   }));
+}
+
+function candidateScalarSpinSites(sites) {
+  return sites.filter((site) => Number.isFinite(site.calculationSpin)).map((site) => ({
+    p: site.p.clone(), species: site.species, calculationSpin: site.calculationSpin,
+  }));
+}
+
+function scalarSpinColoringMode() {
+  return markingDraft.spinColoring === "ignore" ? "ignore" : "preserve";
+}
+
+function scalarSpinColoringActive() {
+  return scalarSpinColoringMode() === "preserve"
+    && referenceAtoms.some((atom) => Number.isFinite(atom.calculationSpin));
+}
+
+function scalarSpinSitesCompatible(first, second) {
+  return scalarSpinCompatible(first?.calculationSpin, second?.calculationSpin, {
+    enabled: scalarSpinColoringActive(),
+  });
 }
 
 function candidateDisplacementSites(sites) {
@@ -17237,7 +17335,8 @@ function sitesCanCommute(firstSites, secondSites) {
   for (const first of firstSites) for (const second of secondSites) {
     const distance = first.p.distanceTo(second.p);
     if (distance >= coloredPairDirectionalExclusion(first, second)) continue;
-    if (first.species === second.species && distance <= COMMUTING_SITE_TOLERANCE) continue;
+    if (first.species === second.species && distance <= COMMUTING_SITE_TOLERANCE
+      && scalarSpinSitesCompatible(first, second)) continue;
     return false;
   }
   return true;
@@ -17247,7 +17346,8 @@ function uniqueFreshSites(freshSites) {
   const unique = [];
   freshSites.forEach((site) => {
     if (!unique.some((other) => other.species === site.species
-      && other.p.distanceTo(site.p) <= COMMUTING_SITE_TOLERANCE)) unique.push(site);
+      && other.p.distanceTo(site.p) <= COMMUTING_SITE_TOLERANCE
+      && scalarSpinSitesCompatible(other, site))) unique.push(site);
   });
   return unique;
 }
@@ -18316,6 +18416,8 @@ function evaluateCandidate(candidate, {
   const merged = [];
   const fresh = [];
   let conflicts = 0;
+  let spinConflicts = 0;
+  let spinChecks = 0;
   let boundaryFailures = 0;
   sites.forEach((site) => {
     if (reconstructing) {
@@ -18331,7 +18433,11 @@ function evaluateCandidate(candidate, {
         || coloredDistanceEnvelopes?.maximumExclusion || COLLISION_TOLERANCE)
       .sort((first, second) => first.p.distanceToSquared(site.p) - second.p.distanceToSquared(site.p));
     const same = neighborhood.find((atom) => atom.species === site.species && atom.p.distanceTo(site.p) <= MERGE_TOLERANCE);
-    if (same) merged.push({ site, atom: same });
+    if (same) {
+      if (Number.isFinite(site.calculationSpin) && Number.isFinite(same.calculationSpin)) spinChecks++;
+      if (scalarSpinSitesCompatible(site, same)) merged.push({ site, atom: same });
+      else spinConflicts++;
+    }
     else if (neighborhood.some((atom) => atom.p.distanceTo(site.p)
       < coloredPairDirectionalExclusion(site, atom))) conflicts++;
     else if (!insideGrowthDomain(site.p)) boundaryFailures++;
@@ -18372,17 +18478,21 @@ function evaluateCandidate(candidate, {
   const coherencyMemory = coherencyMemoryForCandidate(candidate, { geometricStrain, merged }, { recordWork });
   const arrivalPath = geometricArrivalPathForCandidate(candidate, fresh);
   const feedExposure = feedstockExposureForFreshSites(fresh, { recordWork });
-  const accepted = conflicts === 0 && boundaryFailures === 0 && merged.length >= 2
+  if (recordWork) scalarSpinOverlapChecks += spinChecks;
+  const accepted = conflicts === 0 && spinConflicts === 0 && boundaryFailures === 0 && merged.length >= 2
     && fresh.length > 0 && knownFailures === 0 && coordinationOverflows.length === 0
     && angularViolations.length === 0 && feedstockSupply.admitted && (markingAccepted || markingFallback);
-  return { accepted, sites, merged, fresh, conflicts, boundaryFailures, knownFailures, markingAccepted, markingFallback,
+  return { accepted, sites, merged, fresh, conflicts, spinConflicts, spinChecks,
+    boundaryFailures, knownFailures, markingAccepted, markingFallback,
     coordinationOverflows, angularViolations, geometricStrain, externalCalibration, affineLoadedGeometricStrain,
     surfaceCompletion, bulkSurfaceDriving, attachmentTopology, habitAnisotropy, frontMorphology, capillaryGeometry, epitaxyRegistry, compositionBalance, feedstockSupply, formalChargeBalance, chargeGeometry, chargeMoment, ionicPair, bondValence,
     externalDrive, thermalField, solutePartition, constraintRobustness, interfaceAccommodation,
     microstructureCoupling, loopClosure, defectPrecursors, coherencyMemory, arrivalPath, feedExposure,
     duplicateSites: canonical.duplicateSites,
     freshReferenceIndices: fresh.map((site) => site.referenceIndex).filter(Number.isInteger),
-    reason: conflicts ? `${conflicts} hard-core/species conflicts` : boundaryFailures ? "outside confinement" : knownFailures ? `${knownFailures} sites outside known configuration` : coordinationOverflows.length ? `${coordinationOverflows.length} colored coordination capacities exceeded` : angularViolations.length ? `${angularViolations.length} colored angular envelopes violated` : !feedstockSupply.admitted ? `feedstock exhausted: ${feedstockSupply.limitingSpecies.join(" / ")}` : merged.length < 2 ? "insufficient shared support" : fresh.length === 0 ? "duplicate covering" : !markingAccepted ? "marking mismatch" : "compatible overlap" };
+    reason: conflicts ? `${conflicts} hard-core/species conflicts`
+      : spinConflicts ? `${spinConflicts} collinear scalar-spin color conflicts`
+      : boundaryFailures ? "outside confinement" : knownFailures ? `${knownFailures} sites outside known configuration` : coordinationOverflows.length ? `${coordinationOverflows.length} colored coordination capacities exceeded` : angularViolations.length ? `${angularViolations.length} colored angular envelopes violated` : !feedstockSupply.admitted ? `feedstock exhausted: ${feedstockSupply.limitingSpecies.join(" / ")}` : merged.length < 2 ? "insufficient shared support" : fresh.length === 0 ? "duplicate covering" : !markingAccepted ? "marking mismatch" : "compatible overlap" };
 }
 
 function referenceCoverageCount() {
@@ -18748,6 +18858,8 @@ function initializeOffLatticeSearch() {
   reconstructionMarkingFallbacks = 0;
   coordinationCapacityPrunes = 0;
   angularEnvelopePrunes = 0;
+  scalarSpinOverlapChecks = 0;
+  scalarSpinCompatibilityPrunes = 0;
   acceptedGeometricStrain = 0;
   rejectedGeometricStrain = 0;
   acceptedUnloadedGeometricStrain = 0;
@@ -18872,7 +18984,7 @@ function initializeOffLatticeSearch() {
         .find((atom) => atom.species === site.species && atom.p.distanceTo(site.p) <= MERGE_TOLERANCE);
       const atom = existing || addAtom(site.p, site.species, `C${seedType + 1}`, null, true);
       atom.referenceIndex = site.referenceIndex;
-      copyReferenceScalarSpin(atom, site.referenceIndex);
+      copyPlacedScalarSpin(atom, site);
       if (!existing) copyPlacedDisplacementTensor(atom, site);
       atom.clusterIds ||= [];
       if (!atom.clusterIds.includes(seed.id)) atom.clusterIds.push(seed.id);
@@ -19257,7 +19369,8 @@ function markingName(config, id) {
   const nominalTolerance = { strict: 1, balanced: 2.5, thermal: 5 }[config.clusterToleranceMode || "balanced"];
   const effectiveTolerance = 100 * (config.effectiveMetricToleranceFraction || nominalTolerance / 100);
   const tolerance = `ε${Math.abs(effectiveTolerance - nominalTolerance) > .05 ? `${nominalTolerance}→${effectiveTolerance.toFixed(1)}` : nominalTolerance}%`;
-  return `M${String(id).padStart(2, "0")} · ${domain} · ${tolerance} · ${channels} · R${config.reach} · ${representation}`;
+  const spin = config.spinColoring === "ignore" ? "chem" : "s±";
+  return `M${String(id).padStart(2, "0")} · ${domain} · ${tolerance} · ${channels} · R${config.reach} · ${representation} · ${spin}`;
 }
 
 function compatibleMarkings() {
@@ -19323,6 +19436,7 @@ function markingMatchesDraft(marking) {
   const draftAuto = Number(markingDraft.channels) === 0;
   return Number(marking.config.reach) === Number(markingDraft.reach)
     && marking.config.representation === markingDraft.representation
+    && (marking.config.spinColoring === "ignore" ? "ignore" : "preserve") === scalarSpinColoringMode()
     && (draftAuto ? marking.config.channelMode === "auto"
       : marking.config.channelMode !== "auto" && Number(marking.config.channels) === Number(markingDraft.channels));
 }
@@ -19335,7 +19449,8 @@ function freezeCurrentMarking() {
     markingCapacityAuditProgress = null;
   }
   const config = { channels: sectionModel.channels, channelMode: sectionModel.channelMode,
-    reach: sectionModel.reach, representation: sectionModel.representation, geometryMode, clusterToleranceMode,
+    reach: sectionModel.reach, representation: sectionModel.representation,
+    spinColoring: scalarSpinColoringMode(), geometryMode, clusterToleranceMode,
     effectiveMetricToleranceFraction: effectiveClusterMetricTolerance(),
     effectiveMetricToleranceAngstrom: clusterMetricToleranceAngstrom() };
   const materialKey = markingMaterialKey();
@@ -19347,7 +19462,8 @@ function freezeCurrentMarking() {
     && candidate.config.reach === config.reach
     && (candidate.config.geometryMode || "auto") === config.geometryMode
     && (candidate.config.clusterToleranceMode || "balanced") === config.clusterToleranceMode
-    && candidate.config.representation === config.representation);
+    && candidate.config.representation === config.representation
+    && (candidate.config.spinColoring === "ignore" ? "ignore" : "preserve") === config.spinColoring);
   if (!marking) {
     const serial = nextMarkingId++;
     marking = {
@@ -19962,7 +20078,7 @@ function applyStudyRecipe(recipeId) {
   orderPrototypeLibrary = null;
   enterPipelineStage(0);
   geometryMode = recipe.geometryMode;
-  markingDraft = { ...recipe.marking };
+  markingDraft = { spinColoring: "preserve", ...recipe.marking };
   structureObservableSelection = recipe.observable;
   orientationalOrderHarmonic = recipe.harmonic;
   applyGrowthProtocol(recipe.protocol);
@@ -20507,17 +20623,24 @@ function syncStageOptions() {
   markingChannelsSelect.value = String(markingDraft.channels);
   markingReachSelect.value = String(markingDraft.reach);
   markingRepresentationSelect.value = markingDraft.representation;
+  const suppliedSpinSites = referenceAtoms.filter((atom) => Number.isFinite(atom.calculationSpin)).length;
+  spinColoringSelect.value = scalarSpinColoringMode();
+  spinColoringSelect.disabled = suppliedSpinSites === 0;
+  spinColoringHint.textContent = suppliedSpinSites
+    ? `${suppliedSpinSites}/${referenceCount()} supplied signed labels · ${scalarSpinColoringMode() === "preserve" ? "hard overlap color" : "ablation"}`
+    : "no supplied scalar spins";
   if (training) {
     const complete = trainingProgress >= markingSampleCount();
     const config = currentMarkingConfig();
     const existing = compatibleMarkings().some((marking) => marking.config.channels === config.channels
       && (marking.config.channelMode || "manual") === config.channelMode
-      && marking.config.reach === config.reach && marking.config.representation === config.representation);
+      && marking.config.reach === config.reach && marking.config.representation === config.representation
+      && (marking.config.spinColoring === "ignore" ? "ignore" : "preserve") === config.spinColoring);
     stageOptionsState.textContent = complete ? existing ? "saved" : "fit complete" : `${trainingProgress}/${markingSampleCount()}`;
     saveMarkingButton.disabled = !complete;
     saveMarkingButton.textContent = existing ? "Update library copy" : "Freeze to library";
     renderMarkingCapacityFrontier();
-    markingConfigNote.textContent = `${resolvedChannels} real coefficient channels${markingDraft.channels ? " (manual capacity override)" : " (derived from the frozen pose × port incidence rank)"} · ${markingChannelAllocationLabel()} · support R=${sectionModel?.support.toFixed(2) || "—"}a · ${MARKING_REPRESENTATIONS[markingDraft.representation].label}: ${MARKING_REPRESENTATIONS[markingDraft.representation].readout}. Clustering freezes the finite or sampled proper-rotation support before this fit; symmetry-equivalent rotations share channels and inactive coefficients remain exactly zero.`;
+    markingConfigNote.textContent = `${resolvedChannels} real coefficient channels${markingDraft.channels ? " (manual capacity override)" : " (derived from the frozen pose × port incidence rank)"} · ${markingChannelAllocationLabel()} · support R=${sectionModel?.support.toFixed(2) || "—"}a · ${MARKING_REPRESENTATIONS[markingDraft.representation].label}: ${MARKING_REPRESENTATIONS[markingDraft.representation].readout}. ${suppliedSpinSites ? scalarSpinColoringMode() === "preserve" ? "Supplied collinear scalar-spin signs are an additional exact overlap color." : "Supplied scalar-spin signs are ignored by the registered chemistry-only ablation." : "No scalar-spin color is available."} Clustering freezes the finite or sampled proper-rotation support before this fit; symmetry-equivalent rotations share channels and inactive coefficients remain exactly zero.`;
   } else {
     renderMarkingLibrary();
     renderGrowthProtocolSummary();
@@ -20750,6 +20873,11 @@ function syncStageOptions() {
     const displacementContactUse = activeImportedFrameValidation()?.thermalDisplacementSites
       ? " Reported Cartesian Uiso/Uij is stored in each template-local frame, rotated by the candidate's proper pose, and re-evaluated along every live hard-contact direction under the independent-site one-sigma assumption."
       : " No reported displacement tensor is available; hard contacts use the frozen scalar colored envelope.";
+    const spinColorUse = referenceAtoms.some((atom) => Number.isFinite(atom.calculationSpin))
+      ? scalarSpinColoringActive()
+        ? " Supplied collinear scalar-spin signs travel unchanged as discrete site colors; coincident same-species overlaps with conflicting signs are rejected."
+        : " Supplied scalar-spin signs are visible but ignored by the registered chemistry-only overlap ablation."
+      : " No supplied scalar-spin color is available.";
     const relaxationUse = structuralRelaxationMode === "off"
       ? " Post-attachment projection is disabled; exact template coordinates are retained."
       : ` After known-window replay, atoms newly emitted in one leap may move by at most ${Math.round(100 * structuralRelaxationSpec().displacementFraction)}% dₙₙ through ${structuralRelaxationSpec().iterations} deterministic contact-residual iterations. The whole projection rolls back unless full contact-angle strain decreases and every hard gate remains valid; this is not a force or MD step.`;
@@ -20841,8 +20969,8 @@ function syncStageOptions() {
     growthModeNote.textContent = finiteIceAnchorMode
       ? "This sealed ice gate executes primitive H₂O connection ports with mutually exclusive orientation domains. Clusters² is disabled because no stationary promoted ice production has been certified."
       : hierarchyEnabled
-      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${displacementContactUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${ionicPairUse}${bondValenceUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`
-      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${ionicPairUse}${bondValenceUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`;
+      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${displacementContactUse}${spinColorUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${ionicPairUse}${bondValenceUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`
+      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${spinColorUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${ionicPairUse}${bondValenceUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`;
   }
 }
 
@@ -20854,6 +20982,8 @@ function resetCounters() {
   rejectedDecisions = 0;
   coordinationCapacityPrunes = 0;
   angularEnvelopePrunes = 0;
+  scalarSpinOverlapChecks = 0;
+  scalarSpinCompatibilityPrunes = 0;
   acceptedGeometricStrain = 0;
   rejectedGeometricStrain = 0;
   acceptedUnloadedGeometricStrain = 0;
@@ -21312,6 +21442,7 @@ function stateForCandidate(candidate, evaluation) {
     n25: evaluation.sites.length,
     minimum: candidate.markingScore,
     clearance: evaluation.conflicts,
+    scalarSpinConflicts: evaluation.spinConflicts || 0,
     boundaryFailures: evaluation.boundaryFailures,
     knownFailures: evaluation.knownFailures,
     coordinationOverflows: evaluation.coordinationOverflows?.length || 0,
@@ -21391,6 +21522,11 @@ function frozenCreationAdmissionGates(evaluation) {
   return [
     { id: "hard-core", label: "species / hard core", observed: evaluation.conflicts,
       passed: evaluation.conflicts === 0, requirement: "zero species-coincidence or exclusion conflicts" },
+    { id: "scalar-spin-color", label: "collinear scalar-spin color", observed: evaluation.spinConflicts || 0,
+      passed: !scalarSpinColoringActive() || evaluation.spinConflicts === 0,
+      requirement: scalarSpinColoringActive()
+        ? "every shared site with two supplied scalar spins retains the same signed color"
+        : "disabled or no supplied scalar-spin labels" },
     { id: "public-boundary", label: "public boundary", observed: evaluation.boundaryFailures,
       passed: evaluation.boundaryFailures === 0, requirement: "every emitted site lies inside the declared public growth domain" },
     { id: "shared-support", label: "shared support", observed: evaluation.merged.length,
@@ -21492,7 +21628,7 @@ function materializeCandidate(candidate, evaluation, leapCreationContext) {
   evaluation.fresh.forEach((site) => {
     const atom = addAtom(site.p, site.species, `C${candidate.type + 1}`, nearestParent(site.p));
     if (Number.isInteger(site.referenceIndex)) atom.referenceIndex = site.referenceIndex;
-    copyReferenceScalarSpin(atom, site.referenceIndex);
+    copyPlacedScalarSpin(atom, site);
     copyPlacedDisplacementTensor(atom, site);
     atom.clusterIds = [placement.id];
     atom.nucleusIds = [placement.nucleusId];
@@ -21576,6 +21712,7 @@ function performOffLatticeEvent() {
     p: candidate.position.clone(), accepted: evaluation.accepted,
     rotation: candidate.rotation.clone(), type: candidate.type,
     displacementSites: candidateDisplacementSites(evaluation.sites),
+    spinSites: candidateScalarSpinSites(evaluation.sites),
     arrivalAxis: evaluation.arrivalPath.axis,
     arrivalSweepDistance: evaluation.arrivalPath.sweepDistanceSceneUnits,
     arrivalRoutePoints: evaluation.arrivalPath.selectedRoutePoints,
@@ -21613,6 +21750,7 @@ function performOffLatticeEvent() {
       if (snapshotEvaluation.boundaryFailures > 0) publicBoundaryPrunes++;
       if (snapshotEvaluation.coordinationOverflows?.length) coordinationCapacityPrunes++;
       if (snapshotEvaluation.angularViolations?.length) angularEnvelopePrunes++;
+      if (snapshotEvaluation.spinConflicts > 0) scalarSpinCompatibilityPrunes++;
       if (!snapshotEvaluation.feedstockSupply?.admitted) feedstockSupplyPrunes++;
       rejectedGeometricStrain += effectiveGeometricStrain(snapshotEvaluation).total;
       rejectedUnloadedGeometricStrain += snapshotEvaluation.geometricStrain.total;
@@ -22647,6 +22785,21 @@ function rebuildWorld() {
       decisionGroup.add(ellipsoids);
       dummy.position.set(0, 0, 0); dummy.quaternion.identity(); dummy.scale.set(1, 1, 1);
     }
+    const spinSites = scalarSpinColoringActive() ? (candidate.spinSites || []).slice(0, 160) : [];
+    if (spinSites.length) {
+      const geometry = new THREE.BufferGeometry().setFromPoints(spinSites.map((site) => site.p));
+      const colors = [];
+      spinSites.forEach((site) => {
+        const polarity = scalarSpinPolarity(site.calculationSpin);
+        const color = new THREE.Color(polarity > 0 ? 0xff7b91 : polarity < 0 ? 0x6aa7ff : 0x9fa8b8);
+        colors.push(color.r, color.g, color.b);
+      });
+      geometry.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3));
+      const points = new THREE.Points(geometry, new THREE.PointsMaterial({ vertexColors: true,
+        size: .15, transparent: true, opacity: .95, sizeAttenuation: true, depthWrite: false }));
+      points.userData.transportedScalarSpinColors = true;
+      decisionGroup.add(points);
+    }
     if (candidateIndex < 12 && candidate.solutePartition?.enabled && candidate.solutePartition.species) {
       const ring = new THREE.Mesh(new THREE.TorusGeometry(.34, .018, 6, 28),
         new THREE.MeshBasicMaterial({ color: elementRecord(candidate.solutePartition.species).color,
@@ -22901,15 +23054,17 @@ function physicsTranslationRecords(leap = null) {
         : "No calculation-force vector is available for this material.",
       boundary: "Residual forces diagnose the supplied calculation state only. They never rank, admit, displace, relax, or extrapolate a growth action; total energies are not compared across entries, methods, or compositions." },
     { id: "collinear-spin", process: "collinear magnetic-order geometry / scalar spin texture",
-      status: spinGeometry.available ? "explicit" : "unavailable",
-      role: spinGeometry.available ? "external scalar-label diagnostic" : "no scalar spin channel",
+      status: spinGeometry.available ? scalarSpinColoringActive() ? "hard" : "explicit" : "unavailable",
+      role: spinGeometry.available ? scalarSpinColoringActive()
+        ? "transported exact overlap color" : "external scalar-label diagnostic / registered ablation"
+        : "no scalar spin channel",
       encoding: spinGeometry.available
-        ? `${spinGeometry.suppliedSites}/${spinGeometry.inputSites} supplied site scalars; normalized signed sum ${spinGeometry.netPolarization >= 0 ? "+" : ""}${spinGeometry.netPolarization.toFixed(3)}; |sᵢsⱼ|-weighted C(r) through ${spinGeometry.maximumReach.toFixed(2)} Å`
+        ? `${spinGeometry.suppliedSites}/${spinGeometry.inputSites} supplied site scalars; normalized signed sum ${spinGeometry.netPolarization >= 0 ? "+" : ""}${spinGeometry.netPolarization.toFixed(3)}; |sᵢsⱼ|-weighted C(r) through ${spinGeometry.maximumReach.toFixed(2)} Å; ${scalarSpinColoringActive() ? "signed scalar labels travel unchanged with rigid cluster poses and must agree at shared sites" : "chemistry-only overlap ablation"}`
         : "no explicit finite per-atom scalar spin population accompanies the active structural record",
       evidence: spinGeometry.available
-        ? `${spinGeometry.positiveSites} positive, ${spinGeometry.negativeSites} negative, ${spinGeometry.nearZeroSites} near-zero sites; ${spinGeometry.checkedPairs.toLocaleString()} finite-crop pairs. Values are preserved in archive-native scalar units.`
+        ? `${spinGeometry.positiveSites} positive, ${spinGeometry.negativeSites} negative, ${spinGeometry.nearZeroSites} near-zero sites; ${spinGeometry.checkedPairs.toLocaleString()} finite-crop pairs; ${scalarSpinOverlapChecks.toLocaleString()} live colored overlaps checked and ${scalarSpinCompatibilityPrunes.toLocaleString()} pruned. Values are preserved in archive-native scalar units.`
         : "No collinear scalar spin geometry is available for this material.",
-      boundary: "Scalar sign is not a 3D vector direction. The schema does not guarantee a magnetic-moment unit or quantization axis. This diagnostic never ranks growth and is not a spin Hamiltonian, exchange energy, magnetic domain assignment, Curie/Néel temperature, spin dynamics, force, rate, or physical time." },
+      boundary: "Scalar sign is an exact discrete site color, not a 3D vector direction. The schema does not guarantee a magnetic-moment unit or quantization axis. Equality at an overlap is not a spin Hamiltonian, exchange interaction, magnetic-domain solution, Curie/Néel temperature, spin dynamics, force, rate, or physical time; missing labels never authorize or reject geometry." },
     { id: "relaxation-ensemble", process: "geometry-optimization path / structural variability", status: relaxation?.available ? "observed" : "unavailable", role: relaxation?.available ? "fixed-topology geometric ensemble" : "single structural state",
       encoding: relaxation?.available
         ? `${relaxation.retainedFrameCount}/${relaxation.originalSystemCount} ordered NOMAD system/calculation snapshots; same-run relative energy, residual-force curves, and a variable-cell-safe selected-to-final affine/non-affine decomposition remain provenance channels`
@@ -23125,7 +23280,7 @@ function physicsTranslationRecords(leap = null) {
       evidence: leap ? `Accepted mean ordering offset ${receiptRound(acceptedExplorationOffset / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedExplorationOffset / Math.max(1, rejectedDecisions), 4)}.` : "No branch order has been sampled yet.",
       boundary: "T* is not Kelvin temperature. These offsets are not energy, Boltzmann weights, equilibrium probabilities, free energy, kinetics, or physical time." },
     { id: "long-range", process: "long-range elasticity, electrostatics, and electronic response", status: "open", role: "outside the bounded local grammar",
-      encoding: `local constraint reach is at most ${coloredCoordinationEnvelopes ? (coloredCoordinationEnvelopes.maximumCutoff * referenceSpacingA / referenceSpacing).toFixed(2) : "—"} Å; ${[affineLoadMode === "none" ? null : `${affineLoadModeLabel()} metric`, activeExternalDriveWeight() > 0 ? `${externalDriveModeLabel()} drive` : null].filter(Boolean).join(" + ") || "no external condition"} is imposed geometrically, but nonlocal material response is unsolved${spinGeometry.available ? "; supplied scalar-spin pair geometry is diagnostic only" : ""}`,
+      encoding: `local constraint reach is at most ${coloredCoordinationEnvelopes ? (coloredCoordinationEnvelopes.maximumCutoff * referenceSpacingA / referenceSpacing).toFixed(2) : "—"} Å; ${[affineLoadMode === "none" ? null : `${affineLoadModeLabel()} metric`, activeExternalDriveWeight() > 0 ? `${externalDriveModeLabel()} drive` : null].filter(Boolean).join(" + ") || "no external condition"} is imposed geometrically, but nonlocal material response is unsolved${spinGeometry.available ? "; supplied scalar-spin signs may color exact overlaps, but interactions remain open" : ""}`,
       evidence: spinGeometry.available
         ? `The explicit collinear-spin row preserves ${spinGeometry.suppliedSites} scalar labels and a finite C(r), while this row keeps magnetic interactions and collective response open.`
         : "The portal reports this omission instead of silently folding it into a local score.",
@@ -23154,7 +23309,7 @@ const PHYSICS_CONTROL_ROUTES = Object.freeze({
   steric: { stage: 1, controlId: "clusterToleranceSelect", label: "Open metric tolerance" },
   local: { stage: 1, controlId: "geometryModeSelect", label: "Open support geometry" },
   "calculation-forces": { stage: 0, controlId: "scenarioSelect", label: "Choose supplied calculation data" },
-  "collinear-spin": { stage: 0, controlId: "spinMapSelect", label: "Inspect supplied scalar-spin geometry" },
+  "collinear-spin": { stage: 3, controlId: "spinColoringSelect", label: "Configure scalar-spin coloring" },
   "relaxation-ensemble": { stage: 0, controlId: "scenarioSelect", label: "Choose a relaxation ensemble" },
   "local-rearrangement": { stage: 0, controlId: "scenarioSelect", label: "Choose paired structural snapshots" },
   "local-symmetry": { stage: 4, controlId: "structureObservableSelect", label: "Open structural microscope" },
@@ -25629,7 +25784,7 @@ function previewPolicyWinner(policy, snapshot) {
   if (policy.preview) {
     currentCandidates = [{ p: policy.preview.p.clone(), rotation: policy.preview.rotation.clone(),
       type: policy.preview.type, accepted: true, preview: true,
-      displacementSites: policy.preview.displacementSites || [] }];
+      displacementSites: policy.preview.displacementSites || [], spinSites: policy.preview.spinSites || [] }];
     rebuildWorld();
     frontierMetric.textContent = frontierReadout.value;
     frontierDelta.textContent = frontierReadout.detail;
@@ -26532,7 +26687,7 @@ function previewMarkingFrontierWinner(row, snapshot) {
   if (row.preview) {
     currentCandidates = [{ p: row.preview.p.clone(), rotation: row.preview.rotation.clone(),
       type: row.preview.type, accepted: true, preview: true,
-      displacementSites: row.preview.displacementSites || [] }];
+      displacementSites: row.preview.displacementSites || [], spinSites: row.preview.spinSites || [] }];
     rebuildWorld();
     frontierMetric.textContent = frontierReadout.value;
     frontierDelta.textContent = frontierReadout.detail;
@@ -27148,10 +27303,12 @@ function observationProvenanceRecords() {
         ? `Signed scalar atomic spin populations are preserved for ${spinGeometry.suppliedSites} supplied sites in archive-native values.`
         : "The active structural record supplies no finite per-atom scalar spin population.",
       transform: spinGeometry.available
-        ? `A finite-crop |sᵢsⱼ|-weighted radial sign correlation is evaluated through ${spinGeometry.maximumReach.toFixed(2)} Å; display halos retain element colors and add no vector arrows.`
+        ? `A finite-crop |sᵢsⱼ|-weighted radial sign correlation is evaluated through ${spinGeometry.maximumReach.toFixed(2)} Å. Preserve mode carries the signed scalar unchanged with each rigid cluster and colors exact overlaps; display halos retain element colors and add no vector arrows.`
         : "No magnetic-order geometry is constructed.",
-      use: "Interactive diagnostic and receipt provenance only; excluded from clustering, marking fit, candidate generation, admission, branch ranking, and structural classification.",
-      boundary: "A collinear scalar label has no supplied 3D axis or guaranteed moment unit. It is not a magnetic Hamiltonian, exchange interaction, domain solution, ordering temperature, spin dynamics, force, rate, or physical time." },
+      use: scalarSpinColoringActive()
+        ? "Excluded from cluster identity and coefficient fitting; preserved as an exact signed overlap color in candidate admission."
+        : "Interactive diagnostic and registered chemistry-only ablation; excluded from clustering, marking fit, candidate generation, admission, branch ranking, and structural classification.",
+      boundary: "A collinear scalar label has no supplied 3D axis or guaranteed moment unit. Overlap-color equality is not a magnetic Hamiltonian, exchange interaction, domain solution, ordering temperature, spin dynamics, force, rate, or physical time." },
     { id: "samples", short: "samples", status: frames > 1 ? "measured" : "single",
       value: frames > 1 ? `${frames} fixed-topology ${relaxation?.available ? "relaxation snapshots" : "frames"}` : "1 structural frame",
       observed: scenarioSelect.value === "imported" && importedFrames.length > 1
@@ -27411,7 +27568,7 @@ function updateUI() {
     actionValue.textContent = "fit m_C(x)";
     domainValue.textContent = `ball R=${sectionModel.support.toFixed(1)}a`;
     energyValue.textContent = point.validationLoss.toFixed(4);
-    resolverValue.textContent = `${sectionModel.channels}ch · ${MARKING_REPRESENTATIONS[sectionModel.representation].short}`;
+    resolverValue.textContent = `${sectionModel.channels}ch · ${MARKING_REPRESENTATIONS[sectionModel.representation].short}${scalarSpinColoringActive() ? " · s± color" : ""}`;
   } else {
     if (material.growthWithheld) {
       renderConstraintLedger(null, "withheld");
@@ -28215,6 +28372,10 @@ markingRepresentationSelect.addEventListener("change", () => {
   markingDraft.representation = markingRepresentationSelect.value;
   restartMarkingTraining();
 });
+spinColoringSelect.addEventListener("change", () => {
+  markingDraft.spinColoring = spinColoringSelect.value === "ignore" ? "ignore" : "preserve";
+  restartMarkingTraining({ rebuildCapacityFrontier: false });
+});
 restartMarkingButton.addEventListener("click", () => restartMarkingTraining({ rebuildCapacityFrontier: false }));
 saveMarkingButton.addEventListener("click", () => {
   if (trainingProgress < markingSampleCount()) return;
@@ -28811,7 +28972,7 @@ function applyLaunchParameters() {
       activeStudyRecipeId = requestedRecipe.id;
       scenarioSelect.value = requestedRecipe.scenario;
       geometryMode = requestedRecipe.geometryMode;
-      markingDraft = { ...requestedRecipe.marking };
+      markingDraft = { spinColoring: "preserve", ...requestedRecipe.marking };
       structureObservableSelection = requestedRecipe.observable;
       orientationalOrderHarmonic = requestedRecipe.harmonic;
       applyGrowthProtocol(requestedRecipe.protocol, { sync: false });

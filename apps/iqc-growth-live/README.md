@@ -19,6 +19,20 @@ the GCTS anatomy view explains covers, oriented ports, markings, search, and
 promotion; and the claim ledger keeps proved, measured, and open results visibly
 separate. Its numbers are frozen benchmark results, not recomputed browser demos.
 
+Build 250 makes supplied collinear scalar spin populations an optional finite
+site color instead of leaving them at the diagnostic boundary. Cluster
+identification remains geometry-and-chemistry based; during GCTS learning the
+**Preserve signed scalar labels** setting adds `s+`, `s−`, or `s0` to each
+observed site's marking color. The label is carried unchanged through every
+proper cluster pose, and an exact same-species overlap with incompatible signs
+is a hard conflict. Missing labels remain unconstrained, while the adjacent
+chemistry-only ablation proves that candidate geometry is unchanged when this
+color is disabled. The separate cluster scenes and live candidate view expose
+the transported signs, and the receipt counts checks and prunes. A collinear
+scalar does not rotate as a vector: this path infers no spin axis, moment unit,
+Hamiltonian, exchange energy, domain, ordering temperature, force, kinetics,
+or magnetic dynamics.
+
 Build 249 closes the visual half of that covariance lineage. A generated site
 now reconstructs the eigensystem of its transported Cartesian U tensor, so the
 same matrix used by directional admission also supplies its oriented 2σ

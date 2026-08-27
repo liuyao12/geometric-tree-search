@@ -43,15 +43,15 @@ def test_pose_port_rank_masks_and_saved_audits_are_explicit():
     assert "Math.min(axes.length, recommendedChannelsForCluster(cluster))" in APP
     assert "markingChannelAllocationLabel" in APP
     assert "inactive coefficients remain exactly zero" in APP
-    assert 'MARKING_LIBRARY_STORAGE = "gcts-marking-library-v4"' in APP
-    assert "MARKING_VOCABULARY_SCHEMA = 4" in APP
+    assert 'MARKING_LIBRARY_STORAGE = "gcts-marking-library-v5"' in APP
+    assert "MARKING_VOCABULARY_SCHEMA = 5" in APP
     assert "channelBasis: sectionModel.axes.map" in APP
     assert "activeChannelsByPrototype: sectionModel.activeChannelsByPrototype.slice()" in APP
 
 
 def test_build_210_release_identity_is_coherent():
-    assert 'buildId: "20260827-249"' in APP
-    assert 'app.js?v=20260827-249' in HTML
+    assert 'buildId: "20260827-250"' in APP
+    assert 'app.js?v=20260827-250' in HTML
     assert "Build 210" in README
     assert "Build 210" in DOC
 

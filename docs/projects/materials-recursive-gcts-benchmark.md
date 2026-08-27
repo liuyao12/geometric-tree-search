@@ -13,6 +13,24 @@ amplification is `b > 1`, a level-`L` accepted macro placement represents
 approximately `b^L` atoms.  Materializing or exporting `N` atomic coordinates
 still has an unavoidable `O(N)` cost and must be reported separately.
 
+### Collinear scalar spin as an exact site color (Build 250)
+
+When a source calculation supplies per-site signed collinear spin populations,
+the browser can now preserve their polarity as part of the finite GCTS marking
+alphabet. The cluster cover itself is unchanged. Each local template stores its
+observed scalar; a proper-SE(3) placement transports the label without rotating
+it; and coincident same-species sites merge only when the two supplied scalar
+colors agree. Missing labels do not become guessed zeros. An explicit
+chemistry-only ablation disables this gate while retaining the same geometric
+candidate construction, and receipts report reference/template/rule/candidate
+coverage, overlap checks, and compatibility prunes.
+
+This is a discrete geometric compatibility hypothesis, not a magnetic model.
+The source API supplies neither a three-dimensional quantization axis nor a
+guaranteed magnetic-moment unit, and the browser infers no vector moment,
+exchange coupling, Hamiltonian, energy, domain wall, ordering temperature,
+force, relaxation trajectory, kinetics, or physical time.
+
 ### Transported displacement ellipsoids (Build 249)
 
 The browser now renders the covariance that the growth engine actually uses.

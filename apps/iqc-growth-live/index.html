@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260827-249">
+  <link rel="stylesheet" href="./style.css?v=20260827-250">
   <script type="importmap">
     {
       "imports": {
@@ -480,6 +480,13 @@
                 <option value="chiral-halo">Chiral local halo · proper rotations</option>
                 <option value="ports">Connection-port vector</option>
                 <option value="whole">Whole-cluster action</option>
+              </select>
+            </label>
+            <label class="field" for="spinColoringSelect">
+              <span>Collinear spin coloring <b id="spinColoringHint">no supplied scalar spins</b></span>
+              <select id="spinColoringSelect">
+                <option value="preserve" selected>Preserve signed scalar labels at overlaps</option>
+                <option value="ignore">Ignore spin labels · chemistry-only ablation</option>
               </select>
             </label>
             <div class="option-actions">
@@ -1171,7 +1178,7 @@
                 <svg id="spinCorrelationPlot" class="spin-correlation-plot" viewBox="0 0 240 112" role="img" aria-label="Finite-crop radial correlation of supplied scalar atomic spins"></svg>
                 <div id="spinMapExtremes" class="spin-map-extremes" role="group" aria-label="Focus strongly polarized or correlated supplied sites"></div>
                 <article id="spinGeometryDetail" class="spin-geometry-detail" aria-live="polite"></article>
-                <p>Only explicit signed scalar atomic spin populations are used. Pair correlation is geometric and invariant to translation, proper rotation, atom order, and a global sign reversal. NOMAD does not supply a vector axis or guaranteed unit here, so the map has no arrows and claims no magnetic moment in μ<sub>B</sub>, exchange energy, Hamiltonian, Curie/Néel temperature, domain state, force, or growth preference.</p>
+                <p>Only explicit signed scalar atomic spin populations are used. Pair correlation is geometric and invariant to translation, proper rotation, atom order, and a global sign reversal. In preserve mode, the sign also travels as a discrete marking color and rejects a conflicting exact same-species overlap; it never supplies a ranking score. NOMAD does not supply a vector axis or guaranteed unit here, so the map has no arrows and claims no magnetic moment in μ<sub>B</sub>, exchange energy, Hamiltonian, Curie/Néel temperature, domain state, force, or magnetic dynamics.</p>
               </section>
               <div class="policy-sensitivity-heading"><small>pathway sensitivity</small><strong id="policySensitivityState">no evaluated frontiers</strong></div>
               <div id="policyHistory" class="policy-history" role="group" aria-label="Inspect policy disagreement on recent frozen frontiers"></div>
@@ -1923,7 +1930,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260827-249"></script>
+  <script type="module" src="./app.js?v=20260827-250"></script>
   <script type="module" src="./evidence-atlas.js?v=20260827-20"></script>
 </body>
 </html>

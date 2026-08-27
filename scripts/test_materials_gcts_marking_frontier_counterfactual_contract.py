@@ -34,8 +34,8 @@ def test_frontier_marking_inspector_previews_without_execution():
 def test_counterfactual_is_receipted_and_release_is_consistent():
     assert "markingFrontierCounterfactual: (() =>" in APP
     assert "scoreDigest: marking.scoreDigest" in APP
-    assert 'buildId: "20260827-249"' in APP
-    assert 'app.js?v=20260827-249' in HTML
+    assert 'buildId: "20260827-250"' in APP
+    assert 'app.js?v=20260827-250' in HTML
     assert "Build 213" in README
     assert "Build 213" in DOC
 
