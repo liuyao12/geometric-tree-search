@@ -168,6 +168,215 @@ def replay_certificate(tile_orientations, certificate: dict) -> dict:
     }
 
 
+def popcount(value: int) -> int:
+    """Python 3.9-compatible population count for placement masks."""
+    return bin(value).count("1")
+
+
+def exact_weighted_multicover(placements: list[dict], copies: int) -> dict:
+    """Solve one rooted quotient exactly with sparse bitset GCTS.
+
+    A global translation and proper A2 rotation fix placement zero.  At every
+    state, ``capacities`` is the still-missing solid angle at each quotient
+    residue.  The pivot residue must be covered by some remaining placement;
+    branching over all such placements is therefore complete.  Failed states
+    are memoized with both their capacities and selected-placement mask, so a
+    Boolean placement can never be reused.
+    """
+    if copies < 1 or not placements:
+        raise ValueError("invalid rooted weighted multicover")
+    raw_vectors = [tuple(placement["weights"]) for placement in placements]
+    divisor = math.gcd(48, *(
+        weight for vector in raw_vectors for weight in vector
+    ))
+    full_weight = 48 // divisor
+    vectors = [tuple(weight // divisor for weight in vector) for vector in raw_vectors]
+    capacities = tuple(full_weight - weight for weight in vectors[0])
+    if any(capacity < 0 for capacity in capacities):
+        return {
+            "result": "unsat", "chosen_indices": None,
+            "nodes": 1, "failed_states": 1, "eligible_placements": 0,
+            "used_mitm": False, "mitm_pairs": 0, "mitm_triples": 0,
+        }
+
+    original_indices = []
+    eligible_vectors = []
+    for index, vector in enumerate(vectors[1:], 1):
+        if all(weight <= capacity for weight, capacity in zip(vector, capacities)):
+            original_indices.append(index)
+            eligible_vectors.append(vector)
+    residue_count = len(capacities)
+    eligible_count = len(eligible_vectors)
+    all_mask = (1 << eligible_count) - 1
+    positive_masks = [0] * residue_count
+    weight_masks = [
+        [0] * (full_weight + 1) for _ in range(residue_count)
+    ]
+    sparse_vectors = []
+    for placement_index, vector in enumerate(eligible_vectors):
+        bit = 1 << placement_index
+        sparse = []
+        for residue, weight in enumerate(vector):
+            if not weight:
+                continue
+            positive_masks[residue] |= bit
+            weight_masks[residue][weight] |= bit
+            sparse.append((residue, weight))
+        sparse_vectors.append(tuple(sparse))
+    exceed_masks = [
+        [0] * (full_weight + 1) for _ in range(residue_count)
+    ]
+    for residue in range(residue_count):
+        running = 0
+        for capacity in range(full_weight, -1, -1):
+            exceed_masks[residue][capacity] = running
+            running |= weight_masks[residue][capacity]
+
+    nodes = 0
+    failed = set()
+    dfs_node_limit = 50000 if copies == 6 else 0
+    fallback = object()
+
+    def search(state_capacities, selected_mask, remaining):
+        nonlocal nodes
+        nodes += 1
+        if dfs_node_limit and nodes > dfs_node_limit:
+            return fallback
+        if remaining == 0:
+            return () if not any(state_capacities) else None
+        state = (state_capacities, selected_mask)
+        if state in failed:
+            return None
+
+        fitting_mask = all_mask & ~selected_mask
+        for residue, capacity in enumerate(state_capacities):
+            fitting_mask &= ~exceed_masks[residue][capacity]
+
+        pivot_mask = 0
+        pivot_score = None
+        for residue, capacity in enumerate(state_capacities):
+            if not capacity:
+                continue
+            choices = fitting_mask & positive_masks[residue]
+            choice_count = popcount(choices)
+            if not choice_count:
+                failed.add(state)
+                return None
+
+            # Even the largest ``remaining`` contributions cannot meet this
+            # residue.  This is a necessary condition only, hence sound.
+            available = 0
+            slots = remaining
+            for weight in range(full_weight, 0, -1):
+                take = min(popcount(choices & weight_masks[residue][weight]), slots)
+                available += take * weight
+                slots -= take
+                if not slots:
+                    break
+            if available < capacity:
+                failed.add(state)
+                return None
+            score = (choice_count, -capacity, residue)
+            if pivot_score is None or score < pivot_score:
+                pivot_score = score
+                pivot_mask = choices
+
+        while pivot_mask:
+            bit = pivot_mask & -pivot_mask
+            compact_index = bit.bit_length() - 1
+            pivot_mask -= bit
+            next_capacities = list(state_capacities)
+            for residue, weight in sparse_vectors[compact_index]:
+                next_capacities[residue] -= weight
+            suffix = search(tuple(next_capacities), selected_mask | bit, remaining - 1)
+            if suffix is fallback:
+                return fallback
+            if suffix is not None:
+                return (original_indices[compact_index], *suffix)
+        failed.add(state)
+        return None
+
+    chosen = search(capacities, 0, copies - 1)
+    mitm_pairs = 0
+    mitm_triples = 0
+    used_mitm = chosen is fallback
+    if used_mitm:
+        # Six copies leave five choices after fixing the root.  Exhaustively
+        # split those choices 2+3.  Every five-element solution has such a
+        # partition, so this is a complete fallback rather than a heuristic.
+        pair_sums = {}
+        for left in range(eligible_count):
+            left_vector = eligible_vectors[left]
+            for right in range(left + 1, eligible_count):
+                summed = tuple(
+                    left_weight + right_weight
+                    for left_weight, right_weight in zip(
+                        left_vector, eligible_vectors[right]
+                    )
+                )
+                if any(
+                    weight > capacity
+                    for weight, capacity in zip(summed, capacities)
+                ):
+                    continue
+                pair_sums.setdefault(summed, []).append((left, right))
+                mitm_pairs += 1
+        chosen = None
+        for first in range(eligible_count):
+            first_vector = eligible_vectors[first]
+            for second in range(first + 1, eligible_count):
+                pair = tuple(
+                    left + right
+                    for left, right in zip(first_vector, eligible_vectors[second])
+                )
+                if any(
+                    weight > capacity
+                    for weight, capacity in zip(pair, capacities)
+                ):
+                    continue
+                for third in range(second + 1, eligible_count):
+                    triple = tuple(
+                        partial + weight
+                        for partial, weight in zip(pair, eligible_vectors[third])
+                    )
+                    mitm_triples += 1
+                    if any(
+                        weight > capacity
+                        for weight, capacity in zip(triple, capacities)
+                    ):
+                        continue
+                    target = tuple(
+                        capacity - weight
+                        for capacity, weight in zip(capacities, triple)
+                    )
+                    triple_indices = (first, second, third)
+                    disjoint_pair = next((
+                        candidate_pair
+                        for candidate_pair in pair_sums.get(target, ())
+                        if all(index not in triple_indices for index in candidate_pair)
+                    ), None)
+                    if disjoint_pair is not None:
+                        chosen = tuple(
+                            original_indices[index]
+                            for index in (*triple_indices, *disjoint_pair)
+                        )
+                        break
+                if chosen is not None:
+                    break
+            if chosen is not None:
+                break
+    return {
+        "result": "sat" if chosen is not None else "unsat",
+        "chosen_indices": [0, *chosen] if chosen is not None else None,
+        "nodes": nodes,
+        "failed_states": len(failed),
+        "eligible_placements": eligible_count,
+        "used_mitm": used_mitm,
+        "mitm_pairs": mitm_pairs,
+        "mitm_triples": mitm_triples,
+    }
+
+
 def screen_candidate(record: dict, args) -> dict:
     started = time.monotonic()
     occupancy = tile_occupancy(record["cells"])
@@ -175,15 +384,30 @@ def screen_candidate(record: dict, args) -> dict:
     weight = sum(occupancy.values())
     hnf_visited = 0
     solver_unknown = 0
+    exact_multicover_nodes = 0
+    exact_multicover_failed_states = 0
+    exact_multicover_mitm_fallbacks = 0
+    exact_multicover_mitm_pairs = 0
+    exact_multicover_mitm_triples = 0
     exhausted_by_copies: dict[str, int] = {}
     for copies in range(args.min_copies, args.max_copies + 1):
         numerator = weight * copies
         if numerator % 48:
             continue
         determinant = numerator // 48
-        candidates = hnf_candidates(determinant)
+        all_candidates = hnf_candidates(determinant)
+        hnf_start = max(0, getattr(args, "hnf_start", 0))
+        configured_stop = getattr(args, "hnf_stop", 0)
+        hnf_stop = min(
+            len(all_candidates),
+            configured_stop if configured_stop else len(all_candidates),
+        )
+        if hnf_start >= hnf_stop:
+            raise ValueError("empty HNF range")
+        candidates = all_candidates[hnf_start:hnf_stop]
         copy_unknown = 0
-        for hnf_index, hnf in enumerate(candidates):
+        for local_hnf_index, hnf in enumerate(candidates):
+            hnf_index = hnf_start + local_hnf_index
             hnf_visited += 1
             placements = []
             for orientation_index, orientation in enumerate(tile_orientations):
@@ -260,6 +484,17 @@ def screen_candidate(record: dict, args) -> dict:
                 result = sat if chosen_indices else unsat
                 model = None
                 variables = []
+            elif getattr(args, "solver", "exact") == "exact":
+                exact_result = exact_weighted_multicover(placements, copies)
+                exact_multicover_nodes += exact_result["nodes"]
+                exact_multicover_failed_states += exact_result["failed_states"]
+                exact_multicover_mitm_fallbacks += int(exact_result["used_mitm"])
+                exact_multicover_mitm_pairs += exact_result["mitm_pairs"]
+                exact_multicover_mitm_triples += exact_result["mitm_triples"]
+                chosen_indices = exact_result["chosen_indices"]
+                result = sat if exact_result["result"] == "sat" else unsat
+                model = None
+                variables = []
             else:
                 variables = [Bool(f"p_{copies}_{hnf_index}_{index}") for index in range(len(placements))]
                 solver = SolverFor("QF_FD") if args.solver == "qffd" else Solver()
@@ -319,6 +554,14 @@ def screen_candidate(record: dict, args) -> dict:
                         "replay": replay,
                         "hnf_visited": hnf_visited,
                         "solver_unknown": solver_unknown,
+                        "exact_multicover_nodes": exact_multicover_nodes,
+                        "exact_multicover_failed_states": exact_multicover_failed_states,
+                        "exact_multicover_mitm_fallbacks": exact_multicover_mitm_fallbacks,
+                        "exact_multicover_mitm_pairs": exact_multicover_mitm_pairs,
+                        "exact_multicover_mitm_triples": exact_multicover_mitm_triples,
+                        "hnf_range": [hnf_start, hnf_stop],
+                        "hnf_total": len(all_candidates),
+                        "hnf_range_exhausted": False,
                         "exhausted_by_copies": exhausted_by_copies,
                         "milliseconds": round((time.monotonic() - started) * 1000),
                     },
@@ -326,6 +569,14 @@ def screen_candidate(record: dict, args) -> dict:
             if result != unsat:
                 solver_unknown += 1
                 copy_unknown += 1
+            progress_every_hnf = getattr(args, "progress_every_hnf", 0)
+            if progress_every_hnf and hnf_visited % progress_every_hnf == 0:
+                print(
+                    f"{record['id']} copies={copies} hnf={hnf_index + 1}/{len(all_candidates)} "
+                    f"nodes={exact_multicover_nodes} failed={exact_multicover_failed_states} "
+                    f"elapsed_s={round(time.monotonic() - started, 1)}",
+                    flush=True,
+                )
             if args.candidate_time_ms and (time.monotonic() - started) * 1000 >= args.candidate_time_ms:
                 return {
                     **record,
@@ -335,12 +586,20 @@ def screen_candidate(record: dict, args) -> dict:
                         "active_copies": copies,
                         "hnf_visited": hnf_visited,
                         "solver_unknown": solver_unknown,
+                        "exact_multicover_nodes": exact_multicover_nodes,
+                        "exact_multicover_failed_states": exact_multicover_failed_states,
+                        "exact_multicover_mitm_fallbacks": exact_multicover_mitm_fallbacks,
+                        "exact_multicover_mitm_pairs": exact_multicover_mitm_pairs,
+                        "exact_multicover_mitm_triples": exact_multicover_mitm_triples,
+                        "hnf_range": [hnf_start, hnf_stop],
+                        "hnf_total": len(all_candidates),
+                        "hnf_range_exhausted": False,
                         "exhausted_by_copies": exhausted_by_copies,
                         "milliseconds": round((time.monotonic() - started) * 1000),
                     },
                 }
-        if copy_unknown == 0:
-            exhausted_by_copies[str(copies)] = len(candidates)
+        if copy_unknown == 0 and hnf_start == 0 and hnf_stop == len(all_candidates):
+            exhausted_by_copies[str(copies)] = len(all_candidates)
     return {
         **record,
         "classification": "unresolved",
@@ -348,6 +607,14 @@ def screen_candidate(record: dict, args) -> dict:
             "stopped_by": None,
             "hnf_visited": hnf_visited,
             "solver_unknown": solver_unknown,
+            "exact_multicover_nodes": exact_multicover_nodes,
+            "exact_multicover_failed_states": exact_multicover_failed_states,
+            "exact_multicover_mitm_fallbacks": exact_multicover_mitm_fallbacks,
+            "exact_multicover_mitm_pairs": exact_multicover_mitm_pairs,
+            "exact_multicover_mitm_triples": exact_multicover_mitm_triples,
+            "hnf_range": [hnf_start, hnf_stop],
+            "hnf_total": len(all_candidates),
+            "hnf_range_exhausted": solver_unknown == 0,
             "exhausted_by_copies": exhausted_by_copies,
             "milliseconds": round((time.monotonic() - started) * 1000),
         },
@@ -362,7 +629,10 @@ def main():
     parser.add_argument("--max-copies", type=int, default=6)
     parser.add_argument("--hnf-timeout-ms", type=int, default=5000)
     parser.add_argument("--candidate-time-ms", type=int, default=0)
-    parser.add_argument("--solver", choices=("default", "qffd"), default="default")
+    parser.add_argument("--solver", choices=("exact", "default", "qffd"), default="exact")
+    parser.add_argument("--progress-every-hnf", type=int, default=0)
+    parser.add_argument("--hnf-start", type=int, default=0)
+    parser.add_argument("--hnf-stop", type=int, default=0)
     parser.add_argument("--only-unresolved", action="store_true")
     parser.add_argument("--offset", type=int, default=0)
     parser.add_argument("--limit", type=int, default=0)

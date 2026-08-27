@@ -53,7 +53,11 @@ for (const candidate of A2_LAYERED_SIZE7_CANDIDATES) {
   }, tileSpecs);
   assert.equal(catalogue.prototiles[0].name, candidate.name);
   assert.equal(catalogue.prototiles[0].unique_orientations.length, 6);
-  assert.equal(candidate.screening.periodic_exact_through, 4);
+  assert.equal(candidate.screening.periodic_exact_through, 6);
+  assert.equal(candidate.screening.periodic_six_copy_hnf_visited, 741);
+  assert.equal(candidate.screening.periodic_six_copy_solver_unknowns, 0);
+  assert.equal(candidate.screening.periodic_six_copy_complete, true);
+  assert.ok(candidate.screening.periodic_six_copy_exact_multicover_nodes > 0);
   assert.equal(candidate.screening.corona2_outer_exhausted, false);
 }
 

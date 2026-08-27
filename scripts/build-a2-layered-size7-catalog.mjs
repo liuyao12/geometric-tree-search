@@ -24,6 +24,9 @@ const minimizedCores = (await Promise.all([
 const periodicSixToEight = (await Promise.all([1, 2, 3].map(part =>
   readNdjson(`data/a2-layered-size7-periodic-z3-focus6to8-part${part}.ndjson`)
 ))).flat();
+const periodicExactSix = (await Promise.all([
+  "00128", "00211", "00232", "00235", "00694", "00755", "00777", "00809"
+].map(id => readNdjson(`data/a2-layered-size7-periodic-exact6-a2lp_7_${id}.ndjson`)))).flat();
 const substitutions = new Map();
 for (const scale of [2, 3, 4, 5, 6]) {
   for (const record of await readNdjson(`data/a2-layered-size7-substitution-scale${scale}-focused.ndjson`)) {
@@ -88,6 +91,7 @@ const coreDeeperById = byId(coreDeeper);
 const coreStrengthenedById = byId(coreStrengthened);
 const minimizedCoreById = byId(minimizedCores);
 const periodicSixToEightById = byId(periodicSixToEight);
+const periodicExactSixById = byId(periodicExactSix);
 const selected = [...focusedById.keys()].sort((left, right) =>
   coronaById.get(left).corona_z3.replay.patch_copies
   - coronaById.get(right).corona_z3.replay.patch_copies
@@ -102,6 +106,7 @@ const candidates = selected.map((id, index) => {
     ?? coreExtendedById.get(id) ?? coreLongById.get(id);
   const minimizedCore = minimizedCoreById.get(id);
   const largerPeriodic = periodicSixToEightById.get(id);
+  const exactSix = periodicExactSixById.get(id);
   const substitutionScreens = substitutions.get(id) ?? [];
   const anisotropicScreens = anisotropicById.get(id) ?? [];
   const twoClusterScreens = twoClusterSubstitutions.get(id) ?? [];
@@ -126,11 +131,11 @@ const candidates = selected.map((id, index) => {
     screening: {
       status: "inconclusive",
       certificate: null,
-      census_stage: "a2_layered_size7_exact_through4_2026_08_27",
+      census_stage: "a2_layered_size7_exact_through6_2026_08_27",
       source_pool_size: 1119,
       periodic_two_copy_certificates: 910,
       periodic_four_copy_certificates_after_two_copy_screen: 98,
-      periodic_exact_through: 4,
+      periodic_exact_through: 6,
       periodic_determinant14_hnf_bases_exhausted: 399,
       periodic_solver_unknowns: 0,
       corona_completed_radius: 1,
@@ -149,9 +154,13 @@ const candidates = selected.map((id, index) => {
         ? `data/a2-layered-size7-corona2-core-${id}-mincore.ndjson`
         : null,
       periodic_six_copy_hnf_total: 741,
-      periodic_six_copy_hnf_visited: largerPeriodic?.periodic_z3?.hnf_visited ?? 0,
-      periodic_six_copy_solver_unknowns: largerPeriodic?.periodic_z3?.solver_unknown ?? 0,
-      periodic_six_copy_complete: !!largerPeriodic?.periodic_z3?.exhausted_by_copies?.["6"],
+      periodic_six_copy_hnf_visited: exactSix?.periodic_z3?.hnf_visited ?? 0,
+      periodic_six_copy_solver_unknowns: exactSix?.periodic_z3?.solver_unknown ?? 0,
+      periodic_six_copy_complete: exactSix?.periodic_z3?.exhausted_by_copies?.["6"] === 741,
+      periodic_six_copy_exact_multicover_nodes:
+        exactSix?.periodic_z3?.exact_multicover_nodes ?? 0,
+      periodic_six_copy_exact_failed_states:
+        exactSix?.periodic_z3?.exact_multicover_failed_states ?? 0,
       substitution_scalar_scales_excluded: substitutionScreens
         .filter(record => record.substitution_classification === "no_scalar_substitution_at_scale")
         .map(record => record.substitution.scale).sort((left, right) => left - right),
@@ -205,9 +214,11 @@ const candidates = selected.map((id, index) => {
       corona2_gcts_report: coreSecond
         ? `data/a2-layered-size7-corona2-core-${id}-strengthened.ndjson`
         : null,
-      periodic_larger_report: largerPeriodic
-        ? "data/a2-layered-size7-periodic-z3-focus6to8-part*.ndjson"
-        : null,
+      periodic_larger_report: exactSix
+        ? `data/a2-layered-size7-periodic-exact6-${id}.ndjson`
+        : largerPeriodic
+          ? "data/a2-layered-size7-periodic-z3-focus6to8-part*.ndjson"
+          : null,
       substitution_reports: substitutionScreens.map(record =>
         `data/a2-layered-size7-substitution-scale${record.substitution.scale}-focused.ndjson`
       ),

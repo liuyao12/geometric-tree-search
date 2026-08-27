@@ -175,12 +175,28 @@ satisfiable and no radius-two witness was found. The current catalogue points
 to these bounded-inconclusive `-strengthened.ndjson` reports and separately
 exposes the size of each smallest replayed core.
 
-A separate longer periodic screen attempted six- and eight-copy quotients.
-Every candidate reached its 120-second limit while still at six copies,
-visiting between 41 and 127 of the 741 determinant-21 HNF bases and returning
-between two and twenty solver unknowns. It found no positive certificate, but
-is not an exhaustion result. The three batch reports are
-`data/a2-layered-size7-periodic-z3-focus6to8-part1.ndjson` through `part3`.
+The eight focused candidates now have a complete six-copy periodic screen.
+The original generic pseudo-Boolean run reached its 120-second limit after
+only 41--127 of the 741 determinant-21 HNF bases and left solver unknowns.
+`scripts/screen-a2-layered-periodic-z3.py` now uses an exact sparse-bitset
+multicover GCTS: a root placement is fixed by global translation and proper A2
+rotation, the most constrained unsatisfied quotient residue is branched on,
+and exact failed capacity/placement-mask states are memoized. Quotients that
+exceed 50,000 DFS states switch to a complete 2+3 meet-in-the-middle
+enumeration of the five remaining placements. Every five-element choice has
+such a partition, so the fallback loses no solutions.
+
+Across the eight candidates this exhausts all 5,928 candidate/HNF cases in
+105,449,482 exact search nodes and 73,291,319 memoized failures. There are no
+periodic certificates and no solver unknowns. `00128`, the worst case, uses
+four disjoint range reports whose hashes and exact interval cover are checked
+by `scripts/merge-a2-layered-periodic-exact.py`; the merged report retains
+those receipts. Per-candidate reports begin with
+`data/a2-layered-size7-periodic-exact6-`. Thus all eight are now exact through
+six copies. Periodic quotients of eight or more copies remain open, so this is
+still not a non-tiling or aperiodicity proof. The earlier
+`data/a2-layered-size7-periodic-z3-focus6to8-part*.ndjson` files remain only as
+historical timeout controls.
 
 `scripts/screen-a2-layered-substitution.py` exactly subdivides a scalar-inflated
 supertile into atomic A2 prism cells, enumerates every properly oriented copy
