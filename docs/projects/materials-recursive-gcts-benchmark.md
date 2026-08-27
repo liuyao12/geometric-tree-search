@@ -6523,3 +6523,18 @@ sets with no target use. Passing pairs expose the existing trajectory and outcom
 failed pairs remain descriptive and name the failed invariant. This is an algorithmic
 one-factor intervention over learned local connection geometry, not a physical-time,
 free-energy, rate, or population-level causal claim.
+
+## Build 218: freeze the saved-marking response horizon
+
+The marking intervention adds a preregistered 1-, 4-, or 8-leap structural horizon. Its
+value is serialized into the registration before either arm resets to supplied positions.
+The live executor checks the horizon before every action and immediately after every frozen
+structural-leap certificate, pauses Play, disables pipeline continuation, and rejects later
+manual steps while the experiment remains active. Receipts separately report event count,
+exact horizon attainment, overrun, and audited finite fixed points.
+
+Notebook response certification now requires both arms at the exact registered horizon.
+The only terminal exception requires both arms to reach certified finite fixed points at or
+before that horizon. One early fixed point versus one censored live frontier remains
+non-comparable. This removes unequal discrete search work as a confounder while preserving
+the boundary that structural-leap index is not physical time, a rate, or a dynamical path.

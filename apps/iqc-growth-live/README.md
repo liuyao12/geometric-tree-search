@@ -5789,3 +5789,19 @@ constraint work, causal depth, morphology, q₆/|ψ₆|, and finite-section S(q)
 A mismatch fails closed while preserving descriptive deltas. This certifies a deterministic
 algorithmic response on one supplied configuration—not physical kinetics, an independent
 specimen comparison, or a general material law.
+
+### Build 218 · compare marking arms at one structural horizon
+
+Saved-marking registration now freezes a user-selected horizon of 1, 4, or 8 discrete
+structural leaps. The control is locked with the artifact pair and every non-marking growth
+setting. During either arm, Play and single-step execution stop exactly at that horizon;
+attempting another step fails closed until the user saves the run, configures the partner,
+or clears the experiment. The receipt reports current leap count, reached/exceeded state,
+and any earlier audited structural fixed point.
+
+The notebook no longer treats two merely executed arms as response-comparable. Both must
+reach the registered horizon, or both must end at certified finite structural fixed points
+no later than that horizon, in addition to the identical-input, one-marking-factor, and
+first-frontier checks. The card displays whether the horizon is matched, terminal, or still
+open. This aligns deterministic geometric work; it does not align physical time, rates,
+activation barriers, or trajectories.

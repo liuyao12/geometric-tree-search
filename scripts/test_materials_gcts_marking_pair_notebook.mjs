@@ -9,6 +9,12 @@ assert.ok(start >= 0 && end > start, "registered marking-pair audit must be extr
 const context = {};
 vm.runInNewContext(source.slice(start, end), context);
 
+const validationStart = source.indexOf("function validateMarkingComparisonExperiment");
+const validationEnd = source.indexOf("function markingComparisonSettingsStillMatch", validationStart);
+const horizonStart = source.indexOf("function enforceMarkingComparisonHorizon");
+const horizonEnd = source.indexOf("function configureMarkingComparisonArm", horizonStart);
+assert.ok(validationStart >= 0 && validationEnd > validationStart && horizonStart >= 0 && horizonEnd > horizonStart);
+
 const artifactPair = {
   baseline: { id: "marking-1", name: "scalar", artifactDigest: "artifact-a" },
   alternative: { id: "marking-2", name: "oriented", artifactDigest: "artifact-b" },
@@ -18,6 +24,7 @@ const registration = (arm) => ({
   experimentKind: "saved-marking intervention",
   ...artifactPair,
   arm,
+  comparisonHorizonLeaps: 4,
   registrationDigest: "registered-pair",
   sourceCandidateSetDigest: "source-candidates",
   sourceHardAdmittedSetDigest: "source-hard",
@@ -35,7 +42,7 @@ const registration = (arm) => ({
 });
 const execution = (candidate = "first-candidates", hard = "first-hard") => ({
   executed: true,
-  structuralLeapEvents: 2,
+  structuralLeapEvents: 4,
   firstFrontierCandidateSetDigest: candidate,
   firstFrontierHardAdmittedSetDigest: hard,
   firstFrontierTargetUsed: false,
@@ -63,6 +70,18 @@ const frontierMismatch = context.notebookRegisteredMarkingPairAudit(
 assert.equal(frontierMismatch.valid, true, "registration remains valid before response evidence");
 assert.equal(frontierMismatch.responseComparable, false, "different executed frontiers fail closed");
 
+const terminalBaseline = entry("baseline", { ...execution(), structuralLeapEvents: 2, fixedPointObserved: true });
+const terminalAlternative = entry("alternative", { ...execution(), structuralLeapEvents: 3, fixedPointObserved: true });
+const terminalPair = context.notebookRegisteredMarkingPairAudit(
+  terminalBaseline, terminalAlternative, intervention,
+);
+assert.equal(terminalPair.responseComparable, true, "two earlier audited fixed points are comparable");
+assert.equal(terminalPair.matchedTerminalFixedPoints, true);
+const censoredAlternative = entry("alternative", { ...execution(), structuralLeapEvents: 3, fixedPointObserved: false });
+assert.equal(context.notebookRegisteredMarkingPairAudit(
+  terminalBaseline, censoredAlternative, intervention,
+).responseComparable, false, "one fixed point versus one censored frontier fails closed");
+
 const unexecuted = context.notebookRegisteredMarkingPairAudit(
   entry("baseline", { ...execution(), executed: false }), entry("alternative"), intervention,
 );
@@ -78,10 +97,39 @@ assert.equal(context.notebookRegisteredMarkingPairAudit(
   entry("baseline"), mutatedArtifact, intervention,
 ).valid, false);
 
+const horizonSignals = { playing: true, rendered: 0, buttonsUpdated: 0 };
+const horizonContext = {
+  pipelineStage: 4,
+  leapEventCount: 4,
+  markingComparisonExperiment: registration("baseline"),
+  growthStopReason: "",
+  pipelineAuto: true,
+  setPlaying(value) { horizonSignals.playing = value; },
+  updatePipelineButtons() { horizonSignals.buttonsUpdated += 1; },
+  updateUI() { horizonSignals.rendered += 1; },
+};
+vm.runInNewContext(source.slice(validationStart, validationEnd)
+  + source.slice(horizonStart, horizonEnd), horizonContext);
+assert.equal(horizonContext.enforceMarkingComparisonHorizon(), true);
+assert.equal(horizonSignals.playing, false);
+assert.equal(horizonContext.pipelineAuto, false);
+assert.match(horizonContext.growthStopReason, /frozen 4-leap comparison horizon/);
+assert.equal(horizonSignals.buttonsUpdated, 1);
+assert.equal(horizonSignals.rendered, 0);
+horizonContext.leapEventCount = 3;
+assert.equal(horizonContext.enforceMarkingComparisonHorizon(true), false);
+assert.equal(horizonSignals.rendered, 0);
+
 const targetTainted = entry("alternative");
 targetTainted.markingComparisonExperiment.targetUsed = true;
 assert.equal(context.notebookRegisteredMarkingPairAudit(
   entry("baseline"), targetTainted, intervention,
+).valid, false);
+
+const mismatchedHorizon = entry("alternative");
+mismatchedHorizon.markingComparisonExperiment.comparisonHorizonLeaps = 8;
+assert.equal(context.notebookRegisteredMarkingPairAudit(
+  entry("baseline"), mismatchedHorizon, intervention,
 ).valid, false);
 
 assert.equal(context.notebookRegisteredMarkingPairAudit(

@@ -1046,7 +1046,7 @@
                 <article id="markingFrontierDetail" class="marking-frontier-detail" aria-live="polite"></article>
                 <section class="marking-intervention" aria-label="Register a controlled saved-marking experiment">
                   <header><span><small>same input · one learned-representation change</small><strong id="markingInterventionState">select a non-active saved marking</strong></span><b id="markingInterventionArm">not registered</b></header>
-                  <div><button id="markingInterventionRegister" type="button" disabled>Register selected marking comparison</button><button id="markingInterventionBaseline" type="button" disabled>Configure baseline</button><button id="markingInterventionAlternative" type="button" disabled>Configure alternative</button><button id="markingInterventionClear" type="button" disabled>Clear</button></div>
+                  <div><label>matched horizon<select id="markingInterventionHorizon" aria-label="Saved-marking comparison structural-leap horizon"><option value="1">1 leap</option><option value="4" selected>4 leaps</option><option value="8">8 leaps</option></select></label><button id="markingInterventionRegister" type="button" disabled>Register selected marking comparison</button><button id="markingInterventionBaseline" type="button" disabled>Configure baseline</button><button id="markingInterventionAlternative" type="button" disabled>Configure alternative</button><button id="markingInterventionClear" type="button" disabled>Clear</button></div>
                   <p id="markingInterventionBoundary">Registration freezes both self-contained marking artifacts, this candidate set, and every non-marking growth control. It resets to supplied positions and executes nothing.</p>
                 </section>
                 <p>Every row scores the identical hard-admitted action set with one frozen marking artifact. Click a row to preview its exact pose and the resulting coordinate-free attachment, mismatch, constraint margin, q₆/|ψ₆|, local-section S(q), and active-physics response; no candidate is created, removed, or executed.</p>
@@ -1798,7 +1798,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260826-217"></script>
+  <script type="module" src="./app.js?v=20260826-218"></script>
   <script type="module" src="./evidence-atlas.js?v=20260826-19"></script>
 </body>
 </html>
