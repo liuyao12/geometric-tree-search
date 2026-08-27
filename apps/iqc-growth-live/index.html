@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260827-253">
+  <link rel="stylesheet" href="./style.css?v=20260827-254">
   <script type="importmap">
     {
       "imports": {
@@ -337,6 +337,13 @@
               <div id="relaxationDisplacementState" class="relaxation-displacement-state">Select an earlier snapshot to compare its geometry with the final archived state.</div>
               <div id="relaxationLocalEnvironmentState" class="relaxation-displacement-state">Local best-affine neighborhood residual is unavailable.</div>
               <div class="relaxation-neighbor-legend"><span>lost kNN relation</span><span>gained kNN relation</span><span>halo = √D²min</span></div>
+              <section id="stressStrainResponsePanel" class="stress-strain-response" hidden aria-label="Archived stress strain response">
+                <header><span><small>cell strain ↔ archived stress</small><strong>Apparent isotropic response</strong></span><button id="stressStrainUseButton" type="button" disabled>Select an eligible earlier frame</button></header>
+                <div id="stressStrainResponseState">Response calibration unavailable.</div>
+                <svg id="stressStrainResponseChart" viewBox="0 0 280 78" role="img" aria-label="Observed and leave-one-frame-out predicted cell strain"></svg>
+                <div id="stressStrainResponseMetrics" class="stress-strain-response-metrics"></div>
+                <p id="stressStrainResponseNote">Paired cell and stress frames are required.</p>
+              </section>
               <section class="relaxation-calibration" aria-label="Geometry and external calculation calibration">
                 <header><span><small>geometry ↔ external calculation</small><strong id="relaxationCalibrationTitle">Final-frame-reference calibration</strong></span><div class="relaxation-calibration-selects"><select id="relaxationCalibrationReference" aria-label="Geometry reference"><option value="final">final frame reference</option><option value="first">first frame reference</option><option value="pooled">pooled geometry reference</option></select><select id="relaxationCalibrationMetric" aria-label="External calculation quantity"><option value="energy">relative energy / primitive atom</option><option value="force">residual-force RMS</option></select></div></header>
                 <div id="relaxationCalibrationState">At least three paired geometry/calculation snapshots are required.</div>
@@ -934,6 +941,7 @@
                 <option value="xy-shear">XY shear</option>
                 <option value="archive-stress">Archive stress shape · unit-compliance hypothesis</option>
                 <option value="archive-stress-reverse">Archive stress shape · reversed-sign ablation</option>
+                <option value="archive-response">Archive-fitted isotropic response · paired frames</option>
               </select>
             </label>
             <label class="field" for="affineLoadMagnitudeSelect">
@@ -1935,7 +1943,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260827-253"></script>
+  <script type="module" src="./app.js?v=20260827-254"></script>
   <script type="module" src="./evidence-atlas.js?v=20260827-21"></script>
 </body>
 </html>

@@ -881,6 +881,27 @@ body.study-guide-open { overflow: hidden; }
 .relaxation-neighbor-legend span:nth-child(2)::before { background: var(--mint); }
 .relaxation-neighbor-legend span:nth-child(3)::before { background: #b995ff; }
 .relaxation-sequence p { margin: 5px 0 0; color: #687e78; font: 5px/1.45 var(--mono); }
+.stress-strain-response { margin-top: 7px; padding: 7px; border: 1px solid rgba(90,226,168,.18); background: linear-gradient(135deg,rgba(90,226,168,.035),rgba(98,172,255,.03)); }
+.stress-strain-response[hidden] { display: none; }
+.stress-strain-response header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.stress-strain-response header small,.stress-strain-response header strong { display: block; }
+.stress-strain-response header small { color: #648f81; font: 5px var(--mono); text-transform: uppercase; }
+.stress-strain-response header strong { margin-top: 2px; color: #83d8bc; font: 7px var(--mono); font-weight: 400; }
+.stress-strain-response button { min-height: 22px; padding: 0 7px; border: 1px solid rgba(90,226,168,.28); background: #071415; color: #67d9b3; font: 5px var(--mono); }
+.stress-strain-response button:disabled { opacity: .38; }
+.stress-strain-response > div { margin-top: 4px; color: #72a694; font: 5px/1.4 var(--mono); }
+.stress-strain-response svg { display: block; width: 100%; height: 78px; margin-top: 3px; }
+.stress-strain-response .response-axis { stroke: rgba(90,226,168,.2); stroke-width: .8; }
+.stress-strain-response .response-observed { fill: none; stroke: #5ae2a8; stroke-width: 1.1; }
+.stress-strain-response .response-predicted { fill: none; stroke: #62acff; stroke-width: 1; stroke-dasharray: 3 2; }
+.stress-strain-response .response-point { fill: #071415; stroke: #5ae2a8; stroke-width: .9; cursor: pointer; }
+.stress-strain-response .response-point.active { fill: #ffbf6b; stroke: #fff0cf; }
+.stress-strain-response-metrics { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 4px; }
+.stress-strain-response-metrics span { padding: 4px; border: 1px solid rgba(90,226,168,.1); }
+.stress-strain-response-metrics small,.stress-strain-response-metrics strong { display: block; }
+.stress-strain-response-metrics small { color: #55766c; font: 4.5px var(--mono); text-transform: uppercase; }
+.stress-strain-response-metrics strong { margin-top: 2px; color: #a9e9d4; font: 6px var(--mono); font-weight: 400; }
+.stress-strain-response p { color: #66847a; }
 .relaxation-calibration { margin-top: 7px; padding: 7px; border: 1px solid rgba(181,148,255,.16); background: rgba(181,148,255,.025); }
 .relaxation-calibration header { display: flex; align-items: start; justify-content: space-between; gap: 7px; }
 .relaxation-calibration header span small,.relaxation-calibration header span strong { display: block; }

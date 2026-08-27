@@ -1,5 +1,20 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 254 · archive-calibrated small-strain response
+
+Paired cell and stress snapshots can now be reduced to two train-only isotropic
+compliance channels. The laboratory shows observed versus leave-one-frame-out
+predicted cell strain, eligible/total frame count, cross-validated skill, and
+apparent bulk/shear response scales. A response reaches the growth metric only
+when fixed conditioning, sign, scale, small-strain, and held-frame skill gates
+pass; the user must also select an eligible earlier snapshot.
+
+This is deliberately an apparent response within one correlated archive. It
+does not claim a general elastic tensor, a fitted potential, independent
+validation, mechanical equilibrium, kinetics, or physical time. The fitted
+deformation changes only the soft geometric ranking metric; exact coordinates,
+candidate enumeration, and hard admission tests remain unchanged.
+
 A static GitHub Pages visualization of a multi-element, dimension-aware
 materials-GCTS pipeline. It begins with element-labelled atomic positions and
 runs four visible stages:

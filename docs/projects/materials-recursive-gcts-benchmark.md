@@ -1,5 +1,22 @@
 # Recursive GCTS benchmark for material growth
 
+### Paired archived cell–stress response (Build 254)
+
+For public archives with at least five finite small-strain frame pairs, the UI
+fits hydrostatic and deviatoric compliance independently from stress change to
+final-cell Green–Lagrange strain. The admissible domain is fixed at
+`||E||F <= 0.15`; larger deformations are excluded before fitting and reported.
+Promotion additionally requires same-sign channels, leave-one-frame-out skill
+of at least 0.2, and apparent bulk/shear scales within 0.1–2000 GPa. When all
+gates pass, a user-selected archived frame can supply a capped 1–4% affine
+metric for soft frontier ordering. It never changes the exact candidate set or
+a hard geometric gate.
+
+The displayed K* and G* are within-archive apparent response scales, not
+material elastic constants. Archive order is not elapsed time, the final cell
+is an input reference, and no energy, force field, equilibrium, or kinetic
+claim follows from this fit.
+
 ## Claim under test
 
 From at most 1,000 species-labelled Cartesian positions, learn a bounded,

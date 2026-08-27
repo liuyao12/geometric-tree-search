@@ -82,6 +82,8 @@ import { boundedForceSeedOffset, forceMagnitudeP90, meanForceVectors }
   from "./force-seed-geometry.js?v=20260827-1";
 import { normalizedStressShapeDeformation }
   from "./stress-geometry.js?v=20260827-1";
+import { archivedResponseDeformationGradient, fitArchivedStressStrainResponse }
+  from "./stress-strain-response.js?v=20260827-1";
 import { CENTROSYMMETRY_PROVENANCE, inferCentrosymmetryNeighborCount, localCentrosymmetry }
   from "./centrosymmetry-geometry.js?v=20260826-1";
 import {
@@ -217,6 +219,12 @@ const relaxationCalibrationPromotionState = $("relaxationCalibrationPromotionSta
 const relaxationCalibrationFeaturePair = $("relaxationCalibrationFeaturePair");
 const relaxationCalibrationSupportChart = $("relaxationCalibrationSupportChart");
 const relaxationCalibrationDeploymentState = $("relaxationCalibrationDeploymentState");
+const stressStrainResponsePanel = $("stressStrainResponsePanel");
+const stressStrainResponseState = $("stressStrainResponseState");
+const stressStrainResponseChart = $("stressStrainResponseChart");
+const stressStrainResponseMetrics = $("stressStrainResponseMetrics");
+const stressStrainResponseNote = $("stressStrainResponseNote");
+const stressStrainUseButton = $("stressStrainUseButton");
 const measurementConditions = $("measurementConditions");
 const measurementConditionChips = $("measurementConditionChips");
 const publishedFixtureProvenance = $("publishedFixtureProvenance");
@@ -1543,6 +1551,7 @@ let ensembleEvidenceMode = "all";
 let relaxationLocalEnvironmentCache = null;
 let relaxationDisplacementCache = null;
 let relaxationGeometryCalibrationCache = null;
+let stressStrainResponseCache = null;
 let relaxationCalibrationMetricMode = "energy";
 let relaxationCalibrationReferenceMode = "final";
 const RELAXATION_SURROGATE_FEATURES = ["meanDistanceMismatch", "meanAngleMismatch", "meanCoordinationDeficit"];
@@ -2821,6 +2830,75 @@ function activeCalculationProvenance() {
     || importedStructure.metadata?.calculation || null;
 }
 
+function archivedStressStrainResponse() {
+  if (scenarioSelect.value !== "imported" || !importedStructure) return null;
+  if (stressStrainResponseCache?.structure === importedStructure) return stressStrainResponseCache.fit;
+  const frames = importedTrajectoryFrames().map((frame) => ({
+    cell: frame.cell,
+    stressTensorGigaPascal: frame.metadata?.calculation?.stressTensorGigaPascal,
+  }));
+  const fit = fitArchivedStressStrainResponse(frames);
+  stressStrainResponseCache = { structure: importedStructure, fit };
+  return fit;
+}
+
+function renderStressStrainResponse() {
+  const fit = archivedStressStrainResponse();
+  stressStrainResponseChart.replaceChildren();
+  stressStrainResponseMetrics.replaceChildren();
+  const visible = Boolean(fit && importedTrajectoryFrames().length > 1);
+  stressStrainResponsePanel.hidden = !visible;
+  if (!visible) return;
+  const metric = (label, value) => {
+    const span = document.createElement("span");
+    const small = document.createElement("small"); small.textContent = label;
+    const strong = document.createElement("strong"); strong.textContent = value;
+    span.append(small, strong); stressStrainResponseMetrics.append(span);
+  };
+  if (!fit.available) {
+    stressStrainResponseState.textContent = "withheld · insufficient conditioned pairs";
+    stressStrainResponseNote.textContent = fit.reason;
+    stressStrainUseButton.disabled = true;
+    metric("paired frames", `${fit.totalPairCount || 0}`);
+    return;
+  }
+  metric("eligible pairs", `${fit.recordCount}/${fit.totalPairCount}`);
+  metric("LOO skill", fit.crossValidatedSkill.toFixed(3));
+  metric("apparent K*", `${fit.bulkModulusGigaPascal.toFixed(2)} GPa`);
+  metric("apparent G*", `${fit.shearModulusGigaPascal.toFixed(2)} GPa`);
+  const active = fit.records.some((record) => record.frameIndex === importedFrameIndex);
+  stressStrainResponseState.textContent = fit.promotionPassed
+    ? `conditioned response passed · ${fit.inferredArchiveStressSign}` : "descriptive only · gate failed";
+  stressStrainUseButton.disabled = !(fit.promotionPassed && active);
+  stressStrainUseButton.textContent = affineLoadMode === "archive-response"
+    ? "Using calibrated response" : active ? "Use for geometric ranking" : "Select an eligible earlier frame";
+  const svg = (name, attributes = {}) => {
+    const element = document.createElementNS("http://www.w3.org/2000/svg", name);
+    Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, String(value)));
+    return element;
+  };
+  const rows = fit.leaveOneFrameOut;
+  const maximum = Math.max(1e-9, ...rows.flatMap((row) => [row.observedNorm, row.predictedNorm || 0]));
+  const x = (index) => 18 + index / Math.max(1, rows.length - 1) * 244;
+  const y = (value) => 68 - Math.max(0, Math.min(1, value / maximum)) * 52;
+  stressStrainResponseChart.append(svg("line", { x1: 16, y1: 68, x2: 264, y2: 68, class: "response-axis" }));
+  const path = (key) => rows.map((row, index) => `${index ? "L" : "M"}${x(index).toFixed(2)},${y(row[key] || 0).toFixed(2)}`).join(" ");
+  stressStrainResponseChart.append(svg("path", { d: path("observedNorm"), class: "response-observed" }),
+    svg("path", { d: path("predictedNorm"), class: "response-predicted" }));
+  rows.forEach((row, index) => {
+    const point = svg("circle", { cx: x(index), cy: y(row.observedNorm),
+      r: row.frameIndex === importedFrameIndex ? 3.6 : 2.2,
+      class: row.frameIndex === importedFrameIndex ? "response-point active" : "response-point",
+      tabindex: 0, "aria-label": `Inspect response pair at frame ${row.frameIndex + 1}` });
+    point.addEventListener("click", () => selectImportedFrame(row.frameIndex));
+    point.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") selectImportedFrame(row.frameIndex);
+    });
+    stressStrainResponseChart.append(point);
+  });
+  stressStrainResponseNote.textContent = `${fit.recordCount} small-strain pairs fit two isotropic compliance channels; ${fit.excludedNonlinearCount} larger-strain pair${fit.excludedNonlinearCount === 1 ? "" : "s"} excluded by the fixed ||E||F ≤ ${fit.maximumLinearStrain.toFixed(2)} domain. Observed (mint) versus leave-one-frame-out prediction (blue). Within one correlated archive—not a general elastic tensor or independent validation.`;
+}
+
 function formatRecordedCondition(value) {
   if (!Number.isFinite(Number(value))) return null;
   return Number(Number(value).toPrecision(7)).toLocaleString(undefined, { maximumFractionDigits: 6 });
@@ -2974,6 +3052,7 @@ function renderRelaxationSequence(frames, relaxation) {
     ? `Local ${localEnvironment.neighborCount}-neighbor deformation microscope: median √D²min ${localEnvironment.medianRootD2MinAngstrom.toFixed(3)} Å · p90 ${localEnvironment.percentile90RootD2MinAngstrom.toFixed(3)} Å · coherent Edev p90 ${localEnvironment.percentile90EquivalentShearStrain.toFixed(3)} · mean ΔV ${(100 * localEnvironment.meanLocalVolumeChangeFraction).toFixed(2)}% · ${localEnvironment.affineResolvedCenters}/${localEnvironment.records.length} full-rank cages · neighbor identity ${(100 * localEnvironment.meanNeighborPersistenceFraction).toFixed(1)}% persistent.`
     : "Local best-affine neighborhood residual is unavailable for the selected state.";
   renderRelaxationCalibration();
+  renderStressStrainResponse();
   relaxationSequenceChart.setAttribute("aria-label", `${frames.length} ordered archived relaxation snapshots; ${energies.length} have energy and ${availableForceFrames} have complete residual forces; snapshot ${importedFrameIndex + 1} selected`);
 }
 
@@ -10023,7 +10102,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-253",
+      buildId: "20260827-254",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -12265,7 +12344,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-253" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-254" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -15373,7 +15452,8 @@ function affineLoadModeLabel(mode = affineLoadMode) {
   return ({ none: "observed metric", "hydro-compress": "hydrostatic compression",
     "hydro-tension": "hydrostatic tension", "z-tension": "uniaxial Z tension",
     "xy-shear": "XY shear", "archive-stress": "archive-stress shape",
-    "archive-stress-reverse": "reversed archive-stress shape" })[mode] || "observed metric";
+    "archive-stress-reverse": "reversed archive-stress shape",
+    "archive-response": "archive-fitted isotropic response" })[mode] || "observed metric";
 }
 
 function affineLoadTensor() {
@@ -15385,6 +15465,10 @@ function affineLoadTensor() {
   if (["archive-stress", "archive-stress-reverse"].includes(affineLoadMode)) {
     return normalizedStressShapeDeformation(activeCalculationProvenance()?.stressTensorGigaPascal,
       m, affineLoadMode === "archive-stress-reverse" ? -1 : 1)
+      || [[1, 0, 0], [0, 1, 0], [0, 0, 1]];
+  }
+  if (affineLoadMode === "archive-response") {
+    return archivedResponseDeformationGradient(archivedStressStrainResponse(), importedFrameIndex, m)
       || [[1, 0, 0], [0, 1, 0], [0, 0, 1]];
   }
   return [[1, 0, 0], [0, 1, 0], [0, 0, 1]];
@@ -20769,6 +20853,12 @@ function syncStageOptions() {
   }
   if (["archive-stress", "archive-stress-reverse"].includes(affineLoadMode)
     && !archiveStressAvailable) affineLoadMode = "none";
+  const responseFit = archivedStressStrainResponse();
+  const archiveResponseAvailable = Boolean(responseFit?.promotionPassed
+    && responseFit.records?.some((record) => record.frameIndex === importedFrameIndex));
+  const archiveResponseOption = affineLoadSelect.querySelector('option[value="archive-response"]');
+  if (archiveResponseOption) archiveResponseOption.disabled = !archiveResponseAvailable;
+  if (affineLoadMode === "archive-response" && !archiveResponseAvailable) affineLoadMode = "none";
   const displacementGlyphSites = Math.max(
     atoms.filter((atom) => atomDisplacementTensorAngstrom2(atom)).length,
     referenceAtoms.filter((atom) => atomDisplacementTensorAngstrom2(atom)).length,
@@ -20817,12 +20907,14 @@ function syncStageOptions() {
     "radial-out": "↗", "radial-in": "↙" })[externalDriveMode] || "·";
   affineLoadBadge.hidden = pipelineStage !== 4 || affineLoadMode === "none";
   affineLoadBadge.classList.toggle("solo", externalDriveMode === "none");
-  affineLoadBadgeLabel.textContent = ["archive-stress", "archive-stress-reverse"].includes(affineLoadMode)
+  affineLoadBadgeLabel.textContent = affineLoadMode === "archive-response"
+    ? `${Math.round(affineLoadMagnitude * 100)}% ${affineLoadModeLabel()} · CV ${responseFit.crossValidatedSkill.toFixed(2)} · K* ${responseFit.bulkModulusGigaPascal.toFixed(1)} · G* ${responseFit.shearModulusGigaPascal.toFixed(1)} GPa`
+    : ["archive-stress", "archive-stress-reverse"].includes(affineLoadMode)
     ? `${Math.round(affineLoadMagnitude * 100)}% ${affineLoadModeLabel()} · σh ${calculation.stressHydrostaticGigaPascal.toFixed(3)} · dev ${calculation.stressDeviatoricFrobeniusGigaPascal.toFixed(3)} GPa`
     : `${Math.round(affineLoadMagnitude * 100)}% ${affineLoadModeLabel()}`;
   affineLoadGlyph.textContent = ({ "hydro-compress": "↘", "hydro-tension": "↗",
     "z-tension": "⇅", "xy-shear": "⇆", "archive-stress": "σ",
-    "archive-stress-reverse": "−σ" })[affineLoadMode] || "·";
+    "archive-stress-reverse": "−σ", "archive-response": "S" })[affineLoadMode] || "·";
   loopClosureBadge.hidden = pipelineStage !== 4 || loopClosurePreference === "none";
   loopClosureBadge.style.top = `${49 + 35 * Number(externalDriveMode !== "none")
     + 35 * Number(affineLoadMode !== "none")}px`;
@@ -21124,7 +21216,8 @@ function syncStageOptions() {
       ? "isothermal · weight zero" : `${thermalFieldLabel()} · width 2dₙₙ · weight ${thermalFieldWeight.toFixed(2)}`;
     affineLoadHint.textContent = affineLoadMode === "none"
       ? "undeformed metric" : `${Math.round(affineLoadMagnitude * 100)}% ${affineLoadModeLabel()}${["archive-stress", "archive-stress-reverse"].includes(affineLoadMode)
-        ? ` · ||σ||F ${calculation.stressFrobeniusGigaPascal.toFixed(3)} GPa` : ""}`;
+        ? ` · ||σ||F ${calculation.stressFrobeniusGigaPascal.toFixed(3)} GPa`
+        : affineLoadMode === "archive-response" ? ` · CV ${responseFit.crossValidatedSkill.toFixed(2)}` : ""}`;
     robustnessHint.textContent = robustnessPreference === "margin"
       ? `minimum margin · weight ${robustnessWeight.toFixed(2)}` : "diagnostic · weight zero";
     microstructureCouplingHint.textContent = microstructureCouplingMode === "none"
@@ -29048,10 +29141,17 @@ thermalFieldWeightSelect.addEventListener("change", () => {
 affineLoadSelect.addEventListener("change", () => {
   const value = affineLoadSelect.value;
   affineLoadMode = ["hydro-compress", "hydro-tension", "z-tension", "xy-shear",
-    "archive-stress", "archive-stress-reverse"].includes(value)
+    "archive-stress", "archive-stress-reverse", "archive-response"].includes(value)
     ? value : "none";
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
+});
+stressStrainUseButton.addEventListener("click", () => {
+  const fit = archivedStressStrainResponse();
+  if (!fit?.promotionPassed || !fit.records.some((record) => record.frameIndex === importedFrameIndex)) return;
+  affineLoadMode = "archive-response";
+  affineLoadSelect.value = affineLoadMode;
+  enterPipelineStage(4);
 });
 affineLoadMagnitudeSelect.addEventListener("change", () => {
   const value = Number(affineLoadMagnitudeSelect.value);
