@@ -9383,7 +9383,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-229",
+      buildId: "20260827-230",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -11534,6 +11534,77 @@ function notebookPhysicsManifest(structuralLeaps = []) {
   };
 }
 
+function notebookCoverLineageSummary(receipt) {
+  const audit = receipt.search?.coverLineageAudit;
+  if (!audit) return null;
+  const markingGroups = new Map();
+  const recordMarking = (marking, acceptedPlacements = 0, emittedSites = 0, source = "generic") => {
+    if (!marking) return;
+    const identity = JSON.stringify([marking.markingId, marking.libraryMode, marking.channels,
+      marking.neighborhoodReach, marking.representation, marking.threshold, marking.usedAsHardGate]);
+    const group = markingGroups.get(identity) || {
+      markingId: marking.markingId, markingName: marking.markingName,
+      libraryMode: marking.libraryMode, channels: marking.channels,
+      channelMode: marking.channelMode, neighborhoodReach: marking.neighborhoodReach,
+      representation: marking.representation, representationLabel: marking.representationLabel,
+      representationReadout: marking.representationReadout,
+      threshold: marking.threshold, usedAsHardGate: marking.usedAsHardGate,
+      acceptedPlacements: 0, emittedSites: 0, finiteScores: [], sources: new Set(),
+      candidateGeometryChanged: marking.candidateGeometryChanged,
+      targetUsed: marking.targetUsed,
+    };
+    group.acceptedPlacements += acceptedPlacements;
+    group.emittedSites += emittedSites;
+    if (Number.isFinite(marking.score)) group.finiteScores.push(marking.score);
+    group.sources.add(source);
+    markingGroups.set(identity, group);
+  };
+  (audit.acceptedGenericPlacements || []).forEach((record) => recordMarking(
+    record.markingProvenance, 1, record.emittedSites || 0, "generic tree-search placement"));
+  if (audit.specialized?.markingProvenance) recordMarking(audit.specialized.markingProvenance,
+    audit.specialized.acceptedAnchors || 0, audit.specialized.acceptedAnchors || 0,
+    audit.specialized.executionKind || "specialized molecular continuation");
+  const transitionGroups = (audit.groupedLineages || []).map((group) => ({ ...group,
+    source: "generic tree search" }));
+  if (audit.specialized?.lineage && audit.specialized.acceptedAnchors > 0) transitionGroups.push({
+    key: `${audit.specialized.lineage.parentFamily}>${audit.specialized.lineage.childFamily}`,
+    parentFamily: audit.specialized.lineage.parentFamily,
+    childFamily: audit.specialized.lineage.childFamily,
+    parentLabel: audit.specialized.lineage.parentLabel,
+    childLabel: audit.specialized.lineage.childLabel,
+    acceptedPlacements: audit.specialized.acceptedAnchors || 0,
+    emittedSites: audit.specialized.acceptedAnchors || 0,
+    minimumDepth: 1, maximumDepth: audit.specialized.executedWaves || 0,
+    source: audit.specialized.executionKind,
+  });
+  const active = receipt.marking?.active;
+  return {
+    schema: 1,
+    configuredMarking: active ? {
+      id: active.id, name: active.name, channels: active.config?.channels,
+      channelMode: active.config?.channelMode, neighborhoodReach: active.config?.reach,
+      representation: active.config?.representation,
+      representationReadout: active.representationReadout,
+    } : null,
+    acceptedGenericPlacementCount: audit.acceptedGenericPlacementCount || 0,
+    acceptedGenericPlacementSha256: audit.acceptedGenericPlacementSha256 || null,
+    acceptedGenericPlacementsTruncated: audit.acceptedGenericPlacementsTruncated === true,
+    transitionGroups,
+    markingGroups: [...markingGroups.values()].map((group) => {
+      const { finiteScores, sources, ...compact } = group;
+      return { ...compact,
+        scoreMinimum: finiteScores.length ? Math.min(...finiteScores) : null,
+        scoreMaximum: finiteScores.length ? Math.max(...finiteScores) : null,
+        scoreMean: finiteScores.length
+          ? finiteScores.reduce((sum, value) => sum + value, 0) / finiteScores.length : null,
+        scoreCount: finiteScores.length, sources: [...sources].sort() };
+    }),
+    targetUsed: audit.targetUsed,
+    physicalMechanismInferred: audit.physicalMechanismInferred,
+    coordinatesEmbedded: false,
+  };
+}
+
 function experimentNotebookSummary(receipt) {
   const cover = receipt.cover?.inputAtoms ? receipt.cover : null;
   const search = receipt.search?.explicitSites === undefined ? null : receipt.search;
@@ -11645,6 +11716,7 @@ function experimentNotebookSummary(receipt) {
       generatedSites, causalDepth),
     hypothesisSeparationExperiment: search?.hypothesisSeparationExperiment || null,
     markingComparisonExperiment: search?.markingComparisonExperiment || null,
+    coverLineage: notebookCoverLineageSummary(receipt),
     policyIdentifiability: latestPolicySnapshot?.hypothesisIdentifiability ? {
       latest: {
         frontierIndex: latestPolicySnapshot.index,
@@ -11775,6 +11847,130 @@ function notebookComparisonValue(entry, key) {
     claim: `${entry.strongestClaim} · ${entry.benchmarkGate}`,
   };
   return values[key];
+}
+
+function notebookMarkingLineageComparison(first, second) {
+  const firstLineage = first.coverLineage;
+  const secondLineage = second.coverLineage;
+  if (!firstLineage || !secondLineage) return { available: false,
+    title: "marking lineage unavailable",
+    detail: "At least one saved run predates the marking-to-cover-family receipt. Save both states again." };
+  const intervention = notebookInterventionComparison(first, second);
+  const registered = notebookRegisteredMarkingPairAudit(first, second, intervention);
+  const clean = firstLineage.targetUsed === false && secondLineage.targetUsed === false
+    && firstLineage.coordinatesEmbedded === false && secondLineage.coordinatesEmbedded === false;
+  const firstKeys = new Set(firstLineage.transitionGroups.map((group) => group.key));
+  const secondKeys = new Set(secondLineage.transitionGroups.map((group) => group.key));
+  const sharedKeys = [...firstKeys].filter((key) => secondKeys.has(key));
+  const emitted = (lineage) => lineage.transitionGroups
+    .reduce((sum, group) => sum + (group.emittedSites || 0), 0);
+  const placements = (lineage) => lineage.transitionGroups
+    .reduce((sum, group) => sum + (group.acceptedPlacements || 0), 0);
+  const controlled = clean && registered?.responseComparable === true;
+  const status = controlled ? "controlled"
+    : registered?.valid ? "designed" : intervention.status === "confounded" ? "confounded" : "descriptive";
+  return {
+    available: true, clean, controlled, status, intervention, registered,
+    title: controlled ? "controlled marking → cover-family response"
+      : registered?.valid ? "registered marking pair · response not yet matched"
+        : intervention.status === "confounded" ? "marking lineage shown · response is confounded"
+          : "descriptive marking → cover-family lineage",
+    detail: controlled
+      ? "Identical input, non-marking controls, first hard-admitted frontier, and registered horizon make the deterministic lineage response comparable."
+      : registered?.valid ? registered.detail
+        : "The pathways remain inspectable, but they are not attributed to the marking unless the saved-marking pair gate passes.",
+    first: { lineage: firstLineage, emittedSites: emitted(firstLineage), placements: placements(firstLineage) },
+    second: { lineage: secondLineage, emittedSites: emitted(secondLineage), placements: placements(secondLineage) },
+    sharedTransitionCount: sharedKeys.length,
+    unionTransitionCount: new Set([...firstKeys, ...secondKeys]).size,
+    emittedSiteDelta: emitted(secondLineage) - emitted(firstLineage),
+    placementDelta: placements(secondLineage) - placements(firstLineage),
+  };
+}
+
+function renderNotebookMarkingLineageRun(entry, record, runLabel) {
+  const article = document.createElement("article");
+  const lineage = record.lineage;
+  const marking = lineage.markingGroups.slice().sort((first, second) =>
+    second.acceptedPlacements - first.acceptedPlacements)[0] || lineage.configuredMarking;
+  const header = document.createElement("header");
+  const block = document.createElement("span");
+  const eyebrow = document.createElement("small"); eyebrow.textContent = runLabel;
+  const title = document.createElement("strong"); title.textContent = marking?.markingName || marking?.name || "no executed marking";
+  block.append(eyebrow, title);
+  const count = document.createElement("b"); count.textContent = `${record.placements} actions`;
+  header.append(block, count); article.append(header);
+  const markingCard = document.createElement("div"); markingCard.className = "notebook-lineage-marking";
+  const markingLabel = document.createElement("small"); markingLabel.textContent = "frozen local section";
+  const markingValue = document.createElement("strong");
+  markingValue.textContent = marking
+    ? `${marking.channels ?? "—"}ch · R${marking.neighborhoodReach ?? "—"} · ${marking.representationLabel || marking.representation || "representation"}`
+    : "not executed";
+  const markingDetail = document.createElement("em");
+  const scoreRange = marking && Number.isFinite(marking.scoreMinimum)
+    ? `score ${marking.scoreMinimum.toFixed(3)}–${marking.scoreMaximum.toFixed(3)} · threshold ${Number.isFinite(marking.threshold) ? marking.threshold.toFixed(3) : "—"}`
+    : marking?.representationReadout || "No accepted placement carries a marking record.";
+  markingDetail.textContent = scoreRange;
+  markingCard.append(markingLabel, markingValue, markingDetail); article.append(markingCard);
+  const arrow = document.createElement("div"); arrow.className = "notebook-lineage-arrow";
+  arrow.textContent = "marking  →  compatible cover-family attachments  →  emitted sites";
+  article.append(arrow);
+  const transitions = document.createElement("div"); transitions.className = "notebook-lineage-transitions";
+  lineage.transitionGroups.slice().sort((first, second) => second.acceptedPlacements - first.acceptedPlacements
+    || first.key.localeCompare(second.key)).forEach((group) => {
+    const chip = document.createElement("span");
+    const path = document.createElement("small"); path.textContent = `${group.parentLabel} → ${group.childLabel}`;
+    const value = document.createElement("strong"); value.textContent = `${group.acceptedPlacements}× · +${group.emittedSites} sites`;
+    const depth = document.createElement("em"); depth.textContent = `depth ${group.minimumDepth}–${group.maximumDepth}`;
+    chip.append(path, value, depth); transitions.append(chip);
+  });
+  if (!lineage.transitionGroups.length) {
+    const empty = document.createElement("p"); empty.textContent = "No accepted cover-family transition in this saved state.";
+    transitions.append(empty);
+  }
+  article.append(transitions);
+  const receipt = document.createElement("footer");
+  receipt.textContent = `${record.emittedSites} lineage-attributed emitted sites · receipt ${entry.receiptSha256.slice(0, 10)}…`;
+  article.append(receipt);
+  return article;
+}
+
+function renderNotebookMarkingLineageComparison(first, second) {
+  const comparison = notebookMarkingLineageComparison(first, second);
+  const section = document.createElement("section");
+  section.className = `notebook-lineage-comparison ${comparison.status || "unavailable"}`;
+  const header = document.createElement("header");
+  const block = document.createElement("span");
+  const eyebrow = document.createElement("small"); eyebrow.textContent = "marking propagation audit";
+  const title = document.createElement("strong"); title.textContent = comparison.title;
+  block.append(eyebrow, title);
+  const badge = document.createElement("b"); badge.textContent = comparison.controlled ? "controlled" : "descriptive";
+  header.append(block, badge); section.append(header);
+  const detail = document.createElement("p"); detail.textContent = comparison.detail; section.append(detail);
+  if (!comparison.available) return section;
+  const runs = document.createElement("div"); runs.className = "notebook-lineage-runs";
+  runs.append(renderNotebookMarkingLineageRun(first, comparison.first, "run 1"),
+    renderNotebookMarkingLineageRun(second, comparison.second, "run 2"));
+  section.append(runs);
+  const summary = document.createElement("div"); summary.className = "notebook-lineage-summary";
+  [
+    ["shared pathways", `${comparison.sharedTransitionCount}/${comparison.unionTransitionCount || 0}`, "cover-family transition keys"],
+    ["emitted-site response", signedNotebookDelta(comparison.emittedSiteDelta), "run 2 − run 1"],
+    ["accepted-action response", signedNotebookDelta(comparison.placementDelta), "run 2 − run 1"],
+    ["causal status", comparison.controlled ? "registered" : "withheld", comparison.clean ? "target-free provenance" : "provenance incomplete"],
+  ].forEach(([label, value, note]) => {
+    const tile = document.createElement("span");
+    const small = document.createElement("small"); small.textContent = label;
+    const strong = document.createElement("strong"); strong.textContent = value;
+    const em = document.createElement("em"); em.textContent = note;
+    tile.append(small, strong, em); summary.append(tile);
+  });
+  section.append(summary);
+  const boundary = document.createElement("p");
+  boundary.textContent = comparison.controlled
+    ? "The response is causal only for this deterministic frozen-marking intervention on this supplied configuration. It is not a force-field, kinetic, energetic, or independent-specimen result."
+    : "Family pathways and score ranges are coordinate-free execution provenance. Without the registered matched-frontier/horizon gate, differences remain descriptive and may reflect other changed controls or search history.";
+  section.append(boundary); return section;
 }
 
 function notebookInterventionComparison(first, second) {
@@ -13010,6 +13206,7 @@ function renderExperimentNotebook() {
     row.classList.toggle("same", firstValue.textContent === secondValue.textContent);
     row.append(name, firstValue, secondValue); notebookComparison.append(row);
   });
+  notebookComparison.append(renderNotebookMarkingLineageComparison(selected[0], selected[1]));
   notebookComparison.append(renderNotebookIdentifiabilityComparison(selected[0], selected[1]));
 }
 

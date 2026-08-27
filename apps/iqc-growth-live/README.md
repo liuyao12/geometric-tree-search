@@ -18,6 +18,16 @@ the GCTS anatomy view explains covers, oriented ports, markings, search, and
 promotion; and the claim ledger keeps proved, measured, and open results visibly
 separate. Its numbers are frozen benchmark results, not recomputed browser demos.
 
+Build 230 turns saved markings into a comparative materials experiment. Each
+notebook run now retains a coordinate-free summary of the exact marking that
+governed accepted actions and the molecule/connection/void/residual cover-family
+paths that it propagated. Selecting two runs reveals both marking capacity and
+reach, score range and threshold, accepted family transitions, causal-depth
+span, and emitted-site response side by side. The comparison becomes
+“controlled” only when the existing saved-marking audit proves identical input,
+non-marking controls, first hard-admitted frontier, and registered horizon;
+otherwise the same visual evidence remains explicitly descriptive.
+
 Build 229 completes the GCTS-learning→growth provenance link. Every evaluated
 candidate now freezes the exact marking source that scored it: library ID/name,
 single-versus-portfolio mode, channel capacity, neighborhood reach,

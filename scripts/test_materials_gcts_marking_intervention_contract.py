@@ -48,8 +48,8 @@ def test_arm_activation_fails_closed_resets_and_never_executes():
 
 def test_intervention_is_receipted_and_release_is_consistent():
     assert "markingComparisonExperiment: markingComparisonReceipt()" in APP
-    assert 'buildId: "20260827-229"' in APP
-    assert 'app.js?v=20260827-229' in HTML
+    assert 'buildId: "20260827-230"' in APP
+    assert 'app.js?v=20260827-230' in HTML
     assert "Build 216" in README
     assert "Build 216" in DOC
 

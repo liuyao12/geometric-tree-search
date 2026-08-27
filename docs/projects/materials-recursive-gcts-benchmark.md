@@ -75,6 +75,18 @@ old provenance for an explicit comparison. The ice molecular-port unanimity
 trace has an explicitly separate provenance schema and is not counted as a
 generic GCTS library intervention.
 
+Build 230 carries that provenance into the compact experiment notebook. A saved
+run retains the active marking, every executed marking-source group, its finite
+score range and threshold, and the coordinate-free cover-family transitions it
+propagated. Selecting two runs renders the complete
+marking→family-attachment→emission pathway on both sides. The existing
+registered saved-marking gate remains authoritative: causal wording is allowed
+only for identical observed-input SHA-256, unchanged non-marking controls,
+identical first target-free candidate/hard-admitted sets, complementary frozen
+artifacts, and a matched registered leap horizon or paired terminal fixed point.
+All other lineage differences are labeled descriptive; no potential, kinetics,
+physical time, or independent-specimen effect is inferred.
+
 ## Benchmark ladder
 
 All learners receive only positions and species.  Hidden construction metadata
