@@ -13,6 +13,21 @@ amplification is `b > 1`, a level-`L` accepted macro placement represents
 approximately `b^L` atoms.  Materializing or exporting `N` atomic coordinates
 still has an unavoidable `O(N)` cost and must be reported separately.
 
+### Directional Uij contact geometry (Build 247)
+
+The browser now transports reported Cartesian Uiso/Uij into the colored local
+contact model. Each observed pair uses its connecting direction `n` to compute
+`σpair = √(nᵀ(Ui+Uj)n)` under an explicit independent-site covariance
+assumption. The one-sigma lower contact support is stored alongside the mean
+contact, broadens the soft contact-strain scale, and can lower the hard
+exclusion enough to preserve that reported ellipsoidal support. Missing tensors
+contribute zero. Receipt fields separate the original mean-position exclusion,
+the adjusted exclusion, directional observation counts, and sigma summaries.
+The scalar metric-isometry floor remains separately reported; the cover learner
+does not pretend that overlapping pair intervals form an exact equivalence
+relation. This is uncertainty-aware geometry, not a correlated-displacement or
+phonon model, contact probability, potential, force, dynamics, or physical time.
+
 ### Full anisotropic displacement powder quadrature (Build 246)
 
 The reciprocal-space inspector now offers a second reported-displacement view

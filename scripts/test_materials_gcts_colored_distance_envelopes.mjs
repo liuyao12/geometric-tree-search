@@ -33,6 +33,27 @@ assert.ok(exclusionForPair(model, "H", "O") < exclusionForPair(model, "Na", "Cl"
   "short molecular H-O contacts need a different envelope from Na-Cl contacts");
 assert.equal(exclusionForPair(model, "Xe", "Xe"), .46, "unobserved chemistry must use the explicit fallback");
 assert.equal(exclusionForPair(model, "O", "H"), exclusionForPair(model, "H", "O"));
+
+const directionalPair = learnColoredDistanceEnvelopesEnsemble([{
+  species: ["X", "X"],
+  distance: () => 2,
+  pairSigma: () => Math.sqrt(.10),
+}]);
+const directionalRecord = directionalPair.byKey["X|X"];
+assert.equal(directionalPair.directionalPairEnvelopeCount, 1);
+assert.equal(directionalPair.directionalPairSigmaObservations, 1);
+assert.equal(directionalPair.config.independentSiteCovarianceAssumed, true);
+assert.equal(directionalRecord.directionalSigmaObservations, 1);
+assert.equal(directionalRecord.directionalUncertaintyApplied, true);
+assert.ok(Math.abs(directionalRecord.directionalSigmaMedian - Math.sqrt(.10)) < 1e-12);
+assert.ok(Math.abs(directionalRecord.minimumOneSigmaContact - (2 - Math.sqrt(.10))) < 1e-12);
+assert.ok(directionalRecord.exclusion < directionalRecord.meanPositionExclusion,
+  "one-sigma directional support must relax the mean-position hard exclusion");
+assert.ok(directionalRecord.contactScale >= Math.sqrt(.10),
+  "reported directional resolution must widen the soft contact-strain scale");
+assert.throws(() => learnColoredDistanceEnvelopesEnsemble([{
+  species: ["X", "X"], distance: () => 2, pairSigma: () => -1,
+}]), /finite and nonnegative/);
 const coordination = learnColoredCoordinationEnvelopes(species, distance, model);
 assert.equal(coordinationEnvelopeFor(coordination, "O", "H").maximumObserved, 2,
   "water oxygen must learn capacity for its two covalent H neighbors");

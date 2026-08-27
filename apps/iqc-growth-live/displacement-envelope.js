@@ -27,6 +27,25 @@ export function directionalDisplacementSupport(tensor, direction, sigmaMultiplie
   return sigmaMultiplier * Math.sqrt(Math.max(0, variance));
 }
 
+/** One-dimensional standard deviation of the relative displacement of two
+ * reported sites along their connecting direction. Independent reported ADPs
+ * add as covariance, so sigma_pair² = nᵀ(U_i + U_j)n. A missing tensor is an
+ * explicit zero contribution. This is a geometric resolution envelope, not a
+ * probability of contact, a correlated phonon model, or sampled motion. */
+export function directionalPairDisplacementSigma(firstTensor, secondTensor, direction) {
+  if (!Array.isArray(direction) || direction.length !== 3
+    || direction.some((value) => !Number.isFinite(value))) return 0;
+  const length = Math.hypot(...direction);
+  if (length <= 1e-14) return 0;
+  const unit = direction.map((value) => value / length);
+  const directionalVariance = (tensor) => {
+    if (!validTensor(tensor)) return 0;
+    return unit.reduce((sum, firstValue, first) => sum + firstValue
+      * unit.reduce((inner, secondValue, second) => inner + tensor[first][second] * secondValue, 0), 0);
+  };
+  return Math.sqrt(Math.max(0, directionalVariance(firstTensor) + directionalVariance(secondTensor)));
+}
+
 export function normalizeDisplacementTensors(tensorsAngstrom2, siteCount, lengthScaleAngstrom) {
   if (!Array.isArray(tensorsAngstrom2) || tensorsAngstrom2.length !== siteCount
     || !(Number.isFinite(lengthScaleAngstrom) && lengthScaleAngstrom > 0)) return null;
@@ -34,4 +53,3 @@ export function normalizeDisplacementTensors(tensorsAngstrom2, siteCount, length
   return tensorsAngstrom2.map((tensor) => validTensor(tensor)
     ? tensor.map((row) => row.map((value) => value / scale2)) : null);
 }
-

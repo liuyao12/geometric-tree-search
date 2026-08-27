@@ -19,6 +19,20 @@ the GCTS anatomy view explains covers, oriented ports, markings, search, and
 promotion; and the claim ledger keeps proved, measured, and open results visibly
 separate. Its numbers are frozen benchmark results, not recomputed browser demos.
 
+Build 247 carries reported Cartesian Uiso/Uij into the local contact geometry
+instead of using only an isotropic-equivalent matching floor. For every observed
+colored pair, the connecting direction `n` now resolves the independent-site
+relative displacement width `σpair = √(nᵀ(Ui+Uj)n)`. The one-sigma lower contact
+support is retained beside the mean-position contact, widens the soft
+contact-strain scale, and may relax the learned hard exclusion so the reported
+ellipsoidal support remains admissible. The cluster-cover isometry tolerance
+continues to use its explicit scalar floor; no non-transitive pairwise rule is
+silently substituted into cover classification. The UI and receipt expose the
+mean and one-sigma contacts, number of directional observations, adjusted and
+mean-position exclusions, and the independent-covariance assumption. This is a
+reported geometric-resolution envelope—not correlated thermal motion, a
+contact probability, phonon model, pair potential, force, dynamics, or time.
+
 Build 246 preserves the full directional content of reported crystallographic
 displacement tensors in reciprocal space. The new **reported full Uij damping**
 view projects Cartesian Uiso/Uij into the material's intrinsic 2D or 3D space

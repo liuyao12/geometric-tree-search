@@ -39,6 +39,9 @@ export function learnColoredDistanceEnvelopesEnsemble(frames, {
   frames.forEach((frame) => {
     if (!Array.isArray(frame.species) || frame.species.length < 2) throw new Error("colored envelopes require at least two atoms per frame");
     if (typeof frame.distance !== "function") throw new Error("colored envelopes require a distance callback per frame");
+    if (frame.pairSigma !== undefined && typeof frame.pairSigma !== "function") {
+      throw new Error("colored envelopes require pairSigma to be a callback when supplied");
+    }
   });
   if (![minimumContactFraction, lowerContactFraction, lowerQuantile, fallbackExclusion].every(Number.isFinite)
     || !(minimumContactFraction > 0 && minimumContactFraction < 1)
@@ -46,41 +49,61 @@ export function learnColoredDistanceEnvelopesEnsemble(frames, {
     || !(lowerQuantile >= 0 && lowerQuantile <= 1)
     || !(fallbackExclusion > 0)) throw new Error("colored envelope fractions and fallback must be finite positive bounds");
   const symbols = [...new Set(frames.flatMap((frame) => frame.species))].sort();
-  const allDistances = new Map();
+  const allObservations = new Map();
   const nearestFrames = [];
-  frames.forEach(({ species, distance }) => {
-    const nearest = Array.from({ length: species.length }, () => new Map(symbols.map((symbol) => [symbol, Infinity])));
+  frames.forEach(({ species, distance, pairSigma }) => {
+    const nearest = Array.from({ length: species.length }, () => new Map(symbols.map((symbol) =>
+      [symbol, { distance: Infinity, sigma: 0 }])));
     for (let first = 0; first < species.length; first++) for (let second = first + 1; second < species.length; second++) {
       const value = distance(first, second);
       if (!(value > 1e-9) || !Number.isFinite(value)) continue;
+      const sigma = pairSigma ? pairSigma(first, second) : 0;
+      if (!(Number.isFinite(sigma) && sigma >= 0)) throw new Error("colored envelope pair sigma must be finite and nonnegative");
       const key = pairKey(species[first], species[second]);
-      const values = allDistances.get(key) || [];
-      values.push(value);
-      allDistances.set(key, values);
-      nearest[first].set(species[second], Math.min(nearest[first].get(species[second]), value));
-      nearest[second].set(species[first], Math.min(nearest[second].get(species[first]), value));
+      const observations = allObservations.get(key) || [];
+      observations.push({ distance: value, sigma });
+      allObservations.set(key, observations);
+      if (value < nearest[first].get(species[second]).distance) nearest[first].set(species[second], { distance: value, sigma });
+      if (value < nearest[second].get(species[first]).distance) nearest[second].set(species[first], { distance: value, sigma });
     }
     nearestFrames.push({ species, nearest });
   });
   const records = [];
   for (let first = 0; first < symbols.length; first++) for (let second = first; second < symbols.length; second++) {
     const key = pairKey(symbols[first], symbols[second]);
-    const values = (allDistances.get(key) || []).slice().sort((a, b) => a - b);
-    if (!values.length) continue;
+    const observations = (allObservations.get(key) || []).slice()
+      .sort((a, b) => a.distance - b.distance || a.sigma - b.sigma);
+    if (!observations.length) continue;
+    const values = observations.map((observation) => observation.distance);
     const nearestValues = nearestFrames.flatMap(({ species, nearest }) => nearest.flatMap((row, atomIndex) => {
         const own = species[atomIndex];
         if (own !== symbols[first] && own !== symbols[second]) return [];
         const other = own === symbols[first] ? symbols[second] : symbols[first];
-        const value = row.get(other);
-        return Number.isFinite(value) ? [value] : [];
-      })).sort((a, b) => a - b);
+        const observation = row.get(other);
+        return Number.isFinite(observation.distance) ? [observation] : [];
+      })).sort((a, b) => a.distance - b.distance || a.sigma - b.sigma);
+    const nearestDistances = nearestValues.map((observation) => observation.distance);
+    const directionalSigmas = observations.filter((observation) => observation.sigma > 0)
+      .map((observation) => observation.sigma).sort((a, b) => a - b);
+    const supportedContacts = observations.map((observation) => Math.max(0, observation.distance - observation.sigma))
+      .sort((a, b) => a - b);
+    const nearestSupportedContacts = nearestValues.map((observation) =>
+      Math.max(0, observation.distance - observation.sigma)).sort((a, b) => a - b);
     const minimumObserved = values[0];
-    const lowerContact = quantile(nearestValues, lowerQuantile) || minimumObserved;
-    const typicalContact = quantile(nearestValues, .5) || lowerContact;
-    const upperContact = quantile(nearestValues, .95) || typicalContact;
-    const contactScale = Math.max(typicalContact * .08, (upperContact - lowerContact) / 2);
-    const exclusion = Math.min(minimumObserved * minimumContactFraction,
+    const lowerContact = quantile(nearestDistances, lowerQuantile) || minimumObserved;
+    const typicalContact = quantile(nearestDistances, .5) || lowerContact;
+    const upperContact = quantile(nearestDistances, .95) || typicalContact;
+    const directionalSigmaMedian = quantile(directionalSigmas, .5);
+    const directionalSigmaUpper = quantile(directionalSigmas, .9);
+    const contactScale = Math.max(typicalContact * .08, (upperContact - lowerContact) / 2,
+      directionalSigmaUpper);
+    const meanPositionExclusion = Math.min(minimumObserved * minimumContactFraction,
       lowerContact * lowerContactFraction);
+    const minimumOneSigmaContact = supportedContacts[0] ?? minimumObserved;
+    const lowerOneSigmaContact = quantile(nearestSupportedContacts, lowerQuantile) || minimumOneSigmaContact;
+    const exclusion = directionalSigmas.length ? Math.min(meanPositionExclusion,
+      minimumOneSigmaContact * minimumContactFraction,
+      lowerOneSigmaContact * lowerContactFraction) : meanPositionExclusion;
     records.push({
       key,
       species: [symbols[first], symbols[second]],
@@ -90,6 +113,13 @@ export function learnColoredDistanceEnvelopesEnsemble(frames, {
       upperContact,
       contactScale,
       exclusion,
+      meanPositionExclusion,
+      minimumOneSigmaContact,
+      lowerOneSigmaContact,
+      directionalSigmaMedian,
+      directionalSigmaUpper,
+      directionalSigmaObservations: directionalSigmas.length,
+      directionalUncertaintyApplied: directionalSigmas.length > 0,
       pairObservations: values.length,
       nearestObservations: nearestValues.length,
     });
@@ -100,9 +130,12 @@ export function learnColoredDistanceEnvelopesEnsemble(frames, {
     byKey,
     fallbackExclusion,
     maximumExclusion: Math.max(fallbackExclusion, ...records.map((record) => record.exclusion)),
+    directionalPairEnvelopeCount: records.filter((record) => record.directionalUncertaintyApplied).length,
+    directionalPairSigmaObservations: records.reduce((sum, record) => sum + record.directionalSigmaObservations, 0),
     frameCount: frames.length,
     atomPresentations: frames.reduce((sum, frame) => sum + frame.species.length, 0),
-    config: { minimumContactFraction, lowerContactFraction, lowerQuantile },
+    config: { minimumContactFraction, lowerContactFraction, lowerQuantile,
+      directionalPairSigmaMultiplier: 1, independentSiteCovarianceAssumed: true },
     pairKey,
   };
 }

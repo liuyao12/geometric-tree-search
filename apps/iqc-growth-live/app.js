@@ -61,7 +61,8 @@ import { consumeFeedstock, evaluateFeedstockDemand, feedstockReservoirSnapshot,
   initializeFeedstockReservoir } from "./feedstock-reservoir.js?v=20260827-2";
 import { localPackingDensityAudit } from "./local-packing-density.js?v=20260827-2";
 import { interstitialClearanceAudit } from "./interstitial-clearance.js?v=20260827-10";
-import { displacementClearanceKey } from "./displacement-envelope.js?v=20260827-1";
+import { directionalPairDisplacementSigma, displacementClearanceKey }
+  from "./displacement-envelope.js?v=20260827-2";
 import { fitAdditiveContactEnvelope } from "./contact-envelope-fit.js?v=20260827-1";
 import { formalChargeBalanceDelta, learnFormalChargeTarget } from "./formal-charge-balance.js?v=20260824-1";
 import { chargeMomentSignature, compareChargeMomentGeometry } from "./global-charge-moments.js?v=20260826-1";
@@ -93,7 +94,7 @@ import {
   learnColoredAngularEnvelopesEnsemble,
   learnColoredCoordinationEnvelopesEnsemble,
   learnColoredDistanceEnvelopesEnsemble,
-} from "./colored-distance-envelopes.js?v=20260826-7";
+} from "./colored-distance-envelopes.js?v=20260827-8";
 import { learnLocalPairDistanceUncertaintyEnsemble } from "./ensemble-geometry-uncertainty.js?v=20260824-1";
 import { interfaceAccommodationScore, interfaceGeometryAudit } from "./interface-geometry.js?v=20260825-1";
 import { classifyProperPoseOrbits, symmetryReducedMisorientation } from "./proper-pose-orbits.js?v=20260825-1";
@@ -4682,9 +4683,13 @@ function intrinsicPlaneNormal(source) {
   return new THREE.Vector3().crossVectors(axis, second.normalize()).normalize();
 }
 
-function atomMeanSquareDisplacementNormalized(atom, dimension, planeNormal, spacingAngstrom) {
-  const tensor = atom.uAnisoCartesianA2?.map((row) => row.slice())
+function atomDisplacementTensorAngstrom2(atom) {
+  return atom.uAnisoCartesianA2?.map((row) => row.slice())
     || (Number.isFinite(atom.uIsoA2) ? [[atom.uIsoA2, 0, 0], [0, atom.uIsoA2, 0], [0, 0, atom.uIsoA2]] : null);
+}
+
+function atomMeanSquareDisplacementNormalized(atom, dimension, planeNormal, spacingAngstrom) {
+  const tensor = atomDisplacementTensorAngstrom2(atom);
   if (!tensor || !(Number.isFinite(spacingAngstrom) && spacingAngstrom > 0)) return null;
   const trace = tensor[0][0] + tensor[1][1] + tensor[2][2];
   let variance = trace / 3;
@@ -4708,8 +4713,7 @@ function intrinsicScatteringBasis(dimension, planeNormal) {
 }
 
 function atomDisplacementTensorNormalized(atom, basis, spacingAngstrom) {
-  const tensor = atom.uAnisoCartesianA2?.map((row) => row.slice())
-    || (Number.isFinite(atom.uIsoA2) ? [[atom.uIsoA2, 0, 0], [0, atom.uIsoA2, 0], [0, 0, atom.uIsoA2]] : null);
+  const tensor = atomDisplacementTensorAngstrom2(atom);
   if (!tensor || !(Number.isFinite(spacingAngstrom) && spacingAngstrom > 0)) return null;
   const scale = spacingAngstrom * spacingAngstrom;
   return basis.map((first) => basis.map((second) => first.reduce((sum, firstValue, row) => sum
@@ -5125,8 +5129,6 @@ function structuralVoidClearanceSnapshot(source = atoms, includePeriodicReferenc
   const computePeriodicReference = includePeriodicReference && !cachedPeriodicReferenceVoid;
   const cell = computePeriodicReference ? currentCell() : null;
   const periodicAxes = computePeriodicReference ? currentPbc() : [false, false, false];
-  const displacementTensor = (atom) => atom.uAnisoCartesianA2?.map((row) => row.slice())
-    || (Number.isFinite(atom.uIsoA2) ? [[atom.uIsoA2, 0, 0], [0, atom.uIsoA2, 0], [0, 0, atom.uIsoA2]] : null);
   const audit = interstitialClearanceAudit(source.map((atom) => atom.p.toArray()),
     referenceAtoms.map((atom) => atom.p.toArray()), {
       dimension, maximumAnchors: 64, neighborLimit: 6, histogramBins: 20, histogramMaximum: 1.5,
@@ -5134,8 +5136,8 @@ function structuralVoidClearanceSnapshot(source = atoms, includePeriodicReferenc
       referenceSpecies: referenceAtoms.map((atom) => atom.species),
       covalentRadiiAngstrom: EXPLICIT_COVALENT_RADII_A,
       fittedContactRadiiAngstrom: fittedContactEnvelope?.available ? fittedContactEnvelope.radiiAngstrom : null,
-      currentDisplacementTensorsAngstrom2: source.map(displacementTensor),
-      referenceDisplacementTensorsAngstrom2: referenceAtoms.map(displacementTensor),
+      currentDisplacementTensorsAngstrom2: source.map(atomDisplacementTensorAngstrom2),
+      referenceDisplacementTensorsAngstrom2: referenceAtoms.map(atomDisplacementTensorAngstrom2),
       physicalNearestNeighborAngstrom: referenceSpacingA,
       periodicCellVectorsAngstrom: cell?.map((vector) => vector.toArray()) || null,
       periodicAxes,
@@ -9808,7 +9810,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-246",
+      buildId: "20260827-247",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -10212,6 +10214,15 @@ async function buildExperimentReceipt() {
         maximumOneAxisSigmaAngstrom: receiptRound(activeImportedFrameValidation()?.maximumThermalSigmaA || 0),
         maximumPrincipalAxisSigmaAngstrom: receiptRound(activeImportedFrameValidation()?.maximumThermalAxisSigmaA || 0),
         pairDistanceOneSigmaFloorAngstrom: receiptRound(measuredPairUncertaintyAngstrom()),
+        directionalPairEnvelopeModel: "sigma_pair = sqrt(n^T (U_i + U_j) n); missing U contributes zero",
+        directionalPairEnvelopeSigmaMultiplier: 1,
+        directionalPairEnvelopeCount: coloredDistanceEnvelopes.records
+          .filter((record) => record.directionalUncertaintyApplied).length,
+        directionalPairSigmaObservationCount: coloredDistanceEnvelopes.records
+          .reduce((sum, record) => sum + record.directionalSigmaObservations, 0),
+        independentSiteCovarianceAssumed: true,
+        correlatedDisplacementModelUsed: false,
+        contactProbabilityClaimed: false,
         empiricalSnapshotPairDistances: ensemblePairDistanceUncertainty?.available ? {
           frameCount: ensemblePairDistanceUncertainty.frameCount,
           atomPresentations: ensemblePairDistanceUncertainty.atomPresentations,
@@ -10253,11 +10264,17 @@ async function buildExperimentReceipt() {
         pairs: coloredDistanceEnvelopes.records.map((record) => ({
           species: record.species,
           minimumObservedAngstrom: receiptRound(record.minimumObserved * referenceSpacingA / referenceSpacing),
+          minimumOneSigmaContactAngstrom: receiptRound(record.minimumOneSigmaContact * referenceSpacingA / referenceSpacing),
           lowerContactAngstrom: receiptRound(record.lowerContact * referenceSpacingA / referenceSpacing),
           typicalContactAngstrom: receiptRound(record.typicalContact * referenceSpacingA / referenceSpacing),
           upperContactAngstrom: receiptRound(record.upperContact * referenceSpacingA / referenceSpacing),
           strainScaleAngstrom: receiptRound(record.contactScale * referenceSpacingA / referenceSpacing),
+          meanPositionHardExclusionAngstrom: receiptRound(record.meanPositionExclusion * referenceSpacingA / referenceSpacing),
           hardExclusionAngstrom: receiptRound(record.exclusion * referenceSpacingA / referenceSpacing),
+          directionalPairSigmaMedianAngstrom: receiptRound(record.directionalSigmaMedian * referenceSpacingA / referenceSpacing),
+          directionalPairSigma90Angstrom: receiptRound(record.directionalSigmaUpper * referenceSpacingA / referenceSpacing),
+          directionalPairSigmaObservations: record.directionalSigmaObservations,
+          directionalUncertaintyApplied: record.directionalUncertaintyApplied,
           nearestObservations: record.nearestObservations,
         })),
       },
@@ -12018,7 +12035,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-246" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-247" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -14822,10 +14839,20 @@ function learnReferenceEnsemblePairUncertainty() {
 }
 
 function learnReferenceDistanceEnvelopes(source) {
-  const frames = referenceEvidenceFrames(source).map(({ source: frameSource, context }) => ({
-    species: frameSource.map((atom) => atom.species),
-    distance: (first, second) => scenePeriodicDisplacement(frameSource[first].p, frameSource[second].p, context).length(),
-  }));
+  const angstromToScene = referenceSpacing / Math.max(referenceSpacingA, 1e-12);
+  const frames = referenceEvidenceFrames(source).map(({ source: frameSource, context }) => {
+    const displacement = (first, second) => scenePeriodicDisplacement(frameSource[first].p,
+      frameSource[second].p, context);
+    return {
+      species: frameSource.map((atom) => atom.species),
+      distance: (first, second) => displacement(first, second).length(),
+      pairSigma: (first, second) => directionalPairDisplacementSigma(
+        atomDisplacementTensorAngstrom2(frameSource[first]),
+        atomDisplacementTensorAngstrom2(frameSource[second]),
+        displacement(first, second).toArray(),
+      ) * angstromToScene,
+    };
+  });
   return learnColoredDistanceEnvelopesEnsemble(frames, {
       fallbackExclusion: COLLISION_TOLERANCE,
   });
@@ -22681,9 +22708,9 @@ function physicsTranslationRecords(leap = null) {
         : "No score-channel separation experiment is active.",
       boundary: "Multiplying one geometric ranking contribution by zero tests this encoded model term, not removal of the underlying physical mechanism. It changes no candidate geometry or hard admission, supplies no target, and infers no energy, kinetics, or time." },
     { id: "steric", process: "short-range repulsion / species contact", status: "hard", role: "hard admission gate",
-      encoding: `${coloredDistanceEnvelopes?.records?.length || 0} colored pair envelopes with exact species coincidence and learned hard-exclusion radii`,
+      encoding: `${coloredDistanceEnvelopes?.records?.length || 0} colored pair envelopes with exact species coincidence and learned hard-exclusion radii${coloredDistanceEnvelopes?.records?.some((record) => record.directionalUncertaintyApplied) ? `; ${coloredDistanceEnvelopes.records.filter((record) => record.directionalUncertaintyApplied).length} retain one-sigma full-Uij pair-direction support` : ""}`,
       evidence: leapResult,
-      boundary: "This excludes geometrically impossible contacts; it is not a repulsive pair potential, force, pressure, or collision trajectory." },
+      boundary: "This excludes geometrically impossible contacts. Reported one-sigma ellipsoidal support is treated as independent site covariance only; it is not a repulsive pair potential, correlated phonon model, contact probability, force, pressure, or collision trajectory." },
     { id: "local", process: "local bonding geometry / valence saturation", status: "hard", role: "hard causal neighborhood gate",
       encoding: `${coloredCoordinationEnvelopes?.records?.length || 0} ordered coordination bounds + ${coloredAngularEnvelopes?.records?.length || 0} colored angular bands within the sample-derived reach`,
       evidence: `${coordinationCapacityPrunes} coordination and ${angularEnvelopePrunes} angular prunes have occurred in this run.`,
@@ -26969,9 +26996,9 @@ function observationProvenanceRecords() {
       observed: uncertainty > 0
         ? `${uncertaintySource}; ${validation?.thermalDisplacementSites || 0} U/B sites and ${ensemblePairDistanceUncertainty?.localPairCount || 0} local snapshot-pair observations.`
         : "No U/B displacement parameters or repeated fixed-topology pair-distance spread is available.",
-      transform: uncertainty > 0 ? "The larger measured pair-distance uncertainty becomes a lower bound on metric-isometry matching tolerance." : "The selected nominal tolerance remains unchanged.",
-      use: "Broadens equivalence testing and colored distance envelopes; it does not displace atoms or sample a thermal configuration.",
-      boundary: "A positional uncertainty ellipsoid is not a phonon mode, force covariance, temperature distribution, or dynamical ensemble." },
+      transform: uncertainty > 0 ? `The larger measured pair-distance uncertainty becomes a lower bound on metric-isometry matching tolerance.${validation?.anisotropicDisplacementSites ? ` Full Uij additionally supplies ${coloredDistanceEnvelopes.records.filter((record) => record.directionalUncertaintyApplied).length} one-sigma pair-direction contact envelopes through nᵀ(Uᵢ+Uⱼ)n.` : ""}` : "The selected nominal tolerance remains unchanged.",
+      use: "Broadens equivalence testing and colored contact/strain envelopes; it does not displace atoms or sample a thermal configuration.",
+      boundary: "A positional uncertainty ellipsoid is a reported geometric resolution envelope—not a phonon mode, correlated motion model, contact probability, force covariance, temperature distribution, or dynamical ensemble." },
     { id: "tolerance", short: "tolerance", status: "active",
       value: `ε ${(effectiveClusterMetricTolerance() * 100).toFixed(2)}% · ${tolerance.toFixed(3)} Å`,
       observed: `${clusterToleranceMode} nominal mode: ${(clusterMetricTolerance() * 100).toFixed(1)}% of dₙₙ=${referenceSpacingA.toFixed(3)} Å; floor source ${uncertaintySource}.`,
@@ -27569,11 +27596,14 @@ function renderMarkings() {
     const records = coloredDistanceEnvelopes?.records || [];
     const coordinationRecords = coloredCoordinationEnvelopes?.records || [];
     const angularRecords = coloredAngularEnvelopes?.records || [];
-    markCount.textContent = `${records.length} pairs · ${coordinationRecords.length} capacities · ${angularRecords.length} angles · ${coloredDistanceEnvelopes.frameCount} frame${coloredDistanceEnvelopes.frameCount === 1 ? "" : "s"}`;
+    const directionalPairs = records.filter((record) => record.directionalUncertaintyApplied).length;
+    markCount.textContent = `${records.length} pairs${directionalPairs ? ` · ${directionalPairs} directional σ` : ""} · ${coordinationRecords.length} capacities · ${angularRecords.length} angles · ${coloredDistanceEnvelopes.frameCount} frame${coloredDistanceEnvelopes.frameCount === 1 ? "" : "s"}`;
     const p = document.createElement("p");
     p.textContent = coloredDistanceEnvelopes.frameCount > 1
       ? `Pair contacts, ordered coordination caps, and three-body angle bands pool ${coloredDistanceEnvelopes.atomPresentations.toLocaleString()} within-frame atom presentations. The selected frame alone supplies clusters and growth; no cross-frame pair, motif label, or potential is constructed.`
-      : "Pair contacts, ordered coordination caps, and three-body angle bands are learned from positions; no motif labels or potential are supplied.";
+      : directionalPairs
+        ? `Pair contacts retain one-sigma nᵀ(Uᵢ+Uⱼ)n directional resolution from reported Uiso/Uij tensors; ordered coordination caps and three-body angle bands remain mean-position geometry. No atom is sampled and no motif label or potential is supplied.`
+        : "Pair contacts, ordered coordination caps, and three-body angle bands are learned from positions; no motif labels or potential are supplied.";
     markingTable.appendChild(p);
     if (coloredDistanceEnvelopes.frameCount > 1) {
       const ensemble = document.createElement("div"); ensemble.className = "mark-row composition-reservoir-row";
@@ -27601,9 +27631,13 @@ function renderMarkings() {
     const toAngstrom = referenceSpacingA / referenceSpacing;
     records.forEach((record) => {
       const row = document.createElement("div"); row.className = "mark-row distance-envelope-row";
-      row.title = `${record.nearestObservations} nearest-by-species observations · exclusion remains below every supplied contact`;
+      row.title = record.directionalUncertaintyApplied
+        ? `${record.nearestObservations} nearest-by-species observations · ${record.directionalSigmaObservations} full-tensor directional pair σ observations · one-sigma ellipsoidal support relaxes the exclusion but supplies no motion probability`
+        : `${record.nearestObservations} nearest-by-species observations · exclusion remains below every supplied contact`;
       const code = document.createElement("code"); code.textContent = record.species.join("–");
-      const span = document.createElement("span"); span.textContent = `contact ≥ ${(record.minimumObserved * toAngstrom).toFixed(2)} Å`;
+      const span = document.createElement("span"); span.textContent = record.directionalUncertaintyApplied
+        ? `mean ${(record.minimumObserved * toAngstrom).toFixed(2)} Å · 1σ support ≥ ${(record.minimumOneSigmaContact * toAngstrom).toFixed(2)} Å`
+        : `contact ≥ ${(record.minimumObserved * toAngstrom).toFixed(2)} Å`;
       const b = document.createElement("b"); b.textContent = `hard < ${(record.exclusion * toAngstrom).toFixed(2)} Å`;
       row.append(code, span, b); markingTable.appendChild(row);
     });
