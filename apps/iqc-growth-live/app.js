@@ -61,8 +61,9 @@ import { consumeFeedstock, evaluateFeedstockDemand, feedstockReservoirSnapshot,
   initializeFeedstockReservoir } from "./feedstock-reservoir.js?v=20260827-2";
 import { localPackingDensityAudit } from "./local-packing-density.js?v=20260827-2";
 import { interstitialClearanceAudit } from "./interstitial-clearance.js?v=20260827-10";
-import { directionalPairDisplacementSigma, displacementClearanceKey }
-  from "./displacement-envelope.js?v=20260827-2";
+import { directionalContactExclusion, directionalPairDisplacementSigma, displacementClearanceKey,
+  rotateDisplacementTensor }
+  from "./displacement-envelope.js?v=20260827-3";
 import { fitAdditiveContactEnvelope } from "./contact-envelope-fit.js?v=20260827-1";
 import { formalChargeBalanceDelta, learnFormalChargeTarget } from "./formal-charge-balance.js?v=20260824-1";
 import { chargeMomentSignature, compareChargeMomentGeometry } from "./global-charge-moments.js?v=20260826-1";
@@ -94,7 +95,7 @@ import {
   learnColoredAngularEnvelopesEnsemble,
   learnColoredCoordinationEnvelopesEnsemble,
   learnColoredDistanceEnvelopesEnsemble,
-} from "./colored-distance-envelopes.js?v=20260827-8";
+} from "./colored-distance-envelopes.js?v=20260827-9";
 import { learnLocalPairDistanceUncertaintyEnsemble } from "./ensemble-geometry-uncertainty.js?v=20260824-1";
 import { interfaceAccommodationScore, interfaceGeometryAudit } from "./interface-geometry.js?v=20260825-1";
 import { classifyProperPoseOrbits, symmetryReducedMisorientation } from "./proper-pose-orbits.js?v=20260825-1";
@@ -3788,7 +3789,8 @@ function random() {
 }
 
 function cloneAtom(atom, seed = true) {
-  return { ...atom, id: nextAtomId++, p: atom.p.clone(), seed, attempts: 0, parent: null, depth: 0 };
+  return { ...atom, id: nextAtomId++, p: atom.p.clone(), seed, attempts: 0, parent: null, depth: 0,
+    uAnisoCartesianA2: atom.uAnisoCartesianA2?.map((row) => row.slice()) || null };
 }
 
 function addAtom(position, species, family, parent = null, seed = false) {
@@ -4686,6 +4688,30 @@ function intrinsicPlaneNormal(source) {
 function atomDisplacementTensorAngstrom2(atom) {
   return atom.uAnisoCartesianA2?.map((row) => row.slice())
     || (Number.isFinite(atom.uIsoA2) ? [[atom.uIsoA2, 0, 0], [0, atom.uIsoA2, 0], [0, 0, atom.uIsoA2]] : null);
+}
+
+function templateSiteFromReference(source, atomIndex, local, localFrameInverse, center = false) {
+  const atom = source[atomIndex];
+  const tensor = atomDisplacementTensorAngstrom2(atom);
+  return {
+    local,
+    species: atom.species,
+    center,
+    referenceIndex: atomIndex,
+    uAnisoLocalA2: tensor ? rotateDisplacementTensor(tensor, localFrameInverse.toArray()) : null,
+    displacementTensorSource: tensor ? (Array.isArray(atom.uAnisoCartesianA2) ? "reported Uij" : "reported Uiso") : null,
+  };
+}
+
+function copyPlacedDisplacementTensor(atom, site) {
+  const tensor = site.uAnisoCartesianA2;
+  if (!Array.isArray(tensor)) return;
+  atom.uAnisoCartesianA2 = tensor.map((row) => row.slice());
+  atom.uIsoA2 = tensor.reduce((sum, row, index) => sum + row[index], 0) / 3;
+  atom.displacementTensorSource = site.displacementTensorSource || "transported reported covariance";
+  atom.displacementTemplateReferenceIndex = Number.isInteger(site.displacementTemplateReferenceIndex)
+    ? site.displacementTemplateReferenceIndex : null;
+  atom.displacementCovarianceTransported = true;
 }
 
 function atomMeanSquareDisplacementNormalized(atom, dimension, planeNormal, spacingAngstrom) {
@@ -6478,7 +6504,7 @@ function localEnvironmentDescriptor(source, centerIndex) {
   const neighbors = source.map((atom, index) => {
     if (index === centerIndex) return null;
     const vector = periodicDisplacement(center, atom);
-    return { atom, vector, r: vector.length() / referenceSpacingA };
+    return { atom, index, vector, r: vector.length() / referenceSpacingA };
   }).filter((item) => item && item.r < descriptorRadius).sort((a, b) => a.r - b.r);
 
   const features = material.elements.map((element) => center.species === element ? 2 : 0);
@@ -7866,10 +7892,11 @@ function candidatePosePerturbationAudit(candidate) {
 
 function growthDecisionUncertainty(candidate, evaluation, nearbyRoleCounts, executePerturbation) {
   let minimumContactClearance = Infinity;
-  const searchRadius = Math.max(coloredDistanceEnvelopes?.maximumExclusion || COLLISION_TOLERANCE,
+  const searchRadius = Math.max(coloredDistanceEnvelopes?.maximumMeanPositionExclusion
+      || coloredDistanceEnvelopes?.maximumExclusion || COLLISION_TOLERANCE,
     coloredCoordinationEnvelopes?.maximumCutoff || 0);
   evaluation.fresh.forEach((site) => nearbyAtoms(site.p, searchRadius).forEach((atom) => {
-    const clearance = site.p.distanceTo(atom.p) - coloredPairExclusion(site.species, atom.species);
+    const clearance = site.p.distanceTo(atom.p) - coloredPairDirectionalExclusion(site, atom);
     minimumContactClearance = Math.min(minimumContactClearance, clearance);
   }));
   const maximumOverlapResidual = evaluation.merged.reduce((maximum, entry) =>
@@ -8725,12 +8752,9 @@ function makeCoverOccurrence(source, placement, index) {
   const rotation = supportOccurrenceFrame(source, placement);
   const inverse = rotation.clone().invert();
   const scale = referenceSpacing / referenceSpacingA;
-  const sites = placement.support.map((atomIndex) => ({
-    local: periodicDisplacement(source[placement.center], source[atomIndex]).multiplyScalar(scale).applyQuaternion(inverse),
-    species: source[atomIndex].species,
-    center: atomIndex === placement.center,
-    referenceIndex: atomIndex,
-  }));
+  const sites = placement.support.map((atomIndex) => templateSiteFromReference(source, atomIndex,
+    periodicDisplacement(source[placement.center], source[atomIndex]).multiplyScalar(scale).applyQuaternion(inverse),
+    inverse, atomIndex === placement.center));
   return {
     index,
     type: placement.type,
@@ -8749,12 +8773,10 @@ function learnMolecularOverlapGrammar(source) {
   const placements = learnedCover.placements;
   const makeOccurrence = (placement, index) => {
     const position = source[placement.center].p.clone();
-    const sites = placement.support.map((atomIndex) => ({
-      local: periodicDisplacement(source[placement.center], source[atomIndex]).multiplyScalar(referenceSpacing / referenceSpacingA),
-      species: source[atomIndex].species,
-      center: atomIndex === placement.center,
-      referenceIndex: atomIndex,
-    }));
+    const identity = new THREE.Quaternion();
+    const sites = placement.support.map((atomIndex) => templateSiteFromReference(source, atomIndex,
+      periodicDisplacement(source[placement.center], source[atomIndex]).multiplyScalar(referenceSpacing / referenceSpacingA),
+      identity, atomIndex === placement.center));
     return { index, type: placement.type, position, rotation: new THREE.Quaternion(), sites, placement };
   };
   const occurrences = placements.map(makeOccurrence);
@@ -8972,14 +8994,12 @@ function learnOverlapGrammar(source) {
   const templates = learnedClusters.clusters.map((cluster, type) => {
     const medoid = cluster.medoid;
     const inverseFrame = occurrences[medoid].rotation.clone().invert();
-    const sites = [{ local: new THREE.Vector3(), species: source[medoid].species, center: true }];
+    const sites = [templateSiteFromReference(source, medoid, new THREE.Vector3(), inverseFrame, true)];
     learnedClusters.environments[medoid].shell
       .filter((neighbor) => neighbor.r <= motifShellCutoff())
-      .forEach((neighbor) => sites.push({
-        local: neighbor.vector.clone().multiplyScalar(scenePerAngstrom).applyQuaternion(inverseFrame),
-        species: neighbor.atom.species,
-        center: false,
-      }));
+      .forEach((neighbor) => sites.push(templateSiteFromReference(source, neighbor.index,
+        neighbor.vector.clone().multiplyScalar(scenePerAngstrom).applyQuaternion(inverseFrame),
+        inverseFrame, false)));
     return { type, medoid, sites, radius: Math.max(...sites.map((site) => site.local.length()), 0) };
   });
 
@@ -9045,11 +9065,11 @@ function learnOverlapGrammar(source) {
         rule.rotationAngle = 2 * Math.acos(Math.min(1, Math.abs(rule.rotation.w)));
         const targetIndex = rule.representativePair[1];
         const targetFrameInverse = occurrences[targetIndex].rotation.clone().invert();
-        rule.sites = [{ local: new THREE.Vector3(), species: source[targetIndex].species, center: true }];
-        learnedClusters.environments[targetIndex].shell.filter((neighbor) => neighbor.r <= motifShellCutoff()).forEach((neighbor) => rule.sites.push({
-          local: neighbor.vector.clone().multiplyScalar(scenePerAngstrom).applyQuaternion(targetFrameInverse),
-          species: neighbor.atom.species, center: false,
-        }));
+        rule.sites = [templateSiteFromReference(source, targetIndex, new THREE.Vector3(), targetFrameInverse, true)];
+        learnedClusters.environments[targetIndex].shell.filter((neighbor) => neighbor.r <= motifShellCutoff())
+          .forEach((neighbor) => rule.sites.push(templateSiteFromReference(source, neighbor.index,
+            neighbor.vector.clone().multiplyScalar(scenePerAngstrom).applyQuaternion(targetFrameInverse),
+            targetFrameInverse, false)));
         rules.push(rule);
       });
   });
@@ -9083,13 +9103,12 @@ function learnOverlapGrammar(source) {
       rotation: inverse.multiply(second.rotation).normalize(),
       count: 1,
       meanShared: edge.shared,
-      sites: [{ local: new THREE.Vector3(), species: source[secondIndex].species, center: true }],
+      sites: [templateSiteFromReference(source, secondIndex, new THREE.Vector3(), targetFrameInverse, true)],
     };
-    learnedClusters.environments[secondIndex].shell.filter((neighbor) => neighbor.r <= motifShellCutoff()).forEach((neighbor) => exactRule.sites.push({
-      local: neighbor.vector.clone().multiplyScalar(scenePerAngstrom).applyQuaternion(targetFrameInverse),
-      species: neighbor.atom.species,
-      center: false,
-    }));
+    learnedClusters.environments[secondIndex].shell.filter((neighbor) => neighbor.r <= motifShellCutoff())
+      .forEach((neighbor) => exactRule.sites.push(templateSiteFromReference(source, neighbor.index,
+        neighbor.vector.clone().multiplyScalar(scenePerAngstrom).applyQuaternion(targetFrameInverse),
+        targetFrameInverse, false)));
     const adjacency = reconstructionByOccurrence.get(firstIndex) || [];
     adjacency.push(exactRule);
     reconstructionByOccurrence.set(firstIndex, adjacency);
@@ -9810,7 +9829,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-247",
+      buildId: "20260827-248",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -10215,11 +10234,15 @@ async function buildExperimentReceipt() {
         maximumPrincipalAxisSigmaAngstrom: receiptRound(activeImportedFrameValidation()?.maximumThermalAxisSigmaA || 0),
         pairDistanceOneSigmaFloorAngstrom: receiptRound(measuredPairUncertaintyAngstrom()),
         directionalPairEnvelopeModel: "sigma_pair = sqrt(n^T (U_i + U_j) n); missing U contributes zero",
+        directionalPairEnvelopeRole: "full-Uij pair-direction support transported through proper cluster poses",
         directionalPairEnvelopeSigmaMultiplier: 1,
         directionalPairEnvelopeCount: coloredDistanceEnvelopes.records
           .filter((record) => record.directionalUncertaintyApplied).length,
         directionalPairSigmaObservationCount: coloredDistanceEnvelopes.records
           .reduce((sum, record) => sum + record.directionalSigmaObservations, 0),
+        clusterPoseTensorTransport: displacementTensorTransportAudit(),
+        growthHardContactRule: "each candidate pair recomputes one-sigma support along its live connecting direction",
+        missingLiveTensorFallback: "frozen learned scalar pair exclusion",
         independentSiteCovarianceAssumed: true,
         correlatedDisplacementModelUsed: false,
         contactProbabilityClaimed: false,
@@ -12035,7 +12058,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-247" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-248" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -14878,6 +14901,37 @@ function coloredPairExclusion(firstSpecies, secondSpecies) {
   return exclusionForPair(coloredDistanceEnvelopes, firstSpecies, secondSpecies);
 }
 
+function coloredPairDirectionalExclusion(first, second, firstPosition = first.p, secondPosition = second.p) {
+  const key = coloredDistanceEnvelopes?.pairKey?.(first.species, second.species);
+  const record = key ? coloredDistanceEnvelopes.byKey?.[key] : null;
+  if (!record) return coloredPairExclusion(first.species, second.species);
+  return directionalContactExclusion(record,
+    atomDisplacementTensorAngstrom2(first), atomDisplacementTensorAngstrom2(second),
+    secondPosition.clone().sub(firstPosition).toArray(), {
+      angstromToScene: referenceSpacing / Math.max(referenceSpacingA, 1e-12),
+      minimumContactFraction: coloredDistanceEnvelopes.config.minimumContactFraction,
+      lowerContactFraction: coloredDistanceEnvelopes.config.lowerContactFraction,
+    });
+}
+
+function displacementTensorTransportAudit() {
+  const templates = overlapGrammar?.templates || [];
+  const rules = overlapGrammar?.rules || [];
+  return {
+    referenceTensorSites: referenceAtoms.filter((atom) => atomDisplacementTensorAngstrom2(atom)).length,
+    templateLocalTensorSites: templates.reduce((sum, template) => sum
+      + (template.sites || []).filter((site) => Array.isArray(site.uAnisoLocalA2)).length, 0),
+    ruleLocalTensorSites: rules.reduce((sum, rule) => sum
+      + (rule.sites || []).filter((site) => Array.isArray(site.uAnisoLocalA2)).length, 0),
+    placedTransportedTensorSites: atoms.filter((atom) => atom.displacementCovarianceTransported).length,
+    properPoseTransport: "U_world = R_cluster U_local R_cluster^T",
+    liveDirectionalAdmission: true,
+    sweptPathDirectionalClearance: true,
+    postAttachmentDirectionalRecheck: true,
+    covarianceFrame: "Cartesian angstrom squared",
+  };
+}
+
 function referenceIndexForSite(site, context = scenePeriodicContext()) {
   let bestIndex = -1;
   let bestDistance2 = MERGE_TOLERANCE ** 2;
@@ -14936,6 +14990,10 @@ function canonicalKnownSites(sites, context = scenePeriodicContext()) {
       p: reference.p.clone(),
       species: reference.species,
       referenceIndex,
+      uAnisoCartesianA2: atomDisplacementTensorAngstrom2(reference),
+      displacementTensorSource: Array.isArray(reference.uAnisoCartesianA2)
+        ? "reported Uij" : Number.isFinite(reference.uIsoA2) ? "reported Uiso" : null,
+      displacementTemplateReferenceIndex: referenceIndex,
     });
   });
   return { sites: [...byReference.values()], failures, duplicateSites: sites.length - failures - byReference.size };
@@ -15763,12 +15821,13 @@ function geometricArrivalPathForCandidate(candidate, fresh) {
         const lateral = Math.sin(Math.PI * fraction) * detourRadius;
         const point = site.p.clone().addScaledVector(axis, sweepDistance * (1 - fraction))
           .addScaledVector(detour, lateral);
-        const neighborhood = nearbyAtoms(point,
-          coloredDistanceEnvelopes?.maximumExclusion || COLLISION_TOLERANCE);
+        const neighborhood = nearbyAtoms(point, coloredDistanceEnvelopes?.maximumMeanPositionExclusion
+          || coloredDistanceEnvelopes?.maximumExclusion || COLLISION_TOLERANCE);
         neighborhoodChecks += neighborhood.length;
         let sampleBlocked = false;
         neighborhood.forEach((atom) => {
-          const clearance = point.distanceTo(atom.p) - coloredPairExclusion(site.species, atom.species);
+          const clearance = point.distanceTo(atom.p)
+            - coloredPairDirectionalExclusion(site, atom, point, atom.p);
           minimumClearance = Math.min(minimumClearance, clearance);
           if (clearance < 0) sampleBlocked = true;
         });
@@ -15860,11 +15919,12 @@ function feedstockExposureForFreshSites(fresh, { recordWork = true } = {}) {
     let blocked = false;
     for (let sample = 1; sample <= sampleCount; sample++) {
       const point = site.p.clone().addScaledVector(direction, reach * sample / sampleCount);
-      const neighborhood = nearbyAtoms(point,
-        coloredDistanceEnvelopes?.maximumExclusion || COLLISION_TOLERANCE);
+      const neighborhood = nearbyAtoms(point, coloredDistanceEnvelopes?.maximumMeanPositionExclusion
+        || coloredDistanceEnvelopes?.maximumExclusion || COLLISION_TOLERANCE);
       neighborhoodChecks += neighborhood.length;
       neighborhood.forEach((atom) => {
-        const clearance = point.distanceTo(atom.p) - coloredPairExclusion(site.species, atom.species);
+        const clearance = point.distanceTo(atom.p)
+          - coloredPairDirectionalExclusion(site, atom, point, atom.p);
         minimumClearance = Math.min(minimumClearance, clearance);
         if (clearance < 0) blocked = true;
       });
@@ -15982,8 +16042,9 @@ function constraintRobustnessForCandidate(fresh, merged) {
   const toleranceScene = clusterMetricToleranceAngstrom() / Math.max(scaleAngstrom, 1e-12);
   const contactMargins = [];
   fresh.forEach((site) => nearbyAtoms(site.p,
-    coloredDistanceEnvelopes?.maximumExclusion || COLLISION_TOLERANCE).forEach((atom) => {
-    contactMargins.push(site.p.distanceTo(atom.p) - coloredPairExclusion(site.species, atom.species));
+    coloredDistanceEnvelopes?.maximumMeanPositionExclusion
+      || coloredDistanceEnvelopes?.maximumExclusion || COLLISION_TOLERANCE).forEach((atom) => {
+    contactMargins.push(site.p.distanceTo(atom.p) - coloredPairDirectionalExclusion(site, atom));
   }));
   const overlapMargins = merged.map(({ site, atom }) => MERGE_TOLERANCE - site.p.distanceTo(atom.p));
   const boundaryMargins = fresh.map((site) => growthEnvironmentSignedMargin(confinementSelect.value, site.p, growthDomainScale));
@@ -17097,13 +17158,17 @@ function candidateSites(candidate) {
   return (candidate.rule.sites || overlapGrammar.templates[candidate.type].sites).map((site) => ({
     species: site.species, center: site.center,
     p: site.local.clone().applyQuaternion(candidate.rotation).add(candidate.position),
+    uAnisoCartesianA2: site.uAnisoLocalA2
+      ? rotateDisplacementTensor(site.uAnisoLocalA2, candidate.rotation.toArray()) : null,
+    displacementTensorSource: site.displacementTensorSource,
+    displacementTemplateReferenceIndex: site.referenceIndex,
   }));
 }
 
 function sitesCanCommute(firstSites, secondSites) {
   for (const first of firstSites) for (const second of secondSites) {
     const distance = first.p.distanceTo(second.p);
-    if (distance >= coloredPairExclusion(first.species, second.species)) continue;
+    if (distance >= coloredPairDirectionalExclusion(first, second)) continue;
     if (first.species === second.species && distance <= COMMUTING_SITE_TOLERANCE) continue;
     return false;
   }
@@ -17260,7 +17325,8 @@ function projectAcceptedBatchGeometry(freshAtomIds, authorized) {
     const proposed = proposedById.get(atom.id);
     return atoms.every((other) => other === atom
       || proposed.distanceTo(proposedById.get(other.id) || other.p)
-        >= coloredPairExclusion(atom.species, other.species) - 1e-10);
+        >= coloredPairDirectionalExclusion(atom, other, proposed,
+          proposedById.get(other.id) || other.p) - 1e-10);
   });
   const hardCompatible = proposal.accepted && strainDecreased && coordinationCapacityPassed
     && angularEnvelopePassed && publicBoundaryPassed && hardExclusionPassed;
@@ -18192,11 +18258,14 @@ function evaluateCandidate(candidate, {
       } else fresh.push(site);
       return;
     }
-    const neighborhood = nearbyAtoms(site.p, coloredDistanceEnvelopes?.maximumExclusion || COLLISION_TOLERANCE)
+    const neighborhood = nearbyAtoms(site.p,
+      coloredDistanceEnvelopes?.maximumMeanPositionExclusion
+        || coloredDistanceEnvelopes?.maximumExclusion || COLLISION_TOLERANCE)
       .sort((first, second) => first.p.distanceToSquared(site.p) - second.p.distanceToSquared(site.p));
     const same = neighborhood.find((atom) => atom.species === site.species && atom.p.distanceTo(site.p) <= MERGE_TOLERANCE);
     if (same) merged.push({ site, atom: same });
-    else if (neighborhood.some((atom) => atom.p.distanceTo(site.p) < coloredPairExclusion(site.species, atom.species))) conflicts++;
+    else if (neighborhood.some((atom) => atom.p.distanceTo(site.p)
+      < coloredPairDirectionalExclusion(site, atom))) conflicts++;
     else if (!insideGrowthDomain(site.p)) boundaryFailures++;
     else fresh.push(site);
   });
@@ -18285,13 +18354,13 @@ function growthSeedSites(occurrenceIndex) {
   const occurrence = overlapGrammar.occurrences[occurrenceIndex];
   if (overlapGrammar.coverBased || overlapGrammar.molecular) return occurrence.sites;
   const inverseFrame = occurrence.rotation.clone().invert();
-  const sites = [{ local: new THREE.Vector3(), species: referenceAtoms[occurrenceIndex].species, center: true }];
+  const sites = [templateSiteFromReference(referenceAtoms, occurrenceIndex,
+    new THREE.Vector3(), inverseFrame, true)];
   learnedClusters.environments[occurrenceIndex].shell
     .filter((neighbor) => neighbor.r <= motifShellCutoff())
-    .forEach((neighbor) => sites.push({
-      local: neighbor.vector.clone().multiplyScalar(referenceSpacing / referenceSpacingA).applyQuaternion(inverseFrame),
-      species: neighbor.atom.species, center: false,
-    }));
+    .forEach((neighbor) => sites.push(templateSiteFromReference(referenceAtoms, neighbor.index,
+      neighbor.vector.clone().multiplyScalar(referenceSpacing / referenceSpacingA).applyQuaternion(inverseFrame),
+      inverseFrame, false)));
   return sites;
 }
 
@@ -18736,6 +18805,7 @@ function initializeOffLatticeSearch() {
       const atom = existing || addAtom(site.p, site.species, `C${seedType + 1}`, null, true);
       atom.referenceIndex = site.referenceIndex;
       copyReferenceScalarSpin(atom, site.referenceIndex);
+      if (!existing) copyPlacedDisplacementTensor(atom, site);
       atom.clusterIds ||= [];
       if (!atom.clusterIds.includes(seed.id)) atom.clusterIds.push(seed.id);
       atom.nucleusIds ||= [];
@@ -20598,6 +20668,9 @@ function syncStageOptions() {
     const strainUse = geometryPreference === "strain"
       ? ` A frozen sample-derived contact/angle strain adds a ${geometricStrainWeight.toFixed(2)} soft ordering term over that same candidate set${affineLoadMode === "none" ? "." : ` after the metric is transformed by the declared ${Math.round(affineLoadMagnitude * 100)}% ${affineLoadModeLabel()}; coordinates and hard gates stay unchanged.`}`
       : " Geometric strain is reported but contributes zero ranking weight for this ablation.";
+    const displacementContactUse = activeImportedFrameValidation()?.thermalDisplacementSites
+      ? " Reported Cartesian Uiso/Uij is stored in each template-local frame, rotated by the candidate's proper pose, and re-evaluated along every live hard-contact direction under the independent-site one-sigma assumption."
+      : " No reported displacement tensor is available; hard contacts use the frozen scalar colored envelope.";
     const relaxationUse = structuralRelaxationMode === "off"
       ? " Post-attachment projection is disabled; exact template coordinates are retained."
       : ` After known-window replay, atoms newly emitted in one leap may move by at most ${Math.round(100 * structuralRelaxationSpec().displacementFraction)}% dₙₙ through ${structuralRelaxationSpec().iterations} deterministic contact-residual iterations. The whole projection rolls back unless full contact-angle strain decreases and every hard gate remains valid; this is not a force or MD step.`;
@@ -20689,7 +20762,7 @@ function syncStageOptions() {
     growthModeNote.textContent = finiteIceAnchorMode
       ? "This sealed ice gate executes primitive H₂O connection ports with mutually exclusive orientation domains. Clusters² is disabled because no stationary promoted ice production has been certified."
       : hierarchyEnabled
-      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${ionicPairUse}${bondValenceUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`
+      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${displacementContactUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${ionicPairUse}${bondValenceUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`
       : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${ionicPairUse}${bondValenceUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`;
   }
 }
@@ -21341,6 +21414,7 @@ function materializeCandidate(candidate, evaluation, leapCreationContext) {
     const atom = addAtom(site.p, site.species, `C${candidate.type + 1}`, nearestParent(site.p));
     if (Number.isInteger(site.referenceIndex)) atom.referenceIndex = site.referenceIndex;
     copyReferenceScalarSpin(atom, site.referenceIndex);
+    copyPlacedDisplacementTensor(atom, site);
     atom.clusterIds = [placement.id];
     atom.nucleusIds = [placement.nucleusId];
     atom.createdByClusterId = placement.id;
@@ -22708,9 +22782,9 @@ function physicsTranslationRecords(leap = null) {
         : "No score-channel separation experiment is active.",
       boundary: "Multiplying one geometric ranking contribution by zero tests this encoded model term, not removal of the underlying physical mechanism. It changes no candidate geometry or hard admission, supplies no target, and infers no energy, kinetics, or time." },
     { id: "steric", process: "short-range repulsion / species contact", status: "hard", role: "hard admission gate",
-      encoding: `${coloredDistanceEnvelopes?.records?.length || 0} colored pair envelopes with exact species coincidence and learned hard-exclusion radii${coloredDistanceEnvelopes?.records?.some((record) => record.directionalUncertaintyApplied) ? `; ${coloredDistanceEnvelopes.records.filter((record) => record.directionalUncertaintyApplied).length} retain one-sigma full-Uij pair-direction support` : ""}`,
+      encoding: `${coloredDistanceEnvelopes?.records?.length || 0} colored pair envelopes with exact species coincidence and learned hard-exclusion radii${coloredDistanceEnvelopes?.records?.some((record) => record.directionalUncertaintyApplied) ? `; ${coloredDistanceEnvelopes.records.filter((record) => record.directionalUncertaintyApplied).length} retain one-sigma full-Uij support, transported as U_world=R U_local R^T and resolved again along every live pair direction` : ""}`,
       evidence: leapResult,
-      boundary: "This excludes geometrically impossible contacts. Reported one-sigma ellipsoidal support is treated as independent site covariance only; it is not a repulsive pair potential, correlated phonon model, contact probability, force, pressure, or collision trajectory." },
+      boundary: "This excludes geometrically impossible contacts. Reported one-sigma ellipsoidal support is treated as independent site covariance only; it is not a repulsive pair potential, correlated phonon model, contact probability, force, pressure, or dynamical collision trajectory." },
     { id: "local", process: "local bonding geometry / valence saturation", status: "hard", role: "hard causal neighborhood gate",
       encoding: `${coloredCoordinationEnvelopes?.records?.length || 0} ordered coordination bounds + ${coloredAngularEnvelopes?.records?.length || 0} colored angular bands within the sample-derived reach`,
       evidence: `${coordinationCapacityPrunes} coordination and ${angularEnvelopePrunes} angular prunes have occurred in this run.`,
@@ -27602,7 +27676,7 @@ function renderMarkings() {
     p.textContent = coloredDistanceEnvelopes.frameCount > 1
       ? `Pair contacts, ordered coordination caps, and three-body angle bands pool ${coloredDistanceEnvelopes.atomPresentations.toLocaleString()} within-frame atom presentations. The selected frame alone supplies clusters and growth; no cross-frame pair, motif label, or potential is constructed.`
       : directionalPairs
-        ? `Pair contacts retain one-sigma nᵀ(Uᵢ+Uⱼ)n directional resolution from reported Uiso/Uij tensors; ordered coordination caps and three-body angle bands remain mean-position geometry. No atom is sampled and no motif label or potential is supplied.`
+        ? `Pair contacts retain one-sigma nᵀ(Uᵢ+Uⱼ)n directional resolution from reported Uiso/Uij tensors. Each learned cluster stores U in its local frame, rotates it with every proper candidate pose, and recomputes the hard contact along the live pair direction; coordination and angle bands remain mean-position geometry. No atom is sampled and no motif label or potential is supplied.`
         : "Pair contacts, ordered coordination caps, and three-body angle bands are learned from positions; no motif labels or potential are supplied.";
     markingTable.appendChild(p);
     if (coloredDistanceEnvelopes.frameCount > 1) {
@@ -27638,7 +27712,9 @@ function renderMarkings() {
       const span = document.createElement("span"); span.textContent = record.directionalUncertaintyApplied
         ? `mean ${(record.minimumObserved * toAngstrom).toFixed(2)} Å · 1σ support ≥ ${(record.minimumOneSigmaContact * toAngstrom).toFixed(2)} Å`
         : `contact ≥ ${(record.minimumObserved * toAngstrom).toFixed(2)} Å`;
-      const b = document.createElement("b"); b.textContent = `hard < ${(record.exclusion * toAngstrom).toFixed(2)} Å`;
+      const b = document.createElement("b"); b.textContent = record.directionalUncertaintyApplied
+        ? `frozen < ${(record.exclusion * toAngstrom).toFixed(2)} Å · live n`
+        : `hard < ${(record.exclusion * toAngstrom).toFixed(2)} Å`;
       row.append(code, span, b); markingTable.appendChild(row);
     });
     coordinationRecords.forEach((record) => {

@@ -13,6 +13,25 @@ amplification is `b > 1`, a level-`L` accepted macro placement represents
 approximately `b^L` atoms.  Materializing or exporting `N` atomic coordinates
 still has an unavoidable `O(N)` cost and must be reported separately.
 
+### Proper-pose displacement transport (Build 248)
+
+Reported Uiso/Uij no longer stops at the training-time pair table. Each cluster
+template stores the full covariance in its local proper frame; every candidate
+rotates it into the live Cartesian frame as `Uworld = R Ulocal Rᵀ`. Candidate
+admission, commuting-antichain compatibility, swept-arrival clearance,
+robustness margins, and the post-attachment hard recheck resolve the pair width
+again along the current connecting direction. Newly committed sites retain
+that transported tensor, so the hypothesis remains self-consistent across
+later generations. A missing pair of live tensors falls back byte-for-byte to
+the frozen scalar exclusion.
+
+This closes a covariance-lineage gap but does not turn crystallographic ADPs
+into dynamics. Replicating an observed tensor with a rigid cluster is an
+explicit geometric-template assumption. The model still assumes independent
+site covariance and does not infer correlated atomic motion, phonons,
+temperature, contact probability, a potential, force, barrier, collision
+trajectory, kinetics, or physical time.
+
 ### Directional Uij contact geometry (Build 247)
 
 The browser now transports reported Cartesian Uiso/Uij into the colored local

@@ -9,6 +9,30 @@ function validTensor(tensor) {
     && tensor.every((row) => Array.isArray(row) && row.length === 3 && row.every(Number.isFinite));
 }
 
+/** Rotate a Cartesian covariance by a unit quaternion [x,y,z,w]. The result
+ * is R U R^T, so an ellipsoid stored in a cluster-local frame follows the
+ * cluster's proper pose without introducing an improper reflection. Invalid
+ * or degenerate inputs fail closed to null. */
+export function rotateDisplacementTensor(tensor, quaternion) {
+  if (!validTensor(tensor) || !Array.isArray(quaternion) || quaternion.length !== 4
+    || quaternion.some((value) => !Number.isFinite(value))) return null;
+  const norm = Math.hypot(...quaternion);
+  if (!(norm > 1e-14)) return null;
+  const [x, y, z, w] = quaternion.map((value) => value / norm);
+  const rotation = [
+    [1 - 2 * (y * y + z * z), 2 * (x * y - z * w), 2 * (x * z + y * w)],
+    [2 * (x * y + z * w), 1 - 2 * (x * x + z * z), 2 * (y * z - x * w)],
+    [2 * (x * z - y * w), 2 * (y * z + x * w), 1 - 2 * (x * x + y * y)],
+  ];
+  const rotated = rotation.map((row, first) => rotation.map((otherRow, second) =>
+    row.reduce((sum, firstValue, firstIndex) => sum + firstValue
+      * otherRow.reduce((inner, secondValue, secondIndex) => inner
+        + tensor[firstIndex][secondIndex] * secondValue, 0), 0)));
+  // Suppress only round-off antisymmetry; covariance remains a full tensor.
+  return rotated.map((row, first) => row.map((value, second) =>
+    (value + rotated[second][first]) / 2));
+}
+
 /** Directional support k sqrt(n^T U n) of a crystallographic Cartesian ADP.
  * U is mean-square displacement in the same squared units as the direction's
  * coordinates. This is an ellipsoidal support hypothesis, not a sampled
@@ -44,6 +68,34 @@ export function directionalPairDisplacementSigma(firstTensor, secondTensor, dire
       * unit.reduce((inner, secondValue, second) => inner + tensor[first][second] * secondValue, 0), 0);
   };
   return Math.sqrt(Math.max(0, directionalVariance(firstTensor) + directionalVariance(secondTensor)));
+}
+
+/** Re-evaluate a learned colored hard-contact envelope for the actual placed
+ * pair direction. Tensors remain in A^2 while record distances are in scene
+ * units, hence the explicit angstromToScene factor. When neither live site has
+ * a reported/transported tensor, the frozen scalar exclusion is reproduced
+ * exactly. This is a one-sigma independent-covariance geometric support rule,
+ * not a contact probability or a correlated motion model. */
+export function directionalContactExclusion(record, firstTensor, secondTensor, direction, {
+  angstromToScene = 1,
+  minimumContactFraction = .88,
+  lowerContactFraction = .80,
+} = {}) {
+  const fallback = Number.isFinite(record?.exclusion) ? record.exclusion : 0;
+  if (!validTensor(firstTensor) && !validTensor(secondTensor)) return fallback;
+  if (!(Number.isFinite(angstromToScene) && angstromToScene > 0)
+    || !(Number.isFinite(minimumContactFraction) && minimumContactFraction > 0)
+    || !(Number.isFinite(lowerContactFraction) && lowerContactFraction > 0)
+    || !Number.isFinite(record?.minimumObserved) || !Number.isFinite(record?.lowerContact)) return fallback;
+  const sigma = directionalPairDisplacementSigma(firstTensor, secondTensor, direction) * angstromToScene;
+  if (!Number.isFinite(sigma)) return fallback;
+  const meanPositionExclusion = Number.isFinite(record.meanPositionExclusion)
+    ? record.meanPositionExclusion : fallback;
+  return Math.max(0, Math.min(
+    meanPositionExclusion,
+    Math.max(0, record.minimumObserved - sigma) * minimumContactFraction,
+    Math.max(0, record.lowerContact - sigma) * lowerContactFraction,
+  ));
 }
 
 export function normalizeDisplacementTensors(tensorsAngstrom2, siteCount, lengthScaleAngstrom) {

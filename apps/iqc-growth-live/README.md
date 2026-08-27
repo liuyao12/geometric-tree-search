@@ -19,6 +19,21 @@ the GCTS anatomy view explains covers, oriented ports, markings, search, and
 promotion; and the claim ledger keeps proved, measured, and open results visibly
 separate. Its numbers are frozen benchmark results, not recomputed browser demos.
 
+Build 248 rotates each reported displacement covariance with the cluster that
+carries it. Every Uiso/Uij tensor is converted to a full Cartesian covariance,
+stored in the observed template's local proper frame, and transported as
+`Uworld = Rcluster Ulocal Rclusterᵀ` when a candidate is placed. Hard admission
+then recomputes `√(nᵀ(Ui+Uj)n)` along the *live* candidate–neighbor direction;
+the same directional clearance is used for commuting-batch compatibility,
+optional swept-arrival checks, robustness margins, and the final
+post-attachment projection recheck. Accepted sites retain the rotated tensor,
+so later cluster generations see the covariance that was actually transported.
+If neither site has a reported tensor, the previous frozen scalar pair
+exclusion is reproduced exactly. Reusing a reported covariance on a generated
+copy is an explicit rigid-template geometry hypothesis—not correlated atomic motion,
+a phonon or thermal trajectory, a contact probability, potential,
+force, collision dynamics, or physical time.
+
 Build 247 carries reported Cartesian Uiso/Uij into the local contact geometry
 instead of using only an isotropic-equivalent matching floor. For every observed
 colored pair, the connecting direction `n` now resolves the independent-site

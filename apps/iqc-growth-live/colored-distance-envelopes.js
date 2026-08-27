@@ -130,6 +130,8 @@ export function learnColoredDistanceEnvelopesEnsemble(frames, {
     byKey,
     fallbackExclusion,
     maximumExclusion: Math.max(fallbackExclusion, ...records.map((record) => record.exclusion)),
+    maximumMeanPositionExclusion: Math.max(fallbackExclusion,
+      ...records.map((record) => record.meanPositionExclusion)),
     directionalPairEnvelopeCount: records.filter((record) => record.directionalUncertaintyApplied).length,
     directionalPairSigmaObservations: records.reduce((sum, record) => sum + record.directionalSigmaObservations, 0),
     frameCount: frames.length,
