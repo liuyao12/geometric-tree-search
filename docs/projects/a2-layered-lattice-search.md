@@ -53,8 +53,39 @@ failure of translational or isohedral lanes remains inconclusive. Exact GCTS
 corona obstructions should be reported only in the explicitly searched
 lattice-function model.
 
+## Multi-layer polyprism census
+
+`assets/a2-layered-polyprisms.js` enumerates connected unions of elementary
+triangular prisms in the A2-layer honeycomb. Equivalence uses translations and
+the fixed six-element proper layer group. Single-layer shapes and repeated
+identical cross-section products are flagged as product prisms and omitted
+from the search pool.
+
+The complete fixed-lattice census counts through size six are 1, 2, 4, 15,
+50, and 237; after the product filter, the first two candidates occur at size
+three. In the initial size-five screen, 44 of the 45 non-product candidates
+received exact two-tile translational boundary-quotient certificates. The
+remaining record, `a2lp_5_00003`, is unresolved: longer translational and
+isohedral runs reached finite patches but produced neither a periodic
+certificate nor a negative proof. “Unresolved” here is deliberately not a
+claim of aperiodicity.
+
+At size six there are 222 non-product candidates. The first short pass gives
+149 exact two-tile translational certificates and leaves 73 bounded-unresolved
+records. This is a triage result only: a four-second rerun of the first twenty
+short-pass survivors eliminated nine more periodically, so the 73 must not be
+treated as a stable candidate count until the deeper pass is complete.
+
+The machine-readable screen is `data/a2-layered-size5-screen.ndjson`. Rebuild
+it with:
+
+```bash
+node scripts/screen-a2-layered-polyprisms.mjs --size=5 --time-ms=1200 --motif-tiles=8
+```
+
 Run the regression with:
 
 ```bash
 node scripts/test-3d-a2-layered-prisms.mjs
+node scripts/test-a2-layered-polyprism-census.mjs
 ```

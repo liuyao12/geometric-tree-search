@@ -7,6 +7,10 @@ import { GeometricFrontierMarking } from "../../assets/geometric-frontier-markin
 import { LATTICE_POLYHEDRON_GCTS_EXAMPLES } from "../../assets/lattice-polyhedron-survivors.js?v=20260820-size13-v104";
 import { POLYCUBE_GCTS_CANDIDATES } from "../../assets/polycube-census-candidates.js?v=20260824-volume10-v78";
 import { A2_LAYERED_PRISM_SPECS, makeA2LayeredPrism } from "../../assets/a2-layered-prisms.js";
+import {
+  A2_LAYERED_POLYPRISM_CANDIDATES,
+  makeA2LayeredPolyprism
+} from "../../assets/a2-layered-polyprisms.js";
 import { normalizeProposalProgram } from "./proposal-learner.js";
 
 export const GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES = 5;
@@ -8429,6 +8433,18 @@ export const tileSpecs = (() => {
         geometryModel: spec.geometry_model
       }))]
     }])),
+    ...Object.fromEntries(A2_LAYERED_POLYPRISM_CANDIDATES.map(candidate => [candidate.registry_id, {
+      name: candidate.name,
+      category: ["Unresolved A2 Layered Candidates", "A2 Layered Solids"],
+      census_candidate: candidate,
+      layered_lattice: {
+        equation: "x+y+z=3k",
+        base_layer: 0,
+        top_layer: 9,
+        role: "multi-layer non-product candidate"
+      },
+      build: () => [make_tile(candidate.name, makeA2LayeredPolyprism(candidate.cells))]
+    }])),
     ...Object.fromEntries(POLYCUBE_GCTS_CANDIDATES.map(candidate => [candidate.registry_id, {
       name: candidate.name,
       category: [candidate.screening.status === "inconclusive"
@@ -8746,6 +8762,9 @@ export const tileSpecs = (() => {
   const buildPolycubeTile = (name, voxels, options = {}) =>
     make_tile(name || "CustomPolycube", generatePolycubeData(normalizeVoxels(voxels), options));
 
+  const buildA2LayeredPolyprismTile = (name, cells) =>
+    make_tile(name || "CustomA2LayeredPolyprism", makeA2LayeredPolyprism(cells));
+
   const convexEdgeAngleObstruction = (vertices, suppliedFaces = null) => {
     const verts = (vertices ?? []).map(vertex => vertex.slice(0, 3).map(Number));
     if (verts.length < 4 || verts.some(vertex => vertex.some(value => !Number.isFinite(value)))) return null;
@@ -8944,6 +8963,7 @@ export const tileSpecs = (() => {
     const tileIds = [...new Set(customSystem.tile_ids ?? [])].filter(id => TILING_REGISTRY[id]);
     const customPolycubes = customSystem.polycubes ?? [];
     const customPolyhedra = customSystem.polyhedra ?? [];
+    const customA2LayeredPolyprisms = customSystem.a2_layered_polyprisms ?? [];
     const customName = customSystem.name || "Mixed system";
     const polycubeLattice = normalizePolycubeLattice(customSystem.polycube_lattice);
     return {
@@ -8973,6 +8993,10 @@ export const tileSpecs = (() => {
             polyhedron?.faces
           ));
         });
+        customA2LayeredPolyprisms.forEach((polyprism, index) => {
+          const name = polyprism?.name || `CustomA2LayeredPolyprism${index + 1}`;
+          built.push(buildA2LayeredPolyprismTile(name, polyprism?.cells));
+        });
         return built.length ? built : TILING_REGISTRY.cube.build();
       })
     };
@@ -8995,6 +9019,7 @@ export const tileSpecs = (() => {
     addMirrorsIfChiral,
     withPolycubeLattice,
     buildPolycubeTile,
+    buildA2LayeredPolyprismTile,
     buildLatticePolyhedronTile,
     convexEdgeAngleObstruction,
     buildCustomSystem

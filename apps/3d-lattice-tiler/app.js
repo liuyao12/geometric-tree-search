@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260825-selection-reset-v223";
+} from "./engine.js?v=20260827-a2-polyprism-v225";
 
 const $ = (id) => document.getElementById(id);
 
@@ -1355,7 +1355,7 @@ function updateCandidateResearchPanel() {
   const layeredLattice = selectedLayeredLattice();
   candidateResearchPanel.classList.toggle("is-hidden", !candidate && !knownAperiodic && !layeredLattice);
   candidateSearchButton.classList.toggle("is-hidden", !!knownAperiodic);
-  if (layeredLattice) {
+  if (layeredLattice && !candidate) {
     candidateSearchButton.textContent = "Load layered shell-2 curriculum";
     candidateResearchTitle.textContent = `${rootFigure()?.name ?? "A₂ prism"} · layered lattice function`;
     candidateResearchDetail.textContent = `This non-polycube is an exact prism over an A₂ polygon. Its end faces lie on x+y+z=${layeredLattice.base_layer} and x+y+z=${layeredLattice.top_layer}; all solid-angle samples use the forty-eighth convention inherited from the planar A₂ angles. The solver restricts direct orientations to the six proper cubic rotations preserving the foliation x+y+z=c. Role: ${layeredLattice.role}. For the hat and turtle this is a structured search lead, not yet a proof that the unrestricted three-dimensional tile forces aperiodicity.`;
@@ -1440,7 +1440,9 @@ function updateCandidateResearchPanel() {
         : `${candidate.lattice_points} lattice points · exhaustive face-obligation GCTS proves that every route toward combinatorial shell ${candidate.screening.shell_depth} encounters a permanently unfillable exposed face in the configured face-to-face proper-lattice model.${shell?.deepest_completed_shell ? ` Shell ${shell.deepest_completed_shell} is attainable, but no indefinitely extendable next shell exists.` : " The contradiction appears before the first complete shell."} Earlier connected-patch growth could still extend elsewhere, which is why this remains a useful regression control rather than an unresolved candidate.`;
     } else {
       candidateResearchTitle.textContent = `Research candidate ${candidate.id}`;
-      candidateResearchDetail.textContent = candidate.kind === "polycube_census"
+      candidateResearchDetail.textContent = candidate.kind === "a2_layered_polyprism_census"
+        ? `${candidate.description} It is an exact five-cell lattice function spanning three adjacent x+y+z=3k layers, not a product extrusion. A 30-second translational run reached 37 copies while exhausting motifs only through three copies; a separate 30-second bounded isohedral run tested 26- and 34-copy patches. Neither produced a quotient certificate, and neither is a negative proof. This is a non-polycube GCTS benchmark and an aperiodic lead, not evidence of aperiodicity.`
+        : candidate.kind === "polycube_census"
         ? candidate.screening.census_stage === "volume9_fresh_bounded_2026_08_25"
           ? `${candidate.volume}-cube ${candidate.mirror_equivalent_id ? `chiral polycube; its omitted enantiomer ${candidate.mirror_equivalent_id} is tiling-equivalent by reflection of all space` : "achiral polycube"}. A fresh, gap-audited proper-rotation census found no independently verified periodic quotient through ${candidate.screening.periodic_exact_through} copies. A longer exact run was requested through ${candidate.screening.periodic_requested_through}, but stopped partway through the ${candidate.screening.periodic_next_motif}-copy domain after ${candidate.screening.periodic_deep_hnf_visited.toLocaleString()} HNF bases and ${candidate.screening.periodic_deep_nodes.toLocaleString()} exact-cover nodes, so larger domains remain open. The bounded isohedral certifier found no certificate through its ${candidate.screening.isohedral_growth_horizon}-tile horizon; that negative result is inconclusive. An independently replayed radius-${candidate.screening.corona_completed_radius} corona exists (${candidate.screening.corona_completed_nodes.toLocaleString()} search nodes over ${candidate.screening.corona_placements_considered.toLocaleString()} placements). This is a bounded-unresolved GCTS benchmark, not evidence of aperiodicity.`
         : candidate.screening.census_stage?.startsWith("volume10_through")
@@ -3085,7 +3087,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260825-selection-reset-v223", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260827-a2-polyprism-v225", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3846,7 +3848,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260825-selection-reset-v223", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260827-a2-polyprism-v225", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     setRunButton();
     worker.addEventListener("message", event => {
