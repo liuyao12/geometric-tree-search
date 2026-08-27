@@ -56,6 +56,24 @@ witness = [
 ]
 assert CORONA.replay_corona(root, placements, witness)["verified"] is True
 
+unit_root = GEOMETRY.tile_occupancy([
+    {"q": 0, "r": 0, "k": 0, "kind": "u"},
+])
+unit_orientations = GEOMETRY.orientations(unit_root)
+unit_placements = CORONA.candidate_placements(unit_root, unit_orientations)
+unit_exact = CORONA.exact_corona_gcts(unit_root, unit_placements)
+assert unit_exact["result"] == "sat"
+assert unit_exact["nodes"] > 0
+assert CORONA.replay_corona(
+    unit_root, unit_placements, unit_exact["witness"]
+)["verified"] is True
+unit_record = {"id": "unit_a2_prism", "cells": [
+    {"q": 0, "r": 0, "k": 0, "kind": "u"},
+]}
+unit_qffd = CORONA.screen(unit_record, 5000, "qffd")
+assert unit_qffd["corona_classification"] == "root_corona_exists"
+assert unit_qffd["corona_z3"]["replay"]["verified"] is True
+
 focused = [
     json.loads(line)
     for line in (ROOT / "data" / "a2-layered-size7-corona2-focused.ndjson").read_text().splitlines()

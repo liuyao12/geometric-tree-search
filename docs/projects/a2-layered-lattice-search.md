@@ -415,18 +415,45 @@ bases, zero unknowns). Two then have four-copy quotients; the final four—
 `a2lp_8_02131`, `a2lp_8_02151`, `a2lp_8_03411`, and `a2lp_8_04836`—exhaust
 all 651 four-copy and 1,085 five-copy bases with zero solver unknowns. The
 five-copy sparse multicover searches visit 4,561,662 exact states in total.
+All four also exhaust all 2,015 six-copy HNF bases with zero unknowns. Those
+four six-copy searches visit 43,320,304 exact multicover states in total.
 
 A longer first-corona pass finds independently replayed radius-one witnesses
-of 24, 29, and 30 copies for `02131`, `02151`, and `03411`. The `04836`
-instance remains undecided after its 120-second solver limit; that timeout is
-not an obstruction or a non-tiling certificate. The retained report is
-`data/a2-layered-size8-essential-corona1-long.ndjson`.
+of 24, 29, 30, and 27 copies for `02131`, `02151`, `03411`, and `04836`,
+respectively. The final instance required the finite-domain formulation after
+the default solver timed out. The retained merged report is
+`data/a2-layered-size8-essential-corona1-verified.ndjson`.
+
+The next-corona CEGAR/GCTS runs retain 16, 72, 72, and 62 sound obstruction
+clauses for `02131`, `02151`, `03411`, and `04836`. The middle two stop at
+their 72-proposal limits; the outer proposal solver times out for the other
+two. None exhausts its finite outer first-corona space, so these are reusable
+branch-pruning markings rather than second-corona failures. The report is
+`data/a2-layered-size8-corona2-gcts-long.ndjson`.
+
+Direct monotile substitution searches reject every scalar inflation from 2
+through 8, and every unequal planar/layer scale pair in the same range: 49
+complete inflation checks per candidate. Connected two-copy metatile
+alphabets are also exhausted at scalar inflations 2 and 3. Connected
+three-copy metatile alphabets are exhausted at scalar inflations 2 and 3 (993
+types at each scale for `02131` and `04836`; 8,348 at each scale for `02151`
+and `03411`). These are exact negative results for those substitution
+families, not evidence that no more general substitution exists.
+
+For this triangular-prism cell complex, a genuinely non-real Eisenstein
+multiplier rotates the three cell-edge directions off the honeycomb. A
+cellular inflated target therefore requires `a=0`, `b=0`, or `a+b=0`; up to
+lattice symmetry, the recorded positive planar scales cover that cellular
+case. Non-cellular or regrouped geometric inflations remain outside this
+screen.
 
 These four are now the leading web-catalogue candidates. They are exact only
-through five copies: larger periodic domains, corona extension, and
-substitution rules remain open. The staged machine-readable reports are
+through six copies: larger periodic domains, second-corona extension, and
+more general substitution rules remain open. The staged machine-readable
+reports are
 `data/a2-layered-size8-essential-periodic-exact1.ndjson` through
-`data/a2-layered-size8-essential-periodic-exact5.ndjson`.
+`data/a2-layered-size8-essential-periodic-exact6.ndjson`; compact substitution
+evidence is in `data/a2-layered-size8-substitution-screen-summary.ndjson`.
 
 Rebuild the focused census with:
 

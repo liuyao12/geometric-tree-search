@@ -77,28 +77,63 @@ export const A2_LAYERED_SIZE8_CANDIDATES = Object.freeze([
     "screening": {
       "status": "inconclusive",
       "certificate": null,
-      "census_stage": "a2_layered_size8_layer_essential_exact_through5_2026_08_27",
+      "census_stage": "a2_layered_size8_layer_essential_exact_through6_2026_08_27",
       "source_pool_size": 4940,
       "periodic_one_copy_certificates": 4529,
       "periodic_two_copy_certificates_after_one_copy_screen": 405,
       "periodic_four_copy_certificates_after_three_copy_screen": 2,
-      "periodic_exact_through": 5,
+      "periodic_exact_through": 6,
       "periodic_solver_unknowns": 0,
       "periodic_hnf_bases_exhausted_by_copies": {
         "1": 35,
         "2": 155,
         "3": 455,
         "4": 651,
-        "5": 1085
+        "5": 1085,
+        "6": 2015
       },
-      "periodic_five_copy_exact_multicover_nodes": 895887,
-      "periodic_five_copy_exact_failed_states": 699839,
-      "periodic_report": "data/a2-layered-size8-essential-periodic-exact5.ndjson",
+      "periodic_six_copy_exact_multicover_nodes": 6073513,
+      "periodic_six_copy_exact_failed_states": 5081993,
+      "periodic_six_copy_complete": true,
+      "periodic_report": "data/a2-layered-size8-essential-periodic-exact6.ndjson",
       "corona_completed_radius": 1,
       "corona_completed_verified": true,
       "corona_root_patch_copies": 24,
       "corona_solver_timeout_ms": null,
-      "corona_report": "data/a2-layered-size8-essential-corona1-long.ndjson"
+      "corona_report": "data/a2-layered-size8-essential-corona1-verified.ndjson",
+      "corona2_gcts_rounds": 17,
+      "corona2_gcts_sound_clauses": 16,
+      "corona2_gcts_outer_exhausted": false,
+      "corona2_gcts_stopped_by": "solver_timeout",
+      "corona2_gcts_cumulative_milliseconds": 353504,
+      "corona2_report": "data/a2-layered-size8-corona2-gcts-long.ndjson",
+      "direct_scalar_substitution_scales_exhausted": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "direct_layer_scale_pairs_exhausted": 49,
+      "direct_layer_scale_pair_range": [
+        2,
+        8
+      ],
+      "two_copy_metatile_substitution_scales_exhausted": [
+        2,
+        3
+      ],
+      "three_copy_metatile_substitution_scales_exhausted": [
+        2,
+        3
+      ],
+      "three_copy_metatile_types_exhausted_by_scale": {
+        "2": 993,
+        "3": 993
+      },
+      "substitution_report": "data/a2-layered-size8-substitution-screen-summary.ndjson"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -182,28 +217,63 @@ export const A2_LAYERED_SIZE8_CANDIDATES = Object.freeze([
     "screening": {
       "status": "inconclusive",
       "certificate": null,
-      "census_stage": "a2_layered_size8_layer_essential_exact_through5_2026_08_27",
+      "census_stage": "a2_layered_size8_layer_essential_exact_through6_2026_08_27",
       "source_pool_size": 4940,
       "periodic_one_copy_certificates": 4529,
       "periodic_two_copy_certificates_after_one_copy_screen": 405,
       "periodic_four_copy_certificates_after_three_copy_screen": 2,
-      "periodic_exact_through": 5,
+      "periodic_exact_through": 6,
       "periodic_solver_unknowns": 0,
       "periodic_hnf_bases_exhausted_by_copies": {
         "1": 35,
         "2": 155,
         "3": 455,
         "4": 651,
-        "5": 1085
+        "5": 1085,
+        "6": 2015
       },
-      "periodic_five_copy_exact_multicover_nodes": 1382788,
-      "periodic_five_copy_exact_failed_states": 1023953,
-      "periodic_report": "data/a2-layered-size8-essential-periodic-exact5.ndjson",
+      "periodic_six_copy_exact_multicover_nodes": 15675220,
+      "periodic_six_copy_exact_failed_states": 12077592,
+      "periodic_six_copy_complete": true,
+      "periodic_report": "data/a2-layered-size8-essential-periodic-exact6.ndjson",
       "corona_completed_radius": 1,
       "corona_completed_verified": true,
       "corona_root_patch_copies": 29,
       "corona_solver_timeout_ms": null,
-      "corona_report": "data/a2-layered-size8-essential-corona1-long.ndjson"
+      "corona_report": "data/a2-layered-size8-essential-corona1-verified.ndjson",
+      "corona2_gcts_rounds": 72,
+      "corona2_gcts_sound_clauses": 72,
+      "corona2_gcts_outer_exhausted": false,
+      "corona2_gcts_stopped_by": "round_limit",
+      "corona2_gcts_cumulative_milliseconds": 643718,
+      "corona2_report": "data/a2-layered-size8-corona2-gcts-long.ndjson",
+      "direct_scalar_substitution_scales_exhausted": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "direct_layer_scale_pairs_exhausted": 49,
+      "direct_layer_scale_pair_range": [
+        2,
+        8
+      ],
+      "two_copy_metatile_substitution_scales_exhausted": [
+        2,
+        3
+      ],
+      "three_copy_metatile_substitution_scales_exhausted": [
+        2,
+        3
+      ],
+      "three_copy_metatile_types_exhausted_by_scale": {
+        "2": 8348,
+        "3": 8348
+      },
+      "substitution_report": "data/a2-layered-size8-substitution-screen-summary.ndjson"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -287,28 +357,63 @@ export const A2_LAYERED_SIZE8_CANDIDATES = Object.freeze([
     "screening": {
       "status": "inconclusive",
       "certificate": null,
-      "census_stage": "a2_layered_size8_layer_essential_exact_through5_2026_08_27",
+      "census_stage": "a2_layered_size8_layer_essential_exact_through6_2026_08_27",
       "source_pool_size": 4940,
       "periodic_one_copy_certificates": 4529,
       "periodic_two_copy_certificates_after_one_copy_screen": 405,
       "periodic_four_copy_certificates_after_three_copy_screen": 2,
-      "periodic_exact_through": 5,
+      "periodic_exact_through": 6,
       "periodic_solver_unknowns": 0,
       "periodic_hnf_bases_exhausted_by_copies": {
         "1": 35,
         "2": 155,
         "3": 455,
         "4": 651,
-        "5": 1085
+        "5": 1085,
+        "6": 2015
       },
-      "periodic_five_copy_exact_multicover_nodes": 1383352,
-      "periodic_five_copy_exact_failed_states": 1023368,
-      "periodic_report": "data/a2-layered-size8-essential-periodic-exact5.ndjson",
+      "periodic_six_copy_exact_multicover_nodes": 15542066,
+      "periodic_six_copy_exact_failed_states": 11992185,
+      "periodic_six_copy_complete": true,
+      "periodic_report": "data/a2-layered-size8-essential-periodic-exact6.ndjson",
       "corona_completed_radius": 1,
       "corona_completed_verified": true,
       "corona_root_patch_copies": 30,
       "corona_solver_timeout_ms": null,
-      "corona_report": "data/a2-layered-size8-essential-corona1-long.ndjson"
+      "corona_report": "data/a2-layered-size8-essential-corona1-verified.ndjson",
+      "corona2_gcts_rounds": 72,
+      "corona2_gcts_sound_clauses": 72,
+      "corona2_gcts_outer_exhausted": false,
+      "corona2_gcts_stopped_by": "round_limit",
+      "corona2_gcts_cumulative_milliseconds": 640158,
+      "corona2_report": "data/a2-layered-size8-corona2-gcts-long.ndjson",
+      "direct_scalar_substitution_scales_exhausted": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "direct_layer_scale_pairs_exhausted": 49,
+      "direct_layer_scale_pair_range": [
+        2,
+        8
+      ],
+      "two_copy_metatile_substitution_scales_exhausted": [
+        2,
+        3
+      ],
+      "three_copy_metatile_substitution_scales_exhausted": [
+        2,
+        3
+      ],
+      "three_copy_metatile_types_exhausted_by_scale": {
+        "2": 8348,
+        "3": 8348
+      },
+      "substitution_report": "data/a2-layered-size8-substitution-screen-summary.ndjson"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -392,28 +497,63 @@ export const A2_LAYERED_SIZE8_CANDIDATES = Object.freeze([
     "screening": {
       "status": "inconclusive",
       "certificate": null,
-      "census_stage": "a2_layered_size8_layer_essential_exact_through5_2026_08_27",
+      "census_stage": "a2_layered_size8_layer_essential_exact_through6_2026_08_27",
       "source_pool_size": 4940,
       "periodic_one_copy_certificates": 4529,
       "periodic_two_copy_certificates_after_one_copy_screen": 405,
       "periodic_four_copy_certificates_after_three_copy_screen": 2,
-      "periodic_exact_through": 5,
+      "periodic_exact_through": 6,
       "periodic_solver_unknowns": 0,
       "periodic_hnf_bases_exhausted_by_copies": {
         "1": 35,
         "2": 155,
         "3": 455,
         "4": 651,
-        "5": 1085
+        "5": 1085,
+        "6": 2015
       },
-      "periodic_five_copy_exact_multicover_nodes": 899635,
-      "periodic_five_copy_exact_failed_states": 702355,
-      "periodic_report": "data/a2-layered-size8-essential-periodic-exact5.ndjson",
-      "corona_completed_radius": 0,
-      "corona_completed_verified": false,
-      "corona_root_patch_copies": null,
-      "corona_solver_timeout_ms": 120826,
-      "corona_report": "data/a2-layered-size8-essential-corona1-long.ndjson"
+      "periodic_six_copy_exact_multicover_nodes": 6029505,
+      "periodic_six_copy_exact_failed_states": 5026949,
+      "periodic_six_copy_complete": true,
+      "periodic_report": "data/a2-layered-size8-essential-periodic-exact6.ndjson",
+      "corona_completed_radius": 1,
+      "corona_completed_verified": true,
+      "corona_root_patch_copies": 27,
+      "corona_solver_timeout_ms": null,
+      "corona_report": "data/a2-layered-size8-essential-corona1-verified.ndjson",
+      "corona2_gcts_rounds": 62,
+      "corona2_gcts_sound_clauses": 62,
+      "corona2_gcts_outer_exhausted": false,
+      "corona2_gcts_stopped_by": "solver_timeout",
+      "corona2_gcts_cumulative_milliseconds": 1096159,
+      "corona2_report": "data/a2-layered-size8-corona2-gcts-long.ndjson",
+      "direct_scalar_substitution_scales_exhausted": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "direct_layer_scale_pairs_exhausted": 49,
+      "direct_layer_scale_pair_range": [
+        2,
+        8
+      ],
+      "two_copy_metatile_substitution_scales_exhausted": [
+        2,
+        3
+      ],
+      "three_copy_metatile_substitution_scales_exhausted": [
+        2,
+        3
+      ],
+      "three_copy_metatile_types_exhausted_by_scale": {
+        "2": 993,
+        "3": 993
+      },
+      "substitution_report": "data/a2-layered-size8-substitution-screen-summary.ndjson"
     },
     "shell_screening": {
       "robust_completed_shell": 0,

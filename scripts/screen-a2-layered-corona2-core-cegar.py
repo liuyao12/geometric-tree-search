@@ -9,7 +9,7 @@ import json
 import time
 from pathlib import Path
 
-from z3 import Bool, Implies, Not, Or, PbEq, PbLe, Solver, is_true, sat, unsat
+from z3 import Bool, Implies, Not, Or, PbEq, PbLe, Solver, SolverFor, is_true, sat, unsat
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -120,13 +120,14 @@ def extension_with_core(root, tile_orientations, selected, timeout_ms, prefix):
 def screen(
     record, maximum_rounds, timeout_ms, max_first_copies=0, seed_clauses=None,
     checkpoint_callback=None, seed_rounds=0, seed_milliseconds=0,
+    outer_solver_kind="z3",
 ):
     started = time.monotonic()
     root = GEOMETRY.tile_occupancy(record["cells"])
     tile_orientations = GEOMETRY.orientations(root)
     first = CORONA.candidate_placements(root, tile_orientations)
     outer_variables = [Bool(f"outer_{record['id']}_{index}") for index in range(len(first))]
-    outer = Solver()
+    outer = SolverFor("QF_FD") if outer_solver_kind == "qffd" else Solver()
     outer.set(timeout=timeout_ms)
     for point, entries in incidence(first).items():
         terms = [(outer_variables[index], weight) for index, weight in entries]
@@ -279,6 +280,7 @@ def main():
     parser.add_argument("--max-first-copies", type=int, default=0)
     parser.add_argument("--seed-core", action="append", default=[])
     parser.add_argument("--checkpoint-dir", default="")
+    parser.add_argument("--outer-solver", choices=("z3", "qffd"), default="z3")
     args = parser.parse_args()
     requested = {value for value in args.ids.split(",") if value}
     records = [json.loads(line) for line in Path(args.input).read_text().splitlines() if line.strip()]
@@ -340,6 +342,7 @@ def main():
                 seeds_by_id.get(record["id"], []),
                 save_checkpoint,
                 *seed_effort_by_id.get(record["id"], (0, 0)),
+                args.outer_solver,
             )
             classification = result["corona2_core_classification"]
             counts[classification] = counts.get(classification, 0) + 1
