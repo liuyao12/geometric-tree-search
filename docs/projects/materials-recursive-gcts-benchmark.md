@@ -1,5 +1,21 @@
 # Recursive GCTS benchmark for material growth
 
+### Physics-to-geometry execution lineage (Build 261)
+
+The frozen pre-growth manifest now carries an execution lineage for every
+physical layer. Five interactive nodes separate source evidence, geometric
+encoding, direct search effect, finite structural response, and the negative
+claim boundary. Independent flags state whether the row can alter hard
+admission, candidate geometry, seed initialization, ranking, or branch order;
+target access and physical time remain false.
+
+The taxonomy additionally classifies calculation-stress and paired
+stress–strain-response records, closing the only two unclassified manifest
+IDs. A static equality contract compares all 43 current manifest IDs with all
+lane assignments, while the pure module rejects duplicate IDs and keeps future
+unclassified records fail-visible. This is provenance and execution semantics,
+not new physics or a stronger growth claim.
+
 ### Port-resolved GCTS level sets (Build 260)
 
 Stage 3 now preserves train-observed connection directions in intrinsic proper

@@ -2,7 +2,7 @@ const LANE_DEFINITIONS = Object.freeze([
   Object.freeze({ id: "archive", label: "structural evidence", short: "snapshot → invariants",
     interpretation: "Supplied or derived structural observables constrain the geometric state; they do not become a trajectory.",
     recordIds: Object.freeze(["hypothesis-separation", "local-mismatch-map", "calculation-forces",
-      "collinear-spin", "relaxation-ensemble", "geometry-calculation-calibration",
+      "calculation-stress", "stress-strain-response", "collinear-spin", "relaxation-ensemble", "geometry-calculation-calibration",
       "local-rearrangement", "local-symmetry", "centrosymmetry", "reciprocal-space"]) }),
   Object.freeze({ id: "local", label: "local attachment", short: "fast neighborhood closure",
     interpretation: "Steric, coordination, chemistry, charge, connection, and local projection evidence act on exact candidate geometry.",
@@ -33,6 +33,84 @@ function laneState(counts, total) {
   if (counts.hypothesis === total) return "declared";
   if (counts.open) return "partial";
   return "hybrid";
+}
+
+const HARD_ADMISSION_IDS = new Set(["steric", "local", "connection"]);
+const CANDIDATE_GEOMETRY_IDS = new Set(["constraint-projection", "calculation-forces"]);
+const INITIAL_STATE_IDS = new Set(["multi-nucleus"]);
+const SEARCH_ORDER_IDS = new Set(["path-ensemble"]);
+const RANKING_IDS = new Set([
+  "hypothesis-separation", "calculation-stress", "stress-strain-response",
+  "geometry-calculation-calibration", "connection", "chemistry", "charge-geometry",
+  "charge-moment", "ionic-pair", "bond-valence", "solute-partition", "surface",
+  "bulk-surface-driving", "attachment-topology", "habit-anisotropy", "defect-precursors",
+  "coherency-memory", "front-morphology", "capillary-geometry", "epitaxy", "affine",
+  "drive", "thermal-field", "robustness", "microstructure", "loop-closure",
+  "feed-exposure", "kinetics",
+]);
+
+function effectActive(record) {
+  if (["open", "unavailable", "observed"].includes(record.status)) return false;
+  if (/\b(disabled|ablated|diagnostic|not selected|awaiting)\b/i.test(record.role || "")) return false;
+  if (record.status === "explicit" && !INITIAL_STATE_IDS.has(record.id)) return false;
+  return true;
+}
+
+export function physicsExecutionLineage(record) {
+  if (!record?.id || typeof record.status !== "string") {
+    throw new Error("physics execution lineage needs a manifest record");
+  }
+  const active = effectActive(record);
+  const hardAdmission = active && HARD_ADMISSION_IDS.has(record.id);
+  const candidateGeometry = active && CANDIDATE_GEOMETRY_IDS.has(record.id);
+  const initialState = active && INITIAL_STATE_IDS.has(record.id);
+  const ranking = active && RANKING_IDS.has(record.id);
+  const searchOrder = active && SEARCH_ORDER_IDS.has(record.id);
+  const effects = [
+    hardAdmission ? "hard admission" : null,
+    candidateGeometry ? "bounded candidate geometry" : null,
+    initialState ? "initial seed state" : null,
+    ranking ? "soft branch ranking" : null,
+    searchOrder ? "reproducible branch order" : null,
+  ].filter(Boolean);
+  return {
+    schema: 1,
+    recordId: record.id,
+    active,
+    evidenceStatus: record.status,
+    effects,
+    hardAdmissionCanChange: hardAdmission,
+    candidateGeometryCanChange: candidateGeometry,
+    initialStateCanChange: initialState,
+    rankingCanChange: ranking,
+    searchOrderCanChange: searchOrder,
+    diagnosticOnly: effects.length === 0,
+    candidateSetInspectedBeforeExecution: false,
+    targetUsed: false,
+    physicalTimeModeled: false,
+    summary: effects.length ? effects.join(" + ") : active
+      ? "active structural evidence; no direct execution hook"
+      : "diagnostic or unresolved; no execution effect",
+  };
+}
+
+export function buildPhysicsLineagePath(record) {
+  const execution = physicsExecutionLineage(record);
+  return {
+    schema: 1,
+    recordId: record.id,
+    nodes: [
+      { id: "evidence", label: "physical evidence", value: `${record.status} · ${record.process}` },
+      { id: "encoding", label: "geometric encoding", value: record.encoding },
+      { id: "execution", label: "search effect", value: execution.summary },
+      { id: "response", label: "finite evidence", value: record.evidence },
+      { id: "boundary", label: "claim boundary", value: record.boundary },
+    ],
+    execution,
+    candidateGeometryEmbedded: false,
+    coordinatesEmbedded: false,
+    targetUsed: false,
+  };
 }
 
 export function buildPhysicsCompressionMap(records) {
@@ -66,6 +144,7 @@ export function buildPhysicsCompressionMap(records) {
   if (unclassified.length) lanes.push(summarize({ id: "unclassified", label: "unclassified records",
     short: "manifest update required",
     interpretation: "These records were not silently assigned. Update the process-scale map before making a compression claim." }, unclassified));
+  const executionLineages = records.map(physicsExecutionLineage);
   return {
     schema: 1, lanes, recordCount: records.length,
     assignedRecordCount: records.length - unclassified.length,
@@ -74,7 +153,15 @@ export function buildPhysicsCompressionMap(records) {
     processOrder: "structural evidence → local attachment → interface/morphology → imposed environment → unresolved physics",
     structuralStatesAreNotPhysicalTime: true,
     hypothesesAreNotLearnedPhysics: true,
+    executionEffectsComplete: executionLineages.length === records.length,
+    effectCounts: {
+      hardAdmission: executionLineages.filter((record) => record.hardAdmissionCanChange).length,
+      candidateGeometry: executionLineages.filter((record) => record.candidateGeometryCanChange).length,
+      initialState: executionLineages.filter((record) => record.initialStateCanChange).length,
+      ranking: executionLineages.filter((record) => record.rankingCanChange).length,
+      searchOrder: executionLineages.filter((record) => record.searchOrderCanChange).length,
+      diagnosticOnly: executionLineages.filter((record) => record.diagnosticOnly).length,
+    },
     targetUsed: false,
   };
 }
-

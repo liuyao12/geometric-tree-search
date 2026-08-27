@@ -46,7 +46,7 @@ def test_cross_arm_comparison_is_fail_closed_and_noncausal():
 
 
 def test_build_182_assets_are_cache_busted():
-    assert 'buildId: "20260827-260"' in APP
-    assert 'app.js?v=20260827-260' in HTML
-    assert 'style.css?v=20260827-260' in HTML
+    assert 'buildId: "20260827-261"' in APP
+    assert 'app.js?v=20260827-261' in HTML
+    assert 'style.css?v=20260827-261' in HTML
     assert 'policy-identifiability.js?v=20260826-4' in APP

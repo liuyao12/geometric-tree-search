@@ -1,5 +1,23 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 261 · physics-to-geometry execution lineage
+
+Every pre-growth physics-manifest row now exposes an interactive five-step
+lineage: physical evidence → geometric encoding → search effect → finite
+response → claim boundary. The selected row explicitly flags whether it can
+change hard admission, bounded candidate geometry, the initial seed state,
+soft branch ranking, or reproducible branch order. Inactive and diagnostic
+rows visibly change none of them; every path remains target-free and carries no
+physical clock.
+
+The process-scale taxonomy is complete again. Archived calculation stress and
+paired stress–strain response are classified as structural evidence rather
+than falling into an unclassified lane, and an executable equality gate now
+requires every manifest ID to appear exactly once in the taxonomy. The lineage
+is serialized with the coordinate-free preflight receipt. It clarifies what a
+geometric surrogate actually changes; it does not make the surrogate a force,
+energy, rate, or dynamical law.
+
 ## Build 260 · port-resolved GCTS level sets
 
 The separate GCTS cluster scenes now draw their level sets from train-observed

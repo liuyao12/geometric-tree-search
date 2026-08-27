@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -56,6 +57,31 @@ def test_process_scale_compression_map_is_complete_and_fail_visible():
                  "imposed environment", "unresolved physics"):
         assert lane in COMPRESSION
     assert ".physics-compression-map" in CSS
+    assert '"calculation-stress", "stress-strain-response"' in COMPRESSION
+    manifest_start = APP.index("function physicsTranslationRecords(")
+    manifest_end = APP.index("\nfunction physicsEvidenceBucket(", manifest_start)
+    manifest_ids = set(re.findall(r'\{ id: "([^"]+)"', APP[manifest_start:manifest_end]))
+    assigned_blocks = re.findall(r"recordIds: Object\.freeze\(\[(.*?)\]\)", COMPRESSION, re.S)
+    assigned_ids = set(re.findall(r'"([^"]+)"', "\n".join(assigned_blocks)))
+    assert manifest_ids == assigned_ids
+
+
+def test_each_physical_layer_has_an_interactive_execution_lineage():
+    assert "function renderPhysicsLineageFlow" in APP
+    assert "buildPhysicsLineagePath(record)" in APP
+    assert "executionLineage: physicsExecutionLineage(record)" in APP
+    assert "hardAdmissionCanChange" in COMPRESSION
+    assert "candidateGeometryCanChange" in COMPRESSION
+    assert "initialStateCanChange" in COMPRESSION
+    assert "rankingCanChange" in COMPRESSION
+    assert "searchOrderCanChange" in COMPRESSION
+    assert "candidateSetInspectedBeforeExecution: false" in COMPRESSION
+    assert "targetUsed: false" in COMPRESSION
+    assert "physicalTimeModeled: false" in COMPRESSION
+    for label in ("physical evidence", "geometric encoding", "search effect",
+                  "finite evidence", "claim boundary"):
+        assert label in COMPRESSION
+    assert ".physics-lineage-flow" in CSS
 
 
 def test_non_webgl_fallback_keeps_the_scientific_portal_alive():
@@ -73,10 +99,10 @@ def test_public_narrative_and_build_are_versioned():
     assert "Build 177" in README
     assert "Build 177" in DOCS
     assert "If WebGL cannot be created" in README
-    assert 'buildId: "20260827-260"' in APP
-    assert 'app.js?v=20260827-260' in HTML
-    assert 'style.css?v=20260827-260' in HTML
-    assert 'physics-compression-map.js?v=20260826-1' in APP
+    assert 'buildId: "20260827-261"' in APP
+    assert 'app.js?v=20260827-261' in HTML
+    assert 'style.css?v=20260827-261' in HTML
+    assert 'physics-compression-map.js?v=20260827-2' in APP
     assert 'evidence-atlas.js?v=20260827-22' in HTML
     assert "Build 207" in README
     assert "Build 207" in DOCS

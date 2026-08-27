@@ -62,9 +62,9 @@ def test_claim_boundary_forbids_dynamical_overinterpretation():
 
 
 def test_build_242_is_exposed():
-    assert 'buildId: "20260827-260"' in APP
-    assert 'app.js?v=20260827-260' in HTML
-    assert 'style.css?v=20260827-260' in HTML
+    assert 'buildId: "20260827-261"' in APP
+    assert 'app.js?v=20260827-261' in HTML
+    assert 'style.css?v=20260827-261' in HTML
 
 
 if __name__ == "__main__":

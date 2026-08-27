@@ -44,7 +44,8 @@ import { blockedCreationResponseSurrogate, blockedCreationResponseValidation, bu
   crossRunHorizonReadinessAtlas,
   LOCAL_CREATION_CONTEXT_FEATURE_IDS }
   from "./creation-response-association.js?v=20260826-13";
-import { buildPhysicsCompressionMap } from "./physics-compression-map.js?v=20260826-1";
+import { buildPhysicsCompressionMap, buildPhysicsLineagePath, physicsExecutionLineage }
+  from "./physics-compression-map.js?v=20260827-2";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -10232,7 +10233,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-260",
+      buildId: "20260827-261",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -12499,7 +12500,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-260" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-261" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -24193,7 +24194,8 @@ function openPhysicsControlRoute(recordId) {
 
 function physicsManifestRecord(record) {
   return { id: record.id, process: record.process, status: record.status, role: record.role,
-    encoding: record.encoding, evidence: record.evidence, boundary: record.boundary };
+    encoding: record.encoding, evidence: record.evidence, boundary: record.boundary,
+    executionLineage: physicsExecutionLineage(record) };
 }
 
 function currentPhysicsPreflightManifest() {
@@ -24206,6 +24208,41 @@ function currentPhysicsPreflightManifest() {
     generatedBeforeActionExecution: true, coordinatesEmbedded: false,
     candidateGeometryEmbedded: false, candidateSetInspected: false, targetUsed: false,
     physicalTimeModeled: false };
+}
+
+function renderPhysicsLineageFlow(container, record) {
+  const lineage = buildPhysicsLineagePath(record);
+  const wrapper = document.createElement("section");
+  wrapper.className = "physics-lineage-flow";
+  wrapper.setAttribute("aria-label", `Physics-to-geometry lineage for ${record.process}`);
+  const track = document.createElement("div");
+  track.className = "physics-lineage-track";
+  const readout = document.createElement("p");
+  readout.className = "physics-lineage-readout";
+  const activate = (node, button) => {
+    track.querySelectorAll("button").forEach((candidate) => {
+      const active = candidate === button;
+      candidate.classList.toggle("active", active);
+      candidate.setAttribute("aria-pressed", String(active));
+    });
+    readout.textContent = `${node.label}: ${node.value}`;
+  };
+  lineage.nodes.forEach((node, index) => {
+    const button = document.createElement("button"); button.type = "button";
+    button.dataset.lineageNode = node.id;
+    button.setAttribute("aria-pressed", "false");
+    const step = document.createElement("small"); step.textContent = String(index + 1).padStart(2, "0");
+    const label = document.createElement("strong"); label.textContent = node.label;
+    const value = document.createElement("span"); value.textContent = node.id === "execution"
+      ? lineage.execution.summary : node.value;
+    button.append(step, label, value);
+    button.addEventListener("click", () => activate(node, button));
+    track.append(button);
+    if (node.id === "execution") activate(node, button);
+  });
+  const flags = document.createElement("footer");
+  flags.innerHTML = `<span class="${lineage.execution.hardAdmissionCanChange ? "active" : "inactive"}">hard admission</span><span class="${lineage.execution.candidateGeometryCanChange ? "active" : "inactive"}">candidate geometry</span><span class="${lineage.execution.initialStateCanChange ? "active" : "inactive"}">initial state</span><span class="${lineage.execution.rankingCanChange ? "active" : "inactive"}">ranking</span><span class="${lineage.execution.searchOrderCanChange ? "active" : "inactive"}">branch order</span><span class="invariant">target-free · no physical clock</span>`;
+  wrapper.append(track, readout, flags); container.append(wrapper);
 }
 
 function renderGrowthPhysicsPreflight() {
@@ -24281,6 +24318,7 @@ function renderGrowthPhysicsPreflight() {
   const small = document.createElement("small"); small.textContent = `${selected.status} · ${selected.role}`;
   const strong = document.createElement("strong"); strong.textContent = selected.process;
   header.append(small, strong); growthPhysicsPreflightDetail.append(header);
+  renderPhysicsLineageFlow(growthPhysicsPreflightDetail, selected);
   [["evidence class", physicsEvidenceClass(selected)], ["geometric encoding", selected.encoding],
     ["pre-growth evidence", selected.evidence], ["claim boundary", selected.boundary]].forEach(([label, copy]) => {
     const row = document.createElement("div"); const key = document.createElement("b");
@@ -24347,6 +24385,7 @@ function renderLeapPhysics(leap = null) {
   const small = document.createElement("small"); small.textContent = `${selected.status} · ${selected.role}`;
   const strong = document.createElement("strong"); strong.textContent = selected.process;
   header.append(small, strong); leapPhysicsDetail.append(header);
+  renderPhysicsLineageFlow(leapPhysicsDetail, selected);
   [["evidence class", physicsEvidenceClass(selected)], ["geometric encoding", selected.encoding], ["this leap", selected.evidence], ["claim boundary", selected.boundary]].forEach(([label, copy]) => {
     const row = document.createElement("div"); const key = document.createElement("b"); const value = document.createElement("p");
     key.textContent = label; value.textContent = copy; row.append(key, value); leapPhysicsDetail.append(row);
