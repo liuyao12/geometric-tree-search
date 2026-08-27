@@ -8988,7 +8988,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-213",
+      buildId: "20260826-214",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -10446,15 +10446,51 @@ async function buildExperimentReceipt() {
                 runnerUpMargin: marking.runnerUpMargin === null ? null : receiptRound(marking.runnerUpMargin),
                 meanRankDisplacement: receiptRound(marking.meanRankDisplacement),
                 scoreDigest: marking.scoreDigest,
+                materialConsequence: marking.materialConsequence ? {
+                  candidateDigest: marking.materialConsequence.candidateDigest,
+                  digest: marking.materialConsequence.digest,
+                  sharedSites: marking.materialConsequence.sharedSites,
+                  emittedSites: marking.materialConsequence.emittedSites,
+                  templateSites: marking.materialConsequence.templateSites,
+                  localMismatch: marking.materialConsequence.localMismatch === null ? null
+                    : receiptRound(marking.materialConsequence.localMismatch),
+                  constraintMargin: marking.materialConsequence.constraintMargin === null ? null
+                    : receiptRound(marking.materialConsequence.constraintMargin),
+                  surfaceDeficitDelta: marking.materialConsequence.surfaceDeficitDelta === null ? null
+                    : receiptRound(marking.materialConsequence.surfaceDeficitDelta),
+                  compositionDeviationDelta: marking.materialConsequence.compositionDeviationDelta === null ? null
+                    : receiptRound(marking.materialConsequence.compositionDeviationDelta),
+                  favorableChannel: marking.materialConsequence.favorableChannel ? {
+                    id: marking.materialConsequence.favorableChannel.id,
+                    label: marking.materialConsequence.favorableChannel.label,
+                    contribution: receiptRound(marking.materialConsequence.favorableChannel.contribution),
+                  } : null,
+                  burdenChannel: marking.materialConsequence.burdenChannel ? {
+                    id: marking.materialConsequence.burdenChannel.id,
+                    label: marking.materialConsequence.burdenChannel.label,
+                    contribution: receiptRound(marking.materialConsequence.burdenChannel.contribution),
+                  } : null,
+                  activePhysicsChannels: marking.materialConsequence.activePhysicsChannels,
+                  activePhysicsNetResponse: marking.materialConsequence.activePhysicsNetResponse === null ? null
+                    : receiptRound(marking.materialConsequence.activePhysicsNetResponse),
+                  candidateGeometryChanged: marking.materialConsequence.candidateGeometryChanged,
+                  hardAdmissionChanged: marking.materialConsequence.hardAdmissionChanged,
+                  executed: marking.materialConsequence.executed,
+                  targetUsedForMaterialConsequence: marking.materialConsequence.targetUsedForMaterialConsequence,
+                  interpretation: marking.materialConsequence.interpretation,
+                } : null,
               })),
               portfolio: { enabled: audit.portfolio.enabled,
                 admittedCandidates: audit.portfolio.admittedCandidates,
                 winnerDigest: audit.portfolio.winnerDigest,
                 winnerAction: audit.portfolio.winnerAction,
                 winnerScore: audit.portfolio.winnerScore === null ? null : receiptRound(audit.portfolio.winnerScore),
-                winnerSource: audit.portfolio.winnerSource },
+                winnerSource: audit.portfolio.winnerSource,
+                materialConsequenceDigest: audit.portfolio.materialConsequence?.digest || null },
               candidateGeometryChanged: audit.candidateGeometryChanged,
               hardAdmissionChanged: audit.hardAdmissionChanged,
+              targetUsedForMarkingScores: audit.targetUsedForMarkingScores,
+              materialConsequenceTargetUsed: audit.materialConsequenceTargetUsed,
               targetUsed: audit.targetUsed, executed: audit.executed,
             } : null;
           })(),
@@ -15093,9 +15129,54 @@ function buildPolicyWorkbench(snapshot) {
   };
 }
 
+function markingWinnerMaterialConsequence(entry) {
+  if (!entry) return null;
+  const evaluation = entry.evaluation;
+  const finite = (value) => Number.isFinite(value) ? value : null;
+  const physicsTerms = activeCandidateScoreTerms(entry, false)
+    .filter((term) => !["grammar-priority", "known-window-gain"].includes(term.id)
+      && Number.isFinite(term.contribution) && Math.abs(term.weight) > 1e-12)
+    .map((term) => ({ id: term.id, label: term.label, role: term.role,
+      raw: term.raw, weight: term.weight, contribution: term.contribution,
+      claimBoundary: term.claimBoundary }));
+  const favorable = physicsTerms.filter((term) => term.contribution > 0)
+    .sort((first, second) => second.contribution - first.contribution || first.id.localeCompare(second.id))[0] || null;
+  const burden = physicsTerms.filter((term) => term.contribution < 0)
+    .sort((first, second) => first.contribution - second.contribution || first.id.localeCompare(second.id))[0] || null;
+  const consequence = {
+    candidateDigest: frozenFrontierDigest([entry]),
+    sharedSites: evaluation.merged.length,
+    emittedSites: evaluation.fresh.length,
+    templateSites: evaluation.sites.length,
+    localMismatch: finite(effectiveGeometricStrain(evaluation).total),
+    constraintMargin: finite(evaluation.constraintRobustness.score),
+    surfaceDeficitDelta: finite(evaluation.surfaceCompletion.scaledDelta),
+    compositionDeviationDelta: finite(evaluation.compositionBalance.scaledDelta),
+    favorableChannel: favorable ? { ...favorable } : null,
+    burdenChannel: burden ? { ...burden } : null,
+    activePhysicsChannels: physicsTerms.length,
+    activePhysicsNetResponse: finite(physicsTerms.reduce((sum, term) => sum + term.contribution, 0)),
+    candidateGeometryChanged: false,
+    hardAdmissionChanged: false,
+    executed: false,
+    targetUsedForMaterialConsequence: !reconstructionCertified,
+    interpretation: "post-attachment geometric consequence under the current active physics ledger; not energy, probability, kinetics, or execution",
+  };
+  consequence.digest = notebookStringHash([
+    consequence.candidateDigest, consequence.sharedSites, consequence.emittedSites, consequence.templateSites,
+    consequence.localMismatch, consequence.constraintMargin, consequence.surfaceDeficitDelta,
+    consequence.compositionDeviationDelta, consequence.favorableChannel?.id || "none",
+    consequence.favorableChannel?.contribution ?? 0, consequence.burdenChannel?.id || "none",
+    consequence.burdenChannel?.contribution ?? 0, consequence.activePhysicsChannels,
+    consequence.activePhysicsNetResponse, consequence.targetUsedForMaterialConsequence,
+  ].join("|"));
+  return consequence;
+}
+
 function buildMarkingFrontierCounterfactual(admissible, candidateSetDigest) {
   const markings = compatibleMarkings();
   const candidates = admissible.map((entry) => entry.candidate);
+  const admissibleByCandidateKey = new Map(admissible.map((entry) => [entry.candidate.key, entry]));
   const rows = markings.map((marking) => {
     const threshold = markingAcceptanceThreshold(marking);
     const scored = candidates.map((candidate) => ({
@@ -15125,6 +15206,8 @@ function buildMarkingFrontierCounterfactual(admissible, candidateSetDigest) {
       winnerAction: winner ? `C${winner.candidate.rule.from + 1}→C${winner.candidate.rule.to + 1} · R${winner.candidate.rule.id}` : "no admitted action",
       winnerScore: winner?.score ?? null,
       runnerUpMargin: winner ? winner.score - (scored[topTieCount]?.score ?? winner.score) : null,
+      materialConsequence: markingWinnerMaterialConsequence(
+        winner ? admissibleByCandidateKey.get(winner.candidate.key) : null),
       preview: winner ? { p: winner.candidate.position.clone(), rotation: winner.candidate.rotation.clone(),
         type: winner.candidate.type } : null,
       rankOrder: scored.map((entry) => entry.candidate.key),
@@ -15169,12 +15252,16 @@ function buildMarkingFrontierCounterfactual(admissible, candidateSetDigest) {
         ? `C${portfolioWinner.candidate.rule.from + 1}→C${portfolioWinner.candidate.rule.to + 1} · R${portfolioWinner.candidate.rule.id}` : null,
       winnerScore: portfolioWinner?.score ?? null,
       winnerSource: portfolioWinner?.source || null,
+      materialConsequence: markingWinnerMaterialConsequence(
+        portfolioWinner ? admissibleByCandidateKey.get(portfolioWinner.candidate.key) : null),
       preview: portfolioWinner ? { p: portfolioWinner.candidate.position.clone(),
         rotation: portfolioWinner.candidate.rotation.clone(), type: portfolioWinner.candidate.type } : null,
     },
     comparisonRole: "counterfactual ranking/admission over one unchanged hard-admitted candidate set",
     candidateGeometryChanged: false,
     hardAdmissionChanged: false,
+    targetUsedForMarkingScores: false,
+    materialConsequenceTargetUsed: !reconstructionCertified,
     targetUsed: false,
     executed: false,
   };
@@ -23569,7 +23656,9 @@ function renderMarkingFrontierAudit(snapshot) {
     distinctScores: null, topTieCount: null, meanRankDisplacement: null,
     winnerKey: audit.portfolio.winnerKey, winnerDigest: audit.portfolio.winnerDigest,
     winnerAction: audit.portfolio.winnerAction, winnerScore: audit.portfolio.winnerScore,
-    winnerSource: audit.portfolio.winnerSource, preview: audit.portfolio.preview,
+    winnerSource: audit.portfolio.winnerSource,
+    materialConsequence: audit.portfolio.materialConsequence,
+    preview: audit.portfolio.preview,
   });
   if (!rows.some((row) => row.id === selectedMarkingFrontierId)) {
     selectedMarkingFrontierId = audit.activeMarkingId || rows[0].id;
@@ -23604,8 +23693,34 @@ function renderMarkingFrontierAudit(snapshot) {
     ? `${selected.admittedCandidates} actions admitted by at least one artifact.`
     : `${selected.distinctScores} distinct rule scores · top tie ${selected.topTieCount} · mean Δrank ${selected.meanRankDisplacement.toFixed(1)} from ${audit.activeMarkingId}.`;
   const boundary = document.createElement("span");
-  boundary.textContent = `Hard-admitted set ${audit.hardAdmittedCandidateSetDigest} · full frontier ${audit.candidateSetDigest} · candidate geometry unchanged · target unavailable · preview only.`;
-  markingFrontierDetail.append(heading, state, metrics, boundary);
+  boundary.textContent = `Hard-admitted set ${audit.hardAdmittedCandidateSetDigest} · full frontier ${audit.candidateSetDigest} · candidate geometry unchanged · marking scores target-free · preview only.`;
+  markingFrontierDetail.append(heading, state, metrics);
+  const consequence = selected.materialConsequence;
+  if (consequence) {
+    const consequenceGrid = document.createElement("div"); consequenceGrid.className = "marking-consequence-grid";
+    [
+      ["attachment", `${consequence.emittedSites} new · ${consequence.sharedSites} shared`],
+      ["local mismatch", consequence.localMismatch === null ? "unavailable" : consequence.localMismatch.toFixed(3)],
+      ["constraint margin", consequence.constraintMargin === null ? "unavailable" : consequence.constraintMargin.toFixed(3)],
+      ["active ledger", consequence.activePhysicsNetResponse === null ? "unavailable"
+        : `${consequence.activePhysicsNetResponse >= 0 ? "+" : ""}${consequence.activePhysicsNetResponse.toFixed(3)}`],
+    ].forEach(([label, value]) => {
+      const cell = document.createElement("span");
+      const small = document.createElement("small"); small.textContent = label;
+      const strong = document.createElement("strong"); strong.textContent = value;
+      cell.append(small, strong); consequenceGrid.append(cell);
+    });
+    const consequenceChannels = document.createElement("p"); consequenceChannels.className = "marking-consequence-channels";
+    const favorable = consequence.favorableChannel
+      ? `favors ${consequence.favorableChannel.label} ${consequence.favorableChannel.contribution >= 0 ? "+" : ""}${consequence.favorableChannel.contribution.toFixed(3)}`
+      : "no active favorable channel";
+    const burden = consequence.burdenChannel
+      ? `burden ${consequence.burdenChannel.label} ${consequence.burdenChannel.contribution.toFixed(3)}`
+      : "no active burden channel";
+    consequenceChannels.textContent = `${favorable} · ${burden} · ${consequence.targetUsedForMaterialConsequence ? "known-window consequence" : "target-blind consequence"} · ${consequence.digest}`;
+    markingFrontierDetail.append(consequenceGrid, consequenceChannels);
+  }
+  markingFrontierDetail.append(boundary);
 }
 
 function renderPolicyComparison() {

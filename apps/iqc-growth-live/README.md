@@ -5720,3 +5720,18 @@ receipt preserves score and candidate-set digests but no candidate coordinates. 
 enumeration, hard geometry, target access, and execution are invariant across rows, so this
 is a causal representation/ranking audit—not evidence that the most permissive marking is
 physically superior.
+
+### Build 214 · what each marking would make the material do next
+
+The saved-marking comparison now carries each winning action through the already evaluated
+attachment geometry instead of stopping at a rule score. Selecting a marking exposes its
+new and shared site counts, local contact-plus-angle mismatch, geometric constraint margin,
+net response under the active physics ledger, and the strongest favorable and burdening
+channels. The same exact pose remains highlighted in the three-dimensional scene.
+
+These consequences are coordinate-free, digest-certified, and retained in experiment
+receipts alongside the unchanged candidate-set and marking-score audits. They remain a
+counterfactual post-attachment readout: no action is executed, no candidate is regenerated,
+and the panel states separately whether the consequence came from known-window replay or a
+target-blind continuation frontier. The signed channel response is a geometric hypothesis
+ledger—not energy, probability, stability, kinetics, or physical elapsed time.

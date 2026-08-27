@@ -6464,3 +6464,16 @@ and coordinates. All arms explicitly retain `candidateGeometryChanged=false`,
 `hardAdmissionChanged=false`, `targetUsed=false`, and `executed=false`. This separates a
 marking's causal ranking effect from every other geometric physics channel and from action
 supply.
+
+## Build 214: inspect the material consequence of each marking's winner
+
+Each saved marking's winner is now joined back to its unchanged hard-evaluated candidate
+record. The portal reports the number of shared and newly emitted sites, contact-plus-angle
+mismatch, constraint margin, net signed response under the active physics ledger, and its
+dominant favorable and burdening channels. Coordinate-free consequence digests enter the
+receipt, while the UI preserves the exact pose preview.
+
+The consequence audit records target use independently of the marking score: saved marking
+scores remain target-free, whereas a consequence evaluated during labeled known-window
+replay is explicitly marked as such. No counterfactual is executed and no physical energy,
+probability, stability, kinetics, or elapsed time is inferred.
