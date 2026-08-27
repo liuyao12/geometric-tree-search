@@ -915,36 +915,110 @@ function fallbackViewportRenderer() {
   const canvas = document.createElement("canvas");
   canvas.className = "viewport-renderer viewport-renderer-fallback";
   canvas.setAttribute("role", "img");
-  canvas.setAttribute("aria-label", "Three-dimensional view unavailable; all scientific controls, plots, and receipts remain active");
+  canvas.setAttribute("aria-label", "CPU-projected materials geometry; drag to orbit and use the scientific controls as usual");
   canvas.tabIndex = 0;
   const context = canvas.getContext("2d");
-  let pixelRatio = 1; let dirty = true;
-  const draw = () => {
-    if (!dirty) return;
+  const instanceMatrix = new THREE.Matrix4();
+  const worldPoint = new THREE.Vector3();
+  const cameraPoint = new THREE.Vector3();
+  let pixelRatio = 1; let dirty = true; let lastScene = null; let lastCamera = null; let lastDraw = 0;
+  const materialStyle = (material, fallback = "#65e1bc") => {
+    const source = Array.isArray(material) ? material[0] : material;
+    return {
+      color: source?.color?.getStyle?.() || fallback,
+      opacity: source?.transparent ? Math.max(.08, Number(source.opacity) || 0) : 1,
+      wireframe: Boolean(source?.wireframe),
+    };
+  };
+  const projected = (source, object, camera, width, height) => {
+    worldPoint.copy(source).applyMatrix4(object.matrixWorld);
+    cameraPoint.copy(worldPoint).applyMatrix4(camera.matrixWorldInverse);
+    const distance = -cameraPoint.z;
+    worldPoint.project(camera);
+    if (distance <= camera.near || distance >= camera.far || Math.abs(worldPoint.x) > 1.15
+        || Math.abs(worldPoint.y) > 1.15 || worldPoint.z < -1 || worldPoint.z > 1) return null;
+    return { x: (worldPoint.x * .5 + .5) * width, y: (-worldPoint.y * .5 + .5) * height,
+      depth: distance };
+  };
+  const draw = (scene = lastScene, camera = lastCamera) => {
+    const now = performance.now();
+    if (!dirty && now - lastDraw < 34) return;
     const width = canvas.width / pixelRatio; const height = canvas.height / pixelRatio;
     if (!context || width <= 0 || height <= 0) return;
-    dirty = false;
+    dirty = false; lastDraw = now;
     context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
     const background = context.createRadialGradient(width * .48, height * .44, 8,
       width * .5, height * .5, Math.max(width, height) * .62);
     background.addColorStop(0, "#12262a"); background.addColorStop(1, "#050d0f");
     context.fillStyle = background; context.fillRect(0, 0, width, height);
-    const radius = Math.min(width, height) * .19;
-    context.lineWidth = 1; context.strokeStyle = "rgba(101,225,188,.24)";
-    context.beginPath(); context.arc(width * .5, height * .43, radius, 0, Math.PI * 2); context.stroke();
-    const colors = ["#55c8ff", "#b594ff", "#65e1bc", "#f0c96a"];
-    for (let index = 0; index < 18; index++) {
-      const angle = index * Math.PI * 2 / 18; const shell = index % 3 === 0 ? .55 : 1;
-      const x = width * .5 + Math.cos(angle) * radius * shell;
-      const y = height * .43 + Math.sin(angle) * radius * shell * .68;
-      context.fillStyle = colors[index % colors.length]; context.globalAlpha = .72;
-      context.beginPath(); context.arc(x, y, 2.2 + (index % 3), 0, Math.PI * 2); context.fill();
+    const dots = []; const segments = [];
+    if (scene && camera) {
+      scene.updateMatrixWorld(true); camera.updateMatrixWorld(true);
+      camera.updateProjectionMatrix();
+      const focal = height / (2 * Math.tan(THREE.MathUtils.degToRad(camera.fov * .5)));
+      let dotBudget = 3200; let segmentBudget = 4200;
+      scene.traverseVisible((object) => {
+        if ((!object.isMesh && !object.isPoints && !object.isLine) || (!dotBudget && !segmentBudget)) return;
+        const style = materialStyle(object.material);
+        const position = object.geometry?.getAttribute?.("position");
+        if (object.isInstancedMesh && dotBudget) {
+          object.geometry.computeBoundingSphere?.();
+          const baseRadius = object.geometry.boundingSphere?.radius || .18;
+          const count = Math.min(object.count, dotBudget);
+          for (let index = 0; index < count; index++) {
+            object.getMatrixAt(index, instanceMatrix);
+            const point = worldPoint.setFromMatrixPosition(instanceMatrix).clone();
+            const screen = projected(point, object, camera, width, height);
+            if (!screen) continue;
+            const scale = instanceMatrix.getMaxScaleOnAxis() * object.matrixWorld.getMaxScaleOnAxis();
+            dots.push({ ...screen, radius: THREE.MathUtils.clamp(baseRadius * scale * focal / screen.depth, 1.35, 8), ...style });
+          }
+          dotBudget -= count;
+        } else if (object.isPoints && position && dotBudget) {
+          const count = Math.min(position.count, dotBudget);
+          for (let index = 0; index < count; index++) {
+            const screen = projected(worldPoint.fromBufferAttribute(position, index).clone(), object, camera, width, height);
+            if (screen) dots.push({ ...screen, radius: THREE.MathUtils.clamp((object.material?.size || .08) * focal / screen.depth, 1, 4), ...style });
+          }
+          dotBudget -= count;
+        } else if (object.isLine && position && segmentBudget) {
+          const step = object.isLineSegments ? 2 : 1;
+          const available = Math.min(Math.floor(position.count / step), segmentBudget);
+          for (let index = 0; index < available; index++) {
+            const startIndex = object.isLineSegments ? index * 2 : index;
+            const a = projected(worldPoint.fromBufferAttribute(position, startIndex).clone(), object, camera, width, height);
+            const b = projected(worldPoint.fromBufferAttribute(position, startIndex + 1).clone(), object, camera, width, height);
+            if (a && b) segments.push({ a, b, ...style });
+          }
+          segmentBudget -= available;
+        } else if (object.isMesh && dotBudget) {
+          object.geometry.computeBoundingSphere?.();
+          const center = object.geometry.boundingSphere?.center || worldPoint.set(0, 0, 0);
+          const screen = projected(center, object, camera, width, height);
+          if (screen) {
+            const radius = (object.geometry.boundingSphere?.radius || .18) * object.matrixWorld.getMaxScaleOnAxis();
+            dots.push({ ...screen, radius: THREE.MathUtils.clamp(radius * focal / screen.depth, 1.25, 11), ...style });
+          }
+          dotBudget--;
+        }
+      });
     }
+    segments.sort((a, b) => b.a.depth - a.a.depth).forEach((segment) => {
+      context.globalAlpha = Math.min(.72, segment.opacity * .72);
+      context.strokeStyle = segment.color; context.lineWidth = segment.wireframe ? .8 : 1.1;
+      context.beginPath(); context.moveTo(segment.a.x, segment.a.y); context.lineTo(segment.b.x, segment.b.y); context.stroke();
+    });
+    dots.sort((a, b) => b.depth - a.depth).forEach((dot) => {
+      context.globalAlpha = Math.min(.92, dot.opacity);
+      context.fillStyle = dot.color; context.strokeStyle = dot.color;
+      context.beginPath(); context.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2);
+      if (dot.wireframe) { context.lineWidth = .9; context.stroke(); } else context.fill();
+    });
     context.globalAlpha = 1; context.textAlign = "center";
-    context.fillStyle = "#b7cbc5"; context.font = "11px ui-monospace, SFMono-Regular, Menlo, monospace";
-    context.fillText("3D VIEW UNAVAILABLE", width * .5, height * .76);
-    context.fillStyle = "#657d76"; context.font = "9px ui-monospace, SFMono-Regular, Menlo, monospace";
-    context.fillText("scientific controls · plots · receipts remain active", width * .5, height * .82);
+    context.fillStyle = "rgba(183,203,197,.78)"; context.font = "9px ui-monospace, SFMono-Regular, Menlo, monospace";
+    context.fillText("CPU-PROJECTED GEOMETRY · DRAG TO ORBIT", width * .5, height - 24);
+    context.fillStyle = "rgba(101,125,118,.86)"; context.font = "7px ui-monospace, SFMono-Regular, Menlo, monospace";
+    context.fillText(`${dots.length.toLocaleString()} glyphs · ${segments.length.toLocaleString()} finite relations · WebGL not required`, width * .5, height - 11);
   };
   return { domElement: canvas, isFallback: true,
     setPixelRatio(value) { pixelRatio = Math.max(1, Number(value) || 1); },
@@ -955,7 +1029,7 @@ function fallbackViewportRenderer() {
       dirty = true;
       draw();
     },
-    render: draw };
+    render(scene, camera) { lastScene = scene; lastCamera = camera; draw(scene, camera); } };
 }
 
 function materialsViewportRenderer() {
@@ -8847,7 +8921,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-208",
+      buildId: "20260826-209",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,

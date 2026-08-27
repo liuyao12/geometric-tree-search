@@ -6389,3 +6389,17 @@ The operation classes are retained separately and are explicitly non-additive. T
 converted into wall time or compared numerically with force evaluations. The existing MD
 rows remain a user-declared algorithmic-work reference, while symbolic recursion and O(N)
 explicit materialization continue to be reported as distinct costs.
+
+## Build 209: keep the structural scene inspectable without WebGL
+
+The browser fallback now CPU-projects the live Three.js scene instead of replacing it with
+an illustrative atom ring. Colored instanced atoms, point fields, candidate glyphs, finite
+line relations, unit-cell outlines, and declared growth boundaries are projected with the
+active camera; OrbitControls still provide drag and zoom. The view therefore continues to
+show the full-configuration clustering process and the explicit material-growth state on
+browser or capture surfaces where WebGL cannot initialize.
+
+Projection budgets are display-only and are reported in the viewport footer. They never
+truncate the scientific state, change cluster/marking/search logic, or enter a receipt as
+evidence. All quantitative observables and certificates remain computed from the complete
+colored coordinate and relation sets.

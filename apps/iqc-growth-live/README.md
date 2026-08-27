@@ -5647,3 +5647,17 @@ speedup. The existing 10×/1,000×/100,000× table remains an algorithmic compar
 user-declared MD step horizon and interaction scaling. The receipt now retains both the
 stage work ledger and the fact that its operation classes are non-additive, target-free,
 and not physical time.
+
+### Build 209 · CPU-projected scientific viewport
+
+The non-WebGL path now renders the actual scene rather than a decorative unavailable-state
+placeholder. It projects colored atom instances, candidate and diagnostic glyphs, finite
+connection segments, unit-cell and public-boundary lines, and live growth geometry through
+the same Three.js scene graph and camera used by the WebGL renderer. Drag-to-orbit and wheel
+zoom remain active, and the projection updates as clustering, marking, and growth change.
+
+The footer reports the number of projected glyphs and finite relations and labels the view
+as a CPU projection. This is a display fallback—not a different simulation, a reduced
+scientific model, or a source of search evidence. Bounded glyph and segment budgets keep the
+portal responsive while all exact numerical audits, plots, controls, and receipts continue
+to use the complete underlying state.
