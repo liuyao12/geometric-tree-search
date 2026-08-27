@@ -5607,3 +5607,15 @@ The atlas is deliberately summary-only. It never pools placements, refits across
 averages scores, or treats saved runs as independent specimens; repeated input identities
 are visibly marked. It is an experimental-readiness view, not a cross-material transfer
 score, kinetic law, uncertainty estimate, or causal comparison.
+
+### Build 206 · blocked-horizon microscope
+
+Every cross-run readiness tile is now inspectable. Selecting a run and horizon opens the
+exact earlier and later structural-leap blocks, placement counts, supported-domain fraction,
+model and training-mean MAE, aggregate and support-gated skill, maximum standardized feature
+excess, and the largest frozen standardized geometric coefficients.
+
+The coefficient view is explicitly a model diagnostic rather than an energy decomposition.
+It retains the original receipt, context scope, envelope definition, and heldout-use audit;
+no coordinate, placement, or prediction row enters the notebook. This turns the matrix from
+a status board into a compact experimental audit while preserving its descriptive boundary.

@@ -108,13 +108,19 @@ def test_association_microscope_is_interactive_and_claims_fail_closed():
     assert "renderNotebookResponseReadiness" in APP
     assert "cross-run response readiness" in HTML
     assert ".notebook-response-readiness" in STYLE
+    assert "notebookResponseReadinessDetail" in APP
+    assert "horizon microscope" in APP
+    assert "maximum envelope excess" in APP
+    assert "largest frozen standardized coefficients" in APP
+    assert "notebook-response-readiness-detail" in HTML
+    assert ".notebook-response-feature-panel" in STYLE
 
 
 def test_build_197_assets_and_narrative():
-    assert 'buildId: "20260826-205"' in APP
-    assert 'app.js?v=20260826-205' in HTML
-    assert 'style.css?v=20260826-101' in HTML
-    assert 'creation-response-association.js?v=20260826-12' in APP
+    assert 'buildId: "20260826-206"' in APP
+    assert 'app.js?v=20260826-206' in HTML
+    assert 'style.css?v=20260826-102' in HTML
+    assert 'creation-response-association.js?v=20260826-13' in APP
     assert "Build 194" in README
     assert "Build 196" in README
     assert "Build 196" in DOCS
@@ -136,6 +142,8 @@ def test_build_197_assets_and_narrative():
     assert "Build 204" in DOCS
     assert "Build 205" in README
     assert "Build 205" in DOCS
+    assert "Build 206" in README
+    assert "Build 206" in DOCS
     assert "0/142" in README
     assert "0/142" in DOCS
     assert "Build 194" in DOCS

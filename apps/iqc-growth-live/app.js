@@ -36,7 +36,7 @@ import { blockedCreationResponseSurrogate, blockedCreationResponseValidation, bu
   canonicalCreationResponseDataset, creationResponseHorizonSweep, creationResponseLeapProfile,
   crossRunHorizonReadinessAtlas,
   LOCAL_CREATION_CONTEXT_FEATURE_IDS }
-  from "./creation-response-association.js?v=20260826-12";
+  from "./creation-response-association.js?v=20260826-13";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -528,6 +528,7 @@ const notebookSweepSummary = $("notebookSweepSummary");
 const notebookResponseReadiness = $("notebookResponseReadiness");
 const notebookResponseOutcome = $("notebookResponseOutcome");
 const notebookResponseReadinessMatrix = $("notebookResponseReadinessMatrix");
+const notebookResponseReadinessDetail = $("notebookResponseReadinessDetail");
 const notebookResponseReadinessBoundary = $("notebookResponseReadinessBoundary");
 const runStateText = $("runStateText");
 const stageEyebrow = $("stageEyebrow");
@@ -1257,6 +1258,7 @@ let notebookPhysicsFilter = "changed";
 let selectedNotebookPhysicsId = null;
 let notebookSweepFactorKey = null;
 let notebookResponseOutcomeId = "nonaffine";
+let selectedNotebookResponseCellKey = null;
 let selectedStudyRecipeId = "bulk-order";
 let activeStudyRecipeId = null;
 let activeStudyArmId = "reference";
@@ -8784,7 +8786,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-205",
+      buildId: "20260826-206",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -11971,6 +11973,7 @@ function renderNotebookResponseReadiness(entries) {
   const atlas = crossRunHorizonReadinessAtlas(entries, notebookResponseOutcomeId);
   notebookResponseOutcome.value = notebookResponseOutcomeId;
   notebookResponseReadinessMatrix.replaceChildren();
+  notebookResponseReadinessDetail.replaceChildren();
   const header = notebookResponseReadiness.querySelector("header");
   const title = header.querySelector("strong"); const detail = header.querySelector("span");
   notebookResponseReadiness.className = `notebook-response-readiness ${atlas.available ? "descriptive" : "unavailable"}`;
@@ -11981,9 +11984,15 @@ function renderNotebookResponseReadiness(entries) {
     ? `${POPULATION_RESPONSE_LABELS[notebookResponseOutcomeId]} · summary schema ${atlas.summarySchemaCompatible ? "compatible" : "mixed"} · horizon definitions ${atlas.horizonDefinitionCompatible ? "compatible" : "mixed"}`
     : "chronological support and interpolation readiness will appear here without placement rows";
   if (!atlas.available) {
+    selectedNotebookResponseCellKey = null;
     const empty = document.createElement("p"); empty.textContent = atlas.interpretation;
     notebookResponseReadinessMatrix.append(empty);
   } else {
+    const availableCells = atlas.rows.flatMap((row) => row.horizons
+      .filter((horizon) => horizon.available).map((horizon) => `${row.entryId}|${horizon.key}`));
+    if (!availableCells.includes(selectedNotebookResponseCellKey)) {
+      selectedNotebookResponseCellKey = availableCells[0] || null;
+    }
     const columns = `minmax(104px,1.2fr) repeat(${atlas.horizonDefinitions.length},minmax(92px,1fr))`;
     const labels = document.createElement("div"); labels.className = "notebook-response-readiness-row heading";
     labels.style.gridTemplateColumns = columns;
@@ -12004,8 +12013,12 @@ function renderNotebookResponseReadiness(entries) {
       small.textContent = `${row.receiptSha256.slice(0, 9)} · ${row.sharesInputWithAnotherSavedRun ? "shared input" : "distinct/unknown input"}`;
       identity.append(strong, small); line.append(identity);
       row.horizons.forEach((horizon) => {
-        const cell = document.createElement("span");
-        cell.className = `cell ${horizon.readiness}`;
+        const cell = document.createElement("button"); cell.type = "button";
+        const cellKey = `${row.entryId}|${horizon.key}`;
+        cell.className = `cell ${horizon.readiness}${cellKey === selectedNotebookResponseCellKey ? " active" : ""}`;
+        cell.disabled = !horizon.available;
+        cell.setAttribute("aria-pressed", String(cellKey === selectedNotebookResponseCellKey));
+        cell.title = horizon.available ? "Inspect this frozen blocked-horizon model" : "Model unavailable at this horizon";
         const state = document.createElement("b");
         state.textContent = horizon.readiness === "full-interpolation" ? "inside domain"
           : horizon.readiness === "mixed-domain" ? "mixed domain"
@@ -12016,9 +12029,73 @@ function renderNotebookResponseReadiness(entries) {
         skill.textContent = horizon.aggregateSkill === null ? "skill unavailable"
           : `skill ${horizon.aggregateSkill >= 0 ? "+" : ""}${horizon.aggregateSkill.toFixed(3)}${horizon.aggregateSkillIsInterpolationTest ? " · interpolation" : " · descriptive"}`;
         cell.append(state, support, skill); line.append(cell);
+        cell.addEventListener("click", () => {
+          selectedNotebookResponseCellKey = cellKey;
+          renderExperimentNotebook();
+        });
       });
       notebookResponseReadinessMatrix.append(line);
     });
+    const separator = selectedNotebookResponseCellKey?.indexOf("|") ?? -1;
+    const selectedEntryId = separator >= 0 ? selectedNotebookResponseCellKey.slice(0, separator) : null;
+    const selectedHorizonKey = separator >= 0 ? selectedNotebookResponseCellKey.slice(separator + 1) : null;
+    const selectedRow = atlas.rows.find((row) => row.entryId === selectedEntryId);
+    const selectedHorizon = selectedRow?.horizons.find((horizon) => horizon.key === selectedHorizonKey);
+    const definition = atlas.horizonDefinitions.find((entry) => entry.key === selectedHorizonKey);
+    if (selectedRow && selectedHorizon?.available) {
+      const detailHeader = document.createElement("header");
+      const heading = document.createElement("span");
+      const eyebrow = document.createElement("small"); eyebrow.textContent = "horizon microscope";
+      const headingTitle = document.createElement("strong");
+      headingTitle.textContent = `run ${selectedRow.runIndex} · ${selectedRow.material} · ${definition?.label || selectedHorizonKey}`;
+      heading.append(eyebrow, headingTitle);
+      const badge = document.createElement("b"); badge.className = selectedHorizon.readiness;
+      badge.textContent = selectedHorizon.readiness.replaceAll("-", " ");
+      detailHeader.append(heading, badge); notebookResponseReadinessDetail.append(detailHeader);
+      const metrics = document.createElement("div"); metrics.className = "notebook-response-readiness-metrics";
+      const signed = (value) => value === null ? "unavailable" : `${value >= 0 ? "+" : ""}${value.toFixed(3)}`;
+      [
+        ["training blocks", selectedHorizon.trainingLeaps.join(" · ") || "unavailable", `${selectedHorizon.trainingPlacements} placements`],
+        ["held blocks", selectedHorizon.heldoutLeaps.join(" · ") || "unavailable", `${selectedHorizon.heldoutPlacements} placements`],
+        ["supported domain", `${selectedHorizon.supportedPlacements}/${selectedHorizon.heldoutPlacements}`, `${selectedHorizon.unsupportedPlacements} extrapolative`],
+        ["MAE · model / mean", selectedHorizon.heldoutMeanAbsoluteError === null ? "unavailable"
+          : `${selectedHorizon.heldoutMeanAbsoluteError.toFixed(3)} / ${selectedHorizon.baselineMeanAbsoluteError?.toFixed(3) ?? "—"}`, "held blocks only"],
+        ["aggregate skill", signed(selectedHorizon.aggregateSkill), selectedHorizon.aggregateSkillIsInterpolationTest ? "interpolation test" : "descriptive only"],
+        ["supported-only skill", signed(selectedHorizon.supportedSubsetSkill), "reported only after sample gate"],
+        ["maximum envelope excess", selectedHorizon.maximumStandardizedFeatureExcess === null
+          ? "unavailable" : `${selectedHorizon.maximumStandardizedFeatureExcess.toFixed(2)}σ`, "earlier-block scale"],
+        ["feature scope", `${selectedHorizon.features.length} retained`, selectedHorizon.contextFeatureScope],
+      ].forEach(([label, value, note]) => {
+        const tile = document.createElement("span");
+        const small = document.createElement("small"); small.textContent = label;
+        const strong = document.createElement("strong"); strong.textContent = value;
+        const em = document.createElement("em"); em.textContent = note;
+        tile.append(small, strong, em); metrics.append(tile);
+      });
+      notebookResponseReadinessDetail.append(metrics);
+      const featurePanel = document.createElement("div"); featurePanel.className = "notebook-response-feature-panel";
+      const featureHeader = document.createElement("header");
+      const featureTitle = document.createElement("strong"); featureTitle.textContent = "largest frozen standardized coefficients";
+      const featureNote = document.createElement("small"); featureNote.textContent = "ranking aid · not a physical energy decomposition";
+      featureHeader.append(featureTitle, featureNote); featurePanel.append(featureHeader);
+      const maximumWeight = Math.max(1e-12, ...selectedHorizon.features.map((feature) => Math.abs(feature.standardizedWeight || 0)));
+      selectedHorizon.features.forEach((feature) => {
+        const row = document.createElement("span");
+        const label = document.createElement("small"); label.textContent = feature.label || feature.id;
+        const track = document.createElement("i");
+        const bar = document.createElement("b");
+        bar.className = (feature.standardizedWeight || 0) >= 0 ? "positive" : "negative";
+        bar.style.width = `${Math.max(2, Math.abs(feature.standardizedWeight || 0) / maximumWeight * 100)}%`;
+        track.append(bar);
+        const value = document.createElement("strong");
+        value.textContent = `${(feature.standardizedWeight || 0) >= 0 ? "+" : ""}${(feature.standardizedWeight || 0).toFixed(3)}`;
+        row.append(label, track, value); featurePanel.append(row);
+      });
+      notebookResponseReadinessDetail.append(featurePanel);
+      const audit = document.createElement("p");
+      audit.textContent = `${selectedHorizon.featureSupportDefinition}. Fit used heldout: ${selectedHorizon.fitUsedHeldout ? "yes" : "no"}; feature selection used response: ${selectedHorizon.featureSelectionUsedOutcome ? "yes" : "no"}. Receipt ${selectedRow.receiptSha256}.`;
+      notebookResponseReadinessDetail.append(audit);
+    }
   }
   notebookResponseReadinessBoundary.textContent = "Each tile is one deterministic run summary. Placement rows are never pooled, models are never refit across runs, and saved runs may share input atoms; they are not treated as independent specimens. This atlas compares support/readiness, not material transfer, kinetics, physical time, or causal response.";
 }
@@ -23848,6 +23925,7 @@ notebookSweepFactor.addEventListener("change", () => {
 notebookSweepOutcome.addEventListener("change", renderExperimentNotebook);
 notebookResponseOutcome.addEventListener("change", () => {
   notebookResponseOutcomeId = notebookResponseOutcome.value;
+  selectedNotebookResponseCellKey = null;
   renderExperimentNotebook();
 });
 scenarioSelect.addEventListener("change", () => {

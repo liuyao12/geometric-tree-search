@@ -491,6 +491,8 @@ export function crossRunHorizonReadinessAtlas(entries, outcomeId) {
         return model ? {
           key: definition.key, available: model.available === true,
           readiness: model.interpolationReadiness?.state || "unavailable",
+          trainingLeaps: [...(model.trainingLeaps || [])],
+          heldoutLeaps: [...(model.heldoutLeaps || [])],
           trainingPlacements: model.trainingPlacements || 0,
           heldoutPlacements: model.heldoutPlacements || 0,
           supportedPlacements: model.interpolationReadiness?.supportedPlacements || 0,
@@ -499,6 +501,24 @@ export function crossRunHorizonReadinessAtlas(entries, outcomeId) {
             ? model.heldoutSkillVersusTrainingMean : null,
           aggregateSkillIsInterpolationTest:
             model.interpolationReadiness?.aggregateSkillIsInterpolationTest === true,
+          heldoutMeanAbsoluteError: Number.isFinite(model.heldoutMeanAbsoluteError)
+            ? model.heldoutMeanAbsoluteError : null,
+          baselineMeanAbsoluteError: Number.isFinite(model.baselineMeanAbsoluteError)
+            ? model.baselineMeanAbsoluteError : null,
+          supportedSubsetSkill: Number.isFinite(model.supportedHeldoutSkillVersusTrainingMean)
+            ? model.supportedHeldoutSkillVersusTrainingMean : null,
+          maximumStandardizedFeatureExcess: Number.isFinite(model.maximumStandardizedFeatureExcess)
+            ? model.maximumStandardizedFeatureExcess : null,
+          contextFeatureScope: model.contextFeatureScope || "unreported feature scope",
+          featureSupportDefinition: model.featureSupportDefinition || "unreported support definition",
+          features: [...(model.features || [])].sort((first, second) =>
+            Math.abs(second.standardizedWeight || 0) - Math.abs(first.standardizedWeight || 0)
+              || String(first.id).localeCompare(String(second.id))).slice(0, 8)
+            .map((feature) => ({ id: feature.id, label: feature.label, source: feature.source,
+              trainingSupport: feature.trainingSupport,
+              standardizedWeight: feature.standardizedWeight })),
+          fitUsedHeldout: model.fitUsedHeldout === true,
+          featureSelectionUsedOutcome: model.featureSelectionUsedOutcome === true,
         } : { key: definition.key, available: false, readiness: "unavailable",
           trainingPlacements: 0, heldoutPlacements: 0, supportedPlacements: 0,
           unsupportedPlacements: 0, aggregateSkill: null,

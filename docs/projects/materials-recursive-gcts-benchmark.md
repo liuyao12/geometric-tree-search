@@ -6351,3 +6351,15 @@ This is intentionally not a pooled validation study. Notebook summaries contain 
 placement or prediction rows; the atlas does not refit, aggregate, or assume independence
 between saved runs, and it marks repeated input identity. Transfer across structures,
 specimens, or materials still requires a separately sealed experiment.
+
+## Build 206: inspect the evidence behind a readiness tile
+
+Each saved-run/horizon cell now opens a coordinate-free microscope. It reports the exact
+training and held structural-leap identities, placement counts, supported-domain fraction,
+model-versus-mean error, interpolation-gated skill, maximum earlier-envelope excess, and up
+to eight dominant standardized coefficients from the already frozen local-state model.
+
+The detail panel also carries the feature-scope statement, envelope definition, receipt
+hash, and explicit heldout-fit and response-selection flags. Coefficients are ranking-model
+diagnostics, not energies or causal physical contributions. No model is refit and no
+placement or prediction rows are restored to the notebook.
