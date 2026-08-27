@@ -5471,3 +5471,24 @@ An expandable reproducibility artifact now shows the exact grouping, retention, 
 boundary, and receipt/notebook policy. Its SHA-256 prefix is computed from the same canonical
 dataset stored by Build 196, and the full coordinate-free dataset can be copied directly for
 external inspection. Receipts and saved notebooks also retain the per-outcome leap profiles.
+
+### Build 198 · can the geometry channels jointly predict held-block response?
+
+The site microscope now fits a bounded multichannel geometry surrogate on only the earlier
+complete structural leaps and scores it on later leaps. Its feature vocabulary is selected
+without reading the response—training support of at least one half, then stable term ID—and
+is capped at twelve active channels. Missing inactive channels are zero contributions;
+constant channels are removed. A fixed ridge of 1 is used without target tuning.
+
+The card compares held-block MAE for the joint geometry model with the frozen earlier-block
+response mean and reports `1 − model SSE / baseline SSE` plus held-block Spearman ρ. Receipts
+retain the standardized coefficients, training moments, and every held-block prediction;
+notebook summaries retain the model and scores but omit prediction rows. This is a leakage-
+safe within-run explanatory check, not a calibrated material forecast, causal mechanism,
+confidence interval, energy model, kinetics, or validation on independent solids.
+
+On the deterministic six-leap NaCl check, the model freezes three channels on 90 earlier
+placements and scores 142 later placements. It retains rank information (ρ = +0.454) but
+does not beat the earlier-response mean: MAE 1.674 versus 1.646 and skill −0.065. The card
+therefore renders as **no gain**. This honest negative result says the current creation-score
+channels do not yet form a transferable response model for this outcome.

@@ -46,7 +46,7 @@ def test_association_microscope_is_interactive_and_claims_fail_closed():
     assert "targetUsed: false" in MODULE
     assert "causalEffectInferred: false" in MODULE
     assert "independentMaterialSamples: false" in MODULE
-    assert "not a causal effect, calibrated predictor, energy relation, kinetic law" in APP
+    assert "not a causal effect, calibrated material predictor, energy relation, kinetic law" in APP
     assert "creationResponseLeapProfile" in MODULE
     assert 'id="sitePopulationLeapProfile"' in HTML
     assert 'id="sitePopulationArtifactState"' in HTML
@@ -54,16 +54,25 @@ def test_association_microscope_is_interactive_and_claims_fail_closed():
     assert ".site-population-leap-profile" in STYLE
     assert ".site-population-artifact" in STYLE
     assert "leapProfiles" in APP
+    assert "blockedCreationResponseSurrogate" in MODULE
+    assert 'id="sitePopulationSurrogate"' in HTML
+    assert ".site-response-surrogate" in STYLE
+    assert "blockedSurrogates" in APP
+    assert "surrogatePredictionsEmbeddedInFullReceipt: true" in APP
+    assert "fitUsedHeldout: false" in MODULE
+    assert "featureSelectionUsedOutcome: false" in MODULE
 
 
 def test_build_197_assets_and_narrative():
-    assert 'buildId: "20260826-197"' in APP
-    assert 'app.js?v=20260826-197' in HTML
-    assert 'style.css?v=20260826-93' in HTML
-    assert 'creation-response-association.js?v=20260826-4' in APP
+    assert 'buildId: "20260826-198"' in APP
+    assert 'app.js?v=20260826-198' in HTML
+    assert 'style.css?v=20260826-94' in HTML
+    assert 'creation-response-association.js?v=20260826-5' in APP
     assert "Build 194" in README
     assert "Build 196" in README
     assert "Build 196" in DOCS
     assert "Build 197" in README
     assert "Build 197" in DOCS
+    assert "Build 198" in README
+    assert "Build 198" in DOCS
     assert "Build 194" in DOCS

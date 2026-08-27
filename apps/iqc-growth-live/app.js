@@ -32,9 +32,9 @@ import { buildSiteCreationPhysicsAudit } from "./site-creation-physics-audit.js?
 import { buildSiteCreationResponse } from "./site-creation-response.js?v=20260826-1";
 import { appendSiteStructuralHistory, summarizeSiteStructuralHistory }
   from "./site-structural-history.js?v=20260826-1";
-import { blockedCreationResponseValidation, buildCreationResponseAssociation,
+import { blockedCreationResponseSurrogate, blockedCreationResponseValidation, buildCreationResponseAssociation,
   canonicalCreationResponseDataset, creationResponseLeapProfile }
-  from "./creation-response-association.js?v=20260826-4";
+  from "./creation-response-association.js?v=20260826-5";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -563,6 +563,7 @@ const sitePopulationResponseOutcome = $("sitePopulationResponseOutcome");
 const sitePopulationResponsePlot = $("sitePopulationResponsePlot");
 const sitePopulationResponseTerms = $("sitePopulationResponseTerms");
 const sitePopulationValidation = $("sitePopulationValidation");
+const sitePopulationSurrogate = $("sitePopulationSurrogate");
 const sitePopulationLeapProfile = $("sitePopulationLeapProfile");
 const sitePopulationArtifactState = $("sitePopulationArtifactState");
 const sitePopulationArtifactGrid = $("sitePopulationArtifactGrid");
@@ -3754,6 +3755,9 @@ async function creationResponseReceiptEvidence() {
     const selected = audit.associations.find((entry) => entry.outcomeId === outcomeId);
     return [outcomeId, selected ? creationResponseLeapProfile(dataset.records, selected.termId, outcomeId) : null];
   }));
+  const blockedSurrogates = Object.fromEntries(Object.keys(POPULATION_RESPONSE_LABELS).map((outcomeId) =>
+    [outcomeId, blockedCreationResponseSurrogate(dataset.records, outcomeId,
+      { minimumSamplesPerSplit: 12 })]));
   return {
     schema: 1,
     dataset,
@@ -3762,6 +3766,7 @@ async function creationResponseReceiptEvidence() {
     associations,
     blockedValidation,
     leapProfiles,
+    blockedSurrogates,
     available: audit.available,
     placementSamples: audit.placementSamples,
     emittedSitePresentations: audit.emittedSitePresentations,
@@ -3799,6 +3804,31 @@ function renderPopulationBlockedValidation(validation) {
     detail.textContent = validation.reason;
   }
   sitePopulationValidation.append(label, value, detail);
+}
+
+function renderPopulationSurrogate(surrogate) {
+  sitePopulationSurrogate.replaceChildren();
+  sitePopulationSurrogate.className = `site-response-surrogate ${surrogate.available
+    ? surrogate.heldoutSkillVersusTrainingMean > 0 ? "useful" : "no-gain" : "unavailable"}`;
+  const label = document.createElement("small"); label.textContent = "joint geometry model · earlier → later";
+  const value = document.createElement("strong"); const detail = document.createElement("span");
+  if (!surrogate.available) {
+    value.textContent = "blocked multichannel test unavailable"; detail.textContent = surrogate.reason;
+    sitePopulationSurrogate.append(label, value, detail); return;
+  }
+  const skill = surrogate.heldoutSkillVersusTrainingMean;
+  value.textContent = `held-block skill ${Number.isFinite(skill) ? `${skill >= 0 ? "+" : ""}${skill.toFixed(3)}` : "unresolved"} · ρ ${Number.isFinite(surrogate.heldoutSpearman) ? `${surrogate.heldoutSpearman >= 0 ? "+" : ""}${surrogate.heldoutSpearman.toFixed(3)}` : "—"}`;
+  detail.textContent = `${surrogate.features.length} earlier-block geometry channels · ${surrogate.trainingPlacements} fit / ${surrogate.heldoutPlacements} held placements · fixed ridge ${surrogate.ridge}`;
+  const bars = document.createElement("div"); bars.className = "site-surrogate-bars";
+  const maximumError = Math.max(surrogate.heldoutMeanAbsoluteError, surrogate.baselineMeanAbsoluteError, 1e-12);
+  [["joint geometry", surrogate.heldoutMeanAbsoluteError], ["training mean", surrogate.baselineMeanAbsoluteError]]
+    .forEach(([name, error]) => {
+      const bar = document.createElement("span"); bar.style.setProperty("--error", `${100 * error / maximumError}%`);
+      const barLabel = document.createElement("small"); barLabel.textContent = name;
+      const barValue = document.createElement("strong"); barValue.textContent = `MAE ${error.toFixed(3)}`;
+      bar.append(barLabel, barValue); bars.append(bar);
+    });
+  sitePopulationSurrogate.append(label, value, detail, bars);
 }
 
 function populationArtifactCell(label, value, detail) {
@@ -3856,6 +3886,8 @@ function renderPopulationResponseAssociation(atom) {
   renderPopulationArtifact(records);
   renderPopulationBlockedValidation(blockedCreationResponseValidation(records,
     selectedPopulationResponseOutcome, { minimumSamplesPerSplit: 8 }));
+  renderPopulationSurrogate(blockedCreationResponseSurrogate(records,
+    selectedPopulationResponseOutcome, { minimumSamplesPerSplit: 12 }));
   sitePopulationResponsePlot.replaceChildren(); sitePopulationResponseTerms.replaceChildren();
   sitePopulationResponseOutcome.value = selectedPopulationResponseOutcome;
   const outcomeAssociations = audit.associations.filter((entry) => entry.outcomeId === selectedPopulationResponseOutcome);
@@ -3903,7 +3935,7 @@ function renderPopulationResponseAssociation(atom) {
     transform: `rotate(-90 7 ${top + height / 2})` }, POPULATION_RESPONSE_LABELS[selectedPopulationResponseOutcome]);
   sitePopulationResponsePlot.append(xLabel, yLabel);
   sitePopulationResponsePlot.setAttribute("aria-label", `${selected.sampleCount} whole-cluster placements: ${selected.termLabel} contribution versus ${POPULATION_RESPONSE_LABELS[selectedPopulationResponseOutcome]}, Spearman rho ${selected.spearmanRho}`);
-  sitePopulationResponseBoundary.textContent = `One grouped sample per accepted whole-cluster placement; ${audit.emittedSitePresentations} atom responses are aggregated, not treated as independent. Spearman ρ is descriptive within this finite deterministic run—not a causal effect, calibrated predictor, energy relation, kinetic law, or independent-material statistic.`;
+  sitePopulationResponseBoundary.textContent = `One grouped sample per accepted whole-cluster placement; ${audit.emittedSitePresentations} atom responses are aggregated, not treated as independent. Spearman ρ is descriptive within this finite deterministic run. The joint model uses a fixed ridge and training-only feature vocabulary, then reports 1 − held-block SSE / training-mean SSE; it is not a causal effect, calibrated material predictor, energy relation, kinetic law, confidence interval, or independent-material statistic.`;
 }
 
 function inspectSite(atom) {
@@ -8577,7 +8609,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-197",
+      buildId: "20260826-198",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -10721,11 +10753,17 @@ function experimentNotebookSummary(receipt) {
       associations: search.creationResponseEvidence.associations,
       blockedValidation: search.creationResponseEvidence.blockedValidation,
       leapProfiles: search.creationResponseEvidence.leapProfiles,
+      blockedSurrogates: Object.fromEntries(Object.entries(search.creationResponseEvidence.blockedSurrogates)
+        .map(([outcomeId, surrogate]) => {
+          const { predictions, ...summary } = surrogate; return [outcomeId, summary];
+        })),
       groupingUnit: search.creationResponseEvidence.dataset.groupingUnit,
       atomLevelPseudoreplicationAvoided: true,
       blockedByCompleteStructuralLeap: true,
       recordsEmbeddedInFullReceipt: true,
       recordsEmbeddedInNotebook: false,
+      surrogatePredictionsEmbeddedInFullReceipt: true,
+      surrogatePredictionsEmbeddedInNotebook: false,
       coordinatesEmbedded: false,
       targetUsed: false,
       causalEffectInferred: false,

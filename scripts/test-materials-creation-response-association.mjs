@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { blockedCreationResponseValidation, buildCreationResponseAssociation,
-  canonicalCreationResponseDataset, creationResponseLeapProfile }
+  blockedCreationResponseSurrogate, canonicalCreationResponseDataset, creationResponseLeapProfile }
   from "../apps/iqc-growth-live/creation-response-association.js";
 
 const records = Array.from({ length: 6 }, (_, index) => ({
@@ -58,4 +58,21 @@ assert.equal(blocked.signRetained, false);
 assert.equal(blocked.selectionUsedHeldout, false);
 assert.equal(blocked.randomSplitUsed, false);
 assert.equal(blockedCreationResponseValidation(blockedRecords.slice(0, 12), "shellChange").available, false);
+const surrogateRecords = Array.from({ length: 40 }, (_, index) => {
+  const leapIndex = Math.floor(index / 8) + 1; const x = index % 8;
+  return { placementId: `s${index}`, leapIndex, emittedSites: 2,
+    physicsTerms: [{ id: "strain", label: "strain", weight: 1, contribution: x },
+      { id: "nuisance", label: "nuisance", weight: 1, contribution: index % 2 },
+      ...(leapIndex > 3 ? [{ id: "heldout-only", weight: 1, contribution: x }] : [])],
+    outcomes: { shellChange: 1 + 2 * x } };
+});
+const surrogate = blockedCreationResponseSurrogate(surrogateRecords, "shellChange",
+  { trainingFraction: .6, minimumSamplesPerSplit: 4, ridge: .01 });
+assert.equal(surrogate.available, true);
+assert.deepEqual(surrogate.trainingLeaps, [1, 2, 3]);
+assert.deepEqual(surrogate.heldoutLeaps, [4, 5]);
+assert.equal(surrogate.features.some((feature) => feature.id === "heldout-only"), false);
+assert.equal(surrogate.heldoutSpearman, 1);
+assert.ok(surrogate.heldoutSkillVersusTrainingMean > .99);
+assert.equal(surrogate.fitUsedHeldout, false);
 console.log("materials creation-response association: passed");

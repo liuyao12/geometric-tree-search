@@ -6202,3 +6202,27 @@ digest, and compact notebook digest share the same canonical serialization. Rece
 notebook summaries additionally record per-outcome leap profiles selected from the pooled
 descriptive association. This improves auditability without allowing the target, atom IDs,
 coordinates, or held-block outcomes to affect growth or the earlier-block validation rule.
+
+## Build 198: test joint geometry-channel information on later leap blocks
+
+Build 198 adds a fixed-ridge multichannel surrogate to the grouped placement audit. The fit
+uses only the earlier complete leap blocks. Candidate score channels enter the vocabulary
+when they are active in at least half of the training placements; selection is by support
+and stable term ID, capped at twelve, and never reads the response. Centering, scaling,
+target mean, feature removal, and coefficients are all frozen before later blocks are scored.
+
+The held-block comparison reports model and training-mean MAE/RMSE, Spearman association of
+prediction with response, and skill `1 − model SSE / training-mean SSE`. Negative skill is
+retained rather than hidden. The full receipt includes every held-block prediction and the
+complete standardized model; compact notebook summaries omit prediction rows while keeping
+the model and scores. This is a correlated within-run explanatory diagnostic, not an energy
+model, force field, kinetic law, causal estimate, confidence interval, calibrated material
+forecast, or independent-material validation.
+
+The six-leap default NaCl regression yields three supported training channels—composition,
+formal-charge balance, and surface completion—from 90 earlier placements. On 142 held
+placements the frozen model has MAE 1.6736 versus 1.6456 for the training-mean baseline,
+skill −0.0655, and Spearman ρ +0.4542. The portal reports `no gain`; rank association alone
+does not override worse squared or absolute error. This is evidence that the present channel
+set is not yet a transferable multichannel response model, not a reason to tune on the held
+blocks.

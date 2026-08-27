@@ -145,6 +145,126 @@ export function creationResponseLeapProfile(records, termId, outcomeId, { minimu
   };
 }
 
+function solveRidgeSystem(matrix, vector) {
+  const size = vector.length;
+  const augmented = matrix.map((row, index) => [...row, vector[index]]);
+  for (let column = 0; column < size; column++) {
+    let pivot = column;
+    for (let row = column + 1; row < size; row++) {
+      if (Math.abs(augmented[row][column]) > Math.abs(augmented[pivot][column])) pivot = row;
+    }
+    if (Math.abs(augmented[pivot][column]) < 1e-12) return null;
+    [augmented[column], augmented[pivot]] = [augmented[pivot], augmented[column]];
+    const divisor = augmented[column][column];
+    for (let index = column; index <= size; index++) augmented[column][index] /= divisor;
+    for (let row = 0; row < size; row++) {
+      if (row === column) continue;
+      const factor = augmented[row][column];
+      for (let index = column; index <= size; index++) augmented[row][index] -= factor * augmented[column][index];
+    }
+  }
+  return augmented.map((row) => row[size]);
+}
+
+/** Fixed-ridge multichannel model fit on earlier complete leaps and scored only on later leaps. */
+export function blockedCreationResponseSurrogate(records, outcomeId, {
+  trainingFraction = 2 / 3, minimumSamplesPerSplit = 12, ridge = 1, maximumFeatures = 12,
+} = {}) {
+  if (!Array.isArray(records) || !outcomeId || !(trainingFraction > 0 && trainingFraction < 1)
+      || minimumSamplesPerSplit < 4 || !(ridge > 0) || !Number.isInteger(maximumFeatures)
+      || maximumFeatures < 1 || records.some((record) => !Number.isInteger(record.leapIndex))) {
+    throw new Error("blocked surrogate needs grouped leap records and fixed finite fit settings");
+  }
+  const leapIndices = [...new Set(records.map((record) => record.leapIndex))].sort((a, b) => a - b);
+  if (leapIndices.length < 3) return { available: false,
+    reason: "at least three complete structural-leap blocks are required", targetUsed: false,
+    fitUsedHeldout: false };
+  const trainingBlockCount = Math.min(leapIndices.length - 1,
+    Math.max(1, Math.ceil(leapIndices.length * trainingFraction)));
+  const trainingLeaps = leapIndices.slice(0, trainingBlockCount);
+  const heldoutLeaps = leapIndices.slice(trainingBlockCount);
+  const trainingSet = new Set(trainingLeaps); const heldoutSet = new Set(heldoutLeaps);
+  const eligible = records.filter((record) => Number.isFinite(record.outcomes?.[outcomeId]));
+  const trainingRecords = eligible.filter((record) => trainingSet.has(record.leapIndex));
+  const heldoutRecords = eligible.filter((record) => heldoutSet.has(record.leapIndex));
+  const unavailable = (reason) => ({ available: false, reason, trainingLeaps, heldoutLeaps,
+    trainingPlacements: trainingRecords.length, heldoutPlacements: heldoutRecords.length,
+    fitUsedHeldout: false, featureSelectionUsedOutcome: false, targetUsed: false });
+  if (trainingRecords.length < minimumSamplesPerSplit || heldoutRecords.length < minimumSamplesPerSplit) {
+    return unavailable("earlier or later leap blocks have insufficient grouped response samples");
+  }
+  const termMetadata = new Map();
+  trainingRecords.forEach((record) => record.physicsTerms?.forEach((term) => {
+    if (!term?.id || !Number.isFinite(term.contribution) || !Number.isFinite(term.weight)
+        || Math.abs(term.weight) <= 1e-12) return;
+    const current = termMetadata.get(term.id) || { id: term.id, label: term.label || term.id, support: 0 };
+    current.support++; termMetadata.set(term.id, current);
+  }));
+  const candidates = [...termMetadata.values()].filter((term) => term.support >= Math.ceil(trainingRecords.length / 2))
+    .sort((first, second) => second.support - first.support || first.id.localeCompare(second.id))
+    .slice(0, maximumFeatures);
+  const termMap = (record) => new Map((record.physicsTerms || []).filter((term) => term?.id
+    && Number.isFinite(term.contribution) && Number.isFinite(term.weight) && Math.abs(term.weight) > 1e-12)
+    .map((term) => [term.id, term.contribution]));
+  const rawTraining = trainingRecords.map((record) => {
+    const terms = termMap(record); return candidates.map((term) => terms.get(term.id) || 0);
+  });
+  const means = candidates.map((_, index) => rawTraining.reduce((sum, row) => sum + row[index], 0) / rawTraining.length);
+  const scales = candidates.map((_, index) => Math.sqrt(rawTraining.reduce((sum, row) =>
+    sum + (row[index] - means[index]) ** 2, 0) / rawTraining.length));
+  const retainedIndices = candidates.map((_, index) => index).filter((index) => scales[index] > 1e-10);
+  if (!retainedIndices.length) return unavailable("earlier leap blocks contain no varying supported physics channels");
+  const features = retainedIndices.map((index) => candidates[index]);
+  const featureMeans = retainedIndices.map((index) => means[index]);
+  const featureScales = retainedIndices.map((index) => scales[index]);
+  const standardize = (record) => {
+    const terms = termMap(record);
+    return features.map((term, index) => ((terms.get(term.id) || 0) - featureMeans[index]) / featureScales[index]);
+  };
+  const xTrain = trainingRecords.map(standardize);
+  const yTrain = trainingRecords.map((record) => record.outcomes[outcomeId]);
+  const targetMean = yTrain.reduce((sum, value) => sum + value, 0) / yTrain.length;
+  const xtx = features.map((_, row) => features.map((__, column) => xTrain.reduce((sum, sample) =>
+    sum + sample[row] * sample[column], row === column ? ridge : 0)));
+  const xty = features.map((_, column) => xTrain.reduce((sum, sample, index) =>
+    sum + sample[column] * (yTrain[index] - targetMean), 0));
+  const weights = solveRidgeSystem(xtx, xty);
+  if (!weights) return unavailable("fixed-ridge system was numerically singular");
+  const predictions = heldoutRecords.map((record) => {
+    const vector = standardize(record);
+    const predicted = targetMean + vector.reduce((sum, value, index) => sum + value * weights[index], 0);
+    return { placementId: record.placementId, leapIndex: record.leapIndex,
+      observed: record.outcomes[outcomeId], predicted, baseline: targetMean };
+  });
+  const errors = predictions.map((entry) => entry.predicted - entry.observed);
+  const baselineErrors = predictions.map((entry) => entry.baseline - entry.observed);
+  const squared = errors.reduce((sum, error) => sum + error * error, 0);
+  const baselineSquared = baselineErrors.reduce((sum, error) => sum + error * error, 0);
+  const predictedRanks = averageRanks(predictions.map((entry) => entry.predicted));
+  const observedRanks = averageRanks(predictions.map((entry) => entry.observed));
+  return {
+    available: true, outcomeId, trainingLeaps, heldoutLeaps,
+    trainingPlacements: trainingRecords.length, heldoutPlacements: heldoutRecords.length,
+    ridge, maximumFeatures, featureSelectionRule: "training support >= half; support descending then stable term ID",
+    features: features.map((term, index) => ({ id: term.id, label: term.label,
+      trainingSupport: term.support, mean: rounded(featureMeans[index], 8),
+      scale: rounded(featureScales[index], 8), standardizedWeight: rounded(weights[index], 8) })),
+    trainingTargetMean: rounded(targetMean, 8),
+    heldoutMeanAbsoluteError: rounded(errors.reduce((sum, error) => sum + Math.abs(error), 0) / errors.length, 8),
+    baselineMeanAbsoluteError: rounded(baselineErrors.reduce((sum, error) => sum + Math.abs(error), 0) / baselineErrors.length, 8),
+    heldoutRootMeanSquaredError: rounded(Math.sqrt(squared / errors.length), 8),
+    baselineRootMeanSquaredError: rounded(Math.sqrt(baselineSquared / baselineErrors.length), 8),
+    heldoutSkillVersusTrainingMean: baselineSquared > 1e-14 ? rounded(1 - squared / baselineSquared, 8) : null,
+    heldoutSpearman: rounded(pearson(predictedRanks, observedRanks), 8),
+    predictions: predictions.map((entry) => ({ ...entry, predicted: rounded(entry.predicted, 8),
+      observed: rounded(entry.observed, 8), baseline: rounded(entry.baseline, 8) })),
+    fitBlockedByCompleteStructuralLeap: true, randomSplitUsed: false,
+    fitUsedHeldout: false, featureSelectionUsedOutcome: false, targetUsed: false,
+    causalEffectInferred: false, independentMaterialSamples: false,
+    physicalTimeModeled: false, calibratedMaterialForecastClaimed: false,
+  };
+}
+
 /** Select a term on earlier complete leap blocks, then score it on later blocks. */
 export function blockedCreationResponseValidation(records, outcomeId, {
   trainingFraction = 2 / 3, minimumSamplesPerSplit = 8,
