@@ -1408,6 +1408,7 @@ let atomSpatialIndex = new Map();
 let trainingProgress = 0;
 let clusterDiscoveryTrace = null;
 let clusterDiscoveryProgress = 0;
+let molecularCoverFocus = "all";
 let selectedProcessEvidenceIndex = 0;
 let selectedConstraintName = "species / hard core";
 let leapHistory = [];
@@ -9204,7 +9205,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-223",
+      buildId: "20260827-224",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -17844,10 +17845,15 @@ function addDiscoveryLines(edges, color, opacity, depthTest = true) {
 
 function buildClusterDiscoveryOverlay() {
   const state = clusterDiscoveryState();
-  addDiscoveryLines(state.tentative, 0x84b8b2, .24);
-  addDiscoveryLines(state.rejected, COLORS.red, .88, false);
   const colors = { molecule: 0x65e1bc, bridge: 0x55c8ff, gap: 0xffc169,
     residual: 0xff6d71, support: 0xb594ff };
+  if (molecularCoverFocus !== "all" && learnedCover?.molecular) {
+    addDiscoveryLines(state.settled.filter((edge) => edge.families?.has(molecularCoverFocus)),
+      colors[molecularCoverFocus] || 0xb594ff, .88, false);
+    return;
+  }
+  addDiscoveryLines(state.tentative, 0x84b8b2, .24);
+  addDiscoveryLines(state.rejected, COLORS.red, .88, false);
   Object.entries(colors).forEach(([family, color]) =>
     addDiscoveryLines(state.settled.filter((edge) => edge.family === family), color, family === "gap" ? .72 : .58));
 }
@@ -19659,6 +19665,7 @@ function resetCounters() {
   trainingProgress = 0;
   clusterDiscoveryTrace = null;
   clusterDiscoveryProgress = 0;
+  molecularCoverFocus = "all";
   leapHistory = [];
   selectedLeapIndex = -1;
   leapEventCount = 0;
@@ -20665,20 +20672,25 @@ function renderMolecularCoverRibbon() {
     { kind: "void", eyebrow: "uncovered geometry", label: "gap / void clusters",
       value: voidCount, total: molecular.voids,
       detail: `${molecular.voidClasses} explicit boundary class${molecular.voidClasses === 1 ? "" : "es"} retained` },
-    { kind: "coverage", eyebrow: "complete cover", label: "observed atomic sites",
+    { kind: "coverage", focus: "all", eyebrow: "complete cover", label: "observed atomic sites",
       value: discovery.coveredAtoms.size, total: referenceCount(),
       detail: `${discovery.settledPlacements}/${learnedCover.placements.length} accepted placements` },
-  ];
+  ].map((record) => ({ ...record, focus: record.focus || record.kind.replace("connection", "bridge").replace("void", "gap") }));
   molecularCoverTitle.textContent = molecular.water
     ? `${moleculeLabel} molecules first; bridges and O-ring voids complete the crystal cover`
     : "Finite molecules first; connection and gap clusters complete the observed cover";
+  const focusedRecord = records.find((record) => record.focus === molecularCoverFocus);
   molecularCoverState.textContent = finished && learnedCover.complete
     ? `complete · ${referenceCount()}/${referenceCount()} sites`
     : `${clusterDiscoveryProgress}/${clusterDiscoveryTrace.totalSteps} audit steps`;
+  if (molecularCoverFocus !== "all" && focusedRecord) molecularCoverState.textContent += ` · isolating ${focusedRecord.label}`;
   molecularCoverFlow.replaceChildren();
   records.forEach((record, index) => {
-    const article = document.createElement("article");
-    article.className = record.kind;
+    const article = document.createElement("button");
+    article.type = "button";
+    article.className = `${record.kind}${molecularCoverFocus === record.focus ? " active" : ""}`;
+    article.setAttribute("aria-pressed", molecularCoverFocus === record.focus ? "true" : "false");
+    article.setAttribute("aria-label", `${record.label}: ${record.value} of ${record.total}. Show this cover layer in the three-dimensional scene.`);
     const eyebrow = document.createElement("small"); eyebrow.textContent = record.eyebrow;
     const heading = document.createElement("strong"); heading.textContent = record.label;
     const count = document.createElement("b"); count.textContent = `${record.value}/${record.total}`;
@@ -20686,6 +20698,11 @@ function renderMolecularCoverRibbon() {
     meter.style.setProperty("--cover-progress", `${100 * record.value / Math.max(1, record.total)}%`);
     const detail = document.createElement("span"); detail.textContent = record.detail;
     article.append(eyebrow, heading, count, meter, detail);
+    article.addEventListener("click", () => {
+      molecularCoverFocus = record.focus;
+      buildClusterOverlay();
+      renderMolecularCoverRibbon();
+    });
     molecularCoverFlow.appendChild(article);
     if (index < records.length - 1) {
       const arrow = document.createElement("em"); arrow.textContent = "→";

@@ -18,6 +18,15 @@ the GCTS anatomy view explains covers, oriented ports, markings, search, and
 promotion; and the claim ledger keeps proved, measured, and open results visibly
 separate. Its numbers are frozen benchmark results, not recomputed browser demos.
 
+Build 224 turns the molecular-cover ribbon into a display microscope for the
+full three-dimensional discovery scene. Its molecule, connection, void, and
+complete-cover blocks are now accessible toggle buttons over one immutable
+learned cover. Selecting a layer isolates only settled edges witnessed by that
+family—including shared edges through their full family incidence—while all
+atoms remain visible. The filter never changes an occurrence, class, pose
+atlas, marking channel, search candidate, or receipt and returns to the complete
+tentative/rejected/settled process through the coverage block.
+
 Build 223 makes the complete molecular cover visible while cluster discovery is
 still running. A live ribbon beside the reversible discovery timeline counts
 settled finite molecules, intermolecular connection clusters, explicit

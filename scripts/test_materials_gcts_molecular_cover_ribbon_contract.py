@@ -26,6 +26,11 @@ def test_molecular_cover_ribbon_contract():
         'countFamily("molecule")',
         'countFamily("bridge")',
         'countFamily("gap")',
+        'let molecularCoverFocus = "all"',
+        'edge.families?.has(molecularCoverFocus)',
+        'article.setAttribute("aria-pressed"',
+        'molecularCoverFocus = record.focus',
+        "buildClusterOverlay();",
         "molecular.moleculeClasses",
         "molecular.connectionClasses",
         "molecular.voidClasses",
@@ -35,11 +40,12 @@ def test_molecular_cover_ribbon_contract():
         assert token in APP
     assert APP.index("updateProcessTimeline();") < APP.index("renderMolecularCoverRibbon();", APP.index("function updateUI()"))
     assert ".molecular-cover-ribbon" in CSS
-    assert ".molecular-cover-flow article.connection" in CSS
-    assert ".molecular-cover-flow article.void" in CSS
-    assert ".molecular-cover-flow article.coverage" in CSS
-    assert 'buildId: "20260827-223"' in APP
-    assert 'app.js?v=20260827-223' in HTML
+    assert ".molecular-cover-flow button.connection" in CSS
+    assert ".molecular-cover-flow button.void" in CSS
+    assert ".molecular-cover-flow button.coverage" in CSS
+    assert ".molecular-cover-flow button.active" in CSS
+    assert 'buildId: "20260827-224"' in APP
+    assert 'app.js?v=20260827-224' in HTML
 
 
 if __name__ == "__main__":

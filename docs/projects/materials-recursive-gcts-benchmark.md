@@ -25,6 +25,13 @@ This is a visualization of the learned cover, not a new classifier: formula
 metadata is not an input, molecular bonds remain distinct from inter-molecular
 supports, and no atom-centred radial shell is substituted for the molecule.
 
+Build 224 adds a display-only decomposition microscope to the same ribbon.
+Selecting molecule, connection, or void isolates settled edges belonging to
+that exact cover family; selecting complete cover restores all tentative,
+rejected, and accepted relations. Shared edges use their complete learned
+family incidence rather than a display-priority color. The interaction changes
+no cover membership, type, pose, marking, candidate, or benchmark statistic.
+
 ## Benchmark ladder
 
 All learners receive only positions and species.  Hidden construction metadata
