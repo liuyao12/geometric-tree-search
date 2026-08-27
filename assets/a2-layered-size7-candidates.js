@@ -92,6 +92,12 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         8
       ],
       "substitution_anisotropic_inflations_excluded": 42,
+      "substitution_two_copy_metatile_types": 85,
+      "substitution_two_copy_metatile_scalar_scales_excluded": [
+        2,
+        3
+      ],
+      "substitution_two_copy_metatile_parent_cases_excluded": 170,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-a2lp_7_00232-deep.ndjson",
@@ -104,7 +110,11 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         "data/a2-layered-size7-substitution-scale5-focused.ndjson",
         "data/a2-layered-size7-substitution-scale6-focused.ndjson"
       ],
-      "substitution_anisotropic_report": "data/a2-layered-size7-substitution-anisotropic-s2to8-focused.ndjson"
+      "substitution_anisotropic_report": "data/a2-layered-size7-substitution-anisotropic-s2to8-focused.ndjson",
+      "substitution_two_copy_metatile_reports": [
+        "data/a2-layered-size7-two-cluster-substitution-scalar2-focused.ndjson",
+        "data/a2-layered-size7-two-cluster-substitution-scalar3-focused.ndjson"
+      ]
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -203,6 +213,12 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         8
       ],
       "substitution_anisotropic_inflations_excluded": 42,
+      "substitution_two_copy_metatile_types": 89,
+      "substitution_two_copy_metatile_scalar_scales_excluded": [
+        2,
+        3
+      ],
+      "substitution_two_copy_metatile_parent_cases_excluded": 178,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
@@ -215,7 +231,11 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         "data/a2-layered-size7-substitution-scale5-focused.ndjson",
         "data/a2-layered-size7-substitution-scale6-focused.ndjson"
       ],
-      "substitution_anisotropic_report": "data/a2-layered-size7-substitution-anisotropic-s2to8-focused.ndjson"
+      "substitution_anisotropic_report": "data/a2-layered-size7-substitution-anisotropic-s2to8-focused.ndjson",
+      "substitution_two_copy_metatile_reports": [
+        "data/a2-layered-size7-two-cluster-substitution-scalar2-focused.ndjson",
+        "data/a2-layered-size7-two-cluster-substitution-scalar3-focused.ndjson"
+      ]
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -314,6 +334,12 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         8
       ],
       "substitution_anisotropic_inflations_excluded": 42,
+      "substitution_two_copy_metatile_types": 73,
+      "substitution_two_copy_metatile_scalar_scales_excluded": [
+        2,
+        3
+      ],
+      "substitution_two_copy_metatile_parent_cases_excluded": 146,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
@@ -326,7 +352,11 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         "data/a2-layered-size7-substitution-scale5-focused.ndjson",
         "data/a2-layered-size7-substitution-scale6-focused.ndjson"
       ],
-      "substitution_anisotropic_report": "data/a2-layered-size7-substitution-anisotropic-s2to8-focused.ndjson"
+      "substitution_anisotropic_report": "data/a2-layered-size7-substitution-anisotropic-s2to8-focused.ndjson",
+      "substitution_two_copy_metatile_reports": [
+        "data/a2-layered-size7-two-cluster-substitution-scalar2-focused.ndjson",
+        "data/a2-layered-size7-two-cluster-substitution-scalar3-focused.ndjson"
+      ]
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -425,6 +455,12 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         8
       ],
       "substitution_anisotropic_inflations_excluded": 42,
+      "substitution_two_copy_metatile_types": 71,
+      "substitution_two_copy_metatile_scalar_scales_excluded": [
+        2,
+        3
+      ],
+      "substitution_two_copy_metatile_parent_cases_excluded": 142,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
@@ -437,7 +473,11 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         "data/a2-layered-size7-substitution-scale5-focused.ndjson",
         "data/a2-layered-size7-substitution-scale6-focused.ndjson"
       ],
-      "substitution_anisotropic_report": "data/a2-layered-size7-substitution-anisotropic-s2to8-focused.ndjson"
+      "substitution_anisotropic_report": "data/a2-layered-size7-substitution-anisotropic-s2to8-focused.ndjson",
+      "substitution_two_copy_metatile_reports": [
+        "data/a2-layered-size7-two-cluster-substitution-scalar2-focused.ndjson",
+        "data/a2-layered-size7-two-cluster-substitution-scalar3-focused.ndjson"
+      ]
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -536,6 +576,12 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         8
       ],
       "substitution_anisotropic_inflations_excluded": 42,
+      "substitution_two_copy_metatile_types": 93,
+      "substitution_two_copy_metatile_scalar_scales_excluded": [
+        2,
+        3
+      ],
+      "substitution_two_copy_metatile_parent_cases_excluded": 186,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
@@ -548,7 +594,11 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         "data/a2-layered-size7-substitution-scale5-focused.ndjson",
         "data/a2-layered-size7-substitution-scale6-focused.ndjson"
       ],
-      "substitution_anisotropic_report": "data/a2-layered-size7-substitution-anisotropic-s2to8-focused.ndjson"
+      "substitution_anisotropic_report": "data/a2-layered-size7-substitution-anisotropic-s2to8-focused.ndjson",
+      "substitution_two_copy_metatile_reports": [
+        "data/a2-layered-size7-two-cluster-substitution-scalar2-focused.ndjson",
+        "data/a2-layered-size7-two-cluster-substitution-scalar3-focused.ndjson"
+      ]
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -647,6 +697,12 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         8
       ],
       "substitution_anisotropic_inflations_excluded": 42,
+      "substitution_two_copy_metatile_types": 73,
+      "substitution_two_copy_metatile_scalar_scales_excluded": [
+        2,
+        3
+      ],
+      "substitution_two_copy_metatile_parent_cases_excluded": 146,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
@@ -659,7 +715,11 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         "data/a2-layered-size7-substitution-scale5-focused.ndjson",
         "data/a2-layered-size7-substitution-scale6-focused.ndjson"
       ],
-      "substitution_anisotropic_report": "data/a2-layered-size7-substitution-anisotropic-s2to8-focused.ndjson"
+      "substitution_anisotropic_report": "data/a2-layered-size7-substitution-anisotropic-s2to8-focused.ndjson",
+      "substitution_two_copy_metatile_reports": [
+        "data/a2-layered-size7-two-cluster-substitution-scalar2-focused.ndjson",
+        "data/a2-layered-size7-two-cluster-substitution-scalar3-focused.ndjson"
+      ]
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -758,6 +818,12 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         8
       ],
       "substitution_anisotropic_inflations_excluded": 42,
+      "substitution_two_copy_metatile_types": 73,
+      "substitution_two_copy_metatile_scalar_scales_excluded": [
+        2,
+        3
+      ],
+      "substitution_two_copy_metatile_parent_cases_excluded": 146,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
@@ -770,7 +836,11 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         "data/a2-layered-size7-substitution-scale5-focused.ndjson",
         "data/a2-layered-size7-substitution-scale6-focused.ndjson"
       ],
-      "substitution_anisotropic_report": "data/a2-layered-size7-substitution-anisotropic-s2to8-focused.ndjson"
+      "substitution_anisotropic_report": "data/a2-layered-size7-substitution-anisotropic-s2to8-focused.ndjson",
+      "substitution_two_copy_metatile_reports": [
+        "data/a2-layered-size7-two-cluster-substitution-scalar2-focused.ndjson",
+        "data/a2-layered-size7-two-cluster-substitution-scalar3-focused.ndjson"
+      ]
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -869,6 +939,12 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         8
       ],
       "substitution_anisotropic_inflations_excluded": 42,
+      "substitution_two_copy_metatile_types": 95,
+      "substitution_two_copy_metatile_scalar_scales_excluded": [
+        2,
+        3
+      ],
+      "substitution_two_copy_metatile_parent_cases_excluded": 190,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
@@ -881,7 +957,11 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         "data/a2-layered-size7-substitution-scale5-focused.ndjson",
         "data/a2-layered-size7-substitution-scale6-focused.ndjson"
       ],
-      "substitution_anisotropic_report": "data/a2-layered-size7-substitution-anisotropic-s2to8-focused.ndjson"
+      "substitution_anisotropic_report": "data/a2-layered-size7-substitution-anisotropic-s2to8-focused.ndjson",
+      "substitution_two_copy_metatile_reports": [
+        "data/a2-layered-size7-two-cluster-substitution-scalar2-focused.ndjson",
+        "data/a2-layered-size7-two-cluster-substitution-scalar3-focused.ndjson"
+      ]
     },
     "shell_screening": {
       "robust_completed_shell": 0,

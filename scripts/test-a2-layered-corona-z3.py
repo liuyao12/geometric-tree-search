@@ -18,6 +18,9 @@ GEOMETRY = load("a2_periodic_z3", "screen-a2-layered-periodic-z3.py")
 CORONA = load("a2_corona_z3", "screen-a2-layered-corona-z3.py")
 DIRECT = load("a2_corona2_direct", "screen-a2-layered-corona2-direct.py")
 SUBSTITUTION = load("a2_substitution", "screen-a2-layered-substitution.py")
+CLUSTER_SUBSTITUTION = load(
+    "a2_cluster_substitution", "screen-a2-layered-two-cluster-substitution.py"
+)
 
 root_records = [
     json.loads(line)
@@ -279,6 +282,98 @@ assert all(
     record["substitution_classification"] == "no_lattice_substitution_for_inflation"
     for record in anisotropic_records
 )
+
+cluster_unit = {
+    "id": "a2_unit_prism_cluster_substitution_control",
+    "cells": [{"q": 0, "r": 0, "k": 0, "kind": "u"}],
+}
+for scale in (2, 3):
+    screened = CLUSTER_SUBSTITUTION.screen_candidate(cluster_unit, 10000, scale)
+    assert screened["classification"] == "two_copy_metatile_substitution_system"
+    single = screened["two_copy_metatile_screen"]
+    mixed = screened["mixed_two_copy_metatile_screen"]
+    assert single["symmetry_distinct_metatiles"] == 2
+    assert single["positive_metatile_indices"] == [0, 1]
+    assert all(
+        result["base_decomposition"]["replay"]["verified"] is True
+        for result in single["results"]
+    )
+    assert mixed["classification"] == "mixed_two_copy_metatile_substitution_system"
+    assert mixed["certified"] is True
+    assert mixed["closed_alphabet"] == [0]
+
+expected_metatile_types = {
+    "a2lp_7_00128": 95,
+    "a2lp_7_00211": 93,
+    "a2lp_7_00232": 85,
+    "a2lp_7_00235": 89,
+    "a2lp_7_00694": 73,
+    "a2lp_7_00755": 73,
+    "a2lp_7_00777": 73,
+    "a2lp_7_00809": 71,
+}
+expected_metatile_hashes = {
+    "a2lp_7_00128": "ca3343e4d56917e316f32f5a4b7149a1c4d14b6e856c4e5d7afb5c65fe28d0bd",
+    "a2lp_7_00211": "6088fe594f74921f54c5f56eb0a6e9dadde823bc3a7c8c4af4375d57f353bb27",
+    "a2lp_7_00232": "4a0ca098cda08646936f3d495638ddfdecb8e4a971a81f4adca16cfb21bbaa11",
+    "a2lp_7_00235": "287bf2caf08824dfd7e8502a5ff2e408db7af09fec2a7ec5dca0cbde6c742732",
+    "a2lp_7_00694": "7228dc0ee98f8bc4b7252cf024e38fa42ce4f0ab6755acabebf3c9a1b227cc5e",
+    "a2lp_7_00755": "972465932c166eae79530bfede40b2c69a84e73cd7d6ec724123057cab44fd15",
+    "a2lp_7_00777": "73a166af61d4e4b50639241c4eb38f8226890f8a704bb850f0b09500f3fba02a",
+    "a2lp_7_00809": "e1090be203af7682a2c9d827383e8c223d6444db9cad2eb2c7231c22e3eeffcf",
+}
+expected_mixed_exact_unsat = {
+    2: {"a2lp_7_00211": 11, "a2lp_7_00235": 2},
+    3: {"a2lp_7_00211": 12, "a2lp_7_00235": 13},
+}
+cluster_records = []
+for scale in (2, 3):
+    records = [
+        json.loads(line)
+        for line in (
+            ROOT / "data" /
+            f"a2-layered-size7-two-cluster-substitution-scalar{scale}-focused.ndjson"
+        ).read_text().splitlines()
+        if line.strip()
+    ]
+    assert len(records) == 8
+    assert {record["id"] for record in records} == set(expected_metatile_types)
+    assert all(
+        record["classification"] == f"no_two_copy_metatile_scalar{scale}_substitution"
+        for record in records
+    )
+    assert {
+        record["id"]: record["two_copy_metatile_screen"]["symmetry_distinct_metatiles"]
+        for record in records
+    } == expected_metatile_types
+    assert {
+        record["id"]: record["two_copy_metatile_screen"]["canonical_sha256"]
+        for record in records
+    } == expected_metatile_hashes
+    for record in records:
+        single = record["two_copy_metatile_screen"]
+        mixed = record["mixed_two_copy_metatile_screen"]
+        assert single["certified"] is True
+        assert not single["positive_metatile_indices"]
+        assert not single["unknown_metatile_indices"]
+        assert all(
+            result["base_decomposition"]["replay"]["verified"] is True
+            for result in single["results"]
+        )
+        assert all(
+            result["substitution"]["certified"] is True
+            for result in single["results"]
+        )
+        assert mixed["classification"] == f"no_mixed_two_copy_metatile_scalar{scale}_substitution"
+        assert mixed["certified"] is True
+        assert mixed["closed_alphabet"] is None
+        expected_exact = expected_mixed_exact_unsat[scale].get(record["id"], 0)
+        assert mixed["parent_counts"]["exact_unsat"] == expected_exact
+        assert mixed["parent_counts"]["local_obstruction"] + expected_exact == expected_metatile_types[record["id"]]
+        for parent in mixed["parent_results"]:
+            replay = parent.get("local_obstruction_replay") or parent.get("exact_unsat_replay")
+            assert replay["verified"] is True
+    cluster_records.extend(records)
 assert all(record["substitution"]["certified"] is True for record in anisotropic_records)
 assert all(
     (record["substitution"]["local_obstruction_replay"] or
@@ -297,4 +392,5 @@ print("A2 layered corona regression passed", {
     "larger_periodic_partial_candidates": len(larger_periodic),
     "scalar_substitution_negatives": len(substitution_records),
     "anisotropic_substitution_negatives": len(anisotropic_records),
+    "two_copy_metatile_parent_scale_cases": sum(expected_metatile_types.values()) * 2,
 })

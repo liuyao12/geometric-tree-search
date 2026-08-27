@@ -34,6 +34,15 @@ for (const scale of [2, 3, 4, 5, 6]) {
 const anisotropicSubstitutions = await readNdjson(
   "data/a2-layered-size7-substitution-anisotropic-s2to8-focused.ndjson"
 );
+const twoClusterSubstitutions = new Map();
+for (const scale of [2, 3]) {
+  for (const record of await readNdjson(
+    `data/a2-layered-size7-two-cluster-substitution-scalar${scale}-focused.ndjson`
+  )) {
+    if (!twoClusterSubstitutions.has(record.id)) twoClusterSubstitutions.set(record.id, []);
+    twoClusterSubstitutions.get(record.id).push(record);
+  }
+}
 const anisotropicById = new Map();
 for (const record of anisotropicSubstitutions) {
   if (!anisotropicById.has(record.id)) anisotropicById.set(record.id, []);
@@ -66,6 +75,7 @@ const candidates = selected.map((id, index) => {
   const largerPeriodic = periodicSixToEightById.get(id);
   const substitutionScreens = substitutions.get(id) ?? [];
   const anisotropicScreens = anisotropicById.get(id) ?? [];
+  const twoClusterScreens = twoClusterSubstitutions.get(id) ?? [];
   const corona2States = Math.max(
     second.corona2_cegar.first_coronas_rejected,
     deepSecond?.corona2_cegar?.first_coronas_rejected ?? 0
@@ -117,11 +127,22 @@ const candidates = selected.map((id, index) => {
         record.substitution_classification === "scalar_substitution_rule"
       ) || anisotropicScreens.some(record =>
         record.substitution_classification === "lattice_substitution_rule"
+      ) || twoClusterScreens.some(record =>
+        record.classification === "two_copy_metatile_substitution_system"
       ),
       substitution_anisotropic_scale_range: [2, 8],
       substitution_anisotropic_inflations_excluded: anisotropicScreens.filter(record =>
         record.substitution_classification === "no_lattice_substitution_for_inflation"
       ).length,
+      substitution_two_copy_metatile_types: twoClusterScreens[0]
+        ?.two_copy_metatile_screen?.symmetry_distinct_metatiles ?? 0,
+      substitution_two_copy_metatile_scalar_scales_excluded: twoClusterScreens
+        .filter(record => record.mixed_two_copy_metatile_screen?.certified)
+        .map(record => record.mixed_two_copy_metatile_screen.scale)
+        .sort((left, right) => left - right),
+      substitution_two_copy_metatile_parent_cases_excluded: twoClusterScreens.reduce(
+        (total, record) => total + (record.mixed_two_copy_metatile_screen?.metatile_types ?? 0), 0
+      ),
       periodic_report: "data/a2-layered-size7-periodic-z3-through4.ndjson",
       corona_report: "data/a2-layered-size7-corona1-z3.ndjson",
       corona2_report: deepSecond
@@ -138,7 +159,10 @@ const candidates = selected.map((id, index) => {
       ),
       substitution_anisotropic_report: anisotropicScreens.length
         ? "data/a2-layered-size7-substitution-anisotropic-s2to8-focused.ndjson"
-        : null
+        : null,
+      substitution_two_copy_metatile_reports: twoClusterScreens.map(record =>
+        `data/a2-layered-size7-two-cluster-substitution-scalar${record.mixed_two_copy_metatile_screen.scale}-focused.ndjson`
+      )
     },
     shell_screening: { robust_completed_shell: 0, deepest_completed_shell: 0 }
   };

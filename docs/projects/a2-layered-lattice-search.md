@@ -203,6 +203,30 @@ uncovered-cell obstruction, and 90 are independently replayed UNSAT by Z3.
 The combined report is
 `data/a2-layered-size7-substitution-anisotropic-s2to8-focused.ndjson`.
 
+The substitution search now also includes cluster-of-clusters rules.
+`scripts/screen-a2-layered-two-cluster-substitution.py` enumerates every
+face-connected union of two monotile copies, quotients the enumeration by
+translation and the proper A2-layer symmetry group, and independently replays
+the two-copy decomposition. This gives 95, 93, 85, 89, 73, 73, 73, and 71
+metatile types for `00128`, `00211`, `00232`, `00235`, `00694`, `00755`,
+`00777`, and `00809`, respectively: 652 types in total.
+
+For scalar inflations 2 and 3, each inflated parent was allowed to use any of
+the candidate's two-copy metatile types as children, not merely copies of its
+own type. At scale 2, 639 of the 652 parents have an independently replayed
+cell that no child type can cover; the remaining 13 exact covers are
+independently replayed UNSAT by Z3. At scale 3 the split is 627 local
+obstructions and 25 exact UNSAT replays. Thus all 1,304 parent/inflation cases
+are certified negative, and no nonempty substitution alphabet exists in this
+finite family. A unit-prism control finds both connected two-copy metatiles and
+a closed one-type substitution alphabet at both scales. The reports are
+`data/a2-layered-size7-two-cluster-substitution-scalar2-focused.ndjson` and
+`data/a2-layered-size7-two-cluster-substitution-scalar3-focused.ndjson`.
+
+This result does not exclude substitutions based on clusters of three or more
+monotiles, non-scalar metatile inflations, or metatile boundaries that are not
+unions of two face-connected monotile copies.
+
 The machine-readable screen is `data/a2-layered-size5-screen.ndjson`. Rebuild
 it with:
 
