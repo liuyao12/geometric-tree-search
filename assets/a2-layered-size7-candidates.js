@@ -86,6 +86,7 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "period_vectors": null,
       "periodic_template": null,
       "quotient_determinant": null,
+      "periodic_source": null,
       "periodic_eight_copy_replay_verified": false,
       "motif_tiles": null,
       "substitution_scalar_scales_excluded": [
@@ -238,6 +239,7 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "period_vectors": null,
       "periodic_template": null,
       "quotient_determinant": null,
+      "periodic_source": null,
       "periodic_eight_copy_replay_verified": false,
       "motif_tiles": null,
       "substitution_scalar_scales_excluded": [
@@ -589,6 +591,7 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         ]
       },
       "quotient_determinant": 28,
+      "periodic_source": "an exact SCIP/VIPR eight-copy quotient, independently replayed as a GCTS-I weighted lattice-function tiling",
       "periodic_eight_copy_replay_verified": true,
       "motif_tiles": 8,
       "substitution_scalar_scales_excluded": [
@@ -741,6 +744,7 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "period_vectors": null,
       "periodic_template": null,
       "quotient_determinant": null,
+      "periodic_source": null,
       "periodic_eight_copy_replay_verified": false,
       "motif_tiles": null,
       "substitution_scalar_scales_excluded": [
@@ -893,6 +897,7 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "period_vectors": null,
       "periodic_template": null,
       "quotient_determinant": null,
+      "periodic_source": null,
       "periodic_eight_copy_replay_verified": false,
       "motif_tiles": null,
       "substitution_scalar_scales_excluded": [
@@ -1045,6 +1050,7 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "period_vectors": null,
       "periodic_template": null,
       "quotient_determinant": null,
+      "periodic_source": null,
       "periodic_eight_copy_replay_verified": false,
       "motif_tiles": null,
       "substitution_scalar_scales_excluded": [
@@ -1197,6 +1203,7 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "period_vectors": null,
       "periodic_template": null,
       "quotient_determinant": null,
+      "periodic_source": null,
       "periodic_eight_copy_replay_verified": false,
       "motif_tiles": null,
       "substitution_scalar_scales_excluded": [
@@ -1349,6 +1356,7 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "period_vectors": null,
       "periodic_template": null,
       "quotient_determinant": null,
+      "periodic_source": null,
       "periodic_eight_copy_replay_verified": false,
       "motif_tiles": null,
       "substitution_scalar_scales_excluded": [

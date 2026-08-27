@@ -209,6 +209,9 @@ const candidates = selected.map((id, index) => {
       period_vectors: exactEightCertificate?.period_vectors ?? null,
       periodic_template: exactEightTemplate,
       quotient_determinant: exactEightCertificate?.determinant ?? null,
+      periodic_source: exactEightCertificate
+        ? "an exact SCIP/VIPR eight-copy quotient, independently replayed as a GCTS-I weighted lattice-function tiling"
+        : null,
       periodic_eight_copy_replay_verified:
         exactEight?.periodic_exact_scip?.replay?.verified ?? false,
       motif_tiles: exactEightCertificate?.copies ?? null,
