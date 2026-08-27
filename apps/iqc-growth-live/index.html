@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260827-245">
+  <link rel="stylesheet" href="./style.css?v=20260827-246">
   <script type="importmap">
     {
       "imports": {
@@ -369,6 +369,7 @@
             <div id="importStatus" class="import-status" aria-live="polite">Parsed locally; files are not uploaded. Recommended: 32–1,200 atoms · up to 24,000 fixed-topology atom presentations.</div>
             <button id="loadFixtureButton" class="fixture-link" type="button">Load bundled 64-atom NaCl fixture</button>
             <button id="loadEnsembleFixtureButton" class="fixture-link" type="button">Load 3-snapshot NaCl ensemble</button>
+            <button id="loadAnisotropicFixtureButton" class="fixture-link" type="button">Load Ta/V disorder + Uij fixture</button>
           </details>
           <label class="field" for="confinementSelect">
             <span>External geometry <b id="confinementHint">finite bulk box</b></span>
@@ -1668,6 +1669,7 @@
                 <select id="scatteringDisplacementSelect" aria-label="Crystallographic displacement treatment" hidden>
                   <option value="mean">mean positions</option>
                   <option value="reported">reported Ueq damping</option>
+                  <option value="reported-anisotropic">reported full Uij damping</option>
                 </select>
                 <select id="orientationalOrderSelect" aria-label="Orientational-order harmonic" hidden>
                   <option value="4">ℓ = 4 · cubic / square-sensitive</option>
@@ -1920,7 +1922,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260827-245"></script>
+  <script type="module" src="./app.js?v=20260827-246"></script>
   <script type="module" src="./evidence-atlas.js?v=20260827-20"></script>
 </body>
 </html>

@@ -124,6 +124,155 @@ export function displacementDampedWeightedPowderStructureFactor(pairTerms, selfW
     coherentDisplacementAttenuation: true, diffuseRedistributionIncluded: false };
 }
 
+function symmetricEigenSystem(tensor) {
+  const dimension = tensor.length;
+  const matrix = tensor.map((row) => row.slice());
+  const vectors = Array.from({ length: dimension }, (_, row) =>
+    Array.from({ length: dimension }, (_, column) => row === column ? 1 : 0));
+  for (let iteration = 0; iteration < 32; iteration++) {
+    let first = 0; let second = 1; let largest = 0;
+    for (let row = 0; row < dimension; row++) {
+      for (let column = row + 1; column < dimension; column++) {
+        if (Math.abs(matrix[row][column]) > largest) {
+          largest = Math.abs(matrix[row][column]); first = row; second = column;
+        }
+      }
+    }
+    if (largest < 1e-12) break;
+    const angle = .5 * Math.atan2(2 * matrix[first][second],
+      matrix[second][second] - matrix[first][first]);
+    const cosine = Math.cos(angle); const sine = Math.sin(angle);
+    const app = matrix[first][first]; const aqq = matrix[second][second];
+    const apq = matrix[first][second];
+    matrix[first][first] = cosine * cosine * app - 2 * sine * cosine * apq + sine * sine * aqq;
+    matrix[second][second] = sine * sine * app + 2 * sine * cosine * apq + cosine * cosine * aqq;
+    matrix[first][second] = 0; matrix[second][first] = 0;
+    for (let index = 0; index < dimension; index++) {
+      if (index === first || index === second) continue;
+      const aip = matrix[index][first]; const aiq = matrix[index][second];
+      matrix[index][first] = cosine * aip - sine * aiq;
+      matrix[first][index] = matrix[index][first];
+      matrix[index][second] = sine * aip + cosine * aiq;
+      matrix[second][index] = matrix[index][second];
+    }
+    for (let row = 0; row < dimension; row++) {
+      const vip = vectors[row][first]; const viq = vectors[row][second];
+      vectors[row][first] = cosine * vip - sine * viq;
+      vectors[row][second] = sine * vip + cosine * viq;
+    }
+  }
+  return Array.from({ length: dimension }, (_, index) => ({
+    value: matrix[index][index],
+    vector: vectors.map((row) => row[index]),
+  })).sort((first, second) => first.value - second.value);
+}
+
+function directionalQuadrature(dimension) {
+  const count = 96;
+  if (dimension === 2) return Array.from({ length: count }, (_, index) => {
+    const angle = 2 * Math.PI * (index + .5) / count;
+    return { direction: [Math.cos(angle), Math.sin(angle)], weight: 1 / count };
+  });
+  const goldenAngle = Math.PI * (3 - Math.sqrt(5));
+  return Array.from({ length: count }, (_, index) => {
+    const z = 1 - 2 * (index + .5) / count;
+    const radius = Math.sqrt(Math.max(0, 1 - z * z));
+    const angle = goldenAngle * index;
+    return { direction: [radius * Math.cos(angle), radius * Math.sin(angle), z], weight: 1 / count };
+  });
+}
+
+/**
+ * Coherent finite-observation powder term retaining the full reported
+ * intrinsic-space displacement covariance for every site. A deterministic
+ * 96-direction circle/sphere quadrature averages the coherent amplitude, then
+ * restores the exact unit self term omitted by amplitude attenuation. This is
+ * O(QDN), rather than a directional O(QDN²) pair expansion. Fully isotropic
+ * tensors retain the exact analytic pair kernel. Displaced diffuse intensity
+ * is not redistributed.
+ */
+export function anisotropicDisplacementDampedWeightedPowderStructureFactor(siteTerms,
+  selfWeightSquares, dimension = 3, options = {}) {
+  if (!Array.isArray(siteTerms) || siteTerms.some((term) => !Array.isArray(term?.position)
+      || term.position.length !== dimension || term.position.some((value) => !Number.isFinite(value))
+      || !Number.isFinite(term?.weight) || !Array.isArray(term?.meanSquareTensor)
+      || term.meanSquareTensor.length !== dimension
+      || term.meanSquareTensor.some((row, rowIndex) => !Array.isArray(row) || row.length !== dimension
+        || row.some((value, columnIndex) => !Number.isFinite(value)
+          || Math.abs(value - term.meanSquareTensor[columnIndex]?.[rowIndex]) > 1e-9)))) {
+    throw new Error("anisotropic displacement powder S(q) requires finite site positions, weights, and symmetric covariances");
+  }
+  if (!(Number.isFinite(selfWeightSquares) && selfWeightSquares > 0)) {
+    throw new Error("anisotropic displacement powder S(q) requires positive total squared self weight");
+  }
+  if (dimension !== 2 && dimension !== 3) throw new Error("anisotropic displacement powder S(q) supports intrinsic dimension 2 or 3");
+  const qMin = options.qMin ?? DEFAULT_Q_MIN;
+  const qMax = options.qMax ?? DEFAULT_Q_MAX;
+  const bins = options.bins ?? DEFAULT_Q_BINS;
+  if (!(qMax > qMin) || bins < 2) throw new Error("anisotropic displacement powder S(q) requires a finite q interval");
+  const quadrature = directionalQuadrature(dimension);
+  const centroid = Array.from({ length: dimension }, (_, axis) => siteTerms.reduce((sum, term) =>
+    sum + term.position[axis], 0) / Math.max(1, siteTerms.length));
+  const prepared = siteTerms.map((term) => {
+    const eigen = symmetricEigenSystem(term.meanSquareTensor);
+    if (eigen.some((entry) => entry.value < -1e-10)) {
+      throw new Error("anisotropic displacement powder S(q) requires positive-semidefinite covariances");
+    }
+    const diagonal = term.meanSquareTensor.map((row, index) => row[index]);
+    const scalar = diagonal.reduce((sum, value) => sum + value, 0) / dimension;
+    const isotropic = term.meanSquareTensor.every((row, rowIndex) => row.every((value, columnIndex) =>
+      Math.abs(value - (rowIndex === columnIndex ? scalar : 0)) <= 1e-10 * Math.max(1, scalar)));
+    return { position: term.position.map((value, index) => value - centroid[index]),
+      weight: term.weight, tensor: term.meanSquareTensor, scalar: Math.max(0, scalar), isotropic };
+  });
+  const q = Array.from({ length: bins }, (_, index) => qMin + index / (bins - 1) * (qMax - qMin));
+  if (prepared.every((term) => term.isotropic)) {
+    const pairTerms = [];
+    for (let first = 0; first < prepared.length; first++) {
+      for (let second = first + 1; second < prepared.length; second++) {
+        pairTerms.push({
+          distance: Math.sqrt(prepared[first].position.reduce((sum, value, index) =>
+            sum + (value - prepared[second].position[index]) ** 2, 0)),
+          weightProduct: prepared[first].weight * prepared[second].weight,
+          meanSquareSum: prepared[first].scalar + prepared[second].scalar,
+        });
+      }
+    }
+    const exact = displacementDampedWeightedPowderStructureFactor(pairTerms, selfWeightSquares,
+      dimension, { qMin, qMax, bins });
+    return { ...exact, fullAnisotropicCovarianceUsed: true,
+      orientationQuadrature: "analytic isotropic reduction", quadratureDirections: 0,
+      anisotropicSiteTerms: 0 };
+  }
+  const values = q.map((waveNumber) => {
+    let orientationalSum = 0;
+    for (const sample of quadrature) {
+      let real = 0; let imaginary = 0; let selfCorrection = 0;
+      for (const term of prepared) {
+        let phase = 0; let variance = 0;
+        for (let row = 0; row < dimension; row++) {
+          phase += sample.direction[row] * term.position[row];
+          for (let column = 0; column < dimension; column++) variance += sample.direction[row]
+            * term.tensor[row][column] * sample.direction[column];
+        }
+        const attenuation = Math.exp(-.5 * waveNumber * waveNumber * Math.max(0, variance));
+        const angle = waveNumber * phase;
+        real += term.weight * attenuation * Math.cos(angle);
+        imaginary += term.weight * attenuation * Math.sin(angle);
+        selfCorrection += term.weight * term.weight * (1 - attenuation * attenuation);
+      }
+      orientationalSum += sample.weight * (real * real + imaginary * imaginary + selfCorrection);
+    }
+    return Math.max(0, orientationalSum / selfWeightSquares);
+  });
+  return { q, values, dimension, qMin, qMax, selfWeightSquares,
+    coherentDisplacementAttenuation: true, fullAnisotropicCovarianceUsed: true,
+    orientationQuadrature: dimension === 2 ? "96-direction circle" : "96-direction Fibonacci sphere",
+    quadratureDirections: quadrature.length,
+    anisotropicSiteTerms: prepared.filter((term) => !term.isotropic).length,
+    diffuseRedistributionIncluded: false };
+}
+
 export function summarizeStructureFactor(structureFactor) {
   const { q, values } = structureFactor;
   if (!values.length) return { peakQ: 0, peakHeight: 0, peakProminence: 0, highQMean: 0 };

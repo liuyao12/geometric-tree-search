@@ -51,10 +51,11 @@ import {
 } from "./ice-vi-anchor-trace.js?v=20260824-1";
 import { discoverIrregularCover } from "./irregular-cover.js?v=20260824-1";
 import { generateAmorphousMixture } from "./amorphous-glass.js?v=20260824-1";
-import { compareStructureFactors, displacementDampedWeightedPowderStructureFactor, jensenShannonDistance,
+import { anisotropicDisplacementDampedWeightedPowderStructureFactor, compareStructureFactors,
+  displacementDampedWeightedPowderStructureFactor, jensenShannonDistance,
   localOrientationalOrder, orientationalOrderDistribution, powderStructureFactor, summarizeStructureFactor,
   weightedPowderStructureFactor }
-  from "./structure-observables.js?v=20260827-6";
+  from "./structure-observables.js?v=20260827-7";
 import { compositionBalanceDelta, compositionDrift, learnCompositionTarget } from "./composition-balance.js?v=20260824-1";
 import { consumeFeedstock, evaluateFeedstockDemand, feedstockReservoirSnapshot,
   initializeFeedstockReservoir } from "./feedstock-reservoir.js?v=20260827-2";
@@ -227,6 +228,7 @@ const structureFileInput = $("structureFileInput");
 const importStatus = $("importStatus");
 const loadFixtureButton = $("loadFixtureButton");
 const loadEnsembleFixtureButton = $("loadEnsembleFixtureButton");
+const loadAnisotropicFixtureButton = $("loadAnisotropicFixtureButton");
 const selectedElementsContainer = $("selectedElements");
 const selectedElementCount = $("selectedElementCount");
 const elementPresetButtons = [...document.querySelectorAll("[data-element-preset]")];
@@ -4695,6 +4697,26 @@ function atomMeanSquareDisplacementNormalized(atom, dimension, planeNormal, spac
   return Math.max(0, variance) / (spacingAngstrom * spacingAngstrom);
 }
 
+function intrinsicScatteringBasis(dimension, planeNormal) {
+  if (dimension === 3 || !planeNormal) return [[1, 0, 0], [0, 1, 0], [0, 0, 1]];
+  const normal = planeNormal.clone().normalize();
+  const seed = [new THREE.Vector3(1, 0, 0), new THREE.Vector3(0, 1, 0), new THREE.Vector3(0, 0, 1)]
+    .sort((first, second) => Math.abs(first.dot(normal)) - Math.abs(second.dot(normal)))[0];
+  const first = seed.clone().sub(normal.clone().multiplyScalar(seed.dot(normal))).normalize();
+  const second = new THREE.Vector3().crossVectors(normal, first).normalize();
+  return [first.toArray(), second.toArray()];
+}
+
+function atomDisplacementTensorNormalized(atom, basis, spacingAngstrom) {
+  const tensor = atom.uAnisoCartesianA2?.map((row) => row.slice())
+    || (Number.isFinite(atom.uIsoA2) ? [[atom.uIsoA2, 0, 0], [0, atom.uIsoA2, 0], [0, 0, atom.uIsoA2]] : null);
+  if (!tensor || !(Number.isFinite(spacingAngstrom) && spacingAngstrom > 0)) return null;
+  const scale = spacingAngstrom * spacingAngstrom;
+  return basis.map((first) => basis.map((second) => first.reduce((sum, firstValue, row) => sum
+    + firstValue * second.reduce((inner, secondValue, column) => inner
+      + tensor[row][column] * secondValue, 0), 0) / scale));
+}
+
 function calculateStructuralStats(source, spacing, periodic = false,
   intrinsicDimension = currentMaterial().intrinsicDimension === 2 ? 2 : 3, requestedMaximumRadius = null) {
   const rdf = new Array(RDF_BINS).fill(0);
@@ -4704,7 +4726,9 @@ function calculateStructuralStats(source, spacing, periodic = false,
   const coordination = new Array(13).fill(0);
   if (!source.length) return { rdf, rdfByPair: {}, dimension: intrinsicDimension,
     maximumRadius: requestedMaximumRadius || RDF_MAX_RADIUS, edgeCorrection: periodic ? "periodic minimum image" : "finite-window translation",
-    pairDistances, scatteringPairs, species: [], meanSquareDisplacements: [], coordination, meanCoordination: 0, count: 0, neighborCounts: [], neighborLists: [],
+    pairDistances, scatteringPairs, scatteringPositions: [], species: [], meanSquareDisplacements: [], displacementTensors: [],
+    anisotropicDisplacementSites: 0, scatteringBasis: intrinsicScatteringBasis(intrinsicDimension, null),
+    coordination, meanCoordination: 0, count: 0, neighborCounts: [], neighborLists: [],
     neighborVectors: [], planeNormal: intrinsicDimension === 2 ? [0, 0, 1] : null,
     orientationalOrder: {}, centrosymmetry: {} };
 
@@ -4722,8 +4746,13 @@ function calculateStructuralStats(source, spacing, periodic = false,
   const activeAxes = [0, 1, 2].sort((first, second) => paddedSize.getComponent(second) - paddedSize.getComponent(first))
     .slice(0, intrinsicDimension);
   const planeNormal = intrinsicDimension === 2 ? intrinsicPlaneNormal(source) : null;
+  const scatteringBasis = intrinsicScatteringBasis(intrinsicDimension, planeNormal);
   const meanSquareDisplacements = source.map((atom) => atomMeanSquareDisplacementNormalized(atom,
     intrinsicDimension, planeNormal, referenceSpacingA));
+  const displacementTensors = source.map((atom) => atomDisplacementTensorNormalized(atom,
+    scatteringBasis, referenceSpacingA));
+  const scatteringPositions = source.map((atom) => scatteringBasis.map((axis) => axis.reduce((sum, value, index) =>
+    sum + value * atom.p.getComponent(index) / spacing, 0)));
   const cell = periodic ? currentCell() : null;
   const normalizedCellLengths = cell?.map((vector) => vector.length() / referenceSpacingA) || [];
   const naturalMaximumRadius = periodic && normalizedCellLengths.length
@@ -4807,7 +4836,9 @@ function calculateStructuralStats(source, spacing, periodic = false,
   const meanCoordination = neighbors.reduce((sum, value) => sum + value, 0) / source.length;
   return { rdf, rdfByPair, dimension: intrinsicDimension, maximumRadius,
     edgeCorrection: periodic ? "periodic minimum image" : "finite-window translation",
-    pairDistances, scatteringPairs, species: source.map((atom) => atom.species), meanSquareDisplacements,
+    pairDistances, scatteringPairs, scatteringPositions, species: source.map((atom) => atom.species), meanSquareDisplacements,
+    displacementTensors, scatteringBasis,
+    anisotropicDisplacementSites: source.filter((atom) => Array.isArray(atom.uAnisoCartesianA2)).length,
     coordination, meanCoordination, count: source.length, neighborCounts: neighbors, neighborLists,
     neighborVectors, planeNormal: planeNormal?.toArray() || null, orientationalOrder: {}, centrosymmetry: {} };
 }
@@ -4832,6 +4863,14 @@ function scatteringChannelLabel(mode = scatteringContrastMode) {
   if (mode === "chemical") return "composition-centered Z contrast";
   if (mode.startsWith("species:")) return `${occupancyDisplayLabel(mode.slice(8))} sublattice`;
   return "unit-weight number density";
+}
+
+function scatteringUsesReportedDisplacement(mode = scatteringDisplacementMode) {
+  return mode === "reported" || mode === "reported-anisotropic";
+}
+
+function scatteringUsesAnisotropicDisplacement(mode = scatteringDisplacementMode) {
+  return mode === "reported-anisotropic";
 }
 
 function scatteringWeights(stats, mode = scatteringContrastMode) {
@@ -4863,9 +4902,15 @@ function ensureWeightedStructureFactor(stats, mode = scatteringContrastMode) {
     meanSquareSum: (stats.meanSquareDisplacements?.[pair.first] || 0)
       + (stats.meanSquareDisplacements?.[pair.second] || 0),
   })).filter((term) => Math.abs(term.weightProduct) > 1e-16);
-  const result = scatteringDisplacementMode === "reported"
-    ? displacementDampedWeightedPowderStructureFactor(pairTerms, selfWeightSquares, stats.dimension)
-    : weightedPowderStructureFactor(pairTerms, selfWeightSquares, stats.dimension);
+  const result = scatteringDisplacementMode === "reported-anisotropic"
+    ? anisotropicDisplacementDampedWeightedPowderStructureFactor(weights.map((weight, index) => ({
+      position: stats.scatteringPositions[index], weight,
+      meanSquareTensor: stats.displacementTensors?.[index]
+        || Array.from({ length: stats.dimension }, () => new Array(stats.dimension).fill(0)),
+    })).filter((term) => Math.abs(term.weight) > 1e-16), selfWeightSquares, stats.dimension)
+    : scatteringDisplacementMode === "reported"
+      ? displacementDampedWeightedPowderStructureFactor(pairTerms, selfWeightSquares, stats.dimension)
+      : weightedPowderStructureFactor(pairTerms, selfWeightSquares, stats.dimension);
   result.summary = summarizeStructureFactor(result);
   result.mode = mode;
   result.channelLabel = scatteringChannelLabel(mode);
@@ -4873,6 +4918,7 @@ function ensureWeightedStructureFactor(stats, mode = scatteringContrastMode) {
   result.signedWeights = weights.some((value) => value < 0);
   result.displacementMode = scatteringDisplacementMode;
   result.reportedDisplacementSites = (stats.meanSquareDisplacements || []).filter(Number.isFinite).length;
+  result.reportedAnisotropicDisplacementSites = stats.anisotropicDisplacementSites || 0;
   result.unknownDisplacementSitesUseZeroAttenuation = true;
   stats.weightedStructureFactors[cacheKey] = result;
   return result;
@@ -5695,7 +5741,10 @@ function renderStructureStats() {
   syncScatteringContrastOptions();
   const reportedDisplacementCount = (referenceStructuralStats.meanSquareDisplacements || []).filter(Number.isFinite).length;
   scatteringDisplacementSelect.querySelector('option[value="reported"]').disabled = !reportedDisplacementCount;
+  const anisotropicDisplacementCount = referenceStructuralStats.anisotropicDisplacementSites || 0;
+  scatteringDisplacementSelect.querySelector('option[value="reported-anisotropic"]').disabled = !anisotropicDisplacementCount;
   if (!reportedDisplacementCount) scatteringDisplacementMode = "mean";
+  else if (scatteringUsesAnisotropicDisplacement() && !anisotropicDisplacementCount) scatteringDisplacementMode = "reported";
   scatteringDisplacementSelect.value = scatteringDisplacementMode;
   const dimension = referenceStructuralStats.dimension;
   coordEyebrow.textContent = "first-shell coordination";
@@ -5809,7 +5858,8 @@ function renderStructureStats() {
   } else if (structureObservableSelection === "sq") {
     const knownSq = ensureWeightedStructureFactor(referenceStructuralStats, scatteringContrastMode);
     const liveSq = live.count > 1 ? ensureWeightedStructureFactor(live, scatteringContrastMode) : null;
-    rdfEyebrow.textContent = `${dimension}D finite-observation powder average${scatteringDisplacementMode === "reported" ? " · reported Ueq" : ""}`;
+    rdfEyebrow.textContent = `${dimension}D finite-observation powder average${scatteringUsesAnisotropicDisplacement()
+      ? " · reported full Uij" : scatteringDisplacementMode === "reported" ? " · reported Ueq" : ""}`;
     rdfTitle.textContent = scatteringContrastMode === "unit" ? "geometric S(q) · unit number density"
       : scatteringContrastMode === "electron" ? "weighted Iᶻ(q) / ΣZ² · low-q proxy"
         : scatteringContrastMode === "chemical" ? "chemical IΔZ(q) / ΣΔZ² · centered contrast"
@@ -5817,17 +5867,22 @@ function renderStructureStats() {
     rdfChart.setAttribute("aria-label", `${scatteringChannelLabel()} finite-observation powder scattering for known positions and live reconstruction`);
     const summary = knownSq.summary;
     const liveSummary = liveSq?.summary || null;
-    rdfStatus.textContent = `peak qa ${summary.peakQ.toFixed(1)} · S ${summary.peakHeight.toFixed(1)}${liveSummary ? ` → ${liveSummary.peakHeight.toFixed(1)}` : ""}${scatteringDisplacementMode === "reported" ? ` · Ueq ${knownSq.reportedDisplacementSites}/${referenceStructuralStats.count}` : ""}`;
+    rdfStatus.textContent = `peak qa ${summary.peakQ.toFixed(1)} · S ${summary.peakHeight.toFixed(1)}${liveSummary ? ` → ${liveSummary.peakHeight.toFixed(1)}` : ""}${scatteringUsesReportedDisplacement()
+      ? ` · ${scatteringUsesAnisotropicDisplacement() ? "Uij" : "Ueq"} ${knownSq.reportedDisplacementSites}/${referenceStructuralStats.count}` : ""}`;
     rdfStatus.title = scatteringContrastMode === "electron"
       ? "Constant atomic-number weights equal the neutral-atom forward electron count only as a low-q proxy. They are not q-dependent X-ray form factors or calibrated intensity."
       : scatteringContrastMode === "chemical"
         ? "Signed Z−mean(Z) weights suppress the number-density channel and expose composition contrast. This is not a standard binary Bhatia–Thornton factor for arbitrary multicomponent chemistry."
         : scatteringContrastMode.startsWith("species:")
           ? "Unit scattering from only the selected chemistry-token sublattice; cross-species correlations are omitted."
+          : scatteringUsesAnisotropicDisplacement()
+            ? `Reported Cartesian Uiso/Uij tensors retain their full intrinsic-space covariance in a deterministic ${knownSq.orientationQuadrature} numerical orientational quadrature. ${knownSq.anisotropicSiteTerms} weighted sites are directionally anisotropic; self scattering stays at one, missing tensors use zero attenuation, and diffuse redistribution is omitted.`
           : scatteringDisplacementMode === "reported"
             ? "Reported Cartesian Uiso/Uij tensors are reduced to the intrinsic-dimensional Ueq and attenuate coherent pair terms. Self scattering stays at one; missing tensors use zero attenuation, and diffuse redistribution is omitted."
             : "Debye-style finite-window powder average of mean positions with unit atom weights.";
-    if (scatteringDisplacementMode === "reported") rdfStatus.title += " Coherent cross terms additionally use intrinsic-dimensional Ueq from reported Uiso/Uij tensors; missing tensors use zero attenuation. Diffuse redistribution and instrument response are omitted.";
+    if (scatteringUsesReportedDisplacement()) rdfStatus.title += scatteringUsesAnisotropicDisplacement()
+      ? ` Coherent cross terms use full projected reported Uiso/Uij covariance with ${knownSq.orientationQuadrature}; missing tensors use zero attenuation. Diffuse redistribution and instrument response are omitted.`
+      : " Coherent cross terms additionally use intrinsic-dimensional Ueq from reported Uiso/Uij tensors; missing tensors use zero attenuation. Diffuse redistribution and instrument response are omitted.";
     drawChartFrame(rdfChart, "q a", "S");
     const maximum = Math.max(1, ...knownSq.values, ...(liveSq?.values || [])) * 1.08;
     const unityY = 96 - Math.min(1, 1 / maximum) * 84;
@@ -9753,7 +9808,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-245",
+      buildId: "20260827-246",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -10316,13 +10371,18 @@ async function buildExperimentReceipt() {
           neutronScatteringLengthsUsed: false,
           occupancyWeightedScatteringUsed: false,
           anomalousDispersionUsed: false,
-          DebyeWallerDampingUsed: scatteringDisplacementMode === "reported",
+          DebyeWallerDampingUsed: scatteringUsesReportedDisplacement(),
           displacementMode: scatteringDisplacementMode,
           reportedDisplacementSites: displayedSq.reportedDisplacementSites || 0,
           missingDisplacementTensorsUseZeroAttenuation: true,
-          displacementReduction: scatteringDisplacementMode === "reported"
-            ? "intrinsic-dimensional isotropic-equivalent Ueq from reported Cartesian Uiso/Uij" : null,
-          coherentPairAttenuationOnly: scatteringDisplacementMode === "reported",
+          displacementReduction: scatteringUsesAnisotropicDisplacement()
+            ? "full reported Cartesian Uiso/Uij projected into the intrinsic space"
+            : scatteringDisplacementMode === "reported"
+              ? "intrinsic-dimensional isotropic-equivalent Ueq from reported Cartesian Uiso/Uij" : null,
+          orientationQuadrature: displayedSq.orientationQuadrature || null,
+          quadratureDirections: displayedSq.quadratureDirections || null,
+          anisotropicSiteTerms: displayedSq.anisotropicSiteTerms || 0,
+          coherentPairAttenuationOnly: scatteringUsesReportedDisplacement(),
           diffuseRedistributionIncluded: false,
           instrumentResponseUsed: false,
           usedAsGrowthInput: false,
@@ -11958,7 +12018,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-245" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-246" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -27894,6 +27954,20 @@ loadEnsembleFixtureButton.addEventListener("click", async () => {
     importStatus.textContent = `Ensemble fixture failed: ${error.message}`;
   }
 });
+loadAnisotropicFixtureButton.addEventListener("click", async () => {
+  try {
+    importStatus.className = "import-status";
+    importStatus.textContent = "Loading the bundled occupational-disorder and anisotropic-Uij CIF…";
+    const response = await fetch("./fixtures/tav-disordered.cif");
+    if (!response.ok) throw new Error(`fixture request returned ${response.status}`);
+    scatteringDisplacementMode = "reported-anisotropic";
+    activateImportedStructure(parseStructureText(await response.text(), "tav-disordered.cif"),
+      "bundled fixture · tav-disordered.cif · occupational disorder + Cartesian Uij");
+  } catch (error) {
+    importStatus.className = "import-status invalid";
+    importStatus.textContent = `Anisotropic fixture failed: ${error.message}`;
+  }
+});
 confinementSelect.addEventListener("change", () => {
   growthProtocolMode = "custom";
   enterPipelineStage(pipelineStage);
@@ -28400,7 +28474,8 @@ scatteringContrastSelect.addEventListener("change", () => {
   renderStructureStats();
 });
 scatteringDisplacementSelect.addEventListener("change", () => {
-  scatteringDisplacementMode = scatteringDisplacementSelect.value === "reported" ? "reported" : "mean";
+  scatteringDisplacementMode = ["reported", "reported-anisotropic"].includes(scatteringDisplacementSelect.value)
+    ? scatteringDisplacementSelect.value : "mean";
   renderStructureStats();
 });
 structureObservableSelect.addEventListener("change", () => {

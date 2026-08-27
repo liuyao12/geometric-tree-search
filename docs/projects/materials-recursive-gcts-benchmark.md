@@ -13,6 +13,25 @@ amplification is `b > 1`, a level-`L` accepted macro placement represents
 approximately `b^L` atoms.  Materializing or exporting `N` atomic coordinates
 still has an unavoidable `O(N)` cost and must be reported separately.
 
+### Full anisotropic displacement powder quadrature (Build 246)
+
+The reciprocal-space inspector now offers a second reported-displacement view
+that retains the complete intrinsic-space Uij covariance rather than reducing
+it to Ueq. For each deterministic powder direction it evaluates the attenuated
+coherent amplitude in O(N), restores every exact unit self term, and averages
+over 96 directions. This is equivalent to attenuating all coherent i<j terms
+but avoids a directional O(N²) expansion. Fully isotropic tensors use the exact
+analytic Ueq kernel, providing a strict compatibility check with Build 245.
+
+Scientific regressions require the zero-tensor curve to equal the mean-position
+curve exactly, the isotropic curve to equal the Ueq curve exactly, anisotropy to
+respond to its orientation relative to pair geometry, joint proper rotations
+to agree within the declared quadrature error, invalid covariance to fail
+closed, and a 400-site calculation to remain interactive. The receipt records
+the quadrature, direction count, anisotropic weighted-site count, and unchanged
+boundaries: no diffuse redistribution, q-dependent form factor, instrument
+response, refinement, temperature inference, phonon dynamics, or growth input.
+
 ### Reported-displacement reciprocal-space view (Build 245)
 
 The finite-observation powder inspector can now apply coherent pair attenuation

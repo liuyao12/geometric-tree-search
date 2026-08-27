@@ -19,6 +19,18 @@ the GCTS anatomy view explains covers, oriented ports, markings, search, and
 promotion; and the claim ledger keeps proved, measured, and open results visibly
 separate. Its numbers are frozen benchmark results, not recomputed browser demos.
 
+Build 246 preserves the full directional content of reported crystallographic
+displacement tensors in reciprocal space. The new **reported full Uij damping**
+view projects Cartesian Uiso/Uij into the material's intrinsic 2D or 3D space
+and evaluates the coherent amplitude on a deterministic 96-direction circle or
+sphere quadrature. The exact unit self term is restored explicitly, missing
+tensors remain zero attenuation, and a fully isotropic input follows the exact
+analytic Ueq path. A bundled Ta/V occupational-disorder + Uij CIF makes the
+path inspectable without a local upload. This is a finite numerical powder
+quadrature of reported positional covariance—not diffuse-scattering
+redistribution, a phonon model, refinement, temperature inference, instrument
+response, dynamics, or physical time.
+
 Build 245 carries the same reported crystallographic displacement evidence into
 the reciprocal-space inspector. A new **reported Ueq damping** view reduces
 Cartesian Uiso/Uij to the intrinsic-dimensional isotropic equivalent and
