@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260827-262">
+  <link rel="stylesheet" href="./style.css?v=20260827-263">
   <script type="importmap">
     {
       "imports": {
@@ -278,7 +278,7 @@
               <header><span><small>worked public investigation</small><strong>Paired cell–stress response</strong></span><b>exact entry</b></header>
               <button id="workedArchiveButton" type="button">Load verified Na–Cl response archive</button>
               <div id="workedArchiveState">10 archived frames · fixed small-strain validation · no text field</div>
-              <a id="workedArchivePermalink" href="?build=262&amp;specimen=nomad:KFBchFQ1IQAE-JEgzOS1XzZlfsTz" hidden>Open or share this exact investigation ↗</a>
+              <a id="workedArchivePermalink" href="?build=263&amp;specimen=nomad:KFBchFQ1IQAE-JEgzOS1XzZlfsTz" hidden>Open or share this exact investigation ↗</a>
             </section>
             <div id="databaseStatus" class="import-status" role="status" aria-live="polite">Queries public bulk entries containing exactly the selected elements.</div>
             <div id="databaseCandidateTray" class="database-candidate-tray" role="group" aria-label="Matching public specimen candidates" hidden></div>
@@ -558,9 +558,17 @@
                 <button type="button" data-physics-effect-filter="searchOrder" aria-pressed="false">order</button>
                 <button type="button" data-physics-effect-filter="diagnostic" aria-pressed="false">no hook</button>
               </div>
+              <div id="growthPhysicsReadinessFilters" class="physics-readiness-filters" role="group" aria-label="Filter physical layers by what is needed to use them">
+                <button class="active" type="button" data-physics-readiness-filter="all" aria-pressed="true">all readiness</button>
+                <button type="button" data-physics-readiness-filter="executing" aria-pressed="false">executing</button>
+                <button type="button" data-physics-readiness-filter="configurable" aria-pressed="false">control off</button>
+                <button type="button" data-physics-readiness-filter="missingEvidence" aria-pressed="false">input needed</button>
+                <button type="button" data-physics-readiness-filter="evidenceOnly" aria-pressed="false">evidence only</button>
+                <button type="button" data-physics-readiness-filter="external" aria-pressed="false">external physics</button>
+              </div>
               <div id="growthPhysicsPreflightMatrix" class="leap-physics-matrix" role="group" aria-label="Inspect physical roles encoded or left open before growth"></div>
               <article id="growthPhysicsPreflightDetail" class="leap-physics-detail" aria-live="polite"></article>
-              <p>The manifest is frozen from the current controls before the first structural action executes. Select a physical layer to trace evidence → geometric encoding → exact search effect → finite response → claim boundary, or filter all 43 rows by the hook they can actually change. Effects may overlap. The matrix never reads candidate records. Its coordinate-free record and SHA-256 digest enter the experiment receipt; routing to a control changes no setting.</p>
+              <p>The manifest is frozen from the current controls before the first structural action executes. Select a physical layer to trace evidence → geometric encoding → exact search effect → finite response → claim boundary, or filter all 43 rows by the hook they can actually change and what is needed to activate them. Effects may overlap. The matrix never reads candidate records. Its coordinate-free record and SHA-256 digest enter the experiment receipt; routing to a control changes no setting.</p>
             </section>
             <div class="growth-group-actions" role="group" aria-label="Growth control sections">
               <button id="expandGrowthGroupsButton" type="button">Expand all physics</button>
@@ -1964,7 +1972,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260827-262"></script>
+  <script type="module" src="./app.js?v=20260827-263"></script>
   <script type="module" src="./evidence-atlas.js?v=20260827-22"></script>
 </body>
 </html>

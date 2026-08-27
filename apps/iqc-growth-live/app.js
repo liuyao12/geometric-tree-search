@@ -45,8 +45,8 @@ import { blockedCreationResponseSurrogate, blockedCreationResponseValidation, bu
   LOCAL_CREATION_CONTEXT_FEATURE_IDS }
   from "./creation-response-association.js?v=20260826-13";
 import { buildPhysicsCompressionMap, buildPhysicsEffectMatrix, buildPhysicsLineagePath,
-  PHYSICS_EFFECT_COLUMNS, physicsExecutionLineage }
-  from "./physics-compression-map.js?v=20260827-3";
+  PHYSICS_EFFECT_COLUMNS, PHYSICS_READINESS_STATES, physicsExecutionLineage }
+  from "./physics-compression-map.js?v=20260827-4";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -323,6 +323,7 @@ const growthPhysicsPreflightState = $("growthPhysicsPreflightState");
 const growthPhysicsCompressionMap = $("growthPhysicsCompressionMap");
 const growthPhysicsPreflightFilters = $("growthPhysicsPreflightFilters");
 const growthPhysicsEffectFilters = $("growthPhysicsEffectFilters");
+const growthPhysicsReadinessFilters = $("growthPhysicsReadinessFilters");
 const growthPhysicsPreflightMatrix = $("growthPhysicsPreflightMatrix");
 const growthPhysicsPreflightDetail = $("growthPhysicsPreflightDetail");
 const growthCoreGroupState = $("growthCoreGroupState");
@@ -1547,6 +1548,7 @@ let selectedLeapPhysicsFilter = "all";
 let selectedGrowthPhysicsPreflightId = "steric";
 let selectedGrowthPhysicsPreflightFilter = "all";
 let selectedGrowthPhysicsEffectFilter = "all";
+let selectedGrowthPhysicsReadinessFilter = "all";
 let selectedPhysicsCompressionLane = "all";
 let frozenPhysicsPreflightManifest = null;
 const MAXIMUM_RETAINED_STRUCTURAL_LEAPS = 24;
@@ -10236,7 +10238,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-262",
+      buildId: "20260827-263",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -12503,7 +12505,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-262" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-263" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -24139,11 +24141,16 @@ function physicsEvidenceClass(record) {
 }
 
 const PHYSICS_CONTROL_ROUTES = Object.freeze({
+  "hypothesis-separation": { stage: 4, controlId: "policySeparationRegister", label: "Open one-channel intervention" },
   steric: { stage: 1, controlId: "clusterToleranceSelect", label: "Open metric tolerance" },
   local: { stage: 1, controlId: "geometryModeSelect", label: "Open support geometry" },
+  "local-mismatch-map": { stage: 4, controlId: "localConstraintMismatchToggle", label: "Open local mismatch map" },
   "calculation-forces": { stage: 0, controlId: "scenarioSelect", label: "Choose supplied calculation data" },
+  "calculation-stress": { stage: 0, controlId: "scenarioSelect", label: "Choose supplied stress data" },
+  "stress-strain-response": { stage: 4, controlId: "affineLoadSelect", label: "Configure archived response" },
   "collinear-spin": { stage: 3, controlId: "spinColoringSelect", label: "Configure scalar-spin coloring" },
   "relaxation-ensemble": { stage: 0, controlId: "scenarioSelect", label: "Choose a relaxation ensemble" },
+  "geometry-calculation-calibration": { stage: 0, controlId: "scenarioSelect", label: "Choose paired calculation evidence" },
   "local-rearrangement": { stage: 0, controlId: "scenarioSelect", label: "Choose paired structural snapshots" },
   "local-symmetry": { stage: 4, controlId: "structureObservableSelect", label: "Open structural microscope" },
   centrosymmetry: { stage: 4, controlId: "structureObservableSelect", label: "Open defect-geometry microscope" },
@@ -24196,8 +24203,10 @@ function openPhysicsControlRoute(recordId) {
 }
 
 function physicsManifestRecord(record) {
+  const route = PHYSICS_CONTROL_ROUTES[record.id];
   return { id: record.id, process: record.process, status: record.status, role: record.role,
     encoding: record.encoding, evidence: record.evidence, boundary: record.boundary,
+    controlRouteAvailable: Boolean(route), controlRouteLabel: route?.label || null,
     executionLineage: physicsExecutionLineage(record) };
 }
 
@@ -24308,8 +24317,20 @@ function renderGrowthPhysicsPreflight() {
     button.setAttribute("aria-pressed", String(filter === selectedGrowthPhysicsEffectFilter));
     button.textContent = `${filter === "all" ? "all hooks" : column?.label || filter} · ${count}`;
   });
-  const visibleRecords = selectedGrowthPhysicsEffectFilter === "all" ? evidenceVisibleRecords
+  const effectVisibleRecords = selectedGrowthPhysicsEffectFilter === "all" ? evidenceVisibleRecords
     : evidenceVisibleRecords.filter((record) => effectRows.get(record.id)?.effects?.[selectedGrowthPhysicsEffectFilter]);
+  growthPhysicsReadinessFilters.querySelectorAll("button[data-physics-readiness-filter]").forEach((button) => {
+    const filter = button.dataset.physicsReadinessFilter;
+    const count = filter === "all" ? effectVisibleRecords.length
+      : effectVisibleRecords.filter((record) => effectRows.get(record.id)?.readiness?.id === filter).length;
+    const state = PHYSICS_READINESS_STATES.find((candidate) => candidate.id === filter);
+    button.classList.toggle("active", filter === selectedGrowthPhysicsReadinessFilter);
+    button.setAttribute("aria-pressed", String(filter === selectedGrowthPhysicsReadinessFilter));
+    button.textContent = `${filter === "all" ? "all readiness" : state?.label || filter} · ${count}`;
+  });
+  const visibleRecords = selectedGrowthPhysicsReadinessFilter === "all" ? effectVisibleRecords
+    : effectVisibleRecords.filter((record) => effectRows.get(record.id)?.readiness?.id
+      === selectedGrowthPhysicsReadinessFilter);
   if (!visibleRecords.some((record) => record.id === selectedGrowthPhysicsPreflightId)) {
     selectedGrowthPhysicsPreflightId = visibleRecords[0]?.id || "steric";
   }
@@ -24320,13 +24341,14 @@ function renderGrowthPhysicsPreflight() {
     growthPhysicsPreflightMatrix.append(empty);
   }
   visibleRecords.forEach((record) => {
+    const row = effectRows.get(record.id);
     const button = document.createElement("button"); button.type = "button";
-    button.className = `${record.status}${record.id === selectedGrowthPhysicsPreflightId ? " active" : ""}`;
+    button.className = `${record.status} readiness-${row?.readiness?.id || "external"}${record.id === selectedGrowthPhysicsPreflightId ? " active" : ""}`;
     button.setAttribute("aria-pressed", String(record.id === selectedGrowthPhysicsPreflightId));
     const small = document.createElement("small"); small.textContent = record.role;
     const strong = document.createElement("strong"); strong.textContent = record.process;
     const span = document.createElement("span"); span.textContent = record.status;
-    const row = effectRows.get(record.id);
+    const readiness = document.createElement("u"); readiness.textContent = row?.readiness?.label || "unclassified";
     const rail = document.createElement("i"); rail.className = "physics-effect-rail";
     rail.setAttribute("aria-label", `Execution effects: ${row?.executionSummary || "unavailable"}`);
     PHYSICS_EFFECT_COLUMNS.forEach((column) => {
@@ -24335,7 +24357,7 @@ function renderGrowthPhysicsPreflight() {
       marker.title = `${column.label}: ${row?.effects?.[column.id] ? "can change" : "unchanged"}`;
       rail.append(marker);
     });
-    button.append(small, strong, span, rail);
+    button.append(small, strong, span, readiness, rail);
     button.addEventListener("click", () => {
       selectedGrowthPhysicsPreflightId = record.id; renderGrowthPhysicsPreflight();
     });
@@ -24353,6 +24375,8 @@ function renderGrowthPhysicsPreflight() {
   const selectedEffectRow = effectRows.get(selected.id);
   [["evidence class", physicsEvidenceClass(selected)],
     ["execution footprint", selectedEffectRow?.executionSummary || "not classified"],
+    ["readiness", selectedEffectRow?.readiness?.label || "not classified"],
+    ["next step", selectedEffectRow?.readiness?.nextStep || "No next step recorded."],
     ["geometric encoding", selected.encoding],
     ["pre-growth evidence", selected.evidence], ["claim boundary", selected.boundary]].forEach(([label, copy]) => {
     const row = document.createElement("div"); const key = document.createElement("b");
@@ -24369,7 +24393,8 @@ function renderGrowthPhysicsPreflight() {
     actions.append(button);
   } else {
     const open = document.createElement("span");
-    open.textContent = "No local control · requires external physics or a new geometric state variable";
+    open.textContent = selectedEffectRow?.readiness?.nextStep
+      || "No local control · requires external physics or a new geometric state variable";
     actions.append(open);
   }
   growthPhysicsPreflightDetail.append(actions);
@@ -24389,6 +24414,15 @@ growthPhysicsEffectFilters.addEventListener("click", (event) => {
   const filter = button.dataset.physicsEffectFilter;
   selectedGrowthPhysicsEffectFilter = filter === "all"
     || PHYSICS_EFFECT_COLUMNS.some((column) => column.id === filter) ? filter : "all";
+  renderGrowthPhysicsPreflight();
+});
+
+growthPhysicsReadinessFilters.addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-physics-readiness-filter]");
+  if (!button) return;
+  const filter = button.dataset.physicsReadinessFilter;
+  selectedGrowthPhysicsReadinessFilter = filter === "all"
+    || PHYSICS_READINESS_STATES.some((state) => state.id === filter) ? filter : "all";
   renderGrowthPhysicsPreflight();
 });
 

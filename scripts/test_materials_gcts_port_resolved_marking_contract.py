@@ -36,8 +36,8 @@ def test_receipt_and_ui_preserve_the_claim_boundary():
     assert "unsupported training sectors" in APP
     assert "no spherical fallback is invented" in HTML
     assert "Build 260 · port-resolved GCTS level sets" in README
-    assert 'buildId: "20260827-262"' in APP
-    assert "app.js?v=20260827-262" in HTML
+    assert 'buildId: "20260827-263"' in APP
+    assert "app.js?v=20260827-263" in HTML
 
 
 if __name__ == "__main__":

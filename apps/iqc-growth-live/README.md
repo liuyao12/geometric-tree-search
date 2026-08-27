@@ -1,5 +1,22 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 263 · physics readiness planner
+
+The execution-effect atlas now separates five readiness states that were
+previously collapsed into “no hook”: executing now, available control off,
+required input missing, evidence-only diagnostic, and external physics. These
+states compose with the scale, evidence, and execution-effect filters. Each
+process card and detail view names the state and its next action; missing force,
+stress, response, spin, or relaxation evidence routes back to the appropriate
+acquisition/control surface without changing a value.
+
+Readiness is derived from the frozen status, execution lineage, and explicit
+control-route manifest. The current default NaCl investigation therefore shows
+which geometric physics already executes, which hypotheses could be enabled,
+which observations must be supplied, and which collective nonlocal response
+cannot honestly be supplied by the bounded local grammar. The readiness map is
+serialized before candidate generation and remains target-free and clock-free.
+
 ## Build 262 · execution-effect atlas
 
 The pre-growth physics map now answers the cross-layer question as well as the

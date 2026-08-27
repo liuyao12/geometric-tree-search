@@ -864,6 +864,9 @@ body.study-guide-open { overflow: hidden; }
 .physics-effect-filters { display: grid; grid-template-columns: repeat(7,minmax(48px,1fr)); gap: 3px; margin: 0 0 5px; overflow-x: auto; }
 .physics-effect-filters button { min-width: 48px; min-height: 23px; padding: 4px; border: 1px solid rgba(85,200,255,.11); background: rgba(3,13,15,.68); color: #55747b; font: 4px var(--mono); text-transform: uppercase; cursor: pointer; white-space: nowrap; }
 .physics-effect-filters button:hover,.physics-effect-filters button:focus-visible,.physics-effect-filters button.active { border-color: rgba(85,200,255,.48); color: #a9d9e4; background: rgba(85,200,255,.045); outline: none; }
+.physics-readiness-filters { display: grid; grid-template-columns: repeat(6,minmax(58px,1fr)); gap: 3px; margin: 0 0 5px; overflow-x: auto; }
+.physics-readiness-filters button { min-width: 58px; min-height: 23px; padding: 4px; border: 1px solid rgba(181,148,255,.11); background: rgba(3,13,15,.68); color: #665c7c; font: 4px var(--mono); text-transform: uppercase; cursor: pointer; white-space: nowrap; }
+.physics-readiness-filters button:hover,.physics-readiness-filters button:focus-visible,.physics-readiness-filters button.active { border-color: rgba(181,148,255,.48); color: #c6b9e9; background: rgba(181,148,255,.045); outline: none; }
 .growth-physics-preflight .leap-physics-detail > div { grid-template-columns: 62px minmax(0,1fr); }
 .growth-physics-preflight > p { margin: 6px 1px 0; color: #667b75; font: 5px/1.5 var(--mono); }
 .growth-control-group { margin: 7px 0; border: 1px solid rgba(134,165,156,.18); border-radius: 3px; background: rgba(4,10,9,.24); overflow: hidden; }
@@ -1210,8 +1213,10 @@ body.study-guide-open { overflow: hidden; }
 .leap-physics-matrix button { min-width: 0; min-height: 50px; padding: 6px; border: 1px solid rgba(151,194,183,.13); background: rgba(5,15,17,.76); color: inherit; text-align: left; cursor: pointer; }
 .leap-physics-matrix button:hover,.leap-physics-matrix button:focus-visible,.leap-physics-matrix button.active { border-color: rgba(181,148,255,.52); background: rgba(181,148,255,.04); outline: none; }
 .leap-physics-matrix button.hard { border-bottom-color: var(--mint); }.leap-physics-matrix button.learned { border-bottom-color: var(--violet); }.leap-physics-matrix button.soft { border-bottom-color: #ffc169; }.leap-physics-matrix button.open { border-bottom-color: var(--red); }
-.leap-physics-matrix small,.leap-physics-matrix strong,.leap-physics-matrix span { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.leap-physics-matrix small,.leap-physics-matrix strong,.leap-physics-matrix span,.leap-physics-matrix u { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .leap-physics-matrix small { color: #526a64; font: 5px var(--mono); text-transform: uppercase; }.leap-physics-matrix strong { margin-top: 5px; color: #a9bab5; font: 6px var(--mono); font-weight: 400; }.leap-physics-matrix span { margin-top: 4px; color: #728881; font: 5px var(--mono); text-transform: uppercase; }
+.leap-physics-matrix u { margin-top: 2px; color: #6f6687; font: 4px var(--mono); text-decoration: none; text-transform: uppercase; }
+.leap-physics-matrix button.readiness-executing u { color: #65bfa6; }.leap-physics-matrix button.readiness-configurable u { color: #c59a5c; }.leap-physics-matrix button.readiness-missingEvidence u { color: #bb7772; }.leap-physics-matrix button.readiness-external u { color: #9a6668; }
 .physics-effect-rail { display: grid; grid-template-columns: repeat(6,1fr); gap: 2px; margin-top: 5px; height: 3px; }
 .physics-effect-rail em { display: block; min-width: 0; background: rgba(151,194,183,.07); border-radius: 1px; }
 .physics-effect-rail em.active { background: #65e1bc; box-shadow: 0 0 4px rgba(101,225,188,.2); }

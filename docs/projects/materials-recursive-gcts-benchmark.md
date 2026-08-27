@@ -1,5 +1,23 @@
 # Recursive GCTS benchmark for material growth
 
+### Physics readiness planner (Build 263)
+
+The pre-growth atlas now distinguishes five reasons for an execution state:
+`executing`, `configurable`, `missingEvidence`, `evidenceOnly`, and `external`.
+This prevents a disabled capillary hypothesis, a missing force-labelled archive,
+a posthoc structural observable, and unresolved collective electronic/nonlocal
+response from appearing as the same red omission. Readiness filters compose
+with the existing physical-scale, evidence-class, and exact-effect filters.
+
+Every manifest record carries an explicit control-route availability and label.
+An unavailable calculation channel is routed to acquisition; a disabled local
+geometric hypothesis is routed to its control; a pure diagnostic names its
+evidence-only role; and an unimplemented nonlocal response states that an
+external solver or new trainable state variable is required. Routing focuses a
+control and changes no setting. `physicsExecutionReadiness` and the pure effect
+matrix serialize the same coordinate-free state before candidate enumeration,
+with no target or physical clock.
+
 ### Execution-effect atlas (Build 262)
 
 The complete 43-row pre-growth physics manifest now supports a second,

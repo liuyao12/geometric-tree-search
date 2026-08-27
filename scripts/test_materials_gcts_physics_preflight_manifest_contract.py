@@ -101,6 +101,21 @@ def test_execution_effect_atlas_composes_with_scale_and_evidence_filters():
     assert "No physical layer matches this scale × evidence × execution-effect intersection." in APP
 
 
+def test_readiness_atlas_separates_configuration_data_diagnostics_and_external_physics():
+    assert 'id="growthPhysicsReadinessFilters"' in HTML
+    assert '$("growthPhysicsReadinessFilters")' in APP
+    assert "PHYSICS_READINESS_STATES" in COMPRESSION
+    assert "physicsExecutionReadiness" in COMPRESSION
+    assert "readinessCounts" in COMPRESSION
+    for readiness in ("executing", "configurable", "missingEvidence", "evidenceOnly", "external"):
+        assert readiness in COMPRESSION
+        assert f'data-physics-readiness-filter="{readiness}"' in HTML
+    assert "controlRouteAvailable: Boolean(route)" in APP
+    assert "controlRouteLabel: route?.label || null" in APP
+    assert ".physics-readiness-filters" in CSS
+    assert "Requires an external solver or a new trainable geometric state variable." in COMPRESSION
+
+
 def test_non_webgl_fallback_keeps_the_scientific_portal_alive():
     assert "function fallbackViewportRenderer" in APP
     assert "function materialsViewportRenderer" in APP
@@ -116,10 +131,10 @@ def test_public_narrative_and_build_are_versioned():
     assert "Build 177" in README
     assert "Build 177" in DOCS
     assert "If WebGL cannot be created" in README
-    assert 'buildId: "20260827-262"' in APP
-    assert 'app.js?v=20260827-262' in HTML
-    assert 'style.css?v=20260827-262' in HTML
-    assert 'physics-compression-map.js?v=20260827-3' in APP
+    assert 'buildId: "20260827-263"' in APP
+    assert 'app.js?v=20260827-263' in HTML
+    assert 'style.css?v=20260827-263' in HTML
+    assert 'physics-compression-map.js?v=20260827-4' in APP
     assert 'evidence-atlas.js?v=20260827-22' in HTML
     assert "Build 207" in README
     assert "Build 207" in DOCS

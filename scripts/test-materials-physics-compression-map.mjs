@@ -1,11 +1,14 @@
 import assert from "node:assert/strict";
 import { buildPhysicsCompressionMap, buildPhysicsEffectMatrix, buildPhysicsLineagePath,
-  PHYSICS_EFFECT_COLUMNS, physicsExecutionLineage }
+  PHYSICS_EFFECT_COLUMNS, PHYSICS_READINESS_STATES, physicsExecutionLineage,
+  physicsExecutionReadiness }
   from "../apps/iqc-growth-live/physics-compression-map.js";
 
 const records = [
   { id: "steric", status: "hard" }, { id: "connection", status: "learned" },
-  { id: "front-morphology", status: "soft" }, { id: "kinetics", status: "open" },
+  { id: "front-morphology", status: "soft" },
+  { id: "kinetics", status: "open", controlRouteAvailable: true,
+    controlRouteLabel: "Configure arrival-path proxy" },
   { id: "long-range", status: "open" },
 ];
 const map = buildPhysicsCompressionMap(records);
@@ -70,4 +73,19 @@ assert.equal(matrix.counts.diagnostic, 2);
 assert.equal(matrix.everyRecordClassified, true);
 assert.equal(matrix.candidateSetInspected, false);
 assert.equal(matrix.targetUsed, false);
+assert.deepEqual(PHYSICS_READINESS_STATES.map((state) => state.id),
+  ["executing", "configurable", "missingEvidence", "evidenceOnly", "external"]);
+assert.equal(matrix.rows.find((row) => row.recordId === "steric").readiness.id, "executing");
+assert.equal(matrix.rows.find((row) => row.recordId === "kinetics").readiness.id, "configurable");
+assert.equal(matrix.rows.find((row) => row.recordId === "long-range").readiness.id, "external");
+assert.equal(matrix.readinessCounts.executing, 3);
+assert.equal(matrix.readinessCounts.configurable, 1);
+assert.equal(matrix.readinessCounts.external, 1);
+const missing = physicsExecutionReadiness({ id: "calculation-forces", status: "unavailable",
+  role: "no force channel", controlRouteAvailable: true, controlRouteLabel: "Choose calculation data" });
+assert.equal(missing.id, "missingEvidence");
+assert.equal(missing.actionable, true);
+const evidenceOnly = physicsExecutionReadiness({ id: "reciprocal-space", status: "observed",
+  role: "posthoc structural diagnostic", controlRouteAvailable: false });
+assert.equal(evidenceOnly.id, "evidenceOnly");
 console.log("materials physics compression map: passed");

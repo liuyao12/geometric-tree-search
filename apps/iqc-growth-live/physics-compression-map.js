@@ -58,6 +58,14 @@ export const PHYSICS_EFFECT_COLUMNS = Object.freeze([
   Object.freeze({ id: "diagnostic", label: "no hook", property: "diagnosticOnly" }),
 ]);
 
+export const PHYSICS_READINESS_STATES = Object.freeze([
+  Object.freeze({ id: "executing", label: "executing now" }),
+  Object.freeze({ id: "configurable", label: "control off" }),
+  Object.freeze({ id: "missingEvidence", label: "input needed" }),
+  Object.freeze({ id: "evidenceOnly", label: "evidence only" }),
+  Object.freeze({ id: "external", label: "external physics" }),
+]);
+
 function effectActive(record) {
   if (["open", "unavailable", "observed"].includes(record.status)) return false;
   if (/\b(disabled|ablated|diagnostic|not selected|awaiting)\b/i.test(record.role || "")) return false;
@@ -100,6 +108,31 @@ export function physicsExecutionLineage(record) {
     summary: effects.length ? effects.join(" + ") : active
       ? "active structural evidence; no direct execution hook"
       : "diagnostic or unresolved; no execution effect",
+  };
+}
+
+export function physicsExecutionReadiness(record) {
+  const execution = physicsExecutionLineage(record);
+  if (!execution.diagnosticOnly) return {
+    id: "executing", label: "executing now", actionable: false,
+    nextStep: `Inspect the finite response; ${execution.summary}.`,
+  };
+  if (record.status === "unavailable") return {
+    id: "missingEvidence", label: "input needed", actionable: Boolean(record.controlRouteAvailable),
+    nextStep: record.controlRouteLabel || "Supply the required measurement or structural evidence.",
+  };
+  if (record.controlRouteAvailable) return {
+    id: "configurable", label: "control off", actionable: true,
+    nextStep: record.controlRouteLabel || "Configure this geometric hypothesis.",
+  };
+  if (["observed", "explicit", "hard", "learned"].includes(record.status)
+      || /\b(diagnostic|reported|descriptive|evidence)\b/i.test(record.role || "")) return {
+    id: "evidenceOnly", label: "evidence only", actionable: false,
+    nextStep: "Inspect the recorded evidence; it currently changes no execution object.",
+  };
+  return {
+    id: "external", label: "external physics", actionable: false,
+    nextStep: "Requires an external solver or a new trainable geometric state variable.",
   };
 }
 
@@ -182,6 +215,7 @@ export function buildPhysicsEffectMatrix(records) {
   compression.lanes.forEach((lane) => lane.recordIds.forEach((recordId) => laneByRecord.set(recordId, lane.id)));
   const rows = records.map((record) => {
     const execution = physicsExecutionLineage(record);
+    const readiness = physicsExecutionReadiness(record);
     const effects = Object.fromEntries(PHYSICS_EFFECT_COLUMNS.map((column) =>
       [column.id, Boolean(execution[column.property])]));
     return {
@@ -195,15 +229,19 @@ export function buildPhysicsEffectMatrix(records) {
       effectCount: PHYSICS_EFFECT_COLUMNS.slice(0, -1)
         .filter((column) => execution[column.property]).length,
       executionSummary: execution.summary,
+      readiness,
     };
   });
   const counts = Object.fromEntries(PHYSICS_EFFECT_COLUMNS.map((column) =>
     [column.id, rows.filter((row) => row.effects[column.id]).length]));
+  const readinessCounts = Object.fromEntries(PHYSICS_READINESS_STATES.map((state) =>
+    [state.id, rows.filter((row) => row.readiness.id === state.id).length]));
   return {
     schema: 1,
     columns: PHYSICS_EFFECT_COLUMNS.map(({ id, label }) => ({ id, label })),
     rows,
     counts,
+    readinessCounts,
     recordCount: rows.length,
     everyRecordClassified: compression.complete && rows.every((row) => row.laneId !== "unclassified"),
     mutuallyNonexclusiveEffects: true,
