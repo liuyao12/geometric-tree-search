@@ -18,6 +18,16 @@ the GCTS anatomy view explains covers, oriented ports, markings, search, and
 promotion; and the claim ledger keeps proved, measured, and open results visibly
 separate. Its numbers are frozen benchmark results, not recomputed browser demos.
 
+Build 227 carries the molecular-cover decomposition into the growth decision
+ledger. Every generic candidate now exposes the frozen parent→child cover
+family—molecule, connection cluster, void/gap boundary, residual, or recurring
+support—alongside its exact cluster-type rule, and an accepted placement keeps
+that lineage in its decision evidence. The ledger also states whether the rule
+falls inside the current display focus while explicitly recording that this
+focus was never used for ranking. Ice's specialized oxygen-anchor continuation
+is labeled as a molecular primitive-port path rather than being misrepresented
+as the generic clusters-of-clusters executor.
+
 Build 226 makes the GCTS training curve follow the molecular cover microscope.
 When molecule, bridge, or void scenes are selected, the plot recomputes that
 family's fit and held-out mismatch at every already-frozen coefficient state,

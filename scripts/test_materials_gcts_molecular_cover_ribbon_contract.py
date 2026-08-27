@@ -38,6 +38,13 @@ def test_molecular_cover_ribbon_contract():
         "inheritedFilter.click()",
         "cover focus",
         "function prototypeCoverFamily(type)",
+        "function coverLineageForRule(rule)",
+        "displayFocusUsedForRanking: false",
+        "coverLineage: coverLineageForRule(rule)",
+        "coverLineage: coverLineageForRule(candidate.rule)",
+        'name: "cover lineage"',
+        "specialized frozen primitive molecular port",
+        "never ranked",
         "const sampleFamilies = sampleLabels.map(prototypeCoverFamily)",
         "const familyLossesFor",
         "familyLosses: familyLossesFor(initial)",
@@ -57,8 +64,8 @@ def test_molecular_cover_ribbon_contract():
     assert ".molecular-cover-flow button.void" in CSS
     assert ".molecular-cover-flow button.coverage" in CSS
     assert ".molecular-cover-flow button.active" in CSS
-    assert 'buildId: "20260827-226"' in APP
-    assert 'app.js?v=20260827-226' in HTML
+    assert 'buildId: "20260827-227"' in APP
+    assert 'app.js?v=20260827-227' in HTML
 
 
 if __name__ == "__main__":

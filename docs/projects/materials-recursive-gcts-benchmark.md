@@ -48,6 +48,15 @@ loss remain unchanged. This provides family-resolved diagnostics for molecular,
 connection, and void sections without turning display selection or held-out
 mismatch into a fit input, growth score, energy, or physical potential.
 
+Build 227 makes that cover-family provenance auditable at material-growth time.
+The candidate constraint ledger maps each frozen parent→child rule back to its
+molecule, connection, gap/void, residual, or recurring-support families, and
+accepted placement evidence retains the same mapping. The current family focus
+is reported only as an inside/outside display diagnostic and is explicitly
+excluded from ranking. The specialized ice oxygen-anchor trace is identified as
+a separate molecular primitive-port continuation, not as evidence that the
+generic promoted-macro executor ran.
+
 ## Benchmark ladder
 
 All learners receive only positions and species.  Hidden construction metadata

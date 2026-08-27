@@ -7043,6 +7043,31 @@ function prototypeCoverFamily(type) {
   return prototype ? clusterGalleryFamily(prototype) : "support";
 }
 
+function coverFamilyDisplayLabel(family) {
+  return {
+    molecule: learnedCover?.molecular?.waterLabel || "molecule",
+    bridge: "connection cluster",
+    gap: "void / gap boundary",
+    residual: "literal residual",
+    support: "recurring support",
+  }[family] || family;
+}
+
+function coverLineageForRule(rule) {
+  const parentFamily = prototypeCoverFamily(rule.from);
+  const childFamily = prototypeCoverFamily(rule.to);
+  return {
+    parentType: rule.from, childType: rule.to,
+    parentFamily, childFamily,
+    parentLabel: coverFamilyDisplayLabel(parentFamily),
+    childLabel: coverFamilyDisplayLabel(childFamily),
+    displayFocusMatches: molecularCoverFocus === "all"
+      || molecularCoverFocus === parentFamily || molecularCoverFocus === childFamily,
+    displayFocusUsedForRanking: false,
+    targetUsed: false,
+  };
+}
+
 function clusterCoverRole(cluster) {
   return {
     molecule: "molecular atom cover",
@@ -9234,7 +9259,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-226",
+      buildId: "20260827-227",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -20012,6 +20037,7 @@ function stateForCandidate(candidate, evaluation) {
   return {
     action: `C${rule.from + 1} → C${rule.to + 1} · R${rule.id}`,
     domain: `r${rule.id}:C${rule.from + 1}>C${rule.to + 1}`,
+    coverLineage: coverLineageForRule(rule),
     n15: evaluation.merged.length,
     n25: evaluation.sites.length,
     minimum: candidate.markingScore,
@@ -20160,6 +20186,7 @@ function materializeCandidate(candidate, evaluation, leapCreationContext) {
       compositionDistanceDelta: receiptRound(evaluation.compositionBalance.scaledDelta),
       surfaceCoordinationDelta: receiptRound(evaluation.surfaceCompletion.scaledDelta),
       loopClosureWitnesses: evaluation.loopClosure.independentCompatiblePaths,
+      coverLineage: coverLineageForRule(candidate.rule),
       structuralContext: {
         ...leapCreationContext,
         parentDepth: parent?.depth || 0,
@@ -23096,6 +23123,9 @@ function renderConstraintLedger(state, mode = "configured") {
   const ranked = (enabled) => enabled ? "ranked" : "diagnostic";
   const signed = (value) => `${value >= 0 ? "+" : ""}${value.toFixed(3)}`;
   const terms = state ? [
+    { name: "cover lineage", status: "diagnostic",
+      value: `${state.coverLineage.parentLabel} → ${state.coverLineage.childLabel}`,
+      detail: `frozen C${state.coverLineage.parentType + 1}→C${state.coverLineage.childType + 1} rule · ${state.coverLineage.displayFocusMatches ? "inside" : "outside"} the display focus · never ranked` },
     { name: "species / hard core", status: state.clearance ? "fail" : "pass",
       value: state.clearance ? `${state.clearance} conflict${state.clearance === 1 ? "" : "s"}` : "pass",
       detail: "colored minimum-distance exclusion" },
@@ -23203,6 +23233,8 @@ function renderConstraintLedger(state, mode = "configured") {
       value: policySelect.value === "marked" ? state.markingAccepted ? "compatible" : "mismatch" : "not gating",
       detail: "bounded transported connection section" },
   ] : mode === "withheld" ? [
+    { name: "cover lineage", status: "diagnostic", value: "occupational state unresolved",
+      detail: "no executable molecular parent→child rule" },
     { name: "species / hard core", status: "diagnostic", value: "not executed", detail: "occupational state unresolved" },
     { name: "shared support", status: "diagnostic", value: "not executed", detail: "no molecular seed realization" },
     { name: "novel colored sites", status: "diagnostic", value: "not executed", detail: "average sites are not emitted atoms" },
@@ -23227,6 +23259,9 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "feedstock exposure", status: "diagnostic", value: "withheld", detail: "occupational realization required" },
     { name: "GCTS marking", status: "diagnostic", value: "not executed", detail: "inspectable sections only" },
   ] : mode === "specialized" ? [
+    { name: "cover lineage", status: "pass",
+      value: `${iceAnchorTrace?.moleculeLabel || "H₂O"} → oxygen-anchor connection`,
+      detail: "specialized frozen primitive molecular port · not the generic clusters² executor" },
     { name: "species / hard core", status: "pass", value: "backend-certified", detail: "frozen exact trace" },
     { name: "shared support", status: "pass", value: "frozen ports", detail: "proper-SE(3) molecular attachments" },
     { name: "novel colored sites", status: "pass", value: "exact anchors", detail: "one-to-one emitted-site certificate" },
@@ -23252,6 +23287,8 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "GCTS marking", status: "pass", value: "domain unanimity",
       detail: `all surviving ${iceAnchorTrace?.moleculeLabel || "H₂O"} poses agree` },
   ] : [
+    { name: "cover lineage", status: "diagnostic", value: "awaiting frozen candidate",
+      detail: `${molecularCoverFocus === "all" ? "complete cover" : `${coverFamilyDisplayLabel(molecularCoverFocus)} display focus`} · display only · never ranked` },
     { name: "species / hard core", status: "diagnostic", value: "armed", detail: "admission gate" },
     { name: "shared support", status: "diagnostic", value: "armed", detail: "admission gate" },
     { name: "novel colored sites", status: "diagnostic", value: "armed", detail: "admission gate" },
