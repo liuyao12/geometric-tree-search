@@ -13,6 +13,25 @@ amplification is `b > 1`, a level-`L` accepted macro placement represents
 approximately `b^L` atoms.  Materializing or exporting `N` atomic coordinates
 still has an unavoidable `O(N)` cost and must be reported separately.
 
+### Leap-resolved material consequences (Build 234)
+
+The live structural-leap certificate now consolidates its previously separate
+local, mesoscale, chemistry, and reciprocal-space snapshots into one interactive
+before/after fingerprint. It reports exact site inventory; total-variation
+composition deviation from the observed input fractions; finite reservoir
+inventory; colored coordination shortfall; q6 or |psi6|; exact-pair
+centrosymmetry; covariance radius and anisotropy; shared multi-nucleus interface
+fraction; and unit-weight finite-window S(q) peak prominence. The new composition
+snapshot retains counts, fractions, the observed target ratio, and explicit
+negative inference flags in every leap receipt.
+
+The display does not rank the channels or treat positive/negative changes as
+favorable. Every row is independently scaled, links to a channel-specific
+definition and limitation, and is aligned only by discrete GCTS search update.
+It therefore makes the material consequence of a geometric leap inspectable
+without relabelling the sequence as physical time, a trajectory, free energy,
+phase transition, rate, probability, or experimental scattering.
+
 ### Bounded notebook snapshots (Build 231)
 
 Saving a run in the browser no longer executes the full downloadable receipt

@@ -33,8 +33,8 @@ def test_comparison_fails_closed_and_has_scientific_boundaries():
 
 
 def test_build_184_assets_and_narrative():
-    assert 'buildId: "20260827-233"' in APP
-    assert 'app.js?v=20260827-233' in HTML
+    assert 'buildId: "20260827-234"' in APP
+    assert 'app.js?v=20260827-234' in HTML
     assert 'style.css?v=20260826-104' in HTML
     assert 'hypothesis-separation-outcome.js?v=20260826-1' in APP
     assert "Build 184" in README

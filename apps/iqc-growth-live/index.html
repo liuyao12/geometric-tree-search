@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260827-233">
+  <link rel="stylesheet" href="./style.css?v=20260827-234">
   <script type="importmap">
     {
       "imports": {
@@ -1734,6 +1734,19 @@
           <div class="section-heading"><p class="eyebrow">structural leap certificate</p><span id="leapCertificateState">no action yet</span></div>
           <div id="leapHistory" class="leap-history" role="group" aria-label="Inspect recent structural leap updates"></div>
           <div id="leapFlow" class="leap-flow" aria-live="polite"></div>
+          <article id="leapConsequenceLab" class="leap-consequence-lab" aria-live="polite">
+            <header><span><small>material consequence fingerprint</small><strong id="leapConsequenceState">seed state</strong></span>
+              <div id="leapConsequenceFilters" role="group" aria-label="Filter material consequences by structural scale">
+                <button type="button" data-consequence-filter="all" aria-pressed="true">all</button>
+                <button type="button" data-consequence-filter="local" aria-pressed="false">local</button>
+                <button type="button" data-consequence-filter="mesoscale" aria-pressed="false">meso</button>
+                <button type="button" data-consequence-filter="chemistry" aria-pressed="false">chemistry</button>
+                <button type="button" data-consequence-filter="reciprocal" aria-pressed="false">reciprocal</button>
+              </div></header>
+            <div id="leapConsequenceMatrix" class="leap-consequence-matrix" role="group" aria-label="Before and after material observables for the selected structural leap"></div>
+            <article id="leapConsequenceDetail" class="leap-consequence-detail"></article>
+            <p id="leapConsequenceBoundary">Each row compares two certified structural states. It is not elapsed time, a free-energy change, or a claim that either direction is favorable.</p>
+          </article>
           <article class="multiscale-pathway" aria-label="Interactive local-order and reciprocal-order pathway">
             <header><span><small>multiscale order pathway</small><strong id="multiscalePathwayState">seed state</strong></span>
               <div id="multiscalePathwayHarmonics" role="group" aria-label="Local-order harmonic for the pathway">
@@ -1853,7 +1866,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260827-233"></script>
+  <script type="module" src="./app.js?v=20260827-234"></script>
   <script type="module" src="./evidence-atlas.js?v=20260827-20"></script>
 </body>
 </html>

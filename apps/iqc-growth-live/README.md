@@ -19,6 +19,18 @@ the GCTS anatomy view explains covers, oriented ports, markings, search, and
 promotion; and the claim ledger keeps proved, measured, and open results visibly
 separate. Its numbers are frozen benchmark results, not recomputed browser demos.
 
+Build 234 adds an interactive **material consequence fingerprint** to every
+retained structural leap. A materials scientist can select the exact leap and
+inspect before/after changes in explicit inventory, composition deviation,
+finite feedstock, colored coordination exposure, dimension-aware local order,
+centrosymmetry, radius and anisotropy, shared interfaces, and finite-window
+geometric S(q). Each channel has its own evidence definition and claim boundary;
+the rows are independently scaled and never combine unlike observables into a
+single score. The leap artifact now also preserves a species-count and
+total-variation composition snapshot relative to the supplied configuration.
+These are discrete certified structural states—not physical time, energy,
+probability, kinetics, or experimental diffraction.
+
 Build 233 exposes exact GCTS marking learning in the Evidence Atlas through the
 A₂ layered lattice-function census. The interactive support gallery renders all
 eight focused seven-cell candidates and compares their retained sound clauses.

@@ -54,7 +54,7 @@ import { generateAmorphousMixture } from "./amorphous-glass.js?v=20260824-1";
 import { compareStructureFactors, jensenShannonDistance, localOrientationalOrder, orientationalOrderDistribution,
   powderStructureFactor, summarizeStructureFactor, weightedPowderStructureFactor }
   from "./structure-observables.js?v=20260826-5";
-import { compositionBalanceDelta, learnCompositionTarget } from "./composition-balance.js?v=20260824-1";
+import { compositionBalanceDelta, compositionDrift, learnCompositionTarget } from "./composition-balance.js?v=20260824-1";
 import { consumeFeedstock, evaluateFeedstockDemand, feedstockReservoirSnapshot,
   initializeFeedstockReservoir } from "./feedstock-reservoir.js?v=20260826-1";
 import { formalChargeBalanceDelta, learnFormalChargeTarget } from "./formal-charge-balance.js?v=20260824-1";
@@ -677,6 +677,12 @@ const leapCertificateSection = $("leapCertificateSection");
 const leapCertificateState = $("leapCertificateState");
 const leapHistoryElement = $("leapHistory");
 const leapFlow = $("leapFlow");
+const leapConsequenceLab = $("leapConsequenceLab");
+const leapConsequenceState = $("leapConsequenceState");
+const leapConsequenceFilters = $("leapConsequenceFilters");
+const leapConsequenceMatrix = $("leapConsequenceMatrix");
+const leapConsequenceDetail = $("leapConsequenceDetail");
+const leapConsequenceBoundary = $("leapConsequenceBoundary");
 const multiscalePathwayState = $("multiscalePathwayState");
 const multiscalePathwayHarmonics = $("multiscalePathwayHarmonics");
 const multiscalePathwayPlot = $("multiscalePathwayPlot");
@@ -1423,6 +1429,8 @@ let selectedProcessEvidenceIndex = 0;
 let selectedConstraintName = "species / hard core";
 let leapHistory = [];
 let selectedLeapIndex = -1;
+let selectedLeapConsequenceId = "coordination";
+let selectedLeapConsequenceFilter = "all";
 let leapEventCount = 0;
 let siteStructuralHistories = new Map();
 let pendingSiteHistoryIds = new Set();
@@ -9479,7 +9487,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-233",
+      buildId: "20260827-234",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -11567,7 +11575,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-233" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-234" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -20353,6 +20361,8 @@ function resetCounters() {
   molecularCoverFocus = "all";
   leapHistory = [];
   selectedLeapIndex = -1;
+  selectedLeapConsequenceId = "coordination";
+  selectedLeapConsequenceFilter = "all";
   leapEventCount = 0;
   invalidateCreationResponseEvidenceCache("new specimen or reset state");
   siteStructuralHistories = new Map();
@@ -20877,7 +20887,8 @@ function performOffLatticeEvent() {
   const reconstructionWasCertified = reconstructionCertified;
   const relaxationAuthorized = reconstructionCertified;
   const before = { atoms: atoms.length, clusters: placedClusters.length, frontier: frontierCandidates.length,
-    morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
+    morphology: structuralMorphologySnapshot(), composition: structuralCompositionSnapshot(),
+    interfaces: structuralInterfaceSnapshot(),
     orientationalOrder: structuralOrientationalOrderSnapshot(), centrosymmetry: structuralCentrosymmetrySnapshot(),
     scattering: structuralScatteringSnapshot(),
     chargeMoment: structuralChargeMomentSnapshot(), bondValenceState: structuralBondValenceSnapshot(),
@@ -20889,7 +20900,8 @@ function performOffLatticeEvent() {
       tests: { summary: "finite frontier exhausted", detail: "Every frozen port is consumed, unsupported, conflicting, or outside the public domain." },
       after: { atoms: atoms.length, clusters: placedClusters.length, accepted: 0, rejected: 0,
         depth: Math.max(0, ...placedClusters.map((placement) => placement.depth || 0)),
-        morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
+        morphology: structuralMorphologySnapshot(), composition: structuralCompositionSnapshot(),
+        interfaces: structuralInterfaceSnapshot(),
         orientationalOrder: structuralOrientationalOrderSnapshot(), centrosymmetry: structuralCentrosymmetrySnapshot(),
     scattering: structuralScatteringSnapshot(),
         chargeMoment: structuralChargeMomentSnapshot(), bondValenceState: structuralBondValenceSnapshot(),
@@ -21085,7 +21097,8 @@ function performOffLatticeEvent() {
     relaxation,
     after: { atoms: atoms.length, clusters: placedClusters.length, accepted: acceptedInBatch, rejected: rejectedInBatch,
       depth: Math.max(0, ...placedClusters.map((placement) => placement.depth || 0)),
-      morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
+      morphology: structuralMorphologySnapshot(), composition: structuralCompositionSnapshot(),
+      interfaces: structuralInterfaceSnapshot(),
       orientationalOrder: structuralOrientationalOrderSnapshot(), centrosymmetry: structuralCentrosymmetrySnapshot(),
     scattering: structuralScatteringSnapshot(),
       chargeMoment: structuralChargeMomentSnapshot(), bondValenceState: structuralBondValenceSnapshot(),
@@ -21101,6 +21114,7 @@ function performIceAnchorEvent() {
   const wave = iceAnchorTrace?.waves[iceAnchorWaveIndex];
   const before = { atoms: atoms.length, clusters: acceptedDecisions,
     frontier: wave?.candidateAnchors || 0, morphology: structuralMorphologySnapshot(),
+    composition: structuralCompositionSnapshot(),
     orientationalOrder: structuralOrientationalOrderSnapshot(), centrosymmetry: structuralCentrosymmetrySnapshot(),
     scattering: structuralScatteringSnapshot(),
     chargeMoment: structuralChargeMomentSnapshot(), bondValenceState: structuralBondValenceSnapshot(),
@@ -21142,7 +21156,8 @@ function performIceAnchorEvent() {
         detail: `${wave.rejectedCandidateAnchors} unsupported or conflicting candidates fail ${iceAnchorTrace.selectionRuleLabel}.` },
       after: { atoms: atoms.length, clusters: acceptedDecisions, accepted: 0,
         rejected: wave.rejectedCandidateAnchors, depth: wave.wave,
-        morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
+        morphology: structuralMorphologySnapshot(), composition: structuralCompositionSnapshot(),
+        interfaces: structuralInterfaceSnapshot(),
         orientationalOrder: structuralOrientationalOrderSnapshot(), centrosymmetry: structuralCentrosymmetrySnapshot(),
     scattering: structuralScatteringSnapshot(),
         chargeMoment: structuralChargeMomentSnapshot(), bondValenceState: structuralBondValenceSnapshot(),
@@ -21180,7 +21195,8 @@ function performIceAnchorEvent() {
       detail: `${iceAnchorTrace.portCount} frozen proper-SE(3) ports + ${iceAnchorTrace.selectionRuleLabel}; ${wave.retainedOrientationHypotheses} mutually exclusive ${iceAnchorTrace.moleculeLabel} poses retained.` },
     after: { atoms: atoms.length, clusters: acceptedDecisions, accepted: wave.acceptedAnchors,
       rejected: wave.rejectedCandidateAnchors, depth: wave.wave,
-      morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
+      morphology: structuralMorphologySnapshot(), composition: structuralCompositionSnapshot(),
+      interfaces: structuralInterfaceSnapshot(),
       orientationalOrder: structuralOrientationalOrderSnapshot(), centrosymmetry: structuralCentrosymmetrySnapshot(),
     scattering: structuralScatteringSnapshot(),
       chargeMoment: structuralChargeMomentSnapshot(), bondValenceState: structuralBondValenceSnapshot(),
@@ -23079,6 +23095,170 @@ function bondValenceStructuralPathwayReceipt() {
     targetUsed: false, physicalTimeIntegrated: false };
 }
 
+function materialConsequenceRecords(before, after) {
+  const orderSymbol = (after.orientationalOrder || before.orientationalOrder)?.dimension === 2
+    ? "|psi6|" : "q6";
+  const compositionFractions = (snapshot) => Object.entries(snapshot?.fractions || {})
+    .map(([symbol, fraction]) => `${symbol} ${(100 * fraction).toFixed(1)}%`).join(" · ") || "unavailable";
+  const percent = (value) => `${(100 * value).toFixed(1)}%`;
+  const signedPercent = (value) => `${value >= 0 ? "+" : ""}${(100 * value).toFixed(1)} points`;
+  const decimal = (digits = 3) => (value) => value.toFixed(digits);
+  const signedDecimal = (digits = 3) => (value) => `${value >= 0 ? "+" : ""}${value.toFixed(digits)}`;
+  return [
+    { id: "atoms", group: "mesoscale", label: "explicit material inventory", unit: "species-labelled sites",
+      before: before.atoms, after: after.atoms, format: (value) => Math.round(value).toLocaleString(),
+      deltaFormat: (value) => `${value >= 0 ? "+" : ""}${Math.round(value).toLocaleString()} sites`,
+      domain: "adaptive", evidence: "Exact explicit-site count after same-species coordinate deduplication.",
+      boundary: "A represented-site count is not mass, density, growth rate, or elapsed time." },
+    { id: "composition", group: "chemistry", label: "composition deviation", unit: "total-variation distance",
+      before: before.composition?.totalVariationFromObservedTarget,
+      after: after.composition?.totalVariationFromObservedTarget,
+      format: percent, deltaFormat: signedPercent, domain: [0, 1],
+      evidence: `Current fractions: ${compositionFractions(after.composition)}. The reference is the supplied configuration's species fractions.`,
+      boundary: "This is a finite composition-balance diagnostic, not chemical potential, phase equilibrium, activity, segregation energy, or diffusion." },
+    { id: "feedstock", group: "chemistry", label: "feedstock remaining", unit: "authorized atoms",
+      before: before.feedstock?.finite ? before.feedstock.remainingAtoms : null,
+      after: after.feedstock?.finite ? after.feedstock.remainingAtoms : null,
+      format: (value) => Math.round(value).toLocaleString(),
+      deltaFormat: (value) => `${value >= 0 ? "+" : ""}${Math.round(value).toLocaleString()} atoms`,
+      domain: "adaptive", evidence: after.feedstock?.finite
+        ? `${after.feedstock.remainingAtoms}/${after.feedstock.initialAtoms} atoms remain in the explicit species reservoirs.`
+        : "The source is open, so no finite reservoir inventory exists.",
+      boundary: "The reservoir is an explicit geometric supply constraint, not a chemical potential, flux, or transport model." },
+    { id: "coordination", group: "local", label: "colored coordination deficit", unit: "mean fractional shortfall",
+      before: before.morphology?.coordinationDeficit, after: after.morphology?.coordinationDeficit,
+      format: percent, deltaFormat: signedPercent, domain: [0, 1],
+      evidence: `${after.morphology?.sampledCoordinationCenters || 0} radially stratified centers compared with supplied-configuration colored coordination medians.`,
+      boundary: "Undercoordination is a geometric exposure proxy, not surface energy, bond energy, or a named defect." },
+    { id: "local-order", group: "local", label: `mean local ${orderSymbol}`, unit: "orientational-order magnitude",
+      before: before.orientationalOrder?.harmonics?.[6]?.mean,
+      after: after.orientationalOrder?.harmonics?.[6]?.mean,
+      format: decimal(3), deltaFormat: signedDecimal(3), domain: [0, 1],
+      evidence: `${after.orientationalOrder?.harmonics?.[6]?.resolvedCenters || 0} resolved centers; ${after.orientationalOrder?.definition || "dimension-aware local order"}.`,
+      boundary: "Local orientational order is a rotation-invariant structural descriptor, not a phase label, energy, or reaction coordinate." },
+    { id: "centrosymmetry", group: "local", label: "local inversion asymmetry", unit: "normalized exact-pair amplitude",
+      before: before.centrosymmetry?.meanAmplitude, after: after.centrosymmetry?.meanAmplitude,
+      format: decimal(3), deltaFormat: signedDecimal(3), domain: [0, 1],
+      evidence: `${after.centrosymmetry?.resolvedCenters || 0} centers with exact minimum-weight pairing of ${after.centrosymmetry?.neighborCount || "inferred"} neighbors.`,
+      boundary: "This defect-sensitive fingerprint does not identify vacancies, dislocations, stacking faults, stress, or formation energy." },
+    { id: "radius", group: "mesoscale", label: "radius of gyration", unit: "angstrom",
+      before: before.morphology?.radiusOfGyrationAngstrom, after: after.morphology?.radiusOfGyrationAngstrom,
+      format: (value) => `${value.toFixed(2)} A`, deltaFormat: (value) => `${value >= 0 ? "+" : ""}${value.toFixed(2)} A`,
+      domain: "adaptive", evidence: "Square root of the trace of the coordinate covariance tensor in the retained physical length scale.",
+      boundary: "For multiple nuclei, the global value includes their separation; it is not particle radius, physical surface area, or a growth rate." },
+    { id: "anisotropy", group: "mesoscale", label: "relative shape anisotropy", unit: "kappa squared",
+      before: before.morphology?.relativeShapeAnisotropy, after: after.morphology?.relativeShapeAnisotropy,
+      format: decimal(3), deltaFormat: signedDecimal(3), domain: [0, 1],
+      evidence: `Covariance phenotype ${before.morphology?.phenotype || "unresolved"} -> ${after.morphology?.phenotype || "unresolved"}.`,
+      boundary: "Covariance anisotropy is not an equilibrium habit, Wulff shape, interfacial energy, or kinetic coefficient." },
+    { id: "interface", group: "mesoscale", label: "shared-interface fraction", unit: "multi-nucleus site fraction",
+      before: before.morphology?.lineageEnsemble?.sharedInterfaceFraction,
+      after: after.morphology?.lineageEnsemble?.sharedInterfaceFraction,
+      format: percent, deltaFormat: signedPercent, domain: [0, 1],
+      evidence: `${after.morphology?.lineageEnsemble?.sharedInterfaceAtoms || 0} sites belong to more than one seeded nucleus lineage.`,
+      boundary: "Shared lineage membership is not crystallographic grain identity, grain-boundary energy, mobility, or coarsening kinetics." },
+    { id: "reciprocal", group: "reciprocal", label: "S(q) peak prominence", unit: "finite-window geometric contrast",
+      before: before.scattering?.summary?.peakProminence,
+      after: after.scattering?.summary?.peakProminence,
+      format: decimal(3), deltaFormat: signedDecimal(3), domain: "adaptive",
+      evidence: `${after.scattering?.analysisWindowAtoms || 0} atoms in a unit-weight finite-observation Debye average.`,
+      boundary: "Geometric S(q) is not experimental diffraction intensity: form factors, instrument response, thermal motion, and uncertainty are absent." },
+  ];
+}
+
+function consequencePosition(record, value) {
+  if (!Number.isFinite(value)) return null;
+  if (Array.isArray(record.domain)) {
+    const [low, high] = record.domain;
+    return 100 * Math.max(0, Math.min(1, (value - low) / Math.max(1e-12, high - low)));
+  }
+  const maximum = Math.max(Math.abs(record.before || 0), Math.abs(record.after || 0), 1e-12);
+  return 100 * Math.max(0, Math.min(1, value / (1.12 * maximum)));
+}
+
+function renderLeapConsequence(selected = null) {
+  if (!leapConsequenceLab) return;
+  const current = selected ? null : {
+    atoms: atoms.length,
+    composition: structuralCompositionSnapshot(),
+    morphology: structuralMorphologySnapshot(),
+    orientationalOrder: structuralOrientationalOrderSnapshot(),
+    centrosymmetry: structuralCentrosymmetrySnapshot(),
+    scattering: structuralScatteringSnapshot(),
+    feedstock: currentFeedstockSnapshot(),
+  };
+  const before = selected?.before || current;
+  const after = selected?.after || current;
+  const records = materialConsequenceRecords(before, after);
+  leapConsequenceFilters.querySelectorAll("button[data-consequence-filter]").forEach((button) => {
+    const active = button.dataset.consequenceFilter === selectedLeapConsequenceFilter;
+    button.setAttribute("aria-pressed", String(active));
+  });
+  const visible = records.filter((record) => selectedLeapConsequenceFilter === "all"
+    || record.group === selectedLeapConsequenceFilter);
+  if (!visible.some((record) => record.id === selectedLeapConsequenceId)) {
+    selectedLeapConsequenceId = visible[0]?.id || "atoms";
+  }
+  leapConsequenceMatrix.replaceChildren(...visible.map((record) => {
+    const available = Number.isFinite(record.before) && Number.isFinite(record.after);
+    const button = document.createElement("button"); button.type = "button";
+    button.className = `${record.group}${record.id === selectedLeapConsequenceId ? " active" : ""}${available ? "" : " unavailable"}`;
+    button.setAttribute("aria-pressed", String(record.id === selectedLeapConsequenceId));
+    const heading = document.createElement("span"); const group = document.createElement("small");
+    const label = document.createElement("strong"); const delta = document.createElement("em");
+    group.textContent = record.group; label.textContent = record.label;
+    delta.textContent = available ? record.deltaFormat(record.after - record.before) : "unavailable";
+    heading.append(group, label, delta);
+    const track = document.createElement("i"); track.className = "consequence-track";
+    if (available) {
+      const first = consequencePosition(record, record.before); const second = consequencePosition(record, record.after);
+      const bridge = document.createElement("b"); bridge.style.left = `${Math.min(first, second)}%`;
+      bridge.style.width = `${Math.max(1, Math.abs(second - first))}%`; track.append(bridge);
+      const beforePoint = document.createElement("u"); beforePoint.className = "before";
+      beforePoint.style.left = `${first}%`; const afterPoint = document.createElement("u"); afterPoint.className = "after";
+      afterPoint.style.left = `${second}%`; track.append(beforePoint, afterPoint);
+    }
+    const values = document.createElement("span"); values.className = "consequence-values";
+    values.textContent = available ? `${record.format(record.before)} -> ${record.format(record.after)}` : record.evidence;
+    button.append(heading, track, values);
+    button.addEventListener("click", () => { selectedLeapConsequenceId = record.id; renderLeapConsequence(selected); });
+    return button;
+  }));
+  const selectedRecord = records.find((record) => record.id === selectedLeapConsequenceId) || visible[0];
+  const availableCount = records.filter((record) => Number.isFinite(record.before) && Number.isFinite(record.after)).length;
+  const changedCount = records.filter((record) => Number.isFinite(record.before) && Number.isFinite(record.after)
+    && Math.abs(record.after - record.before) > 1e-9).length;
+  leapConsequenceState.textContent = selected
+    ? `leap ${selected.index} · ${availableCount} resolved · ${changedCount} changed`
+    : `seed · ${availableCount} resolved observables`;
+  leapConsequenceDetail.replaceChildren();
+  if (selectedRecord) {
+    const available = Number.isFinite(selectedRecord.before) && Number.isFinite(selectedRecord.after);
+    const header = document.createElement("header"); const copy = document.createElement("span");
+    const group = document.createElement("small"); const label = document.createElement("strong");
+    const change = document.createElement("b"); group.textContent = `${selectedRecord.group} · ${selectedRecord.unit}`;
+    label.textContent = selectedRecord.label; change.textContent = available
+      ? selectedRecord.deltaFormat(selectedRecord.after - selectedRecord.before) : "unavailable";
+    copy.append(group, label); header.append(copy, change); leapConsequenceDetail.append(header);
+    [["before -> after", available ? `${selectedRecord.format(selectedRecord.before)} -> ${selectedRecord.format(selectedRecord.after)}` : "not resolved for both structural states"],
+      ["structural evidence", selectedRecord.evidence], ["claim boundary", selectedRecord.boundary]]
+      .forEach(([name, value]) => {
+        const row = document.createElement("div"); const key = document.createElement("b");
+        const text = document.createElement("p"); key.textContent = name; text.textContent = value;
+        row.append(key, text); leapConsequenceDetail.append(row);
+      });
+  }
+  leapConsequenceBoundary.textContent = `Selected ${selected ? `leap ${selected.index}` : "seed state"}. Every row is independently scaled and reports a signed structural difference without assigning a favorable direction. The states are aligned by a discrete GCTS search update—not physical time. No row is a free energy, force, probability, rate, mechanism, phase-transition assignment, or experimental trajectory.`;
+}
+
+leapConsequenceFilters.addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-consequence-filter]");
+  if (!button) return;
+  selectedLeapConsequenceFilter = ["all", "local", "mesoscale", "chemistry", "reciprocal"]
+    .includes(button.dataset.consequenceFilter) ? button.dataset.consequenceFilter : "all";
+  renderLeapConsequence(leapHistory[selectedLeapIndex] || null);
+});
+
 function renderStructuralLeap(leap = null) {
   if (!leapCertificateSection) return;
   leapCertificateSection.hidden = pipelineStage !== 4;
@@ -23087,6 +23267,7 @@ function renderStructuralLeap(leap = null) {
   renderMultiscaleOrderPathway();
   renderChargeShapePortrait(policyComparisonHistory[selectedPolicySnapshotIndex] || lastPolicyComparison);
   renderBondValenceStructuralPathway();
+  renderLeapConsequence(selected);
   leapHistoryElement.replaceChildren();
   leapHistory.slice(-8).forEach((entry, visibleIndex) => {
     const absoluteIndex = Math.max(0, leapHistory.length - 8) + visibleIndex;
@@ -23309,6 +23490,42 @@ function structuralMorphologySnapshot(source = atoms) {
     lineageEnsemble,
     coordinateFrameUsed: false, targetUsed: false,
     physicalSurfaceAreaInferred: false, equilibriumHabitInferred: false,
+  };
+}
+
+function structuralCompositionSnapshot(source = atoms) {
+  const species = source.map((atom) => atom.species);
+  const observedCounts = species.reduce((counts, symbol) => {
+    counts[symbol] = (counts[symbol] || 0) + 1;
+    return counts;
+  }, {});
+  const symbols = [...new Set([...(compositionTarget?.symbols || []), ...Object.keys(observedCounts)])]
+    .sort((first, second) => first.localeCompare(second));
+  const counts = Object.fromEntries(symbols.map((symbol) => [symbol, observedCounts[symbol] || 0]));
+  const drift = compositionTarget && species.length
+    ? compositionDrift(species, compositionTarget)
+    : { totalVariation: null, maximumFractionError: null,
+      fractions: Object.fromEntries(symbols.map((symbol) => [symbol,
+        species.length ? counts[symbol] / species.length : 0])) };
+  return {
+    atomCount: species.length,
+    symbols,
+    counts,
+    fractions: Object.fromEntries(symbols.map((symbol) => [symbol,
+      receiptRound(drift.fractions?.[symbol] || 0)])),
+    targetFractions: Object.fromEntries(symbols.map((symbol) => [symbol,
+      receiptRound(compositionTarget?.fractions?.[symbol] || 0)])),
+    targetReducedRatio: compositionTarget?.reducedRatio ? { ...compositionTarget.reducedRatio } : null,
+    totalVariationFromObservedTarget: Number.isFinite(drift.totalVariation)
+      ? receiptRound(drift.totalVariation) : null,
+    maximumFractionError: Number.isFinite(drift.maximumFractionError)
+      ? receiptRound(drift.maximumFractionError) : null,
+    definition: "half the L1 distance between current species fractions and the supplied-configuration fractions",
+    targetDerivedFromObservedConfiguration: Boolean(compositionTarget),
+    chemicalPotentialInferred: false,
+    phaseEquilibriumInferred: false,
+    targetUsed: false,
+    physicalTimeIntegrated: false,
   };
 }
 
