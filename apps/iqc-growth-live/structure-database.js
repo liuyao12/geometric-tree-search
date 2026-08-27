@@ -3,6 +3,12 @@ const JOULE_PER_ELECTRON_VOLT = 1.602176634e-19;
 const NEWTON_PER_ELECTRON_VOLT_PER_ANGSTROM = 1.602176634e-9;
 const MAX_NOMAD_RELAXATION_FRAMES = 24;
 const MAX_NOMAD_RESPONSE_BYTES = 32 * 1024 * 1024;
+export const NOMAD_EVIDENCE_TARGETS = Object.freeze({
+  geometry: Object.freeze({ id: "geometry", label: "geometry · any usable periodic archive" }),
+  relaxation: Object.freeze({ id: "relaxation", label: "relaxation series · at least 3 fixed-topology snapshots" }),
+  forces: Object.freeze({ id: "forces", label: "force-labelled geometry · complete forces on at least 1 snapshot" }),
+  calibration: Object.freeze({ id: "calibration", label: "surrogate-ready series · at least 5 paired calculation snapshots" }),
+});
 const ELEMENT_PATTERN = /^(?:H|He|Li|Be|B|C|N|O|F|Ne|Na|Mg|Al|Si|P|S|Cl|Ar|K|Ca|Sc|Ti|V|Cr|Mn|Fe|Co|Ni|Cu|Zn|Ga|Ge|As|Se|Br|Kr|Rb|Sr|Y|Zr|Nb|Mo|Tc|Ru|Rh|Pd|Ag|Cd|In|Sn|Sb|Te|I|Xe|Cs|Ba|La|Ce|Pr|Nd|Pm|Sm|Eu|Gd|Tb|Dy|Ho|Er|Tm|Yb|Lu|Hf|Ta|W|Re|Os|Ir|Pt|Au|Hg|Tl|Pb|Bi|Po|At|Rn|Fr|Ra|Ac|Th|Pa|U|Np|Pu|Am|Cm|Bk|Cf|Es|Fm|Md|No|Lr|Rf|Db|Sg|Bh|Hs|Mt|Ds|Rg|Cn|Nh|Fl|Mc|Lv|Ts|Og)$/;
 const ATOMIC_SYMBOLS = " H He Li Be B C N O F Ne Na Mg Al Si P S Cl Ar K Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Kr Rb Sr Y Zr Nb Mo Tc Ru Rh Pd Ag Cd In Sn Sb Te I Xe Cs Ba La Ce Pr Nd Pm Sm Eu Gd Tb Dy Ho Er Tm Yb Lu Hf Ta W Re Os Ir Pt Au Hg Tl Pb Bi Po At Rn Fr Ra Ac Th Pa U Np Pu Am Cm Bk Cf Es Fm Md No Lr Rf Db Sg Bh Hs Mt Ds Rg Cn Nh Fl Mc Lv Ts Og".split(" ");
 
@@ -20,8 +26,13 @@ function normalizeElements(values) {
   return elements;
 }
 
-function queryPayload(elementValues, pageOffset = 0) {
+function queryPayload(elementValues, pageOffset = 0, evidenceTargetValue = "geometry") {
   const elements = normalizeElements(elementValues);
+  const evidenceTarget = normalizeNomadEvidenceTarget(evidenceTargetValue);
+  const evidenceFilter = evidenceTarget.id === "forces"
+    ? { "results.properties.geometry_optimization.final_force_maximum:lte": 1e6 }
+    : ["relaxation", "calibration"].includes(evidenceTarget.id)
+      ? { "results.properties.geometry_optimization.final_energy_difference:lte": 1e6 } : null;
   return {
     owner: "public",
     query: {
@@ -29,6 +40,7 @@ function queryPayload(elementValues, pageOffset = 0) {
         { "results.material.elements": { all: elements } },
         { "results.material.n_elements": elements.length },
         { "results.material.structural_type": "bulk" },
+        ...(evidenceFilter ? [evidenceFilter] : []),
       ],
     },
     pagination: { page_size: 1, page_offset: pageOffset },
@@ -338,10 +350,63 @@ export function nomadArchiveToStructure(entry, archiveResponse) {
   };
 }
 
+function finiteCalculationValue(frame, key) {
+  return Number.isFinite(Number(frame?.metadata?.calculation?.[key]));
+}
+
+export function nomadStructureEvidenceProfile(structure) {
+  const frames = structure?.frames?.length ? structure.frames : structure?.atoms?.length ? [structure] : [];
+  const energyFrames = frames.filter((frame) => finiteCalculationValue(frame, "energyPerPrimitiveAtomElectronVolt")).length;
+  const forceFrames = frames.filter((frame) => Number(frame?.metadata?.calculation?.forceCoverage) === 1).length;
+  const spinFrames = frames.filter((frame) => Number(frame?.metadata?.calculation?.spinCoverage) === 1).length;
+  const methodRecords = frames.map((frame) => frame?.metadata?.calculation?.methodCanonicalJson).filter(Boolean);
+  const methodKeys = new Set(methodRecords);
+  const pairedCalculationFrames = Math.max(energyFrames, forceFrames);
+  const relaxationFrames = structure?.metadata?.relaxationSequence?.available ? frames.length : 0;
+  const methodConsistent = methodKeys.size === 1 && methodRecords.length >= pairedCalculationFrames;
+  return Object.freeze({
+    frameCount: frames.length,
+    relaxationFrames,
+    energyFrames,
+    forceFrames,
+    spinFrames,
+    methodFrames: methodRecords.length,
+    pairedCalculationFrames,
+    methodConsistent,
+    geometryAvailable: frames.length > 0,
+    relaxationAvailable: relaxationFrames >= 3,
+    forceLabelsAvailable: forceFrames >= 1,
+    calibrationReady: relaxationFrames >= 5 && pairedCalculationFrames >= 5 && methodConsistent,
+  });
+}
+
+export function normalizeNomadEvidenceTarget(value) {
+  const id = String(value || "geometry");
+  const target = NOMAD_EVIDENCE_TARGETS[id];
+  if (!target) throw new Error(`Unknown NOMAD evidence target: ${id}`);
+  return target;
+}
+
+export function nomadEvidenceTargetAccepts(profile, targetValue = "geometry") {
+  const target = normalizeNomadEvidenceTarget(targetValue);
+  if (target.id === "geometry") return Boolean(profile.geometryAvailable);
+  if (target.id === "relaxation") return Boolean(profile.relaxationAvailable);
+  if (target.id === "forces") return Boolean(profile.forceLabelsAvailable);
+  return Boolean(profile.calibrationReady);
+}
+
+export function nomadEvidenceProfileLabel(profile) {
+  if (profile.calibrationReady) return `${profile.relaxationFrames} snapshots · calculation-series ready`;
+  if (profile.relaxationAvailable) return `${profile.relaxationFrames} relaxation snapshots · ${profile.forceFrames} force-labelled`;
+  if (profile.forceLabelsAvailable) return `force-labelled geometry · ${profile.forceFrames}/${profile.frameCount} snapshots`;
+  return "geometry-only archive";
+}
+
 export async function randomNomadStructure(elementValues, options = {}) {
   const elements = normalizeElements(elementValues);
+  const evidenceTarget = normalizeNomadEvidenceTarget(options.evidenceTarget);
   const fetchImpl = options.fetchImpl || fetch;
-  const initial = await postJson(`${NOMAD_API}/entries/query`, queryPayload(elements), fetchImpl);
+  const initial = await postJson(`${NOMAD_API}/entries/query`, queryPayload(elements, 0, evidenceTarget.id), fetchImpl);
   const total = Number(initial.pagination?.total || 0);
   if (!total) throw new Error(`NOMAD has no public bulk entries containing exactly ${elements.join(" + ")}`);
   const accessibleTotal = Math.min(total, 10_000);
@@ -352,7 +417,8 @@ export async function randomNomadStructure(elementValues, options = {}) {
     let offset = randomIndex(accessibleTotal, options.random);
     while (triedOffsets.has(offset) && triedOffsets.size < accessibleTotal) offset = (offset + 1) % accessibleTotal;
     triedOffsets.add(offset);
-    const page = offset === 0 ? initial : await postJson(`${NOMAD_API}/entries/query`, queryPayload(elements, offset), fetchImpl);
+    const page = offset === 0 ? initial : await postJson(`${NOMAD_API}/entries/query`,
+      queryPayload(elements, offset, evidenceTarget.id), fetchImpl);
     const entry = page.data?.[0];
     if (!entry) continue;
     try {
@@ -370,13 +436,20 @@ export async function randomNomadStructure(elementValues, options = {}) {
       }, fetchImpl);
       const primitive = nomadArchiveToStructure(entry, archive);
       if (primitive.atoms.length > 512) throw new Error(`archive contains ${primitive.atoms.length} atoms before expansion`);
+      const evidenceProfile = nomadStructureEvidenceProfile(primitive);
+      if (!nomadEvidenceTargetAccepts(evidenceProfile, evidenceTarget.id)) {
+        throw new Error(`entry does not satisfy ${evidenceTarget.label}`);
+      }
       const structure = makeLearningSupercell(primitive);
-      return { structure, total, selectedOffset: offset };
+      structure.metadata = { ...structure.metadata, nomadEvidenceTarget: evidenceTarget.id,
+        nomadEvidenceProfile: evidenceProfile, nomadEvidenceLabel: nomadEvidenceProfileLabel(evidenceProfile) };
+      return { structure, total, selectedOffset: offset, attemptedEntries: triedOffsets.size,
+        evidenceTarget, evidenceProfile };
     } catch (error) {
       lastError = error;
     }
   }
-  throw new Error(`No usable periodic archive found after ${attempts} random samples${lastError ? `: ${lastError.message}` : ""}`);
+  throw new Error(`No public archive matched ${evidenceTarget.label} after ${attempts} random samples${lastError ? `: ${lastError.message}` : ""}`);
 }
 
 export { canonicalElement, normalizeElements, queryPayload };

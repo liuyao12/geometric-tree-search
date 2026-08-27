@@ -389,6 +389,11 @@ body.study-guide-open { overflow: hidden; }
 .database-heading { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
 .database-heading strong { color: var(--mint); font-size: 10px; }
 .database-heading span { color: var(--faint); font: 7px var(--mono); }
+.database-evidence { display: grid; gap: 5px; margin-top: 8px; padding: 7px; border: 1px solid rgba(85,200,255,.18); background: rgba(85,200,255,.025); }
+.database-evidence > span { display: flex; align-items: baseline; justify-content: space-between; gap: 7px; }
+.database-evidence small { color: #60756f; font: 5.5px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.database-evidence b { overflow: hidden; color: #8aa9a1; font: 5.5px var(--mono); font-weight: 400; text-align: right; text-overflow: ellipsis; white-space: nowrap; }
+.database-evidence select { width: 100%; min-height: 28px; border: 1px solid rgba(85,200,255,.22); background: #081417; color: #b7c9c4; font: 7px var(--mono); }
 .selection-label { display: flex; justify-content: space-between; margin-top: 7px; color: var(--faint); font: 6px var(--mono); text-transform: uppercase; }
 .selection-label strong { color: var(--mint); }
 .selected-elements { display: flex; min-height: 34px; flex-wrap: wrap; gap: 5px; align-items: center; margin-top: 5px; padding: 5px; border: 1px solid var(--line); background: #0b1a1b; }

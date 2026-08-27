@@ -32,6 +32,15 @@ assert.equal(vm.runInContext('reducedSampleFormula([["H",144],["O",72]])', conte
 assert.equal(vm.runInContext('reducedSampleFormula([["Al",24],["Cu",8],["Fe",4]])', context), "Al₆Cu₂Fe");
 assert.equal(vm.runInContext('reducedSampleFormula([["D",0.5],["O",1]])', context), "D 0.50 · O 1.00");
 
+context.occupationalAlternatives = (species) => species === "Cl"
+  ? { alternatives: [{ species: "Cl", fraction: 1 }], total: 1, label: "Cl 100%" }
+  : species === "occ[Fe=0.5;Ni=0.5]"
+    ? { alternatives: [{ species: "Fe", fraction: .5 }, { species: "Ni", fraction: .5 }],
+      total: 1, label: "Fe 50% / Ni 50%" } : null;
+assert.equal(vm.runInContext('activeSampleSpeciesLabel("Cl")', context), "Cl");
+assert.equal(vm.runInContext('activeSampleSpeciesLabel("occ[Fe=0.5;Ni=0.5]")', context), "Fe 50% / Ni 50%");
+assert.equal(vm.runInContext('reducedSampleFormula([["Cl",75],["Na",75]])', context), "ClNa");
+
 context.receiptComposition = () => ({ O: 72, H: 144 });
 context.referenceAtoms = [{}];
 assert.deepEqual(

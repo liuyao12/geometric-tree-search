@@ -6552,3 +6552,19 @@ A focus-microscope view expands the scientific stage for full-configuration clus
 the array of per-cluster marking scenes. It is presentation state only. The underlying
 coordinates, learned cover, connection sections, frozen candidates, search history, and
 receipts are identical before and after entering focus.
+
+## Build 220: request calculation evidence, not merely a composition
+
+Public NOMAD retrieval now separates chemical composition from the evidence needed for a
+growth investigation. The user may require geometry, three or more fixed-topology
+relaxation snapshots, at least one completely force-labelled snapshot, or five or more
+calculation-paired snapshots suitable for the geometry-surrogate preflight. Searchable
+geometry-optimization energy/force summaries first prefilter the exact-composition entry
+population. A bounded client-side gate then inspects at most eight archives and reports
+failure rather than silently falling back to a weaker evidence class.
+
+The input receipt records the requested target and the accepted archive's frame, energy,
+force, spin, and normalized-method support. Entry acceptance is the only automatic use of
+this target. Calculation channels do not enter cluster identity, candidate generation, or
+growth ranking unless a different compatible archive later passes the already frozen
+cross-archive transfer and explicit marking-promotion gate.

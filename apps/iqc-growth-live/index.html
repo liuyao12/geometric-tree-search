@@ -238,6 +238,15 @@
               <button type="button" data-element-preset="Cu,Zr">Cu–Zr</button>
               <button type="button" data-element-preset="Fe">Fe · magnetic data probe</button>
             </div>
+            <label class="database-evidence" for="databaseEvidenceSelect">
+              <span><small>evidence to retrieve</small><b id="databaseEvidenceHint">any usable periodic archive</b></span>
+              <select id="databaseEvidenceSelect">
+                <option value="geometry" selected>Geometry · any usable periodic archive</option>
+                <option value="relaxation">Relaxation series · ≥3 fixed-topology snapshots</option>
+                <option value="forces">Force-labelled · ≥1 complete force snapshot</option>
+                <option value="calibration">Surrogate-ready · ≥5 paired calculation snapshots</option>
+              </select>
+            </label>
             <button id="randomMaterialButton" class="database-button" type="button">Find a random matching structure</button>
             <div id="databaseStatus" class="import-status" role="status" aria-live="polite">Queries public bulk entries containing exactly the selected elements.</div>
             <p class="occupancy-note"><b>Disorder stays geometric.</b> Mixed/partial CIF sites remain one position with a finite species–vacancy alternative set. A colored orbital ring marks occupational alternatives; a violet wire ellipsoid shows the transported 2σ Uiso/Uij displacement halo. Both enter the auditable geometry, never an invented potential.</p>
@@ -1808,7 +1817,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260827-219"></script>
+  <script type="module" src="./app.js?v=20260827-220"></script>
   <script type="module" src="./evidence-atlas.js?v=20260826-19"></script>
 </body>
 </html>

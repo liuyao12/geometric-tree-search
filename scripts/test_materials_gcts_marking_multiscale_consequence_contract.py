@@ -36,8 +36,8 @@ def test_multiscale_readout_is_visible_receipted_and_versioned():
     assert "multiscaleStructure: marking.materialConsequence.multiscaleStructure ?" in APP
     assert "pairDistanceEvaluations" in APP
     assert "q₆/|ψ₆|" in HTML
-    assert 'buildId: "20260827-219"' in APP
-    assert 'app.js?v=20260827-219' in HTML
+    assert 'buildId: "20260827-220"' in APP
+    assert 'app.js?v=20260827-220' in HTML
     assert "Build 215" in README
     assert "Build 215" in DOC
 

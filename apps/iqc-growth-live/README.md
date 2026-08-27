@@ -5819,3 +5819,19 @@ The central stage also has a display-only **focus microscope**. It removes the s
 inspector columns plus the study compass, expands the full-scene cluster-discovery or
 per-cluster GCTS gallery, and exits by the same button or Escape. Focus changes no sample,
 cluster, marking, search control, candidate, receipt, or scientific calculation.
+
+### Build 220 · evidence-targeted public archive search
+
+The periodic-table composition query can now request the evidence class needed for the
+investigation: any usable periodic geometry, a fixed-topology relaxation series with at
+least three snapshots, a complete force-labelled snapshot, or a surrogate-ready series
+with at least five calculation-paired snapshots under one normalized method record. The
+same exact-composition NOMAD query uses the indexed geometry-optimization energy or force
+summary to prefilter calculation-bearing entries where applicable, samples at most eight
+archives, and fails explicitly if no inspected archive satisfies the stricter declared gate.
+
+The accepted archive carries a receipt-visible evidence profile (snapshot, energy, force,
+spin, and method-consistency counts). This profile chooses only the input archive. It does
+not label clusters, change geometry, authorize candidates, or rank growth. Energy/force
+information reaches GCTS only through the existing frozen cross-archive calibration gate;
+otherwise it remains displayed provenance and diagnostic geometry.

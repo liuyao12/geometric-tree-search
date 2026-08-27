@@ -9,7 +9,8 @@ import {
   parseStructureText,
   validateStructure,
 } from "./structure-io.js?v=20260826-7";
-import { randomNomadStructure } from "./structure-database.js?v=20260826-6";
+import { NOMAD_EVIDENCE_TARGETS, nomadEvidenceProfileLabel, randomNomadStructure }
+  from "./structure-database.js?v=20260827-7";
 import { bestAffineNeighborhoodResidual } from "./relaxation-local-environment.js?v=20260826-2";
 import { assessGeometrySurrogatePromotion, evaluateFrozenGeometrySurrogate,
   frozenGeometrySurrogateArtifact, frozenGeometrySurrogatePreference,
@@ -230,6 +231,8 @@ const periodicTableGrid = $("periodicTableGrid");
 const periodicClearButton = $("periodicClearButton");
 const periodicCloseButton = $("periodicCloseButton");
 const randomMaterialButton = $("randomMaterialButton");
+const databaseEvidenceSelect = $("databaseEvidenceSelect");
+const databaseEvidenceHint = $("databaseEvidenceHint");
 const databaseStatus = $("databaseStatus");
 const databaseSourceLink = $("databaseSourceLink");
 const confinementSelect = $("confinementSelect");
@@ -1822,6 +1825,19 @@ const GROWTH_PROTOCOL_CONTROL_IDS = new Set([
   "growthNucleiSelect", "nucleationSiteSelect", "growthSchedulingSelect",
 ]);
 
+function selectedNomadEvidenceTarget() {
+  return NOMAD_EVIDENCE_TARGETS[databaseEvidenceSelect.value] || NOMAD_EVIDENCE_TARGETS.geometry;
+}
+
+function renderDatabaseEvidenceTarget({ resetStatus = false } = {}) {
+  const target = selectedNomadEvidenceTarget();
+  databaseEvidenceHint.textContent = target.label.replace(/^.*? · /, "");
+  if (resetStatus) {
+    databaseStatus.className = "import-status";
+    databaseStatus.textContent = `Queries exact-composition public bulk entries${target.id === "geometry" ? "" : " with an indexed calculation prefilter"}, then inspects up to eight archives until one satisfies ${target.label}.`;
+  }
+}
+
 function renderPeriodicSelection() {
   selectedElementsContainer.replaceChildren();
   selectedElementCount.textContent = String(selectedDatabaseElements.length);
@@ -2888,7 +2904,12 @@ function chemicalSubscript(value) {
 }
 
 function activeSampleSpeciesLabel(species) {
-  return occupationalAlternatives(species)?.label || species;
+  const occupational = occupationalAlternatives(species);
+  if (!occupational) return species;
+  if (occupational.alternatives?.length === 1 && Math.abs((occupational.total ?? 1) - 1) <= 1e-8) {
+    return occupational.alternatives[0].species;
+  }
+  return occupational.label || species;
 }
 
 function activeSampleCompositionRecords(material = currentMaterial()) {
@@ -2924,7 +2945,11 @@ function renderActiveSamplePassport(material = currentMaterial()) {
   activeSampleFormula.textContent = reducedSampleFormula(records);
   activeSampleSiteCount.textContent = referenceEntityLabel();
   activeSampleGeometry.textContent = `${material.intrinsicDimension === 2 ? "intrinsic 2D" : "3D"} · ${material.periodicWindow ? "periodic observation" : "finite crop"}`;
-  activeSampleEvidence.textContent = material.audit || "emergent geometry";
+  const archiveEvidence = imported ? importedStructure?.metadata?.nomadEvidenceLabel : null;
+  activeSampleEvidence.textContent = archiveEvidence || material.audit || "emergent geometry";
+  activeSampleEvidence.title = archiveEvidence
+    ? "Physical calculation evidence retrieved with this public archive; its use remains receipt-visible and calibration-gated."
+    : material.audit || "emergent geometry";
   activeSampleComposition.replaceChildren();
   records.slice(0, 8).forEach(([species, count]) => {
     const item = document.createElement("span");
@@ -3174,7 +3199,8 @@ function activateImportedStructure(parsed, filename, statusElement = importStatu
       symmetry: parsed.metadata?.spaceGroupNumber
         ? `${parsed.metadata.spaceGroup || "space group"} · #${parsed.metadata.spaceGroupNumber}`
         : parsed.metadata?.spaceGroup || "not supplied",
-      audit: "emergent structure audit",
+      audit: parsed.metadata?.nomadEvidenceLabel
+        ? `NOMAD · ${parsed.metadata.nomadEvidenceLabel}` : "emergent structure audit",
       note: `Imported from ${filename}; no structure class, space group, or cluster vocabulary is supplied to growth. Mixed and partial sites remain occupational alternatives rather than coincident atoms or a silently selected element. Supplied formal oxidation states remain chemistry channels; missing states are never guessed. Explicit scalar atomic spins remain diagnostic labels and never become invented vectors or a growth score.`,
     },
   };
@@ -9078,7 +9104,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-219",
+      buildId: "20260827-220",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -9096,6 +9122,15 @@ async function buildExperimentReceipt() {
       atomCount: referenceAtoms.length,
       externalGeometry: receiptExternalGeometry(),
       observationToGrowthDomain: currentGrowthDomainSnapshot(),
+      publicDatabaseEvidence: scenarioSelect.value === "imported" && importedStructure?.metadata?.entryId ? {
+        requestedTarget: importedStructure.metadata.nomadEvidenceTarget || "geometry",
+        label: importedStructure.metadata.nomadEvidenceLabel || "geometry-only archive",
+        profile: importedStructure.metadata.nomadEvidenceProfile || null,
+        clientSideEvidenceGate: true,
+        targetUsedForEntryAcceptance: true,
+        targetUsedForClusterIdentity: false,
+        targetUsedForGrowth: false,
+      } : null,
       recordedMeasurementConditions: recordedConditions ? {
         provenance: recordedConditions.provenance || "recorded diffraction/cell-measurement conditions",
         temperatureKelvin: recordedConditions.temperature?.value ?? null,
@@ -25431,22 +25466,25 @@ elementPresetButtons.forEach((button) => button.addEventListener("click", () => 
   selectedDatabaseElements = button.dataset.elementPreset.split(",");
   renderPeriodicSelection();
 }));
+databaseEvidenceSelect.addEventListener("change", () => renderDatabaseEvidenceTarget({ resetStatus: true }));
 randomMaterialButton.addEventListener("click", async () => {
   randomMaterialButton.disabled = true;
   databaseStatus.className = "import-status";
   const requestedElements = [...selectedDatabaseElements];
-  databaseStatus.textContent = `Searching NOMAD for exactly ${requestedElements.join(" + ")}…`;
+  const evidenceTarget = selectedNomadEvidenceTarget();
+  databaseStatus.textContent = `Searching NOMAD for exactly ${requestedElements.join(" + ")} · ${evidenceTarget.label}…`;
   try {
-    const { structure, total, selectedOffset } = await randomNomadStructure(requestedElements);
+    const { structure, total, selectedOffset, attemptedEntries, evidenceProfile } = await randomNomadStructure(requestedElements,
+      { evidenceTarget: evidenceTarget.id });
     const repetitions = structure.metadata.repetitions || [1, 1, 1];
     const primitiveCount = structure.metadata.primitiveAtomCount || structure.atoms.length;
     activateImportedStructure(structure, `NOMAD entry ${structure.metadata.entryId}`, databaseStatus);
-    databaseStatus.textContent = `${importSummary(structure, importedStructure.validation)} · ${primitiveCount} atoms expanded ${repetitions.join("×")} · random ${selectedOffset + 1}/${total.toLocaleString()}`;
+    databaseStatus.textContent = `${importSummary(structure, importedStructure.validation)} · ${nomadEvidenceProfileLabel(evidenceProfile)} · ${primitiveCount} atoms expanded ${repetitions.join("×")} · inspected ${attemptedEntries} archive${attemptedEntries === 1 ? "" : "s"} · random ${selectedOffset + 1}/${total.toLocaleString()}`;
     databaseSourceLink.href = structure.metadata.sourceUrl;
     databaseSourceLink.textContent = `Open NOMAD entry ${structure.metadata.entryId.slice(0, 10)}… ↗`;
   } catch (error) {
     databaseStatus.className = "import-status invalid";
-    databaseStatus.textContent = `Database query failed: ${error.message}`;
+    databaseStatus.textContent = `Database query failed: ${error.message}. The active specimen is unchanged.`;
   } finally {
     randomMaterialButton.disabled = selectedDatabaseElements.length === 0;
   }
@@ -26156,6 +26194,7 @@ restoreExperimentNotebook();
 renderExperimentNotebook();
 renderStudyGuide();
 buildPeriodicTable();
+renderDatabaseEvidenceTarget();
 enterPipelineStage(applyLaunchParameters());
 renderStageFocus();
 if (studyLaunchAudit?.loaded) {

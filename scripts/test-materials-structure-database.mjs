@@ -1,5 +1,8 @@
 import assert from "node:assert/strict";
-import { canonicalElement, makeLearningSupercell, nomadArchiveToStructure, normalizeElements, queryPayload, randomNomadStructure } from "../apps/iqc-growth-live/structure-database.js";
+import { canonicalElement, makeLearningSupercell, NOMAD_EVIDENCE_TARGETS, nomadArchiveToStructure,
+  nomadEvidenceProfileLabel, nomadEvidenceTargetAccepts, nomadStructureEvidenceProfile,
+  normalizeElements, normalizeNomadEvidenceTarget, queryPayload, randomNomadStructure }
+  from "../apps/iqc-growth-live/structure-database.js";
 import { validateStructure } from "../apps/iqc-growth-live/structure-io.js";
 
 assert.equal(canonicalElement("na"), "Na");
@@ -13,6 +16,11 @@ assert.deepEqual(payload.query.and[0]["results.material.elements"].all, ["Al", "
 assert.equal(payload.query.and[1]["results.material.n_elements"], 3);
 assert.equal(payload.query.and[2]["results.material.structural_type"], "bulk");
 assert.equal(payload.pagination.page_offset, 17);
+const forcePayload = queryPayload(["Na", "Cl"], 0, "forces");
+assert.equal(forcePayload.query.and[3]["results.properties.geometry_optimization.final_force_maximum:lte"], 1e6);
+const relaxationPayload = queryPayload(["Na", "Cl"], 0, "relaxation");
+assert.equal(relaxationPayload.query.and[3]["results.properties.geometry_optimization.final_energy_difference:lte"], 1e6);
+assert.equal(queryPayload(["Na", "Cl"], 0, "geometry").query.and.length, 3);
 
 const entry = {
   entry_id: "test-entry",
@@ -57,6 +65,17 @@ assert.equal(primitive.metadata.calculation.atomicSpinAxisAvailable, false);
 assert.equal(primitive.metadata.calculation.atomicSpinsUsedForGrowth, false);
 assert.equal(primitive.metadata.calculation.forcesUsedForGrowth, false);
 assert.equal(primitive.metadata.calculation.absoluteEnergyComparedAcrossEntries, false);
+const primitiveEvidence = nomadStructureEvidenceProfile(primitive);
+assert.equal(primitiveEvidence.frameCount, 1);
+assert.equal(primitiveEvidence.forceLabelsAvailable, true);
+assert.equal(primitiveEvidence.relaxationAvailable, false);
+assert.equal(primitiveEvidence.calibrationReady, false);
+assert.equal(nomadEvidenceTargetAccepts(primitiveEvidence, "geometry"), true);
+assert.equal(nomadEvidenceTargetAccepts(primitiveEvidence, "forces"), true);
+assert.equal(nomadEvidenceTargetAccepts(primitiveEvidence, "relaxation"), false);
+assert.equal(nomadEvidenceProfileLabel(primitiveEvidence), "force-labelled geometry · 1/1 snapshots");
+assert.equal(normalizeNomadEvidenceTarget("calibration"), NOMAD_EVIDENCE_TARGETS.calibration);
+assert.throws(() => normalizeNomadEvidenceTarget("invented"), /Unknown NOMAD evidence target/);
 
 const expanded = makeLearningSupercell(primitive);
 assert.ok(expanded.atoms.length >= 128 && expanded.atoms.length <= 512);
@@ -83,6 +102,17 @@ assert.deepEqual(calls[1].body.required.run["system[-1]"], { atoms: "*" });
 assert.deepEqual(calls[1].body.required.run["calculation[-1]"], {
   energy: "*", forces: "*", charges: "*", system_ref: "*", method_ref: "*",
 });
+assert.equal(sampled.evidenceTarget.id, "geometry");
+assert.equal(sampled.evidenceProfile.forceLabelsAvailable, true);
+assert.equal(sampled.structure.metadata.nomadEvidenceTarget, "geometry");
+const forceSampled = await randomNomadStructure(["Na", "Cl"], {
+  fetchImpl: fakeFetch, random: () => 0, evidenceTarget: "forces",
+});
+assert.equal(forceSampled.evidenceTarget.id, "forces");
+assert.equal(forceSampled.structure.metadata.nomadEvidenceLabel, "force-labelled geometry · 1/1 snapshots");
+await assert.rejects(randomNomadStructure(["Na", "Cl"], {
+  fetchImpl: fakeFetch, random: () => 0, evidenceTarget: "relaxation",
+}), /No public archive matched relaxation series/);
 
 const relaxationEntry = {
   ...entry,
@@ -118,6 +148,14 @@ assert.ok(Math.abs(relaxation.frames[2].metadata.calculation.energyPerPrimitiveA
 assert.equal(relaxation.frames[1].metadata.nomadCalculationIndex, 1);
 assert.deepEqual(relaxation.frames[0].atoms[0].calculationForceEvPerAngstrom, [0, 3, 0]);
 assert.deepEqual(relaxation.frames[2].atoms[1].calculationForceEvPerAngstrom, [0, 0, -1]);
+const relaxationEvidence = nomadStructureEvidenceProfile(relaxation);
+assert.equal(relaxationEvidence.relaxationAvailable, true);
+assert.equal(relaxationEvidence.relaxationFrames, 3);
+assert.equal(relaxationEvidence.energyFrames, 3);
+assert.equal(relaxationEvidence.forceFrames, 3);
+assert.equal(relaxationEvidence.methodConsistent, true);
+assert.equal(relaxationEvidence.calibrationReady, false);
+assert.equal(nomadEvidenceTargetAccepts(relaxationEvidence, "relaxation"), true);
 const expandedRelaxation = makeLearningSupercell(relaxation);
 assert.equal(expandedRelaxation.frames.length, 3);
 assert.equal(expandedRelaxation.frames[0].atoms.length, 128);
@@ -150,6 +188,27 @@ assert.equal(boundedRelaxation.metadata.relaxationSequence.originalSystemCount, 
 assert.equal(boundedRelaxation.metadata.relaxationSequence.retainedSystemIndices[0], 0);
 assert.equal(boundedRelaxation.metadata.relaxationSequence.retainedSystemIndices.at(-1), 29);
 
+const calibrationSystems = Array.from({ length: 5 }, (_, index) => ({ atoms: {
+  ...relaxationSystems[index % relaxationSystems.length].atoms,
+  positions: [[index * .002e-10, 0, 0], [(2.9 - index * .02) * 1e-10, 0, 0]],
+} }));
+const calibrationCalculations = Array.from({ length: 5 }, (_, index) => ({
+  ...relaxationCalculations[index % relaxationCalculations.length],
+  system_ref: `/run/0/system/${index}`,
+}));
+const calibrationStructure = nomadArchiveToStructure(relaxationEntry, {
+  data: { archive: { run: [{ program: { name: "VASP", version: "calibration-test" },
+    method: [{ electronic: { method: "DFT" } }], system: calibrationSystems,
+    calculation: calibrationCalculations }] } },
+});
+const calibrationEvidence = nomadStructureEvidenceProfile(calibrationStructure);
+assert.equal(calibrationEvidence.relaxationFrames, 5);
+assert.equal(calibrationEvidence.pairedCalculationFrames, 5);
+assert.equal(calibrationEvidence.methodConsistent, true);
+assert.equal(calibrationEvidence.calibrationReady, true);
+assert.equal(nomadEvidenceTargetAccepts(calibrationEvidence, "calibration"), true);
+assert.equal(nomadEvidenceProfileLabel(calibrationEvidence), "5 snapshots · calculation-series ready");
+
 const relaxationCalls = [];
 const relaxationFetch = async (url, options) => {
   relaxationCalls.push({ url, body: JSON.parse(options.body) });
@@ -165,5 +224,10 @@ assert.deepEqual(relaxationCalls[1].body.required.run.calculation, {
   energy: "*", forces: "*", charges: "*", system_ref: "*", method_ref: "*",
 });
 assert.equal(relaxationCalls[1].body.required.run["system[-1]"], undefined);
+const sampledRelaxationTarget = await randomNomadStructure(["Na", "Cl"], {
+  fetchImpl: relaxationFetch, random: () => 0, evidenceTarget: "relaxation",
+});
+assert.equal(sampledRelaxationTarget.evidenceProfile.relaxationAvailable, true);
+assert.equal(sampledRelaxationTarget.attemptedEntries, 1);
 
 console.log("materials online database: conversion and supercell checks passed");
