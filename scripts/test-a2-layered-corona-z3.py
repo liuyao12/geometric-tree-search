@@ -21,6 +21,9 @@ SUBSTITUTION = load("a2_substitution", "screen-a2-layered-substitution.py")
 CLUSTER_SUBSTITUTION = load(
     "a2_cluster_substitution", "screen-a2-layered-two-cluster-substitution.py"
 )
+THREE_CLUSTER_SUBSTITUTION = load(
+    "a2_three_cluster_substitution", "screen-a2-layered-three-cluster-substitution.py"
+)
 
 root_records = [
     json.loads(line)
@@ -302,6 +305,42 @@ for scale in (2, 3):
     assert mixed["certified"] is True
     assert mixed["closed_alphabet"] == [0]
 
+three_cluster_unit = THREE_CLUSTER_SUBSTITUTION.screen_candidate(
+    cluster_unit, 10000, progress_every=0
+)
+three_unit_screen = three_cluster_unit["three_copy_metatile_screen"]
+assert three_cluster_unit["classification"] == "three_copy_metatile_substitution_system"
+assert three_unit_screen["symmetry_distinct_metatiles"] == 4
+assert three_unit_screen["raw_three_copy_extensions"] == 48
+assert three_unit_screen["canonical_sha256"] == (
+    "c26bcfa2c65e5907b2ea04a21450562bbe871eda8d19f885e2942123e33dfb22"
+)
+assert three_unit_screen["closed_alphabet"] == [0, 1, 2, 3]
+assert three_unit_screen["parent_counts"] == {
+    "local_obstruction": 0,
+    "exact_unsat": 0,
+    "mixed_metatile_rule": 4,
+    "unresolved": 0,
+}
+assert all(
+    parent["replay"]["verified"] is True
+    and all("orientation_index" in child and "translation" in child for child in parent["rule"])
+    for parent in three_unit_screen["parent_results"]
+)
+
+algorithm_x_target = {
+    (0, 0, 0, "u"), (1, 0, 0, "u"), (2, 0, 0, "u"),
+}
+algorithm_x_placements = [
+    {"cells": {(0, 0, 0, "u"), (1, 0, 0, "u")}},
+    {"cells": {(1, 0, 0, "u"), (2, 0, 0, "u")}},
+]
+algorithm_x_negative = THREE_CLUSTER_SUBSTITUTION.replay_unsat_with_independent_algorithm_x(
+    algorithm_x_target, algorithm_x_placements, 10000
+)
+assert algorithm_x_negative["verified"] is True
+assert algorithm_x_negative["result"] == "unsat"
+
 expected_metatile_types = {
     "a2lp_7_00128": 95,
     "a2lp_7_00211": 93,
@@ -374,6 +413,73 @@ for scale in (2, 3):
             replay = parent.get("local_obstruction_replay") or parent.get("exact_unsat_replay")
             assert replay["verified"] is True
     cluster_records.extend(records)
+
+expected_three_metatile_types = {
+    "a2lp_7_00128": 10115,
+    "a2lp_7_00211": 10446,
+    "a2lp_7_00232": 8878,
+    "a2lp_7_00235": 9583,
+    "a2lp_7_00694": 6329,
+    "a2lp_7_00755": 6406,
+    "a2lp_7_00777": 6329,
+    "a2lp_7_00809": 5923,
+}
+expected_three_metatile_hashes = {
+    "a2lp_7_00128": "3efbe89c569f6c61049e48db4ba6c6d87bfac4c5cb22af2675661f16ddbbc792",
+    "a2lp_7_00211": "91537237d3568e90790297c84260834f5e468b9205b371e751e23bd31e35a215",
+    "a2lp_7_00232": "a8d45104aba8267a85d2c7111a1260003967c0e1545640a999ca59f3d499e8e5",
+    "a2lp_7_00235": "ad69470b9a8777e4a9140f9e879d5fdfb938b2ee49ba522c304585c41bdd5c12",
+    "a2lp_7_00694": "4f28f466f35d94638f7123506c3af712cc3b06e3ee8ddc1a16e9197563e693ed",
+    "a2lp_7_00755": "b38b9b77cf1305216b50329ef61dcd51008ec94ebc8c210872da8a970c141e2a",
+    "a2lp_7_00777": "45affe0606eaa34bd8c462213087626e47f4cf6f9f4b4a9b876299ea76e23b30",
+    "a2lp_7_00809": "f4ef25d35f2283cc301e4d115a2d6539181835eb4cc76784ef2a9e3fad863870",
+}
+expected_three_exact_unsat = {
+    "a2lp_7_00128": 0,
+    "a2lp_7_00211": 246,
+    "a2lp_7_00232": 0,
+    "a2lp_7_00235": 6,
+    "a2lp_7_00694": 0,
+    "a2lp_7_00755": 0,
+    "a2lp_7_00777": 0,
+    "a2lp_7_00809": 0,
+}
+three_cluster_records = []
+for candidate_id in expected_three_metatile_types:
+    record = json.loads((
+        ROOT / "data" /
+        f"a2-layered-size7-three-cluster-substitution-scalar2-{candidate_id}.ndjson"
+    ).read_text())
+    screen = record["three_copy_metatile_screen"]
+    assert record["classification"] == "no_three_copy_metatile_scalar2_substitution"
+    assert screen["certified"] is True
+    assert screen["symmetry_distinct_metatiles"] == expected_three_metatile_types[candidate_id]
+    assert screen["canonical_sha256"] == expected_three_metatile_hashes[candidate_id]
+    assert screen["parent_counts"] == {
+        "local_obstruction": (
+            expected_three_metatile_types[candidate_id]
+            - expected_three_exact_unsat[candidate_id]
+        ),
+        "exact_unsat": expected_three_exact_unsat[candidate_id],
+        "mixed_metatile_rule": 0,
+        "unresolved": 0,
+    }
+    assert len(screen["parent_results"]) == expected_three_metatile_types[candidate_id]
+    assert all(
+        (
+            parent.get("local_obstruction_replay")
+            or parent.get("exact_unsat_replay")
+        )["verified"] is True
+        for parent in screen["parent_results"]
+    )
+    three_cluster_records.append(record)
+
+resolved_three = next(
+    record for record in three_cluster_records if record["id"] == "a2lp_7_00211"
+)["three_copy_metatile_screen"]
+assert resolved_three["residual_resolutions"][0]["parent_index"] == 1168
+assert resolved_three["residual_resolutions"][0]["prior_replay"]["result"] == "unknown"
+assert resolved_three["residual_resolutions"][0]["resolution"]["verified"] is True
 assert all(record["substitution"]["certified"] is True for record in anisotropic_records)
 assert all(
     (record["substitution"]["local_obstruction_replay"] or
@@ -393,4 +499,5 @@ print("A2 layered corona regression passed", {
     "scalar_substitution_negatives": len(substitution_records),
     "anisotropic_substitution_negatives": len(anisotropic_records),
     "two_copy_metatile_parent_scale_cases": sum(expected_metatile_types.values()) * 2,
+    "three_copy_metatile_parent_cases": sum(expected_three_metatile_types.values()),
 })

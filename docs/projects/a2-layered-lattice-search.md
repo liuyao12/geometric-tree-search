@@ -223,9 +223,38 @@ a closed one-type substitution alphabet at both scales. The reports are
 `data/a2-layered-size7-two-cluster-substitution-scalar2-focused.ndjson` and
 `data/a2-layered-size7-two-cluster-substitution-scalar3-focused.ndjson`.
 
-This result does not exclude substitutions based on clusters of three or more
-monotiles, non-scalar metatile inflations, or metatile boundaries that are not
-unions of two face-connected monotile copies.
+The two-copy result alone does not exclude substitutions based on clusters of
+three or more monotiles, non-scalar metatile inflations, or metatile boundaries
+that are not unions of two face-connected monotile copies.
+
+The next exact family raises the metatile size to three monotile copies at
+scalar inflation 2. Rather than compare every parent with every named child
+type, `scripts/screen-a2-layered-three-cluster-substitution.py` constructs the
+complete graph of legal monotile placements inside each inflated parent. A
+legal child is exactly a connected, pairwise-disjoint triple in that graph.
+This indexed formulation is equivalent to the full mixed alphabet but avoids
+an otherwise quadratic comparison among thousands of metatile types.
+
+After proper A2 symmetry and translation quotienting, the eight alphabets
+contain 10,115 (`00128`), 10,446 (`00211`), 8,878 (`00232`), 9,583 (`00235`),
+6,329 (`00694`), 6,406 (`00755`), 6,329 (`00777`), and 5,923 (`00809`) types:
+64,009 parent cases in total. Of these, 63,757 have independently replayed
+local connected-triple obstructions. The remaining 252 exact-cover systems
+are independently replayed UNSAT: 246 belong to `00211` and 6 to `00235`.
+There are no rules and no unresolved parents, so the complete connected
+three-copy, scalar-2 mixed substitution family is certified negative for all
+eight candidates.
+
+One 38,873-placement `00211` parent exceeded the initial five-minute QF_FD
+replay. `scripts/resolve-a2-layered-three-cluster-residual.py` re-enumerates
+and hash-checks the full family, then independently proves that residual UNSAT
+with reverse target and branch order in 200 nodes. The report preserves the
+prior timeout and the resolving certificate. Per-candidate reports begin with
+`data/a2-layered-size7-three-cluster-substitution-scalar2-`.
+
+This still does not exclude connected clusters of four or more monotiles,
+scalar-3 substitutions of three-copy metatiles, or non-scalar metatile
+inflations.
 
 The machine-readable screen is `data/a2-layered-size5-screen.ndjson`. Rebuild
 it with:

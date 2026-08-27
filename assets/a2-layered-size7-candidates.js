@@ -98,6 +98,11 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         3
       ],
       "substitution_two_copy_metatile_parent_cases_excluded": 170,
+      "substitution_three_copy_metatile_types": 8878,
+      "substitution_three_copy_metatile_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_three_copy_metatile_exact_unsat_parents": 0,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-a2lp_7_00232-deep.ndjson",
@@ -114,7 +119,8 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "substitution_two_copy_metatile_reports": [
         "data/a2-layered-size7-two-cluster-substitution-scalar2-focused.ndjson",
         "data/a2-layered-size7-two-cluster-substitution-scalar3-focused.ndjson"
-      ]
+      ],
+      "substitution_three_copy_metatile_report": "data/a2-layered-size7-three-cluster-substitution-scalar2-a2lp_7_00232.ndjson"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -219,6 +225,11 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         3
       ],
       "substitution_two_copy_metatile_parent_cases_excluded": 178,
+      "substitution_three_copy_metatile_types": 9583,
+      "substitution_three_copy_metatile_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_three_copy_metatile_exact_unsat_parents": 6,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
@@ -235,7 +246,8 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "substitution_two_copy_metatile_reports": [
         "data/a2-layered-size7-two-cluster-substitution-scalar2-focused.ndjson",
         "data/a2-layered-size7-two-cluster-substitution-scalar3-focused.ndjson"
-      ]
+      ],
+      "substitution_three_copy_metatile_report": "data/a2-layered-size7-three-cluster-substitution-scalar2-a2lp_7_00235.ndjson"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -340,6 +352,11 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         3
       ],
       "substitution_two_copy_metatile_parent_cases_excluded": 146,
+      "substitution_three_copy_metatile_types": 6329,
+      "substitution_three_copy_metatile_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_three_copy_metatile_exact_unsat_parents": 0,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
@@ -356,7 +373,8 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "substitution_two_copy_metatile_reports": [
         "data/a2-layered-size7-two-cluster-substitution-scalar2-focused.ndjson",
         "data/a2-layered-size7-two-cluster-substitution-scalar3-focused.ndjson"
-      ]
+      ],
+      "substitution_three_copy_metatile_report": "data/a2-layered-size7-three-cluster-substitution-scalar2-a2lp_7_00694.ndjson"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -461,6 +479,11 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         3
       ],
       "substitution_two_copy_metatile_parent_cases_excluded": 142,
+      "substitution_three_copy_metatile_types": 5923,
+      "substitution_three_copy_metatile_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_three_copy_metatile_exact_unsat_parents": 0,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
@@ -477,7 +500,8 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "substitution_two_copy_metatile_reports": [
         "data/a2-layered-size7-two-cluster-substitution-scalar2-focused.ndjson",
         "data/a2-layered-size7-two-cluster-substitution-scalar3-focused.ndjson"
-      ]
+      ],
+      "substitution_three_copy_metatile_report": "data/a2-layered-size7-three-cluster-substitution-scalar2-a2lp_7_00809.ndjson"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -582,6 +606,11 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         3
       ],
       "substitution_two_copy_metatile_parent_cases_excluded": 186,
+      "substitution_three_copy_metatile_types": 10446,
+      "substitution_three_copy_metatile_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_three_copy_metatile_exact_unsat_parents": 246,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
@@ -598,7 +627,8 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "substitution_two_copy_metatile_reports": [
         "data/a2-layered-size7-two-cluster-substitution-scalar2-focused.ndjson",
         "data/a2-layered-size7-two-cluster-substitution-scalar3-focused.ndjson"
-      ]
+      ],
+      "substitution_three_copy_metatile_report": "data/a2-layered-size7-three-cluster-substitution-scalar2-a2lp_7_00211.ndjson"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -703,6 +733,11 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         3
       ],
       "substitution_two_copy_metatile_parent_cases_excluded": 146,
+      "substitution_three_copy_metatile_types": 6406,
+      "substitution_three_copy_metatile_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_three_copy_metatile_exact_unsat_parents": 0,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
@@ -719,7 +754,8 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "substitution_two_copy_metatile_reports": [
         "data/a2-layered-size7-two-cluster-substitution-scalar2-focused.ndjson",
         "data/a2-layered-size7-two-cluster-substitution-scalar3-focused.ndjson"
-      ]
+      ],
+      "substitution_three_copy_metatile_report": "data/a2-layered-size7-three-cluster-substitution-scalar2-a2lp_7_00755.ndjson"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -824,6 +860,11 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         3
       ],
       "substitution_two_copy_metatile_parent_cases_excluded": 146,
+      "substitution_three_copy_metatile_types": 6329,
+      "substitution_three_copy_metatile_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_three_copy_metatile_exact_unsat_parents": 0,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
@@ -840,7 +881,8 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "substitution_two_copy_metatile_reports": [
         "data/a2-layered-size7-two-cluster-substitution-scalar2-focused.ndjson",
         "data/a2-layered-size7-two-cluster-substitution-scalar3-focused.ndjson"
-      ]
+      ],
+      "substitution_three_copy_metatile_report": "data/a2-layered-size7-three-cluster-substitution-scalar2-a2lp_7_00777.ndjson"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -945,6 +987,11 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         3
       ],
       "substitution_two_copy_metatile_parent_cases_excluded": 190,
+      "substitution_three_copy_metatile_types": 10115,
+      "substitution_three_copy_metatile_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_three_copy_metatile_exact_unsat_parents": 0,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
@@ -961,7 +1008,8 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "substitution_two_copy_metatile_reports": [
         "data/a2-layered-size7-two-cluster-substitution-scalar2-focused.ndjson",
         "data/a2-layered-size7-two-cluster-substitution-scalar3-focused.ndjson"
-      ]
+      ],
+      "substitution_three_copy_metatile_report": "data/a2-layered-size7-three-cluster-substitution-scalar2-a2lp_7_00128.ndjson"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
