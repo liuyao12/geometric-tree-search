@@ -74,5 +74,15 @@ assert.deepEqual(surrogate.heldoutLeaps, [4, 5]);
 assert.equal(surrogate.features.some((feature) => feature.id === "heldout-only"), false);
 assert.equal(surrogate.heldoutSpearman, 1);
 assert.ok(surrogate.heldoutSkillVersusTrainingMean > .99);
+assert.equal(surrogate.heldoutFeatureSupportCoverage, 1);
 assert.equal(surrogate.fitUsedHeldout, false);
+const shiftedRecords = surrogateRecords.map((record) => record.leapIndex <= 3 ? record : ({ ...record,
+  physicsTerms: record.physicsTerms.map((term) => term.id === "strain"
+    ? { ...term, contribution: term.contribution + 20 } : term) }));
+const shifted = blockedCreationResponseSurrogate(shiftedRecords, "shellChange",
+  { trainingFraction: .6, minimumSamplesPerSplit: 4, ridge: .01 });
+assert.equal(shifted.heldoutFeatureSupportCoverage, 0);
+assert.equal(shifted.supportedHeldoutPlacements, 0);
+assert.equal(shifted.unsupportedHeldoutPlacements, 16);
+assert.ok(shifted.maximumStandardizedFeatureExcess > 0);
 console.log("materials creation-response association: passed");

@@ -217,9 +217,14 @@ export function blockedCreationResponseSurrogate(records, outcomeId, {
   const features = retainedIndices.map((index) => candidates[index]);
   const featureMeans = retainedIndices.map((index) => means[index]);
   const featureScales = retainedIndices.map((index) => scales[index]);
+  const featureMinimums = retainedIndices.map((index) => Math.min(...rawTraining.map((row) => row[index])));
+  const featureMaximums = retainedIndices.map((index) => Math.max(...rawTraining.map((row) => row[index])));
+  const featureVector = (record) => {
+    const terms = termMap(record); return features.map((term) => terms.get(term.id) || 0);
+  };
   const standardize = (record) => {
-    const terms = termMap(record);
-    return features.map((term, index) => ((terms.get(term.id) || 0) - featureMeans[index]) / featureScales[index]);
+    const vector = featureVector(record);
+    return vector.map((value, index) => (value - featureMeans[index]) / featureScales[index]);
   };
   const xTrain = trainingRecords.map(standardize);
   const yTrain = trainingRecords.map((record) => record.outcomes[outcomeId]);
@@ -231,13 +236,22 @@ export function blockedCreationResponseSurrogate(records, outcomeId, {
   const weights = solveRidgeSystem(xtx, xty);
   if (!weights) return unavailable("fixed-ridge system was numerically singular");
   const predictions = heldoutRecords.map((record) => {
-    const vector = standardize(record);
+    const rawVector = featureVector(record); const vector = standardize(record);
+    const standardizedExcesses = rawVector.map((value, index) => value < featureMinimums[index]
+      ? (featureMinimums[index] - value) / featureScales[index]
+      : value > featureMaximums[index] ? (value - featureMaximums[index]) / featureScales[index] : 0);
     const predicted = targetMean + vector.reduce((sum, value, index) => sum + value * weights[index], 0);
     return { placementId: record.placementId, leapIndex: record.leapIndex,
-      observed: record.outcomes[outcomeId], predicted, baseline: targetMean };
+      observed: record.outcomes[outcomeId], predicted, baseline: targetMean,
+      inTrainingFeatureEnvelope: standardizedExcesses.every((value) => value <= 1e-12),
+      maximumStandardizedFeatureExcess: Math.max(...standardizedExcesses) };
   });
   const errors = predictions.map((entry) => entry.predicted - entry.observed);
   const baselineErrors = predictions.map((entry) => entry.baseline - entry.observed);
+  const supportedPredictions = predictions.filter((entry) => entry.inTrainingFeatureEnvelope);
+  const unsupportedPredictions = predictions.filter((entry) => !entry.inTrainingFeatureEnvelope);
+  const subsetMae = (subset) => subset.length ? subset.reduce((sum, entry) =>
+    sum + Math.abs(entry.predicted - entry.observed), 0) / subset.length : null;
   const squared = errors.reduce((sum, error) => sum + error * error, 0);
   const baselineSquared = baselineErrors.reduce((sum, error) => sum + error * error, 0);
   const predictedRanks = averageRanks(predictions.map((entry) => entry.predicted));
@@ -248,7 +262,8 @@ export function blockedCreationResponseSurrogate(records, outcomeId, {
     ridge, maximumFeatures, featureSelectionRule: "training support >= half; support descending then stable term ID",
     features: features.map((term, index) => ({ id: term.id, label: term.label,
       trainingSupport: term.support, mean: rounded(featureMeans[index], 8),
-      scale: rounded(featureScales[index], 8), standardizedWeight: rounded(weights[index], 8) })),
+      scale: rounded(featureScales[index], 8), minimum: rounded(featureMinimums[index], 8),
+      maximum: rounded(featureMaximums[index], 8), standardizedWeight: rounded(weights[index], 8) })),
     trainingTargetMean: rounded(targetMean, 8),
     heldoutMeanAbsoluteError: rounded(errors.reduce((sum, error) => sum + Math.abs(error), 0) / errors.length, 8),
     baselineMeanAbsoluteError: rounded(baselineErrors.reduce((sum, error) => sum + Math.abs(error), 0) / baselineErrors.length, 8),
@@ -256,8 +271,17 @@ export function blockedCreationResponseSurrogate(records, outcomeId, {
     baselineRootMeanSquaredError: rounded(Math.sqrt(baselineSquared / baselineErrors.length), 8),
     heldoutSkillVersusTrainingMean: baselineSquared > 1e-14 ? rounded(1 - squared / baselineSquared, 8) : null,
     heldoutSpearman: rounded(pearson(predictedRanks, observedRanks), 8),
+    heldoutFeatureSupportCoverage: rounded(supportedPredictions.length / predictions.length, 8),
+    supportedHeldoutPlacements: supportedPredictions.length,
+    unsupportedHeldoutPlacements: unsupportedPredictions.length,
+    supportedHeldoutMeanAbsoluteError: rounded(subsetMae(supportedPredictions), 8),
+    unsupportedHeldoutMeanAbsoluteError: rounded(subsetMae(unsupportedPredictions), 8),
+    maximumStandardizedFeatureExcess: rounded(Math.max(...predictions
+      .map((entry) => entry.maximumStandardizedFeatureExcess)), 8),
+    featureSupportDefinition: "axis-aligned min/max envelope of earlier-block active score contributions; normalized excess uses earlier-block scale",
     predictions: predictions.map((entry) => ({ ...entry, predicted: rounded(entry.predicted, 8),
-      observed: rounded(entry.observed, 8), baseline: rounded(entry.baseline, 8) })),
+      observed: rounded(entry.observed, 8), baseline: rounded(entry.baseline, 8),
+      maximumStandardizedFeatureExcess: rounded(entry.maximumStandardizedFeatureExcess, 8) })),
     fitBlockedByCompleteStructuralLeap: true, randomSplitUsed: false,
     fitUsedHeldout: false, featureSelectionUsedOutcome: false, targetUsed: false,
     causalEffectInferred: false, independentMaterialSamples: false,

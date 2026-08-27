@@ -34,7 +34,7 @@ import { appendSiteStructuralHistory, summarizeSiteStructuralHistory }
   from "./site-structural-history.js?v=20260826-1";
 import { blockedCreationResponseSurrogate, blockedCreationResponseValidation, buildCreationResponseAssociation,
   canonicalCreationResponseDataset, creationResponseLeapProfile }
-  from "./creation-response-association.js?v=20260826-5";
+  from "./creation-response-association.js?v=20260826-6";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -3818,7 +3818,7 @@ function renderPopulationSurrogate(surrogate) {
   }
   const skill = surrogate.heldoutSkillVersusTrainingMean;
   value.textContent = `held-block skill ${Number.isFinite(skill) ? `${skill >= 0 ? "+" : ""}${skill.toFixed(3)}` : "unresolved"} · ρ ${Number.isFinite(surrogate.heldoutSpearman) ? `${surrogate.heldoutSpearman >= 0 ? "+" : ""}${surrogate.heldoutSpearman.toFixed(3)}` : "—"}`;
-  detail.textContent = `${surrogate.features.length} earlier-block geometry channels · ${surrogate.trainingPlacements} fit / ${surrogate.heldoutPlacements} held placements · fixed ridge ${surrogate.ridge}`;
+  detail.textContent = `${surrogate.features.length} earlier-block geometry channels · ${surrogate.trainingPlacements} fit / ${surrogate.heldoutPlacements} held placements · ${(100 * surrogate.heldoutFeatureSupportCoverage).toFixed(1)}% inside training envelope · fixed ridge ${surrogate.ridge}`;
   const bars = document.createElement("div"); bars.className = "site-surrogate-bars";
   const maximumError = Math.max(surrogate.heldoutMeanAbsoluteError, surrogate.baselineMeanAbsoluteError, 1e-12);
   [["joint geometry", surrogate.heldoutMeanAbsoluteError], ["training mean", surrogate.baselineMeanAbsoluteError]]
@@ -3828,7 +3828,25 @@ function renderPopulationSurrogate(surrogate) {
       const barValue = document.createElement("strong"); barValue.textContent = `MAE ${error.toFixed(3)}`;
       bar.append(barLabel, barValue); bars.append(bar);
     });
-  sitePopulationSurrogate.append(label, value, detail, bars);
+  const support = document.createElement("div"); support.className = "site-surrogate-support";
+  support.style.setProperty("--support", `${100 * surrogate.heldoutFeatureSupportCoverage}%`);
+  const supportLabel = document.createElement("small"); supportLabel.textContent = "geometric support transfer";
+  const supportValue = document.createElement("strong");
+  supportValue.textContent = `${surrogate.supportedHeldoutPlacements}/${surrogate.heldoutPlacements} held actions in envelope`;
+  const supportDetail = document.createElement("em"); supportDetail.textContent = surrogate.unsupportedHeldoutPlacements
+    ? `out-of-envelope MAE ${Number.isFinite(surrogate.unsupportedHeldoutMeanAbsoluteError)
+      ? surrogate.unsupportedHeldoutMeanAbsoluteError.toFixed(3) : "—"} · max excess ${surrogate.maximumStandardizedFeatureExcess.toFixed(2)}σ`
+    : "no axis-aligned feature extrapolation";
+  support.append(supportLabel, supportValue, supportDetail);
+  const coefficients = document.createElement("div"); coefficients.className = "site-surrogate-coefficients";
+  [...surrogate.features].sort((first, second) => Math.abs(second.standardizedWeight)
+    - Math.abs(first.standardizedWeight) || first.id.localeCompare(second.id)).slice(0, 6).forEach((feature) => {
+    const chip = document.createElement("span");
+    const name = document.createElement("small"); name.textContent = feature.label;
+    const weight = document.createElement("strong"); weight.textContent = `β ${feature.standardizedWeight >= 0 ? "+" : ""}${feature.standardizedWeight.toFixed(3)}`;
+    chip.append(name, weight); coefficients.append(chip);
+  });
+  sitePopulationSurrogate.append(label, value, detail, bars, support, coefficients);
 }
 
 function populationArtifactCell(label, value, detail) {
@@ -8609,7 +8627,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-198",
+      buildId: "20260826-199",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,

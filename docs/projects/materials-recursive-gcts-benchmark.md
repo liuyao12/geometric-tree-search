@@ -6226,3 +6226,24 @@ skill −0.0655, and Spearman ρ +0.4542. The portal reports `no gain`; rank ass
 does not override worse squared or absolute error. This is evidence that the present channel
 set is not yet a transferable multichannel response model, not a reason to tune on the held
 blocks.
+
+## Build 199: separate feature-support transfer from response error
+
+Build 199 freezes an axis-aligned feature-support envelope from the earlier-block score
+contributions. For each retained channel the receipt records training minimum, maximum,
+mean, and scale. Every later placement records whether all contributions remain within the
+training ranges and its maximum normalized excess. The UI reports support coverage, maximum
+excess, and support-conditioned MAE alongside the standardized coefficients.
+
+This is a covariate-support diagnostic, not a probability, confidence region, convex hull,
+phase boundary, or guarantee of reliable prediction. It never changes the candidate set,
+growth ordering, fit, or held-block outcome. High feature support with negative skill is
+evidence against the current linear channel-to-response representation; low support instead
+flags extrapolation as a competing explanation.
+
+In the default NaCl run, feature-support coverage is 142/142 held placements and maximum
+standardized excess is zero. The held-block failure from Build 198 therefore occurs entirely
+inside the earlier-block axis-aligned score envelope. The frozen standardized coefficients
+are −0.6966 for surface completion and approximately −0.0542 each for composition and formal
+charge. This rules out simple range extrapolation as the explanation; it does not prove which
+nonlinearity, omitted state variable, or leap-dependent mapping is responsible.

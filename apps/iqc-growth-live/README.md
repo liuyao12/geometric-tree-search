@@ -5492,3 +5492,23 @@ placements and scores 142 later placements. It retains rank information (ρ = +0
 does not beat the earlier-response mean: MAE 1.674 versus 1.646 and skill −0.065. The card
 therefore renders as **no gain**. This honest negative result says the current creation-score
 channels do not yet form a transferable response model for this outcome.
+
+### Build 199 · diagnose covariate shift versus response-model failure
+
+The joint-model card now freezes the axis-aligned min/max envelope of every standardized
+geometry channel on the earlier leap blocks. Each later placement is audited against that
+training envelope before its response is scored. The portal reports support coverage,
+maximum standardized excess, and separate in-envelope versus out-of-envelope MAE; it also
+shows the strongest standardized coefficients so the channel roles are inspectable.
+
+This distinction prevents a negative skill score from being interpreted too quickly. Low
+coverage indicates geometric extrapolation; high coverage with poor skill points instead to
+an inadequate linear response representation, omitted geometric state, or leap-dependent
+mapping. The envelope is deliberately simple and train-only—it is not a thermodynamic phase
+boundary, uncertainty interval, applicability guarantee, or permission to admit geometry.
+
+For the six-leap NaCl regression, all 142 held placements remain inside the earlier-block
+axis-aligned envelope with maximum excess 0. The negative skill therefore is not explained
+by simple score-channel range extrapolation. Within this audit, the stronger diagnosis is a
+response-model/channel-set failure: surface completion dominates the standardized fit
+(β = −0.697), while composition and formal charge each contribute only β ≈ −0.054.
