@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260827-231">
+  <link rel="stylesheet" href="./style.css?v=20260827-232">
   <script type="importmap">
     {
       "imports": {
@@ -1432,8 +1432,10 @@
           <div class="notebook-heading"><small>experiment notebook</small><span id="notebookState">0 saved runs</span></div>
           <div class="notebook-actions">
             <button id="saveNotebookButton" type="button">Save current run</button>
+            <button id="computeNotebookResponseButton" type="button">Compute response atlas</button>
             <button id="clearNotebookButton" type="button" disabled>Clear notebook</button>
           </div>
+          <p id="notebookResponseAnalysisStatus" class="notebook-response-analysis-status" aria-live="polite">Optional · blocked creation-response models are computed only on request, then reused by state-matched notebook snapshots.</p>
           <div id="notebookEntries" class="notebook-entries" role="group" aria-label="Select two saved experiment runs to compare"></div>
           <div id="notebookComparison" class="notebook-comparison" aria-live="polite"><p>Save two run states to compare their geometric hypotheses and outcomes.</p></div>
           <article id="notebookHypothesisOutcome" class="notebook-hypothesis-outcome waiting" aria-live="polite">
@@ -1841,7 +1843,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260827-231"></script>
+  <script type="module" src="./app.js?v=20260827-232"></script>
   <script type="module" src="./evidence-atlas.js?v=20260826-19"></script>
 </body>
 </html>

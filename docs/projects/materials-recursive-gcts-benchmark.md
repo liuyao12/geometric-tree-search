@@ -24,6 +24,18 @@ receipt was built. Creation-response blocked surrogates are explicitly deferred
 to full receipt export; this keeps the notebook interactive without replacing
 or weakening the complete scientific artifact.
 
+Build 232 adds an explicit **Compute response atlas** action. It freezes the
+current explicit-site digest, the last 256 eligible placement ledgers, leap
+count, and bounded-projection counters before fitting the existing grouped and
+chronologically blocked response analyses. The cached artifact is reused by a
+notebook snapshot or full receipt only when that state SHA-256 still matches;
+resetting the specimen or recording another structural leap invalidates it.
+The blocked surrogate and horizon grid runs in a module worker and reports each
+outcome/phase without blocking the rendering thread. This separates interactive
+capture from deliberate statistical analysis while
+preserving the same no-target, no-atom-pseudoreplication, and no-physical-time
+claim boundary.
+
 ### Browser presentation boundary (Build 223)
 
 The cluster-identification stage now presents its molecular-cover accounting as

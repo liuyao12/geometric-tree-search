@@ -18,6 +18,16 @@ the GCTS anatomy view explains covers, oriented ports, markings, search, and
 promotion; and the claim ledger keeps proved, measured, and open results visibly
 separate. Its numbers are frozen benchmark results, not recomputed browser demos.
 
+Build 232 restores the heavyweight creation-response analysis as an explicit
+scientific action rather than a hidden cost of saving. “Compute response atlas”
+builds grouped whole-placement records, chronological blocked validations, and
+frozen response surrogates on request. The result is keyed to the exact explicit
+structure and placement ledger, invalidates after a structural leap or reset,
+and is attached to later bounded notebook snapshots only when that state digest
+still matches. The numerical suite runs in a module worker with visible
+outcome-by-outcome progress, so the 3D lab remains responsive. Fast saving
+remains the default; full receipt export can reuse the same verified evidence.
+
 Build 231 makes the experiment notebook responsive at the material-growth stage.
 “Save current run” now freezes a bounded, coordinate-free notebook snapshot
 instead of rebuilding the much larger downloadable experiment receipt. The

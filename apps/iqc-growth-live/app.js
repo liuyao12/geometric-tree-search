@@ -539,6 +539,8 @@ const downloadReceiptButton = $("downloadReceiptButton");
 const copyReceiptButton = $("copyReceiptButton");
 const receiptStatus = $("receiptStatus");
 const saveNotebookButton = $("saveNotebookButton");
+const computeNotebookResponseButton = $("computeNotebookResponseButton");
+const notebookResponseAnalysisStatus = $("notebookResponseAnalysisStatus");
 const clearNotebookButton = $("clearNotebookButton");
 const notebookState = $("notebookState");
 const notebookEntries = $("notebookEntries");
@@ -1397,6 +1399,9 @@ let selectedScalePassportStage = -1;
 let selectedObservationProvenanceId = null;
 let experimentNotebookEntries = [];
 let selectedNotebookEntryIds = [];
+let cachedCreationResponseEvidence = null;
+let cachedCreationResponseStateSha256 = null;
+let creationResponseAnalysisRunning = false;
 let notebookTrajectoryMode = "series";
 let notebookTrajectoryHarmonic = 6;
 let notebookPhysicsFilter = "changed";
@@ -4102,46 +4107,105 @@ function creationResponseAssociationRecords() {
   }).filter((record) => record.emittedSites > 0);
 }
 
-async function creationResponseReceiptEvidence() {
-  const rawRecords = creationResponseAssociationRecords();
-  const dataset = canonicalCreationResponseDataset(rawRecords);
-  const audit = buildCreationResponseAssociation(dataset.records);
-  const associations = audit.associations.map(({ points, ...summary }) => summary);
-  const blockedValidation = Object.fromEntries(Object.keys(POPULATION_RESPONSE_LABELS).map((outcomeId) =>
-    [outcomeId, blockedCreationResponseValidation(dataset.records, outcomeId,
-      { minimumSamplesPerSplit: 8 })]));
-  const leapProfiles = Object.fromEntries(Object.keys(POPULATION_RESPONSE_LABELS).map((outcomeId) => {
-    const selected = audit.associations.find((entry) => entry.outcomeId === outcomeId);
-    return [outcomeId, selected ? creationResponseLeapProfile(dataset.records, selected.termId, outcomeId) : null];
+async function creationResponseStateSha256() {
+  const placementLedger = placedClusters.filter((placement) => placement.decisionEvidence?.physicsTerms?.length
+    && placement.freshAtomIds?.length).slice(-256).map((placement) => ({
+    placementId: placement.id,
+    freshAtomIds: placement.freshAtomIds,
+    physicsTerms: placement.decisionEvidence.physicsTerms,
+    structuralContext: placement.decisionEvidence.structuralContext || null,
   }));
-  const blockedSurrogates = Object.fromEntries(Object.keys(POPULATION_RESPONSE_LABELS).map((outcomeId) =>
-    [outcomeId, blockedCreationResponseSurrogate(dataset.records, outcomeId,
+  return receiptSha256(JSON.stringify({
+    scenarioId: scenarioSelect.value,
+    explicitSitesSha256: await structureDigest(atoms, "scene"),
+    placementLedger,
+    leapEventCount,
+    structuralRelaxationAccepted,
+    structuralRelaxationRejected,
+  }));
+}
+
+function invalidateCreationResponseEvidenceCache(reason = "growth state changed") {
+  cachedCreationResponseEvidence = null;
+  cachedCreationResponseStateSha256 = null;
+  if (notebookResponseAnalysisStatus) notebookResponseAnalysisStatus.textContent =
+    `Optional response atlas · ${reason}. Compute again to attach blocked models to the next snapshot.`;
+  if (computeNotebookResponseButton) computeNotebookResponseButton.textContent = "Compute response atlas";
+}
+
+async function stateMatchedCreationResponseEvidence(stateSha256 = null) {
+  if (!cachedCreationResponseEvidence || !cachedCreationResponseStateSha256) return null;
+  const currentStateSha256 = stateSha256 || await creationResponseStateSha256();
+  return currentStateSha256 === cachedCreationResponseStateSha256 ? cachedCreationResponseEvidence : null;
+}
+
+function creationResponseModelsLocally(records, outcomeIds) {
+  const audit = buildCreationResponseAssociation(records);
+  const associations = audit.associations.map(({ points, ...summary }) => summary);
+  const blockedValidation = Object.fromEntries(outcomeIds.map((outcomeId) =>
+    [outcomeId, blockedCreationResponseValidation(records, outcomeId,
+      { minimumSamplesPerSplit: 8 })]));
+  const leapProfiles = Object.fromEntries(outcomeIds.map((outcomeId) => {
+    const selected = audit.associations.find((entry) => entry.outcomeId === outcomeId);
+    return [outcomeId, selected ? creationResponseLeapProfile(records, selected.termId, outcomeId) : null];
+  }));
+  const blockedSurrogates = Object.fromEntries(outcomeIds.map((outcomeId) =>
+    [outcomeId, blockedCreationResponseSurrogate(records, outcomeId,
       { minimumSamplesPerSplit: 12 })]));
-  const contextualBlockedSurrogates = Object.fromEntries(Object.keys(POPULATION_RESPONSE_LABELS)
-    .map((outcomeId) => [outcomeId, blockedCreationResponseSurrogate(dataset.records, outcomeId,
+  const contextualBlockedSurrogates = Object.fromEntries(outcomeIds
+    .map((outcomeId) => [outcomeId, blockedCreationResponseSurrogate(records, outcomeId,
       { minimumSamplesPerSplit: 12, includeStructuralContext: true })]));
-  const localContextBlockedSurrogates = Object.fromEntries(Object.keys(POPULATION_RESPONSE_LABELS)
-    .map((outcomeId) => [outcomeId, blockedCreationResponseSurrogate(dataset.records, outcomeId,
+  const localContextBlockedSurrogates = Object.fromEntries(outcomeIds
+    .map((outcomeId) => [outcomeId, blockedCreationResponseSurrogate(records, outcomeId,
       { minimumSamplesPerSplit: 12, includeStructuralContext: true,
         contextFeatureIds: LOCAL_CREATION_CONTEXT_FEATURE_IDS })]));
-  const localContextHorizonSweeps = Object.fromEntries(Object.keys(POPULATION_RESPONSE_LABELS)
-    .map((outcomeId) => [outcomeId, creationResponseHorizonSweep(dataset.records, outcomeId,
+  const localContextHorizonSweeps = Object.fromEntries(outcomeIds
+    .map((outcomeId) => [outcomeId, creationResponseHorizonSweep(records, outcomeId,
       { minimumSamplesPerSplit: 12 })]));
-  return {
+  return { associations, blockedValidation, leapProfiles, blockedSurrogates,
+    contextualBlockedSurrogates, localContextBlockedSurrogates, localContextHorizonSweeps,
+    available: audit.available, placementSamples: audit.placementSamples,
+    emittedSitePresentations: audit.emittedSitePresentations };
+}
+
+function creationResponseModelsInWorker(records, outcomeIds, onProgress = null) {
+  if (typeof Worker !== "function") return Promise.resolve(creationResponseModelsLocally(records, outcomeIds));
+  return new Promise((resolve, reject) => {
+    const worker = new Worker(new URL("./creation-response-worker.js?v=20260827-1", import.meta.url),
+      { type: "module" });
+    worker.addEventListener("message", (event) => {
+      if (event.data?.type === "progress") {
+        onProgress?.(event.data); return;
+      }
+      worker.terminate();
+      if (event.data?.type === "result") resolve(event.data.result);
+      else reject(new Error(event.data?.message || "response worker returned no result"));
+    });
+    worker.addEventListener("error", (event) => {
+      worker.terminate(); reject(new Error(event.message || "response worker failed"));
+    });
+    worker.postMessage({ records, outcomeIds });
+  });
+}
+
+async function creationResponseReceiptEvidence(options = {}) {
+  const stateSha256 = options.stateSha256 || await creationResponseStateSha256();
+  if (options.allowStateMatchedCache !== false) {
+    const cached = await stateMatchedCreationResponseEvidence(stateSha256);
+    if (cached) return cached;
+  }
+  const dataset = canonicalCreationResponseDataset(creationResponseAssociationRecords());
+  const outcomeIds = Object.keys(POPULATION_RESPONSE_LABELS);
+  const models = options.runInWorker
+    ? await creationResponseModelsInWorker(dataset.records, outcomeIds, options.onProgress)
+    : creationResponseModelsLocally(dataset.records, outcomeIds);
+  const evidence = {
     schema: 1,
     dataset,
     datasetSha256: await receiptSha256(JSON.stringify(dataset)),
+    sourceStateSha256: stateSha256,
     associationMethod: "Spearman rank association over grouped whole-cluster placements",
-    associations,
-    blockedValidation,
-    leapProfiles,
-    blockedSurrogates,
-    contextualBlockedSurrogates,
-    localContextBlockedSurrogates,
-    localContextHorizonSweeps,
-    available: audit.available,
-    placementSamples: audit.placementSamples,
-    emittedSitePresentations: audit.emittedSitePresentations,
+    ...models,
     atomLevelPseudoreplicationAvoided: true,
     blockedByCompleteStructuralLeap: true,
     randomSplitUsed: false,
@@ -4153,6 +4217,38 @@ async function creationResponseReceiptEvidence() {
     independentMaterialSamples: false,
     physicalTimeModeled: false,
   };
+  cachedCreationResponseEvidence = evidence;
+  cachedCreationResponseStateSha256 = stateSha256;
+  return evidence;
+}
+
+async function computeNotebookResponseAnalysis() {
+  if (creationResponseAnalysisRunning) return;
+  creationResponseAnalysisRunning = true;
+  computeNotebookResponseButton.disabled = true;
+  saveNotebookButton.disabled = true;
+  computeNotebookResponseButton.textContent = "Computing response atlas…";
+  notebookResponseAnalysisStatus.textContent = "Building grouped placement records, chronological blocked validations, and frozen response surrogates…";
+  try {
+    const stateSha256 = await creationResponseStateSha256();
+    const evidence = await creationResponseReceiptEvidence({ stateSha256, allowStateMatchedCache: true,
+      runInWorker: true, onProgress: ({ step, total, label }) => {
+        notebookResponseAnalysisStatus.textContent = `Response atlas ${step}/${total} · ${label} · running off the rendering thread…`;
+      } });
+    const usableOutcomes = Object.values(evidence.localContextHorizonSweeps || {})
+      .filter((sweep) => sweep?.horizons?.some((horizon) => horizon.model?.available)).length;
+    computeNotebookResponseButton.textContent = "Response atlas ready";
+    notebookResponseAnalysisStatus.textContent = `${evidence.placementSamples} grouped placements · ${evidence.emittedSitePresentations} emitted-site presentations · ${usableOutcomes}/${Object.keys(POPULATION_RESPONSE_LABELS).length} outcomes have at least one blocked model. Save current run to retain this state-matched summary.`;
+    receiptStatus.textContent = `Response atlas computed · source state ${stateSha256.slice(0, 10)}… · no target atoms or physical time used.`;
+  } catch (error) {
+    invalidateCreationResponseEvidenceCache("analysis failed");
+    notebookResponseAnalysisStatus.textContent = `Response atlas failed: ${error.message}`;
+    console.error(error);
+  } finally {
+    creationResponseAnalysisRunning = false;
+    computeNotebookResponseButton.disabled = false;
+    saveNotebookButton.disabled = false;
+  }
 }
 
 const POPULATION_RESPONSE_LABELS = Object.freeze({
@@ -9383,7 +9479,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-231",
+      buildId: "20260827-232",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -11419,6 +11515,9 @@ async function buildExperimentNotebookSnapshot() {
   }));
   const firstPolicy = policyComparisonHistory[0] || null;
   const latestPolicy = policyComparisonHistory.at(-1) || null;
+  const creationResponseState = searchVisible ? await creationResponseStateSha256() : null;
+  const cachedCreationResponse = searchVisible
+    ? await stateMatchedCreationResponseEvidence(creationResponseState) : null;
   const policySnapshots = [];
   const compactFirst = notebookPolicySnapshot(firstPolicy, firstPolicy === latestPolicy);
   const compactLatest = firstPolicy === latestPolicy ? null : notebookPolicySnapshot(latestPolicy, true);
@@ -11459,7 +11558,7 @@ async function buildExperimentNotebookSnapshot() {
       targetUsed: iceAnchorTrace.targetUsed, fixedPoint: iceAnchorTrace.fixedPoint,
       exactBackendCountParity: iceAnchorTrace.exactBackendCountParity, provenance: iceAnchorTrace.provenance,
     } : null,
-    creationResponseEvidence: null,
+    creationResponseEvidence: cachedCreationResponse,
     postAttachmentConstraintProjection: { mode: structuralRelaxationMode,
       displacementFractionOfNearestNeighbor: structuralRelaxationSpec().displacementFraction,
       maximumIterations: structuralRelaxationSpec().iterations },
@@ -11468,9 +11567,13 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-231" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-232" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
-      creationResponseEvidence: searchVisible ? "deferred to full receipt export" : "stage not entered",
+      creationResponseEvidence: !searchVisible ? "stage not entered"
+        : cachedCreationResponse ? "attached from state-matched opt-in analysis"
+          : "deferred to explicit response-atlas analysis or full receipt export",
+      creationResponseStateSha256: creationResponseState,
+      creationResponseCacheMatched: Boolean(cachedCreationResponse),
       policyFrontiersRetained: policySnapshots.length,
       policyFrontiersAvailable: policyComparisonHistory.length, digestExcludesBuildTiming: true,
       coordinatesEmbedded: false },
@@ -13440,7 +13543,9 @@ async function saveCurrentExperimentNotebookEntry() {
       experimentNotebookEntries.push(entry);
       selectedNotebookEntryIds = [...selectedNotebookEntryIds.slice(-1), entry.id];
       persistExperimentNotebook();
-      receiptStatus.textContent = `Run ${experimentNotebookEntries.length} saved · bounded coordinate-free snapshot · ${entry.receiptSha256.slice(0, 10)}… · ${entry.notebookSnapshot.buildMilliseconds.toFixed(0)} ms`;
+      const responseState = entry.notebookSnapshot.creationResponseCacheMatched
+        ? "response atlas attached" : "response atlas deferred";
+      receiptStatus.textContent = `Run ${experimentNotebookEntries.length} saved · bounded coordinate-free snapshot · ${responseState} · ${entry.receiptSha256.slice(0, 10)}… · ${entry.notebookSnapshot.buildMilliseconds.toFixed(0)} ms`;
     }
     renderExperimentNotebook();
     renderStudyOutcome();
@@ -20249,6 +20354,7 @@ function resetCounters() {
   leapHistory = [];
   selectedLeapIndex = -1;
   leapEventCount = 0;
+  invalidateCreationResponseEvidenceCache("new specimen or reset state");
   siteStructuralHistories = new Map();
   pendingSiteHistoryIds = new Set();
   selectedPopulationResponseTermId = null;
@@ -23233,6 +23339,7 @@ function recordPendingSiteStructuralHistories(leap) {
 }
 
 function recordStructuralLeap(leap) {
+  invalidateCreationResponseEvidenceCache("a new structural leap changed the response state");
   const frozen = { ...leap, index: ++leapEventCount, targetUsed: false,
     physicalTimeModeled: false, dynamicsIntegrated: false };
   recordPendingSiteStructuralHistories(frozen);
@@ -26209,6 +26316,7 @@ saveNotebookButton.addEventListener("click", () => {
   clearNotebookButton.textContent = "Clear notebook";
   saveCurrentExperimentNotebookEntry();
 });
+computeNotebookResponseButton.addEventListener("click", computeNotebookResponseAnalysis);
 clearNotebookButton.addEventListener("click", () => {
   if (!notebookClearArmed) {
     notebookClearArmed = true;

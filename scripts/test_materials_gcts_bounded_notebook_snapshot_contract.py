@@ -40,20 +40,20 @@ def test_snapshot_retains_lineage_frontier_and_claim_evidence():
 
 def test_snapshot_is_honest_about_deferred_heavy_evidence():
     assert 'fullReceiptBuilt: false' in APP
-    assert 'creationResponseEvidence: searchVisible ? "deferred to full receipt export"' in APP
+    assert '"deferred to explicit response-atlas analysis or full receipt export"' in APP
     assert "availableInFullReceiptExport: true" in APP
     assert "digestExcludesBuildTiming: true" in APP
 
 
-def test_build_231_assets_are_paired():
-    assert 'buildId: "20260827-231"' in APP
-    assert 'app.js?v=20260827-231' in HTML
-    assert 'style.css?v=20260827-231' in HTML
+def test_build_232_assets_are_paired():
+    assert 'buildId: "20260827-232"' in APP
+    assert 'app.js?v=20260827-232' in HTML
+    assert 'style.css?v=20260827-232' in HTML
 
 
 if __name__ == "__main__":
     test_save_uses_bounded_snapshot_not_full_receipt()
     test_snapshot_retains_lineage_frontier_and_claim_evidence()
     test_snapshot_is_honest_about_deferred_heavy_evidence()
-    test_build_231_assets_are_paired()
+    test_build_232_assets_are_paired()
     print("bounded notebook snapshot contract passed")
