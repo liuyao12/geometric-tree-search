@@ -13,6 +13,27 @@ amplification is `b > 1`, a level-`L` accepted macro placement represents
 approximately `b^L` atoms.  Materializing or exporting `N` atomic coordinates
 still has an unavoidable `O(N)` cost and must be reported separately.
 
+### Core-to-growth-front material profile (Build 237)
+
+The finite packing pathway now resolves spatial heterogeneity instead of
+reporting only global, core, and surface summaries. It partitions the explicit
+structure into eight fixed bins of centroid radius normalized by the maximum
+explicit-site radius. For each finite shell it retains the median sixth-neighbor
+number-density ratio and exact fractions of every displayed site species. The
+interactive plot compares the selected structural state with the supplied
+configuration and offers one standard-color channel for every element, with no
+binary-system assumption. The material-consequence matrix also records the
+largest positive outer-shell fraction excess relative to the complete current
+configuration.
+
+The radius normalization and local-density ratio are invariant to translation,
+proper rotation, atom order, and a common scale change. This is a finite radial
+site audit: it neither infers equilibrium segregation nor labels a surface
+phase, chemical potential, diffusion process, surface/interfacial energy,
+porosity, pressure, growth rate, or elapsed time. Occupationally disordered
+sites remain displayed-site counts here; their full alternative chemistry
+continues to live in the separate occupancy geometry and receipt.
+
 ### Finite local packing-density pathway (Build 236)
 
 The browser now records a finite local-density distribution in every retained

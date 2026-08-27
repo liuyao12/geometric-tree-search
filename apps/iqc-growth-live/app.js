@@ -57,7 +57,7 @@ import { compareStructureFactors, jensenShannonDistance, localOrientationalOrder
 import { compositionBalanceDelta, compositionDrift, learnCompositionTarget } from "./composition-balance.js?v=20260824-1";
 import { consumeFeedstock, evaluateFeedstockDemand, feedstockReservoirSnapshot,
   initializeFeedstockReservoir } from "./feedstock-reservoir.js?v=20260827-2";
-import { localPackingDensityAudit } from "./local-packing-density.js?v=20260827-1";
+import { localPackingDensityAudit } from "./local-packing-density.js?v=20260827-2";
 import { formalChargeBalanceDelta, learnFormalChargeTarget } from "./formal-charge-balance.js?v=20260824-1";
 import { chargeMomentSignature, compareChargeMomentGeometry } from "./global-charge-moments.js?v=20260826-1";
 import { incrementalIonicPairGeometry, incrementalIonicPairReachProfile,
@@ -696,6 +696,10 @@ const packingDistributionPlot = $("packingDistributionPlot");
 const packingPathwayPlot = $("packingPathwayPlot");
 const packingPathwayReadout = $("packingPathwayReadout");
 const packingPathwayBoundary = $("packingPathwayBoundary");
+const packingRadialState = $("packingRadialState");
+const packingRadialChannels = $("packingRadialChannels");
+const packingRadialPlot = $("packingRadialPlot");
+const packingRadialReadout = $("packingRadialReadout");
 const multiscalePathwayState = $("multiscalePathwayState");
 const multiscalePathwayHarmonics = $("multiscalePathwayHarmonics");
 const multiscalePathwayPlot = $("multiscalePathwayPlot");
@@ -1446,6 +1450,7 @@ let selectedLeapConsequenceId = "coordination";
 let selectedLeapConsequenceFilter = "all";
 let selectedStoichiometrySpecies = null;
 let selectedPackingMetric = "median";
+let selectedRadialProfileChannel = "density";
 let leapEventCount = 0;
 let siteStructuralHistories = new Map();
 let pendingSiteHistoryIds = new Set();
@@ -4978,7 +4983,9 @@ function structuralPackingSnapshot(source = atoms) {
   const dimension = currentMaterial().intrinsicDimension === 2 ? 2 : 3;
   const audit = localPackingDensityAudit(source.map((atom) => atom.p.toArray()),
     referenceAtoms.map((atom) => atom.p.toArray()), {
-      dimension, neighborRank: 6, maximumCenters: 128, histogramBins: 20,
+      dimension, neighborRank: 6, maximumCenters: 128, histogramBins: 20, radialShells: 8,
+      currentSpecies: source.map((atom) => atom.species),
+      referenceSpecies: referenceAtoms.map((atom) => atom.species),
     });
   if (!audit.available) return audit;
   const rounded = { ...audit };
@@ -4986,6 +4993,19 @@ function structuralPackingSnapshot(source = atoms) {
     "percentile90RelativeDensity", "medianRelativeLocalVolume", "coreMedianRelativeDensity",
     "surfaceMedianRelativeDensity", "underpackedFraction", "referenceLikeFraction",
     "overpackedFraction"].forEach((key) => { rounded[key] = receiptRound(audit[key]); });
+  const roundedProfile = (profile) => profile.map((shell) => ({ ...shell,
+    radialMinimum: receiptRound(shell.radialMinimum), radialMaximum: receiptRound(shell.radialMaximum),
+    medianRelativeDensity: shell.medianRelativeDensity === null ? null : receiptRound(shell.medianRelativeDensity),
+    medianRelativeLocalVolume: shell.medianRelativeLocalVolume === null ? null : receiptRound(shell.medianRelativeLocalVolume),
+    speciesFractions: Object.fromEntries(Object.entries(shell.speciesFractions)
+      .map(([symbol, fraction]) => [symbol, receiptRound(fraction)])),
+  }));
+  rounded.radialProfile = roundedProfile(audit.radialProfile);
+  rounded.referenceRadialProfile = roundedProfile(audit.referenceRadialProfile);
+  rounded.globalSpeciesFractions = Object.fromEntries(Object.entries(audit.globalSpeciesFractions)
+    .map(([symbol, fraction]) => [symbol, receiptRound(fraction)]));
+  rounded.surfaceExcess = Object.fromEntries(Object.entries(audit.surfaceExcess)
+    .map(([symbol, fraction]) => [symbol, receiptRound(fraction)]));
   return rounded;
 }
 
@@ -9517,7 +9537,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-236",
+      buildId: "20260827-237",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -10205,9 +10225,12 @@ async function buildExperimentReceipt() {
         alignment: "structural leap index; no physical time",
         pointSource: "before/after packing snapshots in structuralLeapCertificates",
         selectedMetric: selectedPackingMetric,
-        centerSampling: "radial quantiles, maximum 128 centers",
+        selectedRadialChannel: selectedRadialProfileChannel,
+        centerSampling: "128 radial quantiles with complete equal-radius ties retained",
         coreDefinition: "inner half by centroid radius",
         surfaceDefinition: "outer quarter by centroid radius",
+        radialProfileDefinition: "eight fixed bins of centroid radius divided by maximum explicit-site centroid radius",
+        radialProfileChannels: ["relative local number density", "exact shell fractions for every displayed site species"],
         translationInvariant: true,
         properRotationInvariant: true,
         atomPermutationInvariant: true,
@@ -10215,6 +10238,8 @@ async function buildExperimentReceipt() {
         periodicImagesUsed: false,
         massDensityInferred: false,
         porosityInferred: false,
+        equilibriumSegregationInferred: false,
+        surfaceEnergyInferred: false,
         thermodynamicVolumeInferred: false,
         pressureInferred: false,
         freeEnergyInferred: false,
@@ -11639,7 +11664,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-236" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-237" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -20429,6 +20454,7 @@ function resetCounters() {
   selectedLeapConsequenceFilter = "all";
   selectedStoichiometrySpecies = null;
   selectedPackingMetric = "median";
+  selectedRadialProfileChannel = "density";
   leapEventCount = 0;
   invalidateCreationResponseEvidenceCache("new specimen or reset state");
   siteStructuralHistories = new Map();
@@ -23201,6 +23227,16 @@ function materialConsequenceRecords(before, after) {
       format: (value) => `${value.toFixed(3)}x`, deltaFormat: (value) => `${value >= 0 ? "+" : ""}${value.toFixed(3)}x`, domain: "adaptive",
       evidence: `${after.packing?.sampledCenters || 0} radially stratified centers; core ${after.packing?.coreMedianRelativeDensity?.toFixed(3) || "—"}x and outer shell ${after.packing?.surfaceMedianRelativeDensity?.toFixed(3) || "—"}x.`,
       boundary: "This finite k-nearest-neighbor estimator is not mass density, porosity, pressure, thermodynamic volume, free energy, or a bulk limit." },
+    { id: "radial-composition", group: "chemistry", label: "growth-front composition excess", unit: "outer-shell fraction − global fraction",
+      before: before.packing?.dominantSurfaceExcessSpecies
+        ? before.packing.surfaceExcess?.[before.packing.dominantSurfaceExcessSpecies] : null,
+      after: after.packing?.dominantSurfaceExcessSpecies
+        ? after.packing.surfaceExcess?.[after.packing.dominantSurfaceExcessSpecies] : null,
+      format: percent, deltaFormat: signedPercent, domain: [0, 1],
+      evidence: after.packing?.dominantSurfaceExcessSpecies
+        ? `${after.packing.dominantSurfaceExcessSpecies} has the largest positive outer-shell excess across ${after.packing.radialShellCount} finite normalized-radius shells.`
+        : "No resolved multicomponent growth-front excess.",
+      boundary: "A radial site-fraction excess is not equilibrium segregation, surface composition in a bulk limit, chemical potential, diffusion, or interfacial energy." },
     { id: "local-order", group: "local", label: `mean local ${orderSymbol}`, unit: "orientational-order magnitude",
       before: before.orientationalOrder?.harmonics?.[6]?.mean,
       after: after.orientationalOrder?.harmonics?.[6]?.mean,
@@ -23463,6 +23499,83 @@ function packingMetricValue(packing, metric = selectedPackingMetric) {
     surface: packing.surfaceMedianRelativeDensity, volume: packing.medianRelativeLocalVolume })[metric];
 }
 
+function renderPackingRadialProfile(packing) {
+  if (!packingRadialPlot) return;
+  const makeSvg = (name, attributes = {}) => {
+    const element = document.createElementNS("http://www.w3.org/2000/svg", name);
+    Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, String(value)));
+    return element;
+  };
+  const vocabulary = packing?.speciesVocabulary || [];
+  if (selectedRadialProfileChannel !== "density" && !vocabulary.includes(selectedRadialProfileChannel)) {
+    selectedRadialProfileChannel = "density";
+  }
+  packingRadialChannels.replaceChildren();
+  ["density", ...vocabulary].forEach((channel) => {
+    const button = document.createElement("button"); button.type = "button";
+    button.dataset.radialChannel = channel;
+    button.setAttribute("aria-pressed", String(channel === selectedRadialProfileChannel));
+    button.textContent = channel === "density" ? "local density" : occupationalAlternatives(channel)?.label || channel;
+    if (channel !== "density") button.style.setProperty("--radial-channel", elementRecord(channel).css);
+    packingRadialChannels.append(button);
+  });
+  packingRadialPlot.replaceChildren();
+  const profile = packing?.radialProfile || [];
+  const reference = packing?.referenceRadialProfile || [];
+  const value = (shell) => selectedRadialProfileChannel === "density"
+    ? shell?.medianRelativeDensity : shell?.speciesFractions?.[selectedRadialProfileChannel];
+  const currentPoints = profile.map((shell) => ({ shell, value: value(shell) })).filter((point) => Number.isFinite(point.value));
+  const referencePoints = reference.map((shell) => ({ shell, value: value(shell) })).filter((point) => Number.isFinite(point.value));
+  const left = 32, right = 294, top = 8, bottom = 96;
+  const allValues = [...currentPoints, ...referencePoints].map((point) => point.value);
+  const yMaximum = selectedRadialProfileChannel === "density"
+    ? Math.max(1.25, ...allValues, 0) * 1.08 : 1;
+  const x = (shell) => left + ((shell.radialMinimum + shell.radialMaximum) / 2) * (right - left);
+  const y = (datum) => bottom - Math.max(0, Math.min(yMaximum, datum)) / yMaximum * (bottom - top);
+  [0, .5, 1].forEach((fraction) => {
+    const datum = fraction * yMaximum;
+    packingRadialPlot.append(makeSvg("line", { x1: left, x2: right, y1: y(datum), y2: y(datum), class: "grid" }));
+    const label = makeSvg("text", { x: left - 4, y: y(datum) + 2, class: "axis", "text-anchor": "end" });
+    label.textContent = selectedRadialProfileChannel === "density" ? `${datum.toFixed(2)}×` : `${Math.round(100 * datum)}%`;
+    packingRadialPlot.append(label);
+  });
+  if (selectedRadialProfileChannel === "density") packingRadialPlot.append(makeSvg("line", {
+    x1: left, x2: right, y1: y(1), y2: y(1), class: "reference-level",
+  }));
+  const draw = (points, className) => {
+    if (points.length > 1) packingRadialPlot.append(makeSvg("polyline", {
+      points: points.map((point) => `${x(point.shell)},${y(point.value)}`).join(" "), class: className,
+    }));
+    points.forEach((point) => packingRadialPlot.append(makeSvg("circle", {
+      cx: x(point.shell), cy: y(point.value), r: className === "current" ? 3.2 : 2.2, class: className,
+    })));
+  };
+  draw(referencePoints, "supplied"); draw(currentPoints, "current");
+  const coreLabel = makeSvg("text", { x: left, y: 116, class: "axis", "text-anchor": "start" }); coreLabel.textContent = "core";
+  const frontLabel = makeSvg("text", { x: right, y: 116, class: "axis", "text-anchor": "end" }); frontLabel.textContent = "growth front";
+  const axisLabel = makeSvg("text", { x: (left + right) / 2, y: 126, class: "axis", "text-anchor": "middle" });
+  axisLabel.textContent = "normalized centroid radius →"; packingRadialPlot.append(coreLabel, frontLabel, axisLabel);
+  const first = currentPoints[0]?.value; const last = currentPoints.at(-1)?.value;
+  const strongest = packing?.dominantSurfaceExcessSpecies;
+  const excess = strongest ? packing.surfaceExcess?.[strongest] : null;
+  const display = (datum) => Number.isFinite(datum)
+    ? selectedRadialProfileChannel === "density" ? `${datum.toFixed(3)}×` : `${(100 * datum).toFixed(2)}%` : "unresolved";
+  packingRadialReadout.replaceChildren();
+  [["channel", selectedRadialProfileChannel === "density" ? "relative local number density" : occupationalAlternatives(selectedRadialProfileChannel)?.label || selectedRadialProfileChannel],
+    ["core shell", display(first)], ["growth-front shell", display(last)],
+    ["front − core", Number.isFinite(first) && Number.isFinite(last)
+      ? selectedRadialProfileChannel === "density" ? `${last - first >= 0 ? "+" : ""}${(last - first).toFixed(3)}×`
+        : `${last - first >= 0 ? "+" : ""}${(100 * (last - first)).toFixed(2)} points` : "unresolved"],
+    ["strongest front excess", strongest && Number.isFinite(excess)
+      ? `${occupationalAlternatives(strongest)?.label || strongest} ${excess >= 0 ? "+" : ""}${(100 * excess).toFixed(2)} points` : "single/unresolved species"],
+    ["finite shells", `${profile.filter((shell) => shell.siteCount).length}/${packing?.radialShellCount || 0}`]]
+    .forEach(([label, datum]) => {
+      const cell = document.createElement("span"); const key = document.createElement("small"); const valueElement = document.createElement("strong");
+      key.textContent = label; valueElement.textContent = datum; cell.append(key, valueElement); packingRadialReadout.append(cell);
+    });
+  packingRadialState.textContent = `${packing?.radialShellCount || 0} finite shells · ${selectedRadialProfileChannel === "density" ? "packing" : "composition"}`;
+}
+
 function renderPackingPathway() {
   if (!packingPathwayPlot) return;
   const makeSvg = (name, attributes = {}) => {
@@ -23547,13 +23660,20 @@ function renderPackingPathway() {
   const metricLabel = ({ median: "all-center density", core: "inner-core density",
     surface: "outer-shell density", volume: "local-volume ratio" })[selectedPackingMetric];
   packingPathwayState.textContent = `${states.length} state${states.length === 1 ? "" : "s"} · ${metricLabel}`;
-  packingPathwayBoundary.textContent = `Each center uses its ${after?.neighborRank || 6}th-neighbor radius in ${after?.dimension || 3}D; ratios are normalized by the inner half of the supplied configuration. The inner-core/outer-shell split is radial and finite, and no periodic images are invented. The estimator is translation-, proper-rotation-, permutation-, and common-scale-invariant. It is not mass density, packing fraction, porosity, thermodynamic free volume, pressure, energy, a bulk limit, rate, or physical time.`;
+  renderPackingRadialProfile(after);
+  packingPathwayBoundary.textContent = `Each center uses its ${after?.neighborRank || 6}th-neighbor radius in ${after?.dimension || 3}D; ratios are normalized by the inner half of the supplied configuration. The core-to-front profile uses ${after?.radialShellCount || 8} fixed bins of normalized centroid radius and retains exact species counts in each shell. No periodic images are invented. The estimator is translation-, proper-rotation-, permutation-, and common-scale-invariant. It is not mass density, packing fraction, porosity, thermodynamic free volume, equilibrium segregation, surface or interfacial energy, pressure, a bulk limit, rate, or physical time.`;
 }
 
 packingPathwayMetrics.addEventListener("click", (event) => {
   const button = event.target.closest("button[data-packing-metric]");
   if (!["median", "core", "surface", "volume"].includes(button?.dataset.packingMetric)) return;
   selectedPackingMetric = button.dataset.packingMetric; renderPackingPathway();
+});
+
+packingRadialChannels.addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-radial-channel]");
+  if (!button) return;
+  selectedRadialProfileChannel = button.dataset.radialChannel; renderPackingPathway();
 });
 
 function renderStructuralLeap(leap = null) {

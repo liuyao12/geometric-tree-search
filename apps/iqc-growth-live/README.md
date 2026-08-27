@@ -19,6 +19,17 @@ the GCTS anatomy view explains covers, oriented ports, markings, search, and
 promotion; and the claim ledger keeps proved, measured, and open results visibly
 separate. Its numbers are frozen benchmark results, not recomputed browser demos.
 
+Build 237 adds an interactive **core-to-growth-front material profile** to the
+finite packing audit. Eight normalized centroid-radius shells compare local
+number density and every displayed element fraction with the supplied
+configuration. Element-colored channel controls expose depleted cores,
+densified or hollow fronts, and finite surface enrichment without reducing a
+multicomponent system to a binary ratio. The leap consequence matrix separately
+records the largest positive outer-shell composition excess. The profile is a
+finite geometric observation—not equilibrium segregation, a bulk surface
+composition, chemical potential, diffusion, surface/interfacial energy,
+porosity, pressure, kinetics, or physical time.
+
 Build 236 adds an interactive **finite local packing-density pathway**. Every
 retained structural state now preserves a radially stratified distribution of
 six-nearest-neighbor number density relative to the inner half of the supplied

@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260827-236">
+  <link rel="stylesheet" href="./style.css?v=20260827-237">
   <script type="importmap">
     {
       "imports": {
@@ -1767,6 +1767,11 @@
               <figure><figcaption>selected leap distribution <span><i class="before"></i>before <i class="after"></i>after</span></figcaption><svg id="packingDistributionPlot" viewBox="0 0 300 112" role="img" aria-label="Before and after local relative-density distributions"></svg></figure>
               <figure><figcaption>retained structural states <span><i class="core"></i>core <i class="surface"></i>surface</span></figcaption><svg id="packingPathwayPlot" viewBox="0 0 300 112" role="img" aria-label="Local relative packing density across structural leaps"></svg></figure>
             </div>
+            <section class="radial-material-profile" aria-label="Core-to-growth-front chemistry and density profile">
+              <header><span><small>core → growth front</small><strong id="packingRadialState">radial material profile</strong></span><div id="packingRadialChannels" role="group" aria-label="Select density or an element fraction"></div></header>
+              <svg id="packingRadialPlot" viewBox="0 0 300 128" role="img" aria-label="Radial density or composition profile through the selected structural state"></svg>
+              <div id="packingRadialReadout" class="packing-radial-readout"></div>
+            </section>
             <div id="packingPathwayReadout" class="packing-pathway-readout"></div>
             <p id="packingPathwayBoundary">A finite k-nearest-neighbor number-density ratio compares the explicit structure with the inner supplied configuration. It is not mass density, porosity, thermodynamic free volume, pressure, energy, or physical time.</p>
           </article>
@@ -1889,7 +1894,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260827-236"></script>
+  <script type="module" src="./app.js?v=20260827-237"></script>
   <script type="module" src="./evidence-atlas.js?v=20260827-20"></script>
 </body>
 </html>
