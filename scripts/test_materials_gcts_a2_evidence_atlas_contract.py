@@ -20,15 +20,15 @@ def main() -> None:
     css = (APP / "style.css").read_text()
 
     for needle, label in (
-        ('from "../../assets/a2-layered-size7-candidates.js?v=20260827-4"', "generated candidate import"),
-        ('short: "A₂ corona"', "A2 system"),
-        ('["historical family blockers", "1,113"]', "exact blocker total"),
-        ('["Claim boundary", "7 unresolved · 1 periodic"', "updated classification boundary"),
-        ('curveNote: "exact counts · not a growth curve"', "curve semantics"),
+        ('from "../../assets/a2-layered-size8-candidates.js?v=20260827-1"', "generated candidate import"),
+        ('short: "A₂ size 8"', "A2 system"),
+        ('["layer-essential census", "4,940"]', "exact census"),
+        ('["Claim boundary", "4 unresolved"', "classification boundary"),
+        ('curveNote: "4,940 → 411 → 6 → 4 · zero solver unknowns"', "curve semantics"),
         ('function renderA2Candidate(', "candidate interaction"),
         ('function a2CandidateSvg(', "cell-support drawing"),
-        ('outer-corona remainder keeps the classification <b>unresolved</b>', "per-candidate boundary"),
-        ('Exact A₂ obstruction learning', "claim ledger progress entry"),
+        ('Larger domains and more general grammars keep the classification <b>unresolved</b>', "per-candidate boundary"),
+        ('Exact A₂ layer-essential screening', "claim ledger progress entry"),
         ('A₂ global classification', "claim ledger open entry"),
     ):
         require(atlas, needle, label)
@@ -46,38 +46,35 @@ def main() -> None:
     require(css, ".a2-candidate-shape", "candidate support styling")
     require(css, ".a2-blocker-bars", "comparison styling")
     require(root_html, '<base href="../apps/iqc-growth-live/">', "root-level asset base")
-    require(root_html, "Seven unresolved candidates after one eight-copy periodic witness",
+    require(root_html, "Four size-eight candidates remain exact through six copies",
             "root-level current A2 classification")
-    require(root_html, './evidence-atlas.js?v=20260827-22', "root-level atlas cache version")
+    require(root_html, './evidence-atlas.js?v=20260827-23', "root-level atlas cache version")
 
-    expected = {
-        "a2lp_7_00128": (130, 7),
-        "a2lp_7_00211": (136, 4),
-        "a2lp_7_00232": (156, 12),
-        "a2lp_7_00235": (131, 9),
-        "a2lp_7_00694": (139, 7),
-        "a2lp_7_00755": (142, 3),
-        "a2lp_7_00777": (140, 6),
-        "a2lp_7_00809": (139, 8),
-    }
-    records = {}
-    for candidate_id, (expected_count, expected_core_size) in expected.items():
-        path = ROOT / "data" / f"a2-layered-size7-corona2-core-{candidate_id}-strengthened.ndjson"
-        record = json.loads(path.read_text())
-        assert record["corona2_core_classification"] == "unresolved"
-        assert record["corona2_core_cegar"]["outer_exhausted"] is False
-        assert record["corona2_core_cegar"]["rounds"] == 32
-        count = len(record["corona2_core_cegar"]["clauses"])
-        assert count == expected_count
-        core = json.loads((
-            ROOT / "data" / f"a2-layered-size7-corona2-core-{candidate_id}-mincore.ndjson"
-        ).read_text())
-        assert core["classification"] == "sound_radius2_placement_obstruction"
-        assert core["minimal"] is False
-        assert core["final_replay"]["result"] == "unsat"
-        assert len(core["reduced_outer_placement_indices"]) == expected_core_size
-        records[candidate_id] = count
-    assert sum(records.values()) == 1113
+    asset_text = (ROOT / "assets" / "a2-layered-size8-candidates.js").read_text()
+    payload = asset_text.split("Object.freeze(", 1)[1].rsplit(");", 1)[0]
+    candidates = json.loads(payload)
+    assert [candidate["id"] for candidate in candidates] == [
+        "a2lp_8_02131", "a2lp_8_02151", "a2lp_8_03411", "a2lp_8_04836"
+    ]
+    assert [candidate["screening"]["corona_root_patch_copies"] for candidate in candidates] == [24, 29, 30, 27]
+    assert [candidate["screening"]["corona2_gcts_sound_clauses"] for candidate in candidates] == [16, 72, 72, 62]
+    for candidate in candidates:
+        screen = candidate["screening"]
+        assert len(candidate["cells"]) == 8
+        assert candidate["morphology"]["layer_essential"] is True
+        assert screen["source_pool_size"] == 4940
+        assert screen["periodic_one_copy_certificates"] == 4529
+        assert screen["periodic_two_copy_certificates_after_one_copy_screen"] == 405
+        assert screen["periodic_four_copy_certificates_after_three_copy_screen"] == 2
+        assert screen["periodic_exact_through"] == 6
+        assert screen["periodic_hnf_bases_exhausted_by_copies"]["6"] == 2015
+        assert screen["periodic_solver_unknowns"] == 0
+        assert screen["corona_completed_verified"] is True
+        assert screen["corona2_gcts_outer_exhausted"] is False
+        assert screen["direct_scalar_substitution_scales_exhausted"] == list(range(2, 9))
+        assert screen["direct_layer_scale_pairs_exhausted"] == 49
+        assert screen["two_copy_metatile_substitution_scales_exhausted"] == [2, 3]
+        assert screen["three_copy_metatile_substitution_scales_exhausted"] == [2, 3]
 
     print("A2 evidence atlas contract: passed")
 

@@ -1,5 +1,23 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 264 · size-eight A₂ evidence frontier
+
+The Evidence Atlas now reads the latest layer-essential size-eight catalogue
+rather than stopping at the earlier size-seven stress test. Exact weighted
+quotient replay narrows 4,940 symmetry-distinct shapes to 411 after the
+one-copy screen, six after the two-copy screen, and four after the four-copy
+screen. Each remaining candidate exhausts all 2,015 six-copy HNF bases with
+zero solver unknowns and has an independently replayed complete first corona
+of 24, 29, 30, or 27 copies.
+
+The interactive four-candidate gallery exposes 16, 72, 72, and 62 sound GCTS
+obstruction clauses, along with the bounded scalar, anisotropic, and connected
+small-metatile substitution exclusions. It also makes the boundary prominent:
+no outer first-corona space is exhausted, so larger periodic domains, complete
+second-corona search, and general substitution grammars remain open. The four
+candidates are exact through six copies—not proved non-tilers, aperiodic
+monotiles, or models of a particular material.
+
 ## Build 263 · physics readiness planner
 
 The execution-effect atlas now separates five readiness states that were

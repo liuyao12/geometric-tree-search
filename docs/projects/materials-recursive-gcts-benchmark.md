@@ -1,5 +1,21 @@
 # Recursive GCTS benchmark for material growth
 
+### Size-eight A₂ evidence frontier (Build 264)
+
+The browser evidence view now consumes the generated layer-essential
+size-eight catalogue. From 4,940 symmetry-distinct inputs, independently
+replayed exact weighted quotients certify 4,529 at one copy, another 405 at two
+copies, and two more at four copies. The final four candidates exhaust every
+six-copy HNF basis—2,015 per candidate, with zero unknowns—and have replayed
+first-corona witnesses containing 24, 29, 30, and 27 copies.
+
+The same view reports 16 / 72 / 72 / 62 sound CEGAR/GCTS obstruction clauses
+and the exact exclusion of direct scalar scales 2…8, all 49 unequal layer-scale
+pairs in that range, and connected two- and three-copy metatile alphabets at
+scales 2 and 3. These are bounded negative families. No outer first-corona
+space is exhausted, and larger periodic domains and general substitutions are
+unsearched; consequently all four global classifications remain open.
+
 ### Physics readiness planner (Build 263)
 
 The pre-growth atlas now distinguishes five reasons for an execution state:
