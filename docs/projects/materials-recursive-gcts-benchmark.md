@@ -1,5 +1,23 @@
 # Recursive GCTS benchmark for material growth
 
+### Matched physics counterfactual planner (Build 266)
+
+The pre-growth protocol can now declare a one-layer baseline/omission pair.
+`buildPhysicsProtocolIntervention` inspects the selected row's exact execution
+flags rather than assuming every ablation has the same causal design. A pure
+ranking or search-order term is eligible for a same-candidate comparison and
+must reproduce the first-frontier digest. Removing hard admission or candidate
+geometry makes the candidate set an outcome; removing seed logic makes the seed
+digest the intervention. In all cases the input configuration, public boundary,
+and every other selected protocol layer must remain unchanged.
+
+Only selected executing rows with a real execution hook appear in the planner.
+Its receipt record distinguishes a ready local control route from a design-only
+omission, carries exactly one changed layer, and is frozen before candidate
+enumeration with `targetUsed=false`. The result defines an auditable geometric
+counterfactual; it does not identify a thermodynamic contribution, eliminate a
+physical mechanism, integrate dynamics, or establish population-level cause.
+
 ### Pre-growth physics protocol composer (Build 265)
 
 The Stage 4 preflight now supports an explicit investigation protocol. Users

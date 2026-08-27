@@ -323,3 +323,53 @@ export function buildPhysicsInvestigationProtocol(records, selectedRecordIds, op
       : "Unready or evidence-only layers remain explicit and cannot silently change search execution.",
   };
 }
+
+export function buildPhysicsProtocolIntervention(protocol, ablatedRecordId) {
+  if (!protocol || protocol.schema !== 1 || !Array.isArray(protocol.selected)) {
+    throw new Error("physics protocol intervention needs a compiled protocol");
+  }
+  const selected = protocol.selected.find((record) => record.recordId === ablatedRecordId);
+  if (!selected) throw new Error(`physics protocol intervention record is not selected: ${ablatedRecordId}`);
+  const changedExecutionObjects = PHYSICS_EFFECT_COLUMNS.slice(0, -1)
+    .filter((column) => selected.effects[column.id]).map((column) => column.id);
+  const executableLayer = selected.readiness.id === "executing" && changedExecutionObjects.length > 0;
+  const candidateSetMustRemainIdentical = executableLayer
+    && changedExecutionObjects.every((effect) => ["ranking", "searchOrder"].includes(effect));
+  const candidateSetMayChange = changedExecutionObjects
+    .some((effect) => ["hardAdmission", "candidateGeometry"].includes(effect));
+  const initialStateMayChange = changedExecutionObjects.includes("initialState");
+  const comparisonMode = candidateSetMustRemainIdentical ? "matched-candidate-ranking"
+    : candidateSetMayChange || initialStateMayChange ? "matched-input-structural-response"
+      : "not-an-execution-intervention";
+  const state = !executableLayer ? "not-executable"
+    : selected.controlRouteAvailable ? "ready-to-configure" : "design-only-no-control";
+  return {
+    schema: 1,
+    state,
+    executableLayer,
+    comparisonMode,
+    ablatedRecordId,
+    ablatedProcess: selected.process,
+    changedExecutionObjects,
+    baselineSelectedRecordIds: [...protocol.selectedRecordIds],
+    ablationSelectedRecordIds: protocol.selectedRecordIds.filter((recordId) => recordId !== ablatedRecordId),
+    exactlyOneSelectedLayerChanged: true,
+    otherProtocolLayersRemainByteIdentical: true,
+    inputConfigurationMustMatch: true,
+    publicBoundaryMustMatch: true,
+    candidateSetMustRemainIdentical,
+    candidateSetMayChange,
+    initialStateMayChange,
+    candidateIdentityGate: candidateSetMustRemainIdentical ? "first-frontier candidate digest must match"
+      : candidateSetMayChange ? "candidate digest is an outcome because admission or geometry changes"
+        : initialStateMayChange ? "seed digest is an intervention; input specimen and public boundary must match"
+          : "no executable counterfactual is defined",
+    controlRouteAvailable: selected.controlRouteAvailable,
+    controlRouteLabel: selected.controlRouteLabel,
+    selectionMadeBeforeCandidateEnumeration: true,
+    candidateSetInspected: false,
+    targetUsed: false,
+    physicalTimeModeled: false,
+    claimBoundary: "The arm estimates a deterministic geometric omission effect on this supplied configuration; it is not a physical mechanism removal, free-energy decomposition, rate, or independent-specimen causal law.",
+  };
+}

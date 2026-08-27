@@ -44,9 +44,10 @@ import { blockedCreationResponseSurrogate, blockedCreationResponseValidation, bu
   crossRunHorizonReadinessAtlas,
   LOCAL_CREATION_CONTEXT_FEATURE_IDS }
   from "./creation-response-association.js?v=20260826-13";
-import { buildPhysicsCompressionMap, buildPhysicsEffectMatrix, buildPhysicsInvestigationProtocol, buildPhysicsLineagePath,
+import { buildPhysicsCompressionMap, buildPhysicsEffectMatrix, buildPhysicsInvestigationProtocol,
+  buildPhysicsLineagePath, buildPhysicsProtocolIntervention,
   PHYSICS_EFFECT_COLUMNS, PHYSICS_READINESS_STATES, physicsExecutionLineage }
-  from "./physics-compression-map.js?v=20260827-5";
+  from "./physics-compression-map.js?v=20260827-6";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -328,6 +329,8 @@ const growthPhysicsProtocolComposer = $("growthPhysicsProtocolComposer");
 const growthPhysicsProtocolState = $("growthPhysicsProtocolState");
 const growthPhysicsProtocolCoverage = $("growthPhysicsProtocolCoverage");
 const growthPhysicsProtocolSelection = $("growthPhysicsProtocolSelection");
+const growthPhysicsAblationSelect = $("growthPhysicsAblationSelect");
+const growthPhysicsAblationDetail = $("growthPhysicsAblationDetail");
 const growthPhysicsPreflightMatrix = $("growthPhysicsPreflightMatrix");
 const growthPhysicsPreflightDetail = $("growthPhysicsPreflightDetail");
 const growthCoreGroupState = $("growthCoreGroupState");
@@ -1555,6 +1558,7 @@ let selectedGrowthPhysicsEffectFilter = "all";
 let selectedGrowthPhysicsReadinessFilter = "all";
 let selectedPhysicsCompressionLane = "all";
 let physicsProtocolSelectedIds = null;
+let physicsProtocolAblatedRecordId = null;
 let frozenPhysicsPreflightManifest = null;
 const MAXIMUM_RETAINED_STRUCTURAL_LEAPS = 24;
 let growthMechanismEvents = [];
@@ -10243,7 +10247,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-265",
+      buildId: "20260827-266",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -12510,7 +12514,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-265" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-266" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -21894,6 +21898,7 @@ function resetCounters() {
   selectedPopulationResponseTermId = null;
   selectedLeapPhysicsId = "steric";
   physicsProtocolSelectedIds = null;
+  physicsProtocolAblatedRecordId = null;
   frozenPhysicsPreflightManifest = null;
   growthMechanismEvents = [];
   growthMechanismTotals = {};
@@ -24226,9 +24231,14 @@ function physicsProtocolForRecords(records) {
     physicsProtocolSelectedIds = new Set([...physicsProtocolSelectedIds]
       .filter((recordId) => recordIds.has(recordId)));
   }
-  return buildPhysicsInvestigationProtocol(records, [...physicsProtocolSelectedIds], {
+  const protocol = buildPhysicsInvestigationProtocol(records, [...physicsProtocolSelectedIds], {
     intent: "structural-continuation",
   });
+  if (physicsProtocolAblatedRecordId && !physicsProtocolSelectedIds.has(physicsProtocolAblatedRecordId)) {
+    physicsProtocolAblatedRecordId = null;
+  }
+  return { ...protocol, interventionPlan: physicsProtocolAblatedRecordId
+    ? buildPhysicsProtocolIntervention(protocol, physicsProtocolAblatedRecordId) : null };
 }
 
 function currentPhysicsPreflightManifest() {
@@ -24322,6 +24332,29 @@ function renderPhysicsProtocolComposer(manifest) {
       protocol.selectedRecordIds.filter((candidate) => candidate !== recordId)));
     growthPhysicsProtocolSelection.append(button);
   });
+  const eligibleInterventions = protocol.selected.filter((record) => record.readiness.id === "executing"
+    && PHYSICS_EFFECT_COLUMNS.slice(0, -1).some((column) => record.effects[column.id]));
+  const previous = protocol.interventionPlan?.ablatedRecordId || "";
+  growthPhysicsAblationSelect.replaceChildren();
+  const none = document.createElement("option"); none.value = ""; none.textContent = "None · single-arm protocol";
+  growthPhysicsAblationSelect.append(none, ...eligibleInterventions.map((record) => {
+    const option = document.createElement("option"); option.value = record.recordId;
+    option.textContent = `${record.process} · omit in arm B`; return option;
+  }));
+  growthPhysicsAblationSelect.value = eligibleInterventions.some((record) => record.recordId === previous)
+    ? previous : "";
+  growthPhysicsAblationSelect.disabled = frozen || eligibleInterventions.length === 0;
+  growthPhysicsAblationDetail.className = "";
+  if (!protocol.interventionPlan) {
+    growthPhysicsAblationDetail.innerHTML = "<b>No counterfactual registered</b><span>Select one executing layer to classify the required comparison and candidate-identity gate.</span>";
+  } else {
+    const intervention = protocol.interventionPlan;
+    growthPhysicsAblationDetail.className = intervention.state === "ready-to-configure" ? "ready" : "warning";
+    const gate = intervention.candidateSetMustRemainIdentical ? "same first-frontier digest required"
+      : intervention.candidateSetMayChange ? "candidate set is a measured outcome"
+        : intervention.initialStateMayChange ? "seed digest is the intervention" : "no executable arm";
+    growthPhysicsAblationDetail.innerHTML = `<b>${intervention.comparisonMode.replaceAll("-", " ")}</b><span>Arm B omits only ${intervention.ablatedProcess}. ${gate}. ${intervention.controlRouteAvailable ? intervention.controlRouteLabel : "No local control route; design only."}</span>`;
+  }
 }
 
 function renderGrowthPhysicsPreflight() {
@@ -24519,6 +24552,16 @@ growthPhysicsProtocolComposer.addEventListener("click", (event) => {
   receiptStatus.textContent = preset === "clear"
     ? "Physics protocol cleared · no control changed."
     : `${selected.length} physical layers declared in the pre-growth protocol · no control changed.`;
+});
+
+growthPhysicsAblationSelect.addEventListener("change", () => {
+  if (leapEventCount > 0) return;
+  physicsProtocolAblatedRecordId = growthPhysicsAblationSelect.value || null;
+  frozenPhysicsPreflightManifest = null;
+  renderGrowthPhysicsPreflight();
+  receiptStatus.textContent = physicsProtocolAblatedRecordId
+    ? "One-layer counterfactual declared before candidate enumeration · no control changed and no growth executed."
+    : "Physics counterfactual cleared · single-arm protocol restored.";
 });
 
 function renderLeapPhysics(leap = null) {

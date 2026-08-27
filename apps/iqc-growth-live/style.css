@@ -886,6 +886,15 @@ body.study-guide-open { overflow: hidden; }
 .physics-protocol-selection button:hover,.physics-protocol-selection button:focus-visible { border-color: rgba(255,117,111,.5); color: #d8a6a4; outline: none; }
 .physics-protocol-selection button:disabled { cursor: default; opacity: .65; }
 .physics-protocol-selection .empty { color: #5e716c; font: 4px var(--mono); }
+.physics-protocol-intervention { display: grid; grid-template-columns: minmax(126px,.8fr) minmax(0,1.2fr); gap: 5px; margin-top: 5px; padding-top: 5px; border-top: 1px solid rgba(101,225,188,.1); }
+.physics-protocol-intervention label { color: #66827a; font: 4px var(--mono); text-transform: uppercase; }
+.physics-protocol-intervention select { display: block; width: 100%; margin-top: 3px; padding: 4px 18px 4px 5px; border: 1px solid rgba(101,225,188,.15); background: #071415; color: #9bb8b0; font: 5px var(--mono); }
+.physics-protocol-intervention select:disabled { opacity: .45; }
+.physics-protocol-intervention article { padding: 4px 6px; border-left: 2px solid rgba(181,148,255,.4); background: rgba(181,148,255,.025); color: #746b86; font: 4px/1.4 var(--mono); }
+.physics-protocol-intervention article.ready { border-left-color: var(--mint); color: #6f9086; }
+.physics-protocol-intervention article.warning { border-left-color: #ffc169; color: #8b765b; }
+.physics-protocol-intervention article b,.physics-protocol-intervention article span { display: block; }
+.physics-protocol-intervention article b { color: #c3b7dc; font-weight: 400; text-transform: uppercase; }.physics-protocol-intervention article span { margin-top: 2px; }
 .physics-protocol-composer > p { margin: 5px 0 0; color: #5d756e; font: 4px/1.45 var(--mono); }
 .growth-physics-preflight .leap-physics-matrix button.protocol-selected { box-shadow: inset 2px 0 var(--mint); }
 .leap-physics-actions .protocol-toggle { min-width: 118px; border-color: rgba(181,148,255,.3); color: #b8a7de; }

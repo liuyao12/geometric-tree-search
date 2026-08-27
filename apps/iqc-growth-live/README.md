@@ -1,5 +1,23 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 266 · matched physics counterfactual planner
+
+Every pre-growth physics protocol can now register one selected layer as the
+sole omission in arm B. The planner derives the correct comparison contract
+from that layer's actual execution footprint. Ranking- or order-only omissions
+require an identical first-frontier candidate digest. Admission or candidate-
+geometry omissions instead treat candidate identity as a measured structural
+outcome, while seed interventions require the supplied specimen and public
+boundary to match even though the seed digest changes.
+
+The interface exposes only selected, currently executing layers. It states
+whether a local control route exists, preserves every other protocol layer
+byte-for-byte, and freezes the baseline IDs, ablation IDs, changed execution
+objects, candidate-identity gate, and negative claim boundary before candidate
+enumeration. This is a deterministic geometric intervention on one supplied
+configuration—not removal of a physical mechanism, an energy decomposition,
+kinetics, or independent-specimen causal inference.
+
 ## Build 265 · pre-growth physics protocol composer
 
 The readiness atlas is now an investigation-design surface rather than only an

@@ -20,16 +20,19 @@ def main() -> None:
         'id="growthPhysicsProtocolState"',
         'id="growthPhysicsProtocolCoverage"',
         'id="growthPhysicsProtocolSelection"',
+        'id="growthPhysicsAblationSelect"',
+        'id="growthPhysicsAblationDetail"',
         'data-physics-protocol-preset="executing"',
         'data-physics-protocol-preset="actionable"',
         'data-physics-protocol-preset="clear"',
         "freeze before the first candidate frontier",
-        'app.js?v=20260827-265',
+        'app.js?v=20260827-266',
     ):
         assert needle in html, needle
 
     for needle in (
         "export function buildPhysicsInvestigationProtocol",
+        "export function buildPhysicsProtocolIntervention",
         'selectionMadeBeforeCandidateEnumeration: true',
         'candidateSetInspected: false',
         'coordinatesEmbedded: false',
@@ -37,22 +40,30 @@ def main() -> None:
         'physicalTimeModeled: false',
         'state === "ready"',
         'Unready or evidence-only layers remain explicit',
+        'exactlyOneSelectedLayerChanged: true',
+        'otherProtocolLayersRemainByteIdentical: true',
+        'candidateSetMustRemainIdentical',
+        'first-frontier candidate digest must match',
     ):
         assert needle in module, needle
 
     for needle in (
-        "buildPhysicsInvestigationProtocol, buildPhysicsLineagePath",
-        'from "./physics-compression-map.js?v=20260827-5"',
+        "buildPhysicsCompressionMap, buildPhysicsEffectMatrix, buildPhysicsInvestigationProtocol",
+        "buildPhysicsLineagePath, buildPhysicsProtocolIntervention",
+        'from "./physics-compression-map.js?v=20260827-6"',
         "function physicsProtocolForRecords(records)",
         "function updatePhysicsProtocolSelection(recordIds)",
         "function renderPhysicsProtocolComposer(manifest)",
+        "physicsProtocolAblatedRecordId",
+        "interventionPlan: physicsProtocolAblatedRecordId",
+        'growthPhysicsAblationSelect.addEventListener("change"',
         "investigationProtocol: physicsProtocolForRecords(records)",
         'schema: 2, records, counts',
         'physicsPreflightManifest: { ...physicsPreflightManifest',
         'frozenBeforeFirstStructuralAction: Boolean(frozenPhysicsPreflightManifest)',
         'if (leapEventCount > 0) return;',
         'no control changed.',
-        'buildId: "20260827-265"',
+        'buildId: "20260827-266"',
     ):
         assert needle in source, needle
 
@@ -61,13 +72,14 @@ def main() -> None:
         ".physics-protocol-presets",
         ".physics-protocol-coverage",
         ".physics-protocol-selection",
+        ".physics-protocol-intervention",
         ".protocol-selected",
     ):
         assert needle in css, needle
 
     assert '<base href="../apps/iqc-growth-live/">' in root_html
     assert 'id="growthPhysicsProtocolComposer"' in root_html
-    assert 'app.js?v=20260827-265' in root_html
+    assert 'app.js?v=20260827-266' in root_html
     print("physics protocol composer portal contract: passed")
 
 

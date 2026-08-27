@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
-import { buildPhysicsInvestigationProtocol } from "../apps/iqc-growth-live/physics-compression-map.js";
+import { buildPhysicsInvestigationProtocol, buildPhysicsProtocolIntervention }
+  from "../apps/iqc-growth-live/physics-compression-map.js";
 
 const records = [
   { id: "steric", process: "excluded volume", status: "hard", role: "active",
@@ -14,6 +15,12 @@ const records = [
     encoding: "symmetry score", evidence: "observed", boundary: "no execution hook" },
   { id: "long-range", process: "long-range response", status: "open", role: "unresolved",
     encoding: "not encoded", evidence: "none", boundary: "external solver" },
+  { id: "surface", process: "surface completion", status: "learned", role: "active",
+    encoding: "undercoordination rank", evidence: "learned", boundary: "not surface energy",
+    controlRouteAvailable: true, controlRouteLabel: "Configure surface completion" },
+  { id: "path-ensemble", process: "path ensemble", status: "sampled", role: "active",
+    encoding: "branch order", evidence: "declared", boundary: "not stochastic dynamics",
+    controlRouteAvailable: true, controlRouteLabel: "Configure path ensemble" },
 ];
 
 const ready = buildPhysicsInvestigationProtocol(records, ["steric"]);
@@ -36,7 +43,7 @@ assert.deepEqual(planned.blockingRecordIds,
   ["capillary-geometry", "calculation-forces", "long-range"]);
 assert.deepEqual(planned.evidenceOnlyRecordIds, ["local-symmetry"]);
 assert.equal(planned.effectCoverage.diagnostic.count, 4);
-assert.equal(planned.completeManifestRecordCount, 5);
+assert.equal(planned.completeManifestRecordCount, 7);
 assert.equal(planned.selectionMadeBeforeCandidateEnumeration, true);
 
 const evidenceOnly = buildPhysicsInvestigationProtocol(records, ["local-symmetry"],
@@ -48,8 +55,29 @@ assert.throws(() => buildPhysicsInvestigationProtocol(records, ["steric", "steri
 assert.throws(() => buildPhysicsInvestigationProtocol(records, ["unknown"]), /unknown IDs/);
 assert.throws(() => buildPhysicsInvestigationProtocol(records, [], { intent: "physical-time" }), /unsupported/);
 
+const paired = buildPhysicsInvestigationProtocol(records, ["steric", "surface", "path-ensemble"]);
+const rankingIntervention = buildPhysicsProtocolIntervention(paired, "surface");
+assert.equal(rankingIntervention.state, "ready-to-configure");
+assert.equal(rankingIntervention.comparisonMode, "matched-candidate-ranking");
+assert.equal(rankingIntervention.candidateSetMustRemainIdentical, true);
+assert.equal(rankingIntervention.candidateSetMayChange, false);
+assert.deepEqual(rankingIntervention.changedExecutionObjects, ["ranking"]);
+assert.deepEqual(rankingIntervention.ablationSelectedRecordIds, ["steric", "path-ensemble"]);
+
+const hardIntervention = buildPhysicsProtocolIntervention(paired, "steric");
+assert.equal(hardIntervention.state, "design-only-no-control");
+assert.equal(hardIntervention.comparisonMode, "matched-input-structural-response");
+assert.equal(hardIntervention.candidateSetMustRemainIdentical, false);
+assert.equal(hardIntervention.candidateSetMayChange, true);
+assert.match(hardIntervention.candidateIdentityGate, /outcome/);
+
+const orderIntervention = buildPhysicsProtocolIntervention(paired, "path-ensemble");
+assert.equal(orderIntervention.candidateSetMustRemainIdentical, true);
+assert.deepEqual(orderIntervention.changedExecutionObjects, ["searchOrder"]);
+assert.throws(() => buildPhysicsProtocolIntervention(paired, "long-range"), /not selected/);
+
 console.log("physics investigation protocol regression passed", {
   ready: ready.selectedRecordCount,
   planned: planned.readinessCounts,
-  effects: planned.executionObjectsCovered,
+  effects: planned.executionObjectsCovered, rankingMode: rankingIntervention.comparisonMode,
 });
