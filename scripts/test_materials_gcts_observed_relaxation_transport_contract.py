@@ -33,8 +33,8 @@ def test_observed_non_affine_vectors_seed_only_bounded_fail_closed_projection() 
     assert "seedImprovedObjective" in projection
     assert "magnitude > displacementCap" in projection
     assert '<option value="observed">Observed non-affine vector seed' in html
-    assert 'buildId: "20260827-257"' in source
-    assert 'app.js?v=20260827-257' in html
+    assert 'buildId: "20260827-258"' in source
+    assert 'app.js?v=20260827-258' in html
     assert "Build 251 adds the first archive-observed shortcut" in readme
     assert "Proper-pose observed relaxation seeds (Build 251)" in benchmark
 

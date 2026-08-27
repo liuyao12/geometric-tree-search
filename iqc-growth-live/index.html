@@ -8,7 +8,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260827-253">
+  <link rel="stylesheet" href="./style.css?v=20260827-258">
   <script type="importmap">
     {
       "imports": {
@@ -69,6 +69,12 @@
           <div id="studyComparisonArms" class="study-comparison-arms"></div>
           <div id="studyComparisonProgress" class="study-comparison-progress" aria-label="Saved and executed arm progress"></div>
           <div id="studyComparisonResponse" class="study-comparison-response waiting" aria-label="Registered outcome response" aria-live="polite"></div>
+          <section id="studyFrontierAudit" class="study-frontier-audit" hidden aria-label="Frozen frontier intervention audit" aria-live="polite">
+            <header><span><small>pre-commit frozen frontier</small><strong>Response metric ↔ observed-geometry control</strong></span><b id="studyFrontierAuditState">advance one response-arm update</b></header>
+            <div id="studyFrontierAuditMetrics" class="study-frontier-audit-metrics"></div>
+            <div id="studyFrontierAuditRanks" class="study-frontier-audit-ranks"></div>
+            <p id="studyFrontierAuditBoundary">No candidate is invented: the paired ranks will use one identical hard-admitted candidate set.</p>
+          </section>
           <p id="studyComparisonOutcomes"></p>
           <em id="studyComparisonBoundary"></em>
         </section>
@@ -270,6 +276,12 @@
               </select>
             </label>
             <button id="randomMaterialButton" class="database-button" type="button">Sample four matching specimens</button>
+            <section class="worked-archive" aria-label="Reproducible public worked archive">
+              <header><span><small>worked public investigation</small><strong>Paired cell–stress response</strong></span><b>exact entry</b></header>
+              <button id="workedArchiveButton" type="button">Load verified Na–Cl response archive</button>
+              <div id="workedArchiveState">10 archived frames · fixed small-strain validation · no text field</div>
+              <a id="workedArchivePermalink" href="?build=258&amp;specimen=nomad:KFBchFQ1IQAE-JEgzOS1XzZlfsTz" hidden>Open or share this exact investigation ↗</a>
+            </section>
             <div id="databaseStatus" class="import-status" role="status" aria-live="polite">Queries public bulk entries containing exactly the selected elements.</div>
             <div id="databaseCandidateTray" class="database-candidate-tray" role="group" aria-label="Matching public specimen candidates" hidden></div>
             <p class="occupancy-note"><b>Disorder stays geometric.</b> Mixed/partial CIF sites remain one position with a finite species–vacancy alternative set. A colored orbital ring marks occupational alternatives; a violet wire ellipsoid shows the transported 2σ Uiso/Uij displacement halo. Both enter the auditable geometry, never an invented potential.</p>
@@ -339,6 +351,13 @@
               <div id="relaxationDisplacementState" class="relaxation-displacement-state">Select an earlier snapshot to compare its geometry with the final archived state.</div>
               <div id="relaxationLocalEnvironmentState" class="relaxation-displacement-state">Local best-affine neighborhood residual is unavailable.</div>
               <div class="relaxation-neighbor-legend"><span>lost kNN relation</span><span>gained kNN relation</span><span>halo = √D²min</span></div>
+              <section id="stressStrainResponsePanel" class="stress-strain-response" hidden aria-label="Archived stress strain response">
+                <header><span><small>cell strain ↔ archived stress</small><strong>Apparent isotropic response</strong></span><button id="stressStrainUseButton" type="button" disabled>Select an eligible earlier frame</button></header>
+                <div id="stressStrainResponseState">Response calibration unavailable.</div>
+                <svg id="stressStrainResponseChart" viewBox="0 0 280 78" role="img" aria-label="Observed and leave-one-frame-out predicted cell strain"></svg>
+                <div id="stressStrainResponseMetrics" class="stress-strain-response-metrics"></div>
+                <p id="stressStrainResponseNote">Paired cell and stress frames are required.</p>
+              </section>
               <section class="relaxation-calibration" aria-label="Geometry and external calculation calibration">
                 <header><span><small>geometry ↔ external calculation</small><strong id="relaxationCalibrationTitle">Final-frame-reference calibration</strong></span><div class="relaxation-calibration-selects"><select id="relaxationCalibrationReference" aria-label="Geometry reference"><option value="final">final frame reference</option><option value="first">first frame reference</option><option value="pooled">pooled geometry reference</option></select><select id="relaxationCalibrationMetric" aria-label="External calculation quantity"><option value="energy">relative energy / primitive atom</option><option value="force">residual-force RMS</option></select></div></header>
                 <div id="relaxationCalibrationState">At least three paired geometry/calculation snapshots are required.</div>
@@ -936,6 +955,7 @@
                 <option value="xy-shear">XY shear</option>
                 <option value="archive-stress">Archive stress shape · unit-compliance hypothesis</option>
                 <option value="archive-stress-reverse">Archive stress shape · reversed-sign ablation</option>
+                <option value="archive-response">Archive-fitted isotropic response · paired frames</option>
               </select>
             </label>
             <label class="field" for="affineLoadMagnitudeSelect">
@@ -1937,7 +1957,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260827-256"></script>
+  <script type="module" src="./app.js?v=20260827-258"></script>
   <script type="module" src="./evidence-atlas.js?v=20260827-22"></script>
 </body>
 </html>

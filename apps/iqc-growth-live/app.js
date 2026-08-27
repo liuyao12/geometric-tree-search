@@ -23,6 +23,8 @@ import { assessGeometrySurrogatePromotion, evaluateFrozenGeometrySurrogate,
   from "./geometry-calculation-calibration.js?v=20260826-6";
 import { policyIdentifiabilityAcrossArms, policyIdentifiabilityAudit, policyIdentifiabilityTrajectory }
   from "./policy-identifiability.js?v=20260826-4";
+import { archiveResponseFrontierRankAudit }
+  from "./archive-response-frontier-audit.js?v=20260827-1";
 import { applyHypothesisSeparationMultipliers as applyFrozenHypothesisSeparationMultipliers,
   validateHypothesisSeparationExperiment }
   from "./hypothesis-separation.js?v=20260826-1";
@@ -183,6 +185,11 @@ const studyComparisonFactor = $("studyComparisonFactor");
 const studyComparisonArms = $("studyComparisonArms");
 const studyComparisonProgress = $("studyComparisonProgress");
 const studyComparisonResponse = $("studyComparisonResponse");
+const studyFrontierAudit = $("studyFrontierAudit");
+const studyFrontierAuditState = $("studyFrontierAuditState");
+const studyFrontierAuditMetrics = $("studyFrontierAuditMetrics");
+const studyFrontierAuditRanks = $("studyFrontierAuditRanks");
+const studyFrontierAuditBoundary = $("studyFrontierAuditBoundary");
 const studyComparisonOutcomes = $("studyComparisonOutcomes");
 const studyComparisonBoundary = $("studyComparisonBoundary");
 const studyCompassState = $("studyCompassState");
@@ -2081,7 +2088,7 @@ async function loadWorkedPublicArchive({ updateAddress = true } = {}) {
     databaseSourceLink.textContent = `Open exact NOMAD entry ${result.structure.metadata.entryId.slice(0, 10)}… ↗`;
     if (updateAddress) {
       const url = new URL(window.location.href);
-      url.searchParams.set("build", "257");
+      url.searchParams.set("build", "258");
       url.searchParams.set("specimen", `nomad:${WORKED_PUBLIC_ARCHIVE.id}`);
       window.history.replaceState(null, "", url);
     }
@@ -10183,7 +10190,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-257",
+      buildId: "20260827-258",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -12440,7 +12447,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-257" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-258" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -17595,6 +17602,8 @@ function capturePolicyComparison(entries) {
       action: policyActionLabel(entry),
       baselineScore: entry.selectionScore,
       scoreTerms,
+      observedGeometricStrain: entry.evaluation.geometricStrain.total,
+      responseGeometricStrain: entry.evaluation.affineLoadedGeometricStrain.total,
       boundedPoseAudit: frontierPoseAudits.get(entry.candidate.key) || null,
       chargeMoment: entry.evaluation.chargeMoment.available ? {
         available: true, mode: entry.evaluation.chargeMoment.mode,
@@ -20426,6 +20435,80 @@ function renderStudyComparisonProgress(recipeId, comparison) {
     : "A comparable response requires at least one structural leap or audited fixed point in each arm.";
   studyComparisonProgress.replaceChildren(...armRecords, pair);
   renderStudyComparisonResponse(recipeId, comparison);
+  renderArchiveResponseFrontierAudit(recipeId);
+}
+
+function buildArchiveResponseFrontierAudit(snapshot = lastPolicyComparison) {
+  if (activeStudyRecipeId !== "archive-response") return null;
+  if (activeStudyArmId !== "reference" || affineLoadMode !== "archive-response") {
+    return { available: false, reason: "Configure the response-shaped reference arm before freezing a frontier.",
+      candidateSetChanged: false, hardAdmissionChanged: false, candidateGeometryChanged: false,
+      targetUsedToConstructCounterfactual: false, executed: false };
+  }
+  if (!snapshot?.workbenchCandidates?.length) {
+    return { available: false,
+      reason: "Enter material growth and advance one update to capture a pre-commit frozen frontier.",
+      candidateSetChanged: false, hardAdmissionChanged: false, candidateGeometryChanged: false,
+      targetUsedToConstructCounterfactual: false, executed: false };
+  }
+  const rankAudit = archiveResponseFrontierRankAudit({ snapshotIndex: snapshot.index,
+    frontierCount: snapshot.frontier, candidateSetDigest: snapshot.candidateDigest,
+    candidates: snapshot.workbenchCandidates });
+  if (!rankAudit) {
+    return { available: false, reason: "The frozen frontier does not contain a comparable strain term.",
+      candidateSetChanged: false, hardAdmissionChanged: false, candidateGeometryChanged: false,
+      targetUsedToConstructCounterfactual: false, executed: false };
+  }
+  return { ...rankAudit, available: true,
+    comparisonRole: "paired soft re-ranking over one frozen hard-admitted frontier",
+    candidateSetChanged: false, hardAdmissionChanged: false, candidateGeometryChanged: false,
+    candidateSetTargetUsed: snapshot.candidateSetTargetUsed,
+    rankingTargetUsed: snapshot.rankingTargetUsed,
+    targetUsedToConstructCounterfactual: false,
+    capturedBeforeDisplayedCommit: true, executed: false };
+}
+
+function renderArchiveResponseFrontierAudit(recipeId) {
+  studyFrontierAudit.hidden = recipeId !== "archive-response";
+  if (studyFrontierAudit.hidden) return;
+  const audit = buildArchiveResponseFrontierAudit();
+  if (!audit?.available) {
+    studyFrontierAudit.className = "study-frontier-audit waiting";
+    studyFrontierAuditState.textContent = activeStudyArmId === "reference"
+      ? "advance one response-arm update" : "configure response arm";
+    studyFrontierAuditMetrics.replaceChildren();
+    studyFrontierAuditRanks.replaceChildren();
+    studyFrontierAuditBoundary.textContent = audit?.reason
+      || "No candidate is invented: the paired ranks will use one identical hard-admitted candidate set.";
+    return;
+  }
+  studyFrontierAudit.className = `study-frontier-audit ${audit.rankingTargetUsed ? "known-window" : "target-free"}`;
+  studyFrontierAuditState.textContent = `${audit.candidateCount} identical candidates · ${audit.changedRanks} rank shifts`;
+  const metricRows = [
+    ["candidate set", `${audit.frontierCount} evaluated · ${audit.candidateCount} admitted`],
+    ["winner", audit.winnerChanged ? "changed" : "unchanged"],
+    ["rank correlation", `Spearman ρ ${audit.spearmanRho.toFixed(3)}`],
+    ["pair inversions", audit.pairwiseRankInversions.toLocaleString()],
+    ["max displacement", `${audit.maximumRankDisplacement} rank${audit.maximumRankDisplacement === 1 ? "" : "s"}`],
+    ["frontier / audit", `${audit.candidateSetDigest} / ${audit.auditDigest}`],
+  ].map(([labelText, valueText]) => {
+    const item = document.createElement("article");
+    const label = document.createElement("small"); label.textContent = labelText;
+    const value = document.createElement("strong"); value.textContent = valueText;
+    item.append(label, value); return item;
+  });
+  studyFrontierAuditMetrics.replaceChildren(...metricRows);
+  const rankRows = audit.rows.slice(0, 6).map((row) => {
+    const item = document.createElement("article");
+    const label = document.createElement("small"); label.textContent = row.action;
+    const ranks = document.createElement("strong");
+    ranks.textContent = `response #${row.responseRank} → control #${row.controlRank}`;
+    const detail = document.createElement("span");
+    detail.textContent = `strain ${row.responseStrain.toFixed(3)} ↔ ${row.controlStrain.toFixed(3)} · Δscore ${row.scoreDelta >= 0 ? "+" : ""}${row.scoreDelta.toFixed(4)}`;
+    item.append(label, ranks, detail); return item;
+  });
+  studyFrontierAuditRanks.replaceChildren(...rankRows);
+  studyFrontierAuditBoundary.textContent = `Snapshot ${audit.snapshotIndex} was captured before the displayed action commit. Candidate IDs, poses, emitted sites, and hard admission are byte-identical; only the declared soft strain contribution is replaced. ${audit.rankingTargetUsed ? "This snapshot belongs to labeled known-window replay, so it is diagnostic rather than target-free continuation." : "Ranking is target-free continuation."} This is a geometric intervention, not energy, kinetics, or a physical potential.`;
 }
 
 function activeStudyRecipeAudit() {
@@ -20460,6 +20543,8 @@ function activeStudyRecipeAudit() {
     registeredComparison: comparison ? { factor: comparison.factor, question: comparison.question,
       activeArmId: arm.id, activeArmLabel: arm.label, settings: { ...arm.settings },
       outcomes: [...comparison.outcomes], boundary: comparison.boundary, autoExecuted: false } : null,
+    frozenFrontierIntervention: recipe.id === "archive-response"
+      ? buildArchiveResponseFrontierAudit() : null,
     claimBoundary: recipe.boundary, convenienceOnly: true, hiddenPhysicsAdded: false,
     candidateGeometryAuthorized: false, recipeSchemaVersion: 1,
     reconstructedFromUrl: Boolean(studyLaunchAudit?.loaded),

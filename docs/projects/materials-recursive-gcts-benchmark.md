@@ -1,5 +1,22 @@
 # Recursive GCTS benchmark for material growth
 
+### Frozen-frontier response intervention (Build 258)
+
+The archive-response Study Guide now performs its one-factor comparison on a
+single pre-commit frontier rather than asking the reader to trust that the two
+arms share geometry. Each hard-admitted candidate carries both the observed
+contact/angle strain and the archive-response-transformed strain. The audit
+replaces exactly that one signed score-ledger contribution, re-ranks with a
+stable candidate-key tie break, and reports the unchanged frontier digest,
+winner identity, rank displacement, pairwise inversions, Spearman rank
+correlation, and its own deterministic digest.
+
+This is a counterfactual soft ordering, not a second execution. Candidate
+coordinates, cluster types, proper SE(3) poses, emitted sites, and hard gates
+are identical by construction. The receipt records whether the frozen
+snapshot was captured during labeled known-window replay or during target-free
+continuation, and the UI keeps those evidentiary roles distinct.
+
 ### Guided archive-response intervention (Build 257)
 
 The Study Guide now treats the pinned public calculation series as a complete

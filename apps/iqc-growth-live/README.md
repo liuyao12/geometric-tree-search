@@ -1,5 +1,21 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 258 · frozen-frontier response intervention
+
+The guided archive-response study now exposes the causal comparison before a
+growth action is committed. One frozen frontier supplies both arms: exact
+candidate IDs, poses, emitted sites, and hard-admission certificates stay
+unchanged while only the declared response-shaped strain contribution is
+replaced by the observed-geometry strain contribution. The study reports both
+winners, every rank displacement, pairwise inversions, Spearman rank
+correlation, the unchanged frontier digest, and an intervention audit digest.
+
+Known-window reconstruction is labeled as target-aware diagnostic evidence;
+unseen continuation is labeled target-free. The paired calculation is stored
+in the experiment receipt and never executes the control arm, invents a
+candidate, or interprets the geometric score as energy, kinetics, or a
+physical potential.
+
 ## Build 257 · guided physics-to-geometry response study
 
 The exact public Na–Cl archive is now a complete Study Guide investigation,

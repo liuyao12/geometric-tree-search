@@ -42,8 +42,8 @@ def test_prediction_overlay_and_receipt_are_auditable():
 
 
 def test_build_172_is_versioned_and_documented():
-    assert 'buildId: "20260827-257"' in APP
-    assert 'app.js?v=20260827-257' in HTML
+    assert 'buildId: "20260827-258"' in APP
+    assert 'app.js?v=20260827-258' in HTML
     assert 'geometry-calculation-calibration.js?v=20260826-6' in APP
     assert 'evidence-atlas.js?v=20260827-22' in HTML
     assert "Build 172" in README
