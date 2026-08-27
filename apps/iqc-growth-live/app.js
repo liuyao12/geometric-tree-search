@@ -12,7 +12,7 @@ import {
 } from "./structure-io.js?v=20260827-8";
 import { loadNomadStructureCandidate, NOMAD_EVIDENCE_TARGETS, NOMAD_STRUCTURE_FAMILIES,
   nomadEvidenceProfileLabel, nomadStructureCandidates }
-  from "./structure-database.js?v=20260827-9";
+  from "./structure-database.js?v=20260827-10";
 import { bestAffineNeighborhoodResidual } from "./relaxation-local-environment.js?v=20260826-2";
 import { assessGeometrySurrogatePromotion, evaluateFrozenGeometrySurrogate,
   frozenGeometrySurrogateArtifact, frozenGeometrySurrogatePreference,
@@ -80,6 +80,8 @@ import { scalarSpinCompatible, scalarSpinPolarity }
   from "./collinear-spin-coloring.js?v=20260827-1";
 import { boundedForceSeedOffset, forceMagnitudeP90, meanForceVectors }
   from "./force-seed-geometry.js?v=20260827-1";
+import { normalizedStressShapeDeformation }
+  from "./stress-geometry.js?v=20260827-1";
 import { CENTROSYMMETRY_PROVENANCE, inferCentrosymmetryNeighborCount, localCentrosymmetry }
   from "./centrosymmetry-geometry.js?v=20260826-1";
 import {
@@ -9860,6 +9862,8 @@ async function buildExperimentReceipt() {
     : [];
   const calculationForceSha256 = calculationForceRecords.length
     ? await receiptSha256(JSON.stringify(calculationForceRecords)) : null;
+  const calculationStressSha256 = externalCalculation?.stressCoverage > 0
+    ? await receiptSha256(JSON.stringify(externalCalculation.stressTensorGigaPascal)) : null;
   const scalarSpinRecords = referenceAtoms.filter((atom) => Number.isFinite(atom.calculationSpin))
     .map((atom) => ({ sourceIndex: atom.sourceIndex, species: atom.displaySpecies || atom.species,
       scalarSpin: receiptRound(atom.calculationSpin, 10) }));
@@ -9878,6 +9882,8 @@ async function buildExperimentReceipt() {
         ? receiptRound(frame.metadata.calculation.energyPerPrimitiveAtomElectronVolt, 10) : null,
       forceVectorsEvPerAngstrom: frame.atoms.map((atom) => atom.calculationForceEvPerAngstrom
         ?.map((value) => receiptRound(value, 10)) || null),
+      stressTensorGigaPascal: frame.metadata?.calculation?.stressTensorGigaPascal
+        ?.map((row) => row.map((value) => receiptRound(value, 10))) || null,
       scalarAtomicSpins: frame.atoms.map((atom) => Number.isFinite(atom.calculationSpin)
         ? receiptRound(atom.calculationSpin, 10) : null),
     })));
@@ -10017,7 +10023,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-252",
+      buildId: "20260827-253",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -10072,10 +10078,15 @@ async function buildExperimentReceipt() {
         forceVectorCount: calculationForceRecords.length,
         forceVectorsSha256: calculationForceSha256,
         perSiteVectorsEmbedded: false,
+        stressTensorSha256: calculationStressSha256,
+        stressTensorEmbedded: true,
+        stressAffineMetricMode: ["archive-stress", "archive-stress-reverse"].includes(affineLoadMode)
+          ? affineLoadMode : "none",
         scalarSpinCount: scalarSpinRecords.length,
         scalarSpinsSha256: scalarSpinSha256,
         perSiteScalarSpinsEmbedded: false,
-        displayedAsGeometry: externalCalculation.forceCoverage > 0 || scalarSpinRecords.length > 0,
+        displayedAsGeometry: externalCalculation.forceCoverage > 0
+          || externalCalculation.stressCoverage > 0 || scalarSpinRecords.length > 0,
         usedForClusterIdentification: false,
         usedForMarkingLearning: false,
         scalarSpinColoringMode: scalarSpinColoringMode(),
@@ -10084,8 +10095,9 @@ async function buildExperimentReceipt() {
         scalarSpinCompatibilityPrunes,
         usedForCandidateGeneration: false,
         usedForAdmission: scalarSpinRecords.length > 0 && scalarSpinColoringActive(),
-        usedForBranchRanking: externalCalibrationPromotionActive,
-        usedForRelaxation: false,
+        usedForBranchRanking: externalCalibrationPromotionActive
+          || ["archive-stress", "archive-stress-reverse"].includes(affineLoadMode),
+        usedForRelaxation: structuralRelaxationSpec().forceSeed,
         usedForClassification: false,
       } : null,
       collinearSpinGeometry: {
@@ -12253,7 +12265,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-252" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-253" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -15360,7 +15372,8 @@ function activeGeometricStrainWeight() {
 function affineLoadModeLabel(mode = affineLoadMode) {
   return ({ none: "observed metric", "hydro-compress": "hydrostatic compression",
     "hydro-tension": "hydrostatic tension", "z-tension": "uniaxial Z tension",
-    "xy-shear": "XY shear" })[mode] || "observed metric";
+    "xy-shear": "XY shear", "archive-stress": "archive-stress shape",
+    "archive-stress-reverse": "reversed archive-stress shape" })[mode] || "observed metric";
 }
 
 function affineLoadTensor() {
@@ -15369,6 +15382,11 @@ function affineLoadTensor() {
   if (affineLoadMode === "hydro-tension") return [[1 + m, 0, 0], [0, 1 + m, 0], [0, 0, 1 + m]];
   if (affineLoadMode === "z-tension") return [[1, 0, 0], [0, 1, 0], [0, 0, 1 + m]];
   if (affineLoadMode === "xy-shear") return [[1, m, 0], [0, 1, 0], [0, 0, 1]];
+  if (["archive-stress", "archive-stress-reverse"].includes(affineLoadMode)) {
+    return normalizedStressShapeDeformation(activeCalculationProvenance()?.stressTensorGigaPascal,
+      m, affineLoadMode === "archive-stress-reverse" ? -1 : 1)
+      || [[1, 0, 0], [0, 1, 0], [0, 0, 1]];
+  }
   return [[1, 0, 0], [0, 1, 0], [0, 0, 1]];
 }
 
@@ -20743,6 +20761,14 @@ function syncStageOptions() {
   growthDomainScaleSelect.value = String(growthDomainScale);
   renderGrowthDomainPassport();
   const calculation = activeCalculationProvenance();
+  const archiveStressAvailable = Boolean(calculation?.stressCoverage > 0
+    && calculation?.stressFrobeniusGigaPascal > 0);
+  for (const mode of ["archive-stress", "archive-stress-reverse"]) {
+    const option = affineLoadSelect.querySelector(`option[value="${mode}"]`);
+    if (option) option.disabled = !archiveStressAvailable;
+  }
+  if (["archive-stress", "archive-stress-reverse"].includes(affineLoadMode)
+    && !archiveStressAvailable) affineLoadMode = "none";
   const displacementGlyphSites = Math.max(
     atoms.filter((atom) => atomDisplacementTensorAngstrom2(atom)).length,
     referenceAtoms.filter((atom) => atomDisplacementTensorAngstrom2(atom)).length,
@@ -20791,9 +20817,12 @@ function syncStageOptions() {
     "radial-out": "↗", "radial-in": "↙" })[externalDriveMode] || "·";
   affineLoadBadge.hidden = pipelineStage !== 4 || affineLoadMode === "none";
   affineLoadBadge.classList.toggle("solo", externalDriveMode === "none");
-  affineLoadBadgeLabel.textContent = `${Math.round(affineLoadMagnitude * 100)}% ${affineLoadModeLabel()}`;
+  affineLoadBadgeLabel.textContent = ["archive-stress", "archive-stress-reverse"].includes(affineLoadMode)
+    ? `${Math.round(affineLoadMagnitude * 100)}% ${affineLoadModeLabel()} · σh ${calculation.stressHydrostaticGigaPascal.toFixed(3)} · dev ${calculation.stressDeviatoricFrobeniusGigaPascal.toFixed(3)} GPa`
+    : `${Math.round(affineLoadMagnitude * 100)}% ${affineLoadModeLabel()}`;
   affineLoadGlyph.textContent = ({ "hydro-compress": "↘", "hydro-tension": "↗",
-    "z-tension": "⇅", "xy-shear": "⇆" })[affineLoadMode] || "·";
+    "z-tension": "⇅", "xy-shear": "⇆", "archive-stress": "σ",
+    "archive-stress-reverse": "−σ" })[affineLoadMode] || "·";
   loopClosureBadge.hidden = pipelineStage !== 4 || loopClosurePreference === "none";
   loopClosureBadge.style.top = `${49 + 35 * Number(externalDriveMode !== "none")
     + 35 * Number(affineLoadMode !== "none")}px`;
@@ -21094,7 +21123,8 @@ function syncStageOptions() {
     thermalFieldHint.textContent = thermalFieldMode === "none"
       ? "isothermal · weight zero" : `${thermalFieldLabel()} · width 2dₙₙ · weight ${thermalFieldWeight.toFixed(2)}`;
     affineLoadHint.textContent = affineLoadMode === "none"
-      ? "undeformed metric" : `${Math.round(affineLoadMagnitude * 100)}% ${affineLoadModeLabel()}`;
+      ? "undeformed metric" : `${Math.round(affineLoadMagnitude * 100)}% ${affineLoadModeLabel()}${["archive-stress", "archive-stress-reverse"].includes(affineLoadMode)
+        ? ` · ||σ||F ${calculation.stressFrobeniusGigaPascal.toFixed(3)} GPa` : ""}`;
     robustnessHint.textContent = robustnessPreference === "margin"
       ? `minimum margin · weight ${robustnessWeight.toFixed(2)}` : "diagnostic · weight zero";
     microstructureCouplingHint.textContent = microstructureCouplingMode === "none"
@@ -23370,6 +23400,21 @@ function physicsTranslationRecords(leap = null) {
       boundary: structuralRelaxationSpec().forceSeed
         ? "One method-dependent residual-force snapshot supplies only an initial direction for a bounded geometric hypothesis. A worsening seed is ignored and every hard certificate is rechecked. Copying the vector with a rigid cluster does not infer a transferable force field, energy surface, mass, time step, trajectory, rate, or physical time; total energies are not compared across entries, methods, or compositions."
         : "Residual forces diagnose the supplied calculation state only. They never rank, admit, displace, relax, or extrapolate a growth action; total energies are not compared across entries, methods, or compositions." },
+    { id: "calculation-stress", process: "external calculation stress / tensor-shaped metric",
+      status: calculation?.stressCoverage > 0
+        ? ["archive-stress", "archive-stress-reverse"].includes(affineLoadMode) ? "soft" : "explicit"
+        : "unavailable",
+      role: calculation?.stressCoverage > 0
+        ? ["archive-stress", "archive-stress-reverse"].includes(affineLoadMode)
+          ? "normalized unit-compliance shape hypothesis" : "external tensor diagnostic"
+        : "no stress tensor",
+      encoding: calculation?.stressCoverage > 0
+        ? `NOMAD SI 3×3 stress is symmetrized and converted to GPa; σh=${calculation.stressHydrostaticGigaPascal.toFixed(4)} GPa, ||σ||F=${calculation.stressFrobeniusGigaPascal.toFixed(4)} GPa, ||dev σ||F=${calculation.stressDeviatoricFrobeniusGigaPascal.toFixed(4)} GPa.${["archive-stress", "archive-stress-reverse"].includes(affineLoadMode) ? ` Candidate displacement vectors are evaluated with F=I${affineLoadMode === "archive-stress-reverse" ? "−" : "+"}mσ/||σ||F at m=${affineLoadMagnitude.toFixed(3)}.` : " The tensor is not used by search."}`
+        : "no finite nonzero archived stress tensor accompanies the active structure",
+      evidence: calculation?.stressCoverage > 0
+        ? `Tensor source ${calculation.stressSourcePath}; archive unit Pa; displayed unit GPa; exact tensor SHA is retained in the receipt.`
+        : "No calculation-stress tensor is available for this material.",
+      boundary: "The optional normalization discards stress magnitude and assumes only a scalar unit-compliance direction. It is not Hooke’s law, an elastic tensor, modulus, strain energy, force balance, relaxation, plasticity, pressure calibration, kinetics, or time. Archive sign is preserved as one hypothesis and reversed only as a registered ablation; exact coordinates and hard admission never change." },
     { id: "collinear-spin", process: "collinear magnetic-order geometry / scalar spin texture",
       status: spinGeometry.available ? scalarSpinColoringActive() ? "hard" : "explicit" : "unavailable",
       role: spinGeometry.available ? scalarSpinColoringActive()
@@ -23547,7 +23592,9 @@ function physicsTranslationRecords(leap = null) {
         ? "identity deformation gradient; observed contact/angle metric"
         : `${Math.round(affineLoadMagnitude * 100)}% ${affineLoadModeLabel()} with F=${JSON.stringify(affineLoadTensor())}; exact coordinates and hard gates unchanged`,
       evidence: leap ? `Loaded accepted mean ${receiptRound(acceptedGeometricStrain / Math.max(1, acceptedDecisions), 4)} versus unloaded ${receiptRound(acceptedUnloadedGeometricStrain / Math.max(1, acceptedDecisions), 4)}.` : "No loaded attachment scored yet.",
-      boundary: "This is a prescribed deformation gradient, not inferred stress, pressure, modulus, force, elastic relaxation, plasticity, phonons, or mechanical equilibrium." },
+      boundary: ["archive-stress", "archive-stress-reverse"].includes(affineLoadMode)
+        ? "The stress tensor is observed calculation output, but the mapped deformation is only a normalized unit-compliance hypothesis. No elastic tensor, modulus, stress magnitude response, force balance, relaxation, plasticity, phonons, or mechanical equilibrium is inferred."
+        : "This is a prescribed deformation gradient, not inferred stress, pressure, modulus, force, elastic relaxation, plasticity, phonons, or mechanical equilibrium." },
     { id: "drive", process: "externally imposed directional loading / feed geometry", status: activeExternalDriveWeight() > 0 ? "soft" : "open", role: activeExternalDriveWeight() > 0 ? "target-blind soft ordering" : "disabled",
       encoding: activeExternalDriveWeight() > 0
         ? `${externalDriveModeLabel()} parent→child alignment, w=${activeExternalDriveWeight().toFixed(2)}, over the unchanged frozen frontier`
@@ -27608,14 +27655,20 @@ function observationProvenanceRecords() {
       transform: "Preserved as provenance labels only; no geometric parameter is inferred from temperature or pressure.",
       use: "Displayed and serialized; never passed into clustering, marking, candidate enumeration, or ranking.",
       boundary: "Recorded measurement conditions describe how a structure was measured, not how it grew, equilibrated, or should evolve." },
-    { id: "calculation", short: "calculation", status: calculation?.forceCoverage > 0 ? "recorded" : "unavailable",
-      value: calculation?.available ? `${calculation.programName || "public calculation"} · ${calculation.forceCoverage > 0 ? `Fᵣₘₛ ${calculation.forceRmsElectronVoltPerAngstrom.toExponential(2)} eV/Å` : "no forces"}` : "no calculation metadata",
+    { id: "calculation", short: "calculation", status: calculation?.forceCoverage > 0
+      || calculation?.stressCoverage > 0 ? "recorded" : "unavailable",
+      value: calculation?.available ? `${calculation.programName || "public calculation"} · ${[
+        calculation.forceCoverage > 0 ? `Fᵣₘₛ ${calculation.forceRmsElectronVoltPerAngstrom.toExponential(2)} eV/Å` : null,
+        calculation.stressCoverage > 0 ? `σₕ ${calculation.stressHydrostaticGigaPascal.toFixed(3)} GPa` : null,
+      ].filter(Boolean).join(" · ") || "no force / stress"}` : "no calculation metadata",
       observed: calculation?.available ? `Final archived calculation from ${calculation.sourcePath}; program ${calculation.programName || "unreported"}${calculation.programVersion ? ` ${calculation.programVersion}` : ""}.` : "The active structural record supplies no paired final calculation.",
-      transform: calculation?.forceCoverage > 0 ? `SI archive forces are converted once to eV/Å and transported through cluster proper poses as Fworld=Rcluster Flocal; viewport arrows use normalized lengths.${structuralRelaxationSpec().forceSeed ? " Force-seed mode maps direction plus |F|/sample-p90 to a bounded initial offset." : ""}` : "No force geometry is constructed.",
-      use: structuralRelaxationSpec().forceSeed
+      transform: `${calculation?.forceCoverage > 0 ? `SI archive forces are converted once to eV/Å and transported through cluster proper poses as Fworld=Rcluster Flocal; viewport arrows use normalized lengths.${structuralRelaxationSpec().forceSeed ? " Force-seed mode maps direction plus |F|/sample-p90 to a bounded initial offset." : ""}` : "No force geometry is constructed."}${calculation?.stressCoverage > 0 ? ` The SI archive stress tensor is symmetrized, converted to GPa, and its Frobenius-normalized shape can define F=I±mσ/||σ||F.` : ""}`,
+      use: ["archive-stress", "archive-stress-reverse"].includes(affineLoadMode)
+        ? "The recorded stress shape supplies one bounded soft deformed-metric ordering term over an unchanged candidate set; coordinates and hard gates remain unchanged."
+        : structuralRelaxationSpec().forceSeed
         ? "Excluded from clustering, marking fit, candidate generation, admission, and ranking; used only as a fail-closed initial direction for the post-attachment geometric projection."
         : "Diagnostic layer and receipt provenance only; excluded from clustering, marking fit, candidate generation, admission, ranking, and structural classification.",
-      boundary: "One method-dependent residual-force snapshot is not a force field, relaxation trajectory, phonon model, free energy, barrier, rate, or transferable force predictor. The optional seed integrates no force, mass, or time step and is discarded unless the independent geometric objective and every hard certificate improve." },
+      boundary: "A method-dependent residual-force/stress snapshot is not a force field, elastic compliance, modulus, relaxation trajectory, phonon model, free energy, barrier, rate, or transferable predictor. The stress option preserves archive sign only as a declared hypothesis; reversed sign is an explicit ablation. Neither solves mechanical equilibrium or physical time." },
     { id: "collinear-spin", short: "scalar spin", status: spinGeometry.available ? "recorded" : "unavailable",
       value: spinGeometry.available
         ? `${spinGeometry.suppliedSites}/${spinGeometry.inputSites} sites · C ${spinGeometry.weightedPairCorrelation === null ? "—" : spinGeometry.weightedPairCorrelation.toFixed(3)}`
@@ -28994,7 +29047,8 @@ thermalFieldWeightSelect.addEventListener("change", () => {
 });
 affineLoadSelect.addEventListener("change", () => {
   const value = affineLoadSelect.value;
-  affineLoadMode = ["hydro-compress", "hydro-tension", "z-tension", "xy-shear"].includes(value)
+  affineLoadMode = ["hydro-compress", "hydro-tension", "z-tension", "xy-shear",
+    "archive-stress", "archive-stress-reverse"].includes(value)
     ? value : "none";
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();

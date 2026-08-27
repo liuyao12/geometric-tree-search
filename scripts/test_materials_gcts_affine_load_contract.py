@@ -22,7 +22,8 @@ def test_affine_load_deforms_only_the_soft_metric() -> None:
     ):
         assert f'id="{element_id}"' in HTML
 
-    for mode in ("none", "hydro-compress", "hydro-tension", "z-tension", "xy-shear"):
+    for mode in ("none", "hydro-compress", "hydro-tension", "z-tension", "xy-shear",
+                 "archive-stress", "archive-stress-reverse"):
         assert f'value="{mode}"' in HTML
     for magnitude in ("0.01", "0.02", "0.04"):
         assert f'value="{magnitude}"' in HTML

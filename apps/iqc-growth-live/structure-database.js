@@ -1,3 +1,5 @@
+import { nomadStressTensorGigaPascal, stressTensorSummary } from "./stress-geometry.js?v=20260827-1";
+
 const NOMAD_API = "https://nomad-lab.eu/prod/v1/api/v1";
 const JOULE_PER_ELECTRON_VOLT = 1.602176634e-19;
 const NEWTON_PER_ELECTRON_VOLT_PER_ANGSTROM = 1.602176634e-9;
@@ -7,6 +9,7 @@ export const NOMAD_EVIDENCE_TARGETS = Object.freeze({
   geometry: Object.freeze({ id: "geometry", label: "geometry · any usable periodic archive" }),
   relaxation: Object.freeze({ id: "relaxation", label: "relaxation series · at least 3 fixed-topology snapshots" }),
   forces: Object.freeze({ id: "forces", label: "force-labelled geometry · complete forces on at least 1 snapshot" }),
+  stress: Object.freeze({ id: "stress", label: "stress-labelled geometry · finite nonzero tensor on at least 1 snapshot" }),
   calibration: Object.freeze({ id: "calibration", label: "surrogate-ready series · at least 5 paired calculation snapshots" }),
 });
 export const NOMAD_STRUCTURE_FAMILIES = Object.freeze({
@@ -41,7 +44,7 @@ function queryPayload(elementValues, pageOffset = 0, evidenceTargetValue = "geom
     throw new Error(`${structureFamily.label} requires exactly ${elements.join(" + ")}`);
   }
   const evidenceTarget = normalizeNomadEvidenceTarget(evidenceTargetValue);
-  const evidenceFilter = evidenceTarget.id === "forces"
+  const evidenceFilter = ["forces", "stress"].includes(evidenceTarget.id)
     ? { "results.properties.geometry_optimization.final_force_maximum:lte": 1e6 }
     : ["relaxation", "calibration"].includes(evidenceTarget.id)
       ? { "results.properties.geometry_optimization.final_energy_difference:lte": 1e6 } : null;
@@ -189,6 +192,7 @@ function nomadCalculationRecord(calculation, atomCount, program, methodRecord,
     ? rawForces.map((vector) => vector.map((component) =>
       Number(component) / NEWTON_PER_ELECTRON_VOLT_PER_ANGSTROM)) : null;
   const forceMagnitudes = forceVectors?.map((vector) => Math.hypot(...vector)) || [];
+  const stressSummary = stressTensorSummary(nomadStressTensorGigaPascal(calculation?.stress?.total?.value));
   const chargeRecords = Array.isArray(calculation?.charges) ? calculation.charges : [];
   let spinRecord = null;
   let spinRecordIndex = null;
@@ -219,6 +223,19 @@ function nomadCalculationRecord(calculation, atomCount, program, methodRecord,
       forceRmsElectronVoltPerAngstrom: forceMagnitudes.length
         ? Math.sqrt(forceMagnitudes.reduce((sum, value) => sum + value * value, 0) / forceMagnitudes.length) : null,
       forceMaximumElectronVoltPerAngstrom: forceMagnitudes.length ? Math.max(...forceMagnitudes) : null,
+      stressCoverage: stressSummary && stressSummary.frobeniusGigaPascal > 0 ? 1 : 0,
+      stressTensorGigaPascal: stressSummary?.tensorGigaPascal || null,
+      stressTraceGigaPascal: stressSummary?.traceGigaPascal ?? null,
+      stressHydrostaticGigaPascal: stressSummary?.hydrostaticGigaPascal ?? null,
+      stressFrobeniusGigaPascal: stressSummary?.frobeniusGigaPascal ?? null,
+      stressDeviatoricFrobeniusGigaPascal: stressSummary?.deviatoricFrobeniusGigaPascal ?? null,
+      stressSourcePath: stressSummary && calculationIndex !== null
+        ? `run/${runIndex}/calculation/${calculationIndex}/stress/total/value` : null,
+      stressUnit: "GPa",
+      stressArchiveUnit: "Pa",
+      stressSymmetrized: Boolean(stressSummary),
+      stressUsedForGrowth: false,
+      stressEligibleAsNormalizedAffineMetric: Boolean(stressSummary && stressSummary.frobeniusGigaPascal > 0),
       spinCoverage: atomicSpins ? 1 : 0,
       atomicSpinCount: atomicSpins?.length || 0,
       atomicSpinMinimum: atomicSpins ? Math.min(...atomicSpins) : null,
@@ -372,10 +389,11 @@ export function nomadStructureEvidenceProfile(structure) {
   const frames = structure?.frames?.length ? structure.frames : structure?.atoms?.length ? [structure] : [];
   const energyFrames = frames.filter((frame) => finiteCalculationValue(frame, "energyPerPrimitiveAtomElectronVolt")).length;
   const forceFrames = frames.filter((frame) => Number(frame?.metadata?.calculation?.forceCoverage) === 1).length;
+  const stressFrames = frames.filter((frame) => Number(frame?.metadata?.calculation?.stressCoverage) === 1).length;
   const spinFrames = frames.filter((frame) => Number(frame?.metadata?.calculation?.spinCoverage) === 1).length;
   const methodRecords = frames.map((frame) => frame?.metadata?.calculation?.methodCanonicalJson).filter(Boolean);
   const methodKeys = new Set(methodRecords);
-  const pairedCalculationFrames = Math.max(energyFrames, forceFrames);
+  const pairedCalculationFrames = Math.max(energyFrames, forceFrames, stressFrames);
   const relaxationFrames = structure?.metadata?.relaxationSequence?.available ? frames.length : 0;
   const methodConsistent = methodKeys.size === 1 && methodRecords.length >= pairedCalculationFrames;
   return Object.freeze({
@@ -383,6 +401,7 @@ export function nomadStructureEvidenceProfile(structure) {
     relaxationFrames,
     energyFrames,
     forceFrames,
+    stressFrames,
     spinFrames,
     methodFrames: methodRecords.length,
     pairedCalculationFrames,
@@ -390,6 +409,7 @@ export function nomadStructureEvidenceProfile(structure) {
     geometryAvailable: frames.length > 0,
     relaxationAvailable: relaxationFrames >= 3,
     forceLabelsAvailable: forceFrames >= 1,
+    stressLabelsAvailable: stressFrames >= 1,
     calibrationReady: relaxationFrames >= 5 && pairedCalculationFrames >= 5 && methodConsistent,
   });
 }
@@ -413,12 +433,14 @@ export function nomadEvidenceTargetAccepts(profile, targetValue = "geometry") {
   if (target.id === "geometry") return Boolean(profile.geometryAvailable);
   if (target.id === "relaxation") return Boolean(profile.relaxationAvailable);
   if (target.id === "forces") return Boolean(profile.forceLabelsAvailable);
+  if (target.id === "stress") return Boolean(profile.stressLabelsAvailable);
   return Boolean(profile.calibrationReady);
 }
 
 export function nomadEvidenceProfileLabel(profile) {
   if (profile.calibrationReady) return `${profile.relaxationFrames} snapshots · calculation-series ready`;
-  if (profile.relaxationAvailable) return `${profile.relaxationFrames} relaxation snapshots · ${profile.forceFrames} force-labelled`;
+  if (profile.relaxationAvailable) return `${profile.relaxationFrames} relaxation snapshots · ${profile.forceFrames} force-labelled · ${profile.stressFrames} stress-labelled`;
+  if (profile.stressLabelsAvailable) return `stress-labelled geometry · ${profile.stressFrames}/${profile.frameCount} snapshots`;
   if (profile.forceLabelsAvailable) return `force-labelled geometry · ${profile.forceFrames}/${profile.frameCount} snapshots`;
   return "geometry-only archive";
 }
@@ -477,11 +499,11 @@ export async function loadNomadStructureCandidate(candidateValue, options = {}) 
     required: { run: hasRelaxation ? {
       program: "*",
       system: { atoms: "*" },
-      calculation: { energy: "*", forces: "*", charges: "*", system_ref: "*", method_ref: "*" },
+      calculation: { energy: "*", forces: "*", stress: "*", charges: "*", system_ref: "*", method_ref: "*" },
     } : {
       program: "*",
       "system[-1]": { atoms: "*" },
-      "calculation[-1]": { energy: "*", forces: "*", charges: "*", system_ref: "*", method_ref: "*" },
+      "calculation[-1]": { energy: "*", forces: "*", stress: "*", charges: "*", system_ref: "*", method_ref: "*" },
     } },
   }, fetchImpl);
   const primitive = nomadArchiveToStructure(entry, archive);

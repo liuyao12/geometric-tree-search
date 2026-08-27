@@ -16,7 +16,7 @@ def test_nomad_calculation_vectors_remain_diagnostic_geometry() -> None:
 
     assert 'const JOULE_PER_ELECTRON_VOLT = 1.602176634e-19' in database
     assert 'const NEWTON_PER_ELECTRON_VOLT_PER_ANGSTROM = 1.602176634e-9' in database
-    assert '"calculation[-1]": { energy: "*", forces: "*", charges: "*", system_ref: "*", method_ref: "*" }' in database
+    assert '"calculation[-1]": { energy: "*", forces: "*", stress: "*", charges: "*", system_ref: "*", method_ref: "*" }' in database
     assert "calculationForceEvPerAngstrom" in database
     assert "forceRmsElectronVoltPerAngstrom" in database
     assert 'forcesUsedForGrowth: false' in database
@@ -28,7 +28,7 @@ def test_nomad_calculation_vectors_remain_diagnostic_geometry() -> None:
     assert 'forceToggle.disabled = !(calculation?.forceCoverage > 0)' in source
     assert 'new THREE.Vector3(...atom.calculationForceEvPerAngstrom)' in source
     assert 'id: "calculation-forces"' in source
-    assert 'role: calculation?.forceCoverage > 0 ? "external calculation diagnostic"' in source
+    assert '"proper-pose transported projection seed" : "external calculation diagnostic"' in source
     assert 'id: "calculation", short: "calculation"' in source
     assert 'const externalCalculation = activeCalculationProvenance()' in source
     assert 'externalCalculation: externalCalculation ? {' in source
@@ -38,12 +38,11 @@ def test_nomad_calculation_vectors_remain_diagnostic_geometry() -> None:
         "usedForClusterIdentification: false",
         "usedForMarkingLearning: false",
         "usedForCandidateGeneration: false",
-        "usedForAdmission: false",
-        "usedForBranchRanking: false",
-        "usedForRelaxation: false",
         "usedForClassification: false",
     ):
         assert exclusion in source
+    assert "usedForRelaxation: structuralRelaxationSpec().forceSeed" in source
+    assert '|| ["archive-stress", "archive-stress-reverse"].includes(affineLoadMode)' in source
 
     assert "Public calculation provenance and residual-force geometry" in readme
     assert "Absolute total energies are not compared across entries" in normalized_readme

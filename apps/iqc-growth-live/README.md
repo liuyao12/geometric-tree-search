@@ -19,6 +19,22 @@ the GCTS anatomy view explains covers, oriented ports, markings, search, and
 promotion; and the claim ledger keeps proved, measured, and open results visibly
 separate. Its numbers are frozen benchmark results, not recomputed browser demos.
 
+Build 253 admits a global archived calculation tensor without pretending that
+stress alone determines a deformation. NOMAD's normalized
+`calculation/stress/total/value` is validated as a finite 3×3 SI tensor,
+symmetrized, converted from Pa to GPa, and retained with hydrostatic,
+deviatoric, and Frobenius summaries. A new public evidence target can request a
+stress-labelled archive. In Material Growth, **Archive stress shape** evaluates
+the existing contact-and-angle strain ranking with
+`F = I + m σ / ||σ||F`; a neighboring `−σ` option is an explicit sign-reversal
+ablation. The user still prescribes the small dimensionless amplitude `m`.
+Only the tensor shape and archive sign enter one soft target-blind ordering
+term: exact candidate coordinates and every hard admission gate are unchanged,
+and the mode fails closed when no finite nonzero tensor exists. This is a
+scalar unit-compliance direction hypothesis—not an elastic tensor, modulus,
+Hooke-law solution, stress-magnitude response, strain energy, force balance,
+mechanical relaxation, kinetics, or physical time.
+
 Build 252 makes a second archived physics vector available to the geometric
 leap. A supplied site-resolved residual force is stored in its cluster-local
 proper frame and transported to a candidate as `Fworld = Rcluster Flocal`. The

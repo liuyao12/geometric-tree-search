@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260827-252">
+  <link rel="stylesheet" href="./style.css?v=20260827-253">
   <script type="importmap">
     {
       "imports": {
@@ -263,6 +263,7 @@
                 <option value="geometry" selected>Geometry · any usable periodic archive</option>
                 <option value="relaxation">Relaxation series · ≥3 fixed-topology snapshots</option>
                 <option value="forces">Force-labelled · ≥1 complete force snapshot</option>
+                <option value="stress">Stress-labelled · ≥1 finite nonzero tensor snapshot</option>
                 <option value="calibration">Surrogate-ready · ≥5 paired calculation snapshots</option>
               </select>
             </label>
@@ -931,6 +932,8 @@
                 <option value="hydro-tension">Hydrostatic tension</option>
                 <option value="z-tension">Uniaxial Z tension</option>
                 <option value="xy-shear">XY shear</option>
+                <option value="archive-stress">Archive stress shape · unit-compliance hypothesis</option>
+                <option value="archive-stress-reverse">Archive stress shape · reversed-sign ablation</option>
               </select>
             </label>
             <label class="field" for="affineLoadMagnitudeSelect">
@@ -1932,7 +1935,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260827-252"></script>
+  <script type="module" src="./app.js?v=20260827-253"></script>
   <script type="module" src="./evidence-atlas.js?v=20260827-20"></script>
 </body>
 </html>

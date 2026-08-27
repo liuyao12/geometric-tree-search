@@ -20,6 +20,8 @@ assert.equal(payload.query.and[2]["results.material.structural_type"], "bulk");
 assert.equal(payload.pagination.page_offset, 17);
 const forcePayload = queryPayload(["Na", "Cl"], 0, "forces");
 assert.equal(forcePayload.query.and[3]["results.properties.geometry_optimization.final_force_maximum:lte"], 1e6);
+const stressPayload = queryPayload(["Na", "Cl"], 0, "stress");
+assert.equal(stressPayload.query.and[3]["results.properties.geometry_optimization.final_force_maximum:lte"], 1e6);
 const relaxationPayload = queryPayload(["Na", "Cl"], 0, "relaxation");
 assert.equal(relaxationPayload.query.and[3]["results.properties.geometry_optimization.final_energy_difference:lte"], 1e6);
 assert.equal(queryPayload(["Na", "Cl"], 0, "geometry").query.and.length, 3);
@@ -49,6 +51,7 @@ const archive = { data: { archive: { run: [{ program: { name: "VASP", version: "
 } }], calculation: [{ system_ref: "/run/0/system/0", method_ref: "/run/0/method/0",
   energy: { total: { value: -3.204353268e-18 } },
   forces: { total: { value: [[0, 1.602176634e-9, 0], [0, 0, -3.204353268e-9]] } },
+  stress: { total: { value: [[2e9, 2e8, 0], [4e8, -1e9, 0], [0, 0, 1e9]] } },
   charges: [{ analysis_method: "Bader", spins: [1.25, -1.25] }],
 }] }] } } };
 const primitive = nomadArchiveToStructure(entry, archive);
@@ -64,6 +67,14 @@ assert.ok(Math.abs(primitive.metadata.calculation.totalEnergyElectronVolt + 20) 
 assert.ok(Math.abs(primitive.metadata.calculation.energyPerPrimitiveAtomElectronVolt + 10) < 1e-12);
 assert.ok(Math.abs(primitive.metadata.calculation.forceRmsElectronVoltPerAngstrom - Math.sqrt(2.5)) < 1e-12);
 assert.equal(primitive.metadata.calculation.forceMaximumElectronVoltPerAngstrom, 2);
+assert.deepEqual(primitive.metadata.calculation.stressTensorGigaPascal
+  .map((row) => row.map((value) => Number(value.toFixed(12)))), [[2, .3, 0], [.3, -1, 0], [0, 0, 1]]);
+assert.equal(primitive.metadata.calculation.stressCoverage, 1);
+assert.equal(primitive.metadata.calculation.stressUnit, "GPa");
+assert.equal(primitive.metadata.calculation.stressArchiveUnit, "Pa");
+assert.equal(primitive.metadata.calculation.stressSourcePath, "run/0/calculation/0/stress/total/value");
+assert.equal(primitive.metadata.calculation.stressUsedForGrowth, false);
+assert.equal(primitive.metadata.calculation.stressEligibleAsNormalizedAffineMetric, true);
 assert.deepEqual(primitive.atoms[0].calculationForceEvPerAngstrom, [0, 1, 0]);
 assert.deepEqual(primitive.atoms[1].calculationForceEvPerAngstrom, [0, 0, -2]);
 assert.equal(primitive.atoms[0].calculationSpin, 1.25);
@@ -80,12 +91,15 @@ assert.equal(primitive.metadata.calculation.absoluteEnergyComparedAcrossEntries,
 const primitiveEvidence = nomadStructureEvidenceProfile(primitive);
 assert.equal(primitiveEvidence.frameCount, 1);
 assert.equal(primitiveEvidence.forceLabelsAvailable, true);
+assert.equal(primitiveEvidence.stressLabelsAvailable, true);
+assert.equal(primitiveEvidence.stressFrames, 1);
 assert.equal(primitiveEvidence.relaxationAvailable, false);
 assert.equal(primitiveEvidence.calibrationReady, false);
 assert.equal(nomadEvidenceTargetAccepts(primitiveEvidence, "geometry"), true);
 assert.equal(nomadEvidenceTargetAccepts(primitiveEvidence, "forces"), true);
+assert.equal(nomadEvidenceTargetAccepts(primitiveEvidence, "stress"), true);
 assert.equal(nomadEvidenceTargetAccepts(primitiveEvidence, "relaxation"), false);
-assert.equal(nomadEvidenceProfileLabel(primitiveEvidence), "force-labelled geometry · 1/1 snapshots");
+assert.equal(nomadEvidenceProfileLabel(primitiveEvidence), "stress-labelled geometry · 1/1 snapshots");
 assert.equal(normalizeNomadEvidenceTarget("calibration"), NOMAD_EVIDENCE_TARGETS.calibration);
 assert.throws(() => normalizeNomadEvidenceTarget("invented"), /Unknown NOMAD evidence target/);
 
@@ -112,7 +126,7 @@ assert.equal(calls.length, 2);
 assert.equal(calls[0].body.query.and[1]["results.material.n_elements"], 2);
 assert.deepEqual(calls[1].body.required.run["system[-1]"], { atoms: "*" });
 assert.deepEqual(calls[1].body.required.run["calculation[-1]"], {
-  energy: "*", forces: "*", charges: "*", system_ref: "*", method_ref: "*",
+  energy: "*", forces: "*", stress: "*", charges: "*", system_ref: "*", method_ref: "*",
 });
 assert.equal(sampled.evidenceTarget.id, "geometry");
 assert.equal(sampled.evidenceProfile.forceLabelsAvailable, true);
@@ -150,7 +164,12 @@ const forceSampled = await randomNomadStructure(["Na", "Cl"], {
   fetchImpl: fakeFetch, random: () => 0, evidenceTarget: "forces",
 });
 assert.equal(forceSampled.evidenceTarget.id, "forces");
-assert.equal(forceSampled.structure.metadata.nomadEvidenceLabel, "force-labelled geometry · 1/1 snapshots");
+assert.equal(forceSampled.structure.metadata.nomadEvidenceLabel, "stress-labelled geometry · 1/1 snapshots");
+const stressSampled = await randomNomadStructure(["Na", "Cl"], {
+  fetchImpl: fakeFetch, random: () => 0, evidenceTarget: "stress",
+});
+assert.equal(stressSampled.evidenceTarget.id, "stress");
+assert.equal(stressSampled.evidenceProfile.stressLabelsAvailable, true);
 await assert.rejects(randomNomadStructure(["Na", "Cl"], {
   fetchImpl: fakeFetch, random: () => 0, evidenceTarget: "relaxation",
 }), /No public .* archive matched relaxation series/);
@@ -262,7 +281,7 @@ const sampledRelaxation = await randomNomadStructure(["Na", "Cl"], { fetchImpl: 
 assert.equal(sampledRelaxation.structure.frames.length, 3);
 assert.deepEqual(relaxationCalls[1].body.required.run.system, { atoms: "*" });
 assert.deepEqual(relaxationCalls[1].body.required.run.calculation, {
-  energy: "*", forces: "*", charges: "*", system_ref: "*", method_ref: "*",
+  energy: "*", forces: "*", stress: "*", charges: "*", system_ref: "*", method_ref: "*",
 });
 assert.equal(relaxationCalls[1].body.required.run["system[-1]"], undefined);
 const sampledRelaxationTarget = await randomNomadStructure(["Na", "Cl"], {

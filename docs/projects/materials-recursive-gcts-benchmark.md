@@ -13,6 +13,25 @@ amplification is `b > 1`, a level-`L` accepted macro placement represents
 approximately `b^L` atoms.  Materializing or exporting `N` atomic coordinates
 still has an unavoidable `O(N)` cost and must be reported separately.
 
+### Archived stress-shape metric (Build 253)
+
+The public-data path now retains finite NOMAD
+`run/calculation/stress/total/value` tensors. NOMAD's built-in Metainfo uses SI
+units, so the browser converts Pa to GPa after symmetrizing parser-level numeric
+asymmetry. The receipt records the full tensor plus trace, hydrostatic,
+deviatoric-Frobenius, and total-Frobenius summaries and its exact archive path.
+
+Stress may optionally cross the observation/search boundary only as a declared
+normalized metric hypothesis. The existing contact-and-angle strain term is
+re-evaluated under `F = I ± m σ / ||σ||F`, where `m` remains a small prescribed
+dimensionless amplitude. The plus arm preserves archive sign and the minus arm
+is an explicit sign-reversal ablation. Candidate coordinates, candidate IDs,
+and all hard geometric certificates are identical; missing, malformed, zero,
+or non-finite tensors disable both arms. The normalization deliberately removes
+stress magnitude. It is not a learned compliance, elastic tensor, modulus,
+Hooke-law prediction, strain energy, force balance, mechanical equilibrium,
+relaxation trajectory, kinetics, or time.
+
 ### Proper-pose residual-force seeds (Build 252)
 
 The browser's site-resolved external residual-force channel can now cross the
