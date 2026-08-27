@@ -1424,6 +1424,9 @@ function updateCandidateResearchPanel() {
     if (periodicLane) {
       candidateResearchTitle.textContent = `Certified periodic control ${candidate.id}`;
       const source = candidate.screening.periodic_source
+        ?? (candidate.kind === "a2_layered_polyprism_census"
+          ? "an exact SCIP/VIPR eight-copy quotient, independently replayed as a GCTS-I weighted lattice-function tiling"
+          : null)
         ?? "an exact quotient was mined from the validated 1,174-tile shell-7 witness";
       const sizeLabel = candidate.kind === "polycube_census"
         ? `${candidate.volume} cubes`
