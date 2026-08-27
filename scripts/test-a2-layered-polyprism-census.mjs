@@ -59,6 +59,8 @@ for (const candidate of A2_LAYERED_SIZE7_CANDIDATES) {
   assert.equal(candidate.screening.periodic_six_copy_complete, true);
   assert.ok(candidate.screening.periodic_six_copy_exact_multicover_nodes > 0);
   assert.equal(candidate.screening.corona2_outer_exhausted, false);
+  assert.ok(Number.isInteger(candidate.screening.corona2_gcts_new_clauses_long_run));
+  assert.ok(candidate.screening.corona2_gcts_new_clauses_long_run > 0);
 }
 
 

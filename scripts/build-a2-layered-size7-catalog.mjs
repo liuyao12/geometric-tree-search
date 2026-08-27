@@ -137,6 +137,7 @@ const candidates = selected.map((id, index) => {
   const deepSecond = deepById.get(id);
   const coreSecond = coreLonger128ById.get(id) ?? coreStrengthenedById.get(id) ?? coreDeeperById.get(id)
     ?? coreExtendedById.get(id) ?? coreLongById.get(id);
+  const strengthenedSecond = coreStrengthenedById.get(id);
   const minimizedCore = minimizedCoreById.get(id);
   const largerPeriodic = periodicSixToEightById.get(id);
   const exactSix = periodicExactSixById.get(id);
@@ -187,6 +188,10 @@ const candidates = selected.map((id, index) => {
       corona2_outer_exhausted: deepSecond?.corona2_cegar?.outer_exhausted
         ?? second.corona2_cegar.outer_exhausted,
       corona2_gcts_sound_clauses: coreSecond?.corona2_core_cegar?.clauses?.length ?? 0,
+      corona2_gcts_new_clauses_long_run: Math.max(0,
+        (coreSecond?.corona2_core_cegar?.clauses?.length ?? 0)
+        - (strengthenedSecond?.corona2_core_cegar?.clauses?.length ?? 0)
+      ),
       corona2_gcts_rounds: coreSecond?.corona2_core_cegar?.rounds ?? 0,
       corona2_gcts_continuation_rounds:
         coreSecond?.corona2_core_cegar?.continuation_rounds ?? 0,
