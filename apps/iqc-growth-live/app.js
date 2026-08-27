@@ -9383,7 +9383,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-230",
+      buildId: "20260827-231",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -11330,6 +11330,194 @@ async function serializedExperimentReceipt() {
   return `${JSON.stringify(await buildExperimentReceipt(), null, 2)}\n`;
 }
 
+function notebookPolicySnapshot(snapshot, includeIdentifiability = false) {
+  if (!snapshot) return null;
+  const markingAudit = snapshot.markingFrontierCounterfactual;
+  let hypothesisIdentifiability = null;
+  if (includeIdentifiability) {
+    const rawAudit = buildPolicyIdentifiabilityAudit(snapshot, "raw");
+    const conditionalAudit = buildPolicyIdentifiabilityAudit(snapshot, "conditional");
+    if (rawAudit && conditionalAudit) hypothesisIdentifiability = {
+      modes: { raw: receiptPolicyIdentifiabilityMode(rawAudit),
+        conditional: receiptPolicyIdentifiabilityMode(conditionalAudit) },
+      targetUsed: false, coordinatesEmbedded: false,
+    };
+  }
+  return {
+    index: snapshot.index, candidateSetDigest: snapshot.candidateDigest,
+    candidateSetTargetUsed: snapshot.candidateSetTargetUsed, rankingTargetUsed: snapshot.rankingTargetUsed,
+    rankingMode: snapshot.referenceGuided ? "known-window reference-guided replay" : "target-blind frontier",
+    markingFrontierCounterfactual: markingAudit ? {
+      candidateSetDigest: markingAudit.candidateSetDigest,
+      hardAdmittedCandidateSetDigest: markingAudit.hardAdmittedCandidateSetDigest,
+      candidateCount: markingAudit.candidates, activeMarkingId: markingAudit.activeMarkingId,
+    } : null,
+    hypothesisIdentifiability,
+  };
+}
+
+function notebookSoftPhysicsSearchReceipt() {
+  const mean = (total) => receiptRound(total / Math.max(1, acceptedDecisions));
+  return {
+    geometricStrainRanking: { mode: geometryPreference, effectiveWeight: activeGeometricStrainWeight(),
+      affineLoadMode, prescribedStrainMagnitude: affineLoadMode === "none" ? 0 : affineLoadMagnitude },
+    compositionBalanceRanking: { mode: compositionPreference, effectiveWeight: activeCompositionBalanceWeight() },
+    solutePartitionRanking: { mode: solutePartitionMode, selectedSpecies: resolvedSoluteSpecies(),
+      effectiveWeight: activeSolutePartitionWeight() },
+    formalChargeBalanceRanking: { mode: chargePreference, effectiveWeight: activeFormalChargeWeight() },
+    suppliedChargeGeometryRanking: { mode: chargeGeometryMode, reachNearestNeighborUnits: chargeGeometryReach,
+      effectiveWeight: activeChargeGeometryWeight() },
+    globalChargeMomentRanking: { mode: chargeMomentMode, effectiveWeight: activeChargeMomentWeight() },
+    incrementalIonicPairRanking: { mode: ionicPairMode, reachNearestNeighborUnits: ionicPairReach,
+      effectiveWeight: activeIonicPairWeight() },
+    bondValenceSatisfactionRanking: { mode: bondValenceMode, effectiveWeight: activeBondValenceWeight(),
+      provenance: BOND_VALENCE_PROVENANCE },
+    surfaceCompletionRanking: { mode: surfacePreference, effectiveWeight: activeSurfaceCompletionWeight() },
+    bulkSurfaceDrivingRanking: { mode: growthDrivingMode, effectiveWeight: activeGrowthDrivingWeight() },
+    attachmentTopologyRanking: { mode: attachmentTopologyMode, effectiveWeight: activeAttachmentTopologyWeight() },
+    habitAnisotropyRanking: { mode: habitAnisotropyMode, effectiveWeight: activeHabitAnisotropyWeight() },
+    actionDefectPrecursorRanking: { mode: defectPrecursorMode, effectiveWeight: activeDefectPrecursorWeight(),
+      acceptedMeanBurden: mean(acceptedDefectPrecursorBurden) },
+    coherencyMemoryRanking: { mode: coherencyMemoryMode, reachInClusterGraphHops: coherencyMemoryReach,
+      effectiveWeight: activeCoherencyMemoryWeight() },
+    mesoscopicFrontMorphologyRanking: { mode: frontMorphologyMode, effectiveWeight: activeFrontMorphologyWeight() },
+    discreteCapillaryGeometryRanking: { mode: capillaryGeometryMode, effectiveWeight: activeCapillaryGeometryWeight(),
+      acceptedMeanScore: mean(acceptedCapillaryGeometryScore) },
+    epitaxialRegistryRanking: { mode: epitaxyTemplateMode, effectiveWeight: activeEpitaxyWeight(),
+      acceptedMeanScore: mean(acceptedEpitaxyRegistryScore) },
+    externalDrivingGeometry: { mode: externalDriveMode, effectiveWeight: activeExternalDriveWeight() },
+    reducedThermalFieldRanking: { mode: thermalFieldMode, effectiveWeight: activeThermalFieldWeight() },
+    constraintRobustnessRanking: { mode: robustnessPreference, effectiveWeight: activeRobustnessWeight() },
+    microstructureCouplingRanking: { mode: microstructureCouplingMode,
+      effectiveWeight: activeMicrostructureCouplingWeight() },
+    mesoscopicLoopClosureRanking: { mode: loopClosurePreference, effectiveWeight: activeLoopClosureWeight(),
+      acceptedMeanIndependentCompatiblePaths: mean(acceptedIndependentLoopWitnesses) },
+    geometricArrivalPathRanking: { mode: arrivalPathMode, effectiveWeight: activeArrivalPathWeight() },
+    feedstockExposureRanking: { mode: feedExposureMode, effectiveWeight: activeFeedExposureWeight() },
+    configurationalPathEnsemble: { dimensionlessExplorationScale: geometricExplorationScale, seed: growthPathSeed },
+  };
+}
+
+async function buildExperimentNotebookSnapshot() {
+  const started = performance.now();
+  const material = currentMaterial();
+  const activeMarking = selectedMarking();
+  const benchmark = currentRecursiveBenchmark();
+  const coverVisible = pipelineStage >= 1;
+  const markingVisible = pipelineStage >= 3;
+  const searchVisible = pipelineStage >= 4;
+  const studyDesign = activeStudyRecipeAudit();
+  const leapHistoryReceipt = leapHistory.map((leap) => ({
+    index: leap.index, status: leap.status, label: leap.label,
+    before: leap.before, proposal: leap.proposal, tests: leap.tests,
+    relaxation: leap.relaxation || null, localSymmetryTransition: leap.localSymmetryTransition || null,
+    centrosymmetryTransition: leap.centrosymmetryTransition || null,
+    reciprocalSpaceTransition: leap.reciprocalSpaceTransition || null,
+    after: leap.after, targetUsed: leap.targetUsed, physicalTimeModeled: leap.physicalTimeModeled,
+    dynamicsIntegrated: leap.dynamicsIntegrated, claimBoundary: leap.claimBoundary,
+    physicsTranslation: leap.physicsTranslation,
+  }));
+  const firstPolicy = policyComparisonHistory[0] || null;
+  const latestPolicy = policyComparisonHistory.at(-1) || null;
+  const policySnapshots = [];
+  const compactFirst = notebookPolicySnapshot(firstPolicy, firstPolicy === latestPolicy);
+  const compactLatest = firstPolicy === latestPolicy ? null : notebookPolicySnapshot(latestPolicy, true);
+  if (compactFirst) policySnapshots.push(compactFirst);
+  if (compactLatest) policySnapshots.push(compactLatest);
+  const search = searchVisible ? {
+    policy: policySelect.value,
+    experimentProtocol: growthProtocolManifest(),
+    hypothesisSeparationExperiment: hypothesisSeparationReceipt(),
+    markingComparisonExperiment: markingComparisonReceipt(),
+    hierarchyEnabled: Boolean(hierarchyEnabled && !iceAnchorTrace),
+    scheduling: { mode: growthScheduling, candidateGeometryChangedByScheduling: false },
+    multiNucleusGrowth: { requestedNuclei: requestedGrowthNuclei, selection: nucleationSelectionAudit },
+    explicitSites: atoms.length, placedClusters: placedClusters.length,
+    acceptedDecisions, rejectedDecisions, publicBoundaryPrunes,
+    coverLineageAudit: await coverLineageReceiptEvidence(),
+    localConstraintWork: { evaluations: constraintNeighborhoodEvaluations,
+      meanProjectedSites: receiptRound(constraintNeighborhoodSiteTotal / Math.max(1, constraintNeighborhoodEvaluations)),
+      maximumProjectedSites: maximumConstraintNeighborhoodSites, currentFullSites: atoms.length },
+    liveCertificate: liveGrowthCertificate(),
+    structuralLeapHistory: { totalEvents: leapEventCount, retainedEvents: leapHistory.length,
+      maximumRetainedEvents: MAXIMUM_RETAINED_STRUCTURAL_LEAPS, truncated: leapEventCount > leapHistory.length },
+    structuralLeapCertificates: leapHistoryReceipt,
+    policySensitivity: { snapshots: policySnapshots, selectedHypothesisTrajectory: null,
+      retainedFrontiers: policyComparisonHistory.length, boundedNotebookSnapshot: true },
+    finiteIceAnchorTrace: iceAnchorTrace ? {
+      artifactDigest: iceAnchorTrace.artifactDigest, caseId: iceAnchorTrace.caseId,
+      moleculeLabel: iceAnchorTrace.moleculeLabel, conformerTypes: iceAnchorTrace.conformerTypes,
+      frozenPorts: iceAnchorTrace.portCount, selectionRule: iceAnchorTrace.selectionRuleLabel,
+      seedAnchors: iceAnchorTrace.seedAnchors,
+      waves: iceAnchorTrace.waves.map((wave) => ({ wave: wave.wave,
+        candidateAnchors: wave.candidateAnchors, acceptedAnchors: wave.acceptedAnchors,
+        retainedOrientationHypotheses: wave.retainedOrientationHypotheses,
+        rejectedNonunanimousAnchors: wave.rejectedNonunanimousAnchors,
+        rejectedCandidateAnchors: wave.rejectedCandidateAnchors, candidateDigest: wave.candidateDigest })),
+      emittedAnchorCount: iceAnchorTrace.emittedAnchors.length,
+      unresolvedOrientationDomains: iceAnchorTrace.unresolvedOrientationHypotheses,
+      targetUsed: iceAnchorTrace.targetUsed, fixedPoint: iceAnchorTrace.fixedPoint,
+      exactBackendCountParity: iceAnchorTrace.exactBackendCountParity, provenance: iceAnchorTrace.provenance,
+    } : null,
+    creationResponseEvidence: null,
+    postAttachmentConstraintProjection: { mode: structuralRelaxationMode,
+      displacementFractionOfNearestNeighbor: structuralRelaxationSpec().displacementFraction,
+      maximumIterations: structuralRelaxationSpec().iterations },
+    ...notebookSoftPhysicsSearchReceipt(),
+  } : { status: "stage not entered" };
+  const receipt = {
+    schema: "gcts-materials-growth-notebook-snapshot-v1",
+    generatedAt: new Date().toISOString(),
+    application: { name: "Materials Growth Lab", buildId: "20260827-231" },
+    notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
+      creationResponseEvidence: searchVisible ? "deferred to full receipt export" : "stage not entered",
+      policyFrontiersRetained: policySnapshots.length,
+      policyFrontiersAvailable: policyComparisonHistory.length, digestExcludesBuildTiming: true,
+      coordinatesEmbedded: false },
+    input: { scenarioId: scenarioSelect.value, materialName: material.name,
+      elements: material.actualElements ? [...material.actualElements] : [...material.elements],
+      atomCount: referenceAtoms.length, structureSha256: await structureDigest(referenceAtoms, "angstrom"),
+      externalGeometry: receiptExternalGeometry(), periodicBoundary: currentPbc() },
+    pipeline: { internalStage: pipelineStage, visibleStage: visiblePipelineOrdinal(pipelineStage),
+      stageName: ["sample configuration", "cluster identification", "rigid encoding", "GCTS learning", "material growth"][pipelineStage] },
+    studyDesign: studyDesign ? { ...studyDesign, predictionAudit: activeStudyOutcomeAudit() }
+      : { status: "custom experiment", convenienceOnly: true },
+    computationalWork: computationalCostAudit(),
+    geometry: { requestedMode: geometryMode, resolvedMode: resolvedGeometryMode(), resolvedLabel: resolvedGeometryLabel(),
+      metricIsometryToleranceMode: clusterToleranceMode,
+      metricIsometryToleranceAngstrom: receiptRound(clusterMetricToleranceAngstrom()),
+      rotationGroup: rotationGroupLabel(),
+      multiscalePassport: { structuralScalesEncoded: liveScalePassportRecords()
+        .filter((record) => ["reached", "active"].includes(record.status)).length } },
+    structuralEvidence: { emergentClassification: receiptEmergentClassification(), selectedView: structureObservableSelection,
+      rdf: { pair: rdfPairSelection },
+      localOrientationalOrder: { harmonic: orientationalOrderHarmonic,
+        spatialMap: { enabled: orientationalOrderMapEnabled } },
+      localCentrosymmetry: { neighborCount: centrosymmetryNeighborMode,
+        spatialMap: { enabled: centrosymmetryMapEnabled } } },
+    cover: coverVisible ? { status: learnedCover.complete ? "complete" : "incomplete", periodic: learnedCover.periodic,
+      coveredAtoms: learnedCover.covered, inputAtoms: referenceAtoms.length,
+      placements: learnedCover.placements.length, isometryTypes: clusterGalleryTypes().length }
+      : { status: "stage not entered" },
+    marking: { status: markingVisible ? "trained" : "configured; stage not entered", config: currentMarkingConfig(),
+      active: markingVisible && activeMarking ? { id: activeMarking.id, name: activeMarking.name,
+        vocabularyKey: activeMarking.vocabularyKey, config: activeMarking.config,
+        representationReadout: MARKING_REPRESENTATIONS[activeMarking.config.representation]?.readout || null }
+        : null,
+      learned: markingVisible ? { validationMismatch: receiptRound(currentTrainingPoint().validationLoss),
+        representationReadout: MARKING_REPRESENTATIONS[sectionModel.representation]?.readout || null } : null },
+    search,
+    evidenceBoundary: { benchmarkStatus: benchmark.status, benchmarkGate: benchmark.gate,
+      ...receiptGrowthClaims(scenarioSelect.value, benchmark, iceAnchorTrace), note: benchmark.note },
+  };
+  const experimentState = JSON.parse(JSON.stringify(receipt));
+  delete experimentState.generatedAt;
+  receipt.experimentStateSha256 = await receiptSha256(JSON.stringify(experimentState));
+  receipt.receiptSha256 = await receiptSha256(JSON.stringify(receipt));
+  receipt.notebookSnapshot.buildMilliseconds = receiptRound(performance.now() - started, 3);
+  return receipt;
+}
+
 function notebookInterventionFactors(receipt) {
   const search = receipt.search?.explicitSites === undefined ? null : receipt.search;
   const activeMarking = receipt.marking?.active;
@@ -11681,6 +11869,8 @@ function experimentNotebookSummary(receipt) {
     id: receipt.receiptSha256.slice(0, 16),
     savedAt: receipt.generatedAt,
     receiptSha256: receipt.receiptSha256,
+    artifactKind: receipt.notebookSnapshot ? "bounded notebook snapshot" : "full experiment receipt",
+    notebookSnapshot: receipt.notebookSnapshot || null,
     experimentStateSha256: receipt.experimentStateSha256,
     material: receipt.input.materialName,
     scenarioId: receipt.input.scenarioId,
@@ -11768,7 +11958,9 @@ function experimentNotebookSummary(receipt) {
       coordinatesEmbedded: false,
       targetUsed: false,
       causalEffectInferred: false,
-    } : null,
+    } : receipt.notebookSnapshot ? { deferred: true,
+      reason: receipt.notebookSnapshot.creationResponseEvidence,
+      availableInFullReceiptExport: true, coordinatesEmbedded: false } : null,
     registeredStudy: receipt.studyDesign?.id ? {
       recipeId: receipt.studyDesign.id,
       recipeLabel: receipt.studyDesign.label,
@@ -13217,7 +13409,7 @@ async function saveCurrentExperimentNotebookEntry() {
   saveNotebookButton.disabled = true;
   receiptStatus.textContent = "Freezing coordinate-free run summary…";
   try {
-    const receipt = await buildExperimentReceipt();
+    const receipt = await buildExperimentNotebookSnapshot();
     const currentSummary = experimentNotebookSummary(receipt);
     const duplicate = experimentNotebookEntries.find((entry) => entry.experimentStateSha256 === receipt.experimentStateSha256);
     if (duplicate) {
@@ -13248,7 +13440,7 @@ async function saveCurrentExperimentNotebookEntry() {
       experimentNotebookEntries.push(entry);
       selectedNotebookEntryIds = [...selectedNotebookEntryIds.slice(-1), entry.id];
       persistExperimentNotebook();
-      receiptStatus.textContent = `Run ${experimentNotebookEntries.length} saved · coordinate-free summary · receipt ${entry.receiptSha256.slice(0, 10)}…`;
+      receiptStatus.textContent = `Run ${experimentNotebookEntries.length} saved · bounded coordinate-free snapshot · ${entry.receiptSha256.slice(0, 10)}… · ${entry.notebookSnapshot.buildMilliseconds.toFixed(0)} ms`;
     }
     renderExperimentNotebook();
     renderStudyOutcome();

@@ -18,6 +18,15 @@ the GCTS anatomy view explains covers, oriented ports, markings, search, and
 promotion; and the claim ledger keeps proved, measured, and open results visibly
 separate. Its numbers are frozen benchmark results, not recomputed browser demos.
 
+Build 231 makes the experiment notebook responsive at the material-growth stage.
+“Save current run” now freezes a bounded, coordinate-free notebook snapshot
+instead of rebuilding the much larger downloadable experiment receipt. The
+snapshot retains input and intervention digests, first-frontier identity,
+marking-to-cover lineage, structural-leap history, registered outcomes, and the
+claim boundary; it records its own build time and identifies itself as a
+snapshot. Expensive creation-response surrogate tables remain available through
+full receipt export and are explicitly marked as deferred in the notebook.
+
 Build 230 turns saved markings into a comparative materials experiment. Each
 notebook run now retains a coordinate-free summary of the exact marking that
 governed accepted actions and the molecule/connection/void/residual cover-family

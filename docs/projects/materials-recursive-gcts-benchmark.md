@@ -13,6 +13,17 @@ amplification is `b > 1`, a level-`L` accepted macro placement represents
 approximately `b^L` atoms.  Materializing or exporting `N` atomic coordinates
 still has an unavoidable `O(N)` cost and must be reported separately.
 
+### Bounded notebook snapshots (Build 231)
+
+Saving a run in the browser no longer executes the full downloadable receipt
+pipeline. A dedicated bounded snapshot retains the observed-input digest,
+intervention settings, first and latest frozen-frontier identity, retained
+structural leaps, marking-to-cover-family lineage, exact notebook outcomes, and
+claim boundary. Its SHA-256 is a snapshot digest, not a claim that the full
+receipt was built. Creation-response blocked surrogates are explicitly deferred
+to full receipt export; this keeps the notebook interactive without replacing
+or weakening the complete scientific artifact.
+
 ### Browser presentation boundary (Build 223)
 
 The cluster-identification stage now presents its molecular-cover accounting as
