@@ -4766,7 +4766,7 @@ export const createTilingStream = (() => {
       const sharesFrontierFace = faceKeys.some(faceKey => state.frontier.has(faceKey));
       return sharesFrontierFace ? { ok: true } : null;
     };
-    const certifyConfiguredPeriodicTemplate = rawTemplate => {
+    const configuredPeriodicTemplatePlacements = rawTemplate => {
       if (!rawTemplate?.motif?.length || !Array.isArray(rawTemplate.period_vectors)) return null;
       const placements = [];
       for (const descriptor of rawTemplate.motif) {
@@ -4787,6 +4787,11 @@ export const createTilingStream = (() => {
         || placements[0].orient !== startMove.orient
         || !vecEq(placements[0].translation, startMove.translation)
       ) return null;
+      return placements;
+    };
+    const certifyConfiguredPeriodicTemplate = rawTemplate => {
+      const placements = configuredPeriodicTemplatePlacements(rawTemplate);
+      if (!placements) return null;
       if (placements.length === 1) {
         const oneTileTemplate = findTranslationalPolyhedronTemplate();
         const configuredBasis = rawTemplate.period_vectors;
@@ -5703,6 +5708,16 @@ export const createTilingStream = (() => {
           orbit_transforms: orbitTransforms
         }
       };
+    };
+    const certifyConfiguredIsohedralTemplate = rawTemplate => {
+      const placements = configuredPeriodicTemplatePlacements(rawTemplate);
+      if (!placements) return null;
+      const periodicTemplate = certifyPeriodicPlacementMotif(
+        placements, rawTemplate.period_vectors
+      );
+      return periodicTemplate
+        ? isohedralSymmetryCertificate(periodicTemplate, placements)
+        : null;
     };
     const minePeriodicTemplateFromCurrentPatch = (options = {}) => {
       if (state.placements.length < 2) return null;
@@ -7024,7 +7039,30 @@ export const createTilingStream = (() => {
         yield nodeStatus(rootId, "fail", "No exact translational patch certificate found");
       }
     } else if (tilingStrategy === "isohedral") {
-      success = goalMet() || (yield* searchIsohedral(rootId));
+      const configuredIsohedralTemplate = preflightEnabled
+        ? certifyConfiguredIsohedralTemplate(config.known_periodic_template)
+        : null;
+      if (configuredIsohedralTemplate) {
+        success = yield* tryPeriodicTemplatePatch(rootId, {
+          force: true,
+          template: configuredIsohedralTemplate,
+          evidenceStrategy: "isohedral"
+        });
+        if (success) {
+          tilingEvidence = {
+            kind: "isohedral_certificate",
+            certified: true,
+            can_tile: true,
+            strategy: "isohedral",
+            source: "configured_verified_template",
+            patch_size: configuredIsohedralTemplate.motif.length,
+            certificate_kind: configuredIsohedralTemplate.kind,
+            period_vectors: configuredIsohedralTemplate.period_vectors.map(vector => vector.slice()),
+            periodic_template: configuredIsohedralTemplate
+          };
+        }
+      }
+      if (!success) success = goalMet() || (yield* searchIsohedral(rootId));
     } else if (tilingStrategy === "generic") {
       if (proposalProgram) yield* replayLearnedProposalPatch(rootId);
       // The hybrid learner has no catalog hint, but it may spend a bounded

@@ -18,7 +18,7 @@ import math
 import time
 from pathlib import Path
 
-from z3 import Bool, If, Solver, Sum, is_true, sat, unsat
+from z3 import Bool, If, PbEq, Solver, SolverFor, Sum, is_true, sat, unsat
 
 
 PERMUTATIONS = tuple(itertools.permutations(range(3)))
@@ -262,15 +262,25 @@ def screen_candidate(record: dict, args) -> dict:
                 variables = []
             else:
                 variables = [Bool(f"p_{copies}_{hnf_index}_{index}") for index in range(len(placements))]
-                solver = Solver()
+                solver = SolverFor("QF_FD") if args.solver == "qffd" else Solver()
                 solver.set(timeout=args.hnf_timeout_ms)
                 solver.add(variables[0])
-                solver.add(Sum([If(variable, 1, 0) for variable in variables]) == copies)
+                if args.solver == "qffd":
+                    solver.add(PbEq([(variable, 1) for variable in variables], copies))
+                else:
+                    solver.add(Sum([If(variable, 1, 0) for variable in variables]) == copies)
                 for residue in range(determinant):
-                    solver.add(Sum([
-                        If(variable, placement["weights"][residue], 0)
-                        for variable, placement in zip(variables, placements)
-                    ]) == 48)
+                    if args.solver == "qffd":
+                        solver.add(PbEq([
+                            (variable, placement["weights"][residue])
+                            for variable, placement in zip(variables, placements)
+                            if placement["weights"][residue]
+                        ], 48))
+                    else:
+                        solver.add(Sum([
+                            If(variable, placement["weights"][residue], 0)
+                            for variable, placement in zip(variables, placements)
+                        ]) == 48)
                 result = solver.check()
                 model = solver.model() if result == sat else None
             if result == sat:
@@ -352,6 +362,7 @@ def main():
     parser.add_argument("--max-copies", type=int, default=6)
     parser.add_argument("--hnf-timeout-ms", type=int, default=5000)
     parser.add_argument("--candidate-time-ms", type=int, default=0)
+    parser.add_argument("--solver", choices=("default", "qffd"), default="default")
     parser.add_argument("--only-unresolved", action="store_true")
     parser.add_argument("--offset", type=int, default=0)
     parser.add_argument("--limit", type=int, default=0)

@@ -117,7 +117,10 @@ def extension_with_core(root, tile_orientations, selected, timeout_ms, prefix):
     return {"result": "unknown", "placements_considered": len(final)}
 
 
-def screen(record, maximum_rounds, timeout_ms, max_first_copies=0, seed_clauses=None):
+def screen(
+    record, maximum_rounds, timeout_ms, max_first_copies=0, seed_clauses=None,
+    checkpoint_callback=None,
+):
     started = time.monotonic()
     root = GEOMETRY.tile_occupancy(record["cells"])
     tile_orientations = GEOMETRY.orientations(root)
@@ -143,6 +146,24 @@ def screen(record, maximum_rounds, timeout_ms, max_first_copies=0, seed_clauses=
             "seeded": True,
             "source": seed.get("source"),
         })
+
+    def checkpoint(stopped_by="in_progress"):
+        if checkpoint_callback is None:
+            return
+        checkpoint_callback({
+            **record,
+            "corona2_core_classification": "unresolved",
+            "corona2_core_cegar": {
+                "outer_exhausted": False,
+                "rounds": max(0, len(clauses) - len(seed_clauses or [])),
+                "max_first_copies": max_first_copies or None,
+                "clauses": clauses,
+                "stopped_by": stopped_by,
+                "milliseconds": round((time.monotonic() - started) * 1000),
+            },
+        })
+
+    checkpoint()
     for round_index in range(maximum_rounds):
         outer_result = outer.check()
         if outer_result == unsat:
@@ -221,6 +242,7 @@ def screen(record, maximum_rounds, timeout_ms, max_first_copies=0, seed_clauses=
             "first_patch_copies": 1 + len(first_indices),
             "extension_placements_considered": extension["placements_considered"],
         })
+        checkpoint()
     return {
         **record,
         "corona2_core_classification": "unresolved",
@@ -244,6 +266,7 @@ def main():
     parser.add_argument("--timeout-ms", type=int, default=30000)
     parser.add_argument("--max-first-copies", type=int, default=0)
     parser.add_argument("--seed-core", default="")
+    parser.add_argument("--checkpoint-dir", default="")
     args = parser.parse_args()
     requested = {value for value in args.ids.split(",") if value}
     records = [json.loads(line) for line in Path(args.input).read_text().splitlines() if line.strip()]
@@ -269,12 +292,28 @@ def main():
                     "outer_placement_indices": indices,
                     "source": args.seed_core,
                 })
+    for candidate_id, seeds in seeds_by_id.items():
+        canonical = []
+        seen = set()
+        for seed in sorted(seeds, key=lambda item: len(item["outer_placement_indices"])):
+            key = frozenset(seed["outer_placement_indices"])
+            if key in seen or any(existing.issubset(key) for existing, _ in canonical):
+                continue
+            canonical.append((key, seed))
+            seen.add(key)
+        seeds_by_id[candidate_id] = [seed for _, seed in canonical]
     counts = {}
     with output.open("a") as stream:
         for index, record in enumerate(records, 1):
+            checkpoint_dir = Path(args.checkpoint_dir) if args.checkpoint_dir else output.parent
+            checkpoint_dir.mkdir(parents=True, exist_ok=True)
+            checkpoint_path = checkpoint_dir / f"{output.stem}.{record['id']}.checkpoint.ndjson"
+            def save_checkpoint(value, path=checkpoint_path):
+                path.write_text(json.dumps(value, separators=(",", ":")) + "\n")
             result = screen(
                 record, args.rounds, args.timeout_ms, args.max_first_copies,
                 seeds_by_id.get(record["id"], []),
+                save_checkpoint,
             )
             classification = result["corona2_core_classification"]
             counts[classification] = counts.get(classification, 0) + 1

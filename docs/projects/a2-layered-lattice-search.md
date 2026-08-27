@@ -142,6 +142,31 @@ first-corona space is still not exhausted, and no radius-two witness has been
 found, so the candidate remains unresolved rather than being called a
 non-tiler or an aperiodic monotile.
 
+The same resumable core search has now been run on all eight focused
+candidates. After a further 32 exact rounds per candidate and removal of
+clauses subsumed by stronger learned clauses, the retained family-obstruction
+counts are 48 (`00128`), 45 (`00211`), 68 (`00232`), 48 (`00235`), 47
+(`00694`), 47 (`00755`), 48 (`00777`), and 47 (`00809`). Every run remains
+unresolved: none exhausted the outer first-corona space and none found a
+radius-two witness. Per-candidate reports end in `-extended.ndjson`.
+
+A separate longer periodic screen attempted six- and eight-copy quotients.
+Every candidate reached its 120-second limit while still at six copies,
+visiting between 41 and 127 of the 741 determinant-21 HNF bases and returning
+between two and twenty solver unknowns. It found no positive certificate, but
+is not an exhaustion result. The three batch reports are
+`data/a2-layered-size7-periodic-z3-focus6to8-part1.ndjson` through `part3`.
+
+`scripts/screen-a2-layered-substitution.py` exactly subdivides a scalar-inflated
+supertile into atomic A2 prism cells, enumerates every properly oriented copy
+contained in it, and solves the resulting finite exact cover. All eight
+candidates have certified no scalar self-substitution at scales 2 through 6.
+Simple failures carry a separately replayed uncovered-cell obstruction; deeper
+failures are replayed by an independent Z3 pseudo-Boolean exact-cover model.
+This excludes only scalar `sI` rep-tile rules. Non-scalar integer inflation
+matrices, decorated orientation states, and substitutions using several
+metatile shapes remain open.
+
 The machine-readable screen is `data/a2-layered-size5-screen.ndjson`. Rebuild
 it with:
 

@@ -17,6 +17,7 @@ def load(name, filename):
 GEOMETRY = load("a2_periodic_z3", "screen-a2-layered-periodic-z3.py")
 CORONA = load("a2_corona_z3", "screen-a2-layered-corona-z3.py")
 DIRECT = load("a2_corona2_direct", "screen-a2-layered-corona2-direct.py")
+SUBSTITUTION = load("a2_substitution", "screen-a2-layered-substitution.py")
 
 root_records = [
     json.loads(line)
@@ -98,11 +99,81 @@ assert sum(
     for clause in long_core["corona2_core_cegar"]["clauses"]
 ) == 5
 
+expected_extended_clauses = {
+    "a2lp_7_00128": 48,
+    "a2lp_7_00211": 45,
+    "a2lp_7_00232": 68,
+    "a2lp_7_00235": 48,
+    "a2lp_7_00694": 47,
+    "a2lp_7_00755": 47,
+    "a2lp_7_00777": 48,
+    "a2lp_7_00809": 47,
+}
+extended = []
+for candidate_id in expected_extended_clauses:
+    extended.append(json.loads(
+        (ROOT / "data" / f"a2-layered-size7-corona2-core-{candidate_id}-extended.ndjson").read_text()
+    ))
+assert {record["id"] for record in extended} == set(expected_extended_clauses)
+assert all(record["corona2_core_classification"] == "unresolved" for record in extended)
+assert all(record["corona2_core_cegar"]["outer_exhausted"] is False for record in extended)
+assert all(record["corona2_core_cegar"]["rounds"] == 32 for record in extended)
+assert {
+    record["id"]: len(record["corona2_core_cegar"]["clauses"])
+    for record in extended
+} == expected_extended_clauses
+
+larger_periodic = []
+for part in (1, 2, 3):
+    larger_periodic.extend(
+        json.loads(line)
+        for line in (
+            ROOT / "data" / f"a2-layered-size7-periodic-z3-focus6to8-part{part}.ndjson"
+        ).read_text().splitlines()
+        if line.strip()
+    )
+assert len(larger_periodic) == 8
+assert {record["id"] for record in larger_periodic} == set(expected_extended_clauses)
+assert all(record["classification"] == "unresolved" for record in larger_periodic)
+assert all(record["periodic_z3"]["active_copies"] == 6 for record in larger_periodic)
+assert all(0 < record["periodic_z3"]["hnf_visited"] < 741 for record in larger_periodic)
+assert all(record["periodic_z3"]["solver_unknown"] > 0 for record in larger_periodic)
+
+substitution_unit = SUBSTITUTION.screen({
+    "id": "a2_unit_prism_substitution_control",
+    "cells": [{"q": 0, "r": 0, "k": 0, "kind": "u"}],
+}, 2, 10000)
+assert substitution_unit["substitution_classification"] == "scalar_substitution_rule"
+assert substitution_unit["substitution"]["replay"]["verified"] is True
+assert substitution_unit["substitution"]["replay"]["patch_copies"] == 8
+
+substitution_records = []
+for scale in (2, 3, 4, 5, 6):
+    records = [
+        json.loads(line)
+        for line in (
+            ROOT / "data" / f"a2-layered-size7-substitution-scale{scale}-focused.ndjson"
+        ).read_text().splitlines()
+        if line.strip()
+    ]
+    assert len(records) == 8
+    assert {record["id"] for record in records} == set(expected_extended_clauses)
+    assert all(record["substitution_classification"] == "no_scalar_substitution_at_scale" for record in records)
+    assert all(record["substitution"]["certified"] is True for record in records)
+    assert all(
+        (record["substitution"]["local_obstruction_replay"] or
+         record["substitution"]["exact_unsat_replay"])["verified"] is True
+        for record in records
+    )
+    substitution_records.extend(records)
+
 print("A2 layered corona regression passed", {
     "root_coronas_replayed": len(root_records),
     "focused_candidates": len(focused),
     "distinct_first_coronas_rejected_each": 8,
     "deep_candidate_rejected_first_coronas": 64,
     "direct_positive_control": unit["corona2_direct"]["replay"]["patch_copies"],
-    "sound_gcts_clauses": len(long_core["corona2_core_cegar"]["clauses"]),
+    "sound_gcts_clauses_by_candidate": expected_extended_clauses,
+    "larger_periodic_partial_candidates": len(larger_periodic),
+    "scalar_substitution_negatives": len(substitution_records),
 })

@@ -70,13 +70,33 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "corona2_first_states_checked": 64,
       "corona2_first_states_rejected": 64,
       "corona2_outer_exhausted": false,
-      "corona2_gcts_sound_clauses": 37,
+      "corona2_gcts_sound_clauses": 68,
       "corona2_gcts_new_clauses_long_run": 32,
-      "corona2_gcts_milliseconds": 515367,
+      "corona2_gcts_milliseconds": 293240,
+      "periodic_six_copy_hnf_total": 741,
+      "periodic_six_copy_hnf_visited": 93,
+      "periodic_six_copy_solver_unknowns": 5,
+      "periodic_six_copy_complete": false,
+      "substitution_scalar_scales_excluded": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "substitution_rule_found": false,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-a2lp_7_00232-deep.ndjson",
-      "corona2_gcts_report": "data/a2-layered-size7-corona2-core-a2lp_7_00232-long.ndjson"
+      "corona2_gcts_report": "data/a2-layered-size7-corona2-core-a2lp_7_00232-extended.ndjson",
+      "periodic_larger_report": "data/a2-layered-size7-periodic-z3-focus6to8-part*.ndjson",
+      "substitution_reports": [
+        "data/a2-layered-size7-substitution-scale2-focused.ndjson",
+        "data/a2-layered-size7-substitution-scale3-focused.ndjson",
+        "data/a2-layered-size7-substitution-scale4-focused.ndjson",
+        "data/a2-layered-size7-substitution-scale5-focused.ndjson",
+        "data/a2-layered-size7-substitution-scale6-focused.ndjson"
+      ]
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -153,13 +173,33 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "corona2_first_states_checked": 8,
       "corona2_first_states_rejected": 8,
       "corona2_outer_exhausted": false,
-      "corona2_gcts_sound_clauses": 0,
-      "corona2_gcts_new_clauses_long_run": 0,
-      "corona2_gcts_milliseconds": 0,
+      "corona2_gcts_sound_clauses": 48,
+      "corona2_gcts_new_clauses_long_run": 32,
+      "corona2_gcts_milliseconds": 273253,
+      "periodic_six_copy_hnf_total": 741,
+      "periodic_six_copy_hnf_visited": 90,
+      "periodic_six_copy_solver_unknowns": 7,
+      "periodic_six_copy_complete": false,
+      "substitution_scalar_scales_excluded": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "substitution_rule_found": false,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
-      "corona2_gcts_report": null
+      "corona2_gcts_report": "data/a2-layered-size7-corona2-core-a2lp_7_00235-extended.ndjson",
+      "periodic_larger_report": "data/a2-layered-size7-periodic-z3-focus6to8-part*.ndjson",
+      "substitution_reports": [
+        "data/a2-layered-size7-substitution-scale2-focused.ndjson",
+        "data/a2-layered-size7-substitution-scale3-focused.ndjson",
+        "data/a2-layered-size7-substitution-scale4-focused.ndjson",
+        "data/a2-layered-size7-substitution-scale5-focused.ndjson",
+        "data/a2-layered-size7-substitution-scale6-focused.ndjson"
+      ]
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -236,13 +276,33 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "corona2_first_states_checked": 8,
       "corona2_first_states_rejected": 8,
       "corona2_outer_exhausted": false,
-      "corona2_gcts_sound_clauses": 0,
-      "corona2_gcts_new_clauses_long_run": 0,
-      "corona2_gcts_milliseconds": 0,
+      "corona2_gcts_sound_clauses": 47,
+      "corona2_gcts_new_clauses_long_run": 32,
+      "corona2_gcts_milliseconds": 241569,
+      "periodic_six_copy_hnf_total": 741,
+      "periodic_six_copy_hnf_visited": 119,
+      "periodic_six_copy_solver_unknowns": 2,
+      "periodic_six_copy_complete": false,
+      "substitution_scalar_scales_excluded": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "substitution_rule_found": false,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
-      "corona2_gcts_report": null
+      "corona2_gcts_report": "data/a2-layered-size7-corona2-core-a2lp_7_00694-extended.ndjson",
+      "periodic_larger_report": "data/a2-layered-size7-periodic-z3-focus6to8-part*.ndjson",
+      "substitution_reports": [
+        "data/a2-layered-size7-substitution-scale2-focused.ndjson",
+        "data/a2-layered-size7-substitution-scale3-focused.ndjson",
+        "data/a2-layered-size7-substitution-scale4-focused.ndjson",
+        "data/a2-layered-size7-substitution-scale5-focused.ndjson",
+        "data/a2-layered-size7-substitution-scale6-focused.ndjson"
+      ]
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -319,13 +379,33 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "corona2_first_states_checked": 8,
       "corona2_first_states_rejected": 8,
       "corona2_outer_exhausted": false,
-      "corona2_gcts_sound_clauses": 0,
-      "corona2_gcts_new_clauses_long_run": 0,
-      "corona2_gcts_milliseconds": 0,
+      "corona2_gcts_sound_clauses": 47,
+      "corona2_gcts_new_clauses_long_run": 32,
+      "corona2_gcts_milliseconds": 247562,
+      "periodic_six_copy_hnf_total": 741,
+      "periodic_six_copy_hnf_visited": 125,
+      "periodic_six_copy_solver_unknowns": 2,
+      "periodic_six_copy_complete": false,
+      "substitution_scalar_scales_excluded": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "substitution_rule_found": false,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
-      "corona2_gcts_report": null
+      "corona2_gcts_report": "data/a2-layered-size7-corona2-core-a2lp_7_00809-extended.ndjson",
+      "periodic_larger_report": "data/a2-layered-size7-periodic-z3-focus6to8-part*.ndjson",
+      "substitution_reports": [
+        "data/a2-layered-size7-substitution-scale2-focused.ndjson",
+        "data/a2-layered-size7-substitution-scale3-focused.ndjson",
+        "data/a2-layered-size7-substitution-scale4-focused.ndjson",
+        "data/a2-layered-size7-substitution-scale5-focused.ndjson",
+        "data/a2-layered-size7-substitution-scale6-focused.ndjson"
+      ]
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -402,13 +482,33 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "corona2_first_states_checked": 8,
       "corona2_first_states_rejected": 8,
       "corona2_outer_exhausted": false,
-      "corona2_gcts_sound_clauses": 0,
-      "corona2_gcts_new_clauses_long_run": 0,
-      "corona2_gcts_milliseconds": 0,
+      "corona2_gcts_sound_clauses": 45,
+      "corona2_gcts_new_clauses_long_run": 32,
+      "corona2_gcts_milliseconds": 327174,
+      "periodic_six_copy_hnf_total": 741,
+      "periodic_six_copy_hnf_visited": 86,
+      "periodic_six_copy_solver_unknowns": 6,
+      "periodic_six_copy_complete": false,
+      "substitution_scalar_scales_excluded": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "substitution_rule_found": false,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
-      "corona2_gcts_report": null
+      "corona2_gcts_report": "data/a2-layered-size7-corona2-core-a2lp_7_00211-extended.ndjson",
+      "periodic_larger_report": "data/a2-layered-size7-periodic-z3-focus6to8-part*.ndjson",
+      "substitution_reports": [
+        "data/a2-layered-size7-substitution-scale2-focused.ndjson",
+        "data/a2-layered-size7-substitution-scale3-focused.ndjson",
+        "data/a2-layered-size7-substitution-scale4-focused.ndjson",
+        "data/a2-layered-size7-substitution-scale5-focused.ndjson",
+        "data/a2-layered-size7-substitution-scale6-focused.ndjson"
+      ]
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -485,13 +585,33 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "corona2_first_states_checked": 8,
       "corona2_first_states_rejected": 8,
       "corona2_outer_exhausted": false,
-      "corona2_gcts_sound_clauses": 0,
-      "corona2_gcts_new_clauses_long_run": 0,
-      "corona2_gcts_milliseconds": 0,
+      "corona2_gcts_sound_clauses": 47,
+      "corona2_gcts_new_clauses_long_run": 32,
+      "corona2_gcts_milliseconds": 240968,
+      "periodic_six_copy_hnf_total": 741,
+      "periodic_six_copy_hnf_visited": 126,
+      "periodic_six_copy_solver_unknowns": 2,
+      "periodic_six_copy_complete": false,
+      "substitution_scalar_scales_excluded": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "substitution_rule_found": false,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
-      "corona2_gcts_report": null
+      "corona2_gcts_report": "data/a2-layered-size7-corona2-core-a2lp_7_00755-extended.ndjson",
+      "periodic_larger_report": "data/a2-layered-size7-periodic-z3-focus6to8-part*.ndjson",
+      "substitution_reports": [
+        "data/a2-layered-size7-substitution-scale2-focused.ndjson",
+        "data/a2-layered-size7-substitution-scale3-focused.ndjson",
+        "data/a2-layered-size7-substitution-scale4-focused.ndjson",
+        "data/a2-layered-size7-substitution-scale5-focused.ndjson",
+        "data/a2-layered-size7-substitution-scale6-focused.ndjson"
+      ]
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -568,13 +688,33 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "corona2_first_states_checked": 8,
       "corona2_first_states_rejected": 8,
       "corona2_outer_exhausted": false,
-      "corona2_gcts_sound_clauses": 0,
-      "corona2_gcts_new_clauses_long_run": 0,
-      "corona2_gcts_milliseconds": 0,
+      "corona2_gcts_sound_clauses": 48,
+      "corona2_gcts_new_clauses_long_run": 32,
+      "corona2_gcts_milliseconds": 240066,
+      "periodic_six_copy_hnf_total": 741,
+      "periodic_six_copy_hnf_visited": 127,
+      "periodic_six_copy_solver_unknowns": 2,
+      "periodic_six_copy_complete": false,
+      "substitution_scalar_scales_excluded": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "substitution_rule_found": false,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
-      "corona2_gcts_report": null
+      "corona2_gcts_report": "data/a2-layered-size7-corona2-core-a2lp_7_00777-extended.ndjson",
+      "periodic_larger_report": "data/a2-layered-size7-periodic-z3-focus6to8-part*.ndjson",
+      "substitution_reports": [
+        "data/a2-layered-size7-substitution-scale2-focused.ndjson",
+        "data/a2-layered-size7-substitution-scale3-focused.ndjson",
+        "data/a2-layered-size7-substitution-scale4-focused.ndjson",
+        "data/a2-layered-size7-substitution-scale5-focused.ndjson",
+        "data/a2-layered-size7-substitution-scale6-focused.ndjson"
+      ]
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -651,13 +791,33 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "corona2_first_states_checked": 8,
       "corona2_first_states_rejected": 8,
       "corona2_outer_exhausted": false,
-      "corona2_gcts_sound_clauses": 0,
-      "corona2_gcts_new_clauses_long_run": 0,
-      "corona2_gcts_milliseconds": 0,
+      "corona2_gcts_sound_clauses": 48,
+      "corona2_gcts_new_clauses_long_run": 32,
+      "corona2_gcts_milliseconds": 354662,
+      "periodic_six_copy_hnf_total": 741,
+      "periodic_six_copy_hnf_visited": 41,
+      "periodic_six_copy_solver_unknowns": 20,
+      "periodic_six_copy_complete": false,
+      "substitution_scalar_scales_excluded": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "substitution_rule_found": false,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
-      "corona2_gcts_report": null
+      "corona2_gcts_report": "data/a2-layered-size7-corona2-core-a2lp_7_00128-extended.ndjson",
+      "periodic_larger_report": "data/a2-layered-size7-periodic-z3-focus6to8-part*.ndjson",
+      "substitution_reports": [
+        "data/a2-layered-size7-substitution-scale2-focused.ndjson",
+        "data/a2-layered-size7-substitution-scale3-focused.ndjson",
+        "data/a2-layered-size7-substitution-scale4-focused.ndjson",
+        "data/a2-layered-size7-substitution-scale5-focused.ndjson",
+        "data/a2-layered-size7-substitution-scale6-focused.ndjson"
+      ]
     },
     "shell_screening": {
       "robust_completed_shell": 0,

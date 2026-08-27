@@ -3133,6 +3133,10 @@ for (const periodicControl of periodicControls) {
   assert.equal(candidateRun.final.result_kind, "certified_tiling");
   assert.equal(candidateRun.final.tiling_evidence?.patch_size, periodicControl.census_candidate.screening.motif_tiles);
   assert.equal(candidateRun.final.can_tile, true);
+  if (certificateLane === "isohedral") {
+    assert.equal(candidateRun.final.tiling_evidence?.kind, "isohedral_certificate");
+    assert.match(candidateRun.final.tiling_evidence?.certificate_kind ?? "", /isohedral_periodic_quotient/);
+  }
 }
 
 const exhaustiveWitness = await solve({

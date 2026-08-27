@@ -9,12 +9,27 @@ const coronaOne = await readNdjson("data/a2-layered-size7-corona1-z3.ndjson");
 const focused = await readNdjson("data/a2-layered-size7-corona2-focused.ndjson");
 const deep = await readNdjson("data/a2-layered-size7-corona2-a2lp_7_00232-deep.ndjson");
 const coreLong = await readNdjson("data/a2-layered-size7-corona2-core-a2lp_7_00232-long.ndjson");
+const coreExtended = (await Promise.all([
+  "00128", "00211", "00232", "00235", "00694", "00755", "00777", "00809"
+].map(id => readNdjson(`data/a2-layered-size7-corona2-core-a2lp_7_${id}-extended.ndjson`)))).flat();
+const periodicSixToEight = (await Promise.all([1, 2, 3].map(part =>
+  readNdjson(`data/a2-layered-size7-periodic-z3-focus6to8-part${part}.ndjson`)
+))).flat();
+const substitutions = new Map();
+for (const scale of [2, 3, 4, 5, 6]) {
+  for (const record of await readNdjson(`data/a2-layered-size7-substitution-scale${scale}-focused.ndjson`)) {
+    if (!substitutions.has(record.id)) substitutions.set(record.id, []);
+    substitutions.get(record.id).push(record);
+  }
+}
 const byId = records => new Map(records.map(record => [record.id, record]));
 const periodicById = byId(throughFour);
 const coronaById = byId(coronaOne);
 const focusedById = byId(focused);
 const deepById = byId(deep);
 const coreLongById = byId(coreLong);
+const coreExtendedById = byId(coreExtended);
+const periodicSixToEightById = byId(periodicSixToEight);
 const selected = [...focusedById.keys()].sort((left, right) =>
   coronaById.get(left).corona_z3.replay.patch_copies
   - coronaById.get(right).corona_z3.replay.patch_copies
@@ -25,7 +40,9 @@ const candidates = selected.map((id, index) => {
   const corona = coronaById.get(id);
   const second = focusedById.get(id);
   const deepSecond = deepById.get(id);
-  const coreSecond = coreLongById.get(id);
+  const coreSecond = coreExtendedById.get(id) ?? coreLongById.get(id);
+  const largerPeriodic = periodicSixToEightById.get(id);
+  const substitutionScreens = substitutions.get(id) ?? [];
   const corona2States = Math.max(
     second.corona2_cegar.first_coronas_rejected,
     deepSecond?.corona2_cegar?.first_coronas_rejected ?? 0
@@ -62,14 +79,30 @@ const candidates = selected.map((id, index) => {
       corona2_gcts_sound_clauses: coreSecond?.corona2_core_cegar?.clauses?.length ?? 0,
       corona2_gcts_new_clauses_long_run: coreSecond?.corona2_core_cegar?.rounds ?? 0,
       corona2_gcts_milliseconds: coreSecond?.corona2_core_cegar?.milliseconds ?? 0,
+      periodic_six_copy_hnf_total: 741,
+      periodic_six_copy_hnf_visited: largerPeriodic?.periodic_z3?.hnf_visited ?? 0,
+      periodic_six_copy_solver_unknowns: largerPeriodic?.periodic_z3?.solver_unknown ?? 0,
+      periodic_six_copy_complete: !!largerPeriodic?.periodic_z3?.exhausted_by_copies?.["6"],
+      substitution_scalar_scales_excluded: substitutionScreens
+        .filter(record => record.substitution_classification === "no_scalar_substitution_at_scale")
+        .map(record => record.substitution.scale).sort((left, right) => left - right),
+      substitution_rule_found: substitutionScreens.some(record =>
+        record.substitution_classification === "scalar_substitution_rule"
+      ),
       periodic_report: "data/a2-layered-size7-periodic-z3-through4.ndjson",
       corona_report: "data/a2-layered-size7-corona1-z3.ndjson",
       corona2_report: deepSecond
         ? "data/a2-layered-size7-corona2-a2lp_7_00232-deep.ndjson"
         : "data/a2-layered-size7-corona2-focused.ndjson",
       corona2_gcts_report: coreSecond
-        ? "data/a2-layered-size7-corona2-core-a2lp_7_00232-long.ndjson"
-        : null
+        ? `data/a2-layered-size7-corona2-core-${id}-extended.ndjson`
+        : null,
+      periodic_larger_report: largerPeriodic
+        ? "data/a2-layered-size7-periodic-z3-focus6to8-part*.ndjson"
+        : null,
+      substitution_reports: substitutionScreens.map(record =>
+        `data/a2-layered-size7-substitution-scale${record.substitution.scale}-focused.ndjson`
+      )
     },
     shell_screening: { robust_completed_shell: 0, deepest_completed_shell: 0 }
   };
