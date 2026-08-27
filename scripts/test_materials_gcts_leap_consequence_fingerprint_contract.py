@@ -26,7 +26,7 @@ def test_consequence_fingerprint_is_interactive_and_multiscale():
     for metric_id in (
         "atoms", "composition", "feedstock", "coordination", "local-order",
         "centrosymmetry", "radius", "anisotropy", "interface", "reciprocal",
-        "packing", "radial-composition", "void-clearance", "void-network", "void-throat",
+        "packing", "radial-composition", "void-clearance", "void-network", "void-throat", "void-steric",
     ):
         assert f'id: "{metric_id}"' in APP
     assert "function renderLeapConsequence" in APP
@@ -61,15 +61,15 @@ def test_claim_boundary_forbids_dynamical_overinterpretation():
     assert "Each row compares two certified structural states" in HTML
 
 
-def test_build_240_is_exposed():
-    assert 'buildId: "20260827-240"' in APP
-    assert 'app.js?v=20260827-240' in HTML
-    assert 'style.css?v=20260827-240' in HTML
+def test_build_241_is_exposed():
+    assert 'buildId: "20260827-241"' in APP
+    assert 'app.js?v=20260827-241' in HTML
+    assert 'style.css?v=20260827-241' in HTML
 
 
 if __name__ == "__main__":
     test_consequence_fingerprint_is_interactive_and_multiscale()
     test_composition_is_retained_as_state_not_action_score()
     test_claim_boundary_forbids_dynamical_overinterpretation()
-    test_build_240_is_exposed()
+    test_build_241_is_exposed()
     print("leap consequence fingerprint contract passed")

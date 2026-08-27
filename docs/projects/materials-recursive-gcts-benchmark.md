@@ -13,6 +13,30 @@ amplification is `b > 1`, a level-`L` accepted macro placement represents
 approximately `b^L` atoms.  Materializing or exporting `N` atomic coordinates
 still has an unavoidable `O(N)` cost and must be reported separately.
 
+### Species-resolved steric-envelope hypothesis (Build 241)
+
+The interstitial pathway now preserves two explicitly separate geometries. The
+exact point-site graph remains the baseline. An opt-in hard-envelope view assigns
+each supported displayed species its element-only covalent radius from Cordero
+et al., [Dalton Transactions 2008, DOI 10.1039/B801115J](https://doi.org/10.1039/B801115J).
+At every empty center it records the minimum atom-center distance minus that
+atom's radius; along every shared-face edge it records the minimum distance from
+the complete straight segment to every radius envelope. The browser can switch
+models without rebuilding or changing the candidate graph. A finite preset
+library—point probe, current displayed species, and common light/mobile
+elements—sets the effective spherical-probe threshold without a text field;
+manual slider changes become an explicitly labelled custom threshold.
+
+The portal fails closed when a displayed species lacks an explicit radius. It
+records the radius source, selected model, selected probe, and threshold in the
+receipt, and exposes the widest core-to-front covalent-envelope bottleneck as a
+separate consequence channel. Covalent radii are a deliberately visible proxy:
+they do not encode oxidation state, coordination number, spin state, anisotropic
+electron density, bonding environment, solvation, or thermal motion. Therefore
+this view is not an ionic-radius calculation, accessible porosity, a migration
+barrier, permeability, diffusion coefficient, rate, or physical time, and it
+does not rank or admit growth actions.
+
 ### Witnessed interstitial bottlenecks (Build 240)
 
 The face-adjacency graph now carries a finite geometric capacity on every edge.

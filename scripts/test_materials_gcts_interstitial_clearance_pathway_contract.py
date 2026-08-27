@@ -18,6 +18,7 @@ def test_pathway_is_visible_leap_linked_and_receipted():
         "voidClearanceBoundary",
         "voidNetworkState", "voidNetworkFilters", "voidNetworkReadout",
         "voidThroatThreshold", "voidThroatThresholdValue",
+        "voidRadiusModel", "voidProbeSpecies",
     ):
         assert f'id="{element_id}"' in HTML
         assert f'$("{element_id}")' in APP
@@ -27,6 +28,8 @@ def test_pathway_is_visible_leap_linked_and_receipted():
         'id: "void-clearance", group: "local"', "interstitialClearancePathway:",
         'id: "void-network", group: "mesoscale"', "selectedNetworkFilter:",
         'id: "void-throat", group: "mesoscale"', "selectedThroatThreshold:",
+        'id: "void-steric", group: "mesoscale"', "selectedFrameworkRadiusModel:",
+        "selectedProbeSpecies:", "optionalFrameworkEnvelope:",
         "networkRule:", "throatRule:", "graphCarriesSegmentClearance: true",
         "function thresholdedVoidNetwork",
         "renderVoidClearancePathway();",
@@ -36,6 +39,7 @@ def test_pathway_is_visible_leap_linked_and_receipted():
     assert ".void-clearance-plots" in CSS
     assert ".void-network-audit" in CSS
     assert ".void-throat-control" in CSS
+    assert ".void-steric-controls" in CSS
 
 
 def test_geometry_is_dimension_aware_invariant_and_fails_closed():
@@ -47,6 +51,9 @@ def test_geometry_is_dimension_aware_invariant_and_fails_closed():
         "segmentMinimumSiteClearance", "throatClearance", "throatToEndpointRatio",
         "largestComponentFraction", "coreToFrontComponentCount", "cycleRank",
         "widestCoreToFrontClearance", "thresholdCoreToFrontComponentCount",
+        "stericThroatClearance", "widestStericCoreToFrontClearance",
+        "covalentRadiusStericModelAvailable", "Cordero et al.",
+        "covalentRadiusStericUniformCoordinateScalingInvariant: false",
         "finiteObservationNoPeriodicImages: true", "pointSitesNoAtomicRadii: true",
         "translationInvariant: true", "properRotationInvariant: true",
         "atomPermutationInvariant: true", "targetUsed: false", "usedAsGrowthInput: false",
@@ -68,16 +75,16 @@ def test_pathway_cannot_be_misread_as_porosity_or_transport():
     assert "not accessible porosity, physical transport" in HTML
 
 
-def test_build_240_is_exposed():
-    assert 'buildId: "20260827-240"' in APP
-    assert 'app.js?v=20260827-240' in HTML
-    assert 'style.css?v=20260827-240' in HTML
-    assert 'interstitial-clearance.js?v=20260827-6' in APP
+def test_build_241_is_exposed():
+    assert 'buildId: "20260827-241"' in APP
+    assert 'app.js?v=20260827-241' in HTML
+    assert 'style.css?v=20260827-241' in HTML
+    assert 'interstitial-clearance.js?v=20260827-7' in APP
 
 
 if __name__ == "__main__":
     test_pathway_is_visible_leap_linked_and_receipted()
     test_geometry_is_dimension_aware_invariant_and_fails_closed()
     test_pathway_cannot_be_misread_as_porosity_or_transport()
-    test_build_240_is_exposed()
+    test_build_241_is_exposed()
     print("interstitial clearance pathway contract passed")

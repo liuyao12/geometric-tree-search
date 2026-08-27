@@ -30,6 +30,26 @@ const closedThreshold = interstitialClearanceAudit(cubic, cubic, { maximumAnchor
 assert.equal(closedThreshold.network.thresholdEdgeCount, 0);
 assert.equal(closedThreshold.network.thresholdCoreToFrontComponentCount, 0);
 assert.ok(baseline.network.thresholdEdgeCount > closedThreshold.network.thresholdEdgeCount);
+const carbonSpecies = cubic.map(() => "C");
+const steric = interstitialClearanceAudit(cubic, cubic, { maximumAnchors: 32,
+  currentSpecies: carbonSpecies, referenceSpecies: carbonSpecies, covalentRadiiAngstrom: { C: .2 } });
+const rigid = ([x, y, z]) => [5 - y, -3 + x, 9 + z];
+const stericInvariant = interstitialClearanceAudit(cubic.map(rigid).reverse(), cubic.map(rigid).reverse(), {
+  maximumAnchors: 32, currentSpecies: [...carbonSpecies].reverse(), referenceSpecies: [...carbonSpecies].reverse(),
+  covalentRadiiAngstrom: { C: .2 },
+});
+assert.equal(steric.covalentRadiusStericModelAvailable, true);
+assert.ok(steric.network.medianStericThroatClearance < steric.network.medianThroatClearance);
+assert.ok(Math.abs(steric.network.medianStericThroatClearance
+  - stericInvariant.network.medianStericThroatClearance) < 1e-10);
+assert.equal(steric.covalentRadiusStericUniformCoordinateScalingInvariant, false);
+const displayScaledSteric = interstitialClearanceAudit(cubic.map(transform), cubic.map(transform), {
+  maximumAnchors: 32, currentSpecies: carbonSpecies, referenceSpecies: carbonSpecies,
+  covalentRadiiAngstrom: { C: .2 }, physicalNearestNeighborAngstrom: 1,
+});
+assert.equal(displayScaledSteric.covalentRadiusNormalizationScaleAngstrom, 1);
+assert.ok(Math.abs(steric.network.medianStericThroatClearance
+  - displayScaledSteric.network.medianStericThroatClearance) < 1e-10);
 
 const expanded = cubic.map(([x, y, z]) => [1.2 * x, 1.2 * y, 1.2 * z]);
 const expandedAudit = interstitialClearanceAudit(expanded, cubic, { maximumAnchors: 32 });

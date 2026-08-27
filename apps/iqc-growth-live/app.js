@@ -58,7 +58,7 @@ import { compositionBalanceDelta, compositionDrift, learnCompositionTarget } fro
 import { consumeFeedstock, evaluateFeedstockDemand, feedstockReservoirSnapshot,
   initializeFeedstockReservoir } from "./feedstock-reservoir.js?v=20260827-2";
 import { localPackingDensityAudit } from "./local-packing-density.js?v=20260827-2";
-import { interstitialClearanceAudit } from "./interstitial-clearance.js?v=20260827-6";
+import { interstitialClearanceAudit } from "./interstitial-clearance.js?v=20260827-7";
 import { formalChargeBalanceDelta, learnFormalChargeTarget } from "./formal-charge-balance.js?v=20260824-1";
 import { chargeMomentSignature, compareChargeMomentGeometry } from "./global-charge-moments.js?v=20260826-1";
 import { incrementalIonicPairGeometry, incrementalIonicPairReachProfile,
@@ -713,6 +713,8 @@ const voidNetworkFilters = $("voidNetworkFilters");
 const voidNetworkReadout = $("voidNetworkReadout");
 const voidThroatThreshold = $("voidThroatThreshold");
 const voidThroatThresholdValue = $("voidThroatThresholdValue");
+const voidRadiusModel = $("voidRadiusModel");
+const voidProbeSpecies = $("voidProbeSpecies");
 const multiscalePathwayState = $("multiscalePathwayState");
 const multiscalePathwayHarmonics = $("multiscalePathwayHarmonics");
 const multiscalePathwayPlot = $("multiscalePathwayPlot");
@@ -866,6 +868,8 @@ const ELEMENTS = {
   Cd: { color: 0xffd98f, css: "#ffd98f", radius: 1.44 },
   Yb: { color: 0x00bf38, css: "#00bf38", radius: 1.87 },
 };
+const EXPLICIT_COVALENT_RADII_A = Object.freeze(Object.fromEntries(Object.entries(ELEMENTS)
+  .map(([symbol, record]) => [symbol, record.radius])));
 const MATERIALS = {
   iceIh: { name: "ice Ih", elements: ["H", "O"], spacingA: .9572, cell: "hexagonal ice · proton-ordered fixture", periodicWindow: true, order: "crystal", symmetry: "P6₃/mmc oxygen network", audit: "molecular cover + hydrogen-bond graph", motifShellCutoff: 3.12, descriptorCutoff: 3.25, overlapDistanceCutoff: 3.35, icePolytype: "Ih", note: "The learner must discover H₂O molecules, then use overlapping water-dimer and oxygen-ring connection clusters to traverse the crystal." },
   iceIc: { name: "ice Ic", elements: ["H", "O"], spacingA: .9572, cell: "cubic ice · proton-ordered fixture", periodicWindow: true, order: "crystal", symmetry: "Fd-3m oxygen network", audit: "molecular cover + hydrogen-bond graph", motifShellCutoff: 3.12, descriptorCutoff: 3.25, overlapDistanceCutoff: 3.35, icePolytype: "Ic", note: "A cubic-ice control with the same H₂O motif but a different cluster-of-clusters connection grammar." },
@@ -1467,6 +1471,8 @@ let selectedRadialProfileChannel = "density";
 let selectedVoidClearanceMetric = "p90";
 let selectedVoidNetworkFilter = "all";
 let selectedVoidThroatThreshold = .5;
+let selectedVoidRadiusModel = "point";
+let selectedVoidProbeSpecies = "custom";
 let leapEventCount = 0;
 let siteStructuralHistories = new Map();
 let pendingSiteHistoryIds = new Set();
@@ -5030,6 +5036,10 @@ function structuralVoidClearanceSnapshot(source = atoms) {
   const audit = interstitialClearanceAudit(source.map((atom) => atom.p.toArray()),
     referenceAtoms.map((atom) => atom.p.toArray()), {
       dimension, maximumAnchors: 64, neighborLimit: 6, histogramBins: 20, histogramMaximum: 1.5,
+      currentSpecies: source.map((atom) => atom.species),
+      referenceSpecies: referenceAtoms.map((atom) => atom.species),
+      covalentRadiiAngstrom: EXPLICIT_COVALENT_RADII_A,
+      physicalNearestNeighborAngstrom: referenceSpacingA,
     });
   if (!audit.available) return audit;
   const roundSummary = (summary) => ({ ...summary,
@@ -5039,7 +5049,9 @@ function structuralVoidClearanceSnapshot(source = atoms) {
     coreMedianClearance: summary.coreMedianClearance === null ? null : receiptRound(summary.coreMedianClearance),
     frontMedianClearance: summary.frontMedianClearance === null ? null : receiptRound(summary.frontMedianClearance),
     radialRecords: summary.radialRecords.map((record) => ({
-      clearance: receiptRound(record.clearance), normalizedRadius: receiptRound(record.normalizedRadius),
+      clearance: receiptRound(record.clearance),
+      stericClearance: record.stericClearance === null ? null : receiptRound(record.stericClearance),
+      normalizedRadius: receiptRound(record.normalizedRadius),
     })),
     network: { ...summary.network,
       isolatedNodeFraction: receiptRound(summary.network.isolatedNodeFraction),
@@ -5049,9 +5061,14 @@ function structuralVoidClearanceSnapshot(source = atoms) {
       percentile10ThroatClearance: summary.network.percentile10ThroatClearance === null ? null : receiptRound(summary.network.percentile10ThroatClearance),
       medianThroatClearance: summary.network.medianThroatClearance === null ? null : receiptRound(summary.network.medianThroatClearance),
       widestCoreToFrontClearance: summary.network.widestCoreToFrontClearance === null ? null : receiptRound(summary.network.widestCoreToFrontClearance),
+      minimumStericThroatClearance: summary.network.minimumStericThroatClearance === null ? null : receiptRound(summary.network.minimumStericThroatClearance),
+      percentile10StericThroatClearance: summary.network.percentile10StericThroatClearance === null ? null : receiptRound(summary.network.percentile10StericThroatClearance),
+      medianStericThroatClearance: summary.network.medianStericThroatClearance === null ? null : receiptRound(summary.network.medianStericThroatClearance),
+      widestStericCoreToFrontClearance: summary.network.widestStericCoreToFrontClearance === null ? null : receiptRound(summary.network.widestStericCoreToFrontClearance),
       declaredThreshold: receiptRound(summary.network.declaredThreshold),
       edges: summary.network.edges.map((edge) => ({ ...edge,
         throatClearance: receiptRound(edge.throatClearance),
+        stericThroatClearance: edge.stericThroatClearance === null ? null : receiptRound(edge.stericThroatClearance),
         throatToEndpointRatio: receiptRound(edge.throatToEndpointRatio) })),
       degrees: [...summary.network.degrees],
       components: summary.network.components.map((component) => ({ ...component, nodes: [...component.nodes],
@@ -5060,6 +5077,9 @@ function structuralVoidClearanceSnapshot(source = atoms) {
     },
   });
   return { ...roundSummary(audit), referenceNearestNeighborScale: receiptRound(audit.referenceNearestNeighborScale),
+    covalentRadiusNormalizationScaleAngstrom:
+      audit.covalentRadiusNormalizationScaleAngstrom === null ? null
+        : receiptRound(audit.covalentRadiusNormalizationScaleAngstrom),
     reference: roundSummary(audit.reference) };
 }
 
@@ -9591,7 +9611,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-240",
+      buildId: "20260827-241",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -10306,14 +10326,19 @@ async function buildExperimentReceipt() {
         selectedMetric: selectedVoidClearanceMetric,
         selectedNetworkFilter: selectedVoidNetworkFilter,
         selectedThroatThreshold: selectedVoidThroatThreshold,
+        selectedFrameworkRadiusModel: selectedVoidRadiusModel,
+        selectedProbeSpecies: selectedVoidProbeSpecies,
         dimensionAware: true,
         candidateRule: "circumcenter lies inside a nondegenerate local simplex and its circle/sphere contains no explicit site",
         networkRule: "two retained centers are adjacent only when their witnessed simplices share a complete edge in 2D or face in 3D",
         throatRule: "minimum explicit point-site distance along the straight segment joining adjacent empty centers",
         graphCarriesSegmentClearance: true,
+        optionalFrameworkEnvelope: "Cordero et al. covalent-radius proxy · DOI 10.1039/B801115J",
         referenceScale: "supplied median nearest-neighbor distance",
         periodicImagesUsed: false,
-        atomicRadiiUsed: false,
+        pointGraphAtomicRadiiUsed: false,
+        selectedViewUsesCovalentRadiusProxy: selectedVoidRadiusModel === "covalent",
+        oxidationStateOrCoordinationSpecificRadiiUsed: false,
         usedAsGrowthInput: false,
         porosityInferred: false,
         poreVolumeInferred: false,
@@ -11745,7 +11770,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-240" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-241" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -20539,6 +20564,8 @@ function resetCounters() {
   selectedVoidClearanceMetric = "p90";
   selectedVoidNetworkFilter = "all";
   selectedVoidThroatThreshold = .5;
+  selectedVoidRadiusModel = "point";
+  selectedVoidProbeSpecies = "custom";
   leapEventCount = 0;
   invalidateCreationResponseEvidenceCache("new specimen or reset state");
   siteStructuralHistories = new Map();
@@ -23344,6 +23371,15 @@ function materialConsequenceRecords(before, after) {
         ? `Maximum bottleneck over exact shared-face paths joining declared core and growth-front bands; median witnessed throat ${Number.isFinite(after.voidClearance.network.medianThroatClearance) ? `${after.voidClearance.network.medianThroatClearance.toFixed(3)}aₙₙ` : "unresolved"}.`
         : "No exact shared-face path joins the declared core and growth-front bands.",
       boundary: "This point-site straight-segment bottleneck has no atomic/probe radius, curved-path optimization, energy landscape, hopping law, permeability, diffusion coefficient, or rate." },
+    { id: "void-steric", group: "mesoscale", label: "widest covalent-envelope corridor", unit: "surface-to-segment clearance / supplied nearest-neighbor distance",
+      before: before.voidClearance?.network?.widestStericCoreToFrontClearance ?? null,
+      after: after.voidClearance?.network?.widestStericCoreToFrontClearance ?? null,
+      format: (value) => `${value.toFixed(3)}aₙₙ`, deltaFormat: (value) => `${value >= 0 ? "+" : ""}${value.toFixed(3)}aₙₙ`, domain: "adaptive",
+      evidence: Number.isFinite(after.voidClearance?.network?.widestStericCoreToFrontClearance)
+        ? `Maximum straight-path bottleneck after subtracting the explicit element-only covalent-radius proxy; median steric throat ${Number.isFinite(after.voidClearance.network.medianStericThroatClearance) ? `${after.voidClearance.network.medianStericThroatClearance.toFixed(3)}aₙₙ` : "unresolved"}.`
+        : after.voidClearance?.covalentRadiusStericModelAvailable === false
+          ? "Covalent-radius proxy unavailable for at least one displayed species." : "No covalent-envelope path joins the declared radial bands.",
+      boundary: "Cordero covalent radii are an element-only steric hypothesis, not oxidation/coordination-specific ionic radii, a probe-accessible pore, migration energy, diffusion, or kinetics." },
     { id: "local-order", group: "local", label: `mean local ${orderSymbol}`, unit: "orientational-order magnitude",
       before: before.orientationalOrder?.harmonics?.[6]?.mean,
       after: after.orientationalOrder?.harmonics?.[6]?.mean,
@@ -23799,10 +23835,13 @@ function voidClearanceMetricValue(audit, metric = selectedVoidClearanceMetric) {
     maximum: audit.maximumClearance, front: audit.frontMedianClearance })[metric];
 }
 
-function thresholdedVoidNetwork(network, radialRecords, threshold) {
-  const nodes = new Set(radialRecords.map((record, index) => record.clearance >= threshold ? index : null)
+function thresholdedVoidNetwork(network, radialRecords, threshold, radiusModel = "point") {
+  const nodeField = radiusModel === "covalent" ? "stericClearance" : "clearance";
+  const edgeField = radiusModel === "covalent" ? "stericThroatClearance" : "throatClearance";
+  const nodes = new Set(radialRecords.map((record, index) => Number.isFinite(record[nodeField])
+    && record[nodeField] >= threshold ? index : null)
     .filter((index) => index !== null));
-  const edges = network.edges.filter((edge) => edge.throatClearance >= threshold
+  const edges = network.edges.filter((edge) => Number.isFinite(edge[edgeField]) && edge[edgeField] >= threshold
     && nodes.has(edge.first) && nodes.has(edge.second));
   const parents = radialRecords.map((_, index) => index);
   const root = (index) => { while (parents[index] !== index) { parents[index] = parents[parents[index]]; index = parents[index]; } return index; };
@@ -23818,6 +23857,7 @@ function thresholdedVoidNetwork(network, radialRecords, threshold) {
   const degrees = new Array(radialRecords.length).fill(0);
   edges.forEach((edge) => { degrees[edge.first]++; degrees[edge.second]++; });
   return { nodes, edges, components, degrees,
+    nodeField, edgeField,
     largestComponentNodes: components[0]?.nodeCount || 0,
     coreToFrontComponentCount: components.filter((component) => component.coreToFront).length,
     isolatedNodeCount: [...nodes].filter((node) => degrees[node] === 0).length };
@@ -23867,7 +23907,10 @@ function renderVoidClearancePathway() {
   drawHistogram(before, "before", .5); drawHistogram(after, "after", (right - left) / 40);
   const distributionLabel = makeSvg("text", { x: (left + right) / 2, y: 111, class: "axis", "text-anchor": "middle" });
   distributionLabel.textContent = "empty-center clearance / supplied aₙₙ"; voidClearanceDistribution.append(distributionLabel);
-  const radialValues = [...after.radialRecords, ...(after.reference?.radialRecords || [])].map((record) => record.clearance);
+  if (selectedVoidRadiusModel === "covalent" && !after.covalentRadiusStericModelAvailable) selectedVoidRadiusModel = "point";
+  const activeClearance = (record) => selectedVoidRadiusModel === "covalent" && Number.isFinite(record.stericClearance)
+    ? record.stericClearance : record.clearance;
+  const radialValues = [...after.radialRecords, ...(after.reference?.radialRecords || [])].map(activeClearance);
   const radialMaximum = Math.max(1, ...radialValues) * 1.08;
   const rx = (radius) => left + Math.max(0, Math.min(1.25, radius)) / 1.25 * (right - left);
   const ry = (clearance) => bottom - Math.max(0, Math.min(radialMaximum, clearance)) / radialMaximum * (bottom - top);
@@ -23878,9 +23921,29 @@ function renderVoidClearancePathway() {
     label.textContent = `${value.toFixed(2)}`; voidClearanceRadial.append(label);
   });
   const network = after.network;
-  const thresholdNetwork = thresholdedVoidNetwork(network, after.radialRecords, selectedVoidThroatThreshold);
+  const covalentOption = voidRadiusModel.querySelector('option[value="covalent"]');
+  covalentOption.disabled = !after.covalentRadiusStericModelAvailable;
+  if (selectedVoidRadiusModel === "covalent" && covalentOption.disabled) selectedVoidRadiusModel = "point";
+  voidRadiusModel.value = selectedVoidRadiusModel;
+  const probeSymbols = [...new Set(["H", "Li", "Na", "O", ...atoms.map((atom) => atom.species),
+    ...referenceAtoms.map((atom) => atom.species)])].filter((symbol) => symbol in EXPLICIT_COVALENT_RADII_A);
+  const probeSignature = ["custom", "point", ...probeSymbols].join("|");
+  if (voidProbeSpecies.dataset.signature !== probeSignature) {
+    voidProbeSpecies.replaceChildren();
+    [["custom", "custom slider"], ["point", "point probe · 0 Å"], ...probeSymbols.map((symbol) =>
+      [symbol, `${symbol} covalent proxy · ${EXPLICIT_COVALENT_RADII_A[symbol].toFixed(2)} Å`])].forEach(([value, label]) => {
+      const option = document.createElement("option"); option.value = value; option.textContent = label; voidProbeSpecies.append(option);
+    });
+    voidProbeSpecies.dataset.signature = probeSignature;
+  }
+  if (![...voidProbeSpecies.options].some((option) => option.value === selectedVoidProbeSpecies)) selectedVoidProbeSpecies = "custom";
+  voidProbeSpecies.value = selectedVoidProbeSpecies;
+  const thresholdNetwork = thresholdedVoidNetwork(network, after.radialRecords, selectedVoidThroatThreshold,
+    selectedVoidRadiusModel);
   voidThroatThreshold.value = String(selectedVoidThroatThreshold);
-  voidThroatThresholdValue.textContent = `${selectedVoidThroatThreshold.toFixed(2)}aₙₙ`;
+  const probeLabel = selectedVoidProbeSpecies === "custom" ? "custom" : selectedVoidProbeSpecies === "point"
+    ? "point probe" : `${selectedVoidProbeSpecies} proxy`;
+  voidThroatThresholdValue.textContent = `${selectedVoidThroatThreshold.toFixed(2)}aₙₙ · ${probeLabel}`;
   voidNetworkFilters.querySelectorAll("button[data-void-network]").forEach((button) =>
     button.setAttribute("aria-pressed", String(button.dataset.voidNetwork === selectedVoidNetworkFilter)));
   let visibleNodes = new Set(thresholdNetwork.nodes);
@@ -23892,19 +23955,21 @@ function renderVoidClearancePathway() {
   const visibleEdges = thresholdNetwork.edges.filter((edge) => visibleNodes.has(edge.first) && visibleNodes.has(edge.second));
   visibleEdges.forEach((edge) => {
     const first = after.radialRecords[edge.first]; const second = after.radialRecords[edge.second];
-    voidClearanceRadial.append(makeSvg("line", { x1: rx(first.normalizedRadius), y1: ry(first.clearance),
-      x2: rx(second.normalizedRadius), y2: ry(second.clearance), class: "network-edge",
-      "data-throat": edge.throatClearance.toFixed(3),
-      "stroke-width": (.55 + .8 * Math.min(1, edge.throatClearance / Math.max(.01, radialMaximum))).toFixed(2) }));
+    voidClearanceRadial.append(makeSvg("line", { x1: rx(first.normalizedRadius), y1: ry(activeClearance(first)),
+      x2: rx(second.normalizedRadius), y2: ry(activeClearance(second)), class: "network-edge",
+      "data-throat": edge[thresholdNetwork.edgeField].toFixed(3),
+      "stroke-width": (.55 + .8 * Math.min(1, Math.max(0, edge[thresholdNetwork.edgeField])
+        / Math.max(.01, radialMaximum))).toFixed(2) }));
   });
   (after.reference?.radialRecords || []).forEach((record) => voidClearanceRadial.append(makeSvg("circle", {
-    cx: rx(record.normalizedRadius), cy: ry(record.clearance), r: 1.9, class: "reference",
+    cx: rx(record.normalizedRadius), cy: ry(activeClearance(record)), r: 1.9, class: "reference",
   })));
   after.radialRecords.forEach((record, index) => visibleNodes.has(index) && voidClearanceRadial.append(makeSvg("circle", {
-    cx: rx(record.normalizedRadius), cy: ry(record.clearance), r: 2.5, class: "current",
+    cx: rx(record.normalizedRadius), cy: ry(activeClearance(record)), r: 2.5, class: "current",
   })));
   const radialLabel = makeSvg("text", { x: (left + right) / 2, y: 111, class: "axis", "text-anchor": "middle" });
-  radialLabel.textContent = "normalized centroid radius →"; voidClearanceRadial.append(radialLabel);
+  radialLabel.textContent = `${selectedVoidRadiusModel === "covalent" ? "covalent-envelope" : "point-site"} clearance · normalized radius →`;
+  voidClearanceRadial.append(radialLabel);
   const pathValues = states.map((state) => voidClearanceMetricValue(state.voidClearance)).filter(Number.isFinite);
   const pathMaximum = Math.max(1, ...pathValues) * 1.08;
   const px = (index) => left + (states.length <= 1 ? .5 : index / (states.length - 1)) * (right - left);
@@ -23945,22 +24010,27 @@ function renderVoidClearancePathway() {
       key.textContent = label; valueElement.textContent = datum; cell.append(key, valueElement); voidClearanceReadout.append(cell);
     });
   voidNetworkReadout.replaceChildren();
+  const activeWidest = selectedVoidRadiusModel === "covalent"
+    ? network.widestStericCoreToFrontClearance : network.widestCoreToFrontClearance;
+  const activeMedian = selectedVoidRadiusModel === "covalent"
+    ? network.medianStericThroatClearance : network.medianThroatClearance;
   [["threshold-open centers", `${thresholdNetwork.nodes.size}/${network.nodeCount}`],
     ["threshold-open throats", `${thresholdNetwork.edges.length}/${network.edgeCount}`],
     ["open components", thresholdNetwork.components.length.toLocaleString()],
     ["largest open component", `${thresholdNetwork.largestComponentNodes}/${thresholdNetwork.nodes.size || 0}`],
-    ["widest core → front", Number.isFinite(network.widestCoreToFrontClearance) ? `${network.widestCoreToFrontClearance.toFixed(3)}aₙₙ` : "unresolved"],
-    ["median throat", Number.isFinite(network.medianThroatClearance) ? `${network.medianThroatClearance.toFixed(3)}aₙₙ` : "unresolved"],
+    ["widest core → front", Number.isFinite(activeWidest) ? `${activeWidest.toFixed(3)}aₙₙ` : "unresolved"],
+    ["median throat", Number.isFinite(activeMedian) ? `${activeMedian.toFixed(3)}aₙₙ` : "unresolved"],
     ["open core → front", thresholdNetwork.coreToFrontComponentCount.toLocaleString()],
     ["isolated open cages", thresholdNetwork.isolatedNodeCount.toLocaleString()]]
     .forEach(([label, datum]) => {
       const cell = document.createElement("span"); const key = document.createElement("small"); const valueElement = document.createElement("strong");
       key.textContent = label; valueElement.textContent = datum; cell.append(key, valueElement); voidNetworkReadout.append(cell);
     });
-  voidNetworkState.textContent = `${visibleNodes.size}/${network.nodeCount} centers · ${visibleEdges.length}/${network.edgeCount} throats ≥ ${selectedVoidThroatThreshold.toFixed(2)}aₙₙ shown`;
+  const modelLabel = selectedVoidRadiusModel === "covalent" ? "covalent-envelope proxy" : "point sites";
+  voidNetworkState.textContent = `${visibleNodes.size}/${network.nodeCount} centers · ${visibleEdges.length}/${network.edgeCount} throats ≥ ${selectedVoidThroatThreshold.toFixed(2)}aₙₙ · ${modelLabel}`;
   const metricLabel = ({ median: "median", p90: "large-region p90", maximum: "maximum", front: "growth-front median" })[selectedVoidClearanceMetric];
   voidClearanceState.textContent = `${states.length} state${states.length === 1 ? "" : "s"} · ${metricLabel}`;
-  voidClearanceBoundary.textContent = `Candidate centers are circumcenters of nondegenerate local ${after.dimension === 2 ? "triangles" : "tetrahedra"}, retained only when the center lies inside the simplex and its circle/sphere is empty of explicit sites. Every throat is the exact minimum point-site distance along the straight segment between face-adjacent centers. Clearances are divided by the supplied median nearest-neighbor distance; no periodic image, atomic radius, probe radius, or curved path is invented. This finite geometry is not porosity, accessible free volume, a physical transport channel, migration barrier, permeability, rate, or physical time.`;
+  voidClearanceBoundary.textContent = `Candidate centers are circumcenters of nondegenerate local ${after.dimension === 2 ? "triangles" : "tetrahedra"}, retained only when the center lies inside the simplex and its circle/sphere is empty of explicit sites. Point mode measures exact site-to-segment distance. The optional finite-envelope mode subtracts element-only Cordero covalent radii (DOI 10.1039/B801115J), and probe presets use the same covalent-radius proxy. Clearances are divided by the supplied median nearest-neighbor distance; no periodic image, oxidation/coordination-specific ionic radius, curved path, energy, or thermal sampling is invented. This is a steric hypothesis—not accessible porosity, physical transport, a migration barrier, permeability, diffusion coefficient, rate, or time.`;
 }
 
 voidClearanceMetrics.addEventListener("click", (event) => {
@@ -23977,6 +24047,26 @@ voidNetworkFilters.addEventListener("click", (event) => {
 
 voidThroatThreshold.addEventListener("input", () => {
   selectedVoidThroatThreshold = Math.max(0, Math.min(1.5, Number(voidThroatThreshold.value) || 0));
+  selectedVoidProbeSpecies = "custom";
+  renderVoidClearancePathway();
+});
+
+voidRadiusModel.addEventListener("change", () => {
+  selectedVoidRadiusModel = voidRadiusModel.value === "covalent" ? "covalent" : "point";
+  renderVoidClearancePathway();
+});
+
+voidProbeSpecies.addEventListener("change", () => {
+  selectedVoidProbeSpecies = voidProbeSpecies.value;
+  const selectedLeap = leapHistory[selectedLeapIndex] || null;
+  const snapshot = selectedLeap?.after?.voidClearance || structuralVoidClearanceSnapshot();
+  if (selectedVoidProbeSpecies === "point") selectedVoidThroatThreshold = 0;
+  else if (selectedVoidProbeSpecies in EXPLICIT_COVALENT_RADII_A
+    && snapshot?.covalentRadiusNormalizationScaleAngstrom > 0) {
+    selectedVoidThroatThreshold = Math.min(1.5,
+      EXPLICIT_COVALENT_RADII_A[selectedVoidProbeSpecies]
+        / snapshot.covalentRadiusNormalizationScaleAngstrom);
+  }
   renderVoidClearancePathway();
 });
 

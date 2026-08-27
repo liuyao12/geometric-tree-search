@@ -19,6 +19,19 @@ the GCTS anatomy view explains covers, oriented ports, markings, search, and
 promotion; and the claim ledger keeps proved, measured, and open results visibly
 separate. Its numbers are frozen benchmark results, not recomputed browser demos.
 
+Build 241 adds an opt-in **species-resolved steric envelope** to the witnessed
+interstitial graph. The point-site graph remains intact as the exact baseline;
+the new view subtracts explicit element-only covalent radii from every node and
+straight-segment throat clearance. A no-text-field model selector switches
+between point sites and covalent envelopes, while probe presets for the current
+chemistry and common light/mobile elements set the same dimensionless clearance
+threshold. The radius table is identified as the Cordero et al. crystallographic
+covalent-radius set (Dalton Transactions 2008, DOI 10.1039/B801115J), and the
+receipt records the active model and probe. This is a transparent hard-envelope
+hypothesis—not oxidation- or coordination-specific ionic size, electron-density
+isosurfaces, accessible porosity, migration energy, diffusion, permeability,
+kinetics, or physical time.
+
 Build 240 resolves the next geometric layer of the interstitial graph: every
 shared-face edge now carries a **witnessed straight-segment bottleneck**. Its
 clearance is the exact minimum distance from the segment joining the two empty
