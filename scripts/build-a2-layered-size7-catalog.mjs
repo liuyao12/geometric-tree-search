@@ -18,6 +18,9 @@ const coreDeeper = (await Promise.all([
 const coreStrengthened = (await Promise.all([
   "00128", "00211", "00232", "00235", "00694", "00755", "00777", "00809"
 ].map(id => readNdjson(`data/a2-layered-size7-corona2-core-a2lp_7_${id}-strengthened.ndjson`)))).flat();
+const coreLonger64 = (await Promise.all([
+  "00128", "00211", "00232", "00235", "00694", "00755", "00777", "00809"
+].map(id => readNdjson(`data/a2-layered-size7-corona2-core-a2lp_7_${id}-longer64.ndjson`)))).flat();
 const minimizedCores = (await Promise.all([
   "00128", "00211", "00232", "00235", "00694", "00755", "00777", "00809"
 ].map(id => readNdjson(`data/a2-layered-size7-corona2-core-a2lp_7_${id}-mincore.ndjson`)))).flat();
@@ -89,6 +92,7 @@ const coreLongById = byId(coreLong);
 const coreExtendedById = byId(coreExtended);
 const coreDeeperById = byId(coreDeeper);
 const coreStrengthenedById = byId(coreStrengthened);
+const coreLonger64ById = byId(coreLonger64);
 const minimizedCoreById = byId(minimizedCores);
 const periodicSixToEightById = byId(periodicSixToEight);
 const periodicExactSixById = byId(periodicExactSix);
@@ -102,7 +106,7 @@ const candidates = selected.map((id, index) => {
   const corona = coronaById.get(id);
   const second = focusedById.get(id);
   const deepSecond = deepById.get(id);
-  const coreSecond = coreStrengthenedById.get(id) ?? coreDeeperById.get(id)
+  const coreSecond = coreLonger64ById.get(id) ?? coreStrengthenedById.get(id) ?? coreDeeperById.get(id)
     ?? coreExtendedById.get(id) ?? coreLongById.get(id);
   const minimizedCore = minimizedCoreById.get(id);
   const largerPeriodic = periodicSixToEightById.get(id);
@@ -212,7 +216,7 @@ const candidates = selected.map((id, index) => {
         ? "data/a2-layered-size7-corona2-a2lp_7_00232-deep.ndjson"
         : "data/a2-layered-size7-corona2-focused.ndjson",
       corona2_gcts_report: coreSecond
-        ? `data/a2-layered-size7-corona2-core-${id}-strengthened.ndjson`
+        ? `data/a2-layered-size7-corona2-core-${id}-longer64.ndjson`
         : null,
       periodic_larger_report: exactSix
         ? `data/a2-layered-size7-periodic-exact6-${id}.ndjson`

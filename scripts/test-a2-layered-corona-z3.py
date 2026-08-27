@@ -212,6 +212,28 @@ assert {
 } == expected_strengthened_clauses
 assert sum(expected_strengthened_clauses.values()) == 1113
 
+expected_longer64_clauses = {
+    "a2lp_7_00128": 188, "a2lp_7_00211": 192,
+    "a2lp_7_00232": 216, "a2lp_7_00235": 192,
+    "a2lp_7_00694": 203, "a2lp_7_00755": 204,
+    "a2lp_7_00777": 202, "a2lp_7_00809": 201,
+}
+longer64 = [
+    json.loads((
+        ROOT / "data" / f"a2-layered-size7-corona2-core-{candidate_id}-longer64.ndjson"
+    ).read_text())
+    for candidate_id in expected_longer64_clauses
+]
+assert all(record["corona2_core_classification"] == "unresolved" for record in longer64)
+assert all(record["corona2_core_cegar"]["outer_exhausted"] is False for record in longer64)
+assert all(record["corona2_core_cegar"]["rounds"] == 64 for record in longer64)
+assert all(record["corona2_core_cegar"]["stopped_by"] == "round_limit" for record in longer64)
+assert {
+    record["id"]: len(record["corona2_core_cegar"]["clauses"])
+    for record in longer64
+} == expected_longer64_clauses
+assert sum(expected_longer64_clauses.values()) == 1598
+
 larger_periodic = []
 for part in (1, 2, 3):
     larger_periodic.extend(

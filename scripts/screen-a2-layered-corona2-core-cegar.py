@@ -251,7 +251,11 @@ def screen(
             "rounds": max(0, len(clauses) - len(seed_clauses or [])),
             "max_first_copies": max_first_copies or None,
             "clauses": clauses,
-            "stopped_by": "round_limit_or_solver_timeout",
+            "stopped_by": (
+                "round_limit"
+                if max(0, len(clauses) - len(seed_clauses or [])) == maximum_rounds
+                else "solver_timeout"
+            ),
             "milliseconds": round((time.monotonic() - started) * 1000),
         },
     }
