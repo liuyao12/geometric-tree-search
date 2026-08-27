@@ -4,6 +4,9 @@ import { consumeFeedstock, evaluateFeedstockDemand, feedstockReservoirSnapshot,
 
 const open = initializeFeedstockReservoir(["Na", "Cl"], "open");
 assert.equal(evaluateFeedstockDemand(open, ["Na", "Na", "Cl"]).admitted, true);
+const openConsumed = consumeFeedstock(open, ["Na", "Na", "Cl"]).reservoir;
+assert.deepEqual(openConsumed.consumed, { Cl: 1, Na: 2 });
+assert.equal(openConsumed.admittedAtoms, 3);
 
 let finite = initializeFeedstockReservoir(["Na", "Cl", "Cl"], "finite-1");
 let result = consumeFeedstock(finite, ["Na", "Cl"]); finite = result.reservoir;

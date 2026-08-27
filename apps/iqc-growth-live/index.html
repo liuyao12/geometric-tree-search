@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260827-234">
+  <link rel="stylesheet" href="./style.css?v=20260827-235">
   <script type="importmap">
     {
       "imports": {
@@ -1747,6 +1747,14 @@
             <article id="leapConsequenceDetail" class="leap-consequence-detail"></article>
             <p id="leapConsequenceBoundary">Each row compares two certified structural states. It is not elapsed time, a free-energy change, or a claim that either direction is favorable.</p>
           </article>
+          <article class="stoichiometry-pathway" aria-label="Interactive species-resolved stoichiometry pathway">
+            <header><span><small>multicomponent stoichiometry pathway</small><strong id="stoichiometryPathwayState">seed composition</strong></span>
+              <div id="stoichiometryPathwaySpecies" role="group" aria-label="Select a species to inspect"></div></header>
+            <div id="stoichiometryPathwayTimeline" class="stoichiometry-pathway-timeline" role="group" aria-label="Species fractions after each structural leap"></div>
+            <svg id="stoichiometryPathwayPlot" viewBox="0 0 300 142" role="img" aria-label="Selected species fraction across certified structural states"></svg>
+            <div id="stoichiometryPathwayReadout" class="stoichiometry-pathway-readout"></div>
+            <p id="stoichiometryPathwayBoundary">Fractions and integer site counts are exact for each retained structural state. The supplied composition is a geometric bookkeeping reference—not chemical potential, phase equilibrium, diffusion, flux, or physical time.</p>
+          </article>
           <article class="multiscale-pathway" aria-label="Interactive local-order and reciprocal-order pathway">
             <header><span><small>multiscale order pathway</small><strong id="multiscalePathwayState">seed state</strong></span>
               <div id="multiscalePathwayHarmonics" role="group" aria-label="Local-order harmonic for the pathway">
@@ -1866,7 +1874,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260827-234"></script>
+  <script type="module" src="./app.js?v=20260827-235"></script>
   <script type="module" src="./evidence-atlas.js?v=20260827-20"></script>
 </body>
 </html>

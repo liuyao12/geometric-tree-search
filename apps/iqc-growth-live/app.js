@@ -56,7 +56,7 @@ import { compareStructureFactors, jensenShannonDistance, localOrientationalOrder
   from "./structure-observables.js?v=20260826-5";
 import { compositionBalanceDelta, compositionDrift, learnCompositionTarget } from "./composition-balance.js?v=20260824-1";
 import { consumeFeedstock, evaluateFeedstockDemand, feedstockReservoirSnapshot,
-  initializeFeedstockReservoir } from "./feedstock-reservoir.js?v=20260826-1";
+  initializeFeedstockReservoir } from "./feedstock-reservoir.js?v=20260827-2";
 import { formalChargeBalanceDelta, learnFormalChargeTarget } from "./formal-charge-balance.js?v=20260824-1";
 import { chargeMomentSignature, compareChargeMomentGeometry } from "./global-charge-moments.js?v=20260826-1";
 import { incrementalIonicPairGeometry, incrementalIonicPairReachProfile,
@@ -683,6 +683,12 @@ const leapConsequenceFilters = $("leapConsequenceFilters");
 const leapConsequenceMatrix = $("leapConsequenceMatrix");
 const leapConsequenceDetail = $("leapConsequenceDetail");
 const leapConsequenceBoundary = $("leapConsequenceBoundary");
+const stoichiometryPathwayState = $("stoichiometryPathwayState");
+const stoichiometryPathwaySpecies = $("stoichiometryPathwaySpecies");
+const stoichiometryPathwayTimeline = $("stoichiometryPathwayTimeline");
+const stoichiometryPathwayPlot = $("stoichiometryPathwayPlot");
+const stoichiometryPathwayReadout = $("stoichiometryPathwayReadout");
+const stoichiometryPathwayBoundary = $("stoichiometryPathwayBoundary");
 const multiscalePathwayState = $("multiscalePathwayState");
 const multiscalePathwayHarmonics = $("multiscalePathwayHarmonics");
 const multiscalePathwayPlot = $("multiscalePathwayPlot");
@@ -1431,6 +1437,7 @@ let leapHistory = [];
 let selectedLeapIndex = -1;
 let selectedLeapConsequenceId = "coordination";
 let selectedLeapConsequenceFilter = "all";
+let selectedStoichiometrySpecies = null;
 let leapEventCount = 0;
 let siteStructuralHistories = new Map();
 let pendingSiteHistoryIds = new Set();
@@ -9487,7 +9494,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-234",
+      buildId: "20260827-235",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -10155,6 +10162,20 @@ async function buildExperimentReceipt() {
         phaseDiagramClaimed: false,
         reactionCoordinateClaimed: false,
         freeEnergyLandscapeClaimed: false,
+      },
+      stoichiometryPathway: {
+        role: "interactive species-resolved counts, fractions, target deviations, and explicit feedstock inventory across certified structural states",
+        alignment: "structural leap index; no physical time",
+        pointSource: "before/after composition and feedstock snapshots in structuralLeapCertificates",
+        speciesVocabulary: [...new Set((compositionTarget?.symbols || []).concat(atoms.map((atom) => atom.species)))].sort(),
+        selectedSpecies: selectedStoichiometrySpecies,
+        exactIntegerSiteCounts: true,
+        suppliedCompositionUsedAsReferenceOnly: true,
+        usedAsGrowthInput: false,
+        chemicalPotentialInferred: false,
+        phaseEquilibriumInferred: false,
+        diffusionIntegrated: false,
+        physicalTimeIntegrated: false,
       },
     },
     cover: coverVisible ? {
@@ -11575,7 +11596,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-234" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-235" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -20363,6 +20384,7 @@ function resetCounters() {
   selectedLeapIndex = -1;
   selectedLeapConsequenceId = "coordination";
   selectedLeapConsequenceFilter = "all";
+  selectedStoichiometrySpecies = null;
   leapEventCount = 0;
   invalidateCreationResponseEvidenceCache("new specimen or reset state");
   siteStructuralHistories = new Map();
@@ -23259,11 +23281,130 @@ leapConsequenceFilters.addEventListener("click", (event) => {
   renderLeapConsequence(leapHistory[selectedLeapIndex] || null);
 });
 
+function structuralStoichiometrySeries() {
+  if (!leapHistory.length) return [{
+    leapIndex: -1, index: 0, status: "seed", label: "seed",
+    composition: structuralCompositionSnapshot(), feedstock: currentFeedstockSnapshot(),
+  }];
+  return [{ leapIndex: -1, index: Math.max(0, leapHistory[0].index - 1), status: "seed", label: "seed",
+    composition: leapHistory[0].before?.composition, feedstock: leapHistory[0].before?.feedstock },
+  ...leapHistory.map((leap, leapIndex) => ({ leapIndex, index: leap.index, status: leap.status,
+    label: `leap ${leap.index}`, composition: leap.after?.composition, feedstock: leap.after?.feedstock }))]
+    .filter((state) => state.composition);
+}
+
+function renderStoichiometryPathway() {
+  if (!stoichiometryPathwayPlot) return;
+  const states = structuralStoichiometrySeries();
+  const symbols = [...new Set(states.flatMap((state) => state.composition?.symbols || []))]
+    .sort((first, second) => first.localeCompare(second));
+  if (!symbols.includes(selectedStoichiometrySpecies)) selectedStoichiometrySpecies = symbols[0] || null;
+  const selectedState = states.find((state) => state.leapIndex === selectedLeapIndex) || states.at(-1);
+  const cssColor = (symbol) => elementRecord(symbol).css;
+  const speciesLabel = (symbol) => occupationalAlternatives(symbol)
+    ? occupancyDisplayLabel({ species: symbol }) : symbol;
+  stoichiometryPathwaySpecies.replaceChildren(...symbols.map((symbol) => {
+    const button = document.createElement("button"); button.type = "button";
+    button.dataset.stoichiometrySpecies = symbol;
+    button.setAttribute("aria-pressed", String(symbol === selectedStoichiometrySpecies));
+    button.style.setProperty("--species-color", cssColor(symbol));
+    const swatch = document.createElement("i"); const label = document.createElement("strong");
+    label.textContent = speciesLabel(symbol); button.append(swatch, label);
+    button.addEventListener("click", () => { selectedStoichiometrySpecies = symbol; renderStoichiometryPathway(); });
+    return button;
+  }));
+  stoichiometryPathwayTimeline.replaceChildren(...states.map((state) => {
+    const row = document.createElement(state.leapIndex < 0 ? "div" : "button");
+    if (state.leapIndex >= 0) { row.type = "button"; row.addEventListener("click", () => {
+      selectedLeapIndex = state.leapIndex; renderStructuralLeap(leapHistory[selectedLeapIndex]);
+    }); }
+    row.className = `${state.status}${state.leapIndex === selectedLeapIndex ? " active" : ""}`;
+    const label = document.createElement("span"); label.textContent = state.label;
+    const stack = document.createElement("i"); stack.className = "stoichiometry-stack";
+    symbols.forEach((symbol) => {
+      const fraction = state.composition?.fractions?.[symbol] || 0;
+      if (fraction <= 0) return;
+      const segment = document.createElement("b"); segment.style.width = `${100 * fraction}%`;
+      segment.style.background = cssColor(symbol); segment.title = `${speciesLabel(symbol)} ${(100 * fraction).toFixed(2)}%`;
+      stack.append(segment);
+    });
+    const drift = document.createElement("em");
+    drift.textContent = Number.isFinite(state.composition?.totalVariationFromObservedTarget)
+      ? `TV ${(100 * state.composition.totalVariationFromObservedTarget).toFixed(1)}%` : "reference unresolved";
+    row.append(label, stack, drift); return row;
+  }));
+  const namespace = "http://www.w3.org/2000/svg";
+  const makeSvg = (name, attributes = {}) => {
+    const element = document.createElementNS(namespace, name);
+    Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, String(value)));
+    return element;
+  };
+  stoichiometryPathwayPlot.replaceChildren();
+  const left = 34, right = 292, top = 9, bottom = 111;
+  const x = (index) => left + (states.length <= 1 ? .5 : index / (states.length - 1)) * (right - left);
+  const y = (value) => bottom - Math.max(0, Math.min(1, value)) * (bottom - top);
+  [0, .25, .5, .75, 1].forEach((tick) => {
+    stoichiometryPathwayPlot.append(makeSvg("line", { x1: left, x2: right, y1: y(tick), y2: y(tick), class: "grid" }));
+    const label = makeSvg("text", { x: left - 4, y: y(tick) + 2, class: "axis", "text-anchor": "end" });
+    label.textContent = `${Math.round(100 * tick)}%`; stoichiometryPathwayPlot.append(label);
+  });
+  const targetFraction = selectedState?.composition?.targetFractions?.[selectedStoichiometrySpecies];
+  if (Number.isFinite(targetFraction)) stoichiometryPathwayPlot.append(makeSvg("line", {
+    x1: left, x2: right, y1: y(targetFraction), y2: y(targetFraction), class: "target",
+  }));
+  const pathPoints = states.map((state, index) => ({ state, index,
+    fraction: state.composition?.fractions?.[selectedStoichiometrySpecies] || 0 }));
+  if (pathPoints.length > 1) stoichiometryPathwayPlot.append(makeSvg("polyline", {
+    points: pathPoints.map((point) => `${x(point.index)},${y(point.fraction)}`).join(" "), class: "path",
+    style: `--species-color:${cssColor(selectedStoichiometrySpecies)}`,
+  }));
+  pathPoints.forEach((point) => {
+    const circle = makeSvg("circle", { cx: x(point.index), cy: y(point.fraction), r: point.state.leapIndex < 0 ? 3.4 : 4,
+      class: `point ${point.state.status}${point.state.leapIndex === selectedLeapIndex ? " selected" : ""}`,
+      style: `--species-color:${cssColor(selectedStoichiometrySpecies)}`,
+      tabindex: point.state.leapIndex < 0 ? -1 : 0, role: point.state.leapIndex < 0 ? "img" : "button",
+      "aria-label": `${point.state.label}: ${speciesLabel(selectedStoichiometrySpecies)} ${(100 * point.fraction).toFixed(2)} percent`,
+    });
+    if (point.state.leapIndex >= 0) {
+      const select = () => { selectedLeapIndex = point.state.leapIndex; renderStructuralLeap(leapHistory[selectedLeapIndex]); };
+      circle.addEventListener("click", select); circle.addEventListener("keydown", (event) => {
+        if (["Enter", " "].includes(event.key)) { event.preventDefault(); select(); }
+      });
+    }
+    stoichiometryPathwayPlot.append(circle);
+  });
+  const xLabel = makeSvg("text", { x: (left + right) / 2, y: 137, class: "axis", "text-anchor": "middle" });
+  xLabel.textContent = "certified structural state →"; stoichiometryPathwayPlot.append(xLabel);
+  const firstLabel = makeSvg("text", { x: left, y: 124, class: "axis", "text-anchor": "start" }); firstLabel.textContent = "seed";
+  const lastLabel = makeSvg("text", { x: right, y: 124, class: "axis", "text-anchor": "end" }); lastLabel.textContent = states.at(-1)?.label || "seed";
+  stoichiometryPathwayPlot.append(firstLabel, lastLabel);
+  const composition = selectedState?.composition || {};
+  const fraction = composition.fractions?.[selectedStoichiometrySpecies];
+  const reference = composition.targetFractions?.[selectedStoichiometrySpecies];
+  const count = composition.counts?.[selectedStoichiometrySpecies] || 0;
+  const reservoir = selectedState?.feedstock?.species?.find((entry) => entry.symbol === selectedStoichiometrySpecies);
+  const signed = (value) => `${value >= 0 ? "+" : ""}${(100 * value).toFixed(2)} points`;
+  stoichiometryPathwayReadout.replaceChildren();
+  [["selected state", selectedState?.label || "seed"], ["species sites", count.toLocaleString()],
+    ["current fraction", Number.isFinite(fraction) ? `${(100 * fraction).toFixed(2)}%` : "unresolved"],
+    ["supplied reference", Number.isFinite(reference) ? `${(100 * reference).toFixed(2)}%` : "unresolved"],
+    ["fraction error", Number.isFinite(fraction) && Number.isFinite(reference) ? signed(fraction - reference) : "unresolved"],
+    ["feedstock", selectedState?.feedstock?.finite
+      ? `${reservoir?.remaining || 0}/${reservoir?.initial || 0} remain` : `${reservoir?.consumed || 0} emitted · open`]]
+    .forEach(([label, value]) => {
+      const cell = document.createElement("span"); const key = document.createElement("small"); const datum = document.createElement("strong");
+      key.textContent = label; datum.textContent = value; cell.append(key, datum); stoichiometryPathwayReadout.append(cell);
+    });
+  stoichiometryPathwayState.textContent = `${states.length} state${states.length === 1 ? "" : "s"} · ${symbols.length} species · ${speciesLabel(selectedStoichiometrySpecies || "—")}`;
+  stoichiometryPathwayBoundary.textContent = `Showing exact ${speciesLabel(selectedStoichiometrySpecies || "selected-species")} counts and fractions across ${states.length} retained structural state${states.length === 1 ? "" : "s"}. The dashed reference is derived only from the supplied configuration. Bars support any finite number of observed species; colors are standard element colors. Fractions are compositional bookkeeping—not chemical potential, activity, phase equilibrium, segregation energy, diffusion, flux, rate, or physical time.`;
+}
+
 function renderStructuralLeap(leap = null) {
   if (!leapCertificateSection) return;
   leapCertificateSection.hidden = pipelineStage !== 4;
   if (pipelineStage !== 4) return;
   const selected = leap || leapHistory[selectedLeapIndex] || null;
+  renderStoichiometryPathway();
   renderMultiscaleOrderPathway();
   renderChargeShapePortrait(policyComparisonHistory[selectedPolicySnapshotIndex] || lastPolicyComparison);
   renderBondValenceStructuralPathway();

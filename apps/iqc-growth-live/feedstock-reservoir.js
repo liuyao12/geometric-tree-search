@@ -35,10 +35,10 @@ export function consumeFeedstock(reservoir, requestedSpecies) {
   const audit = evaluateFeedstockDemand(reservoir, requestedSpecies);
   if (!audit.admitted) return { reservoir: { ...reservoir,
     rejectedAtoms: reservoir.rejectedAtoms + audit.requestedAtoms }, audit };
-  if (audit.open) return { reservoir: { ...reservoir,
-    admittedAtoms: reservoir.admittedAtoms + audit.requestedAtoms }, audit };
   const consumed = { ...reservoir.consumed };
   for (const [species, amount] of Object.entries(audit.requested)) consumed[species] = (consumed[species] || 0) + amount;
+  if (audit.open) return { reservoir: { ...reservoir, consumed,
+    admittedAtoms: reservoir.admittedAtoms + audit.requestedAtoms }, audit };
   return { reservoir: { ...reservoir, remaining: audit.remainingAfter, consumed,
     admittedAtoms: reservoir.admittedAtoms + audit.requestedAtoms }, audit };
 }

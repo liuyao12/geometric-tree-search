@@ -19,6 +19,17 @@ the GCTS anatomy view explains covers, oriented ports, markings, search, and
 promotion; and the claim ledger keeps proved, measured, and open results visibly
 separate. Its numbers are frozen benchmark results, not recomputed browser demos.
 
+Build 235 adds an interactive **multicomponent stoichiometry pathway** across
+the retained structural-leap history. Every observed species receives its own
+standard-color selector, exact integer site count, current fraction, supplied
+reference fraction, signed fraction error, and finite/open feedstock readout.
+Each certified state is also a stacked composition bar, while a selected-species
+plot traces its fraction against the supplied reference and links back to the
+same leap certificate. The implementation has no binary-system assumption: the
+species vocabulary is the union of the retained composition snapshots. These
+are exact finite-state accounting observables, not chemical potentials, phase
+equilibria, segregation energies, diffusion, flux, rates, or physical time.
+
 Build 234 adds an interactive **material consequence fingerprint** to every
 retained structural leap. A materials scientist can select the exact leap and
 inspect before/after changes in explicit inventory, composition deviation,

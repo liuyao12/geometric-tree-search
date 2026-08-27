@@ -13,6 +13,26 @@ amplification is `b > 1`, a level-`L` accepted macro placement represents
 approximately `b^L` atoms.  Materializing or exporting `N` atomic coordinates
 still has an unavoidable `O(N)` cost and must be reported separately.
 
+### Species-resolved stoichiometry pathway (Build 235)
+
+The browser now unfolds the scalar composition-deviation channel into an
+interactive multicomponent history. The vocabulary is derived from the union of
+species recorded in the retained structural states, so ternary and higher-order
+systems use the same code path as binary examples. For each certified state the
+view preserves exact integer counts, normalized fractions, a stacked
+standard-element-color bar, total-variation deviation from the supplied
+configuration, and species-specific finite/open reservoir accounting. A
+selected species is plotted over structural-leap index against its dashed
+supplied-fraction reference; selecting a state routes to the identical leap
+certificate rather than reconstructing or relabelling it.
+
+The supplied composition is a bookkeeping reference, not a target phase label.
+No chemical potential, activity, phase equilibrium, segregation energy,
+diffusion, flux, growth rate, or elapsed time is inferred. The pathway is not a
+new action score and does not change the candidate set, hard gates, marking,
+search order, or emitted geometry. Its receipt manifest records those negative
+claims together with the exact species vocabulary and state source.
+
 ### Leap-resolved material consequences (Build 234)
 
 The live structural-leap certificate now consolidates its previously separate
