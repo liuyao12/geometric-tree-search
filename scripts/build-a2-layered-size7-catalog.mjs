@@ -12,6 +12,9 @@ const coreLong = await readNdjson("data/a2-layered-size7-corona2-core-a2lp_7_002
 const coreExtended = (await Promise.all([
   "00128", "00211", "00232", "00235", "00694", "00755", "00777", "00809"
 ].map(id => readNdjson(`data/a2-layered-size7-corona2-core-a2lp_7_${id}-extended.ndjson`)))).flat();
+const coreDeeper = (await Promise.all([
+  "00128", "00211", "00232", "00235", "00694", "00755", "00777", "00809"
+].map(id => readNdjson(`data/a2-layered-size7-corona2-core-a2lp_7_${id}-deeper.ndjson`)))).flat();
 const periodicSixToEight = (await Promise.all([1, 2, 3].map(part =>
   readNdjson(`data/a2-layered-size7-periodic-z3-focus6to8-part${part}.ndjson`)
 ))).flat();
@@ -37,6 +40,7 @@ const focusedById = byId(focused);
 const deepById = byId(deep);
 const coreLongById = byId(coreLong);
 const coreExtendedById = byId(coreExtended);
+const coreDeeperById = byId(coreDeeper);
 const periodicSixToEightById = byId(periodicSixToEight);
 const selected = [...focusedById.keys()].sort((left, right) =>
   coronaById.get(left).corona_z3.replay.patch_copies
@@ -48,7 +52,7 @@ const candidates = selected.map((id, index) => {
   const corona = coronaById.get(id);
   const second = focusedById.get(id);
   const deepSecond = deepById.get(id);
-  const coreSecond = coreExtendedById.get(id) ?? coreLongById.get(id);
+  const coreSecond = coreDeeperById.get(id) ?? coreExtendedById.get(id) ?? coreLongById.get(id);
   const largerPeriodic = periodicSixToEightById.get(id);
   const substitutionScreens = substitutions.get(id) ?? [];
   const anisotropicScreens = anisotropicById.get(id) ?? [];
@@ -110,7 +114,7 @@ const candidates = selected.map((id, index) => {
         ? "data/a2-layered-size7-corona2-a2lp_7_00232-deep.ndjson"
         : "data/a2-layered-size7-corona2-focused.ndjson",
       corona2_gcts_report: coreSecond
-        ? `data/a2-layered-size7-corona2-core-${id}-extended.ndjson`
+        ? `data/a2-layered-size7-corona2-core-${id}-deeper.ndjson`
         : null,
       periodic_larger_report: largerPeriodic
         ? "data/a2-layered-size7-periodic-z3-focus6to8-part*.ndjson"

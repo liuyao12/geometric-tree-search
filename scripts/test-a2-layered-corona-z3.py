@@ -123,6 +123,31 @@ assert {
     for record in extended
 } == expected_extended_clauses
 
+expected_deeper_clauses = {
+    "a2lp_7_00128": 111,
+    "a2lp_7_00211": 109,
+    "a2lp_7_00232": 126,
+    "a2lp_7_00235": 109,
+    "a2lp_7_00694": 109,
+    "a2lp_7_00755": 111,
+    "a2lp_7_00777": 112,
+    "a2lp_7_00809": 111,
+}
+deeper = [
+    json.loads(
+        (ROOT / "data" / f"a2-layered-size7-corona2-core-{candidate_id}-deeper.ndjson").read_text()
+    )
+    for candidate_id in expected_deeper_clauses
+]
+assert all(record["corona2_core_classification"] == "unresolved" for record in deeper)
+assert all(record["corona2_core_cegar"]["outer_exhausted"] is False for record in deeper)
+assert all(record["corona2_core_cegar"]["rounds"] == 64 for record in deeper)
+assert {
+    record["id"]: len(record["corona2_core_cegar"]["clauses"])
+    for record in deeper
+} == expected_deeper_clauses
+assert sum(expected_deeper_clauses.values()) == 898
+
 larger_periodic = []
 for part in (1, 2, 3):
     larger_periodic.extend(
@@ -217,7 +242,7 @@ print("A2 layered corona regression passed", {
     "distinct_first_coronas_rejected_each": 8,
     "deep_candidate_rejected_first_coronas": 64,
     "direct_positive_control": unit["corona2_direct"]["replay"]["patch_copies"],
-    "sound_gcts_clauses_by_candidate": expected_extended_clauses,
+    "sound_gcts_clauses_by_candidate": expected_deeper_clauses,
     "larger_periodic_partial_candidates": len(larger_periodic),
     "scalar_substitution_negatives": len(substitution_records),
     "anisotropic_substitution_negatives": len(anisotropic_records),

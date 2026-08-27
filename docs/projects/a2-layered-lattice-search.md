@@ -150,6 +150,14 @@ counts are 48 (`00128`), 45 (`00211`), 68 (`00232`), 48 (`00235`), 47
 unresolved: none exhausted the outer first-corona space and none found a
 radius-two witness. Per-candidate reports end in `-extended.ndjson`.
 
+A subsequent continuation adds 64 more exact rounds per candidate. After
+another subsumption pass, the retained clause counts are 111 (`00128`), 109
+(`00211`), 126 (`00232`), 109 (`00235`), 109 (`00694`), 111 (`00755`), 112
+(`00777`), and 111 (`00809`): 898 sound family blockers in total. The smallest
+retained clauses now contain nine placements. All eight outer models remain
+satisfiable and no radius-two witness was found, so these longer runs remain
+bounded-inconclusive. Their reports end in `-deeper.ndjson`.
+
 A separate longer periodic screen attempted six- and eight-copy quotients.
 Every candidate reached its 120-second limit while still at six copies,
 visiting between 41 and 127 of the 741 determinant-21 HNF bases and returning
