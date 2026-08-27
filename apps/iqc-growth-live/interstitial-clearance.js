@@ -80,7 +80,7 @@ function referenceNearestNeighborScale(positions, maximumAnchors) {
   return quantile(distances.filter(Number.isFinite), .5);
 }
 
-function simplexCircumcenter(vertices) {
+function simplexCircumcenter(vertices, requireInterior = true) {
   const origin = vertices[0];
   const edges = vertices.slice(1).map((point) => point.map((value, axis) => value - origin[axis]));
   const gram = edges.map((first) => edges.map((second) => first.reduce((sum, value, axis) => sum + value * second[axis], 0)));
@@ -89,11 +89,12 @@ function simplexCircumcenter(vertices) {
   const offset = origin.map((_, axis) => edges.reduce((sum, edge, index) => sum + weights[index] * edge[axis], 0));
   const center = origin.map((value, axis) => value + offset[axis]);
   const barycentric = [1 - weights.reduce((sum, value) => sum + value, 0), ...weights];
-  if (barycentric.some((weight) => weight < -1e-8 || weight > 1 + 1e-8)) return null;
+  if (requireInterior && barycentric.some((weight) => weight < -1e-8 || weight > 1 + 1e-8)) return null;
   return center;
 }
 
-function witnessedEmptyCenters(positions, dimension, maximumAnchors, neighborLimit, anchorIndices = null) {
+function witnessedEmptyCenters(positions, dimension, maximumAnchors, neighborLimit,
+  anchorIndices = null, requireInterior = true) {
   const candidates = [];
   (anchorIndices || canonicalAnchors(positions, maximumAnchors)).forEach((anchor) => {
     const ordered = positions.map((point, index) => ({ index, distance2: index === anchor
@@ -104,7 +105,7 @@ function witnessedEmptyCenters(positions, dimension, maximumAnchors, neighborLim
       .map((record) => record.index);
     combinations(neighbors, dimension).forEach((others) => {
       const vertices = [anchor, ...others];
-      const center = simplexCircumcenter(vertices.map((index) => positions[index]));
+      const center = simplexCircumcenter(vertices.map((index) => positions[index]), requireInterior);
       if (!center) return;
       const radius2 = squaredDistance(center, positions[anchor]);
       const minimumDistance2 = Math.min(...positions.map((point) => squaredDistance(center, point)));
@@ -157,6 +158,211 @@ function segmentMinimumSiteClearance(first, second, positions, frameworkRadii = 
     minimum = Math.min(minimum, Math.sqrt(squaredDistance(point, closest)) - (frameworkRadii?.[index] || 0));
   });
   return minimum;
+}
+
+function imageOffsets(periodicAxes, radius = 1) {
+  const offsets = [];
+  const build = (prefix = []) => {
+    if (prefix.length === 3) { offsets.push(prefix); return; }
+    const axis = prefix.length;
+    if (!periodicAxes[axis]) { build([...prefix, 0]); return; }
+    for (let value = -radius; value <= radius; value++) build([...prefix, value]);
+  };
+  build();
+  return offsets.sort((first, second) => first.reduce((sum, value) => sum + Math.abs(value), 0)
+    - second.reduce((sum, value) => sum + Math.abs(value), 0)
+    || first.join(",").localeCompare(second.join(",")));
+}
+
+function translatedPoint(point, cellVectors, image) {
+  return point.map((value, axis) => value + cellVectors.reduce((sum, vector, cellAxis) =>
+    sum + vector[axis] * image[cellAxis], 0));
+}
+
+function fractionalCoordinate(point, cellVectors) {
+  return solveLinear(point.map((_, axis) => cellVectors.map((vector) => vector[axis])), point);
+}
+
+function vectorRank(vectors) {
+  const basis = [];
+  vectors.forEach((vector) => {
+    const reduced = [...vector];
+    basis.forEach((entry) => {
+      const denominator = entry.reduce((sum, value) => sum + value * value, 0);
+      const projection = reduced.reduce((sum, value, axis) => sum + value * entry[axis], 0) / denominator;
+      entry.forEach((value, axis) => { reduced[axis] -= projection * value; });
+    });
+    if (Math.sqrt(reduced.reduce((sum, value) => sum + value * value, 0)) > 1e-8) basis.push(reduced);
+  });
+  return basis.length;
+}
+
+function periodicGraphAudit(nodeCount, edges, admittedNodes = null, admittedEdges = null) {
+  const nodes = admittedNodes || new Set(Array.from({ length: nodeCount }, (_, index) => index));
+  const selectedEdges = admittedEdges || edges.filter((edge) => nodes.has(edge.first) && nodes.has(edge.second));
+  const adjacency = Array.from({ length: nodeCount }, () => []);
+  selectedEdges.forEach((edge) => {
+    adjacency[edge.first].push({ node: edge.second, shift: edge.imageShift });
+    adjacency[edge.second].push({ node: edge.first, shift: edge.imageShift.map((value) => -value) });
+  });
+  const visited = new Set();
+  const components = [];
+  nodes.forEach((start) => {
+    if (visited.has(start)) return;
+    const queue = [start];
+    const potentials = new Map([[start, [0, 0, 0]]]);
+    const componentNodes = [];
+    const windingVectors = [];
+    visited.add(start);
+    while (queue.length) {
+      const node = queue.shift();
+      componentNodes.push(node);
+      adjacency[node].forEach((neighbor) => {
+        const expected = potentials.get(node).map((value, axis) => value + neighbor.shift[axis]);
+        if (!potentials.has(neighbor.node)) {
+          potentials.set(neighbor.node, expected); visited.add(neighbor.node); queue.push(neighbor.node);
+        } else {
+          const winding = expected.map((value, axis) => value - potentials.get(neighbor.node)[axis]);
+          if (winding.some((value) => value !== 0)) windingVectors.push(winding);
+        }
+      });
+    }
+    const uniqueWinding = [...new Map(windingVectors.map((vector) => {
+      const sign = vector.find((value) => value !== 0) < 0 ? -1 : 1;
+      const canonical = vector.map((value) => value * sign);
+      return [canonical.join(","), canonical];
+    })).values()].sort((first, second) => first.join(",").localeCompare(second.join(",")));
+    components.push({ nodes: componentNodes.sort((a, b) => a - b), nodeCount: componentNodes.length,
+      windingVectors: uniqueWinding, windingRank: vectorRank(uniqueWinding),
+      percolatingAxes: [0, 1, 2].filter((axis) => uniqueWinding.some((vector) => vector[axis] !== 0)) });
+  });
+  components.sort((first, second) => second.nodeCount - first.nodeCount || second.windingRank - first.windingRank);
+  const windingVectors = [...new Map(components.flatMap((component) => component.windingVectors)
+    .map((vector) => [vector.join(","), vector])).values()];
+  return { componentCount: components.length, largestComponentNodes: components[0]?.nodeCount || 0,
+    windingVectors, windingRank: vectorRank(windingVectors),
+    percolatingAxes: [0, 1, 2].filter((axis) => windingVectors.some((vector) => vector[axis] !== 0)), components };
+}
+
+function periodicWitnessedSummary(positions, dimension, maximumAnchors, neighborLimit,
+  declaredThreshold, frameworkRadii, cellVectors, periodicAxes) {
+  if (dimension !== 3 || cellVectors?.length !== 3 || !periodicAxes?.some(Boolean)) return null;
+  const determinant = determinant3(cellVectors.map((_, axis) => cellVectors.map((vector) => vector[axis])));
+  if (Math.abs(determinant) < 1e-10) return null;
+  const offsets = imageOffsets(periodicAxes);
+  const extended = [];
+  offsets.forEach((image) => positions.forEach((point, site) => extended.push({
+    point: translatedPoint(point, cellVectors, image), site, image,
+    radius: frameworkRadii?.[site] || 0,
+  })));
+  const extendedPositions = extended.map((record) => record.point);
+  const anchors = canonicalAnchors(positions, maximumAnchors);
+  const rawCenters = witnessedEmptyCenters(extendedPositions, dimension, maximumAnchors, neighborLimit, anchors, false);
+  const centerFraction = fractionalCoordinate(centroid(positions), cellVectors);
+  const quotient = new Map();
+  rawCenters.forEach((record) => {
+    const fractional = fractionalCoordinate(record.center, cellVectors);
+    const image = fractional.map((value, axis) => periodicAxes[axis]
+      ? Math.floor(value - centerFraction[axis] + .5) : 0);
+    const center = translatedPoint(record.center, cellVectors, image.map((value) => -value));
+    const key = center.map((value) => Math.round(value * 1e6)).join(",");
+    if (!quotient.has(key)) quotient.set(key, { center, clearances: [], simplices: [] });
+    const target = quotient.get(key);
+    target.clearances.push(record.clearance);
+    record.simplices.forEach((simplex) => target.simplices.push(simplex.map((extendedIndex) => ({
+      site: extended[extendedIndex].site,
+      image: extended[extendedIndex].image.map((value, axis) => value - image[axis]),
+    }))));
+  });
+  const centers = [...quotient.values()].map((record) => ({ center: record.center,
+    clearance: record.clearances.reduce((sum, value) => sum + value, 0) / record.clearances.length,
+    simplices: [...new Map(record.simplices.map((simplex) => [simplex.map((site) =>
+      `${site.site}@${site.image.join(",")}`).sort().join("|"), simplex])).values()] }))
+    .sort((first, second) => first.center.join(",").localeCompare(second.center.join(",")));
+  const structureCenter = centroid(positions);
+  const maximumStructureRadius = Math.max(1e-12, ...centers.map((record) =>
+    Math.sqrt(squaredDistance(record.center, structureCenter))));
+  const records = centers.map((record) => ({ clearance: record.clearance,
+    stericClearance: frameworkRadii ? Math.min(...extended.map((site) =>
+      Math.sqrt(squaredDistance(record.center, site.point)) - site.radius)) : null,
+    normalizedRadius: Math.sqrt(squaredDistance(record.center, structureCenter)) / maximumStructureRadius }));
+  const faceBuckets = new Map();
+  centers.forEach((center, centerIndex) => center.simplices.forEach((simplex) =>
+    combinations(simplex, dimension).forEach((face) => offsets.forEach((shift) => {
+      const faceKey = face.map((record) => `${record.site}@${record.image
+        .map((value, axis) => value + shift[axis]).join(",")}`).sort().join("|");
+      if (!faceBuckets.has(faceKey)) faceBuckets.set(faceKey, new Map());
+      faceBuckets.get(faceKey).set(`${centerIndex}:${shift.join(",")}`,
+        { center: centerIndex, shift: [...shift] });
+    }))));
+  const edgeMap = new Map();
+  faceBuckets.forEach((bucket) => {
+    const witnesses = [...bucket.values()];
+    for (let firstWitness = 0; firstWitness < witnesses.length; firstWitness++) {
+      for (let secondWitness = firstWitness + 1; secondWitness < witnesses.length; secondWitness++) {
+        let first = witnesses[firstWitness].center;
+        let second = witnesses[secondWitness].center;
+        let imageShift = witnesses[secondWitness].shift.map((value, axis) =>
+          value - witnesses[firstWitness].shift[axis]);
+        if (first > second) {
+          [first, second] = [second, first]; imageShift = imageShift.map((value) => -value);
+        }
+        if (first === second && imageShift.every((value) => value === 0)) continue;
+        if (first === second && imageShift.find((value) => value !== 0) < 0) imageShift = imageShift.map((value) => -value);
+        const key = `${first}:${second}:${imageShift.join(",")}`;
+        if (edgeMap.has(key)) continue;
+      const secondCenter = translatedPoint(centers[second].center, cellVectors, imageShift);
+      const throatClearance = segmentMinimumSiteClearance(centers[first].center, secondCenter, extendedPositions);
+      const stericThroatClearance = frameworkRadii ? segmentMinimumSiteClearance(centers[first].center,
+        secondCenter, extendedPositions, extended.map((record) => record.radius)) : null;
+        edgeMap.set(key, { first, second, imageShift: [...imageShift], sharedSiteCount: dimension,
+        throatClearance, stericThroatClearance,
+        throatToEndpointRatio: Math.max(0, Math.min(1, throatClearance
+          / Math.max(1e-12, Math.min(records[first].clearance, records[second].clearance)))) });
+      }
+    }
+  });
+  const edges = [...edgeMap.values()];
+  const pointAudit = (threshold) => periodicGraphAudit(centers.length, edges,
+    new Set(records.map((record, index) => record.clearance >= threshold ? index : -1).filter((index) => index >= 0)),
+    edges.filter((edge) => edge.throatClearance >= threshold
+      && records[edge.first].clearance >= threshold && records[edge.second].clearance >= threshold));
+  const stericAudit = (threshold) => periodicGraphAudit(centers.length, edges,
+    new Set(records.map((record, index) => record.stericClearance >= threshold ? index : -1).filter((index) => index >= 0)),
+    edges.filter((edge) => edge.stericThroatClearance >= threshold
+      && records[edge.first].stericClearance >= threshold && records[edge.second].stericClearance >= threshold));
+  const full = periodicGraphAudit(centers.length, edges);
+  const threshold = pointAudit(declaredThreshold);
+  const capacities = [...new Set([...records.map((record) => record.clearance),
+    ...edges.map((edge) => edge.throatClearance)])].sort((first, second) => second - first);
+  const stericCapacities = frameworkRadii ? [...new Set([...records.map((record) => record.stericClearance),
+    ...edges.map((edge) => edge.stericThroatClearance)])].sort((first, second) => second - first) : [];
+  const widest = capacities.find((value) => pointAudit(value).windingRank > 0) ?? null;
+  const widestSteric = stericCapacities.find((value) => stericAudit(value).windingRank > 0) ?? null;
+  return { candidateCenters: centers.length, radialRecords: records,
+    medianClearance: quantile(records.map((record) => record.clearance), .5),
+    percentile90Clearance: quantile(records.map((record) => record.clearance), .9),
+    maximumClearance: records.length ? Math.max(...records.map((record) => record.clearance)) : null,
+    network: { nodeCount: centers.length, edgeCount: edges.length,
+      wrappedEdgeCount: edges.filter((edge) => edge.imageShift.some((value) => value !== 0)).length,
+      periodicAxes: [...periodicAxes], edges, ...full,
+      thresholdNodeCount: records.filter((record) => record.clearance >= declaredThreshold).length,
+      thresholdEdgeCount: edges.filter((edge) => edge.throatClearance >= declaredThreshold
+        && records[edge.first].clearance >= declaredThreshold && records[edge.second].clearance >= declaredThreshold).length,
+      thresholdComponentCount: threshold.componentCount,
+      thresholdLargestComponentNodes: threshold.largestComponentNodes,
+      thresholdWindingRank: threshold.windingRank,
+      thresholdPercolatingAxes: threshold.percolatingAxes,
+      widestPeriodicClearance: widest,
+      widestStericPeriodicClearance: widestSteric,
+      minimumThroatClearance: edges.length ? Math.min(...edges.map((edge) => edge.throatClearance)) : null,
+      medianThroatClearance: quantile(edges.map((edge) => edge.throatClearance), .5),
+      medianStericThroatClearance: frameworkRadii
+        ? quantile(edges.map((edge) => edge.stericThroatClearance), .5) : null,
+      adjacencyDefinition: "two quotient empty centers are adjacent only when lifted witnessed tetrahedra share a complete three-site face",
+      windingDefinition: "nonzero integer cell translation accumulated around a closed lifted-graph cycle",
+    },
+    periodicQuotient: true, imageRange: 1, targetUsed: false };
 }
 
 function emptyCenterNetwork(centers, radialRecords, dimension, positions, declaredThreshold, frameworkRadii) {
@@ -320,6 +526,7 @@ export function interstitialClearanceAudit(currentPositions, referencePositions,
   histogramMaximum = 1.5, declaredThreshold = .5, currentSpecies = null,
   referenceSpecies = null, covalentRadiiAngstrom = null,
   physicalNearestNeighborAngstrom = null,
+  periodicCellVectorsAngstrom = null, periodicAxes = null, includePeriodicReference = false,
 } = {}) {
   const resolvedDimension = dimension === 2 ? 2 : 3;
   const minimumSites = resolvedDimension + 2;
@@ -345,6 +552,12 @@ export function interstitialClearanceAudit(currentPositions, referencePositions,
     neighborLimit, histogramBins, histogramMaximum, declaredThreshold, currentFrameworkRadii);
   const reference = summarize(normalize(referencePositions), resolvedDimension, maximumAnchors,
     neighborLimit, histogramBins, histogramMaximum, declaredThreshold, referenceFrameworkRadii);
+  const normalizedPeriodicCell = Array.isArray(periodicCellVectorsAngstrom)
+    && periodicCellVectorsAngstrom.length === 3
+    ? periodicCellVectorsAngstrom.map((vector) => vector.map((value) => value / radiusNormalizationScale)) : null;
+  const referencePeriodic = includePeriodicReference ? periodicWitnessedSummary(normalize(referencePositions),
+    resolvedDimension, maximumAnchors, neighborLimit, declaredThreshold, referenceFrameworkRadii,
+    normalizedPeriodicCell, periodicAxes) : null;
   if (!current.candidateCenters || !reference.candidateCenters) return {
     available: false, reason: "no nondegenerate locally witnessed empty simplex centers were resolved",
     dimension: resolvedDimension, currentCandidateCenters: current.candidateCenters,
@@ -364,9 +577,13 @@ export function interstitialClearanceAudit(currentPositions, referencePositions,
     histogramOverflowIncludedInLastBin: true,
     ...current,
     reference,
+    referencePeriodic,
     clearanceDefinition: "empty circumcircle/circumsphere center clearance divided by supplied median nearest-neighbor distance",
     candidateDefinition: "nondegenerate local simplices from an invariant radial anchor sample and its nearest-neighbor tie set; center retained only inside the simplex and empty of explicit sites",
     finiteObservationNoPeriodicImages: true,
+    periodicReferenceQuotientAvailable: Boolean(referencePeriodic),
+    periodicReferenceUsesReportedCellOnly: Boolean(referencePeriodic),
+    periodicCurrentGrowthWrapped: false,
     pointSitesNoAtomicRadii: true,
     covalentRadiusStericModelAvailable: Boolean(currentFrameworkRadii && referenceFrameworkRadii),
     covalentRadiusNormalizationScaleAngstrom: currentFrameworkRadii && referenceFrameworkRadii

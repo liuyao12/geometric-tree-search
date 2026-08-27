@@ -58,15 +58,15 @@ def test_measure_is_finite_invariant_and_not_a_bulk_claim():
     assert "not mass density, porosity, thermodynamic free volume" in HTML
 
 
-def test_build_241_is_exposed():
-    assert 'buildId: "20260827-241"' in APP
-    assert 'app.js?v=20260827-241' in HTML
-    assert 'style.css?v=20260827-241' in HTML
+def test_build_242_is_exposed():
+    assert 'buildId: "20260827-242"' in APP
+    assert 'app.js?v=20260827-242' in HTML
+    assert 'style.css?v=20260827-242' in HTML
     assert 'local-packing-density.js?v=20260827-2' in APP
 
 
 if __name__ == "__main__":
     test_pathway_is_visible_and_leap_linked()
     test_measure_is_finite_invariant_and_not_a_bulk_claim()
-    test_build_241_is_exposed()
+    test_build_242_is_exposed()
     print("local packing pathway contract passed")

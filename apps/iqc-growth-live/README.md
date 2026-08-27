@@ -19,6 +19,18 @@ the GCTS anatomy view explains covers, oriented ports, markings, search, and
 promotion; and the claim ledger keeps proved, measured, and open results visibly
 separate. Its numbers are frozen benchmark results, not recomputed browser demos.
 
+Build 242 adds an opt-in **periodic input-quotient interstitial network**. A
+reported three-dimensional cell is lifted through its neighboring periodic
+images, empty circumsphere centers are quotiented back into the supplied cell,
+and graph edges retain the exact integer image translation of their
+shared-three-site-face witness. Closed lifted-graph cycles now produce an
+auditable cell-winding vector, rank, and percolating lattice axes; the widest
+winding path is evaluated with either point sites or the Build 241 covalent
+envelope. The original finite live-growth graph remains available and generated
+atoms outside the observation cell are never wrapped. Cell winding proves
+periodic geometric connectivity only—not accessible porosity, a diffusion
+network, migration energy, permeability, kinetics, or physical time.
+
 Build 241 adds an opt-in **species-resolved steric envelope** to the witnessed
 interstitial graph. The point-site graph remains intact as the exact baseline;
 the new view subtracts explicit element-only covalent radii from every node and

@@ -13,6 +13,31 @@ amplification is `b > 1`, a level-`L` accepted macro placement represents
 approximately `b^L` atoms.  Materializing or exporting `N` atomic coordinates
 still has an unavoidable `O(N)` cost and must be reported separately.
 
+### Periodic input-quotient interstitial network (Build 242)
+
+For a supplied three-dimensional periodic cell, the interstitial audit may now
+construct a separate periodic reference quotient. It creates neighboring cell
+images, resolves empty tetrahedral circumspheres without the finite view's
+unnecessary inside-simplex restriction, and quotients coincident centers back
+into the reported cell. Two quotient nodes are adjacent only when lifted
+tetrahedra share an exact three-site face. Every edge stores the integer image
+translation needed to lift its child center.
+
+A component is called geometrically periodic only when a closed graph walk
+accumulates a nonzero integer cell translation. The certificate reports the
+independent winding rank, lattice axes touched by winding cycles, thresholded
+winding rank, wrapped-edge count, and widest point- or covalent-envelope
+winding bottleneck. A simple-cubic regression gives 64 quotient centers, 192
+face-witnessed edges, 48 wrapped edges, rank-three winding, and an exact
+point-site bottleneck of `sqrt(1/2)` nearest-neighbor units; the certificate is
+invariant under translation, proper rotation, and atom permutation.
+
+This mode is intentionally restricted to the supplied input quotient. The live
+grown cloud remains a finite explicit structure and atoms beyond the observed
+cell are never folded back into it. Cell winding is a topological/geometric
+statement, not accessible porosity, probe transport, hopping, a migration
+barrier, permeability, diffusion, a rate, or elapsed time.
+
 ### Species-resolved steric-envelope hypothesis (Build 241)
 
 The interstitial pathway now preserves two explicitly separate geometries. The

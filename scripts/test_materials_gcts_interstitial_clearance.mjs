@@ -51,6 +51,45 @@ assert.equal(displayScaledSteric.covalentRadiusNormalizationScaleAngstrom, 1);
 assert.ok(Math.abs(steric.network.medianStericThroatClearance
   - displayScaledSteric.network.medianStericThroatClearance) < 1e-10);
 
+const periodicCube = [];
+for (let x = -1.5; x <= 1.5; x++) for (let y = -1.5; y <= 1.5; y++) {
+  for (let z = -1.5; z <= 1.5; z++) periodicCube.push([x, y, z]);
+}
+const periodicSpecies = periodicCube.map(() => "C");
+const periodic = interstitialClearanceAudit(periodicCube, periodicCube, { maximumAnchors: 32,
+  currentSpecies: periodicSpecies, referenceSpecies: periodicSpecies, covalentRadiiAngstrom: { C: .2 },
+  physicalNearestNeighborAngstrom: 1, periodicCellVectorsAngstrom: [[4, 0, 0], [0, 4, 0], [0, 0, 4]],
+  periodicAxes: [true, true, true], includePeriodicReference: true });
+const periodicRigid = interstitialClearanceAudit(periodicCube.map(rigid).reverse(), periodicCube.map(rigid).reverse(), {
+  maximumAnchors: 32, currentSpecies: [...periodicSpecies].reverse(), referenceSpecies: [...periodicSpecies].reverse(),
+  covalentRadiiAngstrom: { C: .2 }, physicalNearestNeighborAngstrom: 1,
+  periodicCellVectorsAngstrom: [[0, 4, 0], [-4, 0, 0], [0, 0, 4]], periodicAxes: [true, true, true],
+  includePeriodicReference: true,
+});
+assert.equal(periodic.periodicReferenceQuotientAvailable, true);
+assert.equal(periodic.referencePeriodic.candidateCenters, 64);
+assert.equal(periodic.referencePeriodic.network.edgeCount, 192);
+assert.equal(periodic.referencePeriodic.network.wrappedEdgeCount, 48);
+assert.equal(periodic.referencePeriodic.network.windingRank, 3);
+assert.deepEqual(periodic.referencePeriodic.network.percolatingAxes, [0, 1, 2]);
+assert.equal(periodic.referencePeriodic.network.thresholdWindingRank, 3);
+assert.ok(Math.abs(periodic.referencePeriodic.network.widestPeriodicClearance - Math.SQRT1_2) < 1e-10);
+for (const key of ["candidateCenters"]) assert.equal(periodic.referencePeriodic[key], periodicRigid.referencePeriodic[key]);
+for (const key of ["edgeCount", "wrappedEdgeCount", "windingRank", "thresholdWindingRank"]) {
+  assert.equal(periodic.referencePeriodic.network[key], periodicRigid.referencePeriodic.network[key]);
+}
+assert.deepEqual(periodic.referencePeriodic.network.percolatingAxes,
+  periodicRigid.referencePeriodic.network.percolatingAxes);
+const periodicClosed = interstitialClearanceAudit(periodicCube, periodicCube, { maximumAnchors: 32,
+  physicalNearestNeighborAngstrom: 1, periodicCellVectorsAngstrom: [[4, 0, 0], [0, 4, 0], [0, 0, 4]],
+  periodicAxes: [true, true, true], includePeriodicReference: true, declaredThreshold: .8 });
+assert.equal(periodicClosed.referencePeriodic.network.thresholdWindingRank, 0);
+const periodicOneAxis = interstitialClearanceAudit(periodicCube, periodicCube, { maximumAnchors: 32,
+  physicalNearestNeighborAngstrom: 1, periodicCellVectorsAngstrom: [[4, 0, 0], [0, 4, 0], [0, 0, 4]],
+  periodicAxes: [true, false, false], includePeriodicReference: true });
+assert.equal(periodicOneAxis.referencePeriodic.network.windingRank, 1);
+assert.deepEqual(periodicOneAxis.referencePeriodic.network.percolatingAxes, [0]);
+
 const expanded = cubic.map(([x, y, z]) => [1.2 * x, 1.2 * y, 1.2 * z]);
 const expandedAudit = interstitialClearanceAudit(expanded, cubic, { maximumAnchors: 32 });
 assert.ok(expandedAudit.medianClearance > baseline.medianClearance);

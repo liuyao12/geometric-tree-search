@@ -53,15 +53,15 @@ def test_pathway_cannot_be_misread_as_thermodynamics_or_kinetics():
     assert "not chemical potential, phase equilibrium, diffusion, flux, or physical time" in HTML
 
 
-def test_build_241_is_exposed():
-    assert 'buildId: "20260827-241"' in APP
-    assert 'app.js?v=20260827-241' in HTML
-    assert 'style.css?v=20260827-241' in HTML
+def test_build_242_is_exposed():
+    assert 'buildId: "20260827-242"' in APP
+    assert 'app.js?v=20260827-242' in HTML
+    assert 'style.css?v=20260827-242' in HTML
 
 
 if __name__ == "__main__":
     test_pathway_is_species_resolved_and_leap_linked()
     test_arbitrary_species_counts_and_reservoirs_remain_explicit()
     test_pathway_cannot_be_misread_as_thermodynamics_or_kinetics()
-    test_build_241_is_exposed()
+    test_build_242_is_exposed()
     print("stoichiometry pathway contract passed")

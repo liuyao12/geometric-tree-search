@@ -1735,6 +1735,10 @@ body.study-guide-open { overflow: hidden; }
 .marking-capacity-audit article strong { font: 700 .7rem/1.2 var(--mono); }
 .marking-capacity-audit > p { margin: .5rem 0 0; line-height: 1.42; }
 
+@media (min-width: 721px) {
+  .void-steric-controls { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
 @media (max-width: 720px) {
   .marking-capacity-audit article { grid-template-columns: repeat(2, 1fr); }
   .marking-consequence-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Contract for the finite interstitial-clearance pathway."""
+"""Contract for finite and periodic interstitial-clearance pathways."""
 
 from pathlib import Path
 
@@ -18,7 +18,7 @@ def test_pathway_is_visible_leap_linked_and_receipted():
         "voidClearanceBoundary",
         "voidNetworkState", "voidNetworkFilters", "voidNetworkReadout",
         "voidThroatThreshold", "voidThroatThresholdValue",
-        "voidRadiusModel", "voidProbeSpecies",
+        "voidRadiusModel", "voidProbeSpecies", "voidTopologyMode",
     ):
         assert f'id="{element_id}"' in HTML
         assert f'$("{element_id}")' in APP
@@ -30,6 +30,7 @@ def test_pathway_is_visible_leap_linked_and_receipted():
         'id: "void-throat", group: "mesoscale"', "selectedThroatThreshold:",
         'id: "void-steric", group: "mesoscale"', "selectedFrameworkRadiusModel:",
         "selectedProbeSpecies:", "optionalFrameworkEnvelope:",
+        "selectedNetworkDomain:", "periodicReferenceCertificate:",
         "networkRule:", "throatRule:", "graphCarriesSegmentClearance: true",
         "function thresholdedVoidNetwork",
         "renderVoidClearancePathway();",
@@ -54,6 +55,9 @@ def test_geometry_is_dimension_aware_invariant_and_fails_closed():
         "stericThroatClearance", "widestStericCoreToFrontClearance",
         "covalentRadiusStericModelAvailable", "Cordero et al.",
         "covalentRadiusStericUniformCoordinateScalingInvariant: false",
+        "periodicWitnessedSummary", "periodicGraphAudit", "wrappedEdgeCount",
+        "windingVectors", "windingRank", "percolatingAxes",
+        "periodicReferenceQuotientAvailable", "periodicCurrentGrowthWrapped: false",
         "finiteObservationNoPeriodicImages: true", "pointSitesNoAtomicRadii: true",
         "translationInvariant: true", "properRotationInvariant: true",
         "atomPermutationInvariant: true", "targetUsed: false", "usedAsGrowthInput: false",
@@ -72,19 +76,19 @@ def test_pathway_cannot_be_misread_as_porosity_or_transport():
     ):
         assert phrase in APP
         assert phrase in MODULE
-    assert "not accessible porosity, physical transport" in HTML
+    assert "Neither view is accessible porosity, physical transport" in HTML
 
 
-def test_build_241_is_exposed():
-    assert 'buildId: "20260827-241"' in APP
-    assert 'app.js?v=20260827-241' in HTML
-    assert 'style.css?v=20260827-241' in HTML
-    assert 'interstitial-clearance.js?v=20260827-7' in APP
+def test_build_242_is_exposed():
+    assert 'buildId: "20260827-242"' in APP
+    assert 'app.js?v=20260827-242' in HTML
+    assert 'style.css?v=20260827-242' in HTML
+    assert 'interstitial-clearance.js?v=20260827-8' in APP
 
 
 if __name__ == "__main__":
     test_pathway_is_visible_leap_linked_and_receipted()
     test_geometry_is_dimension_aware_invariant_and_fails_closed()
     test_pathway_cannot_be_misread_as_porosity_or_transport()
-    test_build_241_is_exposed()
+    test_build_242_is_exposed()
     print("interstitial clearance pathway contract passed")
