@@ -103,7 +103,50 @@ export function isProductA2Prism(cells) {
   return signatures.every(signature => signature === signatures[0]);
 }
 
-export function enumerateA2LayeredPolyprisms({ size, includeProduct = false } = {}) {
+export function describeA2LayeredPolyprism(cells) {
+  const normalized = normalizeCells(cells);
+  const layers = new Map();
+  for (const cell of normalized) {
+    if (!layers.has(cell.k)) layers.set(cell.k, []);
+    layers.get(cell.k).push(`${cell.q},${cell.r},${cell.kind}`);
+  }
+  const layerIndices = [...layers.keys()].sort((left, right) => left - right);
+  const signatures = layerIndices.map(layer => layers.get(layer).sort().join(";"));
+  const layerProfile = layerIndices.map(layer => layers.get(layer).length);
+  const occupied = new Set(normalized.map(cellKey));
+  let verticalContacts = 0;
+  let lateralContacts = 0;
+  for (const cell of normalized) {
+    if (occupied.has(cellKey({ ...cell, k: cell.k + 1 }))) verticalContacts += 1;
+    for (const neighbor of a2LayeredCellNeighbors(cell)) {
+      if (neighbor.k !== cell.k || !occupied.has(cellKey(neighbor))) continue;
+      if (cellKey(cell) < cellKey(neighbor)) lateralContacts += 1;
+    }
+  }
+  const productPrism = isProductA2Prism(normalized);
+  return Object.freeze({
+    layer_count: layerIndices.length,
+    layer_span: layerIndices.length ? layerIndices.at(-1) - layerIndices[0] + 1 : 0,
+    layer_profile: Object.freeze(layerProfile),
+    distinct_cross_sections: new Set(signatures).size,
+    cross_section_changes: signatures.slice(1)
+      .filter((signature, index) => signature !== signatures[index]).length,
+    vertical_contacts: verticalContacts,
+    lateral_contacts: lateralContacts,
+    product_prism: productPrism,
+    // This is the focused research family: the tile crosses two internal A2
+    // interfaces and changes cross-section, so the layer foliation is an
+    // essential part of its combinatorics rather than merely an extrusion.
+    layer_essential: layerIndices.length >= 3 && !productPrism
+  });
+}
+
+export function enumerateA2LayeredPolyprisms({
+  size,
+  includeProduct = false,
+  layerEssentialOnly = false,
+  minLayerCount = 1
+} = {}) {
   const target = Math.max(1, Math.floor(Number(size) || 1));
   let current = new Map();
   const seed = canonicalA2LayeredPolyprism([{ q: 0, r: 0, k: 0, kind: "u" }]);
@@ -121,8 +164,13 @@ export function enumerateA2LayeredPolyprisms({ size, includeProduct = false } = 
     current = next;
   }
   return [...current.entries()]
-    .map(([key, cells]) => ({ key, cells, product_prism: isProductA2Prism(cells) }))
+    .map(([key, cells]) => {
+      const morphology = describeA2LayeredPolyprism(cells);
+      return { key, cells, product_prism: morphology.product_prism, morphology };
+    })
     .filter(candidate => includeProduct || !candidate.product_prism)
+    .filter(candidate => candidate.morphology.layer_count >= Math.max(1, minLayerCount))
+    .filter(candidate => !layerEssentialOnly || candidate.morphology.layer_essential)
     .sort((left, right) => left.key.localeCompare(right.key));
 }
 

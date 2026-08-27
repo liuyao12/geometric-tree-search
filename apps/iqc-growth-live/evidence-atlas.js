@@ -1,5 +1,5 @@
 import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js";
-import { A2_LAYERED_SIZE7_CANDIDATES } from "../../assets/a2-layered-size7-candidates.js?v=20260827-3";
+import { A2_LAYERED_SIZE7_CANDIDATES } from "../../assets/a2-layered-size7-candidates.js?v=20260827-4";
 
 const byId = (id) => document.getElementById(id);
 
@@ -449,7 +449,7 @@ function renderA2Candidate(candidateId = A2_CANDIDATES[0].id) {
     <header><span>${candidate.id}</span><strong>${screen.status}</strong></header>
     <h4>${candidate.name}</h4>
     <div><span><small>root corona</small><b>${screen.corona_root_patch_copies} copies</b></span><span><small>root placements</small><b>${screen.corona_root_placements_considered.toLocaleString()}</b></span><span><small>replayed blockers</small><b>${screen.corona2_gcts_sound_clauses}</b></span><span><small>smallest replayed core</small><b>${screen.corona2_gcts_smallest_certified_core} placements</b></span><span><small>new blockers after round 32</small><b>${screen.corona2_gcts_new_clauses_long_run}</b></span><span><small>CEGAR continuation</small><b>${(screen.corona2_gcts_milliseconds / 1000).toFixed(1)} s</b></span></div>
-    <p>${screen.corona2_first_states_rejected} explicitly sampled first coronas fail to complete. Scalar substitutions at scales ${screen.substitution_scalar_scales_excluded[0]}–${screen.substitution_scalar_scales_excluded.at(-1)} and ${screen.substitution_anisotropic_inflations_excluded} anisotropic scale pairs are independently excluded. The unsampled outer-corona remainder keeps the classification <b>unresolved</b>.</p>`;
+    <p>${screen.corona2_first_states_rejected} explicitly sampled first coronas fail to complete. Exact eight-copy periodic screening has independently rejected ${screen.periodic_eight_copy_orbits_checked}/${screen.periodic_eight_copy_orbit_total} symmetry-orbit representatives with ${screen.periodic_eight_copy_solver_unknowns} unknowns. Scalar substitutions at scales ${screen.substitution_scalar_scales_excluded[0]}–${screen.substitution_scalar_scales_excluded.at(-1)} and ${screen.substitution_anisotropic_inflations_excluded} anisotropic scale pairs are independently excluded. The unsampled periodic and outer-corona remainder keeps the classification <b>unresolved</b>.</p>`;
 }
 
 function renderA2Explorer() {

@@ -265,6 +265,12 @@ ever reports infeasible without a completed, independently verified proof, the
 runner records an unknown rather than aborting the shard or counting a
 negative.
 
+Long runs should also pass `--checkpoint-directory`. After every orbit solve,
+the runner atomically writes one merge-compatible NDJSON report named by the
+candidate and zero-based orbit index. A later timeout, interruption, or hard
+proof therefore cannot erase earlier verified receipts; completed consecutive
+ranges are combined by `scripts/merge-a2-layered-periodic-scip.py`.
+
 This certificate is deliberately checked against the GCTS-I definition, not
 against Euclidean polyhedral volume. Eight visible prisms have Euclidean volume
 84 while the integer period determinant is 28, so an ordinary solid-space
@@ -390,6 +396,45 @@ Thus connected mixed metatiles through four copies are now excluded at scalar
 inflation 2. This still does not exclude connected clusters of five or more
 monotiles or non-scalar metatile inflations, and it is not a non-tiling proof
 for any of the eight candidates.
+
+## Layer-essential size-eight pivot
+
+The primary census now favors non-polycubic shapes whose combinatorics
+actually use the foliation by `x+y+z=3k`. A shape is called *layer-essential*
+when it occupies at least three consecutive elementary A2 slabs and is not a
+constant-cross-section product prism. The generator records its layer count,
+layer profile, number of distinct cross-sections, cross-section changes, and
+lateral/vertical contact counts. These are selection metadata, not tiling
+invariants or aperiodicity claims.
+
+There are 4,940 symmetry-distinct size-eight layer-essential shapes. Exact
+weighted HNF screening finds independently replayed one-copy periodic
+quotients for 4,529. Of the remaining 411, another 405 have two-copy periodic
+quotients. All six survivors exhaust every three-copy quotient (455 HNF
+bases, zero unknowns). Two then have four-copy quotients; the final four—
+`a2lp_8_02131`, `a2lp_8_02151`, `a2lp_8_03411`, and `a2lp_8_04836`—exhaust
+all 651 four-copy and 1,085 five-copy bases with zero solver unknowns. The
+five-copy sparse multicover searches visit 4,561,662 exact states in total.
+
+A longer first-corona pass finds independently replayed radius-one witnesses
+of 24, 29, and 30 copies for `02131`, `02151`, and `03411`. The `04836`
+instance remains undecided after its 120-second solver limit; that timeout is
+not an obstruction or a non-tiling certificate. The retained report is
+`data/a2-layered-size8-essential-corona1-long.ndjson`.
+
+These four are now the leading web-catalogue candidates. They are exact only
+through five copies: larger periodic domains, corona extension, and
+substitution rules remain open. The staged machine-readable reports are
+`data/a2-layered-size8-essential-periodic-exact1.ndjson` through
+`data/a2-layered-size8-essential-periodic-exact5.ndjson`.
+
+Rebuild the focused census with:
+
+```bash
+node scripts/export-a2-layered-polyprism-census.mjs \
+  --size=8 --layer-essential=true \
+  --output=data/a2-layered-size8-essential-census.ndjson
+```
 
 The machine-readable screen is `data/a2-layered-size5-screen.ndjson`. Rebuild
 it with:

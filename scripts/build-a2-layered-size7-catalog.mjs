@@ -30,9 +30,19 @@ const periodicSixToEight = (await Promise.all([1, 2, 3].map(part =>
 const periodicExactSix = (await Promise.all([
   "00128", "00211", "00232", "00235", "00694", "00755", "00777", "00809"
 ].map(id => readNdjson(`data/a2-layered-size7-periodic-exact6-a2lp_7_${id}.ndjson`)))).flat();
-const periodicExactEightWitnesses = await readNdjson(
-  "data/a2-layered-size7-periodic-exact8-a2lp_7_00694-witness.ndjson"
-);
+const periodicExactEightReportPaths = new Map([
+  ["a2lp_7_00128", "data/a2-layered-size7-periodic-exact8-a2lp_7_00128-orbits0to11.ndjson"],
+  ["a2lp_7_00211", "data/a2-layered-size7-periodic-exact8-a2lp_7_00211-orbits0to3.ndjson"],
+  ["a2lp_7_00232", "data/a2-layered-size7-periodic-exact8-a2lp_7_00232-orbits0to3.ndjson"],
+  ["a2lp_7_00235", "data/a2-layered-size7-periodic-exact8-a2lp_7_00235-orbits0to3.ndjson"],
+  ["a2lp_7_00694", "data/a2-layered-size7-periodic-exact8-a2lp_7_00694-witness.ndjson"],
+  ["a2lp_7_00755", "data/a2-layered-size7-periodic-exact8-a2lp_7_00755-orbits0to11.ndjson"],
+  ["a2lp_7_00777", "data/a2-layered-size7-periodic-exact8-a2lp_7_00777-orbits0to11.ndjson"],
+  ["a2lp_7_00809", "data/a2-layered-size7-periodic-exact8-a2lp_7_00809-orbits0to11.ndjson"]
+]);
+const periodicExactEightReports = (await Promise.all(
+  [...periodicExactEightReportPaths.values()].map(readNdjson)
+)).flat();
 const substitutions = new Map();
 for (const scale of [2, 3, 4, 5, 6]) {
   for (const record of await readNdjson(`data/a2-layered-size7-substitution-scale${scale}-focused.ndjson`)) {
@@ -99,7 +109,7 @@ const coreLonger128ById = byId(coreLonger128);
 const minimizedCoreById = byId(minimizedCores);
 const periodicSixToEightById = byId(periodicSixToEight);
 const periodicExactSixById = byId(periodicExactSix);
-const periodicExactEightById = byId(periodicExactEightWitnesses);
+const periodicExactEightById = byId(periodicExactEightReports);
 // The proof backend enumerates the six proper A2 isometries as
 // + cyclic permutations followed by - odd permutations.  Prototile3D keeps
 // the same normalized shapes in its matrix enumeration order.  The shift is
@@ -219,6 +229,16 @@ const candidates = selected.map((id, index) => {
         : null,
       periodic_eight_copy_replay_verified:
         exactEight?.periodic_exact_scip?.replay?.verified ?? false,
+      periodic_eight_copy_orbits_checked:
+        exactEight?.periodic_exact_scip?.orbit_representatives_visited ?? 0,
+      periodic_eight_copy_orbit_total:
+        exactEight?.periodic_exact_scip?.hnf_orbit_total ?? 384,
+      periodic_eight_copy_hnfs_covered:
+        exactEight?.periodic_exact_scip?.hnf_covered ?? 0,
+      periodic_eight_copy_solver_unknowns:
+        exactEight?.periodic_exact_scip?.solver_unknown ?? 0,
+      periodic_eight_copy_complete:
+        exactEight?.periodic_exact_scip?.certified_no_periodic_quotient ?? false,
       motif_tiles: exactEightCertificate?.copies ?? null,
       substitution_scalar_scales_excluded: substitutionScreens
         .filter(record => record.substitution_classification === "no_scalar_substitution_at_scale")
@@ -278,9 +298,7 @@ const candidates = selected.map((id, index) => {
         : largerPeriodic
           ? "data/a2-layered-size7-periodic-z3-focus6to8-part*.ndjson"
           : null,
-      periodic_eight_copy_report: exactEightCertificate
-        ? `data/a2-layered-size7-periodic-exact8-${id}-witness.ndjson`
-        : null,
+      periodic_eight_copy_report: periodicExactEightReportPaths.get(id) ?? null,
       substitution_reports: substitutionScreens.map(record =>
         `data/a2-layered-size7-substitution-scale${record.substitution.scale}-focused.ndjson`
       ),

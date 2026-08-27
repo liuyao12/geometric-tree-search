@@ -20,7 +20,7 @@ def main() -> None:
     css = (APP / "style.css").read_text()
 
     for needle, label in (
-        ('from "../../assets/a2-layered-size7-candidates.js?v=20260827-3"', "generated candidate import"),
+        ('from "../../assets/a2-layered-size7-candidates.js?v=20260827-4"', "generated candidate import"),
         ('short: "A₂ corona"', "A2 system"),
         ('["historical family blockers", "1,113"]', "exact blocker total"),
         ('["Claim boundary", "7 unresolved · 1 periodic"', "updated classification boundary"),
@@ -48,7 +48,7 @@ def main() -> None:
     require(root_html, '<base href="../apps/iqc-growth-live/">', "root-level asset base")
     require(root_html, "Seven unresolved candidates after one eight-copy periodic witness",
             "root-level current A2 classification")
-    require(root_html, './evidence-atlas.js?v=20260827-21', "root-level atlas cache version")
+    require(root_html, './evidence-atlas.js?v=20260827-22', "root-level atlas cache version")
 
     expected = {
         "a2lp_7_00128": (130, 7),

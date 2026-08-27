@@ -8,7 +8,8 @@ import { LATTICE_POLYHEDRON_GCTS_EXAMPLES } from "../../assets/lattice-polyhedro
 import { POLYCUBE_GCTS_CANDIDATES } from "../../assets/polycube-census-candidates.js?v=20260824-volume10-v78";
 import { A2_LAYERED_PRISM_SPECS, makeA2LayeredPrism } from "../../assets/a2-layered-prisms.js";
 import { makeA2LayeredPolyprism } from "../../assets/a2-layered-polyprisms.js";
-import { A2_LAYERED_SIZE7_CANDIDATES } from "../../assets/a2-layered-size7-candidates.js?v=20260827-2";
+import { A2_LAYERED_SIZE7_CANDIDATES } from "../../assets/a2-layered-size7-candidates.js?v=20260827-4";
+import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
 import { normalizeProposalProgram } from "./proposal-learner.js";
 
 export const GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES = 5;
@@ -8526,7 +8527,7 @@ export const tileSpecs = (() => {
         geometryModel: spec.geometry_model
       }))]
     }])),
-    ...Object.fromEntries(A2_LAYERED_SIZE7_CANDIDATES.map(candidate => [candidate.registry_id, {
+    ...Object.fromEntries([...A2_LAYERED_SIZE8_CANDIDATES, ...A2_LAYERED_SIZE7_CANDIDATES].map(candidate => [candidate.registry_id, {
       name: candidate.name,
       category: [candidate.screening.status === "periodic"
         ? "GCTS Periodic Controls"
@@ -8538,7 +8539,7 @@ export const tileSpecs = (() => {
         top_layer: 3 * (Math.max(...candidate.cells.map(cell => cell.k)) + 1),
         role: candidate.screening.status === "periodic"
           ? "eight-copy periodic benchmark"
-          : "multi-layer exact-through-six candidate"
+          : `multi-layer exact-through-${candidate.screening.periodic_exact_through} candidate`
       },
       build: () => [make_tile(candidate.name, makeA2LayeredPolyprism(candidate.cells))]
     }])),

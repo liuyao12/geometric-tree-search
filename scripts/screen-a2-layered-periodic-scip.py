@@ -308,7 +308,63 @@ def solve_quotient(record, hnf_record, copies, tools, timeout_seconds, proof_dir
     return result
 
 
-def screen_candidate(record, args, tools):
+def orbit_checkpoint_report(record, solved, copies, determinant, orbit_index,
+                            hnf_total, orbit_total, milliseconds, tools):
+    covered = len(solved["orbit_member_indices"])
+    if solved["result"] == "sat":
+        return {
+            **record, "classification": "periodic",
+            "periodic_exact_scip": {
+                "certificate": solved["certificate"],
+                "replay": solved["replay"],
+                "orbit_range": [orbit_index, orbit_index + 1],
+                "orbit_representatives_visited": 1,
+                "hnf_covered": covered,
+                "hnf_total": hnf_total,
+                "hnf_orbit_total": orbit_total,
+                "proof_receipts": [],
+                "milliseconds": milliseconds,
+                "tools": tools,
+            },
+        }
+    receipt = []
+    if solved["result"] == "unsat":
+        receipt.append({
+            **solved["proof"],
+            "hnf_index": solved["hnf_index"],
+            "hnf": solved["hnf"],
+            "orbit_size": covered,
+            "eligible_placements": solved["eligible_placements"],
+        })
+    return {
+        **record, "classification": "unresolved",
+        "periodic_exact_scip": {
+            "copies": copies,
+            "determinant": determinant,
+            "certified_no_periodic_quotient": False,
+            "orbit_range": [orbit_index, orbit_index + 1],
+            "orbit_representatives_visited": 1,
+            "hnf_covered": covered,
+            "hnf_total": hnf_total,
+            "hnf_orbit_total": orbit_total,
+            "solver_unknown": int(solved["result"] == "unknown"),
+            "proof_receipts": receipt,
+            "milliseconds": milliseconds,
+            "tools": tools,
+        },
+    }
+
+
+def write_orbit_checkpoint(directory: Path, report: dict, orbit_index: int):
+    directory.mkdir(parents=True, exist_ok=True)
+    path = directory / f"{report['id']}-orbit{orbit_index:04d}.ndjson"
+    temporary = path.with_suffix(path.suffix + ".tmp")
+    temporary.write_text(json.dumps(report, separators=(",", ":")) + "\n")
+    temporary.replace(path)
+    return path
+
+
+def screen_candidate(record, args, tools, identities):
     occupancy = GEOMETRY.tile_occupancy(record["cells"])
     numerator = sum(occupancy.values()) * args.copies
     if numerator % 48:
@@ -324,10 +380,20 @@ def screen_candidate(record, args, tools):
     covered = 0
     unknown = 0
     for local_index, orbit in enumerate(all_orbits[start:stop], start + 1):
+        orbit_started = time.monotonic()
         solved = solve_quotient(
             record, orbit, args.copies, tools, args.hnf_timeout_seconds,
             args.proof_directory or None,
         )
+        checkpoint = orbit_checkpoint_report(
+            record, solved, args.copies, determinant, local_index - 1,
+            len(GEOMETRY.hnf_candidates(determinant)), len(all_orbits),
+            round((time.monotonic() - orbit_started) * 1000), identities,
+        )
+        if args.checkpoint_directory:
+            write_orbit_checkpoint(
+                Path(args.checkpoint_directory), checkpoint, local_index - 1
+            )
         covered += len(orbit["member_indices"])
         if solved["result"] == "sat":
             return {
@@ -391,6 +457,7 @@ def main():
     parser.add_argument("--orbit-stop", type=int, default=0)
     parser.add_argument("--progress-every", type=int, default=1)
     parser.add_argument("--proof-directory", default="")
+    parser.add_argument("--checkpoint-directory", default="")
     args = parser.parse_args()
     if args.copies < 1:
         parser.error("copies must be positive")
@@ -413,7 +480,7 @@ def main():
     output.write_text("")
     with output.open("a") as stream:
         for index, record in enumerate(records, 1):
-            result = screen_candidate(record, args, tools)
+            result = screen_candidate(record, args, tools, identities)
             result["periodic_exact_scip"]["tools"] = identities
             stream.write(json.dumps(result, separators=(",", ":")) + "\n")
             stream.flush()

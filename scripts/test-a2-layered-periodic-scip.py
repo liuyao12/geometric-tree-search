@@ -93,6 +93,31 @@ with gzip.open(compressed_path, "rb") as stream:
 assert digest.hexdigest() == receipt["vipr_sha256"]
 assert uncompressed_bytes == receipt["vipr_bytes"]
 
+with tempfile.TemporaryDirectory() as checkpoint_directory:
+    checkpoint = MODULE.orbit_checkpoint_report(
+        record,
+        {
+            "result": "unsat",
+            "proof": {key: value for key, value in receipt.items() if key not in {
+                "hnf_index", "hnf", "orbit_size", "eligible_placements",
+                "mps_path", "compressed_vipr_path", "compressed_vipr_sha256",
+            }},
+            "hnf_index": receipt["hnf_index"],
+            "hnf": receipt["hnf"],
+            "orbit_member_indices": orbits[0]["member_indices"],
+            "eligible_placements": receipt["eligible_placements"],
+        },
+        8, 28, 0, 1995, 384, 123, screen["tools"],
+    )
+    checkpoint_path = MODULE.write_orbit_checkpoint(
+        Path(checkpoint_directory), checkpoint, 0
+    )
+    reloaded_checkpoint = json.loads(checkpoint_path.read_text())
+    assert reloaded_checkpoint["periodic_exact_scip"]["orbit_range"] == [0, 1]
+    assert reloaded_checkpoint["periodic_exact_scip"]["solver_unknown"] == 0
+    assert len(reloaded_checkpoint["periodic_exact_scip"]["proof_receipts"]) == 1
+    assert not checkpoint_path.with_suffix(checkpoint_path.suffix + ".tmp").exists()
+
 merged = MERGE_MODULE.merge([
     ROOT / "data" / "a2-layered-size7-periodic-exact8-a2lp_7_00128-orbit0.ndjson",
     ROOT / "data" / "a2-layered-size7-periodic-exact8-a2lp_7_00128-orbits1to3.ndjson",
@@ -104,6 +129,17 @@ assert merged_screen["hnf_covered"] == 21
 assert len(merged_screen["proof_receipts"]) == 4
 assert len(merged_screen["range_receipts"]) == 2
 assert merged_screen["certified_no_periodic_quotient"] is False
+
+longer_merged = json.loads((
+    ROOT / "data" / "a2-layered-size7-periodic-exact8-a2lp_7_00128-orbits0to11.ndjson"
+).read_text())
+longer_screen = longer_merged["periodic_exact_scip"]
+assert longer_screen["orbit_range"] == [0, 12]
+assert longer_screen["orbit_representatives_visited"] == 12
+assert longer_screen["hnf_covered"] == 63
+assert longer_screen["solver_unknown"] == 0
+assert len(longer_screen["proof_receipts"]) == 12
+assert longer_screen["certified_no_periodic_quotient"] is False
 
 periodic = json.loads((
     ROOT / "data" / "a2-layered-size7-periodic-exact8-a2lp_7_00694-witness.ndjson"
