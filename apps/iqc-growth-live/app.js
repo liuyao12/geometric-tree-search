@@ -850,6 +850,8 @@ const STRUCTURAL_RELAXATION_MODES = Object.freeze({
   gentle: Object.freeze({ label: "gentle", displacementFraction: .025, iterations: 6 }),
   balanced: Object.freeze({ label: "balanced", displacementFraction: .05, iterations: 12 }),
   strong: Object.freeze({ label: "strong", displacementFraction: .08, iterations: 20 }),
+  observed: Object.freeze({ label: "observed-vector seed", displacementFraction: .05,
+    iterations: 12, observedSeed: true }),
 });
 const RDF_BINS = 38;
 const RDF_MAX_RADIUS = 4.2;
@@ -1533,6 +1535,7 @@ let importedStructure = null;
 let importedFrameIndex = 0;
 let ensembleEvidenceMode = "all";
 let relaxationLocalEnvironmentCache = null;
+let relaxationDisplacementCache = null;
 let relaxationGeometryCalibrationCache = null;
 let relaxationCalibrationMetricMode = "energy";
 let relaxationCalibrationReferenceMode = "final";
@@ -2142,7 +2145,7 @@ function importedTrajectoryFrames() {
   return importedStructure?.frames?.length ? importedStructure.frames : importedStructure ? [importedStructure] : [];
 }
 
-function relaxationDisplacementField() {
+function computeRelaxationDisplacementField() {
   if (scenarioSelect.value !== "imported") return null;
   const frames = importedTrajectoryFrames();
   if (!(importedStructure?.metadata?.relaxationSequence?.available && frames.length > 1)
@@ -2186,7 +2189,7 @@ function relaxationDisplacementField() {
   const maximum = (key) => Math.max(0, ...records.map((record) => record[key].length()));
   const sourceVolume = sourceContext?.matrix ? Math.abs(sourceContext.matrix.determinant()) : null;
   const targetVolume = targetContext?.matrix ? Math.abs(targetContext.matrix.determinant()) : null;
-  return {
+  const result = {
     sourceFrameIndex: importedFrameIndex,
     targetFrameIndex: frames.length - 1,
     records,
@@ -2198,6 +2201,18 @@ function relaxationDisplacementField() {
       ? "final-cell affine deformation at fixed fractional coordinates + minimum-image fractional rearrangement"
       : "direct Cartesian rearrangement; no periodic cell deformation available",
   };
+  result.bySourceIndex = new Map(records.map((record) => [record.sourceIndex, record]));
+  return result;
+}
+
+function relaxationDisplacementField() {
+  if (relaxationDisplacementCache?.structure === importedStructure
+      && relaxationDisplacementCache.frameIndex === importedFrameIndex) {
+    return relaxationDisplacementCache.result;
+  }
+  const result = computeRelaxationDisplacementField();
+  relaxationDisplacementCache = { structure: importedStructure, frameIndex: importedFrameIndex, result };
+  return result;
 }
 
 function relaxationLocalEnvironmentField() {
@@ -4682,6 +4697,14 @@ function copyPlacedScalarSpin(atom, site) {
   atom.scalarSpinColorTransported = Number.isFinite(scalar);
 }
 
+function copyPlacedObservedRelaxation(atom, site) {
+  if (!site.observedRelaxationWorldScene?.isVector3) return;
+  atom.observedRelaxationWorldScene = site.observedRelaxationWorldScene.clone();
+  atom.observedRelaxationTemplateReferenceIndex = Number.isInteger(site.referenceIndex)
+    ? site.referenceIndex : null;
+  atom.observedRelaxationTransported = true;
+}
+
 function medianNearestSpacing(source) {
   if (source.length < 2) return 1;
   const nearest = source.map((atom, index) => {
@@ -4722,12 +4745,21 @@ function atomDisplacementTensorAngstrom2(atom) {
 function templateSiteFromReference(source, atomIndex, local, localFrameInverse, center = false) {
   const atom = source[atomIndex];
   const tensor = atomDisplacementTensorAngstrom2(atom);
+  const relaxationRecord = relaxationDisplacementField()?.bySourceIndex?.get(atom.sourceIndex);
+  const observedRelaxationLocalScene = relaxationRecord?.nonAffine?.isVector3
+    ? relaxationRecord.nonAffine.clone()
+      .multiplyScalar(referenceSpacing / Math.max(referenceSpacingA, 1e-12))
+      .applyQuaternion(localFrameInverse) : null;
   return {
     local,
     species: atom.species,
     center,
     referenceIndex: atomIndex,
     calculationSpin: Number.isFinite(atom.calculationSpin) ? atom.calculationSpin : null,
+    observedRelaxationLocalScene,
+    observedRelaxationSourceFrameIndex: relaxationRecord ? importedFrameIndex : null,
+    observedRelaxationTargetFrameIndex: relaxationRecord
+      ? importedTrajectoryFrames().length - 1 : null,
     uAnisoLocalA2: tensor ? rotateDisplacementTensor(tensor, localFrameInverse.toArray()) : null,
     displacementTensorSource: tensor ? (Array.isArray(atom.uAnisoCartesianA2) ? "reported Uij" : "reported Uiso") : null,
   };
@@ -8538,6 +8570,28 @@ function drawClusterCardScalarSpins(context, projected) {
   }
 }
 
+function drawClusterCardObservedRelaxation(context, projected, quaternion, scaleToScene) {
+  if (!relaxationDisplacementToggle.checked || !relaxationDisplacementField()) return;
+  let drawn = 0;
+  projected.forEach((point) => {
+    const record = relaxationDisplacementField().bySourceIndex?.get(point.atom.sourceIndex);
+    if (!record?.nonAffine?.isVector3 || record.nonAffine.lengthSq() <= 1e-16) return;
+    const delta = record.nonAffine.clone().multiplyScalar(scaleToScene).applyQuaternion(quaternion);
+    const screenScale = 28 * point.perspective;
+    const endX = point.x + delta.x * screenScale;
+    const endY = point.y - delta.y * screenScale;
+    context.save(); context.beginPath(); context.moveTo(point.x, point.y); context.lineTo(endX, endY);
+    context.strokeStyle = "rgba(101,225,188,.88)"; context.lineWidth = 1.3; context.stroke();
+    context.beginPath(); context.arc(endX, endY, 1.8, 0, TAU); context.fillStyle = "rgba(101,225,188,.95)";
+    context.fill(); context.restore(); drawn++;
+  });
+  if (drawn) {
+    context.save(); context.font = "9px ui-monospace, SFMono-Regular, Menlo, monospace";
+    context.fillStyle = "rgba(101,225,188,.82)";
+    context.fillText(`observed Δr · ${drawn}`, 8, 36); context.restore();
+  }
+}
+
 function drawClusterCardMarking(context, canvas, cluster, galleryIndex, quaternion) {
   if (pipelineStage !== 3 || !sectionModel || cluster.residual) return;
   const prototype = cluster.familyType ?? galleryIndex;
@@ -8636,6 +8690,7 @@ function drawClusterGallery(now) {
     });
     drawClusterCardDisplacementEllipses(context, projected, quaternion, scaleToScene);
     drawClusterCardScalarSpins(context, projected);
+    drawClusterCardObservedRelaxation(context, projected, quaternion, scaleToScene);
     projected.sort((first, second) => first.z - second.z).forEach((point) => {
       const record = elementRecord(point.atom.species);
       const radius = 7.4 * point.perspective * Math.min(1.12, record.radius / 1.3);
@@ -9915,7 +9970,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-250",
+      buildId: "20260827-251",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -10332,6 +10387,7 @@ async function buildExperimentReceipt() {
           .reduce((sum, record) => sum + record.directionalSigmaObservations, 0),
         clusterPoseTensorTransport: displacementTensorTransportAudit(),
         collinearSpinColorTransport: scalarSpinColorTransportAudit(),
+        observedRelaxationVectorTransport: observedRelaxationTransportAudit(),
         growthHardContactRule: "each candidate pair recomputes one-sigma support along its live connecting direction",
         missingLiveTensorFallback: "frozen learned scalar pair exclusion",
         independentSiteCovarianceAssumed: true,
@@ -12149,7 +12205,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-250" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-251" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -15063,6 +15119,36 @@ function scalarSpinColorTransportAudit() {
   };
 }
 
+function observedRelaxationTransportAudit() {
+  const field = relaxationDisplacementField();
+  const templates = overlapGrammar?.templates || [];
+  const rules = overlapGrammar?.rules || [];
+  return {
+    available: Boolean(field?.records?.length),
+    mode: structuralRelaxationMode,
+    sourceFrameIndex: field?.sourceFrameIndex ?? null,
+    targetFrameIndex: field?.targetFrameIndex ?? null,
+    referenceVectorSites: field?.records?.filter((record) => record.nonAffine.lengthSq() > 1e-16).length || 0,
+    templateLocalVectorSites: templates.reduce((sum, template) => sum
+      + (template.sites || []).filter((site) => site.observedRelaxationLocalScene?.isVector3).length, 0),
+    ruleLocalVectorSites: rules.reduce((sum, rule) => sum
+      + (rule.sites || []).filter((site) => site.observedRelaxationLocalScene?.isVector3).length, 0),
+    placedTransportedVectorSites: atoms.filter((atom) => atom.observedRelaxationTransported).length,
+    currentCandidateVectorSites: currentCandidates.reduce((sum, candidate) => sum
+      + (candidate.relaxationSites?.length || 0), 0),
+    properPoseTransport: "delta_r_world = R_cluster delta_r_local",
+    selectedToFinalNonAffineRmsAngstrom: field?.nonAffineRmsAngstrom ?? null,
+    selectedToFinalNonAffineMaximumAngstrom: field?.nonAffineMaximumAngstrom ?? null,
+    usedToSeedProjection: structuralRelaxationSpec().observedSeed === true,
+    latestSeedSites: lastStructuralRelaxation?.observedRelaxationSeedSites || 0,
+    latestSeedAccepted: Boolean(lastStructuralRelaxation?.observedRelaxationSeedAccepted),
+    worseningSeedIgnored: true,
+    copiedAsForce: false,
+    physicalTimeModeled: false,
+    targetUsed: false,
+  };
+}
+
 function referenceIndexForSite(site, context = scenePeriodicContext()) {
   let bestIndex = -1;
   let bestDistance2 = MERGE_TOLERANCE ** 2;
@@ -17204,7 +17290,8 @@ function capturePolicyComparison(entries) {
       preview: winner ? { p: winner.entry.candidate.position.clone(),
         rotation: winner.entry.candidate.rotation.clone(), type: winner.entry.candidate.type,
         displacementSites: candidateDisplacementSites(winner.entry.evaluation.sites),
-        spinSites: candidateScalarSpinSites(winner.entry.evaluation.sites) } : null,
+        spinSites: candidateScalarSpinSites(winner.entry.evaluation.sites),
+        relaxationSites: candidateObservedRelaxationSites(winner.entry.evaluation.sites) } : null,
     };
   });
   if (!policies.every((policy) => policy.scoreDecompositionExact)) {
@@ -17250,7 +17337,8 @@ function capturePolicyComparison(entries) {
       fullSites: entry.evaluation.sites.map((site) => ({ species: site.species, p: site.p.clone() })),
       preview: { p: entry.candidate.position.clone(), rotation: entry.candidate.rotation.clone(),
         type: entry.candidate.type, displacementSites: candidateDisplacementSites(entry.evaluation.sites),
-        spinSites: candidateScalarSpinSites(entry.evaluation.sites) },
+        spinSites: candidateScalarSpinSites(entry.evaluation.sites),
+        relaxationSites: candidateObservedRelaxationSites(entry.evaluation.sites) },
     };
   });
   const candidateDigest = frozenFrontierDigest(entries);
@@ -17296,6 +17384,10 @@ function candidateSites(candidate) {
     p: site.local.clone().applyQuaternion(candidate.rotation).add(candidate.position),
     calculationSpin: Number.isFinite(site.calculationSpin) ? site.calculationSpin : null,
     scalarSpinTemplateReferenceIndex: site.referenceIndex,
+    observedRelaxationWorldScene: site.observedRelaxationLocalScene?.clone()
+      .applyQuaternion(candidate.rotation) || null,
+    observedRelaxationSourceFrameIndex: site.observedRelaxationSourceFrameIndex,
+    observedRelaxationTargetFrameIndex: site.observedRelaxationTargetFrameIndex,
     uAnisoCartesianA2: site.uAnisoLocalA2
       ? rotateDisplacementTensor(site.uAnisoLocalA2, candidate.rotation.toArray()) : null,
     displacementTensorSource: site.displacementTensorSource,
@@ -17306,6 +17398,13 @@ function candidateSites(candidate) {
 function candidateScalarSpinSites(sites) {
   return sites.filter((site) => Number.isFinite(site.calculationSpin)).map((site) => ({
     p: site.p.clone(), species: site.species, calculationSpin: site.calculationSpin,
+  }));
+}
+
+function candidateObservedRelaxationSites(sites) {
+  return sites.filter((site) => site.observedRelaxationWorldScene?.isVector3).map((site) => ({
+    p: site.p.clone(), species: site.species,
+    vector: site.observedRelaxationWorldScene.clone(),
   }));
 }
 
@@ -17478,8 +17577,12 @@ function projectAcceptedBatchGeometry(freshAtomIds, authorized) {
   const input = localAtoms.map((atom) => ({
     species: atom.species, position: atom.p.toArray(), movable: movableIdSet.has(atom.id),
   }));
+  const observedOffsets = spec.observedSeed ? localAtoms.map((atom) => movableIdSet.has(atom.id)
+    && atom.observedRelaxationWorldScene?.isVector3
+    ? atom.observedRelaxationWorldScene.toArray() : [0, 0, 0]) : null;
   const proposal = relaxLocalContactGeometry(input, coloredDistanceEnvelopes, {
     displacementCap: cap, maximumIterations: spec.iterations,
+    initialOffsets: observedOffsets,
   });
   const proposedById = new Map(localAtoms.map((atom, index) => [atom.id,
     new THREE.Vector3(...proposal.positions[index])]));
@@ -17517,11 +17620,16 @@ function projectAcceptedBatchGeometry(freshAtomIds, authorized) {
     maximumDisplacementAngstrom: hardCompatible ? proposal.maximumDisplacement * sceneToAngstrom : 0,
     rmsDisplacementAngstrom: hardCompatible ? proposal.rmsDisplacement * sceneToAngstrom : 0,
     displacementCapAngstrom: cap * sceneToAngstrom,
+    observedRelaxationSeedEnabled: Boolean(spec.observedSeed),
+    observedRelaxationSeedSites: proposal.observedSeedSites || 0,
+    observedRelaxationSeedAccepted: Boolean(proposal.observedSeedAccepted && hardCompatible),
+    observedRelaxationSeedContactObjective: proposal.observedSeedContactObjective ?? null,
     contactAngleStrainDecreased: strainDecreased,
     hardExclusionPassed, coordinationCapacityPassed,
     angularEnvelopePassed, publicBoundaryPassed,
     exactClusterTopologyRetained: true, properPortTopologyRetained: true,
     targetUsed: false, physicalPotentialUsed: false, forceIntegrated: false,
+    archivedDisplacementCopiedAsForce: false,
     elapsedPhysicalTimeModeled: false,
   };
   if (hardCompatible) {
@@ -18985,6 +19093,7 @@ function initializeOffLatticeSearch() {
       const atom = existing || addAtom(site.p, site.species, `C${seedType + 1}`, null, true);
       atom.referenceIndex = site.referenceIndex;
       copyPlacedScalarSpin(atom, site);
+      copyPlacedObservedRelaxation(atom, site);
       if (!existing) copyPlacedDisplacementTensor(atom, site);
       atom.clusterIds ||= [];
       if (!atom.clusterIds.includes(seed.id)) atom.clusterIds.push(seed.id);
@@ -20513,6 +20622,12 @@ function syncStageOptions() {
   relaxationDisplacementToggleLabel.textContent = displacement
     ? `Selected → final non-affine displacement · RMS ${displacement.nonAffineRmsAngstrom.toFixed(3)} Å`
     : "Selected → final displacement · unavailable";
+  const observedRelaxationAvailable = Boolean(displacement?.records?.length);
+  const observedRelaxationOption = structuralRelaxationSelect.querySelector('option[value="observed"]');
+  observedRelaxationOption.disabled = !observedRelaxationAvailable;
+  if (structuralRelaxationMode === "observed" && !observedRelaxationAvailable) {
+    structuralRelaxationMode = "balanced";
+  }
   const localEnvironment = relaxationLocalEnvironmentField();
   relaxationLocalEnvironmentToggle.disabled = !localEnvironment;
   relaxationLocalEnvironmentMetric.disabled = !localEnvironment;
@@ -20652,10 +20767,12 @@ function syncStageOptions() {
     strainWeightSelect.value = String(geometricStrainWeight);
     structuralRelaxationSelect.value = structuralRelaxationMode;
     const relaxationSpec = STRUCTURAL_RELAXATION_MODES[structuralRelaxationMode];
-    structuralRelaxationHint.textContent = relaxationSpec.displacementFraction
-      ? `${Math.round(100 * relaxationSpec.displacementFraction)}% dₙₙ cap` : "exact coordinates";
+    structuralRelaxationHint.textContent = relaxationSpec.observedSeed
+      ? `archived vector seed · ${Math.round(100 * relaxationSpec.displacementFraction)}% dₙₙ cap`
+      : relaxationSpec.displacementFraction
+        ? `${Math.round(100 * relaxationSpec.displacementFraction)}% dₙₙ cap` : "exact coordinates";
     structuralRelaxationState.textContent = lastStructuralRelaxation
-      ? `${lastStructuralRelaxation.accepted ? "accepted" : "rolled back"} · ${lastStructuralRelaxation.movableSites} new sites · strain ${lastStructuralRelaxation.strainBefore.toFixed(3)} → ${lastStructuralRelaxation.strainAfter.toFixed(3)} · max Δ ${lastStructuralRelaxation.maximumDisplacementAngstrom.toFixed(3)} Å`
+      ? `${lastStructuralRelaxation.accepted ? "accepted" : "rolled back"} · ${lastStructuralRelaxation.movableSites} new sites · strain ${lastStructuralRelaxation.strainBefore.toFixed(3)} → ${lastStructuralRelaxation.strainAfter.toFixed(3)} · max Δ ${lastStructuralRelaxation.maximumDisplacementAngstrom.toFixed(3)} Å${lastStructuralRelaxation.observedRelaxationSeedEnabled ? ` · observed seed ${lastStructuralRelaxation.observedRelaxationSeedAccepted ? "retained" : "ignored / rolled back"} on ${lastStructuralRelaxation.observedRelaxationSeedSites} sites` : ""}`
       : relaxationSpec.displacementFraction
         ? "Ready after known-window replay; the full local projection rolls back unless every hard geometric certificate remains valid."
         : "Off: exact frozen-template coordinates are retained.";
@@ -20880,7 +20997,7 @@ function syncStageOptions() {
       : " No supplied scalar-spin color is available.";
     const relaxationUse = structuralRelaxationMode === "off"
       ? " Post-attachment projection is disabled; exact template coordinates are retained."
-      : ` After known-window replay, atoms newly emitted in one leap may move by at most ${Math.round(100 * structuralRelaxationSpec().displacementFraction)}% dₙₙ through ${structuralRelaxationSpec().iterations} deterministic contact-residual iterations. The whole projection rolls back unless full contact-angle strain decreases and every hard gate remains valid; this is not a force or MD step.`;
+      : ` After known-window replay, atoms newly emitted in one leap may move by at most ${Math.round(100 * structuralRelaxationSpec().displacementFraction)}% dₙₙ through ${structuralRelaxationSpec().iterations} deterministic contact-residual iterations.${structuralRelaxationSpec().observedSeed ? " The initial direction is the selected→final non-affine archive vector transported by the cluster proper pose; a worsening seed is ignored." : ""} The whole projection rolls back unless full contact-angle strain decreases and every hard gate remains valid; this is not a force or MD step.`;
     const ratio = Object.entries(compositionTarget.reducedRatio).map(([symbol, count]) => `${symbol}${count === 1 ? "" : count}`).join("");
     const compositionUse = compositionPreference === "none"
       ? " Composition drift is reported but contributes zero ranking weight."
@@ -21629,6 +21746,7 @@ function materializeCandidate(candidate, evaluation, leapCreationContext) {
     const atom = addAtom(site.p, site.species, `C${candidate.type + 1}`, nearestParent(site.p));
     if (Number.isInteger(site.referenceIndex)) atom.referenceIndex = site.referenceIndex;
     copyPlacedScalarSpin(atom, site);
+    copyPlacedObservedRelaxation(atom, site);
     copyPlacedDisplacementTensor(atom, site);
     atom.clusterIds = [placement.id];
     atom.nucleusIds = [placement.nucleusId];
@@ -21713,6 +21831,7 @@ function performOffLatticeEvent() {
     rotation: candidate.rotation.clone(), type: candidate.type,
     displacementSites: candidateDisplacementSites(evaluation.sites),
     spinSites: candidateScalarSpinSites(evaluation.sites),
+    relaxationSites: candidateObservedRelaxationSites(evaluation.sites),
     arrivalAxis: evaluation.arrivalPath.axis,
     arrivalSweepDistance: evaluation.arrivalPath.sweepDistanceSceneUnits,
     arrivalRoutePoints: evaluation.arrivalPath.selectedRoutePoints,
@@ -22800,6 +22919,26 @@ function rebuildWorld() {
       points.userData.transportedScalarSpinColors = true;
       decisionGroup.add(points);
     }
+    const relaxationSites = relaxationDisplacementToggle.checked
+      ? (candidate.relaxationSites || []).slice(0, 160) : [];
+    if (relaxationSites.length) {
+      const segments = [];
+      const endpoints = [];
+      relaxationSites.forEach((site) => {
+        if (!(site.vector?.isVector3 && site.vector.lengthSq() > 1e-16)) return;
+        const endpoint = site.p.clone().add(site.vector);
+        segments.push(site.p, endpoint); endpoints.push(endpoint);
+      });
+      if (segments.length) {
+        const lines = new THREE.LineSegments(new THREE.BufferGeometry().setFromPoints(segments),
+          new THREE.LineBasicMaterial({ color: COLORS.mint, transparent: true, opacity: .9,
+            depthTest: false }));
+        lines.userData.transportedObservedRelaxationVectors = true;
+        decisionGroup.add(lines);
+        decisionGroup.add(new THREE.Points(new THREE.BufferGeometry().setFromPoints(endpoints),
+          new THREE.PointsMaterial({ color: COLORS.mint, size: .08, depthTest: false })));
+      }
+    }
     if (candidateIndex < 12 && candidate.solutePartition?.enabled && candidate.solutePartition.species) {
       const ring = new THREE.Mesh(new THREE.TorusGeometry(.34, .018, 6, 28),
         new THREE.MeshBasicMaterial({ color: elementRecord(candidate.solutePartition.species).color,
@@ -23065,14 +23204,14 @@ function physicsTranslationRecords(leap = null) {
         ? `${spinGeometry.positiveSites} positive, ${spinGeometry.negativeSites} negative, ${spinGeometry.nearZeroSites} near-zero sites; ${spinGeometry.checkedPairs.toLocaleString()} finite-crop pairs; ${scalarSpinOverlapChecks.toLocaleString()} live colored overlaps checked and ${scalarSpinCompatibilityPrunes.toLocaleString()} pruned. Values are preserved in archive-native scalar units.`
         : "No collinear scalar spin geometry is available for this material.",
       boundary: "Scalar sign is an exact discrete site color, not a 3D vector direction. The schema does not guarantee a magnetic-moment unit or quantization axis. Equality at an overlap is not a spin Hamiltonian, exchange interaction, magnetic-domain solution, Curie/Néel temperature, spin dynamics, force, rate, or physical time; missing labels never authorize or reject geometry." },
-    { id: "relaxation-ensemble", process: "geometry-optimization path / structural variability", status: relaxation?.available ? "observed" : "unavailable", role: relaxation?.available ? "fixed-topology geometric ensemble" : "single structural state",
+    { id: "relaxation-ensemble", process: "geometry-optimization path / structural variability", status: relaxation?.available ? structuralRelaxationSpec().observedSeed ? "soft" : "observed" : "unavailable", role: relaxation?.available ? structuralRelaxationSpec().observedSeed ? "proper-pose transported projection seed" : "fixed-topology geometric ensemble" : "single structural state",
       encoding: relaxation?.available
-        ? `${relaxation.retainedFrameCount}/${relaxation.originalSystemCount} ordered NOMAD system/calculation snapshots; same-run relative energy, residual-force curves, and a variable-cell-safe selected-to-final affine/non-affine decomposition remain provenance channels`
+        ? `${relaxation.retainedFrameCount}/${relaxation.originalSystemCount} ordered NOMAD system/calculation snapshots; same-run relative energy, residual-force curves, and a variable-cell-safe selected-to-final affine/non-affine decomposition${structuralRelaxationSpec().observedSeed ? "; the non-affine vector is stored in each cluster-local frame and transported as delta_r_world=R_cluster delta_r_local before bounded projection" : " remain provenance channels"}`
         : "no ordered calculation sequence accompanies the active structure",
       evidence: relaxation?.available
         ? `${evidenceFrameCount()} frame${evidenceFrameCount() === 1 ? "" : "s"} currently supply geometric envelopes; the displayed frame alone supplies the cover, grammar, and growth seed.${relaxationDisplacement ? ` Selected → final non-affine RMS ${relaxationDisplacement.nonAffineRmsAngstrom.toFixed(3)} Å; affine RMS ${relaxationDisplacement.affineRmsAngstrom.toFixed(3)} Å${Number.isFinite(relaxationDisplacement.volumeChangeFraction) ? `; ΔV ${(100 * relaxationDisplacement.volumeChangeFraction).toFixed(2)}%` : ""}.` : ""}`
         : "No cross-frame structural variability is available.",
-      boundary: "The displacement field is a difference between archived structures, not a physical path. Archive order is not physical elapsed time. No velocity, integration step, optimizer clock, minimum-energy path, transition probability, or growth rate is inferred; energies are compared only within this one same-method archived sequence." },
+      boundary: "The displacement field is a difference between archived structures, not a force or physical path. Copying its local vector is an explicit rigid-environment hypothesis; a worsening seed is ignored and the entire projection rolls back on any failed certificate. Archive order is not elapsed time. No velocity, integration step, optimizer clock, minimum-energy path, transition probability, or growth rate is inferred; energies are compared only within this one same-method archived sequence." },
     { id: "geometry-calculation-calibration", process: "sample-relative geometry / external calculation association",
       status: relaxationGeometryCalibration ? "observed" : "unavailable",
       role: relaxationGeometryCalibration ? "descriptive final-frame-reference diagnostic" : "no paired geometry/calculation series",
@@ -23126,9 +23265,9 @@ function physicsTranslationRecords(leap = null) {
       role: lastStructuralRelaxation?.accepted ? "target-blind bounded coordinate projection" : structuralRelaxationMode === "off" ? "disabled" : "fail-closed projection attempt",
       encoding: structuralRelaxationMode === "off"
         ? "exact frozen-template coordinates; no post-attachment displacement"
-        : `${structuralRelaxationSpec().iterations} deterministic contact-residual iterations with total displacement capped at ${Math.round(100 * structuralRelaxationSpec().displacementFraction)}% dₙₙ and below half the exact merge tolerance; only atoms emitted in the current post-replay leap are movable`,
+        : `${structuralRelaxationSpec().iterations} deterministic contact-residual iterations with total displacement capped at ${Math.round(100 * structuralRelaxationSpec().displacementFraction)}% dₙₙ and below half the exact merge tolerance; only atoms emitted in the current post-replay leap are movable${structuralRelaxationSpec().observedSeed ? "; initial offsets are transported selected→final non-affine archive vectors and are retained only when the full bounded objective improves" : ""}`,
       evidence: lastStructuralRelaxation
-        ? `${lastStructuralRelaxation.accepted ? "Accepted" : "Rolled back"}: ${lastStructuralRelaxation.movableSites} movable / ${lastStructuralRelaxation.neighborhoodSites} local sites; strain ${lastStructuralRelaxation.strainBefore.toFixed(4)} → ${lastStructuralRelaxation.strainAfter.toFixed(4)}; max Δ ${lastStructuralRelaxation.maximumDisplacementAngstrom.toFixed(4)} Å. ${structuralRelaxationAccepted}/${structuralRelaxationAttempts} attempts accepted.`
+        ? `${lastStructuralRelaxation.accepted ? "Accepted" : "Rolled back"}: ${lastStructuralRelaxation.movableSites} movable / ${lastStructuralRelaxation.neighborhoodSites} local sites; strain ${lastStructuralRelaxation.strainBefore.toFixed(4)} → ${lastStructuralRelaxation.strainAfter.toFixed(4)}; max Δ ${lastStructuralRelaxation.maximumDisplacementAngstrom.toFixed(4)} Å.${lastStructuralRelaxation.observedRelaxationSeedEnabled ? ` Observed seed ${lastStructuralRelaxation.observedRelaxationSeedAccepted ? "retained" : "ignored or rolled back"} on ${lastStructuralRelaxation.observedRelaxationSeedSites} sites.` : ""} ${structuralRelaxationAccepted}/${structuralRelaxationAttempts} attempts accepted.`
         : "No post-replay attachment batch has requested a local projection yet.",
       boundary: "This minimizes a finite sample-learned geometric contact residual and then rechecks hard exclusion, coordination, angle, boundary, exact topology, and port identity. It is not an interatomic potential, force balance, energy minimization, mechanical equilibrium, MD trajectory, diffusion event, transition probability, or elapsed physical time." },
     { id: "connection", process: "cluster attachment preference", status: policySelect.value === "action" ? "open" : "learned", role: policySelect.value === "action" ? "ablated" : "learned local connection gate / rank",
@@ -27315,8 +27454,8 @@ function observationProvenanceRecords() {
         ? `${importedFrames.length} ordered structural snapshots with fixed species and atom ordering.${relaxation?.available ? ` Retained from ${relaxation.originalSystemCount} same-run NOMAD systems.` : ""}`
         : `${referenceCount()} species-labelled Cartesian sites in one observation window.`,
       transform: frames > 1 ? `${ensembleEvidenceMode === "all" ? "All frames pool" : "Only the displayed frame supplies"} contact, coordination, angle, and local pair-distance observations.${displacementField ? ` Selected → final geometry is additionally decomposed into affine cell deformation (RMS ${displacementField.affineRmsAngstrom.toFixed(3)} Å) and minimum-image non-affine rearrangement (RMS ${displacementField.nonAffineRmsAngstrom.toFixed(3)} Å).` : ""}${localEnvironmentField ? ` A ${localEnvironmentField.neighborCount}-neighbor best-affine fit localizes the residual as √D²min (p90 ${localEnvironmentField.percentile90RootD2MinAngstrom.toFixed(3)} Å).` : ""}` : "One frame supplies the finite structural evidence.",
-      use: `Growth starts from exactly one displayed frame${frames > 1 ? ` (${importedFrameIndex + 1}/${importedFrames.length})` : ""}; cross-frame atom pairs are never invented.`,
-      boundary: "Selected-to-final vectors compare two archived structures; they are not a trajectory. Snapshot order is not treated as physical time unless velocities, time steps, and calibrated temporal provenance are independently supplied; none are used here. Same-run energy differences and residual forces remain diagnostic provenance." },
+      use: `Growth starts from exactly one displayed frame${frames > 1 ? ` (${importedFrameIndex + 1}/${importedFrames.length})` : ""}; cross-frame atom pairs are never invented.${structuralRelaxationSpec().observedSeed && displacementField ? " In observed-vector mode, only the paired selected→final non-affine vector is stored in each local cluster frame and offered as a capped post-attachment projection seed." : ""}`,
+      boundary: "Selected-to-final vectors compare two archived structures; they are not a trajectory or force. Their optional reuse is a fail-closed local geometric hypothesis. Snapshot order is not treated as physical time unless velocities, time steps, and calibrated temporal provenance are independently supplied; none are used here. Same-run energy differences and residual forces remain diagnostic provenance." },
     { id: "uncertainty", short: "uncertainty", status: uncertainty > 0 ? "measured" : "nominal",
       value: uncertainty > 0 ? `${uncertainty.toFixed(3)} Å pair σ floor` : "no measured σ floor",
       observed: uncertainty > 0
@@ -27340,9 +27479,9 @@ function observationProvenanceRecords() {
     { id: "growth", short: "growth use", status: growthReady ? "active" : "pending",
       value: growthReady ? `${atoms.length} explicit sites · ${acceptedDecisions} accepted actions` : "not executed",
       observed: growthReady ? `${frontierCandidates.length} frozen frontier actions over the selected seed frame.` : "Growth waits for cluster and marking stages.",
-      transform: "Only species, positions, structural uncertainty-derived envelopes, learned ports, and configured geometry surrogates enter the search.",
+      transform: `Only species, positions, structural uncertainty-derived envelopes, learned ports, and configured geometry surrogates enter the search.${structuralRelaxationSpec().observedSeed && displacementField ? " After an action is chosen, its transported observed non-affine vectors may seed the bounded local constraint projection." : ""}`,
       use: growthReady ? "Whole exact cluster placements jump between certified structural states; the known target is not a branch feature." : "No branch has been ranked or committed.",
-      boundary: "Temperature, pressure, environment, snapshot ordering, forces, velocities, rates, and physical time remain outside execution." },
+      boundary: "Temperature, pressure, environment, snapshot ordering, residual forces, velocities, rates, and physical time remain outside execution. Optional archived displacement transport is a geometric difference reuse, not time integration." },
   ];
 }
 

@@ -19,6 +19,20 @@ the GCTS anatomy view explains covers, oriented ports, markings, search, and
 promotion; and the claim ledger keeps proved, measured, and open results visibly
 separate. Its numbers are frozen benchmark results, not recomputed browser demos.
 
+Build 251 adds the first archive-observed shortcut over a local relaxation
+process. For a fixed-topology selected→final NOMAD sequence, every site's
+minimum-image non-affine displacement is stored in its cluster-local frame and
+transported to a candidate as `Δrworld = Rcluster Δrlocal`. The new **Observed
+non-affine vector seed** mode offers that vector as the initial direction of the
+existing bounded post-attachment projection. It is capped at 5% of the nearest-
+neighbor distance, ignored if it worsens the full bounded objective, and the
+whole placement still rolls back unless contact+angle strain decreases and
+hard exclusion, coordination, angular, boundary, exact-topology, and port
+certificates all re-pass. Separate cluster scenes and the live frontier render
+the same transported vectors. This is reuse of a geometric difference between
+two archived configurations—not force integration, a trajectory, optimizer
+time, minimum-energy path, rate, or molecular dynamics.
+
 Build 250 makes supplied collinear scalar spin populations an optional finite
 site color instead of leaving them at the diagnostic boundary. Cluster
 identification remains geometry-and-chemistry based; during GCTS learning the

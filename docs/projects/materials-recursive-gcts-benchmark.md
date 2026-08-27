@@ -13,6 +13,28 @@ amplification is `b > 1`, a level-`L` accepted macro placement represents
 approximately `b^L` atoms.  Materializing or exporting `N` atomic coordinates
 still has an unavoidable `O(N)` cost and must be reported separately.
 
+### Proper-pose observed relaxation seeds (Build 251)
+
+The browser can now use a fixed-topology selected→final archive pair to
+leapfrog one local relaxation hypothesis. It decomposes variable-cell motion
+into affine cell deformation and minimum-image non-affine site displacement,
+stores each non-affine vector in the learned cluster's local proper frame, and
+transports it to a new candidate as `Δrworld = Rcluster Δrlocal`. An explicit
+post-attachment mode supplies these vectors as initial offsets to the bounded
+contact-residual projection. The total displacement remains capped at 5% of
+`dnn` and below half the exact merge tolerance. A seed that worsens the bounded
+contact+tether objective is discarded; any failed exclusion, coordination,
+angle, public-boundary, exact-cluster, or port certificate rolls back the whole
+projection. Receipts distinguish supplied, local-template, candidate,
+transported, retained, and rejected vectors.
+
+This is an observed geometric-difference reuse, not learned dynamics. The two
+frames do not establish a force law, velocity, physical time step, optimizer
+clock, minimum-energy path, barrier, transition probability, diffusion event,
+or growth rate. The copied vector is valid only as a declared rigid local-
+environment hypothesis, and the unchanged generic projection remains the
+control.
+
 ### Collinear scalar spin as an exact site color (Build 250)
 
 When a source calculation supplies per-site signed collinear spin populations,

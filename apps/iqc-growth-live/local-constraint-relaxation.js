@@ -75,6 +75,7 @@ export function relaxLocalContactGeometry(rawSites, distanceModel, {
   displacementCap,
   maximumIterations = 12,
   tetherWeight = .08,
+  initialOffsets = null,
 } = {}) {
   if (!Array.isArray(rawSites) || !rawSites.length) throw new Error("local relaxation requires sites");
   if (!(Number.isFinite(displacementCap) && displacementCap > 0)) throw new Error("local relaxation requires a positive displacement cap");
@@ -92,14 +93,30 @@ export function relaxLocalContactGeometry(rawSites, distanceModel, {
   if (!movable.some(Boolean)) return Object.freeze({ accepted: false, reason: "no movable sites", positions: sites.map((site) => site.position) });
   const graph = contactGraph(sites, distanceModel);
   const originals = sites.map((site) => [...site.position]);
-  let positions = originals.map((point) => [...point]);
+  const suppliedOffsets = Array.isArray(initialOffsets) && initialOffsets.length === sites.length
+    ? initialOffsets.map((offset, index) => {
+      if (!movable[index] || !Array.isArray(offset)) return [0, 0, 0];
+      const vector = offset.map(Number);
+      if (vector.length !== 3 || vector.some((value) => !Number.isFinite(value))) return [0, 0, 0];
+      const magnitude = length(vector);
+      return magnitude > displacementCap ? vector.map((value) => value * displacementCap / magnitude) : vector;
+    }) : sites.map(() => [0, 0, 0]);
+  let positions = originals.map((point, index) => addScaled(point, suppliedOffsets[index], 1));
   const initialContactObjective = contactObjective(positions, graph);
-  if (graph.length < 2 || !(initialContactObjective > 1e-12)) return Object.freeze({
+  const unseededContactObjective = contactObjective(originals, graph);
+  const unseededObjective = totalObjective(originals, originals, movable, graph, displacementCap, tetherWeight);
+  const seededObjective = totalObjective(positions, originals, movable, graph, displacementCap, tetherWeight);
+  const seedImprovedObjective = seededObjective < unseededObjective - 1e-12;
+  if (!seedImprovedObjective) positions = originals.map((point) => [...point]);
+  const seedSites = suppliedOffsets.filter((offset) => length(offset) > 1e-12).length;
+  if (graph.length < 2 || !(unseededContactObjective > 1e-12)) return Object.freeze({
     accepted: false, reason: graph.length < 2 ? "insufficient learned contacts" : "already contact-compatible",
-    positions, contactTerms: graph.length, initialContactObjective, finalContactObjective: initialContactObjective,
+    positions: originals.map((point) => [...point]), contactTerms: graph.length,
+    initialContactObjective: unseededContactObjective, finalContactObjective: unseededContactObjective,
+    observedSeedSupplied: seedSites > 0, observedSeedAccepted: false, observedSeedSites: seedSites,
     iterations: 0, maximumDisplacement: 0, rmsDisplacement: 0,
   });
-  let objective = totalObjective(positions, originals, movable, graph, displacementCap, tetherWeight);
+  let objective = seedImprovedObjective ? seededObjective : unseededObjective;
   let acceptedSteps = 0;
   for (let iteration = 0; iteration < maximumIterations; iteration++) {
     const gradient = gradientFor(positions, originals, movable, graph, displacementCap, tetherWeight);
@@ -121,11 +138,16 @@ export function relaxLocalContactGeometry(rawSites, distanceModel, {
     ? length(subtract(point, originals[index])) : 0);
   const movableDisplacements = displacements.filter((_, index) => movable[index]);
   const finalContactObjective = contactObjective(positions, graph);
-  const accepted = acceptedSteps > 0 && finalContactObjective < initialContactObjective - 1e-9;
+  const accepted = (acceptedSteps > 0 || seedImprovedObjective)
+    && finalContactObjective < unseededContactObjective - 1e-9;
   return Object.freeze({
     accepted, reason: accepted ? "contact residual reduced" : "no monotone contact projection",
     positions: positions.map(Object.freeze), contactTerms: graph.length,
-    initialContactObjective, finalContactObjective, iterations: acceptedSteps,
+    initialContactObjective: unseededContactObjective, finalContactObjective, iterations: acceptedSteps,
+    observedSeedSupplied: seedSites > 0,
+    observedSeedAccepted: seedImprovedObjective,
+    observedSeedSites: seedSites,
+    observedSeedContactObjective: initialContactObjective,
     maximumDisplacement: Math.max(...movableDisplacements, 0),
     rmsDisplacement: Math.sqrt(movableDisplacements.reduce((sum, value) => sum + value * value, 0)
       / Math.max(1, movableDisplacements.length)),

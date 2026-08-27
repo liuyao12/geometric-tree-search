@@ -27,6 +27,27 @@ const repeat = relaxLocalContactGeometry(sites, model, {
 });
 assert.deepEqual(repeat, result);
 
+const observedSeed = relaxLocalContactGeometry(sites, model, {
+  displacementCap: .5, maximumIterations: 1,
+  initialOffsets: [[0, 0, 0], [0, 0, 0], [0, -.1, 0]],
+});
+assert.equal(observedSeed.accepted, true);
+assert.equal(observedSeed.observedSeedSupplied, true);
+assert.equal(observedSeed.observedSeedAccepted, true);
+assert.equal(observedSeed.observedSeedSites, 1);
+assert(observedSeed.observedSeedContactObjective < observedSeed.initialContactObjective);
+assert(observedSeed.maximumDisplacement <= .5 + 1e-12);
+
+const misleadingSeed = relaxLocalContactGeometry(sites, model, {
+  displacementCap: .5, maximumIterations: 16,
+  initialOffsets: [[0, 0, 0], [0, 0, 0], [0, .5, 0]],
+});
+assert.equal(misleadingSeed.accepted, true);
+assert.equal(misleadingSeed.observedSeedSupplied, true);
+assert.equal(misleadingSeed.observedSeedAccepted, false,
+  "an archived vector that worsens the bounded objective must be ignored");
+assert(misleadingSeed.positions[2][1] < .35);
+
 const noMovable = relaxLocalContactGeometry(sites.map((site) => ({ ...site, movable: false })), model, {
   displacementCap: .5,
 });
