@@ -35,7 +35,7 @@ def test_archive_response_is_receipt_and_manifest_auditable():
     assert "hardAdmissionChanged: false" in MODULE
 
 
-def test_build_255_cache_contract():
-    assert 'buildId: "20260827-255"' in APP
-    assert "app.js?v=20260827-255" in HTML
-    assert "style.css?v=20260827-255" in HTML
+def test_build_256_cache_contract():
+    assert 'buildId: "20260827-256"' in APP
+    assert "app.js?v=20260827-256" in HTML
+    assert "style.css?v=20260827-256" in HTML

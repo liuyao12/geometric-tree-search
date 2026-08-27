@@ -1,5 +1,19 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 256 · one-click reproducible public investigation
+
+The public archive search now includes a no-text-field worked example for the
+verified Na–Cl response archive. One button loads the exact NOMAD entry,
+re-runs the declared calculation-series and small-strain gates in the browser,
+and exposes the positive response path without relying on random search order.
+The address becomes a shareable specimen link, and opening that link reloads
+the same entry directly rather than sampling a page of candidates.
+
+The downloaded receipt records the requested entry ID, NOMAD source URL,
+exact-entry request flag, and shareable specimen token. This improves
+reproducibility and discoverability; it does not turn the within-archive fit
+into an independently validated elastic property.
+
 ## Build 255 · reproducible mechanical-response evidence
 
 The paired cell–stress fit is now a first-class receipt artifact rather than a

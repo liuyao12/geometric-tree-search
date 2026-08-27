@@ -1,5 +1,20 @@
 # Recursive GCTS benchmark for material growth
 
+### Reproducible public worked investigation (Build 256)
+
+The browser now exposes the known positive NOMAD response archive as a
+one-click, no-text-field worked example. Exact-entry retrieval validates that
+the returned entry ID matches the requested ID, then passes through the same
+archive parsing, evidence profiling, supercell expansion, response fitting,
+and fail-closed promotion gates as a searched specimen. The resulting URL
+contains `specimen=nomad:KFBchFQ1IQAE-JEgzOS1XzZlfsTz` and reloads the exact
+public investigation directly.
+
+Receipts distinguish exact-entry retrieval from randomized page sampling and
+retain the entry ID, source URL, and share token. The worked example is a
+reproducible code-path audit: its apparent K* and G* remain correlated
+within-archive response scales, not transferable material constants.
+
 ### Mechanical-response evidence receipt (Build 255)
 
 The response fit now serializes as a SHA-256-addressed experiment artifact.

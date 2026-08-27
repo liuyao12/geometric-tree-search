@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { canonicalElement, loadNomadStructureCandidate, makeLearningSupercell, NOMAD_EVIDENCE_TARGETS,
   NOMAD_STRUCTURE_FAMILIES, nomadArchiveToStructure, nomadEntryCandidate,
   nomadEvidenceProfileLabel, nomadEvidenceTargetAccepts, nomadStructureEvidenceProfile,
-  nomadStructureCandidates, normalizeElements, normalizeNomadEvidenceTarget, normalizeNomadStructureFamily,
+  nomadStructureByEntryId, nomadStructureCandidates, normalizeElements, normalizeNomadEvidenceTarget, normalizeNomadStructureFamily,
   queryPayload, randomNomadStructure }
   from "../apps/iqc-growth-live/structure-database.js";
 import { validateStructure } from "../apps/iqc-growth-live/structure-io.js";
@@ -124,6 +124,7 @@ assert.equal(sampled.total, 1);
 assert.equal(sampled.structure.atoms.length, 128);
 assert.equal(calls.length, 2);
 assert.equal(calls[0].body.query.and[1]["results.material.n_elements"], 2);
+assert.equal(calls[1].body.required.run.method, "*");
 assert.deepEqual(calls[1].body.required.run["system[-1]"], { atoms: "*" });
 assert.deepEqual(calls[1].body.required.run["calculation[-1]"], {
   energy: "*", forces: "*", stress: "*", charges: "*", system_ref: "*", method_ref: "*",
@@ -160,6 +161,27 @@ const loadedCandidate = await loadNomadStructureCandidate(tray.candidates[0], {
 assert.equal(loadedCandidate.structure.atoms.length, 128);
 assert.equal(loadedCandidate.structure.metadata.nomadCandidateOffset, 2);
 assert.equal(loadedCandidate.structure.metadata.nomadCandidateCount, 4);
+const exactCalls = [];
+const exactFetch = async (url, options = {}) => {
+  exactCalls.push({ url, method: options.method, body: options.body ? JSON.parse(options.body) : null });
+  const value = url.endsWith("/entries/query")
+    ? { data: [{ ...entry, entry_id: "test-entry-id" }] } : archive;
+  return new Response(JSON.stringify(value), { status: 200, headers: { "Content-Type": "application/json" } });
+};
+const exactLoaded = await nomadStructureByEntryId("test-entry-id", {
+  fetchImpl: exactFetch, structureFamily: "bulk", evidenceTarget: "geometry",
+});
+assert.equal(exactLoaded.candidate.entryId, "test-entry-id");
+assert.equal(exactLoaded.structure.metadata.nomadExactEntryRequest, true);
+assert.equal(exactLoaded.structure.metadata.nomadRequestedEntryId, "test-entry-id");
+assert.equal(exactLoaded.structure.metadata.nomadCandidateOffset, 0);
+assert.equal(exactLoaded.structure.metadata.nomadCandidateCount, 1);
+assert.equal(exactCalls.length, 2);
+assert.equal(exactCalls[0].method, "POST");
+assert.match(exactCalls[0].url, /entries\/query$/);
+assert.equal(exactCalls[0].body.query.entry_id, "test-entry-id");
+assert.equal(exactCalls[1].method, "POST");
+await assert.rejects(nomadStructureByEntryId("../../bad", { fetchImpl: exactFetch }), /Invalid NOMAD entry ID/);
 const forceSampled = await randomNomadStructure(["Na", "Cl"], {
   fetchImpl: fakeFetch, random: () => 0, evidenceTarget: "forces",
 });
@@ -280,6 +302,7 @@ const relaxationFetch = async (url, options) => {
 const sampledRelaxation = await randomNomadStructure(["Na", "Cl"], { fetchImpl: relaxationFetch, random: () => 0 });
 assert.equal(sampledRelaxation.structure.frames.length, 3);
 assert.deepEqual(relaxationCalls[1].body.required.run.system, { atoms: "*" });
+assert.equal(relaxationCalls[1].body.required.run.method, "*");
 assert.deepEqual(relaxationCalls[1].body.required.run.calculation, {
   energy: "*", forces: "*", stress: "*", charges: "*", system_ref: "*", method_ref: "*",
 });

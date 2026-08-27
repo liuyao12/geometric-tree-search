@@ -498,10 +498,12 @@ export async function loadNomadStructureCandidate(candidateValue, options = {}) 
   const archive = await postJson(`${NOMAD_API}/entries/${encodeURIComponent(entry.entry_id)}/archive/query`, {
     required: { run: hasRelaxation ? {
       program: "*",
+      method: "*",
       system: { atoms: "*" },
       calculation: { energy: "*", forces: "*", stress: "*", charges: "*", system_ref: "*", method_ref: "*" },
     } : {
       program: "*",
+      method: "*",
       "system[-1]": { atoms: "*" },
       "calculation[-1]": { energy: "*", forces: "*", stress: "*", charges: "*", system_ref: "*", method_ref: "*" },
     } },
@@ -519,6 +521,32 @@ export async function loadNomadStructureCandidate(candidateValue, options = {}) 
     nomadCandidateOffset: Number.isInteger(options.candidateOffset) ? options.candidateOffset : null,
     nomadCandidateCount: Number.isInteger(options.candidateCount) ? options.candidateCount : null };
   return { structure, candidate, structureFamily, evidenceTarget, evidenceProfile };
+}
+
+export async function nomadStructureByEntryId(entryIdValue, options = {}) {
+  const entryId = String(entryIdValue || "").trim();
+  if (!/^[A-Za-z0-9_-]{12,80}$/.test(entryId)) throw new Error("Invalid NOMAD entry ID");
+  const fetchImpl = options.fetchImpl || fetch;
+  const envelope = await postJson(`${NOMAD_API}/entries/query`, {
+    owner: "public",
+    query: { entry_id: entryId },
+    pagination: { page_size: 1 },
+    required: { include: [
+      "entry_id", "results.material.material_id", "results.material.chemical_formula_reduced",
+      "results.material.elements", "results.material.symmetry.crystal_system",
+      "results.material.symmetry.space_group_number", "results.material.symmetry.space_group_symbol",
+      "results.properties.geometry_optimization.final_energy_difference",
+      "results.properties.geometry_optimization.final_force_maximum",
+    ] },
+  }, fetchImpl);
+  const entry = envelope?.data?.[0];
+  if (!entry || entry.entry_id !== entryId) throw new Error("NOMAD entry response did not match the requested ID");
+  const result = await loadNomadStructureCandidate(nomadEntryCandidate(entry), {
+    ...options, fetchImpl, candidateOffset: 0, candidateCount: 1,
+  });
+  result.structure.metadata = { ...result.structure.metadata,
+    nomadExactEntryRequest: true, nomadRequestedEntryId: entryId };
+  return result;
 }
 
 export async function randomNomadStructure(elementValues, options = {}) {

@@ -11,8 +11,8 @@ import {
   validateStructure,
 } from "./structure-io.js?v=20260827-8";
 import { loadNomadStructureCandidate, NOMAD_EVIDENCE_TARGETS, NOMAD_STRUCTURE_FAMILIES,
-  nomadEvidenceProfileLabel, nomadStructureCandidates }
-  from "./structure-database.js?v=20260827-10";
+  nomadEvidenceProfileLabel, nomadStructureByEntryId, nomadStructureCandidates }
+  from "./structure-database.js?v=20260827-11";
 import { bestAffineNeighborhoodResidual } from "./relaxation-local-environment.js?v=20260826-2";
 import { assessGeometrySurrogatePromotion, evaluateFrozenGeometrySurrogate,
   frozenGeometrySurrogateArtifact, frozenGeometrySurrogatePreference,
@@ -265,6 +265,9 @@ const databaseEvidenceHint = $("databaseEvidenceHint");
 const databaseStatus = $("databaseStatus");
 const databaseCandidateTray = $("databaseCandidateTray");
 const databaseSourceLink = $("databaseSourceLink");
+const workedArchiveButton = $("workedArchiveButton");
+const workedArchiveState = $("workedArchiveState");
+const workedArchivePermalink = $("workedArchivePermalink");
 const confinementSelect = $("confinementSelect");
 const confinementHint = $("confinementHint");
 const confinementNote = $("confinementNote");
@@ -1568,6 +1571,13 @@ let atomGeometryRevision = 0;
 let iceViMicrostate = null;
 let iceViMicrostateSeed = 0;
 let selectedDatabaseElements = ["Na", "Cl"];
+const WORKED_PUBLIC_ARCHIVE = Object.freeze({
+  id: "KFBchFQ1IQAE-JEgzOS1XzZlfsTz",
+  label: "Na–Cl · 10-frame paired cell/stress response",
+  elements: Object.freeze(["Na", "Cl"]),
+  structureFamily: "bulk",
+  evidenceTarget: "calibration",
+});
 let databaseCandidateSearch = null;
 let markingDraft = { channels: 0, reach: 2, representation: "sites", spinColoring: "preserve" };
 let markingLibrary = [];
@@ -2021,6 +2031,49 @@ async function activateNomadCandidate(candidate, candidateIndex) {
     databaseStatus.textContent = `Selected archive failed the declared gate: ${error.message}. Choose another specimen; the active specimen is unchanged.`;
   } finally {
     databaseCandidateTray.querySelectorAll("button").forEach((button) => { button.disabled = false; });
+    randomMaterialButton.disabled = selectedDatabaseElements.length === 0;
+  }
+}
+
+async function loadWorkedPublicArchive({ updateAddress = true } = {}) {
+  workedArchiveButton.disabled = true;
+  randomMaterialButton.disabled = true;
+  databaseStatus.className = "import-status";
+  databaseStatus.textContent = `Opening worked public archive ${WORKED_PUBLIC_ARCHIVE.id.slice(0, 10)}… and verifying its paired calculation series…`;
+  try {
+    selectedDatabaseElements = [...WORKED_PUBLIC_ARCHIVE.elements];
+    databaseFamilySelect.value = WORKED_PUBLIC_ARCHIVE.structureFamily;
+    databaseEvidenceSelect.value = WORKED_PUBLIC_ARCHIVE.evidenceTarget;
+    renderDatabaseStructureFamily();
+    const result = await nomadStructureByEntryId(WORKED_PUBLIC_ARCHIVE.id, {
+      structureFamily: WORKED_PUBLIC_ARCHIVE.structureFamily,
+      evidenceTarget: WORKED_PUBLIC_ARCHIVE.evidenceTarget,
+    });
+    const search = Object.freeze({ candidates: Object.freeze([result.candidate]), total: 1, selectedOffset: 0,
+      structureFamily: result.structureFamily, evidenceTarget: result.evidenceTarget, exactEntryRequest: true });
+    renderDatabaseCandidateTray(search, result.candidate.entryId);
+    activateImportedStructure(result.structure, `NOMAD worked archive ${result.structure.metadata.entryId}`, databaseStatus);
+    const fit = archivedStressStrainResponse();
+    const repetitions = result.structure.metadata.repetitions || [1, 1, 1];
+    databaseStatus.textContent = `${result.structureFamily.label} · ${importSummary(result.structure, importedStructure.validation)} · ${nomadEvidenceProfileLabel(result.evidenceProfile)} · exact public entry · ${result.structure.metadata.primitiveAtomCount} atoms expanded ${repetitions.join("×")}`;
+    workedArchiveState.textContent = fit?.promotionPassed
+      ? `${fit.recordCount}/${fit.totalPairCount} small-strain pairs · CV ${fit.crossValidatedSkill.toFixed(3)} · apparent K* ${fit.bulkModulusGigaPascal.toFixed(2)} · G* ${fit.shearModulusGigaPascal.toFixed(2)} GPa`
+      : fit?.reason || "paired response gate did not pass";
+    workedArchivePermalink.hidden = false;
+    databaseSourceLink.href = result.structure.metadata.sourceUrl;
+    databaseSourceLink.textContent = `Open exact NOMAD entry ${result.structure.metadata.entryId.slice(0, 10)}… ↗`;
+    if (updateAddress) {
+      const url = new URL(window.location.href);
+      url.searchParams.set("build", "256");
+      url.searchParams.set("specimen", `nomad:${WORKED_PUBLIC_ARCHIVE.id}`);
+      window.history.replaceState(null, "", url);
+    }
+  } catch (error) {
+    databaseStatus.className = "import-status invalid";
+    databaseStatus.textContent = `Worked archive failed its declared public-data gate: ${error.message}. The active specimen is unchanged.`;
+    workedArchiveState.textContent = "unavailable · public archive could not be verified";
+  } finally {
+    workedArchiveButton.disabled = false;
     randomMaterialButton.disabled = selectedDatabaseElements.length === 0;
   }
 }
@@ -10111,7 +10164,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-255",
+      buildId: "20260827-256",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -10130,6 +10183,12 @@ async function buildExperimentReceipt() {
       externalGeometry: receiptExternalGeometry(),
       observationToGrowthDomain: currentGrowthDomainSnapshot(),
       publicDatabaseEvidence: scenarioSelect.value === "imported" && importedStructure?.metadata?.entryId ? {
+        entryId: importedStructure.metadata.entryId,
+        sourceUrl: importedStructure.metadata.sourceUrl || null,
+        exactEntryRequest: importedStructure.metadata.nomadExactEntryRequest === true,
+        requestedEntryId: importedStructure.metadata.nomadRequestedEntryId || null,
+        shareableSpecimen: importedStructure.metadata.nomadExactEntryRequest === true
+          ? `nomad:${importedStructure.metadata.entryId}` : null,
         structureFamily: importedStructure.metadata.nomadStructureFamily || "bulk",
         structureFamilyLabel: importedStructure.metadata.nomadStructureFamilyLabel || "3D bulk solid",
         sampledCandidateOffsetZeroBased: importedStructure.metadata.nomadCandidateOffset ?? null,
@@ -12362,7 +12421,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-255" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-256" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -28779,6 +28838,7 @@ randomMaterialButton.addEventListener("click", async () => {
     randomMaterialButton.disabled = selectedDatabaseElements.length === 0;
   }
 });
+workedArchiveButton.addEventListener("click", () => loadWorkedPublicArchive());
 structureFileInput.addEventListener("change", async () => {
   const [file] = structureFileInput.files;
   if (!file) return;
@@ -29517,6 +29577,10 @@ renderStudyGuide();
 buildPeriodicTable();
 renderDatabaseStructureFamily();
 enterPipelineStage(applyLaunchParameters());
+const sharedSpecimen = new URLSearchParams(window.location.search).get("specimen");
+if (sharedSpecimen === `nomad:${WORKED_PUBLIC_ARCHIVE.id}`) {
+  loadWorkedPublicArchive({ updateAddress: false });
+}
 renderStageFocus();
 if (studyLaunchAudit?.loaded) {
   receiptStatus.textContent = `${selectedStudyRecipe().label} reconstructed from recipe schema v1 · paused at stage ${pipelineStage} · no coordinates, learned weights, or growth history were embedded.`;

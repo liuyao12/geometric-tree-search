@@ -40,9 +40,9 @@ def main() -> None:
     assert "database-evidence" in STYLE
     assert 'id="databaseCandidateTray"' in HTML
     assert "database-candidate-tray" in STYLE
-    assert 'structure-database.js?v=20260827-10' in APP
-    assert 'buildId: "20260827-255"' in APP
-    assert 'app.js?v=20260827-255' in HTML
+    assert 'structure-database.js?v=20260827-11' in APP
+    assert 'buildId: "20260827-256"' in APP
+    assert 'app.js?v=20260827-256' in HTML
     print("NOMAD evidence-targeted search contract passed")
 
 
