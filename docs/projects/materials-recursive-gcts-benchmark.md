@@ -6403,3 +6403,18 @@ Projection budgets are display-only and are reported in the viewport footer. The
 truncate the scientific state, change cluster/marking/search logic, or enter a receipt as
 evidence. All quantitative observables and certificates remain computed from the complete
 colored coordinate and relation sets.
+
+## Build 210: make marking capacity a scientific control
+
+The selectable 1/3/6/12-channel marking capacity now determines the actual coefficient
+dimension in both atom-environment and molecular/irregular-cover learners. A single channel
+is a scalar radial section; higher capacities use a deterministic spherical code expressed
+in each occurrence's learned intrinsic proper frame. No global axis enters the vocabulary.
+
+Clustering remains upstream of marking: the observed proper-rotation support and finite
+connection-port incidence determine a recommended pose×port rank for each cluster type.
+The learner caps each type by the user-selected capacity, serializes the resulting active
+mask and channel basis, and keeps inactive coefficients identically zero through fitting,
+loss evaluation, saved-library replay, and visualization. This makes capacity ablations
+real while preserving the claim boundary: channels encode bounded local compatibility and
+failure evidence, not a physical potential or dynamical trajectory.

@@ -37,9 +37,9 @@ def test_projection_is_bounded_display_work_not_scientific_truncation():
     assert "never\ntruncate the scientific state" in DOC
 
 
-def test_build_209_release_identity_is_coherent():
-    assert 'buildId: "20260826-209"' in APP
-    assert 'app.js?v=20260826-209' in HTML
+def test_build_210_release_identity_is_coherent():
+    assert 'buildId: "20260826-210"' in APP
+    assert 'app.js?v=20260826-210' in HTML
     assert "Build 209" in README
     assert "Build 209" in DOC
 
@@ -47,5 +47,5 @@ def test_build_209_release_identity_is_coherent():
 if __name__ == "__main__":
     test_cpu_fallback_projects_the_live_scene_graph()
     test_projection_is_bounded_display_work_not_scientific_truncation()
-    test_build_209_release_identity_is_coherent()
+    test_build_210_release_identity_is_coherent()
     print("CPU projection contract: passed")

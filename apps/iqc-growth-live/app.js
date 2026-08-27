@@ -911,6 +911,25 @@ const BALANCE_DIRECTIONS = [
   [PHI, 0, 1], [PHI, 0, -1], [-PHI, 0, 1], [-PHI, 0, -1],
 ].map((v) => new THREE.Vector3(...v).normalize());
 
+function markingChannelAxes(channelCount) {
+  const count = THREE.MathUtils.clamp(Math.round(Number(channelCount) || 1), 1, 12);
+  if (count === 1) return [new THREE.Vector3()];
+  // A deterministic spherical code in each cluster's intrinsic proper frame.
+  // It changes representation capacity without introducing a laboratory axis.
+  const goldenAngle = Math.PI * (3 - Math.sqrt(5));
+  return Array.from({ length: count }, (_, index) => {
+    const z = 1 - 2 * (index + .5) / count;
+    const radius = Math.sqrt(Math.max(0, 1 - z * z));
+    const azimuth = goldenAngle * index;
+    return new THREE.Vector3(radius * Math.cos(azimuth), radius * Math.sin(azimuth), z);
+  });
+}
+
+function markingBasisFeatures(direction, radial, axes, exponent) {
+  if (axes.length === 1 && axes[0].lengthSq() <= 1e-12) return [radial];
+  return axes.map((axis) => radial * Math.max(0, direction.dot(axis)) ** exponent);
+}
+
 function fallbackViewportRenderer() {
   const canvas = document.createElement("canvas");
   canvas.className = "viewport-renderer viewport-renderer-fallback";
@@ -6156,6 +6175,14 @@ function recommendedChannelsForCluster(cluster) {
   return Math.min(12, Math.max(3, 2 + clusterPosePortRank(cluster)));
 }
 
+function markingChannelAllocationLabel(model = sectionModel) {
+  if (!model?.activeChannelsByPrototype?.length) return "channel allocation pending";
+  const counts = new Map();
+  model.activeChannelsByPrototype.forEach((channels) => counts.set(channels, (counts.get(channels) || 0) + 1));
+  return [...counts.entries()].sort(([first], [second]) => first - second)
+    .map(([channels, prototypes]) => `${channels}ch × ${prototypes} type${prototypes === 1 ? "" : "s"}`).join(" · ");
+}
+
 function centeredPeriodicSupport(source, support) {
   if (!support.length) return [];
   const anchor = source[support[0]];
@@ -7498,7 +7525,12 @@ function updateClusterGalleryTrainingReadouts() {
       .filter((label) => label === prototype).length;
     const total = sectionModel.sampleLabels.filter((label) => label === prototype).length;
     const loss = sectionLossForCluster(prototype);
-    readout.textContent = `${processed}/${total} local sections · loss ${loss.toFixed(3)} · ${sectionModel.channels}ch · reach ${sectionModel.reach}`;
+    const activeChannels = sectionModel.activeChannelsByPrototype?.[prototype] || sectionModel.channels;
+    const requiredChannels = recommendedChannelsForCluster(prototype);
+    const channelReadout = requiredChannels > sectionModel.channels
+      ? `${activeChannels}/${sectionModel.channels} active ch · rank needs ${requiredChannels}`
+      : `${activeChannels}/${sectionModel.channels} active ch`;
+    readout.textContent = `${processed}/${total} local sections · loss ${loss.toFixed(3)} · ${channelReadout} · reach ${sectionModel.reach}`;
     readout.classList.toggle("complete", trainingProgress >= markingSampleCount());
   });
 }
@@ -7624,17 +7656,29 @@ function drawClusterCardMarking(context, canvas, cluster, galleryIndex, quaterni
   const positive = markingColor(key);
   const positiveRgb = `${Math.round(positive.r * 255)},${Math.round(positive.g * 255)},${Math.round(positive.b * 255)}`;
   const progress = trainingProgress / Math.max(1, markingSampleCount());
-  coefficients.forEach((coefficient, axisIndex) => {
+  const activeChannels = sectionModel.activeChannelsByPrototype?.[prototype] || sectionModel.channels;
+  coefficients.slice(0, activeChannels).forEach((coefficient, axisIndex) => {
     const axis = sectionModel.axes[axisIndex]?.clone().applyQuaternion(quaternion);
     if (!axis) return;
+    const strength = Math.min(1, Math.abs(coefficient) / .28);
+    const rgb = coefficient >= 0 ? positiveRgb : "255,109,113";
+    if (axis.lengthSq() <= 1e-12) {
+      for (let level = 2; level >= 0; level--) {
+        context.beginPath();
+        context.arc(canvas.width / 2, canvas.height / 2, 54 + strength * 18 + level * 7, 0, TAU);
+        context.strokeStyle = `rgba(${rgb},${(.18 + progress * .18) / (1 + level * .34)})`;
+        context.lineWidth = level === 0 ? 1.55 : 1;
+        if (coefficient < 0) context.setLineDash([3, 3]);
+        context.stroke(); context.setLineDash([]);
+      }
+      return;
+    }
     const planeLength = Math.hypot(axis.x, axis.y);
     if (planeLength < .08) return;
     const directionX = axis.x / planeLength, directionY = axis.y / planeLength;
-    const strength = Math.min(1, Math.abs(coefficient) / .28);
     const centerX = canvas.width / 2 + directionX * (54 + strength * 22);
     const centerY = canvas.height / 2 + directionY * (54 + strength * 22);
     const angle = Math.atan2(directionY, directionX);
-    const rgb = coefficient >= 0 ? positiveRgb : "255,109,113";
     for (let level = 2; level >= 0; level--) {
       const transverse = 8 + strength * 7 + level * 3.5;
       const longitudinal = 15 + strength * 13 + level * 5;
@@ -8302,8 +8346,8 @@ const MARKING_REPRESENTATIONS = {
   whole: { label: "whole-cluster action", short: "whole action", exponent: 2, overlapWeight: .38,
     readout: "mean-dominant whole-template support" },
 };
-const MARKING_LIBRARY_STORAGE = "gcts-marking-library-v3";
-const MARKING_VOCABULARY_SCHEMA = 3;
+const MARKING_LIBRARY_STORAGE = "gcts-marking-library-v4";
+const MARKING_VOCABULARY_SCHEMA = 4;
 const EXPERIMENT_NOTEBOOK_STORAGE = "gcts-experiment-notebook-v1";
 const MAX_EXPERIMENT_NOTEBOOK_ENTRIES = 8;
 let notebookClearArmed = false;
@@ -8314,7 +8358,11 @@ function restoreMarkingLibrary() {
     if (!stored || !Array.isArray(stored.markings)) return;
     markingLibrary = stored.markings.filter((marking) => marking?.id && marking?.config
       && typeof marking.vocabularyKey === "string"
-      && Array.isArray(marking.coefficients) && MARKING_REPRESENTATIONS[marking.config.representation])
+      && Array.isArray(marking.coefficients)
+      && Array.isArray(marking.activeChannelsByPrototype)
+      && Array.isArray(marking.channelBasis)
+      && marking.channelBasis.length === Number(marking.config.channels)
+      && MARKING_REPRESENTATIONS[marking.config.representation])
       .map((marking) => ({ ...marking, config: {
         ...marking.config, geometryMode: marking.config.geometryMode || "auto",
       } }));
@@ -8921,7 +8969,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-209",
+      buildId: "20260826-210",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -9602,11 +9650,15 @@ async function buildExperimentReceipt() {
         config: activeMarking.config,
         representationReadout: MARKING_REPRESENTATIONS[activeMarking.config.representation]?.readout || null,
         representationState: activeMarking.representationState || null,
+        channelBasis: activeMarking.channelBasis || null,
+        activeChannelsByPrototype: activeMarking.activeChannelsByPrototype || null,
         coefficients: activeMarking.coefficients.map((row) => row.map((value) => receiptRound(value))),
       } : null,
       learned: markingVisible ? {
         prototypes: sectionModel.prototypeCount,
         channels: sectionModel.channels,
+        channelBasis: sectionModel.axes.map((axis) => axis.toArray().map((value) => receiptRound(value))),
+        activeChannelsByPrototype: sectionModel.activeChannelsByPrototype.slice(),
         reach: sectionModel.reach,
         representation: sectionModel.representation,
         representationReadout: MARKING_REPRESENTATIONS[sectionModel.representation]?.readout || null,
@@ -12464,13 +12516,16 @@ function learnRepresentationState() {
 
 function learnSectionModel(source, config = currentMarkingConfig()) {
   if (learnedCover?.occurrenceBased || learnedCover?.molecular) return learnMolecularSectionModel(source, config);
-  const axes = BALANCE_DIRECTIONS;
+  const axes = markingChannelAxes(config.channels);
   const representation = MARKING_REPRESENTATIONS[config.representation] || MARKING_REPRESENTATIONS.sites;
   const reachScale = { 1: .72, 2: 1, 3: 1.35 }[config.reach] || 1;
   const support = descriptorCutoff() * reachScale;
   const exponent = representation.exponent;
   const overlapWeight = representation.overlapWeight;
   const channelGain = 1 + Math.log2(Math.max(1, config.channels)) * .065;
+  const clusterCount = learnedClusters.clusters.length;
+  const activeChannelsByPrototype = Array.from({ length: clusterCount }, (_, cluster) =>
+    Math.min(axes.length, recommendedChannelsForCluster(cluster)));
   const incidentEdges = Array.from({ length: source.length }, () => []);
   trainedMarking.edges.forEach((edge) => {
     incidentEdges[edge.first].push(edge);
@@ -12483,11 +12538,12 @@ function learnSectionModel(source, config = currentMarkingConfig()) {
     const frame = overlapGrammar.molecular ? occurrenceFrame(source, centerIndex) : overlapGrammar.occurrences[centerIndex].rotation;
     const direction = vector.normalize().applyQuaternion(frame.clone().invert());
     const radial = .5 * (1 + Math.cos(Math.PI * distance / support));
-    return { features: axes.map((axis) => radial * Math.max(0, direction.dot(axis)) ** exponent) };
+    return { features: markingBasisFeatures(direction, radial, axes, exponent) };
   };
   const fieldAt = (coefficients, basis) => basis.features.reduce((sum, feature, axis) => sum + feature * coefficients[axis], 0);
   const targets = source.map((center, centerIndex) => {
-    const values = new Array(axes.length).fill(-.18 / channelGain);
+    const activeChannels = activeChannelsByPrototype[learnedClusters.labels[centerIndex]];
+    const values = axes.map((_, axis) => axis < activeChannels ? -.18 / channelGain : 0);
     incidentEdges[centerIndex].forEach((edge) => {
       const otherIndex = edge.first === centerIndex ? edge.second : edge.first;
       const vector = periodicDisplacement(center, source[otherIndex]);
@@ -12495,18 +12551,20 @@ function learnSectionModel(source, config = currentMarkingConfig()) {
       const frame = overlapGrammar.molecular ? occurrenceFrame(source, centerIndex) : overlapGrammar.occurrences[centerIndex].rotation;
       const direction = vector.normalize().applyQuaternion(frame.clone().invert());
       let bestAxis = 0;
-      let bestDot = -Infinity;
-      axes.forEach((axis, axisIndex) => {
-        const dot = direction.dot(axis);
-        if (dot > bestDot) { bestDot = dot; bestAxis = axisIndex; }
-      });
+      if (axes.length > 1 || axes[0].lengthSq() > 1e-12) {
+        let bestDot = -Infinity;
+        axes.slice(0, activeChannels).forEach((axis, axisIndex) => {
+          const dot = direction.dot(axis);
+          if (dot > bestDot) { bestDot = dot; bestAxis = axisIndex; }
+        });
+      }
       values[bestAxis] = Math.max(values[bestAxis], Math.min(.36, (.10 + edge.shared * .035) * channelGain));
     });
     return values;
   });
-  const clusterCount = learnedClusters.clusters.length;
   const initial = Array.from({ length: clusterCount }, (_, cluster) =>
-    axes.map((_, axis) => (siteHash(cluster, axis, 17, 4) - .5) * .34 / Math.sqrt(channelGain)));
+    axes.map((_, axis) => axis < activeChannelsByPrototype[cluster]
+      ? (siteHash(cluster, axis, 17, 4) - .5) * .34 / Math.sqrt(channelGain) : 0));
   const coefficients = initial.map((values) => [...values]);
   const fitIndices = source.map((_, index) => index).filter((index) => index % 5 !== 0);
   const holdoutIndices = source.map((_, index) => index).filter((index) => index % 5 === 0);
@@ -12514,7 +12572,9 @@ function learnSectionModel(source, config = currentMarkingConfig()) {
   const holdoutSet = new Set(holdoutIndices);
   const portLossFor = (indices, values = coefficients) => indices.reduce((sum, index) => {
     const cluster = learnedClusters.labels[index];
-    return sum + targets[index].reduce((error, target, axis) => error + (values[cluster][axis] - target) ** 2, 0) / axes.length;
+    const activeChannels = activeChannelsByPrototype[cluster];
+    return sum + targets[index].slice(0, activeChannels)
+      .reduce((error, target, axis) => error + (values[cluster][axis] - target) ** 2, 0) / activeChannels;
   }, 0) / Math.max(1, indices.length);
   const overlapLossFor = (membership, values = coefficients) => {
     let loss = 0;
@@ -12552,7 +12612,8 @@ function learnSectionModel(source, config = currentMarkingConfig()) {
     else {
       fitSamples++;
       const channelStep = .14 / (1 + Math.log2(Math.max(1, config.channels)) * .12);
-      coefficients[cluster] = coefficients[cluster].map((value, axis) => value + channelStep * (targets[index][axis] - value));
+      coefficients[cluster] = coefficients[cluster].map((value, axis) => axis < activeChannelsByPrototype[cluster]
+        ? value + channelStep * (targets[index][axis] - value) : 0);
       const incident = incidentEdges[index].filter((edge) => Math.max(edge.first, edge.second) <= index);
       const gradient = new Array(axes.length).fill(0);
       let constraints = 0;
@@ -12570,10 +12631,12 @@ function learnSectionModel(source, config = currentMarkingConfig()) {
           constraints++;
         });
       });
-      if (constraints) coefficients[cluster] = coefficients[cluster].map((value, axis) => value - .04 * gradient[axis] / constraints);
+      if (constraints) coefficients[cluster] = coefficients[cluster].map((value, axis) => axis < activeChannelsByPrototype[cluster]
+        ? value - .04 * gradient[axis] / constraints : 0);
     }
-    const portLoss = targets[index].reduce((error, target, axis) =>
-      error + (coefficients[cluster][axis] - target) ** 2, 0) / axes.length;
+    const activeChannels = activeChannelsByPrototype[cluster];
+    const portLoss = targets[index].slice(0, activeChannels).reduce((error, target, axis) =>
+      error + (coefficients[cluster][axis] - target) ** 2, 0) / activeChannels;
     let overlapLoss = 0;
     let overlapConstraints = 0;
     incidentEdges[index].forEach((edge) => {
@@ -12603,12 +12666,13 @@ function learnSectionModel(source, config = currentMarkingConfig()) {
     representation: config.representation, overlapWeight, exponent, channelGain,
     fitCount: fitIndices.length, holdoutCount: holdoutIndices.length,
     prototypeCount: clusterCount, sampleLabels: learnedClusters.labels.slice(),
+    activeChannelsByPrototype,
     representationState: learnRepresentationState(),
     sampleKind: "atom-centred environment" };
 }
 
 function learnMolecularSectionModel(source, config) {
-  const axes = BALANCE_DIRECTIONS;
+  const axes = markingChannelAxes(config.channels);
   const representation = MARKING_REPRESENTATIONS[config.representation] || MARKING_REPRESENTATIONS.sites;
   const reachScale = { 1: .72, 2: 1, 3: 1.35 }[config.reach] || 1;
   const support = descriptorCutoff() * reachScale;
@@ -12623,6 +12687,8 @@ function learnMolecularSectionModel(source, config) {
     (learnedCover.types || clusterGalleryTypes()).length,
     ...samples.map((occurrence) => occurrence.type + 1),
   );
+  const activeChannelsByPrototype = Array.from({ length: prototypeCount }, (_, cluster) =>
+    Math.min(axes.length, recommendedChannelsForCluster(cluster)));
   const sampleLabels = samples.map((occurrence) => occurrence.type);
   const incident = Array.from({ length: samples.length }, () => []);
   overlapGrammar.reconstructionByOccurrence.forEach((rules, parent) => rules.forEach((rule) => {
@@ -12634,28 +12700,34 @@ function learnMolecularSectionModel(source, config) {
     incident[child].push({ direction: reverse, shared: rule.meanShared || 0 });
   }));
   const targets = samples.map((_, index) => {
-    const values = new Array(axes.length).fill(-.18 / channelGain);
+    const activeChannels = activeChannelsByPrototype[sampleLabels[index]];
+    const values = axes.map((__, axis) => axis < activeChannels ? -.18 / channelGain : 0);
     incident[index].forEach((port) => {
       let bestAxis = 0;
-      let bestDot = -Infinity;
-      axes.forEach((axis, axisIndex) => {
-        const dot = port.direction.dot(axis);
-        if (dot > bestDot) { bestDot = dot; bestAxis = axisIndex; }
-      });
+      if (axes.length > 1 || axes[0].lengthSq() > 1e-12) {
+        let bestDot = -Infinity;
+        axes.slice(0, activeChannels).forEach((axis, axisIndex) => {
+          const dot = port.direction.dot(axis);
+          if (dot > bestDot) { bestDot = dot; bestAxis = axisIndex; }
+        });
+      }
       values[bestAxis] = Math.max(values[bestAxis], Math.min(.36,
         (.10 + port.shared * .035) * channelGain));
     });
     return values;
   });
   const initial = Array.from({ length: prototypeCount }, (_, cluster) =>
-    axes.map((_, axis) => (siteHash(cluster, axis, 29, 6) - .5) * .34 / Math.sqrt(channelGain)));
+    axes.map((_, axis) => axis < activeChannelsByPrototype[cluster]
+      ? (siteHash(cluster, axis, 29, 6) - .5) * .34 / Math.sqrt(channelGain) : 0));
   const coefficients = initial.map((values) => values.slice());
   const fitIndices = samples.map((_, index) => index).filter((index) => index % 5 !== 0);
   const holdoutIndices = samples.map((_, index) => index).filter((index) => index % 5 === 0);
   const lossFor = (indices, values = coefficients) => indices.reduce((sum, index) => {
-    const coefficientsForType = values[sampleLabels[index]];
-    return sum + targets[index].reduce((error, target, axis) =>
-      error + (coefficientsForType[axis] - target) ** 2, 0) / axes.length;
+    const type = sampleLabels[index];
+    const coefficientsForType = values[type];
+    const activeChannels = activeChannelsByPrototype[type];
+    return sum + targets[index].slice(0, activeChannels).reduce((error, target, axis) =>
+      error + (coefficientsForType[axis] - target) ** 2, 0) / activeChannels;
   }, 0) / Math.max(1, indices.length);
   let trainLoss = lossFor(fitIndices);
   let validationLoss = lossFor(holdoutIndices);
@@ -12672,8 +12744,8 @@ function learnMolecularSectionModel(source, config) {
     else {
       fitSamples++;
       const step = .14 / (1 + Math.log2(Math.max(1, config.channels)) * .12);
-      coefficients[cluster] = coefficients[cluster].map((value, axis) =>
-        value + step * (targets[index][axis] - value));
+      coefficients[cluster] = coefficients[cluster].map((value, axis) => axis < activeChannelsByPrototype[cluster]
+        ? value + step * (targets[index][axis] - value) : 0);
     }
     overlaps += incident[index].length;
     trainLoss = lossFor(fitIndices);
@@ -12691,6 +12763,7 @@ function learnMolecularSectionModel(source, config) {
     overlapWeight, exponent, channelGain,
     fitCount: fitIndices.length, holdoutCount: holdoutIndices.length,
     prototypeCount, sampleLabels,
+    activeChannelsByPrototype,
     representationState: learnRepresentationState(),
     sampleKind: learnedCover.molecular ? "molecular cover occurrence" : "irregular support occurrence",
   };
@@ -12762,7 +12835,10 @@ function ruleMarkingDecision(rule) {
 function sectionLossForCluster(cluster) {
   const coefficients = currentSectionCoefficients(cluster);
   const indices = sectionModel.sampleLabels.map((label, index) => label === cluster ? index : -1).filter((index) => index >= 0);
-  return indices.reduce((sum, index) => sum + sectionModel.targets[index].reduce((error, target, axis) => error + (coefficients[axis] - target) ** 2, 0) / sectionModel.axes.length, 0) / Math.max(1, indices.length);
+  const activeChannels = sectionModel.activeChannelsByPrototype?.[cluster] || sectionModel.axes.length;
+  return indices.reduce((sum, index) => sum + sectionModel.targets[index].slice(0, activeChannels)
+    .reduce((error, target, axis) => error + (coefficients[axis] - target) ** 2, 0) / activeChannels, 0)
+    / Math.max(1, indices.length);
 }
 
 function visibleTrainingStates(limit = trainingProgress) {
@@ -12798,8 +12874,9 @@ function seedTrainedMarking() {
 function sectionValue(cluster, localDirection,
   coefficients = pipelineStage === 4 ? searchSectionCoefficients() : currentSectionPoint().coefficients,
   exponent = sectionModel.exponent) {
-  return sectionModel.axes.reduce((sum, axis, index) =>
-    sum + coefficients[cluster][index] * Math.max(0, localDirection.dot(axis)) ** exponent, 0);
+  const activeChannels = sectionModel.activeChannelsByPrototype?.[cluster] || sectionModel.axes.length;
+  return markingBasisFeatures(localDirection, 1, sectionModel.axes, exponent).slice(0, activeChannels)
+    .reduce((sum, feature, index) => sum + coefficients[cluster][index] * feature, 0);
 }
 
 function ruleMarkingScore(rule,
@@ -16883,7 +16960,8 @@ function buildSectionHalos() {
     const selectedKey = `m_${markingPrototypeName(cluster)}`;
     const dim = markingSelection && markingSelection !== selectedKey;
     const coefficients = currentSectionCoefficients(cluster);
-    coefficients.forEach((coefficient, axisIndex) => {
+    const activeChannels = sectionModel.activeChannelsByPrototype?.[cluster] || sectionModel.channels;
+    coefficients.slice(0, activeChannels).forEach((coefficient, axisIndex) => {
       const compatible = coefficient >= 0;
       const strength = Math.min(1, Math.abs(coefficient) / .28);
       Array.from({ length: Math.min(4, sectionModel.channels) }, (_, level) => level).forEach((level) => {
@@ -16896,6 +16974,13 @@ function buildSectionHalos() {
           depthWrite: false,
         });
         const mesh = new THREE.Mesh(new THREE.SphereGeometry(1, 8, 5), material);
+        if (direction.lengthSq() <= 1e-12) {
+          mesh.position.copy(centers[cluster]);
+          mesh.scale.setScalar(.54 + strength * .24 + level * .10);
+          if (markingSelection === selectedKey) mesh.scale.multiplyScalar(1.08);
+          clusterGroup.add(mesh);
+          return;
+        }
         const reachOffset = .72 + sectionModel.reach * .08;
         mesh.position.copy(centers[cluster]).addScaledVector(direction, reachOffset + strength * .32 + level * .10);
         mesh.quaternion.setFromUnitVectors(up, direction);
@@ -17003,6 +17088,8 @@ function freezeCurrentMarking() {
       vocabularyKey,
       vocabularySummary: `${markingPrototypeTypes().length} cover types · ${resolvedGeometryLabel()} · ${reducedCompositionKey()}`,
       config,
+      channelBasis: sectionModel.axes.map((axis) => axis.toArray()),
+      activeChannelsByPrototype: sectionModel.activeChannelsByPrototype.slice(),
       coefficients: sectionModel.curve.at(-1).coefficients.map((values) => [...values]),
       representationState: JSON.parse(JSON.stringify(sectionModel.representationState)),
       validationLoss: sectionModel.curve.at(-1).validationLoss,
@@ -17010,6 +17097,8 @@ function freezeCurrentMarking() {
     };
     markingLibrary.push(marking);
   } else {
+    marking.channelBasis = sectionModel.axes.map((axis) => axis.toArray());
+    marking.activeChannelsByPrototype = sectionModel.activeChannelsByPrototype.slice();
     marking.coefficients = sectionModel.curve.at(-1).coefficients.map((values) => [...values]);
     marking.representationState = JSON.parse(JSON.stringify(sectionModel.representationState));
     marking.validationLoss = sectionModel.curve.at(-1).validationLoss;
@@ -18110,7 +18199,7 @@ function syncStageOptions() {
     stageOptionsState.textContent = complete ? existing ? "saved" : "fit complete" : `${trainingProgress}/${markingSampleCount()}`;
     saveMarkingButton.disabled = !complete;
     saveMarkingButton.textContent = existing ? "Update library copy" : "Freeze to library";
-    markingConfigNote.textContent = `${resolvedChannels} channels${markingDraft.channels ? " (manual override)" : " (derived from the frozen pose × port incidence rank)"} · support R=${sectionModel?.support.toFixed(2) || "—"}a · ${MARKING_REPRESENTATIONS[markingDraft.representation].label}: ${MARKING_REPRESENTATIONS[markingDraft.representation].readout}. Clustering freezes the finite or sampled proper-rotation support before this fit; symmetry-equivalent rotations share channels.`;
+    markingConfigNote.textContent = `${resolvedChannels} real coefficient channels${markingDraft.channels ? " (manual capacity override)" : " (derived from the frozen pose × port incidence rank)"} · ${markingChannelAllocationLabel()} · support R=${sectionModel?.support.toFixed(2) || "—"}a · ${MARKING_REPRESENTATIONS[markingDraft.representation].label}: ${MARKING_REPRESENTATIONS[markingDraft.representation].readout}. Clustering freezes the finite or sampled proper-rotation support before this fit; symmetry-equivalent rotations share channels and inactive coefficients remain exactly zero.`;
   } else {
     renderMarkingLibrary();
     renderGrowthProtocolSummary();

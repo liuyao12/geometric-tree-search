@@ -5661,3 +5661,18 @@ as a CPU projection. This is a display fallback—not a different simulation, a 
 scientific model, or a source of search evidence. Bounded glyph and segment budgets keep the
 portal responsive while all exact numerical audits, plots, controls, and receipts continue
 to use the complete underlying state.
+
+### Build 210 · real marking-channel capacity
+
+The GCTS channel control now changes the learned representation itself. One channel is an
+isotropic scalar section; 3, 6, and 12 channels use deterministic spherical codes in each
+cluster's intrinsic proper frame. Every coefficient vector has exactly the selected
+dimension, rather than retaining a hidden 12-channel basis behind a cosmetic selector.
+
+Cluster identification still freezes each isometry class's proper pose support and
+connection-port incidence first. That pose×port rank then recommends a channel capacity;
+the marking fit records an explicit per-prototype active-channel mask, leaves inactive
+coefficients exactly zero, and shows the allocation on every separate cluster scene. Frozen
+library entries and experiment receipts retain the basis and mask under vocabulary schema
+4. These channels are bounded connection representations, not physical potentials, energy
+terms, or laboratory-frame directions.
