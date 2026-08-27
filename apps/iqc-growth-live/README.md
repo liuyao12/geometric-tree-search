@@ -19,6 +19,17 @@ the GCTS anatomy view explains covers, oriented ports, markings, search, and
 promotion; and the claim ledger keeps proved, measured, and open results visibly
 separate. Its numbers are frozen benchmark results, not recomputed browser demos.
 
+Build 236 adds an interactive **finite local packing-density pathway**. Every
+retained structural state now preserves a radially stratified distribution of
+six-nearest-neighbor number density relative to the inner half of the supplied
+configuration. The portal compares the complete sampled distribution, inner
+core, outer shell, and inverse local-volume proxy, and carries the same measure
+into the leap-resolved material consequence fingerprint. The estimator is
+translation-, proper-rotation-, atom-permutation-, and common-scale-invariant.
+It uses only explicit finite-window positions and invents no periodic images;
+it is not mass density, packing fraction, porosity, pressure, thermodynamic
+free volume, energy, a bulk limit, a rate, or physical time.
+
 Build 235 adds an interactive **multicomponent stoichiometry pathway** across
 the retained structural-leap history. Every observed species receives its own
 standard-color selector, exact integer site count, current fraction, supplied

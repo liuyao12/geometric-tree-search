@@ -13,6 +13,24 @@ amplification is `b > 1`, a level-`L` accepted macro placement represents
 approximately `b^L` atoms.  Materializing or exporting `N` atomic coordinates
 still has an unavoidable `O(N)` cost and must be reported separately.
 
+### Finite local packing-density pathway (Build 236)
+
+The browser now records a finite local-density distribution in every retained
+structural state. At radially stratified centers it estimates number density
+from the radius to the sixth neighbor, using the dimension-aware ball measure,
+and normalizes it to the median density of the inner half of the supplied
+configuration. The interactive view separates all sampled centers, the inner
+core, the outer radial quarter, and the inverse relative-local-volume proxy;
+the leap consequence matrix uses the identical retained snapshot.
+
+This is a geometric finite-observation estimator. It is invariant to
+translation, proper rotation, atom order, and a common rescaling of both the
+observed and supplied configurations. It does not create periodic images or
+infer a unit cell. It must not be reported as mass density, packing fraction,
+porosity, thermodynamic free volume, pressure, free energy, a bulk limit,
+kinetics, or elapsed physical time, and it is not used to rank or authorize
+growth actions.
+
 ### Species-resolved stoichiometry pathway (Build 235)
 
 The browser now unfolds the scalar composition-deviation channel into an

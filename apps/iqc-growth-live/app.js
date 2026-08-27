@@ -57,6 +57,7 @@ import { compareStructureFactors, jensenShannonDistance, localOrientationalOrder
 import { compositionBalanceDelta, compositionDrift, learnCompositionTarget } from "./composition-balance.js?v=20260824-1";
 import { consumeFeedstock, evaluateFeedstockDemand, feedstockReservoirSnapshot,
   initializeFeedstockReservoir } from "./feedstock-reservoir.js?v=20260827-2";
+import { localPackingDensityAudit } from "./local-packing-density.js?v=20260827-1";
 import { formalChargeBalanceDelta, learnFormalChargeTarget } from "./formal-charge-balance.js?v=20260824-1";
 import { chargeMomentSignature, compareChargeMomentGeometry } from "./global-charge-moments.js?v=20260826-1";
 import { incrementalIonicPairGeometry, incrementalIonicPairReachProfile,
@@ -689,6 +690,12 @@ const stoichiometryPathwayTimeline = $("stoichiometryPathwayTimeline");
 const stoichiometryPathwayPlot = $("stoichiometryPathwayPlot");
 const stoichiometryPathwayReadout = $("stoichiometryPathwayReadout");
 const stoichiometryPathwayBoundary = $("stoichiometryPathwayBoundary");
+const packingPathwayState = $("packingPathwayState");
+const packingPathwayMetrics = $("packingPathwayMetrics");
+const packingDistributionPlot = $("packingDistributionPlot");
+const packingPathwayPlot = $("packingPathwayPlot");
+const packingPathwayReadout = $("packingPathwayReadout");
+const packingPathwayBoundary = $("packingPathwayBoundary");
 const multiscalePathwayState = $("multiscalePathwayState");
 const multiscalePathwayHarmonics = $("multiscalePathwayHarmonics");
 const multiscalePathwayPlot = $("multiscalePathwayPlot");
@@ -1438,6 +1445,7 @@ let selectedLeapIndex = -1;
 let selectedLeapConsequenceId = "coordination";
 let selectedLeapConsequenceFilter = "all";
 let selectedStoichiometrySpecies = null;
+let selectedPackingMetric = "median";
 let leapEventCount = 0;
 let siteStructuralHistories = new Map();
 let pendingSiteHistoryIds = new Set();
@@ -4964,6 +4972,21 @@ function structuralScatteringSnapshot() {
     instrumentResponseUsed: false,
     usedAsGrowthInput: false,
   };
+}
+
+function structuralPackingSnapshot(source = atoms) {
+  const dimension = currentMaterial().intrinsicDimension === 2 ? 2 : 3;
+  const audit = localPackingDensityAudit(source.map((atom) => atom.p.toArray()),
+    referenceAtoms.map((atom) => atom.p.toArray()), {
+      dimension, neighborRank: 6, maximumCenters: 128, histogramBins: 20,
+    });
+  if (!audit.available) return audit;
+  const rounded = { ...audit };
+  ["referenceCoreDensity", "medianRelativeDensity", "percentile10RelativeDensity",
+    "percentile90RelativeDensity", "medianRelativeLocalVolume", "coreMedianRelativeDensity",
+    "surfaceMedianRelativeDensity", "underpackedFraction", "referenceLikeFraction",
+    "overpackedFraction"].forEach((key) => { rounded[key] = receiptRound(audit[key]); });
+  return rounded;
 }
 
 function localSymmetryTransition(before, after) {
@@ -9494,7 +9517,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-235",
+      buildId: "20260827-236",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -10175,6 +10198,26 @@ async function buildExperimentReceipt() {
         chemicalPotentialInferred: false,
         phaseEquilibriumInferred: false,
         diffusionIntegrated: false,
+        physicalTimeIntegrated: false,
+      },
+      localPackingPathway: {
+        role: "finite six-nearest-neighbor number-density distribution relative to the inner supplied configuration",
+        alignment: "structural leap index; no physical time",
+        pointSource: "before/after packing snapshots in structuralLeapCertificates",
+        selectedMetric: selectedPackingMetric,
+        centerSampling: "radial quantiles, maximum 128 centers",
+        coreDefinition: "inner half by centroid radius",
+        surfaceDefinition: "outer quarter by centroid radius",
+        translationInvariant: true,
+        properRotationInvariant: true,
+        atomPermutationInvariant: true,
+        usedAsGrowthInput: false,
+        periodicImagesUsed: false,
+        massDensityInferred: false,
+        porosityInferred: false,
+        thermodynamicVolumeInferred: false,
+        pressureInferred: false,
+        freeEnergyInferred: false,
         physicalTimeIntegrated: false,
       },
     },
@@ -11596,7 +11639,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-235" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-236" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -20385,6 +20428,7 @@ function resetCounters() {
   selectedLeapConsequenceId = "coordination";
   selectedLeapConsequenceFilter = "all";
   selectedStoichiometrySpecies = null;
+  selectedPackingMetric = "median";
   leapEventCount = 0;
   invalidateCreationResponseEvidenceCache("new specimen or reset state");
   siteStructuralHistories = new Map();
@@ -20909,7 +20953,7 @@ function performOffLatticeEvent() {
   const reconstructionWasCertified = reconstructionCertified;
   const relaxationAuthorized = reconstructionCertified;
   const before = { atoms: atoms.length, clusters: placedClusters.length, frontier: frontierCandidates.length,
-    morphology: structuralMorphologySnapshot(), composition: structuralCompositionSnapshot(),
+    morphology: structuralMorphologySnapshot(), composition: structuralCompositionSnapshot(), packing: structuralPackingSnapshot(),
     interfaces: structuralInterfaceSnapshot(),
     orientationalOrder: structuralOrientationalOrderSnapshot(), centrosymmetry: structuralCentrosymmetrySnapshot(),
     scattering: structuralScatteringSnapshot(),
@@ -20922,7 +20966,7 @@ function performOffLatticeEvent() {
       tests: { summary: "finite frontier exhausted", detail: "Every frozen port is consumed, unsupported, conflicting, or outside the public domain." },
       after: { atoms: atoms.length, clusters: placedClusters.length, accepted: 0, rejected: 0,
         depth: Math.max(0, ...placedClusters.map((placement) => placement.depth || 0)),
-        morphology: structuralMorphologySnapshot(), composition: structuralCompositionSnapshot(),
+        morphology: structuralMorphologySnapshot(), composition: structuralCompositionSnapshot(), packing: structuralPackingSnapshot(),
         interfaces: structuralInterfaceSnapshot(),
         orientationalOrder: structuralOrientationalOrderSnapshot(), centrosymmetry: structuralCentrosymmetrySnapshot(),
     scattering: structuralScatteringSnapshot(),
@@ -21119,7 +21163,7 @@ function performOffLatticeEvent() {
     relaxation,
     after: { atoms: atoms.length, clusters: placedClusters.length, accepted: acceptedInBatch, rejected: rejectedInBatch,
       depth: Math.max(0, ...placedClusters.map((placement) => placement.depth || 0)),
-      morphology: structuralMorphologySnapshot(), composition: structuralCompositionSnapshot(),
+      morphology: structuralMorphologySnapshot(), composition: structuralCompositionSnapshot(), packing: structuralPackingSnapshot(),
       interfaces: structuralInterfaceSnapshot(),
       orientationalOrder: structuralOrientationalOrderSnapshot(), centrosymmetry: structuralCentrosymmetrySnapshot(),
     scattering: structuralScatteringSnapshot(),
@@ -21136,7 +21180,7 @@ function performIceAnchorEvent() {
   const wave = iceAnchorTrace?.waves[iceAnchorWaveIndex];
   const before = { atoms: atoms.length, clusters: acceptedDecisions,
     frontier: wave?.candidateAnchors || 0, morphology: structuralMorphologySnapshot(),
-    composition: structuralCompositionSnapshot(),
+    composition: structuralCompositionSnapshot(), packing: structuralPackingSnapshot(),
     orientationalOrder: structuralOrientationalOrderSnapshot(), centrosymmetry: structuralCentrosymmetrySnapshot(),
     scattering: structuralScatteringSnapshot(),
     chargeMoment: structuralChargeMomentSnapshot(), bondValenceState: structuralBondValenceSnapshot(),
@@ -21178,7 +21222,7 @@ function performIceAnchorEvent() {
         detail: `${wave.rejectedCandidateAnchors} unsupported or conflicting candidates fail ${iceAnchorTrace.selectionRuleLabel}.` },
       after: { atoms: atoms.length, clusters: acceptedDecisions, accepted: 0,
         rejected: wave.rejectedCandidateAnchors, depth: wave.wave,
-        morphology: structuralMorphologySnapshot(), composition: structuralCompositionSnapshot(),
+        morphology: structuralMorphologySnapshot(), composition: structuralCompositionSnapshot(), packing: structuralPackingSnapshot(),
         interfaces: structuralInterfaceSnapshot(),
         orientationalOrder: structuralOrientationalOrderSnapshot(), centrosymmetry: structuralCentrosymmetrySnapshot(),
     scattering: structuralScatteringSnapshot(),
@@ -21217,7 +21261,7 @@ function performIceAnchorEvent() {
       detail: `${iceAnchorTrace.portCount} frozen proper-SE(3) ports + ${iceAnchorTrace.selectionRuleLabel}; ${wave.retainedOrientationHypotheses} mutually exclusive ${iceAnchorTrace.moleculeLabel} poses retained.` },
     after: { atoms: atoms.length, clusters: acceptedDecisions, accepted: wave.acceptedAnchors,
       rejected: wave.rejectedCandidateAnchors, depth: wave.wave,
-      morphology: structuralMorphologySnapshot(), composition: structuralCompositionSnapshot(),
+      morphology: structuralMorphologySnapshot(), composition: structuralCompositionSnapshot(), packing: structuralPackingSnapshot(),
       interfaces: structuralInterfaceSnapshot(),
       orientationalOrder: structuralOrientationalOrderSnapshot(), centrosymmetry: structuralCentrosymmetrySnapshot(),
     scattering: structuralScatteringSnapshot(),
@@ -23152,6 +23196,11 @@ function materialConsequenceRecords(before, after) {
       format: percent, deltaFormat: signedPercent, domain: [0, 1],
       evidence: `${after.morphology?.sampledCoordinationCenters || 0} radially stratified centers compared with supplied-configuration colored coordination medians.`,
       boundary: "Undercoordination is a geometric exposure proxy, not surface energy, bond energy, or a named defect." },
+    { id: "packing", group: "local", label: "relative local number density", unit: "six-neighbor density / supplied-core density",
+      before: before.packing?.medianRelativeDensity, after: after.packing?.medianRelativeDensity,
+      format: (value) => `${value.toFixed(3)}x`, deltaFormat: (value) => `${value >= 0 ? "+" : ""}${value.toFixed(3)}x`, domain: "adaptive",
+      evidence: `${after.packing?.sampledCenters || 0} radially stratified centers; core ${after.packing?.coreMedianRelativeDensity?.toFixed(3) || "—"}x and outer shell ${after.packing?.surfaceMedianRelativeDensity?.toFixed(3) || "—"}x.`,
+      boundary: "This finite k-nearest-neighbor estimator is not mass density, porosity, pressure, thermodynamic volume, free energy, or a bulk limit." },
     { id: "local-order", group: "local", label: `mean local ${orderSymbol}`, unit: "orientational-order magnitude",
       before: before.orientationalOrder?.harmonics?.[6]?.mean,
       after: after.orientationalOrder?.harmonics?.[6]?.mean,
@@ -23203,6 +23252,7 @@ function renderLeapConsequence(selected = null) {
   const current = selected ? null : {
     atoms: atoms.length,
     composition: structuralCompositionSnapshot(),
+    packing: structuralPackingSnapshot(),
     morphology: structuralMorphologySnapshot(),
     orientationalOrder: structuralOrientationalOrderSnapshot(),
     centrosymmetry: structuralCentrosymmetrySnapshot(),
@@ -23399,12 +23449,120 @@ function renderStoichiometryPathway() {
   stoichiometryPathwayBoundary.textContent = `Showing exact ${speciesLabel(selectedStoichiometrySpecies || "selected-species")} counts and fractions across ${states.length} retained structural state${states.length === 1 ? "" : "s"}. The dashed reference is derived only from the supplied configuration. Bars support any finite number of observed species; colors are standard element colors. Fractions are compositional bookkeeping—not chemical potential, activity, phase equilibrium, segregation energy, diffusion, flux, rate, or physical time.`;
 }
 
+function structuralPackingSeries() {
+  if (!leapHistory.length) return [{ leapIndex: -1, label: "seed", status: "seed",
+    packing: structuralPackingSnapshot() }];
+  return [{ leapIndex: -1, label: "seed", status: "seed", packing: leapHistory[0].before?.packing },
+    ...leapHistory.map((leap, leapIndex) => ({ leapIndex, label: `leap ${leap.index}`,
+      status: leap.status, packing: leap.after?.packing }))].filter((state) => state.packing?.available);
+}
+
+function packingMetricValue(packing, metric = selectedPackingMetric) {
+  if (!packing?.available) return null;
+  return ({ median: packing.medianRelativeDensity, core: packing.coreMedianRelativeDensity,
+    surface: packing.surfaceMedianRelativeDensity, volume: packing.medianRelativeLocalVolume })[metric];
+}
+
+function renderPackingPathway() {
+  if (!packingPathwayPlot) return;
+  const makeSvg = (name, attributes = {}) => {
+    const element = document.createElementNS("http://www.w3.org/2000/svg", name);
+    Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, String(value)));
+    return element;
+  };
+  const selectedLeap = leapHistory[selectedLeapIndex] || null;
+  const current = selectedLeap ? null : structuralPackingSnapshot();
+  const before = selectedLeap?.before?.packing || current;
+  const after = selectedLeap?.after?.packing || current;
+  const states = structuralPackingSeries();
+  packingPathwayMetrics.querySelectorAll("button[data-packing-metric]").forEach((button) =>
+    button.setAttribute("aria-pressed", String(button.dataset.packingMetric === selectedPackingMetric)));
+  packingDistributionPlot.replaceChildren();
+  const left = 30, right = 294, top = 8, bottom = 88;
+  [0, .5, 1, 1.5, 2, 2.5].forEach((tick) => {
+    const x = left + tick / 2.5 * (right - left);
+    packingDistributionPlot.append(makeSvg("line", { x1: x, x2: x, y1: top, y2: bottom, class: "grid" }));
+    const label = makeSvg("text", { x, y: 103, class: "axis", "text-anchor": "middle" });
+    label.textContent = `${tick.toFixed(1)}×`; packingDistributionPlot.append(label);
+  });
+  packingDistributionPlot.append(makeSvg("line", { x1: left + (right - left) / 2.5,
+    x2: left + (right - left) / 2.5, y1: top, y2: bottom, class: "reference" }));
+  const histogramMaximum = Math.max(1, ...(before?.histogram || []), ...(after?.histogram || []));
+  const drawHistogram = (packing, className, offset) => {
+    if (!packing?.histogram?.length) return;
+    const width = (right - left) / packing.histogram.length;
+    packing.histogram.forEach((count, index) => {
+      const height = count / histogramMaximum * (bottom - top - 5);
+      packingDistributionPlot.append(makeSvg("rect", { x: left + index * width + offset,
+        y: bottom - height, width: Math.max(1, width / 2 - 1), height, class: className }));
+    });
+  };
+  drawHistogram(before, "before", .5); drawHistogram(after, "after", (right - left) / 40);
+  const distributionLabel = makeSvg("text", { x: (left + right) / 2, y: 111, class: "axis", "text-anchor": "middle" });
+  distributionLabel.textContent = "local number density / supplied-core density"; packingDistributionPlot.append(distributionLabel);
+  packingPathwayPlot.replaceChildren();
+  const values = states.map((state) => packingMetricValue(state.packing)).filter(Number.isFinite);
+  const yMaximum = Math.max(1.25, ...values) * 1.08;
+  const px = (index) => left + (states.length <= 1 ? .5 : index / (states.length - 1)) * (right - left);
+  const py = (value) => bottom - Math.max(0, Math.min(yMaximum, value)) / yMaximum * (bottom - top);
+  [0, .5, 1].forEach((fraction) => {
+    const value = yMaximum * fraction;
+    packingPathwayPlot.append(makeSvg("line", { x1: left, x2: right, y1: py(value), y2: py(value), class: "grid" }));
+    const label = makeSvg("text", { x: left - 4, y: py(value) + 2, class: "axis", "text-anchor": "end" });
+    label.textContent = `${value.toFixed(2)}×`; packingPathwayPlot.append(label);
+  });
+  packingPathwayPlot.append(makeSvg("line", { x1: left, x2: right, y1: py(1), y2: py(1), class: "reference" }));
+  const path = states.map((state, index) => ({ state, index, value: packingMetricValue(state.packing) }))
+    .filter((point) => Number.isFinite(point.value));
+  if (path.length > 1) packingPathwayPlot.append(makeSvg("polyline", {
+    points: path.map((point) => `${px(point.index)},${py(point.value)}`).join(" "), class: `path ${selectedPackingMetric}` }));
+  path.forEach((point) => {
+    const circle = makeSvg("circle", { cx: px(point.index), cy: py(point.value), r: point.state.leapIndex < 0 ? 3.2 : 4,
+      class: `point ${point.state.status}${point.state.leapIndex === selectedLeapIndex ? " selected" : ""}`,
+      tabindex: point.state.leapIndex < 0 ? -1 : 0, role: point.state.leapIndex < 0 ? "img" : "button",
+      "aria-label": `${point.state.label}: ${selectedPackingMetric} relative packing ${point.value.toFixed(3)}` });
+    if (point.state.leapIndex >= 0) {
+      const select = () => { selectedLeapIndex = point.state.leapIndex; renderStructuralLeap(leapHistory[selectedLeapIndex]); };
+      circle.addEventListener("click", select); circle.addEventListener("keydown", (event) => {
+        if (["Enter", " "].includes(event.key)) { event.preventDefault(); select(); }
+      });
+    }
+    packingPathwayPlot.append(circle);
+  });
+  const pathwayLabel = makeSvg("text", { x: (left + right) / 2, y: 111, class: "axis", "text-anchor": "middle" });
+  pathwayLabel.textContent = "certified structural state →"; packingPathwayPlot.append(pathwayLabel);
+  packingPathwayReadout.replaceChildren();
+  const show = (value, suffix = "×") => Number.isFinite(value) ? `${value.toFixed(3)}${suffix}` : "unresolved";
+  [["selected state", selectedLeap ? `leap ${selectedLeap.index}` : "seed/current"],
+    ["median density", show(after?.medianRelativeDensity)], ["inner-core density", show(after?.coreMedianRelativeDensity)],
+    ["outer-shell density", show(after?.surfaceMedianRelativeDensity)], ["median local volume", show(after?.medianRelativeLocalVolume)],
+    ["reference-like centers", Number.isFinite(after?.referenceLikeFraction) ? `${(100 * after.referenceLikeFraction).toFixed(1)}%` : "unresolved"],
+    ["10–90% density", Number.isFinite(after?.percentile10RelativeDensity)
+      ? `${after.percentile10RelativeDensity.toFixed(2)}–${after.percentile90RelativeDensity.toFixed(2)}×` : "unresolved"],
+    ["sample", after?.available ? `${after.sampledCenters}/${after.currentSites} · k=${after.neighborRank}` : after?.reason || "unresolved"]]
+    .forEach(([label, value]) => {
+      const cell = document.createElement("span"); const key = document.createElement("small"); const datum = document.createElement("strong");
+      key.textContent = label; datum.textContent = value; cell.append(key, datum); packingPathwayReadout.append(cell);
+    });
+  const metricLabel = ({ median: "all-center density", core: "inner-core density",
+    surface: "outer-shell density", volume: "local-volume ratio" })[selectedPackingMetric];
+  packingPathwayState.textContent = `${states.length} state${states.length === 1 ? "" : "s"} · ${metricLabel}`;
+  packingPathwayBoundary.textContent = `Each center uses its ${after?.neighborRank || 6}th-neighbor radius in ${after?.dimension || 3}D; ratios are normalized by the inner half of the supplied configuration. The inner-core/outer-shell split is radial and finite, and no periodic images are invented. The estimator is translation-, proper-rotation-, permutation-, and common-scale-invariant. It is not mass density, packing fraction, porosity, thermodynamic free volume, pressure, energy, a bulk limit, rate, or physical time.`;
+}
+
+packingPathwayMetrics.addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-packing-metric]");
+  if (!["median", "core", "surface", "volume"].includes(button?.dataset.packingMetric)) return;
+  selectedPackingMetric = button.dataset.packingMetric; renderPackingPathway();
+});
+
 function renderStructuralLeap(leap = null) {
   if (!leapCertificateSection) return;
   leapCertificateSection.hidden = pipelineStage !== 4;
   if (pipelineStage !== 4) return;
   const selected = leap || leapHistory[selectedLeapIndex] || null;
   renderStoichiometryPathway();
+  renderPackingPathway();
   renderMultiscaleOrderPathway();
   renderChargeShapePortrait(policyComparisonHistory[selectedPolicySnapshotIndex] || lastPolicyComparison);
   renderBondValenceStructuralPathway();

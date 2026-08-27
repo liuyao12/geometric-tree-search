@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260827-235">
+  <link rel="stylesheet" href="./style.css?v=20260827-236">
   <script type="importmap">
     {
       "imports": {
@@ -1755,6 +1755,21 @@
             <div id="stoichiometryPathwayReadout" class="stoichiometry-pathway-readout"></div>
             <p id="stoichiometryPathwayBoundary">Fractions and integer site counts are exact for each retained structural state. The supplied composition is a geometric bookkeeping reference—not chemical potential, phase equilibrium, diffusion, flux, or physical time.</p>
           </article>
+          <article class="packing-pathway" aria-label="Interactive finite local packing-density pathway">
+            <header><span><small>finite local packing audit</small><strong id="packingPathwayState">seed neighborhood</strong></span>
+              <div id="packingPathwayMetrics" role="group" aria-label="Select a packing-density statistic">
+                <button type="button" data-packing-metric="median" aria-pressed="true">all centers</button>
+                <button type="button" data-packing-metric="core" aria-pressed="false">inner core</button>
+                <button type="button" data-packing-metric="surface" aria-pressed="false">outer shell</button>
+                <button type="button" data-packing-metric="volume" aria-pressed="false">local volume</button>
+              </div></header>
+            <div class="packing-pathway-plots">
+              <figure><figcaption>selected leap distribution <span><i class="before"></i>before <i class="after"></i>after</span></figcaption><svg id="packingDistributionPlot" viewBox="0 0 300 112" role="img" aria-label="Before and after local relative-density distributions"></svg></figure>
+              <figure><figcaption>retained structural states <span><i class="core"></i>core <i class="surface"></i>surface</span></figcaption><svg id="packingPathwayPlot" viewBox="0 0 300 112" role="img" aria-label="Local relative packing density across structural leaps"></svg></figure>
+            </div>
+            <div id="packingPathwayReadout" class="packing-pathway-readout"></div>
+            <p id="packingPathwayBoundary">A finite k-nearest-neighbor number-density ratio compares the explicit structure with the inner supplied configuration. It is not mass density, porosity, thermodynamic free volume, pressure, energy, or physical time.</p>
+          </article>
           <article class="multiscale-pathway" aria-label="Interactive local-order and reciprocal-order pathway">
             <header><span><small>multiscale order pathway</small><strong id="multiscalePathwayState">seed state</strong></span>
               <div id="multiscalePathwayHarmonics" role="group" aria-label="Local-order harmonic for the pathway">
@@ -1874,7 +1889,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260827-235"></script>
+  <script type="module" src="./app.js?v=20260827-236"></script>
   <script type="module" src="./evidence-atlas.js?v=20260827-20"></script>
 </body>
 </html>
