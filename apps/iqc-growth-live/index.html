@@ -224,7 +224,7 @@
             <p id="activeSampleNote">The controls below choose the source; this passport always reports the specimen currently shown and learned.</p>
           </section>
           <div class="database-picker">
-            <div class="database-heading"><strong>Search a random real material</strong><span id="databaseFamilySource">NOMAD · public bulk data</span></div>
+            <div class="database-heading"><strong>Browse real specimen candidates</strong><span id="databaseFamilySource">NOMAD · public bulk data</span></div>
             <label class="database-evidence database-family" for="databaseFamilySelect">
               <span><small>public specimen family</small><b id="databaseFamilyHint">periodic 3D solid</b></span>
               <select id="databaseFamilySelect">
@@ -256,8 +256,9 @@
                 <option value="calibration">Surrogate-ready · ≥5 paired calculation snapshots</option>
               </select>
             </label>
-            <button id="randomMaterialButton" class="database-button" type="button">Find a random matching structure</button>
+            <button id="randomMaterialButton" class="database-button" type="button">Sample four matching specimens</button>
             <div id="databaseStatus" class="import-status" role="status" aria-live="polite">Queries public bulk entries containing exactly the selected elements.</div>
+            <div id="databaseCandidateTray" class="database-candidate-tray" role="group" aria-label="Matching public specimen candidates" hidden></div>
             <p class="occupancy-note"><b>Disorder stays geometric.</b> Mixed/partial CIF sites remain one position with a finite species–vacancy alternative set. A colored orbital ring marks occupational alternatives; a violet wire ellipsoid shows the transported 2σ Uiso/Uij displacement halo. Both enter the auditable geometry, never an invented potential.</p>
             <a id="databaseSourceLink" class="source-link" href="https://nomad-lab.eu/" target="_blank" rel="noreferrer">About the NOMAD materials database ↗</a>
             <div id="periodicTablePanel" class="periodic-panel" hidden>
@@ -1826,7 +1827,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260827-221"></script>
+  <script type="module" src="./app.js?v=20260827-222"></script>
   <script type="module" src="./evidence-atlas.js?v=20260826-19"></script>
 </body>
 </html>

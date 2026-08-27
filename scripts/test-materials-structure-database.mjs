@@ -1,7 +1,9 @@
 import assert from "node:assert/strict";
-import { canonicalElement, makeLearningSupercell, NOMAD_EVIDENCE_TARGETS, NOMAD_STRUCTURE_FAMILIES, nomadArchiveToStructure,
+import { canonicalElement, loadNomadStructureCandidate, makeLearningSupercell, NOMAD_EVIDENCE_TARGETS,
+  NOMAD_STRUCTURE_FAMILIES, nomadArchiveToStructure, nomadEntryCandidate,
   nomadEvidenceProfileLabel, nomadEvidenceTargetAccepts, nomadStructureEvidenceProfile,
-  normalizeElements, normalizeNomadEvidenceTarget, normalizeNomadStructureFamily, queryPayload, randomNomadStructure }
+  nomadStructureCandidates, normalizeElements, normalizeNomadEvidenceTarget, normalizeNomadStructureFamily,
+  queryPayload, randomNomadStructure }
   from "../apps/iqc-growth-live/structure-database.js";
 import { validateStructure } from "../apps/iqc-growth-live/structure-io.js";
 
@@ -30,6 +32,7 @@ assert.equal(waterPayload.query.and[3]["results.material.chemical_formula_reduce
 assert.equal(normalizeNomadStructureFamily("twoD"), NOMAD_STRUCTURE_FAMILIES.twoD);
 assert.throws(() => normalizeNomadStructureFamily("invented"), /Unknown NOMAD structure family/);
 assert.throws(() => queryPayload(["Na", "Cl"], 0, "geometry", "water"), /requires exactly H \+ O/);
+assert.equal(queryPayload(["C"], 7, "geometry", "twoD", 99).pagination.page_size, 8);
 
 const entry = {
   entry_id: "test-entry",
@@ -116,6 +119,33 @@ assert.equal(sampled.evidenceProfile.forceLabelsAvailable, true);
 assert.equal(sampled.structure.metadata.nomadEvidenceTarget, "geometry");
 assert.equal(sampled.structure.metadata.nomadStructureFamily, "bulk");
 assert.equal(sampled.structureFamily.id, "bulk");
+const indexedCandidate = nomadEntryCandidate(entry);
+assert.equal(indexedCandidate.formula, "ClNa");
+assert.equal(indexedCandidate.spaceGroupNumber, 225);
+assert.equal(indexedCandidate.indexedRelaxation, false);
+assert.ok(indexedCandidate.sourceUrl.includes("/search/entries/entry/id/test-entry"));
+const candidateCalls = [];
+const candidateFetch = async (url, options) => {
+  candidateCalls.push({ url, body: JSON.parse(options.body) });
+  const value = url.endsWith("/entries/query")
+    ? { pagination: { total: 4 }, data: [entry] }
+    : archive;
+  return new Response(JSON.stringify(value), { status: 200, headers: { "Content-Type": "application/json" } });
+};
+const tray = await nomadStructureCandidates(["Na", "Cl"], {
+  fetchImpl: candidateFetch, random: () => 0, limit: 4,
+});
+assert.equal(tray.total, 4);
+assert.equal(tray.candidates.length, 1);
+assert.equal(candidateCalls.length, 2);
+assert.equal(candidateCalls[1].body.pagination.page_size, 4);
+const loadedCandidate = await loadNomadStructureCandidate(tray.candidates[0], {
+  fetchImpl: candidateFetch, structureFamily: "bulk", evidenceTarget: "geometry",
+  candidateOffset: 2, candidateCount: 4,
+});
+assert.equal(loadedCandidate.structure.atoms.length, 128);
+assert.equal(loadedCandidate.structure.metadata.nomadCandidateOffset, 2);
+assert.equal(loadedCandidate.structure.metadata.nomadCandidateCount, 4);
 const forceSampled = await randomNomadStructure(["Na", "Cl"], {
   fetchImpl: fakeFetch, random: () => 0, evidenceTarget: "forces",
 });

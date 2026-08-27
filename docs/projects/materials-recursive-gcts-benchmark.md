@@ -6582,3 +6582,17 @@ The receipt records this source-family choice and explicitly records that it is 
 for cluster identity or growth. The family is an acquisition constraint, not a training
 label; H₂O retrieval does not assert an ice polymorph, and NOMAD's 2D classification does
 not supply a lattice, layer group, cluster cover, marking, or continuation grammar.
+
+## Build 222: make public-source choice comparative and auditable
+
+An exact composition / specimen-family / evidence query now returns a bounded four-entry
+NOMAD tray before any archive becomes the active geometry. The tray exposes formula,
+reported symmetry, indexed calculation presence, and result-window provenance. Selecting
+one entry triggers the same bounded archive conversion and client-side geometry,
+relaxation, force, or calibration gate used previously; failure preserves the current
+specimen and does not fall back to a weaker entry.
+
+This improves experimental design without creating label leakage. Indexed formula,
+space-group metadata, and tray order are never learner inputs. The receipt records explicit
+candidate selection and page provenance, while GCTS still begins from the chosen archive's
+species-labelled Cartesian coordinates and permitted supplied measurement channels.

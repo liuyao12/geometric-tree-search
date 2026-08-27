@@ -23,7 +23,11 @@ def main() -> None:
         assert f'value="{family}"' in HTML
         assert f'{family}: Object.freeze(' in DATABASE
     assert "normalizeNomadStructureFamily" in DATABASE
+    assert "nomadStructureCandidates" in DATABASE
+    assert "loadNomadStructureCandidate" in DATABASE
     assert "renderDatabaseStructureFamily" in APP
+    assert "renderDatabaseCandidateTray" in APP
+    assert "explicitCandidateSelection" in APP
     assert "structureFamily: structureFamily.id" in APP
     assert "structureFamilyUsedForGrowth: false" in APP
     assert "nomadStructureEvidenceProfile" in DATABASE
@@ -34,9 +38,11 @@ def main() -> None:
     assert "clientSideEvidenceGate: true" in APP
     assert "targetUsedForGrowth: false" in APP
     assert "database-evidence" in STYLE
-    assert 'structure-database.js?v=20260827-8' in APP
-    assert 'buildId: "20260827-221"' in APP
-    assert 'app.js?v=20260827-221' in HTML
+    assert 'id="databaseCandidateTray"' in HTML
+    assert "database-candidate-tray" in STYLE
+    assert 'structure-database.js?v=20260827-9' in APP
+    assert 'buildId: "20260827-222"' in APP
+    assert 'app.js?v=20260827-222' in HTML
     print("NOMAD evidence-targeted search contract passed")
 
 

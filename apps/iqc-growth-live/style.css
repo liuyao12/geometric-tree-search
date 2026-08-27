@@ -446,6 +446,16 @@ body.study-guide-open { overflow: hidden; }
 .database-button:hover { border-color: var(--mint); background: rgba(101,225,188,.13); }
 .database-button:disabled { opacity: .55; cursor: wait; }
 .database-button.secondary-button { margin-top: 0; border-color: rgba(151,177,190,.3); background: rgba(151,177,190,.045); color: var(--muted); }
+.database-candidate-tray { display: grid; gap: 5px; margin-top: 7px; }
+.database-candidate-tray[hidden] { display: none; }
+.database-candidate { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 4px 7px; width: 100%; padding: 7px 8px; border: 1px solid rgba(151,194,183,.17); background: rgba(5,17,18,.72); color: #aebfba; text-align: left; cursor: pointer; }
+.database-candidate:hover,.database-candidate:focus-visible { border-color: rgba(101,225,188,.55); background: rgba(101,225,188,.055); }
+.database-candidate:disabled { opacity: .55; cursor: wait; }
+.database-candidate strong { overflow: hidden; color: #dce8e4; font: 9px var(--mono); font-weight: 500; text-overflow: ellipsis; white-space: nowrap; }
+.database-candidate > b { color: var(--mint); font: 6px var(--mono); font-weight: 400; text-transform: uppercase; }
+.database-candidate span { overflow: hidden; color: #70857f; font: 6px/1.35 var(--mono); text-overflow: ellipsis; white-space: nowrap; }
+.database-candidate small { color: #60756f; font: 5.5px var(--mono); text-align: right; }
+.database-candidate.selected { border-color: var(--mint); box-shadow: inset 2px 0 0 var(--mint); }
 .source-link { display: inline-block; margin-top: 7px; color: var(--faint); font: 7px var(--mono); text-underline-offset: 3px; }
 .local-import { margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--line); }
 .local-import summary { color: var(--faint); font: 8px var(--mono); cursor: pointer; }

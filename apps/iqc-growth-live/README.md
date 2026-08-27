@@ -5850,3 +5850,18 @@ These are source filters, not supplied structure labels. The browser may use the
 class, database IDs, and source metadata never define a cluster, marking, candidate, or
 growth branch. “Crystalline H₂O” is also not an ice-polymorph assignment: phase and
 hydrogen-bond topology remain consequences to be measured from the retrieved coordinates.
+
+### Build 222 · compare a public specimen tray before opening an archive
+
+The NOMAD route now samples four indexed matches into an interactive specimen tray instead
+of immediately replacing the active configuration with one opaque random result. Each card
+shows reduced formula, reported crystal system / space group, indexed calculation evidence,
+and its position in the bounded public result window. Choosing a card then opens exactly
+that archive, applies the declared client-side evidence gate, expands its periodic learning
+window, and updates the active specimen passport. A failed archive leaves the prior specimen
+intact so another card can be inspected without silently weakening the query.
+
+Candidate metadata is acquisition provenance only. Formula and symmetry help a scientist
+choose what to inspect, but neither is supplied to cluster discovery, marking learning, or
+growth. The receipt records the selected public-result offset and tray size while continuing
+to deny source-family or evidence-target use as a cluster or growth label.

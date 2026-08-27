@@ -31,7 +31,8 @@ function normalizeElements(values) {
   return elements;
 }
 
-function queryPayload(elementValues, pageOffset = 0, evidenceTargetValue = "geometry", structureFamilyValue = "bulk") {
+function queryPayload(elementValues, pageOffset = 0, evidenceTargetValue = "geometry", structureFamilyValue = "bulk",
+  pageSize = 1) {
   const structureFamily = normalizeNomadStructureFamily(structureFamilyValue);
   const suppliedElements = normalizeElements(elementValues);
   const elements = structureFamily.fixedElements || suppliedElements;
@@ -55,7 +56,7 @@ function queryPayload(elementValues, pageOffset = 0, evidenceTargetValue = "geom
         ...(evidenceFilter ? [evidenceFilter] : []),
       ],
     },
-    pagination: { page_size: 1, page_offset: pageOffset },
+    pagination: { page_size: Math.max(1, Math.min(8, Math.floor(Number(pageSize) || 1))), page_offset: pageOffset },
     required: {
       include: [
         "entry_id",
@@ -421,6 +422,82 @@ export function nomadEvidenceProfileLabel(profile) {
   return "geometry-only archive";
 }
 
+export function nomadEntryCandidate(entry) {
+  if (!entry?.entry_id) throw new Error("NOMAD candidate is missing an entry ID");
+  const material = entry.results?.material || {};
+  const symmetry = material.symmetry || {};
+  const optimization = entry.results?.properties?.geometry_optimization || {};
+  return Object.freeze({
+    entryId: entry.entry_id,
+    materialId: material.material_id || null,
+    formula: material.chemical_formula_reduced || (material.elements || []).join(""),
+    elements: Object.freeze([...(material.elements || [])]),
+    crystalSystem: symmetry.crystal_system || null,
+    spaceGroupNumber: symmetry.space_group_number || null,
+    spaceGroupSymbol: symmetry.space_group_symbol || null,
+    indexedRelaxation: Boolean(entry.results?.properties?.geometry_optimization),
+    indexedFinalEnergyDifference: Number.isFinite(optimization.final_energy_difference)
+      ? optimization.final_energy_difference : null,
+    indexedFinalForceMaximum: Number.isFinite(optimization.final_force_maximum)
+      ? optimization.final_force_maximum : null,
+    sourceUrl: `https://nomad-lab.eu/prod/v1/gui/search/entries/entry/id/${encodeURIComponent(entry.entry_id)}`,
+    entry,
+  });
+}
+
+export async function nomadStructureCandidates(elementValues, options = {}) {
+  const structureFamily = normalizeNomadStructureFamily(options.structureFamily);
+  const elements = normalizeElements(elementValues);
+  const evidenceTarget = normalizeNomadEvidenceTarget(options.evidenceTarget);
+  const fetchImpl = options.fetchImpl || fetch;
+  const limit = Math.max(1, Math.min(6, Math.floor(Number(options.limit) || 4)));
+  const first = await postJson(`${NOMAD_API}/entries/query`,
+    queryPayload(elements, 0, evidenceTarget.id, structureFamily.id), fetchImpl);
+  const total = Number(first.pagination?.total || 0);
+  if (!total) throw new Error(`NOMAD has no public ${structureFamily.label} entries containing exactly ${elements.join(" + ")}`);
+  const accessibleTotal = Math.min(total, 10_000);
+  const maximumOffset = Math.max(0, accessibleTotal - Math.min(limit, accessibleTotal));
+  const selectedOffset = maximumOffset ? randomIndex(maximumOffset + 1, options.random) : 0;
+  const page = selectedOffset === 0 && limit === 1 ? first : await postJson(`${NOMAD_API}/entries/query`,
+    queryPayload(elements, selectedOffset, evidenceTarget.id, structureFamily.id, limit), fetchImpl);
+  const candidates = (page.data || []).map(nomadEntryCandidate);
+  if (!candidates.length) throw new Error("NOMAD returned an empty specimen page");
+  return Object.freeze({ candidates: Object.freeze(candidates), total, selectedOffset, structureFamily, evidenceTarget });
+}
+
+export async function loadNomadStructureCandidate(candidateValue, options = {}) {
+  const candidate = candidateValue?.entry ? candidateValue : nomadEntryCandidate(candidateValue);
+  const structureFamily = normalizeNomadStructureFamily(options.structureFamily);
+  const evidenceTarget = normalizeNomadEvidenceTarget(options.evidenceTarget);
+  const fetchImpl = options.fetchImpl || fetch;
+  const entry = candidate.entry;
+  const hasRelaxation = Boolean(entry.results?.properties?.geometry_optimization);
+  const archive = await postJson(`${NOMAD_API}/entries/${encodeURIComponent(entry.entry_id)}/archive/query`, {
+    required: { run: hasRelaxation ? {
+      program: "*",
+      system: { atoms: "*" },
+      calculation: { energy: "*", forces: "*", charges: "*", system_ref: "*", method_ref: "*" },
+    } : {
+      program: "*",
+      "system[-1]": { atoms: "*" },
+      "calculation[-1]": { energy: "*", forces: "*", charges: "*", system_ref: "*", method_ref: "*" },
+    } },
+  }, fetchImpl);
+  const primitive = nomadArchiveToStructure(entry, archive);
+  if (primitive.atoms.length > 512) throw new Error(`archive contains ${primitive.atoms.length} atoms before expansion`);
+  const evidenceProfile = nomadStructureEvidenceProfile(primitive);
+  if (!nomadEvidenceTargetAccepts(evidenceProfile, evidenceTarget.id)) {
+    throw new Error(`entry does not satisfy ${evidenceTarget.label}`);
+  }
+  const structure = makeLearningSupercell(primitive);
+  structure.metadata = { ...structure.metadata, nomadStructureFamily: structureFamily.id,
+    nomadStructureFamilyLabel: structureFamily.label, nomadEvidenceTarget: evidenceTarget.id,
+    nomadEvidenceProfile: evidenceProfile, nomadEvidenceLabel: nomadEvidenceProfileLabel(evidenceProfile),
+    nomadCandidateOffset: Number.isInteger(options.candidateOffset) ? options.candidateOffset : null,
+    nomadCandidateCount: Number.isInteger(options.candidateCount) ? options.candidateCount : null };
+  return { structure, candidate, structureFamily, evidenceTarget, evidenceProfile };
+}
+
 export async function randomNomadStructure(elementValues, options = {}) {
   const structureFamily = normalizeNomadStructureFamily(options.structureFamily);
   const elements = normalizeElements(elementValues);
@@ -443,28 +520,9 @@ export async function randomNomadStructure(elementValues, options = {}) {
     const entry = page.data?.[0];
     if (!entry) continue;
     try {
-      const hasRelaxation = Boolean(entry.results?.properties?.geometry_optimization);
-      const archive = await postJson(`${NOMAD_API}/entries/${encodeURIComponent(entry.entry_id)}/archive/query`, {
-        required: { run: hasRelaxation ? {
-          program: "*",
-          system: { atoms: "*" },
-          calculation: { energy: "*", forces: "*", charges: "*", system_ref: "*", method_ref: "*" },
-        } : {
-          program: "*",
-          "system[-1]": { atoms: "*" },
-          "calculation[-1]": { energy: "*", forces: "*", charges: "*", system_ref: "*", method_ref: "*" },
-        } },
-      }, fetchImpl);
-      const primitive = nomadArchiveToStructure(entry, archive);
-      if (primitive.atoms.length > 512) throw new Error(`archive contains ${primitive.atoms.length} atoms before expansion`);
-      const evidenceProfile = nomadStructureEvidenceProfile(primitive);
-      if (!nomadEvidenceTargetAccepts(evidenceProfile, evidenceTarget.id)) {
-        throw new Error(`entry does not satisfy ${evidenceTarget.label}`);
-      }
-      const structure = makeLearningSupercell(primitive);
-      structure.metadata = { ...structure.metadata, nomadStructureFamily: structureFamily.id,
-        nomadStructureFamilyLabel: structureFamily.label, nomadEvidenceTarget: evidenceTarget.id,
-        nomadEvidenceProfile: evidenceProfile, nomadEvidenceLabel: nomadEvidenceProfileLabel(evidenceProfile) };
+      const { structure, evidenceProfile } = await loadNomadStructureCandidate(nomadEntryCandidate(entry), {
+        structureFamily: structureFamily.id, evidenceTarget: evidenceTarget.id, fetchImpl,
+      });
       return { structure, total, selectedOffset: offset, attemptedEntries: triedOffsets.size,
         structureFamily, evidenceTarget, evidenceProfile };
     } catch (error) {
