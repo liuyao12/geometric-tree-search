@@ -113,6 +113,38 @@ export function buildCreationResponseAssociation(records, { minimumSamples = 4 }
   };
 }
 
+/** Descriptive per-leap stability profile for one already-selected term/outcome pair. */
+export function creationResponseLeapProfile(records, termId, outcomeId, { minimumSamples = 4 } = {}) {
+  if (!Array.isArray(records) || !termId || !outcomeId || minimumSamples < 3
+      || records.some((record) => !Number.isInteger(record.leapIndex))) {
+    throw new Error("leap profile needs grouped placement records, term, outcome, and leap identities");
+  }
+  const leapIndices = [...new Set(records.map((record) => record.leapIndex))]
+    .sort((first, second) => first - second);
+  const blocks = leapIndices.map((leapIndex) => {
+    const blockRecords = records.filter((record) => record.leapIndex === leapIndex);
+    const audit = buildCreationResponseAssociation(blockRecords, { minimumSamples });
+    const association = audit.associations.find((entry) => entry.termId === termId
+      && entry.outcomeId === outcomeId);
+    return { leapIndex, placements: blockRecords.length, emittedSitePresentations: audit.emittedSitePresentations,
+      available: Boolean(association), spearmanRho: association?.spearmanRho ?? null,
+      reason: association ? null : "insufficient support or within-block variation" };
+  });
+  const available = blocks.filter((block) => block.available);
+  const signs = new Set(available.map((block) => Math.sign(block.spearmanRho)));
+  return {
+    termId, outcomeId, blocks,
+    availableBlocks: available.length,
+    totalBlocks: blocks.length,
+    signConsistentAcrossAvailableBlocks: available.length > 0 && signs.size === 1,
+    minimumRho: available.length ? Math.min(...available.map((block) => block.spearmanRho)) : null,
+    maximumRho: available.length ? Math.max(...available.map((block) => block.spearmanRho)) : null,
+    groupingUnit: "one accepted whole-cluster placement within one complete structural leap",
+    descriptiveOnly: true, randomSplitUsed: false, targetUsed: false,
+    causalEffectInferred: false, independentMaterialSamples: false,
+  };
+}
+
 /** Select a term on earlier complete leap blocks, then score it on later blocks. */
 export function blockedCreationResponseValidation(records, outcomeId, {
   trainingFraction = 2 / 3, minimumSamplesPerSplit = 8,

@@ -5457,3 +5457,17 @@ blocked validations, and grouped sample accounting while omitting the full rows;
 retains the rows required to recompute them. Atom IDs and coordinates remain excluded, one
 placement remains one sample, and no causal, kinetic, energetic, or independent-material
 claim is added.
+
+### Build 197 · leap-resolved robustness and inspectable artifacts
+
+The creation→response microscope now exposes heterogeneity that a single pooled coefficient
+can hide. For the selected physics term and response, a compact stability strip recomputes
+Spearman ρ independently inside every complete structural leap, shows unavailable blocks
+instead of filling them, and reports the placement count on hover. Positive and negative
+blocks remain visually distinct; the profile is explicitly descriptive rather than a random
+split, confidence interval, or independent replicate analysis.
+
+An expandable reproducibility artifact now shows the exact grouping, retention, coordinate
+boundary, and receipt/notebook policy. Its SHA-256 prefix is computed from the same canonical
+dataset stored by Build 196, and the full coordinate-free dataset can be copied directly for
+external inspection. Receipts and saved notebooks also retain the per-outcome leap profiles.

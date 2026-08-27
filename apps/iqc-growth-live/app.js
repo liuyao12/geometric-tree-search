@@ -33,8 +33,8 @@ import { buildSiteCreationResponse } from "./site-creation-response.js?v=2026082
 import { appendSiteStructuralHistory, summarizeSiteStructuralHistory }
   from "./site-structural-history.js?v=20260826-1";
 import { blockedCreationResponseValidation, buildCreationResponseAssociation,
-  canonicalCreationResponseDataset }
-  from "./creation-response-association.js?v=20260826-3";
+  canonicalCreationResponseDataset, creationResponseLeapProfile }
+  from "./creation-response-association.js?v=20260826-4";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -563,6 +563,10 @@ const sitePopulationResponseOutcome = $("sitePopulationResponseOutcome");
 const sitePopulationResponsePlot = $("sitePopulationResponsePlot");
 const sitePopulationResponseTerms = $("sitePopulationResponseTerms");
 const sitePopulationValidation = $("sitePopulationValidation");
+const sitePopulationLeapProfile = $("sitePopulationLeapProfile");
+const sitePopulationArtifactState = $("sitePopulationArtifactState");
+const sitePopulationArtifactGrid = $("sitePopulationArtifactGrid");
+const sitePopulationArtifactCopy = $("sitePopulationArtifactCopy");
 const sitePopulationResponseBoundary = $("sitePopulationResponseBoundary");
 const unitCellBadge = $("unitCellBadge");
 const captionAction = $("captionAction");
@@ -1014,6 +1018,16 @@ sitePopulationResponseOutcome.addEventListener("change", () => {
   const atom = atoms.find((entry) => entry.id === selectedSiteId);
   if (atom) renderPopulationResponseAssociation(atom);
 });
+sitePopulationArtifactCopy.addEventListener("click", async () => {
+  const dataset = canonicalCreationResponseDataset(creationResponseAssociationRecords());
+  try {
+    await navigator.clipboard.writeText(`${JSON.stringify(dataset, null, 2)}\n`);
+    sitePopulationArtifactCopy.textContent = "copied";
+    setTimeout(() => { sitePopulationArtifactCopy.textContent = "copy dataset"; }, 1400);
+  } catch (_) {
+    sitePopulationArtifactCopy.textContent = "copy unavailable";
+  }
+});
 function cycleInspectedSite() {
   if (!atoms.length) return;
   const current = atoms.findIndex((atom) => atom.id === selectedSiteId);
@@ -1252,6 +1266,7 @@ let siteStructuralHistories = new Map();
 let pendingSiteHistoryIds = new Set();
 let selectedPopulationResponseOutcome = "nonaffine";
 let selectedPopulationResponseTermId = null;
+let populationArtifactRenderToken = 0;
 let multiscalePathwayHarmonic = 6;
 let selectedLeapPhysicsId = "steric";
 let selectedLeapPhysicsFilter = "all";
@@ -3735,6 +3750,10 @@ async function creationResponseReceiptEvidence() {
   const blockedValidation = Object.fromEntries(Object.keys(POPULATION_RESPONSE_LABELS).map((outcomeId) =>
     [outcomeId, blockedCreationResponseValidation(dataset.records, outcomeId,
       { minimumSamplesPerSplit: 8 })]));
+  const leapProfiles = Object.fromEntries(Object.keys(POPULATION_RESPONSE_LABELS).map((outcomeId) => {
+    const selected = audit.associations.find((entry) => entry.outcomeId === outcomeId);
+    return [outcomeId, selected ? creationResponseLeapProfile(dataset.records, selected.termId, outcomeId) : null];
+  }));
   return {
     schema: 1,
     dataset,
@@ -3742,6 +3761,7 @@ async function creationResponseReceiptEvidence() {
     associationMethod: "Spearman rank association over grouped whole-cluster placements",
     associations,
     blockedValidation,
+    leapProfiles,
     available: audit.available,
     placementSamples: audit.placementSamples,
     emittedSitePresentations: audit.emittedSitePresentations,
@@ -3781,15 +3801,66 @@ function renderPopulationBlockedValidation(validation) {
   sitePopulationValidation.append(label, value, detail);
 }
 
+function populationArtifactCell(label, value, detail) {
+  const cell = document.createElement("span");
+  const key = document.createElement("small"); key.textContent = label;
+  const result = document.createElement("strong"); result.textContent = value;
+  const note = document.createElement("em"); note.textContent = detail;
+  cell.append(key, result, note); return cell;
+}
+
+function renderPopulationArtifact(records) {
+  const renderToken = ++populationArtifactRenderToken;
+  const dataset = canonicalCreationResponseDataset(records);
+  sitePopulationArtifactState.textContent = `hashing ${dataset.retainedPlacements} grouped records…`;
+  sitePopulationArtifactGrid.replaceChildren(
+    populationArtifactCell("grouping", `${dataset.retainedPlacements} placements`, "one row per whole-cluster action"),
+    populationArtifactCell("retention", dataset.truncated ? `last ${dataset.maximumRecords}` : "complete",
+      dataset.truncated ? `${dataset.totalEligiblePlacements} eligible` : "no truncation"),
+    populationArtifactCell("payload", "coordinate-free", "no atom IDs or target sites"),
+    populationArtifactCell("receipt", "full rows", "notebook keeps digest + summaries"),
+  );
+  receiptSha256(JSON.stringify(dataset)).then((digest) => {
+    if (renderToken !== populationArtifactRenderToken) return;
+    sitePopulationArtifactState.textContent = `SHA-256 ${digest.slice(0, 16)}… · ${dataset.retainedPlacements} rows`;
+  }).catch(() => {
+    if (renderToken === populationArtifactRenderToken) sitePopulationArtifactState.textContent = "SHA-256 unavailable in this browser";
+  });
+}
+
+function renderPopulationLeapProfile(records, termId, outcomeId) {
+  sitePopulationLeapProfile.replaceChildren();
+  if (!termId) {
+    sitePopulationLeapProfile.style.setProperty("--leap-count", "1");
+    sitePopulationLeapProfile.setAttribute("aria-label", "Per-leap association stability unavailable");
+    return;
+  }
+  const profile = creationResponseLeapProfile(records, termId, outcomeId);
+  sitePopulationLeapProfile.style.setProperty("--leap-count", String(Math.max(1, profile.blocks.length)));
+  profile.blocks.forEach((block) => {
+    const item = document.createElement("span");
+    item.className = block.available ? block.spearmanRho < 0 ? "negative" : "positive" : "unavailable";
+    item.style.setProperty("--magnitude", `${Math.round(100 * Math.abs(block.spearmanRho || 0))}%`);
+    item.dataset.value = block.available ? `${block.spearmanRho >= 0 ? "+" : ""}${block.spearmanRho.toFixed(2)}` : "—";
+    item.textContent = `L${block.leapIndex}`;
+    item.title = `leap ${block.leapIndex} · ${block.placements} placements · ${block.available
+      ? `Spearman ρ ${block.spearmanRho}` : block.reason}`;
+    sitePopulationLeapProfile.append(item);
+  });
+  sitePopulationLeapProfile.setAttribute("aria-label", `${profile.availableBlocks} of ${profile.totalBlocks} complete leap blocks estimate ${termId} versus ${outcomeId}; sign ${profile.signConsistentAcrossAvailableBlocks ? "consistent" : "not consistently resolved"}`);
+}
+
 function renderPopulationResponseAssociation(atom) {
   const records = creationResponseAssociationRecords();
   const audit = buildCreationResponseAssociation(records);
+  renderPopulationArtifact(records);
   renderPopulationBlockedValidation(blockedCreationResponseValidation(records,
     selectedPopulationResponseOutcome, { minimumSamplesPerSplit: 8 }));
   sitePopulationResponsePlot.replaceChildren(); sitePopulationResponseTerms.replaceChildren();
   sitePopulationResponseOutcome.value = selectedPopulationResponseOutcome;
   const outcomeAssociations = audit.associations.filter((entry) => entry.outcomeId === selectedPopulationResponseOutcome);
   if (!audit.available || !outcomeAssociations.length) {
+    renderPopulationLeapProfile(records, null, selectedPopulationResponseOutcome);
     sitePopulationResponseState.textContent = `${audit.placementSamples} grouped placement${audit.placementSamples === 1 ? "" : "s"} · variation/sample support unavailable`;
     sitePopulationResponseBoundary.textContent = "At least four whole-cluster placements with variation in both an active creation term and the selected later response are required; no association is invented.";
     return;
@@ -3798,6 +3869,7 @@ function renderPopulationResponseAssociation(atom) {
     selectedPopulationResponseTermId = outcomeAssociations[0].termId;
   }
   const selected = outcomeAssociations.find((entry) => entry.termId === selectedPopulationResponseTermId);
+  renderPopulationLeapProfile(records, selected.termId, selectedPopulationResponseOutcome);
   sitePopulationResponseState.textContent = `${audit.placementSamples} placements · ${audit.emittedSitePresentations} site responses · ρ ${selected.spearmanRho >= 0 ? "+" : ""}${selected.spearmanRho.toFixed(3)}`;
   outcomeAssociations.slice(0, 8).forEach((association) => {
     const button = document.createElement("button"); button.type = "button";
@@ -8505,7 +8577,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-196",
+      buildId: "20260826-197",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -10648,6 +10720,7 @@ function experimentNotebookSummary(receipt) {
       datasetTruncated: search.creationResponseEvidence.dataset.truncated,
       associations: search.creationResponseEvidence.associations,
       blockedValidation: search.creationResponseEvidence.blockedValidation,
+      leapProfiles: search.creationResponseEvidence.leapProfiles,
       groupingUnit: search.creationResponseEvidence.dataset.groupingUnit,
       atomLevelPseudoreplicationAvoided: true,
       blockedByCompleteStructuralLeap: true,

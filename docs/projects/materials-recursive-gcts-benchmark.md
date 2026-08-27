@@ -6185,3 +6185,20 @@ turning emitted atoms into independent samples or embedding target coordinates. 
 explicitly records that it uses one whole-cluster placement per sample, blocks by complete
 structural leaps, never selects on held blocks, uses no random split or target, and supports
 no causal, kinetic, energetic, or independent-material inference.
+
+## Build 197: inspect within-run leap heterogeneity
+
+Build 197 adds a per-complete-leap robustness profile for each selected creation term and
+response. Each bar is recomputed from only the whole-cluster placements created in that
+structural leap; a bar is absent when its block has fewer than four grouped samples or no
+within-block variation. The strip therefore reveals sign reversals and unavailable blocks
+that the pooled coefficient and the earlier/later blocked split can obscure. These blocks
+remain correlated algorithmic states of one deterministic run, not physical time points or
+independent replicates.
+
+The site microscope also exposes the canonical artifact manifest and SHA-256 prefix and can
+copy the full coordinate-free grouped dataset. The copied rows, full receipt rows, receipt
+digest, and compact notebook digest share the same canonical serialization. Receipts and
+notebook summaries additionally record per-outcome leap profiles selected from the pooled
+descriptive association. This improves auditability without allowing the target, atom IDs,
+coordinates, or held-block outcomes to affect growth or the earlier-block validation rule.

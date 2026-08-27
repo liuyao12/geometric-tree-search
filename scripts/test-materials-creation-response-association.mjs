@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { blockedCreationResponseValidation, buildCreationResponseAssociation,
-  canonicalCreationResponseDataset }
+  canonicalCreationResponseDataset, creationResponseLeapProfile }
   from "../apps/iqc-growth-live/creation-response-association.js";
 
 const records = Array.from({ length: 6 }, (_, index) => ({
@@ -35,7 +35,6 @@ assert.equal(canonical.atomIdsEmbedded, false);
 assert.deepEqual(canonical.records[0].physicsTerms.map((term) => term.id), ["loop", "strain"]);
 assert.equal(canonicalCreationResponseDataset(records, { maximumRecords: 3 }).truncated, true);
 assert.throws(() => canonicalCreationResponseDataset([...records, records[0]]), /one record/);
-
 const blockedRecords = Array.from({ length: 24 }, (_, index) => {
   const leapIndex = Math.floor(index / 6) + 1; const within = index % 6;
   const heldout = leapIndex >= 4;
@@ -43,6 +42,11 @@ const blockedRecords = Array.from({ length: 24 }, (_, index) => {
     physicsTerms: [{ id: "strain", label: "strain", weight: 1, contribution: within }],
     outcomes: { shellChange: heldout ? 5 - within : within } };
 });
+const leapProfile = creationResponseLeapProfile(blockedRecords, "strain", "shellChange");
+assert.equal(leapProfile.totalBlocks, 4);
+assert.equal(leapProfile.availableBlocks, 4);
+assert.deepEqual(leapProfile.blocks.map((block) => block.spearmanRho), [1, 1, 1, -1]);
+assert.equal(leapProfile.signConsistentAcrossAvailableBlocks, false);
 const blocked = blockedCreationResponseValidation(blockedRecords, "shellChange",
   { trainingFraction: .75, minimumSamplesPerSplit: 4 });
 assert.equal(blocked.available, true);

@@ -47,14 +47,23 @@ def test_association_microscope_is_interactive_and_claims_fail_closed():
     assert "causalEffectInferred: false" in MODULE
     assert "independentMaterialSamples: false" in MODULE
     assert "not a causal effect, calibrated predictor, energy relation, kinetic law" in APP
+    assert "creationResponseLeapProfile" in MODULE
+    assert 'id="sitePopulationLeapProfile"' in HTML
+    assert 'id="sitePopulationArtifactState"' in HTML
+    assert 'id="sitePopulationArtifactCopy"' in HTML
+    assert ".site-population-leap-profile" in STYLE
+    assert ".site-population-artifact" in STYLE
+    assert "leapProfiles" in APP
 
 
-def test_build_196_assets_and_narrative():
-    assert 'buildId: "20260826-196"' in APP
-    assert 'app.js?v=20260826-196' in HTML
-    assert 'style.css?v=20260826-92' in HTML
-    assert 'creation-response-association.js?v=20260826-3' in APP
+def test_build_197_assets_and_narrative():
+    assert 'buildId: "20260826-197"' in APP
+    assert 'app.js?v=20260826-197' in HTML
+    assert 'style.css?v=20260826-93' in HTML
+    assert 'creation-response-association.js?v=20260826-4' in APP
     assert "Build 194" in README
     assert "Build 196" in README
     assert "Build 196" in DOCS
+    assert "Build 197" in README
+    assert "Build 197" in DOCS
     assert "Build 194" in DOCS
