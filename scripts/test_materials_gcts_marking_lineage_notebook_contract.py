@@ -57,9 +57,9 @@ def test_notebook_renders_marking_to_family_pathways():
 
 
 def test_build_230_assets_are_paired():
-    assert 'buildId: "20260827-259"' in APP
-    assert 'app.js?v=20260827-259' in HTML
-    assert 'style.css?v=20260827-259' in HTML
+    assert 'buildId: "20260827-260"' in APP
+    assert 'app.js?v=20260827-260' in HTML
+    assert 'style.css?v=20260827-260' in HTML
 
 
 if __name__ == "__main__":

@@ -1,5 +1,20 @@
 # Recursive GCTS benchmark for material growth
 
+### Port-resolved GCTS level sets (Build 260)
+
+Stage 3 now preserves train-observed connection directions in intrinsic proper
+cluster frames as an explicit marking-port atlas. The per-cluster renderer uses
+solid compatible-port lobes and dashed unsupported training sectors; it never
+turns a scalar channel into a spherical pseudo-potential. Raw direction modes,
+display-resolved modes, observation counts, unsupported-sector semantics, and
+the negative physical-potential/candidate-geometry flags are receipt-visible.
+
+Executable contracts cover scalar directionality, channel-sector assignment,
+proper-frame rotation covariance, and the no-spherical-fallback invariant.
+Ice Ih, NaCl, and the Al–Cu–Fe IQC were exercised in the browser as distinct
+cluster-card ensembles. This is a visualization and provenance correction;
+it does not upgrade any continuation, stationarity, or exponential-growth gate.
+
 ### Evidence-ordered cluster discovery (Build 259)
 
 The Stage 2 process microscope now derives its reversible event order from the

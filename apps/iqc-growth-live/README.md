@@ -1,5 +1,20 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 260 · port-resolved GCTS level sets
+
+The separate GCTS cluster scenes now draw their level sets from train-observed
+connection directions in each cluster's intrinsic proper frame. Solid lobes
+are compatible, witnessed ports; dashed red lobes are unsupported learned
+channel sectors. Raw directional modes are reduced within the selected channel
+representation for display, while observation counts and the unreduced mode
+count remain receipt-visible.
+
+A scalar one-channel representation no longer becomes a spherical halo: its
+coefficient controls strength while the witnessed port retains direction. A
+cluster with no directional evidence says so and draws no fallback sphere.
+These contours rank finite frozen connection actions only. They are not a
+physical potential, force field, trajectory, or source of candidate geometry.
+
 ## Build 259 · evidence-ordered cluster discovery
 
 Cluster identification no longer assigns visual relation births and decisions

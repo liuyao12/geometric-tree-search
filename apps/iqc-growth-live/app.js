@@ -100,6 +100,10 @@ import {
   coloredConnectionChirality,
 } from "./marking-representation-readout.js?v=20260824-1";
 import {
+  buildClusterMarkingPortAtlas,
+  clusterMarkingPortSummary,
+} from "./cluster-marking-port-atlas.js?v=20260827-1";
+import {
   coloredAngularViolations,
   coloredCoordinationDeficit,
   coloredGeometricStrain,
@@ -8418,6 +8422,7 @@ function updateClusterGalleryInspector(galleryIndex) {
   const familyIndex = cluster.familyType ?? galleryIndex;
   const ports = cluster.residual ? 0 : clusterPortRank(familyIndex);
   const channels = cluster.residual ? 0 : recommendedChannelsForCluster(familyIndex);
+  const portAtlas = cluster.residual ? null : clusterMarkingPortSummary(sectionModel?.portAtlas, familyIndex);
   const chirality = cluster.chirality || "unresolved / achiral";
   const coverKind = cluster.residual ? "literal terminal · never promoted" : "recurrent candidate · eligible for ports";
   const displayTopology = clusterDisplayTopology(cluster, clusterGallerySites(cluster));
@@ -8428,7 +8433,8 @@ function updateClusterGalleryInspector(galleryIndex) {
     <div><small>selected class</small><strong>${cluster.label || `C${galleryIndex + 1}`}</strong><span>${cluster.geometry || "colored support polyhedron"} · ${surfaceLabel} · ${displayTopology.edges.length} topology edges</span></div>
     <div><small>complete-cover evidence</small><strong>${coveredAtoms.size.toLocaleString()} / ${referenceEntityLabel()}</strong><span>${placementIndices.length} occurrence${placementIndices.length === 1 ? "" : "s"} · ${supportSites} sites / occurrence · ${sharedAtoms} overlap-shared sites</span></div>
     <div><small>proper-pose support</small><strong>${poseCount || "unresolved"} orbit${poseCount === 1 ? "" : "s"} · ${poseModel.properSymmetryGaugeCount || 1} proper gauge${poseModel.properSymmetryGaugeCount === 1 ? "" : "s"} · χ ${chirality}</strong><span>${poseStatus} · intrinsic right-handed frames remove translation and atom order; mirrors remain distinct</span></div>
-    <div><small>connection capacity</small><strong>${ports} port role${ports === 1 ? "" : "s"} → ${channels} channel${channels === 1 ? "" : "s"}</strong><span>${coverKind}</span></div>`;
+    <div><small>connection capacity</small><strong>${ports} port role${ports === 1 ? "" : "s"} → ${channels} channel${channels === 1 ? "" : "s"}</strong><span>${coverKind}</span></div>
+    <div><small>visible GCTS section</small><strong>${portAtlas ? `${portAtlas.compatiblePorts} resolved lobes · ${portAtlas.unsupportedSectors} unsupported sectors` : "fit pending"}</strong><span>${portAtlas && portAtlas.rawDirectionalModes > portAtlas.compatiblePorts ? `${portAtlas.rawDirectionalModes} raw direction modes symmetry/channel-quotiented for display · ` : ""}solid contours follow observed intrinsic port directions; dashed contours are unsupported training sectors · no physical potential${portAtlas?.scalarDirectional ? " · scalar channel remains directional" : ""}</span></div>`;
 }
 
 function buildMolecularGalleryToolbar(types) {
@@ -8591,7 +8597,11 @@ function updateClusterGalleryTrainingReadouts() {
     const channelReadout = requiredChannels > sectionModel.channels
       ? `${activeChannels}/${sectionModel.channels} active ch · rank needs ${requiredChannels}`
       : `${activeChannels}/${sectionModel.channels} active ch`;
-    readout.textContent = `${processed}/${total} local sections · loss ${loss.toFixed(3)} · ${channelReadout} · reach ${sectionModel.reach}`;
+    const portAtlas = clusterMarkingPortSummary(sectionModel.portAtlas, prototype);
+    const portReadout = portAtlas
+      ? `${portAtlas.compatiblePorts} resolved lobes / ${portAtlas.unsupportedSectors} unsupported`
+      : "port atlas pending";
+    readout.textContent = `${processed}/${total} local sections · loss ${loss.toFixed(3)} · ${channelReadout} · ${portReadout} · reach ${sectionModel.reach}`;
     readout.classList.toggle("complete", trainingProgress >= markingSampleCount());
   });
 }
@@ -8806,47 +8816,68 @@ function drawClusterCardMarking(context, canvas, cluster, galleryIndex, quaterni
   const prototype = cluster.familyType ?? galleryIndex;
   const coefficients = currentSectionCoefficients(prototype);
   if (!coefficients) return;
+  const atlas = sectionModel.portAtlas?.prototypes?.[prototype];
   const key = `m_${markingPrototypeName(prototype)}`;
   const positive = markingColor(key);
   const positiveRgb = `${Math.round(positive.r * 255)},${Math.round(positive.g * 255)},${Math.round(positive.b * 255)}`;
   const progress = trainingProgress / Math.max(1, markingSampleCount());
-  const activeChannels = sectionModel.activeChannelsByPrototype?.[prototype] || sectionModel.channels;
-  coefficients.slice(0, activeChannels).forEach((coefficient, axisIndex) => {
-    const axis = sectionModel.axes[axisIndex]?.clone().applyQuaternion(quaternion);
-    if (!axis) return;
-    const strength = Math.min(1, Math.abs(coefficient) / .28);
-    const rgb = coefficient >= 0 ? positiveRgb : "255,109,113";
-    if (axis.lengthSq() <= 1e-12) {
-      for (let level = 2; level >= 0; level--) {
-        context.beginPath();
-        context.arc(canvas.width / 2, canvas.height / 2, 54 + strength * 18 + level * 7, 0, TAU);
-        context.strokeStyle = `rgba(${rgb},${(.18 + progress * .18) / (1 + level * .34)})`;
-        context.lineWidth = level === 0 ? 1.55 : 1;
-        if (coefficient < 0) context.setLineDash([3, 3]);
-        context.stroke(); context.setLineDash([]);
-      }
-      return;
-    }
+  const drawLobe = (record, compatible) => {
+    const axis = new THREE.Vector3(...record.direction).applyQuaternion(quaternion);
+    const coefficient = coefficients[record.channel] ?? (compatible ? .18 : -.18);
+    const evidence = compatible ? Math.min(1, Math.log2(1 + record.observations) / 4) : .3;
+    const strength = Math.min(1, .35 + Math.abs(coefficient) / .38 + evidence * .25);
+    const rgb = compatible ? positiveRgb : "255,109,113";
     const planeLength = Math.hypot(axis.x, axis.y);
-    if (planeLength < .08) return;
-    const directionX = axis.x / planeLength, directionY = axis.y / planeLength;
-    const centerX = canvas.width / 2 + directionX * (54 + strength * 22);
-    const centerY = canvas.height / 2 + directionY * (54 + strength * 22);
-    const angle = Math.atan2(directionY, directionX);
+    const directionX = planeLength > .04 ? axis.x / planeLength : 0;
+    const directionY = planeLength > .04 ? axis.y / planeLength : 0;
+    const distance = planeLength > .04 ? 49 + strength * 24 : 9 * Math.sign(axis.z || 1);
+    const centerX = canvas.width / 2 + directionX * distance;
+    const centerY = canvas.height / 2 + directionY * distance;
+    const angle = planeLength > .04 ? Math.atan2(directionY, directionX) : 0;
     for (let level = 2; level >= 0; level--) {
       const transverse = 8 + strength * 7 + level * 3.5;
       const longitudinal = 15 + strength * 13 + level * 5;
       context.save();
       context.translate(centerX, centerY); context.rotate(angle);
-      context.beginPath(); context.ellipse(0, 0, longitudinal, transverse, 0, 0, TAU);
+      context.beginPath(); context.ellipse(0, 0,
+        planeLength > .04 ? longitudinal : transverse,
+        transverse, 0, 0, TAU);
       context.strokeStyle = `rgba(${rgb},${(.18 + progress * .18) / (1 + level * .34)})`;
       context.lineWidth = level === 0 ? 1.55 : 1;
-      if (coefficient < 0) context.setLineDash([3, 3]);
+      if (!compatible) context.setLineDash([3, 3]);
+      context.stroke(); context.restore();
+    }
+    if (planeLength > .04) {
+      context.save(); context.beginPath(); context.moveTo(canvas.width / 2, canvas.height / 2);
+      context.lineTo(centerX, centerY);
+      context.strokeStyle = `rgba(${rgb},${compatible ? .24 : .15})`;
+      context.lineWidth = compatible ? 1.1 : .8;
+      if (!compatible) context.setLineDash([2, 4]);
       context.stroke(); context.restore();
     }
     context.beginPath(); context.arc(centerX, centerY, 2.1 + strength * 1.3, 0, TAU);
     context.fillStyle = `rgba(${rgb},${.48 + progress * .34})`; context.fill();
-  });
+    if (compatible && record.observations > 1) {
+      context.save(); context.font = "8px ui-monospace, SFMono-Regular, Menlo, monospace";
+      context.fillStyle = `rgba(${rgb},.82)`;
+      context.fillText(`×${record.observations}`, centerX + 5, centerY - 4); context.restore();
+    }
+  };
+  const compatible = (atlas?.compatiblePorts || []).slice(0, 12);
+  const unsupported = (atlas?.unsupportedSectors || []).slice(0, 6);
+  compatible.forEach((record) => drawLobe(record, true));
+  unsupported.forEach((record) => drawLobe(record, false));
+  context.save();
+  context.font = "9px ui-monospace, SFMono-Regular, Menlo, monospace";
+  if (compatible.length || unsupported.length) {
+    context.fillStyle = "rgba(210,224,233,.76)";
+    context.fillText(`${compatible.length} port lobe${compatible.length === 1 ? "" : "s"} · ${unsupported.length} unsupported`,
+      8, canvas.height - 8);
+  } else {
+    context.fillStyle = "rgba(255,193,105,.78)";
+    context.fillText("no directional port evidence · no spherical fallback", 8, canvas.height - 8);
+  }
+  context.restore();
 }
 
 function drawClusterGallery(now) {
@@ -9137,7 +9168,8 @@ function learnMolecularOverlapGrammar(source) {
   const reconstructionByOccurrence = new Map();
   let reconstructionEdges = 0;
   const addReplayRule = (first, second) => {
-    const shared = occurrences[first].placement.support.filter((atomIndex) => occurrences[second].placement.support.includes(atomIndex)).length;
+    const shared = occurrences[first].placement.support.filter((atomIndex) =>
+      occurrences[second].placement.support.includes(atomIndex)).length;
     const rule = {
       id: `M${first}-${second}`, from: occurrences[first].type, to: occurrences[second].type,
       occurrenceFrom: first, occurrenceTo: second, reconstructionOnly: true,
@@ -9597,6 +9629,7 @@ function receiptClusterRecord(cluster, index) {
     ?? learnedCover.placements.filter((placement) => placement.type === cluster.type).length;
   const supportSites = cluster.customSupport?.length
     || learnedCover.placements.find((placement) => placement.type === cluster.type)?.support.length || 1;
+  const portAtlas = cluster.residual ? null : clusterMarkingPortSummary(sectionModel?.portAtlas, familyIndex);
   return {
     id: Number.isInteger(cluster.classIndex) ? `${clusterGalleryFamily(cluster)}:${cluster.classIndex + 1}` : `C${index + 1}`,
     label: cluster.label || `C${index + 1}`,
@@ -9614,6 +9647,13 @@ function receiptClusterRecord(cluster, index) {
     portRoles: cluster.residual ? 0 : clusterPortRank(familyIndex),
     posePortRank: cluster.residual ? 0 : clusterPosePortRank(familyIndex),
     recommendedChannels: cluster.residual ? 0 : recommendedChannelsForCluster(familyIndex),
+    markingPortAtlas: portAtlas ? {
+      ...portAtlas,
+      geometrySource: sectionModel.portAtlas.geometrySource,
+      unsupportedMeaning: sectionModel.portAtlas.unsupportedMeaning,
+      physicalPotential: sectionModel.portAtlas.physicalPotential,
+      candidateGeometryChanged: sectionModel.portAtlas.candidateGeometryChanged,
+    } : null,
     chirality: cluster.chirality ?? null,
     isometryClass: Number.isInteger(cluster.classIndex) ? cluster.classIndex + 1 : null,
     familyClassCount: cluster.classCount ?? null,
@@ -10192,7 +10232,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-259",
+      buildId: "20260827-260",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -11069,6 +11109,16 @@ async function buildExperimentReceipt() {
         channels: sectionModel.channels,
         channelBasis: sectionModel.axes.map((axis) => axis.toArray().map((value) => receiptRound(value))),
         activeChannelsByPrototype: sectionModel.activeChannelsByPrototype.slice(),
+        portResolvedLevelSets: {
+          schema: sectionModel.portAtlas.schema,
+          geometrySource: sectionModel.portAtlas.geometrySource,
+          unsupportedMeaning: sectionModel.portAtlas.unsupportedMeaning,
+          candidateGeometryChanged: sectionModel.portAtlas.candidateGeometryChanged,
+          physicalPotential: sectionModel.portAtlas.physicalPotential,
+          sphericalFallbackUsed: sectionModel.portAtlas.prototypes.some((prototype) => prototype.sphericalFallbackUsed),
+          summaries: sectionModel.portAtlas.prototypes.map((_, prototype) =>
+            clusterMarkingPortSummary(sectionModel.portAtlas, prototype)),
+        },
         capacityFrontier: markingCapacityAuditRecord(),
         reach: sectionModel.reach,
         representation: sectionModel.representation,
@@ -12449,7 +12499,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-259" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-260" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -14624,6 +14674,28 @@ function learnSectionModel(source, config = currentMarkingConfig()) {
     });
     return values;
   });
+  const portObservations = [];
+  trainedMarking.edges.forEach((edge) => {
+    [[edge.first, edge.second], [edge.second, edge.first]].forEach(([centerIndex, otherIndex]) => {
+      const vector = periodicDisplacement(source[centerIndex], source[otherIndex]);
+      if (vector.lengthSq() <= 1e-12 || edge.shared < 2) return;
+      const frame = overlapGrammar.molecular ? occurrenceFrame(source, centerIndex)
+        : overlapGrammar.occurrences[centerIndex].rotation;
+      const direction = vector.normalize().applyQuaternion(frame.clone().invert());
+      portObservations.push({
+        prototype: learnedClusters.labels[centerIndex],
+        direction: direction.toArray(),
+        shared: edge.shared,
+        observations: 1,
+      });
+    });
+  });
+  const portAtlas = buildClusterMarkingPortAtlas({
+    prototypeCount: clusterCount,
+    activeChannelsByPrototype,
+    channelAxes: axes.map((axis) => axis.toArray()),
+    observations: portObservations,
+  });
   const initial = Array.from({ length: clusterCount }, (_, cluster) =>
     axes.map((_, axis) => axis < activeChannelsByPrototype[cluster]
       ? (siteHash(cluster, axis, 17, 4) - .5) * .34 / Math.sqrt(channelGain) : 0));
@@ -14728,7 +14800,7 @@ function learnSectionModel(source, config = currentMarkingConfig()) {
     representation: config.representation, overlapWeight, exponent, channelGain,
     fitCount: fitIndices.length, holdoutCount: holdoutIndices.length,
     prototypeCount: clusterCount, sampleLabels: learnedClusters.labels.slice(),
-    activeChannelsByPrototype,
+    activeChannelsByPrototype, portAtlas,
     representationState: learnRepresentationState(),
     sampleKind: "atom-centred environment" };
 }
@@ -14754,14 +14826,48 @@ function learnMolecularSectionModel(source, config) {
   const sampleLabels = samples.map((occurrence) => occurrence.type);
   const sampleFamilies = sampleLabels.map(prototypeCoverFamily);
   const incident = Array.from({ length: samples.length }, () => []);
-  overlapGrammar.reconstructionByOccurrence.forEach((rules, parent) => rules.forEach((rule) => {
-    const child = rule.occurrenceTo;
-    if (!Number.isInteger(child) || !samples[child]) return;
-    const forward = rule.translation.clone().normalize();
-    const reverse = rule.translation.clone().negate().normalize().applyQuaternion(rule.rotation.clone().invert());
-    incident[parent].push({ direction: forward, shared: rule.meanShared || 0 });
-    incident[child].push({ direction: reverse, shared: rule.meanShared || 0 });
-  }));
+  const supportSets = samples.map((occurrence) => new Set(occurrence.placement.support));
+  const inverseFrames = samples.map((occurrence) =>
+    supportOccurrenceFrame(source, occurrence.placement).invert());
+  const connectionDirection = (from, to) => {
+    const sourcePlacement = samples[from].placement;
+    const targetPlacement = samples[to].placement;
+    const center = source[sourcePlacement.center];
+    const inverseFrame = inverseFrames[from];
+    const fresh = targetPlacement.support.filter((atomIndex) => !supportSets[from].has(atomIndex));
+    if (fresh.length) return fresh.reduce((sum, atomIndex) =>
+      sum.add(periodicDisplacement(center, source[atomIndex])), new THREE.Vector3())
+      .multiplyScalar(1 / fresh.length).normalize().applyQuaternion(inverseFrame);
+    const relinquished = sourcePlacement.support.filter((atomIndex) => !supportSets[to].has(atomIndex));
+    if (relinquished.length) return relinquished.reduce((sum, atomIndex) =>
+      sum.add(periodicDisplacement(center, source[atomIndex])), new THREE.Vector3())
+      .multiplyScalar(-1 / relinquished.length).normalize().applyQuaternion(inverseFrame);
+    return periodicDisplacement(center, source[targetPlacement.center]).normalize().applyQuaternion(inverseFrame);
+  };
+  for (let first = 0; first < samples.length; first++) {
+    for (let second = first + 1; second < samples.length; second++) {
+      const shared = samples[first].placement.support
+        .filter((atomIndex) => supportSets[second].has(atomIndex)).length;
+      if (shared < 2) continue;
+      [
+        [first, second], [second, first],
+      ].forEach(([from, to]) => {
+        const direction = connectionDirection(from, to);
+        if (direction.lengthSq() > 1e-12) incident[from].push({ direction, shared, observations: 1 });
+      });
+    }
+  }
+  const portAtlas = buildClusterMarkingPortAtlas({
+    prototypeCount,
+    activeChannelsByPrototype,
+    channelAxes: axes.map((axis) => axis.toArray()),
+    observations: incident.flatMap((ports, index) => ports.map((port) => ({
+      prototype: sampleLabels[index],
+      direction: port.direction.toArray(),
+      shared: port.shared,
+      observations: port.observations,
+    }))),
+  });
   const targets = samples.map((_, index) => {
     const activeChannels = activeChannelsByPrototype[sampleLabels[index]];
     const values = axes.map((__, axis) => axis < activeChannels ? -.18 / channelGain : 0);
@@ -14836,7 +14942,7 @@ function learnMolecularSectionModel(source, config) {
     overlapWeight, exponent, channelGain,
     fitCount: fitIndices.length, holdoutCount: holdoutIndices.length,
     prototypeCount, sampleLabels, sampleFamilies,
-    activeChannelsByPrototype,
+    activeChannelsByPrototype, portAtlas,
     representationState: learnRepresentationState(),
     sampleKind: learnedCover.molecular ? "molecular cover occurrence" : "irregular support occurrence",
   };
@@ -21277,7 +21383,7 @@ function syncStageOptions() {
     saveMarkingButton.disabled = !complete;
     saveMarkingButton.textContent = existing ? "Update library copy" : "Freeze to library";
     renderMarkingCapacityFrontier();
-    markingConfigNote.textContent = `${resolvedChannels} real coefficient channels${markingDraft.channels ? " (manual capacity override)" : " (derived from the frozen pose × port incidence rank)"} · ${markingChannelAllocationLabel()} · support R=${sectionModel?.support.toFixed(2) || "—"}a · ${MARKING_REPRESENTATIONS[markingDraft.representation].label}: ${MARKING_REPRESENTATIONS[markingDraft.representation].readout}. ${suppliedSpinSites ? scalarSpinColoringMode() === "preserve" ? "Supplied collinear scalar-spin signs are an additional exact overlap color." : "Supplied scalar-spin signs are ignored by the registered chemistry-only ablation." : "No scalar-spin color is available."} Clustering freezes the finite or sampled proper-rotation support before this fit; symmetry-equivalent rotations share channels and inactive coefficients remain exactly zero.`;
+    markingConfigNote.textContent = `${resolvedChannels} real coefficient channels${markingDraft.channels ? " (manual capacity override)" : " (derived from the frozen pose × port incidence rank)"} · ${markingChannelAllocationLabel()} · support R=${sectionModel?.support.toFixed(2) || "—"}a · ${MARKING_REPRESENTATIONS[markingDraft.representation].label}: ${MARKING_REPRESENTATIONS[markingDraft.representation].readout}. ${suppliedSpinSites ? scalarSpinColoringMode() === "preserve" ? "Supplied collinear scalar-spin signs are an additional exact overlap color." : "Supplied scalar-spin signs are ignored by the registered chemistry-only ablation." : "No scalar-spin color is available."} Clustering freezes the finite or sampled proper-rotation support before this fit; symmetry-equivalent rotations share channels and inactive coefficients remain exactly zero. Solid card lobes follow witnessed intrinsic ports; dashed red lobes are unsupported training sectors. No spherical fallback or physical potential is inferred.`;
   } else {
     renderMarkingLibrary();
     renderGrowthProtocolSummary();
