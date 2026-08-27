@@ -58,6 +58,7 @@ import { compositionBalanceDelta, compositionDrift, learnCompositionTarget } fro
 import { consumeFeedstock, evaluateFeedstockDemand, feedstockReservoirSnapshot,
   initializeFeedstockReservoir } from "./feedstock-reservoir.js?v=20260827-2";
 import { localPackingDensityAudit } from "./local-packing-density.js?v=20260827-2";
+import { interstitialClearanceAudit } from "./interstitial-clearance.js?v=20260827-3";
 import { formalChargeBalanceDelta, learnFormalChargeTarget } from "./formal-charge-balance.js?v=20260824-1";
 import { chargeMomentSignature, compareChargeMomentGeometry } from "./global-charge-moments.js?v=20260826-1";
 import { incrementalIonicPairGeometry, incrementalIonicPairReachProfile,
@@ -700,6 +701,13 @@ const packingRadialState = $("packingRadialState");
 const packingRadialChannels = $("packingRadialChannels");
 const packingRadialPlot = $("packingRadialPlot");
 const packingRadialReadout = $("packingRadialReadout");
+const voidClearanceState = $("voidClearanceState");
+const voidClearanceMetrics = $("voidClearanceMetrics");
+const voidClearanceDistribution = $("voidClearanceDistribution");
+const voidClearanceRadial = $("voidClearanceRadial");
+const voidClearancePath = $("voidClearancePath");
+const voidClearanceReadout = $("voidClearanceReadout");
+const voidClearanceBoundary = $("voidClearanceBoundary");
 const multiscalePathwayState = $("multiscalePathwayState");
 const multiscalePathwayHarmonics = $("multiscalePathwayHarmonics");
 const multiscalePathwayPlot = $("multiscalePathwayPlot");
@@ -1451,6 +1459,7 @@ let selectedLeapConsequenceFilter = "all";
 let selectedStoichiometrySpecies = null;
 let selectedPackingMetric = "median";
 let selectedRadialProfileChannel = "density";
+let selectedVoidClearanceMetric = "p90";
 let leapEventCount = 0;
 let siteStructuralHistories = new Map();
 let pendingSiteHistoryIds = new Set();
@@ -5007,6 +5016,27 @@ function structuralPackingSnapshot(source = atoms) {
   rounded.surfaceExcess = Object.fromEntries(Object.entries(audit.surfaceExcess)
     .map(([symbol, fraction]) => [symbol, receiptRound(fraction)]));
   return rounded;
+}
+
+function structuralVoidClearanceSnapshot(source = atoms) {
+  const dimension = currentMaterial().intrinsicDimension === 2 ? 2 : 3;
+  const audit = interstitialClearanceAudit(source.map((atom) => atom.p.toArray()),
+    referenceAtoms.map((atom) => atom.p.toArray()), {
+      dimension, maximumAnchors: 64, neighborLimit: 6, histogramBins: 20, histogramMaximum: 1.5,
+    });
+  if (!audit.available) return audit;
+  const roundSummary = (summary) => ({ ...summary,
+    medianClearance: receiptRound(summary.medianClearance),
+    percentile90Clearance: receiptRound(summary.percentile90Clearance),
+    maximumClearance: receiptRound(summary.maximumClearance),
+    coreMedianClearance: summary.coreMedianClearance === null ? null : receiptRound(summary.coreMedianClearance),
+    frontMedianClearance: summary.frontMedianClearance === null ? null : receiptRound(summary.frontMedianClearance),
+    radialRecords: summary.radialRecords.map((record) => ({
+      clearance: receiptRound(record.clearance), normalizedRadius: receiptRound(record.normalizedRadius),
+    })),
+  });
+  return { ...roundSummary(audit), referenceNearestNeighborScale: receiptRound(audit.referenceNearestNeighborScale),
+    reference: roundSummary(audit.reference) };
 }
 
 function localSymmetryTransition(before, after) {
@@ -9537,7 +9567,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-237",
+      buildId: "20260827-238",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -10243,6 +10273,26 @@ async function buildExperimentReceipt() {
         thermodynamicVolumeInferred: false,
         pressureInferred: false,
         freeEnergyInferred: false,
+        physicalTimeIntegrated: false,
+      },
+      interstitialClearancePathway: {
+        role: "finite locally witnessed empty-simplex center clearance relative to supplied nearest-neighbor distance",
+        alignment: "structural leap index; no physical time",
+        pointSource: "before/after voidClearance snapshots in structuralLeapCertificates",
+        selectedMetric: selectedVoidClearanceMetric,
+        dimensionAware: true,
+        candidateRule: "circumcenter lies inside a nondegenerate local simplex and its circle/sphere contains no explicit site",
+        referenceScale: "supplied median nearest-neighbor distance",
+        periodicImagesUsed: false,
+        atomicRadiiUsed: false,
+        usedAsGrowthInput: false,
+        porosityInferred: false,
+        poreVolumeInferred: false,
+        accessibleFreeVolumeInferred: false,
+        vacancyOrInterstitialIdentityInferred: false,
+        diffusionPathInferred: false,
+        migrationBarrierInferred: false,
+        pressureInferred: false,
         physicalTimeIntegrated: false,
       },
     },
@@ -11664,7 +11714,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-237" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-238" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -20455,6 +20505,7 @@ function resetCounters() {
   selectedStoichiometrySpecies = null;
   selectedPackingMetric = "median";
   selectedRadialProfileChannel = "density";
+  selectedVoidClearanceMetric = "p90";
   leapEventCount = 0;
   invalidateCreationResponseEvidenceCache("new specimen or reset state");
   siteStructuralHistories = new Map();
@@ -20979,7 +21030,7 @@ function performOffLatticeEvent() {
   const reconstructionWasCertified = reconstructionCertified;
   const relaxationAuthorized = reconstructionCertified;
   const before = { atoms: atoms.length, clusters: placedClusters.length, frontier: frontierCandidates.length,
-    morphology: structuralMorphologySnapshot(), composition: structuralCompositionSnapshot(), packing: structuralPackingSnapshot(),
+    morphology: structuralMorphologySnapshot(), composition: structuralCompositionSnapshot(), packing: structuralPackingSnapshot(), voidClearance: structuralVoidClearanceSnapshot(),
     interfaces: structuralInterfaceSnapshot(),
     orientationalOrder: structuralOrientationalOrderSnapshot(), centrosymmetry: structuralCentrosymmetrySnapshot(),
     scattering: structuralScatteringSnapshot(),
@@ -20992,7 +21043,7 @@ function performOffLatticeEvent() {
       tests: { summary: "finite frontier exhausted", detail: "Every frozen port is consumed, unsupported, conflicting, or outside the public domain." },
       after: { atoms: atoms.length, clusters: placedClusters.length, accepted: 0, rejected: 0,
         depth: Math.max(0, ...placedClusters.map((placement) => placement.depth || 0)),
-        morphology: structuralMorphologySnapshot(), composition: structuralCompositionSnapshot(), packing: structuralPackingSnapshot(),
+        morphology: structuralMorphologySnapshot(), composition: structuralCompositionSnapshot(), packing: structuralPackingSnapshot(), voidClearance: structuralVoidClearanceSnapshot(),
         interfaces: structuralInterfaceSnapshot(),
         orientationalOrder: structuralOrientationalOrderSnapshot(), centrosymmetry: structuralCentrosymmetrySnapshot(),
     scattering: structuralScatteringSnapshot(),
@@ -21189,7 +21240,7 @@ function performOffLatticeEvent() {
     relaxation,
     after: { atoms: atoms.length, clusters: placedClusters.length, accepted: acceptedInBatch, rejected: rejectedInBatch,
       depth: Math.max(0, ...placedClusters.map((placement) => placement.depth || 0)),
-      morphology: structuralMorphologySnapshot(), composition: structuralCompositionSnapshot(), packing: structuralPackingSnapshot(),
+      morphology: structuralMorphologySnapshot(), composition: structuralCompositionSnapshot(), packing: structuralPackingSnapshot(), voidClearance: structuralVoidClearanceSnapshot(),
       interfaces: structuralInterfaceSnapshot(),
       orientationalOrder: structuralOrientationalOrderSnapshot(), centrosymmetry: structuralCentrosymmetrySnapshot(),
     scattering: structuralScatteringSnapshot(),
@@ -21206,7 +21257,7 @@ function performIceAnchorEvent() {
   const wave = iceAnchorTrace?.waves[iceAnchorWaveIndex];
   const before = { atoms: atoms.length, clusters: acceptedDecisions,
     frontier: wave?.candidateAnchors || 0, morphology: structuralMorphologySnapshot(),
-    composition: structuralCompositionSnapshot(), packing: structuralPackingSnapshot(),
+    composition: structuralCompositionSnapshot(), packing: structuralPackingSnapshot(), voidClearance: structuralVoidClearanceSnapshot(),
     orientationalOrder: structuralOrientationalOrderSnapshot(), centrosymmetry: structuralCentrosymmetrySnapshot(),
     scattering: structuralScatteringSnapshot(),
     chargeMoment: structuralChargeMomentSnapshot(), bondValenceState: structuralBondValenceSnapshot(),
@@ -21248,7 +21299,7 @@ function performIceAnchorEvent() {
         detail: `${wave.rejectedCandidateAnchors} unsupported or conflicting candidates fail ${iceAnchorTrace.selectionRuleLabel}.` },
       after: { atoms: atoms.length, clusters: acceptedDecisions, accepted: 0,
         rejected: wave.rejectedCandidateAnchors, depth: wave.wave,
-        morphology: structuralMorphologySnapshot(), composition: structuralCompositionSnapshot(), packing: structuralPackingSnapshot(),
+        morphology: structuralMorphologySnapshot(), composition: structuralCompositionSnapshot(), packing: structuralPackingSnapshot(), voidClearance: structuralVoidClearanceSnapshot(),
         interfaces: structuralInterfaceSnapshot(),
         orientationalOrder: structuralOrientationalOrderSnapshot(), centrosymmetry: structuralCentrosymmetrySnapshot(),
     scattering: structuralScatteringSnapshot(),
@@ -21287,7 +21338,7 @@ function performIceAnchorEvent() {
       detail: `${iceAnchorTrace.portCount} frozen proper-SE(3) ports + ${iceAnchorTrace.selectionRuleLabel}; ${wave.retainedOrientationHypotheses} mutually exclusive ${iceAnchorTrace.moleculeLabel} poses retained.` },
     after: { atoms: atoms.length, clusters: acceptedDecisions, accepted: wave.acceptedAnchors,
       rejected: wave.rejectedCandidateAnchors, depth: wave.wave,
-      morphology: structuralMorphologySnapshot(), composition: structuralCompositionSnapshot(), packing: structuralPackingSnapshot(),
+      morphology: structuralMorphologySnapshot(), composition: structuralCompositionSnapshot(), packing: structuralPackingSnapshot(), voidClearance: structuralVoidClearanceSnapshot(),
       interfaces: structuralInterfaceSnapshot(),
       orientationalOrder: structuralOrientationalOrderSnapshot(), centrosymmetry: structuralCentrosymmetrySnapshot(),
     scattering: structuralScatteringSnapshot(),
@@ -23237,6 +23288,13 @@ function materialConsequenceRecords(before, after) {
         ? `${after.packing.dominantSurfaceExcessSpecies} has the largest positive outer-shell excess across ${after.packing.radialShellCount} finite normalized-radius shells.`
         : "No resolved multicomponent growth-front excess.",
       boundary: "A radial site-fraction excess is not equilibrium segregation, surface composition in a bulk limit, chemical potential, diffusion, or interfacial energy." },
+    { id: "void-clearance", group: "local", label: "large empty-region clearance", unit: "p90 clearance / supplied nearest-neighbor distance",
+      before: before.voidClearance?.percentile90Clearance, after: after.voidClearance?.percentile90Clearance,
+      format: (value) => `${value.toFixed(3)}aₙₙ`, deltaFormat: (value) => `${value >= 0 ? "+" : ""}${value.toFixed(3)}aₙₙ`, domain: "adaptive",
+      evidence: after.voidClearance?.available
+        ? `${after.voidClearance.candidateCenters} nondegenerate locally witnessed empty-simplex centers; maximum ${after.voidClearance.maximumClearance.toFixed(3)}aₙₙ.`
+        : after.voidClearance?.reason || "No locally witnessed empty-simplex centers resolved.",
+      boundary: "Point-site clearance is not porosity, pore volume, accessible free volume, vacancy/interstitial identity, a diffusion path, or a migration barrier." },
     { id: "local-order", group: "local", label: `mean local ${orderSymbol}`, unit: "orientational-order magnitude",
       before: before.orientationalOrder?.harmonics?.[6]?.mean,
       after: after.orientationalOrder?.harmonics?.[6]?.mean,
@@ -23289,6 +23347,7 @@ function renderLeapConsequence(selected = null) {
     atoms: atoms.length,
     composition: structuralCompositionSnapshot(),
     packing: structuralPackingSnapshot(),
+    voidClearance: structuralVoidClearanceSnapshot(),
     morphology: structuralMorphologySnapshot(),
     orientationalOrder: structuralOrientationalOrderSnapshot(),
     centrosymmetry: structuralCentrosymmetrySnapshot(),
@@ -23676,6 +23735,131 @@ packingRadialChannels.addEventListener("click", (event) => {
   selectedRadialProfileChannel = button.dataset.radialChannel; renderPackingPathway();
 });
 
+function structuralVoidClearanceSeries() {
+  if (!leapHistory.length) return [{ leapIndex: -1, label: "seed", status: "seed",
+    voidClearance: structuralVoidClearanceSnapshot() }];
+  return [{ leapIndex: -1, label: "seed", status: "seed", voidClearance: leapHistory[0].before?.voidClearance },
+    ...leapHistory.map((leap, leapIndex) => ({ leapIndex, label: `leap ${leap.index}`,
+      status: leap.status, voidClearance: leap.after?.voidClearance }))]
+    .filter((state) => state.voidClearance?.available);
+}
+
+function voidClearanceMetricValue(audit, metric = selectedVoidClearanceMetric) {
+  if (!audit?.available) return null;
+  return ({ median: audit.medianClearance, p90: audit.percentile90Clearance,
+    maximum: audit.maximumClearance, front: audit.frontMedianClearance })[metric];
+}
+
+function renderVoidClearancePathway() {
+  if (!voidClearancePath) return;
+  const makeSvg = (name, attributes = {}) => {
+    const element = document.createElementNS("http://www.w3.org/2000/svg", name);
+    Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, String(value)));
+    return element;
+  };
+  const selectedLeap = leapHistory[selectedLeapIndex] || null;
+  const current = selectedLeap ? null : structuralVoidClearanceSnapshot();
+  const before = selectedLeap?.before?.voidClearance || current;
+  const after = selectedLeap?.after?.voidClearance || current;
+  const states = structuralVoidClearanceSeries();
+  voidClearanceMetrics.querySelectorAll("button[data-void-metric]").forEach((button) =>
+    button.setAttribute("aria-pressed", String(button.dataset.voidMetric === selectedVoidClearanceMetric)));
+  [voidClearanceDistribution, voidClearanceRadial, voidClearancePath].forEach((plot) => plot.replaceChildren());
+  voidClearanceReadout.replaceChildren();
+  if (!after?.available) {
+    voidClearanceState.textContent = after?.reason || "empty-simplex centers unresolved";
+    const note = document.createElement("span"); note.textContent = after?.reason || "No finite empty-region evidence.";
+    voidClearanceReadout.append(note); return;
+  }
+  const left = 30, right = 294, top = 8, bottom = 88;
+  const clearanceMaximum = Math.max(after.histogramMaximum || 1.5, before?.histogramMaximum || 0);
+  [0, .5, 1, 1.5].forEach((tick) => {
+    const x = left + tick / clearanceMaximum * (right - left);
+    voidClearanceDistribution.append(makeSvg("line", { x1: x, x2: x, y1: top, y2: bottom, class: "grid" }));
+    const label = makeSvg("text", { x, y: 103, class: "axis", "text-anchor": "middle" }); label.textContent = `${tick.toFixed(1)}aₙₙ`;
+    voidClearanceDistribution.append(label);
+  });
+  const histogramMaximum = Math.max(1, ...(before?.histogram || []), ...(after.histogram || []));
+  const drawHistogram = (audit, className, offset) => {
+    if (!audit?.histogram?.length) return;
+    const width = (right - left) / audit.histogram.length;
+    audit.histogram.forEach((count, index) => {
+      const height = count / histogramMaximum * (bottom - top - 4);
+      voidClearanceDistribution.append(makeSvg("rect", { x: left + index * width + offset,
+        y: bottom - height, width: Math.max(1, width / 2 - 1), height, class: className }));
+    });
+  };
+  drawHistogram(before, "before", .5); drawHistogram(after, "after", (right - left) / 40);
+  const distributionLabel = makeSvg("text", { x: (left + right) / 2, y: 111, class: "axis", "text-anchor": "middle" });
+  distributionLabel.textContent = "empty-center clearance / supplied aₙₙ"; voidClearanceDistribution.append(distributionLabel);
+  const radialValues = [...after.radialRecords, ...(after.reference?.radialRecords || [])].map((record) => record.clearance);
+  const radialMaximum = Math.max(1, ...radialValues) * 1.08;
+  const rx = (radius) => left + Math.max(0, Math.min(1.25, radius)) / 1.25 * (right - left);
+  const ry = (clearance) => bottom - Math.max(0, Math.min(radialMaximum, clearance)) / radialMaximum * (bottom - top);
+  [0, .5, 1].forEach((fraction) => {
+    const value = fraction * radialMaximum;
+    voidClearanceRadial.append(makeSvg("line", { x1: left, x2: right, y1: ry(value), y2: ry(value), class: "grid" }));
+    const label = makeSvg("text", { x: left - 4, y: ry(value) + 2, class: "axis", "text-anchor": "end" });
+    label.textContent = `${value.toFixed(2)}`; voidClearanceRadial.append(label);
+  });
+  (after.reference?.radialRecords || []).forEach((record) => voidClearanceRadial.append(makeSvg("circle", {
+    cx: rx(record.normalizedRadius), cy: ry(record.clearance), r: 1.9, class: "reference",
+  })));
+  after.radialRecords.forEach((record) => voidClearanceRadial.append(makeSvg("circle", {
+    cx: rx(record.normalizedRadius), cy: ry(record.clearance), r: 2.5, class: "current",
+  })));
+  const radialLabel = makeSvg("text", { x: (left + right) / 2, y: 111, class: "axis", "text-anchor": "middle" });
+  radialLabel.textContent = "normalized centroid radius →"; voidClearanceRadial.append(radialLabel);
+  const pathValues = states.map((state) => voidClearanceMetricValue(state.voidClearance)).filter(Number.isFinite);
+  const pathMaximum = Math.max(1, ...pathValues) * 1.08;
+  const px = (index) => left + (states.length <= 1 ? .5 : index / (states.length - 1)) * (right - left);
+  const py = (value) => bottom - Math.max(0, Math.min(pathMaximum, value)) / pathMaximum * (bottom - top);
+  [0, .5, 1].forEach((fraction) => {
+    const value = fraction * pathMaximum;
+    voidClearancePath.append(makeSvg("line", { x1: left, x2: right, y1: py(value), y2: py(value), class: "grid" }));
+    const label = makeSvg("text", { x: left - 4, y: py(value) + 2, class: "axis", "text-anchor": "end" });
+    label.textContent = value.toFixed(2); voidClearancePath.append(label);
+  });
+  const pathRecords = states.map((state, index) => ({ state, index, value: voidClearanceMetricValue(state.voidClearance) }))
+    .filter((record) => Number.isFinite(record.value));
+  if (pathRecords.length > 1) voidClearancePath.append(makeSvg("polyline", {
+    points: pathRecords.map((record) => `${px(record.index)},${py(record.value)}`).join(" "), class: "path",
+  }));
+  pathRecords.forEach((record) => {
+    const point = makeSvg("circle", { cx: px(record.index), cy: py(record.value), r: 3.5,
+      class: `point ${record.state.leapIndex === selectedLeapIndex ? "selected" : ""}`,
+      tabindex: record.state.leapIndex < 0 ? -1 : 0, role: record.state.leapIndex < 0 ? "img" : "button" });
+    if (record.state.leapIndex >= 0) {
+      const select = () => { selectedLeapIndex = record.state.leapIndex; renderStructuralLeap(leapHistory[selectedLeapIndex]); };
+      point.addEventListener("click", select); point.addEventListener("keydown", (event) => {
+        if (["Enter", " "].includes(event.key)) { event.preventDefault(); select(); }
+      });
+    }
+    voidClearancePath.append(point);
+  });
+  const pathLabel = makeSvg("text", { x: (left + right) / 2, y: 111, class: "axis", "text-anchor": "middle" });
+  pathLabel.textContent = "certified structural state →"; voidClearancePath.append(pathLabel);
+  const display = (value) => Number.isFinite(value) ? `${value.toFixed(3)}aₙₙ` : "unresolved";
+  [["selected state", selectedLeap ? `leap ${selectedLeap.index}` : "seed/current"],
+    ["witnessed centers", `${after.candidateCenters}`], ["median clearance", display(after.medianClearance)],
+    ["large clearance · p90", display(after.percentile90Clearance)], ["maximum", display(after.maximumClearance)],
+    ["core / front", `${display(after.coreMedianClearance)} / ${display(after.frontMedianClearance)}`],
+    ["supplied centers", `${after.reference.candidateCenters}`], ["simplex source", `${after.maximumAnchors} anchors · ${after.neighborLimit}-neighbor ties`]]
+    .forEach(([label, datum]) => {
+      const cell = document.createElement("span"); const key = document.createElement("small"); const valueElement = document.createElement("strong");
+      key.textContent = label; valueElement.textContent = datum; cell.append(key, valueElement); voidClearanceReadout.append(cell);
+    });
+  const metricLabel = ({ median: "median", p90: "large-region p90", maximum: "maximum", front: "growth-front median" })[selectedVoidClearanceMetric];
+  voidClearanceState.textContent = `${states.length} state${states.length === 1 ? "" : "s"} · ${metricLabel}`;
+  voidClearanceBoundary.textContent = `Candidate centers are circumcenters of nondegenerate local ${after.dimension === 2 ? "triangles" : "tetrahedra"}, retained only when the center lies inside the simplex and its circle/sphere is empty of explicit sites. Clearances are divided by the supplied median nearest-neighbor distance; no periodic image or atomic radius is invented. This finite point-site audit is not porosity, pore volume, accessible free volume, vacancy/interstitial identity, a transport channel, migration barrier, pressure, rate, or physical time.`;
+}
+
+voidClearanceMetrics.addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-void-metric]");
+  if (!button || !["median", "p90", "maximum", "front"].includes(button.dataset.voidMetric)) return;
+  selectedVoidClearanceMetric = button.dataset.voidMetric; renderVoidClearancePathway();
+});
+
 function renderStructuralLeap(leap = null) {
   if (!leapCertificateSection) return;
   leapCertificateSection.hidden = pipelineStage !== 4;
@@ -23683,6 +23867,7 @@ function renderStructuralLeap(leap = null) {
   const selected = leap || leapHistory[selectedLeapIndex] || null;
   renderStoichiometryPathway();
   renderPackingPathway();
+  renderVoidClearancePathway();
   renderMultiscaleOrderPathway();
   renderChargeShapePortrait(policyComparisonHistory[selectedPolicySnapshotIndex] || lastPolicyComparison);
   renderBondValenceStructuralPathway();

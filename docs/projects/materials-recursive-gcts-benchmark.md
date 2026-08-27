@@ -13,6 +13,26 @@ amplification is `b > 1`, a level-`L` accepted macro placement represents
 approximately `b^L` atoms.  Materializing or exporting `N` atomic coordinates
 still has an unavoidable `O(N)` cost and must be reported separately.
 
+### Finite interstitial-clearance pathway (Build 238)
+
+Explicit gap clusters now have a quantitative, dimension-aware companion. From
+an invariant radial sample of explicit sites and complete nearest-distance ties,
+the browser forms locally witnessed triangles in 2D or tetrahedra in 3D. A
+circumcenter is retained only when the simplex is nondegenerate, the center lies
+inside it, and no explicit site lies inside the corresponding circle or sphere.
+Clearance is normalized by the supplied configuration's median nearest-neighbor
+distance. The interactive view compares before/after distributions, maps
+clearance against normalized centroid radius, and traces median, p90, maximum,
+or growth-front clearance across certified structural states. The same p90
+channel appears independently in the material-consequence matrix.
+
+This is a finite point-site empty-region audit. It supplies no atomic or ionic
+radius, periodic image, probe radius, surface reconstruction, or connectivity
+between empty centers. It therefore cannot establish porosity, pore volume,
+accessible free volume, vacancy/interstitial identity, a diffusion channel,
+migration barrier, pressure, free energy, rate, or physical time. It is not used
+to generate, admit, or rank growth actions.
+
 ### Core-to-growth-front material profile (Build 237)
 
 The finite packing pathway now resolves spatial heterogeneity instead of

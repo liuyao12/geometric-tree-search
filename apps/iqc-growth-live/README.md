@@ -19,6 +19,17 @@ the GCTS anatomy view explains covers, oriented ports, markings, search, and
 promotion; and the claim ledger keeps proved, measured, and open results visibly
 separate. Its numbers are frozen benchmark results, not recomputed browser demos.
 
+Build 238 adds an interactive **finite interstitial-clearance pathway**. The
+dimension-aware audit constructs local triangles in 2D or tetrahedra in 3D,
+retains a circumcenter only when it lies inside its simplex and its
+circle/sphere contains no explicit site, and normalizes the resulting clearance
+by the supplied median nearest-neighbor distance. Before/after distributions,
+a radial empty-center landscape, and a leap-resolved history expose large
+geometric gaps without assigning them a defect label. Point sites carry no
+atomic radius and no periodic image is invented, so the view does not claim
+porosity, pore volume, accessible free volume, vacancy/interstitial identity,
+transport connectivity, a migration barrier, pressure, kinetics, or time.
+
 Build 237 adds an interactive **core-to-growth-front material profile** to the
 finite packing audit. Eight normalized centroid-radius shells compare local
 number density and every displayed element fraction with the supplied

@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260827-237">
+  <link rel="stylesheet" href="./style.css?v=20260827-238">
   <script type="importmap">
     {
       "imports": {
@@ -1775,6 +1775,22 @@
             <div id="packingPathwayReadout" class="packing-pathway-readout"></div>
             <p id="packingPathwayBoundary">A finite k-nearest-neighbor number-density ratio compares the explicit structure with the inner supplied configuration. It is not mass density, porosity, thermodynamic free volume, pressure, energy, or physical time.</p>
           </article>
+          <article class="void-clearance-pathway" aria-label="Interactive finite interstitial-clearance pathway">
+            <header><span><small>explicit empty-region geometry</small><strong id="voidClearanceState">awaiting witnessed simplices</strong></span>
+              <div id="voidClearanceMetrics" role="group" aria-label="Select an interstitial-clearance statistic">
+                <button type="button" data-void-metric="median" aria-pressed="false">median</button>
+                <button type="button" data-void-metric="p90" aria-pressed="true">large · p90</button>
+                <button type="button" data-void-metric="maximum" aria-pressed="false">maximum</button>
+                <button type="button" data-void-metric="front" aria-pressed="false">growth front</button>
+              </div></header>
+            <div class="void-clearance-plots">
+              <figure><figcaption>selected leap distribution <span><i class="before"></i>before <i class="after"></i>after</span></figcaption><svg id="voidClearanceDistribution" viewBox="0 0 300 112" role="img" aria-label="Before and after empty-center clearance distributions"></svg></figure>
+              <figure><figcaption>radial empty-center landscape <span><i class="reference"></i>supplied <i class="current"></i>current</span></figcaption><svg id="voidClearanceRadial" viewBox="0 0 300 112" role="img" aria-label="Clearance versus normalized centroid radius"></svg></figure>
+              <figure class="history"><figcaption>retained structural states</figcaption><svg id="voidClearancePath" viewBox="0 0 300 112" role="img" aria-label="Selected clearance statistic across structural leaps"></svg></figure>
+            </div>
+            <div id="voidClearanceReadout" class="void-clearance-readout"></div>
+            <p id="voidClearanceBoundary">Only empty circumcenters inside locally witnessed simplices are retained. Point sites have no atomic radii, so this is not porosity, pore volume, accessible free volume, a defect identity, diffusion path, or barrier.</p>
+          </article>
           <article class="multiscale-pathway" aria-label="Interactive local-order and reciprocal-order pathway">
             <header><span><small>multiscale order pathway</small><strong id="multiscalePathwayState">seed state</strong></span>
               <div id="multiscalePathwayHarmonics" role="group" aria-label="Local-order harmonic for the pathway">
@@ -1894,7 +1910,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260827-237"></script>
+  <script type="module" src="./app.js?v=20260827-238"></script>
   <script type="module" src="./evidence-atlas.js?v=20260827-20"></script>
 </body>
 </html>
