@@ -56,6 +56,27 @@ const obstructionPreferredCoronaReports = String(args.get("obstruction-preferred
   .split(",")
   .map(value => value.trim())
   .filter(Boolean);
+const obstructionResumeReportPath = args.get("obstruction-resume-report") ?? null;
+const obstructionResumeReportText = obstructionResumeReportPath == null
+  ? null
+  : readFileSync(obstructionResumeReportPath, "utf8");
+const obstructionResumeRecords = obstructionResumeReportText == null
+  ? []
+  : obstructionResumeReportText.split(/\r?\n/).filter(Boolean).map(JSON.parse);
+const obstructionResumeStart = obstructionResumeRecords.find(record => record.type === "screen_start") ?? null;
+const obstructionResumeByIdentity = new Map();
+for (const record of obstructionResumeRecords) {
+  if (record.type !== "candidate" || !Array.isArray(record.obstruction?.resume_path)) continue;
+  for (const identity of [
+    record.id ? `id:${record.id}` : null,
+    record.key ? `key:${record.key}` : null
+  ].filter(Boolean)) {
+    obstructionResumeByIdentity.set(identity, record.obstruction.resume_path.slice());
+  }
+}
+if (obstructionResumeReportPath && obstructionResumeByIdentity.size === 0) {
+  throw new Error("--obstruction-resume-report contains no corona resume frontier");
+}
 const obstructionNogoodsByIdentity = new Map();
 const obstructionPreferredPlacementsByIdentity = new Map();
 for (const report of obstructionInitialNogoodReports) {
@@ -108,6 +129,14 @@ const obstructionPreferredPlacementsFor = candidate => {
   }
   return [...placements];
 };
+const obstructionResumePathFor = candidate => {
+  const byId = obstructionResumeByIdentity.get(`id:${candidate.id}`);
+  const byKey = obstructionResumeByIdentity.get(`key:${candidate.key}`);
+  if (byId && byKey && JSON.stringify(byId) !== JSON.stringify(byKey)) {
+    throw new Error(`Conflicting corona resume frontiers for ${candidate.id}`);
+  }
+  return (byId ?? byKey ?? []).slice();
+};
 const inputClassification = args.get("input-classification") ?? "unresolved";
 const inputStoppedBy = args.get("input-stopped-by");
 const reportCandidates = inputReports.length
@@ -145,7 +174,7 @@ const includeReflections = booleanArg("include-reflections", false);
 const reportChirality = booleanArg("report-chirality", true);
 const maxCandidates = Math.max(1, Math.floor(numberArg("max-candidates", Infinity)));
 const startIndex = Math.max(0, Math.floor(numberArg("start-index", 0)));
-const periodicMaxTiles = Math.max(1, Math.min(16, Math.floor(numberArg("periodic-max-tiles", 4))));
+const periodicMaxTiles = Math.max(1, Math.min(32, Math.floor(numberArg("periodic-max-tiles", 4))));
 const periodicMinTiles = Math.max(1, Math.min(periodicMaxTiles,
   Math.floor(numberArg("periodic-min-tiles", 1))));
 const boxMaxTiles = Math.max(1, Math.floor(numberArg("box-max-tiles", 4)));
@@ -204,6 +233,29 @@ const obstructionReturnNogoods = booleanArg("obstruction-return-nogoods", false)
 const obstructionReturnCorona = booleanArg("obstruction-return-corona", false);
 const obstructionNogoodLimit = Math.max(1, Math.floor(numberArg("obstruction-nogood-limit", 50_000)));
 const obstructionSeed = Math.floor(numberArg("obstruction-seed", 0));
+if (obstructionResumeReportPath) {
+  const mismatches = [];
+  if (obstructionResumeStart?.obstruction_layer !== obstructionLayer) mismatches.push("layer");
+  if (obstructionResumeStart?.equivalence !== (includeReflections
+    ? "rotations_and_reflections"
+    : "proper_rotations")) mismatches.push("equivalence");
+  if (obstructionResumeStart?.obstruction_conflict_backjumping
+    !== obstructionConflictBackjumping) mismatches.push("conflict_backjumping");
+  if (obstructionResumeStart?.obstruction_symmetry_nogoods
+    !== obstructionSymmetryNogoods) mismatches.push("symmetry_nogoods");
+  if (obstructionResumeStart?.obstruction_nogoods !== obstructionNogoods) mismatches.push("nogoods");
+  if (obstructionResumeStart?.obstruction_nogood_limit !== obstructionNogoodLimit) {
+    mismatches.push("nogood_limit");
+  }
+  if (obstructionResumeStart?.obstruction_seed !== obstructionSeed) mismatches.push("seed");
+  if ((obstructionResumeStart?.obstruction_initial_nogood_reports ?? []).length
+    || obstructionInitialNogoodReports.length) mismatches.push("initial_nogoods_must_be_empty");
+  if ((obstructionResumeStart?.obstruction_preferred_corona_reports ?? []).length
+    || obstructionPreferredCoronaReports.length) mismatches.push("preferred_corona_must_be_empty");
+  if (mismatches.length) {
+    throw new Error(`Corona resume settings differ from source: ${mismatches.join(", ")}`);
+  }
+}
 const nodeLimit = Math.max(1, Math.floor(numberArg("nodes", 20000)));
 const stopAfter = String(args.get("stop-after") ?? "all").toLowerCase();
 if (!["periodic", "isohedral", "all"].includes(stopAfter)) {
@@ -287,7 +339,8 @@ async function obstructionScreen(candidate) {
     preferredPlacementKeys,
     returnNogoods: obstructionReturnNogoods,
     nogoodLimit: obstructionNogoodLimit,
-    seed: obstructionSeed
+    seed: obstructionSeed,
+    resumePath: obstructionResumePathFor(candidate)
   });
 }
 
@@ -346,9 +399,15 @@ await writeRecord({
   obstruction_time_ms: obstructionTimeMs,
   obstruction_budget_clock: obstructionBudgetClock,
   obstruction_conflict_backjumping: obstructionConflictBackjumping,
+  obstruction_nogoods: obstructionNogoods,
+  obstruction_nogood_limit: obstructionNogoodLimit,
   obstruction_symmetry_nogoods: obstructionSymmetryNogoods,
   obstruction_initial_nogood_reports: obstructionInitialNogoodReports,
   obstruction_preferred_corona_reports: obstructionPreferredCoronaReports,
+  obstruction_resume_report: obstructionResumeReportPath,
+  obstruction_resume_report_sha256: obstructionResumeReportText == null
+    ? null
+    : createHash("sha256").update(obstructionResumeReportText).digest("hex"),
   obstruction_return_nogoods: obstructionReturnNogoods,
   obstruction_return_corona: obstructionReturnCorona,
   obstruction_seed: obstructionSeed,
@@ -469,6 +528,7 @@ for (let index = 0; index < candidates.length; index++) {
       copies: easy.copies,
       box: easy.box ?? null,
       period_vectors: easy.period_vectors,
+      placements: easy.placements ?? null,
       isohedral_certificate: easy.isohedral,
       nodes: easy.nodes ?? null,
       tests: easy.tests ?? null
@@ -522,6 +582,8 @@ for (let index = 0; index < candidates.length; index++) {
       seed: obstruction.seed ?? obstructionSeed,
       incomplete: !!obstruction.stopped_by,
       stopped_by: obstruction.stopped_by,
+      resume_path: obstruction.resume_path ?? null,
+      resumed_from_path: obstruction.resumed_from_path ?? null,
       nodes: obstruction.nodes,
       target_cells: obstruction.target_cells ?? null,
       placements_considered: obstruction.placements_considered ?? null,

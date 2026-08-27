@@ -67,6 +67,48 @@ try {
   assert.ok(replay.obstruction.preferred_placements_requested > 0);
   assert.ok(replay.obstruction.preferred_placements_matched > 0);
   assert.ok(replay.obstruction.nogood_clause_keys.length >= replay.obstruction.initial_nogood_clauses);
+
+  const ringKey = "0,0,0;0,1,0;0,2,0;1,0,0;1,2,0;2,0,0;2,1,0;2,2,0";
+  const exactResumeCommon = [
+    `--key=${ringKey}`,
+    "--candidate-id=ring8",
+    "--periodic-screen=false",
+    "--box-screen=false",
+    "--general-periodic=false",
+    "--isohedral-screen=false",
+    "--stop-after=all",
+    "--obstruction-layer=3",
+    "--obstruction-time-ms=60000",
+    "--obstruction-budget-clock=cpu",
+    "--obstruction-nogoods=true",
+    "--obstruction-conflict-backjumping=true",
+    "--obstruction-symmetry-nogoods=false",
+    "--obstruction-nogood-limit=50000"
+  ];
+  const cutoffOutput = run([...exactResumeCommon, "--nodes=1000"]);
+  const cutoff = candidateRecord(cutoffOutput);
+  assert.equal(cutoff.obstruction.stopped_by, "node_limit");
+  assert.ok(cutoff.obstruction.resume_path.length > 0);
+  const cutoffReport = join(temporaryDirectory, "exact-cutoff.ndjson");
+  writeFileSync(cutoffReport, cutoffOutput);
+  const exactTailOutput = run([
+    ...exactResumeCommon,
+    "--nodes=500000",
+    `--obstruction-resume-report=${cutoffReport}`
+  ]);
+  const exactTail = candidateRecord(exactTailOutput);
+  assert.equal(exactTail.obstruction.patch_verified, true);
+  assert.deepEqual(exactTail.obstruction.resumed_from_path, cutoff.obstruction.resume_path);
+  const mismatchedResume = spawnSync(process.execPath, [
+    script.pathname,
+    ...exactResumeCommon,
+    "--nodes=500000",
+    "--obstruction-seed=1",
+    `--obstruction-resume-report=${cutoffReport}`
+  ], { encoding: "utf8" });
+  assert.notEqual(mismatchedResume.status, 0);
+  assert.match(mismatchedResume.stderr, /Corona resume settings differ from source: seed/);
+
   const cpuContinuation = spawnSync(process.execPath, [
     continuationScript.pathname,
     "--id=p10-052588",
