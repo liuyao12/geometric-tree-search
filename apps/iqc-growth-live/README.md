@@ -18,6 +18,16 @@ the GCTS anatomy view explains covers, oriented ports, markings, search, and
 promotion; and the claim ledger keeps proved, measured, and open results visibly
 separate. Its numbers are frozen benchmark results, not recomputed browser demos.
 
+Build 229 completes the GCTS-learning→growth provenance link. Every evaluated
+candidate now freezes the exact marking source that scored it: library ID/name,
+single-versus-portfolio mode, channel capacity, neighborhood reach,
+representation/readout, score, threshold, and whether marking was an active
+hard gate. The clickable cover-lineage history aggregates those immutable
+records rather than reading the current configuration. Changing or retraining a
+marking intentionally starts a new growth run; an already exported receipt
+retains the earlier decision provenance for comparison. Ice retains a separate
+molecular-port unanimity record and never masquerades as a generic library mark.
+
 Build 228 turns that provenance into an interactive growth-history audit. The
 search stack now carries each accepted or pruned action's cover-family lineage,
 and a clickable propagation strip groups molecule→connection,

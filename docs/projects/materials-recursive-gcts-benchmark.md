@@ -65,6 +65,16 @@ receipt now includes grouped lineage totals, a coordinate-free digest over all
 accepted generic lineage records, and up to the latest 256 records; no
 coordinates, target sites, energies, or physical mechanisms enter this audit.
 
+Build 229 freezes marking provenance at every growth decision. The record names
+the exact single or portfolio-selected library source and retains its channel
+capacity, bounded neighborhood reach, representation/readout, score, threshold,
+and gate role. The lineage inspector therefore shows which learned connection
+section governed each propagated cover family within that run; changing or
+retraining the marking starts a new run, while the exported receipt keeps the
+old provenance for an explicit comparison. The ice molecular-port unanimity
+trace has an explicitly separate provenance schema and is not counted as a
+generic GCTS library intervention.
+
 ## Benchmark ladder
 
 All learners receive only positions and species.  Hidden construction metadata

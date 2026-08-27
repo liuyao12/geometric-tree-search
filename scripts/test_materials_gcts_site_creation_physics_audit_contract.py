@@ -43,8 +43,8 @@ def test_site_creation_ledger_is_visible_and_claims_fail_closed():
 
 
 def test_build_191_assets_and_narrative():
-    assert 'buildId: "20260827-228"' in APP
-    assert 'app.js?v=20260827-228' in HTML
+    assert 'buildId: "20260827-229"' in APP
+    assert 'app.js?v=20260827-229' in HTML
     assert 'style.css?v=20260826-104' in HTML
     assert 'site-creation-physics-audit.js?v=20260826-1' in APP
     assert "Build 191" in README

@@ -50,6 +50,12 @@ def test_molecular_cover_ribbon_contract():
         "function renderGrowthLineageMap()",
         "growthCoverLineageGroups()",
         "current cover focus is display-only",
+        "function markingProvenanceForCandidate(candidate)",
+        "function specializedIceMarkingProvenance()",
+        "markingProvenance: markingProvenanceForCandidate(candidate)",
+        '"frozen marking"',
+        '"capacity / reach"',
+        '"section score"',
         "const sampleFamilies = sampleLabels.map(prototypeCoverFamily)",
         "const familyLossesFor",
         "familyLosses: familyLossesFor(initial)",
@@ -71,8 +77,8 @@ def test_molecular_cover_ribbon_contract():
     assert ".molecular-cover-flow button.active" in CSS
     assert ".growth-lineage-map" in CSS
     assert 'id="growthLineageMap"' in HTML
-    assert 'buildId: "20260827-228"' in APP
-    assert 'app.js?v=20260827-228' in HTML
+    assert 'buildId: "20260827-229"' in APP
+    assert 'app.js?v=20260827-229' in HTML
 
 
 if __name__ == "__main__":
