@@ -58,7 +58,7 @@ import { compositionBalanceDelta, compositionDrift, learnCompositionTarget } fro
 import { consumeFeedstock, evaluateFeedstockDemand, feedstockReservoirSnapshot,
   initializeFeedstockReservoir } from "./feedstock-reservoir.js?v=20260827-2";
 import { localPackingDensityAudit } from "./local-packing-density.js?v=20260827-2";
-import { interstitialClearanceAudit } from "./interstitial-clearance.js?v=20260827-3";
+import { interstitialClearanceAudit } from "./interstitial-clearance.js?v=20260827-5";
 import { formalChargeBalanceDelta, learnFormalChargeTarget } from "./formal-charge-balance.js?v=20260824-1";
 import { chargeMomentSignature, compareChargeMomentGeometry } from "./global-charge-moments.js?v=20260826-1";
 import { incrementalIonicPairGeometry, incrementalIonicPairReachProfile,
@@ -708,6 +708,9 @@ const voidClearanceRadial = $("voidClearanceRadial");
 const voidClearancePath = $("voidClearancePath");
 const voidClearanceReadout = $("voidClearanceReadout");
 const voidClearanceBoundary = $("voidClearanceBoundary");
+const voidNetworkState = $("voidNetworkState");
+const voidNetworkFilters = $("voidNetworkFilters");
+const voidNetworkReadout = $("voidNetworkReadout");
 const multiscalePathwayState = $("multiscalePathwayState");
 const multiscalePathwayHarmonics = $("multiscalePathwayHarmonics");
 const multiscalePathwayPlot = $("multiscalePathwayPlot");
@@ -1460,6 +1463,7 @@ let selectedStoichiometrySpecies = null;
 let selectedPackingMetric = "median";
 let selectedRadialProfileChannel = "density";
 let selectedVoidClearanceMetric = "p90";
+let selectedVoidNetworkFilter = "all";
 let leapEventCount = 0;
 let siteStructuralHistories = new Map();
 let pendingSiteHistoryIds = new Set();
@@ -5034,6 +5038,16 @@ function structuralVoidClearanceSnapshot(source = atoms) {
     radialRecords: summary.radialRecords.map((record) => ({
       clearance: receiptRound(record.clearance), normalizedRadius: receiptRound(record.normalizedRadius),
     })),
+    network: { ...summary.network,
+      isolatedNodeFraction: receiptRound(summary.network.isolatedNodeFraction),
+      meanDegree: receiptRound(summary.network.meanDegree),
+      largestComponentFraction: receiptRound(summary.network.largestComponentFraction),
+      edges: summary.network.edges.map((edge) => ({ ...edge })),
+      degrees: [...summary.network.degrees],
+      components: summary.network.components.map((component) => ({ ...component, nodes: [...component.nodes],
+        minimumNormalizedRadius: receiptRound(component.minimumNormalizedRadius),
+        maximumNormalizedRadius: receiptRound(component.maximumNormalizedRadius) })),
+    },
   });
   return { ...roundSummary(audit), referenceNearestNeighborScale: receiptRound(audit.referenceNearestNeighborScale),
     reference: roundSummary(audit.reference) };
@@ -9567,7 +9581,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-238",
+      buildId: "20260827-239",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -10280,8 +10294,11 @@ async function buildExperimentReceipt() {
         alignment: "structural leap index; no physical time",
         pointSource: "before/after voidClearance snapshots in structuralLeapCertificates",
         selectedMetric: selectedVoidClearanceMetric,
+        selectedNetworkFilter: selectedVoidNetworkFilter,
         dimensionAware: true,
         candidateRule: "circumcenter lies inside a nondegenerate local simplex and its circle/sphere contains no explicit site",
+        networkRule: "two retained centers are adjacent only when their witnessed simplices share a complete edge in 2D or face in 3D",
+        graphTopologyOnly: true,
         referenceScale: "supplied median nearest-neighbor distance",
         periodicImagesUsed: false,
         atomicRadiiUsed: false,
@@ -10291,6 +10308,7 @@ async function buildExperimentReceipt() {
         accessibleFreeVolumeInferred: false,
         vacancyOrInterstitialIdentityInferred: false,
         diffusionPathInferred: false,
+        physicalTransportConnectivityInferred: false,
         migrationBarrierInferred: false,
         pressureInferred: false,
         physicalTimeIntegrated: false,
@@ -11714,7 +11732,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-238" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-239" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -20506,6 +20524,7 @@ function resetCounters() {
   selectedPackingMetric = "median";
   selectedRadialProfileChannel = "density";
   selectedVoidClearanceMetric = "p90";
+  selectedVoidNetworkFilter = "all";
   leapEventCount = 0;
   invalidateCreationResponseEvidenceCache("new specimen or reset state");
   siteStructuralHistories = new Map();
@@ -23295,6 +23314,14 @@ function materialConsequenceRecords(before, after) {
         ? `${after.voidClearance.candidateCenters} nondegenerate locally witnessed empty-simplex centers; maximum ${after.voidClearance.maximumClearance.toFixed(3)}aₙₙ.`
         : after.voidClearance?.reason || "No locally witnessed empty-simplex centers resolved.",
       boundary: "Point-site clearance is not porosity, pore volume, accessible free volume, vacancy/interstitial identity, a diffusion path, or a migration barrier." },
+    { id: "void-network", group: "mesoscale", label: "largest empty-region graph component", unit: "fraction of witnessed empty centers",
+      before: before.voidClearance?.network?.largestComponentFraction,
+      after: after.voidClearance?.network?.largestComponentFraction,
+      format: percent, deltaFormat: signedPercent, domain: [0, 1],
+      evidence: after.voidClearance?.available
+        ? `${after.voidClearance.network.largestComponentNodes}/${after.voidClearance.network.nodeCount} centers in the largest of ${after.voidClearance.network.componentCount} exact shared-face components; ${after.voidClearance.network.coreToFrontComponentCount} span the declared core/front radial bands.`
+        : after.voidClearance?.reason || "Empty-center graph unresolved.",
+      boundary: "Simplex-face graph connectivity is not probe-accessible porosity, a diffusion network, permeability, migration kinetics, or a transport coefficient." },
     { id: "local-order", group: "local", label: `mean local ${orderSymbol}`, unit: "orientational-order magnitude",
       before: before.orientationalOrder?.harmonics?.[6]?.mean,
       after: after.orientationalOrder?.harmonics?.[6]?.mean,
@@ -23766,8 +23793,10 @@ function renderVoidClearancePathway() {
     button.setAttribute("aria-pressed", String(button.dataset.voidMetric === selectedVoidClearanceMetric)));
   [voidClearanceDistribution, voidClearanceRadial, voidClearancePath].forEach((plot) => plot.replaceChildren());
   voidClearanceReadout.replaceChildren();
+  voidNetworkReadout.replaceChildren();
   if (!after?.available) {
     voidClearanceState.textContent = after?.reason || "empty-simplex centers unresolved";
+    voidNetworkState.textContent = "network unavailable without resolved empty centers";
     const note = document.createElement("span"); note.textContent = after?.reason || "No finite empty-region evidence.";
     voidClearanceReadout.append(note); return;
   }
@@ -23802,10 +23831,25 @@ function renderVoidClearancePathway() {
     const label = makeSvg("text", { x: left - 4, y: ry(value) + 2, class: "axis", "text-anchor": "end" });
     label.textContent = `${value.toFixed(2)}`; voidClearanceRadial.append(label);
   });
+  const network = after.network;
+  voidNetworkFilters.querySelectorAll("button[data-void-network]").forEach((button) =>
+    button.setAttribute("aria-pressed", String(button.dataset.voidNetwork === selectedVoidNetworkFilter)));
+  let visibleNodes = new Set(after.radialRecords.map((_, index) => index));
+  if (selectedVoidNetworkFilter === "largest") visibleNodes = new Set(network.components[0]?.nodes || []);
+  else if (selectedVoidNetworkFilter === "spanning") visibleNodes = new Set(network.components
+    .filter((component) => component.coreToFront).flatMap((component) => component.nodes));
+  else if (selectedVoidNetworkFilter === "isolated") visibleNodes = new Set(network.degrees
+    .map((degree, index) => degree === 0 ? index : null).filter((index) => index !== null));
+  const visibleEdges = network.edges.filter((edge) => visibleNodes.has(edge.first) && visibleNodes.has(edge.second));
+  visibleEdges.forEach((edge) => {
+    const first = after.radialRecords[edge.first]; const second = after.radialRecords[edge.second];
+    voidClearanceRadial.append(makeSvg("line", { x1: rx(first.normalizedRadius), y1: ry(first.clearance),
+      x2: rx(second.normalizedRadius), y2: ry(second.clearance), class: "network-edge" }));
+  });
   (after.reference?.radialRecords || []).forEach((record) => voidClearanceRadial.append(makeSvg("circle", {
     cx: rx(record.normalizedRadius), cy: ry(record.clearance), r: 1.9, class: "reference",
   })));
-  after.radialRecords.forEach((record) => voidClearanceRadial.append(makeSvg("circle", {
+  after.radialRecords.forEach((record, index) => visibleNodes.has(index) && voidClearanceRadial.append(makeSvg("circle", {
     cx: rx(record.normalizedRadius), cy: ry(record.clearance), r: 2.5, class: "current",
   })));
   const radialLabel = makeSvg("text", { x: (left + right) / 2, y: 111, class: "axis", "text-anchor": "middle" });
@@ -23844,11 +23888,23 @@ function renderVoidClearancePathway() {
     ["witnessed centers", `${after.candidateCenters}`], ["median clearance", display(after.medianClearance)],
     ["large clearance · p90", display(after.percentile90Clearance)], ["maximum", display(after.maximumClearance)],
     ["core / front", `${display(after.coreMedianClearance)} / ${display(after.frontMedianClearance)}`],
-    ["supplied centers", `${after.reference.candidateCenters}`], ["simplex source", `${after.maximumAnchors} anchors · ${after.neighborLimit}-neighbor ties`]]
+    ["supplied centers", `${after.reference.candidateCenters}`], ["simplex source", `${after.sampledAnchors} invariant anchors · target ${after.maximumAnchors}; full ties retained`]]
     .forEach(([label, datum]) => {
       const cell = document.createElement("span"); const key = document.createElement("small"); const valueElement = document.createElement("strong");
       key.textContent = label; valueElement.textContent = datum; cell.append(key, valueElement); voidClearanceReadout.append(cell);
     });
+  voidNetworkReadout.replaceChildren();
+  [["empty centers", network.nodeCount.toLocaleString()], ["shared-face edges", network.edgeCount.toLocaleString()],
+    ["components", network.componentCount.toLocaleString()],
+    ["largest component", `${network.largestComponentNodes}/${network.nodeCount} · ${(100 * network.largestComponentFraction).toFixed(1)}%`],
+    ["graph cycles", network.cycleRank.toLocaleString()], ["mean degree", network.meanDegree.toFixed(2)],
+    ["core → front components", network.coreToFrontComponentCount.toLocaleString()],
+    ["isolated cages", `${network.isolatedNodeCount} · ${(100 * network.isolatedNodeFraction).toFixed(1)}%`]]
+    .forEach(([label, datum]) => {
+      const cell = document.createElement("span"); const key = document.createElement("small"); const valueElement = document.createElement("strong");
+      key.textContent = label; valueElement.textContent = datum; cell.append(key, valueElement); voidNetworkReadout.append(cell);
+    });
+  voidNetworkState.textContent = `${visibleNodes.size}/${network.nodeCount} centers · ${visibleEdges.length}/${network.edgeCount} face adjacencies shown`;
   const metricLabel = ({ median: "median", p90: "large-region p90", maximum: "maximum", front: "growth-front median" })[selectedVoidClearanceMetric];
   voidClearanceState.textContent = `${states.length} state${states.length === 1 ? "" : "s"} · ${metricLabel}`;
   voidClearanceBoundary.textContent = `Candidate centers are circumcenters of nondegenerate local ${after.dimension === 2 ? "triangles" : "tetrahedra"}, retained only when the center lies inside the simplex and its circle/sphere is empty of explicit sites. Clearances are divided by the supplied median nearest-neighbor distance; no periodic image or atomic radius is invented. This finite point-site audit is not porosity, pore volume, accessible free volume, vacancy/interstitial identity, a transport channel, migration barrier, pressure, rate, or physical time.`;
@@ -23858,6 +23914,12 @@ voidClearanceMetrics.addEventListener("click", (event) => {
   const button = event.target.closest("button[data-void-metric]");
   if (!button || !["median", "p90", "maximum", "front"].includes(button.dataset.voidMetric)) return;
   selectedVoidClearanceMetric = button.dataset.voidMetric; renderVoidClearancePathway();
+});
+
+voidNetworkFilters.addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-void-network]");
+  if (!button || !["all", "largest", "spanning", "isolated"].includes(button.dataset.voidNetwork)) return;
+  selectedVoidNetworkFilter = button.dataset.voidNetwork; renderVoidClearancePathway();
 });
 
 function renderStructuralLeap(leap = null) {

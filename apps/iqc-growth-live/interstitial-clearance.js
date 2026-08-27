@@ -56,17 +56,22 @@ function canonicalAnchors(positions, maximumAnchors) {
   const records = positions.map((point, index) => ({ index, radius2: squaredDistance(point, center),
     fingerprint: positions.map((other, otherIndex) => otherIndex === index ? 0 : squaredDistance(point, other))
       .sort((first, second) => first - second) }));
+  const maximumRadius2 = Math.max(1e-18, ...records.map((record) => record.radius2));
+  const maximumDistance2 = Math.max(1e-18, ...records.map((record) => record.fingerprint.at(-1)));
+  records.forEach((record) => { record.canonicalKey = [Math.round(record.radius2 / maximumRadius2 * 1e10),
+    ...record.fingerprint.map((value) => Math.round(value / maximumDistance2 * 1e10))]; });
   records.sort((first, second) => {
-    if (first.radius2 !== second.radius2) return first.radius2 - second.radius2;
-    for (let index = 0; index < first.fingerprint.length; index++) {
-      if (first.fingerprint[index] !== second.fingerprint[index]) {
-        return first.fingerprint[index] - second.fingerprint[index];
+    for (let index = 0; index < first.canonicalKey.length; index++) {
+      if (first.canonicalKey[index] !== second.canonicalKey[index]) {
+        return first.canonicalKey[index] - second.canonicalKey[index];
       }
     }
     return 0;
   });
-  return Array.from({ length: maximumAnchors }, (_, sample) => records[Math.min(records.length - 1,
-    Math.floor((sample + .5) * records.length / maximumAnchors))].index);
+  const keyText = (record) => record.canonicalKey.join(",");
+  const selectedKeys = new Set(Array.from({ length: maximumAnchors }, (_, sample) => keyText(records[
+    Math.min(records.length - 1, Math.floor((sample + .5) * records.length / maximumAnchors))])));
+  return records.filter((record) => selectedKeys.has(keyText(record))).map((record) => record.index);
 }
 
 function referenceNearestNeighborScale(positions, maximumAnchors) {
@@ -88,9 +93,9 @@ function simplexCircumcenter(vertices) {
   return center;
 }
 
-function witnessedEmptyCenters(positions, dimension, maximumAnchors, neighborLimit) {
+function witnessedEmptyCenters(positions, dimension, maximumAnchors, neighborLimit, anchorIndices = null) {
   const candidates = [];
-  canonicalAnchors(positions, maximumAnchors).forEach((anchor) => {
+  (anchorIndices || canonicalAnchors(positions, maximumAnchors)).forEach((anchor) => {
     const ordered = positions.map((point, index) => ({ index, distance2: index === anchor
       ? Infinity : squaredDistance(positions[anchor], point) })).sort((first, second) => first.distance2 - second.distance2);
     const finite = ordered.filter((record) => Number.isFinite(record.distance2));
@@ -135,15 +140,65 @@ function witnessedEmptyCenters(positions, dimension, maximumAnchors, neighborLim
   return [...components.values()].map((records) => ({
     center: records[0].center.map((_, axis) => records.reduce((sum, record) => sum + record.center[axis], 0) / records.length),
     clearance: records.reduce((sum, record) => sum + record.clearance, 0) / records.length,
+    simplices: records.map((record) => record.vertices),
   })).sort((first, second) => first.clearance - second.clearance);
 }
 
+function emptyCenterNetwork(centers, radialRecords, dimension) {
+  const edges = [];
+  for (let first = 0; first < centers.length; first++) for (let second = first + 1; second < centers.length; second++) {
+    let sharedSiteCount = 0;
+    centers[first].simplices.some((firstSimplex) => centers[second].simplices.some((secondSimplex) => {
+      const shared = firstSimplex.filter((site) => secondSimplex.includes(site)).length;
+      sharedSiteCount = Math.max(sharedSiteCount, shared); return shared >= dimension;
+    }));
+    if (sharedSiteCount >= dimension) edges.push({ first, second, sharedSiteCount });
+  }
+  const parents = centers.map((_, index) => index);
+  const root = (index) => { while (parents[index] !== index) { parents[index] = parents[parents[index]]; index = parents[index]; } return index; };
+  const unite = (first, second) => { const a = root(first); const b = root(second); if (a !== b) parents[Math.max(a, b)] = Math.min(a, b); };
+  edges.forEach((edge) => unite(edge.first, edge.second));
+  const components = new Map();
+  centers.forEach((_, index) => { const key = root(index); if (!components.has(key)) components.set(key, []); components.get(key).push(index); });
+  const componentRecords = [...components.values()].map((nodes, component) => {
+    const radii = nodes.map((node) => radialRecords[node].normalizedRadius);
+    const nodeSet = new Set(nodes);
+    const edgeCount = edges.filter((edge) => nodeSet.has(edge.first) && nodeSet.has(edge.second)).length;
+    return { component, nodes, nodeCount: nodes.length, edgeCount,
+      cycleRank: Math.max(0, edgeCount - nodes.length + 1),
+      minimumNormalizedRadius: Math.min(...radii), maximumNormalizedRadius: Math.max(...radii),
+      coreToFront: Math.min(...radii) <= .5 && Math.max(...radii) >= .75 };
+  }).sort((first, second) => second.nodeCount - first.nodeCount || second.edgeCount - first.edgeCount
+    || first.minimumNormalizedRadius - second.minimumNormalizedRadius);
+  const largest = componentRecords[0] || null;
+  const degree = new Array(centers.length).fill(0);
+  edges.forEach((edge) => { degree[edge.first]++; degree[edge.second]++; });
+  return {
+    nodeCount: centers.length,
+    edgeCount: edges.length,
+    componentCount: componentRecords.length,
+    isolatedNodeCount: degree.filter((value) => value === 0).length,
+    isolatedNodeFraction: degree.filter((value) => value === 0).length / Math.max(1, centers.length),
+    meanDegree: degree.reduce((sum, value) => sum + value, 0) / Math.max(1, centers.length),
+    cycleRank: Math.max(0, edges.length - centers.length + componentRecords.length),
+    largestComponentNodes: largest?.nodeCount || 0,
+    largestComponentFraction: (largest?.nodeCount || 0) / Math.max(1, centers.length),
+    coreToFrontComponentCount: componentRecords.filter((component) => component.coreToFront).length,
+    degrees: degree,
+    edges,
+    components: componentRecords,
+    adjacencyDefinition: `two empty centers are adjacent only when witnessed simplices share a complete ${dimension === 2 ? "edge (two sites)" : "face (three sites)"}`,
+  };
+}
+
 function summarize(positions, dimension, maximumAnchors, neighborLimit, histogramBins, histogramMaximum) {
-  const centers = witnessedEmptyCenters(positions, dimension, maximumAnchors, neighborLimit);
+  const anchors = canonicalAnchors(positions, maximumAnchors);
+  const centers = witnessedEmptyCenters(positions, dimension, maximumAnchors, neighborLimit, anchors);
   const structureCenter = centroid(positions);
   const maximumStructureRadius = Math.max(1e-12, ...positions.map((point) => Math.sqrt(squaredDistance(point, structureCenter))));
   const records = centers.map((record) => ({ clearance: record.clearance,
     normalizedRadius: Math.sqrt(squaredDistance(record.center, structureCenter)) / maximumStructureRadius }));
+  const network = emptyCenterNetwork(centers, records, dimension);
   const clearances = records.map((record) => record.clearance);
   const core = records.filter((record) => record.normalizedRadius <= .5).map((record) => record.clearance);
   const front = records.filter((record) => record.normalizedRadius >= .75).map((record) => record.clearance);
@@ -152,6 +207,7 @@ function summarize(positions, dimension, maximumAnchors, neighborLimit, histogra
     Math.max(0, Math.floor(clearance / histogramMaximum * histogramBins)))]++; });
   return {
     candidateCenters: records.length,
+    sampledAnchors: anchors.length,
     medianClearance: quantile(clearances, .5),
     percentile90Clearance: quantile(clearances, .9),
     maximumClearance: clearances.length ? Math.max(...clearances) : null,
@@ -159,6 +215,7 @@ function summarize(positions, dimension, maximumAnchors, neighborLimit, histogra
     frontMedianClearance: quantile(front, .5),
     radialRecords: records,
     histogram,
+    network,
   };
 }
 
@@ -216,6 +273,7 @@ export function interstitialClearanceAudit(currentPositions, referencePositions,
     vacancyOrInterstitialIdentityInferred: false,
     diffusionPathInferred: false,
     migrationBarrierInferred: false,
+    physicalTransportConnectivityInferred: false,
     pressureInferred: false,
     physicalTimeIntegrated: false,
   };

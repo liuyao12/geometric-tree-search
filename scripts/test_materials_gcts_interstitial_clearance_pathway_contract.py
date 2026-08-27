@@ -16,6 +16,7 @@ def test_pathway_is_visible_leap_linked_and_receipted():
         "voidClearanceState", "voidClearanceMetrics", "voidClearanceDistribution",
         "voidClearanceRadial", "voidClearancePath", "voidClearanceReadout",
         "voidClearanceBoundary",
+        "voidNetworkState", "voidNetworkFilters", "voidNetworkReadout",
     ):
         assert f'id="{element_id}"' in HTML
         assert f'$("{element_id}")' in APP
@@ -23,11 +24,14 @@ def test_pathway_is_visible_leap_linked_and_receipted():
         "function structuralVoidClearanceSnapshot", "function structuralVoidClearanceSeries",
         "function renderVoidClearancePathway", "voidClearance: structuralVoidClearanceSnapshot()",
         'id: "void-clearance", group: "local"', "interstitialClearancePathway:",
+        'id: "void-network", group: "mesoscale"', "selectedNetworkFilter:",
+        "networkRule:", "graphTopologyOnly: true",
         "renderVoidClearancePathway();",
     ):
         assert phrase in APP
     assert ".void-clearance-pathway" in CSS
     assert ".void-clearance-plots" in CSS
+    assert ".void-network-audit" in CSS
 
 
 def test_geometry_is_dimension_aware_invariant_and_fails_closed():
@@ -35,6 +39,8 @@ def test_geometry_is_dimension_aware_invariant_and_fails_closed():
         "export function interstitialClearanceAudit", "simplexCircumcenter",
         "barycentric.some", "minimumDistance2 + 1e-9 < radius2",
         "canonicalAnchors", "nearest-neighbor tie set",
+        "function emptyCenterNetwork", "sharedSiteCount >= dimension",
+        "largestComponentFraction", "coreToFrontComponentCount", "cycleRank",
         "finiteObservationNoPeriodicImages: true", "pointSitesNoAtomicRadii: true",
         "translationInvariant: true", "properRotationInvariant: true",
         "atomPermutationInvariant: true", "targetUsed: false", "usedAsGrowthInput: false",
@@ -47,6 +53,7 @@ def test_pathway_cannot_be_misread_as_porosity_or_transport():
         "porosityInferred: false", "poreVolumeInferred: false",
         "accessibleFreeVolumeInferred: false", "vacancyOrInterstitialIdentityInferred: false",
         "diffusionPathInferred: false", "migrationBarrierInferred: false",
+        "physicalTransportConnectivityInferred: false",
         "pressureInferred: false", "physicalTimeIntegrated: false",
     ):
         assert phrase in APP
@@ -54,16 +61,16 @@ def test_pathway_cannot_be_misread_as_porosity_or_transport():
     assert "not porosity, pore volume, accessible free volume" in HTML
 
 
-def test_build_238_is_exposed():
-    assert 'buildId: "20260827-238"' in APP
-    assert 'app.js?v=20260827-238' in HTML
-    assert 'style.css?v=20260827-238' in HTML
-    assert 'interstitial-clearance.js?v=20260827-3' in APP
+def test_build_239_is_exposed():
+    assert 'buildId: "20260827-239"' in APP
+    assert 'app.js?v=20260827-239' in HTML
+    assert 'style.css?v=20260827-239' in HTML
+    assert 'interstitial-clearance.js?v=20260827-5' in APP
 
 
 if __name__ == "__main__":
     test_pathway_is_visible_leap_linked_and_receipted()
     test_geometry_is_dimension_aware_invariant_and_fails_closed()
     test_pathway_cannot_be_misread_as_porosity_or_transport()
-    test_build_238_is_exposed()
+    test_build_239_is_exposed()
     print("interstitial clearance pathway contract passed")

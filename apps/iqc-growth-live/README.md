@@ -19,6 +19,17 @@ the GCTS anatomy view explains covers, oriented ports, markings, search, and
 promotion; and the claim ledger keeps proved, measured, and open results visibly
 separate. Its numbers are frozen benchmark results, not recomputed browser demos.
 
+Build 239 turns the finite empty-center census into an interactive **witnessed
+interstitial network**. Two empty centers are adjacent only when their retained
+local simplices share a complete edge in 2D or face in 3D. The radial landscape
+draws these exact graph edges and can isolate the largest component,
+core-to-front components, or isolated cages. Component count, largest-component
+fraction, graph cycle rank, mean degree, radial spanning, and isolation are
+retained in every structural state; the consequence matrix separately reports
+the largest connected fraction. This is combinatorial point-site topology—not
+probe-accessible porosity, a physical diffusion network, permeability,
+migration kinetics, or a transport coefficient.
+
 Build 238 adds an interactive **finite interstitial-clearance pathway**. The
 dimension-aware audit constructs local triangles in 2D or tetrahedra in 3D,
 retains a circumcenter only when it lies inside its simplex and its

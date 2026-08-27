@@ -9,9 +9,16 @@ const invariant = interstitialClearanceAudit(cubic.map(transform).reverse(), cub
 assert.equal(baseline.available, true);
 assert.equal(baseline.referenceNearestNeighborScale, 1);
 assert.ok(baseline.candidateCenters > 0);
+assert.equal(baseline.network.nodeCount, baseline.candidateCenters);
+assert.ok(baseline.network.edgeCount > 0);
+assert.ok(baseline.network.componentCount > 0);
+assert.ok(baseline.network.largestComponentFraction > 0);
 assert.ok(Math.abs(baseline.medianClearance - invariant.medianClearance) < 1e-10);
 assert.ok(Math.abs(baseline.percentile90Clearance - invariant.percentile90Clearance) < 1e-10);
 assert.deepEqual(baseline.histogram, invariant.histogram);
+for (const key of ["edgeCount", "componentCount", "cycleRank", "largestComponentNodes", "coreToFrontComponentCount"]) {
+  assert.equal(baseline.network[key], invariant.network[key]);
+}
 
 const expanded = cubic.map(([x, y, z]) => [1.2 * x, 1.2 * y, 1.2 * z]);
 const expandedAudit = interstitialClearanceAudit(expanded, cubic, { maximumAnchors: 32 });
@@ -31,7 +38,9 @@ assert.ok(Number.isFinite(planar.medianClearance));
 assert.ok(Math.abs(planar.medianClearance - planarInvariant.medianClearance) < 1e-10);
 assert.deepEqual(planar.histogram, planarInvariant.histogram);
 assert.equal(planar.pointSitesNoAtomicRadii, true);
+assert.ok(planar.network.edgeCount > 0);
 assert.equal(planar.porosityInferred, false);
 assert.equal(planar.diffusionPathInferred, false);
+assert.equal(planar.physicalTransportConnectivityInferred, false);
 assert.equal(planar.targetUsed, false);
 console.log("finite interstitial-clearance invariants: passed");

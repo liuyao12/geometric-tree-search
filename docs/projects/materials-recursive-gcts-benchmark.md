@@ -13,6 +13,25 @@ amplification is `b > 1`, a level-`L` accepted macro placement represents
 approximately `b^L` atoms.  Materializing or exporting `N` atomic coordinates
 still has an unavoidable `O(N)` cost and must be reported separately.
 
+### Witnessed interstitial connectivity graph (Build 239)
+
+Each retained empty center now carries all locally witnessed defining
+simplices. The browser joins two centers only if at least one simplex pair shares
+a complete edge in 2D or triangular face in 3D. This produces a finite exact
+face-adjacency graph over the sampled empty-center vocabulary. The radial
+clearance plot renders the graph and can filter all nodes, the largest
+component, components touching both declared core and growth-front radial
+bands, or isolated cages. Receipts and leap snapshots retain node/edge counts,
+components, isolated fraction, mean degree, graph cycle rank, largest-component
+fraction, and the number of core-to-front components. The consequence matrix
+uses only the largest-component fraction and does not merge it with clearance.
+
+The graph says that witnessed simplices share explicit sites. It has no atomic
+or probe radii, continuous void boundary, throat cross-section, energetic
+barrier, hopping rule, or rate. Consequently it is not accessible porosity, a
+physical diffusion path, permeability, migration kinetics, or a transport
+coefficient, and it remains excluded from candidate generation and ranking.
+
 ### Finite interstitial-clearance pathway (Build 238)
 
 Explicit gap clusters now have a quantitative, dimension-aware companion. From
