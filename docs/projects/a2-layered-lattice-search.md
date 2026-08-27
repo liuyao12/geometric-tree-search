@@ -272,9 +272,31 @@ negative at both scalar scales 2 and 3, covering 128,018 parent/scale cases.
 The scalar-3 per-candidate reports begin with
 `data/a2-layered-size7-three-cluster-substitution-scalar3-`.
 
-This still does not exclude connected clusters of four or more monotiles or
-non-scalar metatile inflations, and it is not a non-tiling proof for any of the
-eight candidates.
+The scalar-2 screen has now advanced to every connected four-copy metatile.
+`scripts/enumerate-a2-layered-four-clusters.py` adds one face-adjacent,
+non-overlapping tile to every connected three-copy representative. This is a
+complete enumeration: every finite connected four-vertex adjacency graph has
+a spanning-tree leaf whose removal leaves a connected three-copy cluster.
+Exact proper A2 isometry and translation canonicalization reduces 19,282,328
+raw fourth-copy attachments to 8,322,476 symmetry-distinct parents. The
+enumeration is transactional and resumable, and each candidate publishes both
+its parent count and a canonical-key-stream SHA-256 receipt.
+
+`scripts/screen-a2-layered-four-cluster-substitution.py` first exhausts atomic
+coverage of every inflated parent cell, then exhausts connected pairwise-
+disjoint four-copy coverage for survivors. Atomic exact covers are replayed in
+both forward and reverse Algorithm X order; connected-four witnesses and local
+obstructions are independently replayed. Of the 8,322,476 parents, 8,305,584
+have finite local obstructions and the remaining 16,892 are exact-cover UNSAT.
+The exact cases are distributed as 5 for `00128`, 16,699 for `00211`, and 188
+for `00235`; the other five candidates are entirely rejected locally. There
+are no rules and no unresolved parents. Per-candidate reports begin with
+`data/a2-layered-size7-four-cluster-substitution-scalar2-`.
+
+Thus connected mixed metatiles through four copies are now excluded at scalar
+inflation 2. This still does not exclude connected clusters of five or more
+monotiles or non-scalar metatile inflations, and it is not a non-tiling proof
+for any of the eight candidates.
 
 The machine-readable screen is `data/a2-layered-size5-screen.ndjson`. Rebuild
 it with:

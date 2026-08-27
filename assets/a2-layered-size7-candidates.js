@@ -107,6 +107,12 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         "2": 0,
         "3": 0
       },
+      "substitution_four_copy_metatile_types": 1188278,
+      "substitution_four_copy_metatile_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_metatile_local_obstruction_parents": 1188278,
+      "substitution_four_copy_metatile_exact_unsat_parents": 0,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-a2lp_7_00232-deep.ndjson",
@@ -127,7 +133,9 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "substitution_three_copy_metatile_reports": [
         "data/a2-layered-size7-three-cluster-substitution-scalar2-a2lp_7_00232.ndjson",
         "data/a2-layered-size7-three-cluster-substitution-scalar3-a2lp_7_00232.ndjson"
-      ]
+      ],
+      "substitution_four_copy_metatile_enumeration_report": "data/a2-layered-size7-four-cluster-enumeration-a2lp_7_00232.ndjson",
+      "substitution_four_copy_metatile_report": "data/a2-layered-size7-four-cluster-substitution-scalar2-a2lp_7_00232.ndjson"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -241,6 +249,12 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         "2": 6,
         "3": 484
       },
+      "substitution_four_copy_metatile_types": 1333343,
+      "substitution_four_copy_metatile_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_metatile_local_obstruction_parents": 1333155,
+      "substitution_four_copy_metatile_exact_unsat_parents": 188,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
@@ -261,7 +275,9 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "substitution_three_copy_metatile_reports": [
         "data/a2-layered-size7-three-cluster-substitution-scalar2-a2lp_7_00235.ndjson",
         "data/a2-layered-size7-three-cluster-substitution-scalar3-a2lp_7_00235.ndjson"
-      ]
+      ],
+      "substitution_four_copy_metatile_enumeration_report": "data/a2-layered-size7-four-cluster-enumeration-a2lp_7_00235.ndjson",
+      "substitution_four_copy_metatile_report": "data/a2-layered-size7-four-cluster-substitution-scalar2-a2lp_7_00235.ndjson"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -375,6 +391,12 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         "2": 0,
         "3": 0
       },
+      "substitution_four_copy_metatile_types": 720117,
+      "substitution_four_copy_metatile_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_metatile_local_obstruction_parents": 720117,
+      "substitution_four_copy_metatile_exact_unsat_parents": 0,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
@@ -395,7 +417,9 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "substitution_three_copy_metatile_reports": [
         "data/a2-layered-size7-three-cluster-substitution-scalar2-a2lp_7_00694.ndjson",
         "data/a2-layered-size7-three-cluster-substitution-scalar3-a2lp_7_00694.ndjson"
-      ]
+      ],
+      "substitution_four_copy_metatile_enumeration_report": "data/a2-layered-size7-four-cluster-enumeration-a2lp_7_00694.ndjson",
+      "substitution_four_copy_metatile_report": "data/a2-layered-size7-four-cluster-substitution-scalar2-a2lp_7_00694.ndjson"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -509,6 +533,12 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         "2": 0,
         "3": 0
       },
+      "substitution_four_copy_metatile_types": 650264,
+      "substitution_four_copy_metatile_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_metatile_local_obstruction_parents": 650264,
+      "substitution_four_copy_metatile_exact_unsat_parents": 0,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
@@ -529,7 +559,9 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "substitution_three_copy_metatile_reports": [
         "data/a2-layered-size7-three-cluster-substitution-scalar2-a2lp_7_00809.ndjson",
         "data/a2-layered-size7-three-cluster-substitution-scalar3-a2lp_7_00809.ndjson"
-      ]
+      ],
+      "substitution_four_copy_metatile_enumeration_report": "data/a2-layered-size7-four-cluster-enumeration-a2lp_7_00809.ndjson",
+      "substitution_four_copy_metatile_report": "data/a2-layered-size7-four-cluster-substitution-scalar2-a2lp_7_00809.ndjson"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -643,6 +675,12 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         "2": 246,
         "3": 488
       },
+      "substitution_four_copy_metatile_types": 1519270,
+      "substitution_four_copy_metatile_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_metatile_local_obstruction_parents": 1502571,
+      "substitution_four_copy_metatile_exact_unsat_parents": 16699,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
@@ -663,7 +701,9 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "substitution_three_copy_metatile_reports": [
         "data/a2-layered-size7-three-cluster-substitution-scalar2-a2lp_7_00211.ndjson",
         "data/a2-layered-size7-three-cluster-substitution-scalar3-a2lp_7_00211.ndjson"
-      ]
+      ],
+      "substitution_four_copy_metatile_enumeration_report": "data/a2-layered-size7-four-cluster-enumeration-a2lp_7_00211.ndjson",
+      "substitution_four_copy_metatile_report": "data/a2-layered-size7-four-cluster-substitution-scalar2-a2lp_7_00211.ndjson"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -777,6 +817,12 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         "2": 0,
         "3": 0
       },
+      "substitution_four_copy_metatile_types": 732293,
+      "substitution_four_copy_metatile_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_metatile_local_obstruction_parents": 732293,
+      "substitution_four_copy_metatile_exact_unsat_parents": 0,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
@@ -797,7 +843,9 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "substitution_three_copy_metatile_reports": [
         "data/a2-layered-size7-three-cluster-substitution-scalar2-a2lp_7_00755.ndjson",
         "data/a2-layered-size7-three-cluster-substitution-scalar3-a2lp_7_00755.ndjson"
-      ]
+      ],
+      "substitution_four_copy_metatile_enumeration_report": "data/a2-layered-size7-four-cluster-enumeration-a2lp_7_00755.ndjson",
+      "substitution_four_copy_metatile_report": "data/a2-layered-size7-four-cluster-substitution-scalar2-a2lp_7_00755.ndjson"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -911,6 +959,12 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         "2": 0,
         "3": 0
       },
+      "substitution_four_copy_metatile_types": 720117,
+      "substitution_four_copy_metatile_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_metatile_local_obstruction_parents": 720117,
+      "substitution_four_copy_metatile_exact_unsat_parents": 0,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
@@ -931,7 +985,9 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "substitution_three_copy_metatile_reports": [
         "data/a2-layered-size7-three-cluster-substitution-scalar2-a2lp_7_00777.ndjson",
         "data/a2-layered-size7-three-cluster-substitution-scalar3-a2lp_7_00777.ndjson"
-      ]
+      ],
+      "substitution_four_copy_metatile_enumeration_report": "data/a2-layered-size7-four-cluster-enumeration-a2lp_7_00777.ndjson",
+      "substitution_four_copy_metatile_report": "data/a2-layered-size7-four-cluster-substitution-scalar2-a2lp_7_00777.ndjson"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -1045,6 +1101,12 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         "2": 0,
         "3": 0
       },
+      "substitution_four_copy_metatile_types": 1458794,
+      "substitution_four_copy_metatile_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_metatile_local_obstruction_parents": 1458789,
+      "substitution_four_copy_metatile_exact_unsat_parents": 5,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
@@ -1065,7 +1127,9 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "substitution_three_copy_metatile_reports": [
         "data/a2-layered-size7-three-cluster-substitution-scalar2-a2lp_7_00128.ndjson",
         "data/a2-layered-size7-three-cluster-substitution-scalar3-a2lp_7_00128.ndjson"
-      ]
+      ],
+      "substitution_four_copy_metatile_enumeration_report": "data/a2-layered-size7-four-cluster-enumeration-a2lp_7_00128.ndjson",
+      "substitution_four_copy_metatile_report": "data/a2-layered-size7-four-cluster-substitution-scalar2-a2lp_7_00128.ndjson"
     },
     "shell_screening": {
       "robust_completed_shell": 0,

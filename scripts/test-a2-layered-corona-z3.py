@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 import importlib.util
 import json
+import sqlite3
+import tempfile
 from pathlib import Path
 
 
@@ -23,6 +25,12 @@ CLUSTER_SUBSTITUTION = load(
 )
 THREE_CLUSTER_SUBSTITUTION = load(
     "a2_three_cluster_substitution", "screen-a2-layered-three-cluster-substitution.py"
+)
+FOUR_CLUSTER_ENUMERATION = load(
+    "a2_four_cluster_enumeration", "enumerate-a2-layered-four-clusters.py"
+)
+FOUR_CLUSTER_SUBSTITUTION = load(
+    "a2_four_cluster_substitution", "screen-a2-layered-four-cluster-substitution.py"
 )
 
 root_records = [
@@ -371,6 +379,125 @@ for left in range(len(unit_graph["placements"])):
             brute_adjacency[right].add(left)
 assert unit_graph["adjacency"] == brute_adjacency
 
+with tempfile.TemporaryDirectory() as temporary_directory:
+    four_database = Path(temporary_directory) / "unit-four.sqlite"
+    four_unit = FOUR_CLUSTER_ENUMERATION.enumerate_four_copy(
+        cluster_unit, four_database, checkpoint_every=1, progress_every=0
+    )
+    four_unit_screen = four_unit["four_copy_metatile_enumeration"]
+    assert four_unit_screen["three_copy_hash_verified"] is True
+    assert four_unit_screen["symmetry_distinct_metatiles"] == 19
+    assert four_unit_screen["canonical_sha256"] == (
+        "d912b014cf8b2f0fd3bc50372fd500a77d12996796bc1b7236c79eefa1604acb"
+    )
+    # A second call must validate and resume the completed transactional family.
+    assert FOUR_CLUSTER_ENUMERATION.enumerate_four_copy(
+        cluster_unit, four_database, checkpoint_every=1, progress_every=0
+    )["four_copy_metatile_enumeration"]["canonical_sha256"] == four_unit_screen["canonical_sha256"]
+    connection = sqlite3.connect(four_database)
+    four_keys = [row[0] for row in connection.execute("SELECT key FROM four_keys ORDER BY key")]
+    connection.close()
+    assert all(
+        CLUSTER_SUBSTITUTION.canonical_key(
+            FOUR_CLUSTER_ENUMERATION.cells_as_dicts(
+                FOUR_CLUSTER_ENUMERATION.unpack_key(packed)
+            )
+        ) == FOUR_CLUSTER_ENUMERATION.unpack_key(packed)
+        for packed in four_keys
+    )
+    unit_orientations = tuple(
+        tuple(SUBSTITUTION.cell_key(cell) for cell in orientation["cells"])
+        for orientation in SUBSTITUTION.oriented_cells(cluster_unit["cells"])
+    )
+    four_classifications = []
+    for packed in four_keys:
+        classification, receipt = FOUR_CLUSTER_SUBSTITUTION.screen_parent(
+            packed, cluster_unit, unit_orientations, 10000, 10000
+        )
+        assert classification == "mixed_metatile_rule"
+        assert receipt["replay"]["verified"] is True
+        assert all(bytes.fromhex(key) in set(four_keys) for key in receipt["child_keys"])
+        four_classifications.append(classification)
+    assert len(four_classifications) == 19
+    four_report_path = Path(temporary_directory) / "unit-four-report.ndjson"
+    FOUR_CLUSTER_SUBSTITUTION.screen_database(
+        cluster_unit, four_database, four_report_path,
+        timeout_ms=10000, replay_timeout_ms=10000, progress_every=0,
+        emit_summary=False,
+    )
+    completed_four_control = json.loads(four_report_path.read_text())
+    assert completed_four_control["classification"] == "four_copy_metatile_substitution_system"
+    assert completed_four_control["four_copy_metatile_screen"]["certified"] is True
+    assert completed_four_control["four_copy_metatile_screen"]["closed_alphabet"]
+    connection = sqlite3.connect(four_database)
+    connection.execute("DELETE FROM screen_results")
+    connection.commit()
+    connection.close()
+    four_report_path.unlink()
+    FOUR_CLUSTER_SUBSTITUTION.screen_database(
+        cluster_unit, four_database, four_report_path,
+        timeout_ms=10000, replay_timeout_ms=10000, progress_every=0,
+        emit_summary=False, shard_index=0, shard_count=2,
+    )
+    assert not four_report_path.exists()
+    FOUR_CLUSTER_SUBSTITUTION.screen_database(
+        cluster_unit, four_database, four_report_path,
+        timeout_ms=10000, replay_timeout_ms=10000, progress_every=0,
+        emit_summary=False, shard_index=1, shard_count=2,
+    )
+    assert json.loads(four_report_path.read_text())["classification"] == (
+        "four_copy_metatile_substitution_system"
+    )
+
+    # On-demand connected-four growth agrees with the explicit placement graph.
+    first_parent = FOUR_CLUSTER_ENUMERATION.cells_as_dicts(
+        FOUR_CLUSTER_ENUMERATION.unpack_key(four_keys[0])
+    )
+    first_target = FOUR_CLUSTER_SUBSTITUTION.scaled_parent_cells(first_parent, 2)
+    explicit_graph = THREE_CLUSTER_SUBSTITUTION.placement_graph(
+        first_target, SUBSTITUTION.oriented_cells(cluster_unit["cells"])
+    )
+    cached_graph = FOUR_CLUSTER_SUBSTITUTION.placement_graph_from_contained(
+        first_target,
+        FOUR_CLUSTER_SUBSTITUTION.contained_atomic_placements(
+            first_target, unit_orientations
+        ),
+    )
+    assert {frozenset(cells) for cells in cached_graph["cell_sets"]} == {
+        frozenset(cells) for cells in explicit_graph["cell_sets"]
+    }
+    def edge_geometries(graph):
+        return {
+            frozenset((frozenset(graph["cell_sets"][left]), frozenset(graph["cell_sets"][right])))
+            for left, neighbors in enumerate(graph["adjacency"])
+            for right in neighbors
+            if left < right
+        }
+    assert edge_geometries(cached_graph) == edge_geometries(explicit_graph)
+    explicit_groups = FOUR_CLUSTER_SUBSTITUTION.connected_groups(
+        range(len(explicit_graph["placements"])), explicit_graph["adjacency"]
+    )
+    explicitly_coverable = {
+        cell
+        for group in explicit_groups
+        for placement_index in group
+        for cell in explicit_graph["cell_sets"][placement_index]
+    }
+    assert all(
+        (
+            FOUR_CLUSTER_SUBSTITUTION.connected_cluster_covering_cell(
+                first_target, cell, unit_orientations
+            )["result"] == "sat"
+        ) == (cell in explicitly_coverable)
+        for cell in first_target
+    )
+
+isolated_target = frozenset({(0, 0, 0, "u")})
+isolated = FOUR_CLUSTER_SUBSTITUTION.connected_cluster_covering_cell(
+    isolated_target, (0, 0, 0, "u"), unit_orientations
+)
+assert isolated["result"] == "unsat"
+
 algorithm_x_target = {
     (0, 0, 0, "u"), (1, 0, 0, "u"), (2, 0, 0, "u"),
 }
@@ -383,6 +510,13 @@ algorithm_x_negative = THREE_CLUSTER_SUBSTITUTION.replay_unsat_with_independent_
 )
 assert algorithm_x_negative["verified"] is True
 assert algorithm_x_negative["result"] == "unsat"
+algorithm_x_forward_negative = (
+    FOUR_CLUSTER_SUBSTITUTION.replay_unsat_with_forward_algorithm_x(
+        algorithm_x_target, algorithm_x_placements, 10000
+    )
+)
+assert algorithm_x_forward_negative["verified"] is True
+assert algorithm_x_forward_negative["result"] == "unsat"
 
 expected_metatile_types = {
     "a2lp_7_00128": 95,
@@ -527,6 +661,78 @@ resolved_three = next(
 assert resolved_three["residual_resolutions"][0]["parent_index"] == 1168
 assert resolved_three["residual_resolutions"][0]["prior_replay"]["result"] == "unknown"
 assert resolved_three["residual_resolutions"][0]["resolution"]["verified"] is True
+
+expected_four_metatile_types = {
+    "a2lp_7_00128": 1458794, "a2lp_7_00211": 1519270,
+    "a2lp_7_00232": 1188278, "a2lp_7_00235": 1333343,
+    "a2lp_7_00694": 720117, "a2lp_7_00755": 732293,
+    "a2lp_7_00777": 720117, "a2lp_7_00809": 650264,
+}
+expected_four_metatile_hashes = {
+    "a2lp_7_00128": "38a529e859343e1b52bba86db1a3e026efd5fade49b4754eb7de96d66c0421b5",
+    "a2lp_7_00211": "858f3400dedfbb5ac24c4aa7e7acdd3cd13219e37f9af2db2b90cc0abdb13aca",
+    "a2lp_7_00232": "d55aa154b91be5b4d7a63020987074c1ce68157a4c88371a6c92718489e3cdf0",
+    "a2lp_7_00235": "672c12ec5b9ac1bc8afefe6ac341a42cb438ddc333deab5099aa359f40c3ad19",
+    "a2lp_7_00694": "4e7a55e625d057dbec580a69be585dd9d9a9333c4e8560e1c43fdbe313100736",
+    "a2lp_7_00755": "76f7efc69d7bb7dd5c2bd66c5ab9f2c54d191f898ae9e3b36ea39077a6107527",
+    "a2lp_7_00777": "79064aa14632c7e72d310e538db0eb969b3ed4335b839e09052e381658020427",
+    "a2lp_7_00809": "b52deaff8a8bf09872094b1cc7065bd28e646daae1eb6ef1e1ddb579e12b1fb9",
+}
+expected_four_raw_attachments = {
+    "a2lp_7_00128": 3380661, "a2lp_7_00211": 3532218,
+    "a2lp_7_00232": 2755765, "a2lp_7_00235": 3092440,
+    "a2lp_7_00694": 1663840, "a2lp_7_00755": 1691740,
+    "a2lp_7_00777": 1663840, "a2lp_7_00809": 1501824,
+}
+for candidate_id in expected_four_metatile_types:
+    enumeration = json.loads((
+        ROOT / "data" / f"a2-layered-size7-four-cluster-enumeration-{candidate_id}.ndjson"
+    ).read_text())["four_copy_metatile_enumeration"]
+    assert enumeration["certified"] is True
+    assert enumeration["three_copy_hash_verified"] is True
+    assert enumeration["raw_fourth_copy_placements"] == expected_four_raw_attachments[candidate_id]
+    assert enumeration["symmetry_distinct_metatiles"] == expected_four_metatile_types[candidate_id]
+    assert enumeration["canonical_sha256"] == expected_four_metatile_hashes[candidate_id]
+
+expected_four_exact_unsat = {
+    "a2lp_7_00128": 5, "a2lp_7_00211": 16699,
+    "a2lp_7_00232": 0, "a2lp_7_00235": 188,
+    "a2lp_7_00694": 0, "a2lp_7_00755": 0,
+    "a2lp_7_00777": 0, "a2lp_7_00809": 0,
+}
+expected_four_receipt_hashes = {
+    "a2lp_7_00128": "b7f0f35a53175455b2811206695b07d5847a7d9a30fdaf52b3a95e3c95554a88",
+    "a2lp_7_00211": "cd42395d23abf05216da5fcef7d30c53475de5584654e6d77b33b9f149000a0e",
+    "a2lp_7_00232": "3a7dda037aec53c94b5e6edcfe29f34185c79189538290fcde407ec39918e1dc",
+    "a2lp_7_00235": "f77bb5b7054b21ed628c98c55464d43f999b79823eb7cab7c5efe6bb3104ebdc",
+    "a2lp_7_00694": "6ab95ae29c45c7a78ca6a20964e9ec7094a1644b3eb257ea96707ddd56532614",
+    "a2lp_7_00755": "02c2fecfd098bbbaf9c9da4bf9db9266069ebede375bbb77a7bbb88a88687685",
+    "a2lp_7_00777": "c371ab3d42202244ba60f0282bcbe1f92f9f37885c8e14ecf0033d4159d83732",
+    "a2lp_7_00809": "4c3696374033e676e47ff353c4a281ad89ec26ff78c90b4b1e976576022b46a5",
+}
+for candidate_id, metatile_types in expected_four_metatile_types.items():
+    record = json.loads((
+        ROOT / "data" /
+        f"a2-layered-size7-four-cluster-substitution-scalar2-{candidate_id}.ndjson"
+    ).read_text())
+    screen = record["four_copy_metatile_screen"]
+    exact_unsat = expected_four_exact_unsat[candidate_id]
+    assert record["classification"] == "no_four_copy_metatile_scalar2_substitution"
+    assert screen["certified"] is True
+    assert screen["scale"] == 2
+    assert screen["symmetry_distinct_metatiles"] == metatile_types
+    assert screen["canonical_sha256"] == expected_four_metatile_hashes[candidate_id]
+    assert screen["parents_completed"] == metatile_types
+    assert screen["parent_counts"] == {
+        "local_obstruction": metatile_types - exact_unsat,
+        "exact_unsat": exact_unsat,
+        "mixed_metatile_rule": 0,
+        "unresolved": 0,
+    }
+    assert screen["receipt_stream_sha256"] == expected_four_receipt_hashes[candidate_id]
+    assert screen["closed_alphabet"] is None
+    assert screen["rules"] == []
+    assert screen["unresolved_parents"] == []
 assert all(record["substitution"]["certified"] is True for record in anisotropic_records)
 assert all(
     (record["substitution"]["local_obstruction_replay"] or
@@ -547,4 +753,5 @@ print("A2 layered corona regression passed", {
     "anisotropic_substitution_negatives": len(anisotropic_records),
     "two_copy_metatile_parent_scale_cases": sum(expected_metatile_types.values()) * 2,
     "three_copy_metatile_parent_scale_cases": sum(expected_three_metatile_types.values()) * 2,
+    "four_copy_metatile_parents": sum(expected_four_metatile_types.values()),
 })

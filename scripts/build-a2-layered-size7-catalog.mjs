@@ -58,6 +58,20 @@ for (const scale of [2, 3]) {
     threeClusterSubstitutions.get(catalogRecord.id).push(catalogRecord);
   }
 }
+const fourClusterEnumerations = new Map();
+const fourClusterSubstitutions = new Map();
+for (const id of [
+  "00128", "00211", "00232", "00235", "00694", "00755", "00777", "00809"
+]) {
+  const enumeration = await readNdjson(
+    `data/a2-layered-size7-four-cluster-enumeration-a2lp_7_${id}.ndjson`
+  );
+  const substitution = await readNdjson(
+    `data/a2-layered-size7-four-cluster-substitution-scalar2-a2lp_7_${id}.ndjson`
+  );
+  fourClusterEnumerations.set(enumeration[0].id, enumeration[0]);
+  fourClusterSubstitutions.set(substitution[0].id, substitution[0]);
+}
 const anisotropicById = new Map();
 for (const record of anisotropicSubstitutions) {
   if (!anisotropicById.has(record.id)) anisotropicById.set(record.id, []);
@@ -92,6 +106,8 @@ const candidates = selected.map((id, index) => {
   const anisotropicScreens = anisotropicById.get(id) ?? [];
   const twoClusterScreens = twoClusterSubstitutions.get(id) ?? [];
   const threeClusterScreens = threeClusterSubstitutions.get(id) ?? [];
+  const fourClusterEnumeration = fourClusterEnumerations.get(id);
+  const fourClusterScreen = fourClusterSubstitutions.get(id);
   const corona2States = Math.max(
     second.corona2_cegar.first_coronas_rejected,
     deepSecond?.corona2_cegar?.first_coronas_rejected ?? 0
@@ -147,7 +163,7 @@ const candidates = selected.map((id, index) => {
         record.classification === "two_copy_metatile_substitution_system"
       ) || threeClusterScreens.some(record =>
         record.classification === "three_copy_metatile_substitution_system"
-      ),
+      ) || fourClusterScreen?.classification === "four_copy_metatile_substitution_system",
       substitution_anisotropic_scale_range: [2, 8],
       substitution_anisotropic_inflations_excluded: anisotropicScreens.filter(record =>
         record.substitution_classification === "no_lattice_substitution_for_inflation"
@@ -173,6 +189,14 @@ const candidates = selected.map((id, index) => {
           record.three_copy_metatile_screen.parent_counts?.exact_unsat ?? 0
         ])
       ),
+      substitution_four_copy_metatile_types:
+        fourClusterScreen?.four_copy_metatile_screen?.symmetry_distinct_metatiles ?? 0,
+      substitution_four_copy_metatile_scalar_scales_excluded:
+        fourClusterScreen?.four_copy_metatile_screen?.certified ? [2] : [],
+      substitution_four_copy_metatile_local_obstruction_parents:
+        fourClusterScreen?.four_copy_metatile_screen?.parent_counts?.local_obstruction ?? 0,
+      substitution_four_copy_metatile_exact_unsat_parents:
+        fourClusterScreen?.four_copy_metatile_screen?.parent_counts?.exact_unsat ?? 0,
       periodic_report: "data/a2-layered-size7-periodic-z3-through4.ndjson",
       corona_report: "data/a2-layered-size7-corona1-z3.ndjson",
       corona2_report: deepSecond
@@ -195,7 +219,13 @@ const candidates = selected.map((id, index) => {
       ),
       substitution_three_copy_metatile_reports: threeClusterScreens.map(record =>
         `data/a2-layered-size7-three-cluster-substitution-scalar${record.catalog_scale}-${id}.ndjson`
-      )
+      ),
+      substitution_four_copy_metatile_enumeration_report: fourClusterEnumeration
+        ? `data/a2-layered-size7-four-cluster-enumeration-${id}.ndjson`
+        : null,
+      substitution_four_copy_metatile_report: fourClusterScreen
+        ? `data/a2-layered-size7-four-cluster-substitution-scalar2-${id}.ndjson`
+        : null
     },
     shell_screening: { robust_completed_shell: 0, deepest_completed_shell: 0 }
   };
