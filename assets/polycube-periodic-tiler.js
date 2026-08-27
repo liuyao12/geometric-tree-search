@@ -170,86 +170,106 @@ const exactCoverWithDancingLinks = ({
   overBudget,
   visitNode
 }) => {
-  const header = { index: -1, size: 0 };
-  header.left = header.right = header;
-  const columns = Array.from({ length: volume }, (_, index) => {
-    const column = { index, size: 0 };
-    column.up = column.down = column;
-    column.left = column.right = column;
+  let incidenceCount = 0;
+  for (const placement of placements) for (let index = 0; index < volume; index++) {
+    if (placement.mask & bitAt(index)) incidenceCount += 1;
+  }
+  const totalNodes = 1 + volume + incidenceCount;
+  const left = new Int32Array(totalNodes);
+  const right = new Int32Array(totalNodes);
+  const up = new Int32Array(totalNodes);
+  const down = new Int32Array(totalNodes);
+  const columnOf = new Int32Array(totalNodes);
+  const placementOf = new Int32Array(totalNodes);
+  const columnSize = new Int32Array(1 + volume);
+  left[0] = right[0] = 0;
+  for (let index = 0; index < volume; index++) {
+    const column = 1 + index;
+    up[column] = down[column] = column;
+    left[column] = right[column] = column;
+    columnOf[column] = column;
     if (remainingAfterRoot & bitAt(index)) {
-      column.left = header.left;
-      column.right = header;
-      header.left.right = column;
-      header.left = column;
+      left[column] = left[0];
+      right[column] = 0;
+      right[left[0]] = column;
+      left[0] = column;
+      if (right[0] === 0) right[0] = column;
     }
-    return column;
-  });
-  for (const placement of placements) {
-    let first = null;
+  }
+  let nextNode = 1 + volume;
+  for (let placementIndex = 0; placementIndex < placements.length; placementIndex++) {
+    const placement = placements[placementIndex];
+    let first = 0;
     for (let index = 0; index < volume; index++) {
       if (!(placement.mask & bitAt(index))) continue;
-      const column = columns[index];
-      const node = { column, placement };
-      node.up = column.up;
-      node.down = column;
-      column.up.down = node;
-      column.up = node;
-      column.size += 1;
+      const column = 1 + index;
+      const node = nextNode++;
+      up[node] = up[column];
+      down[node] = column;
+      down[up[column]] = node;
+      up[column] = node;
+      columnOf[node] = column;
+      placementOf[node] = placementIndex;
+      columnSize[column] += 1;
       if (!first) {
         first = node;
-        node.left = node.right = node;
+        left[node] = right[node] = node;
       } else {
-        node.left = first.left;
-        node.right = first;
-        first.left.right = node;
-        first.left = node;
+        left[node] = left[first];
+        right[node] = first;
+        right[left[first]] = node;
+        left[first] = node;
       }
     }
   }
+  if (nextNode !== totalNodes) throw new Error("Periodic DLX incidence count mismatch");
   const cover = column => {
-    column.right.left = column.left;
-    column.left.right = column.right;
-    for (let row = column.down; row !== column; row = row.down) {
-      for (let node = row.right; node !== row; node = node.right) {
-        node.down.up = node.up;
-        node.up.down = node.down;
-        node.column.size -= 1;
+    left[right[column]] = left[column];
+    right[left[column]] = right[column];
+    for (let row = down[column]; row !== column; row = down[row]) {
+      for (let node = right[row]; node !== row; node = right[node]) {
+        up[down[node]] = up[node];
+        down[up[node]] = down[node];
+        columnSize[columnOf[node]] -= 1;
       }
     }
   };
   const uncover = column => {
-    for (let row = column.up; row !== column; row = row.up) {
-      for (let node = row.left; node !== row; node = node.left) {
-        node.column.size += 1;
-        node.down.up = node;
-        node.up.down = node;
+    for (let row = up[column]; row !== column; row = up[row]) {
+      for (let node = left[row]; node !== row; node = left[node]) {
+        columnSize[columnOf[node]] += 1;
+        down[up[node]] = node;
+        up[down[node]] = node;
       }
     }
-    column.right.left = column;
-    column.left.right = column;
+    left[right[column]] = column;
+    right[left[column]] = column;
   };
   const failed = new Set();
   const chosen = [];
   const search = remaining => {
-    if (header.right === header) return chosen.length === copies - 1 ? chosen.slice() : null;
+    if (right[0] === 0) return chosen.length === copies - 1
+      ? chosen.map(index => placements[index])
+      : null;
     if (chosen.length >= copies - 1 || overBudget()) return null;
     visitNode();
     if (failed.has(remaining)) return null;
-    let pivot = header.right;
-    for (let column = pivot.right; column !== header; column = column.right) {
-      if (column.size < pivot.size) pivot = column;
-      if (pivot.size <= 1) break;
+    let pivot = right[0];
+    for (let column = right[pivot]; column !== 0; column = right[column]) {
+      if (columnSize[column] < columnSize[pivot]) pivot = column;
+      if (columnSize[pivot] <= 1) break;
     }
-    if (!pivot.size) {
+    if (!columnSize[pivot]) {
       failed.add(remaining);
       return null;
     }
     cover(pivot);
-    for (let row = pivot.down; row !== pivot; row = row.down) {
-      chosen.push(row.placement);
-      for (let node = row.right; node !== row; node = node.right) cover(node.column);
-      const found = search(remaining ^ row.placement.mask);
-      for (let node = row.left; node !== row; node = node.left) uncover(node.column);
+    for (let row = down[pivot]; row !== pivot; row = down[row]) {
+      const placementIndex = placementOf[row];
+      chosen.push(placementIndex);
+      for (let node = right[row]; node !== row; node = right[node]) cover(columnOf[node]);
+      const found = search(remaining ^ placements[placementIndex].mask);
+      for (let node = left[row]; node !== row; node = left[node]) uncover(columnOf[node]);
       chosen.pop();
       if (found) {
         uncover(pivot);
