@@ -6538,3 +6538,17 @@ The only terminal exception requires both arms to reach certified finite fixed p
 before that horizon. One early fixed point versus one censored live frontier remains
 non-comparable. This removes unequal discrete search work as a confounder while preserving
 the boundary that structural-leap index is not physical time, a rate, or a dynamical path.
+
+## Build 219: keep specimen identity visible through every stage
+
+The live workflow now separates the active observation from the composition query used to
+request a future public structure. A specimen passport derives reduced formula and colored
+composition directly from the current occupancy-aware atom records, alongside exact site
+count, source class, dimensionality / observation geometry, and evidence label. This is a
+UI provenance correction: it does not feed phase, formula, or source metadata back into
+clustering, GCTS learning, or growth.
+
+A focus-microscope view expands the scientific stage for full-configuration clustering and
+the array of per-cluster marking scenes. It is presentation state only. The underlying
+coordinates, learned cover, connection sections, frozen candidates, search history, and
+receipts are identical before and after entering focus.

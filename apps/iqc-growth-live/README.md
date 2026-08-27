@@ -5805,3 +5805,17 @@ no later than that horizon, in addition to the identical-input, one-marking-fact
 first-frontier checks. The card displays whether the horizon is matched, terminal, or still
 open. This aligns deterministic geometric work; it does not align physical time, rates,
 activation barriers, or trajectories.
+
+### Build 219 · active specimen passport and focus microscope
+
+The experiment column now begins with an active-specimen passport that is distinct from
+the public-database query below it. It reports the specimen currently displayed and
+learned: source class, reduced formula, exact site count, colored composition fractions,
+dimensionality / observation geometry, and the supplied evidence channel. Selecting ice,
+Cd–Yb, a 2D material, a NOMAD entry, or a local import updates this passport immediately;
+stale element-query chips can no longer masquerade as the active composition.
+
+The central stage also has a display-only **focus microscope**. It removes the source and
+inspector columns plus the study compass, expands the full-scene cluster-discovery or
+per-cluster GCTS gallery, and exits by the same button or Escape. Focus changes no sample,
+cluster, marking, search control, candidate, receipt, or scientific calculation.

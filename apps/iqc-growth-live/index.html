@@ -216,8 +216,15 @@
       <aside class="control-panel" aria-label="Simulation controls">
         <section>
           <p class="eyebrow">01 · experiment</p>
+          <section id="activeSamplePassport" class="active-sample-passport" aria-label="Active specimen passport">
+            <header><span><small>active observation</small><strong id="activeSampleName">NaCl rocksalt</strong></span><b id="activeSampleSource">curated control</b></header>
+            <div class="active-sample-formula"><strong id="activeSampleFormula">NaCl</strong><span id="activeSampleSiteCount">216 atoms</span></div>
+            <div id="activeSampleComposition" class="active-sample-composition" aria-label="Active specimen composition"></div>
+            <div class="active-sample-facts"><span><small>geometry</small><b id="activeSampleGeometry">3D periodic observation</b></span><span><small>evidence</small><b id="activeSampleEvidence">space group</b></span></div>
+            <p id="activeSampleNote">The controls below choose the source; this passport always reports the specimen currently shown and learned.</p>
+          </section>
           <div class="database-picker">
-            <div class="database-heading"><strong>Random real material</strong><span>NOMAD · public bulk data</span></div>
+            <div class="database-heading"><strong>Search a random real material</strong><span>NOMAD · public bulk data</span></div>
             <button id="periodicTableButton" class="periodic-compact" type="button" aria-expanded="false" aria-controls="periodicTablePanel" aria-label="Expand periodic table">
               <span class="periodic-compact-label">elements · click to expand</span>
               <span id="periodicCompactGrid" class="periodic-compact-grid" aria-hidden="true"></span>
@@ -1519,7 +1526,10 @@
             <p id="stageEyebrow" class="eyebrow">input · static atom coordinates</p>
             <h1 id="stageTitle">Begin with the configuration we know</h1>
           </div>
-          <div class="phase-readout"><small>emergent read</small><strong id="phaseReadout">competing</strong></div>
+          <div class="stage-heading-actions">
+            <button id="stageFocusToggle" class="stage-focus-toggle" type="button" aria-pressed="false"><span>focus microscope</span><b>↗</b></button>
+            <div class="phase-readout"><small>emergent read</small><strong id="phaseReadout">competing</strong></div>
+          </div>
         </div>
 
         <div id="viewport" class="viewport">
@@ -1798,7 +1808,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260826-218"></script>
+  <script type="module" src="./app.js?v=20260827-219"></script>
   <script type="module" src="./evidence-atlas.js?v=20260826-19"></script>
 </body>
 </html>

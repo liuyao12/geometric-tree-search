@@ -207,6 +207,15 @@ const publishedFixtureLicense = $("publishedFixtureLicense");
 const publishedFixtureName = $("publishedFixtureName");
 const publishedFixtureArticle = $("publishedFixtureArticle");
 const publishedFixtureArchive = $("publishedFixtureArchive");
+const activeSamplePassport = $("activeSamplePassport");
+const activeSampleName = $("activeSampleName");
+const activeSampleSource = $("activeSampleSource");
+const activeSampleFormula = $("activeSampleFormula");
+const activeSampleSiteCount = $("activeSampleSiteCount");
+const activeSampleComposition = $("activeSampleComposition");
+const activeSampleGeometry = $("activeSampleGeometry");
+const activeSampleEvidence = $("activeSampleEvidence");
+const activeSampleNote = $("activeSampleNote");
 const structureFileInput = $("structureFileInput");
 const importStatus = $("importStatus");
 const loadFixtureButton = $("loadFixtureButton");
@@ -551,6 +560,7 @@ const notebookResponseReadinessBoundary = $("notebookResponseReadinessBoundary")
 const runStateText = $("runStateText");
 const stageEyebrow = $("stageEyebrow");
 const stageTitle = $("stageTitle");
+const stageFocusToggle = $("stageFocusToggle");
 const eventKind = $("eventKind");
 const eventCounter = $("eventCounter");
 const phaseReadout = $("phaseReadout");
@@ -1380,6 +1390,7 @@ let selectedStudyRecipeId = "bulk-order";
 let activeStudyRecipeId = null;
 let activeStudyArmId = "reference";
 let studyLaunchAudit = null;
+let stageFocusEnabled = false;
 let atomSpatialIndex = new Map();
 let trainingProgress = 0;
 let clusterDiscoveryTrace = null;
@@ -2869,6 +2880,76 @@ function currentMaterial() {
     },
     note: "A deterministic Euler orientation of the measured four-connected oxygen graph selects one of each paired D/Vac alternatives. The realization obeys two D per oxygen and one D per O–O bond; it is a sampled microstate, not a refinement claim.",
   };
+}
+
+function chemicalSubscript(value) {
+  const digits = "₀₁₂₃₄₅₆₇₈₉";
+  return String(value).split("").map((digit) => digits[Number(digit)] || digit).join("");
+}
+
+function activeSampleSpeciesLabel(species) {
+  return occupationalAlternatives(species)?.label || species;
+}
+
+function activeSampleCompositionRecords(material = currentMaterial()) {
+  const counts = Object.entries(receiptComposition(referenceAtoms));
+  if (!counts.length) return (material.actualElements || material.elements || []).map((species) => [species, 1]);
+  const preferred = [...(material.actualElements || []), ...(material.elements || [])];
+  const rank = new Map(preferred.map((species, index) => [species, index]));
+  return counts.sort(([first], [second]) => (rank.get(first) ?? 999) - (rank.get(second) ?? 999)
+    || first.localeCompare(second));
+}
+
+function reducedSampleFormula(records) {
+  if (!records.length) return "—";
+  const integral = records.every(([, count]) => Math.abs(count - Math.round(count)) <= 1e-6);
+  if (!integral) return records.map(([species, count]) => `${activeSampleSpeciesLabel(species)} ${count.toFixed(2)}`).join(" · ");
+  const divisor = records.reduce((value, [, count]) => integerGcd(value, count), Math.round(records[0][1]));
+  return records.map(([species, count]) => {
+    const reduced = Math.max(1, Math.round(count) / divisor);
+    return `${activeSampleSpeciesLabel(species)}${reduced === 1 ? "" : chemicalSubscript(reduced)}`;
+  }).join("");
+}
+
+function renderActiveSamplePassport(material = currentMaterial()) {
+  if (!activeSamplePassport) return;
+  const records = activeSampleCompositionRecords(material);
+  const total = records.reduce((sum, [, count]) => sum + count, 0) || 1;
+  const imported = scenarioSelect.value === "imported";
+  const source = imported
+    ? importedStructure?.metadata?.entryId ? "public database" : "local import"
+    : material.fixtureProvenance ? "published geometry" : "curated control";
+  activeSampleName.textContent = material.name;
+  activeSampleSource.textContent = source;
+  activeSampleFormula.textContent = reducedSampleFormula(records);
+  activeSampleSiteCount.textContent = referenceEntityLabel();
+  activeSampleGeometry.textContent = `${material.intrinsicDimension === 2 ? "intrinsic 2D" : "3D"} · ${material.periodicWindow ? "periodic observation" : "finite crop"}`;
+  activeSampleEvidence.textContent = material.audit || "emergent geometry";
+  activeSampleComposition.replaceChildren();
+  records.slice(0, 8).forEach(([species, count]) => {
+    const item = document.createElement("span");
+    item.style.setProperty("--sample-color", elementRecord(species).css);
+    const swatch = document.createElement("i");
+    const label = document.createElement("b"); label.textContent = activeSampleSpeciesLabel(species);
+    const fraction = document.createElement("small");
+    fraction.textContent = `${Number.isInteger(count) ? count.toLocaleString() : count.toFixed(2)} · ${(100 * count / total).toFixed(count / total < .01 ? 1 : 0)}%`;
+    item.append(swatch, label, fraction);
+    activeSampleComposition.append(item);
+  });
+  activeSampleNote.textContent = `${material.cell}. This is the active specimen; the periodic-table chips below configure only the next public search.`;
+  activeSampleNote.title = material.note || "";
+}
+
+function renderStageFocus() {
+  document.body.classList.toggle("stage-focus", stageFocusEnabled);
+  stageFocusToggle.setAttribute("aria-pressed", stageFocusEnabled ? "true" : "false");
+  stageFocusToggle.setAttribute("aria-label", stageFocusEnabled
+    ? "Exit focused scientific visualization" : "Focus the scientific visualization");
+}
+
+function setStageFocus(enabled) {
+  stageFocusEnabled = Boolean(enabled);
+  renderStageFocus();
 }
 
 function renderIceViMicrostateControls() {
@@ -8997,7 +9078,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-218",
+      buildId: "20260827-219",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -24721,6 +24802,7 @@ function updateUI() {
   updateProcessTimeline();
   eventCounter.textContent = String(eventIndex).padStart(4, "0");
   const material = currentMaterial();
+  renderActiveSamplePassport(material);
   playButton.disabled = pipelineStage === 4 && Boolean(material.growthWithheld);
   stepButton.disabled = pipelineStage === 4 && Boolean(material.growthWithheld);
   if (pipelineStage === 0) {
@@ -25947,7 +26029,9 @@ centrosymmetryMapButton.addEventListener("click", () => {
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && !periodicTablePanel.hidden) setPeriodicTableOpen(false);
   if (event.key === "Escape" && !studyGuide.hidden) setStudyGuideOpen(false);
+  if (event.key === "Escape" && stageFocusEnabled) setStageFocus(false);
 });
+stageFocusToggle.addEventListener("click", () => setStageFocus(!stageFocusEnabled));
 studyGuideButton.addEventListener("click", () => setStudyGuideOpen(studyGuide.hidden));
 studyGuideClose.addEventListener("click", () => setStudyGuideOpen(false));
 studyGuide.addEventListener("pointerdown", (event) => { if (event.target === studyGuide) setStudyGuideOpen(false); });
@@ -26073,6 +26157,7 @@ renderExperimentNotebook();
 renderStudyGuide();
 buildPeriodicTable();
 enterPipelineStage(applyLaunchParameters());
+renderStageFocus();
 if (studyLaunchAudit?.loaded) {
   receiptStatus.textContent = `${selectedStudyRecipe().label} reconstructed from recipe schema v1 · paused at stage ${pipelineStage} · no coordinates, learned weights, or growth history were embedded.`;
 } else if (studyLaunchAudit && !studyLaunchAudit.loaded) {
