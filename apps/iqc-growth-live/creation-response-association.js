@@ -30,6 +30,46 @@ function rounded(value, digits = 5) {
   return Math.round(value * scale) / scale;
 }
 
+/** Coordinate-free, order-invariant evidence payload suitable for receipts and replay. */
+export function canonicalCreationResponseDataset(records, { maximumRecords = 256 } = {}) {
+  if (!Array.isArray(records) || !Number.isInteger(maximumRecords) || maximumRecords < 1) {
+    throw new Error("canonical creation-response data needs records and a positive finite limit");
+  }
+  const projected = records.map((record) => {
+    if (record.placementId === undefined || !Number.isInteger(record.leapIndex)
+        || !Array.isArray(record.physicsTerms) || !record.outcomes) {
+      throw new Error("canonical creation-response records need placement, leap, terms, and outcomes");
+    }
+    return {
+      placementId: String(record.placementId), leapIndex: record.leapIndex,
+      emittedSites: Number.isFinite(record.emittedSites) ? record.emittedSites : 0,
+      physicsTerms: record.physicsTerms.filter((term) => term?.id && Number.isFinite(term.contribution)
+        && Number.isFinite(term.weight) && Math.abs(term.weight) > 1e-12)
+        .map((term) => ({ id: String(term.id), label: term.label || String(term.id),
+          weight: rounded(term.weight, 8), contribution: rounded(term.contribution, 8) }))
+        .sort((first, second) => first.id.localeCompare(second.id)),
+      outcomes: Object.fromEntries(Object.entries(record.outcomes)
+        .filter(([, value]) => Number.isFinite(value)).sort(([first], [second]) => first.localeCompare(second))
+        .map(([id, value]) => [id, rounded(value, 8)])),
+    };
+  }).sort((first, second) => first.leapIndex - second.leapIndex
+    || first.placementId.localeCompare(second.placementId));
+  if (new Set(projected.map((record) => record.placementId)).size !== projected.length) {
+    throw new Error("canonical creation-response data requires one record per whole-cluster placement");
+  }
+  const retained = projected.slice(-maximumRecords);
+  return {
+    schema: "gcts-creation-response-dataset-v1",
+    groupingUnit: "one accepted whole-cluster placement",
+    records: retained,
+    totalEligiblePlacements: projected.length,
+    retainedPlacements: retained.length,
+    maximumRecords,
+    truncated: projected.length > retained.length,
+    coordinatesEmbedded: false, atomIdsEmbedded: false, targetUsed: false,
+  };
+}
+
 /** Descriptive monotone association, with one sample per whole-cluster placement. */
 export function buildCreationResponseAssociation(records, { minimumSamples = 4 } = {}) {
   if (!Array.isArray(records) || minimumSamples < 3) throw new Error("association needs placement records and a finite sample gate");

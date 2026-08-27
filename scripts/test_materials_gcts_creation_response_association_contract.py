@@ -17,6 +17,11 @@ def test_one_sample_is_built_per_whole_cluster_placement():
     assert "new Set(ids).size !== ids.length" in MODULE
     assert 'groupingUnit: "one accepted whole-cluster placement"' in MODULE
     assert "atomLevelPseudoreplicationAvoided: true" in MODULE
+    assert "canonicalCreationResponseDataset" in MODULE
+    assert "datasetSha256" in APP
+    assert "creationResponseEvidence" in APP
+    assert "recordsEmbeddedInFullReceipt: true" in APP
+    assert "recordsEmbeddedInNotebook: false" in APP
 
 
 def test_creation_terms_are_compared_with_exact_later_geometry():
@@ -44,10 +49,12 @@ def test_association_microscope_is_interactive_and_claims_fail_closed():
     assert "not a causal effect, calibrated predictor, energy relation, kinetic law" in APP
 
 
-def test_build_194_assets_and_narrative():
-    assert 'buildId: "20260826-195"' in APP
-    assert 'app.js?v=20260826-195' in HTML
+def test_build_196_assets_and_narrative():
+    assert 'buildId: "20260826-196"' in APP
+    assert 'app.js?v=20260826-196' in HTML
     assert 'style.css?v=20260826-92' in HTML
-    assert 'creation-response-association.js?v=20260826-2' in APP
+    assert 'creation-response-association.js?v=20260826-3' in APP
     assert "Build 194" in README
+    assert "Build 196" in README
+    assert "Build 196" in DOCS
     assert "Build 194" in DOCS

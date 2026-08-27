@@ -5441,3 +5441,19 @@ The extended test also found that continuation after the 216/216 certificate reu
 certificate caption even while new clusters were being accepted. The caption now distinguishes
 the exact transition that completes known-window replay from every subsequent compressed-
 grammar continuation and reports each continuation batch's actual placements and atoms.
+
+### Build 196 · reproducible creation→response evidence
+
+The placement-level creation-physics audit is now a first-class scientific artifact rather
+than an in-memory visualization. Every eligible whole-cluster placement is projected into a
+canonical, coordinate-free record containing its structural-leap block, emitted-site count,
+active signed score contributions, and aggregated later local responses. Records and terms
+are deterministically ordered, capped at 256 placements, and SHA-256 hashed in the full
+downloadable receipt.
+
+The receipt also stores the descriptive Spearman summaries and all six earlier-block versus
+later-block validation results. Saved notebook runs retain the dataset digest, associations,
+blocked validations, and grouped sample accounting while omitting the full rows; the receipt
+retains the rows required to recompute them. Atom IDs and coordinates remain excluded, one
+placement remains one sample, and no causal, kinetic, energetic, or independent-material
+claim is added.

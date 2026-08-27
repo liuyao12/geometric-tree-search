@@ -6168,3 +6168,20 @@ known-window replay had completed, later accepted grammar actions continued to s
 certificate text instead of their action counts. Build 195 freezes the pre-event certificate
 state and now uses the certificate caption only on the transition that proves 216/216 replay;
 later events report their actual compressed-grammar placements, atoms, and invariant prunes.
+
+## Build 196: make creation-response evidence receipt-reproducible
+
+Build 196 canonicalizes the exact grouped placement records behind the interactive
+creation→response microscope. The canonical dataset is sorted by structural-leap index and
+placement identity; each active physics term is sorted by stable term ID; outcomes use a
+stable key order. The artifact retains at most 256 coordinate-free placement records and
+reports whether truncation occurred. Its SHA-256 digest is included in the scientific
+receipt alongside recomputable Spearman summaries and a blocked-validation result for each
+of the six response observables.
+
+Compact notebook entries store the digest and analysis summaries but not the record rows;
+the full downloaded receipt stores those rows. This makes a saved run comparable without
+turning emitted atoms into independent samples or embedding target coordinates. The artifact
+explicitly records that it uses one whole-cluster placement per sample, blocks by complete
+structural leaps, never selects on held blocks, uses no random split or target, and supports
+no causal, kinetic, energetic, or independent-material inference.

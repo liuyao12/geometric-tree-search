@@ -32,8 +32,9 @@ import { buildSiteCreationPhysicsAudit } from "./site-creation-physics-audit.js?
 import { buildSiteCreationResponse } from "./site-creation-response.js?v=20260826-1";
 import { appendSiteStructuralHistory, summarizeSiteStructuralHistory }
   from "./site-structural-history.js?v=20260826-1";
-import { blockedCreationResponseValidation, buildCreationResponseAssociation }
-  from "./creation-response-association.js?v=20260826-2";
+import { blockedCreationResponseValidation, buildCreationResponseAssociation,
+  canonicalCreationResponseDataset }
+  from "./creation-response-association.js?v=20260826-3";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -3724,6 +3725,37 @@ function creationResponseAssociationRecords() {
       },
     };
   }).filter((record) => record.emittedSites > 0);
+}
+
+async function creationResponseReceiptEvidence() {
+  const rawRecords = creationResponseAssociationRecords();
+  const dataset = canonicalCreationResponseDataset(rawRecords);
+  const audit = buildCreationResponseAssociation(dataset.records);
+  const associations = audit.associations.map(({ points, ...summary }) => summary);
+  const blockedValidation = Object.fromEntries(Object.keys(POPULATION_RESPONSE_LABELS).map((outcomeId) =>
+    [outcomeId, blockedCreationResponseValidation(dataset.records, outcomeId,
+      { minimumSamplesPerSplit: 8 })]));
+  return {
+    schema: 1,
+    dataset,
+    datasetSha256: await receiptSha256(JSON.stringify(dataset)),
+    associationMethod: "Spearman rank association over grouped whole-cluster placements",
+    associations,
+    blockedValidation,
+    available: audit.available,
+    placementSamples: audit.placementSamples,
+    emittedSitePresentations: audit.emittedSitePresentations,
+    atomLevelPseudoreplicationAvoided: true,
+    blockedByCompleteStructuralLeap: true,
+    randomSplitUsed: false,
+    selectionUsedHeldout: false,
+    coordinatesEmbedded: false,
+    atomIdsEmbedded: false,
+    targetUsed: false,
+    causalEffectInferred: false,
+    independentMaterialSamples: false,
+    physicalTimeModeled: false,
+  };
 }
 
 const POPULATION_RESPONSE_LABELS = Object.freeze({
@@ -8467,12 +8499,13 @@ async function buildExperimentReceipt() {
     ? await receiptSha256(JSON.stringify(localConstraintMismatchRecords)) : null;
   const physicsPreflightManifest = frozenPhysicsPreflightManifest || currentPhysicsPreflightManifest();
   const physicsPreflightManifestSha256 = await receiptSha256(JSON.stringify(physicsPreflightManifest));
+  const creationResponseEvidence = searchVisible ? await creationResponseReceiptEvidence() : null;
   const receipt = {
     schema: "gcts-materials-growth-receipt-v1",
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-195",
+      buildId: "20260826-196",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -9886,6 +9919,7 @@ async function buildExperimentReceipt() {
         dynamicsIntegrated: leap.dynamicsIntegrated, claimBoundary: leap.claimBoundary,
         physicsTranslation: leap.physicsTranslation,
       })),
+      creationResponseEvidence,
       spatialGrowthEventAudit: growthMechanismAudit(),
       policySensitivity: {
         role: "counterfactual soft-physics rankings over one unchanged hard-admitted candidate set; previews never execute",
@@ -10604,6 +10638,24 @@ function experimentNotebookSummary(receipt) {
       candidateCoordinatesEmbedded: false,
       candidateRowsEmbedded: false,
       targetUsed: false,
+    } : null,
+    creationResponseEvidence: search?.creationResponseEvidence ? {
+      schema: search.creationResponseEvidence.schema,
+      datasetSha256: search.creationResponseEvidence.datasetSha256,
+      placementSamples: search.creationResponseEvidence.placementSamples,
+      emittedSitePresentations: search.creationResponseEvidence.emittedSitePresentations,
+      retainedPlacements: search.creationResponseEvidence.dataset.retainedPlacements,
+      datasetTruncated: search.creationResponseEvidence.dataset.truncated,
+      associations: search.creationResponseEvidence.associations,
+      blockedValidation: search.creationResponseEvidence.blockedValidation,
+      groupingUnit: search.creationResponseEvidence.dataset.groupingUnit,
+      atomLevelPseudoreplicationAvoided: true,
+      blockedByCompleteStructuralLeap: true,
+      recordsEmbeddedInFullReceipt: true,
+      recordsEmbeddedInNotebook: false,
+      coordinatesEmbedded: false,
+      targetUsed: false,
+      causalEffectInferred: false,
     } : null,
     registeredStudy: receipt.studyDesign?.id ? {
       recipeId: receipt.studyDesign.id,
