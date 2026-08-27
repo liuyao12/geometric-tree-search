@@ -669,6 +669,24 @@ const ringThirdCorona = searchPolycubeCorona(ringOctacube, {
   timeLimitMs: 15_000
 });
 assert.equal(ringThirdCorona.success, true, "the ring octacube survives three exact corona layers");
+const interruptedRingThirdCorona = searchPolycubeCorona(ringOctacube, {
+  layers: 3,
+  nodeLimit: 1_000,
+  timeLimitMs: 15_000
+});
+assert.equal(interruptedRingThirdCorona.stopped_by, "node_limit");
+assert.ok(interruptedRingThirdCorona.resume_path?.length > 0);
+const resumedRingThirdCorona = searchPolycubeCorona(ringOctacube, {
+  layers: 3,
+  nodeLimit: 500_000,
+  timeLimitMs: 15_000,
+  resumePath: interruptedRingThirdCorona.resume_path
+});
+assert.equal(resumedRingThirdCorona.success, true);
+assert.deepEqual(resumedRingThirdCorona.corona, ringThirdCorona.corona,
+  "resumed generalized DLX must preserve deterministic search order");
+assert.ok(resumedRingThirdCorona.nodes < ringThirdCorona.nodes,
+  "resumed generalized DLX must skip the exhausted DFS prefix");
 const ringThirdCoronaWithNogoods = searchPolycubeCorona(ringOctacube, {
   layers: 3,
   nodeLimit: 500_000,

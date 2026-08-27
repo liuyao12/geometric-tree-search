@@ -728,6 +728,11 @@ export function searchPolycubeCorona(voxels, options = {}) {
   const timeBudgetMode = options.timeBudgetMode === "cpu" && typeof process !== "undefined"
     && typeof process.cpuUsage === "function" ? "cpu" : "wall";
   const seed = Math.floor(Number(options.seed) || 0);
+  const resumePath = options.resumePath ?? [];
+  if (!Array.isArray(resumePath)
+    || !resumePath.every(ordinal => Number.isInteger(ordinal) && ordinal >= 0)) {
+    throw new Error("Corona resume path must contain nonnegative integer branch ordinals");
+  }
   const acceptSolution = typeof options.acceptSolution === "function"
     ? options.acceptSolution
     : null;
@@ -1009,6 +1014,7 @@ export function searchPolycubeCorona(voxels, options = {}) {
   let initialNogoodClauses = 0;
   let lastConflict = null;
   let stoppedBy = null;
+  let cutoffPath = null;
   let symmetryNogoodClauses = 0;
   let conflictBackjumps = 0;
   const placementIdByKey = new Map(orderedPlacements.map(placement => [placement.key, placement.id]));
@@ -1384,8 +1390,11 @@ export function searchPolycubeCorona(voxels, options = {}) {
     }
   };
 
-  const search = () => {
+  const search = (depth = 0, followingResume = resumePath.length > 0) => {
     if (violatedNogoods.size) {
+      if (followingResume && depth < resumePath.length) {
+        throw new Error(`Corona resume path enters a nogood-pruned state at depth ${depth}`);
+      }
       nogoodPrunes += 1;
       if (conflictExplanationsEnabled) {
         const violated = violatedNogoods.values().next().value;
@@ -1395,8 +1404,16 @@ export function searchPolycubeCorona(voxels, options = {}) {
       }
       return null;
     }
-    if (pruneDeadNextLayerTarget()) return null;
+    if (pruneDeadNextLayerTarget()) {
+      if (followingResume && depth < resumePath.length) {
+        throw new Error(`Corona resume path enters a lookahead-pruned state at depth ${depth}`);
+      }
+      return null;
+    }
     if (dlxRight[0] === 0) {
+      if (followingResume && depth < resumePath.length) {
+        throw new Error(`Corona resume path extends beyond a complete cover at depth ${depth}`);
+      }
       const solution = chosen.slice();
       if (!acceptSolution) return solution;
       const decision = acceptSolution(solution);
@@ -1425,6 +1442,7 @@ export function searchPolycubeCorona(voxels, options = {}) {
     }
     if (overBudget()) {
       lastConflict = null;
+      cutoffPath = [];
       return null;
     }
     nodes += 1;
@@ -1436,6 +1454,9 @@ export function searchPolycubeCorona(voxels, options = {}) {
       if (dlxColumnSize[pivot] <= 1) break;
     }
     if (!dlxColumnSize[pivot]) {
+      if (followingResume && depth < resumePath.length) {
+        throw new Error(`Corona resume path extends beyond a dead end at depth ${depth}`);
+      }
       deadEnds += 1;
       learnDeadColumnNogood(pivot);
       lastConflict = explainPivotFailure(pivot);
@@ -1443,18 +1464,32 @@ export function searchPolycubeCorona(voxels, options = {}) {
     }
     const branchResiduals = conflictExplanationsEnabled ? new Map() : null;
     cover(pivot);
+    const resumeOrdinal = followingResume && depth < resumePath.length
+      ? resumePath[depth]
+      : null;
+    let ordinal = 0;
+    let matchedResumeBranch = resumeOrdinal == null;
     for (let row = dlxDown[pivot]; row !== pivot; row = dlxDown[row]) {
+      if (resumeOrdinal != null && ordinal < resumeOrdinal) {
+        ordinal += 1;
+        continue;
+      }
+      if (resumeOrdinal != null && ordinal === resumeOrdinal) matchedResumeBranch = true;
       const placement = orderedPlacements[dlxPlacement[row]];
       chosen.push(placement);
       addSelectedPlacement(placement);
       maximumDepth = Math.max(maximumDepth, chosen.length);
       for (let node = dlxRight[row]; node !== row; node = dlxRight[node]) cover(dlxColumn[node]);
-      const solution = search();
+      const solution = search(depth + 1, followingResume && ordinal === resumeOrdinal);
       if (solution) return solution;
       const childConflict = lastConflict;
       for (let node = dlxLeft[row]; node !== row; node = dlxLeft[node]) uncover(dlxColumn[node]);
       removeSelectedPlacement(placement);
       chosen.pop();
+      if (cutoffPath !== null) {
+        cutoffPath.unshift(ordinal);
+        break;
+      }
       if (conflictExplanationsEnabled) {
         if (!childConflict) {
           lastConflict = null;
@@ -1464,7 +1499,7 @@ export function searchPolycubeCorona(voxels, options = {}) {
             conflictBackjumps += 1;
             uncover(pivot);
             lastConflict = childConflict;
-            return null;
+          return null;
           }
           const residual = new Set(childConflict);
           residual.delete(rowToken);
@@ -1472,8 +1507,12 @@ export function searchPolycubeCorona(voxels, options = {}) {
         }
       }
       if (stoppedBy || violatedNogoods.size) break;
+      ordinal += 1;
     }
     uncover(pivot);
+    if (!matchedResumeBranch && !stoppedBy) {
+      throw new Error(`Corona resume path does not match the deterministic search tree at depth ${depth}`);
+    }
     if (conflictExplanationsEnabled && !stoppedBy) {
       lastConflict = explainPivotFailure(pivot, branchResiduals);
     }
@@ -1505,6 +1544,8 @@ export function searchPolycubeCorona(voxels, options = {}) {
     exhausted,
     certified_non_tiler: exhausted,
     stopped_by: stoppedBy,
+    resume_path: cutoffPath,
+    resumed_from_path: resumePath.length ? resumePath.slice() : null,
     layers,
     target_cells: allTargetKeys.length,
     remaining_target_cells: targetKeys.length,
