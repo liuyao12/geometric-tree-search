@@ -5633,3 +5633,17 @@ constraints are present in geometry from a counterfactual geometric hypothesis a
 unmodeled process. Every current record is assigned exactly once. A future unrecognized
 record appears in a red unclassified lane rather than being silently claimed as encoded.
 The map and its no-target/no-time audit are frozen into the experiment receipt.
+
+### Build 208 · measured pipeline-work attribution
+
+The computational-work laboratory now separates the live browser operations accumulated by
+sample intake, cluster identification, GCTS marking fit, covering tree search, and explicit
+site materialization. Each stage card reports its own natural unit—sites, candidate
+relations, section samples, local constraint tests, or coordinate writes—and routes back to
+that stage without changing a setting.
+
+These heterogeneous counters are deliberately not added into a fabricated runtime or
+speedup. The existing 10×/1,000×/100,000× table remains an algorithmic comparison against a
+user-declared MD step horizon and interaction scaling. The receipt now retains both the
+stage work ledger and the fact that its operation classes are non-additive, target-free,
+and not physical time.

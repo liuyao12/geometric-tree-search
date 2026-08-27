@@ -678,6 +678,7 @@ const costScalingState = $("costScalingState");
 const mdHorizonSelect = $("mdHorizonSelect");
 const mdScalingSelect = $("mdScalingSelect");
 const costLiveWork = $("costLiveWork");
+const costPipelineWork = $("costPipelineWork");
 const costScalingTable = $("costScalingTable");
 const costScalingBoundary = $("costScalingBoundary");
 const legendHeading = $("legendHeading");
@@ -8378,6 +8379,43 @@ function certifiedRecursiveAmplification(benchmark) {
   return Math.exp(ratios.reduce((sum, ratio) => sum + Math.log(ratio), 0) / ratios.length);
 }
 
+function measuredPipelineWorkLedger() {
+  const discoveryTarget = clusterDiscoveryTrace?.totalSteps || 0;
+  const markingTarget = sectionModel ? markingSampleCount() : 0;
+  const generatedSites = Math.max(0, atoms.length - referenceCount());
+  const stages = [
+    { id: "sample", label: "sample configuration", routeStage: 0, state: "complete",
+      primaryOperations: referenceCount(), primaryUnit: "supplied sites",
+      secondary: `${new Set(referenceAtoms.map((atom) => atom.species)).size} species · coordinate intake`,
+      progressFraction: 1, operationClass: "input presentations" },
+    { id: "cluster", label: "cluster identification", routeStage: 1,
+      state: pipelineStage < 1 ? "pending" : clusterDiscoveryProgress < discoveryTarget ? "active" : "complete",
+      primaryOperations: clusterDiscoveryTrace?.edges.length || 0, primaryUnit: "candidate relations",
+      secondary: `${clusterDiscoveryProgress}/${discoveryTarget} audit steps · ${learnedCover?.placements?.length || 0} cover placements`,
+      progressFraction: discoveryTarget ? Math.min(1, clusterDiscoveryProgress / discoveryTarget) : 0,
+      operationClass: "finite relation decisions" },
+    { id: "marking", label: "GCTS marking fit", routeStage: 3,
+      state: pipelineStage < 3 ? "pending" : trainingProgress < markingTarget ? "active" : "complete",
+      primaryOperations: trainingProgress, primaryUnit: "processed sections",
+      secondary: `${markingTarget} total · ${sectionModel?.channels || 0} channels · reach ${sectionModel?.reach || 0}`,
+      progressFraction: markingTarget ? Math.min(1, trainingProgress / markingTarget) : 0,
+      operationClass: "bounded connection samples" },
+    { id: "search", label: "covering tree search", routeStage: 4,
+      state: pipelineStage < 4 ? "pending" : "active",
+      primaryOperations: constraintNeighborhoodEvaluations, primaryUnit: "local constraint tests",
+      secondary: `${grammarDecisions} decisions · ${acceptedDecisions} accepted · ${rejectedDecisions} rejected`,
+      progressFraction: null, operationClass: "target-blind branch checks" },
+    { id: "emit", label: "explicit materialization", routeStage: 4,
+      state: pipelineStage < 4 ? "pending" : "active",
+      primaryOperations: atoms.length, primaryUnit: "site writes retained",
+      secondary: `${generatedSites} generated · explicit output remains O(N)`,
+      progressFraction: null, operationClass: "colored coordinate writes" },
+  ];
+  return { stages, stageCount: stages.length, countersAreDeterministicBrowserOperations: true,
+    operationClassesAreNotAdditive: true, physicalTimeModeled: false,
+    mdForceEvaluationsPerformed: 0, targetUsed: false };
+}
+
 function computationalCostAudit() {
   const benchmark = currentRecursiveBenchmark();
   const claims = receiptGrowthClaims(scenarioSelect.value, benchmark, iceAnchorTrace);
@@ -8411,6 +8449,7 @@ function computationalCostAudit() {
       maximumProjectedNeighborhoodSites: maximumConstraintNeighborhoodSites,
       mdForceEvaluationsPerformed: 0,
     },
+    measuredPipelineWork: measuredPipelineWorkLedger(),
     assumptions: {
       mdHorizonSteps,
       mdInteractionScaling: mdWorkScaling,
@@ -8457,6 +8496,25 @@ function renderComputationalCost() {
     return tile;
   }));
   costLiveWork.classList.toggle("inactive", !live.stageEntered);
+  const pipelineWork = audit.measuredPipelineWork;
+  costPipelineWork.replaceChildren(...pipelineWork.stages.map((stage, index) => {
+    const button = document.createElement("button"); button.type = "button";
+    button.className = stage.state;
+    button.title = `Open ${stage.label}; no setting is changed.`;
+    const heading = document.createElement("span");
+    const small = document.createElement("small"); small.textContent = `${String(index + 1).padStart(2, "0")} · ${stage.operationClass}`;
+    const strong = document.createElement("strong"); strong.textContent = stage.label;
+    heading.append(small, strong);
+    const value = document.createElement("b"); value.textContent = formatWorkUnits(stage.primaryOperations);
+    const unit = document.createElement("em"); unit.textContent = stage.primaryUnit;
+    const detail = document.createElement("p"); detail.textContent = stage.secondary;
+    const meter = document.createElement("i");
+    const fill = document.createElement("span");
+    fill.style.width = `${stage.progressFraction === null ? stage.state === "active" ? 100 : 0 : stage.progressFraction * 100}%`;
+    meter.append(fill); button.append(heading, value, unit, detail, meter);
+    button.addEventListener("click", () => enterPipelineStage(stage.routeStage));
+    return button;
+  }));
   costScalingTable.replaceChildren();
   const headings = ["scale", "explicit solid", "symbolic GCTS", "emit/write", "MD work units"];
   headings.forEach((label) => {
@@ -8485,7 +8543,7 @@ function renderComputationalCost() {
   const livePrefix = live.stageEntered
     ? "Live counters are exact deterministic browser operations."
     : "Enter material growth to populate the live browser counters.";
-  costScalingBoundary.textContent = `${livePrefix} MD = ${mdHorizonSteps.toExponential(0).replace("e+", "e")} assumed steps with ${audit.assumptions.mdInteractionScalingLabel} abstract interaction work. Explicit GCTS output still writes O(N) sites. No force field, wall time, kinetics, or speedup is claimed.`;
+  costScalingBoundary.textContent = `${livePrefix} Pipeline cards retain distinct operation classes and are not summed into a synthetic runtime. MD = ${mdHorizonSteps.toExponential(0).replace("e+", "e")} assumed steps with ${audit.assumptions.mdInteractionScalingLabel} abstract interaction work. Explicit GCTS output still writes O(N) sites. No force field, wall time, kinetics, or speedup is claimed.`;
 }
 
 function receiptExternalGeometry() {
@@ -8789,7 +8847,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-207",
+      buildId: "20260826-208",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,

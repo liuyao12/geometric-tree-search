@@ -6376,3 +6376,16 @@ The coordinate-free map is frozen with the preflight receipt before candidate ex
 It explicitly records that structural states are not physical time and hypotheses are not
 learned physics. Classification is fail-visible: any future manifest record omitted from
 the scale vocabulary enters an `unclassified` lane and makes the completeness flag false.
+
+## Build 208: attribute measured work to pipeline stages
+
+The live cost laboratory now records a five-stage deterministic work ledger: supplied sites,
+cluster-relation decisions, processed GCTS sections, tree-search constraint checks, and
+explicit colored-coordinate writes. Progress is shown for finite clustering and marking
+passes; search and emission remain active counters. Clicking a card routes to the relevant
+workflow stage and changes no setting.
+
+The operation classes are retained separately and are explicitly non-additive. They are not
+converted into wall time or compared numerically with force evaluations. The existing MD
+rows remain a user-declared algorithmic-work reference, while symbolic recursion and O(N)
+explicit materialization continue to be reported as distinct costs.
