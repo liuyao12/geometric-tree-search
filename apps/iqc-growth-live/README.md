@@ -18,6 +18,16 @@ the GCTS anatomy view explains covers, oriented ports, markings, search, and
 promotion; and the claim ledger keeps proved, measured, and open results visibly
 separate. Its numbers are frozen benchmark results, not recomputed browser demos.
 
+Build 223 makes the complete molecular cover visible while cluster discovery is
+still running. A live ribbon beside the reversible discovery timeline counts
+settled finite molecules, intermolecular connection clusters, explicit
+gap/void clusters, and covered atomic sites. For crystalline water this exposes
+the inferred H2O components before hydrogen-bond bridge and O-ring void
+supports complete the periodic cover. The formula remains display provenance:
+the molecule is discovered from recurring finite bonded components, and the
+interface explicitly distinguishes those bonds from bridge/void supports and
+from the rejected atom-centred radial-shell interpretation.
+
 Build 142 adds a question-driven **Study guide** beside the Evidence Atlas. It
 offers eight materials-science investigations spanning a crystalline positive
 control, molecular ice topology, aperiodic Cd–Yb continuation, moiré registry,

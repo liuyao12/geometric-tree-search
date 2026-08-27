@@ -1622,6 +1622,15 @@
           <p id="processEvidenceDetail" class="process-evidence-detail" aria-live="polite"></p>
         </section>
 
+        <section id="molecularCoverRibbon" class="molecular-cover-ribbon" aria-label="Live molecular cluster cover decomposition" hidden>
+          <header>
+            <span><small>molecular cover decomposition</small><strong id="molecularCoverTitle">Finite molecules and the geometry between them</strong></span>
+            <b id="molecularCoverState">awaiting cluster discovery</b>
+          </header>
+          <div id="molecularCoverFlow" class="molecular-cover-flow"></div>
+          <p id="molecularCoverBoundary">Molecular bonds, connection clusters, and explicit void boundaries remain distinct geometric objects.</p>
+        </section>
+
         <div class="metrics-strip" aria-label="Live metrics">
           <article><small id="atomLabel">ATOMS</small><strong id="atomMetric">216</strong><span id="atomDelta">known xyz + species</span></article>
           <article><small id="frontierLabel">SPECIES</small><strong id="frontierMetric">2</strong><span id="frontierDelta">blue / green</span></article>
@@ -1827,7 +1836,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260827-222"></script>
+  <script type="module" src="./app.js?v=20260827-223"></script>
   <script type="module" src="./evidence-atlas.js?v=20260826-19"></script>
 </body>
 </html>

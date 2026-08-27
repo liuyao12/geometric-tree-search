@@ -13,6 +13,18 @@ amplification is `b > 1`, a level-`L` accepted macro placement represents
 approximately `b^L` atoms.  Materializing or exporting `N` atomic coordinates
 still has an unavoidable `O(N)` cost and must be reported separately.
 
+### Browser presentation boundary (Build 223)
+
+The cluster-identification stage now presents its molecular-cover accounting as
+a live four-part decomposition: finite molecules, connection clusters,
+gap/void clusters, and total observed-site coverage. Counts advance only when
+the corresponding cover placements settle in the reversible discovery trace.
+For H2O the finite three-site component is therefore visible before the
+hydrogen-bond and O-ring supports that interpolate the periodic configuration.
+This is a visualization of the learned cover, not a new classifier: formula
+metadata is not an input, molecular bonds remain distinct from inter-molecular
+supports, and no atom-centred radial shell is substituted for the molecule.
+
 ## Benchmark ladder
 
 All learners receive only positions and species.  Hidden construction metadata

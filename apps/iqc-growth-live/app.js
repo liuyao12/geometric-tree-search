@@ -622,6 +622,11 @@ const processTimelineInput = $("processTimelineInput");
 const processTimelineNote = $("processTimelineNote");
 const processEvidenceLedger = $("processEvidenceLedger");
 const processEvidenceDetail = $("processEvidenceDetail");
+const molecularCoverRibbon = $("molecularCoverRibbon");
+const molecularCoverTitle = $("molecularCoverTitle");
+const molecularCoverState = $("molecularCoverState");
+const molecularCoverFlow = $("molecularCoverFlow");
+const molecularCoverBoundary = $("molecularCoverBoundary");
 const atomLabel = $("atomLabel");
 const atomMetric = $("atomMetric");
 const atomDelta = $("atomDelta");
@@ -9199,7 +9204,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-222",
+      buildId: "20260827-223",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -20636,6 +20641,62 @@ function renderProcessEvidence() {
   processEvidenceDetail.textContent = `${selected.detail} Claim boundary: ${evidence.claimBoundary}`;
 }
 
+function renderMolecularCoverRibbon() {
+  const molecular = learnedCover?.molecular;
+  const visible = pipelineStage === 1 && molecular && clusterDiscoveryTrace;
+  molecularCoverRibbon.hidden = !visible;
+  if (!visible) return;
+  const discovery = clusterDiscoveryState();
+  const settled = clusterDiscoveryTrace.placements.filter((placement) =>
+    placement.settleStep <= clusterDiscoveryProgress);
+  const countFamily = (family) => settled.filter((placement) => placement.family === family).length;
+  const moleculeCount = countFamily("molecule");
+  const connectionCount = countFamily("bridge");
+  const voidCount = countFamily("gap");
+  const finished = clusterDiscoveryProgress >= clusterDiscoveryTrace.totalSteps;
+  const moleculeLabel = molecular.water ? molecular.waterLabel : "finite molecules";
+  const records = [
+    { kind: "molecule", eyebrow: "finite components", label: moleculeLabel,
+      value: moleculeCount, total: molecular.molecules,
+      detail: `${molecular.moleculeClasses} topological isometry class${molecular.moleculeClasses === 1 ? "" : "es"}${molecular.metricConformerClasses ? ` · ${molecular.metricConformerClasses} measured conformer${molecular.metricConformerClasses === 1 ? "" : "s"}` : ""}` },
+    { kind: "connection", eyebrow: "between molecules", label: "connection clusters",
+      value: connectionCount, total: molecular.connections,
+      detail: `${molecular.connectionClasses} proper-SE(3) class${molecular.connectionClasses === 1 ? "" : "es"} retained` },
+    { kind: "void", eyebrow: "uncovered geometry", label: "gap / void clusters",
+      value: voidCount, total: molecular.voids,
+      detail: `${molecular.voidClasses} explicit boundary class${molecular.voidClasses === 1 ? "" : "es"} retained` },
+    { kind: "coverage", eyebrow: "complete cover", label: "observed atomic sites",
+      value: discovery.coveredAtoms.size, total: referenceCount(),
+      detail: `${discovery.settledPlacements}/${learnedCover.placements.length} accepted placements` },
+  ];
+  molecularCoverTitle.textContent = molecular.water
+    ? `${moleculeLabel} molecules first; bridges and O-ring voids complete the crystal cover`
+    : "Finite molecules first; connection and gap clusters complete the observed cover";
+  molecularCoverState.textContent = finished && learnedCover.complete
+    ? `complete · ${referenceCount()}/${referenceCount()} sites`
+    : `${clusterDiscoveryProgress}/${clusterDiscoveryTrace.totalSteps} audit steps`;
+  molecularCoverFlow.replaceChildren();
+  records.forEach((record, index) => {
+    const article = document.createElement("article");
+    article.className = record.kind;
+    const eyebrow = document.createElement("small"); eyebrow.textContent = record.eyebrow;
+    const heading = document.createElement("strong"); heading.textContent = record.label;
+    const count = document.createElement("b"); count.textContent = `${record.value}/${record.total}`;
+    const meter = document.createElement("i");
+    meter.style.setProperty("--cover-progress", `${100 * record.value / Math.max(1, record.total)}%`);
+    const detail = document.createElement("span"); detail.textContent = record.detail;
+    article.append(eyebrow, heading, count, meter, detail);
+    molecularCoverFlow.appendChild(article);
+    if (index < records.length - 1) {
+      const arrow = document.createElement("em"); arrow.textContent = "→";
+      arrow.setAttribute("aria-hidden", "true"); molecularCoverFlow.appendChild(arrow);
+    }
+  });
+  molecularCoverBoundary.textContent = molecular.water
+    ? `The ${moleculeLabel} unit is discovered as a recurring finite bonded component, not supplied from the formula. Surviving molecular edges are bonds; bridge and void clusters are separate overlap supports. No radial atom-centred shell is substituted.`
+    : "Finite-component bonds, intermolecular connection supports, and residual void boundaries are learned separately. No radial atom-centred shell is substituted for a molecule.";
+}
+
 function updateProcessTimeline() {
   const record = processTimelineRecord();
   processTimeline.hidden = !record;
@@ -24937,6 +24998,7 @@ function updateUI() {
   renderStructuralLeap();
   renderGrowthMechanismAudit();
   updateProcessTimeline();
+  renderMolecularCoverRibbon();
   eventCounter.textContent = String(eventIndex).padStart(4, "0");
   const material = currentMaterial();
   renderActiveSamplePassport(material);

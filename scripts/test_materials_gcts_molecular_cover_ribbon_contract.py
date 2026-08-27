@@ -1,0 +1,47 @@
+#!/usr/bin/env python3
+"""Static contract for the live molecule → connection → void cover ribbon."""
+
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parents[1]
+APP = (ROOT / "apps/iqc-growth-live/app.js").read_text()
+HTML = (ROOT / "apps/iqc-growth-live/index.html").read_text()
+CSS = (ROOT / "apps/iqc-growth-live/style.css").read_text()
+
+
+def test_molecular_cover_ribbon_contract():
+    for token in (
+        'id="molecularCoverRibbon"',
+        'id="molecularCoverTitle"',
+        'id="molecularCoverState"',
+        'id="molecularCoverFlow"',
+        'id="molecularCoverBoundary"',
+    ):
+        assert token in HTML
+    for token in (
+        "function renderMolecularCoverRibbon()",
+        "learnedCover?.molecular",
+        "clusterDiscoveryState()",
+        'countFamily("molecule")',
+        'countFamily("bridge")',
+        'countFamily("gap")',
+        "molecular.moleculeClasses",
+        "molecular.connectionClasses",
+        "molecular.voidClasses",
+        "No radial atom-centred shell is substituted",
+        "renderMolecularCoverRibbon();",
+    ):
+        assert token in APP
+    assert APP.index("updateProcessTimeline();") < APP.index("renderMolecularCoverRibbon();", APP.index("function updateUI()"))
+    assert ".molecular-cover-ribbon" in CSS
+    assert ".molecular-cover-flow article.connection" in CSS
+    assert ".molecular-cover-flow article.void" in CSS
+    assert ".molecular-cover-flow article.coverage" in CSS
+    assert 'buildId: "20260827-223"' in APP
+    assert 'app.js?v=20260827-223' in HTML
+
+
+if __name__ == "__main__":
+    test_molecular_cover_ribbon_contract()
+    print("molecular cover ribbon contract passed")
