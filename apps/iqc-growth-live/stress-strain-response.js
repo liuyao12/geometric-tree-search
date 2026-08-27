@@ -181,3 +181,61 @@ export function archivedResponseDeformationGradient(fit, frameIndex, maximumStra
   const deformation = addScaled(identity3(), predicted, scale);
   return determinant(deformation) > .5 ? deformation : null;
 }
+
+const artifactNumber = (value, digits = 10) => Number.isFinite(value)
+  ? Number(Number(value).toFixed(digits)) : null;
+
+export function archivedStressStrainResponseArtifact(fit, options = {}) {
+  if (!fit) return null;
+  const selectedFrameIndex = Number.isInteger(options.selectedFrameIndex)
+    ? options.selectedFrameIndex : 0;
+  const selected = Boolean(options.selectedAsSoftRankingMetric);
+  const magnitude = Number.isFinite(Number(options.maximumStrain))
+    ? Number(options.maximumStrain) : .04;
+  const selectedGradient = selected
+    ? archivedResponseDeformationGradient(fit, selectedFrameIndex, magnitude) : null;
+  return Object.freeze({
+    available: Boolean(fit.available),
+    promotionPassed: Boolean(fit.promotionPassed),
+    reason: fit.reason || null,
+    definition: fit.definition || null,
+    referenceFrameIndexZeroBased: fit.referenceIndex ?? null,
+    eligiblePairCount: fit.recordCount || 0,
+    totalPairCount: fit.totalPairCount || 0,
+    excludedNonlinearPairCount: fit.excludedNonlinearCount || 0,
+    maximumLinearStrainFrobenius: fit.maximumLinearStrain ?? .15,
+    hydroComplianceInverseGigaPascal: artifactNumber(fit.hydroComplianceInverseGigaPascal, 12),
+    deviatoricComplianceInverseGigaPascal: artifactNumber(fit.deviatoricComplianceInverseGigaPascal, 12),
+    inferredArchiveStressSign: fit.inferredArchiveStressSign || null,
+    complianceChannelsSameSign: fit.complianceChannelsSameSign ?? null,
+    apparentBulkResponseScaleGigaPascal: artifactNumber(fit.bulkModulusGigaPascal),
+    apparentShearResponseScaleGigaPascal: artifactNumber(fit.shearModulusGigaPascal),
+    maximumObservedStrainFrobenius: artifactNumber(fit.maximumObservedStrain),
+    leaveOneFrameOutSkill: artifactNumber(fit.crossValidatedSkill),
+    fitRecords: Object.freeze(fit.records?.map((record) => Object.freeze({
+      frameIndexZeroBased: record.frameIndex,
+      strainFrobenius: artifactNumber(record.strainFrobenius),
+      stressChangeFrobeniusGigaPascal: artifactNumber(record.stressChangeFrobenius),
+      deformationGradientDeterminant: artifactNumber(record.deformationGradientDeterminant),
+    })) || []),
+    leaveOneFrameOut: Object.freeze(fit.leaveOneFrameOut?.map((record) => Object.freeze({
+      frameIndexZeroBased: record.frameIndex,
+      observedStrainFrobenius: artifactNumber(record.observedNorm),
+      predictedStrainFrobenius: artifactNumber(record.predictedNorm),
+      residualStrainFrobenius: artifactNumber(record.residualNorm),
+    })) || []),
+    selectedFrameIndexZeroBased: selectedFrameIndex,
+    selectedFrameEligible: Boolean(fit.records?.some((record) => record.frameIndex === selectedFrameIndex)),
+    selectedDeformationGradient: selectedGradient
+      ? Object.freeze(selectedGradient.map((row) => Object.freeze(row.map((value) => artifactNumber(value, 12)))))
+      : null,
+    selectedAsSoftRankingMetric: selected,
+    candidateGeometryChanged: false,
+    hardAdmissionChanged: false,
+    targetCoordinatesUsed: false,
+    growthOutcomesUsed: false,
+    physicalTimeUsed: false,
+    independentValidationClaimed: false,
+    generalElasticTensorClaimed: false,
+  });
+}

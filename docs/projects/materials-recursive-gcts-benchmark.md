@@ -1,5 +1,23 @@
 # Recursive GCTS benchmark for material growth
 
+### Mechanical-response evidence receipt (Build 255)
+
+The response fit now serializes as a SHA-256-addressed experiment artifact.
+It includes the precise frame subset, fixed small-strain domain, excluded-pair
+count, compliance channels, held-frame residuals, response-scale summaries,
+selected frame, selected deformation gradient, and explicit false flags for
+candidate-geometry changes, hard-admission changes, target coordinates, growth
+outcomes, physical time, independent validation, and a general elastic-tensor
+claim. The physics preflight mirrors the same state before an action executes.
+
+The live positive-path audit uses public NOMAD entry
+`KFBchFQ1IQAE-JEgzOS1XzZlfsTz` (Cl₂Na₂; 144-site browser supercell). Of nine
+source-to-final pairs, five satisfy the predeclared `||E||F <= 0.15` domain;
+four are excluded before fitting. The fixed promotion gate passes with
+leave-one-frame-out skill 0.7162377, apparent K*=1.2405901 GPa, and apparent
+G*=2.4440705 GPa. These numbers demonstrate the code path, not transferable
+elastic constants.
+
 ### Paired archived cell–stress response (Build 254)
 
 For public archives with at least five finite small-strain frame pairs, the UI

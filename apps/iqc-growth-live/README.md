@@ -1,5 +1,21 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 255 · reproducible mechanical-response evidence
+
+The paired cell–stress fit is now a first-class receipt artifact rather than a
+visual-only diagnostic. The downloaded experiment record contains the fixed
+fit domain, eligible and excluded pairs, both compliance coefficients,
+leave-one-frame-out observations and predictions, apparent response scales,
+the selected capped deformation, all negative claim flags, and an artifact
+SHA-256. A dedicated physics-ledger row states whether the response is absent,
+descriptive, eligible, or actively supplying a soft metric.
+
+A pinned live audit of public NOMAD entry
+`KFBchFQ1IQAE-JEgzOS1XzZlfsTz` exercises the positive path: 10 archived
+frames, 5/9 eligible small-strain pairs, 4 fixed-domain exclusions, and
+leave-one-frame-out skill 0.716. The fitted K*=1.241 GPa and G*=2.444 GPa are
+reported only as within-archive apparent response scales.
+
 ## Build 254 · archive-calibrated small-strain response
 
 Paired cell and stress snapshots can now be reduced to two train-only isotropic

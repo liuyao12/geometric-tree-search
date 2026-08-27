@@ -82,7 +82,8 @@ import { boundedForceSeedOffset, forceMagnitudeP90, meanForceVectors }
   from "./force-seed-geometry.js?v=20260827-1";
 import { normalizedStressShapeDeformation }
   from "./stress-geometry.js?v=20260827-1";
-import { archivedResponseDeformationGradient, fitArchivedStressStrainResponse }
+import { archivedResponseDeformationGradient, archivedStressStrainResponseArtifact,
+  fitArchivedStressStrainResponse }
   from "./stress-strain-response.js?v=20260827-1";
 import { CENTROSYMMETRY_PROVENANCE, inferCentrosymmetryNeighborCount, localCentrosymmetry }
   from "./centrosymmetry-geometry.js?v=20260826-1";
@@ -9943,6 +9944,14 @@ async function buildExperimentReceipt() {
     ? await receiptSha256(JSON.stringify(calculationForceRecords)) : null;
   const calculationStressSha256 = externalCalculation?.stressCoverage > 0
     ? await receiptSha256(JSON.stringify(externalCalculation.stressTensorGigaPascal)) : null;
+  const archivedResponseFit = archivedStressStrainResponse();
+  const archivedResponseArtifact = archivedStressStrainResponseArtifact(archivedResponseFit, {
+    selectedFrameIndex: importedFrameIndex,
+    selectedAsSoftRankingMetric: affineLoadMode === "archive-response",
+    maximumStrain: affineLoadMagnitude,
+  });
+  const archivedResponseArtifactSha256 = archivedResponseArtifact
+    ? await receiptSha256(JSON.stringify(archivedResponseArtifact)) : null;
   const scalarSpinRecords = referenceAtoms.filter((atom) => Number.isFinite(atom.calculationSpin))
     .map((atom) => ({ sourceIndex: atom.sourceIndex, species: atom.displaySpecies || atom.species,
       scalarSpin: receiptRound(atom.calculationSpin, 10) }));
@@ -10102,7 +10111,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-254",
+      buildId: "20260827-255",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -10161,6 +10170,8 @@ async function buildExperimentReceipt() {
         stressTensorEmbedded: true,
         stressAffineMetricMode: ["archive-stress", "archive-stress-reverse"].includes(affineLoadMode)
           ? affineLoadMode : "none",
+        archivedStressStrainResponseMode: affineLoadMode === "archive-response"
+          ? "archive-response" : "none",
         scalarSpinCount: scalarSpinRecords.length,
         scalarSpinsSha256: scalarSpinSha256,
         perSiteScalarSpinsEmbedded: false,
@@ -10175,7 +10186,7 @@ async function buildExperimentReceipt() {
         usedForCandidateGeneration: false,
         usedForAdmission: scalarSpinRecords.length > 0 && scalarSpinColoringActive(),
         usedForBranchRanking: externalCalibrationPromotionActive
-          || ["archive-stress", "archive-stress-reverse"].includes(affineLoadMode),
+          || ["archive-stress", "archive-stress-reverse", "archive-response"].includes(affineLoadMode),
         usedForRelaxation: structuralRelaxationSpec().forceSeed,
         usedForClassification: false,
       } : null,
@@ -10329,6 +10340,13 @@ async function buildExperimentReceipt() {
           usedForClusterIdentification: false,
           usedForMarkingLearning: false,
           usedForGrowth: false,
+        } : null,
+        archivedStressStrainResponse: archivedResponseArtifact ? {
+          ...archivedResponseArtifact,
+          artifactSha256: archivedResponseArtifactSha256,
+          exactCellAndStressMatricesEmbedded: false,
+          sourceCellAndStressPairsCoveredByFrameCalculationSha256: true,
+          fitArtifactEmbedded: true,
         } : null,
         geometryCalculationCalibration: relaxationGeometryCalibration ? {
           selectedReferenceMode: relaxationGeometryCalibration.referenceMode,
@@ -12344,7 +12362,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-254" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-255" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -23448,6 +23466,7 @@ function physicsTranslationRecords(leap = null) {
     ? (relaxationCalibrationMetricMode === "force"
       ? relaxationGeometryCalibration.forceSurrogate : relaxationGeometryCalibration.energySurrogate)
     : null;
+  const stressStrainResponse = archivedStressStrainResponse();
   const localConstraintMismatch = currentLocalConstraintMismatchField();
   const localSymmetry = leap?.localSymmetryTransition || null;
   const centrosymmetry = leap?.centrosymmetryTransition || null;
@@ -23508,6 +23527,20 @@ function physicsTranslationRecords(leap = null) {
         ? `Tensor source ${calculation.stressSourcePath}; archive unit Pa; displayed unit GPa; exact tensor SHA is retained in the receipt.`
         : "No calculation-stress tensor is available for this material.",
       boundary: "The optional normalization discards stress magnitude and assumes only a scalar unit-compliance direction. It is not Hooke’s law, an elastic tensor, modulus, strain energy, force balance, relaxation, plasticity, pressure calibration, kinetics, or time. Archive sign is preserved as one hypothesis and reversed only as a registered ablation; exact coordinates and hard admission never change." },
+    { id: "stress-strain-response", process: "paired archived cell strain / apparent mechanical response",
+      status: stressStrainResponse?.promotionPassed
+        ? affineLoadMode === "archive-response" ? "soft" : "learned"
+        : stressStrainResponse?.available ? "observed" : "unavailable",
+      role: stressStrainResponse?.promotionPassed
+        ? affineLoadMode === "archive-response" ? "bounded target-blind deformed-metric ordering" : "eligible but not selected"
+        : "descriptive within-archive response only",
+      encoding: stressStrainResponse?.available
+        ? `two isotropic channels map archived stress change to final-cell Green–Lagrange strain; fixed ||E||F≤${stressStrainResponse.maximumLinearStrain.toFixed(2)} domain; leave-one-frame-out gate; apparent K* ${stressStrainResponse.bulkModulusGigaPascal.toFixed(3)} GPa and G* ${stressStrainResponse.shearModulusGigaPascal.toFixed(3)} GPa${affineLoadMode === "archive-response" ? `; selected response is capped at ${Math.round(100 * affineLoadMagnitude)}% strain` : ""}`
+        : "requires at least five finite small-strain cell/stress pairs plus one final reference frame",
+      evidence: stressStrainResponse?.available
+        ? `${stressStrainResponse.recordCount}/${stressStrainResponse.totalPairCount} pairs eligible; ${stressStrainResponse.excludedNonlinearCount} excluded before fit; leave-one-frame-out skill ${stressStrainResponse.crossValidatedSkill.toFixed(3)}; fixed promotion gate ${stressStrainResponse.promotionPassed ? "passed" : "failed"}.`
+        : stressStrainResponse?.reason || "No paired response is available.",
+      boundary: "K* and G* are apparent scales within one correlated archive, not independently validated elastic moduli or a general elastic tensor. The final cell is an input reference and archive order is not elapsed time. The optional affine response changes only one soft geometric ranking metric; it does not alter exact candidate coordinates or hard admission and is not Hooke’s-law validation, an interatomic potential, strain energy, force balance, equilibrium, plasticity, kinetics, or time." },
     { id: "collinear-spin", process: "collinear magnetic-order geometry / scalar spin texture",
       status: spinGeometry.available ? scalarSpinColoringActive() ? "hard" : "explicit" : "unavailable",
       role: spinGeometry.available ? scalarSpinColoringActive()

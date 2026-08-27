@@ -24,7 +24,18 @@ def test_archive_response_is_soft_metric_only():
     assert "exact coordinates and hard gates unchanged" in APP
 
 
-def test_build_254_cache_contract():
-    assert 'buildId: "20260827-254"' in APP
-    assert "app.js?v=20260827-254" in HTML
-    assert "style.css?v=20260827-254" in HTML
+def test_archive_response_is_receipt_and_manifest_auditable():
+    assert "archivedResponseArtifactSha256" in APP
+    assert "archivedStressStrainResponse: archivedResponseArtifact" in APP
+    assert "fitArtifactEmbedded: true" in APP
+    assert 'id: "stress-strain-response"' in APP
+    assert "generalElasticTensorClaimed: false" in MODULE
+    assert "independentValidationClaimed: false" in MODULE
+    assert "candidateGeometryChanged: false" in MODULE
+    assert "hardAdmissionChanged: false" in MODULE
+
+
+def test_build_255_cache_contract():
+    assert 'buildId: "20260827-255"' in APP
+    assert "app.js?v=20260827-255" in HTML
+    assert "style.css?v=20260827-255" in HTML
