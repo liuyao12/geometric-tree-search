@@ -1,5 +1,22 @@
 # Recursive GCTS benchmark for material growth
 
+### Evidence-ordered cluster discovery (Build 259)
+
+The Stage 2 process microscope now derives its reversible event order from the
+selected cover itself. Candidate relations appear by element-resolved distance;
+support occurrences settle by maximum uncovered-site gain, recurring class
+frequency, minimum redundant overlap, family role, and lexical support. A
+rejected relation stays tentative until both endpoints have acquired selected
+cover evidence. No hash or pseudorandom schedule remains in the clustering
+visualization.
+
+The trace emits explicit decision reasons and serializes its ordering audit.
+This is still a deterministic replay of an already learned recurring-isometry
+cover, not molecular dynamics or an online optimizer history. The distinction
+is visible in the process evidence ledger and receipt. GCTS learning continues
+in Stage 3 on separate rotating scenes for every molecular, bridge, support,
+void, and literal residual class.
+
 ### Frozen-frontier response intervention (Build 258)
 
 The archive-response Study Guide now performs its one-factor comparison on a

@@ -1,5 +1,21 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 259 · evidence-ordered cluster discovery
+
+Cluster identification no longer assigns visual relation births and decisions
+with a deterministic hash after the cover is known. The reversible whole-scene
+trace now orders candidate appearance by element-resolved distance, settles
+supports by maximum uncovered-site gain followed by recurring-class evidence
+and minimum redundant overlap, and rejects alternatives only after both
+endpoints acquire selected-cover evidence.
+
+Every displayed relation carries a reason code: recurring-support edge,
+complete-cover edge, unsupported colored pair, outside colored envelope,
+redundant support chord, or no recurring support. The receipt records the
+ordering rule and explicitly states that the display is an evidence-ordered
+audit replay—not molecular dynamics, physical time, or a wall-clock optimizer
+trace. Stage 3 remains a separate per-cluster GCTS gallery.
+
 ## Build 258 · frozen-frontier response intervention
 
 The guided archive-response study now exposes the causal comparison before a

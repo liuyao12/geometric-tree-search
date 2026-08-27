@@ -25,6 +25,8 @@ import { policyIdentifiabilityAcrossArms, policyIdentifiabilityAudit, policyIden
   from "./policy-identifiability.js?v=20260826-4";
 import { archiveResponseFrontierRankAudit }
   from "./archive-response-frontier-audit.js?v=20260827-1";
+import { evidenceOrderedClusterDiscoverySchedule }
+  from "./cluster-discovery-schedule.js?v=20260827-1";
 import { applyHypothesisSeparationMultipliers as applyFrozenHypothesisSeparationMultipliers,
   validateHypothesisSeparationExperiment }
   from "./hypothesis-separation.js?v=20260826-1";
@@ -2088,7 +2090,7 @@ async function loadWorkedPublicArchive({ updateAddress = true } = {}) {
     databaseSourceLink.textContent = `Open exact NOMAD entry ${result.structure.metadata.entryId.slice(0, 10)}… ↗`;
     if (updateAddress) {
       const url = new URL(window.location.href);
-      url.searchParams.set("build", "258");
+      url.searchParams.set("build", "259");
       url.searchParams.set("specimen", `nomad:${WORKED_PUBLIC_ARCHIVE.id}`);
       window.history.replaceState(null, "", url);
     }
@@ -10190,7 +10192,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-258",
+      buildId: "20260827-259",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -12447,7 +12449,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-258" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-259" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -19594,12 +19596,6 @@ function discoveryEdgeKey(first, second) {
   return first < second ? `${first}:${second}` : `${second}:${first}`;
 }
 
-function discoveryHash(first, second, salt = 0) {
-  let value = Math.imul(first + 1, 0x45d9f3b) ^ Math.imul(second + 1, 0x119de1f3) ^ salt;
-  value = Math.imul(value ^ value >>> 16, 0x45d9f3b);
-  return (value ^ value >>> 16) >>> 0;
-}
-
 function minimumSpanningSupportEdges(support) {
   const members = [...new Set(support)].filter((index) => referenceAtoms[index]);
   if (members.length < 2) return [];
@@ -19666,24 +19662,68 @@ function buildClusterDiscoveryTrace() {
   }
   candidates.sort((first, second) => first.length - second.length || first.key.localeCompare(second.key));
   const rejectedLimit = Math.min(900, Math.max(referenceAtoms.length * 2, finalEdges.length));
-  const totalSteps = 36;
-  const edges = [...finalEdges, ...candidates.slice(0, rejectedLimit)].map((edge) => {
-    const birthStep = 1 + discoveryHash(edge.first, edge.second, 0x91e10da5) % 7;
-    const decisionStep = edge.final
-      ? 8 + discoveryHash(edge.first, edge.second, 0x734a9d) % 23
-      : 5 + discoveryHash(edge.first, edge.second, 0x2c1b3c6d) % 19;
-    return { ...edge, birthStep, decisionStep,
-      family: edge.families.has("gap") ? "gap" : edge.families.has("bridge") ? "bridge"
-        : edge.families.has("molecule") ? "molecule" : edge.families.has("residual") ? "residual" : "support" };
-  });
-  const edgeByKey = new Map(edges.filter((edge) => edge.final).map((edge) => [edge.key, edge]));
+  const selectedSupportPairs = new Set();
   placements.forEach((placement) => {
-    placement.settleStep = placement.edgeKeys.length
-      ? Math.max(...placement.edgeKeys.map((key) => edgeByKey.get(key)?.decisionStep || totalSteps - 1))
-      : 10 + discoveryHash(placement.placementIndex, placement.type, 0x6d2b79f5) % 20;
+    const support = placement.support;
+    for (let first = 0; first < support.length; first++) {
+      for (let second = first + 1; second < support.length; second++) {
+        selectedSupportPairs.add(discoveryEdgeKey(support[first], support[second]));
+      }
+    }
   });
-  return { totalSteps, edges, placements, finalEdges: finalEdges.length,
-    rejectedEdges: Math.min(rejectedLimit, candidates.length), targetUsed: false };
+  const coloredEnvelopes = new Map();
+  const pairSpecies = (edge) => [referenceAtoms[edge.first].species, referenceAtoms[edge.second].species]
+    .sort().join("–");
+  finalEdges.forEach((edge) => {
+    const key = pairSpecies(edge);
+    const envelope = coloredEnvelopes.get(key) || { minimum: Infinity, maximum: -Infinity, samples: 0 };
+    envelope.minimum = Math.min(envelope.minimum, edge.length);
+    envelope.maximum = Math.max(envelope.maximum, edge.length);
+    envelope.samples++;
+    coloredEnvelopes.set(key, envelope);
+  });
+  const tolerance = Math.max(1e-6, effectiveClusterMetricTolerance() * referenceSpacing);
+  const familyFor = (edge) => edge.families.has("gap") ? "gap"
+    : edge.families.has("bridge") ? "bridge" : edge.families.has("molecule") ? "molecule"
+      : edge.families.has("residual") ? "residual" : "support";
+  const accepted = finalEdges.map((edge) => {
+    const coloredPair = pairSpecies(edge);
+    const envelope = coloredEnvelopes.get(coloredPair);
+    return { ...edge, family: familyFor(edge), coloredPair,
+      normalizedDistance: edge.length / Math.max(1e-9, (envelope.minimum + envelope.maximum) * .5),
+      decisionReason: edge.placementIndices.size > 1 ? "recurring-support-edge" : "complete-cover-edge",
+      recurrenceWitnesses: edge.placementIndices.size };
+  });
+  const rejected = candidates.slice(0, rejectedLimit).map((edge) => {
+    const coloredPair = pairSpecies(edge);
+    const envelope = coloredEnvelopes.get(coloredPair);
+    const decisionReason = !envelope ? "unsupported-colored-pair"
+      : edge.length < envelope.minimum - tolerance || edge.length > envelope.maximum + tolerance
+        ? "outside-colored-envelope" : selectedSupportPairs.has(edge.key)
+          ? "redundant-support-chord" : "no-recurring-support";
+    return { ...edge, family: "candidate", coloredPair,
+      normalizedDistance: envelope
+        ? edge.length / Math.max(1e-9, (envelope.minimum + envelope.maximum) * .5)
+        : edge.length / Math.max(1e-9, maximumFinalLength),
+      decisionReason, recurrenceWitnesses: 0,
+      coloredEnvelope: envelope ? { ...envelope } : null };
+  });
+  const schedule = evidenceOrderedClusterDiscoverySchedule({ placements,
+    edges: [...accepted, ...rejected], totalSteps: 36 });
+  return { ...schedule, finalEdges: finalEdges.length,
+    rejectedEdges: rejected.length, targetUsed: false };
+}
+
+function discoveryDecisionExplanation(edge) {
+  const reason = {
+    "recurring-support-edge": `retained by ${edge.recurrenceWitnesses} selected support occurrences`,
+    "complete-cover-edge": "retained by a selected support that adds complete-cover evidence",
+    "unsupported-colored-pair": "removed because no selected recurring support supplies this element-pair relation",
+    "outside-colored-envelope": "removed outside the selected element-pair distance envelope",
+    "redundant-support-chord": "removed from the visual basis because the same selected support is already connected",
+    "no-recurring-support": "removed because no selected recurring support or explicit gap class contains the relation",
+  }[edge?.decisionReason];
+  return reason || "no evidence-ordered decision reason is available";
 }
 
 function clusterDiscoveryState(progress = clusterDiscoveryProgress) {
@@ -22672,23 +22712,24 @@ function processTimelineEvidenceRecord() {
       ? `${referenceAtoms[representative.first].species}–${referenceAtoms[representative.second].species} · ${(representative.length / Math.max(1e-9, referenceSpacing)).toFixed(2)}a`
       : "no edge transition at this step";
     return {
-      mode: "deterministic audit replay of the learned cover",
+      mode: "evidence-ordered audit replay of selected recurring supports and explicit gaps",
       selectedStep: progress,
       targetUsed: false,
       coordinatesEmbedded: false,
+      orderingAudit: { ...clusterDiscoveryTrace.orderingAudit },
       tiles: [
         { label: "new hypotheses", value: born.length, status: "testing",
-          detail: `${born.length} distance-admissible pair connections enter the visual audit queue at this step.` },
+          detail: `${born.length} distance-admissible pair connections enter in element-resolved distance order; no random or hash timing is used.` },
         { label: "accepted / removed", value: `${accepted.length} / ${removed.length}`, status: removed.length ? "mixed" : "accepted",
-          detail: `${accepted.length} edges belong to the final recurring cluster-and-gap cover; ${removed.length} short alternatives do not.` },
+          detail: `${accepted.length} edges acquire selected-support witnesses; ${removed.length} alternatives are rejected only after both endpoints have selected-cover evidence.` },
         { label: "cover gain", value: `+${newCoverage} sites`, status: newCoverage ? "accepted" : "neutral",
           detail: `${placements.length} complete support placement${placements.length === 1 ? "" : "s"} settle, newly certifying ${newCoverage} observed site${newCoverage === 1 ? "" : "s"}.` },
         { label: "representative", value: pair, status: representative?.final ? "accepted" : representative ? "rejected" : "neutral",
           detail: representative
-            ? `${pair}. ${representative.final ? `Retained as ${representative.family}; accepted family counts are ${acceptedFamilies.map(([family, count]) => `${family} ${count}`).join(", ") || "none at this exact step"}.` : "Removed because it is absent from every selected recurring support or explicit gap class."}`
+            ? `${pair}. ${discoveryDecisionExplanation(representative)}. ${representative.final ? `Retained as ${representative.family}; accepted family counts are ${acceptedFamilies.map(([family, count]) => `${family} ${count}`).join(", ") || "none at this exact step"}.` : `Reason code: ${representative.decisionReason}.`}`
             : "No edge is born or decided at this exact audit step; neighboring steps still update complete support placements." },
       ],
-      claimBoundary: "The learner computed the recurring isometry cover before this visualization. Step order is a deterministic audit replay, not molecular dynamics, an online clustering optimizer, or physical time.",
+      claimBoundary: "The learner computes the recurring isometry cover before this visualization. Step order now follows explicit cover gain, class recurrence, redundant overlap, and element-resolved distance evidence—never a hash—but remains an audit replay rather than molecular dynamics, a wall-clock optimizer trace, or physical time.",
     };
   }
   if (pipelineStage === 3 && sectionModel) {

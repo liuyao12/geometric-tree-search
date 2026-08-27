@@ -54,8 +54,8 @@ def test_rank_audit_is_complete_and_target_role_is_explicit():
     assert "not energy, kinetics, or a physical potential" in APP
 
 
-def test_build_258_cache_and_narrative_contract():
-    assert 'buildId: "20260827-258"' in APP
-    assert "app.js?v=20260827-258" in HTML
-    assert "style.css?v=20260827-258" in HTML
+def test_build_259_cache_and_narrative_contract():
+    assert 'buildId: "20260827-259"' in APP
+    assert "app.js?v=20260827-259" in HTML
+    assert "style.css?v=20260827-259" in HTML
     assert "Build 258 · frozen-frontier response intervention" in README

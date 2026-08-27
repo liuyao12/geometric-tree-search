@@ -54,9 +54,9 @@ def test_pathway_cannot_be_misread_as_thermodynamics_or_kinetics():
 
 
 def test_build_242_is_exposed():
-    assert 'buildId: "20260827-258"' in APP
-    assert 'app.js?v=20260827-258' in HTML
-    assert 'style.css?v=20260827-258' in HTML
+    assert 'buildId: "20260827-259"' in APP
+    assert 'app.js?v=20260827-259' in HTML
+    assert 'style.css?v=20260827-259' in HTML
 
 
 if __name__ == "__main__":
