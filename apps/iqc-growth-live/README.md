@@ -5753,3 +5753,21 @@ state, and coordinate-free digest. This is a local finite-window structural coun
 not bulk order, experimental scattering intensity, phase assignment, stability, energy,
 probability, kinetics, or physical time; it never changes ranking, hard admission, geometry,
 or execution.
+
+### Build 216 · turn a marking disagreement into a controlled growth study
+
+Any non-active saved marking in the live-frontier comparison can now be registered against
+the active marking as a two-arm intervention. Registration freezes both complete artifacts
+(basis, active mask, coefficients, representation state, and vocabulary), the identical
+candidate and hard-admitted-set digests, both winner and material-consequence digests, the
+input/material identity, and every non-marking growth control. It then configures the
+baseline at the supplied positions without executing a growth action.
+
+After saving an executed baseline, the same card configures the alternative from the same
+supplied positions. Artifact digests are rechecked before either arm is activated; missing
+or modified artifacts fail closed. The receipt records the arm, registration digest,
+source-frontier disagreement, settings/input checks, and active-marking check. The existing
+notebook intervention audit still independently verifies identical inputs and that the GCTS
+marking is the only changed factor. This is a controlled learned-representation experiment,
+not proof that either artifact encodes energy, stability, probability, kinetics, or physical
+time, and registration itself never runs growth.

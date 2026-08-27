@@ -6491,3 +6491,19 @@ work, compact order/scattering summaries, target-use state, and consequence dige
 coordinates. These observables are posthoc ranking consequences only: they do not enter the
 marking score, hard admission, search, or execution and do not establish bulk order,
 experimental intensity, phase stability, energy, probability, kinetics, or physical time.
+
+## Build 216: register a two-arm saved-marking intervention
+
+The live-frontier marking inspector now converts a selected non-active artifact into a
+controlled baseline/alternative study. The registration freezes both self-contained marking
+artifacts and their content digests, the common candidate and hard-admitted-set digests,
+winner and consequence digests, material/vocabulary identity, scenario, and every non-marking
+growth setting. Baseline and alternative buttons each reset to supplied positions and execute
+nothing.
+
+Activation revalidates the chosen artifact digest; missing or modified artifacts fail closed.
+Receipts retain arm identity, registration/source-frontier digests, input/settings checks,
+and confirmation that the active marking matches the requested arm. Saved-run comparison
+still provides an independent identical-input/one-factor audit. The intervention tests a
+learned representation's effect on finite GCTS search; it does not identify physical energy,
+stability, probability, kinetics, or elapsed time.

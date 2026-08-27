@@ -420,6 +420,13 @@ const policyScoreLedgerState = $("policyScoreLedgerState");
 const markingFrontierState = $("markingFrontierState");
 const markingFrontierRows = $("markingFrontierRows");
 const markingFrontierDetail = $("markingFrontierDetail");
+const markingInterventionState = $("markingInterventionState");
+const markingInterventionArm = $("markingInterventionArm");
+const markingInterventionRegister = $("markingInterventionRegister");
+const markingInterventionBaseline = $("markingInterventionBaseline");
+const markingInterventionAlternative = $("markingInterventionAlternative");
+const markingInterventionClear = $("markingInterventionClear");
+const markingInterventionBoundary = $("markingInterventionBoundary");
 const policyWorkbenchState = $("policyWorkbenchState");
 const policyWorkbenchReset = $("policyWorkbenchReset");
 const policyPhaseMapState = $("policyPhaseMapState");
@@ -1355,6 +1362,7 @@ let selectedPolicyPreviewId = "active";
 let selectedMarkingFrontierId = null;
 let policySnapshotCount = 0;
 let hypothesisSeparationExperiment = null;
+let markingComparisonExperiment = null;
 let selectedScalePassportId = null;
 let selectedScalePassportStage = -1;
 let selectedObservationProvenanceId = null;
@@ -8988,7 +8996,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-215",
+      buildId: "20260826-216",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -9694,6 +9702,7 @@ async function buildExperimentReceipt() {
       policy: policySelect.value,
       experimentProtocol: growthProtocolManifest(),
       hypothesisSeparationExperiment: hypothesisSeparationReceipt(),
+      markingComparisonExperiment: markingComparisonReceipt(),
       physicsPreflightManifest: { ...physicsPreflightManifest,
         sha256: physicsPreflightManifestSha256,
         frozenBeforeFirstStructuralAction: Boolean(frozenPhysicsPreflightManifest) },
@@ -18287,6 +18296,7 @@ function applyStudyRecipe(recipeId) {
   const recipe = MATERIALS_STUDY_RECIPES.find((entry) => entry.id === recipeId);
   if (!recipe) return;
   hypothesisSeparationExperiment = null;
+  markingComparisonExperiment = null;
   selectedStudyRecipeId = recipe.id;
   scenarioSelect.value = recipe.scenario;
   if (recipe.scenario === "iceVI") iceViMicrostate = null;
@@ -23772,11 +23782,156 @@ function previewMarkingFrontierWinner(row, snapshot) {
   renderMarkingFrontierAudit(snapshot);
 }
 
+function frozenMarkingArtifactDigest(marking) {
+  if (!marking) return null;
+  return notebookStringHash(JSON.stringify({
+    materialKey: marking.materialKey,
+    vocabularyKey: marking.vocabularyKey,
+    config: marking.config,
+    channelBasis: marking.channelBasis,
+    activeChannelsByPrototype: marking.activeChannelsByPrototype,
+    coefficients: marking.coefficients,
+    representationState: marking.representationState,
+  }));
+}
+
+function validateMarkingComparisonExperiment(experiment = markingComparisonExperiment) {
+  return Boolean(experiment?.schema === 1
+    && experiment.experimentKind === "saved-marking intervention"
+    && ["baseline", "alternative"].includes(experiment.arm)
+    && experiment.baseline?.id && experiment.alternative?.id
+    && experiment.baseline.id !== experiment.alternative.id
+    && experiment.baseline.artifactDigest && experiment.alternative.artifactDigest
+    && experiment.sourceCandidateSetDigest && experiment.growthSettingsJson
+    && experiment.scenarioId && experiment.materialKey && experiment.vocabularyKey);
+}
+
+function markingComparisonSettingsStillMatch(experiment = markingComparisonExperiment) {
+  return Boolean(validateMarkingComparisonExperiment(experiment)
+    && experiment.scenarioId === scenarioSelect.value
+    && experiment.materialKey === markingMaterialKey()
+    && experiment.vocabularyKey === markingVocabularyKey()
+    && experiment.growthSettingsJson === JSON.stringify(currentGrowthProtocolSettings()));
+}
+
+function markingComparisonReceipt() {
+  if (!validateMarkingComparisonExperiment()) return null;
+  const requiredId = markingComparisonExperiment.arm === "baseline"
+    ? markingComparisonExperiment.baseline.id : markingComparisonExperiment.alternative.id;
+  return { ...markingComparisonExperiment,
+    settingsStillMatch: markingComparisonSettingsStillMatch(),
+    inputScenarioStillMatches: scenarioSelect.value === markingComparisonExperiment.scenarioId,
+    activeMarkingStillMatchesArm: policySelect.value === "marked" && activeMarkingId === requiredId,
+    candidateGeometryChanged: false,
+    hardAdmissionChanged: false,
+    targetUsedToRegister: false,
+    autoExecuted: false,
+  };
+}
+
+function configureMarkingComparisonArm(arm) {
+  if (!validateMarkingComparisonExperiment() || !["baseline", "alternative"].includes(arm)) return;
+  const record = markingComparisonExperiment[arm];
+  const marking = markingLibrary.find((entry) => entry.id === record.id
+    && frozenMarkingArtifactDigest(entry) === record.artifactDigest);
+  if (!marking) {
+    receiptStatus.textContent = `Registered ${arm} marking artifact is unavailable or changed; experiment failed closed.`;
+    return;
+  }
+  markingComparisonExperiment = { ...markingComparisonExperiment, arm };
+  activeMarkingId = marking.id;
+  markingDraft = { ...marking.config,
+    channels: marking.config.channelMode === "auto" ? 0 : marking.config.channels };
+  markingSearchMode = "single";
+  activeExternalCalibrationMarkingId = "";
+  policySelect.value = "marked";
+  activeStudyRecipeId = null;
+  persistMarkingLibrary();
+  enterPipelineStage(0);
+  receiptStatus.textContent = `${marking.name} · ${arm} configured at supplied positions · no growth executed.`;
+}
+
+function clearMarkingComparisonExperiment() {
+  markingComparisonExperiment = null;
+  updateUI();
+  receiptStatus.textContent = "Saved-marking intervention cleared · no growth executed.";
+}
+
+function registerMarkingComparisonExperiment(snapshot, audit, selected) {
+  const baselineRow = audit?.markings.find((row) => row.id === audit.activeMarkingId);
+  const baseline = markingLibrary.find((marking) => marking.id === baselineRow?.id);
+  const alternative = markingLibrary.find((marking) => marking.id === selected?.id);
+  if (!snapshot || !audit || !baseline || !alternative || baseline.id === alternative.id
+    || selected.id === "portfolio" || audit.targetUsedForMarkingScores) return;
+  const baselineDigest = frozenMarkingArtifactDigest(baseline);
+  const alternativeDigest = frozenMarkingArtifactDigest(alternative);
+  markingComparisonExperiment = {
+    schema: 1,
+    experimentKind: "saved-marking intervention",
+    baseline: { id: baseline.id, name: baseline.name, artifactDigest: baselineDigest,
+      channels: Number(baseline.config.channels), representation: baseline.config.representation,
+      winnerDigest: baselineRow.winnerDigest,
+      materialConsequenceDigest: baselineRow.materialConsequence?.digest || null },
+    alternative: { id: alternative.id, name: alternative.name, artifactDigest: alternativeDigest,
+      channels: Number(alternative.config.channels), representation: alternative.config.representation,
+      winnerDigest: selected.winnerDigest,
+      materialConsequenceDigest: selected.materialConsequence?.digest || null },
+    sourceFrontierIndex: snapshot.index,
+    sourceCandidateSetDigest: audit.candidateSetDigest,
+    sourceHardAdmittedSetDigest: audit.hardAdmittedCandidateSetDigest,
+    winnerChangedOnSourceFrontier: baselineRow.winnerDigest !== selected.winnerDigest,
+    consequenceChangedOnSourceFrontier: baselineRow.materialConsequence?.digest !== selected.materialConsequence?.digest,
+    scenarioId: scenarioSelect.value,
+    materialKey: markingMaterialKey(),
+    vocabularyKey: markingVocabularyKey(),
+    growthSettingsJson: JSON.stringify(currentGrowthProtocolSettings()),
+    arm: "baseline",
+    registrationRule: "user-selected saved marking versus the active saved marking; every non-marking growth control is frozen",
+    candidateRowsEmbedded: false,
+    coordinatesEmbedded: false,
+    targetUsed: false,
+  };
+  markingComparisonExperiment.registrationDigest = notebookStringHash(JSON.stringify(markingComparisonExperiment));
+  configureMarkingComparisonArm("baseline");
+}
+
+function renderMarkingComparisonExperiment(snapshot, audit = null, selected = null) {
+  const experiment = markingComparisonExperiment;
+  const selectedIsAlternative = Boolean(snapshot && audit && selected && selected.id !== "portfolio"
+    && selected.id !== audit.activeMarkingId && audit.markings.some((row) => row.id === selected.id));
+  markingInterventionRegister.disabled = !selectedIsAlternative;
+  markingInterventionBaseline.disabled = !experiment;
+  markingInterventionAlternative.disabled = !experiment;
+  markingInterventionClear.disabled = !experiment;
+  markingInterventionBaseline.classList.toggle("active", experiment?.arm === "baseline");
+  markingInterventionAlternative.classList.toggle("active", experiment?.arm === "alternative");
+  markingInterventionRegister.onclick = selectedIsAlternative
+    ? () => registerMarkingComparisonExperiment(snapshot, audit, selected) : null;
+  markingInterventionBaseline.onclick = experiment ? () => configureMarkingComparisonArm("baseline") : null;
+  markingInterventionAlternative.onclick = experiment ? () => configureMarkingComparisonArm("alternative") : null;
+  markingInterventionClear.onclick = experiment ? clearMarkingComparisonExperiment : null;
+  if (!experiment) {
+    markingInterventionState.textContent = selectedIsAlternative
+      ? `${audit.activeMarkingId} ↔ ${selected.id}` : "select a non-active saved marking";
+    markingInterventionArm.textContent = "not registered";
+    markingInterventionBoundary.textContent = selectedIsAlternative
+      ? `Register the active and selected self-contained artifacts on frontier ${snapshot.index}; reset to supplied positions; execute nothing.`
+      : "Registration freezes both self-contained marking artifacts, this candidate set, and every non-marking growth control. It resets to supplied positions and executes nothing.";
+    return;
+  }
+  const settingsState = markingComparisonSettingsStillMatch(experiment)
+    ? "non-marking controls intact" : "controls or input changed · fail closed";
+  markingInterventionState.textContent = `${experiment.baseline.name} ↔ ${experiment.alternative.name}`;
+  markingInterventionArm.textContent = `${experiment.arm} · ${experiment.winnerChangedOnSourceFrontier ? "different winner" : "same winner"}`;
+  markingInterventionBoundary.textContent = `${settingsState} · source frontier ${experiment.sourceFrontierIndex} · candidates ${experiment.sourceCandidateSetDigest} · registration ${experiment.registrationDigest}. Save an executed baseline before configuring the alternative; the notebook must verify identical input and exactly one changed marking artifact.`;
+}
+
 function renderMarkingFrontierAudit(snapshot) {
   markingFrontierRows.replaceChildren(); markingFrontierDetail.replaceChildren();
   const audit = snapshot?.markingFrontierCounterfactual;
   if (!audit?.markings.length) {
     markingFrontierState.textContent = snapshot ? "no compatible saved marking" : "awaiting a frozen frontier";
+    renderMarkingComparisonExperiment(snapshot);
     return;
   }
   const rows = [...audit.markings];
@@ -23862,6 +24017,7 @@ function renderMarkingFrontierAudit(snapshot) {
     markingFrontierDetail.append(consequenceGrid, consequenceChannels);
   }
   markingFrontierDetail.append(boundary);
+  renderMarkingComparisonExperiment(snapshot, audit, selected);
 }
 
 function renderPolicyComparison() {
@@ -24942,12 +25098,14 @@ notebookResponseOutcome.addEventListener("change", () => {
 });
 scenarioSelect.addEventListener("change", () => {
   hypothesisSeparationExperiment = null;
+  markingComparisonExperiment = null;
   renderEnsembleControls();
   renderIceViMicrostateControls();
   enterPipelineStage(0);
 });
 iceViMicrostateButton.addEventListener("click", () => {
   hypothesisSeparationExperiment = null;
+  markingComparisonExperiment = null;
   iceViMicrostateSeed++;
   iceViMicrostate = resolveIceViIceRuleMicrostate(iceViMicrostateSeed);
   orderPrototypeLibrary = null;
@@ -24956,6 +25114,7 @@ iceViMicrostateButton.addEventListener("click", () => {
 });
 iceViAverageButton.addEventListener("click", () => {
   hypothesisSeparationExperiment = null;
+  markingComparisonExperiment = null;
   iceViMicrostate = null;
   orderPrototypeLibrary = null;
   renderIceViMicrostateControls();
@@ -24963,6 +25122,7 @@ iceViAverageButton.addEventListener("click", () => {
 });
 ensembleFrameSelect.addEventListener("change", () => {
   hypothesisSeparationExperiment = null;
+  markingComparisonExperiment = null;
   selectImportedFrame(Number(ensembleFrameSelect.value) || 0);
 });
 ensembleEvidenceSelect.addEventListener("change", () => {
