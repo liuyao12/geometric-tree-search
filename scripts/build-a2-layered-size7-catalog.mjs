@@ -8,11 +8,13 @@ const throughFour = await readNdjson("data/a2-layered-size7-periodic-z3-through4
 const coronaOne = await readNdjson("data/a2-layered-size7-corona1-z3.ndjson");
 const focused = await readNdjson("data/a2-layered-size7-corona2-focused.ndjson");
 const deep = await readNdjson("data/a2-layered-size7-corona2-a2lp_7_00232-deep.ndjson");
+const coreLong = await readNdjson("data/a2-layered-size7-corona2-core-a2lp_7_00232-long.ndjson");
 const byId = records => new Map(records.map(record => [record.id, record]));
 const periodicById = byId(throughFour);
 const coronaById = byId(coronaOne);
 const focusedById = byId(focused);
 const deepById = byId(deep);
+const coreLongById = byId(coreLong);
 const selected = [...focusedById.keys()].sort((left, right) =>
   coronaById.get(left).corona_z3.replay.patch_copies
   - coronaById.get(right).corona_z3.replay.patch_copies
@@ -23,6 +25,7 @@ const candidates = selected.map((id, index) => {
   const corona = coronaById.get(id);
   const second = focusedById.get(id);
   const deepSecond = deepById.get(id);
+  const coreSecond = coreLongById.get(id);
   const corona2States = Math.max(
     second.corona2_cegar.first_coronas_rejected,
     deepSecond?.corona2_cegar?.first_coronas_rejected ?? 0
@@ -56,11 +59,17 @@ const candidates = selected.map((id, index) => {
       corona2_first_states_rejected: corona2States,
       corona2_outer_exhausted: deepSecond?.corona2_cegar?.outer_exhausted
         ?? second.corona2_cegar.outer_exhausted,
+      corona2_gcts_sound_clauses: coreSecond?.corona2_core_cegar?.clauses?.length ?? 0,
+      corona2_gcts_new_clauses_long_run: coreSecond?.corona2_core_cegar?.rounds ?? 0,
+      corona2_gcts_milliseconds: coreSecond?.corona2_core_cegar?.milliseconds ?? 0,
       periodic_report: "data/a2-layered-size7-periodic-z3-through4.ndjson",
       corona_report: "data/a2-layered-size7-corona1-z3.ndjson",
       corona2_report: deepSecond
         ? "data/a2-layered-size7-corona2-a2lp_7_00232-deep.ndjson"
-        : "data/a2-layered-size7-corona2-focused.ndjson"
+        : "data/a2-layered-size7-corona2-focused.ndjson",
+      corona2_gcts_report: coreSecond
+        ? "data/a2-layered-size7-corona2-core-a2lp_7_00232-long.ndjson"
+        : null
     },
     shell_screening: { robust_completed_shell: 0, deepest_completed_shell: 0 }
   };

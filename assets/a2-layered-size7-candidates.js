@@ -70,9 +70,13 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "corona2_first_states_checked": 64,
       "corona2_first_states_rejected": 64,
       "corona2_outer_exhausted": false,
+      "corona2_gcts_sound_clauses": 37,
+      "corona2_gcts_new_clauses_long_run": 32,
+      "corona2_gcts_milliseconds": 515367,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
-      "corona2_report": "data/a2-layered-size7-corona2-a2lp_7_00232-deep.ndjson"
+      "corona2_report": "data/a2-layered-size7-corona2-a2lp_7_00232-deep.ndjson",
+      "corona2_gcts_report": "data/a2-layered-size7-corona2-core-a2lp_7_00232-long.ndjson"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -149,9 +153,13 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "corona2_first_states_checked": 8,
       "corona2_first_states_rejected": 8,
       "corona2_outer_exhausted": false,
+      "corona2_gcts_sound_clauses": 0,
+      "corona2_gcts_new_clauses_long_run": 0,
+      "corona2_gcts_milliseconds": 0,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
-      "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson"
+      "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
+      "corona2_gcts_report": null
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -228,9 +236,13 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "corona2_first_states_checked": 8,
       "corona2_first_states_rejected": 8,
       "corona2_outer_exhausted": false,
+      "corona2_gcts_sound_clauses": 0,
+      "corona2_gcts_new_clauses_long_run": 0,
+      "corona2_gcts_milliseconds": 0,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
-      "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson"
+      "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
+      "corona2_gcts_report": null
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -307,9 +319,13 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "corona2_first_states_checked": 8,
       "corona2_first_states_rejected": 8,
       "corona2_outer_exhausted": false,
+      "corona2_gcts_sound_clauses": 0,
+      "corona2_gcts_new_clauses_long_run": 0,
+      "corona2_gcts_milliseconds": 0,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
-      "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson"
+      "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
+      "corona2_gcts_report": null
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -386,9 +402,13 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "corona2_first_states_checked": 8,
       "corona2_first_states_rejected": 8,
       "corona2_outer_exhausted": false,
+      "corona2_gcts_sound_clauses": 0,
+      "corona2_gcts_new_clauses_long_run": 0,
+      "corona2_gcts_milliseconds": 0,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
-      "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson"
+      "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
+      "corona2_gcts_report": null
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -465,9 +485,13 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "corona2_first_states_checked": 8,
       "corona2_first_states_rejected": 8,
       "corona2_outer_exhausted": false,
+      "corona2_gcts_sound_clauses": 0,
+      "corona2_gcts_new_clauses_long_run": 0,
+      "corona2_gcts_milliseconds": 0,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
-      "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson"
+      "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
+      "corona2_gcts_report": null
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -544,9 +568,13 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "corona2_first_states_checked": 8,
       "corona2_first_states_rejected": 8,
       "corona2_outer_exhausted": false,
+      "corona2_gcts_sound_clauses": 0,
+      "corona2_gcts_new_clauses_long_run": 0,
+      "corona2_gcts_milliseconds": 0,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
-      "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson"
+      "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
+      "corona2_gcts_report": null
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -623,9 +651,13 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "corona2_first_states_checked": 8,
       "corona2_first_states_rejected": 8,
       "corona2_outer_exhausted": false,
+      "corona2_gcts_sound_clauses": 0,
+      "corona2_gcts_new_clauses_long_run": 0,
+      "corona2_gcts_milliseconds": 0,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
-      "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson"
+      "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
+      "corona2_gcts_report": null
     },
     "shell_screening": {
       "robust_completed_shell": 0,

@@ -111,6 +111,37 @@ second corona. The outer model is still not exhausted, so this strengthens
 the finite obstruction evidence without changing its unresolved status. See
 `data/a2-layered-size7-corona2-a2lp_7_00232-deep.ndjson`.
 
+A complete coupled radius-two formulation is also implemented in
+`scripts/screen-a2-layered-corona2-direct.py`: Boolean variables choose the
+first corona and the final patch simultaneously, while implications require
+exact saturation of precisely the support activated by the chosen first
+corona. For `a2lp_7_00232` this has 580 first-placement variables, 4,643 final
+placement variables, and 88,217 sparse incidences. The QF finite-domain/PB
+backend remained undecided at its 180-second limit; the hash-committed report
+is `data/a2-layered-size7-corona2-direct-a2lp_7_00232-qffd.ndjson`. This is a
+complete formulation but an incomplete solve, so it changes no classification.
+
+`scripts/screen-a2-layered-corona2-core-cegar.py` supplies the next exact
+decomposition. An inner UNSAT core is converted into a sound placement-subset
+clause: all unselected placements remain available as potential helpers, so
+the clause can block every first corona containing that obstruction without
+assuming geometric similarity. The initial copy-capped run is retained in
+`data/a2-layered-size7-corona2-core-a2lp_7_00232-cap21.ndjson` as a timeout
+diagnostic, not as obstruction evidence.
+
+For `a2lp_7_00232`, the first 16-placement core was independently reduced and
+replayed as a 12-placement obstruction against 2,291 possible helper
+placements. It is sound but not claimed minimal. Resuming the outer search
+from that marking learned four further clauses in 38 seconds, then a longer
+515-second continuation learned 32 more. The resulting 37 sound clauses are
+recorded in
+`data/a2-layered-size7-corona2-core-a2lp_7_00232-long.ndjson`; the independently
+replayed reduced core is in
+`data/a2-layered-size7-corona2-core-a2lp_7_00232-minimized.ndjson`. The outer
+first-corona space is still not exhausted, and no radius-two witness has been
+found, so the candidate remains unresolved rather than being called a
+non-tiler or an aperiodic monotile.
+
 The machine-readable screen is `data/a2-layered-size5-screen.ndjson`. Rebuild
 it with:
 
