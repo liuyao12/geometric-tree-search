@@ -240,6 +240,13 @@ The catalog keeps the old app's systems and deduplicated figures, including
 polycubes, the five Fedorov solids, tetrahedral/octahedral systems, space
 fillers, Laves and perovskite systems, and Barlow/FCC/HCP cells.
 
+The non-polycube catalogue also contains exact prisms over the A2 hexagon,
+hat, and turtle. Their end faces lie on `x+y+z=0` and `x+y+z=3`, and their
+proper orientation group is the six-element subgroup preserving this family
+of affine layers. The hexagon is a periodic control; hat and turtle are
+layered search leads, not claims of strong 3D aperiodicity. See
+`docs/projects/a2-layered-lattice-search.md`.
+
 Convex monohedral systems also receive a necessary edge-angle check. When no
 combination of matching edge dihedral angles can close to `2π`, the engine
 returns `result_kind: "no_tiling"`, `can_tile: false`, and a
@@ -274,6 +281,7 @@ node scripts/test-3d-general-translational-motif.mjs
 node scripts/test-3d-mixed-periodic.mjs
 node scripts/test-3d-custom-polyhedron.mjs
 node scripts/test-3d-region.mjs
+node scripts/test-3d-a2-layered-prisms.mjs
 node scripts/audit-3d-catalog.mjs --quick
 node scripts/audit-3d-catalog.mjs --strict
 ```

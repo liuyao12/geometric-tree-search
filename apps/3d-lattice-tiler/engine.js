@@ -6,6 +6,7 @@ import { GeometricFailureMemo } from "../../assets/geometric-failure-memo.js?v=2
 import { GeometricFrontierMarking } from "../../assets/geometric-frontier-marking.js?v=20260824-gcts-i-v1";
 import { LATTICE_POLYHEDRON_GCTS_EXAMPLES } from "../../assets/lattice-polyhedron-survivors.js?v=20260820-size13-v104";
 import { POLYCUBE_GCTS_CANDIDATES } from "../../assets/polycube-census-candidates.js?v=20260824-volume10-v78";
+import { A2_LAYERED_PRISM_SPECS, makeA2LayeredPrism } from "../../assets/a2-layered-prisms.js";
 import { normalizeProposalProgram } from "./proposal-learner.js";
 
 export const GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES = 5;
@@ -145,12 +146,19 @@ export function preprocessTilingSystem(config, tileSpecs) {
     stabilizer_order: tile.lattice_stabilizer_matrices?.length ?? 1,
     stabilizer_matrices: (tile.lattice_stabilizer_matrices ?? []).map(matrix =>
       matrix.map(row => row.slice())
-    )
+    ),
+    lattice_symmetry: tile.lattice_symmetry ?? "z3",
+    geometry_model: tile.geometry_model ?? null
   }));
+  const latticeSymmetries = [...new Set(summaryTiles.map(tile => tile.lattice_symmetry))];
   const summary = {
     lattice: polycubeLattice,
-    point_group: "proper cubic lattice rotations",
-    point_group_order: PROPER_CUBIC_ROTATIONS.length,
+    point_group: latticeSymmetries.length === 1 && latticeSymmetries[0] === "a2_layers"
+      ? "proper cubic rotations preserving x+y+z=constant layers"
+      : "proper cubic lattice rotations",
+    point_group_order: latticeSymmetries.length === 1
+      ? (summaryTiles[0]?.point_group_order ?? PROPER_CUBIC_ROTATIONS.length)
+      : PROPER_CUBIC_ROTATIONS.length,
     prototile_count: prototiles.length,
     orientation_count: summaryTiles.reduce((sum, tile) => sum + tile.orientation_count, 0),
     tiles: summaryTiles
@@ -531,6 +539,9 @@ export const createTilingStream = (() => {
         solid_angle: p.solid_angle,
         solid_angles: tileSpecs.solidAngleValues?.(p) ?? [],
         is_polycube: !!p.is_polycube,
+        geometry_model: p.geometry_model ?? null,
+        is_convex_polyhedron: !!p.is_convex_polyhedron,
+        lattice_symmetry: p.lattice_symmetry ?? "z3",
         polycube_lattice: p.polycube_lattice ?? null,
         is_chiral: !!p.is_chiral,
         is_mirror: !!p.__is_mirror,
@@ -1446,7 +1457,7 @@ export const createTilingStream = (() => {
       }
     };
 
-    const allSystemTilesAreConvexPolyhedra = prototiles.every(tile => !tile.is_polycube);
+    const allSystemTilesAreConvexPolyhedra = prototiles.every(tile => tile.is_convex_polyhedron);
     const convexPlacementGeometryCache = new WeakMap();
     const convexPlacementGeometry = placement => {
       const cached = convexPlacementGeometryCache.get(placement);
@@ -3081,7 +3092,7 @@ export const createTilingStream = (() => {
         && [...edgeCounts.values()].every(count => count === 2);
     };
     const findTranslationalPolyhedronTemplate = () => {
-      if (prototiles.length !== 1 || prototiles[0].is_polycube) return null;
+      if (prototiles.length !== 1 || !prototiles[0].is_convex_polyhedron) return null;
       const tile = prototiles[0];
       const orientationIndex = tile.unique_orientations.indexOf(startOrient);
       if (orientationIndex < 0 || startOrient.faces.length % 2 !== 0) return null;
@@ -7842,6 +7853,10 @@ export const tileSpecs = (() => {
       this.solid_angle = { kind: solid_angle.kind ?? "numeric", max_value: solid_angle.max_value ?? LEGACY_SOLID_ANGLE_MAX, symbols: [...(solid_angle.symbols ?? [])] };
       this.polycube_lattice = metadata.polycube_lattice ?? null;
       this.is_polycube = this.solid_angle.max_value === POLYCUBE_SOLID_ANGLE_MAX;
+      this.geometry_model = metadata.geometry_model
+        ?? (this.is_polycube ? "polycube" : "convex_polyhedron");
+      this.is_convex_polyhedron = this.geometry_model === "convex_polyhedron";
+      this.lattice_symmetry = metadata.lattice_symmetry ?? "z3";
       if (!skip_winding) this._fixWinding();
       this.unique_orientations = [];
       this.is_chiral = false;
@@ -7924,7 +7939,13 @@ export const tileSpecs = (() => {
         }
         return out;
       };
-      this.orientations24 = buildFrom(Z3_MATRICES_DET1);
+      const properOrientationGroup = this.lattice_symmetry === "a2_layers"
+        ? Z3_MATRICES_DET1.filter(({ M }) => {
+            const image = M.map(row => row[0] + row[1] + row[2]);
+            return image.every(value => value === 1) || image.every(value => value === -1);
+          })
+        : Z3_MATRICES_DET1;
+      this.orientations24 = buildFrom(properOrientationGroup);
       this.unique_orientations = this.orientations24;
       const isIdentity = matrix => matrix.every((row, i) =>
         row.every((value, j) => value === (i === j ? 1 : 0))
@@ -7932,16 +7953,19 @@ export const tileSpecs = (() => {
       const identityCoset = this.unique_orientations.find(orientation =>
         orientation.__equivalent_lattice_matrices.some(isIdentity)
       );
-      this.lattice_orientation_group_order = Z3_MATRICES_DET1.length;
+      this.lattice_orientation_group_order = properOrientationGroup.length;
       this.lattice_stabilizer_matrices = (identityCoset?.__equivalent_lattice_matrices ?? [])
         .map(matrix => matrix.map(row => row.slice()));
     }
     _checkChirality() {
-      const mirror = this.verts.map(v => [-v[0], v[1], v[2]]);
+      const reflect = this.lattice_symmetry === "a2_layers"
+        ? v => [v[1], v[0], v[2]]
+        : v => [-v[0], v[1], v[2]];
+      const mirror = this.verts.map(reflect);
       const minv = [Infinity,Infinity,Infinity];
       for (const v of mirror) for (let i=0;i<3;i++) minv[i]=Math.min(minv[i], v[i]);
       const tVerts = mirror.map(v => sub3(v, minv));
-      const tOcc = this.occupancy_points.map(pt => ({ pos: sub3([-pt.pos[0], pt.pos[1], pt.pos[2]], minv), weight: pt.weight, symbolic: pt.symbolic, display_symbolic: pt.display_symbolic, kind: pt.kind }));
+      const tOcc = this.occupancy_points.map(pt => ({ pos: sub3(reflect(pt.pos), minv), weight: pt.weight, symbolic: pt.symbolic, display_symbolic: pt.display_symbolic, kind: pt.kind }));
       const vHash = tVerts.map(v=>v.join(",")).sort().join("|");
       const oHash = tOcc.map(p=>`${p.pos.join(",")}:${p.weight}`).sort().join("|");
       const mirrorHash = `${vHash}@@${oHash}`;
@@ -7970,18 +7994,29 @@ export const tileSpecs = (() => {
     }
     get_mirror_copy() {
       if (!this.is_chiral) return null;
-      const mirrorVerts = this.verts.map(v => [-v[0], v[1], v[2]]);
+      const reflect = this.lattice_symmetry === "a2_layers"
+        ? v => [v[1], v[0], v[2]]
+        : v => [-v[0], v[1], v[2]];
+      const mirrorVerts = this.verts.map(reflect);
       const minv = [Infinity,Infinity,Infinity];
       for (const v of mirrorVerts) for (let i=0;i<3;i++) minv[i]=Math.min(minv[i], v[i]);
       const tVerts = mirrorVerts.map(v => sub3(v, minv));
-      const mirrorOcc = this.occupancy_points.map(p => [sub3([-p.pos[0],p.pos[1],p.pos[2]], minv), p.weight, p.symbolic, p.display_symbolic, p.kind]);
+      const mirrorOcc = this.occupancy_points.map(p => [sub3(reflect(p.pos), minv), p.weight, p.symbolic, p.display_symbolic, p.kind]);
       const faceData = this.faces.map((f,i)=>({ v: f.slice(), type: this.face_types[i] }));
-      return new Prototile3D(`reflected ${this.name}`, tVerts, faceData, mirrorOcc, false, true, this.solid_angle, { polycube_lattice: this.polycube_lattice });
+      return new Prototile3D(`reflected ${this.name}`, tVerts, faceData, mirrorOcc, false, true, this.solid_angle, {
+        polycube_lattice: this.polycube_lattice,
+        geometry_model: this.geometry_model,
+        lattice_symmetry: this.lattice_symmetry
+      });
     }
   }
 
   const make_tile = (name, data) => {
-    return new Prototile3D(name, data.v, data.f_data, data.occ, !!data.skip_winding, false, data.solid_angle, { polycube_lattice: data.polycube_lattice });
+    return new Prototile3D(name, data.v, data.f_data, data.occ, !!data.skip_winding, false, data.solid_angle, {
+      polycube_lattice: data.polycube_lattice,
+      geometry_model: data.geometry_model,
+      lattice_symmetry: data.lattice_symmetry
+    });
   };
 
   const withSymbolicSolidAngles = (occ, rules) => occ.map(([pos, weight, _symbol, _display, kind]) => {
@@ -8381,6 +8416,19 @@ export const tileSpecs = (() => {
 
   // --- Registry (complete) ---
   const TILING_REGISTRY = {
+    ...Object.fromEntries(A2_LAYERED_PRISM_SPECS.map(spec => [spec.id, {
+      name: spec.name,
+      category: ["A2 Layered Solids"],
+      layered_lattice: {
+        equation: "x+y+z=c",
+        base_layer: 0,
+        top_layer: 3,
+        role: spec.role
+      },
+      build: () => [make_tile(spec.name, makeA2LayeredPrism(spec.loop, {
+        geometryModel: spec.geometry_model
+      }))]
+    }])),
     ...Object.fromEntries(POLYCUBE_GCTS_CANDIDATES.map(candidate => [candidate.registry_id, {
       name: candidate.name,
       category: [candidate.screening.status === "inconclusive"
@@ -8602,7 +8650,7 @@ export const tileSpecs = (() => {
   const metadata = {};
   for (const [k,v] of Object.entries(TILING_REGISTRY)) {
     const tiles = v.build();
-    metadata[k] = { name: v.name, category: v.category || [], census_candidate: v.census_candidate || null, aperiodic_tile: v.aperiodic_tile || null, is_chiral: !!tiles[0]?.is_chiral, default_viz: v.default_viz || {} };
+    metadata[k] = { name: v.name, category: v.category || [], census_candidate: v.census_candidate || null, aperiodic_tile: v.aperiodic_tile || null, layered_lattice: v.layered_lattice || null, is_chiral: !!tiles[0]?.is_chiral, default_viz: v.default_viz || {} };
   }
   const categories = new Map();
   for (const [k,meta] of Object.entries(metadata)) {
@@ -8636,6 +8684,7 @@ export const tileSpecs = (() => {
           category: [...(entry.category || ["Other"])],
           census_candidate: entry.census_candidate || null,
           aperiodic_tile: entry.aperiodic_tile || null,
+          layered_lattice: entry.layered_lattice || null,
           is_chiral: !!tile.is_chiral,
           solid_angle: tile.solid_angle,
           solid_angles: solidAngleValues(tile),

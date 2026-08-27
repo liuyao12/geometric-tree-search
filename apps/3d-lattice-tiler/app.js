@@ -769,6 +769,7 @@ function polycubeCubeCount(figure) {
 
 const catalogGroupDefinitions = [
   { id: "aperiodic", title: "Known aperiodic monotile", test: figure => figureHasCategory(figure, "Aperiodic Monotiles") },
+  { id: "a2-layered", title: "A₂ layered solids · x+y+z=c", test: figure => figureHasCategory(figure, "A2 Layered Solids") },
   { id: "unresolved-polycubes", title: "Unresolved polycube candidates", test: figure => figureHasCategory(figure, "Unresolved Polycube Candidates") },
   { id: "unresolved", title: "Unresolved lattice candidates", test: figure => figureHasCategory(figure, "Unresolved Lattice Candidates") },
   {
@@ -1302,6 +1303,10 @@ function selectedCensusCandidate() {
   return rootFigure()?.census_candidate ?? null;
 }
 
+function selectedLayeredLattice() {
+  return rootFigure()?.layered_lattice ?? null;
+}
+
 function censusCandidatePeriodicLane(candidate) {
   const certificate = candidate?.screening?.certificate;
   if (certificate === "translational") return "translational";
@@ -1312,25 +1317,28 @@ function censusCandidatePeriodicLane(candidate) {
 function applyCandidateSearchPreset({ invalidate = true } = {}) {
   const knownAperiodic = rootFigure()?.aperiodic_tile ?? null;
   const candidate = selectedCensusCandidate();
-  if (!candidate && !knownAperiodic) return;
+  const layeredLattice = selectedLayeredLattice();
+  if (!candidate && !knownAperiodic && !layeredLattice) return;
   const periodicLane = censusCandidatePeriodicLane(candidate);
   const periodicCandidate = !!periodicLane;
-  document.querySelector(`input[name="criterion"][value="${candidate ? "shell" : "count"}"]`).checked = true;
+  document.querySelector(`input[name="criterion"][value="${candidate || layeredLattice ? "shell" : "count"}"]`).checked = true;
   maxTilesInput.value = knownAperiodic
     ? "80"
+    : layeredLattice
+      ? "120"
     : periodicCandidate
       ? String(Math.max(24, candidate.screening?.motif_tiles ?? 1))
       : "120";
-  if (candidate) shellInput.value = "2";
+  if (candidate || layeredLattice) shellInput.value = "2";
   strategySelect.value = setRadioValue(
     strategyRadios,
-    candidate ? "gcts_rl" : "free_range",
-    candidate ? "gcts_rl" : "free_range"
+    candidate || layeredLattice ? "gcts_rl" : "free_range",
+    candidate || layeredLattice ? "gcts_rl" : "free_range"
   );
   faceOrderSelect.value = "mrv";
   moveOrderSelect.value = "balanced";
   snapshotSelect.value = "0";
-  timeCapInput.value = knownAperiodic ? "10" : "60";
+  timeCapInput.value = knownAperiodic ? "10" : layeredLattice ? "30" : "60";
   nodeCapInput.value = "0";
   candidateCapInput.value = "0";
   branchCapInput.value = "0";
@@ -1344,8 +1352,15 @@ function applyCandidateSearchPreset({ invalidate = true } = {}) {
 function updateCandidateResearchPanel() {
   const candidate = selectedCensusCandidate();
   const knownAperiodic = rootFigure()?.aperiodic_tile ?? null;
-  candidateResearchPanel.classList.toggle("is-hidden", !candidate && !knownAperiodic);
+  const layeredLattice = selectedLayeredLattice();
+  candidateResearchPanel.classList.toggle("is-hidden", !candidate && !knownAperiodic && !layeredLattice);
   candidateSearchButton.classList.toggle("is-hidden", !!knownAperiodic);
+  if (layeredLattice) {
+    candidateSearchButton.textContent = "Load layered shell-2 curriculum";
+    candidateResearchTitle.textContent = `${rootFigure()?.name ?? "A₂ prism"} · layered lattice function`;
+    candidateResearchDetail.textContent = `This non-polycube is an exact prism over an A₂ polygon. Its end faces lie on x+y+z=${layeredLattice.base_layer} and x+y+z=${layeredLattice.top_layer}; all solid-angle samples use the forty-eighth convention inherited from the planar A₂ angles. The solver restricts direct orientations to the six proper cubic rotations preserving the foliation x+y+z=c. Role: ${layeredLattice.role}. For the hat and turtle this is a structured search lead, not yet a proof that the unrestricted three-dimensional tile forces aperiodicity.`;
+    return;
+  }
   if (candidate) {
     const periodicLane = censusCandidatePeriodicLane(candidate);
     candidateSearchButton.textContent = "Load cold shell-2 curriculum";

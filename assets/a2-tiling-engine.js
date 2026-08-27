@@ -70,6 +70,16 @@ function polygonOccupancy(loop){
   return map;
 }
 
+// Public geometry primitive shared by the intrinsic A2 solver and layered
+// three-dimensional lattice tiles.  We return fresh entries so callers may
+// rescale the angle units without mutating the cached polygon representation.
+export function a2PolygonOccupancy(loop) {
+  return new Map([...polygonOccupancy(loop)].map(([key, entry]) => [key, {
+    point: entry.point.slice(),
+    weight: entry.weight
+  }]));
+}
+
 const cellVertices = (q,r,kind) => kind==="u"
   ? [[q,r],[q+1,r],[q,r+1]]
   : [[q+1,r+1],[q,r+1],[q+1,r]];
