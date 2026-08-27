@@ -6338,3 +6338,16 @@ fit. Full receipts retain every model and prediction row, while notebook summari
 prediction rows but keep settings and metrics. The sweep diagnoses support acquisition as
 the observed structural history grows; it is not hyperparameter selection, physical time,
 or independent-material transfer.
+
+## Build 205: compare readiness across saved material runs
+
+The experiment notebook now renders retained local-state horizon summaries as an
+interactive matrix: saved runs are rows, preregistered chronological horizons are columns,
+and the response selector switches among six coordinate-free local outcomes. Tiles show
+feature-envelope readiness, supported versus held placements, and frozen aggregate skill
+while preserving the original run and receipt identity.
+
+This is intentionally not a pooled validation study. Notebook summaries contain no
+placement or prediction rows; the atlas does not refit, aggregate, or assume independence
+between saved runs, and it marks repeated input identity. Transfer across structures,
+specimens, or materials still requires a separately sealed experiment.

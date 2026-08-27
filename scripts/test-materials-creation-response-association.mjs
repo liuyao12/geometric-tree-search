@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { blockedCreationResponseValidation, buildCreationResponseAssociation,
   blockedCreationResponseSurrogate, canonicalCreationResponseDataset, creationResponseHorizonSweep,
+  crossRunHorizonReadinessAtlas,
   creationResponseLeapProfile,
   LOCAL_CREATION_CONTEXT_FEATURE_IDS }
   from "../apps/iqc-growth-live/creation-response-association.js";
@@ -169,4 +170,20 @@ assert.equal(horizonSweep.horizons.every((entry) => entry.model.interpolationRea
   === "full-interpolation"), true);
 assert.equal(horizonSweep.horizonSelectedUsingHeldout, false);
 assert.equal(horizonSweep.allPredeclaredHorizonsReported, true);
+const atlas = crossRunHorizonReadinessAtlas([
+  { id: "run-a", material: "NaCl", receiptSha256: "a".repeat(64), inputIdentity: "nacl:same",
+    creationResponseEvidence: { schema: 4, localContextHorizonSweeps: { shellChange: horizonSweep } } },
+  { id: "run-b", material: "NaCl", receiptSha256: "b".repeat(64), inputIdentity: "nacl:same",
+    creationResponseEvidence: { schema: 4, localContextHorizonSweeps: { shellChange: horizonSweep } } },
+  { id: "run-c", material: "ice", receiptSha256: "c".repeat(64), inputIdentity: "ice:different" },
+], "shellChange");
+assert.equal(atlas.available, true);
+assert.equal(atlas.rows.length, 2);
+assert.equal(atlas.horizonDefinitions.length, 3);
+assert.equal(atlas.rows.every((row) => row.sharesInputWithAnotherSavedRun), true);
+assert.equal(atlas.placementRowsPooled, false);
+assert.equal(atlas.modelsRefitAcrossRuns, false);
+assert.equal(atlas.independentRunsAssumed, false);
+assert.equal(atlas.targetUsed, false);
+assert.equal(crossRunHorizonReadinessAtlas([], "shellChange").available, false);
 console.log("materials creation-response association: passed");

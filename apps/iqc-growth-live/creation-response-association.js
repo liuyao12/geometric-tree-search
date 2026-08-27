@@ -456,6 +456,69 @@ export function creationResponseHorizonSweep(records, outcomeId, {
   };
 }
 
+/**
+ * Compare saved, coordinate-free horizon summaries without pooling placement rows.
+ * This is a descriptive notebook atlas, never a refit or an independent-sample analysis.
+ */
+export function crossRunHorizonReadinessAtlas(entries, outcomeId) {
+  if (!Array.isArray(entries) || !outcomeId) throw new Error("readiness atlas needs saved entries and an outcome");
+  const eligible = entries.map((entry, index) => ({ entry, index,
+    sweep: entry?.creationResponseEvidence?.localContextHorizonSweeps?.[outcomeId] }))
+    .filter(({ sweep }) => sweep?.available && Array.isArray(sweep.horizons) && sweep.horizons.length);
+  const horizonDefinitions = [];
+  const definitionKeys = new Set();
+  eligible.forEach(({ sweep }) => sweep.horizons.forEach((horizon) => {
+    const key = `${horizon.id}:${horizon.count}`;
+    if (!definitionKeys.has(key)) {
+      definitionKeys.add(key);
+      horizonDefinitions.push({ id: horizon.id, count: horizon.count, label: horizon.label,
+        key, horizonDefinition: sweep.horizonDefinition });
+    }
+  }));
+  const schemaKeys = new Set(eligible.map(({ entry }) => entry.creationResponseEvidence.schema || "unknown"));
+  const definitionStatements = new Set(eligible.map(({ sweep }) => sweep.horizonDefinition || "unknown"));
+  const identityCounts = new Map();
+  eligible.forEach(({ entry }) => identityCounts.set(entry.inputIdentity,
+    (identityCounts.get(entry.inputIdentity) || 0) + 1));
+  const rows = eligible.map(({ entry, index, sweep }) => {
+    const models = new Map(sweep.horizons.map((horizon) => [`${horizon.id}:${horizon.count}`, horizon.model]));
+    return {
+      entryId: entry.id, runIndex: index + 1, material: entry.material,
+      receiptSha256: entry.receiptSha256, inputIdentity: entry.inputIdentity,
+      sharesInputWithAnotherSavedRun: (identityCounts.get(entry.inputIdentity) || 0) > 1,
+      horizons: horizonDefinitions.map((definition) => {
+        const model = models.get(definition.key);
+        return model ? {
+          key: definition.key, available: model.available === true,
+          readiness: model.interpolationReadiness?.state || "unavailable",
+          trainingPlacements: model.trainingPlacements || 0,
+          heldoutPlacements: model.heldoutPlacements || 0,
+          supportedPlacements: model.interpolationReadiness?.supportedPlacements || 0,
+          unsupportedPlacements: model.interpolationReadiness?.unsupportedPlacements || 0,
+          aggregateSkill: Number.isFinite(model.heldoutSkillVersusTrainingMean)
+            ? model.heldoutSkillVersusTrainingMean : null,
+          aggregateSkillIsInterpolationTest:
+            model.interpolationReadiness?.aggregateSkillIsInterpolationTest === true,
+        } : { key: definition.key, available: false, readiness: "unavailable",
+          trainingPlacements: 0, heldoutPlacements: 0, supportedPlacements: 0,
+          unsupportedPlacements: 0, aggregateSkill: null,
+          aggregateSkillIsInterpolationTest: false };
+      }),
+    };
+  });
+  return {
+    available: rows.length > 0, outcomeId, rows, horizonDefinitions,
+    savedRunCount: rows.length, distinctInputCount: identityCounts.size,
+    summarySchemaCompatible: schemaKeys.size <= 1,
+    horizonDefinitionCompatible: definitionStatements.size <= 1,
+    placementRowsPooled: false, modelsRefitAcrossRuns: false,
+    independentRunsAssumed: false, targetUsed: false,
+    interpretation: rows.length
+      ? "Each tile is one saved deterministic-run summary; support and readiness are compared without pooling placement rows."
+      : "Save a response-bearing material-growth run to populate the readiness atlas.",
+  };
+}
+
 /** Select a term on earlier complete leap blocks, then score it on later blocks. */
 export function blockedCreationResponseValidation(records, outcomeId, {
   trainingFraction = 2 / 3, minimumSamplesPerSplit = 8,

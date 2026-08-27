@@ -100,13 +100,21 @@ def test_association_microscope_is_interactive_and_claims_fail_closed():
     assert "localContextHorizonSweeps" in APP
     assert "site-surrogate-horizons" in APP
     assert ".site-surrogate-horizons" in STYLE
+    assert "crossRunHorizonReadinessAtlas" in MODULE
+    assert "placementRowsPooled: false" in MODULE
+    assert "modelsRefitAcrossRuns: false" in MODULE
+    assert "independentRunsAssumed: false" in MODULE
+    assert "notebookResponseReadiness" in APP
+    assert "renderNotebookResponseReadiness" in APP
+    assert "cross-run response readiness" in HTML
+    assert ".notebook-response-readiness" in STYLE
 
 
 def test_build_197_assets_and_narrative():
-    assert 'buildId: "20260826-204"' in APP
-    assert 'app.js?v=20260826-204' in HTML
-    assert 'style.css?v=20260826-100' in HTML
-    assert 'creation-response-association.js?v=20260826-11' in APP
+    assert 'buildId: "20260826-205"' in APP
+    assert 'app.js?v=20260826-205' in HTML
+    assert 'style.css?v=20260826-101' in HTML
+    assert 'creation-response-association.js?v=20260826-12' in APP
     assert "Build 194" in README
     assert "Build 196" in README
     assert "Build 196" in DOCS
@@ -126,6 +134,8 @@ def test_build_197_assets_and_narrative():
     assert "Build 203" in DOCS
     assert "Build 204" in README
     assert "Build 204" in DOCS
+    assert "Build 205" in README
+    assert "Build 205" in DOCS
     assert "0/142" in README
     assert "0/142" in DOCS
     assert "Build 194" in DOCS

@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260826-100">
+  <link rel="stylesheet" href="./style.css?v=20260826-101">
   <script type="importmap">
     {
       "imports": {
@@ -1444,6 +1444,25 @@
             <div id="notebookTrajectoryStateDetail" class="notebook-trajectory-state" aria-live="polite"></div>
             <div id="notebookTrajectorySummary" class="notebook-trajectory-summary"></div>
           </article>
+          <article id="notebookResponseReadiness" class="notebook-response-readiness unavailable" aria-live="polite">
+            <header>
+              <small>cross-run response readiness</small>
+              <strong>save a material-growth response run</strong>
+              <span>compare chronological support without pooling placement rows</span>
+              <label>response
+                <select id="notebookResponseOutcome" aria-label="Cross-run response-readiness outcome">
+                  <option value="nonaffine">mean √D²min · Å</option>
+                  <option value="radialDrift">mean radial drift · Å</option>
+                  <option value="shellChange">mean neighbor-shell change</option>
+                  <option value="centerDisplacement">mean center displacement · Å</option>
+                  <option value="equivalentShear">mean equivalent shear</option>
+                  <option value="absoluteVolumeResponse">mean |local ΔV/V|</option>
+                </select>
+              </label>
+            </header>
+            <div id="notebookResponseReadinessMatrix" class="notebook-response-readiness-matrix" role="table" aria-label="Saved-run blocked-horizon readiness matrix"></div>
+            <p id="notebookResponseReadinessBoundary"></p>
+          </article>
           <article id="notebookSweepAudit" class="notebook-sweep-audit waiting" aria-live="polite">
             <header><small>controlled response study</small><strong>save at least three comparable runs</strong><span>one recorded geometric intervention may vary while the input and every other non-analysis factor remain fixed</span></header>
             <div class="notebook-sweep-toolbar">
@@ -1754,7 +1773,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260826-204"></script>
+  <script type="module" src="./app.js?v=20260826-205"></script>
   <script type="module" src="./evidence-atlas.js?v=20260826-19"></script>
 </body>
 </html>

@@ -34,8 +34,9 @@ import { appendSiteStructuralHistory, summarizeSiteStructuralHistory }
   from "./site-structural-history.js?v=20260826-1";
 import { blockedCreationResponseSurrogate, blockedCreationResponseValidation, buildCreationResponseAssociation,
   canonicalCreationResponseDataset, creationResponseHorizonSweep, creationResponseLeapProfile,
+  crossRunHorizonReadinessAtlas,
   LOCAL_CREATION_CONTEXT_FEATURE_IDS }
-  from "./creation-response-association.js?v=20260826-11";
+  from "./creation-response-association.js?v=20260826-12";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -524,6 +525,10 @@ const notebookSweepFactor = $("notebookSweepFactor");
 const notebookSweepOutcome = $("notebookSweepOutcome");
 const notebookSweepPlot = $("notebookSweepPlot");
 const notebookSweepSummary = $("notebookSweepSummary");
+const notebookResponseReadiness = $("notebookResponseReadiness");
+const notebookResponseOutcome = $("notebookResponseOutcome");
+const notebookResponseReadinessMatrix = $("notebookResponseReadinessMatrix");
+const notebookResponseReadinessBoundary = $("notebookResponseReadinessBoundary");
 const runStateText = $("runStateText");
 const stageEyebrow = $("stageEyebrow");
 const stageTitle = $("stageTitle");
@@ -1251,6 +1256,7 @@ let notebookTrajectoryHarmonic = 6;
 let notebookPhysicsFilter = "changed";
 let selectedNotebookPhysicsId = null;
 let notebookSweepFactorKey = null;
+let notebookResponseOutcomeId = "nonaffine";
 let selectedStudyRecipeId = "bulk-order";
 let activeStudyRecipeId = null;
 let activeStudyArmId = "reference";
@@ -8778,7 +8784,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-204",
+      buildId: "20260826-205",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -11961,6 +11967,62 @@ function renderNotebookHypothesisOutcome(selected) {
   notebookHypothesisOutcome.append(identity, grid, boundary);
 }
 
+function renderNotebookResponseReadiness(entries) {
+  const atlas = crossRunHorizonReadinessAtlas(entries, notebookResponseOutcomeId);
+  notebookResponseOutcome.value = notebookResponseOutcomeId;
+  notebookResponseReadinessMatrix.replaceChildren();
+  const header = notebookResponseReadiness.querySelector("header");
+  const title = header.querySelector("strong"); const detail = header.querySelector("span");
+  notebookResponseReadiness.className = `notebook-response-readiness ${atlas.available ? "descriptive" : "unavailable"}`;
+  title.textContent = atlas.available
+    ? `${atlas.savedRunCount} response-bearing run${atlas.savedRunCount === 1 ? "" : "s"} · ${atlas.horizonDefinitions.length} horizons`
+    : "save a material-growth response run";
+  detail.textContent = atlas.available
+    ? `${POPULATION_RESPONSE_LABELS[notebookResponseOutcomeId]} · summary schema ${atlas.summarySchemaCompatible ? "compatible" : "mixed"} · horizon definitions ${atlas.horizonDefinitionCompatible ? "compatible" : "mixed"}`
+    : "chronological support and interpolation readiness will appear here without placement rows";
+  if (!atlas.available) {
+    const empty = document.createElement("p"); empty.textContent = atlas.interpretation;
+    notebookResponseReadinessMatrix.append(empty);
+  } else {
+    const columns = `minmax(104px,1.2fr) repeat(${atlas.horizonDefinitions.length},minmax(92px,1fr))`;
+    const labels = document.createElement("div"); labels.className = "notebook-response-readiness-row heading";
+    labels.style.gridTemplateColumns = columns;
+    const runLabel = document.createElement("span"); runLabel.textContent = "saved material run"; labels.append(runLabel);
+    atlas.horizonDefinitions.forEach((definition) => {
+      const cell = document.createElement("span");
+      const strong = document.createElement("strong"); strong.textContent = definition.label;
+      const small = document.createElement("small"); small.textContent = `${definition.count} training leap blocks`;
+      cell.append(strong, small); labels.append(cell);
+    });
+    notebookResponseReadinessMatrix.append(labels);
+    atlas.rows.forEach((row) => {
+      const line = document.createElement("div"); line.className = "notebook-response-readiness-row";
+      line.style.gridTemplateColumns = columns;
+      const identity = document.createElement("span"); identity.className = "run";
+      const strong = document.createElement("strong"); strong.textContent = `run ${row.runIndex} · ${row.material}`;
+      const small = document.createElement("small");
+      small.textContent = `${row.receiptSha256.slice(0, 9)} · ${row.sharesInputWithAnotherSavedRun ? "shared input" : "distinct/unknown input"}`;
+      identity.append(strong, small); line.append(identity);
+      row.horizons.forEach((horizon) => {
+        const cell = document.createElement("span");
+        cell.className = `cell ${horizon.readiness}`;
+        const state = document.createElement("b");
+        state.textContent = horizon.readiness === "full-interpolation" ? "inside domain"
+          : horizon.readiness === "mixed-domain" ? "mixed domain"
+            : horizon.readiness === "extrapolation-only" ? "outside domain" : "unavailable";
+        const support = document.createElement("strong");
+        support.textContent = `${horizon.supportedPlacements}/${horizon.heldoutPlacements} supported`;
+        const skill = document.createElement("small");
+        skill.textContent = horizon.aggregateSkill === null ? "skill unavailable"
+          : `skill ${horizon.aggregateSkill >= 0 ? "+" : ""}${horizon.aggregateSkill.toFixed(3)}${horizon.aggregateSkillIsInterpolationTest ? " · interpolation" : " · descriptive"}`;
+        cell.append(state, support, skill); line.append(cell);
+      });
+      notebookResponseReadinessMatrix.append(line);
+    });
+  }
+  notebookResponseReadinessBoundary.textContent = "Each tile is one deterministic run summary. Placement rows are never pooled, models are never refit across runs, and saved runs may share input atoms; they are not treated as independent specimens. This atlas compares support/readiness, not material transfer, kinetics, physical time, or causal response.";
+}
+
 function renderExperimentNotebook() {
   notebookState.textContent = `${experimentNotebookEntries.length}/${MAX_EXPERIMENT_NOTEBOOK_ENTRIES} saved runs`;
   clearNotebookButton.disabled = experimentNotebookEntries.length === 0;
@@ -11994,6 +12056,7 @@ function renderExperimentNotebook() {
   renderNotebookPhysicsAudit(selected);
   renderNotebookTrajectoryAudit(selected);
   renderNotebookControlledSweep(experimentNotebookEntries);
+  renderNotebookResponseReadiness(experimentNotebookEntries);
   if (selected.length !== 2) {
     const note = document.createElement("p");
     note.textContent = selected.length ? "Select one more saved run to compare." : "Select two saved runs to compare.";
@@ -23783,6 +23846,10 @@ notebookSweepFactor.addEventListener("change", () => {
   renderExperimentNotebook();
 });
 notebookSweepOutcome.addEventListener("change", renderExperimentNotebook);
+notebookResponseOutcome.addEventListener("change", () => {
+  notebookResponseOutcomeId = notebookResponseOutcome.value;
+  renderExperimentNotebook();
+});
 scenarioSelect.addEventListener("change", () => {
   hypothesisSeparationExperiment = null;
   renderEnsembleControls();

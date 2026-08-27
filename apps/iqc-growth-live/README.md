@@ -5595,3 +5595,15 @@ Clicking a horizon changes only the explanatory readout; all arms remain visible
 models are retained in the receipt. The sweep asks whether adding observed structural
 history converts extrapolation into interpolation. It does not optimize a split, turn leap
 index into physical time, or claim independent validation.
+
+### Build 205 · cross-run response-readiness atlas
+
+Saved notebook runs now form an interactive run-by-horizon matrix for each of the six
+registered local structural responses. Every tile reports whether later whole-cluster
+placements lie inside, partly inside, or outside the earlier-block local-geometry envelope,
+along with supported/held counts and frozen model skill.
+
+The atlas is deliberately summary-only. It never pools placements, refits across runs,
+averages scores, or treats saved runs as independent specimens; repeated input identities
+are visibly marked. It is an experimental-readiness view, not a cross-material transfer
+score, kinetic law, uncertainty estimate, or causal comparison.
