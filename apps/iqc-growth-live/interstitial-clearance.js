@@ -1,3 +1,7 @@
+import { directionalDisplacementSupport, displacementClearanceKey,
+  DISPLACEMENT_SIGMA_MULTIPLIERS, normalizeDisplacementTensors }
+  from "./displacement-envelope.js?v=20260827-1";
+
 function squaredDistance(first, second) {
   let total = 0;
   for (let axis = 0; axis < first.length; axis++) {
@@ -145,19 +149,45 @@ function witnessedEmptyCenters(positions, dimension, maximumAnchors, neighborLim
   })).sort((first, second) => first.clearance - second.clearance);
 }
 
-function segmentMinimumSiteClearance(first, second, positions, frameworkRadii = null) {
+function pointMinimumSiteClearance(center, positions, frameworkRadii = null,
+  displacementTensors = null, sigmaMultiplier = 0) {
+  return Math.min(...positions.map((point, index) => {
+    const direction = center.map((value, axis) => value - point[axis]);
+    return Math.sqrt(squaredDistance(center, point)) - (frameworkRadii?.[index] || 0)
+      - directionalDisplacementSupport(displacementTensors?.[index], direction, sigmaMultiplier);
+  }));
+}
+
+function segmentMinimumSiteClearance(first, second, positions, frameworkRadii = null,
+  displacementTensors = null, sigmaMultiplier = 0) {
   const direction = second.map((value, axis) => value - first[axis]);
   const length2 = direction.reduce((sum, value) => sum + value * value, 0);
-  if (length2 <= 1e-20) return Math.min(...positions.map((point, index) =>
-    Math.sqrt(squaredDistance(first, point)) - (frameworkRadii?.[index] || 0)));
+  if (length2 <= 1e-20) return pointMinimumSiteClearance(first, positions, frameworkRadii,
+    displacementTensors, sigmaMultiplier);
   let minimum = Infinity;
   positions.forEach((point, index) => {
     const projection = point.reduce((sum, value, axis) => sum + (value - first[axis]) * direction[axis], 0) / length2;
     const parameter = Math.max(0, Math.min(1, projection));
     const closest = first.map((value, axis) => value + parameter * direction[axis]);
-    minimum = Math.min(minimum, Math.sqrt(squaredDistance(point, closest)) - (frameworkRadii?.[index] || 0));
+    const siteToClosest = closest.map((value, axis) => value - point[axis]);
+    minimum = Math.min(minimum, Math.sqrt(squaredDistance(point, closest)) - (frameworkRadii?.[index] || 0)
+      - directionalDisplacementSupport(displacementTensors?.[index], siteToClosest, sigmaMultiplier));
   });
   return minimum;
+}
+
+function clearanceModelsAtPoint(center, positions, covalentRadii, fittedRadii, displacementTensors) {
+  const models = { point: null, covalent: covalentRadii, fitted: fittedRadii };
+  return Object.fromEntries(Object.entries(models).flatMap(([model, radii]) => [0, ...DISPLACEMENT_SIGMA_MULTIPLIERS]
+    .map((sigma) => [displacementClearanceKey(model, sigma),
+      pointMinimumSiteClearance(center, positions, radii, displacementTensors, sigma)])));
+}
+
+function clearanceModelsAlongSegment(first, second, positions, covalentRadii, fittedRadii, displacementTensors) {
+  const models = { point: null, covalent: covalentRadii, fitted: fittedRadii };
+  return Object.fromEntries(Object.entries(models).flatMap(([model, radii]) => [0, ...DISPLACEMENT_SIGMA_MULTIPLIERS]
+    .map((sigma) => [displacementClearanceKey(model, sigma),
+      segmentMinimumSiteClearance(first, second, positions, radii, displacementTensors, sigma)])));
 }
 
 function imageOffsets(periodicAxes, radius = 1) {
@@ -245,7 +275,7 @@ function periodicGraphAudit(nodeCount, edges, admittedNodes = null, admittedEdge
 }
 
 function periodicWitnessedSummary(positions, dimension, maximumAnchors, neighborLimit,
-  declaredThreshold, frameworkRadii, fittedFrameworkRadii, cellVectors, periodicAxes) {
+  declaredThreshold, frameworkRadii, fittedFrameworkRadii, displacementTensors, cellVectors, periodicAxes) {
   if (dimension !== 3 || cellVectors?.length !== 3 || !periodicAxes?.some(Boolean)) return null;
   const determinant = determinant3(cellVectors.map((_, axis) => cellVectors.map((vector) => vector[axis])));
   if (Math.abs(determinant) < 1e-10) return null;
@@ -255,6 +285,7 @@ function periodicWitnessedSummary(positions, dimension, maximumAnchors, neighbor
     point: translatedPoint(point, cellVectors, image), site, image,
     radius: frameworkRadii?.[site] || 0,
     fittedRadius: fittedFrameworkRadii?.[site] || 0,
+    displacementTensor: displacementTensors?.[site] || null,
   })));
   const extendedPositions = extended.map((record) => record.point);
   const anchors = canonicalAnchors(positions, maximumAnchors);
@@ -283,11 +314,17 @@ function periodicWitnessedSummary(positions, dimension, maximumAnchors, neighbor
   const structureCenter = centroid(positions);
   const maximumStructureRadius = Math.max(1e-12, ...centers.map((record) =>
     Math.sqrt(squaredDistance(record.center, structureCenter))));
+  const extendedCovalentRadii = extended.map((record) => record.radius);
+  const extendedFittedRadii = extended.map((record) => record.fittedRadius);
+  const extendedDisplacementTensors = extended.map((record) => record.displacementTensor);
   const records = centers.map((record) => ({ clearance: record.clearance,
     stericClearance: frameworkRadii ? Math.min(...extended.map((site) =>
       Math.sqrt(squaredDistance(record.center, site.point)) - site.radius)) : null,
     fittedStericClearance: fittedFrameworkRadii ? Math.min(...extended.map((site) =>
       Math.sqrt(squaredDistance(record.center, site.point)) - site.fittedRadius)) : null,
+    clearanceModels: clearanceModelsAtPoint(record.center, extendedPositions, frameworkRadii
+      ? extendedCovalentRadii : null, fittedFrameworkRadii ? extendedFittedRadii : null,
+    extendedDisplacementTensors),
     normalizedRadius: Math.sqrt(squaredDistance(record.center, structureCenter)) / maximumStructureRadius }));
   const faceBuckets = new Map();
   centers.forEach((center, centerIndex) => center.simplices.forEach((simplex) =>
@@ -320,8 +357,11 @@ function periodicWitnessedSummary(positions, dimension, maximumAnchors, neighbor
         secondCenter, extendedPositions, extended.map((record) => record.radius)) : null;
       const fittedStericThroatClearance = fittedFrameworkRadii ? segmentMinimumSiteClearance(centers[first].center,
         secondCenter, extendedPositions, extended.map((record) => record.fittedRadius)) : null;
+      const clearanceModels = clearanceModelsAlongSegment(centers[first].center, secondCenter, extendedPositions,
+        frameworkRadii ? extendedCovalentRadii : null, fittedFrameworkRadii ? extendedFittedRadii : null,
+        extendedDisplacementTensors);
         edgeMap.set(key, { first, second, imageShift: [...imageShift], sharedSiteCount: dimension,
-        throatClearance, stericThroatClearance, fittedStericThroatClearance,
+        throatClearance, stericThroatClearance, fittedStericThroatClearance, clearanceModels,
         throatToEndpointRatio: Math.max(0, Math.min(1, throatClearance
           / Math.max(1e-12, Math.min(records[first].clearance, records[second].clearance)))) });
       }
@@ -382,7 +422,7 @@ function periodicWitnessedSummary(positions, dimension, maximumAnchors, neighbor
 }
 
 function emptyCenterNetwork(centers, radialRecords, dimension, positions, declaredThreshold,
-  frameworkRadii, fittedFrameworkRadii) {
+  frameworkRadii, fittedFrameworkRadii, displacementTensors) {
   const edges = [];
   for (let first = 0; first < centers.length; first++) for (let second = first + 1; second < centers.length; second++) {
     let sharedSiteCount = 0;
@@ -396,8 +436,11 @@ function emptyCenterNetwork(centers, radialRecords, dimension, positions, declar
         ? segmentMinimumSiteClearance(centers[first].center, centers[second].center, positions, frameworkRadii) : null;
       const fittedStericThroatClearance = fittedFrameworkRadii
         ? segmentMinimumSiteClearance(centers[first].center, centers[second].center, positions, fittedFrameworkRadii) : null;
+      const clearanceModels = clearanceModelsAlongSegment(centers[first].center, centers[second].center, positions,
+        frameworkRadii, fittedFrameworkRadii, displacementTensors);
       const endpointClearance = Math.min(radialRecords[first].clearance, radialRecords[second].clearance);
       edges.push({ first, second, sharedSiteCount, throatClearance, stericThroatClearance, fittedStericThroatClearance,
+        clearanceModels,
         throatToEndpointRatio: Math.max(0, Math.min(1, throatClearance / Math.max(1e-12, endpointClearance))) });
     }
   }
@@ -521,7 +564,7 @@ function emptyCenterNetwork(centers, radialRecords, dimension, positions, declar
 }
 
 function summarize(positions, dimension, maximumAnchors, neighborLimit, histogramBins, histogramMaximum,
-  declaredThreshold, frameworkRadii, fittedFrameworkRadii) {
+  declaredThreshold, frameworkRadii, fittedFrameworkRadii, displacementTensors) {
   const anchors = canonicalAnchors(positions, maximumAnchors);
   const centers = witnessedEmptyCenters(positions, dimension, maximumAnchors, neighborLimit, anchors);
   const structureCenter = centroid(positions);
@@ -532,9 +575,11 @@ function summarize(positions, dimension, maximumAnchors, neighborLimit, histogra
     fittedStericClearance: fittedFrameworkRadii
       ? Math.min(...positions.map((point, index) => Math.sqrt(squaredDistance(record.center, point))
         - fittedFrameworkRadii[index])) : null,
+    clearanceModels: clearanceModelsAtPoint(record.center, positions, frameworkRadii, fittedFrameworkRadii,
+      displacementTensors),
     normalizedRadius: Math.sqrt(squaredDistance(record.center, structureCenter)) / maximumStructureRadius }));
   const network = emptyCenterNetwork(centers, records, dimension, positions, declaredThreshold,
-    frameworkRadii, fittedFrameworkRadii);
+    frameworkRadii, fittedFrameworkRadii, displacementTensors);
   const clearances = records.map((record) => record.clearance);
   const core = records.filter((record) => record.normalizedRadius <= .5).map((record) => record.clearance);
   const front = records.filter((record) => record.normalizedRadius >= .75).map((record) => record.clearance);
@@ -560,6 +605,8 @@ export function interstitialClearanceAudit(currentPositions, referencePositions,
   histogramMaximum = 1.5, declaredThreshold = .5, currentSpecies = null,
   referenceSpecies = null, covalentRadiiAngstrom = null,
   fittedContactRadiiAngstrom = null,
+  currentDisplacementTensorsAngstrom2 = null,
+  referenceDisplacementTensorsAngstrom2 = null,
   physicalNearestNeighborAngstrom = null,
   periodicCellVectorsAngstrom = null, periodicAxes = null, includePeriodicReference = false,
 } = {}) {
@@ -584,18 +631,22 @@ export function interstitialClearanceAudit(currentPositions, referencePositions,
   const referenceFrameworkRadii = normalizedRadii(referenceSpecies, referencePositions, covalentRadiiAngstrom);
   const currentFittedFrameworkRadii = normalizedRadii(currentSpecies, currentPositions, fittedContactRadiiAngstrom);
   const referenceFittedFrameworkRadii = normalizedRadii(referenceSpecies, referencePositions, fittedContactRadiiAngstrom);
+  const currentDisplacementTensors = normalizeDisplacementTensors(currentDisplacementTensorsAngstrom2,
+    currentPositions.length, radiusNormalizationScale);
+  const referenceDisplacementTensors = normalizeDisplacementTensors(referenceDisplacementTensorsAngstrom2,
+    referencePositions.length, radiusNormalizationScale);
   const current = summarize(normalize(currentPositions), resolvedDimension, maximumAnchors,
     neighborLimit, histogramBins, histogramMaximum, declaredThreshold, currentFrameworkRadii,
-    currentFittedFrameworkRadii);
+    currentFittedFrameworkRadii, currentDisplacementTensors);
   const reference = summarize(normalize(referencePositions), resolvedDimension, maximumAnchors,
     neighborLimit, histogramBins, histogramMaximum, declaredThreshold, referenceFrameworkRadii,
-    referenceFittedFrameworkRadii);
+    referenceFittedFrameworkRadii, referenceDisplacementTensors);
   const normalizedPeriodicCell = Array.isArray(periodicCellVectorsAngstrom)
     && periodicCellVectorsAngstrom.length === 3
     ? periodicCellVectorsAngstrom.map((vector) => vector.map((value) => value / radiusNormalizationScale)) : null;
   const referencePeriodic = includePeriodicReference ? periodicWitnessedSummary(normalize(referencePositions),
     resolvedDimension, maximumAnchors, neighborLimit, declaredThreshold, referenceFrameworkRadii,
-    referenceFittedFrameworkRadii,
+    referenceFittedFrameworkRadii, referenceDisplacementTensors,
     normalizedPeriodicCell, periodicAxes) : null;
   if (!reference.candidateCenters || (!current.candidateCenters && !referencePeriodic)) return {
     available: false, reason: "no nondegenerate locally witnessed empty simplex centers were resolved",
@@ -631,6 +682,18 @@ export function interstitialClearanceAudit(currentPositions, referencePositions,
       ? radiusNormalizationScale : null,
     fittedContactRadiusDefinition: currentFittedFrameworkRadii && referenceFittedFrameworkRadii
       ? "sample-fitted additive leading-contact envelopes; Cordero ratios used only as a ridge prior" : null,
+    displacementEnvelopeAvailable: Boolean(currentDisplacementTensors?.some(Boolean)
+      || referenceDisplacementTensors?.some(Boolean)),
+    currentDisplacementTensorSites: currentDisplacementTensors?.filter(Boolean).length || 0,
+    referenceDisplacementTensorSites: referenceDisplacementTensors?.filter(Boolean).length || 0,
+    displacementSigmaMultipliers: [...DISPLACEMENT_SIGMA_MULTIPLIERS],
+    displacementUnknownSitesUseZeroSupport: true,
+    displacementEnvelopeDefinition: "directional k sqrt(n^T U n) support from reported Cartesian Uiso/Uij mean-square displacement tensors",
+    displacementEnvelopeIsTrajectory: false,
+    displacementEnvelopeIsTemperature: false,
+    displacementEnvelopeIsProbabilityOrConfidenceRegion: false,
+    displacementEnvelopeTranslationInvariant: true,
+    displacementEnvelopeProperRotationInvariantWhenTensorRotatesWithSites: true,
     covalentRadiusNormalizationScaleAngstrom: currentFrameworkRadii && referenceFrameworkRadii
       ? radiusNormalizationScale : null,
     covalentRadiusSource: currentFrameworkRadii && referenceFrameworkRadii

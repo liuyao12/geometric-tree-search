@@ -13,6 +13,15 @@ amplification is `b > 1`, a level-`L` accepted macro placement represents
 approximately `b^L` atoms.  Materializing or exporting `N` atomic coordinates
 still has an unavoidable `O(N)` cost and must be reported separately.
 
+### Reported crystallographic displacement envelopes (Build 244)
+
+The interstitial network now optionally subtracts directional
+`k√(nᵀUn)` support at 1σ, 2σ, or 3σ from imported Cartesian Uiso/Uij tensors.
+The topology and empty-simplex witnesses are unchanged; only node and throat
+clearances change. Missing tensors are counted and contribute zero support.
+This is a coordinate-free structural ellipsoid hypothesis, not temperature,
+dynamics, probability, a trajectory, or a physical-time integration.
+
 ### Sample-fitted multicomponent contact envelopes (Build 243)
 
 The interstitial pathway now offers a third framework hypothesis between point

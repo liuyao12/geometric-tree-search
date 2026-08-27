@@ -39,4 +39,4 @@ def test_build_243_assets_are_cache_versioned():
     assert 'app.js?v=20260827-243' in HTML
     assert 'style.css?v=20260827-243' in HTML
     assert 'contact-envelope-fit.js?v=20260827-1' in APP
-    assert 'interstitial-clearance.js?v=20260827-9' in APP
+    assert 'interstitial-clearance.js?v=20260827-10' in APP

@@ -83,7 +83,7 @@ def test_build_242_is_exposed():
     assert 'buildId: "20260827-243"' in APP
     assert 'app.js?v=20260827-243' in HTML
     assert 'style.css?v=20260827-243' in HTML
-    assert 'interstitial-clearance.js?v=20260827-9' in APP
+    assert 'interstitial-clearance.js?v=20260827-10' in APP
 
 
 if __name__ == "__main__":
