@@ -167,6 +167,17 @@ This excludes only scalar `sI` rep-tile rules. Non-scalar integer inflation
 matrices, decorated orientation states, and substitutions using several
 metatile shapes remain open.
 
+For the cellular anisotropic family, the triangular cross-section can only be
+scaled uniformly up to an A2 lattice symmetry; a general Eisenstein multiplier
+rotates an edge off the triangular cell complex. The remaining non-scalar
+single-supertile maps therefore have independent integer planar and layer
+scales `(s,c)`. The exact family screen exhausts all 42 pairs with
+`2 <= s,c <= 8` and `s != c` for every focused candidate. All 336 finite
+exact covers are certified negative: 246 have an independently replayed local
+uncovered-cell obstruction, and 90 are independently replayed UNSAT by Z3.
+The combined report is
+`data/a2-layered-size7-substitution-anisotropic-s2to8-focused.ndjson`.
+
 The machine-readable screen is `data/a2-layered-size5-screen.ndjson`. Rebuild
 it with:
 

@@ -22,6 +22,14 @@ for (const scale of [2, 3, 4, 5, 6]) {
     substitutions.get(record.id).push(record);
   }
 }
+const anisotropicSubstitutions = await readNdjson(
+  "data/a2-layered-size7-substitution-anisotropic-s2to8-focused.ndjson"
+);
+const anisotropicById = new Map();
+for (const record of anisotropicSubstitutions) {
+  if (!anisotropicById.has(record.id)) anisotropicById.set(record.id, []);
+  anisotropicById.get(record.id).push(record);
+}
 const byId = records => new Map(records.map(record => [record.id, record]));
 const periodicById = byId(throughFour);
 const coronaById = byId(coronaOne);
@@ -43,6 +51,7 @@ const candidates = selected.map((id, index) => {
   const coreSecond = coreExtendedById.get(id) ?? coreLongById.get(id);
   const largerPeriodic = periodicSixToEightById.get(id);
   const substitutionScreens = substitutions.get(id) ?? [];
+  const anisotropicScreens = anisotropicById.get(id) ?? [];
   const corona2States = Math.max(
     second.corona2_cegar.first_coronas_rejected,
     deepSecond?.corona2_cegar?.first_coronas_rejected ?? 0
@@ -88,7 +97,13 @@ const candidates = selected.map((id, index) => {
         .map(record => record.substitution.scale).sort((left, right) => left - right),
       substitution_rule_found: substitutionScreens.some(record =>
         record.substitution_classification === "scalar_substitution_rule"
+      ) || anisotropicScreens.some(record =>
+        record.substitution_classification === "lattice_substitution_rule"
       ),
+      substitution_anisotropic_scale_range: [2, 8],
+      substitution_anisotropic_inflations_excluded: anisotropicScreens.filter(record =>
+        record.substitution_classification === "no_lattice_substitution_for_inflation"
+      ).length,
       periodic_report: "data/a2-layered-size7-periodic-z3-through4.ndjson",
       corona_report: "data/a2-layered-size7-corona1-z3.ndjson",
       corona2_report: deepSecond
@@ -102,7 +117,10 @@ const candidates = selected.map((id, index) => {
         : null,
       substitution_reports: substitutionScreens.map(record =>
         `data/a2-layered-size7-substitution-scale${record.substitution.scale}-focused.ndjson`
-      )
+      ),
+      substitution_anisotropic_report: anisotropicScreens.length
+        ? "data/a2-layered-size7-substitution-anisotropic-s2to8-focused.ndjson"
+        : null
     },
     shell_screening: { robust_completed_shell: 0, deepest_completed_shell: 0 }
   };

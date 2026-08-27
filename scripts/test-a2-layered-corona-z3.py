@@ -147,6 +147,23 @@ assert substitution_unit["substitution_classification"] == "scalar_substitution_
 assert substitution_unit["substitution"]["replay"]["verified"] is True
 assert substitution_unit["substitution"]["replay"]["patch_copies"] == 8
 
+anisotropic_unit = SUBSTITUTION.screen({
+    "id": "a2_unit_prism_anisotropic_control",
+    "cells": [{"q": 0, "r": 0, "k": 0, "kind": "u"}],
+}, 2, 10000, 2, 0, 3)
+assert anisotropic_unit["substitution_classification"] == "lattice_substitution_rule"
+assert anisotropic_unit["substitution"]["copy_count"] == 12
+assert anisotropic_unit["substitution"]["replay"]["verified"] is True
+
+try:
+    SUBSTITUTION.screen({
+        "id": "a2_noncellular_control",
+        "cells": [{"q": 0, "r": 0, "k": 0, "kind": "u"}],
+    }, 2, 10000, 1, 1, 2)
+    raise AssertionError("non-cellular Eisenstein multiplier must be rejected")
+except ValueError as error:
+    assert "rotates cell edges off" in str(error)
+
 substitution_records = []
 for scale in (2, 3, 4, 5, 6):
     records = [
@@ -167,6 +184,33 @@ for scale in (2, 3, 4, 5, 6):
     )
     substitution_records.extend(records)
 
+anisotropic_records = [
+    json.loads(line)
+    for line in (
+        ROOT / "data" / "a2-layered-size7-substitution-anisotropic-s2to8-focused.ndjson"
+    ).read_text().splitlines()
+    if line.strip()
+]
+assert len(anisotropic_records) == 336
+assert {record["id"] for record in anisotropic_records} == set(expected_extended_clauses)
+assert len({
+    (
+        record["substitution"]["eisenstein_multiplier"]["a"],
+        record["substitution"]["vertical_scale"],
+    )
+    for record in anisotropic_records
+}) == 42
+assert all(
+    record["substitution_classification"] == "no_lattice_substitution_for_inflation"
+    for record in anisotropic_records
+)
+assert all(record["substitution"]["certified"] is True for record in anisotropic_records)
+assert all(
+    (record["substitution"]["local_obstruction_replay"] or
+     record["substitution"]["exact_unsat_replay"])["verified"] is True
+    for record in anisotropic_records
+)
+
 print("A2 layered corona regression passed", {
     "root_coronas_replayed": len(root_records),
     "focused_candidates": len(focused),
@@ -176,4 +220,5 @@ print("A2 layered corona regression passed", {
     "sound_gcts_clauses_by_candidate": expected_extended_clauses,
     "larger_periodic_partial_candidates": len(larger_periodic),
     "scalar_substitution_negatives": len(substitution_records),
+    "anisotropic_substitution_negatives": len(anisotropic_records),
 })

@@ -80,26 +80,40 @@ def inside_triangle(px3, py3, triangle):
     return all(value >= 0 for value in crosses) or all(value <= 0 for value in crosses)
 
 
-def scaled_cells(cells, scale):
+def inflated_cells(cells, planar_matrix, vertical_scale):
     target = set()
+    planar_determinant = abs(
+        planar_matrix[0][0] * planar_matrix[1][1]
+        - planar_matrix[0][1] * planar_matrix[1][0]
+    )
     for cell in cells:
         base = GEOMETRY.cell_vertices(cell)[:3]
         k = cell["k"]
-        triangle = [((point[0] - k) * scale, (point[1] - k) * scale) for point in base]
+        triangle = []
+        for point in base:
+            q, r = point[0] - k, point[1] - k
+            triangle.append((
+                planar_matrix[0][0] * q + planar_matrix[0][1] * r,
+                planar_matrix[1][0] * q + planar_matrix[1][1] * r,
+            ))
         min_q = min(point[0] for point in triangle) - 1
         max_q = max(point[0] for point in triangle)
         min_r = min(point[1] for point in triangle) - 1
         max_r = max(point[1] for point in triangle)
-        for sub_k in range(scale * k, scale * (k + 1)):
+        for sub_k in range(vertical_scale * k, vertical_scale * (k + 1)):
             for q in range(min_q, max_q + 1):
                 for r in range(min_r, max_r + 1):
                     for kind, offset in (("u", 1), ("d", 2)):
                         if inside_triangle(3 * q + offset, 3 * r + offset, triangle):
                             target.add((q, r, sub_k, kind))
-    expected = len(cells) * scale ** 3
+    expected = len(cells) * planar_determinant * vertical_scale
     if len(target) != expected:
         raise RuntimeError(f"scaled target has {len(target)} cells, expected {expected}")
     return target
+
+
+def scaled_cells(cells, scale):
+    return inflated_cells(cells, ((scale, 0), (0, scale)), scale)
 
 
 def candidate_placements(target, orientations):
@@ -255,15 +269,37 @@ def replay_unsat_with_z3(target, placements, timeout_ms):
     }
 
 
-def screen(record, scale, timeout_ms):
+def screen(
+    record, scale, timeout_ms, planar_a=None, planar_b=0,
+    vertical_scale=None,
+):
     started = time.monotonic()
+    a = scale if planar_a is None else planar_a
+    b = planar_b
+    vertical = scale if vertical_scale is None else vertical_scale
+    if not (a == 0 or b == 0 or a + b == 0):
+        raise ValueError(
+            "the Eisenstein multiplier rotates cell edges off the A2 honeycomb; "
+            "cellular multipliers require a=0, b=0, or a+b=0"
+        )
+    planar_matrix = ((a, -b), (b, a + b))
+    planar_norm = a * a + a * b + b * b
+    if planar_norm <= 1 or vertical <= 1:
+        raise ValueError("inflation must be expansive in the plane and layer direction")
+    scalar = b == 0 and a == vertical
     orientations = oriented_cells(record["cells"])
-    target = scaled_cells(record["cells"], scale)
+    target = inflated_cells(record["cells"], planar_matrix, vertical)
     placements = candidate_placements(target, orientations)
     solved = exact_cover(target, placements, timeout_ms)
     common = {
-        "scale": scale,
-        "inflation_matrix": [[scale, 0, 0], [0, scale, 0], [0, 0, scale]],
+        "scale": scale if scalar else None,
+        "inflation_kind": "scalar" if scalar else "a2_eisenstein_by_layer",
+        "eisenstein_multiplier": {"a": a, "b": b, "norm": planar_norm},
+        "vertical_scale": vertical,
+        "inflation_matrix_product_coordinates": [
+            [a, -b, 0], [b, a + b, 0], [0, 0, vertical]
+        ],
+        "copy_count": planar_norm * vertical,
         "target_cells": len(target),
         "orientations": len(orientations),
         "placements_considered": len(placements),
@@ -272,7 +308,7 @@ def screen(record, scale, timeout_ms):
         "milliseconds": round((time.monotonic() - started) * 1000),
     }
     if solved["result"] == "sat":
-        expected_copies = scale ** 3
+        expected_copies = planar_norm * vertical
         verification = replay(target, placements, solved["solution"], expected_copies)
         if not verification["verified"]:
             raise RuntimeError(f"substitution replay failed: {verification}")
@@ -285,7 +321,9 @@ def screen(record, scale, timeout_ms):
         ]
         return {
             **record,
-            "substitution_classification": "scalar_substitution_rule",
+            "substitution_classification": (
+                "scalar_substitution_rule" if scalar else "lattice_substitution_rule"
+            ),
             "substitution": {
                 **common,
                 "certified": True,
@@ -309,7 +347,8 @@ def screen(record, scale, timeout_ms):
     return {
         **record,
         "substitution_classification": (
-            "no_scalar_substitution_at_scale" if solved["result"] == "unsat" else "unresolved"
+            ("no_scalar_substitution_at_scale" if scalar else "no_lattice_substitution_for_inflation")
+            if solved["result"] == "unsat" else "unresolved"
         ),
         "substitution": {
             **common,
@@ -327,10 +366,13 @@ def main():
     parser.add_argument("--input", required=True)
     parser.add_argument("--output", required=True)
     parser.add_argument("--scale", type=int, default=2)
+    parser.add_argument("--planar-a", type=int)
+    parser.add_argument("--planar-b", type=int, default=0)
+    parser.add_argument("--vertical-scale", type=int)
     parser.add_argument("--timeout-ms", type=int, default=120000)
     parser.add_argument("--ids", default="")
     args = parser.parse_args()
-    if args.scale < 2:
+    if args.scale < 2 and args.planar_a is None:
         parser.error("scale must be at least two")
     requested = {value for value in args.ids.split(",") if value}
     records = [json.loads(line) for line in Path(args.input).read_text().splitlines() if line.strip()]
@@ -341,7 +383,10 @@ def main():
     counts = {}
     with output.open("a") as stream:
         for index, record in enumerate(records, 1):
-            result = screen(record, args.scale, args.timeout_ms)
+            result = screen(
+                record, args.scale, args.timeout_ms,
+                args.planar_a, args.planar_b, args.vertical_scale,
+            )
             classification = result["substitution_classification"]
             counts[classification] = counts.get(classification, 0) + 1
             stream.write(json.dumps(result, separators=(",", ":")) + "\n")

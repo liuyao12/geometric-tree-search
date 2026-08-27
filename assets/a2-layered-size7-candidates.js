@@ -85,6 +85,11 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         6
       ],
       "substitution_rule_found": false,
+      "substitution_anisotropic_scale_range": [
+        2,
+        8
+      ],
+      "substitution_anisotropic_inflations_excluded": 42,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-a2lp_7_00232-deep.ndjson",
@@ -96,7 +101,8 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         "data/a2-layered-size7-substitution-scale4-focused.ndjson",
         "data/a2-layered-size7-substitution-scale5-focused.ndjson",
         "data/a2-layered-size7-substitution-scale6-focused.ndjson"
-      ]
+      ],
+      "substitution_anisotropic_report": "data/a2-layered-size7-substitution-anisotropic-s2to8-focused.ndjson"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -188,6 +194,11 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         6
       ],
       "substitution_rule_found": false,
+      "substitution_anisotropic_scale_range": [
+        2,
+        8
+      ],
+      "substitution_anisotropic_inflations_excluded": 42,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
@@ -199,7 +210,8 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         "data/a2-layered-size7-substitution-scale4-focused.ndjson",
         "data/a2-layered-size7-substitution-scale5-focused.ndjson",
         "data/a2-layered-size7-substitution-scale6-focused.ndjson"
-      ]
+      ],
+      "substitution_anisotropic_report": "data/a2-layered-size7-substitution-anisotropic-s2to8-focused.ndjson"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -291,6 +303,11 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         6
       ],
       "substitution_rule_found": false,
+      "substitution_anisotropic_scale_range": [
+        2,
+        8
+      ],
+      "substitution_anisotropic_inflations_excluded": 42,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
@@ -302,7 +319,8 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         "data/a2-layered-size7-substitution-scale4-focused.ndjson",
         "data/a2-layered-size7-substitution-scale5-focused.ndjson",
         "data/a2-layered-size7-substitution-scale6-focused.ndjson"
-      ]
+      ],
+      "substitution_anisotropic_report": "data/a2-layered-size7-substitution-anisotropic-s2to8-focused.ndjson"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -394,6 +412,11 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         6
       ],
       "substitution_rule_found": false,
+      "substitution_anisotropic_scale_range": [
+        2,
+        8
+      ],
+      "substitution_anisotropic_inflations_excluded": 42,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
@@ -405,7 +428,8 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         "data/a2-layered-size7-substitution-scale4-focused.ndjson",
         "data/a2-layered-size7-substitution-scale5-focused.ndjson",
         "data/a2-layered-size7-substitution-scale6-focused.ndjson"
-      ]
+      ],
+      "substitution_anisotropic_report": "data/a2-layered-size7-substitution-anisotropic-s2to8-focused.ndjson"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -497,6 +521,11 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         6
       ],
       "substitution_rule_found": false,
+      "substitution_anisotropic_scale_range": [
+        2,
+        8
+      ],
+      "substitution_anisotropic_inflations_excluded": 42,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
@@ -508,7 +537,8 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         "data/a2-layered-size7-substitution-scale4-focused.ndjson",
         "data/a2-layered-size7-substitution-scale5-focused.ndjson",
         "data/a2-layered-size7-substitution-scale6-focused.ndjson"
-      ]
+      ],
+      "substitution_anisotropic_report": "data/a2-layered-size7-substitution-anisotropic-s2to8-focused.ndjson"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -600,6 +630,11 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         6
       ],
       "substitution_rule_found": false,
+      "substitution_anisotropic_scale_range": [
+        2,
+        8
+      ],
+      "substitution_anisotropic_inflations_excluded": 42,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
@@ -611,7 +646,8 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         "data/a2-layered-size7-substitution-scale4-focused.ndjson",
         "data/a2-layered-size7-substitution-scale5-focused.ndjson",
         "data/a2-layered-size7-substitution-scale6-focused.ndjson"
-      ]
+      ],
+      "substitution_anisotropic_report": "data/a2-layered-size7-substitution-anisotropic-s2to8-focused.ndjson"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -703,6 +739,11 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         6
       ],
       "substitution_rule_found": false,
+      "substitution_anisotropic_scale_range": [
+        2,
+        8
+      ],
+      "substitution_anisotropic_inflations_excluded": 42,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
@@ -714,7 +755,8 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         "data/a2-layered-size7-substitution-scale4-focused.ndjson",
         "data/a2-layered-size7-substitution-scale5-focused.ndjson",
         "data/a2-layered-size7-substitution-scale6-focused.ndjson"
-      ]
+      ],
+      "substitution_anisotropic_report": "data/a2-layered-size7-substitution-anisotropic-s2to8-focused.ndjson"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -806,6 +848,11 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         6
       ],
       "substitution_rule_found": false,
+      "substitution_anisotropic_scale_range": [
+        2,
+        8
+      ],
+      "substitution_anisotropic_inflations_excluded": 42,
       "periodic_report": "data/a2-layered-size7-periodic-z3-through4.ndjson",
       "corona_report": "data/a2-layered-size7-corona1-z3.ndjson",
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
@@ -817,7 +864,8 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
         "data/a2-layered-size7-substitution-scale4-focused.ndjson",
         "data/a2-layered-size7-substitution-scale5-focused.ndjson",
         "data/a2-layered-size7-substitution-scale6-focused.ndjson"
-      ]
+      ],
+      "substitution_anisotropic_report": "data/a2-layered-size7-substitution-anisotropic-s2to8-focused.ndjson"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
