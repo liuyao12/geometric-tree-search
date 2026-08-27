@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260827-232">
+  <link rel="stylesheet" href="./style.css?v=20260827-233">
   <script type="importmap">
     {
       "imports": {
@@ -126,7 +126,7 @@
           </section>
 
           <section class="atlas-panel" data-atlas-panel="systems" hidden>
-            <div class="atlas-section-heading"><div><span>cross-family benchmark</span><h2>One question, five very different structures</h2></div><p>Choose a system to inspect its measured growth curve and limiting gate.</p></div>
+            <div class="atlas-section-heading"><div><span>cross-family benchmark</span><h2>One question, five structures + one exact geometry stress test</h2></div><p>Choose a system to inspect its measured curve and limiting gate.</p></div>
             <div id="atlasSystemTabs" class="system-tabs" role="tablist" aria-label="Benchmark systems"></div>
             <div class="system-dashboard">
               <article class="system-story">
@@ -136,12 +136,22 @@
                 <div id="atlasSystemVerdict" class="system-verdict"></div>
               </article>
               <article class="growth-card">
-                <div><span>represented or explicit sites</span><strong id="atlasCurveTitle">growth by learned action</strong></div>
+                <div><span id="atlasCurveEyebrow">represented or explicit sites</span><strong id="atlasCurveTitle">growth by learned action</strong></div>
                 <svg id="atlasGrowthChart" viewBox="0 0 720 300" role="img" aria-label="Log-scale growth curve"></svg>
-                <div class="growth-legend"><span class="observed">explicit / verified</span><span class="symbolic">symbolic representation</span><small>log scale · labels show exact counts</small></div>
+                <div class="growth-legend"><span id="atlasCurveObserved" class="observed">explicit / verified</span><span id="atlasCurveProjected" class="symbolic">symbolic representation</span><small id="atlasCurveNote">log scale · labels show exact counts</small></div>
               </article>
             </div>
             <div id="systemEvidenceCards" class="system-evidence-cards"></div>
+            <section id="a2CoronaExplorer" class="a2-corona-explorer" hidden aria-label="A2 exact-corona marking explorer">
+              <header><div><span>interactive exact-marking atlas</span><h3>Eight unresolved candidates, 1,113 sound family blockers</h3></div><p>Select a seven-cell layered lattice function. The diagram is its exact A₂ cell support; the bars are retained obstruction clauses, not failed molecular-dynamics trajectories.</p></header>
+              <div id="a2CandidateTabs" class="a2-candidate-tabs" role="tablist" aria-label="Focused A2 candidates"></div>
+              <div class="a2-candidate-detail">
+                <div id="a2CandidateShape" class="a2-candidate-shape" aria-label="Selected A2 layered candidate"></div>
+                <article id="a2CandidateStory" class="a2-candidate-story" aria-live="polite"></article>
+                <div id="a2BlockerBars" class="a2-blocker-bars" aria-label="Sound retained clauses by candidate"></div>
+              </div>
+              <footer><b>What one clause means</b><span>A specific placement subset in the first corona cannot be completed into a saturated second corona—even when every unselected helper placement remains available.</span><i>What it does not mean</i><span>The candidate is not thereby proved to be a non-tiler, an aperiodic monotile, or a model of one particular solid.</span></footer>
+            </section>
             <div id="atlasSystemActions" class="atlas-system-actions" hidden aria-label="Open this evidence in the growth workflow"></div>
           </section>
 
@@ -1843,7 +1853,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260827-232"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260826-19"></script>
+  <script type="module" src="./app.js?v=20260827-233"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260827-20"></script>
 </body>
 </html>

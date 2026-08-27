@@ -36,6 +36,28 @@ capture from deliberate statistical analysis while
 preserving the same no-target, no-atom-pseudoreplication, and no-physical-time
 claim boundary.
 
+### Exact corona-marking presentation (Build 233)
+
+The browser Evidence Atlas now includes the A₂ layered lattice-function census
+as a geometry stress test alongside, but explicitly distinct from, atomic
+material systems. Of 1,119 size-seven non-product candidates, exact weighted
+quotient certificates remove 910 at two copies and another 98 at four copies;
+111 exhaust all 399 determinant-14 HNF bases. Every survivor has a replayed
+root corona. For eight focused candidates, exact-model CEGAR turns independently
+replayed UNSAT cores into sound family-obstruction clauses. Greedy reduction
+finds one replayed 3–12-placement core per candidate; seeding those cores into a
+strengthened continuation yields 1,113 retained clauses (130–156 per candidate).
+The interactive atlas renders the underlying seven-cell supports, reduced-core
+sizes, and clause counts directly from the generated catalogue.
+
+This result is a concrete model of a GCTS marking: a bounded local obstruction
+generalizes to a finite family of incompatible connections. It is not a growth
+curve or physical potential. Because no focused outer first-corona space is
+exhausted and no radius-two witness has been found, every candidate remains
+unresolved; neither non-tiling nor aperiodicity is claimed. Excluding scalar
+single-shape substitutions at scales 2–6 and 336 cellular anisotropic cases
+also leaves decorated, multi-metatile, and other substitution grammars open.
+
 ### Browser presentation boundary (Build 223)
 
 The cluster-identification stage now presents its molecular-cover accounting as

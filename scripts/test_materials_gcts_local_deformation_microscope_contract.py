@@ -81,11 +81,11 @@ def test_portal_narrative_and_primary_provenance_are_visible():
     assert "Rank-deficient cages" in ATLAS
 
 
-def test_build_167_is_cache_busted():
-    assert 'buildId: "20260826-167"' in APP
-    assert 'app.js?v=20260826-167' in HTML
+def test_current_build_is_cache_busted():
+    assert 'buildId: "20260827-233"' in APP
+    assert 'app.js?v=20260827-233' in HTML
     assert 'relaxation-local-environment.js?v=20260826-2' in APP
-    assert 'evidence-atlas.js?v=20260826-9' in HTML
+    assert 'evidence-atlas.js?v=20260827-20' in HTML
 
 
 if __name__ == "__main__":

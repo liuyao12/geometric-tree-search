@@ -12,11 +12,24 @@ runs four visible stages:
 The **Evidence Atlas** in the top bar is the materials-science presentation of
 the backend research program. It separates complete representation, held-out
 continuation, hierarchical compression, and stationary/exponential growth into
-distinct claims. Interactive system cards compare NaCl, an ideal icosahedral
-quasicrystal, the published Cd–Yb quasicrystal model, and an amorphous control;
+distinct claims. Interactive system cards compare NaCl, molecular ice, an ideal
+icosahedral quasicrystal, the published Cd–Yb quasicrystal model, an amorphous
+control, and an exact A₂ layered-geometry stress test;
 the GCTS anatomy view explains covers, oriented ports, markings, search, and
 promotion; and the claim ledger keeps proved, measured, and open results visibly
 separate. Its numbers are frozen benchmark results, not recomputed browser demos.
+
+Build 233 exposes exact GCTS marking learning in the Evidence Atlas through the
+A₂ layered lattice-function census. The interactive support gallery renders all
+eight focused seven-cell candidates and compares their retained sound clauses.
+After exact-core reduction and a strengthened continuation, the runs retain
+130–156 clauses per candidate, 1,113 in total; each independently replayed
+clause rules out a family of first-corona
+placements from completing a saturated second corona. The view deliberately
+labels all eight candidates unresolved because the outer corona spaces are not
+exhausted. It therefore presents transferable geometric obstruction learning
+without relabelling it non-tiling, aperiodicity, atomistic growth, or a physical
+potential.
 
 Build 232 restores the heavyweight creation-response analysis as an explicit
 scientific action rather than a hidden cost of saving. “Compute response atlas”

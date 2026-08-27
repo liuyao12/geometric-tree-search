@@ -49,9 +49,9 @@ def test_interactive_plot_receipt_and_ledger_are_auditable():
 
 
 def test_build_170_is_retained_in_current_release():
-    assert 'buildId: "20260827-232"' in APP
-    assert 'app.js?v=20260827-232' in HTML
+    assert 'buildId: "20260827-233"' in APP
+    assert 'app.js?v=20260827-233' in HTML
     assert 'geometry-calculation-calibration.js?v=20260826-6' in APP
-    assert 'evidence-atlas.js?v=20260826-19' in HTML
+    assert 'evidence-atlas.js?v=20260827-20' in HTML
     assert "Build 170" in README
     assert "Build 170" in DOCS

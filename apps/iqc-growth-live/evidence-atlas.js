@@ -1,4 +1,5 @@
 import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js";
+import { A2_LAYERED_SIZE7_CANDIDATES } from "../../assets/a2-layered-size7-candidates.js?v=20260827-1";
 
 const byId = (id) => document.getElementById(id);
 
@@ -115,6 +116,26 @@ const SYSTEMS = {
       ["Evaluation", "RDF + S(q) + motif statistics", "A glass target is an ensemble, not one privileged continuation."],
     ],
   },
+  a2: {
+    short: "A₂ corona", kind: "exact geometry stress test", name: "A₂ layered lattice functions",
+    summary: "This is a controlled test of the marking idea itself: learn exact families of first-corona placements that cannot extend to a saturated second corona. Every learned clause is sound and replayed; none is promoted into a global non-tiling or aperiodicity claim while unexplored coronas remain.",
+    values: [1, 5, 37, 68, 126, 156], verifiedThrough: 5,
+    xLabels: ["core", "+4", "+32", "+32", "+64", "+32"],
+    curveEyebrow: "retained sound GCTS clauses",
+    curveTitle: "a2lp_7_00232 · obstruction-learning curve",
+    curveObserved: "independently replayed clauses",
+    curveProjected: "outer corona space remains open",
+    curveNote: "exact counts · not a growth curve",
+    metrics: [["size-seven census", "1,119"], ["exact-through-4 survivors", "111"], ["focused candidates", "8"], ["sound family blockers", "1,113"]],
+    verdict: ["open", "Exact local obstructions learned · radius-two and global classification remain unresolved"],
+    evidence: [
+      ["Periodic screen", "910 + 98 certified", "Two-copy and then four-copy weighted quotient tilings remove 1,008 of 1,119 candidates; 111 exhaust all 399 determinant-14 HNF bases."],
+      ["Root corona", "111 / 111 replayed", "Every exact-through-four survivor has a complete, independently replayed first corona."],
+      ["GCTS marking", "1,113 sound clauses", "Eight focused candidates retain 130–156 exact family blockers after subsumption; one independently replayed core per candidate reduces to 3–12 placements."],
+      ["Substitution screen", "376 exact negatives", "Forty scalar scale-2…6 and 336 anisotropic scale-pair covers are excluded. Other decorated or multi-metatile substitutions remain open."],
+      ["Claim boundary", "8 / 8 unresolved", "No outer first-corona space is exhausted and no radius-two witness is found. This proves neither non-tiling nor an aperiodic monotile."],
+    ],
+  },
 };
 
 const MATRIX = [
@@ -123,6 +144,7 @@ const MATRIX = [
   ["Ideal IQC", ["pass", "2,064 / 2,064"], ["pass", "31,521 exact sites"], ["progress", "6 train levels"], ["open", "no 3-scale key"]],
   ["Cd₅.₇Yb IQC", ["pass", "2,385 / 2,385"], ["pass", "295 / 295 local"], ["progress", "9 train · 4 replay"], ["open", "no stationary key"]],
   ["Cu–Zr glass", ["control", "cover + residuals"], ["control", "not uniquely defined"], ["control", "recursion rejected"], ["control", "negative passes"]],
+  ["A₂ geometry test", ["pass", "exact weighted cells"], ["pass", "111 root coronas"], ["progress", "1,113 sound blockers"], ["open", "radius 2 unresolved"]],
 ];
 
 const MATRIX_DETAILS = {
@@ -131,6 +153,7 @@ const MATRIX_DETAILS = {
   "Ideal IQC": "Exact continuation is real and self-fed, but different promoted productions appear at successive levels. Deep compression is not renamed exponential growth: the strict stationary audit requires the same exact semantic production and learned scale twice in succession.",
   "Cd₅.₇Yb IQC": "The real-material model is the hardest transfer case. Bounded local marking succeeds for finite primitive growth, but exact promoted clusters are sparse and nucleus-dependent. Dormant types remain frozen rather than being refit on held-out atoms.",
   "Cu–Zr glass": "The negative control protects the benchmark from a trivial answer. Residual clusters guarantee representation, but no stable macro production, unique exterior continuation, or million-site symbolic claim is admitted.",
+  "A₂ geometry test": "This is not an atomic material claim. It isolates the GCTS marking mechanism on exact lattice functions: a learned UNSAT core becomes a sound clause over an entire family of first coronas. The clauses accelerate search, but bounded non-extension is not renamed non-tiling, aperiodicity, or material growth.",
 };
 
 const ANATOMY = {
@@ -264,6 +287,7 @@ const TIMELINE = [
   ["18", "Open frontier", "Learn a transferable winner among the 410 supplied exact alternatives, commit a conflict-free antichain without target truth, and promote it into a recurring oriented production with a strict three-scale stationarity audit.", "open"],
   ["19", "Molecular ice cover", "Atom-centred spokes are replaced by one bent H₂O motif plus decorated bridge and O₆ gap-boundary isometry classes, covering 216 / 216 Ih and 192 / 192 Ic atoms.", "proved"],
   ["20", "Blind ice anchor transfer", "Eight Ih-fitted proper-SE(3) ports emit exact 16 → 8 → 0 Ih and 12 → 0 Ic oxygen-anchor frontiers. Proton orientations and stationary promotion remain explicit red gates.", "progress"],
+  ["21", "Exact corona markings", "On eight A₂ layered lattice functions, independently replayed UNSAT cores seed 1,113 sound family clauses. They prune related first coronas without confusing a bounded obstruction with non-tiling or aperiodicity.", "progress"],
 ];
 
 const CLAIMS = [
@@ -326,6 +350,8 @@ const CLAIMS = [
   ["open", "Generic million-site QC growth", "Specialized/address ceilings cross one million; the family-blind cluster-of-clusters executor does not yet."],
   ["open", "Pure-port crystal closure", "NaCl's port graph certifies the learned cell rule, but the radix/offset proposal still comes from a positions-only grid learner."],
   ["open", "Explicit output cost", "Symbolic derivations compress actions; emitting every atom remains linear and is not claimed to replace molecular dynamics time integration."],
+  ["progress", "Exact A₂ obstruction learning", "Eight focused size-seven layered lattice functions retain 1,113 sound radius-two family clauses after exact-model CEGAR, core reduction, replay, and subsumption. Each clause is a transferable marking over first-corona placements, not a physical potential."],
+  ["open", "A₂ global classification", "All eight focused candidates remain unresolved: the outer first-corona spaces are not exhausted, larger periodic quotients time out, and excluding scalar plus cellular anisotropic single-shape substitutions does not prove non-tiling or aperiodicity."],
 ];
 
 function statusLabel(status) {
@@ -384,7 +410,70 @@ function drawGrowthChart(system) {
   const points = values.map((value, index) => `${x(index)},${y(value)}`).join(" ");
   const area = `${left},${height - bottom} ${points} ${x(values.length - 1)},${height - bottom}`;
   const dots = values.map((value, index) => `<g class="${index <= system.verifiedThrough ? "verified" : "projected"}"><circle cx="${x(index)}" cy="${y(value)}" r="5"/><text x="${x(index)}" y="${Math.max(14, y(value) - 12)}" text-anchor="middle">${value.toLocaleString()}</text></g>`).join("");
-  svg.innerHTML = `<g class="chart-grid">${grid}</g><polygon class="growth-area" points="${area}"/><polyline class="growth-line" points="${points}"/>${dots}<g class="x-labels">${values.map((_value, index) => `<text x="${x(index)}" y="${height - 24}" text-anchor="middle">a${index}</text>`).join("")}</g>`;
+  const xLabels = system.xLabels || values.map((_value, index) => `a${index}`);
+  svg.innerHTML = `<g class="chart-grid">${grid}</g><polygon class="growth-area" points="${area}"/><polyline class="growth-line" points="${points}"/>${dots}<g class="x-labels">${values.map((_value, index) => `<text x="${x(index)}" y="${height - 24}" text-anchor="middle">${xLabels[index]}</text>`).join("")}</g>`;
+}
+
+const A2_CANDIDATES = [...A2_LAYERED_SIZE7_CANDIDATES]
+  .sort((left, right) => left.survivor_priority - right.survivor_priority);
+
+function a2CandidateSvg(candidate) {
+  const polygons = candidate.cells.map((cell) => {
+    const centerX = (cell.q - cell.r) * 30 + cell.k * 7;
+    const centerY = (cell.q + cell.r) * 17 - cell.k * 22;
+    const points = cell.kind === "u"
+      ? [[centerX, centerY - 14], [centerX - 14, centerY + 10], [centerX + 14, centerY + 10]]
+      : [[centerX, centerY + 14], [centerX - 14, centerY - 10], [centerX + 14, centerY - 10]];
+    return { cell, points };
+  }).sort((left, right) => left.cell.k - right.cell.k || left.cell.r - right.cell.r || left.cell.q - right.cell.q);
+  const coordinates = polygons.flatMap(({ points }) => points);
+  const minX = Math.min(...coordinates.map(([x]) => x)) - 18;
+  const maxX = Math.max(...coordinates.map(([x]) => x)) + 18;
+  const minY = Math.min(...coordinates.map(([, y]) => y)) - 18;
+  const maxY = Math.max(...coordinates.map(([, y]) => y)) + 18;
+  const shapes = polygons.map(({ cell, points }) => `<polygon class="a2-layer-${Math.min(3, cell.k)}" points="${points.map((point) => point.join(",")).join(" ")}"/><circle cx="${points.reduce((sum, point) => sum + point[0], 0) / 3}" cy="${points.reduce((sum, point) => sum + point[1], 0) / 3}" r="1.8"/>`).join("");
+  return `<svg viewBox="${minX} ${minY} ${maxX - minX} ${maxY - minY}" role="img" aria-label="${candidate.name}, seven exact triangular prisms">${shapes}</svg>`;
+}
+
+function renderA2Candidate(candidateId = A2_CANDIDATES[0].id) {
+  const candidate = A2_CANDIDATES.find((entry) => entry.id === candidateId) || A2_CANDIDATES[0];
+  const screen = candidate.screening;
+  document.querySelectorAll("[data-a2-candidate]").forEach((button) => {
+    const active = button.dataset.a2Candidate === candidate.id;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-selected", String(active));
+  });
+  byId("a2CandidateShape").innerHTML = `${a2CandidateSvg(candidate)}<span>${candidate.cells.length} exact A₂ prisms · ${candidate.lattice_points} lattice points</span>`;
+  byId("a2CandidateStory").innerHTML = `
+    <header><span>${candidate.id}</span><strong>${screen.status}</strong></header>
+    <h4>${candidate.name}</h4>
+    <div><span><small>root corona</small><b>${screen.corona_root_patch_copies} copies</b></span><span><small>root placements</small><b>${screen.corona_root_placements_considered.toLocaleString()}</b></span><span><small>replayed blockers</small><b>${screen.corona2_gcts_sound_clauses}</b></span><span><small>smallest replayed core</small><b>${screen.corona2_gcts_smallest_certified_core} placements</b></span><span><small>new exact rounds</small><b>${screen.corona2_gcts_new_clauses_long_run}</b></span><span><small>CEGAR continuation</small><b>${(screen.corona2_gcts_milliseconds / 1000).toFixed(1)} s</b></span></div>
+    <p>${screen.corona2_first_states_rejected} explicitly sampled first coronas fail to complete. Scalar substitutions at scales ${screen.substitution_scalar_scales_excluded[0]}–${screen.substitution_scalar_scales_excluded.at(-1)} and ${screen.substitution_anisotropic_inflations_excluded} anisotropic scale pairs are independently excluded. The unsampled outer-corona remainder keeps the classification <b>unresolved</b>.</p>`;
+}
+
+function renderA2Explorer() {
+  const tabs = byId("a2CandidateTabs");
+  if (tabs.childElementCount) return renderA2Candidate();
+  const maximum = Math.max(...A2_CANDIDATES.map((candidate) => candidate.screening.corona2_gcts_sound_clauses));
+  A2_CANDIDATES.forEach((candidate) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.dataset.a2Candidate = candidate.id;
+    button.setAttribute("role", "tab");
+    button.innerHTML = `<span>${candidate.id.slice(-5)}</span><strong>${candidate.screening.corona2_gcts_sound_clauses}</strong><small>sound clauses</small>`;
+    button.addEventListener("click", () => renderA2Candidate(candidate.id));
+    tabs.appendChild(button);
+  });
+  byId("a2BlockerBars").replaceChildren(...A2_CANDIDATES.map((candidate) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.dataset.a2Candidate = candidate.id;
+    button.style.setProperty("--a2-blocker-ratio", `${candidate.screening.corona2_gcts_sound_clauses / maximum}`);
+    button.innerHTML = `<span>${candidate.id.slice(-5)}</span><i></i><b>${candidate.screening.corona2_gcts_sound_clauses}</b>`;
+    button.addEventListener("click", () => renderA2Candidate(candidate.id));
+    return button;
+  }));
+  renderA2Candidate();
 }
 
 function renderSystem(key) {
@@ -396,8 +485,15 @@ function renderSystem(key) {
   byId("atlasSystemMetrics").innerHTML = system.metrics.map(([term, value]) => `<div><dt>${term}</dt><dd>${value}</dd></div>`).join("");
   byId("atlasSystemVerdict").className = `system-verdict ${system.verdict[0]}`;
   byId("atlasSystemVerdict").innerHTML = `<span>${statusLabel(system.verdict[0])}</span><strong>${system.verdict[1]}</strong>`;
-  byId("atlasCurveTitle").textContent = `${system.short} · growth by learned action`;
+  byId("atlasCurveEyebrow").textContent = system.curveEyebrow || "represented or explicit sites";
+  byId("atlasCurveTitle").textContent = system.curveTitle || `${system.short} · growth by learned action`;
+  byId("atlasCurveObserved").textContent = system.curveObserved || "explicit / verified";
+  byId("atlasCurveProjected").textContent = system.curveProjected || "symbolic representation";
+  byId("atlasCurveNote").textContent = system.curveNote || "log scale · labels show exact counts";
   byId("systemEvidenceCards").innerHTML = system.evidence.map(([label, value, note]) => `<article><small>${label}</small><strong>${value}</strong><p>${note}</p></article>`).join("");
+  const a2Explorer = byId("a2CoronaExplorer");
+  a2Explorer.hidden = key !== "a2";
+  if (key === "a2") renderA2Explorer();
   const actions = byId("atlasSystemActions");
   actions.hidden = !system.actions?.length;
   actions.replaceChildren(...(system.actions || []).map(([label, scenario, stage, preparation]) => {
