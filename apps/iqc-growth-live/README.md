@@ -19,6 +19,18 @@ the GCTS anatomy view explains covers, oriented ports, markings, search, and
 promotion; and the claim ledger keeps proved, measured, and open results visibly
 separate. Its numbers are frozen benchmark results, not recomputed browser demos.
 
+Build 240 resolves the next geometric layer of the interstitial graph: every
+shared-face edge now carries a **witnessed straight-segment bottleneck**. Its
+clearance is the exact minimum distance from the segment joining the two empty
+centers to any explicit point site, divided by the supplied nearest-neighbor
+distance. An interactive threshold removes centers and throats that cannot
+maintain the selected point-site clearance, recomputes connected components,
+and highlights the widest core-to-front bottleneck over all retained paths.
+The same invariant appears as a separate material-consequence channel. This is
+still finite point geometry: there is no atomic or probe radius, curved-path
+optimization, continuous void surface, energetic landscape, hopping law,
+permeability, diffusion coefficient, rate, or physical time.
+
 Build 239 turns the finite empty-center census into an interactive **witnessed
 interstitial network**. Two empty centers are adjacent only when their retained
 local simplices share a complete edge in 2D or face in 3D. The radial landscape

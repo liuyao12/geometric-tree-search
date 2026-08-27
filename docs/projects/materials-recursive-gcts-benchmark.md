@@ -13,6 +13,29 @@ amplification is `b > 1`, a level-`L` accepted macro placement represents
 approximately `b^L` atoms.  Materializing or exporting `N` atomic coordinates
 still has an unavoidable `O(N)` cost and must be reported separately.
 
+### Witnessed interstitial bottlenecks (Build 240)
+
+The face-adjacency graph now carries a finite geometric capacity on every edge.
+For two adjacent empty centers, the browser evaluates the minimum distance from
+every explicit point site to the complete straight segment joining the centers;
+the smallest value is the witnessed throat clearance, normalized by the
+supplied median nearest-neighbor distance. Node clearance and edge throat
+clearance jointly define a thresholded subgraph. The interactive threshold
+recomputes open centers, open throats, components, isolation, and components
+touching both the declared inner-core and growth-front radial bands. A widest-
+path calculation separately reports the maximum bottleneck attainable between
+those bands, and the material-consequence matrix retains that value without
+mixing it with component fraction or empty-center size.
+
+This is an exact result for straight segments among sampled, locally witnessed
+point-site centers. It supplies no atomic/ionic radius, probe radius, curved
+path, continuous void boundary, periodic image, energy landscape, hopping
+model, or thermal sampling. The threshold is an exploratory geometric cutoff,
+not a particle radius. Therefore the result is not accessible porosity,
+physical transport connectivity, a migration barrier, permeability, a
+diffusion coefficient, a rate, or physical time, and it remains excluded from
+growth candidate generation, marking, ranking, and admission.
+
 ### Witnessed interstitial connectivity graph (Build 239)
 
 Each retained empty center now carries all locally witnessed defining

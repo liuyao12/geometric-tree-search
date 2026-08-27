@@ -144,7 +144,21 @@ function witnessedEmptyCenters(positions, dimension, maximumAnchors, neighborLim
   })).sort((first, second) => first.clearance - second.clearance);
 }
 
-function emptyCenterNetwork(centers, radialRecords, dimension) {
+function segmentMinimumSiteClearance(first, second, positions) {
+  const direction = second.map((value, axis) => value - first[axis]);
+  const length2 = direction.reduce((sum, value) => sum + value * value, 0);
+  if (length2 <= 1e-20) return Math.sqrt(Math.min(...positions.map((point) => squaredDistance(first, point))));
+  let minimum2 = Infinity;
+  positions.forEach((point) => {
+    const projection = point.reduce((sum, value, axis) => sum + (value - first[axis]) * direction[axis], 0) / length2;
+    const parameter = Math.max(0, Math.min(1, projection));
+    const closest = first.map((value, axis) => value + parameter * direction[axis]);
+    minimum2 = Math.min(minimum2, squaredDistance(point, closest));
+  });
+  return Math.sqrt(minimum2);
+}
+
+function emptyCenterNetwork(centers, radialRecords, dimension, positions, declaredThreshold) {
   const edges = [];
   for (let first = 0; first < centers.length; first++) for (let second = first + 1; second < centers.length; second++) {
     let sharedSiteCount = 0;
@@ -152,7 +166,12 @@ function emptyCenterNetwork(centers, radialRecords, dimension) {
       const shared = firstSimplex.filter((site) => secondSimplex.includes(site)).length;
       sharedSiteCount = Math.max(sharedSiteCount, shared); return shared >= dimension;
     }));
-    if (sharedSiteCount >= dimension) edges.push({ first, second, sharedSiteCount });
+    if (sharedSiteCount >= dimension) {
+      const throatClearance = segmentMinimumSiteClearance(centers[first].center, centers[second].center, positions);
+      const endpointClearance = Math.min(radialRecords[first].clearance, radialRecords[second].clearance);
+      edges.push({ first, second, sharedSiteCount, throatClearance,
+        throatToEndpointRatio: Math.max(0, Math.min(1, throatClearance / Math.max(1e-12, endpointClearance))) });
+    }
   }
   const parents = centers.map((_, index) => index);
   const root = (index) => { while (parents[index] !== index) { parents[index] = parents[parents[index]]; index = parents[index]; } return index; };
@@ -173,6 +192,50 @@ function emptyCenterNetwork(centers, radialRecords, dimension) {
   const largest = componentRecords[0] || null;
   const degree = new Array(centers.length).fill(0);
   edges.forEach((edge) => { degree[edge.first]++; degree[edge.second]++; });
+  const thresholdNodes = new Set(radialRecords.map((record, index) => record.clearance >= declaredThreshold ? index : null)
+    .filter((index) => index !== null));
+  const thresholdEdges = edges.filter((edge) => edge.throatClearance >= declaredThreshold
+    && thresholdNodes.has(edge.first) && thresholdNodes.has(edge.second));
+  const thresholdParents = centers.map((_, index) => index);
+  const thresholdRoot = (index) => { while (thresholdParents[index] !== index) {
+    thresholdParents[index] = thresholdParents[thresholdParents[index]]; index = thresholdParents[index];
+  } return index; };
+  thresholdEdges.forEach((edge) => {
+    const first = thresholdRoot(edge.first); const second = thresholdRoot(edge.second);
+    if (first !== second) thresholdParents[Math.max(first, second)] = Math.min(first, second);
+  });
+  const thresholdComponents = new Map();
+  thresholdNodes.forEach((index) => {
+    const key = thresholdRoot(index); if (!thresholdComponents.has(key)) thresholdComponents.set(key, []);
+    thresholdComponents.get(key).push(index);
+  });
+  const thresholdComponentRecords = [...thresholdComponents.values()].map((nodes) => {
+    const radii = nodes.map((node) => radialRecords[node].normalizedRadius);
+    return { nodes, nodeCount: nodes.length,
+      coreToFront: Math.min(...radii) <= .5 && Math.max(...radii) >= .75 };
+  }).sort((first, second) => second.nodeCount - first.nodeCount);
+  const adjacency = centers.map(() => []);
+  edges.forEach((edge) => {
+    adjacency[edge.first].push({ node: edge.second, capacity: edge.throatClearance });
+    adjacency[edge.second].push({ node: edge.first, capacity: edge.throatClearance });
+  });
+  const widest = new Array(centers.length).fill(-Infinity);
+  radialRecords.forEach((record, index) => { if (record.normalizedRadius <= .5) widest[index] = record.clearance; });
+  const visited = new Set();
+  for (;;) {
+    let selected = -1;
+    for (let index = 0; index < widest.length; index++) if (!visited.has(index)
+      && widest[index] > (selected < 0 ? -Infinity : widest[selected])) selected = index;
+    if (selected < 0 || !Number.isFinite(widest[selected])) break;
+    visited.add(selected);
+    adjacency[selected].forEach((neighbor) => {
+      const capacity = Math.min(widest[selected], neighbor.capacity, radialRecords[neighbor.node].clearance);
+      if (capacity > widest[neighbor.node]) widest[neighbor.node] = capacity;
+    });
+  }
+  const coreToFrontBottleneck = Math.max(-Infinity, ...radialRecords.map((record, index) =>
+    record.normalizedRadius >= .75 ? widest[index] : -Infinity));
+  const throatClearances = edges.map((edge) => edge.throatClearance);
   return {
     nodeCount: centers.length,
     edgeCount: edges.length,
@@ -184,21 +247,32 @@ function emptyCenterNetwork(centers, radialRecords, dimension) {
     largestComponentNodes: largest?.nodeCount || 0,
     largestComponentFraction: (largest?.nodeCount || 0) / Math.max(1, centers.length),
     coreToFrontComponentCount: componentRecords.filter((component) => component.coreToFront).length,
+    minimumThroatClearance: throatClearances.length ? Math.min(...throatClearances) : null,
+    percentile10ThroatClearance: quantile(throatClearances, .1),
+    medianThroatClearance: quantile(throatClearances, .5),
+    widestCoreToFrontClearance: Number.isFinite(coreToFrontBottleneck) ? coreToFrontBottleneck : null,
+    declaredThreshold,
+    thresholdNodeCount: thresholdNodes.size,
+    thresholdEdgeCount: thresholdEdges.length,
+    thresholdComponentCount: thresholdComponentRecords.length,
+    thresholdLargestComponentNodes: thresholdComponentRecords[0]?.nodeCount || 0,
+    thresholdCoreToFrontComponentCount: thresholdComponentRecords.filter((component) => component.coreToFront).length,
     degrees: degree,
     edges,
     components: componentRecords,
     adjacencyDefinition: `two empty centers are adjacent only when witnessed simplices share a complete ${dimension === 2 ? "edge (two sites)" : "face (three sites)"}`,
+    throatDefinition: "minimum distance from any explicit point site to the straight segment joining adjacent empty centers, divided by supplied nearest-neighbor distance",
   };
 }
 
-function summarize(positions, dimension, maximumAnchors, neighborLimit, histogramBins, histogramMaximum) {
+function summarize(positions, dimension, maximumAnchors, neighborLimit, histogramBins, histogramMaximum, declaredThreshold) {
   const anchors = canonicalAnchors(positions, maximumAnchors);
   const centers = witnessedEmptyCenters(positions, dimension, maximumAnchors, neighborLimit, anchors);
   const structureCenter = centroid(positions);
   const maximumStructureRadius = Math.max(1e-12, ...positions.map((point) => Math.sqrt(squaredDistance(point, structureCenter))));
   const records = centers.map((record) => ({ clearance: record.clearance,
     normalizedRadius: Math.sqrt(squaredDistance(record.center, structureCenter)) / maximumStructureRadius }));
-  const network = emptyCenterNetwork(centers, records, dimension);
+  const network = emptyCenterNetwork(centers, records, dimension, positions, declaredThreshold);
   const clearances = records.map((record) => record.clearance);
   const core = records.filter((record) => record.normalizedRadius <= .5).map((record) => record.clearance);
   const front = records.filter((record) => record.normalizedRadius >= .75).map((record) => record.clearance);
@@ -221,7 +295,7 @@ function summarize(positions, dimension, maximumAnchors, neighborLimit, histogra
 
 export function interstitialClearanceAudit(currentPositions, referencePositions, {
   dimension = 3, maximumAnchors = 64, neighborLimit = 6, histogramBins = 20,
-  histogramMaximum = 1.5,
+  histogramMaximum = 1.5, declaredThreshold = .5,
 } = {}) {
   const resolvedDimension = dimension === 2 ? 2 : 3;
   const minimumSites = resolvedDimension + 2;
@@ -236,9 +310,9 @@ export function interstitialClearanceAudit(currentPositions, referencePositions,
   };
   const normalize = (positions) => positions.map((point) => point.map((value) => value / referenceScale));
   const current = summarize(normalize(currentPositions), resolvedDimension, maximumAnchors,
-    neighborLimit, histogramBins, histogramMaximum);
+    neighborLimit, histogramBins, histogramMaximum, declaredThreshold);
   const reference = summarize(normalize(referencePositions), resolvedDimension, maximumAnchors,
-    neighborLimit, histogramBins, histogramMaximum);
+    neighborLimit, histogramBins, histogramMaximum, declaredThreshold);
   if (!current.candidateCenters || !reference.candidateCenters) return {
     available: false, reason: "no nondegenerate locally witnessed empty simplex centers were resolved",
     dimension: resolvedDimension, currentCandidateCenters: current.candidateCenters,
@@ -254,6 +328,7 @@ export function interstitialClearanceAudit(currentPositions, referencePositions,
     neighborLimit,
     histogramBins,
     histogramMaximum,
+    declaredThreshold,
     histogramOverflowIncludedInLastBin: true,
     ...current,
     reference,
@@ -274,6 +349,7 @@ export function interstitialClearanceAudit(currentPositions, referencePositions,
     diffusionPathInferred: false,
     migrationBarrierInferred: false,
     physicalTransportConnectivityInferred: false,
+    probeAccessibleNetworkInferred: false,
     pressureInferred: false,
     physicalTimeIntegrated: false,
   };
