@@ -12,12 +12,20 @@ STYLE = (ROOT / "apps/iqc-growth-live/style.css").read_text()
 
 
 def main() -> None:
-    for identifier in ("databaseEvidenceSelect", "databaseEvidenceHint"):
+    for identifier in ("databaseEvidenceSelect", "databaseEvidenceHint", "databaseFamilySelect",
+                       "databaseFamilyHint", "databaseFamilySource"):
         assert f'id="{identifier}"' in HTML
         assert f'$("{identifier}")' in APP
     for mode in ("geometry", "relaxation", "forces", "calibration"):
         assert f'value="{mode}"' in HTML
         assert f'{mode}: Object.freeze(' in DATABASE
+    for family in ("bulk", "twoD", "water"):
+        assert f'value="{family}"' in HTML
+        assert f'{family}: Object.freeze(' in DATABASE
+    assert "normalizeNomadStructureFamily" in DATABASE
+    assert "renderDatabaseStructureFamily" in APP
+    assert "structureFamily: structureFamily.id" in APP
+    assert "structureFamilyUsedForGrowth: false" in APP
     assert "nomadStructureEvidenceProfile" in DATABASE
     assert "nomadEvidenceTargetAccepts" in DATABASE
     assert "calibrationReady: relaxationFrames >= 5" in DATABASE
@@ -26,9 +34,9 @@ def main() -> None:
     assert "clientSideEvidenceGate: true" in APP
     assert "targetUsedForGrowth: false" in APP
     assert "database-evidence" in STYLE
-    assert 'structure-database.js?v=20260827-7' in APP
-    assert 'buildId: "20260827-220"' in APP
-    assert 'app.js?v=20260827-220' in HTML
+    assert 'structure-database.js?v=20260827-8' in APP
+    assert 'buildId: "20260827-221"' in APP
+    assert 'app.js?v=20260827-221' in HTML
     print("NOMAD evidence-targeted search contract passed")
 
 

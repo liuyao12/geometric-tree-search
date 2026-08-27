@@ -6568,3 +6568,17 @@ force, spin, and normalized-method support. Entry acceptance is the only automat
 this target. Calculation channels do not enter cluster identity, candidate generation, or
 growth ranking unless a different compatible archive later passes the already frozen
 cross-archive transfer and explicit marking-promotion gate.
+
+## Build 221: select a public specimen family without leaking it into GCTS
+
+The public input route now exposes three bounded NOMAD searches: 3D bulk structures,
+`structural_type = 2D` layered structures, and exact H/O structures with reduced formula
+`H2O`. Each remains compatible with the independently selected calculation-evidence gate.
+The water filter prevents a generic two-element search from standing in for crystalline
+water, while the 2D filter allows materials-science users to start from database-classified
+layered configurations rather than only curated graphene / hBN examples.
+
+The receipt records this source-family choice and explicitly records that it is not used
+for cluster identity or growth. The family is an acquisition constraint, not a training
+label; H₂O retrieval does not assert an ice polymorph, and NOMAD's 2D classification does
+not supply a lattice, layer group, cluster cover, marking, or continuation grammar.

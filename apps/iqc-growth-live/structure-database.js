@@ -9,6 +9,11 @@ export const NOMAD_EVIDENCE_TARGETS = Object.freeze({
   forces: Object.freeze({ id: "forces", label: "force-labelled geometry · complete forces on at least 1 snapshot" }),
   calibration: Object.freeze({ id: "calibration", label: "surrogate-ready series · at least 5 paired calculation snapshots" }),
 });
+export const NOMAD_STRUCTURE_FAMILIES = Object.freeze({
+  bulk: Object.freeze({ id: "bulk", label: "3D bulk solid", structuralType: "bulk", fixedElements: null, formula: null }),
+  twoD: Object.freeze({ id: "twoD", label: "intrinsic 2D / layered material", structuralType: "2D", fixedElements: null, formula: null }),
+  water: Object.freeze({ id: "water", label: "crystalline H₂O family", structuralType: "bulk", fixedElements: ["H", "O"], formula: "H2O" }),
+});
 const ELEMENT_PATTERN = /^(?:H|He|Li|Be|B|C|N|O|F|Ne|Na|Mg|Al|Si|P|S|Cl|Ar|K|Ca|Sc|Ti|V|Cr|Mn|Fe|Co|Ni|Cu|Zn|Ga|Ge|As|Se|Br|Kr|Rb|Sr|Y|Zr|Nb|Mo|Tc|Ru|Rh|Pd|Ag|Cd|In|Sn|Sb|Te|I|Xe|Cs|Ba|La|Ce|Pr|Nd|Pm|Sm|Eu|Gd|Tb|Dy|Ho|Er|Tm|Yb|Lu|Hf|Ta|W|Re|Os|Ir|Pt|Au|Hg|Tl|Pb|Bi|Po|At|Rn|Fr|Ra|Ac|Th|Pa|U|Np|Pu|Am|Cm|Bk|Cf|Es|Fm|Md|No|Lr|Rf|Db|Sg|Bh|Hs|Mt|Ds|Rg|Cn|Nh|Fl|Mc|Lv|Ts|Og)$/;
 const ATOMIC_SYMBOLS = " H He Li Be B C N O F Ne Na Mg Al Si P S Cl Ar K Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Kr Rb Sr Y Zr Nb Mo Tc Ru Rh Pd Ag Cd In Sn Sb Te I Xe Cs Ba La Ce Pr Nd Pm Sm Eu Gd Tb Dy Ho Er Tm Yb Lu Hf Ta W Re Os Ir Pt Au Hg Tl Pb Bi Po At Rn Fr Ra Ac Th Pa U Np Pu Am Cm Bk Cf Es Fm Md No Lr Rf Db Sg Bh Hs Mt Ds Rg Cn Nh Fl Mc Lv Ts Og".split(" ");
 
@@ -26,8 +31,14 @@ function normalizeElements(values) {
   return elements;
 }
 
-function queryPayload(elementValues, pageOffset = 0, evidenceTargetValue = "geometry") {
-  const elements = normalizeElements(elementValues);
+function queryPayload(elementValues, pageOffset = 0, evidenceTargetValue = "geometry", structureFamilyValue = "bulk") {
+  const structureFamily = normalizeNomadStructureFamily(structureFamilyValue);
+  const suppliedElements = normalizeElements(elementValues);
+  const elements = structureFamily.fixedElements || suppliedElements;
+  if (structureFamily.fixedElements && (suppliedElements.length !== elements.length
+      || elements.some((element) => !suppliedElements.includes(element)))) {
+    throw new Error(`${structureFamily.label} requires exactly ${elements.join(" + ")}`);
+  }
   const evidenceTarget = normalizeNomadEvidenceTarget(evidenceTargetValue);
   const evidenceFilter = evidenceTarget.id === "forces"
     ? { "results.properties.geometry_optimization.final_force_maximum:lte": 1e6 }
@@ -39,7 +50,8 @@ function queryPayload(elementValues, pageOffset = 0, evidenceTargetValue = "geom
       and: [
         { "results.material.elements": { all: elements } },
         { "results.material.n_elements": elements.length },
-        { "results.material.structural_type": "bulk" },
+        { "results.material.structural_type": structureFamily.structuralType },
+        ...(structureFamily.formula ? [{ "results.material.chemical_formula_reduced": structureFamily.formula }] : []),
         ...(evidenceFilter ? [evidenceFilter] : []),
       ],
     },
@@ -387,6 +399,13 @@ export function normalizeNomadEvidenceTarget(value) {
   return target;
 }
 
+export function normalizeNomadStructureFamily(value) {
+  const id = String(value || "bulk");
+  const family = NOMAD_STRUCTURE_FAMILIES[id];
+  if (!family) throw new Error(`Unknown NOMAD structure family: ${id}`);
+  return family;
+}
+
 export function nomadEvidenceTargetAccepts(profile, targetValue = "geometry") {
   const target = normalizeNomadEvidenceTarget(targetValue);
   if (target.id === "geometry") return Boolean(profile.geometryAvailable);
@@ -403,12 +422,14 @@ export function nomadEvidenceProfileLabel(profile) {
 }
 
 export async function randomNomadStructure(elementValues, options = {}) {
+  const structureFamily = normalizeNomadStructureFamily(options.structureFamily);
   const elements = normalizeElements(elementValues);
   const evidenceTarget = normalizeNomadEvidenceTarget(options.evidenceTarget);
   const fetchImpl = options.fetchImpl || fetch;
-  const initial = await postJson(`${NOMAD_API}/entries/query`, queryPayload(elements, 0, evidenceTarget.id), fetchImpl);
+  const initial = await postJson(`${NOMAD_API}/entries/query`,
+    queryPayload(elements, 0, evidenceTarget.id, structureFamily.id), fetchImpl);
   const total = Number(initial.pagination?.total || 0);
-  if (!total) throw new Error(`NOMAD has no public bulk entries containing exactly ${elements.join(" + ")}`);
+  if (!total) throw new Error(`NOMAD has no public ${structureFamily.label} entries containing exactly ${elements.join(" + ")}`);
   const accessibleTotal = Math.min(total, 10_000);
   const attempts = Math.min(8, accessibleTotal);
   const triedOffsets = new Set();
@@ -418,7 +439,7 @@ export async function randomNomadStructure(elementValues, options = {}) {
     while (triedOffsets.has(offset) && triedOffsets.size < accessibleTotal) offset = (offset + 1) % accessibleTotal;
     triedOffsets.add(offset);
     const page = offset === 0 ? initial : await postJson(`${NOMAD_API}/entries/query`,
-      queryPayload(elements, offset, evidenceTarget.id), fetchImpl);
+      queryPayload(elements, offset, evidenceTarget.id, structureFamily.id), fetchImpl);
     const entry = page.data?.[0];
     if (!entry) continue;
     try {
@@ -441,15 +462,16 @@ export async function randomNomadStructure(elementValues, options = {}) {
         throw new Error(`entry does not satisfy ${evidenceTarget.label}`);
       }
       const structure = makeLearningSupercell(primitive);
-      structure.metadata = { ...structure.metadata, nomadEvidenceTarget: evidenceTarget.id,
+      structure.metadata = { ...structure.metadata, nomadStructureFamily: structureFamily.id,
+        nomadStructureFamilyLabel: structureFamily.label, nomadEvidenceTarget: evidenceTarget.id,
         nomadEvidenceProfile: evidenceProfile, nomadEvidenceLabel: nomadEvidenceProfileLabel(evidenceProfile) };
       return { structure, total, selectedOffset: offset, attemptedEntries: triedOffsets.size,
-        evidenceTarget, evidenceProfile };
+        structureFamily, evidenceTarget, evidenceProfile };
     } catch (error) {
       lastError = error;
     }
   }
-  throw new Error(`No public archive matched ${evidenceTarget.label} after ${attempts} random samples${lastError ? `: ${lastError.message}` : ""}`);
+  throw new Error(`No public ${structureFamily.label} archive matched ${evidenceTarget.label} after ${attempts} random samples${lastError ? `: ${lastError.message}` : ""}`);
 }
 
 export { canonicalElement, normalizeElements, queryPayload };

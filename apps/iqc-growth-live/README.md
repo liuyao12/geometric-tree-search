@@ -5835,3 +5835,18 @@ spin, and method-consistency counts). This profile chooses only the input archiv
 not label clusters, change geometry, authorize candidates, or rank growth. Energy/force
 information reaches GCTS only through the existing frozen cross-archive calibration gate;
 otherwise it remains displayed provenance and diagnostic geometry.
+
+### Build 221 · public bulk, 2D, and crystalline-water source families
+
+Public retrieval now starts with an explicit specimen-family choice: periodic 3D bulk,
+NOMAD-classified intrinsic 2D / layered structures, or crystalline H₂O. The 2D route keeps
+the periodic-table multi-select and requests NOMAD `structural_type = 2D`. The water route
+locks the compact selector to H and O and additionally requires reduced formula `H2O`, so
+unrelated H–O compounds cannot enter by element set alone. All three routes retain the
+geometry / relaxation / force / surrogate-ready evidence gate from Build 220.
+
+These are source filters, not supplied structure labels. The browser may use the selected
+2D family to choose dimension-aware measurements, but the family name, H₂O formula, NOMAD
+class, database IDs, and source metadata never define a cluster, marking, candidate, or
+growth branch. “Crystalline H₂O” is also not an ice-polymorph assignment: phase and
+hydrogen-bond topology remain consequences to be measured from the retrieved coordinates.

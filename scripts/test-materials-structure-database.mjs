@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
-import { canonicalElement, makeLearningSupercell, NOMAD_EVIDENCE_TARGETS, nomadArchiveToStructure,
+import { canonicalElement, makeLearningSupercell, NOMAD_EVIDENCE_TARGETS, NOMAD_STRUCTURE_FAMILIES, nomadArchiveToStructure,
   nomadEvidenceProfileLabel, nomadEvidenceTargetAccepts, nomadStructureEvidenceProfile,
-  normalizeElements, normalizeNomadEvidenceTarget, queryPayload, randomNomadStructure }
+  normalizeElements, normalizeNomadEvidenceTarget, normalizeNomadStructureFamily, queryPayload, randomNomadStructure }
   from "../apps/iqc-growth-live/structure-database.js";
 import { validateStructure } from "../apps/iqc-growth-live/structure-io.js";
 
@@ -21,6 +21,15 @@ assert.equal(forcePayload.query.and[3]["results.properties.geometry_optimization
 const relaxationPayload = queryPayload(["Na", "Cl"], 0, "relaxation");
 assert.equal(relaxationPayload.query.and[3]["results.properties.geometry_optimization.final_energy_difference:lte"], 1e6);
 assert.equal(queryPayload(["Na", "Cl"], 0, "geometry").query.and.length, 3);
+const twoDPayload = queryPayload(["C"], 0, "geometry", "twoD");
+assert.equal(twoDPayload.query.and[2]["results.material.structural_type"], "2D");
+assert.equal(twoDPayload.query.and.length, 3);
+const waterPayload = queryPayload(["H", "O"], 0, "geometry", "water");
+assert.equal(waterPayload.query.and[2]["results.material.structural_type"], "bulk");
+assert.equal(waterPayload.query.and[3]["results.material.chemical_formula_reduced"], "H2O");
+assert.equal(normalizeNomadStructureFamily("twoD"), NOMAD_STRUCTURE_FAMILIES.twoD);
+assert.throws(() => normalizeNomadStructureFamily("invented"), /Unknown NOMAD structure family/);
+assert.throws(() => queryPayload(["Na", "Cl"], 0, "geometry", "water"), /requires exactly H \+ O/);
 
 const entry = {
   entry_id: "test-entry",
@@ -105,6 +114,8 @@ assert.deepEqual(calls[1].body.required.run["calculation[-1]"], {
 assert.equal(sampled.evidenceTarget.id, "geometry");
 assert.equal(sampled.evidenceProfile.forceLabelsAvailable, true);
 assert.equal(sampled.structure.metadata.nomadEvidenceTarget, "geometry");
+assert.equal(sampled.structure.metadata.nomadStructureFamily, "bulk");
+assert.equal(sampled.structureFamily.id, "bulk");
 const forceSampled = await randomNomadStructure(["Na", "Cl"], {
   fetchImpl: fakeFetch, random: () => 0, evidenceTarget: "forces",
 });
@@ -112,7 +123,7 @@ assert.equal(forceSampled.evidenceTarget.id, "forces");
 assert.equal(forceSampled.structure.metadata.nomadEvidenceLabel, "force-labelled geometry · 1/1 snapshots");
 await assert.rejects(randomNomadStructure(["Na", "Cl"], {
   fetchImpl: fakeFetch, random: () => 0, evidenceTarget: "relaxation",
-}), /No public archive matched relaxation series/);
+}), /No public .* archive matched relaxation series/);
 
 const relaxationEntry = {
   ...entry,

@@ -224,7 +224,15 @@
             <p id="activeSampleNote">The controls below choose the source; this passport always reports the specimen currently shown and learned.</p>
           </section>
           <div class="database-picker">
-            <div class="database-heading"><strong>Search a random real material</strong><span>NOMAD · public bulk data</span></div>
+            <div class="database-heading"><strong>Search a random real material</strong><span id="databaseFamilySource">NOMAD · public bulk data</span></div>
+            <label class="database-evidence database-family" for="databaseFamilySelect">
+              <span><small>public specimen family</small><b id="databaseFamilyHint">periodic 3D solid</b></span>
+              <select id="databaseFamilySelect">
+                <option value="bulk" selected>3D bulk solid · choose elements</option>
+                <option value="twoD">Intrinsic 2D / layered · choose elements</option>
+                <option value="water">Crystalline H₂O · composition fixed</option>
+              </select>
+            </label>
             <button id="periodicTableButton" class="periodic-compact" type="button" aria-expanded="false" aria-controls="periodicTablePanel" aria-label="Expand periodic table">
               <span class="periodic-compact-label">elements · click to expand</span>
               <span id="periodicCompactGrid" class="periodic-compact-grid" aria-hidden="true"></span>
@@ -237,6 +245,7 @@
               <button type="button" data-element-preset="Al,Cu,Fe">Al–Cu–Fe</button>
               <button type="button" data-element-preset="Cu,Zr">Cu–Zr</button>
               <button type="button" data-element-preset="Fe">Fe · magnetic data probe</button>
+              <button type="button" data-element-preset="C">C · 2D probe</button>
             </div>
             <label class="database-evidence" for="databaseEvidenceSelect">
               <span><small>evidence to retrieve</small><b id="databaseEvidenceHint">any usable periodic archive</b></span>
@@ -1817,7 +1826,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260827-220"></script>
+  <script type="module" src="./app.js?v=20260827-221"></script>
   <script type="module" src="./evidence-atlas.js?v=20260826-19"></script>
 </body>
 </html>

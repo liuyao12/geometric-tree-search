@@ -9,8 +9,8 @@ import {
   parseStructureText,
   validateStructure,
 } from "./structure-io.js?v=20260826-7";
-import { NOMAD_EVIDENCE_TARGETS, nomadEvidenceProfileLabel, randomNomadStructure }
-  from "./structure-database.js?v=20260827-7";
+import { NOMAD_EVIDENCE_TARGETS, NOMAD_STRUCTURE_FAMILIES, nomadEvidenceProfileLabel, randomNomadStructure }
+  from "./structure-database.js?v=20260827-8";
 import { bestAffineNeighborhoodResidual } from "./relaxation-local-environment.js?v=20260826-2";
 import { assessGeometrySurrogatePromotion, evaluateFrozenGeometrySurrogate,
   frozenGeometrySurrogateArtifact, frozenGeometrySurrogatePreference,
@@ -231,6 +231,9 @@ const periodicTableGrid = $("periodicTableGrid");
 const periodicClearButton = $("periodicClearButton");
 const periodicCloseButton = $("periodicCloseButton");
 const randomMaterialButton = $("randomMaterialButton");
+const databaseFamilySelect = $("databaseFamilySelect");
+const databaseFamilyHint = $("databaseFamilyHint");
+const databaseFamilySource = $("databaseFamilySource");
 const databaseEvidenceSelect = $("databaseEvidenceSelect");
 const databaseEvidenceHint = $("databaseEvidenceHint");
 const databaseStatus = $("databaseStatus");
@@ -1829,13 +1832,37 @@ function selectedNomadEvidenceTarget() {
   return NOMAD_EVIDENCE_TARGETS[databaseEvidenceSelect.value] || NOMAD_EVIDENCE_TARGETS.geometry;
 }
 
+function selectedNomadStructureFamily() {
+  return NOMAD_STRUCTURE_FAMILIES[databaseFamilySelect.value] || NOMAD_STRUCTURE_FAMILIES.bulk;
+}
+
+function databaseElementsLocked() {
+  return Boolean(selectedNomadStructureFamily().fixedElements);
+}
+
 function renderDatabaseEvidenceTarget({ resetStatus = false } = {}) {
   const target = selectedNomadEvidenceTarget();
+  const family = selectedNomadStructureFamily();
   databaseEvidenceHint.textContent = target.label.replace(/^.*? · /, "");
   if (resetStatus) {
     databaseStatus.className = "import-status";
-    databaseStatus.textContent = `Queries exact-composition public bulk entries${target.id === "geometry" ? "" : " with an indexed calculation prefilter"}, then inspects up to eight archives until one satisfies ${target.label}.`;
+    databaseStatus.textContent = `Queries public ${family.label} entries${family.formula ? ` with reduced formula ${family.formula}` : " containing exactly the selected elements"}${target.id === "geometry" ? "" : " with an indexed calculation prefilter"}, then inspects up to eight archives until one satisfies ${target.label}.`;
   }
+}
+
+function renderDatabaseStructureFamily({ resetStatus = false } = {}) {
+  const family = selectedNomadStructureFamily();
+  if (family.fixedElements) selectedDatabaseElements = [...family.fixedElements];
+  const locked = databaseElementsLocked();
+  databaseFamilyHint.textContent = family.id === "twoD" ? "intrinsic 2D classification" : family.id === "water"
+    ? "reduced formula H₂O · bulk archive" : "periodic 3D solid";
+  databaseFamilySource.textContent = `NOMAD · public ${family.id === "twoD" ? "2D" : family.id === "water" ? "H₂O" : "bulk"} data`;
+  periodicTableButton.disabled = locked;
+  periodicClearButton.disabled = locked;
+  elementPresetButtons.forEach((button) => { button.disabled = locked; });
+  if (locked) setPeriodicTableOpen(false);
+  renderPeriodicSelection();
+  renderDatabaseEvidenceTarget({ resetStatus });
 }
 
 function renderPeriodicSelection() {
@@ -1854,6 +1881,7 @@ function renderPeriodicSelection() {
     chip.type = "button";
     chip.className = `selected-chip phase-${phase}`;
     chip.setAttribute("aria-label", `Remove ${symbol}`);
+    chip.disabled = databaseElementsLocked();
     chip.title = `${symbol} atom color ${atomStyle.css} · ${phase}`;
     const swatch = document.createElement("i");
     swatch.className = "atom-color-swatch";
@@ -1875,6 +1903,7 @@ function renderPeriodicSelection() {
   });
   randomMaterialButton.disabled = selectedDatabaseElements.length === 0;
   periodicTableGrid.querySelectorAll("[data-element]").forEach((button) => {
+    button.disabled = databaseElementsLocked();
     button.classList.toggle("selected", selectedDatabaseElements.includes(button.dataset.element));
     button.setAttribute("aria-pressed", String(selectedDatabaseElements.includes(button.dataset.element)));
   });
@@ -3201,6 +3230,8 @@ function activateImportedStructure(parsed, filename, statusElement = importStatu
         : parsed.metadata?.spaceGroup || "not supplied",
       audit: parsed.metadata?.nomadEvidenceLabel
         ? `NOMAD · ${parsed.metadata.nomadEvidenceLabel}` : "emergent structure audit",
+      intrinsicDimension: parsed.metadata?.nomadStructureFamily === "twoD" ? 2 : 3,
+      periodicWindow: Boolean(parsed.pbc?.some(Boolean)),
       note: `Imported from ${filename}; no structure class, space group, or cluster vocabulary is supplied to growth. Mixed and partial sites remain occupational alternatives rather than coincident atoms or a silently selected element. Supplied formal oxidation states remain chemistry channels; missing states are never guessed. Explicit scalar atomic spins remain diagnostic labels and never become invented vectors or a growth score.`,
     },
   };
@@ -9104,7 +9135,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-220",
+      buildId: "20260827-221",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -9123,6 +9154,8 @@ async function buildExperimentReceipt() {
       externalGeometry: receiptExternalGeometry(),
       observationToGrowthDomain: currentGrowthDomainSnapshot(),
       publicDatabaseEvidence: scenarioSelect.value === "imported" && importedStructure?.metadata?.entryId ? {
+        structureFamily: importedStructure.metadata.nomadStructureFamily || "bulk",
+        structureFamilyLabel: importedStructure.metadata.nomadStructureFamilyLabel || "3D bulk solid",
         requestedTarget: importedStructure.metadata.nomadEvidenceTarget || "geometry",
         label: importedStructure.metadata.nomadEvidenceLabel || "geometry-only archive",
         profile: importedStructure.metadata.nomadEvidenceProfile || null,
@@ -9130,6 +9163,8 @@ async function buildExperimentReceipt() {
         targetUsedForEntryAcceptance: true,
         targetUsedForClusterIdentity: false,
         targetUsedForGrowth: false,
+        structureFamilyUsedForClusterIdentity: false,
+        structureFamilyUsedForGrowth: false,
       } : null,
       recordedMeasurementConditions: recordedConditions ? {
         provenance: recordedConditions.provenance || "recorded diffraction/cell-measurement conditions",
@@ -25467,19 +25502,21 @@ elementPresetButtons.forEach((button) => button.addEventListener("click", () => 
   renderPeriodicSelection();
 }));
 databaseEvidenceSelect.addEventListener("change", () => renderDatabaseEvidenceTarget({ resetStatus: true }));
+databaseFamilySelect.addEventListener("change", () => renderDatabaseStructureFamily({ resetStatus: true }));
 randomMaterialButton.addEventListener("click", async () => {
   randomMaterialButton.disabled = true;
   databaseStatus.className = "import-status";
   const requestedElements = [...selectedDatabaseElements];
   const evidenceTarget = selectedNomadEvidenceTarget();
-  databaseStatus.textContent = `Searching NOMAD for exactly ${requestedElements.join(" + ")} · ${evidenceTarget.label}…`;
+  const structureFamily = selectedNomadStructureFamily();
+  databaseStatus.textContent = `Searching NOMAD for ${structureFamily.label} · exactly ${requestedElements.join(" + ")} · ${evidenceTarget.label}…`;
   try {
     const { structure, total, selectedOffset, attemptedEntries, evidenceProfile } = await randomNomadStructure(requestedElements,
-      { evidenceTarget: evidenceTarget.id });
+      { structureFamily: structureFamily.id, evidenceTarget: evidenceTarget.id });
     const repetitions = structure.metadata.repetitions || [1, 1, 1];
     const primitiveCount = structure.metadata.primitiveAtomCount || structure.atoms.length;
     activateImportedStructure(structure, `NOMAD entry ${structure.metadata.entryId}`, databaseStatus);
-    databaseStatus.textContent = `${importSummary(structure, importedStructure.validation)} · ${nomadEvidenceProfileLabel(evidenceProfile)} · ${primitiveCount} atoms expanded ${repetitions.join("×")} · inspected ${attemptedEntries} archive${attemptedEntries === 1 ? "" : "s"} · random ${selectedOffset + 1}/${total.toLocaleString()}`;
+    databaseStatus.textContent = `${structureFamily.label} · ${importSummary(structure, importedStructure.validation)} · ${nomadEvidenceProfileLabel(evidenceProfile)} · ${primitiveCount} atoms expanded ${repetitions.join("×")} · inspected ${attemptedEntries} archive${attemptedEntries === 1 ? "" : "s"} · random ${selectedOffset + 1}/${total.toLocaleString()}`;
     databaseSourceLink.href = structure.metadata.sourceUrl;
     databaseSourceLink.textContent = `Open NOMAD entry ${structure.metadata.entryId.slice(0, 10)}… ↗`;
   } catch (error) {
@@ -26194,7 +26231,7 @@ restoreExperimentNotebook();
 renderExperimentNotebook();
 renderStudyGuide();
 buildPeriodicTable();
-renderDatabaseEvidenceTarget();
+renderDatabaseStructureFamily();
 enterPipelineStage(applyLaunchParameters());
 renderStageFocus();
 if (studyLaunchAudit?.loaded) {
