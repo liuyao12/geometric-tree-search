@@ -286,6 +286,8 @@ const markingCapacityDetail = $("markingCapacityDetail");
 const markingLibrarySelect = $("markingLibrarySelect");
 const markingLibraryCount = $("markingLibraryCount");
 const markingSearchModeSelect = $("markingSearchModeSelect");
+const markingPortfolioState = $("markingPortfolioState");
+const markingPortfolioRows = $("markingPortfolioRows");
 const geometryPreferenceSelect = $("geometryPreferenceSelect");
 const strainWeightSelect = $("strainWeightSelect");
 const strainWeightHint = $("strainWeightHint");
@@ -8368,6 +8370,13 @@ function restoreMarkingLibrary() {
       && Array.isArray(marking.activeChannelsByPrototype)
       && Array.isArray(marking.channelBasis)
       && marking.channelBasis.length === Number(marking.config.channels)
+      && marking.channelBasis.every((axis) => Array.isArray(axis) && axis.length === 3
+        && axis.every(Number.isFinite))
+      && marking.coefficients.length === marking.activeChannelsByPrototype.length
+      && marking.coefficients.every((row) => Array.isArray(row)
+        && row.length === Number(marking.config.channels) && row.every(Number.isFinite))
+      && marking.activeChannelsByPrototype.every((count) => Number.isInteger(count)
+        && count > 0 && count <= Number(marking.config.channels))
       && MARKING_REPRESENTATIONS[marking.config.representation])
       .map((marking) => ({ ...marking, config: {
         ...marking.config, geometryMode: marking.config.geometryMode || "auto",
@@ -8975,7 +8984,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-211",
+      buildId: "20260826-212",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -9649,6 +9658,7 @@ async function buildExperimentReceipt() {
       config: markingConfig,
       searchMode: markingSearchMode,
       compatibleLibraryEntries: compatibleMarkings().map((marking) => ({ id: marking.id, name: marking.name })),
+      portfolioReplayAudit: markingPortfolioReplayAudit(),
       active: markingVisible && activeMarking ? {
         id: activeMarking.id,
         name: activeMarking.name,
@@ -12987,7 +12997,8 @@ function ruleMarkingDecision(rule) {
     id: marking.id,
     name: marking.name,
     score: ruleMarkingScore(rule, marking.coefficients,
-      marking.config.representation, marking.representationState),
+      marking.config.representation, marking.representationState,
+      marking.channelBasis, marking.activeChannelsByPrototype),
     threshold: markingAcceptanceThreshold(marking),
   }));
   if (!rows.length) {
@@ -13041,29 +13052,51 @@ function seedTrainedMarking() {
   }));
 }
 
+const resolvedMarkingAxisCache = new WeakMap();
+
+function markingAxesForBasis(channelBasis = sectionModel.axes) {
+  if (!channelBasis?.length || channelBasis[0]?.isVector3) return channelBasis;
+  if (!resolvedMarkingAxisCache.has(channelBasis)) {
+    resolvedMarkingAxisCache.set(channelBasis,
+      channelBasis.map((axis) => new THREE.Vector3(axis[0], axis[1], axis[2])));
+  }
+  return resolvedMarkingAxisCache.get(channelBasis);
+}
+
 function sectionValue(cluster, localDirection,
   coefficients = pipelineStage === 4 ? searchSectionCoefficients() : currentSectionPoint().coefficients,
-  exponent = sectionModel.exponent) {
-  const activeChannels = sectionModel.activeChannelsByPrototype?.[cluster] || sectionModel.axes.length;
-  return markingBasisFeatures(localDirection, 1, sectionModel.axes, exponent).slice(0, activeChannels)
-    .reduce((sum, feature, index) => sum + coefficients[cluster][index] * feature, 0);
+  exponent = sectionModel.exponent, channelBasis = sectionModel.axes,
+  activeChannelsByPrototype = sectionModel.activeChannelsByPrototype) {
+  const axes = markingAxesForBasis(channelBasis);
+  const row = coefficients?.[cluster];
+  if (!axes?.length || !row?.length) return Number.NEGATIVE_INFINITY;
+  const activeChannels = Math.min(row.length,
+    activeChannelsByPrototype?.[cluster] || axes.length);
+  return markingBasisFeatures(localDirection, 1, axes, exponent).slice(0, activeChannels)
+    .reduce((sum, feature, index) => sum + row[index] * feature, 0);
 }
 
 function ruleMarkingScore(rule,
   coefficients = pipelineStage === 4 ? searchSectionCoefficients() : currentSectionPoint().coefficients,
   representationName = sectionModel.representation,
-  representationState = sectionModel.representationState) {
+  representationState = sectionModel.representationState,
+  channelBasis = sectionModel.axes,
+  activeChannelsByPrototype = sectionModel.activeChannelsByPrototype) {
   const representation = MARKING_REPRESENTATIONS[representationName] || MARKING_REPRESENTATIONS.sites;
   const forward = rule.translation.clone().normalize();
   const reverse = rule.translation.clone().negate().normalize().applyQuaternion(rule.rotation.clone().invert());
-  const first = sectionValue(rule.from, forward, coefficients, representation.exponent);
-  const second = sectionValue(rule.to, reverse, coefficients, representation.exponent);
+  const first = sectionValue(rule.from, forward, coefficients, representation.exponent,
+    channelBasis, activeChannelsByPrototype);
+  const second = sectionValue(rule.to, reverse, coefficients, representation.exponent,
+    channelBasis, activeChannelsByPrototype);
   const inverseRotation = rule.rotation.clone().invert();
   const siteValues = ruleColoredSiteGeometry(rule).flatMap((site) => {
     if (site.parentVector.lengthSq() <= 1e-10) return [];
-    const parentValue = sectionValue(rule.from, site.parentVector.clone().normalize(), coefficients, representation.exponent);
+    const parentValue = sectionValue(rule.from, site.parentVector.clone().normalize(), coefficients,
+      representation.exponent, channelBasis, activeChannelsByPrototype);
     const childToParent = site.parentVector.clone().negate().applyQuaternion(inverseRotation).normalize();
-    const childValue = sectionValue(rule.to, childToParent, coefficients, representation.exponent);
+    const childValue = sectionValue(rule.to, childToParent, coefficients,
+      representation.exponent, channelBasis, activeChannelsByPrototype);
     return [.5 * (parentValue + childValue) - Math.abs(parentValue - childValue)];
   });
   const chirality = ruleColoredChirality(rule);
@@ -17220,7 +17253,55 @@ function compatibleMarkings() {
     && (marking.config.geometryMode || "auto") === geometryMode
     && (marking.config.clusterToleranceMode || "balanced") === clusterToleranceMode
     && marking.vocabularyKey === vocabularyKey
-    && marking.coefficients.length === markingPrototypeTypes().length);
+    && marking.coefficients.length === markingPrototypeTypes().length
+    && marking.channelBasis?.length === Number(marking.config.channels)
+    && marking.activeChannelsByPrototype?.length === marking.coefficients.length
+    && marking.coefficients.every((row) => row.length === Number(marking.config.channels)));
+}
+
+function markingPortfolioReplayAudit() {
+  const rules = overlapGrammar?.rules || [];
+  const markings = compatibleMarkings();
+  const rows = markings.map((marking) => {
+    const scores = rules.map((rule) => ruleMarkingScore(rule, marking.coefficients,
+      marking.config.representation, marking.representationState,
+      marking.channelBasis, marking.activeChannelsByPrototype));
+    const finiteScores = scores.filter(Number.isFinite);
+    const order = scores.map((score, rule) => ({ score, rule }))
+      .sort((first, second) => second.score - first.score || first.rule - second.rule)
+      .map((entry) => entry.rule);
+    const activeParameters = marking.activeChannelsByPrototype.reduce((sum, count) => sum + count, 0);
+    return {
+      id: marking.id,
+      name: marking.name,
+      channels: Number(marking.config.channels),
+      activeParameters,
+      allocatedParameters: marking.coefficients.length * Number(marking.config.channels),
+      rules: rules.length,
+      finiteRules: finiteScores.length,
+      meanScore: finiteScores.reduce((sum, score) => sum + score, 0) / Math.max(1, finiteScores.length),
+      bestRule: order[0] ?? null,
+      scoreDigest: notebookStringHash(scores.map((score) => Number.isFinite(score) ? score.toFixed(8) : "nonfinite").join("|")),
+      order,
+      selfContainedBasis: marking.channelBasis.length === Number(marking.config.channels)
+        && marking.activeChannelsByPrototype.length === marking.coefficients.length,
+    };
+  });
+  const reference = rows.find((row) => row.id === activeMarkingId) || rows[0];
+  const referenceRanks = new Map(reference?.order.map((rule, rank) => [rule, rank]) || []);
+  rows.forEach((row) => {
+    row.meanRankDisplacement = row.order.reduce((sum, rule, rank) =>
+      sum + Math.abs(rank - (referenceRanks.get(rule) ?? rank)), 0) / Math.max(1, row.order.length);
+    delete row.order;
+  });
+  return {
+    rules: rules.length,
+    markings: rows,
+    allFinite: rows.every((row) => row.finiteRules === row.rules && row.selfContainedBasis),
+    referenceMarkingId: reference?.id || null,
+    sameCandidateGeometry: true,
+    targetUsed: false,
+  };
 }
 
 function markingMatchesDraft(marking) {
@@ -17334,6 +17415,38 @@ function renderMarkingLibrary() {
   markingLibrarySelect.value = [...markingLibrarySelect.options].some((option) => option.value === wanted)
     ? wanted : compatible.at(-1)?.id || "action";
   markingLibraryCount.textContent = `${compatible.length} learned${external.eligible ? " + 1 cross-archive" : ""} · ${markingLibrary.length} saved`;
+  renderMarkingPortfolioAudit();
+}
+
+function renderMarkingPortfolioAudit() {
+  const audit = markingPortfolioReplayAudit();
+  markingPortfolioRows.replaceChildren();
+  if (!audit.markings.length) {
+    markingPortfolioState.textContent = "save a trained marking to audit replay";
+    return;
+  }
+  markingPortfolioState.textContent = audit.allFinite
+    ? `${audit.markings.length} basis${audit.markings.length === 1 ? "" : "es"} · ${audit.rules} unchanged rules · finite`
+    : "invalid saved basis · excluded from search";
+  audit.markings.forEach((marking) => {
+    const row = document.createElement("article");
+    row.dataset.markingId = marking.id;
+    row.classList.toggle("active", marking.id === activeMarkingId);
+    const identity = document.createElement("span");
+    const label = document.createElement("strong");
+    label.textContent = `${marking.channels}ch · ${marking.id === activeMarkingId ? "selected" : "library"}`;
+    const name = document.createElement("small");
+    name.textContent = marking.name;
+    identity.append(label, name);
+    const score = document.createElement("span");
+    const finite = document.createElement("strong");
+    finite.textContent = `${marking.finiteRules}/${marking.rules} finite`;
+    const detail = document.createElement("small");
+    detail.textContent = `${marking.activeParameters}/${marking.allocatedParameters} active parameters · mean ${marking.meanScore.toFixed(3)} · Δrank ${marking.meanRankDisplacement.toFixed(1)}`;
+    score.append(finite, detail);
+    row.append(identity, score);
+    markingPortfolioRows.appendChild(row);
+  });
 }
 
 function renderPoseAtlas() {

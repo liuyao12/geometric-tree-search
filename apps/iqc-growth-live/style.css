@@ -794,6 +794,20 @@ body.study-guide-open { overflow: hidden; }
 .growth-control-group > summary:focus-visible { outline: 2px solid var(--mint); outline-offset: -2px; }
 .growth-control-fields { padding: 1px 9px 10px; }
 .growth-control-fields > .field:first-child { margin-top: 9px; }
+.marking-portfolio-audit { grid-column: 1 / -1; margin: 3px 0 7px; padding: 8px; border: 1px solid rgba(101,225,188,.14); background: linear-gradient(135deg,rgba(101,225,188,.025),rgba(181,148,255,.018)); }
+.marking-portfolio-audit > header { display: flex; align-items: end; justify-content: space-between; gap: 8px; }
+.marking-portfolio-audit > header span { display: grid; gap: 2px; }
+.marking-portfolio-audit > header small { color: var(--faint); font: 5px var(--mono); text-transform: uppercase; letter-spacing: .08em; }
+.marking-portfolio-audit > header strong { color: #b9d9d0; font: 600 7px var(--mono); }
+.marking-portfolio-audit > header b { max-width: 55%; color: var(--mint); font: 5px/1.35 var(--mono); font-weight: 400; text-align: right; }
+.marking-portfolio-rows { display: grid; gap: 3px; margin-top: 6px; }
+.marking-portfolio-rows > article { display: grid; grid-template-columns: minmax(0,.75fr) minmax(0,1.25fr); gap: 6px; padding: 5px 6px; border-left: 2px solid rgba(181,148,255,.22); background: rgba(3,12,14,.48); }
+.marking-portfolio-rows > article.active { border-left-color: var(--mint); background: rgba(101,225,188,.035); }
+.marking-portfolio-rows span { display: grid; gap: 2px; min-width: 0; }
+.marking-portfolio-rows span:last-child { text-align: right; }
+.marking-portfolio-rows strong { color: #a9c5bd; font: 600 5.5px var(--mono); }
+.marking-portfolio-rows small { overflow: hidden; color: var(--faint); font: 5px/1.3 var(--mono); text-overflow: ellipsis; white-space: nowrap; }
+.marking-portfolio-audit > p { margin: 6px 0 0; color: var(--faint); font: 5px/1.4 var(--mono); }
 .relaxation-sequence { margin: 8px 0 6px; padding: 7px 8px; border: 1px solid rgba(255,181,104,.18); background: linear-gradient(145deg,rgba(255,181,104,.035),rgba(85,200,255,.025)); }
 .relaxation-sequence[hidden] { display: none; }
 .relaxation-sequence > div:first-child { display: flex; justify-content: space-between; gap: 8px; color: #6e8780; font: 6px var(--mono); text-transform: uppercase; }

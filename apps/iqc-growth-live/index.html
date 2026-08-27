@@ -507,6 +507,11 @@
                 <option value="portfolio">Library portfolio · best mark per action</option>
               </select>
             </label>
+            <article class="marking-portfolio-audit" aria-label="Saved marking replay audit">
+              <header><span><small>frozen-basis replay</small><strong>Marking portfolio audit</strong></span><b id="markingPortfolioState">waiting for a saved marking</b></header>
+              <div id="markingPortfolioRows" class="marking-portfolio-rows"></div>
+              <p>Every saved marking scores the same frozen connection rules in its own learned basis, active-channel mask, and representation. The audit changes rankings only—never candidate geometry.</p>
+            </article>
             <label class="field" for="geometryPreferenceSelect">
               <span>Geometric preference <b>same candidate actions</b></span>
               <select id="geometryPreferenceSelect">
@@ -1782,7 +1787,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260826-211"></script>
+  <script type="module" src="./app.js?v=20260826-212"></script>
   <script type="module" src="./evidence-atlas.js?v=20260826-19"></script>
 </body>
 </html>

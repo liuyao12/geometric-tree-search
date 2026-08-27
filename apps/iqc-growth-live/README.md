@@ -5691,3 +5691,17 @@ shows why a molecular bridge class can require more channels than its H₂O mole
 NaCl exposes that a deceptively small scalar mismatch is still rank-incomplete. The full
 frontier, masks, split rule, and no-target/no-energy flags are retained in saved markings
 and experiment receipts. It selects representation capacity, never a growth branch.
+
+### Build 212 · self-contained marking-library replay
+
+Every frozen marking now replays connection rules through its own serialized channel basis,
+per-prototype active-channel mask, representation readout, and chiral state. A 1-channel
+marking therefore remains a genuine scalar model even when the currently displayed draft is
+12-channel, and mixed-capacity portfolios can no longer inherit a different model's axes or
+produce non-finite scores from missing coefficients.
+
+The growth-stage portfolio audit evaluates every compatible saved marking over the exact
+same frozen rule set. It exposes finite-rule coverage, active versus allocated parameters,
+mean score, and mean rule-rank displacement from the selected marking. The full replay audit
+enters the experiment receipt with explicit `sameCandidateGeometry=true` and
+`targetUsed=false`; portfolio mode only ranks or admits already enumerated actions.

@@ -6433,3 +6433,18 @@ an under-capacity representation and prevents the largest tensor from winning by
 Clicking a row performs a declared capacity intervention and restarts the same visual fit.
 The complete comparison enters the marking artifact and receipt with explicit
 `targetUsed=false` and `physicalEnergy=false`; it cannot inspect or choose a growth action.
+
+## Build 212: replay every saved marking in its own learned basis
+
+The marking library is now a collection of self-contained learned artifacts rather than a
+list of coefficient arrays interpreted through the current UI model. Each entry supplies
+its own deterministic spherical basis, active-channel mask, representation readout, and
+chiral state to the connection scorer. Storage and compatibility validation reject malformed
+bases, masks, or coefficient dimensions before they can enter search.
+
+An interactive portfolio replay audit scores all compatible artifacts against one unchanged
+frozen overlap-rule vocabulary. It reports finite coverage, active/allocated parameter count,
+score summaries, and rank displacement, and serializes the same audit in the experiment
+receipt. This is a representation-replay and ranking comparison only: candidate geometry is
+identical across entries, target atoms are unavailable, and the audit does not certify that
+the most permissive portfolio has better held-out growth precision.
