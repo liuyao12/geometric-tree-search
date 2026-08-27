@@ -158,6 +158,23 @@ retained clauses now contain nine placements. All eight outer models remain
 satisfiable and no radius-two witness was found, so these longer runs remain
 bounded-inconclusive. Their reports end in `-deeper.ndjson`.
 
+The smallest learned obstruction for each candidate was then greedily reduced
+and independently replayed against the full radius-two helper-placement model.
+The certified reduced core sizes are 7 (`00128`), 4 (`00211`), 12 (`00232`),
+9 (`00235`), 7 (`00694`), 3 (`00755`), 6 (`00777`), and 8 (`00809`). These are
+sound conditional obstructions, but are not claimed globally minimal and do
+not prove that the tile cannot tile space. Their receipts end in
+`-mincore.ndjson`.
+
+A strengthened continuation seeds GCTS with both the full deeper corpus and
+the reduced exact core, then performs 32 new rounds per candidate. After
+subsumption it retains 130 (`00128`), 136 (`00211`), 156 (`00232`), 131
+(`00235`), 139 (`00694`), 142 (`00755`), 140 (`00777`), and 139 (`00809`):
+1,113 sound family blockers in total. Every outer first-corona model remains
+satisfiable and no radius-two witness was found. The current catalogue points
+to these bounded-inconclusive `-strengthened.ndjson` reports and separately
+exposes the size of each smallest replayed core.
+
 A separate longer periodic screen attempted six- and eight-copy quotients.
 Every candidate reached its 120-second limit while still at six copies,
 visiting between 41 and 127 of the 741 determinant-21 HNF bases and returning

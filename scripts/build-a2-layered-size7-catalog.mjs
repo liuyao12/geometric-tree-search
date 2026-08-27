@@ -15,6 +15,12 @@ const coreExtended = (await Promise.all([
 const coreDeeper = (await Promise.all([
   "00128", "00211", "00232", "00235", "00694", "00755", "00777", "00809"
 ].map(id => readNdjson(`data/a2-layered-size7-corona2-core-a2lp_7_${id}-deeper.ndjson`)))).flat();
+const coreStrengthened = (await Promise.all([
+  "00128", "00211", "00232", "00235", "00694", "00755", "00777", "00809"
+].map(id => readNdjson(`data/a2-layered-size7-corona2-core-a2lp_7_${id}-strengthened.ndjson`)))).flat();
+const minimizedCores = (await Promise.all([
+  "00128", "00211", "00232", "00235", "00694", "00755", "00777", "00809"
+].map(id => readNdjson(`data/a2-layered-size7-corona2-core-a2lp_7_${id}-mincore.ndjson`)))).flat();
 const periodicSixToEight = (await Promise.all([1, 2, 3].map(part =>
   readNdjson(`data/a2-layered-size7-periodic-z3-focus6to8-part${part}.ndjson`)
 ))).flat();
@@ -41,6 +47,8 @@ const deepById = byId(deep);
 const coreLongById = byId(coreLong);
 const coreExtendedById = byId(coreExtended);
 const coreDeeperById = byId(coreDeeper);
+const coreStrengthenedById = byId(coreStrengthened);
+const minimizedCoreById = byId(minimizedCores);
 const periodicSixToEightById = byId(periodicSixToEight);
 const selected = [...focusedById.keys()].sort((left, right) =>
   coronaById.get(left).corona_z3.replay.patch_copies
@@ -52,7 +60,9 @@ const candidates = selected.map((id, index) => {
   const corona = coronaById.get(id);
   const second = focusedById.get(id);
   const deepSecond = deepById.get(id);
-  const coreSecond = coreDeeperById.get(id) ?? coreExtendedById.get(id) ?? coreLongById.get(id);
+  const coreSecond = coreStrengthenedById.get(id) ?? coreDeeperById.get(id)
+    ?? coreExtendedById.get(id) ?? coreLongById.get(id);
+  const minimizedCore = minimizedCoreById.get(id);
   const largerPeriodic = periodicSixToEightById.get(id);
   const substitutionScreens = substitutions.get(id) ?? [];
   const anisotropicScreens = anisotropicById.get(id) ?? [];
@@ -92,6 +102,10 @@ const candidates = selected.map((id, index) => {
       corona2_gcts_sound_clauses: coreSecond?.corona2_core_cegar?.clauses?.length ?? 0,
       corona2_gcts_new_clauses_long_run: coreSecond?.corona2_core_cegar?.rounds ?? 0,
       corona2_gcts_milliseconds: coreSecond?.corona2_core_cegar?.milliseconds ?? 0,
+      corona2_gcts_smallest_certified_core: minimizedCore?.reduced_outer_placement_indices?.length ?? null,
+      corona2_gcts_minimized_core_report: minimizedCore
+        ? `data/a2-layered-size7-corona2-core-${id}-mincore.ndjson`
+        : null,
       periodic_six_copy_hnf_total: 741,
       periodic_six_copy_hnf_visited: largerPeriodic?.periodic_z3?.hnf_visited ?? 0,
       periodic_six_copy_solver_unknowns: largerPeriodic?.periodic_z3?.solver_unknown ?? 0,
@@ -114,7 +128,7 @@ const candidates = selected.map((id, index) => {
         ? "data/a2-layered-size7-corona2-a2lp_7_00232-deep.ndjson"
         : "data/a2-layered-size7-corona2-focused.ndjson",
       corona2_gcts_report: coreSecond
-        ? `data/a2-layered-size7-corona2-core-${id}-deeper.ndjson`
+        ? `data/a2-layered-size7-corona2-core-${id}-strengthened.ndjson`
         : null,
       periodic_larger_report: largerPeriodic
         ? "data/a2-layered-size7-periodic-z3-focus6to8-part*.ndjson"

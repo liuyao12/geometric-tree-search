@@ -102,9 +102,12 @@ def main():
     certified_by = "final_replay"
     if final["result"] != "unsat":
         successful_steps = [attempt for attempt in attempts if attempt["proved_redundant"]]
-        if not successful_steps or successful_steps[-1]["remaining_size"] != len(current):
+        if current == original and initial["result"] == "unsat":
+            certified_by = "initial_replay"
+        elif not successful_steps or successful_steps[-1]["remaining_size"] != len(current):
             raise RuntimeError(f"reduced core did not replay as UNSAT: {final}")
-        certified_by = "last_successful_reduction_step"
+        else:
+            certified_by = "last_successful_reduction_step"
 
     output = {
         "id": args.id,

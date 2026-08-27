@@ -148,6 +148,56 @@ assert {
 } == expected_deeper_clauses
 assert sum(expected_deeper_clauses.values()) == 898
 
+expected_minimized_core_sizes = {
+    "a2lp_7_00128": 7,
+    "a2lp_7_00211": 4,
+    "a2lp_7_00232": 12,
+    "a2lp_7_00235": 9,
+    "a2lp_7_00694": 7,
+    "a2lp_7_00755": 3,
+    "a2lp_7_00777": 6,
+    "a2lp_7_00809": 8,
+}
+minimized_cores = [
+    json.loads(
+        (ROOT / "data" / f"a2-layered-size7-corona2-core-{candidate_id}-mincore.ndjson").read_text()
+    )
+    for candidate_id in expected_minimized_core_sizes
+]
+assert all(record["classification"] == "sound_radius2_placement_obstruction" for record in minimized_cores)
+assert all(record["minimal"] is False for record in minimized_cores)
+assert all(record["initial_replay"]["result"] == "unsat" for record in minimized_cores)
+assert all(record["final_replay"]["result"] == "unsat" for record in minimized_cores)
+assert {
+    record["id"]: len(record["reduced_outer_placement_indices"])
+    for record in minimized_cores
+} == expected_minimized_core_sizes
+
+expected_strengthened_clauses = {
+    "a2lp_7_00128": 130,
+    "a2lp_7_00211": 136,
+    "a2lp_7_00232": 156,
+    "a2lp_7_00235": 131,
+    "a2lp_7_00694": 139,
+    "a2lp_7_00755": 142,
+    "a2lp_7_00777": 140,
+    "a2lp_7_00809": 139,
+}
+strengthened = [
+    json.loads(
+        (ROOT / "data" / f"a2-layered-size7-corona2-core-{candidate_id}-strengthened.ndjson").read_text()
+    )
+    for candidate_id in expected_strengthened_clauses
+]
+assert all(record["corona2_core_classification"] == "unresolved" for record in strengthened)
+assert all(record["corona2_core_cegar"]["outer_exhausted"] is False for record in strengthened)
+assert all(record["corona2_core_cegar"]["rounds"] == 32 for record in strengthened)
+assert {
+    record["id"]: len(record["corona2_core_cegar"]["clauses"])
+    for record in strengthened
+} == expected_strengthened_clauses
+assert sum(expected_strengthened_clauses.values()) == 1113
+
 larger_periodic = []
 for part in (1, 2, 3):
     larger_periodic.extend(
@@ -242,7 +292,8 @@ print("A2 layered corona regression passed", {
     "distinct_first_coronas_rejected_each": 8,
     "deep_candidate_rejected_first_coronas": 64,
     "direct_positive_control": unit["corona2_direct"]["replay"]["patch_copies"],
-    "sound_gcts_clauses_by_candidate": expected_deeper_clauses,
+    "sound_gcts_clauses_by_candidate": expected_strengthened_clauses,
+    "smallest_certified_cores": expected_minimized_core_sizes,
     "larger_periodic_partial_candidates": len(larger_periodic),
     "scalar_substitution_negatives": len(substitution_records),
     "anisotropic_substitution_negatives": len(anisotropic_records),

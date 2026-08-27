@@ -265,7 +265,7 @@ def main():
     parser.add_argument("--rounds", type=int, default=64)
     parser.add_argument("--timeout-ms", type=int, default=30000)
     parser.add_argument("--max-first-copies", type=int, default=0)
-    parser.add_argument("--seed-core", default="")
+    parser.add_argument("--seed-core", action="append", default=[])
     parser.add_argument("--checkpoint-dir", default="")
     args = parser.parse_args()
     requested = {value for value in args.ids.split(",") if value}
@@ -275,8 +275,8 @@ def main():
     output = Path(args.output)
     output.write_text("")
     seeds_by_id = {}
-    if args.seed_core:
-        for line in Path(args.seed_core).read_text().splitlines():
+    for seed_core_path in args.seed_core:
+        for line in Path(seed_core_path).read_text().splitlines():
             if not line.strip():
                 continue
             seed = json.loads(line)
@@ -290,7 +290,7 @@ def main():
             for indices in indices_list:
                 seeds_by_id.setdefault(seed["id"], []).append({
                     "outer_placement_indices": indices,
-                    "source": args.seed_core,
+                    "source": seed_core_path,
                 })
     for candidate_id, seeds in seeds_by_id.items():
         canonical = []
