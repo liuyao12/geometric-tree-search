@@ -63,24 +63,63 @@ from the search pool.
 
 The complete fixed-lattice census counts through size six are 1, 2, 4, 15,
 50, and 237; after the product filter, the first two candidates occur at size
-three. In the initial size-five screen, 44 of the 45 non-product candidates
-received exact two-tile translational boundary-quotient certificates. The
-remaining record, `a2lp_5_00003`, is unresolved: longer translational and
-isohedral runs reached finite patches but produced neither a periodic
-certificate nor a negative proof. “Unresolved” here is deliberately not a
-claim of aperiodicity.
+three. The patch-growing translational lane initially certified 44 of the 45
+size-five non-products and left `a2lp_5_00003` unresolved. A 30-second rerun
+grew 37 copies but exhausted only motifs through three copies, exposing that
+patch growth was the bottleneck rather than the quotient decision itself.
 
-At size six there are 222 non-product candidates. The first short pass gives
-149 exact two-tile translational certificates and leaves 73 bounded-unresolved
-records. This is a triage result only: a four-second rerun of the first twenty
-short-pass survivors eliminated nine more periodically, so the 73 must not be
-treated as a stable candidate count until the deeper pass is complete.
+The superseding screen solves each weighted HNF quotient directly with Z3.
+It requires exactly 48 solid-angle units at every quotient class, fixes one
+root copy only by translation and global proper-layer symmetry, and replays
+every positive independently using Cramer's-rule quotient coordinates. All 45
+size-five non-products have verified two-copy quotients of determinant 5,
+including `a2lp_5_00003`. All 222 size-six non-products have verified one-copy
+quotients of determinant 3. There are consequently no aperiodic candidates in
+this census through size six, and the formerly unresolved catalogue entry has
+been removed.
+
+The original patch screens remain as diagnostics in
+`data/a2-layered-size5-screen.ndjson` and
+`data/a2-layered-size6-screen.ndjson`. The authoritative exact positive
+reports are `data/a2-layered-size5-periodic-z3-all.ndjson` and
+`data/a2-layered-size6-periodic-z3-all.ndjson`. Bounded failure of a future
+quotient size will still be reported as unresolved; only an independently
+replayed positive is called periodic.
+
+Size seven is the first selective census. Of 1,119 non-product candidates,
+910 have exact two-copy determinant-7 quotients. Direct meet-in-the-middle
+search then finds four-copy determinant-14 quotients for 98 of the remaining
+209. The other 111 exhaust all 399 HNF bases at four copies with no solver
+unknowns. Their report is
+`data/a2-layered-size7-periodic-z3-through4.ndjson`; these 111, rather than the
+earlier timeout survivors, form the next exact-corona/GCTS pool. Failure
+through four copies does not exclude a larger periodic domain.
+
+Every one of the 111 exact-through-four survivors has an independently
+replayed root-corona witness. A focused second-corona CEGAR screen then tested
+eight especially compact root coronas. For each candidate, eight distinct
+first-corona patches were proved unable to saturate their complete support;
+the outer first-corona solver still has untested models, so all eight remain
+inconclusive. This is recorded in
+`data/a2-layered-size7-corona2-focused.ndjson`. Exact-model blocking is used:
+the search never generalizes an obstruction to an untested corona merely
+because the patches look similar.
+
+The leading compact candidate `a2lp_7_00232` has a longer exact-model CEGAR
+run: 64 distinct first coronas are individually proved unable to extend to a
+second corona. The outer model is still not exhausted, so this strengthens
+the finite obstruction evidence without changing its unresolved status. See
+`data/a2-layered-size7-corona2-a2lp_7_00232-deep.ndjson`.
 
 The machine-readable screen is `data/a2-layered-size5-screen.ndjson`. Rebuild
 it with:
 
 ```bash
 node scripts/screen-a2-layered-polyprisms.mjs --size=5 --time-ms=1200 --motif-tiles=8
+python3 scripts/screen-a2-layered-periodic-z3.py \
+  --input data/a2-layered-size5-screen.ndjson \
+  --output data/a2-layered-size5-periodic-z3-all.ndjson \
+  --max-copies 2
 ```
 
 Run the regression with:

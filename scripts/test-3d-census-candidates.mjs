@@ -23,6 +23,7 @@ import {
   LATTICE_POLYHEDRON_SIZE13_SCREENING,
   LATTICE_POLYHEDRON_SURVIVORS
 } from "../assets/lattice-polyhedron-survivors.js";
+import { A2_LAYERED_SIZE7_CANDIDATES } from "../assets/a2-layered-size7-candidates.js";
 import {
   polycubeCoronaBoundaryKey,
   searchPolycubeCorona,
@@ -1628,7 +1629,8 @@ assert.equal(
 );
 
 const candidates = tileSpecs.figureCatalog.filter(figure => figure.census_candidate);
-assert.equal(candidates.length, 56, "the lattice controls and fresh free-polycube representatives must remain in the catalog");
+assert.equal(candidates.length, 56 + A2_LAYERED_SIZE7_CANDIDATES.length,
+  "the lattice controls, free-polycube representatives, and focused A2 survivors must remain in the catalog");
 assert.ok(!candidates.some(figure => figure.census_candidate.id === "10_26470"));
 const survivors = candidates.filter(figure => figure.census_candidate.screening.status === "inconclusive");
 const shellControls = candidates.filter(figure =>
@@ -1637,14 +1639,16 @@ const shellControls = candidates.filter(figure =>
 const periodicControls = candidates.filter(figure =>
   ["translational", "isohedral_periodic_quotient"].includes(figure.census_candidate.screening.certificate)
 );
-assert.equal(survivors.length, 11);
+assert.equal(survivors.length, 11 + A2_LAYERED_SIZE7_CANDIDATES.length);
 assert.deepEqual(
   survivors.map(figure => figure.census_candidate.id).sort(),
   [
     "p10-054782", "p10-055695", "p10-290795", "p10-346304",
     "p9-02127", "p9-08203", "p9-08219", "p9-20656",
-    "p9-24025", "p9-42947", "p9-48258"
+    "p9-24025", "p9-42947", "p9-48258",
+    ...A2_LAYERED_SIZE7_CANDIDATES.map(candidate => candidate.id)
   ]
+    .sort()
 );
 assert.equal(
   survivors.filter(figure => figure.census_candidate.screening.census_stage === "volume9_fresh_bounded_2026_08_25").length,
@@ -2803,10 +2807,10 @@ assert.deepEqual(archivedPolycubeCoronaForcing.totals, {
   incomplete: 0
 });
 assert.ok(archivedPolycubeCoronaForcing.probes.every(probe => probe.alternative_verified));
-assert.equal(survivors[0].census_candidate.screening.corona_forcing_individually_forced, 0);
-assert.equal(survivors[0].census_candidate.screening.corona_forcing_replaceable, 9);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_forcing_individually_forced, 0);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_forcing_replaceable, 9);
 assert.equal(
-  survivors[0].census_candidate.screening.corona_forcing_report,
+  volumeNineSurvivor.census_candidate.screening.corona_forcing_report,
   "data/polycube-volume9-corona-forcing-2026-08-20.json"
 );
 assert.equal(archivedPolycubeContactDisjunction.catalog.contact_types, 69);
@@ -2814,9 +2818,9 @@ assert.equal(archivedPolycubeContactDisjunction.algorithm.corona_constraints_at_
 assert.equal(archivedPolycubeContactDisjunction.forced_disjunction.minimum_nontrivial_size, 6);
 assert.equal(archivedPolycubeContactDisjunction.forced_disjunction.forbidden_placements, 36);
 assert.equal(archivedPolycubeContactDisjunction.replay.all_exhausted, true);
-assert.equal(survivors[0].census_candidate.screening.corona_contact_minimum_nontrivial_disjunction, 6);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_contact_minimum_nontrivial_disjunction, 6);
 assert.equal(
-  survivors[0].census_candidate.screening.corona_contact_disjunction_report,
+  volumeNineSurvivor.census_candidate.screening.corona_contact_disjunction_report,
   "data/polycube-volume9-contact-disjunction-2026-08-20.json"
 );
 assert.equal(archivedPolycubeContactPropagation.active_to_active_placements, 9);
@@ -2825,10 +2829,10 @@ assert.deepEqual(archivedPolycubeContactPropagation.reciprocal_cycles.map(cycle 
   [29]
 ]);
 assert.ok(archivedPolycubeContactPropagation.cycle_extension_trials.every(trial => trial.success));
-assert.equal(survivors[0].census_candidate.screening.corona_contact_reciprocal_cycles, 2);
-assert.equal(survivors[0].census_candidate.screening.corona_contact_cycle_completed_radius, 4);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_contact_reciprocal_cycles, 2);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_contact_cycle_completed_radius, 4);
 assert.equal(
-  survivors[0].census_candidate.screening.corona_contact_propagation_report,
+  volumeNineSurvivor.census_candidate.screening.corona_contact_propagation_report,
   "data/polycube-volume9-contact-propagation-2026-08-20.json"
 );
 assert.equal(archivedPolycubeConditionalContactTransitions.reciprocal_incoming_orbits, 12);
@@ -2845,12 +2849,12 @@ assert.equal(archivedPolycubeConditionalContactTransitions.inactive_rules_only_r
 assert.equal(archivedPolycubeConditionalContactTransitions.all_active_incoming_orbits_can_terminate, true);
 assert.deepEqual(archivedPolycubeConditionalContactTransitions.terminating_active_incoming_orbits, [1, 6, 11]);
 assert.equal(
-  survivors[0].census_candidate.screening.corona_contact_conditional_report,
+  volumeNineSurvivor.census_candidate.screening.corona_contact_conditional_report,
   "data/polycube-volume9-conditional-contact-transitions-2026-08-20.json"
 );
-assert.equal(survivors[0].census_candidate.screening.corona_contact_reciprocal_incoming_orbits, 12);
-assert.equal(survivors[0].census_candidate.screening.corona_contact_conditional_transition_edges, 134);
-assert.equal(survivors[0].census_candidate.screening.corona_contact_radius_one_forces_unbounded_chain, false);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_contact_reciprocal_incoming_orbits, 12);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_contact_conditional_transition_edges, 134);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_contact_radius_one_forces_unbounded_chain, false);
 assert.equal(archivedPolycubeCoronaBoundaryStates.portfolio.canonical_boundary_states, 2522);
 assert.equal(archivedPolycubeCoronaBoundaryStates.portfolio.obstructed_boundary_states, 1922);
 assert.equal(archivedPolycubeCoronaBoundaryStates.portfolio.extendable_boundary_states, 600);
@@ -2900,20 +2904,20 @@ assert.ok(
 );
 assert.equal(archivedPolycubeCoronaBoundaryStates.symmetry_nogood_ablation.symmetry_closed.symmetry_clauses, 1820);
 assert.equal(
-  survivors[0].census_candidate.screening.corona_boundary_state_report,
+  volumeNineSurvivor.census_candidate.screening.corona_boundary_state_report,
   "data/polycube-volume9-corona-boundary-states-2026-08-20.json"
 );
-assert.equal(survivors[0].census_candidate.screening.corona_boundary_sampled_states, 2522);
-assert.equal(survivors[0].census_candidate.screening.corona_boundary_obstructed_states, 1922);
-assert.equal(survivors[0].census_candidate.screening.corona_boundary_extendable_states, 600);
-assert.equal(survivors[0].census_candidate.screening.corona_boundary_radius2_learned_survivors, 462);
-assert.equal(survivors[0].census_candidate.screening.corona_boundary_radius3_stress_prunes, 10100253);
-assert.equal(survivors[0].census_candidate.screening.corona_deep_proposal_radius4_nodes, 4786);
-assert.equal(survivors[0].census_candidate.screening.corona_deep_proposal_radius4_verified, true);
-assert.equal(survivors[0].census_candidate.screening.corona_deep_proposal_radius5_improved_equal_budget, false);
-assert.equal(survivors[0].census_candidate.screening.corona_adaptive_proposal_milliseconds, 250);
-assert.ok(survivors[0].census_candidate.screening.corona_adaptive_proposal_radius5_coverage_ratio > 0.98);
-assert.equal(survivors[0].census_candidate.screening.corona_symmetry_nogood_closure_improved, false);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_boundary_sampled_states, 2522);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_boundary_obstructed_states, 1922);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_boundary_extendable_states, 600);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_boundary_radius2_learned_survivors, 462);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_boundary_radius3_stress_prunes, 10100253);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_deep_proposal_radius4_nodes, 4786);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_deep_proposal_radius4_verified, true);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_deep_proposal_radius5_improved_equal_budget, false);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_adaptive_proposal_milliseconds, 250);
+assert.ok(volumeNineSurvivor.census_candidate.screening.corona_adaptive_proposal_radius5_coverage_ratio > 0.98);
+assert.equal(volumeNineSurvivor.census_candidate.screening.corona_symmetry_nogood_closure_improved, false);
 assert.equal(LATTICE_POLYHEDRON_SHELL_REJECTS.length, 3);
 assert.equal(LATTICE_POLYHEDRON_SURVIVORS.length, 0);
 assert.equal(LATTICE_POLYHEDRON_PERIODIC_REJECTS.length, 1);

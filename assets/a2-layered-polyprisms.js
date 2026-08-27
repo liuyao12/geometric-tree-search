@@ -194,39 +194,3 @@ export function makeA2LayeredPolyprism(cells) {
     source_cells: canonical.cells.map(cell => ({ ...cell }))
   };
 }
-
-// First survivor of the complete size-five non-product screen.  The bounded
-// lanes have not certified either tiling or non-tiling, so this is a benchmark
-// lead rather than an aperiodicity claim.
-export const A2_LAYERED_POLYPRISM_CANDIDATES = Object.freeze([
-  Object.freeze({
-    id: "a2lp_5_00003",
-    kind: "a2_layered_polyprism_census",
-    registry_id: "a2_layered_5_00003",
-    name: "A2 Layered 5-cell Candidate 00003",
-    lattice_points: 16,
-    survivor_priority: 1,
-    survivor_count: 1,
-    cells: Object.freeze([
-      Object.freeze({ q: 0, r: 0, k: 0, kind: "d" }),
-      Object.freeze({ q: 0, r: 0, k: 0, kind: "u" }),
-      Object.freeze({ q: 0, r: 0, k: 1, kind: "d" }),
-      Object.freeze({ q: 0, r: 0, k: 2, kind: "d" }),
-      Object.freeze({ q: 0, r: 0, k: 2, kind: "u" })
-    ]),
-    description: "The sole bounded-unresolved non-product survivor among the 45 size-five A2-layer polyprisms; 44 peers have exact two-tile translational quotients.",
-    screening: Object.freeze({
-      status: "inconclusive",
-      certificate: null,
-      census_stage: "a2_layered_size5_2026_08_27",
-      source_pool_size: 45,
-      translational_long_seconds: 30,
-      translational_largest_motif_size_attempted: 3,
-      translational_largest_patch_tiles: 37,
-      isohedral_long_seconds: 30,
-      isohedral_patch_sizes_tried: Object.freeze([26, 34]),
-      report: "data/a2-layered-size5-screen.ndjson"
-    }),
-    shell_screening: Object.freeze({ robust_completed_shell: 0, deepest_completed_shell: 0 })
-  })
-]);

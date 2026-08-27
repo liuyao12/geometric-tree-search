@@ -1,11 +1,11 @@
 import assert from "node:assert/strict";
 import {
-  A2_LAYERED_POLYPRISM_CANDIDATES,
   canonicalA2LayeredPolyprism,
   enumerateA2LayeredPolyprisms,
   makeA2LayeredPolyprism
 } from "../assets/a2-layered-polyprisms.js";
 import { preprocessTilingSystem, tileSpecs } from "../apps/3d-lattice-tiler/engine.js";
+import { A2_LAYERED_SIZE7_CANDIDATES } from "../assets/a2-layered-size7-candidates.js";
 
 const expected = [1, 2, 4, 15, 50, 237];
 for (let size = 1; size <= expected.length; size += 1) {
@@ -45,12 +45,18 @@ assert.equal(prepared.prototiles[0].geometry_model, "lattice_function");
 assert.equal(prepared.prototiles[0].unique_orientations.length, 6);
 assert.equal(prepared.prototiles[0].is_convex_polyhedron, false);
 
-const catalogueCandidate = preprocessTilingSystem({
-  mode_key: A2_LAYERED_POLYPRISM_CANDIDATES[0].registry_id,
-  include_mirrors: false
-}, tileSpecs);
-assert.equal(catalogueCandidate.prototiles[0].name, A2_LAYERED_POLYPRISM_CANDIDATES[0].name);
-assert.equal(catalogueCandidate.prototiles[0].unique_orientations.length, 6);
+assert.equal(A2_LAYERED_SIZE7_CANDIDATES.length, 8);
+for (const candidate of A2_LAYERED_SIZE7_CANDIDATES) {
+  const catalogue = preprocessTilingSystem({
+    mode_key: candidate.registry_id,
+    include_mirrors: false
+  }, tileSpecs);
+  assert.equal(catalogue.prototiles[0].name, candidate.name);
+  assert.equal(catalogue.prototiles[0].unique_orientations.length, 6);
+  assert.equal(candidate.screening.periodic_exact_through, 4);
+  assert.equal(candidate.screening.corona2_outer_exhausted, false);
+}
+
 
 console.log("A2 layered-polyprism census regression passed", {
   counts: expected,
