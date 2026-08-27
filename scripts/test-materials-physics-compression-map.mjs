@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
-import { buildPhysicsCompressionMap, buildPhysicsLineagePath, physicsExecutionLineage }
+import { buildPhysicsCompressionMap, buildPhysicsEffectMatrix, buildPhysicsLineagePath,
+  PHYSICS_EFFECT_COLUMNS, physicsExecutionLineage }
   from "../apps/iqc-growth-live/physics-compression-map.js";
 
 const records = [
@@ -52,4 +53,21 @@ assert.deepEqual(lineage.nodes.map((node) => node.id),
   ["evidence", "encoding", "execution", "response", "boundary"]);
 assert.equal(lineage.execution.summary, "hard admission");
 assert.equal(lineage.coordinatesEmbedded, false);
+
+const matrix = buildPhysicsEffectMatrix(records);
+assert.equal(matrix.recordCount, records.length);
+assert.deepEqual(matrix.columns.map((column) => column.id),
+  ["hardAdmission", "candidateGeometry", "initialState", "ranking", "searchOrder", "diagnostic"]);
+assert.deepEqual(PHYSICS_EFFECT_COLUMNS.map((column) => column.label),
+  ["admission", "geometry", "seed", "ranking", "order", "no hook"]);
+assert.equal(matrix.rows.find((row) => row.recordId === "steric").effects.hardAdmission, true);
+assert.equal(matrix.rows.find((row) => row.recordId === "front-morphology").effects.ranking, true);
+assert.equal(matrix.rows.find((row) => row.recordId === "kinetics").effects.diagnostic, true);
+assert.equal(matrix.rows.find((row) => row.recordId === "long-range").laneId, "open");
+assert.equal(matrix.counts.hardAdmission, 2);
+assert.equal(matrix.counts.ranking, 2);
+assert.equal(matrix.counts.diagnostic, 2);
+assert.equal(matrix.everyRecordClassified, true);
+assert.equal(matrix.candidateSetInspected, false);
+assert.equal(matrix.targetUsed, false);
 console.log("materials physics compression map: passed");

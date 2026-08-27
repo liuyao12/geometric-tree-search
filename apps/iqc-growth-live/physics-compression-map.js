@@ -49,6 +49,15 @@ const RANKING_IDS = new Set([
   "feed-exposure", "kinetics",
 ]);
 
+export const PHYSICS_EFFECT_COLUMNS = Object.freeze([
+  Object.freeze({ id: "hardAdmission", label: "admission", property: "hardAdmissionCanChange" }),
+  Object.freeze({ id: "candidateGeometry", label: "geometry", property: "candidateGeometryCanChange" }),
+  Object.freeze({ id: "initialState", label: "seed", property: "initialStateCanChange" }),
+  Object.freeze({ id: "ranking", label: "ranking", property: "rankingCanChange" }),
+  Object.freeze({ id: "searchOrder", label: "order", property: "searchOrderCanChange" }),
+  Object.freeze({ id: "diagnostic", label: "no hook", property: "diagnosticOnly" }),
+]);
+
 function effectActive(record) {
   if (["open", "unavailable", "observed"].includes(record.status)) return false;
   if (/\b(disabled|ablated|diagnostic|not selected|awaiting)\b/i.test(record.role || "")) return false;
@@ -163,5 +172,43 @@ export function buildPhysicsCompressionMap(records) {
       diagnosticOnly: executionLineages.filter((record) => record.diagnosticOnly).length,
     },
     targetUsed: false,
+  };
+}
+
+export function buildPhysicsEffectMatrix(records) {
+  if (!Array.isArray(records)) throw new Error("physics effect matrix needs manifest records");
+  const compression = buildPhysicsCompressionMap(records);
+  const laneByRecord = new Map();
+  compression.lanes.forEach((lane) => lane.recordIds.forEach((recordId) => laneByRecord.set(recordId, lane.id)));
+  const rows = records.map((record) => {
+    const execution = physicsExecutionLineage(record);
+    const effects = Object.fromEntries(PHYSICS_EFFECT_COLUMNS.map((column) =>
+      [column.id, Boolean(execution[column.property])]));
+    return {
+      recordId: record.id,
+      process: record.process,
+      status: record.status,
+      evidenceBucket: evidenceBucket(record.status),
+      laneId: laneByRecord.get(record.id) || "unclassified",
+      active: execution.active,
+      effects,
+      effectCount: PHYSICS_EFFECT_COLUMNS.slice(0, -1)
+        .filter((column) => execution[column.property]).length,
+      executionSummary: execution.summary,
+    };
+  });
+  const counts = Object.fromEntries(PHYSICS_EFFECT_COLUMNS.map((column) =>
+    [column.id, rows.filter((row) => row.effects[column.id]).length]));
+  return {
+    schema: 1,
+    columns: PHYSICS_EFFECT_COLUMNS.map(({ id, label }) => ({ id, label })),
+    rows,
+    counts,
+    recordCount: rows.length,
+    everyRecordClassified: compression.complete && rows.every((row) => row.laneId !== "unclassified"),
+    mutuallyNonexclusiveEffects: true,
+    candidateSetInspected: false,
+    targetUsed: false,
+    physicalTimeModeled: false,
   };
 }

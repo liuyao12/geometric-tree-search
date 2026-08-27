@@ -1,5 +1,21 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 262 · execution-effect atlas
+
+The pre-growth physics map now answers the cross-layer question as well as the
+single-layer one. Every one of the 43 frozen physical-process records carries a
+six-cell execution rail for hard admission, bounded candidate geometry, initial
+seed state, soft ranking, reproducible branch order, or no execution hook. A
+second composable filter intersects those hooks with physical scale and evidence
+status, so a materials scientist can isolate, for example, every declared
+ranking hypothesis or every unresolved layer that remains diagnostic only.
+
+The matrix is derived from the same execution-lineage records serialized in the
+preflight receipt. Effects are explicitly non-exclusive, inactive cells mean the
+corresponding object is unchanged, and an empty filter intersection says so
+rather than falling back to another row. The atlas reads no candidate records,
+changes no control, uses no target, and assigns no physical clock.
+
 ## Build 261 · physics-to-geometry execution lineage
 
 Every pre-growth physics-manifest row now exposes an interactive five-step

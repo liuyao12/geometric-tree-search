@@ -84,6 +84,23 @@ def test_each_physical_layer_has_an_interactive_execution_lineage():
     assert ".physics-lineage-flow" in CSS
 
 
+def test_execution_effect_atlas_composes_with_scale_and_evidence_filters():
+    assert 'id="growthPhysicsEffectFilters"' in HTML
+    assert '$("growthPhysicsEffectFilters")' in APP
+    assert "buildPhysicsEffectMatrix(records)" in APP
+    assert "effectMatrix: buildPhysicsEffectMatrix(records)" in APP
+    assert "PHYSICS_EFFECT_COLUMNS" in COMPRESSION
+    assert "mutuallyNonexclusiveEffects: true" in COMPRESSION
+    assert "everyRecordClassified" in COMPRESSION
+    for effect in ("hardAdmission", "candidateGeometry", "initialState", "ranking",
+                   "searchOrder", "diagnostic"):
+        assert effect in COMPRESSION
+        assert f'data-physics-effect-filter="{effect}"' in HTML
+    assert ".physics-effect-filters" in CSS
+    assert ".physics-effect-rail" in CSS
+    assert "No physical layer matches this scale × evidence × execution-effect intersection." in APP
+
+
 def test_non_webgl_fallback_keeps_the_scientific_portal_alive():
     assert "function fallbackViewportRenderer" in APP
     assert "function materialsViewportRenderer" in APP
@@ -99,10 +116,10 @@ def test_public_narrative_and_build_are_versioned():
     assert "Build 177" in README
     assert "Build 177" in DOCS
     assert "If WebGL cannot be created" in README
-    assert 'buildId: "20260827-261"' in APP
-    assert 'app.js?v=20260827-261' in HTML
-    assert 'style.css?v=20260827-261' in HTML
-    assert 'physics-compression-map.js?v=20260827-2' in APP
+    assert 'buildId: "20260827-262"' in APP
+    assert 'app.js?v=20260827-262' in HTML
+    assert 'style.css?v=20260827-262' in HTML
+    assert 'physics-compression-map.js?v=20260827-3' in APP
     assert 'evidence-atlas.js?v=20260827-22' in HTML
     assert "Build 207" in README
     assert "Build 207" in DOCS

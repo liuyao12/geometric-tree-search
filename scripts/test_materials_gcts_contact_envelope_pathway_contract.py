@@ -35,8 +35,8 @@ def test_fit_is_train_only_residual_audited_and_not_a_physical_radius_claim():
 
 
 def test_build_243_assets_are_cache_versioned():
-    assert 'buildId: "20260827-261"' in APP
-    assert 'app.js?v=20260827-261' in HTML
-    assert 'style.css?v=20260827-261' in HTML
+    assert 'buildId: "20260827-262"' in APP
+    assert 'app.js?v=20260827-262' in HTML
+    assert 'style.css?v=20260827-262' in HTML
     assert 'contact-envelope-fit.js?v=20260827-1' in APP
     assert 'interstitial-clearance.js?v=20260827-10' in APP

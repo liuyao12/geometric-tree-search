@@ -1,5 +1,23 @@
 # Recursive GCTS benchmark for material growth
 
+### Execution-effect atlas (Build 262)
+
+The complete 43-row pre-growth physics manifest now supports a second,
+orthogonal inspection axis. Each row exposes whether it can change hard
+admission, bounded candidate geometry, the initial seed state, soft branch
+ranking, reproducible branch order, or none of those execution objects. These
+six cells form a compact rail on every process card; physical-scale, evidence,
+and execution-effect filters compose, and a genuinely empty intersection is
+reported rather than silently selecting a different record.
+
+The pure `buildPhysicsEffectMatrix` contract derives every cell from the same
+frozen execution lineage used by the five-step detail view and receipt. Effects
+may overlap (the learned GCTS connection layer can gate and rank), while an
+inactive or unresolved layer has no execution hook. The overview is
+coordinate-free, target-free, pre-candidate, and carries no physical time. It
+is a causal software map of what a surrogate may change, not evidence that the
+surrogate is an energy, force, barrier, rate, or dynamical law.
+
 ### Physics-to-geometry execution lineage (Build 261)
 
 The frozen pre-growth manifest now carries an execution lineage for every
