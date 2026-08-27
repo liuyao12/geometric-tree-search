@@ -6477,3 +6477,17 @@ The consequence audit records target use independently of the marking score: sav
 scores remain target-free, whereas a consequence evaluated during labeled known-window
 replay is explicitly marked as such. No counterfactual is executed and no physical energy,
 probability, stability, kinetics, or elapsed time is inferred.
+
+## Build 215: compare multiscale structural consequences before commitment
+
+Every distinct saved-marking winner is now evaluated on a bounded local section: the 64
+current atoms nearest the emitted-site centroid plus all newly proposed sites. The same
+before/after section yields a proper-rotation-invariant q₆ change in 3D or |ψ₆| change in 2D,
+and a unit-weight finite-section Debye S(q) peak-prominence and spectral-shape change.
+Candidates selected by multiple markings share one cached analysis.
+
+The receipt retains the deterministic window policy, before/after atom counts, pair-distance
+work, compact order/scattering summaries, target-use state, and consequence digest without
+coordinates. These observables are posthoc ranking consequences only: they do not enter the
+marking score, hard admission, search, or execution and do not establish bulk order,
+experimental intensity, phase stability, energy, probability, kinetics, or physical time.

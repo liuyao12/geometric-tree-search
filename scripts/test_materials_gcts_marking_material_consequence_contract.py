@@ -11,7 +11,8 @@ DOC = (ROOT / "docs/projects/materials-recursive-gcts-benchmark.md").read_text()
 
 def test_every_marking_winner_has_a_coordinate_free_material_consequence():
     assert "function markingWinnerMaterialConsequence(entry)" in APP
-    assert "materialConsequence: markingWinnerMaterialConsequence(" in APP
+    assert "const materialConsequence = markingWinnerMaterialConsequence(entry);" in APP
+    assert "materialConsequence: materialConsequenceFor(winner?.candidate)" in APP
     assert "sharedSites: evaluation.merged.length" in APP
     assert "emittedSites: evaluation.fresh.length" in APP
     assert "localMismatch: finite(effectiveGeometricStrain(evaluation).total)" in APP
@@ -36,8 +37,8 @@ def test_consequence_is_previewed_and_target_use_is_separate_from_marking_score(
 def test_consequence_is_receipted_and_release_is_consistent():
     assert "materialConsequence: marking.materialConsequence ?" in APP
     assert "materialConsequenceDigest: audit.portfolio.materialConsequence?.digest" in APP
-    assert 'buildId: "20260826-214"' in APP
-    assert 'app.js?v=20260826-214' in HTML
+    assert 'buildId: "20260826-215"' in APP
+    assert 'app.js?v=20260826-215' in HTML
     assert "Build 214" in README
     assert "Build 214" in DOC
 

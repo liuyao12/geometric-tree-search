@@ -8988,7 +8988,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-214",
+      buildId: "20260826-215",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -10478,6 +10478,44 @@ async function buildExperimentReceipt() {
                   executed: marking.materialConsequence.executed,
                   targetUsedForMaterialConsequence: marking.materialConsequence.targetUsedForMaterialConsequence,
                   interpretation: marking.materialConsequence.interpretation,
+                  multiscaleStructure: marking.materialConsequence.multiscaleStructure ? {
+                    available: marking.materialConsequence.multiscaleStructure.available,
+                    digest: marking.materialConsequence.multiscaleStructure.digest,
+                    harmonic: marking.materialConsequence.multiscaleStructure.harmonic,
+                    orderDefinition: marking.materialConsequence.multiscaleStructure.orderDefinition,
+                    orderBefore: marking.materialConsequence.multiscaleStructure.orderBefore === null ? null
+                      : receiptRound(marking.materialConsequence.multiscaleStructure.orderBefore),
+                    orderAfter: marking.materialConsequence.multiscaleStructure.orderAfter === null ? null
+                      : receiptRound(marking.materialConsequence.multiscaleStructure.orderAfter),
+                    orderDelta: marking.materialConsequence.multiscaleStructure.orderDelta === null ? null
+                      : receiptRound(marking.materialConsequence.multiscaleStructure.orderDelta),
+                    orderDistributionDistance: marking.materialConsequence.multiscaleStructure.orderDistributionDistance === null ? null
+                      : receiptRound(marking.materialConsequence.multiscaleStructure.orderDistributionDistance),
+                    orderPhenotype: marking.materialConsequence.multiscaleStructure.orderPhenotype,
+                    scatteringPeakProminenceBefore: marking.materialConsequence.multiscaleStructure.scatteringPeakProminenceBefore === null ? null
+                      : receiptRound(marking.materialConsequence.multiscaleStructure.scatteringPeakProminenceBefore),
+                    scatteringPeakProminenceAfter: marking.materialConsequence.multiscaleStructure.scatteringPeakProminenceAfter === null ? null
+                      : receiptRound(marking.materialConsequence.multiscaleStructure.scatteringPeakProminenceAfter),
+                    scatteringPeakProminenceDelta: marking.materialConsequence.multiscaleStructure.scatteringPeakProminenceDelta === null ? null
+                      : receiptRound(marking.materialConsequence.multiscaleStructure.scatteringPeakProminenceDelta),
+                    scatteringShapeDistance: marking.materialConsequence.multiscaleStructure.scatteringShapeDistance === null ? null
+                      : receiptRound(marking.materialConsequence.multiscaleStructure.scatteringShapeDistance),
+                    scatteringPhenotype: marking.materialConsequence.multiscaleStructure.scatteringPhenotype,
+                    anchorAtoms: marking.materialConsequence.multiscaleStructure.anchorAtoms,
+                    emittedAtoms: marking.materialConsequence.multiscaleStructure.emittedAtoms,
+                    beforeAtoms: marking.materialConsequence.multiscaleStructure.beforeAtoms,
+                    afterAtoms: marking.materialConsequence.multiscaleStructure.afterAtoms,
+                    pairDistanceEvaluations: marking.materialConsequence.multiscaleStructure.pairDistanceEvaluations,
+                    analysisWindowPolicy: marking.materialConsequence.multiscaleStructure.analysisWindowPolicy,
+                    properRotationInvariant: marking.materialConsequence.multiscaleStructure.properRotationInvariant,
+                    atomPermutationInvariant: marking.materialConsequence.multiscaleStructure.atomPermutationInvariant,
+                    candidateGeometryChanged: marking.materialConsequence.multiscaleStructure.candidateGeometryChanged,
+                    hardAdmissionChanged: marking.materialConsequence.multiscaleStructure.hardAdmissionChanged,
+                    usedForRanking: marking.materialConsequence.multiscaleStructure.usedForRanking,
+                    executed: marking.materialConsequence.multiscaleStructure.executed,
+                    targetUsed: marking.materialConsequence.multiscaleStructure.targetUsed,
+                    claimBoundary: marking.materialConsequence.multiscaleStructure.claimBoundary,
+                  } : null,
                 } : null,
               })),
               portfolio: { enabled: audit.portfolio.enabled,
@@ -15173,10 +15211,106 @@ function markingWinnerMaterialConsequence(entry) {
   return consequence;
 }
 
+function counterfactualOrderSnapshot(stats) {
+  if (!stats?.count) return null;
+  const harmonics = Object.fromEntries([4, 6, 12].map((harmonic) => {
+    const order = ensureOrientationalOrder(stats, harmonic);
+    return [harmonic, { mean: order.mean, median: order.median, highFraction: order.highFraction,
+      histogram: [...order.histogram], bins: order.bins,
+      resolvedCenters: order.count, unresolvedCenters: order.unresolvedCount,
+      resolvedFraction: order.resolvedFraction }];
+  }));
+  return { dimension: stats.dimension,
+    definition: stats.dimension === 2 ? "bond-orientational magnitude |psi_l|" : "Steinhardt q_l magnitude",
+    neighborCutoffInNearestNeighborUnits: COORDINATION_CUTOFF,
+    analysisWindowAtoms: stats.count, harmonics, usedAsGrowthInput: false };
+}
+
+function counterfactualScatteringSnapshot(stats) {
+  if (!stats?.count) return null;
+  const structureFactor = ensureStructureFactor(stats);
+  return { dimension: stats.dimension, analysisWindowAtoms: stats.count,
+    q: [...structureFactor.q], values: [...structureFactor.values],
+    qMin: structureFactor.qMin, qMax: structureFactor.qMax,
+    summary: { ...structureFactor.summary },
+    normalization: "finite local-section Debye average with unit scattering weights",
+    speciesFormFactorsUsed: false, instrumentResponseUsed: false, usedAsGrowthInput: false };
+}
+
+function markingWinnerMultiscaleConsequence(entry, maximumAnchorAtoms = 64) {
+  if (!entry?.evaluation?.fresh?.length) return null;
+  const fresh = uniqueFreshSites(entry.evaluation.fresh);
+  const center = fresh.reduce((sum, site) => sum.add(site.p), new THREE.Vector3())
+    .multiplyScalar(1 / fresh.length);
+  const anchors = [...atoms].sort((first, second) => first.p.distanceToSquared(center) - second.p.distanceToSquared(center)
+    || first.species.localeCompare(second.species) || first.p.x - second.p.x || first.p.y - second.p.y || first.p.z - second.p.z)
+    .slice(0, Math.max(0, maximumAnchorAtoms));
+  if (anchors.length < 3) return null;
+  const dimension = currentMaterial().intrinsicDimension === 2 ? 2 : 3;
+  const maximumRadius = referenceStructuralStats?.maximumRadius || RDF_MAX_RADIUS;
+  const beforeStats = calculateStructuralStats(anchors, referenceSpacing, false, dimension, maximumRadius);
+  const afterStats = calculateStructuralStats([...anchors, ...fresh], referenceSpacing, false, dimension, maximumRadius);
+  const localOrder = localSymmetryTransition(counterfactualOrderSnapshot(beforeStats),
+    counterfactualOrderSnapshot(afterStats));
+  const reciprocal = reciprocalSpaceTransition(counterfactualScatteringSnapshot(beforeStats),
+    counterfactualScatteringSnapshot(afterStats));
+  const targetUsed = !reconstructionCertified;
+  const result = {
+    available: localOrder.available && reciprocal.available,
+    harmonic: 6,
+    orderDefinition: dimension === 2 ? "|psi_6|" : "q_6",
+    orderBefore: localOrder.harmonics?.find((record) => record.harmonic === 6)?.meanBefore ?? null,
+    orderAfter: localOrder.harmonics?.find((record) => record.harmonic === 6)?.meanAfter ?? null,
+    orderDelta: localOrder.harmonics?.find((record) => record.harmonic === 6)?.meanDelta ?? null,
+    orderDistributionDistance: localOrder.harmonics?.find((record) => record.harmonic === 6)?.distributionDistance ?? null,
+    orderPhenotype: localOrder.phenotype || null,
+    scatteringPeakProminenceBefore: reciprocal.peakProminenceBefore ?? null,
+    scatteringPeakProminenceAfter: reciprocal.peakProminenceAfter ?? null,
+    scatteringPeakProminenceDelta: reciprocal.peakProminenceDelta ?? null,
+    scatteringShapeDistance: reciprocal.spectralShapeDistance ?? null,
+    scatteringPhenotype: reciprocal.phenotype || null,
+    anchorAtoms: anchors.length,
+    emittedAtoms: fresh.length,
+    beforeAtoms: beforeStats.count,
+    afterAtoms: afterStats.count,
+    pairDistanceEvaluations: beforeStats.count * (beforeStats.count - 1) / 2
+      + afterStats.count * (afterStats.count - 1) / 2,
+    analysisWindowPolicy: "nearest 64 current atoms to emitted-site centroid plus every emitted site",
+    properRotationInvariant: true,
+    atomPermutationInvariant: true,
+    candidateGeometryChanged: false,
+    hardAdmissionChanged: false,
+    usedForRanking: false,
+    executed: false,
+    targetUsed,
+    claimBoundary: "finite local-section q_l/|psi_l| and unit-weight geometric S(q); not bulk order, experimental intensity, phase stability, energy, probability, kinetics, or physical time",
+  };
+  result.digest = notebookStringHash([
+    entry.candidate.key, result.orderBefore, result.orderAfter, result.orderDistributionDistance,
+    result.scatteringPeakProminenceBefore, result.scatteringPeakProminenceAfter,
+    result.scatteringShapeDistance, result.anchorAtoms, result.emittedAtoms, result.targetUsed,
+  ].join("|"));
+  return result;
+}
+
 function buildMarkingFrontierCounterfactual(admissible, candidateSetDigest) {
   const markings = compatibleMarkings();
   const candidates = admissible.map((entry) => entry.candidate);
   const admissibleByCandidateKey = new Map(admissible.map((entry) => [entry.candidate.key, entry]));
+  const materialConsequenceCache = new Map();
+  const materialConsequenceFor = (candidate) => {
+    if (!candidate) return null;
+    if (!materialConsequenceCache.has(candidate.key)) {
+      const entry = admissibleByCandidateKey.get(candidate.key);
+      const materialConsequence = markingWinnerMaterialConsequence(entry);
+      if (materialConsequence) {
+        materialConsequence.multiscaleStructure = markingWinnerMultiscaleConsequence(entry);
+        materialConsequence.digest = notebookStringHash(`${materialConsequence.digest}|${materialConsequence.multiscaleStructure?.digest || "unavailable"}`);
+      }
+      materialConsequenceCache.set(candidate.key, materialConsequence);
+    }
+    return materialConsequenceCache.get(candidate.key);
+  };
   const rows = markings.map((marking) => {
     const threshold = markingAcceptanceThreshold(marking);
     const scored = candidates.map((candidate) => ({
@@ -15206,8 +15340,7 @@ function buildMarkingFrontierCounterfactual(admissible, candidateSetDigest) {
       winnerAction: winner ? `C${winner.candidate.rule.from + 1}→C${winner.candidate.rule.to + 1} · R${winner.candidate.rule.id}` : "no admitted action",
       winnerScore: winner?.score ?? null,
       runnerUpMargin: winner ? winner.score - (scored[topTieCount]?.score ?? winner.score) : null,
-      materialConsequence: markingWinnerMaterialConsequence(
-        winner ? admissibleByCandidateKey.get(winner.candidate.key) : null),
+      materialConsequence: materialConsequenceFor(winner?.candidate),
       preview: winner ? { p: winner.candidate.position.clone(), rotation: winner.candidate.rotation.clone(),
         type: winner.candidate.type } : null,
       rankOrder: scored.map((entry) => entry.candidate.key),
@@ -15252,8 +15385,7 @@ function buildMarkingFrontierCounterfactual(admissible, candidateSetDigest) {
         ? `C${portfolioWinner.candidate.rule.from + 1}→C${portfolioWinner.candidate.rule.to + 1} · R${portfolioWinner.candidate.rule.id}` : null,
       winnerScore: portfolioWinner?.score ?? null,
       winnerSource: portfolioWinner?.source || null,
-      materialConsequence: markingWinnerMaterialConsequence(
-        portfolioWinner ? admissibleByCandidateKey.get(portfolioWinner.candidate.key) : null),
+      materialConsequence: materialConsequenceFor(portfolioWinner?.candidate),
       preview: portfolioWinner ? { p: portfolioWinner.candidate.position.clone(),
         rotation: portfolioWinner.candidate.rotation.clone(), type: portfolioWinner.candidate.type } : null,
     },
@@ -23698,12 +23830,18 @@ function renderMarkingFrontierAudit(snapshot) {
   const consequence = selected.materialConsequence;
   if (consequence) {
     const consequenceGrid = document.createElement("div"); consequenceGrid.className = "marking-consequence-grid";
+    const multiscale = consequence.multiscaleStructure;
     [
       ["attachment", `${consequence.emittedSites} new · ${consequence.sharedSites} shared`],
       ["local mismatch", consequence.localMismatch === null ? "unavailable" : consequence.localMismatch.toFixed(3)],
       ["constraint margin", consequence.constraintMargin === null ? "unavailable" : consequence.constraintMargin.toFixed(3)],
       ["active ledger", consequence.activePhysicsNetResponse === null ? "unavailable"
         : `${consequence.activePhysicsNetResponse >= 0 ? "+" : ""}${consequence.activePhysicsNetResponse.toFixed(3)}`],
+      [multiscale?.orderDefinition || "q₆ / |ψ₆|", multiscale?.orderDelta === null || multiscale?.orderDelta === undefined
+        ? "unavailable" : `${multiscale.orderDelta >= 0 ? "+" : ""}${multiscale.orderDelta.toFixed(4)}`],
+      ["S(q) peak prominence", multiscale?.scatteringPeakProminenceDelta === null
+        || multiscale?.scatteringPeakProminenceDelta === undefined ? "unavailable"
+        : `${multiscale.scatteringPeakProminenceDelta >= 0 ? "+" : ""}${multiscale.scatteringPeakProminenceDelta.toFixed(4)}`],
     ].forEach(([label, value]) => {
       const cell = document.createElement("span");
       const small = document.createElement("small"); small.textContent = label;
@@ -23717,7 +23855,10 @@ function renderMarkingFrontierAudit(snapshot) {
     const burden = consequence.burdenChannel
       ? `burden ${consequence.burdenChannel.label} ${consequence.burdenChannel.contribution.toFixed(3)}`
       : "no active burden channel";
-    consequenceChannels.textContent = `${favorable} · ${burden} · ${consequence.targetUsedForMaterialConsequence ? "known-window consequence" : "target-blind consequence"} · ${consequence.digest}`;
+    const structuralReadout = multiscale?.available
+      ? `${multiscale.orderPhenotype} · ${multiscale.scatteringPhenotype} · ${multiscale.beforeAtoms}→${multiscale.afterAtoms} local-section atoms`
+      : "multiscale structural consequence unavailable";
+    consequenceChannels.textContent = `${favorable} · ${burden} · ${structuralReadout} · ${consequence.targetUsedForMaterialConsequence ? "known-window consequence" : "target-blind consequence"} · ${consequence.digest}`;
     markingFrontierDetail.append(consequenceGrid, consequenceChannels);
   }
   markingFrontierDetail.append(boundary);

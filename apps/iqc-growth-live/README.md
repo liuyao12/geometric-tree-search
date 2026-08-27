@@ -5735,3 +5735,21 @@ counterfactual post-attachment readout: no action is executed, no candidate is r
 and the panel states separately whether the consequence came from known-window replay or a
 target-blind continuation frontier. The signed channel response is a geometric hypothesis
 ledger—not energy, probability, stability, kinetics, or physical elapsed time.
+
+### Build 215 · multiscale structural consequence before commitment
+
+The marking-winner microscope now asks whether two saved markings would alter structural
+order differently, without executing either proposal. For each distinct winning candidate,
+the portal freezes the nearest 64 current atoms to the emitted-site centroid, appends every
+new site, and compares the same local section before and after attachment. Three-dimensional
+samples report the change in mean Steinhardt q₆; intrinsic two-dimensional samples report
+the corresponding |ψ₆| change. A unit-weight finite-section Debye S(q) comparison reports
+dominant-peak prominence and spectral-shape change alongside compact structural phenotypes.
+
+Distinct markings that choose the same exact candidate share one cached consequence rather
+than repeating the calculation. Receipts retain the analysis-window rule, before/after atom
+counts, pair-distance work, order and scattering summaries, invariance gates, target-use
+state, and coordinate-free digest. This is a local finite-window structural counterfactual,
+not bulk order, experimental scattering intensity, phase assignment, stability, energy,
+probability, kinetics, or physical time; it never changes ranking, hard admission, geometry,
+or execution.
