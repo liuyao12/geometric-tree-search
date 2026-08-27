@@ -86,6 +86,9 @@ assert.equal(shifted.heldoutFeatureSupportCoverage, 0);
 assert.equal(shifted.supportedHeldoutPlacements, 0);
 assert.equal(shifted.unsupportedHeldoutPlacements, 16);
 assert.ok(shifted.maximumStandardizedFeatureExcess > 0);
+assert.equal(shifted.interpolationReadiness.state, "extrapolation-only");
+assert.equal(shifted.interpolationReadiness.aggregateSkillIsInterpolationTest, false);
+assert.equal(shifted.interpolationReadiness.supportedSubsetSkillAvailable, false);
 const interactionRecords = Array.from({ length: 60 }, (_, index) => {
   const leapIndex = Math.floor(index / 12) + 1; const within = index % 12;
   const first = (within % 3) - 1; const second = Math.floor(within / 3) % 2 ? 1 : -1;
@@ -138,4 +141,15 @@ assert.ok(localState.heldoutSkillVersusTrainingMean > .99);
 assert.ok(localState.supportedHeldoutSkillVersusTrainingMean > .99);
 assert.equal(localState.contextFeatureScope, "predeclared local/intensive attachment state");
 assert.deepEqual(localState.contextFeatureIds, LOCAL_CREATION_CONTEXT_FEATURE_IDS);
+assert.equal(localState.interpolationReadiness.state, "full-interpolation");
+assert.equal(localState.interpolationReadiness.aggregateSkillIsInterpolationTest, true);
+const mixedStateRecords = stateScopeRecords.map((record, index) => index === 59 ? ({ ...record,
+  contextFeatures: record.contextFeatures.map((feature) => feature.id === "support-sites"
+    ? { ...feature, value: 20 } : feature) }) : record);
+const mixedState = blockedCreationResponseSurrogate(mixedStateRecords, "shellChange",
+  { trainingFraction: .6, minimumSamplesPerSplit: 4, ridge: .01, includeStructuralContext: true,
+    contextFeatureIds: LOCAL_CREATION_CONTEXT_FEATURE_IDS });
+assert.equal(mixedState.interpolationReadiness.state, "mixed-domain");
+assert.equal(mixedState.interpolationReadiness.aggregateSkillIsInterpolationTest, false);
+assert.equal(mixedState.interpolationReadiness.supportedSubsetSkillAvailable, true);
 console.log("materials creation-response association: passed");

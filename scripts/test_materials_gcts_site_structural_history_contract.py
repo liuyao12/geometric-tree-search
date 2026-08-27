@@ -48,9 +48,9 @@ def test_growth_workbench_signed_formatting_is_globally_defined():
 
 
 def test_build_193_assets_and_narrative():
-    assert 'buildId: "20260826-202"' in APP
-    assert 'app.js?v=20260826-202' in HTML
-    assert 'style.css?v=20260826-98' in HTML
+    assert 'buildId: "20260826-203"' in APP
+    assert 'app.js?v=20260826-203' in HTML
+    assert 'style.css?v=20260826-99' in HTML
     assert 'site-structural-history.js?v=20260826-1' in APP
     assert "Build 193" in README
     assert "Build 193" in DOCS

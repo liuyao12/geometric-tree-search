@@ -86,13 +86,21 @@ def test_association_microscope_is_interactive_and_claims_fail_closed():
     assert "localContextBlockedSurrogates" in APP
     assert "local attachment-state transfer" in APP
     assert ".site-surrogate-support.local-context" in STYLE
+    assert "interpolationReadiness" in MODULE
+    assert '"full-interpolation"' in MODULE
+    assert '"mixed-domain"' in MODULE
+    assert '"extrapolation-only"' in MODULE
+    assert "minimumSupportedPlacementsForSubsetSkill" in MODULE
+    assert "featureEnvelopeChosenUsingHeldout: false" in MODULE
+    assert "site-surrogate-readiness" in APP
+    assert ".site-surrogate-readiness" in STYLE
 
 
 def test_build_197_assets_and_narrative():
-    assert 'buildId: "20260826-202"' in APP
-    assert 'app.js?v=20260826-202' in HTML
-    assert 'style.css?v=20260826-98' in HTML
-    assert 'creation-response-association.js?v=20260826-9' in APP
+    assert 'buildId: "20260826-203"' in APP
+    assert 'app.js?v=20260826-203' in HTML
+    assert 'style.css?v=20260826-99' in HTML
+    assert 'creation-response-association.js?v=20260826-10' in APP
     assert "Build 194" in README
     assert "Build 196" in README
     assert "Build 196" in DOCS
@@ -108,6 +116,8 @@ def test_build_197_assets_and_narrative():
     assert "Build 201" in DOCS
     assert "Build 202" in README
     assert "Build 202" in DOCS
+    assert "Build 203" in README
+    assert "Build 203" in DOCS
     assert "0/142" in README
     assert "0/142" in DOCS
     assert "Build 194" in DOCS

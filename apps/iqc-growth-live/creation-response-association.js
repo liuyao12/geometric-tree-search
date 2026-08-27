@@ -320,7 +320,7 @@ export function blockedCreationResponseSurrogate(records, outcomeId, {
   const subsetMae = (subset) => subset.length ? subset.reduce((sum, entry) =>
     sum + Math.abs(entry.predicted - entry.observed), 0) / subset.length : null;
   const subsetSkill = (subset) => {
-    if (!subset.length) return null;
+    if (subset.length < minimumSamplesPerSplit) return null;
     const model = subset.reduce((sum, entry) => sum + (entry.predicted - entry.observed) ** 2, 0);
     const baseline = subset.reduce((sum, entry) => sum + (entry.baseline - entry.observed) ** 2, 0);
     return baseline > 1e-14 ? 1 - model / baseline : null;
@@ -331,6 +331,10 @@ export function blockedCreationResponseSurrogate(records, outcomeId, {
   const predictedRanks = averageRanks(predictions.map((entry) => entry.predicted));
   const observedRanks = averageRanks(predictions.map((entry) => entry.observed));
   const quadraticPredictedRanks = averageRanks(predictions.map((entry) => entry.quadraticPredicted));
+  const interpolationState = supportedPredictions.length === predictions.length ? "full-interpolation"
+    : supportedPredictions.length ? "mixed-domain" : "extrapolation-only";
+  const supportedSubsetSkill = subsetSkill(supportedPredictions);
+  const unsupportedSubsetSkill = subsetSkill(unsupportedPredictions);
   return {
     available: true, outcomeId, trainingLeaps, heldoutLeaps,
     trainingPlacements: trainingRecords.length, heldoutPlacements: heldoutRecords.length,
@@ -378,8 +382,22 @@ export function blockedCreationResponseSurrogate(records, outcomeId, {
     unsupportedHeldoutPlacements: unsupportedPredictions.length,
     supportedHeldoutMeanAbsoluteError: rounded(subsetMae(supportedPredictions), 8),
     unsupportedHeldoutMeanAbsoluteError: rounded(subsetMae(unsupportedPredictions), 8),
-    supportedHeldoutSkillVersusTrainingMean: rounded(subsetSkill(supportedPredictions), 8),
-    unsupportedHeldoutSkillVersusTrainingMean: rounded(subsetSkill(unsupportedPredictions), 8),
+    supportedHeldoutSkillVersusTrainingMean: rounded(supportedSubsetSkill, 8),
+    unsupportedHeldoutSkillVersusTrainingMean: rounded(unsupportedSubsetSkill, 8),
+    interpolationReadiness: {
+      state: interpolationState,
+      aggregateSkillIsInterpolationTest: interpolationState === "full-interpolation",
+      supportedSubsetSkillAvailable: Number.isFinite(supportedSubsetSkill),
+      minimumSupportedPlacementsForSubsetSkill: minimumSamplesPerSplit,
+      supportedPlacements: supportedPredictions.length,
+      unsupportedPlacements: unsupportedPredictions.length,
+      featureEnvelopeChosenUsingHeldout: false,
+      interpretation: interpolationState === "full-interpolation"
+        ? "aggregate held-block skill is entirely inside the earlier-block feature envelope"
+        : interpolationState === "mixed-domain"
+          ? "aggregate skill mixes interpolation and extrapolation; use the supported-only result only when its sample gate passes"
+          : "aggregate held-block skill is extrapolation-only and is not an interpolation test",
+    },
     maximumStandardizedFeatureExcess: rounded(Math.max(...predictions
       .map((entry) => entry.maximumStandardizedFeatureExcess)), 8),
     featureSupportDefinition: "axis-aligned min/max envelope of earlier-block active score contributions and any enabled target-free structural context; normalized excess uses earlier-block scale",

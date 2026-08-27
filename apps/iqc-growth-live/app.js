@@ -34,7 +34,7 @@ import { appendSiteStructuralHistory, summarizeSiteStructuralHistory }
   from "./site-structural-history.js?v=20260826-1";
 import { blockedCreationResponseSurrogate, blockedCreationResponseValidation, buildCreationResponseAssociation,
   canonicalCreationResponseDataset, creationResponseLeapProfile, LOCAL_CREATION_CONTEXT_FEATURE_IDS }
-  from "./creation-response-association.js?v=20260826-9";
+  from "./creation-response-association.js?v=20260826-10";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -3870,6 +3870,26 @@ function renderPopulationSurrogate(surrogate, contextualSurrogate, localContextS
       const barValue = document.createElement("strong"); barValue.textContent = `MAE ${error.toFixed(3)}`;
       bar.append(barLabel, barValue); bars.append(bar);
     });
+  const readiness = document.createElement("div"); readiness.className = "site-surrogate-readiness";
+  const readinessTile = (name, model) => {
+    const tile = document.createElement("span");
+    const state = model?.interpolationReadiness?.state || "unavailable";
+    tile.className = state;
+    const tileLabel = document.createElement("small"); tileLabel.textContent = name;
+    const tileValue = document.createElement("strong");
+    tileValue.textContent = state === "full-interpolation" ? "INTERPOLATION"
+      : state === "mixed-domain" ? "MIXED DOMAIN"
+        : state === "extrapolation-only" ? "EXTRAPOLATION" : "UNAVAILABLE";
+    const tileDetail = document.createElement("em");
+    tileDetail.textContent = model?.available
+      ? `${model.supportedHeldoutPlacements}/${model.heldoutPlacements} inside earlier envelope`
+      : model?.reason || "awaiting complete blocks";
+    tile.title = model?.interpolationReadiness?.interpretation || tileDetail.textContent;
+    tile.append(tileLabel, tileValue, tileDetail); return tile;
+  };
+  readiness.append(readinessTile("score channels", surrogate),
+    readinessTile("local attachment", localContextSurrogate),
+    readinessTile("all structural state", contextualSurrogate));
   const support = document.createElement("div"); support.className = "site-surrogate-support";
   support.style.setProperty("--support", `${100 * surrogate.heldoutFeatureSupportCoverage}%`);
   const supportLabel = document.createElement("small"); supportLabel.textContent = "geometric support transfer";
@@ -3939,7 +3959,7 @@ function renderPopulationSurrogate(surrogate, contextualSurrogate, localContextS
       const weight = document.createElement("strong"); weight.textContent = `βₛ ${feature.standardizedWeight >= 0 ? "+" : ""}${feature.standardizedWeight.toFixed(3)}`;
       chip.append(name, weight); contextCoefficients.append(chip);
     });
-  sitePopulationSurrogate.append(label, value, detail, bars, support, localSupport, contextSupport, coefficients, interactions,
+  sitePopulationSurrogate.append(label, value, detail, bars, readiness, support, localSupport, contextSupport, coefficients, interactions,
     contextCoefficients);
 }
 
@@ -8727,7 +8747,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-202",
+      buildId: "20260826-203",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,

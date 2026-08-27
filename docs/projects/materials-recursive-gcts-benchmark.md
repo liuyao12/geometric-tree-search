@@ -6310,3 +6310,17 @@ supported-only skill. The UI displays five arms and separate local/all-state sup
 No held response, held range, phase label, coordinate frame, or physical-time variable
 selects the local scope. This is an interpolation audit inside one deterministic growth
 trace, not evidence of transport, forces, rates, or transfer to another material.
+
+## Build 203: machine-readable interpolation readiness
+
+Build 203 turns feature-domain validity into an explicit gate rather than leaving it to
+narrative interpretation. Each score-only, local-state, and all-state blocked model reports
+one of `full-interpolation`, `mixed-domain`, or `extrapolation-only`, with supported and
+unsupported held-placement counts. Aggregate skill is marked as an interpolation test only
+when every held action lies inside the earlier-block axis-aligned envelope.
+
+A mixed-domain model receives a supported-only skill only if the supported subset reaches
+the fixed `minimumSamplesPerSplit` gate; otherwise the statistic is null. The readiness
+object, sample threshold, interpretation, and `featureEnvelopeChosenUsingHeldout=false`
+audit are serialized into the full receipt and summarized in the notebook. The new
+three-tile ledger makes this boundary visible before coefficients or MAE bars are read.

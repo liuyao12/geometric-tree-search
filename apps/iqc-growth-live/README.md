@@ -5570,3 +5570,16 @@ overlapping local geometry domain from a model scored only while the material is
 into new global-size states. Causal depth is excluded because it is search history rather
 than local attachment geometry. It remains a blocked deterministic-run diagnostic, not a
 kinetics model or independent-material validation.
+
+### Build 203 · interpolation-readiness ledger
+
+Every blocked surrogate now classifies its held domain as full interpolation, mixed domain,
+or extrapolation-only from the earlier-block feature envelope. The three states are shown
+side by side for score channels, local attachment geometry, and all structural state.
+Aggregate skill is explicitly an interpolation test only in the full state.
+
+For mixed domains, supported-only skill is emitted only when the supported subset itself
+meets the same preregistered minimum-sample gate used by the blocked fit. With fewer samples,
+the value remains unavailable rather than becoming a persuasive small-subset statistic.
+The receipt records the state, counts, threshold, interpretation, and the fact that held
+ranges never selected the envelope.
