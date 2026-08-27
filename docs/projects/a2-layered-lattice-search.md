@@ -213,6 +213,35 @@ still not a non-tiling or aperiodicity proof. The earlier
 `data/a2-layered-size7-periodic-z3-focus6to8-part*.ndjson` files remain only as
 historical timeout controls.
 
+The determinant-28 eight-copy screen now has a proof-producing backend in
+`scripts/screen-a2-layered-periodic-scip.py`. It uses SCIP 10 exact mode with
+safe rational LP bounds, asks SCIP for a VIPR branch-and-bound certificate,
+completes the deliberately abbreviated LP derivations with `viprcomp`, and
+accepts a negative only when the independent `viprchk` rational checker prints
+`Successfully verified infeasibility.` Floating-point MIP statuses are never
+used as rejection evidence. Separators are disabled: this reduces the first
+completed proof from 287 MB to 40 MB and also makes completion substantially
+cheaper.
+
+The 1,995 determinant-28 HNF sublattices form 384 orbits under the six proper
+A2 layer isometries (orbit-size distribution: two of size 1, two of size 2,
+97 of size 3, and 283 of size 6). Since the quotient model already contains
+all proper tile orientations, every HNF in one such orbit is an isomorphic
+feasibility problem. The backend therefore proves one representative and
+records every covered HNF index.
+
+As an end-to-end retained control, the first orbit for `a2lp_7_00128` is now
+certified negative and covers three HNFs. Its completed proof has 48,370
+derivations and is stored compressed at
+`data/proofs/a2-exact8-a2lp_7_00128-h0000.vipr.gz`; the exact generated MPS is
+beside it. The report
+`data/a2-layered-size7-periodic-exact8-a2lp_7_00128-orbit0.ndjson` records the
+MPS, compressed proof, uncompressed proof, and executable hashes. This is a
+pipeline certificate, not yet a complete eight-copy census: 383 orbit
+representatives remain for `00128`, and all 384 remain for each of the other
+seven candidates. The catalogue therefore remains exact only through six
+copies until those ranges are completed and merged.
+
 `scripts/screen-a2-layered-substitution.py` exactly subdivides a scalar-inflated
 supertile into atomic A2 prism cells, enumerates every properly oriented copy
 contained in it, and solves the resulting finite exact cover. All eight

@@ -1,0 +1,95 @@
+#!/usr/bin/env python3
+import gzip
+import hashlib
+import importlib.util
+import json
+import tempfile
+from collections import Counter
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parent.parent
+SPEC = importlib.util.spec_from_file_location(
+    "a2_periodic_scip", ROOT / "scripts" / "screen-a2-layered-periodic-scip.py"
+)
+MODULE = importlib.util.module_from_spec(SPEC)
+SPEC.loader.exec_module(MODULE)
+
+orbits = MODULE.hnf_orbits(28)
+assert len(orbits) == 384
+assert sum(len(orbit["member_indices"]) for orbit in orbits) == 1995
+assert Counter(len(orbit["member_indices"]) for orbit in orbits) == {
+    1: 2, 2: 2, 3: 97, 6: 283,
+}
+assert sorted(
+    index for orbit in orbits for index in orbit["member_indices"]
+) == list(range(1995))
+for orbit in orbits:
+    assert orbit["representative_index"] == min(orbit["member_indices"])
+
+record = next(
+    json.loads(line)
+    for line in (
+        ROOT / "data" / "a2-layered-size7-periodic-z3-through4.ndjson"
+    ).read_text().splitlines()
+    if json.loads(line)["id"] == "a2lp_7_00128"
+)
+placements, orientation_count = MODULE.quotient_placements(
+    record, tuple(orbits[0]["representative_hnf"]), 28
+)
+assert orientation_count == 6
+assert len(placements) == 168
+rooted = MODULE.rooted_multicover(placements)
+assert rooted["divisor"] == 4
+assert rooted["full_weight"] == 12
+assert len(rooted["capacity"]) == 28
+assert len(rooted["eligible_indices"]) == 167
+with tempfile.TemporaryDirectory() as directory:
+    mps = Path(directory) / "control.mps"
+    MODULE.write_mps(mps, rooted, 7)
+    text = mps.read_text()
+    assert text.startswith("NAME A2PERIODIC\nROWS\n N OBJ\n")
+    assert " E COUNT\n" in text
+    assert text.count(" BV BND X") == 167
+    assert text.endswith("ENDATA\n")
+
+report = json.loads((
+    ROOT / "data" / "a2-layered-size7-periodic-exact8-a2lp_7_00128-orbit0.ndjson"
+).read_text())
+screen = report["periodic_exact_scip"]
+assert report["classification"] == "unresolved"
+assert screen["copies"] == 8
+assert screen["determinant"] == 28
+assert screen["certified_no_periodic_quotient"] is False
+assert screen["orbit_range"] == [0, 1]
+assert screen["orbit_representatives_visited"] == 1
+assert screen["hnf_covered"] == 3
+assert screen["hnf_total"] == 1995
+assert screen["hnf_orbit_total"] == 384
+assert screen["solver_unknown"] == 0
+receipt = screen["proof_receipts"][0]
+assert receipt["verified"] is True
+assert receipt["kind"] == "completed_vipr_rational_infeasibility"
+assert receipt["hnf_index"] == 0
+assert receipt["orbit_size"] == 3
+assert receipt["derivations"] == 48370
+
+mps_path = ROOT / receipt["mps_path"]
+compressed_path = ROOT / receipt["compressed_vipr_path"]
+assert hashlib.sha256(mps_path.read_bytes()).hexdigest() == receipt["mps_sha256"]
+assert hashlib.sha256(compressed_path.read_bytes()).hexdigest() == receipt["compressed_vipr_sha256"]
+digest = hashlib.sha256()
+uncompressed_bytes = 0
+with gzip.open(compressed_path, "rb") as stream:
+    for block in iter(lambda: stream.read(1024 * 1024), b""):
+        digest.update(block)
+        uncompressed_bytes += len(block)
+assert digest.hexdigest() == receipt["vipr_sha256"]
+assert uncompressed_bytes == receipt["vipr_bytes"]
+
+print("A2 exact SCIP/VIPR regression passed", {
+    "determinant_28_hnfs": 1995,
+    "point_group_orbits": len(orbits),
+    "first_orbit_hnfs_covered": screen["hnf_covered"],
+    "verified_derivations": receipt["derivations"],
+})
