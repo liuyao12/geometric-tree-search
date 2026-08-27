@@ -18,6 +18,16 @@ the GCTS anatomy view explains covers, oriented ports, markings, search, and
 promotion; and the claim ledger keeps proved, measured, and open results visibly
 separate. Its numbers are frozen benchmark results, not recomputed browser demos.
 
+Build 228 turns that provenance into an interactive growth-history audit. The
+search stack now carries each accepted or pruned action's cover-family lineage,
+and a clickable propagation strip groups molecule→connection,
+connection→void, residual, and recurring-support paths with their decision
+counts, causal-depth span, and exact emitted-site count. The experiment receipt
+stores a coordinate-free SHA-256 digest of every accepted generic placement,
+the latest 256 lineage records, grouped totals, and the separately identified
+ice primitive-port trace. Display focus is recorded but remains excluded from
+candidate generation, admission, and ranking.
+
 Build 227 carries the molecular-cover decomposition into the growth decision
 ledger. Every generic candidate now exposes the frozen parent→child cover
 family—molecule, connection cluster, void/gap boundary, residual, or recurring

@@ -57,6 +57,14 @@ excluded from ranking. The specialized ice oxygen-anchor trace is identified as
 a separate molecular primitive-port continuation, not as evidence that the
 generic promoted-macro executor ran.
 
+Build 228 adds a clickable cover-propagation history beside the live tree-search
+stack. It aggregates accepted and rejected decisions by cover-family transition,
+reports their causal-depth span and exact emitted-site count, and keeps the
+specialized molecular trace visually and semantically separate. The downloadable
+receipt now includes grouped lineage totals, a coordinate-free digest over all
+accepted generic lineage records, and up to the latest 256 records; no
+coordinates, target sites, energies, or physical mechanisms enter this audit.
+
 ## Benchmark ladder
 
 All learners receive only positions and species.  Hidden construction metadata

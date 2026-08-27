@@ -702,6 +702,10 @@ const growthUncertaintyState = $("growthUncertaintyState");
 const growthUncertaintyBudget = $("growthUncertaintyBudget");
 const stackDepth = $("stackDepth");
 const searchStack = $("searchStack");
+const growthLineageMap = $("growthLineageMap");
+const growthLineageState = $("growthLineageState");
+const growthLineageFlow = $("growthLineageFlow");
+const growthLineageDetail = $("growthLineageDetail");
 const markingHeading = $("markingHeading");
 const markCount = $("markCount");
 const markingTable = $("markingTable");
@@ -1250,6 +1254,7 @@ let grammarDecisions = 0;
 let acceptedDecisions = 0;
 let rejectedDecisions = 0;
 let stackHistory = [];
+let selectedGrowthLineageKey = null;
 let markingCache = new Map();
 let actionCache = new Map();
 let currentCandidates = [];
@@ -7068,6 +7073,20 @@ function coverLineageForRule(rule) {
   };
 }
 
+function specializedIceCoverLineage() {
+  return {
+    parentType: null, childType: null,
+    parentFamily: "molecule", childFamily: "bridge",
+    parentLabel: iceAnchorTrace?.moleculeLabel || "H₂O",
+    childLabel: "oxygen-anchor connection",
+    displayFocusMatches: molecularCoverFocus === "all" || molecularCoverFocus === "molecule"
+      || molecularCoverFocus === "bridge",
+    displayFocusUsedForRanking: false,
+    targetUsed: false,
+    executionKind: "specialized frozen primitive molecular port",
+  };
+}
+
 function clusterCoverRole(cluster) {
   return {
     molecule: "molecular atom cover",
@@ -8751,6 +8770,53 @@ function receiptClusterRecord(cluster, index) {
   };
 }
 
+async function coverLineageReceiptEvidence() {
+  const records = placedClusters.filter((placement) => placement.decisionEvidence?.coverLineage)
+    .map((placement) => ({
+      placementId: placement.id, parentPlacementId: placement.parentId,
+      nucleusId: placement.nucleusId, depth: placement.depth, ruleId: placement.ruleId,
+      clusterType: placement.type,
+      ...placement.decisionEvidence.coverLineage,
+      sharedSites: placement.decisionEvidence.sharedSites,
+      emittedSites: placement.decisionEvidence.emittedSites,
+    }));
+  const groups = new Map();
+  records.forEach((record) => {
+    const key = `${record.parentFamily}>${record.childFamily}`;
+    const group = groups.get(key) || { key, parentFamily: record.parentFamily,
+      childFamily: record.childFamily, parentLabel: record.parentLabel,
+      childLabel: record.childLabel, acceptedPlacements: 0, emittedSites: 0,
+      minimumDepth: Infinity, maximumDepth: 0 };
+    group.acceptedPlacements++;
+    group.emittedSites += record.emittedSites || 0;
+    group.minimumDepth = Math.min(group.minimumDepth, record.depth || 0);
+    group.maximumDepth = Math.max(group.maximumDepth, record.depth || 0);
+    groups.set(key, group);
+  });
+  const specialized = iceAnchorTrace ? {
+    lineage: specializedIceCoverLineage(),
+    executedWaves: iceAnchorWaveIndex,
+    acceptedAnchors: iceAnchorTrace.waves.slice(0, iceAnchorWaveIndex)
+      .reduce((sum, wave) => sum + wave.acceptedAnchors, 0),
+    executionKind: "specialized molecular primitive-port continuation",
+    genericPromotedMacroExecutorUsed: false,
+  } : null;
+  return {
+    role: "coordinate-free provenance from the learned cover family to accepted growth actions",
+    displayFocusAtReceipt: molecularCoverFocus,
+    displayFocusUsedForRanking: false,
+    acceptedGenericPlacementCount: records.length,
+    acceptedGenericPlacementSha256: await receiptSha256(JSON.stringify(records)),
+    acceptedGenericPlacementsTruncated: records.length > 256,
+    acceptedGenericPlacements: records.slice(-256),
+    groupedLineages: [...groups.values()].map((group) => ({ ...group,
+      minimumDepth: Number.isFinite(group.minimumDepth) ? group.minimumDepth : 0 })),
+    specialized,
+    targetUsed: false,
+    physicalMechanismInferred: false,
+  };
+}
+
 function receiptGrowthClaims(scenarioId, benchmark, trace) {
   const symbolicRecursiveSystems = new Set(["competition", "graphene", "hbn", "moire"]);
   const symbolicRecursiveScaling = benchmark.status === "pass" && symbolicRecursiveSystems.has(scenarioId);
@@ -9259,7 +9325,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-227",
+      buildId: "20260827-228",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -10000,6 +10066,7 @@ async function buildExperimentReceipt() {
       explicitSitesSha256: await structureDigest(atoms, "scene"),
       coordinateDigestSpace: "scene coordinates; order-independent serialization; coordinates not embedded",
       placedClusters: placedClusters.length,
+      coverLineageAudit: await coverLineageReceiptEvidence(),
       acceptedDecisions,
       rejectedDecisions,
       coordinationCapacityPrunes,
@@ -19710,6 +19777,7 @@ function resetCounters() {
   selectedPolicyPreviewId = "active";
   policySnapshotCount = 0;
   stackHistory = [];
+  selectedGrowthLineageKey = null;
   markingCache = new Map();
   actionCache = new Map();
   currentCandidates = [];
@@ -20374,7 +20442,7 @@ function performOffLatticeEvent() {
       rejectedExplorationOffset += candidate.explorationOffset || 0;
       rejectedInBatch++;
       appendHistory("reject", { type: "reject", depth: placedClusters.find((placement) => placement.id === candidate.parentId)?.depth || 0,
-        action: state.action, family: evaluation.reason });
+        action: state.action, family: evaluation.reason, coverLineage: state.coverLineage });
       recordGrowthMechanismEvent(candidate, snapshotEvaluation, false,
         placedClusters.find((placement) => placement.id === candidate.parentId)?.depth || 0,
         mechanismDiagnostics.get(candidate));
@@ -20434,7 +20502,7 @@ function performOffLatticeEvent() {
     acceptedInBatch++;
     freshInBatch += evaluation.fresh.length;
     appendHistory(decision.reuse ? "reuse" : "accept", { type: "accept", depth: placement.depth, action: state.action,
-      family: `${evaluation.merged.length} shared · ${evaluation.fresh.length} new` });
+      family: `${evaluation.merged.length} shared · ${evaluation.fresh.length} new`, coverLineage: state.coverLineage });
     lastDecision = { eventType: decision.reuse ? "reuse" : "accept", accepted: true, state,
       resolver: decision.resolver, energy: candidate.markingScore, interval: decision.interval };
   });
@@ -20509,7 +20577,7 @@ function performIceAnchorEvent() {
     surfaceValue.textContent = "not used by frozen ice trace";
     resolverValue.textContent = iceAnchorTrace.selectionRuleLabel;
     appendHistory("reject", { type: "reject", depth: wave.wave,
-      action: "safe fixed point", family: "no unanimous parent domain" });
+      action: "safe fixed point", family: "no unanimous parent domain", coverLineage: specializedIceCoverLineage() });
     recordStructuralLeap({ status: "fixed", label: `wave ${wave.wave} · molecular anchor frontier`,
       before, proposal: { candidates: wave.candidateAnchors, sites: wave.candidateAnchors, shared: 0, fresh: 0 },
       tests: { summary: `0 / ${wave.candidateAnchors} anchors admitted`,
@@ -20540,7 +20608,8 @@ function performIceAnchorEvent() {
   grammarDecisions += wave.acceptedAnchors;
   appendHistory("reuse", { type: "accept", depth: wave.wave,
     action: `${wave.acceptedAnchors} O anchors`,
-    family: `${wave.retainedOrientationHypotheses} mutually exclusive ${iceAnchorTrace.moleculeLabel} poses retained` });
+    family: `${wave.retainedOrientationHypotheses} mutually exclusive ${iceAnchorTrace.moleculeLabel} poses retained`,
+    coverLineage: specializedIceCoverLineage() });
   captionAction.textContent = `Wave ${wave.wave}: ${wave.acceptedAnchors}/${wave.candidateAnchors} anchor candidates survive frozen proper-SE(3) ports and ${iceAnchorTrace.selectionRuleLabel}. ${wave.retainedOrientationHypotheses} mutually exclusive ${iceAnchorTrace.moleculeLabel} orientation hypotheses remain symbolic; only their shared O atoms are displayed.`;
   updateDecision({ eventType: "reuse", accepted: true,
     state: { action: `${wave.acceptedAnchors} O-anchor placements`,
@@ -25332,7 +25401,90 @@ function renderLegend() {
   }
 }
 
+function growthCoverLineageGroups() {
+  const records = iceAnchorTrace
+    ? stackHistory.filter((entry) => entry.coverLineage)
+      .map((entry) => ({ ...entry, emittedSites: entry.type === "accept"
+        ? Number.parseInt(entry.action, 10) || 0 : 0 }))
+    : [
+      ...placedClusters.filter((placement) => placement.decisionEvidence?.coverLineage)
+        .map((placement) => ({ type: "accept", depth: placement.depth,
+          action: `C${placement.decisionEvidence.coverLineage.parentType + 1}→C${placement.decisionEvidence.coverLineage.childType + 1}`,
+          coverLineage: placement.decisionEvidence.coverLineage,
+          emittedSites: placement.decisionEvidence.emittedSites || 0 })),
+      ...stackHistory.filter((entry) => entry.type === "reject" && entry.coverLineage),
+    ];
+  const groups = new Map();
+  records.forEach((record) => {
+    const lineage = record.coverLineage;
+    const key = `${lineage.parentFamily}>${lineage.childFamily}`;
+    const group = groups.get(key) || { key, lineage, accepted: 0, rejected: 0,
+      emittedSites: 0, minimumDepth: Infinity, maximumDepth: 0, rules: new Set() };
+    if (record.type === "accept") group.accepted++;
+    else group.rejected++;
+    group.emittedSites += record.emittedSites || 0;
+    group.minimumDepth = Math.min(group.minimumDepth, record.depth || 0);
+    group.maximumDepth = Math.max(group.maximumDepth, record.depth || 0);
+    group.rules.add(record.action);
+    groups.set(key, group);
+  });
+  return [...groups.values()];
+}
+
+function renderGrowthLineageMap() {
+  growthLineageMap.hidden = pipelineStage !== 4 || currentMaterial().growthWithheld;
+  if (growthLineageMap.hidden) return;
+  const groups = growthCoverLineageGroups();
+  const accepted = groups.reduce((sum, group) => sum + group.accepted, 0);
+  growthLineageState.textContent = groups.length
+    ? `${groups.length} path${groups.length === 1 ? "" : "s"} · ${accepted} accepted`
+    : "awaiting a decision";
+  growthLineageFlow.replaceChildren();
+  growthLineageDetail.replaceChildren();
+  if (!groups.length) {
+    const note = document.createElement("p");
+    note.textContent = iceAnchorTrace
+      ? "Advance one wave to record the specialized molecular-anchor lineage."
+      : "Advance one frozen frontier update to map cluster-cover families into growth decisions.";
+    growthLineageDetail.append(note);
+    return;
+  }
+  if (!groups.some((group) => group.key === selectedGrowthLineageKey)) {
+    selectedGrowthLineageKey = groups.at(-1).key;
+  }
+  groups.forEach((group) => {
+    const button = document.createElement("button"); button.type = "button";
+    button.className = group.lineage.childFamily;
+    button.classList.toggle("active", group.key === selectedGrowthLineageKey);
+    button.setAttribute("aria-pressed", String(group.key === selectedGrowthLineageKey));
+    const title = document.createElement("strong");
+    title.textContent = `${group.lineage.parentLabel} → ${group.lineage.childLabel}`;
+    const counts = document.createElement("span");
+    counts.textContent = `${group.accepted} keep · ${group.rejected} prune · ${group.emittedSites} sites`;
+    button.append(title, counts);
+    button.addEventListener("click", () => { selectedGrowthLineageKey = group.key; renderGrowthLineageMap(); });
+    growthLineageFlow.append(button);
+  });
+  const selected = groups.find((group) => group.key === selectedGrowthLineageKey);
+  const fields = [
+    ["decision evidence", `${selected.accepted} accepted / ${selected.rejected} rejected`],
+    ["causal reach", `depth ${Number.isFinite(selected.minimumDepth) ? selected.minimumDepth : 0}–${selected.maximumDepth}`],
+    ["exact output", `${selected.emittedSites} novel colored sites`],
+  ];
+  fields.forEach(([label, value]) => {
+    const cell = document.createElement("div"); const key = document.createElement("b");
+    const content = document.createElement("span"); key.textContent = label; content.textContent = value;
+    cell.append(key, content); growthLineageDetail.append(cell);
+  });
+  const boundary = document.createElement("p");
+  boundary.textContent = selected.lineage.executionKind
+    ? `${selected.lineage.executionKind}. This is not the generic clusters² executor; target calls remain zero before scoring.`
+    : `${selected.rules.size} frozen parent→child rule${selected.rules.size === 1 ? "" : "s"} contributed. The current cover focus is display-only and never changes candidate geometry, admission, or rank.`;
+  growthLineageDetail.append(boundary);
+}
+
 function renderStack() {
+  renderGrowthLineageMap();
   if (pipelineStage === 1 && clusterDiscoveryTrace) {
     const discovery = clusterDiscoveryState();
     stackDepth.textContent = `${clusterDiscoveryProgress}/${clusterDiscoveryTrace.totalSteps} discovery steps`;
@@ -25382,7 +25534,11 @@ function renderStack() {
   rows.forEach((entry) => {
     const row = document.createElement("li");
     const depth = document.createElement("b"); depth.textContent = `d${entry.depth}`;
-    const action = document.createElement("span"); action.textContent = `${entry.action} · ${entry.family}`;
+    const action = document.createElement("span");
+    action.textContent = entry.coverLineage
+      ? `${entry.coverLineage.parentLabel} → ${entry.coverLineage.childLabel} · ${entry.action} · ${entry.family}`
+      : `${entry.action} · ${entry.family}`;
+    if (entry.coverLineage) action.title = `${entry.coverLineage.parentLabel} → ${entry.coverLineage.childLabel}; display focus never ranked`;
     const state = document.createElement("em"); state.textContent = entry.type === "reject" ? "prune" : "keep";
     row.classList.toggle("reject", entry.type === "reject");
     row.append(depth, action, state);

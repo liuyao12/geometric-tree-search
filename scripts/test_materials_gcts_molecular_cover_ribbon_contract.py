@@ -45,6 +45,11 @@ def test_molecular_cover_ribbon_contract():
         'name: "cover lineage"',
         "specialized frozen primitive molecular port",
         "never ranked",
+        "function coverLineageReceiptEvidence()",
+        "acceptedGenericPlacementSha256",
+        "function renderGrowthLineageMap()",
+        "growthCoverLineageGroups()",
+        "current cover focus is display-only",
         "const sampleFamilies = sampleLabels.map(prototypeCoverFamily)",
         "const familyLossesFor",
         "familyLosses: familyLossesFor(initial)",
@@ -64,8 +69,10 @@ def test_molecular_cover_ribbon_contract():
     assert ".molecular-cover-flow button.void" in CSS
     assert ".molecular-cover-flow button.coverage" in CSS
     assert ".molecular-cover-flow button.active" in CSS
-    assert 'buildId: "20260827-227"' in APP
-    assert 'app.js?v=20260827-227' in HTML
+    assert ".growth-lineage-map" in CSS
+    assert 'id="growthLineageMap"' in HTML
+    assert 'buildId: "20260827-228"' in APP
+    assert 'app.js?v=20260827-228' in HTML
 
 
 if __name__ == "__main__":

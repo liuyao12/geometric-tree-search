@@ -1776,6 +1776,11 @@
           <ol id="searchStack" class="search-stack">
             <li class="empty-row">Accepted branches appear here.</li>
           </ol>
+          <div id="growthLineageMap" class="growth-lineage-map" hidden>
+            <div class="growth-lineage-heading"><small>cover-family propagation</small><span id="growthLineageState">awaiting a decision</span></div>
+            <div id="growthLineageFlow" class="growth-lineage-flow" role="group" aria-label="Inspect cover-family lineages used by growth decisions"></div>
+            <article id="growthLineageDetail" class="growth-lineage-detail" aria-live="polite"></article>
+          </div>
         </section>
 
         <section>
@@ -1836,7 +1841,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260827-227"></script>
+  <script type="module" src="./app.js?v=20260827-228"></script>
   <script type="module" src="./evidence-atlas.js?v=20260826-19"></script>
 </body>
 </html>
