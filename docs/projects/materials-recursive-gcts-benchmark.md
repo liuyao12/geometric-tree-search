@@ -6448,3 +6448,19 @@ score summaries, and rank displacement, and serializes the same audit in the exp
 receipt. This is a representation-replay and ranking comparison only: candidate geometry is
 identical across entries, target atoms are unavailable, and the audit does not certify that
 the most permissive portfolio has better held-out growth precision.
+
+## Build 213: compare saved markings on one live frontier
+
+Each frozen growth snapshot now contains a marking-only counterfactual over its complete
+hard-admitted candidate set. Every compatible marking re-scores every action using its own
+serialized basis, active mask, representation, and threshold. The audit records finite
+coverage, admission count, distinct-score count, top ties, winner, runner-up margin, score
+digest, and mean rank displacement relative to the selected artifact. A portfolio view takes
+the strongest artifact per action while retaining the winning artifact identity.
+
+The interactive rows preview the exact winning pose but cannot execute it. The receipt stores
+the full-frontier and hard-admitted-set digests plus rounded summaries, while excluding poses
+and coordinates. All arms explicitly retain `candidateGeometryChanged=false`,
+`hardAdmissionChanged=false`, `targetUsed=false`, and `executed=false`. This separates a
+marking's causal ranking effect from every other geometric physics channel and from action
+supply.

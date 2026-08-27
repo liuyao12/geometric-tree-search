@@ -5705,3 +5705,18 @@ same frozen rule set. It exposes finite-rule coverage, active versus allocated p
 mean score, and mean rule-rank displacement from the selected marking. The full replay audit
 enters the experiment receipt with explicit `sameCandidateGeometry=true` and
 `targetUsed=false`; portfolio mode only ranks or admits already enumerated actions.
+
+### Build 213 · marking counterfactual on the live frontier
+
+After each growth frontier is hard-evaluated and frozen, the portal now applies every
+compatible marking artifact to exactly that same action set. The interactive comparison
+reports each marking's highest-scored rule, finite-score coverage, number of mark-admitted
+actions, score resolution and ties, and mean rank displacement from the selected artifact.
+Clicking a row previews the exact candidate pose without executing it.
+
+When at least two markings are saved, a portfolio row shows the action selected by taking
+the strongest learned mark per candidate and identifies the responsible artifact. The
+receipt preserves score and candidate-set digests but no candidate coordinates. Candidate
+enumeration, hard geometry, target access, and execution are invariant across rows, so this
+is a causal representation/ranking audit—not evidence that the most permissive marking is
+physically superior.

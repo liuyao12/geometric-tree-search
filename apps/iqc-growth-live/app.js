@@ -417,6 +417,9 @@ const policyComparison = $("policyComparison");
 const policyComparisonState = $("policyComparisonState");
 const policyScoreLedger = $("policyScoreLedger");
 const policyScoreLedgerState = $("policyScoreLedgerState");
+const markingFrontierState = $("markingFrontierState");
+const markingFrontierRows = $("markingFrontierRows");
+const markingFrontierDetail = $("markingFrontierDetail");
 const policyWorkbenchState = $("policyWorkbenchState");
 const policyWorkbenchReset = $("policyWorkbenchReset");
 const policyPhaseMapState = $("policyPhaseMapState");
@@ -1349,6 +1352,7 @@ let lastPolicyComparison = null;
 let policyComparisonHistory = [];
 let selectedPolicySnapshotIndex = -1;
 let selectedPolicyPreviewId = "active";
+let selectedMarkingFrontierId = null;
 let policySnapshotCount = 0;
 let hypothesisSeparationExperiment = null;
 let selectedScalePassportId = null;
@@ -8984,7 +8988,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-212",
+      buildId: "20260826-213",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -10421,6 +10425,39 @@ async function buildExperimentReceipt() {
           rankingMode: snapshot.referenceGuided ? "known-window reference-guided replay" : "target-blind frontier",
           distinctTopActions: snapshot.uniqueTopActions,
           everyScoreDecompositionExact: snapshot.everyScoreDecompositionExact,
+          markingFrontierCounterfactual: (() => {
+            const audit = snapshot.markingFrontierCounterfactual;
+            return audit ? {
+              comparisonRole: audit.comparisonRole,
+              candidateSetDigest: audit.candidateSetDigest,
+              hardAdmittedCandidateSetDigest: audit.hardAdmittedCandidateSetDigest,
+              candidateCount: audit.candidates,
+              activeMarkingId: audit.activeMarkingId,
+              distinctMarkingWinners: audit.distinctMarkingWinners,
+              allScoresFinite: audit.allScoresFinite,
+              markings: audit.markings.map((marking) => ({
+                id: marking.id, name: marking.name, channels: marking.channels,
+                representation: marking.representation, threshold: receiptRound(marking.threshold),
+                finiteCandidates: marking.finiteCandidates,
+                admittedCandidates: marking.admittedCandidates,
+                distinctScores: marking.distinctScores, topTieCount: marking.topTieCount,
+                winnerDigest: marking.winnerDigest, winnerAction: marking.winnerAction,
+                winnerScore: marking.winnerScore === null ? null : receiptRound(marking.winnerScore),
+                runnerUpMargin: marking.runnerUpMargin === null ? null : receiptRound(marking.runnerUpMargin),
+                meanRankDisplacement: receiptRound(marking.meanRankDisplacement),
+                scoreDigest: marking.scoreDigest,
+              })),
+              portfolio: { enabled: audit.portfolio.enabled,
+                admittedCandidates: audit.portfolio.admittedCandidates,
+                winnerDigest: audit.portfolio.winnerDigest,
+                winnerAction: audit.portfolio.winnerAction,
+                winnerScore: audit.portfolio.winnerScore === null ? null : receiptRound(audit.portfolio.winnerScore),
+                winnerSource: audit.portfolio.winnerSource },
+              candidateGeometryChanged: audit.candidateGeometryChanged,
+              hardAdmissionChanged: audit.hardAdmissionChanged,
+              targetUsed: audit.targetUsed, executed: audit.executed,
+            } : null;
+          })(),
           workbench: (() => {
             const intervention = buildPolicyWorkbench(snapshot);
             return intervention ? {
@@ -15056,6 +15093,93 @@ function buildPolicyWorkbench(snapshot) {
   };
 }
 
+function buildMarkingFrontierCounterfactual(admissible, candidateSetDigest) {
+  const markings = compatibleMarkings();
+  const candidates = admissible.map((entry) => entry.candidate);
+  const rows = markings.map((marking) => {
+    const threshold = markingAcceptanceThreshold(marking);
+    const scored = candidates.map((candidate) => ({
+      candidate,
+      score: ruleMarkingScore(candidate.rule, marking.coefficients,
+        marking.config.representation, marking.representationState,
+        marking.channelBasis, marking.activeChannelsByPrototype),
+    })).sort((first, second) => second.score - first.score
+      || first.candidate.key.localeCompare(second.candidate.key));
+    const winner = scored[0] || null;
+    const distinctScores = new Set(scored.filter((entry) => Number.isFinite(entry.score))
+      .map((entry) => entry.score.toFixed(10))).size;
+    const topTieCount = winner ? scored.filter((entry) => Math.abs(entry.score - winner.score) <= 1e-10).length : 0;
+    return {
+      id: marking.id,
+      name: marking.name,
+      channels: Number(marking.config.channels),
+      representation: marking.config.representation,
+      threshold,
+      candidates: scored.length,
+      finiteCandidates: scored.filter((entry) => Number.isFinite(entry.score)).length,
+      admittedCandidates: scored.filter((entry) => entry.score > threshold).length,
+      distinctScores,
+      topTieCount,
+      winnerKey: winner?.candidate.key || null,
+      winnerDigest: winner ? frozenFrontierDigest([{ candidate: winner.candidate }]) : null,
+      winnerAction: winner ? `C${winner.candidate.rule.from + 1}→C${winner.candidate.rule.to + 1} · R${winner.candidate.rule.id}` : "no admitted action",
+      winnerScore: winner?.score ?? null,
+      runnerUpMargin: winner ? winner.score - (scored[topTieCount]?.score ?? winner.score) : null,
+      preview: winner ? { p: winner.candidate.position.clone(), rotation: winner.candidate.rotation.clone(),
+        type: winner.candidate.type } : null,
+      rankOrder: scored.map((entry) => entry.candidate.key),
+      scoreDigest: notebookStringHash(scored.map((entry) =>
+        `${entry.candidate.key}:${Number.isFinite(entry.score) ? entry.score.toFixed(10) : "nonfinite"}`).join("|")),
+    };
+  });
+  const reference = rows.find((row) => row.id === activeMarkingId) || rows[0] || null;
+  const referenceRanks = new Map(reference?.rankOrder.map((key, rank) => [key, rank]) || []);
+  rows.forEach((row) => {
+    row.meanRankDisplacement = row.rankOrder.reduce((sum, key, rank) =>
+      sum + Math.abs(rank - (referenceRanks.get(key) ?? rank)), 0) / Math.max(1, row.rankOrder.length);
+    delete row.rankOrder;
+  });
+  const portfolioScores = candidates.map((candidate) => {
+    const markingScores = markings.map((marking) => ({ marking,
+      score: ruleMarkingScore(candidate.rule, marking.coefficients,
+        marking.config.representation, marking.representationState,
+        marking.channelBasis, marking.activeChannelsByPrototype) }));
+    const strongest = markingScores.sort((first, second) => second.score - first.score
+      || first.marking.id.localeCompare(second.marking.id))[0];
+    return { candidate, score: strongest?.score ?? Number.NEGATIVE_INFINITY,
+      source: strongest?.marking.id || null,
+      accepted: markingScores.some((entry) => entry.score > markingAcceptanceThreshold(entry.marking)) };
+  }).sort((first, second) => second.score - first.score
+    || first.candidate.key.localeCompare(second.candidate.key));
+  const portfolioWinner = portfolioScores[0] || null;
+  return {
+    candidateSetDigest,
+    hardAdmittedCandidateSetDigest: frozenFrontierDigest(admissible),
+    candidates: candidates.length,
+    markings: rows,
+    activeMarkingId: reference?.id || null,
+    distinctMarkingWinners: new Set(rows.map((row) => row.winnerKey).filter(Boolean)).size,
+    allScoresFinite: rows.every((row) => row.finiteCandidates === row.candidates),
+    portfolio: {
+      enabled: markings.length > 1,
+      admittedCandidates: portfolioScores.filter((entry) => entry.accepted).length,
+      winnerKey: portfolioWinner?.candidate.key || null,
+      winnerDigest: portfolioWinner ? frozenFrontierDigest([{ candidate: portfolioWinner.candidate }]) : null,
+      winnerAction: portfolioWinner
+        ? `C${portfolioWinner.candidate.rule.from + 1}→C${portfolioWinner.candidate.rule.to + 1} · R${portfolioWinner.candidate.rule.id}` : null,
+      winnerScore: portfolioWinner?.score ?? null,
+      winnerSource: portfolioWinner?.source || null,
+      preview: portfolioWinner ? { p: portfolioWinner.candidate.position.clone(),
+        rotation: portfolioWinner.candidate.rotation.clone(), type: portfolioWinner.candidate.type } : null,
+    },
+    comparisonRole: "counterfactual ranking/admission over one unchanged hard-admitted candidate set",
+    candidateGeometryChanged: false,
+    hardAdmissionChanged: false,
+    targetUsed: false,
+    executed: false,
+  };
+}
+
 function capturePolicyComparison(entries) {
   const admissible = entries.filter((entry) => entry.evaluation.accepted);
   const frontierAuditStartedAt = performance.now();
@@ -15190,11 +15314,12 @@ function capturePolicyComparison(entries) {
       preview: { p: entry.candidate.position.clone(), rotation: entry.candidate.rotation.clone(), type: entry.candidate.type },
     };
   });
+  const candidateDigest = frozenFrontierDigest(entries);
   lastPolicyComparison = {
     index: ++policySnapshotCount,
     frontier: entries.length,
     admissible: admissible.length,
-    candidateDigest: frozenFrontierDigest(entries),
+    candidateDigest,
     candidateSetTargetUsed: false,
     rankingTargetUsed: !reconstructionCertified,
     referenceGuided: !reconstructionCertified,
@@ -15214,6 +15339,7 @@ function capturePolicyComparison(entries) {
     },
     workbenchCandidates,
     workbenchMultipliers: {},
+    markingFrontierCounterfactual: buildMarkingFrontierCounterfactual(admissible, candidateDigest),
     policies,
   };
   policyComparisonHistory.push(lastPolicyComparison);
@@ -16847,6 +16973,7 @@ function initializeOffLatticeSearch() {
   publicBoundaryPrunes = 0;
   lastPolicyComparison = null;
   policyComparisonHistory = [];
+  selectedMarkingFrontierId = null;
   selectedPolicySnapshotIndex = -1;
   selectedPolicyPreviewId = "active";
   policySnapshotCount = 0;
@@ -18927,6 +19054,7 @@ function resetCounters() {
   publicBoundaryPrunes = 0;
   lastPolicyComparison = null;
   policyComparisonHistory = [];
+  selectedMarkingFrontierId = null;
   selectedPolicySnapshotIndex = -1;
   selectedPolicyPreviewId = "active";
   policySnapshotCount = 0;
@@ -23412,6 +23540,74 @@ function renderPolicyScoreLedger(policy, snapshot = null) {
   renderPolicyWorkbenchState(snapshot);
 }
 
+function previewMarkingFrontierWinner(row, snapshot) {
+  selectedMarkingFrontierId = row.id;
+  const frontierReadout = { value: frontierMetric.textContent, detail: frontierDelta.textContent };
+  if (row.preview) {
+    currentCandidates = [{ p: row.preview.p.clone(), rotation: row.preview.rotation.clone(),
+      type: row.preview.type, accepted: true, preview: true }];
+    rebuildWorld();
+    frontierMetric.textContent = frontierReadout.value;
+    frontierDelta.textContent = frontierReadout.detail;
+  }
+  renderMarkingFrontierAudit(snapshot);
+}
+
+function renderMarkingFrontierAudit(snapshot) {
+  markingFrontierRows.replaceChildren(); markingFrontierDetail.replaceChildren();
+  const audit = snapshot?.markingFrontierCounterfactual;
+  if (!audit?.markings.length) {
+    markingFrontierState.textContent = snapshot ? "no compatible saved marking" : "awaiting a frozen frontier";
+    return;
+  }
+  const rows = [...audit.markings];
+  if (audit.portfolio.enabled) rows.push({
+    id: "portfolio", name: "best saved mark per action", channels: null,
+    representation: "portfolio", candidates: audit.candidates,
+    finiteCandidates: audit.allScoresFinite ? audit.candidates : 0,
+    admittedCandidates: audit.portfolio.admittedCandidates,
+    distinctScores: null, topTieCount: null, meanRankDisplacement: null,
+    winnerKey: audit.portfolio.winnerKey, winnerDigest: audit.portfolio.winnerDigest,
+    winnerAction: audit.portfolio.winnerAction, winnerScore: audit.portfolio.winnerScore,
+    winnerSource: audit.portfolio.winnerSource, preview: audit.portfolio.preview,
+  });
+  if (!rows.some((row) => row.id === selectedMarkingFrontierId)) {
+    selectedMarkingFrontierId = audit.activeMarkingId || rows[0].id;
+  }
+  markingFrontierState.textContent = `${audit.markings.length} saved · ${audit.candidates} same actions · ${audit.distinctMarkingWinners} winner${audit.distinctMarkingWinners === 1 ? "" : "s"}`;
+  rows.forEach((entry) => {
+    const row = document.createElement("button"); row.type = "button";
+    row.classList.toggle("active", entry.id === selectedMarkingFrontierId);
+    row.setAttribute("aria-pressed", String(entry.id === selectedMarkingFrontierId));
+    row.title = "Preview this marking's highest-scored exact action; do not execute it";
+    const identity = document.createElement("span");
+    const name = document.createElement("strong");
+    name.textContent = entry.id === "portfolio" ? "portfolio" : `${entry.channels}ch · ${entry.representation}`;
+    const label = document.createElement("small"); label.textContent = entry.name;
+    identity.append(name, label);
+    const action = document.createElement("span");
+    const winner = document.createElement("strong"); winner.textContent = entry.winnerAction || "no action";
+    const summary = document.createElement("small");
+    summary.textContent = `${entry.admittedCandidates}/${entry.candidates} mark-admitted · score ${entry.winnerScore?.toFixed(3) ?? "—"}`
+      + `${entry.topTieCount > 1 ? ` · ${entry.topTieCount} tied` : ""}`;
+    action.append(winner, summary); row.append(identity, action);
+    row.addEventListener("click", () => previewMarkingFrontierWinner(entry, snapshot));
+    markingFrontierRows.append(row);
+  });
+  const selected = rows.find((row) => row.id === selectedMarkingFrontierId) || rows[0];
+  const heading = document.createElement("strong"); heading.textContent = selected.winnerAction || "no action";
+  const state = document.createElement("b");
+  state.textContent = selected.id === "portfolio" ? `source ${selected.winnerSource || "—"}`
+    : `${selected.finiteCandidates}/${selected.candidates} finite`;
+  const metrics = document.createElement("span");
+  metrics.textContent = selected.id === "portfolio"
+    ? `${selected.admittedCandidates} actions admitted by at least one artifact.`
+    : `${selected.distinctScores} distinct rule scores · top tie ${selected.topTieCount} · mean Δrank ${selected.meanRankDisplacement.toFixed(1)} from ${audit.activeMarkingId}.`;
+  const boundary = document.createElement("span");
+  boundary.textContent = `Hard-admitted set ${audit.hardAdmittedCandidateSetDigest} · full frontier ${audit.candidateSetDigest} · candidate geometry unchanged · target unavailable · preview only.`;
+  markingFrontierDetail.append(heading, state, metrics, boundary);
+}
+
 function renderPolicyComparison() {
   policyComparison.replaceChildren();
   policyHistoryElement.replaceChildren();
@@ -23420,6 +23616,7 @@ function renderPolicyComparison() {
     policySensitivityState.textContent = "available during growth";
     policyPreviewState.textContent = "Select a policy row during material growth.";
     renderPolicyScoreLedger(null);
+    renderMarkingFrontierAudit(null);
     renderPolicyPhaseMap(null);
     renderPolicyIdentifiabilityAudit(null);
     renderPolicyParetoMap(null);
@@ -23440,6 +23637,7 @@ function renderPolicyComparison() {
     policySensitivityState.textContent = "generic policy comparison not applicable";
     policyPreviewState.textContent = `${iceAnchorTrace.selectionRuleLabel} is the only certified molecular-anchor policy in this trace.`;
     renderPolicyScoreLedger(null);
+    renderMarkingFrontierAudit(null);
     renderPolicyPhaseMap(null);
     renderPolicyIdentifiabilityAudit(null);
     renderPolicyParetoMap(null);
@@ -23460,6 +23658,7 @@ function renderPolicyComparison() {
     policySensitivityState.textContent = "no evaluated frontiers";
     policyPreviewState.textContent = "Select a policy row after the first frontier is frozen.";
     renderPolicyScoreLedger(null);
+    renderMarkingFrontierAudit(null);
     renderPolicyPhaseMap(null);
     renderPolicyIdentifiabilityAudit(null);
     renderPolicyParetoMap(null);
@@ -23471,6 +23670,7 @@ function renderPolicyComparison() {
     return;
   }
   const snapshot = policyComparisonHistory[selectedPolicySnapshotIndex] || lastPolicyComparison;
+  renderMarkingFrontierAudit(snapshot);
   const workbench = buildPolicyWorkbench(snapshot);
   const paretoPreview = snapshot.paretoPreviewCandidateKey ? buildPolicyParetoPreview(snapshot) : null;
   const omissionPreview = selectedPolicyPreviewId === "omission" ? buildPolicyOmissionPreview(snapshot) : null;
