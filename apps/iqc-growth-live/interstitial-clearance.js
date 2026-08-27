@@ -245,7 +245,7 @@ function periodicGraphAudit(nodeCount, edges, admittedNodes = null, admittedEdge
 }
 
 function periodicWitnessedSummary(positions, dimension, maximumAnchors, neighborLimit,
-  declaredThreshold, frameworkRadii, cellVectors, periodicAxes) {
+  declaredThreshold, frameworkRadii, fittedFrameworkRadii, cellVectors, periodicAxes) {
   if (dimension !== 3 || cellVectors?.length !== 3 || !periodicAxes?.some(Boolean)) return null;
   const determinant = determinant3(cellVectors.map((_, axis) => cellVectors.map((vector) => vector[axis])));
   if (Math.abs(determinant) < 1e-10) return null;
@@ -254,6 +254,7 @@ function periodicWitnessedSummary(positions, dimension, maximumAnchors, neighbor
   offsets.forEach((image) => positions.forEach((point, site) => extended.push({
     point: translatedPoint(point, cellVectors, image), site, image,
     radius: frameworkRadii?.[site] || 0,
+    fittedRadius: fittedFrameworkRadii?.[site] || 0,
   })));
   const extendedPositions = extended.map((record) => record.point);
   const anchors = canonicalAnchors(positions, maximumAnchors);
@@ -285,6 +286,8 @@ function periodicWitnessedSummary(positions, dimension, maximumAnchors, neighbor
   const records = centers.map((record) => ({ clearance: record.clearance,
     stericClearance: frameworkRadii ? Math.min(...extended.map((site) =>
       Math.sqrt(squaredDistance(record.center, site.point)) - site.radius)) : null,
+    fittedStericClearance: fittedFrameworkRadii ? Math.min(...extended.map((site) =>
+      Math.sqrt(squaredDistance(record.center, site.point)) - site.fittedRadius)) : null,
     normalizedRadius: Math.sqrt(squaredDistance(record.center, structureCenter)) / maximumStructureRadius }));
   const faceBuckets = new Map();
   centers.forEach((center, centerIndex) => center.simplices.forEach((simplex) =>
@@ -315,8 +318,10 @@ function periodicWitnessedSummary(positions, dimension, maximumAnchors, neighbor
       const throatClearance = segmentMinimumSiteClearance(centers[first].center, secondCenter, extendedPositions);
       const stericThroatClearance = frameworkRadii ? segmentMinimumSiteClearance(centers[first].center,
         secondCenter, extendedPositions, extended.map((record) => record.radius)) : null;
+      const fittedStericThroatClearance = fittedFrameworkRadii ? segmentMinimumSiteClearance(centers[first].center,
+        secondCenter, extendedPositions, extended.map((record) => record.fittedRadius)) : null;
         edgeMap.set(key, { first, second, imageShift: [...imageShift], sharedSiteCount: dimension,
-        throatClearance, stericThroatClearance,
+        throatClearance, stericThroatClearance, fittedStericThroatClearance,
         throatToEndpointRatio: Math.max(0, Math.min(1, throatClearance
           / Math.max(1e-12, Math.min(records[first].clearance, records[second].clearance)))) });
       }
@@ -331,14 +336,22 @@ function periodicWitnessedSummary(positions, dimension, maximumAnchors, neighbor
     new Set(records.map((record, index) => record.stericClearance >= threshold ? index : -1).filter((index) => index >= 0)),
     edges.filter((edge) => edge.stericThroatClearance >= threshold
       && records[edge.first].stericClearance >= threshold && records[edge.second].stericClearance >= threshold));
+  const fittedStericAudit = (threshold) => periodicGraphAudit(centers.length, edges,
+    new Set(records.map((record, index) => record.fittedStericClearance >= threshold ? index : -1).filter((index) => index >= 0)),
+    edges.filter((edge) => edge.fittedStericThroatClearance >= threshold
+      && records[edge.first].fittedStericClearance >= threshold
+      && records[edge.second].fittedStericClearance >= threshold));
   const full = periodicGraphAudit(centers.length, edges);
   const threshold = pointAudit(declaredThreshold);
   const capacities = [...new Set([...records.map((record) => record.clearance),
     ...edges.map((edge) => edge.throatClearance)])].sort((first, second) => second - first);
   const stericCapacities = frameworkRadii ? [...new Set([...records.map((record) => record.stericClearance),
     ...edges.map((edge) => edge.stericThroatClearance)])].sort((first, second) => second - first) : [];
+  const fittedStericCapacities = fittedFrameworkRadii ? [...new Set([...records.map((record) => record.fittedStericClearance),
+    ...edges.map((edge) => edge.fittedStericThroatClearance)])].sort((first, second) => second - first) : [];
   const widest = capacities.find((value) => pointAudit(value).windingRank > 0) ?? null;
   const widestSteric = stericCapacities.find((value) => stericAudit(value).windingRank > 0) ?? null;
+  const widestFittedSteric = fittedStericCapacities.find((value) => fittedStericAudit(value).windingRank > 0) ?? null;
   return { candidateCenters: centers.length, radialRecords: records,
     medianClearance: quantile(records.map((record) => record.clearance), .5),
     percentile90Clearance: quantile(records.map((record) => record.clearance), .9),
@@ -355,17 +368,21 @@ function periodicWitnessedSummary(positions, dimension, maximumAnchors, neighbor
       thresholdPercolatingAxes: threshold.percolatingAxes,
       widestPeriodicClearance: widest,
       widestStericPeriodicClearance: widestSteric,
+      widestFittedStericPeriodicClearance: widestFittedSteric,
       minimumThroatClearance: edges.length ? Math.min(...edges.map((edge) => edge.throatClearance)) : null,
       medianThroatClearance: quantile(edges.map((edge) => edge.throatClearance), .5),
       medianStericThroatClearance: frameworkRadii
         ? quantile(edges.map((edge) => edge.stericThroatClearance), .5) : null,
+      medianFittedStericThroatClearance: fittedFrameworkRadii
+        ? quantile(edges.map((edge) => edge.fittedStericThroatClearance), .5) : null,
       adjacencyDefinition: "two quotient empty centers are adjacent only when lifted witnessed tetrahedra share a complete three-site face",
       windingDefinition: "nonzero integer cell translation accumulated around a closed lifted-graph cycle",
     },
     periodicQuotient: true, imageRange: 1, targetUsed: false };
 }
 
-function emptyCenterNetwork(centers, radialRecords, dimension, positions, declaredThreshold, frameworkRadii) {
+function emptyCenterNetwork(centers, radialRecords, dimension, positions, declaredThreshold,
+  frameworkRadii, fittedFrameworkRadii) {
   const edges = [];
   for (let first = 0; first < centers.length; first++) for (let second = first + 1; second < centers.length; second++) {
     let sharedSiteCount = 0;
@@ -377,8 +394,10 @@ function emptyCenterNetwork(centers, radialRecords, dimension, positions, declar
       const throatClearance = segmentMinimumSiteClearance(centers[first].center, centers[second].center, positions);
       const stericThroatClearance = frameworkRadii
         ? segmentMinimumSiteClearance(centers[first].center, centers[second].center, positions, frameworkRadii) : null;
+      const fittedStericThroatClearance = fittedFrameworkRadii
+        ? segmentMinimumSiteClearance(centers[first].center, centers[second].center, positions, fittedFrameworkRadii) : null;
       const endpointClearance = Math.min(radialRecords[first].clearance, radialRecords[second].clearance);
-      edges.push({ first, second, sharedSiteCount, throatClearance, stericThroatClearance,
+      edges.push({ first, second, sharedSiteCount, throatClearance, stericThroatClearance, fittedStericThroatClearance,
         throatToEndpointRatio: Math.max(0, Math.min(1, throatClearance / Math.max(1e-12, endpointClearance))) });
     }
   }
@@ -452,8 +471,11 @@ function emptyCenterNetwork(centers, radialRecords, dimension, positions, declar
   };
   const coreToFrontBottleneck = widestPath("clearance", "throatClearance");
   const stericCoreToFrontBottleneck = frameworkRadii ? widestPath("stericClearance", "stericThroatClearance") : null;
+  const fittedStericCoreToFrontBottleneck = fittedFrameworkRadii
+    ? widestPath("fittedStericClearance", "fittedStericThroatClearance") : null;
   const throatClearances = edges.map((edge) => edge.throatClearance);
   const stericThroatClearances = edges.map((edge) => edge.stericThroatClearance).filter(Number.isFinite);
+  const fittedStericThroatClearances = edges.map((edge) => edge.fittedStericThroatClearance).filter(Number.isFinite);
   return {
     nodeCount: centers.length,
     edgeCount: edges.length,
@@ -473,6 +495,11 @@ function emptyCenterNetwork(centers, radialRecords, dimension, positions, declar
     percentile10StericThroatClearance: quantile(stericThroatClearances, .1),
     medianStericThroatClearance: quantile(stericThroatClearances, .5),
     widestStericCoreToFrontClearance: stericCoreToFrontBottleneck,
+    minimumFittedStericThroatClearance: fittedStericThroatClearances.length
+      ? Math.min(...fittedStericThroatClearances) : null,
+    percentile10FittedStericThroatClearance: quantile(fittedStericThroatClearances, .1),
+    medianFittedStericThroatClearance: quantile(fittedStericThroatClearances, .5),
+    widestFittedStericCoreToFrontClearance: fittedStericCoreToFrontBottleneck,
     declaredThreshold,
     thresholdNodeCount: thresholdNodes.size,
     thresholdEdgeCount: thresholdEdges.length,
@@ -487,11 +514,14 @@ function emptyCenterNetwork(centers, radialRecords, dimension, positions, declar
     stericThroatDefinition: frameworkRadii
       ? "minimum distance from the straight center-to-center segment to any explicit species-dependent covalent-radius envelope, divided by supplied nearest-neighbor distance"
       : null,
+    fittedStericThroatDefinition: fittedFrameworkRadii
+      ? "minimum distance from the straight center-to-center segment to any sample-fitted additive species contact envelope, divided by supplied nearest-neighbor distance"
+      : null,
   };
 }
 
 function summarize(positions, dimension, maximumAnchors, neighborLimit, histogramBins, histogramMaximum,
-  declaredThreshold, frameworkRadii) {
+  declaredThreshold, frameworkRadii, fittedFrameworkRadii) {
   const anchors = canonicalAnchors(positions, maximumAnchors);
   const centers = witnessedEmptyCenters(positions, dimension, maximumAnchors, neighborLimit, anchors);
   const structureCenter = centroid(positions);
@@ -499,8 +529,12 @@ function summarize(positions, dimension, maximumAnchors, neighborLimit, histogra
   const records = centers.map((record) => ({ clearance: record.clearance,
     stericClearance: frameworkRadii
       ? Math.min(...positions.map((point, index) => Math.sqrt(squaredDistance(record.center, point)) - frameworkRadii[index])) : null,
+    fittedStericClearance: fittedFrameworkRadii
+      ? Math.min(...positions.map((point, index) => Math.sqrt(squaredDistance(record.center, point))
+        - fittedFrameworkRadii[index])) : null,
     normalizedRadius: Math.sqrt(squaredDistance(record.center, structureCenter)) / maximumStructureRadius }));
-  const network = emptyCenterNetwork(centers, records, dimension, positions, declaredThreshold, frameworkRadii);
+  const network = emptyCenterNetwork(centers, records, dimension, positions, declaredThreshold,
+    frameworkRadii, fittedFrameworkRadii);
   const clearances = records.map((record) => record.clearance);
   const core = records.filter((record) => record.normalizedRadius <= .5).map((record) => record.clearance);
   const front = records.filter((record) => record.normalizedRadius >= .75).map((record) => record.clearance);
@@ -525,6 +559,7 @@ export function interstitialClearanceAudit(currentPositions, referencePositions,
   dimension = 3, maximumAnchors = 64, neighborLimit = 6, histogramBins = 20,
   histogramMaximum = 1.5, declaredThreshold = .5, currentSpecies = null,
   referenceSpecies = null, covalentRadiiAngstrom = null,
+  fittedContactRadiiAngstrom = null,
   physicalNearestNeighborAngstrom = null,
   periodicCellVectorsAngstrom = null, periodicAxes = null, includePeriodicReference = false,
 } = {}) {
@@ -542,23 +577,27 @@ export function interstitialClearanceAudit(currentPositions, referencePositions,
   const normalize = (positions) => positions.map((point) => point.map((value) => value / referenceScale));
   const radiusNormalizationScale = Number.isFinite(physicalNearestNeighborAngstrom)
     && physicalNearestNeighborAngstrom > 1e-12 ? physicalNearestNeighborAngstrom : referenceScale;
-  const normalizedRadii = (species, positions) => Array.isArray(species) && species.length === positions.length
-    && covalentRadiiAngstrom && species.every((symbol) => Number.isFinite(covalentRadiiAngstrom[symbol])
-      && covalentRadiiAngstrom[symbol] >= 0)
-    ? species.map((symbol) => covalentRadiiAngstrom[symbol] / radiusNormalizationScale) : null;
-  const currentFrameworkRadii = normalizedRadii(currentSpecies, currentPositions);
-  const referenceFrameworkRadii = normalizedRadii(referenceSpecies, referencePositions);
+  const normalizedRadii = (species, positions, radiusMap) => Array.isArray(species) && species.length === positions.length
+    && radiusMap && species.every((symbol) => Number.isFinite(radiusMap[symbol]) && radiusMap[symbol] >= 0)
+    ? species.map((symbol) => radiusMap[symbol] / radiusNormalizationScale) : null;
+  const currentFrameworkRadii = normalizedRadii(currentSpecies, currentPositions, covalentRadiiAngstrom);
+  const referenceFrameworkRadii = normalizedRadii(referenceSpecies, referencePositions, covalentRadiiAngstrom);
+  const currentFittedFrameworkRadii = normalizedRadii(currentSpecies, currentPositions, fittedContactRadiiAngstrom);
+  const referenceFittedFrameworkRadii = normalizedRadii(referenceSpecies, referencePositions, fittedContactRadiiAngstrom);
   const current = summarize(normalize(currentPositions), resolvedDimension, maximumAnchors,
-    neighborLimit, histogramBins, histogramMaximum, declaredThreshold, currentFrameworkRadii);
+    neighborLimit, histogramBins, histogramMaximum, declaredThreshold, currentFrameworkRadii,
+    currentFittedFrameworkRadii);
   const reference = summarize(normalize(referencePositions), resolvedDimension, maximumAnchors,
-    neighborLimit, histogramBins, histogramMaximum, declaredThreshold, referenceFrameworkRadii);
+    neighborLimit, histogramBins, histogramMaximum, declaredThreshold, referenceFrameworkRadii,
+    referenceFittedFrameworkRadii);
   const normalizedPeriodicCell = Array.isArray(periodicCellVectorsAngstrom)
     && periodicCellVectorsAngstrom.length === 3
     ? periodicCellVectorsAngstrom.map((vector) => vector.map((value) => value / radiusNormalizationScale)) : null;
   const referencePeriodic = includePeriodicReference ? periodicWitnessedSummary(normalize(referencePositions),
     resolvedDimension, maximumAnchors, neighborLimit, declaredThreshold, referenceFrameworkRadii,
+    referenceFittedFrameworkRadii,
     normalizedPeriodicCell, periodicAxes) : null;
-  if (!current.candidateCenters || !reference.candidateCenters) return {
+  if (!reference.candidateCenters || (!current.candidateCenters && !referencePeriodic)) return {
     available: false, reason: "no nondegenerate locally witnessed empty simplex centers were resolved",
     dimension: resolvedDimension, currentCandidateCenters: current.candidateCenters,
     referenceCandidateCenters: reference.candidateCenters, targetUsed: false,
@@ -578,6 +617,7 @@ export function interstitialClearanceAudit(currentPositions, referencePositions,
     ...current,
     reference,
     referencePeriodic,
+    finiteCurrentNetworkAvailable: current.candidateCenters > 0,
     clearanceDefinition: "empty circumcircle/circumsphere center clearance divided by supplied median nearest-neighbor distance",
     candidateDefinition: "nondegenerate local simplices from an invariant radial anchor sample and its nearest-neighbor tie set; center retained only inside the simplex and empty of explicit sites",
     finiteObservationNoPeriodicImages: true,
@@ -586,6 +626,11 @@ export function interstitialClearanceAudit(currentPositions, referencePositions,
     periodicCurrentGrowthWrapped: false,
     pointSitesNoAtomicRadii: true,
     covalentRadiusStericModelAvailable: Boolean(currentFrameworkRadii && referenceFrameworkRadii),
+    fittedContactRadiusStericModelAvailable: Boolean(currentFittedFrameworkRadii && referenceFittedFrameworkRadii),
+    fittedContactRadiusNormalizationScaleAngstrom: currentFittedFrameworkRadii && referenceFittedFrameworkRadii
+      ? radiusNormalizationScale : null,
+    fittedContactRadiusDefinition: currentFittedFrameworkRadii && referenceFittedFrameworkRadii
+      ? "sample-fitted additive leading-contact envelopes; Cordero ratios used only as a ridge prior" : null,
     covalentRadiusNormalizationScaleAngstrom: currentFrameworkRadii && referenceFrameworkRadii
       ? radiusNormalizationScale : null,
     covalentRadiusSource: currentFrameworkRadii && referenceFrameworkRadii

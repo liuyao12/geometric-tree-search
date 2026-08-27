@@ -13,6 +13,26 @@ amplification is `b > 1`, a level-`L` accepted macro placement represents
 approximately `b^L` atoms.  Materializing or exporting `N` atomic coordinates
 still has an unavoidable `O(N)` cost and must be reported separately.
 
+### Sample-fitted multicomponent contact envelopes (Build 243)
+
+The interstitial pathway now offers a third framework hypothesis between point
+sites and a fixed element table. From the already train-only colored distance
+envelopes, it identifies the leading nearest-contact shell and fits one
+nonnegative additive envelope radius per supported species. The fit is weighted
+by the number of nearest observations. Cordero covalent radii enter only through
+a shared scale and ridge ratio prior, which makes an underdetermined cross-only
+binary system solvable without silently treating equal radii as known physics.
+
+Every result exposes the selected and excluded species pairs, support count,
+RMS and maximum residual, data-matrix rank, parameter count, and number of
+prior-dependent degrees of freedom. The browser uses the fitted radii in the
+same empty centers and shared-face throats as the point and covalent views, for
+both finite growth windows and periodic input quotients. Candidate topology is
+therefore identical across models. A fitted value is explicitly a geometric
+contact envelope conditioned on the supplied sample, not an inferred ionic,
+metallic, van-der-Waals, oxidation-state, energy, or force-field radius. It is
+not used to train or accept growth actions.
+
 ### Periodic input-quotient interstitial network (Build 242)
 
 For a supplied three-dimensional periodic cell, the interstitial audit may now

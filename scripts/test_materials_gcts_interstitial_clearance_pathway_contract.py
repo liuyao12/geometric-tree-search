@@ -80,10 +80,10 @@ def test_pathway_cannot_be_misread_as_porosity_or_transport():
 
 
 def test_build_242_is_exposed():
-    assert 'buildId: "20260827-242"' in APP
-    assert 'app.js?v=20260827-242' in HTML
-    assert 'style.css?v=20260827-242' in HTML
-    assert 'interstitial-clearance.js?v=20260827-8' in APP
+    assert 'buildId: "20260827-243"' in APP
+    assert 'app.js?v=20260827-243' in HTML
+    assert 'style.css?v=20260827-243' in HTML
+    assert 'interstitial-clearance.js?v=20260827-9' in APP
 
 
 if __name__ == "__main__":

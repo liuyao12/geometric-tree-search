@@ -19,6 +19,19 @@ the GCTS anatomy view explains covers, oriented ports, markings, search, and
 promotion; and the claim ledger keeps proved, measured, and open results visibly
 separate. Its numbers are frozen benchmark results, not recomputed browser demos.
 
+Build 243 adds a **sample-fitted multicomponent contact envelope** alongside
+the exact point-site and tabulated covalent-radius views. The fit consumes only
+the supplied configuration's colored nearest-contact distributions, selects
+the leading contact shell, and solves a weighted additive radius model for all
+supported species. Cordero radii provide a shared scale and ridge ratio prior
+when the contact equations are underdetermined; they are not relabelled as
+measurements. The interface reports the fitted values, contact-pair and nearest-
+observation support, RMS residual, matrix rank, and prior-dependent parameter
+count. The same fitted envelopes drive finite and periodic-quotient nodes,
+throats, thresholds, and widest paths without changing the candidate graph.
+These are sample-conditioned geometric exclusion envelopes—not ionic,
+metallic, van-der-Waals, oxidation-state, energy, or force-field radii.
+
 Build 242 adds an opt-in **periodic input-quotient interstitial network**. A
 reported three-dimensional cell is lifted through its neighboring periodic
 images, empty circumsphere centers are quotiented back into the supplied cell,

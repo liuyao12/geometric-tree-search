@@ -32,16 +32,21 @@ assert.equal(closedThreshold.network.thresholdCoreToFrontComponentCount, 0);
 assert.ok(baseline.network.thresholdEdgeCount > closedThreshold.network.thresholdEdgeCount);
 const carbonSpecies = cubic.map(() => "C");
 const steric = interstitialClearanceAudit(cubic, cubic, { maximumAnchors: 32,
-  currentSpecies: carbonSpecies, referenceSpecies: carbonSpecies, covalentRadiiAngstrom: { C: .2 } });
+  currentSpecies: carbonSpecies, referenceSpecies: carbonSpecies, covalentRadiiAngstrom: { C: .2 },
+  fittedContactRadiiAngstrom: { C: .3 } });
 const rigid = ([x, y, z]) => [5 - y, -3 + x, 9 + z];
 const stericInvariant = interstitialClearanceAudit(cubic.map(rigid).reverse(), cubic.map(rigid).reverse(), {
   maximumAnchors: 32, currentSpecies: [...carbonSpecies].reverse(), referenceSpecies: [...carbonSpecies].reverse(),
-  covalentRadiiAngstrom: { C: .2 },
+  covalentRadiiAngstrom: { C: .2 }, fittedContactRadiiAngstrom: { C: .3 },
 });
 assert.equal(steric.covalentRadiusStericModelAvailable, true);
+assert.equal(steric.fittedContactRadiusStericModelAvailable, true);
 assert.ok(steric.network.medianStericThroatClearance < steric.network.medianThroatClearance);
+assert.ok(steric.network.medianFittedStericThroatClearance < steric.network.medianStericThroatClearance);
 assert.ok(Math.abs(steric.network.medianStericThroatClearance
   - stericInvariant.network.medianStericThroatClearance) < 1e-10);
+assert.ok(Math.abs(steric.network.medianFittedStericThroatClearance
+  - stericInvariant.network.medianFittedStericThroatClearance) < 1e-10);
 assert.equal(steric.covalentRadiusStericUniformCoordinateScalingInvariant, false);
 const displayScaledSteric = interstitialClearanceAudit(cubic.map(transform), cubic.map(transform), {
   maximumAnchors: 32, currentSpecies: carbonSpecies, referenceSpecies: carbonSpecies,
@@ -58,11 +63,13 @@ for (let x = -1.5; x <= 1.5; x++) for (let y = -1.5; y <= 1.5; y++) {
 const periodicSpecies = periodicCube.map(() => "C");
 const periodic = interstitialClearanceAudit(periodicCube, periodicCube, { maximumAnchors: 32,
   currentSpecies: periodicSpecies, referenceSpecies: periodicSpecies, covalentRadiiAngstrom: { C: .2 },
+  fittedContactRadiiAngstrom: { C: .3 },
   physicalNearestNeighborAngstrom: 1, periodicCellVectorsAngstrom: [[4, 0, 0], [0, 4, 0], [0, 0, 4]],
   periodicAxes: [true, true, true], includePeriodicReference: true });
 const periodicRigid = interstitialClearanceAudit(periodicCube.map(rigid).reverse(), periodicCube.map(rigid).reverse(), {
   maximumAnchors: 32, currentSpecies: [...periodicSpecies].reverse(), referenceSpecies: [...periodicSpecies].reverse(),
   covalentRadiiAngstrom: { C: .2 }, physicalNearestNeighborAngstrom: 1,
+  fittedContactRadiiAngstrom: { C: .3 },
   periodicCellVectorsAngstrom: [[0, 4, 0], [-4, 0, 0], [0, 0, 4]], periodicAxes: [true, true, true],
   includePeriodicReference: true,
 });
@@ -74,6 +81,8 @@ assert.equal(periodic.referencePeriodic.network.windingRank, 3);
 assert.deepEqual(periodic.referencePeriodic.network.percolatingAxes, [0, 1, 2]);
 assert.equal(periodic.referencePeriodic.network.thresholdWindingRank, 3);
 assert.ok(Math.abs(periodic.referencePeriodic.network.widestPeriodicClearance - Math.SQRT1_2) < 1e-10);
+assert.ok(periodic.referencePeriodic.network.widestFittedStericPeriodicClearance
+  < periodic.referencePeriodic.network.widestStericPeriodicClearance);
 for (const key of ["candidateCenters"]) assert.equal(periodic.referencePeriodic[key], periodicRigid.referencePeriodic[key]);
 for (const key of ["edgeCount", "wrappedEdgeCount", "windingRank", "thresholdWindingRank"]) {
   assert.equal(periodic.referencePeriodic.network[key], periodicRigid.referencePeriodic.network[key]);
@@ -89,6 +98,17 @@ const periodicOneAxis = interstitialClearanceAudit(periodicCube, periodicCube, {
   periodicAxes: [true, false, false], includePeriodicReference: true });
 assert.equal(periodicOneAxis.referencePeriodic.network.windingRank, 1);
 assert.deepEqual(periodicOneAxis.referencePeriodic.network.percolatingAxes, [0]);
+const finiteDegenerateSeed = [[0, 0, 0], [1, 0, 0], [-1, 0, 0], [0, 1, 0], [0, -1, 0], [0, 0, 1], [0, 0, -1]];
+const periodicDespiteFiniteSeed = interstitialClearanceAudit(finiteDegenerateSeed, periodicCube, {
+  maximumAnchors: 32, currentSpecies: finiteDegenerateSeed.map(() => "C"), referenceSpecies: periodicSpecies,
+  fittedContactRadiiAngstrom: { C: .3 }, physicalNearestNeighborAngstrom: 1,
+  periodicCellVectorsAngstrom: [[4, 0, 0], [0, 4, 0], [0, 0, 4]],
+  periodicAxes: [true, true, true], includePeriodicReference: true,
+});
+assert.equal(periodicDespiteFiniteSeed.available, true,
+  "a degenerate finite nucleus must not suppress an independently valid periodic input quotient");
+assert.equal(periodicDespiteFiniteSeed.finiteCurrentNetworkAvailable, false);
+assert.equal(periodicDespiteFiniteSeed.referencePeriodic.network.windingRank, 3);
 
 const expanded = cubic.map(([x, y, z]) => [1.2 * x, 1.2 * y, 1.2 * z]);
 const expandedAudit = interstitialClearanceAudit(expanded, cubic, { maximumAnchors: 32 });
