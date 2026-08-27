@@ -14,6 +14,12 @@ SPEC = importlib.util.spec_from_file_location(
 )
 MODULE = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(MODULE)
+assert '"set presolving emphasis off"' in SPEC.loader.get_source("a2_periodic_scip")
+MERGE_SPEC = importlib.util.spec_from_file_location(
+    "a2_periodic_scip_merge", ROOT / "scripts" / "merge-a2-layered-periodic-scip.py"
+)
+MERGE_MODULE = importlib.util.module_from_spec(MERGE_SPEC)
+MERGE_SPEC.loader.exec_module(MERGE_MODULE)
 
 orbits = MODULE.hnf_orbits(28)
 assert len(orbits) == 384
@@ -87,9 +93,35 @@ with gzip.open(compressed_path, "rb") as stream:
 assert digest.hexdigest() == receipt["vipr_sha256"]
 assert uncompressed_bytes == receipt["vipr_bytes"]
 
+merged = MERGE_MODULE.merge([
+    ROOT / "data" / "a2-layered-size7-periodic-exact8-a2lp_7_00128-orbit0.ndjson",
+    ROOT / "data" / "a2-layered-size7-periodic-exact8-a2lp_7_00128-orbits1to3.ndjson",
+])
+merged_screen = merged["periodic_exact_scip"]
+assert merged_screen["orbit_range"] == [0, 4]
+assert merged_screen["orbit_representatives_visited"] == 4
+assert merged_screen["hnf_covered"] == 21
+assert len(merged_screen["proof_receipts"]) == 4
+assert len(merged_screen["range_receipts"]) == 2
+assert merged_screen["certified_no_periodic_quotient"] is False
+
+periodic = json.loads((
+    ROOT / "data" / "a2-layered-size7-periodic-exact8-a2lp_7_00694-witness.ndjson"
+).read_text())
+periodic_screen = periodic["periodic_exact_scip"]
+assert periodic["classification"] == "periodic"
+assert periodic_screen["replay"]["verified"] is True
+assert periodic_screen["certificate"]["copies"] == 8
+assert periodic_screen["certificate"]["determinant"] == 28
+assert periodic_screen["certificate"]["period_vectors"] == [
+    [2, 0, 0], [0, 2, 0], [0, 0, 7]
+]
+
 print("A2 exact SCIP/VIPR regression passed", {
     "determinant_28_hnfs": 1995,
     "point_group_orbits": len(orbits),
     "first_orbit_hnfs_covered": screen["hnf_covered"],
     "verified_derivations": receipt["derivations"],
+    "merged_orbits": merged_screen["orbit_representatives_visited"],
+    "periodic_witness": periodic["id"],
 })

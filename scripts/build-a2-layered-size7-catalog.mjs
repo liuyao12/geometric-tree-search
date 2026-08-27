@@ -30,6 +30,9 @@ const periodicSixToEight = (await Promise.all([1, 2, 3].map(part =>
 const periodicExactSix = (await Promise.all([
   "00128", "00211", "00232", "00235", "00694", "00755", "00777", "00809"
 ].map(id => readNdjson(`data/a2-layered-size7-periodic-exact6-a2lp_7_${id}.ndjson`)))).flat();
+const periodicExactEightWitnesses = await readNdjson(
+  "data/a2-layered-size7-periodic-exact8-a2lp_7_00694-witness.ndjson"
+);
 const substitutions = new Map();
 for (const scale of [2, 3, 4, 5, 6]) {
   for (const record of await readNdjson(`data/a2-layered-size7-substitution-scale${scale}-focused.ndjson`)) {
@@ -96,6 +99,32 @@ const coreLonger128ById = byId(coreLonger128);
 const minimizedCoreById = byId(minimizedCores);
 const periodicSixToEightById = byId(periodicSixToEight);
 const periodicExactSixById = byId(periodicExactSix);
+const periodicExactEightById = byId(periodicExactEightWitnesses);
+// The proof backend enumerates the six proper A2 isometries as
+// + cyclic permutations followed by - odd permutations.  Prototile3D keeps
+// the same normalized shapes in its matrix enumeration order.  The shift is
+// the minimum corner removed by Prototile3D; recentering on the rooted first
+// placement converts a proof-coordinate placement into a webapp placement.
+const proofToWebOrientation = [0, 3, 4, 1, 2, 5];
+const proofOrientationShifts = [
+  [0, 0, -3], [0, -3, 0], [-3, 0, 0],
+  [-4, -1, -4], [-4, -4, -1], [-1, -4, -4]
+];
+const webPeriodicTemplate = certificate => {
+  if (!certificate) return null;
+  const rootShift = proofOrientationShifts[certificate.placements[0].orientation_index]
+    .map(value => -value);
+  return {
+    period_vectors: certificate.period_vectors,
+    motif: certificate.placements.map(placement => ({
+      prototile_idx: 0,
+      orientation_index: proofToWebOrientation[placement.orientation_index],
+      translation: placement.translation.map((value, axis) =>
+        value + proofOrientationShifts[placement.orientation_index][axis] + rootShift[axis]
+      )
+    }))
+  };
+};
 const selected = [...focusedById.keys()].sort((left, right) =>
   coronaById.get(left).corona_z3.replay.patch_copies
   - coronaById.get(right).corona_z3.replay.patch_copies
@@ -111,6 +140,9 @@ const candidates = selected.map((id, index) => {
   const minimizedCore = minimizedCoreById.get(id);
   const largerPeriodic = periodicSixToEightById.get(id);
   const exactSix = periodicExactSixById.get(id);
+  const exactEight = periodicExactEightById.get(id);
+  const exactEightCertificate = exactEight?.periodic_exact_scip?.certificate ?? null;
+  const exactEightTemplate = webPeriodicTemplate(exactEightCertificate);
   const substitutionScreens = substitutions.get(id) ?? [];
   const anisotropicScreens = anisotropicById.get(id) ?? [];
   const twoClusterScreens = twoClusterSubstitutions.get(id) ?? [];
@@ -131,11 +163,15 @@ const candidates = selected.map((id, index) => {
     lattice_points: geometry.occ.length,
     survivor_priority: index + 1,
     survivor_count: selected.length,
-    description: "Size-seven non-product A2-layer lattice function retained after exact weighted quotient and focused second-corona screening.",
+    description: exactEightCertificate
+      ? "Size-seven non-product A2-layer lattice function with an independently replayed eight-copy periodic quotient."
+      : "Size-seven non-product A2-layer lattice function retained after exact weighted quotient and focused second-corona screening.",
     screening: {
-      status: "inconclusive",
-      certificate: null,
-      census_stage: "a2_layered_size7_exact_through6_2026_08_27",
+      status: exactEightCertificate ? "periodic" : "inconclusive",
+      certificate: exactEightCertificate ? "translational" : null,
+      census_stage: exactEightCertificate
+        ? "a2_layered_size7_eight_copy_witness_2026_08_27"
+        : "a2_layered_size7_exact_through6_2026_08_27",
       source_pool_size: 1119,
       periodic_two_copy_certificates: 910,
       periodic_four_copy_certificates_after_two_copy_screen: 98,
@@ -169,6 +205,13 @@ const candidates = selected.map((id, index) => {
         exactSix?.periodic_z3?.exact_multicover_nodes ?? 0,
       periodic_six_copy_exact_failed_states:
         exactSix?.periodic_z3?.exact_multicover_failed_states ?? 0,
+      periodic_eight_copy_certificate: exactEightCertificate,
+      period_vectors: exactEightCertificate?.period_vectors ?? null,
+      periodic_template: exactEightTemplate,
+      quotient_determinant: exactEightCertificate?.determinant ?? null,
+      periodic_eight_copy_replay_verified:
+        exactEight?.periodic_exact_scip?.replay?.verified ?? false,
+      motif_tiles: exactEightCertificate?.copies ?? null,
       substitution_scalar_scales_excluded: substitutionScreens
         .filter(record => record.substitution_classification === "no_scalar_substitution_at_scale")
         .map(record => record.substitution.scale).sort((left, right) => left - right),
@@ -227,6 +270,9 @@ const candidates = selected.map((id, index) => {
         : largerPeriodic
           ? "data/a2-layered-size7-periodic-z3-focus6to8-part*.ndjson"
           : null,
+      periodic_eight_copy_report: exactEightCertificate
+        ? `data/a2-layered-size7-periodic-exact8-${id}-witness.ndjson`
+        : null,
       substitution_reports: substitutionScreens.map(record =>
         `data/a2-layered-size7-substitution-scale${record.substitution.scale}-focused.ndjson`
       ),

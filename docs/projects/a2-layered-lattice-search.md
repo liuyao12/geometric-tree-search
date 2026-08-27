@@ -237,10 +237,43 @@ derivations and is stored compressed at
 beside it. The report
 `data/a2-layered-size7-periodic-exact8-a2lp_7_00128-orbit0.ndjson` records the
 MPS, compressed proof, uncompressed proof, and executable hashes. This is a
-pipeline certificate, not yet a complete eight-copy census: 383 orbit
-representatives remain for `00128`, and all 384 remain for each of the other
-seven candidates. The catalogue therefore remains exact only through six
-copies until those ranges are completed and merged.
+pipeline certificate, not yet a complete eight-copy census. At that checkpoint
+383 orbit representatives remained for `00128`, and all 384 remained for each
+of the other seven candidates. A negative catalogue entry remains exact only
+through six copies until its ranges are completed and merged.
+
+The first parallel checkpoint immediately found a positive that the earlier
+bounded search had missed. `a2lp_7_00694` has an independently replayed
+eight-copy quotient of determinant 28, with period vectors `(2,0,0)`,
+`(0,2,0)`, and `(0,0,7)`. The report is
+`data/a2-layered-size7-periodic-exact8-a2lp_7_00694-witness.ndjson`. It is now
+a large-domain periodic lattice-function control rather than an
+unresolved/aperiodic candidate,
+leaving seven focused candidates. The same checkpoint verified 27 negative
+orbit representatives across the eight inputs; these are partial exclusions,
+not non-tiling claims. Disjoint ranges can be combined with
+`scripts/merge-a2-layered-periodic-scip.py`, which checks exact interval
+coverage, binary fingerprints, one independently verified VIPR receipt per
+representative, and HNF orbit-size accounting. It sets a complete negative
+flag only for an exact `[0,384)` cover with no unknowns.
+
+SCIP presolving is disabled in this proof mode. Otherwise a trivially
+infeasible quotient can be eliminated before the branch-and-bound certificate
+is opened, leaving only a tautological `_ori` file. The same case with
+presolving disabled yields a one-derivation VIPR infeasibility proof. If SCIP
+ever reports infeasible without a completed, independently verified proof, the
+runner records an unknown rather than aborting the shard or counting a
+negative.
+
+This certificate is deliberately checked against the GCTS-I definition, not
+against Euclidean polyhedral volume. Eight visible prisms have Euclidean volume
+84 while the integer period determinant is 28, so an ordinary solid-space
+face-pairing checker would (correctly) reject that different claim. For the
+project's lattice tile, the proof instead verifies all 28 lattice cosets and
+checks that their exact solid-angle weights sum to 48. The webapp now has a
+separate `exact_weighted_lattice_function_quotient` replay path so it neither
+rejects a valid GCTS-I quotient on volume grounds nor silently promotes it to
+a faithful Euclidean polyhedral tiling.
 
 `scripts/screen-a2-layered-substitution.py` exactly subdivides a scalar-inflated
 supertile into atomic A2 prism cells, enumerates every properly oriented copy

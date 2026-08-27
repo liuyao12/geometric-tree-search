@@ -1,5 +1,5 @@
 import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js";
-import { A2_LAYERED_SIZE7_CANDIDATES } from "../../assets/a2-layered-size7-candidates.js?v=20260827-1";
+import { A2_LAYERED_SIZE7_CANDIDATES } from "../../assets/a2-layered-size7-candidates.js?v=20260827-2";
 
 const byId = (id) => document.getElementById(id);
 
@@ -126,14 +126,14 @@ const SYSTEMS = {
     curveObserved: "independently replayed clauses",
     curveProjected: "outer corona space remains open",
     curveNote: "exact counts · not a growth curve",
-    metrics: [["size-seven census", "1,119"], ["exact-through-4 survivors", "111"], ["focused candidates", "8"], ["sound family blockers", "1,113"]],
+    metrics: [["size-seven census", "1,119"], ["exact-through-4 survivors", "111"], ["unresolved candidates", "7"], ["historical family blockers", "1,113"]],
     verdict: ["open", "Exact local obstructions learned · radius-two and global classification remain unresolved"],
     evidence: [
       ["Periodic screen", "910 + 98 certified", "Two-copy and then four-copy weighted quotient tilings remove 1,008 of 1,119 candidates; 111 exhaust all 399 determinant-14 HNF bases."],
       ["Root corona", "111 / 111 replayed", "Every exact-through-four survivor has a complete, independently replayed first corona."],
-      ["GCTS marking", "1,113 sound clauses", "Eight focused candidates retain 130–156 exact family blockers after subsumption; one independently replayed core per candidate reduces to 3–12 placements."],
+      ["GCTS marking", "1,113 sound clauses", "The original eight focused candidates retain 130–156 exact family blockers after subsumption; one independently replayed core per candidate reduces to 3–12 placements."],
       ["Substitution screen", "376 exact negatives", "Forty scalar scale-2…6 and 336 anisotropic scale-pair covers are excluded. Other decorated or multi-metatile substitutions remain open."],
-      ["Claim boundary", "8 / 8 unresolved", "No outer first-corona space is exhausted and no radius-two witness is found. This proves neither non-tiling nor an aperiodic monotile."],
+      ["Claim boundary", "7 unresolved · 1 periodic", "An exact eight-copy quotient removes 00694. No remaining outer first-corona space is exhausted, so none of the seven is established as non-tiling or aperiodic."],
     ],
   },
 };
@@ -144,7 +144,7 @@ const MATRIX = [
   ["Ideal IQC", ["pass", "2,064 / 2,064"], ["pass", "31,521 exact sites"], ["progress", "6 train levels"], ["open", "no 3-scale key"]],
   ["Cd₅.₇Yb IQC", ["pass", "2,385 / 2,385"], ["pass", "295 / 295 local"], ["progress", "9 train · 4 replay"], ["open", "no stationary key"]],
   ["Cu–Zr glass", ["control", "cover + residuals"], ["control", "not uniquely defined"], ["control", "recursion rejected"], ["control", "negative passes"]],
-  ["A₂ geometry test", ["pass", "exact weighted cells"], ["pass", "111 root coronas"], ["progress", "1,113 sound blockers"], ["open", "radius 2 unresolved"]],
+  ["A₂ geometry test", ["pass", "exact weighted cells"], ["pass", "111 root coronas"], ["progress", "1 eight-copy tiler"], ["open", "7 unresolved"]],
 ];
 
 const MATRIX_DETAILS = {
@@ -351,7 +351,7 @@ const CLAIMS = [
   ["open", "Pure-port crystal closure", "NaCl's port graph certifies the learned cell rule, but the radix/offset proposal still comes from a positions-only grid learner."],
   ["open", "Explicit output cost", "Symbolic derivations compress actions; emitting every atom remains linear and is not claimed to replace molecular dynamics time integration."],
   ["progress", "Exact A₂ obstruction learning", "Eight focused size-seven layered lattice functions retain 1,113 sound radius-two family clauses after exact-model CEGAR, core reduction, replay, and subsumption. Each clause is a transferable marking over first-corona placements, not a physical potential."],
-  ["open", "A₂ global classification", "All eight focused candidates remain unresolved: the outer first-corona spaces are not exhausted, larger periodic quotients time out, and excluding scalar plus cellular anisotropic single-shape substitutions does not prove non-tiling or aperiodicity."],
+  ["open", "A₂ global classification", "One focused candidate is now a proved eight-copy periodic tiler. Seven remain unresolved: their outer first-corona spaces are not exhausted, and the bounded substitution exclusions prove neither non-tiling nor aperiodicity."],
 ];
 
 function statusLabel(status) {
@@ -415,6 +415,7 @@ function drawGrowthChart(system) {
 }
 
 const A2_CANDIDATES = [...A2_LAYERED_SIZE7_CANDIDATES]
+  .filter(candidate => candidate.screening.status === "inconclusive")
   .sort((left, right) => left.survivor_priority - right.survivor_priority);
 
 function a2CandidateSvg(candidate) {

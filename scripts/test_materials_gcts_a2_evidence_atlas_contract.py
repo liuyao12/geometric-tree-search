@@ -19,10 +19,10 @@ def main() -> None:
     css = (APP / "style.css").read_text()
 
     for needle, label in (
-        ('from "../../assets/a2-layered-size7-candidates.js?v=20260827-1"', "generated candidate import"),
+        ('from "../../assets/a2-layered-size7-candidates.js?v=20260827-2"', "generated candidate import"),
         ('short: "A₂ corona"', "A2 system"),
-        ('["sound family blockers", "1,113"]', "exact blocker total"),
-        ('["Claim boundary", "8 / 8 unresolved"', "unresolved boundary"),
+        ('["historical family blockers", "1,113"]', "exact blocker total"),
+        ('["Claim boundary", "7 unresolved · 1 periodic"', "updated classification boundary"),
         ('curveNote: "exact counts · not a growth curve"', "curve semantics"),
         ('function renderA2Candidate(', "candidate interaction"),
         ('function a2CandidateSvg(', "cell-support drawing"),

@@ -1639,17 +1639,27 @@ const shellControls = candidates.filter(figure =>
 const periodicControls = candidates.filter(figure =>
   ["translational", "isohedral_periodic_quotient"].includes(figure.census_candidate.screening.certificate)
 );
-assert.equal(survivors.length, 11 + A2_LAYERED_SIZE7_CANDIDATES.length);
+const unresolvedA2Candidates = A2_LAYERED_SIZE7_CANDIDATES.filter(
+  candidate => candidate.screening.status === "inconclusive"
+);
+assert.equal(survivors.length, 11 + unresolvedA2Candidates.length);
 assert.deepEqual(
   survivors.map(figure => figure.census_candidate.id).sort(),
   [
     "p10-054782", "p10-055695", "p10-290795", "p10-346304",
     "p9-02127", "p9-08203", "p9-08219", "p9-20656",
     "p9-24025", "p9-42947", "p9-48258",
-    ...A2_LAYERED_SIZE7_CANDIDATES.map(candidate => candidate.id)
+    ...unresolvedA2Candidates.map(candidate => candidate.id)
   ]
     .sort()
 );
+const a2Periodic = A2_LAYERED_SIZE7_CANDIDATES.find(candidate => candidate.id === "a2lp_7_00694");
+assert.equal(a2Periodic?.screening.status, "periodic");
+assert.equal(a2Periodic?.screening.certificate, "translational");
+assert.equal(a2Periodic?.screening.motif_tiles, 8);
+assert.equal(a2Periodic?.screening.periodic_eight_copy_replay_verified, true);
+assert.deepEqual(a2Periodic?.screening.periodic_eight_copy_certificate?.period_vectors,
+  [[2, 0, 0], [0, 2, 0], [0, 0, 7]]);
 assert.equal(
   survivors.filter(figure => figure.census_candidate.screening.census_stage === "volume9_fresh_bounded_2026_08_25").length,
   6,
@@ -1691,12 +1701,12 @@ assert.deepEqual(
   }
 );
 assert.equal(shellControls.length, 9);
-assert.equal(periodicControls.length, 36);
+assert.equal(periodicControls.length, 37);
 const visiblePeriodicControls = periodicControls.filter(isGctsFigureVisibleInCatalog);
 assert.equal(GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES, 5);
 assert.deepEqual(
   visiblePeriodicControls.map(figure => figure.census_candidate.id).sort(),
-  ["10_45033", "11_151715", "12_204255", "12_405129", "13_0635270", "p9-43172"],
+  ["10_45033", "11_151715", "12_204255", "12_405129", "13_0635270", "a2lp_7_00694", "p9-43172"],
   "the public catalogue should retain only periodic controls with a large certified motif"
 );
 assert.ok(periodicControls
@@ -3133,6 +3143,13 @@ for (const periodicControl of periodicControls) {
   assert.equal(candidateRun.final.result_kind, "certified_tiling");
   assert.equal(candidateRun.final.tiling_evidence?.patch_size, periodicControl.census_candidate.screening.motif_tiles);
   assert.equal(candidateRun.final.can_tile, true);
+  if (periodicControl.census_candidate.id === "a2lp_7_00694") {
+    assert.equal(
+      candidateRun.final.tiling_evidence?.periodic_template?.proof?.method,
+      "exact_weighted_lattice_function_quotient"
+    );
+    assert.equal(candidateRun.final.tiling_evidence?.periodic_template?.quotient_classes, 28);
+  }
   if (certificateLane === "isohedral") {
     assert.equal(candidateRun.final.tiling_evidence?.kind, "isohedral_certificate");
     assert.match(candidateRun.final.tiling_evidence?.certificate_kind ?? "", /isohedral_periodic_quotient/);

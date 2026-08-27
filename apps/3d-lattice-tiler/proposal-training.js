@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260827-a2-size7-v226";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260827-a2-size7-v227";
 import {
   createInitialProposalPopulation,
   growthCurveArea,

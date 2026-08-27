@@ -202,6 +202,7 @@ def solve_quotient(record, hnf_record, copies, tools, timeout_seconds, proof_dir
         tools["scip"], "-q",
         "-c", "set exact enable TRUE",
         "-c", "set separating emphasis off",
+        "-c", "set presolving emphasis off",
         "-c", f"set certificate filename {proof}",
         "-c", f"set limits time {timeout_seconds}",
         "-c", f"read {mps}",
@@ -243,7 +244,21 @@ def solve_quotient(record, hnf_record, copies, tools, timeout_seconds, proof_dir
         }
     elif "solution status: infeasible" in solution_text:
         if not proof.exists():
-            raise RuntimeError("exact SCIP reported infeasible without a VIPR proof")
+            result = {
+                "result": "unknown",
+                "scip_seconds": scip_seconds,
+                "unknown_reason": "infeasible_status_without_vipr_proof",
+            }
+            result.update({
+                "hnf_index": hnf_record["representative_index"],
+                "hnf": list(hnf),
+                "orbit_member_indices": hnf_record["member_indices"],
+                "orientation_count": orientation_count,
+                "eligible_placements": len(model["eligible_indices"]),
+            })
+            if temporary is not None:
+                temporary.cleanup()
+            return result
         completion, completion_seconds = run(
             [tools["viprcomp"], "--threads=8", "--verbosity=0", proof.name],
             timeout_seconds + 300, cwd=work,

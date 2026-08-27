@@ -82,6 +82,12 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "periodic_six_copy_complete": true,
       "periodic_six_copy_exact_multicover_nodes": 17704350,
       "periodic_six_copy_exact_failed_states": 11832743,
+      "periodic_eight_copy_certificate": null,
+      "period_vectors": null,
+      "periodic_template": null,
+      "quotient_determinant": null,
+      "periodic_eight_copy_replay_verified": false,
+      "motif_tiles": null,
       "substitution_scalar_scales_excluded": [
         2,
         3,
@@ -121,6 +127,7 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "corona2_report": "data/a2-layered-size7-corona2-a2lp_7_00232-deep.ndjson",
       "corona2_gcts_report": "data/a2-layered-size7-corona2-core-a2lp_7_00232-longer128.ndjson",
       "periodic_larger_report": "data/a2-layered-size7-periodic-exact6-a2lp_7_00232.ndjson",
+      "periodic_eight_copy_report": null,
       "substitution_reports": [
         "data/a2-layered-size7-substitution-scale2-focused.ndjson",
         "data/a2-layered-size7-substitution-scale3-focused.ndjson",
@@ -227,6 +234,12 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "periodic_six_copy_complete": true,
       "periodic_six_copy_exact_multicover_nodes": 18596335,
       "periodic_six_copy_exact_failed_states": 12317275,
+      "periodic_eight_copy_certificate": null,
+      "period_vectors": null,
+      "periodic_template": null,
+      "quotient_determinant": null,
+      "periodic_eight_copy_replay_verified": false,
+      "motif_tiles": null,
       "substitution_scalar_scales_excluded": [
         2,
         3,
@@ -266,6 +279,7 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
       "corona2_gcts_report": "data/a2-layered-size7-corona2-core-a2lp_7_00235-longer128.ndjson",
       "periodic_larger_report": "data/a2-layered-size7-periodic-exact6-a2lp_7_00235.ndjson",
+      "periodic_eight_copy_report": null,
       "substitution_reports": [
         "data/a2-layered-size7-substitution-scale2-focused.ndjson",
         "data/a2-layered-size7-substitution-scale3-focused.ndjson",
@@ -342,11 +356,11 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
     "lattice_points": 18,
     "survivor_priority": 3,
     "survivor_count": 8,
-    "description": "Size-seven non-product A2-layer lattice function retained after exact weighted quotient and focused second-corona screening.",
+    "description": "Size-seven non-product A2-layer lattice function with an independently replayed eight-copy periodic quotient.",
     "screening": {
-      "status": "inconclusive",
-      "certificate": null,
-      "census_stage": "a2_layered_size7_exact_through6_2026_08_27",
+      "status": "periodic",
+      "certificate": "translational",
+      "census_stage": "a2_layered_size7_eight_copy_witness_2026_08_27",
       "source_pool_size": 1119,
       "periodic_two_copy_certificates": 910,
       "periodic_four_copy_certificates_after_two_copy_screen": 98,
@@ -372,6 +386,211 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "periodic_six_copy_complete": true,
       "periodic_six_copy_exact_multicover_nodes": 6736205,
       "periodic_six_copy_exact_failed_states": 4959069,
+      "periodic_eight_copy_certificate": {
+        "kind": "weighted_periodic_hnf_quotient",
+        "certified": true,
+        "can_tile": true,
+        "model": "a2_layered_lattice_function",
+        "copies": 8,
+        "determinant": 28,
+        "period_vectors": [
+          [
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            7
+          ]
+        ],
+        "placements": [
+          {
+            "orientation_index": 0,
+            "translation": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "orientation_index": 0,
+            "translation": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "orientation_index": 0,
+            "translation": [
+              1,
+              0,
+              2
+            ]
+          },
+          {
+            "orientation_index": 2,
+            "translation": [
+              1,
+              0,
+              1
+            ]
+          },
+          {
+            "orientation_index": 3,
+            "translation": [
+              0,
+              1,
+              3
+            ]
+          },
+          {
+            "orientation_index": 4,
+            "translation": [
+              0,
+              0,
+              4
+            ]
+          },
+          {
+            "orientation_index": 4,
+            "translation": [
+              0,
+              1,
+              2
+            ]
+          },
+          {
+            "orientation_index": 4,
+            "translation": [
+              0,
+              1,
+              4
+            ]
+          }
+        ],
+        "hnf_index": 0
+      },
+      "period_vectors": [
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          7
+        ]
+      ],
+      "periodic_template": {
+        "period_vectors": [
+          [
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            7
+          ]
+        ],
+        "motif": [
+          {
+            "prototile_idx": 0,
+            "orientation_index": 0,
+            "translation": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 0,
+            "translation": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 0,
+            "translation": [
+              1,
+              0,
+              2
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 4,
+            "translation": [
+              -2,
+              0,
+              4
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 1,
+            "translation": [
+              -4,
+              0,
+              2
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 2,
+            "translation": [
+              -4,
+              -4,
+              6
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 2,
+            "translation": [
+              -4,
+              -3,
+              4
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 2,
+            "translation": [
+              -4,
+              -3,
+              6
+            ]
+          }
+        ]
+      },
+      "quotient_determinant": 28,
+      "periodic_eight_copy_replay_verified": true,
+      "motif_tiles": 8,
       "substitution_scalar_scales_excluded": [
         2,
         3,
@@ -411,6 +630,7 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
       "corona2_gcts_report": "data/a2-layered-size7-corona2-core-a2lp_7_00694-longer128.ndjson",
       "periodic_larger_report": "data/a2-layered-size7-periodic-exact6-a2lp_7_00694.ndjson",
+      "periodic_eight_copy_report": "data/a2-layered-size7-periodic-exact8-a2lp_7_00694-witness.ndjson",
       "substitution_reports": [
         "data/a2-layered-size7-substitution-scale2-focused.ndjson",
         "data/a2-layered-size7-substitution-scale3-focused.ndjson",
@@ -517,6 +737,12 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "periodic_six_copy_complete": true,
       "periodic_six_copy_exact_multicover_nodes": 5756950,
       "periodic_six_copy_exact_failed_states": 4261827,
+      "periodic_eight_copy_certificate": null,
+      "period_vectors": null,
+      "periodic_template": null,
+      "quotient_determinant": null,
+      "periodic_eight_copy_replay_verified": false,
+      "motif_tiles": null,
       "substitution_scalar_scales_excluded": [
         2,
         3,
@@ -556,6 +782,7 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
       "corona2_gcts_report": "data/a2-layered-size7-corona2-core-a2lp_7_00809-longer128.ndjson",
       "periodic_larger_report": "data/a2-layered-size7-periodic-exact6-a2lp_7_00809.ndjson",
+      "periodic_eight_copy_report": null,
       "substitution_reports": [
         "data/a2-layered-size7-substitution-scale2-focused.ndjson",
         "data/a2-layered-size7-substitution-scale3-focused.ndjson",
@@ -662,6 +889,12 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "periodic_six_copy_complete": true,
       "periodic_six_copy_exact_multicover_nodes": 23166809,
       "periodic_six_copy_exact_failed_states": 15143212,
+      "periodic_eight_copy_certificate": null,
+      "period_vectors": null,
+      "periodic_template": null,
+      "quotient_determinant": null,
+      "periodic_eight_copy_replay_verified": false,
+      "motif_tiles": null,
       "substitution_scalar_scales_excluded": [
         2,
         3,
@@ -701,6 +934,7 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
       "corona2_gcts_report": "data/a2-layered-size7-corona2-core-a2lp_7_00211-longer128.ndjson",
       "periodic_larger_report": "data/a2-layered-size7-periodic-exact6-a2lp_7_00211.ndjson",
+      "periodic_eight_copy_report": null,
       "substitution_reports": [
         "data/a2-layered-size7-substitution-scale2-focused.ndjson",
         "data/a2-layered-size7-substitution-scale3-focused.ndjson",
@@ -807,6 +1041,12 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "periodic_six_copy_complete": true,
       "periodic_six_copy_exact_multicover_nodes": 6479430,
       "periodic_six_copy_exact_failed_states": 4794297,
+      "periodic_eight_copy_certificate": null,
+      "period_vectors": null,
+      "periodic_template": null,
+      "quotient_determinant": null,
+      "periodic_eight_copy_replay_verified": false,
+      "motif_tiles": null,
       "substitution_scalar_scales_excluded": [
         2,
         3,
@@ -846,6 +1086,7 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
       "corona2_gcts_report": "data/a2-layered-size7-corona2-core-a2lp_7_00755-longer128.ndjson",
       "periodic_larger_report": "data/a2-layered-size7-periodic-exact6-a2lp_7_00755.ndjson",
+      "periodic_eight_copy_report": null,
       "substitution_reports": [
         "data/a2-layered-size7-substitution-scale2-focused.ndjson",
         "data/a2-layered-size7-substitution-scale3-focused.ndjson",
@@ -952,6 +1193,12 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "periodic_six_copy_complete": true,
       "periodic_six_copy_exact_multicover_nodes": 6957313,
       "periodic_six_copy_exact_failed_states": 5177898,
+      "periodic_eight_copy_certificate": null,
+      "period_vectors": null,
+      "periodic_template": null,
+      "quotient_determinant": null,
+      "periodic_eight_copy_replay_verified": false,
+      "motif_tiles": null,
       "substitution_scalar_scales_excluded": [
         2,
         3,
@@ -991,6 +1238,7 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
       "corona2_gcts_report": "data/a2-layered-size7-corona2-core-a2lp_7_00777-longer128.ndjson",
       "periodic_larger_report": "data/a2-layered-size7-periodic-exact6-a2lp_7_00777.ndjson",
+      "periodic_eight_copy_report": null,
       "substitution_reports": [
         "data/a2-layered-size7-substitution-scale2-focused.ndjson",
         "data/a2-layered-size7-substitution-scale3-focused.ndjson",
@@ -1097,6 +1345,12 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "periodic_six_copy_complete": true,
       "periodic_six_copy_exact_multicover_nodes": 20052090,
       "periodic_six_copy_exact_failed_states": 14804998,
+      "periodic_eight_copy_certificate": null,
+      "period_vectors": null,
+      "periodic_template": null,
+      "quotient_determinant": null,
+      "periodic_eight_copy_replay_verified": false,
+      "motif_tiles": null,
       "substitution_scalar_scales_excluded": [
         2,
         3,
@@ -1136,6 +1390,7 @@ export const A2_LAYERED_SIZE7_CANDIDATES = Object.freeze([
       "corona2_report": "data/a2-layered-size7-corona2-focused.ndjson",
       "corona2_gcts_report": "data/a2-layered-size7-corona2-core-a2lp_7_00128-longer128.ndjson",
       "periodic_larger_report": "data/a2-layered-size7-periodic-exact6-a2lp_7_00128.ndjson",
+      "periodic_eight_copy_report": null,
       "substitution_reports": [
         "data/a2-layered-size7-substitution-scale2-focused.ndjson",
         "data/a2-layered-size7-substitution-scale3-focused.ndjson",

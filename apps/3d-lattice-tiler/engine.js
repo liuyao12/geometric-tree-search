@@ -5572,6 +5572,63 @@ export const createTilingStream = (() => {
       const determinant = determinant3(basis);
       const cellVolume = Math.abs(determinant);
       if (cellVolume <= ISOHEDRAL_EPSILON) return reject("singular_period_basis");
+      const latticeFunctionModel = placements.every(placement =>
+        prototiles[placement.prototile_idx]?.geometry_model === "lattice_function"
+      );
+      if (latticeFunctionModel) {
+        const modulus = Math.abs(Math.round(determinant));
+        if (!modulus || Math.abs(determinant - Math.round(determinant)) > ISOHEDRAL_EPSILON) {
+          return reject("nonintegral_lattice_function_period_basis");
+        }
+        const quotientWeights = new Map();
+        for (const placement of placements) for (const point of placement.orient.occupancy) {
+          const globalPoint = vecAdd(point.pos, placement.translation);
+          const numerators = [
+            determinant3([globalPoint, basis[1], basis[2]]),
+            determinant3([basis[0], globalPoint, basis[2]]),
+            determinant3([basis[0], basis[1], globalPoint])
+          ];
+          if (numerators.some(value => Math.abs(value - Math.round(value)) > ISOHEDRAL_EPSILON)) {
+            return reject("nonintegral_lattice_function_occupancy");
+          }
+          const key = numerators.map(value => euclideanMod(Math.round(value), modulus)).join(",");
+          quotientWeights.set(key, (quotientWeights.get(key) ?? 0) + point.weight);
+        }
+        if (quotientWeights.size !== modulus
+          || [...quotientWeights.values()].some(weight =>
+            Math.abs(weight - MAX_SOLID_ANGLE) > ISOHEDRAL_EPSILON
+          )) return reject("incomplete_weighted_lattice_function_quotient");
+        const rootTranslation = placements[0].translation;
+        const motif = placements.map(placement => {
+          const orientationIndex = prototiles[placement.prototile_idx]
+            .unique_orientations.indexOf(placement.orient);
+          return {
+            prototile_idx: placement.prototile_idx,
+            orientation_index: orientationIndex,
+            orientation_id: placement.orient.__orientation_id ?? null,
+            translation: vecSub(placement.translation, rootTranslation)
+          };
+        });
+        if (motif.some(item => item.orientation_index < 0)) {
+          return reject("unknown_motif_orientation");
+        }
+        searchStats.periodic_certificate_last_rejection = null;
+        return {
+          kind: `${motif.length}_tile_weighted_lattice_function_quotient`,
+          period_vectors: basis.map(vector => vector.slice()),
+          motif,
+          mixed_prototile: new Set(motif.map(item => item.prototile_idx)).size > 1,
+          quotient_classes: modulus,
+          proof: {
+            method: "exact_weighted_lattice_function_quotient",
+            target_weight: MAX_SOLID_ANGLE,
+            quotient_classes: modulus,
+            checked_support_points: placements.reduce(
+              (total, placement) => total + placement.orient.occupancy.length, 0
+            )
+          }
+        };
+      }
       const motifVolume = placements.reduce(
         (sum, placement) => sum + (tileVolumes[placement.prototile_idx] ?? 0),
         0
@@ -8471,13 +8528,17 @@ export const tileSpecs = (() => {
     }])),
     ...Object.fromEntries(A2_LAYERED_SIZE7_CANDIDATES.map(candidate => [candidate.registry_id, {
       name: candidate.name,
-      category: ["Unresolved A2 Layered Candidates", "A2 Layered Solids"],
+      category: [candidate.screening.status === "periodic"
+        ? "GCTS Periodic Controls"
+        : "Unresolved A2 Layered Candidates", "A2 Layered Solids"],
       census_candidate: candidate,
       layered_lattice: {
         equation: "x+y+z=3k",
         base_layer: 0,
         top_layer: 3 * (Math.max(...candidate.cells.map(cell => cell.k)) + 1),
-        role: "multi-layer exact-through-four candidate"
+        role: candidate.screening.status === "periodic"
+          ? "eight-copy periodic benchmark"
+          : "multi-layer exact-through-six candidate"
       },
       build: () => [make_tile(candidate.name, makeA2LayeredPolyprism(candidate.cells))]
     }])),

@@ -16,6 +16,8 @@ const nodeLimit = quick ? 10000 : 50000;
 
 async function runAttempt(modeKey, strategy, options = {}) {
   const translational = strategy === "translational";
+  const screening = tileSpecs.TILING_REGISTRY[modeKey]?.census_candidate?.screening;
+  const knownPeriodicTemplate = translational ? screening?.periodic_template : null;
   const boundingBox = !!options.boundingBox;
   const balancedCount = !!options.balancedCount;
   const rootTile = boundingBox
@@ -31,7 +33,7 @@ async function runAttempt(modeKey, strategy, options = {}) {
   const config = {
     mode_key: modeKey,
     criterion: boundingBox ? "region" : translational || balancedCount ? "count" : "layer",
-    target_val: translational ? 20 : balancedCount ? 8 : 1,
+    target_val: translational ? screening?.motif_tiles ?? 20 : balancedCount ? 8 : 1,
     target_region: boundingBox ? {
       type: "box",
       center: boxSize.map(value => value / 2),
@@ -42,7 +44,8 @@ async function runAttempt(modeKey, strategy, options = {}) {
     move_order: "balanced",
     face_order: "mrv",
     template_preflight: true,
-    periodic_patch_max_tiles: 4,
+    known_periodic_template: knownPeriodicTemplate,
+    periodic_patch_max_tiles: Math.max(4, screening?.motif_tiles ?? 0),
     periodic_template_max_volume: 512,
     branch_cap: 32,
     candidate_cap: 10000,
