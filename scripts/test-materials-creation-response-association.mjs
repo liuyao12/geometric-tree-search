@@ -85,4 +85,19 @@ assert.equal(shifted.heldoutFeatureSupportCoverage, 0);
 assert.equal(shifted.supportedHeldoutPlacements, 0);
 assert.equal(shifted.unsupportedHeldoutPlacements, 16);
 assert.ok(shifted.maximumStandardizedFeatureExcess > 0);
+const interactionRecords = Array.from({ length: 60 }, (_, index) => {
+  const leapIndex = Math.floor(index / 12) + 1; const within = index % 12;
+  const first = (within % 3) - 1; const second = Math.floor(within / 3) % 2 ? 1 : -1;
+  return { placementId: `i${index}`, leapIndex, emittedSites: 1,
+    physicsTerms: [{ id: "first", weight: 1, contribution: first },
+      { id: "second", weight: 1, contribution: second }],
+    outcomes: { shellChange: 3 * first * second } };
+});
+const interaction = blockedCreationResponseSurrogate(interactionRecords, "shellChange",
+  { trainingFraction: .6, minimumSamplesPerSplit: 4, ridge: .01 });
+assert.equal(interaction.available, true);
+assert.ok(interaction.heldoutSkillVersusTrainingMean < .01);
+assert.ok(interaction.quadraticControl.heldoutSkillVersusTrainingMean > .99);
+assert.equal(interaction.quadraticControl.modelSelectedUsingHeldout, false);
+assert.equal(interaction.quadraticControl.coefficients.some((term) => term.kind === "interaction"), true);
 console.log("materials creation-response association: passed");

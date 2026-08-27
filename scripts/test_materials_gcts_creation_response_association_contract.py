@@ -66,13 +66,17 @@ def test_association_microscope_is_interactive_and_claims_fail_closed():
     assert "featureSupportDefinition" in MODULE
     assert ".site-surrogate-support" in STYLE
     assert ".site-surrogate-coefficients" in STYLE
+    assert "quadraticControl" in MODULE
+    assert "modelSelectedUsingHeldout: false" in MODULE
+    assert "maximumInteractingBaseFeatures: 6" in MODULE
+    assert ".site-surrogate-coefficients.interactions" in STYLE
 
 
 def test_build_197_assets_and_narrative():
-    assert 'buildId: "20260826-199"' in APP
-    assert 'app.js?v=20260826-199' in HTML
-    assert 'style.css?v=20260826-95' in HTML
-    assert 'creation-response-association.js?v=20260826-6' in APP
+    assert 'buildId: "20260826-200"' in APP
+    assert 'app.js?v=20260826-200' in HTML
+    assert 'style.css?v=20260826-96' in HTML
+    assert 'creation-response-association.js?v=20260826-7' in APP
     assert "Build 194" in README
     assert "Build 196" in README
     assert "Build 196" in DOCS
@@ -82,4 +86,6 @@ def test_build_197_assets_and_narrative():
     assert "Build 198" in DOCS
     assert "Build 199" in README
     assert "Build 199" in DOCS
+    assert "Build 200" in README
+    assert "Build 200" in DOCS
     assert "Build 194" in DOCS

@@ -6247,3 +6247,24 @@ inside the earlier-block axis-aligned score envelope. The frozen standardized co
 are −0.6966 for surface completion and approximately −0.0542 each for composition and formal
 charge. This rules out simple range extrapolation as the explanation; it does not prove which
 nonlinearity, omitted state variable, or leap-dependent mapping is responsible.
+
+## Build 200: test fixed second-order coupling between geometry channels
+
+Build 200 adds a predeclared quadratic control to the earlier-block response fit. It retains
+all linear standardized channels and adds squares plus pairwise products among at most the
+first six support-ranked channels. Interaction means, ridge coefficients, and target mean
+are fit on earlier blocks only. The later blocks score both frozen models and the same
+training-mean baseline; no winner is selected to alter the run.
+
+The UI reports three MAEs, linear and coupled skills, both rank associations, and the largest
+second-order coefficients. Receipts preserve the full basis and per-placement coupled
+predictions. A second-order improvement would demonstrate useful geometric channel coupling,
+not a physical many-body Hamiltonian or causal interaction; failure would rule out this
+bounded polynomial explanation without justifying held-block tuning.
+
+The default NaCl result is negative. The nine-term coupled basis has held-block MAE 1.8741,
+skill −0.3648, and Spearman ρ +0.4041, worse than both the linear arm (MAE 1.6736, skill
+−0.0655, ρ +0.4542) and the training-mean MAE 1.6456. The strongest interaction weights
+couple surface completion to composition/formal-charge balance, but held-block performance
+does not support those terms as transferable response structure. No interaction is promoted
+or tuned from this result.

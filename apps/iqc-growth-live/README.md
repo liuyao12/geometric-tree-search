@@ -5512,3 +5512,23 @@ axis-aligned envelope with maximum excess 0. The negative skill therefore is not
 by simple score-channel range extrapolation. Within this audit, the stronger diagnosis is a
 response-model/channel-set failure: surface completion dominates the standardized fit
 (β = −0.697), while composition and formal charge each contribute only β ≈ −0.054.
+
+### Build 200 · fixed channel-coupling control
+
+The blocked response card now fits a second, predeclared model family on exactly the same
+earlier placements: all retained linear channels plus squares and pairwise products among
+the first six support-ranked channels. Interaction features are centered on the training
+blocks, use the same fixed ridge, and are never chosen or pruned using later responses.
+
+The portal compares training-mean, linear, and coupled MAE and skill side by side, reports
+both held-block rank associations, and exposes the strongest square/interaction coefficients.
+Receipts retain the complete second-order basis, weights, and prediction for every held
+placement. This is a bounded nonlinearity control—not automatic model selection, physical
+many-body energy, causal interaction, confidence interval, or permission to tune on later
+leaps.
+
+On the six-leap NaCl check, the nine-term coupled control is worse: MAE 1.874 and skill
+−0.365 versus linear MAE 1.674/skill −0.065 and baseline MAE 1.646. Its held-block rank
+association also falls from +0.454 to +0.404. Pairwise products and squares of the three
+current score channels therefore do not explain the missing transfer; the failure remains
+open rather than motivating posthoc interaction selection.

@@ -34,7 +34,7 @@ import { appendSiteStructuralHistory, summarizeSiteStructuralHistory }
   from "./site-structural-history.js?v=20260826-1";
 import { blockedCreationResponseSurrogate, blockedCreationResponseValidation, buildCreationResponseAssociation,
   canonicalCreationResponseDataset, creationResponseLeapProfile }
-  from "./creation-response-association.js?v=20260826-6";
+  from "./creation-response-association.js?v=20260826-7";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -3809,7 +3809,9 @@ function renderPopulationBlockedValidation(validation) {
 function renderPopulationSurrogate(surrogate) {
   sitePopulationSurrogate.replaceChildren();
   sitePopulationSurrogate.className = `site-response-surrogate ${surrogate.available
-    ? surrogate.heldoutSkillVersusTrainingMean > 0 ? "useful" : "no-gain" : "unavailable"}`;
+    ? Math.max(surrogate.heldoutSkillVersusTrainingMean ?? -Infinity,
+      surrogate.quadraticControl?.heldoutSkillVersusTrainingMean ?? -Infinity) > 0 ? "useful" : "no-gain"
+    : "unavailable"}`;
   const label = document.createElement("small"); label.textContent = "joint geometry model · earlier → later";
   const value = document.createElement("strong"); const detail = document.createElement("span");
   if (!surrogate.available) {
@@ -3817,11 +3819,15 @@ function renderPopulationSurrogate(surrogate) {
     sitePopulationSurrogate.append(label, value, detail); return;
   }
   const skill = surrogate.heldoutSkillVersusTrainingMean;
-  value.textContent = `held-block skill ${Number.isFinite(skill) ? `${skill >= 0 ? "+" : ""}${skill.toFixed(3)}` : "unresolved"} · ρ ${Number.isFinite(surrogate.heldoutSpearman) ? `${surrogate.heldoutSpearman >= 0 ? "+" : ""}${surrogate.heldoutSpearman.toFixed(3)}` : "—"}`;
-  detail.textContent = `${surrogate.features.length} earlier-block geometry channels · ${surrogate.trainingPlacements} fit / ${surrogate.heldoutPlacements} held placements · ${(100 * surrogate.heldoutFeatureSupportCoverage).toFixed(1)}% inside training envelope · fixed ridge ${surrogate.ridge}`;
+  const quadraticSkill = surrogate.quadraticControl.heldoutSkillVersusTrainingMean;
+  value.textContent = `skill linear ${Number.isFinite(skill) ? `${skill >= 0 ? "+" : ""}${skill.toFixed(3)}` : "—"} · coupled ${Number.isFinite(quadraticSkill) ? `${quadraticSkill >= 0 ? "+" : ""}${quadraticSkill.toFixed(3)}` : "—"}`;
+  detail.textContent = `${surrogate.features.length} channels · ρ linear ${Number.isFinite(surrogate.heldoutSpearman) ? `${surrogate.heldoutSpearman >= 0 ? "+" : ""}${surrogate.heldoutSpearman.toFixed(3)}` : "—"} / coupled ${Number.isFinite(surrogate.quadraticControl.heldoutSpearman) ? `${surrogate.quadraticControl.heldoutSpearman >= 0 ? "+" : ""}${surrogate.quadraticControl.heldoutSpearman.toFixed(3)}` : "—"} · ${(100 * surrogate.heldoutFeatureSupportCoverage).toFixed(1)}% in envelope`;
   const bars = document.createElement("div"); bars.className = "site-surrogate-bars";
-  const maximumError = Math.max(surrogate.heldoutMeanAbsoluteError, surrogate.baselineMeanAbsoluteError, 1e-12);
-  [["joint geometry", surrogate.heldoutMeanAbsoluteError], ["training mean", surrogate.baselineMeanAbsoluteError]]
+  const maximumError = Math.max(surrogate.heldoutMeanAbsoluteError,
+    surrogate.quadraticControl.heldoutMeanAbsoluteError, surrogate.baselineMeanAbsoluteError, 1e-12);
+  [["linear", surrogate.heldoutMeanAbsoluteError],
+    ["coupled", surrogate.quadraticControl.heldoutMeanAbsoluteError],
+    ["training mean", surrogate.baselineMeanAbsoluteError]]
     .forEach(([name, error]) => {
       const bar = document.createElement("span"); bar.style.setProperty("--error", `${100 * error / maximumError}%`);
       const barLabel = document.createElement("small"); barLabel.textContent = name;
@@ -3846,7 +3852,16 @@ function renderPopulationSurrogate(surrogate) {
     const weight = document.createElement("strong"); weight.textContent = `β ${feature.standardizedWeight >= 0 ? "+" : ""}${feature.standardizedWeight.toFixed(3)}`;
     chip.append(name, weight); coefficients.append(chip);
   });
-  sitePopulationSurrogate.append(label, value, detail, bars, support, coefficients);
+  const interactions = document.createElement("div"); interactions.className = "site-surrogate-coefficients interactions";
+  surrogate.quadraticControl.coefficients.filter((term) => term.kind !== "linear")
+    .sort((first, second) => Math.abs(second.standardizedWeight) - Math.abs(first.standardizedWeight)
+      || first.id.localeCompare(second.id)).slice(0, 6).forEach((term) => {
+      const chip = document.createElement("span");
+      const name = document.createElement("small"); name.textContent = term.label;
+      const weight = document.createElement("strong"); weight.textContent = `β₂ ${term.standardizedWeight >= 0 ? "+" : ""}${term.standardizedWeight.toFixed(3)}`;
+      chip.append(name, weight); interactions.append(chip);
+    });
+  sitePopulationSurrogate.append(label, value, detail, bars, support, coefficients, interactions);
 }
 
 function populationArtifactCell(label, value, detail) {
@@ -8627,7 +8642,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-199",
+      buildId: "20260826-200",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
