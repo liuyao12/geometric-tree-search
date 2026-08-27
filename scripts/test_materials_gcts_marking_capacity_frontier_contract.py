@@ -54,8 +54,8 @@ def test_frontier_is_visible_and_receipt_audited():
 
 
 def test_build_211_release_identity_is_coherent():
-    assert 'buildId: "20260827-248"' in APP
-    assert 'app.js?v=20260827-248' in HTML
+    assert 'buildId: "20260827-249"' in APP
+    assert 'app.js?v=20260827-249' in HTML
     assert "Build 211" in README
     assert "Build 211" in DOC
 

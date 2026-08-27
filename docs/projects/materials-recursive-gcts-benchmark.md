@@ -13,6 +13,18 @@ amplification is `b > 1`, a level-`L` accepted macro placement represents
 approximately `b^L` atoms.  Materializing or exporting `N` atomic coordinates
 still has an unavoidable `O(N)` cost and must be reported separately.
 
+### Transported displacement ellipsoids (Build 249)
+
+The browser now renders the covariance that the growth engine actually uses.
+Every accepted generated site reconstructs the ordered eigensystem of its
+transported Cartesian U tensor; live frontier candidates and committed sites
+therefore carry oriented 2σ wire ellipsoids. The separate rotating cluster
+scenes used during GCTS learning project the same rotated covariance into a 2D
+ellipse, making anisotropy and orientation transport inspectable per cluster.
+A layer toggle hides these glyphs without modifying candidates, markings, or
+admission. This is one matrix shown in several views, not an added physical
+field or a claim of correlated dynamics.
+
 ### Proper-pose displacement transport (Build 248)
 
 Reported Uiso/Uij no longer stops at the training-time pair table. Each cluster

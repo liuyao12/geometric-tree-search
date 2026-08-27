@@ -19,6 +19,15 @@ the GCTS anatomy view explains covers, oriented ports, markings, search, and
 promotion; and the claim ledger keeps proved, measured, and open results visibly
 separate. Its numbers are frozen benchmark results, not recomputed browser demos.
 
+Build 249 closes the visual half of that covariance lineage. A generated site
+now reconstructs the eigensystem of its transported Cartesian U tensor, so the
+same matrix used by directional admission also supplies its oriented 2σ
+ellipsoid. Violet wire ellipsoids appear on the live candidate frontier and on
+accepted descendants; each separate GCTS cluster card projects the rotated 2σ
+section into its own scene. A Layers switch controls reported and transported
+U/B halos without changing search. These are displacement-covariance glyphs,
+not atomic surfaces, trajectories, correlated motion, or a new energy model.
+
 Build 248 rotates each reported displacement covariance with the cluster that
 carries it. Every Uiso/Uij tensor is converted to a full Cartesian covariance,
 stored in the observed template's local proper frame, and transported as

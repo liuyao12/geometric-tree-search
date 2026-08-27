@@ -30,8 +30,8 @@ def test_portfolio_audit_is_visible_and_receipted_without_geometry_or_target_use
 
 
 def test_build_212_release_labels_are_consistent():
-    assert 'buildId: "20260827-248"' in APP
-    assert 'app.js?v=20260827-248' in HTML
+    assert 'buildId: "20260827-249"' in APP
+    assert 'app.js?v=20260827-249' in HTML
     assert "Build 212" in README
     assert "Build 212" in DOC
 

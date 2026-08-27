@@ -7,8 +7,9 @@ import {
   formalChargeFromChemistryToken,
   isotropicPairDistanceUncertaintyA,
   parseStructureText,
+  symmetricTensorEigenSystem,
   validateStructure,
-} from "./structure-io.js?v=20260826-7";
+} from "./structure-io.js?v=20260827-8";
 import { loadNomadStructureCandidate, NOMAD_EVIDENCE_TARGETS, NOMAD_STRUCTURE_FAMILIES,
   nomadEvidenceProfileLabel, nomadStructureCandidates }
   from "./structure-database.js?v=20260827-9";
@@ -533,6 +534,8 @@ const growthDurationSelect = $("growthDurationSelect");
 const markingToggle = $("markingToggle");
 const bondToggle = $("bondToggle");
 const frontierToggle = $("frontierToggle");
+const displacementToggle = $("displacementToggle");
+const displacementToggleLabel = $("displacementToggleLabel");
 const forceToggle = $("forceToggle");
 const forceToggleLabel = $("forceToggleLabel");
 const relaxationDisplacementToggle = $("relaxationDisplacementToggle");
@@ -1270,6 +1273,9 @@ const dimElementMaterials = new Map();
 const occupancyRingMaterials = new Map();
 const thermalEnvelopeMaterial = new THREE.MeshBasicMaterial({
   color: 0x9d84ff, wireframe: true, transparent: true, opacity: .16, depthWrite: false,
+});
+const candidateDisplacementMaterial = new THREE.MeshBasicMaterial({
+  color: 0xb594ff, wireframe: true, transparent: true, opacity: .48, depthWrite: false,
 });
 const interfaceRingMaterial = new THREE.MeshBasicMaterial({ color: 0x7ee1e8,
   transparent: true, opacity: .9, depthWrite: false });
@@ -3781,6 +3787,18 @@ function elementScale(symbol) {
   return Math.max(.8, elementRecord(symbol).radius / material.spacingA * 2.55);
 }
 
+function setDisplacementEllipsoidTransform(target, position, species, tensor) {
+  const eigen = symmetricTensorEigenSystem(tensor);
+  target.position.copy(position);
+  target.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(
+    new THREE.Vector3(...eigen.axes[0]), new THREE.Vector3(...eigen.axes[1]),
+    new THREE.Vector3(...eigen.axes[2])));
+  const atomRadius = sphereGeometry.parameters.radius * elementScale(species);
+  target.scale.set(...eigen.sigmaAxesA.map((sigma) => (atomRadius * 1.04
+    + 2 * sigma * referenceSpacing / referenceSpacingA) / sphereGeometry.parameters.radius));
+  target.updateMatrix();
+}
+
 function random() {
   rngState ^= rngState << 13;
   rngState ^= rngState >>> 17;
@@ -3790,7 +3808,9 @@ function random() {
 
 function cloneAtom(atom, seed = true) {
   return { ...atom, id: nextAtomId++, p: atom.p.clone(), seed, attempts: 0, parent: null, depth: 0,
-    uAnisoCartesianA2: atom.uAnisoCartesianA2?.map((row) => row.slice()) || null };
+    uAnisoCartesianA2: atom.uAnisoCartesianA2?.map((row) => row.slice()) || null,
+    thermalSigmaAxesA: atom.thermalSigmaAxesA?.slice() || null,
+    thermalAxesCartesian: atom.thermalAxesCartesian?.map((axis) => axis.slice()) || null };
 }
 
 function addAtom(position, species, family, parent = null, seed = false) {
@@ -4706,8 +4726,12 @@ function templateSiteFromReference(source, atomIndex, local, localFrameInverse, 
 function copyPlacedDisplacementTensor(atom, site) {
   const tensor = site.uAnisoCartesianA2;
   if (!Array.isArray(tensor)) return;
+  const eigen = symmetricTensorEigenSystem(tensor);
   atom.uAnisoCartesianA2 = tensor.map((row) => row.slice());
-  atom.uIsoA2 = tensor.reduce((sum, row, index) => sum + row[index], 0) / 3;
+  atom.uIsoA2 = eigen.eigenvaluesA2.reduce((sum, value) => sum + value, 0) / 3;
+  atom.thermalSigmaA = Math.sqrt(atom.uIsoA2);
+  atom.thermalSigmaAxesA = eigen.sigmaAxesA.slice();
+  atom.thermalAxesCartesian = eigen.axes.map((axis) => axis.slice());
   atom.displacementTensorSource = site.displacementTensorSource || "transported reported covariance";
   atom.displacementTemplateReferenceIndex = Number.isInteger(site.displacementTemplateReferenceIndex)
     ? site.displacementTemplateReferenceIndex : null;
@@ -8456,6 +8480,35 @@ function clusterGallerySites(cluster) {
   return sites;
 }
 
+function drawClusterCardDisplacementEllipses(context, projected, quaternion, scaleToScene) {
+  if (!displacementToggle.checked) return;
+  let drawn = 0;
+  projected.forEach((point) => {
+    const tensor = atomDisplacementTensorAngstrom2(point.atom);
+    const rotated = tensor ? rotateDisplacementTensor(tensor, quaternion.toArray()) : null;
+    if (!rotated) return;
+    const mean = (rotated[0][0] + rotated[1][1]) / 2;
+    const split = Math.hypot((rotated[0][0] - rotated[1][1]) / 2, rotated[0][1]);
+    const major = Math.sqrt(Math.max(0, mean + split));
+    const minor = Math.sqrt(Math.max(0, mean - split));
+    if (!(major > 0)) return;
+    const pixelsPerAngstrom = 48 * scaleToScene * point.perspective;
+    const angle = .5 * Math.atan2(2 * rotated[0][1], rotated[0][0] - rotated[1][1]);
+    context.save(); context.translate(point.x, point.y); context.rotate(angle);
+    context.beginPath(); context.ellipse(0, 0,
+      Math.max(1.5, 2 * major * pixelsPerAngstrom),
+      Math.max(1.5, 2 * minor * pixelsPerAngstrom), 0, 0, TAU);
+    context.strokeStyle = "rgba(181,148,255,.72)";
+    context.lineWidth = 1.15; context.stroke(); context.restore();
+    drawn++;
+  });
+  if (drawn) {
+    context.save(); context.font = "9px ui-monospace, SFMono-Regular, Menlo, monospace";
+    context.fillStyle = "rgba(181,148,255,.82)";
+    context.fillText(`2σ U · ${drawn}`, 8, 13); context.restore();
+  }
+}
+
 function drawClusterCardMarking(context, canvas, cluster, galleryIndex, quaternion) {
   if (pipelineStage !== 3 || !sectionModel || cluster.residual) return;
   const prototype = cluster.familyType ?? galleryIndex;
@@ -8552,6 +8605,7 @@ function drawClusterGallery(now) {
       if (kind === "outline" && cluster.visualKind === "molecule") context.setLineDash([2, 3]);
       context.stroke(); context.restore();
     });
+    drawClusterCardDisplacementEllipses(context, projected, quaternion, scaleToScene);
     projected.sort((first, second) => first.z - second.z).forEach((point) => {
       const record = elementRecord(point.atom.species);
       const radius = 7.4 * point.perspective * Math.min(1.12, record.radius / 1.3);
@@ -9829,7 +9883,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-248",
+      buildId: "20260827-249",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -12058,7 +12112,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-248" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-249" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -14924,10 +14978,15 @@ function displacementTensorTransportAudit() {
     ruleLocalTensorSites: rules.reduce((sum, rule) => sum
       + (rule.sites || []).filter((site) => Array.isArray(site.uAnisoLocalA2)).length, 0),
     placedTransportedTensorSites: atoms.filter((atom) => atom.displacementCovarianceTransported).length,
+    placedEllipsoidGlyphSites: atoms.filter((atom) => atom.displacementCovarianceTransported
+      && Array.isArray(atom.thermalSigmaAxesA) && Array.isArray(atom.thermalAxesCartesian)).length,
+    currentCandidateEllipsoidGlyphSites: currentCandidates.reduce((sum, candidate) => sum
+      + (candidate.displacementSites?.length || 0), 0),
     properPoseTransport: "U_world = R_cluster U_local R_cluster^T",
     liveDirectionalAdmission: true,
     sweptPathDirectionalClearance: true,
     postAttachmentDirectionalRecheck: true,
+    clusterGalleryProjectsRotatedTwoSigmaEllipses: true,
     covarianceFrame: "Cartesian angstrom squared",
   };
 }
@@ -17070,7 +17129,8 @@ function capturePolicyComparison(entries) {
       scoreTermTotal: winner ? termTotal : null,
       scoreDecompositionExact: winner ? Math.abs(termTotal - winner.score) <= 1e-9 : true,
       preview: winner ? { p: winner.entry.candidate.position.clone(),
-        rotation: winner.entry.candidate.rotation.clone(), type: winner.entry.candidate.type } : null,
+        rotation: winner.entry.candidate.rotation.clone(), type: winner.entry.candidate.type,
+        displacementSites: candidateDisplacementSites(winner.entry.evaluation.sites) } : null,
     };
   });
   if (!policies.every((policy) => policy.scoreDecompositionExact)) {
@@ -17114,7 +17174,8 @@ function capturePolicyComparison(entries) {
       } : { available: false },
       freshSites: entry.evaluation.fresh.map((site) => ({ species: site.species, p: site.p.clone() })),
       fullSites: entry.evaluation.sites.map((site) => ({ species: site.species, p: site.p.clone() })),
-      preview: { p: entry.candidate.position.clone(), rotation: entry.candidate.rotation.clone(), type: entry.candidate.type },
+      preview: { p: entry.candidate.position.clone(), rotation: entry.candidate.rotation.clone(),
+        type: entry.candidate.type, displacementSites: candidateDisplacementSites(entry.evaluation.sites) },
     };
   });
   const candidateDigest = frozenFrontierDigest(entries);
@@ -17162,6 +17223,13 @@ function candidateSites(candidate) {
       ? rotateDisplacementTensor(site.uAnisoLocalA2, candidate.rotation.toArray()) : null,
     displacementTensorSource: site.displacementTensorSource,
     displacementTemplateReferenceIndex: site.referenceIndex,
+  }));
+}
+
+function candidateDisplacementSites(sites) {
+  return sites.filter((site) => Array.isArray(site.uAnisoCartesianA2)).map((site) => ({
+    p: site.p.clone(), species: site.species,
+    uAnisoCartesianA2: site.uAnisoCartesianA2.map((row) => row.slice()),
   }));
 }
 
@@ -18868,7 +18936,9 @@ function clearGroup(group) {
     const child = group.children.pop();
     if (![sphereGeometry, candidateGeometry].includes(child.geometry)) child.geometry?.dispose?.();
     if (Array.isArray(child.material)) child.material.forEach((material) => material.dispose?.());
-    else if (![blueMaterial, greenMaterial, blueDimMaterial, greenDimMaterial, candidateMaterial, rejectedMaterial, ...elementMaterials.values(), ...dimElementMaterials.values(), ...clusterMaterials, ...markingMaterials.values()].includes(child.material)) child.material?.dispose?.();
+    else if (![blueMaterial, greenMaterial, blueDimMaterial, greenDimMaterial, candidateMaterial,
+      candidateDisplacementMaterial, rejectedMaterial, ...elementMaterials.values(), ...dimElementMaterials.values(),
+      ...clusterMaterials, ...markingMaterials.values()].includes(child.material)) child.material?.dispose?.();
   }
 }
 
@@ -20304,6 +20374,15 @@ function syncStageOptions() {
   growthDomainScaleSelect.value = String(growthDomainScale);
   renderGrowthDomainPassport();
   const calculation = activeCalculationProvenance();
+  const displacementGlyphSites = Math.max(
+    atoms.filter((atom) => atomDisplacementTensorAngstrom2(atom)).length,
+    referenceAtoms.filter((atom) => atomDisplacementTensorAngstrom2(atom)).length,
+    currentCandidates.reduce((sum, candidate) => sum + (candidate.displacementSites?.length || 0), 0),
+  );
+  displacementToggle.disabled = displacementGlyphSites === 0;
+  displacementToggleLabel.textContent = displacementGlyphSites
+    ? `Reported / transported U/B halos · ${displacementGlyphSites} site${displacementGlyphSites === 1 ? "" : "s"}`
+    : "Reported / transported U/B halos · unavailable";
   forceToggle.disabled = !(calculation?.forceCoverage > 0);
   forceToggleLabel.textContent = calculation?.forceCoverage > 0
     ? `Residual forces · ${calculation.programName || "calculation"}` : "Residual forces · unavailable";
@@ -21496,6 +21575,7 @@ function performOffLatticeEvent() {
   currentCandidates = batch.map(({ candidate, evaluation }) => ({
     p: candidate.position.clone(), accepted: evaluation.accepted,
     rotation: candidate.rotation.clone(), type: candidate.type,
+    displacementSites: candidateDisplacementSites(evaluation.sites),
     arrivalAxis: evaluation.arrivalPath.axis,
     arrivalSweepDistance: evaluation.arrivalPath.sweepDistanceSceneUnits,
     arrivalRoutePoints: evaluation.arrivalPath.selectedRoutePoints,
@@ -22342,7 +22422,7 @@ function rebuildWorld() {
     atomGroup.add(rings);
   });
   const thermalSites = atoms.filter((atom) => Number.isFinite(atom.thermalSigmaA) && atom.thermalSigmaA > 0);
-  if (thermalSites.length) {
+  if (displacementToggle.checked && thermalSites.length) {
     const envelopes = new THREE.InstancedMesh(sphereGeometry, thermalEnvelopeMaterial, thermalSites.length);
     thermalSites.forEach((atom, index) => {
       dummy.position.copy(atom.p);
@@ -22554,6 +22634,19 @@ function rebuildWorld() {
     mesh.position.copy(candidate.p);
     if (candidate.rotation) mesh.quaternion.copy(candidate.rotation);
     decisionGroup.add(mesh);
+    const displacementSites = (candidate.displacementSites || []).slice(0, 96);
+    if (displacementToggle.checked && displacementSites.length) {
+      const ellipsoids = new THREE.InstancedMesh(sphereGeometry,
+        candidateDisplacementMaterial, displacementSites.length);
+      displacementSites.forEach((site, index) => {
+        setDisplacementEllipsoidTransform(dummy, site.p, site.species, site.uAnisoCartesianA2);
+        ellipsoids.setMatrixAt(index, dummy.matrix);
+      });
+      ellipsoids.instanceMatrix.needsUpdate = true;
+      ellipsoids.userData.transportedCandidateCovariance = true;
+      decisionGroup.add(ellipsoids);
+      dummy.position.set(0, 0, 0); dummy.quaternion.identity(); dummy.scale.set(1, 1, 1);
+    }
     if (candidateIndex < 12 && candidate.solutePartition?.enabled && candidate.solutePartition.species) {
       const ring = new THREE.Mesh(new THREE.TorusGeometry(.34, .018, 6, 28),
         new THREE.MeshBasicMaterial({ color: elementRecord(candidate.solutePartition.species).color,
@@ -25535,7 +25628,8 @@ function previewPolicyWinner(policy, snapshot) {
   const frontierReadout = { value: frontierMetric.textContent, detail: frontierDelta.textContent };
   if (policy.preview) {
     currentCandidates = [{ p: policy.preview.p.clone(), rotation: policy.preview.rotation.clone(),
-      type: policy.preview.type, accepted: true, preview: true }];
+      type: policy.preview.type, accepted: true, preview: true,
+      displacementSites: policy.preview.displacementSites || [] }];
     rebuildWorld();
     frontierMetric.textContent = frontierReadout.value;
     frontierDelta.textContent = frontierReadout.detail;
@@ -26437,7 +26531,8 @@ function previewMarkingFrontierWinner(row, snapshot) {
   const frontierReadout = { value: frontierMetric.textContent, detail: frontierDelta.textContent };
   if (row.preview) {
     currentCandidates = [{ p: row.preview.p.clone(), rotation: row.preview.rotation.clone(),
-      type: row.preview.type, accepted: true, preview: true }];
+      type: row.preview.type, accepted: true, preview: true,
+      displacementSites: row.preview.displacementSites || [] }];
     rebuildWorld();
     frontierMetric.textContent = frontierReadout.value;
     frontierDelta.textContent = frontierReadout.detail;
@@ -28568,7 +28663,7 @@ mdScalingSelect.addEventListener("change", () => {
     candidate.setAttribute("aria-pressed", String(candidate === button)));
   drawGrowthMechanismMap();
 }));
-[markingToggle, bondToggle, frontierToggle, forceToggle, localConstraintMismatchToggle, relaxationDisplacementToggle,
+[markingToggle, bondToggle, frontierToggle, displacementToggle, forceToggle, localConstraintMismatchToggle, relaxationDisplacementToggle,
   relaxationLocalEnvironmentToggle]
   .forEach((input) => input.addEventListener("change", rebuildWorld));
 localConstraintMismatchMetric.addEventListener("change", rebuildWorld);

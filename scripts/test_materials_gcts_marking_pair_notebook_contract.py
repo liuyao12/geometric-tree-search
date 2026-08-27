@@ -42,8 +42,8 @@ def test_pair_fails_closed_but_retains_scientific_boundary():
 
 
 def test_build_217_assets_are_cache_busted():
-    assert 'buildId: "20260827-248"' in APP
-    assert 'app.js?v=20260827-248' in HTML
+    assert 'buildId: "20260827-249"' in APP
+    assert 'app.js?v=20260827-249' in HTML
 
 
 if __name__ == "__main__":
