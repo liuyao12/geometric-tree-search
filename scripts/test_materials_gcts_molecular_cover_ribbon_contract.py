@@ -31,6 +31,12 @@ def test_molecular_cover_ribbon_contract():
         'article.setAttribute("aria-pressed"',
         'molecularCoverFocus = record.focus',
         "buildClusterOverlay();",
+        "const inheritedFamily = learnedCover.molecular",
+        "if (learnedCover.molecular) molecularCoverFocus = family",
+        'const retainedMolecularCoverFocus = Number(index) === 0 ? "all" : molecularCoverFocus',
+        "molecularCoverFocus = retainedMolecularCoverFocus",
+        "inheritedFilter.click()",
+        "cover focus",
         "molecular.moleculeClasses",
         "molecular.connectionClasses",
         "molecular.voidClasses",
@@ -44,8 +50,8 @@ def test_molecular_cover_ribbon_contract():
     assert ".molecular-cover-flow button.void" in CSS
     assert ".molecular-cover-flow button.coverage" in CSS
     assert ".molecular-cover-flow button.active" in CSS
-    assert 'buildId: "20260827-224"' in APP
-    assert 'app.js?v=20260827-224' in HTML
+    assert 'buildId: "20260827-225"' in APP
+    assert 'app.js?v=20260827-225' in HTML
 
 
 if __name__ == "__main__":

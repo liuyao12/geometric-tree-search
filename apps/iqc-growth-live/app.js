@@ -7626,16 +7626,19 @@ function buildMolecularGalleryToolbar(types) {
     ...(types.some((cluster) => cluster.gap && !cluster.residual) ? [["gap", "Void boundaries"]] : []),
     ["residual", "Gap / residual terminals"],
   ];
+  const inheritedFamily = learnedCover.molecular
+    && filters.some(([family]) => family === molecularCoverFocus) ? molecularCoverFocus : "all";
   filters.forEach(([family, label], index) => {
     const count = family === "all" ? types.length
       : types.filter((cluster) => clusterGalleryFamily(cluster) === family).length;
     const button = document.createElement("button");
     button.type = "button";
     button.dataset.clusterFamilyFilter = family;
-    button.classList.toggle("active", index === 0);
-    button.setAttribute("aria-pressed", String(index === 0));
+    button.classList.toggle("active", family === inheritedFamily);
+    button.setAttribute("aria-pressed", String(family === inheritedFamily));
     button.innerHTML = `<span>${label}</span><b>${count}</b>`;
     button.addEventListener("click", () => {
+      if (learnedCover.molecular) molecularCoverFocus = family;
       controls.querySelectorAll("button").forEach((candidate) => {
         const active = candidate === button;
         candidate.classList.toggle("active", active);
@@ -7647,7 +7650,7 @@ function buildMolecularGalleryToolbar(types) {
         card.hidden = !show;
         visible += Number(show);
       });
-      status.textContent = `Showing ${visible} / ${types.length} cover classes · ${galleryAccounting}`;
+      status.textContent = `Showing ${visible} / ${types.length} cover classes${family === "all" ? "" : ` · ${label} focus`} · ${galleryAccounting}`;
       const selected = clusterGallery.querySelector(".cluster-card.active:not([hidden])")
         || clusterGallery.querySelector(".cluster-card:not([hidden])");
       if (selected) {
@@ -7660,7 +7663,9 @@ function buildMolecularGalleryToolbar(types) {
     });
     controls.append(button);
   });
-  status.textContent = `Showing ${types.length} / ${types.length} cover classes · ${galleryAccounting}`;
+  const inheritedCount = inheritedFamily === "all" ? types.length
+    : types.filter((cluster) => clusterGalleryFamily(cluster) === inheritedFamily).length;
+  status.textContent = `Showing ${inheritedCount} / ${types.length} cover classes${inheritedFamily === "all" ? "" : " · inherited cover focus"} · ${galleryAccounting}`;
   const inspector = document.createElement("div");
   inspector.className = "cluster-gallery-inspector";
   inspector.setAttribute("aria-live", "polite");
@@ -7732,7 +7737,9 @@ function rebuildClusterGallery() {
     });
     clusterGallery.append(card);
   });
-  updateClusterGalleryInspector(Math.min(selectedGalleryCluster, Math.max(0, types.length - 1)));
+  const inheritedFilter = clusterGallery.querySelector(".cluster-family-filters button.active");
+  if (inheritedFilter) inheritedFilter.click();
+  else updateClusterGalleryInspector(Math.min(selectedGalleryCluster, Math.max(0, types.length - 1)));
   updateClusterGalleryTrainingReadouts();
 }
 
@@ -7740,7 +7747,7 @@ function updateClusterGalleryTrainingReadouts() {
   if (!sectionModel || clusterGallery.hidden) return;
   const visible = [...clusterGallery.querySelectorAll(".cluster-card")].filter((card) => !card.hidden).length;
   const status = clusterGallery.querySelector(".cluster-gallery-toolbar p");
-  if (status) status.textContent = `GCTS fit ${trainingProgress}/${markingSampleCount()} · showing ${visible}/${clusterGalleryTypes().length} cluster marking scenes`;
+  if (status) status.textContent = `GCTS fit ${trainingProgress}/${markingSampleCount()} · showing ${visible}/${clusterGalleryTypes().length} cluster marking scenes${molecularCoverFocus === "all" ? "" : ` · ${molecularCoverFocus} cover focus`}`;
   clusterGallery.querySelectorAll("[data-cluster-training]").forEach((readout) => {
     const galleryIndex = Number(readout.dataset.clusterTraining);
     const cluster = clusterGalleryTypes()[galleryIndex];
@@ -9205,7 +9212,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-224",
+      buildId: "20260827-225",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -19690,10 +19697,12 @@ function resetCounters() {
 }
 
 function enterPipelineStage(index, options = {}) {
+  const retainedMolecularCoverFocus = Number(index) === 0 ? "all" : molecularCoverFocus;
   pipelineStage = Math.max(0, Math.min(4, index));
   stageElapsed = 0;
   setPlaying(false);
   resetCounters();
+  molecularCoverFocus = retainedMolecularCoverFocus;
   if (scenarioSelect.value === "imported") syncImportedFrameMaterial();
   rngState = 0x8f23ab17 ^ scenarioSelect.selectedIndex * 0x91e10da5
     ^ confinementSelect.selectedIndex * 0x734a9d ^ growthDomainScale * 0x45d9f3b;

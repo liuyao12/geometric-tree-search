@@ -32,6 +32,14 @@ rejected, and accepted relations. Shared edges use their complete learned
 family incidence rather than a display-priority color. The interaction changes
 no cover membership, type, pose, marking, candidate, or benchmark statistic.
 
+Build 225 carries that display focus into GCTS learning. A molecule, connection,
+or void selection becomes the initial filter over the separate three-dimensional
+marking scenes, where the corresponding proper-pose, symmetry-gauge, port-rank,
+and channel-allocation evidence is already reported per class. Gallery filters
+update the same focus in reverse. The handoff survives pipeline-stage rebuilds
+for one specimen but resets on the input stage, and it remains absent from the
+learned artifact and search state.
+
 ## Benchmark ladder
 
 All learners receive only positions and species.  Hidden construction metadata

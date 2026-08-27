@@ -18,6 +18,15 @@ the GCTS anatomy view explains covers, oriented ports, markings, search, and
 promotion; and the claim ledger keeps proved, measured, and open results visibly
 separate. Its numbers are frozen benchmark results, not recomputed browser demos.
 
+Build 225 preserves the molecular microscope as a stage-to-stage scientific
+focus. Choosing molecules, bridges, or void boundaries in the full-scene
+cluster-discovery stage becomes the initial family filter when the user opens
+the separate GCTS marking scenes. The gallery then exposes each selected
+class's complete-cover evidence, proper-pose orbit and gauges, port roles,
+coupled rank, and real channel allocation without losing the investigated
+family among unrelated cards. The focus may be changed in either stage, remains
+display-only, and resets when a new specimen is loaded.
+
 Build 224 turns the molecular-cover ribbon into a display microscope for the
 full three-dimensional discovery scene. Its molecule, connection, void, and
 complete-cover blocks are now accessible toggle buttons over one immutable
