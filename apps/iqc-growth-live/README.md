@@ -18,6 +18,15 @@ the GCTS anatomy view explains covers, oriented ports, markings, search, and
 promotion; and the claim ledger keeps proved, measured, and open results visibly
 separate. Its numbers are frozen benchmark results, not recomputed browser demos.
 
+Build 226 makes the GCTS training curve follow the molecular cover microscope.
+When molecule, bridge, or void scenes are selected, the plot recomputes that
+family's fit and held-out mismatch at every already-frozen coefficient state,
+using the same deterministic occurrence split as the global curve. The status
+reports focused occurrence, fit, and holdout counts and labels the global fit as
+unchanged. Changing the display focus therefore diagnoses which geometric layer
+is learning or generalizing poorly without refitting coefficients, changing
+capacity, selecting a growth branch, or treating mismatch as energy.
+
 Build 225 preserves the molecular microscope as a stage-to-stage scientific
 focus. Choosing molecules, bridges, or void boundaries in the full-scene
 cluster-discovery stage becomes the initial family filter when the user opens

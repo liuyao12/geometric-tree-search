@@ -37,6 +37,13 @@ def test_molecular_cover_ribbon_contract():
         "molecularCoverFocus = retainedMolecularCoverFocus",
         "inheritedFilter.click()",
         "cover focus",
+        "function prototypeCoverFamily(type)",
+        "const sampleFamilies = sampleLabels.map(prototypeCoverFamily)",
+        "const familyLossesFor",
+        "familyLosses: familyLossesFor(initial)",
+        "familyLosses: familyLossesFor(coefficients)",
+        "focused occurrences",
+        "unchanged global fit",
         "molecular.moleculeClasses",
         "molecular.connectionClasses",
         "molecular.voidClasses",
@@ -50,8 +57,8 @@ def test_molecular_cover_ribbon_contract():
     assert ".molecular-cover-flow button.void" in CSS
     assert ".molecular-cover-flow button.coverage" in CSS
     assert ".molecular-cover-flow button.active" in CSS
-    assert 'buildId: "20260827-225"' in APP
-    assert 'app.js?v=20260827-225' in HTML
+    assert 'buildId: "20260827-226"' in APP
+    assert 'app.js?v=20260827-226' in HTML
 
 
 if __name__ == "__main__":

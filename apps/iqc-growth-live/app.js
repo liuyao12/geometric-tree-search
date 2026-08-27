@@ -5229,6 +5229,17 @@ function renderTrainingStats() {
   const point = currentTrainingPoint();
   const visibleCurve = sectionModel.curve.slice(0, trainingProgress);
   const totalSamples = markingSampleCount();
+  const focusedFamily = learnedCover?.molecular && molecularCoverFocus !== "all"
+    && point.familyLosses?.[molecularCoverFocus] ? molecularCoverFocus : null;
+  const familyLabel = { molecule: learnedCover?.molecular?.waterLabel || "molecule",
+    bridge: "connection", gap: "void / gap" }[focusedFamily];
+  const pointLoss = (entry, field) => focusedFamily
+    ? entry.familyLosses[focusedFamily][field] : entry[field];
+  const focusedIndices = focusedFamily ? sectionModel.sampleFamilies
+    .map((family, index) => family === focusedFamily ? index : -1).filter((index) => index >= 0) : [];
+  const focusedProcessed = focusedIndices.filter((index) => index < trainingProgress);
+  const focusedFit = focusedProcessed.filter((index) => index % 5 !== 0).length;
+  const focusedHoldout = focusedProcessed.length - focusedFit;
   rdfPairSelect.hidden = true;
   scatteringContrastSelect.hidden = true;
   orientationalOrderSelect.hidden = true;
@@ -5237,13 +5248,15 @@ function renderTrainingStats() {
   centrosymmetryMapButton.hidden = true;
   structureObservableSelect.hidden = true;
   rdfEyebrow.textContent = "GCTS training curve";
-  rdfTitle.textContent = "section mismatch";
-  rdfStatus.textContent = `${point.samples}/${totalSamples} ${sectionModel.sampleKind}s · ${point.fitSamples} fit / ${point.holdoutSamples} holdout`;
+  rdfTitle.textContent = focusedFamily ? `${familyLabel} section mismatch` : "section mismatch";
+  rdfStatus.textContent = focusedFamily
+    ? `${focusedProcessed.length}/${focusedIndices.length} focused occurrences · ${focusedFit} fit / ${focusedHoldout} holdout · unchanged global fit`
+    : `${point.samples}/${totalSamples} ${sectionModel.sampleKind}s · ${point.fitSamples} fit / ${point.holdoutSamples} holdout`;
   coordEyebrow.textContent = "learned section atlas";
   coordTitle.textContent = "connection-port strength";
   coordStatus.textContent = `support R = ${sectionModel.support.toFixed(1)}a · rank ${sectionModel.channels}`;
   coordClearButton.hidden = true;
-  rdfChart.setAttribute("aria-label", "Training and held-out mismatch of local GCTS marking sections");
+  rdfChart.setAttribute("aria-label", `${focusedFamily ? `${familyLabel} ` : ""}training and held-out mismatch of local GCTS marking sections`);
   coordChart.setAttribute("aria-label", "Directional connection-port strength of each learned cluster marking section");
 
   rdfChart.replaceChildren();
@@ -5252,17 +5265,19 @@ function renderTrainingStats() {
     const x = 29 + tick / totalSamples * 323;
     rdfChart.append(svgNode("text", { x, y: 108, class: "chart-label", "text-anchor": "middle" }, String(tick)));
   });
-  const maximum = Math.max(.001, sectionModel.initialPoint.trainLoss, sectionModel.initialPoint.validationLoss);
+  const maximum = Math.max(.001, pointLoss(sectionModel.initialPoint, "trainLoss"),
+    pointLoss(sectionModel.initialPoint, "validationLoss"));
   const curvePath = (field) => visibleCurve.map((entry, index) => {
     const x = 29 + entry.samples / totalSamples * 323;
-    const y = 96 - Math.min(1, entry[field] / maximum) * 84;
+    const y = 96 - Math.min(1, pointLoss(entry, field) / maximum) * 84;
     return `${index ? "L" : "M"}${x.toFixed(2)},${y.toFixed(2)}`;
   }).join(" ");
   if (visibleCurve.length) {
     rdfChart.append(svgNode("path", { d: curvePath("trainLoss"), class: "chart-known" }));
     rdfChart.append(svgNode("path", { d: curvePath("validationLoss"), class: "chart-live" }));
   }
-  setChartLegend(rdfLegend, [["known-key", "overlap + port fit"], ["live-key", "held-out mismatch"]]);
+  setChartLegend(rdfLegend, [["known-key", `${focusedFamily ? `${familyLabel} ` : ""}port fit`],
+    ["live-key", `${focusedFamily ? `${familyLabel} ` : ""}held-out mismatch`]]);
 
   coordChart.replaceChildren();
   drawChartFrame(coordChart, "cluster section", "norm");
@@ -7022,6 +7037,12 @@ function clusterGalleryFamily(cluster) {
   return "support";
 }
 
+function prototypeCoverFamily(type) {
+  const prototype = (learnedCover?.types || []).find((cluster) => cluster.type === type)
+    || clusterGalleryTypes().find((cluster) => (cluster.familyType ?? cluster.type) === type);
+  return prototype ? clusterGalleryFamily(prototype) : "support";
+}
+
 function clusterCoverRole(cluster) {
   return {
     molecule: "molecular atom cover",
@@ -7660,6 +7681,7 @@ function buildMolecularGalleryToolbar(types) {
         });
       }
       if (pipelineStage === 3) updateClusterGalleryTrainingReadouts();
+      if (pipelineStage === 3) renderTrainingStats();
     });
     controls.append(button);
   });
@@ -9212,7 +9234,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-225",
+      buildId: "20260827-226",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -13187,6 +13209,7 @@ function learnMolecularSectionModel(source, config) {
   const activeChannelsByPrototype = Array.from({ length: prototypeCount }, (_, cluster) =>
     Math.min(axes.length, recommendedChannelsForCluster(cluster)));
   const sampleLabels = samples.map((occurrence) => occurrence.type);
+  const sampleFamilies = sampleLabels.map(prototypeCoverFamily);
   const incident = Array.from({ length: samples.length }, () => []);
   overlapGrammar.reconstructionByOccurrence.forEach((rules, parent) => rules.forEach((rule) => {
     const child = rule.occurrenceTo;
@@ -13226,11 +13249,21 @@ function learnMolecularSectionModel(source, config) {
     return sum + targets[index].slice(0, activeChannels).reduce((error, target, axis) =>
       error + (coefficientsForType[axis] - target) ** 2, 0) / activeChannels;
   }, 0) / Math.max(1, indices.length);
+  const familyLossesFor = (values = coefficients) => Object.fromEntries(
+    [...new Set(sampleFamilies)].map((family) => {
+      const indices = sampleFamilies.map((entry, index) => entry === family ? index : -1)
+        .filter((index) => index >= 0);
+      return [family, {
+        trainLoss: lossFor(indices.filter((index) => index % 5 !== 0), values),
+        validationLoss: lossFor(indices.filter((index) => index % 5 === 0), values),
+      }];
+    }));
   let trainLoss = lossFor(fitIndices);
   let validationLoss = lossFor(holdoutIndices);
   const initialPoint = {
     samples: 0, fitSamples: 0, holdoutSamples: 0, overlaps: 0,
-    trainLoss, validationLoss, coefficients: initial.map((values) => values.slice()),
+    trainLoss, validationLoss, familyLosses: familyLossesFor(initial),
+    coefficients: initial.map((values) => values.slice()),
   };
   let fitSamples = 0;
   let holdoutSamples = 0;
@@ -13249,7 +13282,7 @@ function learnMolecularSectionModel(source, config) {
     validationLoss = lossFor(holdoutIndices);
     return {
       samples: index + 1, fitSamples, holdoutSamples, overlaps,
-      trainLoss, validationLoss,
+      trainLoss, validationLoss, familyLosses: familyLossesFor(coefficients),
       coefficients: coefficients.map((values) => values.slice()),
     };
   });
@@ -13259,7 +13292,7 @@ function learnMolecularSectionModel(source, config) {
     reach: config.reach, representation: config.representation,
     overlapWeight, exponent, channelGain,
     fitCount: fitIndices.length, holdoutCount: holdoutIndices.length,
-    prototypeCount, sampleLabels,
+    prototypeCount, sampleLabels, sampleFamilies,
     activeChannelsByPrototype,
     representationState: learnRepresentationState(),
     sampleKind: learnedCover.molecular ? "molecular cover occurrence" : "irregular support occurrence",

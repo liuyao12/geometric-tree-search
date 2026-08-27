@@ -40,6 +40,14 @@ update the same focus in reverse. The handoff survives pipeline-stage rebuilds
 for one specimen but resets on the input stage, and it remains absent from the
 learned artifact and search state.
 
+Build 226 conditions the visible GCTS mismatch curve on that same display
+focus. Per-family fit and held-out losses are evaluated from the immutable
+coefficient state at every training step and the original index-based split;
+the training algorithm, sample order, coefficients, active channels, and global
+loss remain unchanged. This provides family-resolved diagnostics for molecular,
+connection, and void sections without turning display selection or held-out
+mismatch into a fit input, growth score, energy, or physical potential.
+
 ## Benchmark ladder
 
 All learners receive only positions and species.  Hidden construction metadata
