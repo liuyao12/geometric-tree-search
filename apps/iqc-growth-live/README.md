@@ -5771,3 +5771,21 @@ notebook intervention audit still independently verifies identical inputs and th
 marking is the only changed factor. This is a controlled learned-representation experiment,
 not proof that either artifact encodes energy, stability, probability, kinetics, or physical
 time, and registration itself never runs growth.
+
+### Build 217 · certify the executed saved-marking pair
+
+The experiment notebook now recognizes two Build 216 arms as one registered
+saved-marking intervention rather than merely noticing that their labels differ. It
+requires the same registration digest, self-contained baseline and alternative artifact
+digests, source candidate and hard-admitted sets, non-marking controls, material and
+vocabulary, identical supplied-position SHA-256, complementary arms, intact active
+artifacts, and exactly one changed notebook factor: the GCTS marking.
+
+Executed outcome attribution adds an independent frontier gate. Each compact run summary
+retains the first frozen candidate-set and hard-admitted-set digests, and both must agree
+without target use before the notebook calls their structural response comparable. The
+registered card then aligns structural-site yield, accepted/rejected branches, local
+constraint work, causal depth, morphology, q₆/|ψ₆|, and finite-section S(q) trajectories.
+A mismatch fails closed while preserving descriptive deltas. This certifies a deterministic
+algorithmic response on one supplied configuration—not physical kinetics, an independent
+specimen comparison, or a general material law.

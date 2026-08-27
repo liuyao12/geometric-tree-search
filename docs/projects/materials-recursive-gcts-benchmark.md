@@ -6507,3 +6507,19 @@ and confirmation that the active marking matches the requested arm. Saved-run co
 still provides an independent identical-input/one-factor audit. The intervention tests a
 learned representation's effect on finite GCTS search; it does not identify physical energy,
 stability, probability, kinetics, or elapsed time.
+
+## Build 217: certify executed saved-marking outcomes
+
+Compact notebook summaries now retain the first target-free frozen candidate-set and
+hard-admitted-set digests of an executed run. A pair carrying the saved-marking registration
+is accepted only when its registration, two artifact digests, registered source frontier,
+non-marking control JSON, scenario/material/vocabulary identity, supplied-position SHA-256,
+and baseline/alternative arm assignment all agree. The generic notebook factor audit must
+independently find exactly one changed factor, `marking`.
+
+The design may be valid before execution, but response comparison additionally requires a
+structural leap or audited fixed point in both arms and identical first candidate and hard
+sets with no target use. Passing pairs expose the existing trajectory and outcome deltas;
+failed pairs remain descriptive and name the failed invariant. This is an algorithmic
+one-factor intervention over learned local connection geometry, not a physical-time,
+free-energy, rate, or population-level causal claim.

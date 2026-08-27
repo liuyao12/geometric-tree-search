@@ -8996,7 +8996,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-216",
+      buildId: "20260826-217",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -11146,6 +11146,8 @@ function experimentNotebookSummary(receipt) {
   const structuralLeaps = search?.structuralLeapCertificates || [];
   const policySnapshots = search?.policySensitivity?.snapshots || [];
   const latestPolicySnapshot = policySnapshots.at(-1) || null;
+  const firstPolicySnapshot = policySnapshots[0] || null;
+  const firstMarkingFrontier = firstPolicySnapshot?.markingFrontierCounterfactual || null;
   const selectedHypothesisTrajectory = search?.policySensitivity?.selectedHypothesisTrajectory || null;
   const totalStructuralLeapEvents = search?.structuralLeapHistory?.totalEvents ?? structuralLeaps.length;
   const executionEvidence = {
@@ -11156,6 +11158,12 @@ function experimentNotebookSummary(receipt) {
     rejectedDecisions: search?.rejectedDecisions ?? 0,
     fixedPointObserved: structuralLeaps.some((leap) => leap.status === "fixed")
       || certificate?.metrics?.fixedPointReached === true,
+    firstFrontierCandidateSetDigest: firstPolicySnapshot?.candidateSetDigest || null,
+    firstFrontierHardAdmittedSetDigest: firstMarkingFrontier?.hardAdmittedCandidateSetDigest || null,
+    firstFrontierTargetUsed: !firstPolicySnapshot ? null
+      : typeof firstPolicySnapshot.candidateSetTargetUsed !== "boolean"
+        || typeof firstPolicySnapshot.rankingTargetUsed !== "boolean" ? null
+        : firstPolicySnapshot.candidateSetTargetUsed || firstPolicySnapshot.rankingTargetUsed,
     targetUsed: structuralLeaps.some((leap) => leap.targetUsed),
     physicalTimeModeled: false,
   };
@@ -11232,6 +11240,7 @@ function experimentNotebookSummary(receipt) {
     registeredOutcomeObservations: notebookRegisteredOutcomeObservations(receipt, trajectoryPoints,
       generatedSites, causalDepth),
     hypothesisSeparationExperiment: search?.hypothesisSeparationExperiment || null,
+    markingComparisonExperiment: search?.markingComparisonExperiment || null,
     policyIdentifiability: latestPolicySnapshot?.hypothesisIdentifiability ? {
       latest: {
         frontierIndex: latestPolicySnapshot.index,
@@ -11409,7 +11418,102 @@ function notebookInterventionComparison(first, second) {
   };
 }
 
+function notebookRegisteredMarkingPairAudit(first, second, intervention = notebookInterventionComparison(first, second)) {
+  const a = first.markingComparisonExperiment;
+  const b = second.markingComparisonExperiment;
+  if (!a && !b) return null;
+  const metadataAvailable = Boolean(a?.registrationDigest && b?.registrationDigest
+    && a?.baseline?.id && a?.alternative?.id && b?.baseline?.id && b?.alternative?.id);
+  if (!metadataAvailable) return {
+    status: "unavailable", valid: false, responseComparable: false, metadataAvailable: false,
+    title: "saved-marking pair unavailable",
+    detail: "At least one run lacks the complete Build 216 saved-marking registration. Configure and save both arms again.",
+    question: "Does changing only the learned GCTS marking alter the structural continuation?",
+    factor: "GCTS marking artifact", outcomes: [],
+    boundary: "No causal marking claim is made without two self-contained artifact digests and one shared registration digest.",
+  };
+  const sameRegistration = a.registrationDigest === b.registrationDigest;
+  const sameArtifacts = a.baseline.id === b.baseline.id
+    && a.baseline.artifactDigest === b.baseline.artifactDigest
+    && a.alternative.id === b.alternative.id
+    && a.alternative.artifactDigest === b.alternative.artifactDigest;
+  const sameFrozenSource = Boolean(a.sourceCandidateSetDigest && b.sourceCandidateSetDigest
+    && a.sourceHardAdmittedSetDigest && b.sourceHardAdmittedSetDigest
+    && a.sourceCandidateSetDigest === b.sourceCandidateSetDigest
+    && a.sourceHardAdmittedSetDigest === b.sourceHardAdmittedSetDigest);
+  const sameGrowthControls = Boolean(a.growthSettingsJson && b.growthSettingsJson
+    && a.scenarioId && b.scenarioId && a.materialKey && b.materialKey
+    && a.vocabularyKey && b.vocabularyKey && a.growthSettingsJson === b.growthSettingsJson
+    && a.scenarioId === b.scenarioId && a.materialKey === b.materialKey
+    && a.vocabularyKey === b.vocabularyKey);
+  const armSet = new Set([a.arm, b.arm]);
+  const complementaryArms = armSet.size === 2 && armSet.has("baseline") && armSet.has("alternative");
+  const artifactsIntact = a.settingsStillMatch === true && b.settingsStillMatch === true
+    && a.activeMarkingStillMatchesArm === true && b.activeMarkingStillMatchesArm === true;
+  const geometryFrozen = a.candidateGeometryChanged === false && b.candidateGeometryChanged === false
+    && a.hardAdmissionChanged === false && b.hardAdmissionChanged === false;
+  const targetFreeRegistration = a.targetUsed === false && b.targetUsed === false
+    && a.targetUsedToRegister === false && b.targetUsedToRegister === false;
+  const explicitlyPaused = a.autoExecuted === false && b.autoExecuted === false;
+  const oneRecordedFactor = intervention.sameInput && intervention.changedFactors.length === 1
+    && intervention.changedFactors[0].key === "marking";
+  const firstCandidateDigest = first.executionEvidence?.firstFrontierCandidateSetDigest;
+  const secondCandidateDigest = second.executionEvidence?.firstFrontierCandidateSetDigest;
+  const firstHardDigest = first.executionEvidence?.firstFrontierHardAdmittedSetDigest;
+  const secondHardDigest = second.executionEvidence?.firstFrontierHardAdmittedSetDigest;
+  const firstFrontierComparable = Boolean(firstCandidateDigest && secondCandidateDigest
+    && firstHardDigest && secondHardDigest && firstCandidateDigest === secondCandidateDigest
+    && firstHardDigest === secondHardDigest && first.executionEvidence?.firstFrontierTargetUsed === false
+    && second.executionEvidence?.firstFrontierTargetUsed === false);
+  const valid = sameRegistration && sameArtifacts && sameFrozenSource && sameGrowthControls
+    && complementaryArms && artifactsIntact && geometryFrozen && targetFreeRegistration
+    && explicitlyPaused && oneRecordedFactor;
+  const baselineEntry = a.arm === "baseline" ? first : second;
+  const alternativeEntry = a.arm === "alternative" ? first : second;
+  const baselineExecuted = baselineEntry.executionEvidence?.executed === true;
+  const alternativeExecuted = alternativeEntry.executionEvidence?.executed === true;
+  const responseComparable = valid && baselineExecuted && alternativeExecuted && firstFrontierComparable;
+  const failed = [
+    [sameRegistration, "shared registration digest"], [sameArtifacts, "identical frozen artifact pair"],
+    [sameFrozenSource, "shared registration frontier"], [sameGrowthControls, "identical non-marking controls"],
+    [complementaryArms, "baseline + alternative arms"], [artifactsIntact, "intact selected artifacts"],
+    [geometryFrozen, "unchanged candidate geometry and hard admission"],
+    [targetFreeRegistration, "target-free registration"], [explicitlyPaused, "no automatic execution"],
+    [intervention.sameInput, "identical observed-input SHA-256"],
+    [intervention.changedFactors.length === 1 && intervention.changedFactors[0]?.key === "marking",
+      "exactly one recorded marking intervention"],
+  ].filter(([passes]) => !passes).map(([, label]) => label);
+  const executionIssue = !baselineExecuted || !alternativeExecuted
+    ? `Execute and save the ${[!baselineExecuted && "baseline", !alternativeExecuted && "alternative"].filter(Boolean).join(" and ")} arm${!baselineExecuted && !alternativeExecuted ? "s" : ""}.`
+    : !firstFrontierComparable
+      ? "The executed runs do not expose one identical target-free first candidate and hard-admitted set."
+      : "";
+  return {
+    status: responseComparable ? "registered" : valid ? "registered-unexecuted" : "invalid",
+    valid, responseComparable, metadataAvailable: true,
+    title: responseComparable ? "executed saved-marking intervention"
+      : valid ? "saved-marking design · execute both arms" : "saved-marking pair not certified",
+    detail: responseComparable
+      ? "Both self-contained markings began from the same observed atoms and identical first hard-admitted frontier; only the learned marking artifact changed."
+      : valid ? executionIssue : `Fail-closed checks: ${failed.join(" · ") || "registration metadata is incomplete"}.`,
+    recipeId: `marking:${a.registrationDigest}`,
+    recipeLabel: "saved GCTS marking intervention", factor: "GCTS marking artifact",
+    question: "How does the structural continuation change when only the learned GCTS marking changes?",
+    outcomes: ["structural sites", "accepted/rejected branches", "causal depth", "local order + S(q) pathway"],
+    boundary: "This identifies a deterministic algorithmic response to one frozen learned representation on one supplied configuration; it is not an independent specimen, kinetic trajectory, force-field result, or general material law.",
+    referenceLabel: a.baseline.name, contrastLabel: a.alternative.name,
+    referenceExecution: baselineEntry.executionEvidence || null,
+    contrastExecution: alternativeEntry.executionEvidence || null,
+    firstFrontierComparable,
+    firstFrontierCandidateSetDigest: firstCandidateDigest || secondCandidateDigest || null,
+    firstFrontierHardAdmittedSetDigest: firstHardDigest || secondHardDigest || null,
+    autoExecuted: false,
+  };
+}
+
 function notebookRegisteredPairAudit(first, second, intervention = notebookInterventionComparison(first, second)) {
+  const markingPair = notebookRegisteredMarkingPairAudit(first, second, intervention);
+  if (markingPair) return markingPair;
   const a = first.registeredStudy;
   const b = second.registeredStudy;
   const metadataAvailable = Boolean(a?.recipeId && b?.recipeId && a?.factor && b?.factor && a?.armId && b?.armId);
@@ -11619,7 +11723,10 @@ function renderNotebookInterventionAudit(selected) {
   const executionReadout = registered.metadataAvailable
     ? ` Execution evidence: reference ${registered.referenceExecution?.structuralLeapEvents || 0} leap${registered.referenceExecution?.structuralLeapEvents === 1 ? "" : "s"}; contrast ${registered.contrastExecution?.structuralLeapEvents || 0}.`
     : "";
-  registeredBoundary.textContent = `${registered.detail}${executionReadout}${registered.boundary ? ` Claim boundary: ${registered.boundary}` : ""}`;
+  const frontierReadout = registered.firstFrontierComparable
+    ? ` First target-free frontier: ${registered.firstFrontierCandidateSetDigest?.slice(0, 12)}…; hard set ${registered.firstFrontierHardAdmittedSetDigest?.slice(0, 12)}….`
+    : "";
+  registeredBoundary.textContent = `${registered.detail}${executionReadout}${frontierReadout}${registered.boundary ? ` Claim boundary: ${registered.boundary}` : ""}`;
   registeredCard.append(registeredHeader, registeredQuestion, registeredArms, registeredOutcomes, registeredBoundary);
   const outcomes = document.createElement("div"); outcomes.className = "notebook-outcome-deltas";
   audit.outcomes.forEach((outcome) => {
@@ -11629,7 +11736,7 @@ function renderNotebookInterventionAudit(selected) {
   });
   const boundary = document.createElement("p");
   boundary.textContent = registered.valid && !registered.responseComparable
-    ? "The registered one-factor design passes, but outcome attribution awaits at least one structural leap or audited fixed point in each arm."
+    ? "The registered one-factor design passes, but outcome attribution awaits executed evidence in both arms and one identical target-free first candidate/hard-admitted frontier."
     : audit.causalAttributionAllowed
     ? "Causal interpretation is limited to this recorded one-factor intervention; hidden experimental confounders are not excluded."
     : "Outcome deltas remain visible, but the portal does not attribute them causally.";
@@ -12436,7 +12543,8 @@ function renderExperimentNotebook() {
     button.title = `Receipt ${entry.receiptSha256}; coordinates excluded`;
     const number = document.createElement("small");
     const experimentArm = entry.hypothesisSeparationExperiment?.arm;
-    number.textContent = `run ${index + 1} · stage ${entry.stageOrdinal}${entry.registeredStudy?.armLabel ? ` · ${entry.registeredStudy.armLabel}` : experimentArm ? ` · hypothesis ${experimentArm}` : ""}`;
+    const markingArm = entry.markingComparisonExperiment?.arm;
+    number.textContent = `run ${index + 1} · stage ${entry.stageOrdinal}${markingArm ? ` · marking ${markingArm}` : entry.registeredStudy?.armLabel ? ` · ${entry.registeredStudy.armLabel}` : experimentArm ? ` · hypothesis ${experimentArm}` : ""}`;
     const material = document.createElement("strong"); material.textContent = entry.material;
     const state = document.createElement("span"); state.textContent = `${entry.explicitSites.toLocaleString()} sites · ${entry.marking}`;
     const claim = document.createElement("em"); claim.textContent = entry.strongestClaim;
