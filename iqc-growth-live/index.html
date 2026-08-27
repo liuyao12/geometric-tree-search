@@ -8,7 +8,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260821-4">
+  <link rel="stylesheet" href="./style.css?v=20260827-253">
   <script type="importmap">
     {
       "imports": {
@@ -28,6 +28,7 @@
       </a>
       <div class="run-state"><i id="runStateDot"></i><span id="runStateText">Paused at seed</span></div>
       <div class="topbar-actions">
+        <button id="studyGuideButton" class="study-guide-launch" type="button" aria-controls="studyGuide" aria-expanded="false">Study guide</button>
         <button id="evidenceAtlasButton" class="atlas-launch" type="button" aria-controls="evidenceAtlas" aria-expanded="false">Evidence atlas</button>
         <a class="method-link" href="#auditedBenchmark">Methods ↓</a>
       </div>
@@ -47,6 +48,34 @@
       <button id="evidenceRibbonButton" type="button">Explore the evidence <span>↗</span></button>
     </section>
 
+    <section id="studyCompass" class="study-compass custom" aria-label="Active investigation compass">
+      <header>
+        <span><small id="studyCompassKind">custom investigation</small><strong id="studyCompassQuestion">Choose a scientific question or continue with independent controls.</strong></span>
+        <div><b id="studyCompassIntegrity">receipt-visible controls</b><button id="studyCompassShare" type="button" disabled>Recipe link unavailable</button><button id="studyCompassGuideButton" type="button">Choose study</button></div>
+      </header>
+      <nav id="studyCompassProgress" aria-label="Investigation stages"></nav>
+      <div class="study-compass-body">
+        <article><small>objective now</small><strong id="studyCompassObjective">Inspect the supplied positions, species, provenance, and public boundary.</strong></article>
+        <article><small>geometric prediction</small><strong id="studyCompassPrediction">Define a question before treating a structural response as evidence.</strong></article>
+        <article><small>inspect before advancing</small><strong id="studyCompassInspect">Input identity · dimensionality · observation envelope</strong></article>
+        <article class="study-compass-boundary"><small>interpretation limit</small><strong id="studyCompassBoundary">Coordinates and declared geometry do not establish energy, kinetics, or physical time.</strong></article>
+      </div>
+      <section id="studyOutcome" class="study-outcome" hidden aria-label="Prediction audit" aria-live="polite">
+        <header><span><small>prediction audit</small><strong id="studyOutcomeTitle">Evidence has not been evaluated</strong></span><b id="studyOutcomeStatus">not evaluated</b></header>
+        <div id="studyOutcomeTiles" class="study-outcome-tiles"></div>
+        <p id="studyOutcomeInterpretation">Choose a guided study to compare its prediction with representation, marking, live-response, and benchmark evidence.</p>
+        <section id="studyComparison" class="study-comparison" hidden aria-label="Registered comparison arms">
+          <header><span><small>registered comparison</small><strong id="studyComparisonQuestion">Choose a guided study to reveal its control arms.</strong></span><b id="studyComparisonFactor">one factor</b></header>
+          <div id="studyComparisonArms" class="study-comparison-arms"></div>
+          <div id="studyComparisonProgress" class="study-comparison-progress" aria-label="Saved and executed arm progress"></div>
+          <div id="studyComparisonResponse" class="study-comparison-response waiting" aria-label="Registered outcome response" aria-live="polite"></div>
+          <p id="studyComparisonOutcomes"></p>
+          <em id="studyComparisonBoundary"></em>
+        </section>
+      </section>
+      <footer><span id="studyCompassState">No guided recipe is active; every control remains available.</span><button id="studyCompassNext" type="button">Inspect cluster identification →</button></footer>
+    </section>
+
     <section id="evidenceAtlas" class="evidence-atlas" hidden aria-label="GCTS evidence atlas" aria-modal="true" role="dialog">
       <div class="atlas-shell">
         <header class="atlas-header">
@@ -62,8 +91,9 @@
           <button class="active" type="button" data-atlas-tab="overview">01 · result</button>
           <button type="button" data-atlas-tab="systems">02 · systems</button>
           <button type="button" data-atlas-tab="anatomy">03 · GCTS anatomy</button>
-          <button type="button" data-atlas-tab="journey">04 · research journey</button>
-          <button type="button" data-atlas-tab="ledger">05 · claim ledger</button>
+          <button type="button" data-atlas-tab="physics">04 · physics map</button>
+          <button type="button" data-atlas-tab="journey">05 · research journey</button>
+          <button type="button" data-atlas-tab="ledger">06 · claim ledger</button>
         </nav>
 
         <div class="atlas-scroll">
@@ -98,7 +128,7 @@
           </section>
 
           <section class="atlas-panel" data-atlas-panel="systems" hidden>
-            <div class="atlas-section-heading"><div><span>cross-family benchmark</span><h2>One question, four very different structures</h2></div><p>Choose a system to inspect its measured growth curve and limiting gate.</p></div>
+            <div class="atlas-section-heading"><div><span>cross-family benchmark</span><h2>One question, five structures + one exact geometry stress test</h2></div><p>Choose a system to inspect its measured curve and limiting gate.</p></div>
             <div id="atlasSystemTabs" class="system-tabs" role="tablist" aria-label="Benchmark systems"></div>
             <div class="system-dashboard">
               <article class="system-story">
@@ -108,12 +138,23 @@
                 <div id="atlasSystemVerdict" class="system-verdict"></div>
               </article>
               <article class="growth-card">
-                <div><span>represented or explicit sites</span><strong id="atlasCurveTitle">growth by learned action</strong></div>
+                <div><span id="atlasCurveEyebrow">represented or explicit sites</span><strong id="atlasCurveTitle">growth by learned action</strong></div>
                 <svg id="atlasGrowthChart" viewBox="0 0 720 300" role="img" aria-label="Log-scale growth curve"></svg>
-                <div class="growth-legend"><span class="observed">explicit / verified</span><span class="symbolic">symbolic representation</span><small>log scale · labels show exact counts</small></div>
+                <div class="growth-legend"><span id="atlasCurveObserved" class="observed">explicit / verified</span><span id="atlasCurveProjected" class="symbolic">symbolic representation</span><small id="atlasCurveNote">log scale · labels show exact counts</small></div>
               </article>
             </div>
             <div id="systemEvidenceCards" class="system-evidence-cards"></div>
+            <section id="a2CoronaExplorer" class="a2-corona-explorer" hidden aria-label="A2 exact-corona marking explorer">
+              <header><div><span>interactive exact-marking atlas</span><h3>Seven unresolved candidates after one eight-copy periodic witness</h3></div><p>Select a seven-cell layered lattice function. The diagram is its exact A₂ cell support; the bars are retained obstruction clauses, not failed molecular-dynamics trajectories.</p></header>
+              <div id="a2CandidateTabs" class="a2-candidate-tabs" role="tablist" aria-label="Focused A2 candidates"></div>
+              <div class="a2-candidate-detail">
+                <div id="a2CandidateShape" class="a2-candidate-shape" aria-label="Selected A2 layered candidate"></div>
+                <article id="a2CandidateStory" class="a2-candidate-story" aria-live="polite"></article>
+                <div id="a2BlockerBars" class="a2-blocker-bars" aria-label="Sound retained clauses by candidate"></div>
+              </div>
+              <footer><b>What one clause means</b><span>A specific placement subset in the first corona cannot be completed into a saturated second corona—even when every unselected helper placement remains available.</span><i>What it does not mean</i><span>The candidate is not thereby proved to be a non-tiler, an aperiodic monotile, or a model of one particular solid.</span></footer>
+            </section>
+            <div id="atlasSystemActions" class="atlas-system-actions" hidden aria-label="Open this evidence in the growth workflow"></div>
           </section>
 
           <section class="atlas-panel" data-atlas-panel="anatomy" hidden>
@@ -137,6 +178,19 @@
             </div>
           </section>
 
+          <section class="atlas-panel" data-atlas-panel="physics" hidden>
+            <div class="atlas-section-heading"><div><span>physics → geometry</span><h2>What the structural surrogate preserves—and what it cannot claim</h2></div><p>Select a physical layer. Every encoding is paired with its approximation boundary.</p></div>
+            <div class="physics-map-tabs" role="group" aria-label="Physical information layers">
+              <button class="active" type="button" data-physics="bonding" aria-pressed="true"><span>01</span><strong>Bonding + coordination</strong><small>colored metric supports</small></button>
+              <button type="button" data-physics="orientation" aria-pressed="false"><span>02</span><strong>Orientation + chirality</strong><small>proper-pose domains</small></button>
+              <button type="button" data-physics="order" aria-pressed="false"><span>03</span><strong>Long-range order</strong><small>lattice · module · metric</small></button>
+              <button type="button" data-physics="defects" aria-pressed="false"><span>04</span><strong>Voids + defects</strong><small>gaps and failures stay explicit</small></button>
+              <button type="button" data-physics="kinetics" aria-pressed="false"><span>05</span><strong>Thermodynamics + kinetics</strong><small>current approximation boundary</small></button>
+            </div>
+            <article id="physicsMapDetail" class="physics-map-detail" aria-live="polite"></article>
+            <p class="physics-map-note"><b>Interpretation:</b> GCTS is a structural continuation engine. It can compress dynamics only after physically relevant constraints have appeared in the training geometry or connection evidence; it does not turn geometry into an uncalibrated energy model.</p>
+          </section>
+
           <section class="atlas-panel" data-atlas-panel="journey" hidden>
             <div class="atlas-section-heading"><div><span>research history</span><h2>Every red result changed the algorithm</h2></div><p>The path from atom-centred toy shells to a leakage-safe hierarchical executor.</p></div>
             <div id="researchTimeline" class="research-timeline"></div>
@@ -157,12 +211,40 @@
       </div>
     </section>
 
+    <section id="studyGuide" class="study-guide" hidden aria-label="Materials-science study guide" aria-modal="true" role="dialog">
+      <div class="study-guide-shell">
+        <header class="study-guide-header">
+          <div><p class="eyebrow">question → geometry → observable</p><h1>Design a structural-growth investigation</h1><p>Choose a scientific question. The guide composes existing receipt-visible controls and returns you to the known positions before anything runs.</p></div>
+          <button id="studyGuideClose" type="button" aria-label="Close study guide">×</button>
+        </header>
+        <div class="study-guide-body">
+          <nav id="studyRecipeList" class="study-recipe-list" aria-label="Study questions"></nav>
+          <article id="studyRecipeDetail" class="study-recipe-detail" aria-live="polite"></article>
+        </div>
+      </div>
+    </section>
+
     <main class="lab-grid">
       <aside class="control-panel" aria-label="Simulation controls">
         <section>
           <p class="eyebrow">01 · experiment</p>
+          <section id="activeSamplePassport" class="active-sample-passport" aria-label="Active specimen passport">
+            <header><span><small>active observation</small><strong id="activeSampleName">NaCl rocksalt</strong></span><b id="activeSampleSource">curated control</b></header>
+            <div class="active-sample-formula"><strong id="activeSampleFormula">NaCl</strong><span id="activeSampleSiteCount">216 atoms</span></div>
+            <div id="activeSampleComposition" class="active-sample-composition" aria-label="Active specimen composition"></div>
+            <div class="active-sample-facts"><span><small>geometry</small><b id="activeSampleGeometry">3D periodic observation</b></span><span><small>evidence</small><b id="activeSampleEvidence">space group</b></span></div>
+            <p id="activeSampleNote">The controls below choose the source; this passport always reports the specimen currently shown and learned.</p>
+          </section>
           <div class="database-picker">
-            <div class="database-heading"><strong>Random real material</strong><span>NOMAD · public bulk data</span></div>
+            <div class="database-heading"><strong>Browse real specimen candidates</strong><span id="databaseFamilySource">NOMAD · public bulk data</span></div>
+            <label class="database-evidence database-family" for="databaseFamilySelect">
+              <span><small>public specimen family</small><b id="databaseFamilyHint">periodic 3D solid</b></span>
+              <select id="databaseFamilySelect">
+                <option value="bulk" selected>3D bulk solid · choose elements</option>
+                <option value="twoD">Intrinsic 2D / layered · choose elements</option>
+                <option value="water">Crystalline H₂O · composition fixed</option>
+              </select>
+            </label>
             <button id="periodicTableButton" class="periodic-compact" type="button" aria-expanded="false" aria-controls="periodicTablePanel" aria-label="Expand periodic table">
               <span class="periodic-compact-label">elements · click to expand</span>
               <span id="periodicCompactGrid" class="periodic-compact-grid" aria-hidden="true"></span>
@@ -174,9 +256,23 @@
               <button type="button" data-element-preset="Na,Cl">NaCl</button>
               <button type="button" data-element-preset="Al,Cu,Fe">Al–Cu–Fe</button>
               <button type="button" data-element-preset="Cu,Zr">Cu–Zr</button>
+              <button type="button" data-element-preset="Fe">Fe · magnetic data probe</button>
+              <button type="button" data-element-preset="C">C · 2D probe</button>
             </div>
-            <button id="randomMaterialButton" class="database-button" type="button">Find a random matching structure</button>
+            <label class="database-evidence" for="databaseEvidenceSelect">
+              <span><small>evidence to retrieve</small><b id="databaseEvidenceHint">any usable periodic archive</b></span>
+              <select id="databaseEvidenceSelect">
+                <option value="geometry" selected>Geometry · any usable periodic archive</option>
+                <option value="relaxation">Relaxation series · ≥3 fixed-topology snapshots</option>
+                <option value="forces">Force-labelled · ≥1 complete force snapshot</option>
+                <option value="stress">Stress-labelled · ≥1 finite nonzero tensor snapshot</option>
+                <option value="calibration">Surrogate-ready · ≥5 paired calculation snapshots</option>
+              </select>
+            </label>
+            <button id="randomMaterialButton" class="database-button" type="button">Sample four matching specimens</button>
             <div id="databaseStatus" class="import-status" role="status" aria-live="polite">Queries public bulk entries containing exactly the selected elements.</div>
+            <div id="databaseCandidateTray" class="database-candidate-tray" role="group" aria-label="Matching public specimen candidates" hidden></div>
+            <p class="occupancy-note"><b>Disorder stays geometric.</b> Mixed/partial CIF sites remain one position with a finite species–vacancy alternative set. A colored orbital ring marks occupational alternatives; a violet wire ellipsoid shows the transported 2σ Uiso/Uij displacement halo. Both enter the auditable geometry, never an invented potential.</p>
             <a id="databaseSourceLink" class="source-link" href="https://nomad-lab.eu/" target="_blank" rel="noreferrer">About the NOMAD materials database ↗</a>
             <div id="periodicTablePanel" class="periodic-panel" hidden>
               <div class="periodic-heading">
@@ -196,6 +292,11 @@
               <optgroup label="Ice polymorphs · molecular covers">
                 <option value="iceIh">Ice Ih · hexagonal</option>
                 <option value="iceIc">Ice Ic · cubic</option>
+                <option value="iceVIII">Ice VIII · ordered D₂O · COD 1566658</option>
+                <option value="iceVI">Ice VI · disordered D₂O average · COD 1567346</option>
+              </optgroup>
+              <optgroup label="Other molecular crystals">
+                <option value="dryIce">Dry ice · cubic CO₂-I</option>
               </optgroup>
               <optgroup label="2D materials">
                 <option value="graphene">Graphene monolayer</option>
@@ -206,30 +307,98 @@
                 <option value="competition" selected>NaCl rocksalt crystal</option>
                 <option value="random">Cu₆₄Zr₃₆ metallic glass</option>
                 <option value="iqc">Al–Cu–Fe IQC approximant</option>
+                <option value="cdyb">Published Cd₅.₇Yb icosahedral quasicrystal</option>
                 <option value="bc8">Silicon BC8-like network</option>
               </optgroup>
               <option value="imported" disabled>Imported structure</option>
             </select>
           </label>
           <p class="sample-note">Curated fixtures are saved, deterministic controls. Composition search above draws a fresh public database entry.</p>
+          <div id="iceViMicrostateControls" class="ensemble-controls" hidden aria-label="Ice VI occupational realization">
+            <div class="database-heading"><strong>Ice-rule realization</strong><span id="iceViMicrostateState">diffraction average · unresolved</span></div>
+            <button id="iceViMicrostateButton" class="database-button" type="button">Sample one geometry-valid D₂O microstate</button>
+            <button id="iceViAverageButton" class="database-button secondary-button" type="button" hidden>Return to diffraction average</button>
+            <p id="iceViMicrostateStatus" class="control-note">Uses only the paired D/Vac positions and the four-connected oxygen network: one D per O–O bond and two covalent D per oxygen.</p>
+          </div>
+          <div id="ensembleControls" class="ensemble-controls" hidden>
+            <label class="field" for="ensembleFrameSelect">
+              <span>Displayed / growth frame <b id="ensembleFrameCount">1 snapshot</b></span>
+              <select id="ensembleFrameSelect"></select>
+            </label>
+            <label class="field" for="ensembleEvidenceSelect">
+              <span>Geometric evidence <b>fixed topology only</b></span>
+              <select id="ensembleEvidenceSelect">
+                <option value="all" selected>Pool all frames · ensemble envelopes</option>
+                <option value="selected">Selected frame only · ablation</option>
+              </select>
+            </label>
+            <div id="relaxationSequence" class="relaxation-sequence" hidden aria-label="Archived relaxation sequence">
+              <div><span>archived relaxation sequence</span><b id="relaxationSequenceState">ΔE + residual force</b></div>
+              <svg id="relaxationSequenceChart" viewBox="0 0 280 76" role="img" aria-label="Energy and residual force by archived calculation snapshot"></svg>
+              <div class="relaxation-sequence-legend"><span>relative energy / atom</span><span>force RMS</span></div>
+              <div id="relaxationDisplacementState" class="relaxation-displacement-state">Select an earlier snapshot to compare its geometry with the final archived state.</div>
+              <div id="relaxationLocalEnvironmentState" class="relaxation-displacement-state">Local best-affine neighborhood residual is unavailable.</div>
+              <div class="relaxation-neighbor-legend"><span>lost kNN relation</span><span>gained kNN relation</span><span>halo = √D²min</span></div>
+              <section class="relaxation-calibration" aria-label="Geometry and external calculation calibration">
+                <header><span><small>geometry ↔ external calculation</small><strong id="relaxationCalibrationTitle">Final-frame-reference calibration</strong></span><div class="relaxation-calibration-selects"><select id="relaxationCalibrationReference" aria-label="Geometry reference"><option value="final">final frame reference</option><option value="first">first frame reference</option><option value="pooled">pooled geometry reference</option></select><select id="relaxationCalibrationMetric" aria-label="External calculation quantity"><option value="energy">relative energy / primitive atom</option><option value="force">residual-force RMS</option></select></div></header>
+                <div id="relaxationCalibrationState">At least three paired geometry/calculation snapshots are required.</div>
+                <svg id="relaxationCalibrationChart" viewBox="0 0 280 104" role="img" aria-label="Geometric mismatch against an external calculation quantity"></svg>
+                <div id="relaxationSurrogateState" class="relaxation-surrogate-state">Five paired frames are required for the geometry-only surrogate preflight.</div>
+                <div id="relaxationSurrogateCoefficients" class="relaxation-surrogate-coefficients" aria-label="Standardized geometric surrogate coefficients"></div>
+                <section class="relaxation-calibration-library" aria-label="Frozen cross-archive surrogate library"><header><span><small>cross-archive gate</small><strong>Frozen surrogate library</strong></span><span class="relaxation-calibration-actions"><button id="relaxationCalibrationPin" type="button">Pin this archive</button><button id="relaxationCalibrationPromote" type="button" disabled>Use as GCTS mark</button></span></header><select id="relaxationCalibrationLibrarySelect" aria-label="Pinned calibration source"><option value="">No pinned source</option></select><div id="relaxationCalibrationTransferState">Pin a sufficiently sampled archive, then load another provenance-compatible archive to test it without refitting.</div><div id="relaxationCalibrationPromotionState">Growth ranking remains disconnected until a different compatible archive passes the frozen promotion gate.</div><section class="relaxation-support-map" aria-label="Frozen feature-support deployment map"><header><span><small>deployment map</small><strong>Source support → target → live frontier</strong></span><select id="relaxationCalibrationFeaturePair" aria-label="Feature axes"><option value="distance-angle">distance × angle</option><option value="distance-coordination">distance × coordination</option><option value="angle-coordination">angle × coordination</option></select></header><svg id="relaxationCalibrationSupportChart" viewBox="0 0 280 104" role="img" aria-label="Frozen source feature support and target observations"></svg><div class="relaxation-support-legend"><span>source support</span><span>target frame</span><span>live candidate</span><span>abstain</span></div><div id="relaxationCalibrationDeploymentState">No frozen source selected.</div></section></section>
+                <p id="relaxationCalibrationBoundary">Descriptive within one correlated archive sequence; not independent validation, an energy model, a force field, or physical time.</p>
+              </section>
+              <p>Ordered calculation snapshots are geometric evidence, not physical-time integration. Click a point to inspect that archived state.</p>
+            </div>
+            <p id="ensembleStatus" class="control-note">Frames contribute contact, coordination, and angle observations; growth starts from only the selected frame.</p>
+          </div>
+          <div id="measurementConditions" class="measurement-conditions" hidden aria-label="Recorded measurement conditions">
+            <div class="measurement-heading"><small>recorded measurement conditions</small><span>provenance only</span></div>
+            <div id="measurementConditionChips" class="measurement-condition-chips"></div>
+            <p id="measurementConditionNote">Diffraction or cell-measurement metadata labels the observed geometry; it is not used as a force, energy, rate, or MD control.</p>
+          </div>
+          <div id="publishedFixtureProvenance" class="measurement-conditions published-fixture-provenance" hidden aria-label="Published model provenance">
+            <div class="measurement-heading"><small>published geometry</small><span id="publishedFixtureLicense">—</span></div>
+            <strong id="publishedFixtureName">—</strong>
+            <div class="published-fixture-links"><a id="publishedFixtureArticle" target="_blank" rel="noreferrer">article DOI</a><a id="publishedFixtureArchive" target="_blank" rel="noreferrer">immutable archive</a></div>
+            <p>Only the displayed physical-space species and positions enter the learner; hidden construction coordinates and source-site labels are absent.</p>
+          </div>
           <details class="local-import">
             <summary>Advanced · local file or fixture</summary>
             <label class="file-field" for="structureFileInput">
               <input id="structureFileInput" type="file" accept=".cif,.xyz,.extxyz,.vasp,.json,POSCAR,CONTCAR">
               <span>Import CIF · POSCAR · XYZ · JSON</span>
             </label>
-            <div id="importStatus" class="import-status" aria-live="polite">Parsed locally; files are not uploaded. Recommended: 32–1,200 atoms.</div>
+            <div id="importStatus" class="import-status" aria-live="polite">Parsed locally; files are not uploaded. Recommended: 32–1,200 atoms · up to 24,000 fixed-topology atom presentations.</div>
             <button id="loadFixtureButton" class="fixture-link" type="button">Load bundled 64-atom NaCl fixture</button>
+            <button id="loadEnsembleFixtureButton" class="fixture-link" type="button">Load 3-snapshot NaCl ensemble</button>
+            <button id="loadAnisotropicFixtureButton" class="fixture-link" type="button">Load Ta/V disorder + Uij fixture</button>
           </details>
           <label class="field" for="confinementSelect">
-            <span>Confinement</span>
+            <span>External geometry <b id="confinementHint">finite bulk box</b></span>
             <select id="confinementSelect">
-              <option value="box">Box</option>
-              <option value="sphere">Sphere</option>
-              <option value="cylinder">Cylinder</option>
-              <option value="hourglass">Hourglass</option>
+              <option value="box">Bulk observation window · box</option>
+              <option value="sphere">Finite nucleus · sphere</option>
+              <option value="cylinder">Nanowire / cylindrical pore</option>
+              <option value="slab">Free-standing thin film · slab</option>
+              <option value="substrate">Film on impenetrable support</option>
+              <option value="hourglass">Constricted pore / growth neck</option>
+            </select>
+            <small id="confinementNote" class="control-note">A finite public bulk window. Its faces are search boundaries, not inferred crystal surfaces or periodic images.</small>
+          </label>
+          <label class="field" for="growthDomainScaleSelect">
+            <span>Public search reach <b id="growthDomainScaleHint">1× certified domain</b></span>
+            <select id="growthDomainScaleSelect">
+              <option value="1" selected>1× · responsive finite domain</option>
+              <option value="2">2× · extended structural continuation</option>
+              <option value="4">4× · large explicit growth domain</option>
             </select>
           </label>
+          <section id="growthDomainPassport" class="growth-domain-passport" aria-label="Observation and public growth domains">
+            <header><span><small>domain separation</small><strong>Observation → growth</strong></span><b id="growthDomainPassportState">awaiting sample</b></header>
+            <div id="growthDomainPassportBars"></div>
+            <p id="growthDomainPassportNote">The supplied atom crop is fitted as an explicit finite envelope; novel sites inside it and sites beyond it are audited separately.</p>
+          </section>
           <select id="policySelect" hidden aria-hidden="true">
             <option value="marked">Local-section GCTS marking</option>
             <option value="direct">Exact local oracle</option>
@@ -253,12 +422,25 @@
                 <option value="offlattice">Metric point set · unrestricted positions</option>
               </select>
             </label>
+            <label class="field" for="clusterToleranceSelect">
+              <span>Metric isometry tolerance <b id="clusterToleranceHint">2.5% of nearest-neighbor scale</b></span>
+              <select id="clusterToleranceSelect">
+                <option value="strict">Strict · 1.0% · relaxed calculations</option>
+                <option value="balanced" selected>Balanced · 2.5% · default observations</option>
+                <option value="thermal">Thermal/disordered · 5.0% · broadened positions</option>
+              </select>
+            </label>
             <div class="geometry-audit" aria-label="Inferred geometric degrees of freedom">
               <div><small>placement support</small><strong id="translationSupport">—</strong></div>
               <i>×</i>
               <div><small>cluster pose support</small><strong id="rotationSupport">—</strong></div>
               <i>→</i>
               <div><small>auto channel rank</small><strong id="channelRankSupport">—</strong></div>
+            </div>
+            <div class="molecular-hypothesis-audit" aria-label="Finite molecular component hypothesis">
+              <span class="molecular-hypothesis-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+              <div><small>finite-molecule hypothesis</small><strong id="molecularHypothesisState">—</strong><em id="molecularHypothesisEvidence">species + metric geometry only</em></div>
+              <b id="molecularHypothesisRoute">—</b>
             </div>
             <div class="pose-atlas-heading"><span>symmetry-reduced pose × connection atlas</span><b id="poseAtlasTotal">—</b></div>
             <div id="poseAtlas" class="pose-atlas" aria-label="Learned cluster orientation atlas"></div>
@@ -303,15 +485,64 @@
                 <option value="whole">Whole-cluster action</option>
               </select>
             </label>
+            <label class="field" for="spinColoringSelect">
+              <span>Collinear spin coloring <b id="spinColoringHint">no supplied scalar spins</b></span>
+              <select id="spinColoringSelect">
+                <option value="preserve" selected>Preserve signed scalar labels at overlaps</option>
+                <option value="ignore">Ignore spin labels · chemistry-only ablation</option>
+              </select>
+            </label>
             <div class="option-actions">
               <button id="restartMarkingButton" type="button">Restart fit</button>
               <button id="saveMarkingButton" class="option-primary" type="button">Freeze to library</button>
             </div>
             <p id="markingConfigNote" class="control-note">The section is local and connection-valued; it is not a physical potential.</p>
-            <p class="rank-note"><b>Channels are not raw rotation bins.</b> Each cluster's observed rotations are quotiented by its proper symmetry; Auto then uses the rank of the pose × connection-port incidence, plus compatibility and failure fields. A manual choice is an ablation or capacity cap.</p>
+            <section class="marking-capacity-audit" aria-label="Same-data marking channel-capacity frontier">
+              <header><span><small>same clusters · same fit / holdout split</small><strong>Channel-capacity frontier</strong></span><b id="markingCapacityState">waiting for cluster geometry</b></header>
+              <div id="markingCapacityFrontier" role="group" aria-label="Compare learned marking capacities"></div>
+              <article id="markingCapacityDetail" aria-live="polite"></article>
+              <p>Each point refits the same local sections with a genuinely different coefficient dimension. Click a point to restart the visible fit at that capacity. Validation mismatch selects no growth branch and is never a physical energy.</p>
+            </section>
+            <p class="rank-note"><b>Channels are not raw rotation bins.</b> Each cluster's observed rotations are quotiented through intrinsic right-handed frames and every tied proper-symmetry gauge; Auto then uses the rank of the pose × connection-port incidence, plus compatibility and failure fields. A manual choice is an ablation or capacity cap.</p>
           </div>
 
           <div id="growthSearchOptions" hidden>
+            <label class="field protocol-field" for="growthProtocolSelect">
+              <span>Experiment protocol <b id="growthProtocolHint">custom settings</b></span>
+              <select id="growthProtocolSelect">
+                <option value="custom" selected>Custom · independent controls</option>
+                <option value="bulk">Bulk continuation · neutral boundary</option>
+                <option value="epitaxy">Thin-film epitaxy · coherent hex template</option>
+                <option value="misfit-film">Misfit film · +5% hex template</option>
+                <option value="directional">Directional solidification · facet front</option>
+                <option value="dendritic">Dendritic hypothesis · radial tip growth</option>
+                <option value="impingement">Polycrystal impingement · four nuclei</option>
+                <option value="pore-fill">Pore filling · concavity healing</option>
+              </select>
+            </label>
+            <article id="growthProtocolSummary" class="growth-protocol-summary" aria-live="polite">
+              <span><b>custom experiment</b><small>Every search control remains independent and receipt-visible.</small></span>
+            </article>
+            <section class="growth-physics-preflight" aria-label="Pre-growth physics manifest">
+              <header><span><small>before the first structural leap</small><strong>Physics → geometry preflight</strong></span><b id="growthPhysicsPreflightState">classifying current controls</b></header>
+              <div id="growthPhysicsCompressionMap" class="physics-compression-map" role="group" aria-label="Physical-process to geometric-surrogate compression map"></div>
+              <div id="growthPhysicsPreflightFilters" class="leap-physics-filters" role="group" aria-label="Filter the pre-growth physics manifest">
+                <button class="active" type="button" data-preflight-physics-filter="all" aria-pressed="true">all</button>
+                <button type="button" data-preflight-physics-filter="structural" aria-pressed="false">observed + learned</button>
+                <button type="button" data-preflight-physics-filter="hypothesis" aria-pressed="false">declared hypotheses</button>
+                <button type="button" data-preflight-physics-filter="open" aria-pressed="false">open boundary</button>
+              </div>
+              <div id="growthPhysicsPreflightMatrix" class="leap-physics-matrix" role="group" aria-label="Inspect physical roles encoded or left open before growth"></div>
+              <article id="growthPhysicsPreflightDetail" class="leap-physics-detail" aria-live="polite"></article>
+              <p>The manifest is frozen from the current controls before the first structural action executes. It never reads candidate records. Its coordinate-free record and SHA-256 digest enter the experiment receipt; routing to a control changes no setting.</p>
+            </section>
+            <div class="growth-group-actions" role="group" aria-label="Growth control sections">
+              <button id="expandGrowthGroupsButton" type="button">Expand all physics</button>
+              <button id="collapseGrowthGroupsButton" type="button">Collapse to overview</button>
+            </div>
+            <details class="growth-control-group" open>
+              <summary><span><small>01 · search core</small><strong>GCTS marking &amp; local strain</strong></span><b id="growthCoreGroupState">marking + strain</b></summary>
+              <div class="growth-control-fields">
             <label class="field" for="markingLibrarySelect">
               <span>Active marking <b id="markingLibraryCount">0 saved</b></span>
               <select id="markingLibrarySelect"></select>
@@ -323,12 +554,652 @@
                 <option value="portfolio">Library portfolio · best mark per action</option>
               </select>
             </label>
+            <article class="marking-portfolio-audit" aria-label="Saved marking replay audit">
+              <header><span><small>frozen-basis replay</small><strong>Marking portfolio audit</strong></span><b id="markingPortfolioState">waiting for a saved marking</b></header>
+              <div id="markingPortfolioRows" class="marking-portfolio-rows"></div>
+              <p>Every saved marking scores the same frozen connection rules in its own learned basis, active-channel mask, and representation. The audit changes rankings only—never candidate geometry.</p>
+            </article>
+            <label class="field" for="geometryPreferenceSelect">
+              <span>Geometric preference <b>same candidate actions</b></span>
+              <select id="geometryPreferenceSelect">
+                <option value="strain" selected>Learned contact + angle strain</option>
+                <option value="none">Off · marking/action ordering only</option>
+              </select>
+            </label>
+            <label class="field" for="strainWeightSelect">
+              <span>Strain ranking weight <b id="strainWeightHint">0.16 soft</b></span>
+              <select id="strainWeightSelect">
+                <option value="0.08">0.08 · weak preference</option>
+                <option value="0.16" selected>0.16 · balanced preference</option>
+                <option value="0.32">0.32 · strong preference</option>
+              </select>
+            </label>
+            <label class="field" for="structuralRelaxationSelect">
+              <span>Post-attachment projection <b id="structuralRelaxationHint">5% dₙₙ cap</b></span>
+              <select id="structuralRelaxationSelect">
+                <option value="off">Off · exact template coordinates</option>
+                <option value="gentle">Gentle · 2.5% dₙₙ · 6 iterations</option>
+                <option value="balanced" selected>Balanced · 5% dₙₙ · 12 iterations</option>
+                <option value="strong">Strong · 8% dₙₙ · 20 iterations</option>
+                <option value="observed">Observed non-affine vector seed · 5% dₙₙ · fail closed</option>
+                <option value="force">Residual-force direction seed · 5% dₙₙ · fail closed</option>
+              </select>
+            </label>
+            <div id="structuralRelaxationState" class="control-note">Applied only after known-window replay. A projection must reduce the learned local constraint residual and re-pass every hard geometric certificate. Observed-vector mode requires a fixed-topology selected→final archive pair; force mode requires site-resolved residual forces.</div>
+              </div>
+            </details>
+            <details class="growth-control-group">
+              <summary><span><small>02 · chemistry</small><strong>Composition &amp; supplied charge</strong></span><b id="growthChemistryGroupState">reservoirs</b></summary>
+              <div class="growth-control-fields">
+            <label class="field" for="compositionPreferenceSelect">
+              <span>Composition reservoir <b>multicomponent soft balance</b></span>
+              <select id="compositionPreferenceSelect">
+                <option value="soft" selected>Reference fractions · balanced</option>
+                <option value="strong">Reference fractions · strong</option>
+                <option value="none">Off · unrestricted frontier drift</option>
+              </select>
+            </label>
+            <label class="field" for="feedstockSupplySelect">
+              <span>Feedstock inventory <b id="feedstockSupplyHint">open source · no depletion gate</b></span>
+              <select id="feedstockSupplySelect">
+                <option value="open" selected>Open source · composition rank only</option>
+                <option value="finite-1">Finite batch · 1× observed composition</option>
+                <option value="finite-4">Finite batch · 4× observed composition</option>
+                <option value="finite-16">Finite batch · 16× observed composition</option>
+              </select>
+            </label>
+            <section id="feedstockInventoryInspector" class="feedstock-inventory-inspector" aria-label="Species feedstock inventory">
+              <header><span><small>mass accounting</small><strong>Feedstock ledger</strong></span><b id="feedstockInventoryState">open source</b></header>
+              <div id="feedstockInventoryBars"></div>
+              <p>Only newly emitted sites consume inventory. The observed seed is fixed initial geometry.</p>
+            </section>
+            <label class="field" for="soluteSpeciesSelect">
+              <span>Partition species <b id="soluteSpeciesHint">choose a multicomponent sample</b></span>
+              <select id="soluteSpeciesSelect"></select>
+            </label>
+            <label class="field" for="solutePartitionSelect">
+              <span>Solute partition geometry <b id="solutePartitionHint">homogeneous · weight zero</b></span>
+              <select id="solutePartitionSelect">
+                <option value="none" selected>Homogeneous control · no spatial partition</option>
+                <option value="cold-enrich">Cold-side enrichment</option>
+                <option value="hot-enrich">Hot-side rejection / liquid enrichment</option>
+                <option value="surface-enrich">Open-interface segregation</option>
+                <option value="bulk-enrich">Occupied-pocket incorporation</option>
+              </select>
+            </label>
+            <label class="field" for="solutePartitionWeightSelect">
+              <span>Partition weight <b>soft species × field coupling</b></span>
+              <select id="solutePartitionWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
+            <label class="field" for="chargePreferenceSelect">
+              <span>Formal-charge reservoir <b id="chargePreferenceHint">requires supplied oxidation states</b></span>
+              <select id="chargePreferenceSelect">
+                <option value="auto" selected>Auto · use complete supplied channel</option>
+                <option value="strong">Supplied formal charge · strong</option>
+                <option value="none">Off · report only</option>
+              </select>
+            </label>
+            <label class="field" for="chargeGeometrySelect">
+              <span>Charge-neighborhood geometry <b id="chargeGeometryHint">requires complete supplied charge</b></span>
+              <select id="chargeGeometrySelect">
+                <option value="none" selected>Off · spatial charge reported</option>
+                <option value="opposite">Opposite-charge coordination</option>
+                <option value="field-neutral">Minimize local field imbalance</option>
+                <option value="combined">Combined ionic geometry</option>
+              </select>
+            </label>
+            <label class="field" for="chargeGeometryReachSelect">
+              <span>Charge reach <b>exponential geometric window</b></span>
+              <select id="chargeGeometryReachSelect">
+                <option value="1.5">1.5dₙₙ · first shell</option>
+                <option value="2.5" selected>2.5dₙₙ · local screening</option>
+                <option value="4">4.0dₙₙ · extended probe</option>
+              </select>
+            </label>
+            <label class="field" for="chargeGeometryWeightSelect">
+              <span>Charge-geometry weight <b>soft supplied-label rank</b></span>
+              <select id="chargeGeometryWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
+            <label class="field" for="chargeMomentSelect">
+              <span>Global charge-shape geometry <b id="chargeMomentHint">requires complete supplied charge</b></span>
+              <select id="chargeMomentSelect">
+                <option value="none" selected>Off · multipoles reported</option>
+                <option value="dipole">Suppress normalized charge dipole</option>
+                <option value="quadrupole">Suppress quadrupole anisotropy</option>
+                <option value="combined">Combined global charge shape</option>
+              </select>
+            </label>
+            <label class="field" for="chargeMomentWeightSelect">
+              <span>Global charge-shape weight <b>soft nonlocal rank</b></span>
+              <select id="chargeMomentWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
+            <label class="field" for="ionicPairSelect">
+              <span>Incremental ionic-pair geometry <b id="ionicPairHint">off · 1/r geometry reported</b></span>
+              <select id="ionicPairSelect">
+                <option value="none" selected>Off · signed pair sum reported</option>
+                <option value="madelung">Madelung-like · favor lower signed 1/r sum</option>
+              </select>
+            </label>
+            <label class="field" for="ionicPairReachSelect">
+              <span>Ionic-pair reach <b>nearest-neighbor units</b></span>
+              <select id="ionicPairReachSelect">
+                <option value="4">4dₙₙ · local–mesoscopic</option>
+                <option value="8" selected>8dₙₙ · extended</option>
+                <option value="global">Global finite configuration</option>
+              </select>
+            </label>
+            <label class="field" for="ionicPairWeightSelect">
+              <span>Ionic-pair weight <b>soft rank only</b></span>
+              <select id="ionicPairWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
+            <label class="field" for="bondValenceSelect">
+              <span>Bond-valence satisfaction <b id="bondValenceHint">off · checked IUCr parameter ranges only</b></span>
+              <select id="bondValenceSelect">
+                <option value="none" selected>Off · local residual reported</option>
+                <option value="satisfy">Favor scalar valence-sum satisfaction</option>
+                <option value="vector">Favor balanced bond-valence vectors</option>
+                <option value="combined">Combine scalar + vector satisfaction</option>
+              </select>
+            </label>
+            <label class="field" for="bondValenceWeightSelect">
+              <span>Bond-valence weight <b>soft coordination-geometry rank</b></span>
+              <select id="bondValenceWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
+              </div>
+            </details>
+            <details class="growth-control-group">
+              <summary><span><small>03 · interface</small><strong>Attachment, coherency &amp; morphology</strong></span><b id="growthInterfaceGroupState">local surface</b></summary>
+              <div class="growth-control-fields">
+            <label class="field" for="surfacePreferenceSelect">
+              <span>Surface completion <b>soft coordination-deficit proxy</b></span>
+              <select id="surfacePreferenceSelect">
+                <option value="soft" selected>Heal undercoordination · balanced</option>
+                <option value="strong">Heal undercoordination · strong</option>
+                <option value="none">Off · report only</option>
+              </select>
+            </label>
+            <label class="field" for="growthDrivingSelect">
+              <span>Reduced growth driving <b id="growthDrivingHint">off · geometry reported</b></span>
+              <select id="growthDrivingSelect">
+                <option value="none" selected>Off · separate surface term only</option>
+                <option value="surface-limited">Surface-limited · compact completion</option>
+                <option value="balanced">Balanced · bulk–surface competition</option>
+                <option value="volume-driven">Volume-driven · rapid incorporation</option>
+              </select>
+            </label>
+            <label class="field" for="growthDrivingWeightSelect">
+              <span>Driving weight <b>dimensionless soft rank</b></span>
+              <select id="growthDrivingWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
+            <label class="field" for="attachmentTopologySelect">
+              <span>Attachment-site topology <b id="attachmentTopologyHint">off · terrace / step / kink reported</b></span>
+              <select id="attachmentTopologySelect">
+                <option value="none" selected>Off · classify only</option>
+                <option value="kink">Kink-rich incorporation</option>
+                <option value="step">Step-flow attachment</option>
+                <option value="terrace">Terrace-island hypothesis</option>
+              </select>
+            </label>
+            <label class="field" for="attachmentTopologyWeightSelect">
+              <span>Attachment weight <b>soft local-topology rank</b></span>
+              <select id="attachmentTopologyWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
+            <label class="field" for="habitAnisotropySelect">
+              <span>Local habit anisotropy <b id="habitAnisotropyHint">off · 12-axis atlas reported</b></span>
+              <select id="habitAnisotropySelect">
+                <option value="none" selected>Off · report learned habit</option>
+                <option value="faceted">Observed-axis faceting</option>
+                <option value="roughening">Rare-axis roughening</option>
+                <option value="axial">Dominant-axis elongation</option>
+              </select>
+            </label>
+            <label class="field" for="habitAnisotropyWeightSelect">
+              <span>Habit weight <b>soft parent-local rank</b></span>
+              <select id="habitAnisotropyWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
+            <label class="field" for="defectPrecursorSelect">
+              <span>Action defect precursors <b id="defectPrecursorHint">off · burden reported</b></span>
+              <select id="defectPrecursorSelect">
+                <option value="none" selected>Off · report action burden</option>
+                <option value="suppress">Suppress geometric precursors</option>
+                <option value="explore">Explore defect-rich growth</option>
+                <option value="seam">Seam-accommodation hypothesis</option>
+              </select>
+            </label>
+            <label class="field" for="defectPrecursorWeightSelect">
+              <span>Precursor weight <b>soft action-generated rank</b></span>
+              <select id="defectPrecursorWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
+            <label class="field" for="coherencyMemorySelect">
+              <span>Coherency memory <b id="coherencyMemoryHint">off · local history reported</b></span>
+              <select id="coherencyMemorySelect">
+                <option value="none" selected>Off · report inherited mismatch</option>
+                <option value="continue">Continue coherent strain domain</option>
+                <option value="relieve">Favor local mismatch relief</option>
+                <option value="isolate">Avoid inherited strain hotspots</option>
+              </select>
+            </label>
+            <label class="field" for="coherencyReachSelect">
+              <span>Memory reach <b>cluster-graph hops</b></span>
+              <select id="coherencyReachSelect">
+                <option value="1">1 hop · incident parents</option>
+                <option value="2" selected>2 hops · local domain</option>
+                <option value="3">3 hops · mesoscopic probe</option>
+              </select>
+            </label>
+            <label class="field" for="coherencyMemoryWeightSelect">
+              <span>Memory weight <b>soft history rank</b></span>
+              <select id="coherencyMemoryWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
+            <label class="field" for="frontMorphologySelect">
+              <span>Mesoscopic front morphology <b id="frontMorphologyHint">neutral · diagnostic</b></span>
+              <select id="frontMorphologySelect">
+                <option value="none" selected>Neutral · report front geometry</option>
+                <option value="smooth">Concavity filling · smooth front</option>
+                <option value="facet">Coherent backing · facet propagation</option>
+                <option value="tip">Exposed tips · branching hypothesis</option>
+              </select>
+            </label>
+            <label class="field" for="frontMorphologyWeightSelect">
+              <span>Morphology weight <b>soft rank only</b></span>
+              <select id="frontMorphologyWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
+            <label class="field" for="capillaryGeometrySelect">
+              <span>Discrete capillary geometry <b id="capillaryGeometryHint">off · diagnostic solid angle</b></span>
+              <select id="capillaryGeometrySelect">
+                <option value="none" selected>Off · report local solid angle</option>
+                <option value="pocket">Concavity fill · occupied solid angle</option>
+                <option value="planar">Planar front · half-space balance</option>
+                <option value="exposed">Exposed growth · roughening control</option>
+              </select>
+            </label>
+            <label class="field" for="capillaryGeometryWeightSelect">
+              <span>Capillary weight <b>soft 3D interface rank</b></span>
+              <select id="capillaryGeometryWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
+            <label class="field" for="epitaxyTemplateSelect">
+              <span>Support-plane registry <b id="epitaxyTemplateHint">choose supported-film geometry</b></span>
+              <select id="epitaxyTemplateSelect">
+                <option value="none" selected>Inert plane · exclusion only</option>
+                <option value="square-coherent">Square template · coherent</option>
+                <option value="square-mismatch">Square template · +5% mismatch</option>
+                <option value="hex-coherent">Hexagonal template · coherent</option>
+                <option value="hex-mismatch">Hexagonal template · +5% mismatch</option>
+                <option value="hex-30">Hexagonal template · 30° azimuth</option>
+              </select>
+            </label>
+            <label class="field" for="epitaxyWeightSelect">
+              <span>Registry weight <b>soft interfacial rank</b></span>
+              <select id="epitaxyWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
+              </div>
+            </details>
+            <details class="growth-control-group">
+              <summary><span><small>04 · fields</small><strong>Loading &amp; mesoscopic compatibility</strong></span><b id="growthFieldsGroupState">diagnostic</b></summary>
+              <div class="growth-control-fields">
+            <label class="field" for="externalDriveSelect">
+              <span>External driving geometry <b id="externalDriveHint">isotropic · weight zero</b></span>
+              <select id="externalDriveSelect">
+                <option value="none" selected>Isotropic · no preferred direction</option>
+                <option value="z-plus">Axis +Z · directional growth</option>
+                <option value="z-minus">Axis −Z · directional growth</option>
+                <option value="radial-out">Radial outward · expanding front</option>
+                <option value="radial-in">Radial inward · closing front</option>
+              </select>
+            </label>
+            <label class="field" for="externalDriveWeightSelect">
+              <span>Driving weight <b>soft rank only</b></span>
+              <select id="externalDriveWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
+            <label class="field" for="thermalFieldSelect">
+              <span>Reduced thermal field <b id="thermalFieldHint">isothermal · weight zero</b></span>
+              <select id="thermalFieldSelect">
+                <option value="none" selected>Isothermal control · no scalar field</option>
+                <option value="z-plus-cold">Planar field · +Z colder side</option>
+                <option value="z-minus-cold">Planar field · −Z colder side</option>
+                <option value="radial-cold">Radial quench · outside colder</option>
+                <option value="radial-hot">Radial anneal · inside favored</option>
+                <option value="band">Localized thermal band · seed plane</option>
+              </select>
+            </label>
+            <label class="field" for="thermalFieldWeightSelect">
+              <span>Thermal-field weight <b>soft reduced coordinate</b></span>
+              <select id="thermalFieldWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
+            <label class="field" for="affineLoadSelect">
+              <span>Prescribed affine loading <b id="affineLoadHint">undeformed metric</b></span>
+              <select id="affineLoadSelect">
+                <option value="none" selected>None · observed metric</option>
+                <option value="hydro-compress">Hydrostatic compression</option>
+                <option value="hydro-tension">Hydrostatic tension</option>
+                <option value="z-tension">Uniaxial Z tension</option>
+                <option value="xy-shear">XY shear</option>
+                <option value="archive-stress">Archive stress shape · unit-compliance hypothesis</option>
+                <option value="archive-stress-reverse">Archive stress shape · reversed-sign ablation</option>
+              </select>
+            </label>
+            <label class="field" for="affineLoadMagnitudeSelect">
+              <span>Affine magnitude <b>prescribed strain</b></span>
+              <select id="affineLoadMagnitudeSelect">
+                <option value="0.01">1% · small</option>
+                <option value="0.02" selected>2% · moderate</option>
+                <option value="0.04">4% · stress test</option>
+              </select>
+            </label>
+            <label class="field" for="robustnessPreferenceSelect">
+              <span>Geometric robustness <b id="robustnessHint">diagnostic · weight zero</b></span>
+              <select id="robustnessPreferenceSelect">
+                <option value="none" selected>Off · report safety margin</option>
+                <option value="margin">Constraint margin · robust ordering</option>
+              </select>
+            </label>
+            <label class="field" for="robustnessWeightSelect">
+              <span>Robustness weight <b>soft rank only</b></span>
+              <select id="robustnessWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
+            <label class="field" for="microstructureCouplingSelect">
+              <span>Microstructure coupling <b id="microstructureCouplingHint">neutral · weight zero</b></span>
+              <select id="microstructureCouplingSelect">
+                <option value="none" selected>Neutral · report correlations only</option>
+                <option value="gap-heal">Favor gap / residual healing</option>
+                <option value="interface-follow">Follow pose-domain interfaces</option>
+                <option value="interface-accommodate">Accommodate cross-lineage registry</option>
+                <option value="anomaly-avoid">Avoid coordination anomalies</option>
+                <option value="occupancy-follow">Follow occupational fronts</option>
+              </select>
+            </label>
+            <label class="field" for="microstructureCouplingWeightSelect">
+              <span>Coupling weight <b>soft rank only</b></span>
+              <select id="microstructureCouplingWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
+            <label class="field" for="loopClosurePreferenceSelect">
+              <span>Mesoscopic compatibility <b id="loopClosureHint">local-only · weight zero</b></span>
+              <select id="loopClosurePreferenceSelect">
+                <option value="none" selected>Local only · report loop closure</option>
+                <option value="consensus">Multi-parent loop-closure ordering</option>
+              </select>
+            </label>
+            <label class="field" for="loopClosureWeightSelect">
+              <span>Compatibility weight <b>soft rank only</b></span>
+              <select id="loopClosureWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
+              </div>
+            </details>
+            <details class="growth-control-group">
+              <summary><span><small>05 · execution</small><strong>Transport, nuclei &amp; tree search</strong></span><b id="growthExecutionGroupState">deterministic</b></summary>
+              <div class="growth-control-fields">
+            <label class="field" for="arrivalPathSelect">
+              <span>Geometric arrival path <b id="arrivalPathHint">not ranked · final pose only</b></span>
+              <select id="arrivalPathSelect">
+                <option value="none" selected>Off · final-pose geometry only</option>
+                <option value="parent-outward">Parent-normal · arrive from outside</option>
+                <option value="radial-outward">Seed-radial · arrive from outside</option>
+                <option value="declared-drive">Declared-drive direction</option>
+                <option value="free-volume">Free-volume routing · straight + 4 detours</option>
+              </select>
+            </label>
+            <label class="field" for="arrivalPathWeightSelect">
+              <span>Accessibility weight <b>9-point route clearance</b></span>
+              <select id="arrivalPathWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
+            <label class="field" for="feedExposureSelect">
+              <span>Feedstock exposure <b id="feedExposureHint">off · no source geometry</b></span>
+              <select id="feedExposureSelect">
+                <option value="none" selected>Off · no source rays</option>
+                <option value="top">Collimated top source · +Z visibility</option>
+                <option value="oblique">Oblique source · 45° XZ</option>
+                <option value="dual">Dual sources · ±30° XZ</option>
+                <option value="hemisphere">Hemispherical exposure · 9 rays</option>
+              </select>
+            </label>
+            <label class="field" for="feedExposureWeightSelect">
+              <span>Exposure weight <b>soft shadowing rank</b></span>
+              <select id="feedExposureWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
+            <label class="field" for="growthSchedulingSelect">
+              <span>Tree-search scheduling <b id="growthSchedulingHint">maximal commuting set</b></span>
+              <select id="growthSchedulingSelect">
+                <option value="commuting" selected>Commuting frontier · simultaneous antichain</option>
+                <option value="serial">Serial best-first · one branch decision</option>
+              </select>
+            </label>
+            <label class="field" for="growthNucleiSelect">
+              <span>Observed growth nuclei <b id="growthNucleiHint">1 local seed</b></span>
+              <select id="growthNucleiSelect">
+                <option value="1" selected>One observed nucleus</option>
+                <option value="2">Two far-separated observed nuclei</option>
+                <option value="4">Four dispersed observed nuclei</option>
+              </select>
+            </label>
+            <label class="field" for="nucleationSiteSelect">
+              <span>Observed nucleation site <b id="nucleationSiteHint">replay anchor</b></span>
+              <select id="nucleationSiteSelect">
+                <option value="replay" selected>Replay anchor · fitted occurrence</option>
+                <option value="interior">Homogeneous interior · maximum boundary margin</option>
+                <option value="surface">Exposed support · minimum boundary margin</option>
+                <option value="gap">Gap / residual adjacent · cover-completion evidence</option>
+                <option value="interface">Pose interface · local orientation evidence</option>
+                <option value="dispersed">Dispersed observed sites · farthest traversal</option>
+              </select>
+            </label>
+            <section id="nucleationLandscapeInspector" class="nucleation-landscape-inspector" hidden>
+              <header><span><small>observed occurrence landscape</small><strong>Nucleation geometry inspector</strong></span><b id="nucleationLandscapeState">awaiting growth seed</b></header>
+              <div id="nucleationLandscapeSummary" class="nucleation-landscape-summary"></div>
+              <div id="nucleationLandscapeCandidates" class="nucleation-landscape-candidates" aria-label="Top fitted nucleation-site candidates"></div>
+              <p>Wire halos are fitted occurrence centers, not predicted critical nuclei. Filled halos mark initialized seeds.</p>
+            </section>
+            <section id="nucleusInterfaceInspector" class="nucleus-interface-inspector" hidden>
+              <header><span><small>orientation relationship</small><strong>Nucleus-pair inspector</strong></span><b id="nucleusInterfaceState">no interface pair</b></header>
+              <div id="nucleusPairButtons" class="nucleus-pair-buttons" role="group" aria-label="Select a nucleus pair"></div>
+              <div id="nucleusInterfaceProfile" class="nucleus-interface-profile" aria-label="Axial shared-site profile"></div>
+              <section class="nucleus-interface-evolution" aria-label="Interface evolution across structural leaps">
+                <header><small>structural-leap history</small><b id="nucleusInterfaceEvolutionState">seed state</b></header>
+                <div id="nucleusInterfaceEvolution" class="nucleus-interface-evolution-plot"></div>
+              </section>
+              <article id="nucleusPairDetail"></article>
+            </section>
+            <label class="field" for="explorationScaleSelect">
+              <span>Configurational path ensemble <b id="explorationScaleHint">greedy · T* = 0</b></span>
+              <select id="explorationScaleSelect">
+                <option value="0" selected>Greedy · deterministic best score</option>
+                <option value="0.05">T* 0.05 · narrow alternatives</option>
+                <option value="0.15">T* 0.15 · balanced exploration</option>
+                <option value="0.35">T* 0.35 · broad exploration</option>
+              </select>
+            </label>
+            <button id="resampleGrowthButton" class="train-variant" type="button">↻ Resample path · seed 1</button>
+            <section class="policy-comparison-card" aria-label="Counterfactual frontier ranking">
+              <div><small>same frozen frontier</small><strong>Physics-policy comparison</strong><span id="policyComparisonState">advance one update</span></div>
+              <div id="policyComparison" class="policy-comparison"></div>
+              <section class="marking-frontier-counterfactual" aria-label="Same-candidate marking comparison">
+                <header><span><small>saved sections × one frozen frontier</small><strong>Which marking changes the next action?</strong></span><b id="markingFrontierState">advance one update</b></header>
+                <div id="markingFrontierRows" class="marking-frontier-rows" role="group" aria-label="Preview each saved marking's highest-scored action"></div>
+                <article id="markingFrontierDetail" class="marking-frontier-detail" aria-live="polite"></article>
+                <section class="marking-intervention" aria-label="Register a controlled saved-marking experiment">
+                  <header><span><small>same input · one learned-representation change</small><strong id="markingInterventionState">select a non-active saved marking</strong></span><b id="markingInterventionArm">not registered</b></header>
+                  <div><label>matched horizon<select id="markingInterventionHorizon" aria-label="Saved-marking comparison structural-leap horizon"><option value="1">1 leap</option><option value="4" selected>4 leaps</option><option value="8">8 leaps</option></select></label><button id="markingInterventionRegister" type="button" disabled>Register selected marking comparison</button><button id="markingInterventionBaseline" type="button" disabled>Configure baseline</button><button id="markingInterventionAlternative" type="button" disabled>Configure alternative</button><button id="markingInterventionClear" type="button" disabled>Clear</button></div>
+                  <p id="markingInterventionBoundary">Registration freezes both self-contained marking artifacts, this candidate set, and every non-marking growth control. It resets to supplied positions and executes nothing.</p>
+                </section>
+                <p>Every row scores the identical hard-admitted action set with one frozen marking artifact. Click a row to preview its exact pose and the resulting coordinate-free attachment, mismatch, constraint margin, q₆/|ψ₆|, local-section S(q), and active-physics response; no candidate is created, removed, or executed.</p>
+              </section>
+              <div class="policy-score-heading"><small>selected action score ledger</small><strong id="policyScoreLedgerState">awaiting an evaluated frontier</strong></div>
+              <div id="policyScoreLedger" class="policy-score-ledger" aria-label="Signed geometric score contributions"></div>
+              <div class="policy-workbench-heading"><span><small>frozen-frontier intervention</small><strong id="policyWorkbenchState">baseline weights</strong></span><button id="policyWorkbenchReset" type="button" disabled>Reset ×1</button></div>
+              <section class="policy-phase-map-card" aria-label="Two-hypothesis growth decision phase map">
+                <header><span><small>two-hypothesis decision map</small><strong>Attachment-action basins</strong></span><b id="policyPhaseMapState">awaiting a frozen frontier</b></header>
+                <div class="policy-phase-axes"><label>horizontal<select id="policyPhaseX" aria-label="Horizontal physics hypothesis"></select></label><label>vertical<select id="policyPhaseY" aria-label="Vertical physics hypothesis"></select></label></div>
+                <div id="policyPhaseMap" class="policy-phase-map" role="group" aria-label="Click a hypothesis-weight cell to preview its winning action"></div>
+                <p>Each cell re-ranks the same hard-admitted candidate set at ×0…×2 declared weight. Color denotes the winning exact action; brightness denotes its margin over the runner-up.</p>
+              </section>
+              <section class="policy-identifiability-card" aria-label="Frozen-frontier physics hypothesis identifiability">
+                <header><span><small>same-candidate hypothesis audit</small><strong>Are the geometry channels independent?</strong></span><b id="policyIdentifiabilityState">awaiting a frozen frontier</b></header>
+                <div class="policy-identifiability-modes" role="group" aria-label="Identifiability conditioning mode"><button id="policyIdentifiabilityRaw" type="button" aria-pressed="false">Raw channel correlation</button><button id="policyIdentifiabilityConditional" type="button" aria-pressed="true">Condition on grammar + action size</button></div>
+                <div id="policyIdentifiabilityMatrix" class="policy-identifiability-matrix" role="group" aria-label="Pearson and rank correlation matrix for active target-blind geometry channels"></div>
+                <article id="policyIdentifiabilityDetail" class="policy-identifiability-detail" aria-live="polite"></article>
+                <section class="policy-separation-experiment" aria-label="Register a controlled hypothesis-separation experiment">
+                  <header><span><small>turn diagnosis into experiment</small><strong id="policySeparationState">select a hypothesis pair</strong></span><b id="policySeparationArm">not registered</b></header>
+                  <div><button id="policySeparationRegister" type="button" disabled>Register selected-channel ablation</button><button id="policySeparationBaseline" type="button" disabled>Configure baseline</button><button id="policySeparationAblation" type="button" disabled>Configure ablation</button><button id="policySeparationClear" type="button" disabled>Clear</button></div>
+                  <p id="policySeparationBoundary">Registration resets to the supplied positions and executes nothing. The notebook must confirm identical input and exactly one changed score multiplier before attributing an outcome difference.</p>
+                </section>
+                <div class="policy-identifiability-history-heading"><span><small>executed frontier archive</small><strong>Correlation through structural growth</strong></span><b id="policyIdentifiabilityHistoryState">awaiting a selected pair</b></div>
+                <svg id="policyIdentifiabilityHistory" class="policy-identifiability-history" viewBox="0 0 240 92" role="group" aria-label="Selected hypothesis-pair rank correlation through frozen frontier history"></svg>
+                <p>Cells compare signed ranking contributions on the identical hard-admitted frontier. Target-aware replay, exploration, zero-weight, and constant channels are withheld. Correlation reveals local redundancy—not causal or physical independence.</p>
+              </section>
+              <section class="policy-pareto-card" aria-label="Candidate geometry trade-off explorer">
+                <header><span><small>candidate-space trade-off</small><strong>Geometric Pareto frontier</strong></span><b id="policyParetoState">awaiting a frozen frontier</b></header>
+                <div class="policy-pareto-axes"><label>horizontal<select id="policyParetoX" aria-label="Horizontal candidate contribution"></select></label><label>vertical<select id="policyParetoY" aria-label="Vertical candidate contribution"></select></label></div>
+                <svg id="policyParetoPlot" class="policy-pareto-plot" viewBox="0 0 240 150" role="group" aria-label="Click an exact attachment candidate to preview its pose"></svg>
+                <div class="policy-pareto-legend"><span><i class="stable"></i>all bounded poses pass</span><span><i class="fragile"></i>one or more hard failures</span><span><i class="unaudited"></i>audit cap</span></div>
+                <div class="policy-pareto-audit-control"><label>next frontier pose audit<select id="policyPoseAuditLimit" aria-label="Bounded pose audit candidates on the next frozen frontier"><option value="0">Off · no perturbation trials</option><option value="16" selected>16 candidates · responsive</option><option value="64">64 candidates · full audit</option></select></label><span id="policyPoseAuditHint">freezes before the next frontier</span></div>
+                <article id="policyParetoDetail" class="policy-pareto-detail" aria-live="polite"></article>
+                <p>Higher is better on each selected signed ranking term. The mint envelope contains candidates not dominated on this pair; it is not a thermodynamic phase boundary or free-energy surface.</p>
+              </section>
+              <section class="policy-omission-card" aria-label="Leave one geometric hypothesis out">
+                <header><span><small>identical-frontier attribution</small><strong>Which physics channel changes the event?</strong></span><b id="policyOmissionState">awaiting a frozen frontier</b></header>
+                <div class="policy-omission-legend"><span><i class="same"></i>same winner</span><span><i class="changed"></i>different exact pose</span><span><i class="inactive"></i>zero-weight channel omitted</span></div>
+                <div id="policyOmissionList" class="policy-omission-list" role="group" aria-label="Preview each leave-one-channel-out growth action"></div>
+                <article id="policyOmissionDetail" class="policy-omission-detail" aria-live="polite"></article>
+                <p>Each row sets exactly one active soft geometric term to zero and re-ranks the unchanged hard-admitted candidate set. It is a local model-sensitivity intervention—not causal identification, energy decomposition, or parameter fitting.</p>
+              </section>
+              <section class="policy-spatial-field-card" aria-label="Spatial geometric driving field">
+                <header><span><small>candidate-resolved spatial field</small><strong>Where does this hypothesis act?</strong></span><b id="policySpatialFieldState">awaiting a frozen frontier</b></header>
+                <div class="policy-spatial-controls"><label>score term<select id="policySpatialTerm" aria-label="Spatial score term"></select></label><button id="policySpatialToggle" type="button" aria-pressed="false" disabled>Show in 3D</button></div>
+                <div class="policy-spatial-legend"><span><i class="negative"></i>suppresses rank</span><span><i class="neutral"></i>neutral</span><span><i class="positive"></i>favors rank</span></div>
+                <div id="policySpatialExtremes" class="policy-spatial-extremes" aria-label="Preview strongest spatial field candidates"></div>
+                <article id="policySpatialDecomposition" class="policy-spatial-decomposition" aria-live="polite"></article>
+                <p>Discrete candidate sites are colored by either one signed ledger term or their exact composite sum, normalized symmetrically within this one frontier. This is not a continuous force, energy, concentration, or probability field.</p>
+              </section>
+              <section class="charge-shape-portrait-card" aria-label="Global supplied-charge shape candidate portrait">
+                <header><span><small>nonlocal supplied-charge geometry</small><strong>Dipole–quadrupole candidate portrait</strong></span><b id="chargeShapePortraitState">awaiting a charged frontier</b></header>
+                <svg id="chargeShapePortrait" class="charge-shape-portrait" viewBox="0 0 240 150" role="group" aria-label="Click an exact attachment candidate to inspect its global charge-shape change"></svg>
+                <div class="charge-shape-legend"><span><i class="current"></i>current frontier state</span><span><i class="history"></i>executed leap pathway</span><span><i class="improve"></i>candidate improves</span><span><i class="worsen"></i>candidate worsens</span></div>
+                <article id="chargeShapePortraitDetail" class="charge-shape-portrait-detail" aria-live="polite"></article>
+                <p>Axes are |p|/(Σ|q|R<sub>rms</sub>) and ||Q||<sub>F</sub>/(Σ|q|R<sub>rms</sub>²) about the geometric centroid. Lines are exact candidate transitions—not trajectories, electric fields, electrostatic energies, polarization, or physical time.</p>
+              </section>
+              <section class="ionic-convergence-card" aria-label="Ionic-pair cutoff convergence audit">
+                <header><span><small>finite-reach sensitivity</small><strong>Ionic-pair cutoff audit</strong></span><b id="ionicConvergenceState">awaiting a charged frontier</b></header>
+                <svg id="ionicConvergencePlot" class="ionic-convergence-plot" viewBox="0 0 240 150" role="group" aria-label="Click an exact attachment candidate to inspect its ionic-pair score across finite reaches"></svg>
+                <div class="ionic-convergence-legend"><span><i class="candidate"></i>exact candidate</span><span><i class="selected"></i>selected pose</span><span><i class="winner"></i>best at reach</span></div>
+                <article id="ionicConvergenceDetail" class="ionic-convergence-detail" aria-live="polite"></article>
+                <p>The same frozen candidates are re-evaluated at 2, 4, 8d<sub>nn</sub> and the global finite crop. Rank reversals diagnose cutoff sensitivity; they are not Ewald convergence, dielectric screening, electrostatic energy, or a thermodynamic limit.</p>
+              </section>
+              <section class="bond-valence-card" aria-label="Local scalar and vector bond-valence audit">
+                <header><span><small>oxidation-state coordination geometry</small><strong>Valence-sum &amp; vector balance</strong></span><b id="bondValenceState">awaiting a supported ionic frontier</b></header>
+                <div id="bondValenceCandidates" class="bond-valence-candidates" role="group" aria-label="Preview exact bond-valence candidates"></div>
+                <svg id="bondValencePortrait" class="bond-valence-portrait" viewBox="0 0 240 112" role="group" aria-label="Click an exact candidate to compare scalar valence satisfaction and vector balance"></svg>
+                <div class="bond-valence-path-heading"><span><small>retained structural states</small><strong>Coordination pathway</strong></span><b id="bondValencePathState">awaiting the first structural leap</b></div>
+                <svg id="bondValencePath" class="bond-valence-path" viewBox="0 0 240 100" role="group" aria-label="Inspect sampled scalar valence mismatch and vector-resultant magnitude across retained structural leaps"></svg>
+                <div id="bondValencePathReadout" class="bond-valence-path-readout" aria-live="polite"></div>
+                <div class="bond-valence-map-control"><label for="bondValenceMapSelect"><span><small>current structure</small><strong>3D coordination-defect map</strong></span><select id="bondValenceMapSelect"><option value="none" selected>Off · preserve element view</option><option value="scalar">Scalar · under / satisfied / over</option><option value="vector">Directional · resultant arrows</option></select></label><b id="bondValenceMapState">map off</b></div>
+                <div class="bond-valence-map-legend" aria-label="Bond-valence spatial map legend"><span><i class="under"></i>underbonded</span><span><i class="balanced"></i>near scalar/vector balance</span><span><i class="over"></i>overbonded / large resultant</span></div>
+                <div id="bondValenceMapExtremes" class="bond-valence-map-extremes" role="group" aria-label="Focus the strongest sampled coordination defects"></div>
+                <div class="bond-valence-scale"><span>underbonded</span><i></i><span>satisfied</span><i></i><span>overbonded</span></div>
+                <div id="bondValenceResiduals" class="bond-valence-residuals" aria-label="Before and after local valence residuals"></div>
+                <article id="bondValenceDetail" class="bond-valence-detail" aria-live="polite"></article>
+                <p>The portrait separates scalar valence-sum satisfaction from the magnitude of Σsᵢⱼr̂ᵢⱼ. A near-zero vector is expected only for a stable spherically symmetric coordination sphere; lone pairs and electronic or steric anisotropy can make a nonzero result meaningful. Parameters are checked IUCr entries and missing chemistry fails closed. This is not bond energy, electron density, force, redox, relaxation, or physical time.</p>
+              </section>
+              <section class="spin-geometry-card" aria-label="Collinear scalar spin geometry audit">
+                <header><span><small>explicit electronic-structure label geometry</small><strong>Collinear spin texture</strong></span><b id="spinGeometryState">explicit atomic spins unavailable</b></header>
+                <div class="spin-map-control"><label for="spinMapSelect"><span><small>current supplied sites</small><strong>3D scalar-spin map</strong></span><select id="spinMapSelect"><option value="none" selected>Off · preserve element view</option><option value="polarity">Signed scalar population</option><option value="correlation">Local pair correlation</option></select></label><b id="spinMapState">map off</b></div>
+                <div class="spin-map-legend"><span><i class="negative"></i>negative scalar</span><span><i class="neutral"></i>near zero / uncorrelated</span><span><i class="positive"></i>positive scalar</span></div>
+                <svg id="spinCorrelationPlot" class="spin-correlation-plot" viewBox="0 0 240 112" role="img" aria-label="Finite-crop radial correlation of supplied scalar atomic spins"></svg>
+                <div id="spinMapExtremes" class="spin-map-extremes" role="group" aria-label="Focus strongly polarized or correlated supplied sites"></div>
+                <article id="spinGeometryDetail" class="spin-geometry-detail" aria-live="polite"></article>
+                <p>Only explicit signed scalar atomic spin populations are used. Pair correlation is geometric and invariant to translation, proper rotation, atom order, and a global sign reversal. In preserve mode, the sign also travels as a discrete marking color and rejects a conflicting exact same-species overlap; it never supplies a ranking score. NOMAD does not supply a vector axis or guaranteed unit here, so the map has no arrows and claims no magnetic moment in μ<sub>B</sub>, exchange energy, Hamiltonian, Curie/Néel temperature, domain state, force, or magnetic dynamics.</p>
+              </section>
+              <div class="policy-sensitivity-heading"><small>pathway sensitivity</small><strong id="policySensitivityState">no evaluated frontiers</strong></div>
+              <div id="policyHistory" class="policy-history" role="group" aria-label="Inspect policy disagreement on recent frozen frontiers"></div>
+              <p id="policyPreviewState">Select a policy row to preview its winner in the 3D scene.</p>
+              <p>Admission geometry is identical in every row. Click ×1 beside a score term to cycle it off or double it on this frozen frontier. This previews a hypothesis intervention only: the executed growth policy does not change. During known-window replay, target-aware reconstruction gain is labeled; after certification it is absent.</p>
+            </section>
             <button id="trainVariantButton" class="train-variant" type="button">↶ Train a different marking</button>
             <div class="hierarchy-choice" role="group" aria-label="Cluster hierarchy mode">
               <button id="primitiveGrowthButton" type="button" aria-pressed="false"><small>primitive</small><strong>Clusters only</strong><span>one frontier generation</span></button>
               <button id="hierarchicalGrowthButton" class="active" type="button" aria-pressed="true"><small>recursive</small><strong>Clusters² enabled</strong><span>promote and self-feed</span></button>
             </div>
-            <p id="growthModeNote" class="control-note">The selected marking ranks the same exact candidate geometry. Hierarchy controls whether accepted clusters may generate the next frontier.</p>
+            <p id="growthModeNote" class="control-note">The selected marking ranks the same exact candidate geometry. Library entries are enabled only when the colored cluster, pose, and port vocabulary matches exactly. Hierarchy controls whether accepted clusters may generate the next frontier.</p>
+              </div>
+            </details>
           </div>
         </section>
 
@@ -500,6 +1371,18 @@
           <p><b>soft role and temporal obligation metrics:</b> finite colored parent→source channels replace exact state equality while retaining discharge, contradiction, and connection ownership; an order-sensitive variant also preserves when those events occur. Both contain statistically real group-heldout discrimination (role AUC .864, temporal AUC .750; AUC and log-loss <i>p</i> = .03125), but neither passes the action-selection null: each selects 8 / 10 development nuclei while shuffled refits have median seven and <i>p</i> = .50. On the consumed target-free trajectories the published-known exact branch falls to ranks thirteen and eight. These are diagnostic section coordinates, not search policies; the consumed target remains unopened.</p>
           <p><b>individual carried-port paths:</b> candidate supply is now separated from ranking. For each nucleus, 128 canonical target-free descriptor classes are expanded into witnessed root→child port actions. Every nucleus contains exact two-step paths (12 / 53 / 24 / 14 / 27 / 27 / 27 / 27 / 6 exact pairs). The first executor incorrectly added an unrelated raw child score after evaluating the learned pair; removing that double count raises group-heldout selection from 0 / 9 to 5 / 9. Four boundary environments still fail, so the reserved confirmation nucleus remains unopened.</p>
           <p><b>third-frontier value control:</b> a fixed raw-evidence shortlist of 512 paths per nucleus still contains exact alternatives everywhere. Each path is executed target-free for one additional step and described by its outgoing roles, order-two incidences, vote mass, colors, and normalized distance histogram. The group-heldout value selects only 4 / 9 exact paths—worse than the corrected two-step mark—so immediate frontier supply is rejected again as the missing search value.</p>
+          <p><b>stage-local connection value:</b> the repaired <code>12→4→8</code> tree is evaluated before terminal fusion. Twenty disjoint development nuclei contribute 320 target-free training candidates, but execution remains bounded to the original eight terminals per nucleus. The selected 16-step, four-bin temporal section chooses an exact supplied terminal in 19 / 19 nuclei and 59 colored sites, versus 19 / 19 and 57 for the connection-only order. Thirty-one complete within-nucleus refits reach at most 18 exact nuclei and 58 sites, so both plus-one results are <i>p</i> = .03125. This is a significant development result, not an autonomous-growth claim.</p>
+          <p><b>rollout-ranked spatial confirmation:</b> that exact model, its <code>12→4→8</code> geometry, an eight-terminal portfolio, and the maximin centre (120,−40,−220) were published before the new nucleus was opened. A 476-atom seed drives three self-fed blocks; every candidate tree, rollout, score, and selected successor freezes before one target-factory call creates the 2,069-atom target. The marked and stable-prefix arms each recover 6 / 9 colored sites, but the marked arm is 2 / 3 in the first block while the stable baseline is exactly 3 / 3. The marked arm has zero exact blocks; the baseline has one. The transfer, sustained-continuation, autonomous, stationary, and exponential gates are therefore all <b>red</b>. The result falsifies deployment of the otherwise significant temporal section rather than being hidden or retuned.</p>
+          <p><b>marking-library tree search:</b> the connection and rollout markings now order one immutable candidate set rather than running separate geometries. A round-robin shared beam preserves both the exact connection head at index 0 and the rollout head at index 7, so an unconfirmed learned marking can no longer erase the stronger baseline action. In the consumed three-block, width-two audit the shared tree expands 8 → 16 → 16 candidates and retains two states at every block; both terminal paths recover 6 / 9 sites and neither is exact. This closes a candidate-retention failure, not the autonomous-growth gap: the library chooses no winner, and stationary or exponential IQC growth remains red.</p>
+          <p><b>prefix channel and reach diagnosis:</b> the generic portfolio now accepts a predeclared beam schedule, parent-balanced or global allocation, replacement or additive value, and one finite state channel per marking. On the consumed nucleus, lineage-balanced 2 → 4 → 8 rollback retains eight terminals but none is exact (best 7 / 9 sites). Removing learned pruning shows that a bounded 12 → 8 → 16 port reach does contain a target-guided exact three-block path; after an exact two-site prefix the first correct exposed port is rank 14 of 740, outside the former reach of eight. A channel-diverse 8 → 16 → 32 autonomous prefix portfolio retains two exact first blocks but zero exact second blocks among 64 terminals. Candidate geometry is therefore available, while transferable prefix value remains the measured blocker; this consumed audit does not authorize autonomous, stationary, or exponential growth.</p>
+          <p><b>clusters² future-option portfolio:</b> parent branches are now valued by the distribution of their complete child trees rather than their immediate placement score. Four frozen marking channels—base, colored geometry, ports, and coupled pose/port—score the identical 126–141 child terminals per parent; each parent receives the mean of its best eight children. On the consumed eight-parent audit, the only exact parent moves from old rank eight to port-option rank one and mean-option rank three. A four-parent channel-diverse beam retains it, and the union of eight children per channel retains one exact six-action path, parent 8 → child 123. No channel's greedy top child is exact. Fifteen of 31 marginal-preserving parent-score shuffles also retain the path (retention <i>p</i> = .50; mean-rank <i>p</i> = .40625), so this is a real rollback-supply repair but not a causal selection win, autonomous commit, stationary rule, or exponential certificate.</p>
+          <p><b>held-out child-option graph:</b> the same idea is now tested across all ten consumed development nuclei rather than on one eight-parent tree. The frozen corpus contains 1,278 six-action parents, 142 exact labels, and at most eight target-free child actions per parent. For each held-out nucleus, order-one and order-two typed-port heads fit only the other nine nuclei; local port-mass and live-continuation channels see the same immutable children. The width-four portfolio retains an exact parent in 8 / 9 supplied nuclei and its mean first-exact rank sum is 30; every one of 31 marginal-preserving controls is worse on retention and all but one are worse on rank (both plus-one <i>p</i> = .03125). However, the strongest order-two head alone is also 8 / 9. This proves transferable, non-random parent-option structure, not an incremental causal win. Child nodes remain unlabeled individually, so a later-annulus execution must decide the third-block gate.</p>
+          <p><b>executable third-block diagnosis:</b> every one of the forty retained parents is re-seeded at the expanded radius and receives a fresh bounded 8 × 8 × 8 three-action tree. All 5,091 terminal action keys and four frozen scores are serialized before one consumed larger-target open; only 160 terminals survive the four-way library. Exact parents are present in eight nuclei. Their bounded trees contain 90 exact third-block paths across six nuclei, while the retained portfolio contains six exact paths across only three. Three failures are marking-pruning failures (first exact ranks reach 109), and two occur at the hard top-8 reach cutoff.</p>
+          <p><b>reach versus value:</b> a consumed-target uniform-cost diagnosis follows only correct prefixes for the four exact parents hidden by that cutoff. The unchanged frozen frontier contains an exact three-action path for all four: every minimum bottleneck rank is 12, with rank sums 21 or 23. Thus the port grammar supplies the geometry, but target-guided evidence cannot authorize changing reach from 8 to 12. A separate nested group-heldout terminal model—scores plus proper-SE(3)-invariant triangle, radius, and cross-distance features—also fails: it retains exact paths in 2 / 6 supplied nuclei versus 3 / 6 for the incumbent (retention <i>p</i> = .4375; rank <i>p</i> = .21875 against 31 shuffles). The next gate is a train-only adaptive or channel-diverse reach policy, not a target-tuned wider beam. Autonomous selection, stationary recurrence, and exponential IQC growth remain red.</p>
+          <p><b>compute-matched channel reach:</b> the generic marking now exposes the five continuous pose/port responses already learned from training. The candidate budget remains eight: three scalar leaders plus one previously unseen leader from each channel. On the four exact parents hidden by scalar top-8, this restores 11, 10, 11, and 10 exact terminal paths. Across all fifteen exact development parents it supplies 15 / 15 and all 8 / 8 eligible nuclei, versus 11 / 15 and 6 / 8 for scalar top-8; exact paths rise from 90 to 472 with no extra child constructions. Every action receipt freezes before one consumed target open. Because the allocation was designed after inspecting consumed failures, this is a preservation result—not fresh confirmation or an autonomous winner—and the production default remains unchanged.</p>
+          <p><b>fresh bounded clusters² supply:</b> the successor was frozen before a fourth maximin nucleus at (160,−180,−140), 161.25 units from all 89 prior centres, was opened. A whole-child proper-SE(3)-invariant marking contributes one action and a base fallback contributes five under each of all eight parents. The complete second frontier is hashed, but only 47 prefixes are expanded versus 168 for the eager library. Exact unordered-action memoization reduces 17,240 geometric advances to 8,207 while preserving path-dependent scores; the one-shot run finishes in 1,119.19 seconds under its 1,200-second gate. Before the target exists, 6,099 nine-action lineages and the receipt are immutable. One subsequent target open finds 410 exact lineages, 34 exact parent→child prefixes, and exact supply under every retained parent. This is a fresh green candidate-supply and compute result. No lineage winner is selected, so autonomous commitment, stationary recurrence, and exponential IQC growth remain red.</p>
+          <p><b>order-independent first frontier:</b> a bounded subset dynamic program now accepts a three-action parent only when all six action orders replay to the same colored cloud. The geometry and immutable candidate set are frozen before scoring. A group-heldout incidence marking preserves at least one exact closure in every development nucleus; on the consumed audit its top-eight batch contains two exact parents. This makes the displayed simultaneous flashes a certified commuting antichain rather than a visual grouping of convenient proposals.</p>
+          <p><b>closure-conditioned child transfer:</b> the next child value is fitted only after all second-frontier candidates have frozen. Its 3,994 development rows contain 95 exact continuations, and grouped holdout keeps all 14 exact parent branches within a top-16 per-parent schedule. A fifth consumed geometry falsifies transfer: both available exact six-action continuations rank 132nd and 133rd, so neither survives top 16. A fixed six-way feature ablation then removes radial bins, nearest-neighbor slots, or the entire 408-coordinate site section without changing candidates; every arm still misses top 16, and the four-score legacy section reaches only ranks 95 and 96. The missing connection change is now represented explicitly as a canonical six-node graph: three typed parent obligations, three typed child obligations, and all invariant within/cross incidences. Its lower-order value improves whole-nucleus holdout to 12 / 14 supplied branches and moves the fifth-geometry exact ranks to 69 and 71; the higher-order value supplies 9 / 14 and reaches ranks 78 and 80. This is meaningful transfer improvement, but both remain outside the unchanged top-16 gate. The receipts are pinned as a representation boundary rather than promoted into the marking library. Commuting geometry is green; transferable child valuation, autonomous growth, stationarity, and exponential IQC growth remain red.</p>
           <div class="common-gate-head"><span>learned program</span><span>factor</span><span>≥1m</span><span>flat / recursive</span></div>
           <div><b>NaCl quotient</b><em>8.000×</em><i>a5</i><code>176,942×</code></div>
           <div><b>IQC section</b><em>≥3.884×</em><i>a6</i><code>33,221×</code></div>
@@ -544,8 +1427,138 @@
             <label><input id="markingToggle" type="checkbox" checked><span>Marking domain</span></label>
             <label><input id="bondToggle" type="checkbox" checked><span>Accepted bonds</span></label>
             <label><input id="frontierToggle" type="checkbox" checked><span>Candidate frontier</span></label>
+            <label><input id="displacementToggle" type="checkbox" checked disabled><span id="displacementToggleLabel">Reported / transported U/B halos · unavailable</span></label>
+            <label><input id="forceToggle" type="checkbox" checked disabled><span id="forceToggleLabel">Residual forces · unavailable</span></label>
+            <label><input id="localConstraintMismatchToggle" type="checkbox"><span id="localConstraintMismatchToggleLabel">Current local constraint mismatch · learning geometry</span></label>
+            <label class="local-deformation-layer"><span>Mismatch color</span><select id="localConstraintMismatchMetric" aria-label="Current local geometric mismatch halo observable">
+              <option value="combined">contact + angle residual</option>
+              <option value="distance">colored contact-length residual</option>
+              <option value="angle">separated angle-mode residual</option>
+              <option value="coordination">ordered coordination shortfall</option>
+            </select></label>
+            <label><input id="relaxationDisplacementToggle" type="checkbox" checked disabled><span id="relaxationDisplacementToggleLabel">Selected → final displacement · unavailable</span></label>
+            <label><input id="relaxationLocalEnvironmentToggle" type="checkbox" checked disabled><span id="relaxationLocalEnvironmentToggleLabel">Local rearrangement √D²min · unavailable</span></label>
+            <label class="local-deformation-layer"><span>Local deformation color</span><select id="relaxationLocalEnvironmentMetric" aria-label="Local deformation halo observable" disabled>
+              <option value="nonaffine">non-affine residual · √D²min</option>
+              <option value="shear">coherent deviatoric strain · Edev</option>
+              <option value="dilation">local volume change · det F − 1</option>
+              <option value="neighbor">neighbor exchange · 1 − persistence</option>
+            </select></label>
             <label><input id="rotateToggle" type="checkbox" checked><span>Auto rotate</span></label>
           </div>
+        </section>
+
+        <section class="receipt-section">
+          <p class="eyebrow">04 · reproducibility</p>
+          <div class="receipt-actions">
+            <button id="downloadReceiptButton" type="button">Download receipt</button>
+            <button id="copyReceiptButton" type="button">Copy JSON</button>
+          </div>
+          <p id="receiptStatus" class="receipt-status" aria-live="polite">Stage-aware JSON · input geometry is SHA-256 digested, not embedded.</p>
+          <div class="notebook-heading"><small>experiment notebook</small><span id="notebookState">0 saved runs</span></div>
+          <div class="notebook-actions">
+            <button id="saveNotebookButton" type="button">Save current run</button>
+            <button id="computeNotebookResponseButton" type="button">Compute response atlas</button>
+            <button id="clearNotebookButton" type="button" disabled>Clear notebook</button>
+          </div>
+          <p id="notebookResponseAnalysisStatus" class="notebook-response-analysis-status" aria-live="polite">Optional · blocked creation-response models are computed only on request, then reused by state-matched notebook snapshots.</p>
+          <div id="notebookEntries" class="notebook-entries" role="group" aria-label="Select two saved experiment runs to compare"></div>
+          <div id="notebookComparison" class="notebook-comparison" aria-live="polite"><p>Save two run states to compare their geometric hypotheses and outcomes.</p></div>
+          <article id="notebookHypothesisOutcome" class="notebook-hypothesis-outcome waiting" aria-live="polite">
+            <header><small>registered hypothesis outcome</small><strong>select baseline + ablation</strong><span>the portal will require identical inputs and controls, then align both runs by discrete structural update</span></header>
+          </article>
+          <article id="notebookInterventionAudit" class="notebook-intervention-audit" aria-live="polite">
+            <header><small>intervention audit</small><strong>select two runs</strong><span>input identity and changed assumptions will be checked before any causal comparison</span></header>
+          </article>
+          <article id="notebookPhysicsAudit" class="notebook-physics-audit waiting" aria-live="polite">
+            <header><small>physics-manifest comparison</small><strong>select two executed runs</strong><span>hard constraints, learned evidence, declared hypotheses, diagnostics, and open boundaries will be compared without coordinates</span></header>
+            <div id="notebookPhysicsFilters" class="notebook-physics-filters" role="group" aria-label="Physics manifest comparison filter">
+              <button type="button" data-notebook-physics-filter="changed" aria-pressed="true">changed</button>
+              <button type="button" data-notebook-physics-filter="all" aria-pressed="false">all</button>
+              <button type="button" data-notebook-physics-filter="open" aria-pressed="false">open boundary</button>
+            </div>
+            <div id="notebookPhysicsMatrix" class="notebook-physics-matrix" role="group" aria-label="Compared physical information layers"></div>
+            <div id="notebookPhysicsDetail" class="notebook-physics-detail"></div>
+          </article>
+          <article id="notebookTrajectoryAudit" class="notebook-trajectory-audit" aria-live="polite">
+            <header><small>structural-leap comparison</small><strong>select two runs</strong><span>coordinate-free leap histories will be aligned by search update, never by physical time</span></header>
+            <div class="notebook-trajectory-toolbar">
+              <div class="notebook-trajectory-modes" role="group" aria-label="Notebook trajectory view">
+                <button type="button" data-notebook-trajectory-mode="series" aria-pressed="true">leap series</button>
+                <button type="button" data-notebook-trajectory-mode="pathway" aria-pressed="false">order pathway</button>
+              </div>
+              <label class="notebook-trajectory-observable">observable
+                <select id="notebookTrajectoryObservable" aria-label="Structural-leap comparison observable">
+                <option value="atoms">explicit atoms</option>
+                <option value="radius">radius of gyration · Å</option>
+                <option value="lineageRadius">largest-nucleus radius · Å</option>
+                <option value="nuclei">effective nucleus count</option>
+                <option value="shared">shared interface fraction</option>
+                <option value="interfaceSites">largest registered interface · sites</option>
+                <option value="interfaceThickness">largest-interface thickness · Å</option>
+                <option value="interfaceExposure">largest-interface coordination deficit</option>
+                <option value="feedstockRemaining">feedstock remaining · atoms</option>
+                <option value="continuationSites">outside-observation continuation · sites</option>
+                <option value="relaxationDisplacement">post-attachment maximum displacement · Å</option>
+                <option value="localOrder">mean local q₆ / |ψ₆|</option>
+                <option value="reciprocalProminence">S(q) dominant-peak prominence</option>
+                <option value="localOrderShift">local-symmetry JS distance</option>
+                <option value="scatteringShift">reciprocal-space JS distance</option>
+                <option value="extent">maximum nucleus extent · Å</option>
+                <option value="anisotropy">relative shape anisotropy · κ²</option>
+                <option value="exposure">colored coordination deficit</option>
+                <option value="dimension">inferred structural dimension</option>
+                </select>
+              </label>
+              <div id="notebookTrajectoryHarmonics" class="notebook-trajectory-harmonics" role="group" aria-label="Local orientational harmonic" hidden>
+                <span>local order</span>
+                <button type="button" data-notebook-pathway-harmonic="4" aria-pressed="false">q₄ / ψ₄</button>
+                <button type="button" data-notebook-pathway-harmonic="6" aria-pressed="true">q₆ / ψ₆</button>
+                <button type="button" data-notebook-pathway-harmonic="12" aria-pressed="false">q₁₂ / ψ₁₂</button>
+              </div>
+            </div>
+            <svg id="notebookTrajectoryPlot" viewBox="0 0 280 118" role="img" aria-label="Explicit atoms represented after each structural leap"></svg>
+            <div id="notebookTrajectoryStateDetail" class="notebook-trajectory-state" aria-live="polite"></div>
+            <div id="notebookTrajectorySummary" class="notebook-trajectory-summary"></div>
+          </article>
+          <article id="notebookResponseReadiness" class="notebook-response-readiness unavailable" aria-live="polite">
+            <header>
+              <small>cross-run response readiness</small>
+              <strong>save a material-growth response run</strong>
+              <span>compare chronological support without pooling placement rows</span>
+              <label>response
+                <select id="notebookResponseOutcome" aria-label="Cross-run response-readiness outcome">
+                  <option value="nonaffine">mean √D²min · Å</option>
+                  <option value="radialDrift">mean radial drift · Å</option>
+                  <option value="shellChange">mean neighbor-shell change</option>
+                  <option value="centerDisplacement">mean center displacement · Å</option>
+                  <option value="equivalentShear">mean equivalent shear</option>
+                  <option value="absoluteVolumeResponse">mean |local ΔV/V|</option>
+                </select>
+              </label>
+            </header>
+            <div id="notebookResponseReadinessMatrix" class="notebook-response-readiness-matrix" role="table" aria-label="Saved-run blocked-horizon readiness matrix"></div>
+            <div id="notebookResponseReadinessDetail" class="notebook-response-readiness-detail" aria-live="polite"></div>
+            <p id="notebookResponseReadinessBoundary"></p>
+          </article>
+          <article id="notebookSweepAudit" class="notebook-sweep-audit waiting" aria-live="polite">
+            <header><small>controlled response study</small><strong>save at least three comparable runs</strong><span>one recorded geometric intervention may vary while the input and every other non-analysis factor remain fixed</span></header>
+            <div class="notebook-sweep-toolbar">
+              <label>intervention<select id="notebookSweepFactor" aria-label="Controlled response intervention" disabled></select></label>
+              <label>outcome<select id="notebookSweepOutcome" aria-label="Controlled response outcome">
+                <option value="generatedSites">generated structural sites</option>
+                <option value="acceptedDecisions">accepted branches</option>
+                <option value="rejectedDecisions">rejected branches</option>
+                <option value="causalDepth">causal depth</option>
+                <option value="localConstraintEvaluations">local geometric tests</option>
+                <option value="classificationConfidence">classification confidence</option>
+                <option value="localOrder">final mean local q₆ / |ψ₆|</option>
+                <option value="reciprocalProminence">final S(q) peak prominence</option>
+              </select></label>
+            </div>
+            <svg id="notebookSweepPlot" viewBox="0 0 280 118" role="img" aria-label="Controlled geometric intervention response across saved runs"></svg>
+            <div id="notebookSweepSummary" class="notebook-sweep-summary"></div>
+          </article>
         </section>
 
         <section class="legend-section">
@@ -560,16 +1573,91 @@
             <p id="stageEyebrow" class="eyebrow">input · static atom coordinates</p>
             <h1 id="stageTitle">Begin with the configuration we know</h1>
           </div>
-          <div class="phase-readout"><small>emergent read</small><strong id="phaseReadout">competing</strong></div>
+          <div class="stage-heading-actions">
+            <button id="stageFocusToggle" class="stage-focus-toggle" type="button" aria-pressed="false"><span>focus microscope</span><b>↗</b></button>
+            <div class="phase-readout"><small>emergent read</small><strong id="phaseReadout">competing</strong></div>
+          </div>
         </div>
 
         <div id="viewport" class="viewport">
-          <div id="clusterGallery" class="cluster-gallery" aria-label="One rotating three-dimensional scene per learned cluster type" hidden></div>
+          <div id="clusterGallery" class="cluster-gallery" aria-label="One rotating three-dimensional marking scene per learned cluster type" hidden></div>
           <div class="viewport-chrome top-left"><span id="eventKind">SEED</span><b id="eventCounter">0000</b></div>
           <div class="viewport-chrome top-right"><span id="viewportHint">drag to orbit · wheel to zoom</span><b id="unitCellBadge" hidden>unit cell</b></div>
+          <button id="siteProvenanceNext" class="site-provenance-trigger" type="button">inspect site</button>
+          <div id="externalDriveBadge" class="external-drive-badge" hidden><i id="externalDriveGlyph">↑</i><span><b id="externalDriveBadgeLabel">axis +Z</b><small>declared soft drive · no force field</small></span></div>
+          <div id="affineLoadBadge" class="affine-load-badge" hidden><i id="affineLoadGlyph">⇳</i><span><b id="affineLoadBadgeLabel">2% affine load</b><small>deformed metric · coordinates unchanged</small></span></div>
+          <div id="loopClosureBadge" class="loop-closure-badge" hidden><i>⟳</i><span><b id="loopClosureBadgeLabel">loop closure</b><small>multi-parent geometric consensus</small></span></div>
+          <div id="arrivalPathBadge" class="arrival-path-badge" hidden><i>⇢</i><span><b id="arrivalPathBadgeLabel">arrival path</b><small>swept clearance · no barrier</small></span></div>
+          <div id="explorationBadge" class="exploration-badge" hidden><i>∿</i><span><b id="explorationBadgeLabel">T* 0.15 · seed 1</b><small>reproducible path sampling</small></span></div>
+          <div id="nucleiBadge" class="nuclei-badge" hidden><i>◎</i><span><b id="nucleiBadgeLabel">1 observed nucleus</b><small>interfaces emerge on contact</small></span></div>
+          <div id="frontMorphologyBadge" class="front-morphology-badge" hidden><i>⌒</i><span><b id="frontMorphologyBadgeLabel">smooth front</b><small>angular support · no surface energy</small></span></div>
+          <div id="epitaxyBadge" class="epitaxy-badge" hidden><i>▦</i><span><b id="epitaxyBadgeLabel">hexagonal template</b><small>declared registry · no adhesion energy</small></span></div>
           <div class="axis-labels" aria-hidden="true"><span class="x">x</span><span class="y">y</span><span class="z">z</span></div>
+          <article id="siteProvenanceInspector" class="site-provenance-inspector" hidden aria-live="polite">
+            <header><span><small>site provenance microscope</small><strong id="siteProvenanceState">select an atom</strong></span><div class="site-provenance-actions"><button id="siteProvenancePin" type="button">pin as site A</button><button id="siteProvenanceCycle" type="button">next B</button><button id="siteProvenanceClose" type="button" aria-label="Close site inspector">×</button></div></header>
+            <div id="siteProvenanceGrid" class="site-provenance-grid"></div>
+            <section class="site-constraint-audit" aria-label="Selected site learned geometric constraints">
+              <header><small>learned local geometry</small><strong id="siteConstraintState">awaiting site</strong></header>
+              <div id="siteConstraintMeters" class="site-constraint-meters"></div>
+              <div id="siteConstraintChannels" class="site-constraint-channels"></div>
+            </section>
+            <section class="site-creation-physics-audit" aria-label="Geometry-encoded physics frozen when this site was created">
+              <header><small>physics encoded at creation</small><strong id="siteCreationPhysicsState">awaiting site</strong></header>
+              <div id="siteCreationPhysicsRows" class="site-constraint-channels"></div>
+              <p id="siteCreationPhysicsBoundary"></p>
+            </section>
+            <section class="site-creation-response" aria-label="Creation geometry compared with the current local environment">
+              <header><small>creation → current response</small><strong id="siteCreationResponseState">awaiting site</strong></header>
+              <div id="siteCreationResponseGrid" class="site-provenance-grid"></div>
+              <p id="siteCreationResponseBoundary"></p>
+            </section>
+            <section class="site-structural-history" aria-label="Selected site's changed local geometry across structural leaps">
+              <header><small>local structural pathway</small><strong id="siteStructuralHistoryState">awaiting site</strong></header>
+              <svg id="siteStructuralHistoryPlot" viewBox="0 0 284 84" role="group" aria-label="No local structural history selected"></svg>
+              <div id="siteStructuralHistorySteps" class="site-structural-history-steps"></div>
+              <p id="siteStructuralHistoryBoundary"></p>
+            </section>
+            <section class="site-population-response" aria-label="Creation physics associated with later local geometry across grouped placements">
+              <header><span><small>creation physics ↔ later response</small><strong id="sitePopulationResponseState">awaiting grouped placements</strong></span><label><small>outcome</small><select id="sitePopulationResponseOutcome"><option value="nonaffine">non-affine √D²min</option><option value="radialDrift">radial drift</option><option value="shellChange">shell membership change</option><option value="centerDisplacement">center displacement</option><option value="equivalentShear">equivalent shear</option><option value="absoluteVolumeResponse">absolute volume response</option></select></label></header>
+              <svg id="sitePopulationResponsePlot" viewBox="0 0 284 100" role="img" aria-label="Creation-response association unavailable"></svg>
+              <article id="sitePopulationValidation" class="unavailable"><small>earlier blocks → later blocks</small><strong>awaiting three structural-leap blocks</strong><span>term selection never reads the held block</span></article>
+              <article id="sitePopulationSurrogate" class="site-response-surrogate unavailable"><small>joint geometry model · earlier → later</small><strong>awaiting grouped response blocks</strong><span>fixed ridge · compared with the earlier-block mean</span></article>
+              <div id="sitePopulationLeapProfile" class="site-population-leap-profile" role="img" aria-label="Per-leap association stability unavailable"></div>
+              <div id="sitePopulationResponseTerms" class="site-population-response-terms"></div>
+              <details class="site-population-artifact"><summary><span><small>reproducibility artifact</small><strong id="sitePopulationArtifactState">awaiting grouped records</strong></span></summary><div id="sitePopulationArtifactGrid" class="site-provenance-grid"></div><button id="sitePopulationArtifactCopy" type="button">copy dataset</button></details>
+              <p id="sitePopulationResponseBoundary"></p>
+            </section>
+            <section id="siteEnvironmentComparison" class="site-environment-comparison" aria-label="Coordinate-free comparison of two selected sites" hidden>
+              <header><span><small>site A ↔ site B</small><strong id="siteComparisonState">pin A, then select B</strong></span><button id="siteComparisonClear" type="button">clear</button></header>
+              <div id="siteComparisonGrid" class="site-provenance-grid"></div>
+              <div id="siteComparisonChannels" class="site-constraint-channels"></div>
+              <p id="siteComparisonBoundary"></p>
+            </section>
+            <p id="siteProvenanceBoundary">Click-derived local geometry only; not stored in the receipt.</p>
+          </article>
           <div class="viewport-caption"><span id="captionAction">Every point is an observed species and position; no cluster labels are supplied.</span></div>
         </div>
+
+        <section id="processTimeline" class="process-timeline" aria-label="Reversible stage process timeline" hidden>
+          <div class="process-timeline-heading">
+            <div><small id="processTimelineEyebrow">process microscope</small><strong id="processTimelineTitle">Connection decisions</strong></div>
+            <span id="processTimelineState">0 / 0</span>
+          </div>
+          <input id="processTimelineInput" type="range" min="0" max="1" step="1" value="0" aria-label="Inspect an intermediate stage state">
+          <div class="process-timeline-scale" aria-hidden="true"><span>initial hypotheses</span><i></i><span>frozen result</span></div>
+          <p id="processTimelineNote">Drag to inspect an intermediate state; Play resumes from the selected point.</p>
+          <div id="processEvidenceLedger" class="process-evidence-ledger" aria-label="Evidence at the selected process step"></div>
+          <p id="processEvidenceDetail" class="process-evidence-detail" aria-live="polite"></p>
+        </section>
+
+        <section id="molecularCoverRibbon" class="molecular-cover-ribbon" aria-label="Live molecular cluster cover decomposition" hidden>
+          <header>
+            <span><small>molecular cover decomposition</small><strong id="molecularCoverTitle">Finite molecules and the geometry between them</strong></span>
+            <b id="molecularCoverState">awaiting cluster discovery</b>
+          </header>
+          <div id="molecularCoverFlow" class="molecular-cover-flow"></div>
+          <p id="molecularCoverBoundary">Molecular bonds, connection clusters, and explicit void boundaries remain distinct geometric objects.</p>
+        </section>
 
         <div class="metrics-strip" aria-label="Live metrics">
           <article><small id="atomLabel">ATOMS</small><strong id="atomMetric">216</strong><span id="atomDelta">known xyz + species</span></article>
@@ -582,7 +1670,38 @@
           <article class="structure-card">
             <div class="structure-heading">
               <div><p id="rdfEyebrow" class="eyebrow">finite-window RDF</p><strong id="rdfTitle">g(r / a)</strong></div>
-              <span id="rdfStatus">known 216 · live 0</span>
+              <div class="rdf-controls">
+                <select id="structureObservableSelect" aria-label="Structural observable">
+                  <option value="rdf">real space · RDF</option>
+                  <option value="sq">reciprocal space · S(q)</option>
+                  <option value="order">local order · qℓ / ψℓ</option>
+                  <option value="centrosymmetry">defect geometry · centrosymmetry</option>
+                </select>
+                <select id="rdfPairSelect" aria-label="Radial distribution species pair"><option value="all">all element pairs</option></select>
+                <select id="scatteringContrastSelect" aria-label="Reciprocal-space scattering contrast" hidden>
+                  <option value="unit">all atoms · unit number density</option>
+                </select>
+                <select id="scatteringDisplacementSelect" aria-label="Crystallographic displacement treatment" hidden>
+                  <option value="mean">mean positions</option>
+                  <option value="reported">reported Ueq damping</option>
+                  <option value="reported-anisotropic">reported full Uij damping</option>
+                </select>
+                <select id="orientationalOrderSelect" aria-label="Orientational-order harmonic" hidden>
+                  <option value="4">ℓ = 4 · cubic / square-sensitive</option>
+                  <option value="6" selected>ℓ = 6 · close-packed / hexatic</option>
+                  <option value="12">ℓ = 12 · icosahedral / dodecagonal</option>
+                </select>
+                <button id="orientationalOrderMapButton" type="button" aria-pressed="false" hidden>show spatial halo</button>
+                <select id="centrosymmetryNeighborSelect" aria-label="Centrosymmetry neighbor shell" hidden>
+                  <option value="auto" selected>auto · modal complete shell</option>
+                  <option value="4">4 neighbors · square / 2D</option>
+                  <option value="6">6 neighbors · simple cubic / hexagonal</option>
+                  <option value="8">8 neighbors · bcc</option>
+                  <option value="12">12 neighbors · fcc / hcp</option>
+                </select>
+                <button id="centrosymmetryMapButton" type="button" aria-pressed="false" hidden>show inversion-asymmetry halos</button>
+                <span id="rdfStatus">known 216 · live 0</span>
+              </div>
             </div>
             <svg id="rdfChart" viewBox="0 0 360 118" role="img" aria-label="Radial distribution function for known positions and live reconstruction"></svg>
             <div id="rdfLegend" class="chart-legend"><span class="known-key">known positions</span><span class="live-key">live reconstruction</span></div>
@@ -607,8 +1726,145 @@
             <div><dt>action</dt><dd id="actionValue">—</dd></div>
             <div><dt>domain</dt><dd id="domainValue">—</dd></div>
             <div><dt>compatibility interval</dt><dd id="energyValue">—</dd></div>
+            <div><dt>geometric strain</dt><dd id="strainValue">—</dd></div>
+            <div><dt>composition drift</dt><dd id="compositionValue">—</dd></div>
+            <div><dt>formal-charge drift</dt><dd id="chargeValue">—</dd></div>
+            <div><dt>surface deficit</dt><dd id="surfaceValue">—</dd></div>
             <div><dt>resolved by</dt><dd id="resolverValue">—</dd></div>
           </dl>
+          <div class="constraint-ledger-heading"><small>geometry-as-physics ledger</small><span>admission gates · ranking terms</span></div>
+          <div id="constraintLedger" class="constraint-ledger" aria-live="polite"></div>
+          <article id="constraintDetail" class="constraint-detail" aria-live="polite">
+            <header><small>selected geometric surrogate</small><strong>Choose a ledger tile</strong><span>inspect evidence → encoding → search role → claim boundary</span></header>
+          </article>
+        </section>
+
+        <section class="observation-provenance-card" aria-label="Measurement to geometry provenance chain">
+          <div class="section-heading"><p class="eyebrow">observation → geometry provenance</p><span id="observationProvenanceState">structural input</span></div>
+          <div id="observationProvenance" class="observation-provenance" role="group" aria-label="Inspect how recorded observations enter or do not enter geometric learning"></div>
+          <article id="observationProvenanceDetail" class="observation-provenance-detail" aria-live="polite"></article>
+        </section>
+
+        <section class="scale-passport-card" aria-label="Live multiscale geometry passport">
+          <div class="section-heading"><p class="eyebrow">multiscale geometry passport</p><span id="scalePassportState">atomic evidence</span></div>
+          <div id="scalePassport" class="scale-passport" role="group" aria-label="Inspect encoded physical scales"></div>
+          <article id="scalePassportDetail" class="scale-passport-detail" aria-live="polite"></article>
+        </section>
+
+        <section id="leapCertificateSection" class="leap-certificate-section" hidden>
+          <div class="section-heading"><p class="eyebrow">structural leap certificate</p><span id="leapCertificateState">no action yet</span></div>
+          <div id="leapHistory" class="leap-history" role="group" aria-label="Inspect recent structural leap updates"></div>
+          <div id="leapFlow" class="leap-flow" aria-live="polite"></div>
+          <article id="leapConsequenceLab" class="leap-consequence-lab" aria-live="polite">
+            <header><span><small>material consequence fingerprint</small><strong id="leapConsequenceState">seed state</strong></span>
+              <div id="leapConsequenceFilters" role="group" aria-label="Filter material consequences by structural scale">
+                <button type="button" data-consequence-filter="all" aria-pressed="true">all</button>
+                <button type="button" data-consequence-filter="local" aria-pressed="false">local</button>
+                <button type="button" data-consequence-filter="mesoscale" aria-pressed="false">meso</button>
+                <button type="button" data-consequence-filter="chemistry" aria-pressed="false">chemistry</button>
+                <button type="button" data-consequence-filter="reciprocal" aria-pressed="false">reciprocal</button>
+              </div></header>
+            <div id="leapConsequenceMatrix" class="leap-consequence-matrix" role="group" aria-label="Before and after material observables for the selected structural leap"></div>
+            <article id="leapConsequenceDetail" class="leap-consequence-detail"></article>
+            <p id="leapConsequenceBoundary">Each row compares two certified structural states. It is not elapsed time, a free-energy change, or a claim that either direction is favorable.</p>
+          </article>
+          <article class="stoichiometry-pathway" aria-label="Interactive species-resolved stoichiometry pathway">
+            <header><span><small>multicomponent stoichiometry pathway</small><strong id="stoichiometryPathwayState">seed composition</strong></span>
+              <div id="stoichiometryPathwaySpecies" role="group" aria-label="Select a species to inspect"></div></header>
+            <div id="stoichiometryPathwayTimeline" class="stoichiometry-pathway-timeline" role="group" aria-label="Species fractions after each structural leap"></div>
+            <svg id="stoichiometryPathwayPlot" viewBox="0 0 300 142" role="img" aria-label="Selected species fraction across certified structural states"></svg>
+            <div id="stoichiometryPathwayReadout" class="stoichiometry-pathway-readout"></div>
+            <p id="stoichiometryPathwayBoundary">Fractions and integer site counts are exact for each retained structural state. The supplied composition is a geometric bookkeeping reference—not chemical potential, phase equilibrium, diffusion, flux, or physical time.</p>
+          </article>
+          <article class="packing-pathway" aria-label="Interactive finite local packing-density pathway">
+            <header><span><small>finite local packing audit</small><strong id="packingPathwayState">seed neighborhood</strong></span>
+              <div id="packingPathwayMetrics" role="group" aria-label="Select a packing-density statistic">
+                <button type="button" data-packing-metric="median" aria-pressed="true">all centers</button>
+                <button type="button" data-packing-metric="core" aria-pressed="false">inner core</button>
+                <button type="button" data-packing-metric="surface" aria-pressed="false">outer shell</button>
+                <button type="button" data-packing-metric="volume" aria-pressed="false">local volume</button>
+              </div></header>
+            <div class="packing-pathway-plots">
+              <figure><figcaption>selected leap distribution <span><i class="before"></i>before <i class="after"></i>after</span></figcaption><svg id="packingDistributionPlot" viewBox="0 0 300 112" role="img" aria-label="Before and after local relative-density distributions"></svg></figure>
+              <figure><figcaption>retained structural states <span><i class="core"></i>core <i class="surface"></i>surface</span></figcaption><svg id="packingPathwayPlot" viewBox="0 0 300 112" role="img" aria-label="Local relative packing density across structural leaps"></svg></figure>
+            </div>
+            <section class="radial-material-profile" aria-label="Core-to-growth-front chemistry and density profile">
+              <header><span><small>core → growth front</small><strong id="packingRadialState">radial material profile</strong></span><div id="packingRadialChannels" role="group" aria-label="Select density or an element fraction"></div></header>
+              <svg id="packingRadialPlot" viewBox="0 0 300 128" role="img" aria-label="Radial density or composition profile through the selected structural state"></svg>
+              <div id="packingRadialReadout" class="packing-radial-readout"></div>
+            </section>
+            <div id="packingPathwayReadout" class="packing-pathway-readout"></div>
+            <p id="packingPathwayBoundary">A finite k-nearest-neighbor number-density ratio compares the explicit structure with the inner supplied configuration. It is not mass density, porosity, thermodynamic free volume, pressure, energy, or physical time.</p>
+          </article>
+          <article class="void-clearance-pathway" aria-label="Interactive finite interstitial-clearance pathway">
+            <header><span><small>explicit empty-region geometry</small><strong id="voidClearanceState">awaiting witnessed simplices</strong></span>
+              <div id="voidClearanceMetrics" role="group" aria-label="Select an interstitial-clearance statistic">
+                <button type="button" data-void-metric="median" aria-pressed="false">median</button>
+                <button type="button" data-void-metric="p90" aria-pressed="true">large · p90</button>
+                <button type="button" data-void-metric="maximum" aria-pressed="false">maximum</button>
+                <button type="button" data-void-metric="front" aria-pressed="false">growth front</button>
+              </div></header>
+            <div class="void-clearance-plots">
+              <figure><figcaption>selected leap distribution <span><i class="before"></i>before <i class="after"></i>after</span></figcaption><svg id="voidClearanceDistribution" viewBox="0 0 300 112" role="img" aria-label="Before and after empty-center clearance distributions"></svg></figure>
+              <figure><figcaption>radial empty-center landscape <span><i class="reference"></i>supplied <i class="current"></i>current</span></figcaption><svg id="voidClearanceRadial" viewBox="0 0 300 112" role="img" aria-label="Clearance versus normalized centroid radius"></svg></figure>
+              <figure class="history"><figcaption>retained structural states</figcaption><svg id="voidClearancePath" viewBox="0 0 300 112" role="img" aria-label="Selected clearance statistic across structural leaps"></svg></figure>
+            </div>
+            <section class="void-network-audit" aria-label="Witnessed empty-region face-adjacency network">
+              <header><span><small>simplex-face adjacency</small><strong id="voidNetworkState">network unresolved</strong></span><div id="voidNetworkFilters" role="group" aria-label="Filter empty-center graph nodes"><button type="button" data-void-network="all" aria-pressed="true">all</button><button type="button" data-void-network="largest" aria-pressed="false">largest component</button><button type="button" data-void-network="spanning" aria-pressed="false">core → front</button><button type="button" data-void-network="isolated" aria-pressed="false">isolated cages</button></div></header>
+              <div class="void-steric-controls"><label><small>network domain</small><select id="voidTopologyMode" aria-label="Interstitial network domain"><option value="finite">live finite window</option><option value="reference-periodic">periodic input quotient</option></select></label><label><small>framework envelope</small><select id="voidRadiusModel" aria-label="Framework radius model"><option value="point">point sites</option><option value="fitted">sample-fitted contacts</option><option value="covalent">covalent-radius proxy</option></select></label><label><small>site displacement</small><select id="voidDisplacementModel" aria-label="Reported crystallographic displacement envelope"><option value="0">reported sites only</option><option value="1">+ 1σ ADP envelope</option><option value="2">+ 2σ ADP envelope</option><option value="3">+ 3σ ADP envelope</option></select></label><label><small>probe preset</small><select id="voidProbeSpecies" aria-label="Effective probe radius preset"></select></label></div>
+              <label class="void-throat-control" for="voidThroatThreshold"><span><small>effective probe / safety threshold</small><strong id="voidThroatThresholdValue">0.50aₙₙ</strong></span><input id="voidThroatThreshold" type="range" min="0" max="1.5" step="0.01" value="0.5" aria-label="Minimum effective corridor clearance"></label>
+              <div id="voidNetworkReadout" class="void-network-readout"></div>
+            </section>
+            <div id="voidClearanceReadout" class="void-clearance-readout"></div>
+            <p id="voidClearanceBoundary">The live finite graph preserves the original inside-simplex rule. An opt-in periodic input quotient instead lifts the reported 3D cell, retains empty circumsphere centers, and certifies nonzero integer cell winding. Neither view is accessible porosity, physical transport, diffusion, or a migration barrier.</p>
+          </article>
+          <article class="multiscale-pathway" aria-label="Interactive local-order and reciprocal-order pathway">
+            <header><span><small>multiscale order pathway</small><strong id="multiscalePathwayState">seed state</strong></span>
+              <div id="multiscalePathwayHarmonics" role="group" aria-label="Local-order harmonic for the pathway">
+                <button type="button" data-pathway-harmonic="4" aria-pressed="false">q₄</button>
+                <button type="button" data-pathway-harmonic="6" aria-pressed="true">q₆</button>
+                <button type="button" data-pathway-harmonic="12" aria-pressed="false">q₁₂</button>
+              </div></header>
+            <svg id="multiscalePathwayPlot" viewBox="0 0 300 170" role="img" aria-label="Mean local orientational order versus reciprocal-space peak prominence after each structural leap"></svg>
+            <div id="multiscalePathwayReadout"><span>local and reciprocal evidence await one leap</span></div>
+            <p>Each point is one certified structural state. The path compares local orientational order with finite-window geometric S(q); it is not a phase diagram, reaction coordinate, free-energy landscape, or physical-time trajectory.</p>
+          </article>
+          <article id="leapMorphologyPassport" class="leap-morphology-passport" aria-live="polite">
+            <header><small>live morphology passport</small><strong id="leapMorphologyState">seed geometry</strong><span>shape tensor · exposure · before → after</span></header>
+            <div id="leapMorphologySpectrum" class="leap-morphology-spectrum" aria-label="Normalized principal variance spectrum"></div>
+            <div id="leapMorphologyMetrics" class="leap-morphology-metrics"></div>
+            <div id="leapMorphologyScaling" class="leap-morphology-scaling" aria-label="Finite mass-radius scaling audit"></div>
+            <div id="leapLineageSummary" class="leap-lineage-summary" aria-label="Nucleus-lineage population audit"></div>
+            <div id="leapLineageList" class="leap-lineage-list" aria-label="Per-nucleus morphology"></div>
+            <p id="leapMorphologyBoundary">Covariance shape and colored coordination are geometric observables, not equilibrium habit or kinetics.</p>
+          </article>
+          <div class="leap-physics-heading"><small>physics → geometry translation</small><span id="leapPhysicsState">classifying live constraints</span></div>
+          <div id="leapPhysicsFilters" class="leap-physics-filters" role="group" aria-label="Filter physical constraints by evidence class">
+            <button class="active" type="button" data-physics-filter="all" aria-pressed="true">all</button>
+            <button type="button" data-physics-filter="structural" aria-pressed="false">observed + learned</button>
+            <button type="button" data-physics-filter="hypothesis" aria-pressed="false">declared hypotheses</button>
+            <button type="button" data-physics-filter="open" aria-pressed="false">open boundary</button>
+          </div>
+          <div id="leapPhysicsMatrix" class="leap-physics-matrix" role="group" aria-label="Inspect physical roles encoded or left open by this structural leap"></div>
+          <article id="leapPhysicsDetail" class="leap-physics-detail" aria-live="polite"></article>
+          <p id="leapClaimBoundary" class="leap-claim-boundary">No trajectory is integrated. A geometric certificate can establish a structural transition, not its physical duration or probability.</p>
+        </section>
+
+        <section id="growthMechanismSection" class="growth-mechanism-section" hidden aria-label="Spatial growth event mechanism audit">
+          <div class="section-heading"><p class="eyebrow">spatial growth-event audit</p><span id="growthMechanismState">no decisions yet</span></div>
+          <div class="growth-mechanism-heading">
+            <span><small>accepted fill · rejected cross</small><strong>post-decision geometric phenotypes</strong></span>
+            <div id="growthMechanismProjection" role="group" aria-label="Growth event projection plane">
+              <button type="button" data-growth-projection="xy" aria-pressed="true">XY</button>
+              <button type="button" data-growth-projection="xz" aria-pressed="false">XZ</button>
+              <button type="button" data-growth-projection="yz" aria-pressed="false">YZ</button>
+            </div>
+          </div>
+          <canvas id="growthMechanismCanvas" width="900" height="240" role="img" aria-label="Projection of accepted and rejected growth actions by local geometric environment"></canvas>
+          <div id="growthMechanismLedger" class="growth-mechanism-ledger"></div>
+          <div class="growth-uncertainty-heading"><small>latest leap uncertainty budget</small><span id="growthUncertaintyState">awaiting a decision</span></div>
+          <div id="growthUncertaintyBudget" class="growth-uncertainty-budget"></div>
+          <p id="growthMechanismBoundary">These are diagnostic spatial correlations, not defect labels, reaction mechanisms, energies, rates, or branch-ranking features.</p>
         </section>
 
         <section>
@@ -616,6 +1872,11 @@
           <ol id="searchStack" class="search-stack">
             <li class="empty-row">Accepted branches appear here.</li>
           </ol>
+          <div id="growthLineageMap" class="growth-lineage-map" hidden>
+            <div class="growth-lineage-heading"><small>cover-family propagation</small><span id="growthLineageState">awaiting a decision</span></div>
+            <div id="growthLineageFlow" class="growth-lineage-flow" role="group" aria-label="Inspect cover-family lineages used by growth decisions"></div>
+            <article id="growthLineageDetail" class="growth-lineage-detail" aria-live="polite"></article>
+          </div>
         </section>
 
         <section>
@@ -623,19 +1884,60 @@
           <div id="markingTable" class="marking-table"><p>No repeated domain yet.</p></div>
         </section>
 
+        <section id="growthCertificateSection" class="growth-certificate-section" hidden>
+          <div class="section-heading"><p class="eyebrow">live growth certificate</p><span id="growthCertificateState">not started</span></div>
+          <div class="growth-certificate" aria-live="polite">
+            <article id="certificateReplay"><small>01 · known window</small><strong>—</strong><span>—</span></article>
+            <article id="certificateContinuation"><small>02 · continuation</small><strong>—</strong><span>—</span></article>
+            <article id="certificateHierarchy"><small>03 · self-feed</small><strong>—</strong><span>—</span></article>
+            <article id="certificateBoundary"><small>04 · claim boundary</small><strong>—</strong><span>—</span></article>
+          </div>
+          <p id="growthCertificateNote" class="certificate-note">This receipt distinguishes exact replay, target-blind structural output, and independently certified recurrence.</p>
+        </section>
+
+        <section id="costScalingSection" class="cost-scaling-section" aria-label="Computational work scaling laboratory">
+          <div class="section-heading"><p class="eyebrow">computational work laboratory</p><span id="costScalingState">operation ledger</span></div>
+          <div class="cost-scaling-controls">
+            <label for="mdHorizonSelect"><span>MD horizon assumption</span><select id="mdHorizonSelect">
+              <option value="1000">10³ steps · local relaxation</option>
+              <option value="100000" selected>10⁵ steps · interface evolution</option>
+              <option value="10000000">10⁷ steps · rare-event scale</option>
+            </select></label>
+            <label for="mdScalingSelect"><span>interaction work model</span><select id="mdScalingSelect">
+              <option value="local" selected>short-range · O(N)</option>
+              <option value="long-range">long-range · O(N log N)</option>
+            </select></label>
+          </div>
+          <div id="costLiveWork" class="cost-live-work" aria-label="Measured live browser work"></div>
+          <div id="costPipelineWork" class="cost-pipeline-work" role="group" aria-label="Measured work by materials-growth pipeline stage"></div>
+          <div id="costScalingTable" class="cost-scaling-table" role="table" aria-label="GCTS and molecular dynamics scaling comparison"></div>
+          <p id="costScalingBoundary" class="cost-scaling-boundary">Operation units compare algorithmic work only. They are not wall time, energy, kinetics, or a measured MD speedup.</p>
+        </section>
+
         <section class="audit-card" id="auditedBenchmark">
           <p class="eyebrow">live order inference</p>
           <div><strong id="orderClassValue">analyzing…</strong><span>emergent class</span></div>
-          <div><strong id="structureNameValue">—</strong><span>best prototype</span></div>
+          <div><strong id="structureNameValue">—</strong><span>posthoc interpretation</span></div>
           <div><strong id="symmetryValue">—</strong><span>symmetry assignment</span></div>
           <div><strong id="confidenceValue">0%</strong><span>structural match</span></div>
-          <p id="auditNote">The classifier waits for enough live atoms, then compares invariant RDF and coordination evidence with the reference library.</p>
+          <div class="phase-evidence-grid" aria-label="Current phase-classification evidence">
+            <span><small>analysis window</small><strong id="phaseWindowValue">—</strong></span>
+            <span><small>prototype margin</small><strong id="phaseMarginValue">—</strong></span>
+            <span><small>leave-one-out</small><strong id="phaseIndependentValue">—</strong></span>
+            <span><small>translation closure</small><strong id="phaseClosureValue">—</strong></span>
+          </div>
+          <figure class="phase-trajectory">
+            <div><span>confidence trajectory</span><b id="phaseTrajectoryState">withheld</b></div>
+            <canvas id="phaseTrajectoryCanvas" width="336" height="88" role="img" aria-label="Phase confidence is withheld until material growth begins"></canvas>
+            <figcaption><i></i> crystal <i></i> quasicrystal <i></i> amorphous <em>58% decision threshold</em></figcaption>
+          </figure>
+          <p id="auditNote">The classifier waits for enough live atoms, then compares RDF, coordination, and geometric powder S(q) evidence with the reference library.</p>
         </section>
       </aside>
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260821-5"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260821-10"></script>
+  <script type="module" src="./app.js?v=20260827-253"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260827-20"></script>
 </body>
 </html>

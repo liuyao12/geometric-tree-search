@@ -16,6 +16,7 @@ def require(text: str, needle: str, label: str) -> None:
 def main() -> None:
     atlas = (APP / "evidence-atlas.js").read_text()
     html = (APP / "index.html").read_text()
+    root_html = (ROOT / "iqc-growth-live" / "index.html").read_text()
     css = (APP / "style.css").read_text()
 
     for needle, label in (
@@ -44,6 +45,10 @@ def main() -> None:
     require(css, ".a2-corona-explorer", "explorer styling")
     require(css, ".a2-candidate-shape", "candidate support styling")
     require(css, ".a2-blocker-bars", "comparison styling")
+    require(root_html, '<base href="../apps/iqc-growth-live/">', "root-level asset base")
+    require(root_html, "Seven unresolved candidates after one eight-copy periodic witness",
+            "root-level current A2 classification")
+    require(root_html, './evidence-atlas.js?v=20260827-20', "root-level atlas cache version")
 
     expected = {
         "a2lp_7_00128": (130, 7),
