@@ -48,6 +48,10 @@ const inputReports = String(args.get("input-report") ?? "")
   .split(",")
   .map(value => value.trim())
   .filter(Boolean);
+const inputReportSha256 = inputReports.map(path => ({
+  path,
+  sha256: createHash("sha256").update(readFileSync(path)).digest("hex")
+}));
 const obstructionInitialNogoodReports = String(args.get("obstruction-initial-nogood-report") ?? "")
   .split(",")
   .map(value => value.trim())
@@ -377,6 +381,7 @@ await writeRecord({
   equivalence: includeReflections ? "rotations_and_reflections" : "proper_rotations",
   report_chirality: reportChirality,
   input_reports: inputReports,
+  input_report_sha256: inputReportSha256,
   input_stopped_by: inputStoppedBy ?? null,
   periodic_max_tiles: periodicMaxTiles,
   periodic_min_tiles: periodicMinTiles,

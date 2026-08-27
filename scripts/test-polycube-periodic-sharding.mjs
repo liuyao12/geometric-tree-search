@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -65,6 +66,28 @@ assert.notEqual(invalidResumeRange.status, 0);
 assert.match(invalidResumeRange.stderr, /cannot be combined with an explicit periodic HNF range/);
 
 const temporaryDirectory = mkdtempSync(join(tmpdir(), "gcts-hnf-shards-"));
+const resumeInput = join(temporaryDirectory, "resume-input.ndjson");
+writeFileSync(resumeInput, emptyRange.stdout);
+const hashedInputRun = spawnSync(process.execPath, [
+  pipeline.pathname,
+  `--input-report=${resumeInput}`,
+  "--periodic-min-tiles=3",
+  "--periodic-max-tiles=3",
+  "--periodic-hnf-start-index=1200",
+  "--periodic-hnf-end-index=1200",
+  "--box-screen=false",
+  "--general-periodic=false",
+  "--isohedral-screen=false",
+  "--stop-after=periodic",
+  "--report-chirality=false"
+], { encoding: "utf8" });
+assert.equal(hashedInputRun.status, 0, hashedInputRun.stderr);
+const hashedInputStart = hashedInputRun.stdout.trim().split(/\r?\n/)
+  .map(line => JSON.parse(line)).find(record => record.type === "screen_start");
+assert.deepEqual(hashedInputStart.input_report_sha256, [{
+  path: resumeInput,
+  sha256: createHash("sha256").update(emptyRange.stdout).digest("hex")
+}]);
 const shardReport = (startIndex, endIndex) => [
   {
     type: "screen_start",
