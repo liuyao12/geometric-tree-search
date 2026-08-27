@@ -30,6 +30,12 @@ function rounded(value, digits = 5) {
   return Math.round(value * scale) / scale;
 }
 
+/** Predeclared intensive/action-local state; no size, radius, frontier-count, or leap channel. */
+export const LOCAL_CREATION_CONTEXT_FEATURE_IDS = Object.freeze([
+  "support-sites", "shared-fraction", "novel-fraction",
+  "coordination-deficit", "interface-fraction",
+]);
+
 /** Coordinate-free, order-invariant evidence payload suitable for receipts and replay. */
 export function canonicalCreationResponseDataset(records, { maximumRecords = 256 } = {}) {
   if (!Array.isArray(records) || !Number.isInteger(maximumRecords) || maximumRecords < 1) {
@@ -174,11 +180,13 @@ function solveRidgeSystem(matrix, vector) {
 /** Fixed-ridge multichannel model fit on earlier complete leaps and scored only on later leaps. */
 export function blockedCreationResponseSurrogate(records, outcomeId, {
   trainingFraction = 2 / 3, minimumSamplesPerSplit = 12, ridge = 1, maximumFeatures = 12,
-  includeStructuralContext = false, maximumContextFeatures = 12,
+  includeStructuralContext = false, maximumContextFeatures = 12, contextFeatureIds = null,
 } = {}) {
   if (!Array.isArray(records) || !outcomeId || !(trainingFraction > 0 && trainingFraction < 1)
       || minimumSamplesPerSplit < 4 || !(ridge > 0) || !Number.isInteger(maximumFeatures)
       || maximumFeatures < 1 || !Number.isInteger(maximumContextFeatures) || maximumContextFeatures < 1
+      || (contextFeatureIds !== null && (!Array.isArray(contextFeatureIds)
+        || contextFeatureIds.some((id) => typeof id !== "string" || !id)))
       || records.some((record) => !Number.isInteger(record.leapIndex))) {
     throw new Error("blocked surrogate needs grouped leap records and fixed finite fit settings");
   }
@@ -212,8 +220,10 @@ export function blockedCreationResponseSurrogate(records, outcomeId, {
     .sort((first, second) => second.support - first.support || first.id.localeCompare(second.id))
     .slice(0, maximumFeatures);
   const contextMetadata = new Map();
+  const admittedContextIds = contextFeatureIds === null ? null : new Set(contextFeatureIds);
   if (includeStructuralContext) trainingRecords.forEach((record) => record.contextFeatures?.forEach((feature) => {
-    if (!feature?.id || !Number.isFinite(feature.value)) return;
+    if (!feature?.id || !Number.isFinite(feature.value)
+        || (admittedContextIds && !admittedContextIds.has(feature.id))) return;
     const id = `context:${feature.id}`;
     const current = contextMetadata.get(id) || { id, sourceId: feature.id, source: "structural-context",
       label: feature.label || feature.id, support: 0 };
@@ -309,6 +319,12 @@ export function blockedCreationResponseSurrogate(records, outcomeId, {
   const unsupportedPredictions = predictions.filter((entry) => !entry.inTrainingFeatureEnvelope);
   const subsetMae = (subset) => subset.length ? subset.reduce((sum, entry) =>
     sum + Math.abs(entry.predicted - entry.observed), 0) / subset.length : null;
+  const subsetSkill = (subset) => {
+    if (!subset.length) return null;
+    const model = subset.reduce((sum, entry) => sum + (entry.predicted - entry.observed) ** 2, 0);
+    const baseline = subset.reduce((sum, entry) => sum + (entry.baseline - entry.observed) ** 2, 0);
+    return baseline > 1e-14 ? 1 - model / baseline : null;
+  };
   const squared = errors.reduce((sum, error) => sum + error * error, 0);
   const baselineSquared = baselineErrors.reduce((sum, error) => sum + error * error, 0);
   const quadraticSquared = quadraticErrors.reduce((sum, error) => sum + error * error, 0);
@@ -319,6 +335,9 @@ export function blockedCreationResponseSurrogate(records, outcomeId, {
     available: true, outcomeId, trainingLeaps, heldoutLeaps,
     trainingPlacements: trainingRecords.length, heldoutPlacements: heldoutRecords.length,
     ridge, maximumFeatures, maximumContextFeatures, includeStructuralContext,
+    contextFeatureIds: contextFeatureIds === null ? null : [...contextFeatureIds],
+    contextFeatureScope: contextFeatureIds === null ? "all target-free creation-time state"
+      : "predeclared local/intensive attachment state",
     featureSelectionRule: "physics and optional structural-context vocabularies selected separately on training support >= half; support descending then stable ID; response not inspected",
     features: features.map((term, index) => ({ id: term.id, label: term.label,
       source: term.source,
@@ -359,6 +378,8 @@ export function blockedCreationResponseSurrogate(records, outcomeId, {
     unsupportedHeldoutPlacements: unsupportedPredictions.length,
     supportedHeldoutMeanAbsoluteError: rounded(subsetMae(supportedPredictions), 8),
     unsupportedHeldoutMeanAbsoluteError: rounded(subsetMae(unsupportedPredictions), 8),
+    supportedHeldoutSkillVersusTrainingMean: rounded(subsetSkill(supportedPredictions), 8),
+    unsupportedHeldoutSkillVersusTrainingMean: rounded(subsetSkill(unsupportedPredictions), 8),
     maximumStandardizedFeatureExcess: rounded(Math.max(...predictions
       .map((entry) => entry.maximumStandardizedFeatureExcess)), 8),
     featureSupportDefinition: "axis-aligned min/max envelope of earlier-block active score contributions and any enabled target-free structural context; normalized excess uses earlier-block scale",

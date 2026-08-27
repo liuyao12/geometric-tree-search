@@ -33,8 +33,8 @@ import { buildSiteCreationResponse } from "./site-creation-response.js?v=2026082
 import { appendSiteStructuralHistory, summarizeSiteStructuralHistory }
   from "./site-structural-history.js?v=20260826-1";
 import { blockedCreationResponseSurrogate, blockedCreationResponseValidation, buildCreationResponseAssociation,
-  canonicalCreationResponseDataset, creationResponseLeapProfile }
-  from "./creation-response-association.js?v=20260826-8";
+  canonicalCreationResponseDataset, creationResponseLeapProfile, LOCAL_CREATION_CONTEXT_FEATURE_IDS }
+  from "./creation-response-association.js?v=20260826-9";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -3780,6 +3780,10 @@ async function creationResponseReceiptEvidence() {
   const contextualBlockedSurrogates = Object.fromEntries(Object.keys(POPULATION_RESPONSE_LABELS)
     .map((outcomeId) => [outcomeId, blockedCreationResponseSurrogate(dataset.records, outcomeId,
       { minimumSamplesPerSplit: 12, includeStructuralContext: true })]));
+  const localContextBlockedSurrogates = Object.fromEntries(Object.keys(POPULATION_RESPONSE_LABELS)
+    .map((outcomeId) => [outcomeId, blockedCreationResponseSurrogate(dataset.records, outcomeId,
+      { minimumSamplesPerSplit: 12, includeStructuralContext: true,
+        contextFeatureIds: LOCAL_CREATION_CONTEXT_FEATURE_IDS })]));
   return {
     schema: 1,
     dataset,
@@ -3790,6 +3794,7 @@ async function creationResponseReceiptEvidence() {
     leapProfiles,
     blockedSurrogates,
     contextualBlockedSurrogates,
+    localContextBlockedSurrogates,
     available: audit.available,
     placementSamples: audit.placementSamples,
     emittedSitePresentations: audit.emittedSitePresentations,
@@ -3829,12 +3834,13 @@ function renderPopulationBlockedValidation(validation) {
   sitePopulationValidation.append(label, value, detail);
 }
 
-function renderPopulationSurrogate(surrogate, contextualSurrogate) {
+function renderPopulationSurrogate(surrogate, contextualSurrogate, localContextSurrogate) {
   sitePopulationSurrogate.replaceChildren();
   sitePopulationSurrogate.className = `site-response-surrogate ${surrogate.available
     ? Math.max(surrogate.heldoutSkillVersusTrainingMean ?? -Infinity,
       surrogate.quadraticControl?.heldoutSkillVersusTrainingMean ?? -Infinity,
-      contextualSurrogate?.heldoutSkillVersusTrainingMean ?? -Infinity) > 0 ? "useful" : "no-gain"
+      contextualSurrogate?.heldoutSkillVersusTrainingMean ?? -Infinity,
+      localContextSurrogate?.heldoutSkillVersusTrainingMean ?? -Infinity) > 0 ? "useful" : "no-gain"
     : "unavailable"}`;
   const label = document.createElement("small"); label.textContent = "joint geometry model · earlier → later";
   const value = document.createElement("strong"); const detail = document.createElement("span");
@@ -3845,15 +3851,18 @@ function renderPopulationSurrogate(surrogate, contextualSurrogate) {
   const skill = surrogate.heldoutSkillVersusTrainingMean;
   const quadraticSkill = surrogate.quadraticControl.heldoutSkillVersusTrainingMean;
   const contextSkill = contextualSurrogate?.heldoutSkillVersusTrainingMean;
-  value.textContent = `skill score ${Number.isFinite(skill) ? `${skill >= 0 ? "+" : ""}${skill.toFixed(3)}` : "—"} · coupled ${Number.isFinite(quadraticSkill) ? `${quadraticSkill >= 0 ? "+" : ""}${quadraticSkill.toFixed(3)}` : "—"} · +state ${Number.isFinite(contextSkill) ? `${contextSkill >= 0 ? "+" : ""}${contextSkill.toFixed(3)}` : "—"}`;
-  detail.textContent = `ρ score ${Number.isFinite(surrogate.heldoutSpearman) ? `${surrogate.heldoutSpearman >= 0 ? "+" : ""}${surrogate.heldoutSpearman.toFixed(3)}` : "—"} / coupled ${Number.isFinite(surrogate.quadraticControl.heldoutSpearman) ? `${surrogate.quadraticControl.heldoutSpearman >= 0 ? "+" : ""}${surrogate.quadraticControl.heldoutSpearman.toFixed(3)}` : "—"} / +state ${Number.isFinite(contextualSurrogate?.heldoutSpearman) ? `${contextualSurrogate.heldoutSpearman >= 0 ? "+" : ""}${contextualSurrogate.heldoutSpearman.toFixed(3)}` : "—"}`;
+  const localContextSkill = localContextSurrogate?.heldoutSkillVersusTrainingMean;
+  value.textContent = `skill score ${Number.isFinite(skill) ? `${skill >= 0 ? "+" : ""}${skill.toFixed(3)}` : "—"} · coupled ${Number.isFinite(quadraticSkill) ? `${quadraticSkill >= 0 ? "+" : ""}${quadraticSkill.toFixed(3)}` : "—"} · +local ${Number.isFinite(localContextSkill) ? `${localContextSkill >= 0 ? "+" : ""}${localContextSkill.toFixed(3)}` : "—"} · +all state ${Number.isFinite(contextSkill) ? `${contextSkill >= 0 ? "+" : ""}${contextSkill.toFixed(3)}` : "—"}`;
+  detail.textContent = `ρ score ${Number.isFinite(surrogate.heldoutSpearman) ? `${surrogate.heldoutSpearman >= 0 ? "+" : ""}${surrogate.heldoutSpearman.toFixed(3)}` : "—"} / coupled ${Number.isFinite(surrogate.quadraticControl.heldoutSpearman) ? `${surrogate.quadraticControl.heldoutSpearman >= 0 ? "+" : ""}${surrogate.quadraticControl.heldoutSpearman.toFixed(3)}` : "—"} / +local ${Number.isFinite(localContextSurrogate?.heldoutSpearman) ? `${localContextSurrogate.heldoutSpearman >= 0 ? "+" : ""}${localContextSurrogate.heldoutSpearman.toFixed(3)}` : "—"} / +all ${Number.isFinite(contextualSurrogate?.heldoutSpearman) ? `${contextualSurrogate.heldoutSpearman >= 0 ? "+" : ""}${contextualSurrogate.heldoutSpearman.toFixed(3)}` : "—"}`;
   const bars = document.createElement("div"); bars.className = "site-surrogate-bars";
   const maximumError = Math.max(surrogate.heldoutMeanAbsoluteError,
     surrogate.quadraticControl.heldoutMeanAbsoluteError,
+    localContextSurrogate?.heldoutMeanAbsoluteError || 0,
     contextualSurrogate?.heldoutMeanAbsoluteError || 0, surrogate.baselineMeanAbsoluteError, 1e-12);
   [["score", surrogate.heldoutMeanAbsoluteError],
     ["coupled", surrogate.quadraticControl.heldoutMeanAbsoluteError],
-    ["+state", contextualSurrogate?.heldoutMeanAbsoluteError],
+    ["+local", localContextSurrogate?.heldoutMeanAbsoluteError],
+    ["+all state", contextualSurrogate?.heldoutMeanAbsoluteError],
     ["training mean", surrogate.baselineMeanAbsoluteError]]
     .filter(([, error]) => Number.isFinite(error)).forEach(([name, error]) => {
       const bar = document.createElement("span"); bar.style.setProperty("--error", `${100 * error / maximumError}%`);
@@ -3887,6 +3896,22 @@ function renderPopulationSurrogate(surrogate, contextualSurrogate) {
       : "all enabled creation-time state variables remain within earlier ranges"
     : contextualSurrogate?.reason || "no state audit";
   contextSupport.append(contextSupportLabel, contextSupportValue, contextSupportDetail);
+  const localSupport = document.createElement("div");
+  localSupport.className = "site-surrogate-support local-context";
+  localSupport.style.setProperty("--support", `${100 * (localContextSurrogate?.heldoutFeatureSupportCoverage || 0)}%`);
+  const localSupportLabel = document.createElement("small"); localSupportLabel.textContent = "local attachment-state transfer";
+  const localSupportValue = document.createElement("strong");
+  localSupportValue.textContent = localContextSurrogate?.available
+    ? `${localContextSurrogate.supportedHeldoutPlacements}/${localContextSurrogate.heldoutPlacements} held actions in local envelope`
+    : "local-state control unavailable";
+  const localSupportDetail = document.createElement("em");
+  localSupportDetail.textContent = localContextSurrogate?.available
+    ? localContextSurrogate.supportedHeldoutPlacements
+      ? `supported-only skill ${Number.isFinite(localContextSurrogate.supportedHeldoutSkillVersusTrainingMean)
+        ? `${localContextSurrogate.supportedHeldoutSkillVersusTrainingMean >= 0 ? "+" : ""}${localContextSurrogate.supportedHeldoutSkillVersusTrainingMean.toFixed(3)}` : "—"} · fixed five-channel scope`
+      : `0 interpolated actions · max ${localContextSurrogate.maximumStandardizedFeatureExcess.toFixed(2)}σ`
+    : localContextSurrogate?.reason || "no local-state audit";
+  localSupport.append(localSupportLabel, localSupportValue, localSupportDetail);
   const coefficients = document.createElement("div"); coefficients.className = "site-surrogate-coefficients";
   [...surrogate.features].sort((first, second) => Math.abs(second.standardizedWeight)
     - Math.abs(first.standardizedWeight) || first.id.localeCompare(second.id)).slice(0, 6).forEach((feature) => {
@@ -3914,7 +3939,7 @@ function renderPopulationSurrogate(surrogate, contextualSurrogate) {
       const weight = document.createElement("strong"); weight.textContent = `βₛ ${feature.standardizedWeight >= 0 ? "+" : ""}${feature.standardizedWeight.toFixed(3)}`;
       chip.append(name, weight); contextCoefficients.append(chip);
     });
-  sitePopulationSurrogate.append(label, value, detail, bars, support, contextSupport, coefficients, interactions,
+  sitePopulationSurrogate.append(label, value, detail, bars, support, localSupport, contextSupport, coefficients, interactions,
     contextCoefficients);
 }
 
@@ -3977,7 +4002,10 @@ function renderPopulationResponseAssociation(atom) {
     selectedPopulationResponseOutcome, { minimumSamplesPerSplit: 12 });
   const contextualSurrogate = blockedCreationResponseSurrogate(records,
     selectedPopulationResponseOutcome, { minimumSamplesPerSplit: 12, includeStructuralContext: true });
-  renderPopulationSurrogate(scoreSurrogate, contextualSurrogate);
+  const localContextSurrogate = blockedCreationResponseSurrogate(records,
+    selectedPopulationResponseOutcome, { minimumSamplesPerSplit: 12, includeStructuralContext: true,
+      contextFeatureIds: LOCAL_CREATION_CONTEXT_FEATURE_IDS });
+  renderPopulationSurrogate(scoreSurrogate, contextualSurrogate, localContextSurrogate);
   sitePopulationResponsePlot.replaceChildren(); sitePopulationResponseTerms.replaceChildren();
   sitePopulationResponseOutcome.value = selectedPopulationResponseOutcome;
   const outcomeAssociations = audit.associations.filter((entry) => entry.outcomeId === selectedPopulationResponseOutcome);
@@ -8699,7 +8727,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-201",
+      buildId: "20260826-202",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -10849,6 +10877,10 @@ function experimentNotebookSummary(receipt) {
         })),
       contextualBlockedSurrogates: Object.fromEntries(Object.entries(
         search.creationResponseEvidence.contextualBlockedSurrogates).map(([outcomeId, surrogate]) => {
+        const { predictions, ...summary } = surrogate; return [outcomeId, summary];
+      })),
+      localContextBlockedSurrogates: Object.fromEntries(Object.entries(
+        search.creationResponseEvidence.localContextBlockedSurrogates).map(([outcomeId, surrogate]) => {
         const { predictions, ...summary } = surrogate; return [outcomeId, summary];
       })),
       groupingUnit: search.creationResponseEvidence.dataset.groupingUnit,

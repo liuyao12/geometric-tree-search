@@ -5554,3 +5554,19 @@ state-envelope coverage is 0/142 later actions inside the axis-aligned earlier-b
 the maximum standardized excess is 6.21σ. The UI therefore labels all 142 predictions as
 structural-state extrapolation. This result does not show that state is irrelevant—it shows
 that the present blocked experiment cannot test state interpolation across these leaps.
+
+### Build 202 · local attachment state versus global growth extent
+
+The blocked study now separates five preregistered local/intensive channels—support size,
+shared and novel support fractions, coordination deficit, and shared-interface
+fraction—from globally growing state such as atom count, cluster count, frontier size,
+radius, lineage count, and interface-pair count. The feature scope is frozen before fitting;
+neither held responses nor held ranges choose it.
+
+The portal compares score-only, quadratic coupling, local-state, all-state, and the
+earlier-block mean. It reports local-state envelope coverage and a supported-only skill in
+addition to the all-state extrapolation warning. This distinguishes a failure inside an
+overlapping local geometry domain from a model scored only while the material is moving
+into new global-size states. Causal depth is excluded because it is search history rather
+than local attachment geometry. It remains a blocked deterministic-run diagnostic, not a
+kinetics model or independent-material validation.

@@ -6294,3 +6294,19 @@ actions and the maximum standardized feature excess is 6.21σ. The public panel 
 interpolation test. A better experiment needs training configurations that overlap the
 later frontier-state distribution; this result neither validates the state model nor rules
 out structural context.
+
+## Build 202: separate local attachment geometry from global extent
+
+Build 202 adds a predeclared local/intensive context arm rather than selecting a convenient
+subset after seeing later responses. Its five fixed channels are proposed support size,
+shared support fraction, novel support fraction, local coordination deficit,
+and shared-interface fraction. Extensive/global quantities—site, cluster, and frontier
+counts, batch size, radius of gyration, lineage count, and interface-pair count—remain in
+the all-state audit but cannot by themselves force the local arm out of range.
+
+The same earlier-leap ridge fit and later-leap score are retained. The receipt stores the
+exact context allow-list, feature envelope, supported and unsupported errors, and
+supported-only skill. The UI displays five arms and separate local/all-state support bars.
+No held response, held range, phase label, coordinate frame, or physical-time variable
+selects the local scope. This is an interpolation audit inside one deterministic growth
+trace, not evidence of transport, forces, rates, or transfer to another material.

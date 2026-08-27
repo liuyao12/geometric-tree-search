@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { blockedCreationResponseValidation, buildCreationResponseAssociation,
-  blockedCreationResponseSurrogate, canonicalCreationResponseDataset, creationResponseLeapProfile }
+  blockedCreationResponseSurrogate, canonicalCreationResponseDataset, creationResponseLeapProfile,
+  LOCAL_CREATION_CONTEXT_FEATURE_IDS }
   from "../apps/iqc-growth-live/creation-response-association.js";
 
 const records = Array.from({ length: 6 }, (_, index) => ({
@@ -116,4 +117,25 @@ assert.ok(contextFree.heldoutSkillVersusTrainingMean < .01);
 assert.ok(contextAware.heldoutSkillVersusTrainingMean > .99);
 assert.equal(contextAware.features.some((feature) => feature.source === "structural-context"), true);
 assert.equal(contextAware.fitUsedHeldout, false);
+const stateScopeRecords = Array.from({ length: 60 }, (_, index) => {
+  const leapIndex = Math.floor(index / 12) + 1; const within = index % 12;
+  const local = within % 4;
+  return { placementId: `l${index}`, leapIndex, emittedSites: 1,
+    physicsTerms: [{ id: "uninformative", weight: 1, contribution: within % 2 }],
+    contextFeatures: [
+      { id: "support-sites", value: local },
+      { id: "log-atoms", value: leapIndex <= 3 ? 2 + within / 12 : 20 + within / 12 },
+    ], outcomes: { shellChange: 3 * local } };
+});
+const allState = blockedCreationResponseSurrogate(stateScopeRecords, "shellChange",
+  { trainingFraction: .6, minimumSamplesPerSplit: 4, ridge: .01, includeStructuralContext: true });
+const localState = blockedCreationResponseSurrogate(stateScopeRecords, "shellChange",
+  { trainingFraction: .6, minimumSamplesPerSplit: 4, ridge: .01, includeStructuralContext: true,
+    contextFeatureIds: LOCAL_CREATION_CONTEXT_FEATURE_IDS });
+assert.equal(allState.heldoutFeatureSupportCoverage, 0);
+assert.equal(localState.heldoutFeatureSupportCoverage, 1);
+assert.ok(localState.heldoutSkillVersusTrainingMean > .99);
+assert.ok(localState.supportedHeldoutSkillVersusTrainingMean > .99);
+assert.equal(localState.contextFeatureScope, "predeclared local/intensive attachment state");
+assert.deepEqual(localState.contextFeatureIds, LOCAL_CREATION_CONTEXT_FEATURE_IDS);
 console.log("materials creation-response association: passed");
