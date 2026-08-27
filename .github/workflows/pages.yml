@@ -1,9 +1,10 @@
 name: Publish GitHub Pages
 
 on:
-  push:
-    branches:
-      - main
+  # Normal publication uses GitHub Pages' main/root branch source. Keep this
+  # artifact workflow as an explicit fallback only; running both publishers on
+  # every push can leave a healthy branch build waiting behind a stuck
+  # deploy-pages record.
   workflow_dispatch:
     inputs:
       runner:
