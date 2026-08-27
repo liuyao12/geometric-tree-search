@@ -6324,3 +6324,17 @@ the fixed `minimumSamplesPerSplit` gate; otherwise the statistic is null. The re
 object, sample threshold, interpretation, and `featureEnvelopeChosenUsingHeldout=false`
 audit are serialized into the full receipt and summarized in the notebook. The new
 three-tile ledger makes this boundary visible before coefficients or MAE bars are read.
+
+## Build 204: show every blocked training horizon
+
+Build 204 evaluates the same frozen local-state model at chronological 50/50,
+ceil-two-thirds, and leave-final-leap horizons. All defined horizons are shown together;
+duplicate training-block counts are collapsed only when a short trace makes two definitions
+identical. No held response, skill, or envelope coverage selects an arm.
+
+The interactive strip reports training/held leap identities, supported action counts,
+readiness state, and aggregate skill. Clicking changes explanatory focus, not execution or
+fit. Full receipts retain every model and prediction row, while notebook summaries remove
+prediction rows but keep settings and metrics. The sweep diagnoses support acquisition as
+the observed structural history grows; it is not hyperparameter selection, physical time,
+or independent-material transfer.

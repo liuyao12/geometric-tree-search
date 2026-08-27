@@ -5583,3 +5583,15 @@ meets the same preregistered minimum-sample gate used by the blocked fit. With f
 the value remains unavailable rather than becoming a persuasive small-subset statistic.
 The receipt records the state, counts, threshold, interpretation, and the fact that held
 ranges never selected the envelope.
+
+### Build 204 · blocked-horizon transfer sweep
+
+The local attachment-state model is now replayed across every preregistered chronological
+horizon: 50/50, ceil-two-thirds, and leave-final-leap. Duplicate block counts collapse for
+short traces, but no held response selects or hides a horizon. Each button reports its
+training/held leap counts, envelope coverage, readiness state, and aggregate skill.
+
+Clicking a horizon changes only the explanatory readout; all arms remain visible and all
+models are retained in the receipt. The sweep asks whether adding observed structural
+history converts extrapolation into interpolation. It does not optimize a split, turn leap
+index into physical time, or claim independent validation.

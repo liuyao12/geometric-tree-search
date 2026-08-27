@@ -181,12 +181,15 @@ function solveRidgeSystem(matrix, vector) {
 export function blockedCreationResponseSurrogate(records, outcomeId, {
   trainingFraction = 2 / 3, minimumSamplesPerSplit = 12, ridge = 1, maximumFeatures = 12,
   includeStructuralContext = false, maximumContextFeatures = 12, contextFeatureIds = null,
+  trainingBlockCount: requestedTrainingBlockCount = null,
 } = {}) {
   if (!Array.isArray(records) || !outcomeId || !(trainingFraction > 0 && trainingFraction < 1)
       || minimumSamplesPerSplit < 4 || !(ridge > 0) || !Number.isInteger(maximumFeatures)
       || maximumFeatures < 1 || !Number.isInteger(maximumContextFeatures) || maximumContextFeatures < 1
       || (contextFeatureIds !== null && (!Array.isArray(contextFeatureIds)
         || contextFeatureIds.some((id) => typeof id !== "string" || !id)))
+      || (requestedTrainingBlockCount !== null && (!Number.isInteger(requestedTrainingBlockCount)
+        || requestedTrainingBlockCount < 1))
       || records.some((record) => !Number.isInteger(record.leapIndex))) {
     throw new Error("blocked surrogate needs grouped leap records and fixed finite fit settings");
   }
@@ -194,7 +197,11 @@ export function blockedCreationResponseSurrogate(records, outcomeId, {
   if (leapIndices.length < 3) return { available: false,
     reason: "at least three complete structural-leap blocks are required", targetUsed: false,
     fitUsedHeldout: false };
-  const trainingBlockCount = Math.min(leapIndices.length - 1,
+  if (requestedTrainingBlockCount !== null && requestedTrainingBlockCount >= leapIndices.length) {
+    return { available: false, reason: "training block count must leave at least one held leap",
+      targetUsed: false, fitUsedHeldout: false };
+  }
+  const trainingBlockCount = requestedTrainingBlockCount ?? Math.min(leapIndices.length - 1,
     Math.max(1, Math.ceil(leapIndices.length * trainingFraction)));
   const trainingLeaps = leapIndices.slice(0, trainingBlockCount);
   const heldoutLeaps = leapIndices.slice(trainingBlockCount);
@@ -339,6 +346,7 @@ export function blockedCreationResponseSurrogate(records, outcomeId, {
     available: true, outcomeId, trainingLeaps, heldoutLeaps,
     trainingPlacements: trainingRecords.length, heldoutPlacements: heldoutRecords.length,
     ridge, maximumFeatures, maximumContextFeatures, includeStructuralContext,
+    trainingFraction, trainingBlockCount,
     contextFeatureIds: contextFeatureIds === null ? null : [...contextFeatureIds],
     contextFeatureScope: contextFeatureIds === null ? "all target-free creation-time state"
       : "predeclared local/intensive attachment state",
@@ -409,6 +417,42 @@ export function blockedCreationResponseSurrogate(records, outcomeId, {
     fitUsedHeldout: false, featureSelectionUsedOutcome: false, targetUsed: false,
     causalEffectInferred: false, independentMaterialSamples: false,
     physicalTimeModeled: false, calibratedMaterialForecastClaimed: false,
+  };
+}
+
+/** Report every predeclared chronological horizon; no held result selects one. */
+export function creationResponseHorizonSweep(records, outcomeId, {
+  minimumSamplesPerSplit = 12, ridge = 1, maximumFeatures = 12, maximumContextFeatures = 12,
+  contextFeatureIds = LOCAL_CREATION_CONTEXT_FEATURE_IDS,
+} = {}) {
+  if (!Array.isArray(records) || !outcomeId || records.some((record) => !Number.isInteger(record.leapIndex))) {
+    throw new Error("horizon sweep needs grouped structural-leap records and an outcome");
+  }
+  const leapIndices = [...new Set(records.map((record) => record.leapIndex))].sort((a, b) => a - b);
+  if (leapIndices.length < 3) return { available: false,
+    reason: "at least three complete structural-leap blocks are required",
+    horizonSelectedUsingHeldout: false, targetUsed: false };
+  const definitions = [
+    { id: "half", label: "50 / 50", count: Math.max(1, Math.floor(leapIndices.length / 2)) },
+    { id: "two-thirds", label: "2 / 3", count: Math.min(leapIndices.length - 1,
+      Math.max(1, Math.ceil(2 * leapIndices.length / 3))) },
+    { id: "leave-final", label: "leave final", count: leapIndices.length - 1 },
+  ];
+  const seen = new Set();
+  const horizons = definitions.filter((definition) => !seen.has(definition.count) && seen.add(definition.count))
+    .map((definition) => ({ ...definition,
+      model: blockedCreationResponseSurrogate(records, outcomeId, {
+        trainingBlockCount: definition.count, minimumSamplesPerSplit, ridge, maximumFeatures,
+        includeStructuralContext: true, maximumContextFeatures, contextFeatureIds,
+      }) }));
+  return {
+    available: horizons.some((entry) => entry.model.available), outcomeId, horizons,
+    leapBlocks: leapIndices.length,
+    horizonDefinition: "chronological 50/50, ceil(2/3), and leave-final-block; duplicate block counts collapsed",
+    horizonSelectedUsingHeldout: false,
+    allPredeclaredHorizonsReported: true,
+    randomSplitUsed: false, targetUsed: false, physicalTimeModeled: false,
+    independentMaterialSamples: false,
   };
 }
 

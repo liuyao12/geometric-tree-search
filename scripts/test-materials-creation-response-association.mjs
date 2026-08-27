@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { blockedCreationResponseValidation, buildCreationResponseAssociation,
-  blockedCreationResponseSurrogate, canonicalCreationResponseDataset, creationResponseLeapProfile,
+  blockedCreationResponseSurrogate, canonicalCreationResponseDataset, creationResponseHorizonSweep,
+  creationResponseLeapProfile,
   LOCAL_CREATION_CONTEXT_FEATURE_IDS }
   from "../apps/iqc-growth-live/creation-response-association.js";
 
@@ -152,4 +153,20 @@ const mixedState = blockedCreationResponseSurrogate(mixedStateRecords, "shellCha
 assert.equal(mixedState.interpolationReadiness.state, "mixed-domain");
 assert.equal(mixedState.interpolationReadiness.aggregateSkillIsInterpolationTest, false);
 assert.equal(mixedState.interpolationReadiness.supportedSubsetSkillAvailable, true);
+const horizonRecords = Array.from({ length: 72 }, (_, index) => {
+  const leapIndex = Math.floor(index / 12) + 1; const local = index % 4;
+  return { placementId: `h${index}`, leapIndex, emittedSites: 1,
+    physicsTerms: [{ id: "score", weight: 1, contribution: index % 3 }],
+    contextFeatures: [{ id: "support-sites", value: local }],
+    outcomes: { shellChange: 2 * local } };
+});
+const horizonSweep = creationResponseHorizonSweep(horizonRecords, "shellChange",
+  { minimumSamplesPerSplit: 4, ridge: .01 });
+assert.equal(horizonSweep.available, true);
+assert.deepEqual(horizonSweep.horizons.map((entry) => entry.count), [3, 4, 5]);
+assert.deepEqual(horizonSweep.horizons.map((entry) => entry.model.trainingLeaps.length), [3, 4, 5]);
+assert.equal(horizonSweep.horizons.every((entry) => entry.model.interpolationReadiness.state
+  === "full-interpolation"), true);
+assert.equal(horizonSweep.horizonSelectedUsingHeldout, false);
+assert.equal(horizonSweep.allPredeclaredHorizonsReported, true);
 console.log("materials creation-response association: passed");

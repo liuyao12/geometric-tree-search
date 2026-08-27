@@ -33,8 +33,9 @@ import { buildSiteCreationResponse } from "./site-creation-response.js?v=2026082
 import { appendSiteStructuralHistory, summarizeSiteStructuralHistory }
   from "./site-structural-history.js?v=20260826-1";
 import { blockedCreationResponseSurrogate, blockedCreationResponseValidation, buildCreationResponseAssociation,
-  canonicalCreationResponseDataset, creationResponseLeapProfile, LOCAL_CREATION_CONTEXT_FEATURE_IDS }
-  from "./creation-response-association.js?v=20260826-10";
+  canonicalCreationResponseDataset, creationResponseHorizonSweep, creationResponseLeapProfile,
+  LOCAL_CREATION_CONTEXT_FEATURE_IDS }
+  from "./creation-response-association.js?v=20260826-11";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -3784,6 +3785,9 @@ async function creationResponseReceiptEvidence() {
     .map((outcomeId) => [outcomeId, blockedCreationResponseSurrogate(dataset.records, outcomeId,
       { minimumSamplesPerSplit: 12, includeStructuralContext: true,
         contextFeatureIds: LOCAL_CREATION_CONTEXT_FEATURE_IDS })]));
+  const localContextHorizonSweeps = Object.fromEntries(Object.keys(POPULATION_RESPONSE_LABELS)
+    .map((outcomeId) => [outcomeId, creationResponseHorizonSweep(dataset.records, outcomeId,
+      { minimumSamplesPerSplit: 12 })]));
   return {
     schema: 1,
     dataset,
@@ -3795,6 +3799,7 @@ async function creationResponseReceiptEvidence() {
     blockedSurrogates,
     contextualBlockedSurrogates,
     localContextBlockedSurrogates,
+    localContextHorizonSweeps,
     available: audit.available,
     placementSamples: audit.placementSamples,
     emittedSitePresentations: audit.emittedSitePresentations,
@@ -3834,7 +3839,7 @@ function renderPopulationBlockedValidation(validation) {
   sitePopulationValidation.append(label, value, detail);
 }
 
-function renderPopulationSurrogate(surrogate, contextualSurrogate, localContextSurrogate) {
+function renderPopulationSurrogate(surrogate, contextualSurrogate, localContextSurrogate, horizonSweep) {
   sitePopulationSurrogate.replaceChildren();
   sitePopulationSurrogate.className = `site-response-surrogate ${surrogate.available
     ? Math.max(surrogate.heldoutSkillVersusTrainingMean ?? -Infinity,
@@ -3890,6 +3895,29 @@ function renderPopulationSurrogate(surrogate, contextualSurrogate, localContextS
   readiness.append(readinessTile("score channels", surrogate),
     readinessTile("local attachment", localContextSurrogate),
     readinessTile("all structural state", contextualSurrogate));
+  const horizons = document.createElement("div"); horizons.className = "site-surrogate-horizons";
+  const horizonDetail = document.createElement("span"); horizonDetail.className = "site-surrogate-horizon-detail";
+  const selectHorizon = (button, entry) => {
+    [...horizons.children].forEach((child) => child.classList.toggle("active", child === button));
+    const model = entry.model;
+    horizonDetail.textContent = model.available
+      ? `${entry.label}: train leaps ${model.trainingLeaps.join(", ")} → hold ${model.heldoutLeaps.join(", ")} · ${model.interpolationReadiness.state.replaceAll("-", " ")} · ${model.supportedHeldoutPlacements}/${model.heldoutPlacements} in envelope · aggregate skill ${Number.isFinite(model.heldoutSkillVersusTrainingMean) ? `${model.heldoutSkillVersusTrainingMean >= 0 ? "+" : ""}${model.heldoutSkillVersusTrainingMean.toFixed(3)}` : "—"}`
+      : `${entry.label}: ${model.reason}`;
+  };
+  (horizonSweep?.horizons || []).forEach((entry, index) => {
+    const button = document.createElement("button"); button.type = "button";
+    button.className = entry.model.interpolationReadiness?.state || "unavailable";
+    const horizonLabel = document.createElement("small"); horizonLabel.textContent = entry.label;
+    const horizonValue = document.createElement("strong");
+    horizonValue.textContent = entry.model.available
+      ? `${entry.model.supportedHeldoutPlacements}/${entry.model.heldoutPlacements}` : "—";
+    const horizonNote = document.createElement("em");
+    horizonNote.textContent = entry.model.available
+      ? `train ${entry.model.trainingLeaps.length} · hold ${entry.model.heldoutLeaps.length}` : "insufficient";
+    button.append(horizonLabel, horizonValue, horizonNote);
+    button.addEventListener("click", () => selectHorizon(button, entry)); horizons.append(button);
+    if (index === Math.min(1, horizonSweep.horizons.length - 1)) selectHorizon(button, entry);
+  });
   const support = document.createElement("div"); support.className = "site-surrogate-support";
   support.style.setProperty("--support", `${100 * surrogate.heldoutFeatureSupportCoverage}%`);
   const supportLabel = document.createElement("small"); supportLabel.textContent = "geometric support transfer";
@@ -3959,7 +3987,8 @@ function renderPopulationSurrogate(surrogate, contextualSurrogate, localContextS
       const weight = document.createElement("strong"); weight.textContent = `βₛ ${feature.standardizedWeight >= 0 ? "+" : ""}${feature.standardizedWeight.toFixed(3)}`;
       chip.append(name, weight); contextCoefficients.append(chip);
     });
-  sitePopulationSurrogate.append(label, value, detail, bars, readiness, support, localSupport, contextSupport, coefficients, interactions,
+  sitePopulationSurrogate.append(label, value, detail, bars, readiness, horizons, horizonDetail,
+    support, localSupport, contextSupport, coefficients, interactions,
     contextCoefficients);
 }
 
@@ -4025,7 +4054,9 @@ function renderPopulationResponseAssociation(atom) {
   const localContextSurrogate = blockedCreationResponseSurrogate(records,
     selectedPopulationResponseOutcome, { minimumSamplesPerSplit: 12, includeStructuralContext: true,
       contextFeatureIds: LOCAL_CREATION_CONTEXT_FEATURE_IDS });
-  renderPopulationSurrogate(scoreSurrogate, contextualSurrogate, localContextSurrogate);
+  const horizonSweep = creationResponseHorizonSweep(records, selectedPopulationResponseOutcome,
+    { minimumSamplesPerSplit: 12 });
+  renderPopulationSurrogate(scoreSurrogate, contextualSurrogate, localContextSurrogate, horizonSweep);
   sitePopulationResponsePlot.replaceChildren(); sitePopulationResponseTerms.replaceChildren();
   sitePopulationResponseOutcome.value = selectedPopulationResponseOutcome;
   const outcomeAssociations = audit.associations.filter((entry) => entry.outcomeId === selectedPopulationResponseOutcome);
@@ -8747,7 +8778,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-203",
+      buildId: "20260826-204",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -10903,6 +10934,12 @@ function experimentNotebookSummary(receipt) {
         search.creationResponseEvidence.localContextBlockedSurrogates).map(([outcomeId, surrogate]) => {
         const { predictions, ...summary } = surrogate; return [outcomeId, summary];
       })),
+      localContextHorizonSweeps: Object.fromEntries(Object.entries(
+        search.creationResponseEvidence.localContextHorizonSweeps).map(([outcomeId, sweep]) => [outcomeId, {
+        ...sweep, horizons: (sweep.horizons || []).map((entry) => {
+          const { predictions, ...model } = entry.model; return { ...entry, model };
+        }),
+      }])),
       groupingUnit: search.creationResponseEvidence.dataset.groupingUnit,
       atomLevelPseudoreplicationAvoided: true,
       blockedByCompleteStructuralLeap: true,
