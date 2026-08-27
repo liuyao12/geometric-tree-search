@@ -767,6 +767,16 @@ body.study-guide-open { overflow: hidden; }
 .growth-physics-preflight > header small { color: #77699b; font: 5px var(--mono); letter-spacing: .06em; text-transform: uppercase; }
 .growth-physics-preflight > header strong { margin-top: 4px; color: #d8cfef; font: 7px var(--mono); font-weight: 400; }
 .growth-physics-preflight > header > b { max-width: 46%; color: var(--mint); font: 5px/1.45 var(--mono); font-weight: 400; text-align: right; }
+.physics-compression-map { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(108px,1fr); gap: 3px; margin: 0 0 6px; padding: 1px 0 4px; overflow-x: auto; }
+.physics-compression-map button { position: relative; display: grid; grid-template-columns: 17px minmax(0,1fr); gap: 5px; min-width: 0; min-height: 49px; padding: 6px; border: 1px solid rgba(85,200,255,.12); background: rgba(3,13,15,.72); color: inherit; text-align: left; cursor: pointer; }
+.physics-compression-map button:hover,.physics-compression-map button:focus-visible,.physics-compression-map button.active { border-color: rgba(85,200,255,.5); background: rgba(85,200,255,.045); outline: none; }
+.physics-compression-map button > b { display: grid; place-items: center; align-self: start; width: 17px; height: 17px; border: 1px solid rgba(85,200,255,.18); color: #6d929d; font: 5px var(--mono); font-weight: 400; }
+.physics-compression-map button > span strong,.physics-compression-map button > span small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.physics-compression-map button > span strong { color: #b6d2d9; font: 5px var(--mono); font-weight: 400; }
+.physics-compression-map button > span small { margin-top: 3px; color: #55727a; font: 4px var(--mono); }
+.physics-compression-map button.open { border-bottom-color: rgba(255,117,111,.55); }.physics-compression-map button.declared { border-bottom-color: rgba(255,193,105,.55); }.physics-compression-map button.structural { border-bottom-color: rgba(101,225,188,.55); }.physics-compression-map button.partial,.physics-compression-map button.hybrid { border-bottom-color: rgba(181,148,255,.55); }
+.physics-compression-meter { grid-column: 1 / -1; display: flex; height: 2px; gap: 1px; overflow: hidden; background: rgba(255,255,255,.025); }
+.physics-compression-meter span.structural { background: #65e1bc; }.physics-compression-meter span.hypothesis { background: #ffc169; }.physics-compression-meter span.open { background: #ff756f; }
 .growth-physics-preflight .leap-physics-filters,.growth-physics-preflight .leap-physics-matrix { grid-template-columns: repeat(2,minmax(0,1fr)); }
 .growth-physics-preflight .leap-physics-matrix { max-height: 224px; overflow: auto; padding-right: 2px; }
 .growth-physics-preflight .leap-physics-detail > div { grid-template-columns: 62px minmax(0,1fr); }

@@ -7,6 +7,7 @@ APP = (APP_DIR / "app.js").read_text(encoding="utf-8")
 HTML = (APP_DIR / "index.html").read_text(encoding="utf-8")
 CSS = (APP_DIR / "style.css").read_text(encoding="utf-8")
 ATLAS = (APP_DIR / "evidence-atlas.js").read_text(encoding="utf-8")
+COMPRESSION = (APP_DIR / "physics-compression-map.js").read_text(encoding="utf-8")
 README = (APP_DIR / "README.md").read_text(encoding="utf-8")
 DOCS = (ROOT / "docs" / "projects" / "materials-recursive-gcts-benchmark.md").read_text(encoding="utf-8")
 
@@ -43,6 +44,20 @@ def test_preflight_receipt_is_coordinate_free_and_hashed():
         assert gate in APP
 
 
+def test_process_scale_compression_map_is_complete_and_fail_visible():
+    assert 'id="growthPhysicsCompressionMap"' in HTML
+    assert '$("growthPhysicsCompressionMap")' in APP
+    assert "buildPhysicsCompressionMap(records)" in APP
+    assert "compressionMap: buildPhysicsCompressionMap(records)" in APP
+    assert "unclassifiedRecordIds" in COMPRESSION
+    assert "structuralStatesAreNotPhysicalTime: true" in COMPRESSION
+    assert "hypothesesAreNotLearnedPhysics: true" in COMPRESSION
+    for lane in ("structural evidence", "local attachment", "interface + morphology",
+                 "imposed environment", "unresolved physics"):
+        assert lane in COMPRESSION
+    assert ".physics-compression-map" in CSS
+
+
 def test_non_webgl_fallback_keeps_the_scientific_portal_alive():
     assert "function fallbackViewportRenderer" in APP
     assert "function materialsViewportRenderer" in APP
@@ -58,7 +73,10 @@ def test_public_narrative_and_build_are_versioned():
     assert "Build 177" in README
     assert "Build 177" in DOCS
     assert "If WebGL cannot be created" in README
-    assert 'buildId: "20260826-206"' in APP
-    assert 'app.js?v=20260826-206' in HTML
-    assert 'style.css?v=20260826-102' in HTML
+    assert 'buildId: "20260826-207"' in APP
+    assert 'app.js?v=20260826-207' in HTML
+    assert 'style.css?v=20260826-103' in HTML
+    assert 'physics-compression-map.js?v=20260826-1' in APP
     assert 'evidence-atlas.js?v=20260826-19' in HTML
+    assert "Build 207" in README
+    assert "Build 207" in DOCS

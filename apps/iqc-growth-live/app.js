@@ -37,6 +37,7 @@ import { blockedCreationResponseSurrogate, blockedCreationResponseValidation, bu
   crossRunHorizonReadinessAtlas,
   LOCAL_CREATION_CONTEXT_FEATURE_IDS }
   from "./creation-response-association.js?v=20260826-13";
+import { buildPhysicsCompressionMap } from "./physics-compression-map.js?v=20260826-1";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -259,6 +260,7 @@ const growthProtocolSelect = $("growthProtocolSelect");
 const growthProtocolHint = $("growthProtocolHint");
 const growthProtocolSummary = $("growthProtocolSummary");
 const growthPhysicsPreflightState = $("growthPhysicsPreflightState");
+const growthPhysicsCompressionMap = $("growthPhysicsCompressionMap");
 const growthPhysicsPreflightFilters = $("growthPhysicsPreflightFilters");
 const growthPhysicsPreflightMatrix = $("growthPhysicsPreflightMatrix");
 const growthPhysicsPreflightDetail = $("growthPhysicsPreflightDetail");
@@ -1282,6 +1284,7 @@ let selectedLeapPhysicsId = "steric";
 let selectedLeapPhysicsFilter = "all";
 let selectedGrowthPhysicsPreflightId = "steric";
 let selectedGrowthPhysicsPreflightFilter = "all";
+let selectedPhysicsCompressionLane = "all";
 let frozenPhysicsPreflightManifest = null;
 const MAXIMUM_RETAINED_STRUCTURAL_LEAPS = 24;
 let growthMechanismEvents = [];
@@ -8786,7 +8789,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-206",
+      buildId: "20260826-207",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -20547,7 +20550,7 @@ function currentPhysicsPreflightManifest() {
     result[physicsEvidenceBucket(record)] += 1;
     return result;
   }, { structural: 0, hypothesis: 0, open: 0 });
-  return { schema: 1, records, counts,
+  return { schema: 1, records, counts, compressionMap: buildPhysicsCompressionMap(records),
     generatedBeforeActionExecution: true, coordinatesEmbedded: false,
     candidateGeometryEmbedded: false, candidateSetInspected: false, targetUsed: false,
     physicalTimeModeled: false };
@@ -20559,7 +20562,36 @@ function renderGrowthPhysicsPreflight() {
   }
   const manifest = frozenPhysicsPreflightManifest;
   const { records, counts } = manifest;
-  growthPhysicsPreflightState.textContent = `${counts.structural} observed/learned · ${counts.hypothesis} declared · ${counts.open} open`;
+  const compressionMap = manifest.compressionMap || buildPhysicsCompressionMap(records);
+  growthPhysicsPreflightState.textContent = `${counts.structural} observed/learned · ${counts.hypothesis} declared · ${counts.open} open · ${compressionMap.complete ? "scale map complete" : `${compressionMap.unclassifiedRecordIds.length} unclassified`}`;
+  const compressionLanes = [{ id: "all", label: "all physical layers", short: "complete frozen manifest",
+    recordIds: records.map((record) => record.id), recordCount: records.length, counts, state: "hybrid" },
+  ...compressionMap.lanes];
+  if (!compressionLanes.some((lane) => lane.id === selectedPhysicsCompressionLane)) {
+    selectedPhysicsCompressionLane = "all";
+  }
+  growthPhysicsCompressionMap.replaceChildren(...compressionLanes.map((lane, index) => {
+    const button = document.createElement("button"); button.type = "button";
+    button.className = `${lane.state}${lane.id === selectedPhysicsCompressionLane ? " active" : ""}`;
+    button.setAttribute("aria-pressed", String(lane.id === selectedPhysicsCompressionLane));
+    const order = document.createElement("b"); order.textContent = lane.id === "all" ? "Σ" : String(index).padStart(2, "0");
+    const copy = document.createElement("span");
+    const label = document.createElement("strong"); label.textContent = lane.label;
+    const small = document.createElement("small"); small.textContent = `${lane.short} · ${lane.recordCount}`;
+    copy.append(label, small);
+    const meter = document.createElement("i"); meter.className = "physics-compression-meter";
+    [["structural", lane.counts.structural], ["hypothesis", lane.counts.hypothesis], ["open", lane.counts.open]]
+      .forEach(([kind, count]) => {
+        const segment = document.createElement("span"); segment.className = kind;
+        segment.style.flexGrow = String(count); segment.hidden = count === 0; meter.append(segment);
+      });
+    button.append(order, copy, meter);
+    button.title = lane.interpretation || "Show every frozen physics-manifest record";
+    button.addEventListener("click", () => {
+      selectedPhysicsCompressionLane = lane.id; renderGrowthPhysicsPreflight();
+    });
+    return button;
+  }));
   growthPhysicsPreflightFilters.querySelectorAll("button[data-preflight-physics-filter]").forEach((button) => {
     const filter = button.dataset.preflightPhysicsFilter;
     const count = filter === "all" ? records.length : counts[filter];
@@ -20567,8 +20599,11 @@ function renderGrowthPhysicsPreflight() {
     button.setAttribute("aria-pressed", String(filter === selectedGrowthPhysicsPreflightFilter));
     button.textContent = `${filter === "all" ? "all" : filter === "structural" ? "observed + learned" : filter === "hypothesis" ? "declared hypotheses" : "open boundary"} · ${count}`;
   });
-  const visibleRecords = selectedGrowthPhysicsPreflightFilter === "all"
-    ? records : records.filter((record) => physicsEvidenceBucket(record) === selectedGrowthPhysicsPreflightFilter);
+  const activeLane = compressionLanes.find((lane) => lane.id === selectedPhysicsCompressionLane);
+  const laneRecordIds = new Set(activeLane?.recordIds || records.map((record) => record.id));
+  const visibleRecords = records.filter((record) => laneRecordIds.has(record.id)
+    && (selectedGrowthPhysicsPreflightFilter === "all"
+      || physicsEvidenceBucket(record) === selectedGrowthPhysicsPreflightFilter));
   if (!visibleRecords.some((record) => record.id === selectedGrowthPhysicsPreflightId)) {
     selectedGrowthPhysicsPreflightId = visibleRecords[0]?.id || "steric";
   }

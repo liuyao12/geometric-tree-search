@@ -6363,3 +6363,16 @@ The detail panel also carries the feature-scope statement, envelope definition, 
 hash, and explicit heldout-fit and response-selection flags. Coefficients are ranking-model
 diagnostics, not energies or causal physical contributions. No model is refit and no
 placement or prediction rows are restored to the notebook.
+
+## Build 207: map physical processes onto structural scales
+
+The pre-growth physics manifest is no longer only a flat list. Its 41 current records are
+classified exactly once into structural evidence, local attachment, interface/morphology,
+imposed environment, or unresolved dynamics/nonlocal response. A segmented lane meter
+separates observed/learned constraints from declared hypotheses and open physics; lane and
+evidence-class filters compose without changing any setting.
+
+The coordinate-free map is frozen with the preflight receipt before candidate execution.
+It explicitly records that structural states are not physical time and hypotheses are not
+learned physics. Classification is fail-visible: any future manifest record omitted from
+the scale vocabulary enters an `unclassified` lane and makes the completeness flag false.

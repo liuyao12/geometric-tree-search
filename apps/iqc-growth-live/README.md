@@ -5619,3 +5619,17 @@ The coefficient view is explicitly a model diagnostic rather than an energy deco
 It retains the original receipt, context scope, envelope definition, and heldout-use audit;
 no coordinate, placement, or prediction row enters the notebook. This turns the matrix from
 a status board into a compact experimental audit while preserving its descriptive boundary.
+
+### Build 207 · multiscale physics-compression map
+
+The pre-growth manifest now organizes all 41 physical records into five inspectable lanes:
+structural evidence, local attachment, interface and morphology, imposed environment, and
+unresolved dynamics/nonlocal response. Each lane shows the fraction that is observed or
+learned, user-declared, or still open; selecting a lane filters the exact underlying records
+and retains the existing route to its controlling experiment.
+
+This is the portal's explicit leap-frog ledger. It distinguishes a physical process whose
+constraints are present in geometry from a counterfactual geometric hypothesis and from an
+unmodeled process. Every current record is assigned exactly once. A future unrecognized
+record appears in a red unclassified lane rather than being silently claimed as encoded.
+The map and its no-target/no-time audit are frozen into the experiment receipt.
