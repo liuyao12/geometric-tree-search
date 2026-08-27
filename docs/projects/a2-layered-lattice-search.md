@@ -175,15 +175,20 @@ satisfiable and no radius-two witness was found. The current catalogue points
 to these bounded-inconclusive `-strengthened.ndjson` reports and separately
 exposes the size of each smallest replayed core.
 
-A subsequent eight-way 64-round continuation seeds each candidate with its
-subsumed strengthened clauses and learns 512 additional exact obstruction
-cores in total. The retained clause counts are 188 (`00128`), 192 (`00211`),
-216 (`00232`), 192 (`00235`), 203 (`00694`), 204 (`00755`), 202 (`00777`),
-and 201 (`00809`): 1,598 sound placement-subset blockers. Every run consumes
-all 64 configured rounds, so its terminal reason is `round_limit`, not a solver
-timeout. None exhausts the outer first-corona models and none finds a replayed
-radius-two witness. Reports end in `-longer64.ndjson`; they strengthen the
-bounded result but do not decide tilability.
+Two subsequent eight-way 64-round continuations seed each candidate from the
+preceding exact clause set. Together they perform 128 further GCTS/CEGAR
+refinements per candidate and learn 1,024 new exact obstruction cores. After
+canonical subsumption, the latest retained clause counts are 238 (`00128`),
+253 (`00211`), 275 (`00232`), 250 (`00235`), 260 (`00694`), 251 (`00755`),
+261 (`00777`), and 258 (`00809`): 2,046 sound placement-subset blockers. The
+second continuation contributes 512 new cores and increases the retained set
+by 448 because 64 older seeded clauses become redundant under canonical
+subsumption. Every latest run consumes all 64 configured continuation rounds,
+so its terminal reason is `round_limit`, not a solver timeout. None exhausts
+the outer first-corona models and none finds a replayed radius-two witness.
+The cumulative reports end in `-longer128.ndjson` and record seed,
+continuation, and cumulative effort separately. They strengthen the bounded
+result but do not decide tilability.
 
 The eight focused candidates now have a complete six-copy periodic screen.
 The original generic pseudo-Boolean run reached its 120-second limit after

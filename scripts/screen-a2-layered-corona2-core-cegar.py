@@ -119,7 +119,7 @@ def extension_with_core(root, tile_orientations, selected, timeout_ms, prefix):
 
 def screen(
     record, maximum_rounds, timeout_ms, max_first_copies=0, seed_clauses=None,
-    checkpoint_callback=None,
+    checkpoint_callback=None, seed_rounds=0, seed_milliseconds=0,
 ):
     started = time.monotonic()
     root = GEOMETRY.tile_occupancy(record["cells"])
@@ -147,6 +147,18 @@ def screen(
             "source": seed.get("source"),
         })
 
+    def progress_metadata(completed_rounds):
+        """Keep continuation and cumulative effort distinct in every report."""
+        elapsed = round((time.monotonic() - started) * 1000)
+        return {
+            "rounds": seed_rounds + completed_rounds,
+            "seed_rounds": seed_rounds,
+            "continuation_rounds": completed_rounds,
+            "milliseconds": elapsed,
+            "seed_milliseconds": seed_milliseconds,
+            "cumulative_milliseconds": seed_milliseconds + elapsed,
+        }
+
     def checkpoint(stopped_by="in_progress"):
         if checkpoint_callback is None:
             return
@@ -155,11 +167,10 @@ def screen(
             "corona2_core_classification": "unresolved",
             "corona2_core_cegar": {
                 "outer_exhausted": False,
-                "rounds": max(0, len(clauses) - len(seed_clauses or [])),
+                **progress_metadata(max(0, len(clauses) - len(seed_clauses or []))),
                 "max_first_copies": max_first_copies or None,
                 "clauses": clauses,
                 "stopped_by": stopped_by,
-                "milliseconds": round((time.monotonic() - started) * 1000),
             },
         })
 
@@ -172,10 +183,9 @@ def screen(
                 "corona2_core_classification": "radius2_obstruction_z3",
                 "corona2_core_cegar": {
                     "outer_exhausted": True,
-                    "rounds": round_index,
+                    **progress_metadata(round_index),
                     "max_first_copies": max_first_copies or None,
                     "clauses": clauses,
-                    "milliseconds": round((time.monotonic() - started) * 1000),
                 },
             }
         if outer_result != sat:
@@ -221,13 +231,12 @@ def screen(
                 "corona2_core_classification": "radius2_witness",
                 "corona2_core_cegar": {
                     "outer_exhausted": False,
-                    "rounds": round_index + 1,
+                    **progress_metadata(round_index + 1),
                     "max_first_copies": max_first_copies or None,
                     "clauses": clauses,
                     "first_patch": first_patch,
                     "added_patch": added,
                     "replay": replay,
-                    "milliseconds": round((time.monotonic() - started) * 1000),
                 },
             }
         if extension["result"] != "unsat":
@@ -248,7 +257,7 @@ def screen(
         "corona2_core_classification": "unresolved",
         "corona2_core_cegar": {
             "outer_exhausted": False,
-            "rounds": max(0, len(clauses) - len(seed_clauses or [])),
+            **progress_metadata(max(0, len(clauses) - len(seed_clauses or []))),
             "max_first_copies": max_first_copies or None,
             "clauses": clauses,
             "stopped_by": (
@@ -256,7 +265,6 @@ def screen(
                 if max(0, len(clauses) - len(seed_clauses or [])) == maximum_rounds
                 else "solver_timeout"
             ),
-            "milliseconds": round((time.monotonic() - started) * 1000),
         },
     }
 
@@ -279,11 +287,24 @@ def main():
     output = Path(args.output)
     output.write_text("")
     seeds_by_id = {}
+    seed_effort_by_id = {}
     for seed_core_path in args.seed_core:
         for line in Path(seed_core_path).read_text().splitlines():
             if not line.strip():
                 continue
             seed = json.loads(line)
+            seed_report = seed.get("corona2_core_cegar", {})
+            previous = seed_effort_by_id.get(seed["id"], (0, 0))
+            seed_effort_by_id[seed["id"]] = (
+                max(previous[0], seed_report.get("rounds", 0)),
+                max(
+                    previous[1],
+                    seed_report.get(
+                        "cumulative_milliseconds",
+                        seed_report.get("milliseconds", 0),
+                    ),
+                ),
+            )
             if "reduced_outer_placement_indices" in seed:
                 indices_list = [seed["reduced_outer_placement_indices"]]
             else:
@@ -318,6 +339,7 @@ def main():
                 record, args.rounds, args.timeout_ms, args.max_first_copies,
                 seeds_by_id.get(record["id"], []),
                 save_checkpoint,
+                *seed_effort_by_id.get(record["id"], (0, 0)),
             )
             classification = result["corona2_core_classification"]
             counts[classification] = counts.get(classification, 0) + 1

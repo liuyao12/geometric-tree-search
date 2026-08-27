@@ -234,6 +234,39 @@ assert {
 } == expected_longer64_clauses
 assert sum(expected_longer64_clauses.values()) == 1598
 
+expected_longer128_clauses = {
+    "a2lp_7_00128": 238, "a2lp_7_00211": 253,
+    "a2lp_7_00232": 275, "a2lp_7_00235": 250,
+    "a2lp_7_00694": 260, "a2lp_7_00755": 251,
+    "a2lp_7_00777": 261, "a2lp_7_00809": 258,
+}
+longer128 = [
+    json.loads((
+        ROOT / "data" / f"a2-layered-size7-corona2-core-{candidate_id}-longer128.ndjson"
+    ).read_text())
+    for candidate_id in expected_longer128_clauses
+]
+assert all(record["corona2_core_classification"] == "unresolved" for record in longer128)
+assert all(record["corona2_core_cegar"]["outer_exhausted"] is False for record in longer128)
+assert all(record["corona2_core_cegar"]["rounds"] == 128 for record in longer128)
+assert all(record["corona2_core_cegar"]["seed_rounds"] == 64 for record in longer128)
+assert all(record["corona2_core_cegar"]["continuation_rounds"] == 64 for record in longer128)
+assert all(record["corona2_core_cegar"]["stopped_by"] == "round_limit" for record in longer128)
+assert all(
+    sum(clause.get("seeded") is not True for clause in record["corona2_core_cegar"]["clauses"])
+    == 64
+    for record in longer128
+)
+assert {
+    record["id"]: len(record["corona2_core_cegar"]["clauses"])
+    for record in longer128
+} == expected_longer128_clauses
+assert sum(expected_longer128_clauses.values()) == 2046
+assert sum(
+    sum(clause.get("seeded") is not True for clause in record["corona2_core_cegar"]["clauses"])
+    for record in longer128
+) == 512
+
 larger_periodic = []
 for part in (1, 2, 3):
     larger_periodic.extend(
