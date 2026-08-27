@@ -1807,6 +1807,17 @@ const GROWTH_PROTOCOLS = Object.freeze({
 });
 
 const MATERIALS_STUDY_RECIPES = Object.freeze([
+  { id: "archive-response", kind: "public calculation", label: "Archive-derived response geometry",
+    question: "Can an archived cell–stress series supply a reproducible geometric shortcut without becoming a potential?",
+    summary: "Load one exact public Na–Cl calculation series, audit its conditioned two-channel response fit, then compare the capped response-shaped soft metric with an otherwise identical geometry-only control.",
+    prediction: "If the archived response contains useful structural information, it may rerank the same hard-admitted cluster actions and change finite structural outcomes without changing candidate coordinates or admission certificates.",
+    scenario: "imported", publicArchive: WORKED_PUBLIC_ARCHIVE.id, sourceLabel: "exact NOMAD Na–Cl response archive",
+    preferredFrameIndex: 4, geometryMode: "auto", marking: { channels: 0, reach: 2, representation: "ports" },
+    protocol: "bulk", observable: "order", harmonic: 6,
+    encodings: ["exact public cell + stress series", "conditioned isotropic response channels", "capped affine soft-ranking metric"],
+    observables: ["fit domain and exclusions", "held-frame response skill", "unchanged candidate digest", "frontier work", "q₆ / geometric S(q)"],
+    route: ["public archive", "cluster cover", "GCTS marking", "response metric", "matched control", "receipt"],
+    boundary: "The fit is correlated within one archive and supplies only a bounded ordering metric. It is not an elastic tensor, transferable potential, equilibrium calculation, kinetics, or physical time." },
   { id: "bulk-order", kind: "crystal", label: "Bulk structural continuation",
     question: "Can local cluster connections recover bulk translational order?",
     summary: "Use rocksalt as the stationary positive control, then compare local q₆ and geometric S(q) as explicit growth leaves the observation window.",
@@ -1890,6 +1901,12 @@ const MATERIALS_STUDY_RECIPES = Object.freeze([
 ]);
 
 const MATERIALS_STUDY_COMPARISONS = Object.freeze({
+  "archive-response": { factor: "archived response metric", question: "Does the conditioned response shape alter the finite structural continuation over unchanged hard geometry?",
+    arms: [
+      { id: "reference", label: "response-shaped metric", summary: "Use the frozen two-channel archive fit as a capped affine soft metric.", settings: { affineLoadMode: "archive-response" } },
+      { id: "contrast", label: "geometry-only control", summary: "Use the identical selected frame, cover, marking, candidates, and hard gates without the response metric.", settings: { affineLoadMode: "none" } },
+    ], outcomes: ["continuation sites", "frontier work", "S(q) response"],
+    boundary: "A finite response difference is a registered geometric intervention, not an independent elastic validation, favorable pathway, rate, or causal material law." },
   "bulk-order": { factor: "clusters² promotion", question: "Does hierarchical promotion add causal depth beyond primitive placements?",
     arms: [
       { id: "reference", label: "hierarchical grammar", summary: "Frozen marking with clusters² promotion enabled.", settings: { hierarchyEnabled: true } },
@@ -2064,14 +2081,16 @@ async function loadWorkedPublicArchive({ updateAddress = true } = {}) {
     databaseSourceLink.textContent = `Open exact NOMAD entry ${result.structure.metadata.entryId.slice(0, 10)}… ↗`;
     if (updateAddress) {
       const url = new URL(window.location.href);
-      url.searchParams.set("build", "256");
+      url.searchParams.set("build", "257");
       url.searchParams.set("specimen", `nomad:${WORKED_PUBLIC_ARCHIVE.id}`);
       window.history.replaceState(null, "", url);
     }
+    return true;
   } catch (error) {
     databaseStatus.className = "import-status invalid";
     databaseStatus.textContent = `Worked archive failed its declared public-data gate: ${error.message}. The active specimen is unchanged.`;
     workedArchiveState.textContent = "unavailable · public archive could not be verified";
+    return false;
   } finally {
     workedArchiveButton.disabled = false;
     randomMaterialButton.disabled = selectedDatabaseElements.length === 0;
@@ -10164,7 +10183,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-256",
+      buildId: "20260827-257",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -12421,7 +12440,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-256" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-257" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -12601,6 +12620,11 @@ function notebookRegisteredOutcomeObservations(receipt, trajectoryPoints, genera
   const trace = search?.finiteIceAnchorTrace || null;
   const rejectedIcePoses = trace?.waves?.reduce((sum, wave) => sum + (wave.rejectedCandidateAnchors || 0), 0);
   const values = {
+    "archive-response": {
+      "continuation sites": notebookOutcomeRecord(final?.domain?.continuationAtoms ?? generatedSites, "sites", "final certified structural-leap domain snapshot"),
+      "frontier work": notebookOutcomeRecord(search?.localConstraintWork?.evaluations, "tests", "target-blind local constraint evaluations"),
+      "S(q) response": notebookOutcomeRecord(final?.scattering?.summary?.peakProminence, "peak prominence", "final finite-window unit-weight geometric S(q)"),
+    },
     "bulk-order": {
       "continuation sites": notebookOutcomeRecord(final?.domain?.continuationAtoms ?? generatedSites, "sites", "final certified structural-leap domain snapshot"),
       "causal depth": notebookOutcomeRecord(causalDepth, "levels", "maximum parent→child depth in the live certificate"),
@@ -20413,7 +20437,9 @@ function activeStudyRecipeAudit() {
   const expectedMarking = { ...recipe.marking,
     representation: armSettings.markingRepresentation || recipe.marking.representation };
   const checks = {
-    sample: scenarioSelect.value === recipe.scenario,
+    sample: recipe.publicArchive
+      ? scenarioSelect.value === "imported" && importedStructure?.metadata?.entryId === recipe.publicArchive
+      : scenarioSelect.value === recipe.scenario,
     geometryHypothesis: geometryMode === recipe.geometryMode,
     markingChannels: Number(markingDraft.channels) === Number(expectedMarking.channels),
     markingReach: Number(markingDraft.reach) === Number(expectedMarking.reach),
@@ -20427,6 +20453,8 @@ function activeStudyRecipeAudit() {
   if (armSettings.epitaxyTemplateMode) checks.comparisonEpitaxyTemplate = epitaxyTemplateMode === armSettings.epitaxyTemplateMode;
   if (armSettings.requestedGrowthNuclei) checks.comparisonNuclei = requestedGrowthNuclei === armSettings.requestedGrowthNuclei;
   if (armSettings.confinement) checks.comparisonBoundary = confinementSelect.value === armSettings.confinement;
+  if (armSettings.affineLoadMode) checks.comparisonAffineLoad = affineLoadMode === armSettings.affineLoadMode;
+  if (Number.isInteger(recipe.preferredFrameIndex)) checks.selectedArchiveFrame = importedFrameIndex === recipe.preferredFrameIndex;
   return { id: recipe.id, label: recipe.label, question: recipe.question, prediction: recipe.prediction, kind: recipe.kind,
     route: [...recipe.route], encodings: [...recipe.encodings], observables: [...recipe.observables],
     registeredComparison: comparison ? { factor: comparison.factor, question: comparison.question,
@@ -20452,7 +20480,8 @@ function renderStudyGuide() {
     button.addEventListener("click", () => { selectedStudyRecipeId = recipe.id; renderStudyGuide(); });
     return button;
   }));
-  const materialLabel = [...scenarioSelect.options].find((option) => option.value === selected.scenario)?.textContent || selected.scenario;
+  const materialLabel = selected.sourceLabel
+    || [...scenarioSelect.options].find((option) => option.value === selected.scenario)?.textContent || selected.scenario;
   const protocolLabel = GROWTH_PROTOCOLS[selected.protocol]?.label || selected.protocol;
   studyRecipeDetail.replaceChildren();
   const kind = document.createElement("small"); kind.className = "study-recipe-kind"; kind.textContent = `${selected.kind} investigation`;
@@ -20476,7 +20505,7 @@ function renderStudyGuide() {
   const boundary = document.createElement("p"); boundary.className = "study-recipe-boundary";
   boundary.innerHTML = `<b>claim boundary</b>${selected.boundary}`;
   const action = document.createElement("button"); action.type = "button"; action.className = "study-recipe-apply";
-  action.textContent = "Configure study from known positions";
+  action.textContent = selected.publicArchive ? "Open public archive and configure study" : "Configure study from known positions";
   action.addEventListener("click", () => applyStudyRecipe(selected.id));
   const note = document.createElement("em"); note.textContent = "Convenience bundle only · every control remains editable and receipt-visible · nothing runs automatically";
   studyRecipeDetail.append(kind, question, summary, manifest, columns, boundary, action, note);
@@ -20497,15 +20526,32 @@ function applyStudyArmSettings(arm) {
   if (settings.epitaxyTemplateMode) epitaxyTemplateMode = settings.epitaxyTemplateMode;
   if (settings.requestedGrowthNuclei) requestedGrowthNuclei = settings.requestedGrowthNuclei;
   if (settings.confinement) confinementSelect.value = settings.confinement;
+  if (settings.affineLoadMode) {
+    affineLoadMode = settings.affineLoadMode;
+    affineLoadSelect.value = affineLoadMode;
+  }
 }
 
-function applyStudyRecipe(recipeId) {
+async function applyStudyRecipe(recipeId) {
   const recipe = MATERIALS_STUDY_RECIPES.find((entry) => entry.id === recipeId);
   if (!recipe) return;
   hypothesisSeparationExperiment = null;
   markingComparisonExperiment = null;
   selectedStudyRecipeId = recipe.id;
-  scenarioSelect.value = recipe.scenario;
+  setStudyGuideOpen(false);
+  if (recipe.publicArchive && importedStructure?.metadata?.entryId !== recipe.publicArchive) {
+    receiptStatus.textContent = `${recipe.label} · opening and verifying the exact public archive…`;
+    const loaded = await loadWorkedPublicArchive({ updateAddress: true });
+    if (!loaded || importedStructure?.metadata?.entryId !== recipe.publicArchive) {
+      activeStudyRecipeId = null;
+      receiptStatus.textContent = `${recipe.label} could not be configured because the declared public archive failed its evidence gate.`;
+      renderStudyCompass();
+      return;
+    }
+  } else {
+    scenarioSelect.value = recipe.scenario;
+  }
+  if (Number.isInteger(recipe.preferredFrameIndex)) selectImportedFrame(recipe.preferredFrameIndex);
   if (recipe.scenario === "iceVI") iceViMicrostate = null;
   orderPrototypeLibrary = null;
   enterPipelineStage(0);
@@ -20518,16 +20564,16 @@ function applyStudyRecipe(recipeId) {
   applyStudyArmSettings(MATERIALS_STUDY_COMPARISONS[recipe.id]?.arms[0]);
   activeStudyRecipeId = recipe.id;
   enterPipelineStage(0);
-  setStudyGuideOpen(false);
   receiptStatus.textContent = `${recipe.label} configured · begin from the supplied positions; no growth has run.`;
 }
 
-function applyStudyComparisonArm(recipeId, armId) {
+async function applyStudyComparisonArm(recipeId, armId) {
   const recipe = MATERIALS_STUDY_RECIPES.find((entry) => entry.id === recipeId);
   const comparison = studyComparisonForRecipe(recipeId);
   const arm = comparison?.arms.find((entry) => entry.id === armId);
   if (!recipe || !arm) return;
-  applyStudyRecipe(recipeId);
+  await applyStudyRecipe(recipeId);
+  if (activeStudyRecipeId !== recipeId) return;
   activeStudyArmId = arm.id;
   applyStudyArmSettings(arm);
   enterPipelineStage(0);
@@ -20565,7 +20611,8 @@ const STUDY_STAGE_GUIDANCE = Object.freeze({
 });
 
 function shareableStudyUrl(audit = activeStudyRecipeAudit()) {
-  if (!audit?.settingsStillMatch || scenarioSelect.value === "imported"
+  const recipe = MATERIALS_STUDY_RECIPES.find((entry) => entry.id === audit?.id);
+  if (!audit?.settingsStillMatch || (scenarioSelect.value === "imported" && !recipe?.publicArchive)
     || activeStudyArmId !== "reference"
     || !STUDY_STAGE_SEQUENCE.some((entry) => entry.stage === pipelineStage)) return null;
   const url = new URL(window.location.href);
@@ -20573,6 +20620,7 @@ function shareableStudyUrl(audit = activeStudyRecipeAudit()) {
   url.searchParams.set("studyVersion", "1");
   url.searchParams.set("study", audit.id);
   url.searchParams.set("stage", String(pipelineStage));
+  if (recipe?.publicArchive) url.searchParams.set("specimen", `nomad:${recipe.publicArchive}`);
   return url.toString();
 }
 
@@ -29538,7 +29586,7 @@ function applyLaunchParameters() {
     if (requestedStudyVersion === "1" && requestedRecipe) {
       selectedStudyRecipeId = requestedRecipe.id;
       activeStudyRecipeId = requestedRecipe.id;
-      scenarioSelect.value = requestedRecipe.scenario;
+      if (!requestedRecipe.publicArchive) scenarioSelect.value = requestedRecipe.scenario;
       geometryMode = requestedRecipe.geometryMode;
       markingDraft = { spinColoring: "preserve", ...requestedRecipe.marking };
       structureObservableSelection = requestedRecipe.observable;
@@ -29576,10 +29624,17 @@ renderExperimentNotebook();
 renderStudyGuide();
 buildPeriodicTable();
 renderDatabaseStructureFamily();
-enterPipelineStage(applyLaunchParameters());
+const launchStage = applyLaunchParameters();
+enterPipelineStage(launchStage);
 const sharedSpecimen = new URLSearchParams(window.location.search).get("specimen");
 if (sharedSpecimen === `nomad:${WORKED_PUBLIC_ARCHIVE.id}`) {
-  loadWorkedPublicArchive({ updateAddress: false });
+  loadWorkedPublicArchive({ updateAddress: false }).then((loaded) => {
+    const recipe = MATERIALS_STUDY_RECIPES.find((entry) => entry.id === activeStudyRecipeId);
+    if (!loaded || recipe?.publicArchive !== WORKED_PUBLIC_ARCHIVE.id) return;
+    if (Number.isInteger(recipe.preferredFrameIndex)) selectImportedFrame(recipe.preferredFrameIndex);
+    applyStudyArmSettings(MATERIALS_STUDY_COMPARISONS[recipe.id]?.arms[0]);
+    enterPipelineStage(launchStage);
+  });
 }
 renderStageFocus();
 if (studyLaunchAudit?.loaded) {

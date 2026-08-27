@@ -1,5 +1,22 @@
 # Recursive GCTS benchmark for material growth
 
+### Guided archive-response intervention (Build 257)
+
+The Study Guide now treats the pinned public calculation series as a complete
+physics-to-geometry investigation. It reconstructs the exact NOMAD specimen,
+preselects the fifth archived frame because that frame lies inside the frozen
+small-strain fit domain, and registers two otherwise identical arms: a capped
+response-shaped soft metric and a geometry-only control. Neither arm changes
+candidate coordinates, cluster identity, finite proper-pose ports, or any hard
+admission certificate.
+
+The comparison records continuation sites, frontier work, and finite-window
+geometric S(q) from executed receipts. A shareable recipe URL reconstructs the
+public entry, paused stage, response arm, and declared controls without
+embedding coordinates, fitted weights, or execution history. The result is an
+auditable geometric intervention over one correlated archive—not a general
+elastic model or a claim of favorable dynamics.
+
 ### Reproducible public worked investigation (Build 256)
 
 The browser now exposes the known positive NOMAD response archive as a

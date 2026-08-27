@@ -1,5 +1,19 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 257 · guided physics-to-geometry response study
+
+The exact public Na–Cl archive is now a complete Study Guide investigation,
+not merely a specimen shortcut. The recipe loads and verifies the public
+series, selects a predeclared eligible source frame, preserves the ordinary
+cluster-cover and GCTS stages, and registers a matched comparison between the
+bounded archive-response metric and a geometry-only control. Both arms retain
+the same input frame, candidate construction, and hard admission rules.
+
+The study compass carries the materials-science question, prediction,
+encodings, observables, claim boundary, and stage-by-stage inspection targets.
+Its share link contains only the recipe version and exact public specimen ID;
+it embeds no coordinates, fitted weights, or growth history.
+
 ## Build 256 · one-click reproducible public investigation
 
 The public archive search now includes a no-text-field worked example for the

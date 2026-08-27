@@ -55,9 +55,9 @@ def test_coordinate_free_claims_fail_closed():
 
 
 def test_build_190_assets_and_narrative():
-    assert 'buildId: "20260827-256"' in APP
-    assert 'app.js?v=20260827-256' in HTML
-    assert 'style.css?v=20260827-256' in HTML
+    assert 'buildId: "20260827-257"' in APP
+    assert 'app.js?v=20260827-257' in HTML
+    assert 'style.css?v=20260827-257' in HTML
     assert 'site-environment-comparison.js?v=20260826-3' in APP
     assert 'site-provenance.js?v=20260826-2' in APP
     assert "Build 190" in README

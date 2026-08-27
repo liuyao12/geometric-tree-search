@@ -41,8 +41,8 @@ def test_receipt_and_notebook_require_matched_horizon_or_two_fixed_points():
 def test_build_218_narrative_and_assets_are_current():
     assert "Build 218" in README
     assert "Build 218" in DOC
-    assert 'buildId: "20260827-256"' in APP
-    assert 'app.js?v=20260827-256' in HTML
+    assert 'buildId: "20260827-257"' in APP
+    assert 'app.js?v=20260827-257' in HTML
 
 
 if __name__ == "__main__":
