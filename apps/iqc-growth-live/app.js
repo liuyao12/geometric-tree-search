@@ -280,6 +280,9 @@ const markingRepresentationHint = $("markingRepresentationHint");
 const restartMarkingButton = $("restartMarkingButton");
 const saveMarkingButton = $("saveMarkingButton");
 const markingConfigNote = $("markingConfigNote");
+const markingCapacityState = $("markingCapacityState");
+const markingCapacityFrontier = $("markingCapacityFrontier");
+const markingCapacityDetail = $("markingCapacityDetail");
 const markingLibrarySelect = $("markingLibrarySelect");
 const markingLibraryCount = $("markingLibraryCount");
 const markingSearchModeSelect = $("markingSearchModeSelect");
@@ -1235,6 +1238,9 @@ let learnedCover = null;
 let detectedUnitCell = null;
 let trainedMarking = null;
 let sectionModel = null;
+let markingCapacityFrontierAudit = null;
+let markingCapacityAuditProgress = null;
+let markingCapacityAuditToken = 0;
 let overlapGrammar = null;
 let placedClusters = [];
 let frontierCandidates = [];
@@ -8969,7 +8975,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-210",
+      buildId: "20260826-211",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -9652,6 +9658,7 @@ async function buildExperimentReceipt() {
         representationState: activeMarking.representationState || null,
         channelBasis: activeMarking.channelBasis || null,
         activeChannelsByPrototype: activeMarking.activeChannelsByPrototype || null,
+        capacityAudit: activeMarking.capacityAudit || null,
         coefficients: activeMarking.coefficients.map((row) => row.map((value) => receiptRound(value))),
       } : null,
       learned: markingVisible ? {
@@ -9659,6 +9666,7 @@ async function buildExperimentReceipt() {
         channels: sectionModel.channels,
         channelBasis: sectionModel.axes.map((axis) => axis.toArray().map((value) => receiptRound(value))),
         activeChannelsByPrototype: sectionModel.activeChannelsByPrototype.slice(),
+        capacityFrontier: markingCapacityAuditRecord(),
         reach: sectionModel.reach,
         representation: sectionModel.representation,
         representationReadout: MARKING_REPRESENTATIONS[sectionModel.representation]?.readout || null,
@@ -12766,6 +12774,168 @@ function learnMolecularSectionModel(source, config) {
     activeChannelsByPrototype,
     representationState: learnRepresentationState(),
     sampleKind: learnedCover.molecular ? "molecular cover occurrence" : "irregular support occurrence",
+  };
+}
+
+function markingCapacityFrontierRow(source, capacity, autoCapacity, baseConfig) {
+  const model = sectionModel?.channels === capacity
+    && sectionModel.reach === baseConfig.reach
+    && sectionModel.representation === baseConfig.representation
+    ? sectionModel : learnSectionModel(source, { ...baseConfig, channels: capacity, channelMode: "manual" });
+  const finalPoint = model.curve.at(-1) || model.initialPoint;
+  const requiredChannels = model.activeChannelsByPrototype.map((_, cluster) => recommendedChannelsForCluster(cluster));
+  const shortfallTypes = requiredChannels.filter((required) => required > capacity).length;
+  const activeParameters = model.activeChannelsByPrototype.reduce((sum, count) => sum + count, 0);
+  return {
+    capacity,
+    autoRank: capacity === autoCapacity,
+    fitLoss: finalPoint.trainLoss,
+    validationLoss: finalPoint.validationLoss,
+    generalizationGap: finalPoint.validationLoss - finalPoint.trainLoss,
+    activeParameters,
+    coefficientSlots: model.prototypeCount * capacity,
+    prototypeCount: model.prototypeCount,
+    shortfallTypes,
+    rankCoverage: (model.prototypeCount - shortfallTypes) / Math.max(1, model.prototypeCount),
+    activeChannelsByPrototype: model.activeChannelsByPrototype.slice(),
+    fitSamples: model.fitCount,
+    holdoutSamples: model.holdoutCount,
+  };
+}
+
+function finalizeMarkingCapacityFrontier(rows, autoCapacity) {
+  rows.sort((first, second) => first.capacity - second.capacity);
+  rows.forEach((row) => {
+    row.pareto = !rows.some((other) => other.activeParameters < row.activeParameters
+      && other.validationLoss <= row.validationLoss);
+  });
+  const rankComplete = rows.filter((row) => row.shortfallTypes === 0);
+  const admissible = rankComplete.length ? rankComplete : rows;
+  const bestValidation = Math.min(...admissible.map((row) => row.validationLoss));
+  const tolerance = bestValidation * 1.05 + .002;
+  const recommended = admissible.find((row) => row.validationLoss <= tolerance)
+    || admissible.slice().sort((first, second) => first.validationLoss - second.validationLoss
+      || first.activeParameters - second.activeParameters)[0];
+  return {
+    schema: 1,
+    capacities: rows.map((row) => row.capacity),
+    autoCapacity,
+    recommendedCapacity: recommended.capacity,
+    bestValidation,
+    selectionRule: "smallest rank-complete capacity within 5% + 0.002 of the best rank-complete holdout mismatch",
+    splitRule: "deterministic occurrence index modulo 5; index 0 held out",
+    sameClusters: true,
+    sameSamples: true,
+    targetUsed: false,
+    physicalEnergy: false,
+    rows,
+  };
+}
+
+function learnMarkingCapacityFrontier(source) {
+  const autoCapacity = automaticMarkingChannels();
+  const capacities = [...new Set([1, 3, 6, 12, autoCapacity])].sort((first, second) => first - second);
+  const baseConfig = currentMarkingConfig();
+  return finalizeMarkingCapacityFrontier(
+    capacities.map((capacity) => markingCapacityFrontierRow(source, capacity, autoCapacity, baseConfig)),
+    autoCapacity,
+  );
+}
+
+function scheduleMarkingCapacityFrontier(source) {
+  const token = ++markingCapacityAuditToken;
+  const autoCapacity = automaticMarkingChannels();
+  const capacities = [...new Set([1, 3, 6, 12, autoCapacity])].sort((first, second) => first - second);
+  const baseConfig = currentMarkingConfig();
+  const rows = [];
+  markingCapacityFrontierAudit = null;
+  markingCapacityAuditProgress = { done: 0, total: capacities.length };
+  const fitNext = () => {
+    if (token !== markingCapacityAuditToken || pipelineStage !== 3) return;
+    const capacity = capacities[rows.length];
+    rows.push(markingCapacityFrontierRow(source, capacity, autoCapacity, baseConfig));
+    markingCapacityAuditProgress = { done: rows.length, total: capacities.length };
+    if (rows.length === capacities.length) {
+      markingCapacityFrontierAudit = finalizeMarkingCapacityFrontier(rows, autoCapacity);
+      markingCapacityAuditProgress = null;
+    }
+    renderMarkingCapacityFrontier();
+    if (rows.length < capacities.length) window.setTimeout(fitNext, 0);
+  };
+  window.setTimeout(fitNext, 0);
+}
+
+function renderMarkingCapacityFrontier() {
+  markingCapacityFrontier.replaceChildren();
+  markingCapacityDetail.replaceChildren();
+  const audit = markingCapacityFrontierAudit;
+  if (!audit) {
+    markingCapacityState.textContent = markingCapacityAuditProgress
+      ? `fitting ${markingCapacityAuditProgress.done}/${markingCapacityAuditProgress.total} capacities`
+      : "waiting for cluster geometry";
+    return;
+  }
+  const selectedCapacity = sectionModel?.channels || currentMarkingConfig().channels;
+  const selected = audit.rows.find((row) => row.capacity === selectedCapacity) || audit.rows[0];
+  markingCapacityState.textContent = `recommend ${audit.recommendedCapacity}ch · best holdout ${audit.bestValidation.toFixed(3)}`;
+  audit.rows.forEach((row) => {
+    const button = document.createElement("button"); button.type = "button";
+    button.className = `${row.capacity === selectedCapacity ? "active " : ""}${row.capacity === audit.recommendedCapacity ? "recommended " : ""}${row.shortfallTypes ? "shortfall" : "rank-complete"}`.trim();
+    button.setAttribute("aria-pressed", String(row.capacity === selectedCapacity));
+    button.title = `${row.capacity} real coefficient channels; ${row.activeParameters} active parameters; ${row.shortfallTypes} cluster rank shortfalls.`;
+    const small = document.createElement("small");
+    small.textContent = `${row.autoRank ? "auto rank · " : ""}${row.pareto ? "Pareto" : "dominated"}`;
+    const strong = document.createElement("strong"); strong.textContent = `${row.capacity}ch · ${row.validationLoss.toFixed(3)}`;
+    const span = document.createElement("span");
+    span.textContent = `${row.activeParameters}/${row.coefficientSlots} active · ${row.shortfallTypes ? `${row.shortfallTypes} short` : "rank covered"}`;
+    button.append(small, strong, span);
+    button.addEventListener("click", () => {
+      markingDraft.channels = row.capacity === audit.autoCapacity ? 0 : row.capacity;
+      markingChannelsSelect.value = String(markingDraft.channels);
+      restartMarkingTraining({ rebuildCapacityFrontier: false });
+    });
+    markingCapacityFrontier.append(button);
+  });
+  [["fit mismatch", selected.fitLoss.toFixed(4)],
+    ["holdout mismatch", selected.validationLoss.toFixed(4)],
+    ["generalization gap", `${selected.generalizationGap >= 0 ? "+" : ""}${selected.generalizationGap.toFixed(4)}`],
+    ["rank coverage", `${Math.round(100 * selected.rankCoverage)}%`]].forEach(([label, value]) => {
+    const cell = document.createElement("span"); const small = document.createElement("small");
+    const strong = document.createElement("strong"); small.textContent = label; strong.textContent = value;
+    cell.append(small, strong); markingCapacityDetail.append(cell);
+  });
+}
+
+function markingCapacityAuditRecord(audit = markingCapacityFrontierAudit) {
+  if (!audit) return null;
+  return {
+    schema: audit.schema,
+    capacities: audit.capacities.slice(),
+    autoCapacity: audit.autoCapacity,
+    recommendedCapacity: audit.recommendedCapacity,
+    bestValidation: receiptRound(audit.bestValidation),
+    selectionRule: audit.selectionRule,
+    splitRule: audit.splitRule,
+    sameClusters: audit.sameClusters,
+    sameSamples: audit.sameSamples,
+    targetUsed: audit.targetUsed,
+    physicalEnergy: audit.physicalEnergy,
+    rows: audit.rows.map((row) => ({
+      capacity: row.capacity,
+      autoRank: row.autoRank,
+      fitLoss: receiptRound(row.fitLoss),
+      validationLoss: receiptRound(row.validationLoss),
+      generalizationGap: receiptRound(row.generalizationGap),
+      activeParameters: row.activeParameters,
+      coefficientSlots: row.coefficientSlots,
+      prototypeCount: row.prototypeCount,
+      shortfallTypes: row.shortfallTypes,
+      rankCoverage: receiptRound(row.rankCoverage),
+      activeChannelsByPrototype: row.activeChannelsByPrototype.slice(),
+      fitSamples: row.fitSamples,
+      holdoutSamples: row.holdoutSamples,
+      pareto: row.pareto,
+    })),
   };
 }
 
@@ -17064,6 +17234,11 @@ function markingMatchesDraft(marking) {
 
 function freezeCurrentMarking() {
   if (!sectionModel) return null;
+  if (!markingCapacityFrontierAudit) {
+    markingCapacityAuditToken++;
+    markingCapacityFrontierAudit = learnMarkingCapacityFrontier(referenceAtoms);
+    markingCapacityAuditProgress = null;
+  }
   const config = { channels: sectionModel.channels, channelMode: sectionModel.channelMode,
     reach: sectionModel.reach, representation: sectionModel.representation, geometryMode, clusterToleranceMode,
     effectiveMetricToleranceFraction: effectiveClusterMetricTolerance(),
@@ -17090,6 +17265,7 @@ function freezeCurrentMarking() {
       config,
       channelBasis: sectionModel.axes.map((axis) => axis.toArray()),
       activeChannelsByPrototype: sectionModel.activeChannelsByPrototype.slice(),
+      capacityAudit: markingCapacityAuditRecord(),
       coefficients: sectionModel.curve.at(-1).coefficients.map((values) => [...values]),
       representationState: JSON.parse(JSON.stringify(sectionModel.representationState)),
       validationLoss: sectionModel.curve.at(-1).validationLoss,
@@ -17099,6 +17275,7 @@ function freezeCurrentMarking() {
   } else {
     marking.channelBasis = sectionModel.axes.map((axis) => axis.toArray());
     marking.activeChannelsByPrototype = sectionModel.activeChannelsByPrototype.slice();
+    marking.capacityAudit = markingCapacityAuditRecord();
     marking.coefficients = sectionModel.curve.at(-1).coefficients.map((values) => [...values]);
     marking.representationState = JSON.parse(JSON.stringify(sectionModel.representationState));
     marking.validationLoss = sectionModel.curve.at(-1).validationLoss;
@@ -17111,13 +17288,16 @@ function freezeCurrentMarking() {
   return marking;
 }
 
-function restartMarkingTraining() {
+function restartMarkingTraining({ rebuildCapacityFrontier = true } = {}) {
   if (pipelineStage !== 3) return;
   setPlaying(false);
   trainingProgress = 0;
   eventIndex = 0;
   markingSelection = null;
   sectionModel = learnSectionModel(referenceAtoms, currentMarkingConfig());
+  if (rebuildCapacityFrontier || !markingCapacityFrontierAudit) {
+    scheduleMarkingCapacityFrontier(referenceAtoms);
+  }
   markingCache.clear();
   buildClusterOverlay();
   rebuildWorld();
@@ -18199,6 +18379,7 @@ function syncStageOptions() {
     stageOptionsState.textContent = complete ? existing ? "saved" : "fit complete" : `${trainingProgress}/${markingSampleCount()}`;
     saveMarkingButton.disabled = !complete;
     saveMarkingButton.textContent = existing ? "Update library copy" : "Freeze to library";
+    renderMarkingCapacityFrontier();
     markingConfigNote.textContent = `${resolvedChannels} real coefficient channels${markingDraft.channels ? " (manual capacity override)" : " (derived from the frozen pose × port incidence rank)"} · ${markingChannelAllocationLabel()} · support R=${sectionModel?.support.toFixed(2) || "—"}a · ${MARKING_REPRESENTATIONS[markingDraft.representation].label}: ${MARKING_REPRESENTATIONS[markingDraft.representation].readout}. Clustering freezes the finite or sampled proper-rotation support before this fit; symmetry-equivalent rotations share channels and inactive coefficients remain exactly zero.`;
   } else {
     renderMarkingLibrary();
@@ -18738,6 +18919,12 @@ function enterPipelineStage(index, options = {}) {
       channels: growthMarking.config.channelMode === "auto" ? 0 : growthMarking.config.channels };
   }
   sectionModel = learnSectionModel(referenceAtoms, currentMarkingConfig());
+  if (pipelineStage === 3) scheduleMarkingCapacityFrontier(referenceAtoms);
+  else {
+    markingCapacityAuditToken++;
+    markingCapacityFrontierAudit = null;
+    markingCapacityAuditProgress = null;
+  }
   if (pipelineStage !== 3) trainingProgress = markingSampleCount();
   if (pipelineStage === 4) {
     const compatible = compatibleMarkings();
@@ -24373,7 +24560,7 @@ clusterToleranceSelect.addEventListener("change", () => {
 });
 markingChannelsSelect.addEventListener("change", () => {
   markingDraft.channels = Number(markingChannelsSelect.value);
-  restartMarkingTraining();
+  restartMarkingTraining({ rebuildCapacityFrontier: false });
 });
 markingReachSelect.addEventListener("change", () => {
   markingDraft.reach = Number(markingReachSelect.value);
@@ -24383,7 +24570,7 @@ markingRepresentationSelect.addEventListener("change", () => {
   markingDraft.representation = markingRepresentationSelect.value;
   restartMarkingTraining();
 });
-restartMarkingButton.addEventListener("click", restartMarkingTraining);
+restartMarkingButton.addEventListener("click", () => restartMarkingTraining({ rebuildCapacityFrontier: false }));
 saveMarkingButton.addEventListener("click", () => {
   if (trainingProgress < markingSampleCount()) return;
   freezeCurrentMarking();

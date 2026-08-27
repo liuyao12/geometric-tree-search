@@ -5676,3 +5676,18 @@ coefficients exactly zero, and shows the allocation on every separate cluster sc
 library entries and experiment receipts retain the basis and mask under vocabulary schema
 4. These channels are bounded connection representations, not physical potentials, energy
 terms, or laboratory-frame directions.
+
+### Build 211 · same-data channel-capacity frontier
+
+GCTS learning now refits the identical cluster occurrences and deterministic fit/holdout
+split at 1, 3, 6, 12, and—when distinct—the exact pose×port auto rank. The interactive
+frontier reports fit and held-out mismatch, generalization gap, active versus allocated
+coefficients, per-type rank shortfalls, and Pareto status. Clicking a point restarts the
+visible halo-morphing process with that genuine coefficient dimension.
+
+The recommendation is deliberately auditable: choose the smallest rank-complete capacity
+within 5% plus 0.002 mismatch of the best rank-complete held-out result. Ice Ih, for example,
+shows why a molecular bridge class can require more channels than its H₂O molecule class;
+NaCl exposes that a deceptively small scalar mismatch is still rank-incomplete. The full
+frontier, masks, split rule, and no-target/no-energy flags are retained in saved markings
+and experiment receipts. It selects representation capacity, never a growth branch.

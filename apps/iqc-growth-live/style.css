@@ -1508,3 +1508,74 @@ body.study-guide-open { overflow: hidden; }
   .study-compass > footer { display: grid; }
   .study-compass > footer button { justify-self: start; }
 }
+.marking-capacity-audit {
+  margin: .75rem 0;
+  padding: .72rem;
+  border: 1px solid rgba(126, 225, 232, .18);
+  border-radius: 14px;
+  background: linear-gradient(145deg, rgba(13, 29, 36, .82), rgba(25, 25, 48, .72));
+}
+
+.marking-capacity-audit > header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: .6rem;
+  margin-bottom: .55rem;
+}
+
+.marking-capacity-audit > header span { display: grid; gap: .08rem; }
+.marking-capacity-audit > header small,
+.marking-capacity-audit > p,
+.marking-capacity-audit article small { color: var(--muted); font-size: .66rem; }
+.marking-capacity-audit > header strong { font-size: .88rem; }
+.marking-capacity-audit > header b { color: var(--mint); font: 600 .65rem/1.2 var(--mono); text-align: right; }
+
+#markingCapacityFrontier {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(74px, 1fr));
+  gap: .38rem;
+}
+
+#markingCapacityFrontier button {
+  display: grid;
+  gap: .16rem;
+  min-height: 72px;
+  padding: .48rem;
+  border: 1px solid rgba(181, 148, 255, .22);
+  border-radius: 10px;
+  color: var(--text);
+  background: rgba(8, 16, 25, .62);
+  text-align: left;
+}
+
+#markingCapacityFrontier button:hover,
+#markingCapacityFrontier button:focus-visible { border-color: rgba(126, 225, 232, .62); }
+#markingCapacityFrontier button.active { border-color: var(--mint); box-shadow: inset 0 0 0 1px rgba(101, 225, 188, .28); }
+#markingCapacityFrontier button.recommended { background: linear-gradient(145deg, rgba(38, 79, 73, .50), rgba(31, 27, 66, .62)); }
+#markingCapacityFrontier button.shortfall { border-color: rgba(255, 193, 105, .36); }
+#markingCapacityFrontier button small { color: var(--muted); font: 600 .58rem/1.2 var(--mono); text-transform: uppercase; }
+#markingCapacityFrontier button strong { font: 700 .9rem/1 var(--mono); }
+#markingCapacityFrontier button span { color: var(--muted); font-size: .62rem; }
+
+.marking-capacity-audit article {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: .35rem;
+  margin-top: .45rem;
+}
+
+.marking-capacity-audit article span {
+  display: grid;
+  gap: .08rem;
+  padding: .38rem .42rem;
+  border-radius: 8px;
+  background: rgba(6, 13, 20, .46);
+}
+
+.marking-capacity-audit article strong { font: 700 .7rem/1.2 var(--mono); }
+.marking-capacity-audit > p { margin: .5rem 0 0; line-height: 1.42; }
+
+@media (max-width: 720px) {
+  .marking-capacity-audit article { grid-template-columns: repeat(2, 1fr); }
+}

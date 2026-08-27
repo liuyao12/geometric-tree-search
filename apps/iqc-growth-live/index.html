@@ -450,6 +450,12 @@
               <button id="saveMarkingButton" class="option-primary" type="button">Freeze to library</button>
             </div>
             <p id="markingConfigNote" class="control-note">The section is local and connection-valued; it is not a physical potential.</p>
+            <section class="marking-capacity-audit" aria-label="Same-data marking channel-capacity frontier">
+              <header><span><small>same clusters · same fit / holdout split</small><strong>Channel-capacity frontier</strong></span><b id="markingCapacityState">waiting for cluster geometry</b></header>
+              <div id="markingCapacityFrontier" role="group" aria-label="Compare learned marking capacities"></div>
+              <article id="markingCapacityDetail" aria-live="polite"></article>
+              <p>Each point refits the same local sections with a genuinely different coefficient dimension. Click a point to restart the visible fit at that capacity. Validation mismatch selects no growth branch and is never a physical energy.</p>
+            </section>
             <p class="rank-note"><b>Channels are not raw rotation bins.</b> Each cluster's observed rotations are quotiented through intrinsic right-handed frames and every tied proper-symmetry gauge; Auto then uses the rank of the pose × connection-port incidence, plus compatibility and failure fields. A manual choice is an ablation or capacity cap.</p>
           </div>
 
@@ -1776,7 +1782,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260826-210"></script>
+  <script type="module" src="./app.js?v=20260826-211"></script>
   <script type="module" src="./evidence-atlas.js?v=20260826-19"></script>
 </body>
 </html>

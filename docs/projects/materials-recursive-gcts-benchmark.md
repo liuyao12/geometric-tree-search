@@ -6418,3 +6418,18 @@ mask and channel basis, and keeps inactive coefficients identically zero through
 loss evaluation, saved-library replay, and visualization. This makes capacity ablations
 real while preserving the claim boundary: channels encode bounded local compatibility and
 failure evidence, not a physical potential or dynamical trajectory.
+
+## Build 211: compare marking capacities on one frozen dataset
+
+The marking stage now evaluates 1, 3, 6, 12, and any distinct auto-ranked channel capacity
+over exactly the same cluster vocabulary, local-section samples, neighborhood reach,
+representation, and deterministic modulo-five fit/holdout split. Each row reports active
+parameters separately from allocated zero slots, cluster types whose pose×port rank exceeds
+the capacity, fit/validation mismatch, generalization gap, rank coverage, and Pareto status.
+
+The displayed recommendation is the smallest rank-complete model within `5% + 0.002` of the
+best rank-complete held-out mismatch. That fixed rule prevents a low scalar loss from hiding
+an under-capacity representation and prevents the largest tensor from winning by default.
+Clicking a row performs a declared capacity intervention and restarts the same visual fit.
+The complete comparison enters the marking artifact and receipt with explicit
+`targetUsed=false` and `physicalEnergy=false`; it cannot inspect or choose a growth action.
