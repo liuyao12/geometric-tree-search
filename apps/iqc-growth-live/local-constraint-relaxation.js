@@ -113,6 +113,7 @@ export function relaxLocalContactGeometry(rawSites, distanceModel, {
     accepted: false, reason: graph.length < 2 ? "insufficient learned contacts" : "already contact-compatible",
     positions: originals.map((point) => [...point]), contactTerms: graph.length,
     initialContactObjective: unseededContactObjective, finalContactObjective: unseededContactObjective,
+    initialSeedSupplied: seedSites > 0, initialSeedAccepted: false, initialSeedSites: seedSites,
     observedSeedSupplied: seedSites > 0, observedSeedAccepted: false, observedSeedSites: seedSites,
     iterations: 0, maximumDisplacement: 0, rmsDisplacement: 0,
   });
@@ -144,6 +145,10 @@ export function relaxLocalContactGeometry(rawSites, distanceModel, {
     accepted, reason: accepted ? "contact residual reduced" : "no monotone contact projection",
     positions: positions.map(Object.freeze), contactTerms: graph.length,
     initialContactObjective: unseededContactObjective, finalContactObjective, iterations: acceptedSteps,
+    initialSeedSupplied: seedSites > 0,
+    initialSeedAccepted: seedImprovedObjective,
+    initialSeedSites: seedSites,
+    initialSeedContactObjective: initialContactObjective,
     observedSeedSupplied: seedSites > 0,
     observedSeedAccepted: seedImprovedObjective,
     observedSeedSites: seedSites,

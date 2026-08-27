@@ -78,6 +78,8 @@ import { analyzeCollinearSpinGeometry, COLLINEAR_SPIN_PROVENANCE }
   from "./collinear-spin-geometry.js?v=20260826-1";
 import { scalarSpinCompatible, scalarSpinPolarity }
   from "./collinear-spin-coloring.js?v=20260827-1";
+import { boundedForceSeedOffset, forceMagnitudeP90, meanForceVectors }
+  from "./force-seed-geometry.js?v=20260827-1";
 import { CENTROSYMMETRY_PROVENANCE, inferCentrosymmetryNeighborCount, localCentrosymmetry }
   from "./centrosymmetry-geometry.js?v=20260826-1";
 import {
@@ -852,6 +854,8 @@ const STRUCTURAL_RELAXATION_MODES = Object.freeze({
   strong: Object.freeze({ label: "strong", displacementFraction: .08, iterations: 20 }),
   observed: Object.freeze({ label: "observed-vector seed", displacementFraction: .05,
     iterations: 12, observedSeed: true }),
+  force: Object.freeze({ label: "residual-force direction seed", displacementFraction: .05,
+    iterations: 12, forceSeed: true }),
 });
 const RDF_BINS = 38;
 const RDF_MAX_RADIUS = 4.2;
@@ -3829,6 +3833,7 @@ function random() {
 
 function cloneAtom(atom, seed = true) {
   return { ...atom, id: nextAtomId++, p: atom.p.clone(), seed, attempts: 0, parent: null, depth: 0,
+    calculationForceEvPerAngstrom: atom.calculationForceEvPerAngstrom?.slice() || null,
     uAnisoCartesianA2: atom.uAnisoCartesianA2?.map((row) => row.slice()) || null,
     thermalSigmaAxesA: atom.thermalSigmaAxesA?.slice() || null,
     thermalAxesCartesian: atom.thermalAxesCartesian?.map((axis) => axis.slice()) || null };
@@ -4657,6 +4662,8 @@ function inspectSite(atom) {
   const environment = snapshot.localEnvironment;
   const lineage = snapshot.lineage;
   const evidence = snapshot.decisionEvidence;
+  const calculationForceMagnitude = Array.isArray(atom.calculationForceEvPerAngstrom)
+    ? new THREE.Vector3(...atom.calculationForceEvPerAngstrom).length() : null;
   siteProvenanceState.textContent = `${snapshot.species} · site ${snapshot.siteId} · ${snapshot.origin}`;
   siteProvenanceGrid.replaceChildren(
     siteProvenanceTile("Cartesian position", `${x}, ${y}, ${z} Å`, `${snapshot.geometryLabel} · ephemeral viewport coordinate`),
@@ -4673,6 +4680,11 @@ function inspectSite(atom) {
       ? `${evidence.sharedSites} shared + ${evidence.emittedSites} emitted · mark ${evidence.markingScore}` : "observed geometry",
       evidence ? `contact/angle residual ${evidence.contactAngleStrain} · loop witnesses ${evidence.loopClosureWitnesses}`
         : snapshot.observedReferenceIndex === null ? "not created by a retained growth action" : `input reference site ${snapshot.observedReferenceIndex}`),
+    siteProvenanceTile("external vector lineage", calculationForceMagnitude === null
+      ? "no site-resolved residual force" : `|F| ${calculationForceMagnitude.toExponential(3)} eV/Å`,
+      atom.calculationForceTransported
+        ? `proper-pose transported · ${atom.calculationForceConsensusWitnesses || 1} commuting witness${(atom.calculationForceConsensusWitnesses || 1) === 1 ? "" : "es"} · optional seed only`
+        : calculationForceMagnitude === null ? "no vector inferred" : "supplied calculation site · not a force field"),
   );
   renderSiteConstraintAudit(selectedSiteConstraintAudit(atom));
   renderSiteCreationPhysicsAudit(snapshot.decisionEvidence);
@@ -4703,6 +4715,14 @@ function copyPlacedObservedRelaxation(atom, site) {
   atom.observedRelaxationTemplateReferenceIndex = Number.isInteger(site.referenceIndex)
     ? site.referenceIndex : null;
   atom.observedRelaxationTransported = true;
+}
+
+function copyPlacedCalculationForce(atom, site) {
+  if (!site.calculationForceWorldEvPerAngstrom?.isVector3) return;
+  atom.calculationForceEvPerAngstrom = site.calculationForceWorldEvPerAngstrom.toArray();
+  atom.calculationForceTemplateReferenceIndex = Number.isInteger(site.referenceIndex)
+    ? site.referenceIndex : null;
+  atom.calculationForceTransported = true;
 }
 
 function medianNearestSpacing(source) {
@@ -4745,6 +4765,8 @@ function atomDisplacementTensorAngstrom2(atom) {
 function templateSiteFromReference(source, atomIndex, local, localFrameInverse, center = false) {
   const atom = source[atomIndex];
   const tensor = atomDisplacementTensorAngstrom2(atom);
+  const calculationForceLocalEvPerAngstrom = Array.isArray(atom.calculationForceEvPerAngstrom)
+    ? new THREE.Vector3(...atom.calculationForceEvPerAngstrom).applyQuaternion(localFrameInverse) : null;
   const relaxationRecord = relaxationDisplacementField()?.bySourceIndex?.get(atom.sourceIndex);
   const observedRelaxationLocalScene = relaxationRecord?.nonAffine?.isVector3
     ? relaxationRecord.nonAffine.clone()
@@ -4756,6 +4778,7 @@ function templateSiteFromReference(source, atomIndex, local, localFrameInverse, 
     center,
     referenceIndex: atomIndex,
     calculationSpin: Number.isFinite(atom.calculationSpin) ? atom.calculationSpin : null,
+    calculationForceLocalEvPerAngstrom,
     observedRelaxationLocalScene,
     observedRelaxationSourceFrameIndex: relaxationRecord ? importedFrameIndex : null,
     observedRelaxationTargetFrameIndex: relaxationRecord
@@ -8592,6 +8615,29 @@ function drawClusterCardObservedRelaxation(context, projected, quaternion, scale
   }
 }
 
+function drawClusterCardCalculationForces(context, projected, quaternion) {
+  if (!forceToggle.checked) return;
+  const records = projected.map((point) => ({ point,
+    force: Array.isArray(point.atom.calculationForceEvPerAngstrom)
+      ? new THREE.Vector3(...point.atom.calculationForceEvPerAngstrom).applyQuaternion(quaternion) : null }))
+    .filter((record) => record.force?.lengthSq() > 1e-20);
+  const maximum = Math.max(0, ...records.map((record) => record.force.length()));
+  if (!(maximum > 0)) return;
+  records.forEach(({ point, force }) => {
+    const length = 5 + 13 * Math.sqrt(force.length() / maximum);
+    const direction = force.normalize();
+    const endX = point.x + direction.x * length;
+    const endY = point.y - direction.y * length;
+    context.save(); context.beginPath(); context.moveTo(point.x, point.y); context.lineTo(endX, endY);
+    context.strokeStyle = "rgba(255,127,136,.9)"; context.lineWidth = 1.25; context.stroke();
+    context.beginPath(); context.arc(endX, endY, 1.8, 0, TAU); context.fillStyle = "rgba(255,193,105,.96)";
+    context.fill(); context.restore();
+  });
+  context.save(); context.font = "9px ui-monospace, SFMono-Regular, Menlo, monospace";
+  context.fillStyle = "rgba(255,193,105,.86)"; context.fillText(`Fcalc · ${records.length}`, 8, 48);
+  context.restore();
+}
+
 function drawClusterCardMarking(context, canvas, cluster, galleryIndex, quaternion) {
   if (pipelineStage !== 3 || !sectionModel || cluster.residual) return;
   const prototype = cluster.familyType ?? galleryIndex;
@@ -8691,6 +8737,7 @@ function drawClusterGallery(now) {
     drawClusterCardDisplacementEllipses(context, projected, quaternion, scaleToScene);
     drawClusterCardScalarSpins(context, projected);
     drawClusterCardObservedRelaxation(context, projected, quaternion, scaleToScene);
+    drawClusterCardCalculationForces(context, projected, quaternion);
     projected.sort((first, second) => first.z - second.z).forEach((point) => {
       const record = elementRecord(point.atom.species);
       const radius = 7.4 * point.perspective * Math.min(1.12, record.radius / 1.3);
@@ -9970,7 +10017,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-251",
+      buildId: "20260827-252",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -10388,6 +10435,7 @@ async function buildExperimentReceipt() {
         clusterPoseTensorTransport: displacementTensorTransportAudit(),
         collinearSpinColorTransport: scalarSpinColorTransportAudit(),
         observedRelaxationVectorTransport: observedRelaxationTransportAudit(),
+        residualForceVectorTransport: calculationForceTransportAudit(),
         growthHardContactRule: "each candidate pair recomputes one-sigma support along its live connecting direction",
         missingLiveTensorFallback: "frozen learned scalar pair exclusion",
         independentSiteCovarianceAssumed: true,
@@ -12205,7 +12253,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-251" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-252" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -15149,6 +15197,40 @@ function observedRelaxationTransportAudit() {
   };
 }
 
+function calculationForceTransportAudit() {
+  const templates = overlapGrammar?.templates || [];
+  const rules = overlapGrammar?.rules || [];
+  return {
+    available: referenceAtoms.some((atom) => Array.isArray(atom.calculationForceEvPerAngstrom)),
+    mode: structuralRelaxationMode,
+    referenceVectorSites: referenceAtoms.filter((atom) => Array.isArray(atom.calculationForceEvPerAngstrom)).length,
+    templateLocalVectorSites: templates.reduce((sum, template) => sum
+      + (template.sites || []).filter((site) => site.calculationForceLocalEvPerAngstrom?.isVector3).length, 0),
+    ruleLocalVectorSites: rules.reduce((sum, rule) => sum
+      + (rule.sites || []).filter((site) => site.calculationForceLocalEvPerAngstrom?.isVector3).length, 0),
+    placedTransportedVectorSites: atoms.filter((atom) => atom.calculationForceTransported).length,
+    currentCandidateVectorSites: currentCandidates.reduce((sum, candidate) => sum
+      + (candidate.forceSites?.length || 0), 0),
+    properPoseTransport: "F_world = R_cluster F_local",
+    archiveUnits: "electronvolt per angstrom",
+    seedMagnitudeRule: "delta_r_seed = cap * min(1, |F| / p90_reference) * unit(F_world)",
+    seedScaleP90EvPerAngstrom: calculationForceSeedScaleEvPerAngstrom(),
+    seedEligible: calculationForceSeedScaleEvPerAngstrom() > 0,
+    commutingBatchConsensus: "arithmetic mean over every accepted proper-pose witness for one new colored site",
+    maximumPlacedConsensusWitnesses: Math.max(0, ...atoms.map((atom) => atom.calculationForceConsensusWitnesses || 0)),
+    usedToSeedProjection: structuralRelaxationSpec().forceSeed === true,
+    latestSeedSites: lastStructuralRelaxation?.calculationForceSeedSites || 0,
+    latestSeedAccepted: Boolean(lastStructuralRelaxation?.calculationForceSeedAccepted),
+    worseningSeedIgnored: true,
+    copiedAsRigidEnvironmentHypothesis: true,
+    forceFieldInferred: false,
+    forceIntegrated: false,
+    massOrTimeStepUsed: false,
+    physicalTimeModeled: false,
+    targetUsed: false,
+  };
+}
+
 function referenceIndexForSite(site, context = scenePeriodicContext()) {
   let bestIndex = -1;
   let bestDistance2 = MERGE_TOLERANCE ** 2;
@@ -17291,6 +17373,7 @@ function capturePolicyComparison(entries) {
         rotation: winner.entry.candidate.rotation.clone(), type: winner.entry.candidate.type,
         displacementSites: candidateDisplacementSites(winner.entry.evaluation.sites),
         spinSites: candidateScalarSpinSites(winner.entry.evaluation.sites),
+        forceSites: candidateCalculationForceSites(winner.entry.evaluation.sites),
         relaxationSites: candidateObservedRelaxationSites(winner.entry.evaluation.sites) } : null,
     };
   });
@@ -17338,6 +17421,7 @@ function capturePolicyComparison(entries) {
       preview: { p: entry.candidate.position.clone(), rotation: entry.candidate.rotation.clone(),
         type: entry.candidate.type, displacementSites: candidateDisplacementSites(entry.evaluation.sites),
         spinSites: candidateScalarSpinSites(entry.evaluation.sites),
+        forceSites: candidateCalculationForceSites(entry.evaluation.sites),
         relaxationSites: candidateObservedRelaxationSites(entry.evaluation.sites) },
     };
   });
@@ -17384,6 +17468,9 @@ function candidateSites(candidate) {
     p: site.local.clone().applyQuaternion(candidate.rotation).add(candidate.position),
     calculationSpin: Number.isFinite(site.calculationSpin) ? site.calculationSpin : null,
     scalarSpinTemplateReferenceIndex: site.referenceIndex,
+    calculationForceWorldEvPerAngstrom: site.calculationForceLocalEvPerAngstrom?.clone()
+      .applyQuaternion(candidate.rotation) || null,
+    calculationForceTemplateReferenceIndex: site.referenceIndex,
     observedRelaxationWorldScene: site.observedRelaxationLocalScene?.clone()
       .applyQuaternion(candidate.rotation) || null,
     observedRelaxationSourceFrameIndex: site.observedRelaxationSourceFrameIndex,
@@ -17398,6 +17485,13 @@ function candidateSites(candidate) {
 function candidateScalarSpinSites(sites) {
   return sites.filter((site) => Number.isFinite(site.calculationSpin)).map((site) => ({
     p: site.p.clone(), species: site.species, calculationSpin: site.calculationSpin,
+  }));
+}
+
+function candidateCalculationForceSites(sites) {
+  return sites.filter((site) => site.calculationForceWorldEvPerAngstrom?.isVector3).map((site) => ({
+    p: site.p.clone(), species: site.species,
+    force: site.calculationForceWorldEvPerAngstrom.clone(),
   }));
 }
 
@@ -17528,6 +17622,20 @@ function structuralRelaxationSpec() {
   return STRUCTURAL_RELAXATION_MODES[structuralRelaxationMode] || STRUCTURAL_RELAXATION_MODES.balanced;
 }
 
+function calculationForceSeedScaleEvPerAngstrom() {
+  return forceMagnitudeP90(referenceAtoms.filter((atom) => Array.isArray(atom.calculationForceEvPerAngstrom))
+    .map((atom) => atom.calculationForceEvPerAngstrom));
+}
+
+function calculationForceSeedOffsets(localAtoms, movableIdSet, cap) {
+  const scale = calculationForceSeedScaleEvPerAngstrom();
+  if (!(scale > 0)) return null;
+  return localAtoms.map((atom) => {
+    if (!movableIdSet.has(atom.id) || !Array.isArray(atom.calculationForceEvPerAngstrom)) return [0, 0, 0];
+    return boundedForceSeedOffset(atom.calculationForceEvPerAngstrom, scale, cap);
+  });
+}
+
 function localConstraintState(localAtoms, movableAtoms, proposedById) {
   const positions = localAtoms.map((atom) => proposedById.get(atom.id) || atom.p);
   const species = localAtoms.map((atom) => atom.species);
@@ -17580,9 +17688,12 @@ function projectAcceptedBatchGeometry(freshAtomIds, authorized) {
   const observedOffsets = spec.observedSeed ? localAtoms.map((atom) => movableIdSet.has(atom.id)
     && atom.observedRelaxationWorldScene?.isVector3
     ? atom.observedRelaxationWorldScene.toArray() : [0, 0, 0]) : null;
+  const forceOffsets = spec.forceSeed
+    ? calculationForceSeedOffsets(localAtoms, movableIdSet, cap) : null;
+  const initialOffsets = observedOffsets || forceOffsets;
   const proposal = relaxLocalContactGeometry(input, coloredDistanceEnvelopes, {
     displacementCap: cap, maximumIterations: spec.iterations,
-    initialOffsets: observedOffsets,
+    initialOffsets,
   });
   const proposedById = new Map(localAtoms.map((atom, index) => [atom.id,
     new THREE.Vector3(...proposal.positions[index])]));
@@ -17624,12 +17735,19 @@ function projectAcceptedBatchGeometry(freshAtomIds, authorized) {
     observedRelaxationSeedSites: proposal.observedSeedSites || 0,
     observedRelaxationSeedAccepted: Boolean(proposal.observedSeedAccepted && hardCompatible),
     observedRelaxationSeedContactObjective: proposal.observedSeedContactObjective ?? null,
+    calculationForceSeedEnabled: Boolean(spec.forceSeed),
+    calculationForceSeedSites: spec.forceSeed ? proposal.initialSeedSites || 0 : 0,
+    calculationForceSeedAccepted: Boolean(spec.forceSeed && proposal.initialSeedAccepted && hardCompatible),
+    calculationForceSeedContactObjective: spec.forceSeed ? proposal.initialSeedContactObjective ?? null : null,
+    calculationForceSeedScaleEvPerAngstrom: spec.forceSeed
+      ? calculationForceSeedScaleEvPerAngstrom() : null,
     contactAngleStrainDecreased: strainDecreased,
     hardExclusionPassed, coordinationCapacityPassed,
     angularEnvelopePassed, publicBoundaryPassed,
     exactClusterTopologyRetained: true, properPortTopologyRetained: true,
     targetUsed: false, physicalPotentialUsed: false, forceIntegrated: false,
     archivedDisplacementCopiedAsForce: false,
+    archivedResidualForceCopiedAsForceField: false,
     elapsedPhysicalTimeModeled: false,
   };
   if (hardCompatible) {
@@ -17639,6 +17757,31 @@ function projectAcceptedBatchGeometry(freshAtomIds, authorized) {
   } else structuralRelaxationRejected++;
   lastStructuralRelaxation = audit;
   return audit;
+}
+
+function applyCommutingBatchForceConsensus(batch, freshAtomIds) {
+  const freshAtoms = new Map(atoms.filter((atom) => freshAtomIds.includes(atom.id))
+    .map((atom) => [atom.id, atom]));
+  freshAtoms.forEach((atom) => {
+    const witnesses = [];
+    batch.filter(({ evaluation }) => evaluation.accepted).forEach(({ evaluation }) => {
+      evaluation.sites.forEach((site) => {
+        if (site.species === atom.species && site.p.distanceTo(atom.p) <= MERGE_TOLERANCE
+            && site.calculationForceWorldEvPerAngstrom?.isVector3) {
+          witnesses.push(site.calculationForceWorldEvPerAngstrom);
+        }
+      });
+    });
+    if (!witnesses.length) {
+      atom.calculationForceEvPerAngstrom = null;
+      atom.calculationForceTransported = false;
+      atom.calculationForceConsensusWitnesses = 0;
+      return;
+    }
+    atom.calculationForceEvPerAngstrom = meanForceVectors(witnesses.map((vector) => vector.toArray()));
+    atom.calculationForceTransported = true;
+    atom.calculationForceConsensusWitnesses = witnesses.length;
+  });
 }
 
 function affineLoadedGeometricStrainForFreshSites(rawFreshSites,
@@ -19094,6 +19237,7 @@ function initializeOffLatticeSearch() {
       atom.referenceIndex = site.referenceIndex;
       copyPlacedScalarSpin(atom, site);
       copyPlacedObservedRelaxation(atom, site);
+      copyPlacedCalculationForce(atom, site);
       if (!existing) copyPlacedDisplacementTensor(atom, site);
       atom.clusterIds ||= [];
       if (!atom.clusterIds.includes(seed.id)) atom.clusterIds.push(seed.id);
@@ -20628,6 +20772,13 @@ function syncStageOptions() {
   if (structuralRelaxationMode === "observed" && !observedRelaxationAvailable) {
     structuralRelaxationMode = "balanced";
   }
+  const calculationForceAvailable = Boolean(calculation?.forceCoverage > 0
+    && calculationForceSeedScaleEvPerAngstrom() > 0);
+  const calculationForceOption = structuralRelaxationSelect.querySelector('option[value="force"]');
+  calculationForceOption.disabled = !calculationForceAvailable;
+  if (structuralRelaxationMode === "force" && !calculationForceAvailable) {
+    structuralRelaxationMode = "balanced";
+  }
   const localEnvironment = relaxationLocalEnvironmentField();
   relaxationLocalEnvironmentToggle.disabled = !localEnvironment;
   relaxationLocalEnvironmentMetric.disabled = !localEnvironment;
@@ -20769,10 +20920,12 @@ function syncStageOptions() {
     const relaxationSpec = STRUCTURAL_RELAXATION_MODES[structuralRelaxationMode];
     structuralRelaxationHint.textContent = relaxationSpec.observedSeed
       ? `archived vector seed · ${Math.round(100 * relaxationSpec.displacementFraction)}% dₙₙ cap`
+      : relaxationSpec.forceSeed
+        ? `residual-force direction · p90-normalized · ${Math.round(100 * relaxationSpec.displacementFraction)}% dₙₙ cap`
       : relaxationSpec.displacementFraction
         ? `${Math.round(100 * relaxationSpec.displacementFraction)}% dₙₙ cap` : "exact coordinates";
     structuralRelaxationState.textContent = lastStructuralRelaxation
-      ? `${lastStructuralRelaxation.accepted ? "accepted" : "rolled back"} · ${lastStructuralRelaxation.movableSites} new sites · strain ${lastStructuralRelaxation.strainBefore.toFixed(3)} → ${lastStructuralRelaxation.strainAfter.toFixed(3)} · max Δ ${lastStructuralRelaxation.maximumDisplacementAngstrom.toFixed(3)} Å${lastStructuralRelaxation.observedRelaxationSeedEnabled ? ` · observed seed ${lastStructuralRelaxation.observedRelaxationSeedAccepted ? "retained" : "ignored / rolled back"} on ${lastStructuralRelaxation.observedRelaxationSeedSites} sites` : ""}`
+      ? `${lastStructuralRelaxation.accepted ? "accepted" : "rolled back"} · ${lastStructuralRelaxation.movableSites} new sites · strain ${lastStructuralRelaxation.strainBefore.toFixed(3)} → ${lastStructuralRelaxation.strainAfter.toFixed(3)} · max Δ ${lastStructuralRelaxation.maximumDisplacementAngstrom.toFixed(3)} Å${lastStructuralRelaxation.observedRelaxationSeedEnabled ? ` · observed seed ${lastStructuralRelaxation.observedRelaxationSeedAccepted ? "retained" : "ignored / rolled back"} on ${lastStructuralRelaxation.observedRelaxationSeedSites} sites` : ""}${lastStructuralRelaxation.calculationForceSeedEnabled ? ` · force seed ${lastStructuralRelaxation.calculationForceSeedAccepted ? "retained" : "ignored / rolled back"} on ${lastStructuralRelaxation.calculationForceSeedSites} sites` : ""}`
       : relaxationSpec.displacementFraction
         ? "Ready after known-window replay; the full local projection rolls back unless every hard geometric certificate remains valid."
         : "Off: exact frozen-template coordinates are retained.";
@@ -20997,7 +21150,7 @@ function syncStageOptions() {
       : " No supplied scalar-spin color is available.";
     const relaxationUse = structuralRelaxationMode === "off"
       ? " Post-attachment projection is disabled; exact template coordinates are retained."
-      : ` After known-window replay, atoms newly emitted in one leap may move by at most ${Math.round(100 * structuralRelaxationSpec().displacementFraction)}% dₙₙ through ${structuralRelaxationSpec().iterations} deterministic contact-residual iterations.${structuralRelaxationSpec().observedSeed ? " The initial direction is the selected→final non-affine archive vector transported by the cluster proper pose; a worsening seed is ignored." : ""} The whole projection rolls back unless full contact-angle strain decreases and every hard gate remains valid; this is not a force or MD step.`;
+      : ` After known-window replay, atoms newly emitted in one leap may move by at most ${Math.round(100 * structuralRelaxationSpec().displacementFraction)}% dₙₙ through ${structuralRelaxationSpec().iterations} deterministic contact-residual iterations.${structuralRelaxationSpec().observedSeed ? " The initial direction is the selected→final non-affine archive vector transported by the cluster proper pose; a worsening seed is ignored." : structuralRelaxationSpec().forceSeed ? " The initial direction is the supplied residual-force vector transported by the cluster proper pose and scaled only by its magnitude relative to the frozen sample p90; a worsening seed is ignored." : ""} The whole projection rolls back unless full contact-angle strain decreases and every hard gate remains valid; no force or MD trajectory is integrated.`;
     const ratio = Object.entries(compositionTarget.reducedRatio).map(([symbol, count]) => `${symbol}${count === 1 ? "" : count}`).join("");
     const compositionUse = compositionPreference === "none"
       ? " Composition drift is reported but contributes zero ranking weight."
@@ -21747,6 +21900,7 @@ function materializeCandidate(candidate, evaluation, leapCreationContext) {
     if (Number.isInteger(site.referenceIndex)) atom.referenceIndex = site.referenceIndex;
     copyPlacedScalarSpin(atom, site);
     copyPlacedObservedRelaxation(atom, site);
+    copyPlacedCalculationForce(atom, site);
     copyPlacedDisplacementTensor(atom, site);
     atom.clusterIds = [placement.id];
     atom.nucleusIds = [placement.nucleusId];
@@ -21831,6 +21985,7 @@ function performOffLatticeEvent() {
     rotation: candidate.rotation.clone(), type: candidate.type,
     displacementSites: candidateDisplacementSites(evaluation.sites),
     spinSites: candidateScalarSpinSites(evaluation.sites),
+    forceSites: candidateCalculationForceSites(evaluation.sites),
     relaxationSites: candidateObservedRelaxationSites(evaluation.sites),
     arrivalAxis: evaluation.arrivalPath.axis,
     arrivalSweepDistance: evaluation.arrivalPath.sweepDistanceSceneUnits,
@@ -21973,6 +22128,7 @@ function performOffLatticeEvent() {
       resolver: decision.resolver, energy: candidate.markingScore, interval: decision.interval };
   });
   freezeCreationGeometryForAtoms(freshAtomIdsInBatch);
+  applyCommutingBatchForceConsensus(batch, freshAtomIdsInBatch);
   const relaxation = projectAcceptedBatchGeometry(freshAtomIdsInBatch, relaxationAuthorized);
   selectedKeys.forEach((key) => frontierCandidateKeys.delete(key));
   eventIndex += batch.length;
@@ -22919,6 +23075,26 @@ function rebuildWorld() {
       points.userData.transportedScalarSpinColors = true;
       decisionGroup.add(points);
     }
+    const forceSites = forceToggle.checked ? (candidate.forceSites || []).slice(0, 160) : [];
+    if (forceSites.length) {
+      const maximumForce = Math.max(1e-14, ...forceSites.map((site) => site.force.length()));
+      const segments = []; const endpoints = [];
+      forceSites.forEach((site) => {
+        if (!(site.force?.isVector3 && site.force.lengthSq() > 1e-20)) return;
+        const endpoint = site.p.clone().add(site.force.clone().normalize()
+          .multiplyScalar(.08 + .32 * Math.sqrt(site.force.length() / maximumForce)));
+        segments.push(site.p, endpoint); endpoints.push(endpoint);
+      });
+      if (segments.length) {
+        const lines = new THREE.LineSegments(new THREE.BufferGeometry().setFromPoints(segments),
+          new THREE.LineBasicMaterial({ color: 0xff7f88, transparent: true, opacity: .9,
+            depthTest: false }));
+        lines.userData.transportedCalculationForceVectors = true; decisionGroup.add(lines);
+        const heads = new THREE.Points(new THREE.BufferGeometry().setFromPoints(endpoints),
+          new THREE.PointsMaterial({ color: 0xffc169, size: .08, depthTest: false }));
+        heads.userData.transportedCalculationForceVectors = true; decisionGroup.add(heads);
+      }
+    }
     const relaxationSites = relaxationDisplacementToggle.checked
       ? (candidate.relaxationSites || []).slice(0, 160) : [];
     if (relaxationSites.length) {
@@ -23184,14 +23360,16 @@ function physicsTranslationRecords(leap = null) {
         ? `Mean contact+angle residual ${localConstraintMismatch.meanContactAngleMismatch.toFixed(3)}; p90 ${localConstraintMismatch.percentile90ContactAngleMismatch.toFixed(3)}; mean ordered coordination shortfall ${localConstraintMismatch.meanCoordinationDeficit.toFixed(3)}.`
         : "Enter a stage with learned colored local geometry to resolve this field.",
       boundary: "This field compares the current solid with sample-learned geometric envelopes. Coordination shortfall can simply mark a free surface. It is not stress, force, elastic or defect energy, bond order, a named defect, a physical trajectory, kinetics, or time; it never changes an admitted branch." },
-    { id: "calculation-forces", process: "external relaxation / residual-force geometry", status: calculation?.forceCoverage > 0 ? "explicit" : "unavailable", role: calculation?.forceCoverage > 0 ? "external calculation diagnostic" : "no force channel",
+    { id: "calculation-forces", process: "external relaxation / residual-force geometry", status: calculation?.forceCoverage > 0 ? structuralRelaxationSpec().forceSeed ? "soft" : "explicit" : "unavailable", role: calculation?.forceCoverage > 0 ? structuralRelaxationSpec().forceSeed ? "proper-pose transported projection seed" : "external calculation diagnostic" : "no force channel",
       encoding: calculation?.forceCoverage > 0
-        ? `${calculation.programName || "public calculation"}; per-site Cartesian vectors in eV/Å, displayed with direction preserved and length normalized only for visibility`
+        ? `${calculation.programName || "public calculation"}; per-site Cartesian vectors in eV/Å${structuralRelaxationSpec().forceSeed ? "; each vector is stored in its cluster-local frame, transported as Fworld=Rcluster Flocal, and mapped to a capped initial geometric offset by |F| / frozen sample p90" : ", displayed with direction preserved and length normalized only for visibility"}`
         : "no site-resolved force vectors accompany the active structural record",
       evidence: calculation?.forceCoverage > 0
         ? `${Math.round(calculation.forceCoverage * referenceCount())}/${referenceCount()} sites; RMS ${calculation.forceRmsElectronVoltPerAngstrom.toExponential(3)} eV/Å; maximum ${calculation.forceMaximumElectronVoltPerAngstrom.toExponential(3)} eV/Å.`
         : "No calculation-force vector is available for this material.",
-      boundary: "Residual forces diagnose the supplied calculation state only. They never rank, admit, displace, relax, or extrapolate a growth action; total energies are not compared across entries, methods, or compositions." },
+      boundary: structuralRelaxationSpec().forceSeed
+        ? "One method-dependent residual-force snapshot supplies only an initial direction for a bounded geometric hypothesis. A worsening seed is ignored and every hard certificate is rechecked. Copying the vector with a rigid cluster does not infer a transferable force field, energy surface, mass, time step, trajectory, rate, or physical time; total energies are not compared across entries, methods, or compositions."
+        : "Residual forces diagnose the supplied calculation state only. They never rank, admit, displace, relax, or extrapolate a growth action; total energies are not compared across entries, methods, or compositions." },
     { id: "collinear-spin", process: "collinear magnetic-order geometry / scalar spin texture",
       status: spinGeometry.available ? scalarSpinColoringActive() ? "hard" : "explicit" : "unavailable",
       role: spinGeometry.available ? scalarSpinColoringActive()
@@ -23265,9 +23443,9 @@ function physicsTranslationRecords(leap = null) {
       role: lastStructuralRelaxation?.accepted ? "target-blind bounded coordinate projection" : structuralRelaxationMode === "off" ? "disabled" : "fail-closed projection attempt",
       encoding: structuralRelaxationMode === "off"
         ? "exact frozen-template coordinates; no post-attachment displacement"
-        : `${structuralRelaxationSpec().iterations} deterministic contact-residual iterations with total displacement capped at ${Math.round(100 * structuralRelaxationSpec().displacementFraction)}% dₙₙ and below half the exact merge tolerance; only atoms emitted in the current post-replay leap are movable${structuralRelaxationSpec().observedSeed ? "; initial offsets are transported selected→final non-affine archive vectors and are retained only when the full bounded objective improves" : ""}`,
+        : `${structuralRelaxationSpec().iterations} deterministic contact-residual iterations with total displacement capped at ${Math.round(100 * structuralRelaxationSpec().displacementFraction)}% dₙₙ and below half the exact merge tolerance; only atoms emitted in the current post-replay leap are movable${structuralRelaxationSpec().observedSeed ? "; initial offsets are transported selected→final non-affine archive vectors and are retained only when the full bounded objective improves" : structuralRelaxationSpec().forceSeed ? "; initial offsets follow proper-pose-transported residual-force directions with magnitude capped by the frozen sample p90 and are retained only when the full bounded objective improves" : ""}`,
       evidence: lastStructuralRelaxation
-        ? `${lastStructuralRelaxation.accepted ? "Accepted" : "Rolled back"}: ${lastStructuralRelaxation.movableSites} movable / ${lastStructuralRelaxation.neighborhoodSites} local sites; strain ${lastStructuralRelaxation.strainBefore.toFixed(4)} → ${lastStructuralRelaxation.strainAfter.toFixed(4)}; max Δ ${lastStructuralRelaxation.maximumDisplacementAngstrom.toFixed(4)} Å.${lastStructuralRelaxation.observedRelaxationSeedEnabled ? ` Observed seed ${lastStructuralRelaxation.observedRelaxationSeedAccepted ? "retained" : "ignored or rolled back"} on ${lastStructuralRelaxation.observedRelaxationSeedSites} sites.` : ""} ${structuralRelaxationAccepted}/${structuralRelaxationAttempts} attempts accepted.`
+        ? `${lastStructuralRelaxation.accepted ? "Accepted" : "Rolled back"}: ${lastStructuralRelaxation.movableSites} movable / ${lastStructuralRelaxation.neighborhoodSites} local sites; strain ${lastStructuralRelaxation.strainBefore.toFixed(4)} → ${lastStructuralRelaxation.strainAfter.toFixed(4)}; max Δ ${lastStructuralRelaxation.maximumDisplacementAngstrom.toFixed(4)} Å.${lastStructuralRelaxation.observedRelaxationSeedEnabled ? ` Observed seed ${lastStructuralRelaxation.observedRelaxationSeedAccepted ? "retained" : "ignored or rolled back"} on ${lastStructuralRelaxation.observedRelaxationSeedSites} sites.` : ""}${lastStructuralRelaxation.calculationForceSeedEnabled ? ` Force seed ${lastStructuralRelaxation.calculationForceSeedAccepted ? "retained" : "ignored or rolled back"} on ${lastStructuralRelaxation.calculationForceSeedSites} sites.` : ""} ${structuralRelaxationAccepted}/${structuralRelaxationAttempts} attempts accepted.`
         : "No post-replay attachment batch has requested a local projection yet.",
       boundary: "This minimizes a finite sample-learned geometric contact residual and then rechecks hard exclusion, coordination, angle, boundary, exact topology, and port identity. It is not an interatomic potential, force balance, energy minimization, mechanical equilibrium, MD trajectory, diffusion event, transition probability, or elapsed physical time." },
     { id: "connection", process: "cluster attachment preference", status: policySelect.value === "action" ? "open" : "learned", role: policySelect.value === "action" ? "ablated" : "learned local connection gate / rank",
@@ -25923,7 +26101,8 @@ function previewPolicyWinner(policy, snapshot) {
   if (policy.preview) {
     currentCandidates = [{ p: policy.preview.p.clone(), rotation: policy.preview.rotation.clone(),
       type: policy.preview.type, accepted: true, preview: true,
-      displacementSites: policy.preview.displacementSites || [], spinSites: policy.preview.spinSites || [] }];
+      displacementSites: policy.preview.displacementSites || [], spinSites: policy.preview.spinSites || [],
+      forceSites: policy.preview.forceSites || [], relaxationSites: policy.preview.relaxationSites || [] }];
     rebuildWorld();
     frontierMetric.textContent = frontierReadout.value;
     frontierDelta.textContent = frontierReadout.detail;
@@ -26826,7 +27005,8 @@ function previewMarkingFrontierWinner(row, snapshot) {
   if (row.preview) {
     currentCandidates = [{ p: row.preview.p.clone(), rotation: row.preview.rotation.clone(),
       type: row.preview.type, accepted: true, preview: true,
-      displacementSites: row.preview.displacementSites || [], spinSites: row.preview.spinSites || [] }];
+      displacementSites: row.preview.displacementSites || [], spinSites: row.preview.spinSites || [],
+      forceSites: row.preview.forceSites || [], relaxationSites: row.preview.relaxationSites || [] }];
     rebuildWorld();
     frontierMetric.textContent = frontierReadout.value;
     frontierDelta.textContent = frontierReadout.detail;
@@ -27431,9 +27611,11 @@ function observationProvenanceRecords() {
     { id: "calculation", short: "calculation", status: calculation?.forceCoverage > 0 ? "recorded" : "unavailable",
       value: calculation?.available ? `${calculation.programName || "public calculation"} · ${calculation.forceCoverage > 0 ? `Fᵣₘₛ ${calculation.forceRmsElectronVoltPerAngstrom.toExponential(2)} eV/Å` : "no forces"}` : "no calculation metadata",
       observed: calculation?.available ? `Final archived calculation from ${calculation.sourcePath}; program ${calculation.programName || "unreported"}${calculation.programVersion ? ` ${calculation.programVersion}` : ""}.` : "The active structural record supplies no paired final calculation.",
-      transform: calculation?.forceCoverage > 0 ? "SI archive forces are converted once to eV/Å and transported as site-local Cartesian vectors; arrow lengths are normalized only in the viewport." : "No force geometry is constructed.",
-      use: "Diagnostic layer and receipt provenance only; excluded from clustering, marking fit, candidate generation, admission, ranking, and structural classification.",
-      boundary: "One method-dependent residual-force snapshot is not a force field, relaxation trajectory, phonon model, free energy, barrier, rate, or transferable force predictor." },
+      transform: calculation?.forceCoverage > 0 ? `SI archive forces are converted once to eV/Å and transported through cluster proper poses as Fworld=Rcluster Flocal; viewport arrows use normalized lengths.${structuralRelaxationSpec().forceSeed ? " Force-seed mode maps direction plus |F|/sample-p90 to a bounded initial offset." : ""}` : "No force geometry is constructed.",
+      use: structuralRelaxationSpec().forceSeed
+        ? "Excluded from clustering, marking fit, candidate generation, admission, and ranking; used only as a fail-closed initial direction for the post-attachment geometric projection."
+        : "Diagnostic layer and receipt provenance only; excluded from clustering, marking fit, candidate generation, admission, ranking, and structural classification.",
+      boundary: "One method-dependent residual-force snapshot is not a force field, relaxation trajectory, phonon model, free energy, barrier, rate, or transferable force predictor. The optional seed integrates no force, mass, or time step and is discarded unless the independent geometric objective and every hard certificate improve." },
     { id: "collinear-spin", short: "scalar spin", status: spinGeometry.available ? "recorded" : "unavailable",
       value: spinGeometry.available
         ? `${spinGeometry.suppliedSites}/${spinGeometry.inputSites} sites · C ${spinGeometry.weightedPairCorrelation === null ? "—" : spinGeometry.weightedPairCorrelation.toFixed(3)}`

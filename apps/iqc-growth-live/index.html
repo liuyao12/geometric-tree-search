@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260827-251">
+  <link rel="stylesheet" href="./style.css?v=20260827-252">
   <script type="importmap">
     {
       "imports": {
@@ -579,9 +579,10 @@
                 <option value="balanced" selected>Balanced · 5% dₙₙ · 12 iterations</option>
                 <option value="strong">Strong · 8% dₙₙ · 20 iterations</option>
                 <option value="observed">Observed non-affine vector seed · 5% dₙₙ · fail closed</option>
+                <option value="force">Residual-force direction seed · 5% dₙₙ · fail closed</option>
               </select>
             </label>
-            <div id="structuralRelaxationState" class="control-note">Applied only after known-window replay. A projection must reduce the learned local constraint residual and re-pass every hard geometric certificate. The observed-vector mode appears only for a fixed-topology selected→final archive pair.</div>
+            <div id="structuralRelaxationState" class="control-note">Applied only after known-window replay. A projection must reduce the learned local constraint residual and re-pass every hard geometric certificate. Observed-vector mode requires a fixed-topology selected→final archive pair; force mode requires site-resolved residual forces.</div>
               </div>
             </details>
             <details class="growth-control-group">
@@ -1931,7 +1932,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260827-251"></script>
+  <script type="module" src="./app.js?v=20260827-252"></script>
   <script type="module" src="./evidence-atlas.js?v=20260827-20"></script>
 </body>
 </html>

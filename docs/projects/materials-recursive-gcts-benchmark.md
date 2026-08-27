@@ -13,6 +13,31 @@ amplification is `b > 1`, a level-`L` accepted macro placement represents
 approximately `b^L` atoms.  Materializing or exporting `N` atomic coordinates
 still has an unavoidable `O(N)` cost and must be reported separately.
 
+### Proper-pose residual-force seeds (Build 252)
+
+The browser's site-resolved external residual-force channel can now cross the
+GCTS representation boundary without becoming a force integrator. Each vector
+is converted once to eV/Å, stored in the supporting cluster's local proper
+frame, and transported to a candidate as `Fworld = Rcluster Flocal`. In the
+explicit force-seed ablation, its direction and its magnitude relative to the
+frozen reference-sample p90 define a proposed offset
+`cap min(1, |F|/F90) unit(Fworld)`. The cap remains 5% of `dnn` and below half
+the exact merge tolerance. Multiple commuting placements that predict the same
+new site contribute through an order-independent vector mean. A worsening seed
+is discarded before generic projection; exclusion, coordination, angle,
+boundary, exact topology, and proper-port checks can still roll back the whole
+placement.
+
+Receipts separately count reference, local-template, frozen-rule, live-
+candidate, and placed force vectors; record the p90 scale, seed use, and whether
+the last seed survived; and state that no target entered. Cluster cards, live
+candidates, and accepted descendants expose the same transported direction.
+This is a bounded rigid-environment hypothesis over one method-dependent
+calculation snapshot. It does not infer a transferable force field, Hessian,
+energy surface, mass, time step, optimizer path, MD trajectory, rate, or
+physical time. The unseeded bounded geometric projection remains the direct
+control.
+
 ### Proper-pose observed relaxation seeds (Build 251)
 
 The browser can now use a fixed-topology selected→final archive pair to

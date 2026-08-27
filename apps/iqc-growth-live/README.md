@@ -19,6 +19,24 @@ the GCTS anatomy view explains covers, oriented ports, markings, search, and
 promotion; and the claim ledger keeps proved, measured, and open results visibly
 separate. Its numbers are frozen benchmark results, not recomputed browser demos.
 
+Build 252 makes a second archived physics vector available to the geometric
+leap. A supplied site-resolved residual force is stored in its cluster-local
+proper frame and transported to a candidate as `Fworld = Rcluster Flocal`. The
+new **Residual-force direction seed** mode converts only its direction and its
+magnitude relative to the frozen sample force p90 into an initial offset capped
+at 5% of the nearest-neighbor distance. It integrates no force: no mass, time
+step, Hessian, energy surface, or propagation law enters the calculation. The
+seed is ignored if the full contact+tether objective worsens, and the whole
+projection still rolls back unless contact+angle strain falls and every hard
+exclusion, coordination, angle, boundary, topology, and port certificate
+re-passes. Force arrows are now transported into separate cluster scenes, live
+candidates, and accepted descendants. When several commuting placements predict
+the same new site, their vectors are averaged before projection so the result is
+independent of placement order. This is an explicit rigid-environment and
+scale-free shortcut hypothesis for one archived calculation—not a transferable
+force field, geometry optimizer, MD step, relaxation trajectory, rate, or
+physical time.
+
 Build 251 adds the first archive-observed shortcut over a local relaxation
 process. For a fixed-topology selected→final NOMAD sequence, every site's
 minimum-image non-affine displacement is stored in its cluster-local frame and
