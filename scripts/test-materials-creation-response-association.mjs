@@ -1,9 +1,9 @@
 import assert from "node:assert/strict";
-import { buildCreationResponseAssociation }
+import { blockedCreationResponseValidation, buildCreationResponseAssociation }
   from "../apps/iqc-growth-live/creation-response-association.js";
 
 const records = Array.from({ length: 6 }, (_, index) => ({
-  placementId: index + 1, emittedSites: index % 2 ? 5 : 2,
+  placementId: index + 1, leapIndex: Math.floor(index / 2) + 1, emittedSites: index % 2 ? 5 : 2,
   physicsTerms: [
     { id: "strain", label: "contact + angle", weight: -.2, contribution: index },
     { id: "loop", label: "loop closure", weight: .3, contribution: 5 - index },
@@ -25,4 +25,23 @@ assert.equal(negative.spearmanRho, -1);
 assert.equal(positive.points.length, 6);
 assert.throws(() => buildCreationResponseAssociation([...records, records[0]]), /exactly once/);
 assert.equal(buildCreationResponseAssociation(records.slice(0, 3), { minimumSamples: 4 }).available, false);
+
+const blockedRecords = Array.from({ length: 24 }, (_, index) => {
+  const leapIndex = Math.floor(index / 6) + 1; const within = index % 6;
+  const heldout = leapIndex >= 4;
+  return { placementId: `b${index}`, leapIndex, emittedSites: 2,
+    physicsTerms: [{ id: "strain", label: "strain", weight: 1, contribution: within }],
+    outcomes: { shellChange: heldout ? 5 - within : within } };
+});
+const blocked = blockedCreationResponseValidation(blockedRecords, "shellChange",
+  { trainingFraction: .75, minimumSamplesPerSplit: 4 });
+assert.equal(blocked.available, true);
+assert.deepEqual(blocked.trainingLeaps, [1, 2, 3]);
+assert.deepEqual(blocked.heldoutLeaps, [4]);
+assert.equal(blocked.trainingRho, 1);
+assert.equal(blocked.heldoutRho, -1);
+assert.equal(blocked.signRetained, false);
+assert.equal(blocked.selectionUsedHeldout, false);
+assert.equal(blocked.randomSplitUsed, false);
+assert.equal(blockedCreationResponseValidation(blockedRecords.slice(0, 12), "shellChange").available, false);
 console.log("materials creation-response association: passed");

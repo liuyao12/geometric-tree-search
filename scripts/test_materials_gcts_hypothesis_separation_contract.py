@@ -53,7 +53,7 @@ def test_receipt_and_notebook_preserve_the_registered_factor():
 
 
 def test_build_183_assets_are_cache_busted():
-    assert 'buildId: "20260826-194"' in APP
-    assert 'app.js?v=20260826-194' in HTML
-    assert 'style.css?v=20260826-91' in HTML
+    assert 'buildId: "20260826-195"' in APP
+    assert 'app.js?v=20260826-195' in HTML
+    assert 'style.css?v=20260826-92' in HTML
     assert 'hypothesis-separation.js?v=20260826-1' in APP

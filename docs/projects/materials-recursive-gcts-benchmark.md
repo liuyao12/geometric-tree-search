@@ -6139,3 +6139,32 @@ the strongest displayed term is surface completion with Spearman ρ = −0.58325
 composition and formal-charge balance. These values are a deterministic within-run diagnostic,
 not causal effects, calibrated forecasts, independent material samples, energies, kinetics,
 or statistically generalizable coefficients.
+
+## Build 195: freeze an early-block association and test later leap blocks
+
+Build 195 adds a temporal-order validation boundary without treating search order as physical
+time. Every grouped placement record carries the `createdAtLeap` index of its emitted atoms.
+The validator sorts the distinct complete leap blocks, assigns the earliest two thirds to
+term selection, and reserves every later block for evaluation. All placements in one
+commuting antichain remain together. The minimum support is eight grouped placements in
+each split, with at least three total leap blocks.
+
+Only earlier blocks may determine the active term: the strongest absolute Spearman
+association for the selected outcome is frozen before the held-block audit is constructed.
+The later result reports the same term's coefficient and whether its sign is retained.
+Missing variation or insufficient support fails closed. No random split, atom-level sample,
+held-block term selection, causal-effect claim, independent-material claim, or kinetic
+interpretation is permitted.
+
+The six-update default NaCl runtime regression gives an informative shell-change audit.
+Leaps 1–4 contain 90 grouped placements and select surface completion at ρ = −0.59155;
+leaps 5–6 contain 142 later placements and retain the negative association at ρ = −0.447.
+Non-affine, radial, center-displacement, shear, and volume outcomes remain unavailable when
+the early blocks lack variation. This is a sequential stability diagnostic within one
+deterministic continuation, not external validation or statistical independence.
+
+The same run identified a display error independent of the association calculation. Once
+known-window replay had completed, later accepted grammar actions continued to show the
+certificate text instead of their action counts. Build 195 freezes the pre-event certificate
+state and now uses the certificate caption only on the transition that proves 216/216 replay;
+later events report their actual compressed-grammar placements, atoms, and invariant prunes.

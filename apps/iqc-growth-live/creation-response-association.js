@@ -72,3 +72,54 @@ export function buildCreationResponseAssociation(records, { minimumSamples = 4 }
     energyInferred: false, kineticsInferred: false,
   };
 }
+
+/** Select a term on earlier complete leap blocks, then score it on later blocks. */
+export function blockedCreationResponseValidation(records, outcomeId, {
+  trainingFraction = 2 / 3, minimumSamplesPerSplit = 8,
+} = {}) {
+  if (!Array.isArray(records) || !outcomeId || !(trainingFraction > 0 && trainingFraction < 1)
+      || minimumSamplesPerSplit < 3 || records.some((record) => !Number.isInteger(record.leapIndex))) {
+    throw new Error("blocked validation needs placement records with finite structural-leap identities");
+  }
+  const leapIndices = [...new Set(records.map((record) => record.leapIndex))].sort((first, second) => first - second);
+  if (leapIndices.length < 3) return { available: false,
+    reason: "at least three complete structural-leap blocks are required", leapBlocks: leapIndices.length,
+    selectionUsedHeldout: false, targetUsed: false };
+  const trainingBlockCount = Math.min(leapIndices.length - 1,
+    Math.max(1, Math.ceil(leapIndices.length * trainingFraction)));
+  const trainingLeaps = leapIndices.slice(0, trainingBlockCount);
+  const heldoutLeaps = leapIndices.slice(trainingBlockCount);
+  const trainingSet = new Set(trainingLeaps); const heldoutSet = new Set(heldoutLeaps);
+  const trainingRecords = records.filter((record) => trainingSet.has(record.leapIndex));
+  const heldoutRecords = records.filter((record) => heldoutSet.has(record.leapIndex));
+  const trainingAudit = buildCreationResponseAssociation(trainingRecords,
+    { minimumSamples: minimumSamplesPerSplit });
+  const candidates = trainingAudit.associations.filter((entry) => entry.outcomeId === outcomeId)
+    .sort((first, second) => Math.abs(second.spearmanRho) - Math.abs(first.spearmanRho)
+      || first.termId.localeCompare(second.termId));
+  const selected = candidates[0];
+  if (!selected) return { available: false,
+    reason: "earlier leap blocks have insufficient varying grouped samples",
+    trainingLeaps, heldoutLeaps, trainingPlacements: trainingRecords.length,
+    heldoutPlacements: heldoutRecords.length, selectionUsedHeldout: false, targetUsed: false };
+  const heldoutAudit = buildCreationResponseAssociation(heldoutRecords,
+    { minimumSamples: minimumSamplesPerSplit });
+  const heldout = heldoutAudit.associations.find((entry) => entry.outcomeId === outcomeId
+    && entry.termId === selected.termId);
+  if (!heldout) return { available: false,
+    reason: "frozen term has insufficient variation or support in later leap blocks",
+    termId: selected.termId, termLabel: selected.termLabel, trainingRho: selected.spearmanRho,
+    trainingLeaps, heldoutLeaps, trainingPlacements: trainingRecords.length,
+    heldoutPlacements: heldoutRecords.length, selectionUsedHeldout: false, targetUsed: false };
+  return {
+    available: true, outcomeId, termId: selected.termId, termLabel: selected.termLabel,
+    trainingRho: selected.spearmanRho, heldoutRho: heldout.spearmanRho,
+    signRetained: Math.sign(selected.spearmanRho) === Math.sign(heldout.spearmanRho),
+    trainingLeaps, heldoutLeaps, trainingPlacements: trainingRecords.length,
+    heldoutPlacements: heldoutRecords.length,
+    trainingSampleCount: selected.sampleCount, heldoutSampleCount: heldout.sampleCount,
+    blockedByCompleteStructuralLeap: true, randomSplitUsed: false,
+    selectionUsedHeldout: false, targetUsed: false,
+    causalEffectInferred: false, independentMaterialSamples: false,
+  };
+}

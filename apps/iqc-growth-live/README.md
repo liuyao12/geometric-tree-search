@@ -5421,3 +5421,23 @@ the surface-completion contribution at ρ = −0.583; the initially constant non
 correctly remained unavailable. This is one deterministic run with correlated placements,
 not 209 independent samples, a causal effect, calibrated predictor, energy relation, kinetic
 law, or population estimate for materials.
+
+### Build 195 · earlier-leap selection, later-leap validation
+
+The association microscope now separates term selection from evaluation. Whole-cluster
+placements are blocked by their immutable structural-leap index; no commuting batch is
+split between folds. The strongest active creation term is selected using only the earlier
+complete leap blocks, frozen, and then evaluated on later blocks. The card reports both
+Spearman coefficients and whether the sign transfers. Random occurrence splits and
+held-block term selection are prohibited.
+
+The six-update NaCl check contains enough post-reconstruction variation for a real result:
+surface completion was selected on leaps 1–4 with ρ = −0.592 and retained its sign on
+withheld leaps 5–6 with ρ = −0.447. Other outcomes without variation remain unavailable.
+These are still correlated blocks from one deterministic solid, not independent materials,
+a causal effect, confidence interval, or calibrated forecast.
+
+The extended test also found that continuation after the 216/216 certificate reused the
+certificate caption even while new clusters were being accepted. The caption now distinguishes
+the exact transition that completes known-window replay from every subsequent compressed-
+grammar continuation and reports each continuation batch's actual placements and atoms.

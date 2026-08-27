@@ -32,8 +32,8 @@ import { buildSiteCreationPhysicsAudit } from "./site-creation-physics-audit.js?
 import { buildSiteCreationResponse } from "./site-creation-response.js?v=20260826-1";
 import { appendSiteStructuralHistory, summarizeSiteStructuralHistory }
   from "./site-structural-history.js?v=20260826-1";
-import { buildCreationResponseAssociation }
-  from "./creation-response-association.js?v=20260826-1";
+import { blockedCreationResponseValidation, buildCreationResponseAssociation }
+  from "./creation-response-association.js?v=20260826-2";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -561,6 +561,7 @@ const sitePopulationResponseState = $("sitePopulationResponseState");
 const sitePopulationResponseOutcome = $("sitePopulationResponseOutcome");
 const sitePopulationResponsePlot = $("sitePopulationResponsePlot");
 const sitePopulationResponseTerms = $("sitePopulationResponseTerms");
+const sitePopulationValidation = $("sitePopulationValidation");
 const sitePopulationResponseBoundary = $("sitePopulationResponseBoundary");
 const unitCellBadge = $("unitCellBadge");
 const captionAction = $("captionAction");
@@ -3705,10 +3706,12 @@ function finiteMean(values) {
 function creationResponseAssociationRecords() {
   return placedClusters.filter((placement) => placement.decisionEvidence?.physicsTerms?.length
     && placement.freshAtomIds?.length).slice(-256).map((placement) => {
-    const responses = placement.freshAtomIds.map((siteId) => atoms.find((atom) => atom.id === siteId))
-      .filter((atom) => atom?.creationGeometry).map(selectedSiteCreationResponse).filter((response) => response.available);
+    const emittedAtoms = placement.freshAtomIds.map((siteId) => atoms.find((atom) => atom.id === siteId))
+      .filter((atom) => atom?.creationGeometry);
+    const responses = emittedAtoms.map(selectedSiteCreationResponse).filter((response) => response.available);
     return {
-      placementId: placement.id, emittedSites: responses.length,
+      placementId: placement.id, leapIndex: Math.min(...emittedAtoms.map((atom) => atom.createdAtLeap)),
+      emittedSites: responses.length,
       physicsTerms: placement.decisionEvidence.physicsTerms,
       outcomes: {
         nonaffine: finiteMean(responses.map((response) => response.rootD2MinAngstrom)),
@@ -3729,8 +3732,28 @@ const POPULATION_RESPONSE_LABELS = Object.freeze({
   equivalentShear: "mean equivalent shear", absoluteVolumeResponse: "mean |local ΔV/V|",
 });
 
+function renderPopulationBlockedValidation(validation) {
+  sitePopulationValidation.replaceChildren();
+  sitePopulationValidation.className = validation.available
+    ? validation.signRetained ? "retained" : "reversed" : "unavailable";
+  const label = document.createElement("small"); label.textContent = "earlier blocks → later blocks";
+  const value = document.createElement("strong");
+  const detail = document.createElement("span");
+  if (validation.available) {
+    value.textContent = `${validation.termLabel} · ρ ${validation.trainingRho >= 0 ? "+" : ""}${validation.trainingRho.toFixed(3)} → ${validation.heldoutRho >= 0 ? "+" : ""}${validation.heldoutRho.toFixed(3)}`;
+    detail.textContent = `selected on leap ${validation.trainingLeaps.join(", ")} (${validation.trainingPlacements} placements) · frozen on leap ${validation.heldoutLeaps.join(", ")} (${validation.heldoutPlacements}) · sign ${validation.signRetained ? "retained" : "reversed"}`;
+  } else {
+    value.textContent = "blocked validation unavailable";
+    detail.textContent = validation.reason;
+  }
+  sitePopulationValidation.append(label, value, detail);
+}
+
 function renderPopulationResponseAssociation(atom) {
-  const audit = buildCreationResponseAssociation(creationResponseAssociationRecords());
+  const records = creationResponseAssociationRecords();
+  const audit = buildCreationResponseAssociation(records);
+  renderPopulationBlockedValidation(blockedCreationResponseValidation(records,
+    selectedPopulationResponseOutcome, { minimumSamplesPerSplit: 8 }));
   sitePopulationResponsePlot.replaceChildren(); sitePopulationResponseTerms.replaceChildren();
   sitePopulationResponseOutcome.value = selectedPopulationResponseOutcome;
   const outcomeAssociations = audit.associations.filter((entry) => entry.outcomeId === selectedPopulationResponseOutcome);
@@ -8449,7 +8472,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-194",
+      buildId: "20260826-195",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -18421,6 +18444,7 @@ function materializeCandidate(candidate, evaluation) {
 }
 
 function performOffLatticeEvent() {
+  const reconstructionWasCertified = reconstructionCertified;
   const relaxationAuthorized = reconstructionCertified;
   const before = { atoms: atoms.length, clusters: placedClusters.length, frontier: frontierCandidates.length,
     morphology: structuralMorphologySnapshot(), interfaces: structuralInterfaceSnapshot(),
@@ -18591,9 +18615,9 @@ function performOffLatticeEvent() {
   const relaxation = projectAcceptedBatchGeometry(freshAtomIdsInBatch, relaxationAuthorized);
   selectedKeys.forEach((key) => frontierCandidateKeys.delete(key));
   eventIndex += batch.length;
-  captionAction.textContent = reconstructionCertified
-    ? `Known-window certificate passed: ${referenceCount()}/${referenceCount()} species-labelled sites recovered one-to-one, with no duplicate or extraneous quotient sites. The observed one-off replay edges are now removed; continuation uses only the compressed learned grammar.`
-    : `${acceptedInBatch} ${growthScheduling === "commuting" ? "order-independent placements shown together" : "best-first branch placement"} (${freshInBatch} new atoms) · ${replayIndex}/${referenceCount()} known sites recovered`
+  captionAction.textContent = !reconstructionWasCertified && reconstructionCertified
+    ? `Known-window certificate passed: ${referenceCount()}/${referenceCount()} species-labelled sites recovered one-to-one, with no duplicate or extraneous quotient sites. The observed one-off replay edges are now removed; continuation now uses only the compressed learned grammar.`
+    : `${acceptedInBatch} ${growthScheduling === "commuting" ? "order-independent placements shown together" : "best-first branch placement"} (${freshInBatch} new atoms) · ${reconstructionWasCertified ? "compressed-grammar continuation" : `${replayIndex}/${referenceCount()} known sites recovered`}`
       + `${reconstructionMarkingFallbacks ? ` · ${reconstructionMarkingFallbacks} marking false negatives bypassed by the replay certificate` : ""}`
       + `${rejectedInBatch ? ` · ${rejectedInBatch} invariant prunes flash red` : ""}.`;
   if (lastDecision) updateDecision(lastDecision);

@@ -45,9 +45,9 @@ def test_association_microscope_is_interactive_and_claims_fail_closed():
 
 
 def test_build_194_assets_and_narrative():
-    assert 'buildId: "20260826-194"' in APP
-    assert 'app.js?v=20260826-194' in HTML
-    assert 'style.css?v=20260826-91' in HTML
-    assert 'creation-response-association.js?v=20260826-1' in APP
+    assert 'buildId: "20260826-195"' in APP
+    assert 'app.js?v=20260826-195' in HTML
+    assert 'style.css?v=20260826-92' in HTML
+    assert 'creation-response-association.js?v=20260826-2' in APP
     assert "Build 194" in README
     assert "Build 194" in DOCS
