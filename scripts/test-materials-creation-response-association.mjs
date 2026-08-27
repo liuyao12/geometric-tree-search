@@ -100,4 +100,20 @@ assert.ok(interaction.heldoutSkillVersusTrainingMean < .01);
 assert.ok(interaction.quadraticControl.heldoutSkillVersusTrainingMean > .99);
 assert.equal(interaction.quadraticControl.modelSelectedUsingHeldout, false);
 assert.equal(interaction.quadraticControl.coefficients.some((term) => term.kind === "interaction"), true);
+const contextualRecords = Array.from({ length: 60 }, (_, index) => {
+  const leapIndex = Math.floor(index / 12) + 1; const within = index % 12;
+  const state = within % 3 - 1;
+  return { placementId: `c${index}`, leapIndex, emittedSites: 1,
+    physicsTerms: [{ id: "uninformative", weight: 1, contribution: within % 2 }],
+    contextFeatures: [{ id: "frontier-state", label: "frontier state", value: state }],
+    outcomes: { shellChange: 4 * state } };
+});
+const contextFree = blockedCreationResponseSurrogate(contextualRecords, "shellChange",
+  { trainingFraction: .6, minimumSamplesPerSplit: 4, ridge: .01 });
+const contextAware = blockedCreationResponseSurrogate(contextualRecords, "shellChange",
+  { trainingFraction: .6, minimumSamplesPerSplit: 4, ridge: .01, includeStructuralContext: true });
+assert.ok(contextFree.heldoutSkillVersusTrainingMean < .01);
+assert.ok(contextAware.heldoutSkillVersusTrainingMean > .99);
+assert.equal(contextAware.features.some((feature) => feature.source === "structural-context"), true);
+assert.equal(contextAware.fitUsedHeldout, false);
 console.log("materials creation-response association: passed");

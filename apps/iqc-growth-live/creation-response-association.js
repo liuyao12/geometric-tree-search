@@ -48,6 +48,11 @@ export function canonicalCreationResponseDataset(records, { maximumRecords = 256
         .map((term) => ({ id: String(term.id), label: term.label || String(term.id),
           weight: rounded(term.weight, 8), contribution: rounded(term.contribution, 8) }))
         .sort((first, second) => first.id.localeCompare(second.id)),
+      contextFeatures: (record.contextFeatures || []).filter((feature) => feature?.id
+        && Number.isFinite(feature.value)).map((feature) => ({ id: String(feature.id),
+        label: feature.label || String(feature.id), value: rounded(feature.value, 8),
+        role: feature.role || "target-free creation-time structural context" }))
+        .sort((first, second) => first.id.localeCompare(second.id)),
       outcomes: Object.fromEntries(Object.entries(record.outcomes)
         .filter(([, value]) => Number.isFinite(value)).sort(([first], [second]) => first.localeCompare(second))
         .map(([id, value]) => [id, rounded(value, 8)])),
@@ -169,10 +174,12 @@ function solveRidgeSystem(matrix, vector) {
 /** Fixed-ridge multichannel model fit on earlier complete leaps and scored only on later leaps. */
 export function blockedCreationResponseSurrogate(records, outcomeId, {
   trainingFraction = 2 / 3, minimumSamplesPerSplit = 12, ridge = 1, maximumFeatures = 12,
+  includeStructuralContext = false, maximumContextFeatures = 12,
 } = {}) {
   if (!Array.isArray(records) || !outcomeId || !(trainingFraction > 0 && trainingFraction < 1)
       || minimumSamplesPerSplit < 4 || !(ridge > 0) || !Number.isInteger(maximumFeatures)
-      || maximumFeatures < 1 || records.some((record) => !Number.isInteger(record.leapIndex))) {
+      || maximumFeatures < 1 || !Number.isInteger(maximumContextFeatures) || maximumContextFeatures < 1
+      || records.some((record) => !Number.isInteger(record.leapIndex))) {
     throw new Error("blocked surrogate needs grouped leap records and fixed finite fit settings");
   }
   const leapIndices = [...new Set(records.map((record) => record.leapIndex))].sort((a, b) => a - b);
@@ -197,17 +204,36 @@ export function blockedCreationResponseSurrogate(records, outcomeId, {
   trainingRecords.forEach((record) => record.physicsTerms?.forEach((term) => {
     if (!term?.id || !Number.isFinite(term.contribution) || !Number.isFinite(term.weight)
         || Math.abs(term.weight) <= 1e-12) return;
-    const current = termMetadata.get(term.id) || { id: term.id, label: term.label || term.id, support: 0 };
+    const current = termMetadata.get(term.id) || { id: term.id, sourceId: term.id,
+      source: "physics-term", label: term.label || term.id, support: 0 };
     current.support++; termMetadata.set(term.id, current);
   }));
-  const candidates = [...termMetadata.values()].filter((term) => term.support >= Math.ceil(trainingRecords.length / 2))
+  const termCandidates = [...termMetadata.values()].filter((term) => term.support >= Math.ceil(trainingRecords.length / 2))
     .sort((first, second) => second.support - first.support || first.id.localeCompare(second.id))
     .slice(0, maximumFeatures);
+  const contextMetadata = new Map();
+  if (includeStructuralContext) trainingRecords.forEach((record) => record.contextFeatures?.forEach((feature) => {
+    if (!feature?.id || !Number.isFinite(feature.value)) return;
+    const id = `context:${feature.id}`;
+    const current = contextMetadata.get(id) || { id, sourceId: feature.id, source: "structural-context",
+      label: feature.label || feature.id, support: 0 };
+    current.support++; contextMetadata.set(id, current);
+  }));
+  const contextCandidates = [...contextMetadata.values()]
+    .filter((feature) => feature.support >= Math.ceil(trainingRecords.length / 2))
+    .sort((first, second) => second.support - first.support || first.id.localeCompare(second.id))
+    .slice(0, maximumContextFeatures);
+  const candidates = [...termCandidates, ...contextCandidates];
   const termMap = (record) => new Map((record.physicsTerms || []).filter((term) => term?.id
     && Number.isFinite(term.contribution) && Number.isFinite(term.weight) && Math.abs(term.weight) > 1e-12)
     .map((term) => [term.id, term.contribution]));
+  const contextMap = (record) => new Map((record.contextFeatures || []).filter((feature) => feature?.id
+    && Number.isFinite(feature.value)).map((feature) => [feature.id, feature.value]));
+  const candidateValue = (candidate, terms, context) => candidate.source === "structural-context"
+    ? context.get(candidate.sourceId) || 0 : terms.get(candidate.sourceId) || 0;
   const rawTraining = trainingRecords.map((record) => {
-    const terms = termMap(record); return candidates.map((term) => terms.get(term.id) || 0);
+    const terms = termMap(record); const context = contextMap(record);
+    return candidates.map((candidate) => candidateValue(candidate, terms, context));
   });
   const means = candidates.map((_, index) => rawTraining.reduce((sum, row) => sum + row[index], 0) / rawTraining.length);
   const scales = candidates.map((_, index) => Math.sqrt(rawTraining.reduce((sum, row) =>
@@ -220,7 +246,8 @@ export function blockedCreationResponseSurrogate(records, outcomeId, {
   const featureMinimums = retainedIndices.map((index) => Math.min(...rawTraining.map((row) => row[index])));
   const featureMaximums = retainedIndices.map((index) => Math.max(...rawTraining.map((row) => row[index])));
   const featureVector = (record) => {
-    const terms = termMap(record); return features.map((term) => terms.get(term.id) || 0);
+    const terms = termMap(record); const context = contextMap(record);
+    return features.map((feature) => candidateValue(feature, terms, context));
   };
   const standardize = (record) => {
     const vector = featureVector(record);
@@ -291,8 +318,10 @@ export function blockedCreationResponseSurrogate(records, outcomeId, {
   return {
     available: true, outcomeId, trainingLeaps, heldoutLeaps,
     trainingPlacements: trainingRecords.length, heldoutPlacements: heldoutRecords.length,
-    ridge, maximumFeatures, featureSelectionRule: "training support >= half; support descending then stable term ID",
+    ridge, maximumFeatures, maximumContextFeatures, includeStructuralContext,
+    featureSelectionRule: "physics and optional structural-context vocabularies selected separately on training support >= half; support descending then stable ID; response not inspected",
     features: features.map((term, index) => ({ id: term.id, label: term.label,
+      source: term.source,
       trainingSupport: term.support, mean: rounded(featureMeans[index], 8),
       scale: rounded(featureScales[index], 8), minimum: rounded(featureMinimums[index], 8),
       maximum: rounded(featureMaximums[index], 8), standardizedWeight: rounded(weights[index], 8) })),
@@ -332,7 +361,7 @@ export function blockedCreationResponseSurrogate(records, outcomeId, {
     unsupportedHeldoutMeanAbsoluteError: rounded(subsetMae(unsupportedPredictions), 8),
     maximumStandardizedFeatureExcess: rounded(Math.max(...predictions
       .map((entry) => entry.maximumStandardizedFeatureExcess)), 8),
-    featureSupportDefinition: "axis-aligned min/max envelope of earlier-block active score contributions; normalized excess uses earlier-block scale",
+    featureSupportDefinition: "axis-aligned min/max envelope of earlier-block active score contributions and any enabled target-free structural context; normalized excess uses earlier-block scale",
     predictions: predictions.map((entry) => ({ ...entry, predicted: rounded(entry.predicted, 8),
       quadraticPredicted: rounded(entry.quadraticPredicted, 8),
       observed: rounded(entry.observed, 8), baseline: rounded(entry.baseline, 8),

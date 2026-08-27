@@ -34,7 +34,7 @@ import { appendSiteStructuralHistory, summarizeSiteStructuralHistory }
   from "./site-structural-history.js?v=20260826-1";
 import { blockedCreationResponseSurrogate, blockedCreationResponseValidation, buildCreationResponseAssociation,
   canonicalCreationResponseDataset, creationResponseLeapProfile }
-  from "./creation-response-association.js?v=20260826-7";
+  from "./creation-response-association.js?v=20260826-8";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -3726,10 +3726,29 @@ function creationResponseAssociationRecords() {
     const emittedAtoms = placement.freshAtomIds.map((siteId) => atoms.find((atom) => atom.id === siteId))
       .filter((atom) => atom?.creationGeometry);
     const responses = emittedAtoms.map(selectedSiteCreationResponse).filter((response) => response.available);
+    const context = placement.decisionEvidence.structuralContext;
+    const contextFeatures = context ? [
+      ["causal-depth", "causal depth", context.placementDepth],
+      ["log-atoms", "log(1 + sites before leap)", Math.log1p(context.atomsBeforeLeap)],
+      ["log-clusters", "log(1 + clusters before leap)", Math.log1p(context.clustersBeforeLeap)],
+      ["log-frontier", "log(1 + frontier before leap)", Math.log1p(context.frontierCandidatesBeforeLeap)],
+      ["batch-actions", "hard-admitted commuting actions", context.hardAdmittedBatchActions],
+      ["support-sites", "proposed support sites", context.proposedSupportSites],
+      ["shared-fraction", "shared support fraction", context.sharedSupportFraction],
+      ["novel-fraction", "novel support fraction", context.novelSupportFraction],
+      ["radius-gyration", "pre-leap radius of gyration", context.radiusOfGyrationAngstrom],
+      ["shape-anisotropy", "pre-leap shape anisotropy", context.relativeShapeAnisotropy],
+      ["coordination-deficit", "pre-leap coordination deficit", context.coordinationDeficit],
+      ["lineage-count", "pre-leap lineage count", context.lineageCount],
+      ["interface-fraction", "pre-leap shared-interface fraction", context.sharedInterfaceFraction],
+      ["interface-pairs", "pre-leap interface-pair count", context.interfacePairCount],
+    ].filter(([, , value]) => Number.isFinite(value)).map(([id, label, value]) => ({ id, label,
+      value: receiptRound(value), role: "target-free creation-time structural context" })) : [];
     return {
       placementId: placement.id, leapIndex: Math.min(...emittedAtoms.map((atom) => atom.createdAtLeap)),
       emittedSites: responses.length,
       physicsTerms: placement.decisionEvidence.physicsTerms,
+      contextFeatures,
       outcomes: {
         nonaffine: finiteMean(responses.map((response) => response.rootD2MinAngstrom)),
         radialDrift: finiteMean(responses.map((response) => response.radialRmsAngstrom)),
@@ -3758,6 +3777,9 @@ async function creationResponseReceiptEvidence() {
   const blockedSurrogates = Object.fromEntries(Object.keys(POPULATION_RESPONSE_LABELS).map((outcomeId) =>
     [outcomeId, blockedCreationResponseSurrogate(dataset.records, outcomeId,
       { minimumSamplesPerSplit: 12 })]));
+  const contextualBlockedSurrogates = Object.fromEntries(Object.keys(POPULATION_RESPONSE_LABELS)
+    .map((outcomeId) => [outcomeId, blockedCreationResponseSurrogate(dataset.records, outcomeId,
+      { minimumSamplesPerSplit: 12, includeStructuralContext: true })]));
   return {
     schema: 1,
     dataset,
@@ -3767,6 +3789,7 @@ async function creationResponseReceiptEvidence() {
     blockedValidation,
     leapProfiles,
     blockedSurrogates,
+    contextualBlockedSurrogates,
     available: audit.available,
     placementSamples: audit.placementSamples,
     emittedSitePresentations: audit.emittedSitePresentations,
@@ -3806,11 +3829,12 @@ function renderPopulationBlockedValidation(validation) {
   sitePopulationValidation.append(label, value, detail);
 }
 
-function renderPopulationSurrogate(surrogate) {
+function renderPopulationSurrogate(surrogate, contextualSurrogate) {
   sitePopulationSurrogate.replaceChildren();
   sitePopulationSurrogate.className = `site-response-surrogate ${surrogate.available
     ? Math.max(surrogate.heldoutSkillVersusTrainingMean ?? -Infinity,
-      surrogate.quadraticControl?.heldoutSkillVersusTrainingMean ?? -Infinity) > 0 ? "useful" : "no-gain"
+      surrogate.quadraticControl?.heldoutSkillVersusTrainingMean ?? -Infinity,
+      contextualSurrogate?.heldoutSkillVersusTrainingMean ?? -Infinity) > 0 ? "useful" : "no-gain"
     : "unavailable"}`;
   const label = document.createElement("small"); label.textContent = "joint geometry model · earlier → later";
   const value = document.createElement("strong"); const detail = document.createElement("span");
@@ -3820,15 +3844,18 @@ function renderPopulationSurrogate(surrogate) {
   }
   const skill = surrogate.heldoutSkillVersusTrainingMean;
   const quadraticSkill = surrogate.quadraticControl.heldoutSkillVersusTrainingMean;
-  value.textContent = `skill linear ${Number.isFinite(skill) ? `${skill >= 0 ? "+" : ""}${skill.toFixed(3)}` : "—"} · coupled ${Number.isFinite(quadraticSkill) ? `${quadraticSkill >= 0 ? "+" : ""}${quadraticSkill.toFixed(3)}` : "—"}`;
-  detail.textContent = `${surrogate.features.length} channels · ρ linear ${Number.isFinite(surrogate.heldoutSpearman) ? `${surrogate.heldoutSpearman >= 0 ? "+" : ""}${surrogate.heldoutSpearman.toFixed(3)}` : "—"} / coupled ${Number.isFinite(surrogate.quadraticControl.heldoutSpearman) ? `${surrogate.quadraticControl.heldoutSpearman >= 0 ? "+" : ""}${surrogate.quadraticControl.heldoutSpearman.toFixed(3)}` : "—"} · ${(100 * surrogate.heldoutFeatureSupportCoverage).toFixed(1)}% in envelope`;
+  const contextSkill = contextualSurrogate?.heldoutSkillVersusTrainingMean;
+  value.textContent = `skill score ${Number.isFinite(skill) ? `${skill >= 0 ? "+" : ""}${skill.toFixed(3)}` : "—"} · coupled ${Number.isFinite(quadraticSkill) ? `${quadraticSkill >= 0 ? "+" : ""}${quadraticSkill.toFixed(3)}` : "—"} · +state ${Number.isFinite(contextSkill) ? `${contextSkill >= 0 ? "+" : ""}${contextSkill.toFixed(3)}` : "—"}`;
+  detail.textContent = `ρ score ${Number.isFinite(surrogate.heldoutSpearman) ? `${surrogate.heldoutSpearman >= 0 ? "+" : ""}${surrogate.heldoutSpearman.toFixed(3)}` : "—"} / coupled ${Number.isFinite(surrogate.quadraticControl.heldoutSpearman) ? `${surrogate.quadraticControl.heldoutSpearman >= 0 ? "+" : ""}${surrogate.quadraticControl.heldoutSpearman.toFixed(3)}` : "—"} / +state ${Number.isFinite(contextualSurrogate?.heldoutSpearman) ? `${contextualSurrogate.heldoutSpearman >= 0 ? "+" : ""}${contextualSurrogate.heldoutSpearman.toFixed(3)}` : "—"}`;
   const bars = document.createElement("div"); bars.className = "site-surrogate-bars";
   const maximumError = Math.max(surrogate.heldoutMeanAbsoluteError,
-    surrogate.quadraticControl.heldoutMeanAbsoluteError, surrogate.baselineMeanAbsoluteError, 1e-12);
-  [["linear", surrogate.heldoutMeanAbsoluteError],
+    surrogate.quadraticControl.heldoutMeanAbsoluteError,
+    contextualSurrogate?.heldoutMeanAbsoluteError || 0, surrogate.baselineMeanAbsoluteError, 1e-12);
+  [["score", surrogate.heldoutMeanAbsoluteError],
     ["coupled", surrogate.quadraticControl.heldoutMeanAbsoluteError],
+    ["+state", contextualSurrogate?.heldoutMeanAbsoluteError],
     ["training mean", surrogate.baselineMeanAbsoluteError]]
-    .forEach(([name, error]) => {
+    .filter(([, error]) => Number.isFinite(error)).forEach(([name, error]) => {
       const bar = document.createElement("span"); bar.style.setProperty("--error", `${100 * error / maximumError}%`);
       const barLabel = document.createElement("small"); barLabel.textContent = name;
       const barValue = document.createElement("strong"); barValue.textContent = `MAE ${error.toFixed(3)}`;
@@ -3844,6 +3871,22 @@ function renderPopulationSurrogate(surrogate) {
       ? surrogate.unsupportedHeldoutMeanAbsoluteError.toFixed(3) : "—"} · max excess ${surrogate.maximumStandardizedFeatureExcess.toFixed(2)}σ`
     : "no axis-aligned feature extrapolation";
   support.append(supportLabel, supportValue, supportDetail);
+  const contextSupport = document.createElement("div");
+  contextSupport.className = "site-surrogate-support context";
+  const contextCoverage = contextualSurrogate?.heldoutFeatureSupportCoverage;
+  contextSupport.style.setProperty("--support", `${100 * (contextCoverage || 0)}%`);
+  const contextSupportLabel = document.createElement("small"); contextSupportLabel.textContent = "structural-state support transfer";
+  const contextSupportValue = document.createElement("strong");
+  contextSupportValue.textContent = contextualSurrogate?.available
+    ? `${contextualSurrogate.supportedHeldoutPlacements}/${contextualSurrogate.heldoutPlacements} held actions in state envelope`
+    : "state control unavailable";
+  const contextSupportDetail = document.createElement("em");
+  contextSupportDetail.textContent = contextualSurrogate?.available
+    ? contextualSurrogate.unsupportedHeldoutPlacements
+      ? `${contextualSurrogate.unsupportedHeldoutPlacements} extrapolated · max ${contextualSurrogate.maximumStandardizedFeatureExcess.toFixed(2)}σ; skill is not an interpolation test`
+      : "all enabled creation-time state variables remain within earlier ranges"
+    : contextualSurrogate?.reason || "no state audit";
+  contextSupport.append(contextSupportLabel, contextSupportValue, contextSupportDetail);
   const coefficients = document.createElement("div"); coefficients.className = "site-surrogate-coefficients";
   [...surrogate.features].sort((first, second) => Math.abs(second.standardizedWeight)
     - Math.abs(first.standardizedWeight) || first.id.localeCompare(second.id)).slice(0, 6).forEach((feature) => {
@@ -3861,7 +3904,18 @@ function renderPopulationSurrogate(surrogate) {
       const weight = document.createElement("strong"); weight.textContent = `β₂ ${term.standardizedWeight >= 0 ? "+" : ""}${term.standardizedWeight.toFixed(3)}`;
       chip.append(name, weight); interactions.append(chip);
     });
-  sitePopulationSurrogate.append(label, value, detail, bars, support, coefficients, interactions);
+  const contextCoefficients = document.createElement("div");
+  contextCoefficients.className = "site-surrogate-coefficients context";
+  (contextualSurrogate?.features || []).filter((feature) => feature.source === "structural-context")
+    .sort((first, second) => Math.abs(second.standardizedWeight) - Math.abs(first.standardizedWeight)
+      || first.id.localeCompare(second.id)).slice(0, 8).forEach((feature) => {
+      const chip = document.createElement("span");
+      const name = document.createElement("small"); name.textContent = feature.label;
+      const weight = document.createElement("strong"); weight.textContent = `βₛ ${feature.standardizedWeight >= 0 ? "+" : ""}${feature.standardizedWeight.toFixed(3)}`;
+      chip.append(name, weight); contextCoefficients.append(chip);
+    });
+  sitePopulationSurrogate.append(label, value, detail, bars, support, contextSupport, coefficients, interactions,
+    contextCoefficients);
 }
 
 function populationArtifactCell(label, value, detail) {
@@ -3919,8 +3973,11 @@ function renderPopulationResponseAssociation(atom) {
   renderPopulationArtifact(records);
   renderPopulationBlockedValidation(blockedCreationResponseValidation(records,
     selectedPopulationResponseOutcome, { minimumSamplesPerSplit: 8 }));
-  renderPopulationSurrogate(blockedCreationResponseSurrogate(records,
-    selectedPopulationResponseOutcome, { minimumSamplesPerSplit: 12 }));
+  const scoreSurrogate = blockedCreationResponseSurrogate(records,
+    selectedPopulationResponseOutcome, { minimumSamplesPerSplit: 12 });
+  const contextualSurrogate = blockedCreationResponseSurrogate(records,
+    selectedPopulationResponseOutcome, { minimumSamplesPerSplit: 12, includeStructuralContext: true });
+  renderPopulationSurrogate(scoreSurrogate, contextualSurrogate);
   sitePopulationResponsePlot.replaceChildren(); sitePopulationResponseTerms.replaceChildren();
   sitePopulationResponseOutcome.value = selectedPopulationResponseOutcome;
   const outcomeAssociations = audit.associations.filter((entry) => entry.outcomeId === selectedPopulationResponseOutcome);
@@ -8642,7 +8699,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260826-200",
+      buildId: "20260826-201",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -10790,6 +10847,10 @@ function experimentNotebookSummary(receipt) {
         .map(([outcomeId, surrogate]) => {
           const { predictions, ...summary } = surrogate; return [outcomeId, summary];
         })),
+      contextualBlockedSurrogates: Object.fromEntries(Object.entries(
+        search.creationResponseEvidence.contextualBlockedSurrogates).map(([outcomeId, surrogate]) => {
+        const { predictions, ...summary } = surrogate; return [outcomeId, summary];
+      })),
       groupingUnit: search.creationResponseEvidence.dataset.groupingUnit,
       atomLevelPseudoreplicationAvoided: true,
       blockedByCompleteStructuralLeap: true,
@@ -18566,7 +18627,7 @@ function freezeCreationGeometryForAtoms(atomIds) {
   });
 }
 
-function materializeCandidate(candidate, evaluation) {
+function materializeCandidate(candidate, evaluation, leapCreationContext) {
   const parent = placedClusters.find((placement) => placement.id === candidate.parentId);
   const centerReferenceIndex = evaluation.sites.find((site) => site.center)?.referenceIndex;
   const placement = {
@@ -18589,6 +18650,19 @@ function materializeCandidate(candidate, evaluation) {
       compositionDistanceDelta: receiptRound(evaluation.compositionBalance.scaledDelta),
       surfaceCoordinationDelta: receiptRound(evaluation.surfaceCompletion.scaledDelta),
       loopClosureWitnesses: evaluation.loopClosure.independentCompatiblePaths,
+      structuralContext: {
+        ...leapCreationContext,
+        parentDepth: parent?.depth || 0,
+        placementDepth: (parent?.depth || 0) + 1,
+        sharedSites: evaluation.merged.length,
+        emittedSites: evaluation.fresh.length,
+        proposedSupportSites: evaluation.sites.length,
+        sharedSupportFraction: receiptRound(evaluation.merged.length / Math.max(1, evaluation.sites.length)),
+        novelSupportFraction: receiptRound(evaluation.fresh.length / Math.max(1, evaluation.sites.length)),
+        markingScore: Number.isFinite(candidate.markingScore) ? receiptRound(candidate.markingScore) : null,
+        targetUsed: false,
+        coordinateFrameUsed: false,
+      },
       physicsTerms: frozenCreationPhysicsTerms(evaluation),
       admissionGates: frozenCreationAdmissionGates(evaluation),
       targetUsed: false, physicalEnergyInferred: false,
@@ -18664,6 +18738,26 @@ function performOffLatticeEvent() {
     pauseGrowth("Frontier exhausted: no learned overlap rule remains geometrically admissible.");
     return;
   }
+  const leapCreationContext = {
+    schema: 1,
+    leapIndex: leapEventCount + 1,
+    atomsBeforeLeap: before.atoms,
+    clustersBeforeLeap: before.clusters,
+    frontierCandidatesBeforeLeap: before.frontier,
+    proposedBatchActions: batch.length,
+    hardAdmittedBatchActions: batch.filter(({ evaluation }) => evaluation.accepted).length,
+    radiusOfGyrationAngstrom: before.morphology?.radiusOfGyrationAngstrom ?? null,
+    relativeShapeAnisotropy: before.morphology?.relativeShapeAnisotropy ?? null,
+    coordinationDeficit: before.morphology?.coordinationDeficit ?? null,
+    lineageCount: before.morphology?.lineageEnsemble?.lineageCount ?? null,
+    sharedInterfaceFraction: before.morphology?.lineageEnsemble?.sharedInterfaceFraction ?? null,
+    interfacePairCount: before.interfaces?.pairCount ?? null,
+    createdBeforeBatchCommit: true,
+    commutingBatchOrderInvariant: growthScheduling === "commuting",
+    targetUsed: false,
+    coordinateFrameUsed: false,
+    physicalTimeModeled: false,
+  };
   const selectedKeys = new Set(batch.map(({ candidate }) => candidate.key));
   frontierCandidates = frontierCandidates.filter((candidate) => !selectedKeys.has(candidate.key));
   batch.filter(({ evaluation }) => !evaluation.accepted).forEach(({ candidate }) => rejectedCandidateKeys.add(candidate.key));
@@ -18764,7 +18858,7 @@ function performOffLatticeEvent() {
     const parentDepth = placedClusters.find((placement) => placement.id === candidate.parentId)?.depth || 0;
     recordGrowthMechanismEvent(candidate, evaluation, true, parentDepth + 1,
       mechanismDiagnostics.get(candidate));
-    const placement = materializeCandidate(candidate, evaluation);
+    const placement = materializeCandidate(candidate, evaluation, leapCreationContext);
     freshAtomIdsInBatch.push(...placement.freshAtomIds);
     acceptedDecisions++;
     acceptedGeometricStrain += effectiveGeometricStrain(evaluation).total;

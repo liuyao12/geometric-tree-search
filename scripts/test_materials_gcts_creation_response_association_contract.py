@@ -70,13 +70,23 @@ def test_association_microscope_is_interactive_and_claims_fail_closed():
     assert "modelSelectedUsingHeldout: false" in MODULE
     assert "maximumInteractingBaseFeatures: 6" in MODULE
     assert ".site-surrogate-coefficients.interactions" in STYLE
+    assert "structuralContext" in APP
+    assert "createdBeforeBatchCommit: true" in APP
+    assert "contextFeatures" in APP
+    assert "includeStructuralContext" in MODULE
+    assert 'source: "structural-context"' in MODULE
+    assert "contextualBlockedSurrogates" in APP
+    assert ".site-surrogate-coefficients.context" in STYLE
+    assert "structural-state support transfer" in APP
+    assert "skill is not an interpolation test" in APP
+    assert ".site-surrogate-support.context" in STYLE
 
 
 def test_build_197_assets_and_narrative():
-    assert 'buildId: "20260826-200"' in APP
-    assert 'app.js?v=20260826-200' in HTML
-    assert 'style.css?v=20260826-96' in HTML
-    assert 'creation-response-association.js?v=20260826-7' in APP
+    assert 'buildId: "20260826-201"' in APP
+    assert 'app.js?v=20260826-201' in HTML
+    assert 'style.css?v=20260826-97' in HTML
+    assert 'creation-response-association.js?v=20260826-8' in APP
     assert "Build 194" in README
     assert "Build 196" in README
     assert "Build 196" in DOCS
@@ -88,4 +98,8 @@ def test_build_197_assets_and_narrative():
     assert "Build 199" in DOCS
     assert "Build 200" in README
     assert "Build 200" in DOCS
+    assert "Build 201" in README
+    assert "Build 201" in DOCS
+    assert "0/142" in README
+    assert "0/142" in DOCS
     assert "Build 194" in DOCS

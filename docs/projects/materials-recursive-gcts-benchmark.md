@@ -6268,3 +6268,29 @@ skill −0.3648, and Spearman ρ +0.4041, worse than both the linear arm (MAE 1.
 couple surface completion to composition/formal-charge balance, but held-block performance
 does not support those terms as transferable response structure. No interaction is promoted
 or tuned from this result.
+
+## Build 201: test omitted creation-time structural state
+
+Build 201 freezes a target-free, coordinate-frame-invariant context on every accepted
+placement before the commuting antichain commits. The context includes causal depth,
+shared/novel support fractions, log pre-leap site/cluster/frontier counts, admitted batch
+size, radius of gyration, relative shape anisotropy, coordination deficit, lineage count,
+shared-interface fraction, and interface-pair count. Every action in one antichain receives
+the same pre-commit global state, preventing arbitrary within-batch order from becoming a
+feature.
+
+The contextual control preserves the score-channel vocabulary and independently selects up
+to twelve context fields by earlier-block support and stable ID. It uses the same fixed ridge
+and is scored only on later blocks. Context coefficients and predictions are serialized in
+the receipt; notebook summaries omit prediction rows. Improvement would support omitted
+geometric state as an explanation, not physical time, causality, or a calibrated kinetics
+model.
+
+The current six-leap NaCl result is deliberately fail-closed. Score-only gives MAE 1.674
+and held-block skill −0.065; the state-augmented arm gives MAE 1.834 and skill −0.286,
+against training-mean MAE 1.646. More importantly, state-envelope coverage is 0/142 held
+actions and the maximum standardized feature excess is 6.21σ. The public panel marks all
+142 predictions as extrapolations and explicitly says that the reported skill is not an
+interpolation test. A better experiment needs training configurations that overlap the
+later frontier-state distribution; this result neither validates the state model nor rules
+out structural context.

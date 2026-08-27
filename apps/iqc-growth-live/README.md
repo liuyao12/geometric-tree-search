@@ -5532,3 +5532,25 @@ On the six-leap NaCl check, the nine-term coupled control is worse: MAE 1.874 an
 association also falls from +0.454 to +0.404. Pairwise products and squares of the three
 current score channels therefore do not explain the missing transfer; the failure remains
 open rather than motivating posthoc interaction selection.
+
+### Build 201 · creation-time structural-state control
+
+Every accepted placement now freezes a coordinate-frame-invariant structural context before
+its commuting batch commits: causal depth, shared/novel support fractions, pre-leap site,
+cluster, and frontier counts, batch concurrency, radius of gyration, shape anisotropy,
+coordination exposure, lineage count, and interface state. These fields use no target and
+are canonicalized with the placement evidence.
+
+A fourth blocked model augments the active score channels with up to twelve of these
+training-supported state variables. It is fit on the same earlier blocks with the same fixed
+ridge and compared with score-only linear, coupled, and training-mean arms on later blocks.
+The UI exposes the strongest state coefficients; receipts retain the full state vocabulary,
+training envelope, and predictions. This tests omitted geometric state without treating leap
+identity as physical time or allowing batch order, coordinates, or held responses into fit.
+
+On the six-leap NaCl audit, the state-augmented arm has MAE 1.834 and skill −0.286,
+compared with score-only MAE 1.674/skill −0.065 and training-mean MAE 1.646. However,
+state-envelope coverage is 0/142 later actions inside the axis-aligned earlier-block range;
+the maximum standardized excess is 6.21σ. The UI therefore labels all 142 predictions as
+structural-state extrapolation. This result does not show that state is irrelevant—it shows
+that the present blocked experiment cannot test state interpolation across these leaps.
