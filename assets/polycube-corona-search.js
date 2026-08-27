@@ -861,21 +861,10 @@ export function searchPolycubeCorona(voxels, options = {}) {
   for (const placement of placementByKey.values()) {
     for (const key of placement.cellKeys) allCellKeys.add(key);
   }
-  const header = { key: "__primary_header__", primary: false };
-  header.left = header.right = header;
-  const columns = new Map();
-  for (const key of [...allCellKeys].sort()) {
-    const column = { key, primary: targetSet.has(key), size: 0 };
-    column.up = column.down = column;
-    column.left = column.right = column;
-    if (column.primary) {
-      column.left = header.left;
-      column.right = header;
-      header.left.right = column;
-      header.left = column;
-    }
-    columns.set(key, column);
-  }
+  const sortedCellKeys = [...allCellKeys].sort();
+  const columnByKey = new Map(sortedCellKeys.map((key, index) => [key, 1 + index]));
+  const columnKeys = ["__primary_header__", ...sortedCellKeys];
+  const columnCount = sortedCellKeys.length;
   const geometricPlacementOrder = (left, right, expansive = false) => {
     const targetDifference = expansive
       ? left.targetCoverage.length - right.targetCoverage.length
@@ -898,30 +887,61 @@ export function searchPolycubeCorona(voxels, options = {}) {
       || (seed ? seededHash(left.key) - seededHash(right.key) : left.key.localeCompare(right.key));
   });
   const placementsByTarget = new Map(targetKeys.map(key => [key, []]));
+  const incidenceCount = orderedPlacements.reduce(
+    (sum, placement) => sum + placement.cellKeys.length,
+    0
+  );
+  const totalDlxNodes = 1 + columnCount + incidenceCount;
+  const dlxLeft = new Int32Array(totalDlxNodes);
+  const dlxRight = new Int32Array(totalDlxNodes);
+  const dlxUp = new Int32Array(totalDlxNodes);
+  const dlxDown = new Int32Array(totalDlxNodes);
+  const dlxColumn = new Int32Array(totalDlxNodes);
+  const dlxPlacement = new Int32Array(totalDlxNodes);
+  const dlxColumnSize = new Int32Array(1 + columnCount);
+  const dlxPrimary = new Uint8Array(1 + columnCount);
+  dlxLeft[0] = dlxRight[0] = 0;
+  for (let column = 1; column <= columnCount; column++) {
+    dlxUp[column] = dlxDown[column] = column;
+    dlxLeft[column] = dlxRight[column] = column;
+    dlxColumn[column] = column;
+    if (targetSet.has(columnKeys[column])) {
+      dlxPrimary[column] = 1;
+      dlxLeft[column] = dlxLeft[0];
+      dlxRight[column] = 0;
+      dlxRight[dlxLeft[0]] = column;
+      dlxLeft[0] = column;
+      if (dlxRight[0] === 0) dlxRight[0] = column;
+    }
+  }
+  let nextDlxNode = 1 + columnCount;
   for (let placementId = 0; placementId < orderedPlacements.length; placementId++) {
     const placement = orderedPlacements[placementId];
     placement.id = placementId;
     for (const key of placement.targetCoverage) placementsByTarget.get(key).push(placement);
-    let first = null;
+    let first = 0;
     for (const key of placement.cellKeys) {
-      const column = columns.get(key);
-      const node = { column, placement };
-      node.up = column.up;
-      node.down = column;
-      column.up.down = node;
-      column.up = node;
-      column.size += 1;
+      const column = columnByKey.get(key);
+      const node = nextDlxNode++;
+      dlxUp[node] = dlxUp[column];
+      dlxDown[node] = column;
+      dlxDown[dlxUp[column]] = node;
+      dlxUp[column] = node;
+      dlxColumn[node] = column;
+      dlxPlacement[node] = placementId;
+      dlxColumnSize[column] += 1;
       if (!first) {
         first = node;
-        node.left = node.right = node;
+        dlxLeft[node] = dlxRight[node] = node;
       } else {
-        node.left = first.left;
-        node.right = first;
-        first.left.right = node;
-        first.left = node;
+        dlxLeft[node] = dlxLeft[first];
+        dlxRight[node] = first;
+        dlxRight[dlxLeft[first]] = node;
+        dlxLeft[first] = node;
       }
     }
   }
+  if (nextDlxNode !== totalDlxNodes) throw new Error("Corona DLX incidence count mismatch");
   const fixedObstructions = (() => {
     if (!fixedPlacements.length) return [];
     const obstructions = [];
@@ -1139,12 +1159,13 @@ export function searchPolycubeCorona(voxels, options = {}) {
 
   const explainPivotFailure = (pivot, branchResiduals = new Map()) => {
     if (!conflictExplanationsEnabled) return null;
+    const pivotKey = columnKeys[pivot];
     const conflict = new Set();
     const blockerSets = [];
-    for (const blockers of fixedBlockedRowsByTarget.get(pivot.key)?.values() ?? []) {
+    for (const blockers of fixedBlockedRowsByTarget.get(pivotKey)?.values() ?? []) {
       blockerSets.push(new Set([...blockers].map(fixedToken)));
     }
-    for (const placement of placementsByTarget.get(pivot.key) ?? []) {
+    for (const placement of placementsByTarget.get(pivotKey) ?? []) {
       const blockers = new Set();
       for (const key of placement.cellKeys) {
         const owner = selectedOwnerByCell.get(key);
@@ -1241,8 +1262,9 @@ export function searchPolycubeCorona(voxels, options = {}) {
   };
   const learnDeadColumnNogood = pivot => {
     if (!nogoodsEnabled) return null;
+    const pivotKey = columnKeys[pivot];
     const blockerSets = [];
-    for (const placement of placementsByTarget.get(pivot.key) ?? []) {
+    for (const placement of placementsByTarget.get(pivotKey) ?? []) {
       const blockers = new Set();
       for (const key of placement.cellKeys) {
         const owner = selectedOwnerByCell.get(key);
@@ -1336,29 +1358,29 @@ export function searchPolycubeCorona(voxels, options = {}) {
     return false;
   };
   const cover = column => {
-    if (column.primary) {
-      column.right.left = column.left;
-      column.left.right = column.right;
+    if (dlxPrimary[column]) {
+      dlxLeft[dlxRight[column]] = dlxLeft[column];
+      dlxRight[dlxLeft[column]] = dlxRight[column];
     }
-    for (let row = column.down; row !== column; row = row.down) {
-      for (let node = row.right; node !== row; node = node.right) {
-        node.down.up = node.up;
-        node.up.down = node.down;
-        node.column.size -= 1;
+    for (let row = dlxDown[column]; row !== column; row = dlxDown[row]) {
+      for (let node = dlxRight[row]; node !== row; node = dlxRight[node]) {
+        dlxUp[dlxDown[node]] = dlxUp[node];
+        dlxDown[dlxUp[node]] = dlxDown[node];
+        dlxColumnSize[dlxColumn[node]] -= 1;
       }
     }
   };
   const uncover = column => {
-    for (let row = column.up; row !== column; row = row.up) {
-      for (let node = row.left; node !== row; node = node.left) {
-        node.column.size += 1;
-        node.down.up = node;
-        node.up.down = node;
+    for (let row = dlxUp[column]; row !== column; row = dlxUp[row]) {
+      for (let node = dlxLeft[row]; node !== row; node = dlxLeft[node]) {
+        dlxColumnSize[dlxColumn[node]] += 1;
+        dlxDown[dlxUp[node]] = node;
+        dlxUp[dlxDown[node]] = node;
       }
     }
-    if (column.primary) {
-      column.right.left = column;
-      column.left.right = column;
+    if (dlxPrimary[column]) {
+      dlxLeft[dlxRight[column]] = column;
+      dlxRight[dlxLeft[column]] = column;
     }
   };
 
@@ -1374,7 +1396,7 @@ export function searchPolycubeCorona(voxels, options = {}) {
       return null;
     }
     if (pruneDeadNextLayerTarget()) return null;
-    if (header.right === header) {
+    if (dlxRight[0] === 0) {
       const solution = chosen.slice();
       if (!acceptSolution) return solution;
       const decision = acceptSolution(solution);
@@ -1406,14 +1428,14 @@ export function searchPolycubeCorona(voxels, options = {}) {
       return null;
     }
     nodes += 1;
-    let pivot = header.right;
-    for (let column = pivot.right; column !== header; column = column.right) {
-      if (column.size < pivot.size
-        || (seed && column.size === pivot.size
-          && seededHash(column.key) < seededHash(pivot.key))) pivot = column;
-      if (pivot.size <= 1) break;
+    let pivot = dlxRight[0];
+    for (let column = dlxRight[pivot]; column !== 0; column = dlxRight[column]) {
+      if (dlxColumnSize[column] < dlxColumnSize[pivot]
+        || (seed && dlxColumnSize[column] === dlxColumnSize[pivot]
+          && seededHash(columnKeys[column]) < seededHash(columnKeys[pivot]))) pivot = column;
+      if (dlxColumnSize[pivot] <= 1) break;
     }
-    if (!pivot.size) {
+    if (!dlxColumnSize[pivot]) {
       deadEnds += 1;
       learnDeadColumnNogood(pivot);
       lastConflict = explainPivotFailure(pivot);
@@ -1421,22 +1443,23 @@ export function searchPolycubeCorona(voxels, options = {}) {
     }
     const branchResiduals = conflictExplanationsEnabled ? new Map() : null;
     cover(pivot);
-    for (let row = pivot.down; row !== pivot; row = row.down) {
-      chosen.push(row.placement);
-      addSelectedPlacement(row.placement);
+    for (let row = dlxDown[pivot]; row !== pivot; row = dlxDown[row]) {
+      const placement = orderedPlacements[dlxPlacement[row]];
+      chosen.push(placement);
+      addSelectedPlacement(placement);
       maximumDepth = Math.max(maximumDepth, chosen.length);
-      for (let node = row.right; node !== row; node = node.right) cover(node.column);
+      for (let node = dlxRight[row]; node !== row; node = dlxRight[node]) cover(dlxColumn[node]);
       const solution = search();
       if (solution) return solution;
       const childConflict = lastConflict;
-      for (let node = row.left; node !== row; node = node.left) uncover(node.column);
-      removeSelectedPlacement(row.placement);
+      for (let node = dlxLeft[row]; node !== row; node = dlxLeft[node]) uncover(dlxColumn[node]);
+      removeSelectedPlacement(placement);
       chosen.pop();
       if (conflictExplanationsEnabled) {
         if (!childConflict) {
           lastConflict = null;
         } else {
-          const rowToken = placementToken(row.placement.id);
+          const rowToken = placementToken(placement.id);
           if (!childConflict.has(rowToken)) {
             conflictBackjumps += 1;
             uncover(pivot);
@@ -1445,7 +1468,7 @@ export function searchPolycubeCorona(voxels, options = {}) {
           }
           const residual = new Set(childConflict);
           residual.delete(rowToken);
-          branchResiduals.set(row.placement.id, residual);
+          branchResiduals.set(placement.id, residual);
         }
       }
       if (stoppedBy || violatedNogoods.size) break;
