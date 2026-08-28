@@ -66,7 +66,7 @@ def main() -> None:
     assert 'function applyLaunchParameters()' in APP
     assert 'parameters.get("material")' in APP
     assert 'parameters.has("microstate")' in APP
-    assert 'app.js?v=20260828-296' in HTML
+    assert 'app.js?v=20260828-297' in HTML
     print("Ice VI live anchor trace contract: passed")
 
 

@@ -903,6 +903,28 @@ body.study-guide-open { overflow: hidden; }
 .cluster-channel-learning-detail strong { margin: 0; color: #ddf8f2; font: 650 8px/1.25 var(--mono); }
 .cluster-channel-learning-detail span { margin: 0; color: #90aaa5; font: 7px/1.35 var(--mono); }
 .cluster-channel-learning-detail em { grid-column: 1 / -1; color: #617d77; font: 6px/1.4 var(--mono); font-style: normal; }
+.cluster-channel-validation { margin-top: 9px; padding-top: 9px; border-top: 1px solid rgba(255,193,105,.14); }
+.cluster-channel-validation header { align-items: end; }
+.cluster-channel-validation header strong { color: #ffe8c5; }
+.cluster-channel-validation header b { color: var(--amber); }
+.cluster-channel-validation-metrics { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 1px; margin-top: 7px; background: rgba(255,193,105,.09); }
+.cluster-channel-validation-metrics span { min-width: 0; margin: 0; padding: 6px 7px; background: rgba(9,10,14,.68); white-space: normal; }
+.cluster-channel-validation-metrics small,.cluster-channel-validation-metrics strong { display: block; overflow: visible; white-space: normal; }
+.cluster-channel-validation-metrics strong { margin-top: 3px; color: #f5dfbd; font: 650 8px/1.25 var(--mono); }
+.cluster-channel-validation-matrix { display: grid; grid-template-columns: 90px repeat(2,minmax(70px,1fr)); gap: 3px; max-width: 520px; margin-top: 8px; }
+.cluster-channel-validation-matrix > span,.cluster-channel-validation-matrix > b { display: grid; align-content: center; min-height: 28px; margin: 0; padding: 4px 6px; overflow: visible; color: #9d8461; font: 650 6px/1.25 var(--mono); text-align: center; white-space: normal; }
+.cluster-channel-validation-matrix > span.row-head { justify-items: end; text-align: right; }
+.cluster-channel-validation-matrix button { display: grid; grid-template-columns: auto 1fr; align-items: center; min-height: 38px; padding: 5px 8px; border: 1px solid rgba(255,193,105,.14); border-radius: 5px; background: rgba(255,193,105,.025); color: #a88e68; text-align: left; }
+.cluster-channel-validation-matrix button:hover,.cluster-channel-validation-matrix button:focus-visible,.cluster-channel-validation-matrix button.active { border-color: rgba(255,193,105,.72); background: rgba(255,193,105,.1); color: #fff2dc; outline: none; }
+.cluster-channel-validation-matrix button small,.cluster-channel-validation-matrix button strong { display: block; margin: 0; overflow: visible; white-space: normal; }
+.cluster-channel-validation-matrix button small { font: 650 6px/1 var(--mono); }
+.cluster-channel-validation-matrix button strong { justify-self: end; color: #ffe7c0; font: 650 12px/1 var(--mono); }
+.cluster-channel-validation-detail { display: grid; grid-template-columns: auto minmax(0,1fr); gap: 3px 10px; margin-top: 7px; padding: 7px 8px; border-left: 2px solid var(--amber); background: rgba(255,193,105,.035); }
+.cluster-channel-validation-detail strong,.cluster-channel-validation-detail span,.cluster-channel-validation-detail em { overflow: visible; white-space: normal; }
+.cluster-channel-validation-detail strong { margin: 0; color: #ffe8c5; font: 650 8px/1.25 var(--mono); }
+.cluster-channel-validation-detail span { margin: 0; color: #aa9271; font: 7px/1.35 var(--mono); }
+.cluster-channel-validation-detail em { grid-column: 1 / -1; color: #78664d; font: 6px/1.4 var(--mono); font-style: normal; }
+.cluster-channel-validation > p { margin: 7px 0 0; color: #756348; font: 6px/1.45 var(--mono); }
 .cluster-channel-learning > p { margin: 7px 0 0; color: #617d77; font: 7px/1.45 var(--mono); }
 .cluster-card { position: relative; min-height: 212px; overflow: hidden; border: 1px solid rgba(151,194,183,.22); background: linear-gradient(145deg, rgba(14,37,36,.92), rgba(5,15,17,.96)); cursor: pointer; outline: none; }
 .cluster-card:hover,.cluster-card:focus-visible { border-color: rgba(101,225,188,.65); }
@@ -1867,6 +1889,7 @@ body.study-guide-open { overflow: hidden; }
   .cluster-pose-port-coverage { grid-template-columns: 1fr 1fr; }
   .cluster-pose-port-incidence header { align-items: flex-start; }
   .cluster-channel-learning-summary { grid-template-columns: 1fr 1fr; }
+  .cluster-channel-validation-metrics { grid-template-columns: 1fr 1fr; }
   .cluster-channel-learning-controls { grid-template-columns: repeat(3,minmax(0,1fr)); }
   .cluster-channel-learning header { align-items: flex-start; }
   .cluster-cover-ledger { grid-template-columns: 1fr; }

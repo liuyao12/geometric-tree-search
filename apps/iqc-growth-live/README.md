@@ -1,5 +1,22 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 297 · held-out connection-sign audit
+
+Each selected Stage-3 cluster now reports whether its current fitted channel
+signs recover connection-compatible versus unsupported sectors on processed
+held-out occurrences. The interactive 2×2 matrix exposes true positives, false
+negatives, false positives, and true negatives; clicking a cell reveals the
+channel and sample provenance of representative labels. Accuracy, precision,
+recall, specificity, and balanced accuracy remain visible even when the result
+is poor.
+
+Labels are derived from the frozen local connection targets, predictions use a
+declared zero coefficient threshold, and held-out occurrences never update a
+coefficient. The receipt stores the confusion counts, metrics, label and
+prediction provenance, and explicit no-growth-target/no-potential boundaries.
+Counts are channel-sector labels—not independent materials, probabilities,
+energies, or growth-action accuracy.
+
 ## Build 296 · actual channel-learning trajectories
 
 The selected Stage-3 cluster now exposes the coefficient coordinates the GCTS

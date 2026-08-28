@@ -1802,6 +1802,7 @@ let microstructureEvidence = null;
 let microstructureProjection = "xy";
 let selectedGalleryCluster = 0;
 const selectedLearningChannelByPrototype = new Map();
+const selectedChannelValidationCellByPrototype = new Map();
 let rdfPairSelection = "all";
 let scatteringContrastMode = "unit";
 let scatteringDisplacementMode = "mean";
@@ -9532,6 +9533,134 @@ function sectionChannelTrajectoryRecord(prototype) {
   };
 }
 
+function sectionChannelValidationRecord(prototype) {
+  if (!sectionModel?.initialPoint?.coefficients?.[prototype]) return null;
+  const activeChannels = sectionModel.activeChannelsByPrototype?.[prototype] || sectionModel.channels;
+  const coefficients = currentSectionPoint().coefficients[prototype];
+  const records = [];
+  sectionModel.sampleLabels.forEach((label, sampleIndex) => {
+    if (label !== prototype || sampleIndex >= trainingProgress) return;
+    for (let axisIndex = 0; axisIndex < activeChannels; axisIndex++) {
+      const target = sectionModel.targets[sampleIndex]?.[axisIndex] || 0;
+      const prediction = coefficients[axisIndex] || 0;
+      records.push({
+        sampleIndex,
+        axisIndex,
+        split: sampleIndex % 5 === 0 ? "holdout" : "fit",
+        observedCompatible: target > 0,
+        predictedCompatible: prediction > 0,
+        target,
+        prediction,
+      });
+    }
+  });
+  const summarize = (split) => {
+    const selected = records.filter((record) => record.split === split);
+    const cells = { tp: [], fp: [], fn: [], tn: [] };
+    selected.forEach((record) => {
+      const key = record.observedCompatible
+        ? record.predictedCompatible ? "tp" : "fn"
+        : record.predictedCompatible ? "fp" : "tn";
+      cells[key].push(record);
+    });
+    const ratio = (numerator, denominator) => denominator ? numerator / denominator : null;
+    const precision = ratio(cells.tp.length, cells.tp.length + cells.fp.length);
+    const recall = ratio(cells.tp.length, cells.tp.length + cells.fn.length);
+    const specificity = ratio(cells.tn.length, cells.tn.length + cells.fp.length);
+    return {
+      split,
+      labels: selected.length,
+      samples: new Set(selected.map((record) => record.sampleIndex)).size,
+      cells,
+      accuracy: ratio(cells.tp.length + cells.tn.length, selected.length),
+      precision,
+      recall,
+      specificity,
+      balancedAccuracy: Number.isFinite(recall) && Number.isFinite(specificity)
+        ? .5 * (recall + specificity) : null,
+    };
+  };
+  return {
+    prototype,
+    activeChannels,
+    zeroThreshold: true,
+    fit: summarize("fit"),
+    holdout: summarize("holdout"),
+    labelOrigin: "sign of the connection-derived per-occurrence channel target",
+    predictionOrigin: "sign of the current type-level fitted coefficient",
+    heldoutUpdatesCoefficients: false,
+    growthTargetUsed: false,
+    physicalPotential: false,
+  };
+}
+
+function renderClusterChannelValidation(panel, prototype) {
+  const validationPanel = panel.querySelector(".cluster-channel-validation");
+  if (!validationPanel) return;
+  const audit = sectionChannelValidationRecord(prototype);
+  const state = validationPanel.querySelector("header b");
+  const metrics = validationPanel.querySelector(".cluster-channel-validation-metrics");
+  const matrix = validationPanel.querySelector(".cluster-channel-validation-matrix");
+  const detail = validationPanel.querySelector(".cluster-channel-validation-detail");
+  matrix.replaceChildren();
+  if (!audit?.holdout.labels) {
+    state.textContent = "awaiting a processed held-out occurrence";
+    metrics.innerHTML = "<span><small>held-out labels</small><strong>0</strong></span><span><small>coefficient updates</small><strong>none from holdout</strong></span><span><small>growth target</small><strong>unused</strong></span><span><small>claim</small><strong>unresolved</strong></span>";
+    detail.textContent = "Advance the fit to expose held-out connection-sector labels. No future occurrence or growth target is read early.";
+    return;
+  }
+  const heldout = audit.holdout;
+  const formatMetric = (value) => Number.isFinite(value) ? `${(value * 100).toFixed(1)}%` : "undefined";
+  state.textContent = `${heldout.samples} held-out occurrences · ${heldout.labels} channel labels`;
+  metrics.innerHTML = `<span><small>accuracy</small><strong>${formatMetric(heldout.accuracy)}</strong></span><span><small>precision / recall</small><strong>${formatMetric(heldout.precision)} / ${formatMetric(heldout.recall)}</strong></span><span><small>specificity</small><strong>${formatMetric(heldout.specificity)}</strong></span><span><small>balanced accuracy</small><strong>${formatMetric(heldout.balancedAccuracy)}</strong></span>`;
+  const cells = [
+    { key: "tp", label: "observed + / predicted +", row: "observed port", column: "predicted compatible" },
+    { key: "fn", label: "observed + / predicted −", row: "observed port", column: "predicted unsupported" },
+    { key: "fp", label: "observed − / predicted +", row: "no observed port", column: "predicted compatible" },
+    { key: "tn", label: "observed − / predicted −", row: "no observed port", column: "predicted unsupported" },
+  ];
+  const corner = document.createElement("span"); corner.className = "corner"; corner.textContent = "observed × learned";
+  const compatibleHead = document.createElement("b"); compatibleHead.textContent = "compatible +";
+  const unsupportedHead = document.createElement("b"); unsupportedHead.textContent = "unsupported −";
+  matrix.append(corner, compatibleHead, unsupportedHead);
+  const selectedKey = selectedChannelValidationCellByPrototype.get(prototype) || "tp";
+  const selectCell = (cell) => {
+    selectedChannelValidationCellByPrototype.set(prototype, cell.key);
+    matrix.querySelectorAll("button").forEach((button) => {
+      const active = button.dataset.validationCell === cell.key;
+      button.classList.toggle("active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+    const records = heldout.cells[cell.key];
+    const axisCounts = records.reduce((counts, record) => {
+      const label = `A${record.axisIndex + 1}`;
+      counts[label] = (counts[label] || 0) + 1;
+      return counts;
+    }, {});
+    const examples = records.slice(0, 4).map((record) =>
+      `sample ${record.sampleIndex + 1} · A${record.axisIndex + 1} · target ${record.target.toFixed(3)} · coefficient ${record.prediction.toFixed(3)}`);
+    detail.innerHTML = `<strong>${cell.label}</strong><span>${records.length} held-out channel label${records.length === 1 ? "" : "s"} · ${Object.entries(axisCounts).map(([axis, count]) => `${axis} ${count}`).join(" · ") || "no examples"}</span><em>${examples.join("; ") || "This confusion cell is empty at the selected training step."}</em>`;
+  };
+  [
+    ["observed port", cells[0], cells[1]],
+    ["no observed port", cells[2], cells[3]],
+  ].forEach(([rowLabel, ...rowCells]) => {
+    const rowHead = document.createElement("span"); rowHead.className = "row-head"; rowHead.textContent = rowLabel;
+    matrix.append(rowHead);
+    rowCells.forEach((cell) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.dataset.validationCell = cell.key;
+      button.setAttribute("aria-pressed", "false");
+      button.setAttribute("aria-label", `${cell.label}: ${heldout.cells[cell.key].length} held-out channel labels. Inspect examples.`);
+      button.innerHTML = `<small>${cell.key.toUpperCase()}</small><strong>${heldout.cells[cell.key].length}</strong>`;
+      button.addEventListener("click", () => selectCell(cell));
+      matrix.append(button);
+    });
+  });
+  selectCell(cells.find((cell) => cell.key === selectedKey) || cells[0]);
+}
+
 function renderClusterChannelTrajectory(inspector, prototype) {
   const panel = inspector.querySelector(".cluster-channel-learning");
   if (!panel) return;
@@ -9596,6 +9725,7 @@ function renderClusterChannelTrajectory(inspector, prototype) {
   chart.append(svgNode("text", { x: 392, y: 101, class: "channel-axis-label", "text-anchor": "end" }, `${trainingProgress}/${markingSampleCount()}`));
   const vectorLabel = selected.scalar ? "isotropic scalar" : `intrinsic axis [${selected.vector.map((value) => value.toFixed(2)).join(", ")}]`;
   detail.innerHTML = `<strong>${selected.label} · ${vectorLabel}</strong><span>initial ${selected.initial.toFixed(4)} → current ${selected.current.toFixed(4)} · fit-target mean ${fitTarget === null ? "unseen" : fitTarget.toFixed(4)} · held-out target mean ${holdoutTarget === null ? "unseen" : holdoutTarget.toFixed(4)}</span><em>Solid mint: coefficient history. Cyan dash: processed fit-target mean. Amber dash: processed held-out diagnostic mean. Held-out samples never update coefficients. The D-fields above explain rank demand; A-fields are the actual fitted coordinates. Neither is a force, energy, probability, or physical potential.</em>`;
+  renderClusterChannelValidation(panel, prototype);
 }
 
 function updateClusterGalleryInspector(galleryIndex) {
@@ -9656,6 +9786,13 @@ function updateClusterGalleryInspector(galleryIndex) {
       <div class="cluster-channel-learning-controls" role="group" aria-label="Select a fitted coefficient channel"></div>
       <svg class="cluster-channel-learning-chart" viewBox="0 0 420 108" role="img" aria-label="Selected coefficient history with fit and held-out target means"></svg>
       <article class="cluster-channel-learning-detail" aria-live="polite"></article>
+      <div class="cluster-channel-validation">
+        <header><span><small>withheld-label audit</small><strong>Compatible / unsupported sign test</strong></span><b>awaiting held-out evidence</b></header>
+        <div class="cluster-channel-validation-metrics"></div>
+        <div class="cluster-channel-validation-matrix" role="group" aria-label="Held-out connection-sector confusion matrix"></div>
+        <article class="cluster-channel-validation-detail" aria-live="polite"></article>
+        <p>Observed labels come from connection-derived local-section targets. Prediction is the sign of the current fitted coefficient at a fixed zero threshold. Counts are channel sectors, not independent materials or growth actions.</p>
+      </div>
       <p>These A-fields are the coordinates the learner actually updates in each cluster's intrinsic proper frame. The pose×port D-fields above determine required capacity; no unproved basis transform between D and A is implied.</p>
     </section>`;
   renderClusterPoseOccupation(inspector, cluster, poseModel);
@@ -10858,6 +10995,7 @@ function receiptClusterRecord(cluster, index) {
   const poseOccupation = poseOrbitOccupationRecord(cluster, poseModel);
   const posePortIncidence = cluster.residual ? null : clusterPosePortIncidence(familyIndex);
   const channelLearning = cluster.residual ? null : sectionChannelTrajectoryRecord(familyIndex);
+  const channelValidation = cluster.residual ? null : sectionChannelValidationRecord(familyIndex);
   const placements = cluster.observedOccurrences ?? cluster.classPlacementIndices?.length
     ?? learnedCover.placements.filter((placement) => placement.type === cluster.type).length;
   const supportSites = cluster.customSupport?.length
@@ -10927,6 +11065,22 @@ function receiptClusterRecord(cluster, index) {
         holdoutTargetMean: axis.holdoutTargetMean === null ? null : receiptRound(axis.holdoutTargetMean),
         series: axis.series.map((point) => ({ samples: point.samples, value: receiptRound(point.value) })),
       })),
+      heldoutSignAudit: channelValidation ? {
+        zeroThreshold: channelValidation.zeroThreshold,
+        labelOrigin: channelValidation.labelOrigin,
+        predictionOrigin: channelValidation.predictionOrigin,
+        labels: channelValidation.holdout.labels,
+        samples: channelValidation.holdout.samples,
+        confusion: Object.fromEntries(Object.entries(channelValidation.holdout.cells)
+          .map(([key, records]) => [key, records.length])),
+        accuracy: channelValidation.holdout.accuracy === null ? null : receiptRound(channelValidation.holdout.accuracy),
+        precision: channelValidation.holdout.precision === null ? null : receiptRound(channelValidation.holdout.precision),
+        recall: channelValidation.holdout.recall === null ? null : receiptRound(channelValidation.holdout.recall),
+        specificity: channelValidation.holdout.specificity === null ? null : receiptRound(channelValidation.holdout.specificity),
+        balancedAccuracy: channelValidation.holdout.balancedAccuracy === null ? null : receiptRound(channelValidation.holdout.balancedAccuracy),
+        heldoutUpdatesCoefficients: false,
+        growthTargetUsed: false,
+      } : null,
       targetUsed: false,
       physicalPotential: false,
     } : null,
@@ -11520,7 +11674,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260828-296",
+      buildId: "20260828-297",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -13819,7 +13973,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260828-296" },
+    application: { name: "Materials Growth Lab", buildId: "20260828-297" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
