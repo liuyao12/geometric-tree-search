@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import gzip
 import json
 from pathlib import Path
 
@@ -55,9 +56,15 @@ def main():
         if kind == "three_copy_metatile_substitution_system" and not report["closed_alphabet"]:
             raise ValueError(f"missing closed substitution alphabet for {candidate_id}")
         merged.append(record)
-    Path(args.output).write_text("".join(
+    serialized = "".join(
         json.dumps(record, separators=(",", ":")) + "\n" for record in merged
-    ))
+    )
+    output = Path(args.output)
+    if output.suffix == ".gz":
+        with gzip.open(output, "wt", encoding="utf-8") as stream:
+            stream.write(serialized)
+    else:
+        output.write_text(serialized)
     print(json.dumps({"records": len(merged), "counts": counts,
                       "parent_counts": parent_counts, "output": args.output}, indent=2))
 
