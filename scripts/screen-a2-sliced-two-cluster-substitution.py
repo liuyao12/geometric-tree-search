@@ -38,9 +38,40 @@ def normalized_key(cells):
     ) for key in keys))
 
 
-def canonical_key(cells, include_reflections=False):
+def geometric_canonical_key(cells, include_reflections=False):
     return min(normalized_key(orientation["cells"])
                for orientation in SUB.oriented_cells(cells, include_reflections))
+
+
+def canonical_key(cells, include_reflections=False):
+    """Canonicalize alcoves directly under the signed-coordinate A2 group."""
+    keys = [SUB.cell_key(cell) for cell in cells]
+    isometries = (
+        tuple((sign, permutation) for sign in (1, -1)
+              for permutation in SUB.PERMUTATIONS)
+        if include_reflections else SUB.GEOMETRY.A2_LAYER_ISOMETRIES
+    )
+    transformed_keys = []
+    for sign, permutation in isometries:
+        inverse = [0, 0, 0]
+        for new_axis, old_axis in enumerate(permutation):
+            inverse[old_axis] = new_axis
+        transformed = []
+        for key in keys:
+            base = key[:3]
+            order = tuple(int(axis) for axis in key[3])
+            if sign == 1:
+                moved_base = tuple(base[permutation[axis]] for axis in range(3))
+                moved_order = tuple(inverse[axis] for axis in order)
+            else:
+                moved_base = tuple(-(base[permutation[axis]] + 1) for axis in range(3))
+                moved_order = tuple(inverse[axis] for axis in reversed(order))
+            transformed.append((*moved_base, "".join(str(axis) for axis in moved_order)))
+        minima = [min(key[axis] for key in transformed) for axis in range(3)]
+        transformed_keys.append(tuple(sorted((
+            key[0] - minima[0], key[1] - minima[1], key[2] - minima[2], key[3]
+        ) for key in transformed)))
+    return min(transformed_keys)
 
 
 def atomic_neighbors(cell):
@@ -194,24 +225,34 @@ def replay_local_obstruction(target, alphabet, target_cell):
 
 
 def mixed_placements(target, alphabet):
+    target_by_order = {}
+    for cell in target:
+        target_by_order.setdefault(cell[3], []).append(cell[:3])
     placements = {}
     for orientation in alphabet:
         own = orientation["cells"]
-        for target_cell in target:
-            for own_cell in own:
-                if own_cell[3] != target_cell[3]:
-                    continue
-                delta = tuple(target_cell[axis] - own_cell[axis] for axis in range(3))
-                translated = frozenset((cell[0] + delta[0], cell[1] + delta[1],
-                                        cell[2] + delta[2], cell[3]) for cell in own)
-                key = (orientation["type_index"], translated)
-                if translated.issubset(target) and key not in placements:
-                    placements[key] = {
-                        "type_index": orientation["type_index"],
-                        "orientation_index": orientation["orientation_index"],
-                        "translation": list(delta),
-                        "cells": translated,
-                    }
+        anchor = min(own, key=lambda cell: len(target_by_order.get(cell[3], ())))
+        deltas = [tuple(target_xyz[axis] - anchor[axis] for axis in range(3))
+                  for target_xyz in target_by_order.get(anchor[3], ())]
+        for cell in own:
+            if cell is anchor:
+                continue
+            deltas = [delta for delta in deltas
+                      if (cell[0] + delta[0], cell[1] + delta[1],
+                          cell[2] + delta[2], cell[3]) in target]
+            if not deltas:
+                break
+        for delta in deltas:
+            translated = frozenset((cell[0] + delta[0], cell[1] + delta[1],
+                                    cell[2] + delta[2], cell[3]) for cell in own)
+            key = (orientation["type_index"], translated)
+            if key not in placements:
+                placements[key] = {
+                    "type_index": orientation["type_index"],
+                    "orientation_index": orientation["orientation_index"],
+                    "translation": list(delta),
+                    "cells": translated,
+                }
     return list(placements.values())
 
 
@@ -224,7 +265,9 @@ def screen_candidate(record, scale, timeout_ms, include_reflections=False,
     results = []
     for parent_index, parent in enumerate(metatiles[:limit]):
         target = SUB.inflated_cells(parent["alcoves"], scale)
-        uncovered = first_uncovered(target, alphabet)
+        placements = mixed_placements(target, alphabet)
+        covered = set().union(*(placement["cells"] for placement in placements)) if placements else set()
+        uncovered = next((cell for cell in sorted(target) if cell not in covered), None)
         if uncovered is not None:
             replay = replay_local_obstruction(target, alphabet, uncovered)
             if not replay["verified"]:
@@ -236,7 +279,6 @@ def screen_candidate(record, scale, timeout_ms, include_reflections=False,
                 "local_obstruction_replay": replay,
             })
             continue
-        placements = mixed_placements(target, alphabet)
         solved = SUB.exact_cover(target, placements, timeout_ms)
         common = {
             "parent_index": parent_index,

@@ -20,6 +20,11 @@ SPEC.loader.exec_module(TWO)
 control = {"id": "alcove_control", "alcoves": [
     {"base": [0, 0, 0], "order": [0, 1, 2]}
 ]}
+for reflected_model in (False, True):
+    enumerated_control = TWO.enumerate_two_copy_metatiles(control, reflected_model)
+    for metatile in enumerated_control["metatiles"]:
+        assert TWO.canonical_key(metatile["alcoves"], reflected_model) == \
+            TWO.geometric_canonical_key(metatile["alcoves"], reflected_model)
 proper = TWO.screen_candidate(control, 2, 10_000, False)
 assert proper["classification"] == "no_two_copy_metatile_scalar2_substitution"
 reflected = TWO.screen_candidate(control, 2, 10_000, True)

@@ -582,7 +582,17 @@ unresolved parents.  The reflection-enabled single-alcove control does recover
 a closed two-type substitution alphabet, so the mixed-alphabet closure logic
 is exercised by a positive oracle.  The four merged reports are named
 `data/a2-sliced-alcove-size7-two-cluster-scale{2,3}-{proper,reflected}.ndjson`.
-Connected clusters of three or more monotiles remain open.
+At scalar scale two under the proper A2 layer group, the complete connected
+three-copy family is now exhausted as well. It contains 128,340
+symmetry-distinct parent metatiles across the 259 candidates. Independently
+replayed atomic local obstructions reject 128,339 parents; the sole surviving
+local case (`a2sa_7_00330`, parent 95) is independently proved UNSAT by a
+569-variable, 168-constraint Z3 exact-cover replay. Hence all 259 candidates
+are certified negative in this substitution family, with no timeout and no
+rule. The merged evidence is
+`data/a2-sliced-alcove-size7-three-cluster-scale2-proper.ndjson`.
+Reflection-enabled three-copy alphabets, higher scales, and connected clusters
+of four or more monotiles remain open.
 
 At radius two, a two-second breadth pass proves that 108 retained first
 coronas are unextendible and leaves 151 timeout-inconclusive; this claim is
