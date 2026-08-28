@@ -35,6 +35,8 @@ import { LEAP_CONSEQUENCE_COMPONENTS, resolveLeapConsequenceComparison }
 import { buildSettlingMaterialResponseHistory, buildSettlingMaterialResponseMatrix, compareSettlingMaterialFingerprints,
   SETTLING_MATERIAL_FIELDS }
   from "./settling-material-sensitivity.mjs?v=20260828-290";
+import { channelValidationMetricsFromCounts, validationOccurrenceJackknife }
+  from "./validation-uncertainty.mjs?v=20260828-300";
 import { archiveResponseFrontierRankAudit }
   from "./archive-response-frontier-audit.js?v=20260827-1";
 import { evidenceOrderedClusterDiscoverySchedule }
@@ -9578,6 +9580,7 @@ function sectionChannelValidationRecord(prototype) {
       specificity,
       balancedAccuracy: Number.isFinite(recall) && Number.isFinite(specificity)
         ? .5 * (recall + specificity) : null,
+      occurrenceJackknife: validationOccurrenceJackknife(selected),
     };
   };
   return {
@@ -9594,28 +9597,13 @@ function sectionChannelValidationRecord(prototype) {
   };
 }
 
-function channelValidationMetricsFromCounts(confusion) {
-  const ratio = (numerator, denominator) => denominator ? numerator / denominator : null;
-  const precision = ratio(confusion.tp, confusion.tp + confusion.fp);
-  const recall = ratio(confusion.tp, confusion.tp + confusion.fn);
-  const specificity = ratio(confusion.tn, confusion.tn + confusion.fp);
-  const labels = confusion.tp + confusion.fp + confusion.fn + confusion.tn;
-  return {
-    labels,
-    accuracy: ratio(confusion.tp + confusion.tn, labels),
-    precision,
-    recall,
-    specificity,
-    balancedAccuracy: Number.isFinite(recall) && Number.isFinite(specificity)
-      ? .5 * (recall + specificity) : null,
-  };
-}
-
 function markingValidationAuditRecord() {
   if (!sectionModel) return null;
-  const prototypes = Array.from({ length: sectionModel.prototypeCount }, (_, prototype) => {
+  const prototypeAudits = Array.from({ length: sectionModel.prototypeCount }, (_, prototype) => {
     const audit = sectionChannelValidationRecord(prototype);
-    if (!audit) return null;
+    return audit ? { prototype, audit } : null;
+  }).filter(Boolean);
+  const prototypes = prototypeAudits.map(({ prototype, audit }) => {
     const confusion = Object.fromEntries(Object.entries(audit.holdout.cells)
       .map(([key, records]) => [key, records.length]));
     return {
@@ -9625,8 +9613,10 @@ function markingValidationAuditRecord() {
       samples: audit.holdout.samples,
       confusion,
       ...channelValidationMetricsFromCounts(confusion),
+      occurrenceJackknife: audit.holdout.occurrenceJackknife,
     };
-  }).filter(Boolean);
+  });
+  const heldoutRecords = prototypeAudits.flatMap(({ audit }) => Object.values(audit.holdout.cells).flat());
   const confusion = prototypes.reduce((counts, prototype) => {
     Object.keys(counts).forEach((key) => { counts[key] += prototype.confusion[key]; });
     return counts;
@@ -9637,13 +9627,14 @@ function markingValidationAuditRecord() {
     threshold: 0,
     prototypes,
     holdout: { confusion, ...metrics,
-      samples: new Set(sectionModel.sampleLabels.map((_, index) => index)
-        .filter((index) => index < trainingProgress && index % 5 === 0)).size },
+      samples: new Set(heldoutRecords.map((record) => record.sampleIndex)).size,
+      occurrenceJackknife: validationOccurrenceJackknife(heldoutRecords) },
     labelOrigin: "connection-derived per-occurrence channel-target sign",
     predictionOrigin: "frozen type-level coefficient sign",
     heldoutUpdatesCoefficients: false,
     growthTargetUsed: false,
     physicalPotential: false,
+    uncertaintyClaim: "delete-one-occurrence sensitivity only; sector labels and held-out occurrences are not independent materials",
   };
 }
 
@@ -9664,8 +9655,11 @@ function renderClusterChannelValidation(panel, prototype) {
   }
   const heldout = audit.holdout;
   const formatMetric = (value) => Number.isFinite(value) ? `${(value * 100).toFixed(1)}%` : "undefined";
+  const jackknife = heldout.occurrenceJackknife;
+  const jackknifeRange = Number.isFinite(jackknife?.lower) && Number.isFinite(jackknife?.upper)
+    ? `${formatMetric(jackknife.lower)}–${formatMetric(jackknife.upper)}` : "insufficient blocks";
   state.textContent = `${heldout.samples} held-out occurrences · ${heldout.labels} channel labels`;
-  metrics.innerHTML = `<span><small>accuracy</small><strong>${formatMetric(heldout.accuracy)}</strong></span><span><small>precision / recall</small><strong>${formatMetric(heldout.precision)} / ${formatMetric(heldout.recall)}</strong></span><span><small>specificity</small><strong>${formatMetric(heldout.specificity)}</strong></span><span><small>balanced accuracy</small><strong>${formatMetric(heldout.balancedAccuracy)}</strong></span>`;
+  metrics.innerHTML = `<span><small>accuracy</small><strong>${formatMetric(heldout.accuracy)}</strong></span><span><small>precision / recall</small><strong>${formatMetric(heldout.precision)} / ${formatMetric(heldout.recall)}</strong></span><span><small>specificity</small><strong>${formatMetric(heldout.specificity)}</strong></span><span><small>balanced accuracy</small><strong>${formatMetric(heldout.balancedAccuracy)}</strong></span><span title="Delete-one-occurrence jackknife sensitivity; not an independent-material population confidence interval"><small>occurrence JK95</small><strong>${jackknifeRange}</strong></span>`;
   const cells = [
     { key: "tp", label: "observed + / predicted +", row: "observed port", column: "predicted compatible" },
     { key: "fn", label: "observed + / predicted −", row: "observed port", column: "predicted unsupported" },
@@ -9692,7 +9686,7 @@ function renderClusterChannelValidation(panel, prototype) {
     }, {});
     const examples = records.slice(0, 4).map((record) =>
       `sample ${record.sampleIndex + 1} · A${record.axisIndex + 1} · target ${record.target.toFixed(3)} · coefficient ${record.prediction.toFixed(3)}`);
-    detail.innerHTML = `<strong>${cell.label}</strong><span>${records.length} held-out channel label${records.length === 1 ? "" : "s"} · ${Object.entries(axisCounts).map(([axis, count]) => `${axis} ${count}`).join(" · ") || "no examples"}</span><em>${examples.join("; ") || "This confusion cell is empty at the selected training step."}</em>`;
+    detail.innerHTML = `<strong>${cell.label}</strong><span>${records.length} held-out channel label${records.length === 1 ? "" : "s"} · ${Object.entries(axisCounts).map(([axis, count]) => `${axis} ${count}`).join(" · ") || "no examples"}</span><em>${examples.join("; ") || "This confusion cell is empty at the selected training step."}</em><em>JK95 ${jackknifeRange} deletes one held-out cluster occurrence at a time; channel sectors within an occurrence remain correlated, and this is not an independent-material population interval.</em>`;
   };
   [
     ["observed port", cells[0], cells[1]],
@@ -11131,6 +11125,17 @@ function receiptClusterRecord(cluster, index) {
         recall: channelValidation.holdout.recall === null ? null : receiptRound(channelValidation.holdout.recall),
         specificity: channelValidation.holdout.specificity === null ? null : receiptRound(channelValidation.holdout.specificity),
         balancedAccuracy: channelValidation.holdout.balancedAccuracy === null ? null : receiptRound(channelValidation.holdout.balancedAccuracy),
+        occurrenceJackknife: channelValidation.holdout.occurrenceJackknife ? {
+          ...channelValidation.holdout.occurrenceJackknife,
+          estimate: channelValidation.holdout.occurrenceJackknife.estimate === null ? null
+            : receiptRound(channelValidation.holdout.occurrenceJackknife.estimate),
+          standardError: channelValidation.holdout.occurrenceJackknife.standardError === null ? null
+            : receiptRound(channelValidation.holdout.occurrenceJackknife.standardError),
+          lower: channelValidation.holdout.occurrenceJackknife.lower === null ? null
+            : receiptRound(channelValidation.holdout.occurrenceJackknife.lower),
+          upper: channelValidation.holdout.occurrenceJackknife.upper === null ? null
+            : receiptRound(channelValidation.holdout.occurrenceJackknife.upper),
+        } : null,
         heldoutUpdatesCoefficients: false,
         growthTargetUsed: false,
       } : null,
@@ -11727,7 +11732,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260828-299",
+      buildId: "20260828-300",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -13401,6 +13406,23 @@ async function buildExperimentReceipt() {
                   specificity: marking.validation.specificity === null ? null : receiptRound(marking.validation.specificity),
                   balancedAccuracy: marking.validation.balancedAccuracy === null ? null
                     : receiptRound(marking.validation.balancedAccuracy),
+                  occurrenceJackknife: marking.validation.occurrenceJackknife ? {
+                    method: marking.validation.occurrenceJackknife.method,
+                    nominalCoverage: marking.validation.occurrenceJackknife.nominalCoverage,
+                    occurrenceBlocks: marking.validation.occurrenceJackknife.occurrenceBlocks,
+                    sectorLabels: marking.validation.occurrenceJackknife.sectorLabels,
+                    finiteReplicates: marking.validation.occurrenceJackknife.finiteReplicates,
+                    estimate: marking.validation.occurrenceJackknife.estimate === null ? null
+                      : receiptRound(marking.validation.occurrenceJackknife.estimate),
+                    standardError: marking.validation.occurrenceJackknife.standardError === null ? null
+                      : receiptRound(marking.validation.occurrenceJackknife.standardError),
+                    lower: marking.validation.occurrenceJackknife.lower === null ? null
+                      : receiptRound(marking.validation.occurrenceJackknife.lower),
+                    upper: marking.validation.occurrenceJackknife.upper === null ? null
+                      : receiptRound(marking.validation.occurrenceJackknife.upper),
+                    groupingUnit: marking.validation.occurrenceJackknife.groupingUnit,
+                    interpretation: marking.validation.occurrenceJackknife.interpretation,
+                  } : null,
                   heldoutUpdatesCoefficients: marking.validation.heldoutUpdatesCoefficients,
                   growthTargetUsed: marking.validation.growthTargetUsed,
                 } : null,
@@ -14052,7 +14074,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260828-299" },
+    application: { name: "Materials Growth Lab", buildId: "20260828-300" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -20202,6 +20224,7 @@ function buildMarkingFrontierCounterfactual(admissible, candidateSetDigest) {
       recall: heldout.recall ?? null,
       specificity: heldout.specificity ?? null,
       balancedAccuracy: heldout.balancedAccuracy ?? null,
+      occurrenceJackknife: heldout.occurrenceJackknife ? { ...heldout.occurrenceJackknife } : null,
       labelOrigin: marking.validationAudit.labelOrigin || null,
       predictionOrigin: marking.validationAudit.predictionOrigin || null,
       heldoutUpdatesCoefficients: marking.validationAudit.heldoutUpdatesCoefficients === true,
@@ -20210,6 +20233,7 @@ function buildMarkingFrontierCounterfactual(admissible, candidateSetDigest) {
       available: false, schema: marking.validationAudit?.schema || null,
       labels: 0, samples: null, confusion: null,
       accuracy: null, precision: null, recall: null, specificity: null, balancedAccuracy: null,
+      occurrenceJackknife: null,
       labelOrigin: marking.validationAudit?.labelOrigin || null,
       predictionOrigin: marking.validationAudit?.predictionOrigin || null,
       heldoutUpdatesCoefficients: false, growthTargetUsed: false,
@@ -23123,6 +23147,7 @@ function markingPortfolioReplayAudit() {
       bestRule: order[0] ?? null,
       validationAudit: marking.validationAudit || null,
       heldoutBalancedAccuracy: marking.validationAudit?.holdout?.balancedAccuracy ?? null,
+      heldoutOccurrenceJackknife: marking.validationAudit?.holdout?.occurrenceJackknife || null,
       heldoutPrecision: marking.validationAudit?.holdout?.precision ?? null,
       heldoutRecall: marking.validationAudit?.holdout?.recall ?? null,
       scoreDigest: notebookStringHash(scores.map((score) => Number.isFinite(score) ? score.toFixed(8) : "nonfinite").join("|")),
@@ -23152,7 +23177,10 @@ function markingValidationLabel(marking) {
   const audit = marking.validationAudit?.holdout;
   if (!audit?.labels) return "held-out sign audit unavailable";
   const format = (value) => Number.isFinite(value) ? `${(value * 100).toFixed(1)}%` : "undefined";
-  return `BA ${format(audit.balancedAccuracy)} · P/R ${format(audit.precision)}/${format(audit.recall)} · n=${audit.labels} sectors`;
+  const jackknife = audit.occurrenceJackknife;
+  const interval = Number.isFinite(jackknife?.lower) && Number.isFinite(jackknife?.upper)
+    ? ` · JK95 ${format(jackknife.lower)}–${format(jackknife.upper)}` : "";
+  return `BA ${format(audit.balancedAccuracy)}${interval} · P/R ${format(audit.precision)}/${format(audit.recall)} · ${audit.samples ?? "—"} occurrences / ${audit.labels} sectors`;
 }
 
 function markingMatchesDraft(marking) {
@@ -32101,9 +32129,16 @@ function renderMarkingFrontierAudit(snapshot) {
     const label = document.createElement("small"); label.textContent = entry.name;
     const validation = document.createElement("small"); validation.className = "marking-frontier-validation";
     validation.textContent = entry.id === "portfolio"
-      ? `${entry.winnerSource || "—"} validation · ${entry.validation?.available ? `BA ${formatValidationPercent(entry.validation.balancedAccuracy)}` : "unavailable"}`
+      ? `${entry.winnerSource || "—"} validation · ${entry.validation?.available
+        ? `BA ${formatValidationPercent(entry.validation.balancedAccuracy)}`
+          + `${Number.isFinite(entry.validation.occurrenceJackknife?.lower) && Number.isFinite(entry.validation.occurrenceJackknife?.upper)
+            ? ` · JK95 ${formatValidationPercent(entry.validation.occurrenceJackknife.lower)}–${formatValidationPercent(entry.validation.occurrenceJackknife.upper)}` : ""}`
+        : "unavailable"}`
       : entry.validation?.available
-        ? `held-out BA ${formatValidationPercent(entry.validation.balancedAccuracy)} · P/R ${formatValidationPercent(entry.validation.precision)}/${formatValidationPercent(entry.validation.recall)} · n=${entry.validation.labels}`
+        ? `held-out BA ${formatValidationPercent(entry.validation.balancedAccuracy)}`
+          + `${Number.isFinite(entry.validation.occurrenceJackknife?.lower) && Number.isFinite(entry.validation.occurrenceJackknife?.upper)
+            ? ` · JK95 ${formatValidationPercent(entry.validation.occurrenceJackknife.lower)}–${formatValidationPercent(entry.validation.occurrenceJackknife.upper)}` : ""}`
+          + ` · ${entry.validation.samples ?? "—"} occ / ${entry.validation.labels} sectors`
         : "held-out connection-sign audit unavailable";
     identity.append(name, label, validation);
     const action = document.createElement("span");
@@ -32133,7 +32168,10 @@ function renderMarkingFrontierAudit(snapshot) {
     : "validation unavailable";
   const validationDetail = document.createElement("span");
   validationDetail.textContent = selected.validation?.available
-    ? `P/R ${formatValidationPercent(selected.validation.precision)}/${formatValidationPercent(selected.validation.recall)} · ${selected.validation.labels} sector labels · ${selected.validation.samples ?? "—"} held-out occurrences`
+    ? `P/R ${formatValidationPercent(selected.validation.precision)}/${formatValidationPercent(selected.validation.recall)}`
+      + `${Number.isFinite(selected.validation.occurrenceJackknife?.lower) && Number.isFinite(selected.validation.occurrenceJackknife?.upper)
+        ? ` · occurrence JK95 ${formatValidationPercent(selected.validation.occurrenceJackknife.lower)}–${formatValidationPercent(selected.validation.occurrenceJackknife.upper)}` : " · occurrence uncertainty unavailable"}`
+      + ` · ${selected.validation.samples ?? "—"} occurrence blocks / ${selected.validation.labels} correlated sector labels`
     : "This saved artifact predates the held-out sign audit; its frontier score remains replayable.";
   validationEvidence.append(validationLabel, validationValue, validationDetail);
   const arrow = document.createElement("b"); arrow.textContent = "↔"; arrow.setAttribute("aria-hidden", "true");

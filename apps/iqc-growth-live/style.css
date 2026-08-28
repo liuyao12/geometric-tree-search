@@ -907,7 +907,7 @@ body.study-guide-open { overflow: hidden; }
 .cluster-channel-validation header { align-items: end; }
 .cluster-channel-validation header strong { color: #ffe8c5; }
 .cluster-channel-validation header b { color: var(--amber); }
-.cluster-channel-validation-metrics { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 1px; margin-top: 7px; background: rgba(255,193,105,.09); }
+.cluster-channel-validation-metrics { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 1px; margin-top: 7px; background: rgba(255,193,105,.09); }
 .cluster-channel-validation-metrics span { min-width: 0; margin: 0; padding: 6px 7px; background: rgba(9,10,14,.68); white-space: normal; }
 .cluster-channel-validation-metrics small,.cluster-channel-validation-metrics strong { display: block; overflow: visible; white-space: normal; }
 .cluster-channel-validation-metrics strong { margin-top: 3px; color: #f5dfbd; font: 650 8px/1.25 var(--mono); }

@@ -1,5 +1,23 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 300 · occurrence-blocked validation uncertainty
+
+Held-out connection sectors are no longer presented as though every channel
+label were an independent validation sample. Each label retains its source
+cluster occurrence, and the learner now reports a delete-one-occurrence
+jackknife sensitivity interval for balanced accuracy. The Stage-3 confusion
+audit, saved-marking library, and Stage-4 validation-to-frontier bridge show the
+occurrence-block count separately from the larger correlated sector-label
+count.
+
+The interval is descriptive: it measures sensitivity to deleting one held-out
+local environment at a time. It is explicitly not an independent-material
+population confidence interval, a calibrated action probability, or a reason
+to alter candidate generation, hard admission, ranking, or automatic marking
+selection. Receipts retain the grouping unit, replicate count, standard error,
+bounds, nominal coverage, and interpretation boundary. Older marking artifacts
+without uncertainty remain replayable and visibly report that limitation.
+
 ## Build 299 · validation-to-frontier evidence bridge
 
 The material-growth stage now places two independent questions beside one

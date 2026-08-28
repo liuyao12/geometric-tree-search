@@ -41,8 +41,8 @@ def test_history_never_mixes_units_or_relabels_sequence_as_time():
 def test_history_is_receipted_and_current_build_is_exposed():
     assert APP.count("settlingRobustness: buildSettlingMaterialResponseHistory(leapHistory)") == 2
     assert "Build 290 · retained-leap settling robustness" in README
-    assert 'buildId: "20260828-299"' in APP
-    assert 'app.js?v=20260828-299' in HTML
+    assert 'buildId: "20260828-300"' in APP
+    assert 'app.js?v=20260828-300' in HTML
 
 
 if __name__ == "__main__":
