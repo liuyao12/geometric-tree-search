@@ -1,5 +1,24 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 311 · group-sealed Cd–Yb site calibration
+
+The real-material partial-macro section now has a deterministic high-precision
+calibration candidate that does not search a margin grid. For each held original
+Cd–Yb training window, the model fits on the other four and places its threshold
+at the next representable probability above every fitted negative. The five
+outer folds retain 207 / 211 correct sites (98.10% precision, 23.77% recall),
+remain nonempty in every window, and have 95.92% minimum fold precision. The
+best of 31 within-window label shuffles retains only 21 correct sites
+(`p = 1/32` on correct retained sites).
+
+This is an exploratory training-corpus result, not a consumed confirmation.
+The rule was devised after the present five-window evidence was inspected, so
+it is serialized for a future untouched nucleus while Cd–Yb deployment remains
+disabled. The older fully nested margin *selection* remains red at 94.48%; the
+new result does not rewrite it. Candidate geometry, IDs, proper-SE(3) ports, and
+the exact partial-site accumulation executor are unchanged, and no evaluation
+target, physical potential, stationary rule, or physical clock was opened.
+
 ## Build 310 · reconstructable custom investigations
 
 Edited and fully custom investigations now receive versioned permalinks rather

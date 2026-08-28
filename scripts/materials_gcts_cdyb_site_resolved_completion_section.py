@@ -87,6 +87,21 @@ class SiteSectionAudit:
     final_threshold_oof_recall: float
     final_threshold_oof_accepted: int
     nonempty_95_precision_threshold_found: bool
+    group_refit_threshold_rule: str
+    group_refit_outer_precision: float
+    group_refit_outer_recall: float
+    group_refit_outer_accepted: int
+    group_refit_outer_correct: int
+    group_refit_outer_precision_by_fold: tuple[float, ...]
+    group_refit_outer_recall_by_fold: tuple[float, ...]
+    group_refit_outer_accepted_by_fold: tuple[int, ...]
+    group_refit_minimum_nonempty_fold_precision: float
+    group_refit_nonempty_folds: int
+    group_refit_null_correct_best: int
+    group_refit_correct_empirical_p: float
+    group_refit_selector_passed: bool
+    group_refit_rule_exploratory_not_confirmatory: bool
+    future_confirmatory_target_opened: bool
     selected_zero_error_logit_margin: float
     fixed_margin_outer_precision: float
     fixed_margin_outer_recall: float
@@ -480,6 +495,43 @@ def _fully_nested_margin_audit(rows):
             correct / positives if positives else 0., accepted, correct)
 
 
+def _group_refit_zero_error_audit(rows):
+    """Cross-fit a threshold just above every fitted training negative.
+
+    Each outer window is untouched while the ridge and discriminant are fitted
+    on the other original windows.  The threshold is not a searched margin: it
+    is the next representable probability above the maximum negative score in
+    that fitted discovery fold.  This deliberately trades throughput for a
+    finite, nonempty cross-window precision audit.
+    """
+    folds = []
+    for held in sorted({row.window for row in rows}):
+        discovery = tuple(row for row in rows if row.window != held)
+        validation = tuple(row for row in rows if row.window == held)
+        model = _fit(discovery, _grouped_lambda(rows, held))
+        negative_scores = tuple(_predict(model, row) for row in discovery
+                                if not row.successful)
+        threshold = (math.nextafter(max(negative_scores), 1.)
+                     if negative_scores else 1.)
+        scores = tuple(_predict(model, row) for row in validation)
+        folds.append((held, threshold) + _threshold_metrics(
+            tuple(row.successful for row in validation), scores, threshold))
+    accepted = sum(item[4] for item in folds)
+    correct = sum(item[5] for item in folds)
+    positives = sum(row.successful for row in rows)
+    nonempty = tuple(item for item in folds if item[4])
+    return {
+        "folds": tuple(folds),
+        "precision": correct / accepted if accepted else 1.,
+        "recall": correct / positives if positives else 0.,
+        "accepted": accepted,
+        "correct": correct,
+        "minimum_nonempty_precision": min(
+            (item[2] for item in nonempty), default=1.),
+        "nonempty_folds": len(nonempty),
+    }
+
+
 def _nested_predictions(rows):
     site_rows = []
     site_scores = []
@@ -553,28 +605,29 @@ def evaluate():
      aggregations) = _nested_predictions(rows)
     final_lambda = _grouped_lambda(rows)
     final_aggregation = _select_aggregation(rows, None)
-    final_oof_rows, final_oof_scores = _inner_site_predictions(rows, None)
     margin_selection = _select_zero_error_margin(rows)
     selected_margin = (margin_selection[3] if margin_selection is not None
                        else ZERO_ERROR_LOGIT_MARGINS[-1])
     margin_audit = (margin_selection[4] if margin_selection is not None
                     else _fixed_margin_audit(rows, selected_margin))
     nested_margin = _fully_nested_margin_audit(rows)
+    group_refit = _group_refit_zero_error_audit(rows)
     thresholds = tuple(item[2] for item in nested_margin[0])
     fold_threshold_metrics = tuple(
         (item[3], item[4], item[5], item[6])
         for item in nested_margin[0])
-    final_threshold = _zero_error_threshold(
-        final_oof_rows, final_oof_scores, selected_margin)
-    final_threshold_metrics = _threshold_metrics(
-        tuple(row.successful for row in final_oof_rows), final_oof_scores,
-        final_threshold)
     means, scales, weights, intercept = _fit(rows, final_lambda)
+    final_model = (means, scales, weights, intercept)
+    final_negative_scores = tuple(_predict(final_model, row) for row in rows
+                                  if not row.successful)
+    final_threshold = (math.nextafter(max(final_negative_scores), 1.)
+                       if final_negative_scores else 1.)
     section = FrozenSiteSection(
         FEATURE_NAMES, means, scales, weights, intercept, final_lambda,
         final_aggregation, final_threshold, False, False)
     null_site_auc = []
     null_action_auc = []
+    null_group_refit_correct = []
     for trial in range(31):
         shuffled = _shuffle(rows, 441_901 + trial)
         (null_rows, null_scores, null_actions, null_action_scores,
@@ -582,6 +635,8 @@ def evaluate():
         null_site_auc.append(_auc(
             tuple(row.successful for row in null_rows), null_scores))
         null_action_auc.append(_auc(null_actions, null_action_scores))
+        null_group_refit_correct.append(
+            _group_refit_zero_error_audit(shuffled)["correct"])
     site_auc = _auc(tuple(row.successful for row in outer_rows), outer_scores)
     action_auc = _auc(action_labels, action_scores)
     corpus_payload = tuple((row.window, row.candidate_id, row.site_key,
@@ -591,14 +646,15 @@ def evaluate():
         asdict(section), sort_keys=True, separators=(",", ":"),
         allow_nan=False)
     manifest_payload = {
-        "schema": "cdyb-site-resolved-section-v1",
+        "schema": "cdyb-site-resolved-section-v2",
         "site_corpus_digest": site_corpus_digest,
         "serialized_frozen_section": serialized_section,
         "minimum_selection_precision": .95,
+        "threshold_rule": "nextafter-maximum-fitted-negative-by-original-window",
         "seed_radii": SEED_RADII,
         "zero_error_logit_margin_grid": ZERO_ERROR_LOGIT_MARGINS,
-        "selected_zero_error_logit_margin": selected_margin,
-        "margin_selected_on_all_five_training_windows": True,
+        "selected_zero_error_logit_margin_diagnostic": selected_margin,
+        "group_refit_rule_selected_after_current_corpus_was_seen": True,
         "grouping": "original-training-window",
     }
     candidate_count = len({(row.window, row.candidate_id) for row in rows})
@@ -645,12 +701,39 @@ def evaluate():
         final_ridge_lambda=final_lambda,
         final_action_aggregation=final_aggregation,
         final_site_acceptance_threshold=final_threshold,
-        final_threshold_oof_precision=final_threshold_metrics[0],
-        final_threshold_oof_recall=final_threshold_metrics[1],
-        final_threshold_oof_accepted=final_threshold_metrics[2],
+        final_threshold_oof_precision=group_refit["precision"],
+        final_threshold_oof_recall=group_refit["recall"],
+        final_threshold_oof_accepted=group_refit["accepted"],
         nonempty_95_precision_threshold_found=(
-            final_threshold_metrics[2] > 0 and
-            final_threshold_metrics[0] >= .95),
+            group_refit["accepted"] > 0 and
+            group_refit["precision"] >= .95),
+        group_refit_threshold_rule=(
+            "next representable probability above the maximum fitted "
+            "negative score in each original-window discovery fold"),
+        group_refit_outer_precision=group_refit["precision"],
+        group_refit_outer_recall=group_refit["recall"],
+        group_refit_outer_accepted=group_refit["accepted"],
+        group_refit_outer_correct=group_refit["correct"],
+        group_refit_outer_precision_by_fold=tuple(
+            item[2] for item in group_refit["folds"]),
+        group_refit_outer_recall_by_fold=tuple(
+            item[3] for item in group_refit["folds"]),
+        group_refit_outer_accepted_by_fold=tuple(
+            item[4] for item in group_refit["folds"]),
+        group_refit_minimum_nonempty_fold_precision=(
+            group_refit["minimum_nonempty_precision"]),
+        group_refit_nonempty_folds=group_refit["nonempty_folds"],
+        group_refit_null_correct_best=max(null_group_refit_correct),
+        group_refit_correct_empirical_p=(
+            1 + sum(value >= group_refit["correct"]
+                    for value in null_group_refit_correct)) / 32,
+        group_refit_selector_passed=(
+            group_refit["accepted"] > 0
+            and group_refit["precision"] >= .95
+            and group_refit["minimum_nonempty_precision"] >= .95
+            and group_refit["nonempty_folds"] == len(TRAIN_CENTERS)),
+        group_refit_rule_exploratory_not_confirmatory=True,
+        future_confirmatory_target_opened=False,
         selected_zero_error_logit_margin=selected_margin,
         fixed_margin_outer_precision=margin_audit["precision"],
         fixed_margin_outer_recall=margin_audit["recall"],

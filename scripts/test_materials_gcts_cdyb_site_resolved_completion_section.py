@@ -26,8 +26,8 @@ def test_site_resolved_section_is_train_only_and_nested():
     assert result.outer_site_auc > result.null_site_auc_best
     assert result.site_auc_empirical_p == 1 / 32
     assert result.action_auc_empirical_p == 1 / 32
-    # The final candidate is nonempty and zero-error on five-window OOF data,
-    # but selection of its safety margin is not itself fully nested.
+    # The searched logit-margin diagnostic remains red when its own selection
+    # is nested.  A separate deterministic refit rule is evaluated below.
     assert result.selected_zero_error_logit_margin == 1.5
     assert result.fixed_margin_outer_precision > .97
     assert result.fixed_margin_minimum_nonempty_fold_precision > .96
@@ -36,18 +36,32 @@ def test_site_resolved_section_is_train_only_and_nested():
     assert result.outer_site_threshold_precision < .95
     assert result.fully_nested_margin_selection_precision < .95
     assert not result.fully_nested_margin_selection_passed
-    assert result.final_site_acceptance_threshold == 0.9990244124431729
-    assert result.final_threshold_oof_precision == 1.
-    assert result.final_threshold_oof_recall == 0.08036739380022963
-    assert result.final_threshold_oof_accepted == 70
+    assert result.final_site_acceptance_threshold == 0.9898148321930725
+    assert result.final_threshold_oof_precision == 0.981042654028436
+    assert result.final_threshold_oof_recall == 0.23765786452353616
+    assert result.final_threshold_oof_accepted == 211
     assert result.nonempty_95_precision_threshold_found
+    assert result.group_refit_outer_correct == 207
+    assert result.group_refit_outer_accepted == 211
+    assert result.group_refit_outer_precision == 0.981042654028436
+    assert result.group_refit_outer_recall == 0.23765786452353616
+    assert result.group_refit_outer_precision_by_fold == (
+        1., 1., 1., 0.9591836734693877, 1.)
+    assert result.group_refit_outer_accepted_by_fold == (8, 29, 38, 98, 38)
+    assert result.group_refit_minimum_nonempty_fold_precision > .95
+    assert result.group_refit_nonempty_folds == 5
+    assert result.group_refit_null_correct_best == 21
+    assert result.group_refit_correct_empirical_p == 1 / 32
+    assert result.group_refit_selector_passed
+    assert result.group_refit_rule_exploratory_not_confirmatory
+    assert not result.future_confirmatory_target_opened
     assert result.corpus_digest == (
-        "8f41d3ab65018c397d1ae1f9dbb75608837d59f076baeb88defe062b284a65a4")
+        "932dcacb88c56c93572fd4302c0e3690c414553a2bf10d7f8badc21388d6c2b9")
     assert result.site_corpus_digest == result.corpus_digest
     assert result.frozen_section_digest == (
-        "d220c705dc39a1b21ed983d57e5d302202f344c8af9dd1902d60936a31e491b4")
+        "3add513d517b7c7f86e010c932398315938017936b678e8c986ccd45c5e4b596")
     assert result.model_manifest_digest == (
-        "0b392873a21889f62f37f1435eb272d076c81dc62ae94bab60a31bcda814acea")
+        "c8594c63d6b5bb38a33a275b5134fb04cef2cab1a578a67ab77563df0a596672")
     assert json.loads(result.serialized_frozen_section) == json.loads(
         json.dumps(asdict(result.frozen_section)))
     assert not result.frozen_section.target_used

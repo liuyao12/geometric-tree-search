@@ -24,16 +24,16 @@ def test_cdyb_evidence_ladder_contract():
     assert '["Seed-only hierarchy", "276 primitive · 0 complete L1"' in ATLAS
     assert '["Partial promoted frontier", "82 candidates · 6 exact"' in ATLAS
     assert '["Preregistered confirmation", "7 waves · 247 / 2,217 shell atoms"' in ATLAS
-    assert '["Site-resolved section", "AUC 0.8864 · nested P 94.48%"' in ATLAS
+    assert '["Site-resolved section", "207 / 211 · P 98.10%"' in ATLAS
     assert '["Stationary audit", "0 three-scale keys"' in ATLAS
     assert '["Inspect per-cluster GCTS sections", "cdyb", 3]' in ATLAS
     assert '["Run the live finite frontier", "cdyb", 4]' in ATLAS
 
     assert "generic frozen connection evidence" in HTML
-    assert 'evidence-atlas.js?v=20260828-310' in HTML
-    assert 'app.js?v=20260828-310' in HTML
-    assert 'style.css?v=20260828-310' in HTML
-    assert 'buildId: "20260828-310"' in APP
+    assert 'evidence-atlas.js?v=20260828-311' in HTML
+    assert 'app.js?v=20260828-311' in HTML
+    assert 'style.css?v=20260828-311' in HTML
+    assert 'buildId: "20260828-311"' in APP
     assert "Build 308 · published Cd–Yb evidence ladder" in README
 
 

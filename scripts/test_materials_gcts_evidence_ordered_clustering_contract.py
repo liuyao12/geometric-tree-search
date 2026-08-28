@@ -40,9 +40,9 @@ def test_stage_separation_remains_explicit():
 
 
 def test_build_306_cache_and_narrative_contract():
-    assert 'buildId: "20260828-310"' in APP
-    assert "app.js?v=20260828-310" in HTML
-    assert "style.css?v=20260828-310" in HTML
+    assert 'buildId: "20260828-311"' in APP
+    assert "app.js?v=20260828-311" in HTML
+    assert "style.css?v=20260828-311" in HTML
     assert "Build 259 · evidence-ordered cluster discovery" in README
     assert "Build 306 · settled cluster surfaces in the discovery scene" in README
     assert "function addSettledDiscoverySurfaces(placements, color, opacity)" in APP
