@@ -874,6 +874,36 @@ body.study-guide-open { overflow: hidden; }
 .cluster-pose-port-detail span { margin: 0; color: #a69abc; font: 7px/1.35 var(--mono); }
 .cluster-pose-port-detail em { grid-column: 1 / -1; color: #716b81; font: 6px/1.4 var(--mono); font-style: normal; }
 .cluster-pose-port-incidence > p { margin: 7px 0 0; color: #716b81; font: 7px/1.45 var(--mono); }
+.cluster-channel-learning { grid-column: 1 / -1; min-width: 0; padding: 10px; border-top: 1px solid rgba(126,225,232,.13); background: linear-gradient(135deg,rgba(4,18,22,.99),rgba(7,13,25,.99)); }
+.cluster-channel-learning header { display: flex; align-items: end; justify-content: space-between; gap: 10px; }
+.cluster-channel-learning header span,.cluster-channel-learning header small,.cluster-channel-learning header strong { display: block; min-width: 0; overflow: visible; white-space: normal; }
+.cluster-channel-learning header strong { margin-top: 3px; color: #dcf7f3; font: 650 10px/1.25 var(--mono); }
+.cluster-channel-learning header b { color: var(--cyan); font: 650 8px/1.25 var(--mono); text-align: right; }
+.cluster-channel-learning-summary { display: grid; grid-template-columns: 1.6fr repeat(3,minmax(0,1fr)); gap: 1px; margin-top: 8px; background: rgba(126,225,232,.09); }
+.cluster-channel-learning-summary span { min-width: 0; margin: 0; padding: 6px 7px; background: rgba(3,11,17,.68); white-space: normal; }
+.cluster-channel-learning-summary small,.cluster-channel-learning-summary strong { display: block; overflow: visible; white-space: normal; }
+.cluster-channel-learning-summary strong { margin-top: 3px; color: #d8f2ed; font: 650 8px/1.25 var(--mono); }
+.cluster-channel-learning-controls { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: 4px; min-width: 0; margin-top: 8px; }
+.cluster-channel-learning-controls button { display: grid; min-width: 0; padding: 6px 7px; border: 1px solid rgba(126,225,232,.14); border-radius: 5px; background: rgba(126,225,232,.025); color: #8ba5a2; text-align: left; }
+.cluster-channel-learning-controls button:hover,.cluster-channel-learning-controls button:focus-visible,.cluster-channel-learning-controls button.active { border-color: rgba(126,225,232,.7); background: rgba(126,225,232,.1); color: #effffd; outline: none; }
+.cluster-channel-learning-controls button.inactive { border-style: dashed; opacity: .34; }
+.cluster-channel-learning-controls small,.cluster-channel-learning-controls strong,.cluster-channel-learning-controls span { display: block; margin: 0; overflow: visible; white-space: normal; }
+.cluster-channel-learning-controls small { color: #688583; font: 6px/1.2 var(--mono); text-transform: uppercase; letter-spacing: .04em; }
+.cluster-channel-learning-controls strong { margin-top: 4px; color: #d9f3ef; font: 650 9px/1 var(--mono); }
+.cluster-channel-learning-controls span { margin-top: 3px; color: #728d89; font: 6px/1.2 var(--mono); }
+.cluster-channel-learning-chart { display: block; width: 100%; height: 112px; margin-top: 7px; border: 1px solid rgba(126,225,232,.09); border-radius: 6px; background: rgba(1,7,13,.55); }
+.cluster-channel-learning-chart .channel-zero { stroke: rgba(151,194,183,.18); stroke-width: 1; }
+.cluster-channel-learning-chart .channel-target-fit { stroke: var(--cyan); stroke-width: 1; stroke-dasharray: 5 4; opacity: .65; }
+.cluster-channel-learning-chart .channel-target-holdout { stroke: var(--amber); stroke-width: 1; stroke-dasharray: 2 4; opacity: .72; }
+.cluster-channel-learning-chart .channel-coefficient-path { fill: none; stroke: var(--mint); stroke-width: 2.2; stroke-linejoin: round; stroke-linecap: round; }
+.cluster-channel-learning-chart .channel-current { fill: #effffc; stroke: var(--mint); stroke-width: 1.5; }
+.cluster-channel-learning-chart .channel-axis-label { fill: #58716d; font: 6px var(--mono); }
+.cluster-channel-learning-detail { display: grid; grid-template-columns: auto minmax(0,1fr); gap: 3px 10px; margin-top: 7px; padding: 7px 8px; border-left: 2px solid var(--mint); background: rgba(101,225,188,.035); }
+.cluster-channel-learning-detail strong,.cluster-channel-learning-detail span,.cluster-channel-learning-detail em { overflow: visible; white-space: normal; }
+.cluster-channel-learning-detail strong { margin: 0; color: #ddf8f2; font: 650 8px/1.25 var(--mono); }
+.cluster-channel-learning-detail span { margin: 0; color: #90aaa5; font: 7px/1.35 var(--mono); }
+.cluster-channel-learning-detail em { grid-column: 1 / -1; color: #617d77; font: 6px/1.4 var(--mono); font-style: normal; }
+.cluster-channel-learning > p { margin: 7px 0 0; color: #617d77; font: 7px/1.45 var(--mono); }
 .cluster-card { position: relative; min-height: 212px; overflow: hidden; border: 1px solid rgba(151,194,183,.22); background: linear-gradient(145deg, rgba(14,37,36,.92), rgba(5,15,17,.96)); cursor: pointer; outline: none; }
 .cluster-card:hover,.cluster-card:focus-visible { border-color: rgba(101,225,188,.65); }
 .cluster-card.active { border-color: var(--mint); box-shadow: inset 0 0 0 1px rgba(101,225,188,.22), 0 0 18px rgba(101,225,188,.08); }
@@ -1836,6 +1866,9 @@ body.study-guide-open { overflow: hidden; }
   .cluster-pose-spectrum header { align-items: flex-start; }
   .cluster-pose-port-coverage { grid-template-columns: 1fr 1fr; }
   .cluster-pose-port-incidence header { align-items: flex-start; }
+  .cluster-channel-learning-summary { grid-template-columns: 1fr 1fr; }
+  .cluster-channel-learning-controls { grid-template-columns: repeat(3,minmax(0,1fr)); }
+  .cluster-channel-learning header { align-items: flex-start; }
   .cluster-cover-ledger { grid-template-columns: 1fr; }
   .microstructure-heading { align-items: flex-start; }
   .microstructure-heading em { max-width: 48%; }

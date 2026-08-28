@@ -1801,6 +1801,7 @@ let orientationAtlas = [];
 let microstructureEvidence = null;
 let microstructureProjection = "xy";
 let selectedGalleryCluster = 0;
+const selectedLearningChannelByPrototype = new Map();
 let rdfPairSelection = "all";
 let scatteringContrastMode = "unit";
 let scatteringDisplacementMode = "mean";
@@ -9483,6 +9484,120 @@ function renderClusterPosePortIncidence(inspector, cluster, familyIndex) {
   coverage.innerHTML = `<span><small>matrix rank</small><strong>${audit.numericRank}</strong></span><span><small>active cells</small><strong>${audit.nonzeroCells}/${audit.rows.length * audit.roles.length}</strong></span><span><small>witness samples</small><strong>${audit.retainedWitnessSamples}</strong></span><span><small>derived channels</small><strong>${Math.min(12, Math.max(3, audit.numericRank + 2))}</strong></span>`;
 }
 
+function sectionChannelTrajectoryRecord(prototype) {
+  if (!sectionModel?.initialPoint?.coefficients?.[prototype]) return null;
+  const activeChannels = sectionModel.activeChannelsByPrototype?.[prototype] || sectionModel.channels;
+  const visibleCurve = sectionModel.curve.slice(0, trainingProgress);
+  const processedIndices = sectionModel.sampleLabels.map((label, index) =>
+    label === prototype && index < trainingProgress ? index : -1).filter((index) => index >= 0);
+  const meanTarget = (axis, fit) => {
+    const indices = processedIndices.filter((index) => (index % 5 !== 0) === fit);
+    return indices.length ? indices.reduce((sum, index) => sum + (sectionModel.targets[index]?.[axis] || 0), 0) / indices.length : null;
+  };
+  const axes = sectionModel.axes.map((axis, axisIndex) => {
+    const initial = sectionModel.initialPoint.coefficients[prototype][axisIndex];
+    const series = [{ samples: 0, value: initial }, ...visibleCurve.map((point) => ({
+      samples: point.samples,
+      value: point.coefficients[prototype][axisIndex],
+    }))];
+    return {
+      axisIndex,
+      label: `A${axisIndex + 1}`,
+      active: axisIndex < activeChannels,
+      vector: axis.toArray(),
+      scalar: axis.lengthSq() <= 1e-12,
+      initial,
+      current: series.at(-1).value,
+      delta: series.at(-1).value - initial,
+      fitTargetMean: meanTarget(axisIndex, true),
+      holdoutTargetMean: meanTarget(axisIndex, false),
+      series,
+    };
+  });
+  const fitSamples = processedIndices.filter((index) => index % 5 !== 0).length;
+  return {
+    prototype,
+    axes,
+    activeChannels,
+    configuredChannels: sectionModel.channels,
+    processedSamples: processedIndices.length,
+    fitSamples,
+    holdoutSamples: processedIndices.length - fitSamples,
+    coordinateSystem: sectionModel.channels === 1
+      ? "isotropic scalar coefficient"
+      : "deterministic intrinsic spherical-code coefficient axes",
+    capacityBasis: "pose × port pivot columns determine required dimension; they are not asserted to be the fitted coefficient axes",
+    targetUsed: false,
+    physicalPotential: false,
+  };
+}
+
+function renderClusterChannelTrajectory(inspector, prototype) {
+  const panel = inspector.querySelector(".cluster-channel-learning");
+  if (!panel) return;
+  const audit = sectionChannelTrajectoryRecord(prototype);
+  const state = panel.querySelector("header b");
+  const summary = panel.querySelector(".cluster-channel-learning-summary");
+  const controls = panel.querySelector(".cluster-channel-learning-controls");
+  const chart = panel.querySelector(".cluster-channel-learning-chart");
+  const detail = panel.querySelector(".cluster-channel-learning-detail");
+  if (!audit) {
+    state.textContent = "no fitted coefficient row";
+    detail.textContent = "This residual or unresolved class has no learned GCTS section coefficients.";
+    return;
+  }
+  state.textContent = `${audit.processedSamples} samples · ${audit.activeChannels}/${audit.configuredChannels} active`;
+  summary.innerHTML = `<span><small>coordinate system</small><strong>${audit.coordinateSystem}</strong></span><span><small>fit / holdout</small><strong>${audit.fitSamples} / ${audit.holdoutSamples}</strong></span><span><small>active capacity</small><strong>${audit.activeChannels} / ${audit.configuredChannels}</strong></span><span><small>physical potential</small><strong>no</strong></span>`;
+  controls.replaceChildren();
+  let selectedAxis = selectedLearningChannelByPrototype.get(prototype) ?? 0;
+  if (selectedAxis >= audit.axes.length || !audit.axes[selectedAxis]?.active) selectedAxis = 0;
+  const selectAxis = (axisIndex) => {
+    selectedLearningChannelByPrototype.set(prototype, axisIndex);
+    renderClusterChannelTrajectory(inspector, prototype);
+  };
+  audit.axes.forEach((axis) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.classList.toggle("active", axis.axisIndex === selectedAxis);
+    button.classList.toggle("inactive", !axis.active);
+    button.disabled = !axis.active;
+    button.setAttribute("aria-pressed", String(axis.axisIndex === selectedAxis));
+    button.setAttribute("aria-label", `${axis.label}: ${axis.active ? "active" : "inactive"} coefficient, current ${axis.current.toFixed(4)}. Inspect its learning trajectory.`);
+    button.innerHTML = `<small>${axis.label}${axis.active ? "" : " · inactive"}</small><strong>${axis.current >= 0 ? "+" : ""}${axis.current.toFixed(3)}</strong><span>Δ ${axis.delta >= 0 ? "+" : ""}${axis.delta.toFixed(3)}</span>`;
+    if (axis.active) button.addEventListener("click", () => selectAxis(axis.axisIndex));
+    controls.append(button);
+  });
+  const selected = audit.axes[selectedAxis];
+  const fitTarget = selected.fitTargetMean;
+  const holdoutTarget = selected.holdoutTargetMean;
+  const values = selected.series.map((point) => point.value)
+    .concat([fitTarget, holdoutTarget, 0].filter(Number.isFinite));
+  const minimum = Math.min(...values);
+  const maximum = Math.max(...values);
+  const range = Math.max(.08, maximum - minimum);
+  const paddedMinimum = minimum - range * .12;
+  const paddedMaximum = maximum + range * .12;
+  const xFor = (samples) => 28 + samples / Math.max(1, markingSampleCount()) * 364;
+  const yFor = (value) => 91 - (value - paddedMinimum) / Math.max(1e-9, paddedMaximum - paddedMinimum) * 76;
+  chart.replaceChildren();
+  chart.append(svgNode("line", { x1: 28, y1: yFor(0), x2: 392, y2: yFor(0), class: "channel-zero" }));
+  if (Number.isFinite(fitTarget)) chart.append(svgNode("line", {
+    x1: 28, y1: yFor(fitTarget), x2: 392, y2: yFor(fitTarget), class: "channel-target-fit",
+  }));
+  if (Number.isFinite(holdoutTarget)) chart.append(svgNode("line", {
+    x1: 28, y1: yFor(holdoutTarget), x2: 392, y2: yFor(holdoutTarget), class: "channel-target-holdout",
+  }));
+  const path = selected.series.map((point, index) =>
+    `${index ? "L" : "M"}${xFor(point.samples).toFixed(2)},${yFor(point.value).toFixed(2)}`).join(" ");
+  chart.append(svgNode("path", { d: path, class: "channel-coefficient-path" }));
+  const current = selected.series.at(-1);
+  chart.append(svgNode("circle", { cx: xFor(current.samples), cy: yFor(current.value), r: 3.2, class: "channel-current" }));
+  chart.append(svgNode("text", { x: 28, y: 101, class: "channel-axis-label" }, "0 samples"));
+  chart.append(svgNode("text", { x: 392, y: 101, class: "channel-axis-label", "text-anchor": "end" }, `${trainingProgress}/${markingSampleCount()}`));
+  const vectorLabel = selected.scalar ? "isotropic scalar" : `intrinsic axis [${selected.vector.map((value) => value.toFixed(2)).join(", ")}]`;
+  detail.innerHTML = `<strong>${selected.label} · ${vectorLabel}</strong><span>initial ${selected.initial.toFixed(4)} → current ${selected.current.toFixed(4)} · fit-target mean ${fitTarget === null ? "unseen" : fitTarget.toFixed(4)} · held-out target mean ${holdoutTarget === null ? "unseen" : holdoutTarget.toFixed(4)}</span><em>Solid mint: coefficient history. Cyan dash: processed fit-target mean. Amber dash: processed held-out diagnostic mean. Held-out samples never update coefficients. The D-fields above explain rank demand; A-fields are the actual fitted coordinates. Neither is a force, energy, probability, or physical potential.</em>`;
+}
+
 function updateClusterGalleryInspector(galleryIndex) {
   const types = clusterGalleryTypes();
   const cluster = types[galleryIndex];
@@ -9533,10 +9648,19 @@ function updateClusterGalleryInspector(galleryIndex) {
       <div class="cluster-channel-basis" role="group" aria-label="Rank-revealing GCTS channel basis"></div>
       <div class="cluster-pose-port-grid" role="group" aria-label="Select a proper-pose and outgoing-port cell"></div>
       <article class="cluster-pose-port-detail" aria-live="polite"></article>
-      <p>The numeric rank of this witnessed matrix—not the raw number of rotations or port labels—supplies the directional channel demand. Compatibility and failure add two scalar fields. Counts are retained training witnesses, never energies or target labels.</p>
+      <p>The numeric rank of this witnessed matrix—not the raw number of rotations or port labels—supplies the directional channel demand. D-fields are a rank-revealing capacity basis, not a claimed rotation of the fitted coefficients. Compatibility and failure add two scalar fields. Counts are retained training witnesses, never energies or target labels.</p>
+    </section>
+    <section class="cluster-channel-learning" aria-label="Actual learned GCTS coefficient trajectories">
+      <header><span><small>learning microscope</small><strong>Actual channel trajectories</strong></span><b>awaiting fit samples</b></header>
+      <div class="cluster-channel-learning-summary"></div>
+      <div class="cluster-channel-learning-controls" role="group" aria-label="Select a fitted coefficient channel"></div>
+      <svg class="cluster-channel-learning-chart" viewBox="0 0 420 108" role="img" aria-label="Selected coefficient history with fit and held-out target means"></svg>
+      <article class="cluster-channel-learning-detail" aria-live="polite"></article>
+      <p>These A-fields are the coordinates the learner actually updates in each cluster's intrinsic proper frame. The pose×port D-fields above determine required capacity; no unproved basis transform between D and A is implied.</p>
     </section>`;
   renderClusterPoseOccupation(inspector, cluster, poseModel);
   renderClusterPosePortIncidence(inspector, cluster, familyIndex);
+  renderClusterChannelTrajectory(inspector, familyIndex);
 }
 
 function buildMolecularGalleryToolbar(types) {
@@ -9706,6 +9830,10 @@ function updateClusterGalleryTrainingReadouts() {
     readout.textContent = `${processed}/${total} local sections · loss ${loss.toFixed(3)} · ${channelReadout} · ${portReadout} · reach ${sectionModel.reach}`;
     readout.classList.toggle("complete", trainingProgress >= markingSampleCount());
   });
+  const selectedCluster = clusterGalleryTypes()[selectedGalleryCluster];
+  const inspector = clusterGallery.querySelector(".cluster-gallery-inspector");
+  if (selectedCluster && inspector) renderClusterChannelTrajectory(inspector,
+    selectedCluster.familyType ?? selectedGalleryCluster);
 }
 
 function convexHullTriangles(sites) {
@@ -10729,6 +10857,7 @@ function receiptClusterRecord(cluster, index) {
   const poseModel = galleryPoseModel(cluster);
   const poseOccupation = poseOrbitOccupationRecord(cluster, poseModel);
   const posePortIncidence = cluster.residual ? null : clusterPosePortIncidence(familyIndex);
+  const channelLearning = cluster.residual ? null : sectionChannelTrajectoryRecord(familyIndex);
   const placements = cluster.observedOccurrences ?? cluster.classPlacementIndices?.length
     ?? learnedCover.placements.filter((placement) => placement.type === cluster.type).length;
   const supportSites = cluster.customSupport?.length
@@ -10777,6 +10906,29 @@ function receiptClusterRecord(cluster, index) {
       candidateGeometryChanged: false,
       physicalPotential: false,
       targetUsed: false,
+    } : null,
+    channelLearningTrajectory: channelLearning ? {
+      coordinateSystem: channelLearning.coordinateSystem,
+      capacityBasis: channelLearning.capacityBasis,
+      configuredChannels: channelLearning.configuredChannels,
+      activeChannels: channelLearning.activeChannels,
+      processedSamples: channelLearning.processedSamples,
+      fitSamples: channelLearning.fitSamples,
+      holdoutSamples: channelLearning.holdoutSamples,
+      axes: channelLearning.axes.map((axis) => ({
+        label: axis.label,
+        active: axis.active,
+        vector: axis.vector.map((value) => receiptRound(value)),
+        scalar: axis.scalar,
+        initial: receiptRound(axis.initial),
+        current: receiptRound(axis.current),
+        delta: receiptRound(axis.delta),
+        fitTargetMean: axis.fitTargetMean === null ? null : receiptRound(axis.fitTargetMean),
+        holdoutTargetMean: axis.holdoutTargetMean === null ? null : receiptRound(axis.holdoutTargetMean),
+        series: axis.series.map((point) => ({ samples: point.samples, value: receiptRound(point.value) })),
+      })),
+      targetUsed: false,
+      physicalPotential: false,
     } : null,
     commonProperRotationEquivariant: poseModel.commonProperRotationEquivariant,
     improperRotationsQuotiented: poseModel.improperRotationsQuotiented,
@@ -11368,7 +11520,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260828-295",
+      buildId: "20260828-296",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -13667,7 +13819,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260828-295" },
+    application: { name: "Materials Growth Lab", buildId: "20260828-296" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"

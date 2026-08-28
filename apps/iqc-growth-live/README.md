@@ -1,5 +1,21 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 296 · actual channel-learning trajectories
+
+The selected Stage-3 cluster now exposes the coefficient coordinates the GCTS
+learner actually updates. Each interactive A-field reports its deterministic
+intrinsic-axis vector, random initial value, current value, displacement, and a
+sample-indexed trajectory. Processed fitting-target and held-out-target means
+appear as separate dashed references; held-out occurrences remain diagnostic
+and never update a coefficient.
+
+This also closes an important interpretation gap. The pose × port pivot fields
+D1…D10 remain a rank-revealing explanation of required directional capacity;
+they are not presented as an unproved change of basis for the fitted A-fields.
+The receipt records both coordinate-system provenance and every visible
+coefficient history. No trajectory is labeled as force, energy, probability,
+physical potential, relaxation, or elapsed physical time.
+
 ## Build 295 · rank-revealing channel basis
 
 The Stage-3 pose × port matrix now exposes a deterministic rank-revealing basis.
