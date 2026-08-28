@@ -1,5 +1,40 @@
 # Recursive GCTS benchmark for material growth
 
+### Whole-batch leave-one-channel-out shadow leap (Build 277)
+
+Action rank sensitivity is now propagated through one complete structural
+update without mutating the material. Starting from the immutable evaluated
+frontier, each active soft geometry term is set to zero for every
+hard-admitted candidate. The browser reranks with the production lexical tie
+rule and greedily constructs a shadow commuting antichain using the same
+pairwise colored-site compatibility, finite feedstock, coordination-capacity,
+angular-envelope, and retained-novel-site predicates as the production
+selector. Because a commuting antichain is permutation-invariant, its
+coordinate-free identity digest is computed from the sorted action set; a
+separate order digest records score-order changes without calling them a
+structural response.
+
+The live and shadow paths share `candidateFitsCommutingBatch`; after production
+selection, the baseline shadow candidate digest must equal the accepted live
+batch digest or execution throws before commit. This is stronger than a
+winner-only comparison. On the default NaCl continuation, all four active
+channel omissions retain the top exact pose and the same 146-action antichain.
+Three alter only its score order; each emits the same 203 species-labelled
+sites. The UI therefore reports zero structural-leap changes, three order-only
+changes, and 100% emitted-site overlap rather than conflating a permutation of
+commuting placements with a different material state.
+
+For each channel the audit records action and emitted-site Jaccard overlap,
+added/removed actions and sites, species-count L1 change, centroid shift,
+radius-of-gyration change, candidate/emission digests, and baseline/live
+parity. A tilted display overlays baseline-only, shared, and omission-only
+sites, while exported receipts omit coordinates. Candidate enumeration,
+geometry, hard admission, and boundary remain fixed; omitted batches are not
+committed and do not spawn a downstream frontier. Consequently this is a
+one-leap sensitivity of the declared geometric policy and scheduler, not a
+physical counterfactual, causal mechanism, energy, probability, rate,
+dynamics, or time.
+
 ### Action-level leave-one-channel rank sensitivity (Build 276)
 
 The winner-only leave-one-physics-channel-out workbench has been generalized to

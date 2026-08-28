@@ -533,6 +533,9 @@ const policyPoseAuditHint = $("policyPoseAuditHint");
 const policyOmissionState = $("policyOmissionState");
 const policyOmissionList = $("policyOmissionList");
 const policyOmissionDetail = $("policyOmissionDetail");
+const policyShadowLeapState = $("policyShadowLeapState");
+const policyShadowLeapPlot = $("policyShadowLeapPlot");
+const policyShadowLeapDetail = $("policyShadowLeapDetail");
 const policySpatialFieldState = $("policySpatialFieldState");
 const policySpatialTerm = $("policySpatialTerm");
 const policySpatialToggle = $("policySpatialToggle");
@@ -10850,7 +10853,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-276",
+      buildId: "20260827-277",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -12486,6 +12489,7 @@ async function buildExperimentReceipt() {
           rankingMode: snapshot.referenceGuided ? "known-window reference-guided replay" : "target-blind frontier",
           distinctTopActions: snapshot.uniqueTopActions,
           everyScoreDecompositionExact: snapshot.everyScoreDecompositionExact,
+          shadowStructuralLeap: receiptFrozenShadowLeapAudit(snapshot.shadowLeapAudit),
           markingFrontierCounterfactual: (() => {
             const audit = snapshot.markingFrontierCounterfactual;
             return audit ? {
@@ -13000,6 +13004,7 @@ function notebookPolicySnapshot(snapshot, includeIdentifiability = false) {
       hardAdmittedCandidateSetDigest: markingAudit.hardAdmittedCandidateSetDigest,
       candidateCount: markingAudit.candidates, activeMarkingId: markingAudit.activeMarkingId,
     } : null,
+    shadowStructuralLeap: receiptFrozenShadowLeapAudit(snapshot.shadowLeapAudit),
     hypothesisIdentifiability,
   };
 }
@@ -13128,7 +13133,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-276" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-277" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -17980,6 +17985,211 @@ function candidatePoseDifference(first, second) {
     rotationDegrees: misorientation.angleDegrees };
 }
 
+function selectFrozenShadowLeapBatch(ranked) {
+  if (growthScheduling !== "commuting" || overlapGrammar.molecular && !reconstructionCertified) return null;
+  const accepted = [];
+  ranked.forEach(({ entry }) => {
+    if (entry.evaluation.accepted && candidateFitsCommutingBatch(accepted, entry, { recordWork: false })) {
+      accepted.push(entry);
+    }
+  });
+  return accepted;
+}
+
+function frozenShadowLeapRecord(entries) {
+  const sites = uniqueFreshSites(entries.flatMap((entry) => entry.evaluation.fresh))
+    .map((site) => ({ species: site.species, p: site.p.clone() }));
+  const speciesCounts = {};
+  sites.forEach((site) => { speciesCounts[site.species] = (speciesCounts[site.species] || 0) + 1; });
+  const centroid = sites.length ? sites.reduce((sum, site) => sum.add(site.p), new THREE.Vector3())
+    .multiplyScalar(1 / sites.length) : new THREE.Vector3();
+  const radiusScene = sites.length ? Math.sqrt(sites.reduce((sum, site) =>
+    sum + site.p.distanceToSquared(centroid), 0) / sites.length) : 0;
+  const candidateKeys = entries.map((entry) => entry.candidate.key);
+  const siteDigest = notebookStringHash(sites.map((site) => `${site.species}:${site.p.x.toFixed(8)},${site.p.y.toFixed(8)},${site.p.z.toFixed(8)}`)
+    .sort().join("|"));
+  return {
+    actions: entries.length,
+    candidateKeys,
+    candidateDigest: notebookStringHash([...candidateKeys].sort().join("|")),
+    candidateOrderDigest: notebookStringHash(candidateKeys.join("|")),
+    emittedSites: sites.length,
+    emittedSiteDigest: siteDigest,
+    speciesCounts,
+    sites,
+    centroid,
+    radiusOfGyrationAngstrom: radiusScene * referenceSpacingA / Math.max(referenceSpacing, 1e-12),
+  };
+}
+
+function compareFrozenShadowLeaps(baseline, omitted) {
+  const baselineKeys = new Set(baseline.candidateKeys);
+  const omittedKeys = new Set(omitted.candidateKeys);
+  const sharedActions = [...baselineKeys].filter((key) => omittedKeys.has(key)).length;
+  const actionUnion = baselineKeys.size + omittedKeys.size - sharedActions;
+  const sharedSites = coloredSiteIntersectionCount(baseline.sites, omitted.sites);
+  const siteUnion = baseline.sites.length + omitted.sites.length - sharedSites;
+  const allSpecies = new Set([...Object.keys(baseline.speciesCounts), ...Object.keys(omitted.speciesCounts)]);
+  const chemistryL1 = [...allSpecies].reduce((sum, species) => sum
+    + Math.abs((baseline.speciesCounts[species] || 0) - (omitted.speciesCounts[species] || 0)), 0);
+  const centroidShiftAngstrom = baseline.sites.length && omitted.sites.length
+    ? baseline.centroid.distanceTo(omitted.centroid) * referenceSpacingA / Math.max(referenceSpacing, 1e-12) : null;
+  return {
+    sameBatch: baseline.candidateDigest === omitted.candidateDigest,
+    orderChanged: baseline.candidateOrderDigest !== omitted.candidateOrderDigest,
+    sharedActions,
+    actionUnion,
+    actionJaccard: actionUnion ? sharedActions / actionUnion : 1,
+    addedActions: [...omittedKeys].filter((key) => !baselineKeys.has(key)).length,
+    removedActions: [...baselineKeys].filter((key) => !omittedKeys.has(key)).length,
+    sharedSites,
+    siteUnion,
+    emittedSiteJaccard: siteUnion ? sharedSites / siteUnion : 1,
+    addedSites: Math.max(0, omitted.sites.length - sharedSites),
+    removedSites: Math.max(0, baseline.sites.length - sharedSites),
+    chemistryL1,
+    centroidShiftAngstrom,
+    radiusOfGyrationDeltaAngstrom: omitted.radiusOfGyrationAngstrom - baseline.radiusOfGyrationAngstrom,
+  };
+}
+
+function buildFrozenShadowLeapAudit(entries, candidateSetDigest) {
+  if (!entries.length || growthScheduling !== "commuting"
+    || overlapGrammar.molecular && !reconstructionCertified) return {
+    available: false,
+    reason: growthScheduling !== "commuting" ? "shadow leaps require commuting-antichain scheduling"
+      : "known-window molecular replay uses a fixed replay order",
+    candidateSetDigest,
+    targetUsed: !reconstructionCertified,
+    executed: false,
+  };
+  const admissible = entries.filter((entry) => entry.evaluation.accepted);
+  const baselineRanked = admissible.map((entry) => ({ entry, score: entry.selectionScore }))
+    .sort((first, second) => second.score - first.score
+      || first.entry.candidate.key.localeCompare(second.entry.candidate.key));
+  const baselineEntries = selectFrozenShadowLeapBatch(baselineRanked);
+  const baseline = frozenShadowLeapRecord(baselineEntries || []);
+  const termIds = [...new Set(admissible.flatMap((entry) => activeCandidateScoreTerms(entry, true)
+    .filter((term) => !POLICY_OMISSION_EXCLUDED_TERMS.has(term.id) && Math.abs(term.weight) > 1e-12)
+    .map((term) => term.id)))].sort();
+  const cases = termIds.map((termId) => {
+    const term = activeCandidateScoreTerms(admissible[0], true).find((candidateTerm) => candidateTerm.id === termId);
+    const ranked = admissible.map((entry) => {
+      const omitted = activeCandidateScoreTerms(entry, true).find((candidateTerm) => candidateTerm.id === termId);
+      return { entry, score: entry.selectionScore - (omitted?.contribution || 0) };
+    }).sort((first, second) => second.score - first.score
+      || first.entry.candidate.key.localeCompare(second.entry.candidate.key));
+    const omitted = frozenShadowLeapRecord(selectFrozenShadowLeapBatch(ranked) || []);
+    const comparison = compareFrozenShadowLeaps(baseline, omitted);
+    return {
+      termId,
+      termLabel: term?.label || termId,
+      omittedWeight: term?.weight || 0,
+      baseline,
+      omitted,
+      ...comparison,
+      structuralLeapChanged: !comparison.sameBatch || baseline.emittedSiteDigest !== omitted.emittedSiteDigest,
+      candidateSetChanged: false,
+      hardAdmissionChanged: false,
+      committed: false,
+      downstreamFrontierEnumerated: false,
+    };
+  }).sort((first, second) => Number(second.structuralLeapChanged) - Number(first.structuralLeapChanged)
+    || first.emittedSiteJaccard - second.emittedSiteJaccard
+    || first.actionJaccard - second.actionJaccard
+    || first.termId.localeCompare(second.termId));
+  const audit = {
+    schema: 1,
+    available: true,
+    scheduling: "same exact greedy commuting-antichain selector",
+    candidateSetDigest,
+    baseline,
+    cases,
+    activeTerms: cases.length,
+    changedStructuralLeaps: cases.filter((entry) => entry.structuralLeapChanged).length,
+    reorderedBatches: cases.filter((entry) => entry.orderChanged && !entry.structuralLeapChanged).length,
+    minimumActionJaccard: Math.min(1, ...cases.map((entry) => entry.actionJaccard)),
+    minimumEmittedSiteJaccard: Math.min(1, ...cases.map((entry) => entry.emittedSiteJaccard)),
+    candidateSetChanged: false,
+    hardAdmissionChanged: false,
+    sameBatchFeasibilityRules: true,
+    displayCoordinatesRetained: true,
+    receiptCoordinatesEmbedded: false,
+    targetUsed: !reconstructionCertified,
+    executed: false,
+    downstreamFrontierEnumerated: false,
+    physicalCausalEffectIdentified: false,
+    energyOrRateInferred: false,
+    claimBoundary: "one frozen-frontier structural-leap sensitivity under an exact leave-one-soft-channel-out rerank; no shadow arm is committed and no downstream frontier, relaxation, dynamics, probability, energy, rate, or physical time is computed",
+  };
+  audit.digest = notebookStringHash(JSON.stringify({
+    candidateSetDigest,
+    baseline: { candidateDigest: baseline.candidateDigest, emittedSiteDigest: baseline.emittedSiteDigest },
+    cases: cases.map((entry) => ({ termId: entry.termId,
+      candidateDigest: entry.omitted.candidateDigest, candidateOrderDigest: entry.omitted.candidateOrderDigest,
+      emittedSiteDigest: entry.omitted.emittedSiteDigest,
+      actionJaccard: entry.actionJaccard, emittedSiteJaccard: entry.emittedSiteJaccard })),
+    targetUsed: audit.targetUsed,
+  }));
+  return audit;
+}
+
+function receiptFrozenShadowLeapAudit(audit) {
+  if (!audit) return null;
+  if (!audit.available) return { available: false, reason: audit.reason,
+    candidateSetDigest: audit.candidateSetDigest, targetUsed: audit.targetUsed, executed: false };
+  const compactLeap = (leap) => ({ actions: leap.actions,
+    candidateDigest: leap.candidateDigest, candidateOrderDigest: leap.candidateOrderDigest,
+    emittedSites: leap.emittedSites,
+    emittedSiteDigest: leap.emittedSiteDigest, speciesCounts: { ...leap.speciesCounts },
+    radiusOfGyrationAngstrom: receiptRound(leap.radiusOfGyrationAngstrom) });
+  return {
+    schema: audit.schema,
+    available: true,
+    scheduling: audit.scheduling,
+    candidateSetDigest: audit.candidateSetDigest,
+    baseline: compactLeap(audit.baseline),
+    cases: audit.cases.map((entry) => ({
+      termId: entry.termId, termLabel: entry.termLabel,
+      omittedWeight: receiptRound(entry.omittedWeight),
+      omitted: compactLeap(entry.omitted),
+      structuralLeapChanged: entry.structuralLeapChanged,
+      orderChanged: entry.orderChanged,
+      sharedActions: entry.sharedActions, actionUnion: entry.actionUnion,
+      actionJaccard: receiptRound(entry.actionJaccard),
+      addedActions: entry.addedActions, removedActions: entry.removedActions,
+      sharedSites: entry.sharedSites, siteUnion: entry.siteUnion,
+      emittedSiteJaccard: receiptRound(entry.emittedSiteJaccard),
+      addedSites: entry.addedSites, removedSites: entry.removedSites,
+      chemistryL1: entry.chemistryL1,
+      centroidShiftAngstrom: entry.centroidShiftAngstrom === null ? null
+        : receiptRound(entry.centroidShiftAngstrom),
+      radiusOfGyrationDeltaAngstrom: receiptRound(entry.radiusOfGyrationDeltaAngstrom),
+      candidateSetChanged: entry.candidateSetChanged,
+      hardAdmissionChanged: entry.hardAdmissionChanged,
+      committed: entry.committed,
+      downstreamFrontierEnumerated: entry.downstreamFrontierEnumerated,
+    })),
+    activeTerms: audit.activeTerms,
+    changedStructuralLeaps: audit.changedStructuralLeaps,
+    reorderedBatches: audit.reorderedBatches,
+    minimumActionJaccard: receiptRound(audit.minimumActionJaccard),
+    minimumEmittedSiteJaccard: receiptRound(audit.minimumEmittedSiteJaccard),
+    baselineSelectionMatchesLiveBatch: Boolean(audit.baselineSelectionMatchesLiveBatch),
+    candidateSetChanged: audit.candidateSetChanged,
+    hardAdmissionChanged: audit.hardAdmissionChanged,
+    sameBatchFeasibilityRules: audit.sameBatchFeasibilityRules,
+    coordinatesEmbedded: false,
+    targetUsed: audit.targetUsed,
+    executed: audit.executed,
+    downstreamFrontierEnumerated: audit.downstreamFrontierEnumerated,
+    physicalCausalEffectIdentified: audit.physicalCausalEffectIdentified,
+    energyOrRateInferred: audit.energyOrRateInferred,
+    digest: audit.digest,
+    claimBoundary: audit.claimBoundary,
+  };
+}
+
 function buildPolicyOmissionAudit(snapshot) {
   if (!snapshot?.workbenchCandidates?.length) return null;
   const rankedBaseline = snapshot.workbenchCandidates.map((candidate) => {
@@ -18667,6 +18877,7 @@ function capturePolicyComparison(entries) {
     workbenchCandidates,
     workbenchMultipliers: {},
     markingFrontierCounterfactual: buildMarkingFrontierCounterfactual(admissible, candidateDigest),
+    shadowLeapAudit: buildFrozenShadowLeapAudit(entries, candidateDigest),
     policies,
   };
   policyComparisonHistory.push(lastPolicyComparison);
@@ -19769,6 +19980,17 @@ function rejectionIsOrderInvariant(candidate, evaluation) {
     || evaluation.fresh.length === 0 || !evaluation.feedstockSupply?.admitted || markingRejected;
 }
 
+function candidateFitsCommutingBatch(acceptedBatch, entry, { recordWork = true } = {}) {
+  if (!acceptedBatch.every((other) => sitesCanCommute(entry.sites, other.sites))) return false;
+  const trial = [...acceptedBatch, entry];
+  const trialFresh = uniqueFreshSites(trial.flatMap((trialEntry) => trialEntry.evaluation.fresh));
+  if (!feedstockSupplyForFreshSites(trialFresh).admitted) return false;
+  const trialProjection = constraintProjectionForFreshSites(trialFresh, { recordWork });
+  if (coordinationOverflowsForFreshSites(trialFresh, trialProjection).length
+    || angularViolationsForFreshSites(trialFresh, trialProjection).length) return false;
+  return batchRetainsNovelSites(trial);
+}
+
 function renderGrowthFrontierWork() {
   const visible = pipelineStage === 4 && (growthFrontierWork.busy || lastGrowthFrontierWorkAudit);
   growthEvaluationProgress.hidden = !visible;
@@ -19885,20 +20107,22 @@ async function selectCommutingFrontierBatch(evaluated, generation) {
     }
     const { candidate, evaluation } = entry;
     if (evaluation.accepted) {
-      if (!acceptedBatch.every((other) => sitesCanCommute(entry.sites, other.sites))) continue;
-      const trial = [...acceptedBatch, entry];
-      const trialFresh = uniqueFreshSites(trial.flatMap((trialEntry) => trialEntry.evaluation.fresh));
-      if (!feedstockSupplyForFreshSites(trialFresh).admitted) continue;
-      const trialProjection = constraintProjectionForFreshSites(trialFresh);
-      if (coordinationOverflowsForFreshSites(trialFresh, trialProjection).length
-        || angularViolationsForFreshSites(trialFresh, trialProjection).length) continue;
-      if (!batchRetainsNovelSites(trial)) continue;
+      if (!candidateFitsCommutingBatch(acceptedBatch, entry)) continue;
       acceptedBatch.push(entry);
       continue;
     }
     if (!rejectionIsOrderInvariant(candidate, evaluation)) continue;
     if (![...acceptedBatch, ...rejectedBatch].every((other) => sitesCanCommute(entry.sites, other.sites))) continue;
     rejectedBatch.push(entry);
+  }
+  const shadowAudit = lastPolicyComparison?.shadowLeapAudit;
+  if (shadowAudit?.available) {
+    const selectedDigest = notebookStringHash(acceptedBatch.map((entry) => entry.candidate.key).sort().join("|"));
+    shadowAudit.baselineSelectionMatchesLiveBatch = selectedDigest === shadowAudit.baseline.candidateDigest;
+    if (!shadowAudit.baselineSelectionMatchesLiveBatch) {
+      throw new Error("frozen shadow-leap baseline diverged from the live commuting batch");
+    }
+    shadowAudit.digest = notebookStringHash(`${shadowAudit.digest}|baseline-live-parity:${selectedDigest}`);
   }
   return [...acceptedBatch, ...rejectedBatch];
 }
@@ -28679,6 +28903,7 @@ function renderPolicyOmissionAudit(snapshot) {
   const audit = buildPolicyOmissionAudit(snapshot);
   if (!audit) {
     policyOmissionState.textContent = "awaiting a frozen frontier";
+    renderPolicyShadowLeap(snapshot);
     return;
   }
   policyOmissionState.textContent = `${audit.changedWinners}/${audit.activeTerms} active channels switch the pose`
@@ -28716,6 +28941,81 @@ function renderPolicyOmissionAudit(snapshot) {
     margin.textContent = `omitted contribution ${selected.baselineContribution >= 0 ? "+" : ""}${selected.baselineContribution.toFixed(3)} · new runner-up margin ${selected.runnerUpMargin.toFixed(3)}`;
     policyOmissionDetail.append(heading, status, action, geometry, margin);
   }
+  renderPolicyShadowLeap(snapshot, selected?.termId || null);
+}
+
+function renderPolicyShadowLeap(snapshot, requestedTermId = null) {
+  policyShadowLeapPlot.replaceChildren();
+  policyShadowLeapDetail.replaceChildren();
+  const audit = snapshot?.shadowLeapAudit;
+  if (!audit?.available) {
+    policyShadowLeapState.textContent = audit?.reason || "awaiting a frozen frontier";
+    return;
+  }
+  const selected = audit.cases.find((entry) => entry.termId === requestedTermId)
+    || audit.cases[0] || null;
+  policyShadowLeapState.textContent = `${audit.changedStructuralLeaps}/${audit.activeTerms} channels change the antichain`
+    + ` · ${audit.reorderedBatches} reorder only · minimum site overlap ${(100 * audit.minimumEmittedSiteJaccard).toFixed(0)}%`;
+  if (!selected) return;
+  const baseline = selected.baseline;
+  const omitted = selected.omitted;
+  const baselineShared = baseline.sites.map((site) => omitted.sites.some((other) =>
+    other.species === site.species && other.p.distanceTo(site.p) <= COMMUTING_SITE_TOLERANCE));
+  const omittedShared = omitted.sites.map((site) => baseline.sites.some((other) =>
+    other.species === site.species && other.p.distanceTo(site.p) <= COMMUTING_SITE_TOLERANCE));
+  const points = [
+    ...baseline.sites.map((site, index) => ({ site, kind: baselineShared[index] ? "shared" : "baseline" })),
+    ...omitted.sites.filter((_, index) => !omittedShared[index]).map((site) => ({ site, kind: "omitted" })),
+  ];
+  const projected = points.map((point) => ({ ...point,
+    x: point.site.p.x + .32 * point.site.p.z,
+    y: point.site.p.y - .20 * point.site.p.z }));
+  const xs = projected.map((point) => point.x), ys = projected.map((point) => point.y);
+  const minX = Math.min(0, ...xs), maxX = Math.max(1e-9, ...xs);
+  const minY = Math.min(0, ...ys), maxY = Math.max(1e-9, ...ys);
+  const scale = Math.min(212 / Math.max(1e-9, maxX - minX), 122 / Math.max(1e-9, maxY - minY));
+  const offsetX = 120 - .5 * (minX + maxX) * scale;
+  const offsetY = 75 + .5 * (minY + maxY) * scale;
+  projected.sort((first, second) => first.kind.localeCompare(second.kind)
+    || first.site.species.localeCompare(second.site.species)).forEach((point) => {
+    const circle = svgNode("circle", {
+      cx: offsetX + point.x * scale,
+      cy: offsetY - point.y * scale,
+      r: point.kind === "shared" ? 3.1 : 2.6,
+      class: `shadow-leap-${point.kind}`,
+    });
+    circle.append(svgNode("title", {}, `${point.kind} · ${point.site.species}`));
+    policyShadowLeapPlot.append(circle);
+  });
+  policyShadowLeapPlot.setAttribute("aria-label", `Tilted projection comparing ${baseline.emittedSites} baseline and ${omitted.emittedSites} leave-${selected.termLabel}-out emitted sites; ${selected.sharedSites} shared`);
+
+  const heading = document.createElement("header");
+  const identity = document.createElement("strong"); identity.textContent = `without ${selected.termLabel}`;
+  const status = document.createElement("b");
+  status.textContent = selected.structuralLeapChanged ? "SHADOW LEAP CHANGED"
+    : selected.orderChanged ? "SAME ANTICHAIN · ORDER CHANGED" : "SAME EXACT ANTICHAIN";
+  heading.append(identity, status);
+  const metrics = document.createElement("div"); metrics.className = "policy-shadow-leap-metrics";
+  [
+    ["whole actions", `${baseline.actions} → ${omitted.actions}`],
+    ["action overlap", `${(100 * selected.actionJaccard).toFixed(1)}%`],
+    ["new sites", `${baseline.emittedSites} → ${omitted.emittedSites}`],
+    ["site overlap", `${(100 * selected.emittedSiteJaccard).toFixed(1)}%`],
+    ["chemistry Δ₁", `${selected.chemistryL1} sites`],
+    ["centroid shift", selected.centroidShiftAngstrom === null ? "undefined" : `${selected.centroidShiftAngstrom.toFixed(3)} Å`],
+  ].forEach(([label, value]) => {
+    const item = document.createElement("span");
+    const small = document.createElement("small"); small.textContent = label;
+    const strong = document.createElement("strong"); strong.textContent = value;
+    item.append(small, strong); metrics.append(item);
+  });
+  const chemistry = document.createElement("p");
+  const formula = (counts) => Object.entries(counts).sort(([first], [second]) => first.localeCompare(second))
+    .map(([species, count]) => `${species}${count}`).join(" · ") || "no emitted sites";
+  chemistry.textContent = `baseline ${formula(baseline.speciesCounts)} · omitted ${formula(omitted.speciesCounts)} · ${selected.removedActions} actions removed / ${selected.addedActions} added`;
+  const boundary = document.createElement("p"); boundary.className = "claim-boundary";
+  boundary.textContent = `${audit.scheduling}; baseline/live selection parity ${audit.baselineSelectionMatchesLiveBatch ? "verified" : "pending"}. Candidate geometry, hard admission, batch feasibility, and public boundary stay fixed. The omitted batch is not committed and no downstream frontier or relaxation is computed; this is model sensitivity, not energy, causality, kinetics, probability, or time. Ledger ${audit.digest}.`;
+  policyShadowLeapDetail.append(heading, metrics, chemistry, boundary);
 }
 
 function selectPolicySpatialTerm(snapshot, termId) {

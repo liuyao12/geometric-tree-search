@@ -28,8 +28,8 @@ def test_full_uij_enters_directional_contact_geometry_without_motion_claims() ->
     assert "correlatedDisplacementModelUsed: false" in source
     assert "contactProbabilityClaimed: false" in source
     assert "full-Uij pair-direction support" in source
-    assert 'buildId: "20260827-276"' in source
-    assert 'app.js?v=20260827-276' in html
+    assert 'buildId: "20260827-277"' in source
+    assert 'app.js?v=20260827-277' in html
     assert "Build 247 carries reported Cartesian Uiso/Uij into the local contact geometry" in readme
     assert "not correlated thermal motion" in readme
 

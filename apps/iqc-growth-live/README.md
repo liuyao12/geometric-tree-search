@@ -1,5 +1,35 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 277 · leave-one-channel-out shadow structural leaps
+
+The local omission workbench now follows a changed score order through the
+actual commuting-antichain scheduler. For every active soft geometry channel,
+the browser removes that contribution from every hard-admitted action on the
+same immutable frontier, reranks with the stable candidate-key tie rule, and
+runs the same pairwise compatibility, feedstock, coordination, angular, and
+novel-site batch predicates as the live update. The resulting **shadow leap**
+is never committed.
+
+The interactive tilted projection distinguishes baseline-only, shared, and
+omission-only emitted sites. It reports whole-action and colored-site Jaccard
+overlap, actions added/removed, emitted-site counts, species-count L1 change,
+centroid displacement, and radius-of-gyration change. Selecting any omission
+row updates both its winning action and its full shadow antichain. On the
+default NaCl frontier, no active channel changes the top exact pose or the
+146-action antichain; three of four change only its score order, and all
+variants emit the same 203 colored sites. The portal therefore distinguishes
+ranking sensitivity from structural decisiveness instead of promoting a
+reordered commuting set into a material response.
+
+The production selector and shadow selector call the same batch-feasibility
+function, and the frozen baseline digest is asserted against the accepted
+portion of the live batch before commit. Receipts contain coordinate-free
+candidate and emitted-site digests plus aggregate consequences; projection
+coordinates stay display-only. Candidate geometry, hard admission, and the
+public boundary are unchanged. No shadow arm is executed, no downstream
+frontier or relaxation is computed, and no causal effect, energy, probability,
+kinetic rate, dynamics, or physical time is inferred.
+
 ## Build 276 · action-level rank sensitivity
 
 The physics fingerprint can now switch between **score contribution** and

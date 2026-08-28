@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260827-276">
+  <link rel="stylesheet" href="./style.css?v=20260827-277">
   <script type="importmap">
     {
       "imports": {
@@ -1196,6 +1196,12 @@
                 <div class="policy-omission-legend"><span><i class="same"></i>same winner</span><span><i class="changed"></i>different exact pose</span><span><i class="inactive"></i>zero-weight channel omitted</span></div>
                 <div id="policyOmissionList" class="policy-omission-list" role="group" aria-label="Preview each leave-one-channel-out growth action"></div>
                 <article id="policyOmissionDetail" class="policy-omission-detail" aria-live="polite"></article>
+                <section class="policy-shadow-leap" aria-label="Leave-one-channel-out whole structural leap">
+                  <header><span><small>same frontier × exact batch scheduler</small><strong>Shadow structural leap</strong></span><b id="policyShadowLeapState">awaiting a frozen frontier</b></header>
+                  <svg id="policyShadowLeapPlot" viewBox="0 0 240 150" role="img" aria-label="Baseline and leave-one-channel-out emitted-site comparison"></svg>
+                  <div class="policy-shadow-leap-legend"><span><i class="baseline"></i>baseline only</span><span><i class="shared"></i>shared sites</span><span><i class="omitted"></i>omitted arm only</span></div>
+                  <article id="policyShadowLeapDetail" aria-live="polite"></article>
+                </section>
                 <p>Each row sets exactly one active soft geometric term to zero and re-ranks the unchanged hard-admitted candidate set. It is a local model-sensitivity intervention—not causal identification, energy decomposition, or parameter fitting.</p>
               </section>
               <section class="policy-spatial-field-card" aria-label="Spatial geometric driving field">
@@ -2015,7 +2021,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260827-276"></script>
+  <script type="module" src="./app.js?v=20260827-277"></script>
   <script type="module" src="./evidence-atlas.js?v=20260827-24"></script>
 </body>
 </html>

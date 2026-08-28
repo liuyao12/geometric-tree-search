@@ -44,9 +44,9 @@ def test_post_reconstruction_caption_reports_actual_continuation():
 
 
 def test_build_195_assets_and_narrative():
-    assert 'buildId: "20260827-276"' in APP
-    assert 'app.js?v=20260827-276' in HTML
-    assert 'style.css?v=20260827-276' in HTML
+    assert 'buildId: "20260827-277"' in APP
+    assert 'app.js?v=20260827-277' in HTML
+    assert 'style.css?v=20260827-277' in HTML
     assert 'creation-response-association.js?v=20260826-13' in APP
     assert "Build 195" in README
     assert "Build 195" in DOCS
