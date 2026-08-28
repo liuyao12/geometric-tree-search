@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import {
   SETTLING_MATERIAL_FIELDS,
   buildSettlingMaterialResponseMatrix,
+  buildSettlingMaterialResponseHistory,
   compareSettlingMaterialFingerprints,
 } from "../apps/iqc-growth-live/settling-material-sensitivity.mjs";
 
@@ -57,5 +58,38 @@ const inactive = buildSettlingMaterialResponseMatrix([
 ]);
 assert.equal(inactive.gatePattern, "no-projected-arm-certified");
 assert.equal(inactive.sensitiveFieldCount, 0);
+
+const leap = (index, arms) => ({ index, status: "accepted",
+  settlingSensitivity: { arms, selectedMode: "balanced", selectedExecutionMatchesPreview: true,
+    materialResponseMatrix: buildSettlingMaterialResponseMatrix(arms) } });
+const history = buildSettlingMaterialResponseHistory([
+  leap(1, [arm("off", false, baseline),
+    arm("gentle", true, { ...baseline, coordinationDeficit: .19 }),
+    arm("balanced", true, { ...baseline, coordinationDeficit: .18 }),
+    arm("strong", true, { ...baseline, coordinationDeficit: .17 })]),
+  leap(2, [arm("off", false, baseline),
+    arm("gentle", true, { ...baseline, coordinationDeficit: .21 }),
+    arm("balanced", true, { ...baseline, coordinationDeficit: .22 }),
+    arm("strong", true, { ...baseline, coordinationDeficit: .23, phenotype: "planar" })]),
+  leap(3, [arm("off", false, baseline), arm("gentle", false, baseline),
+    arm("balanced", false, baseline), arm("strong", false, baseline)]),
+]);
+assert.equal(history.retainedLeapCount, 3);
+assert.deepEqual(history.retainedLeapIndices, [1, 2, 3]);
+assert.equal(history.fields.find((field) => field.id === "coordinationDeficit").pattern,
+  "direction-reversing-across-leaps");
+assert.equal(history.fields.find((field) => field.id === "coordinationDeficit").compatibleLeapCount, 2);
+assert.equal(history.fields.find((field) => field.id === "phenotype").pattern,
+  "intermittent-categorical-shift");
+assert.equal(history.fields.find((field) => field.id === "packingDensity").pattern,
+  "robust-invariant");
+assert.equal(history.normalization,
+  "within one material field across retained leaps and certified arms only; no cross-unit scalar");
+assert.equal(history.physicalTimeModeled, false);
+
+const noCompatibleHistory = buildSettlingMaterialResponseHistory([leap(1, [
+  arm("off", false, baseline), arm("gentle", false, baseline),
+])]);
+assert.equal(noCompatibleHistory.fields[0].pattern, "no-compatible-projections");
 
 console.log("settling material sensitivity contract passed");

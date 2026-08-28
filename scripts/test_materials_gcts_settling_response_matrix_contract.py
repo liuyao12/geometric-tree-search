@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Static contract for Build 289's field-wise settling response matrix."""
+"""Static contract for the field-wise settling response matrix."""
 
 from pathlib import Path
 
@@ -21,8 +21,8 @@ def test_matrix_is_visible_interactive_and_current():
     assert 'settlingResponseMatrix.addEventListener("click"' in APP
     assert 'event.target.closest("button[data-settling-response-field]")' in APP
     assert ".settling-response-matrix" in CSS
-    assert "Build 289 · field-wise settling robustness matrix" in README
-    assert 'buildId: "20260828-289"' in APP
+    assert "Build 290 · retained-leap settling robustness" in README
+    assert 'buildId: "20260828-290"' in APP
 
 
 def test_rows_preserve_units_and_failed_arms_remain_rollbacks():

@@ -1,5 +1,21 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 290 · retained-leap settling robustness
+
+The selected material-response row now extends across the retained structural-
+leap history. A compact allowance × leap heatmap shows every gentle, balanced,
+and strong projection as certified, unchanged, changed, or rolled back; clicking
+a cell selects that exact leap everywhere else in the structural microscope.
+The summary distinguishes robust invariance, intermittent sensitivity,
+consistent signed response, direction reversal, categorical shifts, and the
+absence of any compatible projection.
+
+Every intensity scale is fitted only within the selected physical field across
+certified virtual arms. The retained sequence is explicitly discrete GCTS
+search order—not independent specimens, elapsed time, kinetics, or a
+trajectory—and the full coordinate-free history audit is saved in the run
+receipt without feeding search.
+
 ## Build 289 · field-wise settling robustness matrix
 
 The settling experiment is now readable as an interactive material-field ×

@@ -29,12 +29,12 @@ import { buildExecutedGrowthRegime, growthRegimePlotRows,
   GROWTH_REGIME_RESPONSE_AXES, GROWTH_REGIME_STATE_AXES }
   from "./growth-regime-map.mjs?v=20260828-1";
 import { compareShadowMaterialFingerprints, SHADOW_MATERIAL_CONSEQUENCE_FIELDS }
-  from "./shadow-material-consequence.mjs?v=20260828-289";
+  from "./shadow-material-consequence.mjs?v=20260828-290";
 import { LEAP_CONSEQUENCE_COMPONENTS, resolveLeapConsequenceComparison }
-  from "./leap-consequence-decomposition.mjs?v=20260828-289";
-import { buildSettlingMaterialResponseMatrix, compareSettlingMaterialFingerprints,
+  from "./leap-consequence-decomposition.mjs?v=20260828-290";
+import { buildSettlingMaterialResponseHistory, buildSettlingMaterialResponseMatrix, compareSettlingMaterialFingerprints,
   SETTLING_MATERIAL_FIELDS }
-  from "./settling-material-sensitivity.mjs?v=20260828-289";
+  from "./settling-material-sensitivity.mjs?v=20260828-290";
 import { archiveResponseFrontierRankAudit }
   from "./archive-response-frontier-audit.js?v=20260827-1";
 import { evidenceOrderedClusterDiscoverySchedule }
@@ -790,6 +790,9 @@ const settlingSensitivityBoundary = $("settlingSensitivityBoundary");
 const settlingResponseState = $("settlingResponseState");
 const settlingResponseMatrix = $("settlingResponseMatrix");
 const settlingResponseDetail = $("settlingResponseDetail");
+const settlingResponseHistoryState = $("settlingResponseHistoryState");
+const settlingResponseHistory = $("settlingResponseHistory");
+const settlingResponseHistoryBoundary = $("settlingResponseHistoryBoundary");
 const leapConsequenceMatrix = $("leapConsequenceMatrix");
 const leapConsequenceDetail = $("leapConsequenceDetail");
 const leapConsequenceBoundary = $("leapConsequenceBoundary");
@@ -10914,7 +10917,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260828-289",
+      buildId: "20260828-290",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -12521,6 +12524,7 @@ async function buildExperimentReceipt() {
         maximumRetainedEvents: MAXIMUM_RETAINED_STRUCTURAL_LEAPS,
         truncated: leapEventCount > leapHistory.length,
         alignment: "discrete GCTS search update; not physical time",
+        settlingRobustness: buildSettlingMaterialResponseHistory(leapHistory),
         decomposedOffLatticeEvents: leapHistory.filter((leap) => leap.asPlaced).length,
         offLatticeCheckpointSchema: ["before", "asPlaced", "after"],
         decomposition: "rigid whole-cluster attachment followed by optional bounded local constraint projection" },
@@ -13182,7 +13186,8 @@ async function buildExperimentNotebookSnapshot() {
       maximumProjectedSites: maximumConstraintNeighborhoodSites, currentFullSites: atoms.length },
     liveCertificate: liveGrowthCertificate(),
     structuralLeapHistory: { totalEvents: leapEventCount, retainedEvents: leapHistory.length,
-      maximumRetainedEvents: MAXIMUM_RETAINED_STRUCTURAL_LEAPS, truncated: leapEventCount > leapHistory.length },
+      maximumRetainedEvents: MAXIMUM_RETAINED_STRUCTURAL_LEAPS, truncated: leapEventCount > leapHistory.length,
+      settlingRobustness: buildSettlingMaterialResponseHistory(leapHistory) },
     structuralLeapCertificates: leapHistoryReceipt,
     policySensitivity: { snapshots: policySnapshots, selectedHypothesisTrajectory: null,
       retainedFrontiers: policyComparisonHistory.length, boundedNotebookSnapshot: true },
@@ -13210,7 +13215,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260828-289" },
+    application: { name: "Materials Growth Lab", buildId: "20260828-290" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -27698,6 +27703,48 @@ function formatSettlingResponseDelta(row, cell) {
   return `${cell.delta >= 0 ? "+" : "−"}${magnitude}${row.unit === "angstrom" ? " Å" : ""}`;
 }
 
+function renderSettlingResponseHistory() {
+  const history = buildSettlingMaterialResponseHistory(leapHistory);
+  const field = history.fields.find((entry) => entry.id === selectedSettlingResponseField);
+  settlingResponseHistory.replaceChildren();
+  if (!field?.leaps.length) {
+    settlingResponseHistoryState.textContent = "awaiting retained history";
+    settlingResponseHistoryBoundary.textContent = "Columns are retained GCTS search updates, not independent specimens or physical time.";
+    return;
+  }
+  settlingResponseHistoryState.textContent = field.compatibleLeapCount
+    ? `${field.sensitiveLeapCount}/${field.compatibleLeapCount} sensitive compatible leaps · ${field.pattern.replaceAll("-", " ")}`
+    : `${field.leaps.length} retained · no compatible projections`;
+  const modes = field.leaps[0].cells.map((cell) => cell.mode).filter((mode) => mode !== "off");
+  const columns = field.leaps.length;
+  settlingResponseHistory.style.setProperty("--settling-history-columns", String(columns));
+  settlingResponseHistory.style.minWidth = `${72 + columns * 46}px`;
+  const axis = document.createElement("span"); axis.className = "axis";
+  axis.textContent = field.unit;
+  settlingResponseHistory.append(axis);
+  field.leaps.forEach((entry) => {
+    const heading = document.createElement("b"); heading.textContent = `leap ${entry.leapIndex}`;
+    heading.className = entry.retainedIndex === selectedLeapIndex ? "selected" : "";
+    settlingResponseHistory.append(heading);
+  });
+  modes.forEach((mode) => {
+    const label = document.createElement("strong"); label.textContent = mode;
+    settlingResponseHistory.append(label);
+    field.leaps.forEach((entry) => {
+      const cell = entry.cells.find((candidate) => candidate.mode === mode);
+      const button = document.createElement("button"); button.type = "button";
+      button.dataset.settlingHistoryIndex = String(entry.retainedIndex);
+      button.className = `${cell?.certified ? "certified" : "blocked"}${cell?.changed ? " changed" : ""}${Number.isFinite(cell?.delta) && cell.delta < 0 ? " negative" : " positive"}${entry.retainedIndex === selectedLeapIndex ? " selected" : ""}`;
+      button.style.setProperty("--history-magnitude", (cell?.normalizedHistoryMagnitude || 0).toFixed(4));
+      button.textContent = cell ? formatSettlingResponseDelta(field, cell) : "—";
+      button.title = `leap ${entry.leapIndex} · ${mode} · ${button.textContent} · ${cell?.certified ? "hard-certified virtual state" : "projection rolled back"}`;
+      button.setAttribute("aria-label", button.title);
+      settlingResponseHistory.append(button);
+    });
+  });
+  settlingResponseHistoryBoundary.textContent = `${history.retainedLeapCount} retained sensitivity receipt${history.retainedLeapCount === 1 ? "" : "s"}${leapEventCount > leapHistory.length ? " from a truncated 24-leap window" : ""}. Intensity is normalized only within ${field.label} (${field.unit}) across certified arms. Search order is not independent sampling, physical time, kinetics, or a trajectory.`;
+}
+
 function renderSettlingResponseMatrix(audit) {
   activeSettlingResponseAudit = audit;
   const matrix = audit?.materialResponseMatrix;
@@ -27705,6 +27752,7 @@ function renderSettlingResponseMatrix(audit) {
     settlingResponseMatrix.replaceChildren();
     settlingResponseDetail.replaceChildren();
     settlingResponseState.textContent = "awaiting arm outcomes";
+    renderSettlingResponseHistory();
     return;
   }
   if (!matrix.rows.some((row) => row.id === selectedSettlingResponseField)) {
@@ -27758,6 +27806,7 @@ function renderSettlingResponseMatrix(audit) {
       : `Color intensity is normalized only within this ${selectedRow.unit} row by its maximum absolute delta. No values from other units enter the scale.`;
     settlingResponseDetail.append(note);
   }
+  renderSettlingResponseHistory();
 }
 
 settlingResponseMatrix.addEventListener("click", (event) => {
@@ -27765,6 +27814,16 @@ settlingResponseMatrix.addEventListener("click", (event) => {
   if (!button || !settlingResponseMatrix.contains(button) || !activeSettlingResponseAudit) return;
   selectedSettlingResponseField = button.dataset.settlingResponseField;
   renderSettlingResponseMatrix(activeSettlingResponseAudit);
+});
+
+settlingResponseHistory.addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-settling-history-index]");
+  if (!button || !settlingResponseHistory.contains(button)) return;
+  const retainedIndex = Number(button.dataset.settlingHistoryIndex);
+  if (!Number.isInteger(retainedIndex) || !leapHistory[retainedIndex]) return;
+  selectedLeapIndex = retainedIndex;
+  renderStructuralLeap(leapHistory[retainedIndex]);
+  updateProcessTimeline();
 });
 
 function renderSettlingSensitivity(selected = null) {

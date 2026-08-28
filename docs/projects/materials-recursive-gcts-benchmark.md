@@ -1,5 +1,22 @@
 # Recursive GCTS benchmark for material growth
 
+### Retained-leap settling robustness (Build 290)
+
+For the currently selected material field, the portal now assembles the same
+off/gentle/balanced/strong audits from every retained structural leap into an
+allowance × leap map. Each cell preserves hard-gate rollback, certification,
+sign, and a within-field magnitude. The history classifier reports whether
+compatible virtual projections are invariant, intermittently sensitive,
+consistently signed, direction-reversing, or categorical across the retained
+window. Selecting a cell synchronizes the rest of the structural microscope to
+that discrete search update.
+
+The history audit is coordinate-free, target-free, saved in the receipt, and
+excluded from admission and ranking. Its scale never crosses fields or units.
+Sequential GCTS states are correlated outputs of one execution, so columns are
+not treated as replicate materials, physical time, a relaxation trajectory,
+kinetics, energy, or causal evidence.
+
 ### Field-wise settling robustness matrix (Build 289)
 
 The same-state settling audit now presents every material fingerprint field as

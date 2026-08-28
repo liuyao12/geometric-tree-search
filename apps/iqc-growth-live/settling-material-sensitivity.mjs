@@ -138,3 +138,94 @@ export function buildSettlingMaterialResponseMatrix(arms, tolerance = 1e-9) {
     physicalTimeModeled: false,
   };
 }
+
+function historyPattern(field, leapRows, tolerance) {
+  const compatible = leapRows.filter((entry) => entry.cells.some((cell) =>
+    cell.mode !== "off" && cell.certified));
+  if (!compatible.length) return "no-compatible-projections";
+  const sensitive = compatible.filter((entry) => entry.sensitive);
+  if (!sensitive.length) return "robust-invariant";
+  if (field.unit === "category") return sensitive.length === compatible.length
+    ? "persistent-categorical-shift" : "intermittent-categorical-shift";
+  const changed = sensitive.flatMap((entry) => entry.cells.filter((cell) =>
+    cell.mode !== "off" && cell.certified && cell.changed && Number.isFinite(cell.delta)));
+  const signs = new Set(changed.filter((cell) => Math.abs(cell.delta) > tolerance)
+    .map((cell) => Math.sign(cell.delta)));
+  if (signs.size > 1) return "direction-reversing-across-leaps";
+  return sensitive.length === compatible.length
+    ? "consistent-direction-across-leaps" : "intermittent-sensitivity";
+}
+
+export function buildSettlingMaterialResponseHistory(leaps, tolerance = 1e-9) {
+  if (!Array.isArray(leaps)) throw new Error("settling response history requires leap records");
+  const retained = leaps.map((leap, retainedIndex) => {
+    const audit = leap?.settlingSensitivity;
+    if (!audit?.arms?.length) return null;
+    const matrix = audit.materialResponseMatrix
+      || buildSettlingMaterialResponseMatrix(audit.arms, tolerance);
+    return {
+      leapIndex: leap.index ?? retainedIndex + 1,
+      retainedIndex,
+      status: leap.status || "unknown",
+      selectedMode: audit.selectedMode,
+      selectedExecutionMatchesPreview: audit.selectedExecutionMatchesPreview,
+      matrix,
+    };
+  }).filter(Boolean);
+  const fieldDefinitions = [...SETTLING_CATEGORICAL_FIELDS, ...SETTLING_MATERIAL_FIELDS];
+  const fields = fieldDefinitions.map((field) => {
+    const leapRows = retained.map((leap) => {
+      const row = leap.matrix.rows.find((entry) => entry.id === field.id);
+      if (!row) return null;
+      return {
+        leapIndex: leap.leapIndex,
+        retainedIndex: leap.retainedIndex,
+        status: leap.status,
+        selectedMode: leap.selectedMode,
+        selectedExecutionMatchesPreview: leap.selectedExecutionMatchesPreview,
+        sensitive: row.sensitive,
+        trend: row.trend,
+        cells: row.cells.map((cell) => ({ ...cell })),
+      };
+    }).filter(Boolean);
+    const categorical = field.unit === "category";
+    const maximumMagnitude = categorical ? null : Math.max(0,
+      ...leapRows.flatMap((entry) => entry.cells)
+        .filter((cell) => cell.mode !== "off" && cell.certified && Number.isFinite(cell.delta))
+        .map((cell) => Math.abs(cell.delta)));
+    leapRows.forEach((entry) => entry.cells.forEach((cell) => {
+      cell.normalizedHistoryMagnitude = categorical ? cell.changed ? 1 : 0
+        : maximumMagnitude > tolerance && cell.certified && Number.isFinite(cell.delta)
+          ? Math.abs(cell.delta) / maximumMagnitude : 0;
+    }));
+    const compatibleLeapCount = leapRows.filter((entry) => entry.cells.some((cell) =>
+      cell.mode !== "off" && cell.certified)).length;
+    const sensitiveLeapCount = leapRows.filter((entry) => entry.sensitive).length;
+    return {
+      ...field,
+      categorical,
+      maximumMagnitude,
+      leaps: leapRows,
+      compatibleLeapCount,
+      sensitiveLeapCount,
+      pattern: historyPattern(field, leapRows, tolerance),
+    };
+  });
+  return {
+    retainedLeapCount: retained.length,
+    retainedLeapIndices: retained.map((entry) => entry.leapIndex),
+    fields,
+    sensitiveFieldCount: fields.filter((field) => field.sensitiveLeapCount > 0).length,
+    normalization: "within one material field across retained leaps and certified arms only; no cross-unit scalar",
+    sequenceMeaning: "discrete retained GCTS search order; not independent specimens or physical time",
+    retainedWindowOnly: true,
+    coordinatesEmbedded: false,
+    targetUsed: false,
+    usedForAdmission: false,
+    usedForRanking: false,
+    physicalPotentialUsed: false,
+    energyInferred: false,
+    kineticsInferred: false,
+    physicalTimeModeled: false,
+  };
+}

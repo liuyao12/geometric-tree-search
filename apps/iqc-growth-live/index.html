@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260828-289">
+  <link rel="stylesheet" href="./style.css?v=20260828-290">
   <script type="importmap">
     {
       "imports": {
@@ -1886,6 +1886,11 @@
                 <header><span><small>field-wise robustness · no mixed units</small><strong>Material response matrix</strong></span><b id="settlingResponseState">awaiting arm outcomes</b></header>
                 <div id="settlingResponseMatrix" class="settling-response-matrix" role="group" aria-label="Inspect a material field across settling allowances"></div>
                 <article id="settlingResponseDetail" class="settling-response-detail" aria-live="polite"></article>
+                <section class="settling-response-history-lab" aria-label="Selected material response across retained structural leaps">
+                  <header><span><small>retained discrete updates · same field only</small><strong>Robustness across leaps</strong></span><b id="settlingResponseHistoryState">awaiting retained history</b></header>
+                  <div id="settlingResponseHistory" class="settling-response-history" role="group" aria-label="Select a retained structural leap from the field response history"></div>
+                  <p id="settlingResponseHistoryBoundary">Columns are retained GCTS search updates, not independent specimens or physical time.</p>
+                </section>
               </section>
               <p id="settlingSensitivityBoundary">Every arm starts from the same rigid GCTS attachment and fixed neighborhood. Counterfactual arms are never committed and do not rerun search.</p>
             </section>
@@ -2082,7 +2087,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260828-289"></script>
+  <script type="module" src="./app.js?v=20260828-290"></script>
   <script type="module" src="./evidence-atlas.js?v=20260827-24"></script>
 </body>
 </html>
