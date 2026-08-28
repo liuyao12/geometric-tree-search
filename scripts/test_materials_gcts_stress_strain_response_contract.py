@@ -36,6 +36,6 @@ def test_archive_response_is_receipt_and_manifest_auditable():
 
 
 def test_build_257_cache_contract():
-    assert 'buildId: "20260827-266"' in APP
-    assert "app.js?v=20260827-266" in HTML
-    assert "style.css?v=20260827-266" in HTML
+    assert 'buildId: "20260827-267"' in APP
+    assert "app.js?v=20260827-267" in HTML
+    assert "style.css?v=20260827-267" in HTML

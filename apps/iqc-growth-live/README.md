@@ -1,5 +1,26 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 267 · executable one-control physics arms
+
+The matched-counterfactual planner now distinguishes a route to a control from
+a scientifically defensible reversible intervention. Twenty-eight physical
+layers have an explicit neutral UI value (`none`, `off`, greedy order, one
+nucleus, or chemistry-only spin); hard steric/support constraints, cluster
+representations, database choices, and diagnostic microscopes do not. A pure
+binding compiler verifies that the baseline and neutral values both exist,
+differ, and affect only the selected protocol layer. Already-neutral controls,
+missing values, and shared controls fail closed.
+
+For a valid binding, the composer exposes baseline and arm-B buttons. Applying
+either arm uses the existing specimen rebuild path, restores the preregistered
+protocol, and records the one changed control, exact values, active arm, and
+active selected IDs in preflight-manifest schema 3. The registration and its
+SHA-covered receipt record freeze at the first structural action. Ranking/order
+interventions still require an identical first-frontier candidate digest;
+admission/geometry interventions still treat the candidate set as an outcome.
+This executes a deterministic geometric omission—not a free-energy component,
+physical mechanism removal, rate law, or population-level causal claim.
+
 ## Build 266 · matched physics counterfactual planner
 
 Every pre-growth physics protocol can now register one selected layer as the

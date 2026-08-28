@@ -1,5 +1,29 @@
 # Recursive GCTS benchmark for material growth
 
+### Executable one-control physics arms (Build 267)
+
+`buildPhysicsProtocolControlBinding` now compiles a selected physics row and a
+live select-control snapshot into a fail-closed intervention manifest. The
+frozen registry names an explicit neutral value for 28 reversible geometric
+surrogates and rejects hard constraints or representations that have no honest
+off state. It verifies the control ID, enumerated option values, distinct
+baseline/ablation values, and the set of other selected rows affected by the
+same control. The affine-load control, for example, cannot be presented as a
+one-factor ablation while both affine loading and archived stress response are
+selected.
+
+Stage 4 can now apply the verified baseline or arm B before candidate
+enumeration. The normal stage-reset path rebuilds the same supplied specimen;
+the immutable registration is then restored with exactly one changed control
+and the active protocol IDs (the omitted row is absent only from arm B). The
+manifest schema is 3 and the receipt hash covers the binding, baseline and
+neutral values, active arm, applied-value verification, and target-free flags.
+At the first structural action, arm controls and the matched-counterfactual
+selector freeze. Browser regression verifies surface completion `soft → none`,
+baseline restoration, ready execution in both arms, and design-only treatment
+of steric exclusion. No paired outcome is fabricated: candidate-digest and
+matched-input gates remain obligations for a later two-receipt comparison.
+
 ### Matched physics counterfactual planner (Build 266)
 
 The pre-growth protocol can now declare a one-layer baseline/omission pair.

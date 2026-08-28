@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
-import { buildPhysicsInvestigationProtocol, buildPhysicsProtocolIntervention }
+import { buildPhysicsInvestigationProtocol, buildPhysicsProtocolControlBinding,
+  buildPhysicsProtocolIntervention, PHYSICS_ABLATION_CONTROL_BINDINGS }
   from "../apps/iqc-growth-live/physics-compression-map.js";
 
 const records = [
@@ -56,25 +57,61 @@ assert.throws(() => buildPhysicsInvestigationProtocol(records, ["unknown"]), /un
 assert.throws(() => buildPhysicsInvestigationProtocol(records, [], { intent: "physical-time" }), /unsupported/);
 
 const paired = buildPhysicsInvestigationProtocol(records, ["steric", "surface", "path-ensemble"]);
-const rankingIntervention = buildPhysicsProtocolIntervention(paired, "surface");
+const surfaceControl = { controlId: "surfacePreferenceSelect", currentValue: "soft",
+  availableOptions: [
+    { value: "soft", label: "Heal undercoordination · balanced" },
+    { value: "strong", label: "Heal undercoordination · strong" },
+    { value: "none", label: "Off · report only" },
+  ] };
+const rankingIntervention = buildPhysicsProtocolIntervention(paired, "surface", surfaceControl);
 assert.equal(rankingIntervention.state, "ready-to-configure");
+assert.equal(rankingIntervention.schema, 2);
 assert.equal(rankingIntervention.comparisonMode, "matched-candidate-ranking");
 assert.equal(rankingIntervention.candidateSetMustRemainIdentical, true);
 assert.equal(rankingIntervention.candidateSetMayChange, false);
 assert.deepEqual(rankingIntervention.changedExecutionObjects, ["ranking"]);
 assert.deepEqual(rankingIntervention.ablationSelectedRecordIds, ["steric", "path-ensemble"]);
+assert.equal(rankingIntervention.controlBinding.baselineValue, "soft");
+assert.equal(rankingIntervention.controlBinding.ablationValue, "none");
+assert.deepEqual(rankingIntervention.controlBinding.changedControlIds, ["surfacePreferenceSelect"]);
+assert.equal(rankingIntervention.controlBinding.candidateSetInspected, false);
+assert.equal(rankingIntervention.controlBinding.targetUsed, false);
+assert.equal(PHYSICS_ABLATION_CONTROL_BINDINGS.surface.ablationValue, "none");
 
 const hardIntervention = buildPhysicsProtocolIntervention(paired, "steric");
-assert.equal(hardIntervention.state, "design-only-no-control");
+assert.equal(hardIntervention.state, "design-only-no-reversible-control");
 assert.equal(hardIntervention.comparisonMode, "matched-input-structural-response");
 assert.equal(hardIntervention.candidateSetMustRemainIdentical, false);
 assert.equal(hardIntervention.candidateSetMayChange, true);
 assert.match(hardIntervention.candidateIdentityGate, /outcome/);
 
-const orderIntervention = buildPhysicsProtocolIntervention(paired, "path-ensemble");
+const orderIntervention = buildPhysicsProtocolIntervention(paired, "path-ensemble", {
+  controlId: "explorationScaleSelect", currentValue: "0.15",
+  availableOptions: [{ value: "0", label: "Greedy" }, { value: "0.15", label: "Balanced exploration" }],
+});
 assert.equal(orderIntervention.candidateSetMustRemainIdentical, true);
 assert.deepEqual(orderIntervention.changedExecutionObjects, ["searchOrder"]);
+assert.equal(orderIntervention.controlBinding.readyToConfigure, true);
+const neutralOrder = buildPhysicsProtocolControlBinding(paired, "path-ensemble", {
+  controlId: "explorationScaleSelect", currentValue: "0",
+  availableOptions: [{ value: "0", label: "Greedy" }, { value: "0.15", label: "Balanced exploration" }],
+});
+assert.equal(neutralOrder.state, "already-neutral");
+assert.equal(neutralOrder.exactlyOneControlChanges, false);
 assert.throws(() => buildPhysicsProtocolIntervention(paired, "long-range"), /not selected/);
+
+const sharedRecords = [...records,
+  { id: "stress-strain-response", process: "response", status: "soft", role: "active",
+    encoding: "affine response", evidence: "declared", boundary: "not dynamics", controlRouteAvailable: true },
+  { id: "affine", process: "affine metric", status: "soft", role: "active",
+    encoding: "metric transform", evidence: "declared", boundary: "not mechanics", controlRouteAvailable: true }];
+const sharedProtocol = buildPhysicsInvestigationProtocol(sharedRecords, ["stress-strain-response", "affine"]);
+const sharedControl = buildPhysicsProtocolControlBinding(sharedProtocol, "affine", {
+  controlId: "affineLoadSelect", currentValue: "z-tension",
+  availableOptions: [{ value: "none", label: "None" }, { value: "z-tension", label: "Z tension" }],
+});
+assert.equal(sharedControl.state, "shared-control-conflict");
+assert.deepEqual(sharedControl.selectedAffectedRecordIds, ["stress-strain-response", "affine"]);
 
 console.log("physics investigation protocol regression passed", {
   ready: ready.selectedRecordCount,

@@ -59,9 +59,9 @@ def test_measure_is_finite_invariant_and_not_a_bulk_claim():
 
 
 def test_build_242_is_exposed():
-    assert 'buildId: "20260827-266"' in APP
-    assert 'app.js?v=20260827-266' in HTML
-    assert 'style.css?v=20260827-266' in HTML
+    assert 'buildId: "20260827-267"' in APP
+    assert 'app.js?v=20260827-267' in HTML
+    assert 'style.css?v=20260827-267' in HTML
     assert 'local-packing-density.js?v=20260827-2' in APP
 
 

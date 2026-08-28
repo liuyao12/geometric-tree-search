@@ -45,9 +45,9 @@ import { blockedCreationResponseSurrogate, blockedCreationResponseValidation, bu
   LOCAL_CREATION_CONTEXT_FEATURE_IDS }
   from "./creation-response-association.js?v=20260826-13";
 import { buildPhysicsCompressionMap, buildPhysicsEffectMatrix, buildPhysicsInvestigationProtocol,
-  buildPhysicsLineagePath, buildPhysicsProtocolIntervention,
+  buildPhysicsLineagePath, buildPhysicsProtocolIntervention, PHYSICS_ABLATION_CONTROL_BINDINGS,
   PHYSICS_EFFECT_COLUMNS, PHYSICS_READINESS_STATES, physicsExecutionLineage }
-  from "./physics-compression-map.js?v=20260827-6";
+  from "./physics-compression-map.js?v=20260827-7";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -1559,6 +1559,7 @@ let selectedGrowthPhysicsReadinessFilter = "all";
 let selectedPhysicsCompressionLane = "all";
 let physicsProtocolSelectedIds = null;
 let physicsProtocolAblatedRecordId = null;
+let physicsProtocolArmRegistration = null;
 let frozenPhysicsPreflightManifest = null;
 const MAXIMUM_RETAINED_STRUCTURAL_LEAPS = 24;
 let growthMechanismEvents = [];
@@ -10247,7 +10248,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-266",
+      buildId: "20260827-267",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -12514,7 +12515,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-266" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-267" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -21899,6 +21900,7 @@ function resetCounters() {
   selectedLeapPhysicsId = "steric";
   physicsProtocolSelectedIds = null;
   physicsProtocolAblatedRecordId = null;
+  physicsProtocolArmRegistration = null;
   frozenPhysicsPreflightManifest = null;
   growthMechanismEvents = [];
   growthMechanismTotals = {};
@@ -24221,6 +24223,49 @@ function physicsManifestRecord(record) {
     executionLineage: physicsExecutionLineage(record) };
 }
 
+function physicsProtocolControlSnapshot(recordId) {
+  const definition = PHYSICS_ABLATION_CONTROL_BINDINGS[recordId];
+  const control = definition ? $(definition.controlId) : null;
+  if (!definition || !(control instanceof HTMLSelectElement)) return null;
+  return { controlId: control.id, currentValue: control.value,
+    availableOptions: [...control.options].map((option) => ({ value: option.value,
+      label: option.textContent.trim() })) };
+}
+
+function physicsProtocolRegistrationMatches(registration, declaredRecordIds) {
+  if (!registration || registration.schema !== 1) return false;
+  const expected = [...declaredRecordIds].sort();
+  const registered = [...registration.baselineSelectedRecordIds].sort();
+  return registration.ablatedRecordId === physicsProtocolAblatedRecordId
+    && expected.length === registered.length
+    && expected.every((recordId, index) => recordId === registered[index]);
+}
+
+function publicPhysicsProtocolArmRegistration(registration, activeSelectedRecordIds) {
+  if (!registration) return null;
+  const binding = registration.interventionPlan.controlBinding;
+  const control = binding.controlId ? $(binding.controlId) : null;
+  const expectedValue = registration.activeArm === "ablation"
+    ? binding.ablationValue : binding.baselineValue;
+  return {
+    schema: 1,
+    ablatedRecordId: registration.ablatedRecordId,
+    activeArm: registration.activeArm,
+    baselineSelectedRecordIds: [...registration.baselineSelectedRecordIds],
+    activeSelectedRecordIds: [...activeSelectedRecordIds],
+    controlId: binding.controlId,
+    baselineValue: binding.baselineValue,
+    ablationValue: binding.ablationValue,
+    appliedControlValue: control?.value ?? null,
+    controlValueMatchesActiveArm: control?.value === expectedValue,
+    exactlyOneControlChanges: binding.exactlyOneControlChanges,
+    changedControlIds: [...binding.changedControlIds],
+    configuredBeforeCandidateEnumeration: true,
+    candidateSetInspected: false,
+    targetUsed: false,
+  };
+}
+
 function physicsProtocolForRecords(records) {
   const recordIds = new Set(records.map((record) => record.id));
   if (!(physicsProtocolSelectedIds instanceof Set)) {
@@ -24231,14 +24276,27 @@ function physicsProtocolForRecords(records) {
     physicsProtocolSelectedIds = new Set([...physicsProtocolSelectedIds]
       .filter((recordId) => recordIds.has(recordId)));
   }
-  const protocol = buildPhysicsInvestigationProtocol(records, [...physicsProtocolSelectedIds], {
+  const declaredSelectedRecordIds = [...physicsProtocolSelectedIds];
+  if (!physicsProtocolRegistrationMatches(physicsProtocolArmRegistration, declaredSelectedRecordIds)) {
+    physicsProtocolArmRegistration = null;
+  }
+  const activeSelectedRecordIds = physicsProtocolArmRegistration?.activeArm === "ablation"
+    ? physicsProtocolArmRegistration.interventionPlan.ablationSelectedRecordIds
+    : declaredSelectedRecordIds;
+  const protocol = buildPhysicsInvestigationProtocol(records, activeSelectedRecordIds, {
     intent: "structural-continuation",
   });
   if (physicsProtocolAblatedRecordId && !physicsProtocolSelectedIds.has(physicsProtocolAblatedRecordId)) {
     physicsProtocolAblatedRecordId = null;
+    physicsProtocolArmRegistration = null;
   }
-  return { ...protocol, interventionPlan: physicsProtocolAblatedRecordId
-    ? buildPhysicsProtocolIntervention(protocol, physicsProtocolAblatedRecordId) : null };
+  const interventionPlan = physicsProtocolArmRegistration?.interventionPlan
+    || (physicsProtocolAblatedRecordId
+      ? buildPhysicsProtocolIntervention(protocol, physicsProtocolAblatedRecordId,
+        physicsProtocolControlSnapshot(physicsProtocolAblatedRecordId)) : null);
+  return { ...protocol, declaredSelectedRecordIds, interventionPlan,
+    armRegistration: publicPhysicsProtocolArmRegistration(physicsProtocolArmRegistration,
+      activeSelectedRecordIds) };
 }
 
 function currentPhysicsPreflightManifest() {
@@ -24247,7 +24305,7 @@ function currentPhysicsPreflightManifest() {
     result[physicsEvidenceBucket(record)] += 1;
     return result;
   }, { structural: 0, hypothesis: 0, open: 0 });
-  return { schema: 2, records, counts, compressionMap: buildPhysicsCompressionMap(records),
+  return { schema: 3, records, counts, compressionMap: buildPhysicsCompressionMap(records),
     effectMatrix: buildPhysicsEffectMatrix(records),
     investigationProtocol: physicsProtocolForRecords(records),
     generatedBeforeActionExecution: true, coordinatesEmbedded: false,
@@ -24293,8 +24351,35 @@ function renderPhysicsLineageFlow(container, record) {
 function updatePhysicsProtocolSelection(recordIds) {
   if (leapEventCount > 0) return;
   physicsProtocolSelectedIds = new Set(recordIds);
+  physicsProtocolArmRegistration = null;
   frozenPhysicsPreflightManifest = null;
   renderGrowthPhysicsPreflight();
+}
+
+function applyPhysicsProtocolArm(interventionPlan, activeArm) {
+  if (leapEventCount > 0 || !interventionPlan?.armConfigurationReady
+      || !["baseline", "ablation"].includes(activeArm)) return;
+  const binding = interventionPlan.controlBinding;
+  const control = binding.controlId ? $(binding.controlId) : null;
+  const arm = activeArm === "ablation" ? binding.ablationArm : binding.baselineArm;
+  if (!(control instanceof HTMLSelectElement) || !arm
+      || ![...control.options].some((option) => option.value === arm.value)) return;
+  const registration = physicsProtocolArmRegistration || {
+    schema: 1,
+    ablatedRecordId: interventionPlan.ablatedRecordId,
+    baselineSelectedRecordIds: [...interventionPlan.baselineSelectedRecordIds],
+    interventionPlan,
+    activeArm: "baseline",
+  };
+  const retainedSelectedIds = [...registration.baselineSelectedRecordIds];
+  control.value = arm.value;
+  control.dispatchEvent(new Event("change", { bubbles: true }));
+  physicsProtocolSelectedIds = new Set(retainedSelectedIds);
+  physicsProtocolAblatedRecordId = registration.ablatedRecordId;
+  physicsProtocolArmRegistration = { ...registration, activeArm };
+  frozenPhysicsPreflightManifest = null;
+  renderGrowthPhysicsPreflight();
+  receiptStatus.textContent = `${activeArm === "baseline" ? "Baseline" : "Arm B"} configured · ${binding.controlId} = ${arm.label} · one frozen control changed before candidate enumeration.`;
 }
 
 function renderPhysicsProtocolComposer(manifest) {
@@ -24317,23 +24402,35 @@ function renderPhysicsProtocolComposer(manifest) {
     cell.append(label, value); return cell;
   }));
   const selectedById = new Map(protocol.selected.map((record) => [record.recordId, record]));
+  const manifestById = new Map(manifest.records.map((record) => [record.id, record]));
+  const declaredSelectedRecordIds = protocol.declaredSelectedRecordIds || protocol.selectedRecordIds;
   growthPhysicsProtocolSelection.replaceChildren();
-  if (!protocol.selectedRecordIds.length) {
+  if (!declaredSelectedRecordIds.length) {
     const empty = document.createElement("span"); empty.className = "empty";
     empty.textContent = "No physical layer selected · choose a preset or add one from its detail.";
     growthPhysicsProtocolSelection.append(empty);
-  } else protocol.selectedRecordIds.forEach((recordId) => {
+  } else declaredSelectedRecordIds.forEach((recordId) => {
     const record = selectedById.get(recordId);
+    const manifestRecord = manifestById.get(recordId);
+    const omittedInArm = protocol.armRegistration?.activeArm === "ablation"
+      && recordId === protocol.interventionPlan?.ablatedRecordId;
     const button = document.createElement("button"); button.type = "button"; button.disabled = frozen;
-    button.textContent = `${record?.process || recordId} · ${record?.readiness?.label || "unknown"} ×`;
+    button.classList.toggle("ablated", omittedInArm);
+    button.textContent = `${record?.process || manifestRecord?.process || recordId} · ${omittedInArm
+      ? "omitted in arm B" : record?.readiness?.label || "declared"} ×`;
     button.title = frozen ? "Protocol frozen before the first structural action"
       : `Remove ${record?.process || recordId} from the investigation protocol`;
     button.addEventListener("click", () => updatePhysicsProtocolSelection(
-      protocol.selectedRecordIds.filter((candidate) => candidate !== recordId)));
+      declaredSelectedRecordIds.filter((candidate) => candidate !== recordId)));
     growthPhysicsProtocolSelection.append(button);
   });
   const eligibleInterventions = protocol.selected.filter((record) => record.readiness.id === "executing"
     && PHYSICS_EFFECT_COLUMNS.slice(0, -1).some((column) => record.effects[column.id]));
+  if (protocol.interventionPlan && !eligibleInterventions.some((record) =>
+    record.recordId === protocol.interventionPlan.ablatedRecordId)) {
+    eligibleInterventions.push({ recordId: protocol.interventionPlan.ablatedRecordId,
+      process: protocol.interventionPlan.ablatedProcess });
+  }
   const previous = protocol.interventionPlan?.ablatedRecordId || "";
   growthPhysicsAblationSelect.replaceChildren();
   const none = document.createElement("option"); none.value = ""; none.textContent = "None · single-arm protocol";
@@ -24345,6 +24442,7 @@ function renderPhysicsProtocolComposer(manifest) {
     ? previous : "";
   growthPhysicsAblationSelect.disabled = frozen || eligibleInterventions.length === 0;
   growthPhysicsAblationDetail.className = "";
+  growthPhysicsAblationDetail.replaceChildren();
   if (!protocol.interventionPlan) {
     growthPhysicsAblationDetail.innerHTML = "<b>No counterfactual registered</b><span>Select one executing layer to classify the required comparison and candidate-identity gate.</span>";
   } else {
@@ -24353,7 +24451,37 @@ function renderPhysicsProtocolComposer(manifest) {
     const gate = intervention.candidateSetMustRemainIdentical ? "same first-frontier digest required"
       : intervention.candidateSetMayChange ? "candidate set is a measured outcome"
         : intervention.initialStateMayChange ? "seed digest is the intervention" : "no executable arm";
-    growthPhysicsAblationDetail.innerHTML = `<b>${intervention.comparisonMode.replaceAll("-", " ")}</b><span>Arm B omits only ${intervention.ablatedProcess}. ${gate}. ${intervention.controlRouteAvailable ? intervention.controlRouteLabel : "No local control route; design only."}</span>`;
+    const title = document.createElement("b");
+    title.textContent = intervention.comparisonMode.replaceAll("-", " ");
+    const description = document.createElement("span");
+    const binding = intervention.controlBinding;
+    const bindingMessage = binding?.readyToConfigure
+      ? `${binding.controlId}: ${binding.baselineLabel} → ${binding.ablationLabel}.`
+      : binding?.state === "already-neutral" ? "The control is already at its neutral value; choose an active baseline first."
+        : binding?.state === "shared-control-conflict" ? "This control also changes another selected physical layer; remove that layer before claiming a one-factor arm."
+          : binding?.state === "control-value-unavailable" || binding?.state === "control-mismatch"
+            ? "The declared control/value is unavailable in this specimen; configuration fails closed."
+            : "No explicit reversible neutral value is registered; this remains a design-only comparison.";
+    description.textContent = `Arm B omits only ${intervention.ablatedProcess}. ${gate}. ${bindingMessage}`;
+    growthPhysicsAblationDetail.append(title, description);
+    if (binding?.readyToConfigure) {
+      const controls = document.createElement("div"); controls.className = "physics-protocol-arm-buttons";
+      [["baseline", `Baseline · ${binding.baselineLabel}`],
+        ["ablation", `Arm B · ${binding.ablationLabel}`]].forEach(([armId, label]) => {
+        const button = document.createElement("button"); button.type = "button"; button.textContent = label;
+        button.dataset.physicsProtocolArm = armId;
+        button.classList.toggle("active", protocol.armRegistration?.activeArm === armId);
+        button.setAttribute("aria-pressed", String(protocol.armRegistration?.activeArm === armId));
+        button.disabled = frozen;
+        button.addEventListener("click", () => applyPhysicsProtocolArm(intervention, armId));
+        controls.append(button);
+      });
+      const state = document.createElement("small");
+      state.textContent = protocol.armRegistration
+        ? `${protocol.armRegistration.activeArm === "baseline" ? "Baseline" : "Arm B"} active · value ${protocol.armRegistration.appliedControlValue} · ${protocol.armRegistration.controlValueMatchesActiveArm ? "verified" : "mismatch"}`
+        : "Not yet applied · choose an arm before growth";
+      controls.append(state); growthPhysicsAblationDetail.append(controls);
+    }
   }
 }
 
@@ -24557,6 +24685,7 @@ growthPhysicsProtocolComposer.addEventListener("click", (event) => {
 growthPhysicsAblationSelect.addEventListener("change", () => {
   if (leapEventCount > 0) return;
   physicsProtocolAblatedRecordId = growthPhysicsAblationSelect.value || null;
+  physicsProtocolArmRegistration = null;
   frozenPhysicsPreflightManifest = null;
   renderGrowthPhysicsPreflight();
   receiptStatus.textContent = physicsProtocolAblatedRecordId

@@ -1,11 +1,32 @@
 #!/usr/bin/env python3
 """Portal contract for the target-free pre-growth physics protocol composer."""
 
+from html.parser import HTMLParser
 from pathlib import Path
+import re
 
 
 ROOT = Path(__file__).resolve().parent.parent
 APP = ROOT / "apps" / "iqc-growth-live"
+
+
+class SelectOptionParser(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self.current_select = None
+        self.options = {}
+
+    def handle_starttag(self, tag, attrs) -> None:
+        values = dict(attrs)
+        if tag == "select" and values.get("id"):
+            self.current_select = values["id"]
+            self.options.setdefault(self.current_select, set())
+        elif tag == "option" and self.current_select:
+            self.options[self.current_select].add(values.get("value", ""))
+
+    def handle_endtag(self, tag) -> None:
+        if tag == "select":
+            self.current_select = None
 
 
 def main() -> None:
@@ -14,6 +35,16 @@ def main() -> None:
     html = (APP / "index.html").read_text()
     root_html = (ROOT / "iqc-growth-live" / "index.html").read_text()
     css = (APP / "style.css").read_text()
+
+    option_parser = SelectOptionParser()
+    option_parser.feed(html)
+    bindings = re.findall(
+        r'^\s*\["([^"]+)",\s*"([^"]+)",\s*"([^"]+)"', module, re.MULTILINE)
+    assert len(bindings) == 28
+    assert len({record_id for record_id, _, _ in bindings}) == len(bindings)
+    for record_id, control_id, neutral_value in bindings:
+        assert control_id in option_parser.options, (record_id, control_id)
+        assert neutral_value in option_parser.options[control_id], (record_id, neutral_value)
 
     for needle in (
         'id="growthPhysicsProtocolComposer"',
@@ -26,13 +57,21 @@ def main() -> None:
         'data-physics-protocol-preset="actionable"',
         'data-physics-protocol-preset="clear"',
         "freeze before the first candidate frontier",
-        'app.js?v=20260827-266',
+        'app.js?v=20260827-267',
     ):
         assert needle in html, needle
 
     for needle in (
         "export function buildPhysicsInvestigationProtocol",
         "export function buildPhysicsProtocolIntervention",
+        "export function buildPhysicsProtocolControlBinding",
+        "export const PHYSICS_ABLATION_CONTROL_BINDINGS",
+        'interventionKind: "explicit-neutral-control-value"',
+        'state === "ready-to-configure"',
+        '"shared-control-conflict"',
+        '"already-neutral"',
+        "exactlyOneControlChanges: readyToConfigure",
+        "changedControlIds: readyToConfigure",
         'selectionMadeBeforeCandidateEnumeration: true',
         'candidateSetInspected: false',
         'coordinatesEmbedded: false',
@@ -50,20 +89,25 @@ def main() -> None:
     for needle in (
         "buildPhysicsCompressionMap, buildPhysicsEffectMatrix, buildPhysicsInvestigationProtocol",
         "buildPhysicsLineagePath, buildPhysicsProtocolIntervention",
-        'from "./physics-compression-map.js?v=20260827-6"',
+        "PHYSICS_ABLATION_CONTROL_BINDINGS",
+        'from "./physics-compression-map.js?v=20260827-7"',
         "function physicsProtocolForRecords(records)",
+        "function physicsProtocolControlSnapshot(recordId)",
+        "function applyPhysicsProtocolArm(interventionPlan, activeArm)",
         "function updatePhysicsProtocolSelection(recordIds)",
         "function renderPhysicsProtocolComposer(manifest)",
         "physicsProtocolAblatedRecordId",
-        "interventionPlan: physicsProtocolAblatedRecordId",
+        "physicsProtocolArmRegistration",
+        "armRegistration: publicPhysicsProtocolArmRegistration",
+        "const interventionPlan = physicsProtocolArmRegistration?.interventionPlan",
         'growthPhysicsAblationSelect.addEventListener("change"',
         "investigationProtocol: physicsProtocolForRecords(records)",
-        'schema: 2, records, counts',
+        'schema: 3, records, counts',
         'physicsPreflightManifest: { ...physicsPreflightManifest',
         'frozenBeforeFirstStructuralAction: Boolean(frozenPhysicsPreflightManifest)',
         'if (leapEventCount > 0) return;',
         'no control changed.',
-        'buildId: "20260827-266"',
+        'buildId: "20260827-267"',
     ):
         assert needle in source, needle
 
@@ -73,13 +117,15 @@ def main() -> None:
         ".physics-protocol-coverage",
         ".physics-protocol-selection",
         ".physics-protocol-intervention",
+        ".physics-protocol-arm-buttons",
+        ".physics-protocol-selection button.ablated",
         ".protocol-selected",
     ):
         assert needle in css, needle
 
     assert '<base href="../apps/iqc-growth-live/">' in root_html
     assert 'id="growthPhysicsProtocolComposer"' in root_html
-    assert 'app.js?v=20260827-266' in root_html
+    assert 'app.js?v=20260827-267' in root_html
     print("physics protocol composer portal contract: passed")
 
 

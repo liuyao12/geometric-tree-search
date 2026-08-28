@@ -885,6 +885,7 @@ body.study-guide-open { overflow: hidden; }
 .physics-protocol-selection button { flex: 0 0 auto; max-width: 126px; padding: 3px 5px; border: 1px solid rgba(181,148,255,.15); background: rgba(181,148,255,.025); color: #8c80a4; font: 4px var(--mono); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; cursor: pointer; }
 .physics-protocol-selection button:hover,.physics-protocol-selection button:focus-visible { border-color: rgba(255,117,111,.5); color: #d8a6a4; outline: none; }
 .physics-protocol-selection button:disabled { cursor: default; opacity: .65; }
+.physics-protocol-selection button.ablated { border-style: dashed; border-color: rgba(255,193,105,.42); color: #c3a77e; }
 .physics-protocol-selection .empty { color: #5e716c; font: 4px var(--mono); }
 .physics-protocol-intervention { display: grid; grid-template-columns: minmax(126px,.8fr) minmax(0,1.2fr); gap: 5px; margin-top: 5px; padding-top: 5px; border-top: 1px solid rgba(101,225,188,.1); }
 .physics-protocol-intervention label { color: #66827a; font: 4px var(--mono); text-transform: uppercase; }
@@ -895,6 +896,12 @@ body.study-guide-open { overflow: hidden; }
 .physics-protocol-intervention article.warning { border-left-color: #ffc169; color: #8b765b; }
 .physics-protocol-intervention article b,.physics-protocol-intervention article span { display: block; }
 .physics-protocol-intervention article b { color: #c3b7dc; font-weight: 400; text-transform: uppercase; }.physics-protocol-intervention article span { margin-top: 2px; }
+.physics-protocol-arm-buttons { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 3px; margin-top: 5px; }
+.physics-protocol-arm-buttons button { min-height: 21px; padding: 3px 4px; border: 1px solid rgba(101,225,188,.18); background: rgba(2,13,14,.72); color: #78968d; font: 4px var(--mono); cursor: pointer; }
+.physics-protocol-arm-buttons button:hover,.physics-protocol-arm-buttons button:focus-visible,.physics-protocol-arm-buttons button.active { border-color: rgba(101,225,188,.58); color: #c3e7dc; outline: none; }
+.physics-protocol-arm-buttons button.active { box-shadow: inset 2px 0 var(--mint); background: rgba(101,225,188,.05); }
+.physics-protocol-arm-buttons button:disabled { opacity: .4; cursor: default; }
+.physics-protocol-arm-buttons small { grid-column: 1/-1; color: #71877f; font: 4px/1.35 var(--mono); }
 .physics-protocol-composer > p { margin: 5px 0 0; color: #5d756e; font: 4px/1.45 var(--mono); }
 .growth-physics-preflight .leap-physics-matrix button.protocol-selected { box-shadow: inset 2px 0 var(--mint); }
 .leap-physics-actions .protocol-toggle { min-width: 118px; border-color: rgba(181,148,255,.3); color: #b8a7de; }

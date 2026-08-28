@@ -49,6 +49,43 @@ const RANKING_IDS = new Set([
   "feed-exposure", "kinetics",
 ]);
 
+const PHYSICS_ABLATION_BINDING_DEFINITIONS = [
+  ["constraint-projection", "structuralRelaxationSelect", "off"],
+  ["collinear-spin", "spinColoringSelect", "ignore"],
+  ["chemistry", "compositionPreferenceSelect", "none"],
+  ["charge-geometry", "chargeGeometrySelect", "none"],
+  ["charge-moment", "chargeMomentSelect", "none"],
+  ["ionic-pair", "ionicPairSelect", "none"],
+  ["bond-valence", "bondValenceSelect", "none"],
+  ["solute-partition", "solutePartitionSelect", "none"],
+  ["surface", "surfacePreferenceSelect", "none"],
+  ["bulk-surface-driving", "growthDrivingSelect", "none"],
+  ["attachment-topology", "attachmentTopologySelect", "none"],
+  ["habit-anisotropy", "habitAnisotropySelect", "none"],
+  ["defect-precursors", "defectPrecursorSelect", "none"],
+  ["coherency-memory", "coherencyMemorySelect", "none"],
+  ["front-morphology", "frontMorphologySelect", "none"],
+  ["capillary-geometry", "capillaryGeometrySelect", "none"],
+  ["epitaxy", "epitaxyTemplateSelect", "none"],
+  ["stress-strain-response", "affineLoadSelect", "none", ["stress-strain-response", "affine"]],
+  ["affine", "affineLoadSelect", "none", ["stress-strain-response", "affine"]],
+  ["drive", "externalDriveSelect", "none"],
+  ["thermal-field", "thermalFieldSelect", "none"],
+  ["robustness", "robustnessPreferenceSelect", "none"],
+  ["microstructure", "microstructureCouplingSelect", "none"],
+  ["multi-nucleus", "growthNucleiSelect", "1"],
+  ["loop-closure", "loopClosurePreferenceSelect", "none"],
+  ["feed-exposure", "feedExposureSelect", "none"],
+  ["kinetics", "arrivalPathSelect", "none"],
+  ["path-ensemble", "explorationScaleSelect", "0"],
+];
+
+export const PHYSICS_ABLATION_CONTROL_BINDINGS = Object.freeze(Object.fromEntries(
+  PHYSICS_ABLATION_BINDING_DEFINITIONS.map(([recordId, controlId, ablationValue, affectedRecordIds]) =>
+    [recordId, Object.freeze({ recordId, controlId, ablationValue,
+      affectedRecordIds: Object.freeze(affectedRecordIds || [recordId]),
+      interventionKind: "explicit-neutral-control-value" })])));
+
 export const PHYSICS_EFFECT_COLUMNS = Object.freeze([
   Object.freeze({ id: "hardAdmission", label: "admission", property: "hardAdmissionCanChange" }),
   Object.freeze({ id: "candidateGeometry", label: "geometry", property: "candidateGeometryCanChange" }),
@@ -324,7 +361,67 @@ export function buildPhysicsInvestigationProtocol(records, selectedRecordIds, op
   };
 }
 
-export function buildPhysicsProtocolIntervention(protocol, ablatedRecordId) {
+export function buildPhysicsProtocolControlBinding(protocol, ablatedRecordId, controlSnapshot = null) {
+  if (!protocol || protocol.schema !== 1 || !Array.isArray(protocol.selected)) {
+    throw new Error("physics protocol control binding needs a compiled protocol");
+  }
+  const selected = protocol.selected.find((record) => record.recordId === ablatedRecordId);
+  if (!selected) throw new Error(`physics protocol control binding record is not selected: ${ablatedRecordId}`);
+  const definition = PHYSICS_ABLATION_CONTROL_BINDINGS[ablatedRecordId] || null;
+  const selectedAffectedRecordIds = definition ? definition.affectedRecordIds
+    .filter((recordId) => protocol.selectedRecordIds.includes(recordId)) : [];
+  const sharedControlConflict = selectedAffectedRecordIds.some((recordId) => recordId !== ablatedRecordId);
+  const availableOptions = Array.isArray(controlSnapshot?.availableOptions)
+    ? controlSnapshot.availableOptions.map((option) => ({ value: String(option.value), label: String(option.label) })) : [];
+  const availableValues = availableOptions.map((option) => option.value);
+  const baselineValue = controlSnapshot?.currentValue == null ? null : String(controlSnapshot.currentValue);
+  const ablationValue = definition?.ablationValue ?? null;
+  const controlMatches = Boolean(definition && controlSnapshot?.controlId === definition.controlId);
+  const baselineValueAvailable = baselineValue != null && availableValues.includes(baselineValue);
+  const ablationValueAvailable = ablationValue != null && availableValues.includes(ablationValue);
+  const valuesDiffer = baselineValue != null && ablationValue != null && baselineValue !== ablationValue;
+  const optionLabel = (value) => availableOptions.find((option) => option.value === value)?.label || value;
+  const state = !definition ? "no-reversible-control"
+    : !controlSnapshot ? "control-snapshot-required"
+      : !controlMatches ? "control-mismatch"
+        : !baselineValueAvailable || !ablationValueAvailable ? "control-value-unavailable"
+          : sharedControlConflict ? "shared-control-conflict"
+            : !valuesDiffer ? "already-neutral"
+              : "ready-to-configure";
+  const readyToConfigure = state === "ready-to-configure";
+  return {
+    schema: 1,
+    state,
+    readyToConfigure,
+    recordId: ablatedRecordId,
+    controlId: definition?.controlId || null,
+    interventionKind: definition?.interventionKind || null,
+    baselineValue,
+    baselineLabel: baselineValue == null ? null : optionLabel(baselineValue),
+    ablationValue,
+    ablationLabel: ablationValue == null ? null : optionLabel(ablationValue),
+    availableValues,
+    controlMatches,
+    baselineValueAvailable,
+    ablationValueAvailable,
+    valuesDiffer,
+    affectedRecordIds: definition ? [...definition.affectedRecordIds] : [],
+    selectedAffectedRecordIds,
+    sharedControlConflict,
+    exactlyOneControlChanges: readyToConfigure,
+    changedControlIds: readyToConfigure ? [definition.controlId] : [],
+    baselineArm: readyToConfigure ? { id: "baseline", controlId: definition.controlId,
+      value: baselineValue, label: optionLabel(baselineValue) } : null,
+    ablationArm: readyToConfigure ? { id: "ablation", controlId: definition.controlId,
+      value: ablationValue, label: optionLabel(ablationValue) } : null,
+    selectionMadeBeforeCandidateEnumeration: true,
+    candidateSetInspected: false,
+    coordinatesEmbedded: false,
+    targetUsed: false,
+  };
+}
+
+export function buildPhysicsProtocolIntervention(protocol, ablatedRecordId, controlSnapshot = null) {
   if (!protocol || protocol.schema !== 1 || !Array.isArray(protocol.selected)) {
     throw new Error("physics protocol intervention needs a compiled protocol");
   }
@@ -341,10 +438,13 @@ export function buildPhysicsProtocolIntervention(protocol, ablatedRecordId) {
   const comparisonMode = candidateSetMustRemainIdentical ? "matched-candidate-ranking"
     : candidateSetMayChange || initialStateMayChange ? "matched-input-structural-response"
       : "not-an-execution-intervention";
+  const controlBinding = buildPhysicsProtocolControlBinding(protocol, ablatedRecordId, controlSnapshot);
   const state = !executableLayer ? "not-executable"
-    : selected.controlRouteAvailable ? "ready-to-configure" : "design-only-no-control";
+    : controlBinding.readyToConfigure ? "ready-to-configure"
+      : controlBinding.state === "no-reversible-control" ? "design-only-no-reversible-control"
+        : controlBinding.state;
   return {
-    schema: 1,
+    schema: 2,
     state,
     executableLayer,
     comparisonMode,
@@ -366,6 +466,8 @@ export function buildPhysicsProtocolIntervention(protocol, ablatedRecordId) {
           : "no executable counterfactual is defined",
     controlRouteAvailable: selected.controlRouteAvailable,
     controlRouteLabel: selected.controlRouteLabel,
+    controlBinding,
+    armConfigurationReady: executableLayer && controlBinding.readyToConfigure,
     selectionMadeBeforeCandidateEnumeration: true,
     candidateSetInspected: false,
     targetUsed: false,
