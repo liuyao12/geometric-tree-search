@@ -133,6 +133,16 @@ export function comparePhysicsProtocolOutcomes(entries) {
   if (!baseline.inputIdentity || baseline.inputIdentity !== ablation.inputIdentity) {
     return fail("input-mismatch", "The observed scenario and structure SHA-256 must be identical.");
   }
+  const baselineSeedDigest = baseline.executionEvidence?.seedConfigurationDigest || null;
+  const ablationSeedDigest = ablation.executionEvidence?.seedConfigurationDigest || null;
+  if (!plan.initialStateMayChange && (!baselineSeedDigest || baselineSeedDigest !== ablationSeedDigest
+      || baseline.executionEvidence?.seedTargetUsed !== false
+      || ablation.executionEvidence?.seedTargetUsed !== false)) {
+    return fail("seed-mismatch",
+      "Both arms must begin from one identical target-free frozen seed configuration.",
+      { seedIdentity: { baselineDigest: baselineSeedDigest, ablationDigest: ablationSeedDigest,
+        passed: false } });
+  }
   const firstBoundary = baseline.interventionFactors?.boundary?.value;
   const secondBoundary = ablation.interventionFactors?.boundary?.value;
   if (!firstBoundary || firstBoundary !== secondBoundary) {
@@ -223,12 +233,16 @@ export function comparePhysicsProtocolOutcomes(entries) {
     metric("mean q₆ / |ψ₆|", "order", harmonicMean(baselinePoint), harmonicMean(ablationPoint),
       "proper-rotation-invariant local orientational order"),
   ];
-  const experiment = { ...plan, inputIdentity: baseline.inputIdentity, commonUpdates,
+  const experiment = { ...plan, inputIdentity: baseline.inputIdentity,
+    seedConfigurationDigest: baselineSeedDigest, commonUpdates,
     controlVectorSchema: baselineExperiment.controlVector.schema };
   return { schema: 1, status: "matched", comparable: true, reason: null,
     detail: `Matched ${plan.ablatedProcess} omission after ${commonUpdates} discrete structural update${commonUpdates === 1 ? "" : "s"}.`,
     baselineEntryId: baseline.id, ablationEntryId: ablation.id, baselineUpdates, ablationUpdates,
-    commonUpdates, experiment, candidateIdentity, changedControlIds,
+    commonUpdates, experiment, candidateIdentity,
+    seedIdentity: { baselineDigest: baselineSeedDigest, ablationDigest: ablationSeedDigest,
+      passed: !plan.initialStateMayChange && baselineSeedDigest === ablationSeedDigest },
+    changedControlIds,
     comparisonDigest: digest({ experiment, candidateIdentity, metrics }), metrics,
     coordinatesEmbedded: false, targetUsed: false, candidatesPooled: false, searchReplayed: false,
     physicalTimeInferred: false, causalPhysicalMechanismInferred: false,

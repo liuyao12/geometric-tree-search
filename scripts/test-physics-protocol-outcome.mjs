@@ -46,6 +46,9 @@ function entry(id, arm, overrides = {}) {
     interventionFactors: { boundary: { value: "same-public-boundary" } },
     executionEvidence: {
       executed: true, structuralLeapEvents: 2,
+      seedProtocolMode: "observed-window",
+      seedConfigurationDigest: "seed-digest",
+      seedTargetUsed: false,
       firstFrontierCandidateSetDigest: "candidate-digest",
       firstFrontierTargetUsed: false, targetUsed: false,
     },
@@ -103,6 +106,7 @@ assert.equal(matched.commonUpdates, 2);
 assert.deepEqual(matched.changedControlIds, ["surfacePreferenceSelect"]);
 assert.equal(matched.candidateIdentity.passed, true);
 assert.equal(matched.candidateIdentity.gate, "identical");
+assert.equal(matched.seedIdentity.passed, true);
 assert.equal(matched.metrics.find((metric) => metric.label === "explicit structural sites").delta, -8);
 assert.equal(matched.metrics.find((metric) => metric.label === "rejected actions").delta, 3);
 assert.equal(matched.targetUsed, false);
@@ -117,6 +121,10 @@ const candidateMismatch = structuredClone(ablation);
 candidateMismatch.executionEvidence.firstFrontierCandidateSetDigest = "different";
 assert.equal(comparePhysicsProtocolOutcomes([baseline, candidateMismatch]).reason,
   "candidate-identity-mismatch");
+
+const seedMismatch = structuredClone(ablation);
+seedMismatch.executionEvidence.seedConfigurationDigest = "different-seed";
+assert.equal(comparePhysicsProtocolOutcomes([baseline, seedMismatch]).reason, "seed-mismatch");
 
 const targetFrontier = structuredClone(ablation);
 targetFrontier.executionEvidence.firstFrontierTargetUsed = true;

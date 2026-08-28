@@ -1,5 +1,26 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 269 · target-free observed-window growth
+
+Material growth now defaults to the complete supplied observation window as
+its declared nucleus. Every supplied colored site is explicit, every fitted
+cluster occurrence is installed at its observed proper-SE(3) pose, uncovered
+sites remain explicit residuals, and only then are frozen connection ports
+allowed to propose exterior placements. A separate selector preserves the old
+local-occurrence known-window reconstruction as an audit, but it can no longer
+masquerade as the default growth protocol.
+
+The seed mode, exact configuration digest, site/placement/residual accounting,
+and target/future-site flags are frozen into receipts and notebook snapshots.
+Matched physics comparisons now require the same non-target-derived seed
+digest in both arms. In the browser NaCl control, both arms began from 216
+supplied sites and 52 rigid cover placements, enumerated the same 1,628-action
+first frontier, and reached 419 explicit sites after one target-free structural
+leap. Omitting the soft surface-completion ranking produced an honest null
+response: 146 accepted and 609 rejected actions in both arms. This is a finite
+geometric continuation, not molecular dynamics, physical time, energy, or a
+causal physical-mechanism estimate.
+
 ## Build 268 · matched physics-arm outcome ledger
 
 The experiment notebook can now decide whether two saved physics-protocol runs

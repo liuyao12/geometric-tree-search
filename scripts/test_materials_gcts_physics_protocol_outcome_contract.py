@@ -18,7 +18,7 @@ def main() -> None:
     docs = (ROOT / "docs" / "projects" / "materials-recursive-gcts-benchmark.md").read_text()
 
     for needle in (
-        'from "./physics-protocol-outcome.js?v=20260827-1"',
+        'from "./physics-protocol-outcome.js?v=20260827-2"',
         "function physicsProtocolControlVector()",
         "controlVector: physicsProtocolControlVector()",
         "function notebookPhysicsProtocolExperiment(receipt)",
@@ -28,7 +28,11 @@ def main() -> None:
         "comparePhysicsProtocolOutcomes(selected)",
         "renderNotebookPhysicsProtocolOutcome(selected)",
         'schema: 4, records, counts',
-        'buildId: "20260827-268"',
+        'buildId: "20260827-269"',
+        'let growthSeedProtocol = "observed-window"',
+        "function initializeObservedWindowSeed()",
+        "seedProtocol: growthSeedAudit",
+        "seedConfigurationDigest: search?.seedProtocol?.seedConfigurationDigest || null",
     ):
         assert needle in source, needle
 
@@ -38,6 +42,7 @@ def main() -> None:
         '"candidate-frontier-target-tainted"',
         '"candidate-identity-mismatch"',
         '"seed-identity-unavailable"',
+        '"seed-mismatch"',
         '"history-truncated"',
         '"target-tainted"',
         "candidateSetMustRemainIdentical",
@@ -49,12 +54,14 @@ def main() -> None:
 
     for document in (html, alias):
         assert 'id="notebookPhysicsProtocolOutcome"' in document
+        assert 'id="growthSeedProtocolSelect"' in document
+        assert 'value="observed-window" selected' in document
         assert "all reversible controls" in document
-        assert 'app.js?v=20260827-268' in document
+        assert 'app.js?v=20260827-269' in document
     assert ".notebook-physics-protocol-outcome" in css
     assert ".notebook-physics-protocol-grid" in css
-    assert "Build 268 · matched physics-arm outcome ledger" in readme
-    assert "Matched physics-arm outcome ledger (Build 268)" in docs
+    assert "Build 269 · target-free observed-window growth" in readme
+    assert "Target-free observed-window growth (Build 269)" in docs
     print("matched physics-protocol outcome portal contract: passed")
 
 

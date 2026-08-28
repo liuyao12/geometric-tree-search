@@ -33,7 +33,7 @@ import { applyHypothesisSeparationMultipliers as applyFrozenHypothesisSeparation
 import { compareHypothesisSeparationOutcomes }
   from "./hypothesis-separation-outcome.js?v=20260826-1";
 import { comparePhysicsProtocolOutcomes }
-  from "./physics-protocol-outcome.js?v=20260827-1";
+  from "./physics-protocol-outcome.js?v=20260827-2";
 import { buildSiteProvenance } from "./site-provenance.js?v=20260826-2";
 import { buildSiteConstraintAudit } from "./site-constraint-audit.js?v=20260826-1";
 import { compareSiteEnvironments } from "./site-environment-comparison.js?v=20260826-3";
@@ -465,6 +465,8 @@ const explorationBadge = $("explorationBadge");
 const explorationBadgeLabel = $("explorationBadgeLabel");
 const growthNucleiSelect = $("growthNucleiSelect");
 const growthNucleiHint = $("growthNucleiHint");
+const growthSeedProtocolSelect = $("growthSeedProtocolSelect");
+const growthSeedProtocolHint = $("growthSeedProtocolHint");
 const nucleationSiteSelect = $("nucleationSiteSelect");
 const nucleationSiteHint = $("nucleationSiteHint");
 const nucleationLandscapeInspector = $("nucleationLandscapeInspector");
@@ -1685,10 +1687,12 @@ let feedExposureMode = "none";
 let feedExposureWeight = .24;
 let geometricExplorationScale = 0;
 let growthPathSeed = 1;
+let growthSeedProtocol = "observed-window";
 let requestedGrowthNuclei = 1;
 let nucleationSiteMode = "replay";
 let nucleationSelectionAudit = null;
 let nucleationSiteLandscape = [];
+let growthSeedAudit = null;
 let initializedGrowthNuclei = 0;
 let coalescenceEvents = 0;
 let crossNucleusMergeContacts = 0;
@@ -1741,7 +1745,8 @@ const GROWTH_PROTOCOL_DEFAULTS = Object.freeze({
   loopClosurePreference: "none", loopClosureWeight: .24,
   arrivalPathMode: "none", arrivalPathWeight: .24,
   feedExposureMode: "none", feedExposureWeight: .24,
-  geometricExplorationScale: 0, requestedGrowthNuclei: 1, nucleationSiteMode: "replay",
+  geometricExplorationScale: 0, growthSeedProtocol: "observed-window",
+  requestedGrowthNuclei: 1, nucleationSiteMode: "replay",
   growthScheduling: "commuting", hierarchyEnabled: true,
 });
 
@@ -2000,7 +2005,7 @@ const GROWTH_PROTOCOL_CONTROL_IDS = new Set([
   "microstructureCouplingSelect", "microstructureCouplingWeightSelect", "loopClosurePreferenceSelect",
   "loopClosureWeightSelect", "arrivalPathSelect", "arrivalPathWeightSelect", "explorationScaleSelect",
   "feedExposureSelect", "feedExposureWeightSelect",
-  "growthNucleiSelect", "nucleationSiteSelect", "growthSchedulingSelect",
+  "growthSeedProtocolSelect", "growthNucleiSelect", "nucleationSiteSelect", "growthSchedulingSelect",
 ]);
 
 function selectedNomadEvidenceTarget() {
@@ -10251,7 +10256,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-268",
+      buildId: "20260827-269",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -11151,6 +11156,7 @@ async function buildExperimentReceipt() {
     search: searchVisible ? {
       policy: policySelect.value,
       experimentProtocol: growthProtocolManifest(),
+      seedProtocol: growthSeedAudit,
       hypothesisSeparationExperiment: hypothesisSeparationReceipt(),
       markingComparisonExperiment: markingComparisonReceipt(),
       physicsPreflightManifest: { ...physicsPreflightManifest,
@@ -12481,6 +12487,7 @@ async function buildExperimentNotebookSnapshot() {
   const search = searchVisible ? {
     policy: policySelect.value,
     experimentProtocol: growthProtocolManifest(),
+    seedProtocol: growthSeedAudit,
     hypothesisSeparationExperiment: hypothesisSeparationReceipt(),
     markingComparisonExperiment: markingComparisonReceipt(),
     physicsPreflightManifest: { ...physicsPreflightManifest,
@@ -12525,7 +12532,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-268" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-269" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -12610,6 +12617,13 @@ function notebookInterventionFactors(receipt) {
       id: search.experimentProtocol.id,
       label: search.experimentProtocol.label,
       preset: search.experimentProtocol.preset,
+    } : null) },
+    seedProtocol: { label: "growth initial condition", role: "geometry", value: serialized(search?.seedProtocol ? {
+      mode: search.seedProtocol.mode,
+      seedConfigurationDigest: search.seedProtocol.seedConfigurationDigest,
+      explicitSeedSites: search.seedProtocol.explicitSeedSites,
+      initializedPlacements: search.seedProtocol.initializedPlacements,
+      targetUsed: search.seedProtocol.targetUsed,
     } : null) },
     relaxation: { label: "post-attachment constraint projection", role: "geometry", value: serialized(search?.postAttachmentConstraintProjection ? {
       mode: search.postAttachmentConstraintProjection.mode,
@@ -12962,6 +12976,9 @@ function experimentNotebookSummary(receipt) {
       : typeof firstPolicySnapshot.candidateSetTargetUsed !== "boolean"
         || typeof firstPolicySnapshot.rankingTargetUsed !== "boolean" ? null
         : firstPolicySnapshot.candidateSetTargetUsed || firstPolicySnapshot.rankingTargetUsed,
+    seedProtocolMode: search?.seedProtocol?.mode || null,
+    seedConfigurationDigest: search?.seedProtocol?.seedConfigurationDigest || null,
+    seedTargetUsed: search?.seedProtocol?.targetUsed ?? null,
     targetUsed: structuralLeaps.some((leap) => leap.targetUsed),
     physicalTimeModeled: false,
   };
@@ -19241,6 +19258,15 @@ function initializeIceAnchorSearch() {
   replayIndex = 0;
   stackHistory = [{ type: "accept", depth: 0,
     action: `${iceAnchorTrace.seedAnchors} observed O anchors`, family: "sealed disjoint seed" }];
+  growthSeedAudit = {
+    schema: 1, mode: "sealed-molecular-anchor", label: "sealed disjoint molecular anchor seed",
+    explicitSeedSites: atoms.length, initializedPlacements: 0, explicitResidualSites: atoms.length,
+    frontierCandidates: iceAnchorTrace.waves[0]?.candidateAnchors || 0,
+    reconstructionCertifiedAtInitialization: true,
+    targetUsed: false, futureSitesUsed: false,
+    seedConfigurationDigest: growthSeedConfigurationDigest("sealed-molecular-anchor"),
+    claimBoundary: "The frozen molecular anchor fixture supplies a spatially disjoint seed and opens no continuation target during execution.",
+  };
 }
 
 function growthSeedSites(occurrenceIndex) {
@@ -19563,6 +19589,80 @@ function renderNucleusInterfaceEvolution(pairKey) {
   });
 }
 
+function growthSeedProtocolLabel(mode = growthSeedProtocol) {
+  return mode === "reconstruct"
+    ? "local occurrence · known-window reconstruction"
+    : "complete observed window · target-free outward continuation";
+}
+
+function growthSeedConfigurationDigest(mode = growthSeedProtocol) {
+  if (!atoms.length) return null;
+  const center = atoms.reduce((sum, atom) => sum.add(atom.p), new THREE.Vector3())
+    .multiplyScalar(1 / atoms.length);
+  const sites = atoms.map((atom) => `${atom.species}:${atom.p.clone().sub(center).toArray()
+    .map((value) => value.toFixed(8)).join(",")}`).sort();
+  const placements = placedClusters.map((placement) => [placement.type,
+    placement.atomIds?.length || 0, placement.seedNucleus ? 1 : 0].join(":" )).sort();
+  return notebookStringHash(`${mode}|${sites.join("|")}|${placements.join("|")}`);
+}
+
+function initializeObservedWindowSeed() {
+  const atomsByReferenceIndex = new Map();
+  const atomsById = new Map();
+  referenceAtoms.forEach((source, referenceIndex) => {
+    const atom = cloneAtom(source, true);
+    atom.referenceIndex = referenceIndex;
+    atom.family = "observed-window seed";
+    atom.clusterIds = [];
+    atom.nucleusIds = [1];
+    atoms.push(atom);
+    atomsByReferenceIndex.set(referenceIndex, atom);
+    atomsById.set(atom.id, atom);
+    indexAtom(atom);
+  });
+  overlapGrammar.occurrences.forEach((occurrence, occurrenceIndex) => {
+    if (!occurrence?.position || !occurrence?.rotation) return;
+    const type = growthSeedType(occurrenceIndex);
+    const canonical = canonicalKnownSites(growthSeedSites(occurrenceIndex).map((site) => ({
+      ...site, p: site.local.clone().applyQuaternion(occurrence.rotation).add(occurrence.position),
+    })));
+    const atomIds = [...new Set(canonical.sites.map((site) => atomsByReferenceIndex.get(site.referenceIndex)?.id)
+      .filter(Number.isInteger))];
+    if (atomIds.length < 2) return;
+    const placement = { id: placedClusters.length + 1, nucleusId: 1,
+      seedNucleus: placedClusters.length === 0, observedWindowSupport: true,
+      type, position: occurrence.position.clone(), rotation: occurrence.rotation.clone(),
+      occurrenceIndex, parentId: null, ruleId: null, depth: 0,
+      atomIds, freshAtomIds: [] };
+    atomIds.forEach((atomId) => {
+      const atom = atomsById.get(atomId);
+      if (atom && !atom.clusterIds.includes(placement.id)) atom.clusterIds.push(placement.id);
+    });
+    placedClusters.push(placement);
+  });
+  if (!placedClusters.length) {
+    throw new Error("Observed-window seed has no fitted cluster occurrence with two exact support sites");
+  }
+  placedClusters.forEach(enqueueRulesFromPlacement);
+  initializedGrowthNuclei = 1;
+  selectedNucleusPairKey = null;
+  replayIndex = referenceCount();
+  reconstructionCertified = true;
+  nucleationSiteLandscape = [];
+  nucleationSelectionAudit = {
+    mode: "observed-window", label: "complete observed window", requested: 1, selected: 1,
+    eligibleObservedOccurrences: overlapGrammar.occurrences.length,
+    initializedCoverOccurrences: placedClusters.length,
+    explicitSeedSites: atoms.length,
+    explicitResidualSites: atoms.filter((atom) => !atom.clusterIds.length).length,
+    evidenceAvailable: true, fallback: null,
+    selectedOccurrencesWereFitted: true, properObservedPosesPreserved: true,
+    candidateGeometryChanged: false, heldoutTargetUsed: false,
+    nucleationBarrierInferred: false, nucleationRateInferred: false,
+    criticalNucleusSizeInferred: false,
+  };
+}
+
 function initializeOffLatticeSearch() {
   atoms = [];
   placedClusters = [];
@@ -19672,6 +19772,7 @@ function initializeOffLatticeSearch() {
   initializedGrowthNuclei = 0;
   coalescenceEvents = 0;
   crossNucleusMergeContacts = 0;
+  growthSeedAudit = null;
   selectedNucleusPairKey = null;
   constraintNeighborhoodEvaluations = 0;
   constraintNeighborhoodSiteTotal = 0;
@@ -19684,6 +19785,20 @@ function initializeOffLatticeSearch() {
   selectedPolicyPreviewId = "active";
   policySnapshotCount = 0;
   atomSpatialIndex = new Map();
+  if (growthSeedProtocol === "observed-window") {
+    initializeObservedWindowSeed();
+    growthSeedAudit = {
+      schema: 1, mode: growthSeedProtocol, label: growthSeedProtocolLabel(),
+      explicitSeedSites: atoms.length, initializedPlacements: placedClusters.length,
+      explicitResidualSites: atoms.filter((atom) => !atom.clusterIds?.length).length,
+      frontierCandidates: frontierCandidates.length,
+      reconstructionCertifiedAtInitialization: reconstructionCertified,
+      targetUsed: false, futureSitesUsed: false,
+      seedConfigurationDigest: growthSeedConfigurationDigest(),
+      claimBoundary: "The supplied observation window is the declared initial condition. Its atoms are not a held-out target; every exterior proposal is generated afterward from frozen local cluster ports.",
+    };
+    return;
+  }
   const seedIndices = observedGrowthSeedIndices();
   seedIndices.forEach((seedIndex, nucleusIndex) => {
     const seedOccurrence = overlapGrammar.occurrences[seedIndex];
@@ -19720,6 +19835,16 @@ function initializeOffLatticeSearch() {
   const initialAudit = referenceCoverageAudit();
   reconstructionCertified = replayIndex === referenceCount() && atoms.length === referenceCount()
     && initialAudit.extraneousAtoms === 0 && initialAudit.duplicateAtoms === 0;
+  growthSeedAudit = {
+    schema: 1, mode: growthSeedProtocol, label: growthSeedProtocolLabel(),
+    explicitSeedSites: atoms.length, initializedPlacements: placedClusters.length,
+    explicitResidualSites: atoms.filter((atom) => !atom.clusterIds?.length).length,
+    frontierCandidates: frontierCandidates.length,
+    reconstructionCertifiedAtInitialization: reconstructionCertified,
+    targetUsed: false, futureSitesUsed: false,
+    seedConfigurationDigest: growthSeedConfigurationDigest(),
+    claimBoundary: "A fitted local occurrence initializes a labeled known-window reconstruction audit. Until the supplied window is certified, replay ranking is target-aware and cannot enter a matched physics outcome.",
+  };
 }
 
 function makeRepresentatives() {
@@ -20421,7 +20546,8 @@ function currentGrowthProtocolSettings() {
     robustnessPreference, robustnessWeight, microstructureCouplingMode, microstructureCouplingWeight,
     loopClosurePreference, loopClosureWeight, arrivalPathMode, arrivalPathWeight,
     feedExposureMode, feedExposureWeight,
-    geometricExplorationScale, growthPathSeed, requestedGrowthNuclei, nucleationSiteMode, growthScheduling, hierarchyEnabled,
+    geometricExplorationScale, growthPathSeed, growthSeedProtocol,
+    requestedGrowthNuclei, nucleationSiteMode, growthScheduling, hierarchyEnabled,
   };
 }
 
@@ -20465,9 +20591,10 @@ function renderGrowthControlGroupSummaries() {
     affineLoadMode !== "none", activeRobustnessWeight() > 0,
     activeMicrostructureCouplingWeight() > 0, activeLoopClosureWeight() > 0]);
   growthFieldsGroupState.textContent = `${fieldsActive}/6 active`;
-  const executionActive = activeCount([activeArrivalPathWeight() > 0, activeFeedExposureWeight() > 0,
+  const executionActive = activeCount([growthSeedProtocol === "observed-window",
+    activeArrivalPathWeight() > 0, activeFeedExposureWeight() > 0,
     geometricExplorationScale > 0, initializedGrowthNuclei > 1, hierarchyEnabled]);
-  growthExecutionGroupState.textContent = `${executionActive}/5 active · ${growthScheduling}`;
+  growthExecutionGroupState.textContent = `${executionActive}/6 active · ${growthScheduling}`;
 }
 
 function applyGrowthProtocol(mode, options = {}) {
@@ -20512,6 +20639,7 @@ function applyGrowthProtocol(mode, options = {}) {
   arrivalPathMode = settings.arrivalPathMode; arrivalPathWeight = settings.arrivalPathWeight;
   feedExposureMode = settings.feedExposureMode; feedExposureWeight = settings.feedExposureWeight;
   geometricExplorationScale = settings.geometricExplorationScale; growthPathSeed = 1;
+  growthSeedProtocol = settings.growthSeedProtocol;
   requestedGrowthNuclei = settings.requestedGrowthNuclei; nucleationSiteMode = settings.nucleationSiteMode;
   growthScheduling = settings.growthScheduling;
   hierarchyEnabled = settings.hierarchyEnabled;
@@ -21602,6 +21730,7 @@ function syncStageOptions() {
     feedExposureSelect.value = feedExposureMode;
     feedExposureWeightSelect.value = String(feedExposureWeight);
     explorationScaleSelect.value = String(geometricExplorationScale);
+    growthSeedProtocolSelect.value = growthSeedProtocol;
     growthNucleiSelect.value = String(requestedGrowthNuclei);
     nucleationSiteSelect.value = nucleationSiteMode;
     growthSchedulingSelect.value = growthScheduling;
@@ -21659,13 +21788,18 @@ function syncStageOptions() {
     feedExposureSelect.disabled = finiteIceAnchorMode;
     feedExposureWeightSelect.disabled = finiteIceAnchorMode || feedExposureMode === "none";
     explorationScaleSelect.disabled = finiteIceAnchorMode;
-    growthNucleiSelect.disabled = finiteIceAnchorMode;
-    nucleationSiteSelect.disabled = finiteIceAnchorMode;
+    growthSeedProtocolSelect.disabled = finiteIceAnchorMode;
+    growthNucleiSelect.disabled = finiteIceAnchorMode || growthSeedProtocol === "observed-window";
+    nucleationSiteSelect.disabled = finiteIceAnchorMode || growthSeedProtocol === "observed-window";
     resampleGrowthButton.disabled = finiteIceAnchorMode || geometricExplorationScale <= 0;
     resampleGrowthButton.textContent = `↻ Resample path · seed ${growthPathSeed}`;
     growthSchedulingSelect.disabled = finiteIceAnchorMode;
     growthSchedulingHint.textContent = growthScheduling === "commuting"
       ? "maximal commuting set" : "one branch decision";
+    growthSeedProtocolHint.textContent = finiteIceAnchorMode ? "sealed molecular seed"
+      : growthSeedProtocol === "observed-window"
+        ? `${referenceCount()}-site observed nucleus · target-free frontier`
+        : `${atoms.length}-site local occurrence · replay guided until certified`;
     strainWeightHint.textContent = geometryPreference === "strain"
       ? `${geometricStrainWeight.toFixed(2)} soft` : "disabled";
     chargePreferenceHint.textContent = formalChargeTarget?.available
@@ -21735,8 +21869,10 @@ function syncStageOptions() {
     explorationScaleHint.textContent = geometricExplorationScale > 0
       ? `dimensionless T* ${geometricExplorationScale.toFixed(2)} · seed ${growthPathSeed}` : "greedy · T* = 0";
     growthNucleiHint.textContent = finiteIceAnchorMode ? "sealed molecular seed"
+      : growthSeedProtocol === "observed-window" ? "one supplied observation domain"
       : `${initializedGrowthNuclei || requestedGrowthNuclei} observed seed${(initializedGrowthNuclei || requestedGrowthNuclei) === 1 ? "" : "s"} · ${crossNucleusMergeContacts} interface contacts`;
     nucleationSiteHint.textContent = finiteIceAnchorMode ? "sealed molecular seed"
+      : growthSeedProtocol === "observed-window" ? "all fitted supports + explicit residuals"
       : `${nucleationSiteLabel()}${nucleationSelectionAudit?.fallback ? " · fallback" : ""}`;
     frontMorphologyHint.textContent = frontMorphologyMode === "none"
       ? "neutral · diagnostic" : `${frontMorphologyLabel()} · weight ${frontMorphologyWeight.toFixed(2)}`;
@@ -30138,6 +30274,13 @@ policyWorkbenchReset.addEventListener("click", () => {
   selectedPolicyPreviewId = "active";
   const activePolicy = snapshot.policies.find((policy) => policy.id === "active") || snapshot.policies.at(-1);
   previewPolicyWinner(activePolicy, snapshot);
+});
+growthSeedProtocolSelect.addEventListener("change", () => {
+  growthSeedProtocol = growthSeedProtocolSelect.value === "reconstruct"
+    ? "reconstruct" : "observed-window";
+  growthProtocolMode = "custom";
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
 });
 growthNucleiSelect.addEventListener("change", () => {
   const value = Number(growthNucleiSelect.value);

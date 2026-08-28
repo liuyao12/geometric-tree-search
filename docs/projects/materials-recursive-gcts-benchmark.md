@@ -1,5 +1,29 @@
 # Recursive GCTS benchmark for material growth
 
+### Target-free observed-window growth (Build 269)
+
+Stage 4 now separates two scientifically different initial conditions. The
+default `observed-window` protocol treats the supplied positions as the public
+nucleus: all colored sites are installed, every frozen cover occurrence keeps
+its observed proper pose, and residual sites are explicit. Candidate geometry
+is generated only afterward by composing learned finite ports. The optional
+`reconstruct` protocol starts from local occurrences and retains its known-
+window reference-guided ranking label; it remains useful for replay audits but
+is rejected by matched causal-response gates.
+
+Receipts freeze the seed protocol, centered colored-site digest, fitted cover
+count, residual count, initial frontier count, and explicit `targetUsed=false`
+and `futureSitesUsed=false` declarations. The physics-arm comparator requires
+equal, non-target-derived seed digests as well as its existing input, boundary,
+history, intervention, and candidate-identity checks. Browser verification on
+NaCl starts from 216 sites / 52 cover placements and a 1,628-action frozen
+frontier. One commuting structural leap accepts 146 placements, prunes 609,
+and leaves 419 explicit sites / 198 placements. A soft surface-completion
+omission shares the exact first-frontier digest and gives zero response on all
+reported observables. That null is preserved. The experiment remains a single
+configuration, deterministic geometric omission with no force trajectory,
+energy, kinetic clock, or population-level physical-causality claim.
+
 ### Matched physics-arm outcome ledger (Build 268)
 
 The coordinate-free experiment notebook now consumes the frozen preflight
