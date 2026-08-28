@@ -36,9 +36,11 @@ import { buildSettlingMaterialResponseHistory, buildSettlingMaterialResponseMatr
   SETTLING_MATERIAL_FIELDS }
   from "./settling-material-sensitivity.mjs?v=20260828-290";
 import { channelValidationMetricsFromCounts, validationOccurrenceJackknife }
-  from "./validation-uncertainty.mjs?v=20260828-302";
+  from "./validation-uncertainty.mjs?v=20260828-303";
 import { scoreNormalizationAudit }
-  from "./score-normalization.mjs?v=20260828-302";
+  from "./score-normalization.mjs?v=20260828-303";
+import { screenedCoherencyGraphField }
+  from "./coherency-graph-field.mjs?v=20260828-303";
 import { archiveResponseFrontierRankAudit }
   from "./archive-response-frontier-audit.js?v=20260827-1";
 import { evidenceOrderedClusterDiscoverySchedule }
@@ -428,6 +430,10 @@ const coherencyMemorySelect = $("coherencyMemorySelect");
 const coherencyReachSelect = $("coherencyReachSelect");
 const coherencyMemoryWeightSelect = $("coherencyMemoryWeightSelect");
 const coherencyMemoryHint = $("coherencyMemoryHint");
+const collectiveResponseSelect = $("collectiveResponseSelect");
+const collectiveScreeningSelect = $("collectiveScreeningSelect");
+const collectiveResponseWeightSelect = $("collectiveResponseWeightSelect");
+const collectiveResponseHint = $("collectiveResponseHint");
 const frontMorphologySelect = $("frontMorphologySelect");
 const frontMorphologyWeightSelect = $("frontMorphologyWeightSelect");
 const frontMorphologyHint = $("frontMorphologyHint");
@@ -1479,6 +1485,7 @@ let markingCapacityAuditProgress = null;
 let markingCapacityAuditToken = 0;
 let overlapGrammar = null;
 let placedClusters = [];
+let collectiveGraphCache = null;
 let frontierCandidates = [];
 let growthFrontierWork = { busy: false, phase: "idle", evaluated: 0, total: 0, yields: 0,
   maximumSliceMilliseconds: 0, generation: 0 };
@@ -1542,6 +1549,12 @@ let rejectedCoherencyMemoryScore = 0;
 let acceptedInheritedMismatch = 0;
 let rejectedInheritedMismatch = 0;
 let coherencyMemoryEvaluations = 0;
+let acceptedCollectiveResponseScore = 0;
+let rejectedCollectiveResponseScore = 0;
+let acceptedCollectiveMismatch = 0;
+let rejectedCollectiveMismatch = 0;
+let collectiveResponseEvaluations = 0;
+let collectiveResponseGraphNodes = 0;
 let acceptedExternalDriveAlignment = 0;
 let rejectedExternalDriveAlignment = 0;
 let acceptedThermalFieldScore = 0;
@@ -1766,6 +1779,9 @@ let defectPrecursorWeight = .24;
 let coherencyMemoryMode = "none";
 let coherencyMemoryReach = 2;
 let coherencyMemoryWeight = .24;
+let collectiveResponseMode = "none";
+let collectiveScreeningLength = 2;
+let collectiveResponseWeight = .24;
 let frontMorphologyMode = "none";
 let frontMorphologyWeight = .24;
 let capillaryGeometryMode = "none";
@@ -1839,6 +1855,7 @@ const GROWTH_PROTOCOL_DEFAULTS = Object.freeze({
   habitAnisotropyMode: "none", habitAnisotropyWeight: .24,
   defectPrecursorMode: "none", defectPrecursorWeight: .24,
   coherencyMemoryMode: "none", coherencyMemoryReach: 2, coherencyMemoryWeight: .24,
+  collectiveResponseMode: "none", collectiveScreeningLength: 2, collectiveResponseWeight: .24,
   solutePartitionMode: "none", solutePartitionWeight: .24,
   frontMorphologyMode: "none", frontMorphologyWeight: .24,
   capillaryGeometryMode: "none", capillaryGeometryWeight: .24,
@@ -2103,7 +2120,7 @@ const MATERIALS_STUDY_COMPARISONS = Object.freeze({
 const GROWTH_PROTOCOL_CONTROL_IDS = new Set([
   "growthDomainScaleSelect", "geometryPreferenceSelect", "strainWeightSelect", "structuralRelaxationSelect", "compositionPreferenceSelect", "feedstockSupplySelect", "chargePreferenceSelect", "chargeGeometrySelect", "chargeGeometryReachSelect", "chargeGeometryWeightSelect", "chargeMomentSelect", "chargeMomentWeightSelect", "ionicPairSelect", "ionicPairReachSelect", "ionicPairWeightSelect", "bondValenceSelect", "bondValenceWeightSelect",
   "soluteSpeciesSelect", "solutePartitionSelect", "solutePartitionWeightSelect",
-  "surfacePreferenceSelect", "growthDrivingSelect", "growthDrivingWeightSelect", "attachmentTopologySelect", "attachmentTopologyWeightSelect", "habitAnisotropySelect", "habitAnisotropyWeightSelect", "defectPrecursorSelect", "defectPrecursorWeightSelect", "coherencyMemorySelect", "coherencyReachSelect", "coherencyMemoryWeightSelect", "frontMorphologySelect", "frontMorphologyWeightSelect",
+  "surfacePreferenceSelect", "growthDrivingSelect", "growthDrivingWeightSelect", "attachmentTopologySelect", "attachmentTopologyWeightSelect", "habitAnisotropySelect", "habitAnisotropyWeightSelect", "defectPrecursorSelect", "defectPrecursorWeightSelect", "coherencyMemorySelect", "coherencyReachSelect", "coherencyMemoryWeightSelect", "collectiveResponseSelect", "collectiveScreeningSelect", "collectiveResponseWeightSelect", "frontMorphologySelect", "frontMorphologyWeightSelect",
   "capillaryGeometrySelect", "capillaryGeometryWeightSelect",
   "epitaxyTemplateSelect", "epitaxyWeightSelect", "externalDriveSelect", "externalDriveWeightSelect",
   "thermalFieldSelect", "thermalFieldWeightSelect",
@@ -11738,7 +11755,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260828-302",
+      buildId: "20260828-303",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -13038,6 +13055,30 @@ async function buildExperimentReceipt() {
         dislocationModeled: false,
         physicalTimeIntegrated: false,
       },
+      collectiveGraphResponseRanking: {
+        role: "target-blind screened propagation of accepted mismatch marks over the connected placed-cluster graph",
+        mode: collectiveResponseMode,
+        label: collectiveResponseLabel(),
+        enabled: activeCollectiveResponseWeight() > 0,
+        screeningLengthInGraphHops: collectiveScreeningLength,
+        effectiveWeight: activeCollectiveResponseWeight(),
+        kernel: "exp(-graphHop / xi)",
+        acceptedMeanScore: receiptRound(acceptedCollectiveResponseScore / Math.max(1, acceptedDecisions)),
+        rejectedMeanScore: receiptRound(rejectedCollectiveResponseScore / Math.max(1, rejectedDecisions)),
+        acceptedMeanInheritedMismatch: receiptRound(acceptedCollectiveMismatch / Math.max(1, acceptedDecisions)),
+        rejectedMeanInheritedMismatch: receiptRound(rejectedCollectiveMismatch / Math.max(1, rejectedDecisions)),
+        evaluations: collectiveResponseEvaluations,
+        meanConnectedGraphNodes: receiptRound(collectiveResponseGraphNodes / Math.max(1, collectiveResponseEvaluations)),
+        acceptedHistoryOnly: true,
+        candidateSetChanged: false,
+        candidateGeometryChanged: false,
+        hardAdmissionChanged: false,
+        heldoutTargetUsed: false,
+        stressInferred: false,
+        elasticEnergyInferred: false,
+        forceBalanceSolved: false,
+        physicalTimeIntegrated: false,
+      },
       mesoscopicFrontMorphologyRanking: {
         role: "target-blind soft ordering of unchanged exact actions by parent-local angular support and backing-depth geometry",
         mode: frontMorphologyMode,
@@ -13977,6 +14018,10 @@ function notebookSoftPhysicsSearchReceipt() {
       acceptedMeanBurden: mean(acceptedDefectPrecursorBurden) },
     coherencyMemoryRanking: { mode: coherencyMemoryMode, reachInClusterGraphHops: coherencyMemoryReach,
       effectiveWeight: activeCoherencyMemoryWeight() },
+    collectiveGraphResponseRanking: { mode: collectiveResponseMode,
+      screeningLengthInGraphHops: collectiveScreeningLength,
+      effectiveWeight: activeCollectiveResponseWeight(),
+      acceptedMeanInheritedMismatch: mean(acceptedCollectiveMismatch) },
     mesoscopicFrontMorphologyRanking: { mode: frontMorphologyMode, effectiveWeight: activeFrontMorphologyWeight() },
     discreteCapillaryGeometryRanking: { mode: capillaryGeometryMode, effectiveWeight: activeCapillaryGeometryWeight(),
       acceptedMeanScore: mean(acceptedCapillaryGeometryScore) },
@@ -14080,7 +14125,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260828-302" },
+    application: { name: "Materials Growth Lab", buildId: "20260828-303" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -14205,6 +14250,9 @@ function notebookInterventionFactors(receipt) {
       coherencyMemory: [search.coherencyMemoryRanking?.mode,
         search.coherencyMemoryRanking?.reachInClusterGraphHops,
         search.coherencyMemoryRanking?.effectiveWeight],
+      collectiveGraphResponse: [search.collectiveGraphResponseRanking?.mode,
+        search.collectiveGraphResponseRanking?.screeningLengthInGraphHops,
+        search.collectiveGraphResponseRanking?.effectiveWeight],
       frontMorphology: [search.mesoscopicFrontMorphologyRanking?.mode,
         search.mesoscopicFrontMorphologyRanking?.effectiveWeight],
       capillaryGeometry: [search.discreteCapillaryGeometryRanking?.mode,
@@ -17849,6 +17897,77 @@ function coherencyMemoryForCandidate(candidate, evaluation, { recordWork = true 
     physicalTimeIntegrated: false };
 }
 
+function collectiveResponseLabel(mode = collectiveResponseMode) {
+  return ({ none: "screened graph-field diagnostic", continue: "collective-domain continuation",
+    relieve: "collective mismatch relief", isolate: "collective hotspot avoidance" })[mode]
+    || "screened graph-field diagnostic";
+}
+
+function activeCollectiveResponseWeight() {
+  return collectiveResponseMode === "none" ? 0 : collectiveResponseWeight;
+}
+
+function currentCollectiveGraph() {
+  const membershipCount = atoms.reduce((sum, atom) => sum + (atom.clusterIds?.length || 0), 0);
+  if (collectiveGraphCache?.placements === placedClusters
+      && collectiveGraphCache.placementCount === placedClusters.length
+      && collectiveGraphCache.atomCount === atoms.length
+      && collectiveGraphCache.membershipCount === membershipCount) return collectiveGraphCache;
+  const adjacencySets = new Map(placedClusters.map((placement) => [String(placement.id), new Set()]));
+  const connect = (first, second) => {
+    if (first === null || first === undefined || second === null || second === undefined) return;
+    const a = String(first); const b = String(second);
+    if (a === b) return;
+    if (!adjacencySets.has(a)) adjacencySets.set(a, new Set());
+    if (!adjacencySets.has(b)) adjacencySets.set(b, new Set());
+    adjacencySets.get(a).add(b); adjacencySets.get(b).add(a);
+  };
+  placedClusters.forEach((placement) => connect(placement.id, placement.parentId));
+  atoms.forEach((atom) => {
+    const ids = [...new Set((atom.clusterIds || []).filter(Number.isInteger))].sort((a, b) => a - b);
+    ids.forEach((first, index) => ids.slice(index + 1).forEach((second) => connect(first, second)));
+  });
+  const adjacency = Object.fromEntries([...adjacencySets.entries()].sort(([first], [second]) =>
+    first.localeCompare(second)).map(([id, neighbors]) => [id, [...neighbors].sort()]));
+  const sources = placedClusters.filter((placement) => placement.coherencyMemory)
+    .map((placement) => ({ id: placement.id, mismatch: placement.coherencyMemory.mismatch,
+      axis: placement.coherencyMemory.axis }));
+  collectiveGraphCache = { placements: placedClusters, placementCount: placedClusters.length,
+    atomCount: atoms.length, membershipCount, adjacency, sources };
+  return collectiveGraphCache;
+}
+
+function collectiveResponseForCandidate(candidate, evaluation, { recordWork = true } = {}) {
+  const parent = placedClusters.find((placement) => placement.id === candidate.parentId);
+  const startIds = new Set([candidate.parentId]);
+  evaluation.merged.forEach(({ atom }) => (atom.clusterIds || []).forEach((id) => startIds.add(id)));
+  const candidateAxis = candidate.position.clone().sub(parent?.position || new THREE.Vector3());
+  if (candidateAxis.lengthSq() < 1e-8) candidateAxis.set(0, 0, 1).applyQuaternion(candidate.rotation);
+  candidateAxis.normalize();
+  const graph = currentCollectiveGraph();
+  const field = screenedCoherencyGraphField({ adjacency: graph.adjacency, sources: graph.sources,
+    startIds: [...startIds].filter(Number.isInteger), candidateAxis: candidateAxis.toArray(),
+    screeningLengthHops: collectiveScreeningLength });
+  const candidateMismatch = Math.tanh(Math.max(0, evaluation.geometricStrain.total));
+  const mismatchGradient = Math.abs(candidateMismatch - field.inheritedMismatch);
+  const score = !field.sourceMarks ? 0
+    : collectiveResponseMode === "continue"
+      ? THREE.MathUtils.clamp(field.orientationAgreement - mismatchGradient, -1, 1)
+      : collectiveResponseMode === "relieve"
+        ? THREE.MathUtils.clamp(2 * (field.inheritedMismatch - candidateMismatch), -1, 1)
+        : collectiveResponseMode === "isolate"
+          ? THREE.MathUtils.clamp(1 - field.inheritedMismatch - candidateMismatch, -1, 1) : 0;
+  if (recordWork) {
+    collectiveResponseEvaluations++;
+    collectiveResponseGraphNodes += field.connectedGraphNodes;
+  }
+  return { ...field, mode: collectiveResponseMode, label: collectiveResponseLabel(),
+    enabled: collectiveResponseMode !== "none", score, candidateMismatch, mismatchGradient,
+    candidateAxis: candidateAxis.toArray(), candidateSetChanged: false,
+    candidateGeometryChanged: false, hardAdmissionChanged: false, heldoutTargetUsed: false,
+    modulusInferred: false, relaxationIntegrated: false, dislocationModeled: false };
+}
+
 function activeFrontMorphologyWeight() {
   return frontMorphologyMode === "none" ? 0 : frontMorphologyWeight;
 }
@@ -18660,6 +18779,9 @@ function activeCandidateScoreTerms(entry, includeExploration = true) {
       activeDefectPrecursorWeight(), "soft geometric burden ordering", "Not a defect identity or formation energy."),
     scoreTerm("coherency", "coherency memory", evaluation.coherencyMemory.score,
       activeCoherencyMemoryWeight(), "soft accepted-history ordering", "Not long-range elasticity or stress."),
+    scoreTerm("collective-response", "collective graph response", evaluation.collectiveResponse.score,
+      activeCollectiveResponseWeight(), "soft connected-graph mismatch ordering",
+      "Screened propagation of accepted geometric marks; not elasticity, stress, or energy."),
     scoreTerm("front", "front morphology", evaluation.frontMorphology.score,
       activeFrontMorphologyWeight(), "soft parent-local front ordering", "Not interfacial kinetics."),
     scoreTerm("capillary", "capillary geometry", evaluation.capillaryGeometry.score,
@@ -18854,6 +18976,7 @@ function oneFactorPolicyTerm(policyId, entry, label) {
     "habit-anisotropy": [evaluation.habitAnisotropy.score, activeHabitAnisotropyWeight()],
     "defect-precursors": [evaluation.defectPrecursors.score, activeDefectPrecursorWeight()],
     "coherency-memory": [evaluation.coherencyMemory.score, activeCoherencyMemoryWeight()],
+    "collective-response": [evaluation.collectiveResponse.score, activeCollectiveResponseWeight()],
     "front-morphology": [evaluation.frontMorphology.score, activeFrontMorphologyWeight()],
     "capillary-geometry": [evaluation.capillaryGeometry.score, activeCapillaryGeometryWeight()],
     epitaxy: [evaluation.epitaxyRegistry.score, activeEpitaxyWeight()],
@@ -20401,6 +20524,8 @@ function capturePolicyComparison(entries, frontierStructuralState = null) {
       score: (entry) => entry.baseScore + activeDefectPrecursorWeight() * entry.evaluation.defectPrecursors.score },
     { id: "coherency-memory", label: `${coherencyMemoryLabel()} ${activeCoherencyMemoryWeight().toFixed(2)}`,
       score: (entry) => entry.baseScore + activeCoherencyMemoryWeight() * entry.evaluation.coherencyMemory.score },
+    { id: "collective-response", label: `${collectiveResponseLabel()} ${activeCollectiveResponseWeight().toFixed(2)}`,
+      score: (entry) => entry.baseScore + activeCollectiveResponseWeight() * entry.evaluation.collectiveResponse.score },
     { id: "front-morphology", label: `${frontMorphologyLabel()} ${activeFrontMorphologyWeight().toFixed(2)}`,
       score: (entry) => entry.baseScore + activeFrontMorphologyWeight() * entry.evaluation.frontMorphology.score },
     { id: "capillary-geometry", label: `${capillaryGeometryLabel()} ${activeCapillaryGeometryWeight().toFixed(2)}`,
@@ -21875,6 +22000,7 @@ function scoreFrontierCandidate(candidate, audit) {
       + activeHabitAnisotropyWeight() * evaluation.habitAnisotropy.score
       + activeDefectPrecursorWeight() * evaluation.defectPrecursors.score
       + activeCoherencyMemoryWeight() * evaluation.coherencyMemory.score
+      + activeCollectiveResponseWeight() * evaluation.collectiveResponse.score
       + activeFrontMorphologyWeight() * evaluation.frontMorphology.score
       + activeCapillaryGeometryWeight() * evaluation.capillaryGeometry.score
       + activeEpitaxyWeight() * evaluation.epitaxyRegistry.score
@@ -22084,6 +22210,7 @@ function evaluateCandidate(candidate, {
   const loopClosure = mesoscopicLoopClosureForCandidate(candidate);
   const defectPrecursors = defectPrecursorsForAction({ geometricStrain, surfaceCompletion, compositionBalance, loopClosure }, { recordWork });
   const coherencyMemory = coherencyMemoryForCandidate(candidate, { geometricStrain, merged }, { recordWork });
+  const collectiveResponse = collectiveResponseForCandidate(candidate, { geometricStrain, merged }, { recordWork });
   const arrivalPath = geometricArrivalPathForCandidate(candidate, fresh);
   const feedExposure = feedstockExposureForFreshSites(fresh, { recordWork });
   if (recordWork) scalarSpinOverlapChecks += spinChecks;
@@ -22095,7 +22222,8 @@ function evaluateCandidate(candidate, {
     coordinationOverflows, angularViolations, geometricStrain, externalCalibration, affineLoadedGeometricStrain,
     surfaceCompletion, bulkSurfaceDriving, attachmentTopology, habitAnisotropy, frontMorphology, capillaryGeometry, epitaxyRegistry, compositionBalance, feedstockSupply, formalChargeBalance, chargeGeometry, chargeMoment, ionicPair, bondValence,
     externalDrive, thermalField, solutePartition, constraintRobustness, interfaceAccommodation,
-    microstructureCoupling, loopClosure, defectPrecursors, coherencyMemory, arrivalPath, feedExposure,
+    microstructureCoupling, loopClosure, defectPrecursors, coherencyMemory, collectiveResponse,
+    arrivalPath, feedExposure,
     duplicateSites: canonical.duplicateSites,
     freshReferenceIndices: fresh.map((site) => site.referenceIndex).filter(Number.isInteger),
     reason: conflicts ? `${conflicts} hard-core/species conflicts`
@@ -22607,6 +22735,12 @@ function initializeOffLatticeSearch() {
   acceptedInheritedMismatch = 0;
   rejectedInheritedMismatch = 0;
   coherencyMemoryEvaluations = 0;
+  acceptedCollectiveResponseScore = 0;
+  rejectedCollectiveResponseScore = 0;
+  acceptedCollectiveMismatch = 0;
+  rejectedCollectiveMismatch = 0;
+  collectiveResponseEvaluations = 0;
+  collectiveResponseGraphNodes = 0;
   acceptedExternalDriveAlignment = 0;
   rejectedExternalDriveAlignment = 0;
   acceptedThermalFieldScore = 0;
@@ -23439,6 +23573,7 @@ function currentGrowthProtocolSettings() {
     habitAnisotropyMode, habitAnisotropyWeight,
     defectPrecursorMode, defectPrecursorWeight,
     coherencyMemoryMode, coherencyMemoryReach, coherencyMemoryWeight,
+    collectiveResponseMode, collectiveScreeningLength, collectiveResponseWeight,
     frontMorphologyMode, frontMorphologyWeight, capillaryGeometryMode, capillaryGeometryWeight,
     epitaxyTemplateMode, epitaxyWeight,
     externalDriveMode, externalDriveWeight, thermalFieldMode, thermalFieldWeight,
@@ -23485,8 +23620,9 @@ function renderGrowthControlGroupSummaries() {
   const interfaceActive = activeCount([activeSurfaceCompletionWeight() > 0, activeGrowthDrivingWeight() > 0,
     activeAttachmentTopologyWeight() > 0, activeHabitAnisotropyWeight() > 0,
     activeDefectPrecursorWeight() > 0, activeCoherencyMemoryWeight() > 0,
-    activeFrontMorphologyWeight() > 0, activeCapillaryGeometryWeight() > 0, activeEpitaxyWeight() > 0]);
-  growthInterfaceGroupState.textContent = `${interfaceActive}/9 active`;
+    activeCollectiveResponseWeight() > 0, activeFrontMorphologyWeight() > 0,
+    activeCapillaryGeometryWeight() > 0, activeEpitaxyWeight() > 0]);
+  growthInterfaceGroupState.textContent = `${interfaceActive}/10 active`;
   const fieldsActive = activeCount([activeExternalDriveWeight() > 0, activeThermalFieldWeight() > 0,
     affineLoadMode !== "none", activeRobustnessWeight() > 0,
     activeMicrostructureCouplingWeight() > 0, activeLoopClosureWeight() > 0]);
@@ -23526,6 +23662,9 @@ function applyGrowthProtocol(mode, options = {}) {
   defectPrecursorMode = settings.defectPrecursorMode; defectPrecursorWeight = settings.defectPrecursorWeight;
   coherencyMemoryMode = settings.coherencyMemoryMode; coherencyMemoryReach = settings.coherencyMemoryReach;
   coherencyMemoryWeight = settings.coherencyMemoryWeight;
+  collectiveResponseMode = settings.collectiveResponseMode;
+  collectiveScreeningLength = settings.collectiveScreeningLength;
+  collectiveResponseWeight = settings.collectiveResponseWeight;
   frontMorphologyMode = settings.frontMorphologyMode; frontMorphologyWeight = settings.frontMorphologyWeight;
   capillaryGeometryMode = settings.capillaryGeometryMode; capillaryGeometryWeight = settings.capillaryGeometryWeight;
   epitaxyTemplateMode = settings.epitaxyTemplateMode; epitaxyWeight = settings.epitaxyWeight;
@@ -24607,6 +24746,9 @@ function syncStageOptions() {
     coherencyMemorySelect.value = coherencyMemoryMode;
     coherencyReachSelect.value = String(coherencyMemoryReach);
     coherencyMemoryWeightSelect.value = String(coherencyMemoryWeight);
+    collectiveResponseSelect.value = collectiveResponseMode;
+    collectiveScreeningSelect.value = String(collectiveScreeningLength);
+    collectiveResponseWeightSelect.value = String(collectiveResponseWeight);
     frontMorphologySelect.value = frontMorphologyMode;
     frontMorphologyWeightSelect.value = String(frontMorphologyWeight);
     capillaryGeometrySelect.value = capillaryGeometryMode;
@@ -24665,6 +24807,9 @@ function syncStageOptions() {
     coherencyMemorySelect.disabled = finiteIceAnchorMode;
     coherencyReachSelect.disabled = finiteIceAnchorMode || coherencyMemoryMode === "none";
     coherencyMemoryWeightSelect.disabled = finiteIceAnchorMode || coherencyMemoryMode === "none";
+    collectiveResponseSelect.disabled = finiteIceAnchorMode;
+    collectiveScreeningSelect.disabled = finiteIceAnchorMode || collectiveResponseMode === "none";
+    collectiveResponseWeightSelect.disabled = finiteIceAnchorMode || collectiveResponseMode === "none";
     frontMorphologySelect.disabled = finiteIceAnchorMode;
     frontMorphologyWeightSelect.disabled = finiteIceAnchorMode || frontMorphologyMode === "none";
     capillaryGeometrySelect.disabled = finiteIceAnchorMode;
@@ -24735,6 +24880,9 @@ function syncStageOptions() {
       ? "off · burden reported" : `${defectPrecursorLabel()} · weight ${defectPrecursorWeight.toFixed(2)}`;
     coherencyMemoryHint.textContent = coherencyMemoryMode === "none"
       ? "off · local history reported" : `${coherencyMemoryLabel()} · R${coherencyMemoryReach} · weight ${coherencyMemoryWeight.toFixed(2)}`;
+    collectiveResponseHint.textContent = collectiveResponseMode === "none"
+      ? "off · connected field reported"
+      : `${collectiveResponseLabel()} · xi ${collectiveScreeningLength} graph hops · weight ${collectiveResponseWeight.toFixed(2)}`;
     const selectedSolute = soluteVocabulary.find((entry) => entry.species === resolvedSoluteSpecies());
     soluteSpeciesHint.textContent = selectedSolute
       ? `${selectedSolute.species} · ${(selectedSolute.fraction * 100).toFixed(1)}% observed`
@@ -24859,6 +25007,9 @@ function syncStageOptions() {
     const coherencyMemoryUse = coherencyMemoryMode === "none"
       ? " Accepted local mismatch history is reported but contributes zero ranking weight."
       : ` A ${coherencyMemoryWeight.toFixed(2)} soft ${coherencyMemoryLabel()} term transports sample-relative mismatch along ${coherencyMemoryReach} cluster-graph hop${coherencyMemoryReach === 1 ? "" : "s"}; it is not stress, modulus, or elastic energy.`;
+    const collectiveResponseUse = collectiveResponseMode === "none"
+      ? " The screened connected-graph response is reported but contributes zero ranking weight."
+      : ` A ${collectiveResponseWeight.toFixed(2)} soft ${collectiveResponseLabel()} term propagates accepted mismatch marks over the entire connected placed-cluster graph with exp(-hop/${collectiveScreeningLength}); it is not elasticity, stress, energy, force balance, or time evolution.`;
     const externalDriveUse = externalDriveMode === "none"
       ? " No external direction is preferred."
       : ` A user-declared ${externalDriveModeLabel()} direction adds a ${externalDriveWeight.toFixed(2)} soft alignment term to the same actions; it is boundary/loading geometry, not a solved force field.`;
@@ -24898,8 +25049,8 @@ function syncStageOptions() {
     growthModeNote.textContent = finiteIceAnchorMode
       ? "This sealed ice gate executes primitive H₂O connection ports with mutually exclusive orientation domains. Clusters² is disabled because no stationary promoted ice production has been certified."
       : hierarchyEnabled
-      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${displacementContactUse}${spinColorUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${ionicPairUse}${bondValenceUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`
-      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${spinColorUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${ionicPairUse}${bondValenceUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`;
+      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${displacementContactUse}${spinColorUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${ionicPairUse}${bondValenceUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${collectiveResponseUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`
+      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${spinColorUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${ionicPairUse}${bondValenceUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${collectiveResponseUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`;
   }
 }
 
@@ -24963,6 +25114,12 @@ function resetCounters() {
   acceptedInheritedMismatch = 0;
   rejectedInheritedMismatch = 0;
   coherencyMemoryEvaluations = 0;
+  acceptedCollectiveResponseScore = 0;
+  rejectedCollectiveResponseScore = 0;
+  acceptedCollectiveMismatch = 0;
+  rejectedCollectiveMismatch = 0;
+  collectiveResponseEvaluations = 0;
+  collectiveResponseGraphNodes = 0;
   acceptedExternalDriveAlignment = 0;
   rejectedExternalDriveAlignment = 0;
   acceptedThermalFieldScore = 0;
@@ -25407,6 +25564,7 @@ function stateForCandidate(candidate, evaluation) {
     habitAnisotropy: evaluation.habitAnisotropy,
     defectPrecursors: evaluation.defectPrecursors,
     coherencyMemory: evaluation.coherencyMemory,
+    collectiveResponse: evaluation.collectiveResponse,
     frontMorphology: evaluation.frontMorphology,
     capillaryGeometry: evaluation.capillaryGeometry,
     epitaxyRegistry: evaluation.epitaxyRegistry,
@@ -25526,6 +25684,12 @@ function materializeCandidate(candidate, evaluation, leapCreationContext) {
     coherencyMemory: { mismatch: evaluation.coherencyMemory.candidateMismatch,
       axis: evaluation.coherencyMemory.candidateAxis, inheritedMismatch: evaluation.coherencyMemory.inheritedMismatch,
       support: evaluation.coherencyMemory.support },
+    collectiveResponse: { score: evaluation.collectiveResponse.score,
+      inheritedMismatch: evaluation.collectiveResponse.inheritedMismatch,
+      sourceMarks: evaluation.collectiveResponse.sourceMarks,
+      connectedGraphNodes: evaluation.collectiveResponse.connectedGraphNodes,
+      farthestGraphHop: evaluation.collectiveResponse.farthestGraphHop,
+      screeningLength: evaluation.collectiveResponse.screeningLength },
     decisionEvidence: {
       markingScore: Number.isFinite(candidate.markingScore) ? receiptRound(candidate.markingScore) : null,
       markingAccepted: candidate.markingAccepted,
@@ -25699,6 +25863,7 @@ async function performOffLatticeEvent() {
     habitAnisotropy: evaluation.habitAnisotropy,
     defectPrecursors: evaluation.defectPrecursors,
     coherencyMemory: evaluation.coherencyMemory,
+    collectiveResponse: evaluation.collectiveResponse,
   }));
   const mechanismDiagnostics = new Map(batch.map(({ candidate, evaluation }) =>
     [candidate, prepareGrowthMechanismDiagnostic(candidate, evaluation)]));
@@ -25751,6 +25916,8 @@ async function performOffLatticeEvent() {
       rejectedDefectPrecursorBurden += snapshotEvaluation.defectPrecursors.burden;
       rejectedCoherencyMemoryScore += snapshotEvaluation.coherencyMemory.score;
       rejectedInheritedMismatch += snapshotEvaluation.coherencyMemory.inheritedMismatch;
+      rejectedCollectiveResponseScore += snapshotEvaluation.collectiveResponse.score;
+      rejectedCollectiveMismatch += snapshotEvaluation.collectiveResponse.inheritedMismatch;
       rejectedFrontMorphologyScore += snapshotEvaluation.frontMorphology.score;
       rejectedCapillaryGeometryScore += snapshotEvaluation.capillaryGeometry.score;
       rejectedEpitaxyRegistryScore += snapshotEvaluation.epitaxyRegistry.score;
@@ -25811,6 +25978,8 @@ async function performOffLatticeEvent() {
     acceptedDefectPrecursorBurden += evaluation.defectPrecursors.burden;
     acceptedCoherencyMemoryScore += evaluation.coherencyMemory.score;
     acceptedInheritedMismatch += evaluation.coherencyMemory.inheritedMismatch;
+    acceptedCollectiveResponseScore += evaluation.collectiveResponse.score;
+    acceptedCollectiveMismatch += evaluation.collectiveResponse.inheritedMismatch;
     acceptedFrontMorphologyScore += evaluation.frontMorphology.score;
     acceptedCapillaryGeometryScore += evaluation.capillaryGeometry.score;
     acceptedEpitaxyRegistryScore += evaluation.epitaxyRegistry.score;
@@ -27006,6 +27175,20 @@ function rebuildWorld() {
       memoryGlyph.quaternion.setFromUnitVectors(new THREE.Vector3(1, 0, 0), axis);
       decisionGroup.add(memoryGlyph);
     }
+    if (candidateIndex < 12 && candidate.collectiveResponse?.sourceMarks > 0) {
+      const field = candidate.collectiveResponse;
+      const color = field.score >= 0 ? 0x7de6ff : 0xbd8cff;
+      const ring = new THREE.Mesh(
+        new THREE.TorusGeometry(.28 + .035 * Math.min(6, field.farthestGraphHop), .035, 8, 32),
+        new THREE.MeshBasicMaterial({ color, transparent: true,
+          opacity: collectiveResponseMode === "none" ? .16 : .34 + .30 * Math.min(1, field.effectiveSourceCount / 4),
+          depthWrite: false }),
+      );
+      ring.position.copy(candidate.p);
+      const axis = new THREE.Vector3(...(field.candidateAxis || [0, 0, 1])).normalize();
+      ring.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), axis);
+      decisionGroup.add(ring);
+    }
     if (candidateIndex < 12 && candidate.arrivalAxis && candidate.arrivalSweepDistance > 0) {
       const axis = new THREE.Vector3(...candidate.arrivalAxis).normalize();
       const routePoints = candidate.arrivalRoutePoints?.length > 1
@@ -27425,12 +27608,16 @@ function physicsTranslationRecords(leap = null) {
         : "T*=0; the highest exact combined score is selected deterministically",
       evidence: leap ? `Accepted mean ordering offset ${receiptRound(acceptedExplorationOffset / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedExplorationOffset / Math.max(1, rejectedDecisions), 4)}.` : "No branch order has been sampled yet.",
       boundary: "T* is not Kelvin temperature. These offsets are not energy, Boltzmann weights, equilibrium probabilities, free energy, kinetics, or physical time." },
-    { id: "long-range", process: "long-range elasticity, electrostatics, and electronic response", status: "open", role: "outside the bounded local grammar",
-      encoding: `local constraint reach is at most ${coloredCoordinationEnvelopes ? (coloredCoordinationEnvelopes.maximumCutoff * referenceSpacingA / referenceSpacing).toFixed(2) : "—"} Å; ${[affineLoadMode === "none" ? null : `${affineLoadModeLabel()} metric`, activeExternalDriveWeight() > 0 ? `${externalDriveModeLabel()} drive` : null].filter(Boolean).join(" + ") || "no external condition"} is imposed geometrically, but nonlocal material response is unsolved${spinGeometry.available ? "; supplied scalar-spin signs may color exact overlaps, but interactions remain open" : ""}`,
-      evidence: spinGeometry.available
-        ? `The explicit collinear-spin row preserves ${spinGeometry.suppliedSites} scalar labels and a finite C(r), while this row keeps magnetic interactions and collective response open.`
-        : "The portal reports this omission instead of silently folding it into a local score.",
-      boundary: "Collective strain, defects, polarization, screening, magnetic interactions and domains, excited states, and nonlocal charge redistribution require external physics or new geometric state variables. A supplied scalar-spin texture does not close that boundary." },
+    { id: "long-range", process: "collective graph response / nonlocal material response",
+      status: activeCollectiveResponseWeight() > 0 ? "soft" : "open",
+      role: activeCollectiveResponseWeight() > 0 ? "screened accepted-history graph field" : "diagnostic",
+      encoding: activeCollectiveResponseWeight() > 0
+        ? `${collectiveResponseLabel()}, w=${activeCollectiveResponseWeight().toFixed(2)}; accepted mismatch marks propagate over the complete connected placed-cluster graph with exp(-hop/${collectiveScreeningLength})`
+        : `connected-graph response reported with xi=${collectiveScreeningLength} graph hops but ranking weight zero`,
+      evidence: collectiveResponseEvaluations
+        ? `${collectiveResponseEvaluations.toLocaleString()} candidates audited over a mean ${receiptRound(collectiveResponseGraphNodes / Math.max(1, collectiveResponseEvaluations), 2)} connected graph nodes; accepted inherited mismatch ${receiptRound(acceptedCollectiveMismatch / Math.max(1, acceptedDecisions), 4)}, rejected ${receiptRound(rejectedCollectiveMismatch / Math.max(1, rejectedDecisions), 4)}.`
+        : "No connected accepted-history field has been evaluated yet.",
+      boundary: "This is a screened propagation of dimensionless geometric marks, not long-range elasticity, stress, strain energy, electrostatics, polarization, electronic or magnetic interaction, force balance, relaxation, kinetics, or physical time." },
   ];
 }
 
@@ -27480,6 +27667,7 @@ const PHYSICS_CONTROL_ROUTES = Object.freeze({
   "habit-anisotropy": { stage: 4, controlId: "habitAnisotropySelect", label: "Configure habit atlas" },
   "defect-precursors": { stage: 4, controlId: "defectPrecursorSelect", label: "Configure precursor burden" },
   "coherency-memory": { stage: 4, controlId: "coherencyMemorySelect", label: "Configure coherency memory" },
+  "long-range": { stage: 4, controlId: "collectiveResponseSelect", label: "Configure collective graph response" },
   "front-morphology": { stage: 4, controlId: "frontMorphologySelect", label: "Configure front morphology" },
   "capillary-geometry": { stage: 4, controlId: "capillaryGeometrySelect", label: "Configure solid-angle geometry" },
   epitaxy: { stage: 4, controlId: "epitaxyTemplateSelect", label: "Configure support registry" },
@@ -30267,6 +30455,17 @@ function geometryConstraintEvidence(name, term, state, mode) {
         ? `Soft ${coherencyMemoryLabel()} rank term with weight ${activeCoherencyMemoryWeight().toFixed(2)}.` : "Diagnostic only; weight zero.",
       boundary: "This is bounded accepted-history geometry, not stress, elastic energy, modulus, force balance, relaxation, plasticity, dislocation mechanics, or time.",
     },
+    "collective graph response": {
+      observed: state?.collectiveResponse?.sourceMarks
+        ? `${state.collectiveResponse.sourceMarks} accepted marks across ${state.collectiveResponse.connectedGraphNodes} connected nodes · farthest hop ${state.collectiveResponse.farthestGraphHop}`
+        : "no accepted mismatch marks connected to this candidate",
+      encoding: state?.collectiveResponse
+        ? `exp(-hop/${state.collectiveResponse.screeningLength}) · inherited mismatch ${state.collectiveResponse.inheritedMismatch.toFixed(3)} · score ${signed(state.collectiveResponse.score)}`
+        : "screened propagation over the complete connected placed-cluster graph",
+      searchRole: activeCollectiveResponseWeight() > 0
+        ? `Soft ${collectiveResponseLabel()} rank term with weight ${activeCollectiveResponseWeight().toFixed(2)}.` : "Diagnostic only; weight zero.",
+      boundary: "This is a dimensionless graph field, not stress, elasticity, energy, electrostatics, force balance, relaxation, kinetics, or time.",
+    },
     "front morphology": {
       observed: `${state?.frontMorphology?.neighborhoodAtoms ?? 0} placed atoms within 2.4dₙₙ · ${state?.frontMorphology?.angularSectors ?? 0}/8 occupied parent-local angular sectors`,
       encoding: state?.frontMorphology
@@ -30482,6 +30681,9 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "coherency memory", status: ranked(activeCoherencyMemoryWeight() > 0),
       value: state.coherencyMemory?.support ? `${signed(state.coherencyMemory.score)} · inherited ${state.coherencyMemory.inheritedMismatch.toFixed(3)} · ${state.coherencyMemory.support} marks` : "no inherited marks",
       detail: activeCoherencyMemoryWeight() > 0 ? `${coherencyMemoryLabel()} · R${coherencyMemoryReach} · rank weight ${activeCoherencyMemoryWeight().toFixed(2)}` : "diagnostic · accepted history only" },
+    { name: "collective graph response", status: ranked(activeCollectiveResponseWeight() > 0),
+      value: state.collectiveResponse?.sourceMarks ? `${signed(state.collectiveResponse.score)} · ${state.collectiveResponse.connectedGraphNodes} nodes · hop ${state.collectiveResponse.farthestGraphHop}` : "no connected marks",
+      detail: activeCollectiveResponseWeight() > 0 ? `${collectiveResponseLabel()} · xi ${collectiveScreeningLength} · rank weight ${activeCollectiveResponseWeight().toFixed(2)}` : "diagnostic · screened accepted history" },
     { name: "front morphology", status: ranked(activeFrontMorphologyWeight() > 0),
       value: state.frontMorphology ? `${signed(state.frontMorphology.score)} · ${state.frontMorphology.angularSectors}/8 sectors` : "not evaluated",
       detail: activeFrontMorphologyWeight() > 0 ? `${frontMorphologyLabel()} · rank weight ${activeFrontMorphologyWeight().toFixed(2)}` : "diagnostic · no capillarity claim" },
@@ -30623,6 +30825,8 @@ function renderConstraintLedger(state, mode = "configured") {
       value: activeDefectPrecursorWeight() > 0 ? defectPrecursorLabel() : "diagnostic", detail: `weight ${activeDefectPrecursorWeight().toFixed(2)}` },
     { name: "coherency memory", status: ranked(activeCoherencyMemoryWeight() > 0),
       value: activeCoherencyMemoryWeight() > 0 ? coherencyMemoryLabel() : "diagnostic", detail: `R${coherencyMemoryReach} · weight ${activeCoherencyMemoryWeight().toFixed(2)}` },
+    { name: "collective graph response", status: ranked(activeCollectiveResponseWeight() > 0),
+      value: activeCollectiveResponseWeight() > 0 ? collectiveResponseLabel() : "diagnostic", detail: `xi ${collectiveScreeningLength} hops · weight ${activeCollectiveResponseWeight().toFixed(2)}` },
     { name: "front morphology", status: ranked(activeFrontMorphologyWeight() > 0),
       value: activeFrontMorphologyWeight() > 0 ? frontMorphologyLabel() : "diagnostic", detail: `weight ${activeFrontMorphologyWeight().toFixed(2)}` },
     { name: "capillary geometry", status: ranked(activeCapillaryGeometryWeight() > 0),
@@ -34003,6 +34207,24 @@ coherencyReachSelect.addEventListener("change", () => {
 coherencyMemoryWeightSelect.addEventListener("change", () => {
   const value = Number(coherencyMemoryWeightSelect.value);
   coherencyMemoryWeight = [.12, .24, .48].includes(value) ? value : .24;
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+collectiveResponseSelect.addEventListener("change", () => {
+  const value = collectiveResponseSelect.value;
+  collectiveResponseMode = ["continue", "relieve", "isolate"].includes(value) ? value : "none";
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+collectiveScreeningSelect.addEventListener("change", () => {
+  const value = Number(collectiveScreeningSelect.value);
+  collectiveScreeningLength = [1, 2, 4].includes(value) ? value : 2;
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+collectiveResponseWeightSelect.addEventListener("change", () => {
+  const value = Number(collectiveResponseWeightSelect.value);
+  collectiveResponseWeight = [.12, .24, .48].includes(value) ? value : .24;
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
 });

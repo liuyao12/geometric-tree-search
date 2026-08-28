@@ -22,7 +22,7 @@ def test_matrix_is_visible_interactive_and_current():
     assert 'event.target.closest("button[data-settling-response-field]")' in APP
     assert ".settling-response-matrix" in CSS
     assert "Build 290 · retained-leap settling robustness" in README
-    assert 'buildId: "20260828-302"' in APP
+    assert 'buildId: "20260828-303"' in APP
 
 
 def test_rows_preserve_units_and_failed_arms_remain_rollbacks():

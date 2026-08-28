@@ -1,5 +1,21 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 303 · screened collective graph response
+
+Material growth now has a distinct nonlocal geometric state channel in addition
+to the existing finite 1–3-hop coherency memory. Every accepted placement carries
+its sample-relative mismatch mark. The new screened collective graph response
+propagates those marks over the complete connected placed-cluster graph with the
+declared kernel `exp(-graph hop / ξ)`, then ranks the unchanged exact frontier by
+domain continuation, mismatch relief, or hotspot avoidance. Scientists can set
+the screening length in graph hops and the soft score weight independently.
+
+The live 3D frontier draws a separate response ring, the dimensional score ledger
+maps the term to the long-range physics layer, and receipts retain its mode,
+screening length, kernel, graph reach, accepted/rejected evidence, and work. This
+is target-free accepted-history geometry. It is explicitly not stress, elastic
+energy, electrostatics, force balance, relaxation, kinetics, or physical time.
+
 ## Build 302 · end-to-end physics lineage
 
 Every selected-action score term now resolves to exactly one of the 43 frozen

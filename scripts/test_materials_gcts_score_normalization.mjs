@@ -10,7 +10,7 @@ const expected = [
   "grammar-priority", "known-window-gain", "geometric-strain", "external-calibration",
   "composition", "solute-partition", "formal-charge", "charge-geometry", "charge-moment",
   "ionic-pair", "bond-valence", "surface", "bulk-surface", "attachment", "habit",
-  "defect", "coherency", "front", "capillary", "epitaxy", "drive", "thermal",
+  "defect", "coherency", "collective-response", "front", "capillary", "epitaxy", "drive", "thermal",
   "robustness", "microstructure", "loop", "arrival", "exposure", "exploration",
 ];
 assert.deepEqual(Object.keys(SCORE_NORMALIZATION_SPECS), expected);
