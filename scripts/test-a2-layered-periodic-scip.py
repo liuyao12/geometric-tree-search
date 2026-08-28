@@ -59,6 +59,19 @@ with tempfile.TemporaryDirectory() as directory:
     assert text.count(" BV BND X") == 167
     assert text.endswith("ENDATA\n")
 
+with tempfile.TemporaryDirectory() as directory:
+    proof = Path(directory) / "certificate.vipr"
+    original = Path(directory) / "certificate.vipr_ori"
+    proof.write_bytes(b"incomplete")
+    original.write_bytes(b"original")
+    discarded = MODULE.discard_unverified_proof(proof)
+    assert discarded == {
+        "discarded_vipr_bytes": 10,
+        "discarded_vipr_original_problem_bytes": 8,
+    }
+    assert not proof.exists()
+    assert not original.exists()
+
 # The same proof backend also accepts the exact solid-angle occupancy receipts
 # used by the non-polycube affine-A3 alcove catalogue; it must not assume the
 # older triangular-prism ``cells`` representation.

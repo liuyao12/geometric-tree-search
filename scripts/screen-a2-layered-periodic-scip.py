@@ -46,6 +46,19 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def discard_unverified_proof(path: Path) -> dict:
+    """Remove SCIP proof artifacts that cannot certify the reported result."""
+    discarded = {}
+    for label, artifact in (
+        ("vipr", path),
+        ("vipr_original_problem", path.with_name(path.name + "_ori")),
+    ):
+        if artifact.exists():
+            discarded[f"discarded_{label}_bytes"] = artifact.stat().st_size
+            artifact.unlink()
+    return discarded
+
+
 def executable_identity(path: Path) -> dict:
     return {
         "path": str(path.resolve()),
@@ -296,6 +309,8 @@ def solve_quotient(record, hnf_record, copies, tools, timeout_seconds, proof_dir
         }
     else:
         result = {"result": "unknown", "scip_seconds": scip_seconds}
+    if result["result"] != "unsat":
+        result.update(discard_unverified_proof(proof))
     result.update({
         "hnf_index": hnf_record["representative_index"],
         "hnf": list(hnf),
