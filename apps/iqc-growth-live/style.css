@@ -1941,6 +1941,29 @@ body.study-guide-open { overflow: hidden; }
 .policy-decisiveness-history-grid button:not(:disabled):hover,
 .policy-decisiveness-history-grid button:not(:disabled):focus-visible { border-color: #b594ff; outline: none; }
 
+.policy-material-state-history { margin-top: 7px; padding-top: 6px; border-top: 1px solid rgba(255, 190, 106, .1); }
+.policy-material-state-history > header { display: flex; align-items: end; justify-content: space-between; gap: 6px; }
+.policy-material-state-history > header span small,
+.policy-material-state-history > header span strong { display: block; }
+.policy-material-state-history > header small { color: #7f6749; font: 4px var(--mono); text-transform: uppercase; }
+.policy-material-state-history > header strong { margin-top: 2px; color: #b99b76; font: 5px var(--mono); font-weight: 400; }
+.policy-material-state-history > header b { color: #8c765c; font: 4px var(--mono); font-weight: 400; text-align: right; }
+.policy-material-state-history > p { margin: 5px 0 0; color: #716452; font: 4px/1.45 var(--mono); }
+#policyMaterialStateHistory { max-width: 100%; margin-top: 5px; overflow-x: auto; padding-bottom: 3px; }
+.policy-material-state-history-grid { display: grid; gap: 2px; width: max-content; min-width: 100%; align-items: center; }
+.policy-material-state-history-grid .corner,
+.policy-material-state-history-grid .observable-label { overflow: hidden; color: #8d795f; font: 4px var(--mono); text-overflow: ellipsis; white-space: nowrap; }
+.policy-material-state-history-grid button { display: grid; place-items: center; width: 18px; height: 15px; padding: 0; border: 1px solid transparent; border-radius: 2px; color: rgba(255, 234, 201, .82); background: rgba(255, 190, 106, var(--state-alpha, .05)); font: 4px var(--mono); cursor: pointer; }
+.policy-material-state-history-grid button.unavailable { color: #4b4540; background: transparent; cursor: default; }
+.policy-material-state-history-grid button.selected { border-color: #65e1bc; }
+.policy-material-state-history-grid button:not(:disabled):hover,
+.policy-material-state-history-grid button:not(:disabled):focus-visible { border-color: #ffbe6a; outline: none; }
+#policyMaterialStateDetail { margin-top: 5px; padding: 5px; border-left: 2px solid rgba(255, 190, 106, .35); color: #8e7a61; font: 4px/1.45 var(--mono); }
+#policyMaterialStateDetail:empty { display: none; }
+#policyMaterialStateDetail strong { color: #c9aa83; font-weight: 400; }
+#policyMaterialStateDetail b { float: right; color: #65e1bc; font: inherit; font-weight: 400; }
+#policyMaterialStateDetail p { clear: both; margin: 4px 0 0; }
+
 .policy-shadow-leap > header {
   display: flex;
   align-items: end;

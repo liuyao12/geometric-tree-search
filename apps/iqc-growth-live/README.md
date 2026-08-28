@@ -1,5 +1,23 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 280 · linked frontier material-state passports
+
+The decisiveness archive now shows the material state encountered by every
+frozen policy frontier. Eight coordinate-free rows sit directly beneath the
+selected channel history: colored coordination deficit, underpacked fraction,
+composition drift, local q₆ / |ψ₆|, centrosymmetry amplitude, geometric S(q)
+peak prominence, supplied-formal-charge dipole shape, and sampled bond-valence
+mismatch. Clicking any resolved state cell restores the same frontier,
+leave-one-channel-out pose, and shadow antichain.
+
+These values come from the structural passport frozen before candidate scoring;
+the history does not recompute old structures and does not add another analysis
+pass to growth. Color is normalized only within each observable row over the
+retained window, while hover/detail readouts preserve raw values and units.
+Receipts store the compact passport and its digest with no coordinates. The
+linked display is not an energy landscape, phase diagram, reaction coordinate,
+probability, dynamics, or physical time.
+
 ## Build 279 · decisiveness through structural growth
 
 The hypothesis matrix now retains its selected channel across the frozen

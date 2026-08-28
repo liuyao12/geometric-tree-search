@@ -29,7 +29,7 @@ def main() -> None:
     require('id="policyDecisivenessMatrix"', HTML)
     require('id="policyDecisivenessDetail"', HTML)
     require('Build 278 · hypothesis decisiveness matrix', README)
-    require('application: { name: "Materials Growth Lab", buildId: "20260827-279" }')
+    require('application: { name: "Materials Growth Lab", buildId: "20260827-280" }')
     print("hypothesis decisiveness matrix contract passed")
 
 

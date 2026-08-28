@@ -1,5 +1,26 @@
 # Recursive GCTS benchmark for material growth
 
+### Linked frontier material-state passports (Build 280)
+
+Each frozen policy frontier now carries a compact pre-decision structural
+passport next to its channel-decisiveness column. The passport exports atoms,
+clusters, candidate count, covariance phenotype, dimension, radius and
+anisotropy, nucleus/interface summaries, plus eight independent observables:
+coordination deficit, underpacked fraction, composition total variation, local
+q₆ / |ψ₆|, centrosymmetry amplitude, unit-weight S(q) peak prominence,
+normalized supplied-charge dipole magnitude, and sampled bond-valence RMS
+mismatch.
+
+The browser renders those observables as a row-normalized material-state ribbon
+under the omission history. A state cell and its decisiveness cell navigate to
+the same immutable frontier and preview, making it possible to ask whether a
+channel is structurally decisive only in an exposed, disordered, charge-shaped,
+or valence-mismatched local regime. The raw value, units, candidate digest, and
+passport digest remain available; row color is never compared across unlike
+observables and never enters search. Passports reuse the structural state frozen
+before candidate evaluation, embed no coordinates, and infer no energy,
+probability, reaction coordinate, kinetics, dynamics, or physical time.
+
 ### Channel decisiveness through retained frontiers (Build 279)
 
 The selected hypothesis channel can now be followed through the bounded archive

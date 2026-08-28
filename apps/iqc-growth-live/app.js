@@ -538,6 +538,9 @@ const policyDecisivenessMatrix = $("policyDecisivenessMatrix");
 const policyDecisivenessDetail = $("policyDecisivenessDetail");
 const policyDecisivenessHistoryState = $("policyDecisivenessHistoryState");
 const policyDecisivenessHistory = $("policyDecisivenessHistory");
+const policyMaterialStateHistoryState = $("policyMaterialStateHistoryState");
+const policyMaterialStateHistory = $("policyMaterialStateHistory");
+const policyMaterialStateDetail = $("policyMaterialStateDetail");
 const policyShadowLeapState = $("policyShadowLeapState");
 const policyShadowLeapPlot = $("policyShadowLeapPlot");
 const policyShadowLeapDetail = $("policyShadowLeapDetail");
@@ -10858,7 +10861,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-279",
+      buildId: "20260827-280",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -12494,6 +12497,7 @@ async function buildExperimentReceipt() {
           rankingMode: snapshot.referenceGuided ? "known-window reference-guided replay" : "target-blind frontier",
           distinctTopActions: snapshot.uniqueTopActions,
           everyScoreDecompositionExact: snapshot.everyScoreDecompositionExact,
+          frontierMaterialState: receiptFrontierMaterialState(snapshot.frontierMaterialState),
           shadowStructuralLeap: receiptFrozenShadowLeapAudit(snapshot.shadowLeapAudit),
           hypothesisDecisiveness: receiptPolicyDecisivenessAudit(snapshot.decisivenessAudit),
           markingFrontierCounterfactual: (() => {
@@ -13005,6 +13009,7 @@ function notebookPolicySnapshot(snapshot, includeIdentifiability = false) {
     index: snapshot.index, candidateSetDigest: snapshot.candidateDigest,
     candidateSetTargetUsed: snapshot.candidateSetTargetUsed, rankingTargetUsed: snapshot.rankingTargetUsed,
     rankingMode: snapshot.referenceGuided ? "known-window reference-guided replay" : "target-blind frontier",
+    frontierMaterialState: receiptFrontierMaterialState(snapshot.frontierMaterialState),
     markingFrontierCounterfactual: markingAudit ? {
       candidateSetDigest: markingAudit.candidateSetDigest,
       hardAdmittedCandidateSetDigest: markingAudit.hardAdmittedCandidateSetDigest,
@@ -13142,7 +13147,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-279" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-280" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -18444,6 +18449,70 @@ const POLICY_DECISIVENESS_STAGES = [
   { id: "chemistry", label: "chem" },
 ];
 
+const POLICY_MATERIAL_STATE_OBSERVABLES = [
+  { id: "coordinationDeficit", label: "coord deficit", unit: "fraction",
+    format: (value) => `${(100 * value).toFixed(1)}%` },
+  { id: "underpackedFraction", label: "underpacked", unit: "fraction",
+    format: (value) => `${(100 * value).toFixed(1)}%` },
+  { id: "compositionDrift", label: "composition Δ", unit: "total variation",
+    format: (value) => value.toFixed(3) },
+  { id: "localOrder6", label: "q₆ / |ψ₆|", unit: "dimensionless",
+    format: (value) => value.toFixed(3) },
+  { id: "centrosymmetry", label: "inversion Δ", unit: "normalized amplitude",
+    format: (value) => value.toFixed(3) },
+  { id: "scatteringProminence", label: "S(q) peak", unit: "unit-weight prominence",
+    format: (value) => value.toFixed(3) },
+  { id: "chargeDipole", label: "charge dipole", unit: "normalized supplied formal charge",
+    format: (value) => value.toFixed(3) },
+  { id: "bondValenceMismatch", label: "valence mismatch", unit: "v.u. RMS",
+    format: (value) => value.toFixed(3) },
+];
+
+function compactFrontierMaterialState(state) {
+  if (!state) return null;
+  const finite = (value) => Number.isFinite(value) ? receiptRound(value) : null;
+  const observables = {
+    coordinationDeficit: finite(state.morphology?.coordinationDeficit),
+    underpackedFraction: finite(state.packing?.underpackedFraction),
+    compositionDrift: finite(state.composition?.totalVariationFromObservedTarget),
+    localOrder6: finite(state.orientationalOrder?.harmonics?.[6]?.mean),
+    centrosymmetry: finite(state.centrosymmetry?.meanAmplitude),
+    scatteringProminence: finite(state.scattering?.summary?.peakProminence),
+    chargeDipole: finite(state.chargeMoment?.dipoleMagnitude),
+    bondValenceMismatch: finite(state.bondValenceState?.sampledRmsValenceMismatch),
+  };
+  const passport = {
+    schema: 1,
+    atoms: state.atoms ?? state.morphology?.atomCount ?? null,
+    clusters: state.clusters ?? null,
+    frontierCandidates: state.frontier ?? null,
+    morphologyPhenotype: state.morphology?.phenotype || null,
+    intrinsicDimension: state.morphology?.intrinsicDimension ?? null,
+    radiusOfGyrationAngstrom: finite(state.morphology?.radiusOfGyrationAngstrom),
+    relativeShapeAnisotropy: finite(state.morphology?.relativeShapeAnisotropy),
+    effectiveNucleusCount: finite(state.morphology?.lineageEnsemble?.effectiveNucleusCount),
+    sharedInterfaceFraction: finite(state.morphology?.lineageEnsemble?.sharedInterfaceFraction),
+    interfacePairs: state.interfaces?.pairCount ?? null,
+    primaryInterfaceSites: state.interfaces?.primaryPair?.sharedSites ?? null,
+    observables,
+    observablesEvaluatedBeforeCandidateScoring: true,
+    rowNormalizationStored: false,
+    coordinateFrameUsed: false,
+    coordinatesEmbedded: false,
+    targetUsed: false,
+    usedForAdmission: false,
+    usedForRanking: false,
+    energyInferred: false,
+    physicalTimeModeled: false,
+  };
+  passport.digest = notebookStringHash(JSON.stringify(passport));
+  return passport;
+}
+
+function receiptFrontierMaterialState(state) {
+  return state ? { ...state, observables: { ...state.observables } } : null;
+}
+
 function buildPolicyDecisivenessHistory(snapshot, requestedTermId = null) {
   if (!snapshot) return null;
   const currentAudit = snapshot.decisivenessAudit;
@@ -18462,6 +18531,7 @@ function buildPolicyDecisivenessHistory(snapshot, requestedTermId = null) {
       auditDigest: audit?.digest || null,
       available: Boolean(channel),
       targetUsed: Boolean(audit?.targetUsed),
+      materialState: historySnapshot.frontierMaterialState || null,
       stages: POLICY_DECISIVENESS_STAGES.map((stage) => ({ id: stage.id,
         changed: channel ? Boolean(stageMap.get(stage.id)) : null })),
     };
@@ -18506,6 +18576,7 @@ function receiptPolicyDecisivenessHistory(history) {
     records: history.records.map((record) => ({ frontierIndex: record.frontierIndex,
       candidateSetDigest: record.candidateSetDigest, auditDigest: record.auditDigest,
       available: record.available, targetUsed: record.targetUsed,
+      materialState: receiptFrontierMaterialState(record.materialState),
       stages: record.stages.map((stage) => ({ ...stage })) })),
     targetUsed: history.targetUsed,
     coordinatesEmbedded: history.coordinatesEmbedded,
@@ -18959,7 +19030,7 @@ function buildMarkingFrontierCounterfactual(admissible, candidateSetDigest) {
   };
 }
 
-function capturePolicyComparison(entries) {
+function capturePolicyComparison(entries, frontierStructuralState = null) {
   const admissible = entries.filter((entry) => entry.evaluation.accepted);
   const frontierAuditStartedAt = performance.now();
   const resolvedFrontierPoseAuditLimit = Math.min(MAXIMUM_FRONTIER_POSE_AUDITS,
@@ -19109,6 +19180,7 @@ function capturePolicyComparison(entries) {
     frontier: entries.length,
     admissible: admissible.length,
     candidateDigest,
+    frontierMaterialState: compactFrontierMaterialState(frontierStructuralState),
     candidateSetTargetUsed: false,
     rankingTargetUsed: !reconstructionCertified,
     referenceGuided: !reconstructionCertified,
@@ -20344,8 +20416,8 @@ function scoreFrontierCandidate(candidate, audit) {
   return entry;
 }
 
-async function selectCommutingFrontierBatch(evaluated, generation) {
-  capturePolicyComparison(evaluated);
+async function selectCommutingFrontierBatch(evaluated, generation, frontierStructuralState = null) {
+  capturePolicyComparison(evaluated, frontierStructuralState);
   const ranked = evaluated.sort((first, second) => second.selectionScore - first.selectionScore
     || first.candidate.key.localeCompare(second.candidate.key));
   ranked.forEach((entry, index) => rankGrowthActionPhysicsFingerprint(entry,
@@ -20399,7 +20471,7 @@ async function selectCommutingFrontierBatch(evaluated, generation) {
   return [...acceptedBatch, ...rejectedBatch];
 }
 
-async function commutingFrontierBatch() {
+async function commutingFrontierBatch(frontierStructuralState = null) {
   const audit = reconstructionCertified
     ? { matched: referenceCount(), missing: 0, duplicateAtoms: 0, extraneousAtoms: 0 }
     : referenceCoverageAudit();
@@ -20434,7 +20506,7 @@ async function commutingFrontierBatch() {
   growthFrontierWork.phase = "ranking";
   renderGrowthFrontierWork();
   await new Promise((resolve) => requestAnimationFrame(resolve));
-  const batch = await selectCommutingFrontierBatch(evaluated, generation);
+  const batch = await selectCommutingFrontierBatch(evaluated, generation, frontierStructuralState);
   if (batch === null || generation !== growthSearchGeneration) return null;
   lastGrowthFrontierWorkAudit = {
     schema: 1, evaluatedCandidates: evaluated.length, total: frozenCandidates.length,
@@ -24037,7 +24109,7 @@ async function performOffLatticeEvent() {
     scattering: structuralScatteringSnapshot(),
     chargeMoment: structuralChargeMomentSnapshot(), bondValenceState: structuralBondValenceSnapshot(),
     feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() };
-  const batch = await commutingFrontierBatch();
+  const batch = await commutingFrontierBatch(before);
   if (batch === null) return;
   if (!batch.length) {
     recordStructuralLeap({ status: "fixed", label: "no geometrically admissible successor",
@@ -29222,10 +29294,13 @@ function renderPolicyDecisivenessMatrix(snapshot, requestedTermId = null) {
   policyDecisivenessMatrix.replaceChildren();
   policyDecisivenessDetail.replaceChildren();
   policyDecisivenessHistory.replaceChildren();
+  policyMaterialStateHistory.replaceChildren();
+  policyMaterialStateDetail.replaceChildren();
   const audit = snapshot?.decisivenessAudit;
   if (!audit?.channels.length) {
     policyDecisivenessState.textContent = "no active differential channels";
     policyDecisivenessHistoryState.textContent = "awaiting a selected channel";
+    policyMaterialStateHistoryState.textContent = "awaiting structural passports";
     return;
   }
   const selected = audit.channels.find((entry) => entry.termId === requestedTermId)
@@ -29273,6 +29348,7 @@ function renderPolicyDecisivenessMatrix(snapshot, requestedTermId = null) {
   boundary.textContent = `Each column is an independent exact comparison on frontier ${audit.candidateSetDigest}; columns are not assumed to be a causal chain. No omitted arm executes. ${audit.digest}.`;
   policyDecisivenessDetail.append(heading, status, evidence, boundary);
   renderPolicyDecisivenessHistory(snapshot, selected.termId);
+  renderPolicyMaterialStateHistory(snapshot, selected.termId);
 }
 
 function selectPolicyDecisivenessFrontier(historyIndex, termId) {
@@ -29328,6 +29404,75 @@ function renderPolicyDecisivenessHistory(snapshot, termId) {
     });
   });
   policyDecisivenessHistory.append(grid);
+}
+
+function renderPolicyMaterialStateHistory(snapshot, termId) {
+  policyMaterialStateHistory.replaceChildren();
+  policyMaterialStateDetail.replaceChildren();
+  const history = buildPolicyDecisivenessHistory(snapshot, termId);
+  if (!history?.records.length) {
+    policyMaterialStateHistoryState.textContent = "awaiting structural passports";
+    return;
+  }
+  const records = history.records;
+  const available = records.filter((record) => record.materialState);
+  const resolvedCells = available.reduce((sum, record) => sum
+    + Object.values(record.materialState.observables).filter(Number.isFinite).length, 0);
+  policyMaterialStateHistoryState.textContent = `${available.length}/${records.length} passports · ${resolvedCells} resolved cells`;
+  const grid = document.createElement("div");
+  grid.className = "policy-material-state-history-grid";
+  grid.style.gridTemplateColumns = `70px repeat(${records.length}, 18px)`;
+  const corner = document.createElement("span"); corner.className = "corner"; corner.textContent = "observable";
+  grid.append(corner);
+  records.forEach((record) => {
+    const label = document.createElement("span"); label.className = "corner";
+    label.textContent = String(record.frontierIndex);
+    label.title = `Frozen frontier ${record.frontierIndex}`;
+    grid.append(label);
+  });
+  POLICY_MATERIAL_STATE_OBSERVABLES.forEach((observable) => {
+    const label = document.createElement("span"); label.className = "observable-label";
+    label.textContent = observable.label; label.title = observable.unit; grid.append(label);
+    const values = records.map((record) => record.materialState?.observables?.[observable.id] ?? null);
+    const finiteValues = values.filter(Number.isFinite);
+    const minimum = finiteValues.length ? Math.min(...finiteValues) : null;
+    const maximum = finiteValues.length ? Math.max(...finiteValues) : null;
+    const range = Number.isFinite(minimum) && Number.isFinite(maximum) ? maximum - minimum : 0;
+    records.forEach((record, index) => {
+      const value = values[index];
+      const resolved = Number.isFinite(value);
+      const normalized = resolved ? range > 1e-12 ? (value - minimum) / range : .5 : 0;
+      const button = document.createElement("button"); button.type = "button";
+      button.classList.toggle("unavailable", !resolved);
+      button.classList.toggle("selected", record.historyIndex === history.selectedHistoryIndex);
+      button.disabled = !resolved;
+      button.style.setProperty("--state-alpha", resolved ? (.08 + .62 * normalized).toFixed(3) : "0");
+      button.textContent = resolved ? "●" : "·";
+      button.title = resolved
+        ? `${observable.label} · frontier ${record.frontierIndex}: ${observable.format(value)} · row range ${observable.format(minimum)}–${observable.format(maximum)}`
+        : `${observable.label} · frontier ${record.frontierIndex}: unavailable`;
+      button.setAttribute("aria-label", button.title);
+      if (resolved) button.addEventListener("click", () =>
+        selectPolicyDecisivenessFrontier(record.historyIndex, history.termId));
+      grid.append(button);
+    });
+  });
+  policyMaterialStateHistory.append(grid);
+  const selectedRecord = records[history.selectedHistoryIndex];
+  const state = selectedRecord?.materialState;
+  if (!state) return;
+  const heading = document.createElement("strong");
+  heading.textContent = `frontier ${selectedRecord.frontierIndex} · ${state.morphologyPhenotype || "structural state"}`;
+  const status = document.createElement("b");
+  status.textContent = `${state.atoms ?? "—"} atoms · ${state.clusters ?? "—"} clusters`;
+  const resolved = POLICY_MATERIAL_STATE_OBSERVABLES.filter((observable) =>
+    Number.isFinite(state.observables[observable.id]));
+  const evidence = document.createElement("p");
+  evidence.textContent = resolved.map((observable) =>
+    `${observable.label} ${observable.format(state.observables[observable.id])}`).join(" · ");
+  const boundary = document.createElement("p");
+  boundary.textContent = `Pre-decision coordinate-free passport ${state.digest}; ${state.effectiveNucleusCount ?? "—"} effective nuclei · ${state.interfacePairs ?? "—"} registered interface pairs. Display normalization is row-local and never enters ranking.`;
+  policyMaterialStateDetail.append(heading, status, evidence, boundary);
 }
 
 function renderPolicyShadowLeap(snapshot, requestedTermId = null) {

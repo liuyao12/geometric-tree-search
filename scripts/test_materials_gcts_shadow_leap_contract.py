@@ -37,7 +37,7 @@ def main() -> None:
     require('id="policyShadowLeapPlot"', HTML)
     require('id="policyShadowLeapDetail"', HTML)
     require('Build 277 · leave-one-channel-out shadow structural leaps', README)
-    require('application: { name: "Materials Growth Lab", buildId: "20260827-279" }')
+    require('application: { name: "Materials Growth Lab", buildId: "20260827-280" }')
     print("shadow structural-leap contract passed")
 
 
