@@ -20,6 +20,8 @@ def test_growth_event_map_and_branch_microscope_are_read_only_diagnostics() -> N
         "growthMechanismCanvas",
         "growthMechanismDetailState",
         "growthMechanismDetail",
+        "growthMechanismLocalState",
+        "growthMechanismLocalCanvas",
         "growthMechanismPrevious",
         "growthMechanismNext",
         "growthMechanismLedger",
@@ -40,14 +42,19 @@ def test_growth_event_map_and_branch_microscope_are_read_only_diagnostics() -> N
     assert "function renderGrowthMechanismAudit()" in APP
     assert "function growthDecisionUncertainty(candidate, evaluation, nearbyRoleCounts, executePerturbation)" in APP
     assert "function candidatePosePerturbationAudit(candidate)" in APP
+    assert "function growthEventLocalGeometry(candidate, evaluation, neighborhoodReach)" in APP
+    assert "function drawGrowthMechanismLocalGeometry(event = selectedGrowthMechanismEvent())" in APP
     assert "function renderGrowthUncertaintyBudget()" in APP
     assert "recordGrowthMechanismEvent(candidate, snapshotEvaluation, false" in APP
     assert "recordGrowthMechanismEvent(candidate, evaluation, true, parentDepth + 1," in APP
     assert "spatialGrowthEventAudit: growthMechanismAudit()" in APP
-    assert "events: growthMechanismEvents.map(({ position, ...event })" in APP
+    assert "events: growthMechanismEvents.map(({ position, localGeometry, ...event })" in APP
     assert "eventsObserved" in APP
     assert "maximumStoredEvents: 96" in APP
     assert "coordinatesEmbedded: false" in APP
+    assert "localGeometryDisplayCoordinatesEmbedded: false" in APP
+    assert "localGeometryDisplayOnly: true" in APP
+    assert "localGeometryDisplayTargetUsed:" in APP
     assert "interactiveSelectionSerialized: false" in APP
     assert "interactiveSelectionUsedForSearch: false" in APP
     assert "usedForCandidateEnumeration: false" in APP
@@ -86,6 +93,22 @@ def test_growth_event_map_and_branch_microscope_are_read_only_diagnostics() -> N
     assert 'growthMechanismCanvas.addEventListener("keydown"' in APP
     assert 'event.key === "Home"' in APP
     assert "growthMechanismScreenPoints.push" in APP
+    assert "coordinatesRelativeToCandidateCenter: true" in APP
+    assert 'coordinateUnit: "angstrom"' in APP
+    assert "maximumContextSites: 48" in APP
+    assert "contextTruncated: contextById.size > 48" in APP
+    assert "usedForCandidateEnumeration: false" in APP[APP.index("function growthEventLocalGeometry("):
+                                                         APP.index("function candidatePosePerturbationAudit(")]
+    assert "usedForAdmission: false" in APP[APP.index("function growthEventLocalGeometry("):
+                                             APP.index("function candidatePosePerturbationAudit(")]
+    assert "usedForBranchRanking: false" in APP[APP.index("function growthEventLocalGeometry("):
+                                                 APP.index("function candidatePosePerturbationAudit(")]
+    assert "drawGrowthMechanismLocalGeometry();" in APP
+    assert "const hasDistinguishedCenter" in APP
+    assert "hasDistinguishedCenter && outerIndices.length >= 3" in APP
+    assert "? outerIndices : geometry.candidateSites.map" in APP
+    assert "site.offsetAngstrom[depth] * .28" in APP
+    assert "with depth cue" in APP
     selector = APP[APP.index("function selectGrowthMechanismEvent("):
                    APP.index("function growthMechanismGateSummary(")]
     for forbidden in ("atoms =", "placedClusters =", "materializeCandidate(",
@@ -99,6 +122,8 @@ def test_growth_event_map_and_branch_microscope_are_read_only_diagnostics() -> N
     assert ".growth-mechanism-ledger" in CSS
     assert ".growth-decision-microscope" in CSS
     assert ".growth-decision-grid" in CSS
+    assert ".growth-local-geometry" in CSS
+    assert ".growth-local-legend" in CSS
     assert ".growth-uncertainty-budget" in CSS
     assert "spatial growth-event audit" in README
     assert "not automatic defect identities" in README

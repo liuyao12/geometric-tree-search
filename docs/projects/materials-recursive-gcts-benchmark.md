@@ -1,5 +1,32 @@
 # Recursive GCTS benchmark for material growth
 
+### Candidate-centred attachment geometry (Build 273)
+
+The selected-action microscope now reconstructs a display-only local section
+from the already evaluated candidate. Exact colored child sites are classified
+as shared support, novel emission, or blocked proposal; occupied atoms within
+the frozen neighborhood are sampled deterministically to a 48-site display
+cap. Every coordinate is translated to the candidate centre and converted to
+Å. Each tilted XY/XZ/YZ view adds a small third-axis depth cue while retaining
+the action's current proper pose; a nearest-contact graph exposes the finite
+child support rather than drawing a
+radial star from one arbitrary atom.
+
+This geometry is intentionally not a new search object. It is constructed only
+inside the post-decision record path, after the candidate evaluation freezes;
+its contract declares no use in enumeration, admission, or ranking. The
+coordinate-free receipt destructures both `position` and `localGeometry` from
+every retained event, records that the display coordinates were omitted, and
+separately discloses whether a known-window display inherited target-aware
+candidate provenance.
+
+For the default target-free NaCl leap, the selected accepted event renders a
+seven-site child, six coincident shared supports, one novel site, and 23 nearby
+occupied context atoms. Switching projection leaves the explicit live count at
+419 and changes neither the action nor its certificate. The lines are finite
+nearest-contact display edges, not inferred chemical bonds, energies, forces,
+transition pathways, or physical time.
+
 ### Branch-level growth decision microscope (Build 272)
 
 The post-decision spatial event audit now retains an interactive selection over

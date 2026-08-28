@@ -1,5 +1,30 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 273 · candidate-centred attachment geometry
+
+Each selected Stage 4 branch now has a bounded local geometry view beneath the
+global event map. The view translates the frozen candidate centre to the
+origin, preserves its current proper pose, and projects the exact child sites
+and up to 48 nearby occupied sites into a tilted XY, XZ, or YZ view with a small third-axis depth cue.
+Element colors remain standard; cyan rings identify shared support, green rings
+identify novel sites, and red crosses identify proposal sites stopped by a
+hard gate. A nearest-contact graph makes the finite child polyhedron or molecule
+readable without inventing atom-centred radial spokes.
+
+These candidate-relative Å coordinates exist only in the bounded browser
+display record. `growthMechanismAudit()` removes both the global event centre
+and the local geometry before serializing the receipt, and reports whether the
+display inherited a known-window target-aware candidate. The drawing is made
+after the action decision and is explicitly excluded from enumeration,
+admission, and ranking.
+
+The NaCl browser control shows the selected accepted action as a seven-site
+child with six shared sites, one novel site, and 23 occupied context sites. The
+projection switches from X–Y to X–Z without changing the 419-site live state or
+the decision record. This is a geometric explanation of one frozen action—not
+a bond-order calculation, force field, transition state, energy, mechanism,
+probability, rate, or time.
+
 ## Build 272 · branch-level growth decision microscope
 
 The Stage 4 spatial event map is now an action-level forensic instrument rather

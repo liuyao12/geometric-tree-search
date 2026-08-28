@@ -28,8 +28,8 @@ def test_reported_covariance_rotates_with_clusters_and_reaches_hard_growth_gates
     assert "U_world = R_cluster U_local R_cluster^T" in source
     assert "sweptPathDirectionalClearance: true" in source
     assert "postAttachmentDirectionalRecheck: true" in source
-    assert 'buildId: "20260827-272"' in source
-    assert 'app.js?v=20260827-272' in html
+    assert 'buildId: "20260827-273"' in source
+    assert 'app.js?v=20260827-273' in html
     assert "Build 248 rotates each reported displacement covariance" in readme
     assert "not correlated atomic motion" in readme
 

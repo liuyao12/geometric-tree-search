@@ -807,6 +807,8 @@ const growthMechanismProjection = $("growthMechanismProjection");
 const growthMechanismCanvas = $("growthMechanismCanvas");
 const growthMechanismDetailState = $("growthMechanismDetailState");
 const growthMechanismDetail = $("growthMechanismDetail");
+const growthMechanismLocalState = $("growthMechanismLocalState");
+const growthMechanismLocalCanvas = $("growthMechanismLocalCanvas");
 const growthMechanismPrevious = $("growthMechanismPrevious");
 const growthMechanismNext = $("growthMechanismNext");
 const growthMechanismLedger = $("growthMechanismLedger");
@@ -8147,6 +8149,43 @@ function classifyGrowthEvent(candidate, evaluation) {
   return { phenotype, tags, neighborhood, reason: evaluation.reason || "unspecified" };
 }
 
+function growthEventLocalGeometry(candidate, evaluation, neighborhoodReach) {
+  const sceneToAngstrom = referenceSpacingA / Math.max(referenceSpacing, 1e-12);
+  const sameSite = (first, second) => first?.species === second?.species
+    && first.p.distanceToSquared(second.p) <= 1e-12;
+  const candidateSites = (evaluation.sites || []).map((site) => ({
+    species: site.species,
+    offsetAngstrom: site.p.clone().sub(candidate.position).multiplyScalar(sceneToAngstrom).toArray(),
+    role: evaluation.merged.some((entry) => sameSite(entry.site, site)) ? "shared"
+      : evaluation.fresh.some((entry) => sameSite(entry, site)) ? "fresh" : "blocked",
+  }));
+  const contextById = new Map();
+  const contextReach = Math.max(neighborhoodReach, referenceSpacing * 1.05);
+  (evaluation.sites || []).forEach((site) => nearbyAtoms(site.p, contextReach).forEach((atom) => {
+    contextById.set(atom.id, atom);
+  }));
+  const contextSites = [...contextById.values()].map((atom) => ({
+    species: atom.species,
+    offsetAngstrom: atom.p.clone().sub(candidate.position).multiplyScalar(sceneToAngstrom).toArray(),
+    distanceSquared: atom.p.distanceToSquared(candidate.position),
+  })).sort((first, second) => first.distanceSquared - second.distanceSquared
+    || first.species.localeCompare(second.species)).slice(0, 48)
+    .map(({ distanceSquared, ...site }) => site);
+  return {
+    candidateSites,
+    contextSites,
+    maximumContextSites: 48,
+    contextTruncated: contextById.size > 48,
+    coordinatesRelativeToCandidateCenter: true,
+    coordinateUnit: "angstrom",
+    displayFrame: "current proper-pose world frame translated to candidate center",
+    targetUsed: !reconstructionCertified,
+    usedForCandidateEnumeration: false,
+    usedForAdmission: false,
+    usedForBranchRanking: false,
+  };
+}
+
 function candidatePosePerturbationAudit(candidate) {
   const sceneToAngstrom = referenceSpacingA / Math.max(referenceSpacing, 1e-12);
   const measuredUncertainty = measuredPairUncertaintyAngstrom();
@@ -8265,6 +8304,7 @@ function recordGrowthMechanismEvent(candidate, evaluation, accepted, depth, froz
     position: candidate.position.toArray(),
     nearbyRoleCounts: classified.neighborhood.counts,
     neighborhoodReachAngstrom: classified.neighborhood.reach * referenceSpacingA / referenceSpacing,
+    localGeometry: growthEventLocalGeometry(candidate, evaluation, classified.neighborhood.reach),
     sharedSites: evaluation.merged.length,
     emittedSites: evaluation.fresh.length,
     depth,
@@ -8307,13 +8347,16 @@ function growthMechanismAudit() {
     maximumPoseAuditsPerLeap: MAXIMUM_POSE_AUDITS_PER_LEAP,
     poseAuditsObserved: [...growthPoseAuditsByLeap.values()].reduce((sum, count) => sum + count, 0),
     byPhenotype,
-    events: growthMechanismEvents.map(({ position, ...event }) => ({
+    events: growthMechanismEvents.map(({ position, localGeometry, ...event }) => ({
       ...event,
       neighborhoodReachAngstrom: receiptRound(event.neighborhoodReachAngstrom),
       uncertainty: Object.fromEntries(Object.entries(event.uncertainty)
         .map(([key, value]) => [key, typeof value === "number" ? receiptRound(value) : value])),
     })),
     coordinatesEmbedded: false,
+    localGeometryDisplayCoordinatesEmbedded: false,
+    localGeometryDisplayOnly: true,
+    localGeometryDisplayTargetUsed: growthMechanismEvents.some((event) => event.localGeometry?.targetUsed),
     interactiveSelectionSerialized: false,
     interactiveSelectionUsedForSearch: false,
     usedForCandidateEnumeration: false,
@@ -8383,9 +8426,92 @@ function growthMechanismGateSummary(event) {
   return { title: "geometric prune", detail: event.reason || "The frozen candidate failed a declared geometric gate before commit." };
 }
 
+function drawGrowthMechanismLocalGeometry(event = selectedGrowthMechanismEvent()) {
+  const context = growthMechanismLocalCanvas.getContext("2d");
+  const width = growthMechanismLocalCanvas.width, height = growthMechanismLocalCanvas.height;
+  context.clearRect(0, 0, width, height);
+  context.fillStyle = "#051011"; context.fillRect(0, 0, width, height);
+  if (!event?.localGeometry) {
+    growthMechanismLocalState.textContent = "no action selected";
+    growthMechanismLocalCanvas.setAttribute("aria-label", "Candidate-centred local attachment geometry; no action selected");
+    return;
+  }
+  const projection = MICROSTRUCTURE_PROJECTIONS[growthMechanismProjectionKey] || MICROSTRUCTURE_PROJECTIONS.xy;
+  const [horizontal, vertical] = projection.axes;
+  const depth = [0, 1, 2].find((axis) => axis !== horizontal && axis !== vertical);
+  const geometry = event.localGeometry;
+  const points = [...geometry.contextSites, ...geometry.candidateSites];
+  const projected = (site) => [site.offsetAngstrom[horizontal] + site.offsetAngstrom[depth] * .28,
+    site.offsetAngstrom[vertical] - site.offsetAngstrom[depth] * .18];
+  const maximumExtent = Math.max(1, ...points.flatMap((site) => projected(site).map(Math.abs)));
+  const padding = 22;
+  const scale = Math.min((width - 2 * padding) / (2 * maximumExtent),
+    (height - 2 * padding) / (2 * maximumExtent));
+  const screen = (site) => { const [first, second] = projected(site);
+    return [width / 2 + first * scale, height / 2 - second * scale]; };
+  context.strokeStyle = "rgba(151,194,183,.12)"; context.lineWidth = 1;
+  context.beginPath(); context.moveTo(padding, height / 2); context.lineTo(width - padding, height / 2);
+  context.moveTo(width / 2, padding); context.lineTo(width / 2, height - padding); context.stroke();
+  const radialExtents = geometry.candidateSites.map((site) => Math.hypot(...site.offsetAngstrom));
+  const maximumRadialExtent = Math.max(0, ...radialExtents);
+  const hasDistinguishedCenter = radialExtents.some((radius) =>
+    radius <= Math.max(1e-6, maximumRadialExtent * .12));
+  const outerIndices = geometry.candidateSites.map((_, index) => index)
+    .filter((index) => !hasDistinguishedCenter || radialExtents[index] > maximumRadialExtent * .12);
+  const edgeIndices = hasDistinguishedCenter && outerIndices.length >= 3
+    ? outerIndices : geometry.candidateSites.map((_, index) => index);
+  const candidateDistances = [];
+  for (let firstIndex = 0; firstIndex < edgeIndices.length; firstIndex++) {
+    for (let secondIndex = firstIndex + 1; secondIndex < edgeIndices.length; secondIndex++) {
+      const first = edgeIndices[firstIndex], second = edgeIndices[secondIndex];
+      const distance = Math.sqrt(geometry.candidateSites[first].offsetAngstrom.reduce((sum, value, axis) => {
+        const delta = value - geometry.candidateSites[second].offsetAngstrom[axis];
+        return sum + delta * delta;
+      }, 0));
+      if (distance > 1e-6) candidateDistances.push({ first, second, distance });
+    }
+  }
+  const nearestDistance = Math.min(Infinity, ...candidateDistances.map((record) => record.distance));
+  context.strokeStyle = "rgba(151,194,183,.42)"; context.lineWidth = 1.3;
+  candidateDistances.filter((record) => record.distance <= nearestDistance * 1.32 + 1e-6)
+    .forEach((record) => {
+      const first = screen(geometry.candidateSites[record.first]);
+      const second = screen(geometry.candidateSites[record.second]);
+      context.beginPath(); context.moveTo(...first); context.lineTo(...second); context.stroke();
+    });
+  geometry.contextSites.forEach((site) => {
+    const [x, y] = screen(site);
+    context.globalAlpha = .35; context.fillStyle = new THREE.Color(elementRecord(site.species).color).getStyle();
+    context.beginPath(); context.arc(x, y, 2.7, 0, TAU); context.fill();
+  });
+  geometry.candidateSites.forEach((site) => {
+    const [x, y] = screen(site);
+    const color = new THREE.Color(elementRecord(site.species).color).getStyle();
+    context.globalAlpha = site.role === "blocked" ? .35 : .92;
+    context.fillStyle = color; context.beginPath(); context.arc(x, y, 5.2, 0, TAU); context.fill();
+    context.globalAlpha = 1; context.lineWidth = 1.8;
+    context.strokeStyle = site.role === "shared" ? "#55c8ff" : site.role === "fresh" ? "#65e1bc" : "#ff6d71";
+    context.beginPath(); context.arc(x, y, 7.2, 0, TAU); context.stroke();
+    if (site.role === "blocked") {
+      context.beginPath(); context.moveTo(x - 5, y - 5); context.lineTo(x + 5, y + 5);
+      context.moveTo(x + 5, y - 5); context.lineTo(x - 5, y + 5); context.stroke();
+    }
+  });
+  context.globalAlpha = 1; context.fillStyle = "rgba(151,194,183,.56)";
+  context.font = "10px ui-monospace, monospace";
+  context.fillText(`${projection.labels[0]} / Å →`, width - 56, height - 7);
+  context.fillText(`${projection.labels[1]} ↑`, 7, 13);
+  const shared = geometry.candidateSites.filter((site) => site.role === "shared").length;
+  const fresh = geometry.candidateSites.filter((site) => site.role === "fresh").length;
+  const blocked = geometry.candidateSites.length - shared - fresh;
+  growthMechanismLocalState.textContent = `${geometry.candidateSites.length} child sites · ${shared} shared · ${fresh} novel${blocked ? ` · ${blocked} blocked` : ""} · ${geometry.contextSites.length}${geometry.contextTruncated ? "+" : ""} context · tilted ${projection.labels.join("–")}`;
+  growthMechanismLocalCanvas.setAttribute("aria-label", `Candidate-centred tilted ${projection.labels.join("–")} projection with depth cue: ${geometry.candidateSites.length} child sites, ${shared} shared, ${fresh} novel, ${blocked} blocked, and ${geometry.contextSites.length}${geometry.contextTruncated ? " or more" : ""} occupied context sites`);
+}
+
 function renderGrowthMechanismDetail() {
   const event = selectedGrowthMechanismEvent();
   growthMechanismDetail.replaceChildren();
+  drawGrowthMechanismLocalGeometry(event);
   growthMechanismPrevious.disabled = growthMechanismEvents.length < 2;
   growthMechanismNext.disabled = growthMechanismEvents.length < 2;
   if (!event) {
@@ -10388,7 +10514,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-272",
+      buildId: "20260827-273",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -12666,7 +12792,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-272" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-273" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -30702,6 +30828,7 @@ mdScalingSelect.addEventListener("change", () => {
   growthMechanismProjection.querySelectorAll("[data-growth-projection]").forEach((candidate) =>
     candidate.setAttribute("aria-pressed", String(candidate === button)));
   drawGrowthMechanismMap();
+  drawGrowthMechanismLocalGeometry();
 }));
 growthMechanismCanvas.addEventListener("click", (event) => {
   if (!growthMechanismScreenPoints.length) return;
