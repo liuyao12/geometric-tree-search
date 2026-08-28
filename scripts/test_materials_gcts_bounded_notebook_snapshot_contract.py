@@ -46,9 +46,9 @@ def test_snapshot_is_honest_about_deferred_heavy_evidence():
 
 
 def test_build_232_assets_are_paired():
-    assert 'buildId: "20260827-275"' in APP
-    assert 'app.js?v=20260827-275' in HTML
-    assert 'style.css?v=20260827-275' in HTML
+    assert 'buildId: "20260827-276"' in APP
+    assert 'app.js?v=20260827-276' in HTML
+    assert 'style.css?v=20260827-276' in HTML
 
 
 if __name__ == "__main__":

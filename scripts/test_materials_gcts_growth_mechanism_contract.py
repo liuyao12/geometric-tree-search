@@ -25,6 +25,9 @@ def test_growth_event_map_and_branch_microscope_are_read_only_diagnostics() -> N
         "growthMechanismPhysicsState",
         "growthMechanismPhysicsTerms",
         "growthMechanismPhysicsGates",
+        "growthMechanismPhysicsContribution",
+        "growthMechanismPhysicsInfluence",
+        "growthMechanismPhysicsSensitivity",
         "growthMechanismPhysicsBoundary",
         "growthMechanismPrevious",
         "growthMechanismNext",
@@ -107,10 +110,12 @@ def test_growth_event_map_and_branch_microscope_are_read_only_diagnostics() -> N
     assert "function renderGrowthMechanismComparison()" in APP
     assert "function freezeGrowthActionPhysicsFingerprint(entry)" in APP
     assert "function rankGrowthActionPhysicsFingerprint(entry, rank, candidateCount, leaderScore)" in APP
+    assert "function freezeGrowthActionRankSensitivity(ranked)" in APP
     assert "function renderGrowthMechanismPhysicsAttribution()" in APP
     assert "growth-action physics fingerprint does not reconcile with the ranking score" in APP
     assert "candidate.growthPhysicsAttribution = freezeGrowthActionPhysicsFingerprint(entry)" in APP
     assert "rankGrowthActionPhysicsFingerprint(entry," in APP
+    assert "freezeGrowthActionRankSensitivity(ranked)" in APP
     assert "physicsAttribution: candidate.growthPhysicsAttribution" in APP
     assert "physicsAttributionSerialized: true" in APP
     assert "physicsAttributionCoordinatesEmbedded: false" in APP
@@ -118,6 +123,15 @@ def test_growth_event_map_and_branch_microscope_are_read_only_diagnostics() -> N
     assert "physicsAttributionUsedForSearch: false" in APP
     assert "underlyingSoftTermsUsedForBranchRanking: true" in APP
     assert "physicsHardGatesSeparatedFromSoftTerms: true" in APP
+    assert "physicsRankSensitivitySerialized: true" in APP
+    assert "physicsRankSensitivityCandidateSetChanged: false" in APP
+    assert "physicsRankSensitivityHardAdmissionChanged: false" in APP
+    assert "physicsRankSensitivityExecuted: false" in APP
+    assert "physicsRankSensitivityCausalEffectIdentified: false" in APP
+    assert "set exactly one active physical-surrogate contribution to zero for every candidate" in APP
+    assert "causalEffectIdentified: false" in APP
+    assert 'growthMechanismPhysicsContribution.addEventListener("click"' in APP
+    assert 'growthMechanismPhysicsInfluence.addEventListener("click"' in APP
     assert "physicalEnergyInferred: false" in APP
     assert "physicalRateInferred: false" in APP
     assert "physicalTimeInferred: false" in APP
@@ -179,6 +193,7 @@ def test_growth_event_map_and_branch_microscope_are_read_only_diagnostics() -> N
     assert ".growth-physics-attribution" in CSS
     assert ".growth-physics-term.positive" in CSS
     assert ".growth-physics-gates" in CSS
+    assert ".growth-physics-sensitivity" in CSS
     assert ".growth-uncertainty-budget" in CSS
     assert "spatial growth-event audit" in README
     assert "not automatic defect identities" in README

@@ -1,5 +1,31 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 276 · action-level rank sensitivity
+
+The physics fingerprint can now switch between **score contribution** and
+**rank sensitivity**. Contribution answers how a declared geometric surrogate
+entered one action's scalar score. Sensitivity performs a stricter controlled
+intervention: for each active physical-surrogate channel, it sets that channel's
+contribution to zero for every candidate on the same complete evaluated
+frontier, retains all other terms and the stable candidate-key tie rule, and
+reports where the selected action would rank.
+
+Positive rank benefit means the active channel moves the action upward relative
+to its leave-one-channel-out rank; negative benefit means it burdens the action;
+zero means that removing the channel does not move its ordinal position. The
+panel sorts by absolute rank displacement, shows `baseline → omitted` ranks,
+reports how many active channels move the action and the maximum displacement,
+and keeps the complete ten-gate hard-admission strip in view. Pinned A/B actions
+show their two rank benefits and the difference for every channel.
+
+The audit includes hard-rejected actions because soft score order and geometric
+admission are deliberately separate. It never changes candidate identity,
+geometry, admission, the live search order, or the committed batch, and no
+omitted arm executes. Each coordinate-free sensitivity vector has a digest and
+is serialized with its action ledger. This is deterministic sensitivity of the
+declared geometric model—not an identified causal physical effect, free-energy
+difference, probability, kinetic rate, or elapsed time.
+
 ## Build 275 · branch-resolved physics → geometry attribution
 
 Every retained Stage 4 action now carries the exact score ledger that ordered

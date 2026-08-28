@@ -55,7 +55,7 @@ def test_rank_audit_is_complete_and_target_role_is_explicit():
 
 
 def test_build_259_cache_and_narrative_contract():
-    assert 'buildId: "20260827-275"' in APP
-    assert "app.js?v=20260827-275" in HTML
-    assert "style.css?v=20260827-275" in HTML
+    assert 'buildId: "20260827-276"' in APP
+    assert "app.js?v=20260827-276" in HTML
+    assert "style.css?v=20260827-276" in HTML
     assert "Build 258 · frozen-frontier response intervention" in README

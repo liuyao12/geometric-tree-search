@@ -812,6 +812,9 @@ const growthMechanismLocalCanvas = $("growthMechanismLocalCanvas");
 const growthMechanismPhysicsState = $("growthMechanismPhysicsState");
 const growthMechanismPhysicsTerms = $("growthMechanismPhysicsTerms");
 const growthMechanismPhysicsGates = $("growthMechanismPhysicsGates");
+const growthMechanismPhysicsContribution = $("growthMechanismPhysicsContribution");
+const growthMechanismPhysicsInfluence = $("growthMechanismPhysicsInfluence");
+const growthMechanismPhysicsSensitivity = $("growthMechanismPhysicsSensitivity");
 const growthMechanismPhysicsBoundary = $("growthMechanismPhysicsBoundary");
 const growthMechanismPrevious = $("growthMechanismPrevious");
 const growthMechanismNext = $("growthMechanismNext");
@@ -1604,6 +1607,7 @@ let growthMechanismProjectionKey = "xy";
 let selectedGrowthMechanismEventId = null;
 let pinnedGrowthMechanismEventId = null;
 let growthMechanismComparisonMode = "manual";
+let growthMechanismPhysicsView = "contribution";
 let growthMechanismScreenPoints = [];
 let markingSelection = null;
 let liveOrderCache = { key: "", result: null };
@@ -8387,6 +8391,11 @@ function growthMechanismAudit() {
     physicsScoreDecompositionExact: growthMechanismEvents.every((event) =>
       event.physicsAttribution?.scoreDecompositionExact !== false),
     physicsHardGatesSeparatedFromSoftTerms: true,
+    physicsRankSensitivitySerialized: true,
+    physicsRankSensitivityCandidateSetChanged: false,
+    physicsRankSensitivityHardAdmissionChanged: false,
+    physicsRankSensitivityExecuted: false,
+    physicsRankSensitivityCausalEffectIdentified: false,
     usedForCandidateEnumeration: false,
     usedForAdmission: false,
     usedForBranchRanking: activeMicrostructureCouplingWeight() > 0,
@@ -8644,6 +8653,11 @@ function renderGrowthMechanismPhysicsAttribution() {
   const audit = selected?.physicsAttribution || null;
   growthMechanismPhysicsTerms.replaceChildren();
   growthMechanismPhysicsGates.replaceChildren();
+  growthMechanismPhysicsSensitivity.replaceChildren();
+  growthMechanismPhysicsContribution.setAttribute("aria-pressed",
+    String(growthMechanismPhysicsView === "contribution"));
+  growthMechanismPhysicsInfluence.setAttribute("aria-pressed",
+    String(growthMechanismPhysicsView === "influence"));
   if (!audit) {
     growthMechanismPhysicsState.textContent = "awaiting a scored action";
     const empty = document.createElement("p");
@@ -8658,43 +8672,75 @@ function renderGrowthMechanismPhysicsAttribution() {
   const pairMode = Boolean(comparisonAudit);
   const selectedTerms = new Map(audit.terms.map((term) => [term.id, term]));
   const comparisonTerms = new Map((comparisonAudit?.terms || []).map((term) => [term.id, term]));
-  const termIds = [...new Set([...selectedTerms.keys(), ...comparisonTerms.keys()])];
+  const selectedSensitivity = new Map((audit.rankSensitivity?.cases || [])
+    .map((record) => [record.termId, record]));
+  const comparisonSensitivity = new Map((comparisonAudit?.rankSensitivity?.cases || [])
+    .map((record) => [record.termId, record]));
+  const termIds = growthMechanismPhysicsView === "influence"
+    ? [...new Set([...selectedSensitivity.keys(), ...comparisonSensitivity.keys()])]
+    : [...new Set([...selectedTerms.keys(), ...comparisonTerms.keys()])];
   const rows = termIds.map((id) => ({ id,
-    selected: selectedTerms.get(id) || null, reference: comparisonTerms.get(id) || null }))
-    .filter((row) => row.selected?.active || row.reference?.active)
+    selected: selectedTerms.get(id) || null, reference: comparisonTerms.get(id) || null,
+    selectedSensitivity: selectedSensitivity.get(id) || null,
+    referenceSensitivity: comparisonSensitivity.get(id) || null }))
+    .filter((row) => growthMechanismPhysicsView === "influence"
+      ? row.selectedSensitivity || row.referenceSensitivity
+      : row.selected?.active || row.reference?.active)
     .sort((first, second) => {
-      const firstMagnitude = pairMode
-        ? Math.abs((first.selected?.contribution || 0) - (first.reference?.contribution || 0))
-        : Math.abs(first.selected?.contribution || 0);
-      const secondMagnitude = pairMode
-        ? Math.abs((second.selected?.contribution || 0) - (second.reference?.contribution || 0))
-        : Math.abs(second.selected?.contribution || 0);
+      const metric = (row) => growthMechanismPhysicsView === "influence"
+        ? pairMode
+          ? (row.selectedSensitivity?.rankBenefit || 0) - (row.referenceSensitivity?.rankBenefit || 0)
+          : row.selectedSensitivity?.rankBenefit || 0
+        : pairMode
+          ? (row.selected?.contribution || 0) - (row.reference?.contribution || 0)
+          : row.selected?.contribution || 0;
+      const firstMagnitude = Math.abs(metric(first));
+      const secondMagnitude = Math.abs(metric(second));
       return secondMagnitude - firstMagnitude || first.id.localeCompare(second.id);
     });
   const maximumMagnitude = Math.max(1e-12, ...rows.flatMap((row) => [
-    Math.abs(row.selected?.contribution || 0), Math.abs(row.reference?.contribution || 0),
-    Math.abs((row.selected?.contribution || 0) - (row.reference?.contribution || 0)),
+    growthMechanismPhysicsView === "influence" ? Math.abs(row.selectedSensitivity?.rankBenefit || 0)
+      : Math.abs(row.selected?.contribution || 0),
+    growthMechanismPhysicsView === "influence" ? Math.abs(row.referenceSensitivity?.rankBenefit || 0)
+      : Math.abs(row.reference?.contribution || 0),
+    growthMechanismPhysicsView === "influence"
+      ? Math.abs((row.selectedSensitivity?.rankBenefit || 0) - (row.referenceSensitivity?.rankBenefit || 0))
+      : Math.abs((row.selected?.contribution || 0) - (row.reference?.contribution || 0)),
   ]));
   const signed = (value) => `${value >= 0 ? "+" : ""}${value.toFixed(3)}`;
+  const signedRank = (value) => `${value >= 0 ? "+" : ""}${value}`;
   rows.slice(0, 12).forEach((row) => {
     const term = row.selected || row.reference;
     const selectedContribution = row.selected?.contribution || 0;
     const referenceContribution = row.reference?.contribution || 0;
-    const plotted = pairMode ? selectedContribution - referenceContribution : selectedContribution;
+    const selectedBenefit = row.selectedSensitivity?.rankBenefit || 0;
+    const referenceBenefit = row.referenceSensitivity?.rankBenefit || 0;
+    const plotted = growthMechanismPhysicsView === "influence"
+      ? pairMode ? selectedBenefit - referenceBenefit : selectedBenefit
+      : pairMode ? selectedContribution - referenceContribution : selectedContribution;
     const item = document.createElement("span");
     item.className = `growth-physics-term ${plotted > 1e-12 ? "positive" : plotted < -1e-12 ? "negative" : "neutral"}`;
     item.setAttribute("role", "listitem");
-    const label = document.createElement("small"); label.textContent = term.label;
+    const label = document.createElement("small");
+    label.textContent = term?.label || row.selectedSensitivity?.termLabel
+      || row.referenceSensitivity?.termLabel || row.id;
     const value = document.createElement("strong");
-    value.textContent = pairMode
-      ? `${signed(referenceContribution)} → ${signed(selectedContribution)}`
-      : `${term.raw.toFixed(3)} × ${term.weight.toFixed(3)}`;
+    value.textContent = growthMechanismPhysicsView === "influence"
+      ? pairMode ? `${signedRank(referenceBenefit)} → ${signedRank(selectedBenefit)} places`
+        : `rank ${audit.rank} → ${row.selectedSensitivity?.omittedRank ?? audit.rank} without`
+      : pairMode ? `${signed(referenceContribution)} → ${signed(selectedContribution)}`
+        : `${term.raw.toFixed(3)} × ${term.weight.toFixed(3)}`;
     const track = document.createElement("i"); const bar = document.createElement("b");
     bar.style.width = `${Math.max(1.5, 50 * Math.abs(plotted) / maximumMagnitude)}%`;
     track.appendChild(bar);
     const status = document.createElement("em");
-    status.textContent = pairMode ? `Δ ${signed(plotted)}` : `${signed(selectedContribution)} · ${term.executionRole}`;
-    item.title = `${term.role}. ${term.claimBoundary}`;
+    status.textContent = growthMechanismPhysicsView === "influence"
+      ? pairMode ? `rank-benefit Δ ${signedRank(plotted)}`
+        : `${signedRank(selectedBenefit)} places · ${row.selectedSensitivity?.direction || "rank neutral"}`
+      : pairMode ? `Δ ${signed(plotted)}` : `${signed(selectedContribution)} · ${term.executionRole}`;
+    item.title = growthMechanismPhysicsView === "influence"
+      ? audit.rankSensitivity?.omissionRule || "exact leave-one-channel-out reranking"
+      : `${term.role}. ${term.claimBoundary}`;
     item.append(label, value, track, status); growthMechanismPhysicsTerms.appendChild(item);
   });
   const comparisonGates = new Map((comparisonAudit?.gates || []).map((gate) => [gate.id, gate]));
@@ -8710,12 +8756,28 @@ function renderGrowthMechanismPhysicsAttribution() {
     growthMechanismPhysicsGates.appendChild(chip);
   });
   const rank = Number.isInteger(audit.rank) ? `${audit.rank}/${audit.candidateCount}` : "unranked";
-  growthMechanismPhysicsState.textContent = pairMode
-    ? `A→B signed term delta · B rank ${rank} · ${audit.hardGateFailureCount} hard failures`
-    : `rank ${rank} · score ${audit.score.toFixed(3)} · ${audit.activePhysicsTermCount} physical surrogates · ${audit.hardGateFailureCount} hard failures`;
-  growthMechanismPhysicsBoundary.textContent = pairMode
-    ? `A/B rows show the exact signed contribution change for the same declared score channels; hard-gate transitions remain separate. B ledger ${audit.digest || "unhashed"}. Comparison is display-only and does not rerank either retained frontier.`
-    : `Exact additive parity ${audit.termTotal.toFixed(3)} = score ${audit.score.toFixed(3)} · physics net ${signed(audit.signedPhysicsContribution)} · ${audit.diagnosticTermCount} zero-weight channels retained as diagnostic · ledger ${audit.digest || "unhashed"}. These are dimensionless geometry-encoded ordering terms, not energies, probabilities, forces, barriers, rates, dynamics, or physical time.`;
+  const strongestSensitivity = rows[0]?.selectedSensitivity || null;
+  if (growthMechanismPhysicsView === "influence") {
+    growthMechanismPhysicsState.textContent = pairMode
+      ? `A→B leave-one-channel rank sensitivity · B rank ${rank} · ${audit.hardGateFailureCount} hard failures`
+      : `rank ${rank} · ${audit.rankSensitivity?.rankChangingTerms || 0}/${audit.rankSensitivity?.activePhysicalTerms || 0} channels move rank · max ${audit.rankSensitivity?.maximumAbsoluteRankBenefit || 0} places`;
+    const detail = document.createElement("p");
+    detail.textContent = strongestSensitivity
+      ? `Largest selected-action displacement: without ${strongestSensitivity.termLabel}, rank ${strongestSensitivity.baselineRank} → ${strongestSensitivity.omittedRank}; the active term ${strongestSensitivity.direction} by ${Math.abs(strongestSensitivity.rankBenefit)} place${Math.abs(strongestSensitivity.rankBenefit) === 1 ? "" : "s"}.`
+      : "No active physical-surrogate channel changes this action's rank on the frozen frontier.";
+    growthMechanismPhysicsSensitivity.appendChild(detail);
+    growthMechanismPhysicsBoundary.textContent = `${audit.rankSensitivity?.omissionRule || "Exact leave-one-channel-out reranking"}. Candidate IDs, geometry, hard admission, and all other terms are unchanged; no omitted arm executes. Ledger ${audit.rankSensitivity?.digest || "unhashed"}. This is deterministic model sensitivity—not an identified physical causal effect, energy difference, probability, rate, or time.`;
+  } else {
+    growthMechanismPhysicsState.textContent = pairMode
+      ? `A→B signed term delta · B rank ${rank} · ${audit.hardGateFailureCount} hard failures`
+      : `rank ${rank} · score ${audit.score.toFixed(3)} · ${audit.activePhysicsTermCount} physical surrogates · ${audit.hardGateFailureCount} hard failures`;
+    const detail = document.createElement("p");
+    detail.textContent = "Switch to rank sensitivity to rerank this same immutable frontier with one active physical-surrogate channel removed at a time.";
+    growthMechanismPhysicsSensitivity.appendChild(detail);
+    growthMechanismPhysicsBoundary.textContent = pairMode
+      ? `A/B rows show the exact signed contribution change for the same declared score channels; hard-gate transitions remain separate. B ledger ${audit.digest || "unhashed"}. Comparison is display-only and does not rerank either retained frontier.`
+      : `Exact additive parity ${audit.termTotal.toFixed(3)} = score ${audit.score.toFixed(3)} · physics net ${signed(audit.signedPhysicsContribution)} · ${audit.diagnosticTermCount} zero-weight channels retained as diagnostic · ledger ${audit.digest || "unhashed"}. These are dimensionless geometry-encoded ordering terms, not energies, probabilities, forces, barriers, rates, dynamics, or physical time.`;
+  }
 }
 
 function renderGrowthMechanismComparison() {
@@ -10788,7 +10850,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-275",
+      buildId: "20260827-276",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -13066,7 +13128,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-275" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-276" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -17545,6 +17607,77 @@ function rankGrowthActionPhysicsFingerprint(entry, rank, candidateCount, leaderS
   }));
 }
 
+function freezeGrowthActionRankSensitivity(ranked) {
+  if (!ranked.length) return;
+  const exactTerms = new Map(ranked.map((entry) => [entry.candidate.key,
+    activeCandidateScoreTerms(entry, true)]));
+  const activePhysicalTermIds = [...new Set(ranked.flatMap((entry) =>
+    exactTerms.get(entry.candidate.key).filter((term) =>
+      !["grammar-priority", "known-window-gain", "exploration"].includes(term.id)
+      && Math.abs(term.weight) > 1e-12).map((term) => term.id)))].sort();
+  const candidateSetDigest = frozenFrontierDigest(ranked);
+  const casesByCandidate = new Map(ranked.map((entry) => [entry.candidate.key, []]));
+  activePhysicalTermIds.forEach((termId) => {
+    const omitted = ranked.map((entry) => {
+      const term = exactTerms.get(entry.candidate.key).find((candidateTerm) => candidateTerm.id === termId);
+      return { entry, term, score: entry.selectionScore - (term?.contribution || 0) };
+    }).sort((first, second) => second.score - first.score
+      || first.entry.candidate.key.localeCompare(second.entry.candidate.key));
+    const omittedLeaderDigest = frozenFrontierDigest([omitted[0].entry]);
+    omitted.forEach((record, index) => {
+      const fingerprint = record.entry.candidate.growthPhysicsAttribution;
+      const baselineRank = fingerprint.rank;
+      const omittedRank = index + 1;
+      const rankBenefit = omittedRank - baselineRank;
+      casesByCandidate.get(record.entry.candidate.key).push({
+        termId,
+        termLabel: record.term?.label || termId,
+        contribution: receiptRound(record.term?.contribution || 0, 10),
+        baselineRank,
+        omittedRank,
+        rankBenefit,
+        omittedScore: receiptRound(record.score, 10),
+        omittedLeaderDigest,
+        direction: rankBenefit > 0 ? "supports current rank"
+          : rankBenefit < 0 ? "burdens current rank" : "rank neutral",
+      });
+    });
+  });
+  ranked.forEach((entry) => {
+    const fingerprint = entry.candidate.growthPhysicsAttribution;
+    const cases = casesByCandidate.get(entry.candidate.key).sort((first, second) =>
+      Math.abs(second.rankBenefit) - Math.abs(first.rankBenefit)
+      || Math.abs(second.contribution) - Math.abs(first.contribution)
+      || first.termId.localeCompare(second.termId));
+    const sensitivity = {
+      schema: 1,
+      baselineRank: fingerprint.rank,
+      candidateCount: ranked.length,
+      activePhysicalTerms: activePhysicalTermIds.length,
+      rankChangingTerms: cases.filter((record) => record.rankBenefit !== 0).length,
+      maximumAbsoluteRankBenefit: Math.max(0, ...cases.map((record) => Math.abs(record.rankBenefit))),
+      cases,
+      candidateSetDigest,
+      omissionRule: "set exactly one active physical-surrogate contribution to zero for every candidate, retain every other score term, and rerank with the stable candidate-key tie break",
+      candidateSetChanged: false,
+      hardAdmissionChanged: false,
+      candidateGeometryChanged: false,
+      executed: false,
+      usedForBranchRanking: false,
+      rankingTargetUsed: fingerprint.targetUsedForRanking,
+      coordinatesEmbedded: false,
+      causalEffectIdentified: false,
+      physicalEnergyDifferenceInferred: false,
+    };
+    sensitivity.digest = notebookStringHash(JSON.stringify({
+      baselineRank: sensitivity.baselineRank, cases: sensitivity.cases,
+      candidateSetDigest, rankingTargetUsed: sensitivity.rankingTargetUsed,
+    }));
+    fingerprint.rankSensitivity = sensitivity;
+    fingerprint.digest = notebookStringHash(`${fingerprint.digest}|${sensitivity.digest}`);
+  });
+}
+
 function oneFactorPolicyTerm(policyId, entry, label) {
   const evaluation = entry.evaluation;
   const specs = {
@@ -19723,6 +19856,7 @@ async function selectCommutingFrontierBatch(evaluated, generation) {
     || first.candidate.key.localeCompare(second.candidate.key));
   ranked.forEach((entry, index) => rankGrowthActionPhysicsFingerprint(entry,
     index + 1, ranked.length, ranked[0]?.selectionScore ?? entry.selectionScore));
+  freezeGrowthActionRankSensitivity(ranked);
   if (overlapGrammar.molecular && !reconstructionCertified) {
     const ordered = ranked.slice().sort((first, second) => first.candidate.rule.replayOrder - second.candidate.rule.replayOrder);
     for (const entry of ordered) {
@@ -31198,6 +31332,14 @@ function cycleGrowthMechanismSelection(offset) {
 }
 growthMechanismPrevious.addEventListener("click", () => cycleGrowthMechanismSelection(-1));
 growthMechanismNext.addEventListener("click", () => cycleGrowthMechanismSelection(1));
+growthMechanismPhysicsContribution.addEventListener("click", () => {
+  growthMechanismPhysicsView = "contribution";
+  renderGrowthMechanismPhysicsAttribution();
+});
+growthMechanismPhysicsInfluence.addEventListener("click", () => {
+  growthMechanismPhysicsView = "influence";
+  renderGrowthMechanismPhysicsAttribution();
+});
 growthMechanismPin.addEventListener("click", () => {
   const selected = selectedGrowthMechanismEvent();
   if (!selected) return;

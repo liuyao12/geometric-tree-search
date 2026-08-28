@@ -1,5 +1,30 @@
 # Recursive GCTS benchmark for material growth
 
+### Action-level leave-one-channel rank sensitivity (Build 276)
+
+The winner-only leave-one-physics-channel-out workbench has been generalized to
+every retained accepted or rejected action. After the full evaluated frontier
+is frozen and baseline ranks are assigned, each active physical-surrogate term
+is removed from every candidate score. The remaining terms are summed exactly,
+the same candidate identities are reranked with the stable candidate-key tie
+break, and each action records `baselineRank`, `omittedRank`, and
+`rankBenefit = omittedRank - baselineRank`.
+
+This distinction prevents contribution magnitude from being mistaken for
+decision influence. A large nearly constant term can have zero rank benefit; a
+smaller varying term can move an action many places. The browser switches the
+same signed bar field between contribution and rank-benefit units, reports the
+strongest leave-one-channel displacement, and supports A/B comparison without
+changing the matched pair. The hard-gate strip is always separate and unchanged.
+
+The receipt stores the active term count, rank-changing count, maximum absolute
+benefit, per-channel omitted score and leader digest, frozen candidate-set
+digest, exact omission rule, and a sensitivity digest. It states that candidate
+geometry, candidate set, and hard admission are unchanged; omitted arms are not
+executed; coordinates are absent; and no causal physical effect or energy
+difference is inferred. The underlying baseline may still be reference-guided
+during labeled replay, which is disclosed independently.
+
 ### Branch-resolved physics → geometry attribution (Build 275)
 
 The retained growth-event record now freezes the same exact score decomposition
