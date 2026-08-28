@@ -1,5 +1,24 @@
 # Recursive GCTS benchmark for material growth
 
+### State-conditioned channel decisiveness (Build 281)
+
+The portal now computes a bounded descriptive association between each frozen
+material-state observable and each independent channel-omission outcome. For a
+selected channel and outcome—score, leader, order, antichain, emitted atoms, or
+chemistry—it partitions only retained capture-time frontiers into changed and
+stable groups. Each row reports group counts and means, their signed difference,
+the finite-window minimum/maximum, and a difference normalized by that row's
+observed range.
+
+Resolution requires at least three finite observations in both groups. Missing
+support is displayed rather than imputed; unavailable channel/state combinations
+are excluded explicitly. The receipt preserves every contributing frontier
+index and candidate-set digest as well as the audit digest and claim boundary.
+Because successive growth fronts share history, the portal does not assume
+statistical independence, compute a p-value, or infer a causal effect. The lens
+is diagnostic only and cannot alter candidate geometry, admission, ranking,
+execution, energy, probability, kinetics, dynamics, or physical time.
+
 ### Linked frontier material-state passports (Build 280)
 
 Each frozen policy frontier now carries a compact pre-decision structural

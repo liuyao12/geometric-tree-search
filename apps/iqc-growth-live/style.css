@@ -1964,6 +1964,35 @@ body.study-guide-open { overflow: hidden; }
 #policyMaterialStateDetail b { float: right; color: #65e1bc; font: inherit; font-weight: 400; }
 #policyMaterialStateDetail p { clear: both; margin: 4px 0 0; }
 
+.policy-state-association { margin-top: 7px; padding: 6px; border: 1px solid rgba(101, 225, 188, .09); background: rgba(4, 14, 16, .35); }
+.policy-state-association > header { display: flex; align-items: end; justify-content: space-between; gap: 6px; }
+.policy-state-association > header span small,
+.policy-state-association > header span strong { display: block; }
+.policy-state-association > header small { color: #557a72; font: 4px var(--mono); text-transform: uppercase; }
+.policy-state-association > header strong { margin-top: 2px; color: #8fc5b8; font: 5px var(--mono); font-weight: 400; }
+.policy-state-association > header b { max-width: 130px; color: #6d9289; font: 4px/1.3 var(--mono); font-weight: 400; text-align: right; }
+.policy-state-association > label { display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-top: 5px; color: #647d77; font: 4px var(--mono); text-transform: uppercase; }
+.policy-state-association select { max-width: 112px; border: 1px solid rgba(101, 225, 188, .13); background: #071215; color: #87aaa2; font: 4px var(--mono); }
+.policy-state-association > p { margin: 5px 0 0; color: #63746f; font: 4px/1.45 var(--mono); }
+#policyStateAssociationRows { margin-top: 5px; border: 1px solid rgba(101, 225, 188, .06); }
+#policyStateAssociationRows button { display: grid; grid-template-columns: minmax(64px, 1.2fr) 38px minmax(64px, 1fr) 35px; align-items: center; gap: 4px; width: 100%; padding: 4px; border: 0; border-top: 1px solid rgba(101, 225, 188, .05); background: transparent; color: #6f8882; font: 4px var(--mono); cursor: pointer; }
+#policyStateAssociationRows button:first-child { border-top: 0; }
+#policyStateAssociationRows button:hover,
+#policyStateAssociationRows button:focus-visible,
+#policyStateAssociationRows button.active { background: rgba(101, 225, 188, .045); color: #a0c8be; outline: none; }
+#policyStateAssociationRows button.unresolved { opacity: .58; }
+#policyStateAssociationRows button strong { overflow: hidden; font: inherit; font-weight: 400; text-overflow: ellipsis; white-space: nowrap; text-align: left; }
+#policyStateAssociationRows button > span { text-align: center; }
+#policyStateAssociationRows button > i { position: relative; height: 6px; border-radius: 4px; background: linear-gradient(90deg, rgba(181,148,255,.08) 0 49%, rgba(255,255,255,.15) 49% 51%, rgba(101,225,188,.08) 51% 100%); }
+#policyStateAssociationRows button > i em { position: absolute; top: 1px; height: 4px; border-radius: 3px; background: #65e1bc; }
+#policyStateAssociationRows button.negative > i em { background: #b594ff; }
+#policyStateAssociationRows button > b { color: #92aaa4; font: inherit; font-weight: 400; text-align: right; }
+#policyStateAssociationDetail { margin-top: 5px; padding: 5px; border-left: 2px solid rgba(101, 225, 188, .3); color: #718f88; font: 4px/1.45 var(--mono); }
+#policyStateAssociationDetail:empty { display: none; }
+#policyStateAssociationDetail strong { color: #9bcac0; font-weight: 400; }
+#policyStateAssociationDetail b { float: right; color: #ffbe6a; font: inherit; font-weight: 400; }
+#policyStateAssociationDetail p { clear: both; margin: 4px 0 0; }
+
 .policy-shadow-leap > header {
   display: flex;
   align-items: end;

@@ -23,6 +23,7 @@ import { assessGeometrySurrogatePromotion, evaluateFrozenGeometrySurrogate,
   from "./geometry-calculation-calibration.js?v=20260826-6";
 import { policyIdentifiabilityAcrossArms, policyIdentifiabilityAudit, policyIdentifiabilityTrajectory }
   from "./policy-identifiability.js?v=20260826-4";
+import { finiteStateContrast } from "./policy-state-association.mjs?v=20260827-1";
 import { archiveResponseFrontierRankAudit }
   from "./archive-response-frontier-audit.js?v=20260827-1";
 import { evidenceOrderedClusterDiscoverySchedule }
@@ -541,6 +542,10 @@ const policyDecisivenessHistory = $("policyDecisivenessHistory");
 const policyMaterialStateHistoryState = $("policyMaterialStateHistoryState");
 const policyMaterialStateHistory = $("policyMaterialStateHistory");
 const policyMaterialStateDetail = $("policyMaterialStateDetail");
+const policyStateAssociationState = $("policyStateAssociationState");
+const policyStateOutcome = $("policyStateOutcome");
+const policyStateAssociationRows = $("policyStateAssociationRows");
+const policyStateAssociationDetail = $("policyStateAssociationDetail");
 const policyShadowLeapState = $("policyShadowLeapState");
 const policyShadowLeapPlot = $("policyShadowLeapPlot");
 const policyShadowLeapDetail = $("policyShadowLeapDetail");
@@ -1542,6 +1547,8 @@ let lastPolicyComparison = null;
 let policyComparisonHistory = [];
 let selectedPolicySnapshotIndex = -1;
 let selectedPolicyPreviewId = "active";
+let selectedPolicyStateOutcome = "antichain";
+let selectedPolicyStateObservableId = "coordinationDeficit";
 let selectedMarkingFrontierId = null;
 let policySnapshotCount = 0;
 let hypothesisSeparationExperiment = null;
@@ -10861,7 +10868,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-280",
+      buildId: "20260827-281",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -13019,6 +13026,8 @@ function notebookPolicySnapshot(snapshot, includeIdentifiability = false) {
     hypothesisDecisiveness: receiptPolicyDecisivenessAudit(snapshot.decisivenessAudit),
     selectedHypothesisDecisivenessHistory: includeIdentifiability
       ? receiptPolicyDecisivenessHistory(buildPolicyDecisivenessHistory(snapshot)) : null,
+    selectedStateConditionedDecisiveness: includeIdentifiability
+      ? receiptPolicyStateConditionedDecisiveness(buildPolicyStateConditionedDecisiveness(snapshot)) : null,
     hypothesisIdentifiability,
   };
 }
@@ -13147,7 +13156,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-280" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-281" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -18585,6 +18594,85 @@ function receiptPolicyDecisivenessHistory(history) {
     causalHierarchyInferred: history.causalHierarchyInferred,
     alignment: history.alignment,
     claimBoundary: history.claimBoundary,
+  };
+}
+
+const POLICY_STATE_OUTCOMES = [
+  { id: "score", label: "score field" },
+  { id: "leader", label: "leader" },
+  { id: "order", label: "commuting order" },
+  { id: "antichain", label: "antichain set" },
+  { id: "atoms", label: "emitted atoms" },
+  { id: "chemistry", label: "emitted chemistry" },
+];
+
+function buildPolicyStateConditionedDecisiveness(snapshot, termId = null,
+  requestedOutcomeId = selectedPolicyStateOutcome) {
+  const history = buildPolicyDecisivenessHistory(snapshot, termId);
+  if (!history) return null;
+  const outcome = POLICY_STATE_OUTCOMES.find((entry) => entry.id === requestedOutcomeId)
+    || POLICY_STATE_OUTCOMES.find((entry) => entry.id === "antichain");
+  const minimumPerGroup = 3;
+  const rows = POLICY_MATERIAL_STATE_OBSERVABLES.map((observable) => {
+    const samples = history.records.map((record) => {
+      const value = record.materialState?.observables?.[observable.id];
+      const changed = record.stages.find((stage) => stage.id === outcome.id)?.changed;
+      return Number.isFinite(value) && typeof changed === "boolean"
+        ? { frontierIndex: record.frontierIndex, candidateSetDigest: record.candidateSetDigest,
+          value, changed } : null;
+    }).filter(Boolean);
+    const contrast = finiteStateContrast(samples, { minimumPerGroup });
+    return {
+      observableId: observable.id, observableLabel: observable.label, unit: observable.unit,
+      ...contrast,
+      samples,
+    };
+  });
+  const audit = {
+    schema: 1,
+    termId: history.termId,
+    termLabel: history.termLabel,
+    outcomeId: outcome.id,
+    outcomeLabel: outcome.label,
+    minimumPerGroup,
+    storedFrontiers: history.storedFrontiers,
+    rows,
+    resolvedRows: rows.filter((row) => row.resolved).length,
+    targetUsed: history.targetUsed,
+    candidateCoordinatesEmbedded: false,
+    materialCoordinatesEmbedded: false,
+    usedForAdmission: false,
+    usedForRanking: false,
+    serialCorrelationModeled: false,
+    statisticalIndependenceAssumed: false,
+    pValueComputed: false,
+    causalEffectInferred: false,
+    energyLandscapeInferred: false,
+    physicalTimeModeled: false,
+    claimBoundary: "finite retained-frontier difference in observable means between changed and stable channel-omission outcomes; sequential frontiers are not independent samples and unresolved rows remain visible",
+  };
+  audit.digest = notebookStringHash(JSON.stringify({ termId: audit.termId,
+    outcomeId: audit.outcomeId, minimumPerGroup, rows: rows.map((row) => ({
+      observableId: row.observableId, changedCount: row.changedCount, stableCount: row.stableCount,
+      changedMean: row.changedMean, stableMean: row.stableMean, resolved: row.resolved,
+      samples: row.samples })), targetUsed: audit.targetUsed }));
+  return audit;
+}
+
+function receiptPolicyStateConditionedDecisiveness(audit) {
+  if (!audit) return null;
+  return {
+    ...audit,
+    rows: audit.rows.map((row) => ({ ...row,
+      changedMean: row.changedMean === null ? null : receiptRound(row.changedMean),
+      stableMean: row.stableMean === null ? null : receiptRound(row.stableMean),
+      difference: row.difference === null ? null : receiptRound(row.difference),
+      observedMinimum: row.observedMinimum === null ? null : receiptRound(row.observedMinimum),
+      observedMaximum: row.observedMaximum === null ? null : receiptRound(row.observedMaximum),
+      observedRange: row.observedRange === null ? null : receiptRound(row.observedRange),
+      normalizedDifference: row.normalizedDifference === null ? null : receiptRound(row.normalizedDifference),
+      samples: row.samples.map((sample) => ({ ...sample, value: receiptRound(sample.value) })),
+    })),
   };
 }
 
@@ -29296,11 +29384,14 @@ function renderPolicyDecisivenessMatrix(snapshot, requestedTermId = null) {
   policyDecisivenessHistory.replaceChildren();
   policyMaterialStateHistory.replaceChildren();
   policyMaterialStateDetail.replaceChildren();
+  policyStateAssociationRows.replaceChildren();
+  policyStateAssociationDetail.replaceChildren();
   const audit = snapshot?.decisivenessAudit;
   if (!audit?.channels.length) {
     policyDecisivenessState.textContent = "no active differential channels";
     policyDecisivenessHistoryState.textContent = "awaiting a selected channel";
     policyMaterialStateHistoryState.textContent = "awaiting structural passports";
+    policyStateAssociationState.textContent = "insufficient retained support";
     return;
   }
   const selected = audit.channels.find((entry) => entry.termId === requestedTermId)
@@ -29349,6 +29440,7 @@ function renderPolicyDecisivenessMatrix(snapshot, requestedTermId = null) {
   policyDecisivenessDetail.append(heading, status, evidence, boundary);
   renderPolicyDecisivenessHistory(snapshot, selected.termId);
   renderPolicyMaterialStateHistory(snapshot, selected.termId);
+  renderPolicyStateAssociation(snapshot, selected.termId);
 }
 
 function selectPolicyDecisivenessFrontier(historyIndex, termId) {
@@ -29473,6 +29565,70 @@ function renderPolicyMaterialStateHistory(snapshot, termId) {
   const boundary = document.createElement("p");
   boundary.textContent = `Pre-decision coordinate-free passport ${state.digest}; ${state.effectiveNucleusCount ?? "—"} effective nuclei · ${state.interfacePairs ?? "—"} registered interface pairs. Display normalization is row-local and never enters ranking.`;
   policyMaterialStateDetail.append(heading, status, evidence, boundary);
+}
+
+function renderPolicyStateAssociation(snapshot, termId) {
+  policyStateAssociationRows.replaceChildren();
+  policyStateAssociationDetail.replaceChildren();
+  const audit = buildPolicyStateConditionedDecisiveness(snapshot, termId, selectedPolicyStateOutcome);
+  if (!audit) {
+    policyStateAssociationState.textContent = "insufficient retained support";
+    return;
+  }
+  selectedPolicyStateOutcome = audit.outcomeId;
+  policyStateOutcome.value = audit.outcomeId;
+  policyStateOutcome.onchange = () => {
+    selectedPolicyStateOutcome = policyStateOutcome.value;
+    renderPolicyStateAssociation(snapshot, termId);
+  };
+  policyStateAssociationState.textContent = `${audit.resolvedRows}/${audit.rows.length} resolved · ${audit.outcomeLabel}`
+    + `${audit.targetUsed ? " · target-aware history" : " · target-free"}`;
+  if (!audit.rows.some((row) => row.observableId === selectedPolicyStateObservableId)) {
+    selectedPolicyStateObservableId = audit.rows[0]?.observableId || null;
+  }
+  audit.rows.forEach((entry) => {
+    const observable = POLICY_MATERIAL_STATE_OBSERVABLES.find((candidate) =>
+      candidate.id === entry.observableId);
+    const row = document.createElement("button"); row.type = "button";
+    row.classList.toggle("active", entry.observableId === selectedPolicyStateObservableId);
+    row.classList.toggle("unresolved", !entry.resolved);
+    row.classList.toggle("negative", Number(entry.normalizedDifference) < 0);
+    row.setAttribute("aria-pressed", String(entry.observableId === selectedPolicyStateObservableId));
+    const label = document.createElement("strong"); label.textContent = entry.observableLabel;
+    const support = document.createElement("span"); support.textContent = `${entry.changedCount}Δ / ${entry.stableCount}○`;
+    const track = document.createElement("i"); const fill = document.createElement("em");
+    const magnitude = 50 * Math.abs(entry.normalizedDifference || 0);
+    fill.style.left = `${entry.normalizedDifference < 0 ? 50 - magnitude : 50}%`;
+    fill.style.width = `${magnitude}%`; track.append(fill);
+    const effect = document.createElement("b");
+    effect.textContent = Number.isFinite(entry.difference) && observable
+      ? `${entry.difference >= 0 ? "+" : ""}${observable.format(entry.difference)}` : "—";
+    row.title = entry.resolved
+      ? `${entry.observableLabel}: changed mean ${observable.format(entry.changedMean)}, stable mean ${observable.format(entry.stableMean)}; finite retained-frontier association only`
+      : `${entry.observableLabel}: needs ${entry.supportNeeded.changed} changed and ${entry.supportNeeded.stable} stable frontier observations`;
+    row.append(label, support, track, effect);
+    row.addEventListener("click", () => {
+      selectedPolicyStateObservableId = entry.observableId;
+      renderPolicyStateAssociation(snapshot, termId);
+    });
+    policyStateAssociationRows.append(row);
+  });
+  const selected = audit.rows.find((entry) => entry.observableId === selectedPolicyStateObservableId)
+    || audit.rows[0];
+  if (!selected) return;
+  const observable = POLICY_MATERIAL_STATE_OBSERVABLES.find((entry) => entry.id === selected.observableId);
+  const heading = document.createElement("strong");
+  heading.textContent = `${audit.termLabel} × ${selected.observableLabel}`;
+  const status = document.createElement("b");
+  status.textContent = selected.resolved ? "SUPPORTED DESCRIPTIVE CONTRAST"
+    : `NEEDS ${selected.supportNeeded.changed}Δ + ${selected.supportNeeded.stable}○`;
+  const evidence = document.createElement("p");
+  evidence.textContent = Number.isFinite(selected.difference)
+    ? `${audit.outcomeLabel} changed: n=${selected.changedCount}, mean ${observable.format(selected.changedMean)} · stable: n=${selected.stableCount}, mean ${observable.format(selected.stableMean)} · changed − stable ${selected.difference >= 0 ? "+" : ""}${observable.format(selected.difference)} across observed row range ${observable.format(selected.observedMinimum)}–${observable.format(selected.observedMaximum)}`
+    : `${audit.outcomeLabel} changed: n=${selected.changedCount} · stable: n=${selected.stableCount}; both groups must be represented before a difference is displayed.`;
+  const boundary = document.createElement("p");
+  boundary.textContent = `Minimum ${audit.minimumPerGroup} retained frontiers per side. Sequential states are correlated; no p-value, causal effect, energy landscape, kinetics, or physical time is inferred. ${audit.digest}.`;
+  policyStateAssociationDetail.append(heading, status, evidence, boundary);
 }
 
 function renderPolicyShadowLeap(snapshot, requestedTermId = null) {

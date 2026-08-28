@@ -33,7 +33,7 @@ def main() -> None:
     require("Columns are discrete frozen frontier updates, not physical time", HTML)
     require(".policy-decisiveness-history-grid button.changed", CSS)
     require("Build 279 · decisiveness through structural growth", README)
-    require('application: { name: "Materials Growth Lab", buildId: "20260827-280" }')
+    require('application: { name: "Materials Growth Lab", buildId: "20260827-281" }')
     print("frozen-frontier decisiveness history contract passed")
 
 

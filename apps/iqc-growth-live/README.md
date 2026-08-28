@@ -1,5 +1,23 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 281 · state-conditioned channel decisiveness
+
+The linked frontier archive can now ask which retained material regimes
+coincide with a selected channel changing the score field, leader, commuting
+order, antichain, emitted atoms, or emitted chemistry. For each of the eight
+coordinate-free state observables, the portal contrasts the mean over changed
+frontiers with the mean over stable frontiers and displays the signed difference
+relative to that row's observed finite-window range.
+
+The outcome selector and observable rows are interactive. A row is certified as
+a supported descriptive contrast only after at least three retained frontiers
+exist on both sides; undersupported rows remain visible with the exact missing
+counts instead of extrapolating. The receipt records all frontier samples,
+support, means, range, normalized difference, and digest. Sequential growth
+states are explicitly not treated as independent samples: no p-value, causal
+effect, energy landscape, reaction coordinate, kinetics, or physical time is
+inferred, and the association never enters admission or ranking.
+
 ## Build 280 · linked frontier material-state passports
 
 The decisiveness archive now shows the material state encountered by every

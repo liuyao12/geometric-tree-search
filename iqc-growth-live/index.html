@@ -8,7 +8,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260827-280">
+  <link rel="stylesheet" href="./style.css?v=20260827-281">
   <script type="importmap">
     {
       "imports": {
@@ -1211,6 +1211,13 @@
                       <header><span><small>pre-decision structural passport</small><strong>What interface state did the channel encounter?</strong></span><b id="policyMaterialStateHistoryState">awaiting structural passports</b></header>
                       <div id="policyMaterialStateHistory" role="grid" aria-label="Coordinate-free material observables at each frozen frontier"></div>
                       <article id="policyMaterialStateDetail" aria-live="polite"></article>
+                      <section class="policy-state-association" aria-label="State-conditioned hypothesis decisiveness">
+                        <header><span><small>bounded descriptive association</small><strong>In which material regimes does this channel matter?</strong></span><b id="policyStateAssociationState">insufficient retained support</b></header>
+                        <label>structural outcome<select id="policyStateOutcome" aria-label="Structural decisiveness outcome"><option value="score">score field</option><option value="leader">leader</option><option value="order">commuting order</option><option value="antichain" selected>antichain set</option><option value="atoms">emitted atoms</option><option value="chemistry">emitted chemistry</option></select></label>
+                        <div id="policyStateAssociationRows" role="group" aria-label="Select a material observable to inspect its state-conditioned association"></div>
+                        <article id="policyStateAssociationDetail" aria-live="polite"></article>
+                        <p>Each row contrasts retained frontiers where the selected outcome changed versus stayed stable. Three observations per side are required; sequential frontiers are not treated as independent samples.</p>
+                      </section>
                       <p>Color is normalized within each observable row across the retained window. It is not energy, probability, a reaction coordinate, or a comparison between unlike rows.</p>
                     </section>
                   </section>
@@ -2040,7 +2047,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260827-280"></script>
+  <script type="module" src="./app.js?v=20260827-281"></script>
   <script type="module" src="./evidence-atlas.js?v=20260827-24"></script>
 </body>
 </html>
