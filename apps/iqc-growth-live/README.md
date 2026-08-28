@@ -1,5 +1,30 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 275 · branch-resolved physics → geometry attribution
+
+Every retained Stage 4 action now carries the exact score ledger that ordered
+its frozen frontier. The action microscope renders the raw geometric observable,
+active weight, and signed additive contribution for grammar/marking, declared
+physical surrogates, known-window replay, and seeded exploration. Zero-weight
+channels remain counted as diagnostics instead of being presented as causes.
+
+Hard admission is displayed in a separate row of ten gates: colored hard core,
+scalar-spin color, public boundary, shared support, novel emission, known-window
+consistency, coordination capacity, angular support, feedstock supply, and GCTS
+marking. This separation is essential: a failed geometric predicate is not
+converted into an additive “energy,” and a favorable soft score cannot override
+a hard conflict. Each ledger reconciles its term sum to the actual branch score
+within `1e-9`, records its rank in the complete evaluated frontier, carries a
+coordinate-free digest, and discloses whether labeled replay influenced ranking.
+
+When A and B are pinned in the matched-action view, the same panel changes to
+an exact per-channel `A → B` comparison and sorts by signed contribution delta;
+hard-gate transitions remain separate. The fingerprint is frozen only after the
+search score and candidate set exist, so rendering, pinning, and comparison do
+not enumerate, admit, rerank, or materialize anything. Contributions are
+dimensionless geometry-encoded ordering terms—not energies, probabilities,
+forces, barriers, kinetic rates, dynamics, or physical time.
+
 ## Build 274 · matched local-action comparison
 
 The Stage 4 decision microscope now supports a read-only action A↔B study.

@@ -22,6 +22,10 @@ def test_growth_event_map_and_branch_microscope_are_read_only_diagnostics() -> N
         "growthMechanismDetail",
         "growthMechanismLocalState",
         "growthMechanismLocalCanvas",
+        "growthMechanismPhysicsState",
+        "growthMechanismPhysicsTerms",
+        "growthMechanismPhysicsGates",
+        "growthMechanismPhysicsBoundary",
         "growthMechanismPrevious",
         "growthMechanismNext",
         "growthMechanismPin",
@@ -101,6 +105,22 @@ def test_growth_event_map_and_branch_microscope_are_read_only_diagnostics() -> N
     assert "function growthActionDescriptorDistance(first, second)" in APP
     assert "function nearestOppositeGrowthAction(reference)" in APP
     assert "function renderGrowthMechanismComparison()" in APP
+    assert "function freezeGrowthActionPhysicsFingerprint(entry)" in APP
+    assert "function rankGrowthActionPhysicsFingerprint(entry, rank, candidateCount, leaderScore)" in APP
+    assert "function renderGrowthMechanismPhysicsAttribution()" in APP
+    assert "growth-action physics fingerprint does not reconcile with the ranking score" in APP
+    assert "candidate.growthPhysicsAttribution = freezeGrowthActionPhysicsFingerprint(entry)" in APP
+    assert "rankGrowthActionPhysicsFingerprint(entry," in APP
+    assert "physicsAttribution: candidate.growthPhysicsAttribution" in APP
+    assert "physicsAttributionSerialized: true" in APP
+    assert "physicsAttributionCoordinatesEmbedded: false" in APP
+    assert "physicsAttributionTargetUsedForCandidateSet: false" in APP
+    assert "physicsAttributionUsedForSearch: false" in APP
+    assert "underlyingSoftTermsUsedForBranchRanking: true" in APP
+    assert "physicsHardGatesSeparatedFromSoftTerms: true" in APP
+    assert "physicalEnergyInferred: false" in APP
+    assert "physicalRateInferred: false" in APP
+    assert "physicalTimeInferred: false" in APP
     assert 'selectedLeapIndex = retainedIndex' in APP
     assert "the structural-history panels follow its retained leap without rewinding the live atoms" in APP
     assert "This forensic view never changes rank, admission, or geometry." in APP
@@ -133,6 +153,11 @@ def test_growth_event_map_and_branch_microscope_are_read_only_diagnostics() -> N
     for forbidden in ("materializeCandidate(", "evaluateCandidate(", "performOffLatticeEvent",
                       "atoms =", "placedClusters ="):
         assert forbidden not in comparison
+    attribution = APP[APP.index("function renderGrowthMechanismPhysicsAttribution("):
+                      APP.index("function renderGrowthMechanismComparison(")]
+    for forbidden in ("materializeCandidate(", "evaluateCandidate(", "performOffLatticeEvent",
+                      "atoms =", "placedClusters ="):
+        assert forbidden not in attribution
     assert "distance excludes fate, gate signals, reason, action ID, and absolute position" in APP
     assert "descriptive matched pair from a capped, correlated action ledger" in APP
     selector = APP[APP.index("function selectGrowthMechanismEvent("):
@@ -151,6 +176,9 @@ def test_growth_event_map_and_branch_microscope_are_read_only_diagnostics() -> N
     assert ".growth-local-geometry" in CSS
     assert ".growth-local-legend" in CSS
     assert ".growth-action-comparison" in CSS
+    assert ".growth-physics-attribution" in CSS
+    assert ".growth-physics-term.positive" in CSS
+    assert ".growth-physics-gates" in CSS
     assert ".growth-uncertainty-budget" in CSS
     assert "spatial growth-event audit" in README
     assert "not automatic defect identities" in README

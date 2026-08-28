@@ -37,8 +37,8 @@ def test_consequence_is_previewed_and_target_use_is_separate_from_marking_score(
 def test_consequence_is_receipted_and_release_is_consistent():
     assert "materialConsequence: marking.materialConsequence ?" in APP
     assert "materialConsequenceDigest: audit.portfolio.materialConsequence?.digest" in APP
-    assert 'buildId: "20260827-274"' in APP
-    assert 'app.js?v=20260827-274' in HTML
+    assert 'buildId: "20260827-275"' in APP
+    assert 'app.js?v=20260827-275' in HTML
     assert "Build 214" in README
     assert "Build 214" in DOC
 

@@ -1,5 +1,33 @@
 # Recursive GCTS benchmark for material growth
 
+### Branch-resolved physics → geometry attribution (Build 275)
+
+The retained growth-event record now freezes the same exact score decomposition
+used by `scoreFrontierCandidate`: grammar priority, labeled replay gain, every
+declared geometric physics surrogate, and seeded exploration. Each term records
+its raw value, active (possibly signed) weight, signed contribution, execution
+role, and scientific claim boundary. The sum is asserted against the actual
+selection score at `1e-9`; the final frontier rank, candidate count, distance
+behind the leader, and a coordinate-free ledger digest are added only after the
+complete immutable candidate set is sorted.
+
+The additive ledger is not allowed to impersonate admission. Ten independently
+reported predicates retain their observed value, requirement, and pass/fail
+state: species/hard core, scalar-spin color, public boundary, shared support,
+novel emission, known-window consistency, coordination, angles, feedstock, and
+the selected GCTS marking. A rejected action can therefore be inspected as a
+specific geometric failure even when some soft ordering channels are favorable.
+
+For one selected action, the microscope displays the largest active signed
+contributions around a zero axis and the complete hard-gate strip. With an A/B
+pair pinned, it displays exact `A → B` contributions and sorts on their delta,
+while highlighting gate transitions separately. The renderer has no candidate
+evaluation, atom mutation, materialization, or search call. Receipt fields state
+that the fingerprint contains no coordinates and is not itself used by search;
+the underlying nonzero soft terms were already used for branch ranking. These
+dimensionless geometric scores are hypotheses and ordering surrogates, not
+energies, probabilities, forces, barriers, rates, dynamics, or physical time.
+
 ### Matched local-action comparison (Build 274)
 
 The action microscope can pin one retained decision as A and compare it with a

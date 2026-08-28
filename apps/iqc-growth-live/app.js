@@ -809,6 +809,10 @@ const growthMechanismDetailState = $("growthMechanismDetailState");
 const growthMechanismDetail = $("growthMechanismDetail");
 const growthMechanismLocalState = $("growthMechanismLocalState");
 const growthMechanismLocalCanvas = $("growthMechanismLocalCanvas");
+const growthMechanismPhysicsState = $("growthMechanismPhysicsState");
+const growthMechanismPhysicsTerms = $("growthMechanismPhysicsTerms");
+const growthMechanismPhysicsGates = $("growthMechanismPhysicsGates");
+const growthMechanismPhysicsBoundary = $("growthMechanismPhysicsBoundary");
 const growthMechanismPrevious = $("growthMechanismPrevious");
 const growthMechanismNext = $("growthMechanismNext");
 const growthMechanismPin = $("growthMechanismPin");
@@ -8323,6 +8327,8 @@ function recordGrowthMechanismEvent(candidate, evaluation, accepted, depth, froz
       angularViolations: evaluation.angularViolations?.length || 0,
       markingAccepted: candidate.markingAccepted,
     },
+    physicsAttribution: candidate.growthPhysicsAttribution
+      ? JSON.parse(JSON.stringify(candidate.growthPhysicsAttribution)) : null,
     uncertainty,
   };
   growthMechanismEvents.push(event);
@@ -8373,6 +8379,14 @@ function growthMechanismAudit() {
     comparisonDescriptorGateSignalsIncluded: false,
     comparisonDescriptorAbsolutePositionIncluded: false,
     comparisonDescriptorProperRotationInvariant: true,
+    physicsAttributionSerialized: true,
+    physicsAttributionCoordinatesEmbedded: false,
+    physicsAttributionTargetUsedForCandidateSet: false,
+    physicsAttributionUsedForSearch: false,
+    underlyingSoftTermsUsedForBranchRanking: true,
+    physicsScoreDecompositionExact: growthMechanismEvents.every((event) =>
+      event.physicsAttribution?.scoreDecompositionExact !== false),
+    physicsHardGatesSeparatedFromSoftTerms: true,
     usedForCandidateEnumeration: false,
     usedForAdmission: false,
     usedForBranchRanking: activeMicrostructureCouplingWeight() > 0,
@@ -8624,6 +8638,86 @@ function growthActionHaloLabel(event) {
     .map(([role, count]) => `${role} ${count}`).join(" · ") || "no tagged roles";
 }
 
+function renderGrowthMechanismPhysicsAttribution() {
+  const selected = selectedGrowthMechanismEvent();
+  const pinned = pinnedGrowthMechanismEvent();
+  const audit = selected?.physicsAttribution || null;
+  growthMechanismPhysicsTerms.replaceChildren();
+  growthMechanismPhysicsGates.replaceChildren();
+  if (!audit) {
+    growthMechanismPhysicsState.textContent = "awaiting a scored action";
+    const empty = document.createElement("p");
+    empty.textContent = selected
+      ? "This retained action predates the contribution ledger; advance one leap to freeze a scored fingerprint."
+      : "Run one structural leap to bind exact score terms and hard gates to every retained action.";
+    growthMechanismPhysicsTerms.appendChild(empty);
+    growthMechanismPhysicsBoundary.textContent = "No contribution is inferred for an action without a frozen ranking ledger.";
+    return;
+  }
+  const comparisonAudit = pinned?.index !== selected.index ? pinned?.physicsAttribution : null;
+  const pairMode = Boolean(comparisonAudit);
+  const selectedTerms = new Map(audit.terms.map((term) => [term.id, term]));
+  const comparisonTerms = new Map((comparisonAudit?.terms || []).map((term) => [term.id, term]));
+  const termIds = [...new Set([...selectedTerms.keys(), ...comparisonTerms.keys()])];
+  const rows = termIds.map((id) => ({ id,
+    selected: selectedTerms.get(id) || null, reference: comparisonTerms.get(id) || null }))
+    .filter((row) => row.selected?.active || row.reference?.active)
+    .sort((first, second) => {
+      const firstMagnitude = pairMode
+        ? Math.abs((first.selected?.contribution || 0) - (first.reference?.contribution || 0))
+        : Math.abs(first.selected?.contribution || 0);
+      const secondMagnitude = pairMode
+        ? Math.abs((second.selected?.contribution || 0) - (second.reference?.contribution || 0))
+        : Math.abs(second.selected?.contribution || 0);
+      return secondMagnitude - firstMagnitude || first.id.localeCompare(second.id);
+    });
+  const maximumMagnitude = Math.max(1e-12, ...rows.flatMap((row) => [
+    Math.abs(row.selected?.contribution || 0), Math.abs(row.reference?.contribution || 0),
+    Math.abs((row.selected?.contribution || 0) - (row.reference?.contribution || 0)),
+  ]));
+  const signed = (value) => `${value >= 0 ? "+" : ""}${value.toFixed(3)}`;
+  rows.slice(0, 12).forEach((row) => {
+    const term = row.selected || row.reference;
+    const selectedContribution = row.selected?.contribution || 0;
+    const referenceContribution = row.reference?.contribution || 0;
+    const plotted = pairMode ? selectedContribution - referenceContribution : selectedContribution;
+    const item = document.createElement("span");
+    item.className = `growth-physics-term ${plotted > 1e-12 ? "positive" : plotted < -1e-12 ? "negative" : "neutral"}`;
+    item.setAttribute("role", "listitem");
+    const label = document.createElement("small"); label.textContent = term.label;
+    const value = document.createElement("strong");
+    value.textContent = pairMode
+      ? `${signed(referenceContribution)} → ${signed(selectedContribution)}`
+      : `${term.raw.toFixed(3)} × ${term.weight.toFixed(3)}`;
+    const track = document.createElement("i"); const bar = document.createElement("b");
+    bar.style.width = `${Math.max(1.5, 50 * Math.abs(plotted) / maximumMagnitude)}%`;
+    track.appendChild(bar);
+    const status = document.createElement("em");
+    status.textContent = pairMode ? `Δ ${signed(plotted)}` : `${signed(selectedContribution)} · ${term.executionRole}`;
+    item.title = `${term.role}. ${term.claimBoundary}`;
+    item.append(label, value, track, status); growthMechanismPhysicsTerms.appendChild(item);
+  });
+  const comparisonGates = new Map((comparisonAudit?.gates || []).map((gate) => [gate.id, gate]));
+  audit.gates.forEach((gate) => {
+    const referenceGate = comparisonGates.get(gate.id);
+    const chip = document.createElement("span");
+    const changed = pairMode && referenceGate && referenceGate.passed !== gate.passed;
+    chip.className = changed ? "changed" : gate.passed ? "pass" : "fail";
+    chip.textContent = pairMode && referenceGate
+      ? `${gate.label}: ${referenceGate.passed ? "pass" : "fail"}→${gate.passed ? "pass" : "fail"}`
+      : `${gate.label}: ${gate.passed ? "pass" : "fail"}`;
+    chip.title = `${gate.requirement}; observed ${String(gate.observed)}`;
+    growthMechanismPhysicsGates.appendChild(chip);
+  });
+  const rank = Number.isInteger(audit.rank) ? `${audit.rank}/${audit.candidateCount}` : "unranked";
+  growthMechanismPhysicsState.textContent = pairMode
+    ? `A→B signed term delta · B rank ${rank} · ${audit.hardGateFailureCount} hard failures`
+    : `rank ${rank} · score ${audit.score.toFixed(3)} · ${audit.activePhysicsTermCount} physical surrogates · ${audit.hardGateFailureCount} hard failures`;
+  growthMechanismPhysicsBoundary.textContent = pairMode
+    ? `A/B rows show the exact signed contribution change for the same declared score channels; hard-gate transitions remain separate. B ledger ${audit.digest || "unhashed"}. Comparison is display-only and does not rerank either retained frontier.`
+    : `Exact additive parity ${audit.termTotal.toFixed(3)} = score ${audit.score.toFixed(3)} · physics net ${signed(audit.signedPhysicsContribution)} · ${audit.diagnosticTermCount} zero-weight channels retained as diagnostic · ledger ${audit.digest || "unhashed"}. These are dimensionless geometry-encoded ordering terms, not energies, probabilities, forces, barriers, rates, dynamics, or physical time.`;
+}
+
 function renderGrowthMechanismComparison() {
   const selected = selectedGrowthMechanismEvent();
   const pinned = pinnedGrowthMechanismEvent();
@@ -8688,6 +8782,7 @@ function renderGrowthMechanismDetail() {
   drawGrowthMechanismLocalGeometry(event);
   growthMechanismPrevious.disabled = growthMechanismEvents.length < 2;
   growthMechanismNext.disabled = growthMechanismEvents.length < 2;
+  renderGrowthMechanismPhysicsAttribution();
   renderGrowthMechanismComparison();
   if (!event) {
     growthMechanismDetailState.textContent = "awaiting a decision";
@@ -10693,7 +10788,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-274",
+      buildId: "20260827-275",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -12971,7 +13066,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-274" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-275" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -17382,6 +17477,74 @@ function activeCandidateScoreTerms(entry, includeExploration = true) {
   return applyHypothesisSeparationMultipliers(terms);
 }
 
+function growthPhysicsTermRole(term) {
+  if (term.id === "grammar-priority") return "learned grammar / marking";
+  if (term.id === "known-window-gain") return "labeled replay only";
+  if (term.id === "exploration") return "seeded branch-order perturbation";
+  return Math.abs(term.weight) > 1e-12 ? "soft geometric ordering" : "diagnostic only";
+}
+
+function freezeGrowthActionPhysicsFingerprint(entry) {
+  const exactTerms = activeCandidateScoreTerms(entry, true);
+  const exactTotal = exactTerms.reduce((sum, term) => sum + term.contribution, 0);
+  if (Math.abs(exactTotal - entry.selectionScore) > 1e-9) {
+    throw new Error("growth-action physics fingerprint does not reconcile with the ranking score");
+  }
+  const terms = exactTerms.map((term) => ({
+    id: term.id, label: term.label,
+    raw: receiptRound(term.raw, 10), weight: receiptRound(term.weight, 10),
+    contribution: receiptRound(term.contribution, 10),
+    executionRole: growthPhysicsTermRole(term), role: term.role,
+    claimBoundary: term.claimBoundary,
+    active: Math.abs(term.weight) > 1e-12,
+    physicalSurrogate: !["grammar-priority", "known-window-gain", "exploration"].includes(term.id),
+  }));
+  const gates = frozenCreationAdmissionGates(entry.evaluation).map((gate) => ({ ...gate }));
+  const activePhysicsTerms = terms.filter((term) => term.active && term.physicalSurrogate);
+  const fingerprint = {
+    schema: 1,
+    score: receiptRound(entry.selectionScore, 10),
+    termTotal: receiptRound(exactTotal, 10),
+    scoreDecompositionExact: true,
+    terms,
+    activeTermCount: terms.filter((term) => term.active).length,
+    activePhysicsTermCount: activePhysicsTerms.length,
+    diagnosticTermCount: terms.filter((term) => !term.active).length,
+    signedPhysicsContribution: receiptRound(activePhysicsTerms.reduce((sum, term) => sum + term.contribution, 0), 10),
+    gates,
+    hardGatePassCount: gates.filter((gate) => gate.passed).length,
+    hardGateFailureCount: gates.filter((gate) => !gate.passed).length,
+    hardAdmissionAccepted: entry.evaluation.accepted,
+    rank: null,
+    candidateCount: null,
+    scoreBehindLeader: null,
+    candidateGeometryChanged: false,
+    hardAdmissionChanged: false,
+    usedForCandidateEnumeration: false,
+    usedForAdmission: false,
+    usedForRanking: true,
+    targetUsedForCandidateSet: false,
+    targetUsedForRanking: entry.referenceGuided,
+    physicalEnergyInferred: false,
+    physicalRateInferred: false,
+    physicalTimeInferred: false,
+  };
+  return fingerprint;
+}
+
+function rankGrowthActionPhysicsFingerprint(entry, rank, candidateCount, leaderScore) {
+  const fingerprint = entry.candidate.growthPhysicsAttribution;
+  if (!fingerprint) return;
+  fingerprint.rank = rank;
+  fingerprint.candidateCount = candidateCount;
+  fingerprint.scoreBehindLeader = receiptRound(leaderScore - entry.selectionScore, 10);
+  fingerprint.digest = notebookStringHash(JSON.stringify({
+    score: fingerprint.score, terms: fingerprint.terms, gates: fingerprint.gates,
+    rank, candidateCount, scoreBehindLeader: fingerprint.scoreBehindLeader,
+    targetUsedForRanking: fingerprint.targetUsedForRanking,
+  }));
+}
+
 function oneFactorPolicyTerm(policyId, entry, label) {
   const evaluation = entry.evaluation;
   const specs = {
@@ -19547,15 +19710,19 @@ function scoreFrontierCandidate(candidate, audit) {
       + activeFeedExposureWeight() * evaluation.feedExposure.score;
   const explorationOffset = geometricExplorationOffset(candidate);
   candidate.explorationOffset = explorationOffset;
-  return { candidate, evaluation, sites: evaluation.sites, dynamicPriority, referenceGain,
+  const entry = { candidate, evaluation, sites: evaluation.sites, dynamicPriority, referenceGain,
     referenceGuided: !reconstructionCertified, baseScore, score,
     explorationOffset, selectionScore: score + explorationOffset };
+  candidate.growthPhysicsAttribution = freezeGrowthActionPhysicsFingerprint(entry);
+  return entry;
 }
 
 async function selectCommutingFrontierBatch(evaluated, generation) {
   capturePolicyComparison(evaluated);
   const ranked = evaluated.sort((first, second) => second.selectionScore - first.selectionScore
     || first.candidate.key.localeCompare(second.candidate.key));
+  ranked.forEach((entry, index) => rankGrowthActionPhysicsFingerprint(entry,
+    index + 1, ranked.length, ranked[0]?.selectionScore ?? entry.selectionScore));
   if (overlapGrammar.molecular && !reconstructionCertified) {
     const ordered = ranked.slice().sort((first, second) => first.candidate.rule.replayOrder - second.candidate.rule.replayOrder);
     for (const entry of ordered) {

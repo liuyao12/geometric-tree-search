@@ -38,8 +38,8 @@ def test_projection_is_bounded_display_work_not_scientific_truncation():
 
 
 def test_build_211_release_identity_is_coherent():
-    assert 'buildId: "20260827-274"' in APP
-    assert 'app.js?v=20260827-274' in HTML
+    assert 'buildId: "20260827-275"' in APP
+    assert 'app.js?v=20260827-275' in HTML
     assert "Build 209" in README
     assert "Build 209" in DOC
 
