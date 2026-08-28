@@ -1,5 +1,21 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 302 · end-to-end physics lineage
+
+Every selected-action score term now resolves to exactly one of the 43 frozen
+pre-growth physics-manifest layers. The dimensional ledger adds a fifth,
+interactive lineage step showing that layer's current evidence status, physical
+process, scientific role, and finite response evidence; one button navigates
+back to the complete evidence → encoding → execution → response → claim-boundary
+record without changing any setting or branch.
+
+The score-term fingerprint retains the source manifest ID and the contemporaneous
+process, status, role, evidence, encoding, and limitation. This closes the audit
+chain from a declared or supplied physical layer through its geometric reduction
+and exact signed branch contribution. Candidate enumeration, hard admission,
+ranking, and execution are unchanged, and the linkage does not convert a
+geometric hypothesis into an energy, force, probability, rate, or physical time.
+
 ## Build 301 · dimensional reduction ledger
 
 The material-growth stage now exposes how every physical or geometric input is

@@ -36,9 +36,9 @@ import { buildSettlingMaterialResponseHistory, buildSettlingMaterialResponseMatr
   SETTLING_MATERIAL_FIELDS }
   from "./settling-material-sensitivity.mjs?v=20260828-290";
 import { channelValidationMetricsFromCounts, validationOccurrenceJackknife }
-  from "./validation-uncertainty.mjs?v=20260828-301";
+  from "./validation-uncertainty.mjs?v=20260828-302";
 import { scoreNormalizationAudit }
-  from "./score-normalization.mjs?v=20260828-301";
+  from "./score-normalization.mjs?v=20260828-302";
 import { archiveResponseFrontierRankAudit }
   from "./archive-response-frontier-audit.js?v=20260827-1";
 import { evidenceOrderedClusterDiscoverySchedule }
@@ -11738,7 +11738,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260828-301",
+      buildId: "20260828-302",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -14080,7 +14080,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260828-301" },
+    application: { name: "Materials Growth Lab", buildId: "20260828-302" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -18699,16 +18699,25 @@ function freezeGrowthActionPhysicsFingerprint(entry) {
   if (Math.abs(exactTotal - entry.selectionScore) > 1e-9) {
     throw new Error("growth-action physics fingerprint does not reconcile with the ranking score");
   }
-  const terms = exactTerms.map((term) => ({
-    id: term.id, label: term.label,
-    raw: receiptRound(term.raw, 10), weight: receiptRound(term.weight, 10),
-    contribution: receiptRound(term.contribution, 10),
-    executionRole: growthPhysicsTermRole(term), role: term.role,
-    claimBoundary: term.claimBoundary,
-    normalization: term.normalization,
-    active: Math.abs(term.weight) > 1e-12,
-    physicalSurrogate: !["grammar-priority", "known-window-gain", "exploration"].includes(term.id),
-  }));
+  const manifestById = new Map(physicsTranslationRecords(null).map((record) => [record.id, record]));
+  const terms = exactTerms.map((term) => {
+    const source = manifestById.get(term.normalization.physicsManifestId);
+    if (!source) throw new Error(`score term ${term.id} has no physics-manifest source`);
+    return {
+      id: term.id, label: term.label,
+      raw: receiptRound(term.raw, 10), weight: receiptRound(term.weight, 10),
+      contribution: receiptRound(term.contribution, 10),
+      executionRole: growthPhysicsTermRole(term), role: term.role,
+      claimBoundary: term.claimBoundary,
+      normalization: term.normalization,
+      physicsLineage: { manifestId: source.id, process: source.process, status: source.status,
+        role: source.role, evidence: source.evidence, encoding: source.encoding,
+        boundary: source.boundary, candidateSetInspected: false, targetUsed: false,
+        physicalTimeModeled: false },
+      active: Math.abs(term.weight) > 1e-12,
+      physicalSurrogate: !["grammar-priority", "known-window-gain", "exploration"].includes(term.id),
+    };
+  });
   const gates = frozenCreationAdmissionGates(entry.evaluation).map((gate) => ({ ...gate }));
   const activePhysicsTerms = terms.filter((term) => term.active && term.physicalSurrogate);
   const fingerprint = {
@@ -31947,6 +31956,9 @@ function renderPolicyNormalizationLedger(policy) {
   });
   const term = terms.find((candidate) => candidate.id === selectedPolicyNormalizationTermId) || terms[0];
   const audit = term.normalization;
+  const manifestRecord = physicsTranslationRecords(null)
+    .find((record) => record.id === audit.physicsManifestId);
+  if (!manifestRecord) throw new Error(`normalization ledger cannot resolve physics layer ${audit.physicsManifestId}`);
   const scaleParts = [audit.referenceScale];
   if (audit.resolvedScales.nearestNeighborAngstrom !== null) scaleParts.push(`d_nn = ${audit.resolvedScales.nearestNeighborAngstrom.toFixed(4)} Å`);
   if (audit.resolvedScales.metricToleranceAngstrom !== null) scaleParts.push(`ε = ${audit.resolvedScales.metricToleranceAngstrom.toExponential(2)} Å`);
@@ -31962,10 +31974,33 @@ function renderPolicyNormalizationLedger(policy) {
     small.textContent = step; strong.textContent = value; span.textContent = meta;
     cell.append(small, strong, span); policyNormalizationDetail.append(cell);
   });
+  const lineage = document.createElement("section"); lineage.className = "policy-normalization-lineage";
+  const lineageSmall = document.createElement("small"); lineageSmall.textContent = "05 · physical lineage";
+  const lineageStrong = document.createElement("strong");
+  lineageStrong.textContent = `${manifestRecord.status} · ${manifestRecord.process}`;
+  const lineageSpan = document.createElement("span");
+  lineageSpan.textContent = `${manifestRecord.role} · ${manifestRecord.evidence}`;
+  lineage.append(lineageSmall, lineageStrong, lineageSpan); policyNormalizationDetail.append(lineage);
   const equation = document.createElement("footer");
-  equation.textContent = `raw ${term.raw.toFixed(5)} × dimensionless weight ${term.weight.toFixed(4)} = ${term.contribution >= 0 ? "+" : ""}${term.contribution.toFixed(5)} · ${term.role} · ${term.claimBoundary}`;
+  const equationCopy = document.createElement("span");
+  equationCopy.textContent = `raw ${term.raw.toFixed(5)} × dimensionless weight ${term.weight.toFixed(4)} = ${term.contribution >= 0 ? "+" : ""}${term.contribution.toFixed(5)} · ${term.role} · ${term.claimBoundary}`;
+  const traceButton = document.createElement("button"); traceButton.type = "button";
+  traceButton.textContent = "Trace source physics layer ↑";
+  traceButton.addEventListener("click", () => openScorePhysicsLineage(audit.physicsManifestId));
+  equation.append(equationCopy, traceButton);
   policyNormalizationDetail.append(equation);
-  policyNormalizationState.textContent = `${term.label} · ${audit.sourceUnit} → dimensionless`;
+  policyNormalizationState.textContent = `${term.label} · ${audit.sourceUnit} → dimensionless · ${manifestRecord.status}`;
+}
+
+function openScorePhysicsLineage(manifestId) {
+  selectedPhysicsCompressionLane = "all";
+  selectedGrowthPhysicsPreflightFilter = "all";
+  selectedGrowthPhysicsEffectFilter = "all";
+  selectedGrowthPhysicsReadinessFilter = "all";
+  selectedGrowthPhysicsPreflightId = manifestId;
+  renderGrowthPhysicsPreflight();
+  growthPhysicsPreflightDetail.scrollIntoView({ behavior: "smooth", block: "center" });
+  receiptStatus.textContent = `Selected-action score traced to ${manifestId} in the frozen physics manifest · no setting, candidate, or branch changed.`;
 }
 
 policyNormalizationSelect.addEventListener("change", () => {

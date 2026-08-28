@@ -51,23 +51,60 @@ export const SCORE_NORMALIZATION_ALIASES = Object.freeze({
   "feed-exposure": "exposure",
 });
 
+export const SCORE_PHYSICS_MANIFEST_IDS = Object.freeze({
+  "grammar-priority": "connection",
+  "known-window-gain": "score-ledger",
+  "geometric-strain": "local",
+  "external-calibration": "geometry-calculation-calibration",
+  composition: "chemistry",
+  "solute-partition": "solute-partition",
+  "formal-charge": "chemistry",
+  "charge-geometry": "charge-geometry",
+  "charge-moment": "charge-moment",
+  "ionic-pair": "ionic-pair",
+  "bond-valence": "bond-valence",
+  surface: "surface",
+  "bulk-surface": "bulk-surface-driving",
+  attachment: "attachment-topology",
+  habit: "habit-anisotropy",
+  defect: "defect-precursors",
+  coherency: "coherency-memory",
+  front: "front-morphology",
+  capillary: "capillary-geometry",
+  epitaxy: "epitaxy",
+  drive: "drive",
+  thermal: "thermal-field",
+  robustness: "robustness",
+  microstructure: "microstructure",
+  loop: "loop-closure",
+  arrival: "kinetics",
+  exposure: "feed-exposure",
+  exploration: "path-ensemble",
+});
+
+const auditCache = new Map();
+
 export function scoreNormalizationAudit(id, context = {}) {
   const canonicalId = SCORE_NORMALIZATION_ALIASES[id] || id;
   const definition = SCORE_NORMALIZATION_SPECS[canonicalId];
   if (!definition) throw new Error(`missing score normalization specification for ${id}`);
-  return {
+  const nearestNeighborAngstrom = Number.isFinite(context.nearestNeighborAngstrom)
+    ? context.nearestNeighborAngstrom : null;
+  const metricToleranceAngstrom = Number.isFinite(context.metricToleranceAngstrom)
+    ? context.metricToleranceAngstrom : null;
+  const cacheKey = `${id}|${nearestNeighborAngstrom ?? "null"}|${metricToleranceAngstrom ?? "null"}`;
+  if (auditCache.has(cacheKey)) return auditCache.get(cacheKey);
+  const audit = Object.freeze({
     id,
     canonicalId,
+    physicsManifestId: SCORE_PHYSICS_MANIFEST_IDS[canonicalId],
     ...definition,
-    resolvedScales: {
-      nearestNeighborAngstrom: Number.isFinite(context.nearestNeighborAngstrom)
-        ? context.nearestNeighborAngstrom : null,
-      metricToleranceAngstrom: Number.isFinite(context.metricToleranceAngstrom)
-        ? context.metricToleranceAngstrom : null,
-    },
+    resolvedScales: Object.freeze({ nearestNeighborAngstrom, metricToleranceAngstrom }),
     declaredWeightUnit: "dimensionless multiplier",
     candidateGeometryChanged: false,
     hardAdmissionChanged: false,
     physicalTimeModeled: false,
-  };
+  });
+  auditCache.set(cacheKey, audit);
+  return audit;
 }
