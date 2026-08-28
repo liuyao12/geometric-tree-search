@@ -552,16 +552,39 @@ disjoint `part0` through `part7` reports preserve the worker receipts.
 This is now the primary non-polycube enumeration.  The next screen should
 apply the deeper corona/GCTS pipeline before attempting the next
 arithmetically possible periodic size: twelve copies and determinant fourteen.
-The first resumable root-corona pass already affirms independently replayed
-coronas for 255 of the 259 six-copy survivors.  Four candidates—
-`a2sa_7_00147`, `a2sa_7_00570`, `a2sa_7_01108`, and `a2sa_7_01109`—remain
-inconclusive after 100,000 exact capacity-GCTS nodes each.  A node cap is
-reported as `unresolved`, never as a no-corona certificate.  The merged report
-is `data/a2-sliced-alcove-size7-directed-corona1.ndjson`; its prefix, bounded
-breadth shards, and focused 100k receipts are retained separately.  These four
-hard root-corona cases and a morphology-diverse sample of the 255 witnesses
-are the next GCTS targets.  Substitution screening then follows for the
-strongest extension survivors.
+The root-corona portfolio affirms independently replayed coronas for all 259
+six-copy survivors.  A Python capacity-GCTS pass initially left four cases
+inconclusive after 100,000 nodes, but QF_FD found and replayed 37- or 39-copy
+witnesses for all four in under 0.4 seconds each.  A node cap is still reported
+as `unresolved`, never as a no-corona certificate.  The merged report is
+`data/a2-sliced-alcove-size7-directed-corona1.ndjson`; its prefix, bounded
+breadth shards, focused 100k receipts, and QF_FD completions are retained
+separately.
+
+Every candidate has also been screened for a direct scalar substitution at
+each scale 2 through 8, both under the proper six-element A2 layer group and
+with reflected copies enabled: 3,626 exact candidate-scale-model checks in
+total.  All are certified negative with zero timeouts and no rule.  The
+single-alcove control correctly distinguishes chirality: it has no scale-two
+proper-only rule but has the expected replayed eight-copy rule with reflected
+alcoves.  Most candidate negatives have an independently replayed atomic
+target alcove contained in no legal copy; the remaining reports use exact
+cover exhaustion.  These results exclude direct monotile scalar subdivision,
+not clustered metatiles or non-scalar substitutions.  Reports are named
+`data/a2-sliced-alcove-size7-substitution-scale{2..8}-{proper,reflected}.ndjson`.
+
+At radius two, a two-second breadth pass proves that 108 retained first
+coronas are unextendible and leaves 151 timeout-inconclusive; this claim is
+about those specific coronas, not the tiles.  Their exact UNSAT cores are
+translated into outer-placement indices and reused as GCTS clauses.  One
+alternate-corona round learns 91 more clauses; two continuation rounds bring
+the retained total to 370 clauses over those 108 candidates.  No finite outer
+space is exhausted yet.  The merged evidence is in
+`data/a2-sliced-alcove-size7-retained-corona-extension.ndjson`,
+`data/a2-sliced-alcove-size7-corona2-alternate.ndjson`, and
+`data/a2-sliced-alcove-size7-corona2-continuation.ndjson`.  Deeper radius-two
+continuation, twelve-copy determinant-fourteen quotients, and connected
+metatile substitution alphabets remain the next stages.
 
 Rebuild the earlier size-eight census with:
 

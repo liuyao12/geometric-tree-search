@@ -79,17 +79,8 @@ assert.equal(sizeSeven.reduce((sum, record) =>
 
 const coronas = await readNdjson("../data/a2-sliced-alcove-size7-directed-corona1.ndjson");
 assert.equal(coronas.length, 259);
-assert.equal(coronas.filter(record => record.corona_classification === "root_corona_exists").length, 255);
-assert.deepEqual(coronas.filter(record => record.corona_classification === "unresolved")
-  .map(record => record.id), [
-    "a2sa_7_00147", "a2sa_7_00570", "a2sa_7_01108", "a2sa_7_01109"
-  ]);
+assert.equal(coronas.filter(record => record.corona_classification === "root_corona_exists").length, 259);
 assert.ok(coronas.filter(record => record.corona_classification === "root_corona_exists")
   .every(record => record.corona_z3.replay.verified));
-assert.ok(coronas.filter(record => record.corona_classification === "unresolved")
-  .every(record =>
-    record.corona_z3.stopped_by === "exact_gcts_node_limit"
-    && record.corona_z3.exact_gcts.nodes === 100000
-  ));
 
 console.log("A2-sliced alcove census regression passed", { expected });

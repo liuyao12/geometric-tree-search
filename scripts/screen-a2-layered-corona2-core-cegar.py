@@ -61,7 +61,8 @@ def extension_universe(root, tile_orientations, selected):
     ]
 
 
-def extension_with_core(root, tile_orientations, selected, timeout_ms, prefix):
+def extension_with_core(root, tile_orientations, selected, timeout_ms, prefix,
+                        backend="z3"):
     final = extension_universe(root, tile_orientations, selected)
     final_index = {
         (placement["orientation_index"], tuple(placement["translation"])): index
@@ -73,7 +74,7 @@ def extension_with_core(root, tile_orientations, selected, timeout_ms, prefix):
     target_points = set(root)
     for placement in selected:
         target_points.update(placement["occupancy"])
-    solver = Solver()
+    solver = SolverFor("QF_FD") if backend == "qffd" else Solver()
     solver.set(timeout=timeout_ms)
     exact_constraint = {}
     for point, entries in final_incidence.items():
@@ -120,10 +121,10 @@ def extension_with_core(root, tile_orientations, selected, timeout_ms, prefix):
 def screen(
     record, maximum_rounds, timeout_ms, max_first_copies=0, seed_clauses=None,
     checkpoint_callback=None, seed_rounds=0, seed_milliseconds=0,
-    outer_solver_kind="z3",
+    outer_solver_kind="z3", inner_solver_kind="z3",
 ):
     started = time.monotonic()
-    root = GEOMETRY.tile_occupancy(record["cells"])
+    root = GEOMETRY.record_occupancy(record)
     tile_orientations = GEOMETRY.orientations(root)
     first = CORONA.candidate_placements(root, tile_orientations)
     outer_variables = [Bool(f"outer_{record['id']}_{index}") for index in range(len(first))]
@@ -199,7 +200,7 @@ def screen(
         selected = [first[index] for index in first_indices]
         extension = extension_with_core(
             root, tile_orientations, selected, timeout_ms,
-            f"inner_{record['id']}_{round_index}"
+            f"inner_{record['id']}_{round_index}", inner_solver_kind
         )
         if extension["result"] == "sat":
             first_patch = [{"orientation_index": 0, "translation": [0, 0, 0]}] + [
@@ -275,17 +276,24 @@ def main():
     parser.add_argument("--input", required=True)
     parser.add_argument("--output", required=True)
     parser.add_argument("--ids", default="")
+    parser.add_argument("--offset", type=int, default=0)
+    parser.add_argument("--limit", type=int, default=0)
     parser.add_argument("--rounds", type=int, default=64)
     parser.add_argument("--timeout-ms", type=int, default=30000)
     parser.add_argument("--max-first-copies", type=int, default=0)
     parser.add_argument("--seed-core", action="append", default=[])
+    parser.add_argument("--only-seeded", action="store_true")
     parser.add_argument("--checkpoint-dir", default="")
     parser.add_argument("--outer-solver", choices=("z3", "qffd"), default="z3")
+    parser.add_argument("--inner-solver", choices=("z3", "qffd"), default="z3")
     args = parser.parse_args()
     requested = {value for value in args.ids.split(",") if value}
     records = [json.loads(line) for line in Path(args.input).read_text().splitlines() if line.strip()]
     if requested:
         records = [record for record in records if record["id"] in requested]
+    records = records[max(0, args.offset):]
+    if args.limit > 0:
+        records = records[:args.limit]
     output = Path(args.output)
     output.write_text("")
     seeds_by_id = {}
@@ -309,6 +317,10 @@ def main():
             )
             if "reduced_outer_placement_indices" in seed:
                 indices_list = [seed["reduced_outer_placement_indices"]]
+            elif seed.get("retained_corona_extension_classification") == "retained_corona_unextendible":
+                indices_list = [seed["retained_corona_extension"]["outer_placement_indices"]]
+            elif "corona2_core_cegar" not in seed:
+                continue
             else:
                 indices_list = [
                     clause["outer_placement_indices"]
@@ -329,6 +341,8 @@ def main():
             canonical.append((key, seed))
             seen.add(key)
         seeds_by_id[candidate_id] = [seed for _, seed in canonical]
+    if args.only_seeded:
+        records = [record for record in records if record["id"] in seeds_by_id]
     counts = {}
     with output.open("a") as stream:
         for index, record in enumerate(records, 1):
@@ -342,7 +356,7 @@ def main():
                 seeds_by_id.get(record["id"], []),
                 save_checkpoint,
                 *seed_effort_by_id.get(record["id"], (0, 0)),
-                args.outer_solver,
+                args.outer_solver, args.inner_solver,
             )
             classification = result["corona2_core_classification"]
             counts[classification] = counts.get(classification, 0) + 1

@@ -64,7 +64,7 @@ def incidence(placements):
 
 def screen(record, timeout_ms, backend):
     started = time.monotonic()
-    root = GEOMETRY.tile_occupancy(record["cells"])
+    root = GEOMETRY.record_occupancy(record)
     tile_orientations = GEOMETRY.orientations(root)
     first = CORONA.candidate_placements(root, tile_orientations)
     final = final_placement_universe(root, tile_orientations, first)
@@ -183,6 +183,8 @@ def main():
     parser.add_argument("--input", required=True)
     parser.add_argument("--output", required=True)
     parser.add_argument("--ids", default="")
+    parser.add_argument("--offset", type=int, default=0)
+    parser.add_argument("--limit", type=int, default=0)
     parser.add_argument("--timeout-ms", type=int, default=300000)
     parser.add_argument("--backend", choices=("default", "qffd"), default="qffd")
     args = parser.parse_args()
@@ -190,6 +192,9 @@ def main():
     records = [json.loads(line) for line in Path(args.input).read_text().splitlines() if line.strip()]
     if requested:
         records = [record for record in records if record["id"] in requested]
+    records = records[max(0, args.offset):]
+    if args.limit > 0:
+        records = records[:args.limit]
     output = Path(args.output)
     output.write_text("")
     counts = {}
