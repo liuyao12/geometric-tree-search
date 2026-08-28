@@ -59,6 +59,24 @@ with tempfile.TemporaryDirectory() as directory:
     assert text.count(" BV BND X") == 167
     assert text.endswith("ENDATA\n")
 
+# The same proof backend also accepts the exact solid-angle occupancy receipts
+# used by the non-polycube affine-A3 alcove catalogue; it must not assume the
+# older triangular-prism ``cells`` representation.
+sliced = next(
+    json.loads(line)
+    for line in (
+        ROOT / "data" / "a2-sliced-alcove-size7-directed-periodic-exact6.ndjson"
+    ).read_text().splitlines()
+    if json.loads(line)["id"] == "a2sa_7_00170"
+)
+sliced_orbit = MODULE.hnf_orbits(14)[6]
+sliced_placements, sliced_orientation_count = MODULE.quotient_placements(
+    sliced, tuple(sliced_orbit["representative_hnf"]), 14
+)
+assert sliced_orientation_count == 6
+assert len(sliced_placements) == 84
+assert len(MODULE.rooted_multicover(sliced_placements)["eligible_indices"]) == 83
+
 report = json.loads((
     ROOT / "data" / "a2-layered-size7-periodic-exact8-a2lp_7_00128-orbit0.ndjson"
 ).read_text())

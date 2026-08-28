@@ -102,7 +102,7 @@ def hnf_orbits(determinant: int) -> list[dict]:
 
 
 def quotient_placements(record: dict, hnf, determinant: int) -> tuple[list[dict], int]:
-    occupancy = GEOMETRY.tile_occupancy(record["cells"])
+    occupancy = GEOMETRY.record_occupancy(record)
     tile_orientations = GEOMETRY.orientations(occupancy)
     placements = []
     for orientation_index, orientation in enumerate(tile_orientations):
@@ -234,7 +234,7 @@ def solve_quotient(record, hnf_record, copies, tools, timeout_seconds, proof_dir
             ],
             "hnf_index": hnf_record["representative_index"],
         }
-        orientations = GEOMETRY.orientations(GEOMETRY.tile_occupancy(record["cells"]))
+        orientations = GEOMETRY.orientations(GEOMETRY.record_occupancy(record))
         replay = GEOMETRY.replay_certificate(orientations, certificate)
         if not replay["verified"]:
             raise RuntimeError(f"SCIP witness replay failed: {replay}")
@@ -365,7 +365,7 @@ def write_orbit_checkpoint(directory: Path, report: dict, orbit_index: int):
 
 
 def screen_candidate(record, args, tools, identities):
-    occupancy = GEOMETRY.tile_occupancy(record["cells"])
+    occupancy = GEOMETRY.record_occupancy(record)
     numerator = sum(occupancy.values()) * args.copies
     if numerator % 48:
         raise ValueError("copy count does not give an integral quotient determinant")
