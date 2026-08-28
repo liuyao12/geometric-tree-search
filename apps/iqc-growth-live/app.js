@@ -36,15 +36,15 @@ import { buildSettlingMaterialResponseHistory, buildSettlingMaterialResponseMatr
   SETTLING_MATERIAL_FIELDS }
   from "./settling-material-sensitivity.mjs?v=20260828-290";
 import { channelValidationMetricsFromCounts, validationOccurrenceJackknife }
-  from "./validation-uncertainty.mjs?v=20260828-305";
+  from "./validation-uncertainty.mjs?v=20260828-306";
 import { scoreNormalizationAudit }
-  from "./score-normalization.mjs?v=20260828-305";
+  from "./score-normalization.mjs?v=20260828-306";
 import { screenedCoherencyGraphField }
-  from "./coherency-graph-field.mjs?v=20260828-305";
+  from "./coherency-graph-field.mjs?v=20260828-306";
 import { continuationMultiplicityAtlas, continuationMultiplicityScore }
-  from "./configurational-multiplicity.mjs?v=20260828-305";
+  from "./configurational-multiplicity.mjs?v=20260828-306";
 import { geometricConstraintTensor }
-  from "./geometric-constraint-tensor.mjs?v=20260828-305";
+  from "./geometric-constraint-tensor.mjs?v=20260828-306";
 import { archiveResponseFrontierRankAudit }
   from "./archive-response-frontier-audit.js?v=20260827-1";
 import { evidenceOrderedClusterDiscoverySchedule }
@@ -7624,7 +7624,7 @@ function buildWaterClusterCover(source, molecularDiscovery) {
     center: waters[ring[0]].center,
     support: [...new Set(ring.flatMap((waterIndex) => waters[waterIndex].support))],
     type: 2, residual: false, gap: true, kind: "oxygen-ring gap boundary", family: "gap",
-    ring: ring.slice(),
+    ring: ring.slice(), ringWaterIndices: true,
   }));
   const placements = [...waters, ...bridges, ...gaps];
   placements.forEach((placement, coverIndex) => { placement.coverIndex = coverIndex; });
@@ -11783,7 +11783,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260828-305",
+      buildId: "20260828-306",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -14210,7 +14210,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260828-305" },
+    application: { name: "Materials Growth Lab", buildId: "20260828-306" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -23226,8 +23226,14 @@ function buildClusterDiscoveryTrace() {
       record.placementIndices.add(placementIndex);
       finalByKey.set(edge.key, record);
     });
-    return { placementIndex, support: [...new Set(placement.support || [])], family,
-      type: placement.type, edgeKeys: edges.map((edge) => edge.key) };
+    const displaySupport = cluster?.visualKind === "ring" && placement.ring?.length
+      ? placement.ringWaterIndices
+        ? placement.ring.map((waterIndex) => learnedCover.placements[waterIndex]?.center).filter(Number.isInteger)
+        : placement.ring.slice()
+      : [...new Set(placement.support || [])];
+    return { placementIndex, support: [...new Set(placement.support || [])], displaySupport, family,
+      type: placement.type, visualKind: cluster?.visualKind || (placement.gap ? "ring" : "irregular"),
+      displayEdges: cluster?.displayEdges || null, edgeKeys: edges.map((edge) => edge.key) };
   });
   const finalEdges = [...finalByKey.values()];
   const maximumFinalLength = Math.max(referenceSpacingA * 1.05,
@@ -23344,19 +23350,71 @@ function addDiscoveryLines(edges, color, opacity, depthTest = true) {
   ));
 }
 
+function discoveryPlacementSites(placement) {
+  const support = placement.displaySupport?.length ? placement.displaySupport : placement.support;
+  if (!support?.length) return [];
+  const anchor = referenceAtoms[support[0]];
+  if (!anchor) return [];
+  const scale = referenceSpacing / Math.max(1e-9, referenceSpacingA);
+  return support.map((atomIndex) => ({
+    atom: referenceAtoms[atomIndex],
+    vector: anchor.p.clone().add(periodicDisplacement(anchor, referenceAtoms[atomIndex]).multiplyScalar(scale)),
+  })).filter((site) => site.atom && site.vector.toArray().every(Number.isFinite));
+}
+
+function triangulateDiscoveryFace(face) {
+  if (!face || face.length < 3) return [];
+  return Array.from({ length: face.length - 2 }, (_, index) => [face[0], face[index + 1], face[index + 2]]);
+}
+
+function addSettledDiscoverySurfaces(placements, color, opacity) {
+  const points = [];
+  placements.forEach((placement) => {
+    const sites = discoveryPlacementSites(placement);
+    if (sites.length < 3) return;
+    const topology = clusterDisplayTopology({
+      visualKind: placement.visualKind,
+      displayEdges: placement.displayEdges,
+    }, sites);
+    topology.faces.flatMap(triangulateDiscoveryFace).forEach((face) => {
+      if (!face.every((index) => sites[index])) return;
+      const first = sites[face[0]].vector;
+      const second = sites[face[1]].vector;
+      const third = sites[face[2]].vector;
+      if (new THREE.Vector3().crossVectors(
+        second.clone().sub(first), third.clone().sub(first),
+      ).lengthSq() <= 1e-10) return;
+      points.push(first, second, third);
+    });
+  });
+  if (!points.length) return;
+  const geometry = new THREE.BufferGeometry().setFromPoints(points);
+  geometry.computeVertexNormals();
+  clusterGroup.add(new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
+    color, transparent: true, opacity, depthWrite: false, side: THREE.DoubleSide,
+  })));
+}
+
 function buildClusterDiscoveryOverlay() {
   const state = clusterDiscoveryState();
   const colors = { molecule: 0x65e1bc, bridge: 0x55c8ff, gap: 0xffc169,
     residual: 0xff6d71, support: 0xb594ff };
+  const settledPlacements = clusterDiscoveryTrace.placements
+    .filter((placement) => placement.settleStep <= clusterDiscoveryProgress);
   if (molecularCoverFocus !== "all" && learnedCover?.molecular) {
+    addSettledDiscoverySurfaces(settledPlacements.filter((placement) => placement.family === molecularCoverFocus),
+      colors[molecularCoverFocus] || 0xb594ff, molecularCoverFocus === "gap" ? .22 : .30);
     addDiscoveryLines(state.settled.filter((edge) => edge.families?.has(molecularCoverFocus)),
       colors[molecularCoverFocus] || 0xb594ff, .88, false);
     return;
   }
   addDiscoveryLines(state.tentative, 0x84b8b2, .24);
   addDiscoveryLines(state.rejected, COLORS.red, .88, false);
-  Object.entries(colors).forEach(([family, color]) =>
-    addDiscoveryLines(state.settled.filter((edge) => edge.family === family), color, family === "gap" ? .72 : .58));
+  Object.entries(colors).forEach(([family, color]) => {
+    addSettledDiscoverySurfaces(settledPlacements.filter((placement) => placement.family === family),
+      color, { molecule: .12, bridge: .075, gap: .05, residual: .09, support: .065 }[family] || .065);
+    addDiscoveryLines(state.settled.filter((edge) => edge.family === family), color, family === "gap" ? .72 : .58);
+  });
 }
 
 function addClusterEnvelope(geometry, position, color, scale = 1) {
@@ -25623,7 +25681,7 @@ function updateStageNarrative() {
     },
     {
       eyebrow: "learning · full-scene support discovery", title: "Let candidate connections compete across the configuration", phase: "discovery 0 / 36",
-      caption: `The complete ${currentPbc().some(Boolean) ? "periodic quotient" : "finite non-periodic window"} stays visible while local candidate connections appear, fail consistency tests, disappear, and settle into a complete overlapping cover. Final support classes are not shown as isolated cards until GCTS learning.`, badge: "learn",
+      caption: `The complete ${currentPbc().some(Boolean) ? "periodic quotient" : "finite non-periodic window"} stays visible while local candidate connections appear, fail consistency tests, disappear, and settle into translucent molecular faces, connection polyhedra, and gap boundaries. Final support classes are not shown as isolated cards until GCTS learning.`, badge: "learn",
       decision: "Testing a center-free support graph", copy: "Element-resolved distance and angle envelopes propose local edges. Proper-isometry recurrence, overlap consistency, and complete-cover accounting decide which connections survive; uncovered connected regions become explicit gap terminals.",
       values: [`${descriptorCutoff().toFixed(2)}a cutoff`, `${orientationAtlas.reduce((sum, entry) => sum + entry.orientations, 0)} pose classes`, `${learnedCover.placements.length} placements`, learnedCover.molecular ? `${learnedCover.molecular.molecules} molecules · ${learnedCover.molecular.connections} connections · ${learnedCover.molecular.voids} voids` : `${learnedCover.residualTypes.length} residual types`],
     },

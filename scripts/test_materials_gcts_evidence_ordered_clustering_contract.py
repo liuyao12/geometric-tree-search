@@ -33,14 +33,17 @@ def test_every_connection_decision_has_a_scientific_reason_class():
 
 
 def test_stage_separation_remains_explicit():
-    assert 'aria-label="Reversible stage process timeline"' in HTML
+    assert 'aria-label="Stage process and structural-history timeline"' in HTML
     assert 'aria-label="One rotating three-dimensional marking scene per learned cluster type"' in HTML
     assert 'pipelineStage === 1 ? "full configuration · tentative → rejected → settled supports"' in APP
     assert 'pipelineStage === 3\n    ? "one evolving marking scene per cluster' in APP
 
 
-def test_build_259_cache_and_narrative_contract():
-    assert 'buildId: "20260827-282"' in APP
-    assert "app.js?v=20260827-282" in HTML
-    assert "style.css?v=20260827-282" in HTML
+def test_build_306_cache_and_narrative_contract():
+    assert 'buildId: "20260828-306"' in APP
+    assert "app.js?v=20260828-306" in HTML
+    assert "style.css?v=20260828-306" in HTML
     assert "Build 259 · evidence-ordered cluster discovery" in README
+    assert "Build 306 · settled cluster surfaces in the discovery scene" in README
+    assert "function addSettledDiscoverySurfaces(placements, color, opacity)" in APP
+    assert "hypotheses remain muted lines" in README

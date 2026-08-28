@@ -27,9 +27,14 @@ def test_ice_gallery_uses_molecular_and_center_free_polyhedral_views() -> None:
     assert "customVectors: centeredPeriodicSupport(source, waterSupport)" in source
     assert "customVectors: centeredPeriodicSupport(source, bridgeSupport)" in source
     assert "customVectors: unwrappedRingSupport(source, waters" in source
+    assert "ring: ring.slice(), ringWaterIndices: true" in source
     assert 'cluster.visualKind === "ring"' in source
     assert "[index, (index + 1) % sites.length, \"ring\"]" in source
     assert "function waterBridgePolyhedron(sites)" in source
+    assert "function addSettledDiscoverySurfaces(placements, color, opacity)" in source
+    assert "topology.faces.flatMap(triangulateDiscoveryFace)" in source
+    assert "side: THREE.DoubleSide" in source
+    assert "settle into translucent molecular faces, connection polyhedra, and gap boundaries" in source
     assert "function clusterGallerySites(cluster)" in source
     assert "displayTopology.faces.length" in source
     assert "displayTopology.edges.length" in source

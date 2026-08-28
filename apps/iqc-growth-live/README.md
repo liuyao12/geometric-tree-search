@@ -1,5 +1,23 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 306 · settled cluster surfaces in the discovery scene
+
+Cluster identification still runs in the complete three-dimensional specimen,
+but accepted supports no longer remain only a web of line relations. As the
+evidence-ordered audit settles each occurrence, the browser now triangulates
+its actual colored support and draws a translucent molecular face, connection
+polyhedron, gap boundary, or irregular support surface in place. Tentative
+hypotheses remain muted lines and rejected hypotheses still flash red, so the
+visual process preserves the distinction between testing an edge and accepting
+a cluster.
+
+For ice, the settled scene therefore shows bent H₂O faces, explicit water-dimer
+connection polyhedra, and O₆ interstitial boundaries over the full periodic
+configuration. The later GCTS stage remains deliberately different: it uses one
+independently rotating scene per learned isometry class and morphs only its
+connection-valued marking. These faces are render-only evidence from the already
+selected cover; they do not alter clustering, fit, search, or any physical claim.
+
 ## Build 305 · local constraint-dimensionality tensor
 
 Every exact candidate now receives a scale- and proper-rotation-invariant local
