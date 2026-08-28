@@ -1,5 +1,22 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 293 · proper-pose occupation microscope
+
+The selected Stage-3 cluster now carries an interactive population spectrum for
+its symmetry-reduced proper-pose orbits. Every bar is one occupancy-ranked orbit
+after global translation, atom order, and all tied right-handed symmetry gauges
+have been quotiented; improper reflections remain distinct. Clicking a bar
+reports its occurrence count, observed share, and whether its support is repeated
+or a singleton.
+
+The same panel separates the dominant share, repeated versus singleton orbits,
+effective occupied-orbit count, normalized occupation entropy, and proper gauge
+count. This makes a single preferred orientation visibly different from a finite
+repeated orbit or a broad sampled/unresolved rotation law before channel capacity
+is interpreted. The complete population vector and summary enter each cluster's
+receipt record. Observed occupancy is not treated as probability, Boltzmann
+weight, free energy, or evidence that one marking channel is needed per bar.
+
 ## Build 292 · pose–port channel allocation microscope
 
 Stage 3 now exposes the per-cluster calculation behind Auto channels. For each

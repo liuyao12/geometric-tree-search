@@ -817,6 +817,28 @@ body.study-guide-open { overflow: hidden; }
 .cluster-gallery-inspector small { color: var(--faint); font: 6px var(--mono); text-transform: uppercase; letter-spacing: .07em; }
 .cluster-gallery-inspector strong { margin-top: 5px; color: #d8e5e1; font: 9px var(--mono); font-weight: 400; }
 .cluster-gallery-inspector span { margin-top: 4px; color: #637b74; font: 6px var(--mono); }
+.cluster-pose-spectrum { grid-column: 1 / -1; min-width: 0; padding: 10px; background: linear-gradient(135deg,rgba(7,22,23,.98),rgba(8,16,26,.98)); }
+.cluster-pose-spectrum header { display: flex; align-items: end; justify-content: space-between; gap: 10px; }
+.cluster-pose-spectrum header span,.cluster-pose-spectrum header small,.cluster-pose-spectrum header strong { display: block; min-width: 0; overflow: visible; white-space: normal; }
+.cluster-pose-spectrum header strong { margin-top: 3px; color: #dff6ef; font: 650 10px/1.25 var(--mono); }
+.cluster-pose-spectrum header b { color: var(--mint); font: 650 8px/1.25 var(--mono); text-align: right; }
+.cluster-pose-spectrum-summary { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 1px; margin-top: 8px; background: rgba(151,194,183,.1); }
+.cluster-pose-spectrum-summary span { min-width: 0; margin: 0; padding: 6px 7px; background: rgba(3,11,17,.64); white-space: normal; }
+.cluster-pose-spectrum-summary small,.cluster-pose-spectrum-summary strong { display: block; overflow: visible; white-space: normal; }
+.cluster-pose-spectrum-summary strong { margin-top: 3px; color: #d7eee8; font: 650 9px/1 var(--mono); }
+.cluster-pose-spectrum-bars { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(34px,1fr); gap: 4px; min-width: 0; margin-top: 8px; padding: 5px 3px 4px; overflow-x: auto; scrollbar-color: rgba(101,225,188,.28) transparent; }
+.cluster-pose-spectrum-bars button { display: grid; grid-template-rows: 54px auto auto; align-items: end; min-width: 0; padding: 3px; border: 1px solid rgba(151,194,183,.12); border-radius: 6px; background: rgba(255,255,255,.018); color: var(--muted); }
+.cluster-pose-spectrum-bars button:hover,.cluster-pose-spectrum-bars button:focus-visible,.cluster-pose-spectrum-bars button.active { border-color: rgba(101,225,188,.58); background: rgba(101,225,188,.07); outline: none; }
+.cluster-pose-spectrum-bars i { align-self: end; width: 100%; min-height: 4px; border-radius: 3px 3px 1px 1px; background: linear-gradient(180deg,var(--mint),rgba(126,225,232,.28)); box-shadow: 0 0 9px rgba(101,225,188,.12); }
+.cluster-pose-spectrum-bars small,.cluster-pose-spectrum-bars b { display: block; overflow: visible; white-space: normal; text-align: center; }
+.cluster-pose-spectrum-bars small { margin-top: 4px; font: 6px/1 var(--mono); }
+.cluster-pose-spectrum-bars b { margin-top: 2px; color: #bed1cb; font: 650 7px/1 var(--mono); }
+.cluster-pose-spectrum-detail { display: grid; grid-template-columns: auto minmax(0,1fr); gap: 3px 10px; margin-top: 7px; padding: 7px 8px; border-left: 2px solid var(--cyan); background: rgba(126,225,232,.035); }
+.cluster-pose-spectrum-detail strong,.cluster-pose-spectrum-detail span,.cluster-pose-spectrum-detail em { overflow: visible; white-space: normal; }
+.cluster-pose-spectrum-detail strong { margin: 0; color: #dff6ef; font: 650 8px/1.25 var(--mono); }
+.cluster-pose-spectrum-detail span { margin: 0; color: #91aaa3; font: 7px/1.35 var(--mono); }
+.cluster-pose-spectrum-detail em { grid-column: 1 / -1; color: #617a73; font: 6px/1.4 var(--mono); font-style: normal; }
+.cluster-pose-spectrum > p { margin: 7px 0 0; color: #647d76; font: 7px/1.45 var(--mono); }
 .cluster-card { position: relative; min-height: 212px; overflow: hidden; border: 1px solid rgba(151,194,183,.22); background: linear-gradient(145deg, rgba(14,37,36,.92), rgba(5,15,17,.96)); cursor: pointer; outline: none; }
 .cluster-card:hover,.cluster-card:focus-visible { border-color: rgba(101,225,188,.65); }
 .cluster-card.active { border-color: var(--mint); box-shadow: inset 0 0 0 1px rgba(101,225,188,.22), 0 0 18px rgba(101,225,188,.08); }
@@ -1775,6 +1797,8 @@ body.study-guide-open { overflow: hidden; }
   .viewport { height: 450px; min-height: 380px; }
   .cluster-gallery-toolbar { position: relative; grid-template-columns: 1fr; align-items: stretch; gap: 7px; }
   .cluster-gallery-inspector { grid-template-columns: 1fr 1fr; }
+  .cluster-pose-spectrum-summary { grid-template-columns: 1fr 1fr; }
+  .cluster-pose-spectrum header { align-items: flex-start; }
   .cluster-cover-ledger { grid-template-columns: 1fr; }
   .microstructure-heading { align-items: flex-start; }
   .microstructure-heading em { max-width: 48%; }

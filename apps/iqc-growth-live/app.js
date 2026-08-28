@@ -7910,6 +7910,31 @@ function galleryPoseModel(cluster) {
   return classifyPlacementPoseOrbits(placements);
 }
 
+function poseOrbitOccupationRecord(cluster, poseModel = galleryPoseModel(cluster)) {
+  const populations = (poseModel?.populations || []).filter((population) => population > 0);
+  const occurrences = populations.reduce((sum, population) => sum + population, 0);
+  const probabilities = populations.map((population) => population / Math.max(1, occurrences));
+  const entropyNats = -probabilities.reduce((sum, probability) =>
+    sum + (probability > 0 ? probability * Math.log(probability) : 0), 0);
+  const normalizedEntropy = populations.length > 1 ? entropyNats / Math.log(populations.length) : 0;
+  return {
+    populations: populations.slice(),
+    occurrences,
+    observedPoseOrbits: poseModel?.orientations || populations.length,
+    support: poseModel?.support || "unavailable",
+    frameKind: poseModel?.frameKind || "none",
+    properSymmetryGaugeCount: poseModel?.properSymmetryGaugeCount || 0,
+    dominantOccurrenceFraction: occurrences ? populations[0] / occurrences : 0,
+    singletonPoseOrbits: populations.filter((population) => population === 1).length,
+    repeatedPoseOrbits: populations.filter((population) => population >= 2).length,
+    effectiveOccupiedPoseOrbits: populations.length ? Math.exp(entropyNats) : 0,
+    normalizedOccupationEntropy: normalizedEntropy,
+    populationOrder: "descending occupancy; display ranks are not raw orientation IDs",
+    probabilityOrFreeEnergyClaimed: false,
+    targetUsed: false,
+  };
+}
+
 function clusterGalleryFamily(cluster) {
   if (cluster.residual) return "residual";
   if (cluster.visualKind === "molecule") return "molecule";
@@ -9237,6 +9262,50 @@ function clusterPlacementIndices(cluster) {
     .filter((index) => index >= 0);
 }
 
+function renderClusterPoseOccupation(inspector, cluster, poseModel) {
+  const panel = inspector.querySelector(".cluster-pose-spectrum");
+  if (!panel) return;
+  const audit = poseOrbitOccupationRecord(cluster, poseModel);
+  const headerState = panel.querySelector("header b");
+  const bars = panel.querySelector(".cluster-pose-spectrum-bars");
+  const detail = panel.querySelector(".cluster-pose-spectrum-detail");
+  if (!audit.populations.length) {
+    headerState.textContent = "finite proper frame unavailable";
+    detail.textContent = "This support has no auditable pose population. It contributes no invented rotation law.";
+    return;
+  }
+  headerState.textContent = `${audit.observedPoseOrbits} orbit${audit.observedPoseOrbits === 1 ? "" : "s"} · N_eff ${audit.effectiveOccupiedPoseOrbits.toFixed(1)}`;
+  const maximum = Math.max(...audit.populations);
+  const selectOrbit = (rank) => {
+    const population = audit.populations[rank];
+    const fraction = population / Math.max(1, audit.occurrences);
+    bars.querySelectorAll("button").forEach((button) => {
+      const active = Number(button.dataset.poseOccupationRank) === rank;
+      button.classList.toggle("active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+    detail.innerHTML = `<strong>ranked orbit O${rank + 1}</strong><span>${population} / ${audit.occurrences} occurrences · ${(fraction * 100).toFixed(1)}% observed occupancy · ${population >= 2 ? "repeated evidence" : "singleton evidence"}</span><em>Occupancy ranks summarize the supplied configuration; they are not probabilities, Boltzmann weights, or free energies.</em>`;
+  };
+  audit.populations.forEach((population, rank) => {
+    const fraction = population / Math.max(1, audit.occurrences);
+    const button = document.createElement("button");
+    button.type = "button";
+    button.dataset.poseOccupationRank = String(rank);
+    button.setAttribute("aria-pressed", "false");
+    button.setAttribute("aria-label", `Pose occupancy rank ${rank + 1}: ${population} of ${audit.occurrences} observed occurrences, ${(fraction * 100).toFixed(1)} percent. Inspect this rank.`);
+    const bar = document.createElement("i");
+    bar.style.height = `${Math.max(7, 100 * population / maximum)}%`;
+    const label = document.createElement("small"); label.textContent = `O${rank + 1}`;
+    const count = document.createElement("b"); count.textContent = String(population);
+    button.append(bar, label, count);
+    button.addEventListener("click", () => selectOrbit(rank));
+    bars.append(button);
+  });
+  const summary = panel.querySelector(".cluster-pose-spectrum-summary");
+  summary.innerHTML = `<span><small>dominant share</small><strong>${(audit.dominantOccurrenceFraction * 100).toFixed(1)}%</strong></span><span><small>repeated / singleton</small><strong>${audit.repeatedPoseOrbits} / ${audit.singletonPoseOrbits}</strong></span><span><small>occupation entropy</small><strong>${audit.normalizedOccupationEntropy.toFixed(2)}</strong></span><span><small>proper gauges</small><strong>${audit.properSymmetryGaugeCount || "axial / invisible"}</strong></span>`;
+  selectOrbit(0);
+}
+
 function updateClusterGalleryInspector(galleryIndex) {
   const types = clusterGalleryTypes();
   const cluster = types[galleryIndex];
@@ -9273,7 +9342,15 @@ function updateClusterGalleryInspector(galleryIndex) {
     <div><small>complete-cover evidence</small><strong>${coveredAtoms.size.toLocaleString()} / ${referenceEntityLabel()}</strong><span>${placementIndices.length} occurrence${placementIndices.length === 1 ? "" : "s"} · ${supportSites} sites / occurrence · ${sharedAtoms} overlap-shared sites</span></div>
     <div><small>proper-pose support</small><strong>${poseCount || "unresolved"} orbit${poseCount === 1 ? "" : "s"} · ${poseModel.properSymmetryGaugeCount || 1} proper gauge${poseModel.properSymmetryGaugeCount === 1 ? "" : "s"} · χ ${chirality}</strong><span>${poseStatus} · intrinsic right-handed frames remove translation and atom order; mirrors remain distinct</span></div>
     <div><small>connection capacity</small><strong>${ports} port role${ports === 1 ? "" : "s"} → ${channels} channel${channels === 1 ? "" : "s"}</strong><span>${coverKind}</span></div>
-    <div><small>visible GCTS section</small><strong>${portAtlas ? `${portAtlas.compatiblePorts} resolved lobes · ${portAtlas.unsupportedSectors} unsupported sectors` : "fit pending"}</strong><span>${portAtlas && portAtlas.rawDirectionalModes > portAtlas.compatiblePorts ? `${portAtlas.rawDirectionalModes} raw direction modes symmetry/channel-quotiented for display · ` : ""}solid contours follow observed intrinsic port directions; dashed contours are unsupported training sectors · no physical potential${portAtlas?.scalarDirectional ? " · scalar channel remains directional" : ""}</span></div>`;
+    <div><small>visible GCTS section</small><strong>${portAtlas ? `${portAtlas.compatiblePorts} resolved lobes · ${portAtlas.unsupportedSectors} unsupported sectors` : "fit pending"}</strong><span>${portAtlas && portAtlas.rawDirectionalModes > portAtlas.compatiblePorts ? `${portAtlas.rawDirectionalModes} raw direction modes symmetry/channel-quotiented for display · ` : ""}solid contours follow observed intrinsic port directions; dashed contours are unsupported training sectors · no physical potential${portAtlas?.scalarDirectional ? " · scalar channel remains directional" : ""}</span></div>
+    <section class="cluster-pose-spectrum" aria-label="Observed proper-pose occupation spectrum">
+      <header><span><small>rotation evidence microscope</small><strong>Proper-pose occupation spectrum</strong></span><b>classifying supplied occurrences</b></header>
+      <div class="cluster-pose-spectrum-summary"></div>
+      <div class="cluster-pose-spectrum-bars" role="group" aria-label="Select a ranked proper-pose orbit"></div>
+      <article class="cluster-pose-spectrum-detail" aria-live="polite"></article>
+      <p>Pose occupancies are computed after translation, atom order, and every tied proper-symmetry gauge are quotiented. Mirrors remain distinct. A broad observed spectrum can indicate an equivariant or unresolved rotation law; it does not require one GCTS channel per bar.</p>
+    </section>`;
+  renderClusterPoseOccupation(inspector, cluster, poseModel);
 }
 
 function buildMolecularGalleryToolbar(types) {
@@ -10464,6 +10541,7 @@ function receiptComposition(source) {
 function receiptClusterRecord(cluster, index) {
   const familyIndex = cluster.familyType ?? index;
   const poseModel = galleryPoseModel(cluster);
+  const poseOccupation = poseOrbitOccupationRecord(cluster, poseModel);
   const placements = cluster.observedOccurrences ?? cluster.classPlacementIndices?.length
     ?? learnedCover.placements.filter((placement) => placement.type === cluster.type).length;
   const supportSites = cluster.customSupport?.length
@@ -10481,6 +10559,18 @@ function receiptClusterRecord(cluster, index) {
     properPoseSupport: poseModel.support,
     properSymmetryGaugeCount: poseModel.properSymmetryGaugeCount,
     frameKind: poseModel.frameKind,
+    properPoseOccupation: {
+      populations: poseOccupation.populations,
+      occurrences: poseOccupation.occurrences,
+      dominantOccurrenceFraction: receiptRound(poseOccupation.dominantOccurrenceFraction),
+      singletonPoseOrbits: poseOccupation.singletonPoseOrbits,
+      repeatedPoseOrbits: poseOccupation.repeatedPoseOrbits,
+      effectiveOccupiedPoseOrbits: receiptRound(poseOccupation.effectiveOccupiedPoseOrbits),
+      normalizedOccupationEntropy: receiptRound(poseOccupation.normalizedOccupationEntropy),
+      populationOrder: poseOccupation.populationOrder,
+      probabilityOrFreeEnergyClaimed: false,
+      targetUsed: false,
+    },
     commonProperRotationEquivariant: poseModel.commonProperRotationEquivariant,
     improperRotationsQuotiented: poseModel.improperRotationsQuotiented,
     portRoles: cluster.residual ? 0 : clusterPortRank(familyIndex),
@@ -11071,7 +11161,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260828-292",
+      buildId: "20260828-293",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -13370,7 +13460,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260828-292" },
+    application: { name: "Materials Growth Lab", buildId: "20260828-293" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
