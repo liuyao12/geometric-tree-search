@@ -11727,7 +11727,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260828-298",
+      buildId: "20260828-299",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -13384,10 +13384,26 @@ async function buildExperimentReceipt() {
               candidateCount: audit.candidates,
               activeMarkingId: audit.activeMarkingId,
               distinctMarkingWinners: audit.distinctMarkingWinners,
+              validationAvailableMarkings: audit.validationAvailableMarkings,
               allScoresFinite: audit.allScoresFinite,
               markings: audit.markings.map((marking) => ({
                 id: marking.id, name: marking.name, channels: marking.channels,
                 representation: marking.representation, threshold: receiptRound(marking.threshold),
+                validation: marking.validation ? {
+                  available: marking.validation.available,
+                  schema: marking.validation.schema,
+                  labels: marking.validation.labels,
+                  samples: marking.validation.samples,
+                  confusion: marking.validation.confusion,
+                  accuracy: marking.validation.accuracy === null ? null : receiptRound(marking.validation.accuracy),
+                  precision: marking.validation.precision === null ? null : receiptRound(marking.validation.precision),
+                  recall: marking.validation.recall === null ? null : receiptRound(marking.validation.recall),
+                  specificity: marking.validation.specificity === null ? null : receiptRound(marking.validation.specificity),
+                  balancedAccuracy: marking.validation.balancedAccuracy === null ? null
+                    : receiptRound(marking.validation.balancedAccuracy),
+                  heldoutUpdatesCoefficients: marking.validation.heldoutUpdatesCoefficients,
+                  growthTargetUsed: marking.validation.growthTargetUsed,
+                } : null,
                 finiteCandidates: marking.finiteCandidates,
                 admittedCandidates: marking.admittedCandidates,
                 distinctScores: marking.distinctScores, topTieCount: marking.topTieCount,
@@ -13477,6 +13493,11 @@ async function buildExperimentReceipt() {
                 materialConsequenceDigest: audit.portfolio.materialConsequence?.digest || null },
               candidateGeometryChanged: audit.candidateGeometryChanged,
               hardAdmissionChanged: audit.hardAdmissionChanged,
+              evidenceBridgeRole: audit.evidenceBridgeRole,
+              validationUsedForCandidateGeneration: audit.validationUsedForCandidateGeneration,
+              validationUsedForHardAdmission: audit.validationUsedForHardAdmission,
+              validationUsedForRanking: audit.validationUsedForRanking,
+              validationUsedForAutomaticMarkingSelection: audit.validationUsedForAutomaticMarkingSelection,
               targetUsedForMarkingScores: audit.targetUsedForMarkingScores,
               materialConsequenceTargetUsed: audit.materialConsequenceTargetUsed,
               targetUsed: audit.targetUsed, executed: audit.executed,
@@ -13889,6 +13910,10 @@ function notebookPolicySnapshot(snapshot, includeIdentifiability = false) {
       candidateSetDigest: markingAudit.candidateSetDigest,
       hardAdmittedCandidateSetDigest: markingAudit.hardAdmittedCandidateSetDigest,
       candidateCount: markingAudit.candidates, activeMarkingId: markingAudit.activeMarkingId,
+      validationAvailableMarkings: markingAudit.validationAvailableMarkings,
+      evidenceBridgeRole: markingAudit.evidenceBridgeRole,
+      validationUsedForRanking: markingAudit.validationUsedForRanking,
+      validationUsedForAutomaticMarkingSelection: markingAudit.validationUsedForAutomaticMarkingSelection,
     } : null,
     shadowStructuralLeap: receiptFrozenShadowLeapAudit(snapshot.shadowLeapAudit),
     hypothesisDecisiveness: receiptPolicyDecisivenessAudit(snapshot.decisivenessAudit),
@@ -14027,7 +14052,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260828-298" },
+    application: { name: "Materials Growth Lab", buildId: "20260828-299" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -20165,6 +20190,30 @@ function buildMarkingFrontierCounterfactual(admissible, candidateSetDigest) {
     return materialConsequenceCache.get(candidate.key);
   };
   const rows = markings.map((marking) => {
+    const heldout = marking.validationAudit?.holdout;
+    const validation = heldout?.labels ? {
+      available: true,
+      schema: marking.validationAudit.schema || null,
+      labels: heldout.labels,
+      samples: heldout.samples ?? null,
+      confusion: heldout.confusion ? { ...heldout.confusion } : null,
+      accuracy: heldout.accuracy ?? null,
+      precision: heldout.precision ?? null,
+      recall: heldout.recall ?? null,
+      specificity: heldout.specificity ?? null,
+      balancedAccuracy: heldout.balancedAccuracy ?? null,
+      labelOrigin: marking.validationAudit.labelOrigin || null,
+      predictionOrigin: marking.validationAudit.predictionOrigin || null,
+      heldoutUpdatesCoefficients: marking.validationAudit.heldoutUpdatesCoefficients === true,
+      growthTargetUsed: marking.validationAudit.growthTargetUsed === true,
+    } : {
+      available: false, schema: marking.validationAudit?.schema || null,
+      labels: 0, samples: null, confusion: null,
+      accuracy: null, precision: null, recall: null, specificity: null, balancedAccuracy: null,
+      labelOrigin: marking.validationAudit?.labelOrigin || null,
+      predictionOrigin: marking.validationAudit?.predictionOrigin || null,
+      heldoutUpdatesCoefficients: false, growthTargetUsed: false,
+    };
     const threshold = markingAcceptanceThreshold(marking);
     const scored = candidates.map((candidate) => ({
       candidate,
@@ -20182,6 +20231,7 @@ function buildMarkingFrontierCounterfactual(admissible, candidateSetDigest) {
       name: marking.name,
       channels: Number(marking.config.channels),
       representation: marking.config.representation,
+      validation,
       threshold,
       candidates: scored.length,
       finiteCandidates: scored.filter((entry) => Number.isFinite(entry.score)).length,
@@ -20221,6 +20271,7 @@ function buildMarkingFrontierCounterfactual(admissible, candidateSetDigest) {
   }).sort((first, second) => second.score - first.score
     || first.candidate.key.localeCompare(second.candidate.key));
   const portfolioWinner = portfolioScores[0] || null;
+  const portfolioSource = rows.find((row) => row.id === portfolioWinner?.source) || null;
   return {
     candidateSetDigest,
     hardAdmittedCandidateSetDigest: frozenFrontierDigest(admissible),
@@ -20228,6 +20279,7 @@ function buildMarkingFrontierCounterfactual(admissible, candidateSetDigest) {
     markings: rows,
     activeMarkingId: reference?.id || null,
     distinctMarkingWinners: new Set(rows.map((row) => row.winnerKey).filter(Boolean)).size,
+    validationAvailableMarkings: rows.filter((row) => row.validation.available).length,
     allScoresFinite: rows.every((row) => row.finiteCandidates === row.candidates),
     portfolio: {
       enabled: markings.length > 1,
@@ -20238,11 +20290,17 @@ function buildMarkingFrontierCounterfactual(admissible, candidateSetDigest) {
         ? `C${portfolioWinner.candidate.rule.from + 1}→C${portfolioWinner.candidate.rule.to + 1} · R${portfolioWinner.candidate.rule.id}` : null,
       winnerScore: portfolioWinner?.score ?? null,
       winnerSource: portfolioWinner?.source || null,
+      validation: portfolioSource?.validation || null,
       materialConsequence: materialConsequenceFor(portfolioWinner?.candidate),
       preview: portfolioWinner ? { p: portfolioWinner.candidate.position.clone(),
         rotation: portfolioWinner.candidate.rotation.clone(), type: portfolioWinner.candidate.type } : null,
     },
     comparisonRole: "counterfactual ranking/admission over one unchanged hard-admitted candidate set",
+    evidenceBridgeRole: "held-out connection-sign validation beside target-free live-frontier consequence",
+    validationUsedForCandidateGeneration: false,
+    validationUsedForHardAdmission: false,
+    validationUsedForRanking: false,
+    validationUsedForAutomaticMarkingSelection: false,
     candidateGeometryChanged: false,
     hardAdmissionChanged: false,
     targetUsedForMarkingScores: false,
@@ -32006,6 +32064,8 @@ function renderMarkingComparisonExperiment(snapshot, audit = null, selected = nu
 
 function renderMarkingFrontierAudit(snapshot) {
   markingFrontierRows.replaceChildren(); markingFrontierDetail.replaceChildren();
+  const formatValidationPercent = (value) => Number.isFinite(value)
+    ? `${(value * 100).toFixed(1)}%` : "undefined";
   const audit = snapshot?.markingFrontierCounterfactual;
   if (!audit?.markings.length) {
     markingFrontierState.textContent = snapshot ? "no compatible saved marking" : "awaiting a frozen frontier";
@@ -32022,13 +32082,14 @@ function renderMarkingFrontierAudit(snapshot) {
     winnerKey: audit.portfolio.winnerKey, winnerDigest: audit.portfolio.winnerDigest,
     winnerAction: audit.portfolio.winnerAction, winnerScore: audit.portfolio.winnerScore,
     winnerSource: audit.portfolio.winnerSource,
+    validation: audit.portfolio.validation,
     materialConsequence: audit.portfolio.materialConsequence,
     preview: audit.portfolio.preview,
   });
   if (!rows.some((row) => row.id === selectedMarkingFrontierId)) {
     selectedMarkingFrontierId = audit.activeMarkingId || rows[0].id;
   }
-  markingFrontierState.textContent = `${audit.markings.length} saved · ${audit.candidates} same actions · ${audit.distinctMarkingWinners} winner${audit.distinctMarkingWinners === 1 ? "" : "s"}`;
+  markingFrontierState.textContent = `${audit.markings.length} saved · ${audit.validationAvailableMarkings} validated · ${audit.candidates} same actions · ${audit.distinctMarkingWinners} winner${audit.distinctMarkingWinners === 1 ? "" : "s"}`;
   rows.forEach((entry) => {
     const row = document.createElement("button"); row.type = "button";
     row.classList.toggle("active", entry.id === selectedMarkingFrontierId);
@@ -32038,7 +32099,13 @@ function renderMarkingFrontierAudit(snapshot) {
     const name = document.createElement("strong");
     name.textContent = entry.id === "portfolio" ? "portfolio" : `${entry.channels}ch · ${entry.representation}`;
     const label = document.createElement("small"); label.textContent = entry.name;
-    identity.append(name, label);
+    const validation = document.createElement("small"); validation.className = "marking-frontier-validation";
+    validation.textContent = entry.id === "portfolio"
+      ? `${entry.winnerSource || "—"} validation · ${entry.validation?.available ? `BA ${formatValidationPercent(entry.validation.balancedAccuracy)}` : "unavailable"}`
+      : entry.validation?.available
+        ? `held-out BA ${formatValidationPercent(entry.validation.balancedAccuracy)} · P/R ${formatValidationPercent(entry.validation.precision)}/${formatValidationPercent(entry.validation.recall)} · n=${entry.validation.labels}`
+        : "held-out connection-sign audit unavailable";
+    identity.append(name, label, validation);
     const action = document.createElement("span");
     const winner = document.createElement("strong"); winner.textContent = entry.winnerAction || "no action";
     const summary = document.createElement("small");
@@ -32057,9 +32124,30 @@ function renderMarkingFrontierAudit(snapshot) {
   metrics.textContent = selected.id === "portfolio"
     ? `${selected.admittedCandidates} actions admitted by at least one artifact.`
     : `${selected.distinctScores} distinct rule scores · top tie ${selected.topTieCount} · mean Δrank ${selected.meanRankDisplacement.toFixed(1)} from ${audit.activeMarkingId}.`;
+  const evidenceBridge = document.createElement("section"); evidenceBridge.className = "marking-evidence-bridge";
+  const validationEvidence = document.createElement("article");
+  const validationLabel = document.createElement("small"); validationLabel.textContent = "withheld connection sectors";
+  const validationValue = document.createElement("strong");
+  validationValue.textContent = selected.validation?.available
+    ? `BA ${formatValidationPercent(selected.validation.balancedAccuracy)}`
+    : "validation unavailable";
+  const validationDetail = document.createElement("span");
+  validationDetail.textContent = selected.validation?.available
+    ? `P/R ${formatValidationPercent(selected.validation.precision)}/${formatValidationPercent(selected.validation.recall)} · ${selected.validation.labels} sector labels · ${selected.validation.samples ?? "—"} held-out occurrences`
+    : "This saved artifact predates the held-out sign audit; its frontier score remains replayable.";
+  validationEvidence.append(validationLabel, validationValue, validationDetail);
+  const arrow = document.createElement("b"); arrow.textContent = "↔"; arrow.setAttribute("aria-hidden", "true");
+  const frontierEvidence = document.createElement("article");
+  const frontierLabel = document.createElement("small"); frontierLabel.textContent = "same frozen live frontier";
+  const frontierValue = document.createElement("strong"); frontierValue.textContent = selected.winnerAction || "no action";
+  const frontierDetail = document.createElement("span");
+  frontierDetail.textContent = `${selected.admittedCandidates}/${selected.candidates} mark-admitted · winner ${selected.winnerScore?.toFixed(3) ?? "—"}`
+    + `${selected.runnerUpMargin === null || selected.runnerUpMargin === undefined ? "" : ` · margin ${selected.runnerUpMargin.toFixed(3)}`}`;
+  frontierEvidence.append(frontierLabel, frontierValue, frontierDetail);
+  evidenceBridge.append(validationEvidence, arrow, frontierEvidence);
   const boundary = document.createElement("span");
-  boundary.textContent = `Hard-admitted set ${audit.hardAdmittedCandidateSetDigest} · full frontier ${audit.candidateSetDigest} · candidate geometry unchanged · marking scores target-free · preview only.`;
-  markingFrontierDetail.append(heading, state, metrics);
+  boundary.textContent = `Hard-admitted set ${audit.hardAdmittedCandidateSetDigest} · full frontier ${audit.candidateSetDigest} · candidate geometry unchanged · validation does not generate, admit, rank, or auto-select an action · marking scores target-free · preview only.`;
+  markingFrontierDetail.append(heading, state, metrics, evidenceBridge);
   const consequence = selected.materialConsequence;
   if (consequence) {
     const consequenceGrid = document.createElement("div"); consequenceGrid.className = "marking-consequence-grid";

@@ -1,5 +1,22 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 299 · validation-to-frontier evidence bridge
+
+The material-growth stage now places two independent questions beside one
+another for every saved GCTS marking: does the frozen coefficient sign recover
+withheld connection sectors, and what action does that same artifact prefer on
+the current frozen frontier? Each interactive marking row reports held-out
+balanced accuracy, precision, recall, and sector count before showing its
+mark-admitted action count, winner, score, tie structure, and material
+consequence.
+
+The detailed bridge keeps the evidence axes separate. Every marking still
+scores the identical hard-admitted candidate geometry, and validation is not
+used to generate candidates, change hard admission, re-rank actions, or
+automatically select a marking. Older saved artifacts remain replayable with an
+explicit validation-unavailable label. The receipt preserves the joined
+validation summary, frontier digests, and all four non-intervention flags.
+
 ## Build 298 · validation-aware marking library
 
 Freezing a completed GCTS marking now preserves its aggregate and per-cluster
