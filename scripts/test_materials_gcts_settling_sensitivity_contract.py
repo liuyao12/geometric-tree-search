@@ -72,8 +72,8 @@ def test_material_fingerprint_is_virtual_downstream_and_coordinate_cache_is_fres
 
 
 def test_claims_are_bounded_and_current_build_is_exposed():
-    require("Build 288 · material outcomes across settling arms", README)
-    require('buildId: "20260828-288"')
+    require("Build 289 · field-wise settling robustness matrix", README)
+    require('buildId: "20260828-289"')
     require("not MD, energy, force integration, probability, kinetics, or time")
 
 

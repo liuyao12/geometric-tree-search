@@ -1,5 +1,21 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 289 · field-wise settling robustness matrix
+
+The settling experiment is now readable as an interactive material-field ×
+allowance matrix. Rows resolve ten local, reciprocal, and morphology fields;
+columns retain the same off, gentle, balanced, and strong projections from the
+same as-placed checkpoint. Selecting a row exposes its signed deltas, units,
+and response pattern: invariant, monotone with allowance, non-monotone,
+direction-changing, categorical, or blocked by hard-gate rollback.
+
+The display never creates a scalar from unlike observables. Color intensity is
+normalized independently within each numeric row, categorical transitions have
+no invented distance, and rejected projections remain visibly rolled back
+rather than masquerading as zero-valued material states. The matrix is
+descriptive and uncommitted; it cannot affect admission, ranking, scheduling,
+or continuation.
+
 ## Build 288 · material outcomes across settling arms
 
 The same-state settling ladder now carries a compact material fingerprint for

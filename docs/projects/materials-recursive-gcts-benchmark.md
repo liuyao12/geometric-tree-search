@@ -1,5 +1,21 @@
 # Recursive GCTS benchmark for material growth
 
+### Field-wise settling robustness matrix (Build 289)
+
+The same-state settling audit now presents every material fingerprint field as
+a row across the off/gentle/balanced/strong allowance ladder. Numeric rows retain
+their native units and are normalized only by that row's largest absolute
+delta; category rows report class changes without a numerical distance. Each
+row receives a transparent response classification, while the matrix separately
+reports whether compatible projections form an allowance threshold or whether
+the hard gates reject all or a non-nested subset of projected arms.
+
+This is a visual robustness summary over frozen, uncommitted counterfactuals.
+Rejected arms are marked as rollbacks, not retained states, and the matrix has no
+route into candidate admission, marking scores, tree-search order, or subsequent
+growth. It therefore makes no mixed-unit response norm, energy landscape,
+kinetic pathway, probability, or physical-time claim.
+
 ### Material outcomes across settling arms (Build 288)
 
 Each off/gentle/balanced/strong arm now receives a coordinate-free material

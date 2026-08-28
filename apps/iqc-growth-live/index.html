@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260828-288">
+  <link rel="stylesheet" href="./style.css?v=20260828-289">
   <script type="importmap">
     {
       "imports": {
@@ -1882,6 +1882,11 @@
               <header><span><small>same as-placed checkpoint</small><strong>Settling sensitivity ladder</strong></span><b id="settlingSensitivityState">awaiting eligible leap</b></header>
               <div id="settlingSensitivityArms" class="settling-sensitivity-arms" role="group" aria-label="Inspect a bounded settling allowance"></div>
               <article id="settlingSensitivityDetail" class="settling-sensitivity-detail" aria-live="polite"></article>
+              <section class="settling-response-lab" aria-label="Material response matrix across bounded settling allowances">
+                <header><span><small>field-wise robustness · no mixed units</small><strong>Material response matrix</strong></span><b id="settlingResponseState">awaiting arm outcomes</b></header>
+                <div id="settlingResponseMatrix" class="settling-response-matrix" role="group" aria-label="Inspect a material field across settling allowances"></div>
+                <article id="settlingResponseDetail" class="settling-response-detail" aria-live="polite"></article>
+              </section>
               <p id="settlingSensitivityBoundary">Every arm starts from the same rigid GCTS attachment and fixed neighborhood. Counterfactual arms are never committed and do not rerun search.</p>
             </section>
             <div id="leapConsequenceMatrix" class="leap-consequence-matrix" role="group" aria-label="Before and after material observables for the selected structural leap"></div>
@@ -2077,7 +2082,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260828-288"></script>
+  <script type="module" src="./app.js?v=20260828-289"></script>
   <script type="module" src="./evidence-atlas.js?v=20260827-24"></script>
 </body>
 </html>

@@ -29,11 +29,12 @@ import { buildExecutedGrowthRegime, growthRegimePlotRows,
   GROWTH_REGIME_RESPONSE_AXES, GROWTH_REGIME_STATE_AXES }
   from "./growth-regime-map.mjs?v=20260828-1";
 import { compareShadowMaterialFingerprints, SHADOW_MATERIAL_CONSEQUENCE_FIELDS }
-  from "./shadow-material-consequence.mjs?v=20260828-288";
+  from "./shadow-material-consequence.mjs?v=20260828-289";
 import { LEAP_CONSEQUENCE_COMPONENTS, resolveLeapConsequenceComparison }
-  from "./leap-consequence-decomposition.mjs?v=20260828-288";
-import { compareSettlingMaterialFingerprints, SETTLING_MATERIAL_FIELDS }
-  from "./settling-material-sensitivity.mjs?v=20260828-288";
+  from "./leap-consequence-decomposition.mjs?v=20260828-289";
+import { buildSettlingMaterialResponseMatrix, compareSettlingMaterialFingerprints,
+  SETTLING_MATERIAL_FIELDS }
+  from "./settling-material-sensitivity.mjs?v=20260828-289";
 import { archiveResponseFrontierRankAudit }
   from "./archive-response-frontier-audit.js?v=20260827-1";
 import { evidenceOrderedClusterDiscoverySchedule }
@@ -786,6 +787,9 @@ const settlingSensitivityState = $("settlingSensitivityState");
 const settlingSensitivityArms = $("settlingSensitivityArms");
 const settlingSensitivityDetail = $("settlingSensitivityDetail");
 const settlingSensitivityBoundary = $("settlingSensitivityBoundary");
+const settlingResponseState = $("settlingResponseState");
+const settlingResponseMatrix = $("settlingResponseMatrix");
+const settlingResponseDetail = $("settlingResponseDetail");
 const leapConsequenceMatrix = $("leapConsequenceMatrix");
 const leapConsequenceDetail = $("leapConsequenceDetail");
 const leapConsequenceBoundary = $("leapConsequenceBoundary");
@@ -1613,6 +1617,8 @@ let selectedLeapConsequenceId = "coordination";
 let selectedLeapConsequenceFilter = "all";
 let selectedLeapConsequenceComponent = "total";
 let selectedSettlingSensitivityMode = "balanced";
+let selectedSettlingResponseField = "coordinationDeficit";
+let activeSettlingResponseAudit = null;
 let selectedStoichiometrySpecies = null;
 let selectedPackingMetric = "median";
 let selectedRadialProfileChannel = "density";
@@ -10908,7 +10914,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260828-288",
+      buildId: "20260828-289",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -13204,7 +13210,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260828-288" },
+    application: { name: "Materials Growth Lab", buildId: "20260828-289" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -19954,6 +19960,7 @@ function settlingSensitivityForAcceptedBatch(freshAtomIds, authorized) {
     || !arm.materialConsequence.chemistryInvariant)) {
     throw new Error("settling sensitivity changed atom inventory or chemistry");
   }
+  const materialResponseMatrix = buildSettlingMaterialResponseMatrix(arms);
   return {
     schema: 1,
     role: "same-as-placed bounded geometric-settling sensitivity",
@@ -19963,6 +19970,7 @@ function settlingSensitivityForAcceptedBatch(freshAtomIds, authorized) {
     materialSensitiveModes,
     materialChangedFields,
     materialFieldCount: SETTLING_MATERIAL_FIELDS.length + 2,
+    materialResponseMatrix,
     atomCountInvariant: true,
     chemistryInvariant: true,
     coordinatesEmbedded: false,
@@ -24054,6 +24062,7 @@ function resetCounters() {
   selectedLeapConsequenceFilter = "all";
   selectedLeapConsequenceComponent = "total";
   selectedSettlingSensitivityMode = "balanced";
+  selectedSettlingResponseField = "coordinationDeficit";
   selectedStoichiometrySpecies = null;
   selectedPackingMetric = "median";
   selectedRadialProfileChannel = "density";
@@ -27678,12 +27687,93 @@ function consequencePosition(record, value) {
   return 100 * Math.max(0, Math.min(1, value / (1.12 * maximum)));
 }
 
+function formatSettlingResponseDelta(row, cell) {
+  if (cell.mode === "off") return "base";
+  if (cell.attempted && !cell.certified) return "rollback";
+  if (row.categorical) return cell.changed ? "shift" : "same";
+  if (!Number.isFinite(cell.delta)) return "—";
+  if (Math.abs(cell.delta) <= 1e-12) return "0";
+  const magnitude = Math.abs(cell.delta) < 1e-3
+    ? Math.abs(cell.delta).toExponential(1) : Math.abs(cell.delta).toFixed(3);
+  return `${cell.delta >= 0 ? "+" : "−"}${magnitude}${row.unit === "angstrom" ? " Å" : ""}`;
+}
+
+function renderSettlingResponseMatrix(audit) {
+  activeSettlingResponseAudit = audit;
+  const matrix = audit?.materialResponseMatrix;
+  if (!matrix) {
+    settlingResponseMatrix.replaceChildren();
+    settlingResponseDetail.replaceChildren();
+    settlingResponseState.textContent = "awaiting arm outcomes";
+    return;
+  }
+  if (!matrix.rows.some((row) => row.id === selectedSettlingResponseField)) {
+    selectedSettlingResponseField = matrix.rows[0]?.id || "coordinationDeficit";
+  }
+  const heading = document.createElement("div"); heading.className = "settling-response-heading";
+  ["material field", ...matrix.modes, "pattern"].forEach((label) => {
+    const cell = document.createElement("span"); cell.textContent = label; heading.append(cell);
+  });
+  const rows = matrix.rows.map((row) => {
+    const button = document.createElement("button"); button.type = "button";
+    button.className = `${row.sensitive ? "sensitive" : "invariant"}${row.id === selectedSettlingResponseField ? " active" : ""}`;
+    button.dataset.settlingResponseField = row.id;
+    button.setAttribute("aria-pressed", String(row.id === selectedSettlingResponseField));
+    const label = document.createElement("strong"); label.textContent = row.label; button.append(label);
+    row.cells.forEach((cell) => {
+      const value = document.createElement("span");
+      value.className = `${cell.mode === "off" ? "baseline" : cell.certified ? "certified" : "blocked"}${cell.changed ? " changed" : ""}${Number.isFinite(cell.delta) && cell.delta < 0 ? " negative" : " positive"}`;
+      value.style.setProperty("--response-magnitude", cell.normalizedMagnitude.toFixed(4));
+      value.textContent = formatSettlingResponseDelta(row, cell);
+      value.title = `${cell.mode}: ${value.textContent}; ${cell.certified ? "hard-certified virtual state" : cell.mode === "off" ? "as-placed baseline" : "projection rolled back"}`;
+      button.append(value);
+    });
+    const trend = document.createElement("small"); trend.textContent = row.trend.replaceAll("-", " ");
+    button.append(trend);
+    return button;
+  });
+  settlingResponseMatrix.replaceChildren(heading, ...rows);
+  settlingResponseState.textContent = `${matrix.sensitiveFieldCount}/${matrix.rows.length} fields sensitive · ${matrix.gatePattern.replaceAll("-", " ")}`;
+  const selectedRow = matrix.rows.find((row) => row.id === selectedSettlingResponseField)
+    || matrix.rows[0];
+  settlingResponseDetail.replaceChildren();
+  if (selectedRow) {
+    const header = document.createElement("header");
+    const copy = document.createElement("span"); const small = document.createElement("small");
+    const strong = document.createElement("strong"); const badge = document.createElement("b");
+    small.textContent = selectedRow.unit; strong.textContent = selectedRow.label;
+    badge.textContent = selectedRow.trend.replaceAll("-", " "); copy.append(small, strong);
+    header.append(copy, badge); settlingResponseDetail.append(header);
+    const values = document.createElement("div");
+    selectedRow.cells.forEach((cell) => {
+      const item = document.createElement("span"); const mode = document.createElement("small");
+      const value = document.createElement("strong"); mode.textContent = cell.mode;
+      value.textContent = formatSettlingResponseDelta(selectedRow, cell);
+      item.append(mode, value); values.append(item);
+    });
+    settlingResponseDetail.append(values);
+    const note = document.createElement("p");
+    note.textContent = selectedRow.categorical
+      ? "Categorical cells report a resolved class change only; they are never assigned a numeric distance."
+      : `Color intensity is normalized only within this ${selectedRow.unit} row by its maximum absolute delta. No values from other units enter the scale.`;
+    settlingResponseDetail.append(note);
+  }
+}
+
+settlingResponseMatrix.addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-settling-response-field]");
+  if (!button || !settlingResponseMatrix.contains(button) || !activeSettlingResponseAudit) return;
+  selectedSettlingResponseField = button.dataset.settlingResponseField;
+  renderSettlingResponseMatrix(activeSettlingResponseAudit);
+});
+
 function renderSettlingSensitivity(selected = null) {
   const audit = selected?.settlingSensitivity;
   settlingSensitivityLab.hidden = !audit;
   if (!audit) {
     settlingSensitivityArms.replaceChildren();
     settlingSensitivityDetail.replaceChildren();
+    renderSettlingResponseMatrix(null);
     return;
   }
   const modes = audit.arms.map((arm) => arm.mode);
@@ -27742,6 +27832,7 @@ function renderSettlingSensitivity(selected = null) {
     const text = document.createElement("span"); key.textContent = name; text.textContent = value;
     row.append(key, text); settlingSensitivityDetail.append(row);
   });
+  renderSettlingResponseMatrix(audit);
   settlingSensitivityBoundary.textContent = `All four arms use the same as-placed colored sites and fixed local neighborhood. Material deltas recompute ${audit.materialFieldCount} coordinate-free local, reciprocal, and morphology fields on each compatible virtual projection; atom inventory and chemistry remain invariant. Only ${audit.selectedMode} could commit; the other arms did not alter atoms, candidates, ranking, frontier order, or the next search state. ${audit.selectedExecutionMatchesPreview === true ? "The executed setting exactly matches its frozen preview." : audit.selectedModeInBaseLadder ? "The executed setting did not reproduce its preview and must be treated as unresolved." : "The executed seeded mode is outside this unseeded cap ladder."} This is finite geometric sensitivity—not MD, energy, force integration, probability, kinetics, or time.`;
 }
 
