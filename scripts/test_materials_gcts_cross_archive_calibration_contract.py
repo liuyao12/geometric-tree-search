@@ -55,8 +55,8 @@ def test_receipt_omits_method_record_and_keeps_transfer_posthoc():
 
 
 def test_build_176_retains_cross_archive_versioning_and_documentation():
-    assert 'buildId: "20260827-270"' in APP
-    assert 'app.js?v=20260827-270' in HTML
+    assert 'buildId: "20260827-271"' in APP
+    assert 'app.js?v=20260827-271' in HTML
     assert 'structure-database.js?v=20260827-11' in APP
     assert 'geometry-calculation-calibration.js?v=20260826-6' in APP
     assert 'evidence-atlas.js?v=20260827-24' in HTML

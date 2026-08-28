@@ -1,5 +1,23 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 271 · certified structural-history microscope
+
+Stage 4 now reuses the reversible process timeline as a read-only navigator
+over the observed nucleus and every retained structural-leap certificate. The
+slider synchronizes the existing leap certificate, material-consequence,
+stoichiometry, packing, void-network, local-order, reciprocal-space, charge,
+bond-valence, morphology, and physics-surrogate panels. A seed button is always
+present beside the recent leap buttons.
+
+This is deliberately not a coordinate rewind. Selecting an earlier state
+pauses growth and changes evidence panels only; the live atoms, placements,
+frontier, and search state remain untouched. The timeline and receipt declare
+`evidenceReplayOnly=true`, `liveGeometryMutated=false`, and no physical clock.
+In the NaCl browser regression, leap 1 reports +203 explicit sites, 146 accepted
+/ 609 rejected actions, and the coordination-deficit change. Scrubbing to the
+nucleus shows 216 sites, 52 fitted placements, and the 1,628-action initial
+frontier while the live 3D state remains at 419 sites.
+
 ## Build 270 · responsive frontier microscope
 
 The real target-free frontier no longer appears to freeze the browser while it

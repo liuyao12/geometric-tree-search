@@ -8,7 +8,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260827-270">
+  <link rel="stylesheet" href="./style.css?v=20260827-271">
   <script type="importmap">
     {
       "imports": {
@@ -1705,13 +1705,13 @@
           <div class="viewport-caption"><span id="captionAction">Every point is an observed species and position; no cluster labels are supplied.</span></div>
         </div>
 
-        <section id="processTimeline" class="process-timeline" aria-label="Reversible stage process timeline" hidden>
+        <section id="processTimeline" class="process-timeline" aria-label="Stage process and structural-history timeline" hidden>
           <div class="process-timeline-heading">
             <div><small id="processTimelineEyebrow">process microscope</small><strong id="processTimelineTitle">Connection decisions</strong></div>
             <span id="processTimelineState">0 / 0</span>
           </div>
           <input id="processTimelineInput" type="range" min="0" max="1" step="1" value="0" aria-label="Inspect an intermediate stage state">
-          <div class="process-timeline-scale" aria-hidden="true"><span>initial hypotheses</span><i></i><span>frozen result</span></div>
+          <div class="process-timeline-scale" aria-hidden="true"><span id="processTimelineStart">initial hypotheses</span><i></i><span id="processTimelineEnd">frozen result</span></div>
           <p id="processTimelineNote">Drag to inspect an intermediate state; Play resumes from the selected point.</p>
           <div id="processEvidenceLedger" class="process-evidence-ledger" aria-label="Evidence at the selected process step"></div>
           <p id="processEvidenceDetail" class="process-evidence-detail" aria-live="polite"></p>
@@ -2004,7 +2004,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260827-270"></script>
+  <script type="module" src="./app.js?v=20260827-271"></script>
   <script type="module" src="./evidence-atlas.js?v=20260827-24"></script>
 </body>
 </html>

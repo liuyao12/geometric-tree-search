@@ -688,6 +688,8 @@ const processTimelineTitle = $("processTimelineTitle");
 const processTimelineState = $("processTimelineState");
 const processTimelineInput = $("processTimelineInput");
 const processTimelineNote = $("processTimelineNote");
+const processTimelineStart = $("processTimelineStart");
+const processTimelineEnd = $("processTimelineEnd");
 const processEvidenceLedger = $("processEvidenceLedger");
 const processEvidenceDetail = $("processEvidenceDetail");
 const molecularCoverRibbon = $("molecularCoverRibbon");
@@ -10266,7 +10268,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-270",
+      buildId: "20260827-271",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -12544,7 +12546,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-270" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-271" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -23204,6 +23206,32 @@ function processTimelineRecord() {
       evidence: processTimelineEvidenceRecord(),
     };
   }
+  if (pipelineStage === 4 && leapHistory.length) {
+    const progress = selectedLeapIndex < 0 ? 0 : selectedLeapIndex + 1;
+    const selected = selectedLeapIndex < 0 ? null : leapHistory[selectedLeapIndex] || null;
+    const seed = leapHistory[0].before;
+    return {
+      stage: "material-growth",
+      title: "Certified structural states",
+      eyebrow: "structural-history microscope · no physical clock",
+      progress,
+      total: leapHistory.length,
+      state: selected
+        ? `leap ${selected.index} · ${selected.status} · ${selected.after.atoms} sites`
+        : `observed nucleus · ${seed.atoms} sites`,
+      note: selected
+        ? `Inspecting leap ${selected.index}; the live 3D configuration remains at the latest state and search is paused while history is audited.`
+        : "Inspecting the observed nucleus before any structural leap; the live 3D configuration is not rewound or mutated.",
+      reversible: false,
+      evidenceReplayOnly: true,
+      liveGeometryMutated: false,
+      traceFrozen: true,
+      targetUsed: false,
+      startLabel: "observed nucleus",
+      endLabel: `${leapHistory.length} retained state${leapHistory.length === 1 ? "" : "s"}`,
+      evidence: processTimelineEvidenceRecord(),
+    };
+  }
   return null;
 }
 
@@ -23275,6 +23303,39 @@ function processTimelineEvidenceRecord() {
           detail: `Held-out mismatch changes by ${lossDelta.toFixed(4)} at this sample; ${overlapGain >= 0 ? "+" : ""}${overlapGain} support-overlap constraints become visible.` },
       ],
       claimBoundary: "These are local connection-section fitting diagnostics. They are not forces, energies, potentials, relaxation steps, elapsed physical time, or target-guided growth scores.",
+    };
+  }
+  if (pipelineStage === 4 && leapHistory.length) {
+    const selected = selectedLeapIndex < 0 ? null : leapHistory[selectedLeapIndex] || null;
+    const state = selected?.after || leapHistory[0].before;
+    const accepted = selected?.after?.accepted || 0;
+    const rejected = selected?.after?.rejected || 0;
+    const atomDelta = selected ? selected.after.atoms - selected.before.atoms : 0;
+    const clusterDelta = selected ? selected.after.clusters - selected.before.clusters : 0;
+    const consequence = selected ? materialConsequenceRecords(selected.before, selected.after)
+      .filter((record) => Number.isFinite(record.before) && Number.isFinite(record.after)) : [];
+    const representative = consequence.find((record) => record.id === "coordination")
+      || consequence.find((record) => record.id === "packing") || consequence[0] || null;
+    return {
+      mode: "read-only audit of retained certified structural states",
+      selectedStep: selected?.index || 0,
+      targetUsed: selected?.targetUsed === true,
+      coordinatesEmbedded: false,
+      liveGeometryMutated: false,
+      evidenceReplayOnly: true,
+      tiles: [
+        { label: "state", value: selected ? `leap ${selected.index}` : "nucleus", status: selected?.status || "neutral",
+          detail: selected ? `${selected.label}. The selected receipt contains before/after coordinate-free state summaries.` : "The supplied observed window is the declared nucleus before the first target-free frontier is evaluated." },
+        { label: "explicit structure", value: selected ? `${atomDelta >= 0 ? "+" : ""}${atomDelta} sites` : `${state.atoms} sites`, status: atomDelta > 0 ? "accepted" : "neutral",
+          detail: selected ? `${selected.before.atoms} → ${selected.after.atoms} explicit colored sites and ${selected.before.clusters} → ${selected.after.clusters} placed clusters (Δ${clusterDelta >= 0 ? "+" : ""}${clusterDelta}).` : `${state.atoms} explicit colored sites and ${state.clusters} fitted placements initialize growth.` },
+        { label: "branch decisions", value: selected ? `${accepted} / ${rejected}` : `${state.frontier} frontier`, status: rejected ? "mixed" : selected ? "accepted" : "neutral",
+          detail: selected ? `${accepted} whole-cluster actions passed and ${rejected} order-invariant actions were pruned from ${selected.before.frontier} frozen candidates.` : `${state.frontier} target-free actions are frozen at the observed nucleus.` },
+        { label: "material fingerprint", value: representative
+          ? `${representative.label} ${representative.deltaFormat(representative.after - representative.before)}` : "seed baseline",
+          status: representative ? "testing" : "neutral",
+          detail: representative ? `${representative.label}: ${representative.format(representative.before)} → ${representative.format(representative.after)}. ${representative.boundary}` : "Material-consequence deltas require a completed structural leap." },
+      ],
+      claimBoundary: "The slider selects retained coordinate-free certificates and updates the evidence panels only. It never rewinds the live atoms, reruns search, embeds coordinates, supplies a target, or converts structural-update order into physical time.",
     };
   }
   return null;
@@ -23378,6 +23439,10 @@ function updateProcessTimeline() {
   processTimelineInput.max = String(Math.max(1, record.total));
   processTimelineInput.value = String(record.progress);
   processTimelineInput.setAttribute("aria-valuetext", record.state);
+  processTimelineStart.textContent = record.startLabel || (record.stage === "gcts-learning"
+    ? "random sections" : "initial hypotheses");
+  processTimelineEnd.textContent = record.endLabel || (record.stage === "gcts-learning"
+    ? "frozen marking" : "frozen cover");
   processTimeline.style.setProperty("--process-progress", `${100 * record.progress / Math.max(1, record.total)}%`);
   renderProcessEvidence();
 }
@@ -23388,6 +23453,12 @@ function scrubProcessTimeline(value) {
   setPlaying(false);
   const progress = Math.max(0, Math.min(record.total, Math.round(Number(value) || 0)));
   selectedProcessEvidenceIndex = 0;
+  if (pipelineStage === 4) {
+    selectedLeapIndex = progress - 1;
+    renderStructuralLeap(selectedLeapIndex < 0 ? null : leapHistory[selectedLeapIndex]);
+    updateProcessTimeline();
+    return;
+  }
   if (pipelineStage === 1) clusterDiscoveryProgress = progress;
   else if (pipelineStage === 3) trainingProgress = progress;
   eventIndex = progress;
@@ -26458,6 +26529,20 @@ function renderStructuralLeap(leap = null) {
   renderBondValenceStructuralPathway();
   renderLeapConsequence(selected);
   leapHistoryElement.replaceChildren();
+  if (leapHistory.length) {
+    const seedButton = document.createElement("button"); seedButton.type = "button";
+    seedButton.className = "seed";
+    seedButton.classList.toggle("active", selectedLeapIndex < 0);
+    seedButton.setAttribute("aria-pressed", String(selectedLeapIndex < 0));
+    seedButton.textContent = `seed · ${leapHistory[0].before.atoms}`;
+    seedButton.title = "Observed nucleus before the first structural leap";
+    seedButton.addEventListener("click", () => {
+      selectedLeapIndex = -1;
+      renderStructuralLeap(null);
+      updateProcessTimeline();
+    });
+    leapHistoryElement.append(seedButton);
+  }
   leapHistory.slice(-8).forEach((entry, visibleIndex) => {
     const absoluteIndex = Math.max(0, leapHistory.length - 8) + visibleIndex;
     const button = document.createElement("button"); button.type = "button";
@@ -26469,6 +26554,7 @@ function renderStructuralLeap(leap = null) {
     button.addEventListener("click", () => {
       selectedLeapIndex = absoluteIndex;
       renderStructuralLeap(leapHistory[selectedLeapIndex]);
+      updateProcessTimeline();
     });
     leapHistoryElement.append(button);
   });
@@ -26476,10 +26562,13 @@ function renderStructuralLeap(leap = null) {
   renderLeapPhysics(selected);
   renderLeapMorphology(selected);
   if (!selected) {
+    const seedState = leapHistory[0]?.before || {
+      atoms: atoms.length, clusters: placedClusters.length, frontier: frontierCandidates.length,
+    };
     leapCertificateState.textContent = "seed state · no leap executed";
     [
-      ["01 · before", `${atoms.length} explicit atoms`, `${placedClusters.length} placed clusters`],
-      ["02 · proposal", "frontier not sampled", `${frontierCandidates.length} frozen candidates`],
+      ["01 · before", `${seedState.atoms} explicit atoms`, `${seedState.clusters} placed clusters`],
+      ["02 · proposal", "frontier not sampled", `${seedState.frontier} frozen candidates`],
       ["03 · certificate", "not evaluated", "geometry gates await one action"],
       ["04 · local symmetry", "not compared", "qℓ / |ψℓ| distributions await one leap"],
       ["05 · inversion asymmetry", "not compared", "centrosymmetry distributions await one leap"],
@@ -26495,6 +26584,7 @@ function renderStructuralLeap(leap = null) {
       card.append(small, strong, span); leapFlow.append(card);
     });
     leapClaimBoundary.textContent = "No trajectory is integrated. The seed geometry defines a search state, not a time origin or nucleation probability.";
+    updateProcessTimeline();
     return;
   }
   leapCertificateState.textContent = `${selected.status} · leap ${selected.index}`;
@@ -26557,6 +26647,7 @@ function renderStructuralLeap(leap = null) {
     card.append(small, strong, span); leapFlow.append(card);
   });
   leapClaimBoundary.textContent = `${selected.claimBoundary} Local qℓ / |ψℓ| and unit-weight geometric S(q) changes are rotation-invariant structural fingerprints, not phase-transition assignments, experimental diffraction intensities, latent heat, free-energy changes, rates, or clocks. Centrosymmetry changes are proper-rotation- and uniform-scale-invariant defect-sensitive fingerprints, but they are not named defects, a defect classifier, formation energy, stress, temperature, kinetics, or physical time. Supplied-charge dipole/quadrupole changes are translation-, proper-rotation-, and uniform-scale-invariant structural fingerprints, not electrostatic energy, polarization, dielectric response, charge transfer, electronic structure, force, rate, or physical time. Sampled bond-valence scalar/vector changes retain the physical Å scale; vector balance is a spherical-ion hypothesis and neither channel is energy, force, relaxation, or time.`;
+  updateProcessTimeline();
 }
 
 function radiallyStratifiedIndices(source, candidateIndices, maximumCenters) {

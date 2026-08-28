@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Static contract for the reversible cluster/GCTS process microscope."""
+"""Static contract for reversible learning and read-only growth microscopes."""
 
 from pathlib import Path
 
@@ -29,17 +29,21 @@ def test_reversible_process_timeline_contract() -> None:
     assert 'function processTimelineRecord()' in APP
     assert 'stage: "cluster-identification"' in APP
     assert 'stage: "gcts-learning"' in APP
+    assert 'stage: "material-growth"' in APP
     assert 'reversible: true' in APP
     assert 'traceFrozen: true' in APP
     assert 'targetUsed: false' in APP
     assert 'function scrubProcessTimeline(value)' in APP
     assert 'function processTimelineEvidenceRecord()' in APP
     assert 'function renderProcessEvidence()' in APP
-    assert 'deterministic audit replay of the learned cover' in APP
+    assert 'evidence-ordered audit replay of selected recurring supports and explicit gaps' in APP
     assert 'deterministic sample-indexed section fit' in APP
     assert 'accepted / removed' in APP
     assert 'coefficient step' in APP
-    assert 'Step order is a deterministic audit replay' in APP
+    assert 'Step order now follows explicit cover gain' in APP
+    assert 'read-only audit of retained certified structural states' in APP
+    assert 'evidenceReplayOnly: true' in APP
+    assert 'liveGeometryMutated: false' in APP
     assert 'They are not forces, energies, potentials' in APP
     assert 'setPlaying(false);' in APP[APP.index('function scrubProcessTimeline(value)'):]
     assert 'clusterDiscoveryProgress = progress' in APP

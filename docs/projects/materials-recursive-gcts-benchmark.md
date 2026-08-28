@@ -1,5 +1,24 @@
 # Recursive GCTS benchmark for material growth
 
+### Certified structural-history microscope (Build 271)
+
+The Stage 1/3 process timeline now has a distinct Stage 4 contract. Its range
+is the observed nucleus plus retained structural-leap certificates; selection
+updates all coordinate-free consequence and physics-evidence panels but never
+replaces the live atom array, placed clusters, frontier, or search counters.
+The lower label is the observed nucleus, the upper label reports retained
+states, and recent-history controls include an explicit seed button.
+
+Each selected state summarizes exact explicit-site and placed-cluster changes,
+accepted/rejected whole-cluster work, the pre-leap frozen frontier, and one
+representative material fingerprint. The full existing certificate remains
+available below it: composition, finite packing and void graphs, local order,
+centrosymmetry, geometric S(q), supplied-charge shape, bond valence, morphology,
+and every physics→geometry claim boundary. The receipt marks this as frozen
+evidence replay with `liveGeometryMutated=false`, no coordinates, no target,
+and no physical time. Browser regression proves the separation: selecting the
+216-site NaCl nucleus leaves the live 419-site state unchanged.
+
 ### Responsive frontier microscope (Build 270)
 
 The browser executor now exposes the finite work hidden inside one structural
