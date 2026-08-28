@@ -348,6 +348,15 @@ def exact_weighted_multicover(
                 pivot_score = score
                 pivot_mask = choices
 
+        # A multicover pivot can require contributions from several selected
+        # placements.  Without canonical branching, choosing A and then B is
+        # revisited as B and then A when both cover the pivot.  In the branch
+        # whose first selected pivot placement is ``bit``, permanently exclude
+        # every earlier pivot alternative: this declares ``bit`` to be the
+        # least selected alternative for this pivot.  Every feasible subset
+        # has exactly one such least member, so the reduction is complete and
+        # explores each subset once rather than many placement orders.
+        skipped_pivot_mask = 0
         while pivot_mask:
             bit = pivot_mask & -pivot_mask
             compact_index = bit.bit_length() - 1
@@ -355,11 +364,16 @@ def exact_weighted_multicover(
             next_capacities = list(state_capacities)
             for residue, weight in sparse_vectors[compact_index]:
                 next_capacities[residue] -= weight
-            suffix = search(tuple(next_capacities), selected_mask | bit, remaining - 1)
+            suffix = search(
+                tuple(next_capacities),
+                selected_mask | skipped_pivot_mask | bit,
+                remaining - 1,
+            )
             if suffix is fallback:
                 return fallback
             if suffix is not None:
                 return (original_indices[compact_index], *suffix)
+            skipped_pivot_mask |= bit
         failed.add(state)
         return None
 
