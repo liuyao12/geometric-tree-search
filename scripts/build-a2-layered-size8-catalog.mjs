@@ -3,7 +3,7 @@ import { makeA2LayeredPolyprism } from "../assets/a2-layered-polyprisms.js";
 
 const root = new URL("../", import.meta.url);
 const rows = (await readFile(new URL(
-  "data/a2-layered-size8-essential-periodic-exact6.ndjson", root
+  "data/a2-layered-size8-essential-periodic-exact7.ndjson", root
 ), "utf8")).trim().split("\n").filter(Boolean).map(JSON.parse);
 const coronaById = new Map((await readFile(new URL(
   "data/a2-layered-size8-essential-corona1-verified.ndjson", root
@@ -40,6 +40,7 @@ const candidates = rows
     const direct = substitutionEvidence.filter(item => item.substitution);
     const twoCopy = substitutionEvidence.filter(item => item.two_copy_metatile_screen);
     const threeCopy = substitutionEvidence.filter(item => item.three_copy_metatile_screen);
+    const fourCopy = substitutionEvidence.filter(item => item.four_copy_metatile_screen);
     const directScales = [...new Set(direct
       .filter(item => item.substitution.inflation_kind === "scalar")
       .map(item => item.substitution.scale))].sort((a, b) => a - b);
@@ -56,6 +57,13 @@ const candidates = rows
       item.three_copy_metatile_screen.scale,
       item.three_copy_metatile_screen.symmetry_distinct_metatiles
     ]));
+    const fourCopyScales = [...new Set(fourCopy
+      .filter(item => item.four_copy_metatile_screen.certified)
+      .map(item => item.four_copy_metatile_screen.scale))].sort((a, b) => a - b);
+    const fourCopyTypesByScale = Object.fromEntries(fourCopy.map(item => [
+      item.four_copy_metatile_screen.scale,
+      item.four_copy_metatile_screen.symmetry_distinct_metatiles
+    ]));
     return {
       id: record.id,
       kind: "a2_layered_polyprism_census",
@@ -70,25 +78,27 @@ const candidates = rows
       screening: {
         status: "inconclusive",
         certificate: null,
-        census_stage: "a2_layered_size8_layer_essential_exact_through6_2026_08_27",
+        census_stage: "a2_layered_size8_layer_essential_exact_through7_2026_08_27",
         source_pool_size: 4940,
         periodic_one_copy_certificates: 4529,
         periodic_two_copy_certificates_after_one_copy_screen: 405,
         periodic_four_copy_certificates_after_three_copy_screen: 2,
-        periodic_exact_through: 6,
+        periodic_exact_through: 7,
         periodic_solver_unknowns: 0,
         periodic_hnf_bases_exhausted_by_copies: {
-          1: 35, 2: 155, 3: 455, 4: 651, 5: 1085, 6: 2015
+          1: 35, 2: 155, 3: 455, 4: 651, 5: 1085, 6: 2015, 7: 1995
         },
-        periodic_six_copy_exact_multicover_nodes:
+        periodic_seven_copy_exact_multicover_nodes:
           record.periodic_z3.exact_multicover_nodes ?? 0,
-        periodic_six_copy_exact_failed_states:
+        periodic_seven_copy_exact_failed_states:
           record.periodic_z3.exact_multicover_failed_states ?? 0,
-        periodic_six_copy_complete:
+        periodic_seven_copy_mitm_fallbacks:
+          record.periodic_z3.exact_multicover_mitm_fallbacks ?? 0,
+        periodic_seven_copy_complete:
           record.periodic_z3.hnf_range_exhausted === true
-          && record.periodic_z3.hnf_visited === 2015
+          && record.periodic_z3.hnf_visited === 1995
           && record.periodic_z3.solver_unknown === 0,
-        periodic_report: "data/a2-layered-size8-essential-periodic-exact6.ndjson",
+        periodic_report: "data/a2-layered-size8-essential-periodic-exact7.ndjson",
         corona_completed_radius: corona?.corona_z3?.replay?.verified ? 1 : 0,
         corona_completed_verified: corona?.corona_z3?.replay?.verified ?? false,
         corona_root_patch_copies: corona?.corona_z3?.replay?.patch_copies ?? null,
@@ -107,6 +117,8 @@ const candidates = rows
         two_copy_metatile_substitution_scales_exhausted: twoCopyScales,
         three_copy_metatile_substitution_scales_exhausted: threeCopyScales,
         three_copy_metatile_types_exhausted_by_scale: threeCopyTypesByScale,
+        four_copy_metatile_substitution_scales_exhausted: fourCopyScales,
+        four_copy_metatile_types_exhausted_by_scale: fourCopyTypesByScale,
         substitution_report: "data/a2-layered-size8-substitution-screen-summary.ndjson"
       },
       shell_screening: { robust_completed_shell: 0, deepest_completed_shell: 0 }

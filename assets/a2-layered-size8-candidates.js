@@ -77,12 +77,12 @@ export const A2_LAYERED_SIZE8_CANDIDATES = Object.freeze([
     "screening": {
       "status": "inconclusive",
       "certificate": null,
-      "census_stage": "a2_layered_size8_layer_essential_exact_through6_2026_08_27",
+      "census_stage": "a2_layered_size8_layer_essential_exact_through7_2026_08_27",
       "source_pool_size": 4940,
       "periodic_one_copy_certificates": 4529,
       "periodic_two_copy_certificates_after_one_copy_screen": 405,
       "periodic_four_copy_certificates_after_three_copy_screen": 2,
-      "periodic_exact_through": 6,
+      "periodic_exact_through": 7,
       "periodic_solver_unknowns": 0,
       "periodic_hnf_bases_exhausted_by_copies": {
         "1": 35,
@@ -90,12 +90,14 @@ export const A2_LAYERED_SIZE8_CANDIDATES = Object.freeze([
         "3": 455,
         "4": 651,
         "5": 1085,
-        "6": 2015
+        "6": 2015,
+        "7": 1995
       },
-      "periodic_six_copy_exact_multicover_nodes": 6073513,
-      "periodic_six_copy_exact_failed_states": 5081993,
-      "periodic_six_copy_complete": true,
-      "periodic_report": "data/a2-layered-size8-essential-periodic-exact6.ndjson",
+      "periodic_seven_copy_exact_multicover_nodes": 29338463,
+      "periodic_seven_copy_exact_failed_states": 23878095,
+      "periodic_seven_copy_mitm_fallbacks": 0,
+      "periodic_seven_copy_complete": true,
+      "periodic_report": "data/a2-layered-size8-essential-periodic-exact7.ndjson",
       "corona_completed_radius": 1,
       "corona_completed_verified": true,
       "corona_root_patch_copies": 24,
@@ -132,6 +134,12 @@ export const A2_LAYERED_SIZE8_CANDIDATES = Object.freeze([
       "three_copy_metatile_types_exhausted_by_scale": {
         "2": 993,
         "3": 993
+      },
+      "four_copy_metatile_substitution_scales_exhausted": [
+        2
+      ],
+      "four_copy_metatile_types_exhausted_by_scale": {
+        "2": 62134
       },
       "substitution_report": "data/a2-layered-size8-substitution-screen-summary.ndjson"
     },
@@ -217,12 +225,12 @@ export const A2_LAYERED_SIZE8_CANDIDATES = Object.freeze([
     "screening": {
       "status": "inconclusive",
       "certificate": null,
-      "census_stage": "a2_layered_size8_layer_essential_exact_through6_2026_08_27",
+      "census_stage": "a2_layered_size8_layer_essential_exact_through7_2026_08_27",
       "source_pool_size": 4940,
       "periodic_one_copy_certificates": 4529,
       "periodic_two_copy_certificates_after_one_copy_screen": 405,
       "periodic_four_copy_certificates_after_three_copy_screen": 2,
-      "periodic_exact_through": 6,
+      "periodic_exact_through": 7,
       "periodic_solver_unknowns": 0,
       "periodic_hnf_bases_exhausted_by_copies": {
         "1": 35,
@@ -230,12 +238,14 @@ export const A2_LAYERED_SIZE8_CANDIDATES = Object.freeze([
         "3": 455,
         "4": 651,
         "5": 1085,
-        "6": 2015
+        "6": 2015,
+        "7": 1995
       },
-      "periodic_six_copy_exact_multicover_nodes": 15675220,
-      "periodic_six_copy_exact_failed_states": 12077592,
-      "periodic_six_copy_complete": true,
-      "periodic_report": "data/a2-layered-size8-essential-periodic-exact6.ndjson",
+      "periodic_seven_copy_exact_multicover_nodes": 74819710,
+      "periodic_seven_copy_exact_failed_states": 57622525,
+      "periodic_seven_copy_mitm_fallbacks": 32,
+      "periodic_seven_copy_complete": true,
+      "periodic_report": "data/a2-layered-size8-essential-periodic-exact7.ndjson",
       "corona_completed_radius": 1,
       "corona_completed_verified": true,
       "corona_root_patch_copies": 29,
@@ -272,6 +282,12 @@ export const A2_LAYERED_SIZE8_CANDIDATES = Object.freeze([
       "three_copy_metatile_types_exhausted_by_scale": {
         "2": 8348,
         "3": 8348
+      },
+      "four_copy_metatile_substitution_scales_exhausted": [
+        2
+      ],
+      "four_copy_metatile_types_exhausted_by_scale": {
+        "2": 1105225
       },
       "substitution_report": "data/a2-layered-size8-substitution-screen-summary.ndjson"
     },
@@ -357,12 +373,12 @@ export const A2_LAYERED_SIZE8_CANDIDATES = Object.freeze([
     "screening": {
       "status": "inconclusive",
       "certificate": null,
-      "census_stage": "a2_layered_size8_layer_essential_exact_through6_2026_08_27",
+      "census_stage": "a2_layered_size8_layer_essential_exact_through7_2026_08_27",
       "source_pool_size": 4940,
       "periodic_one_copy_certificates": 4529,
       "periodic_two_copy_certificates_after_one_copy_screen": 405,
       "periodic_four_copy_certificates_after_three_copy_screen": 2,
-      "periodic_exact_through": 6,
+      "periodic_exact_through": 7,
       "periodic_solver_unknowns": 0,
       "periodic_hnf_bases_exhausted_by_copies": {
         "1": 35,
@@ -370,12 +386,14 @@ export const A2_LAYERED_SIZE8_CANDIDATES = Object.freeze([
         "3": 455,
         "4": 651,
         "5": 1085,
-        "6": 2015
+        "6": 2015,
+        "7": 1995
       },
-      "periodic_six_copy_exact_multicover_nodes": 15542066,
-      "periodic_six_copy_exact_failed_states": 11992185,
-      "periodic_six_copy_complete": true,
-      "periodic_report": "data/a2-layered-size8-essential-periodic-exact6.ndjson",
+      "periodic_seven_copy_exact_multicover_nodes": 74782180,
+      "periodic_seven_copy_exact_failed_states": 57601080,
+      "periodic_seven_copy_mitm_fallbacks": 32,
+      "periodic_seven_copy_complete": true,
+      "periodic_report": "data/a2-layered-size8-essential-periodic-exact7.ndjson",
       "corona_completed_radius": 1,
       "corona_completed_verified": true,
       "corona_root_patch_copies": 30,
@@ -412,6 +430,12 @@ export const A2_LAYERED_SIZE8_CANDIDATES = Object.freeze([
       "three_copy_metatile_types_exhausted_by_scale": {
         "2": 8348,
         "3": 8348
+      },
+      "four_copy_metatile_substitution_scales_exhausted": [
+        2
+      ],
+      "four_copy_metatile_types_exhausted_by_scale": {
+        "2": 1105225
       },
       "substitution_report": "data/a2-layered-size8-substitution-screen-summary.ndjson"
     },
@@ -497,12 +521,12 @@ export const A2_LAYERED_SIZE8_CANDIDATES = Object.freeze([
     "screening": {
       "status": "inconclusive",
       "certificate": null,
-      "census_stage": "a2_layered_size8_layer_essential_exact_through6_2026_08_27",
+      "census_stage": "a2_layered_size8_layer_essential_exact_through7_2026_08_27",
       "source_pool_size": 4940,
       "periodic_one_copy_certificates": 4529,
       "periodic_two_copy_certificates_after_one_copy_screen": 405,
       "periodic_four_copy_certificates_after_three_copy_screen": 2,
-      "periodic_exact_through": 6,
+      "periodic_exact_through": 7,
       "periodic_solver_unknowns": 0,
       "periodic_hnf_bases_exhausted_by_copies": {
         "1": 35,
@@ -510,12 +534,14 @@ export const A2_LAYERED_SIZE8_CANDIDATES = Object.freeze([
         "3": 455,
         "4": 651,
         "5": 1085,
-        "6": 2015
+        "6": 2015,
+        "7": 1995
       },
-      "periodic_six_copy_exact_multicover_nodes": 6029505,
-      "periodic_six_copy_exact_failed_states": 5026949,
-      "periodic_six_copy_complete": true,
-      "periodic_report": "data/a2-layered-size8-essential-periodic-exact6.ndjson",
+      "periodic_seven_copy_exact_multicover_nodes": 29328075,
+      "periodic_seven_copy_exact_failed_states": 23858751,
+      "periodic_seven_copy_mitm_fallbacks": 0,
+      "periodic_seven_copy_complete": true,
+      "periodic_report": "data/a2-layered-size8-essential-periodic-exact7.ndjson",
       "corona_completed_radius": 1,
       "corona_completed_verified": true,
       "corona_root_patch_copies": 27,
@@ -552,6 +578,12 @@ export const A2_LAYERED_SIZE8_CANDIDATES = Object.freeze([
       "three_copy_metatile_types_exhausted_by_scale": {
         "2": 993,
         "3": 993
+      },
+      "four_copy_metatile_substitution_scales_exhausted": [
+        2
+      ],
+      "four_copy_metatile_types_exhausted_by_scale": {
+        "2": 62134
       },
       "substitution_report": "data/a2-layered-size8-substitution-screen-summary.ndjson"
     },

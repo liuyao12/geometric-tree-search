@@ -417,6 +417,11 @@ all 651 four-copy and 1,085 five-copy bases with zero solver unknowns. The
 five-copy sparse multicover searches visit 4,561,662 exact states in total.
 All four also exhaust all 2,015 six-copy HNF bases with zero unknowns. Those
 four six-copy searches visit 43,320,304 exact multicover states in total.
+They now also exhaust all 1,995 seven-copy bases per candidate (7,980 total),
+with zero unknowns and 208,268,428 exact states. The two harder candidates use
+the complete 3+3 meet-in-the-middle fallback on 32 quotients each after the
+rooted DFS reaches its state cap; differential tests compare that fallback
+with brute force, and the disjoint HNF range merger rejects gaps or overlaps.
 
 A longer first-corona pass finds independently replayed radius-one witnesses
 of 24, 29, 30, and 27 copies for `02131`, `02151`, `03411`, and `04836`,
@@ -438,7 +443,11 @@ alphabets are also exhausted at scalar inflations 2 and 3. Connected
 three-copy metatile alphabets are exhausted at scalar inflations 2 and 3 (993
 types at each scale for `02131` and `04836`; 8,348 at each scale for `02151`
 and `03411`). These are exact negative results for those substitution
-families, not evidence that no more general substitution exists.
+families. At scalar inflation 2, the complete connected four-copy screens
+also reject 62,134 parents each for `02131` and `04836`, and 1,105,225 parents
+each for `02151` and `03411`: 2,334,718 additional certified local
+obstructions, with no rule or unresolved parent. This is not evidence that no
+more general substitution exists; clusters of five or more remain open.
 
 For this triangular-prism cell complex, a genuinely non-real Eisenstein
 multiplier rotates the three cell-edge directions off the honeycomb. A
@@ -448,11 +457,11 @@ case. Non-cellular or regrouped geometric inflations remain outside this
 screen.
 
 These four are now the leading web-catalogue candidates. They are exact only
-through six copies: larger periodic domains, second-corona extension, and
+through seven copies: larger periodic domains, second-corona extension, and
 more general substitution rules remain open. The staged machine-readable
 reports are
 `data/a2-layered-size8-essential-periodic-exact1.ndjson` through
-`data/a2-layered-size8-essential-periodic-exact6.ndjson`; compact substitution
+`data/a2-layered-size8-essential-periodic-exact7.ndjson`; compact substitution
 evidence is in `data/a2-layered-size8-substitution-screen-summary.ndjson`.
 
 Rebuild the focused census with:

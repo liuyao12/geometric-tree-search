@@ -148,12 +148,26 @@ def published_three_copy_receipt(record):
     path = ROOT / "data" / (
         f"a2-layered-size7-three-cluster-substitution-scalar2-{record['id']}.ndjson"
     )
-    if not path.exists():
-        enumerated = THREE.enumerate_three_copy_metatiles(record)
-        return enumerated["symmetry_distinct_metatiles"], enumerated["canonical_sha256"]
-    report = json.loads(path.read_text())
-    screen = report["three_copy_metatile_screen"]
-    return screen["symmetry_distinct_metatiles"], screen["canonical_sha256"]
+    if path.exists():
+        report = json.loads(path.read_text())
+        screen = report["three_copy_metatile_screen"]
+        return screen["symmetry_distinct_metatiles"], screen["canonical_sha256"]
+
+    compact = ROOT / "data" / "a2-layered-size8-substitution-screen-summary.ndjson"
+    if compact.exists():
+        for line in compact.read_text().splitlines():
+            report = json.loads(line)
+            screen = report.get("three_copy_metatile_screen")
+            if (
+                report.get("id") == record["id"]
+                and screen is not None
+                and screen.get("scale") == 2
+                and screen.get("certified") is True
+            ):
+                return screen["symmetry_distinct_metatiles"], screen["canonical_sha256"]
+
+    enumerated = THREE.enumerate_three_copy_metatiles(record)
+    return enumerated["symmetry_distinct_metatiles"], enumerated["canonical_sha256"]
 
 
 def open_checkpoint(path, record, three_keys, three_hash):

@@ -69,6 +69,38 @@ for case in range(24):
             for residue in range(4)
         )
 
+# Force the seven-copy 3+3 fallback and compare its complete result with an
+# independent brute-force oracle.  A one-node DFS budget makes every
+# nontrivial instance enter the meet-in-the-middle path.
+for case in range(24):
+    placements = [
+        {"weights": [
+            4 * ((2 * case + 5 * index + 3 * residue) % 7)
+            for residue in range(3)
+        ]}
+        for index in range(11)
+    ]
+    exact = MODULE.exact_weighted_multicover(placements, 7, dfs_node_limit=1)
+    brute = next((
+        (0, *suffix)
+        for suffix in itertools.combinations(range(1, len(placements)), 6)
+        if all(
+            sum(placements[index]["weights"][residue] for index in (0, *suffix)) == 48
+            for residue in range(3)
+        )
+    ), None)
+    assert exact["used_mitm"] is True
+    assert (exact["result"] == "sat") == (brute is not None)
+    if exact["chosen_indices"] is not None:
+        assert len(set(exact["chosen_indices"])) == 7
+        assert all(
+            sum(
+                placements[index]["weights"][residue]
+                for index in exact["chosen_indices"]
+            ) == 48
+            for residue in range(3)
+        )
+
 unit = {
     "id": "a2_periodic_exact_six_copy_control",
     "cells": [{"q": 0, "r": 0, "k": 0, "kind": "u"}],
@@ -117,6 +149,9 @@ with tempfile.TemporaryDirectory() as temporary_directory:
     assert merged["periodic_z3"]["exhausted_by_copies"] == {"6": 3}
     assert merged["periodic_z3"]["exact_multicover_nodes"] == 5
     assert len(merged["periodic_z3"]["range_receipts"]) == 2
+    merged_seven = MERGE.merge(parts, copies=7)
+    assert merged_seven["periodic_z3"]["exhausted_by_copies"] == {"7": 3}
+    assert merged_seven["periodic_z3"]["mitm_partition"] == "3+3"
 
 occupancy = MODULE.tile_occupancy(candidate["cells"])
 tile_orientations = MODULE.orientations(occupancy)

@@ -27,7 +27,9 @@ def load_one(path: Path) -> dict:
     return records[0]
 
 
-def merge(paths: list[Path]) -> dict:
+def merge(paths: list[Path], copies: int = 6) -> dict:
+    if copies < 5:
+        raise ValueError("exact sparse merge expects at least five copies")
     records = [(path, load_one(path)) for path in paths]
     candidate_ids = {record["id"] for _, record in records}
     if len(candidate_ids) != 1:
@@ -81,14 +83,17 @@ def merge(paths: list[Path]) -> dict:
         "classification": "unresolved",
         "periodic_z3": {
             "stopped_by": None,
-            "engine": "exact_sparse_bitset_gcts_with_complete_2_plus_3_mitm_fallback",
+            "engine": "exact_sparse_bitset_gcts_with_complete_mitm_fallback",
+            "mitm_partition": "2+3" if copies == 6 else (
+                "3+3" if copies == 7 else None
+            ),
             "hnf_visited": total,
             "solver_unknown": 0,
             **aggregate,
             "hnf_range": [0, total],
             "hnf_total": total,
             "hnf_range_exhausted": True,
-            "exhausted_by_copies": {"6": total},
+            "exhausted_by_copies": {str(copies): total},
             "range_receipts": receipts,
             "receipt_stream_sha256": hashlib.sha256(receipt_stream).hexdigest(),
             "milliseconds": milliseconds,
@@ -100,10 +105,11 @@ def merge(paths: list[Path]) -> dict:
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", required=True)
+    parser.add_argument("--copies", type=int, default=6)
     parser.add_argument("inputs", nargs="+")
     args = parser.parse_args()
     paths = [Path(path) for path in args.inputs]
-    report = merge(paths)
+    report = merge(paths, args.copies)
     Path(args.output).write_text(json.dumps(report, separators=(",", ":")) + "\n")
     print(json.dumps({
         "id": report["id"],

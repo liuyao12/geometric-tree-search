@@ -173,7 +173,9 @@ def popcount(value: int) -> int:
     return bin(value).count("1")
 
 
-def exact_weighted_multicover(placements: list[dict], copies: int) -> dict:
+def exact_weighted_multicover(
+    placements: list[dict], copies: int, dfs_node_limit: int | None = None
+) -> dict:
     """Solve one rooted quotient exactly with sparse bitset GCTS.
 
     A global translation and proper A2 rotation fix placement zero.  At every
@@ -234,7 +236,8 @@ def exact_weighted_multicover(placements: list[dict], copies: int) -> dict:
 
     nodes = 0
     failed = set()
-    dfs_node_limit = 50000 if copies == 6 else 0
+    if dfs_node_limit is None:
+        dfs_node_limit = 50000 if copies == 6 else (250000 if copies == 7 else 0)
     fallback = object()
 
     def search(state_capacities, selected_mask, remaining):
@@ -300,7 +303,7 @@ def exact_weighted_multicover(placements: list[dict], copies: int) -> dict:
     mitm_pairs = 0
     mitm_triples = 0
     used_mitm = chosen is fallback
-    if used_mitm:
+    if used_mitm and copies == 6:
         # Six copies leave five choices after fixing the root.  Exhaustively
         # split those choices 2+3.  Every five-element solution has such a
         # partition, so this is a complete fallback rather than a heuristic.
@@ -361,6 +364,57 @@ def exact_weighted_multicover(placements: list[dict], copies: int) -> dict:
                             for index in (*triple_indices, *disjoint_pair)
                         )
                         break
+                if chosen is not None:
+                    break
+            if chosen is not None:
+                break
+    elif used_mitm and copies == 7:
+        # Seven copies leave six choices after fixing the root.  Build every
+        # fitting triple and match it against an earlier complementary,
+        # disjoint triple.  Every six-element solution has a 3+3 partition,
+        # so exhausting this table is a complete decision procedure.
+        triple_sums = {}
+        chosen = None
+        for first in range(eligible_count):
+            first_vector = eligible_vectors[first]
+            for second in range(first + 1, eligible_count):
+                pair = tuple(
+                    left + right
+                    for left, right in zip(first_vector, eligible_vectors[second])
+                )
+                if any(
+                    weight > capacity
+                    for weight, capacity in zip(pair, capacities)
+                ):
+                    continue
+                for third in range(second + 1, eligible_count):
+                    triple = tuple(
+                        partial + weight
+                        for partial, weight in zip(pair, eligible_vectors[third])
+                    )
+                    if any(
+                        weight > capacity
+                        for weight, capacity in zip(triple, capacities)
+                    ):
+                        continue
+                    mitm_triples += 1
+                    target = tuple(
+                        capacity - weight
+                        for capacity, weight in zip(capacities, triple)
+                    )
+                    triple_indices = (first, second, third)
+                    disjoint_triple = next((
+                        candidate_triple
+                        for candidate_triple in triple_sums.get(target, ())
+                        if all(index not in triple_indices for index in candidate_triple)
+                    ), None)
+                    if disjoint_triple is not None:
+                        chosen = tuple(
+                            original_indices[index]
+                            for index in (*triple_indices, *disjoint_triple)
+                        )
+                        break
+                    triple_sums.setdefault(triple, []).append(triple_indices)
                 if chosen is not None:
                     break
             if chosen is not None:

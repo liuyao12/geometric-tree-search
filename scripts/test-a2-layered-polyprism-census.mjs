@@ -93,15 +93,21 @@ for (const candidate of A2_LAYERED_SIZE7_CANDIDATES) {
 assert.deepEqual(A2_LAYERED_SIZE8_CANDIDATES.map(candidate => candidate.id), [
   "a2lp_8_02131", "a2lp_8_02151", "a2lp_8_03411", "a2lp_8_04836"
 ]);
+const expectedFourCopyTypes = {
+  a2lp_8_02131: 62134,
+  a2lp_8_02151: 1105225,
+  a2lp_8_03411: 1105225,
+  a2lp_8_04836: 62134
+};
 for (const candidate of A2_LAYERED_SIZE8_CANDIDATES) {
   assert.equal(candidate.morphology.layer_essential, true);
   assert.ok(candidate.morphology.layer_count >= 3);
   assert.ok(candidate.morphology.distinct_cross_sections >= 3);
-  assert.equal(candidate.screening.periodic_exact_through, 6);
+  assert.equal(candidate.screening.periodic_exact_through, 7);
   assert.equal(candidate.screening.periodic_solver_unknowns, 0);
-  assert.equal(candidate.screening.periodic_hnf_bases_exhausted_by_copies[6], 2015);
-  assert.equal(candidate.screening.periodic_six_copy_complete, true);
-  assert.ok(candidate.screening.periodic_six_copy_exact_multicover_nodes > 0);
+  assert.equal(candidate.screening.periodic_hnf_bases_exhausted_by_copies[7], 1995);
+  assert.equal(candidate.screening.periodic_seven_copy_complete, true);
+  assert.ok(candidate.screening.periodic_seven_copy_exact_multicover_nodes > 0);
   assert.equal(candidate.screening.corona_completed_radius, 1);
   assert.equal(candidate.screening.corona_completed_verified, true);
   assert.ok(candidate.screening.corona_root_patch_copies >= 24);
@@ -115,6 +121,10 @@ for (const candidate of A2_LAYERED_SIZE8_CANDIDATES) {
     [2, 3]);
   assert.deepEqual(candidate.screening.three_copy_metatile_substitution_scales_exhausted,
     [2, 3]);
+  assert.deepEqual(candidate.screening.four_copy_metatile_substitution_scales_exhausted,
+    [2]);
+  assert.equal(candidate.screening.four_copy_metatile_types_exhausted_by_scale[2],
+    expectedFourCopyTypes[candidate.id]);
   const catalogue = preprocessTilingSystem({
     mode_key: candidate.registry_id,
     include_mirrors: false
