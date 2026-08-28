@@ -81,7 +81,7 @@ def test_ice_gallery_uses_molecular_and_center_free_polyhedral_views() -> None:
     assert "literal terminal · never promoted" in source
     assert "markingPrototypeTypes().forEach((_, cluster)" in source
     assert "sectionModel.sampleLabels" in source
-    assert 'const MARKING_LIBRARY_STORAGE = "gcts-marking-library-v3"' in source
+    assert 'const MARKING_LIBRARY_STORAGE = "gcts-marking-library-v5"' in source
     assert "marking.vocabularyKey === vocabularyKey" in source
     assert 'hierarchy: [1, 8, "pose domains"]' in source
     assert 'gate: "pass anchor · molecular growth open"' in source

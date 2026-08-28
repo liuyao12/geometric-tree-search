@@ -31,7 +31,7 @@ def main() -> None:
     require('<option value="material">material fingerprint</option>', HTML)
     require('repeat(7, minmax(28px, .62fr))', CSS)
     require('Build 285 · material-consequence decisiveness pathway', README)
-    require('application: { name: "Materials Growth Lab", buildId: "20260828-290" }')
+    require('application: { name: "Materials Growth Lab", buildId: "20260828-291" }')
     print("material-consequence decisiveness contract passed")
 
 

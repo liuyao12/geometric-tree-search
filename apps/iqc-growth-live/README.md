@@ -1,5 +1,23 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 291 · molecular set-cover integrity certificate
+
+The ice and molecular-solid clustering view now states the cover algebra it
+actually learned. One recurring H₂O topology class is distinguished from its
+many placements and measured conformers; the union of those molecular supports
+must equal the observed atom set with exactly one molecular owner per atom.
+Bridge polyhedra and void-boundary supports are then certified as overlap-only
+subsets: they encode attachment and interstitial geometry while adding zero
+previously uncovered atom sites. A live incidence histogram exposes the full
+support-membership multiplicity and the receipt stores the same target-free
+certificate.
+
+This removes an important ambiguity from the earlier ribbon: bridges and voids
+do not “repair” a deficient atomic cover. They furnish the geometry between
+already-complete molecular units. The certificate is interactive, controls the
+same 3D cover-family focus as the discovery ribbon, and explicitly declines to
+infer physical void volume, a potential, dynamics, or time.
+
 ## Build 290 · retained-leap settling robustness
 
 The selected material-response row now extends across the retained structural-

@@ -728,6 +728,7 @@ const molecularCoverRibbon = $("molecularCoverRibbon");
 const molecularCoverTitle = $("molecularCoverTitle");
 const molecularCoverState = $("molecularCoverState");
 const molecularCoverFlow = $("molecularCoverFlow");
+const molecularCoverProof = $("molecularCoverProof");
 const molecularCoverBoundary = $("molecularCoverBoundary");
 const atomLabel = $("atomLabel");
 const atomMetric = $("atomMetric");
@@ -7998,6 +7999,117 @@ function molecularCoverIcon(family) {
   </svg>`;
 }
 
+function molecularCoverIntegrityRecord() {
+  if (!learnedCover?.molecular) return null;
+  const atomCount = referenceCount();
+  const familyPlacements = (family) => learnedCover.placements
+    .filter((placement) => placement.family === family);
+  const supportUnion = (placements) => new Set(placements.flatMap((placement) => placement.support));
+  const molecules = familyPlacements("molecule");
+  const connections = familyPlacements("bridge");
+  const voids = familyPlacements("gap");
+  const moleculeAtoms = supportUnion(molecules);
+  const connectionAtoms = supportUnion(connections);
+  const voidBoundaryAtoms = supportUnion(voids);
+  const outsideMoleculeCover = (sites) => [...sites].filter((site) => !moleculeAtoms.has(site)).length;
+  const moleculeOwnership = Array.from({ length: atomCount }, (_, atomIndex) =>
+    molecules.filter((placement) => placement.support.includes(atomIndex)).length);
+  const allOwnership = Array.from({ length: atomCount }, (_, atomIndex) =>
+    learnedCover.incidence?.[atomIndex]?.length || 0).sort((first, second) => first - second);
+  const ownershipHistogram = new Map();
+  allOwnership.forEach((count) => ownershipHistogram.set(count, (ownershipHistogram.get(count) || 0) + 1));
+  const medianOwnership = allOwnership.length
+    ? allOwnership[Math.floor((allOwnership.length - 1) / 2)] : 0;
+  const residualAtomSites = Math.max(0, atomCount - moleculeAtoms.size);
+  const exactMolecularPartition = moleculeAtoms.size === atomCount
+    && moleculeOwnership.every((count) => count === 1);
+  const connectionNovelAtomSites = outsideMoleculeCover(connectionAtoms);
+  const voidNovelAtomSites = outsideMoleculeCover(voidBoundaryAtoms);
+  return {
+    schema: "gcts-molecular-cover-integrity-v1",
+    atomCount,
+    moleculeOccurrences: molecules.length,
+    moleculeAtomSites: moleculeAtoms.size,
+    exactMolecularPartition,
+    residualAtomSites,
+    connectionOccurrences: connections.length,
+    connectionNovelAtomSites,
+    connectionSupportsAreOverlapOnly: connectionNovelAtomSites === 0,
+    voidBoundaryOccurrences: voids.length,
+    voidNovelAtomSites,
+    voidSupportsAreBoundaryOnly: voidNovelAtomSites === 0,
+    allLayerMemberships: allOwnership.reduce((sum, count) => sum + count, 0),
+    ownershipRange: {
+      minimum: allOwnership[0] || 0,
+      median: medianOwnership,
+      maximum: allOwnership.at(-1) || 0,
+    },
+    ownershipHistogram: [...ownershipHistogram.entries()].map(([memberships, sites]) => ({ memberships, sites })),
+    completeCertificate: exactMolecularPartition && residualAtomSites === 0
+      && connectionNovelAtomSites === 0 && voidNovelAtomSites === 0,
+    referenceWindowOnly: true,
+    periodicReference: currentPbc().some(Boolean),
+    targetUsed: false,
+    potentialUsed: false,
+    emptyVolumeInferred: false,
+  };
+}
+
+function renderMolecularCoverProof() {
+  const proof = molecularCoverIntegrityRecord();
+  molecularCoverProof.replaceChildren();
+  if (!proof) return;
+  const molecular = learnedCover.molecular;
+  const moleculeLabel = molecular.water ? molecular.waterLabel || "H₂O" : "molecule";
+  const heading = document.createElement("header");
+  heading.innerHTML = `<span><small>frozen set-cover certificate</small><strong>Atom closure and interstitial geometry are audited separately</strong></span><b>${proof.completeCertificate ? "exact" : "open"}</b>`;
+  molecularCoverProof.append(heading);
+  const records = [
+    { focus: "molecule", eyebrow: "atom-set equality", title: `⋃ ${moleculeLabel} supports = Ωatoms`,
+      value: `${proof.moleculeAtomSites}/${proof.atomCount}`,
+      detail: `${proof.moleculeOccurrences} occurrences · ${molecular.moleculeClasses} isometry class${molecular.moleculeClasses === 1 ? "" : "es"} · ${proof.exactMolecularPartition ? "every atom has exactly one molecular owner" : `${proof.residualAtomSites} atoms remain outside the molecular partition`}`,
+      pass: proof.exactMolecularPartition },
+    { focus: "bridge", eyebrow: "overlap subset", title: "bridge supports ⊆ atom cover",
+      value: `+${proof.connectionNovelAtomSites} atom sites`,
+      detail: `${proof.connectionOccurrences} connection supports constrain attachment geometry; they do not repair the atom cover`,
+      pass: proof.connectionSupportsAreOverlapOnly },
+    { focus: "gap", eyebrow: "interstitial boundary", title: "void boundaries ⊆ atom cover",
+      value: `+${proof.voidNovelAtomSites} atom sites`,
+      detail: `${proof.voidBoundaryOccurrences} boundary supports surround empty regions; no physical void volume is inferred`,
+      pass: proof.voidSupportsAreBoundaryOnly },
+    { focus: "all", eyebrow: "overlap multiplicity", title: "support memberships / atom",
+      value: `${proof.ownershipRange.minimum} · ${proof.ownershipRange.median} · ${proof.ownershipRange.maximum}`,
+      detail: `min · median · max across ${proof.allLayerMemberships.toLocaleString()} incidences · residual atom terminals ${proof.residualAtomSites}`,
+      pass: proof.completeCertificate },
+  ];
+  records.forEach((record) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = `${record.pass ? "pass" : "open"}${molecularCoverFocus === record.focus ? " active" : ""}`;
+    button.dataset.molecularProofFocus = record.focus;
+    button.setAttribute("aria-pressed", String(molecularCoverFocus === record.focus));
+    button.setAttribute("aria-label", `${record.eyebrow}: ${record.title}; ${record.value}. Show this cover layer.`);
+    button.innerHTML = `<small>${record.eyebrow}</small><strong>${record.title}</strong><b>${record.value}</b><span>${record.detail}</span>`;
+    button.addEventListener("click", () => {
+      molecularCoverFocus = record.focus;
+      buildClusterOverlay();
+      renderMolecularCoverRibbon();
+    });
+    molecularCoverProof.append(button);
+  });
+  const histogram = document.createElement("div");
+  histogram.className = "molecular-cover-histogram";
+  histogram.setAttribute("aria-label", "Number of atoms by total cover-support membership count");
+  const maximumSites = Math.max(1, ...proof.ownershipHistogram.map((bin) => bin.sites));
+  proof.ownershipHistogram.forEach((bin) => {
+    const column = document.createElement("i");
+    column.style.setProperty("--membership-height", `${100 * bin.sites / maximumSites}%`);
+    column.innerHTML = `<span>${bin.sites}</span><em>${bin.memberships}×</em>`;
+    histogram.append(column);
+  });
+  molecularCoverProof.append(histogram);
+}
+
 function buildMolecularCoverLedger(types) {
   if (!learnedCover.molecular) return null;
   const molecular = learnedCover.molecular;
@@ -10917,7 +11029,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260828-290",
+      buildId: "20260828-291",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -11766,6 +11878,7 @@ async function buildExperimentReceipt() {
       residualTypes: learnedCover.residualTypes?.length || 0,
       molecularFamilies: learnedCover.molecular || null,
       molecularDiscovery: learnedCover.molecularDiscovery || null,
+      molecularCoverIntegrity: molecularCoverIntegrityRecord(),
       irregularMining: learnedCover.irregular || null,
       emptyRegionBoundaries: learnedCover.voidBoundary || null,
       heterogeneousGeometryAudit: receiptMicrostructureAudit(),
@@ -13215,7 +13328,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260828-290" },
+    application: { name: "Materials Growth Lab", buildId: "20260828-291" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -25230,16 +25343,16 @@ function renderMolecularCoverRibbon() {
     { kind: "connection", eyebrow: "between molecules", label: "connection clusters",
       value: connectionCount, total: molecular.connections,
       detail: `${molecular.connectionClasses} proper-SE(3) class${molecular.connectionClasses === 1 ? "" : "es"} retained` },
-    { kind: "void", eyebrow: "uncovered geometry", label: "gap / void clusters",
+    { kind: "void", eyebrow: "interstitial geometry", label: "gap / void clusters",
       value: voidCount, total: molecular.voids,
       detail: `${molecular.voidClasses} explicit boundary class${molecular.voidClasses === 1 ? "" : "es"} retained` },
     { kind: "coverage", focus: "all", eyebrow: "complete cover", label: "observed atomic sites",
       value: discovery.coveredAtoms.size, total: referenceCount(),
-      detail: `${discovery.settledPlacements}/${learnedCover.placements.length} accepted placements` },
+      detail: `${discovery.settledPlacements}/${learnedCover.placements.length} accepted placements · molecule-only atom closure` },
   ].map((record) => ({ ...record, focus: record.focus || record.kind.replace("connection", "bridge").replace("void", "gap") }));
   molecularCoverTitle.textContent = molecular.water
-    ? `${moleculeLabel} molecules first; bridges and O-ring voids complete the crystal cover`
-    : "Finite molecules first; connection and gap clusters complete the observed cover";
+    ? `${moleculeLabel} closes the atom set; bridges and O-ring boundaries encode the interstices`
+    : "Finite molecules close the atom set; connection and void boundaries encode the interstices";
   const focusedRecord = records.find((record) => record.focus === molecularCoverFocus);
   molecularCoverState.textContent = finished && learnedCover.complete
     ? `complete · ${referenceCount()}/${referenceCount()} sites`
@@ -25270,6 +25383,7 @@ function renderMolecularCoverRibbon() {
       arrow.setAttribute("aria-hidden", "true"); molecularCoverFlow.appendChild(arrow);
     }
   });
+  renderMolecularCoverProof();
   molecularCoverBoundary.textContent = molecular.water
     ? `The ${moleculeLabel} unit is discovered as a recurring finite bonded component, not supplied from the formula. Surviving molecular edges are bonds; bridge and void clusters are separate overlap supports. No radial atom-centred shell is substituted.`
     : "Finite-component bonds, intermolecular connection supports, and residual void boundaries are learned separately. No radial atom-centred shell is substituted for a molecule.";
