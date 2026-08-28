@@ -1,5 +1,23 @@
 # Recursive GCTS benchmark for material growth
 
+### Same-as-placed settling sensitivity (Build 287)
+
+An eligible executed leap now freezes four bounded projection arms—off,
+gentle, balanced, and strong—before the selected projection can mutate the
+configuration. The arms share the exact as-placed sites, the same fixed context
+neighborhood sized for the strongest declared cap, identical learned
+contact/angle envelopes, and identical hard exclusion and public-boundary tests.
+Only cap and iteration allowance differ. The receipt retains every arm, gate,
+strain reduction, displacement, and rollback reason, plus an exact selected-
+preview versus committed-result parity flag.
+
+The sensitivity ladder is counterfactual and downstream of the frozen GCTS
+antichain: it does not rerun candidate enumeration, ranking, batch scheduling,
+or continuation, and only the selected arm may commit. It therefore measures
+dependence on the bounded geometric accommodation allowance without calling the
+arms temperatures, time steps, force fields, energies, transition paths, or
+physical probabilities.
+
 ### Attachment / settling decomposition (Build 286)
 
 The executed structural-leap receipt now freezes a full coordinate-free

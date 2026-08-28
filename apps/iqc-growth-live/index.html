@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260828-286">
+  <link rel="stylesheet" href="./style.css?v=20260828-287">
   <script type="importmap">
     {
       "imports": {
@@ -1878,6 +1878,12 @@
               <button type="button" data-consequence-component="attachment" aria-pressed="false"><small>discrete GCTS move</small><strong>attachment</strong><span>before → as placed</span></button>
               <button type="button" data-consequence-component="settling" aria-pressed="false"><small>bounded correction</small><strong>settling</strong><span>as placed → retained</span></button>
             </div>
+            <section id="settlingSensitivityLab" class="settling-sensitivity-lab" hidden aria-label="Bounded settling sensitivity from the same as-placed state">
+              <header><span><small>same as-placed checkpoint</small><strong>Settling sensitivity ladder</strong></span><b id="settlingSensitivityState">awaiting eligible leap</b></header>
+              <div id="settlingSensitivityArms" class="settling-sensitivity-arms" role="group" aria-label="Inspect a bounded settling allowance"></div>
+              <article id="settlingSensitivityDetail" class="settling-sensitivity-detail" aria-live="polite"></article>
+              <p id="settlingSensitivityBoundary">Every arm starts from the same rigid GCTS attachment and fixed neighborhood. Counterfactual arms are never committed and do not rerun search.</p>
+            </section>
             <div id="leapConsequenceMatrix" class="leap-consequence-matrix" role="group" aria-label="Before and after material observables for the selected structural leap"></div>
             <article id="leapConsequenceDetail" class="leap-consequence-detail"></article>
             <p id="leapConsequenceBoundary">Each row compares two certified structural states. It is not elapsed time, a free-energy change, or a claim that either direction is favorable.</p>
@@ -2071,7 +2077,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260828-286"></script>
+  <script type="module" src="./app.js?v=20260828-287"></script>
   <script type="module" src="./evidence-atlas.js?v=20260827-24"></script>
 </body>
 </html>

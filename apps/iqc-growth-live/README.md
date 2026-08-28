@@ -1,5 +1,22 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 287 · same-state settling sensitivity
+
+Each eligible off-lattice leap now evaluates an uncommitted **off → gentle →
+balanced → strong** settling ladder from the exact same as-placed colored
+configuration. Every arm uses the same fixed local neighborhood; only the
+displacement cap and iteration allowance change. The interactive ladder reports
+contact-angle strain, maximum and RMS displacement, every hard-certificate
+result, and the precise rollback reason. The active setting is identified, and
+its committed result must reproduce its precommit preview exactly.
+
+The ladder does not rerun tree search, alter candidate geometry or ranking,
+commit counterfactual atoms, inspect a target, or infer a preferred physical
+model. It is a bounded robustness experiment over one deterministic geometric
+projection rule—not MD, a potential-energy scan, force integration, probability,
+kinetics, or time. Observed-displacement and residual-force seeded modes remain
+outside the unseeded cap ladder and are labeled as such.
+
 ## Build 286 · attachment versus bounded settling
 
 Every accepted off-lattice leap now retains an explicit **as-placed** material

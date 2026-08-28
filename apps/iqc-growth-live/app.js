@@ -29,9 +29,9 @@ import { buildExecutedGrowthRegime, growthRegimePlotRows,
   GROWTH_REGIME_RESPONSE_AXES, GROWTH_REGIME_STATE_AXES }
   from "./growth-regime-map.mjs?v=20260828-1";
 import { compareShadowMaterialFingerprints, SHADOW_MATERIAL_CONSEQUENCE_FIELDS }
-  from "./shadow-material-consequence.mjs?v=20260828-286";
+  from "./shadow-material-consequence.mjs?v=20260828-287";
 import { LEAP_CONSEQUENCE_COMPONENTS, resolveLeapConsequenceComparison }
-  from "./leap-consequence-decomposition.mjs?v=20260828-286";
+  from "./leap-consequence-decomposition.mjs?v=20260828-287";
 import { archiveResponseFrontierRankAudit }
   from "./archive-response-frontier-audit.js?v=20260827-1";
 import { evidenceOrderedClusterDiscoverySchedule }
@@ -779,6 +779,11 @@ const leapConsequenceLab = $("leapConsequenceLab");
 const leapConsequenceState = $("leapConsequenceState");
 const leapConsequenceFilters = $("leapConsequenceFilters");
 const leapConsequenceComponents = $("leapConsequenceComponents");
+const settlingSensitivityLab = $("settlingSensitivityLab");
+const settlingSensitivityState = $("settlingSensitivityState");
+const settlingSensitivityArms = $("settlingSensitivityArms");
+const settlingSensitivityDetail = $("settlingSensitivityDetail");
+const settlingSensitivityBoundary = $("settlingSensitivityBoundary");
 const leapConsequenceMatrix = $("leapConsequenceMatrix");
 const leapConsequenceDetail = $("leapConsequenceDetail");
 const leapConsequenceBoundary = $("leapConsequenceBoundary");
@@ -1605,6 +1610,7 @@ let selectedLeapIndex = -1;
 let selectedLeapConsequenceId = "coordination";
 let selectedLeapConsequenceFilter = "all";
 let selectedLeapConsequenceComponent = "total";
+let selectedSettlingSensitivityMode = "balanced";
 let selectedStoichiometrySpecies = null;
 let selectedPackingMetric = "median";
 let selectedRadialProfileChannel = "density";
@@ -10891,7 +10897,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260828-286",
+      buildId: "20260828-287",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -12508,6 +12514,7 @@ async function buildExperimentReceipt() {
         index: leap.index, status: leap.status, label: leap.label,
         before: leap.before, asPlaced: leap.asPlaced || null,
         proposal: leap.proposal, tests: leap.tests,
+        settlingSensitivity: leap.settlingSensitivity || null,
         relaxation: leap.relaxation || null, localSymmetryTransition: leap.localSymmetryTransition || null,
         centrosymmetryTransition: leap.centrosymmetryTransition || null,
         reciprocalSpaceTransition: leap.reciprocalSpaceTransition || null,
@@ -13119,6 +13126,7 @@ async function buildExperimentNotebookSnapshot() {
     index: leap.index, status: leap.status, label: leap.label,
     before: leap.before, asPlaced: leap.asPlaced || null,
     proposal: leap.proposal, tests: leap.tests,
+    settlingSensitivity: leap.settlingSensitivity || null,
     relaxation: leap.relaxation || null, localSymmetryTransition: leap.localSymmetryTransition || null,
     centrosymmetryTransition: leap.centrosymmetryTransition || null,
     reciprocalSpaceTransition: leap.reciprocalSpaceTransition || null,
@@ -13185,7 +13193,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260828-286" },
+    application: { name: "Materials Growth Lab", buildId: "20260828-287" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -19760,14 +19768,18 @@ function localConstraintState(localAtoms, movableAtoms, proposedById) {
   return { strain, overflows, angularViolations, affectedIndices };
 }
 
-function projectAcceptedBatchGeometry(freshAtomIds, authorized) {
-  const spec = structuralRelaxationSpec();
-  if (!authorized || !spec.displacementFraction || !freshAtomIds.length || !coloredDistanceEnvelopes) return null;
-  structuralRelaxationAttempts++;
+function evaluateAcceptedBatchProjection(freshAtomIds, mode) {
+  const spec = STRUCTURAL_RELAXATION_MODES[mode];
+  if (!spec?.displacementFraction || !freshAtomIds.length || !coloredDistanceEnvelopes) return null;
   const movableIdSet = new Set(freshAtomIds);
   const movableAtoms = atoms.filter((atom) => movableIdSet.has(atom.id));
   const cap = Math.min(referenceSpacing * spec.displacementFraction, MERGE_TOLERANCE * .45);
-  const reach = (coloredCoordinationEnvelopes?.maximumCutoff || 2 * referenceSpacing) + cap;
+  // Every sensitivity arm uses one neighborhood large enough for the strongest
+  // declared cap. This keeps changes attributable to the cap/iteration rule,
+  // not to a silently changing set of fixed context sites.
+  const contextCap = Math.min(referenceSpacing * STRUCTURAL_RELAXATION_MODES.strong.displacementFraction,
+    MERGE_TOLERANCE * .45);
+  const reach = (coloredCoordinationEnvelopes?.maximumCutoff || 2 * referenceSpacing) + contextCap;
   const localSet = new Set(movableAtoms);
   movableAtoms.forEach((atom) => nearbyAtoms(atom.p, reach).forEach((neighbor) => localSet.add(neighbor)));
   [...localSet].forEach((atom) => nearbyAtoms(atom.p, reach).forEach((neighbor) => localSet.add(neighbor)));
@@ -19811,10 +19823,11 @@ function projectAcceptedBatchGeometry(freshAtomIds, authorized) {
               : "monotone local constraint projection certified";
   const sceneToAngstrom = referenceSpacingA / Math.max(referenceSpacing, 1e-12);
   const audit = {
-    mode: structuralRelaxationMode, attempted: true, accepted: hardCompatible,
+    mode, attempted: true, accepted: hardCompatible,
     reason,
     movableSites: movableAtoms.length, neighborhoodSites: localAtoms.length,
     contactTerms: proposal.contactTerms || 0, iterations: proposal.iterations || 0,
+    maximumIterations: spec.iterations,
     strainBefore: before.strain.total, strainAfter: hardCompatible ? after.strain.total : before.strain.total,
     distanceStrainBefore: before.strain.distance, distanceStrainAfter: hardCompatible ? after.strain.distance : before.strain.distance,
     angleStrainBefore: before.strain.angle, angleStrainAfter: hardCompatible ? after.strain.angle : before.strain.angle,
@@ -19840,7 +19853,82 @@ function projectAcceptedBatchGeometry(freshAtomIds, authorized) {
     archivedResidualForceCopiedAsForceField: false,
     elapsedPhysicalTimeModeled: false,
   };
-  if (hardCompatible) {
+  return { audit, proposedById, movableAtoms };
+}
+
+function settlingSensitivityForAcceptedBatch(freshAtomIds, authorized) {
+  if (!authorized || !freshAtomIds.length || !coloredDistanceEnvelopes) return null;
+  const evaluated = ["gentle", "balanced", "strong"].map((mode) =>
+    evaluateAcceptedBatchProjection(freshAtomIds, mode)?.audit).filter(Boolean);
+  const baseline = evaluated[0];
+  if (!baseline) return null;
+  const sceneToAngstrom = referenceSpacingA / Math.max(referenceSpacing, 1e-12);
+  const off = {
+    mode: "off", attempted: false, accepted: false, reason: "exact as-placed coordinates retained",
+    movableSites: baseline.movableSites, neighborhoodSites: baseline.neighborhoodSites,
+    contactTerms: baseline.contactTerms, iterations: 0, maximumIterations: 0,
+    strainBefore: baseline.strainBefore, strainAfter: baseline.strainBefore,
+    strainReduction: 0, maximumDisplacementAngstrom: 0, rmsDisplacementAngstrom: 0,
+    displacementCapAngstrom: 0 * sceneToAngstrom,
+    contactAngleStrainDecreased: false,
+    hardExclusionPassed: true, coordinationCapacityPassed: true,
+    angularEnvelopePassed: true, publicBoundaryPassed: true,
+  };
+  const arms = [off, ...evaluated.map((audit) => ({
+    ...audit,
+    strainReduction: audit.accepted ? audit.strainBefore - audit.strainAfter : 0,
+  }))];
+  return {
+    schema: 1,
+    role: "same-as-placed bounded geometric-settling sensitivity",
+    selectedMode: structuralRelaxationMode,
+    modes: arms.map((arm) => arm.mode),
+    arms,
+    sameAsPlacedCheckpoint: true,
+    sameFixedNeighborhood: true,
+    candidateGeometryChanged: false,
+    searchRerun: false,
+    counterfactualsCommitted: false,
+    targetUsed: false,
+    physicalPotentialUsed: false,
+    forceIntegrated: false,
+    energyMinimized: false,
+    kineticsInferred: false,
+    physicalTimeModeled: false,
+  };
+}
+
+function finalizeSettlingSensitivity(sensitivity, relaxation) {
+  if (!sensitivity) return null;
+  const preview = sensitivity.arms.find((arm) => arm.mode === structuralRelaxationMode) || null;
+  const selectedModeInBaseLadder = Boolean(preview);
+  const selectedExecutionMatchesPreview = structuralRelaxationMode === "off"
+    ? relaxation === null
+    : preview && relaxation
+      ? preview.accepted === relaxation.accepted
+        && preview.reason === relaxation.reason
+        && Math.abs(preview.strainAfter - relaxation.strainAfter) <= 1e-10
+        && Math.abs(preview.maximumDisplacementAngstrom
+          - relaxation.maximumDisplacementAngstrom) <= 1e-10
+      : null;
+  return {
+    ...sensitivity,
+    selectedModeInBaseLadder,
+    selectedExecution: relaxation ? { ...relaxation } : structuralRelaxationMode === "off"
+      ? { mode: "off", attempted: false, accepted: false,
+        reason: "exact as-placed coordinates retained" } : null,
+    selectedExecutionMatchesPreview,
+  };
+}
+
+function projectAcceptedBatchGeometry(freshAtomIds, authorized) {
+  const spec = structuralRelaxationSpec();
+  if (!authorized || !spec.displacementFraction || !freshAtomIds.length || !coloredDistanceEnvelopes) return null;
+  structuralRelaxationAttempts++;
+  const result = evaluateAcceptedBatchProjection(freshAtomIds, structuralRelaxationMode);
+  if (!result) return null;
+  const { audit, proposedById, movableAtoms } = result;
+  if (audit.accepted) {
     movableAtoms.forEach((atom) => atom.p.copy(proposedById.get(atom.id)));
     rebuildSpatialIndex();
     structuralRelaxationAccepted++;
@@ -23883,6 +23971,7 @@ function resetCounters() {
   selectedLeapConsequenceId = "coordination";
   selectedLeapConsequenceFilter = "all";
   selectedLeapConsequenceComponent = "total";
+  selectedSettlingSensitivityMode = "balanced";
   selectedStoichiometrySpecies = null;
   selectedPackingMetric = "median";
   selectedRadialProfileChannel = "density";
@@ -24682,7 +24771,10 @@ async function performOffLatticeEvent() {
   // projection. This checkpoint lets the material audit distinguish the
   // discrete GCTS attachment from the geometric settling correction.
   const asPlaced = currentLeapOutcomeSnapshot(acceptedInBatch, rejectedInBatch);
+  const settlingSensitivityPreview = settlingSensitivityForAcceptedBatch(
+    freshAtomIdsInBatch, relaxationAuthorized);
   const relaxation = projectAcceptedBatchGeometry(freshAtomIdsInBatch, relaxationAuthorized);
+  const settlingSensitivity = finalizeSettlingSensitivity(settlingSensitivityPreview, relaxation);
   selectedKeys.forEach((key) => frontierCandidateKeys.delete(key));
   eventIndex += batch.length;
   captionAction.textContent = !reconstructionWasCertified && reconstructionCertified
@@ -24701,6 +24793,7 @@ async function performOffLatticeEvent() {
     tests: { summary: `${acceptedInBatch} passed · ${rejectedInBatch} pruned`,
       detail: "Species/hard-core, overlap, novelty, public boundary, coordination, angle, and active marking were evaluated before any commit." },
     asPlaced,
+    settlingSensitivity,
     relaxation,
     after: currentLeapOutcomeSnapshot(acceptedInBatch, rejectedInBatch),
     claimBoundary: relaxation?.accepted
@@ -27503,6 +27596,65 @@ function consequencePosition(record, value) {
   return 100 * Math.max(0, Math.min(1, value / (1.12 * maximum)));
 }
 
+function renderSettlingSensitivity(selected = null) {
+  const audit = selected?.settlingSensitivity;
+  settlingSensitivityLab.hidden = !audit;
+  if (!audit) {
+    settlingSensitivityArms.replaceChildren();
+    settlingSensitivityDetail.replaceChildren();
+    return;
+  }
+  const modes = audit.arms.map((arm) => arm.mode);
+  if (!modes.includes(selectedSettlingSensitivityMode)) {
+    selectedSettlingSensitivityMode = modes.includes(audit.selectedMode) ? audit.selectedMode : "off";
+  }
+  const maximumReduction = Math.max(1e-12,
+    ...audit.arms.map((arm) => Math.max(0, arm.strainReduction || 0)));
+  settlingSensitivityArms.replaceChildren(...audit.arms.map((arm) => {
+    const button = document.createElement("button"); button.type = "button";
+    const selectedArm = arm.mode === selectedSettlingSensitivityMode;
+    button.className = `${arm.mode}${arm.accepted ? " accepted" : arm.attempted ? " rejected" : " baseline"}`;
+    button.dataset.settlingSensitivityMode = arm.mode;
+    button.setAttribute("aria-pressed", String(selectedArm));
+    const label = document.createElement("small");
+    label.textContent = arm.mode === audit.selectedMode ? `${arm.mode} · executed setting` : arm.mode;
+    const value = document.createElement("strong");
+    value.textContent = arm.mode === "off" ? "exact coordinates"
+      : arm.accepted ? `−${arm.strainReduction.toFixed(3)} strain` : "rolled back";
+    const detail = document.createElement("span");
+    detail.textContent = arm.mode === "off" ? "0 Å · no projection"
+      : `${arm.displacementCapAngstrom.toFixed(3)} Å cap · ${arm.iterations}/${arm.maximumIterations} iter`;
+    const track = document.createElement("i");
+    const fill = document.createElement("b");
+    fill.style.width = `${100 * Math.max(0, arm.strainReduction || 0) / maximumReduction}%`;
+    track.append(fill); button.append(label, value, detail, track);
+    button.addEventListener("click", () => {
+      selectedSettlingSensitivityMode = arm.mode;
+      renderSettlingSensitivity(selected);
+    });
+    return button;
+  }));
+  const arm = audit.arms.find((entry) => entry.mode === selectedSettlingSensitivityMode) || audit.arms[0];
+  const certified = audit.arms.filter((entry) => entry.attempted && entry.accepted).length;
+  settlingSensitivityState.textContent = `${certified}/3 projected arms certified · selected ${audit.selectedMode}`;
+  settlingSensitivityDetail.replaceChildren();
+  const rows = [
+    ["outcome", arm.mode === "off" ? "unprojected baseline"
+      : arm.accepted ? "compatible monotone correction" : "fail-closed rollback"],
+    ["contact-angle strain", `${arm.strainBefore.toFixed(4)} → ${arm.strainAfter.toFixed(4)}`],
+    ["displacement", `${arm.maximumDisplacementAngstrom.toFixed(4)} Å max · ${arm.rmsDisplacementAngstrom.toFixed(4)} Å RMS`],
+    ["hard certificates", arm.mode === "off" ? "unchanged as-placed geometry"
+      : `exclusion ${arm.hardExclusionPassed ? "pass" : "fail"} · coordination ${arm.coordinationCapacityPassed ? "pass" : "fail"} · angle ${arm.angularEnvelopePassed ? "pass" : "fail"} · boundary ${arm.publicBoundaryPassed ? "pass" : "fail"}`],
+    ["decision", arm.reason],
+  ];
+  rows.forEach(([name, value]) => {
+    const row = document.createElement("div"); const key = document.createElement("b");
+    const text = document.createElement("span"); key.textContent = name; text.textContent = value;
+    row.append(key, text); settlingSensitivityDetail.append(row);
+  });
+  settlingSensitivityBoundary.textContent = `All four arms use the same as-placed colored sites and fixed local neighborhood. Only ${audit.selectedMode} could commit; the other arms did not alter atoms, candidates, ranking, frontier order, or the next search state. ${audit.selectedExecutionMatchesPreview === true ? "The executed setting exactly matches its frozen preview." : audit.selectedModeInBaseLadder ? "The executed setting did not reproduce its preview and must be treated as unresolved." : "The executed seeded mode is outside this unseeded cap ladder."} This is finite geometric sensitivity—not MD, energy, force integration, probability, kinetics, or time.`;
+}
+
 function renderLeapConsequence(selected = null) {
   if (!leapConsequenceLab) return;
   const current = selected ? null : {
@@ -27522,6 +27674,7 @@ function renderLeapConsequence(selected = null) {
   const before = comparison.before;
   const after = comparison.after;
   const records = materialConsequenceRecords(before, after);
+  renderSettlingSensitivity(selected);
   leapConsequenceComponents.querySelectorAll("button[data-consequence-component]").forEach((button) => {
     const mode = button.dataset.consequenceComponent;
     const available = mode === "total" || Boolean(selected?.asPlaced);
