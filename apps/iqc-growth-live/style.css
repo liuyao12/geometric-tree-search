@@ -1917,7 +1917,27 @@ body.study-guide-open { overflow: hidden; }
 }
 
 .marking-capacity-audit article strong { font: 700 .7rem/1.2 var(--mono); }
+.marking-capacity-allocation { display: grid; gap: .35rem; min-width: 0; max-height: 320px; margin-top: .5rem; padding-top: .48rem; border-top: 1px solid rgba(126,225,232,.12); overflow-y: auto; scrollbar-color: rgba(101,225,188,.32) transparent; }
+.marking-capacity-allocation-heading { display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: end; gap: .5rem; min-width: 0; padding: 0 .1rem .1rem; }
+.marking-capacity-allocation-heading > span { min-width: 0; }
+.marking-capacity-allocation-heading span,.marking-capacity-allocation-heading small,.marking-capacity-allocation-heading strong { display: block; }
+.marking-capacity-allocation-heading small { color: var(--muted); font: 600 .58rem/1.2 var(--mono); letter-spacing: .05em; text-transform: uppercase; }
+.marking-capacity-allocation-heading strong { margin-top: .12rem; overflow-wrap: anywhere; font-size: .7rem; font-weight: 600; }
+.marking-capacity-allocation-heading b { color: var(--mint); font: 600 .62rem/1.2 var(--mono); white-space: nowrap; }
+.marking-capacity-allocation > button { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .28rem; min-width: 0; padding: .46rem; border: 1px solid rgba(151,194,183,.14); border-radius: 9px; background: rgba(6,13,20,.48); color: var(--text); text-align: left; }
+.marking-capacity-allocation > button:hover,.marking-capacity-allocation > button:focus-visible { border-color: rgba(126,225,232,.56); outline: none; }
+.marking-capacity-allocation > button.shortfall { border-color: rgba(255,193,105,.42); background: rgba(70,45,16,.18); }
+.marking-capacity-allocation > button > span { display: grid; align-content: start; gap: .08rem; min-width: 0; padding: .3rem .34rem; border-radius: 7px; background: rgba(255,255,255,.018); }
+.marking-capacity-allocation > button > span:first-child { grid-column: 1 / -1; border-left: 2px solid var(--mint); background: linear-gradient(90deg,rgba(101,225,188,.06),transparent); }
+.marking-capacity-allocation small,.marking-capacity-allocation em { overflow: hidden; color: var(--muted); font: .56rem/1.28 var(--mono); font-style: normal; text-overflow: ellipsis; }
+.marking-capacity-allocation small { text-transform: uppercase; }
+.marking-capacity-allocation strong { overflow: hidden; font: 650 .67rem/1.25 var(--mono); text-overflow: ellipsis; }
 .marking-capacity-audit > p { margin: .5rem 0 0; line-height: 1.42; }
+
+@media (max-width: 760px) {
+  .marking-capacity-allocation > button { grid-template-columns: minmax(0,1fr); }
+  .marking-capacity-allocation > button > span:first-child { grid-column: 1; }
+}
 
 @media (min-width: 721px) {
   .void-steric-controls { grid-template-columns: repeat(3, minmax(0, 1fr)); }

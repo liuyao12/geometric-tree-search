@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260828-291">
+  <link rel="stylesheet" href="./style.css?v=20260828-292">
   <script type="importmap">
     {
       "imports": {
@@ -518,6 +518,7 @@
               <header><span><small>same clusters · same fit / holdout split</small><strong>Channel-capacity frontier</strong></span><b id="markingCapacityState">waiting for cluster geometry</b></header>
               <div id="markingCapacityFrontier" role="group" aria-label="Compare learned marking capacities"></div>
               <article id="markingCapacityDetail" aria-live="polite"></article>
+              <div id="markingCapacityAllocation" class="marking-capacity-allocation" role="group" aria-label="Per-cluster pose, port, rank, and channel allocation"></div>
               <p>Each point refits the same local sections with a genuinely different coefficient dimension. Click a point to restart the visible fit at that capacity. Validation mismatch selects no growth branch and is never a physical energy.</p>
             </section>
             <p class="rank-note"><b>Channels are not raw rotation bins.</b> Each cluster's observed rotations are quotiented through intrinsic right-handed frames and every tied proper-symmetry gauge; Auto then uses the rank of the pose × connection-port incidence, plus compatibility and failure fields. A manual choice is an ablation or capacity cap.</p>
@@ -2088,7 +2089,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260828-291"></script>
+  <script type="module" src="./app.js?v=20260828-292"></script>
   <script type="module" src="./evidence-atlas.js?v=20260827-24"></script>
 </body>
 </html>

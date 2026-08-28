@@ -368,6 +368,7 @@ const markingConfigNote = $("markingConfigNote");
 const markingCapacityState = $("markingCapacityState");
 const markingCapacityFrontier = $("markingCapacityFrontier");
 const markingCapacityDetail = $("markingCapacityDetail");
+const markingCapacityAllocation = $("markingCapacityAllocation");
 const markingLibrarySelect = $("markingLibrarySelect");
 const markingLibraryCount = $("markingLibraryCount");
 const markingSearchModeSelect = $("markingSearchModeSelect");
@@ -7266,6 +7267,47 @@ function markingChannelAllocationLabel(model = sectionModel) {
     .map(([channels, prototypes]) => `${channels}ch × ${prototypes} type${prototypes === 1 ? "" : "s"}`).join(" · ");
 }
 
+function markingChannelDemandRecords(model = sectionModel) {
+  if (!model?.activeChannelsByPrototype?.length) return [];
+  const prototypes = markingPrototypeTypes();
+  const gallery = clusterGalleryTypes();
+  return Array.from({ length: model.prototypeCount }, (_, prototypeIndex) => {
+    const prototype = prototypes[prototypeIndex];
+    const typeId = prototype?.type ?? prototypeIndex;
+    const family = prototype ? clusterGalleryFamily(prototype) : prototypeCoverFamily(typeId);
+    const classes = gallery.filter((cluster) => (cluster.familyType ?? cluster.type) === typeId);
+    const atlas = orientationAtlas.find((entry) => entry.cluster === prototypeIndex);
+    const portRoles = clusterPortRank(prototypeIndex);
+    const coupledRank = clusterPosePortRank(prototypeIndex);
+    const requiredChannels = recommendedChannelsForCluster(prototypeIndex);
+    const activeChannels = model.activeChannelsByPrototype[prototypeIndex] || 0;
+    const sampleIndices = model.sampleLabels.map((label, index) => label === prototypeIndex ? index : -1)
+      .filter((index) => index >= 0);
+    return {
+      prototypeIndex,
+      typeId,
+      family,
+      label: prototype?.label || prototype?.element || prototype?.species || `cluster C${prototypeIndex + 1}`,
+      isometryClasses: Math.max(1, classes.length),
+      occurrences: sampleIndices.length,
+      fitSamples: sampleIndices.filter((index) => index % 5 !== 0).length,
+      holdoutSamples: sampleIndices.filter((index) => index % 5 === 0).length,
+      poseCount: atlas?.orientations || 0,
+      poseSupport: atlas ? poseAtlasEntryStatus(atlas) : "unresolved support",
+      properSymmetryGaugeCount: atlas?.properSymmetryGaugeCount || 1,
+      portRoles,
+      coupledRank,
+      requiredChannels,
+      activeChannels,
+      allocatedChannels: model.channels,
+      shortfall: activeChannels < requiredChannels,
+      exactTypeIdentityUsedForDisplayOnly: true,
+      targetUsed: false,
+      physicalEnergy: false,
+    };
+  });
+}
+
 function centeredPeriodicSupport(source, support) {
   if (!support.length) return [];
   const anchor = source[support[0]];
@@ -11029,7 +11071,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260828-291",
+      buildId: "20260828-292",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -13328,7 +13370,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260828-291" },
+    application: { name: "Materials Growth Lab", buildId: "20260828-292" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -16075,6 +16117,7 @@ function markingCapacityFrontierRow(source, capacity, autoCapacity, baseConfig) 
     shortfallTypes,
     rankCoverage: (model.prototypeCount - shortfallTypes) / Math.max(1, model.prototypeCount),
     activeChannelsByPrototype: model.activeChannelsByPrototype.slice(),
+    prototypeDemand: markingChannelDemandRecords(model),
     fitSamples: model.fitCount,
     holdoutSamples: model.holdoutCount,
   };
@@ -16142,9 +16185,48 @@ function scheduleMarkingCapacityFrontier(source) {
   window.setTimeout(fitNext, 0);
 }
 
+function renderMarkingCapacityAllocation(row) {
+  markingCapacityAllocation.replaceChildren();
+  if (!row?.prototypeDemand?.length) return;
+  const heading = document.createElement("div");
+  heading.className = "marking-capacity-allocation-heading";
+  heading.innerHTML = `<span><small>per-cluster tensor allocation</small><strong>proper poses × port incidence → active channels</strong></span><b>${row.prototypeDemand.length} prototype${row.prototypeDemand.length === 1 ? "" : "s"}</b>`;
+  markingCapacityAllocation.append(heading);
+  row.prototypeDemand.forEach((record) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = record.shortfall ? "shortfall" : "complete";
+    button.dataset.markingCapacityPrototype = String(record.prototypeIndex);
+    button.dataset.clusterFamily = record.family;
+    button.setAttribute("aria-label", `${record.label}: ${record.poseCount} ${record.poseSupport} poses, ${record.portRoles} port roles, coupled rank ${record.coupledRank}, ${record.activeChannels} of ${record.requiredChannels} required channels active. Show this cluster cover family.`);
+    const identity = document.createElement("span");
+    identity.innerHTML = `<small>C${record.prototypeIndex + 1} · ${coverFamilyDisplayLabel(record.family)}</small><strong>${record.label}</strong><em>${record.isometryClasses} isometry class${record.isometryClasses === 1 ? "" : "es"} · ${record.occurrences} occurrence${record.occurrences === 1 ? "" : "s"}</em>`;
+    const pose = document.createElement("span");
+    const poseLabel = record.poseSupport === "finite required set" ? "required"
+      : record.poseSupport.includes("continuum") ? "equivariant sample" : "observed / unresolved";
+    pose.innerHTML = `<strong>${record.poseCount} ${poseLabel}</strong><em>${record.properSymmetryGaugeCount} proper gauge${record.properSymmetryGaugeCount === 1 ? "" : "s"}</em>`;
+    const ports = document.createElement("span");
+    ports.innerHTML = `<strong>${record.portRoles} role${record.portRoles === 1 ? "" : "s"}</strong><em>outgoing witnessed classes</em>`;
+    const rank = document.createElement("span");
+    rank.innerHTML = `<strong>${record.coupledRank} + 2 fields</strong><em>pose × port rank + compatibility / failure</em>`;
+    const allocation = document.createElement("span");
+    allocation.innerHTML = `<strong>${record.activeChannels}/${record.requiredChannels}ch ${record.shortfall ? "short" : "covered"}</strong><em>${record.fitSamples} fit · ${record.holdoutSamples} holdout · tensor ${record.allocatedChannels}ch</em>`;
+    button.append(identity, pose, ports, rank, allocation);
+    button.addEventListener("click", () => {
+      const filter = clusterGallery.querySelector(`[data-cluster-family-filter="${record.family}"]`);
+      filter?.click();
+      const galleryIndex = clusterGalleryTypes().findIndex((cluster) =>
+        (cluster.familyType ?? cluster.type) === record.typeId);
+      if (galleryIndex >= 0) updateClusterGalleryInspector(galleryIndex);
+    });
+    markingCapacityAllocation.append(button);
+  });
+}
+
 function renderMarkingCapacityFrontier() {
   markingCapacityFrontier.replaceChildren();
   markingCapacityDetail.replaceChildren();
+  markingCapacityAllocation.replaceChildren();
   const audit = markingCapacityFrontierAudit;
   if (!audit) {
     markingCapacityState.textContent = markingCapacityAuditProgress
@@ -16181,6 +16263,7 @@ function renderMarkingCapacityFrontier() {
     const strong = document.createElement("strong"); small.textContent = label; strong.textContent = value;
     cell.append(small, strong); markingCapacityDetail.append(cell);
   });
+  renderMarkingCapacityAllocation(selected);
 }
 
 function markingCapacityAuditRecord(audit = markingCapacityFrontierAudit) {
@@ -16209,6 +16292,7 @@ function markingCapacityAuditRecord(audit = markingCapacityFrontierAudit) {
       shortfallTypes: row.shortfallTypes,
       rankCoverage: receiptRound(row.rankCoverage),
       activeChannelsByPrototype: row.activeChannelsByPrototype.slice(),
+      prototypeDemand: row.prototypeDemand.map((record) => ({ ...record })),
       fitSamples: row.fitSamples,
       holdoutSamples: row.holdoutSamples,
       pareto: row.pareto,

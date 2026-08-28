@@ -1,5 +1,24 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 292 · pose–port channel allocation microscope
+
+Stage 3 now exposes the per-cluster calculation behind Auto channels. For each
+executable prototype, an interactive allocation card reports the number and
+status of proper-pose orbits, proper-symmetry gauges, witnessed outgoing port
+roles, the measured rank of their pose × port incidence, the two reserved
+compatibility/failure fields, and active versus required coefficient channels.
+Fit/holdout sample counts, occurrence counts, and the number of exact isometry
+classes sharing that executable prototype remain distinct.
+
+Selecting an allocation card focuses the corresponding molecular, connection,
+void, or irregular-support family in the independently rotating cluster
+gallery. Switching channel capacity recomputes the cards, so a manual
+undercapacity ablation is visible at the precise prototypes it truncates rather
+than only as an aggregate “shortfall types” count. The complete allocation for
+every capacity enters the experiment receipt. It is a representation-capacity
+audit on a deterministic fit/holdout split—not a physical energy, one channel
+per raw rotation, or a target-informed growth choice.
+
 ## Build 291 · molecular set-cover integrity certificate
 
 The ice and molecular-solid clustering view now states the cover algebra it
