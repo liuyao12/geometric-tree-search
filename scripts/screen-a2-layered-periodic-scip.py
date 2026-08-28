@@ -15,6 +15,7 @@ problems and need only one proof.
 from __future__ import annotations
 
 import argparse
+import gzip
 import hashlib
 import importlib.util
 import json
@@ -57,6 +58,31 @@ def discard_unverified_proof(path: Path) -> dict:
             discarded[f"discarded_{label}_bytes"] = artifact.stat().st_size
             artifact.unlink()
     return discarded
+
+
+def retained_artifact_receipt(mps: Path, proof: Path, completed_proof: Path) -> dict:
+    """Compress a verified proof deterministically and retain replayable paths."""
+    compressed = completed_proof.with_suffix(completed_proof.suffix + ".gz")
+    with completed_proof.open("rb") as source, compressed.open("wb") as raw_target:
+        with gzip.GzipFile(fileobj=raw_target, mode="wb", filename="", mtime=0) as target:
+            shutil.copyfileobj(source, target, length=1024 * 1024)
+
+    def display_path(path: Path) -> str:
+        resolved = path.resolve()
+        try:
+            return str(resolved.relative_to(ROOT.resolve()))
+        except ValueError:
+            return str(resolved)
+
+    receipt = {
+        "mps_path": display_path(mps),
+        "compressed_vipr_path": display_path(compressed),
+        "compressed_vipr_sha256": sha256(compressed),
+    }
+    proof.unlink(missing_ok=True)
+    proof.with_name(proof.name + "_ori").unlink(missing_ok=True)
+    completed_proof.unlink()
+    return receipt
 
 
 def executable_identity(path: Path) -> dict:
@@ -307,6 +333,10 @@ def solve_quotient(record, hnf_record, copies, tools, timeout_seconds, proof_dir
                 "verification_seconds": verification_seconds,
             },
         }
+        if proof_directory:
+            result["proof"].update(
+                retained_artifact_receipt(mps, proof, completed_proof)
+            )
     else:
         result = {"result": "unknown", "scip_seconds": scip_seconds}
     if result["result"] != "unsat":

@@ -72,6 +72,28 @@ with tempfile.TemporaryDirectory() as directory:
     assert not proof.exists()
     assert not original.exists()
 
+with tempfile.TemporaryDirectory() as directory:
+    directory = Path(directory)
+    mps = directory / "instance.mps"
+    proof = directory / "certificate.vipr"
+    original = directory / "certificate.vipr_ori"
+    completed = directory / "certificate_complete.vipr"
+    mps.write_bytes(b"mps")
+    proof.write_bytes(b"incomplete")
+    original.write_bytes(b"original")
+    completed.write_bytes(b"verified-proof")
+    retained = MODULE.retained_artifact_receipt(mps, proof, completed)
+    compressed = Path(retained["compressed_vipr_path"])
+    assert compressed.is_absolute()
+    with gzip.open(compressed, "rb") as stream:
+        assert stream.read() == b"verified-proof"
+    assert hashlib.sha256(compressed.read_bytes()).hexdigest() == retained[
+        "compressed_vipr_sha256"
+    ]
+    assert not proof.exists()
+    assert not original.exists()
+    assert not completed.exists()
+
 # The same proof backend also accepts the exact solid-angle occupancy receipts
 # used by the non-polycube affine-A3 alcove catalogue; it must not assume the
 # older triangular-prism ``cells`` representation.
@@ -123,6 +145,35 @@ with gzip.open(compressed_path, "rb") as stream:
         uncompressed_bytes += len(block)
 assert digest.hexdigest() == receipt["vipr_sha256"]
 assert uncompressed_bytes == receipt["vipr_bytes"]
+
+sliced_exact12 = json.loads((
+    ROOT / "data" /
+    "a2-sliced-alcove-size7-periodic-exact12-a2sa_7_00139-orbit0.ndjson"
+).read_text())
+sliced_screen = sliced_exact12["periodic_exact_scip"]
+assert sliced_exact12["id"] == "a2sa_7_00139"
+assert sliced_screen["copies"] == 12
+assert sliced_screen["determinant"] == 14
+assert sliced_screen["orbit_range"] == [0, 1]
+assert sliced_screen["hnf_covered"] == 6
+sliced_receipt = sliced_screen["proof_receipts"][0]
+assert sliced_receipt["verified"] is True
+assert sliced_receipt["derivations"] == 102361
+assert hashlib.sha256((ROOT / sliced_receipt["mps_path"]).read_bytes()).hexdigest() == (
+    sliced_receipt["mps_sha256"]
+)
+sliced_compressed = ROOT / sliced_receipt["compressed_vipr_path"]
+assert hashlib.sha256(sliced_compressed.read_bytes()).hexdigest() == (
+    sliced_receipt["compressed_vipr_sha256"]
+)
+sliced_digest = hashlib.sha256()
+sliced_bytes = 0
+with gzip.open(sliced_compressed, "rb") as stream:
+    for block in iter(lambda: stream.read(1024 * 1024), b""):
+        sliced_digest.update(block)
+        sliced_bytes += len(block)
+assert sliced_digest.hexdigest() == sliced_receipt["vipr_sha256"]
+assert sliced_bytes == sliced_receipt["vipr_bytes"]
 
 with tempfile.TemporaryDirectory() as checkpoint_directory:
     checkpoint = MODULE.orbit_checkpoint_report(
