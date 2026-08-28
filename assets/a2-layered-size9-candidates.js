@@ -129,10 +129,17 @@ export const A2_LAYERED_SIZE9_CANDIDATES = Object.freeze([
         "2": 104,
         "3": 104
       },
-      "three_copy_metatile_scale2_partial_parents": 500,
-      "three_copy_metatile_scale2_types": 11811,
+      "three_copy_metatile_substitution_scales_exhausted": [
+        2,
+        3
+      ],
+      "three_copy_metatile_types_exhausted_by_scale": {
+        "2": 11811,
+        "3": 11811
+      },
       "substitution_direct_report": "data/a2-layered-size9-directed-substitution-direct-s2to8.ndjson",
-      "substitution_two_copy_report": "data/a2-layered-size9-directed-substitution-two-copy-s2to3.ndjson"
+      "substitution_two_copy_report": "data/a2-layered-size9-directed-substitution-two-copy-s2to3.ndjson",
+      "substitution_three_copy_report_prefix": "data/a2-layered-size9-three-cluster-substitution-"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -268,10 +275,17 @@ export const A2_LAYERED_SIZE9_CANDIDATES = Object.freeze([
         "2": 107,
         "3": 107
       },
-      "three_copy_metatile_scale2_partial_parents": 0,
-      "three_copy_metatile_scale2_types": null,
+      "three_copy_metatile_substitution_scales_exhausted": [
+        2,
+        3
+      ],
+      "three_copy_metatile_types_exhausted_by_scale": {
+        "2": 12502,
+        "3": 12502
+      },
       "substitution_direct_report": "data/a2-layered-size9-directed-substitution-direct-s2to8.ndjson",
-      "substitution_two_copy_report": "data/a2-layered-size9-directed-substitution-two-copy-s2to3.ndjson"
+      "substitution_two_copy_report": "data/a2-layered-size9-directed-substitution-two-copy-s2to3.ndjson",
+      "substitution_three_copy_report_prefix": "data/a2-layered-size9-three-cluster-substitution-"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -407,10 +421,17 @@ export const A2_LAYERED_SIZE9_CANDIDATES = Object.freeze([
         "2": 111,
         "3": 111
       },
-      "three_copy_metatile_scale2_partial_parents": 0,
-      "three_copy_metatile_scale2_types": null,
+      "three_copy_metatile_substitution_scales_exhausted": [
+        2,
+        3
+      ],
+      "three_copy_metatile_types_exhausted_by_scale": {
+        "2": 14254,
+        "3": 14254
+      },
       "substitution_direct_report": "data/a2-layered-size9-directed-substitution-direct-s2to8.ndjson",
-      "substitution_two_copy_report": "data/a2-layered-size9-directed-substitution-two-copy-s2to3.ndjson"
+      "substitution_two_copy_report": "data/a2-layered-size9-directed-substitution-two-copy-s2to3.ndjson",
+      "substitution_three_copy_report_prefix": "data/a2-layered-size9-three-cluster-substitution-"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -546,10 +567,17 @@ export const A2_LAYERED_SIZE9_CANDIDATES = Object.freeze([
         "2": 120,
         "3": 120
       },
-      "three_copy_metatile_scale2_partial_parents": 0,
-      "three_copy_metatile_scale2_types": null,
+      "three_copy_metatile_substitution_scales_exhausted": [
+        2,
+        3
+      ],
+      "three_copy_metatile_types_exhausted_by_scale": {
+        "2": 16710,
+        "3": 16710
+      },
       "substitution_direct_report": "data/a2-layered-size9-directed-substitution-direct-s2to8.ndjson",
-      "substitution_two_copy_report": "data/a2-layered-size9-directed-substitution-two-copy-s2to3.ndjson"
+      "substitution_two_copy_report": "data/a2-layered-size9-directed-substitution-two-copy-s2to3.ndjson",
+      "substitution_three_copy_report_prefix": "data/a2-layered-size9-three-cluster-substitution-"
     },
     "shell_screening": {
       "robust_completed_shell": 0,

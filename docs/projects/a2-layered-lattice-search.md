@@ -493,11 +493,20 @@ copies; larger periods remain open.
 Direct cellular monotile substitutions are completely excluded for every one
 of the 49 planar/layer scale pairs from 2 through 8. Complete connected
 two-copy metatile alphabets are excluded at scalar scales 2 and 3 (104/107/
-111/120 symmetry-distinct parents per candidate at each scale). A scale-two
-three-copy probe on `a2lp_9_00000` replay-certifies the first 500 of 11,811
-parents and is explicitly incomplete. Radius-two CEGAR/GCTS retains 32, 15,
-6, and 32 sound obstruction clauses for the four candidates, respectively;
-none exhausts the finite outer first-corona space.
+111/120 symmetry-distinct parents per candidate at each scale). Complete
+connected three-copy alphabets are also excluded at scalar scales 2 and 3:
+11,811, 12,502, 14,254, and 16,710 parent types per candidate, or 110,554
+parent-scale checks in total. Of these, 110,549 have independently replayed
+atomic boundary obstructions; five scale-three parents for `a2lp_9_00000`
+survive the local preflights and have independently replayed exact UNSAT
+certificates. There are no rules and no unresolved parents. The atomic
+preflight also avoids constructing a full placement graph when a target cell
+is contained in no legal monotile copy; bounded runs remain explicitly
+inconclusive and resumable until the whole alphabet is exhausted.
+
+Radius-two CEGAR/GCTS retains 32, 15, 6, and 32 sound obstruction clauses for
+the four candidates, respectively; none exhausts the finite outer
+first-corona space.
 
 The census, complete two-copy screen, focused four-copy screen, and corona
 receipts are `data/a2-layered-size9-directed-census.ndjson`,

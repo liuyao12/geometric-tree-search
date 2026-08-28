@@ -173,6 +173,22 @@ def replay_local_obstruction(target, tile_orientations, target_cell, graph=None)
     }
 
 
+def first_atomically_uncovered(target, tile_orientations):
+    """Find a cell contained in no legal monotile placement.
+
+    This sufficient obstruction applies to every connected metatile alphabet.
+    It is independently replayed over all orientations and anchors, without a
+    placement graph or cached incidence data.
+    """
+    for cells_checked, target_cell in enumerate(sorted(target), 1):
+        replay = SUBSTITUTION.replay_local_obstruction(
+            target, tile_orientations, target_cell
+        )
+        if replay["verified"]:
+            return target_cell, replay, cells_checked
+    return None, None, len(target)
+
+
 def all_connected_triple_placements(graph):
     unions = {}
     cell_sets = graph["cell_sets"]
@@ -440,6 +456,7 @@ def replay_unsat_with_independent_algorithm_x(target, placements, timeout_ms):
 def screen_candidate(
     record, timeout_ms=30000, replay_timeout_ms=300000, progress_every=250,
     scale=2, seed_report=None, checkpoint_every=0, checkpoint_callback=None,
+    max_parents=0,
 ):
     started = time.monotonic()
     enumerated = enumerate_three_copy_metatiles(record)
@@ -494,9 +511,36 @@ def screen_candidate(
             },
         }
 
-    for parent_index in range(len(parent_results), len(metatiles)):
+    parent_stop = min(
+        len(metatiles), max_parents if max_parents > 0 else len(metatiles)
+    )
+    for parent_index in range(len(parent_results), parent_stop):
         parent = metatiles[parent_index]
         target = SUBSTITUTION.scaled_cells(parent["cells"], scale)
+        atomic_uncovered, atomic_replay, atomic_cells_checked = first_atomically_uncovered(
+            target, tile_orientations
+        )
+        if atomic_uncovered is not None:
+            parent_results.append({
+                "parent_index": parent_index,
+                "target_cells": len(target),
+                "monotile_placements": None,
+                "local_connected_triple_checks": 0,
+                "atomic_preflight_cells_checked": atomic_cells_checked,
+                "classification": "local_obstruction",
+                "local_obstruction_replay": atomic_replay,
+            })
+            if progress_every and (parent_index + 1) % progress_every == 0:
+                print(
+                    f"  {record['id']} parents {parent_index + 1}/{len(metatiles)}",
+                    flush=True,
+                )
+            if (
+                checkpoint_callback is not None and checkpoint_every > 0
+                and (parent_index + 1) % checkpoint_every == 0
+            ):
+                checkpoint_callback(build_report("partial", False, None))
+            continue
         graph = placement_graph(target, tile_orientations)
         uncovered, checks = first_uncovered_by_three_cluster(target, graph)
         common = {
@@ -675,7 +719,7 @@ def screen_candidate(
     if closed_alphabet is not None:
         classification = "three_copy_metatile_substitution_system"
         certified = True
-    elif not rules and not unknowns:
+    elif len(parent_results) == len(metatiles) and not rules and not unknowns:
         classification = f"no_three_copy_metatile_scalar{scale}_substitution"
         certified = True
     else:
@@ -694,6 +738,7 @@ def main():
     parser.add_argument("--progress-every", type=int, default=250)
     parser.add_argument("--scale", type=int, default=2)
     parser.add_argument("--checkpoint-every", type=int, default=50)
+    parser.add_argument("--max-parents", type=int, default=0)
     parser.add_argument("--resume", action="store_true")
     args = parser.parse_args()
     if args.scale < 2:
@@ -721,6 +766,7 @@ def main():
             screened = screen_candidate(
                 record, args.timeout_ms, args.replay_timeout_ms, args.progress_every,
                 args.scale, seed_report, args.checkpoint_every, write_checkpoint,
+                args.max_parents,
             )
             classification = screened["classification"]
             counts[classification] = counts.get(classification, 0) + 1
@@ -729,7 +775,11 @@ def main():
             types = screened["three_copy_metatile_screen"]["symmetry_distinct_metatiles"]
             print(f"{index}/{len(records)} {record['id']} {classification} ({types} types)", flush=True)
             if checkpoint.exists():
-                checkpoint.unlink()
+                completed = screened["three_copy_metatile_screen"]["parents_completed"]
+                if completed == types:
+                    checkpoint.unlink()
+                else:
+                    write_checkpoint(screened)
     print(json.dumps({"records": len(records), "counts": counts, "output": str(output)}, indent=2))
 
 

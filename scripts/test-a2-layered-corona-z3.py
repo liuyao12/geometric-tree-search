@@ -387,6 +387,12 @@ for scale in (2, 3):
     assert mixed["closed_alphabet"] == [0]
 
 for scale in (2, 3):
+    bounded_three = THREE_CLUSTER_SUBSTITUTION.screen_candidate(
+        cluster_unit, 10000, progress_every=0, scale=scale, max_parents=2
+    )
+    assert bounded_three["classification"] == "unresolved"
+    assert bounded_three["three_copy_metatile_screen"]["certified"] is False
+    assert bounded_three["three_copy_metatile_screen"]["parents_completed"] == 2
     three_cluster_unit = THREE_CLUSTER_SUBSTITUTION.screen_candidate(
         cluster_unit, 10000, progress_every=0, scale=scale
     )
@@ -425,6 +431,19 @@ for scale in (2, 3):
         assert resumed["three_copy_metatile_screen"]["parent_counts"] == (
             three_unit_screen["parent_counts"]
         )
+
+atomic_orientations = THREE_CLUSTER_SUBSTITUTION.SUBSTITUTION.oriented_cells([
+    {"q": 0, "r": 0, "k": 0, "kind": "u"},
+    {"q": 0, "r": 0, "k": 0, "kind": "d"},
+])
+atomic_cell, atomic_replay, atomic_checked = (
+    THREE_CLUSTER_SUBSTITUTION.first_atomically_uncovered(
+        frozenset({(0, 0, 0, "u")}), atomic_orientations
+    )
+)
+assert atomic_cell == (0, 0, 0, "u")
+assert atomic_replay["verified"] is True
+assert atomic_checked == 1
 
 # The face index is an optimization only: on a scale-three control its graph
 # must be exactly the graph obtained by checking every placement pair.

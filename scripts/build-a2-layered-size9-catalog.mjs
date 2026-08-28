@@ -21,9 +21,13 @@ const twoCopyRows = (await readFile(new URL(
 ), "utf8")).trim().split("\n").filter(Boolean).map(JSON.parse);
 const directById = Map.groupBy(directRows, record => record.id);
 const twoCopyById = Map.groupBy(twoCopyRows, record => record.id);
-const partialThree = JSON.parse((await readFile(new URL(
-  "data/a2-layered-size9-directed-three-copy-scalar2-a2lp_9_00000-partial500.ndjson", root
-), "utf8")).trim());
+const threeCopyRows = [];
+for (const record of periodicRows) for (const scale of [2, 3]) {
+  threeCopyRows.push(JSON.parse((await readFile(new URL(
+    `data/a2-layered-size9-three-cluster-substitution-scalar${scale}-${record.id}.ndjson`, root
+  ), "utf8")).trim()));
+}
+const threeCopyById = Map.groupBy(threeCopyRows, record => record.id);
 
 const candidates = periodicRows
   .filter(record => record.classification === "unresolved")
@@ -32,6 +36,7 @@ const candidates = periodicRows
     const corona2 = corona2ById.get(record.id)?.corona2_core_cegar;
     const direct = directById.get(record.id) ?? [];
     const twoCopy = twoCopyById.get(record.id) ?? [];
+    const threeCopy = threeCopyById.get(record.id) ?? [];
     if (!corona?.corona_z3?.replay?.verified) {
       throw new Error(`Missing verified root corona for ${record.id}`);
     }
@@ -86,12 +91,15 @@ const candidates = periodicRows
           item.two_copy_metatile_screen.scale,
           item.two_copy_metatile_screen.symmetry_distinct_metatiles
         ])),
-        three_copy_metatile_scale2_partial_parents: record.id === partialThree.id
-          ? partialThree.three_copy_metatile_screen.parents_completed : 0,
-        three_copy_metatile_scale2_types: record.id === partialThree.id
-          ? partialThree.three_copy_metatile_screen.symmetry_distinct_metatiles : null,
+        three_copy_metatile_substitution_scales_exhausted: threeCopy
+          .map(item => item.three_copy_metatile_screen.scale).sort((a, b) => a - b),
+        three_copy_metatile_types_exhausted_by_scale: Object.fromEntries(threeCopy.map(item => [
+          item.three_copy_metatile_screen.scale,
+          item.three_copy_metatile_screen.symmetry_distinct_metatiles
+        ])),
         substitution_direct_report: "data/a2-layered-size9-directed-substitution-direct-s2to8.ndjson",
-        substitution_two_copy_report: "data/a2-layered-size9-directed-substitution-two-copy-s2to3.ndjson"
+        substitution_two_copy_report: "data/a2-layered-size9-directed-substitution-two-copy-s2to3.ndjson",
+        substitution_three_copy_report_prefix: "data/a2-layered-size9-three-cluster-substitution-"
       },
       shell_screening: { robust_completed_shell: 0, deepest_completed_shell: 0 }
     };

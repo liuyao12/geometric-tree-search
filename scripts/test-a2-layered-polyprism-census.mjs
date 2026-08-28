@@ -177,6 +177,12 @@ for (const candidate of A2_LAYERED_SIZE8_CANDIDATES) {
 assert.deepEqual(A2_LAYERED_SIZE9_CANDIDATES.map(candidate => candidate.id), [
   "a2lp_9_00000", "a2lp_9_00002", "a2lp_9_00003", "a2lp_9_00010"
 ]);
+const expectedSizeNineThreeCopyTypes = {
+  a2lp_9_00000: 11811,
+  a2lp_9_00002: 12502,
+  a2lp_9_00003: 14254,
+  a2lp_9_00010: 16710
+};
 for (const candidate of A2_LAYERED_SIZE9_CANDIDATES) {
   assert.equal(candidate.morphology.layer_count, 5);
   assert.equal(candidate.morphology.distinct_cross_sections, 5);
@@ -188,6 +194,11 @@ for (const candidate of A2_LAYERED_SIZE9_CANDIDATES) {
   assert.equal(candidate.screening.corona_completed_verified, true);
   assert.equal(candidate.screening.direct_layer_scale_pairs_exhausted, 49);
   assert.deepEqual(candidate.screening.two_copy_metatile_substitution_scales_exhausted, [2, 3]);
+  assert.deepEqual(candidate.screening.three_copy_metatile_substitution_scales_exhausted, [2, 3]);
+  assert.equal(candidate.screening.three_copy_metatile_types_exhausted_by_scale[2],
+    expectedSizeNineThreeCopyTypes[candidate.id]);
+  assert.equal(candidate.screening.three_copy_metatile_types_exhausted_by_scale[3],
+    expectedSizeNineThreeCopyTypes[candidate.id]);
   assert.ok(candidate.screening.corona2_gcts_sound_clauses > 0);
 }
 const sizeNineExactTwo = (await readFile(new URL(
@@ -224,6 +235,32 @@ assert.equal(sizeNineTwoCopySubstitutions.length, 8);
 assert.ok(sizeNineTwoCopySubstitutions.every(record =>
   record.two_copy_metatile_screen.certified
   && record.two_copy_metatile_screen.unknown_metatile_indices.length === 0));
+let sizeNineThreeCopyParentScaleCases = 0;
+let sizeNineThreeCopyExactUnsat = 0;
+for (const candidate of A2_LAYERED_SIZE9_CANDIDATES) for (const scale of [2, 3]) {
+  const report = JSON.parse((await readFile(new URL(
+    `../data/a2-layered-size9-three-cluster-substitution-scalar${scale}-${candidate.id}.ndjson`,
+    import.meta.url
+  ), "utf8")).trim());
+  const screen = report.three_copy_metatile_screen;
+  assert.equal(report.classification, `no_three_copy_metatile_scalar${scale}_substitution`);
+  assert.equal(screen.certified, true);
+  assert.equal(screen.parents_completed, expectedSizeNineThreeCopyTypes[candidate.id]);
+  assert.equal(screen.parent_counts.unresolved, 0);
+  assert.equal(screen.parent_counts.mixed_metatile_rule, 0);
+  assert.ok(screen.parent_results.every(parent =>
+    parent.classification === "local_obstruction"
+      ? parent.local_obstruction_replay?.verified === true
+      : parent.classification === "exact_unsat"
+        && parent.primary_exact_result === "unsat"
+        && (parent.algorithm_x_replay?.verified === true
+          || parent.exact_unsat_replay?.verified === true)
+  ));
+  sizeNineThreeCopyParentScaleCases += screen.parents_completed;
+  sizeNineThreeCopyExactUnsat += screen.parent_counts.exact_unsat;
+}
+assert.equal(sizeNineThreeCopyParentScaleCases, 110554);
+assert.equal(sizeNineThreeCopyExactUnsat, 5);
 
 
 console.log("A2 layered-polyprism census regression passed", {
