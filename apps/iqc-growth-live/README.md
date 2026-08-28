@@ -1,5 +1,29 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 278 · hypothesis decisiveness matrix
+
+The leave-one-channel instruments are now joined into one exact matrix from
+geometric score field to emitted chemistry. Each active channel has six
+separately evaluated columns: differential score contribution, top-action
+leader, commuting-action order, permutation-invariant antichain membership,
+species-labelled emitted sites, and emitted species inventory. Clicking a row
+synchronizes the winner audit and the shadow structural-leap projection.
+
+The matrix does not assume that these columns form a causal chain. A channel
+can vary candidate scores without changing the leader, or reorder an antichain
+without changing its membership. The default NaCl leap makes that distinction
+concrete: three of four active channels have a nonconstant score field; none
+changes the leader, antichain, emitted sites, or chemistry; those same three
+change only the irrelevant ordering of commuting placements. The selected detail reports exact
+contribution range, omitted rank, action/site overlaps, chemistry L1 distance,
+frontier digest, and audit digest.
+
+The audit freezes baseline weights at frontier capture, joins records only by
+channel ID and frozen candidate-set digest, and exports no coordinates. It
+changes neither candidates nor hard gates, executes no omitted arm, and does
+not infer a causal hierarchy, energy decomposition, probability, kinetics,
+dynamics, or physical time.
+
 ## Build 277 · leave-one-channel-out shadow structural leaps
 
 The local omission workbench now follows a changed score order through the

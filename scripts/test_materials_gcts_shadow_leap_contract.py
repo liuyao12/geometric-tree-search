@@ -16,7 +16,9 @@ def require(text: str, source: str = APP) -> None:
 
 def main() -> None:
     require('function candidateFitsCommutingBatch(acceptedBatch, entry')
-    require('candidateFitsCommutingBatch(accepted, entry, { recordWork: false })')
+    require('candidateFitsCommutingBatch(accepted, entry, {')
+    require('pairCompatibilityCache: caches.pairCompatibilityCache')
+    require('batchFeasibilityCache: caches.batchFeasibilityCache')
     require('candidateFitsCommutingBatch(acceptedBatch, entry)')
     require('function buildFrozenShadowLeapAudit(entries, candidateSetDigest)')
     require('sameBatchFeasibilityRules: true')
@@ -35,7 +37,7 @@ def main() -> None:
     require('id="policyShadowLeapPlot"', HTML)
     require('id="policyShadowLeapDetail"', HTML)
     require('Build 277 · leave-one-channel-out shadow structural leaps', README)
-    require('application: { name: "Materials Growth Lab", buildId: "20260827-277" }')
+    require('application: { name: "Materials Growth Lab", buildId: "20260827-278" }')
     print("shadow structural-leap contract passed")
 
 

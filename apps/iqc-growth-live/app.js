@@ -533,6 +533,9 @@ const policyPoseAuditHint = $("policyPoseAuditHint");
 const policyOmissionState = $("policyOmissionState");
 const policyOmissionList = $("policyOmissionList");
 const policyOmissionDetail = $("policyOmissionDetail");
+const policyDecisivenessState = $("policyDecisivenessState");
+const policyDecisivenessMatrix = $("policyDecisivenessMatrix");
+const policyDecisivenessDetail = $("policyDecisivenessDetail");
 const policyShadowLeapState = $("policyShadowLeapState");
 const policyShadowLeapPlot = $("policyShadowLeapPlot");
 const policyShadowLeapDetail = $("policyShadowLeapDetail");
@@ -10853,7 +10856,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-277",
+      buildId: "20260827-278",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -12490,6 +12493,7 @@ async function buildExperimentReceipt() {
           distinctTopActions: snapshot.uniqueTopActions,
           everyScoreDecompositionExact: snapshot.everyScoreDecompositionExact,
           shadowStructuralLeap: receiptFrozenShadowLeapAudit(snapshot.shadowLeapAudit),
+          hypothesisDecisiveness: receiptPolicyDecisivenessAudit(snapshot.decisivenessAudit),
           markingFrontierCounterfactual: (() => {
             const audit = snapshot.markingFrontierCounterfactual;
             return audit ? {
@@ -13005,6 +13009,7 @@ function notebookPolicySnapshot(snapshot, includeIdentifiability = false) {
       candidateCount: markingAudit.candidates, activeMarkingId: markingAudit.activeMarkingId,
     } : null,
     shadowStructuralLeap: receiptFrozenShadowLeapAudit(snapshot.shadowLeapAudit),
+    hypothesisDecisiveness: receiptPolicyDecisivenessAudit(snapshot.decisivenessAudit),
     hypothesisIdentifiability,
   };
 }
@@ -13133,7 +13138,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-277" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-278" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -17985,11 +17990,15 @@ function candidatePoseDifference(first, second) {
     rotationDegrees: misorientation.angleDegrees };
 }
 
-function selectFrozenShadowLeapBatch(ranked) {
+function selectFrozenShadowLeapBatch(ranked, caches = {}) {
   if (growthScheduling !== "commuting" || overlapGrammar.molecular && !reconstructionCertified) return null;
   const accepted = [];
   ranked.forEach(({ entry }) => {
-    if (entry.evaluation.accepted && candidateFitsCommutingBatch(accepted, entry, { recordWork: false })) {
+    if (entry.evaluation.accepted && candidateFitsCommutingBatch(accepted, entry, {
+      recordWork: false,
+      pairCompatibilityCache: caches.pairCompatibilityCache,
+      batchFeasibilityCache: caches.batchFeasibilityCache,
+    })) {
       accepted.push(entry);
     }
   });
@@ -18064,10 +18073,11 @@ function buildFrozenShadowLeapAudit(entries, candidateSetDigest) {
     executed: false,
   };
   const admissible = entries.filter((entry) => entry.evaluation.accepted);
+  const caches = { pairCompatibilityCache: new Map(), batchFeasibilityCache: new Map() };
   const baselineRanked = admissible.map((entry) => ({ entry, score: entry.selectionScore }))
     .sort((first, second) => second.score - first.score
       || first.entry.candidate.key.localeCompare(second.entry.candidate.key));
-  const baselineEntries = selectFrozenShadowLeapBatch(baselineRanked);
+  const baselineEntries = selectFrozenShadowLeapBatch(baselineRanked, caches);
   const baseline = frozenShadowLeapRecord(baselineEntries || []);
   const termIds = [...new Set(admissible.flatMap((entry) => activeCandidateScoreTerms(entry, true)
     .filter((term) => !POLICY_OMISSION_EXCLUDED_TERMS.has(term.id) && Math.abs(term.weight) > 1e-12)
@@ -18079,7 +18089,7 @@ function buildFrozenShadowLeapAudit(entries, candidateSetDigest) {
       return { entry, score: entry.selectionScore - (omitted?.contribution || 0) };
     }).sort((first, second) => second.score - first.score
       || first.entry.candidate.key.localeCompare(second.entry.candidate.key));
-    const omitted = frozenShadowLeapRecord(selectFrozenShadowLeapBatch(ranked) || []);
+    const omitted = frozenShadowLeapRecord(selectFrozenShadowLeapBatch(ranked, caches) || []);
     const comparison = compareFrozenShadowLeaps(baseline, omitted);
     return {
       termId,
@@ -18209,6 +18219,8 @@ function buildPolicyOmissionAudit(snapshot) {
     }).sort((first, second) => second.score - first.score
       || first.candidate.candidateKey.localeCompare(second.candidate.candidateKey));
     const winner = ranked[0];
+    const baselineOmittedRank = ranked.findIndex((entry) =>
+      entry.candidate.candidateKey === baseline.candidate.candidateKey) + 1;
     const poseDifference = candidatePoseDifference(baseline.candidate, winner.candidate);
     const sharedFreshSites = coloredSiteIntersectionCount(baseline.candidate.freshSites, winner.candidate.freshSites);
     const freshSiteUnion = baseline.candidate.freshSites.length + winner.candidate.freshSites.length - sharedFreshSites;
@@ -18217,6 +18229,8 @@ function buildPolicyOmissionAudit(snapshot) {
       baselineCandidateKey: baseline.candidate.candidateKey,
       baselineCandidateDigest: baseline.candidate.candidateDigest,
       baselineAction: baseline.candidate.action,
+      baselineOmittedRank,
+      baselineRankDisplacement: Math.max(0, baselineOmittedRank - 1),
       winnerChanged: winner.candidate.candidateKey !== baseline.candidate.candidateKey,
       winnerCandidateKey: winner.candidate.candidateKey,
       winnerCandidateDigest: winner.candidate.candidateDigest,
@@ -18263,6 +18277,158 @@ function buildPolicyOmissionPreview(snapshot) {
     scoreDecompositionExact: true, preview: entry.preview,
     candidateSetDigest: audit.candidateSetDigest, candidateSetChanged: false,
     hardAdmissionChanged: false, executed: false };
+}
+
+function buildPolicyDecisivenessAudit(snapshot) {
+  if (!snapshot?.workbenchCandidates?.length) return null;
+  const rankedBaseline = snapshot.workbenchCandidates.map((candidate) => ({
+    candidate,
+    score: candidate.scoreTerms.reduce((sum, term) => sum + term.contribution, 0),
+  })).sort((first, second) => second.score - first.score
+    || first.candidate.candidateKey.localeCompare(second.candidate.candidateKey));
+  const baseline = rankedBaseline[0];
+  const activeTerms = baseline.candidate.scoreTerms.filter((term) =>
+    !POLICY_OMISSION_EXCLUDED_TERMS.has(term.id) && Math.abs(term.weight) > 1e-12);
+  const omissionCases = activeTerms.map((term) => {
+    const ranked = rankedBaseline.map((entry) => {
+      const contribution = entry.candidate.scoreTerms.find((candidateTerm) =>
+        candidateTerm.id === term.id)?.contribution || 0;
+      return { candidate: entry.candidate, score: entry.score - contribution };
+    }).sort((first, second) => second.score - first.score
+      || first.candidate.candidateKey.localeCompare(second.candidate.candidateKey));
+    const baselineOmittedRank = ranked.findIndex((entry) =>
+      entry.candidate.candidateKey === baseline.candidate.candidateKey) + 1;
+    return {
+      termId: term.id,
+      termLabel: term.label,
+      omittedWeight: term.weight,
+      winnerChanged: ranked[0].candidate.candidateKey !== baseline.candidate.candidateKey,
+      baselineOmittedRank,
+      baselineRankDisplacement: Math.max(0, baselineOmittedRank - 1),
+    };
+  });
+  const shadowAudit = snapshot.shadowLeapAudit;
+  const shadowByTerm = new Map((shadowAudit?.cases || []).map((entry) => [entry.termId, entry]));
+  const channels = omissionCases.map((entry) => {
+    const contributions = snapshot.workbenchCandidates.map((candidate) =>
+      candidate.scoreTerms.find((term) => term.id === entry.termId)?.contribution || 0);
+    const minimumContribution = Math.min(...contributions);
+    const maximumContribution = Math.max(...contributions);
+    const contributionRange = maximumContribution - minimumContribution;
+    const shadow = shadowByTerm.get(entry.termId) || null;
+    const atomsChanged = Boolean(shadow && shadow.emittedSiteJaccard < 1 - 1e-12);
+    const chemistryChanged = Boolean(shadow?.chemistryL1 > 0);
+    const stages = [
+      { id: "score", changed: contributionRange > 1e-12 },
+      { id: "leader", changed: entry.winnerChanged },
+      { id: "order", changed: Boolean(shadow?.orderChanged) },
+      { id: "antichain", changed: Boolean(shadow?.structuralLeapChanged) },
+      { id: "atoms", changed: atomsChanged },
+      { id: "chemistry", changed: chemistryChanged },
+    ];
+    const furthest = [...stages].reverse().find((stage) => stage.changed)?.id || "none";
+    return {
+      termId: entry.termId,
+      termLabel: entry.termLabel,
+      omittedWeight: entry.omittedWeight,
+      minimumContribution,
+      maximumContribution,
+      contributionRange,
+      differentialScoreField: contributionRange > 1e-12,
+      baselineOmittedRank: entry.baselineOmittedRank,
+      baselineRankDisplacement: entry.baselineRankDisplacement,
+      leaderChanged: entry.winnerChanged,
+      orderChanged: Boolean(shadow?.orderChanged),
+      antichainChanged: Boolean(shadow?.structuralLeapChanged),
+      actionJaccard: shadow?.actionJaccard ?? null,
+      atomsChanged,
+      emittedSiteJaccard: shadow?.emittedSiteJaccard ?? null,
+      chemistryChanged,
+      chemistryL1: shadow?.chemistryL1 ?? null,
+      shadowAvailable: Boolean(shadow),
+      furthestEffect: furthest,
+      stages,
+    };
+  }).sort((first, second) => {
+    const depth = { none: 0, score: 1, leader: 2, order: 3, antichain: 4, atoms: 5, chemistry: 6 };
+    return depth[second.furthestEffect] - depth[first.furthestEffect]
+      || second.contributionRange - first.contributionRange
+      || first.termId.localeCompare(second.termId);
+  });
+  const audit = {
+    schema: 1,
+    channels,
+    activeChannels: channels.length,
+    differentialScoreChannels: channels.filter((entry) => entry.differentialScoreField).length,
+    leaderChangingChannels: channels.filter((entry) => entry.leaderChanged).length,
+    orderChangingChannels: channels.filter((entry) => entry.orderChanged).length,
+    antichainChangingChannels: channels.filter((entry) => entry.antichainChanged).length,
+    atomChangingChannels: channels.filter((entry) => entry.atomsChanged).length,
+    chemistryChangingChannels: channels.filter((entry) => entry.chemistryChanged).length,
+    candidateSetDigest: snapshot.candidateDigest,
+    shadowLeapDigest: shadowAudit?.digest || null,
+    baselineWeightsFrozenAtFrontierCapture: true,
+    candidateSetChanged: false,
+    hardAdmissionChanged: false,
+    coordinatesEmbedded: false,
+    targetUsed: snapshot.rankingTargetUsed,
+    executed: false,
+    causalHierarchyInferred: false,
+    claimBoundary: "independent exact checks of differential score, leader, commuting order, antichain membership, emitted colored sites, and emitted chemistry on one frozen frontier; columns are not assumed to form a causal chain",
+  };
+  audit.digest = notebookStringHash(JSON.stringify({ channels: channels.map((entry) => ({
+    termId: entry.termId, contributionRange: entry.contributionRange,
+    baselineOmittedRank: entry.baselineOmittedRank, stages: entry.stages,
+    actionJaccard: entry.actionJaccard, emittedSiteJaccard: entry.emittedSiteJaccard,
+    chemistryL1: entry.chemistryL1 })), candidateSetDigest: audit.candidateSetDigest,
+  shadowLeapDigest: audit.shadowLeapDigest, targetUsed: audit.targetUsed }));
+  return audit;
+}
+
+function receiptPolicyDecisivenessAudit(audit) {
+  if (!audit) return null;
+  return {
+    schema: audit.schema,
+    channels: audit.channels.map((entry) => ({
+      termId: entry.termId, termLabel: entry.termLabel,
+      omittedWeight: receiptRound(entry.omittedWeight),
+      minimumContribution: receiptRound(entry.minimumContribution),
+      maximumContribution: receiptRound(entry.maximumContribution),
+      contributionRange: receiptRound(entry.contributionRange),
+      differentialScoreField: entry.differentialScoreField,
+      baselineOmittedRank: entry.baselineOmittedRank,
+      baselineRankDisplacement: entry.baselineRankDisplacement,
+      leaderChanged: entry.leaderChanged,
+      orderChanged: entry.orderChanged,
+      antichainChanged: entry.antichainChanged,
+      actionJaccard: entry.actionJaccard === null ? null : receiptRound(entry.actionJaccard),
+      atomsChanged: entry.atomsChanged,
+      emittedSiteJaccard: entry.emittedSiteJaccard === null ? null : receiptRound(entry.emittedSiteJaccard),
+      chemistryChanged: entry.chemistryChanged,
+      chemistryL1: entry.chemistryL1,
+      shadowAvailable: entry.shadowAvailable,
+      furthestEffect: entry.furthestEffect,
+      stages: entry.stages.map((stage) => ({ ...stage })),
+    })),
+    activeChannels: audit.activeChannels,
+    differentialScoreChannels: audit.differentialScoreChannels,
+    leaderChangingChannels: audit.leaderChangingChannels,
+    orderChangingChannels: audit.orderChangingChannels,
+    antichainChangingChannels: audit.antichainChangingChannels,
+    atomChangingChannels: audit.atomChangingChannels,
+    chemistryChangingChannels: audit.chemistryChangingChannels,
+    candidateSetDigest: audit.candidateSetDigest,
+    shadowLeapDigest: audit.shadowLeapDigest,
+    baselineWeightsFrozenAtFrontierCapture: audit.baselineWeightsFrozenAtFrontierCapture,
+    candidateSetChanged: audit.candidateSetChanged,
+    hardAdmissionChanged: audit.hardAdmissionChanged,
+    coordinatesEmbedded: audit.coordinatesEmbedded,
+    targetUsed: audit.targetUsed,
+    executed: audit.executed,
+    causalHierarchyInferred: audit.causalHierarchyInferred,
+    digest: audit.digest,
+    claimBoundary: audit.claimBoundary,
+  };
 }
 
 function buildPolicySpatialField(snapshot) {
@@ -18880,6 +19046,7 @@ function capturePolicyComparison(entries) {
     shadowLeapAudit: buildFrozenShadowLeapAudit(entries, candidateDigest),
     policies,
   };
+  lastPolicyComparison.decisivenessAudit = buildPolicyDecisivenessAudit(lastPolicyComparison);
   policyComparisonHistory.push(lastPolicyComparison);
   if (policyComparisonHistory.length > 48) policyComparisonHistory.shift();
   selectedPolicySnapshotIndex = policyComparisonHistory.length - 1;
@@ -19980,15 +20147,34 @@ function rejectionIsOrderInvariant(candidate, evaluation) {
     || evaluation.fresh.length === 0 || !evaluation.feedstockSupply?.admitted || markingRejected;
 }
 
-function candidateFitsCommutingBatch(acceptedBatch, entry, { recordWork = true } = {}) {
-  if (!acceptedBatch.every((other) => sitesCanCommute(entry.sites, other.sites))) return false;
+function candidateFitsCommutingBatch(acceptedBatch, entry, {
+  recordWork = true,
+  pairCompatibilityCache = null,
+  batchFeasibilityCache = null,
+} = {}) {
+  const pairwiseCompatible = acceptedBatch.every((other) => {
+    const key = pairCompatibilityCache ? [entry.candidate.key, other.candidate.key].sort().join("|") : null;
+    if (key && pairCompatibilityCache.has(key)) return pairCompatibilityCache.get(key);
+    const compatible = sitesCanCommute(entry.sites, other.sites);
+    if (key) pairCompatibilityCache.set(key, compatible);
+    return compatible;
+  });
+  if (!pairwiseCompatible) return false;
   const trial = [...acceptedBatch, entry];
+  const trialKey = batchFeasibilityCache
+    ? trial.map((trialEntry) => trialEntry.candidate.key).sort().join("|") : null;
+  if (trialKey && batchFeasibilityCache.has(trialKey)) return batchFeasibilityCache.get(trialKey);
   const trialFresh = uniqueFreshSites(trial.flatMap((trialEntry) => trialEntry.evaluation.fresh));
-  if (!feedstockSupplyForFreshSites(trialFresh).admitted) return false;
+  if (!feedstockSupplyForFreshSites(trialFresh).admitted) {
+    if (trialKey) batchFeasibilityCache.set(trialKey, false);
+    return false;
+  }
   const trialProjection = constraintProjectionForFreshSites(trialFresh, { recordWork });
-  if (coordinationOverflowsForFreshSites(trialFresh, trialProjection).length
-    || angularViolationsForFreshSites(trialFresh, trialProjection).length) return false;
-  return batchRetainsNovelSites(trial);
+  const feasible = !coordinationOverflowsForFreshSites(trialFresh, trialProjection).length
+    && !angularViolationsForFreshSites(trialFresh, trialProjection).length
+    && batchRetainsNovelSites(trial);
+  if (trialKey) batchFeasibilityCache.set(trialKey, feasible);
+  return feasible;
 }
 
 function renderGrowthFrontierWork() {
@@ -28903,6 +29089,7 @@ function renderPolicyOmissionAudit(snapshot) {
   const audit = buildPolicyOmissionAudit(snapshot);
   if (!audit) {
     policyOmissionState.textContent = "awaiting a frozen frontier";
+    renderPolicyDecisivenessMatrix(snapshot);
     renderPolicyShadowLeap(snapshot);
     return;
   }
@@ -28941,7 +29128,62 @@ function renderPolicyOmissionAudit(snapshot) {
     margin.textContent = `omitted contribution ${selected.baselineContribution >= 0 ? "+" : ""}${selected.baselineContribution.toFixed(3)} · new runner-up margin ${selected.runnerUpMargin.toFixed(3)}`;
     policyOmissionDetail.append(heading, status, action, geometry, margin);
   }
+  renderPolicyDecisivenessMatrix(snapshot, selected?.termId || null);
   renderPolicyShadowLeap(snapshot, selected?.termId || null);
+}
+
+function renderPolicyDecisivenessMatrix(snapshot, requestedTermId = null) {
+  policyDecisivenessMatrix.replaceChildren();
+  policyDecisivenessDetail.replaceChildren();
+  const audit = snapshot?.decisivenessAudit;
+  if (!audit?.channels.length) {
+    policyDecisivenessState.textContent = "no active differential channels";
+    return;
+  }
+  const selected = audit.channels.find((entry) => entry.termId === requestedTermId)
+    || audit.channels[0];
+  policyDecisivenessState.textContent = `${audit.activeChannels} active · ${audit.orderChangingChannels} order`
+    + ` · ${audit.antichainChangingChannels} set · ${audit.atomChangingChannels} atoms`
+    + `${audit.targetUsed ? " · reference-guided" : " · target-free"}`;
+  const cell = (value, changed, className = "") => ({ value, changed, className });
+  audit.channels.forEach((entry) => {
+    const row = document.createElement("button"); row.type = "button";
+    row.classList.toggle("active", entry.termId === selected.termId);
+    row.setAttribute("aria-pressed", String(entry.termId === selected.termId));
+    row.setAttribute("aria-label", `${entry.termLabel}: score range ${entry.contributionRange.toFixed(3)}; baseline leader rank ${entry.baselineOmittedRank}; ${entry.orderChanged ? "batch order changes" : "batch order stable"}; ${entry.antichainChanged ? "antichain changes" : "antichain stable"}; ${entry.atomsChanged ? "emitted atoms change" : "emitted atoms stable"}; chemistry L1 ${entry.chemistryL1 ?? "unavailable"}`);
+    const label = document.createElement("strong"); label.textContent = entry.termLabel;
+    const values = [
+      cell(entry.contributionRange.toFixed(3), entry.differentialScoreField),
+      cell(entry.leaderChanged ? `#${entry.baselineOmittedRank}` : "same", entry.leaderChanged),
+      cell(entry.shadowAvailable ? entry.orderChanged ? "shift" : "same" : "—", entry.orderChanged,
+        entry.shadowAvailable ? "order-only" : "unavailable"),
+      cell(entry.shadowAvailable ? `${Math.round(100 * entry.actionJaccard)}%` : "—", entry.antichainChanged,
+        entry.shadowAvailable ? "" : "unavailable"),
+      cell(entry.shadowAvailable ? `${Math.round(100 * entry.emittedSiteJaccard)}%` : "—", entry.atomsChanged,
+        entry.shadowAvailable ? "" : "unavailable"),
+      cell(entry.shadowAvailable ? `Δ${entry.chemistryL1}` : "—", entry.chemistryChanged,
+        entry.shadowAvailable ? "" : "unavailable"),
+    ];
+    const nodes = values.map((entryCell) => {
+      const node = document.createElement("span"); node.textContent = entryCell.value;
+      node.className = `${entryCell.changed ? "changed" : "stable"} ${entryCell.className}`.trim();
+      return node;
+    });
+    row.append(label, ...nodes);
+    row.addEventListener("click", () => previewPolicyOmission(snapshot, entry.termId));
+    policyDecisivenessMatrix.append(row);
+  });
+  const heading = document.createElement("strong"); heading.textContent = selected.termLabel;
+  const status = document.createElement("b");
+  const labels = { none: "NO DIFFERENTIAL EFFECT", score: "SCORE FIELD ONLY", leader: "LEADER CHANGED",
+    order: "ORDER ONLY", antichain: "ANTICHAIN CHANGED", atoms: "EMITTED GEOMETRY CHANGED",
+    chemistry: "EMITTED CHEMISTRY CHANGED" };
+  status.textContent = labels[selected.furthestEffect] || selected.furthestEffect.toUpperCase();
+  const evidence = document.createElement("p");
+  evidence.textContent = `contribution range ${selected.contributionRange.toFixed(4)} · active leader rank 1 → ${selected.baselineOmittedRank} without channel · antichain overlap ${selected.actionJaccard === null ? "unavailable" : `${(100 * selected.actionJaccard).toFixed(1)}%`} · emitted-site overlap ${selected.emittedSiteJaccard === null ? "unavailable" : `${(100 * selected.emittedSiteJaccard).toFixed(1)}%`} · chemistry Δ₁ ${selected.chemistryL1 ?? "unavailable"}`;
+  const boundary = document.createElement("p");
+  boundary.textContent = `Each column is an independent exact comparison on frontier ${audit.candidateSetDigest}; columns are not assumed to be a causal chain. No omitted arm executes. ${audit.digest}.`;
+  policyDecisivenessDetail.append(heading, status, evidence, boundary);
 }
 
 function renderPolicyShadowLeap(snapshot, requestedTermId = null) {

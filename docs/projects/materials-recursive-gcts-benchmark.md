@@ -1,5 +1,32 @@
 # Recursive GCTS benchmark for material growth
 
+### Physics-hypothesis decisiveness matrix (Build 278)
+
+The portal now aligns the score-ledger, leave-one-channel winner audit, and
+shadow-antichain audit by channel ID on one frozen candidate-set digest. Six
+columns remain logically independent: nonconstant candidate contribution,
+baseline-leader displacement under omission, commuting order change, sorted
+antichain-set change, species-labelled emitted-site change, and emitted
+species-count change. No later column is inferred from an earlier one.
+
+For each active channel the receipt stores the minimum, maximum, and range of
+its signed contribution; the baseline winner's omitted rank; action and site
+Jaccard overlaps; chemistry L1 distance; the six Boolean outcomes; and a
+coordinate-free audit digest. The interactive matrix uses mint cells for a
+materially changed comparison and amber specifically for order-only changes.
+Selecting a row synchronizes its ordinary omission winner and full shadow-leap
+overlay.
+
+The default NaCl frontier has four active geometry channels. Three vary over
+the candidate set, none displaces the leader, those three reorder the commuting
+placements, and zero changes the sorted 146-action antichain, its 203 emitted
+sites, or the `Cl105 + Na98` emitted inventory. This is an explicit null result:
+the active geometry weights are locally rank-sensitive but structurally
+non-decisive at this leap. Baseline weights are frozen at capture, candidates
+and hard gates remain unchanged, and no omitted arm executes. The matrix is not
+a causal hierarchy, energy decomposition, probability, kinetics, dynamics, or
+physical time.
+
 ### Whole-batch leave-one-channel-out shadow leap (Build 277)
 
 Action rank sensitivity is now propagated through one complete structural

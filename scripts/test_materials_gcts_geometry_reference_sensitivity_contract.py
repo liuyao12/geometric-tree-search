@@ -39,8 +39,8 @@ def test_receipt_and_ledger_expose_reference_sensitivity_without_upgrading_claim
 
 
 def test_build_171_is_versioned_and_documented():
-    assert 'buildId: "20260827-277"' in APP
-    assert 'app.js?v=20260827-277' in HTML
+    assert 'buildId: "20260827-278"' in APP
+    assert 'app.js?v=20260827-278' in HTML
     assert 'evidence-atlas.js?v=20260827-24' in HTML
     assert "Build 171" in README
     assert "Build 171" in DOCS
