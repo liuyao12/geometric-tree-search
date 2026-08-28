@@ -23,6 +23,9 @@ def load(name: str, filename: str):
 GEOMETRY = load("a2_periodic_z3", "screen-a2-layered-periodic-z3.py")
 COVER = load("a2_substitution_cover", "screen-a2-layered-substitution.py")
 PERMUTATIONS = tuple(itertools.permutations(range(3)))
+exact_cover = COVER.exact_cover
+replay = COVER.replay
+replay_unsat_with_z3 = COVER.replay_unsat_with_z3
 
 
 def cell_key(cell: dict) -> tuple[int, int, int, str]:

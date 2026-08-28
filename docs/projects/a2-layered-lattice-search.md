@@ -573,6 +573,17 @@ cover exhaustion.  These results exclude direct monotile scalar subdivision,
 not clustered metatiles or non-scalar substitutions.  Reports are named
 `data/a2-sliced-alcove-size7-substitution-scale{2..8}-{proper,reflected}.ndjson`.
 
+The complete connected two-copy metatile alphabets are now also exhausted at
+scalar scales 2 and 3 in both symmetry models.  Across 1,036
+candidate-scale-model cases this checks 32,876 symmetry-distinct parent
+metatiles: 32,731 have independently replayed local obstructions and 145 use
+independently replayed exact UNSAT fallbacks.  There are zero rules and zero
+unresolved parents.  The reflection-enabled single-alcove control does recover
+a closed two-type substitution alphabet, so the mixed-alphabet closure logic
+is exercised by a positive oracle.  The four merged reports are named
+`data/a2-sliced-alcove-size7-two-cluster-scale{2,3}-{proper,reflected}.ndjson`.
+Connected clusters of three or more monotiles remain open.
+
 At radius two, a two-second breadth pass proves that 108 retained first
 coronas are unextendible and leaves 151 timeout-inconclusive; this claim is
 about those specific coronas, not the tiles.  Their exact UNSAT cores are
