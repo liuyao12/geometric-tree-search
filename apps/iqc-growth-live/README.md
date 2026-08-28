@@ -1,5 +1,22 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 308 · published Cd–Yb evidence ladder
+
+The published Cd₅.₇Yb quasicrystal is no longer summarized by one headline and
+three evidence rows. Its interactive atlas now separates complete train cover,
+causal finite primitive growth, nine-level history-free compression, four exact
+held-out re-encoding levels, the seed-only full-macro failure, the noisy
+one-child partial frontier, the preregistered multi-level confirmation, and the
+site-resolved section calibration. Each row states whether coordinates were
+observed, emitted, or withheld and preserves the red stationary/exponential
+gate.
+
+The live recursive benchmark card now visualizes the measured five-wave
+target-blind continuation (3 → 18 → 9 → 35 → 7), the 80 → 36 → 22 promoted
+type funnel, held-out active occurrences, and the 6 / 82 exact partial-frontier
+limit. Atlas actions open the same published specimen directly in input,
+cluster-identification, per-cluster marking, or material-growth stage.
+
 ## Build 307 · atoms-first material growth
 
 The material-growth viewport now defaults to the explicit colored atomic solid

@@ -9,7 +9,7 @@ README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
 def test_collective_response_is_an_end_to_end_audited_score_channel():
     required_app_fragments = (
-        'from "./coherency-graph-field.mjs?v=20260828-307"',
+        'from "./coherency-graph-field.mjs?v=20260828-308"',
         'scoreTerm("collective-response"',
         'activeCollectiveResponseWeight() * evaluation.collectiveResponse.score',
         'collectiveGraphResponseRanking',

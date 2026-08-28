@@ -36,15 +36,15 @@ import { buildSettlingMaterialResponseHistory, buildSettlingMaterialResponseMatr
   SETTLING_MATERIAL_FIELDS }
   from "./settling-material-sensitivity.mjs?v=20260828-290";
 import { channelValidationMetricsFromCounts, validationOccurrenceJackknife }
-  from "./validation-uncertainty.mjs?v=20260828-307";
+  from "./validation-uncertainty.mjs?v=20260828-308";
 import { scoreNormalizationAudit }
-  from "./score-normalization.mjs?v=20260828-307";
+  from "./score-normalization.mjs?v=20260828-308";
 import { screenedCoherencyGraphField }
-  from "./coherency-graph-field.mjs?v=20260828-307";
+  from "./coherency-graph-field.mjs?v=20260828-308";
 import { continuationMultiplicityAtlas, continuationMultiplicityScore }
-  from "./configurational-multiplicity.mjs?v=20260828-307";
+  from "./configurational-multiplicity.mjs?v=20260828-308";
 import { geometricConstraintTensor }
-  from "./geometric-constraint-tensor.mjs?v=20260828-307";
+  from "./geometric-constraint-tensor.mjs?v=20260828-308";
 import { archiveResponseFrontierRankAudit }
   from "./archive-response-frontier-audit.js?v=20260827-1";
 import { evidenceOrderedClusterDiscoverySchedule }
@@ -1120,7 +1120,25 @@ const RECURSIVE_BENCHMARKS = {
   iqc: { hierarchy: [73, 17, 5], curve: [2064, 1122, 324, 78, 26, 12, 8, 4], mark: "bounded ports + exact derivations", action: "6 train levels · heldout L1 stops", speed: "1,248 / 1,248 primitive transfer", gate: "red · stationary transfer", status: "limit", note: "History-free re-clustering completely covers 2,064 grown atoms and reaches six positive train-compression levels. On three sealed held-out patches, frozen supports cover every atom and 256 of 259 first-level types replay; three absent types stop recursive transfer. The deterministic beam retains more exact derivations but still finds no stationary three-level production, so generic exponential IQC growth remains red.", external: { name: "experimental Sc–Zn IQC", hierarchy: "13 → 38 → 98", precision: "75.5% P / 55.0% R", recall: "85.4% P / 32.1% R", reduction: "57× → 185×" }, connection: { transfer: "1,248 / 1,248 atoms · 256 / 259 L1 types", states: "78 support types · 1,122 occurrences · 6 positive train levels", consensusLabel: "persistent wave / marking operating points", consensus: [["wave 1", 100.0, 3.27], ["wave 2", 34.18, 1.14], ["mark 1", 100.0, 0.07], ["mark 2", 0.0, 0.0]], secondOrderLabel: "position and species fidelity by unseen wave", secondOrder: [["wave 1", "position", 100.0, 3.27, 66.52, 2.18], ["wave 2", "position", 34.18, 1.14, 14.29, 0.47], ["mark", "normalized", 100.0, 0.07, 100.0, 0.07]], frontier: { waves: [324, 78, 26, 12, 8, 4], exact: "alternative-consistent train path", recall: "heldout primitive atoms 100% · recursive types 98.8%", full: "three missing frozen L1 types stop promotion without refit" }, macro: { stages: [["support types", 78], ["L1 quotient", 73], ["L2 quotient", 17]], safe: "heldout primitive cover · 1,248/1,248 atoms", rejected: "recursive transfer · 3/259 L1 types absent", crystal: "learned NaCl stationary control · 4,194,304 represented sites", iterated: "beam evidence · 324→78→26→12→8→4", similarity: "deep train compression passes · stationary heldout growth fails" } } },
   cdyb: { hierarchy: [80, 36, 22], curve: [506, 1056, 1672], mark: "causal local connection consensus",
     action: "5 target-blind finite waves", speed: "177 / 179 emitted sites correct", gate: "finite autonomous pass · stationary red", status: "limit",
-    note: "The browser input is the published 506-atom off-centre crop. Backend audits on disjoint windows learn nine positive compression levels and a causal local marking; two sealed nuclei grow 178/178 and 117/117 correct atoms, while the same unmarked searches emit 83 false atoms. Those finite runs reach fixed points and no production recurs across three scales, so sustained, stationary, and exponential Cd–Yb growth remain open." },
+    note: "The browser input is the published 506-atom off-centre crop. Backend audits on disjoint windows learn nine positive compression levels and a causal local marking; two sealed nuclei grow 178/178 and 117/117 correct atoms, while the same unmarked searches emit 83 false atoms. Those finite runs reach fixed points and no production recurs across three scales, so sustained, stationary, and exponential Cd–Yb growth remain open.",
+    connection: {
+      transfer: "published Cd–Yb · sealed finite continuation",
+      states: "five disjoint train windows · nine positive compression levels · four exact held-out re-encoding levels",
+      consensus: [], secondOrder: [],
+      frontier: {
+        waves: [3, 18, 9, 35, 7],
+        exact: "177 / 179 emitted coordinates match",
+        recall: "98.88% precision · 42.24% outer-shell recall",
+        full: "target opened only after five self-fed waves · finite fixed point",
+      },
+      macro: {
+        stages: [["L1 types", 80], ["L2 types", 36], ["L3 types", 22]],
+        safe: "held-out active types 53→20→8→2 · exact residual-complete re-encoding",
+        rejected: "independent seed: 0 complete L1 macros · only 6 / 82 partial completions exact",
+        iterated: "nine train levels · active held-out occurrences 92→26→8→2→0",
+        similarity: "zero common exact three-scale production keys · stationary/exponential red",
+      },
+    } },
   moire: { hierarchy: [2, 8, 32], curve: [746, 2990, 11960, 47840, 191360, 765440, 3061760], mark: "two sheet poses · Δθ = 30°", action: "6 radius doublings → 3.06m", speed: "≈4× area per action", gate: "pass · 2D synthetic", status: "pass", note: "The audited 2D atlas learns one B–N cluster isometry class in two sheet poses from 746 atoms. It exactly predicts an unseen 2,990-atom disk, preserves the 30° pose marking, and finds no common nonzero translation." },
   bc8: { hierarchy: ["pending", "pending", "pending"], curve: [], mark: "not benchmarked", action: "not benchmarked", speed: "—", gate: "real-data gate", status: "control", note: "This topology is visualized, but its audited parametric recursive benchmark remains pending." },
   imported: { hierarchy: ["live", "live", "live"], curve: [], mark: "discover from input", action: "not assumed", speed: "measure after fit", gate: "real-data gate", status: "control", note: "Imported materials are not assigned a recursive family in advance. The hierarchy must discover recurrent supports and pass a held-out continuation gate." },
@@ -11785,7 +11803,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260828-307",
+      buildId: "20260828-308",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -14215,7 +14233,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260828-307" },
+    application: { name: "Materials Growth Lab", buildId: "20260828-308" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },
