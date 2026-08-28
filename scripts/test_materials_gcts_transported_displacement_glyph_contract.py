@@ -27,8 +27,8 @@ def test_transported_covariance_reaches_candidate_cluster_and_committed_glyphs()
     assert "currentCandidateEllipsoidGlyphSites" in source
     assert 'id="displacementToggle"' in html
     assert 'id="displacementToggleLabel"' in html
-    assert 'buildId: "20260827-269"' in source
-    assert 'app.js?v=20260827-269' in html
+    assert 'buildId: "20260827-270"' in source
+    assert 'app.js?v=20260827-270' in html
     assert "Build 249 closes the visual half of that covariance lineage" in readme
     assert "Transported displacement ellipsoids (Build 249)" in benchmark
     assert "not atomic surfaces" in readme

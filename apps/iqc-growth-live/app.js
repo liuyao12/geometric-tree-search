@@ -579,6 +579,11 @@ const resetButton = $("resetButton");
 const speedInput = $("speedInput");
 const speedOutput = $("speedOutput");
 const growthDurationSelect = $("growthDurationSelect");
+const growthEvaluationProgress = $("growthEvaluationProgress");
+const growthEvaluationTitle = $("growthEvaluationTitle");
+const growthEvaluationCount = $("growthEvaluationCount");
+const growthEvaluationMeter = $("growthEvaluationMeter");
+const growthEvaluationNote = $("growthEvaluationNote");
 const markingToggle = $("markingToggle");
 const bondToggle = $("bondToggle");
 const frontierToggle = $("frontierToggle");
@@ -1396,6 +1401,11 @@ let markingCapacityAuditToken = 0;
 let overlapGrammar = null;
 let placedClusters = [];
 let frontierCandidates = [];
+let growthFrontierWork = { busy: false, phase: "idle", evaluated: 0, total: 0, yields: 0,
+  maximumSliceMilliseconds: 0, generation: 0 };
+let lastGrowthFrontierWorkAudit = null;
+let growthSearchGeneration = 0;
+let pauseAfterCurrentGrowthLeap = false;
 let frontierCandidateKeys = new Set();
 let rejectedCandidateKeys = new Set();
 let reconstructionCertified = false;
@@ -10256,7 +10266,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-269",
+      buildId: "20260827-270",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -11157,6 +11167,7 @@ async function buildExperimentReceipt() {
       policy: policySelect.value,
       experimentProtocol: growthProtocolManifest(),
       seedProtocol: growthSeedAudit,
+      frontierEvaluation: growthFrontierWorkReceipt(),
       hypothesisSeparationExperiment: hypothesisSeparationReceipt(),
       markingComparisonExperiment: markingComparisonReceipt(),
       physicsPreflightManifest: { ...physicsPreflightManifest,
@@ -12488,6 +12499,7 @@ async function buildExperimentNotebookSnapshot() {
     policy: policySelect.value,
     experimentProtocol: growthProtocolManifest(),
     seedProtocol: growthSeedAudit,
+    frontierEvaluation: growthFrontierWorkReceipt(),
     hypothesisSeparationExperiment: hypothesisSeparationReceipt(),
     markingComparisonExperiment: markingComparisonReceipt(),
     physicsPreflightManifest: { ...physicsPreflightManifest,
@@ -12532,7 +12544,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-269" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-270" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -19034,59 +19046,93 @@ function rejectionIsOrderInvariant(candidate, evaluation) {
     || evaluation.fresh.length === 0 || !evaluation.feedstockSupply?.admitted || markingRejected;
 }
 
-function commutingFrontierBatch() {
-  const audit = reconstructionCertified
-    ? { matched: referenceCount(), missing: 0, duplicateAtoms: 0, extraneousAtoms: 0 }
-    : referenceCoverageAudit();
-  // Candidate enumeration is frozen before this ranking. Geometric strain is
-  // a target-blind preference among those exact actions, never an admission
-  // rule and never a source of new coordinates.
-  const evaluated = frontierCandidates.map((candidate) => {
-    const evaluation = evaluateCandidate(candidate);
-    const dynamicPriority = dynamicCandidatePriority(candidate);
-    const referenceGain = candidateReferenceGain(candidate, audit);
-    const baseScore = dynamicPriority + 2.5 * referenceGain;
-    const score = baseScore
-        - activeGeometricStrainWeight() * effectiveGeometricStrain(evaluation).total
-        + evaluation.externalCalibration.weight * evaluation.externalCalibration.score
-        - activeCompositionBalanceWeight() * evaluation.compositionBalance.scaledDelta
-        + activeSolutePartitionWeight() * evaluation.solutePartition.score
-        - activeFormalChargeWeight() * evaluation.formalChargeBalance.scaledDelta
-        + activeChargeGeometryWeight() * evaluation.chargeGeometry.score
-        + activeChargeMomentWeight() * evaluation.chargeMoment.score
-        + activeIonicPairWeight() * evaluation.ionicPair.score
-        + activeBondValenceWeight() * evaluation.bondValence.score
-        - activeSurfaceCompletionWeight() * evaluation.surfaceCompletion.scaledDelta
-        + activeGrowthDrivingWeight() * evaluation.bulkSurfaceDriving.score
-        + activeAttachmentTopologyWeight() * evaluation.attachmentTopology.score
-        + activeHabitAnisotropyWeight() * evaluation.habitAnisotropy.score
-        + activeDefectPrecursorWeight() * evaluation.defectPrecursors.score
-        + activeCoherencyMemoryWeight() * evaluation.coherencyMemory.score
-        + activeFrontMorphologyWeight() * evaluation.frontMorphology.score
-        + activeCapillaryGeometryWeight() * evaluation.capillaryGeometry.score
-        + activeEpitaxyWeight() * evaluation.epitaxyRegistry.score
-        + activeExternalDriveWeight() * evaluation.externalDrive.alignment
-        + activeThermalFieldWeight() * evaluation.thermalField.score
-        + activeRobustnessWeight() * evaluation.constraintRobustness.score
-        + activeMicrostructureCouplingWeight() * evaluation.microstructureCoupling.score
-        + activeLoopClosureWeight() * evaluation.loopClosure.score
-        + activeArrivalPathWeight() * evaluation.arrivalPath.score
-        + activeFeedExposureWeight() * evaluation.feedExposure.score;
-    const explorationOffset = geometricExplorationOffset(candidate);
-    candidate.explorationOffset = explorationOffset;
-    return { candidate, evaluation, sites: evaluation.sites, dynamicPriority, referenceGain,
-      referenceGuided: !reconstructionCertified, baseScore, score,
-      explorationOffset, selectionScore: score + explorationOffset };
-  });
+function renderGrowthFrontierWork() {
+  const visible = pipelineStage === 4 && (growthFrontierWork.busy || lastGrowthFrontierWorkAudit);
+  growthEvaluationProgress.hidden = !visible;
+  if (!visible) return;
+  const work = growthFrontierWork.busy ? growthFrontierWork : lastGrowthFrontierWorkAudit;
+  const total = Math.max(0, work.total || work.evaluatedCandidates || 0);
+  const evaluated = Math.min(total, work.evaluated ?? work.evaluatedCandidates ?? total);
+  growthEvaluationMeter.max = Math.max(1, total);
+  growthEvaluationMeter.value = evaluated;
+  growthEvaluationCount.textContent = `${evaluated.toLocaleString()} / ${total.toLocaleString()}`;
+  growthEvaluationTitle.textContent = growthFrontierWork.busy
+    ? work.phase === "committing" ? "Committing compatible whole clusters"
+      : work.phase === "ranking" ? "Selecting a commuting antichain" : "Evaluating frozen geometric actions"
+    : "Latest frontier fully evaluated";
+  growthEvaluationNote.textContent = growthFrontierWork.busy
+    ? `${pauseAfterCurrentGrowthLeap ? "pause queued after this atomic leap · " : ""}${work.yields.toLocaleString()} browser yields · target-free candidate set remains immutable`
+    : `${work.pauseRequested ? "paused after atomic leap · " : ""}${work.eventLoopYields.toLocaleString()} browser yields · max slice ${work.maximumSliceMilliseconds.toFixed(1)} ms · no physical clock inferred`;
+}
+
+function growthFrontierWorkReceipt() {
+  if (!growthFrontierWork.busy) return lastGrowthFrontierWorkAudit;
+  return {
+    schema: 1, status: growthFrontierWork.phase,
+    evaluatedCandidates: growthFrontierWork.evaluated, total: growthFrontierWork.total,
+    eventLoopYields: growthFrontierWork.yields,
+    maximumSliceMilliseconds: receiptRound(growthFrontierWork.maximumSliceMilliseconds, 3),
+    candidateSetFrozenBeforeEvaluation: true, candidateSetTargetUsed: false,
+    rankingTargetUsed: !reconstructionCertified, physicalTimeInferred: false,
+    claimBoundary: "This is an in-progress browser scheduling receipt over a frozen candidate set, not materials kinetics, physical time, or a completed structural leap.",
+  };
+}
+
+function resetGrowthFrontierWork() {
+  growthSearchGeneration++;
+  growthFrontierWork = { busy: false, phase: "idle", evaluated: 0, total: 0, yields: 0,
+    maximumSliceMilliseconds: 0, generation: growthSearchGeneration };
+  lastGrowthFrontierWorkAudit = null;
+  pauseAfterCurrentGrowthLeap = false;
+  renderGrowthFrontierWork();
+}
+
+function scoreFrontierCandidate(candidate, audit) {
+  const evaluation = evaluateCandidate(candidate);
+  const dynamicPriority = dynamicCandidatePriority(candidate);
+  const referenceGain = candidateReferenceGain(candidate, audit);
+  const baseScore = dynamicPriority + 2.5 * referenceGain;
+  const score = baseScore
+      - activeGeometricStrainWeight() * effectiveGeometricStrain(evaluation).total
+      + evaluation.externalCalibration.weight * evaluation.externalCalibration.score
+      - activeCompositionBalanceWeight() * evaluation.compositionBalance.scaledDelta
+      + activeSolutePartitionWeight() * evaluation.solutePartition.score
+      - activeFormalChargeWeight() * evaluation.formalChargeBalance.scaledDelta
+      + activeChargeGeometryWeight() * evaluation.chargeGeometry.score
+      + activeChargeMomentWeight() * evaluation.chargeMoment.score
+      + activeIonicPairWeight() * evaluation.ionicPair.score
+      + activeBondValenceWeight() * evaluation.bondValence.score
+      - activeSurfaceCompletionWeight() * evaluation.surfaceCompletion.scaledDelta
+      + activeGrowthDrivingWeight() * evaluation.bulkSurfaceDriving.score
+      + activeAttachmentTopologyWeight() * evaluation.attachmentTopology.score
+      + activeHabitAnisotropyWeight() * evaluation.habitAnisotropy.score
+      + activeDefectPrecursorWeight() * evaluation.defectPrecursors.score
+      + activeCoherencyMemoryWeight() * evaluation.coherencyMemory.score
+      + activeFrontMorphologyWeight() * evaluation.frontMorphology.score
+      + activeCapillaryGeometryWeight() * evaluation.capillaryGeometry.score
+      + activeEpitaxyWeight() * evaluation.epitaxyRegistry.score
+      + activeExternalDriveWeight() * evaluation.externalDrive.alignment
+      + activeThermalFieldWeight() * evaluation.thermalField.score
+      + activeRobustnessWeight() * evaluation.constraintRobustness.score
+      + activeMicrostructureCouplingWeight() * evaluation.microstructureCoupling.score
+      + activeLoopClosureWeight() * evaluation.loopClosure.score
+      + activeArrivalPathWeight() * evaluation.arrivalPath.score
+      + activeFeedExposureWeight() * evaluation.feedExposure.score;
+  const explorationOffset = geometricExplorationOffset(candidate);
+  candidate.explorationOffset = explorationOffset;
+  return { candidate, evaluation, sites: evaluation.sites, dynamicPriority, referenceGain,
+    referenceGuided: !reconstructionCertified, baseScore, score,
+    explorationOffset, selectionScore: score + explorationOffset };
+}
+
+async function selectCommutingFrontierBatch(evaluated, generation) {
   capturePolicyComparison(evaluated);
   const ranked = evaluated.sort((first, second) => second.selectionScore - first.selectionScore
     || first.candidate.key.localeCompare(second.candidate.key));
   if (overlapGrammar.molecular && !reconstructionCertified) {
     const ordered = ranked.slice().sort((first, second) => first.candidate.rule.replayOrder - second.candidate.rule.replayOrder);
     for (const entry of ordered) {
-      if (entry.evaluation.accepted || rejectionIsOrderInvariant(entry.candidate, entry.evaluation)) {
-        return [entry];
-      }
+      if (entry.evaluation.accepted || rejectionIsOrderInvariant(entry.candidate, entry.evaluation)) return [entry];
     }
     return [];
   }
@@ -19097,7 +19143,18 @@ function commutingFrontierBatch() {
   }
   const acceptedBatch = [];
   const rejectedBatch = [];
+  let sliceStarted = performance.now();
   for (const entry of ranked) {
+    if (generation !== growthSearchGeneration) return null;
+    const elapsedSlice = performance.now() - sliceStarted;
+    growthFrontierWork.maximumSliceMilliseconds = Math.max(
+      growthFrontierWork.maximumSliceMilliseconds, elapsedSlice);
+    if (elapsedSlice >= 24) {
+      growthFrontierWork.yields++;
+      renderGrowthFrontierWork();
+      await new Promise((resolve) => requestAnimationFrame(resolve));
+      sliceStarted = performance.now();
+    }
     const { candidate, evaluation } = entry;
     if (evaluation.accepted) {
       if (!acceptedBatch.every((other) => sitesCanCommute(entry.sites, other.sites))) continue;
@@ -19111,14 +19168,59 @@ function commutingFrontierBatch() {
       acceptedBatch.push(entry);
       continue;
     }
-    // "Insufficient shared support" can become valid after another placement,
-    // so it is deferred rather than flashed red. The failures retained here
-    // remain failures after any permutation of the accepted batch.
     if (!rejectionIsOrderInvariant(candidate, evaluation)) continue;
     if (![...acceptedBatch, ...rejectedBatch].every((other) => sitesCanCommute(entry.sites, other.sites))) continue;
     rejectedBatch.push(entry);
   }
   return [...acceptedBatch, ...rejectedBatch];
+}
+
+async function commutingFrontierBatch() {
+  const audit = reconstructionCertified
+    ? { matched: referenceCount(), missing: 0, duplicateAtoms: 0, extraneousAtoms: 0 }
+    : referenceCoverageAudit();
+  // Candidate enumeration is frozen before this ranking. Geometric strain is
+  // a target-blind preference among those exact actions, never an admission
+  // rule and never a source of new coordinates.
+  const frozenCandidates = [...frontierCandidates];
+  const generation = growthSearchGeneration;
+  growthFrontierWork = { busy: true, phase: "evaluating", evaluated: 0,
+    total: frozenCandidates.length, yields: 0, maximumSliceMilliseconds: 0, generation };
+  pauseAfterCurrentGrowthLeap = false;
+  stepButton.disabled = true;
+  resetButton.disabled = true;
+  updatePipelineButtons();
+  renderGrowthFrontierWork();
+  const evaluated = [];
+  let sliceStarted = performance.now();
+  for (const candidate of frozenCandidates) {
+    if (generation !== growthSearchGeneration) return null;
+    evaluated.push(scoreFrontierCandidate(candidate, audit));
+    growthFrontierWork.evaluated = evaluated.length;
+    const sliceMilliseconds = performance.now() - sliceStarted;
+    growthFrontierWork.maximumSliceMilliseconds = Math.max(
+      growthFrontierWork.maximumSliceMilliseconds, sliceMilliseconds);
+    if (sliceMilliseconds < 24 && evaluated.length < frozenCandidates.length) continue;
+    growthFrontierWork.yields++;
+    renderGrowthFrontierWork();
+    await new Promise((resolve) => requestAnimationFrame(resolve));
+    sliceStarted = performance.now();
+  }
+  if (generation !== growthSearchGeneration) return null;
+  growthFrontierWork.phase = "ranking";
+  renderGrowthFrontierWork();
+  await new Promise((resolve) => requestAnimationFrame(resolve));
+  const batch = await selectCommutingFrontierBatch(evaluated, generation);
+  if (batch === null || generation !== growthSearchGeneration) return null;
+  lastGrowthFrontierWorkAudit = {
+    schema: 1, evaluatedCandidates: evaluated.length, total: frozenCandidates.length,
+    eventLoopYields: growthFrontierWork.yields,
+    maximumSliceMilliseconds: receiptRound(growthFrontierWork.maximumSliceMilliseconds, 3),
+    candidateSetFrozenBeforeEvaluation: true, candidateSetTargetUsed: false,
+    rankingTargetUsed: !reconstructionCertified, physicalTimeInferred: false,
+    claimBoundary: "Browser scheduling slices expose progress and preserve the exact frozen candidate order. Slice duration is a responsiveness diagnostic, not materials kinetics or a speedup benchmark.",
+  };
+  return batch;
 }
 
 function refineCandidateTranslation(candidate) {
@@ -19247,6 +19349,7 @@ function initializeIceAnchorSearch() {
   atoms = [];
   placedClusters = [];
   frontierCandidates = [];
+  resetGrowthFrontierWork();
   reconstructionCertified = true;
   iceAnchorTrace.seedSites.forEach(([species, point], index) => {
     const atom = addAtom(iceAnchorScenePoint(point), species, "ice-anchor", null, true);
@@ -19667,6 +19770,7 @@ function initializeOffLatticeSearch() {
   atoms = [];
   placedClusters = [];
   frontierCandidates = [];
+  resetGrowthFrontierWork();
   frontierCandidateKeys = new Set();
   rejectedCandidateKeys = new Set();
   reconstructionCertified = false;
@@ -22292,7 +22396,9 @@ function updatePipelineButtons() {
     button.classList.toggle("active", stage === pipelineStage);
     button.classList.toggle("complete", stage < pipelineStage);
     button.setAttribute("aria-current", stage === pipelineStage ? "step" : "false");
+    button.disabled = growthFrontierWork.busy;
   });
+  pipelineButton.disabled = growthFrontierWork.busy;
   pipelineButton.classList.toggle("running", pipelineAuto);
   pipelineButton.textContent = pipelineAuto ? "Stop full pipeline" : "Run full pipeline";
 }
@@ -22692,7 +22798,7 @@ function materializeCandidate(candidate, evaluation, leapCreationContext) {
   return placement;
 }
 
-function performOffLatticeEvent() {
+async function performOffLatticeEvent() {
   const reconstructionWasCertified = reconstructionCertified;
   const relaxationAuthorized = reconstructionCertified;
   const before = { atoms: atoms.length, clusters: placedClusters.length, frontier: frontierCandidates.length,
@@ -22702,7 +22808,8 @@ function performOffLatticeEvent() {
     scattering: structuralScatteringSnapshot(),
     chargeMoment: structuralChargeMomentSnapshot(), bondValenceState: structuralBondValenceSnapshot(),
     feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() };
-  const batch = commutingFrontierBatch();
+  const batch = await commutingFrontierBatch();
+  if (batch === null) return;
   if (!batch.length) {
     recordStructuralLeap({ status: "fixed", label: "no geometrically admissible successor",
       before, proposal: { candidates: 0, sites: 0, shared: 0, fresh: 0 },
@@ -22776,7 +22883,20 @@ function performOffLatticeEvent() {
   let proposedSitesInBatch = 0;
   const freshAtomIdsInBatch = [];
   let lastDecision = null;
-  batch.forEach(({ candidate, evaluation: snapshotEvaluation }) => {
+  growthFrontierWork.phase = "committing";
+  renderGrowthFrontierWork();
+  let commitSliceStarted = performance.now();
+  for (const { candidate, evaluation: snapshotEvaluation } of batch) {
+    if (growthFrontierWork.generation !== growthSearchGeneration) return;
+    const elapsedSlice = performance.now() - commitSliceStarted;
+    growthFrontierWork.maximumSliceMilliseconds = Math.max(
+      growthFrontierWork.maximumSliceMilliseconds, elapsedSlice);
+    if (elapsedSlice >= 24) {
+      growthFrontierWork.yields++;
+      renderGrowthFrontierWork();
+      await new Promise((resolve) => requestAnimationFrame(resolve));
+      commitSliceStarted = performance.now();
+    }
     let evaluation = snapshotEvaluation;
     let state = stateForCandidate(candidate, evaluation);
     if (!snapshotEvaluation.accepted) {
@@ -22830,7 +22950,7 @@ function performOffLatticeEvent() {
         mechanismDiagnostics.get(candidate));
       lastDecision = { eventType: "reject", accepted: false, state, resolver: "geometric + section prune",
         energy: candidate.markingScore, interval: [candidate.markingScore, candidate.markingScore] };
-      return;
+      continue;
     }
     // Re-evaluate against earlier members of this same batch. The batch builder
     // guarantees that this remains admissible in every permutation; this pass
@@ -22888,7 +23008,12 @@ function performOffLatticeEvent() {
       markingProvenance: state.markingProvenance });
     lastDecision = { eventType: decision.reuse ? "reuse" : "accept", accepted: true, state,
       resolver: decision.resolver, energy: candidate.markingScore, interval: decision.interval };
-  });
+  }
+  lastGrowthFrontierWorkAudit = { ...lastGrowthFrontierWorkAudit,
+    eventLoopYields: growthFrontierWork.yields,
+    maximumSliceMilliseconds: receiptRound(growthFrontierWork.maximumSliceMilliseconds, 3),
+    selectedBatchActions: batch.length, acceptedBatchActions: acceptedInBatch,
+    rejectedBatchActions: rejectedInBatch, pauseRequested: pauseAfterCurrentGrowthLeap };
   freezeCreationGeometryForAtoms(freshAtomIdsInBatch);
   applyCommutingBatchForceConsensus(batch, freshAtomIdsInBatch);
   const relaxation = projectAcceptedBatchGeometry(freshAtomIdsInBatch, relaxationAuthorized);
@@ -23292,7 +23417,18 @@ function performEvent() {
     performIceAnchorEvent();
     return;
   }
-  performOffLatticeEvent();
+  if (growthFrontierWork.busy) return;
+  performOffLatticeEvent().catch((error) => {
+    console.error("Target-free frontier evaluation failed", error);
+    pauseGrowth("Frontier evaluation failed safely.");
+    receiptStatus.textContent = `Frontier evaluation failed safely: ${error.message}`;
+  }).finally(() => {
+    growthFrontierWork.busy = false;
+    growthFrontierWork.phase = "complete";
+    renderGrowthFrontierWork();
+    updatePipelineButtons();
+    updateUI();
+  });
 }
 
 function rebuildWorld() {
@@ -29005,13 +29141,15 @@ function updateUI() {
   renderCollinearSpinGeometry();
   renderStructuralLeap();
   renderGrowthMechanismAudit();
+  renderGrowthFrontierWork();
   updateProcessTimeline();
   renderMolecularCoverRibbon();
   eventCounter.textContent = String(eventIndex).padStart(4, "0");
   const material = currentMaterial();
   renderActiveSamplePassport(material);
   playButton.disabled = pipelineStage === 4 && Boolean(material.growthWithheld);
-  stepButton.disabled = pipelineStage === 4 && Boolean(material.growthWithheld);
+  stepButton.disabled = pipelineStage === 4 && (Boolean(material.growthWithheld) || growthFrontierWork.busy);
+  resetButton.disabled = growthFrontierWork.busy;
   if (pipelineStage === 0) {
     atomLabel.textContent = material.averageStructureSites ? "AVERAGE SITES" : "ATOMS"; atomMetric.textContent = String(referenceCount()); atomDelta.textContent = material.averageStructureSites ? `${material.occupancyWeightedAtomCount} occupancy-weighted atoms · xyz in Å` : `${material.name} · xyz in Å`;
     frontierLabel.textContent = "ELEMENTS"; frontierMetric.textContent = String(material.actualElements?.length || material.elements.length); frontierDelta.textContent = materialElementLabels(material).join(" / ");
@@ -29579,6 +29717,15 @@ pipelineButton.addEventListener("click", () => {
   updatePipelineButtons();
 });
 playButton.addEventListener("click", () => {
+  if (growthFrontierWork.busy && pipelineStage === 4) {
+    if (playing) {
+      pauseAfterCurrentGrowthLeap = true;
+      setPlaying(false);
+      receiptStatus.textContent = "Pause queued · the current immutable structural leap will finish atomically, then growth remains paused.";
+      renderGrowthFrontierWork();
+    }
+    return;
+  }
   if (playing && pipelineStage === 4) pauseGrowth("Paused by user.");
   else setPlaying(!playing);
   updateUI();

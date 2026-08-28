@@ -17,7 +17,7 @@ def test_formal_charge_is_optional_soft_ranking_and_never_inferred() -> None:
     assert 'id="chargePreferenceHint"' in HTML
     assert 'id="chargeValue"' in HTML
     assert "if (!formalChargeTarget?.available || chargePreference === \"none\") return 0" in APP
-    ranking = APP[APP.index("function commutingFrontierBatch()") : APP.index("function refineCandidateTranslation")]
+    ranking = APP[APP.index("function scoreFrontierCandidate(candidate, audit)") : APP.index("async function commutingFrontierBatch()")]
     assert "activeFormalChargeWeight() * evaluation.formalChargeBalance.scaledDelta" in ranking
     admission = APP[APP.index("const accepted = conflicts") : APP.index("return { accepted", APP.index("const accepted = conflicts"))]
     assert "formalChargeBalance" not in admission

@@ -1,5 +1,26 @@
 # Recursive GCTS benchmark for material growth
 
+### Responsive frontier microscope (Build 270)
+
+The browser executor now exposes the finite work hidden inside one structural
+leap. It first copies the frozen frontier, evaluates every candidate with the
+unchanged hard geometry and soft marking/physics terms, selects the maximal
+pairwise-compatible antichain, and rechecks each whole-cluster commit. All
+three phases yield through animation frames after a bounded browser-work slice.
+Generation tokens cancel stale work if the specimen is rebuilt; stage/reset
+controls are locked while a batch is live. A timed-run pause finishes the
+current immutable antichain atomically and then stops before another frontier.
+
+The progress surface and receipt report candidate total, evaluated count,
+event-loop yields, maximum scheduling-slice duration, and accepted/rejected
+batch counts. Candidate and ranking target-use flags remain explicit. On the
+default NaCl observed-window nucleus, the responsive path reproduces the exact
+Build 269 scientific result: 1,628 frozen proposals produce 146 commuting
+placements, 609 invariant rejects, 203 new sites, 419 total sites, and a 4,410-
+action successor frontier. The live page remained inspectable while evaluation
+and antichain selection were in progress. Scheduling duration is deliberately
+not used as materials evidence, an MD comparison, a rate, or physical time.
+
 ### Target-free observed-window growth (Build 269)
 
 Stage 4 now separates two scientifically different initial conditions. The

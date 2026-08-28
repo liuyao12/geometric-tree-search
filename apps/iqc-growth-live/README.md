@@ -1,5 +1,26 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 270 · responsive frontier microscope
+
+The real target-free frontier no longer appears to freeze the browser while it
+scores a large candidate set. Candidate scoring, commuting-antichain selection,
+and whole-cluster commit are now separate deterministic phases that yield to
+the browser after bounded work slices. The candidate array is copied before
+evaluation; yielding cannot admit a later candidate, change its order, consult
+a target, or alter the geometric result. A pause requested during a live batch
+is queued after the current atomic structural leap, never halfway through a
+whole-cluster commit.
+
+A live progress card shows evaluated/total actions, browser-yield count, and
+the largest scheduling slice. Receipts preserve the same audit with explicit
+`candidateSetTargetUsed=false` and a claim boundary: these are interface
+responsiveness diagnostics, not physical time, kinetics, or a speedup
+benchmark. The NaCl regression remains exactly 216 → 419 sites, 52 → 198 rigid
+placements, 146 accepted actions, 609 invariant prunes, and a 4,410-action next
+frontier. In the browser, all 1,628 initial actions were visible as they were
+processed and the page remained queryable through selection; no console errors
+were emitted.
+
 ## Build 269 · target-free observed-window growth
 
 Material growth now defaults to the complete supplied observation window as

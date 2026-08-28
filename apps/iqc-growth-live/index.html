@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260827-269">
+  <link rel="stylesheet" href="./style.css?v=20260827-270">
   <script type="importmap">
     {
       "imports": {
@@ -1476,6 +1476,11 @@
             </select>
           </label>
           <p class="control-note">In search, Play grows explicit atoms for this long, then pauses. Click again to continue.</p>
+          <div id="growthEvaluationProgress" class="growth-evaluation-progress" role="status" aria-live="polite" hidden>
+            <span><strong id="growthEvaluationTitle">Frontier ready</strong><b id="growthEvaluationCount">0 / 0</b></span>
+            <progress id="growthEvaluationMeter" value="0" max="1"></progress>
+            <small id="growthEvaluationNote">Target-free candidates are evaluated in bounded browser slices.</small>
+          </div>
         </section>
 
         <section>
@@ -1997,7 +2002,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260827-269"></script>
+  <script type="module" src="./app.js?v=20260827-270"></script>
   <script type="module" src="./evidence-atlas.js?v=20260827-24"></script>
 </body>
 </html>

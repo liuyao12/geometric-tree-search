@@ -57,7 +57,7 @@ def main() -> None:
         'data-physics-protocol-preset="actionable"',
         'data-physics-protocol-preset="clear"',
         "freeze before the first candidate frontier",
-        'app.js?v=20260827-269',
+        'app.js?v=20260827-270',
     ):
         assert needle in html, needle
 
@@ -111,7 +111,7 @@ def main() -> None:
         'frozenBeforeFirstStructuralAction: Boolean(frozenPhysicsPreflightManifest)',
         'if (leapEventCount > 0) return;',
         'no control changed.',
-        'buildId: "20260827-269"',
+        'buildId: "20260827-270"',
     ):
         assert needle in source, needle
 
@@ -133,7 +133,7 @@ def main() -> None:
     assert 'id="growthPhysicsProtocolComposer"' in root_html
     assert 'id="notebookPhysicsProtocolOutcome"' in html
     assert 'id="notebookPhysicsProtocolOutcome"' in root_html
-    assert 'app.js?v=20260827-269' in root_html
+    assert 'app.js?v=20260827-270' in root_html
     print("physics protocol composer portal contract: passed")
 
 

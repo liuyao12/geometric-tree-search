@@ -87,6 +87,14 @@ a { color: inherit; }
 .run-state { display: flex; align-items: center; gap: 8px; color: var(--muted); font: 9px var(--mono); text-transform: uppercase; letter-spacing: .12em; }
 .run-state i { width: 7px; height: 7px; border-radius: 50%; background: #526561; }
 .run-state.running i { background: var(--mint); box-shadow: 0 0 12px var(--mint); }
+.growth-evaluation-progress { display: grid; gap: 7px; margin-top: 10px; padding: 10px 11px; border: 1px solid rgba(126,225,232,.2); border-radius: 11px; background: linear-gradient(135deg, rgba(126,225,232,.08), rgba(240,201,106,.035)); }
+.growth-evaluation-progress[hidden] { display: none; }
+.growth-evaluation-progress span { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
+.growth-evaluation-progress strong { color: var(--ink); font: 10px var(--sans); }
+.growth-evaluation-progress b, .growth-evaluation-progress small { color: var(--muted); font: 9px var(--mono); }
+.growth-evaluation-progress progress { width: 100%; height: 5px; border: 0; border-radius: 999px; overflow: hidden; background: rgba(255,255,255,.07); accent-color: var(--mint); }
+.growth-evaluation-progress progress::-webkit-progress-bar { background: rgba(255,255,255,.07); }
+.growth-evaluation-progress progress::-webkit-progress-value { background: linear-gradient(90deg, var(--mint), var(--gold)); border-radius: 999px; }
 .method-link { justify-self: end; color: var(--muted); font: 9px var(--mono); text-decoration: none; letter-spacing: .04em; }
 .method-link:hover { color: var(--mint); }
 .topbar-actions { justify-self: end; display: flex; align-items: center; gap: 15px; }

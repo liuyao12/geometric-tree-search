@@ -15,7 +15,7 @@ def test_composition_reservoir_is_soft_multicomponent_and_audited() -> None:
     assert "compositionBalanceForFreshSites" in APP
     assert 'id="compositionPreferenceSelect"' in HTML
     assert "multicomponent soft balance" in HTML
-    ranking = APP[APP.index("function commutingFrontierBatch()") : APP.index("function refineCandidateTranslation")]
+    ranking = APP[APP.index("function scoreFrontierCandidate(candidate, audit)") : APP.index("async function commutingFrontierBatch()")]
     assert "activeCompositionBalanceWeight() * evaluation.compositionBalance.scaledDelta" in ranking
     admission = APP[APP.index("const accepted = conflicts") : APP.index("return { accepted", APP.index("const accepted = conflicts"))]
     assert "compositionBalance" not in admission

@@ -82,8 +82,8 @@ def test_portal_narrative_and_primary_provenance_are_visible():
 
 
 def test_current_build_is_cache_busted():
-    assert 'buildId: "20260827-269"' in APP
-    assert 'app.js?v=20260827-269' in HTML
+    assert 'buildId: "20260827-270"' in APP
+    assert 'app.js?v=20260827-270' in HTML
     assert 'relaxation-local-environment.js?v=20260826-2' in APP
     assert 'evidence-atlas.js?v=20260827-24' in HTML
 
