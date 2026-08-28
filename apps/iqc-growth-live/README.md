@@ -1,5 +1,22 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 288 · material outcomes across settling arms
+
+The same-state settling ladder now carries a compact material fingerprint for
+every arm, not only strain and displacement. Compatible virtual projections
+recompute colored coordination deficit, local packing, local q6 / |psi6|,
+centrosymmetry, finite-window S(q) peak prominence, radius of gyration, maximum
+extent, shape anisotropy, structural dimension, and covariance phenotype. Each
+arm names the fields it would change relative to the exact as-placed state;
+rolled-back arms correctly retain a zero material delta.
+
+The calculation is downstream and uncommitted: atom inventory and chemistry
+are invariant, coordinates are omitted from receipts, and the fingerprint
+cannot affect admission, ranking, scheduling, or continuation. This build also
+fixes the live structural-statistics cache to include the coordinate revision,
+so an accepted bounded displacement can no longer reuse stale as-placed local
+order, centrosymmetry, or scattering values.
+
 ## Build 287 · same-state settling sensitivity
 
 Each eligible off-lattice leap now evaluates an uncommitted **off → gentle →

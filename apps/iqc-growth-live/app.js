@@ -29,9 +29,11 @@ import { buildExecutedGrowthRegime, growthRegimePlotRows,
   GROWTH_REGIME_RESPONSE_AXES, GROWTH_REGIME_STATE_AXES }
   from "./growth-regime-map.mjs?v=20260828-1";
 import { compareShadowMaterialFingerprints, SHADOW_MATERIAL_CONSEQUENCE_FIELDS }
-  from "./shadow-material-consequence.mjs?v=20260828-287";
+  from "./shadow-material-consequence.mjs?v=20260828-288";
 import { LEAP_CONSEQUENCE_COMPONENTS, resolveLeapConsequenceComparison }
-  from "./leap-consequence-decomposition.mjs?v=20260828-287";
+  from "./leap-consequence-decomposition.mjs?v=20260828-288";
+import { compareSettlingMaterialFingerprints, SETTLING_MATERIAL_FIELDS }
+  from "./settling-material-sensitivity.mjs?v=20260828-288";
 import { archiveResponseFrontierRankAudit }
   from "./archive-response-frontier-audit.js?v=20260827-1";
 import { evidenceOrderedClusterDiscoverySchedule }
@@ -5384,25 +5386,34 @@ function ensureCentrosymmetry(stats, forcedNeighborCount = null) {
   return stats.centrosymmetry[neighborCount];
 }
 
-function currentLiveStructure() {
-  const source = pipelineStage === 4
-    ? (atoms.length > ANALYSIS_WINDOW_COUNT ? [...atoms].sort((first, second) => first.p.lengthSq() - second.p.lengthSq()).slice(0, ANALYSIS_WINDOW_COUNT) : atoms)
-    : [];
-  const key = `${pipelineStage}:${atoms.length}:${replayIndex}`;
-  if (key !== lastLiveStatsKey) {
-    const livePeriodic = currentPbc().some(Boolean)
-      && atoms.every((atom) => Number.isInteger(atom.referenceIndex));
-    liveStructuralStats = calculateStructuralStats(source, referenceSpacing, livePeriodic,
-      currentMaterial().intrinsicDimension === 2 ? 2 : 3, referenceStructuralStats?.maximumRadius || RDF_MAX_RADIUS);
-    lastLiveStatsKey = key;
-  }
-  return { source, stats: liveStructuralStats || calculateStructuralStats([], referenceSpacing, false,
-    currentMaterial().intrinsicDimension === 2 ? 2 : 3, referenceStructuralStats?.maximumRadius || RDF_MAX_RADIUS) };
+function calculateLiveStructureForSource(fullSource) {
+  const source = fullSource.length > ANALYSIS_WINDOW_COUNT
+    ? [...fullSource].sort((first, second) => first.p.lengthSq() - second.p.lengthSq())
+      .slice(0, ANALYSIS_WINDOW_COUNT) : fullSource;
+  const livePeriodic = currentPbc().some(Boolean)
+    && fullSource.every((atom) => Number.isInteger(atom.referenceIndex));
+  return { source, stats: calculateStructuralStats(source, referenceSpacing, livePeriodic,
+    currentMaterial().intrinsicDimension === 2 ? 2 : 3,
+    referenceStructuralStats?.maximumRadius || RDF_MAX_RADIUS) };
 }
 
-function structuralOrientationalOrderSnapshot() {
+function currentLiveStructure() {
+  const source = pipelineStage === 4 ? atoms : [];
+  const key = `${pipelineStage}:${atoms.length}:${replayIndex}:${atomGeometryRevision}`;
+  if (key !== lastLiveStatsKey) {
+    liveStructuralStats = calculateLiveStructureForSource(source).stats;
+    lastLiveStatsKey = key;
+  }
+  const analysisSource = source.length > ANALYSIS_WINDOW_COUNT
+    ? [...source].sort((first, second) => first.p.lengthSq() - second.p.lengthSq())
+      .slice(0, ANALYSIS_WINDOW_COUNT) : source;
+  return { source: analysisSource, stats: liveStructuralStats
+    || calculateLiveStructureForSource([]).stats };
+}
+
+function structuralOrientationalOrderSnapshot(source = null, suppliedStats = null) {
   if (pipelineStage !== 4) return null;
-  const { stats } = currentLiveStructure();
+  const stats = suppliedStats || (source ? calculateLiveStructureForSource(source) : currentLiveStructure()).stats;
   if (!stats?.count) return null;
   const harmonics = Object.fromEntries([4, 6, 12].map((harmonic) => {
     const order = ensureOrientationalOrder(stats, harmonic);
@@ -5421,9 +5432,9 @@ function structuralOrientationalOrderSnapshot() {
   };
 }
 
-function structuralCentrosymmetrySnapshot() {
+function structuralCentrosymmetrySnapshot(source = null, suppliedStats = null) {
   if (pipelineStage !== 4) return null;
-  const { stats } = currentLiveStructure();
+  const stats = suppliedStats || (source ? calculateLiveStructureForSource(source) : currentLiveStructure()).stats;
   if (!stats?.count || !referenceStructuralStats?.count) return null;
   const inference = inferCentrosymmetryNeighborCount(referenceStructuralStats.neighborCounts || [],
     referenceStructuralStats.dimension);
@@ -5457,9 +5468,9 @@ function structuralCentrosymmetrySnapshot() {
   };
 }
 
-function structuralScatteringSnapshot() {
+function structuralScatteringSnapshot(source = null, suppliedStats = null) {
   if (pipelineStage !== 4) return null;
-  const { stats } = currentLiveStructure();
+  const stats = suppliedStats || (source ? calculateLiveStructureForSource(source) : currentLiveStructure()).stats;
   if (!stats?.count) return null;
   const structureFactor = ensureStructureFactor(stats);
   return {
@@ -10897,7 +10908,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260828-287",
+      buildId: "20260828-288",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -13193,7 +13204,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260828-287" },
+    application: { name: "Materials Growth Lab", buildId: "20260828-288" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -19856,34 +19867,105 @@ function evaluateAcceptedBatchProjection(freshAtomIds, mode) {
   return { audit, proposedById, movableAtoms };
 }
 
+function settlingMaterialFingerprint(source) {
+  const scaleToAngstrom = referenceSpacingA / Math.max(referenceSpacing, 1e-12);
+  const morphology = covarianceMorphology(source, scaleToAngstrom);
+  const sampledCenters = radiallyStratifiedIndices(source,
+    source.map((_, index) => index), 192);
+  const coordination = coordinationDeficitForIndices(source, sampledCenters);
+  const packing = structuralPackingSnapshot(source);
+  const { stats } = calculateLiveStructureForSource(source);
+  const orientationalOrder = structuralOrientationalOrderSnapshot(source, stats);
+  const centrosymmetry = structuralCentrosymmetrySnapshot(source, stats);
+  const scattering = structuralScatteringSnapshot(source, stats);
+  const speciesCounts = source.reduce((counts, atom) => {
+    counts[atom.species] = (counts[atom.species] || 0) + 1;
+    return counts;
+  }, {});
+  return {
+    atomCount: source.length,
+    chemistryDigest: Object.entries(speciesCounts).sort(([first], [second]) =>
+      first.localeCompare(second)).map(([species, count]) => `${species}:${count}`).join("|"),
+    phenotype: morphology.phenotype,
+    intrinsicDimension: morphology.intrinsicDimension,
+    coordinationDeficit: Number.isFinite(coordination.mean) ? coordination.mean : null,
+    packingDensity: Number.isFinite(packing?.medianRelativeDensity)
+      ? packing.medianRelativeDensity : null,
+    localOrder: orientationalOrder?.harmonics?.[6]?.mean ?? null,
+    centrosymmetry: centrosymmetry?.meanAmplitude ?? null,
+    peakProminence: scattering?.summary?.peakProminence ?? null,
+    radiusOfGyrationAngstrom: morphology.radiusOfGyration,
+    maximumExtentAngstrom: morphology.maximumExtent,
+    relativeShapeAnisotropy: morphology.relativeShapeAnisotropy,
+    sampledCoordinationCenters: sampledCenters.length,
+    analysisWindowAtoms: stats.count,
+    coordinateFrameUsed: false,
+    coordinatesEmbedded: false,
+    targetUsed: false,
+    usedForAdmission: false,
+    usedForRanking: false,
+    physicalPotentialUsed: false,
+    physicalTimeModeled: false,
+  };
+}
+
+function virtualProjectionSource(proposedById) {
+  return atoms.map((atom) => ({ ...atom,
+    p: (proposedById.get(atom.id) || atom.p).clone(),
+  }));
+}
+
 function settlingSensitivityForAcceptedBatch(freshAtomIds, authorized) {
   if (!authorized || !freshAtomIds.length || !coloredDistanceEnvelopes) return null;
   const evaluated = ["gentle", "balanced", "strong"].map((mode) =>
-    evaluateAcceptedBatchProjection(freshAtomIds, mode)?.audit).filter(Boolean);
-  const baseline = evaluated[0];
+    evaluateAcceptedBatchProjection(freshAtomIds, mode)).filter(Boolean);
+  const baseline = evaluated[0]?.audit;
   if (!baseline) return null;
-  const sceneToAngstrom = referenceSpacingA / Math.max(referenceSpacing, 1e-12);
+  const materialBaseline = settlingMaterialFingerprint(atoms);
   const off = {
     mode: "off", attempted: false, accepted: false, reason: "exact as-placed coordinates retained",
     movableSites: baseline.movableSites, neighborhoodSites: baseline.neighborhoodSites,
     contactTerms: baseline.contactTerms, iterations: 0, maximumIterations: 0,
     strainBefore: baseline.strainBefore, strainAfter: baseline.strainBefore,
     strainReduction: 0, maximumDisplacementAngstrom: 0, rmsDisplacementAngstrom: 0,
-    displacementCapAngstrom: 0 * sceneToAngstrom,
+    displacementCapAngstrom: 0,
     contactAngleStrainDecreased: false,
     hardExclusionPassed: true, coordinationCapacityPassed: true,
     angularEnvelopePassed: true, publicBoundaryPassed: true,
+    materialFingerprint: materialBaseline,
+    materialConsequence: compareSettlingMaterialFingerprints(materialBaseline, materialBaseline),
   };
-  const arms = [off, ...evaluated.map((audit) => ({
-    ...audit,
-    strainReduction: audit.accepted ? audit.strainBefore - audit.strainAfter : 0,
-  }))];
+  const arms = [off, ...evaluated.map((result) => {
+    const materialFingerprint = result.audit.accepted
+      ? settlingMaterialFingerprint(virtualProjectionSource(result.proposedById)) : materialBaseline;
+    return {
+      ...result.audit,
+      strainReduction: result.audit.accepted
+        ? result.audit.strainBefore - result.audit.strainAfter : 0,
+      materialFingerprint,
+      materialConsequence: compareSettlingMaterialFingerprints(materialBaseline, materialFingerprint),
+    };
+  })];
+  const materialSensitiveModes = arms.filter((arm) =>
+    arm.materialConsequence.changedFieldCount > 0).map((arm) => arm.mode);
+  const materialChangedFields = [...new Set(arms.flatMap((arm) =>
+    arm.materialConsequence.changedFields))];
+  if (arms.some((arm) => !arm.materialConsequence.atomCountInvariant
+    || !arm.materialConsequence.chemistryInvariant)) {
+    throw new Error("settling sensitivity changed atom inventory or chemistry");
+  }
   return {
     schema: 1,
     role: "same-as-placed bounded geometric-settling sensitivity",
     selectedMode: structuralRelaxationMode,
     modes: arms.map((arm) => arm.mode),
     arms,
+    materialSensitiveModes,
+    materialChangedFields,
+    materialFieldCount: SETTLING_MATERIAL_FIELDS.length + 2,
+    atomCountInvariant: true,
+    chemistryInvariant: true,
+    coordinatesEmbedded: false,
     sameAsPlacedCheckpoint: true,
     sameFixedNeighborhood: true,
     candidateGeometryChanged: false,
@@ -27623,7 +27705,7 @@ function renderSettlingSensitivity(selected = null) {
       : arm.accepted ? `−${arm.strainReduction.toFixed(3)} strain` : "rolled back";
     const detail = document.createElement("span");
     detail.textContent = arm.mode === "off" ? "0 Å · no projection"
-      : `${arm.displacementCapAngstrom.toFixed(3)} Å cap · ${arm.iterations}/${arm.maximumIterations} iter`;
+      : `${arm.displacementCapAngstrom.toFixed(3)} Å cap · ${arm.iterations}/${arm.maximumIterations} iter · ${arm.materialConsequence.changedFieldCount} material Δ`;
     const track = document.createElement("i");
     const fill = document.createElement("b");
     fill.style.width = `${100 * Math.max(0, arm.strainReduction || 0) / maximumReduction}%`;
@@ -27636,8 +27718,14 @@ function renderSettlingSensitivity(selected = null) {
   }));
   const arm = audit.arms.find((entry) => entry.mode === selectedSettlingSensitivityMode) || audit.arms[0];
   const certified = audit.arms.filter((entry) => entry.attempted && entry.accepted).length;
-  settlingSensitivityState.textContent = `${certified}/3 projected arms certified · selected ${audit.selectedMode}`;
+  settlingSensitivityState.textContent = `${certified}/3 certified · ${audit.materialSensitiveModes.length} material-sensitive · selected ${audit.selectedMode}`;
   settlingSensitivityDetail.replaceChildren();
+  const materialLabels = Object.fromEntries(SETTLING_MATERIAL_FIELDS.map((field) =>
+    [field.id, field.label]));
+  materialLabels.phenotype = "shape phenotype";
+  materialLabels.intrinsicDimension = "structural dimension";
+  const materialChanges = arm.materialConsequence.changedFields.map((field) =>
+    materialLabels[field] || field);
   const rows = [
     ["outcome", arm.mode === "off" ? "unprojected baseline"
       : arm.accepted ? "compatible monotone correction" : "fail-closed rollback"],
@@ -27645,6 +27733,8 @@ function renderSettlingSensitivity(selected = null) {
     ["displacement", `${arm.maximumDisplacementAngstrom.toFixed(4)} Å max · ${arm.rmsDisplacementAngstrom.toFixed(4)} Å RMS`],
     ["hard certificates", arm.mode === "off" ? "unchanged as-placed geometry"
       : `exclusion ${arm.hardExclusionPassed ? "pass" : "fail"} · coordination ${arm.coordinationCapacityPassed ? "pass" : "fail"} · angle ${arm.angularEnvelopePassed ? "pass" : "fail"} · boundary ${arm.publicBoundaryPassed ? "pass" : "fail"}`],
+    ["material fingerprint", materialChanges.length
+      ? materialChanges.join(" · ") : "no resolved material field changed"],
     ["decision", arm.reason],
   ];
   rows.forEach(([name, value]) => {
@@ -27652,7 +27742,7 @@ function renderSettlingSensitivity(selected = null) {
     const text = document.createElement("span"); key.textContent = name; text.textContent = value;
     row.append(key, text); settlingSensitivityDetail.append(row);
   });
-  settlingSensitivityBoundary.textContent = `All four arms use the same as-placed colored sites and fixed local neighborhood. Only ${audit.selectedMode} could commit; the other arms did not alter atoms, candidates, ranking, frontier order, or the next search state. ${audit.selectedExecutionMatchesPreview === true ? "The executed setting exactly matches its frozen preview." : audit.selectedModeInBaseLadder ? "The executed setting did not reproduce its preview and must be treated as unresolved." : "The executed seeded mode is outside this unseeded cap ladder."} This is finite geometric sensitivity—not MD, energy, force integration, probability, kinetics, or time.`;
+  settlingSensitivityBoundary.textContent = `All four arms use the same as-placed colored sites and fixed local neighborhood. Material deltas recompute ${audit.materialFieldCount} coordinate-free local, reciprocal, and morphology fields on each compatible virtual projection; atom inventory and chemistry remain invariant. Only ${audit.selectedMode} could commit; the other arms did not alter atoms, candidates, ranking, frontier order, or the next search state. ${audit.selectedExecutionMatchesPreview === true ? "The executed setting exactly matches its frozen preview." : audit.selectedModeInBaseLadder ? "The executed setting did not reproduce its preview and must be treated as unresolved." : "The executed seeded mode is outside this unseeded cap ladder."} This is finite geometric sensitivity—not MD, energy, force integration, probability, kinetics, or time.`;
 }
 
 function renderLeapConsequence(selected = null) {

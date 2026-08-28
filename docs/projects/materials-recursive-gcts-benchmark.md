@@ -1,5 +1,22 @@
 # Recursive GCTS benchmark for material growth
 
+### Material outcomes across settling arms (Build 288)
+
+Each off/gentle/balanced/strong arm now receives a coordinate-free material
+fingerprint evaluated on its retained virtual geometry: coordination exposure,
+six-neighbor packing, local orientational order, exact-pair centrosymmetry,
+unit-weight finite-window S(q) prominence, covariance size/extent/anisotropy,
+dimension, and phenotype. The comparison reports named changed fields and
+signed within-field deltas only; it never combines unlike units into a scalar.
+Rejected arms inherit the as-placed baseline, while compatible arms are scored
+without committing their coordinates.
+
+Atom count and species inventory are asserted invariant, and the complete audit
+remains downstream of search with no target, potential, force, energy, kinetics,
+or clock. The live structural-statistics cache now includes the coordinate
+revision as well as count/replay identity, closing a prior stale-cache path
+between the as-placed and post-projection checkpoints.
+
 ### Same-as-placed settling sensitivity (Build 287)
 
 An eligible executed leap now freezes four bounded projection arms—off,

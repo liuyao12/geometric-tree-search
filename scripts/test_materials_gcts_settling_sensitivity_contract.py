@@ -56,9 +56,24 @@ def test_preview_precedes_the_only_committed_projection_and_is_receipted():
     require("selectedExecutionMatchesPreview")
 
 
+def test_material_fingerprint_is_virtual_downstream_and_coordinate_cache_is_fresh():
+    require("function settlingMaterialFingerprint")
+    require("compareSettlingMaterialFingerprints(materialBaseline, materialFingerprint)")
+    require("materialSensitiveModes")
+    require("materialChangedFields")
+    require("settling sensitivity changed atom inventory or chemistry")
+    require("atomCountInvariant: true")
+    require("chemistryInvariant: true")
+    require("coordinatesEmbedded: false")
+    require("usedForAdmission: false")
+    require("usedForRanking: false")
+    require('`${pipelineStage}:${atoms.length}:${replayIndex}:${atomGeometryRevision}`')
+    require("calculateLiveStructureForSource")
+
+
 def test_claims_are_bounded_and_current_build_is_exposed():
-    require("Build 287 · same-state settling sensitivity", README)
-    require('buildId: "20260828-287"')
+    require("Build 288 · material outcomes across settling arms", README)
+    require('buildId: "20260828-288"')
     require("not MD, energy, force integration, probability, kinetics, or time")
 
 
@@ -66,5 +81,6 @@ if __name__ == "__main__":
     test_same_as_placed_ladder_is_visible_and_interactive()
     test_counterfactuals_share_state_and_neighborhood_and_never_commit()
     test_preview_precedes_the_only_committed_projection_and_is_receipted()
+    test_material_fingerprint_is_virtual_downstream_and_coordinate_cache_is_fresh()
     test_claims_are_bounded_and_current_build_is_exposed()
     print("settling sensitivity contract passed")
