@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260827-a2-size9-v235";
+} from "./engine.js?v=20260828-a2-sliced-v236";
 
 const $ = (id) => document.getElementById(id);
 
@@ -769,7 +769,7 @@ function polycubeCubeCount(figure) {
 
 const catalogGroupDefinitions = [
   { id: "aperiodic", title: "Known aperiodic monotile", test: figure => figureHasCategory(figure, "Aperiodic Monotiles") },
-  { id: "a2-layered", title: "Primary search · A₂ layered solids · x+y+z=c", test: figure => figureHasCategory(figure, "A2 Layered Solids") },
+  { id: "a2-layered", title: "Primary search · A₂ consecutive-layer solids · x+y+z=k", test: figure => figureHasCategory(figure, "A2 Layered Solids") },
   { id: "unresolved-polycubes", title: "Unresolved polycube candidates", test: figure => figureHasCategory(figure, "Unresolved Polycube Candidates") },
   { id: "unresolved", title: "Unresolved lattice candidates", test: figure => figureHasCategory(figure, "Unresolved Lattice Candidates") },
   {
@@ -793,6 +793,14 @@ function catalogGroupForFigure(figure) {
 
 function sortCatalogFigures(groupId, figures) {
   return figures.slice().sort((a, b) => {
+    if (groupId === "a2-layered") {
+      const slicedDelta = Number(b.census_candidate?.kind === "a2_sliced_alcove_census")
+        - Number(a.census_candidate?.kind === "a2_sliced_alcove_census");
+      if (slicedDelta !== 0) return slicedDelta;
+      const priorityDelta = (a.census_candidate?.survivor_priority ?? Infinity)
+        - (b.census_candidate?.survivor_priority ?? Infinity);
+      if (priorityDelta !== 0) return priorityDelta;
+    }
     if (groupId === "unresolved") {
       return (a.census_candidate?.survivor_priority ?? Infinity) - (b.census_candidate?.survivor_priority ?? Infinity);
     }
@@ -1443,7 +1451,9 @@ function updateCandidateResearchPanel() {
         : `${candidate.lattice_points} lattice points · exhaustive face-obligation GCTS proves that every route toward combinatorial shell ${candidate.screening.shell_depth} encounters a permanently unfillable exposed face in the configured face-to-face proper-lattice model.${shell?.deepest_completed_shell ? ` Shell ${shell.deepest_completed_shell} is attainable, but no indefinitely extendable next shell exists.` : " The contradiction appears before the first complete shell."} Earlier connected-patch growth could still extend elsewhere, which is why this remains a useful regression control rather than an unresolved candidate.`;
     } else {
       candidateResearchTitle.textContent = `Research candidate ${candidate.id}`;
-      candidateResearchDetail.textContent = candidate.kind === "a2_layered_polyprism_census"
+      candidateResearchDetail.textContent = candidate.kind === "a2_sliced_alcove_census"
+        ? `${candidate.description} Its solid-angle profile across the ${candidate.morphology.layer_count} consecutive sections is ${candidate.morphology.layer_weight_profile.join("–")}; this is an affine-A₃ tetrahedral cell union, not a polycube or a constant-cross-section prism. Of ${candidate.screening.source_pool_size.toLocaleString()} directed seven-alcove shapes, exact weighted quotient search finds six-copy periods for ${candidate.screening.six_copy_periodic_certificates.toLocaleString()} and exhausts all ${candidate.screening.periodic_six_copy_hnf_total} determinant-seven HNF quotients for the remaining ${candidate.screening.six_copy_periodic_survivors}, with zero solver unknowns. This candidate has an independently replayed ${candidate.screening.corona_root_patch_copies}-copy root corona; extension of that retained corona considered ${candidate.screening.retained_corona_extension_placements_considered.toLocaleString()} placements before the bounded solver timed out, so it remains one of ${candidate.screening.retained_corona_timeout_survivors} deeper-search leads. Direct scalar subdivisions are excluded at scales 2–8 in both proper and reflected models, all connected two-copy metatile systems are excluded at scales 2 and 3, and all connected three-copy systems are excluded at scale 2. Twelve-copy periodic domains, other root coronas, deeper GCTS extension, and larger or non-scalar substitution systems remain open. These are screening facts, not evidence that the tile is aperiodic.`
+        : candidate.kind === "a2_layered_polyprism_census"
         ? candidate.screening.status === "periodic"
           ? `${candidate.description} The exact certificate uses ${candidate.screening.motif_tiles} copies and period vectors ${candidate.screening.periodic_eight_copy_certificate.period_vectors.map(vector => `(${vector.join(",")})`).join(", ")}. Its determinant-${candidate.screening.periodic_eight_copy_certificate.determinant} weighted quotient was replayed independently, so this is a proved translational lattice-function tiler and a large-domain periodic control—not an aperiodic candidate. This is the GCTS-I solid-angle-function claim; it is not promoted to a faithful Euclidean polyhedral tiling.`
           : candidate.screening.census_stage?.startsWith("a2_layered_size9_directed")
@@ -3096,7 +3106,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260827-a2-size8-v232", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260828-a2-sliced-v233", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3857,7 +3867,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260827-a2-size8-v232", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260828-a2-sliced-v233", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     setRunButton();
     worker.addEventListener("message", event => {

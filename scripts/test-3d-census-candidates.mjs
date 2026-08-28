@@ -26,6 +26,7 @@ import {
 import { A2_LAYERED_SIZE7_CANDIDATES } from "../assets/a2-layered-size7-candidates.js";
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../assets/a2-layered-size8-candidates.js";
 import { A2_LAYERED_SIZE9_CANDIDATES } from "../assets/a2-layered-size9-candidates.js";
+import { A2_SLICED_SIZE7_CANDIDATES } from "../assets/a2-sliced-size7-candidates.js";
 import {
   polycubeCoronaBoundaryKey,
   searchPolycubeCorona,
@@ -1631,7 +1632,7 @@ assert.equal(
 );
 
 const candidates = tileSpecs.figureCatalog.filter(figure => figure.census_candidate);
-assert.equal(candidates.length, 56 + A2_LAYERED_SIZE7_CANDIDATES.length + A2_LAYERED_SIZE8_CANDIDATES.length + A2_LAYERED_SIZE9_CANDIDATES.length,
+assert.equal(candidates.length, 56 + A2_LAYERED_SIZE7_CANDIDATES.length + A2_LAYERED_SIZE8_CANDIDATES.length + A2_LAYERED_SIZE9_CANDIDATES.length + A2_SLICED_SIZE7_CANDIDATES.length,
   "the lattice controls, free-polycube representatives, and focused A2 survivors must remain in the catalog");
 assert.ok(!candidates.some(figure => figure.census_candidate.id === "10_26470"));
 const survivors = candidates.filter(figure => figure.census_candidate.screening.status === "inconclusive");
@@ -1641,7 +1642,7 @@ const shellControls = candidates.filter(figure =>
 const periodicControls = candidates.filter(figure =>
   ["translational", "isohedral_periodic_quotient"].includes(figure.census_candidate.screening.certificate)
 );
-const unresolvedA2Candidates = [...A2_LAYERED_SIZE9_CANDIDATES, ...A2_LAYERED_SIZE8_CANDIDATES, ...A2_LAYERED_SIZE7_CANDIDATES].filter(
+const unresolvedA2Candidates = [...A2_SLICED_SIZE7_CANDIDATES, ...A2_LAYERED_SIZE9_CANDIDATES, ...A2_LAYERED_SIZE8_CANDIDATES, ...A2_LAYERED_SIZE7_CANDIDATES].filter(
   candidate => candidate.screening.status === "inconclusive"
 );
 assert.equal(survivors.length, 11 + unresolvedA2Candidates.length);

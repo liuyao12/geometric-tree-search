@@ -9,6 +9,7 @@ import { POLYCUBE_GCTS_CANDIDATES } from "../../assets/polycube-census-candidate
 import { A2_LAYERED_PRISM_SPECS, makeA2LayeredPrism } from "../../assets/a2-layered-prisms.js";
 import { makeA2LayeredPolyprism } from "../../assets/a2-layered-polyprisms.js";
 import { makeA2SlicedAlcoveUnion } from "../../assets/a2-sliced-alcoves.js";
+import { A2_SLICED_SIZE7_CANDIDATES } from "../../assets/a2-sliced-size7-candidates.js?v=20260828-1";
 import { A2_LAYERED_SIZE7_CANDIDATES } from "../../assets/a2-layered-size7-candidates.js?v=20260827-4";
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
 import { A2_LAYERED_SIZE9_CANDIDATES } from "../../assets/a2-layered-size9-candidates.js?v=20260827-3";
@@ -8516,6 +8517,21 @@ export const tileSpecs = (() => {
 
   // --- Registry (complete) ---
   const TILING_REGISTRY = {
+    ...Object.fromEntries(A2_SLICED_SIZE7_CANDIDATES.map(candidate => {
+      const geometry = makeA2SlicedAlcoveUnion(candidate.alcoves);
+      return [candidate.registry_id, {
+        name: candidate.name,
+        category: ["Unresolved A2 Sliced Candidates", "A2 Layered Solids"],
+        census_candidate: candidate,
+        layered_lattice: {
+          equation: "x+y+z=k",
+          base_layer: geometry.layer_sums[0],
+          top_layer: geometry.layer_sums.at(-1),
+          role: `consecutive-layer exact-through-${candidate.screening.periodic_exact_through} candidate`
+        },
+        build: () => [make_tile(candidate.name, makeA2SlicedAlcoveUnion(candidate.alcoves))]
+      }];
+    })),
     ...Object.fromEntries(A2_LAYERED_PRISM_SPECS.map(spec => [spec.id, {
       name: spec.name,
       category: ["A2 Layered Solids"],

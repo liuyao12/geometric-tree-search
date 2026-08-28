@@ -240,12 +240,16 @@ The catalog keeps the old app's systems and deduplicated figures, including
 polycubes, the five Fedorov solids, tetrahedral/octahedral systems, space
 fillers, Laves and perovskite systems, and Barlow/FCC/HCP cells.
 
-The non-polycube catalogue also contains exact prisms over the A2 hexagon,
-hat, and turtle. Their end faces lie on `x+y+z=0` and `x+y+z=3`, and their
-proper orientation group is the six-element subgroup preserving this family
-of affine layers. The hexagon is a periodic control; hat and turtle are
-layered search leads, not claims of strong 3D aperiodicity. See
-`docs/projects/a2-layered-lattice-search.md`.
+The primary non-polycube group now begins with eight evidence-ranked unions of
+Kuhn tetrahedra, deduplicated under reflected as well as proper layer
+isometries.  Their exact solid-angle functions couple every consecutive
+section `x+y+z=k`; all eight exhaust the six-copy periodic quotient screen,
+have independently replayed root coronas, and remain unresolved when that
+particular retained corona is extended.  The ranking measures finite-search
+difficulty, not likelihood of aperiodicity.  The same group also contains
+exact prisms over the A2 hexagon, hat, and turtle, plus the earlier multi-slab
+polyprism leads. Their proper orientation group is the six-element subgroup
+preserving the affine layers. See `docs/projects/a2-layered-lattice-search.md`.
 
 Convex monohedral systems also receive a necessary edge-angle check. When no
 combination of matching edge dihedral angles can close to `2π`, the engine

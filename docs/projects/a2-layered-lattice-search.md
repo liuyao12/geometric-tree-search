@@ -561,6 +561,16 @@ as `unresolved`, never as a no-corona certificate.  The merged report is
 breadth shards, focused 100k receipts, and QF_FD completions are retained
 separately.
 
+The 3D web catalogue exposes a compact eight-tile view of this family ahead of
+the polycube controls.  `scripts/build-a2-sliced-size7-catalog.mjs` selects
+from the 151 retained-corona timeout cases (89 classes after reflection
+deduplication) using only verified first-corona size, retained-extension
+incidence size, and root-corona search effort.  The
+generated `assets/a2-sliced-size7-candidates.js` records the complete evidence
+scope for each entry.  This is a reproducible benchmark ranking, not a claim
+that the selected eight are more likely to be aperiodic than the other 251
+six-copy survivors.
+
 Every candidate has also been screened for a direct scalar substitution at
 each scale 2 through 8, both under the proper six-element A2 layer group and
 with reflected copies enabled: 3,626 exact candidate-scale-model checks in
