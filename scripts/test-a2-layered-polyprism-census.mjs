@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import {
   canonicalA2LayeredPolyprism,
   describeA2LayeredPolyprism,
@@ -8,6 +9,7 @@ import {
 import { preprocessTilingSystem, tileSpecs } from "../apps/3d-lattice-tiler/engine.js";
 import { A2_LAYERED_SIZE7_CANDIDATES } from "../assets/a2-layered-size7-candidates.js";
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../assets/a2-layered-size8-candidates.js";
+import { A2_LAYERED_SIZE9_CANDIDATES } from "../assets/a2-layered-size9-candidates.js";
 
 const expected = [1, 2, 4, 15, 50, 237];
 for (let size = 1; size <= expected.length; size += 1) {
@@ -39,9 +41,47 @@ const changingThree = describeA2LayeredPolyprism([
   { q: 0, r: 0, k: 2, kind: "u" }
 ]);
 assert.equal(changingThree.layer_essential, true);
+assert.equal(changingThree.four_layer_essential, false);
+assert.equal(changingThree.layer_coupled, true);
+assert.equal(changingThree.layer_equation, "x+y+z=3k");
+assert.equal(changingThree.transverse_profile_asymmetric, false);
 assert.deepEqual(changingThree.layer_profile, [1, 2, 1]);
 assert.equal(changingThree.cross_section_changes, 2);
 assert.equal(enumerateA2LayeredPolyprisms({ size: 4, layerEssentialOnly: true }).length, 5);
+const fourLayerSizeEight = enumerateA2LayeredPolyprisms({
+  size: 8,
+  layerEssentialOnly: true,
+  minLayerCount: 4,
+  minDistinctCrossSections: 3,
+  minCrossSectionChanges: 2
+});
+assert.equal(fourLayerSizeEight.length, 2137);
+assert.ok(fourLayerSizeEight.every(candidate =>
+  candidate.morphology.four_layer_essential
+  && candidate.morphology.layer_coupled
+));
+const transverseAsymmetricSizeEight = enumerateA2LayeredPolyprisms({
+  size: 8,
+  layerEssentialOnly: true,
+  minLayerCount: 4,
+  minDistinctCrossSections: 3,
+  minCrossSectionChanges: 2,
+  requireTransverseProfileAsymmetry: true
+});
+assert.ok(transverseAsymmetricSizeEight.length > 0);
+assert.ok(transverseAsymmetricSizeEight.length < fourLayerSizeEight.length);
+assert.ok(transverseAsymmetricSizeEight.every(candidate =>
+  candidate.morphology.transverse_profile_asymmetric));
+const fullyChangingSizeEight = enumerateA2LayeredPolyprisms({
+  size: 8,
+  layerEssentialOnly: true,
+  minLayerCount: 4,
+  requireTransverseProfileAsymmetry: true,
+  requireAllCrossSectionsDistinct: true
+});
+assert.ok(fullyChangingSizeEight.length > 0);
+assert.ok(fullyChangingSizeEight.every(candidate =>
+  candidate.morphology.distinct_cross_sections === candidate.morphology.layer_count));
 
 for (const candidate of sizeThree) {
   const data = makeA2LayeredPolyprism(candidate.cells);
@@ -133,6 +173,32 @@ for (const candidate of A2_LAYERED_SIZE8_CANDIDATES) {
   assert.ok(catalogue.prototiles[0].unique_orientations.length > 0);
   assert.ok(catalogue.prototiles[0].unique_orientations.length <= 6);
 }
+
+assert.deepEqual(A2_LAYERED_SIZE9_CANDIDATES.map(candidate => candidate.id), [
+  "a2lp_9_00000", "a2lp_9_00002", "a2lp_9_00003", "a2lp_9_00010"
+]);
+for (const candidate of A2_LAYERED_SIZE9_CANDIDATES) {
+  assert.equal(candidate.morphology.layer_count, 5);
+  assert.equal(candidate.morphology.distinct_cross_sections, 5);
+  assert.equal(candidate.morphology.transverse_profile_asymmetric, true);
+  assert.equal(candidate.screening.periodic_exact_through, 4);
+  assert.equal(candidate.screening.periodic_four_copy_hnf_visited, 910);
+  assert.equal(candidate.screening.periodic_four_copy_complete, true);
+  assert.equal(candidate.screening.corona_completed_verified, true);
+}
+const sizeNineExactTwo = (await readFile(new URL(
+  "../data/a2-layered-size9-directed-periodic-exact2.ndjson", import.meta.url
+), "utf8")).trim().split("\n").filter(Boolean).map(JSON.parse);
+assert.equal(sizeNineExactTwo.length, 724);
+assert.equal(sizeNineExactTwo.filter(record => record.classification === "periodic").length, 430);
+assert.equal(sizeNineExactTwo.filter(record => record.classification === "unresolved").length, 294);
+assert.ok(sizeNineExactTwo.every(record => record.periodic_z3.solver_unknown === 0));
+assert.ok(sizeNineExactTwo
+  .filter(record => record.classification === "periodic")
+  .every(record => record.periodic_z3.replay?.verified));
+assert.ok(sizeNineExactTwo
+  .filter(record => record.classification === "unresolved")
+  .every(record => record.periodic_z3.hnf_range_exhausted));
 
 
 console.log("A2 layered-polyprism census regression passed", {

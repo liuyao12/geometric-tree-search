@@ -113,6 +113,8 @@ export function describeA2LayeredPolyprism(cells) {
   const layerIndices = [...layers.keys()].sort((left, right) => left - right);
   const signatures = layerIndices.map(layer => layers.get(layer).sort().join(";"));
   const layerProfile = layerIndices.map(layer => layers.get(layer).length);
+  const transverseProfileAsymmetric = layerProfile.some((count, index) =>
+    count !== layerProfile[layerProfile.length - 1 - index]);
   const occupied = new Set(normalized.map(cellKey));
   let verticalContacts = 0;
   let lateralContacts = 0;
@@ -124,7 +126,9 @@ export function describeA2LayeredPolyprism(cells) {
     }
   }
   const productPrism = isProductA2Prism(normalized);
+  const layerEssential = layerIndices.length >= 3 && !productPrism;
   return Object.freeze({
+    layer_equation: "x+y+z=3k",
     layer_count: layerIndices.length,
     layer_span: layerIndices.length ? layerIndices.at(-1) - layerIndices[0] + 1 : 0,
     layer_profile: Object.freeze(layerProfile),
@@ -137,7 +141,16 @@ export function describeA2LayeredPolyprism(cells) {
     // This is the focused research family: the tile crosses two internal A2
     // interfaces and changes cross-section, so the layer foliation is an
     // essential part of its combinatorics rather than merely an extrusion.
-    layer_essential: layerIndices.length >= 3 && !productPrism
+    layer_essential: layerEssential,
+    four_layer_essential: layerIndices.length >= 4 && !productPrism,
+    // A connected cell union can still be a purely vertical stack or a
+    // single-layer patch.  This flag identifies shapes whose adjacency graph
+    // genuinely uses both the A2 cross-sections and the transverse direction.
+    layer_coupled: verticalContacts > 0 && lateralContacts > 0,
+    // This cheap sufficient test rules out every symmetry that reverses the
+    // layer normal while preserving the number of cells in each section.
+    // A false value does not assert that such a symmetry actually exists.
+    transverse_profile_asymmetric: transverseProfileAsymmetric
   });
 }
 
@@ -145,7 +158,11 @@ export function enumerateA2LayeredPolyprisms({
   size,
   includeProduct = false,
   layerEssentialOnly = false,
-  minLayerCount = 1
+  minLayerCount = 1,
+  minDistinctCrossSections = 1,
+  minCrossSectionChanges = 0,
+  requireTransverseProfileAsymmetry = false,
+  requireAllCrossSectionsDistinct = false
 } = {}) {
   const target = Math.max(1, Math.floor(Number(size) || 1));
   let current = new Map();
@@ -170,6 +187,14 @@ export function enumerateA2LayeredPolyprisms({
     })
     .filter(candidate => includeProduct || !candidate.product_prism)
     .filter(candidate => candidate.morphology.layer_count >= Math.max(1, minLayerCount))
+    .filter(candidate => candidate.morphology.distinct_cross_sections
+      >= Math.max(1, minDistinctCrossSections))
+    .filter(candidate => candidate.morphology.cross_section_changes
+      >= Math.max(0, minCrossSectionChanges))
+    .filter(candidate => !requireTransverseProfileAsymmetry
+      || candidate.morphology.transverse_profile_asymmetric)
+    .filter(candidate => !requireAllCrossSectionsDistinct
+      || candidate.morphology.distinct_cross_sections === candidate.morphology.layer_count)
     .filter(candidate => !layerEssentialOnly || candidate.morphology.layer_essential)
     .sort((left, right) => left.key.localeCompare(right.key));
 }

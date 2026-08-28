@@ -456,13 +456,49 @@ lattice symmetry, the recorded positive planar scales cover that cellular
 case. Non-cellular or regrouped geometric inflations remain outside this
 screen.
 
-These four are now the leading web-catalogue candidates. They are exact only
+These four remain the deepest-screened web-catalogue candidates. They are exact only
 through seven copies: larger periodic domains, second-corona extension, and
 more general substitution rules remain open. The staged machine-readable
 reports are
 `data/a2-layered-size8-essential-periodic-exact1.ndjson` through
 `data/a2-layered-size8-essential-periodic-exact7.ndjson`; compact substitution
 evidence is in `data/a2-layered-size8-substitution-screen-summary.ndjson`.
+
+## Directed five-layer size-nine census
+
+The next pivot makes the A2 foliation still more explicit. The complete
+focused family consists of size-nine connected cell unions that span at least
+five slabs, have a distinct cross-section in every occupied slab, and have a
+non-palindromic layer profile. The last condition is a cheap sufficient test
+that no symmetry reversing the layer normal can preserve even the section
+cardinalities. These filters select geometry; they do not imply aperiodicity.
+
+There are 724 symmetry-distinct shapes in this focused family. Exact weighted
+quotient search certifies 430 with two-copy determinant-nine periods and
+exhausts every two-copy HNF quotient for the remaining 294 with zero solver
+unknowns. A first exact four-copy probe advances five of those survivors:
+`a2lp_9_00005` has a replayed determinant-18 period, while
+`a2lp_9_00000`, `a2lp_9_00002`, `a2lp_9_00003`, and `a2lp_9_00010`
+exhaust all 910 four-copy HNF bases. Each of the final four has an independently
+replayed root corona, using 21, 30, 29, and 27 copies respectively. They are
+the directed-layer catalogue leads; larger periods and second coronas remain
+open.
+
+The census, complete two-copy screen, focused four-copy screen, and corona
+receipts are `data/a2-layered-size9-directed-census.ndjson`,
+`data/a2-layered-size9-directed-periodic-exact2.ndjson`,
+`data/a2-layered-size9-directed-focus-periodic-exact4.ndjson`, and
+`data/a2-layered-size9-directed-focus-corona1.ndjson`.
+
+Rebuild the focused census with:
+
+```bash
+node scripts/export-a2-layered-polyprism-census.mjs \
+  --size=9 --layer-essential=true --min-layers=5 \
+  --min-cross-sections=5 --min-cross-section-changes=4 \
+  --transverse-asymmetric=true --all-cross-sections-distinct=true \
+  --output=data/a2-layered-size9-directed-census.ndjson
+```
 
 Rebuild the focused census with:
 
