@@ -28,6 +28,8 @@ import { runBlockedStateReplication } from "./policy-state-replication.mjs?v=202
 import { buildExecutedGrowthRegime, growthRegimePlotRows,
   GROWTH_REGIME_RESPONSE_AXES, GROWTH_REGIME_STATE_AXES }
   from "./growth-regime-map.mjs?v=20260828-1";
+import { compareShadowMaterialFingerprints, SHADOW_MATERIAL_CONSEQUENCE_FIELDS }
+  from "./shadow-material-consequence.mjs?v=20260828-284";
 import { archiveResponseFrontierRankAudit }
   from "./archive-response-frontier-audit.js?v=20260827-1";
 import { evidenceOrderedClusterDiscoverySchedule }
@@ -10885,7 +10887,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260828-283",
+      buildId: "20260828-284",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -13174,7 +13176,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260828-283" },
+    application: { name: "Materials Growth Lab", buildId: "20260828-284" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -18190,6 +18192,41 @@ function selectFrozenShadowLeapBatch(ranked, caches = {}) {
   return accepted;
 }
 
+function frozenShadowMaterialFingerprint(entries, emittedSites) {
+  const scaleToAngstrom = referenceSpacingA / Math.max(referenceSpacing, 1e-12);
+  const source = [...atoms, ...emittedSites].map((site) => ({ species: site.species, p: site.p }));
+  const morphology = covarianceMorphology(source, scaleToAngstrom);
+  const drift = compositionTarget && source.length
+    ? compositionDrift(source.map((site) => site.species), compositionTarget) : null;
+  const surfaceWeight = entries.reduce((sum, entry) => sum + entry.evaluation.fresh.length, 0);
+  const weighted = (key) => surfaceWeight ? entries.reduce((sum, entry) => sum
+    + entry.evaluation.fresh.length * (entry.evaluation.surfaceCompletion?.[key] || 0), 0) / surfaceWeight : null;
+  const newSiteDeficit = weighted("newSiteDeficit");
+  const healedExisting = weighted("healedExisting");
+  return {
+    atomCount: source.length,
+    phenotype: morphology.phenotype,
+    intrinsicDimension: morphology.intrinsicDimension,
+    radiusOfGyrationAngstrom: morphology.radiusOfGyration,
+    maximumExtentAngstrom: morphology.maximumExtent,
+    relativeShapeAnisotropy: morphology.relativeShapeAnisotropy,
+    compositionDrift: Number.isFinite(drift?.totalVariation) ? drift.totalVariation : null,
+    newSiteCoordinationDeficit: newSiteDeficit,
+    healedExistingCoordination: healedExisting,
+    surfaceIntegrity: Number.isFinite(newSiteDeficit) && Number.isFinite(healedExisting)
+      ? healedExisting - newSiteDeficit : null,
+    surfaceAggregation: "fresh-site-count-weighted candidate precommit coordination proxy",
+    coordinateFrameUsed: false,
+    coordinatesEmbedded: false,
+    targetUsed: false,
+    executed: false,
+    usedForAdmission: false,
+    usedForRanking: false,
+    equilibriumHabitInferred: false,
+    physicalTimeModeled: false,
+  };
+}
+
 function frozenShadowLeapRecord(entries) {
   const sites = uniqueFreshSites(entries.flatMap((entry) => entry.evaluation.fresh))
     .map((site) => ({ species: site.species, p: site.p.clone() }));
@@ -18213,6 +18250,7 @@ function frozenShadowLeapRecord(entries) {
     sites,
     centroid,
     radiusOfGyrationAngstrom: radiusScene * referenceSpacingA / Math.max(referenceSpacing, 1e-12),
+    materialFingerprint: frozenShadowMaterialFingerprint(entries, sites),
   };
 }
 
@@ -18228,6 +18266,8 @@ function compareFrozenShadowLeaps(baseline, omitted) {
     + Math.abs((baseline.speciesCounts[species] || 0) - (omitted.speciesCounts[species] || 0)), 0);
   const centroidShiftAngstrom = baseline.sites.length && omitted.sites.length
     ? baseline.centroid.distanceTo(omitted.centroid) * referenceSpacingA / Math.max(referenceSpacing, 1e-12) : null;
+  const materialConsequence = compareShadowMaterialFingerprints(
+    baseline.materialFingerprint, omitted.materialFingerprint);
   return {
     sameBatch: baseline.candidateDigest === omitted.candidateDigest,
     orderChanged: baseline.candidateOrderDigest !== omitted.candidateOrderDigest,
@@ -18244,6 +18284,7 @@ function compareFrozenShadowLeaps(baseline, omitted) {
     chemistryL1,
     centroidShiftAngstrom,
     radiusOfGyrationDeltaAngstrom: omitted.radiusOfGyrationAngstrom - baseline.radiusOfGyrationAngstrom,
+    materialConsequence,
   };
 }
 
@@ -18276,6 +18317,10 @@ function buildFrozenShadowLeapAudit(entries, candidateSetDigest) {
       || first.entry.candidate.key.localeCompare(second.entry.candidate.key));
     const omitted = frozenShadowLeapRecord(selectFrozenShadowLeapBatch(ranked, caches) || []);
     const comparison = compareFrozenShadowLeaps(baseline, omitted);
+    const materialConsequenceChanged = comparison.materialConsequence.phenotypeChanged
+      || comparison.materialConsequence.intrinsicDimensionChanged
+      || Object.values(comparison.materialConsequence.deltas)
+        .some((value) => Number.isFinite(value) && Math.abs(value) > 1e-12);
     return {
       termId,
       termLabel: term?.label || termId,
@@ -18284,6 +18329,7 @@ function buildFrozenShadowLeapAudit(entries, candidateSetDigest) {
       omitted,
       ...comparison,
       structuralLeapChanged: !comparison.sameBatch || baseline.emittedSiteDigest !== omitted.emittedSiteDigest,
+      materialConsequenceChanged,
       candidateSetChanged: false,
       hardAdmissionChanged: false,
       committed: false,
@@ -18294,7 +18340,7 @@ function buildFrozenShadowLeapAudit(entries, candidateSetDigest) {
     || first.actionJaccard - second.actionJaccard
     || first.termId.localeCompare(second.termId));
   const audit = {
-    schema: 1,
+    schema: 2,
     available: true,
     scheduling: "same exact greedy commuting-antichain selector",
     candidateSetDigest,
@@ -18302,6 +18348,7 @@ function buildFrozenShadowLeapAudit(entries, candidateSetDigest) {
     cases,
     activeTerms: cases.length,
     changedStructuralLeaps: cases.filter((entry) => entry.structuralLeapChanged).length,
+    changedMaterialConsequences: cases.filter((entry) => entry.materialConsequenceChanged).length,
     reorderedBatches: cases.filter((entry) => entry.orderChanged && !entry.structuralLeapChanged).length,
     minimumActionJaccard: Math.min(1, ...cases.map((entry) => entry.actionJaccard)),
     minimumEmittedSiteJaccard: Math.min(1, ...cases.map((entry) => entry.emittedSiteJaccard)),
@@ -18313,9 +18360,11 @@ function buildFrozenShadowLeapAudit(entries, candidateSetDigest) {
     targetUsed: !reconstructionCertified,
     executed: false,
     downstreamFrontierEnumerated: false,
+    materialFingerprintCoordinatesEmbedded: false,
+    materialFingerprintUsedForSearch: false,
     physicalCausalEffectIdentified: false,
     energyOrRateInferred: false,
-    claimBoundary: "one frozen-frontier structural-leap sensitivity under an exact leave-one-soft-channel-out rerank; no shadow arm is committed and no downstream frontier, relaxation, dynamics, probability, energy, rate, or physical time is computed",
+    claimBoundary: "one frozen-frontier structural-leap sensitivity under an exact leave-one-soft-channel-out rerank; compact whole-state shape/composition and precommit coordination fingerprints are descriptive virtual-batch consequences, no shadow arm is committed, and no downstream frontier, relaxation, local order, diffraction, dynamics, probability, energy, rate, or physical time is computed",
   };
   audit.digest = notebookStringHash(JSON.stringify({
     candidateSetDigest,
@@ -18323,7 +18372,8 @@ function buildFrozenShadowLeapAudit(entries, candidateSetDigest) {
     cases: cases.map((entry) => ({ termId: entry.termId,
       candidateDigest: entry.omitted.candidateDigest, candidateOrderDigest: entry.omitted.candidateOrderDigest,
       emittedSiteDigest: entry.omitted.emittedSiteDigest,
-      actionJaccard: entry.actionJaccard, emittedSiteJaccard: entry.emittedSiteJaccard })),
+      actionJaccard: entry.actionJaccard, emittedSiteJaccard: entry.emittedSiteJaccard,
+      materialConsequence: entry.materialConsequence })),
     targetUsed: audit.targetUsed,
   }));
   return audit;
@@ -18333,11 +18383,14 @@ function receiptFrozenShadowLeapAudit(audit) {
   if (!audit) return null;
   if (!audit.available) return { available: false, reason: audit.reason,
     candidateSetDigest: audit.candidateSetDigest, targetUsed: audit.targetUsed, executed: false };
+  const compactMaterial = (fingerprint) => Object.fromEntries(Object.entries(fingerprint)
+    .map(([key, value]) => [key, typeof value === "number" ? receiptRound(value) : value]));
   const compactLeap = (leap) => ({ actions: leap.actions,
     candidateDigest: leap.candidateDigest, candidateOrderDigest: leap.candidateOrderDigest,
     emittedSites: leap.emittedSites,
     emittedSiteDigest: leap.emittedSiteDigest, speciesCounts: { ...leap.speciesCounts },
-    radiusOfGyrationAngstrom: receiptRound(leap.radiusOfGyrationAngstrom) });
+    radiusOfGyrationAngstrom: receiptRound(leap.radiusOfGyrationAngstrom),
+    materialFingerprint: compactMaterial(leap.materialFingerprint) });
   return {
     schema: audit.schema,
     available: true,
@@ -18360,6 +18413,12 @@ function receiptFrozenShadowLeapAudit(audit) {
       centroidShiftAngstrom: entry.centroidShiftAngstrom === null ? null
         : receiptRound(entry.centroidShiftAngstrom),
       radiusOfGyrationDeltaAngstrom: receiptRound(entry.radiusOfGyrationDeltaAngstrom),
+      materialConsequenceChanged: entry.materialConsequenceChanged,
+      materialConsequence: {
+        ...entry.materialConsequence,
+        deltas: Object.fromEntries(Object.entries(entry.materialConsequence.deltas)
+          .map(([key, value]) => [key, value === null ? null : receiptRound(value)])),
+      },
       candidateSetChanged: entry.candidateSetChanged,
       hardAdmissionChanged: entry.hardAdmissionChanged,
       committed: entry.committed,
@@ -18367,6 +18426,7 @@ function receiptFrozenShadowLeapAudit(audit) {
     })),
     activeTerms: audit.activeTerms,
     changedStructuralLeaps: audit.changedStructuralLeaps,
+    changedMaterialConsequences: audit.changedMaterialConsequences,
     reorderedBatches: audit.reorderedBatches,
     minimumActionJaccard: receiptRound(audit.minimumActionJaccard),
     minimumEmittedSiteJaccard: receiptRound(audit.minimumEmittedSiteJaccard),
@@ -18374,6 +18434,8 @@ function receiptFrozenShadowLeapAudit(audit) {
     candidateSetChanged: audit.candidateSetChanged,
     hardAdmissionChanged: audit.hardAdmissionChanged,
     sameBatchFeasibilityRules: audit.sameBatchFeasibilityRules,
+    materialFingerprintCoordinatesEmbedded: audit.materialFingerprintCoordinatesEmbedded,
+    materialFingerprintUsedForSearch: audit.materialFingerprintUsedForSearch,
     coordinatesEmbedded: false,
     targetUsed: audit.targetUsed,
     executed: audit.executed,
@@ -29925,6 +29987,7 @@ function renderPolicyShadowLeap(snapshot, requestedTermId = null) {
   const selected = audit.cases.find((entry) => entry.termId === requestedTermId)
     || audit.cases[0] || null;
   policyShadowLeapState.textContent = `${audit.changedStructuralLeaps}/${audit.activeTerms} channels change the antichain`
+    + ` · ${audit.changedMaterialConsequences}/${audit.activeTerms} change the material fingerprint`
     + ` · ${audit.reorderedBatches} reorder only · minimum site overlap ${(100 * audit.minimumEmittedSiteJaccard).toFixed(0)}%`;
   if (!selected) return;
   const baseline = selected.baseline;
@@ -29979,12 +30042,42 @@ function renderPolicyShadowLeap(snapshot, requestedTermId = null) {
     const strong = document.createElement("strong"); strong.textContent = value;
     item.append(small, strong); metrics.append(item);
   });
+  const materialHeading = document.createElement("h4");
+  materialHeading.textContent = "virtual whole-configuration consequence · uncommitted";
+  metrics.append(materialHeading);
+  const baselineMaterial = baseline.materialFingerprint;
+  const omittedMaterial = omitted.materialFingerprint;
+  const materialFormat = (id, value) => {
+    if (!Number.isFinite(value)) return "—";
+    if (id === "atomCount") return Math.round(value).toLocaleString();
+    if (["radiusOfGyrationAngstrom", "maximumExtentAngstrom"].includes(id)) return `${value.toFixed(3)} Å`;
+    return value.toFixed(3);
+  };
+  const materialFields = [
+    { id: "phenotype", label: "covariance phenotype" },
+    ...SHADOW_MATERIAL_CONSEQUENCE_FIELDS,
+  ];
+  materialFields.forEach(({ id, label }) => {
+    const item = document.createElement("span"); item.className = "material";
+    const small = document.createElement("small"); small.textContent = label;
+    const strong = document.createElement("strong");
+    strong.textContent = id === "phenotype"
+      ? `${baselineMaterial.phenotype} → ${omittedMaterial.phenotype}`
+      : `${materialFormat(id, baselineMaterial[id])} → ${materialFormat(id, omittedMaterial[id])}`;
+    const delta = document.createElement("em");
+    const difference = selected.materialConsequence.deltas[id];
+    delta.textContent = id === "phenotype"
+      ? (selected.materialConsequence.phenotypeChanged ? "class changes" : "class preserved")
+      : Number.isFinite(difference) ? `omitted − baseline ${difference >= 0 ? "+" : ""}${materialFormat(id, difference)}`
+        : "difference unresolved";
+    item.append(small, strong, delta); metrics.append(item);
+  });
   const chemistry = document.createElement("p");
   const formula = (counts) => Object.entries(counts).sort(([first], [second]) => first.localeCompare(second))
     .map(([species, count]) => `${species}${count}`).join(" · ") || "no emitted sites";
   chemistry.textContent = `baseline ${formula(baseline.speciesCounts)} · omitted ${formula(omitted.speciesCounts)} · ${selected.removedActions} actions removed / ${selected.addedActions} added`;
   const boundary = document.createElement("p"); boundary.className = "claim-boundary";
-  boundary.textContent = `${audit.scheduling}; baseline/live selection parity ${audit.baselineSelectionMatchesLiveBatch ? "verified" : "pending"}. Candidate geometry, hard admission, batch feasibility, and public boundary stay fixed. The omitted batch is not committed and no downstream frontier or relaxation is computed; this is model sensitivity, not energy, causality, kinetics, probability, or time. Ledger ${audit.digest}.`;
+  boundary.textContent = `${audit.scheduling}; baseline/live selection parity ${audit.baselineSelectionMatchesLiveBatch ? "verified" : "pending"}. Candidate geometry, hard admission, batch feasibility, and public boundary stay fixed. Whole-state shape and composition are recomputed on the current atoms plus each uncommitted emitted-site union; interface completion is a fresh-site-weighted precommit coordination proxy. The omitted batch is not committed and no downstream frontier, relaxation, local order, or diffraction is computed; this is model sensitivity, not energy, causality, kinetics, probability, or time. Ledger ${audit.digest}.`;
   policyShadowLeapDetail.append(heading, metrics, chemistry, boundary);
 }
 

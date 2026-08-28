@@ -1,5 +1,24 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 284 · channel omission → material consequence
+
+The frozen shadow-leap microscope now goes beyond action IDs, emitted sites,
+and chemistry. For every active geometry channel, the same exact
+leave-one-channel-out antichain is joined to a compact virtual
+whole-configuration fingerprint: atom count, covariance phenotype, structural
+dimension, radius of gyration, maximum extent, shape anisotropy, composition
+drift, and a fresh-site-weighted interface-completion proxy.
+
+The baseline and omitted batches use the unchanged hard-admitted candidate set,
+same exact commuting scheduler, and same public boundary. Neither batch is
+committed by this comparison. Fingerprints are computed from the current atoms
+plus each batch's exact colored emitted-site union, omit coordinates from the
+receipt, and never feed admission or ranking. The card therefore answers a
+materials question—what finite structural consequence changes when a geometric
+hypothesis changes the chosen leap—without claiming physical causality, energy,
+relaxation, kinetics, probability, or time. Local order and diffraction remain
+outside this uncommitted preview rather than being silently approximated.
+
 ## Build 283 · executed geometric growth-regime map
 
 The structural-leap certificate now links three pieces of evidence that were

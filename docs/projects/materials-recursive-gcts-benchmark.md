@@ -1,5 +1,24 @@
 # Recursive GCTS benchmark for material growth
 
+### Channel omission to material consequence (Build 284)
+
+The exact frozen-frontier shadow leap now carries a coordinate-free material
+fingerprint for both the baseline antichain and every one-channel-omitted
+antichain. It recomputes whole-configuration covariance morphology and
+composition from the current explicit atoms plus the exact colored emitted-site
+union. It also reports a fresh-site-count-weighted precommit coordination
+completion proxy from the already frozen candidate evaluations.
+
+The interactive microscope displays baseline → omitted atom count, covariance
+phenotype, radius of gyration, maximum extent, shape anisotropy, composition
+drift, and interface completion alongside the existing exact action/site/
+chemistry comparison. Receipt records include rounded fingerprints, signed
+omitted-minus-baseline deltas, flags, and the audit digest without coordinates.
+The candidate set, hard gates, batch feasibility, and public boundary are
+unchanged; neither counterfactual is committed or enumerates a downstream frontier.
+No relaxation, local-order, diffraction, energy, causal effect, probability,
+kinetics, rate, or physical time is inferred.
+
 ### Executed geometric growth-regime map (Build 283)
 
 The portal now joins each accepted retained GCTS leap to a compact
