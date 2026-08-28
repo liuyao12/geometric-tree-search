@@ -7209,10 +7209,11 @@ function portRoleKey(rule) {
   return `${rule.to}:${Math.round((rule.meanShared || 0) * 2)}:${separation}:${rotation}`;
 }
 
-function numericMatrixRank(matrix, tolerance = 1e-8) {
-  if (!matrix.length || !matrix[0]?.length) return 0;
+function numericMatrixDecomposition(matrix, tolerance = 1e-8) {
+  if (!matrix.length || !matrix[0]?.length) return { rank: 0, pivotColumns: [] };
   const work = matrix.map((row) => row.slice());
   let rank = 0;
+  const pivotColumns = [];
   for (let column = 0; column < work[0].length && rank < work.length; column++) {
     let pivot = rank;
     for (let row = rank + 1; row < work.length; row++) {
@@ -7227,9 +7228,14 @@ function numericMatrixRank(matrix, tolerance = 1e-8) {
       const factor = work[row][column];
       for (let entry = column; entry < work[row].length; entry++) work[row][entry] -= factor * work[rank][entry];
     }
+    pivotColumns.push(column);
     rank++;
   }
-  return rank;
+  return { rank, pivotColumns };
+}
+
+function numericMatrixRank(matrix, tolerance = 1e-8) {
+  return numericMatrixDecomposition(matrix, tolerance).rank;
 }
 
 function clusterPosePortIncidence(cluster) {
@@ -7237,6 +7243,8 @@ function clusterPosePortIncidence(cluster) {
   const rules = observedPortRules(cluster);
   if (!atlas?.orientations || !rules.length) return {
     cluster, rows: [], roles: [], matrix: [], numericRank: 1,
+    pivotRoleColumns: [], directionalBasis: [], directionalBasisLimit: 10,
+    directionalBasisTruncated: false, scalarFields: ["compatibility", "failure"],
     nonzeroCells: 0, retainedWitnessSamples: 0, targetUsed: false,
   };
   const roles = [...new Set(rules.map(portRoleKey))].sort();
@@ -7278,6 +7286,16 @@ function clusterPosePortIncidence(cluster) {
     };
   });
   const orderedMatrix = rowOrder.map((row) => matrix[row.rawPose]);
+  const decomposition = numericMatrixDecomposition(orderedMatrix);
+  const directionalChannelLimit = 10;
+  const directionalBasis = decomposition.pivotColumns.slice(0, directionalChannelLimit).map((column, channel) => ({
+    channel: channel + 1,
+    roleColumn: column,
+    roleDisplayId: roleRecords[column].displayId,
+    targetLabel: roleRecords[column].targetLabel,
+    activePoseRows: orderedMatrix.map((row, rowIndex) => row[column] > 0 ? rowIndex : -1).filter((rowIndex) => rowIndex >= 0),
+    retainedWitnessSamples: orderedMatrix.reduce((sum, row) => sum + row[column], 0),
+  }));
   return {
     cluster,
     rows: rowOrder.map((row, rank) => ({
@@ -7288,7 +7306,12 @@ function clusterPosePortIncidence(cluster) {
     })),
     roles: roleRecords,
     matrix: orderedMatrix,
-    numericRank: Math.max(1, numericMatrixRank(matrix)),
+    numericRank: Math.max(1, decomposition.rank),
+    pivotRoleColumns: decomposition.pivotColumns.slice(),
+    directionalBasis,
+    directionalBasisLimit: directionalChannelLimit,
+    directionalBasisTruncated: decomposition.rank > directionalChannelLimit,
+    scalarFields: ["compatibility", "failure"],
     nonzeroCells: orderedMatrix.reduce((sum, row) => sum + row.filter((count) => count > 0).length, 0),
     retainedWitnessSamples: orderedMatrix.flat().reduce((sum, count) => sum + count, 0),
     rowOrder: "descending observed pose occupancy; ties use internal orbit order",
@@ -9364,6 +9387,7 @@ function renderClusterPosePortIncidence(inspector, cluster, familyIndex) {
   const state = panel.querySelector("header b");
   const grid = panel.querySelector(".cluster-pose-port-grid");
   const detail = panel.querySelector(".cluster-pose-port-detail");
+  const basis = panel.querySelector(".cluster-channel-basis");
   if (!audit.rows.length || !audit.roles.length) {
     state.textContent = "no witnessed coupling";
     detail.textContent = "This class contributes no pose × outgoing-port matrix beyond the two compatibility/failure fields.";
@@ -9377,6 +9401,7 @@ function renderClusterPosePortIncidence(inspector, cluster, familyIndex) {
   audit.roles.forEach((role) => {
     const label = document.createElement("b");
     label.className = "port-head";
+    label.classList.toggle("basis-column", audit.pivotRoleColumns.includes(role.role));
     label.textContent = role.displayId;
     label.title = `${role.targetLabel} · ${role.sharedSupport} shared · |t| ${role.translationNearestNeighborUnits}dₙₙ · ΔR ${role.properRotationDegrees}°`;
     grid.append(label);
@@ -9388,6 +9413,11 @@ function renderClusterPosePortIncidence(inspector, cluster, familyIndex) {
     grid.querySelectorAll("button").forEach((button) => {
       const active = Number(button.dataset.poseRow) === rowIndex
         && Number(button.dataset.portColumn) === roleIndex;
+      button.classList.toggle("active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+    basis.querySelectorAll("button[data-port-column]").forEach((button) => {
+      const active = Number(button.dataset.portColumn) === roleIndex;
       button.classList.toggle("active", active);
       button.setAttribute("aria-pressed", String(active));
     });
@@ -9407,6 +9437,7 @@ function renderClusterPosePortIncidence(inspector, cluster, familyIndex) {
       button.dataset.portColumn = String(roleIndex);
       button.style.setProperty("--incidence", String(count / maximum));
       button.classList.toggle("empty", count === 0);
+      button.classList.toggle("basis-column", audit.pivotRoleColumns.includes(roleIndex));
       button.setAttribute("aria-pressed", "false");
       button.setAttribute("aria-label", `${row.displayId} by ${role.displayId}: ${count} retained witness samples. Inspect this pose and port coupling.`);
       button.textContent = count ? String(count) : "·";
@@ -9414,6 +9445,37 @@ function renderClusterPosePortIncidence(inspector, cluster, familyIndex) {
       grid.append(button);
     });
   });
+  if (audit.directionalBasis.length) {
+    audit.directionalBasis.forEach((channel) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.dataset.portColumn = String(channel.roleColumn);
+      button.setAttribute("aria-pressed", "false");
+      button.innerHTML = `<small>D${channel.channel} · directional</small><strong>${channel.roleDisplayId}</strong><span>${channel.activePoseRows.length} pose row${channel.activePoseRows.length === 1 ? "" : "s"} · ${channel.retainedWitnessSamples} witness${channel.retainedWitnessSamples === 1 ? "" : "es"}</span>`;
+      button.addEventListener("click", () => {
+        const strongestRow = audit.matrix.map((row, rowIndex) => ({ rowIndex, count: row[channel.roleColumn] }))
+          .sort((first, second) => second.count - first.count || first.rowIndex - second.rowIndex)[0];
+        selectCell(strongestRow.rowIndex, channel.roleColumn);
+      });
+      basis.append(button);
+    });
+  } else {
+    const reserve = document.createElement("span");
+    reserve.className = "reserved";
+    reserve.innerHTML = "<small>D1 · directional reserve</small><strong>unresolved</strong><span>no independent witnessed port column</span>";
+    basis.append(reserve);
+  }
+  audit.scalarFields.forEach((field, fieldIndex) => {
+    const scalar = document.createElement("span");
+    scalar.className = "scalar";
+    scalar.innerHTML = `<small>S${fieldIndex + 1} · scalar</small><strong>${field}</strong><span>${field === "compatibility" ? "connection support" : "unsupported / conflict evidence"}</span>`;
+    basis.append(scalar);
+  });
+  if (audit.directionalBasisTruncated) {
+    const truncated = document.createElement("em");
+    truncated.textContent = `${audit.numericRank - audit.directionalBasisLimit} additional independent directions are truncated by the declared 12-channel ceiling.`;
+    basis.append(truncated);
+  }
   const firstObserved = audit.matrix.flatMap((row, rowIndex) => row.map((count, roleIndex) => ({ count, rowIndex, roleIndex })))
     .find((cell) => cell.count > 0) || { rowIndex: 0, roleIndex: 0 };
   selectCell(firstObserved.rowIndex, firstObserved.roleIndex);
@@ -9468,6 +9530,7 @@ function updateClusterGalleryInspector(galleryIndex) {
     <section class="cluster-pose-port-incidence" aria-label="Pose by connection-port incidence matrix">
       <header><span><small>channel-demand microscope</small><strong>Pose × port incidence</strong></span><b>assembling retained witnesses</b></header>
       <div class="cluster-pose-port-coverage"></div>
+      <div class="cluster-channel-basis" role="group" aria-label="Rank-revealing GCTS channel basis"></div>
       <div class="cluster-pose-port-grid" role="group" aria-label="Select a proper-pose and outgoing-port cell"></div>
       <article class="cluster-pose-port-detail" aria-live="polite"></article>
       <p>The numeric rank of this witnessed matrix—not the raw number of rotations or port labels—supplies the directional channel demand. Compatibility and failure add two scalar fields. Counts are retained training witnesses, never energies or target labels.</p>
@@ -10700,6 +10763,13 @@ function receiptClusterRecord(cluster, index) {
       roles: posePortIncidence.roles.map((role) => ({ ...role })),
       matrix: posePortIncidence.matrix.map((row) => row.slice()),
       numericRank: posePortIncidence.numericRank,
+      pivotRoleColumns: posePortIncidence.pivotRoleColumns.slice(),
+      directionalBasis: posePortIncidence.directionalBasis.map((channel) => ({
+        ...channel, activePoseRows: channel.activePoseRows.slice(),
+      })),
+      directionalBasisLimit: posePortIncidence.directionalBasisLimit,
+      directionalBasisTruncated: posePortIncidence.directionalBasisTruncated,
+      scalarFields: posePortIncidence.scalarFields.slice(),
       nonzeroCells: posePortIncidence.nonzeroCells,
       retainedWitnessSamples: posePortIncidence.retainedWitnessSamples,
       rowOrder: posePortIncidence.rowOrder,
@@ -11298,7 +11368,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260828-294",
+      buildId: "20260828-295",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -13597,7 +13667,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260828-294" },
+    application: { name: "Materials Growth Lab", buildId: "20260828-295" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"

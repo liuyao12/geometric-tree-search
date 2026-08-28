@@ -18,7 +18,7 @@ def require(source: str, fragment: str) -> None:
 def main() -> None:
     require(APP, "function clusterPosePortIncidence(cluster)")
     require(APP, "const orderedMatrix = rowOrder.map((row) => matrix[row.rawPose]);")
-    require(APP, "numericRank: Math.max(1, numericMatrixRank(matrix))")
+    require(APP, "numericRank: Math.max(1, decomposition.rank)")
     require(APP, 'matrixMeaning: "retained training witness count for a symmetry-reduced pose orbit and outgoing port role"')
     require(APP, "candidateGeometryChanged: false")
     require(APP, "physicalPotential: false")
@@ -33,9 +33,9 @@ def main() -> None:
     require(CSS, ".cluster-pose-port-grid")
     require(CSS, ".cluster-pose-port-detail")
     require(README, "Build 294 · pose × connection-port incidence microscope")
-    require(APP, 'buildId: "20260828-294"')
-    require(HTML, 'app.js?v=20260828-294')
-    require(HTML, 'style.css?v=20260828-294')
+    require(APP, 'buildId: "20260828-295"')
+    require(HTML, 'app.js?v=20260828-295')
+    require(HTML, 'style.css?v=20260828-295')
     print("pose by connection-port incidence contract passed")
 
 

@@ -1,5 +1,22 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 295 · rank-revealing channel basis
+
+The Stage-3 pose × port matrix now exposes a deterministic rank-revealing basis.
+Independent pivot port columns become directional fields D1…D10; clicking a
+field selects its strongest witnessed pose/port cell. Compatibility and failure
+remain separate scalar fields S1 and S2. Basis columns are highlighted in the
+matrix, while dependent port columns remain visible as evidence that does not
+increase channel dimension.
+
+The declared 12-channel ceiling is explicit: if the witnessed directional rank
+exceeds ten, the panel reports how many independent directions were truncated
+rather than silently implying a full representation. Receipts retain pivot
+columns, the active pose rows and witness count for every directional basis
+field, the two scalar fields, the ceiling, and truncation state. This basis is a
+deterministic coordinate system for learned connection evidence—not a unique
+physical mode decomposition, energy eigensystem, or target-fitted embedding.
+
 ## Build 294 · pose × connection-port incidence microscope
 
 Stage 3 now renders the matrix that actually determines directional marking

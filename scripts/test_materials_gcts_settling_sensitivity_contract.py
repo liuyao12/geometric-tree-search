@@ -73,7 +73,7 @@ def test_material_fingerprint_is_virtual_downstream_and_coordinate_cache_is_fres
 
 def test_claims_are_bounded_and_current_build_is_exposed():
     require("Build 290 · retained-leap settling robustness", README)
-    require('buildId: "20260828-294"')
+    require('buildId: "20260828-295"')
     require("not MD, energy, force integration, probability, kinetics, or time")
 
 
