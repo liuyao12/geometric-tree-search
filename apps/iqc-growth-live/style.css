@@ -1923,7 +1923,7 @@ body.study-guide-open { overflow: hidden; }
 .policy-decisiveness > header strong { margin-top: 3px; color: #b6a5d3; font: 6px var(--mono); font-weight: 400; }
 .policy-decisiveness > header b { max-width: 170px; color: #887b9e; font: 5px/1.3 var(--mono); font-weight: 400; text-align: right; }
 .policy-decisiveness-head,
-.policy-decisiveness-matrix button { display: grid; grid-template-columns: minmax(72px, 1.8fr) repeat(6, minmax(28px, .62fr)); align-items: center; gap: 3px; }
+.policy-decisiveness-matrix button { display: grid; grid-template-columns: minmax(72px, 1.8fr) repeat(7, minmax(28px, .62fr)); align-items: center; gap: 3px; }
 .policy-decisiveness-head { margin-top: 5px; padding: 0 4px 3px; color: #655c73; font: 4px var(--mono); text-align: center; text-transform: uppercase; }
 .policy-decisiveness-head span:first-child { text-align: left; }
 .policy-decisiveness-matrix { border: 1px solid rgba(181, 148, 255, .09); }

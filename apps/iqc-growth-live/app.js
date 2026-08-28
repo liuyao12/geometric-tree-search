@@ -29,7 +29,7 @@ import { buildExecutedGrowthRegime, growthRegimePlotRows,
   GROWTH_REGIME_RESPONSE_AXES, GROWTH_REGIME_STATE_AXES }
   from "./growth-regime-map.mjs?v=20260828-1";
 import { compareShadowMaterialFingerprints, SHADOW_MATERIAL_CONSEQUENCE_FIELDS }
-  from "./shadow-material-consequence.mjs?v=20260828-284";
+  from "./shadow-material-consequence.mjs?v=20260828-285";
 import { archiveResponseFrontierRankAudit }
   from "./archive-response-frontier-audit.js?v=20260827-1";
 import { evidenceOrderedClusterDiscoverySchedule }
@@ -10887,7 +10887,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260828-284",
+      buildId: "20260828-285",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -13176,7 +13176,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260828-284" },
+    application: { name: "Materials Growth Lab", buildId: "20260828-285" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -18317,10 +18317,7 @@ function buildFrozenShadowLeapAudit(entries, candidateSetDigest) {
       || first.entry.candidate.key.localeCompare(second.entry.candidate.key));
     const omitted = frozenShadowLeapRecord(selectFrozenShadowLeapBatch(ranked, caches) || []);
     const comparison = compareFrozenShadowLeaps(baseline, omitted);
-    const materialConsequenceChanged = comparison.materialConsequence.phenotypeChanged
-      || comparison.materialConsequence.intrinsicDimensionChanged
-      || Object.values(comparison.materialConsequence.deltas)
-        .some((value) => Number.isFinite(value) && Math.abs(value) > 1e-12);
+    const materialConsequenceChanged = comparison.materialConsequence.changedFieldCount > 0;
     return {
       termId,
       termLabel: term?.label || termId,
@@ -18565,6 +18562,8 @@ function buildPolicyDecisivenessAudit(snapshot) {
     const shadow = shadowByTerm.get(entry.termId) || null;
     const atomsChanged = Boolean(shadow && shadow.emittedSiteJaccard < 1 - 1e-12);
     const chemistryChanged = Boolean(shadow?.chemistryL1 > 0);
+    const materialChangedFields = [...(shadow?.materialConsequence?.changedFields || [])];
+    const materialChanged = materialChangedFields.length > 0;
     const stages = [
       { id: "score", changed: contributionRange > 1e-12 },
       { id: "leader", changed: entry.winnerChanged },
@@ -18572,6 +18571,7 @@ function buildPolicyDecisivenessAudit(snapshot) {
       { id: "antichain", changed: Boolean(shadow?.structuralLeapChanged) },
       { id: "atoms", changed: atomsChanged },
       { id: "chemistry", changed: chemistryChanged },
+      { id: "material", changed: materialChanged },
     ];
     const furthest = [...stages].reverse().find((stage) => stage.changed)?.id || "none";
     return {
@@ -18592,18 +18592,22 @@ function buildPolicyDecisivenessAudit(snapshot) {
       emittedSiteJaccard: shadow?.emittedSiteJaccard ?? null,
       chemistryChanged,
       chemistryL1: shadow?.chemistryL1 ?? null,
+      materialChanged,
+      materialChangedFields,
+      materialChangedFieldCount: materialChangedFields.length,
       shadowAvailable: Boolean(shadow),
       furthestEffect: furthest,
       stages,
     };
   }).sort((first, second) => {
-    const depth = { none: 0, score: 1, leader: 2, order: 3, antichain: 4, atoms: 5, chemistry: 6 };
+    const depth = { none: 0, score: 1, leader: 2, order: 3, antichain: 4, atoms: 5,
+      chemistry: 6, material: 7 };
     return depth[second.furthestEffect] - depth[first.furthestEffect]
       || second.contributionRange - first.contributionRange
       || first.termId.localeCompare(second.termId);
   });
   const audit = {
-    schema: 1,
+    schema: 2,
     channels,
     activeChannels: channels.length,
     differentialScoreChannels: channels.filter((entry) => entry.differentialScoreField).length,
@@ -18612,6 +18616,7 @@ function buildPolicyDecisivenessAudit(snapshot) {
     antichainChangingChannels: channels.filter((entry) => entry.antichainChanged).length,
     atomChangingChannels: channels.filter((entry) => entry.atomsChanged).length,
     chemistryChangingChannels: channels.filter((entry) => entry.chemistryChanged).length,
+    materialChangingChannels: channels.filter((entry) => entry.materialChanged).length,
     candidateSetDigest: snapshot.candidateDigest,
     shadowLeapDigest: shadowAudit?.digest || null,
     baselineWeightsFrozenAtFrontierCapture: true,
@@ -18621,13 +18626,14 @@ function buildPolicyDecisivenessAudit(snapshot) {
     targetUsed: snapshot.rankingTargetUsed,
     executed: false,
     causalHierarchyInferred: false,
-    claimBoundary: "independent exact checks of differential score, leader, commuting order, antichain membership, emitted colored sites, and emitted chemistry on one frozen frontier; columns are not assumed to form a causal chain",
+    claimBoundary: "independent exact checks of differential score, leader, commuting order, antichain membership, emitted colored sites, emitted chemistry, and compact virtual material consequence on one frozen frontier; columns are not assumed to form a causal chain and the material arm is not committed",
   };
   audit.digest = notebookStringHash(JSON.stringify({ channels: channels.map((entry) => ({
     termId: entry.termId, contributionRange: entry.contributionRange,
     baselineOmittedRank: entry.baselineOmittedRank, stages: entry.stages,
     actionJaccard: entry.actionJaccard, emittedSiteJaccard: entry.emittedSiteJaccard,
-    chemistryL1: entry.chemistryL1 })), candidateSetDigest: audit.candidateSetDigest,
+    chemistryL1: entry.chemistryL1,
+    materialChangedFields: entry.materialChangedFields })), candidateSetDigest: audit.candidateSetDigest,
   shadowLeapDigest: audit.shadowLeapDigest, targetUsed: audit.targetUsed }));
   return audit;
 }
@@ -18653,6 +18659,9 @@ function receiptPolicyDecisivenessAudit(audit) {
       emittedSiteJaccard: entry.emittedSiteJaccard === null ? null : receiptRound(entry.emittedSiteJaccard),
       chemistryChanged: entry.chemistryChanged,
       chemistryL1: entry.chemistryL1,
+      materialChanged: entry.materialChanged,
+      materialChangedFields: [...entry.materialChangedFields],
+      materialChangedFieldCount: entry.materialChangedFieldCount,
       shadowAvailable: entry.shadowAvailable,
       furthestEffect: entry.furthestEffect,
       stages: entry.stages.map((stage) => ({ ...stage })),
@@ -18664,6 +18673,7 @@ function receiptPolicyDecisivenessAudit(audit) {
     antichainChangingChannels: audit.antichainChangingChannels,
     atomChangingChannels: audit.atomChangingChannels,
     chemistryChangingChannels: audit.chemistryChangingChannels,
+    materialChangingChannels: audit.materialChangingChannels,
     candidateSetDigest: audit.candidateSetDigest,
     shadowLeapDigest: audit.shadowLeapDigest,
     baselineWeightsFrozenAtFrontierCapture: audit.baselineWeightsFrozenAtFrontierCapture,
@@ -18685,6 +18695,7 @@ const POLICY_DECISIVENESS_STAGES = [
   { id: "antichain", label: "set" },
   { id: "atoms", label: "atoms" },
   { id: "chemistry", label: "chem" },
+  { id: "material", label: "material" },
 ];
 
 const POLICY_MATERIAL_STATE_OBSERVABLES = [
@@ -18776,7 +18787,7 @@ function buildPolicyDecisivenessHistory(snapshot, requestedTermId = null) {
   });
   const availableRecords = records.filter((record) => record.available);
   return {
-    schema: 1,
+    schema: 2,
     termId,
     termLabel: currentChannel?.termLabel || termId,
     stages: POLICY_DECISIVENESS_STAGES.map((stage) => ({ ...stage })),
@@ -18833,6 +18844,7 @@ const POLICY_STATE_OUTCOMES = [
   { id: "antichain", label: "antichain set" },
   { id: "atoms", label: "emitted atoms" },
   { id: "chemistry", label: "emitted chemistry" },
+  { id: "material", label: "material fingerprint" },
 ];
 
 function buildPolicyStateConditionedDecisiveness(snapshot, termId = null,
@@ -18858,7 +18870,7 @@ function buildPolicyStateConditionedDecisiveness(snapshot, termId = null,
     };
   });
   const audit = {
-    schema: 1,
+    schema: 2,
     termId: history.termId,
     termLabel: history.termLabel,
     outcomeId: outcome.id,
@@ -29743,13 +29755,14 @@ function renderPolicyDecisivenessMatrix(snapshot, requestedTermId = null) {
     || audit.channels[0];
   policyDecisivenessState.textContent = `${audit.activeChannels} active · ${audit.orderChangingChannels} order`
     + ` · ${audit.antichainChangingChannels} set · ${audit.atomChangingChannels} atoms`
+    + ` · ${audit.materialChangingChannels} material`
     + `${audit.targetUsed ? " · reference-guided" : " · target-free"}`;
   const cell = (value, changed, className = "") => ({ value, changed, className });
   audit.channels.forEach((entry) => {
     const row = document.createElement("button"); row.type = "button";
     row.classList.toggle("active", entry.termId === selected.termId);
     row.setAttribute("aria-pressed", String(entry.termId === selected.termId));
-    row.setAttribute("aria-label", `${entry.termLabel}: score range ${entry.contributionRange.toFixed(3)}; baseline leader rank ${entry.baselineOmittedRank}; ${entry.orderChanged ? "batch order changes" : "batch order stable"}; ${entry.antichainChanged ? "antichain changes" : "antichain stable"}; ${entry.atomsChanged ? "emitted atoms change" : "emitted atoms stable"}; chemistry L1 ${entry.chemistryL1 ?? "unavailable"}`);
+    row.setAttribute("aria-label", `${entry.termLabel}: score range ${entry.contributionRange.toFixed(3)}; baseline leader rank ${entry.baselineOmittedRank}; ${entry.orderChanged ? "batch order changes" : "batch order stable"}; ${entry.antichainChanged ? "antichain changes" : "antichain stable"}; ${entry.atomsChanged ? "emitted atoms change" : "emitted atoms stable"}; chemistry L1 ${entry.chemistryL1 ?? "unavailable"}; ${entry.materialChangedFieldCount} material fingerprint fields change`);
     const label = document.createElement("strong"); label.textContent = entry.termLabel;
     const values = [
       cell(entry.contributionRange.toFixed(3), entry.differentialScoreField),
@@ -29761,6 +29774,8 @@ function renderPolicyDecisivenessMatrix(snapshot, requestedTermId = null) {
       cell(entry.shadowAvailable ? `${Math.round(100 * entry.emittedSiteJaccard)}%` : "—", entry.atomsChanged,
         entry.shadowAvailable ? "" : "unavailable"),
       cell(entry.shadowAvailable ? `Δ${entry.chemistryL1}` : "—", entry.chemistryChanged,
+        entry.shadowAvailable ? "" : "unavailable"),
+      cell(entry.shadowAvailable ? `Δ${entry.materialChangedFieldCount}` : "—", entry.materialChanged,
         entry.shadowAvailable ? "" : "unavailable"),
     ];
     const nodes = values.map((entryCell) => {
@@ -29776,10 +29791,10 @@ function renderPolicyDecisivenessMatrix(snapshot, requestedTermId = null) {
   const status = document.createElement("b");
   const labels = { none: "NO DIFFERENTIAL EFFECT", score: "SCORE FIELD ONLY", leader: "LEADER CHANGED",
     order: "ORDER ONLY", antichain: "ANTICHAIN CHANGED", atoms: "EMITTED GEOMETRY CHANGED",
-    chemistry: "EMITTED CHEMISTRY CHANGED" };
+    chemistry: "EMITTED CHEMISTRY CHANGED", material: "MATERIAL FINGERPRINT CHANGED" };
   status.textContent = labels[selected.furthestEffect] || selected.furthestEffect.toUpperCase();
   const evidence = document.createElement("p");
-  evidence.textContent = `contribution range ${selected.contributionRange.toFixed(4)} · active leader rank 1 → ${selected.baselineOmittedRank} without channel · antichain overlap ${selected.actionJaccard === null ? "unavailable" : `${(100 * selected.actionJaccard).toFixed(1)}%`} · emitted-site overlap ${selected.emittedSiteJaccard === null ? "unavailable" : `${(100 * selected.emittedSiteJaccard).toFixed(1)}%`} · chemistry Δ₁ ${selected.chemistryL1 ?? "unavailable"}`;
+  evidence.textContent = `contribution range ${selected.contributionRange.toFixed(4)} · active leader rank 1 → ${selected.baselineOmittedRank} without channel · antichain overlap ${selected.actionJaccard === null ? "unavailable" : `${(100 * selected.actionJaccard).toFixed(1)}%`} · emitted-site overlap ${selected.emittedSiteJaccard === null ? "unavailable" : `${(100 * selected.emittedSiteJaccard).toFixed(1)}%`} · chemistry Δ₁ ${selected.chemistryL1 ?? "unavailable"} · material fields ${selected.materialChangedFields.length ? selected.materialChangedFields.join(", ") : "stable"}`;
   const boundary = document.createElement("p");
   boundary.textContent = `Each column is an independent exact comparison on frontier ${audit.candidateSetDigest}; columns are not assumed to be a causal chain. No omitted arm executes. ${audit.digest}.`;
   policyDecisivenessDetail.append(heading, status, evidence, boundary);
@@ -29806,7 +29821,7 @@ function renderPolicyDecisivenessHistory(snapshot, termId) {
     policyDecisivenessHistoryState.textContent = "awaiting retained frontiers";
     return;
   }
-  policyDecisivenessHistoryState.textContent = `${history.availableFrontiers}/${history.storedFrontiers} frontiers · ${history.changedFrontiersByStage.antichain} set · ${history.changedFrontiersByStage.atoms} atoms`;
+  policyDecisivenessHistoryState.textContent = `${history.availableFrontiers}/${history.storedFrontiers} frontiers · ${history.changedFrontiersByStage.antichain} set · ${history.changedFrontiersByStage.atoms} atoms · ${history.changedFrontiersByStage.material} material`;
   const grid = document.createElement("div");
   grid.className = "policy-decisiveness-history-grid";
   grid.style.gridTemplateColumns = `58px repeat(${history.records.length}, 18px)`;

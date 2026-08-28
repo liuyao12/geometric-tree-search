@@ -1,5 +1,25 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 285 · material-consequence decisiveness pathway
+
+The hypothesis decisiveness matrix now follows each active geometric channel
+one step farther: score field → leader → commuting order → antichain → emitted
+atoms → emitted chemistry → virtual material consequence. The last column is
+lit when the exact leave-one-channel-out shadow leap changes any recorded
+whole-configuration field: atom count, covariance phenotype or dimension,
+radius of gyration, maximum extent, shape anisotropy, composition drift, or
+the precommit interface-completion proxy.
+
+Selecting a channel exposes the changed field names, not a dimensionally mixed
+aggregate. The same material row is retained in the discrete frontier archive,
+and “material fingerprint” is now an outcome in the state-conditioned lens, so
+one can ask which pre-decision coordination, packing, order, scattering, charge,
+or valence regimes coincide with material-level channel sensitivity. Every
+column remains an independent frozen-frontier comparison: the omitted arm is
+not committed, no downstream frontier is generated, sequential frontiers are
+not independent specimens, and no causal chain, energy, probability, kinetics,
+rate, or physical time is inferred.
+
 ## Build 284 · channel omission → material consequence
 
 The frozen shadow-leap microscope now goes beyond action IDs, emitted sites,

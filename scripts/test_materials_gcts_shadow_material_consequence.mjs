@@ -13,6 +13,9 @@ const comparison = compareShadowMaterialFingerprints(baseline, omitted);
 assert.equal(SHADOW_MATERIAL_CONSEQUENCE_FIELDS.length, 6);
 assert.equal(comparison.phenotypeChanged, true);
 assert.equal(comparison.intrinsicDimensionChanged, false);
+assert.deepEqual(comparison.changedFields, ["phenotype", "atomCount", "radiusOfGyrationAngstrom",
+  "maximumExtentAngstrom", "relativeShapeAnisotropy", "compositionDrift", "surfaceIntegrity"]);
+assert.equal(comparison.changedFieldCount, 7);
 assert.equal(comparison.deltas.atomCount, -4);
 assert.equal(comparison.deltas.radiusOfGyrationAngstrom, .5);
 assert.ok(Math.abs(comparison.deltas.relativeShapeAnisotropy - .15) < 1e-12);
@@ -22,6 +25,10 @@ assert.equal(comparison.targetUsed, false);
 assert.equal(comparison.executed, false);
 assert.equal(comparison.usedForRanking, false);
 assert.equal(comparison.causalEffectIdentified, false);
+
+const stable = compareShadowMaterialFingerprints(baseline, { ...baseline });
+assert.deepEqual(stable.changedFields, []);
+assert.equal(stable.changedFieldCount, 0);
 
 assert.throws(() => compareShadowMaterialFingerprints(null, omitted), /requires two fingerprints/);
 console.log("shadow material-consequence contract: pass");

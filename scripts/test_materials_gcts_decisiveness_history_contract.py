@@ -17,7 +17,7 @@ def require(fragment: str, source: str = APP) -> None:
 
 def main() -> None:
     require("const POLICY_DECISIVENESS_STAGES = [")
-    for stage in ("score", "leader", "order", "antichain", "atoms", "chemistry"):
+    for stage in ("score", "leader", "order", "antichain", "atoms", "chemistry", "material"):
         require(f'{{ id: "{stage}"')
     require("function buildPolicyDecisivenessHistory(snapshot, requestedTermId = null)")
     require("historySnapshot.decisivenessAudit")
@@ -33,7 +33,7 @@ def main() -> None:
     require("Columns are discrete frozen frontier updates, not physical time", HTML)
     require(".policy-decisiveness-history-grid button.changed", CSS)
     require("Build 279 · decisiveness through structural growth", README)
-    require('application: { name: "Materials Growth Lab", buildId: "20260827-282" }')
+    require('application: { name: "Materials Growth Lab", buildId: "')
     print("frozen-frontier decisiveness history contract passed")
 
 

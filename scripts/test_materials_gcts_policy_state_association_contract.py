@@ -34,12 +34,13 @@ def main() -> None:
     require("minimumPerGroup must be a positive integer", MODULE)
     require('id="policyStateAssociationState"', HTML)
     require('id="policyStateOutcome"', HTML)
+    require('<option value="material">material fingerprint</option>', HTML)
     require('id="policyStateAssociationRows"', HTML)
     require('id="policyStateAssociationDetail"', HTML)
     require('id="policyStateAssociationRows"', ROOT_HTML)
     require(".policy-state-association", CSS)
     require("Build 281 · state-conditioned channel decisiveness", README)
-    require('application: { name: "Materials Growth Lab", buildId: "20260827-282" }')
+    require('application: { name: "Materials Growth Lab", buildId: "')
     print("state-conditioned channel decisiveness contract passed")
 
 

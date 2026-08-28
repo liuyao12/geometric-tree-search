@@ -14,13 +14,23 @@ export function compareShadowMaterialFingerprints(baseline, omitted) {
   if (!baseline || !omitted) throw new Error("shadow material comparison requires two fingerprints");
   const deltas = Object.fromEntries(SHADOW_MATERIAL_CONSEQUENCE_FIELDS.map(({ id }) =>
     [id, finiteDifference(omitted[id], baseline[id])]));
+  const phenotypeChanged = baseline.phenotype !== omitted.phenotype;
+  const intrinsicDimensionChanged = baseline.intrinsicDimension !== omitted.intrinsicDimension;
+  const changedFields = [
+    ...(phenotypeChanged ? ["phenotype"] : []),
+    ...(intrinsicDimensionChanged ? ["intrinsicDimension"] : []),
+    ...SHADOW_MATERIAL_CONSEQUENCE_FIELDS.filter(({ id }) =>
+      Number.isFinite(deltas[id]) && Math.abs(deltas[id]) > 1e-12).map(({ id }) => id),
+  ];
   return {
     baselinePhenotype: baseline.phenotype || "unresolved",
     omittedPhenotype: omitted.phenotype || "unresolved",
-    phenotypeChanged: baseline.phenotype !== omitted.phenotype,
+    phenotypeChanged,
     baselineIntrinsicDimension: baseline.intrinsicDimension ?? null,
     omittedIntrinsicDimension: omitted.intrinsicDimension ?? null,
-    intrinsicDimensionChanged: baseline.intrinsicDimension !== omitted.intrinsicDimension,
+    intrinsicDimensionChanged,
+    changedFields,
+    changedFieldCount: changedFields.length,
     deltas,
     coordinatesEmbedded: false,
     targetUsed: false,

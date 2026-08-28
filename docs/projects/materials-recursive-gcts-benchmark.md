@@ -1,5 +1,23 @@
 # Recursive GCTS benchmark for material growth
 
+### Material-consequence decisiveness pathway (Build 285)
+
+The frozen-frontier hypothesis audit now propagates each active score channel
+through seven independently checked stages: differential score, winning pose,
+commuting order, whole antichain, emitted colored sites, emitted chemistry, and
+the compact virtual material fingerprint introduced in Build 284. The final
+stage reports exactly which fingerprint fields change rather than combining Å,
+counts, and dimensionless observables into a spurious scalar.
+
+Material consequence is also stored per channel in the bounded retained-
+frontier history and exposed as an outcome in the state-conditioned
+decisiveness lens. This connects pre-decision material passports to
+material-level model sensitivity across discrete structural updates. The
+counterfactual remains uncommitted and target-free, and the audit explicitly
+does not treat the columns as a causal chain or the retained sequence as
+independent specimens, a free-energy path, kinetics, probability, rate, or
+physical time.
+
 ### Channel omission to material consequence (Build 284)
 
 The exact frozen-frontier shadow leap now carries a coordinate-free material

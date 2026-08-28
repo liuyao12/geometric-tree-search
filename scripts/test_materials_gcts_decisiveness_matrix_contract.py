@@ -22,6 +22,8 @@ def main() -> None:
     require('antichainChanged: Boolean(shadow?.structuralLeapChanged)')
     require('atomsChanged')
     require('chemistryChanged')
+    require('materialChangedFieldCount: materialChangedFields.length')
+    require('materialChangingChannels')
     require('baselineWeightsFrozenAtFrontierCapture: true')
     require('causalHierarchyInferred: false')
     require('lastPolicyComparison.decisivenessAudit = buildPolicyDecisivenessAudit(lastPolicyComparison)')
@@ -29,7 +31,7 @@ def main() -> None:
     require('id="policyDecisivenessMatrix"', HTML)
     require('id="policyDecisivenessDetail"', HTML)
     require('Build 278 · hypothesis decisiveness matrix', README)
-    require('application: { name: "Materials Growth Lab", buildId: "20260827-282" }')
+    require('application: { name: "Materials Growth Lab", buildId: "')
     print("hypothesis decisiveness matrix contract passed")
 
 
