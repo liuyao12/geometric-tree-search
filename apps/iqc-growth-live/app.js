@@ -25,6 +25,9 @@ import { policyIdentifiabilityAcrossArms, policyIdentifiabilityAudit, policyIden
   from "./policy-identifiability.js?v=20260826-4";
 import { finiteStateContrast } from "./policy-state-association.mjs?v=20260827-1";
 import { runBlockedStateReplication } from "./policy-state-replication.mjs?v=20260827-1";
+import { buildExecutedGrowthRegime, growthRegimePlotRows,
+  GROWTH_REGIME_RESPONSE_AXES, GROWTH_REGIME_STATE_AXES }
+  from "./growth-regime-map.mjs?v=20260828-1";
 import { archiveResponseFrontierRankAudit }
   from "./archive-response-frontier-audit.js?v=20260827-1";
 import { evidenceOrderedClusterDiscoverySchedule }
@@ -810,6 +813,12 @@ const multiscalePathwayState = $("multiscalePathwayState");
 const multiscalePathwayHarmonics = $("multiscalePathwayHarmonics");
 const multiscalePathwayPlot = $("multiscalePathwayPlot");
 const multiscalePathwayReadout = $("multiscalePathwayReadout");
+const growthRegimeState = $("growthRegimeState");
+const growthRegimeStateAxis = $("growthRegimeStateAxis");
+const growthRegimeResponseAxis = $("growthRegimeResponseAxis");
+const growthRegimePlot = $("growthRegimePlot");
+const growthRegimeReadout = $("growthRegimeReadout");
+const growthRegimeBoundary = $("growthRegimeBoundary");
 const leapMorphologyPassport = $("leapMorphologyPassport");
 const leapMorphologyState = $("leapMorphologyState");
 const leapMorphologySpectrum = $("leapMorphologySpectrum");
@@ -1609,6 +1618,8 @@ let selectedPopulationResponseOutcome = "nonaffine";
 let selectedPopulationResponseTermId = null;
 let populationArtifactRenderToken = 0;
 let multiscalePathwayHarmonic = 6;
+let selectedGrowthRegimeStateAxis = "coordinationDeficit";
+let selectedGrowthRegimeResponseAxis = "coordinationDeficitDelta";
 let selectedLeapPhysicsId = "steric";
 let selectedLeapPhysicsFilter = "all";
 let selectedGrowthPhysicsPreflightId = "steric";
@@ -10874,7 +10885,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-282",
+      buildId: "20260828-283",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -12482,6 +12493,7 @@ async function buildExperimentReceipt() {
         truncated: leapEventCount > leapHistory.length,
         alignment: "discrete GCTS search update; not physical time" },
       structuralMassRadiusScaling: receiptMassRadiusScaling(),
+      executedGrowthRegimeMap: receiptExecutedGrowthRegime(),
       bondValenceStructuralPathway: bondValenceStructuralPathwayReceipt(),
       structuralLeapCertificates: leapHistory.map((leap) => ({
         index: leap.index, status: leap.status, label: leap.label,
@@ -13162,7 +13174,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-282" },
+    application: { name: "Materials Growth Lab", buildId: "20260828-283" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -26795,6 +26807,121 @@ multiscalePathwayHarmonics.addEventListener("click", (event) => {
   renderMultiscaleOrderPathway();
 });
 
+function executedGrowthRegimeAudit() {
+  const audit = buildExecutedGrowthRegime(leapHistory);
+  audit.retainedHistoryTruncated = leapEventCount > leapHistory.length;
+  audit.alignment = "accepted GCTS leap index; not physical time";
+  audit.digest = notebookStringHash(JSON.stringify({ records: audit.records,
+    retainedHistoryTruncated: audit.retainedHistoryTruncated }));
+  return audit;
+}
+
+function receiptExecutedGrowthRegime() {
+  const audit = executedGrowthRegimeAudit();
+  return { ...audit, records: audit.records.map((record) => ({ ...record,
+    state: { ...record.state }, response: { ...record.response } })) };
+}
+
+function renderExecutedGrowthRegime() {
+  if (!growthRegimePlot) return;
+  const populate = (select, axes, selected) => {
+    if (!select.options.length) axes.forEach((axis) => {
+      const option = document.createElement("option"); option.value = axis.id;
+      option.textContent = axis.label; select.append(option);
+    });
+    select.value = selected;
+  };
+  populate(growthRegimeStateAxis, GROWTH_REGIME_STATE_AXES, selectedGrowthRegimeStateAxis);
+  populate(growthRegimeResponseAxis, GROWTH_REGIME_RESPONSE_AXES, selectedGrowthRegimeResponseAxis);
+  const audit = executedGrowthRegimeAudit();
+  const rows = growthRegimePlotRows(audit, selectedGrowthRegimeStateAxis,
+    selectedGrowthRegimeResponseAxis);
+  const stateAxis = GROWTH_REGIME_STATE_AXES.find((axis) => axis.id === selectedGrowthRegimeStateAxis);
+  const responseAxis = GROWTH_REGIME_RESPONSE_AXES.find((axis) => axis.id === selectedGrowthRegimeResponseAxis);
+  const makeSvg = (name, attributes = {}) => {
+    const element = document.createElementNS("http://www.w3.org/2000/svg", name);
+    Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, value));
+    return element;
+  };
+  growthRegimePlot.replaceChildren();
+  const left = 42, right = 310, top = 12, bottom = 145;
+  const extent = (values, includeZero = false) => {
+    let low = Math.min(...values), high = Math.max(...values);
+    if (includeZero) { low = Math.min(0, low); high = Math.max(0, high); }
+    const padding = Math.max(1e-6, (high - low) * .14, Math.abs(high || low || 1) * .04);
+    return [low - padding, high + padding];
+  };
+  if (!rows.length) {
+    const empty = makeSvg("text", { x: 160, y: 83, class: "axis", "text-anchor": "middle" });
+    empty.textContent = audit.executedLeaps
+      ? "selected observables unresolved for retained accepted leaps"
+      : "accepted structural leaps will appear here";
+    growthRegimePlot.append(empty);
+    growthRegimeState.textContent = audit.executedLeaps
+      ? `${audit.executedLeaps} accepted leap${audit.executedLeaps === 1 ? "" : "s"} · axis unresolved`
+      : "awaiting an accepted structural leap";
+    growthRegimeReadout.replaceChildren();
+    const note = document.createElement("span"); note.textContent = audit.executedLeaps
+      ? "Choose another state or response observable." : "Run an accepted whole-cluster leap to populate the map.";
+    growthRegimeReadout.append(note); return;
+  }
+  const [xLow, xHigh] = extent(rows.map((row) => row.x));
+  const [yLow, yHigh] = extent(rows.map((row) => row.y), true);
+  const xAt = (value) => left + (value - xLow) / (xHigh - xLow) * (right - left);
+  const yAt = (value) => bottom - (value - yLow) / (yHigh - yLow) * (bottom - top);
+  for (let index = 0; index <= 4; index++) {
+    const x = left + index / 4 * (right - left), y = top + index / 4 * (bottom - top);
+    growthRegimePlot.append(makeSvg("line", { x1: x, x2: x, y1: top, y2: bottom, class: "grid" }));
+    growthRegimePlot.append(makeSvg("line", { x1: left, x2: right, y1: y, y2: y, class: "grid" }));
+  }
+  if (yLow <= 0 && yHigh >= 0) growthRegimePlot.append(makeSvg("line",
+    { x1: left, x2: right, y1: yAt(0), y2: yAt(0), class: "zero" }));
+  if (rows.length > 1) growthRegimePlot.append(makeSvg("polyline", {
+    points: rows.map((row) => `${xAt(row.x)},${yAt(row.y)}`).join(" "), class: "path",
+  }));
+  const axisLabel = makeSvg("text", { x: right, y: 166, class: "axis", "text-anchor": "end" });
+  axisLabel.textContent = `${stateAxis.label} before leap →`;
+  const responseLabel = makeSvg("text", { x: 7, y: 10, class: "axis" });
+  responseLabel.textContent = `Δ ${responseAxis.label}`;
+  growthRegimePlot.append(axisLabel, responseLabel);
+  rows.forEach((row) => {
+    const selected = leapHistory[selectedLeapIndex]?.index === row.leapIndex;
+    const radius = 3.5 + Math.min(4, Math.sqrt(Math.max(1, row.emittedAtoms)) * .34);
+    const point = makeSvg("circle", { cx: xAt(row.x), cy: yAt(row.y), r: radius,
+      class: `point${selected ? " selected" : ""}`, tabindex: "0", role: "button",
+      "aria-label": `Select leap ${row.leapIndex}: ${stateAxis.label} ${row.x.toFixed(3)}, ${responseAxis.label} ${row.y >= 0 ? "+" : ""}${row.y.toFixed(3)}` });
+    const select = () => {
+      const index = leapHistory.findIndex((leap) => leap.index === row.leapIndex);
+      if (index < 0) return; selectedLeapIndex = index; renderStructuralLeap(leapHistory[index]);
+    };
+    point.addEventListener("click", select);
+    point.addEventListener("keydown", (event) => { if (["Enter", " "].includes(event.key)) { event.preventDefault(); select(); } });
+    const label = makeSvg("text", { x: xAt(row.x) + radius + 2, y: yAt(row.y) - radius,
+      class: "point-label" }); label.textContent = `L${row.leapIndex}`;
+    growthRegimePlot.append(point, label);
+  });
+  const selected = rows.find((row) => leapHistory[selectedLeapIndex]?.index === row.leapIndex) || rows.at(-1);
+  const signed = (value) => `${value >= 0 ? "+" : ""}${value.toFixed(3)}`;
+  growthRegimeState.textContent = `${rows.length}/${audit.executedLeaps} resolved accepted leaps · selected L${selected.leapIndex}`;
+  growthRegimeReadout.replaceChildren();
+  [["before state", `${stateAxis.label} ${selected.x.toFixed(3)}`],
+    ["executed response", `${responseAxis.label} ${signed(selected.y)}`],
+    ["geometric leap", `${selected.acceptedActions ?? "—"} actions · +${selected.emittedAtoms} atoms`],
+    ["morphology", `${selected.beforePhenotype} → ${selected.afterPhenotype}`]]
+    .forEach(([label, value]) => { const cell = document.createElement("span");
+      const small = document.createElement("small"); small.textContent = label;
+      const strong = document.createElement("strong"); strong.textContent = value;
+      cell.append(small, strong); growthRegimeReadout.append(cell); });
+  growthRegimeBoundary.textContent = `Each dot is one executed, target-free GCTS leap; dot area encodes explicit emitted atoms and the line follows retained execution order. ${audit.retainedHistoryTruncated ? "Only the retained history window is shown. " : ""}The horizontal coordinate is measured before candidate scoring and the vertical coordinate is the certified after-minus-before response. This is not a phase diagram, free-energy surface, mechanism rate, causal law, or physical-time trajectory. Receipt ${audit.digest}.`;
+}
+
+growthRegimeStateAxis?.addEventListener("change", () => {
+  selectedGrowthRegimeStateAxis = growthRegimeStateAxis.value; renderExecutedGrowthRegime();
+});
+growthRegimeResponseAxis?.addEventListener("change", () => {
+  selectedGrowthRegimeResponseAxis = growthRegimeResponseAxis.value; renderExecutedGrowthRegime();
+});
+
 function structuralMorphologySeries(selected = null) {
   const selectedPosition = selected
     ? leapHistory.findIndex((entry) => entry.index === selected.index) : leapHistory.length - 1;
@@ -28067,6 +28194,7 @@ function renderStructuralLeap(leap = null) {
   renderPackingPathway();
   renderVoidClearancePathway();
   renderMultiscaleOrderPathway();
+  renderExecutedGrowthRegime();
   renderChargeShapePortrait(policyComparisonHistory[selectedPolicySnapshotIndex] || lastPolicyComparison);
   renderBondValenceStructuralPathway();
   renderLeapConsequence(selected);

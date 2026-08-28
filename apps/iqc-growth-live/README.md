@@ -1,5 +1,23 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 283 · executed geometric growth-regime map
+
+The structural-leap certificate now links three pieces of evidence that were
+previously inspected separately: a coordinate-free material state measured
+before candidate scoring, the accepted whole-cluster GCTS leap, and the
+certified after-minus-before morphology response. Scientists can choose among
+coordination exposure, underpacking, local order, reciprocal-space prominence,
+shape anisotropy, and shared-interface state on the horizontal axis, then map
+the executed response in those structural quantities or in emitted atoms.
+
+Every plotted dot is an actually accepted retained leap. Dot area reports
+explicit emitted atoms, the connecting line follows discrete execution order,
+and selecting a dot restores its full structural certificate. The same compact
+records and audit digest are exported in the experiment receipt, with no atomic
+coordinates and no effect on candidate enumeration, admission, or ranking.
+This is a finite state-response diagnostic—not a phase diagram, free-energy
+surface, kinetic trajectory, causal law, growth rate, or physical clock.
+
 ## Build 282 · run-blocked material-state replication
 
 The experiment notebook now promotes the state-conditioned channel lens from

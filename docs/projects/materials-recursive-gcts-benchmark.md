@@ -1,5 +1,23 @@
 # Recursive GCTS benchmark for material growth
 
+### Executed geometric growth-regime map (Build 283)
+
+The portal now joins each accepted retained GCTS leap to a compact
+before-decision material-state passport and its certified post-leap structural
+response. The scientist can interactively select a geometry-only input axis
+(coordination exposure, underpacking, local order, geometric S(q) prominence,
+shape anisotropy, or shared-interface fraction) and an executed response axis
+(the corresponding after-minus-before deltas, effective nucleus count,
+interface change, or explicit emitted atoms).
+
+Only accepted leaps with positive explicit emission enter the map. Target-used,
+fixed, rejected, and unresolved rows fail closed. The receipt stores the finite
+records, axes, support count, flags, and audit digest without coordinates. The
+map is downstream of execution and cannot alter candidate enumeration,
+admission, or ranking. Its connecting line is retained GCTS execution order,
+not elapsed time; the display makes no phase-diagram, free-energy, kinetic,
+causal, probability, or rate claim.
+
 ### Run-blocked material-state replication (Build 282)
 
 The coordinate-free notebook now treats each unique saved receipt as one

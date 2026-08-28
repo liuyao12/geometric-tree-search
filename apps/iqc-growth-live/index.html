@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260827-282">
+  <link rel="stylesheet" href="./style.css?v=20260828-283">
   <script type="importmap">
     {
       "imports": {
@@ -1938,6 +1938,13 @@
             <div id="multiscalePathwayReadout"><span>local and reciprocal evidence await one leap</span></div>
             <p>Each point is one certified structural state. The path compares local orientational order with finite-window geometric S(q); it is not a phase diagram, reaction coordinate, free-energy landscape, or physical-time trajectory.</p>
           </article>
+          <article class="growth-regime-map" aria-label="Executed geometric growth regime map">
+            <header><span><small>frontier condition → accepted leap → morphology</small><strong id="growthRegimeState">awaiting an accepted structural leap</strong></span>
+              <div class="growth-regime-controls"><label><small>before-leap state</small><select id="growthRegimeStateAxis" aria-label="Growth regime state axis"></select></label><label><small>structural response</small><select id="growthRegimeResponseAxis" aria-label="Growth regime response axis"></select></label></div></header>
+            <svg id="growthRegimePlot" viewBox="0 0 320 176" role="img" aria-label="Selected before-leap geometric state versus structural response for accepted GCTS leaps"></svg>
+            <div id="growthRegimeReadout" class="growth-regime-readout" aria-live="polite"><span>Run an accepted whole-cluster leap to populate the map.</span></div>
+            <p id="growthRegimeBoundary">Each dot is one executed, target-free GCTS leap: the horizontal coordinate is measured before candidate scoring and the vertical coordinate is the certified after-minus-before structural response. This finite path is not a phase diagram, free-energy surface, mechanism rate, causal law, or physical-time trajectory.</p>
+          </article>
           <article id="leapMorphologyPassport" class="leap-morphology-passport" aria-live="polite">
             <header><small>live morphology passport</small><strong id="leapMorphologyState">seed geometry</strong><span>shape tensor · exposure · before → after</span></header>
             <div id="leapMorphologySpectrum" class="leap-morphology-spectrum" aria-label="Normalized principal variance spectrum"></div>
@@ -2059,7 +2066,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260827-282"></script>
+  <script type="module" src="./app.js?v=20260828-283"></script>
   <script type="module" src="./evidence-atlas.js?v=20260827-24"></script>
 </body>
 </html>
