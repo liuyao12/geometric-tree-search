@@ -10,13 +10,13 @@ README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
 
 def test_study_link_contract() -> None:
-    assert 'buildId: "20260826-166"' in APP
-    assert 'app.js?v=20260826-166' in HTML
-    assert 'style.css?v=20260826-71' in HTML
+    assert 'buildId: "20260828-310"' in APP
+    assert 'app.js?v=20260828-310' in HTML
+    assert 'style.css?v=20260828-310' in HTML
     assert 'id="studyCompassShare"' in HTML
     assert "function shareableStudyUrl" in APP
-    assert "function copyShareableStudyUrl" in APP
-    share = APP[APP.index("function shareableStudyUrl"):APP.index("async function copyShareableStudyUrl")]
+    assert "function copyShareableInvestigationUrl" in APP
+    share = APP[APP.index("function shareableStudyUrl"):APP.index("function shareableCustomExperimentUrl")]
     assert 'scenarioSelect.value === "imported"' in share
     assert 'url.searchParams.set("studyVersion", "1")' in share
     assert 'url.searchParams.set("study", audit.id)' in share
@@ -38,9 +38,9 @@ def test_study_link_contract() -> None:
     assert "if (studyLaunchAudit) return 0" in launch
     assert "function markingMatchesDraft" in APP
     assert "compatibleMarkings().filter(markingMatchesDraft)" in APP
-    assert "Build 144 adds a fail-closed" in README
-    assert "contains no coordinates" in README
-    assert "recipe control disables the link" in README
+    assert "Build 310 · reconstructable custom investigations" in README
+    assert "contains no atomic coordinates" in README
+    assert "fail closed at known positions" in README
 
 
 if __name__ == "__main__":

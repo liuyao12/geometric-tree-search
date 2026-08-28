@@ -65,9 +65,9 @@ def test_claim_boundary_forbids_dynamical_overinterpretation():
 
 
 def test_current_build_is_exposed():
-    assert 'buildId: "20260828-309"' in APP
-    assert 'app.js?v=20260828-309' in HTML
-    assert 'style.css?v=20260828-309' in HTML
+    assert 'buildId: "20260828-310"' in APP
+    assert 'app.js?v=20260828-310' in HTML
+    assert 'style.css?v=20260828-310' in HTML
 
 
 def test_as_placed_checkpoint_precedes_projection_and_is_retained():

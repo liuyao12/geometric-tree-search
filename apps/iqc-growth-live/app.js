@@ -36,15 +36,15 @@ import { buildSettlingMaterialResponseHistory, buildSettlingMaterialResponseMatr
   SETTLING_MATERIAL_FIELDS }
   from "./settling-material-sensitivity.mjs?v=20260828-290";
 import { channelValidationMetricsFromCounts, validationOccurrenceJackknife }
-  from "./validation-uncertainty.mjs?v=20260828-309";
+  from "./validation-uncertainty.mjs?v=20260828-310";
 import { scoreNormalizationAudit }
-  from "./score-normalization.mjs?v=20260828-309";
+  from "./score-normalization.mjs?v=20260828-310";
 import { screenedCoherencyGraphField }
-  from "./coherency-graph-field.mjs?v=20260828-309";
+  from "./coherency-graph-field.mjs?v=20260828-310";
 import { continuationMultiplicityAtlas, continuationMultiplicityScore }
-  from "./configurational-multiplicity.mjs?v=20260828-309";
+  from "./configurational-multiplicity.mjs?v=20260828-310";
 import { geometricConstraintTensor }
-  from "./geometric-constraint-tensor.mjs?v=20260828-309";
+  from "./geometric-constraint-tensor.mjs?v=20260828-310";
 import { archiveResponseFrontierRankAudit }
   from "./archive-response-frontier-audit.js?v=20260827-1";
 import { evidenceOrderedClusterDiscoverySchedule }
@@ -1671,6 +1671,7 @@ let selectedStudyRecipeId = "bulk-order";
 let activeStudyRecipeId = null;
 let activeStudyArmId = "reference";
 let studyLaunchAudit = null;
+let customExperimentLaunchAudit = null;
 let stageFocusEnabled = false;
 let atomSpatialIndex = new Map();
 let trainingProgress = 0;
@@ -11803,7 +11804,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260828-309",
+      buildId: "20260828-310",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -14233,7 +14234,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260828-309" },
+    application: { name: "Materials Growth Lab", buildId: "20260828-310" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },
@@ -23895,6 +23896,159 @@ function currentGrowthProtocolSettings() {
   };
 }
 
+const CUSTOM_EXPERIMENT_SCHEMA_VERSION = 1;
+const CUSTOM_EXPERIMENT_MAX_PAYLOAD_LENGTH = 12_000;
+const CUSTOM_EXPERIMENT_AUDIT = Object.freeze({
+  coordinatesEmbedded: false,
+  learnedWeightsEmbedded: false,
+  activeMarkingIdEmbedded: false,
+  growthHistoryEmbedded: false,
+  targetCoordinatesEmbedded: false,
+  recomputeFromPositions: true,
+});
+
+function exactObjectKeys(value, expected) {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return false;
+  const actual = Object.keys(value).sort();
+  return actual.length === expected.length
+    && actual.every((key, index) => key === [...expected].sort()[index]);
+}
+
+function selectAcceptsSerializedValue(select, value) {
+  if (!select) return false;
+  return [...select.options].some((option) => option.value === String(value)
+    || (typeof value === "number" && Number.isFinite(value) && Number(option.value) === value));
+}
+
+function growthSettingSelects() {
+  return {
+    confinement: confinementSelect, growthDomainScale: growthDomainScaleSelect,
+    geometryPreference: geometryPreferenceSelect, geometricStrainWeight: strainWeightSelect,
+    structuralRelaxationMode: structuralRelaxationSelect,
+    compositionPreference: compositionPreferenceSelect, feedstockSupplyMode: feedstockSupplySelect,
+    solutePartitionMode: solutePartitionSelect, solutePartitionWeight: solutePartitionWeightSelect,
+    chargePreference: chargePreferenceSelect, chargeGeometryMode: chargeGeometrySelect,
+    chargeGeometryReach: chargeGeometryReachSelect, chargeGeometryWeight: chargeGeometryWeightSelect,
+    chargeMomentMode: chargeMomentSelect, chargeMomentWeight: chargeMomentWeightSelect,
+    ionicPairMode: ionicPairSelect, ionicPairReach: ionicPairReachSelect, ionicPairWeight: ionicPairWeightSelect,
+    bondValenceMode: bondValenceSelect, bondValenceWeight: bondValenceWeightSelect,
+    surfacePreference: surfacePreferenceSelect, growthDrivingMode: growthDrivingSelect,
+    growthDrivingWeight: growthDrivingWeightSelect, attachmentTopologyMode: attachmentTopologySelect,
+    attachmentTopologyWeight: attachmentTopologyWeightSelect, habitAnisotropyMode: habitAnisotropySelect,
+    habitAnisotropyWeight: habitAnisotropyWeightSelect, defectPrecursorMode: defectPrecursorSelect,
+    defectPrecursorWeight: defectPrecursorWeightSelect, coherencyMemoryMode: coherencyMemorySelect,
+    coherencyMemoryReach: coherencyReachSelect, coherencyMemoryWeight: coherencyMemoryWeightSelect,
+    collectiveResponseMode: collectiveResponseSelect, collectiveScreeningLength: collectiveScreeningSelect,
+    collectiveResponseWeight: collectiveResponseWeightSelect,
+    configurationalMultiplicityMode: configurationalMultiplicitySelect,
+    configurationalMultiplicityWeight: configurationalMultiplicityWeightSelect,
+    constraintTensorMode: constraintTensorSelect, constraintTensorWeight: constraintTensorWeightSelect,
+    frontMorphologyMode: frontMorphologySelect, frontMorphologyWeight: frontMorphologyWeightSelect,
+    capillaryGeometryMode: capillaryGeometrySelect, capillaryGeometryWeight: capillaryGeometryWeightSelect,
+    epitaxyTemplateMode: epitaxyTemplateSelect, epitaxyWeight: epitaxyWeightSelect,
+    externalDriveMode: externalDriveSelect, externalDriveWeight: externalDriveWeightSelect,
+    thermalFieldMode: thermalFieldSelect, thermalFieldWeight: thermalFieldWeightSelect,
+    affineLoadMode: affineLoadSelect, affineLoadMagnitude: affineLoadMagnitudeSelect,
+    robustnessPreference: robustnessPreferenceSelect, robustnessWeight: robustnessWeightSelect,
+    microstructureCouplingMode: microstructureCouplingSelect,
+    microstructureCouplingWeight: microstructureCouplingWeightSelect,
+    loopClosurePreference: loopClosurePreferenceSelect, loopClosureWeight: loopClosureWeightSelect,
+    arrivalPathMode: arrivalPathSelect, arrivalPathWeight: arrivalPathWeightSelect,
+    feedExposureMode: feedExposureSelect, feedExposureWeight: feedExposureWeightSelect,
+    geometricExplorationScale: explorationScaleSelect, growthSeedProtocol: growthSeedProtocolSelect,
+    requestedGrowthNuclei: growthNucleiSelect, nucleationSiteMode: nucleationSiteSelect,
+    growthScheduling: growthSchedulingSelect,
+  };
+}
+
+function customExperimentManifest() {
+  const material = scenarioSelect.value;
+  if (material === "imported" || ![...scenarioSelect.options].some((option) => option.value === material)) return null;
+  return {
+    schemaVersion: CUSTOM_EXPERIMENT_SCHEMA_VERSION,
+    input: {
+      material,
+      iceViMicrostateSeed: material === "iceVI" ? iceViMicrostateSeed : null,
+    },
+    geometry: { mode: geometryMode, tolerance: clusterToleranceMode },
+    marking: {
+      channels: Number(markingDraft.channels), reach: Number(markingDraft.reach),
+      representation: markingDraft.representation,
+      spinColoring: scalarSpinColoringMode(), searchMode: markingSearchMode,
+      policy: policySelect.value,
+    },
+    growth: { protocolMode: growthProtocolMode, settings: currentGrowthProtocolSettings() },
+    observable: { kind: structureObservableSelection, harmonic: orientationalOrderHarmonic },
+    audit: { ...CUSTOM_EXPERIMENT_AUDIT },
+  };
+}
+
+function encodeCustomExperimentPayload(manifest) {
+  const bytes = new TextEncoder().encode(JSON.stringify(manifest));
+  let binary = "";
+  bytes.forEach((byte) => { binary += String.fromCharCode(byte); });
+  return btoa(binary).replaceAll("+", "-").replaceAll("/", "_").replace(/=+$/u, "");
+}
+
+function decodeCustomExperimentPayload(payload) {
+  if (!payload || payload.length > CUSTOM_EXPERIMENT_MAX_PAYLOAD_LENGTH || !/^[A-Za-z0-9_-]+$/u.test(payload)) {
+    throw new Error("invalid experiment payload");
+  }
+  const padded = payload.replaceAll("-", "+").replaceAll("_", "/").padEnd(Math.ceil(payload.length / 4) * 4, "=");
+  const binary = atob(padded);
+  const bytes = Uint8Array.from(binary, (character) => character.charCodeAt(0));
+  return JSON.parse(new TextDecoder("utf-8", { fatal: true }).decode(bytes));
+}
+
+function validateCustomExperimentManifest(manifest, materialParameter) {
+  const fail = (reason) => ({ valid: false, reason });
+  if (!exactObjectKeys(manifest, ["schemaVersion", "input", "geometry", "marking", "growth", "observable", "audit"])) {
+    return fail("unexpected experiment manifest fields");
+  }
+  if (manifest.schemaVersion !== CUSTOM_EXPERIMENT_SCHEMA_VERSION) return fail("unsupported experiment schema");
+  if (!exactObjectKeys(manifest.input, ["material", "iceViMicrostateSeed"])) return fail("invalid input manifest");
+  if (manifest.input.material !== materialParameter || manifest.input.material === "imported"
+    || ![...scenarioSelect.options].some((option) => option.value === manifest.input.material)) return fail("material mismatch");
+  const microstate = manifest.input.iceViMicrostateSeed;
+  if (manifest.input.material === "iceVI") {
+    if (!Number.isSafeInteger(microstate) || microstate < 1 || microstate > 1_000_000_000) return fail("invalid ice microstate seed");
+  } else if (microstate !== null) return fail("unexpected microstate seed");
+  if (!exactObjectKeys(manifest.geometry, ["mode", "tolerance"])
+    || !selectAcceptsSerializedValue(geometryModeSelect, manifest.geometry.mode)
+    || !selectAcceptsSerializedValue(clusterToleranceSelect, manifest.geometry.tolerance)) return fail("invalid geometry controls");
+  if (!exactObjectKeys(manifest.marking, ["channels", "reach", "representation", "spinColoring", "searchMode", "policy"])
+    || !selectAcceptsSerializedValue(markingChannelsSelect, manifest.marking.channels)
+    || !selectAcceptsSerializedValue(markingReachSelect, manifest.marking.reach)
+    || !selectAcceptsSerializedValue(markingRepresentationSelect, manifest.marking.representation)
+    || !selectAcceptsSerializedValue(spinColoringSelect, manifest.marking.spinColoring)
+    || !selectAcceptsSerializedValue(markingSearchModeSelect, manifest.marking.searchMode)
+    || !selectAcceptsSerializedValue(policySelect, manifest.marking.policy)) return fail("invalid GCTS marking controls");
+  if (!exactObjectKeys(manifest.growth, ["protocolMode", "settings"])) return fail("invalid growth manifest");
+  if (manifest.growth.protocolMode !== "custom" && !selectAcceptsSerializedValue(growthProtocolSelect, manifest.growth.protocolMode)) {
+    return fail("invalid growth protocol mode");
+  }
+  const expectedGrowthKeys = Object.keys(currentGrowthProtocolSettings());
+  if (!exactObjectKeys(manifest.growth.settings, expectedGrowthKeys)) return fail("growth setting schema mismatch");
+  const selects = growthSettingSelects();
+  for (const [key, select] of Object.entries(selects)) {
+    if (!selectAcceptsSerializedValue(select, manifest.growth.settings[key])) return fail(`invalid growth control: ${key}`);
+  }
+  const { soluteSpecies: manifestSolute, growthPathSeed: pathSeed, hierarchyEnabled: hierarchy } = manifest.growth.settings;
+  if (!(manifestSolute === null || (typeof manifestSolute === "string" && /^[A-Z][a-z]?$/u.test(manifestSolute)))) {
+    return fail("invalid solute species");
+  }
+  if (!Number.isSafeInteger(pathSeed) || pathSeed < 1 || pathSeed > 1_000_000_000) return fail("invalid growth path seed");
+  if (typeof hierarchy !== "boolean") return fail("invalid hierarchy mode");
+  if (!exactObjectKeys(manifest.observable, ["kind", "harmonic"])
+    || !selectAcceptsSerializedValue(structureObservableSelect, manifest.observable.kind)
+    || ![4, 6, 12].includes(manifest.observable.harmonic)) return fail("invalid structural observable");
+  if (!exactObjectKeys(manifest.audit, Object.keys(CUSTOM_EXPERIMENT_AUDIT))
+    || Object.entries(CUSTOM_EXPERIMENT_AUDIT).some(([key, value]) => manifest.audit[key] !== value)) {
+    return fail("scientific-state exclusion audit failed");
+  }
+  return { valid: true, manifest };
+}
+
 function growthProtocolManifest() {
   const protocol = GROWTH_PROTOCOLS[growthProtocolMode];
   return {
@@ -23944,15 +24098,8 @@ function renderGrowthControlGroupSummaries() {
   growthExecutionGroupState.textContent = `${executionActive}/6 active · ${growthScheduling}`;
 }
 
-function applyGrowthProtocol(mode, options = {}) {
-  const protocol = GROWTH_PROTOCOLS[mode];
-  if (!protocol) {
-    growthProtocolMode = "custom";
-    if (options.sync !== false) renderGrowthProtocolSummary();
-    return;
-  }
-  const settings = { ...GROWTH_PROTOCOL_DEFAULTS, ...protocol.settings };
-  growthProtocolMode = mode;
+function applyGrowthProtocolSettings(settings, options = {}) {
+  growthProtocolMode = options.mode || "custom";
   confinementSelect.value = settings.confinement;
   growthDomainScale = settings.growthDomainScale;
   geometryPreference = settings.geometryPreference; geometricStrainWeight = settings.geometricStrainWeight;
@@ -23992,7 +24139,9 @@ function applyGrowthProtocol(mode, options = {}) {
   loopClosurePreference = settings.loopClosurePreference; loopClosureWeight = settings.loopClosureWeight;
   arrivalPathMode = settings.arrivalPathMode; arrivalPathWeight = settings.arrivalPathWeight;
   feedExposureMode = settings.feedExposureMode; feedExposureWeight = settings.feedExposureWeight;
-  geometricExplorationScale = settings.geometricExplorationScale; growthPathSeed = 1;
+  geometricExplorationScale = settings.geometricExplorationScale;
+  growthPathSeed = options.resetPathSeed ? 1 : settings.growthPathSeed;
+  if (Object.hasOwn(settings, "soluteSpecies")) soluteSpecies = settings.soluteSpecies;
   growthSeedProtocol = settings.growthSeedProtocol;
   requestedGrowthNuclei = settings.requestedGrowthNuclei; nucleationSiteMode = settings.nucleationSiteMode;
   growthScheduling = settings.growthScheduling;
@@ -24000,6 +24149,18 @@ function applyGrowthProtocol(mode, options = {}) {
   if (options.sync === false) return;
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
+}
+
+function applyGrowthProtocol(mode, options = {}) {
+  const protocol = GROWTH_PROTOCOLS[mode];
+  if (!protocol) {
+    growthProtocolMode = "custom";
+    if (options.sync !== false) renderGrowthProtocolSummary();
+    return;
+  }
+  applyGrowthProtocolSettings({ ...GROWTH_PROTOCOL_DEFAULTS, ...protocol.settings }, {
+    ...options, mode, resetPathSeed: true,
+  });
 }
 
 function selectedStudyRecipe() {
@@ -24481,14 +24642,41 @@ function shareableStudyUrl(audit = activeStudyRecipeAudit()) {
   return url.toString();
 }
 
-async function copyShareableStudyUrl() {
-  const url = shareableStudyUrl();
+function shareableCustomExperimentUrl() {
+  if (!STUDY_STAGE_SEQUENCE.some((entry) => entry.stage === pipelineStage)) return null;
+  const manifest = customExperimentManifest();
+  if (!manifest) return null;
+  const url = new URL(window.location.href);
+  url.search = ""; url.hash = "";
+  url.searchParams.set("experimentVersion", String(CUSTOM_EXPERIMENT_SCHEMA_VERSION));
+  url.searchParams.set("experiment", encodeCustomExperimentPayload(manifest));
+  url.searchParams.set("material", manifest.input.material);
+  url.searchParams.set("stage", String(pipelineStage));
+  if (manifest.input.iceViMicrostateSeed !== null) {
+    url.searchParams.set("microstate", String(manifest.input.iceViMicrostateSeed));
+  }
+  return url.toString();
+}
+
+function synchronizeLoadedCustomExperimentAddress() {
+  const current = new URL(window.location.href);
+  if (!current.searchParams.has("experiment") || customExperimentLaunchAudit?.loaded === false) return;
+  const fresh = shareableCustomExperimentUrl();
+  if (!fresh || fresh === current.toString()) return;
+  window.history.replaceState({}, "", fresh);
+}
+
+async function copyShareableInvestigationUrl() {
+  const studyUrl = shareableStudyUrl();
+  const url = studyUrl || shareableCustomExperimentUrl();
   if (!url) {
-    receiptStatus.textContent = "Recipe link unavailable · restore the intact recipe or download the full receipt for this edited experiment.";
+    receiptStatus.textContent = "Investigation link unavailable · local/imported coordinates require the full receipt and cannot enter a compact URL.";
     return;
   }
   await navigator.clipboard.writeText(url);
-  receiptStatus.textContent = `Study link copied · recipe schema v1 · paused stage ${pipelineStage}.`;
+  receiptStatus.textContent = studyUrl
+    ? `Study link copied · recipe schema v1 · paused stage ${pipelineStage}.`
+    : `Experiment link copied · control schema v${CUSTOM_EXPERIMENT_SCHEMA_VERSION} · paused stage ${pipelineStage} · positions and learned state excluded.`;
 }
 
 function recipeStructuralResponse(recipe, growthCertificate = null) {
@@ -24777,13 +24965,18 @@ function renderStudyCompass() {
     : audit.settingsStillMatch ? activeStudyArmId === "reference" ? "recipe intact" : "contrast intact"
       : `${mismatchKeys.length} edited setting${mismatchKeys.length === 1 ? "" : "s"}`;
   studyCompassIntegrity.className = audit && !audit.settingsStillMatch ? "edited" : audit ? "intact" : "";
-  const shareUrl = shareableStudyUrl(audit);
+  const studyShareUrl = shareableStudyUrl(audit);
+  const experimentShareUrl = studyShareUrl ? null : shareableCustomExperimentUrl();
+  const shareUrl = studyShareUrl || experimentShareUrl;
   studyCompassShare.disabled = !shareUrl;
-  studyCompassShare.textContent = shareUrl ? "Copy study link" : "Recipe link unavailable";
-  studyCompassShare.title = shareUrl
+  studyCompassShare.dataset.shareUrl = shareUrl || "";
+  studyCompassShare.textContent = studyShareUrl ? "Copy study link"
+    : experimentShareUrl ? "Copy experiment link" : "Link unavailable";
+  studyCompassShare.title = studyShareUrl
     ? "Copies a versioned curated-recipe and paused-stage URL; it contains no coordinates, learned weights, or growth history."
-    : activeStudyArmId !== "reference" ? "Registered contrast arms require the full receipt and notebook; the compact reference-recipe link fails closed."
-      : "Edited/custom studies require the full receipt; the compact recipe link fails closed.";
+    : experimentShareUrl
+      ? "Copies the explicit geometry, marking, search, hierarchy, physics-protocol, and observable controls. Coordinates, fitted weights, marking IDs, targets, and growth history are excluded."
+      : "Local/imported coordinates require the full receipt and are never embedded in a compact link.";
   studyCompassProgress.replaceChildren(...STUDY_STAGE_SEQUENCE.map((entry, index) => {
     const button = document.createElement("button"); button.type = "button";
     button.dataset.studyStage = String(entry.stage);
@@ -24819,6 +25012,7 @@ function renderStudyCompass() {
     studyCompassNext.dataset.nextStage = "receipt";
     studyCompassNext.textContent = "Review receipt & notebook ↓";
   }
+  synchronizeLoadedCustomExperimentAddress();
   renderStudyOutcome();
 }
 
@@ -25737,7 +25931,8 @@ function launchMaterialsWorkflowRoute({ scenario, stage, preparation = null } = 
 
 function restoreWorkflowRouteFromAddress() {
   const parameters = new URLSearchParams(window.location.search);
-  if (parameters.has("study") || (parameters.has("specimen") && scenarioSelect.value !== "imported")) {
+  if (parameters.has("study") || parameters.has("experiment")
+    || (parameters.has("specimen") && scenarioSelect.value !== "imported")) {
     window.location.reload();
     return;
   }
@@ -35123,8 +35318,8 @@ studyGuideButton.addEventListener("click", () => setStudyGuideOpen(studyGuide.hi
 studyGuideClose.addEventListener("click", () => setStudyGuideOpen(false));
 studyGuide.addEventListener("pointerdown", (event) => { if (event.target === studyGuide) setStudyGuideOpen(false); });
 studyCompassGuideButton.addEventListener("click", () => setStudyGuideOpen(true));
-studyCompassShare.addEventListener("click", () => copyShareableStudyUrl().catch((error) => {
-  receiptStatus.textContent = `Study link copy failed: ${error.message}`;
+studyCompassShare.addEventListener("click", () => copyShareableInvestigationUrl().catch((error) => {
+  receiptStatus.textContent = `Investigation link copy failed: ${error.message}`;
 }));
 studyCompassNext.addEventListener("click", () => {
   if (studyCompassNext.dataset.nextStage === "receipt") {
@@ -35199,10 +35394,55 @@ function animate(now) {
 
 function applyLaunchParameters() {
   const parameters = new URLSearchParams(window.location.search);
+  const requestedExperiment = parameters.get("experiment");
+  const requestedExperimentVersion = parameters.get("experimentVersion");
+  if (requestedExperiment) {
+    try {
+      if (requestedExperimentVersion !== String(CUSTOM_EXPERIMENT_SCHEMA_VERSION)) {
+        throw new Error("unsupported experiment schema");
+      }
+      const decoded = decodeCustomExperimentPayload(requestedExperiment);
+      const validation = validateCustomExperimentManifest(decoded, parameters.get("material"));
+      if (!validation.valid) throw new Error(validation.reason);
+      const manifest = validation.manifest;
+      scenarioSelect.value = manifest.input.material;
+      if (manifest.input.material === "iceVI") {
+        iceViMicrostateSeed = manifest.input.iceViMicrostateSeed;
+        iceViMicrostate = resolveIceViIceRuleMicrostate(iceViMicrostateSeed);
+      }
+      selectedStudyRecipeId = null;
+      activeStudyRecipeId = null;
+      activeStudyArmId = "reference";
+      geometryMode = manifest.geometry.mode;
+      clusterToleranceMode = manifest.geometry.tolerance;
+      markingDraft = {
+        channels: manifest.marking.channels, reach: manifest.marking.reach,
+        representation: manifest.marking.representation, spinColoring: manifest.marking.spinColoring,
+      };
+      markingSearchMode = manifest.marking.searchMode;
+      policySelect.value = manifest.marking.policy;
+      activeMarkingId = "";
+      activeExternalCalibrationMarkingId = "";
+      applyGrowthProtocolSettings(manifest.growth.settings, {
+        mode: manifest.growth.protocolMode, sync: false, resetPathSeed: false,
+      });
+      structureObservableSelection = manifest.observable.kind;
+      orientationalOrderHarmonic = manifest.observable.harmonic;
+      customExperimentLaunchAudit = {
+        loaded: true, schemaVersion: manifest.schemaVersion, material: manifest.input.material,
+        ...CUSTOM_EXPERIMENT_AUDIT,
+      };
+    } catch (error) {
+      customExperimentLaunchAudit = {
+        loaded: false, schemaVersion: requestedExperimentVersion || null,
+        reason: error instanceof Error ? error.message : "invalid experiment link",
+      };
+    }
+  }
   const requestedStudyId = parameters.get("study");
   const requestedStudyVersion = parameters.get("studyVersion");
   const requestedRecipe = MATERIALS_STUDY_RECIPES.find((recipe) => recipe.id === requestedStudyId);
-  if (requestedStudyId) {
+  if (!requestedExperiment && requestedStudyId) {
     if (requestedStudyVersion === "1" && requestedRecipe) {
       selectedStudyRecipeId = requestedRecipe.id;
       activeStudyRecipeId = requestedRecipe.id;
@@ -35222,7 +35462,8 @@ function applyLaunchParameters() {
     }
   }
   const material = parameters.get("material");
-  if (!requestedStudyId && material && [...scenarioSelect.options].some((option) => option.value === material)) {
+  if (!requestedExperiment && !requestedStudyId && material
+    && [...scenarioSelect.options].some((option) => option.value === material)) {
     scenarioSelect.value = material;
   }
   if (scenarioSelect.value === "iceVI" && parameters.has("microstate")) {
@@ -35231,6 +35472,10 @@ function applyLaunchParameters() {
     iceViMicrostate = resolveIceViIceRuleMicrostate(iceViMicrostateSeed);
   }
   const requestedStage = Number.parseInt(parameters.get("stage"), 10);
+  if (customExperimentLaunchAudit?.loaded) {
+    return STUDY_STAGE_SEQUENCE.some((entry) => entry.stage === requestedStage) ? requestedStage : 0;
+  }
+  if (customExperimentLaunchAudit) return 0;
   if (studyLaunchAudit?.loaded) {
     return STUDY_STAGE_SEQUENCE.some((entry) => entry.stage === requestedStage) ? requestedStage : 0;
   }
@@ -35261,6 +35506,10 @@ if (studyLaunchAudit?.loaded) {
   receiptStatus.textContent = `${selectedStudyRecipe().label} reconstructed from recipe schema v1 · paused at stage ${pipelineStage} · no coordinates, learned weights, or growth history were embedded.`;
 } else if (studyLaunchAudit && !studyLaunchAudit.loaded) {
   receiptStatus.textContent = `Study link ignored · ${studyLaunchAudit.reason}; no recipe settings were applied.`;
+} else if (customExperimentLaunchAudit?.loaded) {
+  receiptStatus.textContent = `Custom experiment reconstructed from control schema v${customExperimentLaunchAudit.schemaVersion} · paused at stage ${pipelineStage} · coordinates, learned weights, marking IDs, targets, and growth history were excluded.`;
+} else if (customExperimentLaunchAudit && !customExperimentLaunchAudit.loaded) {
+  receiptStatus.textContent = `Experiment link ignored · ${customExperimentLaunchAudit.reason}; no encoded controls were applied.`;
 }
 resize();
 requestAnimationFrame(animate);

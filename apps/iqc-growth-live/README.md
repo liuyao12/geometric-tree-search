@@ -1,5 +1,24 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 310 · reconstructable custom investigations
+
+Edited and fully custom investigations now receive versioned permalinks rather
+than falling back to a disabled recipe button. The compact manifest preserves
+the selected curated material, Ice VI microstate seed when applicable, geometry
+model, cluster tolerance, GCTS channel count, neighborhood reach, marking
+representation, spin coloring, single/portfolio marking search, search policy,
+every receipt-visible growth-physics control, hierarchy and scheduling mode,
+growth-path seed, and structural observable.
+
+The link deliberately contains no atomic coordinates, target sites, fitted
+marking coefficients, active library IDs, or growth history. Those omissions
+are part of the versioned schema and are validated before any setting is
+applied. Unknown fields, material mismatches, unsupported option values,
+malformed payloads, and future schema versions fail closed at known positions.
+Local file imports remain receipt-only because their coordinates are never
+placed in a compact URL. An edited, already-loaded experiment rewrites its own
+address so the visible URL cannot silently describe stale controls.
+
 ## Build 309 · durable workflow routes
 
 Every explicit material or stage choice now updates the browser address. Atlas
