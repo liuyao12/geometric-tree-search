@@ -1,5 +1,23 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 294 · pose × connection-port incidence microscope
+
+Stage 3 now renders the matrix that actually determines directional marking
+capacity for the selected cluster. Rows are proper-pose orbits ordered by their
+observed occupancy; columns are symmetry-reduced outgoing connection roles; each
+interactive cell is the retained training-witness count for that coupling. A
+selected cell exposes the target cluster, mean shared support, translation in
+nearest-neighbor units, and proper relative-rotation angle.
+
+The matrix reports its numerical rank, active-cell count, retained witness
+samples, and the resulting `rank + 2` channel requirement (bounded by the
+declared 3–12 channel family). The extra two fields remain compatibility and
+failure. This makes clear why twelve observed rotations can require only three
+channels, while a smaller set of independent pose/port couplings may require
+more. The full ordered matrix, semantic port records, and rank enter every
+nonterminal cluster receipt. It never changes candidate geometry, reads a
+target, or assigns energy to a connection.
+
 ## Build 293 · proper-pose occupation microscope
 
 The selected Stage-3 cluster now carries an interactive population spectrum for

@@ -839,6 +839,29 @@ body.study-guide-open { overflow: hidden; }
 .cluster-pose-spectrum-detail span { margin: 0; color: #91aaa3; font: 7px/1.35 var(--mono); }
 .cluster-pose-spectrum-detail em { grid-column: 1 / -1; color: #617a73; font: 6px/1.4 var(--mono); font-style: normal; }
 .cluster-pose-spectrum > p { margin: 7px 0 0; color: #647d76; font: 7px/1.45 var(--mono); }
+.cluster-pose-port-incidence { grid-column: 1 / -1; min-width: 0; padding: 10px; border-top: 1px solid rgba(181,148,255,.16); background: linear-gradient(135deg,rgba(8,16,26,.98),rgba(12,12,27,.98)); }
+.cluster-pose-port-incidence header { display: flex; align-items: end; justify-content: space-between; gap: 10px; }
+.cluster-pose-port-incidence header span,.cluster-pose-port-incidence header small,.cluster-pose-port-incidence header strong { display: block; min-width: 0; overflow: visible; white-space: normal; }
+.cluster-pose-port-incidence header strong { margin-top: 3px; color: #eee8ff; font: 650 10px/1.25 var(--mono); }
+.cluster-pose-port-incidence header b { color: #bda6ff; font: 650 8px/1.25 var(--mono); text-align: right; }
+.cluster-pose-port-coverage { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 1px; margin-top: 8px; background: rgba(181,148,255,.1); }
+.cluster-pose-port-coverage span { min-width: 0; margin: 0; padding: 6px 7px; background: rgba(5,8,18,.68); white-space: normal; }
+.cluster-pose-port-coverage small,.cluster-pose-port-coverage strong { display: block; overflow: visible; white-space: normal; }
+.cluster-pose-port-coverage strong { margin-top: 3px; color: #e6ddff; font: 650 9px/1 var(--mono); }
+.cluster-pose-port-grid { display: grid; gap: 2px; min-width: 0; margin-top: 8px; padding: 4px; overflow-x: auto; scrollbar-color: rgba(181,148,255,.3) transparent; }
+.cluster-pose-port-grid .corner,.cluster-pose-port-grid .port-head,.cluster-pose-port-grid .pose-head { display: grid; align-content: center; min-width: 0; min-height: 28px; margin: 0; padding: 3px; overflow: visible; background: rgba(255,255,255,.025); color: #6f6981; font: 650 6px/1.2 var(--mono); text-align: center; white-space: normal; }
+.cluster-pose-port-grid .pose-head b,.cluster-pose-port-grid .pose-head small { display: block; margin: 0; overflow: visible; white-space: normal; }
+.cluster-pose-port-grid .pose-head b { color: #cfc2f2; font-size: 7px; }
+.cluster-pose-port-grid .pose-head small { margin-top: 2px; color: #6f6981; font-size: 5px; }
+.cluster-pose-port-grid button { min-width: 28px; min-height: 28px; padding: 2px; border: 1px solid rgba(181,148,255,calc(.12 + var(--incidence) * .42)); border-radius: 4px; background: rgba(181,148,255,calc(.025 + var(--incidence) * .2)); color: rgba(238,232,255,calc(.45 + var(--incidence) * .5)); font: 650 7px/1 var(--mono); }
+.cluster-pose-port-grid button.empty { color: rgba(111,105,129,.4); }
+.cluster-pose-port-grid button:hover,.cluster-pose-port-grid button:focus-visible,.cluster-pose-port-grid button.active { border-color: rgba(181,148,255,.82); background: rgba(181,148,255,.2); color: #fff; outline: none; }
+.cluster-pose-port-detail { display: grid; grid-template-columns: auto minmax(0,1fr); gap: 3px 10px; margin-top: 7px; padding: 7px 8px; border-left: 2px solid #b594ff; background: rgba(181,148,255,.04); }
+.cluster-pose-port-detail strong,.cluster-pose-port-detail span,.cluster-pose-port-detail em { overflow: visible; white-space: normal; }
+.cluster-pose-port-detail strong { margin: 0; color: #eee8ff; font: 650 8px/1.25 var(--mono); }
+.cluster-pose-port-detail span { margin: 0; color: #a69abc; font: 7px/1.35 var(--mono); }
+.cluster-pose-port-detail em { grid-column: 1 / -1; color: #716b81; font: 6px/1.4 var(--mono); font-style: normal; }
+.cluster-pose-port-incidence > p { margin: 7px 0 0; color: #716b81; font: 7px/1.45 var(--mono); }
 .cluster-card { position: relative; min-height: 212px; overflow: hidden; border: 1px solid rgba(151,194,183,.22); background: linear-gradient(145deg, rgba(14,37,36,.92), rgba(5,15,17,.96)); cursor: pointer; outline: none; }
 .cluster-card:hover,.cluster-card:focus-visible { border-color: rgba(101,225,188,.65); }
 .cluster-card.active { border-color: var(--mint); box-shadow: inset 0 0 0 1px rgba(101,225,188,.22), 0 0 18px rgba(101,225,188,.08); }
@@ -1799,6 +1822,8 @@ body.study-guide-open { overflow: hidden; }
   .cluster-gallery-inspector { grid-template-columns: 1fr 1fr; }
   .cluster-pose-spectrum-summary { grid-template-columns: 1fr 1fr; }
   .cluster-pose-spectrum header { align-items: flex-start; }
+  .cluster-pose-port-coverage { grid-template-columns: 1fr 1fr; }
+  .cluster-pose-port-incidence header { align-items: flex-start; }
   .cluster-cover-ledger { grid-template-columns: 1fr; }
   .microstructure-heading { align-items: flex-start; }
   .microstructure-heading em { max-width: 48%; }
