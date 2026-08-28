@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260828-300">
+  <link rel="stylesheet" href="./style.css?v=20260828-301">
   <script type="importmap">
     {
       "imports": {
@@ -1162,6 +1162,12 @@
               </section>
               <div class="policy-score-heading"><small>selected action score ledger</small><strong id="policyScoreLedgerState">awaiting an evaluated frontier</strong></div>
               <div id="policyScoreLedger" class="policy-score-ledger" aria-label="Signed geometric score contributions"></div>
+              <section class="policy-normalization-card" aria-label="Dimensional reduction ledger">
+                <header><span><small>physical / geometric input → dimensionless score</small><strong>Normalization ledger</strong></span><b id="policyNormalizationState">awaiting a selected action</b></header>
+                <label>score term<select id="policyNormalizationSelect" aria-label="Inspect score-term normalization"></select></label>
+                <article id="policyNormalizationDetail" class="policy-normalization-detail" aria-live="polite"></article>
+                <p>Each row exposes the source quantity and unit, its reference scale, and the exact reduction used before a dimensionless weight enters branch ordering. These coordinates never alter candidate geometry or hard admission and are not energies, forces, rates, or elapsed physical time.</p>
+              </section>
               <div class="policy-workbench-heading"><span><small>frozen-frontier intervention</small><strong id="policyWorkbenchState">baseline weights</strong></span><button id="policyWorkbenchReset" type="button" disabled>Reset ×1</button></div>
               <section class="policy-phase-map-card" aria-label="Two-hypothesis growth decision phase map">
                 <header><span><small>two-hypothesis decision map</small><strong>Attachment-action basins</strong></span><b id="policyPhaseMapState">awaiting a frozen frontier</b></header>
@@ -2089,7 +2095,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260828-300"></script>
+  <script type="module" src="./app.js?v=20260828-301"></script>
   <script type="module" src="./evidence-atlas.js?v=20260827-24"></script>
 </body>
 </html>

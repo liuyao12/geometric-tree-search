@@ -36,7 +36,9 @@ import { buildSettlingMaterialResponseHistory, buildSettlingMaterialResponseMatr
   SETTLING_MATERIAL_FIELDS }
   from "./settling-material-sensitivity.mjs?v=20260828-290";
 import { channelValidationMetricsFromCounts, validationOccurrenceJackknife }
-  from "./validation-uncertainty.mjs?v=20260828-300";
+  from "./validation-uncertainty.mjs?v=20260828-301";
+import { scoreNormalizationAudit }
+  from "./score-normalization.mjs?v=20260828-301";
 import { archiveResponseFrontierRankAudit }
   from "./archive-response-frontier-audit.js?v=20260827-1";
 import { evidenceOrderedClusterDiscoverySchedule }
@@ -507,6 +509,9 @@ const policyComparison = $("policyComparison");
 const policyComparisonState = $("policyComparisonState");
 const policyScoreLedger = $("policyScoreLedger");
 const policyScoreLedgerState = $("policyScoreLedgerState");
+const policyNormalizationState = $("policyNormalizationState");
+const policyNormalizationSelect = $("policyNormalizationSelect");
+const policyNormalizationDetail = $("policyNormalizationDetail");
 const markingFrontierState = $("markingFrontierState");
 const markingFrontierRows = $("markingFrontierRows");
 const markingFrontierDetail = $("markingFrontierDetail");
@@ -1587,6 +1592,7 @@ let selectedPolicySnapshotIndex = -1;
 let selectedPolicyPreviewId = "active";
 let selectedPolicyStateOutcome = "antichain";
 let selectedPolicyStateObservableId = "coordinationDeficit";
+let selectedPolicyNormalizationTermId = null;
 let selectedMarkingFrontierId = null;
 let policySnapshotCount = 0;
 let hypothesisSeparationExperiment = null;
@@ -11732,7 +11738,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260828-300",
+      buildId: "20260828-301",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -13830,7 +13836,7 @@ async function buildExperimentReceipt() {
             scoreTerms: policy.scoreTerms.map((term) => ({ id: term.id, label: term.label,
               raw: receiptRound(term.raw), weight: receiptRound(term.weight),
               contribution: receiptRound(term.contribution), role: term.role,
-              claimBoundary: term.claimBoundary })),
+              claimBoundary: term.claimBoundary, normalization: term.normalization })),
           })),
         })),
         selectedHypothesisTrajectory: (() => {
@@ -14074,7 +14080,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260828-300" },
+    application: { name: "Materials Growth Lab", buildId: "20260828-301" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -18599,7 +18605,11 @@ function scoreTerm(id, label, raw, weight, role, claimBoundary) {
   const finiteRaw = Number.isFinite(raw) ? raw : 0;
   const finiteWeight = Number.isFinite(weight) ? weight : 0;
   return { id, label, raw: finiteRaw, weight: finiteWeight,
-    contribution: finiteRaw * finiteWeight, role, claimBoundary };
+    contribution: finiteRaw * finiteWeight, role, claimBoundary,
+    normalization: scoreNormalizationAudit(id, {
+      nearestNeighborAngstrom: referenceSpacingA,
+      metricToleranceAngstrom: clusterMetricToleranceAngstrom(),
+    }) };
 }
 
 function baseCandidateScoreTerms(entry) {
@@ -18695,6 +18705,7 @@ function freezeGrowthActionPhysicsFingerprint(entry) {
     contribution: receiptRound(term.contribution, 10),
     executionRole: growthPhysicsTermRole(term), role: term.role,
     claimBoundary: term.claimBoundary,
+    normalization: term.normalization,
     active: Math.abs(term.weight) > 1e-12,
     physicalSurrogate: !["grammar-priority", "known-window-gain", "exploration"].includes(term.id),
   }));
@@ -19011,6 +19022,7 @@ function workbenchCandidateTerms(snapshot, candidate) {
   return candidate.scoreTerms.map((term) => {
     const termMultiplier = workbenchMultiplier(snapshot, term.id);
     return { id: term.id, label: term.label, role: term.role, claimBoundary: term.claimBoundary,
+      normalization: term.normalization,
       raw: term.raw, baselineWeight: term.weight, baselineContribution: term.contribution,
       multiplier: termMultiplier, weight: term.weight * termMultiplier,
       contribution: term.contribution * termMultiplier };
@@ -20076,7 +20088,7 @@ function markingWinnerMaterialConsequence(entry) {
       && Number.isFinite(term.contribution) && Math.abs(term.weight) > 1e-12)
     .map((term) => ({ id: term.id, label: term.label, role: term.role,
       raw: term.raw, weight: term.weight, contribution: term.contribution,
-      claimBoundary: term.claimBoundary }));
+      claimBoundary: term.claimBoundary, normalization: term.normalization }));
   const favorable = physicsTerms.filter((term) => term.contribution > 0)
     .sort((first, second) => second.contribution - first.contribution || first.id.localeCompare(second.id))[0] || null;
   const burden = physicsTerms.filter((term) => term.contribution < 0)
@@ -25436,7 +25448,7 @@ function frozenCreationPhysicsTerms(evaluation) {
     .filter((term) => !["grammar-priority", "known-window-gain"].includes(term.id))
     .map((term) => ({ id: term.id, label: term.label, raw: receiptRound(term.raw),
       weight: receiptRound(term.weight), contribution: receiptRound(term.contribution),
-      role: term.role, claimBoundary: term.claimBoundary }));
+      role: term.role, claimBoundary: term.claimBoundary, normalization: term.normalization }));
 }
 
 function frozenCreationAdmissionGates(evaluation) {
@@ -31883,6 +31895,7 @@ function renderPolicyScoreLedger(policy, snapshot = null) {
   policyScoreLedger.replaceChildren();
   if (!policy?.scoreTerms?.length) {
     policyScoreLedgerState.textContent = "no selected action";
+    renderPolicyNormalizationLedger(null);
     renderPolicyWorkbenchState(null);
     return;
   }
@@ -31909,8 +31922,60 @@ function renderPolicyScoreLedger(policy, snapshot = null) {
   });
   const activeTerms = policy.scoreTerms.filter((term) => Math.abs(term.weight) > 0).length;
   policyScoreLedgerState.textContent = `Σ ${policy.scoreTermTotal.toFixed(3)} = score · ${activeTerms} term${activeTerms === 1 ? "" : "s"} · ${policy.scoreDecompositionExact ? "exact" : "mismatch"}`;
+  renderPolicyNormalizationLedger(policy);
   renderPolicyWorkbenchState(snapshot);
 }
+
+function renderPolicyNormalizationLedger(policy) {
+  policyNormalizationSelect.replaceChildren();
+  policyNormalizationDetail.replaceChildren();
+  const terms = policy?.scoreTerms?.filter((term) => term.normalization) || [];
+  if (!terms.length) {
+    policyNormalizationState.textContent = "awaiting a selected action";
+    policyNormalizationSelect.disabled = true;
+    return;
+  }
+  policyNormalizationSelect.disabled = false;
+  if (!terms.some((term) => term.id === selectedPolicyNormalizationTermId)) {
+    selectedPolicyNormalizationTermId = terms.find((term) => Math.abs(term.weight) > 1e-12)?.id || terms[0].id;
+  }
+  terms.forEach((term) => {
+    const option = document.createElement("option"); option.value = term.id;
+    option.textContent = `${Math.abs(term.weight) > 1e-12 ? "active" : "diagnostic"} · ${term.label}`;
+    option.selected = term.id === selectedPolicyNormalizationTermId;
+    policyNormalizationSelect.append(option);
+  });
+  const term = terms.find((candidate) => candidate.id === selectedPolicyNormalizationTermId) || terms[0];
+  const audit = term.normalization;
+  const scaleParts = [audit.referenceScale];
+  if (audit.resolvedScales.nearestNeighborAngstrom !== null) scaleParts.push(`d_nn = ${audit.resolvedScales.nearestNeighborAngstrom.toFixed(4)} Å`);
+  if (audit.resolvedScales.metricToleranceAngstrom !== null) scaleParts.push(`ε = ${audit.resolvedScales.metricToleranceAngstrom.toExponential(2)} Å`);
+  const cells = [
+    ["01 · source", audit.sourceQuantity, audit.sourceUnit],
+    ["02 · reference", scaleParts.join(" · "), "sample / artifact scale"],
+    ["03 · transform", audit.transform, "declared finite reduction"],
+    ["04 · score coordinate", audit.outputDomain, `${audit.outputUnit} · raw ${term.raw.toFixed(5)}`],
+  ];
+  cells.forEach(([step, value, meta]) => {
+    const cell = document.createElement("section"); const small = document.createElement("small");
+    const strong = document.createElement("strong"); const span = document.createElement("span");
+    small.textContent = step; strong.textContent = value; span.textContent = meta;
+    cell.append(small, strong, span); policyNormalizationDetail.append(cell);
+  });
+  const equation = document.createElement("footer");
+  equation.textContent = `raw ${term.raw.toFixed(5)} × dimensionless weight ${term.weight.toFixed(4)} = ${term.contribution >= 0 ? "+" : ""}${term.contribution.toFixed(5)} · ${term.role} · ${term.claimBoundary}`;
+  policyNormalizationDetail.append(equation);
+  policyNormalizationState.textContent = `${term.label} · ${audit.sourceUnit} → dimensionless`;
+}
+
+policyNormalizationSelect.addEventListener("change", () => {
+  selectedPolicyNormalizationTermId = policyNormalizationSelect.value;
+  const snapshot = policyComparisonHistory[selectedPolicySnapshotIndex] || lastPolicyComparison;
+  const policy = selectedPolicyPreviewId === "workbench" ? buildPolicyWorkbench(snapshot)
+    : snapshot?.policies?.find((entry) => entry.id === selectedPolicyPreviewId)
+      || snapshot?.policies?.find((entry) => entry.id === "active") || null;
+  renderPolicyNormalizationLedger(policy);
+});
 
 function previewMarkingFrontierWinner(row, snapshot) {
   selectedMarkingFrontierId = row.id;

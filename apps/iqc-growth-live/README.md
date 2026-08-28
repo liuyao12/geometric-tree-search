@@ -1,5 +1,20 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 301 · dimensional reduction ledger
+
+The material-growth stage now exposes how every physical or geometric input is
+converted into a dimensionless branch-order coordinate. For the selected exact
+action, an interactive ledger traces each score term through its source
+quantity and unit, sample- or artifact-derived reference scale, declared finite
+transformation, dimensionless output domain, weight, and signed contribution.
+
+The resolved nearest-neighbor and metric-tolerance length scales are shown in
+ångströms wherever they enter the audit, and the full normalization record is
+retained in action fingerprints and downloadable receipts. The ledger is an
+explanation of the executed ranking calculation: it does not modify candidate
+geometry, hard admission, or the search, and no coordinate is relabeled as an
+energy, force, rate, probability, or elapsed physical time.
+
 ## Build 300 · occurrence-blocked validation uncertainty
 
 Held-out connection sectors are no longer presented as though every channel
