@@ -3,6 +3,7 @@ import importlib.util
 import itertools
 import json
 import tempfile
+import copy
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -20,6 +21,12 @@ MERGE_SPEC = importlib.util.spec_from_file_location(
 )
 MERGE = importlib.util.module_from_spec(MERGE_SPEC)
 MERGE_SPEC.loader.exec_module(MERGE)
+ORBIT_MERGE_SPEC = importlib.util.spec_from_file_location(
+    "a2_periodic_orbit_merge",
+    ROOT / "scripts" / "merge-a2-layered-periodic-orbit-exact.py",
+)
+ORBIT_MERGE = importlib.util.module_from_spec(ORBIT_MERGE_SPEC)
+ORBIT_MERGE_SPEC.loader.exec_module(ORBIT_MERGE)
 
 size_five = [
     json.loads(line)
@@ -38,6 +45,48 @@ certificate = screened["periodic_z3"]["certificate"]
 assert certificate["copies"] == 2
 assert certificate["determinant"] == 5
 assert screened["periodic_z3"]["replay"]["verified"] is True
+
+orbits_27 = MODULE.hnf_orbits(27)
+assert len(orbits_27) == 233
+assert sum(len(orbit["member_indices"]) for orbit in orbits_27) == 1210
+assert sorted(index for orbit in orbits_27 for index in orbit["member_indices"]) == list(range(1210))
+assert {len(orbit["member_indices"]) for orbit in orbits_27} == {1, 2, 3, 6}
+
+orbit_screened = MODULE.screen_candidate(candidate, SimpleNamespace(
+    min_copies=2,
+    max_copies=2,
+    hnf_timeout_ms=5000,
+    candidate_time_ms=0,
+    hnf_orbit_representatives=True,
+))
+assert orbit_screened["classification"] == "periodic"
+assert orbit_screened["periodic_z3"]["replay"]["verified"] is True
+assert orbit_screened["periodic_z3"]["hnf_orbit_representatives"] is True
+
+synthetic_shards = [{
+    "id": "probe",
+    "classification": "unresolved",
+    "periodic_z3": {
+        "stopped_by": "candidate_time_limit" if start == 0 else None,
+        "hnf_visited": 1,
+        "hnf_covered": 3,
+        "solver_unknown": 0,
+        "hnf_range": [start, 2],
+        "hnf_total": 6,
+        "hnf_orbit_total": 2,
+        "hnf_orbit_representatives": True,
+    },
+} for start in (0, 1)]
+synthetic_merged = ORBIT_MERGE.merge_records(synthetic_shards, 6)
+assert synthetic_merged["periodic_z3"]["hnf_range_exhausted"] is True
+assert synthetic_merged["periodic_z3"]["hnf_covered"] == 6
+gapped = copy.deepcopy(synthetic_shards)
+gapped[1]["periodic_z3"]["hnf_range"] = [2, 3]
+try:
+    ORBIT_MERGE.merge_records(gapped, 6)
+    raise AssertionError("orbit merger accepted a range gap")
+except ValueError as error:
+    assert "gap or overlap" in str(error)
 
 # The complete bitset GCTS used for motifs of five copies and above agrees
 # with an independent brute-force combination oracle on small multicovers.

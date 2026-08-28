@@ -19,6 +19,8 @@ import time
 from pathlib import Path
 
 from z3 import Bool, If, PbEq, Solver, SolverFor, Sum, is_true, sat, unsat
+from sympy import Matrix
+from sympy.matrices.normalforms import hermite_normal_form
 
 
 PERMUTATIONS = tuple(itertools.permutations(range(3)))
@@ -100,6 +102,52 @@ def hnf_candidates(determinant: int):
         hnf[1] + hnf[2] + hnf[4],
         hnf,
     ))
+
+
+def transformed_hnf(hnf, isometry):
+    a, b, c, d, e, f = hnf
+    basis = Matrix(((a, b, c), (0, d, e), (0, 0, f)))
+    sign, permutation = isometry
+    transform = Matrix(3, 3, lambda row, column:
+                       sign if permutation[row] == column else 0)
+    result = hermite_normal_form(transform * basis)
+    return (
+        int(result[0, 0]), int(result[0, 1]), int(result[0, 2]),
+        int(result[1, 1]), int(result[1, 2]), int(result[2, 2]),
+    )
+
+
+def hnf_orbits(determinant: int) -> list[dict]:
+    """Partition every HNF by the proper fixed A2 layer point group."""
+    hnfs = hnf_candidates(determinant)
+    index = {hnf: position for position, hnf in enumerate(hnfs)}
+    parent = list(range(len(hnfs)))
+
+    def find(position):
+        while parent[position] != position:
+            parent[position] = parent[parent[position]]
+            position = parent[position]
+        return position
+
+    def union(left, right):
+        left, right = find(left), find(right)
+        if left != right:
+            parent[right] = left
+
+    for position, hnf in enumerate(hnfs):
+        for isometry in A2_LAYER_ISOMETRIES:
+            transformed = transformed_hnf(hnf, isometry)
+            if transformed not in index:
+                raise RuntimeError(f"transformed HNF missing: {hnf} -> {transformed}")
+            union(position, index[transformed])
+    classes = {}
+    for position in range(len(hnfs)):
+        classes.setdefault(find(position), []).append(position)
+    return [{
+        "representative_index": min(members),
+        "representative_hnf": hnfs[min(members)],
+        "member_indices": sorted(members),
+    } for members in sorted(classes.values(), key=min)]
 
 
 def period_vectors(hnf: tuple[int, int, int, int, int, int]):
@@ -443,6 +491,7 @@ def screen_candidate(record: dict, args) -> dict:
     exact_multicover_mitm_fallbacks = 0
     exact_multicover_mitm_pairs = 0
     exact_multicover_mitm_triples = 0
+    hnf_covered = 0
     exhausted_by_copies: dict[str, int] = {}
     for copies in range(args.min_copies, args.max_copies + 1):
         numerator = weight * copies
@@ -450,18 +499,26 @@ def screen_candidate(record: dict, args) -> dict:
             continue
         determinant = numerator // 48
         all_candidates = hnf_candidates(determinant)
+        orbit_mode = bool(getattr(args, "hnf_orbit_representatives", False))
+        orbit_records = hnf_orbits(determinant) if orbit_mode else None
+        search_records = orbit_records if orbit_mode else [{
+            "representative_index": index,
+            "representative_hnf": hnf,
+            "member_indices": [index],
+        } for index, hnf in enumerate(all_candidates)]
         hnf_start = max(0, getattr(args, "hnf_start", 0))
         configured_stop = getattr(args, "hnf_stop", 0)
         hnf_stop = min(
-            len(all_candidates),
-            configured_stop if configured_stop else len(all_candidates),
+            len(search_records),
+            configured_stop if configured_stop else len(search_records),
         )
         if hnf_start >= hnf_stop:
             raise ValueError("empty HNF range")
-        candidates = all_candidates[hnf_start:hnf_stop]
+        candidates = search_records[hnf_start:hnf_stop]
         copy_unknown = 0
-        for local_hnf_index, hnf in enumerate(candidates):
-            hnf_index = hnf_start + local_hnf_index
+        for local_hnf_index, hnf_record in enumerate(candidates):
+            hnf = tuple(hnf_record["representative_hnf"])
+            hnf_index = hnf_record["representative_index"]
             hnf_visited += 1
             placements = []
             for orientation_index, orientation in enumerate(tile_orientations):
@@ -607,6 +664,9 @@ def screen_candidate(record: dict, args) -> dict:
                         "certificate": certificate,
                         "replay": replay,
                         "hnf_visited": hnf_visited,
+                        "hnf_covered": hnf_covered + len(hnf_record["member_indices"]),
+                        "hnf_orbit_representatives": orbit_mode,
+                        "hnf_orbit_total": len(orbit_records) if orbit_mode else None,
                         "solver_unknown": solver_unknown,
                         "exact_multicover_nodes": exact_multicover_nodes,
                         "exact_multicover_failed_states": exact_multicover_failed_states,
@@ -623,10 +683,13 @@ def screen_candidate(record: dict, args) -> dict:
             if result != unsat:
                 solver_unknown += 1
                 copy_unknown += 1
+            else:
+                hnf_covered += len(hnf_record["member_indices"])
             progress_every_hnf = getattr(args, "progress_every_hnf", 0)
             if progress_every_hnf and hnf_visited % progress_every_hnf == 0:
                 print(
-                    f"{record['id']} copies={copies} hnf={hnf_index + 1}/{len(all_candidates)} "
+                    f"{record['id']} copies={copies} "
+                    f"{'orbit' if orbit_mode else 'hnf'}={hnf_start + local_hnf_index + 1}/{len(search_records)} "
                     f"nodes={exact_multicover_nodes} failed={exact_multicover_failed_states} "
                     f"elapsed_s={round(time.monotonic() - started, 1)}",
                     flush=True,
@@ -639,6 +702,9 @@ def screen_candidate(record: dict, args) -> dict:
                         "stopped_by": "candidate_time_limit",
                         "active_copies": copies,
                         "hnf_visited": hnf_visited,
+                        "hnf_covered": hnf_covered,
+                        "hnf_orbit_representatives": orbit_mode,
+                        "hnf_orbit_total": len(orbit_records) if orbit_mode else None,
                         "solver_unknown": solver_unknown,
                         "exact_multicover_nodes": exact_multicover_nodes,
                         "exact_multicover_failed_states": exact_multicover_failed_states,
@@ -652,7 +718,7 @@ def screen_candidate(record: dict, args) -> dict:
                         "milliseconds": round((time.monotonic() - started) * 1000),
                     },
                 }
-        if copy_unknown == 0 and hnf_start == 0 and hnf_stop == len(all_candidates):
+        if copy_unknown == 0 and hnf_start == 0 and hnf_stop == len(search_records):
             exhausted_by_copies[str(copies)] = len(all_candidates)
     return {
         **record,
@@ -660,6 +726,9 @@ def screen_candidate(record: dict, args) -> dict:
         "periodic_z3": {
             "stopped_by": None,
             "hnf_visited": hnf_visited,
+            "hnf_covered": hnf_covered,
+            "hnf_orbit_representatives": orbit_mode,
+            "hnf_orbit_total": len(orbit_records) if orbit_mode else None,
             "solver_unknown": solver_unknown,
             "exact_multicover_nodes": exact_multicover_nodes,
             "exact_multicover_failed_states": exact_multicover_failed_states,
@@ -668,7 +737,8 @@ def screen_candidate(record: dict, args) -> dict:
             "exact_multicover_mitm_triples": exact_multicover_mitm_triples,
             "hnf_range": [hnf_start, hnf_stop],
             "hnf_total": len(all_candidates),
-            "hnf_range_exhausted": solver_unknown == 0,
+            "hnf_range_exhausted": solver_unknown == 0
+            and hnf_start == 0 and hnf_stop == len(search_records),
             "exhausted_by_copies": exhausted_by_copies,
             "milliseconds": round((time.monotonic() - started) * 1000),
         },
@@ -685,6 +755,7 @@ def main():
     parser.add_argument("--candidate-time-ms", type=int, default=0)
     parser.add_argument("--solver", choices=("exact", "default", "qffd"), default="exact")
     parser.add_argument("--progress-every-hnf", type=int, default=0)
+    parser.add_argument("--hnf-orbit-representatives", action="store_true")
     parser.add_argument("--hnf-start", type=int, default=0)
     parser.add_argument("--hnf-stop", type=int, default=0)
     parser.add_argument("--only-unresolved", action="store_true")

@@ -481,16 +481,33 @@ unknowns. A first exact four-copy probe advances five of those survivors:
 `a2lp_9_00000`, `a2lp_9_00002`, `a2lp_9_00003`, and `a2lp_9_00010`
 exhaust all 910 four-copy HNF bases. Each of the final four has an independently
 replayed root corona, using 21, 30, 29, and 27 copies respectively. They are
-the directed-layer catalogue leads; larger periods and second coronas remain
-open.
+the directed-layer catalogue leads.
+
+The fast exact multicover solver now quotients determinant-27 HNFs by the
+proper A2 point group. Its 233 disjoint orbit representatives cover all 1,210
+six-copy bases. Gap-checked disjoint shards exhaust that orbit partition for
+each of the four candidates: 4,840 HNFs and about 19.9 million exact states in
+total, with zero unknowns and no period. Thus all four are exact through six
+copies; larger periods remain open.
+
+Direct cellular monotile substitutions are completely excluded for every one
+of the 49 planar/layer scale pairs from 2 through 8. Complete connected
+two-copy metatile alphabets are excluded at scalar scales 2 and 3 (104/107/
+111/120 symmetry-distinct parents per candidate at each scale). A scale-two
+three-copy probe on `a2lp_9_00000` replay-certifies the first 500 of 11,811
+parents and is explicitly incomplete. Radius-two CEGAR/GCTS retains 32, 15,
+6, and 32 sound obstruction clauses for the four candidates, respectively;
+none exhausts the finite outer first-corona space.
 
 The census, complete two-copy screen, focused four-copy screen, and corona
 receipts are `data/a2-layered-size9-directed-census.ndjson`,
 `data/a2-layered-size9-directed-periodic-exact2.ndjson`,
-`data/a2-layered-size9-directed-focus-periodic-exact4.ndjson`, and
-`data/a2-layered-size9-directed-focus-corona1.ndjson`.
+`data/a2-layered-size9-directed-focus-periodic-exact4.ndjson`,
+`data/a2-layered-size9-directed-periodic-exact6.ndjson`, and
+`data/a2-layered-size9-directed-focus-corona1.ndjson`. Substitution and
+radius-two evidence is in the other `data/a2-layered-size9-directed-*` reports.
 
-Rebuild the focused census with:
+Rebuild the earlier size-eight census with:
 
 ```bash
 node scripts/export-a2-layered-polyprism-census.mjs \

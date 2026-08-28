@@ -181,10 +181,14 @@ for (const candidate of A2_LAYERED_SIZE9_CANDIDATES) {
   assert.equal(candidate.morphology.layer_count, 5);
   assert.equal(candidate.morphology.distinct_cross_sections, 5);
   assert.equal(candidate.morphology.transverse_profile_asymmetric, true);
-  assert.equal(candidate.screening.periodic_exact_through, 4);
-  assert.equal(candidate.screening.periodic_four_copy_hnf_visited, 910);
-  assert.equal(candidate.screening.periodic_four_copy_complete, true);
+  assert.equal(candidate.screening.periodic_exact_through, 6);
+  assert.equal(candidate.screening.periodic_six_copy_orbit_representatives_visited, 233);
+  assert.equal(candidate.screening.periodic_six_copy_hnf_covered, 1210);
+  assert.equal(candidate.screening.periodic_six_copy_complete, true);
   assert.equal(candidate.screening.corona_completed_verified, true);
+  assert.equal(candidate.screening.direct_layer_scale_pairs_exhausted, 49);
+  assert.deepEqual(candidate.screening.two_copy_metatile_substitution_scales_exhausted, [2, 3]);
+  assert.ok(candidate.screening.corona2_gcts_sound_clauses > 0);
 }
 const sizeNineExactTwo = (await readFile(new URL(
   "../data/a2-layered-size9-directed-periodic-exact2.ndjson", import.meta.url
@@ -199,6 +203,27 @@ assert.ok(sizeNineExactTwo
 assert.ok(sizeNineExactTwo
   .filter(record => record.classification === "unresolved")
   .every(record => record.periodic_z3.hnf_range_exhausted));
+const sizeNineExactSix = (await readFile(new URL(
+  "../data/a2-layered-size9-directed-periodic-exact6.ndjson", import.meta.url
+), "utf8")).trim().split("\n").filter(Boolean).map(JSON.parse);
+assert.equal(sizeNineExactSix.length, 4);
+assert.ok(sizeNineExactSix.every(record =>
+  record.periodic_z3.hnf_range_exhausted
+  && record.periodic_z3.hnf_visited === 233
+  && record.periodic_z3.hnf_covered === 1210
+  && record.periodic_z3.solver_unknown === 0));
+const sizeNineDirectSubstitutions = (await readFile(new URL(
+  "../data/a2-layered-size9-directed-substitution-direct-s2to8.ndjson", import.meta.url
+), "utf8")).trim().split("\n").filter(Boolean).map(JSON.parse);
+assert.equal(sizeNineDirectSubstitutions.length, 196);
+assert.ok(sizeNineDirectSubstitutions.every(record => record.substitution.certified));
+const sizeNineTwoCopySubstitutions = (await readFile(new URL(
+  "../data/a2-layered-size9-directed-substitution-two-copy-s2to3.ndjson", import.meta.url
+), "utf8")).trim().split("\n").filter(Boolean).map(JSON.parse);
+assert.equal(sizeNineTwoCopySubstitutions.length, 8);
+assert.ok(sizeNineTwoCopySubstitutions.every(record =>
+  record.two_copy_metatile_screen.certified
+  && record.two_copy_metatile_screen.unknown_metatile_indices.length === 0));
 
 
 console.log("A2 layered-polyprism census regression passed", {
