@@ -1075,6 +1075,8 @@ body.study-guide-open { overflow: hidden; }
 .marking-portfolio-rows { display: grid; gap: 3px; margin-top: 6px; }
 .marking-portfolio-rows > article { display: grid; grid-template-columns: minmax(0,.75fr) minmax(0,1.25fr); gap: 6px; padding: 5px 6px; border-left: 2px solid rgba(181,148,255,.22); background: rgba(3,12,14,.48); }
 .marking-portfolio-rows > article.active { border-left-color: var(--mint); background: rgba(101,225,188,.035); }
+.marking-portfolio-rows > article.validation-weak { border-right: 1px solid rgba(255,193,105,.22); }
+.marking-portfolio-rows > article.validation-weak span:last-child strong { color: var(--amber); }
 .marking-portfolio-rows span { display: grid; gap: 2px; min-width: 0; }
 .marking-portfolio-rows span:last-child { text-align: right; }
 .marking-portfolio-rows strong { color: #a9c5bd; font: 600 5.5px var(--mono); }

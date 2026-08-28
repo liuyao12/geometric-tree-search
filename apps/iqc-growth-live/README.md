@@ -1,5 +1,21 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 298 · validation-aware marking library
+
+Freezing a completed GCTS marking now preserves its aggregate and per-cluster
+held-out connection-sign audit alongside the coefficients, intrinsic channel
+basis, active-channel allocation, and representation state. The growth-stage
+library selector displays balanced accuracy, precision, recall, and evaluated
+sector count for every compatible saved marking; old entries without this
+evidence remain usable but are labeled unavailable.
+
+The frozen-basis replay ledger shows validation quality beside finite-rule and
+parameter accounting, and visually flags markings below 60% balanced accuracy.
+Selection remains a user-controlled experiment: validation never alters the
+candidate geometry, hard admission rules, or previously frozen coefficients.
+The active marking's complete validation audit is retained in the downloadable
+receipt.
+
 ## Build 297 · held-out connection-sign audit
 
 Each selected Stage-3 cluster now reports whether its current fitted channel

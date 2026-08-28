@@ -9594,6 +9594,59 @@ function sectionChannelValidationRecord(prototype) {
   };
 }
 
+function channelValidationMetricsFromCounts(confusion) {
+  const ratio = (numerator, denominator) => denominator ? numerator / denominator : null;
+  const precision = ratio(confusion.tp, confusion.tp + confusion.fp);
+  const recall = ratio(confusion.tp, confusion.tp + confusion.fn);
+  const specificity = ratio(confusion.tn, confusion.tn + confusion.fp);
+  const labels = confusion.tp + confusion.fp + confusion.fn + confusion.tn;
+  return {
+    labels,
+    accuracy: ratio(confusion.tp + confusion.tn, labels),
+    precision,
+    recall,
+    specificity,
+    balancedAccuracy: Number.isFinite(recall) && Number.isFinite(specificity)
+      ? .5 * (recall + specificity) : null,
+  };
+}
+
+function markingValidationAuditRecord() {
+  if (!sectionModel) return null;
+  const prototypes = Array.from({ length: sectionModel.prototypeCount }, (_, prototype) => {
+    const audit = sectionChannelValidationRecord(prototype);
+    if (!audit) return null;
+    const confusion = Object.fromEntries(Object.entries(audit.holdout.cells)
+      .map(([key, records]) => [key, records.length]));
+    return {
+      prototype,
+      label: markingPrototypeName(prototype),
+      activeChannels: audit.activeChannels,
+      samples: audit.holdout.samples,
+      confusion,
+      ...channelValidationMetricsFromCounts(confusion),
+    };
+  }).filter(Boolean);
+  const confusion = prototypes.reduce((counts, prototype) => {
+    Object.keys(counts).forEach((key) => { counts[key] += prototype.confusion[key]; });
+    return counts;
+  }, { tp: 0, fp: 0, fn: 0, tn: 0 });
+  const metrics = channelValidationMetricsFromCounts(confusion);
+  return {
+    schema: "gcts-heldout-channel-sign-v1",
+    threshold: 0,
+    prototypes,
+    holdout: { confusion, ...metrics,
+      samples: new Set(sectionModel.sampleLabels.map((_, index) => index)
+        .filter((index) => index < trainingProgress && index % 5 === 0)).size },
+    labelOrigin: "connection-derived per-occurrence channel-target sign",
+    predictionOrigin: "frozen type-level coefficient sign",
+    heldoutUpdatesCoefficients: false,
+    growthTargetUsed: false,
+    physicalPotential: false,
+  };
+}
+
 function renderClusterChannelValidation(panel, prototype) {
   const validationPanel = panel.querySelector(".cluster-channel-validation");
   if (!validationPanel) return;
@@ -11674,7 +11727,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260828-297",
+      buildId: "20260828-298",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -12545,6 +12598,7 @@ async function buildExperimentReceipt() {
         channelBasis: activeMarking.channelBasis || null,
         activeChannelsByPrototype: activeMarking.activeChannelsByPrototype || null,
         capacityAudit: activeMarking.capacityAudit || null,
+        heldoutSignAudit: activeMarking.validationAudit || null,
         coefficients: activeMarking.coefficients.map((row) => row.map((value) => receiptRound(value))),
       } : null,
       learned: markingVisible ? {
@@ -13973,7 +14027,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260828-297" },
+    application: { name: "Materials Growth Lab", buildId: "20260828-298" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -23009,6 +23063,10 @@ function markingPortfolioReplayAudit() {
       finiteRules: finiteScores.length,
       meanScore: finiteScores.reduce((sum, score) => sum + score, 0) / Math.max(1, finiteScores.length),
       bestRule: order[0] ?? null,
+      validationAudit: marking.validationAudit || null,
+      heldoutBalancedAccuracy: marking.validationAudit?.holdout?.balancedAccuracy ?? null,
+      heldoutPrecision: marking.validationAudit?.holdout?.precision ?? null,
+      heldoutRecall: marking.validationAudit?.holdout?.recall ?? null,
       scoreDigest: notebookStringHash(scores.map((score) => Number.isFinite(score) ? score.toFixed(8) : "nonfinite").join("|")),
       order,
       selfContainedBasis: marking.channelBasis.length === Number(marking.config.channels)
@@ -23030,6 +23088,13 @@ function markingPortfolioReplayAudit() {
     sameCandidateGeometry: true,
     targetUsed: false,
   };
+}
+
+function markingValidationLabel(marking) {
+  const audit = marking.validationAudit?.holdout;
+  if (!audit?.labels) return "held-out sign audit unavailable";
+  const format = (value) => Number.isFinite(value) ? `${(value * 100).toFixed(1)}%` : "undefined";
+  return `BA ${format(audit.balancedAccuracy)} · P/R ${format(audit.precision)}/${format(audit.recall)} · n=${audit.labels} sectors`;
 }
 
 function markingMatchesDraft(marking) {
@@ -23056,6 +23121,7 @@ function freezeCurrentMarking() {
     effectiveMetricToleranceAngstrom: clusterMetricToleranceAngstrom() };
   const materialKey = markingMaterialKey();
   const vocabularyKey = markingVocabularyKey();
+  const validationAudit = markingValidationAuditRecord();
   let marking = markingLibrary.find((candidate) => candidate.materialKey === materialKey
     && candidate.vocabularyKey === vocabularyKey
     && candidate.config.channels === config.channels
@@ -23081,6 +23147,7 @@ function freezeCurrentMarking() {
       coefficients: sectionModel.curve.at(-1).coefficients.map((values) => [...values]),
       representationState: JSON.parse(JSON.stringify(sectionModel.representationState)),
       validationLoss: sectionModel.curve.at(-1).validationLoss,
+      validationAudit,
       samples: markingSampleCount(),
     };
     markingLibrary.push(marking);
@@ -23091,6 +23158,7 @@ function freezeCurrentMarking() {
     marking.coefficients = sectionModel.curve.at(-1).coefficients.map((values) => [...values]);
     marking.representationState = JSON.parse(JSON.stringify(sectionModel.representationState));
     marking.validationLoss = sectionModel.curve.at(-1).validationLoss;
+    marking.validationAudit = validationAudit;
     marking.samples = markingSampleCount();
   }
   activeMarkingId = marking.id;
@@ -23138,7 +23206,7 @@ function renderMarkingLibrary() {
   compatible.forEach((marking) => {
     const option = document.createElement("option");
     option.value = marking.id;
-    option.textContent = `${marking.name} · loss ${marking.validationLoss.toFixed(3)}`;
+    option.textContent = `${marking.name} · ${markingValidationLabel(marking)} · loss ${marking.validationLoss.toFixed(3)}`;
     markingLibrarySelect.appendChild(option);
   });
   const wanted = activeExternalCalibrationPromotion()?.id
@@ -23163,6 +23231,8 @@ function renderMarkingPortfolioAudit() {
     const row = document.createElement("article");
     row.dataset.markingId = marking.id;
     row.classList.toggle("active", marking.id === activeMarkingId);
+    row.classList.toggle("validation-weak", Number.isFinite(marking.heldoutBalancedAccuracy)
+      && marking.heldoutBalancedAccuracy < .6);
     const identity = document.createElement("span");
     const label = document.createElement("strong");
     label.textContent = `${marking.channels}ch · ${marking.id === activeMarkingId ? "selected" : "library"}`;
@@ -23171,9 +23241,11 @@ function renderMarkingPortfolioAudit() {
     identity.append(label, name);
     const score = document.createElement("span");
     const finite = document.createElement("strong");
-    finite.textContent = `${marking.finiteRules}/${marking.rules} finite`;
+    finite.textContent = marking.validationAudit?.holdout?.labels
+      ? markingValidationLabel({ validationAudit: marking.validationAudit })
+      : `${marking.finiteRules}/${marking.rules} finite · sign audit unavailable`;
     const detail = document.createElement("small");
-    detail.textContent = `${marking.activeParameters}/${marking.allocatedParameters} active parameters · mean ${marking.meanScore.toFixed(3)} · Δrank ${marking.meanRankDisplacement.toFixed(1)}`;
+    detail.textContent = `${marking.finiteRules}/${marking.rules} finite rules · ${marking.activeParameters}/${marking.allocatedParameters} active parameters · mean ${marking.meanScore.toFixed(3)} · Δrank ${marking.meanRankDisplacement.toFixed(1)}`;
     score.append(finite, detail);
     row.append(identity, score);
     markingPortfolioRows.appendChild(row);
