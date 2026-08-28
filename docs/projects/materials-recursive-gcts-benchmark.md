@@ -1,5 +1,26 @@
 # Recursive GCTS benchmark for material growth
 
+### Run-blocked material-state replication (Build 282)
+
+The coordinate-free notebook now treats each unique saved receipt as one
+replication unit for the state-conditioned channel audit. It aligns only runs
+that froze the same geometry channel and structural outcome, then exposes the
+eight material observables interactively. Each run contributes at most one
+resolved normalized difference between its changed and stable retained
+frontiers; the contributing frontier samples remain inside that run and are not
+pooled into an inflated sample size.
+
+The deterministic contract deduplicates receipt SHA-256 identities, excludes
+target-tainted audits, and requires the within-run three-per-group support gate
+before a run is eligible. Three eligible runs with one nonzero sign are needed
+for directional replication. One shared input identity is reported only as
+repeat-run consistency, whereas at least two input identities may be reported
+as cross-input consistency. Mixed signs remain explicitly heterogeneous. The
+card reports run/input/scenario counts, sign agreement, the median and range of
+normalized within-run contrasts, and a compact audit digest. It computes no
+p-value and asserts no specimen independence, causal response, physical energy,
+kinetics, dynamics, or physical time.
+
 ### State-conditioned channel decisiveness (Build 281)
 
 The portal now computes a bounded descriptive association between each frozen

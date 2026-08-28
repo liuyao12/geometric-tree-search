@@ -42,7 +42,7 @@ def main() -> None:
     require('id="policyMaterialStateHistory"', ROOT_HTML)
     require(".policy-material-state-history-grid", CSS)
     require("Build 280 · linked frontier material-state passports", README)
-    require('application: { name: "Materials Growth Lab", buildId: "20260827-281" }')
+    require('application: { name: "Materials Growth Lab", buildId: "20260827-282" }')
     print("linked frontier material-state passport contract passed")
 
 

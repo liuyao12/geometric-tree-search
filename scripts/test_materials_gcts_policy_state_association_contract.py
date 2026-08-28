@@ -39,7 +39,7 @@ def main() -> None:
     require('id="policyStateAssociationRows"', ROOT_HTML)
     require(".policy-state-association", CSS)
     require("Build 281 · state-conditioned channel decisiveness", README)
-    require('application: { name: "Materials Growth Lab", buildId: "20260827-281" }')
+    require('application: { name: "Materials Growth Lab", buildId: "20260827-282" }')
     print("state-conditioned channel decisiveness contract passed")
 
 

@@ -28,7 +28,7 @@ def main() -> None:
         "comparePhysicsProtocolOutcomes(selected)",
         "renderNotebookPhysicsProtocolOutcome(selected)",
         'schema: 4, records, counts',
-        'buildId: "20260827-281"',
+        'buildId: "20260827-282"',
         'let growthSeedProtocol = "observed-window"',
         "function initializeObservedWindowSeed()",
         "seedProtocol: growthSeedAudit",
@@ -57,7 +57,7 @@ def main() -> None:
         assert 'id="growthSeedProtocolSelect"' in document
         assert 'value="observed-window" selected' in document
         assert "all reversible controls" in document
-        assert 'app.js?v=20260827-281' in document
+        assert 'app.js?v=20260827-282' in document
     assert ".notebook-physics-protocol-outcome" in css
     assert ".notebook-physics-protocol-grid" in css
     assert "Build 269 · target-free observed-window growth" in readme

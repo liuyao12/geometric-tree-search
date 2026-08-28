@@ -1,5 +1,23 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 282 · run-blocked material-state replication
+
+The experiment notebook now promotes the state-conditioned channel lens from
+one correlated trajectory to a saved-run replication audit. Each notebook
+receipt freezes one compact, coordinate-free contrast for its selected geometry
+channel, structural outcome, and eight material-state observables. The new
+interactive card aligns matching channel–outcome pairs, lets the scientist
+choose an observable, and shows one signed normalized contrast per unique run.
+
+Exact duplicate receipts are ignored. Unresolved contrasts and target-tainted
+runs fail closed, and at least three resolved receipts with the same nonzero
+direction are required. Repetition on one input is labeled **repeat-run
+consistency**; agreement across at least two input identities is labeled
+**cross-input consistency**. The receipt stores counts, means, normalized
+effects, support and an audit digest, but never pools frontier rows across runs.
+This is directional replication evidence—not a p-value, independent-specimen
+study, causal effect, energy landscape, kinetics, or physical time.
+
 ## Build 281 · state-conditioned channel decisiveness
 
 The linked frontier archive can now ask which retained material regimes

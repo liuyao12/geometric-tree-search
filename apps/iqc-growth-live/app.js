@@ -24,6 +24,7 @@ import { assessGeometrySurrogatePromotion, evaluateFrozenGeometrySurrogate,
 import { policyIdentifiabilityAcrossArms, policyIdentifiabilityAudit, policyIdentifiabilityTrajectory }
   from "./policy-identifiability.js?v=20260826-4";
 import { finiteStateContrast } from "./policy-state-association.mjs?v=20260827-1";
+import { runBlockedStateReplication } from "./policy-state-replication.mjs?v=20260827-1";
 import { archiveResponseFrontierRankAudit }
   from "./archive-response-frontier-audit.js?v=20260827-1";
 import { evidenceOrderedClusterDiscoverySchedule }
@@ -649,6 +650,11 @@ const notebookResponseOutcome = $("notebookResponseOutcome");
 const notebookResponseReadinessMatrix = $("notebookResponseReadinessMatrix");
 const notebookResponseReadinessDetail = $("notebookResponseReadinessDetail");
 const notebookResponseReadinessBoundary = $("notebookResponseReadinessBoundary");
+const notebookStateReplication = $("notebookStateReplication");
+const notebookStateReplicationContrast = $("notebookStateReplicationContrast");
+const notebookStateReplicationObservable = $("notebookStateReplicationObservable");
+const notebookStateReplicationRuns = $("notebookStateReplicationRuns");
+const notebookStateReplicationSummary = $("notebookStateReplicationSummary");
 const runStateText = $("runStateText");
 const stageEyebrow = $("stageEyebrow");
 const stageTitle = $("stageTitle");
@@ -10868,7 +10874,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-281",
+      buildId: "20260827-282",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -13156,7 +13162,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-281" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-282" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -13697,6 +13703,42 @@ function experimentNotebookSummary(receipt) {
       candidateRowsEmbedded: false,
       targetUsed: false,
     } : null,
+    policyStateConditioning: latestPolicySnapshot?.selectedStateConditionedDecisiveness ? (() => {
+      const audit = latestPolicySnapshot.selectedStateConditionedDecisiveness;
+      return {
+        schema: audit.schema,
+        termId: audit.termId,
+        termLabel: audit.termLabel,
+        outcomeId: audit.outcomeId,
+        outcomeLabel: audit.outcomeLabel,
+        minimumPerGroup: audit.minimumPerGroup,
+        storedFrontiers: audit.storedFrontiers,
+        resolvedRows: audit.resolvedRows,
+        rows: audit.rows.map((row) => ({
+          observableId: row.observableId,
+          observableLabel: row.observableLabel,
+          unit: row.unit,
+          changedCount: row.changedCount,
+          stableCount: row.stableCount,
+          changedMean: row.changedMean,
+          stableMean: row.stableMean,
+          difference: row.difference,
+          normalizedDifference: row.normalizedDifference,
+          resolved: row.resolved,
+          supportNeeded: { ...row.supportNeeded },
+        })),
+        digest: audit.digest,
+        targetUsed: audit.targetUsed,
+        coordinatesEmbedded: false,
+        frontierSamplesEmbedded: false,
+        analysisUnit: "one within-run retained-frontier contrast",
+        serialCorrelationModeled: audit.serialCorrelationModeled,
+        statisticalIndependenceAssumed: audit.statisticalIndependenceAssumed,
+        pValueComputed: audit.pValueComputed,
+        causalEffectInferred: audit.causalEffectInferred,
+        claimBoundary: audit.claimBoundary,
+      };
+    })() : null,
     creationResponseEvidence: search?.creationResponseEvidence ? {
       schema: search.creationResponseEvidence.schema,
       datasetSha256: search.creationResponseEvidence.datasetSha256,
@@ -15166,6 +15208,114 @@ function renderNotebookResponseReadiness(entries) {
   notebookResponseReadinessBoundary.textContent = "Each tile is one deterministic run summary. Placement rows are never pooled, models are never refit across runs, and saved runs may share input atoms; they are not treated as independent specimens. This atlas compares support/readiness, not material transfer, kinetics, physical time, or causal response.";
 }
 
+function notebookStateReplicationRecords(entries) {
+  return entries.filter((entry) => entry.policyStateConditioning).map((entry) => ({
+    receiptSha256: entry.receiptSha256,
+    inputIdentity: entry.inputIdentity,
+    inputStructureSha256: entry.inputStructureSha256,
+    scenarioId: entry.scenarioId,
+    material: entry.material,
+    ...entry.policyStateConditioning,
+  }));
+}
+
+function renderNotebookStateReplication(entries) {
+  const records = notebookStateReplicationRecords(entries);
+  const combinations = [...new Map(records.map((record) => [
+    `${record.termId}\u001f${record.outcomeId}`,
+    { value: `${record.termId}\u001f${record.outcomeId}`,
+      label: `${record.termLabel} → ${record.outcomeLabel}` },
+  ])).values()].sort((first, second) => first.label.localeCompare(second.label));
+  const priorCombination = notebookStateReplicationContrast.value;
+  notebookStateReplicationContrast.replaceChildren(...combinations.map((combination) => {
+    const option = document.createElement("option"); option.value = combination.value;
+    option.textContent = combination.label; return option;
+  }));
+  if (combinations.some((combination) => combination.value === priorCombination)) {
+    notebookStateReplicationContrast.value = priorCombination;
+  }
+  const selectedCombination = notebookStateReplicationContrast.value || combinations[0]?.value || "";
+  const [termId, outcomeId] = selectedCombination.split("\u001f");
+  const matchingAudits = records.filter((record) => record.termId === termId && record.outcomeId === outcomeId);
+  const observables = [...new Map(matchingAudits.flatMap((record) => record.rows || []).map((row) => [
+    row.observableId, { id: row.observableId, label: row.observableLabel, unit: row.unit },
+  ])).values()].sort((first, second) => first.label.localeCompare(second.label));
+  const priorObservable = notebookStateReplicationObservable.value;
+  notebookStateReplicationObservable.replaceChildren(...observables.map((observable) => {
+    const option = document.createElement("option"); option.value = observable.id;
+    option.textContent = observable.label; return option;
+  }));
+  if (observables.some((observable) => observable.id === priorObservable)) {
+    notebookStateReplicationObservable.value = priorObservable;
+  }
+  const observableId = notebookStateReplicationObservable.value || observables[0]?.id || "";
+  notebookStateReplicationRuns.replaceChildren(); notebookStateReplicationSummary.replaceChildren();
+  const header = notebookStateReplication.querySelector("header");
+  const title = header.querySelector(":scope > strong");
+  const subtitle = header.querySelector(":scope > span");
+  notebookStateReplicationContrast.disabled = !combinations.length;
+  notebookStateReplicationObservable.disabled = !observables.length;
+  if (!termId || !outcomeId || !observableId) {
+    notebookStateReplication.className = "notebook-state-replication unavailable";
+    title.textContent = "save a resolved state-conditioned run";
+    subtitle.textContent = "the latest selected channel and outcome are frozen when a run enters the notebook";
+    const empty = document.createElement("p"); empty.textContent = "No saved run contains a resolved state-conditioning audit yet.";
+    notebookStateReplicationRuns.append(empty); return;
+  }
+  const replication = runBlockedStateReplication(records, { termId, outcomeId, observableId, minimumRuns: 3 });
+  const statusLabels = {
+    "insufficient-runs": "more resolved runs required",
+    heterogeneous: "direction varies across runs",
+    "repeat-run-consistent": "repeat-run direction reproduced",
+    "cross-input-consistent": "cross-input direction reproduced",
+  };
+  notebookStateReplication.className = `notebook-state-replication ${replication.status}`;
+  title.textContent = statusLabels[replication.status];
+  subtitle.textContent = replication.status === "cross-input-consistent"
+    ? `${replication.eligibleRunCount} unique receipts · ${replication.distinctInputs} input identities · frontier rows remained blocked by run`
+    : replication.status === "repeat-run-consistent"
+      ? `${replication.eligibleRunCount} unique receipts share one input identity; this is repeat consistency, not material transfer`
+      : `${replication.eligibleRunCount}/3 resolved unique receipts · ${replication.unresolvedRuns} unresolved · ${replication.targetTaintedRuns} target-tainted excluded`;
+  matchingAudits.forEach((record) => {
+    const row = record.rows.find((entry) => entry.observableId === observableId);
+    const card = document.createElement("article"); card.setAttribute("role", "listitem");
+    card.className = record.targetUsed !== false ? "tainted" : row?.resolved ? "resolved" : "unresolved";
+    const run = document.createElement("small"); run.textContent = `${record.material} · ${record.receiptSha256.slice(0, 8)}…`;
+    const value = document.createElement("strong");
+    value.textContent = row?.resolved && Number.isFinite(row.normalizedDifference)
+      ? `${row.normalizedDifference >= 0 ? "+" : ""}${row.normalizedDifference.toFixed(3)} Δ/range`
+      : record.targetUsed !== false ? "target-tainted" : "support unresolved";
+    const support = document.createElement("span"); support.textContent = row
+      ? `${row.changedCount} changed · ${row.stableCount} stable` : "observable unavailable";
+    const identity = document.createElement("em"); identity.textContent = `${record.scenarioId} · ${record.inputStructureSha256.slice(0, 8)}…`;
+    card.append(run, value, support, identity); notebookStateReplicationRuns.append(card);
+  });
+  const observable = observables.find((entry) => entry.id === observableId);
+  const direction = replication.dominantDirection > 0 ? "higher when changed"
+    : replication.dominantDirection < 0 ? "lower when changed" : "no shared direction";
+  [
+    ["resolved runs", `${replication.eligibleRunCount}/${replication.matchingRunCount}`, "unique receipt is the unit"],
+    ["direction", direction, `${Math.round(replication.directionAgreement * 100)}% directional agreement`],
+    ["median contrast", replication.medianNormalizedDifference === null ? "—"
+      : `${replication.medianNormalizedDifference >= 0 ? "+" : ""}${replication.medianNormalizedDifference.toFixed(3)}`,
+    `${observable?.label || observableId} · normalized within run`],
+    ["input support", `${replication.distinctInputs} input${replication.distinctInputs === 1 ? "" : "s"}`,
+    `${replication.distinctScenarios} scenario${replication.distinctScenarios === 1 ? "" : "s"}`],
+  ].forEach(([label, value, note]) => {
+    const tile = document.createElement("span"); const small = document.createElement("small"); small.textContent = label;
+    const strong = document.createElement("strong"); strong.textContent = value;
+    const em = document.createElement("em"); em.textContent = note; tile.append(small, strong, em);
+    notebookStateReplicationSummary.append(tile);
+  });
+  const digest = notebookStringHash(JSON.stringify({ termId, outcomeId, observableId,
+    receipts: replication.runs.map((run) => run.receiptSha256),
+    effects: replication.runs.map((run) => run.normalizedDifference), status: replication.status }));
+  notebookStateReplication.dataset.replicationDigest = digest;
+  const boundary = document.createElement("p");
+  boundary.textContent = `Audit ${digest} · duplicate receipts ignored: ${replication.exactDuplicateReceiptsIgnored}. One contrast per run; no frontier-row pooling, p-value, causal effect, or specimen-independence claim.`;
+  notebookStateReplicationSummary.append(boundary);
+}
+
 function renderExperimentNotebook() {
   notebookState.textContent = `${experimentNotebookEntries.length}/${MAX_EXPERIMENT_NOTEBOOK_ENTRIES} saved runs`;
   clearNotebookButton.disabled = experimentNotebookEntries.length === 0;
@@ -15203,6 +15353,7 @@ function renderExperimentNotebook() {
   renderNotebookTrajectoryAudit(selected);
   renderNotebookControlledSweep(experimentNotebookEntries);
   renderNotebookResponseReadiness(experimentNotebookEntries);
+  renderNotebookStateReplication(experimentNotebookEntries);
   if (selected.length !== 2) {
     const note = document.createElement("p");
     note.textContent = selected.length ? "Select one more saved run to compare." : "Select two saved runs to compare.";
@@ -15244,8 +15395,10 @@ async function saveCurrentExperimentNotebookEntry() {
         && !duplicate.trajectory.massRadiusScaling;
       const identifiabilityUpgradeNeeded = currentSummary.policyIdentifiability
         && !duplicate.policyIdentifiability;
+      const stateConditioningUpgradeNeeded = currentSummary.policyStateConditioning
+        && !duplicate.policyStateConditioning;
       if (!duplicate.trajectory?.points?.length || morphologyUpgradeNeeded || scalingUpgradeNeeded
-          || identifiabilityUpgradeNeeded) {
+          || identifiabilityUpgradeNeeded || stateConditioningUpgradeNeeded) {
         Object.assign(duplicate, currentSummary);
         persistExperimentNotebook();
         receiptStatus.textContent = morphologyUpgradeNeeded
@@ -15254,6 +15407,8 @@ async function saveCurrentExperimentNotebookEntry() {
             ? "Existing run upgraded with its finite mass–radius audit."
             : identifiabilityUpgradeNeeded
               ? "Existing run upgraded with its coordinate-free hypothesis-identifiability audit."
+              : stateConditioningUpgradeNeeded
+                ? "Existing run upgraded with its run-blocked state-conditioning audit."
             : "Existing run upgraded with its coordinate-free structural-leap history.";
       }
       selectedNotebookEntryIds = [duplicate.id];
@@ -31608,6 +31763,11 @@ notebookResponseOutcome.addEventListener("change", () => {
   selectedNotebookResponseCellKey = null;
   renderExperimentNotebook();
 });
+notebookStateReplicationContrast.addEventListener("change", () => {
+  notebookStateReplicationObservable.value = "";
+  renderExperimentNotebook();
+});
+notebookStateReplicationObservable.addEventListener("change", renderExperimentNotebook);
 scenarioSelect.addEventListener("change", () => {
   hypothesisSeparationExperiment = null;
   markingComparisonExperiment = null;
