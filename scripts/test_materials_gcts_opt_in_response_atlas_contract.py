@@ -75,9 +75,9 @@ def test_response_evidence_keeps_scientific_boundaries():
 
 
 def test_build_232_assets_are_paired():
-    assert 'buildId: "20260827-267"' in APP
-    assert 'app.js?v=20260827-267' in HTML
-    assert 'style.css?v=20260827-267' in HTML
+    assert 'buildId: "20260827-268"' in APP
+    assert 'app.js?v=20260827-268' in HTML
+    assert 'style.css?v=20260827-268' in HTML
 
 
 if __name__ == "__main__":

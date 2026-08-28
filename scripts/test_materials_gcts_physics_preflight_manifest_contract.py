@@ -43,6 +43,9 @@ def test_preflight_receipt_is_coordinate_free_and_hashed():
                  "candidateGeometryEmbedded: false", "candidateSetInspected: false",
                  "targetUsed: false", "physicalTimeModeled: false"):
         assert gate in APP
+    assert "function physicsProtocolControlVector()" in APP
+    assert "controlVector: physicsProtocolControlVector()" in APP
+    assert "capturedBeforeCandidateEnumeration: true" in APP
 
 
 def test_process_scale_compression_map_is_complete_and_fail_visible():
@@ -131,10 +134,10 @@ def test_public_narrative_and_build_are_versioned():
     assert "Build 177" in README
     assert "Build 177" in DOCS
     assert "If WebGL cannot be created" in README
-    assert 'buildId: "20260827-267"' in APP
-    assert 'app.js?v=20260827-267' in HTML
-    assert 'style.css?v=20260827-267' in HTML
-    assert 'physics-compression-map.js?v=20260827-4' in APP
-    assert 'evidence-atlas.js?v=20260827-23' in HTML
+    assert 'buildId: "20260827-268"' in APP
+    assert 'app.js?v=20260827-268' in HTML
+    assert 'style.css?v=20260827-268' in HTML
+    assert 'physics-compression-map.js?v=20260827-7' in APP
+    assert 'evidence-atlas.js?v=20260827-24' in HTML
     assert "Build 207" in README
     assert "Build 207" in DOCS

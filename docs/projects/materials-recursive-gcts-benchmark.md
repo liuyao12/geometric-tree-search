@@ -1,5 +1,39 @@
 # Recursive GCTS benchmark for material growth
 
+### Matched physics-arm outcome ledger (Build 268)
+
+The coordinate-free experiment notebook now consumes the frozen preflight
+registration instead of inferring a counterfactual from two arbitrary saved
+states. Manifest schema 4 adds the value of every distinct reversible physics
+control before candidate enumeration. `comparePhysicsProtocolOutcomes` requires
+one baseline and one arm B from the same omission plan, the same input SHA and
+public boundary, verified arm values, exactly one changed control, active-layer
+sets matching the registration, complete histories, and no target use. The
+bounded notebook receipt now embeds this manifest as well as the full receipt,
+closing a real reproducibility gap found by the browser pair test.
+
+The comparison contract follows each layer's declared execution effect. A
+ranking or branch-order intervention must retain an identical target-free
+first-frontier candidate digest; an admission or candidate-geometry change may
+change that digest and records it as an outcome. Initial-state interventions
+remain red until an explicit seed digest is available. Passing pairs are
+aligned only by common discrete structural-update count and report coordinate-
+free structural deltas. No candidate search is replayed or pooled, no update is
+called physical time, and the result is not an energy decomposition, removed
+physical interaction, kinetic law, independent-specimen estimate, or proof of
+a causal physical mechanism. The live smoke also verifies the negative gate:
+a known-window reference-guided first frontier is labeled target-tainted rather
+than silently admitted to the matched analysis.
+
+The same release consumes the immutable exact-seven A₂ catalogue landed in
+the shared branch. The four size-eight layer-essential survivors exhaust all
+1,995 seven-copy HNF bases apiece with zero unknowns. The two harder candidates
+use the complete 3+3 meet-in-the-middle fallback on 32 quotients apiece; the
+exact traversals contain 29,338,463 / 74,819,710 / 74,782,180 / 29,328,075
+nodes. Root-corona replay and 16 / 72 / 72 / 62 sound
+GCTS obstruction clauses remain separate evidence; outer-corona exhaustion and
+global non-tiling/aperiodicity classification remain open.
+
 ### Executable one-control physics arms (Build 267)
 
 `buildPhysicsProtocolControlBinding` now compiles a selected physics row and a

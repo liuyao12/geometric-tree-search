@@ -1,5 +1,37 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 268 · matched physics-arm outcome ledger
+
+The experiment notebook can now decide whether two saved physics-protocol runs
+are a valid matched pair before showing a response. Preflight-manifest schema 4
+freezes a complete 27-control vector (28 layer bindings share 27 distinct UI
+controls) alongside the active baseline or arm-B registration. The bounded
+notebook snapshot now carries that same frozen manifest; previously only the
+full downloadable receipt did. A pair passes only when the supplied structure
+and public boundary match, exactly the registered control changes to its
+declared neutral value, both arms executed complete target-free histories, and
+the intervention-specific identity gate passes.
+
+Ranking/order omissions require the same first-frontier candidate digest.
+Admission or candidate-geometry omissions instead retain both digests as a
+structural response, while seed interventions fail closed until the portal has
+a frozen seed digest. At the common discrete structural-update horizon, the
+notebook reports sites, clusters, frontier size, causal depth, accepted and
+rejected actions, geometric S(q), and local orientational order. It never
+replays or pools candidates, calls an update physical time, turns a geometric
+score into energy, or infers a population-level physical mechanism. Known-
+window reference-guided frontiers are explicitly rejected as target-tainted.
+
+Build 268 also incorporates the concurrently completed size-eight A₂ screen:
+all four layer-essential survivors now exhaust every weighted periodic quotient
+through seven copies. Each survivor covers 1,995 seven-copy HNF bases with zero
+solver unknowns; the two harder candidates use a complete 3+3 meet-in-the-
+middle fallback on 32 quotients apiece. The four exact searches visit
+29,338,463 / 74,819,710 / 74,782,180 / 29,328,075 multicover nodes. Their
+outer first-corona spaces and global tiling classifications remain open, so the
+portal presents this as a stronger bounded frontier—not a non-tiling or
+aperiodicity result.
+
 ## Build 267 · executable one-control physics arms
 
 The matched-counterfactual planner now distinguishes a route to a control from

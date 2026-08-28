@@ -57,7 +57,7 @@ def main() -> None:
         'data-physics-protocol-preset="actionable"',
         'data-physics-protocol-preset="clear"',
         "freeze before the first candidate frontier",
-        'app.js?v=20260827-267',
+        'app.js?v=20260827-268',
     ):
         assert needle in html, needle
 
@@ -93,6 +93,10 @@ def main() -> None:
         'from "./physics-compression-map.js?v=20260827-7"',
         "function physicsProtocolForRecords(records)",
         "function physicsProtocolControlSnapshot(recordId)",
+        "function physicsProtocolControlVector()",
+        "controlVector: physicsProtocolControlVector()",
+        "function notebookPhysicsProtocolExperiment(receipt)",
+        "comparePhysicsProtocolOutcomes(selected)",
         "function applyPhysicsProtocolArm(interventionPlan, activeArm)",
         "function updatePhysicsProtocolSelection(recordIds)",
         "function renderPhysicsProtocolComposer(manifest)",
@@ -102,12 +106,12 @@ def main() -> None:
         "const interventionPlan = physicsProtocolArmRegistration?.interventionPlan",
         'growthPhysicsAblationSelect.addEventListener("change"',
         "investigationProtocol: physicsProtocolForRecords(records)",
-        'schema: 3, records, counts',
+        'schema: 4, records, counts',
         'physicsPreflightManifest: { ...physicsPreflightManifest',
         'frozenBeforeFirstStructuralAction: Boolean(frozenPhysicsPreflightManifest)',
         'if (leapEventCount > 0) return;',
         'no control changed.',
-        'buildId: "20260827-267"',
+        'buildId: "20260827-268"',
     ):
         assert needle in source, needle
 
@@ -120,12 +124,16 @@ def main() -> None:
         ".physics-protocol-arm-buttons",
         ".physics-protocol-selection button.ablated",
         ".protocol-selected",
+        ".notebook-physics-protocol-outcome",
+        ".notebook-physics-protocol-grid",
     ):
         assert needle in css, needle
 
     assert '<base href="../apps/iqc-growth-live/">' in root_html
     assert 'id="growthPhysicsProtocolComposer"' in root_html
-    assert 'app.js?v=20260827-267' in root_html
+    assert 'id="notebookPhysicsProtocolOutcome"' in html
+    assert 'id="notebookPhysicsProtocolOutcome"' in root_html
+    assert 'app.js?v=20260827-268' in root_html
     print("physics protocol composer portal contract: passed")
 
 

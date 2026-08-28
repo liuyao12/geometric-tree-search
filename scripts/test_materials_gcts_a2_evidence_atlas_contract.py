@@ -20,7 +20,7 @@ def main() -> None:
     css = (APP / "style.css").read_text()
 
     for needle, label in (
-        ('from "../../assets/a2-layered-size8-candidates.js?v=20260827-1"', "generated candidate import"),
+        ('from "../../assets/a2-layered-size8-candidates.js?v=20260827-2"', "generated candidate import"),
         ('short: "A₂ size 8"', "A2 system"),
         ('["layer-essential census", "4,940"]', "exact census"),
         ('["Claim boundary", "4 unresolved"', "classification boundary"),
@@ -46,9 +46,9 @@ def main() -> None:
     require(css, ".a2-candidate-shape", "candidate support styling")
     require(css, ".a2-blocker-bars", "comparison styling")
     require(root_html, '<base href="../apps/iqc-growth-live/">', "root-level asset base")
-    require(root_html, "Four size-eight candidates remain exact through six copies",
+    require(root_html, "Four size-eight candidates remain exact through seven copies",
             "root-level current A2 classification")
-    require(root_html, './evidence-atlas.js?v=20260827-23', "root-level atlas cache version")
+    require(root_html, './evidence-atlas.js?v=20260827-24', "root-level atlas cache version")
 
     asset_text = (ROOT / "assets" / "a2-layered-size8-candidates.js").read_text()
     payload = asset_text.split("Object.freeze(", 1)[1].rsplit(");", 1)[0]
@@ -58,6 +58,10 @@ def main() -> None:
     ]
     assert [candidate["screening"]["corona_root_patch_copies"] for candidate in candidates] == [24, 29, 30, 27]
     assert [candidate["screening"]["corona2_gcts_sound_clauses"] for candidate in candidates] == [16, 72, 72, 62]
+    assert [candidate["screening"]["periodic_seven_copy_exact_multicover_nodes"]
+            for candidate in candidates] == [29338463, 74819710, 74782180, 29328075]
+    assert [candidate["screening"]["periodic_seven_copy_mitm_fallbacks"]
+            for candidate in candidates] == [0, 32, 32, 0]
     for candidate in candidates:
         screen = candidate["screening"]
         assert len(candidate["cells"]) == 8
@@ -66,8 +70,10 @@ def main() -> None:
         assert screen["periodic_one_copy_certificates"] == 4529
         assert screen["periodic_two_copy_certificates_after_one_copy_screen"] == 405
         assert screen["periodic_four_copy_certificates_after_three_copy_screen"] == 2
-        assert screen["periodic_exact_through"] == 6
-        assert screen["periodic_hnf_bases_exhausted_by_copies"]["6"] == 2015
+        assert screen["periodic_exact_through"] == 7
+        assert screen["periodic_hnf_bases_exhausted_by_copies"]["7"] == 1995
+        assert screen["periodic_seven_copy_exact_multicover_nodes"] > 0
+        assert screen["periodic_seven_copy_complete"] is True
         assert screen["periodic_solver_unknowns"] == 0
         assert screen["corona_completed_verified"] is True
         assert screen["corona2_gcts_outer_exhausted"] is False

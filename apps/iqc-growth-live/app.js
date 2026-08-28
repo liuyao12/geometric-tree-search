@@ -32,6 +32,8 @@ import { applyHypothesisSeparationMultipliers as applyFrozenHypothesisSeparation
   from "./hypothesis-separation.js?v=20260826-1";
 import { compareHypothesisSeparationOutcomes }
   from "./hypothesis-separation-outcome.js?v=20260826-1";
+import { comparePhysicsProtocolOutcomes }
+  from "./physics-protocol-outcome.js?v=20260827-1";
 import { buildSiteProvenance } from "./site-provenance.js?v=20260826-2";
 import { buildSiteConstraintAudit } from "./site-constraint-audit.js?v=20260826-1";
 import { compareSiteEnvironments } from "./site-environment-comparison.js?v=20260826-3";
@@ -602,6 +604,7 @@ const notebookState = $("notebookState");
 const notebookEntries = $("notebookEntries");
 const notebookComparison = $("notebookComparison");
 const notebookHypothesisOutcome = $("notebookHypothesisOutcome");
+const notebookPhysicsProtocolOutcome = $("notebookPhysicsProtocolOutcome");
 const notebookInterventionAudit = $("notebookInterventionAudit");
 const notebookPhysicsAudit = $("notebookPhysicsAudit");
 const notebookPhysicsFilters = $("notebookPhysicsFilters");
@@ -10248,7 +10251,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-267",
+      buildId: "20260827-268",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -12451,6 +12454,10 @@ async function buildExperimentNotebookSnapshot() {
   const markingVisible = pipelineStage >= 3;
   const searchVisible = pipelineStage >= 4;
   const studyDesign = activeStudyRecipeAudit();
+  const physicsPreflightManifest = searchVisible
+    ? (frozenPhysicsPreflightManifest || currentPhysicsPreflightManifest()) : null;
+  const physicsPreflightManifestSha256 = physicsPreflightManifest
+    ? await receiptSha256(JSON.stringify(physicsPreflightManifest)) : null;
   const leapHistoryReceipt = leapHistory.map((leap) => ({
     index: leap.index, status: leap.status, label: leap.label,
     before: leap.before, proposal: leap.proposal, tests: leap.tests,
@@ -12476,6 +12483,9 @@ async function buildExperimentNotebookSnapshot() {
     experimentProtocol: growthProtocolManifest(),
     hypothesisSeparationExperiment: hypothesisSeparationReceipt(),
     markingComparisonExperiment: markingComparisonReceipt(),
+    physicsPreflightManifest: { ...physicsPreflightManifest,
+      sha256: physicsPreflightManifestSha256,
+      frozenBeforeFirstStructuralAction: Boolean(frozenPhysicsPreflightManifest) },
     hierarchyEnabled: Boolean(hierarchyEnabled && !iceAnchorTrace),
     scheduling: { mode: growthScheduling, candidateGeometryChangedByScheduling: false },
     multiNucleusGrowth: { requestedNuclei: requestedGrowthNuclei, selection: nucleationSelectionAudit },
@@ -12515,7 +12525,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-267" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-268" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -12849,6 +12859,75 @@ function notebookCoverLineageSummary(receipt) {
   };
 }
 
+function notebookPhysicsProtocolExperiment(receipt) {
+  const manifest = receipt.search?.physicsPreflightManifest;
+  const protocol = manifest?.investigationProtocol;
+  const plan = protocol?.interventionPlan;
+  const registration = protocol?.armRegistration;
+  const vector = manifest?.controlVector;
+  if (!plan || !registration || vector?.schema !== 1) return null;
+  const binding = plan.controlBinding;
+  return {
+    schema: 1,
+    preflightManifestSchema: manifest.schema,
+    preflightManifestSha256: manifest.sha256 || null,
+    interventionPlan: {
+      schema: plan.schema,
+      state: plan.state,
+      executableLayer: plan.executableLayer,
+      comparisonMode: plan.comparisonMode,
+      ablatedRecordId: plan.ablatedRecordId,
+      ablatedProcess: plan.ablatedProcess,
+      changedExecutionObjects: [...(plan.changedExecutionObjects || [])],
+      baselineSelectedRecordIds: [...(plan.baselineSelectedRecordIds || [])],
+      ablationSelectedRecordIds: [...(plan.ablationSelectedRecordIds || [])],
+      candidateSetMustRemainIdentical: plan.candidateSetMustRemainIdentical,
+      candidateSetMayChange: plan.candidateSetMayChange,
+      initialStateMayChange: plan.initialStateMayChange,
+      candidateIdentityGate: plan.candidateIdentityGate,
+      controlBinding: binding ? {
+        schema: binding.schema,
+        state: binding.state,
+        readyToConfigure: binding.readyToConfigure,
+        recordId: binding.recordId,
+        controlId: binding.controlId,
+        interventionKind: binding.interventionKind,
+        baselineValue: binding.baselineValue,
+        ablationValue: binding.ablationValue,
+        affectedRecordIds: [...(binding.affectedRecordIds || [])],
+        selectedAffectedRecordIds: [...(binding.selectedAffectedRecordIds || [])],
+        exactlyOneControlChanges: binding.exactlyOneControlChanges,
+        changedControlIds: [...(binding.changedControlIds || [])],
+      } : null,
+    },
+    armRegistration: {
+      schema: registration.schema,
+      ablatedRecordId: registration.ablatedRecordId,
+      activeArm: registration.activeArm,
+      baselineSelectedRecordIds: [...(registration.baselineSelectedRecordIds || [])],
+      activeSelectedRecordIds: [...(registration.activeSelectedRecordIds || [])],
+      controlId: registration.controlId,
+      baselineValue: registration.baselineValue,
+      ablationValue: registration.ablationValue,
+      appliedControlValue: registration.appliedControlValue,
+      controlValueMatchesActiveArm: registration.controlValueMatchesActiveArm,
+      exactlyOneControlChanges: registration.exactlyOneControlChanges,
+      changedControlIds: [...(registration.changedControlIds || [])],
+      configuredBeforeCandidateEnumeration: registration.configuredBeforeCandidateEnumeration,
+      candidateSetInspected: registration.candidateSetInspected,
+      targetUsed: registration.targetUsed,
+    },
+    controlVector: { schema: vector.schema, values: { ...vector.values },
+      controlCount: vector.controlCount,
+      capturedBeforeCandidateEnumeration: vector.capturedBeforeCandidateEnumeration,
+      candidateSetInspected: vector.candidateSetInspected,
+      targetUsed: vector.targetUsed },
+    frozenBeforeFirstStructuralAction: manifest.frozenBeforeFirstStructuralAction === true,
+    coordinatesEmbedded: false,
+    targetUsed: false,
+  };
+}
+
 function experimentNotebookSummary(receipt) {
   const cover = receipt.cover?.inputAtoms ? receipt.cover : null;
   const search = receipt.search?.explicitSites === undefined ? null : receipt.search;
@@ -12961,6 +13040,7 @@ function experimentNotebookSummary(receipt) {
     registeredOutcomeObservations: notebookRegisteredOutcomeObservations(receipt, trajectoryPoints,
       generatedSites, causalDepth),
     hypothesisSeparationExperiment: search?.hypothesisSeparationExperiment || null,
+    physicsProtocolExperiment: notebookPhysicsProtocolExperiment(receipt),
     markingComparisonExperiment: search?.markingComparisonExperiment || null,
     coverLineage: notebookCoverLineageSummary(receipt),
     policyIdentifiability: latestPolicySnapshot?.hypothesisIdentifiability ? {
@@ -14268,6 +14348,52 @@ function renderNotebookHypothesisOutcome(selected) {
   notebookHypothesisOutcome.append(identity, grid, boundary);
 }
 
+function renderNotebookPhysicsProtocolOutcome(selected) {
+  const audit = comparePhysicsProtocolOutcomes(selected);
+  notebookPhysicsProtocolOutcome.className = `notebook-physics-protocol-outcome ${audit.comparable ? "matched" : "waiting"}`;
+  notebookPhysicsProtocolOutcome.replaceChildren();
+  const header = document.createElement("header");
+  const eyebrow = document.createElement("small"); eyebrow.textContent = "matched physics omission";
+  const title = document.createElement("strong");
+  title.textContent = audit.comparable ? `${audit.experiment.ablatedProcess} · baseline ↔ Arm B`
+    : "baseline + Arm B required";
+  const detail = document.createElement("span"); detail.textContent = audit.detail;
+  header.append(eyebrow, title, detail); notebookPhysicsProtocolOutcome.append(header);
+  if (!audit.comparable) {
+    const reason = document.createElement("p");
+    reason.textContent = `Gate closed · ${audit.reason || "comparison unavailable"}. No structural response is reported.`;
+    notebookPhysicsProtocolOutcome.append(reason); return;
+  }
+  const identity = document.createElement("div"); identity.className = "notebook-physics-protocol-identity";
+  [["omitted layer", audit.experiment.ablatedRecordId],
+    ["changed control", audit.changedControlIds[0]],
+    ["matched horizon", `${audit.commonUpdates} structural updates`],
+    ["candidate gate", audit.candidateIdentity.gate === "identical" ? "identical · passed" : "digest is response"],
+    ["candidate digest", audit.candidateIdentity.baselineDigest || "not retained"],
+    ["comparison", audit.comparisonDigest]].forEach(([label, value]) => {
+    const tile = document.createElement("span");
+    const small = document.createElement("small"); small.textContent = label;
+    const strong = document.createElement("strong"); strong.textContent = value;
+    tile.append(small, strong); identity.append(tile);
+  });
+  const grid = document.createElement("div"); grid.className = "notebook-physics-protocol-grid";
+  audit.metrics.forEach((metricRecord) => {
+    const tile = document.createElement("article");
+    const label = document.createElement("small"); label.textContent = metricRecord.label;
+    const delta = document.createElement("strong");
+    delta.textContent = metricRecord.delta === null ? "not comparable"
+      : `${metricRecord.delta > 0 ? "+" : ""}${formatHypothesisOutcomeValue(metricRecord.delta, metricRecord.unit)}`;
+    delta.className = metricRecord.delta === null ? "unavailable"
+      : metricRecord.delta > 0 ? "positive" : metricRecord.delta < 0 ? "negative" : "zero";
+    const values = document.createElement("span");
+    values.textContent = `baseline ${formatHypothesisOutcomeValue(metricRecord.baseline, metricRecord.unit)} · Arm B ${formatHypothesisOutcomeValue(metricRecord.ablation, metricRecord.unit)}`;
+    const source = document.createElement("em"); source.textContent = metricRecord.provenance;
+    tile.append(label, delta, values, source); grid.append(tile);
+  });
+  const boundary = document.createElement("p"); boundary.textContent = audit.boundary;
+  notebookPhysicsProtocolOutcome.append(identity, grid, boundary);
+}
+
 function renderNotebookResponseReadiness(entries) {
   const atlas = crossRunHorizonReadinessAtlas(entries, notebookResponseOutcomeId);
   notebookResponseOutcome.value = notebookResponseOutcomeId;
@@ -14411,7 +14537,8 @@ function renderExperimentNotebook() {
     const number = document.createElement("small");
     const experimentArm = entry.hypothesisSeparationExperiment?.arm;
     const markingArm = entry.markingComparisonExperiment?.arm;
-    number.textContent = `run ${index + 1} · stage ${entry.stageOrdinal}${markingArm ? ` · marking ${markingArm}` : entry.registeredStudy?.armLabel ? ` · ${entry.registeredStudy.armLabel}` : experimentArm ? ` · hypothesis ${experimentArm}` : ""}`;
+    const physicsArm = entry.physicsProtocolExperiment?.armRegistration?.activeArm;
+    number.textContent = `run ${index + 1} · stage ${entry.stageOrdinal}${physicsArm ? ` · physics ${physicsArm === "ablation" ? "Arm B" : "baseline"}` : markingArm ? ` · marking ${markingArm}` : entry.registeredStudy?.armLabel ? ` · ${entry.registeredStudy.armLabel}` : experimentArm ? ` · hypothesis ${experimentArm}` : ""}`;
     const material = document.createElement("strong"); material.textContent = entry.material;
     const state = document.createElement("span"); state.textContent = `${entry.explicitSites.toLocaleString()} sites · ${entry.marking}`;
     const claim = document.createElement("em"); claim.textContent = entry.strongestClaim;
@@ -14430,6 +14557,7 @@ function renderExperimentNotebook() {
   notebookComparison.replaceChildren();
   renderNotebookInterventionAudit(selected);
   renderNotebookHypothesisOutcome(selected);
+  renderNotebookPhysicsProtocolOutcome(selected);
   renderNotebookPhysicsAudit(selected);
   renderNotebookTrajectoryAudit(selected);
   renderNotebookControlledSweep(experimentNotebookEntries);
@@ -24232,6 +24360,21 @@ function physicsProtocolControlSnapshot(recordId) {
       label: option.textContent.trim() })) };
 }
 
+function physicsProtocolControlVector() {
+  const controlIds = [...new Set(Object.values(PHYSICS_ABLATION_CONTROL_BINDINGS)
+    .map((definition) => definition.controlId))].sort();
+  const values = Object.fromEntries(controlIds.map((controlId) => {
+    const control = $(controlId);
+    if (!(control instanceof HTMLSelectElement)) {
+      throw new Error(`physics protocol control vector cannot resolve ${controlId}`);
+    }
+    return [controlId, control.value];
+  }));
+  return { schema: 1, values, controlCount: controlIds.length,
+    capturedBeforeCandidateEnumeration: true, coordinatesEmbedded: false,
+    candidateSetInspected: false, targetUsed: false };
+}
+
 function physicsProtocolRegistrationMatches(registration, declaredRecordIds) {
   if (!registration || registration.schema !== 1) return false;
   const expected = [...declaredRecordIds].sort();
@@ -24305,9 +24448,10 @@ function currentPhysicsPreflightManifest() {
     result[physicsEvidenceBucket(record)] += 1;
     return result;
   }, { structural: 0, hypothesis: 0, open: 0 });
-  return { schema: 3, records, counts, compressionMap: buildPhysicsCompressionMap(records),
+  return { schema: 4, records, counts, compressionMap: buildPhysicsCompressionMap(records),
     effectMatrix: buildPhysicsEffectMatrix(records),
     investigationProtocol: physicsProtocolForRecords(records),
+    controlVector: physicsProtocolControlVector(),
     generatedBeforeActionExecution: true, coordinatesEmbedded: false,
     candidateGeometryEmbedded: false, candidateSetInspected: false, targetUsed: false,
     physicalTimeModeled: false };

@@ -46,10 +46,10 @@ def test_receipt_and_ledger_preserve_nonclaims_and_history_basis():
 
 
 def test_build_169_is_retained_in_current_release():
-    assert 'buildId: "20260827-267"' in APP
-    assert 'app.js?v=20260827-267' in HTML
+    assert 'buildId: "20260827-268"' in APP
+    assert 'app.js?v=20260827-268' in HTML
     assert 'structure-observables.js?v=20260827-7' in APP
-    assert 'evidence-atlas.js?v=20260827-23' in HTML
+    assert 'evidence-atlas.js?v=20260827-24' in HTML
     assert "chemical sublattice order" in ATLAS
     assert "Build 169" in README
     assert "Build 169" in DOCS

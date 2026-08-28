@@ -51,10 +51,10 @@ def test_interactive_layers_receipt_and_ledger_are_complete():
 
 
 def test_current_release_retains_build_168_and_is_versioned():
-    assert 'buildId: "20260827-267"' in APP
-    assert 'app.js?v=20260827-267' in HTML
+    assert 'buildId: "20260827-268"' in APP
+    assert 'app.js?v=20260827-268' in HTML
     assert 'colored-distance-envelopes.js?v=20260827-9' in APP
-    assert 'evidence-atlas.js?v=20260827-23' in HTML
+    assert 'evidence-atlas.js?v=20260827-24' in HTML
     assert "current-state contact/angle mismatch" in ATLAS
     assert "Build 168" in README
     assert "Build 168" in DOCS
