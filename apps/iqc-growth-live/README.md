@@ -1,5 +1,22 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 304 · symmetry-aware continuation multiplicity
+
+The material-growth search now exposes a one-step geometric analogue of
+configurational multiplicity. For the prospective child type of every unchanged
+exact action, it collects only fit-supported outgoing frozen connection rules,
+keeps their symmetry-distinct proper-pose classes and child types, and computes
+the Shannon effective action count `exp(H)`. The scientist can preserve diverse
+continuations, favor selective funnels, prefer intermediate multiplicity, or
+leave the channel diagnostic with zero weight.
+
+The selected-action ledger, live branching glyph, physics lineage, notebook, and
+receipt retain the pose-class count, child-type count, normalized entropy,
+effective continuation count, score, and fit-only provenance. Held-out counts,
+targets, and absolute coordinates never fit or authorize the channel. This is
+geometric branch multiplicity—not thermodynamic entropy, a partition function,
+free energy, probability, kinetic rate, or physical time.
+
 ## Build 303 · screened collective graph response
 
 Material growth now has a distinct nonlocal geometric state channel in addition

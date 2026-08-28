@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260828-303">
+  <link rel="stylesheet" href="./style.css?v=20260828-304">
   <script type="importmap">
     {
       "imports": {
@@ -901,6 +901,23 @@
             <label class="field" for="collectiveResponseWeightSelect">
               <span>Collective weight <b>soft nonlocal rank</b></span>
               <select id="collectiveResponseWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
+            <label class="field" for="configurationalMultiplicitySelect">
+              <span>Continuation multiplicity <b id="configurationalMultiplicityHint">off · branch entropy reported</b></span>
+              <select id="configurationalMultiplicitySelect">
+                <option value="none" selected>Off · report geometric multiplicity</option>
+                <option value="diversify">Preserve continuation diversity</option>
+                <option value="funnel">Favor selective funnels</option>
+                <option value="balanced">Favor intermediate multiplicity</option>
+              </select>
+            </label>
+            <label class="field" for="configurationalMultiplicityWeightSelect">
+              <span>Multiplicity weight <b>soft look-ahead rank</b></span>
+              <select id="configurationalMultiplicityWeightSelect">
                 <option value="0.12">0.12 · weak</option>
                 <option value="0.24" selected>0.24 · balanced</option>
                 <option value="0.48">0.48 · strong</option>
@@ -2120,7 +2137,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260828-303"></script>
+  <script type="module" src="./app.js?v=20260828-304"></script>
   <script type="module" src="./evidence-atlas.js?v=20260827-24"></script>
 </body>
 </html>
