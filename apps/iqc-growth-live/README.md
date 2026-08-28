@@ -1,5 +1,23 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 307 · atoms-first material growth
+
+The material-growth viewport now defaults to the explicit colored atomic solid
+only. Search candidates, marking cages, port and frontier points, accepted-bond
+lines, unit-cell/confinement guides, applied-field arrows, and diagnostic glyphs
+remain available behind one **Growth view · search evidence** switch. Changing
+that switch rebuilds only the scene: it never changes the frozen candidate set,
+score, branch order, accepted placements, or subsequent atoms.
+
+This restores the intended stage separation. Cluster identification uses the
+whole configuration to show hypotheses settling into supports; GCTS learning
+uses one rotating marking scene per cluster class; material growth shows the
+solid that those learned geometric actions actually produce. Scientists can
+still opt into the full forensic overlay for a decision, then return to the
+atoms-first view without restarting the search. Receipts and notebook snapshots
+record the view mode and explicitly certify that it did not mutate geometry or
+search state.
+
 ## Build 306 · settled cluster surfaces in the discovery scene
 
 Cluster identification still runs in the complete three-dimensional specimen,

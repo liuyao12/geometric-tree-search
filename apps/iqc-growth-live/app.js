@@ -36,15 +36,15 @@ import { buildSettlingMaterialResponseHistory, buildSettlingMaterialResponseMatr
   SETTLING_MATERIAL_FIELDS }
   from "./settling-material-sensitivity.mjs?v=20260828-290";
 import { channelValidationMetricsFromCounts, validationOccurrenceJackknife }
-  from "./validation-uncertainty.mjs?v=20260828-306";
+  from "./validation-uncertainty.mjs?v=20260828-307";
 import { scoreNormalizationAudit }
-  from "./score-normalization.mjs?v=20260828-306";
+  from "./score-normalization.mjs?v=20260828-307";
 import { screenedCoherencyGraphField }
-  from "./coherency-graph-field.mjs?v=20260828-306";
+  from "./coherency-graph-field.mjs?v=20260828-307";
 import { continuationMultiplicityAtlas, continuationMultiplicityScore }
-  from "./configurational-multiplicity.mjs?v=20260828-306";
+  from "./configurational-multiplicity.mjs?v=20260828-307";
 import { geometricConstraintTensor }
-  from "./geometric-constraint-tensor.mjs?v=20260828-306";
+  from "./geometric-constraint-tensor.mjs?v=20260828-307";
 import { archiveResponseFrontierRankAudit }
   from "./archive-response-frontier-audit.js?v=20260827-1";
 import { evidenceOrderedClusterDiscoverySchedule }
@@ -638,6 +638,8 @@ const growthEvaluationNote = $("growthEvaluationNote");
 const markingToggle = $("markingToggle");
 const bondToggle = $("bondToggle");
 const frontierToggle = $("frontierToggle");
+const growthEvidenceToggle = $("growthEvidenceToggle");
+const growthEvidenceToggleLabel = $("growthEvidenceToggleLabel");
 const displacementToggle = $("displacementToggle");
 const displacementToggleLabel = $("displacementToggleLabel");
 const forceToggle = $("forceToggle");
@@ -11783,11 +11785,14 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260828-306",
+      buildId: "20260828-307",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
-        scientificCalculationsChangedByFallback: false },
+        scientificCalculationsChangedByFallback: false,
+        growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
+        growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
+        candidateGeometryChangedByView: false, searchStateChangedByView: false },
     },
     input: {
       sourceKind: scenarioSelect.value === "imported"
@@ -14210,7 +14215,10 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260828-306" },
+    application: { name: "Materials Growth Lab", buildId: "20260828-307" },
+    view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
+      growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
+      candidateGeometryChangedByView: false, searchStateChangedByView: false },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -23103,6 +23111,34 @@ function clearGroup(group) {
   }
 }
 
+function growthEvidenceVisible() {
+  return pipelineStage !== 4 || growthEvidenceToggle.checked;
+}
+
+function syncGrowthEvidenceControl() {
+  const growth = pipelineStage === 4;
+  growthEvidenceToggle.disabled = !growth;
+  growthEvidenceToggleLabel.textContent = growth
+    ? growthEvidenceToggle.checked ? "Growth view · search evidence" : "Growth view · atoms only"
+    : "Growth view · available in Stage 4";
+  if (growth) viewportHint.textContent = growthEvidenceToggle.checked
+    ? "search evidence visible · drag to orbit · click an atom"
+    : "atoms only · enable growth evidence for ports and candidates";
+}
+
+function keepAtomicMeshesOnly() {
+  if (growthEvidenceVisible()) return;
+  const overlays = new THREE.Group();
+  [...atomGroup.children].filter((child) => !child.userData.siteProvenancePickable).forEach((child) => {
+    atomGroup.remove(child); overlays.add(child);
+  });
+  clearGroup(overlays);
+  [confinementGroup, externalDriveGroup, unitCellGroup, bondGroup, interfaceGroup,
+    nucleationGroup, frontierGroup, decisionGroup].forEach(clearGroup);
+  unitCellBadge.hidden = true;
+  frontierMetric.textContent = "0";
+}
+
 function buildConfinement() {
   clearGroup(confinementGroup);
   confinementGroup.rotation.set(0, 0, 0);
@@ -24770,6 +24806,7 @@ function renderStudyCompass() {
 
 function syncStageOptions() {
   const visible = pipelineStage === 1 || pipelineStage === 3 || pipelineStage === 4;
+  syncGrowthEvidenceControl();
   growthDomainScaleSelect.value = String(growthDomainScale);
   renderGrowthDomainPassport();
   const calculation = activeCalculationProvenance();
@@ -25708,6 +25745,7 @@ function updateStageNarrative() {
       values: ["parent + φ(source−parent)", `${externalGeometry.shortLabel} · ${policySelect.value === "marked" ? selectedMarking()?.name || "active marking" : policySelect.value === "direct" ? "exact local oracle" : "unmarked action"}`, hierarchyEnabled ? "clusters² promotion" : "primitive clusters", "branch residual"],
     },
   ];
+  narratives[4].caption += " The 3D scene starts atoms-only; the growth-evidence switch restores frozen candidates, ports, fields, and diagnostic glyphs without changing enumeration, ranking, or execution.";
   if (learnedCover.molecular) {
     const water = learnedCover.molecular.water;
     narratives[1].eyebrow = "learning · molecular and gap cover";
@@ -27625,6 +27663,7 @@ function rebuildWorld() {
     decisionGroup.add(centerMarkers);
   }
   buildDetectedUnitCell();
+  keepAtomicMeshesOnly();
 }
 
 function physicsTranslationRecords(leap = null) {
@@ -34932,6 +34971,11 @@ growthMechanismCanvas.addEventListener("keydown", (event) => {
 [markingToggle, bondToggle, frontierToggle, displacementToggle, forceToggle, localConstraintMismatchToggle, relaxationDisplacementToggle,
   relaxationLocalEnvironmentToggle]
   .forEach((input) => input.addEventListener("change", rebuildWorld));
+growthEvidenceToggle.addEventListener("change", () => {
+  syncGrowthEvidenceControl();
+  rebuildWorld();
+  updateUI();
+});
 localConstraintMismatchMetric.addEventListener("change", rebuildWorld);
 relaxationLocalEnvironmentMetric.addEventListener("change", rebuildWorld);
 rotateToggle.addEventListener("change", () => { controls.autoRotate = rotateToggle.checked; });

@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260828-306">
+  <link rel="stylesheet" href="./style.css?v=20260828-307">
   <script type="importmap">
     {
       "imports": {
@@ -1582,6 +1582,7 @@
         <section>
           <p class="eyebrow">03 · layers</p>
           <div class="toggle-stack">
+            <label class="growth-view-master"><input id="growthEvidenceToggle" type="checkbox"><span id="growthEvidenceToggleLabel">Growth view · atoms only</span></label>
             <label><input id="markingToggle" type="checkbox" checked><span>Marking domain</span></label>
             <label><input id="bondToggle" type="checkbox" checked><span>Accepted bonds</span></label>
             <label><input id="frontierToggle" type="checkbox" checked><span>Candidate frontier</span></label>
@@ -1604,6 +1605,7 @@
             </select></label>
             <label><input id="rotateToggle" type="checkbox" checked><span>Auto rotate</span></label>
           </div>
+          <p class="growth-view-note">Stage 4 defaults to the explicit solid only. Turn on growth evidence to inspect frozen candidates, ports, fields, bonds, and diagnostic glyphs without changing search.</p>
         </section>
 
         <section class="receipt-section">
@@ -2154,7 +2156,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260828-306"></script>
+  <script type="module" src="./app.js?v=20260828-307"></script>
   <script type="module" src="./evidence-atlas.js?v=20260827-24"></script>
 </body>
 </html>

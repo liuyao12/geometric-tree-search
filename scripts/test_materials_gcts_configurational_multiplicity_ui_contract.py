@@ -10,7 +10,7 @@ README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
 def test_configurational_multiplicity_is_a_complete_score_channel():
     required = (
-        'from "./configurational-multiplicity.mjs?v=20260828-306"',
+        'from "./configurational-multiplicity.mjs?v=20260828-307"',
         'scoreTerm("configurational-multiplicity"',
         'activeConfigurationalMultiplicityWeight() * evaluation.configurationalMultiplicity.score',
         'configurationalMultiplicityRanking',
