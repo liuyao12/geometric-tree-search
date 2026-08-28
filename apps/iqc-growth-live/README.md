@@ -1,5 +1,22 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 279 · decisiveness through structural growth
+
+The hypothesis matrix now retains its selected channel across the frozen
+frontier archive. A compact interactive heatmap gives each structural update
+six independent rows—score field, leader, commuting order, antichain set,
+species-labelled atoms, and chemistry—so a materials scientist can distinguish
+a persistent structural control from a transient ranking perturbation. Clicking
+any available cell revisits that exact archived frontier and synchronizes its
+leave-one-channel-out pose and full shadow leap.
+
+Every column reads the audit frozen when its frontier was captured; changing a
+present workbench control does not rewrite history. The exported notebook
+snapshot includes the selected channel, per-frontier candidate and audit
+digests, availability, six Boolean outcomes, and the explicit claim boundary.
+The horizontal axis is discrete GCTS structural updates, not physical time, and
+the rows remain separate comparisons rather than a causal-depth trajectory.
+
 ## Build 278 · hypothesis decisiveness matrix
 
 The leave-one-channel instruments are now joined into one exact matrix from

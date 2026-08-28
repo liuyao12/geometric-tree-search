@@ -536,6 +536,8 @@ const policyOmissionDetail = $("policyOmissionDetail");
 const policyDecisivenessState = $("policyDecisivenessState");
 const policyDecisivenessMatrix = $("policyDecisivenessMatrix");
 const policyDecisivenessDetail = $("policyDecisivenessDetail");
+const policyDecisivenessHistoryState = $("policyDecisivenessHistoryState");
+const policyDecisivenessHistory = $("policyDecisivenessHistory");
 const policyShadowLeapState = $("policyShadowLeapState");
 const policyShadowLeapPlot = $("policyShadowLeapPlot");
 const policyShadowLeapDetail = $("policyShadowLeapDetail");
@@ -10856,7 +10858,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-278",
+      buildId: "20260827-279",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -13010,6 +13012,8 @@ function notebookPolicySnapshot(snapshot, includeIdentifiability = false) {
     } : null,
     shadowStructuralLeap: receiptFrozenShadowLeapAudit(snapshot.shadowLeapAudit),
     hypothesisDecisiveness: receiptPolicyDecisivenessAudit(snapshot.decisivenessAudit),
+    selectedHypothesisDecisivenessHistory: includeIdentifiability
+      ? receiptPolicyDecisivenessHistory(buildPolicyDecisivenessHistory(snapshot)) : null,
     hypothesisIdentifiability,
   };
 }
@@ -13138,7 +13142,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-278" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-279" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -18428,6 +18432,88 @@ function receiptPolicyDecisivenessAudit(audit) {
     causalHierarchyInferred: audit.causalHierarchyInferred,
     digest: audit.digest,
     claimBoundary: audit.claimBoundary,
+  };
+}
+
+const POLICY_DECISIVENESS_STAGES = [
+  { id: "score", label: "score" },
+  { id: "leader", label: "leader" },
+  { id: "order", label: "order" },
+  { id: "antichain", label: "set" },
+  { id: "atoms", label: "atoms" },
+  { id: "chemistry", label: "chem" },
+];
+
+function buildPolicyDecisivenessHistory(snapshot, requestedTermId = null) {
+  if (!snapshot) return null;
+  const currentAudit = snapshot.decisivenessAudit;
+  const termId = requestedTermId || snapshot.omissionPreviewTermId
+    || currentAudit?.channels[0]?.termId || null;
+  if (!termId) return null;
+  const currentChannel = currentAudit?.channels.find((entry) => entry.termId === termId);
+  const records = policyComparisonHistory.map((historySnapshot, historyIndex) => {
+    const audit = historySnapshot.decisivenessAudit;
+    const channel = audit?.channels.find((entry) => entry.termId === termId) || null;
+    const stageMap = new Map((channel?.stages || []).map((stage) => [stage.id, Boolean(stage.changed)]));
+    return {
+      historyIndex,
+      frontierIndex: historySnapshot.index,
+      candidateSetDigest: audit?.candidateSetDigest || historySnapshot.candidateDigest,
+      auditDigest: audit?.digest || null,
+      available: Boolean(channel),
+      targetUsed: Boolean(audit?.targetUsed),
+      stages: POLICY_DECISIVENESS_STAGES.map((stage) => ({ id: stage.id,
+        changed: channel ? Boolean(stageMap.get(stage.id)) : null })),
+    };
+  });
+  const availableRecords = records.filter((record) => record.available);
+  return {
+    schema: 1,
+    termId,
+    termLabel: currentChannel?.termLabel || termId,
+    stages: POLICY_DECISIVENESS_STAGES.map((stage) => ({ ...stage })),
+    records,
+    storedFrontiers: records.length,
+    availableFrontiers: availableRecords.length,
+    unavailableFrontiers: records.length - availableRecords.length,
+    selectedHistoryIndex: policyComparisonHistory.indexOf(snapshot),
+    changedFrontiersByStage: Object.fromEntries(POLICY_DECISIVENESS_STAGES.map((stage) => [stage.id,
+      availableRecords.filter((record) => record.stages.find((entry) => entry.id === stage.id)?.changed).length])),
+    candidateSetsChanged: records.some((record, index) => index > 0
+      && record.candidateSetDigest !== records[index - 1].candidateSetDigest),
+    targetUsed: records.some((record) => record.targetUsed),
+    coordinatesEmbedded: false,
+    executed: false,
+    physicalTimeModeled: false,
+    causalHierarchyInferred: false,
+    alignment: "retained discrete GCTS frontier snapshots in capture order; not physical time",
+    claimBoundary: "independent per-frontier channel-omission checks; rows do not imply a causal hierarchy and historical records are not recomputed from current controls",
+  };
+}
+
+function receiptPolicyDecisivenessHistory(history) {
+  if (!history) return null;
+  return {
+    schema: history.schema,
+    termId: history.termId,
+    termLabel: history.termLabel,
+    stages: history.stages,
+    storedFrontiers: history.storedFrontiers,
+    availableFrontiers: history.availableFrontiers,
+    unavailableFrontiers: history.unavailableFrontiers,
+    changedFrontiersByStage: history.changedFrontiersByStage,
+    candidateSetsChanged: history.candidateSetsChanged,
+    records: history.records.map((record) => ({ frontierIndex: record.frontierIndex,
+      candidateSetDigest: record.candidateSetDigest, auditDigest: record.auditDigest,
+      available: record.available, targetUsed: record.targetUsed,
+      stages: record.stages.map((stage) => ({ ...stage })) })),
+    targetUsed: history.targetUsed,
+    coordinatesEmbedded: history.coordinatesEmbedded,
+    executed: history.executed,
+    physicalTimeModeled: history.physicalTimeModeled,
+    causalHierarchyInferred: history.causalHierarchyInferred,
+    alignment: history.alignment,
+    claimBoundary: history.claimBoundary,
   };
 }
 
@@ -29135,9 +29221,11 @@ function renderPolicyOmissionAudit(snapshot) {
 function renderPolicyDecisivenessMatrix(snapshot, requestedTermId = null) {
   policyDecisivenessMatrix.replaceChildren();
   policyDecisivenessDetail.replaceChildren();
+  policyDecisivenessHistory.replaceChildren();
   const audit = snapshot?.decisivenessAudit;
   if (!audit?.channels.length) {
     policyDecisivenessState.textContent = "no active differential channels";
+    policyDecisivenessHistoryState.textContent = "awaiting a selected channel";
     return;
   }
   const selected = audit.channels.find((entry) => entry.termId === requestedTermId)
@@ -29184,6 +29272,62 @@ function renderPolicyDecisivenessMatrix(snapshot, requestedTermId = null) {
   const boundary = document.createElement("p");
   boundary.textContent = `Each column is an independent exact comparison on frontier ${audit.candidateSetDigest}; columns are not assumed to be a causal chain. No omitted arm executes. ${audit.digest}.`;
   policyDecisivenessDetail.append(heading, status, evidence, boundary);
+  renderPolicyDecisivenessHistory(snapshot, selected.termId);
+}
+
+function selectPolicyDecisivenessFrontier(historyIndex, termId) {
+  const target = policyComparisonHistory[historyIndex];
+  if (!target) return;
+  selectedPolicySnapshotIndex = historyIndex;
+  target.omissionPreviewTermId = termId;
+  selectedPolicyPreviewId = "omission";
+  const preview = buildPolicyOmissionPreview(target);
+  if (preview) previewPolicyWinner(preview, target);
+  else renderPolicyComparison();
+}
+
+function renderPolicyDecisivenessHistory(snapshot, termId) {
+  policyDecisivenessHistory.replaceChildren();
+  const history = buildPolicyDecisivenessHistory(snapshot, termId);
+  if (!history?.records.length) {
+    policyDecisivenessHistoryState.textContent = "awaiting retained frontiers";
+    return;
+  }
+  policyDecisivenessHistoryState.textContent = `${history.availableFrontiers}/${history.storedFrontiers} frontiers · ${history.changedFrontiersByStage.antichain} set · ${history.changedFrontiersByStage.atoms} atoms`;
+  const grid = document.createElement("div");
+  grid.className = "policy-decisiveness-history-grid";
+  grid.style.gridTemplateColumns = `58px repeat(${history.records.length}, 18px)`;
+  const corner = document.createElement("span"); corner.className = "corner";
+  corner.textContent = history.termLabel;
+  grid.append(corner);
+  history.records.forEach((record) => {
+    const button = document.createElement("button"); button.type = "button";
+    button.className = "frontier";
+    button.classList.toggle("selected", record.historyIndex === history.selectedHistoryIndex);
+    button.textContent = String(record.frontierIndex);
+    button.title = `Frozen frontier ${record.frontierIndex} · ${record.candidateSetDigest}`;
+    button.setAttribute("aria-label", `Revisit frozen frontier ${record.frontierIndex}`);
+    button.addEventListener("click", () => selectPolicyDecisivenessFrontier(record.historyIndex, history.termId));
+    grid.append(button);
+  });
+  history.stages.forEach((stage) => {
+    const label = document.createElement("span"); label.className = "stage-label";
+    label.textContent = stage.label; grid.append(label);
+    history.records.forEach((record) => {
+      const value = record.stages.find((entry) => entry.id === stage.id)?.changed;
+      const button = document.createElement("button"); button.type = "button";
+      button.className = value === null ? "unavailable" : value ? "changed" : "stable";
+      button.classList.toggle("selected", record.historyIndex === history.selectedHistoryIndex);
+      button.disabled = !record.available;
+      button.textContent = value === null ? "·" : value ? "●" : "○";
+      button.title = `${history.termLabel} · frontier ${record.frontierIndex} · ${stage.label}: ${value === null ? "unavailable" : value ? "changed" : "stable"} · ${record.candidateSetDigest}`;
+      button.setAttribute("aria-label", `${history.termLabel}, frozen frontier ${record.frontierIndex}, ${stage.label} ${value === null ? "unavailable" : value ? "changed" : "stable"}`);
+      if (record.available) button.addEventListener("click", () =>
+        selectPolicyDecisivenessFrontier(record.historyIndex, history.termId));
+      grid.append(button);
+    });
+  });
+  policyDecisivenessHistory.append(grid);
 }
 
 function renderPolicyShadowLeap(snapshot, requestedTermId = null) {

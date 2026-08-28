@@ -1920,6 +1920,27 @@ body.study-guide-open { overflow: hidden; }
 #policyDecisivenessDetail b { float: right; color: #65e1bc; font: inherit; font-weight: 400; }
 #policyDecisivenessDetail p { clear: both; margin: 4px 0 0; }
 
+.policy-decisiveness-history { margin-top: 6px; padding-top: 5px; border-top: 1px solid rgba(181, 148, 255, .09); }
+.policy-decisiveness-history > header { display: flex; align-items: end; justify-content: space-between; gap: 6px; }
+.policy-decisiveness-history > header span small,
+.policy-decisiveness-history > header span strong { display: block; }
+.policy-decisiveness-history > header small { color: #655c73; font: 4px var(--mono); text-transform: uppercase; }
+.policy-decisiveness-history > header strong { margin-top: 2px; color: #a99abc; font: 5px var(--mono); font-weight: 400; }
+.policy-decisiveness-history > header b { color: #746b80; font: 4px var(--mono); font-weight: 400; text-align: right; }
+.policy-decisiveness-history > p { margin: 5px 0 0; color: #696170; font: 4px/1.45 var(--mono); }
+#policyDecisivenessHistory { max-width: 100%; margin-top: 5px; overflow-x: auto; padding-bottom: 3px; }
+.policy-decisiveness-history-grid { display: grid; gap: 2px; width: max-content; min-width: 100%; align-items: center; }
+.policy-decisiveness-history-grid .corner,
+.policy-decisiveness-history-grid .stage-label { overflow: hidden; color: #766b84; font: 4px var(--mono); text-overflow: ellipsis; white-space: nowrap; }
+.policy-decisiveness-history-grid button { display: grid; place-items: center; width: 18px; height: 15px; padding: 0; border: 1px solid transparent; border-radius: 2px; background: rgba(92, 87, 104, .09); color: #5e5865; font: 4px var(--mono); cursor: pointer; }
+.policy-decisiveness-history-grid button.frontier { height: 12px; color: #71677d; background: transparent; }
+.policy-decisiveness-history-grid button.changed { color: #071112; background: #65e1bc; box-shadow: 0 0 7px rgba(101, 225, 188, .14); }
+.policy-decisiveness-history-grid button.stable { color: #71697b; background: rgba(181, 148, 255, .07); }
+.policy-decisiveness-history-grid button.unavailable { color: #48444d; background: transparent; cursor: default; }
+.policy-decisiveness-history-grid button.selected { border-color: #ffbe6a; }
+.policy-decisiveness-history-grid button:not(:disabled):hover,
+.policy-decisiveness-history-grid button:not(:disabled):focus-visible { border-color: #b594ff; outline: none; }
+
 .policy-shadow-leap > header {
   display: flex;
   align-items: end;

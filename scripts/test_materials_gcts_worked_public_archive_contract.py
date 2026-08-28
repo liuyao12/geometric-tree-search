@@ -29,9 +29,9 @@ def main() -> None:
     assert "exactEntryRequest:" in APP
     assert "shareableSpecimen:" in APP
     assert "worked-archive" in STYLE
-    assert 'buildId: "20260827-278"' in APP
-    assert "app.js?v=20260827-278" in HTML
-    assert "style.css?v=20260827-278" in HTML
+    assert 'buildId: "20260827-279"' in APP
+    assert "app.js?v=20260827-279" in HTML
+    assert "style.css?v=20260827-279" in HTML
     print("Worked public archive contract passed")
 
 

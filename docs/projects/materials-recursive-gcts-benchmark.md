@@ -1,5 +1,22 @@
 # Recursive GCTS benchmark for material growth
 
+### Channel decisiveness through retained frontiers (Build 279)
+
+The selected hypothesis channel can now be followed through the bounded archive
+of frozen GCTS frontiers. The interactive heatmap has one column per captured
+structural update and six independent rows: differential score, winner,
+commuting order, permutation-invariant antichain membership, emitted colored
+sites, and species inventory. Clicking an available cell selects that immutable
+frontier and restores its exact omission preview and shadow-batch comparison.
+
+Historical cells consume the audit stored at capture, including candidate-set
+and decisiveness digests; they are never recomputed from current weight controls.
+The notebook receipt exports channel ID, stage counts, every per-frontier stage
+value, target-use flags, and the statement that coordinates, execution, causal
+hierarchy, and physical time are absent. The display therefore measures whether
+a geometry-encoded hypothesis remains structurally decisive as the interface
+changes, without presenting the archive as a trajectory in physical time.
+
 ### Physics-hypothesis decisiveness matrix (Build 278)
 
 The portal now aligns the score-ledger, leave-one-channel winner audit, and

@@ -8,7 +8,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260827-278">
+  <link rel="stylesheet" href="./style.css?v=20260827-279">
   <script type="importmap">
     {
       "imports": {
@@ -1203,6 +1203,11 @@
                   <div class="policy-decisiveness-head" aria-hidden="true"><span>channel</span><span>score</span><span>leader</span><span>order</span><span>set</span><span>atoms</span><span>chem</span></div>
                   <div id="policyDecisivenessMatrix" class="policy-decisiveness-matrix" role="group" aria-label="Select a channel to inspect its propagation from score field to emitted chemistry"></div>
                   <article id="policyDecisivenessDetail" aria-live="polite"></article>
+                  <section class="policy-decisiveness-history" aria-label="Selected hypothesis decisiveness through retained structural frontiers">
+                    <header><span><small>retained frontier archive</small><strong>Decisiveness through structural growth</strong></span><b id="policyDecisivenessHistoryState">awaiting a selected channel</b></header>
+                    <div id="policyDecisivenessHistory" role="grid" aria-label="Click a cell to revisit that frozen frontier"></div>
+                    <p>Columns are discrete frozen frontier updates, not physical time. Rows remain independent checks; a lit cell does not imply a causal path through the rows.</p>
+                  </section>
                 </section>
                 <section class="policy-shadow-leap" aria-label="Leave-one-channel-out whole structural leap">
                   <header><span><small>same frontier × exact batch scheduler</small><strong>Shadow structural leap</strong></span><b id="policyShadowLeapState">awaiting a frozen frontier</b></header>
@@ -2029,7 +2034,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260827-278"></script>
+  <script type="module" src="./app.js?v=20260827-279"></script>
   <script type="module" src="./evidence-atlas.js?v=20260827-24"></script>
 </body>
 </html>
