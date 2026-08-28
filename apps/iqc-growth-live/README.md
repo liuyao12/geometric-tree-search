@@ -1,5 +1,23 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 286 · attachment versus bounded settling
+
+Every accepted off-lattice leap now retains an explicit **as-placed** material
+state between the pre-leap nucleus and the final retained state. The material
+consequence lab can therefore switch among three comparisons: the total leap,
+the rigid whole-cluster GCTS attachment alone, and the subsequent bounded local
+geometric settling correction. All local, mesoscale, chemical, void-network,
+and reciprocal-space rows are recomputed for the selected pair rather than
+attributing their combined change to one opaque update.
+
+The settling stage moves only newly emitted sites and is committed only when
+the learned contact-angle residual decreases and coordination, angular,
+colored hard-exclusion, public-boundary, exact cluster-topology, and proper-port
+topology gates all re-pass. It remains a deterministic finite constraint
+projection—not molecular dynamics, a force trajectory, energy minimization,
+kinetics, probability, or physical elapsed time. A rejected or disabled
+projection is shown explicitly as a zero committed settling correction.
+
 ## Build 285 · material-consequence decisiveness pathway
 
 The hypothesis decisiveness matrix now follows each active geometric channel

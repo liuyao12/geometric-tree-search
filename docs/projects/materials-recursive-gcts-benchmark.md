@@ -1,5 +1,24 @@
 # Recursive GCTS benchmark for material growth
 
+### Attachment / settling decomposition (Build 286)
+
+The executed structural-leap receipt now freezes a full coordinate-free
+`asPlaced` checkpoint after the order-independent whole-cluster antichain is
+committed and before the optional local constraint projection. The interactive
+material-consequence panel resolves three distinct comparisons: before → final,
+before → as placed, and as placed → final. The same exact observable definitions
+are used for every comparison, so changes in coordination, packing, void
+geometry, morphology, composition, local order, centrosymmetry, and finite-window
+scattering can be attributed to the discrete attachment or to the bounded
+correction without mixing their units into one score.
+
+This decomposition is descriptive, downstream, and target-free. Projection is
+restricted to newly emitted sites under an explicit displacement cap and is
+accepted only after monotone contact-angle improvement plus every hard geometry
+and public-boundary gate. The method does not integrate forces or time, evaluate
+a physical potential or free energy, infer a transition mechanism, or turn the
+discrete leap order into kinetics.
+
 ### Material-consequence decisiveness pathway (Build 285)
 
 The frozen-frontier hypothesis audit now propagates each active score channel

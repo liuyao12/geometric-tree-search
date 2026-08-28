@@ -29,7 +29,9 @@ import { buildExecutedGrowthRegime, growthRegimePlotRows,
   GROWTH_REGIME_RESPONSE_AXES, GROWTH_REGIME_STATE_AXES }
   from "./growth-regime-map.mjs?v=20260828-1";
 import { compareShadowMaterialFingerprints, SHADOW_MATERIAL_CONSEQUENCE_FIELDS }
-  from "./shadow-material-consequence.mjs?v=20260828-285";
+  from "./shadow-material-consequence.mjs?v=20260828-286";
+import { LEAP_CONSEQUENCE_COMPONENTS, resolveLeapConsequenceComparison }
+  from "./leap-consequence-decomposition.mjs?v=20260828-286";
 import { archiveResponseFrontierRankAudit }
   from "./archive-response-frontier-audit.js?v=20260827-1";
 import { evidenceOrderedClusterDiscoverySchedule }
@@ -776,6 +778,7 @@ const leapFlow = $("leapFlow");
 const leapConsequenceLab = $("leapConsequenceLab");
 const leapConsequenceState = $("leapConsequenceState");
 const leapConsequenceFilters = $("leapConsequenceFilters");
+const leapConsequenceComponents = $("leapConsequenceComponents");
 const leapConsequenceMatrix = $("leapConsequenceMatrix");
 const leapConsequenceDetail = $("leapConsequenceDetail");
 const leapConsequenceBoundary = $("leapConsequenceBoundary");
@@ -1601,6 +1604,7 @@ let leapHistory = [];
 let selectedLeapIndex = -1;
 let selectedLeapConsequenceId = "coordination";
 let selectedLeapConsequenceFilter = "all";
+let selectedLeapConsequenceComponent = "total";
 let selectedStoichiometrySpecies = null;
 let selectedPackingMetric = "median";
 let selectedRadialProfileChannel = "density";
@@ -10887,7 +10891,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260828-285",
+      buildId: "20260828-286",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -12493,13 +12497,17 @@ async function buildExperimentReceipt() {
       structuralLeapHistory: { totalEvents: leapEventCount, retainedEvents: leapHistory.length,
         maximumRetainedEvents: MAXIMUM_RETAINED_STRUCTURAL_LEAPS,
         truncated: leapEventCount > leapHistory.length,
-        alignment: "discrete GCTS search update; not physical time" },
+        alignment: "discrete GCTS search update; not physical time",
+        decomposedOffLatticeEvents: leapHistory.filter((leap) => leap.asPlaced).length,
+        offLatticeCheckpointSchema: ["before", "asPlaced", "after"],
+        decomposition: "rigid whole-cluster attachment followed by optional bounded local constraint projection" },
       structuralMassRadiusScaling: receiptMassRadiusScaling(),
       executedGrowthRegimeMap: receiptExecutedGrowthRegime(),
       bondValenceStructuralPathway: bondValenceStructuralPathwayReceipt(),
       structuralLeapCertificates: leapHistory.map((leap) => ({
         index: leap.index, status: leap.status, label: leap.label,
-        before: leap.before, proposal: leap.proposal, tests: leap.tests,
+        before: leap.before, asPlaced: leap.asPlaced || null,
+        proposal: leap.proposal, tests: leap.tests,
         relaxation: leap.relaxation || null, localSymmetryTransition: leap.localSymmetryTransition || null,
         centrosymmetryTransition: leap.centrosymmetryTransition || null,
         reciprocalSpaceTransition: leap.reciprocalSpaceTransition || null,
@@ -13109,7 +13117,8 @@ async function buildExperimentNotebookSnapshot() {
     ? await receiptSha256(JSON.stringify(physicsPreflightManifest)) : null;
   const leapHistoryReceipt = leapHistory.map((leap) => ({
     index: leap.index, status: leap.status, label: leap.label,
-    before: leap.before, proposal: leap.proposal, tests: leap.tests,
+    before: leap.before, asPlaced: leap.asPlaced || null,
+    proposal: leap.proposal, tests: leap.tests,
     relaxation: leap.relaxation || null, localSymmetryTransition: leap.localSymmetryTransition || null,
     centrosymmetryTransition: leap.centrosymmetryTransition || null,
     reciprocalSpaceTransition: leap.reciprocalSpaceTransition || null,
@@ -13176,7 +13185,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260828-285" },
+    application: { name: "Materials Growth Lab", buildId: "20260828-286" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -23873,6 +23882,7 @@ function resetCounters() {
   selectedLeapIndex = -1;
   selectedLeapConsequenceId = "coordination";
   selectedLeapConsequenceFilter = "all";
+  selectedLeapConsequenceComponent = "total";
   selectedStoichiometrySpecies = null;
   selectedPackingMetric = "median";
   selectedRadialProfileChannel = "density";
@@ -24428,6 +24438,28 @@ function materializeCandidate(candidate, evaluation, leapCreationContext) {
   return placement;
 }
 
+function currentLeapOutcomeSnapshot(accepted, rejected) {
+  return {
+    atoms: atoms.length,
+    clusters: placedClusters.length,
+    accepted,
+    rejected,
+    depth: Math.max(0, ...placedClusters.map((placement) => placement.depth || 0)),
+    morphology: structuralMorphologySnapshot(),
+    composition: structuralCompositionSnapshot(),
+    packing: structuralPackingSnapshot(),
+    voidClearance: structuralVoidClearanceSnapshot(),
+    interfaces: structuralInterfaceSnapshot(),
+    orientationalOrder: structuralOrientationalOrderSnapshot(),
+    centrosymmetry: structuralCentrosymmetrySnapshot(),
+    scattering: structuralScatteringSnapshot(),
+    chargeMoment: structuralChargeMomentSnapshot(),
+    bondValenceState: structuralBondValenceSnapshot(),
+    feedstock: currentFeedstockSnapshot(),
+    domain: currentGrowthDomainSnapshot(),
+  };
+}
+
 async function performOffLatticeEvent() {
   const reconstructionWasCertified = reconstructionCertified;
   const relaxationAuthorized = reconstructionCertified;
@@ -24646,6 +24678,10 @@ async function performOffLatticeEvent() {
     rejectedBatchActions: rejectedInBatch, pauseRequested: pauseAfterCurrentGrowthLeap };
   freezeCreationGeometryForAtoms(freshAtomIdsInBatch);
   applyCommutingBatchForceConsensus(batch, freshAtomIdsInBatch);
+  // Freeze the rigid learned-pose state before the optional bounded local
+  // projection. This checkpoint lets the material audit distinguish the
+  // discrete GCTS attachment from the geometric settling correction.
+  const asPlaced = currentLeapOutcomeSnapshot(acceptedInBatch, rejectedInBatch);
   const relaxation = projectAcceptedBatchGeometry(freshAtomIdsInBatch, relaxationAuthorized);
   selectedKeys.forEach((key) => frontierCandidateKeys.delete(key));
   eventIndex += batch.length;
@@ -24664,15 +24700,9 @@ async function performOffLatticeEvent() {
         .reduce((sum, { evaluation }) => sum + evaluation.fresh.length, 0) },
     tests: { summary: `${acceptedInBatch} passed · ${rejectedInBatch} pruned`,
       detail: "Species/hard-core, overlap, novelty, public boundary, coordination, angle, and active marking were evaluated before any commit." },
+    asPlaced,
     relaxation,
-    after: { atoms: atoms.length, clusters: placedClusters.length, accepted: acceptedInBatch, rejected: rejectedInBatch,
-      depth: Math.max(0, ...placedClusters.map((placement) => placement.depth || 0)),
-      morphology: structuralMorphologySnapshot(), composition: structuralCompositionSnapshot(), packing: structuralPackingSnapshot(), voidClearance: structuralVoidClearanceSnapshot(),
-      interfaces: structuralInterfaceSnapshot(),
-      orientationalOrder: structuralOrientationalOrderSnapshot(), centrosymmetry: structuralCentrosymmetrySnapshot(),
-    scattering: structuralScatteringSnapshot(),
-      chargeMoment: structuralChargeMomentSnapshot(), bondValenceState: structuralBondValenceSnapshot(),
-      feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() },
+    after: currentLeapOutcomeSnapshot(acceptedInBatch, rejectedInBatch),
     claimBoundary: relaxation?.accepted
       ? "The accepted antichain is valid in every placement order. A bounded post-attachment constraint projection reduced the learned local contact-angle residual and re-passed every hard gate; it is not a force trajectory, energy minimization, probability, or physical elapsed time."
       : "The accepted antichain is valid in every placement order and jumps directly to a certified structural state. No force trajectory, energy minimization, transition probability, or physical elapsed time was computed." });
@@ -27486,9 +27516,20 @@ function renderLeapConsequence(selected = null) {
     scattering: structuralScatteringSnapshot(),
     feedstock: currentFeedstockSnapshot(),
   };
-  const before = selected?.before || current;
-  const after = selected?.after || current;
+  const comparison = resolveLeapConsequenceComparison(selected,
+    selectedLeapConsequenceComponent, current);
+  selectedLeapConsequenceComponent = comparison.mode;
+  const before = comparison.before;
+  const after = comparison.after;
   const records = materialConsequenceRecords(before, after);
+  leapConsequenceComponents.querySelectorAll("button[data-consequence-component]").forEach((button) => {
+    const mode = button.dataset.consequenceComponent;
+    const available = mode === "total" || Boolean(selected?.asPlaced);
+    button.disabled = !available;
+    button.setAttribute("aria-pressed", String(mode === comparison.mode));
+    button.title = available ? LEAP_CONSEQUENCE_COMPONENTS[mode]?.shortBoundary || ""
+      : "This leap has no explicit as-placed checkpoint.";
+  });
   leapConsequenceFilters.querySelectorAll("button[data-consequence-filter]").forEach((button) => {
     const active = button.dataset.consequenceFilter === selectedLeapConsequenceFilter;
     button.setAttribute("aria-pressed", String(active));
@@ -27528,7 +27569,7 @@ function renderLeapConsequence(selected = null) {
   const changedCount = records.filter((record) => Number.isFinite(record.before) && Number.isFinite(record.after)
     && Math.abs(record.after - record.before) > 1e-9).length;
   leapConsequenceState.textContent = selected
-    ? `leap ${selected.index} · ${availableCount} resolved · ${changedCount} changed`
+    ? `leap ${selected.index} · ${comparison.label} · ${availableCount} resolved · ${changedCount} changed`
     : `seed · ${availableCount} resolved observables`;
   leapConsequenceDetail.replaceChildren();
   if (selectedRecord) {
@@ -27539,7 +27580,8 @@ function renderLeapConsequence(selected = null) {
     label.textContent = selectedRecord.label; change.textContent = available
       ? selectedRecord.deltaFormat(selectedRecord.after - selectedRecord.before) : "unavailable";
     copy.append(group, label); header.append(copy, change); leapConsequenceDetail.append(header);
-    [["before -> after", available ? `${selectedRecord.format(selectedRecord.before)} -> ${selectedRecord.format(selectedRecord.after)}` : "not resolved for both structural states"],
+    [[comparison.axisLabel, available ? `${selectedRecord.format(selectedRecord.before)} → ${selectedRecord.format(selectedRecord.after)}` : "not resolved for both structural states"],
+      ["operation isolated", comparison.explanation],
       ["structural evidence", selectedRecord.evidence], ["claim boundary", selectedRecord.boundary]]
       .forEach(([name, value]) => {
         const row = document.createElement("div"); const key = document.createElement("b");
@@ -27547,7 +27589,7 @@ function renderLeapConsequence(selected = null) {
         row.append(key, text); leapConsequenceDetail.append(row);
       });
   }
-  leapConsequenceBoundary.textContent = `Selected ${selected ? `leap ${selected.index}` : "seed state"}. Every row is independently scaled and reports a signed structural difference without assigning a favorable direction. The states are aligned by a discrete GCTS search update—not physical time. No row is a free energy, force, probability, rate, mechanism, phase-transition assignment, or experimental trajectory.`;
+  leapConsequenceBoundary.textContent = `Selected ${selected ? `leap ${selected.index} · ${comparison.label}` : "seed state"}. ${comparison.shortBoundary} Every row is independently scaled and reports a signed structural difference without assigning a favorable direction. Bounded settling moves only newly emitted sites, is accepted only after the local contact-angle residual decreases and every hard gate re-passes, and is not MD, force integration, energy minimization, kinetics, or physical time.`;
 }
 
 leapConsequenceFilters.addEventListener("click", (event) => {
@@ -27555,6 +27597,14 @@ leapConsequenceFilters.addEventListener("click", (event) => {
   if (!button) return;
   selectedLeapConsequenceFilter = ["all", "local", "mesoscale", "chemistry", "reciprocal"]
     .includes(button.dataset.consequenceFilter) ? button.dataset.consequenceFilter : "all";
+  renderLeapConsequence(leapHistory[selectedLeapIndex] || null);
+});
+
+leapConsequenceComponents.addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-consequence-component]");
+  if (!button || button.disabled) return;
+  selectedLeapConsequenceComponent = button.dataset.consequenceComponent in LEAP_CONSEQUENCE_COMPONENTS
+    ? button.dataset.consequenceComponent : "total";
   renderLeapConsequence(leapHistory[selectedLeapIndex] || null);
 });
 

@@ -15,6 +15,7 @@ def test_consequence_fingerprint_is_interactive_and_multiscale():
         "leapConsequenceLab",
         "leapConsequenceState",
         "leapConsequenceFilters",
+        "leapConsequenceComponents",
         "leapConsequenceMatrix",
         "leapConsequenceDetail",
         "leapConsequenceBoundary",
@@ -23,6 +24,8 @@ def test_consequence_fingerprint_is_interactive_and_multiscale():
         assert f'$("{element_id}")' in APP
     for group in ("all", "local", "mesoscale", "chemistry", "reciprocal"):
         assert f'data-consequence-filter="{group}"' in HTML
+    for component in ("total", "attachment", "settling"):
+        assert f'data-consequence-component="{component}"' in HTML
     for metric_id in (
         "atoms", "composition", "feedstock", "coordination", "local-order",
         "centrosymmetry", "radius", "anisotropy", "interface", "reciprocal",
@@ -32,6 +35,7 @@ def test_consequence_fingerprint_is_interactive_and_multiscale():
     assert "function renderLeapConsequence" in APP
     assert "renderLeapConsequence(selected);" in APP
     assert ".leap-consequence-matrix" in CSS
+    assert ".leap-consequence-components" in CSS
     assert ".consequence-track" in CSS
 
 
@@ -52,8 +56,7 @@ def test_composition_is_retained_as_state_not_action_score():
 def test_claim_boundary_forbids_dynamical_overinterpretation():
     for phrase in (
         "independently scaled",
-        "not physical time",
-        "No row is a free energy, force, probability, rate, mechanism",
+        "not MD, force integration, energy minimization, kinetics, or physical time",
         "not experimental diffraction intensity",
         "not chemical potential, phase equilibrium",
     ):
@@ -61,15 +64,28 @@ def test_claim_boundary_forbids_dynamical_overinterpretation():
     assert "Each row compares two certified structural states" in HTML
 
 
-def test_build_242_is_exposed():
-    assert 'buildId: "20260827-282"' in APP
-    assert 'app.js?v=20260827-282' in HTML
-    assert 'style.css?v=20260827-282' in HTML
+def test_current_build_is_exposed():
+    assert 'buildId: "20260828-286"' in APP
+    assert 'app.js?v=20260828-286' in HTML
+    assert 'style.css?v=20260828-286' in HTML
+
+
+def test_as_placed_checkpoint_precedes_projection_and_is_retained():
+    checkpoint = APP.index("const asPlaced = currentLeapOutcomeSnapshot")
+    projection = APP.index("const relaxation = projectAcceptedBatchGeometry", checkpoint)
+    receipt = APP.index("asPlaced,", projection)
+    assert checkpoint < projection < receipt
+    assert "resolveLeapConsequenceComparison" in APP
+    assert "selectedLeapConsequenceComponent" in APP
+    assert APP.count("asPlaced: leap.asPlaced || null") == 2
+    assert 'offLatticeCheckpointSchema: ["before", "asPlaced", "after"]' in APP
+    assert "decomposedOffLatticeEvents" in APP
 
 
 if __name__ == "__main__":
     test_consequence_fingerprint_is_interactive_and_multiscale()
     test_composition_is_retained_as_state_not_action_score()
     test_claim_boundary_forbids_dynamical_overinterpretation()
-    test_build_242_is_exposed()
+    test_current_build_is_exposed()
+    test_as_placed_checkpoint_precedes_projection_and_is_retained()
     print("leap consequence fingerprint contract passed")

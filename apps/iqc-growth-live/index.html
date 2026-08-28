@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260828-285">
+  <link rel="stylesheet" href="./style.css?v=20260828-286">
   <script type="importmap">
     {
       "imports": {
@@ -1873,6 +1873,11 @@
                 <button type="button" data-consequence-filter="chemistry" aria-pressed="false">chemistry</button>
                 <button type="button" data-consequence-filter="reciprocal" aria-pressed="false">reciprocal</button>
               </div></header>
+            <div id="leapConsequenceComponents" class="leap-consequence-components" role="group" aria-label="Choose which part of the structural leap to compare">
+              <button type="button" data-consequence-component="total" aria-pressed="true"><small>complete update</small><strong>total leap</strong><span>before → retained</span></button>
+              <button type="button" data-consequence-component="attachment" aria-pressed="false"><small>discrete GCTS move</small><strong>attachment</strong><span>before → as placed</span></button>
+              <button type="button" data-consequence-component="settling" aria-pressed="false"><small>bounded correction</small><strong>settling</strong><span>as placed → retained</span></button>
+            </div>
             <div id="leapConsequenceMatrix" class="leap-consequence-matrix" role="group" aria-label="Before and after material observables for the selected structural leap"></div>
             <article id="leapConsequenceDetail" class="leap-consequence-detail"></article>
             <p id="leapConsequenceBoundary">Each row compares two certified structural states. It is not elapsed time, a free-energy change, or a claim that either direction is favorable.</p>
@@ -2066,7 +2071,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260828-285"></script>
+  <script type="module" src="./app.js?v=20260828-286"></script>
   <script type="module" src="./evidence-atlas.js?v=20260827-24"></script>
 </body>
 </html>
