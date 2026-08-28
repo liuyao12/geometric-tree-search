@@ -1,5 +1,32 @@
 # Recursive GCTS benchmark for material growth
 
+### Branch-level growth decision microscope (Build 272)
+
+The post-decision spatial event audit now retains an interactive selection over
+its bounded coordinate-bearing display records while continuing to serialize
+only coordinate-free evidence. Pointer selection on the XY/XZ/YZ projection,
+previous/next controls, and Home/End/arrow keyboard navigation all resolve to
+one immutable action record. The microscope separates action fate, local
+phenotype, support change, input-derived role halo, metric conditioning,
+contact/overlap residuals, GCTS section evidence, and the bounded pose audit.
+
+The decisive gate is reconstructed from already frozen gate signals: public
+boundary, colored exclusion, local topology, GCTS connection, redundant cover,
+or complete hard-geometry admission. This classification occurs after the
+candidate and decision freeze and never enters enumeration, scoring, admission,
+or materialization. Selecting an event can synchronize the Build 271 retained-
+leap evidence view, but the selector contains no candidate evaluation,
+materialization, atom replacement, placed-cluster replacement, or search call.
+
+The NaCl regression keeps the scientific execution unchanged at 216 → 419
+explicit sites, 146 accepted actions, and 609 rejections. The bounded event map
+stores 96/755 decisions. Its default accepted example exposes 6 shared + 1 new
+site, 0.564 Å contact clearance, 0.000 Å shared-site residual, a 0.269 section
+margin versus 0.020 heldout loss, and 12/12 deterministic pose-perturbation
+agreement. Navigation leaves the live atom count at 419. These values are
+decision diagnostics, not a physical energy, confidence, mechanism, rate, or
+clock.
+
 ### Certified structural-history microscope (Build 271)
 
 The Stage 1/3 process timeline now has a distinct Stage 4 contract. Its range

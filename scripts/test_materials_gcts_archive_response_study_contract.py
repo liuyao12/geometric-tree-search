@@ -22,9 +22,9 @@ def main() -> None:
     assert 'checks.selectedArchiveFrame = importedFrameIndex === recipe.preferredFrameIndex' in APP
     assert 'if (recipe?.publicArchive) url.searchParams.set("specimen", `nomad:${recipe.publicArchive}`)' in APP
     assert 'loadWorkedPublicArchive({ updateAddress: false }).then((loaded)' in APP
-    assert 'buildId: "20260827-271"' in APP
-    assert 'app.js?v=20260827-271' in HTML
-    assert 'style.css?v=20260827-271' in HTML
+    assert 'buildId: "20260827-272"' in APP
+    assert 'app.js?v=20260827-272' in HTML
+    assert 'style.css?v=20260827-272' in HTML
     print("Archive-response guided study contract passed")
 
 

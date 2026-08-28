@@ -805,6 +805,10 @@ const growthMechanismSection = $("growthMechanismSection");
 const growthMechanismState = $("growthMechanismState");
 const growthMechanismProjection = $("growthMechanismProjection");
 const growthMechanismCanvas = $("growthMechanismCanvas");
+const growthMechanismDetailState = $("growthMechanismDetailState");
+const growthMechanismDetail = $("growthMechanismDetail");
+const growthMechanismPrevious = $("growthMechanismPrevious");
+const growthMechanismNext = $("growthMechanismNext");
 const growthMechanismLedger = $("growthMechanismLedger");
 const growthMechanismBoundary = $("growthMechanismBoundary");
 const growthUncertaintyState = $("growthUncertaintyState");
@@ -1581,10 +1585,13 @@ let frozenPhysicsPreflightManifest = null;
 const MAXIMUM_RETAINED_STRUCTURAL_LEAPS = 24;
 let growthMechanismEvents = [];
 let growthMechanismTotals = {};
+let growthMechanismEventSerial = 0;
 let growthPoseAuditsByLeap = new Map();
 const MAXIMUM_POSE_AUDITS_PER_LEAP = 64;
 const MAXIMUM_FRONTIER_POSE_AUDITS = 64;
 let growthMechanismProjectionKey = "xy";
+let selectedGrowthMechanismEventId = null;
+let growthMechanismScreenPoints = [];
 let markingSelection = null;
 let liveOrderCache = { key: "", result: null };
 let liveOrderHistory = [];
@@ -8248,8 +8255,8 @@ function prepareGrowthMechanismDiagnostic(candidate, evaluation) {
 function recordGrowthMechanismEvent(candidate, evaluation, accepted, depth, frozenDiagnostic = null) {
   const { classified, leapIndex, uncertainty } = frozenDiagnostic
     || prepareGrowthMechanismDiagnostic(candidate, evaluation);
-  growthMechanismEvents.push({
-    index: eventIndex + growthMechanismEvents.length + 1,
+  const event = {
+    index: ++growthMechanismEventSerial,
     accepted,
     phenotype: classified.phenotype,
     tags: classified.tags,
@@ -8270,7 +8277,9 @@ function recordGrowthMechanismEvent(candidate, evaluation, accepted, depth, froz
       markingAccepted: candidate.markingAccepted,
     },
     uncertainty,
-  });
+  };
+  growthMechanismEvents.push(event);
+  if (selectedGrowthMechanismEventId === null || accepted) selectedGrowthMechanismEventId = event.index;
   const totals = growthMechanismTotals[classified.phenotype] ||= { accepted: 0, rejected: 0, emittedSites: 0 };
   totals[accepted ? "accepted" : "rejected"]++;
   totals.emittedSites += accepted ? evaluation.fresh.length : 0;
@@ -8278,7 +8287,11 @@ function recordGrowthMechanismEvent(candidate, evaluation, accepted, depth, froz
     const olderLeap = growthMechanismEvents.findIndex((event) => event.leapIndex < leapIndex);
     const unaudited = growthMechanismEvents.findIndex((event) =>
       !event.uncertainty.perturbationEnsembleExecutedForThisAction);
-    growthMechanismEvents.splice(olderLeap >= 0 ? olderLeap : unaudited >= 0 ? unaudited : 0, 1);
+    const [removed] = growthMechanismEvents.splice(olderLeap >= 0 ? olderLeap : unaudited >= 0 ? unaudited : 0, 1);
+    if (removed?.index === selectedGrowthMechanismEventId) {
+      selectedGrowthMechanismEventId = growthMechanismEvents.findLast((event) => event.accepted)?.index
+        || growthMechanismEvents.at(-1)?.index || null;
+    }
   }
 }
 
@@ -8301,6 +8314,8 @@ function growthMechanismAudit() {
         .map(([key, value]) => [key, typeof value === "number" ? receiptRound(value) : value])),
     })),
     coordinatesEmbedded: false,
+    interactiveSelectionSerialized: false,
+    interactiveSelectionUsedForSearch: false,
     usedForCandidateEnumeration: false,
     usedForAdmission: false,
     usedForBranchRanking: activeMicrostructureCouplingWeight() > 0,
@@ -8313,6 +8328,101 @@ function growthMechanismAudit() {
     formationEnergyInferred: false,
     kineticsInferred: false,
   };
+}
+
+function selectedGrowthMechanismEvent() {
+  let selected = growthMechanismEvents.find((event) => event.index === selectedGrowthMechanismEventId) || null;
+  if (!selected && growthMechanismEvents.length) {
+    selected = growthMechanismEvents.findLast((event) => event.accepted) || growthMechanismEvents.at(-1);
+    selectedGrowthMechanismEventId = selected.index;
+  }
+  return selected;
+}
+
+function selectGrowthMechanismEvent(eventId, synchronizeHistory = true) {
+  const event = growthMechanismEvents.find((entry) => entry.index === eventId);
+  if (!event) return;
+  selectedGrowthMechanismEventId = event.index;
+  if (synchronizeHistory) {
+    const retainedIndex = leapHistory.findIndex((entry) => entry.index === event.leapIndex);
+    if (retainedIndex >= 0) {
+      selectedLeapIndex = retainedIndex;
+      renderStructuralLeap(leapHistory[retainedIndex]);
+      updateProcessTimeline();
+    }
+  }
+  renderGrowthMechanismAudit();
+}
+
+function growthMechanismGateSummary(event) {
+  const signals = event.gateSignals || {};
+  if (event.accepted) return {
+    title: "hard geometry admitted",
+    detail: "The complete colored child passed overlap, exclusion, topology, marking, and public-boundary checks before its whole-cluster commit.",
+  };
+  if (signals.boundaryFailures || signals.knownWindowFailures) return {
+    title: "public-domain gate",
+    detail: `${signals.boundaryFailures || signals.knownWindowFailures} site${(signals.boundaryFailures || signals.knownWindowFailures) === 1 ? "" : "s"} lay outside the declared continuation domain.`,
+  };
+  if (signals.coloredConflicts) return {
+    title: "colored exclusion gate",
+    detail: `${signals.coloredConflicts} proposed site${signals.coloredConflicts === 1 ? "" : "s"} conflicted with explicit occupied geometry.`,
+  };
+  if (signals.coordinationOverflows || signals.angularViolations) return {
+    title: "local topology gate",
+    detail: `${signals.coordinationOverflows || 0} coordination and ${signals.angularViolations || 0} angular violation${signals.angularViolations === 1 ? "" : "s"} were resolved before commit.`,
+  };
+  if (signals.markingAccepted === false) return {
+    title: "GCTS connection gate",
+    detail: "The exact candidate geometry existed, but its frozen incoming connection section did not admit this attachment.",
+  };
+  if (event.phenotype === "redundant" || /duplicate|redundant|no novel/i.test(event.reason || "")) return {
+    title: "redundant-cover gate",
+    detail: "Every proposed colored site was already represented by the committed cover, so the action emitted no novel geometry.",
+  };
+  return { title: "geometric prune", detail: event.reason || "The frozen candidate failed a declared geometric gate before commit." };
+}
+
+function renderGrowthMechanismDetail() {
+  const event = selectedGrowthMechanismEvent();
+  growthMechanismDetail.replaceChildren();
+  growthMechanismPrevious.disabled = growthMechanismEvents.length < 2;
+  growthMechanismNext.disabled = growthMechanismEvents.length < 2;
+  if (!event) {
+    growthMechanismDetailState.textContent = "awaiting a decision";
+    const empty = document.createElement("p");
+    empty.textContent = "Run one structural leap, then select an accepted dot or rejected cross to inspect its local geometry, gate outcome, uncertainty, and retained-state provenance.";
+    growthMechanismDetail.appendChild(empty);
+    return;
+  }
+  const phenotype = GROWTH_EVENT_PHENOTYPES[event.phenotype] || GROWTH_EVENT_PHENOTYPES.prune;
+  const gate = growthMechanismGateSummary(event);
+  const uncertainty = event.uncertainty || {};
+  const roleCounts = Object.entries(event.nearbyRoleCounts || {}).filter(([, count]) => count > 0);
+  const eventPosition = growthMechanismEvents.findIndex((entry) => entry.index === event.index) + 1;
+  growthMechanismDetailState.textContent = `action ${eventPosition}/${growthMechanismEvents.length} · leap ${event.leapIndex} · ${event.accepted ? "accepted" : "rejected"}`;
+  const grid = document.createElement("div"); grid.className = "growth-decision-grid";
+  const rows = [
+    ["decision", event.accepted ? "whole cluster committed" : "candidate pruned", gate.title],
+    ["local phenotype", phenotype.label, event.tags?.length ? event.tags.join(" · ") : "no extra role tags"],
+    ["support change", `${event.sharedSites} shared · ${event.emittedSites} emitted`, `tree depth ${event.depth} · retained leap ${event.leapIndex}`],
+    ["input-derived halo", roleCounts.length ? roleCounts.map(([key, count]) => `${key} ${count}`).join(" · ") : "no tagged sites", `${event.neighborhoodReachAngstrom.toFixed(3)} Å reach`],
+    ["metric conditioning", `σ ${uncertainty.measuredPairDistanceSigmaAngstrom.toFixed(3)} Å · ε ${uncertainty.resolvedMetricToleranceAngstrom.toFixed(3)} Å`, uncertainty.measurementFloorActive ? "reported uncertainty sets the tolerance floor" : "nominal isometry tolerance active"],
+    ["contact / overlap", `${Number.isFinite(uncertainty.minimumContactClearanceAngstrom) ? uncertainty.minimumContactClearanceAngstrom.toFixed(3) : "—"} / ${uncertainty.maximumOverlapResidualAngstrom.toFixed(3)} Å`, "minimum clearance / maximum shared-site residual"],
+    ["GCTS section", uncertainty.activeMarkingGate ? uncertainty.markingMargin === null ? "active · margin unresolved" : `margin ${uncertainty.markingMargin.toFixed(3)}` : "not gating", uncertainty.markingHoldoutLoss === null ? "heldout loss unavailable" : `heldout loss ${uncertainty.markingHoldoutLoss.toFixed(3)}`],
+    ["pose sensitivity", uncertainty.perturbationEnsembleExecutedForThisAction ? `${uncertainty.perturbationAgreementCount}/${uncertainty.perturbationTrials} decisions agree` : "not sampled", uncertainty.perturbationEnsembleExecutedForThisAction ? `${uncertainty.perturbationStressRadiusAngstrom.toFixed(3)} Å · ${uncertainty.perturbationRotationDegrees.toFixed(2)}°` : uncertainty.perturbationNotExecutedReason || "bounded audit unavailable"],
+  ];
+  rows.forEach(([label, value, detail]) => {
+    const cell = document.createElement("span");
+    const small = document.createElement("small"); small.textContent = label;
+    const strong = document.createElement("strong"); strong.textContent = value;
+    const em = document.createElement("em"); em.textContent = detail;
+    cell.append(small, strong, em); grid.appendChild(cell);
+  });
+  const explanation = document.createElement("p"); explanation.className = "growth-decision-explanation";
+  explanation.style.setProperty("--decision-color", phenotype.color);
+  explanation.textContent = `${gate.detail} Frozen reason: ${event.reason}. Select another map mark or use previous/next; the structural-history panels follow its retained leap without rewinding the live atoms. This forensic view never changes rank, admission, or geometry.`;
+  growthMechanismDetail.append(grid, explanation);
 }
 
 function drawGrowthMechanismMap() {
@@ -8345,15 +8455,24 @@ function drawGrowthMechanismMap() {
       context.beginPath(); context.arc(x, y, 5.2, 0, TAU); context.stroke();
     }
   });
+  growthMechanismScreenPoints = [];
   growthMechanismEvents.forEach((event) => {
     const [x, y] = screen(event.position);
+    growthMechanismScreenPoints.push({ eventId: event.index, x, y });
     const color = GROWTH_EVENT_PHENOTYPES[event.phenotype]?.color || "#b594ff";
     context.strokeStyle = color; context.fillStyle = color; context.lineWidth = 2;
     if (event.accepted) { context.beginPath(); context.arc(x, y, 4.4, 0, TAU); context.fill(); }
     else { context.beginPath(); context.moveTo(x - 4, y - 4); context.lineTo(x + 4, y + 4); context.moveTo(x + 4, y - 4); context.lineTo(x - 4, y + 4); context.stroke(); }
+    if (event.index === selectedGrowthMechanismEventId) {
+      context.strokeStyle = "rgba(255,255,255,.92)"; context.lineWidth = 1.5;
+      context.beginPath(); context.arc(x, y, 8, 0, TAU); context.stroke();
+    }
   });
   context.fillStyle = "rgba(151,194,183,.55)"; context.font = "10px ui-monospace, monospace";
   context.fillText(`${projection.labels[0]} →`, width - 48, height - 8); context.fillText(`${projection.labels[1]} ↑`, 8, 14);
+  growthMechanismCanvas.setAttribute("aria-label", growthMechanismEvents.length
+    ? `${projection.labels.join("–")} projection of ${growthMechanismEvents.length} retained growth actions; selected action ${growthMechanismEvents.findIndex((event) => event.index === selectedGrowthMechanismEventId) + 1}`
+    : "Projection of accepted and rejected growth actions by local geometric environment; no decisions retained");
 }
 
 function renderGrowthUncertaintyBudget() {
@@ -8413,6 +8532,7 @@ function renderGrowthMechanismAudit() {
     ? `${accepted} accepted · ${rejected} rejected · ${audit.eventsStored}/${audit.eventsObserved} mapped · ${microstructureCouplingLabel()}`
     : `no decisions yet · ${microstructureCouplingLabel()}`;
   drawGrowthMechanismMap();
+  renderGrowthMechanismDetail();
   growthMechanismLedger.replaceChildren();
   Object.entries(GROWTH_EVENT_PHENOTYPES).forEach(([id, record]) => {
     const count = audit.byPhenotype[id];
@@ -10268,7 +10388,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-271",
+      buildId: "20260827-272",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -12546,7 +12666,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-271" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-272" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -22274,8 +22394,11 @@ function resetCounters() {
   frozenPhysicsPreflightManifest = null;
   growthMechanismEvents = [];
   growthMechanismTotals = {};
+  growthMechanismEventSerial = 0;
   growthPoseAuditsByLeap = new Map();
   growthMechanismProjectionKey = "xy";
+  selectedGrowthMechanismEventId = null;
+  growthMechanismScreenPoints = [];
   markingSelection = null;
   liveOrderCache = { key: "", result: null };
   liveOrderHistory = [];
@@ -30580,6 +30703,33 @@ mdScalingSelect.addEventListener("change", () => {
     candidate.setAttribute("aria-pressed", String(candidate === button)));
   drawGrowthMechanismMap();
 }));
+growthMechanismCanvas.addEventListener("click", (event) => {
+  if (!growthMechanismScreenPoints.length) return;
+  const bounds = growthMechanismCanvas.getBoundingClientRect();
+  const x = (event.clientX - bounds.left) * growthMechanismCanvas.width / Math.max(1, bounds.width);
+  const y = (event.clientY - bounds.top) * growthMechanismCanvas.height / Math.max(1, bounds.height);
+  const nearest = growthMechanismScreenPoints.map((point) => ({ ...point,
+    distance: Math.hypot((point.x - x) * bounds.width / growthMechanismCanvas.width,
+      (point.y - y) * bounds.height / growthMechanismCanvas.height),
+  })).sort((first, second) => first.distance - second.distance || first.eventId - second.eventId)[0];
+  if (nearest?.distance <= 14) selectGrowthMechanismEvent(nearest.eventId);
+});
+function cycleGrowthMechanismSelection(offset) {
+  if (!growthMechanismEvents.length) return;
+  const current = Math.max(0, growthMechanismEvents.findIndex((event) =>
+    event.index === selectedGrowthMechanismEventId));
+  const next = Math.max(0, Math.min(growthMechanismEvents.length - 1, current + offset));
+  selectGrowthMechanismEvent(growthMechanismEvents[next].index);
+}
+growthMechanismPrevious.addEventListener("click", () => cycleGrowthMechanismSelection(-1));
+growthMechanismNext.addEventListener("click", () => cycleGrowthMechanismSelection(1));
+growthMechanismCanvas.addEventListener("keydown", (event) => {
+  if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key) || !growthMechanismEvents.length) return;
+  event.preventDefault();
+  if (event.key === "Home") selectGrowthMechanismEvent(growthMechanismEvents[0].index);
+  else if (event.key === "End") selectGrowthMechanismEvent(growthMechanismEvents.at(-1).index);
+  else cycleGrowthMechanismSelection(event.key === "ArrowLeft" ? -1 : 1);
+});
 [markingToggle, bondToggle, frontierToggle, displacementToggle, forceToggle, localConstraintMismatchToggle, relaxationDisplacementToggle,
   relaxationLocalEnvironmentToggle]
   .forEach((input) => input.addEventListener("change", rebuildWorld));

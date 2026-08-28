@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Contract for the post-decision spatial growth-event audit."""
+"""Contract for the post-decision spatial growth-event and branch microscope."""
 
 from pathlib import Path
 
@@ -12,12 +12,16 @@ CSS = (APP_DIR / "style.css").read_text()
 README = (APP_DIR / "README.md").read_text()
 
 
-def test_growth_event_map_is_spatial_diagnostic_and_never_a_ranker() -> None:
+def test_growth_event_map_and_branch_microscope_are_read_only_diagnostics() -> None:
     for element_id in (
         "growthMechanismSection",
         "growthMechanismState",
         "growthMechanismProjection",
         "growthMechanismCanvas",
+        "growthMechanismDetailState",
+        "growthMechanismDetail",
+        "growthMechanismPrevious",
+        "growthMechanismNext",
         "growthMechanismLedger",
         "growthMechanismBoundary",
         "growthUncertaintyState",
@@ -44,9 +48,11 @@ def test_growth_event_map_is_spatial_diagnostic_and_never_a_ranker() -> None:
     assert "eventsObserved" in APP
     assert "maximumStoredEvents: 96" in APP
     assert "coordinatesEmbedded: false" in APP
+    assert "interactiveSelectionSerialized: false" in APP
+    assert "interactiveSelectionUsedForSearch: false" in APP
     assert "usedForCandidateEnumeration: false" in APP
     assert "usedForAdmission: false" in APP
-    assert "usedForBranchRanking: false" in APP
+    assert "usedForBranchRanking: activeMicrostructureCouplingWeight() > 0" in APP
     assert "defectLabelsAssigned: false" in APP
     assert "physicalMechanismAssigned: false" in APP
     assert "formationEnergyInferred: false" in APP
@@ -69,12 +75,30 @@ def test_growth_event_map_is_spatial_diagnostic_and_never_a_ranker() -> None:
     assert "trials agree" in APP
     assert "confidence unclaimed" in APP
     assert "statisticalConfidenceClaimed: false" in APP
+    assert "function selectedGrowthMechanismEvent()" in APP
+    assert "function selectGrowthMechanismEvent(eventId, synchronizeHistory = true)" in APP
+    assert "function growthMechanismGateSummary(event)" in APP
+    assert "function renderGrowthMechanismDetail()" in APP
+    assert 'selectedLeapIndex = retainedIndex' in APP
+    assert "the structural-history panels follow its retained leap without rewinding the live atoms" in APP
+    assert "This forensic view never changes rank, admission, or geometry." in APP
+    assert 'growthMechanismCanvas.addEventListener("click"' in APP
+    assert 'growthMechanismCanvas.addEventListener("keydown"' in APP
+    assert 'event.key === "Home"' in APP
+    assert "growthMechanismScreenPoints.push" in APP
+    selector = APP[APP.index("function selectGrowthMechanismEvent("):
+                   APP.index("function growthMechanismGateSummary(")]
+    for forbidden in ("atoms =", "placedClusters =", "materializeCandidate(",
+                      "evaluateCandidate(", "performOffLatticeEvent"):
+        assert forbidden not in selector
     accepted_record = "recordGrowthMechanismEvent(candidate, evaluation, true, parentDepth + 1,"
-    accepted_materialize = "const placement = materializeCandidate(candidate, evaluation)"
+    accepted_materialize = "const placement = materializeCandidate(candidate, evaluation, leapCreationContext)"
     assert APP.index(accepted_record) < APP.index(accepted_materialize, APP.index(accepted_record))
 
     assert ".growth-mechanism-section" in CSS
     assert ".growth-mechanism-ledger" in CSS
+    assert ".growth-decision-microscope" in CSS
+    assert ".growth-decision-grid" in CSS
     assert ".growth-uncertainty-budget" in CSS
     assert "spatial growth-event audit" in README
     assert "not automatic defect identities" in README
@@ -86,5 +110,5 @@ def test_growth_event_map_is_spatial_diagnostic_and_never_a_ranker() -> None:
 
 
 if __name__ == "__main__":
-    test_growth_event_map_is_spatial_diagnostic_and_never_a_ranker()
-    print("spatial growth-event audit contract: passed")
+    test_growth_event_map_and_branch_microscope_are_read_only_diagnostics()
+    print("spatial growth-event and branch-microscope contract: passed")

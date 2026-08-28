@@ -1,5 +1,32 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 272 · branch-level growth decision microscope
+
+The Stage 4 spatial event map is now an action-level forensic instrument rather
+than only an aggregate accepted/rejected picture. Each retained dot or cross is
+selectable by pointer, previous/next controls, or keyboard. The detail surface
+shows the exact whole-cluster fate, post-decision geometric phenotype, shared
+and emitted sites, tree depth, input-derived neighborhood roles, measured
+pair-distance uncertainty, resolved isometry tolerance, contact clearance,
+overlap residual, active GCTS margin/holdout loss, and the bounded proper-pose
+sensitivity audit.
+
+Selecting an action also selects its retained structural leap in the Build 271
+history microscope. That synchronization updates evidence panels only: live
+atoms, committed placements, frontier order, and search counters are unchanged.
+The map retains at most 96 action records and the observed/stored denominator is
+visible. Receipts keep the coordinate-free gate signals and uncertainty record
+but omit map coordinates; selection is not serialized as scientific evidence.
+
+In the default NaCl browser regression, one target-free leap still produces
+419 live sites from the 216-site observed nucleus. The panel maps 96 of 755
+decisions, defaults to an accepted action, and exposes a representative commit
+with six shared sites, one emitted site, 0.564 Å minimum learned-exclusion
+clearance, zero shared-site residual, a 0.269 marking margin, and 12/12 bounded
+pose trials agreeing. Keyboard selection of earlier/later actions leaves the
+419-site live state untouched. These records explain deterministic geometric
+decisions; they are not energies, mechanisms, probabilities, rates, or time.
+
 ## Build 271 · certified structural-history microscope
 
 Stage 4 now reuses the reversible process timeline as a read-only navigator
