@@ -1,5 +1,33 @@
 # Recursive GCTS benchmark for material growth
 
+### Matched local-action comparison (Build 274)
+
+The action microscope can pin one retained decision as A and compare it with a
+manually selected B or the deterministically nearest opposite fate. The match
+descriptor is built after decision freeze from bounded local support counts,
+child/context chemistry fractions, supplied-configuration halo fractions,
+proper-rotation-invariant child pair-distance and context-radius quantiles,
+contact/overlap residuals, GCTS margin, and tree depth. It explicitly excludes
+the outcome, gate vector, reason string, action identity, and absolute pose.
+Outcome enters only as the eligibility predicate for “nearest opposite.”
+
+The panel displays both fates and gate explanations only after selection, plus
+support, chemistry, halo, clearance, residual, marking, retained-state, and the
+three largest descriptor differences. A dashed gold ring retains A on the
+spatial map while the ordinary white ring follows B. The selector and renderer
+contain no evaluation, materialization, atom replacement, placed-cluster
+replacement, or search call. Receipts explicitly state that neither the pair
+nor interactive selection is serialized or used for search.
+
+On the default NaCl action ledger, accepted A64 and redundant-cover B91 are the
+nearest opposite pair at distance 0.0428 over 29 invariant components. Both
+children are `Cl1 · Na6` seven-site supports; the comparison separates `6/1`
+from `7/0` shared/novel sites and identifies contact clearance, depth, and
+shared-support fraction as the largest descriptor differences. The explicit
+material remains at 419 sites. This within-ledger pairing is descriptive and
+correlated—not a physical counterfactual, causal estimate, barrier, energy,
+probability, rate, or clock.
+
 ### Candidate-centred attachment geometry (Build 273)
 
 The selected-action microscope now reconstructs a display-only local section

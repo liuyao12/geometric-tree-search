@@ -811,6 +811,11 @@ const growthMechanismLocalState = $("growthMechanismLocalState");
 const growthMechanismLocalCanvas = $("growthMechanismLocalCanvas");
 const growthMechanismPrevious = $("growthMechanismPrevious");
 const growthMechanismNext = $("growthMechanismNext");
+const growthMechanismPin = $("growthMechanismPin");
+const growthMechanismNearestOpposite = $("growthMechanismNearestOpposite");
+const growthMechanismComparisonClear = $("growthMechanismComparisonClear");
+const growthMechanismComparisonState = $("growthMechanismComparisonState");
+const growthMechanismComparison = $("growthMechanismComparison");
 const growthMechanismLedger = $("growthMechanismLedger");
 const growthMechanismBoundary = $("growthMechanismBoundary");
 const growthUncertaintyState = $("growthUncertaintyState");
@@ -1593,6 +1598,8 @@ const MAXIMUM_POSE_AUDITS_PER_LEAP = 64;
 const MAXIMUM_FRONTIER_POSE_AUDITS = 64;
 let growthMechanismProjectionKey = "xy";
 let selectedGrowthMechanismEventId = null;
+let pinnedGrowthMechanismEventId = null;
+let growthMechanismComparisonMode = "manual";
 let growthMechanismScreenPoints = [];
 let markingSelection = null;
 let liveOrderCache = { key: "", result: null };
@@ -8332,6 +8339,7 @@ function recordGrowthMechanismEvent(candidate, evaluation, accepted, depth, froz
       selectedGrowthMechanismEventId = growthMechanismEvents.findLast((event) => event.accepted)?.index
         || growthMechanismEvents.at(-1)?.index || null;
     }
+    if (removed?.index === pinnedGrowthMechanismEventId) pinnedGrowthMechanismEventId = null;
   }
 }
 
@@ -8359,6 +8367,12 @@ function growthMechanismAudit() {
     localGeometryDisplayTargetUsed: growthMechanismEvents.some((event) => event.localGeometry?.targetUsed),
     interactiveSelectionSerialized: false,
     interactiveSelectionUsedForSearch: false,
+    interactiveComparisonSerialized: false,
+    matchedActionPairUsedForSearch: false,
+    comparisonDescriptorOutcomeIncluded: false,
+    comparisonDescriptorGateSignalsIncluded: false,
+    comparisonDescriptorAbsolutePositionIncluded: false,
+    comparisonDescriptorProperRotationInvariant: true,
     usedForCandidateEnumeration: false,
     usedForAdmission: false,
     usedForBranchRanking: activeMicrostructureCouplingWeight() > 0,
@@ -8382,10 +8396,100 @@ function selectedGrowthMechanismEvent() {
   return selected;
 }
 
-function selectGrowthMechanismEvent(eventId, synchronizeHistory = true) {
+function pinnedGrowthMechanismEvent() {
+  const pinned = growthMechanismEvents.find((event) => event.index === pinnedGrowthMechanismEventId) || null;
+  if (!pinned && pinnedGrowthMechanismEventId !== null) pinnedGrowthMechanismEventId = null;
+  return pinned;
+}
+
+function growthActionSpeciesFractions(sites = []) {
+  const counts = sites.reduce((map, site) => map.set(site.species, (map.get(site.species) || 0) + 1), new Map());
+  return new Map([...counts.entries()].map(([species, count]) => [species, count / Math.max(1, sites.length)]));
+}
+
+function growthActionQuantiles(values) {
+  const sorted = values.filter(Number.isFinite).sort((first, second) => first - second);
+  return [0, .25, .5, .75, 1].map((fraction) => sorted.length
+    ? sorted[Math.min(sorted.length - 1, Math.floor(fraction * (sorted.length - 1)))] : 0);
+}
+
+function growthActionComparisonDescriptor(event) {
+  const geometry = event.localGeometry || { candidateSites: [], contextSites: [] };
+  const features = new Map();
+  const boundedCount = (count, maximum) => Math.min(1, Math.log1p(count) / Math.log1p(maximum));
+  features.set("child site count", boundedCount(geometry.candidateSites.length, 64));
+  features.set("shared support fraction", event.sharedSites / Math.max(1, geometry.candidateSites.length));
+  features.set("novel proposal fraction", event.emittedSites / Math.max(1, geometry.candidateSites.length));
+  features.set("occupied context count", boundedCount(geometry.contextSites.length, 48));
+  features.set("tree depth", boundedCount(event.depth, 12));
+  const haloTotal = Object.values(event.nearbyRoleCounts || {}).reduce((sum, count) => sum + count, 0);
+  Object.entries(event.nearbyRoleCounts || {}).forEach(([role, count]) =>
+    features.set(`halo ${role}`, count / Math.max(1, haloTotal)));
+  growthActionSpeciesFractions(geometry.candidateSites).forEach((fraction, species) =>
+    features.set(`child chemistry ${species}`, fraction));
+  growthActionSpeciesFractions(geometry.contextSites).forEach((fraction, species) =>
+    features.set(`context chemistry ${species}`, fraction));
+  const pairDistances = [];
+  for (let first = 0; first < geometry.candidateSites.length; first++) {
+    for (let second = first + 1; second < geometry.candidateSites.length; second++) {
+      pairDistances.push(Math.hypot(...geometry.candidateSites[first].offsetAngstrom.map((value, axis) =>
+        value - geometry.candidateSites[second].offsetAngstrom[axis])) / Math.max(referenceSpacingA, 1e-9));
+    }
+  }
+  growthActionQuantiles(pairDistances).forEach((value, index) =>
+    features.set(`child pair q${index}`, Math.min(1, value / 4)));
+  growthActionQuantiles(geometry.contextSites.map((site) =>
+    Math.hypot(...site.offsetAngstrom) / Math.max(referenceSpacingA, 1e-9))).forEach((value, index) =>
+    features.set(`context radius q${index}`, Math.min(1, value / 4)));
+  const uncertainty = event.uncertainty || {};
+  features.set("contact clearance", Number.isFinite(uncertainty.minimumContactClearanceAngstrom)
+    ? .5 + .5 * Math.tanh(uncertainty.minimumContactClearanceAngstrom / Math.max(referenceSpacingA, 1e-9)) : 0);
+  features.set("shared-site residual", Number.isFinite(uncertainty.maximumOverlapResidualAngstrom)
+    ? Math.tanh(uncertainty.maximumOverlapResidualAngstrom
+      / Math.max(uncertainty.resolvedMetricToleranceAngstrom || .01, .01)) : 0);
+  features.set("GCTS margin", Number.isFinite(uncertainty.markingMargin)
+    ? .5 + .5 * Math.tanh(uncertainty.markingMargin) : .5);
+  return {
+    features,
+    outcomeIncluded: false,
+    gateSignalsIncluded: false,
+    absolutePositionIncluded: false,
+    properRotationInvariant: true,
+    targetUsed: geometry.targetUsed,
+  };
+}
+
+function growthActionDescriptorDistance(first, second) {
+  const left = growthActionComparisonDescriptor(first), right = growthActionComparisonDescriptor(second);
+  const keys = [...new Set([...left.features.keys(), ...right.features.keys()])].sort();
+  const differences = keys.map((key) => ({ key,
+    difference: Math.abs((left.features.get(key) || 0) - (right.features.get(key) || 0)),
+  })).sort((a, b) => b.difference - a.difference || a.key.localeCompare(b.key));
+  return {
+    distance: differences.reduce((sum, record) => sum + record.difference, 0) / Math.max(1, differences.length),
+    components: keys.length,
+    differences,
+    outcomeIncluded: false,
+    gateSignalsIncluded: false,
+    absolutePositionIncluded: false,
+    properRotationInvariant: true,
+    targetUsed: left.targetUsed || right.targetUsed,
+  };
+}
+
+function nearestOppositeGrowthAction(reference) {
+  if (!reference) return null;
+  return growthMechanismEvents.filter((event) => event.accepted !== reference.accepted)
+    .map((event) => ({ event, comparison: growthActionDescriptorDistance(reference, event) }))
+    .sort((first, second) => first.comparison.distance - second.comparison.distance
+      || first.event.index - second.event.index)[0] || null;
+}
+
+function selectGrowthMechanismEvent(eventId, synchronizeHistory = true, comparisonMode = "manual") {
   const event = growthMechanismEvents.find((entry) => entry.index === eventId);
   if (!event) return;
   selectedGrowthMechanismEventId = event.index;
+  growthMechanismComparisonMode = comparisonMode;
   if (synchronizeHistory) {
     const retainedIndex = leapHistory.findIndex((entry) => entry.index === event.leapIndex);
     if (retainedIndex >= 0) {
@@ -8508,12 +8612,83 @@ function drawGrowthMechanismLocalGeometry(event = selectedGrowthMechanismEvent()
   growthMechanismLocalCanvas.setAttribute("aria-label", `Candidate-centred tilted ${projection.labels.join("–")} projection with depth cue: ${geometry.candidateSites.length} child sites, ${shared} shared, ${fresh} novel, ${blocked} blocked, and ${geometry.contextSites.length}${geometry.contextTruncated ? " or more" : ""} occupied context sites`);
 }
 
+function growthActionChemistryLabel(event) {
+  const sites = event.localGeometry?.candidateSites || [];
+  const counts = sites.reduce((map, site) => map.set(site.species, (map.get(site.species) || 0) + 1), new Map());
+  return [...counts.entries()].sort(([first], [second]) => first.localeCompare(second))
+    .map(([species, count]) => `${species}${count}`).join(" · ") || "unresolved";
+}
+
+function growthActionHaloLabel(event) {
+  return Object.entries(event.nearbyRoleCounts || {}).filter(([, count]) => count > 0)
+    .map(([role, count]) => `${role} ${count}`).join(" · ") || "no tagged roles";
+}
+
+function renderGrowthMechanismComparison() {
+  const selected = selectedGrowthMechanismEvent();
+  const pinned = pinnedGrowthMechanismEvent();
+  growthMechanismComparison.replaceChildren();
+  growthMechanismPin.disabled = !selected;
+  growthMechanismComparisonClear.disabled = !pinned;
+  const opposite = nearestOppositeGrowthAction(pinned || selected);
+  growthMechanismNearestOpposite.disabled = !opposite;
+  growthMechanismPin.textContent = pinned?.index === selected?.index ? "A pinned" : "pin selected as A";
+  if (!pinned) {
+    growthMechanismComparisonState.textContent = "pin an action as A";
+    const empty = document.createElement("p");
+    empty.textContent = selected
+      ? "Pin the selected action, then navigate to B or jump to its nearest opposite fate. Matching uses local geometry and chemistry—not the outcome label or gate reason."
+      : "Run one structural leap to compare retained actions.";
+    growthMechanismComparison.appendChild(empty);
+    return;
+  }
+  const pinnedPosition = growthMechanismEvents.findIndex((event) => event.index === pinned.index) + 1;
+  if (!selected || selected.index === pinned.index) {
+    growthMechanismComparisonState.textContent = `A = action ${pinnedPosition} · select B`;
+    const empty = document.createElement("p");
+    empty.textContent = "Reference A is pinned. Select another map mark, use previous/next, or choose nearest opposite; the comparison is display-only.";
+    growthMechanismComparison.appendChild(empty);
+    return;
+  }
+  const selectedPosition = growthMechanismEvents.findIndex((event) => event.index === selected.index) + 1;
+  const comparison = growthActionDescriptorDistance(pinned, selected);
+  const leftGate = growthMechanismGateSummary(pinned), rightGate = growthMechanismGateSummary(selected);
+  const leftUncertainty = pinned.uncertainty || {}, rightUncertainty = selected.uncertainty || {};
+  const numeric = (value, digits = 3) => Number.isFinite(value) ? value.toFixed(digits) : "—";
+  growthMechanismComparisonState.textContent = `A${pinnedPosition} ↔ B${selectedPosition} · ${growthMechanismComparisonMode === "nearest-opposite" ? "nearest opposite fate" : "manual pair"}`;
+  const grid = document.createElement("div"); grid.className = "growth-decision-grid";
+  const rows = [
+    ["fate", `${pinned.accepted ? "accepted" : "rejected"} → ${selected.accepted ? "accepted" : "rejected"}`, `${leftGate.title} → ${rightGate.title}`],
+    ["descriptor distance", comparison.distance.toFixed(4), `${comparison.components} outcome-blind invariant components · lower is closer`],
+    ["child / support", `${pinned.localGeometry?.candidateSites.length || 0} · ${pinned.sharedSites}/${pinned.emittedSites} → ${selected.localGeometry?.candidateSites.length || 0} · ${selected.sharedSites}/${selected.emittedSites}`, "child sites · shared / proposed novel"],
+    ["child chemistry", `${growthActionChemistryLabel(pinned)} → ${growthActionChemistryLabel(selected)}`, "exact element-count comparison"],
+    ["input halo", `${growthActionHaloLabel(pinned)} → ${growthActionHaloLabel(selected)}`, "roles derived from the supplied configuration"],
+    ["contact clearance", `${numeric(leftUncertainty.minimumContactClearanceAngstrom)} → ${numeric(rightUncertainty.minimumContactClearanceAngstrom)} Å`, "minimum distance above learned colored exclusion"],
+    ["shared residual", `${numeric(leftUncertainty.maximumOverlapResidualAngstrom)} → ${numeric(rightUncertainty.maximumOverlapResidualAngstrom)} Å`, "maximum coincident-site mismatch"],
+    ["GCTS margin", `${numeric(leftUncertainty.markingMargin)} → ${numeric(rightUncertainty.markingMargin)}`, `${numeric(leftUncertainty.markingHoldoutLoss)} → ${numeric(rightUncertainty.markingHoldoutLoss)} heldout loss`],
+    ["retained state", `leap ${pinned.leapIndex} / depth ${pinned.depth} → leap ${selected.leapIndex} / depth ${selected.depth}`, comparison.targetUsed ? "at least one display inherited known-window guidance" : "both actions target-free"],
+  ];
+  rows.forEach(([label, value, detail]) => {
+    const cell = document.createElement("span");
+    const small = document.createElement("small"); small.textContent = label;
+    const strong = document.createElement("strong"); strong.textContent = value;
+    const em = document.createElement("em"); em.textContent = detail;
+    cell.append(small, strong, em); grid.appendChild(cell);
+  });
+  const leadingDifferences = comparison.differences.filter((record) => record.difference > 1e-9).slice(0, 3)
+    .map((record) => `${record.key} Δ${record.difference.toFixed(3)}`).join(" · ") || "descriptor-identical";
+  const explanation = document.createElement("p"); explanation.className = "growth-decision-explanation";
+  explanation.textContent = `Largest descriptor separations: ${leadingDifferences}. Opposite-fate matching uses the outcome only to define the comparison pool; distance excludes fate, gate signals, reason, action ID, and absolute position. This is a descriptive matched pair from a capped, correlated action ledger—not a physical counterfactual, causal effect, energy difference, transition probability, rate, or time.`;
+  growthMechanismComparison.append(grid, explanation);
+}
+
 function renderGrowthMechanismDetail() {
   const event = selectedGrowthMechanismEvent();
   growthMechanismDetail.replaceChildren();
   drawGrowthMechanismLocalGeometry(event);
   growthMechanismPrevious.disabled = growthMechanismEvents.length < 2;
   growthMechanismNext.disabled = growthMechanismEvents.length < 2;
+  renderGrowthMechanismComparison();
   if (!event) {
     growthMechanismDetailState.textContent = "awaiting a decision";
     const empty = document.createElement("p");
@@ -8592,6 +8767,10 @@ function drawGrowthMechanismMap() {
     if (event.index === selectedGrowthMechanismEventId) {
       context.strokeStyle = "rgba(255,255,255,.92)"; context.lineWidth = 1.5;
       context.beginPath(); context.arc(x, y, 8, 0, TAU); context.stroke();
+    }
+    if (event.index === pinnedGrowthMechanismEventId) {
+      context.save(); context.setLineDash([3, 2]); context.strokeStyle = "rgba(255,193,105,.95)"; context.lineWidth = 1.5;
+      context.beginPath(); context.arc(x, y, 11, 0, TAU); context.stroke(); context.restore();
     }
   });
   context.fillStyle = "rgba(151,194,183,.55)"; context.font = "10px ui-monospace, monospace";
@@ -10514,7 +10693,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260827-273",
+      buildId: "20260827-274",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -12792,7 +12971,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260827-273" },
+    application: { name: "Materials Growth Lab", buildId: "20260827-274" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -22524,6 +22703,8 @@ function resetCounters() {
   growthPoseAuditsByLeap = new Map();
   growthMechanismProjectionKey = "xy";
   selectedGrowthMechanismEventId = null;
+  pinnedGrowthMechanismEventId = null;
+  growthMechanismComparisonMode = "manual";
   growthMechanismScreenPoints = [];
   markingSelection = null;
   liveOrderCache = { key: "", result: null };
@@ -30850,6 +31031,25 @@ function cycleGrowthMechanismSelection(offset) {
 }
 growthMechanismPrevious.addEventListener("click", () => cycleGrowthMechanismSelection(-1));
 growthMechanismNext.addEventListener("click", () => cycleGrowthMechanismSelection(1));
+growthMechanismPin.addEventListener("click", () => {
+  const selected = selectedGrowthMechanismEvent();
+  if (!selected) return;
+  pinnedGrowthMechanismEventId = selected.index;
+  growthMechanismComparisonMode = "manual";
+  renderGrowthMechanismAudit();
+});
+growthMechanismNearestOpposite.addEventListener("click", () => {
+  const reference = pinnedGrowthMechanismEvent() || selectedGrowthMechanismEvent();
+  if (!reference) return;
+  if (pinnedGrowthMechanismEventId === null) pinnedGrowthMechanismEventId = reference.index;
+  const nearest = nearestOppositeGrowthAction(reference);
+  if (nearest) selectGrowthMechanismEvent(nearest.event.index, true, "nearest-opposite");
+});
+growthMechanismComparisonClear.addEventListener("click", () => {
+  pinnedGrowthMechanismEventId = null;
+  growthMechanismComparisonMode = "manual";
+  renderGrowthMechanismAudit();
+});
 growthMechanismCanvas.addEventListener("keydown", (event) => {
   if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key) || !growthMechanismEvents.length) return;
   event.preventDefault();

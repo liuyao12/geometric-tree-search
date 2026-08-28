@@ -24,6 +24,11 @@ def test_growth_event_map_and_branch_microscope_are_read_only_diagnostics() -> N
         "growthMechanismLocalCanvas",
         "growthMechanismPrevious",
         "growthMechanismNext",
+        "growthMechanismPin",
+        "growthMechanismNearestOpposite",
+        "growthMechanismComparisonClear",
+        "growthMechanismComparisonState",
+        "growthMechanismComparison",
         "growthMechanismLedger",
         "growthMechanismBoundary",
         "growthUncertaintyState",
@@ -57,6 +62,12 @@ def test_growth_event_map_and_branch_microscope_are_read_only_diagnostics() -> N
     assert "localGeometryDisplayTargetUsed:" in APP
     assert "interactiveSelectionSerialized: false" in APP
     assert "interactiveSelectionUsedForSearch: false" in APP
+    assert "interactiveComparisonSerialized: false" in APP
+    assert "matchedActionPairUsedForSearch: false" in APP
+    assert "comparisonDescriptorOutcomeIncluded: false" in APP
+    assert "comparisonDescriptorGateSignalsIncluded: false" in APP
+    assert "comparisonDescriptorAbsolutePositionIncluded: false" in APP
+    assert "comparisonDescriptorProperRotationInvariant: true" in APP
     assert "usedForCandidateEnumeration: false" in APP
     assert "usedForAdmission: false" in APP
     assert "usedForBranchRanking: activeMicrostructureCouplingWeight() > 0" in APP
@@ -83,9 +94,13 @@ def test_growth_event_map_and_branch_microscope_are_read_only_diagnostics() -> N
     assert "confidence unclaimed" in APP
     assert "statisticalConfidenceClaimed: false" in APP
     assert "function selectedGrowthMechanismEvent()" in APP
-    assert "function selectGrowthMechanismEvent(eventId, synchronizeHistory = true)" in APP
+    assert 'function selectGrowthMechanismEvent(eventId, synchronizeHistory = true, comparisonMode = "manual")' in APP
     assert "function growthMechanismGateSummary(event)" in APP
     assert "function renderGrowthMechanismDetail()" in APP
+    assert "function growthActionComparisonDescriptor(event)" in APP
+    assert "function growthActionDescriptorDistance(first, second)" in APP
+    assert "function nearestOppositeGrowthAction(reference)" in APP
+    assert "function renderGrowthMechanismComparison()" in APP
     assert 'selectedLeapIndex = retainedIndex' in APP
     assert "the structural-history panels follow its retained leap without rewinding the live atoms" in APP
     assert "This forensic view never changes rank, admission, or geometry." in APP
@@ -109,6 +124,17 @@ def test_growth_event_map_and_branch_microscope_are_read_only_diagnostics() -> N
     assert "? outerIndices : geometry.candidateSites.map" in APP
     assert "site.offsetAngstrom[depth] * .28" in APP
     assert "with depth cue" in APP
+    descriptor = APP[APP.index("function growthActionComparisonDescriptor("):
+                     APP.index("function growthActionDescriptorDistance(")]
+    for forbidden in ("event.accepted", "event.gateSignals", "event.reason", "event.position"):
+        assert forbidden not in descriptor
+    comparison = APP[APP.index("function renderGrowthMechanismComparison("):
+                     APP.index("function renderGrowthMechanismDetail(")]
+    for forbidden in ("materializeCandidate(", "evaluateCandidate(", "performOffLatticeEvent",
+                      "atoms =", "placedClusters ="):
+        assert forbidden not in comparison
+    assert "distance excludes fate, gate signals, reason, action ID, and absolute position" in APP
+    assert "descriptive matched pair from a capped, correlated action ledger" in APP
     selector = APP[APP.index("function selectGrowthMechanismEvent("):
                    APP.index("function growthMechanismGateSummary(")]
     for forbidden in ("atoms =", "placedClusters =", "materializeCandidate(",
@@ -124,6 +150,7 @@ def test_growth_event_map_and_branch_microscope_are_read_only_diagnostics() -> N
     assert ".growth-decision-grid" in CSS
     assert ".growth-local-geometry" in CSS
     assert ".growth-local-legend" in CSS
+    assert ".growth-action-comparison" in CSS
     assert ".growth-uncertainty-budget" in CSS
     assert "spatial growth-event audit" in README
     assert "not automatic defect identities" in README

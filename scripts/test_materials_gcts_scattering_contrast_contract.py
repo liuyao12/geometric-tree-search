@@ -46,8 +46,8 @@ def test_receipt_and_ledger_preserve_nonclaims_and_history_basis():
 
 
 def test_build_169_is_retained_in_current_release():
-    assert 'buildId: "20260827-273"' in APP
-    assert 'app.js?v=20260827-273' in HTML
+    assert 'buildId: "20260827-274"' in APP
+    assert 'app.js?v=20260827-274' in HTML
     assert 'structure-observables.js?v=20260827-7' in APP
     assert 'evidence-atlas.js?v=20260827-24' in HTML
     assert "chemical sublattice order" in ATLAS

@@ -1,5 +1,30 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 274 · matched local-action comparison
+
+The Stage 4 decision microscope now supports a read-only action A↔B study.
+Scientists can pin any retained action as A, navigate manually to B, or request
+the nearest opposite fate. The global map marks A with a dashed gold ring and B
+with the existing white selection ring; clear restores the single-action view.
+
+Matching uses 29 or more outcome-blind, coordinate-free components assembled
+from child/support size, candidate and context chemistry fractions, input-role
+halo fractions, proper-rotation-invariant child pair distances and context
+radii, contact clearance, shared-site residual, GCTS margin, and tree depth.
+Fate is used only to restrict the optional opposite-outcome pool. The distance
+contains no acceptance label, gate signal, reason, action ID, or absolute
+position. The comparison reports the two gate outcomes and largest descriptor
+separations after the pair is chosen.
+
+The default NaCl leap pairs retained accepted action A64 with rejected action
+B91 at descriptor distance 0.0428. Both have `Cl1 · Na6` child chemistry and
+seven child sites; A has `6 shared / 1 novel`, while B is a `7 / 0` redundant
+cover. Their largest displayed separations are contact clearance, tree depth,
+and shared-support fraction. The live structure remains at 419 sites. This is
+a descriptive match from one capped, correlated action ledger—not a physical
+counterfactual, causal effect, energy difference, transition probability,
+rate, or time. Pair selection is neither serialized nor used by search.
+
 ## Build 273 · candidate-centred attachment geometry
 
 Each selected Stage 4 branch now has a bounded local geometry view beneath the

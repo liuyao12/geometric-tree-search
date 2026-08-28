@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260827-273">
+  <link rel="stylesheet" href="./style.css?v=20260827-274">
   <script type="importmap">
     {
       "imports": {
@@ -1930,6 +1930,7 @@
             <header><span><small>selected tree action</small><strong id="growthMechanismDetailState">awaiting a decision</strong></span><div><button id="growthMechanismPrevious" type="button" aria-label="Inspect previous retained action">previous</button><button id="growthMechanismNext" type="button" aria-label="Inspect next retained action">next</button></div></header>
             <figure class="growth-local-geometry"><figcaption><span><small>candidate-centred attachment geometry</small><strong id="growthMechanismLocalState">no action selected</strong></span><span class="growth-local-legend"><i class="context"></i>occupied context <i class="shared"></i>shared support <i class="fresh"></i>novel site <i class="blocked"></i>blocked proposal</span></figcaption><canvas id="growthMechanismLocalCanvas" width="600" height="190" role="img" aria-label="Candidate-centred local attachment geometry"></canvas></figure>
             <article id="growthMechanismDetail" aria-live="polite"><p>Run one structural leap, then select an accepted dot or rejected cross to inspect its local geometry, gate outcome, uncertainty, and retained-state provenance.</p></article>
+            <section class="growth-action-comparison" aria-label="Compare two retained growth actions"><header><span><small>matched local-action comparison</small><strong id="growthMechanismComparisonState">pin an action as A</strong></span><div><button id="growthMechanismPin" type="button">pin selected as A</button><button id="growthMechanismNearestOpposite" type="button">nearest opposite</button><button id="growthMechanismComparisonClear" type="button">clear</button></div></header><article id="growthMechanismComparison" aria-live="polite"><p>Pin one retained action, then navigate to another action B or ask for the nearest opposite fate under the outcome-blind local descriptor.</p></article></section>
           </section>
           <div id="growthMechanismLedger" class="growth-mechanism-ledger"></div>
           <div class="growth-uncertainty-heading"><small>latest leap uncertainty budget</small><span id="growthUncertaintyState">awaiting a decision</span></div>
@@ -2007,7 +2008,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260827-273"></script>
+  <script type="module" src="./app.js?v=20260827-274"></script>
   <script type="module" src="./evidence-atlas.js?v=20260827-24"></script>
 </body>
 </html>
