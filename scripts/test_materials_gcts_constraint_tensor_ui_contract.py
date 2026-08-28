@@ -10,7 +10,7 @@ README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
 def test_constraint_tensor_is_an_end_to_end_physics_channel():
     fragments = (
-        'from "./geometric-constraint-tensor.mjs?v=20260828-308"',
+        'from "./geometric-constraint-tensor.mjs?v=20260828-309"',
         'scoreTerm("constraint-tensor"',
         'activeConstraintTensorWeight() * evaluation.constraintTensor.score',
         'geometricConstraintTensorRanking',

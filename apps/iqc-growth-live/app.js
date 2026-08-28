@@ -36,15 +36,15 @@ import { buildSettlingMaterialResponseHistory, buildSettlingMaterialResponseMatr
   SETTLING_MATERIAL_FIELDS }
   from "./settling-material-sensitivity.mjs?v=20260828-290";
 import { channelValidationMetricsFromCounts, validationOccurrenceJackknife }
-  from "./validation-uncertainty.mjs?v=20260828-308";
+  from "./validation-uncertainty.mjs?v=20260828-309";
 import { scoreNormalizationAudit }
-  from "./score-normalization.mjs?v=20260828-308";
+  from "./score-normalization.mjs?v=20260828-309";
 import { screenedCoherencyGraphField }
-  from "./coherency-graph-field.mjs?v=20260828-308";
+  from "./coherency-graph-field.mjs?v=20260828-309";
 import { continuationMultiplicityAtlas, continuationMultiplicityScore }
-  from "./configurational-multiplicity.mjs?v=20260828-308";
+  from "./configurational-multiplicity.mjs?v=20260828-309";
 import { geometricConstraintTensor }
-  from "./geometric-constraint-tensor.mjs?v=20260828-308";
+  from "./geometric-constraint-tensor.mjs?v=20260828-309";
 import { archiveResponseFrontierRankAudit }
   from "./archive-response-frontier-audit.js?v=20260827-1";
 import { evidenceOrderedClusterDiscoverySchedule }
@@ -11803,7 +11803,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260828-308",
+      buildId: "20260828-309",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -14233,7 +14233,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260828-308" },
+    application: { name: "Materials Growth Lab", buildId: "20260828-309" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },
@@ -25698,6 +25698,73 @@ function enterPipelineStage(index, options = {}) {
   if (options.play) setPlaying(true);
 }
 
+function synchronizeWorkflowAddress({ mode = "push", clearStudy = false } = {}) {
+  const url = new URL(window.location.href);
+  const material = scenarioSelect.value;
+  const shareableImportedSpecimen = material === "imported" && url.searchParams.has("specimen");
+  if (material !== "imported" || shareableImportedSpecimen) url.searchParams.set("material", material);
+  else url.searchParams.delete("material");
+  url.searchParams.set("stage", String(pipelineStage));
+  if (material !== "iceVI") url.searchParams.delete("microstate");
+  else if (iceViMicrostate) url.searchParams.set("microstate", String(iceViMicrostate.audit.seed));
+  if (material !== "imported") url.searchParams.delete("specimen");
+  if (clearStudy) {
+    url.searchParams.delete("study");
+    url.searchParams.delete("studyVersion");
+  }
+  if (url.href === window.location.href) return false;
+  const method = mode === "replace" ? "replaceState" : "pushState";
+  window.history[method]({ gctsWorkflow: true, material, stage: pipelineStage }, "", url);
+  return true;
+}
+
+function launchMaterialsWorkflowRoute({ scenario, stage, preparation = null } = {}) {
+  const stageButton = document.querySelector(`[data-pipeline-stage="${stage}"]`);
+  if (!scenarioSelect.querySelector(`option[value="${scenario}"]`) || !stageButton) return false;
+  selectedStudyRecipeId = null;
+  activeStudyRecipeId = null;
+  if (scenarioSelect.value !== scenario) {
+    scenarioSelect.value = scenario;
+    scenarioSelect.dispatchEvent(new Event("change", { bubbles: true }));
+  }
+  if (preparation === "resolve-ice-vi" && !iceViAverageButton.hidden) iceViAverageButton.click();
+  if (preparation === "resolve-ice-vi") iceViMicrostateButton.click();
+  enterPipelineStage(Number(stage));
+  synchronizeWorkflowAddress({ mode: "push", clearStudy: true });
+  stageButton.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  return true;
+}
+
+function restoreWorkflowRouteFromAddress() {
+  const parameters = new URLSearchParams(window.location.search);
+  if (parameters.has("study") || (parameters.has("specimen") && scenarioSelect.value !== "imported")) {
+    window.location.reload();
+    return;
+  }
+  const material = parameters.get("material");
+  if (material && scenarioSelect.value !== material
+      && scenarioSelect.querySelector(`option[value="${material}"]`)) {
+    selectedStudyRecipeId = null;
+    activeStudyRecipeId = null;
+    scenarioSelect.value = material;
+    scenarioSelect.dispatchEvent(new Event("change", { bubbles: true }));
+  }
+  if (scenarioSelect.value === "iceVI" && parameters.has("microstate")) {
+    const requested = Number.parseInt(parameters.get("microstate"), 10);
+    const seed = Number.isInteger(requested) && requested > 0 ? requested : 1;
+    if (iceViMicrostate?.audit.seed !== seed) {
+      iceViMicrostateSeed = seed;
+      iceViMicrostate = resolveIceViIceRuleMicrostate(seed);
+      renderIceViMicrostateControls();
+    }
+  }
+  const requestedStage = Number.parseInt(parameters.get("stage"), 10);
+  enterPipelineStage(Number.isInteger(requestedStage) ? Math.max(0, Math.min(4, requestedStage)) : 0);
+}
+
+window.gctsMaterialsWorkflow = Object.freeze({ launch: launchMaterialsWorkflowRoute });
+window.addEventListener("popstate", restoreWorkflowRouteFromAddress);
+
 function updatePipelineButtons() {
   pipelineSteps.forEach((button) => {
     const stage = Number(button.dataset.pipelineStage);
@@ -34104,6 +34171,7 @@ function pauseGrowth(reason) {
 pipelineSteps.forEach((button) => button.addEventListener("click", () => {
   pipelineAuto = false;
   enterPipelineStage(Number(button.dataset.pipelineStage));
+  synchronizeWorkflowAddress({ mode: "push" });
 }));
 pipelineButton.addEventListener("click", () => {
   pipelineAuto = !pipelineAuto;
@@ -34199,12 +34267,13 @@ notebookStateReplicationContrast.addEventListener("change", () => {
   renderExperimentNotebook();
 });
 notebookStateReplicationObservable.addEventListener("change", renderExperimentNotebook);
-scenarioSelect.addEventListener("change", () => {
+scenarioSelect.addEventListener("change", (event) => {
   hypothesisSeparationExperiment = null;
   markingComparisonExperiment = null;
   renderEnsembleControls();
   renderIceViMicrostateControls();
   enterPipelineStage(0);
+  if (event.isTrusted) synchronizeWorkflowAddress({ mode: "push", clearStudy: true });
 });
 iceViMicrostateButton.addEventListener("click", () => {
   hypothesisSeparationExperiment = null;

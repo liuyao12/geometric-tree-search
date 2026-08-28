@@ -1,5 +1,19 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 309 · durable workflow routes
+
+Every explicit material or stage choice now updates the browser address. Atlas
+launchers, the four pipeline buttons, and direct material selection therefore
+produce URLs that survive refresh and can be bookmarked or shared. Back and
+forward reconstruct the selected specimen and scientific stage rather than
+leaving the URL and rendered experiment out of sync.
+
+Routing preserves unrelated release parameters, records the sampled Ice VI
+microstate when present, removes stale public-specimen or study parameters when
+switching to a curated material, and declines to claim that an unpersisted local
+import is shareable. Route changes rebuild the same deterministic stage state;
+they do not execute growth, retrain a marking, or alter candidate geometry.
+
 ## Build 308 · published Cd–Yb evidence ladder
 
 The published Cd₅.₇Yb quasicrystal is no longer summarized by one headline and

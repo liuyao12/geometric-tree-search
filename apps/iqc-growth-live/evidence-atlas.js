@@ -530,6 +530,7 @@ function launchWorkflow(scenario, stage, preparation = null) {
   const stageButton = document.querySelector(`[data-pipeline-stage="${stage}"]`);
   if (!scenarioSelect?.querySelector(`option[value="${scenario}"]`) || !stageButton) return;
   closeAtlas();
+  if (window.gctsMaterialsWorkflow?.launch({ scenario, stage, preparation })) return;
   scenarioSelect.value = scenario;
   scenarioSelect.dispatchEvent(new Event("change", { bubbles: true }));
   if (preparation === "resolve-ice-vi" && !byId("iceViAverageButton")?.hidden) byId("iceViAverageButton").click();
