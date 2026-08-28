@@ -1,5 +1,21 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 305 · local constraint-dimensionality tensor
+
+Every exact candidate now receives a scale- and proper-rotation-invariant local
+constraint tensor assembled from unit contact directions between emitted sites,
+the existing structure, and co-emitted sites inside `1.45 d_nn`. Its normalized
+eigenvalues distinguish an isotropic three-dimensional cage, lamellar or
+hinge-like two-dimensional support, and an axial backbone. The scientist can
+rank toward any of those hypotheses or leave the tensor diagnostic.
+
+The 3D frontier uses rank-specific cage, ring, and axial glyphs. The selected
+action, dimensional score ledger, physics lineage, notebook, and receipt retain
+the eigenvalues, algebraic rank, effective dimension, contact count, mode,
+weight, and work. Because every contact has unit weight and no mass, this is not
+a Hessian, force-constant or elastic tensor, modulus, phonon spectrum,
+vibrational entropy, mechanical-stability proof, energy, relaxation, or time.
+
 ## Build 304 · symmetry-aware continuation multiplicity
 
 The material-growth search now exposes a one-step geometric analogue of

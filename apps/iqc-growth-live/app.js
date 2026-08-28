@@ -36,13 +36,15 @@ import { buildSettlingMaterialResponseHistory, buildSettlingMaterialResponseMatr
   SETTLING_MATERIAL_FIELDS }
   from "./settling-material-sensitivity.mjs?v=20260828-290";
 import { channelValidationMetricsFromCounts, validationOccurrenceJackknife }
-  from "./validation-uncertainty.mjs?v=20260828-304";
+  from "./validation-uncertainty.mjs?v=20260828-305";
 import { scoreNormalizationAudit }
-  from "./score-normalization.mjs?v=20260828-304";
+  from "./score-normalization.mjs?v=20260828-305";
 import { screenedCoherencyGraphField }
-  from "./coherency-graph-field.mjs?v=20260828-304";
+  from "./coherency-graph-field.mjs?v=20260828-305";
 import { continuationMultiplicityAtlas, continuationMultiplicityScore }
-  from "./configurational-multiplicity.mjs?v=20260828-304";
+  from "./configurational-multiplicity.mjs?v=20260828-305";
+import { geometricConstraintTensor }
+  from "./geometric-constraint-tensor.mjs?v=20260828-305";
 import { archiveResponseFrontierRankAudit }
   from "./archive-response-frontier-audit.js?v=20260827-1";
 import { evidenceOrderedClusterDiscoverySchedule }
@@ -439,6 +441,9 @@ const collectiveResponseHint = $("collectiveResponseHint");
 const configurationalMultiplicitySelect = $("configurationalMultiplicitySelect");
 const configurationalMultiplicityWeightSelect = $("configurationalMultiplicityWeightSelect");
 const configurationalMultiplicityHint = $("configurationalMultiplicityHint");
+const constraintTensorSelect = $("constraintTensorSelect");
+const constraintTensorWeightSelect = $("constraintTensorWeightSelect");
+const constraintTensorHint = $("constraintTensorHint");
 const frontMorphologySelect = $("frontMorphologySelect");
 const frontMorphologyWeightSelect = $("frontMorphologyWeightSelect");
 const frontMorphologyHint = $("frontMorphologyHint");
@@ -1566,6 +1571,12 @@ let rejectedConfigurationalMultiplicityScore = 0;
 let acceptedEffectiveContinuationActions = 0;
 let rejectedEffectiveContinuationActions = 0;
 let configurationalMultiplicityEvaluations = 0;
+let acceptedConstraintTensorScore = 0;
+let rejectedConstraintTensorScore = 0;
+let acceptedConstraintEffectiveDimension = 0;
+let rejectedConstraintEffectiveDimension = 0;
+let constraintTensorEvaluations = 0;
+let constraintTensorContactDirections = 0;
 let acceptedExternalDriveAlignment = 0;
 let rejectedExternalDriveAlignment = 0;
 let acceptedThermalFieldScore = 0;
@@ -1795,6 +1806,8 @@ let collectiveScreeningLength = 2;
 let collectiveResponseWeight = .24;
 let configurationalMultiplicityMode = "none";
 let configurationalMultiplicityWeight = .24;
+let constraintTensorMode = "none";
+let constraintTensorWeight = .24;
 let frontMorphologyMode = "none";
 let frontMorphologyWeight = .24;
 let capillaryGeometryMode = "none";
@@ -1870,6 +1883,7 @@ const GROWTH_PROTOCOL_DEFAULTS = Object.freeze({
   coherencyMemoryMode: "none", coherencyMemoryReach: 2, coherencyMemoryWeight: .24,
   collectiveResponseMode: "none", collectiveScreeningLength: 2, collectiveResponseWeight: .24,
   configurationalMultiplicityMode: "none", configurationalMultiplicityWeight: .24,
+  constraintTensorMode: "none", constraintTensorWeight: .24,
   solutePartitionMode: "none", solutePartitionWeight: .24,
   frontMorphologyMode: "none", frontMorphologyWeight: .24,
   capillaryGeometryMode: "none", capillaryGeometryWeight: .24,
@@ -2134,7 +2148,7 @@ const MATERIALS_STUDY_COMPARISONS = Object.freeze({
 const GROWTH_PROTOCOL_CONTROL_IDS = new Set([
   "growthDomainScaleSelect", "geometryPreferenceSelect", "strainWeightSelect", "structuralRelaxationSelect", "compositionPreferenceSelect", "feedstockSupplySelect", "chargePreferenceSelect", "chargeGeometrySelect", "chargeGeometryReachSelect", "chargeGeometryWeightSelect", "chargeMomentSelect", "chargeMomentWeightSelect", "ionicPairSelect", "ionicPairReachSelect", "ionicPairWeightSelect", "bondValenceSelect", "bondValenceWeightSelect",
   "soluteSpeciesSelect", "solutePartitionSelect", "solutePartitionWeightSelect",
-  "surfacePreferenceSelect", "growthDrivingSelect", "growthDrivingWeightSelect", "attachmentTopologySelect", "attachmentTopologyWeightSelect", "habitAnisotropySelect", "habitAnisotropyWeightSelect", "defectPrecursorSelect", "defectPrecursorWeightSelect", "coherencyMemorySelect", "coherencyReachSelect", "coherencyMemoryWeightSelect", "collectiveResponseSelect", "collectiveScreeningSelect", "collectiveResponseWeightSelect", "configurationalMultiplicitySelect", "configurationalMultiplicityWeightSelect", "frontMorphologySelect", "frontMorphologyWeightSelect",
+  "surfacePreferenceSelect", "growthDrivingSelect", "growthDrivingWeightSelect", "attachmentTopologySelect", "attachmentTopologyWeightSelect", "habitAnisotropySelect", "habitAnisotropyWeightSelect", "defectPrecursorSelect", "defectPrecursorWeightSelect", "coherencyMemorySelect", "coherencyReachSelect", "coherencyMemoryWeightSelect", "collectiveResponseSelect", "collectiveScreeningSelect", "collectiveResponseWeightSelect", "configurationalMultiplicitySelect", "configurationalMultiplicityWeightSelect", "constraintTensorSelect", "constraintTensorWeightSelect", "frontMorphologySelect", "frontMorphologyWeightSelect",
   "capillaryGeometrySelect", "capillaryGeometryWeightSelect",
   "epitaxyTemplateSelect", "epitaxyWeightSelect", "externalDriveSelect", "externalDriveWeightSelect",
   "thermalFieldSelect", "thermalFieldWeightSelect",
@@ -11769,7 +11783,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260828-304",
+      buildId: "20260828-305",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -13117,6 +13131,31 @@ async function buildExperimentReceipt() {
         transitionProbabilityInferred: false,
         physicalTimeIntegrated: false,
       },
+      geometricConstraintTensorRanking: {
+        role: "target-blind soft ordering of exact actions by local unit-contact direction dimensionality",
+        mode: constraintTensorMode,
+        label: constraintTensorLabel(),
+        enabled: activeConstraintTensorWeight() > 0,
+        effectiveWeight: activeConstraintTensorWeight(),
+        contactReachNearestNeighborUnits: 1.45,
+        acceptedMeanScore: receiptRound(acceptedConstraintTensorScore / Math.max(1, acceptedDecisions)),
+        rejectedMeanScore: receiptRound(rejectedConstraintTensorScore / Math.max(1, rejectedDecisions)),
+        acceptedMeanEffectiveDimension: receiptRound(acceptedConstraintEffectiveDimension / Math.max(1, acceptedDecisions)),
+        rejectedMeanEffectiveDimension: receiptRound(rejectedConstraintEffectiveDimension / Math.max(1, rejectedDecisions)),
+        evaluations: constraintTensorEvaluations,
+        contactDirections: constraintTensorContactDirections,
+        unitDirectionOuterProductsOnly: true,
+        candidateSetChanged: false,
+        candidateGeometryChanged: false,
+        hardAdmissionChanged: false,
+        heldoutTargetUsed: false,
+        forceConstantsUsed: false,
+        massesUsed: false,
+        modulusInferred: false,
+        phononSpectrumInferred: false,
+        vibrationalEntropyInferred: false,
+        physicalTimeIntegrated: false,
+      },
       mesoscopicFrontMorphologyRanking: {
         role: "target-blind soft ordering of unchanged exact actions by parent-local angular support and backing-depth geometry",
         mode: frontMorphologyMode,
@@ -14064,6 +14103,10 @@ function notebookSoftPhysicsSearchReceipt() {
       effectiveWeight: activeConfigurationalMultiplicityWeight(),
       acceptedMeanEffectiveActions: mean(acceptedEffectiveContinuationActions),
       fitSupportOnly: true },
+    geometricConstraintTensorRanking: { mode: constraintTensorMode,
+      effectiveWeight: activeConstraintTensorWeight(),
+      acceptedMeanEffectiveDimension: mean(acceptedConstraintEffectiveDimension),
+      unitDirectionOuterProductsOnly: true },
     mesoscopicFrontMorphologyRanking: { mode: frontMorphologyMode, effectiveWeight: activeFrontMorphologyWeight() },
     discreteCapillaryGeometryRanking: { mode: capillaryGeometryMode, effectiveWeight: activeCapillaryGeometryWeight(),
       acceptedMeanScore: mean(acceptedCapillaryGeometryScore) },
@@ -14167,7 +14210,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260828-304" },
+    application: { name: "Materials Growth Lab", buildId: "20260828-305" },
     notebookSnapshot: { bounded: true, fullReceiptBuilt: false,
       creationResponseEvidence: !searchVisible ? "stage not entered"
         : cachedCreationResponse ? "attached from state-matched opt-in analysis"
@@ -14298,6 +14341,9 @@ function notebookInterventionFactors(receipt) {
       configurationalMultiplicity: [search.configurationalMultiplicityRanking?.mode,
         search.configurationalMultiplicityRanking?.effectiveWeight,
         search.configurationalMultiplicityRanking?.fitSupportOnly],
+      constraintTensor: [search.geometricConstraintTensorRanking?.mode,
+        search.geometricConstraintTensorRanking?.effectiveWeight,
+        search.geometricConstraintTensorRanking?.unitDirectionOuterProductsOnly],
       frontMorphology: [search.mesoscopicFrontMorphologyRanking?.mode,
         search.mesoscopicFrontMorphologyRanking?.effectiveWeight],
       capillaryGeometry: [search.discreteCapillaryGeometryRanking?.mode,
@@ -18050,6 +18096,42 @@ function configurationalMultiplicityForCandidate(candidate, { recordWork = true 
     transitionProbabilityInferred: false, physicalTimeIntegrated: false };
 }
 
+function constraintTensorLabel(mode = constraintTensorMode) {
+  return ({ none: "constraint-dimensionality diagnostic", "rigid-3d": "isotropic 3D cage",
+    lamellar: "lamellar / hinge support", axial: "axial backbone" })[mode]
+    || "constraint-dimensionality diagnostic";
+}
+
+function activeConstraintTensorWeight() {
+  return constraintTensorMode === "none" ? 0 : constraintTensorWeight;
+}
+
+function constraintTensorForFreshSites(fresh, { recordWork = true } = {}) {
+  const reach = 1.45 * referenceSpacing;
+  const vectors = [];
+  fresh.forEach((site, index) => {
+    nearbyAtoms(site.p, reach).forEach((atom) => {
+      const vector = atom.p.clone().sub(site.p);
+      if (vector.lengthSq() > MERGE_TOLERANCE ** 2) vectors.push(vector.toArray());
+    });
+    fresh.slice(index + 1).forEach((other) => {
+      const vector = other.p.clone().sub(site.p);
+      if (vector.lengthSq() > MERGE_TOLERANCE ** 2 && vector.length() <= reach) vectors.push(vector.toArray());
+    });
+  });
+  const tensor = geometricConstraintTensor(vectors, constraintTensorMode);
+  if (recordWork) {
+    constraintTensorEvaluations++;
+    constraintTensorContactDirections += vectors.length;
+  }
+  return { ...tensor, label: constraintTensorLabel(), enabled: constraintTensorMode !== "none",
+    reachNearestNeighborUnits: 1.45,
+    construction: "unit outer products of exact existing-to-emitted and co-emitted contact directions",
+    candidateSetChanged: false, candidateGeometryChanged: false, hardAdmissionChanged: false,
+    heldoutTargetUsed: false, forceBalanceSolved: false, elasticTensorInferred: false,
+    mechanicalStabilityProved: false, physicalTimeIntegrated: false };
+}
+
 function activeFrontMorphologyWeight() {
   return frontMorphologyMode === "none" ? 0 : frontMorphologyWeight;
 }
@@ -18868,6 +18950,9 @@ function activeCandidateScoreTerms(entry, includeExploration = true) {
       evaluation.configurationalMultiplicity.score, activeConfigurationalMultiplicityWeight(),
       "soft one-step frozen-grammar look-ahead",
       "Fit-supported symmetry-distinct branch multiplicity; not thermodynamic entropy, free energy, probability, rate, or time."),
+    scoreTerm("constraint-tensor", "constraint dimensionality", evaluation.constraintTensor.score,
+      activeConstraintTensorWeight(), "soft unit-contact direction-tensor ordering",
+      "Unit contact directions only; not force constants, elastic modulus, phonons, stability, energy, or time."),
     scoreTerm("front", "front morphology", evaluation.frontMorphology.score,
       activeFrontMorphologyWeight(), "soft parent-local front ordering", "Not interfacial kinetics."),
     scoreTerm("capillary", "capillary geometry", evaluation.capillaryGeometry.score,
@@ -19065,6 +19150,7 @@ function oneFactorPolicyTerm(policyId, entry, label) {
     "collective-response": [evaluation.collectiveResponse.score, activeCollectiveResponseWeight()],
     "configurational-multiplicity": [evaluation.configurationalMultiplicity.score,
       activeConfigurationalMultiplicityWeight()],
+    "constraint-tensor": [evaluation.constraintTensor.score, activeConstraintTensorWeight()],
     "front-morphology": [evaluation.frontMorphology.score, activeFrontMorphologyWeight()],
     "capillary-geometry": [evaluation.capillaryGeometry.score, activeCapillaryGeometryWeight()],
     epitaxy: [evaluation.epitaxyRegistry.score, activeEpitaxyWeight()],
@@ -20616,6 +20702,8 @@ function capturePolicyComparison(entries, frontierStructuralState = null) {
       score: (entry) => entry.baseScore + activeCollectiveResponseWeight() * entry.evaluation.collectiveResponse.score },
     { id: "configurational-multiplicity", label: `${configurationalMultiplicityLabel()} ${activeConfigurationalMultiplicityWeight().toFixed(2)}`,
       score: (entry) => entry.baseScore + activeConfigurationalMultiplicityWeight() * entry.evaluation.configurationalMultiplicity.score },
+    { id: "constraint-tensor", label: `${constraintTensorLabel()} ${activeConstraintTensorWeight().toFixed(2)}`,
+      score: (entry) => entry.baseScore + activeConstraintTensorWeight() * entry.evaluation.constraintTensor.score },
     { id: "front-morphology", label: `${frontMorphologyLabel()} ${activeFrontMorphologyWeight().toFixed(2)}`,
       score: (entry) => entry.baseScore + activeFrontMorphologyWeight() * entry.evaluation.frontMorphology.score },
     { id: "capillary-geometry", label: `${capillaryGeometryLabel()} ${activeCapillaryGeometryWeight().toFixed(2)}`,
@@ -22092,6 +22180,7 @@ function scoreFrontierCandidate(candidate, audit) {
       + activeCoherencyMemoryWeight() * evaluation.coherencyMemory.score
       + activeCollectiveResponseWeight() * evaluation.collectiveResponse.score
       + activeConfigurationalMultiplicityWeight() * evaluation.configurationalMultiplicity.score
+      + activeConstraintTensorWeight() * evaluation.constraintTensor.score
       + activeFrontMorphologyWeight() * evaluation.frontMorphology.score
       + activeCapillaryGeometryWeight() * evaluation.capillaryGeometry.score
       + activeEpitaxyWeight() * evaluation.epitaxyRegistry.score
@@ -22303,6 +22392,7 @@ function evaluateCandidate(candidate, {
   const coherencyMemory = coherencyMemoryForCandidate(candidate, { geometricStrain, merged }, { recordWork });
   const collectiveResponse = collectiveResponseForCandidate(candidate, { geometricStrain, merged }, { recordWork });
   const configurationalMultiplicity = configurationalMultiplicityForCandidate(candidate, { recordWork });
+  const constraintTensor = constraintTensorForFreshSites(fresh, { recordWork });
   const arrivalPath = geometricArrivalPathForCandidate(candidate, fresh);
   const feedExposure = feedstockExposureForFreshSites(fresh, { recordWork });
   if (recordWork) scalarSpinOverlapChecks += spinChecks;
@@ -22316,6 +22406,7 @@ function evaluateCandidate(candidate, {
     externalDrive, thermalField, solutePartition, constraintRobustness, interfaceAccommodation,
     microstructureCoupling, loopClosure, defectPrecursors, coherencyMemory, collectiveResponse,
     configurationalMultiplicity,
+    constraintTensor,
     arrivalPath, feedExposure,
     duplicateSites: canonical.duplicateSites,
     freshReferenceIndices: fresh.map((site) => site.referenceIndex).filter(Number.isInteger),
@@ -22839,6 +22930,12 @@ function initializeOffLatticeSearch() {
   acceptedEffectiveContinuationActions = 0;
   rejectedEffectiveContinuationActions = 0;
   configurationalMultiplicityEvaluations = 0;
+  acceptedConstraintTensorScore = 0;
+  rejectedConstraintTensorScore = 0;
+  acceptedConstraintEffectiveDimension = 0;
+  rejectedConstraintEffectiveDimension = 0;
+  constraintTensorEvaluations = 0;
+  constraintTensorContactDirections = 0;
   acceptedExternalDriveAlignment = 0;
   rejectedExternalDriveAlignment = 0;
   acceptedThermalFieldScore = 0;
@@ -23673,6 +23770,7 @@ function currentGrowthProtocolSettings() {
     coherencyMemoryMode, coherencyMemoryReach, coherencyMemoryWeight,
     collectiveResponseMode, collectiveScreeningLength, collectiveResponseWeight,
     configurationalMultiplicityMode, configurationalMultiplicityWeight,
+    constraintTensorMode, constraintTensorWeight,
     frontMorphologyMode, frontMorphologyWeight, capillaryGeometryMode, capillaryGeometryWeight,
     epitaxyTemplateMode, epitaxyWeight,
     externalDriveMode, externalDriveWeight, thermalFieldMode, thermalFieldWeight,
@@ -23720,9 +23818,10 @@ function renderGrowthControlGroupSummaries() {
     activeAttachmentTopologyWeight() > 0, activeHabitAnisotropyWeight() > 0,
     activeDefectPrecursorWeight() > 0, activeCoherencyMemoryWeight() > 0,
     activeCollectiveResponseWeight() > 0, activeConfigurationalMultiplicityWeight() > 0,
+    activeConstraintTensorWeight() > 0,
     activeFrontMorphologyWeight() > 0,
     activeCapillaryGeometryWeight() > 0, activeEpitaxyWeight() > 0]);
-  growthInterfaceGroupState.textContent = `${interfaceActive}/11 active`;
+  growthInterfaceGroupState.textContent = `${interfaceActive}/12 active`;
   const fieldsActive = activeCount([activeExternalDriveWeight() > 0, activeThermalFieldWeight() > 0,
     affineLoadMode !== "none", activeRobustnessWeight() > 0,
     activeMicrostructureCouplingWeight() > 0, activeLoopClosureWeight() > 0]);
@@ -23767,6 +23866,8 @@ function applyGrowthProtocol(mode, options = {}) {
   collectiveResponseWeight = settings.collectiveResponseWeight;
   configurationalMultiplicityMode = settings.configurationalMultiplicityMode;
   configurationalMultiplicityWeight = settings.configurationalMultiplicityWeight;
+  constraintTensorMode = settings.constraintTensorMode;
+  constraintTensorWeight = settings.constraintTensorWeight;
   frontMorphologyMode = settings.frontMorphologyMode; frontMorphologyWeight = settings.frontMorphologyWeight;
   capillaryGeometryMode = settings.capillaryGeometryMode; capillaryGeometryWeight = settings.capillaryGeometryWeight;
   epitaxyTemplateMode = settings.epitaxyTemplateMode; epitaxyWeight = settings.epitaxyWeight;
@@ -24853,6 +24954,8 @@ function syncStageOptions() {
     collectiveResponseWeightSelect.value = String(collectiveResponseWeight);
     configurationalMultiplicitySelect.value = configurationalMultiplicityMode;
     configurationalMultiplicityWeightSelect.value = String(configurationalMultiplicityWeight);
+    constraintTensorSelect.value = constraintTensorMode;
+    constraintTensorWeightSelect.value = String(constraintTensorWeight);
     frontMorphologySelect.value = frontMorphologyMode;
     frontMorphologyWeightSelect.value = String(frontMorphologyWeight);
     capillaryGeometrySelect.value = capillaryGeometryMode;
@@ -24916,6 +25019,8 @@ function syncStageOptions() {
     collectiveResponseWeightSelect.disabled = finiteIceAnchorMode || collectiveResponseMode === "none";
     configurationalMultiplicitySelect.disabled = finiteIceAnchorMode;
     configurationalMultiplicityWeightSelect.disabled = finiteIceAnchorMode || configurationalMultiplicityMode === "none";
+    constraintTensorSelect.disabled = finiteIceAnchorMode;
+    constraintTensorWeightSelect.disabled = finiteIceAnchorMode || constraintTensorMode === "none";
     frontMorphologySelect.disabled = finiteIceAnchorMode;
     frontMorphologyWeightSelect.disabled = finiteIceAnchorMode || frontMorphologyMode === "none";
     capillaryGeometrySelect.disabled = finiteIceAnchorMode;
@@ -24992,6 +25097,9 @@ function syncStageOptions() {
     configurationalMultiplicityHint.textContent = configurationalMultiplicityMode === "none"
       ? "off · branch entropy reported"
       : `${configurationalMultiplicityLabel()} · fit rules only · weight ${configurationalMultiplicityWeight.toFixed(2)}`;
+    constraintTensorHint.textContent = constraintTensorMode === "none"
+      ? "off · tensor reported"
+      : `${constraintTensorLabel()} · unit directions · weight ${constraintTensorWeight.toFixed(2)}`;
     const selectedSolute = soluteVocabulary.find((entry) => entry.species === resolvedSoluteSpecies());
     soluteSpeciesHint.textContent = selectedSolute
       ? `${selectedSolute.species} · ${(selectedSolute.fraction * 100).toFixed(1)}% observed`
@@ -25122,6 +25230,9 @@ function syncStageOptions() {
     const configurationalMultiplicityUse = configurationalMultiplicityMode === "none"
       ? " Fit-supported continuation multiplicity is reported but contributes zero ranking weight."
       : ` A ${configurationalMultiplicityWeight.toFixed(2)} soft ${configurationalMultiplicityLabel()} term ranks the same exact actions by the Shannon effective count of symmetry-distinct outgoing frozen rules; it is not thermodynamic entropy, free energy, probability, kinetics, or time.`;
+    const constraintTensorUse = constraintTensorMode === "none"
+      ? " The local unit-contact constraint tensor is reported but contributes zero ranking weight."
+      : ` A ${constraintTensorWeight.toFixed(2)} soft ${constraintTensorLabel()} term ranks the same exact actions by the eigenvalue shape of their contact-direction outer-product tensor; it is not a force-constant matrix, modulus, phonon spectrum, mechanical-stability proof, or time evolution.`;
     const externalDriveUse = externalDriveMode === "none"
       ? " No external direction is preferred."
       : ` A user-declared ${externalDriveModeLabel()} direction adds a ${externalDriveWeight.toFixed(2)} soft alignment term to the same actions; it is boundary/loading geometry, not a solved force field.`;
@@ -25161,8 +25272,8 @@ function syncStageOptions() {
     growthModeNote.textContent = finiteIceAnchorMode
       ? "This sealed ice gate executes primitive H₂O connection ports with mutually exclusive orientation domains. Clusters² is disabled because no stationary promoted ice production has been certified."
       : hierarchyEnabled
-      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${displacementContactUse}${spinColorUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${ionicPairUse}${bondValenceUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${collectiveResponseUse}${configurationalMultiplicityUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`
-      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${spinColorUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${ionicPairUse}${bondValenceUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${collectiveResponseUse}${configurationalMultiplicityUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`;
+      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${displacementContactUse}${spinColorUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${ionicPairUse}${bondValenceUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${collectiveResponseUse}${configurationalMultiplicityUse}${constraintTensorUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`
+      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${spinColorUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${ionicPairUse}${bondValenceUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${collectiveResponseUse}${configurationalMultiplicityUse}${constraintTensorUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`;
   }
 }
 
@@ -25237,6 +25348,12 @@ function resetCounters() {
   acceptedEffectiveContinuationActions = 0;
   rejectedEffectiveContinuationActions = 0;
   configurationalMultiplicityEvaluations = 0;
+  acceptedConstraintTensorScore = 0;
+  rejectedConstraintTensorScore = 0;
+  acceptedConstraintEffectiveDimension = 0;
+  rejectedConstraintEffectiveDimension = 0;
+  constraintTensorEvaluations = 0;
+  constraintTensorContactDirections = 0;
   acceptedExternalDriveAlignment = 0;
   rejectedExternalDriveAlignment = 0;
   acceptedThermalFieldScore = 0;
@@ -25683,6 +25800,7 @@ function stateForCandidate(candidate, evaluation) {
     coherencyMemory: evaluation.coherencyMemory,
     collectiveResponse: evaluation.collectiveResponse,
     configurationalMultiplicity: evaluation.configurationalMultiplicity,
+    constraintTensor: evaluation.constraintTensor,
     frontMorphology: evaluation.frontMorphology,
     capillaryGeometry: evaluation.capillaryGeometry,
     epitaxyRegistry: evaluation.epitaxyRegistry,
@@ -25814,6 +25932,11 @@ function materializeCandidate(candidate, evaluation, leapCreationContext) {
       childTypeCount: evaluation.configurationalMultiplicity.childTypeCount,
       normalizedEntropy: evaluation.configurationalMultiplicity.normalizedEntropy,
       deadEnd: evaluation.configurationalMultiplicity.deadEnd },
+    constraintTensor: { score: evaluation.constraintTensor.score,
+      eigenvalues: evaluation.constraintTensor.eigenvalues,
+      rank: evaluation.constraintTensor.rank,
+      effectiveDimension: evaluation.constraintTensor.effectiveDimension,
+      contactDirectionCount: evaluation.constraintTensor.contactDirectionCount },
     decisionEvidence: {
       markingScore: Number.isFinite(candidate.markingScore) ? receiptRound(candidate.markingScore) : null,
       markingAccepted: candidate.markingAccepted,
@@ -25989,6 +26112,7 @@ async function performOffLatticeEvent() {
     coherencyMemory: evaluation.coherencyMemory,
     collectiveResponse: evaluation.collectiveResponse,
     configurationalMultiplicity: evaluation.configurationalMultiplicity,
+    constraintTensor: evaluation.constraintTensor,
   }));
   const mechanismDiagnostics = new Map(batch.map(({ candidate, evaluation }) =>
     [candidate, prepareGrowthMechanismDiagnostic(candidate, evaluation)]));
@@ -26045,6 +26169,8 @@ async function performOffLatticeEvent() {
       rejectedCollectiveMismatch += snapshotEvaluation.collectiveResponse.inheritedMismatch;
       rejectedConfigurationalMultiplicityScore += snapshotEvaluation.configurationalMultiplicity.score;
       rejectedEffectiveContinuationActions += snapshotEvaluation.configurationalMultiplicity.effectiveActionCount;
+      rejectedConstraintTensorScore += snapshotEvaluation.constraintTensor.score;
+      rejectedConstraintEffectiveDimension += snapshotEvaluation.constraintTensor.effectiveDimension;
       rejectedFrontMorphologyScore += snapshotEvaluation.frontMorphology.score;
       rejectedCapillaryGeometryScore += snapshotEvaluation.capillaryGeometry.score;
       rejectedEpitaxyRegistryScore += snapshotEvaluation.epitaxyRegistry.score;
@@ -26109,6 +26235,8 @@ async function performOffLatticeEvent() {
     acceptedCollectiveMismatch += evaluation.collectiveResponse.inheritedMismatch;
     acceptedConfigurationalMultiplicityScore += evaluation.configurationalMultiplicity.score;
     acceptedEffectiveContinuationActions += evaluation.configurationalMultiplicity.effectiveActionCount;
+    acceptedConstraintTensorScore += evaluation.constraintTensor.score;
+    acceptedConstraintEffectiveDimension += evaluation.constraintTensor.effectiveDimension;
     acceptedFrontMorphologyScore += evaluation.frontMorphology.score;
     acceptedCapillaryGeometryScore += evaluation.capillaryGeometry.score;
     acceptedEpitaxyRegistryScore += evaluation.epitaxyRegistry.score;
@@ -27332,6 +27460,19 @@ function rebuildWorld() {
         new THREE.LineBasicMaterial({ color: multiplicity.deadEnd ? 0xff6d78 : 0xf0c96a,
           transparent: true, opacity: configurationalMultiplicityMode === "none" ? .15 : .62 })));
     }
+    if (candidateIndex < 12 && candidate.constraintTensor?.contactDirectionCount > 0) {
+      const tensor = candidate.constraintTensor;
+      const geometry = tensor.rank >= 3 ? new THREE.IcosahedronGeometry(.22, 0)
+        : tensor.rank === 2 ? new THREE.RingGeometry(.14, .25, 28)
+          : new THREE.CylinderGeometry(.035, .035, .48, 10);
+      const color = tensor.rank >= 3 ? 0x65e1bc : tensor.rank === 2 ? 0x55c8ff : 0xf0c96a;
+      const glyph = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ color, wireframe: true,
+        side: THREE.DoubleSide, transparent: true,
+        opacity: constraintTensorMode === "none" ? .14 : .58, depthWrite: false }));
+      glyph.position.copy(candidate.p);
+      if (candidate.rotation) glyph.quaternion.copy(candidate.rotation);
+      decisionGroup.add(glyph);
+    }
     if (candidateIndex < 12 && candidate.arrivalAxis && candidate.arrivalSweepDistance > 0) {
       const axis = new THREE.Vector3(...candidate.arrivalAxis).normalize();
       const routePoints = candidate.arrivalRoutePoints?.length > 1
@@ -27474,6 +27615,14 @@ function physicsTranslationRecords(leap = null) {
       encoding: `${coloredCoordinationEnvelopes?.records?.length || 0} ordered coordination bounds + ${coloredAngularEnvelopes?.records?.length || 0} colored angular bands within the sample-derived reach`,
       evidence: `${coordinationCapacityPrunes} coordination and ${angularEnvelopePrunes} angular prunes have occurred in this run.`,
       boundary: "Coordination and angle envelopes constrain local topology but do not calculate bond order, bond energy, hybridization, or electronic structure." },
+    { id: "constraint-rigidity", process: "local constraint dimensionality / geometric rigidity",
+      status: activeConstraintTensorWeight() > 0 ? "soft" : "open",
+      role: activeConstraintTensorWeight() > 0 ? "unit-contact direction-tensor ordering" : "diagnostic",
+      encoding: `${constraintTensorLabel()}; normalized 3x3 sum of unit contact-direction outer products within 1.45dₙₙ, eigenvalue dimensionality, w=${activeConstraintTensorWeight().toFixed(2)}`,
+      evidence: constraintTensorEvaluations
+        ? `${constraintTensorEvaluations.toLocaleString()} candidates and ${constraintTensorContactDirections.toLocaleString()} contact directions audited; accepted mean effective dimension ${receiptRound(acceptedConstraintEffectiveDimension / Math.max(1, acceptedDecisions), 3)}, rejected ${receiptRound(rejectedConstraintEffectiveDimension / Math.max(1, rejectedDecisions), 3)}.`
+        : "No candidate contact-direction tensor has been evaluated yet.",
+      boundary: "Unit contact directions carry no force constants or masses. This is not a Hessian, elastic tensor, modulus, phonon spectrum, vibrational entropy, mechanical-stability proof, energy, force balance, relaxation, kinetics, or time." },
     { id: "local-mismatch-map", process: "current-state local geometric compatibility / frontier incompleteness",
       status: localConstraintMismatch ? "observed" : "unavailable",
       role: localConstraintMismatch ? "identity-free posthoc spatial diagnostic" : "no learned local envelopes",
@@ -27820,6 +27969,7 @@ const PHYSICS_CONTROL_ROUTES = Object.freeze({
   "coherency-memory": { stage: 4, controlId: "coherencyMemorySelect", label: "Configure coherency memory" },
   "long-range": { stage: 4, controlId: "collectiveResponseSelect", label: "Configure collective graph response" },
   "configurational-entropy": { stage: 4, controlId: "configurationalMultiplicitySelect", label: "Configure continuation multiplicity" },
+  "constraint-rigidity": { stage: 4, controlId: "constraintTensorSelect", label: "Configure constraint dimensionality" },
   "front-morphology": { stage: 4, controlId: "frontMorphologySelect", label: "Configure front morphology" },
   "capillary-geometry": { stage: 4, controlId: "capillaryGeometrySelect", label: "Configure solid-angle geometry" },
   epitaxy: { stage: 4, controlId: "epitaxyTemplateSelect", label: "Configure support registry" },
@@ -30629,6 +30779,17 @@ function geometryConstraintEvidence(name, term, state, mode) {
         ? `Soft ${configurationalMultiplicityLabel()} rank term with weight ${activeConfigurationalMultiplicityWeight().toFixed(2)}.` : "Diagnostic only; weight zero.",
       boundary: "This is geometric branch multiplicity, not thermodynamic entropy, a partition function, free energy, probability, rate, or time.",
     },
+    "constraint dimensionality": {
+      observed: state?.constraintTensor?.contactDirectionCount
+        ? `${state.constraintTensor.contactDirectionCount} contact directions · rank ${state.constraintTensor.rank} · effective dimension ${state.constraintTensor.effectiveDimension.toFixed(2)}`
+        : "no emitted-site contact directions",
+      encoding: state?.constraintTensor
+        ? `eigenvalues ${state.constraintTensor.eigenvalues.map((value) => value.toFixed(3)).join(" / ")} · score ${signed(state.constraintTensor.score)}`
+        : "normalized unit contact-direction outer-product tensor",
+      searchRole: activeConstraintTensorWeight() > 0
+        ? `Soft ${constraintTensorLabel()} rank term with weight ${activeConstraintTensorWeight().toFixed(2)}.` : "Diagnostic only; weight zero.",
+      boundary: "This is not a force-constant matrix, Hessian, elastic modulus, phonon spectrum, vibrational entropy, stability proof, energy, force, or time.",
+    },
     "front morphology": {
       observed: `${state?.frontMorphology?.neighborhoodAtoms ?? 0} placed atoms within 2.4dₙₙ · ${state?.frontMorphology?.angularSectors ?? 0}/8 occupied parent-local angular sectors`,
       encoding: state?.frontMorphology
@@ -30850,6 +31011,9 @@ function renderConstraintLedger(state, mode = "configured") {
     { name: "continuation multiplicity", status: ranked(activeConfigurationalMultiplicityWeight() > 0),
       value: state.configurationalMultiplicity?.deadEnd ? "dead end" : `${signed(state.configurationalMultiplicity?.score || 0)} · ${(state.configurationalMultiplicity?.effectiveActionCount || 0).toFixed(2)} effective actions`,
       detail: activeConfigurationalMultiplicityWeight() > 0 ? `${configurationalMultiplicityLabel()} · rank weight ${activeConfigurationalMultiplicityWeight().toFixed(2)}` : "diagnostic · fit rules only" },
+    { name: "constraint dimensionality", status: ranked(activeConstraintTensorWeight() > 0),
+      value: state.constraintTensor?.contactDirectionCount ? `${signed(state.constraintTensor.score)} · rank ${state.constraintTensor.rank} · d_eff ${state.constraintTensor.effectiveDimension.toFixed(2)}` : "no contacts",
+      detail: activeConstraintTensorWeight() > 0 ? `${constraintTensorLabel()} · rank weight ${activeConstraintTensorWeight().toFixed(2)}` : "diagnostic · unit contact directions" },
     { name: "front morphology", status: ranked(activeFrontMorphologyWeight() > 0),
       value: state.frontMorphology ? `${signed(state.frontMorphology.score)} · ${state.frontMorphology.angularSectors}/8 sectors` : "not evaluated",
       detail: activeFrontMorphologyWeight() > 0 ? `${frontMorphologyLabel()} · rank weight ${activeFrontMorphologyWeight().toFixed(2)}` : "diagnostic · no capillarity claim" },
@@ -30995,6 +31159,8 @@ function renderConstraintLedger(state, mode = "configured") {
       value: activeCollectiveResponseWeight() > 0 ? collectiveResponseLabel() : "diagnostic", detail: `xi ${collectiveScreeningLength} hops · weight ${activeCollectiveResponseWeight().toFixed(2)}` },
     { name: "continuation multiplicity", status: ranked(activeConfigurationalMultiplicityWeight() > 0),
       value: activeConfigurationalMultiplicityWeight() > 0 ? configurationalMultiplicityLabel() : "diagnostic", detail: `fit-supported rules · weight ${activeConfigurationalMultiplicityWeight().toFixed(2)}` },
+    { name: "constraint dimensionality", status: ranked(activeConstraintTensorWeight() > 0),
+      value: activeConstraintTensorWeight() > 0 ? constraintTensorLabel() : "diagnostic", detail: `unit directions · weight ${activeConstraintTensorWeight().toFixed(2)}` },
     { name: "front morphology", status: ranked(activeFrontMorphologyWeight() > 0),
       value: activeFrontMorphologyWeight() > 0 ? frontMorphologyLabel() : "diagnostic", detail: `weight ${activeFrontMorphologyWeight().toFixed(2)}` },
     { name: "capillary geometry", status: ranked(activeCapillaryGeometryWeight() > 0),
@@ -34405,6 +34571,18 @@ configurationalMultiplicitySelect.addEventListener("change", () => {
 configurationalMultiplicityWeightSelect.addEventListener("change", () => {
   const value = Number(configurationalMultiplicityWeightSelect.value);
   configurationalMultiplicityWeight = [.12, .24, .48].includes(value) ? value : .24;
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+constraintTensorSelect.addEventListener("change", () => {
+  const value = constraintTensorSelect.value;
+  constraintTensorMode = ["rigid-3d", "lamellar", "axial"].includes(value) ? value : "none";
+  if (pipelineStage === 4) enterPipelineStage(4);
+  else syncStageOptions();
+});
+constraintTensorWeightSelect.addEventListener("change", () => {
+  const value = Number(constraintTensorWeightSelect.value);
+  constraintTensorWeight = [.12, .24, .48].includes(value) ? value : .24;
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
 });
