@@ -77,15 +77,23 @@ def enumerate_three_copy_metatiles(record, include_reflections=False):
 
 
 def screen_candidate(record, scale, timeout_ms, include_reflections=False,
-                     max_parents=0):
+                     max_parents=0, defer_exact=False, parent_start=0,
+                     parent_stop=0):
     enumerated = enumerate_three_copy_metatiles(record, include_reflections)
     metatiles = enumerated["metatiles"]
     alphabet = TWO.oriented_alphabet(metatiles, include_reflections)
     atomic_alphabet = TWO.oriented_alphabet(
         [{"alcoves": record["alcoves"]}], include_reflections)
-    limit = min(len(metatiles), max_parents) if max_parents > 0 else len(metatiles)
+    start = max(0, parent_start)
+    configured_stop = parent_stop if parent_stop > 0 else len(metatiles)
+    if max_parents > 0:
+        configured_stop = min(configured_stop, start + max_parents)
+    stop = min(len(metatiles), configured_stop)
+    if not start < stop:
+        raise ValueError(f"empty parent range [{start}, {stop})")
     results = []
-    for parent_index, parent in enumerate(metatiles[:limit]):
+    for parent_index in range(start, stop):
+        parent = metatiles[parent_index]
         target = SUB.inflated_cells(parent["alcoves"], scale)
         atomic_placements = TWO.mixed_placements(target, atomic_alphabet)
         atomic_covered = (set().union(*(placement["cells"] for placement in atomic_placements))
@@ -102,6 +110,14 @@ def screen_candidate(record, scale, timeout_ms, include_reflections=False,
                 "classification": "atomic_local_obstruction",
                 "target_alcoves": len(target),
                 "atomic_local_obstruction_replay": replay,
+            })
+            continue
+        if defer_exact:
+            results.append({
+                "parent_index": parent_index,
+                "classification": "unresolved",
+                "target_alcoves": len(target),
+                "stopped_by": "deferred_exact_parent_certificate",
             })
             continue
         placements = TWO.mixed_placements(target, alphabet)
@@ -142,13 +158,31 @@ def screen_candidate(record, scale, timeout_ms, include_reflections=False,
             })
         elif solved["result"] == "unsat":
             replay = SUB.replay_unsat_with_z3(target, placements, timeout_ms)
-            if not replay["verified"]:
-                raise RuntimeError(f"mixed UNSAT replay failed: {replay}")
-            results.append({**common, "classification": "exact_unsat",
-                            "exact_unsat_replay": replay})
+            if replay["verified"]:
+                results.append({**common, "classification": "exact_unsat",
+                                "exact_unsat_replay": replay})
+            else:
+                alternate = SUB.replay_unsat_with_algorithm_x(target, placements, timeout_ms)
+                if alternate["verified"]:
+                    results.append({**common, "classification": "exact_unsat",
+                                    "exact_unsat_replay": alternate,
+                                    "z3_replay_attempt": replay})
+                else:
+                    results.append({**common, "classification": "unresolved",
+                                    "stopped_by": "independent_replay_time_limit",
+                                    "z3_replay_attempt": replay,
+                                    "algorithm_x_replay_attempt": alternate})
         else:
-            results.append({**common, "classification": "unresolved",
-                            "stopped_by": "time_limit"})
+            alternate = SUB.replay_unsat_with_algorithm_x(target, placements, timeout_ms)
+            if alternate["verified"]:
+                results.append({**common, "classification": "exact_unsat",
+                                "exact_unsat_replay": alternate,
+                                "primary_exact_cover_attempt": solved})
+            else:
+                results.append({**common, "classification": "unresolved",
+                                "stopped_by": "time_limit",
+                                "primary_exact_cover_attempt": solved,
+                                "algorithm_x_replay_attempt": alternate})
 
     rules = {result["parent_index"]: result for result in results
              if result["classification"] == "mixed_metatile_rule"}
@@ -168,7 +202,7 @@ def screen_candidate(record, scale, timeout_ms, include_reflections=False,
                     frontier.append(child["type_index"])
         if valid and (closed is None or len(closure) < len(closed)):
             closed = sorted(closure)
-    complete = limit == len(metatiles)
+    complete = start == 0 and stop == len(metatiles)
     unknowns = [result for result in results if result["classification"] == "unresolved"]
     if closed is not None:
         classification = "three_copy_metatile_substitution_system"
@@ -191,6 +225,7 @@ def screen_candidate(record, scale, timeout_ms, include_reflections=False,
                 "raw_connected_extensions", "symmetry_distinct_metatiles",
                 "canonical_sha256")},
             "oriented_metatile_types": len(alphabet),
+            "parent_range": [start, stop],
             "parents_completed": len(results),
             "closed_alphabet": closed,
             "parent_counts": {kind: sum(result["classification"] == kind for result in results)
@@ -209,6 +244,9 @@ def main():
     parser.add_argument("--timeout-ms", type=int, default=30000)
     parser.add_argument("--include-reflections", action="store_true")
     parser.add_argument("--max-parents", type=int, default=0)
+    parser.add_argument("--parent-start", type=int, default=0)
+    parser.add_argument("--parent-stop", type=int, default=0)
+    parser.add_argument("--defer-exact", action="store_true")
     parser.add_argument("--offset", type=int, default=0)
     parser.add_argument("--limit", type=int, default=0)
     args = parser.parse_args()
@@ -223,7 +261,9 @@ def main():
     with output.open("a") as stream:
         for index, record in enumerate(records, 1):
             result = screen_candidate(record, args.scale, args.timeout_ms,
-                                      args.include_reflections, args.max_parents)
+                                      args.include_reflections, args.max_parents,
+                                      args.defer_exact, args.parent_start,
+                                      args.parent_stop)
             counts[result["classification"]] = counts.get(result["classification"], 0) + 1
             stream.write(json.dumps(result, separators=(",", ":")) + "\n")
             stream.flush()

@@ -29,6 +29,13 @@ closed = reflected_control["three_copy_alcove_metatile_screen"]["closed_alphabet
 assert closed
 assert all(parent["replay"]["verified"] for parent in
            reflected_control["three_copy_alcove_metatile_screen"]["parent_results"])
+range_control = THREE.screen_candidate(
+    control, 2, 10_000, True, parent_start=1, parent_stop=2
+)
+range_detail = range_control["three_copy_alcove_metatile_screen"]
+assert range_control["classification"] == "unresolved"
+assert range_detail["parent_range"] == [1, 2]
+assert [parent["parent_index"] for parent in range_detail["parent_results"]] == [1]
 
 expected = {
     "proper": ("ndjson", {"atomic_local_obstruction": 128_339, "exact_unsat": 1}),
