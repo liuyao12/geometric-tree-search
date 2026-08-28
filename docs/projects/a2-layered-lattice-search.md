@@ -516,6 +516,53 @@ receipts are `data/a2-layered-size9-directed-census.ndjson`,
 `data/a2-layered-size9-directed-focus-corona1.ndjson`. Substitution and
 radius-two evidence is in the other `data/a2-layered-size9-directed-*` reports.
 
+## Consecutive-layer alcove pivot
+
+The newer search family removes the remaining product-cell bias.  Its atomic
+cell is the cubic Coxeter (Kuhn) tetrahedron with vertices
+`(0,0,0)`, `(1,0,0)`, `(1,1,0)`, and `(1,1,1)`.  These vertices lie on the
+four consecutive sections `x+y+z=0,1,2,3`, and the six coordinate orders
+triangulate a unit cube.  The tetrahedron's exact solid-angle weights are
+`1,3,3,1` in the forty-eighth convention.  Connected unions therefore remain
+exact GCTS-I lattice functions while changing section at every integer level;
+they are neither polycubes nor unions of the earlier height-`(1,1,1)` prisms.
+
+`assets/a2-sliced-alcoves.js` implements exact face adjacency, the proper
+six-element A2-layer point group, translation/symmetry canonicalization,
+boundary-face cancellation, and weight accumulation.  The complete connected
+census counts through six alcoves are 1, 2, 7, 22, 83, and 314.  Of the 314
+six-alcove shapes, 222 have a non-palindromic transverse weight profile.  Every
+one of those 222 has an independently replayed one-copy determinant-one
+period, so unit-volume alcove unions can be discarded immediately.
+
+At seven alcoves there are 1,112 transverse-asymmetric shapes.  Their first
+arithmetically possible periodic quotient uses six copies and determinant
+seven.  A complete screen over the 15 proper-A2 HNF orbit representatives
+finds independently replayed six-copy periods for 853 shapes.  The remaining
+259 exhaust all 57 determinant-seven HNFs with no solver unknowns.  The full
+run visits 206,993,651 exact multicover nodes and invokes its complete
+meet-in-the-middle fallback 2,416 times.  These 259 are unresolved beyond six
+copies, not certified non-tilers.  The retained receipts are
+`data/a2-sliced-alcove-size6-directed-census.ndjson`,
+`data/a2-sliced-alcove-size6-directed-periodic-exact1.ndjson`,
+`data/a2-sliced-alcove-size7-directed-census.ndjson`, and
+`data/a2-sliced-alcove-size7-directed-periodic-exact6.ndjson`; the eight
+disjoint `part0` through `part7` reports preserve the worker receipts.
+
+This is now the primary non-polycube enumeration.  The next screen should
+apply the deeper corona/GCTS pipeline before attempting the next
+arithmetically possible periodic size: twelve copies and determinant fourteen.
+The first resumable root-corona pass already affirms independently replayed
+coronas for 255 of the 259 six-copy survivors.  Four candidates—
+`a2sa_7_00147`, `a2sa_7_00570`, `a2sa_7_01108`, and `a2sa_7_01109`—remain
+inconclusive after 100,000 exact capacity-GCTS nodes each.  A node cap is
+reported as `unresolved`, never as a no-corona certificate.  The merged report
+is `data/a2-sliced-alcove-size7-directed-corona1.ndjson`; its prefix, bounded
+breadth shards, and focused 100k receipts are retained separately.  These four
+hard root-corona cases and a morphology-diverse sample of the 255 witnesses
+are the next GCTS targets.  Substitution screening then follows for the
+strongest extension survivors.
+
 Rebuild the earlier size-eight census with:
 
 ```bash

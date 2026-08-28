@@ -8,6 +8,7 @@ import { LATTICE_POLYHEDRON_GCTS_EXAMPLES } from "../../assets/lattice-polyhedro
 import { POLYCUBE_GCTS_CANDIDATES } from "../../assets/polycube-census-candidates.js?v=20260824-volume10-v78";
 import { A2_LAYERED_PRISM_SPECS, makeA2LayeredPrism } from "../../assets/a2-layered-prisms.js";
 import { makeA2LayeredPolyprism } from "../../assets/a2-layered-polyprisms.js";
+import { makeA2SlicedAlcoveUnion } from "../../assets/a2-sliced-alcoves.js";
 import { A2_LAYERED_SIZE7_CANDIDATES } from "../../assets/a2-layered-size7-candidates.js?v=20260827-4";
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
 import { A2_LAYERED_SIZE9_CANDIDATES } from "../../assets/a2-layered-size9-candidates.js?v=20260827-3";
@@ -8864,6 +8865,9 @@ export const tileSpecs = (() => {
   const buildA2LayeredPolyprismTile = (name, cells) =>
     make_tile(name || "CustomA2LayeredPolyprism", makeA2LayeredPolyprism(cells));
 
+  const buildA2SlicedAlcoveTile = (name, alcoves) =>
+    make_tile(name || "CustomA2SlicedAlcove", makeA2SlicedAlcoveUnion(alcoves));
+
   const convexEdgeAngleObstruction = (vertices, suppliedFaces = null) => {
     const verts = (vertices ?? []).map(vertex => vertex.slice(0, 3).map(Number));
     if (verts.length < 4 || verts.some(vertex => vertex.some(value => !Number.isFinite(value)))) return null;
@@ -9063,6 +9067,7 @@ export const tileSpecs = (() => {
     const customPolycubes = customSystem.polycubes ?? [];
     const customPolyhedra = customSystem.polyhedra ?? [];
     const customA2LayeredPolyprisms = customSystem.a2_layered_polyprisms ?? [];
+    const customA2SlicedAlcoves = customSystem.a2_sliced_alcoves ?? [];
     const customName = customSystem.name || "Mixed system";
     const polycubeLattice = normalizePolycubeLattice(customSystem.polycube_lattice);
     return {
@@ -9096,6 +9101,10 @@ export const tileSpecs = (() => {
           const name = polyprism?.name || `CustomA2LayeredPolyprism${index + 1}`;
           built.push(buildA2LayeredPolyprismTile(name, polyprism?.cells));
         });
+        customA2SlicedAlcoves.forEach((tile, index) => {
+          const name = tile?.name || `CustomA2SlicedAlcove${index + 1}`;
+          built.push(buildA2SlicedAlcoveTile(name, tile?.alcoves));
+        });
         return built.length ? built : TILING_REGISTRY.cube.build();
       })
     };
@@ -9119,6 +9128,7 @@ export const tileSpecs = (() => {
     withPolycubeLattice,
     buildPolycubeTile,
     buildA2LayeredPolyprismTile,
+    buildA2SlicedAlcoveTile,
     buildLatticePolyhedronTile,
     convexEdgeAngleObstruction,
     buildCustomSystem

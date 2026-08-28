@@ -70,7 +70,7 @@ def replay_corona(root, placements, witness):
     }
 
 
-def exact_corona_gcts(root, placements):
+def exact_corona_gcts(root, placements, max_nodes=0):
     """Exhaust the finite root-corona capacity problem without an SMT timeout."""
     points = sorted({point for placement in placements for point in placement["occupancy"]})
     point_index = {point: index for index, point in enumerate(points)}
@@ -92,9 +92,13 @@ def exact_corona_gcts(root, placements):
     nodes = 0
     failed = set()
     chosen = []
+    cutoff = False
 
     def search(selected_mask):
-        nonlocal nodes
+        nonlocal nodes, cutoff
+        if max_nodes and nodes >= max_nodes:
+            cutoff = True
+            return None
         nodes += 1
         if all(capacities[index] == 0 for index in root_indices):
             return tuple(chosen)
@@ -146,7 +150,7 @@ def exact_corona_gcts(root, placements):
 
     witness = search(0)
     return {
-        "result": "sat" if witness is not None else "unsat",
+        "result": "sat" if witness is not None else ("unknown" if cutoff else "unsat"),
         "witness": list(witness or ()),
         "nodes": nodes,
         "failed_states": len(failed),
@@ -154,13 +158,13 @@ def exact_corona_gcts(root, placements):
     }
 
 
-def screen(record, timeout_ms, solver_kind="z3"):
+def screen(record, timeout_ms, solver_kind="z3", max_nodes=0):
     started = time.monotonic()
-    root = GEOMETRY.tile_occupancy(record["cells"])
+    root = GEOMETRY.record_occupancy(record)
     tile_orientations = GEOMETRY.orientations(root)
     placements = candidate_placements(root, tile_orientations)
     if solver_kind == "exact":
-        result = exact_corona_gcts(root, placements)
+        result = exact_corona_gcts(root, placements, max_nodes=max_nodes)
         common = {
             "placements_considered": len(placements),
             "constraint_points": len({
@@ -191,6 +195,16 @@ def screen(record, timeout_ms, solver_kind="z3"):
                         for index in witness
                     ],
                     "replay": replay,
+                },
+            }
+        if result["result"] == "unknown":
+            return {
+                **record,
+                "corona_classification": "unresolved",
+                "corona_z3": {
+                    **common,
+                    "stopped_by": "exact_gcts_node_limit",
+                    "max_nodes": max_nodes,
                 },
             }
         return {
@@ -265,6 +279,8 @@ def main():
     parser.add_argument("--output", required=True)
     parser.add_argument("--timeout-ms", type=int, default=30000)
     parser.add_argument("--solver", choices=("z3", "qffd", "exact"), default="z3")
+    parser.add_argument("--max-nodes", type=int, default=0,
+                        help="Exact GCTS node cap per candidate; zero is exhaustive")
     parser.add_argument("--only-unresolved", action="store_true")
     parser.add_argument("--offset", type=int, default=0)
     parser.add_argument("--limit", type=int, default=0)
@@ -280,7 +296,7 @@ def main():
     counts = {}
     with output.open("a") as stream:
         for index, record in enumerate(records, 1):
-            result = screen(record, args.timeout_ms, args.solver)
+            result = screen(record, args.timeout_ms, args.solver, args.max_nodes)
             classification = result["corona_classification"]
             counts[classification] = counts.get(classification, 0) + 1
             stream.write(json.dumps(result, separators=(",", ":")) + "\n")

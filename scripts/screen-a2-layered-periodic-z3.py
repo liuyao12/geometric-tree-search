@@ -64,6 +64,22 @@ def tile_occupancy(cells: list[dict]) -> dict[tuple[int, int, int], int]:
     return occupancy
 
 
+def record_occupancy(record: dict) -> dict[tuple[int, int, int], int]:
+    """Load either the original triangular-prism cells or an exact occupancy receipt."""
+    if "occupancy" not in record:
+        return tile_occupancy(record["cells"])
+    occupancy: dict[tuple[int, int, int], int] = {}
+    for entry in record["occupancy"]:
+        point, weight = entry[0], entry[1]
+        key = tuple(int(coordinate) for coordinate in point)
+        if len(key) != 3 or any(coordinate != raw for coordinate, raw in zip(key, point)):
+            raise ValueError("non-integral exact occupancy point")
+        occupancy[key] = occupancy.get(key, 0) + int(weight)
+    if any(weight <= 0 or weight > 48 for weight in occupancy.values()):
+        raise ValueError("invalid exact solid-angle occupancy")
+    return occupancy
+
+
 def orientations(occupancy: dict) -> list[dict]:
     result = []
     seen = set()
@@ -481,7 +497,7 @@ def exact_weighted_multicover(
 
 def screen_candidate(record: dict, args) -> dict:
     started = time.monotonic()
-    occupancy = tile_occupancy(record["cells"])
+    occupancy = record_occupancy(record)
     tile_orientations = orientations(occupancy)
     weight = sum(occupancy.values())
     hnf_visited = 0
@@ -647,7 +663,7 @@ def screen_candidate(record: dict, args) -> dict:
                     "kind": "weighted_periodic_hnf_quotient",
                     "certified": True,
                     "can_tile": True,
-                    "model": "a2_layered_lattice_function",
+                    "model": record.get("model", "a2_layered_lattice_function"),
                     "copies": copies,
                     "determinant": determinant,
                     "period_vectors": [list(vector) for vector in period_vectors(hnf)],
