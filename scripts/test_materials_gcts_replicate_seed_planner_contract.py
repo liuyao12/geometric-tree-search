@@ -65,7 +65,7 @@ def main() -> None:
     assert 'requestedCandidateRank' in source and 'resolvedCandidateRank' in source
     assert '.notebook-physics-seed-planner' in styles
     assert '.growth-launch-readiness' in styles
-    assert 'buildId: "20260829-330"' in source
+    assert 'buildId: "20260829-331"' in source
     print("replicate seed planner contract: passed")
 
 

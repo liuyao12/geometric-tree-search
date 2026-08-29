@@ -19,11 +19,12 @@ def main() -> None:
             "connectionCoverageAtlas",
             "connectionCoverageState",
             "connectionCoverageSummary",
+            "connectionCoverageEvidence",
             "connectionCoverageTypes",
             "connectionCoverageDetail",
         ):
             assert f'id="{element_id}"' in document, element_id
-        assert "Exact known-window replay edges are reported separately" in document
+        assert "residual-mediated topology are reported separately" in document
 
     for needle in (
         "function clusterConnectionCoverageRecords()",
@@ -33,11 +34,14 @@ def main() -> None:
         "reconstructionEdges, resolvedLobes:",
         'status = cluster.residual ? "terminal"',
         'record.outgoingRules > 0',
+        "connectionEvidenceNarrative(evidence",
+        'dataset.evidenceVerdict = evidence?.verdict || "unavailable"',
+        '"terminal bridges"',
         '"excluded from growth supply"',
         "target-aware audit only · never growth supply",
         "updateClusterGalleryInspector(record.galleryIndex);",
         "renderConnectionCoverageAtlas();",
-        'buildId: "20260829-330"',
+        'buildId: "20260829-331"',
     ):
         assert needle in source, needle
 
@@ -46,6 +50,7 @@ def main() -> None:
         ".connection-coverage-types button.stranded",
         ".connection-coverage-types button.bidirectional",
         ".connection-coverage-summary",
+        ".connection-evidence-flow",
     ):
         assert needle in styles, needle
 

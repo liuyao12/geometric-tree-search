@@ -1,5 +1,26 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 331 · explain the connection evidence, including honest zeroes
+
+The cluster-to-port atlas now decomposes the exact cover graph into direct
+promotable-support overlaps, support-to-terminal contacts, completed
+support→terminal→support bridges, and occurrence-specific replay edges. The
+decomposition is computed from the frozen occurrence graph rather than inferred
+from the number of rendered lines. It exposes both type-pair topology and direct
+proper-pose recurrence without turning either residual terminals or the known
+window into candidate supply.
+
+This resolves an important ambiguity. In the curated Cd–Yb and BC8 samples,
+direct support-to-support pose classes recur and the generic port grammar is
+available. In the current Cu–Zr glass window, recurring supports connect only
+through explicit residual/gap terminals. The ideal IQC browser patch is even
+more evidence-starved: support-to-terminal contacts exist, but no complete
+support-to-support bridge does. The portal now labels these as a representation
+frontier or an honest failure of compression, not as a successful material
+growth model. A molecular cover is labeled separately because its H₂O anchor
+backend, whole-molecule cluster, connection polyhedra, and void/gap clusters are
+certified through a different path.
+
 ## Build 330 · cluster-to-port coverage atlas
 
 GCTS learning now exposes the exact connection bottleneck *before* material

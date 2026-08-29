@@ -1,5 +1,35 @@
 # Recursive GCTS benchmark for material growth
 
+### Cover-edge evidence decomposition (Build 331)
+
+A zero generic-port count is no longer a single opaque failure state. The
+browser audits the frozen cover occurrence graph and separately counts direct
+promotable-support overlaps, support-to-terminal contacts, terminal-to-terminal
+contacts, completed support→terminal→support occurrence bridges, unique bridge
+type-pair topologies, recurring bridge topologies, and exact directed replay
+edges. Direct rule classes are also split into one-shot and recurring relative
+poses. Each quantity has an explicit denominator and can be inspected without
+opening the growth target.
+
+Only recurring direct proper-pose rules remain eligible as generic growth
+supply. A repeated terminal-mediated topology is diagnostic evidence, not a
+port: promotion would additionally require a train-witnessed composed proper
+pose, an explicit terminal-emission certificate, collision safety, and frozen
+transfer. Exact replay edges retain occurrence identity and remain target-aware.
+This boundary prevents the UI from manufacturing a grammar merely to turn a red
+sample green.
+
+The current browser fixtures expose three genuinely different states. Cd–Yb
+and BC8 contain direct recurrent support connections. The Cu₆₄Zr₃₆ glass has no
+direct support edge but does have three terminal-mediated support pairs; it is a
+representation frontier and an appropriate amorphous compression control. The
+ideal IQC patch has eight support-to-terminal contacts but no completed bridge,
+so its small browser window is connectivity-evidence-starved even though
+backend held-out IQC continuation experiments exist. Ice is explicitly routed
+to the molecular-anchor certificate: one H₂O molecule class, connection
+polyhedra, and symmetry-resolved O₆ void/gap classes remain visible, while its
+generic cluster-port numerator stays separate.
+
 ### Cluster-resolved continuation coverage (Build 330)
 
 The marking stage now audits the directed frozen continuation graph at the same

@@ -87,6 +87,8 @@ import {
   validateIceViAnchorTraceArtifact,
 } from "./ice-vi-anchor-trace.js?v=20260824-1";
 import { discoverIrregularCover } from "./irregular-cover.js?v=20260824-1";
+import { auditCoverConnectionEvidence, connectionEvidenceNarrative }
+  from "./connection-evidence.mjs?v=20260829-331";
 import { generateAmorphousMixture } from "./amorphous-glass.js?v=20260824-1";
 import { anisotropicDisplacementDampedWeightedPowderStructureFactor, compareStructureFactors,
   displacementDampedWeightedPowderStructureFactor, jensenShannonDistance,
@@ -348,6 +350,7 @@ const inheritedChannelCount = $("inheritedChannelCount");
 const connectionCoverageAtlas = $("connectionCoverageAtlas");
 const connectionCoverageState = $("connectionCoverageState");
 const connectionCoverageSummary = $("connectionCoverageSummary");
+const connectionCoverageEvidence = $("connectionCoverageEvidence");
 const connectionCoverageTypes = $("connectionCoverageTypes");
 const connectionCoverageDetail = $("connectionCoverageDetail");
 const growthSearchOptions = $("growthSearchOptions");
@@ -10014,13 +10017,18 @@ function renderConnectionCoverageAtlas() {
   const totalOccurrences = promotable.reduce((sum, record) => sum + record.occurrences, 0);
   const coveredOccurrences = actionable.reduce((sum, record) => sum + record.occurrences, 0);
   const occurrenceCoverage = totalOccurrences ? coveredOccurrences / totalOccurrences : 0;
+  const evidence = overlapGrammar?.connectionEvidence || null;
+  const evidenceNarrative = connectionEvidenceNarrative(evidence, { molecular: Boolean(learnedCover?.molecular) });
   connectionCoverageState.textContent = `${actionable.length}/${promotable.length} types expose target-free ports`;
   connectionCoverageAtlas.className = `connection-coverage-atlas ${stranded.length ? "incomplete" : "complete"}`;
+  connectionCoverageAtlas.dataset.evidenceVerdict = evidence?.verdict || "unavailable";
   const summary = [
     ["actionable types", `${actionable.length}/${promotable.length}`, `${stranded.length} stranded`],
     ["occurrence coverage", `${Math.round(100 * occurrenceCoverage)}%`, `${coveredOccurrences}/${totalOccurrences} fitted occurrences`],
     ["continuation rules", overlapGrammar?.rules?.length || 0, `${overlapGrammar?.recurring || 0} recurrent`],
     ["replay-only edges", overlapGrammar?.reconstructionEdges || 0, "excluded from growth supply"],
+    ["direct support edges", evidence?.directSupportEdges ?? "—", `${evidence?.directIncidentOccurrences ?? 0}/${evidence?.promotableOccurrences ?? 0} occurrences incident`],
+    ["terminal bridges", evidence?.terminalBridgeOccurrencePairs ?? "—", `${evidence?.recurringBridgeTopologies ?? 0} recurrent topologies · not ports`],
   ];
   connectionCoverageSummary.replaceChildren(...summary.map(([label, value, detail]) => {
     const tile = document.createElement("span");
@@ -10029,6 +10037,31 @@ function renderConnectionCoverageAtlas() {
     const em = document.createElement("em"); em.textContent = detail;
     tile.append(small, strong, em); return tile;
   }));
+  if (connectionCoverageEvidence) {
+    const evidenceModes = [
+      ["direct", "direct supports", evidence?.directSupportEdges ?? 0,
+        `${evidence?.recurringDirectRules ?? 0} recurring pose classes`,
+        "Direct train-witnessed overlaps are the only edges currently eligible to become generic target-free ports."],
+      ["terminal", "via terminals", evidence?.terminalBridgeOccurrencePairs ?? 0,
+        `${evidence?.terminalBridgeTypePairs ?? 0} type-pair topologies`,
+        "A gap or residual terminal connects these supports in the exact cover. Topology alone is not enough: a composed proper pose and terminal-emission certificate are still required."],
+      ["replay", "replay only", overlapGrammar?.reconstructionEdges || 0,
+        "exact directed edges",
+        "These occurrence-specific edges can audit reconstruction of the observed window, but are hidden from target-free growth."],
+    ];
+    const explanation = document.createElement("p");
+    explanation.innerHTML = `<strong>${evidenceNarrative.label}</strong><span>${evidenceNarrative.summary}</span><em>${evidenceNarrative.implication}</em>`;
+    const buttons = evidenceModes.map(([mode, label, value, note, description]) => {
+      const button = document.createElement("button"); button.type = "button"; button.dataset.evidenceMode = mode;
+      button.innerHTML = `<small>${label}</small><strong>${value}</strong><em>${note}</em>`;
+      button.addEventListener("click", () => {
+        connectionCoverageEvidence.querySelectorAll("button").forEach((candidate) => candidate.classList.toggle("active", candidate === button));
+        explanation.innerHTML = `<strong>${label}</strong><span>${description}</span><em>${evidenceNarrative.implication}</em>`;
+      });
+      return button;
+    });
+    connectionCoverageEvidence.replaceChildren(...buttons, explanation);
+  }
   const showDetail = (record) => {
     connectionCoverageTypes.querySelectorAll("button").forEach((button) => {
       const active = Number(button.dataset.connectionCoverageCluster) === record.galleryIndex;
@@ -10042,7 +10075,7 @@ function renderConnectionCoverageAtlas() {
       ? " Generic cluster-port continuation is absent; any Stage-4 molecular-anchor backend is a separate certified path and is not counted here."
       : "";
     connectionCoverageDetail.className = record.status;
-    connectionCoverageDetail.innerHTML = `<header><span><small>${record.family} · ${record.status.replaceAll("-", " ")}</small><strong>${record.label}</strong></span><b>${record.occurrences} occurrence${record.occurrences === 1 ? "" : "s"}</b></header><div><span><small>outgoing continuation</small><strong>${record.outgoingRules} rules · ${record.outgoingWitnesses} witnesses</strong><em>targets ${outgoingTargets}</em></span><span><small>incoming continuation</small><strong>${record.incomingRules} rules · ${record.incomingWitnesses} witnesses</strong><em>sources ${incomingSources}</em></span><span><small>marking section</small><strong>${record.resolvedLobes} resolved · ${record.unsupportedSectors} unsupported</strong><em>${record.channels} channels · ${record.poseCount || "—"} pose samples · ${record.properSymmetryGauges} proper gauges</em></span><span><small>known-window replay</small><strong>${record.reconstructionEdges} exact edges</strong><em>target-aware audit only · never growth supply</em></span></div><p>${record.outgoingRules ? "This type can expose a frozen target-free attachment; marking chooses among exact candidates but never authorizes new geometry." : record.residual ? "This exact residual terminal completes coverage and is deliberately not promoted." : "This fitted type is geometrically represented but cannot launch generic continuation with the current frozen vocabulary."}${molecularBoundary}</p>`;
+    connectionCoverageDetail.innerHTML = `<header><span><small>${record.family} · ${record.status.replaceAll("-", " ")}</small><strong>${record.label}</strong></span><b>${record.occurrences} occurrence${record.occurrences === 1 ? "" : "s"}</b></header><div><span><small>outgoing continuation</small><strong>${record.outgoingRules} rules · ${record.outgoingWitnesses} witnesses</strong><em>targets ${outgoingTargets}</em></span><span><small>incoming continuation</small><strong>${record.incomingRules} rules · ${record.incomingWitnesses} witnesses</strong><em>sources ${incomingSources}</em></span><span><small>marking section</small><strong>${record.resolvedLobes} resolved · ${record.unsupportedSectors} unsupported</strong><em>${record.channels} channels · ${record.poseCount || "—"} pose samples · ${record.properSymmetryGauges} proper gauges</em></span><span><small>known-window replay</small><strong>${record.reconstructionEdges} exact edges</strong><em>target-aware audit only · never growth supply</em></span></div><p>${record.outgoingRules ? "This type can expose a frozen target-free attachment; marking chooses among exact candidates but never authorizes new geometry." : record.residual ? "This exact residual terminal completes coverage and is deliberately not promoted." : `This fitted type is geometrically represented but cannot launch generic continuation with the current frozen vocabulary. Aggregate diagnosis: ${evidenceNarrative.label}.`}${molecularBoundary}</p>`;
   };
   connectionCoverageTypes.replaceChildren(...records.map((record) => {
     const button = document.createElement("button"); button.type = "button";
@@ -10920,9 +10953,14 @@ function learnMolecularOverlapGrammar(source) {
     reachableOccurrences.add(next);
     occurrences[next].placement.support.forEach((atomIndex) => coveredAtoms.add(atomIndex));
   }
+  const connectionEvidence = auditCoverConnectionEvidence({
+    placements: occurrences.map((occurrence) => occurrence.placement),
+    edges: trainedMarking.edges.filter((edge) => edge.shared >= 2 && edge.distance <= overlapDistanceCutoff()),
+    rules: [],
+  });
   return { molecular: true, coverBased: true, occurrences, templates, rules: [], byFrom: new Map(),
     reconstructionByOccurrence, replaySeedIndex, replayReachable: coveredAtoms.size,
-    reconstructionEdges, observations: reconstructionEdges, recurring: 0, heldoutSupported: 0 };
+    reconstructionEdges, observations: reconstructionEdges, recurring: 0, heldoutSupported: 0, connectionEvidence };
 }
 
 function learnIrregularOverlapGrammar(source) {
@@ -11050,6 +11088,11 @@ function learnIrregularOverlapGrammar(source) {
       replayQueue.push(rule.occurrenceTo);
     });
   }
+  const connectionEvidence = auditCoverConnectionEvidence({
+    placements: occurrences.map((occurrence) => occurrence.placement),
+    edges: strongEdges,
+    rules,
+  });
   return {
     coverBased: true,
     occurrences,
@@ -11063,6 +11106,7 @@ function learnIrregularOverlapGrammar(source) {
     observations: strongEdges.length * 2,
     recurring: rules.filter((rule) => rule.count >= 2).length,
     heldoutSupported: rules.filter((rule) => rule.holdoutCount > 0).length,
+    connectionEvidence,
   };
 }
 
@@ -11214,10 +11258,15 @@ function learnOverlapGrammar(source) {
       replayQueue.push(rule.occurrenceTo);
     });
   }
+  const connectionEvidence = auditCoverConnectionEvidence({
+    placements: occurrences.map((occurrence) => ({ type: occurrence.type, residual: false })),
+    edges: strongEdges,
+    rules,
+  });
   return { occurrences, templates, rules, byFrom, reconstructionByOccurrence,
     replaySeedIndex, replayReachable: reachableOccurrences.size,
     reconstructionEdges: strongEdges.length * 2,
-    observations: strongEdges.length * 2, recurring, heldoutSupported };
+    observations: strongEdges.length * 2, recurring, heldoutSupported, connectionEvidence };
 }
 
 const MARKING_REPRESENTATIONS = {
@@ -12022,7 +12071,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260829-330",
+      buildId: "20260829-331",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -14458,7 +14507,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260829-330" },
+    application: { name: "Materials Growth Lab", buildId: "20260829-331" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },
