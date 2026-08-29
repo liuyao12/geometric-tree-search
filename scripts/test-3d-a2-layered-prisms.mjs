@@ -59,34 +59,18 @@ for (const candidate of A2_SLICED_SIZE7_CANDIDATES) {
   assert.equal(prepared.summary.point_group_order, 6);
 }
 
-const sliced00139 = A2_SLICED_SIZE7_CANDIDATES.find(candidate =>
-  candidate.id === "a2sa_7_00139");
-const sliced00120 = A2_SLICED_SIZE7_CANDIDATES.find(candidate =>
-  candidate.id === "a2sa_7_00120");
-const sliced00674 = A2_SLICED_SIZE7_CANDIDATES.find(candidate =>
-  candidate.id === "a2sa_7_00674");
-const sliced00626 = A2_SLICED_SIZE7_CANDIDATES.find(candidate =>
-  candidate.id === "a2sa_7_00626");
-const sliced00569 = A2_SLICED_SIZE7_CANDIDATES.find(candidate =>
-  candidate.id === "a2sa_7_00569");
-const sliced00822 = A2_SLICED_SIZE7_CANDIDATES.find(candidate =>
-  candidate.id === "a2sa_7_00822");
-const scale3Exhausted = [
-  [sliced00120, 1265], [sliced00139, 1268], [sliced00569, 1429],
-  [sliced00626, 1388], [sliced00674, 1291], [sliced00822, 1922]
-];
-for (const [candidate, parentTypes] of scale3Exhausted) {
+const scale3ParentTypes = new Map([
+  ["a2sa_7_00120", 1265], ["a2sa_7_00139", 1268], ["a2sa_7_00170", 2033],
+  ["a2sa_7_00569", 1429], ["a2sa_7_00626", 1388], ["a2sa_7_00674", 1291],
+  ["a2sa_7_00699", 2229], ["a2sa_7_00822", 1922]
+]);
+for (const candidate of A2_SLICED_SIZE7_CANDIDATES) {
   assert.deepEqual(candidate.screening.three_copy_metatile_substitution_scales_exhausted,
     [2, 3]);
   assert.equal(candidate.screening.three_copy_metatile_scale3_reflected_status,
     "no_three_copy_metatile_scalar3_substitution");
   assert.equal(candidate.screening.three_copy_metatile_scale3_reflected_parent_types,
-    parentTypes);
-}
-for (const candidate of A2_SLICED_SIZE7_CANDIDATES.filter(item =>
-  !scale3Exhausted.some(([exhausted]) => exhausted === item))) {
-  assert.deepEqual(candidate.screening.three_copy_metatile_substitution_scales_exhausted, [2]);
-  assert.equal(candidate.screening.three_copy_metatile_scale3_reflected_status, "unresolved");
+    scale3ParentTypes.get(candidate.id));
 }
 
 const config = {
