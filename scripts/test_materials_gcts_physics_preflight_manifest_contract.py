@@ -88,7 +88,7 @@ def test_each_physical_layer_has_an_interactive_execution_lineage():
 
 
 def test_live_spin_graph_multiplicity_and_rigidity_channels_reach_execution_objects():
-    assert 'new Set(["steric", "local", "connection", "collinear-spin"])' in COMPRESSION
+    assert 'new Set(["steric", "local", "connection", "collinear-spin", "chemistry"])' in COMPRESSION
     for record_id in ("long-range", "configurational-entropy", "constraint-rigidity"):
         assert record_id in COMPRESSION
     for control_id in ("collectiveResponseSelect", "configurationalMultiplicitySelect",
@@ -98,6 +98,17 @@ def test_live_spin_graph_multiplicity_and_rigidity_channels_reach_execution_obje
                              "signed candidate score and branch rank"):
         assert execution_object in COMPRESSION
     assert '["execution object", selectedExecutionLineage.executionObjects.length' in APP
+
+
+def test_mixed_effect_controls_and_candidate_scores_fail_closed_on_lineage_drift():
+    assert "buildPhysicsScoreExecutionCoverage" in APP
+    assert "export function buildPhysicsScoreExecutionCoverage" in COMPRESSION
+    assert "executionEffects: { hardAdmission: true, ranking: activeGeometricStrainWeight() > 0 }" in APP
+    assert 'executionEffects: { hardAdmission: feedstockSupplyMode !== "open", ranking: chemistryTerms.length > 0 }' in APP
+    assert "executionEffects: { ranking: Boolean(externalCalibrationPromotion) }" in APP
+    assert "growth-action score lineage incomplete" in APP
+    assert "scoreExecutionCoverage" in APP
+    assert "every active rank term resolves to one live physics layer and execution object" in APP
 
 
 def test_execution_effect_atlas_composes_with_scale_and_evidence_filters():
@@ -147,10 +158,10 @@ def test_public_narrative_and_build_are_versioned():
     assert "Build 177" in README
     assert "Build 177" in DOCS
     assert "If WebGL cannot be created" in README
-    assert 'buildId: "20260828-318"' in APP
-    assert 'app.js?v=20260828-318' in HTML
-    assert 'style.css?v=20260828-318' in HTML
-    assert 'physics-compression-map.js?v=20260828-318' in APP
-    assert 'evidence-atlas.js?v=20260828-318' in HTML
+    assert 'buildId: "20260828-319"' in APP
+    assert 'app.js?v=20260828-319' in HTML
+    assert 'style.css?v=20260828-319' in HTML
+    assert 'physics-compression-map.js?v=20260828-319' in APP
+    assert 'evidence-atlas.js?v=20260828-319' in HTML
     assert "Build 207" in README
     assert "Build 207" in DOCS

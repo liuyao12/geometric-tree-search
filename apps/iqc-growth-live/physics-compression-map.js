@@ -35,12 +35,12 @@ function laneState(counts, total) {
   return "hybrid";
 }
 
-const HARD_ADMISSION_IDS = new Set(["steric", "local", "connection", "collinear-spin"]);
+const HARD_ADMISSION_IDS = new Set(["steric", "local", "connection", "collinear-spin", "chemistry"]);
 const CANDIDATE_GEOMETRY_IDS = new Set(["constraint-projection", "calculation-forces"]);
 const INITIAL_STATE_IDS = new Set(["multi-nucleus"]);
 const SEARCH_ORDER_IDS = new Set(["path-ensemble"]);
 const RANKING_IDS = new Set([
-  "hypothesis-separation", "calculation-stress", "stress-strain-response",
+  "hypothesis-separation", "local", "calculation-stress", "stress-strain-response",
   "geometry-calculation-calibration", "connection", "chemistry", "charge-geometry",
   "charge-moment", "ionic-pair", "bond-valence", "solute-partition", "surface",
   "bulk-surface-driving", "attachment-topology", "habit-anisotropy", "defect-precursors",
@@ -124,12 +124,18 @@ export function physicsExecutionLineage(record) {
   if (!record?.id || typeof record.status !== "string") {
     throw new Error("physics execution lineage needs a manifest record");
   }
-  const active = effectActive(record);
-  const hardAdmission = active && HARD_ADMISSION_IDS.has(record.id);
-  const candidateGeometry = active && CANDIDATE_GEOMETRY_IDS.has(record.id);
-  const initialState = active && INITIAL_STATE_IDS.has(record.id);
-  const ranking = active && RANKING_IDS.has(record.id);
-  const searchOrder = active && SEARCH_ORDER_IDS.has(record.id);
+  const declared = record.executionEffects && typeof record.executionEffects === "object"
+    ? record.executionEffects : {};
+  const declaredActive = ["hardAdmission", "candidateGeometry", "initialState", "ranking", "searchOrder"]
+    .some((effect) => declared[effect] === true);
+  const active = effectActive(record) || declaredActive;
+  const resolveEffect = (id, fallback) => typeof declared[id] === "boolean"
+    ? declared[id] : active && fallback;
+  const hardAdmission = resolveEffect("hardAdmission", HARD_ADMISSION_IDS.has(record.id));
+  const candidateGeometry = resolveEffect("candidateGeometry", CANDIDATE_GEOMETRY_IDS.has(record.id));
+  const initialState = resolveEffect("initialState", INITIAL_STATE_IDS.has(record.id));
+  const ranking = resolveEffect("ranking", RANKING_IDS.has(record.id));
+  const searchOrder = resolveEffect("searchOrder", SEARCH_ORDER_IDS.has(record.id));
   const effects = [
     hardAdmission ? "hard admission" : null,
     candidateGeometry ? "bounded candidate geometry" : null,
@@ -160,6 +166,55 @@ export function physicsExecutionLineage(record) {
     summary: effects.length ? effects.join(" + ") : active
       ? "active structural evidence; no direct execution hook"
       : "diagnostic or unresolved; no execution effect",
+  };
+}
+
+export function buildPhysicsScoreExecutionCoverage(scoreTerms, records) {
+  if (!Array.isArray(scoreTerms) || !Array.isArray(records)) {
+    throw new Error("physics score coverage needs score terms and manifest records");
+  }
+  const recordsById = new Map();
+  records.forEach((record) => {
+    if (!record?.id || recordsById.has(record.id)) {
+      throw new Error("physics score coverage needs unique manifest IDs");
+    }
+    recordsById.set(record.id, record);
+  });
+  const excludedTermIds = scoreTerms
+    .filter((term) => ["known-window-gain", "exploration"].includes(term?.id))
+    .map((term) => term.id);
+  const activeTerms = scoreTerms.filter((term) => term
+    && !excludedTermIds.includes(term.id)
+    && Number.isFinite(term.weight) && Math.abs(term.weight) > 1e-12);
+  const rows = activeTerms.map((term) => {
+    const manifestId = term.normalization?.physicsManifestId || null;
+    const record = manifestId ? recordsById.get(manifestId) : null;
+    const lineage = record ? physicsExecutionLineage(record) : null;
+    return {
+      termId: term.id,
+      manifestId,
+      mapped: Boolean(record),
+      rankingCanChange: Boolean(lineage?.rankingCanChange),
+      executionObjects: lineage ? [...lineage.executionObjects] : [],
+    };
+  });
+  const unmappedTermIds = rows.filter((row) => !row.mapped).map((row) => row.termId);
+  const nonRankingTermIds = rows.filter((row) => row.mapped && !row.rankingCanChange)
+    .map((row) => row.termId);
+  return {
+    schema: 1,
+    scoreTermCount: scoreTerms.length,
+    activeRankTermCount: activeTerms.length,
+    coveredRankTermCount: rows.filter((row) => row.mapped && row.rankingCanChange).length,
+    excludedTermIds,
+    rows,
+    unmappedTermIds,
+    nonRankingTermIds,
+    complete: unmappedTermIds.length === 0 && nonRankingTermIds.length === 0,
+    candidateSetInspected: false,
+    coordinatesEmbedded: false,
+    targetUsed: false,
+    physicalTimeModeled: false,
   };
 }
 

@@ -36,15 +36,15 @@ import { buildSettlingMaterialResponseHistory, buildSettlingMaterialResponseMatr
   SETTLING_MATERIAL_FIELDS }
   from "./settling-material-sensitivity.mjs?v=20260828-290";
 import { channelValidationMetricsFromCounts, validationOccurrenceJackknife }
-  from "./validation-uncertainty.mjs?v=20260828-318";
+  from "./validation-uncertainty.mjs?v=20260828-319";
 import { scoreNormalizationAudit }
-  from "./score-normalization.mjs?v=20260828-318";
+  from "./score-normalization.mjs?v=20260828-319";
 import { screenedCoherencyGraphField }
-  from "./coherency-graph-field.mjs?v=20260828-318";
+  from "./coherency-graph-field.mjs?v=20260828-319";
 import { continuationMultiplicityAtlas, continuationMultiplicityScore }
-  from "./configurational-multiplicity.mjs?v=20260828-318";
+  from "./configurational-multiplicity.mjs?v=20260828-319";
 import { geometricConstraintTensor }
-  from "./geometric-constraint-tensor.mjs?v=20260828-318";
+  from "./geometric-constraint-tensor.mjs?v=20260828-319";
 import { archiveResponseFrontierRankAudit }
   from "./archive-response-frontier-audit.js?v=20260827-1";
 import { evidenceOrderedClusterDiscoverySchedule }
@@ -69,9 +69,10 @@ import { blockedCreationResponseSurrogate, blockedCreationResponseValidation, bu
   LOCAL_CREATION_CONTEXT_FEATURE_IDS }
   from "./creation-response-association.js?v=20260826-13";
 import { buildPhysicsCompressionMap, buildPhysicsEffectMatrix, buildPhysicsInvestigationProtocol,
+  buildPhysicsScoreExecutionCoverage,
   buildPhysicsLineagePath, buildPhysicsProtocolIntervention, PHYSICS_ABLATION_CONTROL_BINDINGS,
   PHYSICS_EFFECT_COLUMNS, PHYSICS_READINESS_STATES, physicsExecutionLineage }
-  from "./physics-compression-map.js?v=20260828-318";
+  from "./physics-compression-map.js?v=20260828-319";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -9153,10 +9154,14 @@ function renderGrowthMechanismPhysicsAttribution() {
   });
   const rank = Number.isInteger(audit.rank) ? `${audit.rank}/${audit.candidateCount}` : "unranked";
   const strongestSensitivity = rows[0]?.selectedSensitivity || null;
+  const scoreCoverage = audit.scoreExecutionCoverage || null;
+  const scoreCoverageLabel = scoreCoverage
+    ? `lineage ${scoreCoverage.coveredRankTermCount}/${scoreCoverage.activeRankTermCount}`
+    : "lineage unavailable";
   if (growthMechanismPhysicsView === "influence") {
     growthMechanismPhysicsState.textContent = pairMode
-      ? `A→B leave-one-channel rank sensitivity · B rank ${rank} · ${audit.hardGateFailureCount} hard failures`
-      : `rank ${rank} · ${audit.rankSensitivity?.rankChangingTerms || 0}/${audit.rankSensitivity?.activePhysicalTerms || 0} channels move rank · max ${audit.rankSensitivity?.maximumAbsoluteRankBenefit || 0} places`;
+      ? `A→B leave-one-channel rank sensitivity · B rank ${rank} · ${scoreCoverageLabel} · ${audit.hardGateFailureCount} hard failures`
+      : `rank ${rank} · ${audit.rankSensitivity?.rankChangingTerms || 0}/${audit.rankSensitivity?.activePhysicalTerms || 0} channels move rank · max ${audit.rankSensitivity?.maximumAbsoluteRankBenefit || 0} places · ${scoreCoverageLabel}`;
     const detail = document.createElement("p");
     detail.textContent = strongestSensitivity
       ? `Largest selected-action displacement: without ${strongestSensitivity.termLabel}, rank ${strongestSensitivity.baselineRank} → ${strongestSensitivity.omittedRank}; the active term ${strongestSensitivity.direction} by ${Math.abs(strongestSensitivity.rankBenefit)} place${Math.abs(strongestSensitivity.rankBenefit) === 1 ? "" : "s"}.`
@@ -9165,14 +9170,14 @@ function renderGrowthMechanismPhysicsAttribution() {
     growthMechanismPhysicsBoundary.textContent = `${audit.rankSensitivity?.omissionRule || "Exact leave-one-channel-out reranking"}. Candidate IDs, geometry, hard admission, and all other terms are unchanged; no omitted arm executes. Ledger ${audit.rankSensitivity?.digest || "unhashed"}. This is deterministic model sensitivity—not an identified physical causal effect, energy difference, probability, rate, or time.`;
   } else {
     growthMechanismPhysicsState.textContent = pairMode
-      ? `A→B signed term delta · B rank ${rank} · ${audit.hardGateFailureCount} hard failures`
-      : `rank ${rank} · score ${audit.score.toFixed(3)} · ${audit.activePhysicsTermCount} physical surrogates · ${audit.hardGateFailureCount} hard failures`;
+      ? `A→B signed term delta · B rank ${rank} · ${scoreCoverageLabel} · ${audit.hardGateFailureCount} hard failures`
+      : `rank ${rank} · score ${audit.score.toFixed(3)} · ${audit.activePhysicsTermCount} physical surrogates · ${scoreCoverageLabel} · ${audit.hardGateFailureCount} hard failures`;
     const detail = document.createElement("p");
     detail.textContent = "Switch to rank sensitivity to rerank this same immutable frontier with one active physical-surrogate channel removed at a time.";
     growthMechanismPhysicsSensitivity.appendChild(detail);
     growthMechanismPhysicsBoundary.textContent = pairMode
       ? `A/B rows show the exact signed contribution change for the same declared score channels; hard-gate transitions remain separate. B ledger ${audit.digest || "unhashed"}. Comparison is display-only and does not rerank either retained frontier.`
-      : `Exact additive parity ${audit.termTotal.toFixed(3)} = score ${audit.score.toFixed(3)} · physics net ${signed(audit.signedPhysicsContribution)} · ${audit.diagnosticTermCount} zero-weight channels retained as diagnostic · ledger ${audit.digest || "unhashed"}. These are dimensionless geometry-encoded ordering terms, not energies, probabilities, forces, barriers, rates, dynamics, or physical time.`;
+      : `Exact additive parity ${audit.termTotal.toFixed(3)} = score ${audit.score.toFixed(3)} · physics net ${signed(audit.signedPhysicsContribution)} · ${audit.diagnosticTermCount} zero-weight channels retained as diagnostic · ${scoreCoverage?.complete ? "every active rank term resolves to one live physics layer and execution object" : "score lineage unavailable"} · ledger ${audit.digest || "unhashed"}. These are dimensionless geometry-encoded ordering terms, not energies, probabilities, forces, barriers, rates, dynamics, or physical time.`;
   }
 }
 
@@ -11804,7 +11809,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260828-318",
+      buildId: "20260828-319",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -14234,7 +14239,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260828-318" },
+    application: { name: "Materials Growth Lab", buildId: "20260828-319" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },
@@ -19019,7 +19024,12 @@ function freezeGrowthActionPhysicsFingerprint(entry) {
   if (Math.abs(exactTotal - entry.selectionScore) > 1e-9) {
     throw new Error("growth-action physics fingerprint does not reconcile with the ranking score");
   }
-  const manifestById = new Map(physicsTranslationRecords(null).map((record) => [record.id, record]));
+  const manifestRecords = physicsTranslationRecords(null);
+  const scoreExecutionCoverage = buildPhysicsScoreExecutionCoverage(exactTerms, manifestRecords);
+  if (!scoreExecutionCoverage.complete) {
+    throw new Error(`growth-action score lineage incomplete: unmapped ${scoreExecutionCoverage.unmappedTermIds.join(",") || "none"}; non-ranking ${scoreExecutionCoverage.nonRankingTermIds.join(",") || "none"}`);
+  }
+  const manifestById = new Map(manifestRecords.map((record) => [record.id, record]));
   const terms = exactTerms.map((term) => {
     const source = manifestById.get(term.normalization.physicsManifestId);
     if (!source) throw new Error(`score term ${term.id} has no physics-manifest source`);
@@ -19032,6 +19042,8 @@ function freezeGrowthActionPhysicsFingerprint(entry) {
       normalization: term.normalization,
       physicsLineage: { manifestId: source.id, process: source.process, status: source.status,
         role: source.role, evidence: source.evidence, encoding: source.encoding,
+        executionEffects: source.executionEffects ? { ...source.executionEffects } : null,
+        executionObjects: physicsExecutionLineage(source).executionObjects,
         boundary: source.boundary, candidateSetInspected: false, targetUsed: false,
         physicalTimeModeled: false },
       active: Math.abs(term.weight) > 1e-12,
@@ -19050,6 +19062,7 @@ function freezeGrowthActionPhysicsFingerprint(entry) {
     activePhysicsTermCount: activePhysicsTerms.length,
     diagnosticTermCount: terms.filter((term) => !term.active).length,
     signedPhysicsContribution: receiptRound(activePhysicsTerms.reduce((sum, term) => sum + term.contribution, 0), 10),
+    scoreExecutionCoverage,
     gates,
     hardGatePassCount: gates.filter((gate) => gate.passed).length,
     hardGateFailureCount: gates.filter((gate) => !gate.passed).length,
@@ -19079,6 +19092,7 @@ function rankGrowthActionPhysicsFingerprint(entry, rank, candidateCount, leaderS
   fingerprint.scoreBehindLeader = receiptRound(leaderScore - entry.selectionScore, 10);
   fingerprint.digest = notebookStringHash(JSON.stringify({
     score: fingerprint.score, terms: fingerprint.terms, gates: fingerprint.gates,
+    scoreExecutionCoverage: fingerprint.scoreExecutionCoverage,
     rank, candidateCount, scoreBehindLeader: fingerprint.scoreBehindLeader,
     targetUsedForRanking: fingerprint.targetUsedForRanking,
   }));
@@ -27966,6 +27980,7 @@ function physicsTranslationRecords(leap = null) {
     ? (relaxationCalibrationMetricMode === "force"
       ? relaxationGeometryCalibration.forceSurrogate : relaxationGeometryCalibration.energySurrogate)
     : null;
+  const externalCalibrationPromotion = activeExternalCalibrationPromotion();
   const stressStrainResponse = archivedStressStrainResponse();
   const localConstraintMismatch = currentLocalConstraintMismatchField();
   const localSymmetry = leap?.localSymmetryTransition || null;
@@ -27988,7 +28003,10 @@ function physicsTranslationRecords(leap = null) {
       encoding: `${coloredDistanceEnvelopes?.records?.length || 0} colored pair envelopes with exact species coincidence and learned hard-exclusion radii${coloredDistanceEnvelopes?.records?.some((record) => record.directionalUncertaintyApplied) ? `; ${coloredDistanceEnvelopes.records.filter((record) => record.directionalUncertaintyApplied).length} retain one-sigma full-Uij support, transported as U_world=R U_local R^T and resolved again along every live pair direction` : ""}`,
       evidence: leapResult,
       boundary: "This excludes geometrically impossible contacts. Reported one-sigma ellipsoidal support is treated as independent site covariance only; it is not a repulsive pair potential, correlated phonon model, contact probability, force, pressure, or dynamical collision trajectory." },
-    { id: "local", process: "local bonding geometry / valence saturation", status: "hard", role: "hard causal neighborhood gate",
+    { id: "local", process: "local bonding geometry / valence saturation", status: "hard",
+      role: activeGeometricStrainWeight() > 0
+        ? "hard causal neighborhood gate + soft local mismatch ordering" : "hard causal neighborhood gate",
+      executionEffects: { hardAdmission: true, ranking: activeGeometricStrainWeight() > 0 },
       encoding: `${coloredCoordinationEnvelopes?.records?.length || 0} ordered coordination bounds + ${coloredAngularEnvelopes?.records?.length || 0} colored angular bands within the sample-derived reach`,
       evidence: `${coordinationCapacityPrunes} coordination and ${angularEnvelopePrunes} angular prunes have occurred in this run.`,
       boundary: "Coordination and angle envelopes constrain local topology but do not calculate bond order, bond energy, hybridization, or electronic structure." },
@@ -28054,6 +28072,7 @@ function physicsTranslationRecords(leap = null) {
       role: spinGeometry.available ? scalarSpinColoringActive()
         ? "transported exact overlap color" : "external scalar-label diagnostic / registered ablation"
         : "no scalar spin channel",
+      executionEffects: { hardAdmission: scalarSpinColoringActive() },
       encoding: spinGeometry.available
         ? `${spinGeometry.suppliedSites}/${spinGeometry.inputSites} supplied site scalars; normalized signed sum ${spinGeometry.netPolarization >= 0 ? "+" : ""}${spinGeometry.netPolarization.toFixed(3)}; |sᵢsⱼ|-weighted C(r) through ${spinGeometry.maximumReach.toFixed(2)} Å; ${scalarSpinColoringActive() ? "signed scalar labels travel unchanged with rigid cluster poses and must agree at shared sites" : "chemistry-only overlap ablation"}`
         : "no explicit finite per-atom scalar spin population accompanies the active structural record",
@@ -28070,8 +28089,10 @@ function physicsTranslationRecords(leap = null) {
         : "No cross-frame structural variability is available.",
       boundary: "The displacement field is a difference between archived structures, not a force or physical path. Copying its local vector is an explicit rigid-environment hypothesis; a worsening seed is ignored and the entire projection rolls back on any failed certificate. Archive order is not elapsed time. No velocity, integration step, optimizer clock, minimum-energy path, transition probability, or growth rate is inferred; energies are compared only within this one same-method archived sequence." },
     { id: "geometry-calculation-calibration", process: "sample-relative geometry / external calculation association",
-      status: relaxationGeometryCalibration ? "observed" : "unavailable",
-      role: relaxationGeometryCalibration ? "descriptive final-frame-reference diagnostic" : "no paired geometry/calculation series",
+      status: externalCalibrationPromotion ? "soft" : relaxationGeometryCalibration ? "observed" : "unavailable",
+      role: externalCalibrationPromotion ? "cross-archive-gated soft geometry ordering"
+        : relaxationGeometryCalibration ? "descriptive final-frame-reference diagnostic" : "no paired geometry/calculation series",
+      executionEffects: { ranking: Boolean(externalCalibrationPromotion) },
       encoding: relaxationGeometryCalibration
         ? `${relaxationGeometryCalibration.sampledCentersPerFrame} deterministic centers/frame; ${relaxationGeometryCalibration.referenceLabel} colored contact, coordination, and angle envelopes; final / first / pooled reference modes remain selectable; fixed leave-one-frame-out ridge plus an exact-provenance frozen cross-archive library`
         : "requires at least three fixed-topology archived frames with paired geometry and calculation metadata",
@@ -28143,6 +28164,7 @@ function physicsTranslationRecords(leap = null) {
       status: feedstockSupplyMode !== "open" ? "hard" : chemistryTerms.length ? "soft" : "open",
       role: feedstockSupplyMode !== "open" ? "hard species-count admission + optional soft composition ordering"
         : chemistryTerms.length ? "target-blind soft ordering" : "available but disabled",
+      executionEffects: { hardAdmission: feedstockSupplyMode !== "open", ranking: chemistryTerms.length > 0 },
       encoding: `${chemistryTerms.join(" + ") || "composition rank off"} + ${feedstockSupplyMode === "open" ? "open feedstock ledger" : `${currentFeedstockSnapshot().factor}× finite integer inventory`}`,
       evidence: `Reference reduced ratio ${JSON.stringify(compositionTarget?.reducedRatio || {})}; formal-charge coverage ${Math.round((formalChargeTarget?.coverage || 0) * 100)}%; ${currentFeedstockSnapshot().admittedAtoms} atoms supplied and ${feedstockSupplyPrunes} actions pruned for depletion.`,
       boundary: "Species inventory is exact bookkeeping, not concentration, chemical potential, oxidation-state inference, Coulomb energy, transport, flux, diffusion, reaction kinetics, or physical time." },
@@ -28384,6 +28406,7 @@ function physicsManifestRecord(record) {
   const route = PHYSICS_CONTROL_ROUTES[record.id];
   return { id: record.id, process: record.process, status: record.status, role: record.role,
     encoding: record.encoding, evidence: record.evidence, boundary: record.boundary,
+    executionEffects: record.executionEffects ? { ...record.executionEffects } : null,
     controlRouteAvailable: Boolean(route), controlRouteLabel: route?.label || null,
     executionLineage: physicsExecutionLineage(record) };
 }

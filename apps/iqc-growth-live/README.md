@@ -1,5 +1,35 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 319 · score-to-physics completeness is now executable
+
+Every nonzero candidate-ranking term now has to resolve at runtime to one
+physics-manifest record whose current controls explicitly expose a ranking
+effect. Candidate construction fails closed if a term is unmapped or its
+manifest row claims no live rank object. The candidate mechanism inspector and
+receipt retain the covered/active count, term-to-layer rows, excluded labeled
+replay/order terms, execution objects, and the coordinate-free certificate.
+
+This also makes mixed channels truthful. Sample-learned local geometry is both
+a hard coordination/angle gate and, only when enabled, a soft mismatch rank.
+Finite feedstock is a hard species-inventory gate while composition/formal
+charge may independently rank. A cross-archive calibration becomes an active
+rank row only after its frozen promotion passes and is selected; otherwise it
+remains observed evidence. Scalar-spin coloring similarly exposes admission
+only when the supplied label channel is actually active.
+
+The certificate proves wiring and additive-accounting completeness, not that
+the geometric surrogates are physical energies or that their weights are
+universally calibrated. It prevents a portal control from silently influencing
+search while appearing diagnostic—or from appearing active without reaching
+the executed score.
+
+This deployment also absorbs the newest exact A₂ result. All eight focused
+size-seven candidates now exhaust the proper/reflected three-copy parent
+alphabets at both scale three and scale four: 12,825 parent types at each scale,
+25,650 scale-specific parent tests in total, and no substitution. The portal
+shows both screens separately and continues to label all candidates globally
+unresolved.
+
 ## Build 318 · every live physics channel reaches the execution atlas
 
 The pre-growth physics manifest now follows four previously misclassified

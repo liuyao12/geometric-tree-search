@@ -1,5 +1,28 @@
 # Recursive GCTS benchmark for material growth
 
+### Executable score-lineage completeness (Build 319)
+
+The live executor now compiles a candidate-level completeness certificate over
+the exact signed score ledger. Every nonzero rank term except the explicitly
+separated known-window replay and seeded exploration terms must map to one
+manifest layer that currently declares a ranking execution object. Unmapped or
+misclassified terms abort candidate construction. The certificate and its
+term rows enter the retained-action fingerprint and digest.
+
+Per-control effect overrides resolve channels with more than one role: local
+geometry can reject and rank, chemistry can enforce finite inventory and rank,
+scalar-spin coloring can reject overlaps only when enabled, and a frozen
+external calibration can rank only after selected promotion. This is a
+software/evidence-lineage invariant, not validation of the surrogate as an
+energy, force, entropy, rate, or physical clock.
+
+The same release incorporates the next exact A₂ bounded screen. The eight
+focused size-seven supports each exhaust their proper/reflected three-copy
+parent alphabet at scale four as well as scale three. Each scale accounts for
+12,825 parent types, so the Evidence Atlas now reports 25,650 scale-specific
+parent tests and sixteen bounded grammar obstructions. These remain finite
+obstructions only; global tiling and aperiodicity classification are open.
+
 ### Physics execution-lineage repair (Build 318)
 
 The portal's coordinate-free preflight previously understated four real
