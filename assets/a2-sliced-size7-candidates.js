@@ -145,10 +145,10 @@ export const A2_SLICED_SIZE7_CANDIDATES = Object.freeze([
       "radius_two_occupied_points": 445,
       "radius_two_report": "data/a2-sliced-alcove-size7-leads-radius2-radius3-gcts.ndjson.gz",
       "radius_three_status": "unresolved",
-      "radius_three_failure_clauses": 13,
+      "radius_three_failure_clauses": 40,
       "radius_three_first_corona_clauses": 8,
       "radius_three_stopped_by": "middle_solver_timeout",
-      "radius_three_cumulative_milliseconds": 158457,
+      "radius_three_cumulative_milliseconds": 577622,
       "radius_three_report": "data/a2-sliced-alcove-size7-leads-radius2-radius3-gcts.ndjson.gz",
       "direct_scalar_substitution_scales_exhausted": [
         2,
