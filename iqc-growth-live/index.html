@@ -7,7 +7,7 @@
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
   <base href="../apps/iqc-growth-live/">
-  <link rel="stylesheet" href="./style.css?v=20260827-282">
+  <link rel="stylesheet" href="./style.css?v=20260828-321">
   <script type="importmap">
     {
       "imports": {
@@ -148,16 +148,31 @@
                 <div class="growth-legend"><span id="atlasCurveObserved" class="observed">explicit / verified</span><span id="atlasCurveProjected" class="symbolic">symbolic representation</span><small id="atlasCurveNote">log scale · labels show exact counts</small></div>
               </article>
             </div>
+            <section id="systemClosureFunnel" class="system-closure-funnel" hidden aria-label="Geometry closure funnel">
+              <header><div><span>executable geometry funnel</span><h3 id="closureFunnelTitle">From candidate geometry to promoted material</h3></div><p id="closureFunnelSummary"></p></header>
+              <div id="closureFunnelSteps" class="closure-funnel-steps" role="list"></div>
+              <p id="closureFunnelDetail" class="closure-funnel-detail" aria-live="polite"></p>
+            </section>
+            <section id="systemSupplyAudit" class="system-supply-audit" hidden aria-label="Candidate supply audit">
+              <header><div><span>candidate supply ≠ marking value</span><h3 id="supplyAuditTitle">Where promoted geometry disappears</h3></div><p id="supplyAuditSummary"></p></header>
+              <div id="supplyAuditTabs" class="supply-audit-tabs" role="tablist" aria-label="Spatial reserve windows"></div>
+              <div class="supply-audit-body">
+                <div id="supplyAuditStages" class="supply-audit-stages" role="list" aria-label="Candidate supply stages"></div>
+                <article id="supplyAuditDetail" class="supply-audit-detail" aria-live="polite"></article>
+                <article id="supplyAuditFallback" class="supply-audit-fallback"></article>
+              </div>
+            </section>
             <div id="systemEvidenceCards" class="system-evidence-cards"></div>
             <section id="a2CoronaExplorer" class="a2-corona-explorer" hidden aria-label="A2 exact-corona marking explorer">
-              <header><div><span>interactive exact-marking atlas</span><h3>Four size-eight candidates remain exact through seven copies</h3></div><p>Select a layer-essential lattice function. The diagram is its exact A₂ cell support; the bars are sound obstruction clauses, not failed molecular-dynamics trajectories.</p></header>
+              <header><div><span>interactive exact-marking atlas</span><h3 id="a2ExplorerTitle">Four size-eight candidates remain exact through seven copies</h3></div><p id="a2ExplorerSummary">Select a layer-essential lattice function. The diagram is its exact A₂ cell support; the bars are sound obstruction clauses, not failed molecular-dynamics trajectories.</p></header>
+              <nav class="a2-catalog-tabs" role="tablist" aria-label="A2 exact geometry catalogs"><button class="active" type="button" data-a2-catalog="layered" role="tab" aria-selected="true">Layered size 8 <small>exact through 7</small></button><button type="button" data-a2-catalog="sliced" role="tab" aria-selected="false">Sliced size 7 <small>radius 2 → 3</small></button></nav>
               <div id="a2CandidateTabs" class="a2-candidate-tabs" role="tablist" aria-label="Focused A2 candidates"></div>
               <div class="a2-candidate-detail">
                 <div id="a2CandidateShape" class="a2-candidate-shape" aria-label="Selected A2 layered candidate"></div>
                 <article id="a2CandidateStory" class="a2-candidate-story" aria-live="polite"></article>
                 <div id="a2BlockerBars" class="a2-blocker-bars" aria-label="Sound retained clauses by candidate"></div>
               </div>
-              <footer><b>What one clause means</b><span>A specific placement subset in the first corona cannot be completed into a saturated second corona—even when every unselected helper placement remains available.</span><i>What it does not mean</i><span>The candidate is not thereby proved to be a non-tiler, an aperiodic monotile, or a model of one particular solid.</span></footer>
+              <footer><b id="a2ExplorerFooterLabel">What one clause means</b><span id="a2ExplorerFooterText">A specific placement subset in the first corona cannot be completed into a saturated second corona—even when every unselected helper placement remains available.</span><i>What it does not mean</i><span>The candidate is not thereby proved to be a non-tiler, an aperiodic monotile, or a model of one particular solid.</span></footer>
             </section>
             <div id="atlasSystemActions" class="atlas-system-actions" hidden aria-label="Open this evidence in the growth workflow"></div>
           </section>
@@ -519,6 +534,7 @@
               <header><span><small>same clusters · same fit / holdout split</small><strong>Channel-capacity frontier</strong></span><b id="markingCapacityState">waiting for cluster geometry</b></header>
               <div id="markingCapacityFrontier" role="group" aria-label="Compare learned marking capacities"></div>
               <article id="markingCapacityDetail" aria-live="polite"></article>
+              <div id="markingCapacityAllocation" class="marking-capacity-allocation" role="group" aria-label="Per-cluster pose, port, rank, and channel allocation"></div>
               <p>Each point refits the same local sections with a genuinely different coefficient dimension. Click a point to restart the visible fit at that capacity. Validation mismatch selects no growth branch and is never a physical energy.</p>
             </section>
             <p class="rank-note"><b>Channels are not raw rotation bins.</b> Each cluster's observed rotations are quotiented through intrinsic right-handed frames and every tied proper-symmetry gauge; Auto then uses the rank of the pose × connection-port incidence, plus compatibility and failure fields. A manual choice is an ablation or capacity cap.</p>
@@ -584,7 +600,7 @@
               </section>
               <div id="growthPhysicsPreflightMatrix" class="leap-physics-matrix" role="group" aria-label="Inspect physical roles encoded or left open before growth"></div>
               <article id="growthPhysicsPreflightDetail" class="leap-physics-detail" aria-live="polite"></article>
-              <p>The manifest and selected investigation protocol are frozen from the current controls before the first structural action executes. Select a physical layer to trace evidence → geometric encoding → exact search effect → finite response → claim boundary, or filter all 43 rows by the hook they can actually change and what is needed to activate them. Effects may overlap. The matrix never reads candidate records. Its coordinate-free record and SHA-256 digest enter the experiment receipt; routing to a control changes no setting.</p>
+              <p>The manifest and selected investigation protocol are frozen from the current controls before the first structural action executes. Select a physical layer to trace evidence → geometric encoding → exact search effect → finite response → claim boundary, or filter all 45 rows by the hook they can actually change and what is needed to activate them. Effects may overlap. The matrix never reads candidate records. Its coordinate-free record and SHA-256 digest enter the experiment receipt; routing to a control changes no setting.</p>
             </section>
             <div class="growth-group-actions" role="group" aria-label="Growth control sections">
               <button id="expandGrowthGroupsButton" type="button">Expand all physics</button>
@@ -881,6 +897,65 @@
                 <option value="0.48">0.48 · strong</option>
               </select>
             </label>
+            <label class="field" for="collectiveResponseSelect">
+              <span>Collective graph response <b id="collectiveResponseHint">off · connected field reported</b></span>
+              <select id="collectiveResponseSelect">
+                <option value="none" selected>Off · report screened field</option>
+                <option value="continue">Continue collective mismatch domain</option>
+                <option value="relieve">Favor collective mismatch relief</option>
+                <option value="isolate">Avoid collective mismatch field</option>
+              </select>
+            </label>
+            <label class="field" for="collectiveScreeningSelect">
+              <span>Graph screening length <b>cluster-graph hops</b></span>
+              <select id="collectiveScreeningSelect">
+                <option value="1">ξ = 1 hop · strongly screened</option>
+                <option value="2" selected>ξ = 2 hops · intermediate</option>
+                <option value="4">ξ = 4 hops · extended response</option>
+              </select>
+            </label>
+            <label class="field" for="collectiveResponseWeightSelect">
+              <span>Collective weight <b>soft nonlocal rank</b></span>
+              <select id="collectiveResponseWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
+            <label class="field" for="configurationalMultiplicitySelect">
+              <span>Continuation multiplicity <b id="configurationalMultiplicityHint">off · branch entropy reported</b></span>
+              <select id="configurationalMultiplicitySelect">
+                <option value="none" selected>Off · report geometric multiplicity</option>
+                <option value="diversify">Preserve continuation diversity</option>
+                <option value="funnel">Favor selective funnels</option>
+                <option value="balanced">Favor intermediate multiplicity</option>
+              </select>
+            </label>
+            <label class="field" for="configurationalMultiplicityWeightSelect">
+              <span>Multiplicity weight <b>soft look-ahead rank</b></span>
+              <select id="configurationalMultiplicityWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
+            <label class="field" for="constraintTensorSelect">
+              <span>Constraint dimensionality <b id="constraintTensorHint">off · tensor reported</b></span>
+              <select id="constraintTensorSelect">
+                <option value="none" selected>Off · report local constraint tensor</option>
+                <option value="rigid-3d">Favor isotropic 3D cages</option>
+                <option value="lamellar">Favor lamellar / hinge support</option>
+                <option value="axial">Favor axial backbones</option>
+              </select>
+            </label>
+            <label class="field" for="constraintTensorWeightSelect">
+              <span>Constraint-tensor weight <b>soft direction rank</b></span>
+              <select id="constraintTensorWeightSelect">
+                <option value="0.12">0.12 · weak</option>
+                <option value="0.24" selected>0.24 · balanced</option>
+                <option value="0.48">0.48 · strong</option>
+              </select>
+            </label>
             <label class="field" for="frontMorphologySelect">
               <span>Mesoscopic front morphology <b id="frontMorphologyHint">neutral · diagnostic</b></span>
               <select id="frontMorphologySelect">
@@ -1158,10 +1233,16 @@
                   <div><label>matched horizon<select id="markingInterventionHorizon" aria-label="Saved-marking comparison structural-leap horizon"><option value="1">1 leap</option><option value="4" selected>4 leaps</option><option value="8">8 leaps</option></select></label><button id="markingInterventionRegister" type="button" disabled>Register selected marking comparison</button><button id="markingInterventionBaseline" type="button" disabled>Configure baseline</button><button id="markingInterventionAlternative" type="button" disabled>Configure alternative</button><button id="markingInterventionClear" type="button" disabled>Clear</button></div>
                   <p id="markingInterventionBoundary">Registration freezes both self-contained marking artifacts, this candidate set, and every non-marking growth control. It resets to supplied positions and executes nothing.</p>
                 </section>
-                <p>Every row scores the identical hard-admitted action set with one frozen marking artifact. Click a row to preview its exact pose and the resulting coordinate-free attachment, mismatch, constraint margin, q₆/|ψ₆|, local-section S(q), and active-physics response; no candidate is created, removed, or executed.</p>
+                <p>Every row scores the identical hard-admitted action set with one frozen marking artifact. Held-out connection-sector quality and the resulting live-frontier winner are shown as separate evidence axes: validation never creates, admits, ranks, or auto-selects an action. Click a row to preview its exact pose and the resulting coordinate-free attachment, mismatch, constraint margin, q₆/|ψ₆|, local-section S(q), and active-physics response; no candidate is created, removed, or executed.</p>
               </section>
               <div class="policy-score-heading"><small>selected action score ledger</small><strong id="policyScoreLedgerState">awaiting an evaluated frontier</strong></div>
               <div id="policyScoreLedger" class="policy-score-ledger" aria-label="Signed geometric score contributions"></div>
+              <section class="policy-normalization-card" aria-label="Dimensional reduction ledger">
+                <header><span><small>physical / geometric input → dimensionless score</small><strong>Normalization ledger</strong></span><b id="policyNormalizationState">awaiting a selected action</b></header>
+                <label>score term<select id="policyNormalizationSelect" aria-label="Inspect score-term normalization"></select></label>
+                <article id="policyNormalizationDetail" class="policy-normalization-detail" aria-live="polite"></article>
+                <p>Each row exposes the source quantity and unit, its reference scale, and the exact reduction used before a dimensionless weight enters branch ordering. These coordinates never alter candidate geometry or hard admission and are not energies, forces, rates, or elapsed physical time.</p>
+              </section>
               <div class="policy-workbench-heading"><span><small>frozen-frontier intervention</small><strong id="policyWorkbenchState">baseline weights</strong></span><button id="policyWorkbenchReset" type="button" disabled>Reset ×1</button></div>
               <section class="policy-phase-map-card" aria-label="Two-hypothesis growth decision phase map">
                 <header><span><small>two-hypothesis decision map</small><strong>Attachment-action basins</strong></span><b id="policyPhaseMapState">awaiting a frozen frontier</b></header>
@@ -1199,8 +1280,8 @@
                 <article id="policyOmissionDetail" class="policy-omission-detail" aria-live="polite"></article>
                 <section class="policy-decisiveness" aria-label="Physical hypothesis decisiveness matrix">
                   <header><span><small>score → structural prediction</small><strong>Hypothesis decisiveness matrix</strong></span><b id="policyDecisivenessState">awaiting a frozen frontier</b></header>
-                  <div class="policy-decisiveness-head" aria-hidden="true"><span>channel</span><span>score</span><span>leader</span><span>order</span><span>set</span><span>atoms</span><span>chem</span></div>
-                  <div id="policyDecisivenessMatrix" class="policy-decisiveness-matrix" role="group" aria-label="Select a channel to inspect its propagation from score field to emitted chemistry"></div>
+                  <div class="policy-decisiveness-head" aria-hidden="true"><span>channel</span><span>score</span><span>leader</span><span>order</span><span>set</span><span>atoms</span><span>chem</span><span>material</span></div>
+                  <div id="policyDecisivenessMatrix" class="policy-decisiveness-matrix" role="group" aria-label="Select a channel to inspect its propagation from score field to virtual material consequence"></div>
                   <article id="policyDecisivenessDetail" aria-live="polite"></article>
                   <section class="policy-decisiveness-history" aria-label="Selected hypothesis decisiveness through retained structural frontiers">
                     <header><span><small>retained frontier archive</small><strong>Decisiveness through structural growth</strong></span><b id="policyDecisivenessHistoryState">awaiting a selected channel</b></header>
@@ -1212,7 +1293,7 @@
                       <article id="policyMaterialStateDetail" aria-live="polite"></article>
                       <section class="policy-state-association" aria-label="State-conditioned hypothesis decisiveness">
                         <header><span><small>bounded descriptive association</small><strong>In which material regimes does this channel matter?</strong></span><b id="policyStateAssociationState">insufficient retained support</b></header>
-                        <label>structural outcome<select id="policyStateOutcome" aria-label="Structural decisiveness outcome"><option value="score">score field</option><option value="leader">leader</option><option value="order">commuting order</option><option value="antichain" selected>antichain set</option><option value="atoms">emitted atoms</option><option value="chemistry">emitted chemistry</option></select></label>
+                        <label>structural outcome<select id="policyStateOutcome" aria-label="Structural decisiveness outcome"><option value="score">score field</option><option value="leader">leader</option><option value="order">commuting order</option><option value="antichain" selected>antichain set</option><option value="atoms">emitted atoms</option><option value="chemistry">emitted chemistry</option><option value="material">material fingerprint</option></select></label>
                         <div id="policyStateAssociationRows" role="group" aria-label="Select a material observable to inspect its state-conditioned association"></div>
                         <article id="policyStateAssociationDetail" aria-live="polite"></article>
                         <p>Each row contrasts retained frontiers where the selected outcome changed versus stayed stable. Three observations per side are required; sequential frontiers are not treated as independent samples.</p>
@@ -1314,7 +1395,7 @@
             </dl>
           </div>
           <div id="connectionAudit" class="connection-audit" hidden>
-            <div><small>generic frozen marking · held-out inflation</small><strong id="connectionAuditTransfer">—</strong></div>
+            <div><small>generic frozen connection evidence</small><strong id="connectionAuditTransfer">—</strong></div>
             <p id="connectionAuditStates">—</p>
             <div id="connectionConsensus" class="connection-consensus" aria-label="Precision and coverage by overlap consensus threshold"></div>
             <div id="connectionSecondOrder" class="connection-consensus second-order-consensus" aria-label="Second-order marking compared with vote-only ranking"></div>
@@ -1350,7 +1431,7 @@
           <p><b>deep Cd–Yb clusters of clusters:</b> five disjoint radius-14 windows (2,385 atoms) learn a complete irregular cover and nine positive exact quotient levels, 80 → 36 → 22 → 15 → 8 → 6 → 4 → 2 → 1, with the largest colored support growing from 67 to 472 atoms. At level one, 79 / 80 retained types have witnesses in at least two windows; every retained later-level type does. On two untouched windows, the full frozen vocabulary stays intact while absent symbols remain dormant: exact active types/occurrences continue 53/92 → 20/26 → 8/8 → 2/2, then reach zero at level five. All levels preserve frozen IDs/ports and exact residual-complete replay. Since heldout coordinates are observed, this is four-level re-encoding, not growth. No three-level production key survives even topology, so stationary and exponential quasicrystal growth remain red.</p>
           <p><b>seed-only hierarchical frontier:</b> a spatially disjoint 478-atom Cd–Yb seed recognizes 276 primitive occurrences but no complete frozen level-one macro, so exact macro execution cannot start. The new partial recognizer instead anchors train-frozen alternatives on one finite, port-connected child and exposes 82 proper-SE(3) completion candidates; posthoc only 6 are exact. A mark fitted on five radius-7 → radius-14 training frontiers selects one exact action in its top five and emits 16 correct / 18 wrong sites. Constant ordering emits 13 / 24, but all 31 within-parent label shuffles tie the learned result (<i>p</i> = 1). Partial macro search is now operational, while transferable GCTS ranking and autonomous hierarchical growth remain red.</p>
           <p><b>preregistered hierarchical confirmation:</b> before opening a second Cd–Yb nucleus, the repository publicly froze the continuous ID-free mark, actual 28-row training corpus, source hashes, top-five rule, 31 within-window shuffled refits, and centre (35, 35, −35). Its common first frontier contains 36 candidates and no completely exact macro action. The marked top five emit 27 / 56 correct sites, versus 10 / 41 for stable and frequency ordering, but every shuffled model reproduces the marked result (<i>p</i> = 1). The target-blind hierarchy nevertheless self-feeds through seven nonempty waves over four levels and reaches 247 / 2,217 outer-shell atoms (11.14% recall). Both preregistered gates remain red. The only target opening and score are sealed in a hash-checked, non-rerunnable fixture.</p>
-          <p><b>site-resolved GCTS section:</b> keeping the same frozen macro geometry, three predeclared inner radii across five training windows provide 1,245 emitted-site examples (871 supported / 374 unsupported) from 123 macro candidates. The ten-feature local proper-SE(3) section reaches grouped site AUC 0.8864 and whole-action AUC 1.0; both beat all 31 within-window label shuffles (<i>p</i> = 0.03125). A zero-error logit margin of 1.5 gives 97.73% fixed-margin held-window precision, and the final threshold selects 70 / 70 cross-window sites. However, selection of that margin is not yet robust: the fully nested selector reaches only 94.48% precision, below the 95% deployment gate. The partial-site executor itself is exact: it keeps residual terminals explicit, creates a child only after its full colored support is present, and promotes a parent only after every child and frozen port is independently verified; synthetic and NaCl controls pass, with NaCl emitting 48 / 48 correct sites. Cd–Yb deployment therefore remains disabled, and no new evaluation target has been opened.</p>
+          <p><b>site-resolved GCTS section:</b> keeping the same frozen macro geometry, three predeclared inner radii across five training windows provide 1,245 emitted-site examples (871 supported / 374 unsupported) from 123 macro candidates. The ten-feature local proper-SE(3) section reaches grouped site AUC 0.8864 and whole-action AUC 1.0; both beat all 31 within-window label shuffles (<i>p</i> = 0.03125). The earlier searched logit margin remains red when its own choice is fully nested (94.48% precision). A simpler deterministic calibration now fits on four original windows and places the threshold at the next representable probability above every fitted negative—no margin grid or held-window tuning. Across the five outer folds it retains 207 / 211 correct sites (98.10% precision, 23.77% recall), every fold is nonempty, and the minimum fold precision is 95.92%; the best shuffled refit retains only 21 correct sites (<i>p</i> = 0.03125 on correct retained sites). The rule was devised after inspecting this training corpus, so it is frozen only as an exploratory candidate for a future untouched nucleus, not a confirmation result. The partial-site executor itself remains exact: residual terminals stay explicit, a child appears only after its full colored support is present, and a parent promotes only after every child and frozen port is independently verified. Synthetic and NaCl controls pass, with NaCl emitting 48 / 48 correct sites. A group-sealed execution audit fits the marking on four windows and executes on the fifth. Its strict per-site arm commits 9 / 74 first-wave obligations (8 correct) but closes no child. The new whole-child threshold is instead placed above every fitted negative candidate section in the other four windows; on identical first-wave candidate batches it commits 16 complete port-witnessed children, emits 146 / 146 correct sites, independently fits and promotes 16 parents, and produces genuine child-driven later waves in two of five held development windows. Freezing one final lower-quartile policy from all five training windows then transfers without refit to two spatially disjoint, previously consumed reserves: one supplies no candidate and emits nothing; the other executes 4 → 4 → 3 complete sections across three waves, yielding 81 / 81 correct sites and 11 promoted parents (20.51% active-window outer recall). A train-only coverage audit rejects weakening the macro anchor from one-half to one-third: the relaxed rule adds one wrong held-development action and ten wrong sites. The empty reserve's 32 recognized occurrences span 17 frozen support types but overlap zero retained macro-anchor types, so it produces zero pose hypotheses. Its lower-level port grammar still contains 204 exact among 345 target-blind primitive candidates covering 292 correct sites; the failure is therefore promotion/anchor coverage, not absent local geometry or the marking threshold. Because those structural reserves were already used by re-encoding audits, this is not fresh confirmation. The default Cd–Yb policy remains disabled while recurrent macro-anchor coverage, fresh transfer, sustained autonomous growth, stationarity, and exponential claims remain open.</p>
           <p><b>finite-state substitution audit:</b> allowing a quasicrystal to alternate among several exact production states does not weaken the stationary gate. A period-<i>p</i> cycle requires at least 2<i>p</i>+1 consecutive levels, repeated exact chemistry/chirality/port semantics, equal independently learned transition scales, and identical population substitutions on a sealed replay. The synthetic two-state control passes. The present IQC hierarchy has only four levels, zero exact adjacent-state intersections, and no independently observed heldout scale, so both stationary and finite-state exponential claims remain red.</p>
           <p><b>hierarchy selection and stationary audit:</b> a target-blind deterministic beam retains exact derivation alternatives, improving the promoted occurrence path from 153 → 34 → 10 → 6 → 4 → 2 to 324 → 78 → 26 → 12 → 8 → 4 and the fixed-horizon train score from −63.205 to −34.592. It does not add a seventh positive level or produce a stationary witness. The exact semantic quotient is rejected by train-only shuffle/perturbation controls. Exponential status still requires one chemistry/chirality/port production across three consecutive levels, equal learned scales and integer substitutions, independent support, and exact replay.</p>
           <p><b>width and crystal controls:</b> the single sparse 216-atom audit remains evidence-starved and admits only six size-two macros. This is not a width failure: with two independent bounded 216-atom presentations, the same nonfactorial exact search reaches child width eight and the full learned relation graph supplies the stationary 8-child certificate above. The stronger crystal baseline does not change the red IQC stationary result.</p>
@@ -1517,6 +1598,7 @@
         <section>
           <p class="eyebrow">03 · layers</p>
           <div class="toggle-stack">
+            <label class="growth-view-master"><input id="growthEvidenceToggle" type="checkbox"><span id="growthEvidenceToggleLabel">Growth view · atoms only</span></label>
             <label><input id="markingToggle" type="checkbox" checked><span>Marking domain</span></label>
             <label><input id="bondToggle" type="checkbox" checked><span>Accepted bonds</span></label>
             <label><input id="frontierToggle" type="checkbox" checked><span>Candidate frontier</span></label>
@@ -1539,6 +1621,7 @@
             </select></label>
             <label><input id="rotateToggle" type="checkbox" checked><span>Auto rotate</span></label>
           </div>
+          <p class="growth-view-note">Stage 4 defaults to the explicit solid only. Turn on growth evidence to inspect frozen candidates, ports, fields, bonds, and diagnostic glyphs without changing search.</p>
         </section>
 
         <section class="receipt-section">
@@ -1766,6 +1849,7 @@
             <b id="molecularCoverState">awaiting cluster discovery</b>
           </header>
           <div id="molecularCoverFlow" class="molecular-cover-flow"></div>
+          <div id="molecularCoverProof" class="molecular-cover-proof" aria-label="Frozen molecular set-cover certificate"></div>
           <p id="molecularCoverBoundary">Molecular bonds, connection clusters, and explicit void boundaries remain distinct geometric objects.</p>
         </section>
 
@@ -1874,6 +1958,35 @@
                 <button type="button" data-consequence-filter="chemistry" aria-pressed="false">chemistry</button>
                 <button type="button" data-consequence-filter="reciprocal" aria-pressed="false">reciprocal</button>
               </div></header>
+            <div id="leapConsequenceComponents" class="leap-consequence-components" role="group" aria-label="Choose which part of the structural leap to compare">
+              <button type="button" data-consequence-component="total" aria-pressed="true"><small>complete update</small><strong>total leap</strong><span>before → retained</span></button>
+              <button type="button" data-consequence-component="attachment" aria-pressed="false"><small>discrete GCTS move</small><strong>attachment</strong><span>before → as placed</span></button>
+              <button type="button" data-consequence-component="settling" aria-pressed="false"><small>bounded correction</small><strong>settling</strong><span>as placed → retained</span></button>
+            </div>
+            <section class="leap-consequence-vector-lab" aria-label="Dimensionless structural jump vector and unresolved dynamics">
+              <header><span><small>unit-safe endpoint synthesis</small><strong>Structural jump vector</strong></span><b id="leapConsequenceVectorState">awaiting a structural leap</b></header>
+              <div class="leap-consequence-vector-layout">
+                <svg id="leapConsequenceVector" viewBox="0 0 320 158" role="group" aria-label="Select a dimensionless structural response axis"></svg>
+                <article><header><small>not supplied by geometry</small><strong>Unresolved dynamical bridge</strong></header><div id="leapConsequenceUnknowns" class="leap-consequence-unknowns"></div></article>
+              </div>
+              <p id="leapConsequenceBridge">Endpoint geometry can certify a structural change, but it cannot supply its trajectory, duration, barrier, or probability.</p>
+            </section>
+            <section id="settlingSensitivityLab" class="settling-sensitivity-lab" hidden aria-label="Bounded settling sensitivity from the same as-placed state">
+              <header><span><small>same as-placed checkpoint</small><strong>Settling sensitivity ladder</strong></span><b id="settlingSensitivityState">awaiting eligible leap</b></header>
+              <div id="settlingSensitivityArms" class="settling-sensitivity-arms" role="group" aria-label="Inspect a bounded settling allowance"></div>
+              <article id="settlingSensitivityDetail" class="settling-sensitivity-detail" aria-live="polite"></article>
+              <section class="settling-response-lab" aria-label="Material response matrix across bounded settling allowances">
+                <header><span><small>field-wise robustness · no mixed units</small><strong>Material response matrix</strong></span><b id="settlingResponseState">awaiting arm outcomes</b></header>
+                <div id="settlingResponseMatrix" class="settling-response-matrix" role="group" aria-label="Inspect a material field across settling allowances"></div>
+                <article id="settlingResponseDetail" class="settling-response-detail" aria-live="polite"></article>
+                <section class="settling-response-history-lab" aria-label="Selected material response across retained structural leaps">
+                  <header><span><small>retained discrete updates · same field only</small><strong>Robustness across leaps</strong></span><b id="settlingResponseHistoryState">awaiting retained history</b></header>
+                  <div id="settlingResponseHistory" class="settling-response-history" role="group" aria-label="Select a retained structural leap from the field response history"></div>
+                  <p id="settlingResponseHistoryBoundary">Columns are retained GCTS search updates, not independent specimens or physical time.</p>
+                </section>
+              </section>
+              <p id="settlingSensitivityBoundary">Every arm starts from the same rigid GCTS attachment and fixed neighborhood. Counterfactual arms are never committed and do not rerun search.</p>
+            </section>
             <div id="leapConsequenceMatrix" class="leap-consequence-matrix" role="group" aria-label="Before and after material observables for the selected structural leap"></div>
             <article id="leapConsequenceDetail" class="leap-consequence-detail"></article>
             <p id="leapConsequenceBoundary">Each row compares two certified structural states. It is not elapsed time, a free-energy change, or a claim that either direction is favorable.</p>
@@ -1939,6 +2052,13 @@
             <div id="multiscalePathwayReadout"><span>local and reciprocal evidence await one leap</span></div>
             <p>Each point is one certified structural state. The path compares local orientational order with finite-window geometric S(q); it is not a phase diagram, reaction coordinate, free-energy landscape, or physical-time trajectory.</p>
           </article>
+          <article class="growth-regime-map" aria-label="Executed geometric growth regime map">
+            <header><span><small>frontier condition → accepted leap → morphology</small><strong id="growthRegimeState">awaiting an accepted structural leap</strong></span>
+              <div class="growth-regime-controls"><label><small>before-leap state</small><select id="growthRegimeStateAxis" aria-label="Growth regime state axis"></select></label><label><small>structural response</small><select id="growthRegimeResponseAxis" aria-label="Growth regime response axis"></select></label></div></header>
+            <svg id="growthRegimePlot" viewBox="0 0 320 176" role="img" aria-label="Selected before-leap geometric state versus structural response for accepted GCTS leaps"></svg>
+            <div id="growthRegimeReadout" class="growth-regime-readout" aria-live="polite"><span>Run an accepted whole-cluster leap to populate the map.</span></div>
+            <p id="growthRegimeBoundary">Each dot is one executed, target-free GCTS leap: the horizontal coordinate is measured before candidate scoring and the vertical coordinate is the certified after-minus-before structural response. This finite path is not a phase diagram, free-energy surface, mechanism rate, causal law, or physical-time trajectory.</p>
+          </article>
           <article id="leapMorphologyPassport" class="leap-morphology-passport" aria-live="polite">
             <header><small>live morphology passport</small><strong id="leapMorphologyState">seed geometry</strong><span>shape tensor · exposure · before → after</span></header>
             <div id="leapMorphologySpectrum" class="leap-morphology-spectrum" aria-label="Normalized principal variance spectrum"></div>
@@ -1979,6 +2099,11 @@
               <header><span><small>physics → geometry fingerprint</small><strong id="growthMechanismPhysicsState">awaiting a scored action</strong></span><div role="group" aria-label="Physics fingerprint view"><button id="growthMechanismPhysicsContribution" type="button" aria-pressed="true">score contribution</button><button id="growthMechanismPhysicsInfluence" type="button" aria-pressed="false">rank sensitivity</button></div></header>
               <div id="growthMechanismPhysicsTerms" class="growth-physics-terms" role="list"></div>
               <div id="growthMechanismPhysicsGates" class="growth-physics-gates" aria-label="Hard geometric admission gates"></div>
+              <section class="growth-action-physics-provenance" aria-label="Action-level physics execution provenance">
+                <header><span><small>manifest → this action</small><strong id="growthMechanismProvenanceState">awaiting an action receipt</strong></span><div id="growthMechanismProvenanceFilters" role="group" aria-label="Filter action physics provenance"><button class="active" type="button" data-growth-provenance-filter="action" aria-pressed="true">this action</button><button type="button" data-growth-provenance-filter="all" aria-pressed="false">all layers</button><button type="button" data-growth-provenance-filter="open" aria-pressed="false">open gaps</button></div></header>
+                <div id="growthMechanismProvenanceRows" class="growth-action-physics-provenance-rows" role="list"></div>
+                <p id="growthMechanismProvenanceBoundary">Rows trace software execution and evidence boundaries; they do not identify a physical cause.</p>
+              </section>
               <article id="growthMechanismPhysicsSensitivity" class="growth-physics-sensitivity" aria-live="polite"></article>
               <p id="growthMechanismPhysicsBoundary">Hard gates and soft ordering are reported separately. These dimensionless geometric surrogates are not energies, rates, forces, or physical time.</p>
             </section>
@@ -2060,7 +2185,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260827-282"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260827-24"></script>
+  <script type="module" src="./app.js?v=20260828-321"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260828-321"></script>
 </body>
 </html>

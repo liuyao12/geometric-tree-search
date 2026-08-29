@@ -40,7 +40,7 @@ def main() -> None:
     option_parser.feed(html)
     bindings = re.findall(
         r'^\s*\["([^"]+)",\s*"([^"]+)",\s*"([^"]+)"', module, re.MULTILINE)
-    assert len(bindings) == 28
+    assert len(bindings) == 31
     assert len({record_id for record_id, _, _ in bindings}) == len(bindings)
     for record_id, control_id, neutral_value in bindings:
         assert control_id in option_parser.options, (record_id, control_id)
@@ -57,7 +57,7 @@ def main() -> None:
         'data-physics-protocol-preset="actionable"',
         'data-physics-protocol-preset="clear"',
         "freeze before the first candidate frontier",
-        'app.js?v=20260828-320',
+        'app.js?v=20260828-321',
     ):
         assert needle in html, needle
 
@@ -111,7 +111,7 @@ def main() -> None:
         'frozenBeforeFirstStructuralAction: Boolean(frozenPhysicsPreflightManifest)',
         'if (leapEventCount > 0) return;',
         'no control changed.',
-        'buildId: "20260828-320"',
+        'buildId: "20260828-321"',
     ):
         assert needle in source, needle
 
@@ -133,7 +133,7 @@ def main() -> None:
     assert 'id="growthPhysicsProtocolComposer"' in root_html
     assert 'id="notebookPhysicsProtocolOutcome"' in html
     assert 'id="notebookPhysicsProtocolOutcome"' in root_html
-    assert 'app.js?v=20260828-320' in root_html
+    assert 'app.js?v=20260828-321' in root_html
     print("physics protocol composer portal contract: passed")
 
 

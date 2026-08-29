@@ -32,6 +32,8 @@ import { compareShadowMaterialFingerprints, SHADOW_MATERIAL_CONSEQUENCE_FIELDS }
   from "./shadow-material-consequence.mjs?v=20260828-290";
 import { LEAP_CONSEQUENCE_COMPONENTS, resolveLeapConsequenceComparison }
   from "./leap-consequence-decomposition.mjs?v=20260828-290";
+import { buildDimensionlessLeapConsequence }
+  from "./leap-structural-consequence.mjs?v=20260828-321";
 import { buildSettlingMaterialResponseHistory, buildSettlingMaterialResponseMatrix, compareSettlingMaterialFingerprints,
   SETTLING_MATERIAL_FIELDS }
   from "./settling-material-sensitivity.mjs?v=20260828-290";
@@ -810,6 +812,10 @@ const leapConsequenceLab = $("leapConsequenceLab");
 const leapConsequenceState = $("leapConsequenceState");
 const leapConsequenceFilters = $("leapConsequenceFilters");
 const leapConsequenceComponents = $("leapConsequenceComponents");
+const leapConsequenceVectorState = $("leapConsequenceVectorState");
+const leapConsequenceVector = $("leapConsequenceVector");
+const leapConsequenceUnknowns = $("leapConsequenceUnknowns");
+const leapConsequenceBridge = $("leapConsequenceBridge");
 const settlingSensitivityLab = $("settlingSensitivityLab");
 const settlingSensitivityState = $("settlingSensitivityState");
 const settlingSensitivityArms = $("settlingSensitivityArms");
@@ -11874,7 +11880,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260828-320",
+      buildId: "20260828-321",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -13574,6 +13580,7 @@ async function buildExperimentReceipt() {
         relaxation: leap.relaxation || null, localSymmetryTransition: leap.localSymmetryTransition || null,
         centrosymmetryTransition: leap.centrosymmetryTransition || null,
         reciprocalSpaceTransition: leap.reciprocalSpaceTransition || null,
+        consequenceFingerprint: leap.consequenceFingerprint || null,
         after: leap.after,
         targetUsed: leap.targetUsed, physicalTimeModeled: leap.physicalTimeModeled,
         dynamicsIntegrated: leap.dynamicsIntegrated, claimBoundary: leap.claimBoundary,
@@ -14240,6 +14247,7 @@ async function buildExperimentNotebookSnapshot() {
     relaxation: leap.relaxation || null, localSymmetryTransition: leap.localSymmetryTransition || null,
     centrosymmetryTransition: leap.centrosymmetryTransition || null,
     reciprocalSpaceTransition: leap.reciprocalSpaceTransition || null,
+    consequenceFingerprint: leap.consequenceFingerprint || null,
     after: leap.after, targetUsed: leap.targetUsed, physicalTimeModeled: leap.physicalTimeModeled,
     dynamicsIntegrated: leap.dynamicsIntegrated, claimBoundary: leap.claimBoundary,
     physicsTranslation: leap.physicsTranslation,
@@ -14304,7 +14312,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260828-320" },
+    application: { name: "Materials Growth Lab", buildId: "20260828-321" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },
@@ -29653,6 +29661,73 @@ function materialConsequenceRecords(before, after) {
   ];
 }
 
+const LEAP_CONSEQUENCE_AXIS_COLORS = Object.freeze({
+  inventory: "#b594ff", local: "#65e1bc", chemistry: "#ffc169",
+  mesostructure: "#48d0d5", reciprocal: "#67bfff",
+});
+
+function leapConsequenceFingerprint(records, comparison, selected = null) {
+  return buildDimensionlessLeapConsequence(records, {
+    component: comparison.mode,
+    acceptedActions: comparison.mode === "settling" ? 0 : selected?.after?.accepted,
+    rejectedActions: comparison.mode === "settling" ? 0 : selected?.after?.rejected,
+    atomsBefore: comparison.before?.atoms,
+    atomsAfter: comparison.after?.atoms,
+    settledGeometry: comparison.mode !== "attachment" && Boolean(selected?.relaxation?.accepted),
+  });
+}
+
+function renderLeapConsequenceVector(fingerprint) {
+  if (!leapConsequenceVector || !leapConsequenceUnknowns || !leapConsequenceBridge) return;
+  const namespace = "http://www.w3.org/2000/svg";
+  const make = (name, attributes = {}) => {
+    const element = document.createElementNS(namespace, name);
+    Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, String(value)));
+    return element;
+  };
+  leapConsequenceVector.replaceChildren();
+  const left = 105; const center = 205; const right = 305;
+  fingerprint.axes.forEach((axis, index) => {
+    const y = 18 + index * 27;
+    const color = LEAP_CONSEQUENCE_AXIS_COLORS[axis.id] || "#65e1bc";
+    const group = make("g", { class: `axis ${axis.resolvedFields ? "resolved" : "unresolved"}`,
+      tabindex: axis.resolvedFields ? 0 : -1, role: axis.resolvedFields ? "button" : "img",
+      "data-consequence-axis-filter": axis.filter,
+      "data-consequence-axis-field": axis.dominantField?.id || "" });
+    const label = make("text", { x: 2, y: y + 2, class: "axis-label" });
+    label.textContent = axis.label;
+    const baseline = make("line", { x1: left, y1: y, x2: right, y2: y, class: "axis-baseline" });
+    const zero = make("line", { x1: center, y1: y - 7, x2: center, y2: y + 7, class: "axis-zero" });
+    group.append(label, baseline, zero);
+    if (Number.isFinite(axis.signedMean)) {
+      const endpoint = center + 100 * axis.signedMean;
+      const response = make("line", { x1: center, y1: y, x2: endpoint, y2: y,
+        class: "axis-response", stroke: color });
+      const point = make("circle", { cx: endpoint, cy: y,
+        r: 2.7 + 5.3 * (axis.rmsMagnitude || 0), class: "axis-point", fill: color });
+      const title = make("title");
+      title.textContent = `${axis.label}: signed mean ${axis.signedMean >= 0 ? "+" : ""}${axis.signedMean.toFixed(3)}; RMS magnitude ${axis.rmsMagnitude.toFixed(3)}; ${axis.resolvedFields}/${axis.requestedFields} fields resolved${axis.dominantField ? `; largest response ${axis.dominantField.label}` : ""}`;
+      group.append(response, point, title);
+    }
+    const coverage = make("text", { x: 318, y: y + 2, class: "axis-coverage", "text-anchor": "end" });
+    coverage.textContent = `${axis.resolvedFields}/${axis.requestedFields}`;
+    group.append(coverage); leapConsequenceVector.append(group);
+  });
+  const negative = make("text", { x: left, y: 151, class: "axis-sign", "text-anchor": "middle" });
+  negative.textContent = "− normalized response";
+  const positive = make("text", { x: right, y: 151, class: "axis-sign", "text-anchor": "middle" });
+  positive.textContent = "+ normalized response";
+  leapConsequenceVector.append(negative, positive);
+  leapConsequenceUnknowns.replaceChildren(...fingerprint.unresolvedDynamics.map((quantity) => {
+    const item = document.createElement("span"); const label = document.createElement("strong");
+    const state = document.createElement("b"); const detail = document.createElement("small");
+    label.textContent = quantity.label; state.textContent = "unknown";
+    detail.textContent = quantity.requirement; item.append(label, state, detail); return item;
+  }));
+  leapConsequenceVectorState.textContent = `${fingerprint.resolvedObservableCount}/${fingerprint.requestedObservableCount} endpoints resolved · ${fingerprint.changedObservableCount} changed`;
+  leapConsequenceBridge.textContent = `${fingerprint.dynamicalBridge} Each axis uses only dimensionless within-field endpoint differences; point position is the signed mean, point area is the RMS response, and axes are never summed into an energy or favorability score.`;
+}
+
 function consequencePosition(record, value) {
   if (!Number.isFinite(value)) return null;
   if (Array.isArray(record.domain)) {
@@ -29874,6 +29949,7 @@ function renderLeapConsequence(selected = null) {
     packing: structuralPackingSnapshot(),
     voidClearance: structuralVoidClearanceSnapshot(),
     morphology: structuralMorphologySnapshot(),
+    interfaces: structuralInterfaceSnapshot(),
     orientationalOrder: structuralOrientationalOrderSnapshot(),
     centrosymmetry: structuralCentrosymmetrySnapshot(),
     scattering: structuralScatteringSnapshot(),
@@ -29885,6 +29961,8 @@ function renderLeapConsequence(selected = null) {
   const before = comparison.before;
   const after = comparison.after;
   const records = materialConsequenceRecords(before, after);
+  const consequenceFingerprint = leapConsequenceFingerprint(records, comparison, selected);
+  renderLeapConsequenceVector(consequenceFingerprint);
   renderSettlingSensitivity(selected);
   leapConsequenceComponents.querySelectorAll("button[data-consequence-component]").forEach((button) => {
     const mode = button.dataset.consequenceComponent;
@@ -29970,6 +30048,19 @@ leapConsequenceComponents.addEventListener("click", (event) => {
   selectedLeapConsequenceComponent = button.dataset.consequenceComponent in LEAP_CONSEQUENCE_COMPONENTS
     ? button.dataset.consequenceComponent : "total";
   renderLeapConsequence(leapHistory[selectedLeapIndex] || null);
+});
+
+const selectLeapConsequenceAxis = (target) => {
+  const axis = target.closest?.("[data-consequence-axis-filter]");
+  if (!axis || !leapConsequenceVector.contains(axis)) return;
+  selectedLeapConsequenceFilter = axis.dataset.consequenceAxisFilter || "all";
+  if (axis.dataset.consequenceAxisField) selectedLeapConsequenceId = axis.dataset.consequenceAxisField;
+  renderLeapConsequence(leapHistory[selectedLeapIndex] || null);
+};
+leapConsequenceVector.addEventListener("click", (event) => selectLeapConsequenceAxis(event.target));
+leapConsequenceVector.addEventListener("keydown", (event) => {
+  if (!["Enter", " "].includes(event.key)) return;
+  event.preventDefault(); selectLeapConsequenceAxis(event.target);
 });
 
 function structuralStoichiometrySeries() {
@@ -31005,6 +31096,12 @@ function recordStructuralLeap(leap) {
   frozen.reciprocalSpaceTransition = reciprocalSpaceTransition(
     frozen.before?.scattering, frozen.after?.scattering);
   frozen.physicsTranslation = physicsTranslationRecords(frozen);
+  frozen.consequenceFingerprint = buildDimensionlessLeapConsequence(
+    materialConsequenceRecords(frozen.before, frozen.after), {
+      component: "total", acceptedActions: frozen.after?.accepted,
+      rejectedActions: frozen.after?.rejected, atomsBefore: frozen.before?.atoms,
+      atomsAfter: frozen.after?.atoms, settledGeometry: Boolean(frozen.relaxation?.accepted),
+    });
   leapHistory.push(frozen);
   if (leapHistory.length > MAXIMUM_RETAINED_STRUCTURAL_LEAPS) leapHistory.shift();
   selectedLeapIndex = leapHistory.length - 1;

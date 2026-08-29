@@ -1,5 +1,20 @@
 # Recursive GCTS benchmark for material growth
 
+### Structural-leap consequence vector (Build 321)
+
+Each retained search update now carries a pure, serializable endpoint-consequence receipt.
+The full material rows remain authoritative and unit-bearing. For navigation, bounded fields
+are normalized by their declared dimensionless span and adaptive fields by the larger
+absolute endpoint magnitude. Five axes report their signed mean and RMS magnitude separately;
+they are never summed, and no favorable direction is assigned. Clicking an axis returns to
+the underlying before/after rows.
+
+The same view lists the physical information absent from a geometric leap: intermediate
+trajectory, duration/rate, transition barrier, free energy, path probability, forces,
+stress, and heat flow. This makes “leap-frogging dynamics” falsifiable as an endpoint claim:
+the portal can report what structural observables changed, but it cannot infer the omitted
+dynamical bridge without new evidence and a separately validated physical model.
+
 ### Action-level physics provenance (Build 320)
 
 Every retained growth-action fingerprint now contains a complete join between

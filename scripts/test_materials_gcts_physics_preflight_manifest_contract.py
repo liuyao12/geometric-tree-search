@@ -186,10 +186,10 @@ def test_public_narrative_and_build_are_versioned():
     assert "Build 177" in README
     assert "Build 177" in DOCS
     assert "If WebGL cannot be created" in README
-    assert 'buildId: "20260828-320"' in APP
-    assert 'app.js?v=20260828-320' in HTML
-    assert 'style.css?v=20260828-320' in HTML
+    assert 'buildId: "20260828-321"' in APP
+    assert 'app.js?v=20260828-321' in HTML
+    assert 'style.css?v=20260828-321' in HTML
     assert 'physics-compression-map.js?v=20260828-320' in APP
-    assert 'evidence-atlas.js?v=20260828-320' in HTML
+    assert 'evidence-atlas.js?v=20260828-321' in HTML
     assert "Build 207" in README
     assert "Build 207" in DOCS

@@ -22,9 +22,9 @@ def test_growth_view_defaults_to_atoms_and_keeps_forensics_reversible() -> None:
     assert "candidateGeometryChangedByView: false, searchStateChangedByView: false" in APP
     assert "without changing enumeration, ranking, or execution" in APP
     assert "Build 307 · atoms-first material growth" in README
-    assert 'buildId: "20260828-320"' in APP
-    assert 'app.js?v=20260828-320' in HTML
-    assert 'style.css?v=20260828-320' in HTML
+    assert 'buildId: "20260828-321"' in APP
+    assert 'app.js?v=20260828-321' in HTML
+    assert 'style.css?v=20260828-321' in HTML
 
 
 if __name__ == "__main__":

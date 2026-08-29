@@ -1,5 +1,19 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 321 · every leap separates structural consequence from unknown dynamics
+
+The material-growth certificate now condenses its unit-bearing before/after observables into
+five dimensionless structural-response axes: inventory, local environment, composition
+geometry, mesostructure, and reciprocal order. Each axis retains coverage, a signed mean,
+an RMS magnitude, and its dominant underlying observable; clicking an axis opens the exact
+source rows rather than replacing them with one opaque score.
+
+Beside it, an unresolved-dynamics ledger keeps intermediate trajectory, physical time,
+barriers, free energy, branching probability, forces, stress, and heat flow explicitly
+unknown. The receipt stores the vector, normalization rule, coverage, operation footprint,
+and claim boundary. No axis is treated as favorable, and axes are never summed into energy,
+kinetics, or a physical clock.
+
 ## Build 320 · every retained move has an inspectable physics provenance matrix
 
 The selected-action microscope now joins the pre-growth physics manifest to

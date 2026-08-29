@@ -65,9 +65,9 @@ def test_claim_boundary_forbids_dynamical_overinterpretation():
 
 
 def test_current_build_is_exposed():
-    assert 'buildId: "20260828-320"' in APP
-    assert 'app.js?v=20260828-320' in HTML
-    assert 'style.css?v=20260828-320' in HTML
+    assert 'buildId: "20260828-321"' in APP
+    assert 'app.js?v=20260828-321' in HTML
+    assert 'style.css?v=20260828-321' in HTML
 
 
 def test_as_placed_checkpoint_precedes_projection_and_is_retained():
@@ -82,10 +82,29 @@ def test_as_placed_checkpoint_precedes_projection_and_is_retained():
     assert "decomposedOffLatticeEvents" in APP
 
 
+def test_dimensionless_jump_vector_and_unknown_dynamics_are_receipted():
+    for element_id in (
+        "leapConsequenceVectorState", "leapConsequenceVector",
+        "leapConsequenceUnknowns", "leapConsequenceBridge",
+    ):
+        assert f'id="{element_id}"' in HTML
+        assert f'$("{element_id}")' in APP
+    assert "buildDimensionlessLeapConsequence" in APP
+    assert APP.count("consequenceFingerprint: leap.consequenceFingerprint || null") == 2
+    assert "renderLeapConsequenceVector(consequenceFingerprint)" in APP
+    for phrase in (
+        "axes are never summed into an energy or favorability score",
+        "Intermediate configurations, physical duration, and path likelihood are not represented",
+    ):
+        assert phrase in APP or phrase in (ROOT / "apps/iqc-growth-live/leap-structural-consequence.mjs").read_text()
+    assert ".leap-consequence-vector-lab" in CSS
+
+
 if __name__ == "__main__":
     test_consequence_fingerprint_is_interactive_and_multiscale()
     test_composition_is_retained_as_state_not_action_score()
     test_claim_boundary_forbids_dynamical_overinterpretation()
     test_current_build_is_exposed()
     test_as_placed_checkpoint_precedes_projection_and_is_retained()
+    test_dimensionless_jump_vector_and_unknown_dynamics_are_receipted()
     print("leap consequence fingerprint contract passed")

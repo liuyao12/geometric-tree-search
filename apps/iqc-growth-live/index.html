@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260828-320">
+  <link rel="stylesheet" href="./style.css?v=20260828-321">
   <script type="importmap">
     {
       "imports": {
@@ -1962,6 +1962,14 @@
               <button type="button" data-consequence-component="attachment" aria-pressed="false"><small>discrete GCTS move</small><strong>attachment</strong><span>before → as placed</span></button>
               <button type="button" data-consequence-component="settling" aria-pressed="false"><small>bounded correction</small><strong>settling</strong><span>as placed → retained</span></button>
             </div>
+            <section class="leap-consequence-vector-lab" aria-label="Dimensionless structural jump vector and unresolved dynamics">
+              <header><span><small>unit-safe endpoint synthesis</small><strong>Structural jump vector</strong></span><b id="leapConsequenceVectorState">awaiting a structural leap</b></header>
+              <div class="leap-consequence-vector-layout">
+                <svg id="leapConsequenceVector" viewBox="0 0 320 158" role="group" aria-label="Select a dimensionless structural response axis"></svg>
+                <article><header><small>not supplied by geometry</small><strong>Unresolved dynamical bridge</strong></header><div id="leapConsequenceUnknowns" class="leap-consequence-unknowns"></div></article>
+              </div>
+              <p id="leapConsequenceBridge">Endpoint geometry can certify a structural change, but it cannot supply its trajectory, duration, barrier, or probability.</p>
+            </section>
             <section id="settlingSensitivityLab" class="settling-sensitivity-lab" hidden aria-label="Bounded settling sensitivity from the same as-placed state">
               <header><span><small>same as-placed checkpoint</small><strong>Settling sensitivity ladder</strong></span><b id="settlingSensitivityState">awaiting eligible leap</b></header>
               <div id="settlingSensitivityArms" class="settling-sensitivity-arms" role="group" aria-label="Inspect a bounded settling allowance"></div>
@@ -2176,7 +2184,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260828-320"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260828-320"></script>
+  <script type="module" src="./app.js?v=20260828-321"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260828-321"></script>
 </body>
 </html>
