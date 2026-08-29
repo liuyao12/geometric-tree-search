@@ -13,6 +13,7 @@ SPEC = importlib.util.spec_from_file_location(
 )
 MODULE = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(MODULE)
+assert MODULE.terminate_active_processes() == 0
 
 
 def report(start, stop, parents):

@@ -9,11 +9,14 @@ import json
 import os
 import subprocess
 import sys
+import threading
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent.parent
 SCREEN = ROOT / "scripts" / "screen-a2-sliced-three-cluster-substitution.py"
+ACTIVE_PROCESSES: set[subprocess.Popen] = set()
+ACTIVE_PROCESSES_LOCK = threading.Lock()
 
 
 def read_one(path: Path) -> dict:
@@ -66,9 +69,17 @@ def run_task(task: dict) -> dict:
     ]
     if task["include_reflections"]:
         command.append("--include-reflections")
-    completed = subprocess.run(
-        command, cwd=ROOT, text=True, capture_output=True, check=False
+    process = subprocess.Popen(
+        command, cwd=ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE
     )
+    with ACTIVE_PROCESSES_LOCK:
+        ACTIVE_PROCESSES.add(process)
+    try:
+        stdout, stderr = process.communicate()
+    finally:
+        with ACTIVE_PROCESSES_LOCK:
+            ACTIVE_PROCESSES.discard(process)
+    completed = subprocess.CompletedProcess(command, process.returncode, stdout, stderr)
     if completed.returncode != 0:
         temporary.unlink(missing_ok=True)
         return {**task, "status": "failed", "stderr": completed.stderr[-2000:]}
@@ -83,6 +94,23 @@ def run_task(task: dict) -> dict:
         "status": record["classification"],
         "counts": detail["parent_counts"],
     }
+
+
+def terminate_active_processes() -> int:
+    """Stop in-flight shard solvers so Ctrl-C can checkpoint promptly."""
+    with ACTIVE_PROCESSES_LOCK:
+        processes = list(ACTIVE_PROCESSES)
+    for process in processes:
+        if process.poll() is None:
+            process.terminate()
+    for process in processes:
+        if process.poll() is not None:
+            continue
+        try:
+            process.wait(timeout=2)
+        except subprocess.TimeoutExpired:
+            process.kill()
+    return len(processes)
 
 
 def closed_rule_alphabet(parent_results: list[dict]):
@@ -215,7 +243,9 @@ def main() -> None:
     if args.max_tasks > 0:
         tasks = tasks[:args.max_tasks]
     outcomes = []
-    with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, args.workers)) as pool:
+    interrupted = False
+    pool = concurrent.futures.ThreadPoolExecutor(max_workers=max(1, args.workers))
+    try:
         futures = [pool.submit(run_task, task) for task in tasks]
         for completed, future in enumerate(concurrent.futures.as_completed(futures), 1):
             outcome = future.result()
@@ -227,6 +257,19 @@ def main() -> None:
                 "status": outcome["status"],
                 "counts": outcome.get("counts"),
             }, separators=(",", ":")), flush=True)
+    except KeyboardInterrupt:
+        interrupted = True
+        for future in futures:
+            future.cancel()
+        stopped = terminate_active_processes()
+        print(json.dumps({
+            "interrupted": True,
+            "completed": len(outcomes),
+            "scheduled": len(tasks),
+            "active_processes_stopped": stopped,
+        }, separators=(",", ":")), flush=True)
+    finally:
+        pool.shutdown(wait=True, cancel_futures=True)
     decided_paths = [
         path for start, path in zip(range(0, args.parent_total, args.parent_span), paths)
         if valid_shard(path, args.candidate_id, start,
@@ -247,6 +290,8 @@ def main() -> None:
     }, indent=2), flush=True)
     if failed:
         raise SystemExit(2)
+    if interrupted:
+        raise SystemExit(130)
 
 
 if __name__ == "__main__":
