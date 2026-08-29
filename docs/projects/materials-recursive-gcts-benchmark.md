@@ -1,5 +1,26 @@
 # Recursive GCTS benchmark for material growth
 
+### Physics execution-lineage repair (Build 318)
+
+The portal's coordinate-free preflight previously understated four real
+execution paths. With scalar-spin coloring active, incompatible supplied
+labels can reject an exact overlap. The collective accepted-history graph
+field, continuation multiplicity, and contact-direction constraint tensor all
+contribute signed terms to the unchanged frozen candidate ranking. They are
+now classified respectively as hard admission and soft ranking, not as
+evidence-only diagnostics.
+
+The lineage record names the exact execution object affected and the protocol
+composer can freeze a neutral `none` arm for each of the three rank terms.
+Candidate identity must remain matched for those ablations. This closes a
+portal audit gap; it does not upgrade any surrogate into energy, entropy,
+elasticity, magnetism, kinetics, or physical time.
+
+The same deployed data revision completes the bounded three-copy scale-three
+A₂ screen for all eight focused candidates. Together they exhaust 12,825
+proper/reflected parent types without a substitution. Every obstruction
+remains strictly weaker than global non-tiling or aperiodicity.
+
 ### Two-family A₂ exact-geometry explorer (Build 317)
 
 The portal now reads both generated A₂ catalogs as distinct exact-geometry
@@ -660,7 +681,7 @@ target access and physical time remain false.
 
 The taxonomy additionally classifies calculation-stress and paired
 stress–strain-response records, closing the only two unclassified manifest
-IDs. A static equality contract compares all 43 current manifest IDs with all
+IDs. A static equality contract compares all 45 current manifest IDs with all
 lane assignments, while the pure module rejects duplicate IDs and keeps future
 unclassified records fail-visible. This is provenance and execution semantics,
 not new physics or a stronger growth claim.

@@ -87,6 +87,19 @@ def test_each_physical_layer_has_an_interactive_execution_lineage():
     assert ".physics-lineage-flow" in CSS
 
 
+def test_live_spin_graph_multiplicity_and_rigidity_channels_reach_execution_objects():
+    assert 'new Set(["steric", "local", "connection", "collinear-spin"])' in COMPRESSION
+    for record_id in ("long-range", "configurational-entropy", "constraint-rigidity"):
+        assert record_id in COMPRESSION
+    for control_id in ("collectiveResponseSelect", "configurationalMultiplicitySelect",
+                       "constraintTensorSelect"):
+        assert control_id in COMPRESSION
+    for execution_object in ("candidate acceptance / rejection",
+                             "signed candidate score and branch rank"):
+        assert execution_object in COMPRESSION
+    assert '["execution object", selectedExecutionLineage.executionObjects.length' in APP
+
+
 def test_execution_effect_atlas_composes_with_scale_and_evidence_filters():
     assert 'id="growthPhysicsEffectFilters"' in HTML
     assert '$("growthPhysicsEffectFilters")' in APP
@@ -134,10 +147,10 @@ def test_public_narrative_and_build_are_versioned():
     assert "Build 177" in README
     assert "Build 177" in DOCS
     assert "If WebGL cannot be created" in README
-    assert 'buildId: "20260827-282"' in APP
-    assert 'app.js?v=20260827-282' in HTML
-    assert 'style.css?v=20260827-282' in HTML
-    assert 'physics-compression-map.js?v=20260827-7' in APP
-    assert 'evidence-atlas.js?v=20260827-24' in HTML
+    assert 'buildId: "20260828-318"' in APP
+    assert 'app.js?v=20260828-318' in HTML
+    assert 'style.css?v=20260828-318' in HTML
+    assert 'physics-compression-map.js?v=20260828-318' in APP
+    assert 'evidence-atlas.js?v=20260828-318' in HTML
     assert "Build 207" in README
     assert "Build 207" in DOCS

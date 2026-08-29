@@ -36,15 +36,15 @@ import { buildSettlingMaterialResponseHistory, buildSettlingMaterialResponseMatr
   SETTLING_MATERIAL_FIELDS }
   from "./settling-material-sensitivity.mjs?v=20260828-290";
 import { channelValidationMetricsFromCounts, validationOccurrenceJackknife }
-  from "./validation-uncertainty.mjs?v=20260828-317";
+  from "./validation-uncertainty.mjs?v=20260828-318";
 import { scoreNormalizationAudit }
-  from "./score-normalization.mjs?v=20260828-317";
+  from "./score-normalization.mjs?v=20260828-318";
 import { screenedCoherencyGraphField }
-  from "./coherency-graph-field.mjs?v=20260828-317";
+  from "./coherency-graph-field.mjs?v=20260828-318";
 import { continuationMultiplicityAtlas, continuationMultiplicityScore }
-  from "./configurational-multiplicity.mjs?v=20260828-317";
+  from "./configurational-multiplicity.mjs?v=20260828-318";
 import { geometricConstraintTensor }
-  from "./geometric-constraint-tensor.mjs?v=20260828-317";
+  from "./geometric-constraint-tensor.mjs?v=20260828-318";
 import { archiveResponseFrontierRankAudit }
   from "./archive-response-frontier-audit.js?v=20260827-1";
 import { evidenceOrderedClusterDiscoverySchedule }
@@ -71,7 +71,7 @@ import { blockedCreationResponseSurrogate, blockedCreationResponseValidation, bu
 import { buildPhysicsCompressionMap, buildPhysicsEffectMatrix, buildPhysicsInvestigationProtocol,
   buildPhysicsLineagePath, buildPhysicsProtocolIntervention, PHYSICS_ABLATION_CONTROL_BINDINGS,
   PHYSICS_EFFECT_COLUMNS, PHYSICS_READINESS_STATES, physicsExecutionLineage }
-  from "./physics-compression-map.js?v=20260827-7";
+  from "./physics-compression-map.js?v=20260828-318";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -11804,7 +11804,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260828-317",
+      buildId: "20260828-318",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -14234,7 +14234,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260828-317" },
+    application: { name: "Materials Growth Lab", buildId: "20260828-318" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },
@@ -28782,8 +28782,11 @@ function renderGrowthPhysicsPreflight() {
   header.append(small, strong); growthPhysicsPreflightDetail.append(header);
   renderPhysicsLineageFlow(growthPhysicsPreflightDetail, selected);
   const selectedEffectRow = effectRows.get(selected.id);
+  const selectedExecutionLineage = selected.executionLineage || physicsExecutionLineage(selected);
   [["evidence class", physicsEvidenceClass(selected)],
     ["execution footprint", selectedEffectRow?.executionSummary || "not classified"],
+    ["execution object", selectedExecutionLineage.executionObjects.length
+      ? selectedExecutionLineage.executionObjects.join(" + ") : "recorded evidence only; no live search object"],
     ["readiness", selectedEffectRow?.readiness?.label || "not classified"],
     ["next step", selectedEffectRow?.readiness?.nextStep || "No next step recorded."],
     ["geometric encoding", selected.encoding],

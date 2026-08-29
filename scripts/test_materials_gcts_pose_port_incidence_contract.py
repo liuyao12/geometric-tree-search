@@ -33,9 +33,9 @@ def main() -> None:
     require(CSS, ".cluster-pose-port-grid")
     require(CSS, ".cluster-pose-port-detail")
     require(README, "Build 294 · pose × connection-port incidence microscope")
-    require(APP, 'buildId: "20260828-317"')
-    require(HTML, 'app.js?v=20260828-317')
-    require(HTML, 'style.css?v=20260828-317')
+    require(APP, 'buildId: "20260828-318"')
+    require(HTML, 'app.js?v=20260828-318')
+    require(HTML, 'style.css?v=20260828-318')
     print("pose by connection-port incidence contract passed")
 
 

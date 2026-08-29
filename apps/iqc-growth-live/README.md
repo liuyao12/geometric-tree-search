@@ -1,5 +1,30 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 318 · every live physics channel reaches the execution atlas
+
+The pre-growth physics manifest now follows four previously misclassified
+channels through their actual execution objects. Supplied collinear-spin color
+is shown as an exact overlap-admission gate when enabled. Screened collective
+graph response, fit-supported continuation multiplicity, and the local
+contact-direction constraint tensor are shown as signed candidate-ranking
+terms rather than as diagnostics.
+
+Each selected row now names the concrete object it can change—candidate
+acceptance, bounded coordinates, seed occurrences, signed branch rank, or
+stable branch order. The three ranking channels also expose reversible
+one-control ablations in the protocol composer, so a scientist can register
+matched-candidate comparisons without pretending to remove the underlying
+physics. Their existing accepted/rejected finite observables and claim
+boundaries remain unchanged: the graph field is not long-range elasticity,
+continuation multiplicity is not thermodynamic entropy, the direction tensor
+is not a Hessian, and scalar spin equality is not a magnetic Hamiltonian.
+
+The deployed size-seven A₂ catalog also carries the complete latest bounded
+screen. All eight focused candidates exhaust 12,825 proper/reflected
+scale-three parent types in total without a three-copy substitution. Every
+candidate remains unresolved globally: these are eight finite grammar
+obstructions, not non-tiling or aperiodicity claims.
+
 ## Build 317 · two exact A₂ geometry frontiers
 
 The Evidence Atlas now exposes the newest consecutive-layer size-seven A₂

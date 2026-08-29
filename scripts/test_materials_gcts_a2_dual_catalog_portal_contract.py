@@ -37,6 +37,13 @@ def test_generated_sliced_catalog_has_the_published_finite_audit():
                for item in records) == 731
     assert {item["screening"]["radius_three_status"]
             for item in records} == {"unresolved"}
+    bounded = [item for item in records if
+               item["screening"]["three_copy_metatile_scale3_reflected_status"] ==
+               "no_three_copy_metatile_scalar3_substitution"]
+    assert len(bounded) == 8
+    assert sum(item["screening"]["three_copy_metatile_scale3_reflected_parent_types"]
+               for item in bounded) == 12825
+    assert len(records) - len(bounded) == 0
     candidate_139 = next(item for item in records
                          if item["id"] == "a2sa_7_00139")
     screening = candidate_139["screening"]
@@ -56,10 +63,13 @@ def test_portal_switches_catalogs_without_changing_claim_semantics():
             'activeA2Catalog = "layered"', "candidate.alcoves",
             "radius_three_failure_clauses", "radius_three_first_corona_clauses",
             "radius_three_stopped_by", "three_copy_metatile_scale3_reflected_parent_types",
+            "A2_SLICED_SCALE3_OBSTRUCTIONS", "A2_SLICED_SCALE3_PARENT_COUNT",
+            "candidate.screening.three_copy_metatile_scale3_reflected_status",
             "convexHull"):
         assert token in JS
     assert ".a2-catalog-tabs" in CSS
     assert "Build 317 · two exact A₂ geometry frontiers" in README
+    assert "Build 318 · every live physics channel reaches the execution atlas" in README
     assert "does not thereby prove" not in JS  # no hidden upgrade of status
     assert "the candidate remains <b>unresolved</b>" in JS
 

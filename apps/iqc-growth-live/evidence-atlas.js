@@ -1,8 +1,17 @@
 import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js";
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
-import { A2_SLICED_SIZE7_CANDIDATES } from "../../assets/a2-sliced-size7-candidates.js?v=20260828-317";
+import { A2_SLICED_SIZE7_CANDIDATES } from "../../assets/a2-sliced-size7-candidates.js?v=20260828-318";
 
 const byId = (id) => document.getElementById(id);
+const A2_SLICED_SCALE3_OBSTRUCTIONS = A2_SLICED_SIZE7_CANDIDATES.filter((candidate) =>
+  candidate.screening.three_copy_metatile_scale3_reflected_status
+    === "no_three_copy_metatile_scalar3_substitution");
+const A2_SLICED_SCALE3_OPEN = A2_SLICED_SIZE7_CANDIDATES.filter((candidate) =>
+  candidate.screening.three_copy_metatile_scale3_reflected_status
+    !== "no_three_copy_metatile_scalar3_substitution");
+const A2_SLICED_SCALE3_PARENT_COUNT = A2_SLICED_SCALE3_OBSTRUCTIONS.reduce((sum, candidate) =>
+  sum + candidate.screening.three_copy_metatile_scale3_reflected_parent_types, 0);
+const a2SlicedShortIds = (candidates) => candidates.map((candidate) => candidate.id.split("_").at(-1));
 
 const atlas = byId("evidenceAtlas");
 const atlasButton = byId("evidenceAtlasButton");
@@ -181,7 +190,7 @@ const SYSTEMS = {
   },
   a2: {
     short: "A₂ exact", kind: "exact layer-essential geometry tests", name: "A₂ layer-essential lattice functions",
-    summary: "Two independent finite catalogs test whether exact weighted periodic screens, replayed coronas, and bounded GCTS obstruction clauses can narrow difficult geometric families without overclaiming non-tiling or aperiodicity. Four size-eight layered candidates remain exact through seven copies; eight size-seven sliced candidates have complete radius-two patches and unresolved radius-three searches.",
+    summary: `Two independent finite catalogs test whether exact weighted periodic screens, replayed coronas, and bounded GCTS obstruction clauses can narrow difficult geometric families without overclaiming non-tiling or aperiodicity. Four size-eight layered candidates remain exact through seven copies; eight size-seven sliced candidates have complete radius-two patches, and ${A2_SLICED_SCALE3_OBSTRUCTIONS.length} now carry bounded scale-three cluster obstructions.`,
     values: [4940, 411, 6, 4], verifiedThrough: 3,
     xLabels: ["census", "after 1-copy", "after 2-copy", "after 4-copy"],
     curveEyebrow: "exact survivor funnel",
@@ -189,7 +198,7 @@ const SYSTEMS = {
     curveObserved: "independently replayed exact screens",
     curveProjected: "larger periodic domains remain open",
     curveNote: "4,940 → 411 → 6 → 4 · zero solver unknowns",
-    metrics: [["layered size-8 census", "4,940 → 4"], ["sliced size-7 census", "1,112 → 8 focused"], ["size-7 radius-2 patches", "8 / 8 complete"], ["radius-3 clauses", "759 failure · 731 first-corona"]],
+    metrics: [["layered size-8 census", "4,940 → 4"], ["sliced size-7 census", "1,112 → 8 focused"], ["size-7 radius-2 patches", "8 / 8 complete"], ["scale-3 cluster screens", `${A2_SLICED_SCALE3_OBSTRUCTIONS.length} obstructed · ${A2_SLICED_SCALE3_OPEN.length} open`]],
     verdict: ["open", "Finite periodic and corona evidence is exact · every global classification remains unresolved"],
     evidence: [
       ["Periodic funnel", "4,529 + 405 + 2 certified", "Exact weighted quotients remove 4,936 of 4,940 shapes before the surviving frontier. Each survivor then exhausts all 1,995 seven-copy HNF bases with zero solver unknowns; two use 32 complete meet-in-the-middle fallbacks apiece."],
@@ -197,7 +206,7 @@ const SYSTEMS = {
       ["GCTS marking", "16 / 72 / 72 / 62 clauses", "Sound obstruction clauses prune first-corona families, but none of the four outer first-corona spaces is exhausted."],
       ["Substitution screen", "2…8 · 49 anisotropic pairs", "Direct scalar and layer-anisotropic rules are excluded, together with connected two- and three-copy metatile alphabets at scales 2 and 3."],
       ["Sliced size-seven frontier", "8 complete radius-two patches", "The focused consecutive-layer candidates contain 190–252 copies in their exact radius-two patches. Uniform radius-three GCTS runs retain 759 sound failure clauses and 731 first-corona clauses, but every search stops at a declared round or solver limit."],
-      ["Cluster substitution obstruction", "00139 · 1,268 parent types", "A complete proper/reflected three-copy scale-three search certifies no substitution for candidate 00139. This rules out one bounded cluster grammar, not every substitution or global tiling."],
+      ["Cluster substitution obstructions", `${A2_SLICED_SCALE3_OBSTRUCTIONS.length} candidates · ${A2_SLICED_SCALE3_PARENT_COUNT.toLocaleString()} parent types`, `Complete proper/reflected three-copy scale-three searches certify no substitution for ${a2SlicedShortIds(A2_SLICED_SCALE3_OBSTRUCTIONS).join(" · ")}. ${A2_SLICED_SCALE3_OPEN.length ? `${a2SlicedShortIds(A2_SLICED_SCALE3_OPEN).join(" · ")} retain no completed scale-three screen.` : "Every focused candidate has a completed scale-three screen."} These results rule out ${A2_SLICED_SCALE3_OBSTRUCTIONS.length} bounded cluster grammars, not every substitution or global tiling.`],
       ["Claim boundary", "4 unresolved", "Larger periodic domains, complete second-corona searches, and general substitutions remain open. Exact-through-seven is not a proof of non-tiling or aperiodicity."],
     ],
   },
@@ -218,7 +227,7 @@ const MATRIX_DETAILS = {
   "Ideal IQC": "Exact continuation is real and self-fed, but different promoted productions appear at successive levels. Deep compression is not renamed exponential growth: the strict stationary audit requires the same exact semantic production and learned scale twice in succession.",
   "Cd₅.₇Yb IQC": "The real-material model is the hardest transfer case. Bounded local marking succeeds for finite primitive growth, but exact promoted clusters are sparse and nucleus-dependent. Dormant types remain frozen rather than being refit on held-out atoms.",
   "Cu–Zr glass": "The negative control protects the benchmark from a trivial answer. Residual clusters guarantee representation, but no stable macro production, unique exterior continuation, or million-site symbolic claim is admitted.",
-  "A₂ geometry test": "This is not an atomic material claim. It isolates exact geometric screening and GCTS marking on two layer-essential lattice-function families: weighted periodic quotients narrow the 4,940-shape layered census to four exact-through-seven survivors, while eight focused consecutive-layer size-seven supports now have complete radius-two patches and bounded unresolved radius-three searches. Local obstruction clauses are never renamed non-tiling, aperiodicity, or material growth.",
+  "A₂ geometry test": `This is not an atomic material claim. It isolates exact geometric screening and GCTS marking on two layer-essential lattice-function families: weighted periodic quotients narrow the 4,940-shape layered census to four exact-through-seven survivors, while eight focused consecutive-layer size-seven supports have complete radius-two patches and ${A2_SLICED_SCALE3_OBSTRUCTIONS.length} bounded scale-three cluster obstructions. Local obstruction clauses are never renamed non-tiling, aperiodicity, or material growth.`,
 };
 
 const ANATOMY = {
@@ -288,7 +297,7 @@ const PHYSICS_MAP = {
   },
   kinetics: {
     status: "open", label: "thermodynamics + kinetics", title: "Leap-frogging dynamics is the approximation boundary",
-    physical: "Temperature, pressure, chemical potentials, free-energy differences, diffusion barriers, nucleation rates, phonons, and time-dependent disorder. Before growth, a physics-to-geometry preflight classifies every current channel as observed/learned, a declared soft hypothesis, or an open boundary; each record exposes its encoding, evidence, limit, and route to the exact control. Imported relaxation archives can compare geometry-only final, first, or pooled reference mismatch with same-run relative energy or residual-force RMS, test a fixed contact/angle/coordination surrogate by leaving out one frame at a time, freeze it for another provenance-compatible archive, and—only after a predeclared transfer gate—opt into a bounded candidate-ranking mark. A deployment map overlays target frames and live candidates on the frozen source-support box and a matched removal audit shows whether that term changes the frontier ranking.",
+    physical: "Temperature, pressure, chemical potentials, free-energy differences, diffusion barriers, nucleation rates, phonons, and time-dependent disorder. Before growth, a physics-to-geometry preflight classifies every current channel as observed/learned, a declared soft hypothesis, or an open boundary; each record exposes its encoding, evidence, limit, route to the exact control, and the concrete execution object it can change. Supplied scalar-spin overlap color is an admission gate, while screened graph response, continuation multiplicity, and contact-direction rigidity are signed rank terms with matched neutral-control arms. Imported relaxation archives can compare geometry-only final, first, or pooled reference mismatch with same-run relative energy or residual-force RMS, test a fixed contact/angle/coordination surrogate by leaving out one frame at a time, freeze it for another provenance-compatible archive, and—only after a predeclared transfer gate—opt into a bounded candidate-ranking mark. A deployment map overlays target frames and live candidates on the frozen source-support box and a matched removal audit shows whether that term changes the frontier ranking.",
     geometric: "Structural evidence, connection successes/failures, dimensionless contact/angle strain, composition drift, and optional supplied formal-charge drift are retained. Fixed-topology snapshot pairs may additionally expose local best-affine F, Green–Lagrange invariants, D²min, and neighbor exchange while one selected frame alone supplies the cluster grammar and growth seed.",
     growth: "Tree search jumps directly between geometrically certified states. Soft geometry may order legal branches; proposal checks and backtracks measure computational work, not elapsed physical time.",
     boundary: "The portal predicts structurally admissible continuation, not a growth rate or thermodynamic phase diagram. Final, first, and pooled references are geometry-only sensitivity choices. The fixed ridge surrogate fits source labels; cross-archive use freezes it and requires the same reduced composition, periodicity, program/version, exact canonical normalized method record, units, target, and reference. Target labels score only after prediction. Promotion additionally requires at least five target frames, at least five inside the frozen source feature box, at least 80% feature-support coverage, Spearman rho at least 0.80, and positive predictive Q-squared. Explicit opt-in adds only a bounded soft rank term over identical frozen candidates; any candidate outside source support receives zero contribution and is reported as an abstention. One compatible archive is still not broad validation, causality, a potential, a force field, kinetics, or time.",
@@ -416,7 +425,7 @@ const CLAIMS = [
   ["open", "Generic QC stationarity", "No exact chemistry–chirality–directed-port production recurs across three consecutive QC levels."],
   ["progress", "IQC option-preserving beam", "A width-four target-free beam keeps the branch with the largest compatible next frontier. Frozen before wave 20, it adds 120/120 exact held-forward sites; all 24 waves are 572/572 exact. Spatial confirmation and stationarity remain open."],
   ["progress", "A₂ sliced radius-three frontier", "Eight size-seven consecutive-layer candidates have complete exact radius-two patches (190–252 copies). Uniform radius-three runs retain 759 failure and 731 first-corona clauses, then stop at declared round or solver limits; every global classification remains unresolved."],
-  ["proved", "A₂ 00139 bounded cluster obstruction", "All 1,268 reflected three-copy scale-three parent types are exhausted with no substitution. The certificate excludes that finite grammar only; it does not prove non-tiling or aperiodicity."],
+  ["proved", "Eight bounded A₂ cluster obstructions", `${A2_SLICED_SCALE3_PARENT_COUNT.toLocaleString()} reflected three-copy scale-three parent types are exhausted across ${a2SlicedShortIds(A2_SLICED_SCALE3_OBSTRUCTIONS).join(" · ")} with no substitution. Each certificate excludes one finite grammar only; none proves non-tiling or aperiodicity.`],
   ["open", "Generic million-site QC growth", "Specialized/address ceilings cross one million; the family-blind cluster-of-clusters executor does not yet."],
   ["open", "Pure-port crystal closure", "NaCl's port graph certifies the learned cell rule, but the radix/offset proposal still comes from a positions-only grid learner."],
   ["open", "Explicit output cost", "Symbolic derivations compress actions; emitting every atom remains linear and is not claimed to replace molecular dynamics time integration."],

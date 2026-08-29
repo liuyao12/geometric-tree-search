@@ -6,12 +6,12 @@ const LANE_DEFINITIONS = Object.freeze([
       "local-rearrangement", "local-symmetry", "centrosymmetry", "reciprocal-space"]) }),
   Object.freeze({ id: "local", label: "local attachment", short: "fast neighborhood closure",
     interpretation: "Steric, coordination, chemistry, charge, connection, and local projection evidence act on exact candidate geometry.",
-    recordIds: Object.freeze(["steric", "local", "constraint-projection", "connection", "score-ledger",
+    recordIds: Object.freeze(["steric", "local", "constraint-rigidity", "constraint-projection", "connection", "score-ledger",
       "chemistry", "charge-geometry", "charge-moment", "ionic-pair", "bond-valence", "robustness"]) }),
   Object.freeze({ id: "interface", label: "interface + morphology", short: "mesoscopic front geometry",
     interpretation: "Surface completion, habit, coherency, front shape, defects, nuclei, and loop closure are represented without an interfacial-energy law.",
     recordIds: Object.freeze(["solute-partition", "surface", "bulk-surface-driving", "attachment-topology",
-      "habit-anisotropy", "defect-precursors", "coherency-memory", "front-morphology",
+      "habit-anisotropy", "defect-precursors", "coherency-memory", "configurational-entropy", "front-morphology",
       "capillary-geometry", "microstructure", "multi-nucleus", "loop-closure"]) }),
   Object.freeze({ id: "environment", label: "imposed environment", short: "declared boundary geometry",
     interpretation: "Substrate, loading, directional, thermal, feed-exposure, and path-ensemble controls are counterfactual geometric hypotheses.",
@@ -35,7 +35,7 @@ function laneState(counts, total) {
   return "hybrid";
 }
 
-const HARD_ADMISSION_IDS = new Set(["steric", "local", "connection"]);
+const HARD_ADMISSION_IDS = new Set(["steric", "local", "connection", "collinear-spin"]);
 const CANDIDATE_GEOMETRY_IDS = new Set(["constraint-projection", "calculation-forces"]);
 const INITIAL_STATE_IDS = new Set(["multi-nucleus"]);
 const SEARCH_ORDER_IDS = new Set(["path-ensemble"]);
@@ -46,7 +46,8 @@ const RANKING_IDS = new Set([
   "bulk-surface-driving", "attachment-topology", "habit-anisotropy", "defect-precursors",
   "coherency-memory", "front-morphology", "capillary-geometry", "epitaxy", "affine",
   "drive", "thermal-field", "robustness", "microstructure", "loop-closure",
-  "feed-exposure", "kinetics",
+  "feed-exposure", "kinetics", "long-range", "configurational-entropy",
+  "constraint-rigidity",
 ]);
 
 const PHYSICS_ABLATION_BINDING_DEFINITIONS = [
@@ -64,6 +65,9 @@ const PHYSICS_ABLATION_BINDING_DEFINITIONS = [
   ["habit-anisotropy", "habitAnisotropySelect", "none"],
   ["defect-precursors", "defectPrecursorSelect", "none"],
   ["coherency-memory", "coherencyMemorySelect", "none"],
+  ["long-range", "collectiveResponseSelect", "none"],
+  ["configurational-entropy", "configurationalMultiplicitySelect", "none"],
+  ["constraint-rigidity", "constraintTensorSelect", "none"],
   ["front-morphology", "frontMorphologySelect", "none"],
   ["capillary-geometry", "capillaryGeometrySelect", "none"],
   ["epitaxy", "epitaxyTemplateSelect", "none"],
@@ -87,12 +91,18 @@ export const PHYSICS_ABLATION_CONTROL_BINDINGS = Object.freeze(Object.fromEntrie
       interventionKind: "explicit-neutral-control-value" })])));
 
 export const PHYSICS_EFFECT_COLUMNS = Object.freeze([
-  Object.freeze({ id: "hardAdmission", label: "admission", property: "hardAdmissionCanChange" }),
-  Object.freeze({ id: "candidateGeometry", label: "geometry", property: "candidateGeometryCanChange" }),
-  Object.freeze({ id: "initialState", label: "seed", property: "initialStateCanChange" }),
-  Object.freeze({ id: "ranking", label: "ranking", property: "rankingCanChange" }),
-  Object.freeze({ id: "searchOrder", label: "order", property: "searchOrderCanChange" }),
-  Object.freeze({ id: "diagnostic", label: "no hook", property: "diagnosticOnly" }),
+  Object.freeze({ id: "hardAdmission", label: "admission", property: "hardAdmissionCanChange",
+    object: "candidate acceptance / rejection" }),
+  Object.freeze({ id: "candidateGeometry", label: "geometry", property: "candidateGeometryCanChange",
+    object: "bounded candidate site coordinates" }),
+  Object.freeze({ id: "initialState", label: "seed", property: "initialStateCanChange",
+    object: "placed seed occurrence set" }),
+  Object.freeze({ id: "ranking", label: "ranking", property: "rankingCanChange",
+    object: "signed candidate score and branch rank" }),
+  Object.freeze({ id: "searchOrder", label: "order", property: "searchOrderCanChange",
+    object: "reproducible candidate ordering" }),
+  Object.freeze({ id: "diagnostic", label: "no hook", property: "diagnosticOnly",
+    object: "recorded evidence only" }),
 ]);
 
 export const PHYSICS_READINESS_STATES = Object.freeze([
@@ -127,12 +137,17 @@ export function physicsExecutionLineage(record) {
     ranking ? "soft branch ranking" : null,
     searchOrder ? "reproducible branch order" : null,
   ].filter(Boolean);
+  const executionObjects = PHYSICS_EFFECT_COLUMNS.slice(0, -1)
+    .filter((column) => ({
+      hardAdmission, candidateGeometry, initialState, ranking, searchOrder,
+    })[column.id]).map((column) => column.object);
   return {
     schema: 1,
     recordId: record.id,
     active,
     evidenceStatus: record.status,
     effects,
+    executionObjects,
     hardAdmissionCanChange: hardAdmission,
     candidateGeometryCanChange: candidateGeometry,
     initialStateCanChange: initialState,
