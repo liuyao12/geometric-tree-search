@@ -33,7 +33,7 @@ import { compareShadowMaterialFingerprints, SHADOW_MATERIAL_CONSEQUENCE_FIELDS }
 import { LEAP_CONSEQUENCE_COMPONENTS, resolveLeapConsequenceComparison }
   from "./leap-consequence-decomposition.mjs?v=20260828-290";
 import { buildDimensionlessLeapConsequence, buildDynamicalEvidencePlan }
-  from "./leap-structural-consequence.mjs?v=20260829-326";
+  from "./leap-structural-consequence.mjs?v=20260829-327";
 import { buildSettlingMaterialResponseHistory, buildSettlingMaterialResponseMatrix, compareSettlingMaterialFingerprints,
   SETTLING_MATERIAL_FIELDS }
   from "./settling-material-sensitivity.mjs?v=20260828-290";
@@ -58,7 +58,7 @@ import { compareHypothesisSeparationOutcomes }
   from "./hypothesis-separation-outcome.js?v=20260826-1";
 import { buildPhysicsProtocolCampaignReadiness, buildPhysicsProtocolPairProgress,
   buildPhysicsProtocolResponseFingerprint, comparePhysicsProtocolOutcomes }
-  from "./physics-protocol-outcome.js?v=20260829-326";
+  from "./physics-protocol-outcome.js?v=20260829-327";
 import { buildSiteProvenance } from "./site-provenance.js?v=20260826-2";
 import { buildSiteConstraintAudit } from "./site-constraint-audit.js?v=20260826-1";
 import { compareSiteEnvironments } from "./site-environment-comparison.js?v=20260826-3";
@@ -8622,7 +8622,7 @@ function growthEventLocalGeometry(candidate, evaluation, neighborhoodReach) {
     coordinatesRelativeToCandidateCenter: true,
     coordinateUnit: "angstrom",
     displayFrame: "current proper-pose world frame translated to candidate center",
-    targetUsed: !reconstructionCertified,
+    targetUsed: knownWindowReplayActive(),
     usedForCandidateEnumeration: false,
     usedForAdmission: false,
     usedForBranchRanking: false,
@@ -8667,7 +8667,7 @@ function candidatePosePerturbationAudit(candidate) {
     perturbationFailureModes: failureModes,
     perturbationEnsembleExecutedForThisAction: true,
     perturbationAuditTargetUsed: false,
-    candidateSelectionTargetUsed: !reconstructionCertified,
+    candidateSelectionTargetUsed: knownWindowReplayActive(),
   };
 }
 
@@ -8701,7 +8701,7 @@ function growthDecisionUncertainty(candidate, evaluation, nearbyRoleCounts, exec
     perturbationFailureModes: {},
     perturbationEnsembleExecutedForThisAction: false,
     perturbationAuditTargetUsed: false,
-    candidateSelectionTargetUsed: !reconstructionCertified,
+    candidateSelectionTargetUsed: knownWindowReplayActive(),
     perturbationNotExecutedReason: "deterministic per-leap audit cap reached",
   };
   return {
@@ -11900,7 +11900,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260829-326",
+      buildId: "20260829-327",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -14336,7 +14336,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260829-326" },
+    application: { name: "Materials Growth Lab", buildId: "20260829-327" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },
@@ -14794,6 +14794,7 @@ function experimentNotebookSummary(receipt) {
         || typeof firstPolicySnapshot.rankingTargetUsed !== "boolean" ? null
         : firstPolicySnapshot.candidateSetTargetUsed || firstPolicySnapshot.rankingTargetUsed,
     seedProtocolMode: search?.seedProtocol?.mode || null,
+    seedSelectionMode: search?.seedProtocol?.seedSelectionMode || null,
     seedConfigurationDigest: search?.seedProtocol?.seedConfigurationDigest || null,
     seedTargetUsed: search?.seedProtocol?.targetUsed ?? null,
     targetUsed: structuralLeaps.some((leap) => leap.targetUsed),
@@ -16302,7 +16303,9 @@ function renderNotebookPhysicsProtocolOutcome(selected) {
     ? `${campaign.pairCount} independent registered pairs`
     : campaign.state === "more-independent-seeds-needed" ? `${campaign.pairCount} pairs · replication incomplete`
       : "single registered pair";
-  const campaignCopy = document.createElement("span"); campaignCopy.textContent = campaign.nextAction;
+  const campaignCopy = document.createElement("span"); campaignCopy.textContent = campaign.nextAction
+    + (campaign.replicatedDescriptiveResponse ? ""
+      : " Use Local occurrence nucleus and change the observed nucleation site before registering the next pair.");
   campaignHeader.append(campaignEyebrow, campaignTitle, campaignCopy);
   const campaignStats = document.createElement("div"); campaignStats.className = "notebook-physics-campaign-stats";
   [["pair sessions", campaign.pairCount], ["distinct seeds", campaign.distinctSeedCount],
@@ -17820,7 +17823,7 @@ function referenceCoverageAudit() {
 }
 
 function candidateReferenceGain(candidate, audit) {
-  if (reconstructionCertified || audit.missing === 0) return 0;
+  if (!knownWindowReplayActive() || audit.missing === 0) return 0;
   const gained = new Set();
   candidateSites(candidate).forEach((site) => {
     referenceAtoms.forEach((reference, index) => {
@@ -17879,7 +17882,7 @@ function candidateKey(type, position, rotation) {
 function enqueueRulesFromPlacement(placement) {
   const continuationRules = hierarchyEnabled || placement.depth === 0
     ? overlapGrammar.byFrom.get(placement.type) || [] : [];
-  const replayRules = !reconstructionCertified && Number.isInteger(placement.occurrenceIndex)
+  const replayRules = knownWindowReplayActive() && Number.isInteger(placement.occurrenceIndex)
     ? overlapGrammar.reconstructionByOccurrence.get(placement.occurrenceIndex) || [] : [];
   const rules = [...replayRules, ...continuationRules];
   rules.forEach((rule) => {
@@ -18887,7 +18890,7 @@ function geometricArrivalPathForCandidate(candidate, fresh) {
     candidateGeometryChanged: false,
     hardAdmissionChanged: false,
     heldoutTargetUsed: false,
-    knownWindowReplayGeometryUsed: !reconstructionCertified,
+    knownWindowReplayGeometryUsed: knownWindowReplayActive(),
     barrierOrRateInferred: false,
     physicalTimeIntegrated: false,
   };
@@ -19669,7 +19672,7 @@ function candidatePoseDifference(first, second) {
 }
 
 function selectFrozenShadowLeapBatch(ranked, caches = {}) {
-  if (growthScheduling !== "commuting" || overlapGrammar.molecular && !reconstructionCertified) return null;
+  if (growthScheduling !== "commuting" || overlapGrammar.molecular && knownWindowReplayActive()) return null;
   const accepted = [];
   ranked.forEach(({ entry }) => {
     if (entry.evaluation.accepted && candidateFitsCommutingBatch(accepted, entry, {
@@ -19781,12 +19784,12 @@ function compareFrozenShadowLeaps(baseline, omitted) {
 
 function buildFrozenShadowLeapAudit(entries, candidateSetDigest) {
   if (!entries.length || growthScheduling !== "commuting"
-    || overlapGrammar.molecular && !reconstructionCertified) return {
+    || overlapGrammar.molecular && knownWindowReplayActive()) return {
     available: false,
     reason: growthScheduling !== "commuting" ? "shadow leaps require commuting-antichain scheduling"
       : "known-window molecular replay uses a fixed replay order",
     candidateSetDigest,
-    targetUsed: !reconstructionCertified,
+    targetUsed: knownWindowReplayActive(),
     executed: false,
   };
   const admissible = entries.filter((entry) => entry.evaluation.accepted);
@@ -19845,7 +19848,7 @@ function buildFrozenShadowLeapAudit(entries, candidateSetDigest) {
     sameBatchFeasibilityRules: true,
     displayCoordinatesRetained: true,
     receiptCoordinatesEmbedded: false,
-    targetUsed: !reconstructionCertified,
+    targetUsed: knownWindowReplayActive(),
     executed: false,
     downstreamFrontierEnumerated: false,
     materialFingerprintCoordinatesEmbedded: false,
@@ -20648,7 +20651,7 @@ function markingWinnerMaterialConsequence(entry) {
     candidateGeometryChanged: false,
     hardAdmissionChanged: false,
     executed: false,
-    targetUsedForMaterialConsequence: !reconstructionCertified,
+    targetUsedForMaterialConsequence: knownWindowReplayActive(),
     interpretation: "post-attachment geometric consequence under the current active physics ledger; not energy, probability, kinetics, or execution",
   };
   consequence.digest = notebookStringHash([
@@ -20705,7 +20708,7 @@ function markingWinnerMultiscaleConsequence(entry, maximumAnchorAtoms = 64) {
     counterfactualOrderSnapshot(afterStats));
   const reciprocal = reciprocalSpaceTransition(counterfactualScatteringSnapshot(beforeStats),
     counterfactualScatteringSnapshot(afterStats));
-  const targetUsed = !reconstructionCertified;
+  const targetUsed = knownWindowReplayActive();
   const result = {
     available: localOrder.available && reciprocal.available,
     harmonic: 6,
@@ -20879,7 +20882,7 @@ function buildMarkingFrontierCounterfactual(admissible, candidateSetDigest) {
     candidateGeometryChanged: false,
     hardAdmissionChanged: false,
     targetUsedForMarkingScores: false,
-    materialConsequenceTargetUsed: !reconstructionCertified,
+    materialConsequenceTargetUsed: knownWindowReplayActive(),
     targetUsed: false,
     executed: false,
   };
@@ -21043,13 +21046,13 @@ function capturePolicyComparison(entries, frontierStructuralState = null) {
     candidateDigest,
     frontierMaterialState: compactFrontierMaterialState(frontierStructuralState),
     candidateSetTargetUsed: false,
-    rankingTargetUsed: !reconstructionCertified,
-    referenceGuided: !reconstructionCertified,
+    rankingTargetUsed: knownWindowReplayActive(),
+    referenceGuided: knownWindowReplayActive(),
     uniqueTopActions: new Set(policies.map((policy) => policy.candidateKey).filter(Boolean)).size,
     everyScoreDecompositionExact: policies.every((policy) => policy.scoreDecompositionExact),
     frontierPoseAudit: {
       deterministicOrder: "displayed active candidate, then candidate key lexical order",
-      candidateSelectionTargetUsed: !reconstructionCertified,
+      candidateSelectionTargetUsed: knownWindowReplayActive(),
       maximumAuditedCandidates: MAXIMUM_FRONTIER_POSE_AUDITS,
       configuredCandidateLimit: resolvedFrontierPoseAuditLimit,
       auditedCandidates: frontierPoseAudits.size,
@@ -22300,7 +22303,7 @@ function renderCollinearSpinGeometry() {
 }
 
 function batchRetainsNovelSites(entries) {
-  if (!reconstructionCertified && replayIndex < referenceCount()) {
+  if (knownWindowReplayActive() && replayIndex < referenceCount()) {
     const owners = new Map();
     entries.forEach((entry) => entry.evaluation.freshReferenceIndices.forEach((referenceIndex) =>
       owners.set(referenceIndex, (owners.get(referenceIndex) || 0) + 1)));
@@ -22376,7 +22379,7 @@ function growthFrontierWorkReceipt() {
     eventLoopYields: growthFrontierWork.yields,
     maximumSliceMilliseconds: receiptRound(growthFrontierWork.maximumSliceMilliseconds, 3),
     candidateSetFrozenBeforeEvaluation: true, candidateSetTargetUsed: false,
-    rankingTargetUsed: !reconstructionCertified, physicalTimeInferred: false,
+    rankingTargetUsed: knownWindowReplayActive(), physicalTimeInferred: false,
     claimBoundary: "This is an in-progress browser scheduling receipt over a frozen candidate set, not materials kinetics, physical time, or a completed structural leap.",
   };
 }
@@ -22427,7 +22430,7 @@ function scoreFrontierCandidate(candidate, audit) {
   const explorationOffset = geometricExplorationOffset(candidate);
   candidate.explorationOffset = explorationOffset;
   const entry = { candidate, evaluation, sites: evaluation.sites, dynamicPriority, referenceGain,
-    referenceGuided: !reconstructionCertified, baseScore, score,
+    referenceGuided: knownWindowReplayActive(), baseScore, score,
     explorationOffset, selectionScore: score + explorationOffset };
   candidate.growthPhysicsAttribution = freezeGrowthActionPhysicsFingerprint(entry);
   return entry;
@@ -22440,7 +22443,7 @@ async function selectCommutingFrontierBatch(evaluated, generation, frontierStruc
   ranked.forEach((entry, index) => rankGrowthActionPhysicsFingerprint(entry,
     index + 1, ranked.length, ranked[0]?.selectionScore ?? entry.selectionScore));
   freezeGrowthActionRankSensitivity(ranked);
-  if (overlapGrammar.molecular && !reconstructionCertified) {
+  if (overlapGrammar.molecular && knownWindowReplayActive()) {
     const ordered = ranked.slice().sort((first, second) => first.candidate.rule.replayOrder - second.candidate.rule.replayOrder);
     for (const entry of ordered) {
       if (entry.evaluation.accepted || rejectionIsOrderInvariant(entry.candidate, entry.evaluation)) return [entry];
@@ -22489,9 +22492,8 @@ async function selectCommutingFrontierBatch(evaluated, generation, frontierStruc
 }
 
 async function commutingFrontierBatch(frontierStructuralState = null) {
-  const audit = reconstructionCertified
-    ? { matched: referenceCount(), missing: 0, duplicateAtoms: 0, extraneousAtoms: 0 }
-    : referenceCoverageAudit();
+  const audit = knownWindowReplayActive() ? referenceCoverageAudit()
+    : { matched: referenceCount(), missing: 0, duplicateAtoms: 0, extraneousAtoms: 0 };
   // Candidate enumeration is frozen before this ranking. Geometric strain is
   // a target-blind preference among those exact actions, never an admission
   // rule and never a source of new coordinates.
@@ -22530,7 +22532,7 @@ async function commutingFrontierBatch(frontierStructuralState = null) {
     eventLoopYields: growthFrontierWork.yields,
     maximumSliceMilliseconds: receiptRound(growthFrontierWork.maximumSliceMilliseconds, 3),
     candidateSetFrozenBeforeEvaluation: true, candidateSetTargetUsed: false,
-    rankingTargetUsed: !reconstructionCertified, physicalTimeInferred: false,
+    rankingTargetUsed: knownWindowReplayActive(), physicalTimeInferred: false,
     claimBoundary: "Browser scheduling slices expose progress and preserve the exact frozen candidate order. Slice duration is a responsiveness diagnostic, not materials kinetics or a speedup benchmark.",
   };
   return batch;
@@ -22556,7 +22558,7 @@ function evaluateCandidate(candidate, {
 } = {}) {
   if (refinePose) refineCandidateTranslation(candidate);
   const rawSites = candidateSites(candidate);
-  const reconstructing = targetAware && !reconstructionCertified && replayIndex < referenceCount();
+  const reconstructing = targetAware && knownWindowReplayActive() && replayIndex < referenceCount();
   const canonical = reconstructing ? canonicalKnownSites(rawSites) : { sites: rawSites, failures: 0, duplicateSites: 0 };
   const sites = canonical.sites;
   const audit = reconstructing ? referenceCoverageAudit() : null;
@@ -23014,7 +23016,17 @@ function renderNucleusInterfaceEvolution(pairKey) {
 function growthSeedProtocolLabel(mode = growthSeedProtocol) {
   return mode === "reconstruct"
     ? "local occurrence · known-window reconstruction"
+    : mode === "local-frontier"
+      ? "local occurrence nucleus · target-free outward continuation"
     : "complete observed window · target-free outward continuation";
+}
+
+function knownWindowReplayActive() {
+  return growthSeedProtocol === "reconstruct" && !reconstructionCertified;
+}
+
+function targetFreeGrowthAuthorized() {
+  return !knownWindowReplayActive();
 }
 
 function growthSeedConfigurationDigest(mode = growthSeedProtocol) {
@@ -23233,6 +23245,7 @@ function initializeOffLatticeSearch() {
       explicitResidualSites: atoms.filter((atom) => !atom.clusterIds?.length).length,
       frontierCandidates: frontierCandidates.length,
       reconstructionCertifiedAtInitialization: reconstructionCertified,
+      knownWindowReplayRequested: false, targetFreeContinuationAuthorized: true,
       targetUsed: false, futureSitesUsed: false,
       seedConfigurationDigest: growthSeedConfigurationDigest(),
       claimBoundary: "The supplied observation window is the declared initial condition. Its atoms are not a held-out target; every exterior proposal is generated afterward from frozen local cluster ports.",
@@ -23271,19 +23284,29 @@ function initializeOffLatticeSearch() {
   selectedNucleusPairKey = initializedGrowthNuclei > 1
     ? `${placedClusters[0].nucleusId}:${placedClusters[1].nucleusId}` : null;
   placedClusters.forEach(enqueueRulesFromPlacement);
-  replayIndex = referenceCoverageCount();
-  const initialAudit = referenceCoverageAudit();
-  reconstructionCertified = replayIndex === referenceCount() && atoms.length === referenceCount()
-    && initialAudit.extraneousAtoms === 0 && initialAudit.duplicateAtoms === 0;
+  if (growthSeedProtocol === "reconstruct") {
+    replayIndex = referenceCoverageCount();
+    const initialAudit = referenceCoverageAudit();
+    reconstructionCertified = replayIndex === referenceCount() && atoms.length === referenceCount()
+      && initialAudit.extraneousAtoms === 0 && initialAudit.duplicateAtoms === 0;
+  } else {
+    replayIndex = 0;
+    reconstructionCertified = false;
+  }
   growthSeedAudit = {
     schema: 1, mode: growthSeedProtocol, label: growthSeedProtocolLabel(),
+    seedSelectionMode: nucleationSiteMode,
     explicitSeedSites: atoms.length, initializedPlacements: placedClusters.length,
     explicitResidualSites: atoms.filter((atom) => !atom.clusterIds?.length).length,
     frontierCandidates: frontierCandidates.length,
     reconstructionCertifiedAtInitialization: reconstructionCertified,
+    knownWindowReplayRequested: growthSeedProtocol === "reconstruct",
+    targetFreeContinuationAuthorized: growthSeedProtocol === "local-frontier",
     targetUsed: false, futureSitesUsed: false,
     seedConfigurationDigest: growthSeedConfigurationDigest(),
-    claimBoundary: "A fitted local occurrence initializes a labeled known-window reconstruction audit. Until the supplied window is certified, replay ranking is target-aware and cannot enter a matched physics outcome.",
+    claimBoundary: growthSeedProtocol === "local-frontier"
+      ? "A fitted occurrence supplies only the explicit nucleus. Remaining observed sites are neither snapped to nor scored; every frontier action is generated from frozen local ports and exact live collisions."
+      : "A fitted local occurrence initializes a labeled known-window reconstruction audit. Until the supplied window is certified, replay ranking is target-aware and cannot enter a matched physics outcome.",
   };
 }
 
@@ -25568,7 +25591,9 @@ function syncStageOptions() {
     growthSeedProtocolHint.textContent = finiteIceAnchorMode ? "sealed molecular seed"
       : growthSeedProtocol === "observed-window"
         ? `${referenceCount()}-site observed nucleus · target-free frontier`
-        : `${atoms.length}-site local occurrence · replay guided until certified`;
+        : growthSeedProtocol === "local-frontier"
+          ? `${atoms.length}-site fitted nucleus · target-free frontier`
+          : `${atoms.length}-site local occurrence · replay guided until certified`;
     strainWeightHint.textContent = geometryPreference === "strain"
       ? `${geometricStrainWeight.toFixed(2)} soft` : "disabled";
     chargePreferenceHint.textContent = formalChargeTarget?.available
@@ -25648,7 +25673,7 @@ function syncStageOptions() {
       ? `dimensionless T* ${geometricExplorationScale.toFixed(2)} · seed ${growthPathSeed}` : "greedy · T* = 0";
     growthNucleiHint.textContent = finiteIceAnchorMode ? "sealed molecular seed"
       : growthSeedProtocol === "observed-window" ? "one supplied observation domain"
-      : `${initializedGrowthNuclei || requestedGrowthNuclei} observed seed${(initializedGrowthNuclei || requestedGrowthNuclei) === 1 ? "" : "s"} · ${crossNucleusMergeContacts} interface contacts`;
+      : `${initializedGrowthNuclei || requestedGrowthNuclei} fitted seed${(initializedGrowthNuclei || requestedGrowthNuclei) === 1 ? "" : "s"} · ${crossNucleusMergeContacts} interface contacts`;
     nucleationSiteHint.textContent = finiteIceAnchorMode ? "sealed molecular seed"
       : growthSeedProtocol === "observed-window" ? "all fitted supports + explicit residuals"
       : `${nucleationSiteLabel()}${nucleationSelectionAudit?.fallback ? " · fallback" : ""}`;
@@ -26597,7 +26622,7 @@ function materializeCandidate(candidate, evaluation, leapCreationContext) {
   extensionIndex++;
   if (evaluation.markingFallback) reconstructionMarkingFallbacks++;
   replayIndex = referenceCoverageCount();
-  if (!reconstructionCertified && replayIndex === referenceCount()) {
+  if (knownWindowReplayActive() && replayIndex === referenceCount()) {
     const audit = referenceCoverageAudit();
     reconstructionCertified = atoms.length === referenceCount()
       && audit.extraneousAtoms === 0 && audit.duplicateAtoms === 0;
@@ -26633,7 +26658,7 @@ function currentLeapOutcomeSnapshot(accepted, rejected) {
 
 async function performOffLatticeEvent() {
   const reconstructionWasCertified = reconstructionCertified;
-  const relaxationAuthorized = reconstructionCertified;
+  const relaxationAuthorized = targetFreeGrowthAuthorized();
   const before = { atoms: atoms.length, clusters: placedClusters.length, frontier: frontierCandidates.length,
     morphology: structuralMorphologySnapshot(), composition: structuralCompositionSnapshot(), packing: structuralPackingSnapshot(), voidClearance: structuralVoidClearanceSnapshot(),
     interfaces: structuralInterfaceSnapshot(),
@@ -34103,15 +34128,20 @@ function liveGrowthCertificate() {
   const insideNovelSites = domain.novelInsideObservationAtoms;
   const continuationSites = domain.geometricContinuationAtoms;
   const maximumDepth = Math.max(0, ...placedClusters.map((placement) => placement.depth || 0));
-  const fixedPointReached = reconstructionCertified && frontierCandidates.length === 0 && placedClusters.length > 0;
+  const fixedPointReached = targetFreeGrowthAuthorized()
+    && frontierCandidates.length === 0 && placedClusters.length > 0;
   const stationaryBenchmark = scenarioSelect.value === "competition" && benchmark.status === "pass";
   return {
     mode: "off-lattice covering search",
     state: fixedPointReached ? "finite fixed point" : continuationSites ? "geometric continuation"
-      : generatedSites ? "novel structure inside observation" : reconstructionCertified ? "ready for continuation" : "known-window replay",
-    knownWindow: { status: reconstructionCertified ? "pass" : "progress",
+      : generatedSites ? "novel structure inside observation"
+        : knownWindowReplayActive() ? "known-window replay" : "target-free nucleus",
+    knownWindow: growthSeedProtocol === "reconstruct" ? {
+      status: reconstructionCertified ? "pass" : "progress",
       title: `${audit.matched} / ${referenceCount()} known sites`,
-      detail: `${audit.missing} missing · ${audit.duplicateAtoms} duplicates · ${audit.extraneousAtoms} extraneous during replay` },
+      detail: `${audit.missing} missing · ${audit.duplicateAtoms} duplicates · ${audit.extraneousAtoms} extraneous during replay`,
+    } : { status: "not-requested", title: "known-window replay not requested",
+      detail: "The supplied positions trained the frozen grammar and seed occurrence; unseen actions are never snapped to or ranked against the remaining observed sites." },
     continuation: { status: continuationSites ? "progress" : "open",
       title: `${continuationSites} beyond observation · ${insideNovelSites} novel inside`,
       detail: continuationSites
@@ -34126,7 +34156,10 @@ function liveGrowthCertificate() {
       detail: stationaryBenchmark
         ? "NaCl recurrence is independently certified, but this viewport trace is not itself a physical-time trajectory."
         : "No potential, elapsed physical time, growth rate, or stationary/exponential rule is inferred from this animation." },
-    metrics: { knownMatchedSites: audit.matched, knownInputSites: referenceCount(), exactKnownWindowReplay: reconstructionCertified,
+    metrics: { knownMatchedSites: growthSeedProtocol === "reconstruct" ? audit.matched : null,
+      knownInputSites: referenceCount(),
+      exactKnownWindowReplay: growthSeedProtocol === "reconstruct" ? reconstructionCertified : null,
+      targetFreeGrowthAuthorized: targetFreeGrowthAuthorized(),
       generatedStructuralSites: generatedSites, novelInsideObservationSites: insideNovelSites,
       geometricContinuationSites: continuationSites,
       maximumObservationExcursionAngstrom: domain.maximumObservationExcursionAngstrom,
@@ -35735,8 +35768,8 @@ policyWorkbenchReset.addEventListener("click", () => {
   previewPolicyWinner(activePolicy, snapshot);
 });
 growthSeedProtocolSelect.addEventListener("change", () => {
-  growthSeedProtocol = growthSeedProtocolSelect.value === "reconstruct"
-    ? "reconstruct" : "observed-window";
+  growthSeedProtocol = ["local-frontier", "reconstruct"].includes(growthSeedProtocolSelect.value)
+    ? growthSeedProtocolSelect.value : "observed-window";
   growthProtocolMode = "custom";
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();

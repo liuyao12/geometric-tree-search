@@ -1,5 +1,23 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 327 · reproducible target-free local nuclei
+
+The growth initial condition now separates two scientifically different uses of
+a fitted local occurrence. **Local occurrence nucleus** copies only that explicit
+cluster into the live state, then generates every continuation from frozen ports
+and live collision checks; remaining supplied positions are never snapped to,
+ranked against, or used as a hidden completion target. **Known-window
+reconstruction audit** remains available as a clearly labeled target-aware replay
+and is excluded from matched physics outcomes until its replay certification is
+complete.
+
+Interior, surface, gap, interface, and dispersed nucleation-site selections can
+therefore create reproducible, coordinate-digested seeds for registered
+Baseline/Arm-B replicate sessions. The campaign panel tells the scientist to use
+this target-free mode when collecting distinct seeds. These nuclei are distinct
+cuts from the same supplied specimen and frozen grammar—not statistically
+independent material samples, kinetic trajectories, or a physical ensemble.
+
 ## Build 326 · registered replicates, never accidental cross-pairs
 
 Every Baseline/Arm-B experiment now receives a unique pair-session identity when

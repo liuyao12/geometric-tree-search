@@ -1,5 +1,24 @@
 # Recursive GCTS benchmark for material growth
 
+### Target-free fitted nuclei for registered replicates (Build 327)
+
+The browser now makes the seed/target boundary explicit. In the new local-frontier
+mode, one or more fitted occurrences are copied into the live state as the
+declared nucleus. Their exact positions and proper poses are legitimate supplied
+initial data; all other observed positions are excluded from candidate geometry,
+ranking, and acceptance. Frontier actions come only from the frozen overlap/port
+grammar plus species-aware live collision and boundary checks. The separate
+reconstruction mode intentionally retains known-window replay and remains
+target-aware until certified.
+
+Nucleation-site modes are now usable as deterministic replicate-seed controls:
+interior, surface, residual-gap, interface, and dispersed selections retain a
+seed-selection label and coordinate digest in the execution receipt. Pair-session
+identity still prevents cross-pairing, and the campaign still requires three
+distinct seed digests. This establishes reproducible algorithmic replicates on a
+single supplied configuration; it does not establish independent draws from a
+materials population, kinetics, nucleation rates, or causal physical response.
+
 ### Pair-session identity and replicate readiness (Build 326)
 
 The paired-arm protocol now freezes a unique session identifier before either
