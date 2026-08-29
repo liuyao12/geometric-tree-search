@@ -25,7 +25,7 @@ const longRadiusById = new Map((await readGzipNdjson(
   "data/a2-sliced-alcove-size7-leads-radius2-radius3-gcts.ndjson.gz"
 )).map(record => [record.id, record]));
 const scale3ThreeCopyById = new Map((await readGzipNdjson(
-  "data/a2-sliced-alcove-size7-three-cluster-scale3-reflected-00139.ndjson.gz"
+  "data/a2-sliced-alcove-size7-three-cluster-scale3-reflected-leads.ndjson.gz"
 )).map(record => [record.id, record]));
 
 const survivorRows = periodicRows.filter(record => record.classification === "unresolved");
@@ -110,7 +110,8 @@ const candidates = selected.map(({ record, corona, retained }, index) => {
   if (scale3ThreeCopy && (
     scale3ThreeCopy.classification !== "no_three_copy_metatile_scalar3_substitution"
     || scale3ThreeCopy.three_copy_alcove_metatile_screen?.certified !== true
-    || scale3ThreeCopy.three_copy_alcove_metatile_screen?.parents_completed !== 1268
+    || scale3ThreeCopy.three_copy_alcove_metatile_screen?.parents_completed
+      !== scale3ThreeCopy.three_copy_alcove_metatile_screen?.symmetry_distinct_metatiles
   )) {
     throw new Error(`Invalid scale-three three-copy certificate for ${record.id}`);
   }
@@ -172,7 +173,7 @@ const candidates = selected.map(({ record, corona, retained }, index) => {
       three_copy_metatile_scale3_reflected_parent_types:
         scale3ThreeCopy?.three_copy_alcove_metatile_screen?.parents_completed ?? 0,
       three_copy_metatile_scale3_reflected_report: scale3ThreeCopy
-        ? "data/a2-sliced-alcove-size7-three-cluster-scale3-reflected-00139.ndjson.gz"
+        ? "data/a2-sliced-alcove-size7-three-cluster-scale3-reflected-leads.ndjson.gz"
         : null
     },
     shell_screening: { robust_completed_shell: 0, deepest_completed_shell: 0 }

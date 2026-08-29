@@ -61,12 +61,18 @@ for (const candidate of A2_SLICED_SIZE7_CANDIDATES) {
 
 const sliced00139 = A2_SLICED_SIZE7_CANDIDATES.find(candidate =>
   candidate.id === "a2sa_7_00139");
-assert.deepEqual(sliced00139.screening.three_copy_metatile_substitution_scales_exhausted,
-  [2, 3]);
-assert.equal(sliced00139.screening.three_copy_metatile_scale3_reflected_status,
-  "no_three_copy_metatile_scalar3_substitution");
-assert.equal(sliced00139.screening.three_copy_metatile_scale3_reflected_parent_types, 1268);
-for (const candidate of A2_SLICED_SIZE7_CANDIDATES.filter(item => item !== sliced00139)) {
+const sliced00120 = A2_SLICED_SIZE7_CANDIDATES.find(candidate =>
+  candidate.id === "a2sa_7_00120");
+for (const [candidate, parentTypes] of [[sliced00120, 1265], [sliced00139, 1268]]) {
+  assert.deepEqual(candidate.screening.three_copy_metatile_substitution_scales_exhausted,
+    [2, 3]);
+  assert.equal(candidate.screening.three_copy_metatile_scale3_reflected_status,
+    "no_three_copy_metatile_scalar3_substitution");
+  assert.equal(candidate.screening.three_copy_metatile_scale3_reflected_parent_types,
+    parentTypes);
+}
+for (const candidate of A2_SLICED_SIZE7_CANDIDATES.filter(item =>
+  item !== sliced00120 && item !== sliced00139)) {
   assert.deepEqual(candidate.screening.three_copy_metatile_substitution_scales_exhausted, [2]);
   assert.equal(candidate.screening.three_copy_metatile_scale3_reflected_status, "unresolved");
 }
