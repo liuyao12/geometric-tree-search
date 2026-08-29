@@ -1,5 +1,24 @@
 # Recursive GCTS benchmark for material growth
 
+### Cluster-resolved continuation coverage (Build 330)
+
+The marking stage now audits the directed frozen continuation graph at the same
+type resolution as its separate 3D cluster scenes. For every cover type it
+reports fitted occurrence support, incoming/outgoing rule counts and witness
+mass, outgoing target/source type sets, held-out rule support, marking lobes and
+unsupported sectors, channel count, proper-pose/gauge support, and exact
+reconstruction degree. The scientist can select any atlas cell to open the same
+cluster in the full coefficient/pose/port inspector.
+
+Two denominators remain explicit. Type coverage is the fraction of nonterminal
+cluster types with at least one outgoing continuation rule; occurrence coverage
+weights those types by how often they appear in the supplied cover. Literal
+residual terminals are complete-cover evidence but are never promoted. Exact
+known-window edges remain target-aware replay evidence and never increase either
+target-free continuation measure. A specialized molecular-anchor executor, when
+available, is reported outside this generic port graph rather than conflated
+with it.
+
 ### Growth-launch readiness and exact seed replay (Build 329)
 
 Stage 4 now exposes the complete target-free launch chain as four measured

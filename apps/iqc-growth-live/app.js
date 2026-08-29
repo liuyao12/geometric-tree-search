@@ -33,7 +33,7 @@ import { compareShadowMaterialFingerprints, SHADOW_MATERIAL_CONSEQUENCE_FIELDS }
 import { LEAP_CONSEQUENCE_COMPONENTS, resolveLeapConsequenceComparison }
   from "./leap-consequence-decomposition.mjs?v=20260828-290";
 import { buildDimensionlessLeapConsequence, buildDynamicalEvidencePlan }
-  from "./leap-structural-consequence.mjs?v=20260829-329";
+  from "./leap-structural-consequence.mjs?v=20260829-330";
 import { buildSettlingMaterialResponseHistory, buildSettlingMaterialResponseMatrix, compareSettlingMaterialFingerprints,
   SETTLING_MATERIAL_FIELDS }
   from "./settling-material-sensitivity.mjs?v=20260828-290";
@@ -59,7 +59,7 @@ import { compareHypothesisSeparationOutcomes }
 import { buildPhysicsProtocolCampaignReadiness, buildPhysicsProtocolPairProgress,
   buildPhysicsProtocolResponseFingerprint, comparePhysicsProtocolOutcomes,
   REPLICATE_SEED_MODE_IDS }
-  from "./physics-protocol-outcome.js?v=20260829-329";
+  from "./physics-protocol-outcome.js?v=20260829-330";
 import { buildSiteProvenance } from "./site-provenance.js?v=20260826-2";
 import { buildSiteConstraintAudit } from "./site-constraint-audit.js?v=20260826-1";
 import { compareSiteEnvironments } from "./site-environment-comparison.js?v=20260826-3";
@@ -345,6 +345,11 @@ const markingTrainingOptions = $("markingTrainingOptions");
 const inheritedGeometryMode = $("inheritedGeometryMode");
 const inheritedPoseCount = $("inheritedPoseCount");
 const inheritedChannelCount = $("inheritedChannelCount");
+const connectionCoverageAtlas = $("connectionCoverageAtlas");
+const connectionCoverageState = $("connectionCoverageState");
+const connectionCoverageSummary = $("connectionCoverageSummary");
+const connectionCoverageTypes = $("connectionCoverageTypes");
+const connectionCoverageDetail = $("connectionCoverageDetail");
 const growthSearchOptions = $("growthSearchOptions");
 const growthProtocolSelect = $("growthProtocolSelect");
 const growthProtocolHint = $("growthProtocolHint");
@@ -9959,6 +9964,106 @@ function renderClusterChannelTrajectory(inspector, prototype) {
   renderClusterChannelValidation(panel, prototype);
 }
 
+function clusterConnectionCoverageRecords() {
+  const types = clusterGalleryTypes();
+  const rules = overlapGrammar?.rules || [];
+  const occurrences = overlapGrammar?.occurrences || [];
+  return types.map((cluster, galleryIndex) => {
+    const type = Number.isInteger(cluster.type) ? cluster.type : galleryIndex;
+    const familyType = cluster.familyType ?? type;
+    const outgoing = overlapGrammar?.byFrom?.get(type) || [];
+    const incoming = rules.filter((rule) => rule.to === type);
+    const occurrenceIndices = occurrences.map((occurrence, index) => occurrence.type === type ? index : -1)
+      .filter((index) => index >= 0);
+    const reconstructionEdges = occurrenceIndices.reduce((sum, index) =>
+      sum + (overlapGrammar?.reconstructionByOccurrence?.get(index) || []).length, 0);
+    const targetTypes = [...new Set(outgoing.map((rule) => rule.to))];
+    const sourceTypes = [...new Set(incoming.map((rule) => rule.from))];
+    const portSummary = cluster.residual ? null
+      : clusterMarkingPortSummary(sectionModel?.portAtlas, familyType);
+    const outgoingWitnesses = outgoing.reduce((sum, rule) => sum + (rule.count || 0), 0);
+    const incomingWitnesses = incoming.reduce((sum, rule) => sum + (rule.count || 0), 0);
+    const heldoutRules = outgoing.filter((rule) => (rule.holdoutCount || 0) > 0).length;
+    const status = cluster.residual ? "terminal" : outgoing.length && incoming.length ? "bidirectional"
+      : outgoing.length ? "source-only" : incoming.length ? "sink-only" : "stranded";
+    const poseModel = galleryPoseModel(cluster);
+    return { galleryIndex, type, familyType, label: cluster.label || `C${galleryIndex + 1}`,
+      family: clusterGalleryFamily(cluster), residual: Boolean(cluster.residual), status,
+      occurrences: occurrenceIndices.length, outgoingRules: outgoing.length, incomingRules: incoming.length,
+      outgoingWitnesses, incomingWitnesses, heldoutRules, targetTypes, sourceTypes,
+      reconstructionEdges, resolvedLobes: portSummary?.compatiblePorts || 0,
+      unsupportedSectors: portSummary?.unsupportedSectors || 0,
+      channels: cluster.residual ? 0 : recommendedChannelsForCluster(familyType),
+      poseSupport: poseModel.support, poseCount: poseModel.orientations || 0,
+      properSymmetryGauges: poseModel.properSymmetryGaugeCount || 1 };
+  });
+}
+
+function renderConnectionCoverageAtlas() {
+  if (!connectionCoverageAtlas || pipelineStage !== 3) return;
+  const records = clusterConnectionCoverageRecords();
+  if (!records.length) {
+    connectionCoverageState.textContent = "no fitted cluster types";
+    connectionCoverageSummary.replaceChildren(); connectionCoverageTypes.replaceChildren();
+    connectionCoverageDetail.textContent = "Return to Cluster identification and settle a complete cover before fitting connection sections.";
+    return;
+  }
+  const promotable = records.filter((record) => !record.residual);
+  const actionable = promotable.filter((record) => record.outgoingRules > 0);
+  const stranded = promotable.filter((record) => record.outgoingRules === 0);
+  const totalOccurrences = promotable.reduce((sum, record) => sum + record.occurrences, 0);
+  const coveredOccurrences = actionable.reduce((sum, record) => sum + record.occurrences, 0);
+  const occurrenceCoverage = totalOccurrences ? coveredOccurrences / totalOccurrences : 0;
+  connectionCoverageState.textContent = `${actionable.length}/${promotable.length} types expose target-free ports`;
+  connectionCoverageAtlas.className = `connection-coverage-atlas ${stranded.length ? "incomplete" : "complete"}`;
+  const summary = [
+    ["actionable types", `${actionable.length}/${promotable.length}`, `${stranded.length} stranded`],
+    ["occurrence coverage", `${Math.round(100 * occurrenceCoverage)}%`, `${coveredOccurrences}/${totalOccurrences} fitted occurrences`],
+    ["continuation rules", overlapGrammar?.rules?.length || 0, `${overlapGrammar?.recurring || 0} recurrent`],
+    ["replay-only edges", overlapGrammar?.reconstructionEdges || 0, "excluded from growth supply"],
+  ];
+  connectionCoverageSummary.replaceChildren(...summary.map(([label, value, detail]) => {
+    const tile = document.createElement("span");
+    const small = document.createElement("small"); small.textContent = label;
+    const strong = document.createElement("strong"); strong.textContent = String(value);
+    const em = document.createElement("em"); em.textContent = detail;
+    tile.append(small, strong, em); return tile;
+  }));
+  const showDetail = (record) => {
+    connectionCoverageTypes.querySelectorAll("button").forEach((button) => {
+      const active = Number(button.dataset.connectionCoverageCluster) === record.galleryIndex;
+      button.classList.toggle("active", active); button.setAttribute("aria-pressed", String(active));
+    });
+    const outgoingTargets = record.targetTypes.length
+      ? record.targetTypes.slice(0, 8).map((type) => `C${type + 1}`).join(" · ") : "none";
+    const incomingSources = record.sourceTypes.length
+      ? record.sourceTypes.slice(0, 8).map((type) => `C${type + 1}`).join(" · ") : "none";
+    const molecularBoundary = learnedCover.molecular && !record.outgoingRules
+      ? " Generic cluster-port continuation is absent; any Stage-4 molecular-anchor backend is a separate certified path and is not counted here."
+      : "";
+    connectionCoverageDetail.className = record.status;
+    connectionCoverageDetail.innerHTML = `<header><span><small>${record.family} · ${record.status.replaceAll("-", " ")}</small><strong>${record.label}</strong></span><b>${record.occurrences} occurrence${record.occurrences === 1 ? "" : "s"}</b></header><div><span><small>outgoing continuation</small><strong>${record.outgoingRules} rules · ${record.outgoingWitnesses} witnesses</strong><em>targets ${outgoingTargets}</em></span><span><small>incoming continuation</small><strong>${record.incomingRules} rules · ${record.incomingWitnesses} witnesses</strong><em>sources ${incomingSources}</em></span><span><small>marking section</small><strong>${record.resolvedLobes} resolved · ${record.unsupportedSectors} unsupported</strong><em>${record.channels} channels · ${record.poseCount || "—"} pose samples · ${record.properSymmetryGauges} proper gauges</em></span><span><small>known-window replay</small><strong>${record.reconstructionEdges} exact edges</strong><em>target-aware audit only · never growth supply</em></span></div><p>${record.outgoingRules ? "This type can expose a frozen target-free attachment; marking chooses among exact candidates but never authorizes new geometry." : record.residual ? "This exact residual terminal completes coverage and is deliberately not promoted." : "This fitted type is geometrically represented but cannot launch generic continuation with the current frozen vocabulary."}${molecularBoundary}</p>`;
+  };
+  connectionCoverageTypes.replaceChildren(...records.map((record) => {
+    const button = document.createElement("button"); button.type = "button";
+    button.dataset.connectionCoverageCluster = String(record.galleryIndex);
+    button.className = record.status; button.setAttribute("aria-pressed", "false");
+    const title = document.createElement("strong"); title.textContent = record.label;
+    const flow = document.createElement("span"); flow.textContent = `${record.incomingRules} in → ${record.outgoingRules} out`;
+    const note = document.createElement("small"); note.textContent = record.residual
+      ? "exact terminal" : `${record.occurrences}× · ${record.heldoutRules}/${record.outgoingRules} heldout-supported`;
+    button.append(title, flow, note);
+    button.addEventListener("click", () => {
+      selectedGalleryCluster = record.galleryIndex;
+      updateClusterGalleryInspector(record.galleryIndex);
+      const card = clusterGallery.querySelector(`[data-cluster-index="${record.galleryIndex}"]`);
+      if (card) clusterGallery.scrollTo({ top: Math.max(0, card.offsetTop - 8), left: 0, behavior: "smooth" });
+    });
+    return button;
+  }));
+  showDetail(records[selectedGalleryCluster] || records[0]);
+}
+
 function updateClusterGalleryInspector(galleryIndex) {
   const types = clusterGalleryTypes();
   const cluster = types[galleryIndex];
@@ -10029,6 +10134,7 @@ function updateClusterGalleryInspector(galleryIndex) {
   renderClusterPoseOccupation(inspector, cluster, poseModel);
   renderClusterPosePortIncidence(inspector, cluster, familyIndex);
   renderClusterChannelTrajectory(inspector, familyIndex);
+  if (pipelineStage === 3) renderConnectionCoverageAtlas();
 }
 
 function buildMolecularGalleryToolbar(types) {
@@ -11916,7 +12022,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260829-329",
+      buildId: "20260829-330",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -14352,7 +14458,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260829-329" },
+    application: { name: "Materials Growth Lab", buildId: "20260829-330" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },
@@ -25725,6 +25831,7 @@ function syncStageOptions() {
     stageOptionsState.textContent = complete ? existing ? "saved" : "fit complete" : `${trainingProgress}/${markingSampleCount()}`;
     saveMarkingButton.disabled = !complete;
     saveMarkingButton.textContent = existing ? "Update library copy" : "Freeze to library";
+    renderConnectionCoverageAtlas();
     renderMarkingCapacityFrontier();
     markingConfigNote.textContent = `${resolvedChannels} real coefficient channels${markingDraft.channels ? " (manual capacity override)" : " (derived from the frozen pose × port incidence rank)"} · ${markingChannelAllocationLabel()} · support R=${sectionModel?.support.toFixed(2) || "—"}a · ${MARKING_REPRESENTATIONS[markingDraft.representation].label}: ${MARKING_REPRESENTATIONS[markingDraft.representation].readout}. ${suppliedSpinSites ? scalarSpinColoringMode() === "preserve" ? "Supplied collinear scalar-spin signs are an additional exact overlap color." : "Supplied scalar-spin signs are ignored by the registered chemistry-only ablation." : "No scalar-spin color is available."} Clustering freezes the finite or sampled proper-rotation support before this fit; symmetry-equivalent rotations share channels and inactive coefficients remain exactly zero. Solid card lobes follow witnessed intrinsic ports; dashed red lobes are unsupported training sectors. No spherical fallback or physical potential is inferred.`;
   } else {

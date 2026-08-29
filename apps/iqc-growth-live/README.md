@@ -1,5 +1,23 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 330 · cluster-to-port coverage atlas
+
+GCTS learning now exposes the exact connection bottleneck *before* material
+growth. A new per-cluster atlas reports incoming and outgoing continuation
+rules, fit-witness counts, held-out-supported rules, resolved marking lobes,
+unsupported sectors, channel capacity, proper-pose evidence, and exact
+known-window replay edges. Cluster types are classified as bidirectional,
+source-only, sink-only, stranded, or literal residual terminals. Clicking a row
+selects and scrolls to that cluster's independent rotating 3D marking scene.
+
+The summary distinguishes type coverage from occurrence-weighted coverage and
+keeps reconstruction-only edges out of the continuation numerator. Molecular
+anchor continuation is likewise labeled as a separate certified backend rather
+than being smuggled into the generic cluster-port count. This connects the
+Build-329 launch diagnosis directly to the learned motif that lacks an outgoing
+port, while preserving the rule that markings rank certified candidate geometry
+and do not authorize it.
+
 ## Build 329 · target-free growth launch audit
 
 Material growth now begins with a visible launch audit rather than a silent zero
