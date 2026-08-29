@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { buildDimensionlessLeapConsequence, STRUCTURAL_LEAP_AXES,
+import { buildDimensionlessLeapConsequence, buildDynamicalEvidencePlan, STRUCTURAL_LEAP_AXES,
   UNRESOLVED_DYNAMICAL_QUANTITIES } from "../apps/iqc-growth-live/leap-structural-consequence.mjs";
 
 const records = [
@@ -28,6 +28,30 @@ assert.ok(result.unresolvedDynamics.every((quantity) => quantity.status === "not
 assert.equal(result.targetUsed, false);
 assert.equal(result.physicalTimeIntegrated, false);
 assert.throws(() => buildDimensionlessLeapConsequence({}), /array/);
+
+const evidencePlan = buildDynamicalEvidencePlan([
+  { id: "calculation-forces", process: "archived forces", status: "explicit", role: "diagnostic",
+    evidence: "one complete force-labelled state", boundary: "not a force field", controlRouteAvailable: true,
+    controlRouteLabel: "choose archive" },
+  { id: "kinetics", process: "arrival clearance", status: "soft", role: "ranking proxy",
+    evidence: "finite path clearance", boundary: "not a barrier or rate" },
+  { id: "path-ensemble", process: "search alternatives", status: "sampled", role: "branch order",
+    evidence: "deterministic samples", boundary: "not probability" },
+], { generatedBeforeActionExecution: true });
+assert.equal(evidencePlan.quantities.length, UNRESOLVED_DYNAMICAL_QUANTITIES.length);
+assert.equal(evidencePlan.everyInferenceUnresolved, true);
+assert.equal(evidencePlan.targetUsed, false);
+assert.equal(evidencePlan.generatedBeforeActionExecution, true);
+assert.equal(evidencePlan.candidateSetInspected, false);
+assert.equal(evidencePlan.quantities.find((quantity) => quantity.id === "forces").readiness,
+  "partial physical evidence");
+assert.equal(evidencePlan.quantities.find((quantity) => quantity.id === "clock").readiness,
+  "geometric proxy only");
+assert.equal(evidencePlan.quantities.find((quantity) => quantity.id === "free-energy").readiness,
+  "no qualifying evidence");
+assert.ok(evidencePlan.quantities.find((quantity) => quantity.id === "barrier")
+  .earliestPermittedUse.includes("separately calculated transition path"));
+assert.throws(() => buildDynamicalEvidencePlan(null), /array/);
 
 const reversed = buildDimensionlessLeapConsequence(records.map((record) => ({
   ...record, before: record.after, after: record.before,

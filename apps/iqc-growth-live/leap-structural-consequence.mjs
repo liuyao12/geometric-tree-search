@@ -28,6 +28,86 @@ export const UNRESOLVED_DYNAMICAL_QUANTITIES = Object.freeze([
     requirement: "force-labelled states plus a constitutive or electronic-structure model" }),
 ]);
 
+export const DYNAMICAL_EVIDENCE_BRIDGES = Object.freeze({
+  trajectory: Object.freeze({
+    recordIds: Object.freeze(["relaxation-ensemble", "local-rearrangement", "calculation-forces"]),
+    earliestPermittedUse: "posthoc comparison of archived states; never a time-resolved path without an external clock",
+  }),
+  clock: Object.freeze({
+    recordIds: Object.freeze(["kinetics", "feed-exposure", "thermal-field"]),
+    earliestPermittedUse: "none until a calibrated external clock and transport law are supplied",
+  }),
+  barrier: Object.freeze({
+    recordIds: Object.freeze(["kinetics", "calculation-forces", "geometry-calculation-calibration", "local-rearrangement"]),
+    earliestPermittedUse: "validation of a separately calculated transition path; geometric clearance cannot become a barrier",
+  }),
+  "free-energy": Object.freeze({
+    recordIds: Object.freeze(["relaxation-ensemble", "geometry-calculation-calibration", "configurational-entropy", "thermal-field"]),
+    earliestPermittedUse: "posthoc thermodynamic comparison after energies, entropy, ensemble, and state variables are supplied",
+  }),
+  probability: Object.freeze({
+    recordIds: Object.freeze(["path-ensemble", "configurational-entropy", "kinetics"]),
+    earliestPermittedUse: "validation of a separately calibrated kinetic model; search multiplicity is not probability",
+  }),
+  forces: Object.freeze({
+    recordIds: Object.freeze(["calculation-forces", "calculation-stress", "stress-strain-response", "constraint-projection"]),
+    earliestPermittedUse: "diagnostic first; candidate ranking only after frozen cross-archive transfer validation",
+  }),
+});
+
+const DIRECT_EVIDENCE_STATES = new Set(["hard", "learned", "explicit", "observed"]);
+const PROXY_EVIDENCE_STATES = new Set(["soft", "sampled"]);
+
+export function buildDynamicalEvidencePlan(manifestRecords, options = {}) {
+  if (!Array.isArray(manifestRecords)) throw new TypeError("manifestRecords must be an array");
+  const byId = new Map(manifestRecords.map((record) => [String(record?.id || ""), record]));
+  const quantities = UNRESOLVED_DYNAMICAL_QUANTITIES.map((quantity) => {
+    const bridge = DYNAMICAL_EVIDENCE_BRIDGES[quantity.id];
+    const records = bridge.recordIds.map((recordId) => byId.get(recordId)).filter(Boolean)
+      .map((record) => ({
+        id: record.id,
+        process: String(record.process || record.id),
+        status: String(record.status || "open"),
+        role: String(record.role || "unresolved"),
+        evidence: String(record.evidence || "No finite evidence recorded."),
+        boundary: String(record.boundary || "No claim boundary recorded."),
+        controlRouteAvailable: Boolean(record.controlRouteAvailable),
+        controlRouteLabel: record.controlRouteLabel || null,
+      }));
+    const directEvidenceCount = records.filter((record) => DIRECT_EVIDENCE_STATES.has(record.status)).length;
+    const proxyEvidenceCount = records.filter((record) => PROXY_EVIDENCE_STATES.has(record.status)).length;
+    const unavailableCount = bridge.recordIds.length - directEvidenceCount - proxyEvidenceCount;
+    const readiness = directEvidenceCount ? "partial physical evidence"
+      : proxyEvidenceCount ? "geometric proxy only" : "no qualifying evidence";
+    return {
+      ...quantity,
+      readiness,
+      relatedRecordCount: bridge.recordIds.length,
+      directEvidenceCount,
+      proxyEvidenceCount,
+      unavailableCount,
+      records,
+      missingRecordIds: bridge.recordIds.filter((recordId) => !byId.has(recordId)),
+      earliestPermittedUse: bridge.earliestPermittedUse,
+      inferenceResolved: false,
+    };
+  });
+  return {
+    schema: 1,
+    role: "target-free evidence-acquisition plan for physical quantities omitted by geometric leap-frogging",
+    quantities,
+    directEvidenceQuantities: quantities.filter((quantity) => quantity.directEvidenceCount).length,
+    proxyOnlyQuantities: quantities.filter((quantity) => !quantity.directEvidenceCount && quantity.proxyEvidenceCount).length,
+    absentQuantities: quantities.filter((quantity) => !quantity.directEvidenceCount && !quantity.proxyEvidenceCount).length,
+    everyInferenceUnresolved: quantities.every((quantity) => !quantity.inferenceResolved),
+    manifestRecordCount: manifestRecords.length,
+    generatedBeforeActionExecution: options.generatedBeforeActionExecution === true,
+    targetUsed: false,
+    candidateSetInspected: false,
+    physicalTimeIntegrated: false,
+  };
+}
+
 function normalizedDifference(record) {
   if (!Number.isFinite(record?.before) || !Number.isFinite(record?.after)) return null;
   if (Array.isArray(record.domain) && record.domain.length === 2) {

@@ -32,8 +32,8 @@ import { compareShadowMaterialFingerprints, SHADOW_MATERIAL_CONSEQUENCE_FIELDS }
   from "./shadow-material-consequence.mjs?v=20260828-290";
 import { LEAP_CONSEQUENCE_COMPONENTS, resolveLeapConsequenceComparison }
   from "./leap-consequence-decomposition.mjs?v=20260828-290";
-import { buildDimensionlessLeapConsequence }
-  from "./leap-structural-consequence.mjs?v=20260828-321";
+import { buildDimensionlessLeapConsequence, buildDynamicalEvidencePlan }
+  from "./leap-structural-consequence.mjs?v=20260828-322";
 import { buildSettlingMaterialResponseHistory, buildSettlingMaterialResponseMatrix, compareSettlingMaterialFingerprints,
   SETTLING_MATERIAL_FIELDS }
   from "./settling-material-sensitivity.mjs?v=20260828-290";
@@ -816,6 +816,10 @@ const leapConsequenceVectorState = $("leapConsequenceVectorState");
 const leapConsequenceVector = $("leapConsequenceVector");
 const leapConsequenceUnknowns = $("leapConsequenceUnknowns");
 const leapConsequenceBridge = $("leapConsequenceBridge");
+const dynamicalEvidencePlanState = $("dynamicalEvidencePlanState");
+const dynamicalEvidencePlan = $("dynamicalEvidencePlan");
+const dynamicalEvidencePlanDetail = $("dynamicalEvidencePlanDetail");
+const dynamicalEvidencePlanBoundary = $("dynamicalEvidencePlanBoundary");
 const settlingSensitivityLab = $("settlingSensitivityLab");
 const settlingSensitivityState = $("settlingSensitivityState");
 const settlingSensitivityArms = $("settlingSensitivityArms");
@@ -1698,6 +1702,8 @@ let selectedLeapConsequenceFilter = "all";
 let selectedLeapConsequenceComponent = "total";
 let selectedSettlingSensitivityMode = "balanced";
 let selectedSettlingResponseField = "coordinationDeficit";
+let selectedDynamicalEvidenceQuantity = "trajectory";
+let activeDynamicalEvidencePlan = null;
 let activeSettlingResponseAudit = null;
 let selectedStoichiometrySpecies = null;
 let selectedPackingMetric = "median";
@@ -11880,7 +11886,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260828-321",
+      buildId: "20260828-322",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -13581,6 +13587,7 @@ async function buildExperimentReceipt() {
         centrosymmetryTransition: leap.centrosymmetryTransition || null,
         reciprocalSpaceTransition: leap.reciprocalSpaceTransition || null,
         consequenceFingerprint: leap.consequenceFingerprint || null,
+        dynamicalEvidencePlan: leap.dynamicalEvidencePlan || null,
         after: leap.after,
         targetUsed: leap.targetUsed, physicalTimeModeled: leap.physicalTimeModeled,
         dynamicsIntegrated: leap.dynamicsIntegrated, claimBoundary: leap.claimBoundary,
@@ -14248,6 +14255,7 @@ async function buildExperimentNotebookSnapshot() {
     centrosymmetryTransition: leap.centrosymmetryTransition || null,
     reciprocalSpaceTransition: leap.reciprocalSpaceTransition || null,
     consequenceFingerprint: leap.consequenceFingerprint || null,
+    dynamicalEvidencePlan: leap.dynamicalEvidencePlan || null,
     after: leap.after, targetUsed: leap.targetUsed, physicalTimeModeled: leap.physicalTimeModeled,
     dynamicsIntegrated: leap.dynamicsIntegrated, claimBoundary: leap.claimBoundary,
     physicsTranslation: leap.physicsTranslation,
@@ -14312,7 +14320,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260828-321" },
+    application: { name: "Materials Growth Lab", buildId: "20260828-322" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },
@@ -28615,6 +28623,8 @@ function currentPhysicsPreflightManifest() {
     return result;
   }, { structural: 0, hypothesis: 0, open: 0 });
   return { schema: 4, records, counts, compressionMap: buildPhysicsCompressionMap(records),
+    dynamicalEvidencePlan: buildDynamicalEvidencePlan(records,
+      { generatedBeforeActionExecution: leapEventCount === 0 }),
     effectMatrix: buildPhysicsEffectMatrix(records),
     investigationProtocol: physicsProtocolForRecords(records),
     controlVector: physicsProtocolControlVector(),
@@ -29728,6 +29738,65 @@ function renderLeapConsequenceVector(fingerprint) {
   leapConsequenceBridge.textContent = `${fingerprint.dynamicalBridge} Each axis uses only dimensionless within-field endpoint differences; point position is the signed mean, point area is the RMS response, and axes are never summed into an energy or favorability score.`;
 }
 
+function renderDynamicalEvidencePlan(plan) {
+  if (!dynamicalEvidencePlan || !dynamicalEvidencePlanDetail || !dynamicalEvidencePlanBoundary) return;
+  activeDynamicalEvidencePlan = plan;
+  if (!plan?.quantities?.length) {
+    dynamicalEvidencePlan.replaceChildren(); dynamicalEvidencePlanDetail.replaceChildren();
+    dynamicalEvidencePlanState.textContent = "manifest unavailable";
+    dynamicalEvidencePlanBoundary.textContent = "No physical inference is made without a frozen evidence manifest.";
+    return;
+  }
+  if (!plan.quantities.some((quantity) => quantity.id === selectedDynamicalEvidenceQuantity)) {
+    selectedDynamicalEvidenceQuantity = plan.quantities[0].id;
+  }
+  dynamicalEvidencePlan.replaceChildren(...plan.quantities.map((quantity) => {
+    const button = document.createElement("button"); button.type = "button";
+    button.dataset.dynamicalEvidenceQuantity = quantity.id;
+    button.className = `${quantity.readiness.replaceAll(" ", "-")}${quantity.id === selectedDynamicalEvidenceQuantity ? " active" : ""}`;
+    button.setAttribute("aria-pressed", String(quantity.id === selectedDynamicalEvidenceQuantity));
+    const label = document.createElement("strong"); const state = document.createElement("b");
+    const counts = document.createElement("span");
+    label.textContent = quantity.label; state.textContent = quantity.readiness;
+    counts.textContent = `${quantity.directEvidenceCount} physical · ${quantity.proxyEvidenceCount} proxy · ${quantity.unavailableCount} absent`;
+    button.append(label, state, counts); return button;
+  }));
+  const selected = plan.quantities.find((quantity) => quantity.id === selectedDynamicalEvidenceQuantity);
+  dynamicalEvidencePlanDetail.replaceChildren();
+  if (selected) {
+    const header = document.createElement("header"); const copy = document.createElement("span");
+    const small = document.createElement("small"); const strong = document.createElement("strong");
+    const badge = document.createElement("b"); small.textContent = selected.readiness;
+    strong.textContent = selected.label; badge.textContent = "still unresolved";
+    copy.append(small, strong); header.append(copy, badge); dynamicalEvidencePlanDetail.append(header);
+    const addRow = (name, content) => {
+      const row = document.createElement("div"); const key = document.createElement("b");
+      key.textContent = name; row.append(key, content); dynamicalEvidencePlanDetail.append(row);
+    };
+    const required = document.createElement("p"); required.textContent = selected.requirement;
+    addRow("evidence needed", required);
+    const records = document.createElement("div"); records.className = "dynamical-evidence-records";
+    selected.records.forEach((record) => {
+      const button = document.createElement("button"); button.type = "button";
+      button.dataset.dynamicalEvidenceRecord = record.id; button.disabled = !record.controlRouteAvailable;
+      button.className = record.status; button.textContent = `${record.process} · ${record.status}`;
+      button.title = `${record.role}. ${record.evidence} ${record.boundary}${record.controlRouteLabel ? ` Open: ${record.controlRouteLabel}.` : ""}`;
+      records.append(button);
+    });
+    if (!selected.records.length) {
+      const empty = document.createElement("span"); empty.textContent = "No related manifest record is available."; records.append(empty);
+    }
+    addRow("current records", records);
+    const use = document.createElement("p"); use.textContent = selected.earliestPermittedUse;
+    addRow("earliest valid use", use);
+    const boundary = document.createElement("p");
+    boundary.textContent = "These records can identify data and proxies; they cannot resolve the requested quantity without the stated missing model and evidence.";
+    addRow("inference gate", boundary);
+  }
+  dynamicalEvidencePlanState.textContent = `${plan.directEvidenceQuantities} partial · ${plan.proxyOnlyQuantities} proxy-only · ${plan.absentQuantities} absent`;
+  dynamicalEvidencePlanBoundary.textContent = `All ${plan.quantities.length} physical quantities remain unresolved. Direct means a relevant supplied or archived observation exists—not that a transferable law, energy surface, trajectory, rate, or clock has been learned. The plan uses ${plan.manifestRecordCount} target-free manifest records, inspects no candidate geometry, and ${plan.generatedBeforeActionExecution ? "was generated before structural-action execution" : "is a post-execution fallback rather than a preregistered plan"}.`;
+}
+
 function consequencePosition(record, value) {
   if (!Number.isFinite(value)) return null;
   if (Array.isArray(record.domain)) {
@@ -29963,6 +30032,12 @@ function renderLeapConsequence(selected = null) {
   const records = materialConsequenceRecords(before, after);
   const consequenceFingerprint = leapConsequenceFingerprint(records, comparison, selected);
   renderLeapConsequenceVector(consequenceFingerprint);
+  const evidenceRecords = (selected?.physicsTranslation || physicsTranslationRecords(null))
+    .map(physicsManifestRecord);
+  renderDynamicalEvidencePlan(selected
+    ? selected.dynamicalEvidencePlan || buildDynamicalEvidencePlan(evidenceRecords)
+    : frozenPhysicsPreflightManifest?.dynamicalEvidencePlan
+      || currentPhysicsPreflightManifest().dynamicalEvidencePlan);
   renderSettlingSensitivity(selected);
   leapConsequenceComponents.querySelectorAll("button[data-consequence-component]").forEach((button) => {
     const mode = button.dataset.consequenceComponent;
@@ -30061,6 +30136,19 @@ leapConsequenceVector.addEventListener("click", (event) => selectLeapConsequence
 leapConsequenceVector.addEventListener("keydown", (event) => {
   if (!["Enter", " "].includes(event.key)) return;
   event.preventDefault(); selectLeapConsequenceAxis(event.target);
+});
+
+dynamicalEvidencePlan.addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-dynamical-evidence-quantity]");
+  if (!button || !activeDynamicalEvidencePlan) return;
+  selectedDynamicalEvidenceQuantity = button.dataset.dynamicalEvidenceQuantity;
+  renderDynamicalEvidencePlan(activeDynamicalEvidencePlan);
+});
+
+dynamicalEvidencePlanDetail.addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-dynamical-evidence-record]");
+  if (!button || button.disabled) return;
+  openPhysicsControlRoute(button.dataset.dynamicalEvidenceRecord);
 });
 
 function structuralStoichiometrySeries() {
@@ -31096,6 +31184,8 @@ function recordStructuralLeap(leap) {
   frozen.reciprocalSpaceTransition = reciprocalSpaceTransition(
     frozen.before?.scattering, frozen.after?.scattering);
   frozen.physicsTranslation = physicsTranslationRecords(frozen);
+  frozen.dynamicalEvidencePlan = frozenPhysicsPreflightManifest?.dynamicalEvidencePlan
+    || buildDynamicalEvidencePlan(frozen.physicsTranslation.map(physicsManifestRecord));
   frozen.consequenceFingerprint = buildDimensionlessLeapConsequence(
     materialConsequenceRecords(frozen.before, frozen.after), {
       component: "total", acceptedActions: frozen.after?.accepted,

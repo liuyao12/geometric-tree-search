@@ -65,9 +65,9 @@ def test_claim_boundary_forbids_dynamical_overinterpretation():
 
 
 def test_current_build_is_exposed():
-    assert 'buildId: "20260828-321"' in APP
-    assert 'app.js?v=20260828-321' in HTML
-    assert 'style.css?v=20260828-321' in HTML
+    assert 'buildId: "20260828-322"' in APP
+    assert 'app.js?v=20260828-322' in HTML
+    assert 'style.css?v=20260828-322' in HTML
 
 
 def test_as_placed_checkpoint_precedes_projection_and_is_retained():
@@ -100,6 +100,29 @@ def test_dimensionless_jump_vector_and_unknown_dynamics_are_receipted():
     assert ".leap-consequence-vector-lab" in CSS
 
 
+def test_unknown_dynamics_have_a_target_free_evidence_acquisition_plan():
+    for element_id in (
+        "dynamicalEvidencePlanState", "dynamicalEvidencePlan",
+        "dynamicalEvidencePlanDetail", "dynamicalEvidencePlanBoundary",
+    ):
+        assert f'id="{element_id}"' in HTML
+        assert f'$("{element_id}")' in APP
+    for fragment in (
+        "buildDynamicalEvidencePlan",
+        "renderDynamicalEvidencePlan",
+        "everyInferenceUnresolved",
+        "candidateSetInspected: false",
+        "still unresolved",
+        "geometric proxy only",
+        "earliest valid use",
+    ):
+        assert fragment in APP or fragment in (ROOT / "apps/iqc-growth-live/leap-structural-consequence.mjs").read_text()
+    assert APP.count("dynamicalEvidencePlan: leap.dynamicalEvidencePlan || null") == 2
+    assert "dynamicalEvidencePlan: buildDynamicalEvidencePlan(records," in APP
+    assert "generatedBeforeActionExecution: leapEventCount === 0" in APP
+    assert ".dynamical-evidence-plan-lab" in CSS
+
+
 if __name__ == "__main__":
     test_consequence_fingerprint_is_interactive_and_multiscale()
     test_composition_is_retained_as_state_not_action_score()
@@ -107,4 +130,5 @@ if __name__ == "__main__":
     test_current_build_is_exposed()
     test_as_placed_checkpoint_precedes_projection_and_is_retained()
     test_dimensionless_jump_vector_and_unknown_dynamics_are_receipted()
+    test_unknown_dynamics_have_a_target_free_evidence_acquisition_plan()
     print("leap consequence fingerprint contract passed")

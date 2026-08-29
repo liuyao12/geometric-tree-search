@@ -1,5 +1,20 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 322 · unknown dynamics become an evidence-acquisition workflow
+
+The unresolved-dynamics ledger now joins every missing physical quantity to the live
+45-layer physics manifest. For trajectory, clock/rate, transition barrier, free energy,
+path probability, and forces/stress/heat flow, the portal separates direct archived
+observations from geometric proxies and absent evidence. Every row remains unresolved even
+when relevant data exist: one force-labelled snapshot is not a force field, archived
+relaxation frames are not a timed path, and branch multiplicity is not probability.
+
+Selecting a quantity reveals the exact manifest records, current evidence state, additional
+evidence required, and earliest scientifically valid use. Available records route back to
+their configuration controls without changing a setting. The pre-growth manifest and every
+structural-leap receipt retain the complete target-free acquisition plan before candidate
+inspection.
+
 ## Build 321 · every leap separates structural consequence from unknown dynamics
 
 The material-growth certificate now condenses its unit-bearing before/after observables into

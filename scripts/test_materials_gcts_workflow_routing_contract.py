@@ -26,10 +26,10 @@ def test_workflow_routing_contract():
     assert 'if (event.isTrusted) synchronizeWorkflowAddress({ mode: "push", clearStudy: true })' in APP
     assert "window.gctsMaterialsWorkflow?.launch({ scenario, stage, preparation })" in ATLAS
 
-    assert 'buildId: "20260828-321"' in APP
-    assert 'app.js?v=20260828-321' in HTML
-    assert 'style.css?v=20260828-321' in HTML
-    assert 'evidence-atlas.js?v=20260828-321' in HTML
+    assert 'buildId: "20260828-322"' in APP
+    assert 'app.js?v=20260828-322' in HTML
+    assert 'style.css?v=20260828-322' in HTML
+    assert 'evidence-atlas.js?v=20260828-322' in HTML
     assert "Build 309 · durable workflow routes" in README
 
 

@@ -1,5 +1,21 @@
 # Recursive GCTS benchmark for material growth
 
+### Evidence acquisition for omitted dynamics (Build 322)
+
+The six quantities deliberately left unknown by structural leap-frogging now have an
+executable evidence-readiness plan. Each quantity declares its relevant physics-manifest
+records, distinguishes supplied/observed evidence from soft geometric proxies, lists missing
+records, states what new evidence is required, and restricts its earliest valid use. A
+force-labelled state can therefore be visible as partial physical evidence while force-field
+inference stays false; path clearance can be visible as a proxy while barrier and rate remain
+unknown.
+
+The plan is generated from the target-free pre-growth manifest before candidate inspection,
+then frozen into each structural-leap receipt. UI routing opens the existing evidence/control
+location without changing it. No readiness state authorizes admission or ranking, and all six
+inferences remain explicitly unresolved until a separate model and its validation evidence
+are supplied.
+
 ### Structural-leap consequence vector (Build 321)
 
 Each retained search update now carries a pure, serializable endpoint-consequence receipt.
