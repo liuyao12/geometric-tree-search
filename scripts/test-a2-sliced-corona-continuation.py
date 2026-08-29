@@ -4,10 +4,18 @@
 from __future__ import annotations
 
 import json
+import importlib.util
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent.parent
+
+
+def load(name: str, filename: str):
+    spec = importlib.util.spec_from_file_location(name, ROOT / "scripts" / filename)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
 
 def read(name: str) -> list[dict]:
@@ -19,6 +27,14 @@ coronas = read("a2-sliced-alcove-size7-directed-corona1.ndjson")
 assert len(coronas) == 259
 assert all(record["corona_classification"] == "root_corona_exists" for record in coronas)
 assert all(record["corona_z3"]["replay"]["verified"] for record in coronas)
+
+# The exact corona-to-radius-two CEGAR must accept the alcove occupancy model,
+# not just the legacy ``cells`` records.  Zero trials exercises construction
+# without turning this regression into a solver benchmark.
+cegar = load("a2_corona2_cegar_regression", "screen-a2-layered-corona2-cegar.py")
+assert "cells" not in coronas[0]
+construction = cegar.screen(coronas[0], trials=0, timeout_ms=1)
+assert construction["corona2_classification"] == "unresolved"
 
 extensions = read("a2-sliced-alcove-size7-retained-corona-extension.ndjson")
 assert len(extensions) == 259

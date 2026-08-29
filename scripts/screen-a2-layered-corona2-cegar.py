@@ -110,7 +110,11 @@ def replay_extension(tile_orientations, patch, added):
 
 def screen(record, trials, timeout_ms):
     started = time.monotonic()
-    root = GEOMETRY.tile_occupancy(record["cells"])
+    # Records may describe either ordinary lattice cells or exact affine-A3
+    # alcove occupancy.  Keep the CEGAR geometry model identical to the
+    # periodic and first-corona screens instead of silently requiring the
+    # legacy ``cells`` representation.
+    root = GEOMETRY.record_occupancy(record)
     tile_orientations = GEOMETRY.orientations(root)
     first_candidates = CORONA.candidate_placements(root, tile_orientations)
     outer, outer_variables = build_weighted_solver(
