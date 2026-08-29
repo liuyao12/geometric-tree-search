@@ -31,9 +31,9 @@ def test_validation_frontier_bridge_contract() -> None:
     require(STYLE, ".marking-evidence-bridge")
     require(README, "Build 299 · validation-to-frontier evidence bridge")
     require(README, "validation is not")
-    require(APP, 'buildId: "20260829-325"')
-    require(HTML, 'app.js?v=20260829-325')
-    require(HTML, 'style.css?v=20260829-325')
+    require(APP, 'buildId: "20260829-326"')
+    require(HTML, 'app.js?v=20260829-326')
+    require(HTML, 'style.css?v=20260829-326')
 
 
 if __name__ == "__main__":

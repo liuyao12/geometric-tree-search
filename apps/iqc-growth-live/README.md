@@ -1,5 +1,24 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 326 · registered replicates, never accidental cross-pairs
+
+Every Baseline/Arm-B experiment now receives a unique pair-session identity when
+the counterfactual is drafted. That identity survives the supplied-state reset,
+is frozen into both arm manifests and notebook receipts, and becomes a strict
+comparison gate. Two otherwise compatible receipts from different sessions are
+rejected instead of being silently cross-paired. Legacy receipts without an
+identity remain readable but must be rerun before they can support the stronger
+matched claim.
+
+The matched outcome also reports **registered replicate readiness** across the
+saved notebook. Only sessions containing exactly one baseline and one Arm B,
+sharing the same material scenario and intervention design, enter the campaign.
+The panel reports pair count, distinct frozen seeds, a campaign digest, and
+cross-seed mean response/sign agreement for material extent, search work, and
+structural order. Three distinct seeds unlock a replicated *descriptive*
+algorithmic response—not a population estimate, kinetic ensemble, force law, or
+causal physical mechanism.
+
 ## Build 325 · matched runs become an interpretable structural response
 
 The receipt-verified baseline/Arm-B outcome now includes an interactive response

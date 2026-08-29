@@ -33,7 +33,7 @@ import { compareShadowMaterialFingerprints, SHADOW_MATERIAL_CONSEQUENCE_FIELDS }
 import { LEAP_CONSEQUENCE_COMPONENTS, resolveLeapConsequenceComparison }
   from "./leap-consequence-decomposition.mjs?v=20260828-290";
 import { buildDimensionlessLeapConsequence, buildDynamicalEvidencePlan }
-  from "./leap-structural-consequence.mjs?v=20260829-325";
+  from "./leap-structural-consequence.mjs?v=20260829-326";
 import { buildSettlingMaterialResponseHistory, buildSettlingMaterialResponseMatrix, compareSettlingMaterialFingerprints,
   SETTLING_MATERIAL_FIELDS }
   from "./settling-material-sensitivity.mjs?v=20260828-290";
@@ -56,9 +56,9 @@ import { applyHypothesisSeparationMultipliers as applyFrozenHypothesisSeparation
   from "./hypothesis-separation.js?v=20260826-1";
 import { compareHypothesisSeparationOutcomes }
   from "./hypothesis-separation-outcome.js?v=20260826-1";
-import { buildPhysicsProtocolPairProgress, buildPhysicsProtocolResponseFingerprint,
-  comparePhysicsProtocolOutcomes }
-  from "./physics-protocol-outcome.js?v=20260829-325";
+import { buildPhysicsProtocolCampaignReadiness, buildPhysicsProtocolPairProgress,
+  buildPhysicsProtocolResponseFingerprint, comparePhysicsProtocolOutcomes }
+  from "./physics-protocol-outcome.js?v=20260829-326";
 import { buildSiteProvenance } from "./site-provenance.js?v=20260826-2";
 import { buildSiteConstraintAudit } from "./site-constraint-audit.js?v=20260826-1";
 import { compareSiteEnvironments } from "./site-environment-comparison.js?v=20260826-3";
@@ -1745,6 +1745,8 @@ let selectedPhysicsCompressionLane = "all";
 let physicsProtocolSelectedIds = null;
 let physicsProtocolAblatedRecordId = null;
 let physicsProtocolArmRegistration = null;
+let physicsProtocolPairSessionId = null;
+let physicsProtocolPairSessionSerial = 0;
 let dynamicalEvidenceHandoffReceipt = null;
 let currentPhysicsPairProgress = null;
 let currentPhysicsPairIntervention = null;
@@ -11898,7 +11900,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260829-325",
+      buildId: "20260829-326",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -14334,7 +14336,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260829-325" },
+    application: { name: "Materials Growth Lab", buildId: "20260829-326" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },
@@ -14730,6 +14732,7 @@ function notebookPhysicsProtocolExperiment(receipt) {
     },
     armRegistration: {
       schema: registration.schema,
+      pairSessionId: registration.pairSessionId,
       ablatedRecordId: registration.ablatedRecordId,
       activeArm: registration.activeArm,
       baselineSelectedRecordIds: [...(registration.baselineSelectedRecordIds || [])],
@@ -16232,7 +16235,8 @@ function renderNotebookPhysicsProtocolOutcome(selected) {
     notebookPhysicsProtocolOutcome.append(reason); return;
   }
   const identity = document.createElement("div"); identity.className = "notebook-physics-protocol-identity";
-  [["omitted layer", audit.experiment.ablatedRecordId],
+  [["pair session", audit.pairSessionId],
+    ["omitted layer", audit.experiment.ablatedRecordId],
     ["changed control", audit.changedControlIds[0]],
     ["matched horizon", `${audit.commonUpdates} structural updates`],
     ["candidate gate", audit.candidateIdentity.gate === "identical" ? "identical · passed" : "digest is response"],
@@ -16288,6 +16292,39 @@ function renderNotebookPhysicsProtocolOutcome(selected) {
   const defaultButton = axes.querySelectorAll("button")[Math.max(0,
     fingerprint.domains.findIndex((domain) => domain === defaultDomain))];
   if (defaultDomain && defaultButton) showDomain(defaultDomain, defaultButton);
+  const campaign = buildPhysicsProtocolCampaignReadiness(experimentNotebookEntries,
+    audit.pairSessionId);
+  const campaignPanel = document.createElement("section"); campaignPanel.className = "notebook-physics-campaign";
+  const campaignHeader = document.createElement("header");
+  const campaignEyebrow = document.createElement("small"); campaignEyebrow.textContent = "registered replicate readiness";
+  const campaignTitle = document.createElement("strong");
+  campaignTitle.textContent = campaign.state === "replicated-descriptive"
+    ? `${campaign.pairCount} independent registered pairs`
+    : campaign.state === "more-independent-seeds-needed" ? `${campaign.pairCount} pairs · replication incomplete`
+      : "single registered pair";
+  const campaignCopy = document.createElement("span"); campaignCopy.textContent = campaign.nextAction;
+  campaignHeader.append(campaignEyebrow, campaignTitle, campaignCopy);
+  const campaignStats = document.createElement("div"); campaignStats.className = "notebook-physics-campaign-stats";
+  [["pair sessions", campaign.pairCount], ["distinct seeds", campaign.distinctSeedCount],
+    ["campaign digest", campaign.campaignDigest || "unavailable"]].forEach(([labelText, value]) => {
+    const tile = document.createElement("span"); const label = document.createElement("small");
+    const strong = document.createElement("strong"); label.textContent = labelText; strong.textContent = String(value);
+    tile.append(label, strong); campaignStats.append(tile);
+  });
+  const campaignDomains = document.createElement("div"); campaignDomains.className = "notebook-physics-campaign-domains";
+  campaign.domains.forEach((domain) => {
+    const tile = document.createElement("article"); const label = document.createElement("small");
+    const mean = document.createElement("strong"); const detail = document.createElement("span");
+    label.textContent = domain.label;
+    mean.textContent = domain.meanSignedResponse === null ? "unavailable"
+      : `${domain.meanSignedResponse > 0 ? "+" : ""}${Math.round(domain.meanSignedResponse * 100)}% mean`;
+    detail.textContent = domain.signAgreement === null
+      ? `${domain.pairCoverage}/${domain.pairCount} pairs · no nonzero sign`
+      : `${domain.pairCoverage}/${domain.pairCount} pairs · ${Math.round(domain.signAgreement * 100)}% nonzero-sign agreement`;
+    tile.append(label, mean, detail); campaignDomains.append(tile);
+  });
+  const campaignBoundary = document.createElement("p"); campaignBoundary.textContent = campaign.boundary;
+  campaignPanel.append(campaignHeader, campaignStats, campaignDomains, campaignBoundary);
   const grid = document.createElement("div"); grid.className = "notebook-physics-protocol-grid";
   audit.metrics.forEach((metricRecord) => {
     const tile = document.createElement("article");
@@ -16303,7 +16340,7 @@ function renderNotebookPhysicsProtocolOutcome(selected) {
     tile.append(label, delta, values, source); grid.append(tile);
   });
   const boundary = document.createElement("p"); boundary.textContent = audit.boundary;
-  notebookPhysicsProtocolOutcome.append(identity, response, grid, boundary);
+  notebookPhysicsProtocolOutcome.append(identity, response, campaignPanel, grid, boundary);
 }
 
 function renderNotebookResponseReadiness(entries) {
@@ -25935,6 +25972,7 @@ function resetCounters() {
   physicsProtocolSelectedIds = null;
   physicsProtocolAblatedRecordId = null;
   physicsProtocolArmRegistration = null;
+  physicsProtocolPairSessionId = null;
   dynamicalEvidenceHandoffReceipt = null;
   currentPhysicsPairProgress = null;
   currentPhysicsPairIntervention = null;
@@ -28620,6 +28658,11 @@ function physicsProtocolRegistrationMatches(registration, declaredRecordIds) {
     && expected.every((recordId, index) => recordId === registered[index]);
 }
 
+function newPhysicsProtocolPairSessionId() {
+  physicsProtocolPairSessionSerial += 1;
+  return `pair-${Date.now().toString(36)}-${physicsProtocolPairSessionSerial.toString(36)}`;
+}
+
 function publicPhysicsProtocolArmRegistration(registration, activeSelectedRecordIds) {
   if (!registration) return null;
   const binding = registration.interventionPlan.controlBinding;
@@ -28628,6 +28671,7 @@ function publicPhysicsProtocolArmRegistration(registration, activeSelectedRecord
     ? binding.ablationValue : binding.baselineValue;
   return {
     schema: 1,
+    pairSessionId: registration.pairSessionId,
     ablatedRecordId: registration.ablatedRecordId,
     activeArm: registration.activeArm,
     baselineSelectedRecordIds: [...registration.baselineSelectedRecordIds],
@@ -28656,8 +28700,10 @@ function physicsProtocolForRecords(records) {
       .filter((recordId) => recordIds.has(recordId)));
   }
   const declaredSelectedRecordIds = [...physicsProtocolSelectedIds];
-  if (!physicsProtocolRegistrationMatches(physicsProtocolArmRegistration, declaredSelectedRecordIds)) {
+  if (physicsProtocolArmRegistration
+      && !physicsProtocolRegistrationMatches(physicsProtocolArmRegistration, declaredSelectedRecordIds)) {
     physicsProtocolArmRegistration = null;
+    physicsProtocolPairSessionId = null;
   }
   const activeSelectedRecordIds = physicsProtocolArmRegistration?.activeArm === "ablation"
     ? physicsProtocolArmRegistration.interventionPlan.ablationSelectedRecordIds
@@ -28668,6 +28714,7 @@ function physicsProtocolForRecords(records) {
   if (physicsProtocolAblatedRecordId && !physicsProtocolSelectedIds.has(physicsProtocolAblatedRecordId)) {
     physicsProtocolAblatedRecordId = null;
     physicsProtocolArmRegistration = null;
+    physicsProtocolPairSessionId = null;
   }
   const interventionPlan = physicsProtocolArmRegistration?.interventionPlan
     || (physicsProtocolAblatedRecordId
@@ -28740,11 +28787,13 @@ function updatePhysicsProtocolSelection(recordIds) {
   if (leapEventCount > 0) return;
   physicsProtocolSelectedIds = new Set(recordIds);
   physicsProtocolArmRegistration = null;
+  physicsProtocolPairSessionId = null;
   frozenPhysicsPreflightManifest = null;
   renderGrowthPhysicsPreflight();
 }
 
-function applyPhysicsProtocolArm(interventionPlan, activeArm) {
+function applyPhysicsProtocolArm(interventionPlan, activeArm,
+  pairSessionId = physicsProtocolPairSessionId) {
   if (leapEventCount > 0 || !interventionPlan?.armConfigurationReady
       || !["baseline", "ablation"].includes(activeArm)) return;
   const binding = interventionPlan.controlBinding;
@@ -28752,8 +28801,10 @@ function applyPhysicsProtocolArm(interventionPlan, activeArm) {
   const arm = activeArm === "ablation" ? binding.ablationArm : binding.baselineArm;
   if (!(control instanceof HTMLSelectElement) || !arm
       || ![...control.options].some((option) => option.value === arm.value)) return;
+  const resolvedPairSessionId = pairSessionId || newPhysicsProtocolPairSessionId();
   const registration = physicsProtocolArmRegistration || {
     schema: 1,
+    pairSessionId: resolvedPairSessionId,
     ablatedRecordId: interventionPlan.ablatedRecordId,
     baselineSelectedRecordIds: [...interventionPlan.baselineSelectedRecordIds],
     interventionPlan,
@@ -28764,6 +28815,7 @@ function applyPhysicsProtocolArm(interventionPlan, activeArm) {
   control.dispatchEvent(new Event("change", { bubbles: true }));
   physicsProtocolSelectedIds = new Set(retainedSelectedIds);
   physicsProtocolAblatedRecordId = registration.ablatedRecordId;
+  physicsProtocolPairSessionId = registration.pairSessionId;
   physicsProtocolArmRegistration = { ...registration, activeArm };
   frozenPhysicsPreflightManifest = null;
   renderGrowthPhysicsPreflight();
@@ -28775,6 +28827,7 @@ function renderPhysicsProtocolPairTracker(protocol) {
     currentStructuralLeapEvents: leapEventCount,
     currentScenarioId: scenarioSelect.value,
     currentSeedConfigurationDigest: growthSeedAudit?.seedConfigurationDigest || null,
+    currentPairSessionId: physicsProtocolPairSessionId,
   });
   currentPhysicsPairProgress = progress;
   currentPhysicsPairIntervention = protocol.interventionPlan || null;
@@ -28819,11 +28872,12 @@ function renderPhysicsProtocolPairTracker(protocol) {
 function preparePhysicsProtocolPartner() {
   const progress = currentPhysicsPairProgress;
   const intervention = currentPhysicsPairIntervention;
+  const pairSessionId = physicsProtocolPairSessionId;
   if (!progress || !intervention?.armConfigurationReady
       || !["configure-ablation", "baseline-missing"].includes(progress.state)) return;
   const nextArm = progress.state === "baseline-missing" ? "baseline" : "ablation";
   enterPipelineStage(4);
-  applyPhysicsProtocolArm(intervention, nextArm);
+  applyPhysicsProtocolArm(intervention, nextArm, pairSessionId);
   receiptStatus.textContent = `${nextArm === "baseline" ? "Baseline" : "Arm B"} prepared from the supplied structural state · prior saved arm retained · no growth executed.`;
 }
 
@@ -29135,6 +29189,8 @@ growthPhysicsAblationSelect.addEventListener("change", () => {
   if (leapEventCount > 0) return;
   physicsProtocolAblatedRecordId = growthPhysicsAblationSelect.value || null;
   physicsProtocolArmRegistration = null;
+  physicsProtocolPairSessionId = physicsProtocolAblatedRecordId
+    ? newPhysicsProtocolPairSessionId() : null;
   frozenPhysicsPreflightManifest = null;
   renderGrowthPhysicsPreflight();
   receiptStatus.textContent = physicsProtocolAblatedRecordId
@@ -29903,6 +29959,7 @@ function draftDynamicalEvidenceHandoff(quantity, mode) {
   physicsProtocolSelectedIds = new Set(selectedRecordIds);
   physicsProtocolAblatedRecordId = ablatedRecordId;
   physicsProtocolArmRegistration = null;
+  physicsProtocolPairSessionId = ablatedRecordId ? newPhysicsProtocolPairSessionId() : null;
   dynamicalEvidenceHandoffReceipt = {
     schema: 1,
     quantityId: quantity.id,

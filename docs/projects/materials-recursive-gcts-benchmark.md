@@ -1,5 +1,23 @@
 # Recursive GCTS benchmark for material growth
 
+### Pair-session identity and replicate readiness (Build 326)
+
+The paired-arm protocol now freezes a unique session identifier before either
+arm executes, carries it through the reset to the omission arm, and stores it in
+both preflight manifests and notebook summaries. The outcome gate rejects a
+missing or unequal session identifier before comparing trajectories. This
+prevents repeated experiments with the same design from producing spurious
+baseline×Arm-B cross-products.
+
+A campaign audit groups receipts by session, admits only groups with exactly two
+entries whose authoritative pair comparison passes, and then restricts the
+replicate set to one material scenario and frozen intervention design. It reports
+distinct seed count and coordinate-free domain response consistency. The initial
+readiness threshold—three registered pairs on three seed digests—means only
+“replicated descriptive algorithmic response.” No significance test, material
+population inference, physical ensemble, or causal mechanism is implied, and
+ambiguous, legacy, or failed sessions never contribute.
+
 ### Structural-response fingerprint for matched arms (Build 325)
 
 Every comparable physics-proxy pair now produces a pure response fingerprint in

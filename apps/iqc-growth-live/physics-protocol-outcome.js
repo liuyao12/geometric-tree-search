@@ -180,6 +180,17 @@ export function comparePhysicsProtocolOutcomes(entries) {
   const plan = commonPlan(baselinePlan);
   const baselineRegistration = baselineExperiment.armRegistration;
   const ablationRegistration = ablationExperiment.armRegistration;
+  const baselinePairSessionId = baselineRegistration?.pairSessionId || null;
+  const ablationPairSessionId = ablationRegistration?.pairSessionId || null;
+  if (!baselinePairSessionId || !ablationPairSessionId) {
+    return fail("pair-session-missing",
+      "Both arms need a receipt-level pair-session identity; rerun legacy arm receipts under the current protocol.");
+  }
+  if (baselinePairSessionId !== ablationPairSessionId) {
+    return fail("pair-session-mismatch",
+      "These receipts belong to different registered pair sessions and cannot be cross-paired.",
+      { baselinePairSessionId, ablationPairSessionId });
+  }
   const registrationsValid = [baselineRegistration, ablationRegistration].every((registration) =>
     registration?.schema === 1 && registration.controlValueMatchesActiveArm === true
       && registration.exactlyOneControlChanges === true
@@ -300,12 +311,14 @@ export function comparePhysicsProtocolOutcomes(entries) {
     metric("mean q₆ / |ψ₆|", "order", harmonicMean(baselinePoint), harmonicMean(ablationPoint),
       "proper-rotation-invariant local orientational order"),
   ];
-  const experiment = { ...plan, inputIdentity: baseline.inputIdentity,
+  const experiment = { ...plan, pairSessionId: baselinePairSessionId,
+    inputIdentity: baseline.inputIdentity,
     seedConfigurationDigest: baselineSeedDigest, commonUpdates,
     controlVectorSchema: baselineExperiment.controlVector.schema };
   const result = { schema: 1, status: "matched", comparable: true, reason: null,
     detail: `Matched ${plan.ablatedProcess} omission after ${commonUpdates} discrete structural update${commonUpdates === 1 ? "" : "s"}.`,
-    baselineEntryId: baseline.id, ablationEntryId: ablation.id, baselineUpdates, ablationUpdates,
+    baselineEntryId: baseline.id, ablationEntryId: ablation.id,
+    pairSessionId: baselinePairSessionId, baselineUpdates, ablationUpdates,
     commonUpdates, experiment, candidateIdentity,
     seedIdentity: { baselineDigest: baselineSeedDigest, ablationDigest: ablationSeedDigest,
       passed: !plan.initialStateMayChange && baselineSeedDigest === ablationSeedDigest },
@@ -323,6 +336,7 @@ function compactArmRun(entry) {
   return {
     entryId: entry?.id || null,
     arm: experiment?.armRegistration?.activeArm || null,
+    pairSessionId: experiment?.armRegistration?.pairSessionId || null,
     executed: entry?.executionEvidence?.executed === true,
     structuralLeapEvents: Math.max(0,
       Number(entry?.executionEvidence?.structuralLeapEvents) || 0),
@@ -343,6 +357,7 @@ export function buildPhysicsProtocolPairProgress(protocol, entries, options = {}
     Number(options.currentStructuralLeapEvents) || 0);
   const currentScenarioId = options.currentScenarioId || null;
   const currentSeedConfigurationDigest = options.currentSeedConfigurationDigest || null;
+  const currentPairSessionId = options.currentPairSessionId || null;
   if (!plan) {
     return { schema: 1, state: "registration-required", registrationReady: false,
       activeArm, baselineRuns: [], ablationRuns: [], matchedPairs: [],
@@ -362,7 +377,9 @@ export function buildPhysicsProtocolPairProgress(protocol, entries, options = {}
       && stableString(commonPlan(experiment.interventionPlan)) === planKey
       && (!currentScenarioId || entry?.scenarioId === currentScenarioId)
       && (!currentSeedConfigurationDigest
-        || entry?.executionEvidence?.seedConfigurationDigest === currentSeedConfigurationDigest);
+        || entry?.executionEvidence?.seedConfigurationDigest === currentSeedConfigurationDigest)
+      && (!currentPairSessionId
+        || experiment?.armRegistration?.pairSessionId === currentPairSessionId);
   });
   const baselineEntries = matching.filter((entry) =>
     entry.physicsProtocolExperiment.armRegistration?.activeArm === "baseline");
@@ -439,4 +456,77 @@ export function buildPhysicsProtocolPairProgress(protocol, entries, options = {}
     candidatesInspected: false,
     searchExecutedByTracker: false,
   };
+}
+
+/** Aggregate only explicitly registered, one-to-one arm pairs; never cross-pair receipts. */
+export function buildPhysicsProtocolCampaignReadiness(entries, referencePairSessionId = null) {
+  const savedEntries = Array.isArray(entries) ? entries : [];
+  const sessions = new Map();
+  let legacyEntryCount = 0;
+  savedEntries.forEach((entry) => {
+    const pairSessionId = entry?.physicsProtocolExperiment?.armRegistration?.pairSessionId;
+    if (!pairSessionId) { legacyEntryCount += 1; return; }
+    const group = sessions.get(pairSessionId) || [];
+    group.push(entry); sessions.set(pairSessionId, group);
+  });
+  const sessionAudits = [...sessions.entries()].map(([pairSessionId, group]) => {
+    if (group.length !== 2) return { pairSessionId, status: "ambiguous-session",
+      entryCount: group.length, comparable: false, audit: null, scenarioId: null };
+    const audit = comparePhysicsProtocolOutcomes(group);
+    const scenarioIds = [...new Set(group.map((entry) => entry?.scenarioId).filter(Boolean))];
+    return { pairSessionId, status: audit.comparable ? "comparable" : audit.reason,
+      entryCount: group.length, comparable: audit.comparable, audit,
+      scenarioId: scenarioIds.length === 1 ? scenarioIds[0] : null };
+  });
+  const reference = referencePairSessionId
+    ? sessionAudits.find((session) => session.pairSessionId === referencePairSessionId
+      && session.comparable) : sessionAudits.filter((session) => session.comparable).at(-1);
+  if (!reference) {
+    return { schema: 1, available: false, state: "no-registered-pair",
+      pairCount: 0, distinctSeedCount: 0, domains: [], legacyEntryCount,
+      ambiguousSessionCount: sessionAudits.filter((session) =>
+        session.status === "ambiguous-session").length,
+      nextAction: "Complete and save one explicitly registered Baseline/Arm B pair.",
+      targetUsed: false, causalPhysicalMechanismInferred: false };
+  }
+  const designKey = stableString(commonPlan(reference.audit.experiment));
+  const comparable = sessionAudits.filter((session) => session.comparable
+    && session.scenarioId === reference.scenarioId
+    && stableString(commonPlan(session.audit.experiment)) === designKey);
+  const distinctSeeds = new Set(comparable.map((session) =>
+    session.audit.experiment.seedConfigurationDigest).filter(Boolean));
+  const domains = RESPONSE_DOMAIN_DEFINITIONS.map((definition) => {
+    const values = comparable.map((session) => session.audit.responseFingerprint.domains
+      .find((domain) => domain.id === definition.id)?.signedMean).filter((value) => value !== null);
+    const nonzero = values.filter((value) => Math.abs(value) > 1e-12);
+    const positive = nonzero.filter((value) => value > 0).length;
+    const negative = nonzero.filter((value) => value < 0).length;
+    return { id: definition.id, label: definition.label, pairCoverage: values.length,
+      pairCount: comparable.length,
+      meanSignedResponse: values.length
+        ? values.reduce((sum, value) => sum + value, 0) / values.length : null,
+      rmsAcrossPairs: values.length
+        ? Math.sqrt(values.reduce((sum, value) => sum + value ** 2, 0) / values.length) : null,
+      nonzeroPairCount: nonzero.length,
+      signAgreement: nonzero.length ? Math.max(positive, negative) / nonzero.length : null };
+  });
+  const replicated = comparable.length >= 3 && distinctSeeds.size >= 3;
+  const state = replicated ? "replicated-descriptive"
+    : comparable.length >= 2 ? "more-independent-seeds-needed" : "single-pair";
+  const payload = { designKey, scenarioId: reference.scenarioId,
+    pairSessionIds: comparable.map((session) => session.pairSessionId).sort(),
+    seedDigests: [...distinctSeeds].sort(), domains };
+  return { schema: 1, available: true, state,
+    referencePairSessionId: reference.pairSessionId, scenarioId: reference.scenarioId,
+    pairCount: comparable.length, distinctSeedCount: distinctSeeds.size,
+    pairSessionIds: comparable.map((session) => session.pairSessionId), domains,
+    legacyEntryCount, ambiguousSessionCount: sessionAudits.filter((session) =>
+      session.status === "ambiguous-session").length,
+    campaignDigest: digest(payload), replicatedDescriptiveResponse: replicated,
+    nextAction: replicated
+      ? "Inspect cross-seed sign agreement; external specimens and physical validation are still required."
+      : `Run the same registered pair on ${Math.max(0, 3 - distinctSeeds.size)} more independent frozen seed${3 - distinctSeeds.size === 1 ? "" : "s"}.`,
+    boundary: "This is repeatability of a target-free geometric algorithm across registered seed configurations. It is not a population estimate, force law, kinetic ensemble, or causal physical mechanism.",
+    coordinatesEmbedded: false, targetUsed: false,
+    causalPhysicalMechanismInferred: false };
 }

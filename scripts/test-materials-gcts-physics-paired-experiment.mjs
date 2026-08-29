@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
-import { buildPhysicsProtocolPairProgress, buildPhysicsProtocolResponseFingerprint,
-  comparePhysicsProtocolOutcomes }
+import { buildPhysicsProtocolCampaignReadiness, buildPhysicsProtocolPairProgress,
+  buildPhysicsProtocolResponseFingerprint, comparePhysicsProtocolOutcomes }
   from "../apps/iqc-growth-live/physics-protocol-outcome.js";
 
 const selected = ["constraint-projection", "connection", "steric"];
@@ -34,9 +34,10 @@ const plan = {
   },
 };
 
-function registration(activeArm) {
+function registration(activeArm, pairSessionId = "pair-test-1") {
   return {
     schema: 1,
+    pairSessionId,
     activeArm,
     activeSelectedRecordIds: activeArm === "baseline" ? selected : ablationSelected,
     controlId: "structuralRelaxationSelect",
@@ -112,12 +113,16 @@ assert.equal(buildPhysicsProtocolPairProgress(baselineProtocol, [baseline]).stat
 assert.equal(buildPhysicsProtocolPairProgress(baselineProtocol, [baseline], {
   currentScenarioId: "random", currentSeedConfigurationDigest: "other-seed",
 }).state, "run-baseline");
+assert.equal(buildPhysicsProtocolPairProgress(baselineProtocol, [baseline], {
+  currentPairSessionId: "pair-test-2",
+}).state, "run-baseline");
 assert.equal(buildPhysicsProtocolPairProgress(ablationProtocol, [baseline]).state,
   "run-ablation");
 
 const matched = buildPhysicsProtocolPairProgress(ablationProtocol, [baseline, armB]);
 const matchedAudit = comparePhysicsProtocolOutcomes([baseline, armB]);
 assert.equal(matchedAudit.comparable, true);
+assert.equal(matchedAudit.pairSessionId, "pair-test-1");
 assert.equal(matchedAudit.responseFingerprint.available, true);
 assert.equal(matchedAudit.responseFingerprint.responseObserved, true);
 assert.equal(matchedAudit.responseFingerprint.domains.length, 3);
@@ -140,5 +145,40 @@ wrongSeed.executionEvidence.seedConfigurationDigest = "different-seed";
 const blocked = buildPhysicsProtocolPairProgress(ablationProtocol, [baseline, wrongSeed]);
 assert.equal(blocked.state, "comparison-blocked");
 assert.equal(blocked.latestComparisonReason, "seed-mismatch");
+
+const wrongSession = structuredClone(armB);
+wrongSession.id = "arm-b-wrong-session";
+wrongSession.physicsProtocolExperiment.armRegistration.pairSessionId = "pair-test-2";
+const sessionBlocked = comparePhysicsProtocolOutcomes([baseline, wrongSession]);
+assert.equal(sessionBlocked.comparable, false);
+assert.equal(sessionBlocked.reason, "pair-session-mismatch");
+
+const singleCampaign = buildPhysicsProtocolCampaignReadiness([baseline, armB], "pair-test-1");
+assert.equal(singleCampaign.state, "single-pair");
+assert.equal(singleCampaign.pairCount, 1);
+assert.equal(singleCampaign.distinctSeedCount, 1);
+assert.equal(singleCampaign.replicatedDescriptiveResponse, false);
+assert.match(singleCampaign.boundary, /not a population estimate/);
+
+function replicatePair(sessionId, seedId, suffix) {
+  const a = structuredClone(baseline); const b = structuredClone(armB);
+  a.id = `baseline-${suffix}`; b.id = `arm-b-${suffix}`;
+  a.physicsProtocolExperiment.armRegistration.pairSessionId = sessionId;
+  b.physicsProtocolExperiment.armRegistration.pairSessionId = sessionId;
+  a.executionEvidence.seedConfigurationDigest = seedId;
+  b.executionEvidence.seedConfigurationDigest = seedId;
+  return [a, b];
+}
+const pair2 = replicatePair("pair-test-2", "seed-2", "two");
+const pair3 = replicatePair("pair-test-3", "seed-3", "three");
+const campaign = buildPhysicsProtocolCampaignReadiness(
+  [baseline, armB, ...pair2, ...pair3], "pair-test-1");
+assert.equal(campaign.state, "replicated-descriptive");
+assert.equal(campaign.pairCount, 3);
+assert.equal(campaign.distinctSeedCount, 3);
+assert.equal(campaign.replicatedDescriptiveResponse, true);
+assert.equal(campaign.domains.length, 3);
+assert.equal(campaign.causalPhysicalMechanismInferred, false);
+assert.equal(typeof campaign.campaignDigest, "string");
 
 console.log("physics paired experiment tests passed");
