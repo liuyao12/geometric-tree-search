@@ -343,6 +343,12 @@ def execute_partial_completion_site_masks(
              all(item.complete_cover_accounted for item in waves))
     if not exact:
         raise AssertionError("site-mask execution certificate failed")
+    # A second pass over the same partial candidate after accepting isolated
+    # sites is accumulation, not self-feeding.  Self-feeding requires a child
+    # occurrence completed in one wave to be available to a later wave.
+    self_fed = any(
+        item.completed_children > 0 and index + 1 < len(waves)
+        for index, item in enumerate(waves))
     return SiteMaskExecution(
         tuple(occurrences), tuple(promoted),
         tuple(occupied[key] for key in sorted(occupied)), tuple(waves),
@@ -350,5 +356,4 @@ def execute_partial_completion_site_masks(
         tuple(accepted_certificates), tuple(child_certificates),
         tuple(parent_certificates), frozen_site_threshold,
         "maximum-frozen-witness-score", True, exact,
-        len(waves) > 1 and any(item.accepted_site_keys
-                               for item in waves[:-1]), False, False)
+        self_fed, False, False)

@@ -1,5 +1,23 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 312 · executable Cd–Yb site-section gate
+
+The exploratory site mark now drives the generic target-free partial-site
+executor on the real Cd–Yb training corpus. Each execution fold fits its mark
+and zero-fitted-negative threshold on the other four original windows, freezes
+the candidate and section geometry, then accumulates collision-checked colored
+sites in the held window. Three of five windows emit sites; 8 / 9 are correct
+(88.89% precision), with exact complete-cover and proper-SE(3) certificates.
+
+That is not yet growth. None of the accepted partial masks completes a frozen
+child support, no parent cluster is promoted, and outer recall is only 0.39%.
+The executor now calls a run self-fed only when a child completed in one wave is
+available to a later wave; merely revisiting a partial candidate after isolated
+sites arrive is reported as accumulation. The geometry vocabulary is still fit
+on all five development windows, no future confirmatory target was opened, and
+Cd–Yb deployment, autonomous continuation, stationarity, and exponential
+claims remain disabled.
+
 ## Build 311 · group-sealed Cd–Yb site calibration
 
 The real-material partial-macro section now has a deterministic high-precision

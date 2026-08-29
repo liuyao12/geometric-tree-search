@@ -76,6 +76,19 @@ def test_accumulated_site_masks_complete_children_then_parent():
     assert all(item.complete_cover_accounted for item in result.waves)
 
 
+def test_partial_site_accumulation_is_not_mislabeled_self_fed():
+    seed_prototype, level, seed, *_rest = _frozen_frontier()
+    policy = _distance_policy(.8)
+    result = execute_partial_completion_site_masks(
+        level, seed, site_policy=policy,
+        explicit_seed_sites=seed_prototype.sites,
+        maximum_waves=2, pose_tolerance=1e-6)
+    assert len(result.waves) == 2
+    assert result.waves[0].accepted_site_keys
+    assert not result.child_certificates
+    assert not result.self_fed
+
+
 def test_nacl_site_masks_are_exact_before_posthoc_score():
     nacl = next(item for item in benchmark_systems()
                 if item.name == "NaCl-rocksalt")
@@ -113,5 +126,6 @@ def test_nacl_site_masks_are_exact_before_posthoc_score():
 if __name__ == "__main__":
     test_partial_mask_never_instantiates_incomplete_child()
     test_accumulated_site_masks_complete_children_then_parent()
+    test_partial_site_accumulation_is_not_mislabeled_self_fed()
     test_nacl_site_masks_are_exact_before_posthoc_score()
     print("partial completion site-mask executor: passed")

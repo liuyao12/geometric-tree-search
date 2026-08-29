@@ -100,7 +100,7 @@ const SYSTEMS = {
     curveEyebrow: "published-model finite continuation",
     curveTitle: "explicit sites before a conservative fixed point",
     curveNote: "finite target-blind growth · not a stationary projection",
-    metrics: [["causal nuclei", "295 / 295 exact"], ["held-out hierarchy", "4 re-encoding levels"], ["site calibration", "207 / 211 nested"], ["stationary witnesses", "0"]],
+    metrics: [["causal nuclei", "295 / 295 exact"], ["held-out hierarchy", "4 re-encoding levels"], ["site calibration", "207 / 211 nested"], ["executable site gate", "8 / 9 · 0 children"], ["stationary witnesses", "0"]],
     verdict: ["progress", "Real-material finite continuation passes · hierarchical transfer and stationarity remain open"],
     evidence: [
       ["Complete train cover", "2,385 / 2,385 atoms", "Five disjoint R14 windows learn 80 first-level types and explicit residual-complete representations from positions and species only."],
@@ -111,6 +111,7 @@ const SYSTEMS = {
       ["Partial promoted frontier", "82 candidates · 6 exact", "Finite one-child completions expose real policy headroom, but the train-only marking does not beat 31 within-parent shuffled refits."],
       ["Preregistered confirmation", "7 waves · 247 / 2,217 shell atoms", "The target-blind hierarchy self-feeds across four levels, yet the common first frontier contains no fully exact macro and both registered ranking gates remain red."],
       ["Site-resolved section", "207 / 211 · P 98.10%", "A deterministic four-window refit threshold is nonempty across all five outer folds (minimum P 95.92%) and beats shuffled retained-site yield, but it was devised on this corpus; future untouched confirmation remains sealed."],
+      ["Group-sealed site execution", "8 / 9 sites · 0 complete children", "The same fold-blind marks drive certified collision-checked site accumulation in three of five windows, but no full child or parent support closes. This is an executable development audit, not confirmation or autonomous growth."],
       ["Stationary audit", "0 three-scale keys", "Finite growth and nine-level compression are not renamed sustained or exponential quasicrystal growth."],
     ],
     actions: [
