@@ -23,7 +23,7 @@ def test_occurrence_uncertainty_ui_contract() -> None:
     require(MODULE, "sectorLabels: records.length")
     require(MODULE, "(replicates.length - 1) / replicates.length")
     require(MODULE, "not an independent-material population confidence interval")
-    require(APP, 'from "./validation-uncertainty.mjs?v=20260828-314"')
+    require(APP, 'from "./validation-uncertainty.mjs?v=20260828-315"')
     require(APP, "occurrenceJackknife: validationOccurrenceJackknife(selected)")
     require(APP, "occurrenceJackknife: validationOccurrenceJackknife(heldoutRecords)")
     require(APP, "occurrence JK95")
@@ -31,9 +31,9 @@ def test_occurrence_uncertainty_ui_contract() -> None:
     require(APP, "uncertaintyClaim")
     require(STYLE, "repeat(5,minmax(0,1fr))")
     require(README, "Build 300 · occurrence-blocked validation uncertainty")
-    require(APP, 'buildId: "20260828-314"')
-    require(HTML, 'app.js?v=20260828-314')
-    require(HTML, 'style.css?v=20260828-314')
+    require(APP, 'buildId: "20260828-315"')
+    require(HTML, 'app.js?v=20260828-315')
+    require(HTML, 'style.css?v=20260828-315')
 
 
 if __name__ == "__main__":

@@ -100,16 +100,17 @@ const SYSTEMS = {
     curveEyebrow: "published-model finite continuation",
     curveTitle: "explicit sites before a conservative fixed point",
     curveNote: "finite target-blind growth · not a stationary projection",
-    metrics: [["causal nuclei", "295 / 295 exact"], ["held-out hierarchy", "4 re-encoding levels"], ["site calibration", "207 / 211 nested"], ["obligation closure", "16 parents · 146 / 146"], ["stationary witnesses", "0"]],
+    metrics: [["causal nuclei", "295 / 295 exact"], ["held-out hierarchy", "4 re-encoding levels"], ["site calibration", "207 / 211 nested"], ["obligation closure", "16 parents · 146 / 146"], ["spatial reserve", "81 / 81 · 11 parents"], ["stationary witnesses", "0"]],
     closureFunnel: {
-      title: "Cd–Yb · the representation scale that closes geometry",
-      summary: "Every count uses a marking fit outside its execution window. Select a stage to compare isolated-site confidence with complete child obligations.",
+      title: "Cd–Yb · whole-child value from development to spatial reserve",
+      summary: "Select a stage to follow the representation change, exact parent promotion, and the present candidate-supply boundary.",
       steps: [
-        ["macro candidates", 14, "Fourteen frozen proper-SE(3) partial macros are supplied across the five central R7 nuclei. Candidate geometry is identical in the site-mask and whole-section arms."],
-        ["isolated-site arm", 9, "A strict scalar cutoff commits 9 of 74 first-wave site obligations (8 correct) but closes no child. Fragment precision alone is not a growth action."],
-        ["complete children", 16, "The candidate-level threshold is calibrated above every fitted negative whole child in the other four windows. It commits 16 complete, port-witnessed supports and emits 146 / 146 correct sites."],
-        ["promoted parents", 16, "Every accepted child completes its exact RHS; all frozen ports are reverified and the promoted prototype is independently fitted in proper SE(3)."],
-        ["self-fed windows", 2, "In two of five held development windows, a completed child changes the next frontier and supports a later wave. This is finite self-feeding, not stationary recurrence."],
+        ["isolated-site arm", 9, "A strict scalar cutoff commits 9 of 74 first-wave development obligations (8 correct) but closes no child. Fragment precision alone is not a growth action."],
+        ["development children", 16, "A threshold fit above every negative whole child in the other four windows commits 16 complete, port-witnessed supports."],
+        ["development sites", 146, "Those complete obligations emit 146 / 146 correct sites and self-feed in two of five development windows."],
+        ["development parents", 16, "Every exact RHS re-verifies frozen ports and independently fits its promoted prototype in proper SE(3)."],
+        ["reserved sites", 81, "Without refit, one consumed spatially disjoint reserve executes 4→4→3 sections and emits 81 / 81 correct sites. The other reserve supplies zero candidates."],
+        ["reserved parents", 11, "Eleven children and parents close across three waves. Because these structural windows were previously observed by re-encoding audits, this is spatial transfer—not fresh confirmation."],
       ],
     },
     verdict: ["progress", "Real-material finite continuation passes · hierarchical transfer and stationarity remain open"],
@@ -123,6 +124,7 @@ const SYSTEMS = {
       ["Preregistered confirmation", "7 waves · 247 / 2,217 shell atoms", "The target-blind hierarchy self-feeds across four levels, yet the common first frontier contains no fully exact macro and both registered ranking gates remain red."],
       ["Site-resolved section", "207 / 211 · P 98.10%", "A deterministic four-window refit threshold is nonempty across all five outer folds (minimum P 95.92%) and beats shuffled retained-site yield, but it was devised on this corpus; future untouched confirmation remains sealed."],
       ["Group-sealed obligation execution", "146 / 146 sites · 16 parents", "A whole-child threshold fit outside each execution window closes 16 port-certified children and parents, self-feeding in two of five development windows. Geometry vocabulary is shared, so untouched transfer remains open."],
+      ["Consumed spatial transfer", "81 / 81 sites · 11 parents", "The frozen final policy executes 4→4→3 sections in one reserved R14 window with no refit; the other has zero candidates. Exact value transfers where supply exists, but coverage and fresh confirmation remain open."],
       ["Stationary audit", "0 three-scale keys", "Finite growth and nine-level compression are not renamed sustained or exponential quasicrystal growth."],
     ],
     actions: [
@@ -374,6 +376,7 @@ const CLAIMS = [
   ["progress", "Frontier-state grammar", "Five recurring types cover 336 / 368 IQC sites; four rules are heterogeneous, but no closed state matrix recurs across transitions."],
   ["open", "Nested calibration", "The strongest Cd–Yb site threshold is 97.73% precise when fixed, but fully nested selection is 94.48%; a fresh target stays sealed."],
   ["progress", "Child-obligation closure", "On five Cd–Yb development windows, a whole-child threshold fit outside each execution window emits 146/146 correct sites, closes and promotes 16 exact parents, and self-feeds in two windows. The geometry vocabulary is shared across folds, so this is finite development execution rather than untouched transfer or stationary growth."],
+  ["progress", "Consumed Cd–Yb spatial transfer", "One of two spatially disjoint reserved windows executes 4→4→3 frozen whole-child sections with 81/81 correct sites and 11 promoted parents; the other supplies zero candidates. The policy is not refit, but both structural windows were previously used by re-encoding audits, so fresh confirmation remains open."],
   ["open", "Generic QC stationarity", "No exact chemistry–chirality–directed-port production recurs across three consecutive QC levels."],
   ["progress", "IQC option-preserving beam", "A width-four target-free beam keeps the branch with the largest compatible next frontier. Frozen before wave 20, it adds 120/120 exact held-forward sites; all 24 waves are 572/572 exact. Spatial confirmation and stationarity remain open."],
   ["open", "Generic million-site QC growth", "Specialized/address ceilings cross one million; the family-blind cluster-of-clusters executor does not yet."],
@@ -534,7 +537,7 @@ function renderSystem(key) {
       button.type = "button";
       button.dataset.closureStep = String(index);
       button.setAttribute("role", "listitem");
-      button.style.setProperty("--closure-ratio", String(value / maximum));
+      button.style.setProperty("--closure-ratio", String(Math.log1p(value) / Math.log1p(maximum)));
       button.innerHTML = `<small>${String(index + 1).padStart(2, "0")}</small><span>${label}</span><i></i><strong>${value.toLocaleString()}</strong>`;
       button.addEventListener("click", () => {
         buttons.forEach((item) => item.classList.toggle("active", item === button));

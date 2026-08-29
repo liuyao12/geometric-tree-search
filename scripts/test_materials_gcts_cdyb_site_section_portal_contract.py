@@ -11,6 +11,7 @@ ATLAS = (ROOT / "apps/iqc-growth-live/evidence-atlas.js").read_text()
 README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 BACKEND = (ROOT / "scripts/materials_gcts_cdyb_site_resolved_completion_section.py").read_text()
 EXECUTION = (ROOT / "scripts/materials_gcts_cdyb_group_sealed_site_mask_execution.py").read_text()
+SPATIAL = (ROOT / "scripts/materials_gcts_cdyb_obligation_spatial_transfer.py").read_text()
 
 
 def test_cdyb_site_section_portal_contract() -> None:
@@ -26,6 +27,9 @@ def test_cdyb_site_section_portal_contract() -> None:
     assert "execute_partial_completion_sections" in EXECUTION
     assert "future_confirmatory_target_opened: bool" in EXECUTION
     assert "vocabulary is shared across the five training windows" in EXECUTION
+    assert "minimum_marking_score=obligation_threshold" in SPATIAL
+    assert "reserved_windows_previously_consumed_by_reencoding" in SPATIAL
+    assert "not fresh confirmation" in SPATIAL
 
     for statement in (
         "207 / 211 correct sites",
@@ -39,33 +43,42 @@ def test_cdyb_site_section_portal_contract() -> None:
         "emits 146 / 146 correct sites",
         "genuine child-driven later waves in two of five",
         "default Cd–Yb policy remains disabled",
-        "no future confirmation target has been opened",
+        "executes 4 → 4 → 3 complete sections across three waves",
+        "81 / 81 correct sites and 11 promoted parents",
+        "zero-candidate reserve isolates coverage",
+        "not fresh confirmation",
     ):
         assert statement in HTML
     assert '["site calibration", "207 / 211 nested"]' in ATLAS
     assert '["obligation closure", "16 parents · 146 / 146"]' in ATLAS
+    assert '["spatial reserve", "81 / 81 · 11 parents"]' in ATLAS
     assert '["Site-resolved section", "207 / 211 · P 98.10%"' in ATLAS
     assert '["Group-sealed obligation execution", "146 / 146 sites · 16 parents"' in ATLAS
+    assert '["Consumed spatial transfer", "81 / 81 sites · 11 parents"' in ATLAS
     assert "future untouched confirmation remains sealed" in ATLAS
     assert 'closureFunnel: {' in ATLAS
-    assert '["macro candidates", 14' in ATLAS
     assert '["isolated-site arm", 9' in ATLAS
-    assert '["complete children", 16' in ATLAS
-    assert '["promoted parents", 16' in ATLAS
-    assert '["self-fed windows", 2' in ATLAS
+    assert '["development children", 16' in ATLAS
+    assert '["development sites", 146' in ATLAS
+    assert '["development parents", 16' in ATLAS
+    assert '["reserved sites", 81' in ATLAS
+    assert '["reserved parents", 11' in ATLAS
     assert 'id="systemClosureFunnel"' in HTML
     assert 'id="closureFunnelSteps"' in HTML
     assert 'button.dataset.closureStep' in ATLAS
-    assert "Build 314 · whole-child obligation closure" in README
+    assert "Build 315 · spatial transfer of whole-child value" in README
+    assert "One reserve has no candidate supply" in README
+    assert "81 / 81" in README
+    assert "11 children" in README
     assert "16 complete port-witnessed children" in README
     assert "146 / 146 correct emitted" in README
     assert "outer recall is only 0.39%" in README
     assert "exploratory training-corpus result" in README
     assert "older fully nested margin *selection* remains red at 94.48%" in README
-    assert 'buildId: "20260828-314"' in APP
-    assert 'app.js?v=20260828-314' in HTML
-    assert 'style.css?v=20260828-314' in HTML
-    assert 'evidence-atlas.js?v=20260828-314' in HTML
+    assert 'buildId: "20260828-315"' in APP
+    assert 'app.js?v=20260828-315' in HTML
+    assert 'style.css?v=20260828-315' in HTML
+    assert 'evidence-atlas.js?v=20260828-315' in HTML
 
 
 if __name__ == "__main__":

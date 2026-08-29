@@ -1,5 +1,26 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 315 · spatial transfer of whole-child value
+
+The final whole-child policy is now frozen from all five Cd–Yb training
+windows—274 support types, 181 macro alternatives, a lower-quartile section
+aggregation, and a threshold immediately above all 46 fitted negative actions.
+It is applied without refit to two spatially disjoint reserved R14 windows,
+starting from only each R7 nucleus.
+
+One reserve has no candidate supply and correctly emits nothing. The other
+executes 4 → 4 → 3 complete sections across three waves, emitting 81 / 81
+correct sites, closing 11 children, and independently promoting 11 parents.
+Aggregate outer-shell recall is 9.75% (20.51% in the active reserve), with zero
+wrong sites and exact proper-SE(3), port, collision, and promotion certificates.
+
+These reserves were previously consumed by structural re-encoding audits, so
+this is a no-refit spatial-transfer diagnostic rather than fresh confirmation.
+It proves that whole-child value transfers where candidate geometry is
+supplied, while the zero-candidate reserve isolates vocabulary/supply coverage
+as the next bottleneck. The default policy and sustained/stationary claims stay
+disabled pending a genuinely fresh spatial test.
+
 ## Build 314 · whole-child obligation closure
 
 Changing the marking’s action representation—from isolated sites to complete

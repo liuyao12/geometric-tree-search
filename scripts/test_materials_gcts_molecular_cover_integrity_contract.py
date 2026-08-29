@@ -52,9 +52,9 @@ def test_proof_separates_atom_closure_from_interstitial_geometry():
 
 def test_build_and_narrative_are_current():
     assert "Build 291 · molecular set-cover integrity certificate" in README
-    assert 'buildId: "20260828-314"' in APP
-    assert 'app.js?v=20260828-314' in HTML
-    assert 'style.css?v=20260828-314' in HTML
+    assert 'buildId: "20260828-315"' in APP
+    assert 'app.js?v=20260828-315' in HTML
+    assert 'style.css?v=20260828-315' in HTML
 
 
 if __name__ == "__main__":
