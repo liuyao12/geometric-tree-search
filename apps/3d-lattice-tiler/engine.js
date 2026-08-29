@@ -10,7 +10,7 @@ import { A2_LAYERED_PRISM_SPECS, makeA2LayeredPrism } from "../../assets/a2-laye
 import { makeA2LayeredPolyprism } from "../../assets/a2-layered-polyprisms.js";
 import { makeA2SlicedAlcoveUnion } from "../../assets/a2-sliced-alcoves.js";
 import { A2_SLICED_SIZE7_CANDIDATES } from "../../assets/a2-sliced-size7-candidates.js?v=20260828-1";
-import { A2_SLICED_SIZE8_CANDIDATES } from "../../assets/a2-sliced-size8-candidates.js?v=20260829-1";
+import { A2_SLICED_SIZE8_CANDIDATES } from "../../assets/a2-sliced-size8-candidates.js?v=20260829-2";
 import { A2_LAYERED_SIZE7_CANDIDATES } from "../../assets/a2-layered-size7-candidates.js?v=20260827-4";
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
 import { A2_LAYERED_SIZE9_CANDIDATES } from "../../assets/a2-layered-size9-candidates.js?v=20260827-3";

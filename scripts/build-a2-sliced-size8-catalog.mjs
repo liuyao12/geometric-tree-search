@@ -11,6 +11,9 @@ const readGzipNdjson = async path => gunzipSync(await readFile(new URL(path, roo
 const representatives = await readNdjson(
   "data/a2-sliced-alcove-size8-directed-exact6-reflection-representatives.ndjson"
 );
+const exactThreeById = new Map((await readGzipNdjson(
+  "data/a2-sliced-alcove-size8-directed-periodic-exact3.ndjson.gz"
+)).map(record => [record.id, record]));
 const coronaById = new Map((await readNdjson(
   "data/a2-sliced-alcove-size8-directed-corona1.ndjson"
 )).map(record => [record.id, record]));
@@ -27,10 +30,13 @@ if (representatives.length !== 15) {
 
 const candidates = representatives.map(record => {
   const geometry = makeA2SlicedAlcoveUnion(record.alcoves);
+  const exactThree = exactThreeById.get(record.id);
   const corona = coronaById.get(record.id);
   const extension = extensionById.get(record.id);
   const corona2 = corona2ById.get(record.id);
-  if (!corona?.corona_z3?.replay?.verified || !extension) {
+  if (exactThree?.classification !== "unresolved"
+      || !exactThree.periodic_z3?.hnf_range_exhausted
+      || !corona?.corona_z3?.replay?.verified || !extension) {
     throw new Error(`Missing replayed corona evidence for ${record.id}`);
   }
   const directRadius2 = extension.retained_corona_extension_classification === "radius2_witness";
@@ -57,6 +63,12 @@ const candidates = representatives.map(record => {
       certificate: null,
       census_stage: "a2_sliced_size8_consecutive_layers_exact_through6_2026_08_29",
       source_pool_size: 4406,
+      three_copy_periodic_certificates: 3335,
+      three_copy_periodic_survivors: 1071,
+      six_copy_additional_periodic_certificates: 1045,
+      periodic_survivors_through_six: 26,
+      periodic_survivor_reflection_classes: 15,
+      // Retained aliases for older saved UI state.
       six_copy_periodic_certificates: 4380,
       six_copy_periodic_survivors: 26,
       six_copy_periodic_survivor_reflection_classes: 15,
@@ -64,8 +76,11 @@ const candidates = representatives.map(record => {
       reflection_class_members: record.reflection_class.members,
       periodic_exact_through: 6,
       periodic_solver_unknowns: record.periodic_z3.solver_unknown,
+      periodic_three_copy_complete: exactThree.periodic_z3.hnf_range_exhausted === true,
+      periodic_three_copy_exact_multicover_nodes: exactThree.periodic_z3.exact_multicover_nodes,
       periodic_six_copy_complete: record.periodic_z3.hnf_range_exhausted === true,
       periodic_six_copy_exact_multicover_nodes: record.periodic_z3.exact_multicover_nodes,
+      periodic_three_copy_report: "data/a2-sliced-alcove-size8-directed-periodic-exact3.ndjson.gz",
       periodic_report: "data/a2-sliced-alcove-size8-directed-periodic-exact6.ndjson.gz",
       corona_completed_radius: 1,
       corona_completed_verified: true,
@@ -82,7 +97,11 @@ const candidates = representatives.map(record => {
       radius_two_stopped_by: corona2?.corona2_core_cegar?.stopped_by ?? null,
       radius_two_report: corona2
         ? "data/a2-sliced-alcove-size8-directed-corona2-gcts.ndjson.gz"
-        : "data/a2-sliced-alcove-size8-directed-retained-corona-extension.ndjson"
+        : "data/a2-sliced-alcove-size8-directed-retained-corona-extension.ndjson",
+      substitution_direct_scalar_scales_excluded: [2, 3, 4, 5, 6, 7, 8],
+      substitution_two_copy_metatile_scalar_scales_excluded: [2, 3],
+      substitution_three_copy_metatile_scalar_scales_excluded: [2, 3],
+      substitution_models_exhausted: ["proper", "reflected"]
     },
     shell_screening: { robust_completed_shell: 0, deepest_completed_shell: 0 }
   };

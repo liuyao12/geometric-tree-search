@@ -243,10 +243,16 @@ fillers, Laves and perovskite systems, and Barlow/FCC/HCP cells.
 The primary non-polycube group now begins with 23 evidence-ranked unions of
 Kuhn tetrahedra: 15 size-eight reflection classes followed by eight deeper
 size-seven leads.  Their exact solid-angle functions couple every consecutive
-section `x+y+z=k`; every entry exhausts the six-copy periodic quotient screen
-and has an independently replayed root corona. Four of the size-eight classes
+section `x+y+z=k`. For size eight, the exact screen first finds 3,335
+three-copy periods and advances 1,071 shapes to the six-copy screen, which
+finds 1,045 additional periods. The remaining 26 shapes reduce to 15
+reflection classes, and every displayed entry has an independently replayed
+root corona. Seven of the size-eight classes
 also have replayed radius-two witnesses; bounded GCTS retains sound failure
-clauses for the unresolved cases. The ranking measures finite-search
+clauses for the unresolved cases. Complete cellular screens exclude direct
+self-substitutions at scales 2–8 and connected two- and three-copy metatile
+substitutions at scales 2 and 3, in both proper and reflected models. The
+ranking measures finite-search
 difficulty, not likelihood of aperiodicity.  The same group also contains
 exact prisms over the A2 hexagon, hat, and turtle, plus the earlier multi-slab
 polyprism leads. Their proper orientation group is the six-element subgroup

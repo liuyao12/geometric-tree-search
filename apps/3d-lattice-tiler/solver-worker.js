@@ -1,4 +1,4 @@
-import { createTilingStream, tileSpecs } from "./engine.js?v=20260829-a2-sliced8-v237";
+import { createTilingStream, tileSpecs } from "./engine.js?v=20260829-a2-sliced8-v238";
 
 const MESSAGE_BATCH_INTERVAL_MS = 32;
 const MESSAGE_BATCH_LIMIT = 256;
