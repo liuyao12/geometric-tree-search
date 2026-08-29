@@ -185,7 +185,11 @@ export const A2_SLICED_SIZE7_CANDIDATES = Object.freeze([
       "three_copy_metatile_scale3_reflected_report": "data/a2-sliced-alcove-size7-three-cluster-scale3-reflected-leads.ndjson.gz",
       "three_copy_metatile_scale4_reflected_status": "no_three_copy_metatile_scalar4_substitution",
       "three_copy_metatile_scale4_reflected_parent_types": 1268,
-      "three_copy_metatile_scale4_reflected_report": "data/a2-sliced-alcove-size7-three-cluster-scale4-reflected-leads.ndjson.gz"
+      "three_copy_metatile_scale4_reflected_report": "data/a2-sliced-alcove-size7-three-cluster-scale4-reflected-leads.ndjson.gz",
+      "four_copy_metatile_substitution_scales_exhausted": [],
+      "four_copy_metatile_scale2_reflected_status": "unresolved",
+      "four_copy_metatile_scale2_reflected_parent_types": 0,
+      "four_copy_metatile_scale2_reflected_report": null
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -376,7 +380,11 @@ export const A2_SLICED_SIZE7_CANDIDATES = Object.freeze([
       "three_copy_metatile_scale3_reflected_report": "data/a2-sliced-alcove-size7-three-cluster-scale3-reflected-leads.ndjson.gz",
       "three_copy_metatile_scale4_reflected_status": "no_three_copy_metatile_scalar4_substitution",
       "three_copy_metatile_scale4_reflected_parent_types": 2033,
-      "three_copy_metatile_scale4_reflected_report": "data/a2-sliced-alcove-size7-three-cluster-scale4-reflected-leads.ndjson.gz"
+      "three_copy_metatile_scale4_reflected_report": "data/a2-sliced-alcove-size7-three-cluster-scale4-reflected-leads.ndjson.gz",
+      "four_copy_metatile_substitution_scales_exhausted": [],
+      "four_copy_metatile_scale2_reflected_status": "unresolved",
+      "four_copy_metatile_scale2_reflected_parent_types": 0,
+      "four_copy_metatile_scale2_reflected_report": null
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -568,7 +576,11 @@ export const A2_SLICED_SIZE7_CANDIDATES = Object.freeze([
       "three_copy_metatile_scale3_reflected_report": "data/a2-sliced-alcove-size7-three-cluster-scale3-reflected-leads.ndjson.gz",
       "three_copy_metatile_scale4_reflected_status": "no_three_copy_metatile_scalar4_substitution",
       "three_copy_metatile_scale4_reflected_parent_types": 1429,
-      "three_copy_metatile_scale4_reflected_report": "data/a2-sliced-alcove-size7-three-cluster-scale4-reflected-leads.ndjson.gz"
+      "three_copy_metatile_scale4_reflected_report": "data/a2-sliced-alcove-size7-three-cluster-scale4-reflected-leads.ndjson.gz",
+      "four_copy_metatile_substitution_scales_exhausted": [],
+      "four_copy_metatile_scale2_reflected_status": "unresolved",
+      "four_copy_metatile_scale2_reflected_parent_types": 0,
+      "four_copy_metatile_scale2_reflected_report": null
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -760,7 +772,11 @@ export const A2_SLICED_SIZE7_CANDIDATES = Object.freeze([
       "three_copy_metatile_scale3_reflected_report": "data/a2-sliced-alcove-size7-three-cluster-scale3-reflected-leads.ndjson.gz",
       "three_copy_metatile_scale4_reflected_status": "no_three_copy_metatile_scalar4_substitution",
       "three_copy_metatile_scale4_reflected_parent_types": 1922,
-      "three_copy_metatile_scale4_reflected_report": "data/a2-sliced-alcove-size7-three-cluster-scale4-reflected-leads.ndjson.gz"
+      "three_copy_metatile_scale4_reflected_report": "data/a2-sliced-alcove-size7-three-cluster-scale4-reflected-leads.ndjson.gz",
+      "four_copy_metatile_substitution_scales_exhausted": [],
+      "four_copy_metatile_scale2_reflected_status": "unresolved",
+      "four_copy_metatile_scale2_reflected_parent_types": 0,
+      "four_copy_metatile_scale2_reflected_report": null
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -953,7 +969,11 @@ export const A2_SLICED_SIZE7_CANDIDATES = Object.freeze([
       "three_copy_metatile_scale3_reflected_report": "data/a2-sliced-alcove-size7-three-cluster-scale3-reflected-leads.ndjson.gz",
       "three_copy_metatile_scale4_reflected_status": "no_three_copy_metatile_scalar4_substitution",
       "three_copy_metatile_scale4_reflected_parent_types": 1291,
-      "three_copy_metatile_scale4_reflected_report": "data/a2-sliced-alcove-size7-three-cluster-scale4-reflected-leads.ndjson.gz"
+      "three_copy_metatile_scale4_reflected_report": "data/a2-sliced-alcove-size7-three-cluster-scale4-reflected-leads.ndjson.gz",
+      "four_copy_metatile_substitution_scales_exhausted": [],
+      "four_copy_metatile_scale2_reflected_status": "unresolved",
+      "four_copy_metatile_scale2_reflected_parent_types": 0,
+      "four_copy_metatile_scale2_reflected_report": null
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -1145,7 +1165,13 @@ export const A2_SLICED_SIZE7_CANDIDATES = Object.freeze([
       "three_copy_metatile_scale3_reflected_report": "data/a2-sliced-alcove-size7-three-cluster-scale3-reflected-leads.ndjson.gz",
       "three_copy_metatile_scale4_reflected_status": "no_three_copy_metatile_scalar4_substitution",
       "three_copy_metatile_scale4_reflected_parent_types": 1265,
-      "three_copy_metatile_scale4_reflected_report": "data/a2-sliced-alcove-size7-three-cluster-scale4-reflected-leads.ndjson.gz"
+      "three_copy_metatile_scale4_reflected_report": "data/a2-sliced-alcove-size7-three-cluster-scale4-reflected-leads.ndjson.gz",
+      "four_copy_metatile_substitution_scales_exhausted": [
+        2
+      ],
+      "four_copy_metatile_scale2_reflected_status": "no_four_copy_metatile_scalar2_substitution",
+      "four_copy_metatile_scale2_reflected_parent_types": 65110,
+      "four_copy_metatile_scale2_reflected_report": "data/a2-sliced-alcove-size7-four-cluster-scale2-reflected-00120.ndjson.gz"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -1337,7 +1363,11 @@ export const A2_SLICED_SIZE7_CANDIDATES = Object.freeze([
       "three_copy_metatile_scale3_reflected_report": "data/a2-sliced-alcove-size7-three-cluster-scale3-reflected-leads.ndjson.gz",
       "three_copy_metatile_scale4_reflected_status": "no_three_copy_metatile_scalar4_substitution",
       "three_copy_metatile_scale4_reflected_parent_types": 1388,
-      "three_copy_metatile_scale4_reflected_report": "data/a2-sliced-alcove-size7-three-cluster-scale4-reflected-leads.ndjson.gz"
+      "three_copy_metatile_scale4_reflected_report": "data/a2-sliced-alcove-size7-three-cluster-scale4-reflected-leads.ndjson.gz",
+      "four_copy_metatile_substitution_scales_exhausted": [],
+      "four_copy_metatile_scale2_reflected_status": "unresolved",
+      "four_copy_metatile_scale2_reflected_parent_types": 0,
+      "four_copy_metatile_scale2_reflected_report": null
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -1529,7 +1559,11 @@ export const A2_SLICED_SIZE7_CANDIDATES = Object.freeze([
       "three_copy_metatile_scale3_reflected_report": "data/a2-sliced-alcove-size7-three-cluster-scale3-reflected-leads.ndjson.gz",
       "three_copy_metatile_scale4_reflected_status": "no_three_copy_metatile_scalar4_substitution",
       "three_copy_metatile_scale4_reflected_parent_types": 2229,
-      "three_copy_metatile_scale4_reflected_report": "data/a2-sliced-alcove-size7-three-cluster-scale4-reflected-leads.ndjson.gz"
+      "three_copy_metatile_scale4_reflected_report": "data/a2-sliced-alcove-size7-three-cluster-scale4-reflected-leads.ndjson.gz",
+      "four_copy_metatile_substitution_scales_exhausted": [],
+      "four_copy_metatile_scale2_reflected_status": "unresolved",
+      "four_copy_metatile_scale2_reflected_parent_types": 0,
+      "four_copy_metatile_scale2_reflected_report": null
     },
     "shell_screening": {
       "robust_completed_shell": 0,

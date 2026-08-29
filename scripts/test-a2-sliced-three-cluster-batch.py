@@ -16,11 +16,12 @@ SPEC.loader.exec_module(MODULE)
 assert MODULE.terminate_active_processes() == 0
 
 
-def report(start, stop, parents):
+def report(start, stop, parents, copies=3):
+    key = MODULE.detail_key(copies)
     return {
         "id": "probe",
         "classification": "unresolved",
-        "three_copy_alcove_metatile_screen": {
+        key: {
             "certified": False,
             "scale": 3,
             "include_reflections": True,
@@ -64,6 +65,15 @@ with tempfile.TemporaryDirectory() as directory:
     positive_merged = MODULE.merge_candidate([positive], 1)
     assert positive_merged["classification"] == "three_copy_metatile_substitution_system"
     assert positive_merged["three_copy_alcove_metatile_screen"]["closed_alphabet"] == [0]
+
+    four = directory / "four.ndjson"
+    four.write_text(json.dumps(report(0, 1, [{
+        "parent_index": 0, "classification": "exact_unsat"
+    }], copies=4)) + "\n")
+    assert MODULE.valid_shard(four, "probe", 0, 1, copies=4)
+    four_merged = MODULE.merge_candidate([four], 1, copies=4)
+    assert four_merged["classification"] == "no_four_copy_metatile_scalar3_substitution"
+    assert four_merged["four_copy_alcove_metatile_screen"]["certified"] is True
 
     unknown = report(0, 1, [{"parent_index": 0, "classification": "unresolved"}])
     left.write_text(json.dumps(unknown) + "\n")

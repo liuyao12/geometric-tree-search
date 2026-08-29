@@ -75,6 +75,16 @@ for (const candidate of A2_SLICED_SIZE7_CANDIDATES) {
     "no_three_copy_metatile_scalar4_substitution");
   assert.equal(candidate.screening.three_copy_metatile_scale4_reflected_parent_types,
     scale3ParentTypes.get(candidate.id));
+  if (candidate.id === "a2sa_7_00120") {
+    assert.deepEqual(candidate.screening.four_copy_metatile_substitution_scales_exhausted,
+      [2]);
+    assert.equal(candidate.screening.four_copy_metatile_scale2_reflected_status,
+      "no_four_copy_metatile_scalar2_substitution");
+    assert.equal(candidate.screening.four_copy_metatile_scale2_reflected_parent_types, 65110);
+  } else {
+    assert.deepEqual(candidate.screening.four_copy_metatile_substitution_scales_exhausted, []);
+    assert.equal(candidate.screening.four_copy_metatile_scale2_reflected_status, "unresolved");
+  }
 }
 
 const config = {

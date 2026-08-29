@@ -30,6 +30,9 @@ const scale3ThreeCopyById = new Map((await readGzipNdjson(
 const scale4ThreeCopyById = new Map((await readGzipNdjson(
   "data/a2-sliced-alcove-size7-three-cluster-scale4-reflected-leads.ndjson.gz"
 )).map(record => [record.id, record]));
+const scale2FourCopyById = new Map((await readGzipNdjson(
+  "data/a2-sliced-alcove-size7-four-cluster-scale2-reflected-00120.ndjson.gz"
+)).map(record => [record.id, record]));
 
 const survivorRows = periodicRows.filter(record => record.classification === "unresolved");
 if (survivorRows.length !== 259) {
@@ -111,6 +114,7 @@ const candidates = selected.map(({ record, corona, retained }, index) => {
   const radius3 = longRadius.radius3_gcts;
   const scale3ThreeCopy = scale3ThreeCopyById.get(record.id);
   const scale4ThreeCopy = scale4ThreeCopyById.get(record.id);
+  const scale2FourCopy = scale2FourCopyById.get(record.id);
   for (const [scale, evidence] of [[3, scale3ThreeCopy], [4, scale4ThreeCopy]]) {
     if (!evidence
       || evidence.classification !== `no_three_copy_metatile_scalar${scale}_substitution`
@@ -120,6 +124,14 @@ const candidates = selected.map(({ record, corona, retained }, index) => {
     ) {
       throw new Error(`Invalid scale-${scale} three-copy certificate for ${record.id}`);
     }
+  }
+  if (scale2FourCopy && (
+    scale2FourCopy.classification !== "no_four_copy_metatile_scalar2_substitution"
+    || scale2FourCopy.four_copy_alcove_metatile_screen?.certified !== true
+    || scale2FourCopy.four_copy_alcove_metatile_screen?.parents_completed
+      !== scale2FourCopy.four_copy_alcove_metatile_screen?.symmetry_distinct_metatiles
+  )) {
+    throw new Error(`Invalid scale-two four-copy certificate for ${record.id}`);
   }
   return {
     id: record.id,
@@ -185,7 +197,15 @@ const candidates = selected.map(({ record, corona, retained }, index) => {
       three_copy_metatile_scale4_reflected_parent_types:
         scale4ThreeCopy.three_copy_alcove_metatile_screen.parents_completed,
       three_copy_metatile_scale4_reflected_report:
-        "data/a2-sliced-alcove-size7-three-cluster-scale4-reflected-leads.ndjson.gz"
+        "data/a2-sliced-alcove-size7-three-cluster-scale4-reflected-leads.ndjson.gz",
+      four_copy_metatile_substitution_scales_exhausted: scale2FourCopy ? [2] : [],
+      four_copy_metatile_scale2_reflected_status:
+        scale2FourCopy?.classification ?? "unresolved",
+      four_copy_metatile_scale2_reflected_parent_types:
+        scale2FourCopy?.four_copy_alcove_metatile_screen?.parents_completed ?? 0,
+      four_copy_metatile_scale2_reflected_report: scale2FourCopy
+        ? "data/a2-sliced-alcove-size7-four-cluster-scale2-reflected-00120.ndjson.gz"
+        : null
     },
     shell_screening: { robust_completed_shell: 0, deepest_completed_shell: 0 }
   };

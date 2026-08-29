@@ -81,7 +81,7 @@ def screen_candidate(record, scale, timeout_ms, include_reflections=False,
                      parent_stop=0):
     enumerated = enumerate_three_copy_metatiles(record, include_reflections)
     metatiles = enumerated["metatiles"]
-    alphabet = TWO.oriented_alphabet(metatiles, include_reflections)
+    alphabet = None
     atomic_alphabet = TWO.oriented_alphabet(
         [{"alcoves": record["alcoves"]}], include_reflections)
     start = max(0, parent_start)
@@ -120,6 +120,8 @@ def screen_candidate(record, scale, timeout_ms, include_reflections=False,
                 "stopped_by": "deferred_exact_parent_certificate",
             })
             continue
+        if alphabet is None:
+            alphabet = TWO.oriented_alphabet(metatiles, include_reflections)
         placements = TWO.mixed_placements(target, alphabet)
         covered = set().union(*(placement["cells"] for placement in placements)) if placements else set()
         uncovered = next((cell for cell in sorted(target) if cell not in covered), None)
@@ -224,7 +226,8 @@ def screen_candidate(record, scale, timeout_ms, include_reflections=False,
             **{key: enumerated[key] for key in (
                 "raw_connected_extensions", "symmetry_distinct_metatiles",
                 "canonical_sha256")},
-            "oriented_metatile_types": len(alphabet),
+            "oriented_metatile_types": len(alphabet) if alphabet is not None else None,
+            "oriented_alphabet_deferred": alphabet is None,
             "parent_range": [start, stop],
             "parents_completed": len(results),
             "closed_alphabet": closed,
