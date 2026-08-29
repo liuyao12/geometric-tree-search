@@ -546,15 +546,16 @@ export const A2_SLICED_SIZE7_CANDIDATES = Object.freeze([
         "reflected"
       ],
       "three_copy_metatile_substitution_scales_exhausted": [
-        2
+        2,
+        3
       ],
       "three_copy_metatile_substitution_symmetry_models": [
         "proper",
         "reflected"
       ],
-      "three_copy_metatile_scale3_reflected_status": "unresolved",
-      "three_copy_metatile_scale3_reflected_parent_types": 0,
-      "three_copy_metatile_scale3_reflected_report": null
+      "three_copy_metatile_scale3_reflected_status": "no_three_copy_metatile_scalar3_substitution",
+      "three_copy_metatile_scale3_reflected_parent_types": 1429,
+      "three_copy_metatile_scale3_reflected_report": "data/a2-sliced-alcove-size7-three-cluster-scale3-reflected-leads.ndjson.gz"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -733,15 +734,16 @@ export const A2_SLICED_SIZE7_CANDIDATES = Object.freeze([
         "reflected"
       ],
       "three_copy_metatile_substitution_scales_exhausted": [
-        2
+        2,
+        3
       ],
       "three_copy_metatile_substitution_symmetry_models": [
         "proper",
         "reflected"
       ],
-      "three_copy_metatile_scale3_reflected_status": "unresolved",
-      "three_copy_metatile_scale3_reflected_parent_types": 0,
-      "three_copy_metatile_scale3_reflected_report": null
+      "three_copy_metatile_scale3_reflected_status": "no_three_copy_metatile_scalar3_substitution",
+      "three_copy_metatile_scale3_reflected_parent_types": 1922,
+      "three_copy_metatile_scale3_reflected_report": "data/a2-sliced-alcove-size7-three-cluster-scale3-reflected-leads.ndjson.gz"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
