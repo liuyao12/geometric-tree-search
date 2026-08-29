@@ -116,8 +116,8 @@ export function connectionEvidenceNarrative(audit, { molecular = false } = {}) {
   };
   if (audit.verdict === "terminal-mediated") return {
     label: "connections mediated by exact terminals",
-    summary: `${audit.terminalBridgeOccurrencePairs} support pairs meet only through residual/gap terminals across ${audit.terminalBridgeTypePairs} type-pair topologies.`,
-    implication: "This is a representation frontier: terminal-aware composed ports must be learned and replay-certified before they can become growth supply.",
+    summary: `${audit.terminalBridgeOccurrencePairs} support pairs meet only through residual/gap terminals across ${audit.terminalBridgeTypePairs} type-pair topologies; ${audit.recurrentTerminalBridgePoseClasses ?? 0} directed proper-pose classes recur at independent terminals.`,
+    implication: "This is a representation frontier: even a recurrent composed pose remains diagnostic until terminal emission and frozen transfer are certified.",
   };
   if (audit.verdict === "terminal-touched") return {
     label: "terminal-dominated cover",

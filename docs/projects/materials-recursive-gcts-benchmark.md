@@ -1,5 +1,29 @@
 # Recursive GCTS benchmark for material growth
 
+### Terminal-bridge proper-pose readiness audit (Build 333)
+
+Each residual-mediated support pair is now composed in a proper intrinsic frame
+and quotiented by source type, target type, exact colored terminal type,
+translation tolerance, and proper-rotation tolerance. Recurrence requires two
+distinct terminal occurrences; several pairs routed through one terminal cannot
+manufacture independent support. The browser reports directed observations,
+pose-class count, recurrent class count, and maximum terminal-occurrence
+support.
+
+This remains diagnostic by construction. The artifact records
+`composedTerminalEmissionCertified=false`,
+`composedTerminalTransferCertified=false`, and
+`composedTerminalGrowthRules=0`. A future terminal-aware executor must emit the
+literal gap cluster, verify the composed attachment on a frozen held-out
+window, and preserve collision/species certificates before any such class can
+enter candidate supply.
+
+Measured browser results are deliberately red: Cu–Zr has six directed
+observations in six pose classes; Cd–Yb has four in four; no class is witnessed
+at two independent terminals. The ideal-IQC and BC8 windows have zero complete
+terminal bridges. Direct Cd–Yb/BC8 ports and the molecular ice anchor path are
+unchanged.
+
 ### Molecular-anchor verdict boundary (Build 332)
 
 Molecular covers now expose `molecular-anchor` as their atlas verdict. Their

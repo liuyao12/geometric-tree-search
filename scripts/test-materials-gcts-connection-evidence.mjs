@@ -25,6 +25,9 @@ assert.equal(bridged.terminalBridgeOccurrencePairs, 2);
 assert.equal(bridged.terminalBridgeTypePairs, 1);
 assert.equal(bridged.recurringBridgeTopologies, 1);
 assert.match(connectionEvidenceNarrative(bridged).implication, /representation frontier/);
+const poseAudited = { ...bridged, recurrentTerminalBridgePoseClasses: 2 };
+assert.match(connectionEvidenceNarrative(poseAudited).summary, /2 directed proper-pose classes recur/);
+assert.match(connectionEvidenceNarrative(poseAudited).implication, /remains diagnostic/);
 
 const isolated = auditCoverConnectionEvidence({ placements: [{ type: 0 }, { type: 1 }], edges: [] });
 assert.equal(isolated.verdict, "no-shared-interface");

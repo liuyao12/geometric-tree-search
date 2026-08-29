@@ -88,7 +88,7 @@ import {
 } from "./ice-vi-anchor-trace.js?v=20260824-1";
 import { discoverIrregularCover } from "./irregular-cover.js?v=20260824-1";
 import { auditCoverConnectionEvidence, connectionEvidenceNarrative }
-  from "./connection-evidence.mjs?v=20260829-331";
+  from "./connection-evidence.mjs?v=20260829-333";
 import { generateAmorphousMixture } from "./amorphous-glass.js?v=20260824-1";
 import { anisotropicDisplacementDampedWeightedPowderStructureFactor, compareStructureFactors,
   displacementDampedWeightedPowderStructureFactor, jensenShannonDistance,
@@ -10031,7 +10031,7 @@ function renderConnectionCoverageAtlas() {
     ["continuation rules", overlapGrammar?.rules?.length || 0, `${overlapGrammar?.recurring || 0} recurrent`],
     ["replay-only edges", overlapGrammar?.reconstructionEdges || 0, "excluded from growth supply"],
     ["direct support edges", evidence?.directSupportEdges ?? "—", `${evidence?.directIncidentOccurrences ?? 0}/${evidence?.promotableOccurrences ?? 0} occurrences incident`],
-    ["terminal bridges", evidence?.terminalBridgeOccurrencePairs ?? "—", `${evidence?.recurringBridgeTopologies ?? 0} recurrent topologies · not ports`],
+    ["terminal bridges", evidence?.terminalBridgeOccurrencePairs ?? "—", `${evidence?.recurrentTerminalBridgePoseClasses ?? 0} recurrent proper poses · not ports`],
   ];
   connectionCoverageSummary.replaceChildren(...summary.map(([label, value, detail]) => {
     const tile = document.createElement("span");
@@ -10044,22 +10044,25 @@ function renderConnectionCoverageAtlas() {
     const evidenceModes = [
       ["direct", "direct supports", evidence?.directSupportEdges ?? 0,
         `${evidence?.recurringDirectRules ?? 0} recurring pose classes`,
-        "Direct train-witnessed overlaps are the only edges currently eligible to become generic target-free ports."],
+        "Direct train-witnessed overlaps are the only edges currently eligible to become generic target-free ports.",
+        "Eligibility gate: the proper-pose class must recur in the frozen fit vocabulary."],
       ["terminal", "via terminals", evidence?.terminalBridgeOccurrencePairs ?? 0,
-        `${evidence?.terminalBridgeTypePairs ?? 0} type-pair topologies`,
-        "A gap or residual terminal connects these supports in the exact cover. Topology alone is not enough: a composed proper pose and terminal-emission certificate are still required."],
+        `${evidence?.recurrentTerminalBridgePoseClasses ?? 0}/${evidence?.terminalBridgePoseClasses ?? 0} pose classes recur`,
+        `The exact cover contains ${evidence?.terminalBridgeDirectedPoseObservations ?? 0} directed composed-pose observations. ${evidence?.recurrentTerminalBridgePoseClasses ?? 0} classes recur at two or more independent terminals; none is growth supply until terminal emission and frozen transfer are separately certified.`,
+        "Certification gates: terminal emission red · frozen transfer red · contributed growth rules 0."],
       ["replay", "replay only", overlapGrammar?.reconstructionEdges || 0,
         "exact directed edges",
-        "These occurrence-specific edges can audit reconstruction of the observed window, but are hidden from target-free growth."],
+        "These occurrence-specific edges can audit reconstruction of the observed window, but are hidden from target-free growth.",
+        "Boundary: occurrence identity is target-aware and cannot authorize an unseen attachment."],
     ];
     const explanation = document.createElement("p");
     explanation.innerHTML = `<strong>${evidenceNarrative.label}</strong><span>${evidenceNarrative.summary}</span><em>${evidenceNarrative.implication}</em>`;
-    const buttons = evidenceModes.map(([mode, label, value, note, description]) => {
+    const buttons = evidenceModes.map(([mode, label, value, note, description, boundary]) => {
       const button = document.createElement("button"); button.type = "button"; button.dataset.evidenceMode = mode;
       button.innerHTML = `<small>${label}</small><strong>${value}</strong><em>${note}</em>`;
       button.addEventListener("click", () => {
         connectionCoverageEvidence.querySelectorAll("button").forEach((candidate) => candidate.classList.toggle("active", candidate === button));
-        explanation.innerHTML = `<strong>${label}</strong><span>${description}</span><em>${evidenceNarrative.implication}</em>`;
+        explanation.innerHTML = `<strong>${label}</strong><span>${description}</span><em>${boundary}</em>`;
       });
       return button;
     });
@@ -10889,6 +10892,56 @@ function quaternionDistance(first, second) {
   return 2 * Math.acos(Math.min(1, Math.abs(first.dot(second))));
 }
 
+function terminalBridgePoseAudit(source, occurrences, edges) {
+  const supportNeighbors = new Map();
+  edges.forEach((edge) => {
+    const first = occurrences[edge.first], second = occurrences[edge.second];
+    if (!first || !second || Boolean(first.placement.residual) === Boolean(second.placement.residual)) return;
+    const terminalIndex = first.placement.residual ? edge.first : edge.second;
+    const supportIndex = first.placement.residual ? edge.second : edge.first;
+    const neighbors = supportNeighbors.get(terminalIndex) || new Set();
+    neighbors.add(supportIndex);
+    supportNeighbors.set(terminalIndex, neighbors);
+  });
+  const classes = [];
+  let directedObservations = 0;
+  supportNeighbors.forEach((neighbors, terminalIndex) => {
+    const terminalType = occurrences[terminalIndex].type;
+    const ordered = [...neighbors].sort((first, second) => first - second);
+    ordered.forEach((firstIndex) => ordered.forEach((secondIndex) => {
+      if (firstIndex === secondIndex) return;
+      directedObservations++;
+      const first = occurrences[firstIndex], second = occurrences[secondIndex];
+      const inverse = first.rotation.clone().invert();
+      const translation = periodicDisplacement(source[first.placement.center], source[second.placement.center])
+        .multiplyScalar(referenceSpacing / referenceSpacingA).applyQuaternion(inverse);
+      const rotation = inverse.clone().multiply(second.rotation).normalize();
+      let record = classes.find((candidate) => candidate.from === first.type && candidate.to === second.type
+        && candidate.terminalType === terminalType
+        && candidate.translation.distanceTo(translation) < .16
+        && quaternionDistance(candidate.rotation, rotation) < .24);
+      if (!record) {
+        record = { from: first.type, to: second.type, terminalType,
+          translation: translation.clone(), rotation: rotation.clone(), observations: 0,
+          terminalOccurrences: new Set(), example: [firstIndex, terminalIndex, secondIndex] };
+        classes.push(record);
+      }
+      record.observations++;
+      record.terminalOccurrences.add(terminalIndex);
+    }));
+  });
+  const recurrent = classes.filter((record) => record.terminalOccurrences.size >= 2);
+  return Object.freeze({
+    terminalBridgeDirectedPoseObservations: directedObservations,
+    terminalBridgePoseClasses: classes.length,
+    recurrentTerminalBridgePoseClasses: recurrent.length,
+    maximumTerminalBridgePoseSupport: Math.max(0, ...classes.map((record) => record.terminalOccurrences.size)),
+    composedTerminalEmissionCertified: false,
+    composedTerminalTransferCertified: false,
+    composedTerminalGrowthRules: 0,
+  });
+}
+
 function learnMolecularOverlapGrammar(source) {
   const placements = learnedCover.placements;
   const makeOccurrence = (placement, index) => {
@@ -11091,11 +11144,13 @@ function learnIrregularOverlapGrammar(source) {
       replayQueue.push(rule.occurrenceTo);
     });
   }
-  const connectionEvidence = auditCoverConnectionEvidence({
+  const connectionTopology = auditCoverConnectionEvidence({
     placements: occurrences.map((occurrence) => occurrence.placement),
     edges: strongEdges,
     rules,
   });
+  const connectionEvidence = Object.freeze({ ...connectionTopology,
+    ...terminalBridgePoseAudit(source, occurrences, strongEdges) });
   return {
     coverBased: true,
     occurrences,
@@ -12074,7 +12129,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260829-332",
+      buildId: "20260829-333",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -14510,7 +14565,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260829-332" },
+    application: { name: "Materials Growth Lab", buildId: "20260829-333" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },

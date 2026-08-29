@@ -71,10 +71,10 @@ def test_custom_experiment_permalink_contract() -> None:
     require('studyCompassShare.textContent = studyShareUrl ? "Copy study link"')
     require(': experimentShareUrl ? "Copy experiment link" : "Link unavailable"')
     require("function copyShareableInvestigationUrl()")
-    assert 'app.js?v=20260829-332' in HTML
-    assert 'style.css?v=20260829-332' in HTML
-    assert 'evidence-atlas.js?v=20260829-332' in HTML
-    assert 'buildId: "20260829-332"' in APP
+    assert 'app.js?v=20260829-333' in HTML
+    assert 'style.css?v=20260829-333' in HTML
+    assert 'evidence-atlas.js?v=20260829-333' in HTML
+    assert 'buildId: "20260829-333"' in APP
     assert "Build 310 · reconstructable custom investigations" in README
     assert "contains no atomic coordinates" in README
     assert "fail closed at known positions" in README

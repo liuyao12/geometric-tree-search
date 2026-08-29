@@ -32,9 +32,9 @@ def main() -> None:
     require(CSS, ".cluster-pose-spectrum-bars")
     require(CSS, ".cluster-pose-spectrum-detail")
     require(README, "Build 293 · proper-pose occupation microscope")
-    require(APP, 'buildId: "20260829-332"')
-    require(HTML, 'app.js?v=20260829-332')
-    require(HTML, 'style.css?v=20260829-332')
+    require(APP, 'buildId: "20260829-333"')
+    require(HTML, 'app.js?v=20260829-333')
+    require(HTML, 'style.css?v=20260829-333')
     print("proper-pose occupation spectrum contract passed")
 
 

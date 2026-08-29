@@ -29,6 +29,12 @@ def main() -> None:
     for needle in (
         "function clusterConnectionCoverageRecords()",
         "function renderConnectionCoverageAtlas()",
+        "function terminalBridgePoseAudit(source, occurrences, edges)",
+        "terminalBridgeDirectedPoseObservations",
+        "recurrentTerminalBridgePoseClasses",
+        "composedTerminalEmissionCertified: false",
+        "composedTerminalTransferCertified: false",
+        "composedTerminalGrowthRules: 0",
         "const outgoing = overlapGrammar?.byFrom?.get(type) || [];",
         "const incoming = rules.filter((rule) => rule.to === type);",
         "reconstructionEdges, resolvedLobes:",
@@ -38,11 +44,12 @@ def main() -> None:
         'dataset.evidenceVerdict = molecular ? "molecular-anchor"',
         'molecular anchor path · ${promotable.length} cover types audited',
         '"terminal bridges"',
+        "recurrent proper poses · not ports",
         '"excluded from growth supply"',
         "target-aware audit only · never growth supply",
         "updateClusterGalleryInspector(record.galleryIndex);",
         "renderConnectionCoverageAtlas();",
-        'buildId: "20260829-332"',
+        'buildId: "20260829-333"',
     ):
         assert needle in source, needle
 

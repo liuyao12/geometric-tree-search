@@ -1,5 +1,29 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 333 · proper-pose audit for terminal-mediated bridges
+
+Residual/gap bridges are now tested at the geometric level rather than counted
+only as graph paths. For each exact terminal occurrence, the learner composes
+every directed neighboring-support pair in the first support's intrinsic frame,
+then groups observations only when source type, target type, exact colored
+terminal type, translation, and proper relative rotation agree within the same
+frozen tolerances used by direct ports. A class is called recurrent only when
+it is witnessed at two or more distinct terminal occurrences.
+
+The atlas exposes directed pose observations, total pose classes, recurrent
+proper-pose classes, and maximum independent terminal support. These remain a
+readiness audit: composed terminal emission is explicitly uncertified, frozen
+transfer is explicitly uncertified, and the number of growth rules contributed
+by this path is exactly zero. This supplies the missing test between “a gap
+connects two supports” and “the grammar may grow through that gap,” without
+turning reconstruction topology into authorization.
+
+On the current browser fixtures the glass has six directed bridge-pose
+observations in six distinct classes, so none recurs. Cd–Yb has four in four
+classes but already grows through its separate direct recurrent ports. The
+small ideal-IQC window and BC8 have no complete terminal bridge. Thus the new
+audit closes an interpretation gap but correctly promotes zero rules.
+
 ## Build 332 · keep molecular anchors outside the generic-port denominator
 
 Molecular crystals now receive an explicit `molecular-anchor` atlas verdict and
