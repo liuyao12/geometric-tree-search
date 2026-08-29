@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260828-a2-sliced-v236";
+} from "./engine.js?v=20260829-a2-sliced8-v237";
 
 const $ = (id) => document.getElementById(id);
 
@@ -190,7 +190,12 @@ for (const figure of figureCatalog) {
   figureById.set(figure.id, figure);
   for (const alias of figure.aliases ?? []) figureById.set(alias, figure);
 }
-const defaultFigureId = figureById.has("cube::0") ? "cube::0" : figureCatalog[0]?.id;
+const primaryA2FigureId = figureCatalog.find(figure =>
+  figure.census_candidate?.kind === "a2_sliced_alcove_census"
+)?.id;
+const defaultFigureId = figureById.has(primaryA2FigureId)
+  ? primaryA2FigureId
+  : figureById.has("cube::0") ? "cube::0" : figureCatalog[0]?.id;
 const figureSourceLabel = (figure) => {
   const names = figure?.system_names ?? (figure?.system_name ? [figure.system_name] : []);
   if (names.length <= 1) return names[0] ?? "";
@@ -260,7 +265,7 @@ let lastTreeRenderAt = 0;
 let needsRender = true;
 let renderWidth = 0;
 let renderHeight = 0;
-let selectedFigureIds = ["cube::0"];
+let selectedFigureIds = [defaultFigureId].filter(Boolean);
 let builderNeedsRender = true;
 let builderWidth = 0;
 let builderHeight = 0;
@@ -797,6 +802,12 @@ function sortCatalogFigures(groupId, figures) {
       const slicedDelta = Number(b.census_candidate?.kind === "a2_sliced_alcove_census")
         - Number(a.census_candidate?.kind === "a2_sliced_alcove_census");
       if (slicedDelta !== 0) return slicedDelta;
+      if (a.census_candidate?.kind === "a2_sliced_alcove_census"
+          && b.census_candidate?.kind === "a2_sliced_alcove_census") {
+        const sizeDelta = (b.census_candidate.alcoves?.length ?? 0)
+          - (a.census_candidate.alcoves?.length ?? 0);
+        if (sizeDelta !== 0) return sizeDelta;
+      }
       const priorityDelta = (a.census_candidate?.survivor_priority ?? Infinity)
         - (b.census_candidate?.survivor_priority ?? Infinity);
       if (priorityDelta !== 0) return priorityDelta;
@@ -1452,7 +1463,9 @@ function updateCandidateResearchPanel() {
     } else {
       candidateResearchTitle.textContent = `Research candidate ${candidate.id}`;
       candidateResearchDetail.textContent = candidate.kind === "a2_sliced_alcove_census"
-        ? `${candidate.description} Its solid-angle profile across the ${candidate.morphology.layer_count} consecutive sections is ${candidate.morphology.layer_weight_profile.join("–")}; this is an affine-A₃ tetrahedral cell union, not a polycube or a constant-cross-section prism. Of ${candidate.screening.source_pool_size.toLocaleString()} directed seven-alcove shapes, exact weighted quotient search finds six-copy periods for ${candidate.screening.six_copy_periodic_certificates.toLocaleString()} and exhausts all ${candidate.screening.periodic_six_copy_hnf_total} determinant-seven HNF quotients for the remaining ${candidate.screening.six_copy_periodic_survivors}, with zero solver unknowns. This candidate has an independently replayed ${candidate.screening.corona_root_patch_copies}-copy root corona; extension of that retained corona considered ${candidate.screening.retained_corona_extension_placements_considered.toLocaleString()} placements before the bounded solver timed out, so it remains one of ${candidate.screening.retained_corona_timeout_survivors} deeper-search leads. Direct scalar subdivisions are excluded at scales 2–8 in both proper and reflected models, all connected two-copy metatile systems are excluded at scales 2 and 3, and all connected three-copy systems are excluded at scale 2. Twelve-copy periodic domains, other root coronas, deeper GCTS extension, and larger or non-scalar substitution systems remain open. These are screening facts, not evidence that the tile is aperiodic.`
+        ? candidate.alcoves?.length === 8
+          ? `${candidate.description} Its solid-angle profile across the ${candidate.morphology.layer_count} consecutive sections is ${candidate.morphology.layer_weight_profile.join("–")}; this is an affine-A₃ tetrahedral cell union, not a polycube or a constant-cross-section prism. Of ${candidate.screening.source_pool_size.toLocaleString()} directed eight-alcove shapes, exact weighted quotient search finds replayed six-copy periods for ${candidate.screening.six_copy_periodic_certificates.toLocaleString()}. The remaining ${candidate.screening.six_copy_periodic_survivors} exhaust the complete determinant-eight quotient search with zero solver unknowns and reduce to ${candidate.screening.six_copy_periodic_survivor_reflection_classes} reflection classes. This candidate's quotient search visits ${candidate.screening.periodic_six_copy_exact_multicover_nodes.toLocaleString()} exact states, and its independently replayed root corona uses ${candidate.screening.corona_root_patch_copies} copies.${candidate.screening.radius_two_status === "radius2_witness" ? ` GCTS also finds an independently replayed radius-two patch of ${candidate.screening.radius_two_patch_copies} copies.` : ` Bounded alternate-corona GCTS retains ${candidate.screening.radius_two_failure_clauses} sound failure clauses${candidate.screening.radius_two_stopped_by ? ` before ${candidate.screening.radius_two_stopped_by.replaceAll("_", " ")}` : ""}, without exhausting the outer space.`} Larger periodic domains, complete radius-two extension, and substitution systems remain open. These are screening facts, not evidence that the tile is aperiodic.`
+          : `${candidate.description} Its solid-angle profile across the ${candidate.morphology.layer_count} consecutive sections is ${candidate.morphology.layer_weight_profile.join("–")}; this is an affine-A₃ tetrahedral cell union, not a polycube or a constant-cross-section prism. Of ${candidate.screening.source_pool_size.toLocaleString()} directed seven-alcove shapes, exact weighted quotient search finds six-copy periods for ${candidate.screening.six_copy_periodic_certificates.toLocaleString()} and exhausts all ${candidate.screening.periodic_six_copy_hnf_total} determinant-seven HNF quotients for the remaining ${candidate.screening.six_copy_periodic_survivors}, with zero solver unknowns. This candidate has an independently replayed ${candidate.screening.corona_root_patch_copies}-copy root corona; extension of that retained corona considered ${candidate.screening.retained_corona_extension_placements_considered.toLocaleString()} placements before the bounded solver timed out, so it remains one of ${candidate.screening.retained_corona_timeout_survivors} deeper-search leads. Direct scalar subdivisions are excluded at scales 2–8 in both proper and reflected models, all connected two-copy metatile systems are excluded at scales 2 and 3, and all connected three-copy systems are excluded at scale 2. Twelve-copy periodic domains, other root coronas, deeper GCTS extension, and larger or non-scalar substitution systems remain open. These are screening facts, not evidence that the tile is aperiodic.`
         : candidate.kind === "a2_layered_polyprism_census"
         ? candidate.screening.status === "periodic"
           ? `${candidate.description} The exact certificate uses ${candidate.screening.motif_tiles} copies and period vectors ${candidate.screening.periodic_eight_copy_certificate.period_vectors.map(vector => `(${vector.join(",")})`).join(", ")}. Its determinant-${candidate.screening.periodic_eight_copy_certificate.determinant} weighted quotient was replayed independently, so this is a proved translational lattice-function tiler and a large-domain periodic control—not an aperiodic candidate. This is the GCTS-I solid-angle-function claim; it is not promoted to a faithful Euclidean polyhedral tiling.`

@@ -605,7 +605,9 @@ zero rule. The merged reports are
 `data/a2-sliced-alcove-size7-three-cluster-scale2-proper.ndjson` and the
 losslessly compressed
 `data/a2-sliced-alcove-size7-three-cluster-scale2-reflected.ndjson.gz`.
-Higher scales and connected clusters of four or more monotiles remain open.
+Higher scales and connected clusters of five or more monotiles remain open;
+the complete reflected four-copy scale-two census is reported separately in
+`data/a2-sliced-alcove-size7-four-cluster-scale2-reflected-leads.ndjson.gz`.
 
 At radius two, a two-second breadth pass proves that 108 retained first
 coronas are unextendible and leaves 151 timeout-inconclusive; this claim is
@@ -619,6 +621,36 @@ space is exhausted yet.  The merged evidence is in
 `data/a2-sliced-alcove-size7-corona2-continuation.ndjson`.  Deeper radius-two
 continuation, twelve-copy determinant-fourteen quotients, and connected
 metatile substitution alphabets remain the next stages.
+
+### Size-eight sliced-alcove census
+
+The next consecutive-layer census contains 4,406 connected eight-alcove
+unions with non-palindromic transverse weight profiles. Their first
+arithmetically possible periodic quotient again uses six copies, now with
+determinant eight. A complete eight-shard exact screen finds independently
+replayed six-copy periods for 4,380 candidates. The remaining 26 exhaust the
+complete determinant-eight HNF search with zero solver unknowns. In total the
+screen visits 197,522,509 exact multicover states.
+
+Reflection reduction leaves 15 geometric classes. The reducer
+`scripts/select-a2-sliced-survivors.mjs` validates every positive certificate
+and every exhausted negative before selecting one representative per class;
+it does not rank timeout records as survivors. All 15 representatives have
+independently replayed root coronas of 28 through 47 copies.
+
+The retained first corona extends to a replayed radius-two patch for one
+class. For the other 14, alternate-corona core CEGAR finds three more replayed
+radius-two patches and retains 1,085 sound failure clauses across the bounded
+runs. Eleven classes remain unresolved after the 128-round or solver-time
+limits. These are reusable GCTS markings, not non-tiling certificates; no
+outer first-corona space was exhausted.
+
+The losslessly compressed complete quotient report is
+`data/a2-sliced-alcove-size8-directed-periodic-exact6.ndjson.gz`. The 15-class
+selection, root coronas, retained-corona tests, and alternate-corona GCTS
+receipts are the other `data/a2-sliced-alcove-size8-directed-*` files. This
+family now joins the size-seven sliced-alcove leads as the primary
+non-polycube search pool; polycubes remain regression controls.
 
 Rebuild the earlier size-eight census with:
 

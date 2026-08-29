@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
+import { gunzipSync } from "node:zlib";
 import {
   a2SlicedAlcoveNeighbors,
   a2SlicedAlcoveVertices,
@@ -51,6 +52,8 @@ assert.ok(prepared.prototiles[0].unique_orientations.length > 1);
 
 const readNdjson = async path => (await readFile(new URL(path, import.meta.url), "utf8"))
   .trim().split("\n").filter(Boolean).map(JSON.parse);
+const readGzipNdjson = async path => gunzipSync(await readFile(new URL(path, import.meta.url)))
+  .toString("utf8").trim().split("\n").filter(Boolean).map(JSON.parse);
 const sizeSix = await readNdjson("../data/a2-sliced-alcove-size6-directed-periodic-exact1.ndjson");
 assert.equal(sizeSix.length, 222);
 assert.ok(sizeSix.every(record =>
@@ -83,4 +86,53 @@ assert.equal(coronas.filter(record => record.corona_classification === "root_cor
 assert.ok(coronas.filter(record => record.corona_classification === "root_corona_exists")
   .every(record => record.corona_z3.replay.verified));
 
-console.log("A2-sliced alcove census regression passed", { expected });
+const sizeEight = await readGzipNdjson(
+  "../data/a2-sliced-alcove-size8-directed-periodic-exact6.ndjson.gz"
+);
+assert.equal(sizeEight.length, 4406);
+assert.equal(sizeEight.filter(record => record.classification === "periodic").length, 4380);
+assert.equal(sizeEight.filter(record => record.classification === "unresolved").length, 26);
+assert.ok(sizeEight.filter(record => record.classification === "periodic").every(record =>
+  record.periodic_z3.certificate.copies === 6
+  && record.periodic_z3.certificate.determinant === 8
+  && record.periodic_z3.replay.verified
+));
+assert.ok(sizeEight.filter(record => record.classification === "unresolved").every(record =>
+  record.periodic_z3.solver_unknown === 0
+  && record.periodic_z3.hnf_range_exhausted
+));
+const sizeEightRepresentatives = await readNdjson(
+  "../data/a2-sliced-alcove-size8-directed-exact6-reflection-representatives.ndjson"
+);
+assert.equal(sizeEightRepresentatives.length, 15);
+assert.deepEqual(sizeEightRepresentatives.map(record => record.survivor_priority),
+  Array.from({ length: 15 }, (_, index) => index + 1));
+assert.ok(sizeEightRepresentatives.every(record => record.reflection_class.members.includes(record.id)));
+const sizeEightCoronas = await readNdjson(
+  "../data/a2-sliced-alcove-size8-directed-corona1.ndjson"
+);
+assert.equal(sizeEightCoronas.length, 15);
+assert.ok(sizeEightCoronas.every(record =>
+  record.corona_classification === "root_corona_exists"
+  && record.corona_z3.replay.verified
+));
+const sizeEightExtensions = await readNdjson(
+  "../data/a2-sliced-alcove-size8-directed-retained-corona-extension.ndjson"
+);
+assert.equal(sizeEightExtensions.filter(record =>
+  record.retained_corona_extension_classification === "radius2_witness").length, 1);
+const sizeEightCorona2 = await readGzipNdjson(
+  "../data/a2-sliced-alcove-size8-directed-corona2-gcts.ndjson.gz"
+);
+assert.equal(sizeEightCorona2.length, 14);
+assert.equal(sizeEightCorona2.filter(record =>
+  record.corona2_core_classification === "radius2_witness").length, 3);
+assert.equal(sizeEightCorona2.reduce((sum, record) =>
+  sum + (record.corona2_core_cegar.clauses?.length ?? 0), 0), 1085);
+
+console.log("A2-sliced alcove census regression passed", {
+  expected,
+  size_eight_periodic: 4380,
+  size_eight_reflection_classes: 15,
+  size_eight_radius2_witnesses: 4
+});

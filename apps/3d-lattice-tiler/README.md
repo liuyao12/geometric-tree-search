@@ -240,12 +240,13 @@ The catalog keeps the old app's systems and deduplicated figures, including
 polycubes, the five Fedorov solids, tetrahedral/octahedral systems, space
 fillers, Laves and perovskite systems, and Barlow/FCC/HCP cells.
 
-The primary non-polycube group now begins with eight evidence-ranked unions of
-Kuhn tetrahedra, deduplicated under reflected as well as proper layer
-isometries.  Their exact solid-angle functions couple every consecutive
-section `x+y+z=k`; all eight exhaust the six-copy periodic quotient screen,
-have independently replayed root coronas, and remain unresolved when that
-particular retained corona is extended.  The ranking measures finite-search
+The primary non-polycube group now begins with 23 evidence-ranked unions of
+Kuhn tetrahedra: 15 size-eight reflection classes followed by eight deeper
+size-seven leads.  Their exact solid-angle functions couple every consecutive
+section `x+y+z=k`; every entry exhausts the six-copy periodic quotient screen
+and has an independently replayed root corona. Four of the size-eight classes
+also have replayed radius-two witnesses; bounded GCTS retains sound failure
+clauses for the unresolved cases. The ranking measures finite-search
 difficulty, not likelihood of aperiodicity.  The same group also contains
 exact prisms over the A2 hexagon, hat, and turtle, plus the earlier multi-slab
 polyprism leads. Their proper orientation group is the six-element subgroup

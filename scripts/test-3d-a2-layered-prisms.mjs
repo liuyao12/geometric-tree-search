@@ -1,8 +1,16 @@
 import assert from "node:assert/strict";
 import { A2_LAYERED_PRISM_SPECS, makeA2LayeredPrism } from "../assets/a2-layered-prisms.js";
 import { A2_SLICED_SIZE7_CANDIDATES } from "../assets/a2-sliced-size7-candidates.js";
+import { A2_SLICED_SIZE8_CANDIDATES } from "../assets/a2-sliced-size8-candidates.js";
 import { makeA2SlicedAlcoveUnion } from "../assets/a2-sliced-alcoves.js";
 import { createTilingStream, preprocessTilingSystem, tileSpecs } from "../apps/3d-lattice-tiler/engine.js";
+import { readFile } from "node:fs/promises";
+
+const appSource = await readFile(new URL("../apps/3d-lattice-tiler/app.js", import.meta.url), "utf8");
+assert.match(appSource, /figure\.census_candidate\?\.kind === "a2_sliced_alcove_census"/,
+  "the web app should default to the primary non-polycube A2-sliced census");
+assert.match(appSource, /let selectedFigureIds = \[defaultFigureId\]\.filter\(Boolean\)/,
+  "initial selection should follow the A2-first default while URL and saved-state overrides load");
 
 for (const spec of A2_LAYERED_PRISM_SPECS) {
   const data = makeA2LayeredPrism(spec.loop, { geometryModel: spec.geometry_model });
@@ -30,6 +38,19 @@ assert.equal(hatWithReflections.prototiles.length, 2);
 assert.deepEqual(hatWithReflections.prototiles.map(tile => tile.unique_orientations.length), [6, 6]);
 
 assert.equal(A2_SLICED_SIZE7_CANDIDATES.length, 8);
+assert.equal(A2_SLICED_SIZE8_CANDIDATES.length, 15);
+assert.deepEqual(A2_SLICED_SIZE8_CANDIDATES.map(candidate => candidate.survivor_priority),
+  Array.from({ length: 15 }, (_, index) => index + 1));
+assert.equal(A2_SLICED_SIZE8_CANDIDATES.filter(candidate =>
+  candidate.screening.radius_two_status === "radius2_witness").length, 4);
+assert.ok(A2_SLICED_SIZE8_CANDIDATES.every(candidate =>
+  candidate.kind === "a2_sliced_alcove_census"
+  && candidate.morphology.polycube === false
+  && candidate.screening.periodic_exact_through === 6
+  && candidate.screening.periodic_solver_unknowns === 0
+  && candidate.screening.periodic_six_copy_complete === true
+  && candidate.screening.corona_completed_verified === true
+));
 assert.deepEqual(A2_SLICED_SIZE7_CANDIDATES.map(candidate => candidate.survivor_priority),
   [1, 2, 3, 4, 5, 6, 7, 8]);
 for (const candidate of A2_SLICED_SIZE7_CANDIDATES) {
@@ -120,7 +141,8 @@ assert.equal(finished?.tiling_evidence?.certificate_kind, "one_tile_translationa
 
 console.log("A2 layered-prism regression passed", {
   catalogue_entries: A2_LAYERED_PRISM_SPECS.length,
-  consecutive_layer_candidates: A2_SLICED_SIZE7_CANDIDATES.length,
+  consecutive_layer_candidates: A2_SLICED_SIZE7_CANDIDATES.length
+    + A2_SLICED_SIZE8_CANDIDATES.length,
   point_group_order: hatDirect.summary.point_group_order,
   periodic_control_tiles: finished.tile_count
 });
