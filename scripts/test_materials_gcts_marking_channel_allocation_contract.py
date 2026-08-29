@@ -48,9 +48,9 @@ def test_pose_port_rank_and_channel_accounting_remain_distinct():
 
 def test_build_and_narrative_are_current():
     assert "Build 292 · pose–port channel allocation microscope" in README
-    assert 'buildId: "20260828-319"' in APP
-    assert 'app.js?v=20260828-319' in HTML
-    assert 'style.css?v=20260828-319' in HTML
+    assert 'buildId: "20260828-320"' in APP
+    assert 'app.js?v=20260828-320' in HTML
+    assert 'style.css?v=20260828-320' in HTML
 
 
 if __name__ == "__main__":

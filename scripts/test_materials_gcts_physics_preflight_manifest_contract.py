@@ -88,7 +88,7 @@ def test_each_physical_layer_has_an_interactive_execution_lineage():
 
 
 def test_live_spin_graph_multiplicity_and_rigidity_channels_reach_execution_objects():
-    assert 'new Set(["steric", "local", "connection", "collinear-spin", "chemistry"])' in COMPRESSION
+    assert 'new Set(["steric", "local", "connection", "collinear-spin", "chemistry", "robustness"])' in COMPRESSION
     for record_id in ("long-range", "configurational-entropy", "constraint-rigidity"):
         assert record_id in COMPRESSION
     for control_id in ("collectiveResponseSelect", "configurationalMultiplicitySelect",
@@ -109,6 +109,34 @@ def test_mixed_effect_controls_and_candidate_scores_fail_closed_on_lineage_drift
     assert "growth-action score lineage incomplete" in APP
     assert "scoreExecutionCoverage" in APP
     assert "every active rank term resolves to one live physics layer and execution object" in APP
+
+
+def test_each_retained_action_exposes_a_complete_interactive_physics_provenance_matrix():
+    for identifier in ("growthMechanismProvenanceState", "growthMechanismProvenanceFilters",
+                       "growthMechanismProvenanceRows", "growthMechanismProvenanceBoundary"):
+        assert f'id="{identifier}"' in HTML
+        assert f'$("{identifier}")' in APP
+    assert "export function buildGrowthActionPhysicsProvenance" in COMPRESSION
+    assert "buildGrowthActionPhysicsProvenance(fingerprint, manifestRecords)" in APP
+    assert "growth-action physics provenance incomplete" in APP
+    assert "actionPhysicsProvenance" in APP
+    assert 'term.id !== "exploration" || geometricExplorationScale > 0' in APP
+    assert 'term.id !== "known-window-gain" || entry.referenceGuided' in APP
+    for state in ("blocked", "admission", "ranking", "replay", "ordering",
+                  "geometry", "seed", "evidence", "open"):
+        assert f'"{state}"' in COMPRESSION
+    for filter_id in ("action", "all", "open"):
+        assert f'data-growth-provenance-filter="{filter_id}"' in HTML
+    for gate_id, manifest_id in (("hard-core", "steric"),
+                                 ("public-boundary", "robustness"),
+                                 ("shared-support", "connection"),
+                                 ("coordination", "local"),
+                                 ("feedstock", "chemistry")):
+        assert gate_id in APP
+        assert f'physicsManifestId: "{manifest_id}"' in APP
+    assert ".growth-action-physics-provenance" in CSS
+    assert "openScorePhysicsLineage(row.recordId)" in APP
+    assert "no coordinates embedded · no physical time" in APP
 
 
 def test_execution_effect_atlas_composes_with_scale_and_evidence_filters():
@@ -158,10 +186,10 @@ def test_public_narrative_and_build_are_versioned():
     assert "Build 177" in README
     assert "Build 177" in DOCS
     assert "If WebGL cannot be created" in README
-    assert 'buildId: "20260828-319"' in APP
-    assert 'app.js?v=20260828-319' in HTML
-    assert 'style.css?v=20260828-319' in HTML
-    assert 'physics-compression-map.js?v=20260828-319' in APP
-    assert 'evidence-atlas.js?v=20260828-319' in HTML
+    assert 'buildId: "20260828-320"' in APP
+    assert 'app.js?v=20260828-320' in HTML
+    assert 'style.css?v=20260828-320' in HTML
+    assert 'physics-compression-map.js?v=20260828-320' in APP
+    assert 'evidence-atlas.js?v=20260828-320' in HTML
     assert "Build 207" in README
     assert "Build 207" in DOCS

@@ -1,5 +1,28 @@
 # Recursive GCTS benchmark for material growth
 
+### Action-level physics provenance (Build 320)
+
+Every retained growth-action fingerprint now contains a complete join between
+the frozen physics manifest, signed score terms, and active admission gates.
+The runtime rejects missing manifest IDs, rank terms whose current layer has
+no rank hook, and hard gates whose current layer has no admission hook. The
+result distinguishes action-bound admission, rank, labeled replay, and branch
+ordering from merely available coordinate/seed hooks, evidence-only records,
+and open physical gaps.
+
+The browser exposes the same join as a filterable matrix in the selected-action
+microscope. Each row routes back to the original finite evidence, geometric
+encoding, current execution object, control route, and claim boundary. This is
+an audit of the leap-frogging approximation: it makes missing physics visible
+instead of silently assigning it a geometric score. It is not a causal
+attribution, potential-energy decomposition, growth probability, or clock.
+
+Build 320 also consumes the first cached four-copy A₂ census. Candidate 00120
+exhausts 65,110 proper/reflected scale-two parent types without a substitution.
+Added to the sixteen completed three-copy screens, the portal now exposes
+seventeen bounded obstructions and 90,760 scale-specific parent tests. The
+remaining seven four-copy screens and every global classification stay open.
+
 ### Executable score-lineage completeness (Build 319)
 
 The live executor now compiles a candidate-level completeness certificate over

@@ -1,5 +1,35 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 320 · every retained move has an inspectable physics provenance matrix
+
+The selected-action microscope now joins the pre-growth physics manifest to
+the exact retained action. Its interactive matrix separates layers that
+actually admitted this action, contributed a signed rank term, altered seeded
+branch order, participated only in labeled known-window replay, remain
+evidence-only, or still lack an executable geometric encoding. “This action,”
+“all layers,” and “open gaps” are distinct filters; selecting any row returns
+to the complete evidence → encoding → execution → response → claim-boundary
+record.
+
+Hard gates are now first-class manifest bindings rather than unlabelled chips.
+Species exclusion maps to steric geometry, coordination and angles to local
+geometry, overlap/support and marking to connection geometry, finite
+feedstock to chemistry, public-domain clearance to robustness, and the
+known-window gate to its explicitly target-aware replay ledger. Gates that are
+disabled are retained in the receipt but do not claim to touch the action.
+
+The action receipt fails closed on an unmapped term, unmapped active gate,
+ranking term attached to a non-ranking layer, or hard gate attached to a layer
+without an admission hook. This proves software/evidence provenance—not that
+the selected move is physically probable, energetically favorable, or timed.
+
+The latest exact-geometry data are included in the same deployment. Candidate
+00120 now has a complete proper/reflected four-copy scale-two census: 65,110
+parent types and no substitution. Together with the sixteen completed
+three-copy scale-three/scale-four screens, the atlas reports seventeen bounded
+grammar obstructions and 90,760 scale-specific parent tests. The seven other
+four-copy screens remain open, and no global tiling claim is made.
+
 ## Build 319 · score-to-physics completeness is now executable
 
 Every nonzero candidate-ranking term now has to resolve at runtime to one

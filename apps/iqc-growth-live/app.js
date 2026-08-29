@@ -36,15 +36,15 @@ import { buildSettlingMaterialResponseHistory, buildSettlingMaterialResponseMatr
   SETTLING_MATERIAL_FIELDS }
   from "./settling-material-sensitivity.mjs?v=20260828-290";
 import { channelValidationMetricsFromCounts, validationOccurrenceJackknife }
-  from "./validation-uncertainty.mjs?v=20260828-319";
+  from "./validation-uncertainty.mjs?v=20260828-320";
 import { scoreNormalizationAudit }
-  from "./score-normalization.mjs?v=20260828-319";
+  from "./score-normalization.mjs?v=20260828-320";
 import { screenedCoherencyGraphField }
-  from "./coherency-graph-field.mjs?v=20260828-319";
+  from "./coherency-graph-field.mjs?v=20260828-320";
 import { continuationMultiplicityAtlas, continuationMultiplicityScore }
-  from "./configurational-multiplicity.mjs?v=20260828-319";
+  from "./configurational-multiplicity.mjs?v=20260828-320";
 import { geometricConstraintTensor }
-  from "./geometric-constraint-tensor.mjs?v=20260828-319";
+  from "./geometric-constraint-tensor.mjs?v=20260828-320";
 import { archiveResponseFrontierRankAudit }
   from "./archive-response-frontier-audit.js?v=20260827-1";
 import { evidenceOrderedClusterDiscoverySchedule }
@@ -68,11 +68,11 @@ import { blockedCreationResponseSurrogate, blockedCreationResponseValidation, bu
   crossRunHorizonReadinessAtlas,
   LOCAL_CREATION_CONTEXT_FEATURE_IDS }
   from "./creation-response-association.js?v=20260826-13";
-import { buildPhysicsCompressionMap, buildPhysicsEffectMatrix, buildPhysicsInvestigationProtocol,
+import { buildGrowthActionPhysicsProvenance, buildPhysicsCompressionMap, buildPhysicsEffectMatrix, buildPhysicsInvestigationProtocol,
   buildPhysicsScoreExecutionCoverage,
   buildPhysicsLineagePath, buildPhysicsProtocolIntervention, PHYSICS_ABLATION_CONTROL_BINDINGS,
   PHYSICS_EFFECT_COLUMNS, PHYSICS_READINESS_STATES, physicsExecutionLineage }
-  from "./physics-compression-map.js?v=20260828-319";
+  from "./physics-compression-map.js?v=20260828-320";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -892,6 +892,10 @@ const growthMechanismPhysicsTerms = $("growthMechanismPhysicsTerms");
 const growthMechanismPhysicsGates = $("growthMechanismPhysicsGates");
 const growthMechanismPhysicsContribution = $("growthMechanismPhysicsContribution");
 const growthMechanismPhysicsInfluence = $("growthMechanismPhysicsInfluence");
+const growthMechanismProvenanceState = $("growthMechanismProvenanceState");
+const growthMechanismProvenanceFilters = $("growthMechanismProvenanceFilters");
+const growthMechanismProvenanceRows = $("growthMechanismProvenanceRows");
+const growthMechanismProvenanceBoundary = $("growthMechanismProvenanceBoundary");
 const growthMechanismPhysicsSensitivity = $("growthMechanismPhysicsSensitivity");
 const growthMechanismPhysicsBoundary = $("growthMechanismPhysicsBoundary");
 const growthMechanismPrevious = $("growthMechanismPrevious");
@@ -1733,6 +1737,7 @@ let selectedGrowthMechanismEventId = null;
 let pinnedGrowthMechanismEventId = null;
 let growthMechanismComparisonMode = "manual";
 let growthMechanismPhysicsView = "contribution";
+let growthMechanismProvenanceFilter = "action";
 let growthMechanismScreenPoints = [];
 let markingSelection = null;
 let liveOrderCache = { key: "", result: null };
@@ -9044,6 +9049,64 @@ function growthActionHaloLabel(event) {
     .map(([role, count]) => `${role} ${count}`).join(" · ") || "no tagged roles";
 }
 
+function renderGrowthActionPhysicsProvenance(audit = null) {
+  growthMechanismProvenanceRows.replaceChildren();
+  growthMechanismProvenanceFilters.querySelectorAll("button[data-growth-provenance-filter]")
+    .forEach((button) => {
+      const active = button.dataset.growthProvenanceFilter === growthMechanismProvenanceFilter;
+      button.classList.toggle("active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+  const frozenProvenance = audit?.actionPhysicsProvenance || null;
+  if (!frozenProvenance) {
+    growthMechanismProvenanceState.textContent = "awaiting an action receipt";
+    const empty = document.createElement("p");
+    empty.className = "empty";
+    empty.textContent = "Execute one scored action to bind manifest layers to admission, ranking, branch order, evidence, and unresolved physics.";
+    growthMechanismProvenanceRows.appendChild(empty);
+    growthMechanismProvenanceBoundary.textContent = "No action-level provenance is inferred before a frozen receipt exists.";
+    return;
+  }
+  const provenance = buildGrowthActionPhysicsProvenance(audit, physicsTranslationRecords(null));
+  const rows = provenance.rows.filter((row) => {
+    if (growthMechanismProvenanceFilter === "all") return true;
+    if (growthMechanismProvenanceFilter === "open") return row.state === "open";
+    return row.observedOnAction;
+  });
+  const stateOrder = ["blocked", "admission", "ranking", "replay", "ordering", "geometry", "seed", "evidence", "open"];
+  rows.sort((first, second) => stateOrder.indexOf(first.state) - stateOrder.indexOf(second.state)
+    || Math.abs(second.contribution) - Math.abs(first.contribution)
+    || first.recordId.localeCompare(second.recordId));
+  rows.forEach((row) => {
+    const button = document.createElement("button");
+    button.type = "button"; button.className = row.state; button.setAttribute("role", "listitem");
+    button.dataset.physicsManifestId = row.recordId;
+    const label = document.createElement("span"); const process = document.createElement("small");
+    const state = document.createElement("strong"); const detail = document.createElement("em");
+    process.textContent = row.process; state.textContent = row.stateLabel;
+    const bindings = [
+      row.gateIds.length ? `gates ${row.gateIds.join(" · ")}` : null,
+      row.activeTermIds.length ? `terms ${row.activeTermIds.join(" · ")}` : null,
+      row.state === "ranking" ? `${row.contribution >= 0 ? "+" : ""}${row.contribution.toFixed(3)}` : null,
+      !row.observedOnAction ? row.readiness.nextStep : null,
+    ].filter(Boolean);
+    detail.textContent = bindings.join(" · ") || "manifest evidence only";
+    label.append(process, state, detail);
+    const object = document.createElement("b");
+    object.textContent = row.executionObjects.join(" + ") || row.readiness.label;
+    button.title = `${row.process} · ${row.stateLabel} · ${row.executionObjects.join(" + ") || row.readiness.label}. Open the source layer for its exact encoding, evidence, and claim boundary.`;
+    button.append(label, object);
+    button.addEventListener("click", () => openScorePhysicsLineage(row.recordId));
+    growthMechanismProvenanceRows.appendChild(button);
+  });
+  growthMechanismProvenanceState.textContent = growthMechanismProvenanceFilter === "action"
+    ? `${provenance.actionBoundLayerCount}/${provenance.manifestLayerCount} layers touch this action · ${provenance.admissionLayerCount} admit · ${provenance.rankingLayerCount} rank`
+    : growthMechanismProvenanceFilter === "open"
+      ? `${provenance.openBoundaryCount} unresolved or inactive physical layers`
+      : `${provenance.manifestLayerCount} manifest layers · ${provenance.actionBoundLayerCount} action-bound`;
+  growthMechanismProvenanceBoundary.textContent = `${provenance.complete ? "Complete manifest binding" : "Incomplete binding"} · target ${provenance.targetUsed ? "used only by labeled replay" : "not used"} · no coordinates embedded · no physical time. Click any row to inspect its encoding, finite evidence, control route, and claim boundary.`;
+}
+
 function renderGrowthMechanismPhysicsAttribution() {
   const selected = selectedGrowthMechanismEvent();
   const pinned = pinnedGrowthMechanismEvent();
@@ -9056,6 +9119,7 @@ function renderGrowthMechanismPhysicsAttribution() {
   growthMechanismPhysicsInfluence.setAttribute("aria-pressed",
     String(growthMechanismPhysicsView === "influence"));
   if (!audit) {
+    renderGrowthActionPhysicsProvenance(null);
     growthMechanismPhysicsState.textContent = "awaiting a scored action";
     const empty = document.createElement("p");
     empty.textContent = selected
@@ -9065,6 +9129,7 @@ function renderGrowthMechanismPhysicsAttribution() {
     growthMechanismPhysicsBoundary.textContent = "No contribution is inferred for an action without a frozen ranking ledger.";
     return;
   }
+  renderGrowthActionPhysicsProvenance(audit);
   const comparisonAudit = pinned?.index !== selected.index ? pinned?.physicsAttribution : null;
   const pairMode = Boolean(comparisonAudit);
   const selectedTerms = new Map(audit.terms.map((term) => [term.id, term]));
@@ -11809,7 +11874,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260828-319",
+      buildId: "20260828-320",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -14239,7 +14304,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260828-319" },
+    application: { name: "Materials Growth Lab", buildId: "20260828-320" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },
@@ -19047,6 +19112,9 @@ function freezeGrowthActionPhysicsFingerprint(entry) {
         boundary: source.boundary, candidateSetInspected: false, targetUsed: false,
         physicalTimeModeled: false },
       active: Math.abs(term.weight) > 1e-12,
+      executionActive: Math.abs(term.weight) > 1e-12
+        && (term.id !== "exploration" || geometricExplorationScale > 0)
+        && (term.id !== "known-window-gain" || entry.referenceGuided),
       physicalSurrogate: !["grammar-priority", "known-window-gain", "exploration"].includes(term.id),
     };
   });
@@ -19081,6 +19149,17 @@ function freezeGrowthActionPhysicsFingerprint(entry) {
     physicalRateInferred: false,
     physicalTimeInferred: false,
   };
+  const actionPhysicsProvenance = buildGrowthActionPhysicsProvenance(fingerprint, manifestRecords);
+  if (!actionPhysicsProvenance.complete) {
+    throw new Error(`growth-action physics provenance incomplete: unmapped terms ${actionPhysicsProvenance.unmappedTermIds.join(",") || "none"}; unmapped gates ${actionPhysicsProvenance.unmappedGateIds.join(",") || "none"}; term mismatches ${actionPhysicsProvenance.termExecutionMismatchIds.join(",") || "none"}; gate mismatches ${actionPhysicsProvenance.gateExecutionMismatchIds.join(",") || "none"}`);
+  }
+  const { rows: provenanceRows, ...provenanceSummary } = actionPhysicsProvenance;
+  fingerprint.actionPhysicsProvenance = {
+    ...provenanceSummary,
+    actionRows: provenanceRows.filter((row) => row.observedOnAction),
+    openRecordIds: provenanceRows.filter((row) => row.state === "open").map((row) => row.recordId),
+    manifestRecordIds: provenanceRows.map((row) => row.recordId),
+  };
   return fingerprint;
 }
 
@@ -19093,6 +19172,7 @@ function rankGrowthActionPhysicsFingerprint(entry, rank, candidateCount, leaderS
   fingerprint.digest = notebookStringHash(JSON.stringify({
     score: fingerprint.score, terms: fingerprint.terms, gates: fingerprint.gates,
     scoreExecutionCoverage: fingerprint.scoreExecutionCoverage,
+    actionPhysicsProvenance: fingerprint.actionPhysicsProvenance,
     rank, candidateCount, scoreBehindLeader: fingerprint.scoreBehindLeader,
     targetUsedForRanking: fingerprint.targetUsedForRanking,
   }));
@@ -22440,7 +22520,7 @@ function evaluateCandidate(candidate, {
   const accepted = conflicts === 0 && spinConflicts === 0 && boundaryFailures === 0 && merged.length >= 2
     && fresh.length > 0 && knownFailures === 0 && coordinationOverflows.length === 0
     && angularViolations.length === 0 && feedstockSupply.admitted && (markingAccepted || markingFallback);
-  return { accepted, sites, merged, fresh, conflicts, spinConflicts, spinChecks,
+  return { accepted, sites, merged, fresh, conflicts, spinConflicts, spinChecks, reconstructing,
     boundaryFailures, knownFailures, markingAccepted, markingFallback,
     coordinationOverflows, angularViolations, geometricStrain, externalCalibration, affineLoadedGeometricStrain,
     surfaceCompletion, bulkSurfaceDriving, attachmentTopology, habitAnisotropy, frontMorphology, capillaryGeometry, epitaxyRegistry, compositionBalance, feedstockSupply, formalChargeBalance, chargeGeometry, chargeMoment, ionicPair, bondValence,
@@ -26247,29 +26327,39 @@ function frozenCreationPhysicsTerms(evaluation) {
 function frozenCreationAdmissionGates(evaluation) {
   return [
     { id: "hard-core", label: "species / hard core", observed: evaluation.conflicts,
-      passed: evaluation.conflicts === 0, requirement: "zero species-coincidence or exclusion conflicts" },
+      passed: evaluation.conflicts === 0, requirement: "zero species-coincidence or exclusion conflicts",
+      active: true, physicsManifestId: "steric", executionKind: "hard-admission" },
     { id: "scalar-spin-color", label: "collinear scalar-spin color", observed: evaluation.spinConflicts || 0,
       passed: !scalarSpinColoringActive() || evaluation.spinConflicts === 0,
       requirement: scalarSpinColoringActive()
         ? "every shared site with two supplied scalar spins retains the same signed color"
-        : "disabled or no supplied scalar-spin labels" },
+        : "disabled or no supplied scalar-spin labels",
+      active: scalarSpinColoringActive(), physicsManifestId: "collinear-spin", executionKind: "hard-admission" },
     { id: "public-boundary", label: "public boundary", observed: evaluation.boundaryFailures,
-      passed: evaluation.boundaryFailures === 0, requirement: "every emitted site lies inside the declared public growth domain" },
+      passed: evaluation.boundaryFailures === 0, requirement: "every emitted site lies inside the declared public growth domain",
+      active: true, physicsManifestId: "robustness", executionKind: "hard-admission" },
     { id: "shared-support", label: "shared support", observed: evaluation.merged.length,
-      passed: evaluation.merged.length >= 2, requirement: "at least two exact same-species shared sites" },
+      passed: evaluation.merged.length >= 2, requirement: "at least two exact same-species shared sites",
+      active: true, physicsManifestId: "connection", executionKind: "hard-admission" },
     { id: "novel-emission", label: "novel emission", observed: evaluation.fresh.length,
-      passed: evaluation.fresh.length > 0, requirement: "at least one novel colored site" },
+      passed: evaluation.fresh.length > 0, requirement: "at least one novel colored site",
+      active: true, physicsManifestId: "connection", executionKind: "hard-admission" },
     { id: "known-window", label: "known-window consistency", observed: evaluation.knownFailures,
-      passed: evaluation.knownFailures === 0, requirement: "zero sites outside the known configuration during labeled replay" },
+      passed: evaluation.knownFailures === 0, requirement: "zero sites outside the known configuration during labeled replay",
+      active: Boolean(evaluation.reconstructing), physicsManifestId: "score-ledger", executionKind: "labeled-replay" },
     { id: "coordination", label: "coordination capacity", observed: evaluation.coordinationOverflows.length,
-      passed: evaluation.coordinationOverflows.length === 0, requirement: "zero learned colored coordination-capacity overflows" },
+      passed: evaluation.coordinationOverflows.length === 0, requirement: "zero learned colored coordination-capacity overflows",
+      active: !evaluation.reconstructing, physicsManifestId: "local", executionKind: "hard-admission" },
     { id: "angles", label: "angular support", observed: evaluation.angularViolations.length,
-      passed: evaluation.angularViolations.length === 0, requirement: "zero learned colored angular-envelope violations" },
+      passed: evaluation.angularViolations.length === 0, requirement: "zero learned colored angular-envelope violations",
+      active: !evaluation.reconstructing, physicsManifestId: "local", executionKind: "hard-admission" },
     { id: "feedstock", label: "feedstock supply", observed: evaluation.feedstockSupply.admitted,
-      passed: evaluation.feedstockSupply.admitted, requirement: "all emitted species remain available in the declared finite or open reservoir" },
+      passed: evaluation.feedstockSupply.admitted, requirement: "all emitted species remain available in the declared finite or open reservoir",
+      active: feedstockSupplyMode !== "open", physicsManifestId: "chemistry", executionKind: "hard-admission" },
     { id: "marking", label: "GCTS marking", observed: evaluation.markingFallback ? "known-window fallback" : evaluation.markingAccepted ? "section accepted" : "unmarked policy",
       passed: evaluation.markingFallback || policySelect.value !== "marked" || evaluation.markingAccepted !== false,
-      requirement: "selected marking admits the frozen action, except the explicit complete known-window fallback" },
+      requirement: "selected marking admits the frozen action, except the explicit complete known-window fallback",
+      active: policySelect.value === "marked", physicsManifestId: "connection", executionKind: "hard-admission" },
   ];
 }
 
@@ -28148,7 +28238,11 @@ function physicsTranslationRecords(leap = null) {
         ? `${lastStructuralRelaxation.accepted ? "Accepted" : "Rolled back"}: ${lastStructuralRelaxation.movableSites} movable / ${lastStructuralRelaxation.neighborhoodSites} local sites; strain ${lastStructuralRelaxation.strainBefore.toFixed(4)} → ${lastStructuralRelaxation.strainAfter.toFixed(4)}; max Δ ${lastStructuralRelaxation.maximumDisplacementAngstrom.toFixed(4)} Å.${lastStructuralRelaxation.observedRelaxationSeedEnabled ? ` Observed seed ${lastStructuralRelaxation.observedRelaxationSeedAccepted ? "retained" : "ignored or rolled back"} on ${lastStructuralRelaxation.observedRelaxationSeedSites} sites.` : ""}${lastStructuralRelaxation.calculationForceSeedEnabled ? ` Force seed ${lastStructuralRelaxation.calculationForceSeedAccepted ? "retained" : "ignored or rolled back"} on ${lastStructuralRelaxation.calculationForceSeedSites} sites.` : ""} ${structuralRelaxationAccepted}/${structuralRelaxationAttempts} attempts accepted.`
         : "No post-replay attachment batch has requested a local projection yet.",
       boundary: "This minimizes a finite sample-learned geometric contact residual and then rechecks hard exclusion, coordination, angle, boundary, exact topology, and port identity. It is not an interatomic potential, force balance, energy minimization, mechanical equilibrium, MD trajectory, diffusion event, transition probability, or elapsed physical time." },
-    { id: "connection", process: "cluster attachment preference", status: policySelect.value === "action" ? "open" : "learned", role: policySelect.value === "action" ? "ablated" : "learned local connection gate / rank",
+    { id: "connection", process: "cluster attachment preference", status: "learned",
+      role: policySelect.value === "action"
+        ? "exact overlap/support gate + action-priority rank; learned marking ablated"
+        : "exact overlap/support gate + learned local connection rank",
+      executionEffects: { hardAdmission: true, ranking: true },
       encoding: `${markingMode}; ${sectionModel?.channels || 0} channels, reach ${sectionModel?.reach || 0}, transported in cluster-local proper-SE(3) frames`,
       evidence: leap ? `${leap.proposal.shared} shared and ${leap.proposal.fresh} proposed fresh sites were checked through the frozen port grammar.` : "No attachment scored yet.",
       boundary: "A GCTS marking represents compatibility of overlapping cluster sections. It is not an interatomic potential or a calibrated attachment free energy." },
@@ -28263,7 +28357,11 @@ function physicsTranslationRecords(leap = null) {
         : "isothermal control; no scalar field ranks the frontier",
       evidence: leap ? `Accepted mean reduced-field score ${receiptRound(acceptedThermalFieldScore / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedThermalFieldScore / Math.max(1, rejectedDecisions), 4)}.` : "No thermal-field coordinate evaluated yet.",
       boundary: "This is a declared dimensionless spatial field, not Kelvin temperature, undercooling calibrated to a phase diagram, heat flow, conductivity, latent heat, thermal diffusion, a solidification rate, or physical time." },
-    { id: "robustness", process: "finite geometric uncertainty / attachment tolerance", status: activeRobustnessWeight() > 0 ? "soft" : "open", role: activeRobustnessWeight() > 0 ? "target-blind constraint-margin ordering" : "diagnostic",
+    { id: "robustness", process: "finite geometric uncertainty / attachment tolerance", status: "hard",
+      role: activeRobustnessWeight() > 0
+        ? "public-domain/exclusion admission + target-blind constraint-margin ordering"
+        : "public-domain/exclusion admission; soft margin rank disabled",
+      executionEffects: { hardAdmission: true, ranking: activeRobustnessWeight() > 0 },
       encoding: `minimum of colored-contact clearance, exact-overlap headroom, and public-boundary clearance, normalized by ε=${clusterMetricToleranceAngstrom().toFixed(3)} Å`,
       evidence: leap ? `Accepted mean bounded score ${receiptRound(acceptedRobustnessScore / Math.max(1, acceptedDecisions), 4)}; rejected mean ${receiptRound(rejectedRobustnessScore / Math.max(1, rejectedDecisions), 4)}.` : "No attachment margin scored yet.",
       boundary: "This deterministic safety margin is not a perturbation ensemble, thermal fluctuation, survival probability, free energy, barrier, or rate." },
@@ -35248,6 +35346,13 @@ growthMechanismPhysicsContribution.addEventListener("click", () => {
 });
 growthMechanismPhysicsInfluence.addEventListener("click", () => {
   growthMechanismPhysicsView = "influence";
+  renderGrowthMechanismPhysicsAttribution();
+});
+growthMechanismProvenanceFilters.addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-growth-provenance-filter]");
+  if (!button) return;
+  growthMechanismProvenanceFilter = ["action", "all", "open"]
+    .includes(button.dataset.growthProvenanceFilter) ? button.dataset.growthProvenanceFilter : "action";
   renderGrowthMechanismPhysicsAttribution();
 });
 growthMechanismPin.addEventListener("click", () => {

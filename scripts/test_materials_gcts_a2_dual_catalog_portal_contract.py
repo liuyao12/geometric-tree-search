@@ -44,10 +44,21 @@ def test_generated_sliced_catalog_has_the_published_finite_audit():
     assert sum(item["screening"]["three_copy_metatile_scale3_reflected_parent_types"]
                for item in bounded) == 12825
     assert len(records) - len(bounded) == 0
+    bounded_scale4 = [item for item in records if
+                      item["screening"]["three_copy_metatile_scale4_reflected_status"] ==
+                      "no_three_copy_metatile_scalar4_substitution"]
+    assert len(bounded_scale4) == 8
+    assert sum(item["screening"]["three_copy_metatile_scale4_reflected_parent_types"]
+               for item in bounded_scale4) == 12825
+    bounded_four_copy = [item for item in records if
+                         item["screening"]["four_copy_metatile_scale2_reflected_status"] ==
+                         "no_four_copy_metatile_scalar2_substitution"]
+    assert [item["id"] for item in bounded_four_copy] == ["a2sa_7_00120"]
+    assert bounded_four_copy[0]["screening"]["four_copy_metatile_scale2_reflected_parent_types"] == 65110
     candidate_139 = next(item for item in records
                          if item["id"] == "a2sa_7_00139")
     screening = candidate_139["screening"]
-    assert screening["three_copy_metatile_substitution_scales_exhausted"] == [2, 3]
+    assert screening["three_copy_metatile_substitution_scales_exhausted"] == [2, 3, 4]
     assert screening["three_copy_metatile_scale3_reflected_parent_types"] == 1268
     assert screening["three_copy_metatile_scale3_reflected_status"] == \
         "no_three_copy_metatile_scalar3_substitution"
@@ -64,6 +75,10 @@ def test_portal_switches_catalogs_without_changing_claim_semantics():
             "radius_three_failure_clauses", "radius_three_first_corona_clauses",
             "radius_three_stopped_by", "three_copy_metatile_scale3_reflected_parent_types",
             "A2_SLICED_SCALE3_OBSTRUCTIONS", "A2_SLICED_SCALE3_PARENT_COUNT",
+            "A2_SLICED_SCALE4_OBSTRUCTIONS", "A2_SLICED_SCALE4_PARENT_COUNT",
+            "A2_SLICED_FOUR_COPY_SCALE2_OBSTRUCTIONS",
+            "A2_SLICED_FOUR_COPY_SCALE2_PARENT_COUNT",
+            "four_copy_metatile_scale2_reflected_parent_types",
             "candidate.screening.three_copy_metatile_scale3_reflected_status",
             "convexHull"):
         assert token in JS
@@ -71,7 +86,7 @@ def test_portal_switches_catalogs_without_changing_claim_semantics():
     assert "Build 317 · two exact A₂ geometry frontiers" in README
     assert "Build 318 · every live physics channel reaches the execution atlas" in README
     assert "does not thereby prove" not in JS  # no hidden upgrade of status
-    assert "the candidate remains <b>unresolved</b>" in JS
+    assert "The candidate remains <b>unresolved</b>" in JS
 
 
 if __name__ == "__main__":

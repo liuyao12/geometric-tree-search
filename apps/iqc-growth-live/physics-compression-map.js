@@ -35,7 +35,7 @@ function laneState(counts, total) {
   return "hybrid";
 }
 
-const HARD_ADMISSION_IDS = new Set(["steric", "local", "connection", "collinear-spin", "chemistry"]);
+const HARD_ADMISSION_IDS = new Set(["steric", "local", "connection", "collinear-spin", "chemistry", "robustness"]);
 const CANDIDATE_GEOMETRY_IDS = new Set(["constraint-projection", "calculation-forces"]);
 const INITIAL_STATE_IDS = new Set(["multi-nucleus"]);
 const SEARCH_ORDER_IDS = new Set(["path-ensemble"]);
@@ -214,6 +214,93 @@ export function buildPhysicsScoreExecutionCoverage(scoreTerms, records) {
     candidateSetInspected: false,
     coordinatesEmbedded: false,
     targetUsed: false,
+    physicalTimeModeled: false,
+  };
+}
+
+export function buildGrowthActionPhysicsProvenance(fingerprint, records) {
+  if (!fingerprint || !Array.isArray(fingerprint.terms) || !Array.isArray(fingerprint.gates)
+      || !Array.isArray(records)) {
+    throw new Error("growth-action physics provenance needs a fingerprint and manifest records");
+  }
+  const recordsById = new Map();
+  records.forEach((record) => {
+    if (!record?.id || recordsById.has(record.id)) {
+      throw new Error("growth-action physics provenance needs unique manifest IDs");
+    }
+    recordsById.set(record.id, record);
+  });
+  const manifestIdForTerm = (term) => term.physicsLineage?.manifestId
+    || term.normalization?.physicsManifestId || null;
+  const termRows = fingerprint.terms.map((term) => ({ ...term,
+    executionActive: term.executionActive !== false && Boolean(term.active),
+    manifestId: manifestIdForTerm(term) }));
+  const gateRows = fingerprint.gates.map((gate) => ({ ...gate,
+    active: gate.active !== false, manifestId: gate.physicsManifestId || null,
+    executionKind: gate.executionKind || "hard-admission" }));
+  const unmappedTermIds = termRows.filter((term) => !recordsById.has(term.manifestId))
+    .map((term) => term.id);
+  const unmappedGateIds = gateRows.filter((gate) => gate.active && !recordsById.has(gate.manifestId))
+    .map((gate) => gate.id);
+  const termExecutionMismatchIds = termRows.filter((term) => {
+    if (!term.executionActive || !recordsById.has(term.manifestId)) return false;
+    const lineage = physicsExecutionLineage(recordsById.get(term.manifestId));
+    return !lineage.rankingCanChange && !lineage.searchOrderCanChange
+      && term.manifestId !== "score-ledger";
+  }).map((term) => term.id);
+  const gateExecutionMismatchIds = gateRows.filter((gate) => {
+    if (!gate.active || !recordsById.has(gate.manifestId)
+        || gate.executionKind === "labeled-replay") return false;
+    return !physicsExecutionLineage(recordsById.get(gate.manifestId)).hardAdmissionCanChange;
+  }).map((gate) => gate.id);
+  const rows = records.map((record) => {
+    const lineage = physicsExecutionLineage(record);
+    const readiness = physicsExecutionReadiness(record);
+    const terms = termRows.filter((term) => term.manifestId === record.id);
+    const gates = gateRows.filter((gate) => gate.active && gate.manifestId === record.id);
+    const activeTerms = terms.filter((term) => term.executionActive);
+    const failedGates = gates.filter((gate) => !gate.passed);
+    const labeledReplayOnly = gates.length > 0
+      && gates.every((gate) => gate.executionKind === "labeled-replay");
+    let state = "evidence";
+    let stateLabel = "evidence only";
+    if (failedGates.length) { state = "blocked"; stateLabel = "blocked action"; }
+    else if (labeledReplayOnly) { state = "replay"; stateLabel = "labeled replay"; }
+    else if (gates.length) { state = "admission"; stateLabel = "hard admission"; }
+    else if (activeTerms.length && lineage.rankingCanChange) { state = "ranking"; stateLabel = "signed rank"; }
+    else if (activeTerms.length && lineage.searchOrderCanChange) { state = "ordering"; stateLabel = "branch order"; }
+    else if (activeTerms.length && record.id === "score-ledger") { state = "replay"; stateLabel = "labeled replay"; }
+    else if (lineage.candidateGeometryCanChange) { state = "geometry"; stateLabel = "coordinate hook"; }
+    else if (lineage.initialStateCanChange) { state = "seed"; stateLabel = "seed hook"; }
+    else if (readiness.id !== "executing") { state = "open"; stateLabel = readiness.label; }
+    const contribution = activeTerms.reduce((sum, term) => sum + (Number(term.contribution) || 0), 0);
+    const observedOnAction = gates.length > 0 || activeTerms.length > 0;
+    return {
+      recordId: record.id, process: record.process, status: record.status,
+      state, stateLabel, observedOnAction, contribution,
+      termIds: terms.map((term) => term.id), activeTermIds: activeTerms.map((term) => term.id),
+      gateIds: gates.map((gate) => gate.id), gateExecutionKinds: gates.map((gate) => gate.executionKind),
+      failedGateIds: failedGates.map((gate) => gate.id),
+      executionObjects: [...lineage.executionObjects],
+      readiness: { id: readiness.id, label: readiness.label, nextStep: readiness.nextStep },
+    };
+  });
+  const actionRows = rows.filter((row) => row.observedOnAction);
+  const openRows = rows.filter((row) => row.state === "open");
+  return {
+    schema: 1, rows,
+    manifestLayerCount: rows.length,
+    actionBoundLayerCount: actionRows.length,
+    admissionLayerCount: actionRows.filter((row) => ["admission", "blocked"].includes(row.state)).length,
+    rankingLayerCount: actionRows.filter((row) => row.state === "ranking").length,
+    branchOrderLayerCount: actionRows.filter((row) => row.state === "ordering").length,
+    openBoundaryCount: openRows.length,
+    unmappedTermIds, unmappedGateIds, termExecutionMismatchIds, gateExecutionMismatchIds,
+    complete: !unmappedTermIds.length && !unmappedGateIds.length
+      && !termExecutionMismatchIds.length && !gateExecutionMismatchIds.length,
+    candidateSetInspected: false,
+    coordinatesEmbedded: false,
+    targetUsed: Boolean(fingerprint.targetUsedForRanking),
     physicalTimeModeled: false,
   };
 }

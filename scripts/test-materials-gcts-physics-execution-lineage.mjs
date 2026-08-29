@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 
 import {
+  buildGrowthActionPhysicsProvenance,
   buildPhysicsEffectMatrix,
   buildPhysicsInvestigationProtocol,
   buildPhysicsScoreExecutionCoverage,
@@ -171,5 +172,61 @@ assert.equal(
 );
 assert.deepEqual(completeVocabularyCoverage.unmappedTermIds, []);
 assert.deepEqual(completeVocabularyCoverage.nonRankingTermIds, []);
+
+const provenanceRecords = [
+  connection,
+  mixedLocal,
+  { id: "steric", process: "hard exclusion", status: "hard", role: "hard gate",
+    encoding: "colored exclusion", evidence: "checked", boundary: "not repulsion" },
+  { id: "robustness", process: "public boundary", status: "hard", role: "hard gate + optional rank",
+    encoding: "signed clearance", evidence: "checked", boundary: "not probability",
+    executionEffects: { hardAdmission: true, ranking: false } },
+  { id: "score-ledger", process: "known-window replay", status: "explicit", role: "labeled replay",
+    encoding: "exact supplied sites", evidence: "checked", boundary: "not unseen growth" },
+  { id: "path-ensemble", process: "seeded path order", status: "soft", role: "branch order",
+    encoding: "candidate-keyed offset", evidence: "ordered", boundary: "not temperature" },
+];
+const actionProvenance = buildGrowthActionPhysicsProvenance({
+  targetUsedForRanking: true,
+  terms: [
+    { id: "grammar-priority", active: true, contribution: .7,
+      normalization: { physicsManifestId: "connection" } },
+    { id: "geometric-strain", active: true, contribution: -.2,
+      normalization: { physicsManifestId: "local" } },
+    { id: "known-window-gain", active: true, contribution: 2,
+      normalization: { physicsManifestId: "score-ledger" } },
+    { id: "exploration", active: true, contribution: .1,
+      normalization: { physicsManifestId: "path-ensemble" } },
+  ],
+  gates: [
+    { id: "hard-core", active: true, passed: true, physicsManifestId: "steric" },
+    { id: "public-boundary", active: true, passed: true, physicsManifestId: "robustness" },
+    { id: "known-window", active: true, passed: true, physicsManifestId: "score-ledger",
+      executionKind: "labeled-replay" },
+  ],
+}, provenanceRecords);
+assert.equal(actionProvenance.complete, true);
+assert.equal(actionProvenance.actionBoundLayerCount, 6);
+assert.equal(actionProvenance.targetUsed, true);
+assert.equal(actionProvenance.rows.find((row) => row.recordId === "steric").state, "admission");
+assert.equal(actionProvenance.rows.find((row) => row.recordId === "local").state, "ranking");
+assert.equal(actionProvenance.rows.find((row) => row.recordId === "score-ledger").state, "replay");
+assert.equal(actionProvenance.rows.find((row) => row.recordId === "path-ensemble").state, "ordering");
+
+const badGateProvenance = buildGrowthActionPhysicsProvenance({
+  terms: [], gates: [{ id: "angles", active: true, passed: true,
+    physicsManifestId: "local", executionKind: "hard-admission" }],
+}, [{ ...mixedLocal, executionEffects: { hardAdmission: false, ranking: true } }]);
+assert.equal(badGateProvenance.complete, false);
+assert.deepEqual(badGateProvenance.gateExecutionMismatchIds, ["angles"]);
+
+const disabledExplorationProvenance = buildGrowthActionPhysicsProvenance({
+  terms: [{ id: "exploration", active: true, executionActive: false, contribution: 0,
+    normalization: { physicsManifestId: "path-ensemble" } }], gates: [],
+}, [{ id: "path-ensemble", process: "seeded path order", status: "open", role: "disabled",
+  encoding: "zero exploration scale", evidence: "no perturbation", boundary: "not temperature" }]);
+assert.equal(disabledExplorationProvenance.complete, true);
+assert.equal(disabledExplorationProvenance.actionBoundLayerCount, 0);
+assert.deepEqual(disabledExplorationProvenance.termExecutionMismatchIds, []);
 
 console.log("physics execution lineage contract passed");
