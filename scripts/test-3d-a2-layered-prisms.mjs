@@ -65,7 +65,11 @@ const sliced00120 = A2_SLICED_SIZE7_CANDIDATES.find(candidate =>
   candidate.id === "a2sa_7_00120");
 const sliced00674 = A2_SLICED_SIZE7_CANDIDATES.find(candidate =>
   candidate.id === "a2sa_7_00674");
-const scale3Exhausted = [[sliced00120, 1265], [sliced00139, 1268], [sliced00674, 1291]];
+const sliced00626 = A2_SLICED_SIZE7_CANDIDATES.find(candidate =>
+  candidate.id === "a2sa_7_00626");
+const scale3Exhausted = [
+  [sliced00120, 1265], [sliced00139, 1268], [sliced00626, 1388], [sliced00674, 1291]
+];
 for (const [candidate, parentTypes] of scale3Exhausted) {
   assert.deepEqual(candidate.screening.three_copy_metatile_substitution_scales_exhausted,
     [2, 3]);
