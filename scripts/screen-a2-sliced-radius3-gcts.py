@@ -11,6 +11,7 @@ consequence, not a heuristic pruning rule.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import importlib.util
 import json
 import time
@@ -108,7 +109,8 @@ def middle_solver(root, orientations, selected_first, timeout_ms: int, backend: 
     return solver, variables, assumptions, final
 
 
-def exact_patch_extension(root, orientations, selected, timeout_ms: int, max_nodes: int):
+def exact_patch_extension(root, orientations, selected, timeout_ms: int, max_nodes: int,
+                          resume: dict | None = None):
     """Complete sparse-capacity GCTS for one fixed source patch.
 
     Unlike the SMT formulation, construction is linear in the sparse
@@ -143,23 +145,17 @@ def exact_patch_extension(root, orientations, selected, timeout_ms: int, max_nod
         for index, weight in entries:
             if index in target_set and weight:
                 by_target[index].append(candidate_index)
-    nodes = 0
+    fingerprint = hashlib.sha256(json.dumps([
+        [placement["orientation_index"], placement["translation"]]
+        for placement in candidates
+    ], separators=(",", ":")).encode()).hexdigest()
+    nodes = int((resume or {}).get("nodes", 0))
+    continuation_nodes = 0
     failed = set()
     chosen = []
-    cutoff = False
     deadline = time.monotonic() + timeout_ms / 1000
 
-    def search(unavailable_mask: int):
-        nonlocal nodes, cutoff
-        if (max_nodes and nodes >= max_nodes) or time.monotonic() >= deadline:
-            cutoff = True
-            return None
-        nodes += 1
-        if all(capacities[index] == 0 for index in target_indices):
-            return tuple(chosen)
-        state = (bytes(capacities), unavailable_mask)
-        if state in failed:
-            return None
+    def best_at(unavailable_mask: int):
         best_candidates = None
         for target_index in target_indices:
             if capacities[target_index] == 0:
@@ -173,63 +169,147 @@ def exact_patch_extension(root, orientations, selected, timeout_ms: int, max_nod
                 if entries and all(weight <= capacities[index] for index, weight in entries):
                     fitting.append(candidate_index)
             if not fitting:
-                failed.add(state)
-                return None
+                return []
             if best_candidates is None or len(fitting) < len(best_candidates):
                 best_candidates = fitting
-        skipped = 0
-        for candidate_index in best_candidates:
-            bit = 1 << candidate_index
-            entries = encoded[candidate_index]
-            for index, weight in entries:
-                capacities[index] -= weight
-            chosen.append(candidate_index)
-            witness = search(unavailable_mask | skipped | bit)
-            if witness is not None:
-                return witness
-            chosen.pop()
-            for index, weight in entries:
-                capacities[index] += weight
-            if cutoff:
-                return None
-            skipped |= bit
-        failed.add(state)
-        return None
+        return best_candidates
 
-    witness = search(0)
+    frames = []
+
+    def enter(unavailable_mask: int):
+        nonlocal nodes, continuation_nodes
+        nodes += 1
+        continuation_nodes += 1
+        if all(capacities[index] == 0 for index in target_indices):
+            return "sat"
+        state = (bytes(capacities), unavailable_mask)
+        if state in failed:
+            return "failed"
+        best_candidates = best_at(unavailable_mask)
+        if not best_candidates:
+            failed.add(state)
+            return "failed"
+        frames.append({
+            "unavailable": unavailable_mask,
+            "candidates": best_candidates,
+            "next_pos": 0,
+            "skipped": 0,
+            "state": state,
+        })
+        return "entered"
+
+    def undo_parent_choice():
+        parent = frames[-1]
+        candidate_index = chosen.pop()
+        if candidate_index != parent["candidates"][parent["next_pos"]]:
+            raise RuntimeError("radius-three checkpoint choice mismatch")
+        for index, weight in encoded[candidate_index]:
+            capacities[index] += weight
+        parent["skipped"] |= 1 << candidate_index
+        parent["next_pos"] += 1
+
+    def exhaust_current():
+        failed.add(frames[-1]["state"])
+        frames.pop()
+        if frames:
+            undo_parent_choice()
+
+    if resume:
+        if resume.get("candidate_fingerprint") != fingerprint:
+            raise RuntimeError("radius-three checkpoint candidate universe changed")
+        saved_chosen = [int(index) for index in resume.get("chosen", [])]
+        saved_frames = resume.get("frames", [])
+        if len(saved_chosen) + 1 != len(saved_frames):
+            raise RuntimeError("invalid radius-three checkpoint stack")
+        for depth, saved in enumerate(saved_frames):
+            unavailable = int(saved["unavailable"])
+            best_candidates = best_at(unavailable)
+            if not best_candidates:
+                raise RuntimeError("radius-three checkpoint resumes at a dead state")
+            frame = {
+                "unavailable": unavailable,
+                "candidates": best_candidates,
+                "next_pos": int(saved["next_pos"]),
+                "skipped": int(saved["skipped"]),
+                "state": (bytes(capacities), unavailable),
+            }
+            frames.append(frame)
+            if depth < len(saved_chosen):
+                candidate_index = saved_chosen[depth]
+                if (frame["next_pos"] >= len(best_candidates)
+                        or candidate_index != best_candidates[frame["next_pos"]]):
+                    raise RuntimeError("radius-three checkpoint branch order changed")
+                for index, weight in encoded[candidate_index]:
+                    capacities[index] -= weight
+                chosen.append(candidate_index)
+    else:
+        initial = enter(0)
+        if initial == "sat":
+            frames = []
+        elif initial == "failed":
+            frames = []
+
+    witness = tuple(chosen) if (not frames and all(
+        capacities[index] == 0 for index in target_indices
+    )) else None
+    cutoff = False
+    while frames and witness is None:
+        if ((max_nodes and continuation_nodes >= max_nodes)
+                or time.monotonic() >= deadline):
+            cutoff = True
+            break
+        frame = frames[-1]
+        if frame["next_pos"] >= len(frame["candidates"]):
+            exhaust_current()
+            continue
+        candidate_index = frame["candidates"][frame["next_pos"]]
+        bit = 1 << candidate_index
+        for index, weight in encoded[candidate_index]:
+            capacities[index] -= weight
+        chosen.append(candidate_index)
+        status = enter(frame["unavailable"] | frame["skipped"] | bit)
+        if status == "sat":
+            witness = tuple(chosen)
+            break
+        if status == "failed":
+            undo_parent_choice()
+
+    checkpoint = None
+    if cutoff:
+        checkpoint = {
+            "candidate_fingerprint": fingerprint,
+            "chosen": chosen,
+            "frames": [{
+                "unavailable": str(frame["unavailable"]),
+                "next_pos": frame["next_pos"],
+                "skipped": str(frame["skipped"]),
+            } for frame in frames],
+            "nodes": nodes,
+        }
     return {
         "result": "sat" if witness is not None else ("unknown" if cutoff else "unsat"),
         "added": [candidates[index] for index in (witness or ())],
         "nodes": nodes,
+        "continuation_nodes": continuation_nodes,
         "failed_states": len(failed),
         "placements_considered": len(final),
         "method": "exact_sparse_capacity_gcts_mrv",
+        **({"checkpoint": checkpoint} if checkpoint else {}),
     }
 
 
 def search_middle(root, orientations, selected_first, timeout_ms, backend,
                   maximum_middle_rounds, learned_radius2_clauses, learned_signatures,
-                  prefix, inner_node_limit):
+                  prefix, inner_node_limit, pending_inner: dict | None = None):
     solver, variables, assumptions, final = middle_solver(
         root, orientations, selected_first, timeout_ms, backend, learned_radius2_clauses
     )
-    for middle_round in range(maximum_middle_rounds):
-        result = solver.check(*assumptions)
-        if result == unsat:
-            core_names = {str(item) for item in solver.unsat_core()}
-            outer_core = [index for index, assumption in enumerate(assumptions)
-                          if str(assumption) in core_names]
-            return {"result": "exhausted", "outer_core": outer_core,
-                    "middle_rounds": middle_round}
-        if result != sat:
-            return {"result": "unknown", "middle_rounds": middle_round,
-                    "stopped_by": "middle_solver_timeout"}
-        model = solver.model()
-        selected_indices = [index for index, variable in enumerate(variables)
-                            if is_true(model.eval(variable))]
-        selected = [final[index] for index in selected_indices]
+    index_by_key = {key(placement): index for index, placement in enumerate(final)}
+    completed_rounds = 0
+
+    def assess(selected, inner_resume=None):
         extension = exact_patch_extension(
-            root, orientations, selected, timeout_ms, inner_node_limit
+            root, orientations, selected, timeout_ms, inner_node_limit, inner_resume
         )
         if extension["result"] == "sat":
             radius2_patch = [{"orientation_index": 0, "translation": [0, 0, 0]}] + [
@@ -247,31 +327,64 @@ def search_middle(root, orientations, selected_first, timeout_ms, backend,
             replay = CEGAR.replay_extension(orientations, radius2_patch, added)
             if not replay["verified"]:
                 raise RuntimeError(f"radius-three replay failed: {replay}")
-            return {
-                "result": "witness",
-                "middle_rounds": middle_round + 1,
-                "radius2_patch": radius2_patch,
-                "added_patch": added,
-                "replay": replay,
-            }
+            return {"result": "witness", "radius2_patch": radius2_patch,
+                    "added_patch": added, "replay": replay}
         if extension["result"] != "unsat":
-            return {"result": "unknown", "middle_rounds": middle_round + 1,
-                    "stopped_by": "radius3_solver_timeout"}
+            return {"result": "unknown", "stopped_by": "radius3_solver_timeout",
+                    "pending_inner": {
+                        "first_corona": serialized_clause(key(placement)
+                                                           for placement in selected_first),
+                        "radius2_patch": serialized_clause(key(placement)
+                                                           for placement in selected),
+                        "checkpoint": extension["checkpoint"],
+                    }}
         # Exact sparse exhaustion proves failure of this entire selected
         # radius-two patch.  Using the full patch as a clause is sound and
         # avoids the enormous SMT construction formerly needed for a smaller
         # assumption core.
-        core_keys = [key(placement) for placement in selected]
-        if not core_keys:
+        signature = clause_signature(key(placement) for placement in selected)
+        if not signature:
             raise RuntimeError("empty radius-three failure core")
-        signature = clause_signature(core_keys)
-        indices = [{key(placement): index for index, placement in enumerate(final)}[item]
-                   for item in signature]
+        indices = [index_by_key[item] for item in signature]
         solver.add(Or([Not(variables[index]) for index in indices]))
         if signature not in learned_signatures:
             learned_signatures.add(signature)
             learned_radius2_clauses.append(signature)
-    return {"result": "budget", "middle_rounds": maximum_middle_rounds,
+        return None
+
+    if pending_inner:
+        pending_keys = decoded_clauses([pending_inner["radius2_patch"]])[0]
+        try:
+            selected = [final[index_by_key[item]] for item in pending_keys]
+        except KeyError as error:
+            raise RuntimeError("radius-three checkpoint radius-two universe changed") from error
+        outcome = assess(selected, pending_inner.get("checkpoint"))
+        completed_rounds += 1
+        if outcome:
+            return {**outcome, "middle_rounds": completed_rounds}
+
+    for middle_round in range(maximum_middle_rounds):
+        result = solver.check(*assumptions)
+        if result == unsat:
+            core_names = {str(item) for item in solver.unsat_core()}
+            outer_core = [index for index, assumption in enumerate(assumptions)
+                          if str(assumption) in core_names]
+            return {"result": "exhausted", "outer_core": outer_core,
+                    "middle_rounds": completed_rounds + middle_round}
+        if result != sat:
+            return {"result": "unknown",
+                    "middle_rounds": completed_rounds + middle_round,
+                    "stopped_by": "middle_solver_timeout"}
+        model = solver.model()
+        selected_indices = [index for index, variable in enumerate(variables)
+                            if is_true(model.eval(variable))]
+        selected = [final[index] for index in selected_indices]
+        outcome = assess(selected)
+        if outcome:
+            return {**outcome,
+                    "middle_rounds": completed_rounds + middle_round + 1}
+    return {"result": "budget",
+            "middle_rounds": completed_rounds + maximum_middle_rounds,
             "stopped_by": "middle_round_limit"}
 
 
@@ -297,8 +410,74 @@ def screen(record: dict, maximum_outer_rounds: int, maximum_middle_rounds: int,
     seed_middle_rounds = int(seed_receipt.get("middle_rounds", 0))
     seed_milliseconds = int(seed_receipt.get("cumulative_milliseconds",
                                                seed_receipt.get("milliseconds", 0)))
-    outer, outer_variables = outer_solver(root, first, timeout_ms, backend, outer_clauses)
     total_middle_rounds = 0
+    pending_result = None
+    pending_inner = seed_receipt.get("pending_inner")
+    if pending_inner:
+        first_by_key = {key(placement): placement for placement in first}
+        pending_first_keys = decoded_clauses([pending_inner["first_corona"]])[0]
+        try:
+            selected_first = [first_by_key[item] for item in pending_first_keys]
+        except KeyError as error:
+            raise RuntimeError("radius-three checkpoint first-corona universe changed") from error
+        middle = search_middle(
+            root, orientations, selected_first, timeout_ms, backend,
+            maximum_middle_rounds, radius2_clauses, radius2_signatures,
+            f"radius3_{record['id']}_pending", inner_node_limit, pending_inner,
+        )
+        total_middle_rounds += middle["middle_rounds"]
+        if middle["result"] == "witness":
+            elapsed = round((time.monotonic() - started) * 1000)
+            return {
+                **record,
+                "radius3_gcts_classification": "radius3_witness",
+                "radius3_gcts": {
+                    "outer_exhausted": False,
+                    "outer_rounds": len(outer_clauses),
+                    "continuation_outer_rounds": 0,
+                    "middle_rounds": seed_middle_rounds + total_middle_rounds,
+                    "continuation_middle_rounds": total_middle_rounds,
+                    "radius2_failure_clauses": [serialized_clause(clause)
+                                                for clause in radius2_clauses],
+                    "first_corona_failure_clauses": [serialized_clause(clause)
+                                                     for clause in outer_clauses],
+                    "radius2_patch": middle["radius2_patch"],
+                    "added_patch": middle["added_patch"],
+                    "replay": middle["replay"],
+                    "milliseconds": elapsed,
+                    "seed_milliseconds": seed_milliseconds,
+                    "cumulative_milliseconds": seed_milliseconds + elapsed,
+                },
+            }
+        if middle["result"] != "exhausted":
+            elapsed = round((time.monotonic() - started) * 1000)
+            return {
+                **record,
+                "radius3_gcts_classification": "unresolved",
+                "radius3_gcts": {
+                    "outer_exhausted": False,
+                    "outer_rounds": len(outer_clauses),
+                    "continuation_outer_rounds": 0,
+                    "middle_rounds": seed_middle_rounds + total_middle_rounds,
+                    "continuation_middle_rounds": total_middle_rounds,
+                    "radius2_failure_clauses": [serialized_clause(clause)
+                                                for clause in radius2_clauses],
+                    "first_corona_failure_clauses": [serialized_clause(clause)
+                                                     for clause in outer_clauses],
+                    "pending_inner": middle["pending_inner"],
+                    "stopped_by": middle["stopped_by"],
+                    "milliseconds": elapsed,
+                    "seed_milliseconds": seed_milliseconds,
+                    "cumulative_milliseconds": seed_milliseconds + elapsed,
+                },
+            }
+        core_keys = [key(selected_first[index]) for index in middle["outer_core"]]
+        signature = clause_signature(core_keys)
+        if signature not in outer_signatures:
+            outer_signatures.add(signature)
+            outer_clauses.append(signature)
+
+    outer, outer_variables = outer_solver(root, first, timeout_ms, backend, outer_clauses)
     for outer_round in range(maximum_outer_rounds):
         result = outer.check()
         if result == unsat:
@@ -359,6 +538,7 @@ def screen(record: dict, maximum_outer_rounds: int, maximum_middle_rounds: int,
             }
         if middle["result"] != "exhausted":
             stopped_by = middle["stopped_by"]
+            pending_result = middle.get("pending_inner")
             break
         core_keys = [key(selected_first[index]) for index in middle["outer_core"]]
         signature = clause_signature(core_keys)
@@ -389,6 +569,7 @@ def screen(record: dict, maximum_outer_rounds: int, maximum_middle_rounds: int,
             "seed_milliseconds": seed_milliseconds,
             "cumulative_milliseconds": seed_milliseconds + round(
                 (time.monotonic() - started) * 1000),
+            **({"pending_inner": pending_result} if pending_result else {}),
         },
     }
 
