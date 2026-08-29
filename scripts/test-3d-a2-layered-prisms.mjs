@@ -39,6 +39,12 @@ for (const candidate of A2_SLICED_SIZE7_CANDIDATES) {
   assert.equal(candidate.screening.periodic_exact_through, 6);
   assert.equal(candidate.screening.periodic_solver_unknowns, 0);
   assert.equal(candidate.screening.retained_corona_extension_stopped_by, "solver_timeout");
+  assert.equal(candidate.screening.corona_completed_radius, 2);
+  assert.equal(candidate.screening.corona_completed_verified, true);
+  assert.ok(candidate.screening.radius_two_patch_copies >= 190);
+  assert.equal(candidate.screening.radius_three_status, "unresolved");
+  assert.equal(candidate.screening.radius_three_report,
+    "data/a2-sliced-alcove-size7-leads-radius2-radius3-gcts.ndjson.gz");
   const geometry = makeA2SlicedAlcoveUnion(candidate.alcoves);
   assert.deepEqual(geometry.layer_sums,
     Array.from({ length: candidate.morphology.layer_count }, (_, index) => index));

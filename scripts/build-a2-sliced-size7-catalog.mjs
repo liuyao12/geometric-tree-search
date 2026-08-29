@@ -1,4 +1,5 @@
 import { readFile, writeFile } from "node:fs/promises";
+import { gunzipSync } from "node:zlib";
 import {
   a2SlicedAlcoveVertices,
   canonicalA2SlicedAlcoves,
@@ -8,6 +9,8 @@ import {
 const root = new URL("../", import.meta.url);
 const readNdjson = async path => (await readFile(new URL(path, root), "utf8"))
   .trim().split("\n").filter(Boolean).map(JSON.parse);
+const readGzipNdjson = async path => gunzipSync(await readFile(new URL(path, root)))
+  .toString("utf8").trim().split("\n").filter(Boolean).map(JSON.parse);
 
 const periodicRows = await readNdjson(
   "data/a2-sliced-alcove-size7-directed-periodic-exact6.ndjson"
@@ -17,6 +20,9 @@ const coronaById = new Map((await readNdjson(
 )).map(record => [record.id, record]));
 const retainedById = new Map((await readNdjson(
   "data/a2-sliced-alcove-size7-retained-corona-extension.ndjson"
+)).map(record => [record.id, record]));
+const longRadiusById = new Map((await readGzipNdjson(
+  "data/a2-sliced-alcove-size7-leads-radius2-radius3-gcts.ndjson.gz"
 )).map(record => [record.id, record]));
 
 const survivorRows = periodicRows.filter(record => record.classification === "unresolved");
@@ -89,6 +95,14 @@ for (const row of rankedRows) {
 const candidates = selected.map(({ record, corona, retained }, index) => {
   const geometry = makeA2SlicedAlcoveUnion(record.alcoves);
   const extension = retained.retained_corona_extension;
+  const longRadius = longRadiusById.get(record.id);
+  if (!longRadius) throw new Error(`Missing long radius evidence for ${record.id}`);
+  const radius2 = longRadius.retained_corona_extension_classification === "radius2_witness"
+    ? longRadius.retained_corona_extension : longRadius.corona2_cegar;
+  if (!radius2?.replay?.verified) {
+    throw new Error(`Missing replayed radius-two witness for ${record.id}`);
+  }
+  const radius3 = longRadius.radius3_gcts;
   return {
     id: record.id,
     kind: "a2_sliced_alcove_census",
@@ -116,7 +130,7 @@ const candidates = selected.map(({ record, corona, retained }, index) => {
       periodic_six_copy_exact_multicover_nodes: record.periodic_z3.exact_multicover_nodes,
       periodic_six_copy_complete: record.periodic_z3.hnf_range_exhausted === true,
       periodic_report: "data/a2-sliced-alcove-size7-directed-periodic-exact6.ndjson",
-      corona_completed_radius: 1,
+      corona_completed_radius: 2,
       corona_completed_verified: true,
       corona_root_patch_copies: corona.corona_z3.replay.patch_copies,
       corona_placements_considered: corona.corona_z3.placements_considered,
@@ -127,6 +141,16 @@ const candidates = selected.map(({ record, corona, retained }, index) => {
       retained_corona_extension_placements_considered: extension.placements_considered,
       retained_corona_extension_milliseconds: extension.milliseconds,
       retained_corona_extension_report: "data/a2-sliced-alcove-size7-retained-corona-extension.ndjson",
+      radius_two_patch_copies: radius2.replay.patch_copies,
+      radius_two_target_points: radius2.replay.target_points,
+      radius_two_occupied_points: radius2.replay.occupied_points,
+      radius_two_report: "data/a2-sliced-alcove-size7-leads-radius2-radius3-gcts.ndjson.gz",
+      radius_three_status: longRadius.radius3_gcts_classification,
+      radius_three_failure_clauses: radius3.radius2_failure_clauses.length,
+      radius_three_first_corona_clauses: radius3.first_corona_failure_clauses.length,
+      radius_three_stopped_by: radius3.stopped_by,
+      radius_three_cumulative_milliseconds: radius3.cumulative_milliseconds ?? radius3.milliseconds,
+      radius_three_report: "data/a2-sliced-alcove-size7-leads-radius2-radius3-gcts.ndjson.gz",
       direct_scalar_substitution_scales_exhausted: [2, 3, 4, 5, 6, 7, 8],
       direct_scalar_substitution_symmetry_models: ["proper", "reflected"],
       two_copy_metatile_substitution_scales_exhausted: [2, 3],
