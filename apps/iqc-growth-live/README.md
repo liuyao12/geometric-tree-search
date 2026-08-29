@@ -1,5 +1,20 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 323 · missing dynamics now hand off to a frozen investigation
+
+The evidence-acquisition panel now continues into the existing pre-growth physics protocol
+instead of ending at a diagnosis. For any unresolved trajectory, clock, barrier, free-energy,
+probability, or force question, a scientist can draft the complete related evidence request.
+Unavailable records remain visible blockers, and supplied observations remain evidence rather
+than silently becoming a potential, rate, or clock.
+
+When a relevant geometric proxy has an explicit neutral setting, the same panel can instead
+draft a matched proxy ablation. It preserves the current protocol, adds the proxy if needed,
+and registers exactly one reversible layer for the baseline/neutral comparison. Both handoffs
+freeze the selected record IDs, requested evidence, mode, and unresolved-inference flag before
+candidate enumeration. Drafting changes no control value, inspects no candidate, uses no target,
+and never treats a proxy experiment as resolution of the physical quantity.
+
 ## Build 322 · unknown dynamics become an evidence-acquisition workflow
 
 The unresolved-dynamics ledger now joins every missing physical quantity to the live

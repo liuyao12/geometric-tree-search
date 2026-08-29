@@ -32,8 +32,8 @@ def test_collinear_scalar_spin_reaches_marking_admission_and_receipt() -> None:
     assert "chemistry-only ablation" in html
     assert "vectorAxisInferred: false" in coloring
     assert "magneticEnergyInferred: false" in coloring
-    assert 'buildId: "20260828-322"' in source
-    assert 'app.js?v=20260828-322' in html
+    assert 'buildId: "20260828-323"' in source
+    assert 'app.js?v=20260828-323' in html
     assert "Build 250 makes supplied collinear scalar spin populations" in readme
     assert "Collinear scalar spin as an exact site color (Build 250)" in benchmark
 

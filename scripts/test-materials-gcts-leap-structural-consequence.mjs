@@ -37,7 +37,7 @@ const evidencePlan = buildDynamicalEvidencePlan([
     evidence: "finite path clearance", boundary: "not a barrier or rate" },
   { id: "path-ensemble", process: "search alternatives", status: "sampled", role: "branch order",
     evidence: "deterministic samples", boundary: "not probability" },
-], { generatedBeforeActionExecution: true });
+], { generatedBeforeActionExecution: true, reversibleRecordIds: ["kinetics"] });
 assert.equal(evidencePlan.quantities.length, UNRESOLVED_DYNAMICAL_QUANTITIES.length);
 assert.equal(evidencePlan.everyInferenceUnresolved, true);
 assert.equal(evidencePlan.targetUsed, false);
@@ -51,6 +51,17 @@ assert.equal(evidencePlan.quantities.find((quantity) => quantity.id === "free-en
   "no qualifying evidence");
 assert.ok(evidencePlan.quantities.find((quantity) => quantity.id === "barrier")
   .earliestPermittedUse.includes("separately calculated transition path"));
+assert.equal(evidencePlan.quantities.find((quantity) => quantity.id === "clock")
+  .handoff.reversibleProxyRecordId, "kinetics");
+assert.equal(evidencePlan.quantities.find((quantity) => quantity.id === "clock")
+  .handoff.canDraftProxyAblation, true);
+assert.deepEqual(evidencePlan.quantities.find((quantity) => quantity.id === "forces")
+  .handoff.directRecordIds, ["calculation-forces"]);
+assert.equal(evidencePlan.quantities.find((quantity) => quantity.id === "free-energy")
+  .handoff.state, "evidence acquisition required");
+assert.ok(evidencePlan.quantities.every((quantity) => quantity.handoff.targetUsed === false
+  && quantity.handoff.candidateSetInspected === false
+  && quantity.handoff.controlValueChanged === false));
 assert.throws(() => buildDynamicalEvidencePlan(null), /array/);
 
 const reversed = buildDimensionlessLeapConsequence(records.map((record) => ({

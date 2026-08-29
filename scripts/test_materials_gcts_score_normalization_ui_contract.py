@@ -9,9 +9,9 @@ README = (ROOT / "apps/iqc-growth-live/README.md").read_text()
 
 def test_score_normalization_ui_contract():
     assert 'from "./score-normalization.mjs?v=20260828-320"' in APP
-    assert 'buildId: "20260828-322"' in APP
-    assert 'app.js?v=20260828-322' in HTML
-    assert 'style.css?v=20260828-322' in HTML
+    assert 'buildId: "20260828-323"' in APP
+    assert 'app.js?v=20260828-323' in HTML
+    assert 'style.css?v=20260828-323' in HTML
     for token in ("policyNormalizationState", "policyNormalizationSelect", "policyNormalizationDetail"):
         assert token in APP and token in HTML
     assert "function renderPolicyNormalizationLedger(policy)" in APP

@@ -33,7 +33,7 @@ import { compareShadowMaterialFingerprints, SHADOW_MATERIAL_CONSEQUENCE_FIELDS }
 import { LEAP_CONSEQUENCE_COMPONENTS, resolveLeapConsequenceComparison }
   from "./leap-consequence-decomposition.mjs?v=20260828-290";
 import { buildDimensionlessLeapConsequence, buildDynamicalEvidencePlan }
-  from "./leap-structural-consequence.mjs?v=20260828-322";
+  from "./leap-structural-consequence.mjs?v=20260828-323";
 import { buildSettlingMaterialResponseHistory, buildSettlingMaterialResponseMatrix, compareSettlingMaterialFingerprints,
   SETTLING_MATERIAL_FIELDS }
   from "./settling-material-sensitivity.mjs?v=20260828-290";
@@ -1736,6 +1736,7 @@ let selectedPhysicsCompressionLane = "all";
 let physicsProtocolSelectedIds = null;
 let physicsProtocolAblatedRecordId = null;
 let physicsProtocolArmRegistration = null;
+let dynamicalEvidenceHandoffReceipt = null;
 let frozenPhysicsPreflightManifest = null;
 const MAXIMUM_RETAINED_STRUCTURAL_LEAPS = 24;
 let growthMechanismEvents = [];
@@ -11886,7 +11887,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260828-322",
+      buildId: "20260828-323",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -13588,6 +13589,7 @@ async function buildExperimentReceipt() {
         reciprocalSpaceTransition: leap.reciprocalSpaceTransition || null,
         consequenceFingerprint: leap.consequenceFingerprint || null,
         dynamicalEvidencePlan: leap.dynamicalEvidencePlan || null,
+        dynamicalEvidenceHandoff: leap.dynamicalEvidenceHandoff || null,
         after: leap.after,
         targetUsed: leap.targetUsed, physicalTimeModeled: leap.physicalTimeModeled,
         dynamicsIntegrated: leap.dynamicsIntegrated, claimBoundary: leap.claimBoundary,
@@ -14256,6 +14258,7 @@ async function buildExperimentNotebookSnapshot() {
     reciprocalSpaceTransition: leap.reciprocalSpaceTransition || null,
     consequenceFingerprint: leap.consequenceFingerprint || null,
     dynamicalEvidencePlan: leap.dynamicalEvidencePlan || null,
+    dynamicalEvidenceHandoff: leap.dynamicalEvidenceHandoff || null,
     after: leap.after, targetUsed: leap.targetUsed, physicalTimeModeled: leap.physicalTimeModeled,
     dynamicsIntegrated: leap.dynamicsIntegrated, claimBoundary: leap.claimBoundary,
     physicsTranslation: leap.physicsTranslation,
@@ -14320,7 +14323,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260828-322" },
+    application: { name: "Materials Growth Lab", buildId: "20260828-323" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },
@@ -25876,6 +25879,7 @@ function resetCounters() {
   physicsProtocolSelectedIds = null;
   physicsProtocolAblatedRecordId = null;
   physicsProtocolArmRegistration = null;
+  dynamicalEvidenceHandoffReceipt = null;
   frozenPhysicsPreflightManifest = null;
   growthMechanismEvents = [];
   growthMechanismTotals = {};
@@ -28622,9 +28626,15 @@ function currentPhysicsPreflightManifest() {
     result[physicsEvidenceBucket(record)] += 1;
     return result;
   }, { structural: 0, hypothesis: 0, open: 0 });
-  return { schema: 4, records, counts, compressionMap: buildPhysicsCompressionMap(records),
+  return { schema: 5, records, counts, compressionMap: buildPhysicsCompressionMap(records),
     dynamicalEvidencePlan: buildDynamicalEvidencePlan(records,
-      { generatedBeforeActionExecution: leapEventCount === 0 }),
+      { generatedBeforeActionExecution: leapEventCount === 0,
+        reversibleRecordIds: Object.keys(PHYSICS_ABLATION_CONTROL_BINDINGS) }),
+    dynamicalEvidenceHandoff: dynamicalEvidenceHandoffReceipt
+      ? { ...dynamicalEvidenceHandoffReceipt,
+        selectedRecordIds: [...dynamicalEvidenceHandoffReceipt.selectedRecordIds],
+        requestedRecordIds: [...dynamicalEvidenceHandoffReceipt.requestedRecordIds] }
+      : null,
     effectMatrix: buildPhysicsEffectMatrix(records),
     investigationProtocol: physicsProtocolForRecords(records),
     controlVector: physicsProtocolControlVector(),
@@ -29738,6 +29748,52 @@ function renderLeapConsequenceVector(fingerprint) {
   leapConsequenceBridge.textContent = `${fingerprint.dynamicalBridge} Each axis uses only dimensionless within-field endpoint differences; point position is the signed mean, point area is the RMS response, and axes are never summed into an energy or favorability score.`;
 }
 
+function draftDynamicalEvidenceHandoff(quantity, mode) {
+  if (leapEventCount > 0 || !quantity?.handoff
+      || !["evidence-request", "proxy-ablation"].includes(mode)) return;
+  const records = physicsTranslationRecords(null).map(physicsManifestRecord);
+  const manifestIds = new Set(records.map((record) => record.id));
+  const requestedRecordIds = quantity.handoff.investigationRecordIds
+    .filter((recordId) => manifestIds.has(recordId));
+  let selectedRecordIds;
+  let ablatedRecordId = null;
+  if (mode === "proxy-ablation") {
+    ablatedRecordId = quantity.handoff.reversibleProxyRecordId;
+    if (!ablatedRecordId || !manifestIds.has(ablatedRecordId)) return;
+    const current = physicsProtocolForRecords(records);
+    selectedRecordIds = [...new Set([...(current.declaredSelectedRecordIds || []), ablatedRecordId])];
+  } else {
+    selectedRecordIds = [...requestedRecordIds];
+  }
+  physicsProtocolSelectedIds = new Set(selectedRecordIds);
+  physicsProtocolAblatedRecordId = ablatedRecordId;
+  physicsProtocolArmRegistration = null;
+  dynamicalEvidenceHandoffReceipt = {
+    schema: 1,
+    quantityId: quantity.id,
+    quantityLabel: quantity.label,
+    mode,
+    selectedRecordIds: [...selectedRecordIds].sort(),
+    requestedRecordIds: [...requestedRecordIds],
+    ablatedRecordId,
+    inferenceResolved: false,
+    draftedBeforeCandidateEnumeration: true,
+    candidateSetInspected: false,
+    controlValueChanged: false,
+    targetUsed: false,
+  };
+  selectedGrowthPhysicsPreflightId = ablatedRecordId || requestedRecordIds[0] || "steric";
+  frozenPhysicsPreflightManifest = null;
+  renderGrowthPhysicsPreflight();
+  renderDynamicalEvidencePlan(frozenPhysicsPreflightManifest.dynamicalEvidencePlan);
+  requestAnimationFrame(() => growthPhysicsProtocolComposer.scrollIntoView({
+    behavior: "smooth", block: "center",
+  }));
+  receiptStatus.textContent = mode === "proxy-ablation"
+    ? `${quantity.label} proxy ablation drafted · no control changed and the physical quantity remains unresolved.`
+    : `${quantity.label} evidence request drafted · missing inputs remain fail-visible and no control changed.`;
+}
+
 function renderDynamicalEvidencePlan(plan) {
   if (!dynamicalEvidencePlan || !dynamicalEvidencePlanDetail || !dynamicalEvidencePlanBoundary) return;
   activeDynamicalEvidencePlan = plan;
@@ -29764,6 +29820,11 @@ function renderDynamicalEvidencePlan(plan) {
   const selected = plan.quantities.find((quantity) => quantity.id === selectedDynamicalEvidenceQuantity);
   dynamicalEvidencePlanDetail.replaceChildren();
   if (selected) {
+    const selectedHandoff = selected.handoff || {
+      state: "evidence acquisition required",
+      canDraftEvidenceRequest: false,
+      canDraftProxyAblation: false,
+    };
     const header = document.createElement("header"); const copy = document.createElement("span");
     const small = document.createElement("small"); const strong = document.createElement("strong");
     const badge = document.createElement("b"); small.textContent = selected.readiness;
@@ -29792,6 +29853,34 @@ function renderDynamicalEvidencePlan(plan) {
     const boundary = document.createElement("p");
     boundary.textContent = "These records can identify data and proxies; they cannot resolve the requested quantity without the stated missing model and evidence.";
     addRow("inference gate", boundary);
+    const handoff = document.createElement("footer"); handoff.className = "dynamical-evidence-handoff";
+    const handoffCopy = document.createElement("span"); const handoffTitle = document.createElement("b");
+    const handoffState = document.createElement("small");
+    const currentHandoff = dynamicalEvidenceHandoffReceipt?.quantityId === selected.id
+      ? dynamicalEvidenceHandoffReceipt : null;
+    handoffTitle.textContent = currentHandoff
+      ? `${currentHandoff.mode === "proxy-ablation" ? "Matched proxy ablation" : "Evidence request"} drafted`
+      : selectedHandoff.state;
+    handoffState.textContent = currentHandoff
+      ? "Frozen into the pre-growth manifest · no control changed"
+      : "Convert this diagnosis into a receipt-visible pre-growth investigation.";
+    handoffCopy.append(handoffTitle, handoffState); handoff.append(handoffCopy);
+    const actions = document.createElement("div");
+    const evidenceButton = document.createElement("button"); evidenceButton.type = "button";
+    evidenceButton.dataset.dynamicalEvidenceHandoff = "evidence-request";
+    evidenceButton.textContent = "Draft evidence request";
+    evidenceButton.disabled = leapEventCount > 0 || !selectedHandoff.canDraftEvidenceRequest;
+    evidenceButton.title = "Select every related physical-evidence record in the frozen protocol; no setting changes.";
+    actions.append(evidenceButton);
+    if (selectedHandoff.canDraftProxyAblation) {
+      const proxyButton = document.createElement("button"); proxyButton.type = "button";
+      proxyButton.dataset.dynamicalEvidenceHandoff = "proxy-ablation";
+      proxyButton.textContent = "Draft matched proxy ablation";
+      proxyButton.disabled = leapEventCount > 0;
+      proxyButton.title = "Register one reversible geometric proxy for a baseline/neutral comparison; no setting changes.";
+      actions.append(proxyButton);
+    }
+    handoff.append(actions); dynamicalEvidencePlanDetail.append(handoff);
   }
   dynamicalEvidencePlanState.textContent = `${plan.directEvidenceQuantities} partial · ${plan.proxyOnlyQuantities} proxy-only · ${plan.absentQuantities} absent`;
   dynamicalEvidencePlanBoundary.textContent = `All ${plan.quantities.length} physical quantities remain unresolved. Direct means a relevant supplied or archived observation exists—not that a transferable law, energy surface, trajectory, rate, or clock has been learned. The plan uses ${plan.manifestRecordCount} target-free manifest records, inspects no candidate geometry, and ${plan.generatedBeforeActionExecution ? "was generated before structural-action execution" : "is a post-execution fallback rather than a preregistered plan"}.`;
@@ -30035,7 +30124,8 @@ function renderLeapConsequence(selected = null) {
   const evidenceRecords = (selected?.physicsTranslation || physicsTranslationRecords(null))
     .map(physicsManifestRecord);
   renderDynamicalEvidencePlan(selected
-    ? selected.dynamicalEvidencePlan || buildDynamicalEvidencePlan(evidenceRecords)
+    ? selected.dynamicalEvidencePlan || buildDynamicalEvidencePlan(evidenceRecords,
+      { reversibleRecordIds: Object.keys(PHYSICS_ABLATION_CONTROL_BINDINGS) })
     : frozenPhysicsPreflightManifest?.dynamicalEvidencePlan
       || currentPhysicsPreflightManifest().dynamicalEvidencePlan);
   renderSettlingSensitivity(selected);
@@ -30146,6 +30236,13 @@ dynamicalEvidencePlan.addEventListener("click", (event) => {
 });
 
 dynamicalEvidencePlanDetail.addEventListener("click", (event) => {
+  const handoffButton = event.target.closest("button[data-dynamical-evidence-handoff]");
+  if (handoffButton && !handoffButton.disabled && activeDynamicalEvidencePlan) {
+    const quantity = activeDynamicalEvidencePlan.quantities.find((entry) =>
+      entry.id === selectedDynamicalEvidenceQuantity);
+    draftDynamicalEvidenceHandoff(quantity, handoffButton.dataset.dynamicalEvidenceHandoff);
+    return;
+  }
   const button = event.target.closest("button[data-dynamical-evidence-record]");
   if (!button || button.disabled) return;
   openPhysicsControlRoute(button.dataset.dynamicalEvidenceRecord);
@@ -31185,7 +31282,9 @@ function recordStructuralLeap(leap) {
     frozen.before?.scattering, frozen.after?.scattering);
   frozen.physicsTranslation = physicsTranslationRecords(frozen);
   frozen.dynamicalEvidencePlan = frozenPhysicsPreflightManifest?.dynamicalEvidencePlan
-    || buildDynamicalEvidencePlan(frozen.physicsTranslation.map(physicsManifestRecord));
+    || buildDynamicalEvidencePlan(frozen.physicsTranslation.map(physicsManifestRecord),
+      { reversibleRecordIds: Object.keys(PHYSICS_ABLATION_CONTROL_BINDINGS) });
+  frozen.dynamicalEvidenceHandoff = frozenPhysicsPreflightManifest?.dynamicalEvidenceHandoff || null;
   frozen.consequenceFingerprint = buildDimensionlessLeapConsequence(
     materialConsequenceRecords(frozen.before, frozen.after), {
       component: "total", acceptedActions: frozen.after?.accepted,

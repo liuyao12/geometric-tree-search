@@ -61,6 +61,8 @@ const PROXY_EVIDENCE_STATES = new Set(["soft", "sampled"]);
 export function buildDynamicalEvidencePlan(manifestRecords, options = {}) {
   if (!Array.isArray(manifestRecords)) throw new TypeError("manifestRecords must be an array");
   const byId = new Map(manifestRecords.map((record) => [String(record?.id || ""), record]));
+  const reversibleRecordIds = new Set(Array.isArray(options.reversibleRecordIds)
+    ? options.reversibleRecordIds.map(String) : []);
   const quantities = UNRESOLVED_DYNAMICAL_QUANTITIES.map((quantity) => {
     const bridge = DYNAMICAL_EVIDENCE_BRIDGES[quantity.id];
     const records = bridge.recordIds.map((recordId) => byId.get(recordId)).filter(Boolean)
@@ -79,6 +81,16 @@ export function buildDynamicalEvidencePlan(manifestRecords, options = {}) {
     const unavailableCount = bridge.recordIds.length - directEvidenceCount - proxyEvidenceCount;
     const readiness = directEvidenceCount ? "partial physical evidence"
       : proxyEvidenceCount ? "geometric proxy only" : "no qualifying evidence";
+    const directRecordIds = records.filter((record) => DIRECT_EVIDENCE_STATES.has(record.status))
+      .map((record) => record.id);
+    const proxyRecordIds = records.filter((record) => PROXY_EVIDENCE_STATES.has(record.status))
+      .map((record) => record.id);
+    const unavailableRecordIds = bridge.recordIds.filter((recordId) =>
+      !directRecordIds.includes(recordId) && !proxyRecordIds.includes(recordId));
+    const reversibleProxyRecordId = proxyRecordIds.find((recordId) =>
+      reversibleRecordIds.has(recordId)) || null;
+    const handoffState = reversibleProxyRecordId ? "matched proxy ablation available"
+      : directRecordIds.length ? "evidence review available" : "evidence acquisition required";
     return {
       ...quantity,
       readiness,
@@ -90,6 +102,21 @@ export function buildDynamicalEvidencePlan(manifestRecords, options = {}) {
       missingRecordIds: bridge.recordIds.filter((recordId) => !byId.has(recordId)),
       earliestPermittedUse: bridge.earliestPermittedUse,
       inferenceResolved: false,
+      handoff: {
+        schema: 1,
+        quantityId: quantity.id,
+        state: handoffState,
+        investigationRecordIds: [...bridge.recordIds],
+        directRecordIds,
+        proxyRecordIds,
+        unavailableRecordIds,
+        reversibleProxyRecordId,
+        canDraftEvidenceRequest: bridge.recordIds.length > 0,
+        canDraftProxyAblation: Boolean(reversibleProxyRecordId),
+        candidateSetInspected: false,
+        controlValueChanged: false,
+        targetUsed: false,
+      },
     };
   });
   return {

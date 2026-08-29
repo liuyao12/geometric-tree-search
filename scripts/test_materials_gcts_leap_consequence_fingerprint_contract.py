@@ -65,9 +65,9 @@ def test_claim_boundary_forbids_dynamical_overinterpretation():
 
 
 def test_current_build_is_exposed():
-    assert 'buildId: "20260828-322"' in APP
-    assert 'app.js?v=20260828-322' in HTML
-    assert 'style.css?v=20260828-322' in HTML
+    assert 'buildId: "20260828-323"' in APP
+    assert 'app.js?v=20260828-323' in HTML
+    assert 'style.css?v=20260828-323' in HTML
 
 
 def test_as_placed_checkpoint_precedes_projection_and_is_retained():
@@ -115,12 +115,19 @@ def test_unknown_dynamics_have_a_target_free_evidence_acquisition_plan():
         "still unresolved",
         "geometric proxy only",
         "earliest valid use",
+        "draftDynamicalEvidenceHandoff",
+        "Draft evidence request",
+        "Draft matched proxy ablation",
+        "controlValueChanged: false",
     ):
         assert fragment in APP or fragment in (ROOT / "apps/iqc-growth-live/leap-structural-consequence.mjs").read_text()
     assert APP.count("dynamicalEvidencePlan: leap.dynamicalEvidencePlan || null") == 2
     assert "dynamicalEvidencePlan: buildDynamicalEvidencePlan(records," in APP
     assert "generatedBeforeActionExecution: leapEventCount === 0" in APP
     assert ".dynamical-evidence-plan-lab" in CSS
+    assert ".dynamical-evidence-handoff" in CSS
+    assert APP.count("dynamicalEvidenceHandoff: leap.dynamicalEvidenceHandoff || null") == 2
+    assert "dynamicalEvidenceHandoff: dynamicalEvidenceHandoffReceipt" in APP
 
 
 if __name__ == "__main__":

@@ -1,5 +1,22 @@
 # Recursive GCTS benchmark for material growth
 
+### Evidence-to-geometry investigation handoff (Build 323)
+
+Every omitted dynamical quantity now carries a serializable handoff in addition to its
+readiness diagnosis. The handoff partitions the relevant manifest IDs into direct evidence,
+geometric proxies, and unavailable inputs, then determines whether a reversible proxy is
+eligible for a matched baseline/neutral comparison. The complete evidence-request mode
+selects all relevant records so the physics protocol fails visibly on missing inputs. The
+proxy-ablation mode retains the existing protocol and registers one explicit-neutral control
+binding without applying either arm.
+
+The preflight schema records the handoff mode, selected and requested record IDs, proposed
+ablated record, and the invariants `inferenceResolved=false`, `controlValueChanged=false`,
+`candidateSetInspected=false`, and `targetUsed=false`. The structural-leap and notebook
+receipts retain the same record. This closes the workflow gap between “what evidence is
+missing?” and “what falsifiable geometry experiment can be run now?” without relabeling the
+experiment as forces, thermodynamics, kinetics, or physical time.
+
 ### Evidence acquisition for omitted dynamics (Build 322)
 
 The six quantities deliberately left unknown by structural leap-frogging now have an
