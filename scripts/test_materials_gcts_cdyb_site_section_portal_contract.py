@@ -25,7 +25,7 @@ def test_cdyb_site_section_portal_contract() -> None:
     assert "execute_partial_completion_site_masks" in EXECUTION
     assert "execute_partial_completion_sections" in EXECUTION
     assert "future_confirmatory_target_opened: bool" in EXECUTION
-    assert "geometry vocabulary is shared" in EXECUTION
+    assert "vocabulary is shared across the five training windows" in EXECUTION
 
     for statement in (
         "207 / 211 correct sites",
@@ -34,38 +34,38 @@ def test_cdyb_site_section_portal_contract() -> None:
         "minimum fold precision is 95.92%",
         "best shuffled refit retains only 21 correct sites",
         "future untouched nucleus",
-        "Cd–Yb deployment remains disabled",
-        "8 / 9 correctly (88.89%)",
-        "zero full child supports and zero parent clusters",
-        "labeled accumulation, not self-feeding",
+        "strict per-site arm commits 9 / 74 first-wave obligations (8 correct)",
+        "commits 16 complete port-witnessed children",
+        "emits 146 / 146 correct sites",
+        "genuine child-driven later waves in two of five",
+        "default Cd–Yb policy remains disabled",
         "no future confirmation target has been opened",
-        "14 first-wave macro candidates expose 74 colored site obligations",
-        "whole-section arm sees identical candidate batches and commits zero",
     ):
         assert statement in HTML
     assert '["site calibration", "207 / 211 nested"]' in ATLAS
-    assert '["executable site gate", "8 / 9 · 0 children"]' in ATLAS
+    assert '["obligation closure", "16 parents · 146 / 146"]' in ATLAS
     assert '["Site-resolved section", "207 / 211 · P 98.10%"' in ATLAS
-    assert '["Group-sealed site execution", "8 / 9 sites · 0 complete children"' in ATLAS
+    assert '["Group-sealed obligation execution", "146 / 146 sites · 16 parents"' in ATLAS
     assert "future untouched confirmation remains sealed" in ATLAS
     assert 'closureFunnel: {' in ATLAS
     assert '["macro candidates", 14' in ATLAS
-    assert '["site obligations", 74' in ATLAS
-    assert '["accepted sites", 9' in ATLAS
-    assert '["complete children", 0' in ATLAS
-    assert '["promoted parents", 0' in ATLAS
+    assert '["isolated-site arm", 9' in ATLAS
+    assert '["complete children", 16' in ATLAS
+    assert '["promoted parents", 16' in ATLAS
+    assert '["self-fed windows", 2' in ATLAS
     assert 'id="systemClosureFunnel"' in HTML
     assert 'id="closureFunnelSteps"' in HTML
     assert 'button.dataset.closureStep' in ATLAS
-    assert "Build 313 · interactive geometry-closure funnel" in README
-    assert "commits zero sections" in README
+    assert "Build 314 · whole-child obligation closure" in README
+    assert "16 complete port-witnessed children" in README
+    assert "146 / 146 correct emitted" in README
     assert "outer recall is only 0.39%" in README
     assert "exploratory training-corpus result" in README
     assert "older fully nested margin *selection* remains red at 94.48%" in README
-    assert 'buildId: "20260828-313"' in APP
-    assert 'app.js?v=20260828-313' in HTML
-    assert 'style.css?v=20260828-313' in HTML
-    assert 'evidence-atlas.js?v=20260828-313' in HTML
+    assert 'buildId: "20260828-314"' in APP
+    assert 'app.js?v=20260828-314' in HTML
+    assert 'style.css?v=20260828-314' in HTML
+    assert 'evidence-atlas.js?v=20260828-314' in HTML
 
 
 if __name__ == "__main__":

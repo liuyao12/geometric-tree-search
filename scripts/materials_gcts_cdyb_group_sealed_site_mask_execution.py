@@ -22,7 +22,7 @@ from materials_gcts_cdyb_frozen_hierarchy_transfer_audit import (
     PACK_SEPARATION, _pack, _window_ids)
 from materials_gcts_cdyb_oracle import generate_cdyb
 from materials_gcts_cdyb_site_resolved_completion_section import (
-    FEATURE_NAMES, SEED_RADII, FrozenSiteSection, _dedupe, _fit,
+    FEATURE_NAMES, SEED_RADII, FrozenSiteSection, _action_rows, _dedupe, _fit,
     _frontier_rows, _grouped_lambda, _parent_map, _predict,
     _select_aggregation)
 from materials_gcts_irregular_port_atlas import (
@@ -48,6 +48,7 @@ class HeldWindowExecution:
     fitted_marking_rows: int
     fitted_negative_rows: int
     frozen_threshold: float
+    frozen_obligation_threshold: float
     waves: int
     candidates_by_wave: tuple[int, ...]
     proposed_sites_by_wave: tuple[int, ...]
@@ -142,10 +143,22 @@ def _fold_policy(rows, held):
         for row in discovery if not row.successful)
     threshold = (math.nextafter(max(negative_scores), 1.)
                  if negative_scores else 1.)
+    aggregation = _select_aggregation(rows, held)
+    discovery_scores = tuple(
+        _predict((means, scales, weights, intercept), row)
+        for row in discovery)
+    discovery_actions = _action_rows(
+        discovery, discovery_scores, aggregation)
+    negative_action_scores = tuple(
+        score for successful, score in discovery_actions if not successful)
+    obligation_threshold = (
+        math.nextafter(max(negative_action_scores), 1.)
+        if negative_action_scores else 1.)
     model = FrozenSiteSection(
         FEATURE_NAMES, means, scales, weights, intercept, ridge,
-        _select_aggregation(rows, held), threshold, False, False)
-    return adapt_frozen_site_section(model), len(discovery), len(negative_scores)
+        aggregation, threshold, False, False)
+    return (adapt_frozen_site_section(model), obligation_threshold,
+            len(discovery), len(negative_scores))
 
 
 def evaluate() -> CdYbGroupSealedSiteMaskAudit:
@@ -166,7 +179,8 @@ def evaluate() -> CdYbGroupSealedSiteMaskAudit:
     results = []
     total_outer = 0
     for held in range(len(TRAIN_CENTERS)):
-        policy, fit_rows, negative_rows = _fold_policy(rows, held)
+        policy, obligation_threshold, fit_rows, negative_rows = \
+            _fold_policy(rows, held)
         center = (held * PACK_SEPARATION, 0., 0.)
         seed_indices = tuple(
             index for index, point in enumerate(positions)
@@ -189,7 +203,7 @@ def evaluate() -> CdYbGroupSealedSiteMaskAudit:
             maximum_waves=3, minimum_child_coverage=.5)
         closure = execute_partial_completion_sections(
             level, enumeration.occurrences, marking=policy,
-            minimum_marking_score=policy.site_acceptance_threshold,
+            minimum_marking_score=obligation_threshold,
             explicit_seed_sites=seed_sites,
             public_boundary=ExecutionBoundary(center, RADIUS),
             maximum_waves=3, minimum_child_coverage=.5)
@@ -203,7 +217,7 @@ def evaluate() -> CdYbGroupSealedSiteMaskAudit:
         waves = execution.waves
         results.append(HeldWindowExecution(
             held, len(seed_indices), fit_rows, negative_rows,
-            execution.frozen_site_threshold, len(waves),
+            execution.frozen_site_threshold, obligation_threshold, len(waves),
             tuple(len(item.whole_candidate_ids) for item in waves),
             tuple(len(item.proposed_novel_site_keys) for item in waves),
             tuple(len(item.accepted_site_keys) for item in waves),
@@ -253,11 +267,17 @@ def evaluate() -> CdYbGroupSealedSiteMaskAudit:
         sum(item.closure_self_fed for item in results),
         all(item.first_wave_candidate_digest ==
             item.closure_first_wave_candidate_digest for item in results),
-        (closure_emitted > 0 and not closure_wrong and
-         any(item.closure_promoted_parents for item in results)),
-        ("group-sealed development execution; geometry vocabulary is shared "
-         "across the five training windows; no untouched confirmation or "
-         "autonomous-growth claim"), _digest(payload))
+        (closure_emitted > 0 and not closure_wrong and exact and
+         all(item.closure_exact_certificates for item in results) and
+         all(item.first_wave_candidate_digest ==
+             item.closure_first_wave_candidate_digest for item in results) and
+         any(item.closure_promoted_parents for item in results) and
+         any(item.closure_self_fed for item in results)),
+        ("group-sealed development child-obligation execution; geometry "
+         "vocabulary is shared across the five training windows; exact finite "
+         "self-feeding is established on development windows, with no "
+         "untouched confirmation, stationary, or exponential-growth claim"),
+        _digest(payload))
 
 
 def main():

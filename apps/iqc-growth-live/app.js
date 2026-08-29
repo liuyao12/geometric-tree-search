@@ -36,15 +36,15 @@ import { buildSettlingMaterialResponseHistory, buildSettlingMaterialResponseMatr
   SETTLING_MATERIAL_FIELDS }
   from "./settling-material-sensitivity.mjs?v=20260828-290";
 import { channelValidationMetricsFromCounts, validationOccurrenceJackknife }
-  from "./validation-uncertainty.mjs?v=20260828-313";
+  from "./validation-uncertainty.mjs?v=20260828-314";
 import { scoreNormalizationAudit }
-  from "./score-normalization.mjs?v=20260828-313";
+  from "./score-normalization.mjs?v=20260828-314";
 import { screenedCoherencyGraphField }
-  from "./coherency-graph-field.mjs?v=20260828-313";
+  from "./coherency-graph-field.mjs?v=20260828-314";
 import { continuationMultiplicityAtlas, continuationMultiplicityScore }
-  from "./configurational-multiplicity.mjs?v=20260828-313";
+  from "./configurational-multiplicity.mjs?v=20260828-314";
 import { geometricConstraintTensor }
-  from "./geometric-constraint-tensor.mjs?v=20260828-313";
+  from "./geometric-constraint-tensor.mjs?v=20260828-314";
 import { archiveResponseFrontierRankAudit }
   from "./archive-response-frontier-audit.js?v=20260827-1";
 import { evidenceOrderedClusterDiscoverySchedule }
@@ -11804,7 +11804,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260828-313",
+      buildId: "20260828-314",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -14234,7 +14234,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260828-313" },
+    application: { name: "Materials Growth Lab", buildId: "20260828-314" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },

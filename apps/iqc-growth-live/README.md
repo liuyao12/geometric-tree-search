@@ -1,5 +1,25 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 314 · whole-child obligation closure
+
+Changing the marking’s action representation—from isolated sites to complete
+child obligations—crosses the Cd–Yb executable gate. For each held development
+window, the site model and a candidate-level threshold are fit on the other
+four windows. The threshold is the next representable score above every fitted
+negative whole child. Candidate geometry and first-wave digests remain
+identical to the strict per-site arm.
+
+The result is 16 complete port-witnessed children, 146 / 146 correct emitted
+sites, and 16 independently fitted promoted parents. In two of five held
+windows, a completed child changes the next frontier and enables a later wave:
+finite self-feeding is now established at the child-obligation scale. The
+strict per-site arm still retains only 8 / 9 fragments and closes no child.
+
+This is group-sealed marking execution, not a fresh structural-vocabulary
+transfer: the exact support/macro vocabulary is learned from all five
+development windows. No future target was opened, and sustained autonomous,
+stationary, and exponential quasicrystal-growth claims remain open.
+
 ## Build 313 · interactive geometry-closure funnel
 
 The evidence atlas now exposes the real Cd–Yb execution bottleneck as an
