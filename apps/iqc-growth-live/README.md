@@ -1,5 +1,23 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 325 · matched runs become an interpretable structural response
+
+The receipt-verified baseline/Arm-B outcome now includes an interactive response
+fingerprint above the eight unit-bearing deltas. It groups the observables into
+**material extent**, **search work**, and **structural order**; each domain reports
+coverage, signed mean direction, RMS normalized magnitude, and the dominant raw
+observable with its provenance. Selecting a domain opens the question it answers
+and the underlying largest component rather than hiding the measurements behind
+one score.
+
+Normalization is symmetric and dimensionless per observable,
+`(Arm B − baseline) / (|Arm B| + |baseline|)`. Domain signs are descriptive—not
+favorable—and the raw values remain authoritative. A nonzero fingerprint means
+the registered geometric layer was algorithmically consequential for this seed
+and matched update horizon. A null fingerprint is finite evidence, not proof of
+physical irrelevance; neither result infers energy, kinetics, time, or a causal
+physical mechanism.
+
 ## Build 324 · receipt-verified paired physics runs
 
 The pre-growth physics composer now guides a scientist through one complete

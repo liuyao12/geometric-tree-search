@@ -1,5 +1,23 @@
 # Recursive GCTS benchmark for material growth
 
+### Structural-response fingerprint for matched arms (Build 325)
+
+Every comparable physics-proxy pair now produces a pure response fingerprint in
+addition to its eight raw metric deltas. The fingerprint partitions the receipt
+metrics into material extent (sites, clusters, lineage depth), search work
+(frontier, accepted, and rejected actions), and structural order (powder
+structure-factor prominence and local orientational order). Each domain retains
+resolved-count coverage, a signed mean, RMS magnitude, and the dominant source
+metric and provenance.
+
+Each metric is normalized independently as `(B−A)/(|B|+|A|)` and bounded to
+`[-1,1]`; zero/zero maps to zero. The display never sums domains, assigns a
+favorable direction, or replaces unit-bearing values. The fingerprint is
+available only after the complete paired-arm audit passes, contains no
+coordinates or target information, and explicitly distinguishes an observed
+algorithmic consequence from forces, energy, kinetics, physical time, and a
+causal material mechanism.
+
 ### Receipt-verified paired physics workflow (Build 324)
 
 The matched-proxy handoff now continues through an explicit four-state protocol:

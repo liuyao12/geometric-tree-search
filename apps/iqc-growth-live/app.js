@@ -33,7 +33,7 @@ import { compareShadowMaterialFingerprints, SHADOW_MATERIAL_CONSEQUENCE_FIELDS }
 import { LEAP_CONSEQUENCE_COMPONENTS, resolveLeapConsequenceComparison }
   from "./leap-consequence-decomposition.mjs?v=20260828-290";
 import { buildDimensionlessLeapConsequence, buildDynamicalEvidencePlan }
-  from "./leap-structural-consequence.mjs?v=20260829-324";
+  from "./leap-structural-consequence.mjs?v=20260829-325";
 import { buildSettlingMaterialResponseHistory, buildSettlingMaterialResponseMatrix, compareSettlingMaterialFingerprints,
   SETTLING_MATERIAL_FIELDS }
   from "./settling-material-sensitivity.mjs?v=20260828-290";
@@ -56,8 +56,9 @@ import { applyHypothesisSeparationMultipliers as applyFrozenHypothesisSeparation
   from "./hypothesis-separation.js?v=20260826-1";
 import { compareHypothesisSeparationOutcomes }
   from "./hypothesis-separation-outcome.js?v=20260826-1";
-import { buildPhysicsProtocolPairProgress, comparePhysicsProtocolOutcomes }
-  from "./physics-protocol-outcome.js?v=20260829-324";
+import { buildPhysicsProtocolPairProgress, buildPhysicsProtocolResponseFingerprint,
+  comparePhysicsProtocolOutcomes }
+  from "./physics-protocol-outcome.js?v=20260829-325";
 import { buildSiteProvenance } from "./site-provenance.js?v=20260826-2";
 import { buildSiteConstraintAudit } from "./site-constraint-audit.js?v=20260826-1";
 import { compareSiteEnvironments } from "./site-environment-comparison.js?v=20260826-3";
@@ -11897,7 +11898,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260829-324",
+      buildId: "20260829-325",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -14333,7 +14334,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260829-324" },
+    application: { name: "Materials Growth Lab", buildId: "20260829-325" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },
@@ -16242,6 +16243,51 @@ function renderNotebookPhysicsProtocolOutcome(selected) {
     const strong = document.createElement("strong"); strong.textContent = value;
     tile.append(small, strong); identity.append(tile);
   });
+  const fingerprint = audit.responseFingerprint || buildPhysicsProtocolResponseFingerprint(audit);
+  const response = document.createElement("section"); response.className = "notebook-physics-response";
+  const responseHeader = document.createElement("header");
+  const responseEyebrow = document.createElement("small"); responseEyebrow.textContent = "structural response fingerprint";
+  const responseTitle = document.createElement("strong");
+  responseTitle.textContent = fingerprint.responseObserved ? "measured geometric response" : "finite null response";
+  const responseCopy = document.createElement("span"); responseCopy.textContent = fingerprint.interpretation;
+  responseHeader.append(responseEyebrow, responseTitle, responseCopy);
+  const axes = document.createElement("div"); axes.className = "notebook-physics-response-axes";
+  axes.setAttribute("role", "list"); axes.setAttribute("aria-label", "Structural response domains");
+  const responseDetail = document.createElement("div"); responseDetail.className = "notebook-physics-response-detail";
+  const showDomain = (domain, button) => {
+    axes.querySelectorAll("button").forEach((candidate) =>
+      candidate.setAttribute("aria-pressed", String(candidate === button)));
+    responseDetail.replaceChildren();
+    const title = document.createElement("strong"); title.textContent = domain.label;
+    const question = document.createElement("p"); question.textContent = domain.question;
+    const stats = document.createElement("span");
+    const direction = domain.signedMean === null || Math.abs(domain.signedMean) < 1e-12 ? "no mean direction"
+      : domain.signedMean > 0 ? "Arm B higher on average" : "Arm B lower on average";
+    stats.textContent = `${Math.round((domain.rmsMagnitude || 0) * 100)}% RMS normalized response · ${direction} · ${domain.resolvedMetrics}/${domain.metricCount} observables resolved`;
+    const dominant = document.createElement("em");
+    dominant.textContent = domain.dominantMetric
+      ? `largest component · ${domain.dominantMetric.label}: ${domain.dominantMetric.delta > 0 ? "+" : ""}${formatHypothesisOutcomeValue(domain.dominantMetric.delta, domain.dominantMetric.unit)} · ${domain.dominantMetric.provenance}`
+      : "No comparable component is available in this domain.";
+    responseDetail.append(title, question, stats, dominant);
+  };
+  fingerprint.domains.forEach((domain) => {
+    const item = document.createElement("div"); item.setAttribute("role", "listitem");
+    const button = document.createElement("button"); button.type = "button";
+    button.setAttribute("aria-pressed", "false");
+    const label = document.createElement("small"); label.textContent = domain.label;
+    const magnitude = document.createElement("strong");
+    magnitude.textContent = domain.rmsMagnitude === null ? "unavailable" : `${Math.round(domain.rmsMagnitude * 100)}% RMS`;
+    const meter = document.createElement("span"); const fill = document.createElement("i");
+    fill.style.width = `${Math.round((domain.rmsMagnitude || 0) * 100)}%`; meter.append(fill);
+    button.append(label, magnitude, meter); button.addEventListener("click", () => showDomain(domain, button));
+    item.append(button); axes.append(item);
+  });
+  response.append(responseHeader, axes, responseDetail);
+  const defaultDomain = fingerprint.domains.find((domain) => domain.id === fingerprint.dominantDomainId)
+    || fingerprint.domains[0];
+  const defaultButton = axes.querySelectorAll("button")[Math.max(0,
+    fingerprint.domains.findIndex((domain) => domain === defaultDomain))];
+  if (defaultDomain && defaultButton) showDomain(defaultDomain, defaultButton);
   const grid = document.createElement("div"); grid.className = "notebook-physics-protocol-grid";
   audit.metrics.forEach((metricRecord) => {
     const tile = document.createElement("article");
@@ -16257,7 +16303,7 @@ function renderNotebookPhysicsProtocolOutcome(selected) {
     tile.append(label, delta, values, source); grid.append(tile);
   });
   const boundary = document.createElement("p"); boundary.textContent = audit.boundary;
-  notebookPhysicsProtocolOutcome.append(identity, grid, boundary);
+  notebookPhysicsProtocolOutcome.append(identity, response, grid, boundary);
 }
 
 function renderNotebookResponseReadiness(entries) {
@@ -28727,6 +28773,8 @@ function applyPhysicsProtocolArm(interventionPlan, activeArm) {
 function renderPhysicsProtocolPairTracker(protocol) {
   const progress = buildPhysicsProtocolPairProgress(protocol, experimentNotebookEntries, {
     currentStructuralLeapEvents: leapEventCount,
+    currentScenarioId: scenarioSelect.value,
+    currentSeedConfigurationDigest: growthSeedAudit?.seedConfigurationDigest || null,
   });
   currentPhysicsPairProgress = progress;
   currentPhysicsPairIntervention = protocol.interventionPlan || null;

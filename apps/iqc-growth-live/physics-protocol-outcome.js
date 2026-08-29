@@ -32,6 +32,73 @@ function metric(label, unit, baseline, ablation, provenance) {
     delta: a === null || b === null ? null : b - a, provenance };
 }
 
+const RESPONSE_DOMAIN_DEFINITIONS = [
+  { id: "extent", label: "material extent", metricLabels: [
+    "explicit structural sites", "placed clusters", "causal depth"],
+    question: "How much explicit geometric material and lineage depth exist at the matched horizon?" },
+  { id: "search", label: "search work", metricLabels: [
+    "frontier actions", "accepted actions", "rejected actions"],
+    question: "How did the omission alter the finite candidate frontier and retained/pruned decisions?" },
+  { id: "order", label: "structural order", metricLabels: [
+    "S(q) peak prominence", "mean q₆ / |ψ₆|"],
+    question: "How did reciprocal and local orientational order change at the same update count?" },
+];
+
+function symmetricResponse(metricRecord) {
+  if (metricRecord?.delta === null || metricRecord?.baseline === null
+      || metricRecord?.ablation === null) return null;
+  const scale = Math.abs(metricRecord.baseline) + Math.abs(metricRecord.ablation);
+  if (scale <= 1e-12) return 0;
+  return Math.max(-1, Math.min(1, metricRecord.delta / scale));
+}
+
+/** Condense unit-bearing matched deltas without assigning energy, favorability, or causality. */
+export function buildPhysicsProtocolResponseFingerprint(audit) {
+  if (audit?.comparable !== true || !Array.isArray(audit.metrics)) {
+    return { schema: 1, available: false, responseObserved: false, domains: [],
+      dominantDomainId: null, responseDigest: null,
+      interpretation: "A receipt-verified baseline and Arm B pair is required.",
+      physicalTimeInferred: false, causalPhysicalMechanismInferred: false };
+  }
+  const domains = RESPONSE_DOMAIN_DEFINITIONS.map((definition) => {
+    const records = definition.metricLabels.map((label) =>
+      audit.metrics.find((record) => record.label === label)).filter(Boolean);
+    const resolved = records.map((record) => ({ ...record,
+      normalizedResponse: symmetricResponse(record) }))
+      .filter((record) => record.normalizedResponse !== null);
+    const signedMean = resolved.length
+      ? resolved.reduce((sum, record) => sum + record.normalizedResponse, 0) / resolved.length : null;
+    const rmsMagnitude = resolved.length ? Math.sqrt(resolved.reduce((sum, record) =>
+      sum + record.normalizedResponse ** 2, 0) / resolved.length) : null;
+    const dominant = resolved.slice().sort((a, b) =>
+      Math.abs(b.normalizedResponse) - Math.abs(a.normalizedResponse))[0] || null;
+    return { id: definition.id, label: definition.label, question: definition.question,
+      resolvedMetrics: resolved.length, metricCount: records.length,
+      coverage: records.length ? resolved.length / records.length : 0,
+      signedMean, rmsMagnitude, dominantMetric: dominant ? {
+        label: dominant.label, unit: dominant.unit, baseline: dominant.baseline,
+        ablation: dominant.ablation, delta: dominant.delta,
+        normalizedResponse: dominant.normalizedResponse, provenance: dominant.provenance } : null };
+  });
+  const ranked = domains.filter((domain) => domain.rmsMagnitude !== null)
+    .sort((a, b) => b.rmsMagnitude - a.rmsMagnitude);
+  const responseObserved = audit.metrics.some((record) => record.delta !== null
+    && Math.abs(record.delta) > 1e-12);
+  const dominantDomainId = ranked[0]?.id || null;
+  const payload = { commonUpdates: audit.commonUpdates, responseObserved,
+    candidateGate: audit.candidateIdentity?.gate || null,
+    domains: domains.map(({ id, coverage, signedMean, rmsMagnitude, dominantMetric }) =>
+      ({ id, coverage, signedMean, rmsMagnitude, dominantMetric })) };
+  return { schema: 1, available: true, responseObserved, domains, dominantDomainId,
+    responseDigest: digest(payload),
+    interpretation: responseObserved
+      ? `Arm B changes at least one retained geometric observable after ${audit.commonUpdates} matched structural update${audit.commonUpdates === 1 ? "" : "s"}. The registered layer is algorithmically consequential for this supplied seed and horizon.`
+      : `No retained geometric observable differs after ${audit.commonUpdates} matched structural update${audit.commonUpdates === 1 ? "" : "s"}. This finite null response does not establish physical irrelevance.`,
+    normalization: "signed (Arm B − baseline) / (|Arm B| + |baseline|), evaluated per observable; domain magnitude is RMS and sign is reported separately",
+    favorableDirectionAssigned: false, coordinatesEmbedded: false, targetUsed: false,
+    physicalTimeInferred: false, causalPhysicalMechanismInferred: false };
+}
+
 function fail(reason, detail, evidence = {}) {
   return { schema: 1, status: "unavailable", comparable: false, reason, detail,
     experiment: null, metrics: [], candidateIdentity: null, changedControlIds: [],
@@ -236,7 +303,7 @@ export function comparePhysicsProtocolOutcomes(entries) {
   const experiment = { ...plan, inputIdentity: baseline.inputIdentity,
     seedConfigurationDigest: baselineSeedDigest, commonUpdates,
     controlVectorSchema: baselineExperiment.controlVector.schema };
-  return { schema: 1, status: "matched", comparable: true, reason: null,
+  const result = { schema: 1, status: "matched", comparable: true, reason: null,
     detail: `Matched ${plan.ablatedProcess} omission after ${commonUpdates} discrete structural update${commonUpdates === 1 ? "" : "s"}.`,
     baselineEntryId: baseline.id, ablationEntryId: ablation.id, baselineUpdates, ablationUpdates,
     commonUpdates, experiment, candidateIdentity,
@@ -247,6 +314,8 @@ export function comparePhysicsProtocolOutcomes(entries) {
     coordinatesEmbedded: false, targetUsed: false, candidatesPooled: false, searchReplayed: false,
     physicalTimeInferred: false, causalPhysicalMechanismInferred: false,
     boundary: "This is a deterministic geometric omission response on one supplied configuration at a matched structural-update horizon. It is not physical time, energy, kinetics, removal of a real interaction, an independent-specimen estimate, or proof of a causal physical mechanism." };
+  result.responseFingerprint = buildPhysicsProtocolResponseFingerprint(result);
+  return result;
 }
 
 function compactArmRun(entry) {
@@ -272,6 +341,8 @@ export function buildPhysicsProtocolPairProgress(protocol, entries, options = {}
   const activeArm = protocol?.armRegistration?.activeArm || null;
   const currentStructuralLeapEvents = Math.max(0,
     Number(options.currentStructuralLeapEvents) || 0);
+  const currentScenarioId = options.currentScenarioId || null;
+  const currentSeedConfigurationDigest = options.currentSeedConfigurationDigest || null;
   if (!plan) {
     return { schema: 1, state: "registration-required", registrationReady: false,
       activeArm, baselineRuns: [], ablationRuns: [], matchedPairs: [],
@@ -288,7 +359,10 @@ export function buildPhysicsProtocolPairProgress(protocol, entries, options = {}
   const matching = savedEntries.filter((entry) => {
     const experiment = entry?.physicsProtocolExperiment;
     return experiment?.schema === 1
-      && stableString(commonPlan(experiment.interventionPlan)) === planKey;
+      && stableString(commonPlan(experiment.interventionPlan)) === planKey
+      && (!currentScenarioId || entry?.scenarioId === currentScenarioId)
+      && (!currentSeedConfigurationDigest
+        || entry?.executionEvidence?.seedConfigurationDigest === currentSeedConfigurationDigest);
   });
   const baselineEntries = matching.filter((entry) =>
     entry.physicsProtocolExperiment.armRegistration?.activeArm === "baseline");

@@ -31,9 +31,9 @@ def test_occurrence_uncertainty_ui_contract() -> None:
     require(APP, "uncertaintyClaim")
     require(STYLE, "repeat(5,minmax(0,1fr))")
     require(README, "Build 300 · occurrence-blocked validation uncertainty")
-    require(APP, 'buildId: "20260829-324"')
-    require(HTML, 'app.js?v=20260829-324')
-    require(HTML, 'style.css?v=20260829-324')
+    require(APP, 'buildId: "20260829-325"')
+    require(HTML, 'app.js?v=20260829-325')
+    require(HTML, 'style.css?v=20260829-325')
 
 
 if __name__ == "__main__":

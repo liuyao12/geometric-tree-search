@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
-import { buildPhysicsProtocolPairProgress, comparePhysicsProtocolOutcomes }
+import { buildPhysicsProtocolPairProgress, buildPhysicsProtocolResponseFingerprint,
+  comparePhysicsProtocolOutcomes }
   from "../apps/iqc-growth-live/physics-protocol-outcome.js";
 
 const selected = ["constraint-projection", "connection", "steric"];
@@ -51,6 +52,7 @@ function registration(activeArm) {
 function entry(id, arm, value, atoms) {
   return {
     id,
+    scenarioId: "competition",
     receiptSha256: `${id}-receipt`,
     inputIdentity: "same-input",
     physicsProtocolExperiment: {
@@ -107,11 +109,25 @@ assert.match(buildPhysicsProtocolPairProgress(baselineProtocol, [],
   { currentStructuralLeapEvents: 1 }).nextAction, /Save the executed Baseline/);
 assert.equal(buildPhysicsProtocolPairProgress(baselineProtocol, [baseline]).state,
   "configure-ablation");
+assert.equal(buildPhysicsProtocolPairProgress(baselineProtocol, [baseline], {
+  currentScenarioId: "random", currentSeedConfigurationDigest: "other-seed",
+}).state, "run-baseline");
 assert.equal(buildPhysicsProtocolPairProgress(ablationProtocol, [baseline]).state,
   "run-ablation");
 
 const matched = buildPhysicsProtocolPairProgress(ablationProtocol, [baseline, armB]);
-assert.equal(comparePhysicsProtocolOutcomes([baseline, armB]).comparable, true);
+const matchedAudit = comparePhysicsProtocolOutcomes([baseline, armB]);
+assert.equal(matchedAudit.comparable, true);
+assert.equal(matchedAudit.responseFingerprint.available, true);
+assert.equal(matchedAudit.responseFingerprint.responseObserved, true);
+assert.equal(matchedAudit.responseFingerprint.domains.length, 3);
+assert.equal(matchedAudit.responseFingerprint.dominantDomainId, "extent");
+assert.equal(matchedAudit.responseFingerprint.domains.find(({ id }) => id === "extent")
+  .dominantMetric.label, "explicit structural sites");
+assert.equal(matchedAudit.responseFingerprint.favorableDirectionAssigned, false);
+assert.equal(matchedAudit.responseFingerprint.causalPhysicalMechanismInferred, false);
+assert.match(matchedAudit.responseFingerprint.normalization, /Arm B − baseline/);
+assert.equal(buildPhysicsProtocolResponseFingerprint({ comparable: false }).available, false);
 assert.equal(matched.state, "matched");
 assert.deepEqual(matched.selectedEntryIds, ["baseline-run", "arm-b-run"]);
 assert.equal(matched.steps.every((step) => step.complete), true);

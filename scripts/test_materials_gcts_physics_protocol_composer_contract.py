@@ -62,7 +62,7 @@ def main() -> None:
         'data-physics-protocol-preset="actionable"',
         'data-physics-protocol-preset="clear"',
         "freeze before the first candidate frontier",
-        'app.js?v=20260829-324',
+        'app.js?v=20260829-325',
     ):
         assert needle in html, needle
 
@@ -102,6 +102,9 @@ def main() -> None:
         "controlVector: physicsProtocolControlVector()",
         "function notebookPhysicsProtocolExperiment(receipt)",
         "comparePhysicsProtocolOutcomes(selected)",
+        "buildPhysicsProtocolResponseFingerprint(audit)",
+        'responseEyebrow.textContent = "structural response fingerprint"',
+        'axes.setAttribute("aria-label", "Structural response domains")',
         "function applyPhysicsProtocolArm(interventionPlan, activeArm)",
         "function updatePhysicsProtocolSelection(recordIds)",
         "function renderPhysicsProtocolComposer(manifest)",
@@ -109,6 +112,8 @@ def main() -> None:
         "renderPhysicsProtocolPairTracker(frozenPhysicsPreflightManifest.investigationProtocol)",
         "function preparePhysicsProtocolPartner()",
         "buildPhysicsProtocolPairProgress(protocol, experimentNotebookEntries",
+        "currentScenarioId: scenarioSelect.value",
+        "currentSeedConfigurationDigest: growthSeedAudit?.seedConfigurationDigest",
         "await saveCurrentExperimentNotebookEntry()",
         "selectedNotebookEntryIds = [...currentPhysicsPairProgress.selectedEntryIds]",
         "physicsProtocolAblatedRecordId",
@@ -122,7 +127,7 @@ def main() -> None:
         'frozenBeforeFirstStructuralAction: Boolean(frozenPhysicsPreflightManifest)',
         'if (leapEventCount > 0) return;',
         'no control changed.',
-        'buildId: "20260829-324"',
+        'buildId: "20260829-325"',
     ):
         assert needle in source, needle
 
@@ -139,6 +144,9 @@ def main() -> None:
         ".protocol-selected",
         ".notebook-physics-protocol-outcome",
         ".notebook-physics-protocol-grid",
+        ".notebook-physics-response",
+        ".notebook-physics-response-axes",
+        ".notebook-physics-response-detail",
     ):
         assert needle in css, needle
 
@@ -146,7 +154,7 @@ def main() -> None:
     assert 'id="growthPhysicsProtocolComposer"' in root_html
     assert 'id="notebookPhysicsProtocolOutcome"' in html
     assert 'id="notebookPhysicsProtocolOutcome"' in root_html
-    assert 'app.js?v=20260829-324' in root_html
+    assert 'app.js?v=20260829-325' in root_html
     print("physics protocol composer portal contract: passed")
 
 

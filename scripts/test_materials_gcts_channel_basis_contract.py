@@ -30,9 +30,9 @@ def main() -> None:
     require(CSS, ".cluster-channel-basis")
     require(CSS, ".port-head.basis-column")
     require(README, "Build 295 · rank-revealing channel basis")
-    require(APP, 'buildId: "20260829-324"')
-    require(HTML, 'app.js?v=20260829-324')
-    require(HTML, 'style.css?v=20260829-324')
+    require(APP, 'buildId: "20260829-325"')
+    require(HTML, 'app.js?v=20260829-325')
+    require(HTML, 'style.css?v=20260829-325')
     print("rank-revealing channel basis contract passed")
 
 
