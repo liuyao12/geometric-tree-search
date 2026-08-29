@@ -66,10 +66,14 @@ const scale3ParentTypes = new Map([
 ]);
 for (const candidate of A2_SLICED_SIZE7_CANDIDATES) {
   assert.deepEqual(candidate.screening.three_copy_metatile_substitution_scales_exhausted,
-    [2, 3]);
+    [2, 3, 4]);
   assert.equal(candidate.screening.three_copy_metatile_scale3_reflected_status,
     "no_three_copy_metatile_scalar3_substitution");
   assert.equal(candidate.screening.three_copy_metatile_scale3_reflected_parent_types,
+    scale3ParentTypes.get(candidate.id));
+  assert.equal(candidate.screening.three_copy_metatile_scale4_reflected_status,
+    "no_three_copy_metatile_scalar4_substitution");
+  assert.equal(candidate.screening.three_copy_metatile_scale4_reflected_parent_types,
     scale3ParentTypes.get(candidate.id));
 }
 
