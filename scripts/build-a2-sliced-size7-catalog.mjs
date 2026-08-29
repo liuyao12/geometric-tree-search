@@ -31,7 +31,7 @@ const scale4ThreeCopyById = new Map((await readGzipNdjson(
   "data/a2-sliced-alcove-size7-three-cluster-scale4-reflected-leads.ndjson.gz"
 )).map(record => [record.id, record]));
 const scale2FourCopyById = new Map((await readGzipNdjson(
-  "data/a2-sliced-alcove-size7-four-cluster-scale2-reflected-00120.ndjson.gz"
+  "data/a2-sliced-alcove-size7-four-cluster-scale2-reflected-leads.ndjson.gz"
 )).map(record => [record.id, record]));
 
 const survivorRows = periodicRows.filter(record => record.classification === "unresolved");
@@ -204,7 +204,7 @@ const candidates = selected.map(({ record, corona, retained }, index) => {
       four_copy_metatile_scale2_reflected_parent_types:
         scale2FourCopy?.four_copy_alcove_metatile_screen?.parents_completed ?? 0,
       four_copy_metatile_scale2_reflected_report: scale2FourCopy
-        ? "data/a2-sliced-alcove-size7-four-cluster-scale2-reflected-00120.ndjson.gz"
+        ? "data/a2-sliced-alcove-size7-four-cluster-scale2-reflected-leads.ndjson.gz"
         : null
     },
     shell_screening: { robust_completed_shell: 0, deepest_completed_shell: 0 }

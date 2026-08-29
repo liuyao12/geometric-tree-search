@@ -64,6 +64,9 @@ const scale3ParentTypes = new Map([
   ["a2sa_7_00569", 1429], ["a2sa_7_00626", 1388], ["a2sa_7_00674", 1291],
   ["a2sa_7_00699", 2229], ["a2sa_7_00822", 1922]
 ]);
+const scale2FourCopyParentTypes = new Map([
+  ["a2sa_7_00120", 65110], ["a2sa_7_00139", 65349], ["a2sa_7_00674", 66674]
+]);
 for (const candidate of A2_SLICED_SIZE7_CANDIDATES) {
   assert.deepEqual(candidate.screening.three_copy_metatile_substitution_scales_exhausted,
     [2, 3, 4]);
@@ -75,12 +78,13 @@ for (const candidate of A2_SLICED_SIZE7_CANDIDATES) {
     "no_three_copy_metatile_scalar4_substitution");
   assert.equal(candidate.screening.three_copy_metatile_scale4_reflected_parent_types,
     scale3ParentTypes.get(candidate.id));
-  if (candidate.id === "a2sa_7_00120") {
+  if (scale2FourCopyParentTypes.has(candidate.id)) {
     assert.deepEqual(candidate.screening.four_copy_metatile_substitution_scales_exhausted,
       [2]);
     assert.equal(candidate.screening.four_copy_metatile_scale2_reflected_status,
       "no_four_copy_metatile_scalar2_substitution");
-    assert.equal(candidate.screening.four_copy_metatile_scale2_reflected_parent_types, 65110);
+    assert.equal(candidate.screening.four_copy_metatile_scale2_reflected_parent_types,
+      scale2FourCopyParentTypes.get(candidate.id));
   } else {
     assert.deepEqual(candidate.screening.four_copy_metatile_substitution_scales_exhausted, []);
     assert.equal(candidate.screening.four_copy_metatile_scale2_reflected_status, "unresolved");
