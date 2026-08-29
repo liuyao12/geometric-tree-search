@@ -248,3 +248,121 @@ export function comparePhysicsProtocolOutcomes(entries) {
     physicalTimeInferred: false, causalPhysicalMechanismInferred: false,
     boundary: "This is a deterministic geometric omission response on one supplied configuration at a matched structural-update horizon. It is not physical time, energy, kinetics, removal of a real interaction, an independent-specimen estimate, or proof of a causal physical mechanism." };
 }
+
+function compactArmRun(entry) {
+  const experiment = entry?.physicsProtocolExperiment;
+  return {
+    entryId: entry?.id || null,
+    arm: experiment?.armRegistration?.activeArm || null,
+    executed: entry?.executionEvidence?.executed === true,
+    structuralLeapEvents: Math.max(0,
+      Number(entry?.executionEvidence?.structuralLeapEvents) || 0),
+    inputIdentity: entry?.inputIdentity || null,
+    receiptSha256: entry?.receiptSha256 || null,
+    targetUsed: entry?.executionEvidence?.targetUsed === true
+      || entry?.trajectory?.targetUsed === true,
+  };
+}
+
+/** Summarize the live register -> baseline -> Arm B -> compare workflow without executing it. */
+export function buildPhysicsProtocolPairProgress(protocol, entries, options = {}) {
+  const savedEntries = Array.isArray(entries) ? entries : [];
+  const plan = protocol?.interventionPlan || null;
+  const registrationReady = Boolean(plan?.armConfigurationReady);
+  const activeArm = protocol?.armRegistration?.activeArm || null;
+  const currentStructuralLeapEvents = Math.max(0,
+    Number(options.currentStructuralLeapEvents) || 0);
+  if (!plan) {
+    return { schema: 1, state: "registration-required", registrationReady: false,
+      activeArm, baselineRuns: [], ablationRuns: [], matchedPairs: [],
+      selectedEntryIds: [], nextAction: "Register one reversible physical layer first.",
+      steps: [
+        { id: "register", label: "register", complete: false, active: true },
+        { id: "baseline", label: "baseline", complete: false, active: false },
+        { id: "ablation", label: "Arm B", complete: false, active: false },
+        { id: "compare", label: "compare", complete: false, active: false },
+      ],
+      targetUsed: false, candidatesInspected: false };
+  }
+  const planKey = stableString(commonPlan(plan));
+  const matching = savedEntries.filter((entry) => {
+    const experiment = entry?.physicsProtocolExperiment;
+    return experiment?.schema === 1
+      && stableString(commonPlan(experiment.interventionPlan)) === planKey;
+  });
+  const baselineEntries = matching.filter((entry) =>
+    entry.physicsProtocolExperiment.armRegistration?.activeArm === "baseline");
+  const ablationEntries = matching.filter((entry) =>
+    entry.physicsProtocolExperiment.armRegistration?.activeArm === "ablation");
+  const baselineRuns = baselineEntries.map(compactArmRun);
+  const ablationRuns = ablationEntries.map(compactArmRun);
+  const evaluatedPairs = baselineEntries.flatMap((baseline) => ablationEntries.map((ablation) => ({
+    baseline,
+    ablation,
+    audit: comparePhysicsProtocolOutcomes([baseline, ablation]),
+  })));
+  const matchedPairs = evaluatedPairs.filter((pair) => pair.audit.comparable).map((pair) => ({
+    baselineEntryId: pair.baseline.id,
+    ablationEntryId: pair.ablation.id,
+    commonUpdates: pair.audit.commonUpdates,
+    comparisonDigest: pair.audit.comparisonDigest,
+  }));
+  const latestAttempt = evaluatedPairs.at(-1)?.audit || null;
+  const executedBaseline = baselineRuns.some((run) => run.executed && !run.targetUsed);
+  const executedAblation = ablationRuns.some((run) => run.executed && !run.targetUsed);
+  let state;
+  let nextAction;
+  if (!registrationReady) {
+    state = "configuration-required";
+    nextAction = "Choose an active reversible setting before registering its neutral arm.";
+  } else if (!activeArm) {
+    state = "choose-baseline";
+    nextAction = "Configure Baseline before the first structural action.";
+  } else if (!executedBaseline) {
+    state = activeArm === "baseline" ? "run-baseline" : "baseline-missing";
+    nextAction = activeArm === "baseline"
+      ? currentStructuralLeapEvents ? "Save the executed Baseline arm." : "Run at least one structural leap, then save Baseline."
+      : "Return to Baseline, execute at least one structural leap, and save it before Arm B.";
+  } else if (!executedAblation) {
+    state = activeArm === "ablation" ? "run-ablation" : "configure-ablation";
+    nextAction = activeArm === "ablation"
+      ? currentStructuralLeapEvents ? "Save the executed Arm B omission." : "Run at least one structural leap, then save Arm B."
+      : "Reset to the supplied state and configure Arm B.";
+  } else if (matchedPairs.length) {
+    state = "matched";
+    nextAction = "Open the receipt-verified matched outcome in the experiment notebook.";
+  } else {
+    state = "comparison-blocked";
+    nextAction = latestAttempt?.detail || "Saved arms exist, but the comparability gate is closed.";
+  }
+  const selectedPair = matchedPairs.at(-1) || null;
+  return {
+    schema: 1,
+    state,
+    registrationReady,
+    activeArm,
+    currentStructuralLeapEvents,
+    baselineRuns,
+    ablationRuns,
+    matchedPairs,
+    selectedEntryIds: selectedPair
+      ? [selectedPair.baselineEntryId, selectedPair.ablationEntryId] : [],
+    latestComparisonReason: latestAttempt?.reason || null,
+    latestComparisonDetail: latestAttempt?.detail || null,
+    nextAction,
+    steps: [
+      { id: "register", label: "register", complete: registrationReady,
+        active: !registrationReady },
+      { id: "baseline", label: "baseline", complete: executedBaseline,
+        active: registrationReady && !executedBaseline },
+      { id: "ablation", label: "Arm B", complete: executedAblation,
+        active: executedBaseline && !executedAblation },
+      { id: "compare", label: "compare", complete: matchedPairs.length > 0,
+        active: executedBaseline && executedAblation },
+    ],
+    coordinatesEmbedded: false,
+    targetUsed: false,
+    candidatesInspected: false,
+    searchExecutedByTracker: false,
+  };
+}

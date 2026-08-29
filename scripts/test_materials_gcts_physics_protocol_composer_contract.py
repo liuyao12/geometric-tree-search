@@ -53,11 +53,16 @@ def main() -> None:
         'id="growthPhysicsProtocolSelection"',
         'id="growthPhysicsAblationSelect"',
         'id="growthPhysicsAblationDetail"',
+        'id="growthPhysicsPairTracker"',
+        'id="growthPhysicsPairTrackerSteps"',
+        'id="growthPhysicsPairSave"',
+        'id="growthPhysicsPairPartner"',
+        'id="growthPhysicsPairOpen"',
         'data-physics-protocol-preset="executing"',
         'data-physics-protocol-preset="actionable"',
         'data-physics-protocol-preset="clear"',
         "freeze before the first candidate frontier",
-        'app.js?v=20260828-323',
+        'app.js?v=20260829-324',
     ):
         assert needle in html, needle
 
@@ -100,6 +105,12 @@ def main() -> None:
         "function applyPhysicsProtocolArm(interventionPlan, activeArm)",
         "function updatePhysicsProtocolSelection(recordIds)",
         "function renderPhysicsProtocolComposer(manifest)",
+        "function renderPhysicsProtocolPairTracker(protocol)",
+        "renderPhysicsProtocolPairTracker(frozenPhysicsPreflightManifest.investigationProtocol)",
+        "function preparePhysicsProtocolPartner()",
+        "buildPhysicsProtocolPairProgress(protocol, experimentNotebookEntries",
+        "await saveCurrentExperimentNotebookEntry()",
+        "selectedNotebookEntryIds = [...currentPhysicsPairProgress.selectedEntryIds]",
         "physicsProtocolAblatedRecordId",
         "physicsProtocolArmRegistration",
         "armRegistration: publicPhysicsProtocolArmRegistration",
@@ -111,7 +122,7 @@ def main() -> None:
         'frozenBeforeFirstStructuralAction: Boolean(frozenPhysicsPreflightManifest)',
         'if (leapEventCount > 0) return;',
         'no control changed.',
-        'buildId: "20260828-323"',
+        'buildId: "20260829-324"',
     ):
         assert needle in source, needle
 
@@ -122,6 +133,8 @@ def main() -> None:
         ".physics-protocol-selection",
         ".physics-protocol-intervention",
         ".physics-protocol-arm-buttons",
+        ".physics-pair-tracker",
+        ".physics-pair-steps",
         ".physics-protocol-selection button.ablated",
         ".protocol-selected",
         ".notebook-physics-protocol-outcome",
@@ -133,7 +146,7 @@ def main() -> None:
     assert 'id="growthPhysicsProtocolComposer"' in root_html
     assert 'id="notebookPhysicsProtocolOutcome"' in html
     assert 'id="notebookPhysicsProtocolOutcome"' in root_html
-    assert 'app.js?v=20260828-323' in root_html
+    assert 'app.js?v=20260829-324' in root_html
     print("physics protocol composer portal contract: passed")
 
 

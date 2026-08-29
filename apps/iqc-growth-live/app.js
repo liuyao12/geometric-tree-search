@@ -33,7 +33,7 @@ import { compareShadowMaterialFingerprints, SHADOW_MATERIAL_CONSEQUENCE_FIELDS }
 import { LEAP_CONSEQUENCE_COMPONENTS, resolveLeapConsequenceComparison }
   from "./leap-consequence-decomposition.mjs?v=20260828-290";
 import { buildDimensionlessLeapConsequence, buildDynamicalEvidencePlan }
-  from "./leap-structural-consequence.mjs?v=20260828-323";
+  from "./leap-structural-consequence.mjs?v=20260829-324";
 import { buildSettlingMaterialResponseHistory, buildSettlingMaterialResponseMatrix, compareSettlingMaterialFingerprints,
   SETTLING_MATERIAL_FIELDS }
   from "./settling-material-sensitivity.mjs?v=20260828-290";
@@ -56,8 +56,8 @@ import { applyHypothesisSeparationMultipliers as applyFrozenHypothesisSeparation
   from "./hypothesis-separation.js?v=20260826-1";
 import { compareHypothesisSeparationOutcomes }
   from "./hypothesis-separation-outcome.js?v=20260826-1";
-import { comparePhysicsProtocolOutcomes }
-  from "./physics-protocol-outcome.js?v=20260827-2";
+import { buildPhysicsProtocolPairProgress, comparePhysicsProtocolOutcomes }
+  from "./physics-protocol-outcome.js?v=20260829-324";
 import { buildSiteProvenance } from "./site-provenance.js?v=20260826-2";
 import { buildSiteConstraintAudit } from "./site-constraint-audit.js?v=20260826-1";
 import { compareSiteEnvironments } from "./site-environment-comparison.js?v=20260826-3";
@@ -358,6 +358,14 @@ const growthPhysicsProtocolCoverage = $("growthPhysicsProtocolCoverage");
 const growthPhysicsProtocolSelection = $("growthPhysicsProtocolSelection");
 const growthPhysicsAblationSelect = $("growthPhysicsAblationSelect");
 const growthPhysicsAblationDetail = $("growthPhysicsAblationDetail");
+const growthPhysicsPairTracker = $("growthPhysicsPairTracker");
+const growthPhysicsPairTrackerTitle = $("growthPhysicsPairTrackerTitle");
+const growthPhysicsPairTrackerState = $("growthPhysicsPairTrackerState");
+const growthPhysicsPairTrackerSteps = $("growthPhysicsPairTrackerSteps");
+const growthPhysicsPairTrackerNext = $("growthPhysicsPairTrackerNext");
+const growthPhysicsPairSave = $("growthPhysicsPairSave");
+const growthPhysicsPairPartner = $("growthPhysicsPairPartner");
+const growthPhysicsPairOpen = $("growthPhysicsPairOpen");
 const growthPhysicsPreflightMatrix = $("growthPhysicsPreflightMatrix");
 const growthPhysicsPreflightDetail = $("growthPhysicsPreflightDetail");
 const growthCoreGroupState = $("growthCoreGroupState");
@@ -1737,6 +1745,8 @@ let physicsProtocolSelectedIds = null;
 let physicsProtocolAblatedRecordId = null;
 let physicsProtocolArmRegistration = null;
 let dynamicalEvidenceHandoffReceipt = null;
+let currentPhysicsPairProgress = null;
+let currentPhysicsPairIntervention = null;
 let frozenPhysicsPreflightManifest = null;
 const MAXIMUM_RETAINED_STRUCTURAL_LEAPS = 24;
 let growthMechanismEvents = [];
@@ -11887,7 +11897,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260828-323",
+      buildId: "20260829-324",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -14323,7 +14333,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260828-323" },
+    application: { name: "Materials Growth Lab", buildId: "20260829-324" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },
@@ -25880,6 +25890,8 @@ function resetCounters() {
   physicsProtocolAblatedRecordId = null;
   physicsProtocolArmRegistration = null;
   dynamicalEvidenceHandoffReceipt = null;
+  currentPhysicsPairProgress = null;
+  currentPhysicsPairIntervention = null;
   frozenPhysicsPreflightManifest = null;
   growthMechanismEvents = [];
   growthMechanismTotals = {};
@@ -28712,6 +28724,61 @@ function applyPhysicsProtocolArm(interventionPlan, activeArm) {
   receiptStatus.textContent = `${activeArm === "baseline" ? "Baseline" : "Arm B"} configured · ${binding.controlId} = ${arm.label} · one frozen control changed before candidate enumeration.`;
 }
 
+function renderPhysicsProtocolPairTracker(protocol) {
+  const progress = buildPhysicsProtocolPairProgress(protocol, experimentNotebookEntries, {
+    currentStructuralLeapEvents: leapEventCount,
+  });
+  currentPhysicsPairProgress = progress;
+  currentPhysicsPairIntervention = protocol.interventionPlan || null;
+  const stateLabels = {
+    "registration-required": "not registered",
+    "configuration-required": "setting required",
+    "choose-baseline": "choose baseline",
+    "run-baseline": "baseline active",
+    "baseline-missing": "baseline missing",
+    "configure-ablation": "baseline saved",
+    "run-ablation": "Arm B active",
+    "comparison-blocked": "comparison blocked",
+    matched: "matched pair ready",
+  };
+  growthPhysicsPairTracker.className = `physics-pair-tracker ${progress.state}`;
+  growthPhysicsPairTrackerTitle.textContent = protocol.interventionPlan
+    ? `${protocol.interventionPlan.ablatedProcess} · paired structural response`
+    : "Register → Baseline → Arm B → Compare";
+  growthPhysicsPairTrackerState.textContent = stateLabels[progress.state] || progress.state;
+  growthPhysicsPairTrackerSteps.replaceChildren(...progress.steps.map((step, index) => {
+    const cell = document.createElement("span"); cell.setAttribute("role", "listitem");
+    cell.className = `${step.complete ? "complete" : "pending"}${step.active ? " active" : ""}`;
+    const number = document.createElement("b"); number.textContent = String(index + 1).padStart(2, "0");
+    const label = document.createElement("strong"); label.textContent = step.label;
+    const state = document.createElement("small"); state.textContent = step.complete ? "verified" : step.active ? "next" : "waiting";
+    cell.append(number, label, state); return cell;
+  }));
+  growthPhysicsPairTrackerNext.textContent = progress.nextAction;
+  const canSave = ["run-baseline", "run-ablation"].includes(progress.state)
+    && leapEventCount > 0 && Boolean(progress.activeArm);
+  growthPhysicsPairSave.disabled = !canSave;
+  growthPhysicsPairSave.textContent = progress.activeArm === "ablation"
+    ? "Save executed Arm B" : "Save executed Baseline";
+  const canPreparePartner = ["configure-ablation", "baseline-missing"].includes(progress.state)
+    && Boolean(protocol.interventionPlan?.armConfigurationReady);
+  growthPhysicsPairPartner.disabled = !canPreparePartner;
+  growthPhysicsPairPartner.textContent = progress.state === "baseline-missing"
+    ? "Reset + configure Baseline" : "Reset + configure Arm B";
+  growthPhysicsPairOpen.disabled = progress.selectedEntryIds.length !== 2;
+}
+
+function preparePhysicsProtocolPartner() {
+  const progress = currentPhysicsPairProgress;
+  const intervention = currentPhysicsPairIntervention;
+  if (!progress || !intervention?.armConfigurationReady
+      || !["configure-ablation", "baseline-missing"].includes(progress.state)) return;
+  const nextArm = progress.state === "baseline-missing" ? "baseline" : "ablation";
+  enterPipelineStage(4);
+  applyPhysicsProtocolArm(intervention, nextArm);
+  receiptStatus.textContent = `${nextArm === "baseline" ? "Baseline" : "Arm B"} prepared from the supplied structural state · prior saved arm retained · no growth executed.`;
+}
+
 function renderPhysicsProtocolComposer(manifest) {
   const protocol = manifest.investigationProtocol || physicsProtocolForRecords(manifest.records);
   const frozen = leapEventCount > 0;
@@ -28813,6 +28880,7 @@ function renderPhysicsProtocolComposer(manifest) {
       controls.append(state); growthPhysicsAblationDetail.append(controls);
     }
   }
+  renderPhysicsProtocolPairTracker(protocol);
 }
 
 function renderGrowthPhysicsPreflight() {
@@ -29024,6 +29092,25 @@ growthPhysicsAblationSelect.addEventListener("change", () => {
   receiptStatus.textContent = physicsProtocolAblatedRecordId
     ? "One-layer counterfactual declared before candidate enumeration · no control changed and no growth executed."
     : "Physics counterfactual cleared · single-arm protocol restored.";
+});
+
+growthPhysicsPairSave.addEventListener("click", async () => {
+  if (growthPhysicsPairSave.disabled) return;
+  await saveCurrentExperimentNotebookEntry();
+  renderGrowthPhysicsPreflight();
+});
+
+growthPhysicsPairPartner.addEventListener("click", () => {
+  if (growthPhysicsPairPartner.disabled) return;
+  preparePhysicsProtocolPartner();
+});
+
+growthPhysicsPairOpen.addEventListener("click", () => {
+  if (growthPhysicsPairOpen.disabled || currentPhysicsPairProgress?.selectedEntryIds.length !== 2) return;
+  selectedNotebookEntryIds = [...currentPhysicsPairProgress.selectedEntryIds];
+  renderExperimentNotebook();
+  notebookPhysicsProtocolOutcome.scrollIntoView({ behavior: "smooth", block: "center" });
+  receiptStatus.textContent = "Matched baseline and Arm B selected · notebook comparability gate verified.";
 });
 
 function renderLeapPhysics(leap = null) {
@@ -31295,6 +31382,9 @@ function recordStructuralLeap(leap) {
   if (leapHistory.length > MAXIMUM_RETAINED_STRUCTURAL_LEAPS) leapHistory.shift();
   selectedLeapIndex = leapHistory.length - 1;
   renderStructuralLeap(frozen);
+  if (pipelineStage === 4 && frozenPhysicsPreflightManifest?.investigationProtocol) {
+    renderPhysicsProtocolPairTracker(frozenPhysicsPreflightManifest.investigationProtocol);
+  }
   enforceMarkingComparisonHorizon();
 }
 
@@ -34840,6 +34930,7 @@ clearNotebookButton.addEventListener("click", () => {
   receiptStatus.textContent = "Experiment notebook cleared. Downloaded receipts are unaffected.";
   renderExperimentNotebook();
   renderStudyOutcome();
+  if (pipelineStage === 4) renderGrowthPhysicsPreflight();
 });
 notebookTrajectoryObservable.addEventListener("change", renderExperimentNotebook);
 notebookPhysicsFilters.addEventListener("click", (event) => {

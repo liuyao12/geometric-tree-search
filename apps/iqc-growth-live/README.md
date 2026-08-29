@@ -1,5 +1,21 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 324 · receipt-verified paired physics runs
+
+The pre-growth physics composer now guides a scientist through one complete
+**register → Baseline → Arm B → compare** experiment. A four-step tracker shows
+which arm is configured, requires at least one executed structural leap before
+saving it, preserves the saved baseline while rebuilding the supplied starting
+state, and configures the one-control omission arm without silently executing
+growth.
+
+After both arms are saved, the tracker delegates comparability to the existing
+notebook audit: input identity, seed digest, public boundary, reversible-control
+identity, target-free execution, candidate-identity rule, and common structural
+horizon must agree before the matched outcome opens. The tracker itself inspects
+no candidate and executes no search. This is a controlled geometric-proxy
+response—not a force, energy, kinetic, or causal-physics measurement.
+
 ## Build 323 · missing dynamics now hand off to a frozen investigation
 
 The evidence-acquisition panel now continues into the existing pre-growth physics protocol

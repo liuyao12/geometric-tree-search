@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260828-323">
+  <link rel="stylesheet" href="./style.css?v=20260829-324">
   <script type="importmap">
     {
       "imports": {
@@ -595,6 +595,12 @@
                   <label for="growthPhysicsAblationSelect"><span>Matched counterfactual</span><select id="growthPhysicsAblationSelect" aria-label="Select one physical layer for the ablation arm"><option value="">None · single-arm protocol</option></select></label>
                   <article id="growthPhysicsAblationDetail" aria-live="polite"><b>No counterfactual registered</b><span>Select one executing layer to classify the required comparison and candidate-identity gate.</span></article>
                 </div>
+                <section id="growthPhysicsPairTracker" class="physics-pair-tracker waiting" aria-label="Matched physics experiment progress">
+                  <header><span><small>receipt-verified pair</small><strong id="growthPhysicsPairTrackerTitle">Register → Baseline → Arm B → Compare</strong></span><b id="growthPhysicsPairTrackerState">not registered</b></header>
+                  <div id="growthPhysicsPairTrackerSteps" class="physics-pair-steps" role="list" aria-label="Paired experiment steps"></div>
+                  <p id="growthPhysicsPairTrackerNext">Register one reversible physical layer first.</p>
+                  <footer><button id="growthPhysicsPairSave" type="button" disabled>Save current arm</button><button id="growthPhysicsPairPartner" type="button" disabled>Reset + configure partner</button><button id="growthPhysicsPairOpen" type="button" disabled>Open matched outcome</button></footer>
+                </section>
                 <p>Selecting a layer declares the investigation; it does not fabricate missing evidence. Where an explicit neutral value exists, the baseline / arm-B buttons rebuild the same specimen with exactly that one control changed. Controls without a defensible neutral value remain design-only. The binding, active arm, selected IDs, readiness blockers, and execution-hook coverage freeze before the first candidate frontier.</p>
               </section>
               <div id="growthPhysicsPreflightMatrix" class="leap-physics-matrix" role="group" aria-label="Inspect physical roles encoded or left open before growth"></div>
@@ -2191,7 +2197,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260828-323"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260828-323"></script>
+  <script type="module" src="./app.js?v=20260829-324"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260829-324"></script>
 </body>
 </html>

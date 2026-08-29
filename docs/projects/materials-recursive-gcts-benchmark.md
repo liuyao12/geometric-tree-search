@@ -1,5 +1,22 @@
 # Recursive GCTS benchmark for material growth
 
+### Receipt-verified paired physics workflow (Build 324)
+
+The matched-proxy handoff now continues through an explicit four-state protocol:
+register the reversible layer, execute and save Baseline, reset the supplied
+structural state and execute Arm B, then open the comparison only after the
+notebook gate verifies the pair. Saved runs remain separate receipt-bearing
+experiments; resetting Arm B does not erase the baseline or reuse its grown
+state.
+
+The progress model is pure and target-free. It groups saved runs by the frozen
+intervention plan but delegates scientific comparability to the authoritative
+outcome audit, which checks the same input and seed, public boundary, exactly one
+changed reversible control, identical candidate rule, target-free execution,
+and a non-truncated common update horizon. It neither enumerates candidates nor
+runs search, and the resulting delta remains a geometric-proxy omission response
+rather than a physical force, free-energy, rate, or causal-mechanism claim.
+
 ### Evidence-to-geometry investigation handoff (Build 323)
 
 Every omitted dynamical quantity now carries a serializable handoff in addition to its
