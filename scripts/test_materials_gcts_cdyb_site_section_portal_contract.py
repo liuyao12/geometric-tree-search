@@ -23,6 +23,7 @@ def test_cdyb_site_section_portal_contract() -> None:
     assert "group_refit_selector_passed" in BACKEND
     assert "value >= group_refit[\"correct\"]" in BACKEND
     assert "execute_partial_completion_site_masks" in EXECUTION
+    assert "execute_partial_completion_sections" in EXECUTION
     assert "future_confirmatory_target_opened: bool" in EXECUTION
     assert "geometry vocabulary is shared" in EXECUTION
 
@@ -38,6 +39,8 @@ def test_cdyb_site_section_portal_contract() -> None:
         "zero full child supports and zero parent clusters",
         "labeled accumulation, not self-feeding",
         "no future confirmation target has been opened",
+        "14 first-wave macro candidates expose 74 colored site obligations",
+        "whole-section arm sees identical candidate batches and commits zero",
     ):
         assert statement in HTML
     assert '["site calibration", "207 / 211 nested"]' in ATLAS
@@ -45,14 +48,24 @@ def test_cdyb_site_section_portal_contract() -> None:
     assert '["Site-resolved section", "207 / 211 · P 98.10%"' in ATLAS
     assert '["Group-sealed site execution", "8 / 9 sites · 0 complete children"' in ATLAS
     assert "future untouched confirmation remains sealed" in ATLAS
-    assert "Build 312 · executable Cd–Yb site-section gate" in README
+    assert 'closureFunnel: {' in ATLAS
+    assert '["macro candidates", 14' in ATLAS
+    assert '["site obligations", 74' in ATLAS
+    assert '["accepted sites", 9' in ATLAS
+    assert '["complete children", 0' in ATLAS
+    assert '["promoted parents", 0' in ATLAS
+    assert 'id="systemClosureFunnel"' in HTML
+    assert 'id="closureFunnelSteps"' in HTML
+    assert 'button.dataset.closureStep' in ATLAS
+    assert "Build 313 · interactive geometry-closure funnel" in README
+    assert "commits zero sections" in README
     assert "outer recall is only 0.39%" in README
     assert "exploratory training-corpus result" in README
     assert "older fully nested margin *selection* remains red at 94.48%" in README
-    assert 'buildId: "20260828-312"' in APP
-    assert 'app.js?v=20260828-312' in HTML
-    assert 'style.css?v=20260828-312' in HTML
-    assert 'evidence-atlas.js?v=20260828-312' in HTML
+    assert 'buildId: "20260828-313"' in APP
+    assert 'app.js?v=20260828-313' in HTML
+    assert 'style.css?v=20260828-313' in HTML
+    assert 'evidence-atlas.js?v=20260828-313' in HTML
 
 
 if __name__ == "__main__":

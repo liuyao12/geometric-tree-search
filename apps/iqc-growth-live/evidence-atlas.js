@@ -101,6 +101,17 @@ const SYSTEMS = {
     curveTitle: "explicit sites before a conservative fixed point",
     curveNote: "finite target-blind growth · not a stationary projection",
     metrics: [["causal nuclei", "295 / 295 exact"], ["held-out hierarchy", "4 re-encoding levels"], ["site calibration", "207 / 211 nested"], ["executable site gate", "8 / 9 · 0 children"], ["stationary witnesses", "0"]],
+    closureFunnel: {
+      title: "Cd–Yb · where a geometric leap currently stops",
+      summary: "Every count is generated with the held-window marking fit elsewhere. Select a stage to see what is certified—and what is still missing.",
+      steps: [
+        ["macro candidates", 14, "Fourteen frozen proper-SE(3) partial macros are supplied across the five central R7 nuclei. Candidate geometry is identical in the site-mask and whole-section arms."],
+        ["site obligations", 74, "The candidates expose 74 distinct first-wave colored site obligations. They are geometric RHS sites, not force-integrator timesteps."],
+        ["accepted sites", 9, "The fold-sealed local section commits nine collision-free sites; eight match the held windows. These are fragments, so no cluster occurrence exists yet."],
+        ["complete children", 0, "A child may appear only when every colored support site is present. No child support closes; the whole-section closure arm therefore commits nothing."],
+        ["promoted parents", 0, "Without complete children there is no exact parent union, no independently fitted promoted pose, and no cluster-of-clusters action."],
+      ],
+    },
     verdict: ["progress", "Real-material finite continuation passes · hierarchical transfer and stationarity remain open"],
     evidence: [
       ["Complete train cover", "2,385 / 2,385 atoms", "Five disjoint R14 windows learn 80 first-level types and explicit residual-complete representations from positions and species only."],
@@ -509,6 +520,30 @@ function renderSystem(key) {
   byId("atlasCurveProjected").textContent = system.curveProjected || "symbolic representation";
   byId("atlasCurveNote").textContent = system.curveNote || "log scale · labels show exact counts";
   byId("systemEvidenceCards").innerHTML = system.evidence.map(([label, value, note]) => `<article><small>${label}</small><strong>${value}</strong><p>${note}</p></article>`).join("");
+  const closure = byId("systemClosureFunnel");
+  closure.hidden = !system.closureFunnel;
+  if (system.closureFunnel) {
+    const funnel = system.closureFunnel;
+    const maximum = Math.max(...funnel.steps.map((step) => step[1]), 1);
+    byId("closureFunnelTitle").textContent = funnel.title;
+    byId("closureFunnelSummary").textContent = funnel.summary;
+    const detail = byId("closureFunnelDetail");
+    const buttons = funnel.steps.map(([label, value, note], index) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.dataset.closureStep = String(index);
+      button.setAttribute("role", "listitem");
+      button.style.setProperty("--closure-ratio", String(value / maximum));
+      button.innerHTML = `<small>${String(index + 1).padStart(2, "0")}</small><span>${label}</span><i></i><strong>${value.toLocaleString()}</strong>`;
+      button.addEventListener("click", () => {
+        buttons.forEach((item) => item.classList.toggle("active", item === button));
+        detail.innerHTML = `<b>${label}</b><span>${note}</span>`;
+      });
+      return button;
+    });
+    byId("closureFunnelSteps").replaceChildren(...buttons);
+    buttons[0]?.click();
+  }
   const a2Explorer = byId("a2CoronaExplorer");
   a2Explorer.hidden = key !== "a2";
   if (key === "a2") renderA2Explorer();

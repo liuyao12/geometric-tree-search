@@ -1,5 +1,22 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 313 · interactive geometry-closure funnel
+
+The evidence atlas now exposes the real Cd–Yb execution bottleneck as an
+interactive funnel: 14 frozen partial-macro candidates → 74 first-wave colored
+site obligations → 9 accepted sites → 0 complete children → 0 promoted
+parents. Selecting a stage explains its exact certificate and why the next
+stage is unavailable. This keeps a strong site classifier visually distinct
+from an executable cluster-growth rule.
+
+A second, whole-section execution arm tests the obvious obligation-closure
+policy without changing candidate geometry: a section may commit only when its
+fold-sealed aggregate score clears the same threshold, and then only as a
+complete port-witnessed child. It sees byte-identical first-wave candidate
+batches but commits zero sections. This avoids converting 8 / 9 correct
+fragments into an unjustified cluster. The closure gate, parent promotion,
+self-fed Cd–Yb growth, stationarity, and exponential claims remain red.
+
 ## Build 312 · executable Cd–Yb site-section gate
 
 The exploratory site mark now drives the generic target-free partial-site

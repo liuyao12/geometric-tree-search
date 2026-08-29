@@ -32,6 +32,8 @@ from materials_gcts_macro_promotion import promote_macro_types
 from materials_gcts_partial_completion_executor import PartialCompletionLevel
 from materials_gcts_partial_completion_site_mask_executor import (
     execute_partial_completion_site_masks)
+from materials_gcts_partial_completion_sections import (
+    execute_partial_completion_sections)
 from materials_gcts_partial_completion_site_policy import (
     adapt_frozen_site_section)
 from materials_gcts_port_graph_macros import mine_port_graph_macros
@@ -60,6 +62,15 @@ class HeldWindowExecution:
     self_fed: bool
     exact_certificates: bool
     first_wave_candidate_digest: str
+    closure_emitted_sites: int
+    closure_correct_sites: int
+    closure_wrong_sites: int
+    closure_precision: float
+    closure_completed_children: int
+    closure_promoted_parents: int
+    closure_self_fed: bool
+    closure_exact_certificates: bool
+    closure_first_wave_candidate_digest: str
 
 
 @dataclass(frozen=True)
@@ -84,6 +95,15 @@ class CdYbGroupSealedSiteMaskAudit:
     completed_children: int
     completed_parents: int
     exact_execution_certificates: bool
+    closure_total_emitted_sites: int
+    closure_total_correct_sites: int
+    closure_total_wrong_sites: int
+    closure_aggregate_precision: float
+    closure_completed_children: int
+    closure_promoted_parents: int
+    closure_self_fed_windows: int
+    closure_candidate_batches_match_site_masks: bool
+    obligation_closure_gate_passed: bool
     scientific_status: str
     audit_digest: str
 
@@ -167,9 +187,19 @@ def evaluate() -> CdYbGroupSealedSiteMaskAudit:
             explicit_seed_sites=seed_sites,
             public_boundary=ExecutionBoundary(center, RADIUS),
             maximum_waves=3, minimum_child_coverage=.5)
+        closure = execute_partial_completion_sections(
+            level, enumeration.occurrences, marking=policy,
+            minimum_marking_score=policy.site_acceptance_threshold,
+            explicit_seed_sites=seed_sites,
+            public_boundary=ExecutionBoundary(center, RADIUS),
+            maximum_waves=3, minimum_child_coverage=.5)
         emitted = {_site_key(site, .03) for site in execution.sites} - seed_keys
         correct = emitted.intersection(target_keys)
         wrong = emitted - target_keys
+        closure_emitted = ({_site_key(site, .03) for site in closure.sites} -
+                           seed_keys)
+        closure_correct = closure_emitted.intersection(target_keys)
+        closure_wrong = closure_emitted - target_keys
         waves = execution.waves
         results.append(HeldWindowExecution(
             held, len(seed_indices), fit_rows, negative_rows,
@@ -183,11 +213,22 @@ def evaluate() -> CdYbGroupSealedSiteMaskAudit:
             len(correct) / len(emitted) if emitted else 1.,
             len(correct) / max(1, len(target_keys - seed_keys)),
             execution.self_fed, execution.exact_certificates,
-            waves[0].whole_candidate_digest if waves else _digest(())))
+            waves[0].whole_candidate_digest if waves else _digest(()),
+            len(closure_emitted), len(closure_correct), len(closure_wrong),
+            (len(closure_correct) / len(closure_emitted)
+             if closure_emitted else 1.),
+            sum(item.appended_children for item in closure.waves),
+            len(closure.promoted_occurrences), closure.self_fed,
+            closure.exact_certificates,
+            (closure.waves[0].whole_candidate_digest
+             if closure.waves else _digest(()))))
 
     emitted = sum(item.emitted_sites for item in results)
     correct = sum(item.correct_sites for item in results)
     wrong = sum(item.wrong_sites for item in results)
+    closure_emitted = sum(item.closure_emitted_sites for item in results)
+    closure_correct = sum(item.closure_correct_sites for item in results)
+    closure_wrong = sum(item.closure_wrong_sites for item in results)
     payload = {
         "held_windows": [asdict(item) for item in results],
         "support_types": len(primitive.prototypes),
@@ -205,6 +246,15 @@ def evaluate() -> CdYbGroupSealedSiteMaskAudit:
         sum(item.self_fed for item in results),
         sum(sum(item.completed_children_by_wave) for item in results),
         sum(sum(item.completed_parents_by_wave) for item in results), exact,
+        closure_emitted, closure_correct, closure_wrong,
+        closure_correct / closure_emitted if closure_emitted else 1.,
+        sum(item.closure_completed_children for item in results),
+        sum(item.closure_promoted_parents for item in results),
+        sum(item.closure_self_fed for item in results),
+        all(item.first_wave_candidate_digest ==
+            item.closure_first_wave_candidate_digest for item in results),
+        (closure_emitted > 0 and not closure_wrong and
+         any(item.closure_promoted_parents for item in results)),
         ("group-sealed development execution; geometry vocabulary is shared "
          "across the five training windows; no untouched confirmation or "
          "autonomous-growth claim"), _digest(payload))

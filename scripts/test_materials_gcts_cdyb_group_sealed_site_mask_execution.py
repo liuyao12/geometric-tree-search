@@ -27,6 +27,18 @@ def test_cdyb_group_sealed_site_mask_execution():
     assert result.self_fed_windows == 0
     assert result.completed_children == 0
     assert result.completed_parents == 0
+    assert result.closure_total_emitted_sites == (
+        result.closure_total_correct_sites + result.closure_total_wrong_sites)
+    assert 0 <= result.closure_aggregate_precision <= 1
+    assert result.closure_completed_children >= result.closure_promoted_parents
+    assert result.closure_total_emitted_sites == 0
+    assert result.closure_completed_children == 0
+    assert result.closure_promoted_parents == 0
+    assert result.closure_self_fed_windows == 0
+    assert result.closure_candidate_batches_match_site_masks
+    assert not result.obligation_closure_gate_passed
+    assert all(item.closure_exact_certificates
+               for item in result.held_windows)
     assert result.total_emitted_sites == (
         result.total_correct_sites + result.total_wrong_sites)
     assert 0 <= result.aggregate_precision <= 1
