@@ -4,6 +4,8 @@
 from __future__ import annotations
 
 import importlib.util
+import gzip
+import json
 from pathlib import Path
 
 
@@ -49,5 +51,32 @@ chained = {
     },
 }
 assert module.source_patch(chained) == (3, first + added, "patch_extension")
+
+with gzip.open(
+    ROOT / "data" / "a2-sliced-alcove-size7-leads-radius2-radius3-gcts.ndjson.gz",
+    "rt",
+) as stream:
+    leads = [json.loads(line) for line in stream if line.strip()]
+assert len(leads) == 8
+assert len({record["id"] for record in leads}) == 8
+for record in leads:
+    root = module.GEOMETRY.record_occupancy(record)
+    orientations = module.GEOMETRY.orientations(root)
+    if record.get("retained_corona_extension_classification") == "radius2_witness":
+        receipt = record["retained_corona_extension"]
+    else:
+        assert record["corona2_classification"] == "radius2_witness"
+        receipt = record["corona2_cegar"]
+    replay = module.CEGAR.replay_extension(
+        orientations, receipt["first_patch"], receipt["added_patch"]
+    )
+    assert replay["verified"]
+    assert replay == receipt["replay"]
+    assert record["radius3_gcts_classification"] == "unresolved"
+
+assert sum(len(record["radius3_gcts"]["radius2_failure_clauses"])
+           for record in leads) == 66
+assert sum(len(record["radius3_gcts"]["first_corona_failure_clauses"])
+           for record in leads) == 50
 
 print("A2-sliced generic patch-extension regression passed")
