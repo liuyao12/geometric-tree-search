@@ -113,6 +113,37 @@ const SYSTEMS = {
         ["reserved parents", 11, "Eleven children and parents close across three waves. Because these structural windows were previously observed by re-encoding audits, this is spatial transfer—not fresh confirmation."],
       ],
     },
+    supplyAudit: {
+      title: "Cd–Yb · the abstraction layer that loses candidate supply",
+      summary: "Both R7 nuclei contain frozen recurring supports and hundreds of exact primitive-port continuations. Only one nucleus contains a support type promoted into a retained macro anchor.",
+      reserves: [
+        {
+          label: "reserve A · anchor-starved", state: "open",
+          steps: [
+            ["seed atoms", 64, "The public R7 nucleus contains 64 colored sites."],
+            ["recognized supports", 32, "Thirty-two exact occurrences span 17 frozen support types; primitive recognition is not the failure."],
+            ["macro anchors", 0, "None of those 17 support types appears as a child in the 181 retained macro alternatives, so the proper-SE(3) frame loop has zero hypotheses."],
+            ["whole candidates", 0, "With no retained child anchor, neither one-half nor one-third coverage can instantiate a macro pose."],
+            ["promoted parents", 0, "No complete child or parent can be certified. The executor correctly stops rather than inventing an attachment."],
+          ],
+          primitive: { exact: 204, total: 345, sites: 292 },
+          verdict: "Promotion lost locally useful roles: the frozen primitive port graph still supplies 204 exact actions, but 141 alternatives are inexact and no validated primitive ranker is installed.",
+        },
+        {
+          label: "reserve B · executable", state: "progress",
+          steps: [
+            ["seed atoms", 64, "The second public R7 nucleus also begins from 64 colored sites."],
+            ["recognized supports", 12, "Twelve exact occurrences span 10 frozen support types."],
+            ["macro anchors", 4, "Four occurrences, from four support types, participate in retained macro alternatives and generate 25 proper-frame hypotheses."],
+            ["whole candidates", 12, "Twelve complete-section candidates survive frozen ports, boundary, and collision checks."],
+            ["promoted parents", 11, "The frozen marking commits 4→4→3 sections: 81/81 emitted sites are correct and 11 exact parents promote."],
+          ],
+          primitive: { exact: 134, total: 348, sites: 261 },
+          verdict: "Where a retained macro anchor exists, the whole-child value transfers exactly. The remaining bottleneck is recurrent anchor coverage, not a looser child-fraction gate.",
+        },
+      ],
+      coverage: "1/3 rejected · one wrong action + 10 wrong sites · 1/2 retained",
+    },
     verdict: ["progress", "Real-material finite continuation passes · hierarchical transfer and stationarity remain open"],
     evidence: [
       ["Complete train cover", "2,385 / 2,385 atoms", "Five disjoint R14 windows learn 80 first-level types and explicit residual-complete representations from positions and species only."],
@@ -125,6 +156,7 @@ const SYSTEMS = {
       ["Site-resolved section", "207 / 211 · P 98.10%", "A deterministic four-window refit threshold is nonempty across all five outer folds (minimum P 95.92%) and beats shuffled retained-site yield, but it was devised on this corpus; future untouched confirmation remains sealed."],
       ["Group-sealed obligation execution", "146 / 146 sites · 16 parents", "A whole-child threshold fit outside each execution window closes 16 port-certified children and parents, self-feeding in two of five development windows. Geometry vocabulary is shared, so untouched transfer remains open."],
       ["Consumed spatial transfer", "81 / 81 sites · 11 parents", "The frozen final policy executes 4→4→3 sections in one reserved R14 window with no refit; the other has zero candidates. Exact value transfers where supply exists, but coverage and fresh confirmation remain open."],
+      ["Candidate-supply diagnosis", "0 anchor types · 204 / 345 exact primitive", "The empty reserve recognizes 32 support occurrences but none belongs to a retained macro child type. Lowering child coverage is unsafe and cannot create a frame; exact primitive supply survives below promotion."],
       ["Stationary audit", "0 three-scale keys", "Finite growth and nine-level compression are not renamed sustained or exponential quasicrystal growth."],
     ],
     actions: [
@@ -377,6 +409,7 @@ const CLAIMS = [
   ["open", "Nested calibration", "The strongest Cd–Yb site threshold is 97.73% precise when fixed, but fully nested selection is 94.48%; a fresh target stays sealed."],
   ["progress", "Child-obligation closure", "On five Cd–Yb development windows, a whole-child threshold fit outside each execution window emits 146/146 correct sites, closes and promotes 16 exact parents, and self-feeds in two windows. The geometry vocabulary is shared across folds, so this is finite development execution rather than untouched transfer or stationary growth."],
   ["progress", "Consumed Cd–Yb spatial transfer", "One of two spatially disjoint reserved windows executes 4→4→3 frozen whole-child sections with 81/81 correct sites and 11 promoted parents; the other supplies zero candidates. The policy is not refit, but both structural windows were previously used by re-encoding audits, so fresh confirmation remains open."],
+  ["progress", "Cd–Yb abstraction-boundary diagnosis", "The empty reserve has 32 exact support occurrences but zero retained macro-anchor types. Its primitive port graph still contains 204/345 exact actions; one-third child coverage is rejected by held-development errors. Promotion coverage—not local geometry or marking threshold—is the next gate."],
   ["open", "Generic QC stationarity", "No exact chemistry–chirality–directed-port production recurs across three consecutive QC levels."],
   ["progress", "IQC option-preserving beam", "A width-four target-free beam keeps the branch with the largest compatible next frontier. Frozen before wave 20, it adds 120/120 exact held-forward sites; all 24 waves are 572/572 exact. Spatial confirmation and stationarity remain open."],
   ["open", "Generic million-site QC growth", "Specialized/address ceilings cross one million; the family-blind cluster-of-clusters executor does not yet."],
@@ -509,6 +542,54 @@ function renderA2Explorer() {
   renderA2Candidate();
 }
 
+function renderSupplyAudit(audit) {
+  byId("supplyAuditTitle").textContent = audit.title;
+  byId("supplyAuditSummary").textContent = audit.summary;
+  const renderReserve = (index) => {
+    const reserve = audit.reserves[index];
+    document.querySelectorAll("[data-supply-reserve]").forEach((button) => {
+      const active = Number(button.dataset.supplyReserve) === index;
+      button.classList.toggle("active", active);
+      button.setAttribute("aria-selected", String(active));
+    });
+    const maximum = Math.max(...reserve.steps.map((step) => step[1]), 1);
+    const detail = byId("supplyAuditDetail");
+    const stageButtons = reserve.steps.map(([label, value, note], stage) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.dataset.supplyStage = String(stage);
+      button.style.setProperty("--supply-ratio", String(Math.sqrt(value / maximum)));
+      button.innerHTML = `<small>${String(stage + 1).padStart(2, "0")}</small><span>${label}</span><i></i><strong>${value.toLocaleString()}</strong>`;
+      button.addEventListener("click", () => {
+        stageButtons.forEach((item) => item.classList.toggle("active", item === button));
+        detail.className = `supply-audit-detail ${value ? "supplied" : "starved"}`;
+        detail.innerHTML = `<span>${label}</span><strong>${value.toLocaleString()}</strong><p>${note}</p>`;
+      });
+      return button;
+    });
+    byId("supplyAuditStages").replaceChildren(...stageButtons);
+    const primitive = reserve.primitive;
+    const exactRatio = primitive.total ? primitive.exact / primitive.total : 0;
+    byId("supplyAuditFallback").innerHTML = `
+      <header><span>lower-level port frontier</span><strong>${primitive.exact} exact / ${primitive.total} candidates</strong></header>
+      <div class="supply-fallback-meter"><i style="--primitive-exact:${exactRatio}"></i></div>
+      <dl><div><dt>exact primitive actions</dt><dd>${primitive.exact}</dd></div><div><dt>inexact alternatives</dt><dd>${primitive.total - primitive.exact}</dd></div><div><dt>exact site union</dt><dd>${primitive.sites}</dd></div></dl>
+      <p>${reserve.verdict}</p><footer>${audit.coverage}</footer>`;
+    stageButtons[0]?.click();
+  };
+  const tabs = audit.reserves.map((reserve, index) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.dataset.supplyReserve = String(index);
+    button.setAttribute("role", "tab");
+    button.innerHTML = `<span>${reserve.label}</span><strong>${reserve.steps[3][1] ? `${reserve.steps[3][1]} macro candidates` : "macro frontier empty"}</strong>`;
+    button.addEventListener("click", () => renderReserve(index));
+    return button;
+  });
+  byId("supplyAuditTabs").replaceChildren(...tabs);
+  renderReserve(0);
+}
+
 function renderSystem(key) {
   const system = SYSTEMS[key];
   document.querySelectorAll("[data-system]").forEach((button) => button.classList.toggle("active", button.dataset.system === key));
@@ -548,6 +629,9 @@ function renderSystem(key) {
     byId("closureFunnelSteps").replaceChildren(...buttons);
     buttons[0]?.click();
   }
+  const supply = byId("systemSupplyAudit");
+  supply.hidden = !system.supplyAudit;
+  if (system.supplyAudit) renderSupplyAudit(system.supplyAudit);
   const a2Explorer = byId("a2CoronaExplorer");
   a2Explorer.hidden = key !== "a2";
   if (key === "a2") renderA2Explorer();

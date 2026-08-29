@@ -1,5 +1,33 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 316 · candidate supply versus marking value
+
+The zero-candidate Cd–Yb reserve is now traced through every abstraction
+layer. Its 64-atom R7 nucleus recognizes 32 exact occurrences spanning 17
+frozen support types, yet none of those types occurs as a child in the 181
+retained macro alternatives. The macro frame loop therefore has zero pose
+hypotheses: changing the marking threshold cannot recover this frontier.
+
+A train-only comparison also rejects weakening the minimum observed child
+fraction from one-half to one-third. The relaxed rule adds candidate supply,
+but one group-heldout development action is wrong and introduces ten wrong
+sites; two folds remain empty. The exact one-half rule stays installed.
+
+Crucially, the lower abstraction is not empty. Before either reserve target is
+opened, the frozen primitive port grammar enumerates 345 actions in the
+anchor-starved reserve; posthoc scoring finds 204 exact actions whose union
+covers 292 correct sites. The executable reserve similarly contains 134 exact
+of 348 primitive actions, while four retained macro-anchor occurrences supply
+12 whole candidates and the published 11 exact promoted parents.
+
+The new interactive supply audit lets a reader switch between both reserves
+and inspect seed atoms → recognized supports → macro anchors → whole candidates
+→ promoted parents beside the primitive exact/inexact frontier. This locates
+the next scientific task precisely: learn a recurrent, transferable macro
+anchor cover over useful primitive connection roles. It does **not** install
+the noisy primitive fallback or claim fresh confirmation, stationarity, or
+autonomous growth.
+
 ## Build 315 · spatial transfer of whole-child value
 
 The final whole-child policy is now frozen from all five Cd–Yb training

@@ -208,7 +208,7 @@ def _site_features(site, emitted_sites, seed_sites, witness_sites,
 
 def _frontier_rows(primitive, quotient, parent_map, species, positions,
                    namespaces, patch, seed_center,
-                   seed_radius=SEED_RADIUS):
+                   seed_radius=SEED_RADIUS, *, minimum_child_coverage=.5):
     indices = tuple(index for index, point in enumerate(positions)
                     if namespaces[index] == patch and
                     math.dist(point, seed_center) <= seed_radius + 1e-10)
@@ -220,7 +220,8 @@ def _frontier_rows(primitive, quotient, parent_map, species, positions,
     lower = _frozen_heldout_program(primitive, enumeration)
     frontier = enumerate_partial_promoted_completions(
         lower, quotient.alternative_macros, minimum_matched_children=1,
-        minimum_child_coverage=.5, explicit_seed_sites=seed_sites,
+        minimum_child_coverage=minimum_child_coverage,
+        explicit_seed_sites=seed_sites,
         public_boundary=ExecutionBoundary(
             (patch * PACK_SEPARATION, 0., 0.), RADIUS),
         frozen_parent_types=parent_map)
