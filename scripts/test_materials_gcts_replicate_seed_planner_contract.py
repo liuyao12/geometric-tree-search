@@ -27,15 +27,20 @@ def main() -> None:
     for needle in (
         'function prepareNextPhysicsProtocolReplicate(audit, campaign)',
         'function localFrontierSeedPreview(mode, rank, nuclei, poseVariant)',
+        'function localFrontierPreviewCatalogue({ usedDigests = new Set()',
+        'function initializeFirstExecutableFittedSeed({ usedDigests = new Set()',
+        'function growthLaunchReadinessAudit()',
+        'function renderGrowthLaunchReadiness()',
         'candidateGeometryInspected: false',
         'const preview = localFrontierSeedPreview(mode, rank, nuclei, poseVariant);',
         'growthSeedProtocol = "local-frontier";',
         'for (const nuclei of [1, 2, 4])',
         'for (const rank of [0, 1, 2, 3, 4, 5, 6, 7])',
         'for (const poseVariant of [0, 1, 2, 3, 4, 5])',
-        'if (!preview.digest || usedDigests.has(preview.digest))',
-        'growthSeedAudit?.seedConfigurationDigest !== prepared.digest || frontierCandidates.length === 0',
-        'empty frontier',
+        'usedDigests.has(preview.digest) || seenDigests.has(preview.digest)',
+        'replay.digestMatched && replay.liveFrontier > 0',
+        'collision-or-closed-frontier',
+        'The current experiment was restored',
         'physicsProtocolSelectedIds = new Set(experiment.baselineSelectedRecordIds);',
         'physicsProtocolAblatedRecordId = experiment.ablatedRecordId;',
         'physicsProtocolPairSessionId = newPhysicsProtocolPairSessionId();',
@@ -50,12 +55,17 @@ def main() -> None:
     assert 'independent registered pairs' not in source
     assert 'id="nucleationRankSelect"' in html
     assert 'id="nucleationPoseSelect"' in html
+    assert 'id="growthLaunchReadiness"' in html
+    assert 'id="growthLaunchFindSeed"' in html
+    assert 'id="growthLaunchInspectClusters"' in html
+    assert 'id="growthLaunchRetrainMarking"' in html
     assert 'Proper rotation E · 137° about [1 −3 2]' in html
     assert 'Rank 8 · alternate fitted occurrence' in html
     assert 'nucleationCandidateRank' in source
     assert 'requestedCandidateRank' in source and 'resolvedCandidateRank' in source
     assert '.notebook-physics-seed-planner' in styles
-    assert 'buildId: "20260829-328"' in source
+    assert '.growth-launch-readiness' in styles
+    assert 'buildId: "20260829-329"' in source
     print("replicate seed planner contract: passed")
 
 

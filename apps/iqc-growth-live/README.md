@@ -1,5 +1,25 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 329 · target-free growth launch audit
+
+Material growth now begins with a visible launch audit rather than a silent zero
+frontier. It separately reports fitted occurrences, initialized seed types,
+outgoing frozen rules, the exact live frontier after collision/duplicate checks,
+and the minimum public-boundary margin. Its diagnosis distinguishes unresolved
+input, missing cluster support, missing connection vocabulary, a finite observed
+window that consumes every admitted attachment, a locally closed seed, and a
+genuinely executable frontier. Recovery buttons route directly to cluster
+identification or GCTS learning, while a third action searches for another
+target-free fitted nucleus.
+
+The nucleus planner now preserves and restores the current experiment while it
+builds its preview catalogue. Preview rule counts are not enough: as many as 24
+unique candidate seeds are replayed through the actual stage initializer, and a
+seed is called executable only when its centered coordinate digest matches and
+the live collision-filtered frontier is nonempty. Boundary, duplicate-digest,
+empty-rule, closed-frontier, and digest-mismatch failures are counted separately.
+No completion target, potential, or physical clock participates in this audit.
+
 ## Build 328 · executable-nucleus campaign planner
 
 The registered-replicate panel now inventories every fitted seed already used in

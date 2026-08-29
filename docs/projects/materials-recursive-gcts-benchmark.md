@@ -1,5 +1,25 @@
 # Recursive GCTS benchmark for material growth
 
+### Growth-launch readiness and exact seed replay (Build 329)
+
+Stage 4 now exposes the complete target-free launch chain as four measured
+quantities: fitted occurrence support, initialized seed-type support, outgoing
+frozen connection rules, and exact live frontier actions after duplicate-pose,
+species, exclusion-distance, and public-boundary checks. A signed boundary
+margin is reported in Å. The resulting finite state machine names the first
+failed layer and links back to Cluster identification or GCTS learning instead
+of collapsing every zero frontier into “change the specimen.”
+
+The campaign planner has also been hardened. Its 864 inexpensive previews are
+deduplicated by centered colored seed digest while preserving the current UI
+state. Candidates with boundary failure, used/equivalent digest, or no outgoing
+rule are counted and rejected. Up to 24 unique survivors are then initialized by
+the real search path; only exact digest replay plus a nonempty live frontier may
+register a new Baseline. If none passes, the previous experiment is rebuilt and
+the failure categories remain visible. This bounded replay can establish finite
+executable continuation, never physical growth arrest, kinetics, or a material
+potential.
+
 ### Executable-nucleus campaign planning (Build 328)
 
 The campaign audit now drives a target-free seed planner rather than merely

@@ -33,7 +33,7 @@ import { compareShadowMaterialFingerprints, SHADOW_MATERIAL_CONSEQUENCE_FIELDS }
 import { LEAP_CONSEQUENCE_COMPONENTS, resolveLeapConsequenceComparison }
   from "./leap-consequence-decomposition.mjs?v=20260828-290";
 import { buildDimensionlessLeapConsequence, buildDynamicalEvidencePlan }
-  from "./leap-structural-consequence.mjs?v=20260829-328";
+  from "./leap-structural-consequence.mjs?v=20260829-329";
 import { buildSettlingMaterialResponseHistory, buildSettlingMaterialResponseMatrix, compareSettlingMaterialFingerprints,
   SETTLING_MATERIAL_FIELDS }
   from "./settling-material-sensitivity.mjs?v=20260828-290";
@@ -59,7 +59,7 @@ import { compareHypothesisSeparationOutcomes }
 import { buildPhysicsProtocolCampaignReadiness, buildPhysicsProtocolPairProgress,
   buildPhysicsProtocolResponseFingerprint, comparePhysicsProtocolOutcomes,
   REPLICATE_SEED_MODE_IDS }
-  from "./physics-protocol-outcome.js?v=20260829-328";
+  from "./physics-protocol-outcome.js?v=20260829-329";
 import { buildSiteProvenance } from "./site-provenance.js?v=20260826-2";
 import { buildSiteConstraintAudit } from "./site-constraint-audit.js?v=20260826-1";
 import { compareSiteEnvironments } from "./site-environment-comparison.js?v=20260826-3";
@@ -519,6 +519,14 @@ const nucleationRankSelect = $("nucleationRankSelect");
 const nucleationRankHint = $("nucleationRankHint");
 const nucleationPoseSelect = $("nucleationPoseSelect");
 const nucleationPoseHint = $("nucleationPoseHint");
+const growthLaunchReadiness = $("growthLaunchReadiness");
+const growthLaunchReadinessTitle = $("growthLaunchReadinessTitle");
+const growthLaunchReadinessState = $("growthLaunchReadinessState");
+const growthLaunchReadinessMetrics = $("growthLaunchReadinessMetrics");
+const growthLaunchReadinessDetail = $("growthLaunchReadinessDetail");
+const growthLaunchFindSeed = $("growthLaunchFindSeed");
+const growthLaunchInspectClusters = $("growthLaunchInspectClusters");
+const growthLaunchRetrainMarking = $("growthLaunchRetrainMarking");
 const nucleationLandscapeInspector = $("nucleationLandscapeInspector");
 const nucleationLandscapeState = $("nucleationLandscapeState");
 const nucleationLandscapeSummary = $("nucleationLandscapeSummary");
@@ -11908,7 +11916,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260829-328",
+      buildId: "20260829-329",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -14344,7 +14352,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260829-328" },
+    application: { name: "Materials Growth Lab", buildId: "20260829-329" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },
@@ -23150,6 +23158,159 @@ function localFrontierSeedPreview(mode, rank, nuclei, poseVariant) {
     targetUsed: false, candidateGeometryInspected: false };
 }
 
+function localFrontierPreviewCatalogue({ usedDigests = new Set(), preferredModes = REPLICATE_SEED_MODE_IDS } = {}) {
+  const previous = { growthSeedProtocol, nucleationSiteMode, nucleationCandidateRank,
+    nucleationPoseVariant, requestedGrowthNuclei };
+  const candidates = [];
+  const skipped = { boundary: 0, duplicate: 0, "empty-rule-vocabulary": 0 };
+  const seenDigests = new Set();
+  try {
+    for (const nuclei of [1, 2, 4]) for (const mode of preferredModes) {
+      for (const rank of [0, 1, 2, 3, 4, 5, 6, 7]) for (const poseVariant of [0, 1, 2, 3, 4, 5]) {
+        const preview = localFrontierSeedPreview(mode, rank, nuclei, poseVariant);
+        if (!preview.publicBoundaryPassed) { skipped.boundary++; continue; }
+        if (!preview.digest || usedDigests.has(preview.digest) || seenDigests.has(preview.digest)) {
+          skipped.duplicate++; continue;
+        }
+        seenDigests.add(preview.digest);
+        if (preview.initialFrozenRules === 0) { skipped["empty-rule-vocabulary"]++; continue; }
+        candidates.push(preview);
+      }
+    }
+  } finally {
+    growthSeedProtocol = previous.growthSeedProtocol;
+    nucleationSiteMode = previous.nucleationSiteMode;
+    nucleationCandidateRank = previous.nucleationCandidateRank;
+    nucleationPoseVariant = previous.nucleationPoseVariant;
+    requestedGrowthNuclei = previous.requestedGrowthNuclei;
+  }
+  return { candidates, skipped, previewCount: candidates.length + Object.values(skipped).reduce((sum, count) => sum + count, 0),
+    targetUsed: false, candidateGeometryInspected: false };
+}
+
+function applyLocalFrontierPreview(preview) {
+  growthSeedProtocol = "local-frontier";
+  nucleationSiteMode = preview.mode;
+  nucleationCandidateRank = preview.rank - 1;
+  nucleationPoseVariant = preview.poseVariant;
+  requestedGrowthNuclei = preview.requestedNuclei;
+  growthProtocolMode = "custom";
+  enterPipelineStage(4);
+  return { digestMatched: growthSeedAudit?.seedConfigurationDigest === preview.digest,
+    liveFrontier: frontierCandidates.length,
+    initializedNuclei: growthSeedAudit?.initializedPlacements || 0,
+    explicitSeedSites: growthSeedAudit?.explicitSeedSites || 0 };
+}
+
+function initializeFirstExecutableFittedSeed({ usedDigests = new Set(), preferredModes = REPLICATE_SEED_MODE_IDS,
+  maximumLiveReplays = 24 } = {}) {
+  const previous = { stage: pipelineStage, growthSeedProtocol, nucleationSiteMode, nucleationCandidateRank,
+    nucleationPoseVariant, requestedGrowthNuclei, growthProtocolMode };
+  const catalogue = localFrontierPreviewCatalogue({ usedDigests, preferredModes });
+  const liveFailures = { "digest-mismatch": 0, "collision-or-closed-frontier": 0 };
+  const tested = catalogue.candidates.slice(0, maximumLiveReplays);
+  for (const preview of tested) {
+    const replay = applyLocalFrontierPreview(preview);
+    if (replay.digestMatched && replay.liveFrontier > 0) return { prepared: { ...preview, ...replay },
+      catalogue, liveFailures, liveReplayCount: tested.indexOf(preview) + 1,
+      liveReplayLimit: maximumLiveReplays, targetUsed: false };
+    liveFailures[replay.digestMatched ? "collision-or-closed-frontier" : "digest-mismatch"]++;
+  }
+  growthSeedProtocol = previous.growthSeedProtocol;
+  nucleationSiteMode = previous.nucleationSiteMode;
+  nucleationCandidateRank = previous.nucleationCandidateRank;
+  nucleationPoseVariant = previous.nucleationPoseVariant;
+  requestedGrowthNuclei = previous.requestedGrowthNuclei;
+  growthProtocolMode = previous.growthProtocolMode;
+  enterPipelineStage(previous.stage);
+  return { prepared: null, catalogue, liveFailures, liveReplayCount: tested.length,
+    liveReplayLimit: maximumLiveReplays, targetUsed: false };
+}
+
+function growthLaunchReadinessAudit() {
+  const fittedOccurrences = overlapGrammar?.occurrences?.filter((occurrence) => occurrence?.position).length || 0;
+  const seedPlacements = placedClusters.filter((placement) => placement.seedNucleus || placement.depth === 0);
+  const seedTypes = [...new Set(seedPlacements.map((placement) => placement.type))];
+  const outgoingRules = seedTypes.reduce((sum, type) => sum + (overlapGrammar.byFrom.get(type) || []).length, 0);
+  const boundaryMargins = atoms.map((atom) => growthEnvironmentSignedMargin(
+    confinementSelect.value, atom.p, growthDomainScale)).filter(Number.isFinite);
+  const minimumBoundaryMargin = boundaryMargins.length ? Math.min(...boundaryMargins) : null;
+  let state = "ready";
+  let title = `${frontierCandidates.length} executable frozen frontier action${frontierCandidates.length === 1 ? "" : "s"}`;
+  let detail = "The fitted seed, frozen connection vocabulary, public boundary, and live collision checks all admit target-free search.";
+  let recoveryStage = null;
+  if (currentMaterial().growthWithheld) {
+    state = "input-required"; title = "An occupationally resolved configuration is required";
+    detail = "The average-occupancy structure is not an executable atomic state. Supply or sample one valid realization before clustering or growth.";
+    recoveryStage = 0;
+  } else if (!fittedOccurrences || !seedPlacements.length) {
+    state = "cluster-support-missing"; title = "No fitted cluster occurrence can initialize growth";
+    detail = "Return to Cluster identification and obtain a complete repeated-support cover, including explicit residual/gap clusters.";
+    recoveryStage = 1;
+  } else if (!outgoingRules) {
+    state = "connection-vocabulary-missing"; title = "The selected seed types have no frozen outgoing connection";
+    detail = "The cluster geometry exists, but no admitted overlap/boundary port leaves these seed types. Inspect another fitted nucleus or retrain the GCTS connection marking.";
+    recoveryStage = 3;
+  } else if (!frontierCandidates.length && growthSeedProtocol === "observed-window") {
+    state = "observation-closed"; title = "The supplied observation consumes every admitted local attachment";
+    detail = "This is a finite grammar closure, not evidence that physical growth stops. Use a local occurrence nucleus to test outward continuation, or return to GCTS learning to enlarge the witnessed port vocabulary.";
+    recoveryStage = 3;
+  } else if (!frontierCandidates.length) {
+    state = "seed-closed"; title = "Frozen rules exist, but this nucleus has no live admissible action";
+    detail = "Duplicate-pose, species, exclusion-distance, or public-boundary checks removed the current attachments. Try another fitted occurrence; if all fail, enlarge the connection evidence in GCTS learning.";
+    recoveryStage = 3;
+  } else if (minimumBoundaryMargin !== null && minimumBoundaryMargin < -MERGE_TOLERANCE) {
+    state = "boundary-conflict"; title = "The current seed crosses the declared public boundary";
+    detail = "Choose another fitted occurrence or enlarge the explicitly public search domain. The boundary is never relaxed silently.";
+    recoveryStage = 4;
+  }
+  return { state, title, detail, recoveryStage, fittedOccurrences, seedPlacements: seedPlacements.length,
+    seedTypes: seedTypes.length, outgoingRules, frontierCandidates: frontierCandidates.length,
+    minimumBoundaryMargin, targetUsed: false, physicalPotentialUsed: false };
+}
+
+function renderGrowthLaunchReadiness() {
+  if (!growthLaunchReadiness) return;
+  growthLaunchReadiness.hidden = pipelineStage !== 4;
+  if (pipelineStage !== 4) return;
+  const audit = growthLaunchReadinessAudit();
+  growthLaunchReadiness.className = `growth-launch-readiness ${audit.state}`;
+  growthLaunchReadinessTitle.textContent = audit.title;
+  growthLaunchReadinessState.textContent = audit.state.replaceAll("-", " ");
+  const sceneToAngstrom = referenceSpacingA / Math.max(referenceSpacing, 1e-12);
+  const metrics = [
+    ["fitted occurrences", audit.fittedOccurrences, `${audit.seedPlacements} initialized`],
+    ["seed types", audit.seedTypes, `${audit.outgoingRules} outgoing frozen rules`],
+    ["live frontier", audit.frontierCandidates, "after exact collision + duplicate checks"],
+    ["minimum boundary margin", audit.minimumBoundaryMargin === null ? "—"
+      : `${(audit.minimumBoundaryMargin * sceneToAngstrom).toFixed(2)} Å`, "public domain only"],
+  ];
+  growthLaunchReadinessMetrics.replaceChildren(...metrics.map(([label, value, note]) => {
+    const tile = document.createElement("span");
+    const small = document.createElement("small"); small.textContent = label;
+    const strong = document.createElement("strong"); strong.textContent = String(value);
+    const em = document.createElement("em"); em.textContent = note;
+    tile.append(small, strong, em); return tile;
+  }));
+  growthLaunchReadinessDetail.textContent = `${audit.detail} Target calls: 0; no potential or physical time is inferred.`;
+  growthLaunchFindSeed.disabled = currentMaterial().growthWithheld || audit.fittedOccurrences === 0;
+  growthLaunchInspectClusters.classList.toggle("recommended", audit.recoveryStage === 1);
+  growthLaunchRetrainMarking.classList.toggle("recommended", audit.recoveryStage === 3);
+}
+
+function prepareStandaloneExecutableGrowthSeed() {
+  const used = new Set(growthSeedAudit?.seedConfigurationDigest ? [growthSeedAudit.seedConfigurationDigest] : []);
+  const result = initializeFirstExecutableFittedSeed({ usedDigests: used });
+  if (result.prepared) {
+    const seed = result.prepared;
+    receiptStatus.textContent = `Prepared executable target-free nucleus ${seed.digest} · ${NUCLEATION_SITE_LABELS[seed.mode] || seed.mode} rank ${seed.rank} · ${seed.poseLabel} · ${seed.explicitSeedSites} explicit sites · ${seed.liveFrontier} live frozen actions · verified after ${result.liveReplayCount} target-free initialization replay${result.liveReplayCount === 1 ? "" : "s"}.`;
+  } else {
+    const skipped = result.catalogue.skipped;
+    receiptStatus.textContent = `No executable fitted nucleus was found in the bounded target-free scan: ${skipped["empty-rule-vocabulary"]} empty-rule previews, ${skipped.boundary} public-boundary failures, ${skipped.duplicate} duplicate digests, ${result.liveFailures["collision-or-closed-frontier"]} live closed frontiers, and ${result.liveFailures["digest-mismatch"]} replay mismatches. Return to the recommended upstream stage; the current state was restored.`;
+  }
+  renderGrowthLaunchReadiness();
+}
+
 function initializeObservedWindowSeed() {
   const atomsByReferenceIndex = new Map();
   const atomsById = new Map();
@@ -25484,6 +25645,7 @@ function syncStageOptions() {
   epitaxyBadgeLabel.textContent = `${epitaxyTemplateLabel()} · w ${epitaxyWeight.toFixed(2)}`;
   renderNucleusInterfaceInspector();
   renderNucleationLandscapeInspector();
+  renderGrowthLaunchReadiness();
   stageOptionsPanel.hidden = !visible;
   renderStudyCompass();
   if (!visible) return;
@@ -29053,50 +29215,15 @@ function prepareNextPhysicsProtocolReplicate(audit, campaign) {
   const usedDigests = new Set(campaign.seedDigests || []);
   const preferredModes = [campaign.recommendedSeedMode, ...REPLICATE_SEED_MODE_IDS]
     .filter((mode, index, values) => mode && values.indexOf(mode) === index);
-  let prepared = null;
-  const skipped = [];
-  for (const nuclei of [1, 2, 4]) {
-    for (const mode of preferredModes) {
-      for (const rank of [0, 1, 2, 3, 4, 5, 6, 7]) {
-        for (const poseVariant of [0, 1, 2, 3, 4, 5]) {
-          const preview = localFrontierSeedPreview(mode, rank, nuclei, poseVariant);
-          const key = `${mode}#${rank + 1}×${nuclei}/P${poseVariant}`;
-          if (!preview.publicBoundaryPassed) {
-            skipped.push(`${key}: boundary`); continue;
-          }
-          if (!preview.digest || usedDigests.has(preview.digest)) {
-            skipped.push(`${key}: duplicate digest`); continue;
-          }
-          if (preview.initialFrozenRules === 0) {
-            skipped.push(`${key}: empty frontier`); continue;
-          }
-          prepared = preview;
-          break;
-        }
-        if (prepared) break;
-      }
-      if (prepared) break;
-    }
-    if (prepared) break;
-  }
+  const result = initializeFirstExecutableFittedSeed({ usedDigests, preferredModes });
+  let prepared = result.prepared;
   if (!prepared) {
-    receiptStatus.textContent = `No unused executable fitted seed was found across site modes, ranks 1–8, 1/2/4 requested nuclei, and six proper pose controls. ${skipped.slice(0, 18).join(" · ")}${skipped.length > 18 ? ` · +${skipped.length - 18} more` : ""}. Change the specimen before registering another pair.`;
+    const skipped = result.catalogue.skipped;
+    receiptStatus.textContent = `No unused executable fitted seed passed the bounded target-free scan. ${skipped["empty-rule-vocabulary"]} previews had no outgoing frozen rule, ${skipped.boundary} crossed the public boundary, ${skipped.duplicate} repeated a used/equivalent digest, ${result.liveFailures["collision-or-closed-frontier"]} failed the live collision/duplicate frontier, and ${result.liveFailures["digest-mismatch"]} failed exact preview replay. The current experiment was restored; inspect the launch audit before changing the specimen or retraining connections.`;
+    renderGrowthLaunchReadiness();
     return;
   }
-  growthSeedProtocol = "local-frontier";
-  nucleationSiteMode = prepared.mode;
-  nucleationCandidateRank = prepared.rank - 1;
-  nucleationPoseVariant = prepared.poseVariant;
-  requestedGrowthNuclei = prepared.requestedNuclei;
-  growthProtocolMode = "custom";
-  enterPipelineStage(4);
-  if (growthSeedAudit?.seedConfigurationDigest !== prepared.digest || frontierCandidates.length === 0) {
-    receiptStatus.textContent = "Seed preview failed its exact initialization replay or produced no frozen frontier; registration failed closed.";
-    return;
-  }
-  prepared = { ...prepared, initializedNuclei: growthSeedAudit.initializedPlacements,
-    explicitSeedSites: growthSeedAudit.explicitSeedSites,
-    frontierCandidates: frontierCandidates.length };
+  prepared = { ...prepared, frontierCandidates: prepared.liveFrontier };
   physicsProtocolSelectedIds = new Set(experiment.baselineSelectedRecordIds);
   physicsProtocolAblatedRecordId = experiment.ablatedRecordId;
   physicsProtocolArmRegistration = null;
@@ -29110,7 +29237,7 @@ function prepareNextPhysicsProtocolReplicate(audit, campaign) {
   }
   applyPhysicsProtocolArm(intervention, "baseline", physicsProtocolPairSessionId);
   requestAnimationFrame(() => growthPhysicsPairTracker.scrollIntoView({ behavior: "smooth", block: "center" }));
-  receiptStatus.textContent = `Prepared unused executable target-free nucleus ${prepared.digest} · ${NUCLEATION_SITE_LABELS[prepared.mode] || prepared.mode} rank ${prepared.rank} · ${prepared.poseLabel} · ${prepared.initializedNuclei}/${prepared.requestedNuclei} fitted nuclei · ${prepared.explicitSeedSites} explicit sites · ${prepared.frontierCandidates} frozen frontier actions · same intervention restored · new Baseline ready.`;
+  receiptStatus.textContent = `Prepared unused executable target-free nucleus ${prepared.digest} · ${NUCLEATION_SITE_LABELS[prepared.mode] || prepared.mode} rank ${prepared.rank} · ${prepared.poseLabel} · ${prepared.initializedNuclei}/${prepared.requestedNuclei} fitted nuclei · ${prepared.explicitSeedSites} explicit sites · ${prepared.frontierCandidates} live frozen frontier actions · verified after ${result.liveReplayCount} target-free initialization replay${result.liveReplayCount === 1 ? "" : "s"} · same intervention restored · new Baseline ready.`;
 }
 
 function renderPhysicsProtocolComposer(manifest) {
@@ -36004,6 +36131,15 @@ nucleationPoseSelect.addEventListener("change", () => {
   nucleationPoseVariant = Number.isInteger(value) && value >= 0 && value <= 5 ? value : 0;
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
+});
+growthLaunchFindSeed.addEventListener("click", prepareStandaloneExecutableGrowthSeed);
+growthLaunchInspectClusters.addEventListener("click", () => {
+  enterPipelineStage(1);
+  document.querySelector('[data-pipeline-stage="1"]')?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+});
+growthLaunchRetrainMarking.addEventListener("click", () => {
+  enterPipelineStage(3);
+  document.querySelector('[data-pipeline-stage="3"]')?.scrollIntoView({ behavior: "smooth", block: "nearest" });
 });
 growthSchedulingSelect.addEventListener("change", () => {
   growthScheduling = growthSchedulingSelect.value === "serial" ? "serial" : "commuting";
