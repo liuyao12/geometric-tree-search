@@ -65,8 +65,9 @@ const scale3ParentTypes = new Map([
   ["a2sa_7_00699", 2229], ["a2sa_7_00822", 1922]
 ]);
 const scale2FourCopyParentTypes = new Map([
-  ["a2sa_7_00120", 65110], ["a2sa_7_00139", 65349], ["a2sa_7_00569", 77830],
-  ["a2sa_7_00626", 74215], ["a2sa_7_00674", 66674]
+  ["a2sa_7_00120", 65110], ["a2sa_7_00139", 65349], ["a2sa_7_00170", 131836],
+  ["a2sa_7_00569", 77830], ["a2sa_7_00626", 74215], ["a2sa_7_00674", 66674],
+  ["a2sa_7_00699", 154916], ["a2sa_7_00822", 120010]
 ]);
 for (const candidate of A2_SLICED_SIZE7_CANDIDATES) {
   assert.deepEqual(candidate.screening.three_copy_metatile_substitution_scales_exhausted,
