@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260829-327">
+  <link rel="stylesheet" href="./style.css?v=20260829-328">
   <script type="importmap">
     {
       "imports": {
@@ -1201,6 +1201,30 @@
                 <option value="dispersed">Dispersed observed sites · farthest traversal</option>
               </select>
             </label>
+            <label class="field" for="nucleationRankSelect">
+              <span>Fitted nucleus candidate <b id="nucleationRankHint">rank 1</b></span>
+              <select id="nucleationRankSelect">
+                <option value="0" selected>Rank 1 · strongest site evidence</option>
+                <option value="1">Rank 2 · alternate fitted occurrence</option>
+                <option value="2">Rank 3 · alternate fitted occurrence</option>
+                <option value="3">Rank 4 · alternate fitted occurrence</option>
+                <option value="4">Rank 5 · alternate fitted occurrence</option>
+                <option value="5">Rank 6 · alternate fitted occurrence</option>
+                <option value="6">Rank 7 · alternate fitted occurrence</option>
+                <option value="7">Rank 8 · alternate fitted occurrence</option>
+              </select>
+            </label>
+            <label class="field" for="nucleationPoseSelect">
+              <span>Nucleus pose replicate <b id="nucleationPoseHint">observed pose</b></span>
+              <select id="nucleationPoseSelect">
+                <option value="0" selected>Observed fitted pose</option>
+                <option value="1">Proper rotation A · 37° about [1 2 3]</option>
+                <option value="2">Proper rotation B · 61° about [2 −1 1]</option>
+                <option value="3">Proper rotation C · 83° about [1 1 −2]</option>
+                <option value="4">Proper rotation D · 109° about [3 1 2]</option>
+                <option value="5">Proper rotation E · 137° about [1 −3 2]</option>
+              </select>
+            </label>
             <section id="nucleationLandscapeInspector" class="nucleation-landscape-inspector" hidden>
               <header><span><small>observed occurrence landscape</small><strong>Nucleation geometry inspector</strong></span><b id="nucleationLandscapeState">awaiting growth seed</b></header>
               <div id="nucleationLandscapeSummary" class="nucleation-landscape-summary"></div>
@@ -2198,7 +2222,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260829-327"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260829-327"></script>
+  <script type="module" src="./app.js?v=20260829-328"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260829-328"></script>
 </body>
 </html>

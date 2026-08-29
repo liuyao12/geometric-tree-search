@@ -1,5 +1,30 @@
 # Recursive GCTS benchmark for material growth
 
+### Executable-nucleus campaign planning (Build 328)
+
+The campaign audit now drives a target-free seed planner rather than merely
+asking the scientist to change the seed manually. From the fitted occurrence
+library it enumerates declared nucleation modes, ranks, requested nucleus counts,
+and six finite proper-pose choices. Each preview uses only fitted support,
+frozen outgoing-rule counts, the public growth boundary, and a centered colored
+coordinate digest. It never reads the known-window reconstruction target or
+scores a candidate against future atoms.
+
+A preview becomes a runnable Baseline only after the actual stage initializer
+reproduces its seed digest and exposes a nonempty frozen frontier. Used digests,
+boundary failures, empty-frontier seeds, and preview/replay mismatches are
+rejected with a visible reason. On success, the same selected evidence and the
+same declared omission are restored under a fresh pair-session ID. On failure,
+the planner leaves the current experiment intact and explicitly asks for another
+specimen instead of manufacturing a replicate.
+
+The proper-pose choices are controls on the same fitted geometry and public
+boundary. They do not turn one observation into independent material samples,
+and they are not evidence for rotational generalization unless an executable
+frontier actually survives. Campaign readiness remains a descriptive
+same-specimen algorithmic result, separate from population inference, kinetics,
+or a causal material mechanism.
+
 ### Target-free fitted nuclei for registered replicates (Build 327)
 
 The browser now makes the seed/target boundary explicit. In the new local-frontier

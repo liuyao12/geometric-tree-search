@@ -44,6 +44,10 @@ const RESPONSE_DOMAIN_DEFINITIONS = [
     question: "How did reciprocal and local orientational order change at the same update count?" },
 ];
 
+export const REPLICATE_SEED_MODE_IDS = Object.freeze([
+  "interior", "surface", "gap", "interface", "dispersed", "replay",
+]);
+
 function symmetricResponse(metricRecord) {
   if (metricRecord?.delta === null || metricRecord?.baseline === null
       || metricRecord?.ablation === null) return null;
@@ -213,6 +217,14 @@ export function comparePhysicsProtocolOutcomes(entries) {
   }
   const baselineSeedDigest = baseline.executionEvidence?.seedConfigurationDigest || null;
   const ablationSeedDigest = ablation.executionEvidence?.seedConfigurationDigest || null;
+  const baselineSeedSelectionMode = baseline.executionEvidence?.seedSelectionMode || null;
+  const ablationSeedSelectionMode = ablation.executionEvidence?.seedSelectionMode || null;
+  const baselineSeedNucleusCount = Number(baseline.executionEvidence?.seedNucleusCount) || null;
+  const ablationSeedNucleusCount = Number(ablation.executionEvidence?.seedNucleusCount) || null;
+  const baselineSeedCandidateRank = Number(baseline.executionEvidence?.seedCandidateRank) || null;
+  const ablationSeedCandidateRank = Number(ablation.executionEvidence?.seedCandidateRank) || null;
+  const baselineSeedPoseVariant = Number(baseline.executionEvidence?.seedPoseVariant) || 0;
+  const ablationSeedPoseVariant = Number(ablation.executionEvidence?.seedPoseVariant) || 0;
   if (!plan.initialStateMayChange && (!baselineSeedDigest || baselineSeedDigest !== ablationSeedDigest
       || baseline.executionEvidence?.seedTargetUsed !== false
       || ablation.executionEvidence?.seedTargetUsed !== false)) {
@@ -313,7 +325,16 @@ export function comparePhysicsProtocolOutcomes(entries) {
   ];
   const experiment = { ...plan, pairSessionId: baselinePairSessionId,
     inputIdentity: baseline.inputIdentity,
-    seedConfigurationDigest: baselineSeedDigest, commonUpdates,
+    seedConfigurationDigest: baselineSeedDigest,
+    seedSelectionMode: baselineSeedSelectionMode === ablationSeedSelectionMode
+      ? baselineSeedSelectionMode : null,
+    seedNucleusCount: baselineSeedNucleusCount === ablationSeedNucleusCount
+      ? baselineSeedNucleusCount : null,
+    seedCandidateRank: baselineSeedCandidateRank === ablationSeedCandidateRank
+      ? baselineSeedCandidateRank : null,
+    seedPoseVariant: baselineSeedPoseVariant === ablationSeedPoseVariant
+      ? baselineSeedPoseVariant : null,
+    commonUpdates,
     controlVectorSchema: baselineExperiment.controlVector.schema };
   const result = { schema: 1, status: "matched", comparable: true, reason: null,
     detail: `Matched ${plan.ablatedProcess} omission after ${commonUpdates} discrete structural update${commonUpdates === 1 ? "" : "s"}.`,
@@ -495,6 +516,22 @@ export function buildPhysicsProtocolCampaignReadiness(entries, referencePairSess
     && stableString(commonPlan(session.audit.experiment)) === designKey);
   const distinctSeeds = new Set(comparable.map((session) =>
     session.audit.experiment.seedConfigurationDigest).filter(Boolean));
+  const seedRecords = comparable.map((session) => ({
+    pairSessionId: session.pairSessionId,
+    seedConfigurationDigest: session.audit.experiment.seedConfigurationDigest || null,
+    seedSelectionMode: session.audit.experiment.seedSelectionMode || null,
+    seedNucleusCount: session.audit.experiment.seedNucleusCount || null,
+    seedCandidateRank: session.audit.experiment.seedCandidateRank || null,
+    seedPoseVariant: session.audit.experiment.seedPoseVariant ?? null,
+  }));
+  const seedModes = REPLICATE_SEED_MODE_IDS.map((id) => {
+    const records = seedRecords.filter((record) => record.seedSelectionMode === id);
+    return { id, pairCount: records.length,
+      distinctSeedCount: new Set(records.map((record) => record.seedConfigurationDigest)
+        .filter(Boolean)).size,
+      used: records.length > 0 };
+  });
+  const recommendedSeedMode = seedModes.find((mode) => !mode.used)?.id || null;
   const domains = RESPONSE_DOMAIN_DEFINITIONS.map((definition) => {
     const values = comparable.map((session) => session.audit.responseFingerprint.domains
       .find((domain) => domain.id === definition.id)?.signedMean).filter((value) => value !== null);
@@ -512,7 +549,7 @@ export function buildPhysicsProtocolCampaignReadiness(entries, referencePairSess
   });
   const replicated = comparable.length >= 3 && distinctSeeds.size >= 3;
   const state = replicated ? "replicated-descriptive"
-    : comparable.length >= 2 ? "more-independent-seeds-needed" : "single-pair";
+    : comparable.length >= 2 ? "more-distinct-seeds-needed" : "single-pair";
   const payload = { designKey, scenarioId: reference.scenarioId,
     pairSessionIds: comparable.map((session) => session.pairSessionId).sort(),
     seedDigests: [...distinctSeeds].sort(), domains };
@@ -520,12 +557,14 @@ export function buildPhysicsProtocolCampaignReadiness(entries, referencePairSess
     referencePairSessionId: reference.pairSessionId, scenarioId: reference.scenarioId,
     pairCount: comparable.length, distinctSeedCount: distinctSeeds.size,
     pairSessionIds: comparable.map((session) => session.pairSessionId), domains,
+    seedRecords, seedModes, recommendedSeedMode,
+    seedDigests: [...distinctSeeds].sort(),
     legacyEntryCount, ambiguousSessionCount: sessionAudits.filter((session) =>
       session.status === "ambiguous-session").length,
     campaignDigest: digest(payload), replicatedDescriptiveResponse: replicated,
     nextAction: replicated
       ? "Inspect cross-seed sign agreement; external specimens and physical validation are still required."
-      : `Run the same registered pair on ${Math.max(0, 3 - distinctSeeds.size)} more independent frozen seed${3 - distinctSeeds.size === 1 ? "" : "s"}.`,
+      : `Run the same registered pair on ${Math.max(0, 3 - distinctSeeds.size)} more distinct target-free seed${3 - distinctSeeds.size === 1 ? "" : "s"}.`,
     boundary: "This is repeatability of a target-free geometric algorithm across registered seed configurations. It is not a population estimate, force law, kinetic ensemble, or causal physical mechanism.",
     coordinatesEmbedded: false, targetUsed: false,
     causalPhysicalMechanismInferred: false };

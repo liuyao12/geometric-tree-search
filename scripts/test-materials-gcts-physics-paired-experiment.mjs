@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { buildPhysicsProtocolCampaignReadiness, buildPhysicsProtocolPairProgress,
-  buildPhysicsProtocolResponseFingerprint, comparePhysicsProtocolOutcomes }
+  buildPhysicsProtocolResponseFingerprint, comparePhysicsProtocolOutcomes,
+  REPLICATE_SEED_MODE_IDS }
   from "../apps/iqc-growth-live/physics-protocol-outcome.js";
 
 const selected = ["constraint-projection", "connection", "steric"];
@@ -75,6 +76,10 @@ function entry(id, arm, value, atoms) {
       executed: true,
       structuralLeapEvents: 1,
       seedConfigurationDigest: "same-seed",
+      seedSelectionMode: "interior",
+      seedNucleusCount: 1,
+      seedCandidateRank: 1,
+      seedPoseVariant: 0,
       seedTargetUsed: false,
       firstFrontierCandidateSetDigest: `${arm}-frontier`,
       firstFrontierTargetUsed: false,
@@ -158,25 +163,46 @@ assert.equal(singleCampaign.state, "single-pair");
 assert.equal(singleCampaign.pairCount, 1);
 assert.equal(singleCampaign.distinctSeedCount, 1);
 assert.equal(singleCampaign.replicatedDescriptiveResponse, false);
+assert.deepEqual(REPLICATE_SEED_MODE_IDS,
+  ["interior", "surface", "gap", "interface", "dispersed", "replay"]);
+assert.equal(singleCampaign.seedModes.find(({ id }) => id === "interior").pairCount, 1);
+assert.equal(singleCampaign.seedModes.find(({ id }) => id === "interior").distinctSeedCount, 1);
+assert.equal(singleCampaign.recommendedSeedMode, "surface");
+assert.deepEqual(singleCampaign.seedDigests, ["same-seed"]);
 assert.match(singleCampaign.boundary, /not a population estimate/);
 
-function replicatePair(sessionId, seedId, suffix) {
+function replicatePair(sessionId, seedId, suffix, seedSelectionMode) {
   const a = structuredClone(baseline); const b = structuredClone(armB);
   a.id = `baseline-${suffix}`; b.id = `arm-b-${suffix}`;
   a.physicsProtocolExperiment.armRegistration.pairSessionId = sessionId;
   b.physicsProtocolExperiment.armRegistration.pairSessionId = sessionId;
   a.executionEvidence.seedConfigurationDigest = seedId;
   b.executionEvidence.seedConfigurationDigest = seedId;
+  a.executionEvidence.seedSelectionMode = seedSelectionMode;
+  b.executionEvidence.seedSelectionMode = seedSelectionMode;
   return [a, b];
 }
-const pair2 = replicatePair("pair-test-2", "seed-2", "two");
-const pair3 = replicatePair("pair-test-3", "seed-3", "three");
+const pair2 = replicatePair("pair-test-2", "seed-2", "two", "surface");
+const pair3 = replicatePair("pair-test-3", "seed-3", "three", "gap");
+const twoPairCampaign = buildPhysicsProtocolCampaignReadiness(
+  [baseline, armB, ...pair2], "pair-test-1");
+assert.equal(twoPairCampaign.state, "more-distinct-seeds-needed");
+assert.equal(twoPairCampaign.recommendedSeedMode, "gap");
 const campaign = buildPhysicsProtocolCampaignReadiness(
   [baseline, armB, ...pair2, ...pair3], "pair-test-1");
 assert.equal(campaign.state, "replicated-descriptive");
 assert.equal(campaign.pairCount, 3);
 assert.equal(campaign.distinctSeedCount, 3);
 assert.equal(campaign.replicatedDescriptiveResponse, true);
+assert.equal(campaign.recommendedSeedMode, "interface");
+assert.deepEqual(campaign.seedRecords.map(({ seedSelectionMode }) => seedSelectionMode),
+  ["interior", "surface", "gap"]);
+assert.deepEqual(campaign.seedRecords.map(({ seedNucleusCount }) => seedNucleusCount),
+  [1, 1, 1]);
+assert.deepEqual(campaign.seedRecords.map(({ seedCandidateRank }) => seedCandidateRank),
+  [1, 1, 1]);
+assert.deepEqual(campaign.seedRecords.map(({ seedPoseVariant }) => seedPoseVariant),
+  [0, 0, 0]);
 assert.equal(campaign.domains.length, 3);
 assert.equal(campaign.causalPhysicalMechanismInferred, false);
 assert.equal(typeof campaign.campaignDigest, "string");

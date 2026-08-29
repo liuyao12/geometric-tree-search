@@ -30,10 +30,10 @@ def test_cdyb_evidence_ladder_contract():
     assert '["Run the live finite frontier", "cdyb", 4]' in ATLAS
 
     assert "generic frozen connection evidence" in HTML
-    assert 'evidence-atlas.js?v=20260829-327' in HTML
-    assert 'app.js?v=20260829-327' in HTML
-    assert 'style.css?v=20260829-327' in HTML
-    assert 'buildId: "20260829-327"' in APP
+    assert 'evidence-atlas.js?v=20260829-328' in HTML
+    assert 'app.js?v=20260829-328' in HTML
+    assert 'style.css?v=20260829-328' in HTML
+    assert 'buildId: "20260829-328"' in APP
     assert "Build 308 · published Cd–Yb evidence ladder" in README
 
 

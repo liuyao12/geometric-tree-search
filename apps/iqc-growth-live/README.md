@@ -1,5 +1,26 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 328 · executable-nucleus campaign planner
+
+The registered-replicate panel now inventories every fitted seed already used in
+the notebook and can prepare the next **unused, executable** target-free nucleus.
+It searches the declared nucleation-site modes, fitted-occurrence ranks, nucleus
+counts, and a finite library of proper rigid pose controls without consulting a
+completion target. A proposed seed is admitted only when its public-boundary
+check passes, its coordinate digest is new, its fitted type has frozen outgoing
+ports, and the exact live initialization reproduces the preview digest and a
+nonempty frontier. The planner then restores the same evidence selection and
+same reversible intervention, creates a new pair-session identity, and returns
+the workflow to Baseline.
+
+The inventory distinguishes observed-pose cuts from proper-pose controls and
+fails closed when the current specimen supplies no further executable nucleus.
+These are reproducible geometric controls on one supplied configuration and one
+frozen grammar—not independent material specimens, kinetic replicas, or samples
+from a population. A proper rotation is recorded explicitly and never treated as
+an improper reflection or as evidence for rotational transfer when its frontier
+is empty.
+
 ## Build 327 · reproducible target-free local nuclei
 
 The growth initial condition now separates two scientifically different uses of
