@@ -24,6 +24,9 @@ const retainedById = new Map((await readNdjson(
 const longRadiusById = new Map((await readGzipNdjson(
   "data/a2-sliced-alcove-size7-leads-radius2-radius3-gcts.ndjson.gz"
 )).map(record => [record.id, record]));
+const scale3ThreeCopyById = new Map((await readGzipNdjson(
+  "data/a2-sliced-alcove-size7-three-cluster-scale3-reflected-00139.ndjson.gz"
+)).map(record => [record.id, record]));
 
 const survivorRows = periodicRows.filter(record => record.classification === "unresolved");
 if (survivorRows.length !== 259) {
@@ -103,6 +106,14 @@ const candidates = selected.map(({ record, corona, retained }, index) => {
     throw new Error(`Missing replayed radius-two witness for ${record.id}`);
   }
   const radius3 = longRadius.radius3_gcts;
+  const scale3ThreeCopy = scale3ThreeCopyById.get(record.id);
+  if (scale3ThreeCopy && (
+    scale3ThreeCopy.classification !== "no_three_copy_metatile_scalar3_substitution"
+    || scale3ThreeCopy.three_copy_alcove_metatile_screen?.certified !== true
+    || scale3ThreeCopy.three_copy_alcove_metatile_screen?.parents_completed !== 1268
+  )) {
+    throw new Error(`Invalid scale-three three-copy certificate for ${record.id}`);
+  }
   return {
     id: record.id,
     kind: "a2_sliced_alcove_census",
@@ -155,8 +166,14 @@ const candidates = selected.map(({ record, corona, retained }, index) => {
       direct_scalar_substitution_symmetry_models: ["proper", "reflected"],
       two_copy_metatile_substitution_scales_exhausted: [2, 3],
       two_copy_metatile_substitution_symmetry_models: ["proper", "reflected"],
-      three_copy_metatile_substitution_scales_exhausted: [2],
-      three_copy_metatile_substitution_symmetry_models: ["proper", "reflected"]
+      three_copy_metatile_substitution_scales_exhausted: scale3ThreeCopy ? [2, 3] : [2],
+      three_copy_metatile_substitution_symmetry_models: ["proper", "reflected"],
+      three_copy_metatile_scale3_reflected_status: scale3ThreeCopy?.classification ?? "unresolved",
+      three_copy_metatile_scale3_reflected_parent_types:
+        scale3ThreeCopy?.three_copy_alcove_metatile_screen?.parents_completed ?? 0,
+      three_copy_metatile_scale3_reflected_report: scale3ThreeCopy
+        ? "data/a2-sliced-alcove-size7-three-cluster-scale3-reflected-00139.ndjson.gz"
+        : null
     },
     shell_screening: { robust_completed_shell: 0, deepest_completed_shell: 0 }
   };

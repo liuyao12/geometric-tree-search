@@ -59,6 +59,18 @@ for (const candidate of A2_SLICED_SIZE7_CANDIDATES) {
   assert.equal(prepared.summary.point_group_order, 6);
 }
 
+const sliced00139 = A2_SLICED_SIZE7_CANDIDATES.find(candidate =>
+  candidate.id === "a2sa_7_00139");
+assert.deepEqual(sliced00139.screening.three_copy_metatile_substitution_scales_exhausted,
+  [2, 3]);
+assert.equal(sliced00139.screening.three_copy_metatile_scale3_reflected_status,
+  "no_three_copy_metatile_scalar3_substitution");
+assert.equal(sliced00139.screening.three_copy_metatile_scale3_reflected_parent_types, 1268);
+for (const candidate of A2_SLICED_SIZE7_CANDIDATES.filter(item => item !== sliced00139)) {
+  assert.deepEqual(candidate.screening.three_copy_metatile_substitution_scales_exhausted, [2]);
+  assert.equal(candidate.screening.three_copy_metatile_scale3_reflected_status, "unresolved");
+}
+
 const config = {
   mode_key: "a2_hexagonal_prism",
   criterion: "count",
