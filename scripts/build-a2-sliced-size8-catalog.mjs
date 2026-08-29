@@ -8,11 +8,47 @@ const readNdjson = async path => (await readFile(new URL(path, root), "utf8"))
 const readGzipNdjson = async path => gunzipSync(await readFile(new URL(path, root)))
   .toString("utf8").trim().split("\n").filter(Boolean).map(JSON.parse);
 
+// The exact quotient backend and Prototile3D enumerate the same six proper
+// A2 orientations in different orders. These affine shifts convert the
+// proof's normalized alcove coordinates into the web engine's normalized
+// oriented-tile coordinates, then re-root the first placement at the origin.
+const proofToWebOrientation = [0, 3, 4, 1, 2, 5];
+const proofOrientationTransforms = [
+  [1, [0, 1, 2]], [1, [1, 2, 0]], [1, [2, 0, 1]],
+  [-1, [0, 2, 1]], [-1, [1, 0, 2]], [-1, [2, 1, 0]]
+];
+const webPeriodicTemplate = (certificate, geometry) => {
+  if (!certificate) return null;
+  const proofOrientationShifts = proofOrientationTransforms.map(([sign, permutation]) =>
+    [0, 1, 2].map(axis => Math.min(...geometry.v.map(vertex =>
+      sign * vertex[permutation[axis]]
+    )))
+  );
+  const rootShift = proofOrientationShifts[certificate.placements[0].orientation_index]
+    .map(value => -value);
+  return {
+    period_vectors: certificate.period_vectors,
+    motif: certificate.placements.map(placement => ({
+      prototile_idx: 0,
+      orientation_index: proofToWebOrientation[placement.orientation_index],
+      translation: placement.translation.map((value, axis) =>
+        value + proofOrientationShifts[placement.orientation_index][axis] + rootShift[axis]
+      )
+    }))
+  };
+};
+
 const representatives = await readNdjson(
   "data/a2-sliced-alcove-size8-directed-exact6-reflection-representatives.ndjson"
 );
 const exactThreeById = new Map((await readGzipNdjson(
   "data/a2-sliced-alcove-size8-directed-periodic-exact3.ndjson.gz"
+)).map(record => [record.id, record]));
+const exactTwelvePositiveById = new Map((await readGzipNdjson(
+  "data/a2-sliced-alcove-size8-directed-periodic-exact12-positive.ndjson.gz"
+)).map(record => [record.id, record]));
+const fourCopyProperById = new Map((await readGzipNdjson(
+  "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz"
 )).map(record => [record.id, record]));
 const coronaById = new Map((await readNdjson(
   "data/a2-sliced-alcove-size8-directed-corona1.ndjson"
@@ -23,17 +59,30 @@ const extensionById = new Map((await readNdjson(
 const corona2ById = new Map((await readGzipNdjson(
   "data/a2-sliced-alcove-size8-directed-corona2-gcts.ndjson.gz"
 )).map(record => [record.id, record]));
+const radius3ById = new Map((await readGzipNdjson(
+  "data/a2-sliced-alcove-size8-directed-radius3-gcts.ndjson.gz"
+)).map(record => [record.id, record]));
 
 if (representatives.length !== 15) {
   throw new Error(`Expected 15 reflection classes, found ${representatives.length}`);
 }
+if (exactTwelvePositiveById.size !== 2 || fourCopyProperById.size !== 13) {
+  throw new Error("Expected two 12-copy positives and 13 four-copy substitution survivors");
+}
+const unresolvedIds = representatives
+  .map(record => record.id)
+  .filter(id => !exactTwelvePositiveById.has(id));
+const survivorPriorityById = new Map(unresolvedIds.map((id, index) => [id, index + 1]));
 
 const candidates = representatives.map(record => {
   const geometry = makeA2SlicedAlcoveUnion(record.alcoves);
   const exactThree = exactThreeById.get(record.id);
+  const exactTwelve = exactTwelvePositiveById.get(record.id);
+  const fourCopyProper = fourCopyProperById.get(record.id);
   const corona = coronaById.get(record.id);
   const extension = extensionById.get(record.id);
   const corona2 = corona2ById.get(record.id);
+  const radius3 = radius3ById.get(record.id);
   if (exactThree?.classification !== "unresolved"
       || !exactThree.periodic_z3?.hnf_range_exhausted
       || !corona?.corona_z3?.replay?.verified || !extension) {
@@ -47,6 +96,14 @@ const candidates = representatives.map(record => {
   if (radius2Evidence && !radius2Evidence.replay?.verified) {
     throw new Error(`Unverified radius-two witness for ${record.id}`);
   }
+  if (exactTwelve && (!exactTwelve.periodic_z3?.replay?.verified
+      || exactTwelve.periodic_z3.certificate?.copies !== 12)) {
+    throw new Error(`Unverified 12-copy periodic witness for ${record.id}`);
+  }
+  if (!exactTwelve && (!fourCopyProper?.four_copy_alcove_metatile_screen?.certified
+      || fourCopyProper.classification !== "no_four_copy_metatile_scalar2_substitution")) {
+    throw new Error(`Missing four-copy substitution exclusion for ${record.id}`);
+  }
   return {
     id: record.id,
     kind: "a2_sliced_alcove_census",
@@ -55,13 +112,15 @@ const candidates = representatives.map(record => {
     alcoves: record.alcoves,
     morphology: record.morphology,
     lattice_points: geometry.occ.length,
-    survivor_priority: record.survivor_priority,
-    survivor_count: representatives.length,
+    survivor_priority: survivorPriorityById.get(record.id) ?? null,
+    survivor_count: unresolvedIds.length,
     description: "Eight-alcove non-polycube lattice function coupling consecutive triangular sections x+y+z=k.",
     screening: {
-      status: "inconclusive",
-      certificate: null,
-      census_stage: "a2_sliced_size8_consecutive_layers_exact_through6_2026_08_29",
+      status: exactTwelve ? "periodic" : "inconclusive",
+      certificate: exactTwelve ? "translational" : null,
+      census_stage: exactTwelve
+        ? "a2_sliced_size8_consecutive_layers_12_copy_positive_2026_08_29"
+        : "a2_sliced_size8_consecutive_layers_exact_through6_12_copy_bounded_2026_08_29",
       source_pool_size: 4406,
       three_copy_periodic_certificates: 3335,
       three_copy_periodic_survivors: 1071,
@@ -74,7 +133,8 @@ const candidates = representatives.map(record => {
       six_copy_periodic_survivor_reflection_classes: 15,
       reflection_class_size: record.reflection_class.size,
       reflection_class_members: record.reflection_class.members,
-      periodic_exact_through: 6,
+      periodic_exact_through: exactTwelve ? 12 : 6,
+      periodic_requested_through: 12,
       periodic_solver_unknowns: record.periodic_z3.solver_unknown,
       periodic_three_copy_complete: exactThree.periodic_z3.hnf_range_exhausted === true,
       periodic_three_copy_exact_multicover_nodes: exactThree.periodic_z3.exact_multicover_nodes,
@@ -82,6 +142,14 @@ const candidates = representatives.map(record => {
       periodic_six_copy_exact_multicover_nodes: record.periodic_z3.exact_multicover_nodes,
       periodic_three_copy_report: "data/a2-sliced-alcove-size8-directed-periodic-exact3.ndjson.gz",
       periodic_report: "data/a2-sliced-alcove-size8-directed-periodic-exact6.ndjson.gz",
+      periodic_twelve_copy_certificate: exactTwelve?.periodic_z3.certificate ?? null,
+      periodic_twelve_copy_replay_verified: exactTwelve?.periodic_z3.replay?.verified ?? false,
+      periodic_twelve_copy_positive_report:
+        "data/a2-sliced-alcove-size8-directed-periodic-exact12-positive.ndjson.gz",
+      motif_tiles: exactTwelve?.periodic_z3.certificate?.copies ?? null,
+      period_vectors: exactTwelve?.periodic_z3.certificate?.period_vectors ?? null,
+      quotient_determinant: exactTwelve?.periodic_z3.certificate?.determinant ?? null,
+      periodic_template: webPeriodicTemplate(exactTwelve?.periodic_z3.certificate, geometry),
       corona_completed_radius: 1,
       corona_completed_verified: true,
       corona_root_patch_copies: corona.corona_z3.replay.patch_copies,
@@ -98,10 +166,26 @@ const candidates = representatives.map(record => {
       radius_two_report: corona2
         ? "data/a2-sliced-alcove-size8-directed-corona2-gcts.ndjson.gz"
         : "data/a2-sliced-alcove-size8-directed-retained-corona-extension.ndjson",
+      radius_three_status: radius3?.radius3_gcts_classification ?? null,
+      radius_three_outer_rounds: radius3?.radius3_gcts?.outer_rounds ?? 0,
+      radius_three_first_corona_failure_clauses:
+        radius3?.radius3_gcts?.first_corona_failure_clauses?.length ?? 0,
+      radius_three_stopped_by: radius3?.radius3_gcts?.stopped_by ?? null,
+      radius_three_cumulative_milliseconds:
+        radius3?.radius3_gcts?.cumulative_milliseconds ?? 0,
+      radius_three_report: radius3
+        ? "data/a2-sliced-alcove-size8-directed-radius3-gcts.ndjson.gz"
+        : null,
       substitution_direct_scalar_scales_excluded: [2, 3, 4, 5, 6, 7, 8],
       substitution_two_copy_metatile_scalar_scales_excluded: [2, 3],
       substitution_three_copy_metatile_scalar_scales_excluded: [2, 3],
-      substitution_models_exhausted: ["proper", "reflected"]
+      substitution_models_exhausted: ["proper", "reflected"],
+      substitution_four_copy_metatile_proper_scalar_scales_excluded:
+        fourCopyProper ? [2] : [],
+      substitution_four_copy_metatile_types_exhausted:
+        fourCopyProper?.four_copy_alcove_metatile_screen?.symmetry_distinct_metatiles ?? null,
+      substitution_four_copy_report:
+        "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz"
     },
     shell_screening: { robust_completed_shell: 0, deepest_completed_shell: 0 }
   };

@@ -246,12 +246,16 @@ size-seven leads.  Their exact solid-angle functions couple every consecutive
 section `x+y+z=k`. For size eight, the exact screen first finds 3,335
 three-copy periods and advances 1,071 shapes to the six-copy screen, which
 finds 1,045 additional periods. The remaining 26 shapes reduce to 15
-reflection classes, and every displayed entry has an independently replayed
-root corona. Seven of the size-eight classes
+reflection classes. A later determinant-16 pass finds replayed 12-copy
+periods for two more classes; they move to the periodic controls, leaving 13
+size-eight research candidates. Every displayed entry has an independently
+replayed root corona. Six of the 13 surviving size-eight classes
 also have replayed radius-two witnesses; bounded GCTS retains sound failure
 clauses for the unresolved cases. Complete cellular screens exclude direct
 self-substitutions at scales 2–8 and connected two- and three-copy metatile
 substitutions at scales 2 and 3, in both proper and reflected models. The
+complete proper-orientation four-copy alphabet is also excluded at scale 2
+for all 13 survivors; the reflected four-copy screen remains open. The
 ranking measures finite-search
 difficulty, not likelihood of aperiodicity.  The same group also contains
 exact prisms over the A2 hexagon, hat, and turtle, plus the earlier multi-slab

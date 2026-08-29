@@ -1705,12 +1705,12 @@ assert.deepEqual(
   }
 );
 assert.equal(shellControls.length, 9);
-assert.equal(periodicControls.length, 37);
+assert.equal(periodicControls.length, 39);
 const visiblePeriodicControls = periodicControls.filter(isGctsFigureVisibleInCatalog);
 assert.equal(GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES, 5);
 assert.deepEqual(
   visiblePeriodicControls.map(figure => figure.census_candidate.id).sort(),
-  ["10_45033", "11_151715", "12_204255", "12_405129", "13_0635270", "a2lp_7_00694", "p9-43172"],
+  ["10_45033", "11_151715", "12_204255", "12_405129", "13_0635270", "a2lp_7_00694", "a2sa_8_00888", "a2sa_8_02965", "p9-43172"],
   "the public catalogue should retain only periodic controls with a large certified motif"
 );
 assert.ok(periodicControls

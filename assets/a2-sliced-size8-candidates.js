@@ -122,13 +122,13 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "transverse_profile_asymmetric": true
     },
     "lattice_points": 10,
-    "survivor_priority": 1,
-    "survivor_count": 15,
+    "survivor_priority": null,
+    "survivor_count": 13,
     "description": "Eight-alcove non-polycube lattice function coupling consecutive triangular sections x+y+z=k.",
     "screening": {
-      "status": "inconclusive",
-      "certificate": null,
-      "census_stage": "a2_sliced_size8_consecutive_layers_exact_through6_2026_08_29",
+      "status": "periodic",
+      "certificate": "translational",
+      "census_stage": "a2_sliced_size8_consecutive_layers_12_copy_positive_2026_08_29",
       "source_pool_size": 4406,
       "three_copy_periodic_certificates": 3335,
       "three_copy_periodic_survivors": 1071,
@@ -142,7 +142,8 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "reflection_class_members": [
         "a2sa_8_00888"
       ],
-      "periodic_exact_through": 6,
+      "periodic_exact_through": 12,
+      "periodic_requested_through": 12,
       "periodic_solver_unknowns": 0,
       "periodic_three_copy_complete": true,
       "periodic_three_copy_exact_multicover_nodes": 0,
@@ -150,6 +151,280 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "periodic_six_copy_exact_multicover_nodes": 453071,
       "periodic_three_copy_report": "data/a2-sliced-alcove-size8-directed-periodic-exact3.ndjson.gz",
       "periodic_report": "data/a2-sliced-alcove-size8-directed-periodic-exact6.ndjson.gz",
+      "periodic_twelve_copy_certificate": {
+        "kind": "weighted_periodic_hnf_quotient",
+        "certified": true,
+        "can_tile": true,
+        "model": "a2_sliced_exact_lattice_function",
+        "copies": 12,
+        "determinant": 16,
+        "period_vectors": [
+          [
+            4,
+            0,
+            0
+          ],
+          [
+            0,
+            4,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ]
+        ],
+        "placements": [
+          {
+            "orientation_index": 0,
+            "translation": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "orientation_index": 1,
+            "translation": [
+              1,
+              3,
+              0
+            ]
+          },
+          {
+            "orientation_index": 1,
+            "translation": [
+              3,
+              2,
+              0
+            ]
+          },
+          {
+            "orientation_index": 2,
+            "translation": [
+              0,
+              3,
+              0
+            ]
+          },
+          {
+            "orientation_index": 2,
+            "translation": [
+              3,
+              1,
+              0
+            ]
+          },
+          {
+            "orientation_index": 2,
+            "translation": [
+              3,
+              2,
+              0
+            ]
+          },
+          {
+            "orientation_index": 3,
+            "translation": [
+              2,
+              2,
+              0
+            ]
+          },
+          {
+            "orientation_index": 4,
+            "translation": [
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "orientation_index": 4,
+            "translation": [
+              3,
+              0,
+              0
+            ]
+          },
+          {
+            "orientation_index": 5,
+            "translation": [
+              2,
+              1,
+              0
+            ]
+          },
+          {
+            "orientation_index": 5,
+            "translation": [
+              3,
+              0,
+              0
+            ]
+          },
+          {
+            "orientation_index": 5,
+            "translation": [
+              3,
+              3,
+              0
+            ]
+          }
+        ],
+        "hnf_index": 60
+      },
+      "periodic_twelve_copy_replay_verified": true,
+      "periodic_twelve_copy_positive_report": "data/a2-sliced-alcove-size8-directed-periodic-exact12-positive.ndjson.gz",
+      "motif_tiles": 12,
+      "period_vectors": [
+        [
+          4,
+          0,
+          0
+        ],
+        [
+          0,
+          4,
+          0
+        ],
+        [
+          0,
+          1,
+          1
+        ]
+      ],
+      "quotient_determinant": 16,
+      "periodic_template": {
+        "period_vectors": [
+          [
+            4,
+            0,
+            0
+          ],
+          [
+            0,
+            4,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ]
+        ],
+        "motif": [
+          {
+            "prototile_idx": 0,
+            "orientation_index": 0,
+            "translation": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 3,
+            "translation": [
+              1,
+              3,
+              0
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 3,
+            "translation": [
+              3,
+              2,
+              0
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 4,
+            "translation": [
+              0,
+              3,
+              0
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 4,
+            "translation": [
+              3,
+              1,
+              0
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 4,
+            "translation": [
+              3,
+              2,
+              0
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 1,
+            "translation": [
+              0,
+              1,
+              -2
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 2,
+            "translation": [
+              -1,
+              -1,
+              -1
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 2,
+            "translation": [
+              1,
+              -2,
+              -1
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 5,
+            "translation": [
+              1,
+              -1,
+              -2
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 5,
+            "translation": [
+              2,
+              -2,
+              -2
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 5,
+            "translation": [
+              2,
+              1,
+              -2
+            ]
+          }
+        ]
+      },
       "corona_completed_radius": 1,
       "corona_completed_verified": true,
       "corona_root_patch_copies": 38,
@@ -163,6 +438,12 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "radius_two_failure_clauses": 60,
       "radius_two_stopped_by": null,
       "radius_two_report": "data/a2-sliced-alcove-size8-directed-corona2-gcts.ndjson.gz",
+      "radius_three_status": null,
+      "radius_three_outer_rounds": 0,
+      "radius_three_first_corona_failure_clauses": 0,
+      "radius_three_stopped_by": null,
+      "radius_three_cumulative_milliseconds": 0,
+      "radius_three_report": null,
       "substitution_direct_scalar_scales_excluded": [
         2,
         3,
@@ -183,7 +464,10 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "substitution_models_exhausted": [
         "proper",
         "reflected"
-      ]
+      ],
+      "substitution_four_copy_metatile_proper_scalar_scales_excluded": [],
+      "substitution_four_copy_metatile_types_exhausted": null,
+      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -313,13 +597,13 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "transverse_profile_asymmetric": true
     },
     "lattice_points": 11,
-    "survivor_priority": 2,
-    "survivor_count": 15,
+    "survivor_priority": 1,
+    "survivor_count": 13,
     "description": "Eight-alcove non-polycube lattice function coupling consecutive triangular sections x+y+z=k.",
     "screening": {
       "status": "inconclusive",
       "certificate": null,
-      "census_stage": "a2_sliced_size8_consecutive_layers_exact_through6_2026_08_29",
+      "census_stage": "a2_sliced_size8_consecutive_layers_exact_through6_12_copy_bounded_2026_08_29",
       "source_pool_size": 4406,
       "three_copy_periodic_certificates": 3335,
       "three_copy_periodic_survivors": 1071,
@@ -334,6 +618,7 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
         "a2sa_8_00240"
       ],
       "periodic_exact_through": 6,
+      "periodic_requested_through": 12,
       "periodic_solver_unknowns": 0,
       "periodic_three_copy_complete": true,
       "periodic_three_copy_exact_multicover_nodes": 0,
@@ -341,6 +626,13 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "periodic_six_copy_exact_multicover_nodes": 438683,
       "periodic_three_copy_report": "data/a2-sliced-alcove-size8-directed-periodic-exact3.ndjson.gz",
       "periodic_report": "data/a2-sliced-alcove-size8-directed-periodic-exact6.ndjson.gz",
+      "periodic_twelve_copy_certificate": null,
+      "periodic_twelve_copy_replay_verified": false,
+      "periodic_twelve_copy_positive_report": "data/a2-sliced-alcove-size8-directed-periodic-exact12-positive.ndjson.gz",
+      "motif_tiles": null,
+      "period_vectors": null,
+      "quotient_determinant": null,
+      "periodic_template": null,
       "corona_completed_radius": 1,
       "corona_completed_verified": true,
       "corona_root_patch_copies": 33,
@@ -354,6 +646,12 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "radius_two_failure_clauses": 1,
       "radius_two_stopped_by": "solver_timeout",
       "radius_two_report": "data/a2-sliced-alcove-size8-directed-corona2-gcts.ndjson.gz",
+      "radius_three_status": null,
+      "radius_three_outer_rounds": 0,
+      "radius_three_first_corona_failure_clauses": 0,
+      "radius_three_stopped_by": null,
+      "radius_three_cumulative_milliseconds": 0,
+      "radius_three_report": null,
       "substitution_direct_scalar_scales_excluded": [
         2,
         3,
@@ -374,7 +672,12 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "substitution_models_exhausted": [
         "proper",
         "reflected"
-      ]
+      ],
+      "substitution_four_copy_metatile_proper_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_metatile_types_exhausted": 12336,
+      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -505,13 +808,13 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "transverse_profile_asymmetric": true
     },
     "lattice_points": 11,
-    "survivor_priority": 3,
-    "survivor_count": 15,
+    "survivor_priority": 2,
+    "survivor_count": 13,
     "description": "Eight-alcove non-polycube lattice function coupling consecutive triangular sections x+y+z=k.",
     "screening": {
       "status": "inconclusive",
       "certificate": null,
-      "census_stage": "a2_sliced_size8_consecutive_layers_exact_through6_2026_08_29",
+      "census_stage": "a2_sliced_size8_consecutive_layers_exact_through6_12_copy_bounded_2026_08_29",
       "source_pool_size": 4406,
       "three_copy_periodic_certificates": 3335,
       "three_copy_periodic_survivors": 1071,
@@ -527,6 +830,7 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
         "a2sa_8_01296"
       ],
       "periodic_exact_through": 6,
+      "periodic_requested_through": 12,
       "periodic_solver_unknowns": 0,
       "periodic_three_copy_complete": true,
       "periodic_three_copy_exact_multicover_nodes": 0,
@@ -534,6 +838,13 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "periodic_six_copy_exact_multicover_nodes": 425984,
       "periodic_three_copy_report": "data/a2-sliced-alcove-size8-directed-periodic-exact3.ndjson.gz",
       "periodic_report": "data/a2-sliced-alcove-size8-directed-periodic-exact6.ndjson.gz",
+      "periodic_twelve_copy_certificate": null,
+      "periodic_twelve_copy_replay_verified": false,
+      "periodic_twelve_copy_positive_report": "data/a2-sliced-alcove-size8-directed-periodic-exact12-positive.ndjson.gz",
+      "motif_tiles": null,
+      "period_vectors": null,
+      "quotient_determinant": null,
+      "periodic_template": null,
       "corona_completed_radius": 1,
       "corona_completed_verified": true,
       "corona_root_patch_copies": 47,
@@ -547,6 +858,12 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "radius_two_failure_clauses": 14,
       "radius_two_stopped_by": null,
       "radius_two_report": "data/a2-sliced-alcove-size8-directed-corona2-gcts.ndjson.gz",
+      "radius_three_status": "unresolved",
+      "radius_three_outer_rounds": 80,
+      "radius_three_first_corona_failure_clauses": 80,
+      "radius_three_stopped_by": "outer_round_limit",
+      "radius_three_cumulative_milliseconds": 46444,
+      "radius_three_report": "data/a2-sliced-alcove-size8-directed-radius3-gcts.ndjson.gz",
       "substitution_direct_scalar_scales_excluded": [
         2,
         3,
@@ -567,7 +884,12 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "substitution_models_exhausted": [
         "proper",
         "reflected"
-      ]
+      ],
+      "substitution_four_copy_metatile_proper_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_metatile_types_exhausted": 15999,
+      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -698,13 +1020,13 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "transverse_profile_asymmetric": true
     },
     "lattice_points": 11,
-    "survivor_priority": 4,
-    "survivor_count": 15,
+    "survivor_priority": 3,
+    "survivor_count": 13,
     "description": "Eight-alcove non-polycube lattice function coupling consecutive triangular sections x+y+z=k.",
     "screening": {
       "status": "inconclusive",
       "certificate": null,
-      "census_stage": "a2_sliced_size8_consecutive_layers_exact_through6_2026_08_29",
+      "census_stage": "a2_sliced_size8_consecutive_layers_exact_through6_12_copy_bounded_2026_08_29",
       "source_pool_size": 4406,
       "three_copy_periodic_certificates": 3335,
       "three_copy_periodic_survivors": 1071,
@@ -720,6 +1042,7 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
         "a2sa_8_03993"
       ],
       "periodic_exact_through": 6,
+      "periodic_requested_through": 12,
       "periodic_solver_unknowns": 0,
       "periodic_three_copy_complete": true,
       "periodic_three_copy_exact_multicover_nodes": 0,
@@ -727,6 +1050,13 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "periodic_six_copy_exact_multicover_nodes": 394235,
       "periodic_three_copy_report": "data/a2-sliced-alcove-size8-directed-periodic-exact3.ndjson.gz",
       "periodic_report": "data/a2-sliced-alcove-size8-directed-periodic-exact6.ndjson.gz",
+      "periodic_twelve_copy_certificate": null,
+      "periodic_twelve_copy_replay_verified": false,
+      "periodic_twelve_copy_positive_report": "data/a2-sliced-alcove-size8-directed-periodic-exact12-positive.ndjson.gz",
+      "motif_tiles": null,
+      "period_vectors": null,
+      "quotient_determinant": null,
+      "periodic_template": null,
       "corona_completed_radius": 1,
       "corona_completed_verified": true,
       "corona_root_patch_copies": 36,
@@ -740,6 +1070,12 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "radius_two_failure_clauses": 0,
       "radius_two_stopped_by": null,
       "radius_two_report": "data/a2-sliced-alcove-size8-directed-corona2-gcts.ndjson.gz",
+      "radius_three_status": "unresolved",
+      "radius_three_outer_rounds": 0,
+      "radius_three_first_corona_failure_clauses": 0,
+      "radius_three_stopped_by": "middle_solver_timeout",
+      "radius_three_cumulative_milliseconds": 40849,
+      "radius_three_report": "data/a2-sliced-alcove-size8-directed-radius3-gcts.ndjson.gz",
       "substitution_direct_scalar_scales_excluded": [
         2,
         3,
@@ -760,7 +1096,12 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "substitution_models_exhausted": [
         "proper",
         "reflected"
-      ]
+      ],
+      "substitution_four_copy_metatile_proper_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_metatile_types_exhausted": 14750,
+      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -890,13 +1231,13 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "transverse_profile_asymmetric": true
     },
     "lattice_points": 11,
-    "survivor_priority": 5,
-    "survivor_count": 15,
+    "survivor_priority": 4,
+    "survivor_count": 13,
     "description": "Eight-alcove non-polycube lattice function coupling consecutive triangular sections x+y+z=k.",
     "screening": {
       "status": "inconclusive",
       "certificate": null,
-      "census_stage": "a2_sliced_size8_consecutive_layers_exact_through6_2026_08_29",
+      "census_stage": "a2_sliced_size8_consecutive_layers_exact_through6_12_copy_bounded_2026_08_29",
       "source_pool_size": 4406,
       "three_copy_periodic_certificates": 3335,
       "three_copy_periodic_survivors": 1071,
@@ -911,6 +1252,7 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
         "a2sa_8_00279"
       ],
       "periodic_exact_through": 6,
+      "periodic_requested_through": 12,
       "periodic_solver_unknowns": 0,
       "periodic_three_copy_complete": true,
       "periodic_three_copy_exact_multicover_nodes": 0,
@@ -918,6 +1260,13 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "periodic_six_copy_exact_multicover_nodes": 384116,
       "periodic_three_copy_report": "data/a2-sliced-alcove-size8-directed-periodic-exact3.ndjson.gz",
       "periodic_report": "data/a2-sliced-alcove-size8-directed-periodic-exact6.ndjson.gz",
+      "periodic_twelve_copy_certificate": null,
+      "periodic_twelve_copy_replay_verified": false,
+      "periodic_twelve_copy_positive_report": "data/a2-sliced-alcove-size8-directed-periodic-exact12-positive.ndjson.gz",
+      "motif_tiles": null,
+      "period_vectors": null,
+      "quotient_determinant": null,
+      "periodic_template": null,
       "corona_completed_radius": 1,
       "corona_completed_verified": true,
       "corona_root_patch_copies": 44,
@@ -931,6 +1280,12 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "radius_two_failure_clauses": 279,
       "radius_two_stopped_by": null,
       "radius_two_report": "data/a2-sliced-alcove-size8-directed-corona2-gcts.ndjson.gz",
+      "radius_three_status": "unresolved",
+      "radius_three_outer_rounds": 73,
+      "radius_three_first_corona_failure_clauses": 73,
+      "radius_three_stopped_by": "outer_round_limit",
+      "radius_three_cumulative_milliseconds": 47354,
+      "radius_three_report": "data/a2-sliced-alcove-size8-directed-radius3-gcts.ndjson.gz",
       "substitution_direct_scalar_scales_excluded": [
         2,
         3,
@@ -951,7 +1306,12 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "substitution_models_exhausted": [
         "proper",
         "reflected"
-      ]
+      ],
+      "substitution_four_copy_metatile_proper_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_metatile_types_exhausted": 12018,
+      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -1080,13 +1440,13 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "transverse_profile_asymmetric": true
     },
     "lattice_points": 11,
-    "survivor_priority": 6,
-    "survivor_count": 15,
+    "survivor_priority": 5,
+    "survivor_count": 13,
     "description": "Eight-alcove non-polycube lattice function coupling consecutive triangular sections x+y+z=k.",
     "screening": {
       "status": "inconclusive",
       "certificate": null,
-      "census_stage": "a2_sliced_size8_consecutive_layers_exact_through6_2026_08_29",
+      "census_stage": "a2_sliced_size8_consecutive_layers_exact_through6_12_copy_bounded_2026_08_29",
       "source_pool_size": 4406,
       "three_copy_periodic_certificates": 3335,
       "three_copy_periodic_survivors": 1071,
@@ -1101,6 +1461,7 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
         "a2sa_8_01059"
       ],
       "periodic_exact_through": 6,
+      "periodic_requested_through": 12,
       "periodic_solver_unknowns": 0,
       "periodic_three_copy_complete": true,
       "periodic_three_copy_exact_multicover_nodes": 0,
@@ -1108,6 +1469,13 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "periodic_six_copy_exact_multicover_nodes": 381492,
       "periodic_three_copy_report": "data/a2-sliced-alcove-size8-directed-periodic-exact3.ndjson.gz",
       "periodic_report": "data/a2-sliced-alcove-size8-directed-periodic-exact6.ndjson.gz",
+      "periodic_twelve_copy_certificate": null,
+      "periodic_twelve_copy_replay_verified": false,
+      "periodic_twelve_copy_positive_report": "data/a2-sliced-alcove-size8-directed-periodic-exact12-positive.ndjson.gz",
+      "motif_tiles": null,
+      "period_vectors": null,
+      "quotient_determinant": null,
+      "periodic_template": null,
       "corona_completed_radius": 1,
       "corona_completed_verified": true,
       "corona_root_patch_copies": 37,
@@ -1121,6 +1489,12 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "radius_two_failure_clauses": 18,
       "radius_two_stopped_by": null,
       "radius_two_report": "data/a2-sliced-alcove-size8-directed-corona2-gcts.ndjson.gz",
+      "radius_three_status": "unresolved",
+      "radius_three_outer_rounds": 33,
+      "radius_three_first_corona_failure_clauses": 33,
+      "radius_three_stopped_by": "middle_solver_timeout",
+      "radius_three_cumulative_milliseconds": 60969,
+      "radius_three_report": "data/a2-sliced-alcove-size8-directed-radius3-gcts.ndjson.gz",
       "substitution_direct_scalar_scales_excluded": [
         2,
         3,
@@ -1141,7 +1515,12 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "substitution_models_exhausted": [
         "proper",
         "reflected"
-      ]
+      ],
+      "substitution_four_copy_metatile_proper_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_metatile_types_exhausted": 13914,
+      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -1272,13 +1651,13 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "transverse_profile_asymmetric": true
     },
     "lattice_points": 11,
-    "survivor_priority": 7,
-    "survivor_count": 15,
+    "survivor_priority": 6,
+    "survivor_count": 13,
     "description": "Eight-alcove non-polycube lattice function coupling consecutive triangular sections x+y+z=k.",
     "screening": {
       "status": "inconclusive",
       "certificate": null,
-      "census_stage": "a2_sliced_size8_consecutive_layers_exact_through6_2026_08_29",
+      "census_stage": "a2_sliced_size8_consecutive_layers_exact_through6_12_copy_bounded_2026_08_29",
       "source_pool_size": 4406,
       "three_copy_periodic_certificates": 3335,
       "three_copy_periodic_survivors": 1071,
@@ -1294,6 +1673,7 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
         "a2sa_8_04115"
       ],
       "periodic_exact_through": 6,
+      "periodic_requested_through": 12,
       "periodic_solver_unknowns": 0,
       "periodic_three_copy_complete": true,
       "periodic_three_copy_exact_multicover_nodes": 0,
@@ -1301,6 +1681,13 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "periodic_six_copy_exact_multicover_nodes": 355614,
       "periodic_three_copy_report": "data/a2-sliced-alcove-size8-directed-periodic-exact3.ndjson.gz",
       "periodic_report": "data/a2-sliced-alcove-size8-directed-periodic-exact6.ndjson.gz",
+      "periodic_twelve_copy_certificate": null,
+      "periodic_twelve_copy_replay_verified": false,
+      "periodic_twelve_copy_positive_report": "data/a2-sliced-alcove-size8-directed-periodic-exact12-positive.ndjson.gz",
+      "motif_tiles": null,
+      "period_vectors": null,
+      "quotient_determinant": null,
+      "periodic_template": null,
       "corona_completed_radius": 1,
       "corona_completed_verified": true,
       "corona_root_patch_copies": 28,
@@ -1311,9 +1698,15 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "radius_two_status": "unresolved",
       "radius_two_patch_copies": null,
       "radius_two_completed_verified": false,
-      "radius_two_failure_clauses": 125,
+      "radius_two_failure_clauses": 156,
       "radius_two_stopped_by": "solver_timeout",
       "radius_two_report": "data/a2-sliced-alcove-size8-directed-corona2-gcts.ndjson.gz",
+      "radius_three_status": null,
+      "radius_three_outer_rounds": 0,
+      "radius_three_first_corona_failure_clauses": 0,
+      "radius_three_stopped_by": null,
+      "radius_three_cumulative_milliseconds": 0,
+      "radius_three_report": null,
       "substitution_direct_scalar_scales_excluded": [
         2,
         3,
@@ -1334,7 +1727,12 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "substitution_models_exhausted": [
         "proper",
         "reflected"
-      ]
+      ],
+      "substitution_four_copy_metatile_proper_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_metatile_types_exhausted": 26149,
+      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -1464,13 +1862,13 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "transverse_profile_asymmetric": true
     },
     "lattice_points": 11,
-    "survivor_priority": 8,
-    "survivor_count": 15,
+    "survivor_priority": 7,
+    "survivor_count": 13,
     "description": "Eight-alcove non-polycube lattice function coupling consecutive triangular sections x+y+z=k.",
     "screening": {
       "status": "inconclusive",
       "certificate": null,
-      "census_stage": "a2_sliced_size8_consecutive_layers_exact_through6_2026_08_29",
+      "census_stage": "a2_sliced_size8_consecutive_layers_exact_through6_12_copy_bounded_2026_08_29",
       "source_pool_size": 4406,
       "three_copy_periodic_certificates": 3335,
       "three_copy_periodic_survivors": 1071,
@@ -1486,6 +1884,7 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
         "a2sa_8_03808"
       ],
       "periodic_exact_through": 6,
+      "periodic_requested_through": 12,
       "periodic_solver_unknowns": 0,
       "periodic_three_copy_complete": true,
       "periodic_three_copy_exact_multicover_nodes": 0,
@@ -1493,6 +1892,13 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "periodic_six_copy_exact_multicover_nodes": 346534,
       "periodic_three_copy_report": "data/a2-sliced-alcove-size8-directed-periodic-exact3.ndjson.gz",
       "periodic_report": "data/a2-sliced-alcove-size8-directed-periodic-exact6.ndjson.gz",
+      "periodic_twelve_copy_certificate": null,
+      "periodic_twelve_copy_replay_verified": false,
+      "periodic_twelve_copy_positive_report": "data/a2-sliced-alcove-size8-directed-periodic-exact12-positive.ndjson.gz",
+      "motif_tiles": null,
+      "period_vectors": null,
+      "quotient_determinant": null,
+      "periodic_template": null,
       "corona_completed_radius": 1,
       "corona_completed_verified": true,
       "corona_root_patch_copies": 39,
@@ -1506,6 +1912,12 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "radius_two_failure_clauses": 149,
       "radius_two_stopped_by": null,
       "radius_two_report": "data/a2-sliced-alcove-size8-directed-corona2-gcts.ndjson.gz",
+      "radius_three_status": "unresolved",
+      "radius_three_outer_rounds": 52,
+      "radius_three_first_corona_failure_clauses": 52,
+      "radius_three_stopped_by": "middle_solver_timeout",
+      "radius_three_cumulative_milliseconds": 55405,
+      "radius_three_report": "data/a2-sliced-alcove-size8-directed-radius3-gcts.ndjson.gz",
       "substitution_direct_scalar_scales_excluded": [
         2,
         3,
@@ -1526,7 +1938,12 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "substitution_models_exhausted": [
         "proper",
         "reflected"
-      ]
+      ],
+      "substitution_four_copy_metatile_proper_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_metatile_types_exhausted": 14827,
+      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -1655,13 +2072,13 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "transverse_profile_asymmetric": true
     },
     "lattice_points": 11,
-    "survivor_priority": 9,
-    "survivor_count": 15,
+    "survivor_priority": 8,
+    "survivor_count": 13,
     "description": "Eight-alcove non-polycube lattice function coupling consecutive triangular sections x+y+z=k.",
     "screening": {
       "status": "inconclusive",
       "certificate": null,
-      "census_stage": "a2_sliced_size8_consecutive_layers_exact_through6_2026_08_29",
+      "census_stage": "a2_sliced_size8_consecutive_layers_exact_through6_12_copy_bounded_2026_08_29",
       "source_pool_size": 4406,
       "three_copy_periodic_certificates": 3335,
       "three_copy_periodic_survivors": 1071,
@@ -1677,6 +2094,7 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
         "a2sa_8_01137"
       ],
       "periodic_exact_through": 6,
+      "periodic_requested_through": 12,
       "periodic_solver_unknowns": 0,
       "periodic_three_copy_complete": true,
       "periodic_three_copy_exact_multicover_nodes": 0,
@@ -1684,6 +2102,13 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "periodic_six_copy_exact_multicover_nodes": 344394,
       "periodic_three_copy_report": "data/a2-sliced-alcove-size8-directed-periodic-exact3.ndjson.gz",
       "periodic_report": "data/a2-sliced-alcove-size8-directed-periodic-exact6.ndjson.gz",
+      "periodic_twelve_copy_certificate": null,
+      "periodic_twelve_copy_replay_verified": false,
+      "periodic_twelve_copy_positive_report": "data/a2-sliced-alcove-size8-directed-periodic-exact12-positive.ndjson.gz",
+      "motif_tiles": null,
+      "period_vectors": null,
+      "quotient_determinant": null,
+      "periodic_template": null,
       "corona_completed_radius": 1,
       "corona_completed_verified": true,
       "corona_root_patch_copies": 41,
@@ -1694,9 +2119,15 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "radius_two_status": "unresolved",
       "radius_two_patch_copies": null,
       "radius_two_completed_verified": false,
-      "radius_two_failure_clauses": 120,
+      "radius_two_failure_clauses": 134,
       "radius_two_stopped_by": "solver_timeout",
       "radius_two_report": "data/a2-sliced-alcove-size8-directed-corona2-gcts.ndjson.gz",
+      "radius_three_status": null,
+      "radius_three_outer_rounds": 0,
+      "radius_three_first_corona_failure_clauses": 0,
+      "radius_three_stopped_by": null,
+      "radius_three_cumulative_milliseconds": 0,
+      "radius_three_report": null,
       "substitution_direct_scalar_scales_excluded": [
         2,
         3,
@@ -1717,7 +2148,12 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "substitution_models_exhausted": [
         "proper",
         "reflected"
-      ]
+      ],
+      "substitution_four_copy_metatile_proper_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_metatile_types_exhausted": 28371,
+      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -1846,13 +2282,13 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "transverse_profile_asymmetric": true
     },
     "lattice_points": 11,
-    "survivor_priority": 10,
-    "survivor_count": 15,
+    "survivor_priority": 9,
+    "survivor_count": 13,
     "description": "Eight-alcove non-polycube lattice function coupling consecutive triangular sections x+y+z=k.",
     "screening": {
       "status": "inconclusive",
       "certificate": null,
-      "census_stage": "a2_sliced_size8_consecutive_layers_exact_through6_2026_08_29",
+      "census_stage": "a2_sliced_size8_consecutive_layers_exact_through6_12_copy_bounded_2026_08_29",
       "source_pool_size": 4406,
       "three_copy_periodic_certificates": 3335,
       "three_copy_periodic_survivors": 1071,
@@ -1868,6 +2304,7 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
         "a2sa_8_03924"
       ],
       "periodic_exact_through": 6,
+      "periodic_requested_through": 12,
       "periodic_solver_unknowns": 0,
       "periodic_three_copy_complete": true,
       "periodic_three_copy_exact_multicover_nodes": 0,
@@ -1875,6 +2312,13 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "periodic_six_copy_exact_multicover_nodes": 322154,
       "periodic_three_copy_report": "data/a2-sliced-alcove-size8-directed-periodic-exact3.ndjson.gz",
       "periodic_report": "data/a2-sliced-alcove-size8-directed-periodic-exact6.ndjson.gz",
+      "periodic_twelve_copy_certificate": null,
+      "periodic_twelve_copy_replay_verified": false,
+      "periodic_twelve_copy_positive_report": "data/a2-sliced-alcove-size8-directed-periodic-exact12-positive.ndjson.gz",
+      "motif_tiles": null,
+      "period_vectors": null,
+      "quotient_determinant": null,
+      "periodic_template": null,
       "corona_completed_radius": 1,
       "corona_completed_verified": true,
       "corona_root_patch_copies": 45,
@@ -1888,6 +2332,12 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "radius_two_failure_clauses": 0,
       "radius_two_stopped_by": null,
       "radius_two_report": "data/a2-sliced-alcove-size8-directed-retained-corona-extension.ndjson",
+      "radius_three_status": "unresolved",
+      "radius_three_outer_rounds": 80,
+      "radius_three_first_corona_failure_clauses": 80,
+      "radius_three_stopped_by": "outer_round_limit",
+      "radius_three_cumulative_milliseconds": 42768,
+      "radius_three_report": "data/a2-sliced-alcove-size8-directed-radius3-gcts.ndjson.gz",
       "substitution_direct_scalar_scales_excluded": [
         2,
         3,
@@ -1908,7 +2358,12 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "substitution_models_exhausted": [
         "proper",
         "reflected"
-      ]
+      ],
+      "substitution_four_copy_metatile_proper_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_metatile_types_exhausted": 28716,
+      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -2038,13 +2493,13 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "transverse_profile_asymmetric": true
     },
     "lattice_points": 11,
-    "survivor_priority": 11,
-    "survivor_count": 15,
+    "survivor_priority": 10,
+    "survivor_count": 13,
     "description": "Eight-alcove non-polycube lattice function coupling consecutive triangular sections x+y+z=k.",
     "screening": {
       "status": "inconclusive",
       "certificate": null,
-      "census_stage": "a2_sliced_size8_consecutive_layers_exact_through6_2026_08_29",
+      "census_stage": "a2_sliced_size8_consecutive_layers_exact_through6_12_copy_bounded_2026_08_29",
       "source_pool_size": 4406,
       "three_copy_periodic_certificates": 3335,
       "three_copy_periodic_survivors": 1071,
@@ -2060,6 +2515,7 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
         "a2sa_8_03816"
       ],
       "periodic_exact_through": 6,
+      "periodic_requested_through": 12,
       "periodic_solver_unknowns": 0,
       "periodic_three_copy_complete": true,
       "periodic_three_copy_exact_multicover_nodes": 0,
@@ -2067,6 +2523,13 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "periodic_six_copy_exact_multicover_nodes": 311910,
       "periodic_three_copy_report": "data/a2-sliced-alcove-size8-directed-periodic-exact3.ndjson.gz",
       "periodic_report": "data/a2-sliced-alcove-size8-directed-periodic-exact6.ndjson.gz",
+      "periodic_twelve_copy_certificate": null,
+      "periodic_twelve_copy_replay_verified": false,
+      "periodic_twelve_copy_positive_report": "data/a2-sliced-alcove-size8-directed-periodic-exact12-positive.ndjson.gz",
+      "motif_tiles": null,
+      "period_vectors": null,
+      "quotient_determinant": null,
+      "periodic_template": null,
       "corona_completed_radius": 1,
       "corona_completed_verified": true,
       "corona_root_patch_copies": 38,
@@ -2077,9 +2540,15 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "radius_two_status": "unresolved",
       "radius_two_patch_copies": null,
       "radius_two_completed_verified": false,
-      "radius_two_failure_clauses": 564,
-      "radius_two_stopped_by": "round_limit",
+      "radius_two_failure_clauses": 527,
+      "radius_two_stopped_by": "solver_timeout",
       "radius_two_report": "data/a2-sliced-alcove-size8-directed-corona2-gcts.ndjson.gz",
+      "radius_three_status": null,
+      "radius_three_outer_rounds": 0,
+      "radius_three_first_corona_failure_clauses": 0,
+      "radius_three_stopped_by": null,
+      "radius_three_cumulative_milliseconds": 0,
+      "radius_three_report": null,
       "substitution_direct_scalar_scales_excluded": [
         2,
         3,
@@ -2100,7 +2569,12 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "substitution_models_exhausted": [
         "proper",
         "reflected"
-      ]
+      ],
+      "substitution_four_copy_metatile_proper_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_metatile_types_exhausted": 14041,
+      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -2230,13 +2704,13 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "transverse_profile_asymmetric": true
     },
     "lattice_points": 11,
-    "survivor_priority": 12,
-    "survivor_count": 15,
+    "survivor_priority": 11,
+    "survivor_count": 13,
     "description": "Eight-alcove non-polycube lattice function coupling consecutive triangular sections x+y+z=k.",
     "screening": {
       "status": "inconclusive",
       "certificate": null,
-      "census_stage": "a2_sliced_size8_consecutive_layers_exact_through6_2026_08_29",
+      "census_stage": "a2_sliced_size8_consecutive_layers_exact_through6_12_copy_bounded_2026_08_29",
       "source_pool_size": 4406,
       "three_copy_periodic_certificates": 3335,
       "three_copy_periodic_survivors": 1071,
@@ -2252,6 +2726,7 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
         "a2sa_8_03784"
       ],
       "periodic_exact_through": 6,
+      "periodic_requested_through": 12,
       "periodic_solver_unknowns": 0,
       "periodic_three_copy_complete": true,
       "periodic_three_copy_exact_multicover_nodes": 0,
@@ -2259,6 +2734,13 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "periodic_six_copy_exact_multicover_nodes": 238840,
       "periodic_three_copy_report": "data/a2-sliced-alcove-size8-directed-periodic-exact3.ndjson.gz",
       "periodic_report": "data/a2-sliced-alcove-size8-directed-periodic-exact6.ndjson.gz",
+      "periodic_twelve_copy_certificate": null,
+      "periodic_twelve_copy_replay_verified": false,
+      "periodic_twelve_copy_positive_report": "data/a2-sliced-alcove-size8-directed-periodic-exact12-positive.ndjson.gz",
+      "motif_tiles": null,
+      "period_vectors": null,
+      "quotient_determinant": null,
+      "periodic_template": null,
       "corona_completed_radius": 1,
       "corona_completed_verified": true,
       "corona_root_patch_copies": 38,
@@ -2269,9 +2751,15 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "radius_two_status": "unresolved",
       "radius_two_patch_copies": null,
       "radius_two_completed_verified": false,
-      "radius_two_failure_clauses": 628,
-      "radius_two_stopped_by": "round_limit",
+      "radius_two_failure_clauses": 792,
+      "radius_two_stopped_by": "solver_timeout",
       "radius_two_report": "data/a2-sliced-alcove-size8-directed-corona2-gcts.ndjson.gz",
+      "radius_three_status": null,
+      "radius_three_outer_rounds": 0,
+      "radius_three_first_corona_failure_clauses": 0,
+      "radius_three_stopped_by": null,
+      "radius_three_cumulative_milliseconds": 0,
+      "radius_three_report": null,
       "substitution_direct_scalar_scales_excluded": [
         2,
         3,
@@ -2292,7 +2780,12 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "substitution_models_exhausted": [
         "proper",
         "reflected"
-      ]
+      ],
+      "substitution_four_copy_metatile_proper_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_metatile_types_exhausted": 23659,
+      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -2422,13 +2915,13 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "transverse_profile_asymmetric": true
     },
     "lattice_points": 11,
-    "survivor_priority": 13,
-    "survivor_count": 15,
+    "survivor_priority": null,
+    "survivor_count": 13,
     "description": "Eight-alcove non-polycube lattice function coupling consecutive triangular sections x+y+z=k.",
     "screening": {
-      "status": "inconclusive",
-      "certificate": null,
-      "census_stage": "a2_sliced_size8_consecutive_layers_exact_through6_2026_08_29",
+      "status": "periodic",
+      "certificate": "translational",
+      "census_stage": "a2_sliced_size8_consecutive_layers_12_copy_positive_2026_08_29",
       "source_pool_size": 4406,
       "three_copy_periodic_certificates": 3335,
       "three_copy_periodic_survivors": 1071,
@@ -2443,7 +2936,8 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
         "a2sa_8_02965",
         "a2sa_8_03801"
       ],
-      "periodic_exact_through": 6,
+      "periodic_exact_through": 12,
+      "periodic_requested_through": 12,
       "periodic_solver_unknowns": 0,
       "periodic_three_copy_complete": true,
       "periodic_three_copy_exact_multicover_nodes": 0,
@@ -2451,6 +2945,280 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "periodic_six_copy_exact_multicover_nodes": 221177,
       "periodic_three_copy_report": "data/a2-sliced-alcove-size8-directed-periodic-exact3.ndjson.gz",
       "periodic_report": "data/a2-sliced-alcove-size8-directed-periodic-exact6.ndjson.gz",
+      "periodic_twelve_copy_certificate": {
+        "kind": "weighted_periodic_hnf_quotient",
+        "certified": true,
+        "can_tile": true,
+        "model": "a2_sliced_exact_lattice_function",
+        "copies": 12,
+        "determinant": 16,
+        "period_vectors": [
+          [
+            4,
+            0,
+            0
+          ],
+          [
+            0,
+            4,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ]
+        ],
+        "placements": [
+          {
+            "orientation_index": 0,
+            "translation": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "orientation_index": 0,
+            "translation": [
+              3,
+              3,
+              0
+            ]
+          },
+          {
+            "orientation_index": 1,
+            "translation": [
+              1,
+              3,
+              0
+            ]
+          },
+          {
+            "orientation_index": 1,
+            "translation": [
+              2,
+              0,
+              0
+            ]
+          },
+          {
+            "orientation_index": 3,
+            "translation": [
+              1,
+              0,
+              0
+            ]
+          },
+          {
+            "orientation_index": 3,
+            "translation": [
+              2,
+              1,
+              0
+            ]
+          },
+          {
+            "orientation_index": 4,
+            "translation": [
+              0,
+              3,
+              0
+            ]
+          },
+          {
+            "orientation_index": 4,
+            "translation": [
+              3,
+              2,
+              0
+            ]
+          },
+          {
+            "orientation_index": 5,
+            "translation": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "orientation_index": 5,
+            "translation": [
+              1,
+              2,
+              0
+            ]
+          },
+          {
+            "orientation_index": 5,
+            "translation": [
+              2,
+              3,
+              0
+            ]
+          },
+          {
+            "orientation_index": 5,
+            "translation": [
+              3,
+              0,
+              0
+            ]
+          }
+        ],
+        "hnf_index": 60
+      },
+      "periodic_twelve_copy_replay_verified": true,
+      "periodic_twelve_copy_positive_report": "data/a2-sliced-alcove-size8-directed-periodic-exact12-positive.ndjson.gz",
+      "motif_tiles": 12,
+      "period_vectors": [
+        [
+          4,
+          0,
+          0
+        ],
+        [
+          0,
+          4,
+          0
+        ],
+        [
+          0,
+          1,
+          1
+        ]
+      ],
+      "quotient_determinant": 16,
+      "periodic_template": {
+        "period_vectors": [
+          [
+            4,
+            0,
+            0
+          ],
+          [
+            0,
+            4,
+            0
+          ],
+          [
+            0,
+            1,
+            1
+          ]
+        ],
+        "motif": [
+          {
+            "prototile_idx": 0,
+            "orientation_index": 0,
+            "translation": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 0,
+            "translation": [
+              3,
+              3,
+              0
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 3,
+            "translation": [
+              1,
+              3,
+              0
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 3,
+            "translation": [
+              2,
+              0,
+              0
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 1,
+            "translation": [
+              -1,
+              -2,
+              -2
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 1,
+            "translation": [
+              0,
+              -1,
+              -2
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 2,
+            "translation": [
+              -2,
+              1,
+              -2
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 2,
+            "translation": [
+              1,
+              0,
+              -2
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 5,
+            "translation": [
+              -2,
+              -1,
+              -2
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 5,
+            "translation": [
+              -1,
+              0,
+              -2
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 5,
+            "translation": [
+              0,
+              1,
+              -2
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 5,
+            "translation": [
+              1,
+              -2,
+              -2
+            ]
+          }
+        ]
+      },
       "corona_completed_radius": 1,
       "corona_completed_verified": true,
       "corona_root_patch_copies": 41,
@@ -2464,6 +3232,12 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "radius_two_failure_clauses": 628,
       "radius_two_stopped_by": "round_limit",
       "radius_two_report": "data/a2-sliced-alcove-size8-directed-corona2-gcts.ndjson.gz",
+      "radius_three_status": null,
+      "radius_three_outer_rounds": 0,
+      "radius_three_first_corona_failure_clauses": 0,
+      "radius_three_stopped_by": null,
+      "radius_three_cumulative_milliseconds": 0,
+      "radius_three_report": null,
       "substitution_direct_scalar_scales_excluded": [
         2,
         3,
@@ -2484,7 +3258,10 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "substitution_models_exhausted": [
         "proper",
         "reflected"
-      ]
+      ],
+      "substitution_four_copy_metatile_proper_scalar_scales_excluded": [],
+      "substitution_four_copy_metatile_types_exhausted": null,
+      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -2614,13 +3391,13 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "transverse_profile_asymmetric": true
     },
     "lattice_points": 11,
-    "survivor_priority": 14,
-    "survivor_count": 15,
+    "survivor_priority": 12,
+    "survivor_count": 13,
     "description": "Eight-alcove non-polycube lattice function coupling consecutive triangular sections x+y+z=k.",
     "screening": {
       "status": "inconclusive",
       "certificate": null,
-      "census_stage": "a2_sliced_size8_consecutive_layers_exact_through6_2026_08_29",
+      "census_stage": "a2_sliced_size8_consecutive_layers_exact_through6_12_copy_bounded_2026_08_29",
       "source_pool_size": 4406,
       "three_copy_periodic_certificates": 3335,
       "three_copy_periodic_survivors": 1071,
@@ -2636,6 +3413,7 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
         "a2sa_8_03775"
       ],
       "periodic_exact_through": 6,
+      "periodic_requested_through": 12,
       "periodic_solver_unknowns": 0,
       "periodic_three_copy_complete": true,
       "periodic_three_copy_exact_multicover_nodes": 0,
@@ -2643,6 +3421,13 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "periodic_six_copy_exact_multicover_nodes": 216639,
       "periodic_three_copy_report": "data/a2-sliced-alcove-size8-directed-periodic-exact3.ndjson.gz",
       "periodic_report": "data/a2-sliced-alcove-size8-directed-periodic-exact6.ndjson.gz",
+      "periodic_twelve_copy_certificate": null,
+      "periodic_twelve_copy_replay_verified": false,
+      "periodic_twelve_copy_positive_report": "data/a2-sliced-alcove-size8-directed-periodic-exact12-positive.ndjson.gz",
+      "motif_tiles": null,
+      "period_vectors": null,
+      "quotient_determinant": null,
+      "periodic_template": null,
       "corona_completed_radius": 1,
       "corona_completed_verified": true,
       "corona_root_patch_copies": 34,
@@ -2653,9 +3438,15 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "radius_two_status": "unresolved",
       "radius_two_patch_copies": null,
       "radius_two_completed_verified": false,
-      "radius_two_failure_clauses": 629,
+      "radius_two_failure_clauses": 1111,
       "radius_two_stopped_by": "round_limit",
       "radius_two_report": "data/a2-sliced-alcove-size8-directed-corona2-gcts.ndjson.gz",
+      "radius_three_status": null,
+      "radius_three_outer_rounds": 0,
+      "radius_three_first_corona_failure_clauses": 0,
+      "radius_three_stopped_by": null,
+      "radius_three_cumulative_milliseconds": 0,
+      "radius_three_report": null,
       "substitution_direct_scalar_scales_excluded": [
         2,
         3,
@@ -2676,7 +3467,12 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "substitution_models_exhausted": [
         "proper",
         "reflected"
-      ]
+      ],
+      "substitution_four_copy_metatile_proper_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_metatile_types_exhausted": 7311,
+      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -2805,13 +3601,13 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "transverse_profile_asymmetric": true
     },
     "lattice_points": 11,
-    "survivor_priority": 15,
-    "survivor_count": 15,
+    "survivor_priority": 13,
+    "survivor_count": 13,
     "description": "Eight-alcove non-polycube lattice function coupling consecutive triangular sections x+y+z=k.",
     "screening": {
       "status": "inconclusive",
       "certificate": null,
-      "census_stage": "a2_sliced_size8_consecutive_layers_exact_through6_2026_08_29",
+      "census_stage": "a2_sliced_size8_consecutive_layers_exact_through6_12_copy_bounded_2026_08_29",
       "source_pool_size": 4406,
       "three_copy_periodic_certificates": 3335,
       "three_copy_periodic_survivors": 1071,
@@ -2827,6 +3623,7 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
         "a2sa_8_03787"
       ],
       "periodic_exact_through": 6,
+      "periodic_requested_through": 12,
       "periodic_solver_unknowns": 0,
       "periodic_three_copy_complete": true,
       "periodic_three_copy_exact_multicover_nodes": 0,
@@ -2834,6 +3631,13 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "periodic_six_copy_exact_multicover_nodes": 101901,
       "periodic_three_copy_report": "data/a2-sliced-alcove-size8-directed-periodic-exact3.ndjson.gz",
       "periodic_report": "data/a2-sliced-alcove-size8-directed-periodic-exact6.ndjson.gz",
+      "periodic_twelve_copy_certificate": null,
+      "periodic_twelve_copy_replay_verified": false,
+      "periodic_twelve_copy_positive_report": "data/a2-sliced-alcove-size8-directed-periodic-exact12-positive.ndjson.gz",
+      "motif_tiles": null,
+      "period_vectors": null,
+      "quotient_determinant": null,
+      "periodic_template": null,
       "corona_completed_radius": 1,
       "corona_completed_verified": true,
       "corona_root_patch_copies": 38,
@@ -2844,9 +3648,15 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "radius_two_status": "unresolved",
       "radius_two_patch_copies": null,
       "radius_two_completed_verified": false,
-      "radius_two_failure_clauses": 639,
+      "radius_two_failure_clauses": 1122,
       "radius_two_stopped_by": "round_limit",
       "radius_two_report": "data/a2-sliced-alcove-size8-directed-corona2-gcts.ndjson.gz",
+      "radius_three_status": null,
+      "radius_three_outer_rounds": 0,
+      "radius_three_first_corona_failure_clauses": 0,
+      "radius_three_stopped_by": null,
+      "radius_three_cumulative_milliseconds": 0,
+      "radius_three_report": null,
       "substitution_direct_scalar_scales_excluded": [
         2,
         3,
@@ -2867,7 +3677,12 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "substitution_models_exhausted": [
         "proper",
         "reflected"
-      ]
+      ],
+      "substitution_four_copy_metatile_proper_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_metatile_types_exhausted": 20790,
+      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
