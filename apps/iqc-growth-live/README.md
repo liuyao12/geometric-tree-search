@@ -1,5 +1,16 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 332 · keep molecular anchors outside the generic-port denominator
+
+Molecular crystals now receive an explicit `molecular-anchor` atlas verdict and
+a headline that reports the number of audited cover types, rather than leading
+with a misleading zero generic-port fraction. The generic-port tiles remain
+visible as an ablation, but are labeled as a separate backend. For Ice Ih this
+means the portal visibly preserves one 72-occurrence H₂O class, three
+connection-polyhedron isometry classes, and the symmetry-resolved O₆ gap
+families while keeping its certified molecular-anchor continuation distinct
+from the irregular-support grammar.
+
 ## Build 331 · explain the connection evidence, including honest zeroes
 
 The cluster-to-port atlas now decomposes the exact cover graph into direct

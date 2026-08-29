@@ -10018,12 +10018,15 @@ function renderConnectionCoverageAtlas() {
   const coveredOccurrences = actionable.reduce((sum, record) => sum + record.occurrences, 0);
   const occurrenceCoverage = totalOccurrences ? coveredOccurrences / totalOccurrences : 0;
   const evidence = overlapGrammar?.connectionEvidence || null;
-  const evidenceNarrative = connectionEvidenceNarrative(evidence, { molecular: Boolean(learnedCover?.molecular) });
-  connectionCoverageState.textContent = `${actionable.length}/${promotable.length} types expose target-free ports`;
-  connectionCoverageAtlas.className = `connection-coverage-atlas ${stranded.length ? "incomplete" : "complete"}`;
-  connectionCoverageAtlas.dataset.evidenceVerdict = evidence?.verdict || "unavailable";
+  const molecular = Boolean(learnedCover?.molecular);
+  const evidenceNarrative = connectionEvidenceNarrative(evidence, { molecular });
+  connectionCoverageState.textContent = molecular
+    ? `molecular anchor path · ${promotable.length} cover types audited`
+    : `${actionable.length}/${promotable.length} types expose target-free ports`;
+  connectionCoverageAtlas.className = `connection-coverage-atlas ${molecular ? "molecular" : stranded.length ? "incomplete" : "complete"}`;
+  connectionCoverageAtlas.dataset.evidenceVerdict = molecular ? "molecular-anchor" : evidence?.verdict || "unavailable";
   const summary = [
-    ["actionable types", `${actionable.length}/${promotable.length}`, `${stranded.length} stranded`],
+    [molecular ? "generic port types" : "actionable types", `${actionable.length}/${promotable.length}`, molecular ? "separate certified backend" : `${stranded.length} stranded`],
     ["occurrence coverage", `${Math.round(100 * occurrenceCoverage)}%`, `${coveredOccurrences}/${totalOccurrences} fitted occurrences`],
     ["continuation rules", overlapGrammar?.rules?.length || 0, `${overlapGrammar?.recurring || 0} recurrent`],
     ["replay-only edges", overlapGrammar?.reconstructionEdges || 0, "excluded from growth supply"],
@@ -12071,7 +12074,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260829-331",
+      buildId: "20260829-332",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -14507,7 +14510,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260829-331" },
+    application: { name: "Materials Growth Lab", buildId: "20260829-332" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },

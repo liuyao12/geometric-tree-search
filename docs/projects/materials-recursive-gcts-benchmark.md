@@ -1,5 +1,14 @@
 # Recursive GCTS benchmark for material growth
 
+### Molecular-anchor verdict boundary (Build 332)
+
+Molecular covers now expose `molecular-anchor` as their atlas verdict. Their
+headline reports audited molecule, connection-polyhedron, and gap/void cover
+types; the zero generic-port count is retained only as a labeled ablation. This
+prevents a correct H₂O molecule-plus-gap decomposition from being presented as
+a failed irregular-support grammar, without counting the specialized anchor
+certificate as generic GCTS port coverage.
+
 ### Cover-edge evidence decomposition (Build 331)
 
 A zero generic-port count is no longer a single opaque failure state. The

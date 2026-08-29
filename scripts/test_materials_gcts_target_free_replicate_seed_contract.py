@@ -37,7 +37,7 @@ def main() -> None:
         assert needle in source, needle
 
     assert source.count("knownWindowReplayActive()") >= 20
-    assert 'buildId: "20260829-331"' in source
+    assert 'buildId: "20260829-332"' in source
     print("target-free replicate seed contract: passed")
 
 

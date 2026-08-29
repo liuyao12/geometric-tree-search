@@ -2012,6 +2012,7 @@ body.study-guide-open { overflow: hidden; }
 }
 .connection-coverage-atlas { margin:.65rem 0; padding:.72rem; border:1px solid rgba(181,148,255,.24); border-radius:12px; background:linear-gradient(135deg,rgba(17,14,35,.72),rgba(6,15,22,.9)); }
 .connection-coverage-atlas.complete { border-color:rgba(101,225,188,.38); }.connection-coverage-atlas.incomplete { border-color:rgba(255,193,105,.34); }
+.connection-coverage-atlas.molecular { border-color:rgba(80,199,221,.38); }
 .connection-coverage-atlas > header { display:flex; align-items:end; justify-content:space-between; gap:.7rem; }
 .connection-coverage-atlas > header span,.connection-coverage-atlas > header small,.connection-coverage-atlas > header strong { display:block; }
 .connection-coverage-atlas > header small { color:#7d7197; font:.61rem var(--mono); text-transform:uppercase; letter-spacing:.08em; }

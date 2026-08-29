@@ -35,13 +35,14 @@ def main() -> None:
         'status = cluster.residual ? "terminal"',
         'record.outgoingRules > 0',
         "connectionEvidenceNarrative(evidence",
-        'dataset.evidenceVerdict = evidence?.verdict || "unavailable"',
+        'dataset.evidenceVerdict = molecular ? "molecular-anchor"',
+        'molecular anchor path · ${promotable.length} cover types audited',
         '"terminal bridges"',
         '"excluded from growth supply"',
         "target-aware audit only · never growth supply",
         "updateClusterGalleryInspector(record.galleryIndex);",
         "renderConnectionCoverageAtlas();",
-        'buildId: "20260829-331"',
+        'buildId: "20260829-332"',
     ):
         assert needle in source, needle
 
