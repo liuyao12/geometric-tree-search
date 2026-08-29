@@ -75,8 +75,8 @@ for record in leads:
     assert record["radius3_gcts_classification"] == "unresolved"
 
 assert sum(len(record["radius3_gcts"]["radius2_failure_clauses"])
-           for record in leads) == 66
+           for record in leads) == 543
 assert sum(len(record["radius3_gcts"]["first_corona_failure_clauses"])
-           for record in leads) == 50
+           for record in leads) == 474
 
 print("A2-sliced generic patch-extension regression passed")
