@@ -49,7 +49,7 @@ def main() -> None:
         "target-aware audit only · never growth supply",
         "updateClusterGalleryInspector(record.galleryIndex);",
         "renderConnectionCoverageAtlas();",
-        'buildId: "20260829-333"',
+        'buildId: "20260829-334"',
     ):
         assert needle in source, needle
 

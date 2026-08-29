@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260829-333">
+  <link rel="stylesheet" href="./style.css?v=20260829-334">
   <script type="importmap">
     {
       "imports": {
@@ -331,7 +331,7 @@
               <optgroup label="Crystals, quasicrystals &amp; glass controls">
                 <option value="competition" selected>NaCl rocksalt crystal</option>
                 <option value="random">Cu₆₄Zr₃₆ metallic glass</option>
-                <option value="iqc">Al–Cu–Fe IQC approximant</option>
+                <option value="iqc">Ideal 6D IQC model set · Al/Cu/Fe colors</option>
                 <option value="cdyb">Published Cd₅.₇Yb icosahedral quasicrystal</option>
                 <option value="bc8">Silicon BC8-like network</option>
               </optgroup>
@@ -390,10 +390,10 @@
             <p id="measurementConditionNote">Diffraction or cell-measurement metadata labels the observed geometry; it is not used as a force, energy, rate, or MD control.</p>
           </div>
           <div id="publishedFixtureProvenance" class="measurement-conditions published-fixture-provenance" hidden aria-label="Published model provenance">
-            <div class="measurement-heading"><small>published geometry</small><span id="publishedFixtureLicense">—</span></div>
+            <div class="measurement-heading"><small id="publishedFixtureHeading">published geometry</small><span id="publishedFixtureLicense">—</span></div>
             <strong id="publishedFixtureName">—</strong>
             <div class="published-fixture-links"><a id="publishedFixtureArticle" target="_blank" rel="noreferrer">article DOI</a><a id="publishedFixtureArchive" target="_blank" rel="noreferrer">immutable archive</a></div>
-            <p>Only the displayed physical-space species and positions enter the learner; hidden construction coordinates and source-site labels are absent.</p>
+            <p id="publishedFixtureNote">Only the displayed physical-space species and positions enter the learner; hidden construction coordinates and source-site labels are absent.</p>
           </div>
           <details class="local-import">
             <summary>Advanced · local file or fixture</summary>
@@ -2240,7 +2240,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260829-333"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260829-333"></script>
+  <script type="module" src="./app.js?v=20260829-334"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260829-334"></script>
 </body>
 </html>

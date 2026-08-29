@@ -1,5 +1,29 @@
 # Recursive GCTS benchmark for material growth
 
+### Exact ideal-IQC browser fixture (Build 334)
+
+The browser's ideal-IQC control now comes from the same exact six-dimensional
+model-set oracle used by the backend benchmarks. The committed radius-nine,
+lift-bound-three fixture contains 507 physical-space sites and maps the oracle's
+three internal-radius color classes to synthetic Al/Cu/Fe display colors (63 /
+150 / 294). A generator check rebuilds the artifact and a JavaScript test
+verifies its coordinate/species SHA-256. Hidden lifts and internal coordinates
+are not shipped to the learner.
+
+The sample is explicitly an algorithmic cut-and-project control, not an
+experimental material or an Al–Cu–Fe structure determination. Its provenance
+card has no article DOI, links to the exact generator, and its receipt records
+`geometryFixture.fixtureClass=algorithmic`, `materialClaim=none`, and no
+`publishedModel`. The published Cd–Yb fixture remains the real-material IQC
+case.
+
+The frontend evidence improves from 2 support types / 4 occurrences / 0 direct
+rules on the displaced-grid surrogate to 9 support types / 85 occurrences /
+139 direct support edges / 150 rules / 56 recurrent pose classes. Every support
+type has an outgoing target-free port. This does not prove autonomous or
+stationary IQC growth; it makes the browser sample geometrically consistent
+with the ideal-IQC backend rather than preserving a mislabeled easy surrogate.
+
 ### Terminal-bridge proper-pose readiness audit (Build 333)
 
 Each residual-mediated support pair is now composed in a proper intrinsic frame

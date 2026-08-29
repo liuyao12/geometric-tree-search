@@ -172,6 +172,7 @@ import {
 import { relaxLocalContactGeometry } from "./local-constraint-relaxation.js?v=20260826-1";
 import { auditGeometricMicrostructure } from "./microstructure-audit.js?v=20260824-1";
 import { CDYB_BROWSER_FIXTURE } from "./cdyb-browser-fixture.js?v=20260824-1";
+import { IDEAL_IQC_BROWSER_FIXTURE } from "./ideal-iqc-browser-fixture.js?v=20260829-334";
 import {
   generateIceViiiObservation,
   ICE_VIII_BROWSER_FIXTURE,
@@ -276,10 +277,12 @@ const stressStrainUseButton = $("stressStrainUseButton");
 const measurementConditions = $("measurementConditions");
 const measurementConditionChips = $("measurementConditionChips");
 const publishedFixtureProvenance = $("publishedFixtureProvenance");
+const publishedFixtureHeading = $("publishedFixtureHeading");
 const publishedFixtureLicense = $("publishedFixtureLicense");
 const publishedFixtureName = $("publishedFixtureName");
 const publishedFixtureArticle = $("publishedFixtureArticle");
 const publishedFixtureArchive = $("publishedFixtureArchive");
+const publishedFixtureNote = $("publishedFixtureNote");
 const activeSamplePassport = $("activeSamplePassport");
 const activeSampleName = $("activeSampleName");
 const activeSampleSource = $("activeSampleSource");
@@ -1139,7 +1142,7 @@ const MATERIALS = {
   hbn: { name: "aligned hBN bilayer", elements: ["B", "N"], spacingA: 1.44, cell: "aligned hexagonal sheets · 3.33 Å separation", order: "crystal", symmetry: "commensurate bilayer", audit: "2D translations + finite registry", intrinsicDimension: 2, planarLayers: [{ angle: 0, zA: -1.665, species: ["B", "N"] }, { angle: 0, zA: 1.665, species: ["B", "N"] }], note: "A commensurate bilayer whose finite interlayer registry can be represented by a bounded local marking." },
   competition: { name: "NaCl rocksalt", elements: ["Na", "Cl"], spacingA: 2.82, cell: "Fm3̅m · a = 5.640 Å", periodicWindow: true, order: "crystal", symmetry: "Fm-3m · #225", audit: "space group", note: "A periodic positive control: translation is the cheap ceiling, while the learner must recover it blindly." },
   random: { name: "Cu₆₄Zr₃₆ metallic glass", elements: ["Cu", "Zr"], spacingA: 2.72, cell: "periodic amorphous hard-core cell", periodicWindow: true, order: "amorphous", symmetry: "no stable long-range group", audit: "partial RDF + local motifs + S(q)", note: "No unique continuation is implied. The target is an ensemble; the deterministic browser fixture is a continuous random hard-core packing, not a perturbed lattice or an MD trajectory." },
-  iqc: { name: "Al–Cu–Fe IQC approximant", elements: ["Al", "Cu", "Fe"], spacingA: 2.55, cell: "icosahedral approximant", periodicWindow: false, order: "quasicrystal", symmetry: "icosahedral point symmetry", audit: "superspace + diffraction", note: "An ordinary 3D space group is insufficient; inflation, reciprocal-module, and phason statistics are required." },
+  iqc: { name: "Ideal 6D icosahedral model set", elements: ["Al", "Cu", "Fe"], spacingA: 2.55, cell: "spherical-window cut-and-project control", periodicWindow: false, order: "quasicrystal", symmetry: "icosahedral point symmetry", audit: "superspace + diffraction", idealModelFixture: "icosahedral-6d-r9", fixtureProvenance: IDEAL_IQC_BROWSER_FIXTURE, note: "Exact six-dimensional cut-and-project control with synthetic Al/Cu/Fe shell colors. It is not an experimental alloy structure; use published Cd–Yb for the real-material quasicrystal route." },
   cdyb: { name: "Cd₅.₇Yb icosahedral quasicrystal", elements: ["Cd", "Yb"], spacingA: 2.62788720764582,
     cell: "published aperiodic Cd–Yb model · off-centre R14 Å crop", periodicWindow: false,
     order: "quasicrystal", symmetry: "icosahedral noncrystallographic order", audit: "published model + sealed disjoint continuation",
@@ -3272,13 +3275,20 @@ function renderPublishedFixtureProvenance() {
   const provenance = currentMaterial()?.fixtureProvenance;
   publishedFixtureProvenance.hidden = !provenance;
   if (!provenance) return;
+  const algorithmic = provenance.fixtureClass === "algorithmic";
+  publishedFixtureHeading.textContent = algorithmic ? "algorithmic geometry fixture" : "published geometry";
   publishedFixtureLicense.textContent = provenance.license;
   const atomCount = provenance.atoms?.length || provenance.atomCount;
   publishedFixtureName.textContent = `${provenance.name}${provenance.countLabel ? ` · ${provenance.countLabel}` : atomCount ? ` · ${atomCount.toLocaleString()} physical atoms` : ""}`;
-  publishedFixtureArticle.href = `https://doi.org/${provenance.articleDoi}`;
+  publishedFixtureArticle.hidden = !provenance.articleDoi;
+  if (provenance.articleDoi) publishedFixtureArticle.href = `https://doi.org/${provenance.articleDoi}`;
   publishedFixtureArticle.textContent = "article DOI";
-  publishedFixtureArchive.href = provenance.sourceUrl || `https://doi.org/${provenance.archiveDoi}`;
-  publishedFixtureArchive.textContent = provenance.sourceUrl ? "source CIF" : "immutable archive";
+  publishedFixtureArchive.hidden = !(provenance.sourceUrl || provenance.archiveDoi);
+  if (!publishedFixtureArchive.hidden) publishedFixtureArchive.href = provenance.sourceUrl || `https://doi.org/${provenance.archiveDoi}`;
+  publishedFixtureArchive.textContent = provenance.sourceLabel || (provenance.sourceUrl ? "source CIF" : "immutable archive");
+  publishedFixtureNote.textContent = algorithmic
+    ? "Exact mathematical control, not experimental material data. Only physical-space colors and positions enter the learner; six-dimensional lifts, acceptance-window coordinates, and the fixture label are absent."
+    : "Only the displayed physical-space species and positions enter the learner; hidden construction coordinates and source-site labels are absent.";
 }
 
 function syncImportedFrameMaterial() {
@@ -3564,7 +3574,8 @@ function renderActiveSamplePassport(material = currentMaterial()) {
   const imported = scenarioSelect.value === "imported";
   const source = imported
     ? importedStructure?.metadata?.entryId ? "public database" : "local import"
-    : material.fixtureProvenance ? "published geometry" : "curated control";
+    : material.fixtureProvenance?.fixtureClass === "algorithmic" ? "algorithmic model set"
+      : material.fixtureProvenance ? "published geometry" : "curated control";
   activeSampleName.textContent = material.name;
   activeSampleSource.textContent = source;
   activeSampleFormula.textContent = reducedSampleFormula(records);
@@ -6819,6 +6830,7 @@ function makeReferenceConfiguration(scenario = scenarioSelect.value) {
   }
   if (MATERIALS[scenario]?.molecularFixture === "dry-ice-pa3") return makeDryIceReferenceConfiguration();
   if (MATERIALS[scenario]?.publishedFixture === "cdyb-offcenter-r14") return makeCdYbReferenceConfiguration();
+  if (MATERIALS[scenario]?.idealModelFixture === "icosahedral-6d-r9") return makeIdealIqcReferenceConfiguration();
   if (MATERIALS[scenario]?.intrinsicDimension === 2) return makePlanarReferenceConfiguration(scenario);
   if (scenario === "random") return makeMetallicGlassReference();
   const result = [];
@@ -6835,6 +6847,22 @@ function makeCdYbReferenceConfiguration() {
     return { pA, p: pA.clone().multiplyScalar(scale), species, family: "published-cdyb", sourceIndex };
   }).sort((first, second) => first.p.lengthSq() - second.p.lengthSq()
     || first.species.localeCompare(second.species) || first.sourceIndex - second.sourceIndex);
+}
+
+function makeIdealIqcReferenceConfiguration() {
+  const angstromScale = MATERIALS.iqc.spacingA / IDEAL_IQC_BROWSER_FIXTURE.rawMinimumDistance;
+  const sceneScale = .92 / IDEAL_IQC_BROWSER_FIXTURE.rawMinimumDistance;
+  return IDEAL_IQC_BROWSER_FIXTURE.atoms.map(([species, x, y, z], sourceIndex) => {
+    const raw = new THREE.Vector3(x, y, z);
+    return {
+      pA: raw.clone().multiplyScalar(angstromScale),
+      p: raw.clone().multiplyScalar(sceneScale),
+      species,
+      family: "ideal-icosahedral-6d-model-set",
+      sourceIndex,
+      fixtureId: IDEAL_IQC_BROWSER_FIXTURE.id,
+    };
+  });
 }
 
 function makePlanarReferenceConfiguration(scenario = "moire") {
@@ -12129,7 +12157,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260829-333",
+      buildId: "20260829-334",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -12513,7 +12541,16 @@ async function buildExperimentReceipt() {
         format: importedStructure?.format || null,
       } : { fixture: scenarioSelect.value,
         generatorAudit: scenarioSelect.value === "random" ? referenceAtoms[0]?.glassAudit || null : null,
-        publishedModel: material.fixtureProvenance ? {
+        geometryFixture: material.fixtureProvenance ? {
+          fixtureId: material.fixtureProvenance.id,
+          fixtureClass: material.fixtureProvenance.fixtureClass || "published",
+          materialClaim: material.fixtureProvenance.materialClaim || "source-described material geometry",
+          coordinateSpeciesSha256: material.fixtureProvenance.coordinateSpeciesSha256 || material.fixtureProvenance.normalizedAtomsSha256 || null,
+          provenance: material.fixtureProvenance.provenance || null,
+          hiddenConstructionCoordinatesEmbedded: false,
+          familyLabelUsedByLearner: false,
+        } : null,
+        publishedModel: material.fixtureProvenance && material.fixtureProvenance.fixtureClass !== "algorithmic" ? {
           fixtureId: material.fixtureProvenance.id,
           articleDoi: material.fixtureProvenance.articleDoi,
           archiveDoi: material.fixtureProvenance.archiveDoi || null,
@@ -14565,7 +14602,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260829-333" },
+    application: { name: "Materials Growth Lab", buildId: "20260829-334" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },
