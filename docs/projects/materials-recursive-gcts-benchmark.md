@@ -1,5 +1,27 @@
 # Recursive GCTS benchmark for material growth
 
+### Two-family A₂ exact-geometry explorer (Build 317)
+
+The portal now reads both generated A₂ catalogs as distinct exact-geometry
+stress tests. The established size-eight layered census retains four
+exact-through-seven candidates from 4,940 inputs. The new size-seven
+consecutive-layer catalog retains eight focused candidates from a 1,112-shape
+census; every displayed candidate has a complete exact radius-two patch of
+190–252 copies.
+
+One interactive switch changes the support rendering, finite-screen metrics,
+and clause semantics together. For the size-seven family it reports 759
+radius-three failure clauses and 731 first-corona clauses, plus the declared
+solver/round stop for each candidate. These clauses are sound bounded local
+obstructions. They do not exhaust radius three and do not certify non-tiling,
+aperiodicity, a substitution law, or a solid-growth mechanism.
+
+The same view reports the completed candidate-00139 three-copy scale-three
+cluster screen: all 1,268 reflected parent types are exhausted and no
+substitution exists. This is a proved finite grammar obstruction. Other
+metatile sizes, scales, decorations, global tilings, and aperiodicity remain
+outside that certificate.
+
 ### Retained-leap settling robustness (Build 290)
 
 For the currently selected material field, the portal now assembles the same

@@ -1,5 +1,6 @@
 import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js";
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
+import { A2_SLICED_SIZE7_CANDIDATES } from "../../assets/a2-sliced-size7-candidates.js?v=20260828-317";
 
 const byId = (id) => document.getElementById(id);
 
@@ -179,8 +180,8 @@ const SYSTEMS = {
     ],
   },
   a2: {
-    short: "A₂ size 8", kind: "exact layer-essential geometry test", name: "A₂ layer-essential lattice functions",
-    summary: "A size-eight layer-essential census tests whether exact weighted periodic screens, replayed root coronas, and bounded GCTS obstruction clauses can narrow a difficult geometric family without overclaiming non-tiling or aperiodicity. Four candidates survive every periodic quotient through seven copies; their outer corona spaces remain open.",
+    short: "A₂ exact", kind: "exact layer-essential geometry tests", name: "A₂ layer-essential lattice functions",
+    summary: "Two independent finite catalogs test whether exact weighted periodic screens, replayed coronas, and bounded GCTS obstruction clauses can narrow difficult geometric families without overclaiming non-tiling or aperiodicity. Four size-eight layered candidates remain exact through seven copies; eight size-seven sliced candidates have complete radius-two patches and unresolved radius-three searches.",
     values: [4940, 411, 6, 4], verifiedThrough: 3,
     xLabels: ["census", "after 1-copy", "after 2-copy", "after 4-copy"],
     curveEyebrow: "exact survivor funnel",
@@ -188,13 +189,15 @@ const SYSTEMS = {
     curveObserved: "independently replayed exact screens",
     curveProjected: "larger periodic domains remain open",
     curveNote: "4,940 → 411 → 6 → 4 · zero solver unknowns",
-    metrics: [["layer-essential census", "4,940"], ["exact-through-7 survivors", "4"], ["7-copy HNF / survivor", "1,995"], ["sound GCTS clauses", "16 / 72 / 72 / 62"]],
-    verdict: ["open", "Four candidates are exact through seven copies · outer coronas and global classification remain unresolved"],
+    metrics: [["layered size-8 census", "4,940 → 4"], ["sliced size-7 census", "1,112 → 8 focused"], ["size-7 radius-2 patches", "8 / 8 complete"], ["radius-3 clauses", "759 failure · 731 first-corona"]],
+    verdict: ["open", "Finite periodic and corona evidence is exact · every global classification remains unresolved"],
     evidence: [
       ["Periodic funnel", "4,529 + 405 + 2 certified", "Exact weighted quotients remove 4,936 of 4,940 shapes before the surviving frontier. Each survivor then exhausts all 1,995 seven-copy HNF bases with zero solver unknowns; two use 32 complete meet-in-the-middle fallbacks apiece."],
       ["Root corona", "24 / 29 / 30 / 27 copies", "Each of the four exact-through-seven survivors has an independently replayed complete first corona."],
       ["GCTS marking", "16 / 72 / 72 / 62 clauses", "Sound obstruction clauses prune first-corona families, but none of the four outer first-corona spaces is exhausted."],
       ["Substitution screen", "2…8 · 49 anisotropic pairs", "Direct scalar and layer-anisotropic rules are excluded, together with connected two- and three-copy metatile alphabets at scales 2 and 3."],
+      ["Sliced size-seven frontier", "8 complete radius-two patches", "The focused consecutive-layer candidates contain 190–252 copies in their exact radius-two patches. Uniform radius-three GCTS runs retain 759 sound failure clauses and 731 first-corona clauses, but every search stops at a declared round or solver limit."],
+      ["Cluster substitution obstruction", "00139 · 1,268 parent types", "A complete proper/reflected three-copy scale-three search certifies no substitution for candidate 00139. This rules out one bounded cluster grammar, not every substitution or global tiling."],
       ["Claim boundary", "4 unresolved", "Larger periodic domains, complete second-corona searches, and general substitutions remain open. Exact-through-seven is not a proof of non-tiling or aperiodicity."],
     ],
   },
@@ -215,7 +218,7 @@ const MATRIX_DETAILS = {
   "Ideal IQC": "Exact continuation is real and self-fed, but different promoted productions appear at successive levels. Deep compression is not renamed exponential growth: the strict stationary audit requires the same exact semantic production and learned scale twice in succession.",
   "Cd₅.₇Yb IQC": "The real-material model is the hardest transfer case. Bounded local marking succeeds for finite primitive growth, but exact promoted clusters are sparse and nucleus-dependent. Dormant types remain frozen rather than being refit on held-out atoms.",
   "Cu–Zr glass": "The negative control protects the benchmark from a trivial answer. Residual clusters guarantee representation, but no stable macro production, unique exterior continuation, or million-site symbolic claim is admitted.",
-  "A₂ geometry test": "This is not an atomic material claim. It isolates exact geometric screening and GCTS marking on layer-essential lattice functions: weighted periodic quotients narrow 4,940 shapes to four exact-through-six survivors, while learned obstruction clauses prune local corona families. Bounded evidence is not renamed non-tiling, aperiodicity, or material growth.",
+  "A₂ geometry test": "This is not an atomic material claim. It isolates exact geometric screening and GCTS marking on two layer-essential lattice-function families: weighted periodic quotients narrow the 4,940-shape layered census to four exact-through-seven survivors, while eight focused consecutive-layer size-seven supports now have complete radius-two patches and bounded unresolved radius-three searches. Local obstruction clauses are never renamed non-tiling, aperiodicity, or material growth.",
 };
 
 const ANATOMY = {
@@ -412,6 +415,8 @@ const CLAIMS = [
   ["progress", "Cd–Yb abstraction-boundary diagnosis", "The empty reserve has 32 exact support occurrences but zero retained macro-anchor types. Its primitive port graph still contains 204/345 exact actions; one-third child coverage is rejected by held-development errors. Promotion coverage—not local geometry or marking threshold—is the next gate."],
   ["open", "Generic QC stationarity", "No exact chemistry–chirality–directed-port production recurs across three consecutive QC levels."],
   ["progress", "IQC option-preserving beam", "A width-four target-free beam keeps the branch with the largest compatible next frontier. Frozen before wave 20, it adds 120/120 exact held-forward sites; all 24 waves are 572/572 exact. Spatial confirmation and stationarity remain open."],
+  ["progress", "A₂ sliced radius-three frontier", "Eight size-seven consecutive-layer candidates have complete exact radius-two patches (190–252 copies). Uniform radius-three runs retain 759 failure and 731 first-corona clauses, then stop at declared round or solver limits; every global classification remains unresolved."],
+  ["proved", "A₂ 00139 bounded cluster obstruction", "All 1,268 reflected three-copy scale-three parent types are exhausted with no substitution. The certificate excludes that finite grammar only; it does not prove non-tiling or aperiodicity."],
   ["open", "Generic million-site QC growth", "Specialized/address ceilings cross one million; the family-blind cluster-of-clusters executor does not yet."],
   ["open", "Pure-port crystal closure", "NaCl's port graph certifies the learned cell rule, but the radix/offset proposal still comes from a positions-only grid learner."],
   ["open", "Explicit output cost", "Symbolic derivations compress actions; emitting every atom remains linear and is not claimed to replace molecular dynamics time integration."],
@@ -479,11 +484,66 @@ function drawGrowthChart(system) {
   svg.innerHTML = `<g class="chart-grid">${grid}</g><polygon class="growth-area" points="${area}"/><polyline class="growth-line" points="${points}"/>${dots}<g class="x-labels">${values.map((_value, index) => `<text x="${x(index)}" y="${height - 24}" text-anchor="middle">${xLabels[index]}</text>`).join("")}</g>`;
 }
 
-const A2_CANDIDATES = [...A2_LAYERED_SIZE8_CANDIDATES]
-  .filter(candidate => candidate.screening.status === "inconclusive")
-  .sort((left, right) => left.survivor_priority - right.survivor_priority);
+const A2_CATALOGS = Object.freeze({
+  layered: {
+    label: "Layered size 8", title: "Four size-eight candidates remain exact through seven copies",
+    summary: "Select a layer-essential lattice function. The diagram is its exact A₂ cell support; the bars are sound outer-corona obstruction clauses.",
+    footerLabel: "What one clause means",
+    footer: "A specific placement subset in the first corona cannot be completed into a saturated second corona—even when every unselected helper placement remains available.",
+    candidates: [...A2_LAYERED_SIZE8_CANDIDATES]
+      .filter(candidate => candidate.screening.status === "inconclusive")
+      .sort((left, right) => left.survivor_priority - right.survivor_priority),
+  },
+  sliced: {
+    label: "Sliced size 7", title: "Eight consecutive-layer candidates now reach a complete radius-two patch",
+    summary: "Each diagram is a proper affine-A₃ alcove complex projected without changing incidence. Radius-three bars separate retained failure clauses from first-corona clauses; no bar is a non-tiling proof.",
+    footerLabel: "What radius three means",
+    footer: "The fixed radius-two patch is extended by a uniform bounded GCTS search. Retained clauses are sound local obstructions, while a round or solver limit leaves the global extension question unresolved.",
+    candidates: [...A2_SLICED_SIZE7_CANDIDATES]
+      .filter(candidate => candidate.screening.status === "inconclusive")
+      .sort((left, right) => left.survivor_priority - right.survivor_priority),
+  },
+});
+
+let activeA2Catalog = "layered";
+
+function convexHull(points) {
+  const ordered = [...new Map(points.map((point) => [point.join(","), point])).values()]
+    .sort((left, right) => left[0] - right[0] || left[1] - right[1]);
+  if (ordered.length < 3) return ordered;
+  const cross = (origin, first, second) => (first[0] - origin[0]) * (second[1] - origin[1])
+    - (first[1] - origin[1]) * (second[0] - origin[0]);
+  const half = (values) => {
+    const result = [];
+    values.forEach((point) => {
+      while (result.length >= 2 && cross(result.at(-2), result.at(-1), point) <= 0) result.pop();
+      result.push(point);
+    });
+    return result;
+  };
+  return [...half(ordered).slice(0, -1), ...half([...ordered].reverse()).slice(0, -1)];
+}
 
 function a2CandidateSvg(candidate) {
+  if (candidate.alcoves) {
+    const project = ([x, y, z]) => [(x - y) * 36 + z * 7, (x + y) * 18 - z * 34];
+    const shapes = candidate.alcoves.map((alcove, index) => {
+      const vertices = [alcove.base.slice()];
+      alcove.order.forEach((axis) => {
+        const next = vertices.at(-1).slice(); next[axis] += 1; vertices.push(next);
+      });
+      const points = convexHull(vertices.map(project));
+      const layer = Math.min(3, Math.floor(index * 4 / Math.max(1, candidate.alcoves.length)));
+      return { index, points, layer, depth: vertices.reduce((sum, point) => sum + point[2], 0) / vertices.length };
+    }).sort((left, right) => left.depth - right.depth || left.index - right.index);
+    const coordinates = shapes.flatMap((shape) => shape.points);
+    const minX = Math.min(...coordinates.map(([x]) => x)) - 18;
+    const maxX = Math.max(...coordinates.map(([x]) => x)) + 18;
+    const minY = Math.min(...coordinates.map(([, y]) => y)) - 18;
+    const maxY = Math.max(...coordinates.map(([, y]) => y)) + 18;
+    const polygons = shapes.map((shape) => `<polygon class="a2-layer-${shape.layer}" points="${shape.points.map((point) => point.join(",")).join(" ")}"/><text x="${shape.points.reduce((sum, point) => sum + point[0], 0) / shape.points.length}" y="${shape.points.reduce((sum, point) => sum + point[1], 0) / shape.points.length + 2}">${shape.index + 1}</text>`).join("");
+    return `<svg viewBox="${minX} ${minY} ${maxX - minX} ${maxY - minY}" role="img" aria-label="${candidate.name}, seven affine alcoves">${polygons}</svg>`;
+  }
   const polygons = candidate.cells.map((cell) => {
     const centerX = (cell.q - cell.r) * 30 + cell.k * 7;
     const centerY = (cell.q + cell.r) * 17 - cell.k * 22;
@@ -501,16 +561,30 @@ function a2CandidateSvg(candidate) {
   return `<svg viewBox="${minX} ${minY} ${maxX - minX} ${maxY - minY}" role="img" aria-label="${candidate.name}, eight exact triangular prisms">${shapes}</svg>`;
 }
 
-function renderA2Candidate(candidateId = A2_CANDIDATES[0].id) {
-  const candidate = A2_CANDIDATES.find((entry) => entry.id === candidateId) || A2_CANDIDATES[0];
+function a2ClauseCount(candidate) {
+  return candidate.alcoves
+    ? candidate.screening.radius_three_failure_clauses + candidate.screening.radius_three_first_corona_clauses
+    : candidate.screening.corona2_gcts_sound_clauses;
+}
+
+function renderA2Candidate(candidateId) {
+  const catalog = A2_CATALOGS[activeA2Catalog];
+  const candidate = catalog.candidates.find((entry) => entry.id === candidateId) || catalog.candidates[0];
   const screen = candidate.screening;
   document.querySelectorAll("[data-a2-candidate]").forEach((button) => {
     const active = button.dataset.a2Candidate === candidate.id;
     button.classList.toggle("active", active);
     button.setAttribute("aria-selected", String(active));
   });
-  byId("a2CandidateShape").innerHTML = `${a2CandidateSvg(candidate)}<span>${candidate.cells.length} exact A₂ prisms · ${candidate.lattice_points} lattice points</span>`;
-  byId("a2CandidateStory").innerHTML = `
+  const unitLabel = candidate.alcoves
+    ? `${candidate.alcoves.length} affine alcoves · ${candidate.lattice_points} lattice vertices`
+    : `${candidate.cells.length} exact A₂ prisms · ${candidate.lattice_points} lattice points`;
+  byId("a2CandidateShape").innerHTML = `${a2CandidateSvg(candidate)}<span>${unitLabel}</span>`;
+  byId("a2CandidateStory").innerHTML = candidate.alcoves ? `
+    <header><span>${candidate.id}</span><strong>${screen.radius_three_status}</strong></header>
+    <h4>${candidate.name}</h4>
+    <div><span><small>exact radius-two patch</small><b>${screen.radius_two_patch_copies} copies</b></span><span><small>target / occupied sites</small><b>${screen.radius_two_target_points} / ${screen.radius_two_occupied_points}</b></span><span><small>periodic screen</small><b>through ${screen.periodic_exact_through} copies</b></span><span><small>failure clauses</small><b>${screen.radius_three_failure_clauses}</b></span><span><small>first-corona clauses</small><b>${screen.radius_three_first_corona_clauses}</b></span><span><small>radius-three stop</small><b>${screen.radius_three_stopped_by.replaceAll("_", " ")}</b></span><span><small>3-copy metatile scales</small><b>${screen.three_copy_metatile_substitution_scales_exhausted.join(" · ")}</b></span><span><small>scale-3 reflected parents</small><b>${(screen.three_copy_metatile_scale3_reflected_parent_types || 0).toLocaleString()}</b></span></div>
+    <p>The consecutive-layer support has weight profile <b>${candidate.morphology.layer_weight_profile.join(" · ")}</b>. Its six-copy weighted periodic screen is complete with zero solver unknowns, and the displayed radius-two patch is exact. The uniform radius-three run retains ${screen.radius_three_failure_clauses} failure and ${screen.radius_three_first_corona_clauses} first-corona clauses before a declared ${screen.radius_three_stopped_by.replaceAll("_", " ")}. Direct scalar substitutions at scales ${screen.direct_scalar_substitution_scales_exhausted[0]}–${screen.direct_scalar_substitution_scales_exhausted.at(-1)} and three-copy metatile substitutions at scales ${screen.three_copy_metatile_substitution_scales_exhausted.join(" and ")} are excluded${screen.three_copy_metatile_scale3_reflected_parent_types ? ` after exhausting ${screen.three_copy_metatile_scale3_reflected_parent_types.toLocaleString()} scale-three reflected parent types` : ""}; the candidate remains <b>unresolved</b>.</p>` : `
     <header><span>${candidate.id}</span><strong>${screen.status}</strong></header>
     <h4>${candidate.name}</h4>
     <div><span><small>root corona</small><b>${screen.corona_root_patch_copies} copies</b></span><span><small>periodic frontier</small><b>through ${screen.periodic_exact_through} copies</b></span><span><small>seven-copy HNF bases</small><b>${screen.periodic_hnf_bases_exhausted_by_copies["7"].toLocaleString()}</b></span><span><small>sound GCTS clauses</small><b>${screen.corona2_gcts_sound_clauses}</b></span><span><small>outer corona</small><b>${screen.corona2_gcts_stopped_by.replaceAll("_", " ")}</b></span><span><small>solver unknowns</small><b>${screen.periodic_solver_unknowns}</b></span></div>
@@ -519,28 +593,41 @@ function renderA2Candidate(candidateId = A2_CANDIDATES[0].id) {
 
 function renderA2Explorer() {
   const tabs = byId("a2CandidateTabs");
-  if (tabs.childElementCount) return renderA2Candidate();
-  const maximum = Math.max(...A2_CANDIDATES.map((candidate) => candidate.screening.corona2_gcts_sound_clauses));
-  A2_CANDIDATES.forEach((candidate) => {
+  const catalog = A2_CATALOGS[activeA2Catalog];
+  document.querySelectorAll("[data-a2-catalog]").forEach((button) => {
+    const active = button.dataset.a2Catalog === activeA2Catalog;
+    button.classList.toggle("active", active); button.setAttribute("aria-selected", String(active));
+  });
+  byId("a2ExplorerTitle").textContent = catalog.title;
+  byId("a2ExplorerSummary").textContent = catalog.summary;
+  byId("a2ExplorerFooterLabel").textContent = catalog.footerLabel;
+  byId("a2ExplorerFooterText").textContent = catalog.footer;
+  const maximum = Math.max(...catalog.candidates.map(a2ClauseCount), 1);
+  tabs.replaceChildren(...catalog.candidates.map((candidate) => {
     const button = document.createElement("button");
     button.type = "button";
     button.dataset.a2Candidate = candidate.id;
     button.setAttribute("role", "tab");
-    button.innerHTML = `<span>${candidate.id.slice(-5)}</span><strong>${candidate.screening.corona2_gcts_sound_clauses}</strong><small>sound clauses</small>`;
-    button.addEventListener("click", () => renderA2Candidate(candidate.id));
-    tabs.appendChild(button);
-  });
-  byId("a2BlockerBars").replaceChildren(...A2_CANDIDATES.map((candidate) => {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.dataset.a2Candidate = candidate.id;
-    button.style.setProperty("--a2-blocker-ratio", `${candidate.screening.corona2_gcts_sound_clauses / maximum}`);
-    button.innerHTML = `<span>${candidate.id.slice(-5)}</span><i></i><b>${candidate.screening.corona2_gcts_sound_clauses}</b>`;
+    button.innerHTML = `<span>${candidate.id.slice(-5)}</span><strong>${a2ClauseCount(candidate)}</strong><small>${candidate.alcoves ? "R3 clauses" : "sound clauses"}</small>`;
     button.addEventListener("click", () => renderA2Candidate(candidate.id));
     return button;
   }));
-  renderA2Candidate();
+  byId("a2BlockerBars").replaceChildren(...catalog.candidates.map((candidate) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.dataset.a2Candidate = candidate.id;
+    button.style.setProperty("--a2-blocker-ratio", `${a2ClauseCount(candidate) / maximum}`);
+    button.innerHTML = `<span>${candidate.id.slice(-5)}</span><i></i><b>${a2ClauseCount(candidate)}</b>`;
+    button.addEventListener("click", () => renderA2Candidate(candidate.id));
+    return button;
+  }));
+  renderA2Candidate(catalog.candidates[0].id);
 }
+
+document.querySelectorAll("[data-a2-catalog]").forEach((button) => button.addEventListener("click", () => {
+  activeA2Catalog = button.dataset.a2Catalog;
+  renderA2Explorer();
+}));
 
 function renderSupplyAudit(audit) {
   byId("supplyAuditTitle").textContent = audit.title;

@@ -1,5 +1,29 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 317 · two exact A₂ geometry frontiers
+
+The Evidence Atlas now exposes the newest consecutive-layer size-seven A₂
+catalog beside the existing layered size-eight screen. A reader can switch
+between the two finite geometric families without conflating them with an
+atomic material or with one another.
+
+All eight focused size-seven candidates have independently recorded exact
+radius-two patches containing 190–252 copies. Their uniform radius-three GCTS
+runs retain 759 sound failure clauses and 731 first-corona clauses in total,
+then stop at explicit middle-solver, middle-round, or outer-round limits. The
+interactive view renders each seven-alcove affine complex, its layer-weight
+profile, target/occupied site counts, clause split, and exact stop reason.
+
+Candidate 00139 additionally exhausts all 1,268 proper/reflected three-copy
+scale-three parent types and certifies that no substitution exists in that
+bounded cluster grammar. The portal reports this as one proved obstruction,
+not as a global non-tiling or aperiodicity certificate.
+
+The scientific boundary remains visible at every click: exact finite periodic
+and corona evidence is green; radius-three completion, non-tiling,
+aperiodicity, and any material-growth interpretation remain unresolved. This
+update presents the latest generated evidence rather than upgrading a claim.
+
 ## Build 316 · candidate supply versus marking value
 
 The zero-candidate Cd–Yb reserve is now traced through every abstraction

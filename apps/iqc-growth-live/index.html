@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260828-316">
+  <link rel="stylesheet" href="./style.css?v=20260828-317">
   <script type="importmap">
     {
       "imports": {
@@ -163,14 +163,15 @@
             </section>
             <div id="systemEvidenceCards" class="system-evidence-cards"></div>
             <section id="a2CoronaExplorer" class="a2-corona-explorer" hidden aria-label="A2 exact-corona marking explorer">
-              <header><div><span>interactive exact-marking atlas</span><h3>Four size-eight candidates remain exact through seven copies</h3></div><p>Select a layer-essential lattice function. The diagram is its exact A₂ cell support; the bars are sound obstruction clauses, not failed molecular-dynamics trajectories.</p></header>
+              <header><div><span>interactive exact-marking atlas</span><h3 id="a2ExplorerTitle">Four size-eight candidates remain exact through seven copies</h3></div><p id="a2ExplorerSummary">Select a layer-essential lattice function. The diagram is its exact A₂ cell support; the bars are sound obstruction clauses, not failed molecular-dynamics trajectories.</p></header>
+              <nav class="a2-catalog-tabs" role="tablist" aria-label="A2 exact geometry catalogs"><button class="active" type="button" data-a2-catalog="layered" role="tab" aria-selected="true">Layered size 8 <small>exact through 7</small></button><button type="button" data-a2-catalog="sliced" role="tab" aria-selected="false">Sliced size 7 <small>radius 2 → 3</small></button></nav>
               <div id="a2CandidateTabs" class="a2-candidate-tabs" role="tablist" aria-label="Focused A2 candidates"></div>
               <div class="a2-candidate-detail">
                 <div id="a2CandidateShape" class="a2-candidate-shape" aria-label="Selected A2 layered candidate"></div>
                 <article id="a2CandidateStory" class="a2-candidate-story" aria-live="polite"></article>
                 <div id="a2BlockerBars" class="a2-blocker-bars" aria-label="Sound retained clauses by candidate"></div>
               </div>
-              <footer><b>What one clause means</b><span>A specific placement subset in the first corona cannot be completed into a saturated second corona—even when every unselected helper placement remains available.</span><i>What it does not mean</i><span>The candidate is not thereby proved to be a non-tiler, an aperiodic monotile, or a model of one particular solid.</span></footer>
+              <footer><b id="a2ExplorerFooterLabel">What one clause means</b><span id="a2ExplorerFooterText">A specific placement subset in the first corona cannot be completed into a saturated second corona—even when every unselected helper placement remains available.</span><i>What it does not mean</i><span>The candidate is not thereby proved to be a non-tiler, an aperiodic monotile, or a model of one particular solid.</span></footer>
             </section>
             <div id="atlasSystemActions" class="atlas-system-actions" hidden aria-label="Open this evidence in the growth workflow"></div>
           </section>
@@ -2170,7 +2171,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260828-316"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260828-316"></script>
+  <script type="module" src="./app.js?v=20260828-317"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260828-317"></script>
 </body>
 </html>
