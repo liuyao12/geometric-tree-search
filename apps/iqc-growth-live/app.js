@@ -173,6 +173,10 @@ import { relaxLocalContactGeometry } from "./local-constraint-relaxation.js?v=20
 import { auditGeometricMicrostructure } from "./microstructure-audit.js?v=20260824-1";
 import { CDYB_BROWSER_FIXTURE } from "./cdyb-browser-fixture.js?v=20260824-1";
 import { IDEAL_IQC_BROWSER_FIXTURE } from "./ideal-iqc-browser-fixture.js?v=20260829-335";
+import { IQC_DISJOINT_CONFIRMATION_ARTIFACT }
+  from "./iqc-disjoint-confirmation-artifact.js?v=20260830-336";
+import { executeIqcDisjointConfirmation, validateIqcDisjointConfirmationArtifact }
+  from "./iqc-disjoint-confirmation-growth.js?v=20260830-336";
 import {
   generateIceViiiObservation,
   ICE_VIII_BROWSER_FIXTURE,
@@ -196,6 +200,7 @@ const ICE_VI_ANCHOR_TRACE_ARTIFACT = await fetch(new URL(
   return response.json();
 });
 validateIceViAnchorTraceArtifact(ICE_VI_ANCHOR_TRACE_ARTIFACT);
+validateIqcDisjointConfirmationArtifact(IQC_DISJOINT_CONFIRMATION_ARTIFACT);
 
 const $ = (id) => document.getElementById(id);
 const signed = (value, digits = 3) => `${Number(value || 0) >= 0 ? "+" : ""}${Number(value || 0).toFixed(digits)}`;
@@ -1799,6 +1804,8 @@ let growthStopReason = "";
 let slowFrameSeconds = 0;
 let iceAnchorTrace = null;
 let iceAnchorWaveIndex = 0;
+let iqcDisjointTrace = null;
+let iqcDisjointWaveIndex = 0;
 let importedStructure = null;
 let importedFrameIndex = 0;
 let ensembleEvidenceMode = "all";
@@ -12162,7 +12169,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260829-335",
+      buildId: "20260830-336",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -13083,7 +13090,7 @@ async function buildExperimentReceipt() {
       physicsPreflightManifest: { ...physicsPreflightManifest,
         sha256: physicsPreflightManifestSha256,
         frozenBeforeFirstStructuralAction: Boolean(frozenPhysicsPreflightManifest) },
-      hierarchyEnabled: Boolean(hierarchyEnabled && !iceAnchorTrace),
+      hierarchyEnabled: Boolean(hierarchyEnabled && !iceAnchorTrace && !iqcDisjointTrace),
       markingLibraryMode: markingSearchMode,
       scheduling: {
         mode: growthScheduling,
@@ -14409,6 +14416,34 @@ async function buildExperimentReceipt() {
         exactBackendCountParity: iceAnchorTrace.exactBackendCountParity,
         provenance: iceAnchorTrace.provenance,
       } : null,
+      sealedIqcDisjointConfirmation: iqcDisjointTrace ? {
+        artifactDigest: iqcDisjointTrace.artifactDigest,
+        protocolDigest: iqcDisjointTrace.protocolDigest,
+        candidateReceiptDigest: iqcDisjointTrace.candidateReceiptDigest,
+        candidateSetDigest: iqcDisjointTrace.candidateSetDigest,
+        seedSites: iqcDisjointTrace.seedAtomCount,
+        processedBlocks: iqcDisjointWaveIndex,
+        emittedSites: iqcDisjointTrace.waves.slice(0, iqcDisjointWaveIndex)
+          .reduce((sum, wave) => sum + wave.acceptedSites, 0),
+        firstBlock: { candidateTerminals: iqcDisjointTrace.waves[0].candidateTerminals,
+          exactTerminalsPosthoc: iqcDisjointTrace.waves[0].exactTerminalsPosthoc,
+          selectedTerminalIndex: iqcDisjointTrace.waves[0].selectedTerminalIndex,
+          selectedRank: iqcDisjointTrace.waves[0].selectedRank,
+          selectedExactPosthoc: iqcDisjointTrace.waves[0].selectedExactPosthoc },
+        secondBlock: { candidateTerminals: iqcDisjointTrace.waves[1].candidateTerminals,
+          exactTerminalsPosthoc: iqcDisjointTrace.waves[1].exactTerminalsPosthoc,
+          scalarFirstExactRank: iqcDisjointTrace.waves[1].scalarFirstExactRank,
+          fusionFirstExactRank: iqcDisjointTrace.waves[1].fusionFirstExactRank,
+          frozenSelectionPassed: iqcDisjointTrace.secondBlockFrozenSelectionPassed },
+        targetDomainDisjoint: iqcDisjointTrace.targetDomainDisjoint,
+        candidatesFrozenBeforeTarget: iqcDisjointTrace.candidatesFrozenBeforeTarget,
+        targetCallsDuringBrowserExecution: 0,
+        sealedBackendTargetOpenCount: iqcDisjointTrace.targetOpenCountPosthoc,
+        targetUsedForFitCandidateOrRanking: iqcDisjointTrace.targetUsed,
+        autonomousContinuationCertified: iqcDisjointTrace.autonomousContinuationCertified,
+        stationaryOrExponentialClaimed: iqcDisjointTrace.stationaryOrExponentialClaimed,
+        claimBoundary: iqcDisjointTrace.claimBoundary,
+      } : null,
     } : { status: "stage not entered" },
     evidenceBoundary: {
       benchmarkStatus: benchmark.status,
@@ -14567,7 +14602,7 @@ async function buildExperimentNotebookSnapshot() {
     physicsPreflightManifest: { ...physicsPreflightManifest,
       sha256: physicsPreflightManifestSha256,
       frozenBeforeFirstStructuralAction: Boolean(frozenPhysicsPreflightManifest) },
-    hierarchyEnabled: Boolean(hierarchyEnabled && !iceAnchorTrace),
+    hierarchyEnabled: Boolean(hierarchyEnabled && !iceAnchorTrace && !iqcDisjointTrace),
     scheduling: { mode: growthScheduling, candidateGeometryChangedByScheduling: false },
     multiNucleusGrowth: { requestedNuclei: requestedGrowthNuclei, selection: nucleationSelectionAudit },
     explicitSites: atoms.length, placedClusters: placedClusters.length,
@@ -14598,6 +14633,26 @@ async function buildExperimentNotebookSnapshot() {
       targetUsed: iceAnchorTrace.targetUsed, fixedPoint: iceAnchorTrace.fixedPoint,
       exactBackendCountParity: iceAnchorTrace.exactBackendCountParity, provenance: iceAnchorTrace.provenance,
     } : null,
+    sealedIqcDisjointConfirmation: iqcDisjointTrace ? {
+      artifactDigest: iqcDisjointTrace.artifactDigest,
+      protocolDigest: iqcDisjointTrace.protocolDigest,
+      candidateSetDigest: iqcDisjointTrace.candidateSetDigest,
+      seedSites: iqcDisjointTrace.seedAtomCount,
+      processedBlocks: iqcDisjointWaveIndex,
+      emittedSites: iqcDisjointTrace.waves.slice(0, iqcDisjointWaveIndex)
+        .reduce((sum, wave) => sum + wave.acceptedSites, 0),
+      firstBlockExactTerminalsPosthoc: iqcDisjointTrace.waves[0].exactTerminalsPosthoc,
+      firstBlockSelectedExactPosthoc: iqcDisjointTrace.waves[0].selectedExactPosthoc,
+      secondBlockExactTerminalsPosthoc: iqcDisjointTrace.waves[1].exactTerminalsPosthoc,
+      secondBlockFrozenSelectionPassed: iqcDisjointTrace.secondBlockFrozenSelectionPassed,
+      targetDomainDisjoint: iqcDisjointTrace.targetDomainDisjoint,
+      candidatesFrozenBeforeTarget: iqcDisjointTrace.candidatesFrozenBeforeTarget,
+      targetCallsDuringBrowserExecution: 0,
+      targetUsedForFitCandidateOrRanking: iqcDisjointTrace.targetUsed,
+      autonomousContinuationCertified: iqcDisjointTrace.autonomousContinuationCertified,
+      stationaryOrExponentialClaimed: iqcDisjointTrace.stationaryOrExponentialClaimed,
+      claimBoundary: iqcDisjointTrace.claimBoundary,
+    } : null,
     creationResponseEvidence: cachedCreationResponse,
     postAttachmentConstraintProjection: { mode: structuralRelaxationMode,
       displacementFractionOfNearestNeighbor: structuralRelaxationSpec().displacementFraction,
@@ -14607,7 +14662,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260829-335" },
+    application: { name: "Materials Growth Lab", buildId: "20260830-336" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },
@@ -22970,6 +23025,9 @@ function initializeIceAnchorSearch() {
   atoms = [];
   placedClusters = [];
   frontierCandidates = [];
+  frontierCandidateKeys = new Set();
+  rejectedCandidateKeys = new Set();
+  atomSpatialIndex = new Map();
   resetGrowthFrontierWork();
   reconstructionCertified = true;
   iceAnchorTrace.seedSites.forEach(([species, point], index) => {
@@ -23073,7 +23131,8 @@ function nucleationSiteEvidenceLabel(entry) {
 }
 
 function renderNucleationLandscapeInspector() {
-  const visible = pipelineStage === 4 && !iceAnchorTrace && nucleationSiteLandscape.length > 0;
+  const visible = pipelineStage === 4 && !iceAnchorTrace && !iqcDisjointTrace
+    && nucleationSiteLandscape.length > 0;
   nucleationLandscapeInspector.hidden = !visible;
   if (!visible) return;
   const selected = nucleationSiteLandscape.filter((entry) => entry.selected);
@@ -23354,7 +23413,9 @@ function renderNucleusInterfaceEvolution(pairKey) {
 }
 
 function growthSeedProtocolLabel(mode = growthSeedProtocol) {
-  return mode === "reconstruct"
+  return mode === "sealed-iqc-confirmation"
+    ? "sealed disjoint IQC nucleus · confirmed exterior terminal"
+    : mode === "reconstruct"
     ? "local occurrence · known-window reconstruction"
     : mode === "local-frontier"
       ? "local occurrence nucleus · target-free outward continuation"
@@ -23367,6 +23428,55 @@ function knownWindowReplayActive() {
 
 function targetFreeGrowthAuthorized() {
   return !knownWindowReplayActive();
+}
+
+function iqcConfirmationScenePoint(point) {
+  const scale = .92 / currentMaterial().spacingA;
+  return new THREE.Vector3(...point).multiplyScalar(scale);
+}
+
+function initializeIqcDisjointConfirmationSearch() {
+  iqcDisjointTrace = executeIqcDisjointConfirmation(IQC_DISJOINT_CONFIRMATION_ARTIFACT);
+  if (iqcDisjointTrace.targetUsed || !iqcDisjointTrace.targetDomainDisjoint) {
+    throw new Error("Sealed IQC confirmation artifact violates its target boundary");
+  }
+  iqcDisjointWaveIndex = 0;
+  iceAnchorTrace = null;
+  atoms = [];
+  placedClusters = [];
+  frontierCandidates = [];
+  frontierCandidateKeys = new Set();
+  rejectedCandidateKeys = new Set();
+  atomSpatialIndex = new Map();
+  resetGrowthFrontierWork();
+  reconstructionCertified = true;
+  iqcDisjointTrace.seedSites.forEach(([species, point], index) => {
+    const atom = addAtom(iqcConfirmationScenePoint(point), species, "iqc-confirmation-seed", null, true);
+    atom.clusterIds = [index + 1];
+    atom.sealedConfirmationSeed = true;
+    indexAtom(atom);
+  });
+  growthStartAtomCount = atoms.length;
+  initializedGrowthNuclei = 1;
+  replayIndex = 0;
+  stackHistory = [{ type: "accept", depth: 0,
+    action: `${iqcDisjointTrace.seedAtomCount} spatially disjoint seed sites`,
+    family: "sealed IQC confirmation" }];
+  growthSeedAudit = {
+    schema: 1, mode: "sealed-iqc-confirmation",
+    label: "sealed disjoint IQC confirmation nucleus",
+    explicitSeedSites: atoms.length, initializedPlacements: 0,
+    explicitResidualSites: atoms.length,
+    frontierCandidates: iqcDisjointTrace.waves[0].candidateTerminals,
+    reconstructionCertifiedAtInitialization: true,
+    targetUsed: false, futureSitesUsed: false,
+    candidatesFrozenBeforeTarget: true,
+    targetDomainDisjoint: true,
+    protocolDigest: iqcDisjointTrace.protocolDigest,
+    candidateSetDigest: iqcDisjointTrace.candidateSetDigest,
+    seedConfigurationDigest: growthSeedConfigurationDigest("sealed-iqc-confirmation"),
+    claimBoundary: iqcDisjointTrace.claimBoundary,
+  };
 }
 
 function growthSeedConfigurationDigest(mode = growthSeedProtocol) {
@@ -25993,7 +26103,7 @@ function syncStageOptions() {
     renderGrowthControlGroupSummaries();
     markingSearchModeSelect.value = markingSearchMode;
     const active = selectedMarking();
-    const finiteIceAnchorMode = Boolean(iceAnchorTrace);
+    const finiteIceAnchorMode = Boolean(iceAnchorTrace || iqcDisjointTrace);
     geometryPreferenceSelect.value = geometryPreference;
     strainWeightSelect.value = String(geometricStrainWeight);
     structuralRelaxationSelect.value = structuralRelaxationMode;
@@ -26069,6 +26179,8 @@ function syncStageOptions() {
     feedExposureWeightSelect.value = String(feedExposureWeight);
     explorationScaleSelect.value = String(geometricExplorationScale);
     growthSeedProtocolSelect.value = growthSeedProtocol;
+    const sealedIqcOption = growthSeedProtocolSelect.querySelector('option[value="sealed-iqc-confirmation"]');
+    if (sealedIqcOption) sealedIqcOption.disabled = scenarioSelect.value !== "iqc";
     growthNucleiSelect.value = String(requestedGrowthNuclei);
     nucleationSiteSelect.value = nucleationSiteMode;
     nucleationRankSelect.value = String(nucleationCandidateRank);
@@ -26135,7 +26247,10 @@ function syncStageOptions() {
     feedExposureSelect.disabled = finiteIceAnchorMode;
     feedExposureWeightSelect.disabled = finiteIceAnchorMode || feedExposureMode === "none";
     explorationScaleSelect.disabled = finiteIceAnchorMode;
-    growthSeedProtocolSelect.disabled = finiteIceAnchorMode;
+    // Molecular traces are determined by the selected ice specimen. The IQC
+    // evidence-library trace is optional and must remain switchable back to a
+    // normal learned-growth initial condition.
+    growthSeedProtocolSelect.disabled = Boolean(iceAnchorTrace);
     growthNucleiSelect.disabled = finiteIceAnchorMode || growthSeedProtocol === "observed-window";
     nucleationSiteSelect.disabled = finiteIceAnchorMode || growthSeedProtocol === "observed-window";
     nucleationRankSelect.disabled = finiteIceAnchorMode || growthSeedProtocol === "observed-window";
@@ -26146,7 +26261,9 @@ function syncStageOptions() {
     growthSchedulingHint.textContent = growthScheduling === "commuting"
       ? "maximal commuting set" : "one branch decision";
     const seedProtocolRecommendation = recommendedGrowthSeedProtocol();
-    growthSeedProtocolHint.textContent = finiteIceAnchorMode ? "sealed molecular seed"
+    growthSeedProtocolHint.textContent = iqcDisjointTrace
+      ? `${iqcDisjointTrace.seedAtomCount}-site disjoint nucleus · first exterior terminal confirmed`
+      : finiteIceAnchorMode ? "sealed molecular seed"
       : growthSeedProtocol === "observed-window"
         ? `${referenceCount()}-site observed nucleus · target-free frontier${growthSeedProtocol === seedProtocolRecommendation ? " · recommended" : ""}`
         : growthSeedProtocol === "local-frontier"
@@ -26583,6 +26700,8 @@ function resetCounters() {
   slowFrameSeconds = 0;
   iceAnchorTrace = null;
   iceAnchorWaveIndex = 0;
+  iqcDisjointTrace = null;
+  iqcDisjointWaveIndex = 0;
 }
 
 function enterPipelineStage(index, options = {}) {
@@ -26667,6 +26786,9 @@ function enterPipelineStage(index, options = {}) {
   else if (currentMaterial().growthWithheld) atoms = referenceAtoms.map((atom) => cloneAtom(atom));
   else if (learnedCover.molecular?.water
     && (currentMaterial().icePolytype || scenarioSelect.value === "iceVI")) initializeIceAnchorSearch();
+  else if (scenarioSelect.value === "iqc" && growthSeedProtocol === "sealed-iqc-confirmation") {
+    initializeIqcDisjointConfirmationSearch();
+  }
   else initializeOffLatticeSearch();
   if (pipelineStage < 4) rebuildSpatialIndex();
   buildConfinement();
@@ -26697,6 +26819,9 @@ function synchronizeWorkflowAddress({ mode = "push", clearStudy = false } = {}) 
   if (material !== "imported" || shareableImportedSpecimen) url.searchParams.set("material", material);
   else url.searchParams.delete("material");
   url.searchParams.set("stage", String(pipelineStage));
+  if (material === "iqc" && growthSeedProtocol === "sealed-iqc-confirmation") {
+    url.searchParams.set("seedProtocol", growthSeedProtocol);
+  } else url.searchParams.delete("seedProtocol");
   if (material !== "iceVI") url.searchParams.delete("microstate");
   else if (iceViMicrostate) url.searchParams.set("microstate", String(iceViMicrostate.audit.seed));
   if (material !== "imported") url.searchParams.delete("specimen");
@@ -26751,6 +26876,9 @@ function restoreWorkflowRouteFromAddress() {
       renderIceViMicrostateControls();
     }
   }
+  growthSeedProtocol = scenarioSelect.value === "iqc"
+    && parameters.get("seedProtocol") === "sealed-iqc-confirmation"
+    ? "sealed-iqc-confirmation" : recommendedGrowthSeedProtocol();
   const requestedStage = Number.parseInt(parameters.get("stage"), 10);
   enterPipelineStage(Number.isInteger(requestedStage) ? Math.max(0, Math.min(4, requestedStage)) : 0);
 }
@@ -27584,6 +27712,95 @@ function performIceAnchorEvent() {
   updateUI();
 }
 
+function performIqcDisjointConfirmationEvent() {
+  const wave = iqcDisjointTrace?.waves[iqcDisjointWaveIndex];
+  if (!wave) {
+    growthStopReason = "Sealed IQC confirmation trace exhausted at its evidence boundary.";
+    setPlaying(false);
+    pipelineAuto = false;
+    updatePipelineButtons();
+    return;
+  }
+  const before = { atoms: atoms.length, clusters: acceptedDecisions,
+    frontier: wave.candidateTerminals, morphology: structuralMorphologySnapshot(),
+    composition: structuralCompositionSnapshot(), packing: structuralPackingSnapshot(),
+    voidClearance: structuralVoidClearanceSnapshot(), interfaces: structuralInterfaceSnapshot(),
+    orientationalOrder: structuralOrientationalOrderSnapshot(),
+    centrosymmetry: structuralCentrosymmetrySnapshot(), scattering: structuralScatteringSnapshot(),
+    chargeMoment: structuralChargeMomentSnapshot(), bondValenceState: structuralBondValenceSnapshot(),
+    feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() };
+  currentCandidates = [];
+  iqcDisjointWaveIndex++;
+  eventIndex += wave.candidateTerminals;
+  if (wave.acceptedSites > 0) {
+    const freshIds = [];
+    wave.emittedSites.forEach(([species, point]) => {
+      const scenePoint = iqcConfirmationScenePoint(point);
+      const atom = addAtom(scenePoint, species, "iqc-confirmed-exterior", nearestParent(scenePoint));
+      atom.sealedConfirmationEmission = true;
+      indexAtom(atom);
+      freshIds.push(atom.id);
+    });
+    acceptedDecisions += wave.acceptedActions;
+    grammarDecisions += wave.acceptedActions;
+    freezeCreationGeometryForAtoms(freshIds);
+    appendHistory("reuse", { type: "accept", depth: 3,
+      action: `${wave.acceptedSites}-site exterior terminal`,
+      family: `fusion rank ${wave.selectedRank} · ${wave.exactTerminalsPosthoc}/${wave.candidateTerminals} exact posthoc` });
+    captionAction.textContent = `Sealed frontier block: the fusion rank-1 terminal adds ${wave.acceptedSites} colored sites beyond the 473-site nucleus. All ${wave.candidateTerminals} terminals were frozen before the disjoint target opened; posthoc scoring found ${wave.exactTerminalsPosthoc} exact terminals and confirmed this selected one exactly.`;
+    updateDecision({ eventType: "reuse", accepted: true,
+      state: { action: `${wave.acceptedSites} confirmed exterior sites`,
+        domain: `fresh spatial nucleus · terminal ${wave.selectedTerminalIndex}` },
+      resolver: "frozen scalar + port-incidence fusion", interval: [1, 1] });
+    recordStructuralLeap({ status: "accepted",
+      label: "sealed disjoint IQC · pre-target-selected three-site terminal",
+      before, proposal: { candidates: wave.candidateTerminals, sites: wave.acceptedSites,
+        shared: 0, fresh: wave.acceptedSites },
+      tests: { summary: `fusion rank 1 exact · ${wave.acceptedSites}/${wave.acceptedSites} colored sites`,
+        detail: `${wave.exactTerminalsPosthoc}/${wave.candidateTerminals} terminals were exact posthoc; candidate set ${wave.candidateDigest.slice(0, 12)}… was immutable before one target open.` },
+      after: { atoms: atoms.length, clusters: acceptedDecisions, accepted: wave.acceptedActions,
+        rejected: 0, depth: 3, morphology: structuralMorphologySnapshot(),
+        composition: structuralCompositionSnapshot(), packing: structuralPackingSnapshot(),
+        voidClearance: structuralVoidClearanceSnapshot(), interfaces: structuralInterfaceSnapshot(),
+        orientationalOrder: structuralOrientationalOrderSnapshot(),
+        centrosymmetry: structuralCentrosymmetrySnapshot(), scattering: structuralScatteringSnapshot(),
+        chargeMoment: structuralChargeMomentSnapshot(), bondValenceState: structuralBondValenceSnapshot(),
+        feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() },
+      claimBoundary: iqcDisjointTrace.claimBoundary });
+  } else {
+    rejectedDecisions += 1;
+    captionAction.textContent = `Evidence boundary: the self-fed second block still contains ${wave.exactTerminalsPosthoc} exact terminals, but the frozen scalar and fusion selectors first reach one only at ranks ${wave.scalarFirstExactRank} and ${wave.fusionFirstExactRank}. The app stops instead of using the posthoc target to choose a branch.`;
+    decisionBadge.className = "badge neutral";
+    decisionBadge.textContent = "selection red";
+    decisionTitle.textContent = "Exact continuation exists, but the frozen selector misses it";
+    decisionCopy.textContent = "No second-block sites are emitted. A better marking or rollback policy must be learned on independent training nuclei before this continuation can be authorized.";
+    actionValue.textContent = `wave ${wave.wave} · 0 accepted`;
+    domainValue.textContent = `${wave.exactTerminalsPosthoc}/${wave.candidateTerminals} exact only after sealed scoring`;
+    energyValue.textContent = "live target calls 0";
+    resolverValue.textContent = `first exact ranks ${wave.scalarFirstExactRank} / ${wave.fusionFirstExactRank}`;
+    appendHistory("reject", { type: "reject", depth: 6,
+      action: "second-block selection boundary", family: "exact supply green · autonomous selector red" });
+    recordStructuralLeap({ status: "fixed", label: "sealed IQC · second-block selection boundary",
+      before, proposal: { candidates: wave.candidateTerminals, sites: 0, shared: 0, fresh: 0 },
+      tests: { summary: `0 emitted · first exact ranks ${wave.scalarFirstExactRank} / ${wave.fusionFirstExactRank}`,
+        detail: `${wave.exactTerminalsPosthoc} exact terminals exist in the complete frozen tree, but neither the top-one fusion choice nor the frozen portfolio supplies one.` },
+      after: { atoms: atoms.length, clusters: acceptedDecisions, accepted: 0, rejected: 1,
+        depth: 3, morphology: structuralMorphologySnapshot(), composition: structuralCompositionSnapshot(),
+        packing: structuralPackingSnapshot(), voidClearance: structuralVoidClearanceSnapshot(),
+        interfaces: structuralInterfaceSnapshot(), orientationalOrder: structuralOrientationalOrderSnapshot(),
+        centrosymmetry: structuralCentrosymmetrySnapshot(), scattering: structuralScatteringSnapshot(),
+        chargeMoment: structuralChargeMomentSnapshot(), bondValenceState: structuralBondValenceSnapshot(),
+        feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() },
+      claimBoundary: iqcDisjointTrace.claimBoundary });
+    growthStopReason = "Second spatial block is candidate-supply green but frozen-selection red.";
+    setPlaying(false);
+    pipelineAuto = false;
+    updatePipelineButtons();
+  }
+  rebuildWorld();
+  updateUI();
+}
+
 function advanceMarkingTraining(batchSize = 12) {
   trainingProgress = Math.min(markingSampleCount(), trainingProgress + batchSize);
   eventIndex = trainingProgress;
@@ -27923,6 +28140,10 @@ function performEvent() {
   if (enforceMarkingComparisonHorizon(true)) return;
   if (iceAnchorTrace) {
     performIceAnchorEvent();
+    return;
+  }
+  if (iqcDisjointTrace) {
+    performIqcDisjointConfirmationEvent();
     return;
   }
   if (growthFrontierWork.busy) return;
@@ -34483,6 +34704,33 @@ function renderPolicyComparison() {
     renderBondValenceResiduals(null);
     return;
   }
+  if (iqcDisjointTrace) {
+    policyComparisonState.textContent = "sealed fusion confirmation";
+    const first = document.createElement("article"); first.className = "active";
+    const firstLabel = document.createElement("small"); firstLabel.textContent = "first disjoint block";
+    const firstAction = document.createElement("strong"); firstAction.textContent = "fusion rank 1 · exact";
+    const firstScore = document.createElement("em"); firstScore.textContent = `${iqcDisjointTrace.waves[0].exactTerminalsPosthoc}/${iqcDisjointTrace.waves[0].candidateTerminals} exact posthoc`;
+    first.append(firstLabel, firstAction, firstScore);
+    const second = document.createElement("article");
+    const secondLabel = document.createElement("small"); secondLabel.textContent = "self-fed second block";
+    const secondAction = document.createElement("strong"); secondAction.textContent = "fusion top-one · inexact";
+    const secondScore = document.createElement("em"); secondScore.textContent = `first exact rank ${iqcDisjointTrace.waves[1].fusionFirstExactRank}`;
+    second.append(secondLabel, secondAction, secondScore);
+    policyComparison.append(first, second);
+    policySensitivityState.textContent = "candidate supply green · sustained selector red";
+    policyPreviewState.textContent = "Both terminal sets were frozen before their targets opened. Posthoc target labels are evidence only and never rerank the browser trace.";
+    renderPolicyScoreLedger(null);
+    renderMarkingFrontierAudit(null);
+    renderPolicyPhaseMap(null);
+    renderPolicyIdentifiabilityAudit(null);
+    renderPolicyParetoMap(null);
+    renderPolicyOmissionAudit(null);
+    renderPolicySpatialField(null);
+    renderChargeShapePortrait(null);
+    renderIonicPairConvergence(null);
+    renderBondValenceResiduals(null);
+    return;
+  }
   if (iceAnchorTrace) {
     policyComparisonState.textContent = "specialized frozen trace";
     const row = document.createElement("article"); row.className = "active";
@@ -34694,6 +34942,33 @@ function liveGrowthCertificate() {
       targetCoordinatesUsed: false, uniqueMolecularAssignmentClaimed: false, growthExecuted: false },
     benchmarkGate: benchmark.gate,
   };
+  if (iqcDisjointTrace) {
+    const processed = iqcDisjointTrace.waves.slice(0, iqcDisjointWaveIndex);
+    const emitted = processed.reduce((sum, wave) => sum + wave.acceptedSites, 0);
+    const boundaryReached = iqcDisjointWaveIndex >= iqcDisjointTrace.waves.length;
+    return {
+      mode: "sealed disjoint IQC continuation confirmation",
+      state: boundaryReached ? "selection boundary" : "pre-target frozen execution",
+      knownWindow: { status: "pass", title: `${iqcDisjointTrace.seedAtomCount} seed sites at a fresh nucleus`,
+        detail: "The spatial domain is disjoint from every development nucleus; no held-out target sites are embedded." },
+      continuation: { status: emitted === 3 ? "pass" : "progress",
+        title: `${emitted}/3 selected exterior colored sites emitted`,
+        detail: `First block: ${iqcDisjointTrace.waves[0].exactTerminalsPosthoc}/${iqcDisjointTrace.waves[0].candidateTerminals} exact posthoc; fusion rank 1 was exact.` },
+      hierarchy: { status: boundaryReached ? "open" : "progress",
+        title: "Second self-fed selector remains red",
+        detail: `The complete second tree contains ${iqcDisjointTrace.waves[1].exactTerminalsPosthoc} exact terminals, but first exact ranks are ${iqcDisjointTrace.waves[1].scalarFirstExactRank}/${iqcDisjointTrace.waves[1].fusionFirstExactRank}.` },
+      claimBoundary: { status: "open", title: "Finite exterior leap only",
+        detail: "No sustained autonomous, stationary, inflationary, or exponential continuation is certified." },
+      metrics: { seedSites: iqcDisjointTrace.seedAtomCount, emittedSites: emitted,
+        processedBlocks: processed.length, targetCallsDuringBrowserExecution: 0,
+        sealedBackendTargetOpenCount: iqcDisjointTrace.targetOpenCountPosthoc,
+        targetDomainDisjoint: iqcDisjointTrace.targetDomainDisjoint,
+        candidatesFrozenBeforeTarget: iqcDisjointTrace.candidatesFrozenBeforeTarget,
+        autonomousContinuationCertified: iqcDisjointTrace.autonomousContinuationCertified,
+        stationaryOrExponentialClaimed: iqcDisjointTrace.stationaryOrExponentialClaimed },
+      benchmarkGate: benchmark.gate,
+    };
+  }
   if (iceAnchorTrace) {
     const processed = iceAnchorTrace.waves.slice(0, iceAnchorWaveIndex);
     const accepted = processed.reduce((sum, wave) => sum + wave.acceptedAnchors, 0);
@@ -35118,6 +35393,36 @@ function updateUI() {
       reuseLabel.textContent = "CLAIM BOUNDARY";
       reuseMetric.textContent = "WITHHELD";
       reuseDelta.textContent = "occupancy ensemble required";
+      updateOrderAudit();
+      renderStack();
+      renderMarkings();
+      renderStructureStats();
+      renderLegend();
+      syncStageOptions();
+      return;
+    }
+    if (iqcDisjointTrace) {
+      const nextWave = iqcDisjointTrace.waves[iqcDisjointWaveIndex];
+      const emitted = atoms.length - iqcDisjointTrace.seedAtomCount;
+      stageEyebrow.textContent = "search · sealed spatially disjoint IQC confirmation";
+      stageTitle.textContent = "Test exterior model-set continuation without opening the target";
+      phaseReadout.textContent = nextWave
+        ? nextWave.wave === 1 ? "first block · fusion rank 1" : "second block · selection red"
+        : "evidence boundary reached";
+      atomLabel.textContent = "COLORED SITES";
+      atomMetric.textContent = atoms.length.toLocaleString();
+      atomDelta.textContent = `${iqcDisjointTrace.seedAtomCount} sealed seed · ${emitted} confirmed exterior`;
+      frontierLabel.textContent = "FROZEN TERMINALS";
+      frontierMetric.textContent = nextWave ? String(nextWave.candidateTerminals) : "0";
+      frontierDelta.textContent = nextWave?.wave === 2
+        ? `${nextWave.exactTerminalsPosthoc} exact posthoc · top choice fails`
+        : "candidate identities frozen before target";
+      oracleLabel.textContent = "LIVE TARGET CALLS";
+      oracleMetric.textContent = "0";
+      oracleDelta.textContent = "one sealed backend score · never used by browser ranking";
+      reuseLabel.textContent = "CLAIM BOUNDARY";
+      reuseMetric.textContent = emitted === 3 ? "1 LEAP" : "READY";
+      reuseDelta.textContent = growthStopReason || "finite confirmation · no sustained or exponential claim";
       updateOrderAudit();
       renderStack();
       renderMarkings();
@@ -36364,11 +36669,15 @@ policyWorkbenchReset.addEventListener("click", () => {
   previewPolicyWinner(activePolicy, snapshot);
 });
 growthSeedProtocolSelect.addEventListener("change", () => {
-  growthSeedProtocol = ["local-frontier", "reconstruct"].includes(growthSeedProtocolSelect.value)
-    ? growthSeedProtocolSelect.value : "observed-window";
+  const requested = growthSeedProtocolSelect.value;
+  growthSeedProtocol = ["local-frontier", "reconstruct"].includes(requested)
+    ? requested
+    : requested === "sealed-iqc-confirmation" && scenarioSelect.value === "iqc"
+      ? requested : "observed-window";
   growthProtocolMode = "custom";
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
+  synchronizeWorkflowAddress({ mode: "replace" });
 });
 growthNucleiSelect.addEventListener("change", () => {
   const value = Number(growthNucleiSelect.value);
@@ -36731,6 +37040,10 @@ function applyLaunchParameters() {
   }
   if (!requestedExperiment && !requestedStudyId) {
     growthSeedProtocol = recommendedGrowthSeedProtocol();
+    if (scenarioSelect.value === "iqc"
+        && parameters.get("seedProtocol") === "sealed-iqc-confirmation") {
+      growthSeedProtocol = "sealed-iqc-confirmation";
+    }
   }
   if (scenarioSelect.value === "iceVI" && parameters.has("microstate")) {
     const requested = Number.parseInt(parameters.get("microstate"), 10);

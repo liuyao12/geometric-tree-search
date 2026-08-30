@@ -1,5 +1,24 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 336 · replay a sealed, spatially disjoint IQC confirmation
+
+Material growth now offers an IQC-only evidence-library initial condition:
+**sealed disjoint confirmation**. The browser regenerates and ships the
+473-site radius-nine seed at the preregistered nucleus, plus only the
+three-site terminal selected by the frozen scalar/port-incidence fusion model.
+No held-out target coordinates are included. The full set of 128 terminal
+identities, their order, and their digest were frozen before the target was
+opened once; sealed scoring later found 90 exact terminals and confirmed the
+fusion rank-one terminal exactly.
+
+The visualization makes the next boundary equally explicit. A second self-fed
+128-terminal block contains 62 exact branches, but the frozen scalar and fusion
+selectors first reach one at ranks 13 and 16; top-one and the frozen rollback
+portfolio are red. The live trace therefore emits the first three exterior
+colored sites, then stops without consulting posthoc labels. This is evidence
+for one finite exterior leap at a fresh spatial domain—not sustained autonomous,
+stationary, inflationary, or exponential quasicrystal growth.
+
 ## Build 335 · make exact-IQC growth executable by default
 
 The ideal six-dimensional model-set control now opens Material growth with a

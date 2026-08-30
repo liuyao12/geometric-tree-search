@@ -1,5 +1,26 @@
 # Recursive GCTS benchmark for material growth
 
+### Sealed spatially disjoint IQC frontier confirmation (Build 336)
+
+The browser now exposes the backend's preregistered fresh-nucleus confirmation
+as a separate IQC evidence-library growth mode. Its initial condition is a
+473-site radius-nine model-set crop from a spatial domain disjoint from every
+development nucleus. The browser artifact contains that seed and the frozen
+fusion top-one three-site terminal only; it contains no 2,048-site held-out
+target coordinates. All 128 terminals and their ordering were serialized
+before the target opened once. Posthoc scoring found 90 exact terminals, and
+both scalar and fusion top-one selected an exact three-site action.
+
+This closes a specific gap left by Build 335: the displayed sites are beyond a
+small, fresh seed rather than merely filling the original 507-site observation
+envelope. It does not close the sustained-growth gap. In the self-fed second
+block, 62/128 terminals are exact but the first exact scalar/fusion ranks are
+13/16, fusion top-one is inexact, and the frozen portfolio supplies no exact
+choice. The interactive trace stops at this selection boundary. Receipts expose
+protocol, candidate-set, execution, and coordinate/species digests; target-use
+flags; the single sealed backend target open; and the red autonomous,
+stationary, and exponential claims.
+
 ### Executable exact-IQC fitted nucleus (Build 335)
 
 The exact ideal-IQC fixture now recommends the already-supported local fitted
