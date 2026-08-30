@@ -78,11 +78,13 @@ import { buildGrowthActionPhysicsProvenance, buildPhysicsCompressionMap, buildPh
   PHYSICS_EFFECT_COLUMNS, PHYSICS_READINESS_STATES, physicsExecutionLineage }
   from "./physics-compression-map.js?v=20260828-320";
 import { buildExternalPhysicsRequest }
-  from "./external-physics-request.mjs?v=20260830-340";
+  from "./external-physics-request.mjs?v=20260830-341";
 import { validateExternalPhysicsResponse }
-  from "./external-physics-response.mjs?v=20260830-340";
+  from "./external-physics-response.mjs?v=20260830-341";
 import { bindValidatedForceGeometry, buildValidatedForceGeometryRuntime }
-  from "./external-force-geometry.mjs?v=20260830-340";
+  from "./external-force-geometry.mjs?v=20260830-341";
+import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntime }
+  from "./external-trajectory-geometry.mjs?v=20260830-341";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -1789,9 +1791,11 @@ let physicsProtocolPairSessionId = null;
 let physicsProtocolPairSessionSerial = 0;
 let dynamicalEvidenceHandoffReceipt = null;
 let externalPhysicsRequestExportReceipt = null;
+let externalPhysicsRequestRuntime = null;
 let externalPhysicsResponseValidationReceipt = null;
 let externalPhysicsResponseRuntime = null;
 let externalPhysicsForceGeometryEnabled = false;
+let externalPhysicsTrajectoryGeometryEnabled = false;
 let currentPhysicsPairProgress = null;
 let currentPhysicsPairIntervention = null;
 let frozenPhysicsPreflightManifest = null;
@@ -2584,6 +2588,10 @@ function computeRelaxationDisplacementField() {
 }
 
 function relaxationDisplacementField() {
+  if (externalPhysicsTrajectoryGeometryEnabled
+      && externalPhysicsResponseRuntime?.quantityId === "trajectory") {
+    return externalPhysicsResponseRuntime.displacementField || null;
+  }
   if (relaxationDisplacementCache?.structure === importedStructure
       && relaxationDisplacementCache.frameIndex === importedFrameIndex) {
     return relaxationDisplacementCache.result;
@@ -2594,6 +2602,7 @@ function relaxationDisplacementField() {
 }
 
 function relaxationLocalEnvironmentField() {
+  if (externalPhysicsTrajectoryGeometryEnabled) return null;
   if (relaxationLocalEnvironmentCache?.structure === importedStructure
       && relaxationLocalEnvironmentCache.frameIndex === importedFrameIndex) {
     return relaxationLocalEnvironmentCache.result;
@@ -3176,6 +3185,10 @@ function currentLocalConstraintMismatchField() {
 }
 
 function evidenceFrameCount() {
+  if (externalPhysicsTrajectoryGeometryEnabled
+      && externalPhysicsResponseRuntime?.quantityId === "trajectory") {
+    return externalPhysicsResponseRuntime.frameCount;
+  }
   return scenarioSelect.value === "imported" && ensembleEvidenceMode === "all"
     ? importedTrajectoryFrames().length || 1 : 1;
 }
@@ -3197,12 +3210,21 @@ function activeCalculationProvenance() {
     || importedStructure.metadata?.calculation || null;
 }
 
+function activeTrajectoryGeometryProvenance() {
+  return externalPhysicsTrajectoryGeometryEnabled
+    && externalPhysicsResponseRuntime?.quantityId === "trajectory"
+    && externalPhysicsResponseRuntime.configurationRole === "observation"
+    ? externalPhysicsResponseRuntime.trajectoryProvenance : null;
+}
+
 function clearExternalPhysicsRoundTrip() {
   dynamicalEvidenceHandoffReceipt = null;
   externalPhysicsRequestExportReceipt = null;
+  externalPhysicsRequestRuntime = null;
   externalPhysicsResponseValidationReceipt = null;
   externalPhysicsResponseRuntime = null;
   externalPhysicsForceGeometryEnabled = false;
+  externalPhysicsTrajectoryGeometryEnabled = false;
 }
 
 function bindExternalForceGeometryToReference(source) {
@@ -3214,6 +3236,59 @@ function bindExternalForceGeometryToReference(source) {
     externalPhysicsResponseValidationReceipt.properPoseTransportHypothesis = binding.properPoseTransport;
     externalPhysicsResponseValidationReceipt.forceIntegrated = binding.forceIntegrated;
     externalPhysicsResponseValidationReceipt.usedAsPotential = binding.usedAsPotential;
+  }
+  return binding.boundSites;
+}
+
+function bindExternalTrajectoryGeometryToReference(source) {
+  if (!externalPhysicsTrajectoryGeometryEnabled || externalPhysicsResponseRuntime?.quantityId !== "trajectory"
+      || externalPhysicsResponseRuntime.configurationRole !== "observation") return 0;
+  const scenePerAngstrom = referenceSpacing / Math.max(referenceSpacingA, 1e-12);
+  const binding = bindValidatedTrajectoryGeometry(source, externalPhysicsResponseRuntime, scenePerAngstrom);
+  source.forEach((atom) => {
+    if (Array.isArray(atom.observedRelaxationWorldSceneArray)) {
+      atom.observedRelaxationWorldScene = new THREE.Vector3(...atom.observedRelaxationWorldSceneArray);
+    }
+  });
+  const records = externalPhysicsResponseRuntime.records.map((record, referenceIndex) => {
+    const nonAffine = new THREE.Vector3(...record.endpointDisplacementAngstrom);
+    return {
+      sourceIndex: Number.isInteger(source[referenceIndex]?.sourceIndex)
+        ? source[referenceIndex].sourceIndex : referenceIndex,
+      referenceIndex,
+      species: source[referenceIndex]?.species,
+      affine: new THREE.Vector3(), nonAffine, total: nonAffine.clone(),
+      pathLengthAngstrom: record.pathLengthAngstrom,
+      maximumExcursionAngstrom: record.maximumExcursionAngstrom,
+      rmsExcursionAngstrom: record.rmsExcursionAngstrom,
+    };
+  });
+  externalPhysicsResponseRuntime.displacementField = {
+    source: "validated request-linked external-physics trajectory",
+    responseSha256: externalPhysicsResponseRuntime.responseSha256,
+    sourceFrameIndex: 0,
+    targetFrameIndex: externalPhysicsResponseRuntime.frameCount - 1,
+    frameCount: externalPhysicsResponseRuntime.frameCount,
+    timeSpanSeconds: externalPhysicsResponseRuntime.timeSpanSeconds,
+    records,
+    bySourceIndex: new Map(records.map((record) => [record.sourceIndex, record])),
+    byReferenceIndex: new Map(records.map((record) => [record.referenceIndex, record])),
+    nonAffineRmsAngstrom: externalPhysicsResponseRuntime.trajectoryProvenance.endpointRmsAngstrom,
+    nonAffineMaximumAngstrom: externalPhysicsResponseRuntime.trajectoryProvenance.endpointMaximumAngstrom,
+    affineRmsAngstrom: 0, affineMaximumAngstrom: 0,
+    meanPathLengthAngstrom: externalPhysicsResponseRuntime.trajectoryProvenance.meanPathLengthAngstrom,
+    volumeChangeFraction: null,
+    decomposition: "per-frame center-of-configuration translation removed; endpoint displacement retained",
+  };
+  if (externalPhysicsResponseValidationReceipt) {
+    externalPhysicsResponseValidationReceipt.boundReferenceSites = binding.boundSites;
+    externalPhysicsResponseValidationReceipt.properPoseTransportHypothesis = binding.properPoseTransport;
+    externalPhysicsResponseValidationReceipt.globalTranslationRemovedPerFrame
+      = binding.globalTranslationRemovedPerFrame;
+    externalPhysicsResponseValidationReceipt.globalRotationRemovedPerFrame
+      = binding.globalRotationRemovedPerFrame;
+    externalPhysicsResponseValidationReceipt.trajectoryIntegrated = binding.trajectoryIntegrated;
+    externalPhysicsResponseValidationReceipt.usedAsPhysicalClock = binding.usedAsPhysicalClock;
   }
   return binding.boundSites;
 }
@@ -4317,6 +4392,8 @@ function random() {
 function cloneAtom(atom, seed = true) {
   return { ...atom, id: nextAtomId++, p: atom.p.clone(), seed, attempts: 0, parent: null, depth: 0,
     calculationForceEvPerAngstrom: atom.calculationForceEvPerAngstrom?.slice() || null,
+    observedRelaxationWorldScene: atom.observedRelaxationWorldScene?.clone() || null,
+    observedRelaxationWorldSceneArray: atom.observedRelaxationWorldSceneArray?.slice() || null,
     uAnisoCartesianA2: atom.uAnisoCartesianA2?.map((row) => row.slice()) || null,
     thermalSigmaAxesA: atom.thermalSigmaAxesA?.slice() || null,
     thermalAxesCartesian: atom.thermalAxesCartesian?.map((axis) => axis.slice()) || null };
@@ -5147,6 +5224,8 @@ function inspectSite(atom) {
   const evidence = snapshot.decisionEvidence;
   const calculationForceMagnitude = Array.isArray(atom.calculationForceEvPerAngstrom)
     ? new THREE.Vector3(...atom.calculationForceEvPerAngstrom).length() : null;
+  const trajectoryPathLength = Number.isFinite(atom.externalTrajectoryPathLengthAngstrom)
+    ? atom.externalTrajectoryPathLengthAngstrom : null;
   siteProvenanceState.textContent = `${snapshot.species} · site ${snapshot.siteId} · ${snapshot.origin}`;
   siteProvenanceGrid.replaceChildren(
     siteProvenanceTile("Cartesian position", `${x}, ${y}, ${z} Å`, `${snapshot.geometryLabel} · ephemeral viewport coordinate`),
@@ -5168,6 +5247,10 @@ function inspectSite(atom) {
       atom.calculationForceTransported
         ? `proper-pose transported · ${atom.calculationForceConsensusWitnesses || 1} commuting witness${(atom.calculationForceConsensusWitnesses || 1) === 1 ? "" : "es"} · optional seed only`
         : calculationForceMagnitude === null ? "no vector inferred" : "supplied calculation site · not a force field"),
+    siteProvenanceTile("trajectory section", trajectoryPathLength === null
+      ? "no validated local path" : `path ${trajectoryPathLength.toFixed(4)} Å · max ${atom.externalTrajectoryMaximumExcursionAngstrom.toFixed(4)} Å`,
+      trajectoryPathLength === null ? "no time-resolved geometry attached"
+        : `${atom.observedRelaxationTransported ? "proper-pose transported" : "matched observation site"} · endpoint vector is optional seed geometry · timestamps are provenance only`),
   );
   renderSiteConstraintAudit(selectedSiteConstraintAudit(atom));
   renderSiteCreationPhysicsAudit(snapshot.decisionEvidence);
@@ -5197,7 +5280,13 @@ function copyPlacedObservedRelaxation(atom, site) {
   atom.observedRelaxationWorldScene = site.observedRelaxationWorldScene.clone();
   atom.observedRelaxationTemplateReferenceIndex = Number.isInteger(site.referenceIndex)
     ? site.referenceIndex : null;
+  atom.externalTrajectoryReferenceIndex = Number.isInteger(site.referenceIndex)
+    ? site.referenceIndex : null;
   atom.observedRelaxationTransported = true;
+  atom.externalTrajectoryPathLengthAngstrom = site.externalTrajectoryPathLengthAngstrom ?? null;
+  atom.externalTrajectoryMaximumExcursionAngstrom = site.externalTrajectoryMaximumExcursionAngstrom ?? null;
+  atom.externalTrajectoryRmsExcursionAngstrom = site.externalTrajectoryRmsExcursionAngstrom ?? null;
+  atom.externalTrajectoryResponseSha256 = site.externalTrajectoryResponseSha256 || null;
 }
 
 function copyPlacedCalculationForce(atom, site) {
@@ -5250,11 +5339,16 @@ function templateSiteFromReference(source, atomIndex, local, localFrameInverse, 
   const tensor = atomDisplacementTensorAngstrom2(atom);
   const calculationForceLocalEvPerAngstrom = Array.isArray(atom.calculationForceEvPerAngstrom)
     ? new THREE.Vector3(...atom.calculationForceEvPerAngstrom).applyQuaternion(localFrameInverse) : null;
-  const relaxationRecord = relaxationDisplacementField()?.bySourceIndex?.get(atom.sourceIndex);
-  const observedRelaxationLocalScene = relaxationRecord?.nonAffine?.isVector3
-    ? relaxationRecord.nonAffine.clone()
+  const relaxationField = relaxationDisplacementField();
+  const relaxationRecord = relaxationField?.byReferenceIndex?.get(atomIndex)
+    || relaxationField?.bySourceIndex?.get(atom.sourceIndex);
+  const observedRelaxationWorldScene = atom.observedRelaxationWorldScene?.isVector3
+    ? atom.observedRelaxationWorldScene
+    : relaxationRecord?.nonAffine?.isVector3 ? relaxationRecord.nonAffine.clone()
       .multiplyScalar(referenceSpacing / Math.max(referenceSpacingA, 1e-12))
-      .applyQuaternion(localFrameInverse) : null;
+      : null;
+  const observedRelaxationLocalScene = observedRelaxationWorldScene?.clone()
+    .applyQuaternion(localFrameInverse) || null;
   return {
     local,
     species: atom.species,
@@ -5263,9 +5357,14 @@ function templateSiteFromReference(source, atomIndex, local, localFrameInverse, 
     calculationSpin: Number.isFinite(atom.calculationSpin) ? atom.calculationSpin : null,
     calculationForceLocalEvPerAngstrom,
     observedRelaxationLocalScene,
-    observedRelaxationSourceFrameIndex: relaxationRecord ? importedFrameIndex : null,
+    observedRelaxationSourceFrameIndex: relaxationRecord
+      ? relaxationField.sourceFrameIndex : null,
     observedRelaxationTargetFrameIndex: relaxationRecord
-      ? importedTrajectoryFrames().length - 1 : null,
+      ? relaxationField.targetFrameIndex : null,
+    externalTrajectoryPathLengthAngstrom: atom.externalTrajectoryPathLengthAngstrom ?? null,
+    externalTrajectoryMaximumExcursionAngstrom: atom.externalTrajectoryMaximumExcursionAngstrom ?? null,
+    externalTrajectoryRmsExcursionAngstrom: atom.externalTrajectoryRmsExcursionAngstrom ?? null,
+    externalTrajectoryResponseSha256: atom.externalTrajectoryResponseSha256 || null,
     uAnisoLocalA2: tensor ? rotateDisplacementTensor(tensor, localFrameInverse.toArray()) : null,
     displacementTensorSource: tensor ? (Array.isArray(atom.uAnisoCartesianA2) ? "reported Uij" : "reported Uiso") : null,
   };
@@ -10594,9 +10693,14 @@ function drawClusterCardObservedRelaxation(context, projected, quaternion, scale
   if (!relaxationDisplacementToggle.checked || !relaxationDisplacementField()) return;
   let drawn = 0;
   projected.forEach((point) => {
-    const record = relaxationDisplacementField().bySourceIndex?.get(point.atom.sourceIndex);
-    if (!record?.nonAffine?.isVector3 || record.nonAffine.lengthSq() <= 1e-16) return;
-    const delta = record.nonAffine.clone().multiplyScalar(scaleToScene).applyQuaternion(quaternion);
+    const field = relaxationDisplacementField();
+    const record = field.byReferenceIndex?.get(point.atom.externalTrajectoryReferenceIndex)
+      || field.bySourceIndex?.get(point.atom.sourceIndex);
+    const world = point.atom.observedRelaxationWorldScene?.isVector3
+      ? point.atom.observedRelaxationWorldScene.clone()
+      : record?.nonAffine?.isVector3 ? record.nonAffine.clone().multiplyScalar(scaleToScene) : null;
+    if (!world?.isVector3 || world.lengthSq() <= 1e-16) return;
+    const delta = world.applyQuaternion(quaternion);
     const screenScale = 28 * point.perspective;
     const endX = point.x + delta.x * screenScale;
     const endY = point.y - delta.y * screenScale;
@@ -12210,7 +12314,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260830-340",
+      buildId: "20260830-341",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -14713,7 +14817,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260830-340" },
+    application: { name: "Materials Growth Lab", buildId: "20260830-341" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },
@@ -18133,6 +18237,7 @@ function scalarSpinColorTransportAudit() {
 
 function observedRelaxationTransportAudit() {
   const field = relaxationDisplacementField();
+  const external = activeTrajectoryGeometryProvenance();
   const templates = overlapGrammar?.templates || [];
   const rules = overlapGrammar?.rules || [];
   return {
@@ -18140,6 +18245,13 @@ function observedRelaxationTransportAudit() {
     mode: structuralRelaxationMode,
     sourceFrameIndex: field?.sourceFrameIndex ?? null,
     targetFrameIndex: field?.targetFrameIndex ?? null,
+    source: field?.source || (field ? "archived fixed-topology geometry" : null),
+    requestLinkedExternalResponse: Boolean(external),
+    validationGatePassed: external?.validationGatePassed === true,
+    responseSha256: external?.responseSha256 || null,
+    physicalFrameCount: external?.frameCount || null,
+    suppliedPhysicalTimeSpanSeconds: external?.timeSpanSeconds || null,
+    meanPathLengthAngstrom: field?.meanPathLengthAngstrom ?? null,
     referenceVectorSites: field?.records?.filter((record) => record.nonAffine.lengthSq() > 1e-16).length || 0,
     templateLocalVectorSites: templates.reduce((sum, template) => sum
       + (template.sites || []).filter((site) => site.observedRelaxationLocalScene?.isVector3).length, 0),
@@ -18156,6 +18268,10 @@ function observedRelaxationTransportAudit() {
     latestSeedAccepted: Boolean(lastStructuralRelaxation?.observedRelaxationSeedAccepted),
     worseningSeedIgnored: true,
     copiedAsForce: false,
+    globalTranslationRemovedPerFrame: external?.globalTranslationRemovedPerFrame ?? null,
+    globalRotationRemovedPerFrame: external?.globalRotationRemovedPerFrame ?? null,
+    trajectoryIntegratedByGcts: false,
+    suppliedTimestampsUsedAsGctsClock: false,
     physicalTimeModeled: false,
     targetUsed: false,
   };
@@ -21502,6 +21618,10 @@ function candidateSites(candidate) {
       .applyQuaternion(candidate.rotation) || null,
     observedRelaxationSourceFrameIndex: site.observedRelaxationSourceFrameIndex,
     observedRelaxationTargetFrameIndex: site.observedRelaxationTargetFrameIndex,
+    externalTrajectoryPathLengthAngstrom: site.externalTrajectoryPathLengthAngstrom ?? null,
+    externalTrajectoryMaximumExcursionAngstrom: site.externalTrajectoryMaximumExcursionAngstrom ?? null,
+    externalTrajectoryRmsExcursionAngstrom: site.externalTrajectoryRmsExcursionAngstrom ?? null,
+    externalTrajectoryResponseSha256: site.externalTrajectoryResponseSha256 || null,
     uAnisoCartesianA2: site.uAnisoLocalA2
       ? rotateDisplacementTensor(site.uAnisoLocalA2, candidate.rotation.toArray()) : null,
     displacementTensorSource: site.displacementTensorSource,
@@ -21526,6 +21646,8 @@ function candidateObservedRelaxationSites(sites) {
   return sites.filter((site) => site.observedRelaxationWorldScene?.isVector3).map((site) => ({
     p: site.p.clone(), species: site.species,
     vector: site.observedRelaxationWorldScene.clone(),
+    pathLengthAngstrom: site.externalTrajectoryPathLengthAngstrom ?? null,
+    maximumExcursionAngstrom: site.externalTrajectoryMaximumExcursionAngstrom ?? null,
   }));
 }
 
@@ -26127,9 +26249,12 @@ function syncStageOptions() {
     ? `Current local constraint mismatch · ${currentMismatch.sampledCenters}/${currentMismatch.totalCenters} sites · p90 ${currentMismatch.percentile90ContactAngleMismatch.toFixed(2)}`
     : "Current local constraint mismatch · unavailable";
   const displacement = relaxationDisplacementField();
+  const externalTrajectory = activeTrajectoryGeometryProvenance();
   relaxationDisplacementToggle.disabled = !displacement;
   relaxationDisplacementToggleLabel.textContent = displacement
-    ? `Selected → final non-affine displacement · RMS ${displacement.nonAffineRmsAngstrom.toFixed(3)} Å`
+    ? externalTrajectory
+      ? `Validated trajectory sections · ${externalTrajectory.frameCount} frames · endpoint RMS ${displacement.nonAffineRmsAngstrom.toFixed(3)} Å`
+      : `Selected → final non-affine displacement · RMS ${displacement.nonAffineRmsAngstrom.toFixed(3)} Å`
     : "Selected → final displacement · unavailable";
   const observedRelaxationAvailable = Boolean(displacement?.records?.length);
   const observedRelaxationOption = structuralRelaxationSelect.querySelector('option[value="observed"]');
@@ -26292,7 +26417,7 @@ function syncStageOptions() {
     structuralRelaxationSelect.value = structuralRelaxationMode;
     const relaxationSpec = STRUCTURAL_RELAXATION_MODES[structuralRelaxationMode];
     structuralRelaxationHint.textContent = relaxationSpec.observedSeed
-      ? `archived vector seed · ${Math.round(100 * relaxationSpec.displacementFraction)}% dₙₙ cap`
+      ? `${activeTrajectoryGeometryProvenance() ? "validated trajectory endpoint" : "archived vector"} seed · ${Math.round(100 * relaxationSpec.displacementFraction)}% dₙₙ cap`
       : relaxationSpec.forceSeed
         ? `residual-force direction · p90-normalized · ${Math.round(100 * relaxationSpec.displacementFraction)}% dₙₙ cap`
       : relaxationSpec.displacementFraction
@@ -26575,7 +26700,7 @@ function syncStageOptions() {
       : " No supplied scalar-spin color is available.";
     const relaxationUse = structuralRelaxationMode === "off"
       ? " Post-attachment projection is disabled; exact template coordinates are retained."
-      : ` After known-window replay, atoms newly emitted in one leap may move by at most ${Math.round(100 * structuralRelaxationSpec().displacementFraction)}% dₙₙ through ${structuralRelaxationSpec().iterations} deterministic contact-residual iterations.${structuralRelaxationSpec().observedSeed ? " The initial direction is the selected→final non-affine archive vector transported by the cluster proper pose; a worsening seed is ignored." : structuralRelaxationSpec().forceSeed ? " The initial direction is the supplied residual-force vector transported by the cluster proper pose and scaled only by its magnitude relative to the frozen sample p90; a worsening seed is ignored." : ""} The whole projection rolls back unless full contact-angle strain decreases and every hard gate remains valid; no force or MD trajectory is integrated.`;
+      : ` After known-window replay, atoms newly emitted in one leap may move by at most ${Math.round(100 * structuralRelaxationSpec().displacementFraction)}% dₙₙ through ${structuralRelaxationSpec().iterations} deterministic contact-residual iterations.${structuralRelaxationSpec().observedSeed ? ` The initial direction is the ${activeTrajectoryGeometryProvenance() ? "drift-removed endpoint of the validated physical trajectory" : "selected→final non-affine archive vector"} transported by the cluster proper pose; a worsening seed is ignored.` : structuralRelaxationSpec().forceSeed ? " The initial direction is the supplied residual-force vector transported by the cluster proper pose and scaled only by its magnitude relative to the frozen sample p90; a worsening seed is ignored." : ""} The whole projection rolls back unless full contact-angle strain decreases and every hard gate remains valid; no force or MD trajectory is integrated.`;
     const ratio = Object.entries(compositionTarget.reducedRatio).map(([symbol, count]) => `${symbol}${count === 1 ? "" : count}`).join("");
     const compositionUse = compositionPreference === "none"
       ? " Composition drift is reported but contributes zero ranking weight."
@@ -26902,6 +27027,7 @@ function enterPipelineStage(index, options = {}) {
   referenceSpacingA = scenarioSelect.value === "imported"
     ? currentImportedFrameValidation().medianNearestDistance
     : referenceSpacing / .92 * currentMaterial().spacingA;
+  bindExternalTrajectoryGeometryToReference(referenceAtoms);
   ensemblePairDistanceUncertainty = learnReferenceEnsemblePairUncertainty();
   coloredDistanceEnvelopes = learnReferenceDistanceEnvelopes(referenceAtoms);
   fittedContactEnvelope = fitAdditiveContactEnvelope(coloredDistanceEnvelopes, {
@@ -28693,15 +28819,47 @@ function rebuildWorld() {
 
   const relaxationDisplacement = relaxationDisplacementToggle.checked ? relaxationDisplacementField() : null;
   if (relaxationDisplacement) {
+    if (relaxationDisplacement.source === "validated request-linked external-physics trajectory") {
+      const envelopeSites = atoms.filter((atom) => Number.isFinite(atom.externalTrajectoryMaximumExcursionAngstrom)
+        && atom.externalTrajectoryMaximumExcursionAngstrom > 0);
+      const maximumEnvelope = Math.max(1e-12, ...envelopeSites.map((atom) =>
+        atom.externalTrajectoryMaximumExcursionAngstrom));
+      if (envelopeSites.length) {
+        const envelopes = new THREE.InstancedMesh(new THREE.IcosahedronGeometry(.24, 1),
+          new THREE.MeshBasicMaterial({ color: 0xb995ff, wireframe: true,
+            transparent: true, opacity: .16, depthWrite: false }), envelopeSites.length);
+        envelopeSites.forEach((atom, index) => {
+          const relative = Math.sqrt(atom.externalTrajectoryMaximumExcursionAngstrom / maximumEnvelope);
+          dummy.position.copy(atom.p); dummy.rotation.set(0, 0, 0);
+          dummy.scale.setScalar(.72 + 1.18 * relative); dummy.updateMatrix();
+          envelopes.setMatrixAt(index, dummy.matrix);
+        });
+        envelopes.instanceMatrix.needsUpdate = true; atomGroup.add(envelopes);
+      }
+    }
     const atomBySourceIndex = new Map();
+    const atomByReferenceIndex = new Map();
     atoms.forEach((atom) => {
       if (Number.isInteger(atom.sourceIndex) && !atomBySourceIndex.has(atom.sourceIndex)) atomBySourceIndex.set(atom.sourceIndex, atom);
+      if (Number.isInteger(atom.externalTrajectoryReferenceIndex)
+          && !atomByReferenceIndex.has(atom.externalTrajectoryReferenceIndex)) {
+        atomByReferenceIndex.set(atom.externalTrajectoryReferenceIndex, atom);
+      }
     });
-    const nonAffineMaximum = Math.max(1e-12, relaxationDisplacement.nonAffineMaximumAngstrom);
+    const externalTrajectoryDisplay = relaxationDisplacement.source
+      === "validated request-linked external-physics trajectory";
+    const displayRecords = externalTrajectoryDisplay
+      ? atoms.filter((atom) => atom.observedRelaxationWorldScene?.isVector3)
+        .map((atom) => ({ atom, record: { affine: new THREE.Vector3(),
+          nonAffine: atom.observedRelaxationWorldScene } }))
+      : relaxationDisplacement.records.map((record) => ({ record,
+        atom: atomByReferenceIndex.get(record.referenceIndex) || atomBySourceIndex.get(record.sourceIndex) }));
+    const nonAffineMaximum = Math.max(1e-12, ...(externalTrajectoryDisplay
+      ? displayRecords.map(({ record }) => record.nonAffine.length())
+      : [relaxationDisplacement.nonAffineMaximumAngstrom]));
     const affineMaximum = Math.max(1e-12, relaxationDisplacement.affineMaximumAngstrom);
     const nonAffineSegments = []; const nonAffineHeads = []; const affineSegments = [];
-    relaxationDisplacement.records.forEach((record) => {
-      const atom = atomBySourceIndex.get(record.sourceIndex);
+    displayRecords.forEach(({ record, atom }) => {
       if (!atom) return;
       if (record.affine.lengthSq() > 1e-16) {
         const affineLength = .05 + .27 * Math.sqrt(record.affine.length() / affineMaximum);
@@ -29172,6 +29330,7 @@ function physicsTranslationRecords(leap = null) {
   const spinGeometry = referenceCollinearSpinGeometry();
   const relaxation = scenarioSelect.value === "imported" ? importedStructure?.metadata?.relaxationSequence : null;
   const relaxationDisplacement = relaxationDisplacementField();
+  const externalTrajectory = activeTrajectoryGeometryProvenance();
   const relaxationLocalEnvironment = relaxationLocalEnvironmentField();
   const relaxationGeometryCalibration = relaxationGeometryCalculationCalibration();
   const relaxationGeometrySurrogate = relaxationGeometryCalibration
@@ -29278,14 +29437,18 @@ function physicsTranslationRecords(leap = null) {
         ? `${spinGeometry.positiveSites} positive, ${spinGeometry.negativeSites} negative, ${spinGeometry.nearZeroSites} near-zero sites; ${spinGeometry.checkedPairs.toLocaleString()} finite-crop pairs; ${scalarSpinOverlapChecks.toLocaleString()} live colored overlaps checked and ${scalarSpinCompatibilityPrunes.toLocaleString()} pruned. Values are preserved in archive-native scalar units.`
         : "No collinear scalar spin geometry is available for this material.",
       boundary: "Scalar sign is an exact discrete site color, not a 3D vector direction. The schema does not guarantee a magnetic-moment unit or quantization axis. Equality at an overlap is not a spin Hamiltonian, exchange interaction, magnetic-domain solution, Curie/Néel temperature, spin dynamics, force, rate, or physical time; missing labels never authorize or reject geometry." },
-    { id: "relaxation-ensemble", process: "geometry-optimization path / structural variability", status: relaxation?.available ? structuralRelaxationSpec().observedSeed ? "soft" : "observed" : "unavailable", role: relaxation?.available ? structuralRelaxationSpec().observedSeed ? "proper-pose transported projection seed" : "fixed-topology geometric ensemble" : "single structural state",
-      encoding: relaxation?.available
+    { id: "relaxation-ensemble", process: "geometry-optimization path / structural variability", status: relaxation?.available || externalTrajectory ? structuralRelaxationSpec().observedSeed ? "soft" : "observed" : "unavailable", role: relaxation?.available || externalTrajectory ? structuralRelaxationSpec().observedSeed ? "proper-pose transported projection seed" : "fixed-topology geometric ensemble" : "single structural state",
+      encoding: externalTrajectory
+        ? `${externalTrajectory.frameCount} request-linked physical-time frames over ${externalTrajectory.timeSpanSeconds.toExponential(3)} s; center-of-configuration drift is removed per frame; endpoint vectors, maximum excursions, and path lengths are retained${structuralRelaxationSpec().observedSeed ? "; endpoint vectors are stored in each cluster-local frame and transported as delta_r_world=R_cluster delta_r_local before bounded projection" : " as diagnostic geometry"}`
+        : relaxation?.available
         ? `${relaxation.retainedFrameCount}/${relaxation.originalSystemCount} ordered NOMAD system/calculation snapshots; same-run relative energy, residual-force curves, and a variable-cell-safe selected-to-final affine/non-affine decomposition${structuralRelaxationSpec().observedSeed ? "; the non-affine vector is stored in each cluster-local frame and transported as delta_r_world=R_cluster delta_r_local before bounded projection" : " remain provenance channels"}`
         : "no ordered calculation sequence accompanies the active structure",
-      evidence: relaxation?.available
+      evidence: externalTrajectory
+        ? `Exact frame-zero observation match; endpoint RMS ${externalTrajectory.endpointRmsAngstrom.toFixed(3)} Å, endpoint max ${externalTrajectory.endpointMaximumAngstrom.toFixed(3)} Å, mean drift-removed path ${externalTrajectory.meanPathLengthAngstrom.toFixed(3)} Å; response ${externalTrajectory.responseSha256}.`
+        : relaxation?.available
         ? `${evidenceFrameCount()} frame${evidenceFrameCount() === 1 ? "" : "s"} currently supply geometric envelopes; the displayed frame alone supplies the cover, grammar, and growth seed.${relaxationDisplacement ? ` Selected → final non-affine RMS ${relaxationDisplacement.nonAffineRmsAngstrom.toFixed(3)} Å; affine RMS ${relaxationDisplacement.affineRmsAngstrom.toFixed(3)} Å${Number.isFinite(relaxationDisplacement.volumeChangeFraction) ? `; ΔV ${(100 * relaxationDisplacement.volumeChangeFraction).toFixed(2)}%` : ""}.` : ""}`
         : "No cross-frame structural variability is available.",
-      boundary: "The displacement field is a difference between archived structures, not a force or physical path. Copying its local vector is an explicit rigid-environment hypothesis; a worsening seed is ignored and the entire projection rolls back on any failed certificate. Archive order is not elapsed time. No velocity, integration step, optimizer clock, minimum-energy path, transition probability, or growth rate is inferred; energies are compared only within this one same-method archived sequence." },
+      boundary: externalTrajectory ? "The supplied timestamps describe this validated trajectory only. GCTS removes global translation, stores local path geometry, and never maps a search leap to those timestamps. Copying an endpoint vector is an explicit rigid-environment hypothesis; a worsening seed is ignored and the entire projection rolls back on any failed certificate. No trajectory is integrated, no clock is transferred, and no probability, barrier, rate, or general dynamics is inferred." : "The displacement field is a difference between archived structures, not a force or physical path. Copying its local vector is an explicit rigid-environment hypothesis; a worsening seed is ignored and the entire projection rolls back on any failed certificate. Archive order is not elapsed time. No velocity, integration step, optimizer clock, minimum-energy path, transition probability, or growth rate is inferred; energies are compared only within this one same-method archived sequence." },
     { id: "geometry-calculation-calibration", process: "sample-relative geometry / external calculation association",
       status: externalCalibrationPromotion ? "soft" : relaxationGeometryCalibration ? "observed" : "unavailable",
       role: externalCalibrationPromotion ? "cross-archive-gated soft geometry ordering"
@@ -30999,9 +31162,11 @@ function draftDynamicalEvidenceHandoff(quantity, mode) {
     targetUsed: false,
   };
   externalPhysicsRequestExportReceipt = null;
+  externalPhysicsRequestRuntime = null;
   externalPhysicsResponseValidationReceipt = null;
   externalPhysicsResponseRuntime = null;
   externalPhysicsForceGeometryEnabled = false;
+  externalPhysicsTrajectoryGeometryEnabled = false;
   selectedGrowthPhysicsPreflightId = ablatedRecordId || requestedRecordIds[0] || "steric";
   frozenPhysicsPreflightManifest = null;
   renderGrowthPhysicsPreflight();
@@ -31062,7 +31227,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260830-340",
+    generatedAt: new Date().toISOString(), buildId: "20260830-341",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,
@@ -31083,6 +31248,8 @@ async function downloadExternalPhysicsRequest(quantity) {
   externalPhysicsResponseValidationReceipt = null;
   externalPhysicsResponseRuntime = null;
   externalPhysicsForceGeometryEnabled = false;
+  externalPhysicsTrajectoryGeometryEnabled = false;
+  externalPhysicsRequestRuntime = { requestSha256: sha256, request };
   externalPhysicsRequestExportReceipt = {
     schema: 1, requestSchema: request.schema, quantityId: quantity.id,
     requestSha256: sha256,
@@ -31122,6 +31289,17 @@ async function validateReturnedExternalPhysicsFile(file, quantity) {
     configurations: exported.configurations,
   });
   const responseSha256 = await receiptSha256(responseText);
+  let validatedRuntime = null;
+  if (quantity.id === "forces" && audit.configurationRole === "observation") {
+    validatedRuntime = buildValidatedForceGeometryRuntime(response, audit, responseSha256);
+  } else if (quantity.id === "trajectory" && audit.configurationRole === "observation") {
+    if (externalPhysicsRequestRuntime?.requestSha256 !== exported.requestSha256) {
+      throw new Error("exact local trajectory request geometry is no longer available");
+    }
+    const requestedConfiguration = externalPhysicsRequestRuntime.request.configurations.observation;
+    validatedRuntime = buildValidatedTrajectoryGeometryRuntime(response, audit, responseSha256,
+      requestedConfiguration.atoms.map((atom) => atom.positionAngstrom));
+  }
   const { quantitySummary, ...publicAudit } = audit;
   const resultRecordCount = quantity.id === "trajectory" ? quantitySummary.frameCount
     : quantity.id === "barrier" ? quantitySummary.imageCount
@@ -31131,16 +31309,25 @@ async function validateReturnedExternalPhysicsFile(file, quantity) {
     resultRecordCount,
     siteCoverage: Number.isFinite(quantitySummary.siteCoverage) ? quantitySummary.siteCoverage : null,
     optionalStressAvailable: quantity.id === "forces" ? quantitySummary.stressAvailable : null,
+    physicalTimeSpanSeconds: quantity.id === "trajectory" ? quantitySummary.timeSpanSeconds : null,
+    trajectoryEndpointRmsAngstrom: validatedRuntime?.quantityId === "trajectory"
+      ? validatedRuntime.trajectoryProvenance.endpointRmsAngstrom : null,
+    trajectoryEndpointMaximumAngstrom: validatedRuntime?.quantityId === "trajectory"
+      ? validatedRuntime.trajectoryProvenance.endpointMaximumAngstrom : null,
+    trajectoryMeanPathLengthAngstrom: validatedRuntime?.quantityId === "trajectory"
+      ? validatedRuntime.trajectoryProvenance.meanPathLengthAngstrom : null,
     importedLocally: true, uploaded: false, rawResultsEmbeddedInReceipt: false,
     candidateSetChanged: false, candidateRankingChanged: false,
     physicalInferenceResolvedGlobally: false,
-    geometricEncodingEligible: quantity.id === "forces" && audit.configurationRole === "observation",
+    geometricEncodingEligible: ["forces", "trajectory"].includes(quantity.id)
+      && audit.configurationRole === "observation",
+    geometricEncodingRoute: quantity.id === "forces" ? "proper-pose residual-force vector"
+      : quantity.id === "trajectory" ? "drift-removed endpoint displacement section" : null,
     geometricEncodingEnabled: false,
   };
-  externalPhysicsResponseRuntime = quantity.id === "forces" && audit.configurationRole === "observation"
-    ? buildValidatedForceGeometryRuntime(response, audit, responseSha256)
-    : null;
+  externalPhysicsResponseRuntime = validatedRuntime;
   externalPhysicsForceGeometryEnabled = false;
+  externalPhysicsTrajectoryGeometryEnabled = false;
   receiptStatus.textContent = `${quantity.label} response validated · ${audit.configurationRole} · ${audit.method.program} · response ${responseSha256.slice(0, 12)} · specimen-specific evidence only.`;
   renderDynamicalEvidencePlan(activeDynamicalEvidencePlan);
 }
@@ -31156,6 +31343,23 @@ function enableValidatedExternalForceGeometry() {
   receipt.forceSeedRequiresExplicitOptIn = true;
   receipt.properPoseTransportHypothesis = "F_world = R_cluster F_local";
   receiptStatus.textContent = `Validated forces encoded as geometry · ${externalPhysicsResponseRuntime.forceVectorsElectronVoltPerAngstrom.length} observation vectors · relearning local proper-pose transport · force-seeded settling remains opt-in.`;
+  enterPipelineStage(3);
+}
+
+function enableValidatedExternalTrajectoryGeometry() {
+  const receipt = externalPhysicsResponseValidationReceipt;
+  if (!receipt?.geometricEncodingEligible || externalPhysicsResponseRuntime?.quantityId !== "trajectory") return;
+  externalPhysicsTrajectoryGeometryEnabled = true;
+  receipt.geometricEncodingEnabled = true;
+  receipt.enabledBeforeRelearning = true;
+  receipt.candidateGeometryChangedByBinding = false;
+  receipt.candidateRankingChangedByBinding = false;
+  receipt.observedDisplacementSeedRequiresExplicitOptIn = true;
+  receipt.properPoseTransportHypothesis = "delta_r_world = R_cluster delta_r_local";
+  receipt.globalTranslationRemovedPerFrame = true;
+  receipt.globalRotationRemovedPerFrame = false;
+  receipt.gctsSearchStepsUsedAsPhysicalTime = false;
+  receiptStatus.textContent = `Validated trajectory encoded as local sections · ${externalPhysicsResponseRuntime.frameCount} physical frames · drift-removed endpoint vectors + path envelopes · relearning proper-pose transport · physical time remains provenance only.`;
   enterPipelineStage(3);
 }
 
@@ -31272,18 +31476,28 @@ function renderDynamicalEvidencePlan(plan) {
       const response = document.createElement("p");
       response.className = "external-physics-response-status";
       const coverage = Number.isFinite(currentResponse.siteCoverage) ? ` · ${(100 * currentResponse.siteCoverage).toFixed(0)}% site coverage` : "";
-      response.textContent = `Validated returned evidence · ${currentResponse.method.family} / ${currentResponse.method.program}${coverage}. It is scoped to the matched ${currentResponse.configurationRole} configuration and method; branch geometry, ranking, and physical time remain unchanged.`;
+      const trajectory = currentResponse.quantityId === "trajectory"
+        ? ` · ${currentResponse.resultRecordCount} frames / ${currentResponse.physicalTimeSpanSeconds.toExponential(3)} s · endpoint RMS ${currentResponse.trajectoryEndpointRmsAngstrom.toFixed(4)} Å · mean path ${currentResponse.trajectoryMeanPathLengthAngstrom.toFixed(4)} Å`
+        : "";
+      response.textContent = `Validated returned evidence · ${currentResponse.method.family} / ${currentResponse.method.program}${coverage}${trajectory}. It is scoped to the matched ${currentResponse.configurationRole} configuration and method; exact branch geometry and ranking remain unchanged, and supplied timestamps never become the GCTS search clock.`;
       addRow("returned evidence", response);
       if (currentResponse.geometricEncodingEligible) {
         const forceActions = document.createElement("div"); forceActions.className = "external-physics-force-actions";
         const enable = document.createElement("button"); enable.type = "button";
-        enable.dataset.externalPhysicsForceGeometry = "enable";
+        const forceRoute = currentResponse.quantityId === "forces";
+        if (forceRoute) enable.dataset.externalPhysicsForceGeometry = "enable";
+        else enable.dataset.externalPhysicsTrajectoryGeometry = "enable";
         enable.textContent = currentResponse.geometricEncodingEnabled
-          ? "Force geometry encoded" : "Encode force vectors & relearn";
+          ? forceRoute ? "Force geometry encoded" : "Trajectory sections encoded"
+          : forceRoute ? "Encode force vectors & relearn" : "Encode trajectory sections & relearn";
         enable.disabled = currentResponse.geometricEncodingEnabled;
-        enable.title = "Attach the validated observation vectors to the exact matching sites, relearn their cluster-local proper-pose representation, and expose the existing bounded force-seed control. Candidate enumeration and ranking remain unchanged.";
+        enable.title = forceRoute
+          ? "Attach the validated observation vectors to the exact matching sites, relearn their cluster-local proper-pose representation, and expose the existing bounded force-seed control. Candidate enumeration and ranking remain unchanged."
+          : "Require frame zero to match the exact ordered observation, remove center-of-configuration drift from every frame, retain per-site endpoint vectors and path envelopes, and relearn their cluster-local proper-pose representation. Physical timestamps never become GCTS search time.";
         const limit = document.createElement("span");
-        limit.textContent = "Arrows + proper-pose vector transport only · not a force field · bounded settling still requires explicit selection.";
+        limit.textContent = forceRoute
+          ? "Arrows + proper-pose vector transport only · not a force field · bounded settling still requires explicit selection."
+          : "Endpoint arrows + maximum-excursion/path-length sections · not trajectory integration · bounded settling still requires explicit selection.";
         forceActions.append(enable, limit); addRow("geometry route", forceActions);
       }
     }
@@ -31642,6 +31856,11 @@ dynamicalEvidencePlan.addEventListener("click", (event) => {
 });
 
 dynamicalEvidencePlanDetail.addEventListener("click", async (event) => {
+  const trajectoryGeometryButton = event.target.closest("button[data-external-physics-trajectory-geometry]");
+  if (trajectoryGeometryButton && !trajectoryGeometryButton.disabled) {
+    enableValidatedExternalTrajectoryGeometry();
+    return;
+  }
   const forceGeometryButton = event.target.closest("button[data-external-physics-force-geometry]");
   if (forceGeometryButton && !forceGeometryButton.disabled) {
     enableValidatedExternalForceGeometry();
@@ -35487,6 +35706,7 @@ function observationProvenanceRecords() {
   const spinGeometry = referenceCollinearSpinGeometry();
   const relaxation = scenarioSelect.value === "imported" ? importedStructure?.metadata?.relaxationSequence : null;
   const displacementField = relaxationDisplacementField();
+  const externalTrajectory = activeTrajectoryGeometryProvenance();
   const localEnvironmentField = relaxationLocalEnvironmentField();
   return [
     { id: "conditions", short: "conditions", status: conditionSummary.length ? "recorded" : "unavailable",
@@ -35525,12 +35745,16 @@ function observationProvenanceRecords() {
       boundary: "A collinear scalar label has no supplied 3D axis or guaranteed moment unit. Overlap-color equality is not a magnetic Hamiltonian, exchange interaction, domain solution, ordering temperature, spin dynamics, force, rate, or physical time." },
     { id: "samples", short: "samples", status: frames > 1 ? "measured" : "single",
       value: frames > 1 ? `${frames} fixed-topology ${relaxation?.available ? "relaxation snapshots" : "frames"}` : "1 structural frame",
-      observed: scenarioSelect.value === "imported" && importedFrames.length > 1
+      observed: externalTrajectory
+        ? `${externalTrajectory.frameCount} validated physical-time frames over ${externalTrajectory.timeSpanSeconds.toExponential(3)} s with fixed species and exact ordered atom correspondence.`
+        : scenarioSelect.value === "imported" && importedFrames.length > 1
         ? `${importedFrames.length} ordered structural snapshots with fixed species and atom ordering.${relaxation?.available ? ` Retained from ${relaxation.originalSystemCount} same-run NOMAD systems.` : ""}`
         : `${referenceCount()} species-labelled Cartesian sites in one observation window.`,
-      transform: frames > 1 ? `${ensembleEvidenceMode === "all" ? "All frames pool" : "Only the displayed frame supplies"} contact, coordination, angle, and local pair-distance observations.${displacementField ? ` Selected → final geometry is additionally decomposed into affine cell deformation (RMS ${displacementField.affineRmsAngstrom.toFixed(3)} Å) and minimum-image non-affine rearrangement (RMS ${displacementField.nonAffineRmsAngstrom.toFixed(3)} Å).` : ""}${localEnvironmentField ? ` A ${localEnvironmentField.neighborCount}-neighbor best-affine fit localizes the residual as √D²min (p90 ${localEnvironmentField.percentile90RootD2MinAngstrom.toFixed(3)} Å).` : ""}` : "One frame supplies the finite structural evidence.",
+      transform: externalTrajectory
+        ? `Only frame zero supplies clustering and search geometry. Center-of-configuration translation is removed independently from each response frame; the per-site endpoint vector, maximum excursion, and path length become proper-pose-transportable local sections. Physical timestamps remain response provenance.`
+        : frames > 1 ? `${ensembleEvidenceMode === "all" ? "All frames pool" : "Only the displayed frame supplies"} contact, coordination, angle, and local pair-distance observations.${displacementField ? ` Selected → final geometry is additionally decomposed into affine cell deformation (RMS ${displacementField.affineRmsAngstrom.toFixed(3)} Å) and minimum-image non-affine rearrangement (RMS ${displacementField.nonAffineRmsAngstrom.toFixed(3)} Å).` : ""}${localEnvironmentField ? ` A ${localEnvironmentField.neighborCount}-neighbor best-affine fit localizes the residual as √D²min (p90 ${localEnvironmentField.percentile90RootD2MinAngstrom.toFixed(3)} Å).` : ""}` : "One frame supplies the finite structural evidence.",
       use: `Growth starts from exactly one displayed frame${frames > 1 ? ` (${importedFrameIndex + 1}/${importedFrames.length})` : ""}; cross-frame atom pairs are never invented.${structuralRelaxationSpec().observedSeed && displacementField ? " In observed-vector mode, only the paired selected→final non-affine vector is stored in each local cluster frame and offered as a capped post-attachment projection seed." : ""}`,
-      boundary: "Selected-to-final vectors compare two archived structures; they are not a trajectory or force. Their optional reuse is a fail-closed local geometric hypothesis. Snapshot order is not treated as physical time unless velocities, time steps, and calibrated temporal provenance are independently supplied; none are used here. Same-run energy differences and residual forces remain diagnostic provenance." },
+      boundary: externalTrajectory ? "This response contains physical timestamps, but only for the supplied validated trajectory. They are never mapped to GCTS updates. Local section reuse is fail-closed geometry, not trajectory integration, a transferable clock, rate, barrier, or path probability." : "Selected-to-final vectors compare two archived structures; they are not a trajectory or force. Their optional reuse is a fail-closed local geometric hypothesis. Snapshot order is not treated as physical time unless velocities, time steps, and calibrated temporal provenance are independently supplied; none are used here. Same-run energy differences and residual forces remain diagnostic provenance." },
     { id: "uncertainty", short: "uncertainty", status: uncertainty > 0 ? "measured" : "nominal",
       value: uncertainty > 0 ? `${uncertainty.toFixed(3)} Å pair σ floor` : "no measured σ floor",
       observed: uncertainty > 0

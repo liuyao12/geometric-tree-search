@@ -1,5 +1,34 @@
 # Recursive GCTS benchmark for material growth
 
+### Validated trajectory-to-section deployment (Build 341)
+
+The trajectory response now has an executable but deliberately bounded
+promotion path. Validation first binds it to the exact request and structure;
+the local geometry route additionally requires frame zero to equal the ordered
+observation within `1e-7 Å`. Per-frame center-of-configuration translation is
+removed before the browser derives per-site endpoint displacement, maximum/RMS
+excursion, and path length. The vector is stored in the cluster-local frame and
+transported by the candidate's proper rotation. Scalar path channels follow the
+same site without acquiring an orientation.
+
+Only frame zero supplies clustering, the cover, ports, marking fit, and the
+growth seed. The response frames do not pool into those structural statistics.
+The transported endpoint can seed the existing capped post-attachment contact
+projection only after a separate user choice; it is ignored if the initial
+contact objective worsens, and the whole result rolls back if exclusion,
+coordination, angle, boundary, topology, or port certificates fail. Candidate
+generation, exact poses, hard admission, and branch ranking are invariant under
+the binding itself.
+
+The timestamps are real evidence for the supplied trajectory, not a clock for
+GCTS. The receipt reports the physical frame count and span, response/method
+hashes, drift convention, vector and path summaries, proper-pose transport,
+and explicit `trajectoryIntegratedByGcts=false` and
+`suppliedTimestampsUsedAsGctsClock=false` flags. Global rotation is not removed
+and is reported as such; this prevents a hidden alignment claim. This route is
+local geometric response reuse—not MD, a transferable kinetic model, a
+minimum-energy path, a barrier, path probability, or growth-rate calibration.
+
 ### Validated force-to-geometry deployment (Build 340)
 
 Among the six returned evidence types, site-resolved forces now have the first

@@ -1,5 +1,32 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 341 · encode a validated trajectory as local path geometry
+
+A request-linked physical trajectory on the exact supplied observation can now
+return to GCTS through a second explicit geometry route. The response must pass
+the request, ordered-structure, method, independent-holdout, convergence,
+uncertainty, and no-target gates. Frame zero must additionally reproduce every
+ordered observation site within `1e-7 Å`. Only then may the user choose
+**Encode trajectory sections & relearn**.
+
+The browser removes the center-of-configuration translation independently from
+each frame and retains, per site, the drift-removed endpoint vector, maximum
+excursion, RMS excursion, and polyline path length. The endpoint vector is
+learned in each cluster's local frame and transported by
+`Δr_world = R_cluster Δr_local`; path length and excursion remain scalar section
+channels. The cluster cards, 3D displacement layer, site inspector, receipts,
+and existing bounded observed-vector settling control expose the result.
+
+This deliberately leap-frogs rather than replays the dynamics. Physical frame
+times remain response provenance and are never mapped to tree-search updates.
+Encoding does not change cluster identity, exact candidate coordinates,
+enumeration, admission, or ranking. Using an endpoint as the initial direction
+of the bounded post-placement contact projection requires another explicit
+selection, and a worsening seed or failed hard certificate rolls the entire
+projection back. No trajectory is integrated, no velocity or transferable
+clock is inferred, and no potential, barrier, probability, rate, or target is
+introduced. Raw frames remain local; receipts retain hashes and derived counts.
+
 ## Build 340 · encode validated force vectors as geometry
 
 A complete force response for the exact supplied observation now has an

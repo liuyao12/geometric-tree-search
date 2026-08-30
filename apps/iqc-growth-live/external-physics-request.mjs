@@ -49,7 +49,8 @@ function responseResultsContract(quantityId, observationSites, growthSeedSites) 
   const siteCount = `must match the selected role: observation=${observationSites}, growthSeed=${growthSeedSites}`;
   const contracts = {
     trajectory: { frames: [{ timeSeconds: "finite, nonnegative, strictly increasing",
-      positionsAngstrom: `array[siteCount][3]; ${siteCount}` }], minimumFrames: 2 },
+      positionsAngstrom: `ordered array[siteCount][3]; ${siteCount}; frame zero must reproduce the selected configuration within 1e-7 angstrom` }],
+      minimumFrames: 2, geometricEncoding: "remove center-of-configuration translation per frame; retain endpoint vectors, maximum excursions, and path lengths; never map timestamps to GCTS search steps" },
     clock: { exposureSeconds: "positive", eventCount: "nonnegative integer",
       censoredEventCount: "nonnegative integer", ratePerSecond: "nonnegative" },
     barrier: { initialState: "declared state identifier", finalState: "declared state identifier",
