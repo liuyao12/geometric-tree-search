@@ -1,5 +1,26 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 339 · validate the returned physics evidence
+
+The external-physics handoff is now a round trip. Every downloaded request
+contains a response contract, the digests of the supplied observation and
+explicit growth seed, and the quantity-specific output and validation
+requirements. A returned JSON file can be checked locally against the exact
+request SHA-256, quantity, configuration role and structure digest, declared
+method/settings provenance, safeguards, and all frozen validation gates.
+
+The validator understands all six evidence classes rather than accepting an
+opaque success flag: ordered trajectory frames and physical times; exposure,
+event, and rate records; barrier energy profiles and force convergence;
+free-energy differences, uncertainty, ensemble, and temperature; transition
+counts and independent trajectories; or complete site-resolved force vectors,
+energy, and optional stress. A passing result is labelled specimen- and
+method-specific physical evidence. It does not alter candidate geometry,
+ranking, branch order, or physical time, and it is never promoted silently to a
+potential, transferable law, or global material claim. Raw result values stay
+in local memory; the experiment receipt keeps hashes, coverage, method, and
+claim-boundary flags only.
+
 ## Build 338 · export a calculation-ready external-physics request
 
 The evidence planner now turns each unresolved dynamical quantity into a local,

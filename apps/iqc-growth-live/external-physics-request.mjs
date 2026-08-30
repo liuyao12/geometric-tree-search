@@ -43,6 +43,65 @@ export const EXTERNAL_PHYSICS_REQUEST_TEMPLATES = Object.freeze({
   }),
 });
 
+export const EXTERNAL_PHYSICS_RESPONSE_SCHEMA = "gcts-external-physics-response-v1";
+
+function responseResultsContract(quantityId, observationSites, growthSeedSites) {
+  const siteCount = `must match the selected role: observation=${observationSites}, growthSeed=${growthSeedSites}`;
+  const contracts = {
+    trajectory: { frames: [{ timeSeconds: "finite, nonnegative, strictly increasing",
+      positionsAngstrom: `array[siteCount][3]; ${siteCount}` }], minimumFrames: 2 },
+    clock: { exposureSeconds: "positive", eventCount: "nonnegative integer",
+      censoredEventCount: "nonnegative integer", ratePerSecond: "nonnegative" },
+    barrier: { initialState: "declared state identifier", finalState: "declared state identifier",
+      energyProfileElectronVolt: "at least three finite image energies",
+      maximumForceElectronVoltPerAngstrom: "finite nonnegative convergence value" },
+    "free-energy": { deltaFreeEnergyElectronVolt: "finite", uncertaintyElectronVolt: "nonnegative",
+      temperatureKelvin: "positive", ensemble: "declared thermodynamic ensemble" },
+    probability: { transitionCount: "nonnegative integer", exposureSeconds: "positive",
+      ratePerSecond: "nonnegative", independentTrajectoryCount: "positive integer" },
+    forces: { forceVectorsElectronVoltPerAngstrom: `array[siteCount][3]; ${siteCount}`,
+      totalEnergyElectronVolt: "finite",
+      stressTensorGigaPascal: "optional finite 3x3 tensor" },
+  };
+  return contracts[quantityId];
+}
+
+function responseContract(quantityId, observation, growthSeed) {
+  return {
+    schema: EXTERNAL_PHYSICS_RESPONSE_SCHEMA,
+    requestSha256: "fill with the SHA-256 of this complete request file",
+    quantityId,
+    configuration: {
+      role: "observation or growthSeed",
+      structureSha256: "must equal the selected configuration digest below",
+      permittedStructureSha256: {
+        observation: observation.structureSha256,
+        growthSeed: growthSeed.structureSha256,
+      },
+    },
+    method: {
+      family: "required calculation or experimental method family",
+      program: "required program, instrument, or workflow name",
+      version: "declared version or null",
+      settingsSha256: "SHA-256 of the complete method/settings record",
+    },
+    validation: {
+      passed: true,
+      protocolMatchesRequest: true,
+      independentHoldout: true,
+      uncertaintyReported: true,
+      convergenceReported: true,
+      notes: "quantity-specific validation evidence",
+    },
+    results: responseResultsContract(quantityId, observation.atomCount, growthSeed.atomCount),
+    safeguards: {
+      containsGrowthTargetCoordinates: false,
+      geometricScoresUsedAsPhysicalLabels: false,
+      searchStepsUsedAsPhysicalTime: false,
+    },
+  };
+}
+
 function finiteVector(vector, label) {
   if (!Array.isArray(vector) || vector.length !== 3 || !vector.every(Number.isFinite)) {
     throw new TypeError(`${label} must be a finite Cartesian three-vector`);
@@ -127,6 +186,7 @@ export function buildExternalPhysicsRequest(input) {
       relatedGeometryRecords: records,
     },
     configurations: { observation, growthSeed },
+    expectedResponse: responseContract(input.quantityId, observation, growthSeed),
     safeguards: {
       requestOnly: true,
       submittedToExternalService: false,

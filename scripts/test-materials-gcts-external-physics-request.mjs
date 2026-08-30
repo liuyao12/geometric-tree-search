@@ -5,7 +5,7 @@ import { buildExternalPhysicsRequest, EXTERNAL_PHYSICS_REQUEST_TEMPLATES }
 const atom = (siteId, species, positionAngstrom) => ({ siteId, species, positionAngstrom });
 const base = {
   generatedAt: "2026-08-30T00:00:00.000Z",
-  buildId: "20260830-338",
+  buildId: "20260830-339",
   scenarioId: "iqc",
   materialName: "Ideal 6D icosahedral model set",
   elements: ["Fe", "Al", "Cu"],
@@ -35,6 +35,10 @@ for (const quantityId of Object.keys(EXTERNAL_PHYSICS_REQUEST_TEMPLATES)) {
   assert.equal(request.safeguards.targetCoordinatesEmbedded, false);
   assert.equal(request.safeguards.searchStepsUsedAsPhysicalTime, false);
   assert.ok(request.request.requiredOutputs.length >= 3);
+  assert.equal(request.expectedResponse.schema, "gcts-external-physics-response-v1");
+  assert.equal(request.expectedResponse.configuration.permittedStructureSha256.observation,
+    base.observation.structureSha256);
+  assert.equal(typeof request.expectedResponse.results, "object");
 }
 
 assert.throws(() => buildExternalPhysicsRequest({ ...base, quantityId: "forces",

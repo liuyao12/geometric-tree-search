@@ -1,5 +1,26 @@
 # Recursive GCTS benchmark for material growth
 
+### Request-linked returned-evidence validation (Build 339)
+
+External physics now returns through the same evidence boundary by which it
+left. The request serializes an explicit response contract and both permitted
+configuration digests. The browser accepts a response only when its request
+hash, quantity, observation-or-seed role, structure hash, program or instrument,
+settings hash, no-target safeguards, and the complete frozen validation gate
+agree. Mismatches fail closed before the evidence plan or receipt changes.
+
+Validation is quantity-specific. Trajectories require a fixed site count and
+strictly increasing physical times; clocks require exposure, event, censoring,
+and rate records; barriers require an explicit energy profile, endpoints, and
+force convergence; free energies require uncertainty, ensemble, and
+temperature; probabilities require exposure and independent trajectory counts;
+and forces require one finite vector per matched site, total energy, and a valid
+optional stress tensor. The resulting audit is scoped to that configuration
+and method. It is evidence, not automatic authorization: candidate generation,
+ranking, geometry, potential use, and physical-time use remain false. Only a
+separate preregistered transfer study can promote a returned physical channel
+into GCTS execution.
+
 ### Calculation-ready external-physics handoff (Build 338)
 
 The 45-layer physics-to-geometry manifest already identifies where the browser
