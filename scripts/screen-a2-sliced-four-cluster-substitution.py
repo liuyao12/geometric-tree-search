@@ -27,7 +27,8 @@ SUB = THREE.SUB
 ENUMERATE_THREE = THREE.enumerate_three_copy_metatiles
 
 
-def enumerate_four_copy_metatiles(record, include_reflections=False):
+def enumerate_four_copy_metatiles(record, include_reflections=False,
+                                  three_parent_start=0, three_parent_stop=0):
     """Enumerate every connected four-copy union modulo the selected A2 group.
 
     Every connected four-vertex contact graph has a vertex whose removal leaves
@@ -39,7 +40,15 @@ def enumerate_four_copy_metatiles(record, include_reflections=False):
     three = ENUMERATE_THREE(record, include_reflections)
     representatives = {}
     raw = 0
-    for three_index, metatile in enumerate(three["metatiles"]):
+    start = max(0, three_parent_start)
+    stop = min(
+        len(three["metatiles"]),
+        three_parent_stop if three_parent_stop > 0 else len(three["metatiles"]),
+    )
+    if start >= stop:
+        raise ValueError(f"empty three-copy parent range [{start}, {stop})")
+    for three_index in range(start, stop):
+        metatile = three["metatiles"][three_index]
         cluster = metatile["alcoves"]
         occupied = {SUB.cell_key(cell) for cell in cluster}
         for neighbor in TWO.adjacent_atomic_cells(cluster):
@@ -80,6 +89,8 @@ def enumerate_four_copy_metatiles(record, include_reflections=False):
         "raw_connected_extensions": raw,
         "symmetry_distinct_metatiles": len(metatiles),
         "canonical_sha256": digest,
+        "three_copy_parent_total": len(three["metatiles"]),
+        "three_copy_parent_range": [start, stop],
         "metatiles": metatiles,
     }
 
