@@ -11,6 +11,7 @@ import { makeA2LayeredPolyprism } from "../../assets/a2-layered-polyprisms.js";
 import { makeA2SlicedAlcoveUnion } from "../../assets/a2-sliced-alcoves.js";
 import { A2_SLICED_SIZE7_CANDIDATES } from "../../assets/a2-sliced-size7-candidates.js?v=20260828-1";
 import { A2_SLICED_SIZE8_CANDIDATES } from "../../assets/a2-sliced-size8-candidates.js?v=20260830-7";
+import { A2_SLICED_SIZE9_CANDIDATES } from "../../assets/a2-sliced-size9-candidates.js?v=20260830-1";
 import { A2_LAYERED_SIZE7_CANDIDATES } from "../../assets/a2-layered-size7-candidates.js?v=20260827-4";
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
 import { A2_LAYERED_SIZE9_CANDIDATES } from "../../assets/a2-layered-size9-candidates.js?v=20260827-3";
@@ -8518,7 +8519,7 @@ export const tileSpecs = (() => {
 
   // --- Registry (complete) ---
   const TILING_REGISTRY = {
-    ...Object.fromEntries([...A2_SLICED_SIZE8_CANDIDATES, ...A2_SLICED_SIZE7_CANDIDATES].map(candidate => {
+    ...Object.fromEntries([...A2_SLICED_SIZE9_CANDIDATES, ...A2_SLICED_SIZE8_CANDIDATES, ...A2_SLICED_SIZE7_CANDIDATES].map(candidate => {
       const geometry = makeA2SlicedAlcoveUnion(candidate.alcoves);
       return [candidate.registry_id, {
         name: candidate.name,

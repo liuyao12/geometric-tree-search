@@ -240,11 +240,19 @@ The catalog keeps the old app's systems and deduplicated figures, including
 polycubes, the five Fedorov solids, tetrahedral/octahedral systems, space
 fillers, Laves and perovskite systems, and Barlow/FCC/HCP cells.
 
-The primary search group is explicitly non-polycubic and begins with 23
-evidence-ranked unions of Kuhn tetrahedra: 15 size-eight reflection classes
-followed by eight deeper size-seven leads. Their exact solid-angle functions
+The primary search group is explicitly non-polycubic and now begins with three
+size-nine leads, followed by the surviving size-eight and deeper size-seven
+unions of Kuhn tetrahedra. Their exact solid-angle functions
 live on and couple every consecutive A₂ lattice section `x+y+z=k`; polycubes
-are retained later in the catalogue as regression benchmarks. For size eight,
+are retained later in the catalogue as regression benchmarks. The fresh
+size-nine census enumerates 20,980 directed shapes. Exact two-, four-, and
+six-copy quotient screens reduce these to 356 reflection-class candidates.
+Among the first eight priority classes, a complete determinant-12 eight-copy
+screen finds five replay-verified periodic quotients and exhausts all 455 HNF
+quotients for the remaining three, with no solver unknowns. Those three are
+the current leading research entries; the five positives are retained only as
+large-domain periodic controls. Exact exclusion through eight copies is
+bounded evidence and does not imply aperiodicity. For size eight,
 the exact screen first finds 3,335
 three-copy periods and advances 1,071 shapes to the six-copy screen, which
 finds 1,045 additional periods. The remaining 26 shapes reduce to 15

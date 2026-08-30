@@ -28,6 +28,7 @@ import { A2_LAYERED_SIZE8_CANDIDATES } from "../assets/a2-layered-size8-candidat
 import { A2_LAYERED_SIZE9_CANDIDATES } from "../assets/a2-layered-size9-candidates.js";
 import { A2_SLICED_SIZE7_CANDIDATES } from "../assets/a2-sliced-size7-candidates.js";
 import { A2_SLICED_SIZE8_CANDIDATES } from "../assets/a2-sliced-size8-candidates.js";
+import { A2_SLICED_SIZE9_CANDIDATES } from "../assets/a2-sliced-size9-candidates.js";
 import {
   polycubeCoronaBoundaryKey,
   searchPolycubeCorona,
@@ -1633,7 +1634,7 @@ assert.equal(
 );
 
 const candidates = tileSpecs.figureCatalog.filter(figure => figure.census_candidate);
-assert.equal(candidates.length, 56 + A2_LAYERED_SIZE7_CANDIDATES.length + A2_LAYERED_SIZE8_CANDIDATES.length + A2_LAYERED_SIZE9_CANDIDATES.length + A2_SLICED_SIZE7_CANDIDATES.length + A2_SLICED_SIZE8_CANDIDATES.length,
+assert.equal(candidates.length, 56 + A2_LAYERED_SIZE7_CANDIDATES.length + A2_LAYERED_SIZE8_CANDIDATES.length + A2_LAYERED_SIZE9_CANDIDATES.length + A2_SLICED_SIZE7_CANDIDATES.length + A2_SLICED_SIZE8_CANDIDATES.length + A2_SLICED_SIZE9_CANDIDATES.length,
   "the lattice controls, free-polycube representatives, and focused A2 survivors must remain in the catalog");
 assert.ok(!candidates.some(figure => figure.census_candidate.id === "10_26470"));
 const survivors = candidates.filter(figure => figure.census_candidate.screening.status === "inconclusive");
@@ -1643,7 +1644,7 @@ const shellControls = candidates.filter(figure =>
 const periodicControls = candidates.filter(figure =>
   ["translational", "isohedral_periodic_quotient"].includes(figure.census_candidate.screening.certificate)
 );
-const unresolvedA2Candidates = [...A2_SLICED_SIZE8_CANDIDATES, ...A2_SLICED_SIZE7_CANDIDATES, ...A2_LAYERED_SIZE9_CANDIDATES, ...A2_LAYERED_SIZE8_CANDIDATES, ...A2_LAYERED_SIZE7_CANDIDATES].filter(
+const unresolvedA2Candidates = [...A2_SLICED_SIZE9_CANDIDATES, ...A2_SLICED_SIZE8_CANDIDATES, ...A2_SLICED_SIZE7_CANDIDATES, ...A2_LAYERED_SIZE9_CANDIDATES, ...A2_LAYERED_SIZE8_CANDIDATES, ...A2_LAYERED_SIZE7_CANDIDATES].filter(
   candidate => candidate.screening.status === "inconclusive"
 );
 assert.equal(survivors.length, 11 + unresolvedA2Candidates.length);
@@ -1705,12 +1706,12 @@ assert.deepEqual(
   }
 );
 assert.equal(shellControls.length, 9);
-assert.equal(periodicControls.length, 44);
+assert.equal(periodicControls.length, 49);
 const visiblePeriodicControls = periodicControls.filter(isGctsFigureVisibleInCatalog);
 assert.equal(GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES, 5);
 assert.deepEqual(
   visiblePeriodicControls.map(figure => figure.census_candidate.id).sort(),
-  ["10_45033", "11_151715", "12_204255", "12_405129", "13_0635270", "a2lp_7_00694", "a2sa_8_00240", "a2sa_8_00888", "a2sa_8_01059", "a2sa_8_02946", "a2sa_8_02965", "a2sa_8_02979", "a2sa_8_03138", "p9-43172"],
+  ["10_45033", "11_151715", "12_204255", "12_405129", "13_0635270", "a2lp_7_00694", "a2sa_8_00240", "a2sa_8_00888", "a2sa_8_01059", "a2sa_8_02946", "a2sa_8_02965", "a2sa_8_02979", "a2sa_8_03138", "a2sa_9_01109", "a2sa_9_03727", "a2sa_9_14433", "a2sa_9_15089", "a2sa_9_16327", "p9-43172"],
   "the public catalogue should retain only periodic controls with a large certified motif"
 );
 assert.ok(periodicControls
