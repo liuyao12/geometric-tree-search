@@ -54,5 +54,14 @@ with tempfile.TemporaryDirectory() as directory:
     assert merged["enumerated"]["raw_connected_extensions"] == 8
     assert merged["enumerated"]["three_copy_parent_range"] == [0, 4]
     assert len(merged["enumerated"]["range_receipts"]) == 2
+    cache = directory / "merged.json"
+    streamed = MODULE.merge_shards_to_cache([left, right], "probe", True, 4, cache)
+    assert streamed["types"] == 3
+    cached = json.loads(cache.read_text())
+    assert cached["enumerated"]["canonical_sha256"] == merged["enumerated"]["canonical_sha256"]
+    assert cached["enumerated"]["metatiles"] == merged["enumerated"]["metatiles"]
+    assert MODULE.numeric_sort_key([[-2, 0, 1, "012"]]) < MODULE.numeric_sort_key([
+        [10, 0, 1, "012"]
+    ])
 
 print("A2 four-copy enumeration batch regression passed")

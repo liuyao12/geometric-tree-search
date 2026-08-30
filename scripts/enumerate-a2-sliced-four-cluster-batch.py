@@ -9,6 +9,7 @@ import hashlib
 import importlib.util
 import json
 import os
+import sqlite3
 import subprocess
 import sys
 from pathlib import Path
@@ -155,6 +156,106 @@ def merge_shards(paths: list[Path], candidate_id: str,
     }
 
 
+def numeric_sort_key(canonical_key: list[list]) -> bytes:
+    """Encode Python's tuple ordering as a fixed-width SQLite BLOB key."""
+    encoded = bytearray()
+    for cell in canonical_key:
+        for coordinate in cell[:3]:
+            encoded.extend((int(coordinate) + (1 << 63)).to_bytes(8, "big"))
+        encoded.extend(str(cell[3]).encode("ascii"))
+        encoded.append(0)
+    return bytes(encoded)
+
+
+def merge_shards_to_cache(paths: list[Path], candidate_id: str,
+                          include_reflections: bool, parent_total: int,
+                          output: Path) -> dict:
+    """Deduplicate a large census on disk and stream its canonical cache."""
+    database = output.with_suffix(f".merge-{os.getpid()}.sqlite")
+    database.unlink(missing_ok=True)
+    connection = sqlite3.connect(database)
+    connection.execute("PRAGMA journal_mode=OFF")
+    connection.execute("PRAGMA synchronous=OFF")
+    connection.execute("PRAGMA temp_store=FILE")
+    connection.execute("CREATE TABLE representatives (sort_key BLOB PRIMARY KEY, key_json TEXT, value_json TEXT) WITHOUT ROWID")
+    raw = 0
+    receipts = []
+    cursor = 0
+    try:
+        for path in paths:
+            receipt = read_one(path)
+            enumerated = receipt["enumerated"]
+            start, stop = enumerated["three_copy_parent_range"]
+            if start != cursor:
+                raise ValueError(f"three-copy parent gap before {path}: {cursor} != {start}")
+            cursor = stop
+            raw += enumerated["raw_connected_extensions"]
+            receipts.append({
+                "path": path.name,
+                "three_copy_parent_range": [start, stop],
+                "partial_types": enumerated["symmetry_distinct_metatiles"],
+                "canonical_sha256": enumerated["canonical_sha256"],
+            })
+            connection.executemany(
+                "INSERT OR IGNORE INTO representatives(sort_key,key_json,value_json) VALUES(?,?,?)",
+                ((
+                    numeric_sort_key(metatile["canonical_key"]),
+                    json.dumps(metatile["canonical_key"], separators=(",", ":")),
+                    json.dumps(metatile, separators=(",", ":")),
+                ) for metatile in enumerated["metatiles"]),
+            )
+            connection.commit()
+        if cursor != parent_total:
+            raise ValueError(f"incomplete three-copy parent cover [0, {cursor}) of {parent_total}")
+        count = connection.execute("SELECT COUNT(*) FROM representatives").fetchone()[0]
+        digest = hashlib.sha256()
+        digest.update(b"[")
+        for index, (key_json,) in enumerate(connection.execute(
+            "SELECT key_json FROM representatives ORDER BY sort_key"
+        )):
+            if index:
+                digest.update(b",")
+            digest.update(key_json.encode())
+        digest.update(b"]")
+        canonical_sha256 = digest.hexdigest()
+        temporary = output.with_suffix(f".tmp-{os.getpid()}")
+        prefix = {
+            "id": candidate_id,
+            "include_reflections": include_reflections,
+            "copies": 4,
+            "enumerated": {
+                "raw_connected_extensions": raw,
+                "symmetry_distinct_metatiles": count,
+                "canonical_sha256": canonical_sha256,
+                "three_copy_parent_total": parent_total,
+                "three_copy_parent_range": [0, parent_total],
+                "range_receipts": receipts,
+            },
+        }
+        serialized_prefix = json.dumps(prefix, separators=(",", ":"))
+        with temporary.open("w") as stream:
+            stream.write(serialized_prefix[:-2])
+            stream.write(',"metatiles":[')
+            for index, (value_json,) in enumerate(connection.execute(
+                "SELECT value_json FROM representatives ORDER BY sort_key"
+            )):
+                if index:
+                    stream.write(",")
+                stream.write(value_json)
+            stream.write("]}}")
+        os.replace(temporary, output)
+        return {
+            "candidate": candidate_id,
+            "complete": True,
+            "types": count,
+            "canonical_sha256": canonical_sha256,
+            "merged_cache": str(output),
+        }
+    finally:
+        connection.close()
+        database.unlink(missing_ok=True)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--input", required=True)
@@ -234,20 +335,12 @@ def main() -> None:
         start, min(args.three_parent_total, start + span), args.three_parent_total,
     ) for start, path in zip(range(0, args.three_parent_total, span), paths))
     if complete:
-        merged = merge_shards(
-            paths, args.candidate_id, args.include_reflections, args.three_parent_total
-        )
         output = Path(args.merged_cache)
-        temporary = output.with_suffix(f".tmp-{os.getpid()}")
-        temporary.write_text(json.dumps(merged, separators=(",", ":")))
-        os.replace(temporary, output)
-        print(json.dumps({
-            "candidate": args.candidate_id,
-            "complete": True,
-            "types": merged["enumerated"]["symmetry_distinct_metatiles"],
-            "canonical_sha256": merged["enumerated"]["canonical_sha256"],
-            "merged_cache": str(output),
-        }, indent=2), flush=True)
+        result = merge_shards_to_cache(
+            paths, args.candidate_id, args.include_reflections,
+            args.three_parent_total, output
+        )
+        print(json.dumps(result, indent=2), flush=True)
     else:
         print(json.dumps({
             "candidate": args.candidate_id,

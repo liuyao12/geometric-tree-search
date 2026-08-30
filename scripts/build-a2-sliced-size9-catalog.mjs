@@ -1,10 +1,15 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { createHash } from "node:crypto";
+import { gunzipSync } from "node:zlib";
 import { makeA2SlicedAlcoveUnion } from "../assets/a2-sliced-alcoves.js";
 
 const root = new URL("../", import.meta.url);
-const readNdjson = async path => (await readFile(new URL(path, root), "utf8"))
+const readNdjson = async path => {
+  const contents = await readFile(new URL(path, root));
+  const text = path.endsWith(".gz") ? gunzipSync(contents).toString("utf8") : contents.toString("utf8");
+  return text
   .trim().split("\n").filter(Boolean).map(JSON.parse);
+};
 
 // The quotient prover and Prototile3D enumerate the same six proper A2
 // orientations in different orders. Convert a replayed proof motif to the
@@ -99,7 +104,7 @@ for (const record of unresolved) {
 const fourCopyById = new Map(fourCopyRows.map(record => [record.id, record]));
 const reflectedFourCopyRows = [];
 for (const record of unresolved.filter(item => item.id === "a2sa_9_11364")) {
-  const path = `runs/a2-sliced-size9-four-scale2-reflected-${record.id.slice("a2sa_9_".length)}-merged.ndjson`;
+  const path = `data/a2-sliced-alcove-size9-four-cluster-scale2-reflected-${record.id.slice("a2sa_9_".length)}.ndjson.gz`;
   const [screen] = await readNdjson(path);
   const detail = screen?.four_copy_alcove_metatile_screen;
   if (!detail?.certified
