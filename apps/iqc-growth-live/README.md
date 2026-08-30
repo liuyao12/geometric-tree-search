@@ -1,5 +1,23 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 338 · export a calculation-ready external-physics request
+
+The evidence planner now turns each unresolved dynamical quantity into a local,
+solver-neutral JSON request. After drafting an evidence request, the user can
+download exact observation and growth-seed coordinates in Å, cell and periodic
+boundary data, recorded conditions and provenance, requested outputs and units,
+and a validation gate for trajectories, clocks, barriers, free energies,
+probabilities, or forces. The package is suitable for handing to an MD, DFT,
+enhanced-sampling, kinetic, or experimental workflow without pretending that
+the browser has performed that calculation.
+
+The export is deliberately one-way and target-free. Nothing is submitted to an
+external service, held-out target coordinates are excluded, geometric scores
+are not relabeled as energies, and search steps are not relabeled as physical
+time. The portal receipt stores only the request hash, site counts, units, and
+safeguards—not the exported coordinates. Physical inference remains open until
+the requested result is supplied and passes its stated validation gate.
+
 ## Build 337 · a live continuation-evidence ladder
 
 Material growth now puts the scientific claim directly beside the execution

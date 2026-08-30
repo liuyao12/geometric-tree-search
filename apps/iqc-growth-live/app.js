@@ -77,6 +77,8 @@ import { buildGrowthActionPhysicsProvenance, buildPhysicsCompressionMap, buildPh
   buildPhysicsLineagePath, buildPhysicsProtocolIntervention, PHYSICS_ABLATION_CONTROL_BINDINGS,
   PHYSICS_EFFECT_COLUMNS, PHYSICS_READINESS_STATES, physicsExecutionLineage }
   from "./physics-compression-map.js?v=20260828-320";
+import { buildExternalPhysicsRequest }
+  from "./external-physics-request.mjs?v=20260830-338";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -1781,6 +1783,7 @@ let physicsProtocolArmRegistration = null;
 let physicsProtocolPairSessionId = null;
 let physicsProtocolPairSessionSerial = 0;
 let dynamicalEvidenceHandoffReceipt = null;
+let externalPhysicsRequestExportReceipt = null;
 let currentPhysicsPairProgress = null;
 let currentPhysicsPairIntervention = null;
 let frozenPhysicsPreflightManifest = null;
@@ -12173,7 +12176,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260830-337",
+      buildId: "20260830-338",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -13864,6 +13867,8 @@ async function buildExperimentReceipt() {
       localOracleCalls: oracleCalls,
       liveCertificate: liveGrowthCertificate(),
       continuationEvidenceLadder: continuationEvidenceSnapshot(),
+      externalPhysicsRequestExport: externalPhysicsRequestExportReceipt
+        ? { ...externalPhysicsRequestExportReceipt } : null,
       structuralLeapHistory: { totalEvents: leapEventCount, retainedEvents: leapHistory.length,
         maximumRetainedEvents: MAXIMUM_RETAINED_STRUCTURAL_LEAPS,
         truncated: leapEventCount > leapHistory.length,
@@ -14618,6 +14623,8 @@ async function buildExperimentNotebookSnapshot() {
       maximumProjectedSites: maximumConstraintNeighborhoodSites, currentFullSites: atoms.length },
     liveCertificate: liveGrowthCertificate(),
     continuationEvidenceLadder: continuationEvidenceSnapshot(),
+    externalPhysicsRequestExport: externalPhysicsRequestExportReceipt
+      ? { ...externalPhysicsRequestExportReceipt } : null,
     structuralLeapHistory: { totalEvents: leapEventCount, retainedEvents: leapHistory.length,
       maximumRetainedEvents: MAXIMUM_RETAINED_STRUCTURAL_LEAPS, truncated: leapEventCount > leapHistory.length,
       settlingRobustness: buildSettlingMaterialResponseHistory(leapHistory) },
@@ -14668,7 +14675,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260830-337" },
+    application: { name: "Materials Growth Lab", buildId: "20260830-338" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },
@@ -26812,6 +26819,7 @@ function resetCounters() {
   physicsProtocolArmRegistration = null;
   physicsProtocolPairSessionId = null;
   dynamicalEvidenceHandoffReceipt = null;
+  externalPhysicsRequestExportReceipt = null;
   currentPhysicsPairProgress = null;
   currentPhysicsPairIntervention = null;
   frozenPhysicsPreflightManifest = null;
@@ -30948,6 +30956,7 @@ function draftDynamicalEvidenceHandoff(quantity, mode) {
     controlValueChanged: false,
     targetUsed: false,
   };
+  externalPhysicsRequestExportReceipt = null;
   selectedGrowthPhysicsPreflightId = ablatedRecordId || requestedRecordIds[0] || "steric";
   frozenPhysicsPreflightManifest = null;
   renderGrowthPhysicsPreflight();
@@ -30957,7 +30966,92 @@ function draftDynamicalEvidenceHandoff(quantity, mode) {
   }));
   receiptStatus.textContent = mode === "proxy-ablation"
     ? `${quantity.label} proxy ablation drafted · no control changed and the physical quantity remains unresolved.`
-    : `${quantity.label} evidence request drafted · missing inputs remain fail-visible and no control changed.`;
+      : `${quantity.label} evidence request drafted · missing inputs remain fail-visible and no control changed.`;
+}
+
+async function externalPhysicsConfigurationPayload(source, role) {
+  const sceneUnitAngstrom = referenceSpacingA / Math.max(referenceSpacing, 1e-12);
+  const cell = currentCell();
+  const atomsPayload = source.map((atom, index) => {
+    const point = atom.pA ? atom.pA.clone() : atom.p.clone().multiplyScalar(sceneUnitAngstrom);
+    const explicitCharge = Number.isFinite(atom.formalCharge) ? atom.formalCharge
+      : formalChargeFromChemistryToken(atom.species);
+    return {
+      siteId: `${role.replaceAll(" ", "-")}-${index}`,
+      sourceIndex: Number.isInteger(atom.sourceIndex) ? atom.sourceIndex : null,
+      species: atom.displaySpecies || atom.species,
+      occupancy: receiptRound(atom.occupancy ?? 1, 10),
+      positionAngstrom: point.toArray().map((value) => receiptRound(value, 10)),
+      formalCharge: Number.isFinite(explicitCharge) ? receiptRound(explicitCharge, 10) : null,
+      scalarSpin: Number.isFinite(atom.calculationSpin) ? receiptRound(atom.calculationSpin, 10) : null,
+    };
+  });
+  const cellVectorsAngstrom = cell
+    ? cell.map((vector) => vector.toArray().map((value) => receiptRound(value, 10))) : null;
+  const periodicBoundary = currentPbc().map(Boolean);
+  const structureSha256 = await receiptSha256(JSON.stringify({
+    atoms: atomsPayload, cellVectorsAngstrom, periodicBoundary,
+  }));
+  return { role, structureSha256, atoms: atomsPayload, cellVectorsAngstrom, periodicBoundary };
+}
+
+async function externalPhysicsRequestPackage(quantity) {
+  if (!quantity || dynamicalEvidenceHandoffReceipt?.quantityId !== quantity.id) {
+    throw new Error("Draft this quantity's evidence request before exporting it.");
+  }
+  const material = currentMaterial();
+  const recordsById = new Map((frozenPhysicsPreflightManifest?.records
+    || currentPhysicsPreflightManifest().records).map((record) => [record.id, record]));
+  const relevantIds = new Set([...(dynamicalEvidenceHandoffReceipt.selectedRecordIds || []),
+    ...(dynamicalEvidenceHandoffReceipt.requestedRecordIds || [])]);
+  const sourceProvenance = scenarioSelect.value === "imported" ? {
+    kind: importedStructure?.metadata?.entryId ? "public-database structure" : "locally parsed structure",
+    entryId: importedStructure?.metadata?.entryId || null,
+    sourceUrl: importedStructure?.metadata?.sourceUrl || null,
+    program: activeCalculationProvenance()?.programName || null,
+    programVersion: activeCalculationProvenance()?.programVersion || null,
+  } : {
+    kind: material.fixtureProvenance?.fixtureClass || "deterministic curated fixture",
+    fixture: material.idealModelFixture || material.publishedFixture
+      || material.molecularFixture || material.name,
+    provenance: material.fixtureProvenance || null,
+  };
+  return buildExternalPhysicsRequest({
+    generatedAt: new Date().toISOString(), buildId: "20260830-338",
+    quantityId: quantity.id, quantityLabel: quantity.label,
+    earliestPermittedUse: quantity.earliestPermittedUse,
+    handoff: dynamicalEvidenceHandoffReceipt,
+    scenarioId: scenarioSelect.value, materialName: material.name,
+    elements: material.actualElements ? [...material.actualElements] : [...material.elements],
+    sourceProvenance, recordedConditions: activeMeasurementConditions(),
+    observation: await externalPhysicsConfigurationPayload(referenceAtoms, "supplied observation"),
+    growthSeed: await externalPhysicsConfigurationPayload(atoms, "explicit growth seed"),
+    manifestRecords: [...relevantIds].map((id) => recordsById.get(id)).filter(Boolean),
+    targetCoordinatesEmbedded: false,
+  });
+}
+
+async function downloadExternalPhysicsRequest(quantity) {
+  const request = await externalPhysicsRequestPackage(quantity);
+  const serialized = JSON.stringify(request, null, 2);
+  const sha256 = await receiptSha256(serialized);
+  externalPhysicsRequestExportReceipt = {
+    schema: 1, requestSchema: request.schema, quantityId: quantity.id,
+    requestSha256: sha256,
+    observationSites: request.configurations.observation.atomCount,
+    growthSeedSites: request.configurations.growthSeed.atomCount,
+    coordinateUnits: "angstrom", coordinatesEmbeddedInReceipt: false,
+    coordinatesEmbeddedInLocalDownload: true, localDownloadOnly: true,
+    submittedToExternalService: false, targetCoordinatesEmbedded: false,
+    targetUsed: false, physicalInferenceResolved: false,
+  };
+  const blob = new Blob([serialized], { type: "application/json" });
+  const url = URL.createObjectURL(blob); const link = document.createElement("a");
+  link.href = url; link.download = `gcts-${scenarioSelect.value}-${quantity.id}-physics-request.json`;
+  document.body.appendChild(link); link.click(); link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 0);
+  receiptStatus.textContent = `${quantity.label} request downloaded · ${request.configurations.observation.atomCount} observation sites + ${request.configurations.growthSeed.atomCount} seed sites in Å · request ${sha256.slice(0, 12)} · nothing submitted.`;
+  renderDynamicalEvidencePlan(activeDynamicalEvidencePlan);
 }
 
 function renderDynamicalEvidencePlan(plan) {
@@ -31045,6 +31139,14 @@ function renderDynamicalEvidencePlan(plan) {
       proxyButton.disabled = leapEventCount > 0;
       proxyButton.title = "Register one reversible geometric proxy for a baseline/neutral comparison; no setting changes.";
       actions.append(proxyButton);
+    }
+    if (currentHandoff) {
+      const exportButton = document.createElement("button"); exportButton.type = "button";
+      exportButton.dataset.dynamicalEvidenceExport = selected.id;
+      const exported = externalPhysicsRequestExportReceipt?.quantityId === selected.id;
+      exportButton.textContent = exported ? "Download request again" : "Download external-physics request";
+      exportButton.title = "Download a local JSON package containing the exact observation and growth seed in Å, boundary conditions, requested outputs, units, validation gate, and claim limits. Nothing is submitted.";
+      actions.append(exportButton);
     }
     handoff.append(actions); dynamicalEvidencePlanDetail.append(handoff);
   }
@@ -31401,7 +31503,20 @@ dynamicalEvidencePlan.addEventListener("click", (event) => {
   renderDynamicalEvidencePlan(activeDynamicalEvidencePlan);
 });
 
-dynamicalEvidencePlanDetail.addEventListener("click", (event) => {
+dynamicalEvidencePlanDetail.addEventListener("click", async (event) => {
+  const exportButton = event.target.closest("button[data-dynamical-evidence-export]");
+  if (exportButton && activeDynamicalEvidencePlan) {
+    const quantity = activeDynamicalEvidencePlan.quantities.find((entry) =>
+      entry.id === exportButton.dataset.dynamicalEvidenceExport);
+    if (!quantity) return;
+    exportButton.disabled = true;
+    try { await downloadExternalPhysicsRequest(quantity); }
+    catch (error) {
+      exportButton.disabled = false;
+      receiptStatus.textContent = `External-physics request failed closed · ${error instanceof Error ? error.message : "invalid request"}`;
+    }
+    return;
+  }
   const handoffButton = event.target.closest("button[data-dynamical-evidence-handoff]");
   if (handoffButton && !handoffButton.disabled && activeDynamicalEvidencePlan) {
     const quantity = activeDynamicalEvidencePlan.quantities.find((entry) =>

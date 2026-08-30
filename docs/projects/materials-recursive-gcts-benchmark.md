@@ -1,5 +1,26 @@
 # Recursive GCTS benchmark for material growth
 
+### Calculation-ready external-physics handoff (Build 338)
+
+The 45-layer physics-to-geometry manifest already identifies where the browser
+has direct evidence, a geometric proxy, or no physical evidence. Build 338
+closes the operational gap after that diagnosis: any of the six unresolved
+quantity classes—trajectory, clock, barrier, free energy, transition
+probability, or force—can be serialized as a local, solver-neutral request.
+The request contains exact supplied-observation and explicit-growth-seed
+coordinates in Å, species and optional occupancy/charge/spin channels, cell and
+periodicity, measurement conditions and provenance, suitable calculation
+families, required outputs and units, and the frozen validation criterion.
+
+This is a handoff artifact, not a hidden simulation backend. The browser sends
+nothing automatically; target coordinates are absent; geometric ranking is not
+an energy label; search depth is not a clock; and no kinetic, thermodynamic, or
+force claim changes when the file is downloaded. The experiment receipt records
+only a SHA-256, atom counts, units, and the no-submission/no-target safeguards,
+so the coordinate-bearing package remains explicitly local. A later imported
+result must still pass the quantity-specific validation gate before it can
+support a physical interpretation.
+
 ### Live continuation-evidence ladder (Build 337)
 
 The growth-stage controls now expose the benchmark hierarchy as an interactive
