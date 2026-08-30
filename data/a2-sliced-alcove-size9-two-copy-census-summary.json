@@ -1,0 +1,226 @@
+{
+  "campaigns": [
+    {
+      "scale": 2,
+      "model": "proper",
+      "candidates": 356,
+      "certified_negatives": 356,
+      "record_digest_sha256": "a2a7e4b08860d417c14d1ffa65a34def232be234f1f9a865cba9d90db6d96575"
+    },
+    {
+      "scale": 2,
+      "model": "reflected",
+      "candidates": 356,
+      "certified_negatives": 356,
+      "record_digest_sha256": "5569a81d0549c5a1b6461cf221cb4e70aae3adb2d545604ea9371f9babcb8afd"
+    },
+    {
+      "scale": 3,
+      "model": "proper",
+      "candidates": 356,
+      "certified_negatives": 356,
+      "record_digest_sha256": "a2a7e4b08860d417c14d1ffa65a34def232be234f1f9a865cba9d90db6d96575"
+    },
+    {
+      "scale": 3,
+      "model": "reflected",
+      "candidates": 356,
+      "certified_negatives": 356,
+      "record_digest_sha256": "5569a81d0549c5a1b6461cf221cb4e70aae3adb2d545604ea9371f9babcb8afd"
+    }
+  ],
+  "focused_candidates": [
+    {
+      "id": "a2sa_9_11364",
+      "classification": "no_two_copy_metatile_scalar2_substitution",
+      "scale": 2,
+      "model": "proper",
+      "certified": true,
+      "symmetry_distinct_metatiles": 16,
+      "parents_completed": 16,
+      "canonical_sha256": "ba2789bf27a4584abac2bee4578a88d98c76868fccd6abd9a34fb4baf979cea5",
+      "parent_counts": {
+        "local_obstruction": 16,
+        "exact_unsat": 0,
+        "mixed_metatile_rule": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "a2sa_9_13833",
+      "classification": "no_two_copy_metatile_scalar2_substitution",
+      "scale": 2,
+      "model": "proper",
+      "certified": true,
+      "symmetry_distinct_metatiles": 23,
+      "parents_completed": 23,
+      "canonical_sha256": "673599dd9cb76d4f5960082e188b4f90ba2ddc9898417b5161d7941d69a79d81",
+      "parent_counts": {
+        "local_obstruction": 23,
+        "exact_unsat": 0,
+        "mixed_metatile_rule": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "a2sa_9_15635",
+      "classification": "no_two_copy_metatile_scalar2_substitution",
+      "scale": 2,
+      "model": "proper",
+      "certified": true,
+      "symmetry_distinct_metatiles": 32,
+      "parents_completed": 32,
+      "canonical_sha256": "6f6fdc4dd9d0b1c17cfb3d460e62c055e256bfe5e195f2540a1901b22bf7358a",
+      "parent_counts": {
+        "local_obstruction": 32,
+        "exact_unsat": 0,
+        "mixed_metatile_rule": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "a2sa_9_11364",
+      "classification": "no_two_copy_metatile_scalar2_substitution",
+      "scale": 2,
+      "model": "reflected",
+      "certified": true,
+      "symmetry_distinct_metatiles": 53,
+      "parents_completed": 53,
+      "canonical_sha256": "ca047acd822a2502c5c5212c2c1865145954fe405a236074ef9005531a661726",
+      "parent_counts": {
+        "local_obstruction": 53,
+        "exact_unsat": 0,
+        "mixed_metatile_rule": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "a2sa_9_13833",
+      "classification": "no_two_copy_metatile_scalar2_substitution",
+      "scale": 2,
+      "model": "reflected",
+      "certified": true,
+      "symmetry_distinct_metatiles": 62,
+      "parents_completed": 62,
+      "canonical_sha256": "40bbd986fe4890ca687e91f3b9eb66a5e5ee249d5adad5cd5eeb69367dadb701",
+      "parent_counts": {
+        "local_obstruction": 62,
+        "exact_unsat": 0,
+        "mixed_metatile_rule": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "a2sa_9_15635",
+      "classification": "no_two_copy_metatile_scalar2_substitution",
+      "scale": 2,
+      "model": "reflected",
+      "certified": true,
+      "symmetry_distinct_metatiles": 52,
+      "parents_completed": 52,
+      "canonical_sha256": "06e29603f54d9d200ae43bda05b49f7ebbea2c379ec754131271d136410645da",
+      "parent_counts": {
+        "local_obstruction": 52,
+        "exact_unsat": 0,
+        "mixed_metatile_rule": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "a2sa_9_11364",
+      "classification": "no_two_copy_metatile_scalar3_substitution",
+      "scale": 3,
+      "model": "proper",
+      "certified": true,
+      "symmetry_distinct_metatiles": 16,
+      "parents_completed": 16,
+      "canonical_sha256": "ba2789bf27a4584abac2bee4578a88d98c76868fccd6abd9a34fb4baf979cea5",
+      "parent_counts": {
+        "local_obstruction": 16,
+        "exact_unsat": 0,
+        "mixed_metatile_rule": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "a2sa_9_13833",
+      "classification": "no_two_copy_metatile_scalar3_substitution",
+      "scale": 3,
+      "model": "proper",
+      "certified": true,
+      "symmetry_distinct_metatiles": 23,
+      "parents_completed": 23,
+      "canonical_sha256": "673599dd9cb76d4f5960082e188b4f90ba2ddc9898417b5161d7941d69a79d81",
+      "parent_counts": {
+        "local_obstruction": 23,
+        "exact_unsat": 0,
+        "mixed_metatile_rule": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "a2sa_9_15635",
+      "classification": "no_two_copy_metatile_scalar3_substitution",
+      "scale": 3,
+      "model": "proper",
+      "certified": true,
+      "symmetry_distinct_metatiles": 32,
+      "parents_completed": 32,
+      "canonical_sha256": "6f6fdc4dd9d0b1c17cfb3d460e62c055e256bfe5e195f2540a1901b22bf7358a",
+      "parent_counts": {
+        "local_obstruction": 32,
+        "exact_unsat": 0,
+        "mixed_metatile_rule": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "a2sa_9_11364",
+      "classification": "no_two_copy_metatile_scalar3_substitution",
+      "scale": 3,
+      "model": "reflected",
+      "certified": true,
+      "symmetry_distinct_metatiles": 53,
+      "parents_completed": 53,
+      "canonical_sha256": "ca047acd822a2502c5c5212c2c1865145954fe405a236074ef9005531a661726",
+      "parent_counts": {
+        "local_obstruction": 53,
+        "exact_unsat": 0,
+        "mixed_metatile_rule": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "a2sa_9_13833",
+      "classification": "no_two_copy_metatile_scalar3_substitution",
+      "scale": 3,
+      "model": "reflected",
+      "certified": true,
+      "symmetry_distinct_metatiles": 62,
+      "parents_completed": 62,
+      "canonical_sha256": "40bbd986fe4890ca687e91f3b9eb66a5e5ee249d5adad5cd5eeb69367dadb701",
+      "parent_counts": {
+        "local_obstruction": 62,
+        "exact_unsat": 0,
+        "mixed_metatile_rule": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "id": "a2sa_9_15635",
+      "classification": "no_two_copy_metatile_scalar3_substitution",
+      "scale": 3,
+      "model": "reflected",
+      "certified": true,
+      "symmetry_distinct_metatiles": 52,
+      "parents_completed": 52,
+      "canonical_sha256": "06e29603f54d9d200ae43bda05b49f7ebbea2c379ec754131271d136410645da",
+      "parent_counts": {
+        "local_obstruction": 52,
+        "exact_unsat": 0,
+        "mixed_metatile_rule": 0,
+        "unresolved": 0
+      }
+    }
+  ]
+}

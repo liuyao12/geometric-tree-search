@@ -1,4 +1,5 @@
 import { readFile, writeFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
 import { makeA2SlicedAlcoveUnion } from "../assets/a2-sliced-alcoves.js";
 
 const root = new URL("../", import.meta.url);
@@ -35,6 +36,9 @@ const webPeriodicTemplate = (certificate, geometry) => {
 
 const sourcePath = "runs/a2-sliced-size9-exact8-top8-merged.ndjson";
 const records = await readNdjson(sourcePath);
+if (records.length !== 8) throw new Error(`Expected eight focused records, found ${records.length}`);
+const unresolved = records.filter(record => record.classification === "unresolved");
+const periodic = records.filter(record => record.classification === "periodic");
 const coronaRows = await readNdjson("runs/a2-sliced-size9-corona1.ndjson");
 const coronaById = new Map(coronaRows.map(record => [record.id, record]));
 const radiusTwoRows = await readNdjson("runs/a2-sliced-size9-corona2-focused256-merged.ndjson");
@@ -65,9 +69,72 @@ for (const record of records.filter(item => item.classification === "unresolved"
   }
 }
 const threeCopyById = Map.groupBy(threeCopyRows, record => record.id);
-if (records.length !== 8) throw new Error(`Expected eight focused records, found ${records.length}`);
-const unresolved = records.filter(record => record.classification === "unresolved");
-const periodic = records.filter(record => record.classification === "periodic");
+const fourCopyRows = [];
+for (const record of unresolved) {
+  const path = `runs/a2-sliced-size9-four-scale2-proper-${record.id.slice("a2sa_9_".length)}-merged.ndjson`;
+  const [screen] = await readNdjson(path);
+  const detail = screen?.four_copy_alcove_metatile_screen;
+  if (!detail?.certified
+      || screen.classification !== "no_four_copy_metatile_scalar2_substitution"
+      || detail.include_reflections !== false
+      || detail.parent_range?.[0] !== 0
+      || detail.parent_range?.[1] !== detail.symmetry_distinct_metatiles
+      || detail.parents_completed !== detail.symmetry_distinct_metatiles
+      || detail.parent_counts?.unresolved !== 0) {
+    throw new Error(`Incomplete four-copy substitution exclusion in ${path}`);
+  }
+  fourCopyRows.push({
+    id: record.id,
+    classification: screen.classification,
+    scale: 2,
+    model: "proper",
+    certified: true,
+    symmetry_distinct_metatiles: detail.symmetry_distinct_metatiles,
+    parents_completed: detail.parents_completed,
+    canonical_sha256: detail.canonical_sha256,
+    parent_counts: detail.parent_counts,
+    range_receipts: detail.range_receipts
+  });
+}
+const fourCopyById = new Map(fourCopyRows.map(record => [record.id, record]));
+const twoCopyRows = [];
+const twoCopyCampaigns = [];
+for (const scale of [2, 3]) for (const model of ["proper", "reflected"]) {
+  const path = `runs/a2-sliced-size9-two-scale${scale}-${model}.ndjson`;
+  const rows = await readNdjson(path);
+  if (rows.length !== 356) throw new Error(`Expected 356 rows in ${path}, found ${rows.length}`);
+  for (const screen of rows) {
+    const detail = screen.two_copy_alcove_metatile_screen;
+    if (!detail?.certified
+        || screen.classification !== `no_two_copy_metatile_scalar${scale}_substitution`
+        || detail.include_reflections !== (model === "reflected")
+        || detail.parents_completed !== detail.symmetry_distinct_metatiles) {
+      throw new Error(`Incomplete two-copy substitution exclusion for ${screen.id} in ${path}`);
+    }
+    if (unresolved.some(record => record.id === screen.id)) twoCopyRows.push({
+      id: screen.id,
+      classification: screen.classification,
+      scale,
+      model,
+      certified: true,
+      symmetry_distinct_metatiles: detail.symmetry_distinct_metatiles,
+      parents_completed: detail.parents_completed,
+      canonical_sha256: detail.canonical_sha256,
+      parent_counts: detail.parent_counts
+    });
+  }
+  twoCopyCampaigns.push({
+    scale,
+    model,
+    candidates: rows.length,
+    certified_negatives: rows.length,
+    record_digest_sha256: createHash("sha256").update(rows.map(screen => {
+      const detail = screen.two_copy_alcove_metatile_screen;
+      return `${screen.id}:${detail.canonical_sha256}:${detail.parents_completed}`;
+    }).sort().join("\n")).digest("hex")
+  });
+}
+const twoCopyById = Map.groupBy(twoCopyRows, record => record.id);
 if (unresolved.length !== 3 || periodic.length !== 5) {
   throw new Error(`Expected three unresolved and five periodic records; got ${unresolved.length}/${periodic.length}`);
 }
@@ -90,6 +157,8 @@ const candidates = records.map(record => {
   const corona = coronaById.get(record.id);
   const radiusTwo = radiusTwoById.get(record.id)?.corona2_core_cegar;
   const threeCopy = threeCopyById.get(record.id) ?? [];
+  const twoCopy = twoCopyById.get(record.id) ?? [];
+  const fourCopy = fourCopyById.get(record.id);
   if (!corona?.corona_z3?.replay?.verified) {
     throw new Error(`Missing replayed root corona for ${record.id}`);
   }
@@ -146,6 +215,16 @@ const candidates = records.map(record => {
       corona_report: "data/a2-sliced-alcove-size9-focused-corona1.ndjson",
       substitution_direct_scalar_scales_excluded: [2, 3, 4, 5, 6, 7, 8],
       substitution_models_exhausted: ["proper", "reflected"],
+      substitution_two_copy_metatile_scalar_scales_excluded:
+        twoCopy.length === 4 ? [2, 3] : [],
+      substitution_two_copy_models_exhausted:
+        twoCopy.length === 4 ? ["proper", "reflected"] : [],
+      substitution_two_copy_types_exhausted: Object.fromEntries(twoCopy.map(item => [
+        `${item.model}_scale${item.scale}`, item.symmetry_distinct_metatiles
+      ])),
+      substitution_two_copy_census_candidates_exhausted: 356,
+      substitution_two_copy_report:
+        "data/a2-sliced-alcove-size9-two-copy-census-summary.json",
       substitution_three_copy_metatile_scalar_scales_excluded:
         threeCopy.length === 4 ? [2, 3] : [],
       substitution_three_copy_models_exhausted:
@@ -155,6 +234,13 @@ const candidates = records.map(record => {
       ])),
       substitution_three_copy_report: threeCopy.length
         ? "data/a2-sliced-alcove-size9-focused-three-copy-summary.ndjson"
+        : null,
+      substitution_four_copy_metatile_proper_scalar_scales_excluded:
+        fourCopy ? [2] : [],
+      substitution_four_copy_metatile_types_exhausted:
+        fourCopy?.symmetry_distinct_metatiles ?? null,
+      substitution_four_copy_report: fourCopy
+        ? "data/a2-sliced-alcove-size9-focused-four-copy-proper-summary.ndjson"
         : null,
       substitution_claim_scope: "direct_scalar_fixed_affine_A3_alcove_cellular_only",
       substitution_noncellular_inflations_open: true,
@@ -182,6 +268,11 @@ await writeFile(new URL("data/a2-sliced-alcove-size9-focused-corona2-gcts.ndjson
   `${radiusTwoRows.map(record => JSON.stringify(record)).join("\n")}\n`, "utf8");
 await writeFile(new URL("data/a2-sliced-alcove-size9-focused-three-copy-summary.ndjson", root),
   `${threeCopyRows.map(record => JSON.stringify(record)).join("\n")}\n`, "utf8");
+await writeFile(new URL("data/a2-sliced-alcove-size9-two-copy-census-summary.json", root),
+  `${JSON.stringify({ campaigns: twoCopyCampaigns, focused_candidates: twoCopyRows }, null, 2)}\n`,
+  "utf8");
+await writeFile(new URL("data/a2-sliced-alcove-size9-focused-four-copy-proper-summary.ndjson", root),
+  `${fourCopyRows.map(record => JSON.stringify(record)).join("\n")}\n`, "utf8");
 const source = `// Generated by scripts/build-a2-sliced-size9-catalog.mjs.\n`
   + `export const A2_SLICED_SIZE9_CANDIDATES = Object.freeze(${JSON.stringify(candidates, null, 2)});\n`;
 await writeFile(new URL("assets/a2-sliced-size9-candidates.js", root), source, "utf8");

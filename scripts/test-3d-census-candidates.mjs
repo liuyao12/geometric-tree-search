@@ -1676,8 +1676,12 @@ assert.ok(slicedSizeNineLeads.every(candidate =>
   && candidate.screening.periodic_solver_unknowns === 0
   && candidate.screening.corona_completed_verified
   && candidate.screening.radius_two_outer_exhausted === false
+  && candidate.screening.substitution_two_copy_census_candidates_exhausted === 356
+  && candidate.screening.substitution_two_copy_metatile_scalar_scales_excluded.join(",") === "2,3"
   && candidate.screening.substitution_three_copy_metatile_scalar_scales_excluded.join(",") === "2,3"
   && candidate.screening.substitution_three_copy_models_exhausted.join(",") === "proper,reflected"
+  && candidate.screening.substitution_four_copy_metatile_proper_scalar_scales_excluded.join(",") === "2"
+  && candidate.screening.substitution_four_copy_metatile_types_exhausted > 3000
 ));
 assert.equal(
   survivors.filter(figure => figure.census_candidate.screening.census_stage === "volume9_fresh_bounded_2026_08_25").length,

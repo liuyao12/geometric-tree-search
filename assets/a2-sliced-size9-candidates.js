@@ -194,6 +194,22 @@ export const A2_SLICED_SIZE9_CANDIDATES = Object.freeze([
         "proper",
         "reflected"
       ],
+      "substitution_two_copy_metatile_scalar_scales_excluded": [
+        2,
+        3
+      ],
+      "substitution_two_copy_models_exhausted": [
+        "proper",
+        "reflected"
+      ],
+      "substitution_two_copy_types_exhausted": {
+        "proper_scale2": 16,
+        "reflected_scale2": 53,
+        "proper_scale3": 16,
+        "reflected_scale3": 53
+      },
+      "substitution_two_copy_census_candidates_exhausted": 356,
+      "substitution_two_copy_report": "data/a2-sliced-alcove-size9-two-copy-census-summary.json",
       "substitution_three_copy_metatile_scalar_scales_excluded": [
         2,
         3
@@ -209,6 +225,11 @@ export const A2_SLICED_SIZE9_CANDIDATES = Object.freeze([
         "reflected_scale3": 2652
       },
       "substitution_three_copy_report": "data/a2-sliced-alcove-size9-focused-three-copy-summary.ndjson",
+      "substitution_four_copy_metatile_proper_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_metatile_types_exhausted": 3246,
+      "substitution_four_copy_report": "data/a2-sliced-alcove-size9-focused-four-copy-proper-summary.ndjson",
       "substitution_claim_scope": "direct_scalar_fixed_affine_A3_alcove_cellular_only",
       "substitution_noncellular_inflations_open": true,
       "deeper_periodic_domains_open": true,
@@ -419,6 +440,22 @@ export const A2_SLICED_SIZE9_CANDIDATES = Object.freeze([
         "proper",
         "reflected"
       ],
+      "substitution_two_copy_metatile_scalar_scales_excluded": [
+        2,
+        3
+      ],
+      "substitution_two_copy_models_exhausted": [
+        "proper",
+        "reflected"
+      ],
+      "substitution_two_copy_types_exhausted": {
+        "proper_scale2": 23,
+        "reflected_scale2": 62,
+        "proper_scale3": 23,
+        "reflected_scale3": 62
+      },
+      "substitution_two_copy_census_candidates_exhausted": 356,
+      "substitution_two_copy_report": "data/a2-sliced-alcove-size9-two-copy-census-summary.json",
       "substitution_three_copy_metatile_scalar_scales_excluded": [
         2,
         3
@@ -434,6 +471,11 @@ export const A2_SLICED_SIZE9_CANDIDATES = Object.freeze([
         "reflected_scale3": 4285
       },
       "substitution_three_copy_report": "data/a2-sliced-alcove-size9-focused-three-copy-summary.ndjson",
+      "substitution_four_copy_metatile_proper_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_metatile_types_exhausted": 20106,
+      "substitution_four_copy_report": "data/a2-sliced-alcove-size9-focused-four-copy-proper-summary.ndjson",
       "substitution_claim_scope": "direct_scalar_fixed_affine_A3_alcove_cellular_only",
       "substitution_noncellular_inflations_open": true,
       "deeper_periodic_domains_open": true,
@@ -843,10 +885,18 @@ export const A2_SLICED_SIZE9_CANDIDATES = Object.freeze([
         "proper",
         "reflected"
       ],
+      "substitution_two_copy_metatile_scalar_scales_excluded": [],
+      "substitution_two_copy_models_exhausted": [],
+      "substitution_two_copy_types_exhausted": {},
+      "substitution_two_copy_census_candidates_exhausted": 356,
+      "substitution_two_copy_report": "data/a2-sliced-alcove-size9-two-copy-census-summary.json",
       "substitution_three_copy_metatile_scalar_scales_excluded": [],
       "substitution_three_copy_models_exhausted": [],
       "substitution_three_copy_types_exhausted": {},
       "substitution_three_copy_report": null,
+      "substitution_four_copy_metatile_proper_scalar_scales_excluded": [],
+      "substitution_four_copy_metatile_types_exhausted": null,
+      "substitution_four_copy_report": null,
       "substitution_claim_scope": "direct_scalar_fixed_affine_A3_alcove_cellular_only",
       "substitution_noncellular_inflations_open": true,
       "deeper_periodic_domains_open": false,
@@ -1256,10 +1306,18 @@ export const A2_SLICED_SIZE9_CANDIDATES = Object.freeze([
         "proper",
         "reflected"
       ],
+      "substitution_two_copy_metatile_scalar_scales_excluded": [],
+      "substitution_two_copy_models_exhausted": [],
+      "substitution_two_copy_types_exhausted": {},
+      "substitution_two_copy_census_candidates_exhausted": 356,
+      "substitution_two_copy_report": "data/a2-sliced-alcove-size9-two-copy-census-summary.json",
       "substitution_three_copy_metatile_scalar_scales_excluded": [],
       "substitution_three_copy_models_exhausted": [],
       "substitution_three_copy_types_exhausted": {},
       "substitution_three_copy_report": null,
+      "substitution_four_copy_metatile_proper_scalar_scales_excluded": [],
+      "substitution_four_copy_metatile_types_exhausted": null,
+      "substitution_four_copy_report": null,
       "substitution_claim_scope": "direct_scalar_fixed_affine_A3_alcove_cellular_only",
       "substitution_noncellular_inflations_open": true,
       "deeper_periodic_domains_open": false,
@@ -1470,6 +1528,22 @@ export const A2_SLICED_SIZE9_CANDIDATES = Object.freeze([
         "proper",
         "reflected"
       ],
+      "substitution_two_copy_metatile_scalar_scales_excluded": [
+        2,
+        3
+      ],
+      "substitution_two_copy_models_exhausted": [
+        "proper",
+        "reflected"
+      ],
+      "substitution_two_copy_types_exhausted": {
+        "proper_scale2": 32,
+        "reflected_scale2": 52,
+        "proper_scale3": 32,
+        "reflected_scale3": 52
+      },
+      "substitution_two_copy_census_candidates_exhausted": 356,
+      "substitution_two_copy_report": "data/a2-sliced-alcove-size9-two-copy-census-summary.json",
       "substitution_three_copy_metatile_scalar_scales_excluded": [
         2,
         3
@@ -1485,6 +1559,11 @@ export const A2_SLICED_SIZE9_CANDIDATES = Object.freeze([
         "reflected_scale3": 2962
       },
       "substitution_three_copy_report": "data/a2-sliced-alcove-size9-focused-three-copy-summary.ndjson",
+      "substitution_four_copy_metatile_proper_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_metatile_types_exhausted": 57972,
+      "substitution_four_copy_report": "data/a2-sliced-alcove-size9-focused-four-copy-proper-summary.ndjson",
       "substitution_claim_scope": "direct_scalar_fixed_affine_A3_alcove_cellular_only",
       "substitution_noncellular_inflations_open": true,
       "deeper_periodic_domains_open": true,
@@ -1893,10 +1972,18 @@ export const A2_SLICED_SIZE9_CANDIDATES = Object.freeze([
         "proper",
         "reflected"
       ],
+      "substitution_two_copy_metatile_scalar_scales_excluded": [],
+      "substitution_two_copy_models_exhausted": [],
+      "substitution_two_copy_types_exhausted": {},
+      "substitution_two_copy_census_candidates_exhausted": 356,
+      "substitution_two_copy_report": "data/a2-sliced-alcove-size9-two-copy-census-summary.json",
       "substitution_three_copy_metatile_scalar_scales_excluded": [],
       "substitution_three_copy_models_exhausted": [],
       "substitution_three_copy_types_exhausted": {},
       "substitution_three_copy_report": null,
+      "substitution_four_copy_metatile_proper_scalar_scales_excluded": [],
+      "substitution_four_copy_metatile_types_exhausted": null,
+      "substitution_four_copy_report": null,
       "substitution_claim_scope": "direct_scalar_fixed_affine_A3_alcove_cellular_only",
       "substitution_noncellular_inflations_open": true,
       "deeper_periodic_domains_open": false,
@@ -2305,10 +2392,18 @@ export const A2_SLICED_SIZE9_CANDIDATES = Object.freeze([
         "proper",
         "reflected"
       ],
+      "substitution_two_copy_metatile_scalar_scales_excluded": [],
+      "substitution_two_copy_models_exhausted": [],
+      "substitution_two_copy_types_exhausted": {},
+      "substitution_two_copy_census_candidates_exhausted": 356,
+      "substitution_two_copy_report": "data/a2-sliced-alcove-size9-two-copy-census-summary.json",
       "substitution_three_copy_metatile_scalar_scales_excluded": [],
       "substitution_three_copy_models_exhausted": [],
       "substitution_three_copy_types_exhausted": {},
       "substitution_three_copy_report": null,
+      "substitution_four_copy_metatile_proper_scalar_scales_excluded": [],
+      "substitution_four_copy_metatile_types_exhausted": null,
+      "substitution_four_copy_report": null,
       "substitution_claim_scope": "direct_scalar_fixed_affine_A3_alcove_cellular_only",
       "substitution_noncellular_inflations_open": true,
       "deeper_periodic_domains_open": false,
@@ -2717,10 +2812,18 @@ export const A2_SLICED_SIZE9_CANDIDATES = Object.freeze([
         "proper",
         "reflected"
       ],
+      "substitution_two_copy_metatile_scalar_scales_excluded": [],
+      "substitution_two_copy_models_exhausted": [],
+      "substitution_two_copy_types_exhausted": {},
+      "substitution_two_copy_census_candidates_exhausted": 356,
+      "substitution_two_copy_report": "data/a2-sliced-alcove-size9-two-copy-census-summary.json",
       "substitution_three_copy_metatile_scalar_scales_excluded": [],
       "substitution_three_copy_models_exhausted": [],
       "substitution_three_copy_types_exhausted": {},
       "substitution_three_copy_report": null,
+      "substitution_four_copy_metatile_proper_scalar_scales_excluded": [],
+      "substitution_four_copy_metatile_types_exhausted": null,
+      "substitution_four_copy_report": null,
       "substitution_claim_scope": "direct_scalar_fixed_affine_A3_alcove_cellular_only",
       "substitution_noncellular_inflations_open": true,
       "deeper_periodic_domains_open": false,

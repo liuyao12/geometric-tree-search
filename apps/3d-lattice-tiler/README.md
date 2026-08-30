@@ -255,7 +255,12 @@ large-domain periodic controls. A 64-proposal radius-two GCTS/CEGAR campaign
 over all 350 candidates with replayed root coronas remains inconclusive. A
 focused continuation on the three leaders retains 20, 326, and 316 sound
 obstruction clauses respectively, but does not exhaust the outer corona
-space. Exact exclusion through eight copies is
+space. Complete connected two-copy screens reject scalar substitutions at
+scales two and three, with proper and reflected orientations, for all 356
+six-copy survivors. On the three exact-through-eight leaders, the analogous
+three-copy screens are also complete in both models and the proper-orientation
+four-copy scale-two screen exhausts 3,246, 20,106, and 57,972 parents without
+finding a closed substitution alphabet. Exact exclusion through eight copies is
 bounded evidence and does not imply aperiodicity. For size eight,
 the exact screen first finds 3,335
 three-copy periods and advances 1,071 shapes to the six-copy screen, which
