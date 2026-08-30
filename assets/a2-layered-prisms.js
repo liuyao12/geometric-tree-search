@@ -1,4 +1,4 @@
-import { A2_TILE_LOOPS, a2PolygonOccupancy } from "./a2-tiling-engine.js";
+import { A2_TILE_LOOPS, a2PolygonOccupancy } from "./a2-tiling-engine.js?v=20260830-occupancy-v2";
 
 const add = (left, right) => left.map((value, axis) => value + right[axis]);
 

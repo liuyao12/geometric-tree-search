@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260830-a2-sliced9-v244";
+} from "./engine.js?v=20260830-a2-sliced9-v245";
 
 const $ = (id) => document.getElementById(id);
 
