@@ -276,6 +276,11 @@ def main():
     parser.add_argument("--input", required=True)
     parser.add_argument("--output", required=True)
     parser.add_argument("--ids", default="")
+    parser.add_argument(
+        "--only-corona-witnesses",
+        action="store_true",
+        help="skip rows whose first corona has not been independently replayed",
+    )
     parser.add_argument("--offset", type=int, default=0)
     parser.add_argument("--limit", type=int, default=0)
     parser.add_argument("--rounds", type=int, default=64)
@@ -291,6 +296,12 @@ def main():
     records = [json.loads(line) for line in Path(args.input).read_text().splitlines() if line.strip()]
     if requested:
         records = [record for record in records if record["id"] in requested]
+    if args.only_corona_witnesses:
+        records = [
+            record for record in records
+            if record.get("corona_classification") == "root_corona_exists"
+            and record.get("corona_z3", {}).get("replay", {}).get("verified") is True
+        ]
     records = records[max(0, args.offset):]
     if args.limit > 0:
         records = records[:args.limit]

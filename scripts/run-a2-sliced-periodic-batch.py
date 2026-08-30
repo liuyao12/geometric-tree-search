@@ -110,13 +110,21 @@ def main() -> None:
     parser.add_argument("--input", required=True)
     parser.add_argument("--output-dir", required=True)
     parser.add_argument("--merged-output", required=True)
-    parser.add_argument("--candidate-ids", required=True,
-                        help="comma-separated IDs from the unresolved input rows")
+    selection = parser.add_mutually_exclusive_group(required=True)
+    selection.add_argument(
+        "--candidate-ids",
+        help="comma-separated IDs from the unresolved input rows",
+    )
+    selection.add_argument(
+        "--all-unresolved",
+        action="store_true",
+        help="screen every unresolved row in the input",
+    )
     parser.add_argument("--copies", type=int, default=12)
     parser.add_argument("--orbit-total", type=int, default=81)
     parser.add_argument("--orbit-span", type=int, default=9)
     parser.add_argument("--timeout-ms", type=int, default=30000)
-    parser.add_argument("--solver", choices=("qffd", "default"), default="qffd")
+    parser.add_argument("--solver", choices=("exact", "qffd", "default"), default="qffd")
     parser.add_argument("--workers", type=int, default=8)
     parser.add_argument("--max-tasks", type=int, default=0)
     args = parser.parse_args()
@@ -124,9 +132,13 @@ def main() -> None:
     input_path = Path(args.input).resolve()
     output_dir = Path(args.output_dir).resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
-    requested = [item.strip() for item in args.candidate_ids.split(",") if item.strip()]
     unresolved = [record for record in read_ndjson(input_path)
                   if record.get("classification") == "unresolved"]
+    requested = (
+        [record["id"] for record in unresolved]
+        if args.all_unresolved
+        else [item.strip() for item in args.candidate_ids.split(",") if item.strip()]
+    )
     offsets = {record["id"]: index for index, record in enumerate(unresolved)}
     missing = [candidate_id for candidate_id in requested if candidate_id not in offsets]
     if missing:

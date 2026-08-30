@@ -774,8 +774,7 @@ function polycubeCubeCount(figure) {
 
 const catalogGroupDefinitions = [
   { id: "aperiodic", title: "Known aperiodic monotile", test: figure => figureHasCategory(figure, "Aperiodic Monotiles") },
-  { id: "a2-layered", title: "Primary search · A₂ consecutive-layer solids · x+y+z=k", test: figure => figureHasCategory(figure, "A2 Layered Solids") },
-  { id: "unresolved-polycubes", title: "Unresolved polycube candidates", test: figure => figureHasCategory(figure, "Unresolved Polycube Candidates") },
+  { id: "a2-layered", title: "Primary search · non-polycubes on A₂ slices · x+y+z=k", test: figure => figureHasCategory(figure, "A2 Layered Solids") },
   { id: "unresolved", title: "Unresolved lattice candidates", test: figure => figureHasCategory(figure, "Unresolved Lattice Candidates") },
   {
     id: "periodic-controls",
@@ -783,6 +782,7 @@ const catalogGroupDefinitions = [
     test: figure => figureHasCategory(figure, "GCTS Periodic Controls")
   },
   { id: "non-tiler-controls", title: "GCTS non-tiler controls", test: figure => figureHasCategory(figure, "GCTS Non-Tiler Controls") },
+  { id: "unresolved-polycubes", title: "Legacy unresolved polycube benchmarks", test: figure => figureHasCategory(figure, "Unresolved Polycube Candidates") },
   { id: "face-obstruction-controls", title: "Face-to-face obstruction controls", test: figure => figureHasCategory(figure, "Face-to-face Obstruction Controls") },
   { id: "polycubes", title: "Polycubes", test: figure => figureHasCategory(figure, "Polycubes") },
   { id: "fedorov", title: "Fedorov solids", test: figure => figureHasCategory(figure, "Fedorov Solids") },
