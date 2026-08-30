@@ -251,7 +251,11 @@ Among the first eight priority classes, a complete determinant-12 eight-copy
 screen finds five replay-verified periodic quotients and exhausts all 455 HNF
 quotients for the remaining three, with no solver unknowns. Those three are
 the current leading research entries; the five positives are retained only as
-large-domain periodic controls. Exact exclusion through eight copies is
+large-domain periodic controls. A 64-proposal radius-two GCTS/CEGAR campaign
+over all 350 candidates with replayed root coronas remains inconclusive. A
+focused continuation on the three leaders retains 20, 326, and 316 sound
+obstruction clauses respectively, but does not exhaust the outer corona
+space. Exact exclusion through eight copies is
 bounded evidence and does not imply aperiodicity. For size eight,
 the exact screen first finds 3,335
 three-copy periods and advances 1,071 shapes to the six-copy screen, which

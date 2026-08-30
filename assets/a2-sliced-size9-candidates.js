@@ -197,7 +197,13 @@ export const A2_SLICED_SIZE9_CANDIDATES = Object.freeze([
       "substitution_claim_scope": "direct_scalar_fixed_affine_A3_alcove_cellular_only",
       "substitution_noncellular_inflations_open": true,
       "deeper_periodic_domains_open": true,
-      "radius_two_status": "running"
+      "radius_two_status": "unresolved",
+      "radius_two_rounds": 20,
+      "radius_two_failure_clauses": 20,
+      "radius_two_outer_exhausted": false,
+      "radius_two_stopped_by": "solver_timeout",
+      "radius_two_cumulative_milliseconds": 47788,
+      "radius_two_report": "data/a2-sliced-alcove-size9-focused-corona2-gcts.ndjson"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -401,7 +407,13 @@ export const A2_SLICED_SIZE9_CANDIDATES = Object.freeze([
       "substitution_claim_scope": "direct_scalar_fixed_affine_A3_alcove_cellular_only",
       "substitution_noncellular_inflations_open": true,
       "deeper_periodic_domains_open": true,
-      "radius_two_status": "running"
+      "radius_two_status": "unresolved",
+      "radius_two_rounds": 346,
+      "radius_two_failure_clauses": 326,
+      "radius_two_outer_exhausted": false,
+      "radius_two_stopped_by": "solver_timeout",
+      "radius_two_cumulative_milliseconds": 306666,
+      "radius_two_report": "data/a2-sliced-alcove-size9-focused-corona2-gcts.ndjson"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -804,7 +816,13 @@ export const A2_SLICED_SIZE9_CANDIDATES = Object.freeze([
       "substitution_claim_scope": "direct_scalar_fixed_affine_A3_alcove_cellular_only",
       "substitution_noncellular_inflations_open": true,
       "deeper_periodic_domains_open": false,
-      "radius_two_status": "running"
+      "radius_two_status": null,
+      "radius_two_rounds": 0,
+      "radius_two_failure_clauses": 0,
+      "radius_two_outer_exhausted": false,
+      "radius_two_stopped_by": null,
+      "radius_two_cumulative_milliseconds": 0,
+      "radius_two_report": null
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -1207,7 +1225,13 @@ export const A2_SLICED_SIZE9_CANDIDATES = Object.freeze([
       "substitution_claim_scope": "direct_scalar_fixed_affine_A3_alcove_cellular_only",
       "substitution_noncellular_inflations_open": true,
       "deeper_periodic_domains_open": false,
-      "radius_two_status": "running"
+      "radius_two_status": null,
+      "radius_two_rounds": 0,
+      "radius_two_failure_clauses": 0,
+      "radius_two_outer_exhausted": false,
+      "radius_two_stopped_by": null,
+      "radius_two_cumulative_milliseconds": 0,
+      "radius_two_report": null
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -1411,7 +1435,13 @@ export const A2_SLICED_SIZE9_CANDIDATES = Object.freeze([
       "substitution_claim_scope": "direct_scalar_fixed_affine_A3_alcove_cellular_only",
       "substitution_noncellular_inflations_open": true,
       "deeper_periodic_domains_open": true,
-      "radius_two_status": "running"
+      "radius_two_status": "unresolved",
+      "radius_two_rounds": 320,
+      "radius_two_failure_clauses": 316,
+      "radius_two_outer_exhausted": false,
+      "radius_two_stopped_by": "round_limit",
+      "radius_two_cumulative_milliseconds": 236997,
+      "radius_two_report": "data/a2-sliced-alcove-size9-focused-corona2-gcts.ndjson"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -1813,7 +1843,13 @@ export const A2_SLICED_SIZE9_CANDIDATES = Object.freeze([
       "substitution_claim_scope": "direct_scalar_fixed_affine_A3_alcove_cellular_only",
       "substitution_noncellular_inflations_open": true,
       "deeper_periodic_domains_open": false,
-      "radius_two_status": "running"
+      "radius_two_status": null,
+      "radius_two_rounds": 0,
+      "radius_two_failure_clauses": 0,
+      "radius_two_outer_exhausted": false,
+      "radius_two_stopped_by": null,
+      "radius_two_cumulative_milliseconds": 0,
+      "radius_two_report": null
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -2215,7 +2251,13 @@ export const A2_SLICED_SIZE9_CANDIDATES = Object.freeze([
       "substitution_claim_scope": "direct_scalar_fixed_affine_A3_alcove_cellular_only",
       "substitution_noncellular_inflations_open": true,
       "deeper_periodic_domains_open": false,
-      "radius_two_status": "running"
+      "radius_two_status": null,
+      "radius_two_rounds": 0,
+      "radius_two_failure_clauses": 0,
+      "radius_two_outer_exhausted": false,
+      "radius_two_stopped_by": null,
+      "radius_two_cumulative_milliseconds": 0,
+      "radius_two_report": null
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -2617,7 +2659,13 @@ export const A2_SLICED_SIZE9_CANDIDATES = Object.freeze([
       "substitution_claim_scope": "direct_scalar_fixed_affine_A3_alcove_cellular_only",
       "substitution_noncellular_inflations_open": true,
       "deeper_periodic_domains_open": false,
-      "radius_two_status": "running"
+      "radius_two_status": null,
+      "radius_two_rounds": 0,
+      "radius_two_failure_clauses": 0,
+      "radius_two_outer_exhausted": false,
+      "radius_two_stopped_by": null,
+      "radius_two_cumulative_milliseconds": 0,
+      "radius_two_report": null
     },
     "shell_screening": {
       "robust_completed_shell": 0,
