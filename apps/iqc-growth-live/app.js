@@ -78,9 +78,11 @@ import { buildGrowthActionPhysicsProvenance, buildPhysicsCompressionMap, buildPh
   PHYSICS_EFFECT_COLUMNS, PHYSICS_READINESS_STATES, physicsExecutionLineage }
   from "./physics-compression-map.js?v=20260828-320";
 import { buildExternalPhysicsRequest }
-  from "./external-physics-request.mjs?v=20260830-339";
+  from "./external-physics-request.mjs?v=20260830-340";
 import { validateExternalPhysicsResponse }
-  from "./external-physics-response.mjs?v=20260830-339";
+  from "./external-physics-response.mjs?v=20260830-340";
+import { bindValidatedForceGeometry, buildValidatedForceGeometryRuntime }
+  from "./external-force-geometry.mjs?v=20260830-340";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -1788,6 +1790,8 @@ let physicsProtocolPairSessionSerial = 0;
 let dynamicalEvidenceHandoffReceipt = null;
 let externalPhysicsRequestExportReceipt = null;
 let externalPhysicsResponseValidationReceipt = null;
+let externalPhysicsResponseRuntime = null;
+let externalPhysicsForceGeometryEnabled = false;
 let currentPhysicsPairProgress = null;
 let currentPhysicsPairIntervention = null;
 let frozenPhysicsPreflightManifest = null;
@@ -3184,9 +3188,34 @@ function activeMeasurementConditions() {
 }
 
 function activeCalculationProvenance() {
+  if (externalPhysicsForceGeometryEnabled && externalPhysicsResponseRuntime?.quantityId === "forces"
+      && externalPhysicsResponseRuntime.configurationRole === "observation") {
+    return externalPhysicsResponseRuntime.calculationProvenance;
+  }
   if (scenarioSelect.value !== "imported" || !importedStructure) return null;
   return currentImportedFrame()?.metadata?.calculation
     || importedStructure.metadata?.calculation || null;
+}
+
+function clearExternalPhysicsRoundTrip() {
+  dynamicalEvidenceHandoffReceipt = null;
+  externalPhysicsRequestExportReceipt = null;
+  externalPhysicsResponseValidationReceipt = null;
+  externalPhysicsResponseRuntime = null;
+  externalPhysicsForceGeometryEnabled = false;
+}
+
+function bindExternalForceGeometryToReference(source) {
+  if (!externalPhysicsForceGeometryEnabled || externalPhysicsResponseRuntime?.quantityId !== "forces"
+      || externalPhysicsResponseRuntime.configurationRole !== "observation") return 0;
+  const binding = bindValidatedForceGeometry(source, externalPhysicsResponseRuntime);
+  if (externalPhysicsResponseValidationReceipt) {
+    externalPhysicsResponseValidationReceipt.boundReferenceSites = binding.boundSites;
+    externalPhysicsResponseValidationReceipt.properPoseTransportHypothesis = binding.properPoseTransport;
+    externalPhysicsResponseValidationReceipt.forceIntegrated = binding.forceIntegrated;
+    externalPhysicsResponseValidationReceipt.usedAsPotential = binding.usedAsPotential;
+  }
+  return binding.boundSites;
 }
 
 function archivedStressStrainResponse() {
@@ -3838,6 +3867,7 @@ function deterministicSnapshotEnsemble(structure) {
 }
 
 function activateImportedStructure(parsed, filename, statusElement = importStatus) {
+  clearExternalPhysicsRoundTrip();
   const validation = validateStructure(parsed, { maximumAtoms: 1200 });
   if (!validation.valid) throw new Error(validation.errors.join("; "));
   importedFrameIndex = Number.isInteger(parsed.metadata?.preferredFrameIndex)
@@ -12180,7 +12210,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260830-339",
+      buildId: "20260830-340",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -14683,7 +14713,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260830-339" },
+    application: { name: "Materials Growth Lab", buildId: "20260830-340" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },
@@ -18134,6 +18164,7 @@ function observedRelaxationTransportAudit() {
 function calculationForceTransportAudit() {
   const templates = overlapGrammar?.templates || [];
   const rules = overlapGrammar?.rules || [];
+  const provenance = activeCalculationProvenance();
   return {
     available: referenceAtoms.some((atom) => Array.isArray(atom.calculationForceEvPerAngstrom)),
     mode: structuralRelaxationMode,
@@ -18147,6 +18178,10 @@ function calculationForceTransportAudit() {
       + (candidate.forceSites?.length || 0), 0),
     properPoseTransport: "F_world = R_cluster F_local",
     archiveUnits: "electronvolt per angstrom",
+    source: provenance?.source || null,
+    requestLinkedExternalResponse: provenance?.source === "validated request-linked external-physics response",
+    validationGatePassed: provenance?.validationGatePassed === true,
+    responseSha256: provenance?.responseSha256 || null,
     seedMagnitudeRule: "delta_r_seed = cap * min(1, |F| / p90_reference) * unit(F_world)",
     seedScaleP90EvPerAngstrom: calculationForceSeedScaleEvPerAngstrom(),
     seedEligible: calculationForceSeedScaleEvPerAngstrom() > 0,
@@ -26826,9 +26861,6 @@ function resetCounters() {
   physicsProtocolAblatedRecordId = null;
   physicsProtocolArmRegistration = null;
   physicsProtocolPairSessionId = null;
-  dynamicalEvidenceHandoffReceipt = null;
-  externalPhysicsRequestExportReceipt = null;
-  externalPhysicsResponseValidationReceipt = null;
   currentPhysicsPairProgress = null;
   currentPhysicsPairIntervention = null;
   frozenPhysicsPreflightManifest = null;
@@ -26865,6 +26897,7 @@ function enterPipelineStage(index, options = {}) {
   rngState = 0x8f23ab17 ^ scenarioSelect.selectedIndex * 0x91e10da5
     ^ confinementSelect.selectedIndex * 0x734a9d ^ growthDomainScale * 0x45d9f3b;
   referenceAtoms = makeReferenceConfiguration();
+  bindExternalForceGeometryToReference(referenceAtoms);
   referenceSpacing = scenarioSelect.value === "imported" ? .92 : medianNearestSpacing(referenceAtoms);
   referenceSpacingA = scenarioSelect.value === "imported"
     ? currentImportedFrameValidation().medianNearestDistance
@@ -30967,6 +31000,8 @@ function draftDynamicalEvidenceHandoff(quantity, mode) {
   };
   externalPhysicsRequestExportReceipt = null;
   externalPhysicsResponseValidationReceipt = null;
+  externalPhysicsResponseRuntime = null;
+  externalPhysicsForceGeometryEnabled = false;
   selectedGrowthPhysicsPreflightId = ablatedRecordId || requestedRecordIds[0] || "steric";
   frozenPhysicsPreflightManifest = null;
   renderGrowthPhysicsPreflight();
@@ -31027,7 +31062,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260830-339",
+    generatedAt: new Date().toISOString(), buildId: "20260830-340",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,
@@ -31045,6 +31080,9 @@ async function downloadExternalPhysicsRequest(quantity) {
   const request = await externalPhysicsRequestPackage(quantity);
   const serialized = JSON.stringify(request, null, 2);
   const sha256 = await receiptSha256(serialized);
+  externalPhysicsResponseValidationReceipt = null;
+  externalPhysicsResponseRuntime = null;
+  externalPhysicsForceGeometryEnabled = false;
   externalPhysicsRequestExportReceipt = {
     schema: 1, requestSchema: request.schema, quantityId: quantity.id,
     requestSha256: sha256,
@@ -31096,9 +31134,29 @@ async function validateReturnedExternalPhysicsFile(file, quantity) {
     importedLocally: true, uploaded: false, rawResultsEmbeddedInReceipt: false,
     candidateSetChanged: false, candidateRankingChanged: false,
     physicalInferenceResolvedGlobally: false,
+    geometricEncodingEligible: quantity.id === "forces" && audit.configurationRole === "observation",
+    geometricEncodingEnabled: false,
   };
+  externalPhysicsResponseRuntime = quantity.id === "forces" && audit.configurationRole === "observation"
+    ? buildValidatedForceGeometryRuntime(response, audit, responseSha256)
+    : null;
+  externalPhysicsForceGeometryEnabled = false;
   receiptStatus.textContent = `${quantity.label} response validated · ${audit.configurationRole} · ${audit.method.program} · response ${responseSha256.slice(0, 12)} · specimen-specific evidence only.`;
   renderDynamicalEvidencePlan(activeDynamicalEvidencePlan);
+}
+
+function enableValidatedExternalForceGeometry() {
+  const receipt = externalPhysicsResponseValidationReceipt;
+  if (!receipt?.geometricEncodingEligible || externalPhysicsResponseRuntime?.quantityId !== "forces") return;
+  externalPhysicsForceGeometryEnabled = true;
+  receipt.geometricEncodingEnabled = true;
+  receipt.enabledBeforeRelearning = true;
+  receipt.candidateGeometryChangedByBinding = false;
+  receipt.candidateRankingChangedByBinding = false;
+  receipt.forceSeedRequiresExplicitOptIn = true;
+  receipt.properPoseTransportHypothesis = "F_world = R_cluster F_local";
+  receiptStatus.textContent = `Validated forces encoded as geometry · ${externalPhysicsResponseRuntime.forceVectorsElectronVoltPerAngstrom.length} observation vectors · relearning local proper-pose transport · force-seeded settling remains opt-in.`;
+  enterPipelineStage(3);
 }
 
 function renderDynamicalEvidencePlan(plan) {
@@ -31216,6 +31274,18 @@ function renderDynamicalEvidencePlan(plan) {
       const coverage = Number.isFinite(currentResponse.siteCoverage) ? ` · ${(100 * currentResponse.siteCoverage).toFixed(0)}% site coverage` : "";
       response.textContent = `Validated returned evidence · ${currentResponse.method.family} / ${currentResponse.method.program}${coverage}. It is scoped to the matched ${currentResponse.configurationRole} configuration and method; branch geometry, ranking, and physical time remain unchanged.`;
       addRow("returned evidence", response);
+      if (currentResponse.geometricEncodingEligible) {
+        const forceActions = document.createElement("div"); forceActions.className = "external-physics-force-actions";
+        const enable = document.createElement("button"); enable.type = "button";
+        enable.dataset.externalPhysicsForceGeometry = "enable";
+        enable.textContent = currentResponse.geometricEncodingEnabled
+          ? "Force geometry encoded" : "Encode force vectors & relearn";
+        enable.disabled = currentResponse.geometricEncodingEnabled;
+        enable.title = "Attach the validated observation vectors to the exact matching sites, relearn their cluster-local proper-pose representation, and expose the existing bounded force-seed control. Candidate enumeration and ranking remain unchanged.";
+        const limit = document.createElement("span");
+        limit.textContent = "Arrows + proper-pose vector transport only · not a force field · bounded settling still requires explicit selection.";
+        forceActions.append(enable, limit); addRow("geometry route", forceActions);
+      }
     }
   }
   dynamicalEvidencePlanState.textContent = `${externalPhysicsResponseValidationReceipt ? "1 validated specimen response · " : ""}${plan.directEvidenceQuantities} partial · ${plan.proxyOnlyQuantities} proxy-only · ${plan.absentQuantities} absent`;
@@ -31572,6 +31642,11 @@ dynamicalEvidencePlan.addEventListener("click", (event) => {
 });
 
 dynamicalEvidencePlanDetail.addEventListener("click", async (event) => {
+  const forceGeometryButton = event.target.closest("button[data-external-physics-force-geometry]");
+  if (forceGeometryButton && !forceGeometryButton.disabled) {
+    enableValidatedExternalForceGeometry();
+    return;
+  }
   const responseButton = event.target.closest("button[data-external-physics-response]");
   if (responseButton && externalPhysicsResponseInput) {
     externalPhysicsResponseInput.dataset.quantityId = responseButton.dataset.externalPhysicsResponse;
@@ -36339,6 +36414,7 @@ notebookStateReplicationContrast.addEventListener("change", () => {
 });
 notebookStateReplicationObservable.addEventListener("change", renderExperimentNotebook);
 scenarioSelect.addEventListener("change", (event) => {
+  clearExternalPhysicsRoundTrip();
   hypothesisSeparationExperiment = null;
   markingComparisonExperiment = null;
   growthSeedProtocol = recommendedGrowthSeedProtocol();
@@ -36348,6 +36424,7 @@ scenarioSelect.addEventListener("change", (event) => {
   if (event.isTrusted) synchronizeWorkflowAddress({ mode: "push", clearStudy: true });
 });
 iceViMicrostateButton.addEventListener("click", () => {
+  clearExternalPhysicsRoundTrip();
   hypothesisSeparationExperiment = null;
   markingComparisonExperiment = null;
   iceViMicrostateSeed++;
@@ -36357,6 +36434,7 @@ iceViMicrostateButton.addEventListener("click", () => {
   enterPipelineStage(0);
 });
 iceViAverageButton.addEventListener("click", () => {
+  clearExternalPhysicsRoundTrip();
   hypothesisSeparationExperiment = null;
   markingComparisonExperiment = null;
   iceViMicrostate = null;
@@ -36365,11 +36443,13 @@ iceViAverageButton.addEventListener("click", () => {
   enterPipelineStage(0);
 });
 ensembleFrameSelect.addEventListener("change", () => {
+  clearExternalPhysicsRoundTrip();
   hypothesisSeparationExperiment = null;
   markingComparisonExperiment = null;
   selectImportedFrame(Number(ensembleFrameSelect.value) || 0);
 });
 ensembleEvidenceSelect.addEventListener("change", () => {
+  clearExternalPhysicsRoundTrip();
   ensembleEvidenceMode = ensembleEvidenceSelect.value === "selected" ? "selected" : "all";
   enterPipelineStage(0);
 });

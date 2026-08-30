@@ -1,5 +1,28 @@
 # Recursive GCTS benchmark for material growth
 
+### Validated force-to-geometry deployment (Build 340)
+
+Among the six returned evidence types, site-resolved forces now have the first
+executable promotion path because their transformation law under a rigid
+cluster pose is explicit. A full response on the exact observation can be bound
+only after request-linked validation and a separate user action. The binding
+keeps site order under the validated structure digest, stores each vector on the
+observed site, learns it in the cluster-local frame, and transports it by the
+cluster's proper rotation. The browser reports reference, template, rule,
+candidate, and placed-vector coverage plus the response hash and validation
+state.
+
+The promoted object is a vector-valued geometric hypothesis, not a potential.
+Binding leaves support discovery, exact action poses, hard admission, and branch
+ranking invariant. The only executable use is the pre-existing bounded
+post-placement contact-residual projection, which still requires its own force
+mode selection, caps displacement relative to the sample force p90, rejects a
+worsening initial direction, and rolls back the whole projection on any failed
+certificate. The response is cleared when the specimen or observation frame
+changes. Trajectories, clocks, barriers, free energies, and probabilities remain
+validated evidence only until equally explicit representation and transfer
+contracts exist.
+
 ### Request-linked returned-evidence validation (Build 339)
 
 External physics now returns through the same evidence boundary by which it

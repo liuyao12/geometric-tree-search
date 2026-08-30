@@ -1,5 +1,27 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 340 · encode validated force vectors as geometry
+
+A complete force response for the exact supplied observation now has an
+explicit route back into GCTS. The response must first pass Build 339's request,
+structure, method, no-target, coverage, and validation gates. The user may then
+choose **Encode force vectors & relearn**. Every vector is attached to its
+matched observed site, transformed into each learned cluster's local proper
+frame, and transported as `F_world = R_cluster F_local` when that cluster is
+reused. The force-arrow layer and existing bounded force-seeded settling control
+then become available.
+
+This is deliberately not an automatic force-field deployment. Validation alone
+changes nothing; encoding requires a separate click and relearning pass. It does
+not alter cluster identity, exact candidate coordinates, candidate enumeration,
+or branch ranking. A force can seed only the already bounded post-placement
+geometric projection, and that mode remains a second explicit opt-in; worsening
+seeds and any failed hard certificate roll back. No masses, integration step,
+energy minimizer, potential, kinetics, or physical time are introduced. Raw
+vectors stay in local runtime memory while receipts retain response and method
+hashes, vector coverage, the encoding decision, and the proper-pose transport
+audit.
+
 ## Build 339 · validate the returned physics evidence
 
 The external-physics handoff is now a round trip. Every downloaded request
