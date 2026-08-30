@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <link rel="stylesheet" href="./style.css?v=20260830-336">
+  <link rel="stylesheet" href="./style.css?v=20260830-337">
   <script type="importmap">
     {
       "imports": {
@@ -1244,6 +1244,11 @@
                 <button id="growthLaunchRetrainMarking" type="button">Retrain connections</button>
               </div>
             </section>
+            <section id="continuationEvidenceLadder" class="continuation-evidence-ladder" aria-label="Continuation evidence ladder" aria-live="polite">
+              <header><span><small>what this run proves</small><strong>Continuation evidence ladder</strong></span><b id="continuationEvidenceState">representation only</b></header>
+              <div id="continuationEvidenceSteps" class="continuation-evidence-steps"></div>
+              <p id="continuationEvidenceBoundary">Each rung has a different evidentiary burden. A larger structure or a deeper tree does not, by itself, prove autonomous or exponential material growth.</p>
+            </section>
             <section id="nucleationLandscapeInspector" class="nucleation-landscape-inspector" hidden>
               <header><span><small>observed occurrence landscape</small><strong>Nucleation geometry inspector</strong></span><b id="nucleationLandscapeState">awaiting growth seed</b></header>
               <div id="nucleationLandscapeSummary" class="nucleation-landscape-summary"></div>
@@ -2241,7 +2246,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260830-336"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260830-336"></script>
+  <script type="module" src="./app.js?v=20260830-337"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260830-337"></script>
 </body>
 </html>

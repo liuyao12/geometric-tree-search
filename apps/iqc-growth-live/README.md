@@ -1,5 +1,24 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 337 · a live continuation-evidence ladder
+
+Material growth now puts the scientific claim directly beside the execution
+controls. A four-rung interactive ladder separates (1) complete geometric
+representation, (2) finite target-free continuation, (3) spatially disjoint
+exterior confirmation, and (4) a stationary or exponential recurrence law.
+Each rung reports the live denominator and evidence state, links to the exact
+initial-condition protocol that can test it, and states what remains unproved.
+
+The ladder is deliberately stricter than a growth animation. Same-sample
+crossings of the observation envelope are shown as progress, not independent
+confirmation. The sealed IQC trace becomes a disjoint pass only after its
+three frozen exterior sites are emitted, while its failed second selector keeps
+stationarity open. NaCl and the audited two-dimensional controls may display a
+separate benchmark recurrence pass, but explicit atom materialization remains
+O(N). The ladder is serialized in both the full receipt and bounded notebook;
+it records zero target-coordinate use, zero physical-potential use, and zero
+physical-time integration.
+
 ## Build 336 · replay a sealed, spatially disjoint IQC confirmation
 
 Material growth now offers an IQC-only evidence-library initial condition:

@@ -543,6 +543,10 @@ const growthLaunchReadinessDetail = $("growthLaunchReadinessDetail");
 const growthLaunchFindSeed = $("growthLaunchFindSeed");
 const growthLaunchInspectClusters = $("growthLaunchInspectClusters");
 const growthLaunchRetrainMarking = $("growthLaunchRetrainMarking");
+const continuationEvidenceLadder = $("continuationEvidenceLadder");
+const continuationEvidenceState = $("continuationEvidenceState");
+const continuationEvidenceSteps = $("continuationEvidenceSteps");
+const continuationEvidenceBoundary = $("continuationEvidenceBoundary");
 const nucleationLandscapeInspector = $("nucleationLandscapeInspector");
 const nucleationLandscapeState = $("nucleationLandscapeState");
 const nucleationLandscapeSummary = $("nucleationLandscapeSummary");
@@ -12169,7 +12173,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260830-336",
+      buildId: "20260830-337",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -13859,6 +13863,7 @@ async function buildExperimentReceipt() {
       grammarDecisions,
       localOracleCalls: oracleCalls,
       liveCertificate: liveGrowthCertificate(),
+      continuationEvidenceLadder: continuationEvidenceSnapshot(),
       structuralLeapHistory: { totalEvents: leapEventCount, retainedEvents: leapHistory.length,
         maximumRetainedEvents: MAXIMUM_RETAINED_STRUCTURAL_LEAPS,
         truncated: leapEventCount > leapHistory.length,
@@ -14612,6 +14617,7 @@ async function buildExperimentNotebookSnapshot() {
       meanProjectedSites: receiptRound(constraintNeighborhoodSiteTotal / Math.max(1, constraintNeighborhoodEvaluations)),
       maximumProjectedSites: maximumConstraintNeighborhoodSites, currentFullSites: atoms.length },
     liveCertificate: liveGrowthCertificate(),
+    continuationEvidenceLadder: continuationEvidenceSnapshot(),
     structuralLeapHistory: { totalEvents: leapEventCount, retainedEvents: leapHistory.length,
       maximumRetainedEvents: MAXIMUM_RETAINED_STRUCTURAL_LEAPS, truncated: leapEventCount > leapHistory.length,
       settlingRobustness: buildSettlingMaterialResponseHistory(leapHistory) },
@@ -14662,7 +14668,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260830-336" },
+    application: { name: "Materials Growth Lab", buildId: "20260830-337" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },
@@ -23663,6 +23669,132 @@ function renderGrowthLaunchReadiness() {
   growthLaunchRetrainMarking.classList.toggle("recommended", audit.recoveryStage === 3);
 }
 
+function continuationEvidenceSnapshot(growthCertificate = liveGrowthCertificate()) {
+  if (!growthCertificate || pipelineStage !== 4) return null;
+  const metrics = growthCertificate.metrics || {};
+  const benchmark = currentRecursiveBenchmark();
+  const inputSites = Math.max(1, referenceCount());
+  const coveredSites = Math.min(inputSites, learnedCover?.covered || 0);
+  const representationPassed = coveredSites === inputSites;
+  const emittedSites = Number(metrics.emittedSites ?? metrics.generatedStructuralSites ?? 0) || 0;
+  const causalDepth = Number(metrics.maximumCausalDepth
+    ?? metrics.nonemptySelfFedWaves ?? metrics.processedBlocks ?? 0) || 0;
+  const finiteContinuationPassed = emittedSites > 0
+    && metrics.targetCoordinatesUsed !== true
+    && Number(metrics.targetCallsDuringBrowserExecution ?? metrics.targetCalls ?? 0) === 0;
+  const disjointDomain = metrics.targetDomainDisjoint === true;
+  const spatialCrossings = Number(metrics.geometricContinuationSites || 0);
+  const disjointContinuationPassed = disjointDomain && finiteContinuationPassed;
+  const disjointContinuationProgress = !disjointContinuationPassed
+    && (growthSeedProtocol === "sealed-iqc-confirmation" || spatialCrossings > 0);
+  const recurrenceCertified = benchmark.status === "pass"
+    && ["competition", "graphene", "hbn", "moire"].includes(scenarioSelect.value);
+  const residualClasses = learnedCover?.molecular
+    ? Number(learnedCover.molecular.voidClasses || 0)
+    : Number(learnedCover?.residualTypes?.length || 0)
+      + Number(learnedCover?.voidBoundary?.classes || 0);
+  const representationStatus = representationPassed ? "pass" : coveredSites ? "progress" : "open";
+  const continuationStatus = finiteContinuationPassed ? "pass"
+    : growthCertificate.continuation?.status === "progress" ? "progress" : "open";
+  const exteriorStatus = disjointContinuationPassed ? "pass"
+    : disjointContinuationProgress ? "progress" : "open";
+  const recurrenceStatus = recurrenceCertified ? "pass" : "open";
+  const state = recurrenceCertified ? "recursive law certified"
+    : disjointContinuationPassed ? "disjoint exterior pass"
+      : finiteContinuationPassed ? "finite continuation"
+        : representationPassed ? "representation complete" : "representation pending";
+  const boundary = recurrenceCertified
+    ? `${benchmark.gate}. The recurrence is a geometric representation law: explicit atom materialization remains O(N), and no potential, growth rate, or elapsed physical time is inferred.`
+    : disjointContinuationPassed
+      ? `${emittedSites} colored site${emittedSites === 1 ? "" : "s"} crossed a spatially disjoint confirmation frontier. This proves one finite exterior leap only; sustained, stationary, inflationary, and exponential continuation remain open.`
+      : finiteContinuationPassed
+        ? `${emittedSites} target-free colored site${emittedSites === 1 ? "" : "s"} were emitted at causal depth ${causalDepth}. This is finite structural continuation; independent exterior transfer and a recurring scale law remain separate tests.`
+        : "The observation is represented, but a represented window is not a growth result. Execute a target-free frontier before making a continuation claim.";
+  return {
+    schema: "gcts-continuation-evidence-ladder-v1",
+    state,
+    activeProtocol: growthSeedProtocol,
+    steps: [
+      { id: "representation", ordinal: 1, status: representationStatus,
+        title: "Complete geometric representation",
+        metric: `${coveredSites.toLocaleString()} / ${inputSites.toLocaleString()} input sites`,
+        detail: representationPassed
+          ? `${learnedCover.placements.length.toLocaleString()} overlapping cluster placements plus ${residualClasses} explicit residual / void class${residualClasses === 1 ? "" : "es"}; no atom-centred-shell assumption.`
+          : "Cluster identification must cover every supplied site; uncovered geometry remains an explicit residual rather than disappearing.",
+        action: { kind: "protocol", value: "reconstruct", label: "Replay representation" } },
+      { id: "finite", ordinal: 2, status: continuationStatus,
+        title: "Finite target-free continuation",
+        metric: finiteContinuationPassed ? `${emittedSites.toLocaleString()} emitted · depth ${causalDepth}` : "no emitted continuation yet",
+        detail: finiteContinuationPassed
+          ? `${growthCertificate.mode}; exact colored poses and collision checks were frozen before execution.`
+          : "A fitted nucleus must expose an admitted frozen port. Accepted children may self-feed, but a finite fixed point is reported honestly.",
+        action: { kind: "protocol", value: "local-frontier", label: "Launch local frontier" } },
+      { id: "exterior", ordinal: 3, status: exteriorStatus,
+        title: "Spatially disjoint exterior confirmation",
+        metric: disjointContinuationPassed ? `${emittedSites} confirmed exterior sites`
+          : spatialCrossings ? `${spatialCrossings} same-sample envelope crossings` : "independent confirmation open",
+        detail: disjointDomain
+          ? "The execution nucleus is disjoint from every development nucleus; browser execution embeds no held-out target coordinates."
+          : spatialCrossings
+            ? "The live structure crossed its observation envelope, but it was trained from the same supplied configuration; this is not an independent held-out confirmation."
+            : scenarioSelect.value === "iqc"
+              ? "The sealed IQC route replays a backend-frozen candidate tree on a fresh 473-site nucleus and exposes its posthoc selection boundary."
+              : "No browser-sealed disjoint continuation fixture is available for this specimen; consult the Evidence atlas for backend held-out audits.",
+        action: { kind: "protocol", value: "sealed-iqc-confirmation", label: "Run sealed IQC confirmation",
+          disabled: scenarioSelect.value !== "iqc" } },
+      { id: "recurrence", ordinal: 4, status: recurrenceStatus,
+        title: "Stationary / exponential recurrence",
+        metric: recurrenceCertified ? benchmark.action : "no recurring three-scale law",
+        detail: recurrenceCertified
+          ? `${benchmark.note} Symbolic counts and explicit output are reported separately.`
+          : `${benchmark.gate}. Tree depth, compression, or a large represented count cannot substitute for an exact production recurring across independently verified scales.`,
+        action: { kind: "atlas", value: "evidence", label: "Inspect benchmark evidence" } },
+    ],
+    boundary,
+    metrics: { coveredSites, inputSites, emittedSites, causalDepth, spatialCrossings,
+      targetDomainDisjoint: disjointDomain, targetCoordinatesUsed: false,
+      physicalPotentialUsed: false, physicalTimeIntegrated: false,
+      explicitMaterializationComplexity: "O(N)" },
+  };
+}
+
+function renderContinuationEvidenceLadder() {
+  if (!continuationEvidenceLadder) return;
+  continuationEvidenceLadder.hidden = pipelineStage !== 4;
+  if (pipelineStage !== 4) return;
+  const snapshot = continuationEvidenceSnapshot();
+  if (!snapshot) return;
+  continuationEvidenceState.textContent = snapshot.state;
+  continuationEvidenceBoundary.textContent = snapshot.boundary;
+  continuationEvidenceSteps.replaceChildren(...snapshot.steps.map((step) => {
+    const article = document.createElement("article");
+    article.className = step.status;
+    const index = document.createElement("small"); index.textContent = String(step.ordinal).padStart(2, "0");
+    const copy = document.createElement("span");
+    const title = document.createElement("strong"); title.textContent = step.title;
+    const metric = document.createElement("b"); metric.textContent = step.metric;
+    const detail = document.createElement("p"); detail.textContent = step.detail;
+    copy.append(title, metric, detail);
+    const action = document.createElement("button"); action.type = "button"; action.textContent = step.action.label;
+    action.disabled = Boolean(step.action.disabled)
+      || (step.action.kind === "protocol" && growthSeedProtocol === step.action.value);
+    action.title = step.action.disabled
+      ? "This sealed browser fixture is currently available for the ideal IQC control only."
+      : step.action.kind === "protocol" && growthSeedProtocol === step.action.value
+        ? "This protocol is active." : step.action.label;
+    action.addEventListener("click", () => {
+      if (step.action.kind === "atlas") {
+        $("evidenceAtlasButton")?.click();
+        return;
+      }
+      growthSeedProtocolSelect.value = step.action.value;
+      growthSeedProtocolSelect.dispatchEvent(new Event("change", { bubbles: true }));
+    });
+    article.append(index, copy, action);
+    return article;
+  }));
+}
+
 function prepareStandaloneExecutableGrowthSeed() {
   const used = new Set(growthSeedAudit?.seedConfigurationDigest ? [growthSeedAudit.seedConfigurationDigest] : []);
   const result = initializeFirstExecutableFittedSeed({ usedDigests: used });
@@ -26015,6 +26147,7 @@ function syncStageOptions() {
   renderNucleusInterfaceInspector();
   renderNucleationLandscapeInspector();
   renderGrowthLaunchReadiness();
+  renderContinuationEvidenceLadder();
   stageOptionsPanel.hidden = !visible;
   renderStudyCompass();
   if (!visible) return;
@@ -35298,6 +35431,7 @@ function updateGrowthCertificate() {
 function updateUI() {
   updateRecursiveBenchmark();
   const growthCertificate = updateGrowthCertificate();
+  renderContinuationEvidenceLadder();
   renderStudyOutcome(growthCertificate);
   renderComputationalCost();
   renderObservationProvenance();

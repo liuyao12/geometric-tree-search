@@ -1,5 +1,24 @@
 # Recursive GCTS benchmark for material growth
 
+### Live continuation-evidence ladder (Build 337)
+
+The growth-stage controls now expose the benchmark hierarchy as an interactive
+claim ladder rather than leaving it split across captions, the certificate,
+and the Evidence atlas. The rungs are intentionally non-interchangeable:
+complete cluster-plus-residual cover proves representation; target-free emitted
+sites prove a finite structural continuation; a spatially disjoint frozen
+candidate test proves an exterior transfer; and an exact production recurring
+across independently verified scales is required for a stationary or
+exponential representation law.
+
+Buttons on the first three rungs select the known-window replay, fitted local
+frontier, or IQC-only sealed disjoint confirmation without changing the frozen
+scientific definitions. The fourth opens the full benchmark evidence. Live
+state, denominators, target-use boundary, and O(N) explicit-materialization
+cost are included in receipts. Consequently, a deep tree, a large represented
+count, same-sample envelope crossing, or finite fixed point cannot silently
+promote itself to a stronger growth claim.
+
 ### Sealed spatially disjoint IQC frontier confirmation (Build 336)
 
 The browser now exposes the backend's preregistered fresh-nucleus confirmation
