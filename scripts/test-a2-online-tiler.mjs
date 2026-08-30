@@ -12,8 +12,25 @@ import {
   solveA2Tiling,
   tileOrientations
 } from "../assets/a2-tiling-engine.js";
+import { makeA2RoundedSubstitutionPatch, makeA2SubstitutionPatch } from "../assets/a2-substitution-patches.js";
+import { makeA2ZigzagStrip } from "../assets/a2-zigzag-strip.js";
 
 globalThis.requestAnimationFrame ??= callback => setTimeout(callback, 0);
+
+const appHtml = readFileSync(new URL("../apps/a2-online-tiler/index.html", import.meta.url), "utf8");
+const appJs = readFileSync(new URL("../apps/a2-online-tiler/app.js", import.meta.url), "utf8");
+for (const id of ["roundedPatchSizeInput", "roundedPatchSizeOutput", "useSubstitutionHint"]) {
+  assert.match(appHtml, new RegExp(`id=["']${id}["']`), `${id} must be present in the region controls`);
+  assert.match(appJs, new RegExp(`\\$\\(["']${id}["']\\)`), `${id} must be wired in the app`);
+}
+for (const id of ["stripControls", "stripWidthInput", "stripTargetInput"]) {
+  assert.match(appHtml, new RegExp(`id=["']${id}["']`), `${id} must be present in open-strip controls`);
+  assert.match(appJs, new RegExp(`\\$\\(["']${id}["']\\)`), `${id} must be wired in the app`);
+}
+assert.match(appHtml, /data-mode="strip"/);
+assert.match(appHtml, /data-preset="rounded-hat"/);
+assert.match(appHtml, /data-preset="rounded-turtle"/);
+assert.doesNotMatch(appHtml, /data-preset="large"|Straight hex radius/);
 
 for (const tile of ["hat", "turtle"]) {
   const result = await solveA2Tiling({ boundary: A2_TILE_LOOPS[tile], tiles: [tile], nodeLimit: 100 });
@@ -32,6 +49,26 @@ assert.equal(customHexagon.placements[0].tile, "custom-hexagon");
 
 const impossible = await solveA2Tiling({ boundary: A2_TILE_LOOPS.hat, tiles: ["turtle"], nodeLimit: 1000 });
 assert.equal(impossible.result, "no", "an exhaustive finite search returns a decision");
+
+const zigzagStrip = makeA2ZigzagStrip(16);
+assert.ok(zigzagStrip.sourceTileCount > 600, "the open strip must have a long certified source window");
+assert.ok(zigzagStrip.longitudinalSpan > 700, "source caps must lie far outside the live observation");
+assert.ok(zigzagStrip.wallSegments(70).length > 100, "both zig-zag walls must be drawable without end caps");
+const stripResult = await solveA2Tiling({
+  boundary: makeHexBoundary(20),
+  startPoints: [zigzagStrip.startPoint],
+  tiles: ["turtle"],
+  maximize: true,
+  targetPlacements: 50,
+  nodeLimit: 1000,
+  placementFilter: zigzagStrip.placementAllowed,
+  pointTarget: zigzagStrip.pointTarget,
+  marking: new OnlineA2Marking({ enableLocalInequalities: false }),
+  randomSeed: 4
+});
+assert.equal(stripResult.result, "yes", "the shared solver must tile from an exposed point between open zig-zag walls");
+assert.equal(stripResult.placements.length, 50);
+assert.ok(stripResult.placements.every(zigzagStrip.placementAllowed), "no strip placement may cross either wall");
 
 // The article demo and the online-learning page must exercise this same search.
 // Its known Turtle marking is the oracle that the geometry can grow well past a
@@ -56,6 +93,9 @@ const fixed = await solveA2Tiling({
 assert.equal(fixed.result, "yes", "the shared tiler must grow a large patch with the article marking");
 assert.equal(fixed.placements.length, 50);
 assert.equal(new Set(fixed.placements.map(placement => placement.id)).size, 50, "growth cannot reuse a placement");
+assert.equal(fixed.stats.frontierGraphFullBuilds, 1, "the fixed-marking search initializes the frontier graph once");
+assert.ok(fixed.stats.frontierGraphLocalUpdates > 0, "placements must update the frontier graph locally");
+assert.ok(fixed.stats.frontierGraphEdgeRevalidations > 0, "local updates must revalidate incident candidate edges");
 const occupiedTriangles = new Set(polygonCells(fixedSeed.loop));
 for (const placement of fixed.placements) {
   for (const cell of polygonCells(placement.loop)) {
@@ -172,21 +212,34 @@ assert.equal(naiveReplay.result, "yes");
 assert.equal(learnedReplay.result, "yes", "the frozen learned marking must support a fresh tiling run");
 assert.ok(learnedReplay.stats.nodes < naiveReplay.stats.nodes, `the learned marking must accelerate fresh search (${learnedReplay.stats.nodes} < ${naiveReplay.stats.nodes})`);
 
-const appSource = readFileSync(new URL("../apps/a2-online-tiler/app.js", import.meta.url), "utf8");
-const certifiedBoundary = JSON.parse(appSource.match(/const CERTIFIED_TURTLE_BOUNDARY = (\[.*?\]);/s)[1]);
-const certifiedPlacements = JSON.parse(appSource.match(/const CERTIFIED_TURTLE_PLACEMENTS = (\[.*?\]);/s)[1]);
-assert.equal(certifiedBoundary.length, 170);
-assert.equal(certifiedPlacements.length, 101);
-const certified = await solveA2Tiling({
-  boundary: certifiedBoundary,
-  tiles: ["turtle"],
-  preferredPlacements: certifiedPlacements,
-  nodeLimit: 200,
-  marking: new OnlineA2Marking({ maxWitnessTrials: 64, yieldEvery: 8 })
-});
-assert.equal(certified.result, "yes", "the default promising region must replay its 101-Turtle certificate");
-assert.equal(certified.placements.length, 101);
-assert.equal(certified.stats.backtracks, 0);
+for (const tile of ["hat", "turtle"]) {
+  const medium = makeA2SubstitutionPatch(tile, 2);
+  const large = makeA2SubstitutionPatch(tile, 3);
+  const rounded = makeA2RoundedSubstitutionPatch(tile, 55);
+  const roundedDefault = makeA2RoundedSubstitutionPatch(tile, 300);
+  assert.equal(medium.tileCount, 55, `H8 substitution level 2 must contain 55 ${tile} tiles`);
+  assert.equal(large.tileCount, 377, `H8 substitution level 3 must contain 377 ${tile} tiles`);
+  assert.equal(new Set(large.placementIds).size, 377, "the constructive placement witness must not contain duplicates");
+  assert.equal(rounded.kind, "rounded-subset");
+  assert.equal(rounded.tileCount, 55, `rounded region must retain exactly 55 certified ${tile} placements`);
+  assert.equal(rounded.sourceTileCount, 2584, "rounded regions must be sampled from a level-4 tile reservoir");
+  assert.equal(new Set(rounded.placementIds).size, 55, "rounded constructive witness must not contain duplicates");
+  const axialWidths = [0, 1, 2].map(axis => {
+    const coordinates = roundedDefault.boundary.map(point => point[axis]);
+    return Math.max(...coordinates) - Math.min(...coordinates);
+  });
+  assert.equal(new Set(axialWidths).size, 1, `default rounded ${tile} region must have equal extent in all three A2 axes`);
+  const reconstructed = await solveA2Tiling({
+    boundary: rounded.boundary,
+    tiles: [tile],
+    nodeLimit: 5000,
+    marking: new OnlineA2Marking({ enableLocalInequalities: false }),
+    randomSeed: 4
+  });
+  assert.equal(reconstructed.result, "yes", `the shared tiler must discover the rounded ${tile} region without its constructive witness`);
+  assert.equal(reconstructed.placements.length, 55);
+  assert.ok(reconstructed.stats.nodes >= 55);
+}
 
 const learned = await solveA2Tiling({
   boundary: makeHexBoundary(20),

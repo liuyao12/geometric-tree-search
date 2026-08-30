@@ -109,9 +109,9 @@ PYTHONPATH=scripts python3 scripts/hat_online_memo_demo.py
 The primary article is maintained in this repository as the canonical browser
 version of the essay.
 
-The in-repository source for the primary article is
-[GCTS-I.html](./GCTS-I.html), and a Markdown export of that post is included at
-[docs/blog/tree-search-with-geometric-constraints.md](./docs/blog/tree-search-with-geometric-constraints.md).
+The sole in-repository source for the primary article is
+[GCTS-I.html](./GCTS-I.html). It contains the article and interactive directly;
+there is no separate Markdown rendering layer.
 
 ## Local Development
 
