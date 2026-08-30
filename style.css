@@ -221,7 +221,7 @@ h1 {
 }
 
 .article-header h1 {
-  font-size: clamp(36px, 6vw, 64px);
+  font-size: clamp(30px, 4.5vw, 50px);
 }
 
 .article-shell {
@@ -266,8 +266,9 @@ h1 {
 
 .article-byline {
   margin: 12px 0 0;
-  color: var(--muted);
-  font-size: 14px;
+  color: var(--ink);
+  font-size: 17px;
+  font-weight: 600;
 }
 
 .article-source {

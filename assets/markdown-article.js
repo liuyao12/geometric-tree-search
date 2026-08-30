@@ -39,6 +39,7 @@
     for (let i = 0; i < blocks.length; i += 1) {
       const block = blocks[i];
       if (/^#\s+/.test(block)) continue;
+      if (/^\*By [^*\n]+\*$/i.test(block)) continue;
       if (/^##\s+/.test(block)) {
         const text = block.replace(/^##\s+/, '').trim();
         const h2 = document.createElement('h2');
@@ -47,6 +48,14 @@
         if (stage) h2.dataset.demoStage = stage;
         if (/^Draft:/i.test(text)) h2.classList.add('article-wide');
         nodes.push(h2);
+        continue;
+      }
+      const sidenote = block.match(/^>\s*\*\*Sidenote\.\*\*\s*([\s\S]+)$/i);
+      if (sidenote) {
+        const aside = document.createElement('aside');
+        aside.className = 'margin-note';
+        aside.innerHTML = inlineMarkdown(sidenote[1].replace(/\n>\s?/g, ' ').trim());
+        nodes.push(aside);
         continue;
       }
       if (/^\$\$[\s\S]*\$\$$/.test(block)) {

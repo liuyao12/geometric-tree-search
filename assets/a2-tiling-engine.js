@@ -70,16 +70,6 @@ function polygonOccupancy(loop){
   return map;
 }
 
-// Public geometry primitive shared by the intrinsic A2 solver and layered
-// three-dimensional lattice tiles.  We return fresh entries so callers may
-// rescale the angle units without mutating the cached polygon representation.
-export function a2PolygonOccupancy(loop) {
-  return new Map([...polygonOccupancy(loop)].map(([key, entry]) => [key, {
-    point: entry.point.slice(),
-    weight: entry.weight
-  }]));
-}
-
 const cellVertices = (q,r,kind) => kind==="u"
   ? [[q,r],[q+1,r],[q,r+1]]
   : [[q+1,r+1],[q,r+1],[q+1,r]];
@@ -529,7 +519,7 @@ export function learnA2ClusterProposals(placements,{maxDistance=12,window=16}={}
   return [...weights.entries()];
 }
 
-export async function solveA2Tiling({boundary,seed=null,tiles=["hat"],customTiles={},maximize=false,targetPlacements=500,preferredPlacements=[],clusterProposals=[],nodeLimit=250000,animationDelayMs=0,learningWarmupDepth=0,maxMarkingRevisions=Infinity,markingStagnationNodes=1200,randomSeed=1,marking=null,onEvent=()=>{},stopToken={stop:false}}){
+export async function solveA2Tiling({boundary,seed=null,startPoints=[],tiles=["hat"],customTiles={},maximize=false,targetPlacements=500,preferredPlacements=[],clusterProposals=[],placementFilter=null,pointTarget=null,nodeLimit=250000,animationDelayMs=0,learningWarmupDepth=0,maxMarkingRevisions=Infinity,markingStagnationNodes=1200,randomSeed=1,marking=null,onEvent=()=>{},stopToken={stop:false}}){
   const desired=polygonOccupancy(boundary),seedOccupancy=seed?polygonOccupancy(seed.loop):new Map();
   const tileDefs={};for(const tile of tiles)tileDefs[tile]=customTiles[tile]??A2_TILE_LOOPS[tile];
   const orientedTiles=Object.entries(tileDefs).flatMap(([tile,loop])=>tileOrientations(tile,loop));
@@ -544,6 +534,7 @@ export async function solveA2Tiling({boundary,seed=null,tiles=["hat"],customTile
     placement.loop=translatedLoop(placement);
     return placement;
   };
+  const targetAt=point=>maximize?(pointTarget?.(point)??12):desired.get(a2Key(point))?.weight??-Infinity;
   const candidatesForPoint=pointKey=>{
     if(candidateCache.has(pointKey))return candidateCache.get(pointKey);
     const target=maximize?pointKey.split(",").map(Number):desired.get(pointKey)?.point;if(!target)return[];
@@ -560,7 +551,8 @@ export async function solveA2Tiling({boundary,seed=null,tiles=["hat"],customTile
     }
     return cacheCandidates(pointKey,[...dedup.values()]);
   };
-  const learner=marking??new OnlineA2Marking(),markingSeed=seed?.markingPlacement??null,sums=new Map([...seedOccupancy].map(([key,entry])=>[key,entry.weight])),pointDepth=new Map([...seedOccupancy.keys()].map(key=>[key,0])),chosen=[],usedPlacements=new Set(),exhaustedBranches=new Set();let nodes=0,backtracks=0,exactMemoPrunes=0,best=[],bestFilled=0,lastImprovementNode=0;
+  const startPointMap=new Map(startPoints.map(point=>[a2Key(point),point]));
+  const learner=marking??new OnlineA2Marking(),markingSeed=seed?.markingPlacement??null,sums=new Map([...seedOccupancy].map(([key,entry])=>[key,entry.weight])),pointDepth=new Map([...seedOccupancy.keys()].map(key=>[key,0])),chosen=[],usedPlacements=new Set(),exhaustedBranches=new Set();for(const key of startPointMap.keys()){if(!sums.has(key))sums.set(key,0);pointDepth.set(key,0);}let nodes=0,backtracks=0,exactMemoPrunes=0,best=[],bestFilled=0,lastImprovementNode=0;
   const frontierPattern=(pointKey,additions=null)=>{
     const center=pointKey.split(",").map(Number),tokens=[];
     for(let dq=-memoRadius;dq<=memoRadius;dq++)for(let dr=Math.max(-memoRadius,-dq-memoRadius);dr<=Math.min(memoRadius,-dq+memoRadius);dr++){
@@ -570,7 +562,7 @@ export async function solveA2Tiling({boundary,seed=null,tiles=["hat"],customTile
     }
     return tokens.join(";");
   };
-  const initialSites=seedOccupancy.size?[...seedOccupancy.values()].map(entry=>entry.point):[[0,0,0]],distanceCache=new Map();
+  const initialSites=seedOccupancy.size?[...seedOccupancy.values()].map(entry=>entry.point):startPoints.length?startPoints:[[0,0,0]],distanceCache=new Map();
   const distanceFromInitial=pointKey=>{
     if(distanceCache.has(pointKey))return distanceCache.get(pointKey);
     const point=pointKey.split(",").map(Number),distance=Math.min(...initialSites.map(origin=>Math.max(...point.map((value,index)=>Math.abs(value-origin[index])))));
@@ -610,10 +602,11 @@ export async function solveA2Tiling({boundary,seed=null,tiles=["hat"],customTile
         const materialized=!!p.occupancy,source=materialized?p.occupancy.values():p.orientation.occupancy.values();
         for(const local of source){
           const e=materialized?local:{point:a2Add(local.point,p.translation),weight:local.weight},key=a2Key(e.point);
-          const current=sums.get(key)||0,target=maximize?12:desired.get(key)?.weight??-Infinity;
+          const current=sums.get(key)||0,target=targetAt(e.point);
           if(current+e.weight>target+1e-7){valid=false;break;}
           if(current<1e-7)newPoints++;
         }
+        if(maximize&&placementFilter&&!placementFilter(materializePlacement(p)))valid=false;
         if(!valid||(maximize&&!newPoints)||(!maximize&&(chosen.some(other=>polygonsOverlap(p.loop,other.loop))||(seed&&polygonsOverlap(p.loop,seed.loop))))||(!ignoreMarking&&!learner.compatible(p,markingSeed?[markingSeed,...chosen]:chosen)))continue;
         legal.push(p);if(legal.length>=limit)break;
       }
@@ -623,7 +616,7 @@ export async function solveA2Tiling({boundary,seed=null,tiles=["hat"],customTile
       // Close the geometric shell nearest the initial tile before touching a
       // farther shell. Forcedness is only a tie-breaker inside that nearest
       // shell; it must never jump the search across a nearer branching point.
-      const frontier=[...sums].filter(([,value])=>value<12-1e-7).map(([point,value])=>{
+      const frontier=[...sums].filter(([point,value])=>value<targetAt(point.split(",").map(Number))-1e-7).map(([point,value])=>{
         const coordinates=point.split(",").map(Number);
         return{point,value,distance:distanceFromInitial(point),introduced:pointDepth.get(point)??Infinity,norm:coordinates.reduce((sum,v)=>sum+Math.abs(v),0)};
       }).sort((a,b)=>a.distance-b.distance||b.value-a.value||a.introduced-b.introduced||a.norm-b.norm||lexicalCompare(a.point,b.point));
@@ -641,7 +634,7 @@ export async function solveA2Tiling({boundary,seed=null,tiles=["hat"],customTile
         const materialized=!!placement.occupancy,source=materialized?placement.occupancy.values():placement.orientation.occupancy.values();
         for(const local of source){const entry=materialized?local:{point:a2Add(local.point,placement.translation),weight:local.weight},key=a2Key(entry.point);size++;if(key===choice)atChoice=entry.weight;if((sums.get(key)||0)>0)coverage++;}
         const newPoints=size-coverage;
-        return{placement,clusterScore:clusterProposalScore(placement),markScore:learner.score?.(placement)??0,fills:selected.value+atChoice>=12-1e-7,coverage,newPoints,tie:random()};
+        return{placement,clusterScore:clusterProposalScore(placement),markScore:learner.score?.(placement)??0,fills:selected.value+atChoice>=targetAt(choice.split(",").map(Number))-1e-7,coverage,newPoints,tie:random()};
       }).sort((a,b)=>b.clusterScore-a.clusterScore||b.markScore-a.markScore||Number(b.fills)-Number(a.fills)||b.coverage-a.coverage||b.newPoints-a.newPoints||a.tie-b.tie).map(entry=>entry.placement);
       choiceInfo={forced:options.length===1,branchCount:options.length,frontierValue:selected.value,frontierDistance:selected.distance,nearestFrontierDistance:nearestDistance};
     }else{
@@ -657,7 +650,7 @@ export async function solveA2Tiling({boundary,seed=null,tiles=["hat"],customTile
       // A learned revision may have invalidated options computed earlier at this node.
       if(usedPlacements.has(placement.id)||!learner.compatible(placement,markingSeed?[markingSeed,...chosen]:chosen))continue;
       materializePlacement(placement);
-      if(maximize&&[...placement.occupancy].some(([key,entry])=>(sums.get(key)||0)+entry.weight<12-1e-7&&!learner.frontierCompatible?.(frontierPattern(key,placement.occupancy))))continue;
+      if(maximize&&[...placement.occupancy].some(([key,entry])=>(sums.get(key)||0)+entry.weight<targetAt(entry.point)-1e-7&&!learner.frontierCompatible?.(frontierPattern(key,placement.occupancy))))continue;
       emit("trial",{candidate:placement,choice,...choiceInfo});
       if(animationDelayMs>0)await new Promise(resolve=>setTimeout(resolve,animationDelayMs));
       const context=chosen.slice(),candidateContacts=new Set(placement.occupancy.keys());
@@ -669,11 +662,11 @@ export async function solveA2Tiling({boundary,seed=null,tiles=["hat"],customTile
       // A placement can strand a different point than the one it just filled.
       // Detect that local certificate immediately instead of burying it beneath
       // thousands of unrelated outward moves.
-      const stranded=maximize?[...placement.occupancy.keys()].find(key=>(sums.get(key)||0)<12-1e-7&&!legalAt(key,1).length):null;
+      const stranded=maximize?[...placement.occupancy].find(([key,entry])=>(sums.get(key)||0)<targetAt(entry.point)-1e-7&&!legalAt(key,1).length)?.[0]??null:null;
       if(stranded){if(!legalAt(stranded,1,true).length)learner.rememberFrontierFailure?.(frontierPattern(stranded));noteFailedPath(childTrackers,stranded);emit("fail",{choice:stranded,frontierValue:sums.get(stranded)||0});}
       const result=stranded?false:await search(depth+1,childTrackers);
       if(result===true)return true;
-      chosen.pop();usedPlacements.delete(placement.id);learner.pop?.(placement);for(const [key,e] of placement.occupancy){const next=(sums.get(key)||0)-e.weight;if(next<1e-7){sums.delete(key);pointDepth.delete(key);}else sums.set(key,next);}
+      chosen.pop();usedPlacements.delete(placement.id);learner.pop?.(placement);for(const [key,e] of placement.occupancy){const next=(sums.get(key)||0)-e.weight;if(next<1e-7){if(startPointMap.has(key)){sums.set(key,0);pointDepth.set(key,0);}else{sums.delete(key);pointDepth.delete(key);}}else sums.set(key,next);}
       if(result==="unknown"||result==="stagnant")return result;
       // This exact candidate and placement context has been exhausted. Keep it
       // across marking re-encodings: a new geometric witness may generalize a
@@ -701,7 +694,7 @@ export async function solveA2Tiling({boundary,seed=null,tiles=["hat"],customTile
   while((result===false||result==="stagnant")&&!stopToken.stop){
     const reencoding=await learner.reencodeLatest?.({shouldStop:()=>stopToken.stop,onProgress:attempts=>emit("learning-progress",{attempts,reencoding:true})});if(!reencoding||reencoding.aborted)break;
     chosen.splice(0,chosen.length);usedPlacements.clear();sums.clear();pointDepth.clear();
-    for(const [key,e] of seedOccupancy){sums.set(key,e.weight);pointDepth.set(key,0);}
+    for(const [key,e] of seedOccupancy){sums.set(key,e.weight);pointDepth.set(key,0);}for(const key of startPointMap.keys()){if(!sums.has(key))sums.set(key,0);pointDepth.set(key,0);}
     learner.reset?.(markingSeed?[markingSeed]:[]);
     emit("marking-reencoded",{reencoding,reason:result==="stagnant"?"stagnation":"root-exhausted"});
     lastImprovementNode=nodes;
