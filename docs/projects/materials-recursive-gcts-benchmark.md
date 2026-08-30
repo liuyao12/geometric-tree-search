@@ -1,5 +1,24 @@
 # Recursive GCTS benchmark for material growth
 
+### Executable exact-IQC fitted nucleus (Build 335)
+
+The exact ideal-IQC fixture now recommends the already-supported local fitted
+nucleus for the Material growth stage. This keeps the 507-site observation as
+training evidence while initializing execution from one explicit 12-site
+occurrence. It is target-free: the remaining observation sites are neither
+snapped to nor scored, and all candidate poses come from the frozen local port
+vocabulary. The observed-window initial condition remains selectable as the
+separate complete-cover closure audit. Other materials retain the generic
+observed-window default.
+
+The browser audit starts with 52 frozen actions. Its first maximal commuting
+set accepts 9 placements and emits 45 novel colored sites (12 → 57 atoms,
+causal depth 1); the second reaches 95 atoms and depth 2. Continued updates
+reach 501 atoms and depth 10. However, the growth-domain passport records 489
+novel sites inside the fitted observation envelope and zero beyond it. This is
+genuine finite self-fed execution, but it is not held-out exterior transfer,
+autonomous growth, stationarity, an inflation rule, or an exponential claim.
+
 ### Exact ideal-IQC browser fixture (Build 334)
 
 The browser's ideal-IQC control now comes from the same exact six-dimensional

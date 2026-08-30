@@ -172,7 +172,7 @@ import {
 import { relaxLocalContactGeometry } from "./local-constraint-relaxation.js?v=20260826-1";
 import { auditGeometricMicrostructure } from "./microstructure-audit.js?v=20260824-1";
 import { CDYB_BROWSER_FIXTURE } from "./cdyb-browser-fixture.js?v=20260824-1";
-import { IDEAL_IQC_BROWSER_FIXTURE } from "./ideal-iqc-browser-fixture.js?v=20260829-334";
+import { IDEAL_IQC_BROWSER_FIXTURE } from "./ideal-iqc-browser-fixture.js?v=20260829-335";
 import {
   generateIceViiiObservation,
   ICE_VIII_BROWSER_FIXTURE,
@@ -1142,7 +1142,7 @@ const MATERIALS = {
   hbn: { name: "aligned hBN bilayer", elements: ["B", "N"], spacingA: 1.44, cell: "aligned hexagonal sheets · 3.33 Å separation", order: "crystal", symmetry: "commensurate bilayer", audit: "2D translations + finite registry", intrinsicDimension: 2, planarLayers: [{ angle: 0, zA: -1.665, species: ["B", "N"] }, { angle: 0, zA: 1.665, species: ["B", "N"] }], note: "A commensurate bilayer whose finite interlayer registry can be represented by a bounded local marking." },
   competition: { name: "NaCl rocksalt", elements: ["Na", "Cl"], spacingA: 2.82, cell: "Fm3̅m · a = 5.640 Å", periodicWindow: true, order: "crystal", symmetry: "Fm-3m · #225", audit: "space group", note: "A periodic positive control: translation is the cheap ceiling, while the learner must recover it blindly." },
   random: { name: "Cu₆₄Zr₃₆ metallic glass", elements: ["Cu", "Zr"], spacingA: 2.72, cell: "periodic amorphous hard-core cell", periodicWindow: true, order: "amorphous", symmetry: "no stable long-range group", audit: "partial RDF + local motifs + S(q)", note: "No unique continuation is implied. The target is an ensemble; the deterministic browser fixture is a continuous random hard-core packing, not a perturbed lattice or an MD trajectory." },
-  iqc: { name: "Ideal 6D icosahedral model set", elements: ["Al", "Cu", "Fe"], spacingA: 2.55, cell: "spherical-window cut-and-project control", periodicWindow: false, order: "quasicrystal", symmetry: "icosahedral point symmetry", audit: "superspace + diffraction", idealModelFixture: "icosahedral-6d-r9", fixtureProvenance: IDEAL_IQC_BROWSER_FIXTURE, note: "Exact six-dimensional cut-and-project control with synthetic Al/Cu/Fe shell colors. It is not an experimental alloy structure; use published Cd–Yb for the real-material quasicrystal route." },
+  iqc: { name: "Ideal 6D icosahedral model set", elements: ["Al", "Cu", "Fe"], spacingA: 2.55, cell: "spherical-window cut-and-project control", periodicWindow: false, order: "quasicrystal", symmetry: "icosahedral point symmetry", audit: "superspace + diffraction", idealModelFixture: "icosahedral-6d-r9", fixtureProvenance: IDEAL_IQC_BROWSER_FIXTURE, recommendedGrowthSeedProtocol: "local-frontier", note: "Exact six-dimensional cut-and-project control with synthetic Al/Cu/Fe shell colors. It is not an experimental alloy structure; use published Cd–Yb for the real-material quasicrystal route." },
   cdyb: { name: "Cd₅.₇Yb icosahedral quasicrystal", elements: ["Cd", "Yb"], spacingA: 2.62788720764582,
     cell: "published aperiodic Cd–Yb model · off-centre R14 Å crop", periodicWindow: false,
     order: "quasicrystal", symmetry: "icosahedral noncrystallographic order", audit: "published model + sealed disjoint continuation",
@@ -3531,6 +3531,11 @@ function currentMaterial() {
     },
     note: "A deterministic Euler orientation of the measured four-connected oxygen graph selects one of each paired D/Vac alternatives. The realization obeys two D per oxygen and one D per O–O bond; it is a sampled microstate, not a refinement claim.",
   };
+}
+
+function recommendedGrowthSeedProtocol(material = currentMaterial()) {
+  return ["observed-window", "local-frontier"].includes(material?.recommendedGrowthSeedProtocol)
+    ? material.recommendedGrowthSeedProtocol : GROWTH_PROTOCOL_DEFAULTS.growthSeedProtocol;
 }
 
 function chemicalSubscript(value) {
@@ -12157,7 +12162,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260829-334",
+      buildId: "20260829-335",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -14602,7 +14607,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260829-334" },
+    application: { name: "Materials Growth Lab", buildId: "20260829-335" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },
@@ -23765,6 +23770,8 @@ function initializeOffLatticeSearch() {
       explicitSeedSites: atoms.length, initializedPlacements: placedClusters.length,
       explicitResidualSites: atoms.filter((atom) => !atom.clusterIds?.length).length,
       frontierCandidates: frontierCandidates.length,
+      materialRecommendedMode: recommendedGrowthSeedProtocol(),
+      selectedModeMatchesMaterialRecommendation: growthSeedProtocol === recommendedGrowthSeedProtocol(),
       reconstructionCertifiedAtInitialization: reconstructionCertified,
       knownWindowReplayRequested: false, targetFreeContinuationAuthorized: true,
       targetUsed: false, futureSitesUsed: false,
@@ -23832,6 +23839,8 @@ function initializeOffLatticeSearch() {
     explicitSeedSites: atoms.length, initializedPlacements: placedClusters.length,
     explicitResidualSites: atoms.filter((atom) => !atom.clusterIds?.length).length,
     frontierCandidates: frontierCandidates.length,
+    materialRecommendedMode: recommendedGrowthSeedProtocol(),
+    selectedModeMatchesMaterialRecommendation: growthSeedProtocol === recommendedGrowthSeedProtocol(),
     reconstructionCertifiedAtInitialization: reconstructionCertified,
     knownWindowReplayRequested: growthSeedProtocol === "reconstruct",
     targetFreeContinuationAuthorized: growthSeedProtocol === "local-frontier",
@@ -26136,11 +26145,12 @@ function syncStageOptions() {
     growthSchedulingSelect.disabled = finiteIceAnchorMode;
     growthSchedulingHint.textContent = growthScheduling === "commuting"
       ? "maximal commuting set" : "one branch decision";
+    const seedProtocolRecommendation = recommendedGrowthSeedProtocol();
     growthSeedProtocolHint.textContent = finiteIceAnchorMode ? "sealed molecular seed"
       : growthSeedProtocol === "observed-window"
-        ? `${referenceCount()}-site observed nucleus · target-free frontier`
+        ? `${referenceCount()}-site observed nucleus · target-free frontier${growthSeedProtocol === seedProtocolRecommendation ? " · recommended" : ""}`
         : growthSeedProtocol === "local-frontier"
-          ? `${atoms.length}-site fitted nucleus · target-free frontier`
+          ? `${atoms.length}-site fitted nucleus · target-free frontier${growthSeedProtocol === seedProtocolRecommendation ? " · recommended" : ""}`
           : `${atoms.length}-site local occurrence · replay guided until certified`;
     strainWeightHint.textContent = geometryPreference === "strain"
       ? `${geometricStrainWeight.toFixed(2)} soft` : "disabled";
@@ -35689,6 +35699,7 @@ notebookStateReplicationObservable.addEventListener("change", renderExperimentNo
 scenarioSelect.addEventListener("change", (event) => {
   hypothesisSeparationExperiment = null;
   markingComparisonExperiment = null;
+  growthSeedProtocol = recommendedGrowthSeedProtocol();
   renderEnsembleControls();
   renderIceViMicrostateControls();
   enterPipelineStage(0);
@@ -36717,6 +36728,9 @@ function applyLaunchParameters() {
   if (!requestedExperiment && !requestedStudyId && material
     && [...scenarioSelect.options].some((option) => option.value === material)) {
     scenarioSelect.value = material;
+  }
+  if (!requestedExperiment && !requestedStudyId) {
+    growthSeedProtocol = recommendedGrowthSeedProtocol();
   }
   if (scenarioSelect.value === "iceVI" && parameters.has("microstate")) {
     const requested = Number.parseInt(parameters.get("microstate"), 10);

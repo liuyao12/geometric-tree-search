@@ -1,5 +1,27 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 335 · make exact-IQC growth executable by default
+
+The ideal six-dimensional model-set control now opens Material growth with a
+fitted local occurrence nucleus rather than the complete 507-site observation
+window. This recommendation is fixture-specific: the complete observed window
+remains available as a closure/outward-frontier audit, and every other material
+keeps its existing default unless it declares its own recommendation. The
+selected protocol, explicit seed sites, fitted occurrence, pose, frozen rules,
+and target-use flags remain receipt-visible.
+
+This is a scientific distinction, not a cosmetic one. With the complete
+observed window, the first exact-IQC update has no novel placement: the leading
+relations replay already occupied cover. With the recommended 12-site fitted
+nucleus, the same frozen 150-rule vocabulary exposes 52 actions. The first
+commuting update accepts 9 whole-cluster placements, emits 45 novel colored
+sites, and reaches 57 explicit atoms at causal depth 1. A second update reaches
+95 atoms and causal depth 2. In the extended deterministic audit the front
+self-feeds to 501 atoms and depth 10, but all 489 novel sites remain inside the
+original observation envelope (zero beyond). The portal therefore labels this
+**finite target-free structural continuation**, not autonomous exterior, stationary, or
+exponential quasicrystal growth.
+
 ## Build 334 · replace the perturbed-grid IQC with an exact 6D model set
 
 The curated `iqc` sample is no longer a sinusoidally displaced cubic grid
