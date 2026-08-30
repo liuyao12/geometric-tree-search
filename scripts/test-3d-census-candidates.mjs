@@ -1665,6 +1665,20 @@ assert.equal(a2Periodic?.screening.motif_tiles, 8);
 assert.equal(a2Periodic?.screening.periodic_eight_copy_replay_verified, true);
 assert.deepEqual(a2Periodic?.screening.periodic_eight_copy_certificate?.period_vectors,
   [[2, 0, 0], [0, 2, 0], [0, 0, 7]]);
+const slicedSizeNineLeads = A2_SLICED_SIZE9_CANDIDATES.filter(
+  candidate => candidate.screening.status === "inconclusive"
+);
+assert.deepEqual(slicedSizeNineLeads.map(candidate => candidate.id), [
+  "a2sa_9_11364", "a2sa_9_13833", "a2sa_9_15635"
+]);
+assert.ok(slicedSizeNineLeads.every(candidate =>
+  candidate.screening.periodic_eight_copy_complete
+  && candidate.screening.periodic_solver_unknowns === 0
+  && candidate.screening.corona_completed_verified
+  && candidate.screening.radius_two_outer_exhausted === false
+  && candidate.screening.substitution_three_copy_metatile_scalar_scales_excluded.join(",") === "2,3"
+  && candidate.screening.substitution_three_copy_models_exhausted.join(",") === "proper,reflected"
+));
 assert.equal(
   survivors.filter(figure => figure.census_candidate.screening.census_stage === "volume9_fresh_bounded_2026_08_25").length,
   6,

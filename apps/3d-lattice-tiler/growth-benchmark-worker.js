@@ -1,4 +1,4 @@
-import { createTilingStream, preprocessTilingSystem, tileSpecs } from "./engine.js?v=20260830-a2-sliced9-v247";
+import { createTilingStream, preprocessTilingSystem, tileSpecs } from "./engine.js?v=20260830-a2-sliced9-v248";
 
 let activeSequence = 0;
 let stopToken = { stop: false, manual_pause: false, additional_time_ms: 0 };
