@@ -255,7 +255,13 @@ clauses for the unresolved cases. Complete cellular screens exclude direct
 self-substitutions at scales 2–8 and connected two- and three-copy metatile
 substitutions at scales 2 and 3, in both proper and reflected models. The
 complete proper-orientation four-copy alphabet is also excluded at scale 2
-for all 13 survivors; the reflected four-copy screen remains open. The
+for all 13 survivors. The reflected four-copy screen is also complete for all
+13, exhausting between 108,503 and 294,950 symmetry-distinct metatiles per
+candidate. Exact
+facet-normal certificates also show that the ten expansive integral maps
+`pI+cJ` with distinct transverse/layer scales through eight do not preserve
+the fixed affine-A3 alcove complex. This excludes those cellular anisotropic
+rules while leaving non-cellular substitutions open. The
 ranking measures finite-search
 difficulty, not likelihood of aperiodicity.  The same group also contains
 exact prisms over the A2 hexagon, hat, and turtle, plus the earlier multi-slab

@@ -467,7 +467,15 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       ],
       "substitution_four_copy_metatile_proper_scalar_scales_excluded": [],
       "substitution_four_copy_metatile_types_exhausted": null,
-      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz"
+      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz",
+      "substitution_four_copy_reflected_scalar_scales_excluded": [],
+      "substitution_four_copy_reflected_types_exhausted": null,
+      "substitution_four_copy_reflected_report": null,
+      "substitution_anisotropic_cellular_inflations_excluded": 0,
+      "substitution_anisotropic_cellular_scale_pairs": [],
+      "substitution_anisotropic_claim_scope": "fixed_affine_A3_alcove_cellular_substitution_only",
+      "substitution_noncellular_inflations_open": true,
+      "substitution_anisotropic_report": "data/a2-sliced-alcove-size8-anisotropic-cellularity-through8.ndjson.gz"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -677,7 +685,58 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
         2
       ],
       "substitution_four_copy_metatile_types_exhausted": 12336,
-      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz"
+      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz",
+      "substitution_four_copy_reflected_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_reflected_types_exhausted": 201114,
+      "substitution_four_copy_reflected_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-reflected.ndjson.gz",
+      "substitution_anisotropic_cellular_inflations_excluded": 10,
+      "substitution_anisotropic_cellular_scale_pairs": [
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          8,
+          5
+        ]
+      ],
+      "substitution_anisotropic_claim_scope": "fixed_affine_A3_alcove_cellular_substitution_only",
+      "substitution_noncellular_inflations_open": true,
+      "substitution_anisotropic_report": "data/a2-sliced-alcove-size8-anisotropic-cellularity-through8.ndjson.gz"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -889,7 +948,58 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
         2
       ],
       "substitution_four_copy_metatile_types_exhausted": 15999,
-      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz"
+      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz",
+      "substitution_four_copy_reflected_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_reflected_types_exhausted": 189404,
+      "substitution_four_copy_reflected_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-reflected.ndjson.gz",
+      "substitution_anisotropic_cellular_inflations_excluded": 10,
+      "substitution_anisotropic_cellular_scale_pairs": [
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          8,
+          5
+        ]
+      ],
+      "substitution_anisotropic_claim_scope": "fixed_affine_A3_alcove_cellular_substitution_only",
+      "substitution_noncellular_inflations_open": true,
+      "substitution_anisotropic_report": "data/a2-sliced-alcove-size8-anisotropic-cellularity-through8.ndjson.gz"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -1101,7 +1211,58 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
         2
       ],
       "substitution_four_copy_metatile_types_exhausted": 14750,
-      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz"
+      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz",
+      "substitution_four_copy_reflected_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_reflected_types_exhausted": 225050,
+      "substitution_four_copy_reflected_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-reflected.ndjson.gz",
+      "substitution_anisotropic_cellular_inflations_excluded": 10,
+      "substitution_anisotropic_cellular_scale_pairs": [
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          8,
+          5
+        ]
+      ],
+      "substitution_anisotropic_claim_scope": "fixed_affine_A3_alcove_cellular_substitution_only",
+      "substitution_noncellular_inflations_open": true,
+      "substitution_anisotropic_report": "data/a2-sliced-alcove-size8-anisotropic-cellularity-through8.ndjson.gz"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -1311,7 +1472,58 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
         2
       ],
       "substitution_four_copy_metatile_types_exhausted": 12018,
-      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz"
+      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz",
+      "substitution_four_copy_reflected_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_reflected_types_exhausted": 209464,
+      "substitution_four_copy_reflected_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-reflected.ndjson.gz",
+      "substitution_anisotropic_cellular_inflations_excluded": 10,
+      "substitution_anisotropic_cellular_scale_pairs": [
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          8,
+          5
+        ]
+      ],
+      "substitution_anisotropic_claim_scope": "fixed_affine_A3_alcove_cellular_substitution_only",
+      "substitution_noncellular_inflations_open": true,
+      "substitution_anisotropic_report": "data/a2-sliced-alcove-size8-anisotropic-cellularity-through8.ndjson.gz"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -1520,7 +1732,58 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
         2
       ],
       "substitution_four_copy_metatile_types_exhausted": 13914,
-      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz"
+      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz",
+      "substitution_four_copy_reflected_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_reflected_types_exhausted": 294950,
+      "substitution_four_copy_reflected_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-reflected.ndjson.gz",
+      "substitution_anisotropic_cellular_inflations_excluded": 10,
+      "substitution_anisotropic_cellular_scale_pairs": [
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          8,
+          5
+        ]
+      ],
+      "substitution_anisotropic_claim_scope": "fixed_affine_A3_alcove_cellular_substitution_only",
+      "substitution_noncellular_inflations_open": true,
+      "substitution_anisotropic_report": "data/a2-sliced-alcove-size8-anisotropic-cellularity-through8.ndjson.gz"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -1732,7 +1995,58 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
         2
       ],
       "substitution_four_copy_metatile_types_exhausted": 26149,
-      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz"
+      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz",
+      "substitution_four_copy_reflected_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_reflected_types_exhausted": 156644,
+      "substitution_four_copy_reflected_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-reflected.ndjson.gz",
+      "substitution_anisotropic_cellular_inflations_excluded": 10,
+      "substitution_anisotropic_cellular_scale_pairs": [
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          8,
+          5
+        ]
+      ],
+      "substitution_anisotropic_claim_scope": "fixed_affine_A3_alcove_cellular_substitution_only",
+      "substitution_noncellular_inflations_open": true,
+      "substitution_anisotropic_report": "data/a2-sliced-alcove-size8-anisotropic-cellularity-through8.ndjson.gz"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -1943,7 +2257,58 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
         2
       ],
       "substitution_four_copy_metatile_types_exhausted": 14827,
-      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz"
+      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz",
+      "substitution_four_copy_reflected_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_reflected_types_exhausted": 113859,
+      "substitution_four_copy_reflected_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-reflected.ndjson.gz",
+      "substitution_anisotropic_cellular_inflations_excluded": 10,
+      "substitution_anisotropic_cellular_scale_pairs": [
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          8,
+          5
+        ]
+      ],
+      "substitution_anisotropic_claim_scope": "fixed_affine_A3_alcove_cellular_substitution_only",
+      "substitution_noncellular_inflations_open": true,
+      "substitution_anisotropic_report": "data/a2-sliced-alcove-size8-anisotropic-cellularity-through8.ndjson.gz"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -2153,7 +2518,58 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
         2
       ],
       "substitution_four_copy_metatile_types_exhausted": 28371,
-      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz"
+      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz",
+      "substitution_four_copy_reflected_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_reflected_types_exhausted": 127841,
+      "substitution_four_copy_reflected_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-reflected.ndjson.gz",
+      "substitution_anisotropic_cellular_inflations_excluded": 10,
+      "substitution_anisotropic_cellular_scale_pairs": [
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          8,
+          5
+        ]
+      ],
+      "substitution_anisotropic_claim_scope": "fixed_affine_A3_alcove_cellular_substitution_only",
+      "substitution_noncellular_inflations_open": true,
+      "substitution_anisotropic_report": "data/a2-sliced-alcove-size8-anisotropic-cellularity-through8.ndjson.gz"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -2363,7 +2779,58 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
         2
       ],
       "substitution_four_copy_metatile_types_exhausted": 28716,
-      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz"
+      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz",
+      "substitution_four_copy_reflected_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_reflected_types_exhausted": 214826,
+      "substitution_four_copy_reflected_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-reflected.ndjson.gz",
+      "substitution_anisotropic_cellular_inflations_excluded": 10,
+      "substitution_anisotropic_cellular_scale_pairs": [
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          8,
+          5
+        ]
+      ],
+      "substitution_anisotropic_claim_scope": "fixed_affine_A3_alcove_cellular_substitution_only",
+      "substitution_noncellular_inflations_open": true,
+      "substitution_anisotropic_report": "data/a2-sliced-alcove-size8-anisotropic-cellularity-through8.ndjson.gz"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -2574,7 +3041,58 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
         2
       ],
       "substitution_four_copy_metatile_types_exhausted": 14041,
-      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz"
+      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz",
+      "substitution_four_copy_reflected_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_reflected_types_exhausted": 108503,
+      "substitution_four_copy_reflected_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-reflected.ndjson.gz",
+      "substitution_anisotropic_cellular_inflations_excluded": 10,
+      "substitution_anisotropic_cellular_scale_pairs": [
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          8,
+          5
+        ]
+      ],
+      "substitution_anisotropic_claim_scope": "fixed_affine_A3_alcove_cellular_substitution_only",
+      "substitution_noncellular_inflations_open": true,
+      "substitution_anisotropic_report": "data/a2-sliced-alcove-size8-anisotropic-cellularity-through8.ndjson.gz"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -2785,7 +3303,58 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
         2
       ],
       "substitution_four_copy_metatile_types_exhausted": 23659,
-      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz"
+      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz",
+      "substitution_four_copy_reflected_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_reflected_types_exhausted": 176641,
+      "substitution_four_copy_reflected_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-reflected.ndjson.gz",
+      "substitution_anisotropic_cellular_inflations_excluded": 10,
+      "substitution_anisotropic_cellular_scale_pairs": [
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          8,
+          5
+        ]
+      ],
+      "substitution_anisotropic_claim_scope": "fixed_affine_A3_alcove_cellular_substitution_only",
+      "substitution_noncellular_inflations_open": true,
+      "substitution_anisotropic_report": "data/a2-sliced-alcove-size8-anisotropic-cellularity-through8.ndjson.gz"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -3261,7 +3830,15 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       ],
       "substitution_four_copy_metatile_proper_scalar_scales_excluded": [],
       "substitution_four_copy_metatile_types_exhausted": null,
-      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz"
+      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz",
+      "substitution_four_copy_reflected_scalar_scales_excluded": [],
+      "substitution_four_copy_reflected_types_exhausted": null,
+      "substitution_four_copy_reflected_report": null,
+      "substitution_anisotropic_cellular_inflations_excluded": 0,
+      "substitution_anisotropic_cellular_scale_pairs": [],
+      "substitution_anisotropic_claim_scope": "fixed_affine_A3_alcove_cellular_substitution_only",
+      "substitution_noncellular_inflations_open": true,
+      "substitution_anisotropic_report": "data/a2-sliced-alcove-size8-anisotropic-cellularity-through8.ndjson.gz"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -3472,7 +4049,58 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
         2
       ],
       "substitution_four_copy_metatile_types_exhausted": 7311,
-      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz"
+      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz",
+      "substitution_four_copy_reflected_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_reflected_types_exhausted": 144483,
+      "substitution_four_copy_reflected_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-reflected.ndjson.gz",
+      "substitution_anisotropic_cellular_inflations_excluded": 10,
+      "substitution_anisotropic_cellular_scale_pairs": [
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          8,
+          5
+        ]
+      ],
+      "substitution_anisotropic_claim_scope": "fixed_affine_A3_alcove_cellular_substitution_only",
+      "substitution_noncellular_inflations_open": true,
+      "substitution_anisotropic_report": "data/a2-sliced-alcove-size8-anisotropic-cellularity-through8.ndjson.gz"
     },
     "shell_screening": {
       "robust_completed_shell": 0,
@@ -3682,7 +4310,58 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
         2
       ],
       "substitution_four_copy_metatile_types_exhausted": 20790,
-      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz"
+      "substitution_four_copy_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz",
+      "substitution_four_copy_reflected_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_reflected_types_exhausted": 175950,
+      "substitution_four_copy_reflected_report": "data/a2-sliced-alcove-size8-four-cluster-scale2-reflected.ndjson.gz",
+      "substitution_anisotropic_cellular_inflations_excluded": 10,
+      "substitution_anisotropic_cellular_scale_pairs": [
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          8,
+          5
+        ]
+      ],
+      "substitution_anisotropic_claim_scope": "fixed_affine_A3_alcove_cellular_substitution_only",
+      "substitution_noncellular_inflations_open": true,
+      "substitution_anisotropic_report": "data/a2-sliced-alcove-size8-anisotropic-cellularity-through8.ndjson.gz"
     },
     "shell_screening": {
       "robust_completed_shell": 0,

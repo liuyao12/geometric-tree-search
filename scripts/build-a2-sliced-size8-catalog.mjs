@@ -50,6 +50,17 @@ const exactTwelvePositiveById = new Map((await readGzipNdjson(
 const fourCopyProperById = new Map((await readGzipNdjson(
   "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz"
 )).map(record => [record.id, record]));
+const anisotropicRows = await readGzipNdjson(
+  "data/a2-sliced-alcove-size8-anisotropic-cellularity-through8.ndjson.gz"
+);
+const fourCopyReflectedById = new Map((await readGzipNdjson(
+  "data/a2-sliced-alcove-size8-four-cluster-scale2-reflected-summary.ndjson.gz"
+)).map(record => [record.id, record]));
+const anisotropicById = new Map();
+for (const record of anisotropicRows) {
+  if (!anisotropicById.has(record.id)) anisotropicById.set(record.id, []);
+  anisotropicById.get(record.id).push(record);
+}
 const coronaById = new Map((await readNdjson(
   "data/a2-sliced-alcove-size8-directed-corona1.ndjson"
 )).map(record => [record.id, record]));
@@ -79,6 +90,8 @@ const candidates = representatives.map(record => {
   const exactThree = exactThreeById.get(record.id);
   const exactTwelve = exactTwelvePositiveById.get(record.id);
   const fourCopyProper = fourCopyProperById.get(record.id);
+  const anisotropic = anisotropicById.get(record.id) ?? [];
+  const fourCopyReflected = fourCopyReflectedById.get(record.id);
   const corona = coronaById.get(record.id);
   const extension = extensionById.get(record.id);
   const corona2 = corona2ById.get(record.id);
@@ -103,6 +116,17 @@ const candidates = representatives.map(record => {
   if (!exactTwelve && (!fourCopyProper?.four_copy_alcove_metatile_screen?.certified
       || fourCopyProper.classification !== "no_four_copy_metatile_scalar2_substitution")) {
     throw new Error(`Missing four-copy substitution exclusion for ${record.id}`);
+  }
+  if (!exactTwelve && (anisotropic.length !== 10 || anisotropic.some(item =>
+    item.anisotropic_substitution_classification !== "inflation_not_alcove_cellular"
+    || !item.anisotropic_substitution?.certified
+    || !item.anisotropic_substitution?.noncellular_substitution_open))) {
+    throw new Error(`Missing anisotropic cellularity certificate for ${record.id}`);
+  }
+  if (!exactTwelve && (!fourCopyReflected || (
+      fourCopyReflected.classification !== "no_four_copy_metatile_scalar2_substitution"
+      || !fourCopyReflected.four_copy_alcove_metatile_screen?.certified))) {
+    throw new Error(`Invalid reflected four-copy exclusion for ${record.id}`);
   }
   return {
     id: record.id,
@@ -185,7 +209,25 @@ const candidates = representatives.map(record => {
       substitution_four_copy_metatile_types_exhausted:
         fourCopyProper?.four_copy_alcove_metatile_screen?.symmetry_distinct_metatiles ?? null,
       substitution_four_copy_report:
-        "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz"
+        "data/a2-sliced-alcove-size8-four-cluster-scale2-proper.ndjson.gz",
+      substitution_four_copy_reflected_scalar_scales_excluded:
+        fourCopyReflected ? [2] : [],
+      substitution_four_copy_reflected_types_exhausted:
+        fourCopyReflected?.four_copy_alcove_metatile_screen
+          ?.symmetry_distinct_metatiles ?? null,
+      substitution_four_copy_reflected_report: fourCopyReflected
+        ? "data/a2-sliced-alcove-size8-four-cluster-scale2-reflected.ndjson.gz"
+        : null,
+      substitution_anisotropic_cellular_inflations_excluded: anisotropic.length,
+      substitution_anisotropic_cellular_scale_pairs: anisotropic.map(item => [
+        item.anisotropic_substitution.planar_scale,
+        item.anisotropic_substitution.layer_scale
+      ]),
+      substitution_anisotropic_claim_scope:
+        "fixed_affine_A3_alcove_cellular_substitution_only",
+      substitution_noncellular_inflations_open: true,
+      substitution_anisotropic_report:
+        "data/a2-sliced-alcove-size8-anisotropic-cellularity-through8.ndjson.gz"
     },
     shell_screening: { robust_completed_shell: 0, deepest_completed_shell: 0 }
   };

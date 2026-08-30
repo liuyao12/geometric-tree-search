@@ -154,6 +154,37 @@ assert.ok(sizeEightFourCopyProper.every(record =>
 assert.deepEqual(new Set(sizeEightFourCopyProper.map(record => record.id)),
   new Set(sizeEightRepresentatives.map(record => record.id).filter(id =>
     !sizeEightTwelveCopyPositive.some(record => record.id === id))));
+const sizeEightAnisotropic = await readGzipNdjson(
+  "../data/a2-sliced-alcove-size8-anisotropic-cellularity-through8.ndjson.gz"
+);
+assert.equal(sizeEightAnisotropic.length, 130);
+assert.ok(sizeEightAnisotropic.every(record =>
+  record.anisotropic_substitution_classification === "inflation_not_alcove_cellular"
+  && record.anisotropic_substitution.certified
+  && record.anisotropic_substitution.claim_scope
+    === "fixed_affine_A3_alcove_cellular_substitution_only"
+  && record.anisotropic_substitution.noncellular_substitution_open
+));
+assert.ok([...new Set(sizeEightAnisotropic.map(record =>
+  `${record.anisotropic_substitution.planar_scale},${record.anisotropic_substitution.layer_scale}`
+))].length === 10);
+const sizeEightFourCopyReflected = await readGzipNdjson(
+  "../data/a2-sliced-alcove-size8-four-cluster-scale2-reflected-summary.ndjson.gz"
+);
+assert.equal(sizeEightFourCopyReflected.length, 13);
+assert.deepEqual(new Set(sizeEightFourCopyReflected.map(record => record.id)),
+  new Set(sizeEightRepresentatives.map(record => record.id).filter(id =>
+    !sizeEightTwelveCopyPositive.some(record => record.id === id))));
+assert.ok(sizeEightFourCopyReflected.every(record =>
+  record.classification === "no_four_copy_metatile_scalar2_substitution"
+  && record.four_copy_alcove_metatile_screen.certified
+  && record.four_copy_alcove_metatile_screen.parents_completed
+    === record.four_copy_alcove_metatile_screen.symmetry_distinct_metatiles
+));
+assert.equal(Math.min(...sizeEightFourCopyReflected.map(record =>
+  record.four_copy_alcove_metatile_screen.symmetry_distinct_metatiles)), 108503);
+assert.equal(Math.max(...sizeEightFourCopyReflected.map(record =>
+  record.four_copy_alcove_metatile_screen.symmetry_distinct_metatiles)), 294950);
 const sizeEightCoronas = await readNdjson(
   "../data/a2-sliced-alcove-size8-directed-corona1.ndjson"
 );
