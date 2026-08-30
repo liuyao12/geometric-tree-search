@@ -134,7 +134,7 @@ assert.ok(sizeEightRepresentatives.every(record => record.reflection_class.membe
 const sizeEightTwelveCopyPositive = await readGzipNdjson(
   "../data/a2-sliced-alcove-size8-directed-periodic-exact12-positive.ndjson.gz"
 );
-assert.equal(sizeEightTwelveCopyPositive.length, 6);
+assert.equal(sizeEightTwelveCopyPositive.length, 7);
 assert.ok(sizeEightTwelveCopyPositive.every(record =>
   record.classification === "periodic"
   && record.periodic_z3.certificate.copies === 12
@@ -225,8 +225,8 @@ console.log("A2-sliced alcove census regression passed", {
   expected,
   size_eight_three_copy_periodic: 3335,
   size_eight_periodic: 4380,
-  size_eight_twelve_copy_periodic: 6,
-  size_eight_current_survivors: 9,
+  size_eight_twelve_copy_periodic: 7,
+  size_eight_current_survivors: 8,
   size_eight_reflection_classes: 15,
   size_eight_radius2_witnesses: 7
 });

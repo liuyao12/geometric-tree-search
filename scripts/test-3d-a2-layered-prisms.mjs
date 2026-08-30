@@ -44,8 +44,8 @@ const unresolvedSizeEight = A2_SLICED_SIZE8_CANDIDATES.filter(candidate =>
 const periodicSizeEight = A2_SLICED_SIZE8_CANDIDATES.filter(candidate =>
   candidate.screening.status === "periodic");
 assert.deepEqual(unresolvedSizeEight.map(candidate => candidate.survivor_priority),
-  Array.from({ length: 9 }, (_, index) => index + 1));
-assert.equal(periodicSizeEight.length, 6);
+  Array.from({ length: 8 }, (_, index) => index + 1));
+assert.equal(periodicSizeEight.length, 7);
 assert.ok(periodicSizeEight.every(candidate =>
   candidate.survivor_priority === null
   && candidate.screening.periodic_twelve_copy_replay_verified));

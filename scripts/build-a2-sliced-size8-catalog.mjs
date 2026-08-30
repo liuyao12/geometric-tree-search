@@ -77,8 +77,8 @@ const radius3ById = new Map((await readGzipNdjson(
 if (representatives.length !== 15) {
   throw new Error(`Expected 15 reflection classes, found ${representatives.length}`);
 }
-if (exactTwelvePositiveById.size !== 6 || fourCopyProperById.size !== 13) {
-  throw new Error("Expected six 12-copy positives and 13 four-copy substitution screens");
+if (exactTwelvePositiveById.size !== 7 || fourCopyProperById.size !== 13) {
+  throw new Error("Expected seven 12-copy positives and 13 four-copy substitution screens");
 }
 const unresolvedIds = representatives
   .map(record => record.id)

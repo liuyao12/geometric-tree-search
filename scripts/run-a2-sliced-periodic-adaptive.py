@@ -29,6 +29,8 @@ def main() -> None:
     parser.add_argument("--orbit-total", type=int, default=81)
     parser.add_argument("--orbit-span", type=int, default=9)
     parser.add_argument("--orbit-order", default="36,0,9,18,27,45,54,63,72")
+    parser.add_argument("--orbit-bands", default="",
+                        help="optional comma-separated band starts to run; omitted bands remain incomplete")
     parser.add_argument("--timeout-ms", type=int, default=30000)
     parser.add_argument("--solver", choices=("qffd", "default"), default="qffd")
     parser.add_argument("--workers", type=int, default=8)
@@ -46,11 +48,16 @@ def main() -> None:
         parser.error(f"candidate IDs not found among unresolved rows: {missing}")
 
     natural_starts = list(range(0, args.orbit_total, args.orbit_span))
-    preferred = [int(value) for value in args.orbit_order.split(",") if value.strip()]
-    starts = [start for start in preferred if start in natural_starts]
-    starts.extend(start for start in natural_starts if start not in starts)
-    if sorted(starts) != natural_starts:
-        parser.error("orbit order must cover each configured orbit band exactly once")
+    if args.orbit_bands.strip():
+        starts = [int(value) for value in args.orbit_bands.split(",") if value.strip()]
+        if len(starts) != len(set(starts)) or any(start not in natural_starts for start in starts):
+            parser.error("orbit bands must be distinct configured band starts")
+    else:
+        preferred = [int(value) for value in args.orbit_order.split(",") if value.strip()]
+        starts = [start for start in preferred if start in natural_starts]
+        starts.extend(start for start in natural_starts if start not in starts)
+        if sorted(starts) != natural_starts:
+            parser.error("orbit order must cover each configured orbit band exactly once")
 
     active = set(requested)
     positives: dict[str, dict] = {}
