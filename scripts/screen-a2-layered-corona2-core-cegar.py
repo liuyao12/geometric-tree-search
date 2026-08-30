@@ -306,7 +306,6 @@ def main():
     if args.limit > 0:
         records = records[:args.limit]
     output = Path(args.output)
-    output.write_text("")
     seeds_by_id = {}
     seed_effort_by_id = {}
     for seed_core_path in args.seed_core:
@@ -354,6 +353,9 @@ def main():
         seeds_by_id[candidate_id] = [seed for _, seed in canonical]
     if args.only_seeded:
         records = [record for record in records if record["id"] in seeds_by_id]
+    # A resumable batch may intentionally use the previous output as its seed.
+    # Do not truncate that file until every seed has been loaded into memory.
+    output.write_text("")
     counts = {}
     with output.open("a") as stream:
         for index, record in enumerate(records, 1):

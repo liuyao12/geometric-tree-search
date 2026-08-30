@@ -14,6 +14,10 @@ SPEC = importlib.util.spec_from_file_location(
 )
 MODULE = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(MODULE)
+SCREEN_SOURCE = (ROOT / "scripts" / "screen-a2-layered-corona2-core-cegar.py").read_text()
+assert SCREEN_SOURCE.index("for seed_core_path in args.seed_core:") < SCREEN_SOURCE.index(
+    'output.write_text("")'
+), "the exact screen must load an in-place continuation seed before truncating output"
 
 
 def write_report(path, *, candidate_id="probe", classification="unresolved",
