@@ -55,6 +55,9 @@ def valid_shard(path: Path, candidate_id: str, start: int, stop: int,
 
 def run_task(task: dict) -> dict:
     output = Path(task["output"])
+    positive_marker = Path(task["positive_marker"])
+    if positive_marker.exists():
+        return {**task, "status": "skipped_positive"}
     temporary = output.with_suffix(f".tmp-{os.getpid()}")
     command = [
         sys.executable,
@@ -84,6 +87,8 @@ def run_task(task: dict) -> dict:
         return {**task, "status": "invalid", "stderr": completed.stdout[-2000:]}
     os.replace(temporary, output)
     record = read_ndjson(output)[0]
+    if record["classification"] == "periodic":
+        positive_marker.write_text(str(output) + "\n")
     return {
         **task,
         "status": record["classification"],
@@ -152,6 +157,21 @@ def main() -> None:
             stop = min(args.orbit_total, start + args.orbit_span)
             path = shard_path(output_dir, candidate_id, start, stop)
             paths.append(path)
+        positive_marker = output_dir / f"{candidate_id}.periodic"
+        known_positive = next((
+            path for path in paths
+            if path.exists()
+            and read_ndjson(path)[0].get("classification") == "periodic"
+            and valid_shard(path, candidate_id,
+                            read_ndjson(path)[0]["periodic_z3"]["hnf_range"][0],
+                            read_ndjson(path)[0]["periodic_z3"]["hnf_range"][1])
+        ), None)
+        if known_positive is not None:
+            positive_marker.write_text(str(known_positive) + "\n")
+        else:
+            positive_marker.unlink(missing_ok=True)
+        for start, path in zip(range(0, args.orbit_total, args.orbit_span), paths):
+            stop = min(args.orbit_total, start + args.orbit_span)
             if not valid_shard(path, candidate_id, start, stop):
                 tasks.append({
                     "id": candidate_id,
@@ -163,6 +183,7 @@ def main() -> None:
                     "timeout_ms": args.timeout_ms,
                     "start": start,
                     "stop": stop,
+                    "positive_marker": str(positive_marker),
                 })
         candidate_paths[candidate_id] = paths
     if args.max_tasks > 0:
@@ -188,6 +209,13 @@ def main() -> None:
     incomplete = {}
     for candidate_id, paths in candidate_paths.items():
         present = [path for path in paths if path.exists()]
+        positive = next((
+            path for path in present
+            if read_ndjson(path)[0].get("classification") == "periodic"
+        ), None)
+        if positive is not None:
+            merged.append(read_ndjson(positive)[0])
+            continue
         if len(present) != len(paths):
             incomplete[candidate_id] = {"present": len(present), "expected": len(paths)}
             continue
