@@ -70,6 +70,16 @@ function polygonOccupancy(loop){
   return map;
 }
 
+// Shared by the intrinsic A2 solver and the three-dimensional layered tiles.
+// Return fresh records so callers can rescale weights without mutating the
+// solver's occupancy representation.
+export function a2PolygonOccupancy(loop) {
+  return new Map([...polygonOccupancy(loop)].map(([key, entry]) => [key, {
+    point: entry.point.slice(),
+    weight: entry.weight
+  }]));
+}
+
 const cellVertices = (q,r,kind) => kind==="u"
   ? [[q,r],[q+1,r],[q,r+1]]
   : [[q+1,r+1],[q,r+1],[q+1,r]];
