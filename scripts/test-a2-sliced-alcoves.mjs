@@ -134,7 +134,7 @@ assert.ok(sizeEightRepresentatives.every(record => record.reflection_class.membe
 const sizeEightTwelveCopyPositive = await readGzipNdjson(
   "../data/a2-sliced-alcove-size8-directed-periodic-exact12-positive.ndjson.gz"
 );
-assert.equal(sizeEightTwelveCopyPositive.length, 2);
+assert.equal(sizeEightTwelveCopyPositive.length, 3);
 assert.ok(sizeEightTwelveCopyPositive.every(record =>
   record.classification === "periodic"
   && record.periodic_z3.certificate.copies === 12
@@ -153,7 +153,7 @@ assert.ok(sizeEightFourCopyProper.every(record =>
 ));
 assert.deepEqual(new Set(sizeEightFourCopyProper.map(record => record.id)),
   new Set(sizeEightRepresentatives.map(record => record.id).filter(id =>
-    !sizeEightTwelveCopyPositive.some(record => record.id === id))));
+    !["a2sa_8_00888", "a2sa_8_02965"].includes(id))));
 const sizeEightAnisotropic = await readGzipNdjson(
   "../data/a2-sliced-alcove-size8-anisotropic-cellularity-through8.ndjson.gz"
 );
@@ -174,7 +174,7 @@ const sizeEightFourCopyReflected = await readGzipNdjson(
 assert.equal(sizeEightFourCopyReflected.length, 13);
 assert.deepEqual(new Set(sizeEightFourCopyReflected.map(record => record.id)),
   new Set(sizeEightRepresentatives.map(record => record.id).filter(id =>
-    !sizeEightTwelveCopyPositive.some(record => record.id === id))));
+    !["a2sa_8_00888", "a2sa_8_02965"].includes(id))));
 assert.ok(sizeEightFourCopyReflected.every(record =>
   record.classification === "no_four_copy_metatile_scalar2_substitution"
   && record.four_copy_alcove_metatile_screen.certified
@@ -225,8 +225,8 @@ console.log("A2-sliced alcove census regression passed", {
   expected,
   size_eight_three_copy_periodic: 3335,
   size_eight_periodic: 4380,
-  size_eight_twelve_copy_periodic: 2,
-  size_eight_current_survivors: 13,
+  size_eight_twelve_copy_periodic: 3,
+  size_eight_current_survivors: 12,
   size_eight_reflection_classes: 15,
   size_eight_radius2_witnesses: 7
 });

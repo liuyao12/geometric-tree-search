@@ -39,18 +39,31 @@ assert.deepEqual(hatWithReflections.prototiles.map(tile => tile.unique_orientati
 
 assert.equal(A2_SLICED_SIZE7_CANDIDATES.length, 8);
 assert.equal(A2_SLICED_SIZE8_CANDIDATES.length, 15);
-assert.deepEqual(A2_SLICED_SIZE8_CANDIDATES.map(candidate => candidate.survivor_priority),
-  Array.from({ length: 15 }, (_, index) => index + 1));
+const unresolvedSizeEight = A2_SLICED_SIZE8_CANDIDATES.filter(candidate =>
+  candidate.screening.status === "inconclusive");
+const periodicSizeEight = A2_SLICED_SIZE8_CANDIDATES.filter(candidate =>
+  candidate.screening.status === "periodic");
+assert.deepEqual(unresolvedSizeEight.map(candidate => candidate.survivor_priority),
+  Array.from({ length: 12 }, (_, index) => index + 1));
+assert.equal(periodicSizeEight.length, 3);
+assert.ok(periodicSizeEight.every(candidate =>
+  candidate.survivor_priority === null
+  && candidate.screening.periodic_twelve_copy_replay_verified));
 assert.equal(A2_SLICED_SIZE8_CANDIDATES.filter(candidate =>
-  candidate.screening.radius_two_status === "radius2_witness").length, 4);
+  candidate.screening.radius_two_status === "radius2_witness").length, 7);
+assert.equal(unresolvedSizeEight.filter(candidate =>
+  candidate.screening.radius_two_status === "radius2_witness").length, 5);
 assert.ok(A2_SLICED_SIZE8_CANDIDATES.every(candidate =>
   candidate.kind === "a2_sliced_alcove_census"
   && candidate.morphology.polycube === false
-  && candidate.screening.periodic_exact_through === 6
   && candidate.screening.periodic_solver_unknowns === 0
   && candidate.screening.periodic_six_copy_complete === true
   && candidate.screening.corona_completed_verified === true
 ));
+assert.ok(unresolvedSizeEight.every(candidate =>
+  candidate.screening.periodic_exact_through === 6));
+assert.ok(periodicSizeEight.every(candidate =>
+  candidate.screening.periodic_exact_through === 12));
 assert.deepEqual(A2_SLICED_SIZE7_CANDIDATES.map(candidate => candidate.survivor_priority),
   [1, 2, 3, 4, 5, 6, 7, 8]);
 for (const candidate of A2_SLICED_SIZE7_CANDIDATES) {

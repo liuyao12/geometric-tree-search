@@ -123,7 +123,7 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
     },
     "lattice_points": 10,
     "survivor_priority": null,
-    "survivor_count": 13,
+    "survivor_count": 12,
     "description": "Eight-alcove non-polycube lattice function coupling consecutive triangular sections x+y+z=k.",
     "screening": {
       "status": "periodic",
@@ -135,6 +135,7 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "six_copy_additional_periodic_certificates": 1045,
       "periodic_survivors_through_six": 26,
       "periodic_survivor_reflection_classes": 15,
+      "periodic_twelve_copy_certificates": 3,
       "six_copy_periodic_certificates": 4380,
       "six_copy_periodic_survivors": 26,
       "six_copy_periodic_survivor_reflection_classes": 15,
@@ -606,7 +607,7 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
     },
     "lattice_points": 11,
     "survivor_priority": 1,
-    "survivor_count": 13,
+    "survivor_count": 12,
     "description": "Eight-alcove non-polycube lattice function coupling consecutive triangular sections x+y+z=k.",
     "screening": {
       "status": "inconclusive",
@@ -618,6 +619,7 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "six_copy_additional_periodic_certificates": 1045,
       "periodic_survivors_through_six": 26,
       "periodic_survivor_reflection_classes": 15,
+      "periodic_twelve_copy_certificates": 3,
       "six_copy_periodic_certificates": 4380,
       "six_copy_periodic_survivors": 26,
       "six_copy_periodic_survivor_reflection_classes": 15,
@@ -868,7 +870,7 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
     },
     "lattice_points": 11,
     "survivor_priority": 2,
-    "survivor_count": 13,
+    "survivor_count": 12,
     "description": "Eight-alcove non-polycube lattice function coupling consecutive triangular sections x+y+z=k.",
     "screening": {
       "status": "inconclusive",
@@ -880,6 +882,7 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "six_copy_additional_periodic_certificates": 1045,
       "periodic_survivors_through_six": 26,
       "periodic_survivor_reflection_classes": 15,
+      "periodic_twelve_copy_certificates": 3,
       "six_copy_periodic_certificates": 4380,
       "six_copy_periodic_survivors": 26,
       "six_copy_periodic_survivor_reflection_classes": 15,
@@ -1130,19 +1133,20 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "transverse_profile_asymmetric": true
     },
     "lattice_points": 11,
-    "survivor_priority": 3,
-    "survivor_count": 13,
+    "survivor_priority": null,
+    "survivor_count": 12,
     "description": "Eight-alcove non-polycube lattice function coupling consecutive triangular sections x+y+z=k.",
     "screening": {
-      "status": "inconclusive",
-      "certificate": null,
-      "census_stage": "a2_sliced_size8_consecutive_layers_exact_through6_12_copy_bounded_2026_08_29",
+      "status": "periodic",
+      "certificate": "translational",
+      "census_stage": "a2_sliced_size8_consecutive_layers_12_copy_positive_2026_08_29",
       "source_pool_size": 4406,
       "three_copy_periodic_certificates": 3335,
       "three_copy_periodic_survivors": 1071,
       "six_copy_additional_periodic_certificates": 1045,
       "periodic_survivors_through_six": 26,
       "periodic_survivor_reflection_classes": 15,
+      "periodic_twelve_copy_certificates": 3,
       "six_copy_periodic_certificates": 4380,
       "six_copy_periodic_survivors": 26,
       "six_copy_periodic_survivor_reflection_classes": 15,
@@ -1151,7 +1155,7 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
         "a2sa_8_03138",
         "a2sa_8_03993"
       ],
-      "periodic_exact_through": 6,
+      "periodic_exact_through": 12,
       "periodic_requested_through": 12,
       "periodic_solver_unknowns": 0,
       "periodic_three_copy_complete": true,
@@ -1160,13 +1164,280 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "periodic_six_copy_exact_multicover_nodes": 394235,
       "periodic_three_copy_report": "data/a2-sliced-alcove-size8-directed-periodic-exact3.ndjson.gz",
       "periodic_report": "data/a2-sliced-alcove-size8-directed-periodic-exact6.ndjson.gz",
-      "periodic_twelve_copy_certificate": null,
-      "periodic_twelve_copy_replay_verified": false,
+      "periodic_twelve_copy_certificate": {
+        "kind": "weighted_periodic_hnf_quotient",
+        "certified": true,
+        "can_tile": true,
+        "model": "a2_sliced_exact_lattice_function",
+        "copies": 12,
+        "determinant": 16,
+        "period_vectors": [
+          [
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            4,
+            0
+          ],
+          [
+            0,
+            2,
+            2
+          ]
+        ],
+        "placements": [
+          {
+            "orientation_index": 0,
+            "translation": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "orientation_index": 0,
+            "translation": [
+              0,
+              3,
+              1
+            ]
+          },
+          {
+            "orientation_index": 1,
+            "translation": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "orientation_index": 1,
+            "translation": [
+              1,
+              3,
+              0
+            ]
+          },
+          {
+            "orientation_index": 2,
+            "translation": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "orientation_index": 2,
+            "translation": [
+              1,
+              3,
+              1
+            ]
+          },
+          {
+            "orientation_index": 3,
+            "translation": [
+              1,
+              0,
+              1
+            ]
+          },
+          {
+            "orientation_index": 3,
+            "translation": [
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "orientation_index": 4,
+            "translation": [
+              0,
+              2,
+              0
+            ]
+          },
+          {
+            "orientation_index": 4,
+            "translation": [
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "orientation_index": 5,
+            "translation": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "orientation_index": 5,
+            "translation": [
+              1,
+              0,
+              0
+            ]
+          }
+        ],
+        "hnf_index": 12
+      },
+      "periodic_twelve_copy_replay_verified": true,
       "periodic_twelve_copy_positive_report": "data/a2-sliced-alcove-size8-directed-periodic-exact12-positive.ndjson.gz",
-      "motif_tiles": null,
-      "period_vectors": null,
-      "quotient_determinant": null,
-      "periodic_template": null,
+      "motif_tiles": 12,
+      "period_vectors": [
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          4,
+          0
+        ],
+        [
+          0,
+          2,
+          2
+        ]
+      ],
+      "quotient_determinant": 16,
+      "periodic_template": {
+        "period_vectors": [
+          [
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            4,
+            0
+          ],
+          [
+            0,
+            2,
+            2
+          ]
+        ],
+        "motif": [
+          {
+            "prototile_idx": 0,
+            "orientation_index": 0,
+            "translation": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 0,
+            "translation": [
+              0,
+              3,
+              1
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 3,
+            "translation": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 3,
+            "translation": [
+              1,
+              3,
+              0
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 4,
+            "translation": [
+              0,
+              0,
+              1
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 4,
+            "translation": [
+              1,
+              3,
+              1
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 1,
+            "translation": [
+              -2,
+              -2,
+              -1
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 1,
+            "translation": [
+              -2,
+              -1,
+              -2
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 2,
+            "translation": [
+              -2,
+              -1,
+              -2
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 2,
+            "translation": [
+              -1,
+              -2,
+              -2
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 5,
+            "translation": [
+              -2,
+              -1,
+              -3
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 5,
+            "translation": [
+              -1,
+              -2,
+              -3
+            ]
+          }
+        ]
+      },
       "corona_completed_radius": 1,
       "corona_completed_verified": true,
       "corona_root_patch_copies": 36,
@@ -1392,8 +1663,8 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "transverse_profile_asymmetric": true
     },
     "lattice_points": 11,
-    "survivor_priority": 4,
-    "survivor_count": 13,
+    "survivor_priority": 3,
+    "survivor_count": 12,
     "description": "Eight-alcove non-polycube lattice function coupling consecutive triangular sections x+y+z=k.",
     "screening": {
       "status": "inconclusive",
@@ -1405,6 +1676,7 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "six_copy_additional_periodic_certificates": 1045,
       "periodic_survivors_through_six": 26,
       "periodic_survivor_reflection_classes": 15,
+      "periodic_twelve_copy_certificates": 3,
       "six_copy_periodic_certificates": 4380,
       "six_copy_periodic_survivors": 26,
       "six_copy_periodic_survivor_reflection_classes": 15,
@@ -1652,8 +1924,8 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "transverse_profile_asymmetric": true
     },
     "lattice_points": 11,
-    "survivor_priority": 5,
-    "survivor_count": 13,
+    "survivor_priority": 4,
+    "survivor_count": 12,
     "description": "Eight-alcove non-polycube lattice function coupling consecutive triangular sections x+y+z=k.",
     "screening": {
       "status": "inconclusive",
@@ -1665,6 +1937,7 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "six_copy_additional_periodic_certificates": 1045,
       "periodic_survivors_through_six": 26,
       "periodic_survivor_reflection_classes": 15,
+      "periodic_twelve_copy_certificates": 3,
       "six_copy_periodic_certificates": 4380,
       "six_copy_periodic_survivors": 26,
       "six_copy_periodic_survivor_reflection_classes": 15,
@@ -1914,8 +2187,8 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "transverse_profile_asymmetric": true
     },
     "lattice_points": 11,
-    "survivor_priority": 6,
-    "survivor_count": 13,
+    "survivor_priority": 5,
+    "survivor_count": 12,
     "description": "Eight-alcove non-polycube lattice function coupling consecutive triangular sections x+y+z=k.",
     "screening": {
       "status": "inconclusive",
@@ -1927,6 +2200,7 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "six_copy_additional_periodic_certificates": 1045,
       "periodic_survivors_through_six": 26,
       "periodic_survivor_reflection_classes": 15,
+      "periodic_twelve_copy_certificates": 3,
       "six_copy_periodic_certificates": 4380,
       "six_copy_periodic_survivors": 26,
       "six_copy_periodic_survivor_reflection_classes": 15,
@@ -2176,8 +2450,8 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "transverse_profile_asymmetric": true
     },
     "lattice_points": 11,
-    "survivor_priority": 7,
-    "survivor_count": 13,
+    "survivor_priority": 6,
+    "survivor_count": 12,
     "description": "Eight-alcove non-polycube lattice function coupling consecutive triangular sections x+y+z=k.",
     "screening": {
       "status": "inconclusive",
@@ -2189,6 +2463,7 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "six_copy_additional_periodic_certificates": 1045,
       "periodic_survivors_through_six": 26,
       "periodic_survivor_reflection_classes": 15,
+      "periodic_twelve_copy_certificates": 3,
       "six_copy_periodic_certificates": 4380,
       "six_copy_periodic_survivors": 26,
       "six_copy_periodic_survivor_reflection_classes": 15,
@@ -2437,8 +2712,8 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "transverse_profile_asymmetric": true
     },
     "lattice_points": 11,
-    "survivor_priority": 8,
-    "survivor_count": 13,
+    "survivor_priority": 7,
+    "survivor_count": 12,
     "description": "Eight-alcove non-polycube lattice function coupling consecutive triangular sections x+y+z=k.",
     "screening": {
       "status": "inconclusive",
@@ -2450,6 +2725,7 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "six_copy_additional_periodic_certificates": 1045,
       "periodic_survivors_through_six": 26,
       "periodic_survivor_reflection_classes": 15,
+      "periodic_twelve_copy_certificates": 3,
       "six_copy_periodic_certificates": 4380,
       "six_copy_periodic_survivors": 26,
       "six_copy_periodic_survivor_reflection_classes": 15,
@@ -2698,8 +2974,8 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "transverse_profile_asymmetric": true
     },
     "lattice_points": 11,
-    "survivor_priority": 9,
-    "survivor_count": 13,
+    "survivor_priority": 8,
+    "survivor_count": 12,
     "description": "Eight-alcove non-polycube lattice function coupling consecutive triangular sections x+y+z=k.",
     "screening": {
       "status": "inconclusive",
@@ -2711,6 +2987,7 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "six_copy_additional_periodic_certificates": 1045,
       "periodic_survivors_through_six": 26,
       "periodic_survivor_reflection_classes": 15,
+      "periodic_twelve_copy_certificates": 3,
       "six_copy_periodic_certificates": 4380,
       "six_copy_periodic_survivors": 26,
       "six_copy_periodic_survivor_reflection_classes": 15,
@@ -2960,8 +3237,8 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "transverse_profile_asymmetric": true
     },
     "lattice_points": 11,
-    "survivor_priority": 10,
-    "survivor_count": 13,
+    "survivor_priority": 9,
+    "survivor_count": 12,
     "description": "Eight-alcove non-polycube lattice function coupling consecutive triangular sections x+y+z=k.",
     "screening": {
       "status": "inconclusive",
@@ -2973,6 +3250,7 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "six_copy_additional_periodic_certificates": 1045,
       "periodic_survivors_through_six": 26,
       "periodic_survivor_reflection_classes": 15,
+      "periodic_twelve_copy_certificates": 3,
       "six_copy_periodic_certificates": 4380,
       "six_copy_periodic_survivors": 26,
       "six_copy_periodic_survivor_reflection_classes": 15,
@@ -3222,8 +3500,8 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "transverse_profile_asymmetric": true
     },
     "lattice_points": 11,
-    "survivor_priority": 11,
-    "survivor_count": 13,
+    "survivor_priority": 10,
+    "survivor_count": 12,
     "description": "Eight-alcove non-polycube lattice function coupling consecutive triangular sections x+y+z=k.",
     "screening": {
       "status": "inconclusive",
@@ -3235,6 +3513,7 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "six_copy_additional_periodic_certificates": 1045,
       "periodic_survivors_through_six": 26,
       "periodic_survivor_reflection_classes": 15,
+      "periodic_twelve_copy_certificates": 3,
       "six_copy_periodic_certificates": 4380,
       "six_copy_periodic_survivors": 26,
       "six_copy_periodic_survivor_reflection_classes": 15,
@@ -3485,7 +3764,7 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
     },
     "lattice_points": 11,
     "survivor_priority": null,
-    "survivor_count": 13,
+    "survivor_count": 12,
     "description": "Eight-alcove non-polycube lattice function coupling consecutive triangular sections x+y+z=k.",
     "screening": {
       "status": "periodic",
@@ -3497,6 +3776,7 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "six_copy_additional_periodic_certificates": 1045,
       "periodic_survivors_through_six": 26,
       "periodic_survivor_reflection_classes": 15,
+      "periodic_twelve_copy_certificates": 3,
       "six_copy_periodic_certificates": 4380,
       "six_copy_periodic_survivors": 26,
       "six_copy_periodic_survivor_reflection_classes": 15,
@@ -3968,8 +4248,8 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "transverse_profile_asymmetric": true
     },
     "lattice_points": 11,
-    "survivor_priority": 12,
-    "survivor_count": 13,
+    "survivor_priority": 11,
+    "survivor_count": 12,
     "description": "Eight-alcove non-polycube lattice function coupling consecutive triangular sections x+y+z=k.",
     "screening": {
       "status": "inconclusive",
@@ -3981,6 +4261,7 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "six_copy_additional_periodic_certificates": 1045,
       "periodic_survivors_through_six": 26,
       "periodic_survivor_reflection_classes": 15,
+      "periodic_twelve_copy_certificates": 3,
       "six_copy_periodic_certificates": 4380,
       "six_copy_periodic_survivors": 26,
       "six_copy_periodic_survivor_reflection_classes": 15,
@@ -4229,8 +4510,8 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "transverse_profile_asymmetric": true
     },
     "lattice_points": 11,
-    "survivor_priority": 13,
-    "survivor_count": 13,
+    "survivor_priority": 12,
+    "survivor_count": 12,
     "description": "Eight-alcove non-polycube lattice function coupling consecutive triangular sections x+y+z=k.",
     "screening": {
       "status": "inconclusive",
@@ -4242,6 +4523,7 @@ export const A2_SLICED_SIZE8_CANDIDATES = Object.freeze([
       "six_copy_additional_periodic_certificates": 1045,
       "periodic_survivors_through_six": 26,
       "periodic_survivor_reflection_classes": 15,
+      "periodic_twelve_copy_certificates": 3,
       "six_copy_periodic_certificates": 4380,
       "six_copy_periodic_survivors": 26,
       "six_copy_periodic_survivor_reflection_classes": 15,

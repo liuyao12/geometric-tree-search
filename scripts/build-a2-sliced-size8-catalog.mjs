@@ -77,8 +77,8 @@ const radius3ById = new Map((await readGzipNdjson(
 if (representatives.length !== 15) {
   throw new Error(`Expected 15 reflection classes, found ${representatives.length}`);
 }
-if (exactTwelvePositiveById.size !== 2 || fourCopyProperById.size !== 13) {
-  throw new Error("Expected two 12-copy positives and 13 four-copy substitution survivors");
+if (exactTwelvePositiveById.size !== 3 || fourCopyProperById.size !== 13) {
+  throw new Error("Expected three 12-copy positives and 13 four-copy substitution screens");
 }
 const unresolvedIds = representatives
   .map(record => record.id)
@@ -151,6 +151,7 @@ const candidates = representatives.map(record => {
       six_copy_additional_periodic_certificates: 1045,
       periodic_survivors_through_six: 26,
       periodic_survivor_reflection_classes: 15,
+      periodic_twelve_copy_certificates: exactTwelvePositiveById.size,
       // Retained aliases for older saved UI state.
       six_copy_periodic_certificates: 4380,
       six_copy_periodic_survivors: 26,
