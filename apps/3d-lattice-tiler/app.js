@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260830-a2-sliced8-v241";
+} from "./engine.js?v=20260830-a2-sliced8-v242";
 
 const $ = (id) => document.getElementById(id);
 
@@ -3123,7 +3123,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260830-a2-sliced8-v238", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260830-a2-sliced8-v239", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3884,7 +3884,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260830-a2-sliced8-v238", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260830-a2-sliced8-v239", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     setRunButton();
     worker.addEventListener("message", event => {

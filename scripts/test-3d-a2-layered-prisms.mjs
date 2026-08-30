@@ -44,15 +44,15 @@ const unresolvedSizeEight = A2_SLICED_SIZE8_CANDIDATES.filter(candidate =>
 const periodicSizeEight = A2_SLICED_SIZE8_CANDIDATES.filter(candidate =>
   candidate.screening.status === "periodic");
 assert.deepEqual(unresolvedSizeEight.map(candidate => candidate.survivor_priority),
-  Array.from({ length: 12 }, (_, index) => index + 1));
-assert.equal(periodicSizeEight.length, 3);
+  Array.from({ length: 9 }, (_, index) => index + 1));
+assert.equal(periodicSizeEight.length, 6);
 assert.ok(periodicSizeEight.every(candidate =>
   candidate.survivor_priority === null
   && candidate.screening.periodic_twelve_copy_replay_verified));
 assert.equal(A2_SLICED_SIZE8_CANDIDATES.filter(candidate =>
   candidate.screening.radius_two_status === "radius2_witness").length, 7);
 assert.equal(unresolvedSizeEight.filter(candidate =>
-  candidate.screening.radius_two_status === "radius2_witness").length, 5);
+  candidate.screening.radius_two_status === "radius2_witness").length, 3);
 assert.ok(A2_SLICED_SIZE8_CANDIDATES.every(candidate =>
   candidate.kind === "a2_sliced_alcove_census"
   && candidate.morphology.polycube === false

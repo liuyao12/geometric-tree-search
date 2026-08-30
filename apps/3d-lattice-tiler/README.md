@@ -247,9 +247,9 @@ section `x+y+z=k`. For size eight, the exact screen first finds 3,335
 three-copy periods and advances 1,071 shapes to the six-copy screen, which
 finds 1,045 additional periods. The remaining 26 shapes reduce to 15
 reflection classes. Longer determinant-16 passes find replayed 12-copy
-periods for three more classes; they move to the periodic controls, leaving 12
+periods for six more classes; they move to the periodic controls, leaving nine
 size-eight research candidates. Every displayed entry has an independently
-replayed root corona. Five of the 12 surviving size-eight classes
+replayed root corona. Three of the nine surviving size-eight classes
 also have replayed radius-two witnesses; bounded GCTS retains sound failure
 clauses for the unresolved cases. Complete cellular screens exclude direct
 self-substitutions at scales 2–8 and connected two- and three-copy metatile
