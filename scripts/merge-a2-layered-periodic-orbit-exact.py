@@ -70,6 +70,7 @@ def merge_records(records: list[dict], copies: int) -> dict:
         "exact_multicover_mitm_fallbacks": sum(screen.get("exact_multicover_mitm_fallbacks", 0) for screen in screens),
         "exact_multicover_mitm_pairs": sum(screen.get("exact_multicover_mitm_pairs", 0) for screen in screens),
         "exact_multicover_mitm_triples": sum(screen.get("exact_multicover_mitm_triples", 0) for screen in screens),
+        "exact_multicover_mitm_quadruples": sum(screen.get("exact_multicover_mitm_quadruples", 0) for screen in screens),
         "hnf_range": [0, cursor],
         "hnf_total": hnf_total,
         "hnf_orbit_representatives": True,

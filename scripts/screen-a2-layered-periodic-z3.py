@@ -263,6 +263,7 @@ def exact_weighted_multicover(
             "result": "unsat", "chosen_indices": None,
             "nodes": 1, "failed_states": 1, "eligible_placements": 0,
             "used_mitm": False, "mitm_pairs": 0, "mitm_triples": 0,
+            "mitm_quadruples": 0,
         }
 
     original_indices = []
@@ -301,7 +302,9 @@ def exact_weighted_multicover(
     nodes = 0
     failed = set()
     if dfs_node_limit is None:
-        dfs_node_limit = 50000 if copies == 6 else (250000 if copies == 7 else 0)
+        dfs_node_limit = (
+            50000 if copies in (6, 8) else (250000 if copies == 7 else 0)
+        )
     fallback = object()
 
     def search(state_capacities, selected_mask, remaining):
@@ -380,6 +383,7 @@ def exact_weighted_multicover(
     chosen = search(capacities, 0, copies - 1)
     mitm_pairs = 0
     mitm_triples = 0
+    mitm_quadruples = 0
     used_mitm = chosen is fallback
     if used_mitm and copies == 6:
         # Six copies leave five choices after fixing the root.  Exhaustively
@@ -497,6 +501,97 @@ def exact_weighted_multicover(
                     break
             if chosen is not None:
                 break
+    elif used_mitm and copies == 8:
+        # Eight copies leave seven choices after fixing the root.  Store every
+        # fitting triple and stream every fitting quadruple against its exact
+        # complement.  Every seven-element solution has a 3+4 partition, and
+        # the explicit disjointness check prevents Boolean placement reuse.
+        triple_sums = {}
+        for first in range(eligible_count):
+            first_vector = eligible_vectors[first]
+            for second in range(first + 1, eligible_count):
+                pair = tuple(
+                    left + right
+                    for left, right in zip(first_vector, eligible_vectors[second])
+                )
+                if any(
+                    weight > capacity
+                    for weight, capacity in zip(pair, capacities)
+                ):
+                    continue
+                for third in range(second + 1, eligible_count):
+                    triple = tuple(
+                        partial + weight
+                        for partial, weight in zip(pair, eligible_vectors[third])
+                    )
+                    if any(
+                        weight > capacity
+                        for weight, capacity in zip(triple, capacities)
+                    ):
+                        continue
+                    triple_sums.setdefault(triple, []).append((first, second, third))
+                    mitm_triples += 1
+        chosen = None
+        for first in range(eligible_count):
+            first_vector = eligible_vectors[first]
+            for second in range(first + 1, eligible_count):
+                pair = tuple(
+                    left + right
+                    for left, right in zip(first_vector, eligible_vectors[second])
+                )
+                if any(
+                    weight > capacity
+                    for weight, capacity in zip(pair, capacities)
+                ):
+                    continue
+                for third in range(second + 1, eligible_count):
+                    triple = tuple(
+                        partial + weight
+                        for partial, weight in zip(pair, eligible_vectors[third])
+                    )
+                    if any(
+                        weight > capacity
+                        for weight, capacity in zip(triple, capacities)
+                    ):
+                        continue
+                    for fourth in range(third + 1, eligible_count):
+                        quadruple = tuple(
+                            partial + weight
+                            for partial, weight in zip(
+                                triple, eligible_vectors[fourth]
+                            )
+                        )
+                        if any(
+                            weight > capacity
+                            for weight, capacity in zip(quadruple, capacities)
+                        ):
+                            continue
+                        mitm_quadruples += 1
+                        target = tuple(
+                            capacity - weight
+                            for capacity, weight in zip(capacities, quadruple)
+                        )
+                        quadruple_indices = (first, second, third, fourth)
+                        disjoint_triple = next((
+                            candidate_triple
+                            for candidate_triple in triple_sums.get(target, ())
+                            if all(
+                                index not in quadruple_indices
+                                for index in candidate_triple
+                            )
+                        ), None)
+                        if disjoint_triple is not None:
+                            chosen = tuple(
+                                original_indices[index]
+                                for index in (*quadruple_indices, *disjoint_triple)
+                            )
+                            break
+                    if chosen is not None:
+                        break
+                if chosen is not None:
+                    break
+            if chosen is not None:
+                break
     return {
         "result": "sat" if chosen is not None else "unsat",
         "chosen_indices": [0, *chosen] if chosen is not None else None,
@@ -506,6 +601,7 @@ def exact_weighted_multicover(
         "used_mitm": used_mitm,
         "mitm_pairs": mitm_pairs,
         "mitm_triples": mitm_triples,
+        "mitm_quadruples": mitm_quadruples,
     }
 
 
@@ -521,6 +617,7 @@ def screen_candidate(record: dict, args) -> dict:
     exact_multicover_mitm_fallbacks = 0
     exact_multicover_mitm_pairs = 0
     exact_multicover_mitm_triples = 0
+    exact_multicover_mitm_quadruples = 0
     hnf_covered = 0
     exhausted_by_copies: dict[str, int] = {}
     for copies in range(args.min_copies, args.max_copies + 1):
@@ -632,6 +729,7 @@ def screen_candidate(record: dict, args) -> dict:
                 exact_multicover_mitm_fallbacks += int(exact_result["used_mitm"])
                 exact_multicover_mitm_pairs += exact_result["mitm_pairs"]
                 exact_multicover_mitm_triples += exact_result["mitm_triples"]
+                exact_multicover_mitm_quadruples += exact_result["mitm_quadruples"]
                 chosen_indices = exact_result["chosen_indices"]
                 result = sat if exact_result["result"] == "sat" else unsat
                 model = None
@@ -703,6 +801,7 @@ def screen_candidate(record: dict, args) -> dict:
                         "exact_multicover_mitm_fallbacks": exact_multicover_mitm_fallbacks,
                         "exact_multicover_mitm_pairs": exact_multicover_mitm_pairs,
                         "exact_multicover_mitm_triples": exact_multicover_mitm_triples,
+                        "exact_multicover_mitm_quadruples": exact_multicover_mitm_quadruples,
                         "hnf_range": [hnf_start, hnf_stop],
                         "hnf_total": len(all_candidates),
                         "hnf_range_exhausted": False,
@@ -741,6 +840,7 @@ def screen_candidate(record: dict, args) -> dict:
                         "exact_multicover_mitm_fallbacks": exact_multicover_mitm_fallbacks,
                         "exact_multicover_mitm_pairs": exact_multicover_mitm_pairs,
                         "exact_multicover_mitm_triples": exact_multicover_mitm_triples,
+                        "exact_multicover_mitm_quadruples": exact_multicover_mitm_quadruples,
                         "hnf_range": [hnf_start, hnf_stop],
                         "hnf_total": len(all_candidates),
                         "hnf_range_exhausted": False,
@@ -765,6 +865,7 @@ def screen_candidate(record: dict, args) -> dict:
             "exact_multicover_mitm_fallbacks": exact_multicover_mitm_fallbacks,
             "exact_multicover_mitm_pairs": exact_multicover_mitm_pairs,
             "exact_multicover_mitm_triples": exact_multicover_mitm_triples,
+            "exact_multicover_mitm_quadruples": exact_multicover_mitm_quadruples,
             "hnf_range": [hnf_start, hnf_stop],
             "hnf_total": len(all_candidates),
             "hnf_range_exhausted": solver_unknown == 0

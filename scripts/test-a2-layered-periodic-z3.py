@@ -150,6 +150,36 @@ for case in range(24):
             for residue in range(3)
         )
 
+# The eight-copy fallback is likewise complete via a 3+4 partition.
+for case in range(16):
+    placements = [
+        {"weights": [
+            4 * ((3 * case + 2 * index + 5 * residue) % 7)
+            for residue in range(3)
+        ]}
+        for index in range(12)
+    ]
+    exact = MODULE.exact_weighted_multicover(placements, 8, dfs_node_limit=1)
+    brute = next((
+        (0, *suffix)
+        for suffix in itertools.combinations(range(1, len(placements)), 7)
+        if all(
+            sum(placements[index]["weights"][residue] for index in (0, *suffix)) == 48
+            for residue in range(3)
+        )
+    ), None)
+    assert exact["used_mitm"] is True
+    assert (exact["result"] == "sat") == (brute is not None)
+    if exact["chosen_indices"] is not None:
+        assert len(set(exact["chosen_indices"])) == 8
+        assert all(
+            sum(
+                placements[index]["weights"][residue]
+                for index in exact["chosen_indices"]
+            ) == 48
+            for residue in range(3)
+        )
+
 unit = {
     "id": "a2_periodic_exact_six_copy_control",
     "cells": [{"q": 0, "r": 0, "k": 0, "kind": "u"}],
@@ -185,6 +215,7 @@ with tempfile.TemporaryDirectory() as temporary_directory:
                 "exact_multicover_mitm_fallbacks": part_index,
                 "exact_multicover_mitm_pairs": 10 * part_index,
                 "exact_multicover_mitm_triples": 20 * part_index,
+                "exact_multicover_mitm_quadruples": 30 * part_index,
                 "hnf_range": list(bounds),
                 "hnf_total": 3,
                 "hnf_range_exhausted": True,
