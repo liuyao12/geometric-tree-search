@@ -6,7 +6,7 @@ import { GeometricFailureMemo } from "../../assets/geometric-failure-memo.js?v=2
 import { GeometricFrontierMarking } from "../../assets/geometric-frontier-marking.js?v=20260824-gcts-i-v1";
 import { LATTICE_POLYHEDRON_GCTS_EXAMPLES } from "../../assets/lattice-polyhedron-survivors.js?v=20260820-size13-v104";
 import { POLYCUBE_GCTS_CANDIDATES } from "../../assets/polycube-census-candidates.js?v=20260824-volume10-v78";
-import { A2_LAYERED_PRISM_SPECS, makeA2LayeredPrism } from "../../assets/a2-layered-prisms.js?v=20260830-occupancy-v2";
+import { A2_LAYERED_PRISM_SPECS, makeA2LayeredPrism } from "../../assets/a2-layered-prisms.js?v=20260830-occupancy-v3";
 import { makeA2LayeredPolyprism } from "../../assets/a2-layered-polyprisms.js";
 import { makeA2SlicedAlcoveUnion } from "../../assets/a2-sliced-alcoves.js";
 import { A2_SLICED_SIZE7_CANDIDATES } from "../../assets/a2-sliced-size7-candidates.js?v=20260828-1";

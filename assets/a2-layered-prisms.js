@@ -1,4 +1,65 @@
-import { A2_TILE_LOOPS, a2PolygonOccupancy } from "./a2-tiling-engine.js?v=20260830-occupancy-v2";
+import * as A2Tiling from "./a2-tiling-engine.js?v=20260830-occupancy-v2";
+
+const { A2_TILE_LOOPS } = A2Tiling;
+
+// Keep the 3D catalogue compatible with a browser-cached copy of the A2
+// engine from before a2PolygonOccupancy became public.
+const fallbackPolygonOccupancy = loop => {
+  const key = point => point.join(",");
+  const area2 = loop.reduce((sum, point, index) => {
+    const next = loop[(index + 1) % loop.length];
+    return sum + point[0] * next[1] - next[0] * point[1];
+  }, 0);
+  const projected = ([x, y]) => [x + y * 0.5, y * Math.sqrt(3) / 2];
+  const projectedLoop = loop.map(projected);
+  const result = new Map();
+  const gcd = (left, right) => {
+    let a = Math.abs(left), b = Math.abs(right);
+    while (b) [a, b] = [b, a % b];
+    return a || 1;
+  };
+  const pointInPolygon = ([x, y]) => {
+    let inside = false;
+    for (let i = 0, j = loop.length - 1; i < loop.length; j = i++) {
+      const [ax, ay] = loop[i], [bx, by] = loop[j];
+      if ((ay > y) !== (by > y) && x < (bx - ax) * (y - ay) / (by - ay) + ax) inside = !inside;
+    }
+    return inside;
+  };
+  loop.forEach((point, index) => {
+    const previous = projectedLoop[(index - 1 + loop.length) % loop.length];
+    const current = projectedLoop[index];
+    const next = projectedLoop[(index + 1) % loop.length];
+    const incoming = [current[0] - previous[0], current[1] - previous[1]];
+    const outgoing = [next[0] - current[0], next[1] - current[1]];
+    let turn = Math.atan2(
+      incoming[0] * outgoing[1] - incoming[1] * outgoing[0],
+      incoming[0] * outgoing[0] + incoming[1] * outgoing[1]
+    );
+    if (area2 < 0) turn = -turn;
+    let interior = Math.PI - turn;
+    if (interior <= 0) interior += Math.PI * 2;
+    result.set(key(point), { point: point.slice(), weight: Math.round(interior * 6 / Math.PI) });
+    const following = loop[(index + 1) % loop.length];
+    const delta = following.map((value, axis) => value - point[axis]);
+    const steps = gcd(gcd(delta[0], delta[1]), delta[2]);
+    for (let step = 1; step < steps; step += 1) {
+      const latticePoint = point.map((value, axis) => value + delta[axis] * step / steps);
+      result.set(key(latticePoint), { point: latticePoint, weight: 6 });
+    }
+  });
+  const xs = loop.map(point => point[0]), ys = loop.map(point => point[1]);
+  for (let x = Math.min(...xs); x <= Math.max(...xs); x += 1) {
+    for (let y = Math.min(...ys); y <= Math.max(...ys); y += 1) {
+      const point = [x, y, -x - y];
+      if (!result.has(key(point)) && pointInPolygon(point)) {
+        result.set(key(point), { point, weight: 12 });
+      }
+    }
+  }
+  return result;
+};
+const a2PolygonOccupancy = A2Tiling.a2PolygonOccupancy ?? fallbackPolygonOccupancy;
 
 const add = (left, right) => left.map((value, axis) => value + right[axis]);
 
