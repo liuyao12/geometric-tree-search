@@ -1684,6 +1684,14 @@ assert.ok(slicedSizeNineLeads.every(candidate =>
   && candidate.screening.substitution_four_copy_metatile_types_exhausted > 3000
 ));
 assert.equal(
+  slicedSizeNineLeads.find(candidate => candidate.id === "a2sa_9_11364")
+    ?.screening.substitution_four_copy_reflected_types_exhausted,
+  195075
+);
+assert.ok(slicedSizeNineLeads.filter(candidate => candidate.id !== "a2sa_9_11364").every(
+  candidate => candidate.screening.substitution_four_copy_reflected_scalar_scales_excluded.length === 0
+));
+assert.equal(
   survivors.filter(figure => figure.census_candidate.screening.census_stage === "volume9_fresh_bounded_2026_08_25").length,
   6,
   "the fresh census must add six new free representatives beside the existing deep p9-42947 control"

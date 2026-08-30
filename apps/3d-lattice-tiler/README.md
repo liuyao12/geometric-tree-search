@@ -260,7 +260,9 @@ scales two and three, with proper and reflected orientations, for all 356
 six-copy survivors. On the three exact-through-eight leaders, the analogous
 three-copy screens are also complete in both models and the proper-orientation
 four-copy scale-two screen exhausts 3,246, 20,106, and 57,972 parents without
-finding a closed substitution alphabet. Exact exclusion through eight copies is
+finding a closed substitution alphabet. For `a2sa_9_11364`, the reflected
+four-copy alphabet is also complete: all 195,075 parents have independently
+replayed atomic obstructions. Exact exclusion through eight copies is
 bounded evidence and does not imply aperiodicity. For size eight,
 the exact screen first finds 3,335
 three-copy periods and advances 1,071 shapes to the six-copy screen, which
