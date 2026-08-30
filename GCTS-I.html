@@ -124,7 +124,7 @@
   </main>
 
   <script type="module">
-    import { A2_TILE_LOOPS, FixedTurtleMarking, NoA2Marking, a2Transform, makeHexBoundary, solveA2Tiling, tileOrientations } from './assets/a2-tiling-engine.js?v=20260830-local-frontier-graph';
+    import { A2_TILE_LOOPS, FixedTurtleMarking, NoA2Marking, a2Transform, makeHexBoundary, solveA2Tiling, tileOrientations } from './assets/a2-tiling-engine.js?v=20260830-fast-frontier-graph';
     (() => {
       const canvas = document.getElementById('turtle-tiling');
       if (!canvas) return;
@@ -1672,7 +1672,15 @@
         const stopToken = { stop: false };
         const queue = [];
         const waiters = [];
+        const demandWaiters = [];
+        const maxBufferedEvents = 8;
         let done = false;
+        const releaseDemand = () => {
+          while ((queue.length < maxBufferedEvents || waiters.length) && demandWaiters.length) demandWaiters.shift()();
+        };
+        const waitForSearchDemand = () => queue.length < maxBufferedEvents || waiters.length
+          ? Promise.resolve()
+          : new Promise(resolve => demandWaiters.push(resolve));
         const push = value => {
           const waiter = waiters.shift();
           if (waiter) waiter({ value, done: false });
@@ -1698,16 +1706,22 @@
           targetPlacements: 1000,
           nodeLimit: 1000000,
           marking: useMarking ? new FixedTurtleMarking(markingExtension) : new NoA2Marking(),
-          randomSeed: 2,
+          // These deterministic branch orders keep both comparison modes
+          // representative without making the reader wait through a long,
+          // unlucky prefix before the first complete outward burst.
+          randomSeed: 10,
           stopToken,
+          waitForSearchDemand,
           onEvent: event => { const converted = adapt(event); if (converted) push(converted); }
         }).finally(() => {
           done = true;
+          while (demandWaiters.length) demandWaiters.shift()();
           while (waiters.length) waiters.shift()({ value: undefined, done: true });
         });
         return {
-          next() { if (queue.length) return Promise.resolve({ value: queue.shift(), done: false }); if (done) return Promise.resolve({ value: undefined, done: true }); return new Promise(resolve => waiters.push(resolve)); },
-          cancel() { stopToken.stop = true; }
+          next() { if (queue.length) { const value = queue.shift(); releaseDemand(); return Promise.resolve({ value, done: false }); } if (done) return Promise.resolve({ value: undefined, done: true }); return new Promise(resolve => waiters.push(resolve)); },
+          buffered() { return queue.length; },
+          cancel() { stopToken.stop = true; while (demandWaiters.length) demandWaiters.shift()(); }
         };
       }
 
@@ -1892,6 +1906,18 @@
               // animation beat on them; this makes marked pruning visibly faster.
               continue;
             }
+            if (candidateEvent.type === 'trial' && liveSearchIterator?.buffered?.() > 0) {
+              // When the solver is already ahead, move directly to the state
+              // change instead of spending a separate frame on its preview.
+              continue;
+            }
+            if (candidateEvent.type === 'backtrack' && liveSearchIterator?.buffered?.() > 0) {
+              // Collapse already-computed failed alternatives. A backtrack is
+              // still shown when the search catches up with the display, while
+              // buffered runs emphasize visible forward growth.
+              pendingDeadEnd = null;
+              continue;
+            }
             if (candidateEvent.type === 'fail') {
               pendingDeadEnd = candidateEvent;
               continue;
@@ -1943,7 +1969,7 @@
           } finally {
             playbackTickBusy = false;
           }
-        }, 60);
+        }, 35);
         draw();
       }
 

@@ -96,6 +96,19 @@ assert.equal(new Set(fixed.placements.map(placement => placement.id)).size, 50, 
 assert.equal(fixed.stats.frontierGraphFullBuilds, 1, "the fixed-marking search initializes the frontier graph once");
 assert.ok(fixed.stats.frontierGraphLocalUpdates > 0, "placements must update the frontier graph locally");
 assert.ok(fixed.stats.frontierGraphEdgeRevalidations > 0, "local updates must revalidate incident candidate edges");
+const fastArticleBurst = await solveA2Tiling({
+  boundary: makeHexBoundary(220),
+  seed: fixedSeed,
+  tiles: ["turtle"],
+  maximize: true,
+  targetPlacements: 30,
+  nodeLimit: 1000,
+  marking: new NoA2Marking(),
+  randomSeed: 10
+});
+assert.equal(fastArticleBurst.result, "yes", "the unmarked article demo must complete its first visible burst");
+assert.equal(fastArticleBurst.placements.length, 30);
+assert.ok(fastArticleBurst.stats.nodes <= 100, "the article branch order must not regress to a long invisible backtracking prefix");
 const occupiedTriangles = new Set(polygonCells(fixedSeed.loop));
 for (const placement of fixed.placements) {
   for (const cell of polygonCells(placement.loop)) {
