@@ -1,5 +1,29 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 370 · finite-catalog kinetic-to-geometric response
+
+The temperature program now connects event competition back to actual returned
+geometry. For every candidate, the portal derives its exact material atom-count
+change from the path endpoints and reuses the threshold-explicit contact audit
+to obtain net contact change, coordination change, geometric character, and
+maximum adjacent-image displacement. At each authorized temperature, nominal
+finite-catalog probabilities then yield growth, shrinkage, and count-preserving
+probability mass together with the expected material `ΔN` for the next event.
+
+A second response band plots `E[ΔN]` and the conditional expected net contact
+change over temperature. Its inspection readout reports the resolved contact
+probability mass, dominant geometric character, and expected maximum adjacent
+displacement. The existing 1.15/1.35/1.60 `d_nn` contact selector recomputes the
+contact response without changing any path, rate, or candidate. An unresolved
+local reference remains missing data rather than contributing a false zero.
+
+This is deliberately a next-event expectation, not a morphology forecast. The
+frontier is not assumed to remain unchanged after an event, no trajectory or
+clock is integrated, and nominal HTST probabilities are not presented as an
+uncertainty-propagated response. The receipt records those negative claims,
+the active contact reach, the probability partition, conditional coverage, and
+the inspected geometric expectation.
+
 ## Build 369 · temperature-programmed finite-catalog kinetics
 
 The frozen-event checkpoint can now expose which returned mechanism family

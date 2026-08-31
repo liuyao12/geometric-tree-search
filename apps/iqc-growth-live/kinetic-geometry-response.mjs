@@ -1,0 +1,152 @@
+import { analyzeActionPathMechanism }
+  from "./action-path-mechanism.mjs?v=20260831-370";
+import { buildFrozenKineticCompetition }
+  from "./frozen-frontier-kinetics.mjs?v=20260831-370";
+import { buildTemperatureProgrammedKinetics }
+  from "./temperature-programmed-kinetics.mjs?v=20260831-370";
+
+export const KINETIC_GEOMETRY_CHARACTERS = Object.freeze([
+  "contact-forming", "contact-breaking", "contact exchange / reconstructive",
+  "displacive at this contact reach",
+]);
+
+function probabilityMass(records, predicate) {
+  return records.filter(predicate).reduce((sum, record) =>
+    sum + record.probabilityWithinFrozenCatalog, 0);
+}
+
+function transitionIntervals(samples, field) {
+  const intervals = [];
+  for (let index = 1; index < samples.length; index += 1) {
+    if (samples[index - 1][field] === samples[index][field]) continue;
+    intervals.push({ from: samples[index - 1][field], to: samples[index][field],
+      lowerKelvin: Math.min(samples[index - 1].temperatureKelvin,
+        samples[index].temperatureKelvin),
+      upperKelvin: Math.max(samples[index - 1].temperatureKelvin,
+        samples[index].temperatureKelvin) });
+  }
+  return intervals;
+}
+
+function eventGeometry(record, contactReach) {
+  if (!record?.pathGeometry?.coordinateBearingImagesValidated) {
+    throw new Error(`candidate ${record?.candidateId || "unknown"} lacks a validated coordinate path`);
+  }
+  const mechanism = analyzeActionPathMechanism(record.pathGeometry, { contactReach });
+  const initialMaterialCount = record.pathGeometry.materialCounts[0];
+  const finalMaterialCount = record.pathGeometry.materialCounts.at(-1);
+  const initialCoordination = mechanism.perImage[0].meanDynamicCoordination;
+  const finalCoordination = mechanism.perImage.at(-1).meanDynamicCoordination;
+  return {
+    candidateId: record.candidateId,
+    eventDirection: record.eventDirection,
+    materialAtomDelta: finalMaterialCount - initialMaterialCount,
+    contactResolved: mechanism.referenceAvailable,
+    netContactDelta: mechanism.referenceAvailable
+      ? mechanism.netFormedContactCount - mechanism.netBrokenContactCount : null,
+    netFormedContactCount: mechanism.referenceAvailable
+      ? mechanism.netFormedContactCount : null,
+    netBrokenContactCount: mechanism.referenceAvailable
+      ? mechanism.netBrokenContactCount : null,
+    meanDynamicCoordinationDelta: mechanism.referenceAvailable
+      ? finalCoordination - initialCoordination : null,
+    maximumAdjacentDisplacementAngstrom: record.pathGeometry.maximumSiteDisplacementAngstrom,
+    geometricCharacter: mechanism.referenceAvailable ? mechanism.geometricCharacter : null,
+    contactReach: mechanism.contactReach,
+    referenceLengthAngstrom: mechanism.referenceLengthAngstrom,
+  };
+}
+
+export function buildKineticGeometryResponse(records, applicability, {
+  contactReach = 1.35,
+  sampleCount = 41,
+} = {}) {
+  const temperatureProgram = buildTemperatureProgrammedKinetics(records, applicability,
+    { sampleCount });
+  if (!temperatureProgram.available) {
+    return { schema: 1, available: false, reason: temperatureProgram.reason,
+      temperatureProgram, targetUsed: false, candidateSetChanged: false,
+      geometricEndpointsChanged: false,
+      claimBoundary: "A geometric response is withheld when the bounded temperature program is not externally authorized." };
+  }
+  const geometry = records.map((record) => eventGeometry(record, contactReach));
+  const geometryById = new Map(geometry.map((record) => [record.candidateId, record]));
+  const samples = temperatureProgram.samples.map((temperatureSample) => {
+    const competition = buildFrozenKineticCompetition(records,
+      { temperatureKelvin: temperatureSample.temperatureKelvin, mode: "rate-maximum" });
+    const weighted = competition.records.map((rate) => ({ ...rate,
+      geometry: geometryById.get(rate.candidateId) }));
+    const growingProbability = probabilityMass(weighted,
+      (record) => record.geometry.materialAtomDelta > 0);
+    const shrinkingProbability = probabilityMass(weighted,
+      (record) => record.geometry.materialAtomDelta < 0);
+    const countPreservingProbability = probabilityMass(weighted,
+      (record) => record.geometry.materialAtomDelta === 0);
+    const expectedMaterialAtomDeltaPerEvent = weighted.reduce((sum, record) =>
+      sum + record.probabilityWithinFrozenCatalog * record.geometry.materialAtomDelta, 0);
+    const contactResolvedProbabilityMass = probabilityMass(weighted,
+      (record) => record.geometry.contactResolved);
+    const contactWeighted = weighted.filter((record) => record.geometry.contactResolved);
+    const conditionalExpectedNetContactDeltaPerResolvedEvent = contactResolvedProbabilityMass
+      ? contactWeighted.reduce((sum, record) => sum
+        + record.probabilityWithinFrozenCatalog * record.geometry.netContactDelta, 0)
+        / contactResolvedProbabilityMass : null;
+    const conditionalExpectedCoordinationDeltaPerResolvedEvent = contactResolvedProbabilityMass
+      ? contactWeighted.reduce((sum, record) => sum
+        + record.probabilityWithinFrozenCatalog
+          * record.geometry.meanDynamicCoordinationDelta, 0)
+        / contactResolvedProbabilityMass : null;
+    const expectedMaximumAdjacentDisplacementAngstrom = weighted.reduce((sum, record) =>
+      sum + record.probabilityWithinFrozenCatalog
+        * record.geometry.maximumAdjacentDisplacementAngstrom, 0);
+    const geometricCharacterProbabilityMass = Object.fromEntries(KINETIC_GEOMETRY_CHARACTERS
+      .map((character) => [character, probabilityMass(weighted,
+        (record) => record.geometry.geometricCharacter === character)]));
+    const dominantResolvedGeometricCharacter = contactResolvedProbabilityMass
+      ? [...KINETIC_GEOMETRY_CHARACTERS].sort((first, second) =>
+        geometricCharacterProbabilityMass[second] - geometricCharacterProbabilityMass[first]
+        || first.localeCompare(second))[0] : null;
+    return {
+      temperatureKelvin: temperatureSample.temperatureKelvin,
+      fastestCandidateId: temperatureSample.fastestCandidateId,
+      fastestEventDirection: temperatureSample.fastestEventDirection,
+      growingProbability, shrinkingProbability, countPreservingProbability,
+      signedGrowthBias: growingProbability - shrinkingProbability,
+      expectedMaterialAtomDeltaPerEvent,
+      contactResolvedProbabilityMass,
+      conditionalExpectedNetContactDeltaPerResolvedEvent,
+      conditionalExpectedCoordinationDeltaPerResolvedEvent,
+      expectedMaximumAdjacentDisplacementAngstrom,
+      geometricCharacterProbabilityMass,
+      dominantResolvedGeometricCharacter,
+      log10TotalRatePerSecond: competition.log10TotalRatePerSecond,
+    };
+  });
+  return {
+    schema: 1,
+    available: true,
+    model: "finite-catalog one-event kinetic-to-geometric response",
+    contactReach: Number(contactReach),
+    candidateCount: geometry.length,
+    temperatureProgram,
+    eventGeometry: geometry,
+    samples,
+    dominantCharacterCrossovers: transitionIntervals(samples,
+      "dominantResolvedGeometricCharacter"),
+    targetUsed: false,
+    candidateSetChanged: false,
+    geometricEndpointsChanged: false,
+    physicalTrajectoryIntegrated: false,
+    futureFrontierAssumedUnchanged: false,
+    uncertaintyPropagatedIntoResponse: false,
+    claimBoundary: "This is the nominal expectation for the next event inside one unchanged finite frontier catalog. Contact expectations are conditional on the probability mass with a derived local contact reference. It does not keep the frontier fixed after an event, integrate morphology or time, propagate model uncertainty, discover missing events, or predict a bulk growth regime.",
+  };
+}
+
+export function inspectKineticGeometryResponse(response, temperatureKelvin) {
+  if (!response?.available || !response.samples.length) return null;
+  const value = Number(temperatureKelvin);
+  if (!Number.isFinite(value)) throw new TypeError("temperatureKelvin must be finite");
+  return [...response.samples].sort((first, second) =>
+    Math.abs(first.temperatureKelvin - value) - Math.abs(second.temperatureKelvin - value))[0];
+}

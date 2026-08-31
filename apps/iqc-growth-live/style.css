@@ -2494,3 +2494,20 @@ body.study-guide-open { overflow: hidden; }
 .multiphysics-cycle-card > p:last-child { padding:7px 8px; border-left:2px solid #b594ff; background:rgba(181,148,255,.035); color:#7e7693; }
 @media (max-width:1000px) { .multiphysics-cycle-flow { grid-template-columns:repeat(3,minmax(0,1fr)); }.multiphysics-cycle-flow article:nth-child(3)::after { display:none; } }
 @media (max-width:650px) { .multiphysics-cycle-card > header,.multiphysics-cycle-controls { grid-template-columns:1fr; }.multiphysics-cycle-flow { grid-template-columns:repeat(2,minmax(0,1fr)); }.multiphysics-cycle-flow article:nth-child(2n)::after { display:none; }.coupled-state-channels { grid-template-columns:1fr; }.kinetic-chronology-metrics { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+.kinetic-geometry-response { display: grid; grid-template-columns: minmax(0,1fr); gap: 4px; margin-top: 2px; padding: 5px; border: 1px solid rgba(214,156,255,.14); border-radius: 4px; background: radial-gradient(circle at 15% 10%,rgba(101,225,188,.045),transparent 48%),rgba(12,8,18,.3); }
+.kinetic-geometry-response header { display: flex; justify-content: space-between; gap: 8px; }
+.kinetic-geometry-response header span { display: grid; gap: 1px; }
+.kinetic-geometry-response header small { color: #77638b; font: 4px var(--mono); text-transform: uppercase; letter-spacing: .04em; }
+.kinetic-geometry-response header strong { color: #c6addd; font: 5.5px var(--mono); font-weight: 500; }
+.kinetic-geometry-response header b { color: #9178a7; font: 4.3px var(--mono); font-weight: 400; text-align: right; }
+.kinetic-geometry-response svg { display: block; width: 100%; height: 168px; border-radius: 4px; background: linear-gradient(180deg,rgba(101,225,188,.018),rgba(214,156,255,.018)); }
+.kinetic-geometry-response .axis-label { fill: #776b82; font: 4.8px var(--mono); }
+.kinetic-geometry-response .zero { stroke: rgba(255,255,255,.16); stroke-width: .7; stroke-dasharray: 2 2; }
+.kinetic-geometry-response .atom-response,.kinetic-geometry-response .contact-response { fill: none; vector-effect: non-scaling-stroke; }
+.kinetic-geometry-response .atom-response { stroke: #65e1bc; stroke-width: 1.6; }
+.kinetic-geometry-response .contact-response { stroke: #d69cff; stroke-width: 1.4; }
+.kinetic-geometry-response .inspection { stroke: #ffc169; stroke-width: 1.1; filter: drop-shadow(0 0 2px rgba(255,193,105,.48)); }
+.kinetic-geometry-response-summary { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 3px; }
+.kinetic-geometry-response-summary span { min-width: 0; padding: 4px; border: 1px solid rgba(214,156,255,.1); color: #766780; font: 4px/1.3 var(--mono); text-transform: uppercase; }
+.kinetic-geometry-response-summary strong { display: block; margin-top: 2px; overflow: hidden; color: #c1acce; font: 5px var(--mono); font-weight: 500; text-overflow: ellipsis; text-transform: none; white-space: nowrap; }
+.kinetic-geometry-response > p { margin: 0 !important; color: #75697b !important; font: 4.4px/1.5 var(--mono); }

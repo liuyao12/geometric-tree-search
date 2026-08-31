@@ -16,7 +16,7 @@ for (const document of [html, alias]) {
   assert.match(document, /Kinetic-Wulff growth habit/);
   assert.match(document, /Compare externally validated steady interface velocities with equilibrium γ/);
 }
-assert.match(app, /external-attachment-kinetics\.mjs\?v=20260831-369/);
+assert.match(app, /external-attachment-kinetics\.mjs\?v=20260831-370/);
 assert.match(app, /buildAttachmentKineticsRequest/);
 assert.match(app, /validateAttachmentKineticsResponse/);
 assert.match(app, /evaluateKineticHabitScore/);

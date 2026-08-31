@@ -1,5 +1,38 @@
 # Recursive GCTS benchmark for material growth
 
+### Finite-catalog kinetic-to-geometric response (Build 370)
+
+The bounded temperature map now answers a structural question rather than only
+ranking rates: what geometry is associated with the next event in this exact
+frontier? Each externally validated candidate contributes an endpoint material
+population change, maximum adjacent-image displacement, and one geometric path
+fingerprint at the investigator's explicit contact reach. The fingerprint
+contains net contact formation/breaking, initial-to-final dynamic coordination
+change, and its threshold-local geometric character.
+
+At each inverse-temperature sample the same nominal HTST probabilities weight
+these candidate observables. The complete population partition reports
+`P(ΔN>0)`, `P(ΔN<0)`, and `P(ΔN=0)`, while `E[ΔN]` preserves the actual support
+size of each event. Contact statistics are handled more cautiously: candidates
+without a derived local reference are not assigned zero contact change. The
+portal reports their unresolved probability mass and computes net contact and
+coordination expectations only conditional on the resolved mass. It also
+reports the probability-weighted maximum adjacent-image displacement and
+dominant resolved geometric character.
+
+The two-band interactive plot places expected atom-count change and conditional
+net contact change on separate signed axes and shares the temperature cursor
+with the Arrhenius map. Changing the contact multiplier recomputes only the
+geometric interpretation. The immutable candidate set, external coordinates,
+barriers, prefactors, and hard-admission decisions remain untouched.
+
+This result is explicitly local and one-step. After one event the frontier and
+its rates generally change; the portal does not assume otherwise, integrate a
+trajectory, extrapolate a morphology, propagate correlated barrier/prefactor
+uncertainty through the response, or infer missing mechanisms. Those limits are
+stored in the receipt alongside the active threshold, probability partition,
+resolved mass, and inspected response.
+
 ### Temperature-programmed finite-catalog kinetics (Build 369)
 
 The exact frozen frontier now has an evidence-bounded temperature dimension.
