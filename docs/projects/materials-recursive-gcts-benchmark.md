@@ -1,5 +1,38 @@
 # Recursive GCTS benchmark for material growth
 
+### Exact successful-arrival distribution (Build 384)
+
+Build 384 evaluates the full successful first-arrival distribution of the
+finite observed graph. From the Doob-conditioned transient generator `Q*`, the
+source survival function is the phase-type expression
+
+`S(t) = α exp(Q*t) 1`,
+
+and the arrival CDF is `F(t)=1-S(t)`. The implementation augments the target as
+an absorbing state and evaluates the exponential by uniformization. Long
+dimensionless times are split into bounded segments, avoiding underflow in a
+single large Poisson factor while preserving the semigroup exactly up to the
+declared `10⁻¹²` truncation tolerance.
+
+Quantiles are inverted deterministically from the same CDF. The report retains
+`q05`, median, `q95`, and `q99` in scaled time, relative to the conditional
+mean, log physical seconds, and physical seconds when representable. Timeline
+samples additionally expose normalized arrival density and hazard per
+conditional-mean time. The visible log-time curve and `q95/q05` ratio reveal
+whether fixed-rate successful passage is narrow, broadly tailed, or staged.
+
+Analytic gates cover a one-edge exponential law, a target-conditioned
+success/failure branch whose waiting time still includes the full competing
+exit rate, and a serial two-exponential hypoexponential law. Numerical gates
+require stochastic uniformization rows, monotone CDF, survival plus arrival
+equal to one, accurate quantile inversion, and bounded accumulated Poisson
+tail error.
+
+This is a phase-type distribution within one finite observed fixed-rate
+catalog. It is not a trajectory histogram, confidence or credible interval,
+barrier/prefactor uncertainty, mechanism-complete transition-path theory, or
+macroscopic solid-growth time distribution.
+
 ### Exact successful-path heterogeneity (Build 383)
 
 Build 383 extends the conditioned finite-network calculation from means to

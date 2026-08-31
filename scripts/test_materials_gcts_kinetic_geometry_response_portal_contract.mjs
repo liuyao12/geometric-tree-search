@@ -11,9 +11,9 @@ const benchmark = fs.readFileSync("docs/projects/materials-recursive-gcts-benchm
 for (const document of [html, alias]) {
   assert.match(document, /kineticGeometryResponsePlot/);
   assert.match(document, /Kinetic → geometric response/);
-  assert.match(document, /app\.js\?v=20260831-383/);
+  assert.match(document, /app\.js\?v=20260831-384/);
 }
-assert.match(app, /kinetic-geometry-response\.mjs\?v=20260831-383/);
+assert.match(app, /kinetic-geometry-response\.mjs\?v=20260831-384/);
 assert.match(app, /expectedMaterialAtomDeltaPerEvent/);
 assert.match(app, /futureFrontierAssumedUnchanged: false/);
 assert.match(response, /contactResolvedProbabilityMass/);

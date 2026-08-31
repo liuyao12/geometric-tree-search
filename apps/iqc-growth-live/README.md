@@ -1,5 +1,29 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 384 · exact successful-arrival distribution
+
+The portal now resolves the complete finite-catalog distribution of successful
+arrival times rather than stopping at a mean and variance. It forms the
+Doob-conditioned phase-type generator and evaluates its matrix exponential by
+segmented uniformization. The displayed cumulative-arrival curve is therefore
+a deterministic solution of the fixed observed-rate model, not a histogram of
+sampled kinetic trajectories.
+
+The panel reports 5%, median, 95%, and 99% arrival times relative to the
+conditional mean and in physical seconds whenever the supplied rate scale is
+numerically representable. A logarithmic time axis makes early passage and a
+long tail visible together. The 5–95% ratio quantifies intrinsic pathway-time
+breadth, while the normalized instantaneous hazard near the median exposes
+whether successful arrival behaves like one simple timescale or a staged
+network passage.
+
+One-edge exponential, conditioned success/failure branch, and two-step serial
+controls pass analytically. The implementation audits stochastic-matrix rows,
+survival/CDF complementarity, monotonic arrival, quantile inversion residuals,
+and accumulated Poisson-tail bounds. These fixed-rate quantiles are separate
+from Build 378 rate-uncertainty bands: they are neither confidence intervals
+nor evidence for a complete mechanism catalog or bulk growth-time law.
+
 ## Build 383 · exact successful-path heterogeneity
 
 The successful-passage analysis now distinguishes mandatory steps, optional

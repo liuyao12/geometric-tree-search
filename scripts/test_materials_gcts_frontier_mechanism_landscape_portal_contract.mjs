@@ -12,9 +12,9 @@ const benchmark = fs.readFileSync("docs/projects/materials-recursive-gcts-benchm
 for (const document of [html, alias]) {
   assert.match(document, /frontierMechanismLandscapePlot/);
   assert.match(document, /Barrier–driving mechanism landscape/);
-  assert.match(document, /app\.js\?v=20260831-383/);
+  assert.match(document, /app\.js\?v=20260831-384/);
 }
-assert.match(app, /frontier-mechanism-landscape\.mjs\?v=20260831-383/);
+assert.match(app, /frontier-mechanism-landscape\.mjs\?v=20260831-384/);
 assert.match(app, /jointProbabilityMass/);
 assert.match(landscape, /thermodynamicAndKineticTemperatureCoherent: true/);
 assert.match(landscape, /A potential-energy saddle is not relabeled/);
