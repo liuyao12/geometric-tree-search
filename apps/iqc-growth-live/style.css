@@ -1244,6 +1244,55 @@ body.study-guide-open { overflow: hidden; }
 .continuation-evidence-steps article.pass > small { border-color:#65e1bc; background:#0b211b; color:#8ff1d4; box-shadow:0 0 10px rgba(101,225,188,.19); }
 .continuation-evidence-steps article.pass strong { color:#bdf5e4; }
 .continuation-evidence-ladder > p { margin:7px 2px 0; padding-top:7px; border-top:1px solid rgba(181,148,255,.12); color:#7f7891; font:5px/1.5 var(--sans); }
+.hierarchy-evidence-microscope { position:relative; margin:9px 0; padding:10px; overflow:hidden; border:1px solid rgba(94,211,202,.28); background:radial-gradient(circle at 8% 0,rgba(57,172,161,.13),transparent 38%),linear-gradient(150deg,rgba(4,20,24,.98),rgba(5,11,20,.97)); }
+.hierarchy-evidence-microscope::after { content:""; position:absolute; top:-42px; right:-34px; width:120px; height:120px; border:1px solid rgba(94,211,202,.12); border-radius:50%; box-shadow:0 0 0 19px rgba(94,211,202,.025),0 0 0 39px rgba(181,148,255,.018); pointer-events:none; }
+.hierarchy-evidence-microscope[hidden] { display:none; }
+.hierarchy-evidence-microscope > header,.hierarchy-evidence-body > section > header,.hierarchy-claim-panel > header { position:relative; z-index:1; display:flex; align-items:flex-end; justify-content:space-between; gap:8px; }
+.hierarchy-evidence-microscope header span,.hierarchy-evidence-microscope header small,.hierarchy-evidence-microscope header strong { display:block; }
+.hierarchy-evidence-microscope > header small,.hierarchy-evidence-body > section > header small { color:#6aa6a4; font:5px var(--mono); text-transform:uppercase; letter-spacing:.1em; }
+.hierarchy-evidence-microscope > header strong,.hierarchy-evidence-body > section > header strong { margin-top:3px; color:#c5f2ea; font:9px Arial,sans-serif; font-weight:560; }
+.hierarchy-evidence-microscope > header > b { max-width:45%; padding:3px 5px; border:1px solid rgba(94,211,202,.38); color:#85dfd4; font:4.5px/1.3 var(--mono); font-weight:400; text-align:right; text-transform:uppercase; }
+.hierarchy-evidence-toolbar { position:relative; z-index:1; display:grid; gap:5px; margin-top:8px; }
+.hierarchy-evidence-toolbar label { display:grid; gap:3px; }
+.hierarchy-evidence-toolbar label span { color:#71999a; font:4.7px var(--mono); text-transform:uppercase; letter-spacing:.07em; }
+.hierarchy-evidence-toolbar select { width:100%; min-width:0; padding:5px 20px 5px 6px; border:1px solid rgba(94,211,202,.28); background:#07171c; color:#b9e6df; font:5px Arial,sans-serif; }
+.hierarchy-evidence-toolbar p { align-self:end; margin:0; color:#667f84; font:4.6px/1.45 Arial,sans-serif; }
+.hierarchy-evidence-summary { position:relative; z-index:1; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:4px; margin-top:7px; }
+.hierarchy-evidence-summary article { min-width:0; padding:6px; border:1px solid rgba(92,136,143,.18); background:rgba(3,13,19,.73); }
+.hierarchy-evidence-summary small,.hierarchy-evidence-summary strong,.hierarchy-evidence-summary span { display:block; overflow:hidden; text-overflow:ellipsis; }
+.hierarchy-evidence-summary small { color:#607b81; font:4.2px var(--mono); text-transform:uppercase; white-space:nowrap; }
+.hierarchy-evidence-summary strong { margin-top:3px; color:#d3faf3; font:9px var(--mono); font-weight:450; }
+.hierarchy-evidence-summary span { margin-top:2px; color:#648086; font:4.2px/1.35 Arial,sans-serif; }
+.hierarchy-evidence-body { position:relative; z-index:1; display:grid; gap:7px; margin-top:7px; }
+.hierarchy-evidence-body > section { min-width:0; padding:7px; border:1px solid rgba(92,136,143,.16); background:rgba(2,10,16,.68); }
+.hierarchy-evidence-body > section > p { margin:3px 0 0; color:#688289; font:4.5px/1.4 Arial,sans-serif; }
+.hierarchy-evidence-levels { display:grid; gap:4px; margin-top:7px; }
+.hierarchy-evidence-levels article { display:grid; grid-template-columns:32px minmax(0,1fr); align-items:center; gap:4px 5px; padding:5px; border-left:2px solid #58b9ae; background:linear-gradient(90deg,rgba(32,111,103,.12),rgba(4,13,19,.4)); }
+.hierarchy-evidence-levels article.exhausted { border-left-color:#b56f72; background:linear-gradient(90deg,rgba(134,55,62,.13),rgba(4,13,19,.4)); }
+.hierarchy-evidence-levels article header { display:block; }
+.hierarchy-evidence-levels article header strong { color:#bcece5; font:7px var(--mono); }
+.hierarchy-evidence-levels article header b { display:block; margin-top:1px; color:#7ba19f; font:4px var(--mono); font-weight:400; white-space:nowrap; }
+.hierarchy-level-bars { display:grid; gap:2px; }
+.hierarchy-level-bars i { position:relative; display:block; height:4px; overflow:hidden; border:1px solid rgba(110,146,150,.18); background:rgba(10,25,30,.85); }
+.hierarchy-level-bars i::after { content:""; position:absolute; inset:0; width:calc(100% * var(--fraction)); background:linear-gradient(90deg,#58b9ae,#78dfcb); }
+.hierarchy-level-bars i.atoms::after { background:linear-gradient(90deg,#8c78d7,#b594ff); }
+.hierarchy-evidence-levels article p { grid-column:1 / -1; margin:0; color:#799197; font:4.25px/1.35 Arial,sans-serif; }
+.hierarchy-evidence-levels article > small { grid-column:1 / -1; color:#596f75; font:3.9px/1.3 var(--mono); }
+.hierarchy-claim-ladder { display:grid; gap:3px; margin-top:7px; }
+.hierarchy-claim-ladder article { display:grid; grid-template-columns:17px minmax(0,1fr); gap:2px 5px; align-items:center; padding:5px; border:1px solid rgba(100,125,133,.14); background:rgba(3,10,16,.62); }
+.hierarchy-claim-ladder article small { grid-row:1 / 3; display:grid; width:15px; height:15px; place-items:center; border:1px solid #53666d; border-radius:50%; color:#637a82; font:4px var(--mono); }
+.hierarchy-claim-ladder article strong { color:#71858c; font:4.7px Arial,sans-serif; font-weight:500; }
+.hierarchy-claim-ladder article b { color:#4f6269; font:3.8px var(--mono); font-weight:400; text-transform:uppercase; }
+.hierarchy-claim-ladder article.pass { border-color:rgba(94,211,202,.24); background:rgba(31,101,94,.09); }
+.hierarchy-claim-ladder article.pass small { border-color:#58b9ae; color:#78dfcb; }
+.hierarchy-claim-ladder article.pass strong { color:#b7e8e1; }
+.hierarchy-claim-ladder article.pass b { color:#6dadab; }
+.hierarchy-claim-ladder article.highest { box-shadow:inset 2px 0 #78dfcb,0 0 12px rgba(94,211,202,.07); }
+.hierarchy-claim-ladder article.open { opacity:.62; }
+.hierarchy-evidence-diagnosis { position:relative; z-index:1; margin-top:7px; padding:7px; border:1px solid rgba(240,201,106,.19); background:linear-gradient(90deg,rgba(122,91,30,.1),rgba(3,12,17,.64)); }
+.hierarchy-evidence-diagnosis strong { color:#e4cc8f; font:5.4px Arial,sans-serif; font-weight:560; }
+.hierarchy-evidence-diagnosis p { margin:3px 0 0; color:#998d70; font:4.7px/1.48 Arial,sans-serif; }
+.hierarchy-evidence-microscope > p { position:relative; z-index:1; margin:7px 1px 0; padding-top:7px; border-top:1px solid rgba(94,211,202,.12); color:#677d82; font:4.6px/1.48 Arial,sans-serif; }
 .nucleation-landscape-inspector[hidden] { display: none; }
 .nucleation-landscape-inspector header { display: flex; justify-content: space-between; gap: 8px; align-items: end; }
 .nucleation-landscape-inspector header span,.nucleation-landscape-inspector header small,.nucleation-landscape-inspector header strong { display: block; }

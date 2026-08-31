@@ -1,5 +1,32 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 388 · hierarchy evidence microscope
+
+The material-growth stage now makes the cluster-of-clusters evidence chain
+inspectable instead of leaving it inside long benchmark prose. A compact
+interactive microscope compares four frozen receipts: ideal-IQC held-out
+re-encoding, ideal-IQC train compression, published Cd–Yb partial transfer,
+and the learned NaCl stationary positive control. At every hierarchy level it
+shows frozen versus active types, exact occurrence count, atoms carried by
+active supports, explicit residual terminals, and measured support-size
+amplification where that quantity was actually reported.
+
+The adjacent claim ladder deliberately separates five propositions: complete
+representation, recurring local supports, frozen held-out re-encoding,
+stationary recurrence, and autonomous unseen emission. The IQC receipt can
+therefore show exact 1,248-site accounting and four transferred vocabulary
+levels while still stopping at re-encoding; its 148 → 10 → 4 → 1 type
+attrition and zero common three-level production keys stay visible. Cd–Yb
+shows active vocabulary exhaustion at level five. NaCl reaches the stationary
+rung, but remains labelled as a periodic positive control rather than evidence
+for a generic off-lattice quasicrystal law.
+
+All numbers are immutable backend benchmark receipts, not a hidden browser
+rerun or a fit to the currently displayed specimen. Held-out re-encoding
+observes held-out coordinates for exact matching, residual atoms preserve
+coordinate/species completeness, and neither operation is called target-blind
+growth. No panel infers energy, physical time, rate, or an MD replacement.
+
 ## Build 387 · reciprocal-space signatures along successful paths
 
 Every externally validated exact state now carries a compact reciprocal-space

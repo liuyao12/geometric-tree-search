@@ -1,5 +1,43 @@
 # Recursive GCTS benchmark for material growth
 
+### Hierarchy evidence microscope (Build 388)
+
+Build 388 promotes the hierarchy claim boundary into an interactive,
+schema-checked portal view. The view is deliberately driven by frozen backend
+receipts rather than recomputing a convenient hierarchy in the browser. Each
+level exposes frozen and active type counts, exact occurrences, active-support
+atom coverage, coordinate/species residual terminals, and support-size
+amplification only when that measurement exists in the receipt.
+
+The strongest ideal-IQC held-out representation has active type counts
+(148\to10\to4\to1), occurrence counts
+(1495\to85\to29\to9), and active-support coverage
+(1220\to1033\to925\to870) of 1,248 atoms. Explicit residuals
+(28\to215\to323\to378) close every representation exactly. This is a
+frozen-vocabulary re-encoding because held-out coordinates are observed while
+enumerating and fitting exact occurrences; it is not target-blind emission.
+No exact normalized production survives three levels and the measured support
+amplification never exceeds (110/78\approx1.410).
+
+The history-free IQC training receipt separately displays the deeper
+(73\to17\to6\to3\to2\to1) derivation-aware quotient over 2,064 pooled atoms,
+including six explicit residual atoms. That is compression evidence only. The
+published Cd–Yb held-out receipt shows frozen/active types
+(80/53\to36/20\to22/8\to15/2\to8/0): exact residual-complete re-encoding
+survives four active levels and then exhausts its seed vocabulary. The learned
+NaCl control alone reaches the stationary rung with one exact normalized
+production witnessed across three scales and 4,194,304 symbolically
+represented sites after seven actions.
+
+The portal orders five claims and highlights only the highest demonstrated
+rung: complete representation, recurring supports, frozen re-encoding,
+stationary recurrence, and autonomous unseen emission. Stationarity requires
+at least three levels and a common exact production key; autonomy requires
+target-blind emitted atoms. A deep tree, residual-complete explanation, or
+large symbolic count cannot silently satisfy either gate. Explicit output
+remains O(N), and the microscope makes no energy, kinetics, physical-time, or
+MD-replacement claim.
+
 ### Reciprocal-space signatures along successful paths (Build 387)
 
 Build 387 adds a reciprocal-space observable to every exact coordinate-bearing

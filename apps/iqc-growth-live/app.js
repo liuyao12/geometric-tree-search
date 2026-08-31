@@ -88,68 +88,70 @@ import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntim
   from "./external-trajectory-geometry.mjs?v=20260830-346";
 import { actionBarrierSha256, buildFrozenActionBarrierRequest, frozenActionBarrierRequestReceipt,
   frozenActionStateGeometrySha256, validateFrozenActionBarrierResponse }
-  from "./external-action-barrier.mjs?v=20260831-387";
+  from "./external-action-barrier.mjs?v=20260831-388";
 import { buildActionPathViewerFrame, projectActionPathViewerFrame }
-  from "./action-path-viewer.mjs?v=20260831-387";
+  from "./action-path-viewer.mjs?v=20260831-388";
 import { actionPathMechanismSensitivity, analyzeActionPathMechanism }
-  from "./action-path-mechanism.mjs?v=20260831-387";
+  from "./action-path-mechanism.mjs?v=20260831-388";
 import { buildFrozenKineticCompetition }
-  from "./frozen-frontier-kinetics.mjs?v=20260831-387";
+  from "./frozen-frontier-kinetics.mjs?v=20260831-388";
 import { buildKineticEventSpectrum }
-  from "./kinetic-event-spectrum.mjs?v=20260831-387";
+  from "./kinetic-event-spectrum.mjs?v=20260831-388";
 import { buildTemperatureProgrammedKinetics, inspectTemperatureProgram }
-  from "./temperature-programmed-kinetics.mjs?v=20260831-387";
+  from "./temperature-programmed-kinetics.mjs?v=20260831-388";
 import { buildKineticGeometryResponse, inspectKineticGeometryResponse }
-  from "./kinetic-geometry-response.mjs?v=20260831-387";
+  from "./kinetic-geometry-response.mjs?v=20260831-388";
 import { buildFrontierMechanismLandscape }
-  from "./frontier-mechanism-landscape.mjs?v=20260831-387";
+  from "./frontier-mechanism-landscape.mjs?v=20260831-388";
 import { enumerateDetachableLeafPlacements }
   from "./reversible-frontier-events.mjs?v=20260831-347";
 import { enumerateMassConservingSurfaceHops }
-  from "./surface-hop-events.mjs?v=20260831-387";
+  from "./surface-hop-events.mjs?v=20260831-388";
 import { enumerateLocalSpeciesExchangeEvents }
-  from "./species-exchange-events.mjs?v=20260831-387";
+  from "./species-exchange-events.mjs?v=20260831-388";
 import { buildExternalStateRelaxationRequest, stateRelaxationSha256,
   validateExternalStateRelaxationResponse }
-  from "./external-state-relaxation.mjs?v=20260831-387";
+  from "./external-state-relaxation.mjs?v=20260831-388";
 import { appendCommittedTransition }
-  from "./reversible-transition-lineage.mjs?v=20260831-387";
+  from "./reversible-transition-lineage.mjs?v=20260831-388";
 import { buildFiniteTransitionNetwork }
   from "./finite-transition-network.mjs?v=20260831-352";
 import { buildFiniteNetworkPopulationDynamics }
-  from "./finite-network-population-dynamics.mjs?v=20260831-387";
+  from "./finite-network-population-dynamics.mjs?v=20260831-388";
 import { buildFiniteNetworkGeometricFlux }
-  from "./finite-network-geometric-flux.mjs?v=20260831-387";
+  from "./finite-network-geometric-flux.mjs?v=20260831-388";
 import { buildFiniteNetworkStructuralFlux }
-  from "./finite-network-structural-flux.mjs?v=20260831-387";
+  from "./finite-network-structural-flux.mjs?v=20260831-388";
 import { buildGeometricStateDescriptor, materialEndpointSites }
-  from "./geometric-state-descriptor.mjs?v=20260831-387";
+  from "./geometric-state-descriptor.mjs?v=20260831-388";
 import { buildFiniteNetworkGlobalOrder }
-  from "./finite-network-global-order.mjs?v=20260831-387";
+  from "./finite-network-global-order.mjs?v=20260831-388";
 import { auditCompetingObservedTransitionPaths }
   from "./finite-transition-pathways.mjs?v=20260831-352";
 import { buildFiniteNetworkFirstPassage }
-  from "./finite-network-first-passage.mjs?v=20260831-387";
+  from "./finite-network-first-passage.mjs?v=20260831-388";
 import { buildFiniteNetworkFirstPassageUncertainty }
-  from "./finite-network-first-passage-uncertainty.mjs?v=20260831-387";
+  from "./finite-network-first-passage-uncertainty.mjs?v=20260831-388";
 import { buildFiniteNetworkPassageControl }
-  from "./finite-network-passage-control.mjs?v=20260831-387";
+  from "./finite-network-passage-control.mjs?v=20260831-388";
 import { buildFiniteNetworkRateIntervention }
-  from "./finite-network-rate-intervention.mjs?v=20260831-387";
+  from "./finite-network-rate-intervention.mjs?v=20260831-388";
 import { buildFiniteNetworkTemperatureIntervention }
-  from "./finite-network-temperature-intervention.mjs?v=20260831-387";
+  from "./finite-network-temperature-intervention.mjs?v=20260831-388";
 import { buildFiniteNetworkConditionedPassage }
-  from "./finite-network-conditioned-passage.mjs?v=20260831-387";
+  from "./finite-network-conditioned-passage.mjs?v=20260831-388";
 import { buildFiniteNetworkConditionedHeterogeneity }
-  from "./finite-network-conditioned-heterogeneity.mjs?v=20260831-387";
+  from "./finite-network-conditioned-heterogeneity.mjs?v=20260831-388";
 import { buildFiniteNetworkConditionedArrival }
-  from "./finite-network-conditioned-arrival.mjs?v=20260831-387";
+  from "./finite-network-conditioned-arrival.mjs?v=20260831-388";
 import { buildFiniteNetworkConditionedStructuralPath }
-  from "./finite-network-conditioned-structural-path.mjs?v=20260831-387";
+  from "./finite-network-conditioned-structural-path.mjs?v=20260831-388";
 import { buildFiniteNetworkConditionedStructuralDispersion }
-  from "./finite-network-conditioned-structural-dispersion.mjs?v=20260831-387";
+  from "./finite-network-conditioned-structural-dispersion.mjs?v=20260831-388";
 import { buildFiniteNetworkConditionedScatteringPath }
-  from "./finite-network-conditioned-scattering-path.mjs?v=20260831-387";
+  from "./finite-network-conditioned-scattering-path.mjs?v=20260831-388";
+import { buildHierarchyEvidenceMicroscope }
+  from "./hierarchy-evidence-microscope.mjs?v=20260831-388";
 import { buildFiniteNucleationLandscape }
   from "./finite-nucleation-landscape.mjs?v=20260831-352";
 import { buildInterfacialEnergyRequest, buildNormalizedWulffGeometry,
@@ -159,19 +161,19 @@ import { evaluateWulffShapeRegularizer, matchedWulffRankingAudit }
   from "./wulff-shape-regularizer.mjs?v=20260831-354";
 import { buildAttachmentKineticsRequest, buildNormalizedKineticWulffGeometry,
   validateAttachmentKineticsResponse, evaluateKineticHabitScore, matchedKineticHabitRankingAudit }
-  from "./external-attachment-kinetics.mjs?v=20260831-387";
+  from "./external-attachment-kinetics.mjs?v=20260831-388";
 import { buildInterfaceFluxRequest, validateInterfaceFluxResponse, evaluateInterfaceFluxScore,
   matchedInterfaceFluxRankingAudit }
-  from "./external-interface-flux.mjs?v=20260831-387";
+  from "./external-interface-flux.mjs?v=20260831-388";
 import { periodicSiteNumberDensity, coupleInterfaceSupplyAndAttachment,
   syntheticGrowthRegimePreview }
-  from "./growth-regime-bridge.mjs?v=20260831-387";
+  from "./growth-regime-bridge.mjs?v=20260831-388";
 import { buildLeapfrogPhysicsCycle, couplingModeGate, LEAPFROG_COUPLING_MODES }
-  from "./leapfrog-physics-cycle.mjs?v=20260831-387";
+  from "./leapfrog-physics-cycle.mjs?v=20260831-388";
 import { buildCatalogConditionalChronology }
-  from "./catalog-conditional-chronology.mjs?v=20260831-387";
+  from "./catalog-conditional-chronology.mjs?v=20260831-388";
 import { buildCoupledPhysicsState, coupledStateGate }
-  from "./coupled-physics-state.mjs?v=20260831-387";
+  from "./coupled-physics-state.mjs?v=20260831-388";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -642,6 +644,18 @@ const continuationEvidenceLadder = $("continuationEvidenceLadder");
 const continuationEvidenceState = $("continuationEvidenceState");
 const continuationEvidenceSteps = $("continuationEvidenceSteps");
 const continuationEvidenceBoundary = $("continuationEvidenceBoundary");
+const hierarchyEvidenceMicroscope = $("hierarchyEvidenceMicroscope");
+const hierarchyEvidenceStatus = $("hierarchyEvidenceStatus");
+const hierarchyEvidenceSelect = $("hierarchyEvidenceSelect");
+const hierarchyEvidenceSource = $("hierarchyEvidenceSource");
+const hierarchyEvidenceSummary = $("hierarchyEvidenceSummary");
+const hierarchyEvidenceTitle = $("hierarchyEvidenceTitle");
+const hierarchyEvidenceSubtitle = $("hierarchyEvidenceSubtitle");
+const hierarchyEvidenceLevels = $("hierarchyEvidenceLevels");
+const hierarchyClaimLadder = $("hierarchyClaimLadder");
+const hierarchyEvidenceDiagnosis = $("hierarchyEvidenceDiagnosis");
+const hierarchyEvidenceBoundary = $("hierarchyEvidenceBoundary");
+let hierarchyEvidenceSelectionPinned = false;
 const nucleationLandscapeInspector = $("nucleationLandscapeInspector");
 const nucleationLandscapeState = $("nucleationLandscapeState");
 const nucleationLandscapeSummary = $("nucleationLandscapeSummary");
@@ -3993,7 +4007,7 @@ async function downloadInterfacialEnergyRequest() {
   const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-387",
+  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-388",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256,
@@ -4237,7 +4251,7 @@ async function downloadAttachmentKineticsRequest() {
   const material = currentMaterial(); const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-387",
+  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-388",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256, intrinsicDimension, orientationBasisCartesian,
@@ -4756,7 +4770,7 @@ async function downloadSpatialInterfaceFluxRequest() {
   const interfaceGeometrySha256 = await receiptSha256(JSON.stringify({ structureSha256: configuration.structureSha256,
     confinement: confinementSelect?.value || "box", publicReach: growthDomainScale, atomCount: referenceAtoms.length }));
   const species = material.actualElements ? [...material.actualElements] : [...material.elements];
-  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-387",
+  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-388",
     scenarioId: scenarioSelect.value, materialName: material.name, species,
     structureSha256: configuration.structureSha256, interfaceGeometrySha256,
     interfaceConfiguration: configuration,
@@ -14035,7 +14049,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260831-387",
+      buildId: "20260831-388",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -16628,7 +16642,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260831-387" },
+    application: { name: "Materials Growth Lab", buildId: "20260831-388" },
     postLeapExternalRelaxation: stateRelaxationReceipt(),
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
@@ -24989,7 +25003,7 @@ async function freezeExternalStateRelaxation() {
     throw new Error("variable-cell relaxation requires a fully periodic 3D state");
   }
   const request = await buildExternalStateRelaxationRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-387",
+    generatedAt: new Date().toISOString(), buildId: "20260831-388",
     materialName: currentMaterial().name, sites,
     cellAngstrom: policy.cellAngstrom, periodicBoundary: policy.periodicBoundary,
     boundary: currentGrowthDomainSnapshot(), sourceLeapReceiptSha256: null,
@@ -28260,7 +28274,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
     ...speciesExchangeCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-387",
+    generatedAt: new Date().toISOString(), buildId: "20260831-388",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -29539,6 +29553,91 @@ function renderContinuationEvidenceLadder() {
     return article;
   }));
 }
+
+function hierarchyEvidenceMetric(label, value, note) {
+  const article = document.createElement("article");
+  const small = document.createElement("small"); small.textContent = label;
+  const strong = document.createElement("strong"); strong.textContent = value;
+  const span = document.createElement("span"); span.textContent = note;
+  article.append(small, strong, span);
+  return article;
+}
+
+function renderHierarchyEvidenceMicroscope() {
+  if (!hierarchyEvidenceMicroscope) return;
+  hierarchyEvidenceMicroscope.hidden = pipelineStage !== 4;
+  if (pipelineStage !== 4) return;
+  const fallback = scenarioSelect.value === "competition" ? "nacl-stationary"
+    : scenarioSelect.value === "cdyb" ? "cdyb-transfer"
+      : scenarioSelect.value === "iqc" ? "iqc-reencoding" : "iqc-reencoding";
+  const selectedId = hierarchyEvidenceSelectionPinned ? hierarchyEvidenceSelect.value : fallback;
+  let audit = buildHierarchyEvidenceMicroscope(selectedId);
+  if (!hierarchyEvidenceSelect.options.length) {
+    audit.options.forEach((option) => hierarchyEvidenceSelect.add(new Option(option.label, option.id)));
+  }
+  hierarchyEvidenceSelect.value = audit.receiptId;
+  hierarchyEvidenceStatus.textContent = audit.highestProvenClaim?.label || "no demonstrated rung";
+  hierarchyEvidenceSource.textContent = audit.source;
+  hierarchyEvidenceTitle.textContent = audit.title;
+  hierarchyEvidenceSubtitle.textContent = audit.subtitle;
+  const deepest = audit.levels.at(-1);
+  const measuredAmplifications = audit.levels.slice(1).filter((level) => level.maximumSupportAtoms > 0)
+    .map((level) => level.supportAmplificationFromPrevious);
+  const maximumAmplification = measuredAmplifications.length ? Math.max(...measuredAmplifications) : null;
+  hierarchyEvidenceSummary.replaceChildren(
+    hierarchyEvidenceMetric("levels audited", audit.levels.length.toLocaleString(),
+      `${deepest.activeTypes} active types at deepest level`),
+    hierarchyEvidenceMetric("atom accounting", audit.representedAfterSevenActions
+      ? audit.representedAfterSevenActions.toLocaleString()
+      : `${deepest.coveredAtoms.toLocaleString()} + ${deepest.residualAtoms.toLocaleString()}`,
+    audit.representedAfterSevenActions
+      ? "symbolically represented after seven actions"
+      : `active supports + explicit residuals of ${audit.totalAtoms.toLocaleString()}`),
+    hierarchyEvidenceMetric("largest step", maximumAmplification === null ? "not reported" : `${maximumAmplification.toFixed(3)}×`,
+      "support-size amplification; >3× recurrence gate separate"),
+    hierarchyEvidenceMetric("three-level key", audit.stationaryCommonKeys.toLocaleString(),
+      audit.stationaryCommonKeys ? "exact normalized production survives" : "stationary recurrence remains open"),
+  );
+  hierarchyEvidenceLevels.replaceChildren(...audit.levels.map((level) => {
+    const article = document.createElement("article");
+    article.className = level.activeTypes ? "active" : "exhausted";
+    const heading = document.createElement("header");
+    const label = document.createElement("strong"); label.textContent = `L${level.level}`;
+    const count = document.createElement("b"); count.textContent = `${level.activeTypes} / ${level.frozenTypes} types`;
+    heading.append(label, count);
+    const bars = document.createElement("div"); bars.className = "hierarchy-level-bars";
+    const typeBar = document.createElement("i"); typeBar.className = "types";
+    typeBar.style.setProperty("--fraction", level.activeFraction.toFixed(6));
+    typeBar.title = `${(level.activeFraction * 100).toFixed(1)}% of frozen types active`;
+    const atomBar = document.createElement("i"); atomBar.className = "atoms";
+    atomBar.style.setProperty("--fraction", level.coverageFraction.toFixed(6));
+    atomBar.title = `${(level.coverageFraction * 100).toFixed(1)}% of atoms carried by active supports`;
+    bars.append(typeBar, atomBar);
+    const metrics = document.createElement("p");
+    metrics.textContent = `${level.occurrences.toLocaleString()} occurrences · ${level.coveredAtoms.toLocaleString()} support atoms · ${level.residualAtoms.toLocaleString()} residual · max support ${level.maximumSupportAtoms ? level.maximumSupportAtoms.toLocaleString() : "not reported"}`;
+    const transition = document.createElement("small");
+    transition.textContent = level.level === 1 ? "frozen level-one vocabulary"
+      : `retains ${(100 * level.typeRetentionFromPrevious).toFixed(1)}% types · ${(100 * level.occurrenceRetentionFromPrevious).toFixed(1)}% occurrences${level.maximumSupportAtoms ? ` · support ${level.supportAmplificationFromPrevious.toFixed(3)}×` : ""}`;
+    article.append(heading, bars, metrics, transition);
+    return article;
+  }));
+  hierarchyClaimLadder.replaceChildren(...audit.claimLadder.map((rung, index) => {
+    const article = document.createElement("article");
+    article.className = rung.passed ? (rung.highestProven ? "highest pass" : "pass") : "open";
+    const ordinal = document.createElement("small"); ordinal.textContent = String(index + 1).padStart(2, "0");
+    const label = document.createElement("strong"); label.textContent = rung.label;
+    const state = document.createElement("b"); state.textContent = rung.passed ? "demonstrated" : "not demonstrated";
+    article.append(ordinal, label, state);
+    return article;
+  }));
+  hierarchyEvidenceDiagnosis.textContent = audit.diagnosis;
+  hierarchyEvidenceBoundary.textContent = `${audit.boundary} Target used for training: no; physical time integrated: no.`;
+}
+
+hierarchyEvidenceSelect?.addEventListener("change", () => {
+  hierarchyEvidenceSelectionPinned = true;
+  renderHierarchyEvidenceMicroscope();
+});
 
 function prepareStandaloneExecutableGrowthSeed() {
   const used = new Set(growthSeedAudit?.seedConfigurationDigest ? [growthSeedAudit.seedConfigurationDigest] : []);
@@ -31970,6 +32069,7 @@ function syncStageOptions() {
   renderNucleationLandscapeInspector();
   renderGrowthLaunchReadiness();
   renderContinuationEvidenceLadder();
+  renderHierarchyEvidenceMicroscope();
   stageOptionsPanel.hidden = !visible;
   renderStudyCompass();
   if (!visible) return;
@@ -37829,7 +37929,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-387",
+    generatedAt: new Date().toISOString(), buildId: "20260831-388",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,
@@ -42724,6 +42824,7 @@ function updateUI() {
   updateRecursiveBenchmark();
   const growthCertificate = updateGrowthCertificate();
   renderContinuationEvidenceLadder();
+  renderHierarchyEvidenceMicroscope();
   renderStudyOutcome(growthCertificate);
   renderComputationalCost();
   renderObservationProvenance();
@@ -43665,6 +43766,7 @@ notebookStateReplicationContrast.addEventListener("change", () => {
 notebookStateReplicationObservable.addEventListener("change", renderExperimentNotebook);
 scenarioSelect.addEventListener("change", (event) => {
   clearExternalPhysicsRoundTrip();
+  hierarchyEvidenceSelectionPinned = false;
   hypothesisSeparationExperiment = null;
   markingComparisonExperiment = null;
   growthSeedProtocol = recommendedGrowthSeedProtocol();
