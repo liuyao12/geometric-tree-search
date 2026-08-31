@@ -173,6 +173,16 @@ export const A2_SLICED_SIZE10_CANDIDATES = Object.freeze([
       "periodic_six_copy_exact_multicover_nodes": 928167,
       "periodic_six_copy_milliseconds": 14947,
       "periodic_report": "data/a2-sliced-size10-focused-periodic-exact6-ranks9-72.ndjson.gz",
+      "direct_scalar_substitution_exact_scales": [
+        2,
+        8
+      ],
+      "direct_scalar_substitution_models": [
+        "proper",
+        "reflected"
+      ],
+      "direct_scalar_substitution_certified_negatives": 14,
+      "direct_scalar_substitution_report": "data/a2-sliced-size10-direct-substitution-scale2to8.ndjson.gz",
       "corona_root_patch_copies": 29,
       "corona_search_nodes": 30,
       "corona_report": "data/a2-sliced-size10-focused-corona1-bounded.ndjson.gz",
@@ -578,6 +588,16 @@ export const A2_SLICED_SIZE10_CANDIDATES = Object.freeze([
       "periodic_six_copy_exact_multicover_nodes": 896504,
       "periodic_six_copy_milliseconds": 14607,
       "periodic_report": "data/a2-sliced-size10-focused-periodic-exact6-ranks9-72.ndjson.gz",
+      "direct_scalar_substitution_exact_scales": [
+        2,
+        8
+      ],
+      "direct_scalar_substitution_models": [
+        "proper",
+        "reflected"
+      ],
+      "direct_scalar_substitution_certified_negatives": 14,
+      "direct_scalar_substitution_report": "data/a2-sliced-size10-direct-substitution-scale2to8.ndjson.gz",
       "corona_root_patch_copies": 26,
       "corona_search_nodes": 28,
       "corona_report": "data/a2-sliced-size10-focused-corona1-bounded.ndjson.gz",
@@ -959,6 +979,16 @@ export const A2_SLICED_SIZE10_CANDIDATES = Object.freeze([
       "periodic_six_copy_exact_multicover_nodes": 877544,
       "periodic_six_copy_milliseconds": 11460,
       "periodic_report": "data/a2-sliced-size10-focused-periodic-exact6-ranks9-72.ndjson.gz",
+      "direct_scalar_substitution_exact_scales": [
+        2,
+        8
+      ],
+      "direct_scalar_substitution_models": [
+        "proper",
+        "reflected"
+      ],
+      "direct_scalar_substitution_certified_negatives": 14,
+      "direct_scalar_substitution_report": "data/a2-sliced-size10-direct-substitution-scale2to8.ndjson.gz",
       "corona_root_patch_copies": 29,
       "corona_search_nodes": 143,
       "corona_report": "data/a2-sliced-size10-focused-corona1-bounded.ndjson.gz",

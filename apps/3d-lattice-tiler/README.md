@@ -254,6 +254,10 @@ two-copy periods and another 304 have exact four-copy periods. The remaining
 more. Combined with the original stratum, 453 reflection classes survive
 through six copies. All periodic certificates are independently replayed and
 all negative quotient searches in this chain have zero solver unknowns.
+The eight recovered classes selected for deeper screening also have 112
+independently replayed atomic obstructions excluding direct scalar monotile
+substitution at every integer scale from 2 through 8 in both the proper and
+reflected models. Connected metatile alphabets remain open.
 The original stratum's exact two-, four-, and six-copy quotient screens reduce
 it to 356 reflection-class candidates.
 The next census level is also complete and removes the profile heuristic
@@ -265,6 +269,11 @@ orbits) for the other 95,979 tiles with zero solver unknowns. Folding one
 improper reflection afterward leaves 48,209 reporting classes. This is a
 first-stage census, not a claim that those survivors are non-periodic; ranked
 six-copy screening is the next gate.
+For all 13 classes surviving that ranked six-copy gate, independently replayed
+atomic-obstruction screens exclude direct scalar monotile substitutions at
+every integer scale from 2 through 8, with proper copies and with reflected
+copies. This is 182 certified candidate/scale/model negatives; connected
+metatile alphabets and non-scalar or non-cellular substitutions remain open.
 Among the first eight priority classes, a complete determinant-12 eight-copy
 screen finds five replay-verified periodic quotients and exhausts all 455 HNF
 quotients for the remaining three, with no solver unknowns. Those three are

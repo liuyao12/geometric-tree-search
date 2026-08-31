@@ -16,13 +16,25 @@ const sixCopyRows = await readGzipNdjson(
 const coronaRows = await readGzipNdjson(
   "data/a2-sliced-size10-focused-corona1-bounded.ndjson.gz"
 );
+const directSubstitutions = await readGzipNdjson(
+  "data/a2-sliced-size10-direct-substitution-scale2to8.ndjson.gz"
+);
 const sixCopyById = new Map(sixCopyRows.map(record => [record.id, record]));
 const coronaById = new Map(coronaRows.map(record => [record.id, record]));
+const directSubstitutionById = Map.groupBy
+  ? Map.groupBy(directSubstitutions, record => record.id)
+  : directSubstitutions.reduce((groups, record) => {
+      const rows = groups.get(record.id) ?? [];
+      rows.push(record);
+      groups.set(record.id, rows);
+      return groups;
+    }, new Map());
 const selectedIds = ["a2sa_10_36141", "a2sa_10_35323", "a2sa_10_36194"];
 
 const candidates = selectedIds.map((id, index) => {
   const record = sixCopyById.get(id);
   const corona = coronaById.get(id);
+  const direct = directSubstitutionById.get(id) ?? [];
   if (!record || record.classification !== "unresolved"
       || record.periodic_z3.hnf_range_exhausted !== true
       || record.periodic_z3.solver_unknown !== 0
@@ -32,6 +44,12 @@ const candidates = selectedIds.map((id, index) => {
   if (!corona || corona.corona_classification !== "root_corona_exists"
       || corona.corona_z3.replay?.verified !== true) {
     throw new Error(`Missing replayed root corona for ${id}`);
+  }
+  if (direct.length !== 14 || direct.some(result =>
+    result.alcove_substitution_classification !== "no_direct_scalar_substitution"
+    || result.alcove_substitution.certified !== true
+    || result.alcove_substitution.independent_replay?.verified !== true)) {
+    throw new Error(`Missing replayed scale-2-through-8 substitution exclusions for ${id}`);
   }
   const geometry = makeA2SlicedAlcoveUnion(record.alcoves);
   return {
@@ -64,6 +82,10 @@ const candidates = selectedIds.map((id, index) => {
       periodic_six_copy_exact_multicover_nodes: record.periodic_z3.exact_multicover_nodes,
       periodic_six_copy_milliseconds: record.periodic_z3.milliseconds,
       periodic_report: "data/a2-sliced-size10-focused-periodic-exact6-ranks9-72.ndjson.gz",
+      direct_scalar_substitution_exact_scales: [2, 8],
+      direct_scalar_substitution_models: ["proper", "reflected"],
+      direct_scalar_substitution_certified_negatives: direct.length,
+      direct_scalar_substitution_report: "data/a2-sliced-size10-direct-substitution-scale2to8.ndjson.gz",
       corona_root_patch_copies: corona.corona_z3.replay.patch_copies,
       corona_search_nodes: corona.corona_z3.exact_gcts.nodes,
       corona_report: "data/a2-sliced-size10-focused-corona1-bounded.ndjson.gz",

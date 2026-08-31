@@ -19,6 +19,9 @@ const exactSix = await readGzipNdjson(
 const exactCorona = await readGzipNdjson(
   "data/a2-sliced-size9-palindromic-focused-corona1-bounded.ndjson.gz"
 );
+const directSubstitutions = await readGzipNdjson(
+  "data/a2-sliced-size9-palindromic-direct-substitution-scale2to8.ndjson.gz"
+);
 const coronaOverrides = [
   ...(await readGzipNdjson("data/a2-sliced-size9-palindromic-corona-z3-04636.ndjson.gz")),
   ...(await readGzipNdjson("data/a2-sliced-size9-palindromic-corona-z3-04468.ndjson.gz"))
@@ -29,10 +32,19 @@ for (const record of coronaOverrides) coronaById.set(record.id, record);
 const selectedIds = ["a2sp_9_04636", "a2sp_9_01085", "a2sp_9_04468"];
 const periodicById = new Map(exactEight.map(record => [record.id, record]));
 const exactSixById = new Map(exactSix.map(record => [record.id, record]));
+const directSubstitutionById = Map.groupBy
+  ? Map.groupBy(directSubstitutions, record => record.id)
+  : directSubstitutions.reduce((groups, record) => {
+      const rows = groups.get(record.id) ?? [];
+      rows.push(record);
+      groups.set(record.id, rows);
+      return groups;
+    }, new Map());
 const candidates = selectedIds.map((id, index) => {
   const record = periodicById.get(id);
   const sixCopy = exactSixById.get(id);
   const corona = coronaById.get(id);
+  const direct = directSubstitutionById.get(id) ?? [];
   if (!record || !sixCopy || !corona) throw new Error(`Missing focused receipt for ${id}`);
   if (record.classification !== "unresolved"
       || record.periodic_z3.stopped_by !== "candidate_time_limit") {
@@ -41,6 +53,12 @@ const candidates = selectedIds.map((id, index) => {
   if (corona.corona_classification !== "root_corona_exists"
       || corona.corona_z3.replay?.verified !== true) {
     throw new Error(`Missing replayed root corona for ${id}`);
+  }
+  if (direct.length !== 14 || direct.some(result =>
+    result.alcove_substitution_classification !== "no_direct_scalar_substitution"
+    || result.alcove_substitution.certified !== true
+    || result.alcove_substitution.independent_replay?.verified !== true)) {
+    throw new Error(`Missing replayed scale-2-through-8 substitution exclusions for ${id}`);
   }
   const geometry = makeA2SlicedAlcoveUnion(record.alcoves);
   return {
@@ -77,6 +95,10 @@ const candidates = selectedIds.map((id, index) => {
       periodic_eight_copy_stopped_by: record.periodic_z3.stopped_by,
       periodic_eight_copy_candidate_time_limit_ms: 60000,
       periodic_eight_copy_exact_node_limit: 500000,
+      direct_scalar_substitution_exact_scales: [2, 8],
+      direct_scalar_substitution_models: ["proper", "reflected"],
+      direct_scalar_substitution_certified_negatives: direct.length,
+      direct_scalar_substitution_report: "data/a2-sliced-size9-palindromic-direct-substitution-scale2to8.ndjson.gz",
       corona_root_patch_copies: corona.corona_z3.replay.patch_copies,
       corona_solver: corona.corona_z3.smt2_sha256 ? "z3" : "exact_gcts",
       corona_report: corona.corona_z3.smt2_sha256
