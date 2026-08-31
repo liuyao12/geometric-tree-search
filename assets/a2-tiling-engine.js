@@ -484,6 +484,11 @@ export class FixedTurtleMarking extends NoA2Marking{
     super();this.prunes=0;this.support=[];this.contacts=new Map();this.entryCache=new Map();
     const origin=A2_TILE_LOOPS.turtle[0];
     for(const segment of TURTLE_MARK_SEGMENTS){const a=A2_TILE_LOOPS.turtle[segment.from],b=A2_TILE_LOOPS.turtle[segment.to],component=primitiveComponent(a,b);for(const point of extendedSegmentPoints(a,b,extension))this.support.push({tile:"turtle",point:a2Sub(point,origin),component,value:segment.value});}
+    const markedPoints=new Set(this.support.map(entry=>a2Key(entry.point)));
+    for(const entry of polygonOccupancy(A2_TILE_LOOPS.turtle).values()){
+      const point=a2Sub(entry.point,origin);if(markedPoints.has(a2Key(point)))continue;
+      for(let component=0;component<3;component++)this.support.push({tile:"turtle",point,component,value:0});
+    }
   }
   entries(placement){
     const cacheKey=placement.id??`${placement.tile}:${placement.orientation.index}:${a2Key(placement.translation)}`;
@@ -500,7 +505,7 @@ export class FixedTurtleMarking extends NoA2Marking{
   push(placement){for(const [contact,value] of this.entries(placement)){const old=this.contacts.get(contact);this.contacts.set(contact,{value,count:(old?.count||0)+1});}}
   pop(placement){for(const [contact] of this.entries(placement)){const old=this.contacts.get(contact);if(!old)continue;if(old.count<=1)this.contacts.delete(contact);else this.contacts.set(contact,{...old,count:old.count-1});}}
   score(candidate){let matches=0,lineUps=0;for(const [contact,value] of this.entries(candidate)){const old=this.contacts.get(contact);if(old?.value===value){matches++;if(value)lineUps++;}}return lineUps*100+matches;}
-  stats(){return{revision:0,supportSites:this.support.length,failures:0,prunes:this.prunes,unencodable:0,support:this.support.map(entry=>({...entry,point:[...entry.point],color:entry.value>0?1:2}))};}
+  stats(){return{revision:0,supportSites:this.support.length,failures:0,prunes:this.prunes,unencodable:0,support:this.support.map(entry=>({...entry,point:[...entry.point],color:entry.value===0?0:entry.value>0?1:2}))};}
 }
 
 export const a2ClusterProposalToken=(prior,candidate)=>`${prior.tile}:${prior.orientation.index}>${candidate.tile}:${candidate.orientation.index}@${a2Key(a2Sub(candidate.translation,prior.translation))}`;

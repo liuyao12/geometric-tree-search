@@ -92,6 +92,14 @@ const fixed = await solveA2Tiling({
 });
 assert.equal(fixed.result, "yes", "the shared tiler must grow a large patch with the article marking");
 assert.equal(fixed.placements.length, 50);
+const fixedZeroSites = new Map();
+for (const entry of new FixedTurtleMarking(1).support.filter(entry => entry.value === 0)) {
+  const key = entry.point.join(",");
+  if (!fixedZeroSites.has(key)) fixedZeroSites.set(key, new Set());
+  fixedZeroSites.get(key).add(entry.component);
+}
+assert.equal(fixedZeroSites.size, 19, "all-wildcard Turtle sites must be replaced by zero triples");
+assert.ok([...fixedZeroSites.values()].every(components => components.size === 3), "each refined site must carry (0,0,0)");
 assert.equal(new Set(fixed.placements.map(placement => placement.id)).size, 50, "growth cannot reuse a placement");
 assert.equal(fixed.stats.frontierGraphFullBuilds, 1, "the fixed-marking search initializes the frontier graph once");
 assert.ok(fixed.stats.frontierGraphLocalUpdates > 0, "placements must update the frontier graph locally");
