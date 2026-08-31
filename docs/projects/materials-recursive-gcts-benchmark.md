@@ -1,5 +1,37 @@
 # Recursive GCTS benchmark for material growth
 
+### Coherent frontier mechanism landscape (Build 372)
+
+The action-barrier response already bound exact path geometry, barriers,
+prefactors, Helmholtz endpoint free-energy changes, and species chemical
+potentials to one candidate batch. Build 372 makes their joint structure
+inspectable. For each event, it derives
+`ΔΩ = ΔF_system - Σ_s ΔN_s μ_s` with the existing independent one-sigma
+uncertainty, pairs it with the method-bound path barrier and finite-catalog
+rate, and retains the exact material population and contact outcome.
+
+The validator now enforces a direct kinetic/thermodynamic temperature equality
+whenever both evidence blocks are present. Previously they were guaranteed to
+agree only when the request also carried an external shared-state expectation.
+The response is rejected if the kinetic temperature is missing or differs from
+the grand-canonical temperature, so the landscape cannot silently mix states.
+
+The interactive scatter uses endpoint ΔΩ on x, path `ΔE‡` on y, catalog
+probability as bubble area, event direction as fill, and the uncertainty-
+resolved thermodynamic class as outline. Exact horizontal and vertical
+whiskers remain visually distinct. The probability ledger partitions all mass
+over the Cartesian product of population class
+`{growth, shrinkage, count-preserving}` and driving class
+`{downhill, overlaps zero, uphill}`. Clicking a point selects the same candidate
+in the external coordinate-path microscope.
+
+This juxtaposition is not a rate-theory substitution: the validated path
+barrier remains the externally calculated barrier quantity and is not renamed
+as a grand free-energy barrier. Endpoint favorability does not certify a
+minimum path, detailed balance, equilibrium, catalog completeness, nucleation,
+or an asymptotic growth regime. Those negative claims and the shared-state
+coherence certificate are retained in the receipt.
+
 ### Adversarial kinetic-response uncertainty envelopes (Build 371)
 
 For a geometric observable `a_i` and positive candidate rates constrained by

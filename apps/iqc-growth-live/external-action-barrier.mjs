@@ -1,5 +1,5 @@
 import { validateCandidateActionPathGeometry }
-  from "./action-path-geometry.mjs?v=20260831-371";
+  from "./action-path-geometry.mjs?v=20260831-372";
 
 export const ACTION_BARRIER_REQUEST_SCHEMA = "gcts-frozen-frontier-action-barrier-request-v4";
 export const ACTION_BARRIER_RESPONSE_SCHEMA = "gcts-frozen-frontier-action-barrier-response-v4";
@@ -543,6 +543,12 @@ export function validateFrozenActionBarrierResponse(response, expected) {
     }
     return normalized;
   })();
+  if (kinetics && thermodynamics
+      && (kinetics.temperatureKelvin == null || Math.abs(kinetics.temperatureKelvin
+        - thermodynamics.temperatureKelvin) > Math.max(1e-9,
+        thermodynamics.temperatureKelvin * 1e-9))) {
+    throw new Error("kinetic and grand-canonical evidence must share one declared temperature");
+  }
   if (response.safeguards?.containsGrowthTargetCoordinates !== false
       || response.safeguards?.geometricScoresUsedAsPhysicalLabels !== false
       || response.safeguards?.searchStepsUsedAsPhysicalTime !== false

@@ -1,5 +1,32 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 372 · coherent frontier mechanism landscape
+
+The portal now places every frozen candidate on one event-resolved landscape:
+horizontal position is independently supplied endpoint grand-potential change,
+vertical position is the returned path barrier, bubble area is nominal
+finite-catalog probability, fill color is event direction, and the outline
+classifies the endpoint as downhill, uphill, or uncertainty-overlapping zero.
+Horizontal and vertical whiskers retain the two distinct uncertainty sources.
+
+Each point also carries its exact geometric population class—growth,
+shrinkage, or count preserving—and contact-path fingerprint. Clicking it opens
+that same candidate's coordinate path. Summary tiles expose downhill,
+ambiguous, and uphill probability mass, expected endpoint `ΔΩ` for the next
+event, and the inspected event's geometric/driving classification.
+
+Validation now requires kinetic and grand-canonical evidence in one response
+to declare the same temperature even when no separate shared-state request was
+used. This closes a real coherence gap: rates at one temperature can no longer
+be juxtaposed with Helmholtz free energies and chemical potentials from
+another.
+
+The landscape deliberately keeps barrier and driving force distinct. A
+potential-energy saddle is not called a grand free-energy barrier, a downhill
+endpoint is not proof of a complete mechanism, and the finite candidate cloud
+does not establish detailed balance, equilibrium, nucleation theory, or
+long-time growth.
+
 ## Build 371 · adversarial kinetic-response uncertainty envelopes
 
 The kinetic-to-geometric response now carries an uncertainty envelope rather

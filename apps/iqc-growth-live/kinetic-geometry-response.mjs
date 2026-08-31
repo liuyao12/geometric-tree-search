@@ -1,9 +1,9 @@
 import { analyzeActionPathMechanism }
-  from "./action-path-mechanism.mjs?v=20260831-371";
+  from "./action-path-mechanism.mjs?v=20260831-372";
 import { buildFrozenKineticCompetition }
-  from "./frozen-frontier-kinetics.mjs?v=20260831-371";
+  from "./frozen-frontier-kinetics.mjs?v=20260831-372";
 import { buildTemperatureProgrammedKinetics }
-  from "./temperature-programmed-kinetics.mjs?v=20260831-371";
+  from "./temperature-programmed-kinetics.mjs?v=20260831-372";
 
 export const KINETIC_GEOMETRY_CHARACTERS = Object.freeze([
   "contact-forming", "contact-breaking", "contact exchange / reconstructive",
@@ -76,7 +76,7 @@ function transitionIntervals(samples, field) {
   return intervals;
 }
 
-function eventGeometry(record, contactReach) {
+export function buildEventGeometryObservables(record, contactReach = 1.35) {
   if (!record?.pathGeometry?.coordinateBearingImagesValidated) {
     throw new Error(`candidate ${record?.candidateId || "unknown"} lacks a validated coordinate path`);
   }
@@ -117,7 +117,7 @@ export function buildKineticGeometryResponse(records, applicability, {
       geometricEndpointsChanged: false,
       claimBoundary: "A geometric response is withheld when the bounded temperature program is not externally authorized." };
   }
-  const geometry = records.map((record) => eventGeometry(record, contactReach));
+  const geometry = records.map((record) => buildEventGeometryObservables(record, contactReach));
   const geometryById = new Map(geometry.map((record) => [record.candidateId, record]));
   const samples = temperatureProgram.samples.map((temperatureSample) => {
     const competition = buildFrozenKineticCompetition(records,

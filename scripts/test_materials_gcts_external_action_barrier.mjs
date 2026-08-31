@@ -231,6 +231,7 @@ expectedFor(coupledRequest, coupledReceipt)), /temperature does not match/);
 
 const thermodynamicResponse = {
   ...kineticResponse,
+  kinetics: { ...kineticResponse.kinetics, temperatureKelvin: 600 },
   safeguards: { ...kineticResponse.safeguards,
     chemicalPotentialsExternallySupplied: true,
     stateFreeEnergiesExternallySupplied: true,
@@ -258,6 +259,9 @@ const validatedThermodynamics = validateFrozenActionBarrierResponse(thermodynami
   expectedFor(request, receipt));
 assert.equal(validatedThermodynamics.grandCanonicalEvidenceEligible, true);
 assert.deepEqual(validatedThermodynamics.records[0].speciesDelta, { Cl: 1 });
+assert.throws(() => validateFrozenActionBarrierResponse({ ...thermodynamicResponse,
+  kinetics: { ...thermodynamicResponse.kinetics, temperatureKelvin: 601 } },
+expectedFor(request, receipt)), /share one declared temperature/);
 assert.ok(Math.abs(validatedThermodynamics.records[0].grandPotentialDeltaElectronVolt + .2) < 1e-12);
 assert.ok(validatedThermodynamics.records[0].grandPotentialDeltaUncertaintyElectronVolt > .04);
 assert.throws(() => validateFrozenActionBarrierResponse({ ...thermodynamicResponse,
