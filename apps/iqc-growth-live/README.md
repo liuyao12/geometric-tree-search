@@ -1,5 +1,24 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 351 · observed competing-pathway microscope
+
+The exact-state graph now exposes its directed, method-bound kinetic edges to a
+source/target pathway inspector. Within the finite observed graph, the portal
+selects the route whose slowest supplied directed rate is highest, breaking
+ties by fewer steps and canonical edge order. It highlights that route in gold,
+finds the strongest route surviving exclusion of at least one primary edge in violet, identifies the
+rate-limiting edge, sums path ΔΩ with uncertainty, and reports the conditional
+sum of serial exponential waiting times in a log-stable calculation.
+
+The alternative may still share other primary edges. Quantitative comparison
+also requires one temperature and barrier method across the displayed edges.
+Source and destination selectors never change candidate geometry, execute a
+branch, or consult a structural target. The route is only widest among exact
+edges already observed. Its waiting time assumes that the system traverses the
+displayed sequence without branching or recrossing; it is not a committor,
+transition-path ensemble, global fastest mechanism, mean first-passage time, or
+proof that the mechanism graph is complete.
+
 ## Build 350 · finite observed transition-network cycles
 
 Committed method-bound events now assemble into an exact colored-state graph,

@@ -96,7 +96,9 @@ import { enumerateDetachableLeafPlacements }
 import { appendCommittedTransition }
   from "./reversible-transition-lineage.mjs?v=20260831-349";
 import { buildFiniteTransitionNetwork }
-  from "./finite-transition-network.mjs?v=20260831-350";
+  from "./finite-transition-network.mjs?v=20260831-351";
+import { auditCompetingObservedTransitionPaths }
+  from "./finite-transition-pathways.mjs?v=20260831-351";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -622,6 +624,9 @@ const actionBarrierInverseState = $("actionBarrierInverseState");
 const transitionNetworkPlot = $("transitionNetworkPlot");
 const transitionNetworkCycleSelect = $("transitionNetworkCycleSelect");
 const transitionNetworkState = $("transitionNetworkState");
+const transitionPathSource = $("transitionPathSource");
+const transitionPathTarget = $("transitionPathTarget");
+const transitionPathState = $("transitionPathState");
 const actionBarrierResumeButton = $("actionBarrierResume");
 const actionBarrierCancelButton = $("actionBarrierCancel");
 const actionBarrierSummary = $("actionBarrierSummary");
@@ -1635,6 +1640,9 @@ let reversibleTransitionHistory = [];
 let latestMicroscopicInverseAudit = null;
 let latestFiniteTransitionNetworkAudit = buildFiniteTransitionNetwork([]);
 let selectedTransitionNetworkCycleId = null;
+let selectedTransitionPathSourceSha256 = null;
+let selectedTransitionPathTargetSha256 = null;
+let latestFiniteTransitionPathwayAudit = null;
 let reversibleInversePairCount = 0;
 let lastExternalActionBarrierReceipt = null;
 let frontierCandidateKeys = new Set();
@@ -23444,12 +23452,14 @@ function registerCommittedReversibleTransition(checkpoint, candidateId, committe
     cycle.cycleId === selectedTransitionNetworkCycleId)) {
     selectedTransitionNetworkCycleId = latestFiniteTransitionNetworkAudit.cycles[0]?.cycleId || null;
   }
+  latestFiniteTransitionPathwayAudit = currentObservedPathwayAudit();
   checkpoint.committedTransitionLineage = {
     transition: result.transition,
     inverseEventId: result.inverseEventId,
     inverseAudit: result.inverseAudit,
     exactInversePairCount: result.exactInversePairCount,
     finiteTransitionNetwork: latestFiniteTransitionNetworkAudit,
+    finiteTransitionPathway: latestFiniteTransitionPathwayAudit,
     targetUsed: false,
   };
   return checkpoint.committedTransitionLineage;
@@ -23461,6 +23471,38 @@ function inverseResidualText(value) {
 
 function dimensionlessResidualText(value) {
   return Number.isFinite(value) ? `${value >= 0 ? "+" : ""}${value.toFixed(3)}` : "awaiting μ + ΔF";
+}
+
+function currentObservedPathwayAudit() {
+  const nodes = latestFiniteTransitionNetworkAudit?.nodes || [];
+  const nodeHashes = new Set(nodes.map((node) => node.stateSha256));
+  if (!nodeHashes.has(selectedTransitionPathSourceSha256)) {
+    selectedTransitionPathSourceSha256 = nodes[0]?.stateSha256 || null;
+  }
+  if (!nodeHashes.has(selectedTransitionPathTargetSha256)
+      || selectedTransitionPathTargetSha256 === selectedTransitionPathSourceSha256) {
+    selectedTransitionPathTargetSha256 = nodes.find((node) =>
+      node.stateSha256 !== selectedTransitionPathSourceSha256)?.stateSha256 || null;
+  }
+  if (!selectedTransitionPathSourceSha256 || !selectedTransitionPathTargetSha256) return null;
+  return auditCompetingObservedTransitionPaths(latestFiniteTransitionNetworkAudit,
+    selectedTransitionPathSourceSha256, selectedTransitionPathTargetSha256);
+}
+
+function undirectedPathEdgeKeys(pathway) {
+  const directedByKey = new Map((latestFiniteTransitionNetworkAudit?.directedEdges || [])
+    .map((edge) => [edge.key, edge]));
+  return new Set((pathway?.edgeKeys || []).map((key) => directedByKey.get(key)).filter(Boolean)
+    .map((edge) => [edge.fromStateSha256, edge.toStateSha256].sort().join("<->")));
+}
+
+function conditionalWaitingText(pathway) {
+  if (!pathway) return "—";
+  if (Number.isFinite(pathway.conditionalSerialWaitingTimeSeconds)) {
+    return `${pathway.conditionalSerialWaitingTimeSeconds.toExponential(2)} s`;
+  }
+  return Number.isFinite(pathway.logConditionalSerialWaitingTimeSeconds)
+    ? `ln τ=${pathway.logConditionalSerialWaitingTimeSeconds.toFixed(2)}` : "rate incomplete";
 }
 
 function renderFiniteTransitionNetwork() {
@@ -23476,6 +23518,9 @@ function renderFiniteTransitionNetwork() {
     cycle.cycleId === selectedTransitionNetworkCycleId) || audit.cycles[0] || null;
   selectedTransitionNetworkCycleId = selectedCycle?.cycleId || null;
   const selectedEdges = new Set(selectedCycle?.edgeKeys || []);
+  latestFiniteTransitionPathwayAudit = currentObservedPathwayAudit();
+  const primaryPathEdges = undirectedPathEdgeKeys(latestFiniteTransitionPathwayAudit?.primary);
+  const competingPathEdges = undirectedPathEdgeKeys(latestFiniteTransitionPathwayAudit?.competing);
   const positions = new Map(audit.nodes.map((node, index) => {
     const angle = audit.nodes.length === 1 ? 0 : -Math.PI / 2 + 2 * Math.PI * index / audit.nodes.length;
     return [node.stateSha256, { x: audit.nodes.length === 1 ? 150 : 150 + 116 * Math.cos(angle),
@@ -23486,6 +23531,8 @@ function renderFiniteTransitionNetwork() {
     if (!first || !second) return;
     const classes = ["network-edge", paired ? "paired" : "unpaired"];
     if (selectedEdges.has(edge.key)) classes.push("cycle");
+    if (primaryPathEdges.has(edge.key)) classes.push("path-primary");
+    if (competingPathEdges.has(edge.key)) classes.push("path-competing");
     if (paired && !edge.pairAudit?.finitePairLocalBalancePassed) classes.push("failed");
     const line = makeSvg("line", { x1: first.x, y1: first.y, x2: second.x, y2: second.y,
       class: classes.join(" ") });
@@ -23498,7 +23545,10 @@ function renderFiniteTransitionNetwork() {
   audit.unpairedEdges.forEach((edge) => drawEdge(edge, false));
   audit.pairedEdges.forEach((edge) => drawEdge(edge, true));
   positions.forEach(({ x, y, node }) => {
-    const group = makeSvg("g", { class: "network-node", tabindex: "0", role: "button",
+    const nodeClasses = ["network-node"];
+    if (node.stateSha256 === selectedTransitionPathSourceSha256) nodeClasses.push("path-source");
+    if (node.stateSha256 === selectedTransitionPathTargetSha256) nodeClasses.push("path-target");
+    const group = makeSvg("g", { class: nodeClasses.join(" "), tabindex: "0", role: "button",
       "aria-label": `${node.stateId}, exact colored-state hash ${node.shortHash}` });
     group.append(makeSvg("circle", { cx: x, cy: y, r: 10 }));
     const label = makeSvg("text", { x, y: y + 2.2, "text-anchor": "middle" });
@@ -23529,6 +23579,28 @@ function renderFiniteTransitionNetwork() {
     : audit.cycles.length
       ? `${audit.nodes.length} states · ${audit.pairedEdgeCount} paired edges · ${audit.independentCycleCount} independent cycle${audit.independentCycleCount === 1 ? "" : "s"} · ${audit.finiteObservedNetworkCycleConsistencyPassed ? "finite observed-network consistency passed" : "cycle consistency not established"}. Network completeness remains unproven.`
       : `${audit.nodes.length} states · ${audit.pairedEdgeCount} paired / ${audit.unpairedEdgeCount} unpaired edges · no independent cycle yet.`;
+  const stateOptions = (select, selectedHash, excludeHash) => {
+    select.replaceChildren();
+    audit.nodes.forEach((node) => {
+      const option = document.createElement("option"); option.value = node.stateSha256;
+      option.textContent = `${node.stateId} · ${node.shortHash}`;
+      option.disabled = node.stateSha256 === excludeHash;
+      select.append(option);
+    });
+    select.disabled = audit.nodes.length < 2;
+    if (selectedHash) select.value = selectedHash;
+  };
+  stateOptions(transitionPathSource, selectedTransitionPathSourceSha256,
+    selectedTransitionPathTargetSha256);
+  stateOptions(transitionPathTarget, selectedTransitionPathTargetSha256,
+    selectedTransitionPathSourceSha256);
+  const primary = latestFiniteTransitionPathwayAudit?.primary;
+  const competing = latestFiniteTransitionPathwayAudit?.competing;
+  transitionPathState.textContent = !audit.nodes.length
+    ? "Commit exact-state transitions before inspecting a pathway."
+    : !primary
+      ? "No finite-rate directed route connects the selected observed states."
+      : `${primary.stepCount} steps · bottleneck ln k=${primary.bottleneckLogRatePerSecond.toFixed(2)} · path-conditional serial τ ${conditionalWaitingText(primary)}.${primary.kineticConditionsComparable ? " Common T + barrier method." : " Mixed or incomplete kinetic conditions: rate comparison is descriptive only."}${competing ? ` Distinct route: ${competing.stepCount} steps, bottleneck ln k=${competing.bottleneckLogRatePerSecond.toFixed(2)}.` : " No route surviving a primary-edge exclusion is observed."} This is not an MFPT or a complete mechanism.`;
 }
 
 function renderInverseTransitionLineage() {
@@ -23851,7 +23923,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
   const candidates = [...attachmentCandidates, ...detachmentCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-350",
+    generatedAt: new Date().toISOString(), buildId: "20260831-351",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -25273,6 +25345,9 @@ function initializeOffLatticeSearch() {
   latestMicroscopicInverseAudit = null;
   latestFiniteTransitionNetworkAudit = buildFiniteTransitionNetwork([]);
   selectedTransitionNetworkCycleId = null;
+  selectedTransitionPathSourceSha256 = null;
+  selectedTransitionPathTargetSha256 = null;
+  latestFiniteTransitionPathwayAudit = null;
   reversibleInversePairCount = 0;
   lastPolicyComparison = null;
   policyComparisonHistory = [];
@@ -28073,6 +28148,9 @@ function resetCounters() {
   latestMicroscopicInverseAudit = null;
   latestFiniteTransitionNetworkAudit = buildFiniteTransitionNetwork([]);
   selectedTransitionNetworkCycleId = null;
+  selectedTransitionPathSourceSha256 = null;
+  selectedTransitionPathTargetSha256 = null;
+  latestFiniteTransitionPathwayAudit = null;
   reversibleInversePairCount = 0;
   lastPolicyComparison = null;
   policyComparisonHistory = [];
@@ -30625,6 +30703,8 @@ function physicsTranslationRecords(leap = null) {
     || latestMicroscopicInverseAudit || null;
   const transitionNetworkReceipt = leap?.actionBarrierCheckpoint?.committedTransitionLineage
     ?.finiteTransitionNetwork || latestFiniteTransitionNetworkAudit || null;
+  const transitionPathwayReceipt = leap?.actionBarrierCheckpoint?.committedTransitionLineage
+    ?.finiteTransitionPathway || latestFiniteTransitionPathwayAudit || null;
   return [
     { id: "hypothesis-separation", process: "controlled separation of correlated geometry-encoded ranking hypotheses",
       status: hypothesisSeparationExperiment ? "soft" : "open",
@@ -31026,6 +31106,17 @@ function physicsTranslationRecords(leap = null) {
         ? `${transitionNetworkReceipt.kineticKolmogorovCycleConsistencyPassed ? "Rate-affinity cycles close" : "Rate-affinity closure not established"}; ${transitionNetworkReceipt.grandPotentialIntegrabilityPassed ? "ΔΩ is integrable on observed cycles" : "ΔΩ integrability not established"}; finite observed-network result ${transitionNetworkReceipt.finiteObservedNetworkCycleConsistencyPassed ? "passed" : "not established"}.`
         : "At least one independently closed bidirectional cycle is required before network consistency can be tested.",
       boundary: "Only the latest exact committed observation per directed edge enters this finite observed graph. Missing states and mechanisms remain unknown; cycle consistency is not network completeness, ergodicity, global detailed balance, phase equilibrium, or an equilibrium ensemble." },
+    { id: "finite-transition-pathway", process: "competing observed kinetic pathways / rate-limiting edge",
+      status: transitionPathwayReceipt?.primary ? "observed" : transitionNetworkReceipt?.nodes?.length ? "planned" : "unavailable",
+      role: transitionPathwayReceipt?.primary
+        ? "highest-bottleneck-rate route on the finite exact-state graph" : "awaiting a directed finite-rate route",
+      encoding: transitionPathwayReceipt?.primary
+        ? `${transitionPathwayReceipt.primary.stepCount} directed steps; bottleneck ${transitionPathwayReceipt.primary.bottleneckEdgeKey}; ln k=${transitionPathwayReceipt.primary.bottleneckLogRatePerSecond.toFixed(3)}; ${transitionPathwayReceipt.primary.kineticConditionsComparable ? "common kinetic conditions" : "mixed/incomplete kinetic conditions"}; ${transitionPathwayReceipt.competing ? `${transitionPathwayReceipt.competing.stepCount}-step distinct comparison retained` : "no primary-edge-exclusion comparison observed"}`
+        : "no source-to-target route selected on the observed graph",
+      evidence: transitionPathwayReceipt?.primary
+        ? `Path-conditional serial waiting time ${conditionalWaitingText(transitionPathwayReceipt.primary)}; ${transitionPathwayReceipt.primary.grandPotentialEvidenceComplete ? `summed ΔΩ ${inverseResidualText(transitionPathwayReceipt.primary.grandPotentialDeltaElectronVolt)}` : "ΔΩ evidence incomplete"}.`
+        : "No pathway audit is available.",
+      boundary: "The route maximizes the slowest supplied rate only within observed exact edges, and quantitative cross-edge comparison requires common temperature and barrier settings. A competing route differs by at least one excluded primary edge but need not be fully edge-disjoint. Its serial waiting time conditions on traversing that route without branching or recrossing; it is not a committor, transition-path ensemble, global fastest mechanism, mean first-passage time, or proof of mechanism completeness." },
     { id: "kinetics", process: "activation, diffusion, heat flow, and elapsed time", status: activeArrivalPathWeight() > 0 ? "soft" : "open", role: activeArrivalPathWeight() > 0 ? "geometric accessibility proxy" : "not modeled",
       encoding: activeArrivalPathWeight() > 0
         ? `${arrivalPathLabel()}; ${arrivalPathMode === "free-volume" ? "5 routes × " : ""}9 swept-clearance samples over 2dₙₙ for emitted sites only, w=${activeArrivalPathWeight().toFixed(2)}`
@@ -38066,6 +38157,16 @@ actionBarrierCancelButton.addEventListener("click", () =>
   releaseExternalActionBarrierCheckpoint());
 transitionNetworkCycleSelect.addEventListener("change", () => {
   selectedTransitionNetworkCycleId = transitionNetworkCycleSelect.value || null;
+  renderFiniteTransitionNetwork();
+});
+transitionPathSource.addEventListener("change", () => {
+  selectedTransitionPathSourceSha256 = transitionPathSource.value || null;
+  latestFiniteTransitionPathwayAudit = currentObservedPathwayAudit();
+  renderFiniteTransitionNetwork();
+});
+transitionPathTarget.addEventListener("change", () => {
+  selectedTransitionPathTargetSha256 = transitionPathTarget.value || null;
+  latestFiniteTransitionPathwayAudit = currentObservedPathwayAudit();
   renderFiniteTransitionNetwork();
 });
 processTimelineInput.addEventListener("input", () => scrubProcessTimeline(processTimelineInput.value));

@@ -48,6 +48,10 @@ const history = [transition("A", "B", 0), transition("B", "A", 1),
   transition("C", "A", 4), transition("A", "C", 5)];
 const network = buildFiniteTransitionNetwork(history);
 assert.equal(network.nodes.length, 3);
+assert.equal(network.directedEdges.length, 6);
+assert.equal(network.directedEdges.every((edge) => Number.isFinite(edge.logRatePerSecond)), true);
+assert.equal(network.activeObservationPolicy,
+  "latest exact committed observation per directed edge");
 assert.equal(network.pairedEdgeCount, 3);
 assert.equal(network.unpairedEdgeCount, 0);
 assert.equal(network.independentCycleCount, 1);

@@ -66,6 +66,26 @@ export function buildFiniteTransitionNetwork(rawHistory) {
   });
   const activeDirected = new Map([...byDirection.entries()].map(([key, records]) =>
     [key, records.sort((first, second) => first.ordinal - second.ordinal).at(-1)]));
+  const directedEdges = [...activeDirected.entries()].sort(([first], [second]) =>
+    first.localeCompare(second)).map(([key, record]) => ({
+    key,
+    fromStateSha256: record.initialGeometrySha256,
+    toStateSha256: record.finalGeometrySha256,
+    eventId: record.eventId,
+    candidateId: record.candidateId,
+    eventDirection: record.eventDirection,
+    logRatePerSecond: record.logRatePerSecond,
+    logRateUncertainty: rateLogUncertainty(record),
+    barrierElectronVolt: record.barrierElectronVolt,
+    barrierUncertaintyElectronVolt: record.barrierUncertaintyElectronVolt,
+    grandPotentialDeltaElectronVolt: record.grandPotentialDeltaElectronVolt,
+    grandPotentialDeltaUncertaintyElectronVolt:
+      record.grandPotentialDeltaUncertaintyElectronVolt,
+    temperatureKelvin: record.temperatureKelvin,
+    methodSettingsSha256: record.methodSettingsSha256,
+    freeEnergySettingsSha256: record.freeEnergySettingsSha256,
+    chemicalPotentialSettingsSha256: record.chemicalPotentialSettingsSha256,
+  }));
   const stateHashes = [...new Set(eligible.flatMap((record) =>
     [record.initialGeometrySha256, record.finalGeometrySha256]))].sort();
   const pairKeys = [...new Set(eligible.map((record) =>
@@ -195,6 +215,7 @@ export function buildFiniteTransitionNetwork(rawHistory) {
     schema: "gcts-finite-transition-network-v1",
     nodes: stateHashes.map((stateSha256, index) => ({ stateId: `S${index + 1}`,
       stateSha256, shortHash: stateSha256.slice(0, 10) })),
+    directedEdges,
     pairedEdges,
     unpairedEdges,
     cycles,
