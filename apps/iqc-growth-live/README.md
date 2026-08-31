@@ -1,5 +1,30 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 369 · temperature-programmed finite-catalog kinetics
+
+The frozen-event checkpoint can now expose which returned mechanism family
+dominates as temperature changes. The new Arrhenius map recomputes the same
+hard-admitted catalog on 41 samples uniform in inverse temperature and draws
+the maximum attachment, detachment, hop, and exchange rate together with the
+catalog total. An inspection slider reports the fastest exact candidate,
+direction probability mass, effective competing-event count, and whether the
+fastest event separates from every competitor's supplied uncertainty band.
+Event and direction crossover intervals are marked explicitly.
+
+This is not automatic extrapolation from a single calculation. The external
+HTST response must declare `bounded-constant-htst`, a finite 1–5000 K interval,
+external authorization, and the explicit assumption that its barriers and
+prefactors remain constant over that interval. A missing, single-temperature,
+malformed, or unauthorized declaration makes the map abstain. The normal
+single-temperature event competition remains available independently.
+
+The map retains the identical candidate IDs and cannot admit or synthesize an
+event. Its receipt records the authorized bounds, sampling count, inspected
+temperature, crossover counts, constant-HTST assumption, and negative target/
+missing-event flags. It remains conditional on a finite frontier catalog and
+does not infer anharmonic free energies, phase changes, recrossing, unknown
+mechanisms, or a transferable growth law.
+
 ## Build 368 · threshold-explicit geometric mechanism fingerprint
 
 Every validated atomic path now carries a geometry-only mechanism audit. For

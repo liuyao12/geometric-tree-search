@@ -176,6 +176,7 @@ const validatedKinetics = validateFrozenActionBarrierResponse(kineticResponse,
 assert.equal(validatedKinetics.kineticsEligible, true);
 assert.equal(validatedKinetics.records[0].attemptFrequencyPerSecond, 1e13);
 assert.equal(validatedKinetics.kinetics.catalogScope, "requested-hard-admitted-actions-only");
+assert.equal(validatedKinetics.kinetics.temperatureApplicability, null);
 const kineticCompetition = buildFrozenKineticCompetition(validatedKinetics.records,
   { temperatureKelvin: 600, mode: "seeded-kmc", eventUniform: .5, waitingUniform: .25 });
 assert.equal(kineticCompetition.candidateCount, validatedKinetics.candidateCount);
@@ -183,6 +184,25 @@ assert.ok(validatedKinetics.records.some((record) =>
   record.candidateId === kineticCompetition.selectedCandidateId));
 assert.ok(kineticCompetition.waitingTimeSeconds > 0);
 assert.equal(kineticCompetition.targetUsed, false);
+
+const temperatureBoundedAudit = validateFrozenActionBarrierResponse({ ...kineticResponse,
+  kinetics: { ...kineticResponse.kinetics, temperatureKelvin: 600,
+    temperatureApplicability: { scope: "bounded-constant-htst", minimumKelvin: 200,
+      maximumKelvin: 1200, externallyAuthorized: true,
+      barrierAndPrefactorAssumedConstant: true } } }, expectedFor(request, receipt));
+assert.equal(temperatureBoundedAudit.kinetics.temperatureApplicability.minimumKelvin, 200);
+assert.equal(temperatureBoundedAudit.kinetics.temperatureApplicability.maximumKelvin, 1200);
+assert.throws(() => validateFrozenActionBarrierResponse({ ...kineticResponse,
+  kinetics: { ...kineticResponse.kinetics,
+    temperatureApplicability: { scope: "bounded-constant-htst", minimumKelvin: 200,
+      maximumKelvin: 1200, externallyAuthorized: false,
+      barrierAndPrefactorAssumedConstant: true } } }, expectedFor(request, receipt)),
+/authorized 1..5000 K interval/);
+assert.throws(() => validateFrozenActionBarrierResponse({ ...kineticResponse,
+  kinetics: { ...kineticResponse.kinetics, temperatureKelvin: 600,
+    temperatureApplicability: { scope: "single-temperature", externallyAuthorized: true,
+      barrierAndPrefactorAssumedConstant: false } } }, expectedFor(request, receipt)),
+/cannot authorize a bounded sweep/);
 
 const coupledRequest = await buildFrozenActionBarrierRequest({
   generatedAt: "2026-08-30T00:00:00Z", buildId: "test", scenarioId: "nacl", materialName: "NaCl",

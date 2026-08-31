@@ -1,5 +1,5 @@
 import { validateCandidateActionPathGeometry }
-  from "./action-path-geometry.mjs?v=20260831-368";
+  from "./action-path-geometry.mjs?v=20260831-369";
 
 export const ACTION_BARRIER_REQUEST_SCHEMA = "gcts-frozen-frontier-action-barrier-request-v4";
 export const ACTION_BARRIER_RESPONSE_SCHEMA = "gcts-frozen-frontier-action-barrier-response-v4";
@@ -284,7 +284,8 @@ export async function buildFrozenActionBarrierRequest(input) {
       },
       optionalKineticOutputs: ["one positive converged attemptFrequencyPerSecond for every candidate ID",
         "attemptFrequencyUncertaintyLog10", "prefactor method and settings SHA-256",
-        "explicit requested-frontier-only catalog scope and recrossing declaration"],
+        "explicit requested-frontier-only catalog scope and recrossing declaration",
+        "optional temperatureApplicability declaration; no range sweep is authorized when absent"],
       optionalKineticResponseContract: {
         rootKinetics: { model: "harmonic-transition-state-theory", prefactorMethod: "method name",
           prefactorSettingsSha256: "64 hexadecimal characters",
@@ -292,6 +293,13 @@ export async function buildFrozenActionBarrierRequest(input) {
             || "optional shared external-physics state digest",
           temperatureKelvin: couplingStateExpectation?.temperatureKelvin
             || "positive Kelvin when a shared state declares temperature",
+          temperatureApplicability: {
+            scope: "single-temperature | bounded-constant-htst",
+            minimumKelvin: "1..5000 K; required for bounded-constant-htst",
+            maximumKelvin: "1..5000 K; required for bounded-constant-htst",
+            externallyAuthorized: "true only when the external method authorizes the interval",
+            barrierAndPrefactorAssumedConstant: "true only for an explicit bounded constant-HTST sweep",
+          },
           recrossingCorrection: "included | not-included",
           catalogScope: "requested-hard-admitted-actions-only" },
         validationFlags: ["prefactorsReported", "everyPrefactorConverged",
@@ -397,6 +405,17 @@ export function validateFrozenActionBarrierResponse(response, expected) {
       : requiredSha(response.kinetics.couplingStateSha256, "kinetic coupling-state SHA-256"),
     temperatureKelvin: response.kinetics.temperatureKelvin == null ? null
       : Number(response.kinetics.temperatureKelvin),
+    temperatureApplicability: response.kinetics.temperatureApplicability == null ? null : {
+      scope: requiredText(response.kinetics.temperatureApplicability.scope,
+        "kinetic temperature applicability scope"),
+      minimumKelvin: response.kinetics.temperatureApplicability.minimumKelvin == null ? null
+        : Number(response.kinetics.temperatureApplicability.minimumKelvin),
+      maximumKelvin: response.kinetics.temperatureApplicability.maximumKelvin == null ? null
+        : Number(response.kinetics.temperatureApplicability.maximumKelvin),
+      externallyAuthorized: response.kinetics.temperatureApplicability.externallyAuthorized === true,
+      barrierAndPrefactorAssumedConstant:
+        response.kinetics.temperatureApplicability.barrierAndPrefactorAssumedConstant === true,
+    },
   };
   if (kinetics) {
     if (kinetics.model !== "harmonic-transition-state-theory") {
@@ -420,8 +439,39 @@ export function validateFrozenActionBarrierResponse(response, expected) {
       throw new Error("kinetic response does not match the requested shared coupling state");
     }
     if (kinetics.temperatureKelvin != null
-        && (!Number.isFinite(kinetics.temperatureKelvin) || kinetics.temperatureKelvin <= 0)) {
-      throw new Error("kinetic response temperature must be positive Kelvin");
+        && (!Number.isFinite(kinetics.temperatureKelvin) || kinetics.temperatureKelvin < 1
+          || kinetics.temperatureKelvin > 5000)) {
+      throw new Error("kinetic response temperature must be between 1 and 5000 Kelvin");
+    }
+    const applicability = kinetics.temperatureApplicability;
+    if (applicability) {
+      if (!["single-temperature", "bounded-constant-htst"].includes(applicability.scope)) {
+        throw new Error("kinetic temperature applicability must be single-temperature or bounded-constant-htst");
+      }
+      if (applicability.scope === "single-temperature") {
+        if (kinetics.temperatureKelvin == null) {
+          throw new Error("single-temperature kinetic applicability needs temperatureKelvin");
+        }
+        if (applicability.externallyAuthorized
+            || applicability.barrierAndPrefactorAssumedConstant
+            || applicability.minimumKelvin != null || applicability.maximumKelvin != null) {
+          throw new Error("single-temperature applicability cannot authorize a bounded sweep");
+        }
+      } else {
+        if (!Number.isFinite(applicability.minimumKelvin)
+            || !Number.isFinite(applicability.maximumKelvin)
+            || applicability.minimumKelvin < 1 || applicability.maximumKelvin > 5000
+            || applicability.minimumKelvin >= applicability.maximumKelvin
+            || !applicability.externallyAuthorized
+            || !applicability.barrierAndPrefactorAssumedConstant) {
+          throw new Error("bounded constant-HTST applicability needs an authorized 1..5000 K interval and explicit constant barrier/prefactor assumption");
+        }
+        if (kinetics.temperatureKelvin != null
+            && (kinetics.temperatureKelvin < applicability.minimumKelvin
+              || kinetics.temperatureKelvin > applicability.maximumKelvin)) {
+          throw new Error("kinetic response temperature lies outside its authorized interval");
+        }
+      }
     }
     if (expectedState?.temperatureKelvin != null
         && (kinetics.temperatureKelvin == null || Math.abs(kinetics.temperatureKelvin

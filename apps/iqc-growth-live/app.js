@@ -88,26 +88,28 @@ import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntim
   from "./external-trajectory-geometry.mjs?v=20260830-346";
 import { actionBarrierSha256, buildFrozenActionBarrierRequest, frozenActionBarrierRequestReceipt,
   frozenActionStateGeometrySha256, validateFrozenActionBarrierResponse }
-  from "./external-action-barrier.mjs?v=20260831-368";
+  from "./external-action-barrier.mjs?v=20260831-369";
 import { buildActionPathViewerFrame, projectActionPathViewerFrame }
-  from "./action-path-viewer.mjs?v=20260831-368";
+  from "./action-path-viewer.mjs?v=20260831-369";
 import { actionPathMechanismSensitivity, analyzeActionPathMechanism }
-  from "./action-path-mechanism.mjs?v=20260831-368";
+  from "./action-path-mechanism.mjs?v=20260831-369";
 import { buildFrozenKineticCompetition }
-  from "./frozen-frontier-kinetics.mjs?v=20260831-368";
+  from "./frozen-frontier-kinetics.mjs?v=20260831-369";
 import { buildKineticEventSpectrum }
-  from "./kinetic-event-spectrum.mjs?v=20260831-368";
+  from "./kinetic-event-spectrum.mjs?v=20260831-369";
+import { buildTemperatureProgrammedKinetics, inspectTemperatureProgram }
+  from "./temperature-programmed-kinetics.mjs?v=20260831-369";
 import { enumerateDetachableLeafPlacements }
   from "./reversible-frontier-events.mjs?v=20260831-347";
 import { enumerateMassConservingSurfaceHops }
-  from "./surface-hop-events.mjs?v=20260831-368";
+  from "./surface-hop-events.mjs?v=20260831-369";
 import { enumerateLocalSpeciesExchangeEvents }
-  from "./species-exchange-events.mjs?v=20260831-368";
+  from "./species-exchange-events.mjs?v=20260831-369";
 import { buildExternalStateRelaxationRequest, stateRelaxationSha256,
   validateExternalStateRelaxationResponse }
-  from "./external-state-relaxation.mjs?v=20260831-368";
+  from "./external-state-relaxation.mjs?v=20260831-369";
 import { appendCommittedTransition }
-  from "./reversible-transition-lineage.mjs?v=20260831-368";
+  from "./reversible-transition-lineage.mjs?v=20260831-369";
 import { buildFiniteTransitionNetwork }
   from "./finite-transition-network.mjs?v=20260831-352";
 import { auditCompetingObservedTransitionPaths }
@@ -121,19 +123,19 @@ import { evaluateWulffShapeRegularizer, matchedWulffRankingAudit }
   from "./wulff-shape-regularizer.mjs?v=20260831-354";
 import { buildAttachmentKineticsRequest, buildNormalizedKineticWulffGeometry,
   validateAttachmentKineticsResponse, evaluateKineticHabitScore, matchedKineticHabitRankingAudit }
-  from "./external-attachment-kinetics.mjs?v=20260831-368";
+  from "./external-attachment-kinetics.mjs?v=20260831-369";
 import { buildInterfaceFluxRequest, validateInterfaceFluxResponse, evaluateInterfaceFluxScore,
   matchedInterfaceFluxRankingAudit }
-  from "./external-interface-flux.mjs?v=20260831-368";
+  from "./external-interface-flux.mjs?v=20260831-369";
 import { periodicSiteNumberDensity, coupleInterfaceSupplyAndAttachment,
   syntheticGrowthRegimePreview }
-  from "./growth-regime-bridge.mjs?v=20260831-368";
+  from "./growth-regime-bridge.mjs?v=20260831-369";
 import { buildLeapfrogPhysicsCycle, couplingModeGate, LEAPFROG_COUPLING_MODES }
-  from "./leapfrog-physics-cycle.mjs?v=20260831-368";
+  from "./leapfrog-physics-cycle.mjs?v=20260831-369";
 import { buildCatalogConditionalChronology }
-  from "./catalog-conditional-chronology.mjs?v=20260831-368";
+  from "./catalog-conditional-chronology.mjs?v=20260831-369";
 import { buildCoupledPhysicsState, coupledStateGate }
-  from "./coupled-physics-state.mjs?v=20260831-368";
+  from "./coupled-physics-state.mjs?v=20260831-369";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -659,6 +661,12 @@ const kineticEventSpectrumMode = $("kineticEventSpectrumMode");
 const kineticEventSpectrumSummary = $("kineticEventSpectrumSummary");
 const kineticEventSpectrumPlot = $("kineticEventSpectrumPlot");
 const kineticEventSpectrumDetail = $("kineticEventSpectrumDetail");
+const temperatureProgramBadge = $("temperatureProgramBadge");
+const temperatureProgramInspect = $("temperatureProgramInspect");
+const temperatureProgramReadout = $("temperatureProgramReadout");
+const temperatureProgramPlot = $("temperatureProgramPlot");
+const temperatureProgramSummary = $("temperatureProgramSummary");
+const temperatureProgramState = $("temperatureProgramState");
 const kineticEventPathPlot = $("kineticEventPathPlot");
 const kineticEventPathState = $("kineticEventPathState");
 const kineticEventPathCandidate = $("kineticEventPathCandidate");
@@ -1774,6 +1782,7 @@ let externalActionBarrierHopReachNearestNeighbor = 3;
 let externalActionBarrierKineticMode = "none";
 let externalActionBarrierTemperatureKelvin = 300;
 let selectedKineticSpectrumCandidateId = null;
+let selectedTemperatureProgramKelvin = 300;
 let selectedKineticPathCandidateId = null;
 let selectedKineticPathImageIndex = 0;
 let kineticPathYaw = .65;
@@ -3867,7 +3876,7 @@ async function downloadInterfacialEnergyRequest() {
   const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-368",
+  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-369",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256,
@@ -4111,7 +4120,7 @@ async function downloadAttachmentKineticsRequest() {
   const material = currentMaterial(); const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-368",
+  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-369",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256, intrinsicDimension, orientationBasisCartesian,
@@ -4630,7 +4639,7 @@ async function downloadSpatialInterfaceFluxRequest() {
   const interfaceGeometrySha256 = await receiptSha256(JSON.stringify({ structureSha256: configuration.structureSha256,
     confinement: confinementSelect?.value || "box", publicReach: growthDomainScale, atomCount: referenceAtoms.length }));
   const species = material.actualElements ? [...material.actualElements] : [...material.elements];
-  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-368",
+  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-369",
     scenarioId: scenarioSelect.value, materialName: material.name, species,
     structureSha256: configuration.structureSha256, interfaceGeometrySha256,
     interfaceConfiguration: configuration,
@@ -13909,7 +13918,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260831-368",
+      buildId: "20260831-369",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -16502,7 +16511,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260831-368" },
+    application: { name: "Materials Growth Lab", buildId: "20260831-369" },
     postLeapExternalRelaxation: stateRelaxationReceipt(),
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
@@ -24863,7 +24872,7 @@ async function freezeExternalStateRelaxation() {
     throw new Error("variable-cell relaxation requires a fully periodic 3D state");
   }
   const request = await buildExternalStateRelaxationRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-368",
+    generatedAt: new Date().toISOString(), buildId: "20260831-369",
     materialName: currentMaterial().name, sites,
     cellAngstrom: policy.cellAngstrom, periodicBoundary: policy.periodicBoundary,
     boundary: currentGrowthDomainSnapshot(), sourceLeapReceiptSha256: null,
@@ -25348,6 +25357,7 @@ function actionBarrierCheckpointReceipt(checkpoint = externalActionBarrierCheckp
   const response = checkpoint.validatedResponse;
   const kinetic = checkpoint.kineticCompetition;
   const kineticSpectrum = kinetic ? buildKineticEventSpectrum(kinetic) : null;
+  const temperatureProgram = currentTemperatureProgram(checkpoint);
   const kineticClockCommitted = Boolean(checkpoint.kineticClockCommitted);
   const inspectedPathRecord = response?.audit.records.find((record) =>
     record.candidateId === selectedKineticPathCandidateId) || null;
@@ -25493,6 +25503,29 @@ function actionBarrierCheckpointReceipt(checkpoint = externalActionBarrierCheckp
       candidateSetChanged: false, selectedEventChanged: false, targetUsed: false,
       claimBoundary: kineticSpectrum.claimBoundary,
     } : null,
+    temperatureProgrammedKinetics: temperatureProgram.available ? {
+      schema: temperatureProgram.schema,
+      model: temperatureProgram.model,
+      minimumKelvin: temperatureProgram.applicability.minimumKelvin,
+      maximumKelvin: temperatureProgram.applicability.maximumKelvin,
+      sampleCount: temperatureProgram.sampleCount,
+      candidateCount: temperatureProgram.candidateCount,
+      inspectedTemperatureKelvin: selectedTemperatureProgramKelvin,
+      eventCrossoverCount: temperatureProgram.eventCrossovers.length,
+      directionCrossoverCount: temperatureProgram.directionCrossovers.length,
+      uncertaintySeparatedSampleCount: temperatureProgram.uncertaintySeparatedSampleCount,
+      constantBarrierAndPrefactorAssumption: true,
+      externallyAuthorized: true,
+      constantHtstRangeEvaluationPerformed: true,
+      unauthorizedTemperatureExtrapolationPerformed: false,
+      candidateSetChanged: false, missingEventsInferred: false, targetUsed: false,
+      claimBoundary: temperatureProgram.claimBoundary,
+    } : {
+      available: false, reason: temperatureProgram.reason,
+      constantHtstRangeEvaluationPerformed: false,
+      unauthorizedTemperatureExtrapolationPerformed: false, targetUsed: false,
+      claimBoundary: temperatureProgram.claimBoundary,
+    },
     reversibleEventGeometryPresent: Boolean(response?.audit?.reversibleEventGeometryPresent),
     grandCanonicalEvidence: response?.audit?.thermodynamics ? {
       model: response.audit.thermodynamics.model,
@@ -25848,6 +25881,115 @@ function syncKineticPathCandidateOptions(records, preferredCandidateId = null) {
   }
 }
 
+function currentTemperatureProgram(checkpoint = externalActionBarrierCheckpoint) {
+  const audit = checkpoint?.validatedResponse?.audit;
+  if (!audit?.kineticsEligible) return buildTemperatureProgrammedKinetics([], null);
+  return buildTemperatureProgrammedKinetics(audit.records,
+    audit.kinetics?.temperatureApplicability);
+}
+
+function renderTemperatureProgram() {
+  const namespace = "http://www.w3.org/2000/svg";
+  const make = (name, attributes = {}) => {
+    const node = document.createElementNS(namespace, name);
+    Object.entries(attributes).forEach(([key, value]) => node.setAttribute(key, String(value)));
+    return node;
+  };
+  temperatureProgramPlot.replaceChildren();
+  const program = currentTemperatureProgram();
+  temperatureProgramSummary.replaceChildren();
+  if (!program.available) {
+    temperatureProgramBadge.textContent = "range not authorized";
+    temperatureProgramInspect.disabled = true;
+    temperatureProgramReadout.textContent = "— K";
+    const empty = make("text", { x: 180, y: 82, "text-anchor": "middle", class: "axis-label" });
+    empty.textContent = "bounded temperature applicability withheld";
+    temperatureProgramPlot.append(empty);
+    temperatureProgramState.textContent = `${program.reason} ${program.claimBoundary}`;
+    return program;
+  }
+  const { minimumKelvin, maximumKelvin } = program.applicability;
+  if (selectedTemperatureProgramKelvin < minimumKelvin
+      || selectedTemperatureProgramKelvin > maximumKelvin) {
+    selectedTemperatureProgramKelvin = Math.min(maximumKelvin,
+      Math.max(minimumKelvin, externalActionBarrierTemperatureKelvin));
+  }
+  temperatureProgramInspect.min = String(Math.ceil(minimumKelvin));
+  temperatureProgramInspect.max = String(Math.floor(maximumKelvin));
+  temperatureProgramInspect.step = String(Math.max(1,
+    Math.round((maximumKelvin - minimumKelvin) / 400)));
+  temperatureProgramInspect.value = String(Math.round(selectedTemperatureProgramKelvin));
+  temperatureProgramInspect.disabled = false;
+  const inspected = inspectTemperatureProgram(program, selectedTemperatureProgramKelvin);
+  temperatureProgramReadout.textContent = `${selectedTemperatureProgramKelvin.toFixed(0)} K`;
+  temperatureProgramBadge.textContent = `${minimumKelvin.toFixed(0)}–${maximumKelvin.toFixed(0)} K authorized`;
+  const left = 34, right = 350, top = 12, bottom = 133;
+  const values = program.samples.flatMap((sample) => [sample.log10TotalRatePerSecond,
+    ...Object.values(sample.maximumLog10RateByDirection).filter(Number.isFinite)]);
+  const minimumRate = Math.min(...values); const maximumRate = Math.max(...values);
+  const x = (index) => left + (right - left) * index / (program.samples.length - 1);
+  const y = (value) => bottom - (bottom - top) * (maximumRate === minimumRate ? .5
+    : (value - minimumRate) / (maximumRate - minimumRate));
+  for (let index = 0; index <= 4; index += 1) {
+    const value = minimumRate + (maximumRate - minimumRate) * index / 4;
+    const py = y(value);
+    temperatureProgramPlot.append(make("line", { x1: left, y1: py, x2: right,
+      y2: py, class: index ? "grid" : "axis" }));
+    const label = make("text", { x: left - 4, y: py + 2, "text-anchor": "end",
+      class: "axis-label" });
+    label.textContent = value.toFixed(1); temperatureProgramPlot.append(label);
+  }
+  temperatureProgramPlot.append(make("line", { x1: left, y1: top, x2: left,
+    y2: bottom, class: "axis" }), make("line", { x1: left, y1: bottom,
+    x2: right, y2: bottom, class: "axis" }));
+  const pathFor = (valuesForSamples, className) => {
+    const segments = []; let active = [];
+    valuesForSamples.forEach((value, index) => {
+      if (Number.isFinite(value)) active.push(`${x(index)},${y(value)}`);
+      else if (active.length) { segments.push(active); active = []; }
+    });
+    if (active.length) segments.push(active);
+    segments.forEach((points) => temperatureProgramPlot.append(make("polyline",
+      { points: points.join(" "), class: className })));
+  };
+  ["attach", "detach", "hop", "exchange"].forEach((direction) => pathFor(
+    program.samples.map((sample) => sample.maximumLog10RateByDirection[direction]),
+    `direction ${direction}`));
+  pathFor(program.samples.map((sample) => sample.log10TotalRatePerSecond), "total-rate");
+  program.directionCrossovers.forEach((crossover) => {
+    const midpoint = (crossover.lowerKelvin + crossover.upperKelvin) / 2;
+    const nearestIndex = program.samples.reduce((best, sample, index) =>
+      Math.abs(sample.temperatureKelvin - midpoint)
+        < Math.abs(program.samples[best].temperatureKelvin - midpoint) ? index : best, 0);
+    temperatureProgramPlot.append(make("line", { x1: x(nearestIndex), y1: top,
+      x2: x(nearestIndex), y2: bottom, class: "crossover" }));
+  });
+  const inspectedIndex = program.samples.indexOf(inspected);
+  temperatureProgramPlot.append(make("line", { x1: x(inspectedIndex), y1: top,
+    x2: x(inspectedIndex), y2: bottom, class: "inspection" }));
+  [[left, bottom + 13, `${minimumKelvin.toFixed(0)} K · 1000/T ${(1000 / minimumKelvin).toFixed(2)}`],
+    [right, bottom + 13, `${maximumKelvin.toFixed(0)} K · ${(1000 / maximumKelvin).toFixed(2)}`],
+    [right, 159, "T increases → · 1000/T decreases"]].forEach(([tx, ty, label], index) => {
+    const text = make("text", { x: tx, y: ty, "text-anchor": index ? "end" : "start",
+      class: "axis-label" }); text.textContent = label; temperatureProgramPlot.append(text);
+  });
+  const rateAxis = make("text", { x: left + 2, y: top + 6, class: "axis-label" });
+  rateAxis.textContent = "log₁₀ k / s⁻¹"; temperatureProgramPlot.append(rateAxis);
+  const tiles = [
+    ["inspect", `${inspected.temperatureKelvin.toFixed(0)} K`],
+    ["fastest", `${inspected.fastestEventDirection} · ${inspected.fastestCandidateId.slice(0, 10)}…`],
+    ["catalog mass", `${(100 * inspected.directionProbabilityMass[inspected.leadingDirection]).toFixed(1)}% ${inspected.leadingDirection}`],
+    ["crossovers", `${program.eventCrossovers.length} event · ${program.directionCrossovers.length} direction`],
+  ];
+  temperatureProgramSummary.replaceChildren(...tiles.map(([label, value]) => {
+    const tile = document.createElement("span"); const strong = document.createElement("strong");
+    tile.append(document.createTextNode(label)); strong.textContent = value; tile.append(strong);
+    return tile;
+  }));
+  temperatureProgramState.textContent = `${inspected.temperatureKelvin.toFixed(0)} K sample · log₁₀ total rate ${inspected.log10TotalRatePerSecond.toFixed(3)} s⁻¹ · effective ${inspected.effectiveCompetingEventCount.toFixed(2)} events · ${inspected.fastestSeparatedByUncertainty ? "fastest event separated by the supplied uncertainty bands" : "fastest event uncertainty-overlaps at least one competitor"}. ${program.claimBoundary}`;
+  return program;
+}
+
 function renderKineticEventSpectrum() {
   const namespace = "http://www.w3.org/2000/svg";
   const make = (name, attributes = {}) => {
@@ -25858,6 +26000,7 @@ function renderKineticEventSpectrum() {
   kineticEventSpectrumPlot.replaceChildren();
   kineticEventPathPlot.replaceChildren();
   const checkpoint = externalActionBarrierCheckpoint;
+  renderTemperatureProgram();
   const pathRecords = checkpoint?.validatedResponse?.audit?.records || [];
   const competition = checkpoint?.kineticCompetition;
   syncKineticPathCandidateOptions(pathRecords, competition?.selectedCandidateId || null);
@@ -26239,7 +26382,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
     ...speciesExchangeCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-368",
+    generatedAt: new Date().toISOString(), buildId: "20260831-369",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -35581,7 +35724,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-368",
+    generatedAt: new Date().toISOString(), buildId: "20260831-369",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,
@@ -41187,6 +41330,11 @@ kineticEventSpectrumMode.addEventListener("change", () => {
   kineticEventSpectrumMode.value = kineticEventSpectrumMode.value === "probability"
     ? "probability" : "rate";
   renderKineticEventSpectrum();
+});
+temperatureProgramInspect.addEventListener("input", () => {
+  const value = Number(temperatureProgramInspect.value);
+  if (Number.isFinite(value)) selectedTemperatureProgramKelvin = value;
+  renderTemperatureProgram();
 });
 kineticEventPathCandidate.addEventListener("change", () => {
   const records = externalActionBarrierCheckpoint?.validatedResponse?.audit?.records || [];

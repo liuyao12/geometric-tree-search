@@ -1,5 +1,38 @@
 # Recursive GCTS benchmark for material growth
 
+### Temperature-programmed finite-catalog kinetics (Build 369)
+
+The exact frozen frontier now has an evidence-bounded temperature dimension.
+Given one complete set of externally returned barriers, uncertainties, and
+positive converged HTST prefactors, the portal evaluates 41 inverse-temperature
+samples over an explicitly authorized interval. At every sample it retains the
+same candidate IDs, computes catalog-conditional probabilities in log space,
+records the fastest candidate and event direction, the probability mass of all
+four direction families, their maximum rates, the total catalog rate, effective
+event count, and uncertainty separation of the fastest event. Adjacent changes
+define finite event- and direction-crossover intervals; they are not solved or
+advertised as exact phase boundaries.
+
+The response contract now recognizes two applicability scopes. A
+`single-temperature` declaration authorizes only its declared temperature. A
+`bounded-constant-htst` declaration must provide ordered 1–5000 K limits,
+`externallyAuthorized=true`, and
+`barrierAndPrefactorAssumedConstant=true`. The selected response temperature,
+when present, must lie inside the range. Missing applicability remains valid
+for the existing one-temperature competition but produces an explicit
+temperature-sweep abstention. This preserves backward compatibility without
+silently promoting a point calculation into a material law.
+
+The interactive Arrhenius panel plots per-direction maximum log rates and the
+finite-catalog total, marks direction crossover brackets, and lets the user
+inspect a sampled temperature without changing the committed kinetic event.
+Its receipt preserves the authorized bounds, assumption, sample and crossover
+counts, and negative candidate-mutation, missing-event, target, and unauthorized-
+extrapolation flags. The resulting map is still conditional on one enumerated
+frontier. It does not establish catalog completeness, temperature-dependent
+barriers or prefactors, anharmonicity, recrossing, a phase transition, or a
+bulk growth law.
+
 ### Threshold-explicit geometric mechanism fingerprint (Build 368)
 
 The path microscope now resolves structural changes rather than leaving the
