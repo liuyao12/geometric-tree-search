@@ -2,14 +2,14 @@ import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.j
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
 import { A2_SLICED_SIZE7_CANDIDATES } from "../../assets/a2-sliced-size7-candidates.js?v=20260828-320";
 import { buildHierarchyPhysicsTransport, HIERARCHY_TRANSPORT_STAGES }
-  from "./hierarchy-physics-transport.mjs?v=20260831-395";
+  from "./hierarchy-physics-transport.mjs?v=20260831-397";
 import { buildHierarchyPhysicsInvestigation }
-  from "./hierarchy-physics-investigation.mjs?v=20260831-395";
+  from "./hierarchy-physics-investigation.mjs?v=20260831-397";
 import { buildHierarchyPhysicsProtocolPacket, hierarchyPhysicsProtocolShareUrl,
   hierarchyPhysicsProtocolSelectionFromSearch, hierarchyPhysicsProtocolPacketFilename }
-  from "./hierarchy-physics-protocol-packet.mjs?v=20260831-395";
+  from "./hierarchy-physics-protocol-packet.mjs?v=20260831-397";
 import { hierarchyPhysicsProtocolLaunchAuditFromPacket }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260831-395";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260831-397";
 
 const byId = (id) => document.getElementById(id);
 const A2_SLICED_SCALE3_OBSTRUCTIONS = A2_SLICED_SIZE7_CANDIDATES.filter((candidate) =>
@@ -50,6 +50,7 @@ const hierarchyPhysicsProtocolStatus = byId("hierarchyPhysicsProtocolStatus");
 const hierarchyPhysicsProtocolCopyLink = byId("hierarchyPhysicsProtocolCopyLink");
 const hierarchyPhysicsProtocolCopyJson = byId("hierarchyPhysicsProtocolCopyJson");
 const hierarchyPhysicsProtocolDownload = byId("hierarchyPhysicsProtocolDownload");
+const hierarchyPhysicsProtocolConformanceRoute = byId("hierarchyPhysicsProtocolConformanceRoute");
 let selectedHierarchyPhysicsChannel = "colored-geometry";
 let selectedHierarchyPhysicsStage = "macro";
 let activeHierarchyPhysicsInvestigation = null;
@@ -977,7 +978,7 @@ async function renderHierarchyPhysicsProtocolPacket(plan) {
     hierarchyPhysicsProtocolStatus.className = verified ? "verified" : mismatch || malformedShare ? "mismatch" : "ready";
     hierarchyPhysicsProtocolStatus.textContent = malformedShare
       ? `Shared plan rejected: ${sharedHierarchyPhysicsLoadError.message}` : verified
-      ? "Shared packet verified byte-for-byte · design only · execution still requires a separate run receipt."
+      ? "Shared packet verified byte-for-byte · open the live conformance checklist to compare design with executed evidence."
       : mismatch ? "Shared packet SHA-256 mismatch · plan shown, but provenance is not verified."
         : "Deterministic design packet · coordinates and candidate actions absent · executionAuthorized = false.";
     if (sameSelection) {
@@ -1068,6 +1069,10 @@ hierarchyPhysicsProtocolCopyJson.addEventListener("click", () => {
 });
 hierarchyPhysicsProtocolDownload.addEventListener("click", () => {
   if (activeHierarchyPhysicsProtocolPacket) protocolPacketDownload(activeHierarchyPhysicsProtocolPacket);
+});
+hierarchyPhysicsProtocolConformanceRoute.addEventListener("click", () => {
+  closeAtlas();
+  byId("receiptScaleBridgeConformance")?.scrollIntoView({ behavior: "smooth", block: "center" });
 });
 document.querySelectorAll("[data-ledger-filter]").forEach((button) => button.addEventListener("click", () => renderLedger(button.dataset.ledgerFilter)));
 methodLink.addEventListener("click", closeAtlas);

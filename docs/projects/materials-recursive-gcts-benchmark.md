@@ -1,5 +1,30 @@
 # Recursive GCTS benchmark for material growth
 
+## Design-versus-run conformance audit (Build 396)
+
+The packet-to-receipt binding now expands into a falsifiable conformance
+contract. Each of the ten physics channels has its own required evidence and
+execution hooks, and each hierarchy scale adds the structural evidence needed
+to make that scale meaningful. A stationary kinetics packet, for example,
+requires external transitions, an exact-state finite event network, a held-out
+path/temperature/material, calibrated prediction, explicit unknown-event mass,
+validated time integration, and a repeated three-level structural production
+with scale, population substitution, and independent transfer evidence.
+
+The browser adapter reports only facts visible in the current run. It does not
+promote configured controls, source metadata, hierarchy depth, or unrelated
+headless tests into executed evidence. The receipt serializes the full
+checklist, met/missing counts, next blocker, packet digest, and claim boundary.
+The Evidence Atlas includes a direct route from the design packet to the live
+checklist.
+
+Completing the checklist yields `ready-for-sealed-gate`, not a pass. The model
+accepts a gate result only when it is explicitly preregistered, uses frozen
+metric denominators, has a boolean outcome, and carries its own SHA-256 receipt.
+Only a passed record may set `claimUpgradeAllowed`; kinetics may claim physical
+time only through that passed, externally validated model. This prevents the
+new provenance chain from laundering partial execution into physical validity.
+
 ## Design packet → execution receipt binding (Build 392)
 
 The portable scale-bridge design is now a first-class provenance input to the

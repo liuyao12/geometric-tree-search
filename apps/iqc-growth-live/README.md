@@ -1,5 +1,29 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 396 · design-versus-run conformance audit
+
+The verified scale-bridge packet now expands into a live, channel- and
+scale-specific conformance checklist. Ten physical channels—colored geometry,
+proper pose, connection topology, steric closure, composition, residuals,
+local response, interface response, kinetics, and nonlocal fields—carry
+different execution and validation requirements. Atomic, cluster, promoted
+cluster², and stationary scales add their own evidence obligations rather than
+sharing a generic progress score.
+
+The run receipt records every requirement, which ones are currently evidenced,
+the first missing item, and the complete missing-ID set. The Evidence Atlas can
+route directly from a deterministic design packet to this checklist. Live
+facts are intentionally conservative: a configured control is not an executed
+ablation, a deep hierarchy is not a stationary law, a finite structural action
+is not physical time, and backend evidence is not silently treated as a live
+holdout.
+
+Even when every execution requirement is present, the state is only
+`ready-for-sealed-gate`. A claim can be upgraded solely by a separately hashed,
+preregistered gate result with frozen metric denominators. Without that record,
+`claimUpgradeAllowed`, `executionConformanceClaimed`, and
+`outcomeClaimUpgraded` remain false.
+
 ## Build 392 · design packet → execution receipt binding
 
 A verified scale-bridge design can now travel into the main laboratory as
