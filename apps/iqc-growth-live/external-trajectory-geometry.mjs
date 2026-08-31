@@ -26,6 +26,31 @@ function medianNearestDistance(positions) {
   return nearest[Math.floor(nearest.length / 2)] || 1;
 }
 
+function normalizedTrapezoidalWeights(times) {
+  if (!Array.isArray(times) || times.length < 2 || times.some((time) => !Number.isFinite(time))) {
+    throw new TypeError("trajectory times must contain at least two finite values");
+  }
+  const intervals = times.slice(1).map((time, index) => time - times[index]);
+  if (intervals.some((interval) => !(interval > 0))) {
+    throw new Error("trajectory frame times must be strictly increasing");
+  }
+  const weights = times.map((_, index) => index === 0 ? intervals[0] / 2
+    : index === times.length - 1 ? intervals.at(-1) / 2
+      : (intervals[index - 1] + intervals[index]) / 2);
+  const total = weights.reduce((sum, weight) => sum + weight, 0);
+  return weights.map((weight) => weight / total);
+}
+
+function weightedMean(vectors, weights) {
+  return [0, 1, 2].map((axis) => vectors.reduce((sum, vector, index) =>
+    sum + weights[index] * vector[axis], 0));
+}
+
+function weightedCovariance(vectors, weights, mean) {
+  return [0, 1, 2].map((row) => [0, 1, 2].map((column) => vectors.reduce((sum, vector, index) =>
+    sum + weights[index] * (vector[row] - mean[row]) * (vector[column] - mean[column]), 0)));
+}
+
 export function buildValidatedTrajectoryGeometryRuntime(response, audit, responseSha256,
   referencePositionsAngstrom, { referenceToleranceAngstrom = 1e-7 } = {}) {
   if (audit?.quantityId !== "trajectory" || audit.configurationRole !== "observation"
@@ -55,6 +80,7 @@ export function buildValidatedTrajectoryGeometryRuntime(response, audit, respons
   const frameDrifts = displacements.map(meanVector);
   const centered = displacements.map((frame, frameIndex) => frame.map((vector) =>
     subtract(vector, frameDrifts[frameIndex])));
+  const timeWeights = normalizedTrapezoidalWeights(normalized.map((frame) => frame.timeSeconds));
   const records = reference.map((_, siteIndex) => {
     const path = centered.map((frame) => frame[siteIndex]);
     const pathLengthAngstrom = path.slice(1).reduce((sum, vector, frameIndex) =>
@@ -62,12 +88,25 @@ export function buildValidatedTrajectoryGeometryRuntime(response, audit, respons
     const maximumExcursionAngstrom = Math.max(...path.map(norm));
     const rmsExcursionAngstrom = Math.sqrt(path.reduce((sum, vector) => sum + norm(vector) ** 2, 0)
       / path.length);
+    const timeWeightedMeanDisplacementAngstrom = weightedMean(path, timeWeights);
+    const covarianceCartesianAngstromSquared = weightedCovariance(path, timeWeights,
+      timeWeightedMeanDisplacementAngstrom);
+    const covarianceTraceAngstromSquared = covarianceCartesianAngstromSquared[0][0]
+      + covarianceCartesianAngstromSquared[1][1] + covarianceCartesianAngstromSquared[2][2];
+    const covarianceFrobeniusAngstromSquared = Math.sqrt(covarianceCartesianAngstromSquared
+      .reduce((sum, row) => sum + row.reduce((inner, value) => inner + value * value, 0), 0));
     return {
       referenceIndex: siteIndex,
       endpointDisplacementAngstrom: path.at(-1).slice(),
       maximumExcursionAngstrom,
       rmsExcursionAngstrom,
       pathLengthAngstrom,
+      timeWeightedMeanDisplacementAngstrom,
+      covarianceCartesianAngstromSquared,
+      covarianceTraceAngstromSquared,
+      covarianceRmsAngstrom: Math.sqrt(Math.max(0, covarianceTraceAngstromSquared)),
+      covarianceAnisotropy: covarianceTraceAngstromSquared > 0
+        ? covarianceFrobeniusAngstromSquared / covarianceTraceAngstromSquared : 0,
     };
   });
   const timeSpanSeconds = normalized.at(-1).timeSeconds - normalized[0].timeSeconds;
@@ -83,6 +122,7 @@ export function buildValidatedTrajectoryGeometryRuntime(response, audit, respons
     referenceMedianNearestAngstrom: medianNearestDistance(reference),
     frameCount: normalized.length, timeSpanSeconds,
     frameTimesSeconds: normalized.map((frame) => frame.timeSeconds),
+    normalizedTrapezoidalTimeWeights: timeWeights,
     frameDriftAngstrom: frameDrifts,
     records,
     trajectoryProvenance: {
@@ -93,6 +133,12 @@ export function buildValidatedTrajectoryGeometryRuntime(response, audit, respons
       frameCount: normalized.length, timeSpanSeconds,
       endpointRmsAngstrom, endpointMaximumAngstrom, meanPathLengthAngstrom,
       meanPathSpeedAngstromPerSecond: meanPathLengthAngstrom / timeSpanSeconds,
+      covarianceSource: "time-weighted drift-removed empirical trajectory covariance",
+      covarianceTimeWeighting: "normalized trapezoidal physical-time weights",
+      covarianceFrame: "observation Cartesian angstrom squared",
+      covarianceProbabilityDistributionInferred: false,
+      covarianceThermalEquilibriumAssumed: false,
+      covariancePhononModelAssumed: false,
       globalTranslationRemovedPerFrame: true,
       globalRotationRemovedPerFrame: false,
       exactObservationStructureMatched: true, validationGatePassed: true,
@@ -121,15 +167,25 @@ export function bindValidatedTrajectoryGeometry(source, runtime, scenePerAngstro
     atom.externalTrajectoryPathLengthAngstrom = record.pathLengthAngstrom;
     atom.externalTrajectoryMaximumExcursionAngstrom = record.maximumExcursionAngstrom;
     atom.externalTrajectoryRmsExcursionAngstrom = record.rmsExcursionAngstrom;
+    atom.trajectoryCovarianceCartesianA2 = record.covarianceCartesianAngstromSquared
+      .map((row) => row.slice());
+    atom.trajectoryCovarianceTraceA2 = record.covarianceTraceAngstromSquared;
+    atom.trajectoryCovarianceRmsAngstrom = record.covarianceRmsAngstrom;
+    atom.trajectoryCovarianceAnisotropy = record.covarianceAnisotropy;
+    atom.trajectoryCovarianceSource = "time-weighted drift-removed empirical trajectory covariance";
     atom.externalTrajectoryResponseSha256 = runtime.responseSha256;
   });
   return {
     boundSites: source.length,
     properPoseTransport: "delta_r_world = R_cluster delta_r_local",
+    covarianceProperPoseTransport: "C_world = R_cluster C_local R_cluster^T",
+    covarianceModeAtBinding: "display-only",
+    covarianceTimeWeighting: "normalized trapezoidal physical-time weights",
     globalTranslationRemovedPerFrame: true,
     globalRotationRemovedPerFrame: false,
     candidateGeometryChanged: false, candidateRankingChanged: false,
     trajectoryIntegrated: false, usedAsPhysicalClock: false,
-    usedAsPotential: false, targetUsed: false,
+    usedAsPotential: false, probabilityDistributionInferred: false,
+    thermalEquilibriumAssumed: false, phononModelAssumed: false, targetUsed: false,
   };
 }

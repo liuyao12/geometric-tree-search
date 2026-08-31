@@ -1,5 +1,28 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 342 · empirical anisotropic trajectory covariance
+
+A validated trajectory now contributes an anisotropic local section as well as
+an endpoint vector and scalar path envelope. After removing each frame's
+center-of-configuration drift, the browser uses normalized trapezoidal weights
+from the supplied physical timestamps to calculate, for every site, the
+time-weighted mean displacement and Cartesian covariance about that mean. The
+covariance is stored in Å², learned in the cluster-local proper frame, and
+transported by `C_world = R_cluster C_local R_cluster^T`.
+
+The new ellipsoids are **display only** by default. A nearby control can
+explicitly enable them as one-sigma directional-clearance geometry; that choice
+relearns contact envelopes and is recorded in the receipt. It does not change
+cluster supports, exact candidate poses, enumeration, or ranking. Reported
+crystallographic U/B tensors remain distinct and retain their established hard
+clearance role.
+
+This covariance is an empirical summary of one validated time window—not a
+crystallographic displacement parameter, phonon model, thermal equilibrium
+distribution, or inferred probability law. Global rotation is still not
+removed. Timestamps weight this one observed path but are never mapped to GCTS
+search steps, and neither a potential nor an MD integrator is introduced.
+
 ## Build 341 · encode a validated trajectory as local path geometry
 
 A request-linked physical trajectory on the exact supplied observation can now

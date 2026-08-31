@@ -1,5 +1,29 @@
 # Recursive GCTS benchmark for material growth
 
+### Trajectory covariance deployment (Build 342)
+
+The validated path channel now has a tensor-valued local section. With strictly
+increasing physical times `t_i`, normalized trapezoidal weights integrate each
+site's drift-removed displacement over the supplied window. The browser stores
+the weighted mean and symmetric covariance about that mean in observation
+Cartesian Å², then applies the same proper-pose tensor law used for a rigid
+cluster environment: `C_world = R_cluster C_local R_cluster^T`.
+
+The execution boundary is explicit. The empirical covariance is display-only
+when first encoded; it appears as an ellipsoid in cluster cards, placed atoms,
+and candidate previews without affecting the candidate set or ordering. The
+user may separately choose **1σ directional clearance**, which rebuilds the
+frozen local contact envelopes and admits the trajectory tensor only to the
+existing hard directional-contact calculation. Reverting to display-only
+relearns without that tensor. Both modes are receipt-visible.
+
+Reported U/B covariance and empirical path covariance are not conflated. The
+latter is a deterministic statistic of one request-linked trajectory after
+translation removal. It assumes neither thermal equilibrium nor a phonon model,
+and it does not infer a probability distribution, potential, rate, barrier, or
+clock. Global rotation remains in the response geometry and is reported rather
+than silently fitted away.
+
 ### Validated trajectory-to-section deployment (Build 341)
 
 The trajectory response now has an executable but deliberately bounded

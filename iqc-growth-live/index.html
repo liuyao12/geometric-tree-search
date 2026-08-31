@@ -7,7 +7,7 @@
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
   <base href="../apps/iqc-growth-live/">
-  <link rel="stylesheet" href="./style.css?v=20260830-341">
+  <link rel="stylesheet" href="./style.css?v=20260830-342">
   <script type="importmap">
     {
       "imports": {
@@ -1659,6 +1659,10 @@
             <label><input id="bondToggle" type="checkbox" checked><span>Accepted bonds</span></label>
             <label><input id="frontierToggle" type="checkbox" checked><span>Candidate frontier</span></label>
             <label><input id="displacementToggle" type="checkbox" checked disabled><span id="displacementToggleLabel">Reported / transported U/B halos · unavailable</span></label>
+            <label id="externalTrajectoryCovarianceControl" class="local-deformation-layer" hidden><span>Trajectory covariance</span><select id="externalTrajectoryCovarianceMode" aria-label="Use of empirical trajectory covariance geometry">
+              <option value="display">display only</option>
+              <option value="directional-clearance">1σ directional clearance</option>
+            </select></label>
             <label><input id="forceToggle" type="checkbox" checked disabled><span id="forceToggleLabel">Residual forces · unavailable</span></label>
             <label><input id="localConstraintMismatchToggle" type="checkbox"><span id="localConstraintMismatchToggleLabel">Current local constraint mismatch · learning geometry</span></label>
             <label class="local-deformation-layer"><span>Mismatch color</span><select id="localConstraintMismatchMetric" aria-label="Current local geometric mismatch halo observable">
@@ -2248,7 +2252,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260830-341"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260830-341"></script>
+  <script type="module" src="./app.js?v=20260830-342"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260830-342"></script>
 </body>
 </html>

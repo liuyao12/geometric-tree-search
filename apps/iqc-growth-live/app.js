@@ -78,13 +78,13 @@ import { buildGrowthActionPhysicsProvenance, buildPhysicsCompressionMap, buildPh
   PHYSICS_EFFECT_COLUMNS, PHYSICS_READINESS_STATES, physicsExecutionLineage }
   from "./physics-compression-map.js?v=20260828-320";
 import { buildExternalPhysicsRequest }
-  from "./external-physics-request.mjs?v=20260830-341";
+  from "./external-physics-request.mjs?v=20260830-342";
 import { validateExternalPhysicsResponse }
-  from "./external-physics-response.mjs?v=20260830-341";
+  from "./external-physics-response.mjs?v=20260830-342";
 import { bindValidatedForceGeometry, buildValidatedForceGeometryRuntime }
-  from "./external-force-geometry.mjs?v=20260830-341";
+  from "./external-force-geometry.mjs?v=20260830-342";
 import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntime }
-  from "./external-trajectory-geometry.mjs?v=20260830-341";
+  from "./external-trajectory-geometry.mjs?v=20260830-342";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -695,6 +695,8 @@ const growthEvidenceToggle = $("growthEvidenceToggle");
 const growthEvidenceToggleLabel = $("growthEvidenceToggleLabel");
 const displacementToggle = $("displacementToggle");
 const displacementToggleLabel = $("displacementToggleLabel");
+const externalTrajectoryCovarianceControl = $("externalTrajectoryCovarianceControl");
+const externalTrajectoryCovarianceModeSelect = $("externalTrajectoryCovarianceMode");
 const forceToggle = $("forceToggle");
 const forceToggleLabel = $("forceToggleLabel");
 const relaxationDisplacementToggle = $("relaxationDisplacementToggle");
@@ -1796,6 +1798,7 @@ let externalPhysicsResponseValidationReceipt = null;
 let externalPhysicsResponseRuntime = null;
 let externalPhysicsForceGeometryEnabled = false;
 let externalPhysicsTrajectoryGeometryEnabled = false;
+let externalTrajectoryCovarianceMode = "display";
 let currentPhysicsPairProgress = null;
 let currentPhysicsPairIntervention = null;
 let frozenPhysicsPreflightManifest = null;
@@ -3217,6 +3220,38 @@ function activeTrajectoryGeometryProvenance() {
     ? externalPhysicsResponseRuntime.trajectoryProvenance : null;
 }
 
+function resetExternalTrajectoryCovarianceMode() {
+  externalTrajectoryCovarianceMode = "display";
+  if (externalTrajectoryCovarianceModeSelect) externalTrajectoryCovarianceModeSelect.value = "display";
+  for (const source of [atoms, referenceAtoms]) source?.forEach((atom) => {
+    if (!atom.externalTrajectoryResponseSha256
+        && !String(atom.displacementTensorSource || "").includes("trajectory covariance")) return;
+    delete atom.observedRelaxationWorldSceneArray;
+    delete atom.observedRelaxationWorldScene;
+    delete atom.observedRelaxationTransported;
+    delete atom.externalTrajectoryReferenceIndex;
+    delete atom.externalTrajectoryPathLengthAngstrom;
+    delete atom.externalTrajectoryMaximumExcursionAngstrom;
+    delete atom.externalTrajectoryRmsExcursionAngstrom;
+    delete atom.externalTrajectoryResponseSha256;
+    delete atom.trajectoryCovarianceCartesianA2;
+    delete atom.trajectoryCovarianceTraceA2;
+    delete atom.trajectoryCovarianceRmsAngstrom;
+    delete atom.trajectoryCovarianceAnisotropy;
+    delete atom.trajectoryCovarianceSource;
+    if (String(atom.displacementTensorSource || "").includes("trajectory covariance")) {
+      delete atom.uAnisoCartesianA2;
+      delete atom.uIsoA2;
+      delete atom.thermalSigmaA;
+      delete atom.thermalSigmaAxesA;
+      delete atom.thermalAxesCartesian;
+      delete atom.displacementTensorSource;
+      delete atom.displacementTemplateReferenceIndex;
+      delete atom.displacementCovarianceTransported;
+    }
+  });
+}
+
 function clearExternalPhysicsRoundTrip() {
   dynamicalEvidenceHandoffReceipt = null;
   externalPhysicsRequestExportReceipt = null;
@@ -3225,6 +3260,7 @@ function clearExternalPhysicsRoundTrip() {
   externalPhysicsResponseRuntime = null;
   externalPhysicsForceGeometryEnabled = false;
   externalPhysicsTrajectoryGeometryEnabled = false;
+  resetExternalTrajectoryCovarianceMode();
 }
 
 function bindExternalForceGeometryToReference(source) {
@@ -3248,6 +3284,14 @@ function bindExternalTrajectoryGeometryToReference(source) {
   source.forEach((atom) => {
     if (Array.isArray(atom.observedRelaxationWorldSceneArray)) {
       atom.observedRelaxationWorldScene = new THREE.Vector3(...atom.observedRelaxationWorldSceneArray);
+    }
+    if (!reportedDisplacementTensorAngstrom2(atom)
+        && Array.isArray(atom.trajectoryCovarianceCartesianA2)) {
+      copyPlacedDisplacementTensor(atom, {
+        uAnisoCartesianA2: atom.trajectoryCovarianceCartesianA2,
+        displacementTensorSource: "time-weighted drift-removed trajectory covariance",
+        displacementTemplateReferenceIndex: atom.externalTrajectoryReferenceIndex,
+      });
     }
   });
   const records = externalPhysicsResponseRuntime.records.map((record, referenceIndex) => {
@@ -3283,6 +3327,16 @@ function bindExternalTrajectoryGeometryToReference(source) {
   if (externalPhysicsResponseValidationReceipt) {
     externalPhysicsResponseValidationReceipt.boundReferenceSites = binding.boundSites;
     externalPhysicsResponseValidationReceipt.properPoseTransportHypothesis = binding.properPoseTransport;
+    externalPhysicsResponseValidationReceipt.covarianceProperPoseTransportHypothesis
+      = binding.covarianceProperPoseTransport;
+    externalPhysicsResponseValidationReceipt.trajectoryCovarianceMode = externalTrajectoryCovarianceMode;
+    externalPhysicsResponseValidationReceipt.trajectoryCovarianceDirectionalAdmission
+      = externalTrajectoryCovarianceMode === "directional-clearance";
+    externalPhysicsResponseValidationReceipt.trajectoryCovarianceTimeWeighting
+      = binding.covarianceTimeWeighting;
+    externalPhysicsResponseValidationReceipt.trajectoryCovarianceProbabilityDistributionInferred = false;
+    externalPhysicsResponseValidationReceipt.trajectoryCovarianceThermalEquilibriumAssumed = false;
+    externalPhysicsResponseValidationReceipt.trajectoryCovariancePhononModelAssumed = false;
     externalPhysicsResponseValidationReceipt.globalTranslationRemovedPerFrame
       = binding.globalTranslationRemovedPerFrame;
     externalPhysicsResponseValidationReceipt.globalRotationRemovedPerFrame
@@ -5329,14 +5383,47 @@ function intrinsicPlaneNormal(source) {
   return new THREE.Vector3().crossVectors(axis, second.normalize()).normalize();
 }
 
+function tensorCopy(tensor) {
+  return Array.isArray(tensor) ? tensor.map((row) => row.slice()) : null;
+}
+
+function reportedDisplacementTensorAngstrom2(atom) {
+  const trajectoryTensor = String(atom.displacementTensorSource || "").includes("trajectory covariance");
+  if (Array.isArray(atom.uAnisoCartesianA2) && !trajectoryTensor) return tensorCopy(atom.uAnisoCartesianA2);
+  return Number.isFinite(atom.uIsoA2) && !trajectoryTensor
+    ? [[atom.uIsoA2, 0, 0], [0, atom.uIsoA2, 0], [0, 0, atom.uIsoA2]] : null;
+}
+
+function empiricalTrajectoryCovarianceAngstrom2(atom) {
+  if (Array.isArray(atom.trajectoryCovarianceCartesianA2)) {
+    return tensorCopy(atom.trajectoryCovarianceCartesianA2);
+  }
+  return String(atom.displacementTensorSource || "").includes("trajectory covariance")
+    ? tensorCopy(atom.uAnisoCartesianA2) : null;
+}
+
+function atomDisplayedDisplacementTensorAngstrom2(atom) {
+  return reportedDisplacementTensorAngstrom2(atom)
+    || empiricalTrajectoryCovarianceAngstrom2(atom);
+}
+
 function atomDisplacementTensorAngstrom2(atom) {
-  return atom.uAnisoCartesianA2?.map((row) => row.slice())
-    || (Number.isFinite(atom.uIsoA2) ? [[atom.uIsoA2, 0, 0], [0, atom.uIsoA2, 0], [0, 0, atom.uIsoA2]] : null);
+  return reportedDisplacementTensorAngstrom2(atom)
+    || (externalTrajectoryCovarianceMode === "directional-clearance"
+      ? empiricalTrajectoryCovarianceAngstrom2(atom) : null);
+}
+
+function displayedDisplacementTensorSource(atom) {
+  if (reportedDisplacementTensorAngstrom2(atom)) {
+    return Array.isArray(atom.uAnisoCartesianA2) ? "reported Uij" : "reported Uiso";
+  }
+  return empiricalTrajectoryCovarianceAngstrom2(atom)
+    ? "time-weighted drift-removed trajectory covariance" : null;
 }
 
 function templateSiteFromReference(source, atomIndex, local, localFrameInverse, center = false) {
   const atom = source[atomIndex];
-  const tensor = atomDisplacementTensorAngstrom2(atom);
+  const tensor = atomDisplayedDisplacementTensorAngstrom2(atom);
   const calculationForceLocalEvPerAngstrom = Array.isArray(atom.calculationForceEvPerAngstrom)
     ? new THREE.Vector3(...atom.calculationForceEvPerAngstrom).applyQuaternion(localFrameInverse) : null;
   const relaxationField = relaxationDisplacementField();
@@ -5366,7 +5453,7 @@ function templateSiteFromReference(source, atomIndex, local, localFrameInverse, 
     externalTrajectoryRmsExcursionAngstrom: atom.externalTrajectoryRmsExcursionAngstrom ?? null,
     externalTrajectoryResponseSha256: atom.externalTrajectoryResponseSha256 || null,
     uAnisoLocalA2: tensor ? rotateDisplacementTensor(tensor, localFrameInverse.toArray()) : null,
-    displacementTensorSource: tensor ? (Array.isArray(atom.uAnisoCartesianA2) ? "reported Uij" : "reported Uiso") : null,
+    displacementTensorSource: tensor ? displayedDisplacementTensorSource(atom) : null,
   };
 }
 
@@ -10645,7 +10732,7 @@ function drawClusterCardDisplacementEllipses(context, projected, quaternion, sca
   if (!displacementToggle.checked) return;
   let drawn = 0;
   projected.forEach((point) => {
-    const tensor = atomDisplacementTensorAngstrom2(point.atom);
+    const tensor = atomDisplayedDisplacementTensorAngstrom2(point.atom);
     const rotated = tensor ? rotateDisplacementTensor(tensor, quaternion.toArray()) : null;
     if (!rotated) return;
     const mean = (rotated[0][0] + rotated[1][1]) / 2;
@@ -10666,7 +10753,7 @@ function drawClusterCardDisplacementEllipses(context, projected, quaternion, sca
   if (drawn) {
     context.save(); context.font = "9px ui-monospace, SFMono-Regular, Menlo, monospace";
     context.fillStyle = "rgba(181,148,255,.82)";
-    context.fillText(`2σ U · ${drawn}`, 8, 13); context.restore();
+    context.fillText(`2σ covariance · ${drawn}`, 8, 13); context.restore();
   }
 }
 
@@ -12314,7 +12401,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260830-341",
+      buildId: "20260830-342",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -12747,6 +12834,7 @@ async function buildExperimentReceipt() {
       metricIsometryToleranceAngstrom: receiptRound(clusterMetricToleranceAngstrom()),
       positionalUncertainty: {
         source: [activeImportedFrameValidation()?.thermalDisplacementSites ? "CIF/JSON isotropic or anisotropic U/B" : null,
+          activeTrajectoryGeometryProvenance() ? `validated empirical trajectory covariance (${externalTrajectoryCovarianceMode})` : null,
           ensemblePairDistanceUncertainty?.available ? "fixed-topology snapshot pair distances" : null].filter(Boolean).join(" + ") || "not supplied",
         toleranceFloorSource: measuredPairUncertaintySource(),
         isotropicSites: activeImportedFrameValidation()?.thermalDisplacementSites || 0,
@@ -12755,8 +12843,8 @@ async function buildExperimentReceipt() {
         maximumOneAxisSigmaAngstrom: receiptRound(activeImportedFrameValidation()?.maximumThermalSigmaA || 0),
         maximumPrincipalAxisSigmaAngstrom: receiptRound(activeImportedFrameValidation()?.maximumThermalAxisSigmaA || 0),
         pairDistanceOneSigmaFloorAngstrom: receiptRound(measuredPairUncertaintyAngstrom()),
-        directionalPairEnvelopeModel: "sigma_pair = sqrt(n^T (U_i + U_j) n); missing U contributes zero",
-        directionalPairEnvelopeRole: "full-Uij pair-direction support transported through proper cluster poses",
+        directionalPairEnvelopeModel: "sigma_pair = sqrt(n^T (C_i + C_j) n); display-only empirical C contributes zero",
+        directionalPairEnvelopeRole: "reported Uij and explicitly enabled empirical trajectory covariance transported through proper cluster poses",
         directionalPairEnvelopeSigmaMultiplier: 1,
         directionalPairEnvelopeCount: coloredDistanceEnvelopes.records
           .filter((record) => record.directionalUncertaintyApplied).length,
@@ -14817,7 +14905,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260830-341" },
+    application: { name: "Materials Growth Lab", buildId: "20260830-342" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },
@@ -18193,7 +18281,10 @@ function displacementTensorTransportAudit() {
   const templates = overlapGrammar?.templates || [];
   const rules = overlapGrammar?.rules || [];
   return {
-    referenceTensorSites: referenceAtoms.filter((atom) => atomDisplacementTensorAngstrom2(atom)).length,
+    referenceTensorSites: referenceAtoms.filter((atom) => atomDisplayedDisplacementTensorAngstrom2(atom)).length,
+    reportedReferenceTensorSites: referenceAtoms.filter((atom) => reportedDisplacementTensorAngstrom2(atom)).length,
+    empiricalTrajectoryCovarianceSites: referenceAtoms
+      .filter((atom) => empiricalTrajectoryCovarianceAngstrom2(atom)).length,
     templateLocalTensorSites: templates.reduce((sum, template) => sum
       + (template.sites || []).filter((site) => Array.isArray(site.uAnisoLocalA2)).length, 0),
     ruleLocalTensorSites: rules.reduce((sum, rule) => sum
@@ -18204,11 +18295,19 @@ function displacementTensorTransportAudit() {
     currentCandidateEllipsoidGlyphSites: currentCandidates.reduce((sum, candidate) => sum
       + (candidate.displacementSites?.length || 0), 0),
     properPoseTransport: "U_world = R_cluster U_local R_cluster^T",
-    liveDirectionalAdmission: true,
+    trajectoryCovarianceMode: externalTrajectoryCovarianceMode,
+    trajectoryCovarianceLiveDirectionalAdmission:
+      externalTrajectoryCovarianceMode === "directional-clearance",
+    reportedCovarianceLiveDirectionalAdmission: true,
     sweptPathDirectionalClearance: true,
     postAttachmentDirectionalRecheck: true,
     clusterGalleryProjectsRotatedTwoSigmaEllipses: true,
     covarianceFrame: "Cartesian angstrom squared",
+    empiricalCovarianceDefinition: "time-weighted covariance of drift-removed trajectory displacements about their weighted mean",
+    empiricalCovarianceTimeWeighting: "normalized trapezoidal physical-time weights",
+    empiricalCovarianceThermalEquilibriumAssumed: false,
+    empiricalCovariancePhononModelAssumed: false,
+    empiricalCovarianceProbabilityDistributionInferred: false,
   };
 }
 
@@ -18375,9 +18474,8 @@ function canonicalKnownSites(sites, context = scenePeriodicContext()) {
       species: reference.species,
       referenceIndex,
       calculationSpin: Number.isFinite(reference.calculationSpin) ? reference.calculationSpin : null,
-      uAnisoCartesianA2: atomDisplacementTensorAngstrom2(reference),
-      displacementTensorSource: Array.isArray(reference.uAnisoCartesianA2)
-        ? "reported Uij" : Number.isFinite(reference.uIsoA2) ? "reported Uiso" : null,
+      uAnisoCartesianA2: atomDisplayedDisplacementTensorAngstrom2(reference),
+      displacementTensorSource: displayedDisplacementTensorSource(reference),
       displacementTemplateReferenceIndex: referenceIndex,
     });
   });
@@ -26231,14 +26329,18 @@ function syncStageOptions() {
   if (archiveResponseOption) archiveResponseOption.disabled = !archiveResponseAvailable;
   if (affineLoadMode === "archive-response" && !archiveResponseAvailable) affineLoadMode = "none";
   const displacementGlyphSites = Math.max(
-    atoms.filter((atom) => atomDisplacementTensorAngstrom2(atom)).length,
-    referenceAtoms.filter((atom) => atomDisplacementTensorAngstrom2(atom)).length,
+    atoms.filter((atom) => atomDisplayedDisplacementTensorAngstrom2(atom)).length,
+    referenceAtoms.filter((atom) => atomDisplayedDisplacementTensorAngstrom2(atom)).length,
     currentCandidates.reduce((sum, candidate) => sum + (candidate.displacementSites?.length || 0), 0),
   );
   displacementToggle.disabled = displacementGlyphSites === 0;
+  const trajectoryCovarianceSites = referenceAtoms
+    .filter((atom) => empiricalTrajectoryCovarianceAngstrom2(atom)).length;
   displacementToggleLabel.textContent = displacementGlyphSites
-    ? `Reported / transported U/B halos · ${displacementGlyphSites} site${displacementGlyphSites === 1 ? "" : "s"}`
+    ? `${trajectoryCovarianceSites ? "U/B + empirical trajectory covariance" : "Reported / transported U/B"} halos · ${displacementGlyphSites} site${displacementGlyphSites === 1 ? "" : "s"}`
     : "Reported / transported U/B halos · unavailable";
+  externalTrajectoryCovarianceControl.hidden = !trajectoryCovarianceSites;
+  externalTrajectoryCovarianceModeSelect.value = externalTrajectoryCovarianceMode;
   forceToggle.disabled = !(calculation?.forceCoverage > 0);
   forceToggleLabel.textContent = calculation?.forceCoverage > 0
     ? `Residual forces · ${calculation.programName || "calculation"}` : "Residual forces · unavailable";
@@ -31227,7 +31329,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260830-341",
+    generatedAt: new Date().toISOString(), buildId: "20260830-342",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,
@@ -31249,6 +31351,7 @@ async function downloadExternalPhysicsRequest(quantity) {
   externalPhysicsResponseRuntime = null;
   externalPhysicsForceGeometryEnabled = false;
   externalPhysicsTrajectoryGeometryEnabled = false;
+  resetExternalTrajectoryCovarianceMode();
   externalPhysicsRequestRuntime = { requestSha256: sha256, request };
   externalPhysicsRequestExportReceipt = {
     schema: 1, requestSchema: request.schema, quantityId: quantity.id,
@@ -31328,6 +31431,7 @@ async function validateReturnedExternalPhysicsFile(file, quantity) {
   externalPhysicsResponseRuntime = validatedRuntime;
   externalPhysicsForceGeometryEnabled = false;
   externalPhysicsTrajectoryGeometryEnabled = false;
+  resetExternalTrajectoryCovarianceMode();
   receiptStatus.textContent = `${quantity.label} response validated · ${audit.configurationRole} · ${audit.method.program} · response ${responseSha256.slice(0, 12)} · specimen-specific evidence only.`;
   renderDynamicalEvidencePlan(activeDynamicalEvidencePlan);
 }
@@ -31356,10 +31460,17 @@ function enableValidatedExternalTrajectoryGeometry() {
   receipt.candidateRankingChangedByBinding = false;
   receipt.observedDisplacementSeedRequiresExplicitOptIn = true;
   receipt.properPoseTransportHypothesis = "delta_r_world = R_cluster delta_r_local";
+  receipt.covarianceProperPoseTransportHypothesis = "C_world = R_cluster C_local R_cluster^T";
+  receipt.trajectoryCovarianceMode = externalTrajectoryCovarianceMode;
+  receipt.trajectoryCovarianceDirectionalAdmission = false;
+  receipt.trajectoryCovarianceTimeWeighting = "normalized trapezoidal physical-time weights";
+  receipt.trajectoryCovarianceProbabilityDistributionInferred = false;
+  receipt.trajectoryCovarianceThermalEquilibriumAssumed = false;
+  receipt.trajectoryCovariancePhononModelAssumed = false;
   receipt.globalTranslationRemovedPerFrame = true;
   receipt.globalRotationRemovedPerFrame = false;
   receipt.gctsSearchStepsUsedAsPhysicalTime = false;
-  receiptStatus.textContent = `Validated trajectory encoded as local sections · ${externalPhysicsResponseRuntime.frameCount} physical frames · drift-removed endpoint vectors + path envelopes · relearning proper-pose transport · physical time remains provenance only.`;
+  receiptStatus.textContent = `Validated trajectory encoded as local sections · ${externalPhysicsResponseRuntime.frameCount} physical frames · drift-removed endpoint vectors + time-weighted covariance ellipsoids · covariance is display-only until explicitly enabled for directional clearance · physical time remains provenance only.`;
   enterPipelineStage(3);
 }
 
@@ -37466,6 +37577,23 @@ growthMechanismCanvas.addEventListener("keydown", (event) => {
 [markingToggle, bondToggle, frontierToggle, displacementToggle, forceToggle, localConstraintMismatchToggle, relaxationDisplacementToggle,
   relaxationLocalEnvironmentToggle]
   .forEach((input) => input.addEventListener("change", rebuildWorld));
+externalTrajectoryCovarianceModeSelect.addEventListener("change", () => {
+  externalTrajectoryCovarianceMode = externalTrajectoryCovarianceModeSelect.value === "directional-clearance"
+    ? "directional-clearance" : "display";
+  if (externalPhysicsResponseValidationReceipt?.quantityId === "trajectory") {
+    externalPhysicsResponseValidationReceipt.trajectoryCovarianceMode = externalTrajectoryCovarianceMode;
+    externalPhysicsResponseValidationReceipt.trajectoryCovarianceDirectionalAdmission
+      = externalTrajectoryCovarianceMode === "directional-clearance";
+    externalPhysicsResponseValidationReceipt.candidateRankingChangedByCovarianceMode = false;
+    externalPhysicsResponseValidationReceipt.hardDirectionalAdmissionMayChange
+      = externalTrajectoryCovarianceMode === "directional-clearance";
+  }
+  receiptStatus.textContent = externalTrajectoryCovarianceMode === "directional-clearance"
+    ? "Empirical trajectory covariance enabled for 1σ directional clearance · relearning hard contact envelopes · candidate geometry and ranking remain unchanged."
+    : "Empirical trajectory covariance is display-only · relearning without trajectory-derived hard clearance.";
+  if (externalPhysicsTrajectoryGeometryEnabled) enterPipelineStage(3);
+  else { syncStageOptions(); rebuildWorld(); updateUI(); }
+});
 growthEvidenceToggle.addEventListener("change", () => {
   syncGrowthEvidenceControl();
   rebuildWorld();
