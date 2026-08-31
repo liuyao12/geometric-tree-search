@@ -1727,12 +1727,13 @@ assert.deepEqual(
   [[10, 85, 0, 403, true], [10, 85, 0, 403, true], [8, 70, 15, 316, false]]
 );
 assert.deepEqual(palindromicUnresolved.map(candidate =>
-  candidate.screening.five_copy_substitution_parents_exhausted), [17707, 68758, 0]);
-assert.ok(palindromicUnresolved.slice(0, 2).every(candidate =>
+  candidate.screening.five_copy_substitution_parents_exhausted), [17707, 68758, 1999910]);
+assert.ok(palindromicUnresolved.every(candidate =>
   candidate.screening.five_copy_substitution_exact_scales.join(",") === "2"
   && candidate.screening.five_copy_substitution_models.join(",") === "proper"
   && candidate.screening.five_copy_substitution_certified_negatives === 1));
-assert.equal(palindromicUnresolved[2].screening.five_copy_substitution_certified_negatives, 0);
+assert.equal(palindromicUnresolved[2].screening.five_copy_substitution_summary_report,
+  "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-proper-04468-summary.json");
 const palindromicPeriodic = A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES.filter(
   candidate => candidate.screening.status === "periodic"
 );

@@ -175,23 +175,13 @@ def merge_to_compact_sqlite(paths: list[Path], output: Path,
         digest.update(b"]")
         canonical_sha256 = digest.hexdigest()
         connection.execute(
-            "CREATE TABLE canonical_order (canonical_index INTEGER PRIMARY KEY, "
-            "sort_key BLOB UNIQUE NOT NULL)"
-        )
-        connection.executemany(
-            "INSERT INTO canonical_order(canonical_index,sort_key) VALUES(?,?)",
-            ((index, sort_key) for index, (sort_key,) in enumerate(connection.execute(
-                "SELECT sort_key FROM representatives ORDER BY sort_key"
-            ))),
-        )
-        connection.execute(
             "CREATE TABLE metadata (key TEXT PRIMARY KEY, value_json TEXT NOT NULL) WITHOUT ROWID"
         )
         metadata = {
             "id": candidate_id,
             "include_reflections": include_reflections,
             "copies": 5,
-            "cache_schema": "compact_canonical_alcove_keys_v1",
+            "cache_schema": "compact_canonical_alcove_keys_v2",
             "raw_connected_extensions": raw,
             "symmetry_distinct_metatiles": count,
             "canonical_sha256": canonical_sha256,
@@ -293,10 +283,10 @@ def main():
                 "raw": result["raw"], "partial_types": result["types"],
             }, separators=(",", ":")), flush=True)
 
-    complete = all(valid_shard(
-        path, args.candidate_id, args.include_reflections,
-        start, min(args.four_parent_total, start + span), args.four_parent_total,
-    ) for start, path in zip(range(0, args.four_parent_total, span), paths))
+    # The merge revalidates every identity, range, sorted key list, and digest.
+    # Avoid parsing the full shard corpus twice merely to decide whether every
+    # expected pathname is present.
+    complete = all(path.exists() for path in paths)
     if not complete:
         print(json.dumps({
             "candidate": args.candidate_id, "complete": False,

@@ -49,13 +49,39 @@ const tenCopyReceipts = await readGzipNdjson(
 const radiusTwoContinuations = await readGzipNdjson(
   "data/a2-sliced-size9-palindromic-corona2-core256.ndjson.gz"
 );
+const fiveCopySummary04468 = await readJson(
+  "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-proper-04468-summary.json"
+);
 const fiveCopySubstitutions = [
   ...(await readGzipNdjson(
     "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-proper-04636.ndjson.gz"
   )),
   ...(await readGzipNdjson(
     "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-proper-01085.ndjson.gz"
-  ))
+  )),
+  (() => {
+    const summary = fiveCopySummary04468;
+    return {
+      id: summary.id,
+      classification: summary.classification,
+      five_copy_alcove_metatile_screen: {
+        certified: summary.certified,
+        scale: summary.scale,
+        include_reflections: summary.include_reflections,
+        family: summary.family,
+        four_copy_parent_total: summary.four_copy_parent_total,
+        raw_connected_extensions: summary.raw_connected_extensions,
+        symmetry_distinct_metatiles: summary.symmetry_distinct_metatiles,
+        canonical_sha256: summary.canonical_sha256,
+        parents_completed: summary.parents_completed,
+        parent_counts: summary.parent_counts,
+        closed_alphabet: summary.closed_alphabet,
+        all_parent_replays_verified: summary.all_parent_replays_verified,
+        parent_results_sha256: summary.parent_results_sha256,
+        archive_sha256: summary.archive_sha256,
+      }
+    };
+  })()
 ];
 const tenCopySolverProbe = tenCopySummary.solver_probe;
 if (!tenCopySolverProbe
@@ -242,7 +268,8 @@ const candidates = selectedIds.map((id, index) => {
   }
   const expectedFiveCopyParents = new Map([
     ["a2sp_9_04636", 17707],
-    ["a2sp_9_01085", 68758]
+    ["a2sp_9_01085", 68758],
+    ["a2sp_9_04468", 1999910]
   ]).get(id);
   if (expectedFiveCopyParents && (
       fiveCopy?.classification !== "no_five_copy_metatile_scalar2_substitution"
@@ -251,8 +278,10 @@ const candidates = selectedIds.map((id, index) => {
       || fiveCopy.five_copy_alcove_metatile_screen.symmetry_distinct_metatiles !== expectedFiveCopyParents
       || fiveCopy.five_copy_alcove_metatile_screen.parents_completed !== expectedFiveCopyParents
       || fiveCopy.five_copy_alcove_metatile_screen.parent_counts.atomic_local_obstruction !== expectedFiveCopyParents
-      || fiveCopy.five_copy_alcove_metatile_screen.parent_results.some(result =>
-        result.atomic_local_obstruction_replay?.verified !== true))) {
+      || (fiveCopy.five_copy_alcove_metatile_screen.parent_results
+        ? fiveCopy.five_copy_alcove_metatile_screen.parent_results.some(result =>
+          result.atomic_local_obstruction_replay?.verified !== true)
+        : fiveCopy.five_copy_alcove_metatile_screen.all_parent_replays_verified !== true))) {
     throw new Error(`Missing replayed proper five-copy substitution exclusion for ${id}`);
   }
   const geometry = makeA2SlicedAlcoveUnion(record.alcoves);
@@ -366,6 +395,9 @@ const candidates = selectedIds.map((id, index) => {
         fiveCopy?.five_copy_alcove_metatile_screen.parents_completed ?? 0,
       five_copy_substitution_report: fiveCopy
         ? `data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-proper-${id.slice("a2sp_9_".length)}.ndjson.gz`
+        : null,
+      five_copy_substitution_summary_report: id === "a2sp_9_04468"
+        ? "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-proper-04468-summary.json"
         : null,
       corona_root_patch_copies: corona.corona_z3.replay.patch_copies,
       corona_solver: corona.corona_z3.smt2_sha256 ? "z3" : "exact_gcts",

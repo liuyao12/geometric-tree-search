@@ -36,6 +36,7 @@ class CompactSqliteMetatileList:
         self.chunk_size = chunk_size
         self.chunk_start = -1
         self.chunk = []
+        self.last_sort_key = None
         self.connection = sqlite3.connect(
             f"{path.resolve().as_uri()}?mode=ro", uri=True
         )
@@ -60,14 +61,22 @@ class CompactSqliteMetatileList:
             raise IndexError(index)
         start = (index // self.chunk_size) * self.chunk_size
         if start != self.chunk_start:
-            rows = self.connection.execute(
-                "SELECT r.key_json FROM canonical_order AS o "
-                "JOIN representatives AS r USING(sort_key) "
-                "WHERE o.canonical_index>=? AND o.canonical_index<? "
-                "ORDER BY o.canonical_index",
-                (start, min(self.count, start + self.chunk_size)),
-            )
-            self.chunk = [self.metatile(json.loads(row[0])) for row in rows]
+            if (self.last_sort_key is not None
+                    and start == self.chunk_start + len(self.chunk)):
+                rows = self.connection.execute(
+                    "SELECT sort_key,key_json FROM representatives "
+                    "WHERE sort_key>? ORDER BY sort_key LIMIT ?",
+                    (self.last_sort_key, self.chunk_size),
+                )
+            else:
+                rows = self.connection.execute(
+                    "SELECT sort_key,key_json FROM representatives "
+                    "ORDER BY sort_key LIMIT ? OFFSET ?",
+                    (self.chunk_size, start),
+                )
+            loaded = list(rows)
+            self.chunk = [self.metatile(json.loads(row[1])) for row in loaded]
+            self.last_sort_key = loaded[-1][0] if loaded else None
             self.chunk_start = start
         return self.chunk[index - start]
 
@@ -86,7 +95,7 @@ def sqlite_enumeration(record, include_reflections, path: Path):
     if (metadata.get("id") != record["id"]
             or metadata.get("include_reflections") != include_reflections
             or metadata.get("copies") != 5
-            or metadata.get("cache_schema") != "compact_canonical_alcove_keys_v1"):
+            or metadata.get("cache_schema") != "compact_canonical_alcove_keys_v2"):
         raise ValueError(f"five-copy SQLite cache identity mismatch: {path}")
     count = metadata["symmetry_distinct_metatiles"]
     return {

@@ -292,12 +292,14 @@ A separate 256-round radius-two core-CEGAR continuation on all three leaders
 retains 256 sound failure clauses per tile. None exhausts the outer-corona
 space and none finds a replayed radius-two patch, so all three results remain
 explicitly inconclusive.
-For recovered leaders `a2sp_9_04636` and `a2sp_9_01085`, complete proper
-five-copy metatile censuses at scalar scale 2 now check all 17,707 and 68,758
-symmetry-distinct connected metatiles respectively. Every parent has a
-replay-verified atomic local obstruction, so both entire five-copy substitution
-families are exactly excluded. Reflected five-copy metatiles, larger clusters,
-non-scalar inflations, and non-cellular boundaries remain open.
+For all three recovered leaders, complete proper five-copy metatile censuses at
+scalar scale 2 now check 17,707 (`04636`), 68,758 (`01085`), and 1,999,910
+(`04468`) symmetry-distinct connected metatiles. Every parent has a
+replay-verified atomic local obstruction, so all three entire five-copy
+substitution families are exactly excluded. The large `04468` receipt is
+stream-verified by ordered parent index plus canonical, parent-result, and
+archive digests. Reflected five-copy metatiles, larger clusters, non-scalar
+inflations, and non-cellular boundaries remain open.
 The original stratum's exact two-, four-, and six-copy quotient screens reduce
 it to 356 reflection-class candidates.
 The next census level is also complete and removes the profile heuristic
