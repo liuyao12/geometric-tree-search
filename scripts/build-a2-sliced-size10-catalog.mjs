@@ -26,9 +26,14 @@ const twoCopySubstitutions = await readGzipNdjson(
 const threeCopySubstitutions = await readGzipNdjson(
   "data/a2-sliced-size10-three-copy-substitution-scale2-leaders.ndjson.gz"
 );
-const fourCopySubstitutions = await readGzipNdjson(
-  "data/a2-sliced-size10-four-copy-substitution-scale2-proper-leaders.ndjson.gz"
-);
+const fourCopySubstitutions = [
+  ...(await readGzipNdjson(
+    "data/a2-sliced-size10-four-copy-substitution-scale2-proper-leaders.ndjson.gz"
+  )),
+  ...(await readGzipNdjson(
+    "data/a2-sliced-size10-four-copy-substitution-scale2-reflected-leaders.ndjson.gz"
+  ))
+];
 const nineCopySummary = await readJson(
   "data/a2-sliced-size10-leaders-periodic9-exact2m-summary.json"
 );
@@ -64,7 +69,12 @@ const selectedIds = ["a2sa_10_36141", "a2sa_10_35323", "a2sa_10_36194"];
 const nineCopySummaryById = new Map(nineCopySummary.candidates.map(record => [record.id, record]));
 const nineCopyCertificateById = new Map(nineCopyCertificates.map(record => [record.id, record]));
 const nineCopyClusterById = new Map(nineCopyClusterRules.map(record => [record.id, record]));
-const fourCopySubstitutionById = new Map(fourCopySubstitutions.map(record => [record.id, record]));
+const fourCopySubstitutionById = fourCopySubstitutions.reduce((groups, record) => {
+  const rows = groups.get(record.id) ?? [];
+  rows.push(record);
+  groups.set(record.id, rows);
+  return groups;
+}, new Map());
 
 const proofOrientationTransforms = [
   [1, [0, 1, 2]], [1, [1, 2, 0]], [1, [2, 0, 1]],
@@ -99,7 +109,7 @@ const candidates = selectedIds.map((id, index) => {
   const direct = directSubstitutionById.get(id) ?? [];
   const twoCopy = twoCopySubstitutionById.get(id) ?? [];
   const threeCopy = threeCopySubstitutionById.get(id) ?? [];
-  const fourCopy = fourCopySubstitutionById.get(id) ?? null;
+  const fourCopy = fourCopySubstitutionById.get(id) ?? [];
   const nineCopy = nineCopySummaryById.get(id);
   const nineCopyRecord = nineCopyCertificateById.get(id);
   const periodicCertificate = nineCopyRecord?.periodic_z3?.certificate ?? null;
@@ -131,10 +141,10 @@ const candidates = selectedIds.map((id, index) => {
     || result.three_copy_alcove_metatile_screen.certified !== true)) {
     throw new Error(`Missing scale-2 three-copy substitution exclusions for ${id}`);
   }
-  if (!isPeriodic && (!fourCopy
-      || fourCopy.classification !== "no_four_copy_metatile_scalar2_substitution"
-      || fourCopy.four_copy_alcove_metatile_screen.certified !== true)) {
-    throw new Error(`Missing proper scale-2 four-copy substitution exclusion for ${id}`);
+  if (!isPeriodic && (fourCopy.length !== 2 || fourCopy.some(result =>
+      result.classification !== "no_four_copy_metatile_scalar2_substitution"
+      || result.four_copy_alcove_metatile_screen.certified !== true))) {
+    throw new Error(`Missing proper/reflected scale-2 four-copy substitution exclusions for ${id}`);
   }
   const geometry = makeA2SlicedAlcoveUnion(record.alcoves);
   return {
@@ -196,13 +206,15 @@ const candidates = selectedIds.map((id, index) => {
       three_copy_substitution_parents_exhausted: threeCopy.reduce((sum, result) =>
         sum + result.three_copy_alcove_metatile_screen.parents_completed, 0),
       three_copy_substitution_report: "data/a2-sliced-size10-three-copy-substitution-scale2-leaders.ndjson.gz",
-      four_copy_substitution_exact_scales: fourCopy ? [2] : [],
-      four_copy_substitution_models: fourCopy ? ["proper"] : [],
-      four_copy_substitution_certified_negatives: fourCopy ? 1 : 0,
-      four_copy_substitution_parents_exhausted:
-        fourCopy?.four_copy_alcove_metatile_screen.parents_completed ?? 0,
-      four_copy_substitution_report: fourCopy
-        ? "data/a2-sliced-size10-four-copy-substitution-scale2-proper-leaders.ndjson.gz" : null,
+      four_copy_substitution_exact_scales: fourCopy.length ? [2] : [],
+      four_copy_substitution_models: fourCopy.length ? ["proper", "reflected"] : [],
+      four_copy_substitution_certified_negatives: fourCopy.length,
+      four_copy_substitution_parents_exhausted: fourCopy.reduce((sum, result) =>
+        sum + result.four_copy_alcove_metatile_screen.parents_completed, 0),
+      four_copy_substitution_reports: fourCopy.length ? [
+        "data/a2-sliced-size10-four-copy-substitution-scale2-proper-leaders.ndjson.gz",
+        "data/a2-sliced-size10-four-copy-substitution-scale2-reflected-leaders.ndjson.gz"
+      ] : [],
       corona_root_patch_copies: corona.corona_z3.replay.patch_copies,
       corona_search_nodes: corona.corona_z3.exact_gcts.nodes,
       corona_report: "data/a2-sliced-size10-focused-corona1-bounded.ndjson.gz",

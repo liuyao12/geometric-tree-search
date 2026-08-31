@@ -304,8 +304,9 @@ determinant-15 quotient campaign then finds a replayed 9-tile period for
 `a2sa_10_36194`; its quotient induces a replayed scale-two 8-cluster
 substitution with 72 atomic tile placements. For each of the other two
 leaders, 55 of 85 proper-A₂ quotient orbits are exact-negative and 30 remain
-node-capped. Complete proper-orientation four-copy substitution screens at
-scale 2 exclude all 82,215 parents for `a2sa_10_35323` and all 68,838 for
+node-capped. Complete four-copy substitution screens at scale 2 now exclude
+both symmetry models: 82,215 proper and 406,809 reflected parents for
+`a2sa_10_35323`, and 68,838 proper plus 377,876 reflected parents for
 `a2sa_10_36141`, with a replayed atomic obstruction for every parent.
 Among the first eight priority classes, a complete determinant-12 eight-copy
 screen finds five replay-verified periodic quotients and exhausts all 455 HNF

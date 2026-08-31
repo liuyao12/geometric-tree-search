@@ -221,11 +221,15 @@ export const A2_SLICED_SIZE10_CANDIDATES = Object.freeze([
         2
       ],
       "four_copy_substitution_models": [
-        "proper"
+        "proper",
+        "reflected"
       ],
-      "four_copy_substitution_certified_negatives": 1,
-      "four_copy_substitution_parents_exhausted": 68838,
-      "four_copy_substitution_report": "data/a2-sliced-size10-four-copy-substitution-scale2-proper-leaders.ndjson.gz",
+      "four_copy_substitution_certified_negatives": 2,
+      "four_copy_substitution_parents_exhausted": 446714,
+      "four_copy_substitution_reports": [
+        "data/a2-sliced-size10-four-copy-substitution-scale2-proper-leaders.ndjson.gz",
+        "data/a2-sliced-size10-four-copy-substitution-scale2-reflected-leaders.ndjson.gz"
+      ],
       "corona_root_patch_copies": 29,
       "corona_search_nodes": 30,
       "corona_report": "data/a2-sliced-size10-focused-corona1-bounded.ndjson.gz",
@@ -679,11 +683,15 @@ export const A2_SLICED_SIZE10_CANDIDATES = Object.freeze([
         2
       ],
       "four_copy_substitution_models": [
-        "proper"
+        "proper",
+        "reflected"
       ],
-      "four_copy_substitution_certified_negatives": 1,
-      "four_copy_substitution_parents_exhausted": 82215,
-      "four_copy_substitution_report": "data/a2-sliced-size10-four-copy-substitution-scale2-proper-leaders.ndjson.gz",
+      "four_copy_substitution_certified_negatives": 2,
+      "four_copy_substitution_parents_exhausted": 489024,
+      "four_copy_substitution_reports": [
+        "data/a2-sliced-size10-four-copy-substitution-scale2-proper-leaders.ndjson.gz",
+        "data/a2-sliced-size10-four-copy-substitution-scale2-reflected-leaders.ndjson.gz"
+      ],
       "corona_root_patch_copies": 26,
       "corona_search_nodes": 28,
       "corona_report": "data/a2-sliced-size10-focused-corona1-bounded.ndjson.gz",
@@ -2082,7 +2090,7 @@ export const A2_SLICED_SIZE10_CANDIDATES = Object.freeze([
       "four_copy_substitution_models": [],
       "four_copy_substitution_certified_negatives": 0,
       "four_copy_substitution_parents_exhausted": 0,
-      "four_copy_substitution_report": null,
+      "four_copy_substitution_reports": [],
       "corona_root_patch_copies": 29,
       "corona_search_nodes": 143,
       "corona_report": "data/a2-sliced-size10-focused-corona1-bounded.ndjson.gz",
