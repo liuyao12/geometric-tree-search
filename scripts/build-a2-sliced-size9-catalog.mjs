@@ -44,6 +44,10 @@ const records = await readNdjson(sourcePath);
 if (records.length !== 8) throw new Error(`Expected eight focused records, found ${records.length}`);
 const unresolved = records.filter(record => record.classification === "unresolved");
 const periodic = records.filter(record => record.classification === "periodic");
+const scalarFamilyRows = await readNdjson(
+  "data/a2-sliced-alcove-size9-scalar-family-certificates.ndjson"
+);
+const scalarFamilyById = Map.groupBy(scalarFamilyRows, record => record.id);
 const coronaRows = await readNdjson("runs/a2-sliced-size9-corona1.ndjson");
 const coronaById = new Map(coronaRows.map(record => [record.id, record]));
 const radiusTwoRows = await readNdjson("runs/a2-sliced-size9-corona2-focused256-merged.ndjson");
@@ -196,6 +200,17 @@ const candidates = records.map(record => {
   const twoCopy = twoCopyById.get(record.id) ?? [];
   const fourCopy = fourCopyById.get(record.id);
   const reflectedFourCopy = reflectedFourCopyById.get(record.id);
+  const scalarFamily = scalarFamilyById.get(record.id) ?? [];
+  const scalarFamilyComplete = scalarFamily.length === 2
+    && new Set(scalarFamily.map(item =>
+      item.scalar_family_atomic_obstruction?.include_reflections
+    )).size === 2
+    && scalarFamily.every(item =>
+      item.classification === "no_direct_scalar_substitution_all_integer_scales"
+      && item.scalar_family_atomic_obstruction?.certified === true
+      && item.scalar_family_atomic_obstruction?.integer_scale_range?.[0] === 2
+      && item.scalar_family_atomic_obstruction?.integer_scale_range?.[1] === null
+    );
   if (!corona?.corona_z3?.replay?.verified) {
     throw new Error(`Missing replayed root corona for ${record.id}`);
   }
@@ -251,6 +266,13 @@ const candidates = records.map(record => {
       corona_search_nodes: corona.corona_z3.exact_gcts?.nodes ?? null,
       corona_report: "data/a2-sliced-alcove-size9-focused-corona1.ndjson",
       substitution_direct_scalar_scales_excluded: [2, 3, 4, 5, 6, 7, 8],
+      substitution_direct_scalar_integer_scales_excluded_from:
+        scalarFamilyComplete ? 2 : null,
+      substitution_direct_scalar_all_scale_models_exhausted:
+        scalarFamilyComplete ? ["proper", "reflected"] : [],
+      substitution_direct_scalar_all_scale_report: scalarFamilyComplete
+        ? "data/a2-sliced-alcove-size9-scalar-family-certificates.ndjson"
+        : null,
       substitution_models_exhausted: ["proper", "reflected"],
       substitution_two_copy_metatile_scalar_scales_excluded:
         twoCopy.length === 4 ? [2, 3] : [],

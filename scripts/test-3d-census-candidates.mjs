@@ -1676,6 +1676,8 @@ assert.ok(slicedSizeNineLeads.every(candidate =>
   && candidate.screening.periodic_solver_unknowns === 0
   && candidate.screening.corona_completed_verified
   && candidate.screening.radius_two_outer_exhausted === false
+  && candidate.screening.substitution_direct_scalar_integer_scales_excluded_from === 2
+  && candidate.screening.substitution_direct_scalar_all_scale_models_exhausted.join(",") === "proper,reflected"
   && candidate.screening.substitution_two_copy_census_candidates_exhausted === 356
   && candidate.screening.substitution_two_copy_metatile_scalar_scales_excluded.join(",") === "2,3"
   && candidate.screening.substitution_three_copy_metatile_scalar_scales_excluded.join(",") === "2,3"

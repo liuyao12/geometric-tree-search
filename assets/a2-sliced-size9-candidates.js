@@ -190,6 +190,12 @@ export const A2_SLICED_SIZE9_CANDIDATES = Object.freeze([
         7,
         8
       ],
+      "substitution_direct_scalar_integer_scales_excluded_from": 2,
+      "substitution_direct_scalar_all_scale_models_exhausted": [
+        "proper",
+        "reflected"
+      ],
+      "substitution_direct_scalar_all_scale_report": "data/a2-sliced-alcove-size9-scalar-family-certificates.ndjson",
       "substitution_models_exhausted": [
         "proper",
         "reflected"
@@ -441,6 +447,12 @@ export const A2_SLICED_SIZE9_CANDIDATES = Object.freeze([
         7,
         8
       ],
+      "substitution_direct_scalar_integer_scales_excluded_from": 2,
+      "substitution_direct_scalar_all_scale_models_exhausted": [
+        "proper",
+        "reflected"
+      ],
+      "substitution_direct_scalar_all_scale_report": "data/a2-sliced-alcove-size9-scalar-family-certificates.ndjson",
       "substitution_models_exhausted": [
         "proper",
         "reflected"
@@ -891,6 +903,9 @@ export const A2_SLICED_SIZE9_CANDIDATES = Object.freeze([
         7,
         8
       ],
+      "substitution_direct_scalar_integer_scales_excluded_from": null,
+      "substitution_direct_scalar_all_scale_models_exhausted": [],
+      "substitution_direct_scalar_all_scale_report": null,
       "substitution_models_exhausted": [
         "proper",
         "reflected"
@@ -1315,6 +1330,9 @@ export const A2_SLICED_SIZE9_CANDIDATES = Object.freeze([
         7,
         8
       ],
+      "substitution_direct_scalar_integer_scales_excluded_from": null,
+      "substitution_direct_scalar_all_scale_models_exhausted": [],
+      "substitution_direct_scalar_all_scale_report": null,
       "substitution_models_exhausted": [
         "proper",
         "reflected"
@@ -1540,6 +1558,12 @@ export const A2_SLICED_SIZE9_CANDIDATES = Object.freeze([
         7,
         8
       ],
+      "substitution_direct_scalar_integer_scales_excluded_from": 2,
+      "substitution_direct_scalar_all_scale_models_exhausted": [
+        "proper",
+        "reflected"
+      ],
+      "substitution_direct_scalar_all_scale_report": "data/a2-sliced-alcove-size9-scalar-family-certificates.ndjson",
       "substitution_models_exhausted": [
         "proper",
         "reflected"
@@ -1989,6 +2013,9 @@ export const A2_SLICED_SIZE9_CANDIDATES = Object.freeze([
         7,
         8
       ],
+      "substitution_direct_scalar_integer_scales_excluded_from": null,
+      "substitution_direct_scalar_all_scale_models_exhausted": [],
+      "substitution_direct_scalar_all_scale_report": null,
       "substitution_models_exhausted": [
         "proper",
         "reflected"
@@ -2412,6 +2439,9 @@ export const A2_SLICED_SIZE9_CANDIDATES = Object.freeze([
         7,
         8
       ],
+      "substitution_direct_scalar_integer_scales_excluded_from": null,
+      "substitution_direct_scalar_all_scale_models_exhausted": [],
+      "substitution_direct_scalar_all_scale_report": null,
       "substitution_models_exhausted": [
         "proper",
         "reflected"
@@ -2835,6 +2865,9 @@ export const A2_SLICED_SIZE9_CANDIDATES = Object.freeze([
         7,
         8
       ],
+      "substitution_direct_scalar_integer_scales_excluded_from": null,
+      "substitution_direct_scalar_all_scale_models_exhausted": [],
+      "substitution_direct_scalar_all_scale_report": null,
       "substitution_models_exhausted": [
         "proper",
         "reflected"
