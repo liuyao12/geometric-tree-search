@@ -4,12 +4,15 @@
 from __future__ import annotations
 
 import argparse
+import gzip
 import json
 from pathlib import Path
 
 
 def read_ndjson(path: Path) -> list[dict]:
-    return [json.loads(line) for line in path.read_text().splitlines() if line.strip()]
+    opener = gzip.open if path.suffix == ".gz" else open
+    with opener(path, "rt", encoding="utf-8") as stream:
+        return [json.loads(line) for line in stream if line.strip()]
 
 
 def main() -> None:

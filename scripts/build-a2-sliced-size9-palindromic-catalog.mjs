@@ -46,6 +46,9 @@ const tenCopySummary = await readJson(
 const tenCopyReceipts = await readGzipNdjson(
   "data/a2-sliced-size9-palindromic-periodic10-best10m-receipts.ndjson.gz"
 );
+const radiusTwoContinuations = await readGzipNdjson(
+  "data/a2-sliced-size9-palindromic-corona2-core256.ndjson.gz"
+);
 const tenCopySolverProbe = tenCopySummary.solver_probe;
 if (!tenCopySolverProbe
     || tenCopySolverProbe.solver !== "qffd"
@@ -72,6 +75,7 @@ const periodicById = new Map(exactEight.map(record => [record.id, record]));
 const exactSixById = new Map(exactSix.map(record => [record.id, record]));
 const clusterSubstitutionById = new Map(periodicClusterSubstitutions.map(record => [record.id, record]));
 const tenCopySummaryById = new Map(tenCopySummary.candidates.map(record => [record.id, record]));
+const radiusTwoById = new Map(radiusTwoContinuations.map(record => [record.id, record]));
 const tenCopyReceiptsById = tenCopyReceipts.reduce((groups, record) => {
   const rows = groups.get(record.id) ?? [];
   rows.push(record);
@@ -160,6 +164,7 @@ const candidates = selectedIds.map((id, index) => {
   const fourCopy = fourCopySubstitutionById.get(id) ?? [];
   const tenCopy = tenCopySummaryById.get(id) ?? null;
   const tenCopyComplete = tenCopy?.node_capped_orbits === 0;
+  const radiusTwo = radiusTwoById.get(id) ?? null;
   if (!record || !sixCopy || !corona) throw new Error(`Missing focused receipt for ${id}`);
   const periodicCertificate = record.periodic_z3.certificate ?? null;
   const clusterSubstitution = clusterSubstitutionById.get(id) ?? null;
@@ -216,6 +221,14 @@ const candidates = selectedIds.map((id, index) => {
           !== tenCopy.hnfs_exactly_excluded) {
       throw new Error(`Missing validated ten-copy bounded campaign for ${id}`);
     }
+    if (!radiusTwo
+        || radiusTwo.corona2_core_classification !== "unresolved"
+        || radiusTwo.corona2_core_cegar.outer_exhausted !== false
+        || radiusTwo.corona2_core_cegar.rounds !== 256
+        || radiusTwo.corona2_core_cegar.clauses?.length !== 256
+        || radiusTwo.corona2_core_cegar.stopped_by !== "round_limit") {
+      throw new Error(`Missing validated radius-two continuation for ${id}`);
+    }
   }
   const geometry = makeA2SlicedAlcoveUnion(record.alcoves);
   return {
@@ -230,7 +243,7 @@ const candidates = selectedIds.map((id, index) => {
     survivor_count: 97,
     description: isPeriodic
       ? "Nine-alcove non-polycube with a replayed eight-copy periodic quotient and induced scale-two cluster substitution."
-      : `Nine-alcove non-polycube from the completed palindromic-profile stratum on consecutive x+y+z=k sections. A heavy-first ten-copy quotient campaign exactly excludes ${tenCopy.exact_negative_orbits} of ${tenCopy.orbit_total} proper-A₂ orbit classes, covering ${tenCopy.hnfs_exactly_excluded} of ${tenCopy.hnf_total} HNF bases.${tenCopyComplete ? " The fixed ten-copy determinant-15 screen is complete with zero solver unknowns." : ` The remaining ${tenCopy.node_capped_orbits} classes are explicitly inconclusive after ten-million-node searches.`} An alternate 120-second QF_FD probe on 18 residual classes yields no SAT or UNSAT result; 12 interrupted partial receipts are excluded.`,
+      : `Nine-alcove non-polycube from the completed palindromic-profile stratum on consecutive x+y+z=k sections. A heavy-first ten-copy quotient campaign exactly excludes ${tenCopy.exact_negative_orbits} of ${tenCopy.orbit_total} proper-A₂ orbit classes, covering ${tenCopy.hnfs_exactly_excluded} of ${tenCopy.hnf_total} HNF bases.${tenCopyComplete ? " The fixed ten-copy determinant-15 screen is complete with zero solver unknowns." : ` The remaining ${tenCopy.node_capped_orbits} classes are explicitly inconclusive after ten-million-node searches.`} A separate radius-two core-CEGAR continuation retains ${radiusTwo.corona2_core_cegar.clauses.length} sound failure clauses after ${radiusTwo.corona2_core_cegar.rounds} rounds without exhausting the outer space or finding a replayed radius-two patch. An alternate 120-second QF_FD probe on 18 residual classes yields no SAT or UNSAT result; 12 interrupted partial receipts are excluded.`,
     screening: {
       status: isPeriodic ? "periodic" : "inconclusive",
       certificate: isPeriodic ? "translational" : null,
@@ -277,6 +290,15 @@ const candidates = selectedIds.map((id, index) => {
         ? "data/a2-sliced-size9-palindromic-periodic10-exact10m-summary.json" : null,
       periodic_ten_copy_receipt_archive: tenCopy
         ? "data/a2-sliced-size9-palindromic-periodic10-best10m-receipts.ndjson.gz" : null,
+      radius_two_status: radiusTwo?.corona2_core_classification ?? null,
+      radius_two_rounds: radiusTwo?.corona2_core_cegar?.rounds ?? 0,
+      radius_two_failure_clauses: radiusTwo?.corona2_core_cegar?.clauses?.length ?? 0,
+      radius_two_outer_exhausted: radiusTwo?.corona2_core_cegar?.outer_exhausted ?? false,
+      radius_two_stopped_by: radiusTwo?.corona2_core_cegar?.stopped_by ?? null,
+      radius_two_cumulative_milliseconds:
+        radiusTwo?.corona2_core_cegar?.cumulative_milliseconds ?? 0,
+      radius_two_report: radiusTwo
+        ? "data/a2-sliced-size9-palindromic-corona2-core256.ndjson.gz" : null,
       motif_tiles: periodicCertificate?.copies ?? null,
       period_vectors: periodicCertificate?.period_vectors ?? null,
       quotient_determinant: periodicCertificate?.determinant ?? null,
