@@ -19,7 +19,7 @@ const response = {
   method: { family: "direct interface advance", program: "test-engine", version: "1",
     settingsSha256: "b".repeat(64) },
   drivingCondition: { description: "fixed undercooling and composition", settingsSha256: "c".repeat(64),
-    temperatureKelvin: 900 },
+    temperatureKelvin: 900, couplingStateSha256: "d".repeat(64) },
   validation: { passed: true, converged: true, uncertaintyReported: true,
     orientationSetPredeclared: true, steadyStateWindowVerified: true },
   orientations: [
@@ -34,6 +34,7 @@ const response = {
 const validated = validateAttachmentKineticsResponse(response, { requestSha256, structureSha256: digest,
   intrinsicDimension: 3, orientationBasisCartesian: basis });
 assert.equal(validated.geometry.kineticWulffShapeConditionalOnSuppliedOrientations, true);
+assert.equal(validated.drivingCondition.couplingStateSha256, "d".repeat(64));
 assert.equal(validated.geometry.interfacialFreeEnergyUsed, false);
 assert.equal(buildNormalizedKineticWulffGeometry(validated.orientations, 3).bounded, true);
 assert.throws(() => buildNormalizedKineticWulffGeometry([

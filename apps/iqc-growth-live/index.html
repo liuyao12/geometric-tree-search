@@ -7,7 +7,7 @@
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23071112'/%3E%3Cpath d='M17 19 46 12M17 19l8 30m21-37L25 49m-8-30 29 24M25 49l21-6' stroke='%236fffd4' stroke-width='4'/%3E%3Ccircle cx='17' cy='19' r='6' fill='%23f1fff9'/%3E%3Ccircle cx='46' cy='12' r='6' fill='%236fffd4'/%3E%3Ccircle cx='25' cy='49' r='6' fill='%238a7dff'/%3E%3Ccircle cx='46' cy='43' r='6' fill='%236fffd4'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css?v=20260831-356">
+  <link rel="stylesheet" href="./style.css?v=20260831-357">
   <script type="importmap">
     {
       "imports": {
@@ -2129,6 +2129,20 @@
             <p id="interfaceFluxRankingState">Requires a validated steady interface-flux map, finite spherical nucleus, and target-free continuation.</p>
             <div id="interfaceFluxRankingAudit" class="interface-flux-audit"><span><small>coverage</small><b>—</b></span><span><small>rank inversions</small><b>—</b></span><span><small>candidate set</small><b>unchanged</b></span></div>
           </section>
+          <section class="rate-control-bridge" aria-label="Coupled transport and attachment rate-control diagnosis">
+            <header><span><small>J(x,n̂) / ρ<sub>site</sub> ↔ v(n̂)</small><strong>Transport–attachment regime bridge</strong></span><b id="rateControlBadge">preview</b></header>
+            <div id="rateControlPresetControls" class="rate-control-presets" role="group" aria-label="Choose a synthetic rate-control preview">
+              <button type="button" data-rate-control-preset="mixed" aria-pressed="true">mixed surface</button>
+              <button type="button" data-rate-control-preset="supply" aria-pressed="false">supply limited</button>
+              <button type="button" data-rate-control-preset="attachment" aria-pressed="false">attachment limited</button>
+            </div>
+            <div class="rate-control-layout">
+              <svg id="rateControlPlot" viewBox="0 0 320 124" role="img" aria-label="Supply-equivalent velocity divided by attachment velocity by interface patch"></svg>
+              <div id="rateControlMetrics" class="rate-control-metrics"><span><small>supply limited</small><b>—</b></span><span><small>attachment limited</small><b>—</b></span><span><small>uncertainty overlap</small><b>—</b></span><span><small>ρ<sub>site</sub></small><b>—</b></span></div>
+            </div>
+            <p id="rateControlState">Synthetic regime preview. Load a periodic specimen plus condition-matched physical J and v responses to resolve a bottleneck.</p>
+            <p id="rateControlBoundary">The bridge compares two independently supplied velocity scales. It does not add reciprocal resistances, infer an effective growth rate, or double-count them as two frontier scores.</p>
+          </section>
           <p id="interfaceFluxState">Synthetic finite-interface supply map · no physical transport solve is loaded.</p>
           <p id="interfaceFluxBoundary">The preview is pedagogical. Geometric visibility is not diffusion: this map is not a concentration field, chemical potential, diffusivity, attachment velocity, probability, or integrated physical time.</p>
         </section>
@@ -2380,7 +2394,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260831-356"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260831-356"></script>
+  <script type="module" src="./app.js?v=20260831-357"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260831-357"></script>
 </body>
 </html>

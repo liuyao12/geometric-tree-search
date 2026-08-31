@@ -1,5 +1,35 @@
 # Recursive GCTS benchmark for material growth
 
+### Transport–attachment rate-control bridge (Build 357)
+
+The interface audit now compares the two unit-bearing steady-state quantities
+that Builds 355 and 356 kept separate. For a selected three-dimensional
+periodic reference, the exact supplied cell and crystallographic occupancies
+give the site number density
+`ρ_site = Σ occupancy / V_cell` in atoms m⁻³. Each validated flux patch then
+has a supply-equivalent velocity `v_supply = J / ρ_site`, which can be compared
+with the orientation-interpolated attachment velocity `v_attach(n̂)`.
+
+Compatibility is explicit rather than inferred from labels: both responses
+must carry the same optional 64-hex `couplingStateSha256`. Missing or unequal
+digests, a stale frozen interface, a nonperiodic specimen, a 2D cell without a
+physical thickness, or absent oriented velocity support leaves the physical
+bridge unavailable. Existing standalone J and v validation remains backward
+compatible.
+
+Classification uses uncertainty, not an arbitrary ratio cutoff. A patch is
+supply-limited only when the three-sigma upper bound of `v_supply` lies below
+the three-sigma lower bound of `v_attach`; attachment-limited uses the reverse
+inequality; every overlap remains unresolved. The plot reports
+`log10(v_supply/v_attach)`, support/abstention, and the three regime counts.
+
+No composite search score is added. In particular the bridge does not assume
+resistances in series, infer an effective interface velocity, or integrate a
+clock. It flags simultaneous use of the independent J and v frontier priors as
+a possible double-counting hypothesis. This makes the physical bottleneck
+auditable while preserving the exact candidate set, geometry, and hard GCTS
+certificates.
+
 ### Spatially resolved interface transport handoff (Build 356)
 
 The browser now represents nonuniform material supply as a distinct external

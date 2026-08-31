@@ -108,10 +108,13 @@ import { evaluateWulffShapeRegularizer, matchedWulffRankingAudit }
   from "./wulff-shape-regularizer.mjs?v=20260831-354";
 import { buildAttachmentKineticsRequest, buildNormalizedKineticWulffGeometry,
   validateAttachmentKineticsResponse, evaluateKineticHabitScore, matchedKineticHabitRankingAudit }
-  from "./external-attachment-kinetics.mjs?v=20260831-355";
+  from "./external-attachment-kinetics.mjs?v=20260831-357";
 import { buildInterfaceFluxRequest, validateInterfaceFluxResponse, evaluateInterfaceFluxScore,
   matchedInterfaceFluxRankingAudit }
-  from "./external-interface-flux.mjs?v=20260831-356";
+  from "./external-interface-flux.mjs?v=20260831-357";
+import { periodicSiteNumberDensity, coupleInterfaceSupplyAndAttachment,
+  syntheticGrowthRegimePreview }
+  from "./growth-regime-bridge.mjs?v=20260831-357";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -979,6 +982,12 @@ const interfaceFluxRankingState = $("interfaceFluxRankingState");
 const interfaceFluxRankingAudit = $("interfaceFluxRankingAudit");
 const interfaceFluxState = $("interfaceFluxState");
 const interfaceFluxBoundary = $("interfaceFluxBoundary");
+const rateControlBadge = $("rateControlBadge");
+const rateControlPresetControls = $("rateControlPresetControls");
+const rateControlPlot = $("rateControlPlot");
+const rateControlMetrics = $("rateControlMetrics");
+const rateControlState = $("rateControlState");
+const rateControlBoundary = $("rateControlBoundary");
 const settlingSensitivityLab = $("settlingSensitivityLab");
 const settlingSensitivityState = $("settlingSensitivityState");
 const settlingSensitivityArms = $("settlingSensitivityArms");
@@ -1948,6 +1957,7 @@ let interfaceFluxReachRelativeRadius = .55;
 let interfaceFluxWeight = .24;
 let interfaceFluxEvaluations = 0;
 let lastInterfaceFluxRankingAudit = null;
+let selectedRateControlPreset = "mixed";
 let externalTrajectoryCovarianceMode = "display";
 let currentPhysicsPairProgress = null;
 let currentPhysicsPairIntervention = null;
@@ -3775,7 +3785,7 @@ async function downloadInterfacialEnergyRequest() {
   const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-356",
+  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-357",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256,
@@ -3979,6 +3989,7 @@ function renderKineticHabitEvidence() {
       : "Validated v(n̂) is scoped to this exact specimen, method, and driving condition. The finite kinetic-Wulff envelope is not γ(n̂), equilibrium habit, a complete mechanism catalog, an action barrier, or integrated physical time."
     : "The preview is pedagogical. A kinetic-Wulff envelope is conditional on one declared driving condition; it is not γ(n̂), an action barrier, attachment probability, diffusion law, or integrated physical time.";
   renderKineticHabitControls();
+  renderRateControlBridge();
 }
 
 function resetAttachmentKineticsRoundTrip() {
@@ -4018,7 +4029,7 @@ async function downloadAttachmentKineticsRequest() {
   const material = currentMaterial(); const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-356",
+  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-357",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256, intrinsicDimension, orientationBasisCartesian,
@@ -4152,6 +4163,88 @@ function renderInterfaceFluxControls() {
   } else { values[0].textContent = "—"; values[1].textContent = "—"; values[2].textContent = "unchanged"; }
 }
 
+function periodicRateControlDensity() {
+  if (scenarioSelect.value !== "imported") return { available: false,
+    reason: "select a periodic imported specimen to supply an absolute site number density" };
+  if (currentMaterial()?.intrinsicDimension === 2) return { available: false,
+    reason: "a 2D sheet needs an explicit physical thickness before J/ρ can be converted to velocity" };
+  const frame = currentImportedFrame(); const validation = currentImportedFrameValidation();
+  if (!frame?.cell || !(validation?.cellVolume > 0) || !frame.atoms?.length) return { available: false,
+    reason: "the selected specimen has no nonsingular periodic cell" };
+  try {
+    const evidence = periodicSiteNumberDensity({ cellVolumeCubicAngstrom: validation.cellVolume,
+      siteOccupancies: frame.atoms.map((atom) => {
+        const occupancy = Number(atom.occupancyTotal ?? atom.occupancy ?? 1);
+        return Number.isFinite(occupancy) ? occupancy : 1;
+      }) });
+    return { available: true, evidence };
+  } catch (error) { return { available: false,
+    reason: error instanceof Error ? error.message : "periodic site density is invalid" }; }
+}
+
+function activeRateControlEvidence() {
+  const preview = () => ({ validated: false, result: syntheticGrowthRegimePreview(selectedRateControlPreset),
+    reason: "synthetic preview" });
+  if (!attachmentKineticsValidationAudit || !interfaceFluxValidationAudit) return preview();
+  if (interfaceFluxValidationAudit.boundStateDigest !== interfaceFluxStateDigest()) return { ...preview(),
+    reason: "the solid interface changed; recalculate J(x,n̂) before coupling" };
+  const fluxState = interfaceFluxValidationAudit.couplingStateSha256;
+  const kineticState = attachmentKineticsValidationAudit.drivingCondition?.couplingStateSha256;
+  if (!fluxState || !kineticState) return { ...preview(),
+    reason: "both physical responses must declare the same couplingStateSha256" };
+  const density = periodicRateControlDensity();
+  if (!density.available) return { ...preview(), reason: density.reason };
+  try {
+    const result = coupleInterfaceSupplyAndAttachment({ patches: interfaceFluxValidationAudit.patches,
+      orientations: attachmentKineticsValidationAudit.orientations,
+      orientationBasisCartesian: attachmentKineticsRequestRuntime?.request?.specimen?.orientationBasisCartesian,
+      siteNumberDensityAtomsPerCubicMetre: density.evidence.siteNumberDensityAtomsPerCubicMetre,
+      fluxCouplingStateSha256: fluxState, kineticsCouplingStateSha256: kineticState,
+      maximumAngleRadians: Math.PI / 4 });
+    return { validated: true, result, density: density.evidence, reason: "condition-matched physical bridge" };
+  } catch (error) { return { ...preview(), reason: error instanceof Error ? error.message : "rate-control bridge failed closed" }; }
+}
+
+function renderRateControlBridge() {
+  if (!rateControlPlot || !rateControlMetrics) return;
+  const evidence = activeRateControlEvidence(); const { result, validated } = evidence;
+  rateControlBadge.textContent = validated ? "condition matched" : "preview";
+  rateControlBadge.closest(".rate-control-bridge")?.classList.toggle("validated", validated);
+  [...rateControlPresetControls.querySelectorAll("button[data-rate-control-preset]")].forEach((button) => {
+    button.setAttribute("aria-pressed", String(button.dataset.rateControlPreset === selectedRateControlPreset));
+    button.disabled = validated;
+  });
+  const records = result.records.filter((entry) => entry.supported);
+  const svg = (name, attributes = {}) => { const node = document.createElementNS("http://www.w3.org/2000/svg", name);
+    Object.entries(attributes).forEach(([key, value]) => node.setAttribute(key, String(value))); return node; };
+  rateControlPlot.replaceChildren();
+  const x = (index) => 18 + index / Math.max(1, records.length - 1) * 284;
+  const y = (value) => 62 - Math.max(-2, Math.min(2, value)) / 2 * 45;
+  rateControlPlot.append(svg("rect", { x: 12, y: y(.28), width: 296, height: y(-.28) - y(.28), class: "rate-overlap-band" }),
+    svg("line", { x1: 12, y1: 62, x2: 308, y2: 62, class: "rate-control-axis" }));
+  const upper = svg("text", { x: 14, y: 11, class: "rate-control-label attachment" }); upper.textContent = "attachment slower · J/(ρv) > 1";
+  const lower = svg("text", { x: 14, y: 119, class: "rate-control-label supply" }); lower.textContent = "supply slower · J/(ρv) < 1";
+  rateControlPlot.append(upper, lower);
+  records.forEach((record, index) => {
+    const colorClass = record.regime === "supply-limited" ? "supply" : record.regime === "attachment-limited" ? "attachment" : "overlap";
+    rateControlPlot.append(svg("line", { x1: x(index), y1: 62, x2: x(index), y2: y(record.log10SupplyToAttachmentRatio),
+      class: `rate-control-stem ${colorClass}` }), svg("circle", { cx: x(index), cy: y(record.log10SupplyToAttachmentRatio),
+      r: 3.2, class: `rate-control-point ${colorClass}` }));
+  });
+  const values = rateControlMetrics.querySelectorAll("b");
+  values[0].textContent = String(result.regimeCounts["supply-limited"] || 0);
+  values[1].textContent = String(result.regimeCounts["attachment-limited"] || 0);
+  values[2].textContent = String(result.regimeCounts["uncertainty-overlap"] || 0);
+  values[3].textContent = validated ? `${(result.siteNumberDensityAtomsPerCubicMetre / 1e28).toFixed(3)}×10²⁸ m⁻³` : "not physical";
+  const bothRanked = kineticHabitMode === "rank" && interfaceFluxMode === "rank";
+  rateControlState.textContent = validated
+    ? `${result.supportedPatchCount}/${result.patchCount} patches couple at one shared state ${result.couplingStateSha256.slice(0, 12)}; ${result.abstainedPatchCount} abstain outside oriented v coverage.`
+    : `Synthetic ${selectedRateControlPreset} regime preview · physical bridge withheld: ${evidence.reason}.`;
+  rateControlBoundary.textContent = validated
+    ? `${result.claimBoundary}${bothRanked ? " Warning: both independent frontier priors are enabled; inspect this bridge for double counting and prefer one declared ranking hypothesis." : " The bridge is diagnostic and does not add another frontier score."}`
+    : "J/ρsite and v can only be compared when both external responses share one explicit driving-state digest and a 3D periodic reference supplies ρsite. No effective growth velocity or physical clock is inferred.";
+}
+
 function renderInterfaceFluxEvidence() {
   if (!interfaceFluxPlot || !interfaceFluxBars) return;
   const { patches, validated } = activeInterfaceFluxEvidence();
@@ -4201,6 +4294,7 @@ function renderInterfaceFluxEvidence() {
       : "The flux map is bound to one exact frozen interface, transport method, and boundary condition. It does not transfer automatically as the interface evolves."
     : "The preview is pedagogical. Geometric visibility is not diffusion: this map is not a concentration field, chemical potential, diffusivity, attachment velocity, probability, or integrated physical time.";
   renderInterfaceFluxControls();
+  renderRateControlBridge();
 }
 
 function resetInterfaceFluxRoundTrip() {
@@ -4219,9 +4313,11 @@ function interfaceFluxReceipt() {
   if (!interfaceFluxValidationAudit) return { request, validation: null,
     ranking: { mode: interfaceFluxMode, active: false, targetUsed: false } };
   const audit = interfaceFluxValidationAudit;
+  const rateControl = activeRateControlEvidence();
   return { request, validation: { schema: audit.schema, requestSha256: audit.requestSha256,
     responseSha256: audit.responseSha256, structureSha256: audit.structureSha256,
     interfaceGeometrySha256: audit.interfaceGeometrySha256, species: audit.species, method: audit.method,
+    couplingStateSha256: audit.couplingStateSha256,
     validation: audit.validation, fluxUnits: audit.fluxUnits, patchCount: audit.patches.length,
     boundStateDigest: audit.boundStateDigest,
     boundInterfaceStillCurrent: audit.boundStateDigest === interfaceFluxStateDigest(),
@@ -4231,7 +4327,14 @@ function interfaceFluxReceipt() {
       spatialReachRelativeRadius: interfaceFluxReachRelativeRadius, angularReachDegrees: 60,
       effectiveWeight: activeInterfaceFluxWeight(), evaluations: interfaceFluxEvaluations,
       matchedRankingAudit: lastInterfaceFluxRankingAudit, finiteNucleusRequired: true,
-      candidateSetChanged: false, candidateGeometryChanged: false, hardAdmissionChanged: false, targetUsed: false } };
+      candidateSetChanged: false, candidateGeometryChanged: false, hardAdmissionChanged: false, targetUsed: false },
+    transportAttachmentBridge: rateControl.validated ? {
+      active: true, couplingStateSha256: rateControl.result.couplingStateSha256,
+      siteNumberDensityAtomsPerCubicMetre: rateControl.result.siteNumberDensityAtomsPerCubicMetre,
+      patchCount: rateControl.result.patchCount, supportedPatchCount: rateControl.result.supportedPatchCount,
+      regimeCounts: rateControl.result.regimeCounts, effectiveGrowthVelocityInferred: false,
+      candidateRankingChanged: false, targetUsed: false,
+    } : { active: false, reason: rateControl.reason, candidateRankingChanged: false, targetUsed: false } };
 }
 
 async function downloadSpatialInterfaceFluxRequest() {
@@ -4241,7 +4344,7 @@ async function downloadSpatialInterfaceFluxRequest() {
   const interfaceGeometrySha256 = await receiptSha256(JSON.stringify({ structureSha256: configuration.structureSha256,
     confinement: confinementSelect?.value || "box", publicReach: growthDomainScale, atomCount: referenceAtoms.length }));
   const species = material.actualElements ? [...material.actualElements] : [...material.elements];
-  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-356",
+  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-357",
     scenarioId: scenarioSelect.value, materialName: material.name, species,
     structureSha256: configuration.structureSha256, interfaceGeometrySha256,
     interfaceConfiguration: configuration,
@@ -13519,7 +13622,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260831-356",
+      buildId: "20260831-357",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -16100,7 +16203,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260831-356" },
+    application: { name: "Materials Growth Lab", buildId: "20260831-357" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },
@@ -24952,7 +25055,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
   const candidates = [...attachmentCandidates, ...detachmentCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-356",
+    generatedAt: new Date().toISOString(), buildId: "20260831-357",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -31820,6 +31923,7 @@ function physicsTranslationRecords(leap = null) {
   const externalCalibrationPromotion = activeExternalCalibrationPromotion();
   const stressStrainResponse = archivedStressStrainResponse();
   const localConstraintMismatch = currentLocalConstraintMismatchField();
+  const rateControlBridge = activeRateControlEvidence();
   const localSymmetry = leap?.localSymmetryTransition || null;
   const centrosymmetry = leap?.centrosymmetryTransition || null;
   const reciprocalSpace = leap?.reciprocalSpaceTransition || null;
@@ -31882,6 +31986,16 @@ function physicsTranslationRecords(leap = null) {
         ? `${interfaceFluxValidationAudit.method.family} / ${interfaceFluxValidationAudit.method.program}; frozen interface ${interfaceFluxValidationAudit.interfaceGeometrySha256.slice(0, 12)}; response ${interfaceFluxValidationAudit.responseSha256?.slice(0, 12) || "locally validated"}.`
         : "Download the exact structure/interface-bound request and validate a returned steady transport map locally.",
       boundary: "Geometric source-ray visibility, morphology, γ(n̂), and v(n̂) never supply J(x,n̂). The optional soft term changes only action order over the unchanged target-free frontier and abstains outside local coverage. It does not infer a diffusivity, concentration or chemical-potential field, attachment velocity, probability, or physical clock, and it must be recalculated when the interface changes." },
+    { id: "transport-attachment-regime", process: "condition-matched transport versus attachment rate control",
+      status: rateControlBridge.validated ? "explicit" : "unavailable", role: "diagnostic only · no frontier score",
+      executionEffects: { hardAdmission: false, ranking: false },
+      encoding: rateControlBridge.validated
+        ? `${rateControlBridge.result.supportedPatchCount}/${rateControlBridge.result.patchCount} interface patches compare J/ρsite with oriented v under shared state ${rateControlBridge.result.couplingStateSha256.slice(0, 12)}; supply/attachment/overlap counts ${rateControlBridge.result.regimeCounts["supply-limited"]}/${rateControlBridge.result.regimeCounts["attachment-limited"]}/${rateControlBridge.result.regimeCounts["uncertainty-overlap"]}`
+        : `withheld · ${rateControlBridge.reason}`,
+      evidence: rateControlBridge.validated
+        ? `ρsite=${rateControlBridge.result.siteNumberDensityAtomsPerCubicMetre.toExponential(4)} atoms m⁻³ from the exact periodic cell and occupancies; nonoverlapping three-sigma intervals classify rate control.`
+        : "Requires condition-matched validated J and v responses plus a three-dimensional periodic site-density reference.",
+      boundary: "This compares independent supply-equivalent and attachment velocity scales. It adds no search term, assumes no series-resistance law, infers no effective growth velocity, and integrates no physical clock. Simultaneous J and v rank terms remain a separate double-counting hypothesis." },
     { id: "steric", process: "short-range repulsion / species contact", status: "hard", role: "hard admission gate",
       encoding: `${coloredDistanceEnvelopes?.records?.length || 0} colored pair envelopes with exact species coincidence and learned hard-exclusion radii${coloredDistanceEnvelopes?.records?.some((record) => record.directionalUncertaintyApplied) ? `; ${coloredDistanceEnvelopes.records.filter((record) => record.directionalUncertaintyApplied).length} retain one-sigma full-Uij support, transported as U_world=R U_local R^T and resolved again along every live pair direction` : ""}`,
       evidence: leapResult,
@@ -32352,6 +32466,7 @@ const PHYSICS_CONTROL_ROUTES = Object.freeze({
   "hypothesis-separation": { stage: 4, controlId: "policySeparationRegister", label: "Open one-channel intervention" },
   "orientation-attachment-kinetics": { stage: 4, controlId: "kineticHabitModeSelect", label: "Configure kinetic habit" },
   "spatial-interface-flux": { stage: 4, controlId: "interfaceFluxModeSelect", label: "Configure interface supply" },
+  "transport-attachment-regime": { stage: 4, controlId: "rateControlPlot", label: "Inspect rate control" },
   steric: { stage: 1, controlId: "clusterToleranceSelect", label: "Open metric tolerance" },
   local: { stage: 1, controlId: "geometryModeSelect", label: "Open support geometry" },
   "local-mismatch-map": { stage: 4, controlId: "localConstraintMismatchToggle", label: "Open local mismatch map" },
@@ -33871,7 +33986,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-356",
+    generatedAt: new Date().toISOString(), buildId: "20260831-357",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,
@@ -34692,6 +34807,13 @@ interfaceFluxWeightSelect?.addEventListener("change", () => {
   interfaceFluxWeight = [.12, .24, .48].includes(value) ? value : .24;
   lastInterfaceFluxRankingAudit = null; growthProtocolMode = "custom";
   if (pipelineStage === 4) enterPipelineStage(4); else renderInterfaceFluxEvidence();
+});
+rateControlPresetControls?.addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-rate-control-preset]");
+  if (!button || activeRateControlEvidence().validated) return;
+  selectedRateControlPreset = ["mixed", "supply", "attachment"].includes(button.dataset.rateControlPreset)
+    ? button.dataset.rateControlPreset : "mixed";
+  renderRateControlBridge();
 });
 
 function structuralStoichiometrySeries() {

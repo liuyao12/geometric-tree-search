@@ -87,6 +87,7 @@ export function buildInterfaceFluxRequest(input) {
       patches: [{ patchId: "unique", positionCartesianAngstrom: "array[3]", outwardNormalCartesian: "array[3]",
         areaWeightSquareMetre: "positive", netIncorporationFlux: "positive", uncertainty: "nonnegative",
         speciesFluxes: species.map((speciesId) => ({ species: speciesId, incorporationFlux: "nonnegative" })) }],
+      couplingStateSha256: "optional shared transport/kinetics state digest",
     },
     safeguards: {
       requestOnly: true, observationCoordinatesEmbedded: Boolean(input.interfaceConfiguration),
@@ -116,6 +117,8 @@ export function validateInterfaceFluxResponse(response, expected) {
     version: response.method?.version == null ? null : String(response.method.version),
     settingsSha256: sha(response.method?.settingsSha256, "method settings SHA-256"),
     boundaryConditionsSha256: sha(response.method?.boundaryConditionsSha256, "boundary-condition SHA-256") };
+  const couplingStateSha256 = response.couplingStateSha256 == null ? null
+    : sha(response.couplingStateSha256, "coupling-state SHA-256");
   const validation = response.validation || {};
   for (const field of ["passed", "converged", "steadyStateVerified", "uncertaintyReported",
     "interfaceMeshPredeclared", "speciesBalanceChecked"]) if (validation[field] !== true) {
@@ -156,7 +159,8 @@ export function validateInterfaceFluxResponse(response, expected) {
       netIncorporationFlux, uncertainty, speciesFluxes };
   });
   return { schema: INTERFACE_FLUX_RESPONSE_SCHEMA, requestSha256, structureSha256, interfaceGeometrySha256,
-    species, fluxUnits: response.fluxUnits, method, validation: { ...validation, massBalanceRelativeResidual,
+    species, fluxUnits: response.fluxUnits, method, couplingStateSha256,
+    validation: { ...validation, massBalanceRelativeResidual,
       meshConvergenceRelativeChange }, patches, responseAccepted: true,
     candidateSetChanged: false, candidateRankingChanged: false, diffusionCoefficientInferred: false,
     attachmentVelocityInferred: false, attachmentProbabilityInferred: false,

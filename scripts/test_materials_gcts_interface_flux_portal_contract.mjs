@@ -16,7 +16,7 @@ for (const document of [html, alias]) {
   assert.match(document, /Interface supply map/);
   assert.match(document, /Resolve diffusion, substrate supply, or shadowing outside GCTS/);
 }
-assert.match(app, /external-interface-flux\.mjs\?v=20260831-356/);
+assert.match(app, /external-interface-flux\.mjs\?v=20260831-357/);
 assert.match(app, /buildInterfaceFluxRequest/);
 assert.match(app, /validateInterfaceFluxResponse/);
 assert.match(app, /evaluateInterfaceFluxScore/);
@@ -32,6 +32,6 @@ assert.match(moduleText, /candidateSetChanged: false/);
 assert.match(moduleText, /physicalTimeIntegrated: false/);
 assert.match(readme, /Build 356/);
 assert.match(readme, /geometric visibility into diffusion/i);
-assert.match(atlas, /spatial supply, and exact events are separate evidence layers/);
+assert.match(atlas, /spatial supply, rate control, and exact events stay distinct/);
 assert.match(atlas, /geometric visibility is not diffusion/i);
 console.log("spatial interface-flux portal contract passed");

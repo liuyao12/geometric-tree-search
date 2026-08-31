@@ -21,6 +21,7 @@ const patch = (patchId, positionCartesianAngstrom, outwardNormalCartesian, netIn
 });
 const response = { schema: INTERFACE_FLUX_RESPONSE_SCHEMA, requestSha256, structureSha256: structure,
   interfaceGeometrySha256: surface, species: ["A", "B"], fluxUnits: "atoms per square metre per second",
+  couplingStateSha256: "e".repeat(64),
   method: { family: "steady diffusion", program: "test-solver", version: "1",
     settingsSha256: "c".repeat(64), boundaryConditionsSha256: "d".repeat(64) },
   validation: { passed: true, converged: true, steadyStateVerified: true, uncertaintyReported: true,
@@ -32,6 +33,7 @@ const response = { schema: INTERFACE_FLUX_RESPONSE_SCHEMA, requestSha256, struct
 const validated = validateInterfaceFluxResponse(response, { requestSha256, structureSha256: structure,
   interfaceGeometrySha256: surface, species: ["A", "B"] });
 assert.equal(validated.patches.length, 6); assert.equal(validated.targetUsed, false);
+assert.equal(validated.couplingStateSha256, "e".repeat(64));
 assert.throws(() => validateInterfaceFluxResponse({ ...response, validation: { ...response.validation,
   massBalanceRelativeResidual: .01 } }, { requestSha256, structureSha256: structure,
   interfaceGeometrySha256: surface, species: ["A", "B"] }), /mass-balance/);

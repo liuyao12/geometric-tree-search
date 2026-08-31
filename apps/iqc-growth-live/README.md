@@ -1,5 +1,35 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 357 · condition-matched transport–attachment regime map
+
+The portal now joins two previously separate physical handoffs without
+conflating them. A validated spatial incorporation flux `J(x,n̂)` becomes the
+supply-equivalent normal velocity `v_supply = J / ρ_site`, where `ρ_site` is
+derived only from the selected three-dimensional periodic cell volume and its
+explicit crystallographic site occupancies. That scale is compared patch by
+patch with independently validated attachment velocity `v(n̂)`.
+
+The bridge is deliberately fail-closed. Both external responses must publish
+the same optional `couplingStateSha256`, so a transport solve at one reservoir,
+temperature, or boundary condition cannot be compared with attachment kinetics
+from another. Two-dimensional sheets are withheld without an explicit physical
+thickness; nonperiodic finite clusters are withheld without an absolute bulk
+reference. Oriented velocity interpolation abstains outside 45° coverage.
+
+Each interface patch displays `log10[J/(ρ_site v)]`. A patch is labelled
+supply-limited or attachment-limited only when the corresponding three-sigma
+velocity intervals do not overlap; otherwise it remains uncertainty-overlap.
+The card reports all three populations, density provenance, angular abstention,
+and the shared state digest. Synthetic mixed, supply-limited, and
+attachment-limited previews make the distinction interactive before physical
+evidence is loaded.
+
+This is a regime diagnosis, not a new rate law. The app does not add reciprocal
+resistances, infer an effective growth velocity, concentration field,
+diffusivity, sticking probability, or physical clock. It adds no frontier score
+and explicitly warns when the independent `J` and `v` priors are both enabled,
+where double counting must be considered.
+
 ## Build 356 · validated continuum transport → spatial interface supply
 
 The portal now separates **where material arrives** from both equilibrium habit

@@ -64,10 +64,10 @@ def test_learning_cards_and_scientific_boundary_are_visible():
 
 def test_build_343_is_cache_busted():
     for document in (HTML, ALIAS_HTML):
-        assert 'app.js?v=20260831-356' in document
-        assert 'style.css?v=20260831-356' in document
-        assert 'evidence-atlas.js?v=20260831-356' in document
-    assert 'buildId: "20260831-356"' in APP
+        assert 'app.js?v=20260831-357' in document
+        assert 'style.css?v=20260831-357' in document
+        assert 'evidence-atlas.js?v=20260831-357' in document
+    assert 'buildId: "20260831-357"' in APP
 
 
 def main() -> None:

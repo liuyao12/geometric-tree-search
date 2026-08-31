@@ -16,7 +16,7 @@ for (const document of [html, alias]) {
   assert.match(document, /Kinetic-Wulff growth habit/);
   assert.match(document, /Compare externally validated steady interface velocities with equilibrium γ/);
 }
-assert.match(app, /external-attachment-kinetics\.mjs\?v=20260831-355/);
+assert.match(app, /external-attachment-kinetics\.mjs\?v=20260831-357/);
 assert.match(app, /buildAttachmentKineticsRequest/);
 assert.match(app, /validateAttachmentKineticsResponse/);
 assert.match(app, /evaluateKineticHabitScore/);
@@ -32,6 +32,6 @@ assert.match(moduleText, /orientedNormalsNotSilentlyInversionSymmetrized: true/)
 assert.match(moduleText, /physicalTimeIntegrated: false/);
 assert.match(readme, /Build 355/);
 assert.match(readme, /neither the displayed[\s\S]*γ\(n̂\)[\s\S]*supplies `v\(n̂\)`/);
-assert.match(atlas, /Equilibrium habit, kinetic habit, spatial supply, and exact events are separate evidence layers/);
+assert.match(atlas, /Equilibrium habit, kinetic habit, spatial supply, rate control, and exact events stay distinct/);
 assert.match(atlas, /γ does not supply v/);
 console.log("orientation-resolved attachment-kinetics portal contract passed");

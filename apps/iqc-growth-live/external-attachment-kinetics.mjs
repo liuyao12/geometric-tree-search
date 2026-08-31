@@ -108,7 +108,7 @@ export function buildAttachmentKineticsRequest(input) {
       schema: ATTACHMENT_KINETICS_RESPONSE_SCHEMA, requestSha256: "SHA-256 of this complete request file",
       structureSha256, intrinsicDimension, orientationBasisCartesian,
       drivingCondition: { description: "required", settingsSha256: "64 hexadecimal characters",
-        temperatureKelvin: "positive" },
+        temperatureKelvin: "positive", couplingStateSha256: "optional shared transport/kinetics state digest" },
       method: { family: "required", program: "required", version: "declared or null",
         settingsSha256: "64 hexadecimal characters" },
       orientations: [{ orientationId: "unique", normal: `array[${intrinsicDimension}]`,
@@ -164,6 +164,8 @@ export function validateAttachmentKineticsResponse(response, expected) {
     description: requiredText(response.drivingCondition?.description, "driving-condition description"),
     settingsSha256: digest(response.drivingCondition?.settingsSha256, "driving-condition settings SHA-256"),
     temperatureKelvin: positive(response.drivingCondition?.temperatureKelvin, "driving-condition temperature"),
+    couplingStateSha256: response.drivingCondition?.couplingStateSha256 == null ? null
+      : digest(response.drivingCondition.couplingStateSha256, "driving-condition coupling-state SHA-256"),
   };
   const validation = response.validation || {};
   for (const field of ["passed", "converged", "uncertaintyReported", "orientationSetPredeclared",
