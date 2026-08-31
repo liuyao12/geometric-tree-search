@@ -256,6 +256,15 @@ through six copies. All periodic certificates are independently replayed and
 all negative quotient searches in this chain have zero solver unknowns.
 The original stratum's exact two-, four-, and six-copy quotient screens reduce
 it to 356 reflection-class candidates.
+The next census level is also complete and removes the profile heuristic
+entirely: size ten has 98,537 connected A₂-sliced tiles modulo translation and
+the six proper foliation-preserving lattice rotations. Its arithmetically
+minimal periodic quotient has three copies and determinant five. Exact search
+finds 2,558 replay-verified periods and exhausts all 31 HNFs (nine proper-A₂
+orbits) for the other 95,979 tiles with zero solver unknowns. Folding one
+improper reflection afterward leaves 48,209 reporting classes. This is a
+first-stage census, not a claim that those survivors are non-periodic; ranked
+six-copy screening is the next gate.
 Among the first eight priority classes, a complete determinant-12 eight-copy
 screen finds five replay-verified periodic quotients and exhausts all 455 HNF
 quotients for the remaining three, with no solver unknowns. Those three are
