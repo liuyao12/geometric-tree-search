@@ -28,6 +28,9 @@ const twoCopySubstitutions = await readGzipNdjson(
 const threeCopySubstitutions = await readGzipNdjson(
   "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz"
 );
+const fourCopySubstitutions = await readGzipNdjson(
+  "data/a2-sliced-size9-palindromic-four-copy-substitution-scale2-proper-leaders.ndjson.gz"
+);
 const periodicClusterSubstitutions = await readGzipNdjson(
   "data/a2-sliced-size9-palindromic-periodic-cluster-substitutions.ndjson.gz"
 );
@@ -45,6 +48,7 @@ const selectedIds = [
 const periodicById = new Map(exactEight.map(record => [record.id, record]));
 const exactSixById = new Map(exactSix.map(record => [record.id, record]));
 const clusterSubstitutionById = new Map(periodicClusterSubstitutions.map(record => [record.id, record]));
+const fourCopySubstitutionById = new Map(fourCopySubstitutions.map(record => [record.id, record]));
 const directSubstitutionById = Map.groupBy
   ? Map.groupBy(directSubstitutions, record => record.id)
   : directSubstitutions.reduce((groups, record) => {
@@ -118,6 +122,7 @@ const candidates = selectedIds.map((id, index) => {
   const direct = directSubstitutionById.get(id) ?? [];
   const twoCopy = twoCopySubstitutionById.get(id) ?? [];
   const threeCopy = threeCopySubstitutionById.get(id) ?? [];
+  const fourCopy = fourCopySubstitutionById.get(id) ?? null;
   if (!record || !sixCopy || !corona) throw new Error(`Missing focused receipt for ${id}`);
   const periodicCertificate = record.periodic_z3.certificate ?? null;
   const clusterSubstitution = clusterSubstitutionById.get(id) ?? null;
@@ -154,6 +159,11 @@ const candidates = selectedIds.map((id, index) => {
     !result.classification.startsWith("no_three_copy_metatile_scalar")
     || result.three_copy_alcove_metatile_screen.certified !== true)) {
     throw new Error(`Missing scale-2 three-copy substitution exclusions for ${id}`);
+  }
+  if (!isPeriodic && (!fourCopy
+      || fourCopy.classification !== "no_four_copy_metatile_scalar2_substitution"
+      || fourCopy.four_copy_alcove_metatile_screen.certified !== true)) {
+    throw new Error(`Missing proper scale-2 four-copy substitution exclusion for ${id}`);
   }
   const geometry = makeA2SlicedAlcoveUnion(record.alcoves);
   return {
@@ -222,6 +232,13 @@ const candidates = selectedIds.map((id, index) => {
       three_copy_substitution_parents_exhausted: threeCopy.reduce((sum, result) =>
         sum + result.three_copy_alcove_metatile_screen.parents_completed, 0),
       three_copy_substitution_report: "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz",
+      four_copy_substitution_exact_scales: fourCopy ? [2] : [],
+      four_copy_substitution_models: fourCopy ? ["proper"] : [],
+      four_copy_substitution_certified_negatives: fourCopy ? 1 : 0,
+      four_copy_substitution_parents_exhausted:
+        fourCopy?.four_copy_alcove_metatile_screen.parents_completed ?? 0,
+      four_copy_substitution_report: fourCopy
+        ? "data/a2-sliced-size9-palindromic-four-copy-substitution-scale2-proper-leaders.ndjson.gz" : null,
       corona_root_patch_copies: corona.corona_z3.replay.patch_copies,
       corona_solver: corona.corona_z3.smt2_sha256 ? "z3" : "exact_gcts",
       corona_report: corona.corona_z3.smt2_sha256

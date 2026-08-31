@@ -202,6 +202,15 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
       "three_copy_substitution_certified_negatives": 2,
       "three_copy_substitution_parents_exhausted": 522,
       "three_copy_substitution_report": "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz",
+      "four_copy_substitution_exact_scales": [
+        2
+      ],
+      "four_copy_substitution_models": [
+        "proper"
+      ],
+      "four_copy_substitution_certified_negatives": 1,
+      "four_copy_substitution_parents_exhausted": 1034,
+      "four_copy_substitution_report": "data/a2-sliced-size9-palindromic-four-copy-substitution-scale2-proper-leaders.ndjson.gz",
       "corona_root_patch_copies": 42,
       "corona_solver": "z3",
       "corona_report": "data/a2-sliced-size9-palindromic-corona-z3-04636.ndjson.gz",
@@ -738,6 +747,15 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
       "three_copy_substitution_certified_negatives": 2,
       "three_copy_substitution_parents_exhausted": 606,
       "three_copy_substitution_report": "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz",
+      "four_copy_substitution_exact_scales": [
+        2
+      ],
+      "four_copy_substitution_models": [
+        "proper"
+      ],
+      "four_copy_substitution_certified_negatives": 1,
+      "four_copy_substitution_parents_exhausted": 2762,
+      "four_copy_substitution_report": "data/a2-sliced-size9-palindromic-four-copy-substitution-scale2-proper-leaders.ndjson.gz",
       "corona_root_patch_copies": 28,
       "corona_solver": "exact_gcts",
       "corona_report": "data/a2-sliced-size9-palindromic-focused-corona1-bounded.ndjson.gz",
@@ -1164,6 +1182,15 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
       "three_copy_substitution_certified_negatives": 2,
       "three_copy_substitution_parents_exhausted": 4518,
       "three_copy_substitution_report": "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz",
+      "four_copy_substitution_exact_scales": [
+        2
+      ],
+      "four_copy_substitution_models": [
+        "proper"
+      ],
+      "four_copy_substitution_certified_negatives": 1,
+      "four_copy_substitution_parents_exhausted": 41524,
+      "four_copy_substitution_report": "data/a2-sliced-size9-palindromic-four-copy-substitution-scale2-proper-leaders.ndjson.gz",
       "corona_root_patch_copies": 52,
       "corona_solver": "z3",
       "corona_report": "data/a2-sliced-size9-palindromic-corona-z3-04468.ndjson.gz",
@@ -2670,6 +2697,11 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
       "three_copy_substitution_certified_negatives": 2,
       "three_copy_substitution_parents_exhausted": 4128,
       "three_copy_substitution_report": "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz",
+      "four_copy_substitution_exact_scales": [],
+      "four_copy_substitution_models": [],
+      "four_copy_substitution_certified_negatives": 0,
+      "four_copy_substitution_parents_exhausted": 0,
+      "four_copy_substitution_report": null,
       "corona_root_patch_copies": 29,
       "corona_solver": "exact_gcts",
       "corona_report": "data/a2-sliced-size9-palindromic-focused-corona1-bounded.ndjson.gz",
@@ -3992,6 +4024,11 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
       "three_copy_substitution_certified_negatives": 2,
       "three_copy_substitution_parents_exhausted": 343,
       "three_copy_substitution_report": "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz",
+      "four_copy_substitution_exact_scales": [],
+      "four_copy_substitution_models": [],
+      "four_copy_substitution_certified_negatives": 0,
+      "four_copy_substitution_parents_exhausted": 0,
+      "four_copy_substitution_report": null,
       "corona_root_patch_copies": 28,
       "corona_solver": "exact_gcts",
       "corona_report": "data/a2-sliced-size9-palindromic-focused-corona1-bounded.ndjson.gz",

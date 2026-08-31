@@ -271,7 +271,11 @@ At scalar scale 2 the complete connected three-copy family is now excluded in
 both symmetry models for the same eight recovered classes. Every one of the
 12,000-plus parent types on the harder reflected instances carries a replayed
 atomic or exact obstruction. Other scales and clusters of four or more remain
-open for the six retained eight-copy survivors.
+open for the six retained eight-copy survivors. For the three displayed
+leaders, the complete proper-orientation four-copy alphabet is now also
+excluded at scale 2: 1,034, 2,762, and 41,524 symmetry-distinct parents,
+respectively, each carrying a replayed atomic obstruction. Reflected
+four-copy alphabets, larger clusters, and non-scalar rules remain open.
 The original stratum's exact two-, four-, and six-copy quotient screens reduce
 it to 356 reflection-class candidates.
 The next census level is also complete and removes the profile heuristic

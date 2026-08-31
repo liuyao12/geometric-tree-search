@@ -1697,6 +1697,10 @@ assert.ok(palindromicUnresolved.every(candidate =>
   && candidate.screening.three_copy_substitution_exact_scales.join(",") === "2"
   && candidate.screening.three_copy_substitution_models.join(",") === "proper,reflected"
   && candidate.screening.three_copy_substitution_certified_negatives === 2
+  && candidate.screening.four_copy_substitution_exact_scales.join(",") === "2"
+  && candidate.screening.four_copy_substitution_models.join(",") === "proper"
+  && candidate.screening.four_copy_substitution_certified_negatives === 1
+  && candidate.screening.four_copy_substitution_parents_exhausted >= 1034
   && candidate.screening.corona_root_patch_copies > 1
 ));
 const palindromicPeriodic = A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES.filter(
