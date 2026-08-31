@@ -103,7 +103,7 @@ for (const record of unresolved) {
 }
 const fourCopyById = new Map(fourCopyRows.map(record => [record.id, record]));
 const reflectedFourCopyRows = [];
-const completedReflectedFourCopyIds = new Set(["a2sa_9_11364", "a2sa_9_13833"]);
+const completedReflectedFourCopyIds = new Set(unresolved.map(record => record.id));
 for (const record of unresolved.filter(item => completedReflectedFourCopyIds.has(item.id))) {
   const path = `data/a2-sliced-alcove-size9-four-cluster-scale2-reflected-${record.id.slice("a2sa_9_".length)}.ndjson.gz`;
   const [screen] = await readNdjson(path);

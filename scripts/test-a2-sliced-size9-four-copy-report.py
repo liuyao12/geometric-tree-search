@@ -7,7 +7,9 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent.parent
-for suffix, expected in (("11364", 195075), ("13833", 406896)):
+for suffix, expected in (
+    ("11364", 195075), ("13833", 406896), ("15635", 233190)
+):
     archive = ROOT / f"data/a2-sliced-alcove-size9-four-cluster-scale2-reflected-{suffix}.ndjson.gz"
     with gzip.open(archive, "rt") as stream:
         rows = [json.loads(line) for line in stream if line.strip()]
