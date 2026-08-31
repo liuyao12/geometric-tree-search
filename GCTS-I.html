@@ -55,7 +55,7 @@
         rank <label><input type="radio" name="turtle-marking-rank" value="1"> 1</label><label><input type="radio" name="turtle-marking-rank" value="3" checked=""> 3</label></span>
                         <label class="toolbar-toggle mark-extension-control" id="turtle-mark-extension-control" hidden="">extent <input type="number" id="turtle-mark-extension" min="0" max="9" step="1" value="1" inputmode="numeric" aria-label="Marking extent in lattice steps">
         </label>
-                        <label class="toolbar-toggle"><input type="checkbox" id="turtle-sublattice"> lattice coset</label>
+                        <label class="toolbar-toggle"><input type="checkbox" id="turtle-sublattice"> sublattice</label>
                         <label class="toolbar-toggle toolbar-toggle-right">
         <input type="checkbox" id="turtle-lattice" checked=""> show grid</label>
                       </div>
@@ -2004,7 +2004,7 @@
         trialGhost = null;
         statusText = `${markingRulesToggle?.checked
           ? `branching with rank-${markingRank} marking constraints`
-          : 'branching without marking constraints'}${usingSublattice() ? ' on the turtle lattice coset' : ''}`;
+          : 'branching without marking constraints'}${usingSublattice() ? ' on the turtle sublattice' : ''}`;
         showMarkings = markingRulesToggle.checked ? true : showMarkings;
         updateMarkingButton();
         startButton.textContent = 'Pause tiling';
@@ -2135,11 +2135,11 @@
         resetTilingForMarkingExtension();
         liveSearchUsesSublattice = usingSublattice();
         statusText = usingSublattice()
-          ? 'turtle lattice coset · original A2 coordinates'
+          ? 'turtle sublattice · original A2 coordinates'
           : 'full A2 lattice';
-        if (stageLabel) stageLabel.textContent = usingSublattice() ? 'Stage: turtle lattice coset' : 'Stage: full lattice';
+        if (stageLabel) stageLabel.textContent = usingSublattice() ? 'Stage: turtle sublattice' : 'Stage: full lattice';
         if (stageNote) stageNote.textContent = usingSublattice()
-          ? 'The grid and search use the affine coset containing 11 turtle boundary vertices and every marking line; retained t- and m-values are unchanged.'
+          ? 'The grid and search use the sublattice containing 11 turtle boundary vertices and every marking line; retained t- and m-values are unchanged.'
           : 'The grid and search use every A2 lattice point.';
         draw();
       });
