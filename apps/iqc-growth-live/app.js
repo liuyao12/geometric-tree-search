@@ -88,22 +88,22 @@ import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntim
   from "./external-trajectory-geometry.mjs?v=20260830-346";
 import { actionBarrierSha256, buildFrozenActionBarrierRequest, frozenActionBarrierRequestReceipt,
   frozenActionStateGeometrySha256, validateFrozenActionBarrierResponse }
-  from "./external-action-barrier.mjs?v=20260831-365";
+  from "./external-action-barrier.mjs?v=20260831-366";
 import { buildFrozenKineticCompetition }
-  from "./frozen-frontier-kinetics.mjs?v=20260831-365";
+  from "./frozen-frontier-kinetics.mjs?v=20260831-366";
 import { buildKineticEventSpectrum }
-  from "./kinetic-event-spectrum.mjs?v=20260831-365";
+  from "./kinetic-event-spectrum.mjs?v=20260831-366";
 import { enumerateDetachableLeafPlacements }
   from "./reversible-frontier-events.mjs?v=20260831-347";
 import { enumerateMassConservingSurfaceHops }
-  from "./surface-hop-events.mjs?v=20260831-365";
+  from "./surface-hop-events.mjs?v=20260831-366";
 import { enumerateLocalSpeciesExchangeEvents }
-  from "./species-exchange-events.mjs?v=20260831-365";
+  from "./species-exchange-events.mjs?v=20260831-366";
 import { buildExternalStateRelaxationRequest, stateRelaxationSha256,
   validateExternalStateRelaxationResponse }
-  from "./external-state-relaxation.mjs?v=20260831-365";
+  from "./external-state-relaxation.mjs?v=20260831-366";
 import { appendCommittedTransition }
-  from "./reversible-transition-lineage.mjs?v=20260831-365";
+  from "./reversible-transition-lineage.mjs?v=20260831-366";
 import { buildFiniteTransitionNetwork }
   from "./finite-transition-network.mjs?v=20260831-352";
 import { auditCompetingObservedTransitionPaths }
@@ -117,19 +117,19 @@ import { evaluateWulffShapeRegularizer, matchedWulffRankingAudit }
   from "./wulff-shape-regularizer.mjs?v=20260831-354";
 import { buildAttachmentKineticsRequest, buildNormalizedKineticWulffGeometry,
   validateAttachmentKineticsResponse, evaluateKineticHabitScore, matchedKineticHabitRankingAudit }
-  from "./external-attachment-kinetics.mjs?v=20260831-365";
+  from "./external-attachment-kinetics.mjs?v=20260831-366";
 import { buildInterfaceFluxRequest, validateInterfaceFluxResponse, evaluateInterfaceFluxScore,
   matchedInterfaceFluxRankingAudit }
-  from "./external-interface-flux.mjs?v=20260831-365";
+  from "./external-interface-flux.mjs?v=20260831-366";
 import { periodicSiteNumberDensity, coupleInterfaceSupplyAndAttachment,
   syntheticGrowthRegimePreview }
-  from "./growth-regime-bridge.mjs?v=20260831-365";
+  from "./growth-regime-bridge.mjs?v=20260831-366";
 import { buildLeapfrogPhysicsCycle, couplingModeGate, LEAPFROG_COUPLING_MODES }
-  from "./leapfrog-physics-cycle.mjs?v=20260831-365";
+  from "./leapfrog-physics-cycle.mjs?v=20260831-366";
 import { buildCatalogConditionalChronology }
-  from "./catalog-conditional-chronology.mjs?v=20260831-365";
+  from "./catalog-conditional-chronology.mjs?v=20260831-366";
 import { buildCoupledPhysicsState, coupledStateGate }
-  from "./coupled-physics-state.mjs?v=20260831-365";
+  from "./coupled-physics-state.mjs?v=20260831-366";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -655,6 +655,8 @@ const kineticEventSpectrumMode = $("kineticEventSpectrumMode");
 const kineticEventSpectrumSummary = $("kineticEventSpectrumSummary");
 const kineticEventSpectrumPlot = $("kineticEventSpectrumPlot");
 const kineticEventSpectrumDetail = $("kineticEventSpectrumDetail");
+const kineticEventPathPlot = $("kineticEventPathPlot");
+const kineticEventPathState = $("kineticEventPathState");
 const actionBarrierInverseBadge = $("actionBarrierInverseBadge");
 const actionBarrierInverseSummary = $("actionBarrierInverseSummary");
 const actionBarrierInverseState = $("actionBarrierInverseState");
@@ -3844,7 +3846,7 @@ async function downloadInterfacialEnergyRequest() {
   const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-365",
+  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-366",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256,
@@ -4088,7 +4090,7 @@ async function downloadAttachmentKineticsRequest() {
   const material = currentMaterial(); const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-365",
+  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-366",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256, intrinsicDimension, orientationBasisCartesian,
@@ -4607,7 +4609,7 @@ async function downloadSpatialInterfaceFluxRequest() {
   const interfaceGeometrySha256 = await receiptSha256(JSON.stringify({ structureSha256: configuration.structureSha256,
     confinement: confinementSelect?.value || "box", publicReach: growthDomainScale, atomCount: referenceAtoms.length }));
   const species = material.actualElements ? [...material.actualElements] : [...material.elements];
-  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-365",
+  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-366",
     scenarioId: scenarioSelect.value, materialName: material.name, species,
     structureSha256: configuration.structureSha256, interfaceGeometrySha256,
     interfaceConfiguration: configuration,
@@ -13886,7 +13888,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260831-365",
+      buildId: "20260831-366",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -16479,7 +16481,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260831-365" },
+    application: { name: "Materials Growth Lab", buildId: "20260831-366" },
     postLeapExternalRelaxation: stateRelaxationReceipt(),
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
@@ -24840,7 +24842,7 @@ async function freezeExternalStateRelaxation() {
     throw new Error("variable-cell relaxation requires a fully periodic 3D state");
   }
   const request = await buildExternalStateRelaxationRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-365",
+    generatedAt: new Date().toISOString(), buildId: "20260831-366",
     materialName: currentMaterial().name, sites,
     cellAngstrom: policy.cellAngstrom, periodicBoundary: policy.periodicBoundary,
     boundary: currentGrowthDomainSnapshot(), sourceLeapReceiptSha256: null,
@@ -25371,6 +25373,24 @@ function actionBarrierCheckpointReceipt(checkpoint = externalActionBarrierCheckp
       robustCenter: response.audit.robustNormalization.centerElectronVolt,
       robustScale: response.audit.robustNormalization.scaleElectronVolt,
     } : null,
+    actionPathGeometry: response ? {
+      everyCandidateValidated: response.audit.everyPathGeometryValidated,
+      totalCoordinateBearingImages: response.audit.pathGeometryImageCount,
+      targetUsed: false,
+      candidates: response.audit.records.map((record) => ({
+        candidateId: record.candidateId, eventDirection: record.eventDirection,
+        pathModel: record.pathGeometry.pathModel,
+        reservoirBoundaryCondition: record.pathGeometry.reservoir?.boundaryCondition || null,
+        imageCount: record.pathGeometry.imageCount,
+        saddleImageIndex: record.pathGeometry.saddleImageIndex,
+        extendedSystemAtomCount: record.pathGeometry.extendedSystemAtomCount,
+        maximumSiteDisplacementAngstrom: record.pathGeometry.maximumSiteDisplacementAngstrom,
+        pathGeometrySha256: record.pathGeometrySha256 || null,
+        exactInitialEndpoint: true, exactFinalEndpoint: true,
+        pathSiteIdsPreserved: true, pathSpeciesPreserved: true,
+      })),
+      claimBoundary: "Coordinate-bearing external images certify exact endpoint connectivity inside each returned extended system. They do not prove a unique global minimum-energy path, mechanism completeness, recrossing, reservoir validity, or method transferability.",
+    } : null,
     rankingWeight: response && !kinetic ? externalActionBarrierWeight : 0,
     usedForRanking: Boolean(response && checkpoint.consumed
       && (externalActionBarrierWeight > 0 || kinetic)),
@@ -25487,6 +25507,7 @@ function renderKineticEventSpectrum() {
     return node;
   };
   kineticEventSpectrumPlot.replaceChildren();
+  kineticEventPathPlot.replaceChildren();
   const competition = externalActionBarrierCheckpoint?.kineticCompetition;
   const panel = kineticEventSpectrumBadge.closest(".kinetic-event-spectrum");
   panel.classList.toggle("ready", Boolean(competition));
@@ -25498,6 +25519,11 @@ function renderKineticEventSpectrum() {
     const empty = make("text", { x: 180, y: 86, "text-anchor": "middle", class: "axis-label" });
     empty.textContent = "frozen candidate rates unavailable";
     kineticEventSpectrumPlot.append(empty);
+    const emptyPath = make("text", { x: 180, y: 49, "text-anchor": "middle",
+      class: "axis-label" });
+    emptyPath.textContent = "coordinate-bearing path unavailable";
+    kineticEventPathPlot.append(emptyPath);
+    kineticEventPathState.textContent = "A validated response must return stable site IDs, species, coordinates, domains, energies, and forces for every image.";
     return;
   }
   const spectrum = buildKineticEventSpectrum(competition);
@@ -25583,6 +25609,42 @@ function renderKineticEventSpectrum() {
   const boundary = document.createElement("span");
   boundary.textContent = `${spectrum.uncertaintyCompetitiveCandidateCount} event${spectrum.uncertaintyCompetitiveCandidateCount === 1 ? "" : "s"} overlap the fastest event's uncertainty band; ${spectrum.catalogCharacter}.`;
   kineticEventSpectrumDetail.append(heading, details, boundary);
+  const path = externalActionBarrierCheckpoint.validatedResponse.recordsByCandidate
+    .get(inspected.candidateId)?.pathGeometry;
+  if (!path) {
+    const unavailable = make("text", { x: 180, y: 49, "text-anchor": "middle",
+      class: "axis-label" });
+    unavailable.textContent = "selected event has no validated path";
+    kineticEventPathPlot.append(unavailable);
+    kineticEventPathState.textContent = "Path geometry is required before kinetic selection.";
+    return;
+  }
+  const pathLeft = 30; const pathRight = 350; const pathTop = 10; const pathBottom = 74;
+  const energies = path.images.map((image) => image.energyElectronVolt);
+  const energyMinimum = Math.min(...energies); const energyMaximum = Math.max(...energies);
+  const pathX = (coordinate) => pathLeft + (pathRight - pathLeft) * coordinate;
+  const pathY = (energy) => pathBottom - (pathBottom - pathTop)
+    * (energyMaximum === energyMinimum ? .5 : (energy - energyMinimum)
+      / (energyMaximum - energyMinimum));
+  kineticEventPathPlot.append(make("line", { x1: pathLeft, y1: pathBottom,
+    x2: pathRight, y2: pathBottom, class: "axis" }), make("line", { x1: pathLeft,
+    y1: pathTop, x2: pathLeft, y2: pathBottom, class: "axis" }));
+  const points = path.images.map((image) =>
+    `${pathX(image.reactionCoordinate)},${pathY(image.energyElectronVolt)}`).join(" ");
+  kineticEventPathPlot.append(make("polyline", { points, class: "path-profile" }));
+  path.images.forEach((image, index) => {
+    const point = make("circle", { cx: pathX(image.reactionCoordinate),
+      cy: pathY(image.energyElectronVolt), r: index === path.saddleImageIndex ? 3.8 : 2.4,
+      class: index === path.saddleImageIndex ? "path-image saddle" : "path-image" });
+    const title = make("title");
+    title.textContent = `image ${index + 1}/${path.imageCount} · ξ ${image.reactionCoordinate.toFixed(3)} · E ${image.energyElectronVolt.toFixed(5)} eV · material/interface/reservoir ${path.materialCounts[index]}/${path.interfaceCounts[index]}/${path.reservoirCounts[index]}`;
+    point.append(title); kineticEventPathPlot.append(point);
+  });
+  const pathAxis = make("text", { x: pathRight, y: 91, "text-anchor": "end",
+    class: "axis-label" });
+  pathAxis.textContent = "external reaction coordinate ξ · 0 → 1";
+  kineticEventPathPlot.append(pathAxis);
+  kineticEventPathState.textContent = `${path.imageCount} externally calculated images · ${path.pathModel.replaceAll("-", " ")} · saddle image ${path.saddleImageIndex + 1} · ${path.fixedMaterialSiteCount} invariant + ${path.movingOrReservoirSiteCount} moving/reservoir site IDs · max adjacent displacement ${path.maximumSiteDisplacementAngstrom.toFixed(3)} Å${path.reservoir ? ` · ${path.reservoir.boundaryCondition}` : " · closed system"}. Exact endpoints and energy barrier pass; path uniqueness, missing mechanisms, recrossing, and method transferability remain unclaimed.`;
 }
 
 function renderActionBarrierCheckpoint() {
@@ -25646,9 +25708,9 @@ function renderActionBarrierCheckpoint() {
   actionBarrierCheckpointBadge.textContent = audit ? "response bound" : "frontier frozen";
   actionBarrierCheckpointState.textContent = audit
     ? checkpoint.kineticCompetition
-      ? `${audit.candidateCount} converged barrier + prefactor records are bound to request ${checkpoint.requestReceipt.requestSha256.slice(0, 12)}… . Exactly one ${checkpoint.kineticCompetition.selectedEventDirection} event selected by ${checkpoint.kineticCompetition.mode === "seeded-kmc" ? "seeded KMC" : "maximum rate"} will commit.`
-      : `${audit.candidateCount} converged barriers are bound to request ${checkpoint.requestReceipt.requestSha256.slice(0, 12)}… . Weight ${externalActionBarrierWeight.toFixed(2)} changes only the stable ordering of this batch; Commit resumes the paused leap.`
-    : `Growth is paused before commit. Download request ${checkpoint.requestReceipt.requestSha256.slice(0, 12)}… and return one converged barrier record for every admitted candidate.`;
+      ? `${audit.candidateCount} converged barrier + prefactor + coordinate-path records are bound to request ${checkpoint.requestReceipt.requestSha256.slice(0, 12)}… . Exactly one ${checkpoint.kineticCompetition.selectedEventDirection} event selected by ${checkpoint.kineticCompetition.mode === "seeded-kmc" ? "seeded KMC" : "maximum rate"} will commit.`
+      : `${audit.candidateCount} converged barriers and exact endpoint-connected image chains are bound to request ${checkpoint.requestReceipt.requestSha256.slice(0, 12)}… . Weight ${externalActionBarrierWeight.toFixed(2)} changes only the stable ordering of this batch; Commit resumes the paused leap.`
+    : `Growth is paused before commit. Download request ${checkpoint.requestReceipt.requestSha256.slice(0, 12)}… and return one converged barrier plus coordinate-bearing extended-system path for every admitted candidate.`;
   const tiles = [
     ["frozen frontier", `${checkpoint.evaluated.length} candidates`],
     ["event catalog", `${checkpoint.request.frontier.candidateCount} actions`],
@@ -25657,6 +25719,8 @@ function renderActionBarrierCheckpoint() {
     [audit ? "barrier range" : "execution effect", audit
       ? `${Math.min(...audit.records.map((record) => record.barrierElectronVolt)).toFixed(3)}–${Math.max(...audit.records.map((record) => record.barrierElectronVolt)).toFixed(3)} eV`
       : "none before validation"],
+    [audit ? "path images" : "path geometry", audit
+      ? `${audit.pathGeometryImageCount} exact-bound images` : "awaiting external coordinates"],
   ];
   if (checkpoint.requestReceipt.couplingStateExpectation) tiles.push(["shared state",
     `${checkpoint.requestReceipt.couplingStateExpectation.couplingStateSha256.slice(0, 12)}${checkpoint.requestReceipt.couplingStateExpectation.temperatureKelvin == null ? "" : ` · ${checkpoint.requestReceipt.couplingStateExpectation.temperatureKelvin} K`}`]);
@@ -25844,7 +25908,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
     ...speciesExchangeCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-365",
+    generatedAt: new Date().toISOString(), buildId: "20260831-366",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -25884,7 +25948,7 @@ async function freezeExternalActionBarrierFrontier() {
   };
   growthFrontierWork.busy = false; growthFrontierWork.phase = "checkpoint";
   stepButton.disabled = false; resetButton.disabled = false; updatePipelineButtons();
-  receiptStatus.textContent = `Action frontier frozen · ${externalActionBarrierCheckpoint.request.frontier.candidateCount} exact events (${externalActionBarrierCheckpoint.admissibleEntries.length} attach + ${externalActionBarrierCheckpoint.detachmentEvents.length} detach + ${externalActionBarrierCheckpoint.surfaceHopEvents.length} hop) · no branch committed.`;
+  receiptStatus.textContent = `Action frontier frozen · ${externalActionBarrierCheckpoint.request.frontier.candidateCount} exact events (${externalActionBarrierCheckpoint.admissibleEntries.length} attach + ${externalActionBarrierCheckpoint.detachmentEvents.length} detach + ${externalActionBarrierCheckpoint.surfaceHopEvents.length} hop + ${externalActionBarrierCheckpoint.speciesExchangeEvents.length} exchange) · no branch committed.`;
   renderActionBarrierCheckpoint(); renderGrowthFrontierWork(); updateUI();
 }
 
@@ -25906,8 +25970,13 @@ async function validateExternalActionBarrierFile(file) {
     throw new Error("Freeze a frontier first; response files are limited to 32 MB");
   }
   const responseText = await file.text(); const response = JSON.parse(responseText);
-  const expected = { ...checkpoint.requestReceipt, candidates: checkpoint.request.frontier.candidates };
+  const expected = { ...checkpoint.requestReceipt,
+    candidates: checkpoint.request.frontier.candidates,
+    initialConfiguration: checkpoint.request.frontier.initialConfiguration };
   const audit = validateFrozenActionBarrierResponse(response, expected);
+  await Promise.all(audit.records.map(async (record) => {
+    record.pathGeometrySha256 = await actionBarrierSha256(record.pathGeometry);
+  }));
   const responseSha256 = await receiptSha256(responseText);
   checkpoint.validatedResponse = { audit,
     recordsByCandidate: new Map(audit.records.map((record) => [record.candidateId, record])) };
@@ -35181,7 +35250,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-365",
+    generatedAt: new Date().toISOString(), buildId: "20260831-366",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,

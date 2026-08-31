@@ -14,9 +14,9 @@ for (const document of [html, alias]) {
   assert.match(document, /value="local-events"/);
   assert.match(document, /species exchange/);
   assert.match(document, /class="exchange"><\/i>species exchange/);
-  assert.match(document, /app\.js\?v=20260831-365/);
+  assert.match(document, /app\.js\?v=20260831-366/);
 }
-assert.match(app, /species-exchange-events\.mjs\?v=20260831-365/);
+assert.match(app, /species-exchange-events\.mjs\?v=20260831-366/);
 assert.match(app, /function speciesExchangeEventCatalog/);
 assert.match(app, /async function performOwnershipCertifiedSpeciesExchange/);
 assert.match(app, /committed species exchange failed exact endpoint or atom-count reproduction/);
@@ -25,10 +25,11 @@ assert.match(moduleText, /atom-count-not-conserved/);
 assert.match(moduleText, /no-species-exchange/);
 assert.match(moduleText, /destination-uses-removed-source-atom/);
 assert.match(moduleText, /ChemicalPotentialInferred: false/);
-assert.match(barrier, /action-barrier-request-v3/);
+assert.match(barrier, /action-barrier-request-v4/);
 assert.match(barrier, /speciesExchangeGeometryPresent/);
 assert.match(lineage, /"hop", "exchange"/);
 assert.match(readme, /Build 365/);
+assert.match(readme, /Build 366/);
 assert.match(readme, /exact local species-exchange events/i);
 assert.match(benchmark, /Exact local species exchange \(Build 365\)/);
 assert.match(benchmark, /not a transition path, transmutation/);

@@ -1,5 +1,8 @@
-export const ACTION_BARRIER_REQUEST_SCHEMA = "gcts-frozen-frontier-action-barrier-request-v3";
-export const ACTION_BARRIER_RESPONSE_SCHEMA = "gcts-frozen-frontier-action-barrier-response-v3";
+import { validateCandidateActionPathGeometry }
+  from "./action-path-geometry.mjs?v=20260831-366";
+
+export const ACTION_BARRIER_REQUEST_SCHEMA = "gcts-frozen-frontier-action-barrier-request-v4";
+export const ACTION_BARRIER_RESPONSE_SCHEMA = "gcts-frozen-frontier-action-barrier-response-v4";
 
 const finite = (value) => Number.isFinite(Number(value));
 
@@ -256,7 +259,15 @@ export async function buildFrozenActionBarrierRequest(input) {
       quantity: "candidate-resolved attachment, exact leaf-detachment, mass-conserving surface-hop, and/or equal-count reservoir-mediated species-exchange transition barriers on one frozen frontier",
       suitableMethods: ["nudged elastic band", "dimer or saddle search", "validated enhanced-sampling path"],
       requiredOutputs: ["one converged record for every candidate ID", "the supplied exact initial and final geometry digests",
-        "at least three energy images", "maximum residual force", "barrier uncertainty and method provenance"],
+        "invariant material sites certified once plus at least three coordinate-bearing moving/reservoir images with stable path-site IDs and species",
+        "strictly increasing reaction coordinates, image energies, image maximum forces, and an internal saddle image",
+        "maximum residual force", "barrier uncertainty and method provenance"],
+      mechanismPathContract: {
+        surfaceHop: "closed-system-fixed-composition images; every path site remains in the material domain",
+        attachmentAndDetachment: "explicit-reservoir-extended-system images; material plus reservoir cardinality and species identities remain constant",
+        speciesExchange: "explicit-reservoir-extended-system images containing both incoming and outgoing colored sites",
+        endpointRule: "material-domain sites in image 0 and the final image must exactly reproduce the frozen colored endpoint multisets",
+      },
       optionalMicroscopicInverseOutputs: ["energyDeltaElectronVolt between the exact final and initial states",
         "energyDeltaUncertaintyElectronVolt from the same method-specific calculation"],
       optionalReservoirThermodynamics: {
@@ -304,6 +315,8 @@ export async function buildFrozenActionBarrierRequest(input) {
       massConservingHopDoesNotSupplyMigrationPathOrBarrier: true,
       speciesExchangeRequiresExternalReservoirChemicalWork: true,
       speciesExchangeDoesNotSupplyReactionPathOrBarrier: true,
+      returnedPathCoordinatesMustBeExternallyCalculated: true,
+      pathGeometryMayNotCreateOrAlterCandidateEndpoints: true,
       optionalThermodynamicEvidenceMustBeExternal: true,
       geometricScoresMayNotSupplyChemicalPotentialOrFreeEnergy: true,
       oneInversePairMayNotClaimGlobalDetailedBalance: true,
@@ -347,6 +360,9 @@ export function validateFrozenActionBarrierResponse(response, expected) {
     throw new Error(`response schema must be ${ACTION_BARRIER_RESPONSE_SCHEMA}`);
   }
   if (!expected || typeof expected !== "object") throw new TypeError("expected request receipt is required");
+  if (!expected.initialConfiguration?.atoms?.length) {
+    throw new TypeError("expected frozen initial configuration is required for path geometry validation");
+  }
   if (response.requestSha256 !== expected.requestSha256
       || response.candidateBatchSha256 !== expected.candidateBatchSha256
       || response.initialStructureSha256 !== expected.initialStructureSha256) {
@@ -365,7 +381,8 @@ export function validateFrozenActionBarrierResponse(response, expected) {
   const validation = response.validation || {};
   if (!(validation.passed === true && validation.protocolMatchesRequest === true
       && validation.independentHoldout === true && validation.uncertaintyReported === true
-      && validation.convergenceReported === true && validation.everyCandidateConverged === true)) {
+      && validation.convergenceReported === true && validation.everyCandidateConverged === true
+      && validation.everyPathGeometryValidated === true)) {
     throw new Error("action-barrier response has not passed every frozen validation gate");
   }
   const kinetics = response.kinetics == null ? null : {
@@ -480,7 +497,9 @@ export function validateFrozenActionBarrierResponse(response, expected) {
       || response.safeguards?.geometricScoresUsedAsPhysicalLabels !== false
       || response.safeguards?.searchStepsUsedAsPhysicalTime !== false
       || response.safeguards?.candidateSetChanged !== false
-      || response.safeguards?.hardAdmissionChanged !== false) {
+      || response.safeguards?.hardAdmissionChanged !== false
+      || response.safeguards?.pathCoordinatesExternallyCalculated !== true
+      || response.safeguards?.pathGeometryChangedCandidateEndpoints !== false) {
     throw new Error("action-barrier response safeguards are incomplete or target-tainted");
   }
   if (thermodynamics && !(response.safeguards.chemicalPotentialsExternallySupplied === true
@@ -584,6 +603,16 @@ export function validateFrozenActionBarrierResponse(response, expected) {
         || record.prefactorConverged !== true)) {
       throw new Error(`kinetic prefactor for ${candidateId} is incomplete, invalid, or unconverged`);
     }
+    const pathGeometry = validateCandidateActionPathGeometry(record.pathGeometry, {
+      candidate, initialConfiguration: expected.initialConfiguration,
+      barrierElectronVolt: Number(record.barrierElectronVolt),
+      barrierUncertaintyElectronVolt: Number(record.uncertaintyElectronVolt),
+      energyDeltaElectronVolt, energyDeltaUncertaintyElectronVolt,
+      maximumForceElectronVoltPerAngstrom: Number(record.maximumForceElectronVoltPerAngstrom),
+    });
+    if (pathGeometry.imageCount !== record.imageCount) {
+      throw new Error(`path image count for ${candidateId} does not match its barrier record`);
+    }
     return {
       candidateId,
       candidateDigestSha256: candidate.candidateDigestSha256,
@@ -607,6 +636,7 @@ export function validateFrozenActionBarrierResponse(response, expected) {
       attemptFrequencyUncertaintyLog10: kinetics
         ? Number(record.attemptFrequencyUncertaintyLog10) : null,
       prefactorConverged: Boolean(kinetics),
+      pathGeometry,
       converged: true,
     };
   });
@@ -644,6 +674,11 @@ export function validateFrozenActionBarrierResponse(response, expected) {
       && normalized.records.some((record) => record.eventDirection === "detach"),
     surfaceHopGeometryPresent: normalized.records.some((record) => record.eventDirection === "hop"),
     speciesExchangeGeometryPresent: normalized.records.some((record) => record.eventDirection === "exchange"),
+    everyPathGeometryValidated: normalized.records.every((record) =>
+      record.pathGeometry?.coordinateBearingImagesValidated === true),
+    pathGeometryImageCount: normalized.records.reduce((sum, record) =>
+      sum + (record.pathGeometry?.imageCount || 0), 0),
+    pathGeometryTargetUsed: false,
     thermodynamicReversibilityCertified: false,
     detailedBalanceCertified: false,
     finitePairLocalBalanceCertified: false,

@@ -1,5 +1,32 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 366 · coordinate-bearing external action paths
+
+Every externally returned frontier barrier must now carry an explicit image
+chain connecting that exact candidate's frozen colored endpoints. To remain
+practical for large configurations, invariant material sites are certified
+once; only moving, interface, or reservoir sites repeat in the image array.
+Stable path-site IDs and species, strictly ordered reaction coordinates,
+coordinates, energies, maximum forces, an internal saddle, and constant
+extended-system cardinality are all checked independently.
+
+Mass-conserving surface hops use a closed fixed-composition path. Attachment,
+detachment, and species exchange instead require an explicit reservoir-
+extended system, so their changing material atom count is never disguised as
+an ordinary fixed-composition NEB calculation. The material-domain sites in
+the first and last images must exactly reconstruct the hashed initial and
+candidate-final colored geometries; the energy profile must reproduce the
+reported barrier, energy change, and maximum force within declared
+uncertainties.
+
+The selected event now exposes its external energy profile interactively in
+the kinetic spectrum, including the saddle, image-domain populations, path
+model, reservoir boundary, and largest adjacent-image displacement. This
+certifies one returned path only. It does not prove that the path is unique or
+globally minimal, that all mechanisms were found, that recrossing is absent,
+or that the chosen electronic-structure, force-field, or enhanced-sampling
+method is valid outside its documented calculation.
+
 ## Build 365 · exact local species-exchange events
 
 The Stage 4 frozen-event catalog can now include reservoir-mediated local

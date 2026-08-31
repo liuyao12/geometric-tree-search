@@ -1,5 +1,38 @@
 # Recursive GCTS benchmark for material growth
 
+### Coordinate-bearing external action paths (Build 366)
+
+The v4 frozen-action response closes the gap between a scalar transition
+barrier and the exact candidate geometry it is meant to rank. Every returned
+record now includes at least three coordinate-bearing images with stable site
+IDs and species, a strictly increasing reaction coordinate, energy and maximum
+force per image, and an internal maximum-energy saddle. Invariant material
+sites are stored once and combined with the dynamic sites during validation,
+which keeps the representation proportional to the moving environment rather
+than multiplying the full specimen by the image count.
+
+For a surface hop, all sites remain in a closed, fixed-composition material
+domain. Attachment, detachment, and exchange use a constant-cardinality
+extended system with a hashed, described gas, solution, surface-feedstock, or
+bulk reservoir boundary. The validator moves sites among material, interface,
+and reservoir domains while preserving their IDs and species. This is the
+appropriate open-system construction for actions whose material-domain atom
+population changes; they are not mislabeled as fixed-composition NEB paths.
+
+The first and final material multisets are reconstructed from coordinates and
+checked against the frozen endpoint hashes. The profile independently
+reproduces ΔE‡, optional endpoint ΔE, and the reported maximum image force. The
+interactive kinetic panel draws the selected candidate's profile and exposes
+its saddle, image-domain populations, reservoir condition, and adjacent-image
+displacement. Response validation fails closed if a path is missing, claims a
+false validation flag, changes an endpoint, changes a path-site species or ID,
+or disagrees with the scalar calculation record.
+
+This is a candidate-bound calculation handoff, not a browser-generated
+reaction path. Passing the gate does not establish path uniqueness, a global
+minimum-energy path, mechanism completeness, recrossing corrections, rate
+theory, reservoir validity, or transferability of the external method.
+
 ### Exact local species exchange (Build 365)
 
 The finite Stage 4 mechanism catalog now has a fourth event family. A local
@@ -10,7 +43,7 @@ size, nonempty, differently colored, and have an integer species delta that
 sums to zero. No atom used as destination overlap may be removed by the source
 half of the event.
 
-The v3 action-barrier contract hashes the initial configuration, every exact
+The action-barrier contract hashes the initial configuration, every exact
 removed/emitted/action site, and the derived final colored state. At commit the
 browser repeats ownership, admission, feedstock, independence, count,
 candidate-digest, and final-state checks before replacing the source support

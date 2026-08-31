@@ -14,6 +14,88 @@ const { buildFrozenKineticCompetition } = await import(
   "../apps/iqc-growth-live/frozen-frontier-kinetics.mjs");
 
 const sha = "a".repeat(64);
+const siteKey = (site) => `${site.species}\u0000${site.positionAngstrom.join(",")}`;
+function pathGeometryFor(candidate, initialConfiguration, barrierElectronVolt,
+  energyDeltaElectronVolt = 0, maximumForceElectronVoltPerAngstrom = .01) {
+  const initial = initialConfiguration.atoms.map((site, index) => ({ pathSiteId: `initial-${index}`,
+    species: site.species, positionAngstrom: [...site.positionAngstrom], domain: "material" }));
+  const initialById = new Map(initial.map((site) => [site.pathSiteId, site]));
+  const finalById = new Map(initial.map((site) => [site.pathSiteId, { ...site,
+    positionAngstrom: [...site.positionAngstrom] }]));
+  const unusedInitial = new Set(initial.map((site) => site.pathSiteId));
+  const removedIds = (candidate.removedSites || []).map((removed) => {
+    const match = initial.find((site) => unusedInitial.has(site.pathSiteId)
+      && siteKey(site) === siteKey(removed));
+    assert.ok(match, `test path source ${siteKey(removed)} must exist`);
+    unusedInitial.delete(match.pathSiteId); return match.pathSiteId;
+  });
+  const far = (index, sign = 1) => [7 + index, sign * (6 + index), 5 + index];
+  if (candidate.eventDirection === "hop") {
+    const unusedEmitted = new Set((candidate.emittedSites || []).map((_, index) => index));
+    removedIds.forEach((pathSiteId) => {
+      const source = initialById.get(pathSiteId);
+      const emittedIndex = [...unusedEmitted].find((index) =>
+        candidate.emittedSites[index].species === source.species);
+      assert.notEqual(emittedIndex, undefined); unusedEmitted.delete(emittedIndex);
+      finalById.set(pathSiteId, { ...source,
+        positionAngstrom: [...candidate.emittedSites[emittedIndex].positionAngstrom],
+        domain: "material" });
+    });
+  } else {
+    removedIds.forEach((pathSiteId, index) => {
+      const source = initialById.get(pathSiteId);
+      finalById.set(pathSiteId, { ...source, positionAngstrom: far(index, -1), domain: "reservoir" });
+    });
+    (candidate.emittedSites || []).forEach((emitted, index) => {
+      const pathSiteId = `incoming-${index}`;
+      initialById.set(pathSiteId, { pathSiteId, species: emitted.species,
+        positionAngstrom: far(index, 1), domain: "reservoir" });
+      finalById.set(pathSiteId, { pathSiteId, species: emitted.species,
+        positionAngstrom: [...emitted.positionAngstrom], domain: "material" });
+    });
+  }
+  const fixedMaterialSites = [...unusedInitial].sort().map((pathSiteId) => {
+    const site = initialById.get(pathSiteId);
+    initialById.delete(pathSiteId); finalById.delete(pathSiteId);
+    return { pathSiteId, species: site.species,
+      positionAngstrom: [...site.positionAngstrom] };
+  });
+  const ids = [...initialById.keys()].sort();
+  const endpointSites = (table) => ids.map((id) => ({ ...table.get(id),
+    positionAngstrom: [...table.get(id).positionAngstrom] }));
+  const middleSites = ids.map((id) => {
+    const first = initialById.get(id); const last = finalById.get(id);
+    return { pathSiteId: id, species: first.species,
+      positionAngstrom: first.positionAngstrom.map((value, axis) =>
+        (value + last.positionAngstrom[axis]) / 2),
+      domain: first.domain === last.domain ? first.domain : "interface" };
+  });
+  return { candidateId: candidate.candidateId,
+    candidateDigestSha256: candidate.candidateDigestSha256,
+    initialGeometrySha256: candidate.initialGeometrySha256,
+    finalGeometrySha256: candidate.finalGeometrySha256,
+    pathModel: candidate.eventDirection === "hop" ? "closed-system-fixed-composition"
+      : "explicit-reservoir-extended-system",
+    fixedMaterialSites,
+    reservoir: candidate.eventDirection === "hop" ? null : {
+      mode: "explicit-extended-system", boundaryCondition: "surface-feedstock",
+      description: "test-only explicit reservoir sites", settingsSha256: "7".repeat(64),
+      chemicalPotentialReference: "test reference" },
+    pathConverged: true, endpointMappingVerified: true,
+    extendedSystemAtomCountConstant: true, speciesIdentityConstant: true,
+    saddleImageIndex: 1,
+    images: [
+      { reactionCoordinate: 0, energyElectronVolt: 0,
+        maximumForceElectronVoltPerAngstrom: 0, sites: endpointSites(initialById) },
+      { reactionCoordinate: .5, energyElectronVolt: barrierElectronVolt,
+        maximumForceElectronVoltPerAngstrom, sites: middleSites },
+      { reactionCoordinate: 1, energyElectronVolt: energyDeltaElectronVolt,
+        maximumForceElectronVoltPerAngstrom: 0, sites: endpointSites(finalById) },
+    ] };
+}
+const expectedFor = (request, receipt) => ({ ...receipt,
+  candidates: request.frontier.candidates,
+  initialConfiguration: request.frontier.initialConfiguration });
 const rawCandidates = [
   { candidateId: "b", actionLabel: "B", parentType: 1,
     childType: 2, ruleId: 3, emittedSites: [{ species: "Na", positionAngstrom: [1, 0, 0] }],
@@ -51,20 +133,26 @@ const response = {
   candidateBatchSha256: receipt.candidateBatchSha256, initialStructureSha256: receipt.initialStructureSha256,
   method: { family: "NEB", program: "test", version: "1", settingsSha256: "d".repeat(64) },
   validation: { passed: true, protocolMatchesRequest: true, independentHoldout: true,
-    uncertaintyReported: true, convergenceReported: true, everyCandidateConverged: true },
+    uncertaintyReported: true, convergenceReported: true, everyCandidateConverged: true,
+    everyPathGeometryValidated: true },
   safeguards: { containsGrowthTargetCoordinates: false, geometricScoresUsedAsPhysicalLabels: false,
-    searchStepsUsedAsPhysicalTime: false, candidateSetChanged: false, hardAdmissionChanged: false },
-  records: request.frontier.candidates.map((candidate, index) => ({ candidateId: candidate.candidateId,
-    candidateDigestSha256: candidate.candidateDigestSha256, barrierElectronVolt: index ? 1.2 : .4,
-    initialGeometrySha256: candidate.initialGeometrySha256,
-    finalGeometrySha256: candidate.finalGeometrySha256,
-    energyDeltaElectronVolt: index ? .25 : -.1,
-    energyDeltaUncertaintyElectronVolt: .015,
-    uncertaintyElectronVolt: .02, maximumForceElectronVoltPerAngstrom: .01,
-    imageCount: 7, converged: true })),
+    searchStepsUsedAsPhysicalTime: false, candidateSetChanged: false, hardAdmissionChanged: false,
+    pathCoordinatesExternallyCalculated: true, pathGeometryChangedCandidateEndpoints: false },
+  records: request.frontier.candidates.map((candidate, index) => {
+    const barrierElectronVolt = index ? 1.2 : .4;
+    const energyDeltaElectronVolt = index ? .25 : -.1;
+    return { candidateId: candidate.candidateId,
+      candidateDigestSha256: candidate.candidateDigestSha256, barrierElectronVolt,
+      initialGeometrySha256: candidate.initialGeometrySha256,
+      finalGeometrySha256: candidate.finalGeometrySha256,
+      energyDeltaElectronVolt, energyDeltaUncertaintyElectronVolt: .015,
+      uncertaintyElectronVolt: .02, maximumForceElectronVoltPerAngstrom: .01,
+      imageCount: 3, converged: true,
+      pathGeometry: pathGeometryFor(candidate, request.frontier.initialConfiguration,
+        barrierElectronVolt, energyDeltaElectronVolt, .01) };
+  }),
 };
-const validated = validateFrozenActionBarrierResponse(response, { ...receipt,
-  candidates: request.frontier.candidates });
+const validated = validateFrozenActionBarrierResponse(response, expectedFor(request, receipt));
 assert.equal(validated.candidateCount, 2);
 assert.ok(validated.records[0].lowerBarrierScore > validated.records[1].lowerBarrierScore);
 assert.equal(validated.usedAsPhysicalClock, false);
@@ -83,8 +171,8 @@ const kineticResponse = {
     attemptFrequencyPerSecond: 1e13 * (index + 1), attemptFrequencyUncertaintyLog10: .2,
     prefactorConverged: true })),
 };
-const validatedKinetics = validateFrozenActionBarrierResponse(kineticResponse, { ...receipt,
-  candidates: request.frontier.candidates });
+const validatedKinetics = validateFrozenActionBarrierResponse(kineticResponse,
+  expectedFor(request, receipt));
 assert.equal(validatedKinetics.kineticsEligible, true);
 assert.equal(validatedKinetics.records[0].attemptFrequencyPerSecond, 1e13);
 assert.equal(validatedKinetics.kinetics.catalogScope, "requested-hard-admitted-actions-only");
@@ -111,15 +199,15 @@ const coupledResponse = { ...kineticResponse,
   initialStructureSha256: coupledReceipt.initialStructureSha256,
   kinetics: { ...kineticResponse.kinetics, couplingStateSha256: "9".repeat(64),
     temperatureKelvin: 600 } };
-const coupledAudit = validateFrozenActionBarrierResponse(coupledResponse, { ...coupledReceipt,
-  candidates: coupledRequest.frontier.candidates });
+const coupledAudit = validateFrozenActionBarrierResponse(coupledResponse,
+  expectedFor(coupledRequest, coupledReceipt));
 assert.equal(coupledAudit.kinetics.couplingStateSha256, "9".repeat(64));
 assert.throws(() => validateFrozenActionBarrierResponse({ ...coupledResponse,
   kinetics: { ...coupledResponse.kinetics, couplingStateSha256: "8".repeat(64) } },
-{ ...coupledReceipt, candidates: coupledRequest.frontier.candidates }), /shared coupling state/);
+expectedFor(coupledRequest, coupledReceipt)), /shared coupling state/);
 assert.throws(() => validateFrozenActionBarrierResponse({ ...coupledResponse,
   kinetics: { ...coupledResponse.kinetics, temperatureKelvin: 601 } },
-{ ...coupledReceipt, candidates: coupledRequest.frontier.candidates }), /temperature does not match/);
+expectedFor(coupledRequest, coupledReceipt)), /temperature does not match/);
 
 const thermodynamicResponse = {
   ...kineticResponse,
@@ -147,7 +235,7 @@ const thermodynamicResponse = {
     stateFreeEnergyConverged: true })),
 };
 const validatedThermodynamics = validateFrozenActionBarrierResponse(thermodynamicResponse,
-  { ...receipt, candidates: request.frontier.candidates });
+  expectedFor(request, receipt));
 assert.equal(validatedThermodynamics.grandCanonicalEvidenceEligible, true);
 assert.deepEqual(validatedThermodynamics.records[0].speciesDelta, { Cl: 1 });
 assert.ok(Math.abs(validatedThermodynamics.records[0].grandPotentialDeltaElectronVolt + .2) < 1e-12);
@@ -155,32 +243,47 @@ assert.ok(validatedThermodynamics.records[0].grandPotentialDeltaUncertaintyElect
 assert.throws(() => validateFrozenActionBarrierResponse({ ...thermodynamicResponse,
   thermodynamics: { ...thermodynamicResponse.thermodynamics,
     chemicalPotentials: thermodynamicResponse.thermodynamics.chemicalPotentials.slice(0, 1) } },
-{ ...receipt, candidates: request.frontier.candidates }), /missing chemical potentials/);
+expectedFor(request, receipt)), /missing chemical potentials/);
 assert.throws(() => validateFrozenActionBarrierResponse({ ...thermodynamicResponse,
   safeguards: { ...thermodynamicResponse.safeguards,
     geometricScoresUsedAsThermodynamicLabels: true } },
-{ ...receipt, candidates: request.frontier.candidates }), /geometry-derived/);
+expectedFor(request, receipt)), /geometry-derived/);
 
 assert.throws(() => validateFrozenActionBarrierResponse({ ...response,
-  records: [response.records[0], response.records[0]] }, { ...receipt,
-  candidates: request.frontier.candidates }), /duplicate|exactly/);
+  records: [response.records[0], response.records[0]] }, expectedFor(request, receipt)),
+  /duplicate|exactly/);
 assert.throws(() => validateFrozenActionBarrierResponse({ ...response,
-  records: response.records.map((record, index) => ({ ...record, barrierElectronVolt: index ? -1 : .2 })) },
-{ ...receipt, candidates: request.frontier.candidates }), /nonnegative/);
+  records: response.records.map((record, index) => ({ ...record,
+    barrierElectronVolt: index ? -1 : record.barrierElectronVolt })) },
+expectedFor(request, receipt)), /nonnegative/);
 assert.throws(() => validateFrozenActionBarrierResponse({ ...response,
-  candidateBatchSha256: "0".repeat(64) }, { ...receipt, candidates: request.frontier.candidates }),
+  candidateBatchSha256: "0".repeat(64) }, expectedFor(request, receipt)),
 /not bound/);
 assert.throws(() => validateFrozenActionBarrierResponse({ ...kineticResponse,
   records: kineticResponse.records.map((record, index) => ({ ...record,
-    prefactorConverged: index ? false : true })) }, { ...receipt, candidates: request.frontier.candidates }),
+    prefactorConverged: index ? false : true })) }, expectedFor(request, receipt)),
 /prefactor/);
 assert.throws(() => validateFrozenActionBarrierResponse({ ...kineticResponse,
   kinetics: { ...kineticResponse.kinetics, model: "unspecified-rate-model" } },
-{ ...receipt, candidates: request.frontier.candidates }), /harmonic-transition-state-theory/);
+expectedFor(request, receipt)), /harmonic-transition-state-theory/);
 assert.throws(() => validateFrozenActionBarrierResponse({ ...response,
   records: response.records.map((record, index) => index ? record
     : { ...record, energyDeltaUncertaintyElectronVolt: null }) },
-{ ...receipt, candidates: request.frontier.candidates }), /supplied together/);
+expectedFor(request, receipt)), /supplied together/);
+assert.throws(() => validateFrozenActionBarrierResponse({ ...response,
+  validation: { ...response.validation, everyPathGeometryValidated: false } },
+expectedFor(request, receipt)), /path geometry|validation/i);
+assert.throws(() => validateFrozenActionBarrierResponse({ ...response,
+  records: response.records.map((record, index) => index ? record
+    : { ...record, pathGeometry: null }) }, expectedFor(request, receipt)),
+/path geometry|candidate/i);
+assert.throws(() => validateFrozenActionBarrierResponse({ ...response,
+  records: response.records.map((record, index) => index ? record : { ...record,
+    pathGeometry: { ...record.pathGeometry, images: record.pathGeometry.images.map(
+      (image, imageIndex) => imageIndex === record.pathGeometry.images.length - 1
+        ? { ...image, sites: image.sites.map((site, siteIndex) => siteIndex
+          ? site : { ...site, positionAngstrom: [99, 99, 99] }) } : image) } }) },
+expectedFor(request, receipt)), /does not reproduce|endpoint/i);
 
 const detachRaw = { candidateId: "detach:2", eventDirection: "detach", actionLabel: "detach leaf",
   parentType: 1, childType: 2, ruleId: 3, emittedSites: [],
@@ -218,15 +321,16 @@ const reversibleThermodynamicResponse = {
     initialGeometrySha256: candidate.initialGeometrySha256,
     finalGeometrySha256: candidate.finalGeometrySha256,
     barrierElectronVolt: .5, uncertaintyElectronVolt: .02,
-    maximumForceElectronVoltPerAngstrom: .01, imageCount: 7, converged: true,
+    maximumForceElectronVoltPerAngstrom: .01, imageCount: 3, converged: true,
+    pathGeometry: pathGeometryFor(candidate,
+      reversibleRequest.frontier.initialConfiguration, .5, 0, .01),
     systemFreeEnergyDeltaElectronVolt: candidate.eventDirection === "attach" ? -.8 : .8,
     systemFreeEnergyDeltaUncertaintyElectronVolt: .04,
     stateFreeEnergyConverged: true,
   })),
 };
 const reversibleThermodynamics = validateFrozenActionBarrierResponse(
-  reversibleThermodynamicResponse, { ...reversibleReceipt,
-    candidates: reversibleRequest.frontier.candidates });
+  reversibleThermodynamicResponse, expectedFor(reversibleRequest, reversibleReceipt));
 assert.deepEqual(reversibleThermodynamics.records.find((record) =>
   record.eventDirection === "attach").speciesDelta, { Na: 1 });
 assert.deepEqual(reversibleThermodynamics.records.find((record) =>
