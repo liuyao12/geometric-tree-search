@@ -1198,7 +1198,12 @@
 
       function articleWrapTargets() {
         if (!articleContent) return [];
-        return Array.from(articleContent.children).filter(child => !child.classList.contains('floating-demo') && !child.classList.contains('margin-note'));
+        return Array.from(articleContent.children).filter(child =>
+          !child.classList.contains('floating-demo') &&
+          !child.classList.contains('margin-note') &&
+          !child.matches('figure, .figure-grid') &&
+          !child.querySelector('img, picture, video, iframe, canvas')
+        );
       }
 
       function refreshArticleWrapTargets() {
