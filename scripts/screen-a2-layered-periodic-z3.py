@@ -253,8 +253,13 @@ def exact_weighted_multicover(
     state, ``capacities`` is the still-missing solid angle at each quotient
     residue.  The pivot residue must be covered by some remaining placement;
     branching over all such placements is therefore complete.  Failed states
-    are memoized with both their capacities and selected-placement mask, so a
-    Boolean placement can never be reused.
+    are memoized with their capacities, remaining cardinality, and the still-
+    relevant blocked-placement mask, so a Boolean placement can never be
+    reused.  For the larger (10+ copy) searches where memo size dominates, a
+    blocked placement that already exceeds a residual capacity can never fit
+    after capacities decrease further; dropping that dead bit soundly
+    identifies states with identical futures.  Smaller cardinalities retain
+    the cheaper raw mask because measured per-node overhead outweighs reuse.
     """
     if copies < 1 or not placements:
         raise ValueError("invalid rooted weighted multicover")
@@ -321,16 +326,23 @@ def exact_weighted_multicover(
             return fallback
         if remaining == 0:
             return () if not any(state_capacities) else None
-        # ``selected_mask`` also contains canonically skipped pivot choices,
-        # so it does not determine how many copies were actually selected for
-        # arbitrary synthetic vectors.  Keep the cardinality in the memo key.
-        state = (state_capacities, selected_mask, remaining)
+        capacity_fit_mask = all_mask
+        for residue, capacity in enumerate(state_capacities):
+            capacity_fit_mask &= ~exceed_masks[residue][capacity]
+
+        # ``selected_mask`` contains both chosen placements and canonically
+        # skipped pivot alternatives.  Bits outside ``capacity_fit_mask`` are
+        # permanently dead because capacities only decrease, so quotient them
+        # out before memoization and recursion.  Keep ``remaining`` explicitly
+        # because skipped and chosen bits are otherwise indistinguishable for
+        # synthetic vectors.
+        live_blocked_mask = (
+            selected_mask & capacity_fit_mask if copies >= 10 else selected_mask
+        )
+        state = (state_capacities, live_blocked_mask, remaining)
         if state in failed:
             return None
-
-        fitting_mask = all_mask & ~selected_mask
-        for residue, capacity in enumerate(state_capacities):
-            fitting_mask &= ~exceed_masks[residue][capacity]
+        fitting_mask = capacity_fit_mask & ~live_blocked_mask
 
         # The geometric quotient uses equal positive-weight placements, but
         # this exact helper is also tested independently.  If all capacities
@@ -400,7 +412,7 @@ def exact_weighted_multicover(
                     next_capacities[residue] -= weight
                 suffix = search(
                     tuple(next_capacities),
-                    selected_mask | skipped_pivot_mask | bit,
+                    live_blocked_mask | skipped_pivot_mask | bit,
                     remaining - 1,
                 )
                 if suffix is fallback:

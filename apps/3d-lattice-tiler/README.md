@@ -350,6 +350,14 @@ four-copy substitution screens at scale 2 now exclude
 both symmetry models: 82,215 proper and 406,809 reflected parents for
 `a2sa_10_35323`, and 68,838 proper plus 377,876 reflected parents for
 `a2sa_10_36141`, with a replayed atomic obstruction for every parent.
+The offline exact weighted-multicover solver now canonicalizes permanently
+dead blocked-placement bits only at quotient cardinalities 10 and above. The
+rule is tile-independent and preserves completeness because residual
+capacities only decrease. Differential brute-force tests cover copy counts
+5–10. On three archived ten-copy exact-negative controls it reduces visited
+states by 13.0%, 67.0%, and 37.7%. A separate rerun of all twelve surviving
+nine-copy ten-million-node caps found no new decision and was slower per node,
+so nine-copy and smaller searches deliberately retain the cheaper raw mask.
 Among the first eight priority classes, a complete determinant-12 eight-copy
 screen finds five replay-verified periodic quotients and exhausts all 455 HNF
 quotients for the remaining three, with no solver unknowns. Those three are

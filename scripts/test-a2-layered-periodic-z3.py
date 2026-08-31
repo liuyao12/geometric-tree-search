@@ -118,6 +118,47 @@ for case in range(24):
             for residue in range(4)
         )
 
+# Exercise the DFS itself at every production-relevant cardinality from five
+# through ten with equal-total vectors, repeated/distractor vectors, zero
+# pivot weights, and pivots that require several contributors.  Cyclic
+# rotations of a 48-unit base vector provide a known balanced family, while
+# an independent combination oracle remains authoritative for each augmented
+# instance.
+for copies in range(5, 11):
+    base = [24, 12, 8, 4, *([0] * (copies - 4))]
+    balanced = [
+        {"weights": base[-shift:] + base[:-shift] if shift else list(base)}
+        for shift in range(copies)
+    ]
+    distractor_base = [20, 16, 12, *([0] * (copies - 3))]
+    placements = [
+        *balanced,
+        *(
+            {"weights": distractor_base[-shift:] + distractor_base[:-shift]}
+            for shift in range(3)
+        ),
+        {"weights": list(balanced[1]["weights"])},
+    ]
+    exact = MODULE.exact_weighted_multicover(placements, copies)
+    brute = next((
+        (0, *suffix)
+        for suffix in itertools.combinations(range(1, len(placements)), copies - 1)
+        if all(
+            sum(placements[index]["weights"][residue] for index in (0, *suffix)) == 48
+            for residue in range(copies)
+        )
+    ), None)
+    assert (exact["result"] == "sat") == (brute is not None)
+    if exact["chosen_indices"] is not None:
+        assert len(set(exact["chosen_indices"])) == copies
+        assert all(
+            sum(
+                placements[index]["weights"][residue]
+                for index in exact["chosen_indices"]
+            ) == 48
+            for residue in range(copies)
+        )
+
 # A bounded exact search above the implemented 3+4 MITM range must report
 # unknown at its node cap, never turn the cutoff into a false UNSAT result.
 cutoff = MODULE.exact_weighted_multicover(
