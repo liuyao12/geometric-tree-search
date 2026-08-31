@@ -6,6 +6,7 @@ from __future__ import annotations
 import gzip
 import importlib.util
 import json
+import argparse
 from pathlib import Path
 
 
@@ -28,8 +29,15 @@ def add(*vectors):
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--source", default=str(SOURCE))
+    parser.add_argument("--output", default=str(OUTPUT))
+    parser.add_argument("--expected-rules", type=int, default=2)
+    args = parser.parse_args()
     backend = load_backend()
-    with gzip.open(SOURCE, "rt", encoding="utf8") as source:
+    source_path = Path(args.source)
+    output_path = Path(args.output)
+    with gzip.open(source_path, "rt", encoding="utf8") as source:
         rows = [json.loads(line) for line in source if line.strip()]
     results = []
     for row in rows:
@@ -55,7 +63,7 @@ def main() -> None:
             "certified": True,
             "can_tile": True,
             "model": certificate["model"],
-            "copies": 64,
+            "copies": certificate["copies"] * 8,
             "determinant": certificate["determinant"] * 8,
             "period_vectors": [[2 * coordinate for coordinate in vector] for vector in basis],
             "placements": placements,
@@ -80,11 +88,15 @@ def main() -> None:
                 "interpretation": "The eight-tile periodic quotient is the metatile; its scale-two image is exactly eight translated copies of that quotient metatile.",
             },
         })
-    assert len(results) == 2
-    with gzip.open(OUTPUT, "wt", encoding="utf8", compresslevel=9) as target:
+    assert len(results) == args.expected_rules
+    with gzip.open(output_path, "wt", encoding="utf8", compresslevel=9) as target:
         for result in results:
             target.write(json.dumps(result, separators=(",", ":")) + "\n")
-    print(json.dumps({"output": str(OUTPUT.relative_to(ROOT)), "rules": [r["id"] for r in results]}))
+    try:
+        output_label = str(output_path.relative_to(ROOT))
+    except ValueError:
+        output_label = str(output_path)
+    print(json.dumps({"output": output_label, "rules": [r["id"] for r in results]}))
 
 
 if __name__ == "__main__":
