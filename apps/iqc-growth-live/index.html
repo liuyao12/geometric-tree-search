@@ -7,7 +7,7 @@
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23071112'/%3E%3Cpath d='M17 19 46 12M17 19l8 30m21-37L25 49m-8-30 29 24M25 49l21-6' stroke='%236fffd4' stroke-width='4'/%3E%3Ccircle cx='17' cy='19' r='6' fill='%23f1fff9'/%3E%3Ccircle cx='46' cy='12' r='6' fill='%236fffd4'/%3E%3Ccircle cx='25' cy='49' r='6' fill='%238a7dff'/%3E%3Ccircle cx='46' cy='43' r='6' fill='%236fffd4'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css?v=20260831-373">
+  <link rel="stylesheet" href="./style.css?v=20260831-374">
   <script type="importmap">
     {
       "imports": {
@@ -1376,6 +1376,12 @@
                       <svg id="finiteNetworkPopulationPlot" viewBox="0 0 300 164" role="img" aria-label="Exact-state probability versus observed-network timescale"></svg>
                       <div id="finiteNetworkPopulationSummary" class="finite-network-population-summary" aria-live="polite"></div>
                       <p id="finiteNetworkPopulationState">Common-temperature, common-method rates on at least two observed exact states are required.</p>
+                      <section class="finite-network-flux" aria-label="Geometry-resolved exact-edge probability current">
+                        <header><span><small>pᵢkᵢⱼ · exact ΔN · selected horizon</small><strong>Geometric probability current</strong></span><b id="finiteNetworkFluxBadge">awaiting populations</b></header>
+                        <svg id="finiteNetworkFluxPlot" viewBox="0 0 300 136" role="img" aria-label="Net atom-drift contributions of observed exact-state edges"></svg>
+                        <div id="finiteNetworkFluxSummary" class="finite-network-flux-summary" aria-live="polite"></div>
+                        <p id="finiteNetworkFluxState">A propagated exact-state population is required before edge current can be resolved.</p>
+                      </section>
                     </section>
                     <section class="finite-nucleation-landscape"><header><span><small>exact states · external T,V,μ</small><strong>Finite nucleation ΔΩ profile</strong></span><b id="finiteNucleationBadge">awaiting evidence</b></header><svg id="finiteNucleationPlot" viewBox="0 0 300 150" role="img" aria-label="Relative grand potential versus exact atom count"></svg><p id="finiteNucleationState">Reversible grand-potential edges and verified state sizes are required.</p></section>
                   </div>
@@ -2485,7 +2491,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260831-373"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260831-373"></script>
+  <script type="module" src="./app.js?v=20260831-374"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260831-374"></script>
 </body>
 </html>

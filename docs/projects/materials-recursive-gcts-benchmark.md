@@ -1,5 +1,35 @@
 # Recursive GCTS benchmark for material growth
 
+### Geometry-resolved transient probability current (Build 374)
+
+For the Build 373 state distribution `p(t)` and each latest observed directed
+edge `i→j`, Build 374 computes dimensionless traffic
+`T_ij = p_i k_ij / q`, where `q` is the uniformization rate. The paired exact-
+state current is `J_ij = T_ij - T_ji`; one-way observed edges retain a zero
+reverse term rather than an invented rate. Exact state atom counts provide
+`ΔN_ij`, so the instantaneous conditional drift is
+
+`d⟨N⟩/d(qt) = Σ_ij T_ij ΔN_ij`.
+
+The implementation also assembles `dp/d(qt)` from incoming and outgoing edge
+traffic. It checks `Σ_i dp_i = 0` and independently verifies
+`Σ_i N_i dp_i = Σ_ij T_ij ΔN_ij`. These identities make the displayed atom
+drift an audited moment of the same master equation, rather than a second
+heuristic growth score. Shifted log rates preserve numerical stability and
+physical atoms/second are reported only when representable.
+
+The interactive current view shares the master-equation initial state and
+horizon. Signed bars identify which exact state pair contributes atom gain or
+loss, while summary tiles partition total event activity into growth,
+shrinkage, and count-preserving channels. Count-preserving probability current
+is retained in activity accounting even though its atom-drift bar is zero.
+
+The displayed quantity is conditional on the finite observed state graph.
+It is not normalized by an interface area or volume and is not called an
+interface velocity. Missing states and exits, steady state, equilibrium,
+mechanism completeness, and transport coefficients remain explicitly
+unresolved.
+
 ### Observed-network master-equation leap (Build 373)
 
 The finite exact-state graph now has a transient dynamics layer. It retains

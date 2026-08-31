@@ -1,5 +1,26 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 374 · geometry-resolved transient probability current
+
+The observed-network master equation now resolves instantaneous traffic on
+every exact directed edge. At the selected state-population horizon the portal
+evaluates `p_i k_ij`, forms antisymmetric pair current, and multiplies each
+edge by its exact integer atom-count change. This gives an auditable
+`d⟨N⟩/dt` decomposition: the investigator can see which observed geometric
+transition contributes atom gain, atom loss, or count-preserving motion.
+
+The current panel shows the largest signed atom-drift contributions, total
+transition activity, growth/shrink/count-preserving activity fractions, and
+both dimensionless and physical atom drift. It independently reconstructs
+the state-probability derivative and verifies that its atom-count moment
+matches the directed-edge sum while total probability current closes to zero.
+
+This is a transient finite-graph current, not a bulk growth velocity. No
+interface area, volume normalization, missing exit rate, steady-state
+condition, transport coefficient, or mechanism-complete catalog is invented.
+The geometry and rates remain the exact frozen evidence; the current layer
+only decomposes their conditional master-equation derivative.
+
 ## Build 373 · observed-network master-equation leap
 
 The exact reversible state graph now supports a transient population
