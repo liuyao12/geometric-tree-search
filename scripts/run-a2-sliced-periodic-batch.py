@@ -75,6 +75,8 @@ def run_task(task: dict) -> dict:
         "--offset", str(task["offset"]),
         "--limit", "1",
     ]
+    if task.get("exact_node_limit"):
+        command.extend(("--exact-node-limit", str(task["exact_node_limit"])))
     completed = subprocess.run(
         command, cwd=ROOT, text=True, capture_output=True, check=False
     )
@@ -130,6 +132,7 @@ def main() -> None:
     parser.add_argument("--orbit-span", type=int, default=9)
     parser.add_argument("--timeout-ms", type=int, default=30000)
     parser.add_argument("--solver", choices=("exact", "qffd", "default"), default="qffd")
+    parser.add_argument("--exact-node-limit", type=int, default=0)
     parser.add_argument("--workers", type=int, default=8)
     parser.add_argument("--max-tasks", type=int, default=0)
     args = parser.parse_args()
@@ -181,6 +184,7 @@ def main() -> None:
                     "copies": args.copies,
                     "solver": args.solver,
                     "timeout_ms": args.timeout_ms,
+                    "exact_node_limit": args.exact_node_limit,
                     "start": start,
                     "stop": stop,
                     "positive_marker": str(positive_marker),

@@ -118,6 +118,16 @@ for case in range(24):
             for residue in range(4)
         )
 
+# A bounded exact search above the implemented 3+4 MITM range must report
+# unknown at its node cap, never turn the cutoff into a false UNSAT result.
+cutoff = MODULE.exact_weighted_multicover(
+    [{"weights": [0]}, *({"weights": [6]} for _ in range(12))],
+    10,
+    dfs_node_limit=1,
+)
+assert cutoff["result"] == "unknown"
+assert cutoff["chosen_indices"] is None
+
 # Force the seven-copy 3+3 fallback and compare its complete result with an
 # independent brute-force oracle.  A one-node DFS budget makes every
 # nontrivial instance enter the meet-in-the-middle path.

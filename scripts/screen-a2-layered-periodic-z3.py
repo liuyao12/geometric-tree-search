@@ -592,6 +592,14 @@ def exact_weighted_multicover(
                     break
             if chosen is not None:
                 break
+    if chosen is fallback:
+        return {
+            "result": "unknown", "chosen_indices": None,
+            "nodes": nodes, "failed_states": len(failed),
+            "eligible_placements": eligible_count,
+            "used_mitm": True, "mitm_pairs": mitm_pairs,
+            "mitm_triples": mitm_triples, "mitm_quadruples": mitm_quadruples,
+        }
     return {
         "result": "sat" if chosen is not None else "unsat",
         "chosen_indices": [0, *chosen] if chosen is not None else None,
@@ -723,7 +731,10 @@ def screen_candidate(record: dict, args) -> dict:
                 model = None
                 variables = []
             elif getattr(args, "solver", "exact") == "exact":
-                exact_result = exact_weighted_multicover(placements, copies)
+                exact_result = exact_weighted_multicover(
+                    placements, copies,
+                    getattr(args, "exact_node_limit", 0) or None,
+                )
                 exact_multicover_nodes += exact_result["nodes"]
                 exact_multicover_failed_states += exact_result["failed_states"]
                 exact_multicover_mitm_fallbacks += int(exact_result["used_mitm"])
@@ -731,7 +742,8 @@ def screen_candidate(record: dict, args) -> dict:
                 exact_multicover_mitm_triples += exact_result["mitm_triples"]
                 exact_multicover_mitm_quadruples += exact_result["mitm_quadruples"]
                 chosen_indices = exact_result["chosen_indices"]
-                result = sat if exact_result["result"] == "sat" else unsat
+                result = (sat if exact_result["result"] == "sat" else
+                          unsat if exact_result["result"] == "unsat" else None)
                 model = None
                 variables = []
             else:
@@ -885,6 +897,7 @@ def main():
     parser.add_argument("--hnf-timeout-ms", type=int, default=5000)
     parser.add_argument("--candidate-time-ms", type=int, default=0)
     parser.add_argument("--solver", choices=("exact", "default", "qffd"), default="exact")
+    parser.add_argument("--exact-node-limit", type=int, default=0)
     parser.add_argument("--progress-every-hnf", type=int, default=0)
     parser.add_argument("--hnf-orbit-representatives", action="store_true")
     parser.add_argument("--hnf-start", type=int, default=0)
