@@ -12,12 +12,14 @@ const benchmark = fs.readFileSync("docs/projects/materials-recursive-gcts-benchm
 for (const document of [html, alias]) {
   assert.match(document, /receiptScaleBridgeBinding/);
   assert.match(document, /design packet → run receipt/);
-  assert.match(document, /app\.js\?v=20260831-393/);
-  assert.match(document, /evidence-atlas\.js\?v=20260831-393/);
+  assert.match(document, /app\.js\?v=20260831-394/);
+  assert.match(document, /evidence-atlas\.js\?v=20260831-394/);
 }
-assert.match(app, /hierarchy-physics-execution-binding\.mjs\?v=20260831-393/);
+assert.match(app, /hierarchy-physics-execution-binding\.mjs\?v=20260831-394/);
 assert.match(app, /scaleBridgeProtocol: scaleBridgeBinding/);
-assert.match(app, /captureHierarchyPhysicsProtocolLaunch\(window\.location\.search\)/);
+assert.match(app, /scaleBridgeProtocolLaunchSearch = window\.location\.search/);
+assert.match(app, /captureHierarchyPhysicsProtocolLaunch\(scaleBridgeProtocolLaunchSearch\)/);
+assert.match(app, /window\.addEventListener\("load", verify, \{ once: true \}\)/);
 assert.match(model, /gcts-hierarchy-physics-protocol-launch-v1/);
 assert.match(model, /gcts-hierarchy-physics-execution-binding-v1/);
 assert.match(model, /executionAuthorizedByPacket: false/);
