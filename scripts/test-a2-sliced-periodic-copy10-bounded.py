@@ -20,6 +20,11 @@ CASES = (
         "a2-sliced-alcove-size9-periodic-copy10-exact2m-11364-shards.tar.gz",
         [(46, 39)],
     ),
+    (
+        "a2-sliced-alcove-size9-periodic-copy10-exact2m-remaining-summary.json",
+        "a2-sliced-alcove-size9-periodic-copy10-exact2m-remaining-shards.tar.gz",
+        [(44, 41), (47, 38)],
+    ),
 )
 
 

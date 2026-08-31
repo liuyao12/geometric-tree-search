@@ -77,6 +77,19 @@ for (const record of periodicTenContinuation.candidates) periodicTenById.set(rec
   exact_node_limit: periodicTenContinuation.exact_node_limit_per_orbit,
   report: "data/a2-sliced-alcove-size9-periodic-copy10-exact2m-11364-summary.json",
 });
+const periodicTenRemainingContinuation = await readJson(
+  "data/a2-sliced-alcove-size9-periodic-copy10-exact2m-remaining-summary.json"
+);
+if (periodicTenRemainingContinuation.classification !== "bounded_inconclusive"
+    || periodicTenRemainingContinuation.copies !== 10
+    || periodicTenRemainingContinuation.periodic_certificates.length !== 0) {
+  throw new Error("Invalid remaining two-million-node ten-copy continuation summary");
+}
+for (const record of periodicTenRemainingContinuation.candidates) periodicTenById.set(record.id, {
+  ...record,
+  exact_node_limit: periodicTenRemainingContinuation.exact_node_limit_per_orbit,
+  report: "data/a2-sliced-alcove-size9-periodic-copy10-exact2m-remaining-summary.json",
+});
 const coronaRows = await readNdjson("runs/a2-sliced-size9-corona1.ndjson");
 const coronaById = new Map(coronaRows.map(record => [record.id, record]));
 const radiusTwoRows = await readNdjson("runs/a2-sliced-size9-corona2-focused256-merged.ndjson");

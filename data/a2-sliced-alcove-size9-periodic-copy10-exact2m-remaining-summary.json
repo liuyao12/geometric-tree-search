@@ -1,0 +1,1907 @@
+{
+  "campaign": "a2_sliced_size9_periodic_copy10_exact_gcts_bounded",
+  "copies": 10,
+  "exact_node_limit_per_orbit": 2000000,
+  "classification": "bounded_inconclusive",
+  "periodic_certificates": [],
+  "candidates": [
+    {
+      "id": "a2sa_9_13833",
+      "orbit_total": 85,
+      "exact_negative_orbits": 44,
+      "node_capped_orbits": 41,
+      "hnf_total": 403,
+      "hnfs_exactly_excluded": 202,
+      "exact_multicover_nodes": 94146835,
+      "exact_multicover_failed_states": 94123009,
+      "milliseconds": 5578770,
+      "receipts": [
+        {
+          "path": "a2sa_9_13833-orbits000-001.ndjson",
+          "sha256": "7b4cefe3297ea6d65d6f8f839c5ca42f9619eacaed2c9dd43928a0d6f43a06a8",
+          "orbit_range": [
+            0,
+            1
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 24544,
+          "milliseconds": 1824
+        },
+        {
+          "path": "a2sa_9_13833-orbits001-002.ndjson",
+          "sha256": "fef1242320d265dd736919e25620ed11f9db7351297ae139180a09460add0ba5",
+          "orbit_range": [
+            1,
+            2
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 27468,
+          "milliseconds": 1887
+        },
+        {
+          "path": "a2sa_9_13833-orbits002-003.ndjson",
+          "sha256": "ca356fca6692a134df15db178f6309b0e861a281d74bf049847a8e89c0dce304",
+          "orbit_range": [
+            2,
+            3
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 11077,
+          "milliseconds": 906
+        },
+        {
+          "path": "a2sa_9_13833-orbits003-004.ndjson",
+          "sha256": "1932e08636c2584c6c84293668973d14fd5f9d424bd1e92c52477faaf7afd69c",
+          "orbit_range": [
+            3,
+            4
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 49151,
+          "milliseconds": 5491
+        },
+        {
+          "path": "a2sa_9_13833-orbits004-005.ndjson",
+          "sha256": "5ecf5662a43799235501eb6fe34fd0a334515f1be919dffdd4271f2fb087c817",
+          "orbit_range": [
+            4,
+            5
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 121608,
+          "milliseconds": 5499
+        },
+        {
+          "path": "a2sa_9_13833-orbits005-006.ndjson",
+          "sha256": "02dd90681cd336a9afb237284e449cbba6a6ad12ad820440843f76cbd109cacf",
+          "orbit_range": [
+            5,
+            6
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 26206,
+          "milliseconds": 1889
+        },
+        {
+          "path": "a2sa_9_13833-orbits006-007.ndjson",
+          "sha256": "f178be6383afcf4022f9162a8a37628043007b06b266c0f44f436cb0d713e3f6",
+          "orbit_range": [
+            6,
+            7
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 8650,
+          "milliseconds": 802
+        },
+        {
+          "path": "a2sa_9_13833-orbits007-008.ndjson",
+          "sha256": "2caf88d0af0ec7574332f11ff3d5d0a916d6676ebc4cbab1222084599596916b",
+          "orbit_range": [
+            7,
+            8
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 79329
+        },
+        {
+          "path": "a2sa_9_13833-orbits008-009.ndjson",
+          "sha256": "5d3964afa0e3ce6b99534690b90e3e9aae3cb03409ba493907d160314a0f71a1",
+          "orbit_range": [
+            8,
+            9
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 3678,
+          "milliseconds": 598
+        },
+        {
+          "path": "a2sa_9_13833-orbits009-010.ndjson",
+          "sha256": "65494f1d99a431bcf4583b8036d8e15a99c5fb3bda881921efa61c593d29eb97",
+          "orbit_range": [
+            9,
+            10
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1404852,
+          "milliseconds": 109495
+        },
+        {
+          "path": "a2sa_9_13833-orbits010-011.ndjson",
+          "sha256": "a2fd8fcca7bff5ab048fe059efc04c072f8decd054b6f87cd0f9f0ab9c684345",
+          "orbit_range": [
+            10,
+            11
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 49673,
+          "milliseconds": 5233
+        },
+        {
+          "path": "a2sa_9_13833-orbits011-012.ndjson",
+          "sha256": "20c2a5f62e998eef6d7ce42895644087bf3064b646684bbde0ae92c0f6beae40",
+          "orbit_range": [
+            11,
+            12
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 177469,
+          "milliseconds": 15263
+        },
+        {
+          "path": "a2sa_9_13833-orbits012-013.ndjson",
+          "sha256": "d49598e3b3c1d7a36a9cc034b9be55b32666bc6db316822a00d64db76af40b5d",
+          "orbit_range": [
+            12,
+            13
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 218366,
+          "milliseconds": 10571
+        },
+        {
+          "path": "a2sa_9_13833-orbits013-014.ndjson",
+          "sha256": "7e6569135fead10e6f9275784a027f423f947589851cd42b2f63dda9fca47655",
+          "orbit_range": [
+            13,
+            14
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 30397,
+          "milliseconds": 2306
+        },
+        {
+          "path": "a2sa_9_13833-orbits014-015.ndjson",
+          "sha256": "98aae41a76343e80b46b9fbe0753c6a499bc25b511f0a4c572b6cbc0323c2c2c",
+          "orbit_range": [
+            14,
+            15
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 19939,
+          "milliseconds": 1523
+        },
+        {
+          "path": "a2sa_9_13833-orbits015-016.ndjson",
+          "sha256": "b920ea1206e221e72ff3008021bed841a470c232c14add62f6a04830f98dfb3c",
+          "orbit_range": [
+            15,
+            16
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 87805
+        },
+        {
+          "path": "a2sa_9_13833-orbits016-017.ndjson",
+          "sha256": "0b05f14bcd3f26c99c13e322917e42fd1d24e7aaff3cd030ac7d4eecce13dd32",
+          "orbit_range": [
+            16,
+            17
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 132374,
+          "milliseconds": 14036
+        },
+        {
+          "path": "a2sa_9_13833-orbits017-018.ndjson",
+          "sha256": "7c1980c859ee71f170a71a5df90ee05d981e49a1f332cbdcb5feb05b40b02fd7",
+          "orbit_range": [
+            17,
+            18
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 84024
+        },
+        {
+          "path": "a2sa_9_13833-orbits018-019.ndjson",
+          "sha256": "daec86843cf54fcf54b357ff8590634afa50a2e78636f11521caa243e247e021",
+          "orbit_range": [
+            18,
+            19
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 3370,
+          "milliseconds": 788
+        },
+        {
+          "path": "a2sa_9_13833-orbits019-020.ndjson",
+          "sha256": "a0af3a8970668b2985a5100995c2dd974389ef07422b5cab4f46f5258491b8d2",
+          "orbit_range": [
+            19,
+            20
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1417593,
+          "milliseconds": 105244
+        },
+        {
+          "path": "a2sa_9_13833-orbits020-021.ndjson",
+          "sha256": "3630ccbb05fc4a3a5736804f7ee39aa8661d5c8adced7af0bc7efc3a8b1797a3",
+          "orbit_range": [
+            20,
+            21
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 82078
+        },
+        {
+          "path": "a2sa_9_13833-orbits021-022.ndjson",
+          "sha256": "9207b33e248d558a3e69a78e42d17e714ad4248015ee97baf6db9e206f8762de",
+          "orbit_range": [
+            21,
+            22
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1035,
+          "milliseconds": 473
+        },
+        {
+          "path": "a2sa_9_13833-orbits022-023.ndjson",
+          "sha256": "1d79a3cf94813c8f695cee93321d25a05d219f13936791835f409969a5be8fb7",
+          "orbit_range": [
+            22,
+            23
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 122215,
+          "milliseconds": 11802
+        },
+        {
+          "path": "a2sa_9_13833-orbits023-024.ndjson",
+          "sha256": "46f01793892ef5bde7c8e989a4bbe51b2e25f115812841adc2958c6abed3725a",
+          "orbit_range": [
+            23,
+            24
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 93154
+        },
+        {
+          "path": "a2sa_9_13833-orbits024-025.ndjson",
+          "sha256": "e6add7f25fd2f006231d60458ff216d291e9d36fad4b738179d2295b88d6e15b",
+          "orbit_range": [
+            24,
+            25
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 376870,
+          "milliseconds": 23538
+        },
+        {
+          "path": "a2sa_9_13833-orbits025-026.ndjson",
+          "sha256": "0a1790dd8a8f4ae9a4a25e7374929399b4192257d2c44f192f3e343bd49d766a",
+          "orbit_range": [
+            25,
+            26
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 44691,
+          "milliseconds": 3832
+        },
+        {
+          "path": "a2sa_9_13833-orbits026-027.ndjson",
+          "sha256": "99b36923aa04da8f2ff0a271c35a4efea899a572a2d37280c49eab8f47a62ec8",
+          "orbit_range": [
+            26,
+            27
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 81652
+        },
+        {
+          "path": "a2sa_9_13833-orbits027-028.ndjson",
+          "sha256": "0e2b4998601bbbb4e716435beabc99124b75abdd071323b251d22b2b983447a5",
+          "orbit_range": [
+            27,
+            28
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 80660
+        },
+        {
+          "path": "a2sa_9_13833-orbits028-029.ndjson",
+          "sha256": "80dfe3d27df9f9163df69cd5549ffe28c42cf59d93dd982c5f2e73c4a9f1fe9d",
+          "orbit_range": [
+            28,
+            29
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 110579
+        },
+        {
+          "path": "a2sa_9_13833-orbits029-030.ndjson",
+          "sha256": "69299fe6428e5bc9a60faba9834d4fc9e18f64796666ef8174027bab750e417c",
+          "orbit_range": [
+            29,
+            30
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 119900
+        },
+        {
+          "path": "a2sa_9_13833-orbits030-031.ndjson",
+          "sha256": "1ea473467f6de7efdc9f4bc9b899811afe7f337e69d25de644570f5c3fde7884",
+          "orbit_range": [
+            30,
+            31
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 161577
+        },
+        {
+          "path": "a2sa_9_13833-orbits031-032.ndjson",
+          "sha256": "708eb6f226a4e2e8054b435939bfea35cfd106981294e3fda05ec30b01e8c241",
+          "orbit_range": [
+            31,
+            32
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1772028,
+          "milliseconds": 206852
+        },
+        {
+          "path": "a2sa_9_13833-orbits032-033.ndjson",
+          "sha256": "5f62d7df281fdb1cb6402e4b90b184792e8bca9e7192dd1264abc19b2ffb53d4",
+          "orbit_range": [
+            32,
+            33
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 22313,
+          "milliseconds": 1325
+        },
+        {
+          "path": "a2sa_9_13833-orbits033-034.ndjson",
+          "sha256": "603b5a776783be1b48220219cecac6c9b08ec1220ebc18b5b2969ee38b896a87",
+          "orbit_range": [
+            33,
+            34
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 155445
+        },
+        {
+          "path": "a2sa_9_13833-orbits034-035.ndjson",
+          "sha256": "71b47a07b30d078aa7fbc2334fd6382a6151d0c7ec0286af9e8de3d84a1d2c68",
+          "orbit_range": [
+            34,
+            35
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 144624
+        },
+        {
+          "path": "a2sa_9_13833-orbits035-036.ndjson",
+          "sha256": "989ac71c9b96353226efb45602cdd47b7bc5300cb9093fcd3b11f00995306742",
+          "orbit_range": [
+            35,
+            36
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 125037
+        },
+        {
+          "path": "a2sa_9_13833-orbits036-037.ndjson",
+          "sha256": "be252cff456e2f1c0e6dfc2d409ace03673c8e4c61efe08ae796c2d7ee4a88bb",
+          "orbit_range": [
+            36,
+            37
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 80271
+        },
+        {
+          "path": "a2sa_9_13833-orbits037-038.ndjson",
+          "sha256": "7c4e4f4d8fcc3ed548141a0d7d4a5af8252db53211b12b2b5efb8b9cbf711122",
+          "orbit_range": [
+            37,
+            38
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 85599
+        },
+        {
+          "path": "a2sa_9_13833-orbits038-039.ndjson",
+          "sha256": "7173d5bd6de4bfc9795499fe126d23f05cdaea19f8fb4f032c2ae03ffff11af8",
+          "orbit_range": [
+            38,
+            39
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1649815,
+          "milliseconds": 81850
+        },
+        {
+          "path": "a2sa_9_13833-orbits039-040.ndjson",
+          "sha256": "359d1cea491a1c8afd853b1e91d022a8e5c9480ed54b360caed3c074209ee354",
+          "orbit_range": [
+            39,
+            40
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 95446
+        },
+        {
+          "path": "a2sa_9_13833-orbits040-041.ndjson",
+          "sha256": "39b63bd00c073263ff64206e8d31ccf2660050ac0c4c28fac6f6c38289ac46cc",
+          "orbit_range": [
+            40,
+            41
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 127961,
+          "milliseconds": 14503
+        },
+        {
+          "path": "a2sa_9_13833-orbits041-042.ndjson",
+          "sha256": "102971f2158b1d51ef486f7ffd11299b212e8b1975b5bfee07fccc2d8ef693eb",
+          "orbit_range": [
+            41,
+            42
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 98478
+        },
+        {
+          "path": "a2sa_9_13833-orbits042-043.ndjson",
+          "sha256": "74675c9bd1a2b597142cf4422580edfa683c126e30c80cb5a69f18d7bf3f4deb",
+          "orbit_range": [
+            42,
+            43
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 150431
+        },
+        {
+          "path": "a2sa_9_13833-orbits043-044.ndjson",
+          "sha256": "8d9e063547adc55775473bfba2c433f38e73f1a5c9b161ea28796d1173831fa4",
+          "orbit_range": [
+            43,
+            44
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 99136
+        },
+        {
+          "path": "a2sa_9_13833-orbits044-045.ndjson",
+          "sha256": "9be95c3c7770d533af0461d7f008bfc0c914e3be6f7ea854a65a438c0fbc8312",
+          "orbit_range": [
+            44,
+            45
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 361239,
+          "milliseconds": 16378
+        },
+        {
+          "path": "a2sa_9_13833-orbits045-046.ndjson",
+          "sha256": "0d207fffa8025fa8d47568b79d101b4449b4bfefb4440750b8246c601de68112",
+          "orbit_range": [
+            45,
+            46
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 142581
+        },
+        {
+          "path": "a2sa_9_13833-orbits046-047.ndjson",
+          "sha256": "6466c7d989947517eef4e6c178ddf6566108191f9ccff372ae26001e35155c0d",
+          "orbit_range": [
+            46,
+            47
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 108978
+        },
+        {
+          "path": "a2sa_9_13833-orbits047-048.ndjson",
+          "sha256": "2b519b49d043222ada64caa41f37d7a0e2bdaf8d93f3b197e40f12080582d43b",
+          "orbit_range": [
+            47,
+            48
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 74523
+        },
+        {
+          "path": "a2sa_9_13833-orbits048-049.ndjson",
+          "sha256": "bba00b6318f361c2ca93d0daa571c489614cd21a7984fbd3d0fe5189229217bd",
+          "orbit_range": [
+            48,
+            49
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 88811
+        },
+        {
+          "path": "a2sa_9_13833-orbits049-050.ndjson",
+          "sha256": "63c841ee5fdb398ec50dc51faaba38443e199d09e6739e8d928e0ce57aa8cf39",
+          "orbit_range": [
+            49,
+            50
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 118300
+        },
+        {
+          "path": "a2sa_9_13833-orbits050-051.ndjson",
+          "sha256": "1075350759f782569d0a7ea0074da6c7c0ae6858cd787f2face43c6dd553bc19",
+          "orbit_range": [
+            50,
+            51
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 72814,
+          "milliseconds": 3107
+        },
+        {
+          "path": "a2sa_9_13833-orbits051-052.ndjson",
+          "sha256": "d9c7551e67cb4866774ae54d89933b68212515cbaf41d3d0bd79cdc9b926cdf4",
+          "orbit_range": [
+            51,
+            52
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 139049
+        },
+        {
+          "path": "a2sa_9_13833-orbits052-053.ndjson",
+          "sha256": "4f4b7631e41b47116eaab3ec39c45507d568f23b230e1d4047ade281bfcedcb7",
+          "orbit_range": [
+            52,
+            53
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 101669
+        },
+        {
+          "path": "a2sa_9_13833-orbits053-054.ndjson",
+          "sha256": "4d9ff54f1702811d5a429ae2780fac0766f6177e4113779b06ffa4b2abc414f9",
+          "orbit_range": [
+            53,
+            54
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 108685
+        },
+        {
+          "path": "a2sa_9_13833-orbits054-055.ndjson",
+          "sha256": "5707c8f145e879df96cb51317be45a7c9ad1164dbf53a834230a6cf6ccb6a9f0",
+          "orbit_range": [
+            54,
+            55
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 107648
+        },
+        {
+          "path": "a2sa_9_13833-orbits055-056.ndjson",
+          "sha256": "ef532fcd8b341017c7b7003f2f2728f5ba13bc98accc17e0398332b44a1546f0",
+          "orbit_range": [
+            55,
+            56
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 148343
+        },
+        {
+          "path": "a2sa_9_13833-orbits056-057.ndjson",
+          "sha256": "1fab97f35d5d8bdc70772a1492923f25365c08640703bec9e529531f49fc4449",
+          "orbit_range": [
+            56,
+            57
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 4798,
+          "milliseconds": 700
+        },
+        {
+          "path": "a2sa_9_13833-orbits057-058.ndjson",
+          "sha256": "dbe13fda0586c2360cd59a934e4faee0bb4d134b15e10c73f9ac30d80fa4e271",
+          "orbit_range": [
+            57,
+            58
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 132213
+        },
+        {
+          "path": "a2sa_9_13833-orbits058-059.ndjson",
+          "sha256": "89c2a171af837f6d2207ae6e501a528c8af30262cb9ffb7f9b75a915cdd8fa0d",
+          "orbit_range": [
+            58,
+            59
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 132628
+        },
+        {
+          "path": "a2sa_9_13833-orbits059-060.ndjson",
+          "sha256": "f3a084c5f3b12a38b0a3fdaef17da4ff1ed172dfa145696d941e5d2c236a7909",
+          "orbit_range": [
+            59,
+            60
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 148141
+        },
+        {
+          "path": "a2sa_9_13833-orbits060-061.ndjson",
+          "sha256": "a4e43e2eadf52d6efd38b7c6fdfb06c3a299d54cf4b53e9c2852c7b08b8c70eb",
+          "orbit_range": [
+            60,
+            61
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 128407
+        },
+        {
+          "path": "a2sa_9_13833-orbits061-062.ndjson",
+          "sha256": "b43006abfe3f8c5e58e4f38f5d262db4874fbc945d4d779e39cb46ed148d11c9",
+          "orbit_range": [
+            61,
+            62
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 143827
+        },
+        {
+          "path": "a2sa_9_13833-orbits062-063.ndjson",
+          "sha256": "6ad755d34ae699a2e84b4b216953ec04bc09f0da5ca3f6fae6f785ed11f454f1",
+          "orbit_range": [
+            62,
+            63
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 91901
+        },
+        {
+          "path": "a2sa_9_13833-orbits063-064.ndjson",
+          "sha256": "17ba4451de6adafd20c1b64d0c248a7ebc963f05dbd4357d6ab607f7361894ea",
+          "orbit_range": [
+            63,
+            64
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 5,
+          "milliseconds": 270
+        },
+        {
+          "path": "a2sa_9_13833-orbits064-065.ndjson",
+          "sha256": "353eeb0001e505593693ebb057f913765bd3b3ed6919eb4e557e27e0855e0639",
+          "orbit_range": [
+            64,
+            65
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 3,
+          "milliseconds": 272
+        },
+        {
+          "path": "a2sa_9_13833-orbits065-066.ndjson",
+          "sha256": "68a44b295739e767363592694f260571483c999952861d097a16d0e7a5bd43fb",
+          "orbit_range": [
+            65,
+            66
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 123,
+          "milliseconds": 260
+        },
+        {
+          "path": "a2sa_9_13833-orbits066-067.ndjson",
+          "sha256": "4bc8fb21c5ca907ef2286a13a88bdaac808b5cd7734a2d8a3a5df8b247a86180",
+          "orbit_range": [
+            66,
+            67
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 11,
+          "milliseconds": 261
+        },
+        {
+          "path": "a2sa_9_13833-orbits067-068.ndjson",
+          "sha256": "094067f5e21df1dd1dd04d05e58bfd06ceab864f005a614f1d2007c296b87e52",
+          "orbit_range": [
+            67,
+            68
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 8148,
+          "milliseconds": 1156
+        },
+        {
+          "path": "a2sa_9_13833-orbits068-069.ndjson",
+          "sha256": "3c2f653fa25abd0407ecebf7e238f7e5f3a67df5f9b104cd33ce9dbedaa4efa9",
+          "orbit_range": [
+            68,
+            69
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 39019,
+          "milliseconds": 3827
+        },
+        {
+          "path": "a2sa_9_13833-orbits069-070.ndjson",
+          "sha256": "de5e42f06f185dacfc6484bd15a184ff06f5d4e12c51f9281bae5f06b03ef971",
+          "orbit_range": [
+            69,
+            70
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1146920,
+          "milliseconds": 147440
+        },
+        {
+          "path": "a2sa_9_13833-orbits070-071.ndjson",
+          "sha256": "c5a45ba31ae2e486e8ffa330f442cb341b1840d8d7a9c8ea1cb3083f37a0bd21",
+          "orbit_range": [
+            70,
+            71
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 307437,
+          "milliseconds": 24241
+        },
+        {
+          "path": "a2sa_9_13833-orbits071-072.ndjson",
+          "sha256": "9519aecc0d52a64ddc8308ba22c0711e03f6c17de49682a2abd68eab818f9cee",
+          "orbit_range": [
+            71,
+            72
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 115890
+        },
+        {
+          "path": "a2sa_9_13833-orbits072-073.ndjson",
+          "sha256": "665a4ff6d1188f22d3a094ad4ec612cdfe8383b38b1d0544e1772f9f9aae2beb",
+          "orbit_range": [
+            72,
+            73
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 16825,
+          "milliseconds": 1370
+        },
+        {
+          "path": "a2sa_9_13833-orbits073-074.ndjson",
+          "sha256": "af2d56a20cca2dff13d96b228fc050442f355968380b8faf7f31446bfafda77c",
+          "orbit_range": [
+            73,
+            74
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 2947,
+          "milliseconds": 416
+        },
+        {
+          "path": "a2sa_9_13833-orbits074-075.ndjson",
+          "sha256": "4f14e5c72f55e823bd8cb8160e1e21e12a5ed82066fc8c59860b01eb6d977965",
+          "orbit_range": [
+            74,
+            75
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1685723,
+          "milliseconds": 89152
+        },
+        {
+          "path": "a2sa_9_13833-orbits075-076.ndjson",
+          "sha256": "7b0f692054483a25e59283b8f9c5f841823bbb5ac3d3b50f32fb9c7b86bb08d7",
+          "orbit_range": [
+            75,
+            76
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 500908,
+          "milliseconds": 40333
+        },
+        {
+          "path": "a2sa_9_13833-orbits076-077.ndjson",
+          "sha256": "55f9039c2d8d7fc4e02e581f96abde0632e9ba96272844b821e346f37ca11034",
+          "orbit_range": [
+            76,
+            77
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 112261
+        },
+        {
+          "path": "a2sa_9_13833-orbits077-078.ndjson",
+          "sha256": "921f560bd404ca5d2920b938a066e522a2daa407da39693ebda6a15343745428",
+          "orbit_range": [
+            77,
+            78
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 19472,
+          "milliseconds": 1504
+        },
+        {
+          "path": "a2sa_9_13833-orbits078-079.ndjson",
+          "sha256": "a20bae2de6daa2cd3947c7e6521b62d57ac9f1d4a08fe2984bfbf93be593c1db",
+          "orbit_range": [
+            78,
+            79
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1048,
+          "milliseconds": 336
+        },
+        {
+          "path": "a2sa_9_13833-orbits079-080.ndjson",
+          "sha256": "ebceeef31164408f3a95f90892a845f6bebafe3a7b1a4300a0c5c4809879b5a1",
+          "orbit_range": [
+            79,
+            80
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 117942
+        },
+        {
+          "path": "a2sa_9_13833-orbits080-081.ndjson",
+          "sha256": "1b639e27b15f46712c3589375fcebb8f0bcba746db4f6fe340d44ae9118fc396",
+          "orbit_range": [
+            80,
+            81
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 186,
+          "milliseconds": 256
+        },
+        {
+          "path": "a2sa_9_13833-orbits081-082.ndjson",
+          "sha256": "b1cd412b70ef297611613f1a23b48f6cf2894bea79ba21465e24fe3ac42cb2fb",
+          "orbit_range": [
+            81,
+            82
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 108186
+        },
+        {
+          "path": "a2sa_9_13833-orbits082-083.ndjson",
+          "sha256": "ff0e52e4ef5713035438a28e96adf4450da6fc9af971be59485534abec9fbfee",
+          "orbit_range": [
+            82,
+            83
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 106945
+        },
+        {
+          "path": "a2sa_9_13833-orbits083-084.ndjson",
+          "sha256": "a817ac46970c1eac174d0396ee4e93bd1de8e128eb2d85ce6357b55faa8aef20",
+          "orbit_range": [
+            83,
+            84
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 121153
+        },
+        {
+          "path": "a2sa_9_13833-orbits084-085.ndjson",
+          "sha256": "8599d4d41a8fdb4f5c131d71b067728a6feb0361a03d3353f42e46ffcd37e3d8",
+          "orbit_range": [
+            84,
+            85
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 135825,
+          "milliseconds": 6655
+        }
+      ]
+    },
+    {
+      "id": "a2sa_9_15635",
+      "orbit_total": 85,
+      "exact_negative_orbits": 47,
+      "node_capped_orbits": 38,
+      "hnf_total": 403,
+      "hnfs_exactly_excluded": 223,
+      "exact_multicover_nodes": 89546184,
+      "exact_multicover_failed_states": 89455513,
+      "milliseconds": 5043720,
+      "receipts": [
+        {
+          "path": "a2sa_9_15635-orbits000-001.ndjson",
+          "sha256": "53bc74f6a17c995bdcf7d1f9a36797f0e4e7f8ee62e673404ddf7bf66b7f2dae",
+          "orbit_range": [
+            0,
+            1
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 26566,
+          "milliseconds": 2755
+        },
+        {
+          "path": "a2sa_9_15635-orbits001-002.ndjson",
+          "sha256": "23235e12a9d2b96c0610e33dcbe50fb533058240d3ff0c7590f7eec7a841d424",
+          "orbit_range": [
+            1,
+            2
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 28405,
+          "milliseconds": 3062
+        },
+        {
+          "path": "a2sa_9_15635-orbits002-003.ndjson",
+          "sha256": "e2fa824366183c3586d1f2b8d89d3cf9f131d3e32129f88b13b1122ccfe6e5d0",
+          "orbit_range": [
+            2,
+            3
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 4880,
+          "milliseconds": 516
+        },
+        {
+          "path": "a2sa_9_15635-orbits003-004.ndjson",
+          "sha256": "eec3b93e279d95908b16a1547620bda70f0e97e69df048e66039f9eae6d1b8e1",
+          "orbit_range": [
+            3,
+            4
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 6429,
+          "milliseconds": 898
+        },
+        {
+          "path": "a2sa_9_15635-orbits004-005.ndjson",
+          "sha256": "069e0f7adda2a5036a2ef545ed57448c8636e82738efed15e7c95e23ef66e075",
+          "orbit_range": [
+            4,
+            5
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 30894,
+          "milliseconds": 2791
+        },
+        {
+          "path": "a2sa_9_15635-orbits005-006.ndjson",
+          "sha256": "beed55fbe81a17d6efce1fb38debd86e9ef48b755746c3019bbf667c43fa23bc",
+          "orbit_range": [
+            5,
+            6
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 29555,
+          "milliseconds": 3210
+        },
+        {
+          "path": "a2sa_9_15635-orbits006-007.ndjson",
+          "sha256": "204eb1e413f997c59890dc3fad0f716e2286ae7679c29c0d015043786061a655",
+          "orbit_range": [
+            6,
+            7
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 2807,
+          "milliseconds": 421
+        },
+        {
+          "path": "a2sa_9_15635-orbits007-008.ndjson",
+          "sha256": "48bdb002020593decec4251034feef584eb8b676465076afb7b57048ae6356ba",
+          "orbit_range": [
+            7,
+            8
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 98433
+        },
+        {
+          "path": "a2sa_9_15635-orbits008-009.ndjson",
+          "sha256": "a89cbf66aab544a14c3bcbbbfdb9961cd523f28e84af778070bb500cc534e2f2",
+          "orbit_range": [
+            8,
+            9
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 587,
+          "milliseconds": 298
+        },
+        {
+          "path": "a2sa_9_15635-orbits009-010.ndjson",
+          "sha256": "4e6ebbcb780d0fd9ee75cbe29fb4c78530dea49a661c52bd9ebd6cc0fadd5304",
+          "orbit_range": [
+            9,
+            10
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1427295,
+          "milliseconds": 118650
+        },
+        {
+          "path": "a2sa_9_15635-orbits010-011.ndjson",
+          "sha256": "335547839492eddc284f5eee0908823a9269864001b316779a3850d379c7fc57",
+          "orbit_range": [
+            10,
+            11
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 6677,
+          "milliseconds": 928
+        },
+        {
+          "path": "a2sa_9_15635-orbits011-012.ndjson",
+          "sha256": "76ac4331d743c1523e6cbfc9ea92ffd2907a23938d436fc8ef11b78a1eff4d0a",
+          "orbit_range": [
+            11,
+            12
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 74780,
+          "milliseconds": 7873
+        },
+        {
+          "path": "a2sa_9_15635-orbits012-013.ndjson",
+          "sha256": "68ba55b04121710d5a3c1c67bf222d448bd6c055a408f871c02218aa924077e0",
+          "orbit_range": [
+            12,
+            13
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 80004,
+          "milliseconds": 3975
+        },
+        {
+          "path": "a2sa_9_15635-orbits013-014.ndjson",
+          "sha256": "f45e914a76b8f044ac6db1a0a89c882999156cff72fdaa13bff6a6e0326f69b9",
+          "orbit_range": [
+            13,
+            14
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 20515,
+          "milliseconds": 1525
+        },
+        {
+          "path": "a2sa_9_15635-orbits014-015.ndjson",
+          "sha256": "ebf6cc1d1b4dadecea4da4081fd44ad33c7cd8195df6a28c94cd485784e32d55",
+          "orbit_range": [
+            14,
+            15
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 4056,
+          "milliseconds": 488
+        },
+        {
+          "path": "a2sa_9_15635-orbits015-016.ndjson",
+          "sha256": "7640a46fc3d428ebb18348035dbb2fbf5d90105ab80990b46fde34e66fca12fb",
+          "orbit_range": [
+            15,
+            16
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1792285,
+          "milliseconds": 86163
+        },
+        {
+          "path": "a2sa_9_15635-orbits016-017.ndjson",
+          "sha256": "f7c48d67dc45a2895608ece00493a824a0568a03d0b91431b5945a5598feec93",
+          "orbit_range": [
+            16,
+            17
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 17554,
+          "milliseconds": 1750
+        },
+        {
+          "path": "a2sa_9_15635-orbits017-018.ndjson",
+          "sha256": "2f5fdeba5406e778c64000fc1350806220c24607e318c4b4674d71c1dcea68cf",
+          "orbit_range": [
+            17,
+            18
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 79778
+        },
+        {
+          "path": "a2sa_9_15635-orbits018-019.ndjson",
+          "sha256": "dc21d6e8d0cd3db331cfb5725711f8beec136db78b7af2cdb0e5be2baf8b443b",
+          "orbit_range": [
+            18,
+            19
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 604,
+          "milliseconds": 308
+        },
+        {
+          "path": "a2sa_9_15635-orbits019-020.ndjson",
+          "sha256": "708efa9a704b7f24861ebe1ffff4c12815691e676f878e3379f01dc7ccbe1e5c",
+          "orbit_range": [
+            19,
+            20
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1444617,
+          "milliseconds": 118807
+        },
+        {
+          "path": "a2sa_9_15635-orbits020-021.ndjson",
+          "sha256": "aabd27c7b3664b16d1143af0623fd5f0dee56cd796fe5aaae0bdeb2fd2ea0e23",
+          "orbit_range": [
+            20,
+            21
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 102282
+        },
+        {
+          "path": "a2sa_9_15635-orbits021-022.ndjson",
+          "sha256": "955f1836b297791e8e9af18246e06be22c284e27f16dfb95a798069cbd039e98",
+          "orbit_range": [
+            21,
+            22
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 240,
+          "milliseconds": 259
+        },
+        {
+          "path": "a2sa_9_15635-orbits022-023.ndjson",
+          "sha256": "502481c98fb7b04e4917ef8e7eef3aa36f05372f1eeb5b417dcbfbaf8ea7c3de",
+          "orbit_range": [
+            22,
+            23
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 61287,
+          "milliseconds": 4359
+        },
+        {
+          "path": "a2sa_9_15635-orbits023-024.ndjson",
+          "sha256": "c4731d3b9678b554ba77faa0d27e188fa17be38adaec65c5955d7a9a4a5cf99e",
+          "orbit_range": [
+            23,
+            24
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 97211
+        },
+        {
+          "path": "a2sa_9_15635-orbits024-025.ndjson",
+          "sha256": "f4b22c9104aa11c2284a6d6f950765669e2028d090191007fffc359bf6faf6d0",
+          "orbit_range": [
+            24,
+            25
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 101524,
+          "milliseconds": 5149
+        },
+        {
+          "path": "a2sa_9_15635-orbits025-026.ndjson",
+          "sha256": "1ed68b5347a11a6edc9fb1d9d81ea6de25172175f0c1be608d2701a2e31ae1d2",
+          "orbit_range": [
+            25,
+            26
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 24965,
+          "milliseconds": 1996
+        },
+        {
+          "path": "a2sa_9_15635-orbits026-027.ndjson",
+          "sha256": "e2bf456460fa41b321d003224c18a7a5a9f806b8455a2bd753232d75087e1a3b",
+          "orbit_range": [
+            26,
+            27
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 84921
+        },
+        {
+          "path": "a2sa_9_15635-orbits027-028.ndjson",
+          "sha256": "0ee4535c2d66c4fbe5b6988a55c156a5d471d400433488dd5cf82bc895ba055a",
+          "orbit_range": [
+            27,
+            28
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 117641
+        },
+        {
+          "path": "a2sa_9_15635-orbits028-029.ndjson",
+          "sha256": "40dc74ee3a3550c451a658b83d1fd541af7928bc1d7ac73dfdd7cd3c9ddf79c1",
+          "orbit_range": [
+            28,
+            29
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 91470
+        },
+        {
+          "path": "a2sa_9_15635-orbits029-030.ndjson",
+          "sha256": "edb6287329af982502ac6ad46bb2528c241ffc9c72bc6a6f1fbbdd3e74e58069",
+          "orbit_range": [
+            29,
+            30
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1278317,
+          "milliseconds": 64274
+        },
+        {
+          "path": "a2sa_9_15635-orbits030-031.ndjson",
+          "sha256": "94e7ffee8ffe5f8184a95dcc15c6616b70bdb65f432f77dffb8cd2d3b42b594c",
+          "orbit_range": [
+            30,
+            31
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 78135
+        },
+        {
+          "path": "a2sa_9_15635-orbits031-032.ndjson",
+          "sha256": "066209d8400e6b344ae8ed63aeeb6e5ab26db078ecf21555bb5230bcd57dc426",
+          "orbit_range": [
+            31,
+            32
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 72522
+        },
+        {
+          "path": "a2sa_9_15635-orbits032-033.ndjson",
+          "sha256": "d61fa33b6c8604ad7d688ee111b84cf22d434a70a4f1cd614360e871bc9b36f8",
+          "orbit_range": [
+            32,
+            33
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 5227,
+          "milliseconds": 486
+        },
+        {
+          "path": "a2sa_9_15635-orbits033-034.ndjson",
+          "sha256": "5f2bbf9d4a8a6dfa96dcb8cd3e9ce28706900a646a23fafa4daeaf94fef2414e",
+          "orbit_range": [
+            33,
+            34
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 112428
+        },
+        {
+          "path": "a2sa_9_15635-orbits034-035.ndjson",
+          "sha256": "d84f2ab3dc6a2dd6ec0239fd669235af5926eac785b7f06caddd97325d4e4023",
+          "orbit_range": [
+            34,
+            35
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 94274
+        },
+        {
+          "path": "a2sa_9_15635-orbits035-036.ndjson",
+          "sha256": "3bf60365d3d280e7f49b4695fb3004086e24a23b820824a53d29f185445af539",
+          "orbit_range": [
+            35,
+            36
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 88765
+        },
+        {
+          "path": "a2sa_9_15635-orbits036-037.ndjson",
+          "sha256": "2ce9aeb923bb04f9290f3dabb7a9077ec25ac5756d421b2fc9e8e91a9b3fac1a",
+          "orbit_range": [
+            36,
+            37
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 124230
+        },
+        {
+          "path": "a2sa_9_15635-orbits037-038.ndjson",
+          "sha256": "1ce4c4423b7ed4e216824615ad9c6b05130e00ebff22c5c86f3b58be13f89fa0",
+          "orbit_range": [
+            37,
+            38
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 103040
+        },
+        {
+          "path": "a2sa_9_15635-orbits038-039.ndjson",
+          "sha256": "f0035655bd963a6d8ef2a5d28d4092185cf22872792cf2042fd2430df7832542",
+          "orbit_range": [
+            38,
+            39
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1623198,
+          "milliseconds": 89806
+        },
+        {
+          "path": "a2sa_9_15635-orbits039-040.ndjson",
+          "sha256": "18f47b9e51edd9d0c16ff9907d6135e577634b63956ed171fc146d9262ac9b2e",
+          "orbit_range": [
+            39,
+            40
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 98137
+        },
+        {
+          "path": "a2sa_9_15635-orbits040-041.ndjson",
+          "sha256": "691f81a2dcc877606e1b4da8d9b16a4c671bc1eb5631f9048ffd671e50be41b2",
+          "orbit_range": [
+            40,
+            41
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 16993,
+          "milliseconds": 1819
+        },
+        {
+          "path": "a2sa_9_15635-orbits041-042.ndjson",
+          "sha256": "e28c239b9774f0c062b926f3352e2d6348cc23f4be2450f6d6808bd6468d0848",
+          "orbit_range": [
+            41,
+            42
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 163986
+        },
+        {
+          "path": "a2sa_9_15635-orbits042-043.ndjson",
+          "sha256": "601073b12a9e6339b628ddc6bfc2e186f394fc64c068888c48c9834280258192",
+          "orbit_range": [
+            42,
+            43
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 111042
+        },
+        {
+          "path": "a2sa_9_15635-orbits043-044.ndjson",
+          "sha256": "5b1e756bae1f449d2c0a226522550567fce04cf8eef73e592cc432658952c5e9",
+          "orbit_range": [
+            43,
+            44
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 87566
+        },
+        {
+          "path": "a2sa_9_15635-orbits044-045.ndjson",
+          "sha256": "f3b72752d6e116f7f23ef15e49fdca2469e6f99f72ae9469096a50f961858f65",
+          "orbit_range": [
+            44,
+            45
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 319978,
+          "milliseconds": 13308
+        },
+        {
+          "path": "a2sa_9_15635-orbits045-046.ndjson",
+          "sha256": "80162c81d892a2871b721722f57d48a65f8bea5a220bd3f995bf99f0cae2edff",
+          "orbit_range": [
+            45,
+            46
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1580912,
+          "milliseconds": 149621
+        },
+        {
+          "path": "a2sa_9_15635-orbits046-047.ndjson",
+          "sha256": "cd6e6a3ac21d105a3f571fe5362d1b5298b8c89e19c3b8d5e9d0c82ded28b4e6",
+          "orbit_range": [
+            46,
+            47
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 639018,
+          "milliseconds": 42541
+        },
+        {
+          "path": "a2sa_9_15635-orbits047-048.ndjson",
+          "sha256": "64f39696bb25b0050b8e46ab223b2ac216c9ed64a20c9640d8eee3a86b968c77",
+          "orbit_range": [
+            47,
+            48
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 89208
+        },
+        {
+          "path": "a2sa_9_15635-orbits048-049.ndjson",
+          "sha256": "4c9a479db1d2a3189cbe467b1e1b81c537c37a58c11015f0eb1307cd460edd21",
+          "orbit_range": [
+            48,
+            49
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 112247
+        },
+        {
+          "path": "a2sa_9_15635-orbits049-050.ndjson",
+          "sha256": "7daa3c2db01015cac654426b73f2c22d04aa1b48e7d6dfc240ba4f2da18d2f9f",
+          "orbit_range": [
+            49,
+            50
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 113340
+        },
+        {
+          "path": "a2sa_9_15635-orbits050-051.ndjson",
+          "sha256": "13a129777f1aa10a99da527d104723c70a3611a3fb902e51b49d903224927d20",
+          "orbit_range": [
+            50,
+            51
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 51168,
+          "milliseconds": 3899
+        },
+        {
+          "path": "a2sa_9_15635-orbits051-052.ndjson",
+          "sha256": "80311298d1bcb5e64748950fd256ad9d1adf4f94423013865005298a30c9f75e",
+          "orbit_range": [
+            51,
+            52
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 92303
+        },
+        {
+          "path": "a2sa_9_15635-orbits052-053.ndjson",
+          "sha256": "26c584a2848750e3920d0e15fb9c3ffb43cd25265fde72b7ec558acd65e2771f",
+          "orbit_range": [
+            52,
+            53
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 96624
+        },
+        {
+          "path": "a2sa_9_15635-orbits053-054.ndjson",
+          "sha256": "922d3f39e1079ee7d23c5171fdea4e0ea72955527ea670bc99ecf21f262fb499",
+          "orbit_range": [
+            53,
+            54
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 143018
+        },
+        {
+          "path": "a2sa_9_15635-orbits054-055.ndjson",
+          "sha256": "1b2314adf058cbf8dd4d7b709f99507d21756f60e93f1aa24865345b2fe36f12",
+          "orbit_range": [
+            54,
+            55
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 146171
+        },
+        {
+          "path": "a2sa_9_15635-orbits055-056.ndjson",
+          "sha256": "5ce366ba5a5238f0f05372d95d183eefe6c74b98e8d5f708c676c741464df453",
+          "orbit_range": [
+            55,
+            56
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1389675,
+          "milliseconds": 181559
+        },
+        {
+          "path": "a2sa_9_15635-orbits056-057.ndjson",
+          "sha256": "34d073a1d04358516f83c93eef99d48b0b75aed5cf8c582fcb466a248628d7b7",
+          "orbit_range": [
+            56,
+            57
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 762,
+          "milliseconds": 343
+        },
+        {
+          "path": "a2sa_9_15635-orbits057-058.ndjson",
+          "sha256": "689817e109e59b8ebdd1c67a0f3a137b6593390a5e1c7b0388fff8c3bc226b84",
+          "orbit_range": [
+            57,
+            58
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 166005
+        },
+        {
+          "path": "a2sa_9_15635-orbits058-059.ndjson",
+          "sha256": "f7f432bc0f9a1c85a85d71e1d11016e898749b4fafb5847c833e276fd0528b60",
+          "orbit_range": [
+            58,
+            59
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 109959
+        },
+        {
+          "path": "a2sa_9_15635-orbits059-060.ndjson",
+          "sha256": "50d3b3ee9aa509af7c1d60afa1a3938cedbdde9d478e2befc97a92632fc87fe4",
+          "orbit_range": [
+            59,
+            60
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 132425
+        },
+        {
+          "path": "a2sa_9_15635-orbits060-061.ndjson",
+          "sha256": "ba39280c1085b260c461cf9759146910bb71c5012ca4660cc6cccf39c36216b3",
+          "orbit_range": [
+            60,
+            61
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 119949
+        },
+        {
+          "path": "a2sa_9_15635-orbits061-062.ndjson",
+          "sha256": "18008b79f84958fa31399dbb86e416b80f11af5e1386b877d3406cfe22d06154",
+          "orbit_range": [
+            61,
+            62
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 93340
+        },
+        {
+          "path": "a2sa_9_15635-orbits062-063.ndjson",
+          "sha256": "9fcb9b8acae6f8452e7a495b65549f01c6f550c1e501e6fdbef6b039763c6504",
+          "orbit_range": [
+            62,
+            63
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 100480
+        },
+        {
+          "path": "a2sa_9_15635-orbits063-064.ndjson",
+          "sha256": "13692245e227a7648a13cd168caab96eead1252978659a58884e3bbef18f09bf",
+          "orbit_range": [
+            63,
+            64
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 5,
+          "milliseconds": 272
+        },
+        {
+          "path": "a2sa_9_15635-orbits064-065.ndjson",
+          "sha256": "89a22ebc0397bc487e8adf3a273bfe50da26f112f84318069b5268bda9ad22c8",
+          "orbit_range": [
+            64,
+            65
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1,
+          "milliseconds": 260
+        },
+        {
+          "path": "a2sa_9_15635-orbits065-066.ndjson",
+          "sha256": "cae4f06bcbc2743743472bd27abaeb0d6e92e935c6def3ff4c7ff39d6a7f4c30",
+          "orbit_range": [
+            65,
+            66
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 158,
+          "milliseconds": 269
+        },
+        {
+          "path": "a2sa_9_15635-orbits066-067.ndjson",
+          "sha256": "837e18a9eb86e33fbf374837cebf7399bf8f9477d19d6550e5be9ace8b3ee61f",
+          "orbit_range": [
+            66,
+            67
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 11,
+          "milliseconds": 262
+        },
+        {
+          "path": "a2sa_9_15635-orbits067-068.ndjson",
+          "sha256": "0abb86d6994849811a830f2d781b52d43ecc1cfad42404818db46285e1e286b0",
+          "orbit_range": [
+            67,
+            68
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 6700,
+          "milliseconds": 907
+        },
+        {
+          "path": "a2sa_9_15635-orbits068-069.ndjson",
+          "sha256": "f9ca768a1a2287f98ac0855d7fb2fa0787df17e47b6044f6fde7181e1d96e48d",
+          "orbit_range": [
+            68,
+            69
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 33580,
+          "milliseconds": 2387
+        },
+        {
+          "path": "a2sa_9_15635-orbits069-070.ndjson",
+          "sha256": "37f788f18fbf4729463aef889a1d20a06b5cfc91dfd61070758d8f77bd5160e0",
+          "orbit_range": [
+            69,
+            70
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 179652
+        },
+        {
+          "path": "a2sa_9_15635-orbits070-071.ndjson",
+          "sha256": "90822f45bbcb7417108359043d6fde4c141d7bfd3f2aeff8d03030842610bf87",
+          "orbit_range": [
+            70,
+            71
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 59681,
+          "milliseconds": 3737
+        },
+        {
+          "path": "a2sa_9_15635-orbits071-072.ndjson",
+          "sha256": "56c742d5e13452176e1a4dae4dba008ba59e4780a1adea44ed2a71f6d444deb1",
+          "orbit_range": [
+            71,
+            72
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 83885
+        },
+        {
+          "path": "a2sa_9_15635-orbits072-073.ndjson",
+          "sha256": "7cadac0b085e6d8c356c0a0e85c65c3beaf4bcc9270c15c36875773af4ab838f",
+          "orbit_range": [
+            72,
+            73
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 21572,
+          "milliseconds": 1813
+        },
+        {
+          "path": "a2sa_9_15635-orbits073-074.ndjson",
+          "sha256": "49800bcb123d7bb5586afd8283e6156568dddebe59e1cf95107a088d0e70f0bf",
+          "orbit_range": [
+            73,
+            74
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1502,
+          "milliseconds": 316
+        },
+        {
+          "path": "a2sa_9_15635-orbits074-075.ndjson",
+          "sha256": "d3d00c99f2f023eb6e31ed248a19f5f4c7fd280576b64cb54808e96ac60f73d3",
+          "orbit_range": [
+            74,
+            75
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1044663,
+          "milliseconds": 46629
+        },
+        {
+          "path": "a2sa_9_15635-orbits075-076.ndjson",
+          "sha256": "2faf89ca3ff39b4875fbc2c97726fe04eb95a39a233ca17a61190675d87cff73",
+          "orbit_range": [
+            75,
+            76
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 123676,
+          "milliseconds": 6575
+        },
+        {
+          "path": "a2sa_9_15635-orbits076-077.ndjson",
+          "sha256": "d5865d78ae943fff3ae787cc45664b3aad8b2a3a2d19e305eca3c240fd3a84d0",
+          "orbit_range": [
+            76,
+            77
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 128080
+        },
+        {
+          "path": "a2sa_9_15635-orbits077-078.ndjson",
+          "sha256": "2797dab0c14510b006a57745263474b074c3290245039c796f58fd58cfa9abba",
+          "orbit_range": [
+            77,
+            78
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 4275,
+          "milliseconds": 565
+        },
+        {
+          "path": "a2sa_9_15635-orbits078-079.ndjson",
+          "sha256": "6913799a51237e5594bc1a7995c3beab8b2c6c4b1bdf814adfa42365c99c4775",
+          "orbit_range": [
+            78,
+            79
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1662,
+          "milliseconds": 355
+        },
+        {
+          "path": "a2sa_9_15635-orbits079-080.ndjson",
+          "sha256": "7497633c82fb52be180a8ffd3ec1a2c41cdee24ca8debc9870db4a37094798be",
+          "orbit_range": [
+            79,
+            80
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 88921
+        },
+        {
+          "path": "a2sa_9_15635-orbits080-081.ndjson",
+          "sha256": "4fab5cceb6cc3319fef594b3a0aee6bd0c9e0cd65036843d01130da4663b713b",
+          "orbit_range": [
+            80,
+            81
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 126,
+          "milliseconds": 237
+        },
+        {
+          "path": "a2sa_9_15635-orbits081-082.ndjson",
+          "sha256": "bd63546d30dab674fc84f68fc904287846c076a9bf2bc038138a0cfb68bb9aff",
+          "orbit_range": [
+            81,
+            82
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 80788
+        },
+        {
+          "path": "a2sa_9_15635-orbits082-083.ndjson",
+          "sha256": "a2b5226b5513dc24bdd94c88afe3d7d4c32151afab86695ff170fe4fa51e6a82",
+          "orbit_range": [
+            82,
+            83
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 74358
+        },
+        {
+          "path": "a2sa_9_15635-orbits083-084.ndjson",
+          "sha256": "3e6afc166d8cb19d73e19b2f55ada6317f72b53acb7978f3cace9403e9a5ca4a",
+          "orbit_range": [
+            83,
+            84
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 103181
+        },
+        {
+          "path": "a2sa_9_15635-orbits084-085.ndjson",
+          "sha256": "f45edb53b85f73acf05df12302a9a8463b414ec2f755627510c3b2d34d663b07",
+          "orbit_range": [
+            84,
+            85
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 156760,
+          "milliseconds": 5504
+        }
+      ]
+    }
+  ],
+  "campaign_receipt_sha256": "23700011523e3ad3772b40145044617610257e0ab42d8654d3e56fae552a1b43",
+  "claim_scope": "fixed_ten_copy_weighted_hnf_quotients"
+}

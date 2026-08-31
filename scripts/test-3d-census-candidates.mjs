@@ -1688,7 +1688,7 @@ assert.deepEqual(
     candidate.screening.periodic_ten_copy_node_capped_orbits,
     candidate.screening.periodic_ten_copy_hnfs_exactly_excluded
   ]),
-  [[46, 39, 223], [37, 48, 175], [38, 47, 181]]
+  [[46, 39, 223], [44, 41, 202], [47, 38, 223]]
 );
 assert.ok(slicedSizeNineLeads.every(candidate =>
   candidate.screening.periodic_eight_copy_complete
