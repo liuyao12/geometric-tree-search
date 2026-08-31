@@ -1,5 +1,45 @@
 # Recursive GCTS benchmark for material growth
 
+### Catalog-conditional HTST / KMC execution (Build 346)
+
+Build 345 froze exact action geometry and accepted candidate-resolved barriers,
+but deliberately stopped before rates.  Build 346 makes the additional
+evidence requirements executable.  A kinetic response is eligible only when
+every requested action has a finite positive converged attempt frequency,
+log-scale prefactor uncertainty, a method/settings digest, a declared
+recrossing treatment, and the exact catalog scope
+`requested-hard-admitted-actions-only`.  Kinetic fields without the complete
+root declaration, or any missing/invalid/unconverged candidate prefactor,
+invalidate the response rather than silently falling back.
+
+For declared temperature `T`, the browser computes
+`ln k_i = ln ν_i − E_i/(k_B T)` and the frozen-catalog partition
+`p_i = exp(ln k_i − logsumexp_j ln k_j)`.  Barrier and prefactor uncertainties
+produce per-action lower and upper `log10(k/s^-1)` bounds.  Maximum-rate mode
+chooses one deterministic action and advances no clock.  Seeded KMC mode uses
+two FNV-keyed uniforms bound to the growth seed, event index, and request SHA:
+one selects an action from the catalog CDF and the other gives
+`Δt = −ln(u)/Σ_i k_i`.  Candidate-ID order is canonical, so input record order
+cannot alter either draw.
+
+Execution remains exact and target-free.  Kinetic mode overrides commuting
+display scheduling with one serial event, but then reuses the existing whole
+cluster commit path and every hard certificate.  The clock changes only after
+one accepted event; failed or released checkpoints contribute no time.  Full
+receipts include the method and prefactor digests, catalog size, temperature,
+selected candidate, nominal/log-bounded rates, uniforms, waiting time, and
+clock before/after.  The physics ledger and scale passport distinguish this
+finite-catalog kinetic leap from the reduced thermal-field geometry and from
+dimensionless Gumbel path exploration.
+
+The claim is intentionally conditional: the enumerated hard-admitted frontier
+is not proved to contain every physical mechanism.  The result is therefore
+not an MD trajectory, transferable potential, equilibrium ensemble, complete
+kinetic model, diffusion coefficient, nucleation rate, or unconditional
+material clock.  This closes one bounded dynamics-to-geometry leap while
+keeping missing mechanisms, recrossing, correlated events, quantum effects,
+and model error explicit.
+
 ### Frozen-frontier external action barriers (Build 345)
 
 The Stage 4 policy workbench now has a calculation checkpoint at the exact

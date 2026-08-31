@@ -78,17 +78,19 @@ import { buildGrowthActionPhysicsProvenance, buildPhysicsCompressionMap, buildPh
   PHYSICS_EFFECT_COLUMNS, PHYSICS_READINESS_STATES, physicsExecutionLineage }
   from "./physics-compression-map.js?v=20260828-320";
 import { buildExternalPhysicsRequest }
-  from "./external-physics-request.mjs?v=20260830-345";
+  from "./external-physics-request.mjs?v=20260830-346";
 import { validateExternalPhysicsResponse }
-  from "./external-physics-response.mjs?v=20260830-345";
+  from "./external-physics-response.mjs?v=20260830-346";
 import { bindValidatedForceGeometry, buildValidatedForceGeometryRuntime, validatedForcePairGeometry }
-  from "./external-force-geometry.mjs?v=20260830-345";
+  from "./external-force-geometry.mjs?v=20260830-346";
 import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntime,
   validatedTrajectoryPairCorrelation }
-  from "./external-trajectory-geometry.mjs?v=20260830-345";
+  from "./external-trajectory-geometry.mjs?v=20260830-346";
 import { actionBarrierSha256, buildFrozenActionBarrierRequest, frozenActionBarrierRequestReceipt,
   validateFrozenActionBarrierResponse }
-  from "./external-action-barrier.mjs?v=20260830-345";
+  from "./external-action-barrier.mjs?v=20260830-346";
+import { buildFrozenKineticCompetition }
+  from "./frozen-frontier-kinetics.mjs?v=20260830-346";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -604,6 +606,9 @@ const actionBarrierFreezeButton = $("actionBarrierFreeze");
 const actionBarrierDownloadButton = $("actionBarrierDownload");
 const actionBarrierResponseInput = $("actionBarrierResponse");
 const actionBarrierWeightSelect = $("actionBarrierWeight");
+const actionBarrierKineticModeSelect = $("actionBarrierKineticMode");
+const actionBarrierTemperatureSelect = $("actionBarrierTemperature");
+const actionBarrierKineticState = $("actionBarrierKineticState");
 const actionBarrierResumeButton = $("actionBarrierResume");
 const actionBarrierCancelButton = $("actionBarrierCancel");
 const actionBarrierSummary = $("actionBarrierSummary");
@@ -1606,6 +1611,10 @@ let growthSearchGeneration = 0;
 let pauseAfterCurrentGrowthLeap = false;
 let externalActionBarrierCheckpoint = null;
 let externalActionBarrierWeight = .25;
+let externalActionBarrierKineticMode = "none";
+let externalActionBarrierTemperatureKelvin = 300;
+let catalogConditionalKineticClockSeconds = 0;
+let catalogConditionalKineticEventCount = 0;
 let lastExternalActionBarrierReceipt = null;
 let frontierCandidateKeys = new Set();
 let rejectedCandidateKeys = new Set();
@@ -12619,7 +12628,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260830-345",
+      buildId: "20260830-346",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -15129,7 +15138,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260830-345" },
+    application: { name: "Materials Growth Lab", buildId: "20260830-346" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },
@@ -20036,7 +20045,8 @@ function actionBarrierForEntry(entry) {
   const checkpoint = externalActionBarrierCheckpoint;
   const record = checkpoint?.validatedResponse?.recordsByCandidate?.get(entry?.candidate?.key);
   return record && checkpoint.generation === growthSearchGeneration
-    ? { available: true, ...record, weight: externalActionBarrierWeight }
+    ? { available: true, ...record,
+      weight: externalActionBarrierKineticMode === "none" ? externalActionBarrierWeight : 0 }
     : { available: false, lowerBarrierScore: 0, barrierElectronVolt: null,
       uncertaintyElectronVolt: null, weight: 0 };
 }
@@ -23308,7 +23318,7 @@ function growthFrontierWorkReceipt() {
     eventLoopYields: growthFrontierWork.yields,
     maximumSliceMilliseconds: receiptRound(growthFrontierWork.maximumSliceMilliseconds, 3),
     candidateSetFrozenBeforeEvaluation: true, candidateSetTargetUsed: false,
-    rankingTargetUsed: knownWindowReplayActive(), physicalTimeInferred: false,
+    rankingTargetUsed: knownWindowReplayActive(),
     claimBoundary: "This is an in-progress browser scheduling receipt over a frozen candidate set, not materials kinetics, physical time, or a completed structural leap.",
   };
 }
@@ -23323,6 +23333,13 @@ function resetGrowthFrontierWork() {
   renderGrowthFrontierWork();
 }
 
+function catalogConditionalKineticClockSnapshot() {
+  return { elapsedSeconds: catalogConditionalKineticClockSeconds,
+    eventCount: catalogConditionalKineticEventCount,
+    physicalScope: "finite enumerated catalog conditional",
+    completeMechanismCatalogClaimed: false };
+}
+
 function currentLeapInputSnapshot() {
   return { atoms: atoms.length, clusters: placedClusters.length, frontier: frontierCandidates.length,
     morphology: structuralMorphologySnapshot(), composition: structuralCompositionSnapshot(),
@@ -23330,7 +23347,8 @@ function currentLeapInputSnapshot() {
     interfaces: structuralInterfaceSnapshot(), orientationalOrder: structuralOrientationalOrderSnapshot(),
     centrosymmetry: structuralCentrosymmetrySnapshot(), scattering: structuralScatteringSnapshot(),
     chargeMoment: structuralChargeMomentSnapshot(), bondValenceState: structuralBondValenceSnapshot(),
-    feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() };
+    feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot(),
+    catalogConditionalKineticClock: catalogConditionalKineticClockSnapshot() };
 }
 
 function actionBarrierSitePayload(site) {
@@ -23343,6 +23361,8 @@ function actionBarrierSitePayload(site) {
 function actionBarrierCheckpointReceipt(checkpoint = externalActionBarrierCheckpoint) {
   if (!checkpoint) return lastExternalActionBarrierReceipt;
   const response = checkpoint.validatedResponse;
+  const kinetic = checkpoint.kineticCompetition;
+  const kineticClockCommitted = Boolean(checkpoint.kineticClockCommitted);
   return {
     schema: 1, status: response ? checkpoint.consumed ? "consumed" : "validated" : "frozen-request",
     requestSha256: checkpoint.requestReceipt.requestSha256,
@@ -23358,40 +23378,122 @@ function actionBarrierCheckpointReceipt(checkpoint = externalActionBarrierCheckp
       robustCenter: response.audit.robustNormalization.centerElectronVolt,
       robustScale: response.audit.robustNormalization.scaleElectronVolt,
     } : null,
-    rankingWeight: response ? externalActionBarrierWeight : 0,
-    usedForRanking: Boolean(response && externalActionBarrierWeight > 0 && checkpoint.consumed),
+    rankingWeight: response && !kinetic ? externalActionBarrierWeight : 0,
+    usedForRanking: Boolean(response && checkpoint.consumed
+      && (externalActionBarrierWeight > 0 || kinetic)),
+    kineticCompetition: kinetic ? {
+      model: kinetic.model, mode: kinetic.mode, temperatureKelvin: kinetic.temperatureKelvin,
+      prefactorModel: response.audit.kinetics?.model || null,
+      prefactorMethod: response.audit.kinetics?.prefactorMethod || null,
+      prefactorSettingsSha256: response.audit.kinetics?.prefactorSettingsSha256 || null,
+      recrossingCorrection: response.audit.kinetics?.recrossingCorrection || null,
+      catalogScope: response.audit.kinetics?.catalogScope || null,
+      candidateCount: kinetic.candidateCount, selectedCandidateId: kinetic.selectedCandidateId,
+      selectedLog10RatePerSecond: kinetic.selectedLog10RatePerSecond,
+      selectedProbabilityWithinFrozenCatalog: kinetic.selectedProbabilityWithinFrozenCatalog,
+      log10TotalRatePerSecond: kinetic.log10TotalRatePerSecond,
+      eventUniform: kinetic.eventUniform, waitingUniform: kinetic.waitingUniform,
+      waitingTimeSeconds: kinetic.waitingTimeSeconds,
+      log10WaitingTimeSeconds: kinetic.log10WaitingTimeSeconds,
+      clockBeforeSeconds: kinetic.clockBeforeSeconds,
+      clockAfterSeconds: kineticClockCommitted ? kinetic.clockAfterSeconds : null,
+      eventCountBefore: kinetic.eventCountBefore,
+      eventCountAfter: kineticClockCommitted ? kinetic.eventCountAfter : null,
+      committed: kineticClockCommitted,
+      targetUsed: false, catalogCompleteBeyondFrozenFrontier: false,
+    } : null,
     candidateSetChanged: false, hardAdmissionChanged: false, candidateGeometryChanged: false,
-    targetUsed: false, usedAsPotential: false, physicalRateInferred: false, physicalTimeInferred: false,
-    claimBoundary: "Validated barriers are scoped to one exact frozen target-free action batch. They do not create poses, change hard admission, transfer as a potential, or supply a rate or clock without independent temperature and prefactor evidence.",
+    targetUsed: false, usedAsPotential: false, physicalRateInferred: Boolean(kinetic),
+    physicalTimeInferred: Boolean(kineticClockCommitted && kinetic?.mode === "seeded-kmc"),
+    claimBoundary: kinetic
+      ? "HTST rates and any seeded waiting-time increment are conditional on the finite enumerated hard-admitted catalog, the supplied method-specific barriers and prefactors, and the declared Kelvin temperature. They do not establish a complete mechanism set, transferable potential, MD trajectory, equilibrium ensemble, or unconditional material clock."
+      : "Validated barriers are scoped to one exact frozen target-free action batch. They do not create poses, change hard admission, transfer as a potential, or supply a rate or clock without independent temperature and prefactor evidence.",
   };
+}
+
+function kineticValueText(value, unit = "") {
+  if (!Number.isFinite(value)) return "outside finite display range";
+  if (value === 0) return `0${unit}`;
+  const magnitude = Math.abs(value);
+  return magnitude >= 1e4 || magnitude < 1e-3
+    ? `${value.toExponential(3)}${unit}` : `${value.toPrecision(4)}${unit}`;
+}
+
+function deterministicKineticUniform(label, checkpoint = externalActionBarrierCheckpoint) {
+  return deterministicPathUniform(`kinetic:${checkpoint?.requestReceipt?.requestSha256 || "none"}:${label}`);
+}
+
+function refreshExternalActionBarrierKinetics() {
+  const checkpoint = externalActionBarrierCheckpoint;
+  if (checkpoint) checkpoint.kineticCompetition = null;
+  if (!checkpoint?.validatedResponse?.audit?.kineticsEligible
+      || externalActionBarrierKineticMode === "none") return;
+  const competition = buildFrozenKineticCompetition(
+    checkpoint.validatedResponse.audit.records,
+    { temperatureKelvin: externalActionBarrierTemperatureKelvin,
+      mode: externalActionBarrierKineticMode,
+      eventUniform: deterministicKineticUniform("event", checkpoint),
+      waitingUniform: deterministicKineticUniform("waiting", checkpoint) });
+  if (competition.mode === "seeded-kmc" && !Number.isFinite(competition.waitingTimeSeconds)) {
+    throw new Error("the catalog-conditional waiting time is outside the finite browser range at this temperature");
+  }
+  checkpoint.kineticCompetition = { ...competition,
+    clockBeforeSeconds: catalogConditionalKineticClockSeconds,
+    clockAfterSeconds: competition.mode === "seeded-kmc"
+      ? catalogConditionalKineticClockSeconds + competition.waitingTimeSeconds
+      : catalogConditionalKineticClockSeconds,
+    eventCountBefore: catalogConditionalKineticEventCount,
+    eventCountAfter: catalogConditionalKineticEventCount
+      + (competition.mode === "seeded-kmc" ? 1 : 0) };
 }
 
 function renderActionBarrierCheckpoint() {
   const panel = actionBarrierCheckpointBadge.closest(".action-barrier-checkpoint");
   const checkpoint = externalActionBarrierCheckpoint;
+  actionBarrierKineticModeSelect.value = externalActionBarrierKineticMode;
+  actionBarrierTemperatureSelect.value = String(externalActionBarrierTemperatureKelvin);
   const available = pipelineStage === 4 && !knownWindowReplayActive() && !iceAnchorTrace
     && !iqcDisjointTrace && !currentMaterial().growthWithheld && frontierCandidates.length > 0;
   panel.classList.toggle("ready", Boolean(checkpoint));
   panel.classList.toggle("validated", Boolean(checkpoint?.validatedResponse));
+  panel.classList.toggle("kinetic", Boolean(checkpoint?.kineticCompetition)
+    || catalogConditionalKineticEventCount > 0);
   actionBarrierFreezeButton.disabled = !available || growthFrontierWork.busy || Boolean(checkpoint);
   actionBarrierDownloadButton.disabled = !checkpoint;
   actionBarrierResponseInput.disabled = !checkpoint;
-  actionBarrierWeightSelect.disabled = !checkpoint?.validatedResponse;
+  const kineticsEligible = Boolean(checkpoint?.validatedResponse?.audit?.kineticsEligible);
+  actionBarrierWeightSelect.disabled = !checkpoint?.validatedResponse
+    || externalActionBarrierKineticMode !== "none";
+  actionBarrierKineticModeSelect.disabled = !kineticsEligible;
+  actionBarrierTemperatureSelect.disabled = !kineticsEligible
+    || externalActionBarrierKineticMode === "none";
   actionBarrierResumeButton.disabled = !checkpoint?.validatedResponse || growthFrontierWork.busy;
   actionBarrierCancelButton.disabled = !checkpoint || growthFrontierWork.busy;
   if (!checkpoint) {
     actionBarrierCheckpointBadge.textContent = available ? "ready to freeze" : "unavailable";
     actionBarrierCheckpointState.textContent = available
-      ? "Freeze the next target-free frontier before selection. The request contains the initial state and every hard-admitted exact action in ångströms."
+      ? `Freeze the next target-free frontier before selection. The request contains the initial state and every hard-admitted exact action in ångströms.${catalogConditionalKineticEventCount ? ` Current finite-catalog clock: ${kineticValueText(catalogConditionalKineticClockSeconds, " s")}.` : ""}`
       : knownWindowReplayActive() ? "Action barriers are withheld during target-aware known-window replay. Continue to target-free growth first."
         : "Enter executable target-free material growth to freeze an action frontier.";
-    actionBarrierSummary.replaceChildren();
+    actionBarrierSummary.replaceChildren(...(catalogConditionalKineticEventCount ? [
+      ["clocked events", String(catalogConditionalKineticEventCount)],
+      ["conditional clock", kineticValueText(catalogConditionalKineticClockSeconds, " s")],
+    ].map(([label, value]) => {
+      const tile = document.createElement("span"); const strong = document.createElement("strong");
+      tile.append(document.createTextNode(label)); strong.textContent = value; tile.append(strong); return tile;
+    }) : []));
+    actionBarrierKineticState.textContent = catalogConditionalKineticEventCount
+      ? `${catalogConditionalKineticEventCount} seeded HTST event${catalogConditionalKineticEventCount === 1 ? "" : "s"} committed · catalog-conditional elapsed time ${kineticValueText(catalogConditionalKineticClockSeconds, " s")} · freeze the new frontier to continue.`
+      : "Kinetic competition remains unavailable until every frozen action has a converged, uncertainty-bearing attempt frequency.";
+    actionBarrierResumeButton.textContent = "Commit unchanged frontier";
     return;
   }
   const audit = checkpoint.validatedResponse?.audit;
   actionBarrierCheckpointBadge.textContent = audit ? "response bound" : "frontier frozen";
   actionBarrierCheckpointState.textContent = audit
-    ? `${audit.candidateCount} converged barriers are bound to request ${checkpoint.requestReceipt.requestSha256.slice(0, 12)}… . Weight ${externalActionBarrierWeight.toFixed(2)} changes only the stable ordering of this batch; Commit resumes the paused leap.`
+    ? checkpoint.kineticCompetition
+      ? `${audit.candidateCount} converged barrier + prefactor records are bound to request ${checkpoint.requestReceipt.requestSha256.slice(0, 12)}… . Exactly one ${checkpoint.kineticCompetition.mode === "seeded-kmc" ? "seeded KMC" : "maximum-rate"} event will commit.`
+      : `${audit.candidateCount} converged barriers are bound to request ${checkpoint.requestReceipt.requestSha256.slice(0, 12)}… . Weight ${externalActionBarrierWeight.toFixed(2)} changes only the stable ordering of this batch; Commit resumes the paused leap.`
     : `Growth is paused before commit. Download request ${checkpoint.requestReceipt.requestSha256.slice(0, 12)}… and return one converged barrier record for every admitted candidate.`;
   const tiles = [
     ["frozen frontier", `${checkpoint.evaluated.length} candidates`],
@@ -23401,10 +23503,23 @@ function renderActionBarrierCheckpoint() {
       ? `${Math.min(...audit.records.map((record) => record.barrierElectronVolt)).toFixed(3)}–${Math.max(...audit.records.map((record) => record.barrierElectronVolt)).toFixed(3)} eV`
       : "none before validation"],
   ];
+  const kinetic = checkpoint.kineticCompetition;
+  if (kinetic) tiles.push([kinetic.mode === "seeded-kmc" ? "sampled event" : "maximum-rate event",
+    `${kinetic.selectedCandidateId.slice(0, 12)} · log₁₀k ${kinetic.selectedLog10RatePerSecond.toFixed(2)}`]);
   actionBarrierSummary.replaceChildren(...tiles.map(([label, value]) => {
     const tile = document.createElement("span"); const strong = document.createElement("strong");
     tile.append(document.createTextNode(label)); strong.textContent = value; tile.append(strong); return tile;
   }));
+  actionBarrierResumeButton.textContent = kinetic ? "Commit one kinetic event" : "Commit unchanged frontier";
+  actionBarrierKineticState.textContent = kinetic
+    ? kinetic.mode === "seeded-kmc"
+      ? `${kinetic.temperatureKelvin} K · selected catalog probability ${(100 * kinetic.selectedProbabilityWithinFrozenCatalog).toFixed(2)}% · Δt ${kineticValueText(kinetic.waitingTimeSeconds, " s")} · conditional clock after commit ${kineticValueText(kinetic.clockAfterSeconds, " s")}.`
+      : `${kinetic.temperatureKelvin} K · deterministic maximum-rate action · log₁₀(k/s⁻¹) ${kinetic.selectedLog10RatePerSecond.toFixed(3)} · no clock increment.`
+    : !audit
+      ? "No response is bound yet. Kinetic competition requires complete barrier and prefactor records for this exact frozen frontier."
+      : kineticsEligible
+      ? "Complete prefactors are validated. Choose maximum-rate HTST or a seeded KMC draw; both execute exactly one action from this frozen catalog."
+      : "This response contains barriers only. Kinetic competition requires a converged, uncertainty-bearing prefactor for every frozen action.";
 }
 
 function refreshExternalActionBarrierScores() {
@@ -23416,6 +23531,7 @@ function refreshExternalActionBarrierScores() {
     entry.selectionScore = entry.score + entry.explorationOffset;
     entry.candidate.growthPhysicsAttribution = freezeGrowthActionPhysicsFingerprint(entry);
   });
+  refreshExternalActionBarrierKinetics();
   capturePolicyComparison(checkpoint.evaluated, checkpoint.before);
 }
 
@@ -23437,7 +23553,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
   }));
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260830-345",
+    generatedAt: new Date().toISOString(), buildId: "20260830-346",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -23502,7 +23618,7 @@ async function validateExternalActionBarrierFile(file) {
     recordsByCandidate: new Map(audit.records.map((record) => [record.candidateId, record])) };
   checkpoint.responseSha256 = responseSha256;
   refreshExternalActionBarrierScores();
-  receiptStatus.textContent = `${audit.candidateCount} action barriers validated and bound · response ${responseSha256.slice(0, 12)}… · candidate set unchanged.`;
+  receiptStatus.textContent = `${audit.candidateCount} action barriers${audit.kineticsEligible ? " + attempt frequencies" : ""} validated and bound · response ${responseSha256.slice(0, 12)}… · candidate set unchanged.`;
   renderActionBarrierCheckpoint(); updateUI();
 }
 
@@ -23511,6 +23627,8 @@ function releaseExternalActionBarrierCheckpoint(reason = "Action-barrier checkpo
     ...actionBarrierCheckpointReceipt(externalActionBarrierCheckpoint), status: "released",
     usedForRanking: false, releaseReason: reason };
   externalActionBarrierCheckpoint = null;
+  externalActionBarrierKineticMode = "none";
+  actionBarrierKineticModeSelect.value = "none";
   actionBarrierResponseInput.value = "";
   renderActionBarrierCheckpoint(); updateUI();
   receiptStatus.textContent = reason;
@@ -23569,6 +23687,15 @@ async function selectCommutingFrontierBatch(evaluated, generation, frontierStruc
   ranked.forEach((entry, index) => rankGrowthActionPhysicsFingerprint(entry,
     index + 1, ranked.length, ranked[0]?.selectionScore ?? entry.selectionScore));
   freezeGrowthActionRankSensitivity(ranked);
+  const kineticSelection = externalActionBarrierCheckpoint?.kineticCompetition;
+  if (kineticSelection) {
+    const selected = ranked.find((entry) =>
+      entry.candidate.key === kineticSelection.selectedCandidateId);
+    if (!selected?.evaluation?.accepted) {
+      throw new Error("the frozen kinetic event is no longer hard-admitted in this exact frontier");
+    }
+    return [selected];
+  }
   if (overlapGrammar.molecular && knownWindowReplayActive()) {
     const ordered = ranked.slice().sort((first, second) => first.candidate.rule.replayOrder - second.candidate.rule.replayOrder);
     for (const entry of ordered) {
@@ -23686,11 +23813,19 @@ async function commutingFrontierBatch(frontierStructuralState = null) {
     eventLoopYields: growthFrontierWork.yields,
     maximumSliceMilliseconds: receiptRound(growthFrontierWork.maximumSliceMilliseconds, 3),
     candidateSetFrozenBeforeEvaluation: true, candidateSetTargetUsed: false,
-    rankingTargetUsed: knownWindowReplayActive(), physicalTimeInferred: false,
+    rankingTargetUsed: knownWindowReplayActive(),
     externalActionBarrierCheckpointUsed: Boolean(checkpoint),
     externalActionBarrierRequestSha256: checkpoint?.requestReceipt.requestSha256 || null,
     externalActionBarrierResponseSha256: checkpoint?.responseSha256 || null,
-    claimBoundary: "Browser scheduling slices expose progress and preserve the exact frozen candidate order. Slice duration is a responsiveness diagnostic, not materials kinetics or a speedup benchmark.",
+    kineticCompetitionMode: checkpoint?.kineticCompetition?.mode || "none",
+    kineticTemperatureKelvin: checkpoint?.kineticCompetition?.temperatureKelvin || null,
+    kineticSelectedCandidateId: checkpoint?.kineticCompetition?.selectedCandidateId || null,
+    kineticSerialOverride: Boolean(checkpoint?.kineticCompetition),
+    kineticCatalogCompleteBeyondFrozenFrontier: false,
+    physicalTimeInferred: checkpoint?.kineticCompetition?.mode === "seeded-kmc",
+    claimBoundary: checkpoint?.kineticCompetition
+      ? "Browser scheduling slices remain responsiveness diagnostics. The separate catalog-conditional HTST rate and optional seeded waiting-time draw come only from the validated barriers, prefactors, Kelvin temperature, and frozen event catalog."
+      : "Browser scheduling slices expose progress and preserve the exact frozen candidate order. Slice duration is a responsiveness diagnostic, not materials kinetics or a speedup benchmark.",
   };
   return batch;
 }
@@ -24796,6 +24931,9 @@ function initializeOffLatticeSearch() {
   publicBoundaryPrunes = 0;
   externalActionBarrierCheckpoint = null;
   lastExternalActionBarrierReceipt = null;
+  externalActionBarrierKineticMode = "none";
+  catalogConditionalKineticClockSeconds = 0;
+  catalogConditionalKineticEventCount = 0;
   lastPolicyComparison = null;
   policyComparisonHistory = [];
   selectedMarkingFrontierId = null;
@@ -27584,6 +27722,9 @@ function resetCounters() {
   publicBoundaryPrunes = 0;
   externalActionBarrierCheckpoint = null;
   lastExternalActionBarrierReceipt = null;
+  externalActionBarrierKineticMode = "none";
+  catalogConditionalKineticClockSeconds = 0;
+  catalogConditionalKineticEventCount = 0;
   lastPolicyComparison = null;
   policyComparisonHistory = [];
   selectedMarkingFrontierId = null;
@@ -28309,6 +28450,7 @@ function currentLeapOutcomeSnapshot(accepted, rejected) {
     bondValenceState: structuralBondValenceSnapshot(),
     feedstock: currentFeedstockSnapshot(),
     domain: currentGrowthDomainSnapshot(),
+    catalogConditionalKineticClock: catalogConditionalKineticClockSnapshot(),
   };
 }
 
@@ -28323,8 +28465,6 @@ async function performOffLatticeEvent() {
   const before = externalActionBarrierCheckpoint?.before || currentLeapInputSnapshot();
   const batch = await commutingFrontierBatch(before);
   if (batch === null) return;
-  const actionBarrierReceipt = externalActionBarrierCheckpoint
-    ? actionBarrierCheckpointReceipt(externalActionBarrierCheckpoint) : null;
   if (!batch.length) {
     recordStructuralLeap({ status: "fixed", label: "no geometrically admissible successor",
       before, proposal: { candidates: 0, sites: 0, shared: 0, fresh: 0 },
@@ -28336,7 +28476,10 @@ async function performOffLatticeEvent() {
         orientationalOrder: structuralOrientationalOrderSnapshot(), centrosymmetry: structuralCentrosymmetrySnapshot(),
     scattering: structuralScatteringSnapshot(),
         chargeMoment: structuralChargeMomentSnapshot(), bondValenceState: structuralBondValenceSnapshot(),
-        feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() },
+        feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot(),
+        catalogConditionalKineticClock: catalogConditionalKineticClockSnapshot() },
+      actionBarrierCheckpoint: externalActionBarrierCheckpoint
+        ? actionBarrierCheckpointReceipt(externalActionBarrierCheckpoint) : null,
       claimBoundary: "This is a certified finite structural fixed point. It is not equilibrium, a stopping time, or evidence that a physical interface cannot advance by an unmodeled mechanism." });
     pauseGrowth("Frontier exhausted: no learned overlap rule remains geometrically admissible.");
     return;
@@ -28356,10 +28499,11 @@ async function performOffLatticeEvent() {
     sharedInterfaceFraction: before.morphology?.lineageEnsemble?.sharedInterfaceFraction ?? null,
     interfacePairCount: before.interfaces?.pairCount ?? null,
     createdBeforeBatchCommit: true,
-    commutingBatchOrderInvariant: growthScheduling === "commuting",
+    commutingBatchOrderInvariant: growthScheduling === "commuting"
+      && !externalActionBarrierCheckpoint?.kineticCompetition,
     targetUsed: false,
     coordinateFrameUsed: false,
-    physicalTimeModeled: false,
+    physicalTimeModeled: externalActionBarrierCheckpoint?.kineticCompetition?.mode === "seeded-kmc",
   };
   const selectedKeys = new Set(batch.map(({ candidate }) => candidate.key));
   frontierCandidates = frontierCandidates.filter((candidate) => !selectedKeys.has(candidate.key));
@@ -28556,14 +28700,34 @@ async function performOffLatticeEvent() {
   const settlingSensitivity = finalizeSettlingSensitivity(settlingSensitivityPreview, relaxation);
   selectedKeys.forEach((key) => frontierCandidateKeys.delete(key));
   eventIndex += batch.length;
+  const kineticCompetition = externalActionBarrierCheckpoint?.kineticCompetition;
+  if (kineticCompetition?.mode === "seeded-kmc" && acceptedInBatch === 1) {
+    catalogConditionalKineticClockSeconds = kineticCompetition.clockAfterSeconds;
+    catalogConditionalKineticEventCount = kineticCompetition.eventCountAfter;
+    externalActionBarrierCheckpoint.kineticClockCommitted = true;
+  }
+  const actionBarrierReceipt = externalActionBarrierCheckpoint
+    ? actionBarrierCheckpointReceipt(externalActionBarrierCheckpoint) : null;
+  const schedulingLabel = kineticCompetition
+    ? kineticCompetition.mode === "seeded-kmc" ? "seeded catalog-conditional KMC event"
+      : "maximum-rate HTST event"
+    : growthScheduling === "commuting" ? "order-independent placements shown together"
+      : "best-first branch placement";
   captionAction.textContent = !reconstructionWasCertified && reconstructionCertified
     ? `Known-window certificate passed: ${referenceCount()}/${referenceCount()} species-labelled sites recovered one-to-one, with no duplicate or extraneous quotient sites. The observed one-off replay edges are now removed; continuation now uses only the compressed learned grammar.`
-    : `${acceptedInBatch} ${growthScheduling === "commuting" ? "order-independent placements shown together" : "best-first branch placement"} (${freshInBatch} new atoms) · ${reconstructionWasCertified ? "compressed-grammar continuation" : `${replayIndex}/${referenceCount()} known sites recovered`}`
+    : `${acceptedInBatch} ${schedulingLabel} (${freshInBatch} new atoms) · ${reconstructionWasCertified ? "compressed-grammar continuation" : `${replayIndex}/${referenceCount()} known sites recovered`}`
       + `${reconstructionMarkingFallbacks ? ` · ${reconstructionMarkingFallbacks} marking false negatives bypassed by the replay certificate` : ""}`
       + `${rejectedInBatch ? ` · ${rejectedInBatch} invariant prunes flash red` : ""}.`;
   if (lastDecision) updateDecision(lastDecision);
+  const leapClaimBoundary = kineticCompetition
+    ? `${kineticCompetition.claimBoundary} The selected whole-cluster action still passed the unchanged species, overlap, collision, boundary, coordination, angle, marking, and feedstock certificates before commit.${relaxation?.accepted ? " A bounded post-attachment geometric projection followed and is not part of the transition-state path." : ""}`
+    : relaxation?.accepted
+      ? "The accepted antichain is valid in every placement order. A bounded post-attachment constraint projection reduced the learned local contact-angle residual and re-passed every hard gate; it is not a force trajectory, energy minimization, probability, or physical elapsed time."
+      : "The accepted antichain is valid in every placement order and jumps directly to a certified structural state. No force trajectory, energy minimization, transition probability, or physical elapsed time was computed.";
   recordStructuralLeap({ status: acceptedInBatch ? "accepted" : "rejected",
-    label: growthScheduling === "commuting"
+    label: kineticCompetition
+      ? `${kineticCompetition.mode === "seeded-kmc" ? "seeded KMC" : "maximum-rate HTST"} whole-cluster action`
+      : growthScheduling === "commuting"
       ? `${batch.length} pairwise-commuting whole-cluster actions` : `${batch.length} best-first whole-cluster action`,
     before,
     proposal: { candidates: batch.length, sites: proposedSitesInBatch, shared: sharedInBatch,
@@ -28576,13 +28740,13 @@ async function performOffLatticeEvent() {
     relaxation,
     actionBarrierCheckpoint: actionBarrierReceipt,
     after: currentLeapOutcomeSnapshot(acceptedInBatch, rejectedInBatch),
-    claimBoundary: relaxation?.accepted
-      ? "The accepted antichain is valid in every placement order. A bounded post-attachment constraint projection reduced the learned local contact-angle residual and re-passed every hard gate; it is not a force trajectory, energy minimization, probability, or physical elapsed time."
-      : "The accepted antichain is valid in every placement order and jumps directly to a certified structural state. No force trajectory, energy minimization, transition probability, or physical elapsed time was computed." });
+    claimBoundary: leapClaimBoundary });
   if (externalActionBarrierCheckpoint) {
     lastExternalActionBarrierReceipt = { ...actionBarrierCheckpointReceipt(externalActionBarrierCheckpoint),
-      status: "consumed", usedForRanking: externalActionBarrierWeight > 0 };
+      status: "consumed", usedForRanking: externalActionBarrierWeight > 0 || Boolean(kineticCompetition) };
     externalActionBarrierCheckpoint = null;
+    externalActionBarrierKineticMode = "none";
+    actionBarrierKineticModeSelect.value = "none";
     actionBarrierResponseInput.value = "";
   }
   rebuildWorld();
@@ -30009,6 +30173,8 @@ function physicsTranslationRecords(leap = null) {
   const reciprocalSpace = leap?.reciprocalSpaceTransition || null;
   const bondValenceStateBefore = leap?.before?.bondValenceState || null;
   const bondValenceStateAfter = leap?.after?.bondValenceState || null;
+  const kineticReceipt = leap?.actionBarrierCheckpoint?.kineticCompetition
+    || actionBarrierCheckpointReceipt()?.kineticCompetition || null;
   return [
     { id: "hypothesis-separation", process: "controlled separation of correlated geometry-encoded ranking hypotheses",
       status: hypothesisSeparationExperiment ? "soft" : "open",
@@ -30076,19 +30242,21 @@ function physicsTranslationRecords(leap = null) {
       boundary: "This is a bounded geometric statistic of one method-specific residual-force snapshot, not a bond, attraction/repulsion law, transferable force field, energy surface, equilibrium solution, relaxation trajectory, rate, or physical clock. It changes only an explicitly selected marking fit; candidate geometry and hard certificates are unchanged." },
     { id: "action-barrier-ranking", process: "candidate-resolved external transition-path barriers",
       status: externalActionBarrierCheckpoint?.validatedResponse
-        ? externalActionBarrierWeight > 0 ? "soft" : "explicit" : "unavailable",
+        ? externalActionBarrierCheckpoint.kineticCompetition ? "soft"
+          : externalActionBarrierWeight > 0 ? "soft" : "explicit" : "unavailable",
       role: externalActionBarrierCheckpoint?.validatedResponse
-        ? externalActionBarrierWeight > 0 ? "exact frozen-frontier soft ranking" : "validated diagnostic only"
+        ? externalActionBarrierCheckpoint.kineticCompetition ? "exact frozen-frontier HTST input"
+          : externalActionBarrierWeight > 0 ? "exact frozen-frontier soft ranking" : "validated diagnostic only"
         : "no exact candidate-batch response",
       executionEffects: { ranking: Boolean(externalActionBarrierCheckpoint?.validatedResponse
-        && externalActionBarrierWeight > 0) },
+        && (externalActionBarrierWeight > 0 || externalActionBarrierCheckpoint.kineticCompetition)) },
       encoding: externalActionBarrierCheckpoint?.validatedResponse
-        ? `${externalActionBarrierCheckpoint.admissibleEntries.length} exact hard-admitted action IDs; response ${externalActionBarrierCheckpoint.responseSha256}; lower barrier mapped by tanh((median(E)-E)/(2 robustScale)); w=${externalActionBarrierWeight.toFixed(2)}`
+        ? `${externalActionBarrierCheckpoint.admissibleEntries.length} exact hard-admitted action IDs; response ${externalActionBarrierCheckpoint.responseSha256}; ${externalActionBarrierCheckpoint.kineticCompetition ? `barrier enters ${externalActionBarrierCheckpoint.kineticCompetition.mode} with an independently supplied prefactor at ${externalActionBarrierTemperatureKelvin} K` : `lower barrier mapped by tanh((median(E)-E)/(2 robustScale)); w=${externalActionBarrierWeight.toFixed(2)}`}`
         : "requires an explicitly frozen target-free frontier and one converged method-provenanced path record for every admitted action",
       evidence: externalActionBarrierCheckpoint?.validatedResponse
         ? `Request ${externalActionBarrierCheckpoint.requestReceipt.requestSha256}; candidate batch ${externalActionBarrierCheckpoint.requestReceipt.candidateBatchSha256}; ${externalActionBarrierCheckpoint.validatedResponse.audit.candidateCount} records passed exact ID, digest, convergence, holdout, uncertainty, and safeguard checks.`
         : "No validated response is bound to the current frontier.",
-      boundary: "A response may reorder only this exact immutable candidate batch. It never creates geometry, changes hard admission, transfers as an interatomic potential, supplies temperature or a prefactor, maps a GCTS update to time, or by itself yields a transition probability or rate." },
+      boundary: "A response may act only on this exact immutable candidate batch. It never creates geometry, changes hard admission, or transfers as an interatomic potential. A rate or conditional waiting time additionally requires complete prefactors and an explicit Kelvin temperature; barriers alone remain clock-free." },
     { id: "calculation-stress", process: "external calculation stress / tensor-shaped metric",
       status: calculation?.stressCoverage > 0
         ? ["archive-stress", "archive-stress-reverse"].includes(affineLoadMode) ? "soft" : "explicit"
@@ -30364,6 +30532,19 @@ function physicsTranslationRecords(leap = null) {
         : "no source directions, illumination cone, or shadowing score",
       evidence: leap ? `${feedExposureRaySamples.toLocaleString()} site-ray samples and ${feedExposureNeighborhoodChecks.toLocaleString()} neighbor checks; accepted mean visibility score ${receiptRound(acceptedFeedExposureScore / Math.max(1, acceptedDecisions), 4)}.` : "No feedstock visibility evaluated yet.",
       boundary: "Finite line-of-sight visibility is not concentration, flux magnitude, diffusion, convection, sticking probability, adsorption, supply depletion, deposition rate, or physical time." },
+    { id: "event-kinetics", process: "candidate-resolved transition-state rate competition",
+      status: kineticReceipt ? kineticReceipt.mode === "seeded-kmc" ? "sampled" : "soft" : "unavailable",
+      role: kineticReceipt ? kineticReceipt.mode === "seeded-kmc"
+        ? "catalog-conditional HTST event and waiting-time draw" : "catalog-conditional maximum-rate HTST event"
+        : "requires complete barriers, prefactors, and a declared Kelvin temperature",
+      executionEffects: { ranking: Boolean(kineticReceipt), searchOrder: Boolean(kineticReceipt) },
+      encoding: kineticReceipt
+        ? `${kineticReceipt.candidateCount} exact frozen actions at ${kineticReceipt.temperatureKelvin} K; selected ${kineticReceipt.selectedCandidateId}; log10 total rate ${kineticReceipt.log10TotalRatePerSecond.toFixed(3)} s^-1; prefactor ${kineticReceipt.prefactorMethod}`
+        : "no method-bound complete action catalog with barriers and attempt frequencies",
+      evidence: kineticReceipt
+        ? `${kineticReceipt.mode === "seeded-kmc" ? `Seeded waiting time ${kineticValueText(kineticReceipt.waitingTimeSeconds, " s")}; catalog-conditional clock ${kineticValueText(kineticReceipt.clockAfterSeconds, " s")}.` : "No waiting time was drawn."} Request, candidate batch, barrier method, prefactor settings, temperature, and random uniforms are retained in the leap receipt.`
+        : "No catalog-conditional physical rate has been evaluated.",
+      boundary: "The HTST competition is conditional on one finite hard-admitted event catalog. It omits unenumerated mechanisms and does not establish a transferable potential, complete kinetic model, MD trajectory, equilibrium ensemble, heat-flow solution, diffusion coefficient, nucleation rate, or unconditional material time." },
     { id: "kinetics", process: "activation, diffusion, heat flow, and elapsed time", status: activeArrivalPathWeight() > 0 ? "soft" : "open", role: activeArrivalPathWeight() > 0 ? "geometric accessibility proxy" : "not modeled",
       encoding: activeArrivalPathWeight() > 0
         ? `${arrivalPathLabel()}; ${arrivalPathMode === "free-volume" ? "5 routes × " : ""}9 swept-clearance samples over 2dₙₙ for emitted sites only, w=${activeArrivalPathWeight().toFixed(2)}`
@@ -31935,7 +32116,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260830-345",
+    generatedAt: new Date().toISOString(), buildId: "20260830-346",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,
@@ -33449,12 +33630,19 @@ function renderStructuralLeap(leap = null) {
     bondValenceBefore?.available && bondValenceAfter?.available
       ? `mean |Σs r̂| ${bondValenceBefore.sampledMeanVectorMagnitude.toFixed(3)} → ${bondValenceAfter.sampledMeanVectorMagnitude.toFixed(3)} v.u. · resolved centers ${bondValenceBefore.resolvedCenters} → ${bondValenceAfter.resolvedCenters}; finite sampled geometry, not energy or time.`
       : bondValenceAfter?.reason || bondValenceBefore?.reason || "A complete exact oxidation-state channel and checked ion pairs are required."]);
-  if (selected.relaxation) leapCards.push(["09 · local projection",
+  let nextLeapCard = 9;
+  const kinetic = selected.actionBarrierCheckpoint?.kineticCompetition;
+  if (kinetic) leapCards.push([`${String(nextLeapCard++).padStart(2, "0")} · kinetic catalog`,
+    kinetic.mode === "seeded-kmc"
+      ? `${kinetic.temperatureKelvin} K · Δt ${kineticValueText(kinetic.waitingTimeSeconds, " s")}`
+      : `${kinetic.temperatureKelvin} K · maximum-rate event`,
+    `${kinetic.candidateCount} frozen actions · selected p ${Number(kinetic.selectedProbabilityWithinFrozenCatalog * 100).toFixed(2)}% · log₁₀Σk ${kinetic.log10TotalRatePerSecond.toFixed(3)} s⁻¹${kinetic.committed ? ` · conditional clock ${kineticValueText(kinetic.clockAfterSeconds, " s")}` : " · no clock increment"}`]);
+  if (selected.relaxation) leapCards.push([`${String(nextLeapCard++).padStart(2, "0")} · local projection`,
     selected.relaxation.accepted
       ? `strain ${selected.relaxation.strainBefore.toFixed(3)} → ${selected.relaxation.strainAfter.toFixed(3)}`
       : "rolled back · exact coordinates retained",
     `${selected.relaxation.movableSites} movable · max Δ ${selected.relaxation.maximumDisplacementAngstrom.toFixed(3)} Å · ${selected.relaxation.reason}`]);
-  leapCards.push([`${selected.relaxation ? "10" : "09"} · after`,
+  leapCards.push([`${String(nextLeapCard).padStart(2, "0")} · after`,
     `${selected.after.atoms} atoms · ${selected.after.clusters} clusters`,
     `${selected.after.accepted} accepted · ${selected.after.rejected} rejected · causal depth ${selected.after.depth}`]);
   leapCards.forEach(([label, value, detail], index) => {
@@ -33656,8 +33844,14 @@ function recordPendingSiteStructuralHistories(leap) {
 
 function recordStructuralLeap(leap) {
   invalidateCreationResponseEvidenceCache("a new structural leap changed the response state");
+  const catalogConditionalClockCommitted = Boolean(
+    leap?.actionBarrierCheckpoint?.kineticCompetition?.committed
+    && leap.actionBarrierCheckpoint.kineticCompetition.mode === "seeded-kmc");
   const frozen = { ...leap, index: ++leapEventCount, targetUsed: false,
-    physicalTimeModeled: false, dynamicsIntegrated: false };
+    physicalTimeModeled: catalogConditionalClockCommitted,
+    physicalTimeScope: catalogConditionalClockCommitted
+      ? "catalog-conditional HTST waiting-time draw" : "none",
+    dynamicsIntegrated: false };
   recordPendingSiteStructuralHistories(frozen);
   frozen.localSymmetryTransition = localSymmetryTransition(
     frozen.before?.orientationalOrder, frozen.after?.orientationalOrder);
@@ -36553,6 +36747,7 @@ function liveScalePassportRecords() {
   ].filter(Boolean);
   const maximumDepth = Math.max(0, ...placedClusters.map((placement) => placement.depth || 0));
   const stageReached = (stage) => pipelineStage >= stage;
+  const kinetic = actionBarrierCheckpointReceipt()?.kineticCompetition || null;
   return [
     {
       id: "contacts", label: "atoms + contacts", short: "atomic", status: "reached",
@@ -36587,12 +36782,22 @@ function liveScalePassportRecords() {
       boundary: "A deep hierarchy or large represented count is not stationary growth; exponential claims require an exact recurring production across independently verified scales.",
     },
     {
-      id: "kinetics", label: "thermodynamics + time", short: "open boundary", status: "open",
-      scale: conditionLabels.length ? conditionLabels.join(" · ") : "no calibrated thermodynamic state supplied",
-      evidence: conditionLabels.length ? `${conditionLabels.length} recorded condition channel${conditionLabels.length === 1 ? "" : "s"}; retained as provenance only` : "Positions, species, and optional structural snapshots contain no clock, force, or ensemble calibration.",
-      encoding: "Only structural successes/failures and geometric surrogate scores are available. Recorded conditions never become hidden simulation controls.",
-      role: "Defines the current approximation boundary and the data that MD, DFT, kinetic Monte Carlo, or experiment must supply for kinetic calibration.",
-      boundary: "No temperature-dependent free energy, chemical potential, diffusion barrier, nucleation probability, growth rate, or physical elapsed time is claimed.",
+      id: "kinetics", label: "thermodynamics + time", short: kinetic ? "finite-catalog kinetics" : "open boundary",
+      status: kinetic ? "active" : "open",
+      scale: kinetic ? `${kinetic.temperatureKelvin} K · ${kinetic.candidateCount} frozen actions`
+        : conditionLabels.length ? conditionLabels.join(" · ") : "no calibrated thermodynamic state supplied",
+      evidence: kinetic
+        ? `${kinetic.prefactorMethod}; log10 total rate ${kinetic.log10TotalRatePerSecond.toFixed(3)} s^-1${kinetic.committed && kinetic.mode === "seeded-kmc" ? ` · conditional clock ${kineticValueText(kinetic.clockAfterSeconds, " s")}` : ""}`
+        : conditionLabels.length ? `${conditionLabels.length} recorded condition channel${conditionLabels.length === 1 ? "" : "s"}; retained as provenance only` : "Positions, species, and optional structural snapshots contain no clock, force, or ensemble calibration.",
+      encoding: kinetic
+        ? "External barriers and attempt frequencies are bound to exact frozen action IDs; HTST competes only that finite catalog and commits one whole-cluster event."
+        : "Only structural successes/failures and geometric surrogate scores are available. Recorded conditions never become hidden simulation controls.",
+      role: kinetic
+        ? "Leap-frogs an explicitly enumerated transition catalog without integrating the intervening atomic path."
+        : "Defines the current approximation boundary and the data that MD, DFT, kinetic Monte Carlo, or experiment must supply for kinetic calibration.",
+      boundary: kinetic
+        ? "This is method- and catalog-conditional kinetics, not a complete mechanism inventory, transferable potential, MD trajectory, equilibrium ensemble, diffusion coefficient, nucleation rate, or unconditional material clock."
+        : "No temperature-dependent free energy, chemical potential, diffusion barrier, nucleation probability, growth rate, or physical elapsed time is claimed.",
     },
   ];
 }
@@ -37316,6 +37521,38 @@ actionBarrierWeightSelect.addEventListener("change", () => {
     receiptStatus.textContent = externalActionBarrierWeight > 0
       ? `Validated barriers will contribute w=${externalActionBarrierWeight.toFixed(2)} to this batch only.`
       : "Validated barriers remain diagnostic; branch ordering is unchanged.";
+  }
+  renderActionBarrierCheckpoint(); updateUI();
+});
+actionBarrierKineticModeSelect.addEventListener("change", () => {
+  externalActionBarrierKineticMode = ["rate-maximum", "seeded-kmc"]
+    .includes(actionBarrierKineticModeSelect.value)
+    ? actionBarrierKineticModeSelect.value : "none";
+  try {
+    refreshExternalActionBarrierScores();
+    receiptStatus.textContent = externalActionBarrierKineticMode === "none"
+      ? "Kinetic competition disabled; the validated barrier returns to its bounded score-ledger role."
+      : `${externalActionBarrierKineticMode === "seeded-kmc" ? "Seeded KMC" : "Maximum-rate HTST"} will select exactly one action from this frozen catalog at ${externalActionBarrierTemperatureKelvin} K.`;
+  } catch (error) {
+    console.error(error); externalActionBarrierKineticMode = "none";
+    actionBarrierKineticModeSelect.value = "none";
+    refreshExternalActionBarrierScores();
+    receiptStatus.textContent = `Kinetic competition rejected safely · ${error.message}`;
+  }
+  renderActionBarrierCheckpoint(); updateUI();
+});
+actionBarrierTemperatureSelect.addEventListener("change", () => {
+  const value = Number(actionBarrierTemperatureSelect.value);
+  externalActionBarrierTemperatureKelvin = [100, 300, 600, 900, 1200, 1500].includes(value)
+    ? value : 300;
+  try {
+    refreshExternalActionBarrierScores();
+    receiptStatus.textContent = `Frozen kinetic competition recomputed at ${externalActionBarrierTemperatureKelvin} K; candidate geometry and hard admission remain unchanged.`;
+  } catch (error) {
+    console.error(error); externalActionBarrierKineticMode = "none";
+    actionBarrierKineticModeSelect.value = "none";
+    refreshExternalActionBarrierScores();
+    receiptStatus.textContent = `Kinetic competition rejected safely · ${error.message}`;
   }
   renderActionBarrierCheckpoint(); updateUI();
 });

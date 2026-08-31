@@ -9,6 +9,8 @@ const {
   frozenActionBarrierRequestReceipt,
   validateFrozenActionBarrierResponse,
 } = await import("../apps/iqc-growth-live/external-action-barrier.mjs");
+const { buildFrozenKineticCompetition } = await import(
+  "../apps/iqc-growth-live/frozen-frontier-kinetics.mjs");
 
 const sha = "a".repeat(64);
 const candidates = [
@@ -56,6 +58,32 @@ const validated = validateFrozenActionBarrierResponse(response, { ...receipt,
 assert.equal(validated.candidateCount, 2);
 assert.ok(validated.records[0].lowerBarrierScore > validated.records[1].lowerBarrierScore);
 assert.equal(validated.usedAsPhysicalClock, false);
+assert.equal(validated.kineticsEligible, false);
+
+const kineticResponse = {
+  ...response,
+  kinetics: { model: "harmonic-transition-state-theory", prefactorMethod: "finite-difference Hessian",
+    prefactorSettingsSha256: "e".repeat(64), recrossingCorrection: "not-included",
+    catalogScope: "requested-hard-admitted-actions-only" },
+  validation: { ...response.validation, prefactorsReported: true, everyPrefactorConverged: true,
+    prefactorUncertaintyReported: true },
+  records: response.records.map((record, index) => ({ ...record,
+    attemptFrequencyPerSecond: 1e13 * (index + 1), attemptFrequencyUncertaintyLog10: .2,
+    prefactorConverged: true })),
+};
+const validatedKinetics = validateFrozenActionBarrierResponse(kineticResponse, { ...receipt,
+  candidates: request.frontier.candidates.map(({ candidateId, candidateDigestSha256 }) =>
+    ({ candidateId, candidateDigestSha256 })) });
+assert.equal(validatedKinetics.kineticsEligible, true);
+assert.equal(validatedKinetics.records[0].attemptFrequencyPerSecond, 1e13);
+assert.equal(validatedKinetics.kinetics.catalogScope, "requested-hard-admitted-actions-only");
+const kineticCompetition = buildFrozenKineticCompetition(validatedKinetics.records,
+  { temperatureKelvin: 600, mode: "seeded-kmc", eventUniform: .5, waitingUniform: .25 });
+assert.equal(kineticCompetition.candidateCount, validatedKinetics.candidateCount);
+assert.ok(validatedKinetics.records.some((record) =>
+  record.candidateId === kineticCompetition.selectedCandidateId));
+assert.ok(kineticCompetition.waitingTimeSeconds > 0);
+assert.equal(kineticCompetition.targetUsed, false);
 
 assert.throws(() => validateFrozenActionBarrierResponse({ ...response,
   records: [response.records[0], response.records[0]] }, { ...receipt,
@@ -66,5 +94,12 @@ assert.throws(() => validateFrozenActionBarrierResponse({ ...response,
 assert.throws(() => validateFrozenActionBarrierResponse({ ...response,
   candidateBatchSha256: "0".repeat(64) }, { ...receipt, candidates: request.frontier.candidates }),
 /not bound/);
+assert.throws(() => validateFrozenActionBarrierResponse({ ...kineticResponse,
+  records: kineticResponse.records.map((record, index) => ({ ...record,
+    prefactorConverged: index ? false : true })) }, { ...receipt, candidates: request.frontier.candidates }),
+/prefactor/);
+assert.throws(() => validateFrozenActionBarrierResponse({ ...kineticResponse,
+  kinetics: { ...kineticResponse.kinetics, model: "unspecified-rate-model" } },
+{ ...receipt, candidates: request.frontier.candidates }), /harmonic-transition-state-theory/);
 
 console.log("external action barrier contract: passed");

@@ -17,8 +17,8 @@ const LANE_DEFINITIONS = Object.freeze([
     interpretation: "Substrate, loading, directional, thermal, feed-exposure, and path-ensemble controls are counterfactual geometric hypotheses.",
     recordIds: Object.freeze(["epitaxy", "affine", "drive", "thermal-field", "feed-exposure", "path-ensemble"]) }),
   Object.freeze({ id: "open", label: "unresolved physics", short: "dynamics + nonlocal response",
-    interpretation: "Barrier crossing, diffusion, heat flow, elapsed time, and collective nonlocal response remain outside the bounded structural grammar.",
-    recordIds: Object.freeze(["kinetics", "long-range"]) }),
+    interpretation: "An exact external barrier/prefactor catalog may drive one conditional event; unenumerated mechanisms, diffusion, heat flow, unconditional time, and collective nonlocal response remain outside the bounded structural grammar.",
+    recordIds: Object.freeze(["event-kinetics", "kinetics", "long-range"]) }),
 ]);
 
 function evidenceBucket(status) {
@@ -46,7 +46,7 @@ const RANKING_IDS = new Set([
   "bulk-surface-driving", "attachment-topology", "habit-anisotropy", "defect-precursors",
   "coherency-memory", "front-morphology", "capillary-geometry", "epitaxy", "affine",
   "drive", "thermal-field", "robustness", "microstructure", "loop-closure",
-  "feed-exposure", "kinetics", "long-range", "configurational-entropy",
+  "feed-exposure", "event-kinetics", "kinetics", "long-range", "configurational-entropy",
   "constraint-rigidity",
   "action-barrier-ranking",
 ]);

@@ -7,7 +7,7 @@
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23071112'/%3E%3Cpath d='M17 19 46 12M17 19l8 30m21-37L25 49m-8-30 29 24M25 49l21-6' stroke='%236fffd4' stroke-width='4'/%3E%3Ccircle cx='17' cy='19' r='6' fill='%23f1fff9'/%3E%3Ccircle cx='46' cy='12' r='6' fill='%236fffd4'/%3E%3Ccircle cx='25' cy='49' r='6' fill='%238a7dff'/%3E%3Ccircle cx='46' cy='43' r='6' fill='%236fffd4'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css?v=20260830-345">
+  <link rel="stylesheet" href="./style.css?v=20260830-346">
   <script type="importmap">
     {
       "imports": {
@@ -1309,11 +1309,14 @@
                   <button id="actionBarrierDownload" type="button" disabled>Download request</button>
                   <label class="action-barrier-import">Validate response<input id="actionBarrierResponse" type="file" accept="application/json,.json" disabled></label>
                   <label>ranking weight<select id="actionBarrierWeight" disabled><option value="0">0 · diagnostic only</option><option value="0.10">0.10 · gentle</option><option value="0.25" selected>0.25 · balanced</option><option value="0.50">0.50 · strong</option></select></label>
+                  <label>event competition<select id="actionBarrierKineticMode" disabled><option value="none" selected>Off · barrier ranking only</option><option value="rate-maximum">HTST · maximum rate</option><option value="seeded-kmc">HTST · seeded KMC draw</option></select></label>
+                  <label>physical temperature<select id="actionBarrierTemperature" disabled><option value="100">100 K</option><option value="300" selected>300 K</option><option value="600">600 K</option><option value="900">900 K</option><option value="1200">1200 K</option><option value="1500">1500 K</option></select></label>
                   <button id="actionBarrierResume" type="button" disabled>Commit unchanged frontier</button>
                   <button id="actionBarrierCancel" type="button" disabled>Release</button>
                 </div>
                 <div id="actionBarrierSummary" class="action-barrier-summary" aria-live="polite"></div>
-                <p class="action-barrier-boundary">A validated barrier may softly reorder only the candidate IDs in this checkpoint. It cannot create a pose, change hard admission, transfer as a potential, or provide time without an independently calibrated temperature and prefactor.</p>
+                <p id="actionBarrierKineticState" class="action-barrier-kinetic-state">Kinetic competition remains unavailable until every frozen action has a converged, uncertainty-bearing attempt frequency.</p>
+                <p class="action-barrier-boundary">A validated barrier may softly reorder only the candidate IDs in this checkpoint; it cannot create a pose or change hard admission. With complete prefactors, an explicit Kelvin temperature can instead select one serial HTST event; a seeded waiting time is conditional on this finite enumerated catalog, not a complete dynamical trajectory.</p>
               </section>
               <section class="policy-phase-map-card" aria-label="Two-hypothesis growth decision phase map">
                 <header><span><small>two-hypothesis decision map</small><strong>Attachment-action basins</strong></span><b id="policyPhaseMapState">awaiting a frozen frontier</b></header>
@@ -2268,7 +2271,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260830-345"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260830-345"></script>
+  <script type="module" src="./app.js?v=20260830-346"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260830-346"></script>
 </body>
 </html>

@@ -130,6 +130,20 @@ export async function buildFrozenActionBarrierRequest(input) {
       suitableMethods: ["nudged elastic band", "dimer or saddle search", "validated enhanced-sampling path"],
       requiredOutputs: ["one converged record for every candidate ID", "explicit initial and final geometry digests",
         "at least three energy images", "maximum residual force", "uncertainty and method provenance"],
+      optionalKineticOutputs: ["one positive converged attemptFrequencyPerSecond for every candidate ID",
+        "attemptFrequencyUncertaintyLog10", "prefactor method and settings SHA-256",
+        "explicit requested-frontier-only catalog scope and recrossing declaration"],
+      optionalKineticResponseContract: {
+        rootKinetics: { model: "harmonic-transition-state-theory", prefactorMethod: "method name",
+          prefactorSettingsSha256: "64 hexadecimal characters",
+          recrossingCorrection: "included | not-included",
+          catalogScope: "requested-hard-admitted-actions-only" },
+        validationFlags: ["prefactorsReported", "everyPrefactorConverged",
+          "prefactorUncertaintyReported"],
+        everyCandidateRecord: { attemptFrequencyPerSecond: "finite positive s^-1",
+          attemptFrequencyUncertaintyLog10: "finite nonnegative decades",
+          prefactorConverged: true },
+      },
       units: { coordinates: "angstrom", energy: "electronvolt", force: "electronvolt per angstrom" },
       responseSchema: ACTION_BARRIER_RESPONSE_SCHEMA,
     },
@@ -201,6 +215,33 @@ export function validateFrozenActionBarrierResponse(response, expected) {
       && validation.convergenceReported === true && validation.everyCandidateConverged === true)) {
     throw new Error("action-barrier response has not passed every frozen validation gate");
   }
+  const kinetics = response.kinetics == null ? null : {
+    model: requiredText(response.kinetics.model, "kinetic prefactor model"),
+    prefactorMethod: requiredText(response.kinetics.prefactorMethod, "prefactor method"),
+    prefactorSettingsSha256: requiredText(response.kinetics.prefactorSettingsSha256,
+      "prefactor settings SHA-256"),
+    recrossingCorrection: requiredText(response.kinetics.recrossingCorrection,
+      "recrossing correction declaration"),
+    catalogScope: requiredText(response.kinetics.catalogScope, "kinetic catalog scope"),
+  };
+  if (kinetics) {
+    if (kinetics.model !== "harmonic-transition-state-theory") {
+      throw new Error("kinetic model must be harmonic-transition-state-theory");
+    }
+    if (!/^[a-f0-9]{64}$/i.test(kinetics.prefactorSettingsSha256)) {
+      throw new Error("prefactor settings SHA-256 must contain 64 hexadecimal characters");
+    }
+    if (!["included", "not-included"].includes(kinetics.recrossingCorrection)) {
+      throw new Error("recrossingCorrection must be included or not-included");
+    }
+    if (kinetics.catalogScope !== "requested-hard-admitted-actions-only") {
+      throw new Error("kinetic catalog scope must remain the requested hard-admitted actions only");
+    }
+    if (!(validation.prefactorsReported === true && validation.everyPrefactorConverged === true
+        && validation.prefactorUncertaintyReported === true)) {
+      throw new Error("kinetic prefactors have not passed every frozen validation gate");
+    }
+  }
   if (response.safeguards?.containsGrowthTargetCoordinates !== false
       || response.safeguards?.geometricScoresUsedAsPhysicalLabels !== false
       || response.safeguards?.searchStepsUsedAsPhysicalTime !== false
@@ -210,6 +251,10 @@ export function validateFrozenActionBarrierResponse(response, expected) {
   }
   if (!Array.isArray(response.records) || response.records.length !== expected.candidates.length) {
     throw new Error(`action-barrier response needs exactly ${expected.candidates.length} candidate records`);
+  }
+  if (!kinetics && response.records.some((record) => record?.attemptFrequencyPerSecond != null
+      || record?.attemptFrequencyUncertaintyLog10 != null || record?.prefactorConverged != null)) {
+    throw new Error("per-candidate kinetic fields require the complete response kinetics declaration");
   }
   const expectedById = new Map(expected.candidates.map((candidate) => [candidate.candidateId, candidate]));
   const seen = new Set();
@@ -235,6 +280,13 @@ export function validateFrozenActionBarrierResponse(response, expected) {
     if (!Number.isInteger(record.imageCount) || record.imageCount < 3 || record.converged !== true) {
       throw new Error(`barrier path for ${candidateId} is incomplete or unconverged`);
     }
+    if (kinetics && (!finite(record.attemptFrequencyPerSecond)
+        || Number(record.attemptFrequencyPerSecond) <= 0
+        || !finite(record.attemptFrequencyUncertaintyLog10)
+        || Number(record.attemptFrequencyUncertaintyLog10) < 0
+        || record.prefactorConverged !== true)) {
+      throw new Error(`kinetic prefactor for ${candidateId} is incomplete, invalid, or unconverged`);
+    }
     return {
       candidateId,
       candidateDigestSha256: candidate.candidateDigestSha256,
@@ -243,6 +295,10 @@ export function validateFrozenActionBarrierResponse(response, expected) {
       maximumForceElectronVoltPerAngstrom: Number(record.maximumForceElectronVoltPerAngstrom),
       imageCount: record.imageCount,
       energyDeltaElectronVolt: finite(record.energyDeltaElectronVolt) ? Number(record.energyDeltaElectronVolt) : null,
+      attemptFrequencyPerSecond: kinetics ? Number(record.attemptFrequencyPerSecond) : null,
+      attemptFrequencyUncertaintyLog10: kinetics
+        ? Number(record.attemptFrequencyUncertaintyLog10) : null,
+      prefactorConverged: Boolean(kinetics),
       converged: true,
     };
   });
@@ -257,6 +313,8 @@ export function validateFrozenActionBarrierResponse(response, expected) {
     candidateBatchSha256: response.candidateBatchSha256,
     initialStructureSha256: response.initialStructureSha256,
     method: methodSummary,
+    kinetics,
+    kineticsEligible: Boolean(kinetics),
     validationPassed: true,
     candidateCount: records.length,
     robustNormalization: { centerElectronVolt: normalized.centerElectronVolt,

@@ -1,5 +1,35 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 346 · catalog-conditional transition-state kinetic leaps
+
+The frozen-frontier calculation handoff can now cross the rate boundary when,
+and only when, the same response supplies a positive converged attempt
+frequency and log-scale uncertainty for every hard-admitted action.  The
+prefactor method, settings SHA-256, recrossing declaration, and
+`requested-hard-admitted-actions-only` catalog scope are mandatory.  Partial
+prefactor payloads fail closed; a barrier-only response retains the exact Build
+345 ranking behavior and cannot expose a Kelvin or clock control.
+
+With complete evidence, the user may select a physical temperature from 100 to
+1500 K and choose either the maximum-rate action or a reproducible seeded KMC
+draw.  For every frozen action the browser evaluates
+`ln k = ln ν − E_a/(k_B T)` in log space, carries barrier and prefactor
+uncertainty as log-rate bounds, and normalizes event probabilities only over
+that immutable catalog.  Kinetic mode bypasses the geometric score ordering,
+forces one serial whole-cluster action, and changes neither its coordinates nor
+any species, overlap, collision, boundary, coordination, angle, marking, or
+feedstock certificate.
+
+The seeded arm also draws `Δt = −ln(u)/Σk` from a second receipt-bound uniform.
+The catalog-conditional clock advances only after the selected action is
+rechecked and committed.  Request, response, methods, temperature, seed,
+uniforms, selected action, rates, waiting time, and clock before/after are all
+retained in the structural-leap receipt.  This is a realistic HTST/KMC leap
+over an explicitly enumerated local event set—not MD, a complete mechanism
+catalog, a transferable potential, an equilibrium ensemble, a diffusion or
+nucleation rate, or unconditional physical time.  Unenumerated mechanisms,
+recrossing, correlated events, quantum effects, and model error remain open.
+
 ## Build 345 · an exact frozen-frontier action-barrier checkpoint
 
 Material growth can now pause after candidate enumeration and hard admission,
