@@ -86,6 +86,8 @@ export function buildFiniteTransitionNetwork(rawHistory) {
     temperatureKelvin: record.temperatureKelvin,
     methodSettingsSha256: record.methodSettingsSha256,
     geometricPathObservable: record.geometricPathObservable,
+    initialStateGeometricDescriptor: record.initialStateGeometricDescriptor,
+    finalStateGeometricDescriptor: record.finalStateGeometricDescriptor,
     freeEnergySettingsSha256: record.freeEnergySettingsSha256,
     chemicalPotentialSettingsSha256: record.chemicalPotentialSettingsSha256,
   }));

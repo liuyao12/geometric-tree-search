@@ -1,5 +1,28 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 376 · observation-wide global geometric order
+
+Every committed exact-state edge can now carry independently reconstructed
+descriptors of its complete initial and final material configurations. Fixed
+material sites and dynamic path sites are reunited before measurement, and a
+repeated state hash must reproduce the same composition, contact graph,
+coordination statistics, and rotational invariants on every incoming edge.
+Inconsistent endpoint geometry fails closed rather than being averaged.
+
+The finite-network master equation propagates those state observables as
+population-weighted mean coordination and global Steinhardt Q₄/Q₆. The new
+interactive panel shares the selected initial state and observed-network
+horizon, plots all three trajectories, and reports their instantaneous edge-
+traffic currents. A separate state-derivative calculation must reproduce each
+current to numerical tolerance.
+
+These descriptors are evaluated on the supplied finite point set at the
+explicit contact reach. Boundary atoms are included and periodic images are
+not invented. Q₄/Q₆ are rotational invariants here, not automatic phase
+labels; contacts are not chemical bonds, and the conditional finite-network
+trajectory is not equilibrium, thermodynamic crystallinity, or a complete
+growth law.
+
 ## Build 375 · traffic-weighted structural-order current
 
 Committed reversible edges now retain the geometry of their validated

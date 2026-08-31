@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { appendCommittedTransition, auditMicroscopicInversePair }
   from "./reversible-transition-lineage.mjs";
+import { buildGeometricStateDescriptor } from "./geometric-state-descriptor.mjs";
 
 const sha = (character) => character.repeat(64);
 const temperatureKelvin = 600;
@@ -30,18 +31,24 @@ const geometry = (direction) => ({ contactReach: 1.35, contactResolved: true,
   meanDynamicCoordinationDelta: .5 * direction,
   maximumAdjacentDisplacementAngstrom: .2,
   geometricCharacter: direction > 0 ? "contact-forming" : "contact-breaking" });
+const stateDescriptor = buildGeometricStateDescriptor(Array.from({ length: 20 }, (_, index) => ({
+  species: "Na", positionAngstrom: [index, 0, 0] })), { contactReach: 1.35 });
 const forward = { ...base, eventId: "hop-forward", candidateId: "a-to-b",
   initialGeometrySha256: sha("a"), finalGeometrySha256: sha("b"),
   committedStateSha256: sha("b"), barrierElectronVolt: .5,
   energyDeltaElectronVolt: .1, logRatePerSecond: 0,
   systemFreeEnergyDeltaElectronVolt: .1, grandPotentialDeltaElectronVolt: .1,
-  geometricPathObservable: geometry(1) };
+  geometricPathObservable: geometry(1),
+  initialStateGeometricDescriptor: stateDescriptor,
+  finalStateGeometricDescriptor: stateDescriptor };
 const reverse = { ...base, eventId: "hop-reverse", candidateId: "b-to-a",
   initialGeometrySha256: sha("b"), finalGeometrySha256: sha("a"),
   committedStateSha256: sha("a"), barrierElectronVolt: .4,
   energyDeltaElectronVolt: -.1, logRatePerSecond: .1 * inverseThermalEnergy,
   systemFreeEnergyDeltaElectronVolt: -.1, grandPotentialDeltaElectronVolt: -.1,
-  geometricPathObservable: geometry(-1) };
+  geometricPathObservable: geometry(-1),
+  initialStateGeometricDescriptor: stateDescriptor,
+  finalStateGeometricDescriptor: stateDescriptor };
 
 const audit = auditMicroscopicInversePair(forward, reverse);
 assert.equal(audit.oppositeDirections, false);
@@ -59,6 +66,7 @@ assert.equal(second.inverseEventId, "hop-forward");
 assert.equal(second.exactInversePairCount, 1);
 assert.equal(second.inverseAudit.massConservingHopPair, true);
 assert.equal(second.history[0].geometricPathObservable.netContactDelta, 1);
+assert.equal(second.history[0].initialStateGeometricDescriptor.atomCount, 20);
 
 assert.throws(() => appendCommittedTransition([], { ...forward,
   geometricPathObservable: { ...geometry(1), finalContactCount: 5 } }),

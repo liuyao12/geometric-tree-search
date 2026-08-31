@@ -1,5 +1,42 @@
 # Recursive GCTS benchmark for material growth
 
+### Observation-wide global geometric order (Build 376)
+
+Build 376 supplies the observation-wide counterpart to the path-local
+structural current. For every exact state endpoint, it reconstructs the full
+material point set from fixed sites and the dynamic coordinate-path domain,
+then computes species counts, a contact graph at a shared multiple of the
+median nearest-neighbor distance, coordination statistics, same-species and
+species-pair contact fractions, and global Steinhardt Q₄ and Q₆.
+
+The descriptor is invariant to atom order, translation, and proper rotation.
+The transition-lineage contract requires paired initial/final descriptors and
+checks their integer/contact identities. When multiple directed edges touch
+the same exact-state hash, every descriptor field must agree within declared
+numerical tolerance. This makes the state observable a property of one exact
+geometry rather than an edge-specific annotation.
+
+For the conditional state probabilities `p_i(t)`, the displayed order
+trajectory is
+
+`<A>(t) = Σ_i p_i(t) A_i`,
+
+for `A ∈ {Q₄,Q₆,Z}`. Its instantaneous observed-network current is
+
+`d<A>/d(qt) = Σ_ij T_ij (A_j - A_i)`,
+
+where `T_ij = p_i k_ij/q`. The implementation independently constructs
+`dp/d(qt)` and verifies the equivalent state-moment derivative for each
+observable. The interactive horizon control therefore changes both the
+displayed population-weighted order and its local current without changing
+state geometry or rates.
+
+This is a finite-window point-set statistic. The descriptor deliberately
+records that the observation boundary is included and periodic images are
+absent. It supplies no bond order, phase classification, bulk limit,
+thermodynamic order parameter, equilibrium ensemble, or mechanism-complete
+structural kinetics law.
+
 ### Traffic-weighted structural-order current (Build 375)
 
 The committed transition contract now preserves each validated path's local

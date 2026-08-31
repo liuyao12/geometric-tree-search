@@ -29,6 +29,80 @@ function rootSumSquares(values) {
   return Math.sqrt(values.filter(Number.isFinite).reduce((sum, value) => sum + value * value, 0));
 }
 
+function normalizedStateGeometricDescriptor(raw, label) {
+  if (raw == null) return null;
+  const atomCount = optionalFinite(raw.atomCount, `${label} atom count`, { nonnegative: true });
+  if (!Number.isInteger(atomCount) || atomCount < 2) {
+    throw new Error(`${label} atom count must be an integer of at least two`);
+  }
+  const speciesCounts = Object.fromEntries(Object.entries(raw.speciesCounts || {})
+    .map(([species, count]) => [requiredText(species, `${label} species`), Number(count)])
+    .sort(([first], [second]) => first.localeCompare(second)));
+  if (!Object.keys(speciesCounts).length || Object.values(speciesCounts).some((count) =>
+    !Number.isInteger(count) || count <= 0)
+      || Object.values(speciesCounts).reduce((sum, count) => sum + count, 0) !== atomCount) {
+    throw new Error(`${label} species counts must be positive integers summing to atom count`);
+  }
+  const contactReach = optionalFinite(raw.contactReach, `${label} contact reach`, { positive: true });
+  if (!(contactReach > 1)) throw new RangeError(`${label} contact reach must exceed one`);
+  const medianNearestNeighborAngstrom = optionalFinite(raw.medianNearestNeighborAngstrom,
+    `${label} median nearest-neighbor distance`, { positive: true });
+  const cutoffAngstrom = optionalFinite(raw.cutoffAngstrom, `${label} cutoff`, { positive: true });
+  if (Math.abs(cutoffAngstrom - contactReach * medianNearestNeighborAngstrom) > 1e-10) {
+    throw new Error(`${label} cutoff must equal contact reach times median nearest-neighbor distance`);
+  }
+  const contactCount = optionalFinite(raw.contactCount, `${label} contact count`,
+    { nonnegative: true });
+  const minimumCoordination = optionalFinite(raw.minimumCoordination,
+    `${label} minimum coordination`, { nonnegative: true });
+  const maximumCoordination = optionalFinite(raw.maximumCoordination,
+    `${label} maximum coordination`, { nonnegative: true });
+  if (![contactCount, minimumCoordination, maximumCoordination].every(Number.isInteger)) {
+    throw new Error(`${label} contact and coordination extrema must be integers`);
+  }
+  const meanCoordination = optionalFinite(raw.meanCoordination,
+    `${label} mean coordination`, { nonnegative: true });
+  const coordinationStandardDeviation = optionalFinite(raw.coordinationStandardDeviation,
+    `${label} coordination standard deviation`, { nonnegative: true });
+  if (Math.abs(meanCoordination * atomCount - 2 * contactCount) > 1e-8
+      || minimumCoordination > meanCoordination || maximumCoordination < meanCoordination) {
+    throw new Error(`${label} coordination moments are inconsistent with its contact graph`);
+  }
+  const sameSpeciesContactFraction = contactCount ? optionalFinite(raw.sameSpeciesContactFraction,
+    `${label} same-species contact fraction`, { nonnegative: true }) : null;
+  if (sameSpeciesContactFraction != null && sameSpeciesContactFraction > 1) {
+    throw new RangeError(`${label} same-species contact fraction cannot exceed one`);
+  }
+  const speciesPairContactFractions = Object.fromEntries(Object.entries(
+    raw.speciesPairContactFractions || {}).map(([pair, fraction]) =>
+    [requiredText(pair, `${label} species-pair contact`), Number(fraction)])
+    .sort(([first], [second]) => first.localeCompare(second)));
+  if (Object.values(speciesPairContactFractions).some((fraction) =>
+    !Number.isFinite(fraction) || fraction < 0 || fraction > 1)
+      || (contactCount && Math.abs(Object.values(speciesPairContactFractions)
+        .reduce((sum, fraction) => sum + fraction, 0) - 1) > 1e-10)
+      || (!contactCount && Object.keys(speciesPairContactFractions).length)) {
+    throw new Error(`${label} species-pair contact fractions are invalid`);
+  }
+  const steinhardtQ4 = contactCount ? optionalFinite(raw.steinhardtQ4,
+    `${label} Steinhardt Q4`, { nonnegative: true }) : null;
+  const steinhardtQ6 = contactCount ? optionalFinite(raw.steinhardtQ6,
+    `${label} Steinhardt Q6`, { nonnegative: true }) : null;
+  if ([steinhardtQ4, steinhardtQ6].some((value) => value != null && value > 1 + 1e-10)) {
+    throw new RangeError(`${label} Steinhardt order cannot exceed one`);
+  }
+  return {
+    schema: "gcts-global-geometric-state-descriptor-v1",
+    atomCount, speciesCounts, contactReach, medianNearestNeighborAngstrom, cutoffAngstrom,
+    contactCount, meanCoordination, coordinationStandardDeviation,
+    minimumCoordination, maximumCoordination, sameSpeciesContactFraction,
+    speciesPairContactFractions, steinhardtQ4, steinhardtQ6,
+    finiteObservationBoundaryIncluded: true, periodicImagesAdded: false,
+    targetUsed: false, rotationallyInvariant: true, chemicalBondClaimed: false,
+    thermodynamicOrderParameterClaimed: false,
+  };
+}
+
 export function normalizedCommittedTransition(raw) {
   const eventDirection = requiredText(raw?.eventDirection, "event direction");
   if (!["attach", "detach", "hop", "exchange"].includes(eventDirection)) {
@@ -159,6 +233,19 @@ export function normalizedCommittedTransition(raw) {
       targetUsed: false, chemicalBondClaimed: false, physicalTimeInferred: false,
     };
   })();
+  const initialStateGeometricDescriptor = normalizedStateGeometricDescriptor(
+    raw.initialStateGeometricDescriptor, "initial global geometric descriptor");
+  const finalStateGeometricDescriptor = normalizedStateGeometricDescriptor(
+    raw.finalStateGeometricDescriptor, "final global geometric descriptor");
+  if ((initialStateGeometricDescriptor == null) !== (finalStateGeometricDescriptor == null)) {
+    throw new Error("initial and final global geometric descriptors must be supplied together");
+  }
+  if (initialStateGeometricDescriptor
+      && (initialStateGeometricDescriptor.atomCount !== initialAtomCount
+        || finalStateGeometricDescriptor.atomCount !== finalAtomCount
+        || initialStateGeometricDescriptor.contactReach !== finalStateGeometricDescriptor.contactReach)) {
+    throw new Error("global geometric descriptors must match transition atom counts and contact reach");
+  }
   return {
     schema: "gcts-committed-reversible-transition-v1",
     eventId: requiredText(raw.eventId, "event ID"),
@@ -188,6 +275,8 @@ export function normalizedCommittedTransition(raw) {
     initialAtomCount,
     finalAtomCount,
     geometricPathObservable,
+    initialStateGeometricDescriptor,
+    finalStateGeometricDescriptor,
     ...thermodynamicFields,
     targetUsed: false,
   };
