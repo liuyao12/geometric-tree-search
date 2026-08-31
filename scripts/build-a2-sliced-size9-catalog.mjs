@@ -10,6 +10,7 @@ const readNdjson = async path => {
   return text
   .trim().split("\n").filter(Boolean).map(JSON.parse);
 };
+const readJson = async path => JSON.parse(await readFile(new URL(path, root), "utf8"));
 
 // The quotient prover and Prototile3D enumerate the same six proper A2
 // orientations in different orders. Convert a replayed proof motif to the
@@ -48,6 +49,17 @@ const scalarFamilyRows = await readNdjson(
   "data/a2-sliced-alcove-size9-scalar-family-certificates.ndjson"
 );
 const scalarFamilyById = Map.groupBy(scalarFamilyRows, record => record.id);
+const periodicTenBounded = await readJson(
+  "data/a2-sliced-alcove-size9-periodic-copy10-exact500k-summary.json"
+);
+if (periodicTenBounded.classification !== "bounded_inconclusive"
+    || periodicTenBounded.copies !== 10
+    || periodicTenBounded.periodic_certificates.length !== 0) {
+  throw new Error("Invalid bounded ten-copy periodic campaign summary");
+}
+const periodicTenById = new Map(
+  periodicTenBounded.candidates.map(record => [record.id, record])
+);
 const coronaRows = await readNdjson("runs/a2-sliced-size9-corona1.ndjson");
 const coronaById = new Map(coronaRows.map(record => [record.id, record]));
 const radiusTwoRows = await readNdjson("runs/a2-sliced-size9-corona2-focused256-merged.ndjson");
@@ -201,6 +213,7 @@ const candidates = records.map(record => {
   const fourCopy = fourCopyById.get(record.id);
   const reflectedFourCopy = reflectedFourCopyById.get(record.id);
   const scalarFamily = scalarFamilyById.get(record.id) ?? [];
+  const periodicTen = periodicTenById.get(record.id);
   const scalarFamilyComplete = scalarFamily.length === 2
     && new Set(scalarFamily.map(item =>
       item.scalar_family_atomic_obstruction?.include_reflections
@@ -254,6 +267,17 @@ const candidates = records.map(record => {
       periodic_eight_copy_exact_multicover_quadruples: record.periodic_z3.exact_multicover_mitm_quadruples,
       periodic_eight_copy_certificate: certificate,
       periodic_eight_copy_replay_verified: record.periodic_z3.replay?.verified ?? false,
+      periodic_ten_copy_bounded_orbit_total: periodicTen?.orbit_total ?? null,
+      periodic_ten_copy_exact_negative_orbits: periodicTen?.exact_negative_orbits ?? null,
+      periodic_ten_copy_node_capped_orbits: periodicTen?.node_capped_orbits ?? null,
+      periodic_ten_copy_hnf_total: periodicTen?.hnf_total ?? null,
+      periodic_ten_copy_hnfs_exactly_excluded: periodicTen?.hnfs_exactly_excluded ?? null,
+      periodic_ten_copy_exact_multicover_nodes: periodicTen?.exact_multicover_nodes ?? null,
+      periodic_ten_copy_milliseconds: periodicTen?.milliseconds ?? null,
+      periodic_ten_copy_exact_node_limit: periodicTen
+        ? periodicTenBounded.exact_node_limit_per_orbit : null,
+      periodic_ten_copy_bounded_report: periodicTen
+        ? "data/a2-sliced-alcove-size9-periodic-copy10-exact500k-summary.json" : null,
       motif_tiles: certificate?.copies ?? null,
       period_vectors: certificate?.period_vectors ?? null,
       quotient_determinant: certificate?.determinant ?? null,

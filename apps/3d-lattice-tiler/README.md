@@ -251,7 +251,11 @@ Among the first eight priority classes, a complete determinant-12 eight-copy
 screen finds five replay-verified periodic quotients and exhausts all 455 HNF
 quotients for the remaining three, with no solver unknowns. Those three are
 the current leading research entries; the five positives are retained only as
-large-domain periodic controls. A 64-proposal radius-two GCTS/CEGAR campaign
+large-domain periodic controls. A resumable ten-copy exact-GCTS pass then
+tests every one of the 85 HNF orbits for each leader with a 500,000-node cap
+per orbit. It finds no period, exactly rejects 38, 37, and 38 orbits
+respectively (covering 181, 175, and 181 of the 403 HNFs), and leaves the
+other 47, 48, and 47 orbits explicitly inconclusive. A 64-proposal radius-two GCTS/CEGAR campaign
 over all 350 candidates with replayed root coronas remains inconclusive. A
 focused continuation on the three leaders retains 20, 326, and 316 sound
 obstruction clauses respectively, but does not exhaust the outer corona

@@ -1671,6 +1671,14 @@ const slicedSizeNineLeads = A2_SLICED_SIZE9_CANDIDATES.filter(
 assert.deepEqual(slicedSizeNineLeads.map(candidate => candidate.id), [
   "a2sa_9_11364", "a2sa_9_13833", "a2sa_9_15635"
 ]);
+assert.deepEqual(
+  slicedSizeNineLeads.map(candidate => [
+    candidate.screening.periodic_ten_copy_exact_negative_orbits,
+    candidate.screening.periodic_ten_copy_node_capped_orbits,
+    candidate.screening.periodic_ten_copy_hnfs_exactly_excluded
+  ]),
+  [[38, 47, 181], [37, 48, 175], [38, 47, 181]]
+);
 assert.ok(slicedSizeNineLeads.every(candidate =>
   candidate.screening.periodic_eight_copy_complete
   && candidate.screening.periodic_solver_unknowns === 0
