@@ -1,5 +1,38 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 355 · validated attachment velocity → kinetic growth habit
+
+The portal now separates equilibrium habit from orientation-dependent growth
+habit. A second exact, local handoff requests steady normal interface velocities
+`v(n̂)` for the current specimen at one explicitly declared temperature and
+driving condition. Returned data must match the structure, request, intrinsic
+specimen frame, method settings, and driving-condition digest; every oriented
+velocity remains positive at its three-sigma lower bound and the supplied
+normals must form a bounded kinetic-Wulff envelope.
+
+Validated velocities produce a normalized kinetic-Wulff construction beside the
+equilibrium `γ(n̂)` construction. Synthetic faceted-plate, axial-needle, and
+polar-growth previews make the distinction explorable before physical evidence
+is loaded. Opposite oriented terminations remain distinct. The kinetic card
+shows the supplied velocity spectrum, active facets, method, temperature, and
+driving-condition provenance.
+
+Users may explicitly enable a bounded orientation-speed prior for finite,
+target-free spherical-nucleus growth. A compact signed angular kernel
+interpolates only inside the selected 15°, 30°, or 45° reach; unsupported
+candidates abstain. The score is the bounded log velocity contrast relative to
+the geometric mean of the validated orientation set. Exact candidate geometry,
+collision and connection gates, and the candidate set remain unchanged, while a
+matched audit reports coverage, abstention, rank inversions, leader changes, and
+the frozen candidate-set digest.
+
+This is not a shortcut from morphology or surface energy: neither the displayed
+habit nor `γ(n̂)` supplies `v(n̂)`. One steady interface velocity field at one
+driving state is not an action barrier, attachment probability, complete event
+catalog, diffusion coefficient, growth law for arbitrary conditions, or an
+integrated physical clock. Candidate-resolved transition-state kinetics remains
+a separate evidence path.
+
 ## Build 354 · validated Wulff evidence → finite-nucleus shape prior
 
 Validated orientation-resolved interfacial energies can now be used, explicitly

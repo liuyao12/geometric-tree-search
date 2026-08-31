@@ -106,6 +106,9 @@ import { buildInterfacialEnergyRequest, buildNormalizedWulffGeometry,
   from "./external-interfacial-energy.mjs?v=20260831-354";
 import { evaluateWulffShapeRegularizer, matchedWulffRankingAudit }
   from "./wulff-shape-regularizer.mjs?v=20260831-354";
+import { buildAttachmentKineticsRequest, buildNormalizedKineticWulffGeometry,
+  validateAttachmentKineticsResponse, evaluateKineticHabitScore, matchedKineticHabitRankingAudit }
+  from "./external-attachment-kinetics.mjs?v=20260831-355";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -937,6 +940,24 @@ const wulffRegularizerWeightSelect = $("wulffRegularizerWeightSelect");
 const wulffRankingGate = $("wulffRankingGate");
 const wulffRankingState = $("wulffRankingState");
 const wulffRankingAudit = $("wulffRankingAudit");
+const kineticHabitCard = document.querySelector(".kinetic-habit-card");
+const kineticHabitBadge = $("kineticHabitBadge");
+const kineticHabitPresetControls = $("kineticHabitPresetControls");
+const kineticHabitPlot = $("kineticHabitPlot");
+const kineticHabitOrientationState = $("kineticHabitOrientationState");
+const kineticHabitBars = $("kineticHabitBars");
+const downloadKineticHabitRequest = $("downloadKineticHabitRequest");
+const importKineticHabitResponse = $("importKineticHabitResponse");
+const resetKineticHabitPreview = $("resetKineticHabitPreview");
+const kineticHabitResponseInput = $("kineticHabitResponseInput");
+const kineticHabitModeSelect = $("kineticHabitModeSelect");
+const kineticHabitReachSelect = $("kineticHabitReachSelect");
+const kineticHabitWeightSelect = $("kineticHabitWeightSelect");
+const kineticHabitRankingGate = $("kineticHabitRankingGate");
+const kineticHabitRankingState = $("kineticHabitRankingState");
+const kineticHabitRankingAudit = $("kineticHabitRankingAudit");
+const kineticHabitState = $("kineticHabitState");
+const kineticHabitBoundary = $("kineticHabitBoundary");
 const settlingSensitivityLab = $("settlingSensitivityLab");
 const settlingSensitivityState = $("settlingSensitivityState");
 const settlingSensitivityArms = $("settlingSensitivityArms");
@@ -1890,6 +1911,14 @@ let wulffAngularReachDegrees = 30;
 let wulffRegularizerWeight = .24;
 let wulffShapeEvaluations = 0;
 let lastWulffRankingAudit = null;
+let attachmentKineticsRequestRuntime = null;
+let attachmentKineticsValidationAudit = null;
+let selectedKineticHabitPreset = "faceted";
+let kineticHabitMode = "display";
+let kineticHabitReachDegrees = 30;
+let kineticHabitWeight = .24;
+let kineticHabitEvaluations = 0;
+let lastKineticHabitRankingAudit = null;
 let externalTrajectoryCovarianceMode = "display";
 let currentPhysicsPairProgress = null;
 let currentPhysicsPairIntervention = null;
@@ -2087,6 +2116,7 @@ const GROWTH_PROTOCOL_DEFAULTS = Object.freeze({
   solutePartitionMode: "none", solutePartitionWeight: .24,
   frontMorphologyMode: "none", frontMorphologyWeight: .24,
   wulffRankingMode: "display", wulffAngularReachDegrees: 30, wulffRegularizerWeight: .24,
+  kineticHabitMode: "display", kineticHabitReachDegrees: 30, kineticHabitWeight: .24,
   capillaryGeometryMode: "none", capillaryGeometryWeight: .24,
   epitaxyTemplateMode: "none", epitaxyWeight: .24,
   externalDriveMode: "none", externalDriveWeight: .24,
@@ -3715,7 +3745,7 @@ async function downloadInterfacialEnergyRequest() {
   const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-354",
+  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-355",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256,
@@ -3749,6 +3779,248 @@ async function validateInterfacialEnergyFile(file) {
   renderWulffEvidence();
 }
 
+function syntheticKineticHabitOrientations(preset, dimension) {
+  if (dimension === 2) return Array.from({ length: 16 }, (_, index) => {
+    const angle = 2 * Math.PI * index / 16;
+    const harmonic = preset === "needle" ? .48 * Math.cos(2 * angle)
+      : preset === "polar" ? .42 * Math.cos(angle) : -.34 * Math.cos(4 * angle);
+    return { orientationId: `preview-${index + 1}`, normal: [Math.cos(angle), Math.sin(angle)],
+      normalGrowthVelocity: Math.max(.18, 1 + harmonic), uncertainty: .025 };
+  });
+  const velocity = (normal) => {
+    if (preset === "needle") return Math.abs(normal[2]) > .8 ? 2.1 : .65;
+    if (preset === "polar") return normal[2] > .8 ? 1.9 : normal[2] < -.8 ? .42 : .8;
+    return Math.abs(normal[2]) > .8 ? .46 : 1.15;
+  };
+  return [[1, 0, 0], [-1, 0, 0], [0, 1, 0], [0, -1, 0], [0, 0, 1], [0, 0, -1]]
+    .map((normal, index) => ({ orientationId: `axis-${index + 1}`, normal,
+      normalGrowthVelocity: velocity(normal), uncertainty: .025 }));
+}
+
+function activeKineticHabitEvidence() {
+  if (attachmentKineticsValidationAudit) return { orientations: attachmentKineticsValidationAudit.orientations,
+    geometry: attachmentKineticsValidationAudit.geometry, validated: true };
+  const dimension = currentMaterial().intrinsicDimension === 2 ? 2 : 3;
+  const orientations = syntheticKineticHabitOrientations(selectedKineticHabitPreset, dimension);
+  return { orientations, geometry: buildNormalizedKineticWulffGeometry(orientations, dimension), validated: false };
+}
+
+function kineticHabitGate() {
+  if (!attachmentKineticsValidationAudit) return { active: false, reason: "validate physical steady v(n̂) first" };
+  if (!attachmentKineticsRequestRuntime?.request?.specimen?.orientationBasisCartesian) {
+    return { active: false, reason: "the validated response has no bound specimen orientation basis" };
+  }
+  if (kineticHabitMode !== "rank") return { active: false, reason: "display only · frontier ranking unchanged" };
+  if (confinementSelect?.value !== "sphere") return { active: false, reason: "select Finite nucleus · sphere" };
+  if (pipelineStage !== 4) return { active: false, reason: "enter material growth to audit the frozen frontier" };
+  if (knownWindowReplayActive()) return { active: false, reason: "waiting for target-free continuation beyond known-window replay" };
+  return { active: true, reason: "validated orientation-speed prior" };
+}
+
+function activeKineticHabitWeight() { return kineticHabitGate().active ? kineticHabitWeight : 0; }
+
+function kineticHabitForFreshSites(fresh, { recordWork = true } = {}) {
+  const gate = kineticHabitGate();
+  const disabled = { available: Boolean(attachmentKineticsValidationAudit), supported: false,
+    enabled: false, reason: gate.reason, score: 0, targetUsed: false,
+    candidateSetChanged: false, candidateGeometryChanged: false, hardAdmissionChanged: false,
+    actionBarrierInferred: false, attachmentProbabilityInferred: false, physicalTimeIntegrated: false };
+  if (!gate.active) return disabled;
+  try {
+    const result = evaluateKineticHabitScore({ occupiedPositions: atoms.map((atom) => atom.p.toArray()),
+      emittedPositions: fresh.map((site) => site.p.toArray()),
+      orientationBasisCartesian: attachmentKineticsRequestRuntime.request.specimen.orientationBasisCartesian,
+      orientations: attachmentKineticsValidationAudit.orientations,
+      maximumAngleRadians: kineticHabitReachDegrees * Math.PI / 180 });
+    if (recordWork) kineticHabitEvaluations++;
+    return { ...result, enabled: true, angularReachDegrees: kineticHabitReachDegrees,
+      responseSha256: attachmentKineticsValidationAudit.responseSha256 || null,
+      requestSha256: attachmentKineticsValidationAudit.requestSha256 };
+  } catch (error) {
+    if (recordWork) kineticHabitEvaluations++;
+    return { ...disabled, enabled: true,
+      reason: error instanceof Error ? error.message : "kinetic-habit evaluation failed" };
+  }
+}
+
+function captureKineticHabitMatchedRankingAudit(entries) {
+  if (!entries?.length || activeKineticHabitWeight() <= 0) {
+    lastKineticHabitRankingAudit = null; renderKineticHabitControls(); return;
+  }
+  lastKineticHabitRankingAudit = { ...matchedKineticHabitRankingAudit(entries.map((entry) => ({
+    candidateId: entry.candidate.key,
+    baselineScore: entry.selectionScore - activeKineticHabitWeight() * entry.evaluation.kineticHabit.score,
+    regularizedScore: entry.selectionScore, supported: entry.evaluation.kineticHabit.supported }))),
+    candidateSetDigest: frozenFrontierDigest(entries), angularReachDegrees: kineticHabitReachDegrees,
+    effectiveWeight: activeKineticHabitWeight(),
+    responseSha256: attachmentKineticsValidationAudit?.responseSha256 || null,
+    rankingTargetUsed: false };
+  renderKineticHabitControls();
+}
+
+function renderKineticHabitControls() {
+  if (!kineticHabitModeSelect || !kineticHabitRankingState || !kineticHabitRankingAudit) return;
+  const gate = kineticHabitGate();
+  kineticHabitModeSelect.value = kineticHabitMode;
+  kineticHabitReachSelect.value = String(kineticHabitReachDegrees);
+  kineticHabitWeightSelect.value = String(kineticHabitWeight);
+  kineticHabitModeSelect.disabled = !attachmentKineticsValidationAudit;
+  kineticHabitReachSelect.disabled = !attachmentKineticsValidationAudit || kineticHabitMode !== "rank";
+  kineticHabitWeightSelect.disabled = !attachmentKineticsValidationAudit || kineticHabitMode !== "rank";
+  kineticHabitModeSelect.closest(".kinetic-habit-ranking")?.classList.toggle("active", gate.active);
+  kineticHabitRankingGate.textContent = gate.active ? "active soft rank" : "display only";
+  kineticHabitRankingState.textContent = gate.active
+    ? `Validated steady v(n̂) orders unchanged actions inside ${kineticHabitReachDegrees}° oriented coverage; unsupported normals abstain.`
+    : `${gate.reason}. No candidate geometry, hard gate, action barrier, attachment probability, or physical clock changes.`;
+  const values = kineticHabitRankingAudit.querySelectorAll("b");
+  if (lastKineticHabitRankingAudit) {
+    values[0].textContent = `${lastKineticHabitRankingAudit.supportedCandidates}/${lastKineticHabitRankingAudit.candidateCount}`;
+    values[1].textContent = `${lastKineticHabitRankingAudit.rankInversions}/${lastKineticHabitRankingAudit.maximumRankInversions}`;
+    values[2].textContent = lastKineticHabitRankingAudit.candidateSetIdentical ? "unchanged" : "mismatch";
+  } else { values[0].textContent = "—"; values[1].textContent = "—"; values[2].textContent = "unchanged"; }
+}
+
+function renderKineticHabitEvidence() {
+  if (!kineticHabitPlot || !kineticHabitBars) return;
+  let evidence;
+  try { evidence = activeKineticHabitEvidence(); }
+  catch (error) {
+    kineticHabitState.textContent = `Kinetic habit withheld · ${error instanceof Error ? error.message : "invalid evidence"}`;
+    kineticHabitPlot.replaceChildren(); kineticHabitBars.replaceChildren(); return;
+  }
+  const { orientations, geometry, validated } = evidence;
+  kineticHabitCard?.classList.toggle("validated", validated);
+  kineticHabitBadge.textContent = validated ? "validated external evidence" : "illustrative only";
+  resetKineticHabitPreview.hidden = !validated;
+  [...kineticHabitPresetControls.querySelectorAll("button[data-kinetic-preset]")].forEach((button) =>
+    button.setAttribute("aria-pressed", String(button.dataset.kineticPreset === selectedKineticHabitPreset)));
+  const projected = geometry.vertices.map((point) => geometry.intrinsicDimension === 2
+    ? { x: point[0], y: -point[1], depth: 0 }
+    : { x: point[0] + .56 * point[2], y: -.82 * point[1] + .36 * point[2], depth: point[1] + .45 * point[2] });
+  const xValues = projected.map((point) => point.x); const yValues = projected.map((point) => point.y);
+  const minimumX = Math.min(...xValues); const maximumX = Math.max(...xValues);
+  const minimumY = Math.min(...yValues); const maximumY = Math.max(...yValues);
+  const scale = Math.min(244 / Math.max(1e-9, maximumX - minimumX), 166 / Math.max(1e-9, maximumY - minimumY));
+  const map = (point) => [160 + scale * (point.x - (minimumX + maximumX) / 2),
+    106 + scale * (point.y - (minimumY + maximumY) / 2)];
+  const svg = (name, attributes = {}) => { const node = document.createElementNS("http://www.w3.org/2000/svg", name);
+    Object.entries(attributes).forEach(([key, value]) => node.setAttribute(key, String(value))); return node; };
+  kineticHabitPlot.replaceChildren();
+  [[22, 110, 298, 110], [160, 20, 160, 198]].forEach(([x1, y1, x2, y2]) =>
+    kineticHabitPlot.append(svg("line", { x1, y1, x2, y2, class: "kinetic-axis" })));
+  const speedById = new Map(orientations.map((entry) => [entry.orientationId, entry.normalGrowthVelocity]));
+  const low = Math.min(...speedById.values()); const high = Math.max(...speedById.values());
+  if (geometry.intrinsicDimension === 3) [...geometry.facets].sort((first, second) => {
+    const mean = (facet) => facet.vertexIndices.reduce((sum, index) => sum + projected[index].depth, 0) / facet.vertexIndices.length;
+    return mean(first) - mean(second);
+  }).forEach((facet) => {
+    const points = facet.vertexIndices.map((index) => map(projected[index]).join(",")).join(" ");
+    const relative = (speedById.get(facet.orientationId) - low) / Math.max(1e-9, high - low);
+    kineticHabitPlot.append(svg("polygon", { points, class: "kinetic-face",
+      fill: `hsla(${22 + 330 * relative},78%,${51 + 6 * relative}%,.22)` }));
+  });
+  const edges = new Set();
+  if (geometry.intrinsicDimension === 2) geometry.vertices.forEach((_, index) => edges.add(`${index}:${(index + 1) % geometry.vertices.length}`));
+  else geometry.facets.forEach((facet) => facet.vertexIndices.forEach((index, position) => {
+    const next = facet.vertexIndices[(position + 1) % facet.vertexIndices.length];
+    edges.add([index, next].sort((a, b) => a - b).join(":"));
+  }));
+  edges.forEach((key) => { const [first, second] = key.split(":").map(Number);
+    const a = map(projected[first]); const b = map(projected[second]);
+    kineticHabitPlot.append(svg("line", { x1: a[0], y1: a[1], x2: b[0], y2: b[1], class: "kinetic-edge" })); });
+  const caption = svg("text", { x: 12, y: 211, class: "kinetic-caption" });
+  caption.textContent = `${geometry.intrinsicDimension}D normalized kinetic envelope · ${geometry.vertexCount} vertices · ${geometry.facetCount} active facets`;
+  kineticHabitPlot.append(caption);
+  const maximum = Math.max(...orientations.map((entry) => entry.normalGrowthVelocity));
+  kineticHabitBars.replaceChildren(...orientations.map((entry) => { const row = document.createElement("div");
+    const label = document.createElement("b"); const bar = document.createElement("i"); const value = document.createElement("span");
+    label.textContent = entry.orientationId; bar.style.setProperty("--kinetic-bar", `${100 * entry.normalGrowthVelocity / maximum}%`);
+    value.textContent = validated ? `${entry.normalGrowthVelocity.toExponential(2)} m/s` : `${entry.normalGrowthVelocity.toPrecision(3)} a.u.`;
+    row.append(label, bar, value); return row; }));
+  kineticHabitOrientationState.textContent = validated
+    ? `${orientations.length} validated velocities · ${attachmentKineticsValidationAudit.drivingCondition.temperatureKelvin} K`
+    : `${orientations.length} synthetic directions · arbitrary v units`;
+  kineticHabitState.textContent = validated
+    ? `Request ${attachmentKineticsValidationAudit.requestSha256.slice(0, 12)} · ${attachmentKineticsValidationAudit.method.program} · ${geometry.activeOrientationIds.length}/${orientations.length} supplied normals active in the kinetic envelope.`
+    : `Synthetic ${selectedKineticHabitPreset} preview · velocities are pedagogical and have no material identity or physical units.`;
+  kineticHabitBoundary.textContent = validated
+    ? kineticHabitGate().active
+      ? "Validated steady v(n̂) supplies an opt-in kinetic-habit ordering over the unchanged target-free frontier. It is scoped to one driving condition and does not infer an action barrier, attachment probability, diffusion law, or physical clock."
+      : "Validated v(n̂) is scoped to this exact specimen, method, and driving condition. The finite kinetic-Wulff envelope is not γ(n̂), equilibrium habit, a complete mechanism catalog, an action barrier, or integrated physical time."
+    : "The preview is pedagogical. A kinetic-Wulff envelope is conditional on one declared driving condition; it is not γ(n̂), an action barrier, attachment probability, diffusion law, or integrated physical time.";
+  renderKineticHabitControls();
+}
+
+function resetAttachmentKineticsRoundTrip() {
+  if (externalActionBarrierCheckpoint) releaseExternalActionBarrierCheckpoint(
+    "Action-barrier checkpoint released because orientation-kinetics evidence changed.");
+  attachmentKineticsRequestRuntime = null; attachmentKineticsValidationAudit = null;
+  kineticHabitMode = "display"; lastKineticHabitRankingAudit = null;
+  if (importKineticHabitResponse) importKineticHabitResponse.disabled = true;
+  renderKineticHabitEvidence();
+}
+
+function attachmentKineticsReceipt() {
+  const request = attachmentKineticsRequestRuntime ? { requestSha256: attachmentKineticsRequestRuntime.requestSha256,
+    structureSha256: attachmentKineticsRequestRuntime.structureSha256,
+    intrinsicDimension: attachmentKineticsRequestRuntime.intrinsicDimension,
+    orientationBasisCartesian: attachmentKineticsRequestRuntime.request.specimen.orientationBasisCartesian,
+    targetUsed: false } : null;
+  if (!attachmentKineticsValidationAudit) return { request, validation: null,
+    ranking: { mode: kineticHabitMode, active: false, targetUsed: false } };
+  const audit = attachmentKineticsValidationAudit;
+  return { request, validation: { schema: audit.schema, requestSha256: audit.requestSha256,
+    responseSha256: audit.responseSha256, structureSha256: audit.structureSha256,
+    intrinsicDimension: audit.intrinsicDimension, method: audit.method, drivingCondition: audit.drivingCondition,
+    units: audit.units, orientations: audit.orientations.map((entry) => ({ ...entry, normal: [...entry.normal] })),
+    geometry: audit.geometry, candidateSetChanged: false,
+    candidateRankingChanged: activeKineticHabitWeight() > 0, actionBarrierInferred: false,
+    attachmentProbabilityInferred: false, physicalTimeIntegrated: false, targetUsed: false },
+    ranking: { mode: kineticHabitMode, active: activeKineticHabitWeight() > 0,
+      angularReachDegrees: kineticHabitReachDegrees, effectiveWeight: activeKineticHabitWeight(),
+      evaluations: kineticHabitEvaluations, matchedRankingAudit: lastKineticHabitRankingAudit,
+      finiteNucleusRequired: true, candidateSetChanged: false, candidateGeometryChanged: false,
+      hardAdmissionChanged: false, targetUsed: false } };
+}
+
+async function downloadAttachmentKineticsRequest() {
+  const configuration = await externalPhysicsConfigurationPayload(referenceAtoms, "supplied observation");
+  const material = currentMaterial(); const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
+  const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
+    intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
+  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-355",
+    scenarioId: scenarioSelect.value, materialName: material.name,
+    elements: material.actualElements ? [...material.actualElements] : [...material.elements],
+    structureSha256: configuration.structureSha256, intrinsicDimension, orientationBasisCartesian,
+    sourceProvenance: scenarioSelect.value === "imported" ? importedStructure?.metadata || null
+      : material.fixtureProvenance || { fixture: material.name },
+    recordedConditions: activeMeasurementConditions(), targetUsed: false, targetCoordinatesEmbedded: false });
+  const serialized = JSON.stringify(request, null, 2); const requestSha256 = await receiptSha256(serialized);
+  attachmentKineticsValidationAudit = null;
+  attachmentKineticsRequestRuntime = { request, requestSha256,
+    structureSha256: configuration.structureSha256, intrinsicDimension };
+  importKineticHabitResponse.disabled = false;
+  const blob = new Blob([serialized], { type: "application/json" }); const url = URL.createObjectURL(blob);
+  const link = document.createElement("a"); link.href = url;
+  link.download = `gcts-${scenarioSelect.value}-orientation-kinetics-request.json`;
+  document.body.appendChild(link); link.click(); link.remove(); setTimeout(() => URL.revokeObjectURL(url), 0);
+  receiptStatus.textContent = `Attachment-kinetics request downloaded · exact ${intrinsicDimension}D specimen ${configuration.structureSha256.slice(0, 12)} · request ${requestSha256.slice(0, 12)} · nothing submitted.`;
+  renderKineticHabitEvidence();
+}
+
+async function validateAttachmentKineticsFile(file) {
+  if (!file || file.size > 2 * 1024 * 1024) throw new Error("attachment-kinetics response exceeds the 2 MB local limit");
+  if (!attachmentKineticsRequestRuntime) throw new Error("download the exact request before validating a response");
+  const responseText = await file.text(); const response = JSON.parse(responseText);
+  attachmentKineticsValidationAudit = validateAttachmentKineticsResponse(response, attachmentKineticsRequestRuntime);
+  attachmentKineticsValidationAudit.responseSha256 = await receiptSha256(responseText);
+  lastKineticHabitRankingAudit = null;
+  if (externalActionBarrierCheckpoint) releaseExternalActionBarrierCheckpoint(
+    "Action-barrier checkpoint released because validated orientation-kinetics evidence changed ranking provenance.");
+  receiptStatus.textContent = `Attachment kinetics validated · ${attachmentKineticsValidationAudit.orientations.length} oriented velocities · ${attachmentKineticsValidationAudit.geometry.facetCount} active kinetic-Wulff facets · display only.`;
+  renderKineticHabitEvidence();
+}
+
 function clearExternalPhysicsRoundTrip() {
   resetExternalForceGeometry();
   dynamicalEvidenceHandoffReceipt = null;
@@ -3760,6 +4032,7 @@ function clearExternalPhysicsRoundTrip() {
   externalPhysicsTrajectoryGeometryEnabled = false;
   resetExternalTrajectoryCovarianceMode();
   resetInterfacialEnergyRoundTrip();
+  resetAttachmentKineticsRoundTrip();
 }
 
 function bindExternalForceGeometryToReference(source) {
@@ -10293,7 +10566,7 @@ function renderGrowthMechanismAudit() {
     const empty = document.createElement("p"); empty.textContent = "Advance one tree-search update to map its local geometric environment."; growthMechanismLedger.appendChild(empty);
   }
   renderGrowthUncertaintyBudget();
-  growthMechanismBoundary.textContent = `Phenotypes and uncertainty budgets are assigned after the candidate geometry and decision are frozen. Up to ${MAXIMUM_POSE_AUDITS_PER_LEAP} deterministic pose audits replay hard geometry at the larger of measured pair uncertainty and half the resolved isometry tolerance; the capped set is retained in encounter order, target-blind, and never changes admission or rank. This is a bounded sensitivity audit, not a posterior probability, confidence interval, thermal ensemble, dynamics, or calibrated robustness certificate. ${activeMicrostructureCouplingWeight() > 0 ? microstructureCouplingMode === "interface-accommodate" ? `The declared ${microstructureCouplingLabel()} experiment projects only candidate-induced shared lineage membership and ranks support, contact connectivity, and proper misorientation over unchanged actions.` : `The declared ${microstructureCouplingLabel()} experiment uses only proximity to frozen input-derived roles as a soft rank term over unchanged actions.` : "Heterogeneous-geometry and interface-accommodation descriptors are diagnostic only."} ${activeFrontMorphologyWeight() > 0 ? `The ${frontMorphologyLabel()} experiment uses parent-local angular support as another soft ordering term.` : "Front morphology is diagnostic only."} ${activeWulffRegularizerWeight() > 0 ? `Validated oriented γ regularizes finite-nucleus support mismatch at weight ${activeWulffRegularizerWeight().toFixed(2)} and abstains beyond ${wulffAngularReachDegrees}°.` : "The Wulff evidence does not rank this frontier."} ${activeCapillaryGeometryWeight() > 0 ? `The ${capillaryGeometryLabel()} experiment uses finite 3D solid-angle occupancy around emitted sites.` : "Discrete capillary geometry is diagnostic only."} ${activeThermalFieldWeight() > 0 ? `The ${thermalFieldLabel()} experiment supplies a declared reduced scalar field relative to the observed seed.` : "The thermal-field control is isothermal."} ${activeEpitaxyWeight() > 0 ? `The declared ${epitaxyTemplateLabel()} contributes an interfacial registry score without substrate atoms.` : "No epitaxial template ranks the frontier."} ${activeFeedExposureWeight() > 0 ? `The ${feedExposureLabel()} contributes finite-ray geometric visibility.` : "No source-ray shadowing term ranks the frontier."} No defect identity, differential mean curvature, adhesion, interface energy, Kelvin temperature, heat flow, flux, physical mechanism, formation energy, mobility, or rate is inferred.`;
+  growthMechanismBoundary.textContent = `Phenotypes and uncertainty budgets are assigned after the candidate geometry and decision are frozen. Up to ${MAXIMUM_POSE_AUDITS_PER_LEAP} deterministic pose audits replay hard geometry at the larger of measured pair uncertainty and half the resolved isometry tolerance; the capped set is retained in encounter order, target-blind, and never changes admission or rank. This is a bounded sensitivity audit, not a posterior probability, confidence interval, thermal ensemble, dynamics, or calibrated robustness certificate. ${activeMicrostructureCouplingWeight() > 0 ? microstructureCouplingMode === "interface-accommodate" ? `The declared ${microstructureCouplingLabel()} experiment projects only candidate-induced shared lineage membership and ranks support, contact connectivity, and proper misorientation over unchanged actions.` : `The declared ${microstructureCouplingLabel()} experiment uses only proximity to frozen input-derived roles as a soft rank term over unchanged actions.` : "Heterogeneous-geometry and interface-accommodation descriptors are diagnostic only."} ${activeFrontMorphologyWeight() > 0 ? `The ${frontMorphologyLabel()} experiment uses parent-local angular support as another soft ordering term.` : "Front morphology is diagnostic only."} ${activeWulffRegularizerWeight() > 0 ? `Validated oriented γ regularizes finite-nucleus support mismatch at weight ${activeWulffRegularizerWeight().toFixed(2)} and abstains beyond ${wulffAngularReachDegrees}°.` : "The Wulff evidence does not rank this frontier."} ${activeKineticHabitWeight() > 0 ? `Validated steady v(n̂) ranks unchanged actions at weight ${activeKineticHabitWeight().toFixed(2)} and abstains beyond ${kineticHabitReachDegrees}°.` : "The kinetic-habit evidence does not rank this frontier."} ${activeCapillaryGeometryWeight() > 0 ? `The ${capillaryGeometryLabel()} experiment uses finite 3D solid-angle occupancy around emitted sites.` : "Discrete capillary geometry is diagnostic only."} ${activeThermalFieldWeight() > 0 ? `The ${thermalFieldLabel()} experiment supplies a declared reduced scalar field relative to the observed seed.` : "The thermal-field control is isothermal."} ${activeEpitaxyWeight() > 0 ? `The declared ${epitaxyTemplateLabel()} contributes an interfacial registry score without substrate atoms.` : "No epitaxial template ranks the frontier."} ${activeFeedExposureWeight() > 0 ? `The ${feedExposureLabel()} contributes finite-ray geometric visibility.` : "No source-ray shadowing term ranks the frontier."} No defect identity, differential mean curvature, adhesion, interface energy, Kelvin temperature, heat flow, flux, physical mechanism, formation energy, action barrier, attachment probability, or physical clock is inferred.`;
 }
 
 function clusterPlacementIndices(cluster) {
@@ -12991,7 +13264,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260831-354",
+      buildId: "20260831-355",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -14424,6 +14697,19 @@ async function buildExperimentReceipt() {
         growthRateInferred: false,
         physicalTimeIntegrated: false,
       },
+      validatedOrientationKineticsRanking: {
+        role: "optional target-blind steady-normal-velocity ordering over an unchanged finite-nucleus frontier",
+        mode: kineticHabitMode, enabled: activeKineticHabitWeight() > 0, gate: kineticHabitGate(),
+        angularReachDegrees: kineticHabitReachDegrees, effectiveWeight: activeKineticHabitWeight(),
+        evaluations: kineticHabitEvaluations, matchedRankingAudit: lastKineticHabitRankingAudit,
+        orientationInterpolation: "compact quadratic kernel over oriented normals; no antipodal folding",
+        referenceScale: "geometric mean of the validated orientation set",
+        finiteNucleusRequired: true, sphereEnvironmentRequired: true,
+        candidateSetChanged: false, candidateGeometryChanged: false, hardAdmissionChanged: false,
+        heldoutTargetUsed: false, morphologyUsedToInferVelocity: false,
+        interfacialFreeEnergyUsedAsVelocity: false, actionBarrierInferred: false,
+        attachmentProbabilityInferred: false, physicalTimeIntegrated: false,
+      },
       discreteCapillaryGeometryRanking: {
         role: "target-blind soft ordering of unchanged exact actions by local 3D occupied solid angle",
         mode: capillaryGeometryMode,
@@ -14713,6 +14999,7 @@ async function buildExperimentReceipt() {
       externalPhysicsResponseValidation: externalPhysicsResponseValidationReceipt
         ? { ...externalPhysicsResponseValidationReceipt } : null,
       interfacialEnergyEvidence: interfacialEnergyReceipt(),
+      orientationAttachmentKineticsEvidence: attachmentKineticsReceipt(),
       externalActionBarrierCheckpoint: actionBarrierCheckpointReceipt(),
       structuralLeapHistory: { totalEvents: leapEventCount, retainedEvents: leapHistory.length,
         maximumRetainedEvents: MAXIMUM_RETAINED_STRUCTURAL_LEAPS,
@@ -15398,6 +15685,11 @@ function notebookSoftPhysicsSearchReceipt() {
       effectiveWeight: activeWulffRegularizerWeight(),
       matchedRankingAudit: lastWulffRankingAudit,
       candidateSetChanged: false, hardAdmissionChanged: false, targetUsed: false },
+    validatedOrientationKineticsRanking: { mode: kineticHabitMode,
+      angularReachDegrees: kineticHabitReachDegrees, effectiveWeight: activeKineticHabitWeight(),
+      matchedRankingAudit: lastKineticHabitRankingAudit,
+      candidateSetChanged: false, hardAdmissionChanged: false,
+      actionBarrierInferred: false, physicalTimeIntegrated: false, targetUsed: false },
     discreteCapillaryGeometryRanking: { mode: capillaryGeometryMode, effectiveWeight: activeCapillaryGeometryWeight(),
       acceptedMeanScore: mean(acceptedCapillaryGeometryScore) },
     epitaxialRegistryRanking: { mode: epitaxyTemplateMode, effectiveWeight: activeEpitaxyWeight(),
@@ -15480,6 +15772,7 @@ async function buildExperimentNotebookSnapshot() {
     externalPhysicsResponseValidation: externalPhysicsResponseValidationReceipt
       ? { ...externalPhysicsResponseValidationReceipt } : null,
     interfacialEnergyEvidence: interfacialEnergyReceipt(),
+    orientationAttachmentKineticsEvidence: attachmentKineticsReceipt(),
     externalActionBarrierCheckpoint: actionBarrierCheckpointReceipt(),
     structuralLeapHistory: { totalEvents: leapEventCount, retainedEvents: leapHistory.length,
       maximumRetainedEvents: MAXIMUM_RETAINED_STRUCTURAL_LEAPS, truncated: leapEventCount > leapHistory.length,
@@ -15531,7 +15824,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260831-354" },
+    application: { name: "Materials Growth Lab", buildId: "20260831-355" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },
@@ -15679,6 +15972,10 @@ function notebookInterventionFactors(receipt) {
         search.validatedWulffShapeRegularizer?.angularReachDegrees,
         search.validatedWulffShapeRegularizer?.effectiveWeight,
         search.validatedWulffShapeRegularizer?.matchedRankingAudit?.candidateSetDigest || null],
+      kineticHabit: [search.validatedOrientationKineticsRanking?.mode,
+        search.validatedOrientationKineticsRanking?.angularReachDegrees,
+        search.validatedOrientationKineticsRanking?.effectiveWeight,
+        search.validatedOrientationKineticsRanking?.matchedRankingAudit?.candidateSetDigest || null],
       capillaryGeometry: [search.discreteCapillaryGeometryRanking?.mode,
         search.discreteCapillaryGeometryRanking?.effectiveWeight],
       epitaxy: [search.epitaxialRegistryRanking?.mode, search.epitaxialRegistryRanking?.effectiveWeight],
@@ -20497,6 +20794,9 @@ function activeCandidateScoreTerms(entry, includeExploration = true) {
     scoreTerm("wulff-shape", "Wulff shape regularizer", evaluation.wulffShapeRegularizer.score,
       activeWulffRegularizerWeight(), "validated finite-nucleus equilibrium-shape ordering",
       "Externally supplied oriented interfacial energy regularizes support mismatch only; not attachment kinetics, mobility, rate, or time."),
+    scoreTerm("kinetic-habit", "kinetic-Wulff orientation speed", evaluation.kineticHabit.score,
+      activeKineticHabitWeight(), "validated orientation-resolved steady-velocity ordering",
+      "One externally supplied driving condition; not interfacial energy, an action barrier, attachment probability, diffusion law, or integrated time."),
     scoreTerm("capillary", "capillary geometry", evaluation.capillaryGeometry.score,
       activeCapillaryGeometryWeight(), "soft finite solid-angle ordering", "Not curvature energy or capillary pressure."),
     scoreTerm("epitaxy", "epitaxy registry", evaluation.epitaxyRegistry.score,
@@ -20722,6 +21022,7 @@ function oneFactorPolicyTerm(policyId, entry, label) {
     "constraint-tensor": [evaluation.constraintTensor.score, activeConstraintTensorWeight()],
     "front-morphology": [evaluation.frontMorphology.score, activeFrontMorphologyWeight()],
     "wulff-shape": [evaluation.wulffShapeRegularizer.score, activeWulffRegularizerWeight()],
+    "kinetic-habit": [evaluation.kineticHabit.score, activeKineticHabitWeight()],
     "capillary-geometry": [evaluation.capillaryGeometry.score, activeCapillaryGeometryWeight()],
     epitaxy: [evaluation.epitaxyRegistry.score, activeEpitaxyWeight()],
     drive: [evaluation.externalDrive.alignment, activeExternalDriveWeight()],
@@ -22279,6 +22580,8 @@ function capturePolicyComparison(entries, frontierStructuralState = null) {
     { id: "wulff-shape", label: `Wulff shape ${activeWulffRegularizerWeight().toFixed(2)}`,
       score: (entry) => entry.baseScore + activeWulffRegularizerWeight()
         * entry.evaluation.wulffShapeRegularizer.score },
+    { id: "kinetic-habit", label: `kinetic habit ${activeKineticHabitWeight().toFixed(2)}`,
+      score: (entry) => entry.baseScore + activeKineticHabitWeight() * entry.evaluation.kineticHabit.score },
     { id: "capillary-geometry", label: `${capillaryGeometryLabel()} ${activeCapillaryGeometryWeight().toFixed(2)}`,
       score: (entry) => entry.baseScore + activeCapillaryGeometryWeight() * entry.evaluation.capillaryGeometry.score },
     { id: "epitaxy", label: `${epitaxyTemplateLabel()} ${activeEpitaxyWeight().toFixed(2)}`,
@@ -24363,7 +24666,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
   const candidates = [...attachmentCandidates, ...detachmentCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-354",
+    generatedAt: new Date().toISOString(), buildId: "20260831-355",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -24480,6 +24783,7 @@ function scoreFrontierCandidate(candidate, audit) {
       + activeConstraintTensorWeight() * evaluation.constraintTensor.score
       + activeFrontMorphologyWeight() * evaluation.frontMorphology.score
       + activeWulffRegularizerWeight() * evaluation.wulffShapeRegularizer.score
+      + activeKineticHabitWeight() * evaluation.kineticHabit.score
       + activeCapillaryGeometryWeight() * evaluation.capillaryGeometry.score
       + activeEpitaxyWeight() * evaluation.epitaxyRegistry.score
       + activeExternalDriveWeight() * evaluation.externalDrive.alignment
@@ -24504,6 +24808,7 @@ function scoreFrontierCandidate(candidate, audit) {
 async function selectCommutingFrontierBatch(evaluated, generation, frontierStructuralState = null) {
   capturePolicyComparison(evaluated, frontierStructuralState);
   captureWulffMatchedRankingAudit(evaluated);
+  captureKineticHabitMatchedRankingAudit(evaluated);
   const ranked = evaluated.sort((first, second) => second.selectionScore - first.selectionScore
     || first.candidate.key.localeCompare(second.candidate.key));
   ranked.forEach((entry, index) => rankGrowthActionPhysicsFingerprint(entry,
@@ -24746,6 +25051,7 @@ function evaluateCandidate(candidate, {
   const habitAnisotropy = habitAnisotropyForCandidate(candidate, { recordWork });
   const frontMorphology = frontMorphologyForCandidate(candidate, { recordWork });
   const wulffShapeRegularizer = wulffShapeRegularizerForFreshSites(fresh, { recordWork });
+  const kineticHabit = kineticHabitForFreshSites(fresh, { recordWork });
   const capillaryGeometry = capillaryGeometryForFreshSites(fresh, { recordWork });
   const epitaxyRegistry = epitaxyRegistryForFreshSites(fresh, { recordWork });
   const compositionBalance = compositionBalanceForFreshSites(fresh);
@@ -24778,7 +25084,7 @@ function evaluateCandidate(candidate, {
     boundaryFailures, knownFailures, markingAccepted, markingFallback,
     coordinationOverflows, angularViolations, geometricStrain, externalCalibration, affineLoadedGeometricStrain,
     surfaceCompletion, bulkSurfaceDriving, attachmentTopology, habitAnisotropy, frontMorphology,
-    wulffShapeRegularizer, capillaryGeometry, epitaxyRegistry, compositionBalance, feedstockSupply, formalChargeBalance, chargeGeometry, chargeMoment, ionicPair, bondValence,
+    wulffShapeRegularizer, kineticHabit, capillaryGeometry, epitaxyRegistry, compositionBalance, feedstockSupply, formalChargeBalance, chargeGeometry, chargeMoment, ionicPair, bondValence,
     externalDrive, thermalField, solutePartition, constraintRobustness, interfaceAccommodation,
     microstructureCoupling, loopClosure, defectPrecursors, coherencyMemory, collectiveResponse,
     configurationalMultiplicity,
@@ -26702,6 +27008,7 @@ function currentGrowthProtocolSettings() {
     constraintTensorMode, constraintTensorWeight,
     frontMorphologyMode, frontMorphologyWeight, capillaryGeometryMode, capillaryGeometryWeight,
     wulffRankingMode, wulffAngularReachDegrees, wulffRegularizerWeight,
+    kineticHabitMode, kineticHabitReachDegrees, kineticHabitWeight,
     epitaxyTemplateMode, epitaxyWeight,
     externalDriveMode, externalDriveWeight, thermalFieldMode, thermalFieldWeight,
     affineLoadMode, affineLoadMagnitude,
@@ -26764,6 +27071,8 @@ function growthSettingSelects() {
     frontMorphologyMode: frontMorphologySelect, frontMorphologyWeight: frontMorphologyWeightSelect,
     wulffRankingMode: wulffRankingModeSelect, wulffAngularReachDegrees: wulffAngularReachSelect,
     wulffRegularizerWeight: wulffRegularizerWeightSelect,
+    kineticHabitMode: kineticHabitModeSelect, kineticHabitReachDegrees: kineticHabitReachSelect,
+    kineticHabitWeight: kineticHabitWeightSelect,
     capillaryGeometryMode: capillaryGeometrySelect, capillaryGeometryWeight: capillaryGeometryWeightSelect,
     epitaxyTemplateMode: epitaxyTemplateSelect, epitaxyWeight: epitaxyWeightSelect,
     externalDriveMode: externalDriveSelect, externalDriveWeight: externalDriveWeightSelect,
@@ -26910,8 +27219,9 @@ function renderGrowthControlGroupSummaries() {
     activeConstraintTensorWeight() > 0,
     activeFrontMorphologyWeight() > 0,
     activeWulffRegularizerWeight() > 0,
+    activeKineticHabitWeight() > 0,
     activeCapillaryGeometryWeight() > 0, activeEpitaxyWeight() > 0]);
-  growthInterfaceGroupState.textContent = `${interfaceActive}/13 active`;
+  growthInterfaceGroupState.textContent = `${interfaceActive}/14 active`;
   const fieldsActive = activeCount([activeExternalDriveWeight() > 0, activeThermalFieldWeight() > 0,
     affineLoadMode !== "none", activeRobustnessWeight() > 0,
     activeMicrostructureCouplingWeight() > 0, activeLoopClosureWeight() > 0]);
@@ -26955,6 +27265,9 @@ function applyGrowthProtocolSettings(settings, options = {}) {
   wulffRankingMode = settings.wulffRankingMode || "display";
   wulffAngularReachDegrees = Number(settings.wulffAngularReachDegrees) || 30;
   wulffRegularizerWeight = Number(settings.wulffRegularizerWeight) || .24;
+  kineticHabitMode = settings.kineticHabitMode || "display";
+  kineticHabitReachDegrees = Number(settings.kineticHabitReachDegrees) || 30;
+  kineticHabitWeight = Number(settings.kineticHabitWeight) || .24;
   capillaryGeometryMode = settings.capillaryGeometryMode; capillaryGeometryWeight = settings.capillaryGeometryWeight;
   epitaxyTemplateMode = settings.epitaxyTemplateMode; epitaxyWeight = settings.epitaxyWeight;
   externalDriveMode = settings.externalDriveMode; externalDriveWeight = settings.externalDriveWeight;
@@ -28128,6 +28441,7 @@ function syncStageOptions() {
     frontMorphologySelect.value = frontMorphologyMode;
     frontMorphologyWeightSelect.value = String(frontMorphologyWeight);
     renderWulffRankingControls();
+    renderKineticHabitControls();
     capillaryGeometrySelect.value = capillaryGeometryMode;
     capillaryGeometryWeightSelect.value = String(capillaryGeometryWeight);
     epitaxyTemplateSelect.value = epitaxyTemplateMode;
@@ -28455,6 +28769,9 @@ function syncStageOptions() {
     const wulffShapeUse = activeWulffRegularizerWeight() <= 0
       ? ` The Wulff layer is display-only${wulffRankingMode === "shape" ? ` because ${wulffShapeRegularizerGate().reason}` : ""}.`
       : ` A ${activeWulffRegularizerWeight().toFixed(2)} soft validated Wulff-shape term fits translation and one scale to the occupied nucleus, ranks only support-mismatch improvement inside ${wulffAngularReachDegrees}° oriented γ coverage, and abstains elsewhere; it is an equilibrium-shape prior, not attachment kinetics, mobility, or rate.`;
+    const kineticHabitUse = activeKineticHabitWeight() <= 0
+      ? ` The kinetic-habit layer is display-only${kineticHabitMode === "rank" ? ` because ${kineticHabitGate().reason}` : ""}.`
+      : ` A ${activeKineticHabitWeight().toFixed(2)} soft validated kinetic-habit term ranks unchanged actions by log steady-normal-velocity contrast inside ${kineticHabitReachDegrees}° oriented v coverage and abstains elsewhere; it is conditional on one driving state, not γ(n̂), an action barrier, attachment probability, or physical clock.`;
     const capillaryUse = capillaryGeometryMode === "none"
       ? " Local 3D occupied solid angle is diagnostic only."
       : ` A ${capillaryGeometryWeight.toFixed(2)} soft ${capillaryGeometryLabel()} term uses 32 equal-area directions around emitted sites; it is a discrete interface proxy, not curvature or surface energy.`;
@@ -28464,8 +28781,8 @@ function syncStageOptions() {
     growthModeNote.textContent = finiteIceAnchorMode
       ? "This sealed ice gate executes primitive H₂O connection ports with mutually exclusive orientation domains. Clusters² is disabled because no stationary promoted ice production has been certified."
       : hierarchyEnabled
-      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${displacementContactUse}${spinColorUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${ionicPairUse}${bondValenceUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${collectiveResponseUse}${configurationalMultiplicityUse}${constraintTensorUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${wulffShapeUse}${capillaryUse}${epitaxyUse}`
-      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${spinColorUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${ionicPairUse}${bondValenceUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${collectiveResponseUse}${configurationalMultiplicityUse}${constraintTensorUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${wulffShapeUse}${capillaryUse}${epitaxyUse}`;
+      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${displacementContactUse}${spinColorUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${ionicPairUse}${bondValenceUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${collectiveResponseUse}${configurationalMultiplicityUse}${constraintTensorUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${wulffShapeUse}${kineticHabitUse}${capillaryUse}${epitaxyUse}`
+      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${spinColorUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${ionicPairUse}${bondValenceUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${collectiveResponseUse}${configurationalMultiplicityUse}${constraintTensorUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${wulffShapeUse}${kineticHabitUse}${capillaryUse}${epitaxyUse}`;
   }
 }
 
@@ -28473,6 +28790,8 @@ function resetCounters() {
   eventIndex = 0;
   wulffShapeEvaluations = 0;
   lastWulffRankingAudit = null;
+  kineticHabitEvaluations = 0;
+  lastKineticHabitRankingAudit = null;
   oracleCalls = 0;
   grammarDecisions = 0;
   acceptedDecisions = 0;
@@ -29099,6 +29418,7 @@ function stateForCandidate(candidate, evaluation) {
     constraintTensor: evaluation.constraintTensor,
     frontMorphology: evaluation.frontMorphology,
     wulffShapeRegularizer: evaluation.wulffShapeRegularizer,
+    kineticHabit: evaluation.kineticHabit,
     capillaryGeometry: evaluation.capillaryGeometry,
     epitaxyRegistry: evaluation.epitaxyRegistry,
     externalDrive: evaluation.externalDrive,
@@ -29501,6 +29821,7 @@ async function performOffLatticeEvent() {
     arrivalRouteKind: evaluation.arrivalPath.selectedRouteKind,
     frontMorphology: evaluation.frontMorphology,
     wulffShapeRegularizer: evaluation.wulffShapeRegularizer,
+    kineticHabit: evaluation.kineticHabit,
     capillaryGeometry: evaluation.capillaryGeometry,
     feedExposure: evaluation.feedExposure,
     thermalField: evaluation.thermalField,
@@ -31117,6 +31438,20 @@ function rebuildWorld() {
       ));
       decisionGroup.children.at(-1)?.computeLineDistances?.();
     }
+    if (candidateIndex < 12 && candidate.kineticHabit?.supported) {
+      const normal = new THREE.Vector3(...candidate.kineticHabit.candidateNormalCartesian).normalize();
+      const favorable = candidate.kineticHabit.score >= 0;
+      const tangent = new THREE.Vector3(-normal.y, normal.x, 0).normalize().multiplyScalar(.055);
+      const line = new THREE.Line(
+        new THREE.BufferGeometry().setFromPoints([
+          candidate.p.clone().add(tangent).addScaledVector(normal, .18),
+          candidate.p.clone().add(tangent).addScaledVector(normal, .78),
+        ]),
+        new THREE.LineDashedMaterial({ color: favorable ? 0xffaf69 : 0xff6f91,
+          dashSize: .065, gapSize: .035, transparent: true, opacity: .9 }),
+      );
+      line.computeLineDistances(); decisionGroup.add(line);
+    }
     if (markingToggle.checked) {
       const geometry = new THREE.IcosahedronGeometry(1.15, 0);
       const domain = new THREE.LineSegments(
@@ -31205,6 +31540,18 @@ function physicsTranslationRecords(leap = null) {
         ? `${interfacialEnergyValidationAudit.method.family} / ${interfacialEnergyValidationAudit.method.program}; adjacent phase ${interfacialEnergyValidationAudit.interface.adjacentPhase}; response ${interfacialEnergyValidationAudit.responseSha256?.slice(0, 12) || "locally validated"}.`
         : "Download the exact structure-bound request and validate a returned orientation set locally.",
       boundary: "Morphology, facet frequency, undercoordination, and GCTS scores never supply γ. The optional soft term changes only candidate order for a finite target-free nucleus and abstains outside oriented coverage. It does not change candidate geometry or hard admission and is not attachment kinetics, mobility, a growth rate, nucleation rate, or physical time." },
+    { id: "orientation-attachment-kinetics", process: "orientation-resolved steady interface velocity / kinetic growth habit",
+      status: attachmentKineticsValidationAudit ? activeKineticHabitWeight() > 0 ? "soft" : "explicit" : "unavailable",
+      role: activeKineticHabitWeight() > 0 ? "validated orientation-speed ordering"
+        : attachmentKineticsValidationAudit ? "validated normalized kinetic-Wulff display" : "synthetic preview only",
+      executionEffects: { hardAdmission: false, ranking: activeKineticHabitWeight() > 0 },
+      encoding: attachmentKineticsValidationAudit
+        ? `${attachmentKineticsValidationAudit.orientations.length} oriented steady v(n̂) values in m/s at ${attachmentKineticsValidationAudit.drivingCondition.temperatureKelvin} K; halfspaces n̂·x≤v/vmin yield ${attachmentKineticsValidationAudit.geometry.vertexCount} vertices and ${attachmentKineticsValidationAudit.geometry.facetCount} active facets${activeKineticHabitWeight() > 0 ? `; log velocity contrast ranks at w=${activeKineticHabitWeight().toFixed(2)} with ${kineticHabitReachDegrees}° abstaining coverage` : ""}`
+        : "no physical normal velocities; visible faceted/needle/polar envelopes use synthetic arbitrary-unit directions",
+      evidence: attachmentKineticsValidationAudit
+        ? `${attachmentKineticsValidationAudit.method.family} / ${attachmentKineticsValidationAudit.method.program}; ${attachmentKineticsValidationAudit.drivingCondition.description}; response ${attachmentKineticsValidationAudit.responseSha256?.slice(0, 12) || "locally validated"}.`
+        : "Download the exact structure-bound request and validate a returned orientation set locally.",
+      boundary: "Morphology and γ(n̂) never supply v(n̂). The optional soft term changes only candidate order for one finite target-free nucleus under one declared driving condition. It is not an action barrier, attachment probability, complete kinetic law, diffusion coefficient, or physical clock." },
     { id: "steric", process: "short-range repulsion / species contact", status: "hard", role: "hard admission gate",
       encoding: `${coloredDistanceEnvelopes?.records?.length || 0} colored pair envelopes with exact species coincidence and learned hard-exclusion radii${coloredDistanceEnvelopes?.records?.some((record) => record.directionalUncertaintyApplied) ? `; ${coloredDistanceEnvelopes.records.filter((record) => record.directionalUncertaintyApplied).length} retain one-sigma full-Uij support, transported as U_world=R U_local R^T and resolved again along every live pair direction` : ""}`,
       evidence: leapResult,
@@ -31673,6 +32020,7 @@ function physicsEvidenceClass(record) {
 
 const PHYSICS_CONTROL_ROUTES = Object.freeze({
   "hypothesis-separation": { stage: 4, controlId: "policySeparationRegister", label: "Open one-channel intervention" },
+  "orientation-attachment-kinetics": { stage: 4, controlId: "kineticHabitModeSelect", label: "Configure kinetic habit" },
   steric: { stage: 1, controlId: "clusterToleranceSelect", label: "Open metric tolerance" },
   local: { stage: 1, controlId: "geometryModeSelect", label: "Open support geometry" },
   "local-mismatch-map": { stage: 4, controlId: "localConstraintMismatchToggle", label: "Open local mismatch map" },
@@ -33192,7 +33540,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-354",
+    generatedAt: new Date().toISOString(), buildId: "20260831-355",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,
@@ -33932,6 +34280,49 @@ wulffRegularizerWeightSelect?.addEventListener("change", () => {
   wulffRegularizerWeight = [.12, .24, .48].includes(value) ? value : .24;
   lastWulffRankingAudit = null; growthProtocolMode = "custom";
   if (pipelineStage === 4) enterPipelineStage(4); else renderWulffEvidence();
+});
+kineticHabitPresetControls?.addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-kinetic-preset]");
+  if (!button || attachmentKineticsValidationAudit) return;
+  selectedKineticHabitPreset = button.dataset.kineticPreset; renderKineticHabitEvidence();
+});
+downloadKineticHabitRequest?.addEventListener("click", async () => {
+  downloadKineticHabitRequest.disabled = true;
+  try { await downloadAttachmentKineticsRequest(); }
+  catch (error) {
+    receiptStatus.textContent = `Attachment-kinetics request failed closed · ${error instanceof Error ? error.message : "invalid request"}`;
+  } finally { downloadKineticHabitRequest.disabled = false; }
+});
+importKineticHabitResponse?.addEventListener("click", () => kineticHabitResponseInput?.click());
+kineticHabitResponseInput?.addEventListener("change", async () => {
+  const [file] = kineticHabitResponseInput.files || [];
+  try { await validateAttachmentKineticsFile(file); }
+  catch (error) {
+    receiptStatus.textContent = `Attachment-kinetics response rejected · ${error instanceof Error ? error.message : "invalid response"}`;
+  } finally { kineticHabitResponseInput.value = ""; }
+});
+resetKineticHabitPreview?.addEventListener("click", () => {
+  if (externalActionBarrierCheckpoint) releaseExternalActionBarrierCheckpoint(
+    "Action-barrier checkpoint released because orientation-kinetics ranking evidence was removed.");
+  attachmentKineticsValidationAudit = null; kineticHabitMode = "display";
+  lastKineticHabitRankingAudit = null; renderKineticHabitEvidence();
+});
+kineticHabitModeSelect?.addEventListener("change", () => {
+  kineticHabitMode = kineticHabitModeSelect.value === "rank" ? "rank" : "display";
+  lastKineticHabitRankingAudit = null; growthProtocolMode = "custom";
+  if (pipelineStage === 4) enterPipelineStage(4); else renderKineticHabitEvidence();
+});
+kineticHabitReachSelect?.addEventListener("change", () => {
+  const value = Number(kineticHabitReachSelect.value);
+  kineticHabitReachDegrees = [15, 30, 45].includes(value) ? value : 30;
+  lastKineticHabitRankingAudit = null; growthProtocolMode = "custom";
+  if (pipelineStage === 4) enterPipelineStage(4); else renderKineticHabitEvidence();
+});
+kineticHabitWeightSelect?.addEventListener("change", () => {
+  const value = Number(kineticHabitWeightSelect.value);
+  kineticHabitWeight = [.12, .24, .48].includes(value) ? value : .24;
+  lastKineticHabitRankingAudit = null; growthProtocolMode = "custom";
+  if (pipelineStage === 4) enterPipelineStage(4); else renderKineticHabitEvidence();
 });
 
 function structuralStoichiometrySeries() {
@@ -39883,6 +40274,7 @@ renderDatabaseStructureFamily();
 const launchStage = applyLaunchParameters();
 enterPipelineStage(launchStage);
 renderWulffEvidence();
+renderKineticHabitEvidence();
 const sharedSpecimen = new URLSearchParams(window.location.search).get("specimen");
 if (sharedSpecimen === `nomad:${WORKED_PUBLIC_ARCHIVE.id}`) {
   loadWorkedPublicArchive({ updateAddress: false }).then((loaded) => {

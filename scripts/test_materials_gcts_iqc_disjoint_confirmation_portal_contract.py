@@ -23,12 +23,12 @@ def main() -> None:
         "targetCallsDuringBrowserExecution: 0",
         "autonomousContinuationCertified",
         "stationaryOrExponentialClaimed",
-        'buildId: "20260831-354"',
+        'buildId: "20260831-355"',
     ):
         assert needle in APP, needle
     for document in (HTML, ALIAS):
         assert 'value="sealed-iqc-confirmation"' in document
-        assert 'app.js?v=20260831-354' in document
+        assert 'app.js?v=20260831-355' in document
     for needle in (
         "seedAtomCount: 473",
         "terminalCount: 128",
