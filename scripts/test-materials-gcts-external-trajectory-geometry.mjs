@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
-import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntime }
+import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntime,
+  validatedTrajectoryPairCorrelation }
   from "../apps/iqc-growth-live/external-trajectory-geometry.mjs";
 
 const audit = {
@@ -30,6 +31,24 @@ assert.equal(runtime.trajectoryProvenance.globalTranslationRemovedPerFrame, true
 assert.equal(runtime.trajectoryProvenance.usedAsPhysicalClock, false);
 assert.equal(runtime.trajectoryProvenance.covarianceProbabilityDistributionInferred, false);
 assert.equal(runtime.trajectoryProvenance.covarianceThermalEquilibriumAssumed, false);
+const pairCorrelation = validatedTrajectoryPairCorrelation(runtime, 0, 1, [0, 1, 0]);
+assert.equal(pairCorrelation.available, true);
+assert.equal(pairCorrelation.isotropicCorrelation, -1);
+assert.equal(pairCorrelation.longitudinalCorrelation, -1);
+assert.equal(pairCorrelation.relativeRmsAngstrom, 1);
+assert.equal(pairCorrelation.longitudinalRelativeRmsAngstrom, 1);
+assert.equal(pairCorrelation.properRotationInvariant, true);
+assert.equal(pairCorrelation.probabilityDistributionInferred, false);
+const rotateZ = ([x, y, z]) => [-y, x, z];
+const rotatedResponse = { results: { frames: response.results.frames.map((frame) => ({
+  ...frame, positionsAngstrom: frame.positionsAngstrom.map(rotateZ),
+})) } };
+const rotatedRuntime = buildValidatedTrajectoryGeometryRuntime(rotatedResponse, audit,
+  "e".repeat(64), reference.map(rotateZ));
+const rotatedCorrelation = validatedTrajectoryPairCorrelation(rotatedRuntime, 0, 1, [-1, 0, 0]);
+assert.equal(rotatedCorrelation.isotropicCorrelation, pairCorrelation.isotropicCorrelation);
+assert.equal(rotatedCorrelation.longitudinalCorrelation, pairCorrelation.longitudinalCorrelation);
+assert.equal(rotatedCorrelation.relativeRmsAngstrom, pairCorrelation.relativeRmsAngstrom);
 
 const atoms = [{ species: "A" }, { species: "B" }];
 const binding = bindValidatedTrajectoryGeometry(atoms, runtime, .5);

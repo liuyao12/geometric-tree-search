@@ -5,7 +5,7 @@ import { buildExternalPhysicsRequest, EXTERNAL_PHYSICS_REQUEST_TEMPLATES }
 const atom = (siteId, species, positionAngstrom) => ({ siteId, species, positionAngstrom });
 const base = {
   generatedAt: "2026-08-30T00:00:00.000Z",
-  buildId: "20260830-342",
+  buildId: "20260830-343",
   scenarioId: "iqc",
   materialName: "Ideal 6D icosahedral model set",
   elements: ["Fe", "Al", "Cu"],

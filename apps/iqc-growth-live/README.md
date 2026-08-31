@@ -1,5 +1,29 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 343 · collective trajectory geometry in GCTS connection markings
+
+A validated trajectory can now supply an explicit **trajectory-correlated
+ports** representation during GCTS marking learning.  For every witnessed
+connection, the browser removes the same per-frame global translation used by
+the covariance path, subtracts each site's time-weighted mean displacement,
+and derives both the rotationally invariant cross-trace correlation and the
+longitudinal correlation along the connection.  The latter contributes one
+bounded correction to the existing pose × port channel target; it does not add
+candidate poses or alter hard geometric certificates.
+
+This is an opt-in representation, not an automatic interpretation of motion.
+Its frozen config records the exact validated response SHA, so a library
+marking cannot silently replay without the trajectory that trained it.  During
+learning, separate cluster cards draw positive co-motion as solid cyan
+connections and anticorrelation as dashed pink connections.  Receipts report
+the observation count, extrema and means, weighting convention, response
+binding, and the unchanged candidate/admission boundaries.
+
+The statistic describes one supplied path.  It is not a bond, interaction
+energy, force constant, phonon mode, causal mechanism, probability model,
+transferable potential, rate, or GCTS clock.  The user must train/select this
+marking before it may affect branch ranking.
+
 ## Build 342 · empirical anisotropic trajectory covariance
 
 A validated trajectory now contributes an anisotropic local section as well as

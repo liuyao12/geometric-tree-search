@@ -124,6 +124,7 @@ export function buildValidatedTrajectoryGeometryRuntime(response, audit, respons
     frameTimesSeconds: normalized.map((frame) => frame.timeSeconds),
     normalizedTrapezoidalTimeWeights: timeWeights,
     frameDriftAngstrom: frameDrifts,
+    driftRemovedDisplacementsAngstrom: centered.map((frame) => frame.map((vector) => vector.slice())),
     records,
     trajectoryProvenance: {
       available: true, source: "validated request-linked external-physics trajectory",
@@ -145,6 +146,67 @@ export function buildValidatedTrajectoryGeometryRuntime(response, audit, respons
       targetUsed: false, usedAsPotential: false, usedAsPhysicalClock: false,
       trajectoryIntegratedByGcts: false,
     },
+  };
+}
+
+export function validatedTrajectoryPairCorrelation(runtime, firstIndex, secondIndex, direction = null) {
+  const path = runtime?.driftRemovedDisplacementsAngstrom;
+  const weights = runtime?.normalizedTrapezoidalTimeWeights;
+  const firstRecord = runtime?.records?.[firstIndex];
+  const secondRecord = runtime?.records?.[secondIndex];
+  if (!Array.isArray(path) || !Array.isArray(weights) || !firstRecord || !secondRecord
+      || path.length !== weights.length || path.some((frame) => !frame[firstIndex] || !frame[secondIndex])) {
+    return { available: false, reason: "validated pair path unavailable" };
+  }
+  const firstMean = firstRecord.timeWeightedMeanDisplacementAngstrom;
+  const secondMean = secondRecord.timeWeightedMeanDisplacementAngstrom;
+  const fluctuations = path.map((frame) => ({
+    first: subtract(frame[firstIndex], firstMean),
+    second: subtract(frame[secondIndex], secondMean),
+  }));
+  const firstTrace = firstRecord.covarianceTraceAngstromSquared;
+  const secondTrace = secondRecord.covarianceTraceAngstromSquared;
+  const crossTrace = fluctuations.reduce((sum, pair, index) => sum + weights[index]
+    * pair.first.reduce((inner, value, axis) => inner + value * pair.second[axis], 0), 0);
+  const isotropicDenominator = Math.sqrt(Math.max(0, firstTrace * secondTrace));
+  const isotropicCorrelation = isotropicDenominator > 1e-16
+    ? Math.max(-1, Math.min(1, crossTrace / isotropicDenominator)) : 0;
+  const relativeVarianceAngstromSquared = fluctuations.reduce((sum, pair, index) => sum + weights[index]
+    * norm(subtract(pair.second, pair.first)) ** 2, 0);
+  let longitudinalCorrelation = null;
+  let longitudinalRelativeRmsAngstrom = null;
+  if (direction !== null) {
+    const axis = finiteVector(direction, "pair direction");
+    const length = norm(axis);
+    if (!(length > 1e-14)) throw new Error("pair direction must be nonzero");
+    const unit = axis.map((value) => value / length);
+    const projections = fluctuations.map((pair) => ({
+      first: pair.first.reduce((sum, value, component) => sum + value * unit[component], 0),
+      second: pair.second.reduce((sum, value, component) => sum + value * unit[component], 0),
+    }));
+    const firstVariance = projections.reduce((sum, pair, index) => sum + weights[index] * pair.first ** 2, 0);
+    const secondVariance = projections.reduce((sum, pair, index) => sum + weights[index] * pair.second ** 2, 0);
+    const cross = projections.reduce((sum, pair, index) => sum + weights[index]
+      * pair.first * pair.second, 0);
+    const denominator = Math.sqrt(Math.max(0, firstVariance * secondVariance));
+    longitudinalCorrelation = denominator > 1e-16
+      ? Math.max(-1, Math.min(1, cross / denominator)) : 0;
+    longitudinalRelativeRmsAngstrom = Math.sqrt(Math.max(0, projections.reduce((sum, pair, index) =>
+      sum + weights[index] * (pair.second - pair.first) ** 2, 0)));
+  }
+  return {
+    available: true,
+    firstReferenceIndex: firstIndex,
+    secondReferenceIndex: secondIndex,
+    isotropicCorrelation,
+    longitudinalCorrelation,
+    relativeRmsAngstrom: Math.sqrt(Math.max(0, relativeVarianceAngstromSquared)),
+    longitudinalRelativeRmsAngstrom,
+    timeWeighting: "normalized trapezoidal physical-time weights",
+    globalTranslationRemovedPerFrame: true,
+    properRotationInvariant: true,
+    probabilityDistributionInferred: false,
+    targetUsed: false,
   };
 }
 

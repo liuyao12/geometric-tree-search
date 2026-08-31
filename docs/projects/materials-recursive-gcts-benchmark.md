@@ -1,5 +1,30 @@
 # Recursive GCTS benchmark for material growth
 
+### Collective trajectory marking deployment (Build 343)
+
+Per-site covariance does not say whether neighboring environments move
+together or against one another.  Build 343 therefore adds a second,
+connection-local geometric statistic for validated trajectories.  After
+per-frame translation removal and subtraction of each site's time-weighted
+mean displacement, the browser computes the normalized cross-covariance trace
+and the longitudinal correlation along every train-witnessed port.  Both are
+invariant under a common proper rotation; the longitudinal term enters the
+existing pose × port marking target with a fixed bounded weight of `0.14`.
+
+Deployment is explicit and response-bound.  **Trajectory-correlated ports** is
+disabled until a validated ordered path is active.  A trained library entry
+stores that response SHA and becomes incompatible when the evidence changes or
+is removed.  Cyan solid and pink dashed edges in the per-cluster learning cards
+show positive and negative longitudinal correlation, while the receipt records
+summary statistics and all causal boundaries.
+
+This channel may reorder the unchanged candidate set only after the user
+selects and trains it.  It does not create geometry, change overlap/collision
+certificates, or claim a bond, energy, force constant, phonon eigenmode,
+causality, equilibrium distribution, potential, barrier, rate, or mapping from
+a GCTS leap to trajectory time.  No performance advantage is claimed without a
+separate frozen-candidate ablation.
+
 ### Trajectory covariance deployment (Build 342)
 
 The validated path channel now has a tensor-valued local section. With strictly
