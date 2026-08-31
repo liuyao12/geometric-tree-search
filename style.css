@@ -360,7 +360,7 @@ h1 {
   max-width: 220px;
   border-left: 3px solid var(--accent);
   background: rgba(22, 135, 117, 0.07);
-  margin: 8px 0 12px 24px;
+  margin: 72px 104px 12px 12px;
   padding: 8px 10px;
   color: var(--muted);
   font-size: 12px;
@@ -614,6 +614,7 @@ h1 {
     clear: both;
     width: auto;
     max-width: var(--article-text-max);
+    margin: 16px 0 12px;
   }
 }
 
