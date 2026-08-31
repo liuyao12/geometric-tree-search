@@ -14,9 +14,9 @@ for (const document of [html, alias]) {
   assert.match(document, /value="local-events"/);
   assert.match(document, /species exchange/);
   assert.match(document, /class="exchange"><\/i>species exchange/);
-  assert.match(document, /app\.js\?v=20260831-376/);
+  assert.match(document, /app\.js\?v=20260831-377/);
 }
-assert.match(app, /species-exchange-events\.mjs\?v=20260831-376/);
+assert.match(app, /species-exchange-events\.mjs\?v=20260831-377/);
 assert.match(app, /function speciesExchangeEventCatalog/);
 assert.match(app, /async function performOwnershipCertifiedSpeciesExchange/);
 assert.match(app, /committed species exchange failed exact endpoint or atom-count reproduction/);

@@ -16,7 +16,7 @@ for (const document of [html, alias]) {
   assert.match(document, /Interface supply map/);
   assert.match(document, /Resolve diffusion, substrate supply, or shadowing outside GCTS/);
 }
-assert.match(app, /external-interface-flux\.mjs\?v=20260831-376/);
+assert.match(app, /external-interface-flux\.mjs\?v=20260831-377/);
 assert.match(app, /buildInterfaceFluxRequest/);
 assert.match(app, /validateInterfaceFluxResponse/);
 assert.match(app, /evaluateInterfaceFluxScore/);

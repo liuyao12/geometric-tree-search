@@ -1,5 +1,28 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 377 · observed first-passage leap
+
+The exact-state network now answers a source-to-product question without
+enumerating individual kinetic trajectories. For the states selected in the
+pathway controls, it solves a finite-catalog backward equation for the
+probability of reaching the chosen target. Exact observed states with no
+directed path to that target remain explicit failure states; they are not
+dropped or relabeled.
+
+For states with nonzero target-hitting probability, a Doob-conditioned rate
+system yields the mean passage time and expected number of observed jumps
+conditional on eventual target arrival. Rate scaling keeps extreme Arrhenius
+values numerically stable, and the hitting-probability, conditional-time, and
+conditional-jump equations each expose an independent residual. The
+interactive panel plots every state's target-hitting probability and shares
+the existing exact source/target selectors.
+
+This is a leap across one finite observed mechanism catalog. Missing exits are
+omitted because they were not supplied, not because they are physically
+absent. The result is therefore not called a complete committor,
+mechanism-complete MFPT, experimental clock prediction, or macroscopic solid-
+growth time.
+
 ## Build 376 · observation-wide global geometric order
 
 Every committed exact-state edge can now carry independently reconstructed

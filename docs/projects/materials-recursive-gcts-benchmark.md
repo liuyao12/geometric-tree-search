@@ -1,5 +1,35 @@
 # Recursive GCTS benchmark for material growth
 
+### Observed first-passage leap (Build 377)
+
+For a selected exact source `s` and target `B`, Build 377 finds the observed
+states that possess a directed finite-rate path to `B`. States outside that
+set are retained as finite-catalog failure states. On every other non-target
+state the target-hitting probability solves
+
+`0 = Σ_j k_ij (h_j - h_i)`, with `h_B = 1` and `h_failure = 0`.
+
+The rates must share one positive temperature and one barrier-method digest.
+They are shifted by the largest log rate before solving, so the dimensionless
+probability is invariant to a uniform rescaling of physical time.
+
+When `h_i > 0`, target-conditioned rates are formed by the Doob transform
+
+`k*_ij = k_ij h_j / h_i`.
+
+The conditional mean passage time and expected observed jump count then solve
+two more backward systems. Tests cover serial, branched-failure, and cyclic
+networks; analytic probabilities, times, and jump counts; uniform rate
+rescaling; and incompatible-temperature rejection. The implementation reports
+the maximum residual of all three linear identities.
+
+The UI plots `h_i` for up to eight exact states, identifies source, target,
+target-reachable, and observed-failure states, and reports the source
+probability, conditional mean time, and conditional jump count. This is exact
+for the finite supplied rate graph only. An unobserved state or exit can alter
+all of these values, so the portal makes no complete committor,
+mechanism-complete MFPT, bulk growth-time, or experimental-clock claim.
+
 ### Observation-wide global geometric order (Build 376)
 
 Build 376 supplies the observation-wide counterpart to the path-local
