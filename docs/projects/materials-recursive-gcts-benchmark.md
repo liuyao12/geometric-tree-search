@@ -1,5 +1,29 @@
 # Recursive GCTS benchmark for material growth
 
+### Catalog-conditional kinetic leap chronicle (Build 359)
+
+Seeded HTST/KMC evidence is now accumulated as a persistent chronology rather
+than disappearing with the consumed action checkpoint. For each committed
+clocked leap the record retains the frozen event-catalog size, exact selected
+candidate and direction, temperature, selected and total rates,
+within-catalog probability, exponential waiting-time draw, conditional clock
+bounds, event-count bounds, and structural atom-count change.
+
+The chronology validator requires nonnegative finite clock values,
+`clock_after = clock_before + Δt` within numerical tolerance, exactly one event
+count increment per clocked leap, and continuity between successive retained
+clocked events. It reports accepted structural leaps without clock evidence and
+whether the retained history is truncated. The browser renders the waiting-time
+spectrum on a logarithmic visual scale, supports per-event inspection, and
+exports the complete conditional receipt to growth and notebook artifacts.
+
+This does not turn GCTS scores or wall time into kinetics. An event is clocked
+only after the exact frozen hard-admitted catalog has complete method-bound
+barriers and converged prefactors and a seeded KMC draw chooses one action.
+Unenumerated mechanisms, unclocked structural leaps, and catalog incompleteness
+remain explicit. Consequently the sum is not an unconditional material clock,
+bulk growth rate, integrated trajectory, or MD speedup.
+
 ### Leap-frog multiphysics refresh cycle (Build 358)
 
 The portal now exposes the evidence lifetime around every exact GCTS state as a

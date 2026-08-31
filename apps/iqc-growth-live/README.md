@@ -1,5 +1,29 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 359 · catalog-conditional kinetic leap chronicle
+
+The transient HTST/KMC checkpoint now feeds a persistent kinetic chronology
+across retained structural leaps. Each clocked event records its exact frozen
+catalog size, selected action and direction, within-catalog probability,
+temperature, selected and total rates, seeded waiting-time draw, conditional
+clock interval, and explicit atom-count change. The interactive logarithmic
+timeline lets a user inspect individual clocked leaps while keeping unclocked
+accepted leaps visible as missing-time evidence rather than assigning them an
+invented duration.
+
+The chronology is exported in both growth receipts and experiment notebooks and
+appears as its own routed Evidence Atlas layer. It validates monotone clock
+increments, one-event count increments, and continuity across retained clocked
+events. Truncation of the structural history is reported explicitly.
+
+This is not a rate inferred from geometry. Time is admitted only when every
+action in one exact frozen hard-admitted frontier has a method-bound barrier and
+converged uncertainty-bearing prefactor, and seeded KMC draws a single event and
+waiting time. The sum remains conditional on those finite catalogs. Missing
+mechanisms and ordinary geometric leaps receive no time; no unconditional
+material clock, bulk growth rate, dynamical trajectory, or computational
+speedup is claimed.
+
 ## Build 358 · leap-frog multiphysics refresh cycle
 
 The growth stage now makes the central co-simulation contract explicit instead

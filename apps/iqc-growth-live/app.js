@@ -108,15 +108,17 @@ import { evaluateWulffShapeRegularizer, matchedWulffRankingAudit }
   from "./wulff-shape-regularizer.mjs?v=20260831-354";
 import { buildAttachmentKineticsRequest, buildNormalizedKineticWulffGeometry,
   validateAttachmentKineticsResponse, evaluateKineticHabitScore, matchedKineticHabitRankingAudit }
-  from "./external-attachment-kinetics.mjs?v=20260831-358";
+  from "./external-attachment-kinetics.mjs?v=20260831-359";
 import { buildInterfaceFluxRequest, validateInterfaceFluxResponse, evaluateInterfaceFluxScore,
   matchedInterfaceFluxRankingAudit }
-  from "./external-interface-flux.mjs?v=20260831-358";
+  from "./external-interface-flux.mjs?v=20260831-359";
 import { periodicSiteNumberDensity, coupleInterfaceSupplyAndAttachment,
   syntheticGrowthRegimePreview }
-  from "./growth-regime-bridge.mjs?v=20260831-358";
+  from "./growth-regime-bridge.mjs?v=20260831-359";
 import { buildLeapfrogPhysicsCycle, couplingModeGate, LEAPFROG_COUPLING_MODES }
-  from "./leapfrog-physics-cycle.mjs?v=20260831-358";
+  from "./leapfrog-physics-cycle.mjs?v=20260831-359";
+import { buildCatalogConditionalChronology }
+  from "./catalog-conditional-chronology.mjs?v=20260831-359";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -996,6 +998,11 @@ const multiphysicsCycleNextButton = $("multiphysicsCycleNextButton");
 const multiphysicsCycleFlow = $("multiphysicsCycleFlow");
 const multiphysicsCycleState = $("multiphysicsCycleState");
 const multiphysicsCycleBoundary = $("multiphysicsCycleBoundary");
+const kineticChronologyBadge = $("kineticChronologyBadge");
+const kineticChronologyPlot = $("kineticChronologyPlot");
+const kineticChronologyMetrics = $("kineticChronologyMetrics");
+const kineticChronologyState = $("kineticChronologyState");
+const kineticChronologyBoundary = $("kineticChronologyBoundary");
 const settlingSensitivityLab = $("settlingSensitivityLab");
 const settlingSensitivityState = $("settlingSensitivityState");
 const settlingSensitivityArms = $("settlingSensitivityArms");
@@ -1968,6 +1975,7 @@ let lastInterfaceFluxRankingAudit = null;
 let selectedRateControlPreset = "mixed";
 let multiphysicsCouplingMode = "structural";
 let lastLeapfrogPhysicsCycle = null;
+let selectedKineticChronologyIndex = -1;
 let externalTrajectoryCovarianceMode = "display";
 let currentPhysicsPairProgress = null;
 let currentPhysicsPairIntervention = null;
@@ -3796,7 +3804,7 @@ async function downloadInterfacialEnergyRequest() {
   const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-358",
+  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-359",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256,
@@ -4040,7 +4048,7 @@ async function downloadAttachmentKineticsRequest() {
   const material = currentMaterial(); const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-358",
+  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-359",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256, intrinsicDimension, orientationBasisCartesian,
@@ -4305,6 +4313,55 @@ function renderLeapfrogPhysicsCycle() {
     ? `${LEAPFROG_COUPLING_MODES[multiphysicsCouplingMode].label} is current. One exact leap may commit; afterward interface and action-scoped evidence expires automatically.`
     : `${LEAPFROG_COUPLING_MODES[multiphysicsCouplingMode].label} is blocked at ${cycle.nodes.find((entry) => ["missing", "stale", "blocked", "waiting"].includes(entry.status))?.label || "the next dependency"}. Next action: ${leapfrogActionLabel(cycle.nextAction)}.`;
   multiphysicsCycleBoundary.textContent = `${cycle.claimBoundary} After commit: retain ${cycle.invalidationAfterCommit.retained.join("; ")}; invalidate ${cycle.invalidationAfterCommit.invalidated.join("; ")}.`;
+  renderKineticChronology();
+}
+
+function currentKineticChronology(pendingLeap = null) {
+  const pendingIsNew = pendingLeap && !leapHistory.some((entry) => entry.index === pendingLeap.index);
+  return buildCatalogConditionalChronology(pendingIsNew ? [...leapHistory, pendingLeap] : leapHistory,
+    { totalLeapEvents: leapEventCount });
+}
+
+function renderKineticChronology() {
+  if (!kineticChronologyPlot) return;
+  const chronology = currentKineticChronology();
+  kineticChronologyBadge.textContent = chronology.available
+    ? `${chronology.clockedEvents} clocked · ${kineticValueText(chronology.elapsedSeconds, " s")}`
+    : "conditional clock unavailable";
+  const records = chronology.records;
+  if (!records.length) {
+    const empty = document.createElement("div"); empty.className = "kinetic-chronology-empty";
+    empty.innerHTML = "<small>exact geometry</small><i></i><small>barriers + prefactors</small><i></i><small>seeded event</small><i></i><small>conditional Δt</small>";
+    kineticChronologyPlot.replaceChildren(empty);
+    [...kineticChronologyMetrics.querySelectorAll("b")].forEach((node) => { node.textContent = "—"; });
+    kineticChronologyState.textContent = "A structural leap receives time only after every action in its exact frozen frontier has a validated barrier and prefactor, then seeded KMC selects one action and draws one waiting-time increment.";
+    kineticChronologyBoundary.textContent = chronology.claimBoundary;
+    return;
+  }
+  if (selectedKineticChronologyIndex < 0 || selectedKineticChronologyIndex >= records.length) {
+    selectedKineticChronologyIndex = records.length - 1;
+  }
+  const logWaits = records.map((record) => Math.log10(Math.max(record.waitingTimeSeconds, Number.MIN_VALUE)));
+  const low = Math.min(...logWaits); const high = Math.max(...logWaits);
+  kineticChronologyPlot.replaceChildren(...records.map((record, index) => {
+    const button = document.createElement("button"); button.type = "button";
+    button.className = index === selectedKineticChronologyIndex ? "active" : "";
+    button.setAttribute("aria-pressed", String(index === selectedKineticChronologyIndex));
+    button.style.setProperty("--wait-level", String(high === low ? .7 : .2 + .8 * (logWaits[index] - low) / (high - low)));
+    const span = document.createElement("span"); const strong = document.createElement("strong"); const bar = document.createElement("i");
+    span.textContent = `event ${record.eventCountAfter}`; strong.textContent = kineticValueText(record.waitingTimeSeconds, " s");
+    button.append(span, bar, strong); button.addEventListener("click", () => {
+      selectedKineticChronologyIndex = index; renderKineticChronology();
+    }); return button;
+  }));
+  const metricValues = kineticChronologyMetrics.querySelectorAll("b");
+  metricValues[0].textContent = kineticValueText(chronology.elapsedSeconds, " s");
+  metricValues[1].textContent = String(chronology.clockedEvents);
+  metricValues[2].textContent = String(chronology.unclockedAcceptedLeaps);
+  metricValues[3].textContent = `${chronology.structuralAtomAdvance >= 0 ? "+" : ""}${chronology.structuralAtomAdvance}`;
+  const selected = records[selectedKineticChronologyIndex];
+  kineticChronologyState.textContent = `Event ${selected.eventCountAfter} · ${selected.eventDirection} ${selected.candidateId?.slice(0, 12) || "candidate"} · ${(100 * selected.selectedProbabilityWithinFrozenCatalog).toFixed(2)}% within ${selected.candidateCount} frozen actions · ${selected.temperatureKelvin} K · ${selected.atomDelta >= 0 ? "+" : ""}${selected.atomDelta} atoms.`;
+  kineticChronologyBoundary.textContent = `${chronology.claimBoundary}${chronology.unclockedAcceptedLeaps ? ` ${chronology.unclockedAcceptedLeaps} accepted retained leap${chronology.unclockedAcceptedLeaps === 1 ? " has" : "s have"} no assigned physical time.` : ""}${chronology.historyTruncated ? " The visible structural history is truncated." : ""} Receipt ${chronology.chronologyFingerprint}.`;
 }
 
 function routeLeapfrogNextAction() {
@@ -4425,7 +4482,7 @@ async function downloadSpatialInterfaceFluxRequest() {
   const interfaceGeometrySha256 = await receiptSha256(JSON.stringify({ structureSha256: configuration.structureSha256,
     confinement: confinementSelect?.value || "box", publicReach: growthDomainScale, atomCount: referenceAtoms.length }));
   const species = material.actualElements ? [...material.actualElements] : [...material.elements];
-  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-358",
+  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-359",
     scenarioId: scenarioSelect.value, materialName: material.name, species,
     structureSha256: configuration.structureSha256, interfaceGeometrySha256,
     interfaceConfiguration: configuration,
@@ -13703,7 +13760,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260831-358",
+      buildId: "20260831-359",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -15455,6 +15512,7 @@ async function buildExperimentReceipt() {
       orientationAttachmentKineticsEvidence: attachmentKineticsReceipt(),
       spatialInterfaceFluxEvidence: interfaceFluxReceipt(),
       leapfrogPhysicsCycle: currentLeapfrogPhysicsCycle(),
+      catalogConditionalChronology: currentKineticChronology(),
       externalActionBarrierCheckpoint: actionBarrierCheckpointReceipt(),
       structuralLeapHistory: { totalEvents: leapEventCount, retainedEvents: leapHistory.length,
         maximumRetainedEvents: MAXIMUM_RETAINED_STRUCTURAL_LEAPS,
@@ -16235,6 +16293,7 @@ async function buildExperimentNotebookSnapshot() {
     orientationAttachmentKineticsEvidence: attachmentKineticsReceipt(),
     spatialInterfaceFluxEvidence: interfaceFluxReceipt(),
     leapfrogPhysicsCycle: currentLeapfrogPhysicsCycle(),
+    catalogConditionalChronology: currentKineticChronology(),
     externalActionBarrierCheckpoint: actionBarrierCheckpointReceipt(),
     structuralLeapHistory: { totalEvents: leapEventCount, retainedEvents: leapHistory.length,
       maximumRetainedEvents: MAXIMUM_RETAINED_STRUCTURAL_LEAPS, truncated: leapEventCount > leapHistory.length,
@@ -16286,7 +16345,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260831-358" },
+    application: { name: "Materials Growth Lab", buildId: "20260831-359" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },
@@ -25138,7 +25197,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
   const candidates = [...attachmentCandidates, ...detachmentCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-358",
+    generatedAt: new Date().toISOString(), buildId: "20260831-359",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -29455,6 +29514,7 @@ function resetCounters() {
   clusterDiscoveryProgress = 0;
   molecularCoverFocus = "all";
   leapHistory = [];
+  selectedKineticChronologyIndex = -1;
   selectedLeapIndex = -1;
   selectedLeapConsequenceId = "coordination";
   selectedLeapConsequenceFilter = "all";
@@ -32020,6 +32080,7 @@ function physicsTranslationRecords(leap = null) {
   const localConstraintMismatch = currentLocalConstraintMismatchField();
   const rateControlBridge = activeRateControlEvidence();
   const leapfrogCycle = currentLeapfrogPhysicsCycle();
+  const kineticChronology = currentKineticChronology(leap);
   const localSymmetry = leap?.localSymmetryTransition || null;
   const centrosymmetry = leap?.centrosymmetryTransition || null;
   const reciprocalSpace = leap?.reciprocalSpaceTransition || null;
@@ -32460,6 +32521,17 @@ function physicsTranslationRecords(leap = null) {
         ? `${kineticReceipt.mode === "seeded-kmc" ? `Seeded waiting time ${kineticValueText(kineticReceipt.waitingTimeSeconds, " s")}; catalog-conditional clock ${kineticValueText(kineticReceipt.clockAfterSeconds, " s")}.` : "No waiting time was drawn."} Request, candidate batch, barrier method, prefactor settings, temperature, and random uniforms are retained in the leap receipt.`
         : "No catalog-conditional physical rate has been evaluated.",
       boundary: "The HTST competition is conditional on one finite hard-admitted event catalog. Exact inverse pairing is audited separately across committed checkpoints; neither a two-way catalog nor a closed microscopic path supplies reservoir chemical potentials, grand-potential differences, detailed balance, or equilibrium sampling. Unenumerated mechanisms remain open." },
+    { id: "kinetic-chronology", process: "catalog-conditional elapsed time across exact structural leaps",
+      status: kineticChronology.available ? "sampled" : "unavailable",
+      role: kineticChronology.available ? "persistent seeded-KMC event chronology" : "no clocked structural leap",
+      executionEffects: { hardAdmission: false, ranking: false, searchOrder: false },
+      encoding: kineticChronology.available
+        ? `${kineticChronology.clockedEvents} clocked events over ${kineticChronology.totalRetainedLeaps} retained structural leaps; ${kineticValueText(kineticChronology.elapsedSeconds, " s")} conditional elapsed; ${kineticChronology.structuralAtomAdvance >= 0 ? "+" : ""}${kineticChronology.structuralAtomAdvance} atoms in clocked actions`
+        : "waiting for a committed seeded-KMC event with a complete frozen-frontier barrier/prefactor response",
+      evidence: kineticChronology.available
+        ? `${kineticChronology.unclockedAcceptedLeaps} accepted retained leap${kineticChronology.unclockedAcceptedLeaps === 1 ? " is" : "s are"} explicitly unclocked; chronology ${kineticChronology.chronologyFingerprint}.`
+        : "Geometric leap count and browser scheduling duration are excluded from the clock.",
+      boundary: kineticChronology.claimBoundary },
     { id: "microscopic-inverse-lineage", process: "microscopic inverse path / state-cycle consistency",
       status: inverseReceipt?.finitePairLocalBalancePassed ? "validated"
         : inverseReceipt?.microscopicPathClosurePassed ? "learned"
@@ -32573,6 +32645,7 @@ const PHYSICS_CONTROL_ROUTES = Object.freeze({
   "spatial-interface-flux": { stage: 4, controlId: "interfaceFluxModeSelect", label: "Configure interface supply" },
   "transport-attachment-regime": { stage: 4, controlId: "rateControlPlot", label: "Inspect rate control" },
   "leapfrog-physics-cycle": { stage: 4, controlId: "multiphysicsCouplingModeSelect", label: "Configure co-simulation cycle" },
+  "kinetic-chronology": { stage: 4, controlId: "kineticChronologyPlot", label: "Inspect kinetic chronology" },
   steric: { stage: 1, controlId: "clusterToleranceSelect", label: "Open metric tolerance" },
   local: { stage: 1, controlId: "geometryModeSelect", label: "Open support geometry" },
   "local-mismatch-map": { stage: 4, controlId: "localConstraintMismatchToggle", label: "Open local mismatch map" },
@@ -34092,7 +34165,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-358",
+    generatedAt: new Date().toISOString(), buildId: "20260831-359",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,
@@ -35997,6 +36070,7 @@ function recordStructuralLeap(leap) {
     });
   leapHistory.push(frozen);
   if (leapHistory.length > MAXIMUM_RETAINED_STRUCTURAL_LEAPS) leapHistory.shift();
+  selectedKineticChronologyIndex = -1;
   selectedLeapIndex = leapHistory.length - 1;
   renderStructuralLeap(frozen);
   if (pipelineStage === 4 && frozenPhysicsPreflightManifest?.investigationProtocol) {

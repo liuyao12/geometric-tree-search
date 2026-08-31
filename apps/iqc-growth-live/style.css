@@ -2435,7 +2435,28 @@ body.study-guide-open { overflow: hidden; }
 .multiphysics-cycle-legend span { color:#75898d; font:5px var(--mono); text-transform:uppercase; }
 .multiphysics-cycle-legend span::before { content:""; display:inline-block; width:5px; height:5px; margin-right:4px; border-radius:50%; background:#75898d; }
 .multiphysics-cycle-legend .ready::before { background:#65e1bc; }.multiphysics-cycle-legend .available::before { background:#7ee1e8; }.multiphysics-cycle-legend .missing::before,.multiphysics-cycle-legend .stale::before,.multiphysics-cycle-legend .blocked::before { background:#ff8d90; }
+.kinetic-chronology { margin-top:10px; padding:9px; border:1px solid rgba(255,175,105,.16); background:linear-gradient(100deg,rgba(255,175,105,.035),rgba(181,148,255,.025)); }
+.kinetic-chronology > header { display:flex; align-items:end; justify-content:space-between; gap:8px; }
+.kinetic-chronology > header small,.kinetic-chronology > header strong { display:block; }
+.kinetic-chronology > header small { color:#a9856d; font:4px var(--mono); text-transform:uppercase; }
+.kinetic-chronology > header strong { margin-top:3px; color:#d9cbc2; font:8px var(--mono); font-weight:400; }
+.kinetic-chronology > header b { color:#ffaf69; font:5px var(--mono); font-weight:400; text-transform:uppercase; }
+.kinetic-chronology-plot { display:flex; align-items:end; min-height:72px; gap:4px; margin-top:7px; padding:7px; overflow-x:auto; border:1px solid rgba(255,175,105,.1); background:rgba(5,8,14,.64); }
+.kinetic-chronology-plot button { display:grid; grid-template-rows:auto 34px auto; min-width:56px; padding:5px; border:1px solid rgba(255,175,105,.09); background:rgba(8,10,17,.82); color:#82776f; text-align:left; cursor:pointer; }
+.kinetic-chronology-plot button:hover,.kinetic-chronology-plot button.active { border-color:rgba(255,175,105,.55); outline:none; }
+.kinetic-chronology-plot button span,.kinetic-chronology-plot button strong { font:4px var(--mono); font-weight:400; }
+.kinetic-chronology-plot button i { align-self:end; width:100%; height:calc(var(--wait-level) * 30px); margin:3px 0; background:linear-gradient(180deg,#ffaf69,#b594ff); opacity:.75; }
+.kinetic-chronology-plot button.active strong { color:#ffd0a7; }
+.kinetic-chronology-empty { display:flex; width:100%; align-items:center; justify-content:center; gap:6px; color:#706b70; font:4px var(--mono); text-transform:uppercase; }
+.kinetic-chronology-empty i { width:20px; height:1px; background:linear-gradient(90deg,#ffaf69,#b594ff); }
+.kinetic-chronology-metrics { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:3px; margin-top:5px; }
+.kinetic-chronology-metrics span { padding:6px; background:rgba(7,9,16,.55); }
+.kinetic-chronology-metrics small,.kinetic-chronology-metrics b { display:block; }
+.kinetic-chronology-metrics small { color:#746c70; font:4px var(--mono); text-transform:uppercase; }
+.kinetic-chronology-metrics b { margin-top:3px; color:#c9bcb6; font:6px var(--mono); font-weight:400; }
+.kinetic-chronology > p { margin:6px 0 0; color:#837a79; font:5px/1.45 var(--mono); }
+.kinetic-chronology > p:last-child { padding-top:6px; border-top:1px solid rgba(255,175,105,.1); color:#736d79; }
 .multiphysics-cycle-card > p { margin:7px 0 0; color:#819599; font:6px/1.5 var(--mono); }
 .multiphysics-cycle-card > p:last-child { padding:7px 8px; border-left:2px solid #b594ff; background:rgba(181,148,255,.035); color:#7e7693; }
 @media (max-width:1000px) { .multiphysics-cycle-flow { grid-template-columns:repeat(3,minmax(0,1fr)); }.multiphysics-cycle-flow article:nth-child(3)::after { display:none; } }
-@media (max-width:650px) { .multiphysics-cycle-card > header,.multiphysics-cycle-controls { grid-template-columns:1fr; }.multiphysics-cycle-flow { grid-template-columns:repeat(2,minmax(0,1fr)); }.multiphysics-cycle-flow article:nth-child(2n)::after { display:none; } }
+@media (max-width:650px) { .multiphysics-cycle-card > header,.multiphysics-cycle-controls { grid-template-columns:1fr; }.multiphysics-cycle-flow { grid-template-columns:repeat(2,minmax(0,1fr)); }.multiphysics-cycle-flow article:nth-child(2n)::after { display:none; }.kinetic-chronology-metrics { grid-template-columns:repeat(2,minmax(0,1fr)); } }
