@@ -1688,7 +1688,12 @@ assert.equal(
     ?.screening.substitution_four_copy_reflected_types_exhausted,
   195075
 );
-assert.ok(slicedSizeNineLeads.filter(candidate => candidate.id !== "a2sa_9_11364").every(
+assert.equal(
+  slicedSizeNineLeads.find(candidate => candidate.id === "a2sa_9_13833")
+    ?.screening.substitution_four_copy_reflected_types_exhausted,
+  406896
+);
+assert.ok(slicedSizeNineLeads.filter(candidate => candidate.id === "a2sa_9_15635").every(
   candidate => candidate.screening.substitution_four_copy_reflected_scalar_scales_excluded.length === 0
 ));
 assert.equal(

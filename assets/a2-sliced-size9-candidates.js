@@ -481,9 +481,11 @@ export const A2_SLICED_SIZE9_CANDIDATES = Object.freeze([
       ],
       "substitution_four_copy_metatile_types_exhausted": 20106,
       "substitution_four_copy_report": "data/a2-sliced-alcove-size9-focused-four-copy-proper-summary.ndjson",
-      "substitution_four_copy_reflected_scalar_scales_excluded": [],
-      "substitution_four_copy_reflected_types_exhausted": null,
-      "substitution_four_copy_reflected_report": null,
+      "substitution_four_copy_reflected_scalar_scales_excluded": [
+        2
+      ],
+      "substitution_four_copy_reflected_types_exhausted": 406896,
+      "substitution_four_copy_reflected_report": "data/a2-sliced-alcove-size9-focused-four-copy-reflected-summary.ndjson",
       "substitution_claim_scope": "direct_scalar_fixed_affine_A3_alcove_cellular_only",
       "substitution_noncellular_inflations_open": true,
       "deeper_periodic_domains_open": true,
