@@ -8,6 +8,7 @@ import hashlib
 import importlib.util
 import json
 import os
+import sqlite3
 from pathlib import Path
 
 
@@ -25,6 +26,59 @@ THREE = load("a2_sliced_three_cluster", "screen-a2-sliced-three-cluster-substitu
 TWO = THREE.TWO
 SUB = THREE.SUB
 ENUMERATE_THREE = THREE.enumerate_three_copy_metatiles
+
+
+class SqliteMetatileList:
+    """Read a canonical metatile alphabet in small ordered chunks."""
+
+    def __init__(self, path: Path, count: int, chunk_size: int = 256):
+        self.path = path
+        self.count = count
+        self.chunk_size = chunk_size
+        self.chunk_start = -1
+        self.chunk = []
+        self.connection = sqlite3.connect(f"{path.resolve().as_uri()}?mode=ro", uri=True)
+
+    def __len__(self):
+        return self.count
+
+    def __getitem__(self, index):
+        if index < 0:
+            index += self.count
+        if not 0 <= index < self.count:
+            raise IndexError(index)
+        start = (index // self.chunk_size) * self.chunk_size
+        if start != self.chunk_start:
+            rows = self.connection.execute(
+                "SELECT value_json FROM representatives ORDER BY sort_key LIMIT ? OFFSET ?",
+                (self.chunk_size, start),
+            )
+            self.chunk = [json.loads(row[0]) for row in rows]
+            self.chunk_start = start
+        return self.chunk[index - start]
+
+
+def sqlite_enumeration(record, include_reflections, path: Path):
+    connection = sqlite3.connect(f"{path.resolve().as_uri()}?mode=ro", uri=True)
+    try:
+        metadata = {
+            key: json.loads(value_json)
+            for key, value_json in connection.execute("SELECT key,value_json FROM metadata")
+        }
+    finally:
+        connection.close()
+    if (metadata.get("id") != record["id"]
+            or metadata.get("include_reflections") != include_reflections
+            or metadata.get("copies") != 4):
+        raise ValueError(f"four-copy SQLite cache identity mismatch: {path}")
+    count = metadata["symmetry_distinct_metatiles"]
+    return {
+        **{key: metadata[key] for key in (
+            "raw_connected_extensions", "symmetry_distinct_metatiles",
+            "canonical_sha256", "three_copy_parent_total",
+            "three_copy_parent_range", "range_receipts")},
+        "metatiles": SqliteMetatileList(path, count),
+    }
 
 
 def enumerate_four_copy_metatiles(record, include_reflections=False,
@@ -101,6 +155,8 @@ def cached_enumeration(record, include_reflections, cache_path=None):
         return enumerate_four_copy_metatiles(record, include_reflections)
     path = Path(cache_path)
     if path.exists():
+        if path.suffix == ".sqlite":
+            return sqlite_enumeration(record, include_reflections, path)
         receipt = json.loads(path.read_text())
         if (receipt.get("id") != record["id"]
                 or receipt.get("include_reflections") != include_reflections

@@ -169,7 +169,8 @@ def numeric_sort_key(canonical_key: list[list]) -> bytes:
 
 def merge_shards_to_cache(paths: list[Path], candidate_id: str,
                           include_reflections: bool, parent_total: int,
-                          output: Path) -> dict:
+                          output: Path, sqlite_output: Path | None = None,
+                          write_json: bool = True) -> dict:
     """Deduplicate a large census on disk and stream its canonical cache."""
     database = output.with_suffix(f".merge-{os.getpid()}.sqlite")
     database.unlink(missing_ok=True)
@@ -218,7 +219,6 @@ def merge_shards_to_cache(paths: list[Path], candidate_id: str,
             digest.update(key_json.encode())
         digest.update(b"]")
         canonical_sha256 = digest.hexdigest()
-        temporary = output.with_suffix(f".tmp-{os.getpid()}")
         prefix = {
             "id": candidate_id,
             "include_reflections": include_reflections,
@@ -232,24 +232,49 @@ def merge_shards_to_cache(paths: list[Path], candidate_id: str,
                 "range_receipts": receipts,
             },
         }
-        serialized_prefix = json.dumps(prefix, separators=(",", ":"))
-        with temporary.open("w") as stream:
-            stream.write(serialized_prefix[:-2])
-            stream.write(',"metatiles":[')
-            for index, (value_json,) in enumerate(connection.execute(
-                "SELECT value_json FROM representatives ORDER BY sort_key"
-            )):
-                if index:
-                    stream.write(",")
-                stream.write(value_json)
-            stream.write("]}}")
-        os.replace(temporary, output)
+        if write_json:
+            temporary = output.with_suffix(f".tmp-{os.getpid()}")
+            serialized_prefix = json.dumps(prefix, separators=(",", ":"))
+            with temporary.open("w") as stream:
+                stream.write(serialized_prefix[:-2])
+                stream.write(',"metatiles":[')
+                for index, (value_json,) in enumerate(connection.execute(
+                    "SELECT value_json FROM representatives ORDER BY sort_key"
+                )):
+                    if index:
+                        stream.write(",")
+                    stream.write(value_json)
+                stream.write("]}}")
+            os.replace(temporary, output)
+        if sqlite_output is not None:
+            connection.execute("CREATE TABLE metadata (key TEXT PRIMARY KEY, value_json TEXT NOT NULL) WITHOUT ROWID")
+            metadata = {
+                "id": candidate_id,
+                "include_reflections": include_reflections,
+                "copies": 4,
+                "raw_connected_extensions": raw,
+                "symmetry_distinct_metatiles": count,
+                "canonical_sha256": canonical_sha256,
+                "three_copy_parent_total": parent_total,
+                "three_copy_parent_range": [0, parent_total],
+                "range_receipts": receipts,
+            }
+            connection.executemany(
+                "INSERT INTO metadata(key,value_json) VALUES(?,?)",
+                ((key, json.dumps(value, separators=(",", ":")))
+                 for key, value in metadata.items()),
+            )
+            connection.commit()
+            connection.close()
+            sqlite_output.parent.mkdir(parents=True, exist_ok=True)
+            os.replace(database, sqlite_output)
         return {
             "candidate": candidate_id,
             "complete": True,
             "types": count,
             "canonical_sha256": canonical_sha256,
-            "merged_cache": str(output),
+            "merged_cache": str(output) if write_json else None,
+            "sqlite_cache": str(sqlite_output) if sqlite_output is not None else None,
         }
     finally:
         connection.close()
@@ -261,6 +286,8 @@ def main() -> None:
     parser.add_argument("--input", required=True)
     parser.add_argument("--output-dir", required=True)
     parser.add_argument("--merged-cache", required=True)
+    parser.add_argument("--sqlite-cache")
+    parser.add_argument("--sqlite-only", action="store_true")
     parser.add_argument("--candidate-index", type=int, required=True)
     parser.add_argument("--candidate-id", required=True)
     parser.add_argument("--three-parent-total", type=int, required=True)
@@ -338,7 +365,9 @@ def main() -> None:
         output = Path(args.merged_cache)
         result = merge_shards_to_cache(
             paths, args.candidate_id, args.include_reflections,
-            args.three_parent_total, output
+            args.three_parent_total, output,
+            Path(args.sqlite_cache) if args.sqlite_cache else None,
+            not args.sqlite_only,
         )
         print(json.dumps(result, indent=2), flush=True)
     else:

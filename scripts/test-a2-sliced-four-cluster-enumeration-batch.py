@@ -55,7 +55,10 @@ with tempfile.TemporaryDirectory() as directory:
     assert merged["enumerated"]["three_copy_parent_range"] == [0, 4]
     assert len(merged["enumerated"]["range_receipts"]) == 2
     cache = directory / "merged.json"
-    streamed = MODULE.merge_shards_to_cache([left, right], "probe", True, 4, cache)
+    sqlite_cache = directory / "merged.sqlite"
+    streamed = MODULE.merge_shards_to_cache(
+        [left, right], "probe", True, 4, cache, sqlite_cache
+    )
     assert streamed["types"] == 3
     cached = json.loads(cache.read_text())
     assert cached["enumerated"]["canonical_sha256"] == merged["enumerated"]["canonical_sha256"]
@@ -63,5 +66,12 @@ with tempfile.TemporaryDirectory() as directory:
     assert MODULE.numeric_sort_key([[-2, 0, 1, "012"]]) < MODULE.numeric_sort_key([
         [10, 0, 1, "012"]
     ])
+    connection = MODULE.sqlite3.connect(sqlite_cache)
+    try:
+        assert connection.execute("SELECT COUNT(*) FROM representatives").fetchone()[0] == 3
+        metadata = dict(connection.execute("SELECT key,value_json FROM metadata"))
+        assert json.loads(metadata["canonical_sha256"]) == streamed["canonical_sha256"]
+    finally:
+        connection.close()
 
 print("A2 four-copy enumeration batch regression passed")

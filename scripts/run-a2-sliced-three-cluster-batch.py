@@ -77,6 +77,8 @@ def run_task(task: dict) -> dict:
     ]
     if task["include_reflections"]:
         command.append("--include-reflections")
+    if task.get("defer_exact"):
+        command.append("--defer-exact")
     if task["copies"] == 4 and task.get("enumeration_cache"):
         command.extend(("--enumeration-cache", task["enumeration_cache"]))
     process = subprocess.Popen(
@@ -227,6 +229,7 @@ def main() -> None:
     parser.add_argument("--max-tasks", type=int, default=0)
     parser.add_argument("--copies", type=int, choices=(3, 4), default=3)
     parser.add_argument("--enumeration-cache")
+    parser.add_argument("--defer-exact", action="store_true")
     args = parser.parse_args()
 
     input_path = Path(args.input).resolve()
@@ -254,6 +257,7 @@ def main() -> None:
                 "include_reflections": args.include_reflections,
                 "copies": args.copies,
                 "enumeration_cache": args.enumeration_cache,
+                "defer_exact": args.defer_exact,
                 "start": start,
                 "stop": stop,
             })

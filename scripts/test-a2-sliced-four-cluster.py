@@ -42,4 +42,39 @@ with tempfile.TemporaryDirectory() as directory:
     else:
         raise AssertionError("mismatched four-copy cache was accepted")
 
+    sqlite_cache = Path(directory) / "enumeration.sqlite"
+    connection = module.sqlite3.connect(sqlite_cache)
+    connection.execute(
+        "CREATE TABLE representatives (sort_key BLOB PRIMARY KEY, key_json TEXT, value_json TEXT) WITHOUT ROWID"
+    )
+    values = [
+        {"alcoves": [{"base": [index, 0, 0], "order": [0, 1, 2]}],
+         "canonical_key": [[index, 0, 0, "012"]]}
+        for index in range(3)
+    ]
+    connection.executemany(
+        "INSERT INTO representatives VALUES(?,?,?)",
+        ((bytes([index]), json.dumps(value["canonical_key"]), json.dumps(value))
+         for index, value in enumerate(values)),
+    )
+    connection.execute(
+        "CREATE TABLE metadata (key TEXT PRIMARY KEY, value_json TEXT NOT NULL) WITHOUT ROWID"
+    )
+    metadata = {
+        "id": "probe", "include_reflections": True, "copies": 4,
+        "raw_connected_extensions": 4, "symmetry_distinct_metatiles": 3,
+        "canonical_sha256": "digest", "three_copy_parent_total": 2,
+        "three_copy_parent_range": [0, 2], "range_receipts": [],
+    }
+    connection.executemany(
+        "INSERT INTO metadata VALUES(?,?)",
+        ((key, json.dumps(value)) for key, value in metadata.items()),
+    )
+    connection.commit()
+    connection.close()
+    lazy = module.cached_enumeration({"id": "probe"}, True, sqlite_cache)
+    assert len(lazy["metatiles"]) == 3
+    assert lazy["metatiles"][0] == values[0]
+    assert lazy["metatiles"][-1] == values[-1]
+
 print("A2 four-copy substitution cache regression passed")
