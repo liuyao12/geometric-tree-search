@@ -2397,3 +2397,45 @@ body.study-guide-open { overflow: hidden; }
 @media (max-width: 560px) { .supply-audit-tabs,.supply-audit-stages { grid-template-columns: repeat(2,minmax(0,1fr)); }.supply-audit-fallback dl { grid-template-columns: 1fr; } }
 .rate-control-bridge { margin-top:7px; padding:8px; border:1px solid rgba(172,139,255,.15); background:linear-gradient(135deg,rgba(90,135,255,.045),rgba(255,175,105,.025)); }.rate-control-bridge > header { display:flex; align-items:center; justify-content:space-between; gap:8px; }.rate-control-bridge > header small,.rate-control-bridge > header strong { display:block; }.rate-control-bridge > header small { color:#7d79a4; font:4px var(--mono); text-transform:uppercase; }.rate-control-bridge > header strong { margin-top:3px; color:#c8c3e2; font:7px var(--mono); font-weight:400; }.rate-control-bridge > header b { color:#9188c8; font:5px var(--mono); font-weight:400; text-transform:uppercase; }.rate-control-bridge.validated { border-color:rgba(172,139,255,.38); box-shadow:inset 0 0 18px rgba(90,135,255,.025); }.rate-control-bridge.validated > header b { color:#bda7ff; }.rate-control-presets { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:3px; margin-top:7px; }.rate-control-presets button { min-height:23px; border:1px solid rgba(172,139,255,.12); background:rgba(10,10,22,.62); color:#777394; font:5px var(--mono); cursor:pointer; }.rate-control-presets button[aria-pressed="true"],.rate-control-presets button:hover,.rate-control-presets button:focus-visible { border-color:rgba(172,139,255,.55); color:#d9d0ff; outline:none; }.rate-control-presets button:disabled { opacity:.35; cursor:not-allowed; }.rate-control-layout { display:grid; grid-template-columns:minmax(0,1.45fr) minmax(120px,.55fr); gap:5px; margin-top:5px; }.rate-control-layout svg { display:block; width:100%; min-height:124px; border:1px solid rgba(172,139,255,.1); background:rgba(6,9,16,.65); }.rate-overlap-band { fill:rgba(205,184,130,.07); }.rate-control-axis { stroke:rgba(210,218,226,.35); stroke-width:.7; stroke-dasharray:3 3; }.rate-control-stem { stroke-width:1; opacity:.5; }.rate-control-point { stroke:#eef6f4; stroke-width:.65; }.rate-control-stem.supply { stroke:#55d9c6; }.rate-control-point.supply { fill:#55d9c6; }.rate-control-stem.attachment { stroke:#ffaf69; }.rate-control-point.attachment { fill:#ffaf69; }.rate-control-stem.overlap { stroke:#d8bf7a; }.rate-control-point.overlap { fill:#d8bf7a; }.rate-control-label { font:5px var(--mono); }.rate-control-label.supply { fill:#61bbae; }.rate-control-label.attachment { fill:#c89569; }.rate-control-metrics { display:grid; grid-template-columns:1fr 1fr; gap:3px; }.rate-control-metrics span { padding:6px; border:1px solid rgba(172,139,255,.08); background:rgba(7,8,16,.58); }.rate-control-metrics small,.rate-control-metrics b { display:block; }.rate-control-metrics small { color:#777390; font:4px var(--mono); text-transform:uppercase; }.rate-control-metrics b { margin-top:4px; overflow:hidden; color:#b9b4d0; font:6px var(--mono); font-weight:400; text-overflow:ellipsis; }.rate-control-bridge > p { margin:6px 0 0; color:#7f7b96; font:5px/1.45 var(--mono); }.rate-control-bridge > p:last-child { padding:6px 7px; border-left:2px solid #8270c5; background:rgba(172,139,255,.025); color:#77748a; }.rate-control-bridge.validated > p:last-child { border-left-color:#ffaf69; }
 @media (max-width:700px) { .rate-control-layout { grid-template-columns:1fr; }.rate-control-metrics { grid-template-columns:repeat(4,minmax(0,1fr)); } }
+
+.multiphysics-cycle-card { position:relative; margin-top:10px; padding:12px; overflow:hidden; border:1px solid rgba(126,225,232,.2); background:radial-gradient(circle at 92% -15%,rgba(181,148,255,.16),transparent 42%),linear-gradient(135deg,rgba(8,26,30,.96),rgba(10,8,23,.94)); }
+.multiphysics-cycle-card::before { content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(90deg,transparent,rgba(126,225,232,.025),transparent); }
+.multiphysics-cycle-card > * { position:relative; z-index:1; }
+.multiphysics-cycle-card > header { display:grid; grid-template-columns:minmax(170px,.55fr) minmax(240px,1fr); gap:14px; align-items:end; }
+.multiphysics-cycle-card > header small,.multiphysics-cycle-card > header strong { display:block; }
+.multiphysics-cycle-card > header small { color:#7ee1e8; font:5px var(--mono); letter-spacing:.08em; text-transform:uppercase; }
+.multiphysics-cycle-card > header strong { margin-top:4px; color:#e1eeee; font:12px var(--mono); font-weight:400; }
+.multiphysics-cycle-card > header p { margin:0; color:#849b9e; font:6px/1.5 var(--mono); }
+.multiphysics-cycle-controls { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:6px; align-items:end; margin-top:10px; }
+.multiphysics-cycle-controls label { display:grid; gap:4px; }
+.multiphysics-cycle-controls label span { color:#777f9d; font:5px var(--mono); text-transform:uppercase; }
+.multiphysics-cycle-controls select,.multiphysics-cycle-controls button { min-height:30px; border:1px solid rgba(181,148,255,.24); background:rgba(7,11,22,.9); color:#c6d8da; font:6px var(--mono); }
+.multiphysics-cycle-controls select { width:100%; padding:0 8px; }
+.multiphysics-cycle-controls button { padding:0 12px; cursor:pointer; }
+.multiphysics-cycle-controls button:hover,.multiphysics-cycle-controls button:focus-visible { border-color:#7ee1e8; color:#eefafa; outline:none; }
+.multiphysics-cycle-controls button:disabled { opacity:.4; cursor:not-allowed; }
+.multiphysics-cycle-flow { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:5px; margin-top:10px; }
+.multiphysics-cycle-flow article { position:relative; min-width:0; min-height:96px; padding:8px; border:1px solid rgba(126,225,232,.11); background:rgba(3,12,17,.72); }
+.multiphysics-cycle-flow article:not(:last-child)::after { content:"›"; position:absolute; z-index:2; top:38px; right:-7px; color:#526b71; font:13px var(--mono); }
+.multiphysics-cycle-flow article small,.multiphysics-cycle-flow article strong,.multiphysics-cycle-flow article b { display:block; }
+.multiphysics-cycle-flow article small { color:#4e686d; font:5px var(--mono); }
+.multiphysics-cycle-flow article strong { min-height:25px; margin-top:6px; color:#bfd2d4; font:6px/1.35 var(--mono); font-weight:400; }
+.multiphysics-cycle-flow article b { margin-top:5px; color:#87999c; font:5px var(--mono); font-weight:400; text-transform:uppercase; }
+.multiphysics-cycle-flow article p { margin:6px 0 0; color:#667b7e; font:5px/1.4 var(--mono); }
+.multiphysics-cycle-flow article.ready { border-color:rgba(101,225,188,.48); box-shadow:inset 0 -2px #65e1bc; }
+.multiphysics-cycle-flow article.ready b { color:#65e1bc; }
+.multiphysics-cycle-flow article.available { border-color:rgba(126,225,232,.42); box-shadow:inset 0 -2px #7ee1e8; }
+.multiphysics-cycle-flow article.available b { color:#7ee1e8; }
+.multiphysics-cycle-flow article.optional { opacity:.7; border-style:dashed; }
+.multiphysics-cycle-flow article.waiting { border-color:rgba(216,191,122,.25); }
+.multiphysics-cycle-flow article.waiting b { color:#d8bf7a; }
+.multiphysics-cycle-flow article.missing,.multiphysics-cycle-flow article.stale,.multiphysics-cycle-flow article.blocked { border-color:rgba(255,141,144,.34); background:rgba(255,141,144,.025); }
+.multiphysics-cycle-flow article.missing b,.multiphysics-cycle-flow article.stale b,.multiphysics-cycle-flow article.blocked b { color:#ff8d90; }
+.multiphysics-cycle-legend { display:flex; flex-wrap:wrap; gap:8px; margin-top:7px; }
+.multiphysics-cycle-legend span { color:#75898d; font:5px var(--mono); text-transform:uppercase; }
+.multiphysics-cycle-legend span::before { content:""; display:inline-block; width:5px; height:5px; margin-right:4px; border-radius:50%; background:#75898d; }
+.multiphysics-cycle-legend .ready::before { background:#65e1bc; }.multiphysics-cycle-legend .available::before { background:#7ee1e8; }.multiphysics-cycle-legend .missing::before,.multiphysics-cycle-legend .stale::before,.multiphysics-cycle-legend .blocked::before { background:#ff8d90; }
+.multiphysics-cycle-card > p { margin:7px 0 0; color:#819599; font:6px/1.5 var(--mono); }
+.multiphysics-cycle-card > p:last-child { padding:7px 8px; border-left:2px solid #b594ff; background:rgba(181,148,255,.035); color:#7e7693; }
+@media (max-width:1000px) { .multiphysics-cycle-flow { grid-template-columns:repeat(3,minmax(0,1fr)); }.multiphysics-cycle-flow article:nth-child(3)::after { display:none; } }
+@media (max-width:650px) { .multiphysics-cycle-card > header,.multiphysics-cycle-controls { grid-template-columns:1fr; }.multiphysics-cycle-flow { grid-template-columns:repeat(2,minmax(0,1fr)); }.multiphysics-cycle-flow article:nth-child(2n)::after { display:none; } }

@@ -108,13 +108,15 @@ import { evaluateWulffShapeRegularizer, matchedWulffRankingAudit }
   from "./wulff-shape-regularizer.mjs?v=20260831-354";
 import { buildAttachmentKineticsRequest, buildNormalizedKineticWulffGeometry,
   validateAttachmentKineticsResponse, evaluateKineticHabitScore, matchedKineticHabitRankingAudit }
-  from "./external-attachment-kinetics.mjs?v=20260831-357";
+  from "./external-attachment-kinetics.mjs?v=20260831-358";
 import { buildInterfaceFluxRequest, validateInterfaceFluxResponse, evaluateInterfaceFluxScore,
   matchedInterfaceFluxRankingAudit }
-  from "./external-interface-flux.mjs?v=20260831-357";
+  from "./external-interface-flux.mjs?v=20260831-358";
 import { periodicSiteNumberDensity, coupleInterfaceSupplyAndAttachment,
   syntheticGrowthRegimePreview }
-  from "./growth-regime-bridge.mjs?v=20260831-357";
+  from "./growth-regime-bridge.mjs?v=20260831-358";
+import { buildLeapfrogPhysicsCycle, couplingModeGate, LEAPFROG_COUPLING_MODES }
+  from "./leapfrog-physics-cycle.mjs?v=20260831-358";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -988,6 +990,12 @@ const rateControlPlot = $("rateControlPlot");
 const rateControlMetrics = $("rateControlMetrics");
 const rateControlState = $("rateControlState");
 const rateControlBoundary = $("rateControlBoundary");
+const multiphysicsCycleBadge = $("multiphysicsCycleBadge");
+const multiphysicsCouplingModeSelect = $("multiphysicsCouplingModeSelect");
+const multiphysicsCycleNextButton = $("multiphysicsCycleNextButton");
+const multiphysicsCycleFlow = $("multiphysicsCycleFlow");
+const multiphysicsCycleState = $("multiphysicsCycleState");
+const multiphysicsCycleBoundary = $("multiphysicsCycleBoundary");
 const settlingSensitivityLab = $("settlingSensitivityLab");
 const settlingSensitivityState = $("settlingSensitivityState");
 const settlingSensitivityArms = $("settlingSensitivityArms");
@@ -1958,6 +1966,8 @@ let interfaceFluxWeight = .24;
 let interfaceFluxEvaluations = 0;
 let lastInterfaceFluxRankingAudit = null;
 let selectedRateControlPreset = "mixed";
+let multiphysicsCouplingMode = "structural";
+let lastLeapfrogPhysicsCycle = null;
 let externalTrajectoryCovarianceMode = "display";
 let currentPhysicsPairProgress = null;
 let currentPhysicsPairIntervention = null;
@@ -2157,6 +2167,7 @@ const GROWTH_PROTOCOL_DEFAULTS = Object.freeze({
   wulffRankingMode: "display", wulffAngularReachDegrees: 30, wulffRegularizerWeight: .24,
   kineticHabitMode: "display", kineticHabitReachDegrees: 30, kineticHabitWeight: .24,
   interfaceFluxMode: "display", interfaceFluxReachRelativeRadius: .55, interfaceFluxWeight: .24,
+  multiphysicsCouplingMode: "structural",
   capillaryGeometryMode: "none", capillaryGeometryWeight: .24,
   epitaxyTemplateMode: "none", epitaxyWeight: .24,
   externalDriveMode: "none", externalDriveWeight: .24,
@@ -3785,7 +3796,7 @@ async function downloadInterfacialEnergyRequest() {
   const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-357",
+  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-358",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256,
@@ -4029,7 +4040,7 @@ async function downloadAttachmentKineticsRequest() {
   const material = currentMaterial(); const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-357",
+  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-358",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256, intrinsicDimension, orientationBasisCartesian,
@@ -4245,6 +4256,76 @@ function renderRateControlBridge() {
     : "J/ρsite and v can only be compared when both external responses share one explicit driving-state digest and a 3D periodic reference supplies ρsite. No effective growth velocity or physical clock is inferred.";
 }
 
+function currentLeapfrogPhysicsCycle() {
+  const checkpoint = externalActionBarrierCheckpoint;
+  const targetFree = pipelineStage === 4 && !knownWindowReplayActive()
+    && !currentMaterial()?.growthWithheld;
+  const materialEvidenceCount = [interfacialEnergyValidationAudit, attachmentKineticsValidationAudit,
+    externalPhysicsResponseRuntime, archivedStressStrainResponse()?.promotionPassed ? true : null].filter(Boolean).length;
+  return buildLeapfrogPhysicsCycle({ mode: multiphysicsCouplingMode, pipelineStage, targetFree,
+    geometryStateDigest: interfaceFluxStateDigest(), geometryRevision: atomGeometryRevision,
+    atomCount: atoms.length, materialEvidenceCount,
+    interfaceTransport: { validated: Boolean(interfaceFluxValidationAudit),
+      boundStateDigest: interfaceFluxValidationAudit?.boundStateDigest || null,
+      responseDigest: interfaceFluxValidationAudit?.responseSha256 || null },
+    frontier: { available: targetFree && frontierCandidates.length > 0 && !growthFrontierWork.busy,
+      candidateCount: frontierCandidates.length },
+    eventCheckpoint: { present: Boolean(checkpoint), generationCurrent: Boolean(checkpoint
+        && checkpoint.generation === growthSearchGeneration), validated: Boolean(checkpoint?.validatedResponse),
+      candidateCount: checkpoint?.request?.frontier?.candidateCount || 0,
+      candidateBatchDigest: checkpoint?.requestReceipt?.candidateBatchSha256 || null,
+      responseDigest: checkpoint?.responseSha256 || null } });
+}
+
+function leapfrogActionLabel(action) {
+  return ({ "enter-target-free-growth": "Enter target-free growth",
+    "recalculate-interface-transport": "Download current-interface J request",
+    "freeze-action-frontier": "Freeze exact action frontier",
+    "calculate-action-physics": "Download candidate-physics request",
+    "await-geometric-frontier": "Await geometric frontier",
+    "commit-structural-leap": "Commit certified leap" })[action] || "Inspect next requirement";
+}
+
+function renderLeapfrogPhysicsCycle() {
+  if (!multiphysicsCycleFlow) return;
+  const cycle = currentLeapfrogPhysicsCycle(); lastLeapfrogPhysicsCycle = cycle;
+  multiphysicsCouplingModeSelect.value = multiphysicsCouplingMode;
+  multiphysicsCycleBadge.textContent = `${LEAPFROG_COUPLING_MODES[multiphysicsCouplingMode].label} · ${cycle.cycleFingerprint}`;
+  multiphysicsCycleFlow.replaceChildren(...cycle.nodes.map((entry, index) => {
+    const article = document.createElement("article"); article.className = entry.status; article.setAttribute("role", "listitem");
+    const order = document.createElement("small"); const title = document.createElement("strong");
+    const state = document.createElement("b"); const detail = document.createElement("p");
+    order.textContent = String(index + 1).padStart(2, "0"); title.textContent = entry.label;
+    state.textContent = entry.status; detail.textContent = entry.detail;
+    article.append(order, title, state, detail); return article;
+  }));
+  multiphysicsCycleNextButton.textContent = leapfrogActionLabel(cycle.nextAction);
+  multiphysicsCycleNextButton.disabled = cycle.nextAction === "await-geometric-frontier";
+  multiphysicsCycleState.textContent = cycle.commitReady
+    ? `${LEAPFROG_COUPLING_MODES[multiphysicsCouplingMode].label} is current. One exact leap may commit; afterward interface and action-scoped evidence expires automatically.`
+    : `${LEAPFROG_COUPLING_MODES[multiphysicsCouplingMode].label} is blocked at ${cycle.nodes.find((entry) => ["missing", "stale", "blocked", "waiting"].includes(entry.status))?.label || "the next dependency"}. Next action: ${leapfrogActionLabel(cycle.nextAction)}.`;
+  multiphysicsCycleBoundary.textContent = `${cycle.claimBoundary} After commit: retain ${cycle.invalidationAfterCommit.retained.join("; ")}; invalidate ${cycle.invalidationAfterCommit.invalidated.join("; ")}.`;
+}
+
+function routeLeapfrogNextAction() {
+  const cycle = currentLeapfrogPhysicsCycle();
+  if (cycle.nextAction === "enter-target-free-growth") { enterPipelineStage(4); return; }
+  if (cycle.nextAction === "recalculate-interface-transport") {
+    interfaceFluxCard?.scrollIntoView({ behavior: "smooth", block: "center" });
+    downloadInterfaceFluxRequest?.click(); return;
+  }
+  if (cycle.nextAction === "freeze-action-frontier") { actionBarrierFreezeButton?.click(); return; }
+  if (cycle.nextAction === "calculate-action-physics") {
+    actionBarrierDownloadButton?.click();
+    actionBarrierResponseInput?.closest(".action-barrier-checkpoint")?.scrollIntoView?.({ behavior: "smooth", block: "center" });
+    return;
+  }
+  if (cycle.nextAction === "commit-structural-leap") {
+    if (externalActionBarrierCheckpoint?.validatedResponse) actionBarrierResumeButton?.click();
+    else stepButton?.click();
+  }
+}
+
 function renderInterfaceFluxEvidence() {
   if (!interfaceFluxPlot || !interfaceFluxBars) return;
   const { patches, validated } = activeInterfaceFluxEvidence();
@@ -4344,7 +4425,7 @@ async function downloadSpatialInterfaceFluxRequest() {
   const interfaceGeometrySha256 = await receiptSha256(JSON.stringify({ structureSha256: configuration.structureSha256,
     confinement: confinementSelect?.value || "box", publicReach: growthDomainScale, atomCount: referenceAtoms.length }));
   const species = material.actualElements ? [...material.actualElements] : [...material.elements];
-  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-357",
+  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-358",
     scenarioId: scenarioSelect.value, materialName: material.name, species,
     structureSha256: configuration.structureSha256, interfaceGeometrySha256,
     interfaceConfiguration: configuration,
@@ -13622,7 +13703,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260831-357",
+      buildId: "20260831-358",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -15373,6 +15454,7 @@ async function buildExperimentReceipt() {
       interfacialEnergyEvidence: interfacialEnergyReceipt(),
       orientationAttachmentKineticsEvidence: attachmentKineticsReceipt(),
       spatialInterfaceFluxEvidence: interfaceFluxReceipt(),
+      leapfrogPhysicsCycle: currentLeapfrogPhysicsCycle(),
       externalActionBarrierCheckpoint: actionBarrierCheckpointReceipt(),
       structuralLeapHistory: { totalEvents: leapEventCount, retainedEvents: leapHistory.length,
         maximumRetainedEvents: MAXIMUM_RETAINED_STRUCTURAL_LEAPS,
@@ -16152,6 +16234,7 @@ async function buildExperimentNotebookSnapshot() {
     interfacialEnergyEvidence: interfacialEnergyReceipt(),
     orientationAttachmentKineticsEvidence: attachmentKineticsReceipt(),
     spatialInterfaceFluxEvidence: interfaceFluxReceipt(),
+    leapfrogPhysicsCycle: currentLeapfrogPhysicsCycle(),
     externalActionBarrierCheckpoint: actionBarrierCheckpointReceipt(),
     structuralLeapHistory: { totalEvents: leapEventCount, retainedEvents: leapHistory.length,
       maximumRetainedEvents: MAXIMUM_RETAINED_STRUCTURAL_LEAPS, truncated: leapEventCount > leapHistory.length,
@@ -16203,7 +16286,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260831-357" },
+    application: { name: "Materials Growth Lab", buildId: "20260831-358" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },
@@ -25055,7 +25138,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
   const candidates = [...attachmentCandidates, ...detachmentCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-357",
+    generatedAt: new Date().toISOString(), buildId: "20260831-358",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -27402,6 +27485,7 @@ function currentGrowthProtocolSettings() {
     wulffRankingMode, wulffAngularReachDegrees, wulffRegularizerWeight,
     kineticHabitMode, kineticHabitReachDegrees, kineticHabitWeight,
     interfaceFluxMode, interfaceFluxReachRelativeRadius, interfaceFluxWeight,
+    multiphysicsCouplingMode,
     epitaxyTemplateMode, epitaxyWeight,
     externalDriveMode, externalDriveWeight, thermalFieldMode, thermalFieldWeight,
     affineLoadMode, affineLoadMagnitude,
@@ -27468,6 +27552,7 @@ function growthSettingSelects() {
     kineticHabitWeight: kineticHabitWeightSelect,
     interfaceFluxMode: interfaceFluxModeSelect, interfaceFluxReachRelativeRadius: interfaceFluxReachSelect,
     interfaceFluxWeight: interfaceFluxWeightSelect,
+    multiphysicsCouplingMode: multiphysicsCouplingModeSelect,
     capillaryGeometryMode: capillaryGeometrySelect, capillaryGeometryWeight: capillaryGeometryWeightSelect,
     epitaxyTemplateMode: epitaxyTemplateSelect, epitaxyWeight: epitaxyWeightSelect,
     externalDriveMode: externalDriveSelect, externalDriveWeight: externalDriveWeightSelect,
@@ -27624,8 +27709,9 @@ function renderGrowthControlGroupSummaries() {
   growthFieldsGroupState.textContent = `${fieldsActive}/6 active`;
   const executionActive = activeCount([growthSeedProtocol === "observed-window",
     activeArrivalPathWeight() > 0, activeFeedExposureWeight() > 0,
-    geometricExplorationScale > 0, initializedGrowthNuclei > 1, hierarchyEnabled]);
-  growthExecutionGroupState.textContent = `${executionActive}/6 active · ${growthScheduling}`;
+    geometricExplorationScale > 0, initializedGrowthNuclei > 1, hierarchyEnabled,
+    multiphysicsCouplingMode !== "structural"]);
+  growthExecutionGroupState.textContent = `${executionActive}/7 active · ${growthScheduling}`;
 }
 
 function applyGrowthProtocolSettings(settings, options = {}) {
@@ -27667,6 +27753,8 @@ function applyGrowthProtocolSettings(settings, options = {}) {
   interfaceFluxMode = settings.interfaceFluxMode || "display";
   interfaceFluxReachRelativeRadius = Number(settings.interfaceFluxReachRelativeRadius) || .55;
   interfaceFluxWeight = Number(settings.interfaceFluxWeight) || .24;
+  multiphysicsCouplingMode = Object.hasOwn(LEAPFROG_COUPLING_MODES, settings.multiphysicsCouplingMode)
+    ? settings.multiphysicsCouplingMode : "structural";
   capillaryGeometryMode = settings.capillaryGeometryMode; capillaryGeometryWeight = settings.capillaryGeometryWeight;
   epitaxyTemplateMode = settings.epitaxyTemplateMode; epitaxyWeight = settings.epitaxyWeight;
   externalDriveMode = settings.externalDriveMode; externalDriveWeight = settings.externalDriveWeight;
@@ -30157,6 +30245,13 @@ async function performOwnershipCertifiedDetachment(entry, before) {
 }
 
 async function performOffLatticeEvent() {
+  const couplingGate = couplingModeGate(currentLeapfrogPhysicsCycle());
+  if (!couplingGate.allowed) {
+    setPlaying(false);
+    receiptStatus.textContent = `${LEAPFROG_COUPLING_MODES[multiphysicsCouplingMode].label} blocked safely · ${leapfrogActionLabel(couplingGate.nextAction)}.`;
+    renderLeapfrogPhysicsCycle();
+    return;
+  }
   if (externalActionBarrierCheckpoint && !externalActionBarrierCheckpoint.validatedResponse) {
     receiptStatus.textContent = "This exact frontier is paused. Validate its action-barrier response or release the checkpoint before committing.";
     renderActionBarrierCheckpoint();
@@ -31924,6 +32019,7 @@ function physicsTranslationRecords(leap = null) {
   const stressStrainResponse = archivedStressStrainResponse();
   const localConstraintMismatch = currentLocalConstraintMismatchField();
   const rateControlBridge = activeRateControlEvidence();
+  const leapfrogCycle = currentLeapfrogPhysicsCycle();
   const localSymmetry = leap?.localSymmetryTransition || null;
   const centrosymmetry = leap?.centrosymmetryTransition || null;
   const reciprocalSpace = leap?.reciprocalSpaceTransition || null;
@@ -31996,6 +32092,15 @@ function physicsTranslationRecords(leap = null) {
         ? `ρsite=${rateControlBridge.result.siteNumberDensityAtomsPerCubicMetre.toExponential(4)} atoms m⁻³ from the exact periodic cell and occupancies; nonoverlapping three-sigma intervals classify rate control.`
         : "Requires condition-matched validated J and v responses plus a three-dimensional periodic site-density reference.",
       boundary: "This compares independent supply-equivalent and attachment velocity scales. It adds no search term, assumes no series-resistance law, infers no effective growth velocity, and integrates no physical clock. Simultaneous J and v rank terms remain a separate double-counting hypothesis." },
+    { id: "leapfrog-physics-cycle", process: "external-physics refresh around exact structural leaps",
+      status: leapfrogCycle.commitReady ? "explicit" : "unavailable",
+      role: `${LEAPFROG_COUPLING_MODES[multiphysicsCouplingMode].label} evidence-lifetime gate`,
+      executionEffects: { hardAdmission: multiphysicsCouplingMode !== "structural", ranking: false },
+      encoding: `${leapfrogCycle.nodes.length} scoped dependency states · next ${leapfrogCycle.nextAction} · cycle ${leapfrogCycle.cycleFingerprint}`,
+      evidence: leapfrogCycle.commitReady
+        ? "Every required response is current for this exact geometry/frontier; one leap may commit."
+        : `Commit is withheld until ${leapfrogActionLabel(leapfrogCycle.nextAction)}.`,
+      boundary: "This gate enforces refresh order and evidence scope. It does not run an external solver, infer missing physics, make a finite candidate catalog complete, or map browser duration to material time." },
     { id: "steric", process: "short-range repulsion / species contact", status: "hard", role: "hard admission gate",
       encoding: `${coloredDistanceEnvelopes?.records?.length || 0} colored pair envelopes with exact species coincidence and learned hard-exclusion radii${coloredDistanceEnvelopes?.records?.some((record) => record.directionalUncertaintyApplied) ? `; ${coloredDistanceEnvelopes.records.filter((record) => record.directionalUncertaintyApplied).length} retain one-sigma full-Uij support, transported as U_world=R U_local R^T and resolved again along every live pair direction` : ""}`,
       evidence: leapResult,
@@ -32467,6 +32572,7 @@ const PHYSICS_CONTROL_ROUTES = Object.freeze({
   "orientation-attachment-kinetics": { stage: 4, controlId: "kineticHabitModeSelect", label: "Configure kinetic habit" },
   "spatial-interface-flux": { stage: 4, controlId: "interfaceFluxModeSelect", label: "Configure interface supply" },
   "transport-attachment-regime": { stage: 4, controlId: "rateControlPlot", label: "Inspect rate control" },
+  "leapfrog-physics-cycle": { stage: 4, controlId: "multiphysicsCouplingModeSelect", label: "Configure co-simulation cycle" },
   steric: { stage: 1, controlId: "clusterToleranceSelect", label: "Open metric tolerance" },
   local: { stage: 1, controlId: "geometryModeSelect", label: "Open support geometry" },
   "local-mismatch-map": { stage: 4, controlId: "localConstraintMismatchToggle", label: "Open local mismatch map" },
@@ -33986,7 +34092,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-357",
+    generatedAt: new Date().toISOString(), buildId: "20260831-358",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,
@@ -34815,6 +34921,13 @@ rateControlPresetControls?.addEventListener("click", (event) => {
     ? button.dataset.rateControlPreset : "mixed";
   renderRateControlBridge();
 });
+multiphysicsCouplingModeSelect?.addEventListener("change", () => {
+  multiphysicsCouplingMode = Object.hasOwn(LEAPFROG_COUPLING_MODES, multiphysicsCouplingModeSelect.value)
+    ? multiphysicsCouplingModeSelect.value : "structural";
+  growthProtocolMode = "custom"; setPlaying(false); renderLeapfrogPhysicsCycle();
+  receiptStatus.textContent = `${LEAPFROG_COUPLING_MODES[multiphysicsCouplingMode].label} selected · stale or missing required evidence now blocks commit rather than silently falling back.`;
+});
+multiphysicsCycleNextButton?.addEventListener("click", routeLeapfrogNextAction);
 
 function structuralStoichiometrySeries() {
   if (!leapHistory.length) return [{
@@ -38879,6 +38992,7 @@ function updateUI() {
   renderScalePassport();
   renderPolicyComparison();
   renderActionBarrierCheckpoint();
+  renderLeapfrogPhysicsCycle();
   renderCollinearSpinGeometry();
   renderStructuralLeap();
   renderGrowthMechanismAudit();
@@ -38889,7 +39003,8 @@ function updateUI() {
   const material = currentMaterial();
   renderActiveSamplePassport(material);
   playButton.disabled = pipelineStage === 4
-    && (Boolean(material.growthWithheld) || Boolean(externalActionBarrierCheckpoint));
+    && (Boolean(material.growthWithheld) || Boolean(externalActionBarrierCheckpoint)
+      || (multiphysicsCouplingMode !== "structural" && !lastLeapfrogPhysicsCycle?.commitReady));
   stepButton.disabled = pipelineStage === 4 && (Boolean(material.growthWithheld)
     || growthFrontierWork.busy || Boolean(externalActionBarrierCheckpoint));
   resetButton.disabled = growthFrontierWork.busy;

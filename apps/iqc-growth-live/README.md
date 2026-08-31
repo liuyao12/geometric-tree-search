@@ -1,5 +1,33 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 358 · leap-frog multiphysics refresh cycle
+
+The growth stage now makes the central co-simulation contract explicit instead
+of leaving its evidence lifetimes implicit. A six-state interactive cycle shows
+the exact colored geometry, persistent material evidence, current-interface
+transport, frozen action frontier, candidate-resolved event physics, and the
+next certified GCTS leap. Its one-click next action routes directly to the
+missing calculation or structural step.
+
+Three selectable contracts are available. **Structural** mode requires the
+existing exact geometric certificates. **Interface-coupled** mode additionally
+requires a validated `J(x,n̂)` map bound to the current geometry digest.
+**Event-resolved** mode also requires a response for the exact frozen candidate
+batch, such as barriers and prefactors. The selected contract is part of the
+growth settings and exported receipts, so a run can be reproduced or audited.
+
+After an accepted structural leap, the learned grammar and reference-bound
+material evidence remain valid, while the interface-flux map, frozen candidate
+batch, and candidate-specific barriers/prefactors expire. The next iteration
+must refresh precisely the evidence whose domain changed. This is the intended
+leap-frog workflow: external physics is evaluated at exact structural
+checkpoints and GCTS jumps between them without integrating every intervening
+dynamical trajectory.
+
+The cycle is orchestration and provenance, not a hidden solver. It does not
+infer missing physics, declare a finite action catalog complete, or convert
+browser duration into physical material time.
+
 ## Build 357 · condition-matched transport–attachment regime map
 
 The portal now joins two previously separate physical handoffs without

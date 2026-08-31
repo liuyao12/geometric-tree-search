@@ -7,7 +7,7 @@
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23071112'/%3E%3Cpath d='M17 19 46 12M17 19l8 30m21-37L25 49m-8-30 29 24M25 49l21-6' stroke='%236fffd4' stroke-width='4'/%3E%3Ccircle cx='17' cy='19' r='6' fill='%23f1fff9'/%3E%3Ccircle cx='46' cy='12' r='6' fill='%236fffd4'/%3E%3Ccircle cx='25' cy='49' r='6' fill='%238a7dff'/%3E%3Ccircle cx='46' cy='43' r='6' fill='%236fffd4'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css?v=20260831-357">
+  <link rel="stylesheet" href="./style.css?v=20260831-358">
   <script type="importmap">
     {
       "imports": {
@@ -2147,6 +2147,19 @@
           <p id="interfaceFluxBoundary">The preview is pedagogical. Geometric visibility is not diffusion: this map is not a concentration field, chemical potential, diffusivity, attachment velocity, probability, or integrated physical time.</p>
         </section>
 
+        <section class="multiphysics-cycle-card" aria-label="Leap-frog multiphysics coupling cycle">
+          <div class="section-heading"><p class="eyebrow">external physics ↔ exact GCTS states</p><span id="multiphysicsCycleBadge">structural mode</span></div>
+          <header><span><small>evidence lifetime + refresh orchestration</small><strong>Leap-frog co-simulation cycle</strong></span><p>Choose how much external physics must be current before one exact structural leap. Evidence is retained or invalidated by scope—not silently reused.</p></header>
+          <div class="multiphysics-cycle-controls">
+            <label for="multiphysicsCouplingModeSelect"><span>Coupling contract</span><select id="multiphysicsCouplingModeSelect"><option value="structural" selected>Structural · geometry certificates only</option><option value="interface">Interface-coupled · require current J(x,n̂)</option><option value="event">Event-resolved · require J + action physics</option></select></label>
+            <button id="multiphysicsCycleNextButton" type="button">Inspect next requirement</button>
+          </div>
+          <div id="multiphysicsCycleFlow" class="multiphysics-cycle-flow" role="list" aria-label="Current multiphysics coupling stages"></div>
+          <div class="multiphysics-cycle-legend"><span class="ready">current</span><span class="available">available</span><span class="missing">missing</span><span class="stale">stale</span><span class="blocked">blocked</span></div>
+          <p id="multiphysicsCycleState">Geometry-only leaps remain available. Select a stricter contract to enforce interface or event recalculation.</p>
+          <p id="multiphysicsCycleBoundary">After every accepted leap, current-interface transport and candidate-resolved event calculations expire; reference-bound material evidence and the learned geometric grammar remain.</p>
+        </section>
+
         <section id="leapCertificateSection" class="leap-certificate-section" hidden>
           <div class="section-heading"><p class="eyebrow">structural leap certificate</p><span id="leapCertificateState">no action yet</span></div>
           <div id="leapHistory" class="leap-history" role="group" aria-label="Inspect recent structural leap updates"></div>
@@ -2394,7 +2407,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260831-357"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260831-357"></script>
+  <script type="module" src="./app.js?v=20260831-358"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260831-358"></script>
 </body>
 </html>

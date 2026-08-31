@@ -1,5 +1,33 @@
 # Recursive GCTS benchmark for material growth
 
+### Leap-frog multiphysics refresh cycle (Build 358)
+
+The portal now exposes the evidence lifetime around every exact GCTS state as a
+six-node dependency cycle: colored geometry, persistent material evidence,
+current-interface transport, frozen frontier, candidate-resolved event
+evidence, and structural leap. A fingerprinted pure model decides whether the
+selected coupling contract is current and names the next required action.
+
+The contracts are deliberately nested. Structural mode retains the exact GCTS
+geometry/connection/collision gates. Interface mode additionally requires a
+validated `J(x,n̂)` response whose bound state digest equals the current
+geometry digest. Event mode also requires a validated response bound to the
+current action-frontier generation and candidate-batch digest. A voluntarily
+opened event checkpoint blocks even structural execution until it is resolved,
+so a user cannot silently bypass a calculation they explicitly attached.
+
+An accepted leap increments the geometry revision and invalidates all
+interface-scoped and action-scoped evidence: the spatial flux map, frozen
+candidate batch, and candidate barriers/prefactors. The learned geometric
+grammar and reference-bound material responses remain. This gives an explicit
+external-physics → exact GCTS leap → refresh loop while preserving the existing
+target-free search and exact hard certificates.
+
+The browser does not execute the external solver, infer a missing response,
+prove that a finite action catalog is complete, integrate a trajectory, or map
+wall time to physical time. The cycle is an auditable co-simulation protocol,
+not an additional physical model.
+
 ### Transport–attachment rate-control bridge (Build 357)
 
 The interface audit now compares the two unit-bearing steady-state quantities

@@ -23,7 +23,7 @@ def test_external_physics_request_is_visible_and_downloadable():
         'submittedToExternalService: false',
         'targetCoordinatesEmbedded: false',
         'externalPhysicsRequestExport: externalPhysicsRequestExportReceipt',
-        'buildId: "20260831-357"',
+        'buildId: "20260831-358"',
     )
     for fragment in required_app_fragments:
         assert fragment in APP
@@ -46,9 +46,9 @@ def test_export_schema_covers_all_six_physical_quantities_and_fails_closed():
 
 def test_build_338_is_documented_and_cache_busted():
     for document in (HTML, ALIAS_HTML):
-        assert 'app.js?v=20260831-357' in document
-        assert 'style.css?v=20260831-357' in document
-        assert 'evidence-atlas.js?v=20260831-357' in document
+        assert 'app.js?v=20260831-358' in document
+        assert 'style.css?v=20260831-358' in document
+        assert 'evidence-atlas.js?v=20260831-358' in document
         assert 'returned JSON can be validated against the exact request' in document
     assert 'Build 338 · export a calculation-ready external-physics request' in README
     assert 'Calculation-ready external-physics handoff (Build 338)' in BENCHMARK
