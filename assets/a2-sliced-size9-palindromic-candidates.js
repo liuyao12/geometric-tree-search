@@ -142,7 +142,7 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
     "screening": {
       "status": "inconclusive",
       "certificate": null,
-      "census_stage": "a2_sliced_size9_complete_palindromic_profile_2026_08_30",
+      "census_stage": "a2_sliced_size9_complete_palindromic_profile_exact_through8_2026_08_30",
       "complete_source_pool_size": 22607,
       "recovered_source_pool_size": 1627,
       "recovered_two_copy_periodic_certificates": 1135,
@@ -150,18 +150,27 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
       "recovered_reflection_classes_through_four": 114,
       "recovered_six_copy_additional_periodic_classes": 17,
       "recovered_reflection_classes_through_six": 97,
-      "periodic_exact_through": 6,
+      "periodic_exact_through": 8,
       "periodic_six_copy_hnf_total": 130,
       "periodic_six_copy_hnf_covered": 130,
       "periodic_six_copy_solver_unknowns": 0,
       "periodic_six_copy_exact_multicover_nodes": 412651,
-      "periodic_eight_copy_bounded_hnf_visited": 4,
-      "periodic_eight_copy_bounded_hnf_covered": 21,
+      "periodic_eight_copy_complete": true,
+      "periodic_eight_copy_orbit_representatives": 104,
+      "periodic_eight_copy_orbits_visited": 104,
+      "periodic_eight_copy_hnf_covered": 455,
       "periodic_eight_copy_hnf_total": 455,
-      "periodic_eight_copy_exact_multicover_nodes": 2000004,
-      "periodic_eight_copy_stopped_by": "candidate_time_limit",
-      "periodic_eight_copy_candidate_time_limit_ms": 60000,
-      "periodic_eight_copy_exact_node_limit": 500000,
+      "periodic_eight_copy_exact_multicover_nodes": 48566417,
+      "periodic_eight_copy_solver_unknowns": 0,
+      "periodic_eight_copy_certificate": null,
+      "periodic_eight_copy_replay_verified": false,
+      "motif_tiles": null,
+      "period_vectors": null,
+      "quotient_determinant": null,
+      "periodic_template": null,
+      "periodic_source": null,
+      "periodic_quotient_cluster_substitution": null,
+      "periodic_quotient_cluster_substitution_report": null,
       "direct_scalar_substitution_exact_scales": [
         2,
         8
@@ -196,7 +205,7 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
       "corona_root_patch_copies": 42,
       "corona_solver": "z3",
       "corona_report": "data/a2-sliced-size9-palindromic-corona-z3-04636.ndjson.gz",
-      "periodic_report": "data/a2-sliced-size9-palindromic-focused-periodic-exact8-bounded.ndjson.gz"
+      "periodic_report": "data/a2-sliced-size9-palindromic-periodic-exact8-complete.ndjson.gz"
     },
     "root_corona_witness": [
       {
@@ -669,7 +678,7 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
     "screening": {
       "status": "inconclusive",
       "certificate": null,
-      "census_stage": "a2_sliced_size9_complete_palindromic_profile_2026_08_30",
+      "census_stage": "a2_sliced_size9_complete_palindromic_profile_exact_through8_2026_08_30",
       "complete_source_pool_size": 22607,
       "recovered_source_pool_size": 1627,
       "recovered_two_copy_periodic_certificates": 1135,
@@ -677,18 +686,27 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
       "recovered_reflection_classes_through_four": 114,
       "recovered_six_copy_additional_periodic_classes": 17,
       "recovered_reflection_classes_through_six": 97,
-      "periodic_exact_through": 6,
+      "periodic_exact_through": 8,
       "periodic_six_copy_hnf_total": 130,
       "periodic_six_copy_hnf_covered": 130,
       "periodic_six_copy_solver_unknowns": 0,
       "periodic_six_copy_exact_multicover_nodes": 391184,
-      "periodic_eight_copy_bounded_hnf_visited": 4,
-      "periodic_eight_copy_bounded_hnf_covered": 21,
+      "periodic_eight_copy_complete": true,
+      "periodic_eight_copy_orbit_representatives": 104,
+      "periodic_eight_copy_orbits_visited": 104,
+      "periodic_eight_copy_hnf_covered": 455,
       "periodic_eight_copy_hnf_total": 455,
-      "periodic_eight_copy_exact_multicover_nodes": 1978956,
-      "periodic_eight_copy_stopped_by": "candidate_time_limit",
-      "periodic_eight_copy_candidate_time_limit_ms": 60000,
-      "periodic_eight_copy_exact_node_limit": 500000,
+      "periodic_eight_copy_exact_multicover_nodes": 36415573,
+      "periodic_eight_copy_solver_unknowns": 0,
+      "periodic_eight_copy_certificate": null,
+      "periodic_eight_copy_replay_verified": false,
+      "motif_tiles": null,
+      "period_vectors": null,
+      "quotient_determinant": null,
+      "periodic_template": null,
+      "periodic_source": null,
+      "periodic_quotient_cluster_substitution": null,
+      "periodic_quotient_cluster_substitution_report": null,
       "direct_scalar_substitution_exact_scales": [
         2,
         8
@@ -723,7 +741,7 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
       "corona_root_patch_copies": 28,
       "corona_solver": "exact_gcts",
       "corona_report": "data/a2-sliced-size9-palindromic-focused-corona1-bounded.ndjson.gz",
-      "periodic_report": "data/a2-sliced-size9-palindromic-focused-periodic-exact8-bounded.ndjson.gz"
+      "periodic_report": "data/a2-sliced-size9-palindromic-periodic-exact8-complete.ndjson.gz"
     },
     "root_corona_witness": [
       {
@@ -1086,7 +1104,7 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
     "screening": {
       "status": "inconclusive",
       "certificate": null,
-      "census_stage": "a2_sliced_size9_complete_palindromic_profile_2026_08_30",
+      "census_stage": "a2_sliced_size9_complete_palindromic_profile_exact_through8_2026_08_30",
       "complete_source_pool_size": 22607,
       "recovered_source_pool_size": 1627,
       "recovered_two_copy_periodic_certificates": 1135,
@@ -1094,18 +1112,27 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
       "recovered_reflection_classes_through_four": 114,
       "recovered_six_copy_additional_periodic_classes": 17,
       "recovered_reflection_classes_through_six": 97,
-      "periodic_exact_through": 6,
+      "periodic_exact_through": 8,
       "periodic_six_copy_hnf_total": 130,
       "periodic_six_copy_hnf_covered": 130,
       "periodic_six_copy_solver_unknowns": 0,
       "periodic_six_copy_exact_multicover_nodes": 388861,
-      "periodic_eight_copy_bounded_hnf_visited": 4,
-      "periodic_eight_copy_bounded_hnf_covered": 21,
+      "periodic_eight_copy_complete": true,
+      "periodic_eight_copy_orbit_representatives": 104,
+      "periodic_eight_copy_orbits_visited": 104,
+      "periodic_eight_copy_hnf_covered": 455,
       "periodic_eight_copy_hnf_total": 455,
-      "periodic_eight_copy_exact_multicover_nodes": 2000004,
-      "periodic_eight_copy_stopped_by": "candidate_time_limit",
-      "periodic_eight_copy_candidate_time_limit_ms": 60000,
-      "periodic_eight_copy_exact_node_limit": 500000,
+      "periodic_eight_copy_exact_multicover_nodes": 50215983,
+      "periodic_eight_copy_solver_unknowns": 0,
+      "periodic_eight_copy_certificate": null,
+      "periodic_eight_copy_replay_verified": false,
+      "motif_tiles": null,
+      "period_vectors": null,
+      "quotient_determinant": null,
+      "periodic_template": null,
+      "periodic_source": null,
+      "periodic_quotient_cluster_substitution": null,
+      "periodic_quotient_cluster_substitution_report": null,
       "direct_scalar_substitution_exact_scales": [
         2,
         8
@@ -1140,7 +1167,7 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
       "corona_root_patch_copies": 52,
       "corona_solver": "z3",
       "corona_report": "data/a2-sliced-size9-palindromic-corona-z3-04468.ndjson.gz",
-      "periodic_report": "data/a2-sliced-size9-palindromic-focused-periodic-exact8-bounded.ndjson.gz"
+      "periodic_report": "data/a2-sliced-size9-palindromic-periodic-exact8-complete.ndjson.gz"
     },
     "root_corona_witness": [
       {
@@ -1549,6 +1576,2642 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
           5,
           2,
           5
+        ]
+      }
+    ]
+  },
+  {
+    "id": "a2sp_9_15353",
+    "kind": "a2_sliced_palindromic_alcove_census",
+    "registry_id": "a2_sliced_pal_9_15353",
+    "name": "A2 Palindromic-Profile Size-9 Periodic Control 15353",
+    "alcoves": [
+      {
+        "base": [
+          0,
+          0,
+          0
+        ],
+        "order": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "base": [
+          1,
+          0,
+          0
+        ],
+        "order": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "base": [
+          1,
+          0,
+          0
+        ],
+        "order": [
+          1,
+          0,
+          2
+        ]
+      },
+      {
+        "base": [
+          1,
+          0,
+          0
+        ],
+        "order": [
+          1,
+          2,
+          0
+        ]
+      },
+      {
+        "base": [
+          1,
+          1,
+          0
+        ],
+        "order": [
+          0,
+          2,
+          1
+        ]
+      },
+      {
+        "base": [
+          2,
+          1,
+          0
+        ],
+        "order": [
+          0,
+          2,
+          1
+        ]
+      },
+      {
+        "base": [
+          2,
+          1,
+          0
+        ],
+        "order": [
+          2,
+          0,
+          1
+        ]
+      },
+      {
+        "base": [
+          2,
+          1,
+          0
+        ],
+        "order": [
+          2,
+          1,
+          0
+        ]
+      },
+      {
+        "base": [
+          3,
+          1,
+          0
+        ],
+        "order": [
+          2,
+          1,
+          0
+        ]
+      }
+    ],
+    "morphology": {
+      "layer_equation": "x+y+z=k",
+      "layer_count": 8,
+      "layer_span": 8,
+      "layer_weight_profile": [
+        1,
+        6,
+        13,
+        16,
+        16,
+        13,
+        6,
+        1
+      ],
+      "distinct_lattice_sections": 8,
+      "all_integer_layers_used": true,
+      "polycube": false,
+      "cell_complex": "affine_A3_Coxeter_alcoves",
+      "transverse_profile_asymmetric": false
+    },
+    "lattice_points": 12,
+    "survivor_priority": 4,
+    "survivor_count": 97,
+    "description": "Nine-alcove non-polycube with a replayed eight-copy periodic quotient and induced scale-two cluster substitution.",
+    "screening": {
+      "status": "periodic",
+      "certificate": "translational",
+      "census_stage": "a2_sliced_size9_palindromic_eight_copy_positive_2026_08_30",
+      "complete_source_pool_size": 22607,
+      "recovered_source_pool_size": 1627,
+      "recovered_two_copy_periodic_certificates": 1135,
+      "recovered_four_copy_additional_periodic_certificates": 304,
+      "recovered_reflection_classes_through_four": 114,
+      "recovered_six_copy_additional_periodic_classes": 17,
+      "recovered_reflection_classes_through_six": 97,
+      "periodic_exact_through": 8,
+      "periodic_six_copy_hnf_total": 130,
+      "periodic_six_copy_hnf_covered": 130,
+      "periodic_six_copy_solver_unknowns": 0,
+      "periodic_six_copy_exact_multicover_nodes": 341042,
+      "periodic_eight_copy_complete": false,
+      "periodic_eight_copy_orbit_representatives": 104,
+      "periodic_eight_copy_orbits_visited": 1,
+      "periodic_eight_copy_hnf_covered": 3,
+      "periodic_eight_copy_hnf_total": 455,
+      "periodic_eight_copy_exact_multicover_nodes": 5097,
+      "periodic_eight_copy_solver_unknowns": 0,
+      "periodic_eight_copy_certificate": {
+        "kind": "weighted_periodic_hnf_quotient",
+        "certified": true,
+        "can_tile": true,
+        "model": "a2_sliced_exact_lattice_function",
+        "copies": 8,
+        "determinant": 12,
+        "period_vectors": [
+          [
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            6,
+            0
+          ],
+          [
+            0,
+            5,
+            1
+          ]
+        ],
+        "placements": [
+          {
+            "orientation_index": 0,
+            "translation": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "orientation_index": 0,
+            "translation": [
+              0,
+              3,
+              0
+            ]
+          },
+          {
+            "orientation_index": 0,
+            "translation": [
+              0,
+              5,
+              0
+            ]
+          },
+          {
+            "orientation_index": 1,
+            "translation": [
+              1,
+              2,
+              0
+            ]
+          },
+          {
+            "orientation_index": 2,
+            "translation": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "orientation_index": 2,
+            "translation": [
+              1,
+              2,
+              0
+            ]
+          },
+          {
+            "orientation_index": 3,
+            "translation": [
+              0,
+              3,
+              0
+            ]
+          },
+          {
+            "orientation_index": 3,
+            "translation": [
+              0,
+              4,
+              0
+            ]
+          }
+        ],
+        "hnf_index": 222
+      },
+      "periodic_eight_copy_replay_verified": true,
+      "motif_tiles": 8,
+      "period_vectors": [
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          6,
+          0
+        ],
+        [
+          0,
+          5,
+          1
+        ]
+      ],
+      "quotient_determinant": 12,
+      "periodic_template": {
+        "period_vectors": [
+          [
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            6,
+            0
+          ],
+          [
+            0,
+            5,
+            1
+          ]
+        ],
+        "motif": [
+          {
+            "prototile_idx": 0,
+            "orientation_index": 0,
+            "translation": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 0,
+            "translation": [
+              0,
+              3,
+              0
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 0,
+            "translation": [
+              0,
+              5,
+              0
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 3,
+            "translation": [
+              1,
+              2,
+              0
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 4,
+            "translation": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 4,
+            "translation": [
+              1,
+              2,
+              0
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 1,
+            "translation": [
+              -4,
+              2,
+              -2
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 1,
+            "translation": [
+              -4,
+              3,
+              -2
+            ]
+          }
+        ]
+      },
+      "periodic_source": "an exact eight-copy weighted quotient, independently replayed together with its induced scale-two cluster substitution",
+      "periodic_quotient_cluster_substitution": {
+        "certified": true,
+        "inflation": [
+          [
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            2
+          ]
+        ],
+        "parent_metatile_copies": 8,
+        "child_metatile_copies": 8,
+        "expanded_tile_copies": 64,
+        "parent_period_vectors": [
+          [
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            6,
+            0
+          ],
+          [
+            0,
+            5,
+            1
+          ]
+        ],
+        "expanded_period_vectors": [
+          [
+            4,
+            0,
+            0
+          ],
+          [
+            0,
+            12,
+            0
+          ],
+          [
+            0,
+            10,
+            2
+          ]
+        ],
+        "child_clusters": [
+          {
+            "coset": [
+              0,
+              0,
+              0
+            ],
+            "translation": [
+              0,
+              0,
+              0
+            ],
+            "placements": [
+              {
+                "orientation_index": 0,
+                "translation": [
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 0,
+                "translation": [
+                  0,
+                  3,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 0,
+                "translation": [
+                  0,
+                  5,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 1,
+                "translation": [
+                  1,
+                  2,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 2,
+                "translation": [
+                  0,
+                  1,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 2,
+                "translation": [
+                  1,
+                  2,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 3,
+                "translation": [
+                  0,
+                  3,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 3,
+                "translation": [
+                  0,
+                  4,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "coset": [
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              0,
+              5,
+              1
+            ],
+            "placements": [
+              {
+                "orientation_index": 0,
+                "translation": [
+                  0,
+                  5,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 0,
+                "translation": [
+                  0,
+                  8,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 0,
+                "translation": [
+                  0,
+                  10,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 1,
+                "translation": [
+                  1,
+                  7,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 2,
+                "translation": [
+                  0,
+                  6,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 2,
+                "translation": [
+                  1,
+                  7,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 3,
+                "translation": [
+                  0,
+                  8,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 3,
+                "translation": [
+                  0,
+                  9,
+                  1
+                ]
+              }
+            ]
+          },
+          {
+            "coset": [
+              0,
+              1,
+              0
+            ],
+            "translation": [
+              0,
+              6,
+              0
+            ],
+            "placements": [
+              {
+                "orientation_index": 0,
+                "translation": [
+                  0,
+                  6,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 0,
+                "translation": [
+                  0,
+                  9,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 0,
+                "translation": [
+                  0,
+                  11,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 1,
+                "translation": [
+                  1,
+                  8,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 2,
+                "translation": [
+                  0,
+                  7,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 2,
+                "translation": [
+                  1,
+                  8,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 3,
+                "translation": [
+                  0,
+                  9,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 3,
+                "translation": [
+                  0,
+                  10,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "coset": [
+              0,
+              1,
+              1
+            ],
+            "translation": [
+              0,
+              11,
+              1
+            ],
+            "placements": [
+              {
+                "orientation_index": 0,
+                "translation": [
+                  0,
+                  11,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 0,
+                "translation": [
+                  0,
+                  14,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 0,
+                "translation": [
+                  0,
+                  16,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 1,
+                "translation": [
+                  1,
+                  13,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 2,
+                "translation": [
+                  0,
+                  12,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 2,
+                "translation": [
+                  1,
+                  13,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 3,
+                "translation": [
+                  0,
+                  14,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 3,
+                "translation": [
+                  0,
+                  15,
+                  1
+                ]
+              }
+            ]
+          },
+          {
+            "coset": [
+              1,
+              0,
+              0
+            ],
+            "translation": [
+              2,
+              0,
+              0
+            ],
+            "placements": [
+              {
+                "orientation_index": 0,
+                "translation": [
+                  2,
+                  0,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 0,
+                "translation": [
+                  2,
+                  3,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 0,
+                "translation": [
+                  2,
+                  5,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 1,
+                "translation": [
+                  3,
+                  2,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 2,
+                "translation": [
+                  2,
+                  1,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 2,
+                "translation": [
+                  3,
+                  2,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 3,
+                "translation": [
+                  2,
+                  3,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 3,
+                "translation": [
+                  2,
+                  4,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "coset": [
+              1,
+              0,
+              1
+            ],
+            "translation": [
+              2,
+              5,
+              1
+            ],
+            "placements": [
+              {
+                "orientation_index": 0,
+                "translation": [
+                  2,
+                  5,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 0,
+                "translation": [
+                  2,
+                  8,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 0,
+                "translation": [
+                  2,
+                  10,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 1,
+                "translation": [
+                  3,
+                  7,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 2,
+                "translation": [
+                  2,
+                  6,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 2,
+                "translation": [
+                  3,
+                  7,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 3,
+                "translation": [
+                  2,
+                  8,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 3,
+                "translation": [
+                  2,
+                  9,
+                  1
+                ]
+              }
+            ]
+          },
+          {
+            "coset": [
+              1,
+              1,
+              0
+            ],
+            "translation": [
+              2,
+              6,
+              0
+            ],
+            "placements": [
+              {
+                "orientation_index": 0,
+                "translation": [
+                  2,
+                  6,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 0,
+                "translation": [
+                  2,
+                  9,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 0,
+                "translation": [
+                  2,
+                  11,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 1,
+                "translation": [
+                  3,
+                  8,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 2,
+                "translation": [
+                  2,
+                  7,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 2,
+                "translation": [
+                  3,
+                  8,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 3,
+                "translation": [
+                  2,
+                  9,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 3,
+                "translation": [
+                  2,
+                  10,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "coset": [
+              1,
+              1,
+              1
+            ],
+            "translation": [
+              2,
+              11,
+              1
+            ],
+            "placements": [
+              {
+                "orientation_index": 0,
+                "translation": [
+                  2,
+                  11,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 0,
+                "translation": [
+                  2,
+                  14,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 0,
+                "translation": [
+                  2,
+                  16,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 1,
+                "translation": [
+                  3,
+                  13,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 2,
+                "translation": [
+                  2,
+                  12,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 2,
+                "translation": [
+                  3,
+                  13,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 3,
+                "translation": [
+                  2,
+                  14,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 3,
+                "translation": [
+                  2,
+                  15,
+                  1
+                ]
+              }
+            ]
+          }
+        ],
+        "replay": {
+          "verified": true,
+          "method": "independent_cramers_rule_weighted_quotient",
+          "determinant": 96,
+          "classes": 96
+        },
+        "interpretation": "The eight-tile periodic quotient is the metatile; its scale-two image is exactly eight translated copies of that quotient metatile."
+      },
+      "periodic_quotient_cluster_substitution_report": "data/a2-sliced-size9-palindromic-periodic-cluster-substitutions.ndjson.gz",
+      "direct_scalar_substitution_exact_scales": [
+        2,
+        8
+      ],
+      "direct_scalar_substitution_models": [
+        "proper",
+        "reflected"
+      ],
+      "direct_scalar_substitution_certified_negatives": 14,
+      "direct_scalar_substitution_report": "data/a2-sliced-size9-palindromic-direct-substitution-scale2to8.ndjson.gz",
+      "two_copy_substitution_exact_scales": [
+        2,
+        3
+      ],
+      "two_copy_substitution_models": [
+        "proper",
+        "reflected"
+      ],
+      "two_copy_substitution_certified_negatives": 4,
+      "two_copy_substitution_parents_exhausted": 164,
+      "two_copy_substitution_report": "data/a2-sliced-size9-palindromic-two-copy-substitution-scale2to3.ndjson.gz",
+      "three_copy_substitution_exact_scales": [
+        2
+      ],
+      "three_copy_substitution_models": [
+        "proper",
+        "reflected"
+      ],
+      "three_copy_substitution_certified_negatives": 2,
+      "three_copy_substitution_parents_exhausted": 4128,
+      "three_copy_substitution_report": "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz",
+      "corona_root_patch_copies": 29,
+      "corona_solver": "exact_gcts",
+      "corona_report": "data/a2-sliced-size9-palindromic-focused-corona1-bounded.ndjson.gz",
+      "periodic_report": "data/a2-sliced-size9-palindromic-periodic-exact8-complete.ndjson.gz"
+    },
+    "root_corona_witness": [
+      {
+        "orientation_index": 3,
+        "translation": [
+          3,
+          1,
+          1
+        ]
+      },
+      {
+        "orientation_index": 0,
+        "translation": [
+          -1,
+          0,
+          0
+        ]
+      },
+      {
+        "orientation_index": 4,
+        "translation": [
+          2,
+          3,
+          1
+        ]
+      },
+      {
+        "orientation_index": 3,
+        "translation": [
+          5,
+          2,
+          2
+        ]
+      },
+      {
+        "orientation_index": 0,
+        "translation": [
+          1,
+          1,
+          0
+        ]
+      },
+      {
+        "orientation_index": 0,
+        "translation": [
+          1,
+          0,
+          0
+        ]
+      },
+      {
+        "orientation_index": 0,
+        "translation": [
+          0,
+          -1,
+          0
+        ]
+      },
+      {
+        "orientation_index": 0,
+        "translation": [
+          2,
+          1,
+          1
+        ]
+      },
+      {
+        "orientation_index": 0,
+        "translation": [
+          3,
+          1,
+          1
+        ]
+      },
+      {
+        "orientation_index": 0,
+        "translation": [
+          1,
+          2,
+          1
+        ]
+      },
+      {
+        "orientation_index": 5,
+        "translation": [
+          3,
+          1,
+          1
+        ]
+      },
+      {
+        "orientation_index": 1,
+        "translation": [
+          1,
+          2,
+          -1
+        ]
+      },
+      {
+        "orientation_index": 0,
+        "translation": [
+          -1,
+          1,
+          1
+        ]
+      },
+      {
+        "orientation_index": 1,
+        "translation": [
+          2,
+          2,
+          1
+        ]
+      },
+      {
+        "orientation_index": 2,
+        "translation": [
+          2,
+          2,
+          1
+        ]
+      },
+      {
+        "orientation_index": 4,
+        "translation": [
+          4,
+          3,
+          0
+        ]
+      },
+      {
+        "orientation_index": 4,
+        "translation": [
+          3,
+          1,
+          0
+        ]
+      },
+      {
+        "orientation_index": 0,
+        "translation": [
+          1,
+          -1,
+          -1
+        ]
+      },
+      {
+        "orientation_index": 1,
+        "translation": [
+          1,
+          0,
+          -4
+        ]
+      },
+      {
+        "orientation_index": 2,
+        "translation": [
+          2,
+          -3,
+          -2
+        ]
+      },
+      {
+        "orientation_index": 0,
+        "translation": [
+          -2,
+          -2,
+          -1
+        ]
+      },
+      {
+        "orientation_index": 0,
+        "translation": [
+          -3,
+          -2,
+          -1
+        ]
+      },
+      {
+        "orientation_index": 1,
+        "translation": [
+          1,
+          -1,
+          -1
+        ]
+      },
+      {
+        "orientation_index": 2,
+        "translation": [
+          0,
+          -1,
+          0
+        ]
+      },
+      {
+        "orientation_index": 0,
+        "translation": [
+          -3,
+          -1,
+          0
+        ]
+      },
+      {
+        "orientation_index": 3,
+        "translation": [
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "orientation_index": 0,
+        "translation": [
+          -4,
+          -2,
+          -1
+        ]
+      },
+      {
+        "orientation_index": 1,
+        "translation": [
+          -2,
+          -1,
+          -4
+        ]
+      }
+    ]
+  },
+  {
+    "id": "a2sp_9_17745",
+    "kind": "a2_sliced_palindromic_alcove_census",
+    "registry_id": "a2_sliced_pal_9_17745",
+    "name": "A2 Palindromic-Profile Size-9 Periodic Control 17745",
+    "alcoves": [
+      {
+        "base": [
+          0,
+          0,
+          0
+        ],
+        "order": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "base": [
+          1,
+          0,
+          0
+        ],
+        "order": [
+          1,
+          2,
+          0
+        ]
+      },
+      {
+        "base": [
+          1,
+          1,
+          0
+        ],
+        "order": [
+          0,
+          1,
+          2
+        ]
+      },
+      {
+        "base": [
+          1,
+          1,
+          0
+        ],
+        "order": [
+          0,
+          2,
+          1
+        ]
+      },
+      {
+        "base": [
+          1,
+          1,
+          0
+        ],
+        "order": [
+          1,
+          0,
+          2
+        ]
+      },
+      {
+        "base": [
+          1,
+          1,
+          0
+        ],
+        "order": [
+          1,
+          2,
+          0
+        ]
+      },
+      {
+        "base": [
+          1,
+          1,
+          0
+        ],
+        "order": [
+          2,
+          0,
+          1
+        ]
+      },
+      {
+        "base": [
+          1,
+          2,
+          0
+        ],
+        "order": [
+          2,
+          0,
+          1
+        ]
+      },
+      {
+        "base": [
+          1,
+          2,
+          1
+        ],
+        "order": [
+          0,
+          1,
+          2
+        ]
+      }
+    ],
+    "morphology": {
+      "layer_equation": "x+y+z=k",
+      "layer_count": 8,
+      "layer_span": 8,
+      "layer_weight_profile": [
+        1,
+        4,
+        11,
+        20,
+        20,
+        11,
+        4,
+        1
+      ],
+      "distinct_lattice_sections": 8,
+      "all_integer_layers_used": true,
+      "polycube": false,
+      "cell_complex": "affine_A3_Coxeter_alcoves",
+      "transverse_profile_asymmetric": false
+    },
+    "lattice_points": 12,
+    "survivor_priority": 5,
+    "survivor_count": 97,
+    "description": "Nine-alcove non-polycube with a replayed eight-copy periodic quotient and induced scale-two cluster substitution.",
+    "screening": {
+      "status": "periodic",
+      "certificate": "translational",
+      "census_stage": "a2_sliced_size9_palindromic_eight_copy_positive_2026_08_30",
+      "complete_source_pool_size": 22607,
+      "recovered_source_pool_size": 1627,
+      "recovered_two_copy_periodic_certificates": 1135,
+      "recovered_four_copy_additional_periodic_certificates": 304,
+      "recovered_reflection_classes_through_four": 114,
+      "recovered_six_copy_additional_periodic_classes": 17,
+      "recovered_reflection_classes_through_six": 97,
+      "periodic_exact_through": 8,
+      "periodic_six_copy_hnf_total": 130,
+      "periodic_six_copy_hnf_covered": 130,
+      "periodic_six_copy_solver_unknowns": 0,
+      "periodic_six_copy_exact_multicover_nodes": 356126,
+      "periodic_eight_copy_complete": false,
+      "periodic_eight_copy_orbit_representatives": 104,
+      "periodic_eight_copy_orbits_visited": 1,
+      "periodic_eight_copy_hnf_covered": 3,
+      "periodic_eight_copy_hnf_total": 455,
+      "periodic_eight_copy_exact_multicover_nodes": 169475,
+      "periodic_eight_copy_solver_unknowns": 0,
+      "periodic_eight_copy_certificate": {
+        "kind": "weighted_periodic_hnf_quotient",
+        "certified": true,
+        "can_tile": true,
+        "model": "a2_sliced_exact_lattice_function",
+        "copies": 8,
+        "determinant": 12,
+        "period_vectors": [
+          [
+            2,
+            0,
+            0
+          ],
+          [
+            1,
+            6,
+            0
+          ],
+          [
+            0,
+            5,
+            1
+          ]
+        ],
+        "placements": [
+          {
+            "orientation_index": 0,
+            "translation": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "orientation_index": 0,
+            "translation": [
+              0,
+              5,
+              0
+            ]
+          },
+          {
+            "orientation_index": 1,
+            "translation": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "orientation_index": 1,
+            "translation": [
+              0,
+              4,
+              0
+            ]
+          },
+          {
+            "orientation_index": 2,
+            "translation": [
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "orientation_index": 2,
+            "translation": [
+              1,
+              2,
+              0
+            ]
+          },
+          {
+            "orientation_index": 4,
+            "translation": [
+              0,
+              2,
+              0
+            ]
+          },
+          {
+            "orientation_index": 4,
+            "translation": [
+              1,
+              5,
+              0
+            ]
+          }
+        ],
+        "hnf_index": 244
+      },
+      "periodic_eight_copy_replay_verified": true,
+      "motif_tiles": 8,
+      "period_vectors": [
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          1,
+          6,
+          0
+        ],
+        [
+          0,
+          5,
+          1
+        ]
+      ],
+      "quotient_determinant": 12,
+      "periodic_template": {
+        "period_vectors": [
+          [
+            2,
+            0,
+            0
+          ],
+          [
+            1,
+            6,
+            0
+          ],
+          [
+            0,
+            5,
+            1
+          ]
+        ],
+        "motif": [
+          {
+            "prototile_idx": 0,
+            "orientation_index": 0,
+            "translation": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 0,
+            "translation": [
+              0,
+              5,
+              0
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 2,
+            "translation": [
+              0,
+              1,
+              0
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 2,
+            "translation": [
+              0,
+              4,
+              0
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 1,
+            "translation": [
+              1,
+              1,
+              0
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 1,
+            "translation": [
+              1,
+              2,
+              0
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 2,
+            "translation": [
+              -3,
+              0,
+              -2
+            ]
+          },
+          {
+            "prototile_idx": 0,
+            "orientation_index": 2,
+            "translation": [
+              -2,
+              3,
+              -2
+            ]
+          }
+        ]
+      },
+      "periodic_source": "an exact eight-copy weighted quotient, independently replayed together with its induced scale-two cluster substitution",
+      "periodic_quotient_cluster_substitution": {
+        "certified": true,
+        "inflation": [
+          [
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            2
+          ]
+        ],
+        "parent_metatile_copies": 8,
+        "child_metatile_copies": 8,
+        "expanded_tile_copies": 64,
+        "parent_period_vectors": [
+          [
+            2,
+            0,
+            0
+          ],
+          [
+            1,
+            6,
+            0
+          ],
+          [
+            0,
+            5,
+            1
+          ]
+        ],
+        "expanded_period_vectors": [
+          [
+            4,
+            0,
+            0
+          ],
+          [
+            2,
+            12,
+            0
+          ],
+          [
+            0,
+            10,
+            2
+          ]
+        ],
+        "child_clusters": [
+          {
+            "coset": [
+              0,
+              0,
+              0
+            ],
+            "translation": [
+              0,
+              0,
+              0
+            ],
+            "placements": [
+              {
+                "orientation_index": 0,
+                "translation": [
+                  0,
+                  0,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 0,
+                "translation": [
+                  0,
+                  5,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 1,
+                "translation": [
+                  0,
+                  1,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 1,
+                "translation": [
+                  0,
+                  4,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 2,
+                "translation": [
+                  1,
+                  1,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 2,
+                "translation": [
+                  1,
+                  2,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 4,
+                "translation": [
+                  0,
+                  2,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 4,
+                "translation": [
+                  1,
+                  5,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "coset": [
+              0,
+              0,
+              1
+            ],
+            "translation": [
+              0,
+              5,
+              1
+            ],
+            "placements": [
+              {
+                "orientation_index": 0,
+                "translation": [
+                  0,
+                  5,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 0,
+                "translation": [
+                  0,
+                  10,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 1,
+                "translation": [
+                  0,
+                  6,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 1,
+                "translation": [
+                  0,
+                  9,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 2,
+                "translation": [
+                  1,
+                  6,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 2,
+                "translation": [
+                  1,
+                  7,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 4,
+                "translation": [
+                  0,
+                  7,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 4,
+                "translation": [
+                  1,
+                  10,
+                  1
+                ]
+              }
+            ]
+          },
+          {
+            "coset": [
+              0,
+              1,
+              0
+            ],
+            "translation": [
+              1,
+              6,
+              0
+            ],
+            "placements": [
+              {
+                "orientation_index": 0,
+                "translation": [
+                  1,
+                  6,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 0,
+                "translation": [
+                  1,
+                  11,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 1,
+                "translation": [
+                  1,
+                  7,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 1,
+                "translation": [
+                  1,
+                  10,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 2,
+                "translation": [
+                  2,
+                  7,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 2,
+                "translation": [
+                  2,
+                  8,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 4,
+                "translation": [
+                  1,
+                  8,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 4,
+                "translation": [
+                  2,
+                  11,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "coset": [
+              0,
+              1,
+              1
+            ],
+            "translation": [
+              1,
+              11,
+              1
+            ],
+            "placements": [
+              {
+                "orientation_index": 0,
+                "translation": [
+                  1,
+                  11,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 0,
+                "translation": [
+                  1,
+                  16,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 1,
+                "translation": [
+                  1,
+                  12,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 1,
+                "translation": [
+                  1,
+                  15,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 2,
+                "translation": [
+                  2,
+                  12,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 2,
+                "translation": [
+                  2,
+                  13,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 4,
+                "translation": [
+                  1,
+                  13,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 4,
+                "translation": [
+                  2,
+                  16,
+                  1
+                ]
+              }
+            ]
+          },
+          {
+            "coset": [
+              1,
+              0,
+              0
+            ],
+            "translation": [
+              2,
+              0,
+              0
+            ],
+            "placements": [
+              {
+                "orientation_index": 0,
+                "translation": [
+                  2,
+                  0,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 0,
+                "translation": [
+                  2,
+                  5,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 1,
+                "translation": [
+                  2,
+                  1,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 1,
+                "translation": [
+                  2,
+                  4,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 2,
+                "translation": [
+                  3,
+                  1,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 2,
+                "translation": [
+                  3,
+                  2,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 4,
+                "translation": [
+                  2,
+                  2,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 4,
+                "translation": [
+                  3,
+                  5,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "coset": [
+              1,
+              0,
+              1
+            ],
+            "translation": [
+              2,
+              5,
+              1
+            ],
+            "placements": [
+              {
+                "orientation_index": 0,
+                "translation": [
+                  2,
+                  5,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 0,
+                "translation": [
+                  2,
+                  10,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 1,
+                "translation": [
+                  2,
+                  6,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 1,
+                "translation": [
+                  2,
+                  9,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 2,
+                "translation": [
+                  3,
+                  6,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 2,
+                "translation": [
+                  3,
+                  7,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 4,
+                "translation": [
+                  2,
+                  7,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 4,
+                "translation": [
+                  3,
+                  10,
+                  1
+                ]
+              }
+            ]
+          },
+          {
+            "coset": [
+              1,
+              1,
+              0
+            ],
+            "translation": [
+              3,
+              6,
+              0
+            ],
+            "placements": [
+              {
+                "orientation_index": 0,
+                "translation": [
+                  3,
+                  6,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 0,
+                "translation": [
+                  3,
+                  11,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 1,
+                "translation": [
+                  3,
+                  7,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 1,
+                "translation": [
+                  3,
+                  10,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 2,
+                "translation": [
+                  4,
+                  7,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 2,
+                "translation": [
+                  4,
+                  8,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 4,
+                "translation": [
+                  3,
+                  8,
+                  0
+                ]
+              },
+              {
+                "orientation_index": 4,
+                "translation": [
+                  4,
+                  11,
+                  0
+                ]
+              }
+            ]
+          },
+          {
+            "coset": [
+              1,
+              1,
+              1
+            ],
+            "translation": [
+              3,
+              11,
+              1
+            ],
+            "placements": [
+              {
+                "orientation_index": 0,
+                "translation": [
+                  3,
+                  11,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 0,
+                "translation": [
+                  3,
+                  16,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 1,
+                "translation": [
+                  3,
+                  12,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 1,
+                "translation": [
+                  3,
+                  15,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 2,
+                "translation": [
+                  4,
+                  12,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 2,
+                "translation": [
+                  4,
+                  13,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 4,
+                "translation": [
+                  3,
+                  13,
+                  1
+                ]
+              },
+              {
+                "orientation_index": 4,
+                "translation": [
+                  4,
+                  16,
+                  1
+                ]
+              }
+            ]
+          }
+        ],
+        "replay": {
+          "verified": true,
+          "method": "independent_cramers_rule_weighted_quotient",
+          "determinant": 96,
+          "classes": 96
+        },
+        "interpretation": "The eight-tile periodic quotient is the metatile; its scale-two image is exactly eight translated copies of that quotient metatile."
+      },
+      "periodic_quotient_cluster_substitution_report": "data/a2-sliced-size9-palindromic-periodic-cluster-substitutions.ndjson.gz",
+      "direct_scalar_substitution_exact_scales": [
+        2,
+        8
+      ],
+      "direct_scalar_substitution_models": [
+        "proper",
+        "reflected"
+      ],
+      "direct_scalar_substitution_certified_negatives": 14,
+      "direct_scalar_substitution_report": "data/a2-sliced-size9-palindromic-direct-substitution-scale2to8.ndjson.gz",
+      "two_copy_substitution_exact_scales": [
+        2,
+        3
+      ],
+      "two_copy_substitution_models": [
+        "proper",
+        "reflected"
+      ],
+      "two_copy_substitution_certified_negatives": 4,
+      "two_copy_substitution_parents_exhausted": 44,
+      "two_copy_substitution_report": "data/a2-sliced-size9-palindromic-two-copy-substitution-scale2to3.ndjson.gz",
+      "three_copy_substitution_exact_scales": [
+        2
+      ],
+      "three_copy_substitution_models": [
+        "proper",
+        "reflected"
+      ],
+      "three_copy_substitution_certified_negatives": 2,
+      "three_copy_substitution_parents_exhausted": 343,
+      "three_copy_substitution_report": "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz",
+      "corona_root_patch_copies": 28,
+      "corona_solver": "exact_gcts",
+      "corona_report": "data/a2-sliced-size9-palindromic-focused-corona1-bounded.ndjson.gz",
+      "periodic_report": "data/a2-sliced-size9-palindromic-periodic-exact8-complete.ndjson.gz"
+    },
+    "root_corona_witness": [
+      {
+        "orientation_index": 5,
+        "translation": [
+          2,
+          3,
+          2
+        ]
+      },
+      {
+        "orientation_index": 1,
+        "translation": [
+          0,
+          0,
+          -1
+        ]
+      },
+      {
+        "orientation_index": 4,
+        "translation": [
+          3,
+          2,
+          1
+        ]
+      },
+      {
+        "orientation_index": 1,
+        "translation": [
+          -1,
+          0,
+          -1
+        ]
+      },
+      {
+        "orientation_index": 0,
+        "translation": [
+          0,
+          1,
+          0
+        ]
+      },
+      {
+        "orientation_index": 2,
+        "translation": [
+          1,
+          1,
+          0
+        ]
+      },
+      {
+        "orientation_index": 2,
+        "translation": [
+          1,
+          1,
+          -1
+        ]
+      },
+      {
+        "orientation_index": 0,
+        "translation": [
+          1,
+          2,
+          1
+        ]
+      },
+      {
+        "orientation_index": 2,
+        "translation": [
+          0,
+          1,
+          -1
+        ]
+      },
+      {
+        "orientation_index": 0,
+        "translation": [
+          -1,
+          -1,
+          -2
+        ]
+      },
+      {
+        "orientation_index": 1,
+        "translation": [
+          -2,
+          0,
+          -1
+        ]
+      },
+      {
+        "orientation_index": 0,
+        "translation": [
+          -1,
+          -2,
+          0
+        ]
+      },
+      {
+        "orientation_index": 1,
+        "translation": [
+          -2,
+          -1,
+          -1
+        ]
+      },
+      {
+        "orientation_index": 1,
+        "translation": [
+          1,
+          0,
+          -1
+        ]
+      },
+      {
+        "orientation_index": 0,
+        "translation": [
+          2,
+          1,
+          1
+        ]
+      },
+      {
+        "orientation_index": 2,
+        "translation": [
+          -1,
+          -2,
+          -3
+        ]
+      },
+      {
+        "orientation_index": 0,
+        "translation": [
+          -2,
+          -3,
+          -2
+        ]
+      },
+      {
+        "orientation_index": 1,
+        "translation": [
+          -3,
+          -2,
+          -2
+        ]
+      },
+      {
+        "orientation_index": 0,
+        "translation": [
+          1,
+          0,
+          -1
+        ]
+      },
+      {
+        "orientation_index": 5,
+        "translation": [
+          3,
+          3,
+          1
+        ]
+      },
+      {
+        "orientation_index": 0,
+        "translation": [
+          2,
+          1,
+          0
+        ]
+      },
+      {
+        "orientation_index": 0,
+        "translation": [
+          1,
+          1,
+          -1
+        ]
+      },
+      {
+        "orientation_index": 0,
+        "translation": [
+          2,
+          2,
+          0
+        ]
+      },
+      {
+        "orientation_index": 0,
+        "translation": [
+          0,
+          -1,
+          -2
+        ]
+      },
+      {
+        "orientation_index": 0,
+        "translation": [
+          1,
+          2,
+          2
+        ]
+      },
+      {
+        "orientation_index": 1,
+        "translation": [
+          1,
+          3,
+          1
+        ]
+      },
+      {
+        "orientation_index": 0,
+        "translation": [
+          2,
+          3,
+          2
         ]
       }
     ]

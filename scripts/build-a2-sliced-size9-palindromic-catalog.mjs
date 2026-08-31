@@ -11,7 +11,7 @@ const readGzipNdjson = async relativePath => gunzipSync(
 ).toString("utf8").trim().split("\n").filter(Boolean).map(JSON.parse);
 
 const exactEight = await readGzipNdjson(
-  "data/a2-sliced-size9-palindromic-focused-periodic-exact8-bounded.ndjson.gz"
+  "data/a2-sliced-size9-palindromic-periodic-exact8-complete.ndjson.gz"
 );
 const exactSix = await readGzipNdjson(
   "data/a2-sliced-size9-palindromic-exact6-reflection-representatives.ndjson.gz"
@@ -28,6 +28,9 @@ const twoCopySubstitutions = await readGzipNdjson(
 const threeCopySubstitutions = await readGzipNdjson(
   "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz"
 );
+const periodicClusterSubstitutions = await readGzipNdjson(
+  "data/a2-sliced-size9-palindromic-periodic-cluster-substitutions.ndjson.gz"
+);
 const coronaOverrides = [
   ...(await readGzipNdjson("data/a2-sliced-size9-palindromic-corona-z3-04636.ndjson.gz")),
   ...(await readGzipNdjson("data/a2-sliced-size9-palindromic-corona-z3-04468.ndjson.gz"))
@@ -35,9 +38,13 @@ const coronaOverrides = [
 const coronaById = new Map(exactCorona.map(record => [record.id, record]));
 for (const record of coronaOverrides) coronaById.set(record.id, record);
 
-const selectedIds = ["a2sp_9_04636", "a2sp_9_01085", "a2sp_9_04468"];
+const selectedIds = [
+  "a2sp_9_04636", "a2sp_9_01085", "a2sp_9_04468",
+  "a2sp_9_15353", "a2sp_9_17745"
+];
 const periodicById = new Map(exactEight.map(record => [record.id, record]));
 const exactSixById = new Map(exactSix.map(record => [record.id, record]));
+const clusterSubstitutionById = new Map(periodicClusterSubstitutions.map(record => [record.id, record]));
 const directSubstitutionById = Map.groupBy
   ? Map.groupBy(directSubstitutions, record => record.id)
   : directSubstitutions.reduce((groups, record) => {
@@ -58,6 +65,52 @@ const threeCopySubstitutionById = threeCopySubstitutions.reduce((groups, record)
   groups.set(record.id, rows);
   return groups;
 }, new Map());
+
+const proofOrientationTransforms = [
+  [1, [0, 1, 2]], [1, [1, 2, 0]], [1, [2, 0, 1]],
+  [-1, [0, 2, 1]], [-1, [1, 0, 2]], [-1, [2, 1, 0]]
+];
+const webPeriodicTemplate = (certificate, geometry) => {
+  if (!certificate) return null;
+  const shifts = proofOrientationTransforms.map(([sign, permutation]) =>
+    [0, 1, 2].map(axis => Math.min(...geometry.v.map(vertex =>
+      sign * vertex[permutation[axis]]
+    )))
+  );
+  const orientationHashes = proofOrientationTransforms.map(([sign, permutation], orientationIndex) => {
+    const shift = shifts[orientationIndex];
+    const transform = point => [0, 1, 2].map(axis =>
+      sign * point[permutation[axis]] - shift[axis]
+    );
+    const vertices = geometry.v.map(transform).map(point => point.join(",")).sort().join("|");
+    const occupancy = geometry.occ.map(([point, weight]) =>
+      `${transform(point).join(",")}:${weight}`
+    ).sort().join("|");
+    return `${vertices}@@${occupancy}`;
+  });
+  // Prototile3D visits these proof transforms in this order, then folds tile
+  // stabilizers. Mapping by the full weighted geometry also handles the
+  // three-orientation stabilizer of candidate 17745.
+  const webVisitOrder = [0, 3, 4, 1, 2, 5];
+  const webHashes = [];
+  for (const proofIndex of webVisitOrder) {
+    if (!webHashes.includes(orientationHashes[proofIndex])) {
+      webHashes.push(orientationHashes[proofIndex]);
+    }
+  }
+  const proofToWebOrientation = orientationHashes.map(hash => webHashes.indexOf(hash));
+  const rootShift = shifts[certificate.placements[0].orientation_index].map(value => -value);
+  return {
+    period_vectors: certificate.period_vectors,
+    motif: certificate.placements.map(placement => ({
+      prototile_idx: 0,
+      orientation_index: proofToWebOrientation[placement.orientation_index],
+      translation: placement.translation.map((value, axis) =>
+        value + shifts[placement.orientation_index][axis] + rootShift[axis]
+      )
+    }))
+  };
+};
 const candidates = selectedIds.map((id, index) => {
   const record = periodicById.get(id);
   const sixCopy = exactSixById.get(id);
@@ -66,9 +119,21 @@ const candidates = selectedIds.map((id, index) => {
   const twoCopy = twoCopySubstitutionById.get(id) ?? [];
   const threeCopy = threeCopySubstitutionById.get(id) ?? [];
   if (!record || !sixCopy || !corona) throw new Error(`Missing focused receipt for ${id}`);
-  if (record.classification !== "unresolved"
-      || record.periodic_z3.stopped_by !== "candidate_time_limit") {
-    throw new Error(`Expected bounded eight-copy result for ${id}`);
+  const periodicCertificate = record.periodic_z3.certificate ?? null;
+  const clusterSubstitution = clusterSubstitutionById.get(id) ?? null;
+  const isPeriodic = periodicCertificate !== null;
+  if (isPeriodic) {
+    if (record.classification !== "periodic"
+        || record.periodic_z3.replay?.verified !== true
+        || periodicCertificate.copies !== 8
+        || clusterSubstitution?.substitution?.replay?.verified !== true) {
+      throw new Error(`Missing replayed periodic/substitution certificate for ${id}`);
+    }
+  } else if (record.classification !== "unresolved"
+      || record.periodic_z3.hnf_range_exhausted !== true
+      || record.periodic_z3.hnf_covered !== 455
+      || record.periodic_z3.solver_unknown !== 0) {
+    throw new Error(`Expected complete eight-copy exclusion for ${id}`);
   }
   if (corona.corona_classification !== "root_corona_exists"
       || corona.corona_z3.replay?.verified !== true) {
@@ -95,17 +160,21 @@ const candidates = selectedIds.map((id, index) => {
     id,
     kind: "a2_sliced_palindromic_alcove_census",
     registry_id: `a2_sliced_pal_${id.slice("a2sp_".length)}`,
-    name: `A2 Palindromic-Profile Size-9 Candidate ${id.slice("a2sp_9_".length)}`,
+    name: `A2 Palindromic-Profile Size-9 ${isPeriodic ? "Periodic Control" : "Candidate"} ${id.slice("a2sp_9_".length)}`,
     alcoves: record.alcoves,
     morphology: record.morphology,
     lattice_points: geometry.occ.length,
     survivor_priority: index + 1,
     survivor_count: 97,
-    description: "Nine-alcove non-polycube from the completed palindromic-profile stratum on consecutive x+y+z=k sections.",
+    description: isPeriodic
+      ? "Nine-alcove non-polycube with a replayed eight-copy periodic quotient and induced scale-two cluster substitution."
+      : "Nine-alcove non-polycube from the completed palindromic-profile stratum on consecutive x+y+z=k sections.",
     screening: {
-      status: "inconclusive",
-      certificate: null,
-      census_stage: "a2_sliced_size9_complete_palindromic_profile_2026_08_30",
+      status: isPeriodic ? "periodic" : "inconclusive",
+      certificate: isPeriodic ? "translational" : null,
+      census_stage: isPeriodic
+        ? "a2_sliced_size9_palindromic_eight_copy_positive_2026_08_30"
+        : "a2_sliced_size9_complete_palindromic_profile_exact_through8_2026_08_30",
       complete_source_pool_size: 22607,
       recovered_source_pool_size: 1627,
       recovered_two_copy_periodic_certificates: 1135,
@@ -113,18 +182,30 @@ const candidates = selectedIds.map((id, index) => {
       recovered_reflection_classes_through_four: 114,
       recovered_six_copy_additional_periodic_classes: 17,
       recovered_reflection_classes_through_six: 97,
-      periodic_exact_through: 6,
+      periodic_exact_through: 8,
       periodic_six_copy_hnf_total: sixCopy.periodic_z3.hnf_total,
       periodic_six_copy_hnf_covered: sixCopy.periodic_z3.hnf_covered,
       periodic_six_copy_solver_unknowns: 0,
       periodic_six_copy_exact_multicover_nodes: sixCopy.periodic_z3.exact_multicover_nodes,
-      periodic_eight_copy_bounded_hnf_visited: record.periodic_z3.hnf_visited,
-      periodic_eight_copy_bounded_hnf_covered: record.periodic_z3.hnf_covered,
+      periodic_eight_copy_complete: !isPeriodic && record.periodic_z3.hnf_range_exhausted === true,
+      periodic_eight_copy_orbit_representatives: record.periodic_z3.hnf_orbit_total,
+      periodic_eight_copy_orbits_visited: record.periodic_z3.hnf_visited,
+      periodic_eight_copy_hnf_covered: record.periodic_z3.hnf_covered,
       periodic_eight_copy_hnf_total: record.periodic_z3.hnf_total,
       periodic_eight_copy_exact_multicover_nodes: record.periodic_z3.exact_multicover_nodes,
-      periodic_eight_copy_stopped_by: record.periodic_z3.stopped_by,
-      periodic_eight_copy_candidate_time_limit_ms: 60000,
-      periodic_eight_copy_exact_node_limit: 500000,
+      periodic_eight_copy_solver_unknowns: record.periodic_z3.solver_unknown,
+      periodic_eight_copy_certificate: periodicCertificate,
+      periodic_eight_copy_replay_verified: record.periodic_z3.replay?.verified ?? false,
+      motif_tiles: periodicCertificate?.copies ?? null,
+      period_vectors: periodicCertificate?.period_vectors ?? null,
+      quotient_determinant: periodicCertificate?.determinant ?? null,
+      periodic_template: webPeriodicTemplate(periodicCertificate, makeA2SlicedAlcoveUnion(record.alcoves)),
+      periodic_source: isPeriodic
+        ? "an exact eight-copy weighted quotient, independently replayed together with its induced scale-two cluster substitution"
+        : null,
+      periodic_quotient_cluster_substitution: clusterSubstitution?.substitution ?? null,
+      periodic_quotient_cluster_substitution_report: clusterSubstitution
+        ? "data/a2-sliced-size9-palindromic-periodic-cluster-substitutions.ndjson.gz" : null,
       direct_scalar_substitution_exact_scales: [2, 8],
       direct_scalar_substitution_models: ["proper", "reflected"],
       direct_scalar_substitution_certified_negatives: direct.length,
@@ -146,7 +227,7 @@ const candidates = selectedIds.map((id, index) => {
       corona_report: corona.corona_z3.smt2_sha256
         ? `data/a2-sliced-size9-palindromic-corona-z3-${id.slice("a2sp_9_".length)}.ndjson.gz`
         : "data/a2-sliced-size9-palindromic-focused-corona1-bounded.ndjson.gz",
-      periodic_report: "data/a2-sliced-size9-palindromic-focused-periodic-exact8-bounded.ndjson.gz"
+      periodic_report: "data/a2-sliced-size9-palindromic-periodic-exact8-complete.ndjson.gz"
     },
     root_corona_witness: corona.corona_z3.witness
   };

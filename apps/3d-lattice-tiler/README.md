@@ -257,16 +257,21 @@ all negative quotient searches in this chain have zero solver unknowns.
 The eight recovered classes selected for deeper screening also have 112
 independently replayed atomic obstructions excluding direct scalar monotile
 substitution at every integer scale from 2 through 8 in both the proper and
-reflected models. Connected metatile alphabets remain open.
+reflected models. A complete determinant-12 continuation then checks all 104
+proper-A₂ HNF orbits (455 bases) at eight copies: two classes have replayed
+periodic quotients and the other six are exact-negative through eight copies,
+with zero solver unknowns. Each positive eight-tile quotient also induces a
+replay-verified scale-two cluster substitution: its doubled period cell is
+tiled by eight translated copies of the quotient metatile (64 tile placements).
 Complete connected two-copy metatile screens at scalar scales 2 and 3 then
 exclude all 32 candidate/scale/model cases for those eight recovered classes,
 with every parent ending in a replayed local obstruction or exact UNSAT result.
-Connected alphabets with three or more copies remain open.
+Connected alphabets with three or more copies remain open at this stage.
 At scalar scale 2 the complete connected three-copy family is now excluded in
 both symmetry models for the same eight recovered classes. Every one of the
 12,000-plus parent types on the harder reflected instances carries a replayed
 atomic or exact obstruction. Other scales and clusters of four or more remain
-open.
+open for the six retained eight-copy survivors.
 The original stratum's exact two-, four-, and six-copy quotient screens reduce
 it to 356 reflection-class candidates.
 The next census level is also complete and removes the profile heuristic

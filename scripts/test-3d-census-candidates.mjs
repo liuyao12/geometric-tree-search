@@ -1674,13 +1674,20 @@ assert.deepEqual(slicedSizeNineLeads.map(candidate => candidate.id), [
   "a2sa_9_11364", "a2sa_9_13833", "a2sa_9_15635"
 ]);
 assert.deepEqual(A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES.map(candidate => candidate.id), [
-  "a2sp_9_04636", "a2sp_9_01085", "a2sp_9_04468"
+  "a2sp_9_04636", "a2sp_9_01085", "a2sp_9_04468",
+  "a2sp_9_15353", "a2sp_9_17745"
 ]);
-assert.ok(A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES.every(candidate =>
-  candidate.screening.periodic_exact_through === 6
+const palindromicUnresolved = A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES.filter(
+  candidate => candidate.screening.status === "inconclusive"
+);
+assert.equal(palindromicUnresolved.length, 3);
+assert.ok(palindromicUnresolved.every(candidate =>
+  candidate.screening.periodic_exact_through === 8
   && candidate.screening.periodic_six_copy_solver_unknowns === 0
-  && candidate.screening.periodic_eight_copy_stopped_by === "candidate_time_limit"
-  && candidate.screening.periodic_eight_copy_bounded_hnf_visited >= 4
+  && candidate.screening.periodic_eight_copy_complete === true
+  && candidate.screening.periodic_eight_copy_orbits_visited === 104
+  && candidate.screening.periodic_eight_copy_hnf_covered === 455
+  && candidate.screening.periodic_eight_copy_solver_unknowns === 0
   && candidate.screening.direct_scalar_substitution_exact_scales.join(",") === "2,8"
   && candidate.screening.direct_scalar_substitution_models.join(",") === "proper,reflected"
   && candidate.screening.direct_scalar_substitution_certified_negatives === 14
@@ -1691,6 +1698,23 @@ assert.ok(A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES.every(candidate =>
   && candidate.screening.three_copy_substitution_models.join(",") === "proper,reflected"
   && candidate.screening.three_copy_substitution_certified_negatives === 2
   && candidate.screening.corona_root_patch_copies > 1
+));
+const palindromicPeriodic = A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES.filter(
+  candidate => candidate.screening.status === "periodic"
+);
+assert.deepEqual(palindromicPeriodic.map(candidate => candidate.id), [
+  "a2sp_9_15353", "a2sp_9_17745"
+]);
+assert.ok(palindromicPeriodic.every(candidate =>
+  candidate.screening.certificate === "translational"
+  && candidate.screening.motif_tiles === 8
+  && candidate.screening.quotient_determinant === 12
+  && candidate.screening.periodic_eight_copy_replay_verified === true
+  && candidate.screening.periodic_template?.motif?.length === 8
+  && candidate.screening.periodic_quotient_cluster_substitution?.certified === true
+  && candidate.screening.periodic_quotient_cluster_substitution?.child_metatile_copies === 8
+  && candidate.screening.periodic_quotient_cluster_substitution?.expanded_tile_copies === 64
+  && candidate.screening.periodic_quotient_cluster_substitution?.replay?.verified === true
 ));
 assert.deepEqual(A2_SLICED_SIZE10_CANDIDATES.map(candidate => candidate.id), [
   "a2sa_10_36141", "a2sa_10_35323", "a2sa_10_36194"
@@ -1789,12 +1813,12 @@ assert.deepEqual(
   }
 );
 assert.equal(shellControls.length, 9);
-assert.equal(periodicControls.length, 49);
+assert.equal(periodicControls.length, 51);
 const visiblePeriodicControls = periodicControls.filter(isGctsFigureVisibleInCatalog);
 assert.equal(GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES, 5);
 assert.deepEqual(
   visiblePeriodicControls.map(figure => figure.census_candidate.id).sort(),
-  ["10_45033", "11_151715", "12_204255", "12_405129", "13_0635270", "a2lp_7_00694", "a2sa_8_00240", "a2sa_8_00888", "a2sa_8_01059", "a2sa_8_02946", "a2sa_8_02965", "a2sa_8_02979", "a2sa_8_03138", "a2sa_9_01109", "a2sa_9_03727", "a2sa_9_14433", "a2sa_9_15089", "a2sa_9_16327", "p9-43172"],
+  ["10_45033", "11_151715", "12_204255", "12_405129", "13_0635270", "a2lp_7_00694", "a2sa_8_00240", "a2sa_8_00888", "a2sa_8_01059", "a2sa_8_02946", "a2sa_8_02965", "a2sa_8_02979", "a2sa_8_03138", "a2sa_9_01109", "a2sa_9_03727", "a2sa_9_14433", "a2sa_9_15089", "a2sa_9_16327", "a2sp_9_15353", "a2sp_9_17745", "p9-43172"],
   "the public catalogue should retain only periodic controls with a large certified motif"
 );
 assert.ok(periodicControls
