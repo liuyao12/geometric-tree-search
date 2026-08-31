@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260831-substitution-v272";
+} from "./engine.js?v=20260831-substitution-v273";
 
 const $ = (id) => document.getElementById(id);
 
