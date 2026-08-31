@@ -735,9 +735,9 @@ export async function solveA2Tiling({boundary,seed=null,startPoints=[],tiles=["h
     if(maximize?chosen.length>=targetPlacements:[...desired].every(([key,entry])=>Math.abs((sums.get(key)||0)-entry.weight)<1e-7))return true;
     let choice=null,options=null,choiceInfo={forced:false,branchCount:0,frontierValue:0};
     if(maximize){
-      // Close the geometric shell nearest the initial tile before touching a
-      // farther shell. Forcedness is only a tie-breaker inside that nearest
-      // shell; it must never jump the search across a nearer branching point.
+      // The frontier-candidate graph is the branching engine: detect a dead
+      // point anywhere on the active frontier, then choose a globally forced
+      // point before any genuine branch. Distance only breaks equal-size ties.
       const incrementalGraphActive=!graphNeedsGlobalPlacementUpdate();
       const frontier=(incrementalGraphActive?[...frontierGraph.values()]:[...sums].filter(([point,value])=>value<targetAt(point.split(",").map(Number))-1e-7).map(([point,value])=>{
         const coordinates=point.split(",").map(Number);return{point,value,distance:distanceFromInitial(point),introduced:pointDepth.get(point)??Infinity,norm:coordinates.reduce((sum,v)=>sum+Math.abs(v),0)};
@@ -748,10 +748,10 @@ export async function solveA2Tiling({boundary,seed=null,startPoints=[],tiles=["h
         if(missing.length||extra.length)throw new Error(`Frontier graph divergence at ${entry.point}: missing ${missing.slice(0,3).join(",")}; extra ${extra.slice(0,3).join(",")}`);
       }
       if(!frontier.length)return true;
-      const nearestDistance=frontier[0].distance,nearest=frontier.filter(entry=>entry.distance===nearestDistance);
+      const nearestDistance=frontier[0].distance;
       let selected=null;
-      for(const entry of nearest){
-        const legal=incrementalGraphActive?entry.candidates.filter(placement=>entry.legal.has(placement.id)):legalAt(entry.point);
+      for(const entry of frontier){
+        const legal=incrementalGraphActive?[...entry.legal.values()]:legalAt(entry.point);
         if(!legal.length){if(!legalAt(entry.point,1,true).length)learner.rememberFrontierFailure?.(frontierPattern(entry.point));noteFailedPath(trackers,entry.point);emit("fail",{choice:entry.point,frontierValue:entry.value});return false;}
         if(!selected||legal.length<selected.legal.length)selected={...entry,legal};
       }
