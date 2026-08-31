@@ -103,7 +103,9 @@ import { buildFiniteNucleationLandscape }
   from "./finite-nucleation-landscape.mjs?v=20260831-352";
 import { buildInterfacialEnergyRequest, buildNormalizedWulffGeometry,
   validateInterfacialEnergyResponse }
-  from "./external-interfacial-energy.mjs?v=20260831-353";
+  from "./external-interfacial-energy.mjs?v=20260831-354";
+import { evaluateWulffShapeRegularizer, matchedWulffRankingAudit }
+  from "./wulff-shape-regularizer.mjs?v=20260831-354";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -929,6 +931,12 @@ const resetWulffPreview = $("resetWulffPreview");
 const wulffResponseInput = $("wulffResponseInput");
 const wulffEvidenceState = $("wulffEvidenceState");
 const wulffEvidenceBoundary = $("wulffEvidenceBoundary");
+const wulffRankingModeSelect = $("wulffRankingModeSelect");
+const wulffAngularReachSelect = $("wulffAngularReachSelect");
+const wulffRegularizerWeightSelect = $("wulffRegularizerWeightSelect");
+const wulffRankingGate = $("wulffRankingGate");
+const wulffRankingState = $("wulffRankingState");
+const wulffRankingAudit = $("wulffRankingAudit");
 const settlingSensitivityLab = $("settlingSensitivityLab");
 const settlingSensitivityState = $("settlingSensitivityState");
 const settlingSensitivityArms = $("settlingSensitivityArms");
@@ -1877,6 +1885,11 @@ let externalPhysicsTrajectoryGeometryEnabled = false;
 let interfacialEnergyRequestRuntime = null;
 let interfacialEnergyValidationAudit = null;
 let selectedWulffPreset = "cubic";
+let wulffRankingMode = "display";
+let wulffAngularReachDegrees = 30;
+let wulffRegularizerWeight = .24;
+let wulffShapeEvaluations = 0;
+let lastWulffRankingAudit = null;
 let externalTrajectoryCovarianceMode = "display";
 let currentPhysicsPairProgress = null;
 let currentPhysicsPairIntervention = null;
@@ -2073,6 +2086,7 @@ const GROWTH_PROTOCOL_DEFAULTS = Object.freeze({
   constraintTensorMode: "none", constraintTensorWeight: .24,
   solutePartitionMode: "none", solutePartitionWeight: .24,
   frontMorphologyMode: "none", frontMorphologyWeight: .24,
+  wulffRankingMode: "display", wulffAngularReachDegrees: 30, wulffRegularizerWeight: .24,
   capillaryGeometryMode: "none", capillaryGeometryWeight: .24,
   epitaxyTemplateMode: "none", epitaxyWeight: .24,
   externalDriveMode: "none", externalDriveWeight: .24,
@@ -3486,6 +3500,94 @@ function activeWulffEvidence() {
   return { orientations, geometry: buildNormalizedWulffGeometry(orientations, dimension), validated: false };
 }
 
+function wulffShapeRegularizerGate() {
+  if (!interfacialEnergyValidationAudit) return { active: false, reason: "validate physical γ(n̂) first" };
+  if (!interfacialEnergyRequestRuntime?.request?.specimen?.orientationBasisCartesian) {
+    return { active: false, reason: "the validated response has no bound specimen orientation basis" };
+  }
+  if (wulffRankingMode !== "shape") return { active: false, reason: "display only · frontier ranking unchanged" };
+  if (confinementSelect?.value !== "sphere") return { active: false, reason: "select Finite nucleus · sphere" };
+  if (pipelineStage !== 4) return { active: false, reason: "enter material growth to audit the frozen frontier" };
+  if (knownWindowReplayActive()) return { active: false, reason: "waiting for target-free continuation beyond known-window replay" };
+  return { active: true, reason: "validated finite-nucleus equilibrium-shape prior" };
+}
+
+function activeWulffRegularizerWeight() {
+  return wulffShapeRegularizerGate().active ? wulffRegularizerWeight : 0;
+}
+
+function wulffShapeRegularizerForFreshSites(fresh, { recordWork = true } = {}) {
+  const gate = wulffShapeRegularizerGate();
+  const disabled = { available: Boolean(interfacialEnergyValidationAudit), supported: false,
+    enabled: false, reason: gate.reason, score: 0, targetUsed: false,
+    candidateSetChanged: false, candidateGeometryChanged: false, hardAdmissionChanged: false,
+    usedAsAttachmentRate: false, usedAsGrowthLaw: false };
+  if (!gate.active) return disabled;
+  try {
+    const result = evaluateWulffShapeRegularizer({
+      occupiedPositions: atoms.map((atom) => atom.p.toArray()),
+      emittedPositions: fresh.map((site) => site.p.toArray()),
+      orientationBasisCartesian: interfacialEnergyRequestRuntime.request.specimen.orientationBasisCartesian,
+      orientations: interfacialEnergyValidationAudit.orientations,
+      maximumAngleRadians: wulffAngularReachDegrees * Math.PI / 180,
+    });
+    if (recordWork) wulffShapeEvaluations++;
+    return { ...result, enabled: true, angularReachDegrees: wulffAngularReachDegrees,
+      responseSha256: interfacialEnergyValidationAudit.responseSha256 || null,
+      requestSha256: interfacialEnergyValidationAudit.requestSha256 };
+  } catch (error) {
+    if (recordWork) wulffShapeEvaluations++;
+    return { ...disabled, enabled: true,
+      reason: error instanceof Error ? error.message : "Wulff support evaluation failed" };
+  }
+}
+
+function captureWulffMatchedRankingAudit(entries) {
+  if (!entries?.length || activeWulffRegularizerWeight() <= 0) {
+    lastWulffRankingAudit = null; renderWulffRankingControls(); return;
+  }
+  lastWulffRankingAudit = {
+    ...matchedWulffRankingAudit(entries.map((entry) => ({
+      candidateId: entry.candidate.key,
+      baselineScore: entry.selectionScore - activeWulffRegularizerWeight()
+        * entry.evaluation.wulffShapeRegularizer.score,
+      regularizedScore: entry.selectionScore,
+      supported: entry.evaluation.wulffShapeRegularizer.supported,
+    }))),
+    candidateSetDigest: frozenFrontierDigest(entries),
+    angularReachDegrees: wulffAngularReachDegrees,
+    effectiveWeight: activeWulffRegularizerWeight(),
+    responseSha256: interfacialEnergyValidationAudit?.responseSha256 || null,
+    rankingTargetUsed: false,
+  };
+  renderWulffRankingControls();
+}
+
+function renderWulffRankingControls() {
+  if (!wulffRankingModeSelect || !wulffRankingState || !wulffRankingAudit) return;
+  const gate = wulffShapeRegularizerGate();
+  wulffRankingModeSelect.value = wulffRankingMode;
+  wulffAngularReachSelect.value = String(wulffAngularReachDegrees);
+  wulffRegularizerWeightSelect.value = String(wulffRegularizerWeight);
+  wulffRankingModeSelect.disabled = !interfacialEnergyValidationAudit;
+  wulffAngularReachSelect.disabled = !interfacialEnergyValidationAudit || wulffRankingMode !== "shape";
+  wulffRegularizerWeightSelect.disabled = !interfacialEnergyValidationAudit || wulffRankingMode !== "shape";
+  const panel = wulffRankingModeSelect.closest(".wulff-ranking-controls");
+  panel?.classList.toggle("active", gate.active);
+  wulffRankingGate.textContent = gate.active ? "active soft rank" : "display only";
+  wulffRankingState.textContent = gate.active
+    ? `γ(n̂) support is fit to the occupied nucleus by translation + one scale. Candidates outside ${wulffAngularReachDegrees}° oriented coverage abstain.`
+    : `${gate.reason}. No candidate geometry, hard gate, attachment rate, or kinetic law changes.`;
+  const values = wulffRankingAudit.querySelectorAll("b");
+  if (lastWulffRankingAudit) {
+    values[0].textContent = `${lastWulffRankingAudit.supportedCandidates}/${lastWulffRankingAudit.candidateCount}`;
+    values[1].textContent = `${lastWulffRankingAudit.rankInversions}/${lastWulffRankingAudit.maximumRankInversions}`;
+    values[2].textContent = lastWulffRankingAudit.candidateSetIdentical ? "unchanged" : "mismatch";
+  } else {
+    values[0].textContent = "—"; values[1].textContent = "—"; values[2].textContent = "unchanged";
+  }
+}
+
 function renderWulffEvidence() {
   if (!wulffGeometryPlot || !wulffOrientationBars) return;
   let evidence;
@@ -3561,12 +3663,18 @@ function renderWulffEvidence() {
     ? `Request ${interfacialEnergyValidationAudit.requestSha256.slice(0, 12)} · ${interfacialEnergyValidationAudit.method.program} · ${geometry.activeOrientationIds.length}/${orientations.length} supplied orientations active in the normalized envelope.`
     : `Synthetic ${selectedWulffPreset} preview · γ values are pedagogical and have no material identity or physical units.`;
   wulffEvidenceBoundary.textContent = validated
-    ? "Validated γ(n̂) is scoped to this exact specimen, method, and adjacent phase. The finite envelope is conditional on the supplied orientations; physical size, unsampled facets, Miller indices, equilibrium completeness, attachment kinetics, nucleation rate, and growth ranking remain unresolved."
+    ? wulffShapeRegularizerGate().active
+      ? "Validated γ(n̂) supplies an opt-in equilibrium-shape regularizer over the unchanged target-free frontier. It fits only translation and scale to the occupied finite nucleus and abstains beyond the declared angular reach. It is not attachment kinetics, mobility, a growth rate, or physical time."
+      : "Validated γ(n̂) is scoped to this exact specimen, method, and adjacent phase. The finite envelope is conditional on the supplied orientations; physical size, unsampled facets, Miller indices, equilibrium completeness, attachment kinetics, nucleation rate, and growth ranking remain unresolved."
     : "The envelope is conditional on the supplied oriented normals and interface environment. Scale, missing orientations, Miller indices, attachment kinetics, nucleation rate, and equilibrium completeness are not inferred; this preview does not rank growth.";
+  renderWulffRankingControls();
 }
 
 function resetInterfacialEnergyRoundTrip() {
+  if (externalActionBarrierCheckpoint) releaseExternalActionBarrierCheckpoint(
+    "Action-barrier checkpoint released because the interfacial-energy evidence changed.");
   interfacialEnergyRequestRuntime = null; interfacialEnergyValidationAudit = null;
+  wulffRankingMode = "display"; lastWulffRankingAudit = null;
   if (importWulffResponse) importWulffResponse.disabled = true;
   renderWulffEvidence();
 }
@@ -3579,7 +3687,8 @@ function interfacialEnergyReceipt() {
     orientationBasisCartesian: interfacialEnergyRequestRuntime.request.specimen.orientationBasisCartesian,
     targetUsed: false,
   } : null;
-  if (!interfacialEnergyValidationAudit) return { request, validation: null };
+  if (!interfacialEnergyValidationAudit) return { request, validation: null,
+    shapeRegularizer: { mode: wulffRankingMode, active: false, targetUsed: false } };
   const audit = interfacialEnergyValidationAudit;
   return { request, validation: {
     schema: audit.schema, requestSha256: audit.requestSha256, responseSha256: audit.responseSha256,
@@ -3587,8 +3696,16 @@ function interfacialEnergyReceipt() {
     method: audit.method, interface: audit.interface, units: audit.units,
     orientations: audit.orientations.map((entry) => ({ ...entry, normal: [...entry.normal] })),
     geometry: audit.geometry,
-    candidateSetChanged: false, candidateRankingChanged: false, usedAsGrowthLaw: false,
+    candidateSetChanged: false, candidateRankingChanged: activeWulffRegularizerWeight() > 0,
+    usedAsGrowthLaw: false,
     usedAsAttachmentRate: false, targetUsed: false,
+  }, shapeRegularizer: {
+    mode: wulffRankingMode, active: activeWulffRegularizerWeight() > 0,
+    angularReachDegrees: wulffAngularReachDegrees, effectiveWeight: activeWulffRegularizerWeight(),
+    evaluations: wulffShapeEvaluations, matchedRankingAudit: lastWulffRankingAudit,
+    finiteNucleusRequired: true, equilibriumShapePriorOnly: true,
+    candidateSetChanged: false, candidateGeometryChanged: false, hardAdmissionChanged: false,
+    usedAsGrowthLaw: false, usedAsAttachmentRate: false, targetUsed: false,
   } };
 }
 
@@ -3598,7 +3715,7 @@ async function downloadInterfacialEnergyRequest() {
   const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-353",
+  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-354",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256,
@@ -3625,6 +3742,9 @@ async function validateInterfacialEnergyFile(file) {
   const responseText = await file.text(); const response = JSON.parse(responseText);
   interfacialEnergyValidationAudit = validateInterfacialEnergyResponse(response, interfacialEnergyRequestRuntime);
   interfacialEnergyValidationAudit.responseSha256 = await receiptSha256(responseText);
+  lastWulffRankingAudit = null;
+  if (externalActionBarrierCheckpoint) releaseExternalActionBarrierCheckpoint(
+    "Action-barrier checkpoint released because validated interfacial-energy evidence changed ranking provenance.");
   receiptStatus.textContent = `Interfacial energies validated · ${interfacialEnergyValidationAudit.orientations.length} oriented γ values · ${interfacialEnergyValidationAudit.geometry.facetCount} active Wulff facets · display only.`;
   renderWulffEvidence();
 }
@@ -10173,7 +10293,7 @@ function renderGrowthMechanismAudit() {
     const empty = document.createElement("p"); empty.textContent = "Advance one tree-search update to map its local geometric environment."; growthMechanismLedger.appendChild(empty);
   }
   renderGrowthUncertaintyBudget();
-  growthMechanismBoundary.textContent = `Phenotypes and uncertainty budgets are assigned after the candidate geometry and decision are frozen. Up to ${MAXIMUM_POSE_AUDITS_PER_LEAP} deterministic pose audits replay hard geometry at the larger of measured pair uncertainty and half the resolved isometry tolerance; the capped set is retained in encounter order, target-blind, and never changes admission or rank. This is a bounded sensitivity audit, not a posterior probability, confidence interval, thermal ensemble, dynamics, or calibrated robustness certificate. ${activeMicrostructureCouplingWeight() > 0 ? microstructureCouplingMode === "interface-accommodate" ? `The declared ${microstructureCouplingLabel()} experiment projects only candidate-induced shared lineage membership and ranks support, contact connectivity, and proper misorientation over unchanged actions.` : `The declared ${microstructureCouplingLabel()} experiment uses only proximity to frozen input-derived roles as a soft rank term over unchanged actions.` : "Heterogeneous-geometry and interface-accommodation descriptors are diagnostic only."} ${activeFrontMorphologyWeight() > 0 ? `The ${frontMorphologyLabel()} experiment uses parent-local angular support as another soft ordering term.` : "Front morphology is diagnostic only."} ${activeCapillaryGeometryWeight() > 0 ? `The ${capillaryGeometryLabel()} experiment uses finite 3D solid-angle occupancy around emitted sites.` : "Discrete capillary geometry is diagnostic only."} ${activeThermalFieldWeight() > 0 ? `The ${thermalFieldLabel()} experiment supplies a declared reduced scalar field relative to the observed seed.` : "The thermal-field control is isothermal."} ${activeEpitaxyWeight() > 0 ? `The declared ${epitaxyTemplateLabel()} contributes an interfacial registry score without substrate atoms.` : "No epitaxial template ranks the frontier."} ${activeFeedExposureWeight() > 0 ? `The ${feedExposureLabel()} contributes finite-ray geometric visibility.` : "No source-ray shadowing term ranks the frontier."} No defect identity, differential mean curvature, adhesion, interface energy, Kelvin temperature, heat flow, flux, physical mechanism, formation energy, mobility, or rate is inferred.`;
+  growthMechanismBoundary.textContent = `Phenotypes and uncertainty budgets are assigned after the candidate geometry and decision are frozen. Up to ${MAXIMUM_POSE_AUDITS_PER_LEAP} deterministic pose audits replay hard geometry at the larger of measured pair uncertainty and half the resolved isometry tolerance; the capped set is retained in encounter order, target-blind, and never changes admission or rank. This is a bounded sensitivity audit, not a posterior probability, confidence interval, thermal ensemble, dynamics, or calibrated robustness certificate. ${activeMicrostructureCouplingWeight() > 0 ? microstructureCouplingMode === "interface-accommodate" ? `The declared ${microstructureCouplingLabel()} experiment projects only candidate-induced shared lineage membership and ranks support, contact connectivity, and proper misorientation over unchanged actions.` : `The declared ${microstructureCouplingLabel()} experiment uses only proximity to frozen input-derived roles as a soft rank term over unchanged actions.` : "Heterogeneous-geometry and interface-accommodation descriptors are diagnostic only."} ${activeFrontMorphologyWeight() > 0 ? `The ${frontMorphologyLabel()} experiment uses parent-local angular support as another soft ordering term.` : "Front morphology is diagnostic only."} ${activeWulffRegularizerWeight() > 0 ? `Validated oriented γ regularizes finite-nucleus support mismatch at weight ${activeWulffRegularizerWeight().toFixed(2)} and abstains beyond ${wulffAngularReachDegrees}°.` : "The Wulff evidence does not rank this frontier."} ${activeCapillaryGeometryWeight() > 0 ? `The ${capillaryGeometryLabel()} experiment uses finite 3D solid-angle occupancy around emitted sites.` : "Discrete capillary geometry is diagnostic only."} ${activeThermalFieldWeight() > 0 ? `The ${thermalFieldLabel()} experiment supplies a declared reduced scalar field relative to the observed seed.` : "The thermal-field control is isothermal."} ${activeEpitaxyWeight() > 0 ? `The declared ${epitaxyTemplateLabel()} contributes an interfacial registry score without substrate atoms.` : "No epitaxial template ranks the frontier."} ${activeFeedExposureWeight() > 0 ? `The ${feedExposureLabel()} contributes finite-ray geometric visibility.` : "No source-ray shadowing term ranks the frontier."} No defect identity, differential mean curvature, adhesion, interface energy, Kelvin temperature, heat flow, flux, physical mechanism, formation energy, mobility, or rate is inferred.`;
 }
 
 function clusterPlacementIndices(cluster) {
@@ -12871,7 +12991,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260830-346",
+      buildId: "20260831-354",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -14281,6 +14401,29 @@ async function buildExperimentReceipt() {
         capillaryPressureInferred: false,
         physicalTimeIntegrated: false,
       },
+      validatedWulffShapeRegularizer: {
+        role: "optional target-blind equilibrium-shape ordering over an unchanged finite-nucleus frontier",
+        mode: wulffRankingMode,
+        enabled: activeWulffRegularizerWeight() > 0,
+        gate: wulffShapeRegularizerGate(),
+        angularReachDegrees: wulffAngularReachDegrees,
+        effectiveWeight: activeWulffRegularizerWeight(),
+        evaluations: wulffShapeEvaluations,
+        matchedRankingAudit: lastWulffRankingAudit,
+        supportModel: "h(n)=n·t+lambda gamma(n)/gamma_min; t and positive lambda fit to occupied pre-candidate supports",
+        orientationInterpolation: "compact quadratic kernel over oriented normals; no antipodal folding",
+        finiteNucleusRequired: true,
+        sphereEnvironmentRequired: true,
+        candidateSetChanged: false,
+        candidateGeometryChanged: false,
+        hardAdmissionChanged: false,
+        heldoutTargetUsed: false,
+        morphologyUsedToInferEnergy: false,
+        attachmentKineticsInferred: false,
+        mobilityInferred: false,
+        growthRateInferred: false,
+        physicalTimeIntegrated: false,
+      },
       discreteCapillaryGeometryRanking: {
         role: "target-blind soft ordering of unchanged exact actions by local 3D occupied solid angle",
         mode: capillaryGeometryMode,
@@ -15250,6 +15393,11 @@ function notebookSoftPhysicsSearchReceipt() {
       acceptedMeanEffectiveDimension: mean(acceptedConstraintEffectiveDimension),
       unitDirectionOuterProductsOnly: true },
     mesoscopicFrontMorphologyRanking: { mode: frontMorphologyMode, effectiveWeight: activeFrontMorphologyWeight() },
+    validatedWulffShapeRegularizer: { mode: wulffRankingMode,
+      angularReachDegrees: wulffAngularReachDegrees,
+      effectiveWeight: activeWulffRegularizerWeight(),
+      matchedRankingAudit: lastWulffRankingAudit,
+      candidateSetChanged: false, hardAdmissionChanged: false, targetUsed: false },
     discreteCapillaryGeometryRanking: { mode: capillaryGeometryMode, effectiveWeight: activeCapillaryGeometryWeight(),
       acceptedMeanScore: mean(acceptedCapillaryGeometryScore) },
     epitaxialRegistryRanking: { mode: epitaxyTemplateMode, effectiveWeight: activeEpitaxyWeight(),
@@ -15383,7 +15531,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260830-346" },
+    application: { name: "Materials Growth Lab", buildId: "20260831-354" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },
@@ -15527,6 +15675,10 @@ function notebookInterventionFactors(receipt) {
         search.geometricConstraintTensorRanking?.unitDirectionOuterProductsOnly],
       frontMorphology: [search.mesoscopicFrontMorphologyRanking?.mode,
         search.mesoscopicFrontMorphologyRanking?.effectiveWeight],
+      wulffShape: [search.validatedWulffShapeRegularizer?.mode,
+        search.validatedWulffShapeRegularizer?.angularReachDegrees,
+        search.validatedWulffShapeRegularizer?.effectiveWeight,
+        search.validatedWulffShapeRegularizer?.matchedRankingAudit?.candidateSetDigest || null],
       capillaryGeometry: [search.discreteCapillaryGeometryRanking?.mode,
         search.discreteCapillaryGeometryRanking?.effectiveWeight],
       epitaxy: [search.epitaxialRegistryRanking?.mode, search.epitaxialRegistryRanking?.effectiveWeight],
@@ -20342,6 +20494,9 @@ function activeCandidateScoreTerms(entry, includeExploration = true) {
       "Unit contact directions only; not force constants, elastic modulus, phonons, stability, energy, or time."),
     scoreTerm("front", "front morphology", evaluation.frontMorphology.score,
       activeFrontMorphologyWeight(), "soft parent-local front ordering", "Not interfacial kinetics."),
+    scoreTerm("wulff-shape", "Wulff shape regularizer", evaluation.wulffShapeRegularizer.score,
+      activeWulffRegularizerWeight(), "validated finite-nucleus equilibrium-shape ordering",
+      "Externally supplied oriented interfacial energy regularizes support mismatch only; not attachment kinetics, mobility, rate, or time."),
     scoreTerm("capillary", "capillary geometry", evaluation.capillaryGeometry.score,
       activeCapillaryGeometryWeight(), "soft finite solid-angle ordering", "Not curvature energy or capillary pressure."),
     scoreTerm("epitaxy", "epitaxy registry", evaluation.epitaxyRegistry.score,
@@ -20566,6 +20721,7 @@ function oneFactorPolicyTerm(policyId, entry, label) {
       activeConfigurationalMultiplicityWeight()],
     "constraint-tensor": [evaluation.constraintTensor.score, activeConstraintTensorWeight()],
     "front-morphology": [evaluation.frontMorphology.score, activeFrontMorphologyWeight()],
+    "wulff-shape": [evaluation.wulffShapeRegularizer.score, activeWulffRegularizerWeight()],
     "capillary-geometry": [evaluation.capillaryGeometry.score, activeCapillaryGeometryWeight()],
     epitaxy: [evaluation.epitaxyRegistry.score, activeEpitaxyWeight()],
     drive: [evaluation.externalDrive.alignment, activeExternalDriveWeight()],
@@ -22120,6 +22276,9 @@ function capturePolicyComparison(entries, frontierStructuralState = null) {
       score: (entry) => entry.baseScore + activeConstraintTensorWeight() * entry.evaluation.constraintTensor.score },
     { id: "front-morphology", label: `${frontMorphologyLabel()} ${activeFrontMorphologyWeight().toFixed(2)}`,
       score: (entry) => entry.baseScore + activeFrontMorphologyWeight() * entry.evaluation.frontMorphology.score },
+    { id: "wulff-shape", label: `Wulff shape ${activeWulffRegularizerWeight().toFixed(2)}`,
+      score: (entry) => entry.baseScore + activeWulffRegularizerWeight()
+        * entry.evaluation.wulffShapeRegularizer.score },
     { id: "capillary-geometry", label: `${capillaryGeometryLabel()} ${activeCapillaryGeometryWeight().toFixed(2)}`,
       score: (entry) => entry.baseScore + activeCapillaryGeometryWeight() * entry.evaluation.capillaryGeometry.score },
     { id: "epitaxy", label: `${epitaxyTemplateLabel()} ${activeEpitaxyWeight().toFixed(2)}`,
@@ -24204,7 +24363,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
   const candidates = [...attachmentCandidates, ...detachmentCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-353",
+    generatedAt: new Date().toISOString(), buildId: "20260831-354",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -24320,6 +24479,7 @@ function scoreFrontierCandidate(candidate, audit) {
       + activeConfigurationalMultiplicityWeight() * evaluation.configurationalMultiplicity.score
       + activeConstraintTensorWeight() * evaluation.constraintTensor.score
       + activeFrontMorphologyWeight() * evaluation.frontMorphology.score
+      + activeWulffRegularizerWeight() * evaluation.wulffShapeRegularizer.score
       + activeCapillaryGeometryWeight() * evaluation.capillaryGeometry.score
       + activeEpitaxyWeight() * evaluation.epitaxyRegistry.score
       + activeExternalDriveWeight() * evaluation.externalDrive.alignment
@@ -24343,6 +24503,7 @@ function scoreFrontierCandidate(candidate, audit) {
 
 async function selectCommutingFrontierBatch(evaluated, generation, frontierStructuralState = null) {
   capturePolicyComparison(evaluated, frontierStructuralState);
+  captureWulffMatchedRankingAudit(evaluated);
   const ranked = evaluated.sort((first, second) => second.selectionScore - first.selectionScore
     || first.candidate.key.localeCompare(second.candidate.key));
   ranked.forEach((entry, index) => rankGrowthActionPhysicsFingerprint(entry,
@@ -24584,6 +24745,7 @@ function evaluateCandidate(candidate, {
   const attachmentTopology = attachmentTopologyForCandidate(candidate, fresh, { recordWork });
   const habitAnisotropy = habitAnisotropyForCandidate(candidate, { recordWork });
   const frontMorphology = frontMorphologyForCandidate(candidate, { recordWork });
+  const wulffShapeRegularizer = wulffShapeRegularizerForFreshSites(fresh, { recordWork });
   const capillaryGeometry = capillaryGeometryForFreshSites(fresh, { recordWork });
   const epitaxyRegistry = epitaxyRegistryForFreshSites(fresh, { recordWork });
   const compositionBalance = compositionBalanceForFreshSites(fresh);
@@ -24615,7 +24777,8 @@ function evaluateCandidate(candidate, {
   return { accepted, sites, merged, fresh, conflicts, spinConflicts, spinChecks, reconstructing,
     boundaryFailures, knownFailures, markingAccepted, markingFallback,
     coordinationOverflows, angularViolations, geometricStrain, externalCalibration, affineLoadedGeometricStrain,
-    surfaceCompletion, bulkSurfaceDriving, attachmentTopology, habitAnisotropy, frontMorphology, capillaryGeometry, epitaxyRegistry, compositionBalance, feedstockSupply, formalChargeBalance, chargeGeometry, chargeMoment, ionicPair, bondValence,
+    surfaceCompletion, bulkSurfaceDriving, attachmentTopology, habitAnisotropy, frontMorphology,
+    wulffShapeRegularizer, capillaryGeometry, epitaxyRegistry, compositionBalance, feedstockSupply, formalChargeBalance, chargeGeometry, chargeMoment, ionicPair, bondValence,
     externalDrive, thermalField, solutePartition, constraintRobustness, interfaceAccommodation,
     microstructureCoupling, loopClosure, defectPrecursors, coherencyMemory, collectiveResponse,
     configurationalMultiplicity,
@@ -26538,6 +26701,7 @@ function currentGrowthProtocolSettings() {
     configurationalMultiplicityMode, configurationalMultiplicityWeight,
     constraintTensorMode, constraintTensorWeight,
     frontMorphologyMode, frontMorphologyWeight, capillaryGeometryMode, capillaryGeometryWeight,
+    wulffRankingMode, wulffAngularReachDegrees, wulffRegularizerWeight,
     epitaxyTemplateMode, epitaxyWeight,
     externalDriveMode, externalDriveWeight, thermalFieldMode, thermalFieldWeight,
     affineLoadMode, affineLoadMagnitude,
@@ -26598,6 +26762,8 @@ function growthSettingSelects() {
     configurationalMultiplicityWeight: configurationalMultiplicityWeightSelect,
     constraintTensorMode: constraintTensorSelect, constraintTensorWeight: constraintTensorWeightSelect,
     frontMorphologyMode: frontMorphologySelect, frontMorphologyWeight: frontMorphologyWeightSelect,
+    wulffRankingMode: wulffRankingModeSelect, wulffAngularReachDegrees: wulffAngularReachSelect,
+    wulffRegularizerWeight: wulffRegularizerWeightSelect,
     capillaryGeometryMode: capillaryGeometrySelect, capillaryGeometryWeight: capillaryGeometryWeightSelect,
     epitaxyTemplateMode: epitaxyTemplateSelect, epitaxyWeight: epitaxyWeightSelect,
     externalDriveMode: externalDriveSelect, externalDriveWeight: externalDriveWeightSelect,
@@ -26743,8 +26909,9 @@ function renderGrowthControlGroupSummaries() {
     activeCollectiveResponseWeight() > 0, activeConfigurationalMultiplicityWeight() > 0,
     activeConstraintTensorWeight() > 0,
     activeFrontMorphologyWeight() > 0,
+    activeWulffRegularizerWeight() > 0,
     activeCapillaryGeometryWeight() > 0, activeEpitaxyWeight() > 0]);
-  growthInterfaceGroupState.textContent = `${interfaceActive}/12 active`;
+  growthInterfaceGroupState.textContent = `${interfaceActive}/13 active`;
   const fieldsActive = activeCount([activeExternalDriveWeight() > 0, activeThermalFieldWeight() > 0,
     affineLoadMode !== "none", activeRobustnessWeight() > 0,
     activeMicrostructureCouplingWeight() > 0, activeLoopClosureWeight() > 0]);
@@ -26785,6 +26952,9 @@ function applyGrowthProtocolSettings(settings, options = {}) {
   constraintTensorMode = settings.constraintTensorMode;
   constraintTensorWeight = settings.constraintTensorWeight;
   frontMorphologyMode = settings.frontMorphologyMode; frontMorphologyWeight = settings.frontMorphologyWeight;
+  wulffRankingMode = settings.wulffRankingMode || "display";
+  wulffAngularReachDegrees = Number(settings.wulffAngularReachDegrees) || 30;
+  wulffRegularizerWeight = Number(settings.wulffRegularizerWeight) || .24;
   capillaryGeometryMode = settings.capillaryGeometryMode; capillaryGeometryWeight = settings.capillaryGeometryWeight;
   epitaxyTemplateMode = settings.epitaxyTemplateMode; epitaxyWeight = settings.epitaxyWeight;
   externalDriveMode = settings.externalDriveMode; externalDriveWeight = settings.externalDriveWeight;
@@ -27957,6 +28127,7 @@ function syncStageOptions() {
     constraintTensorWeightSelect.value = String(constraintTensorWeight);
     frontMorphologySelect.value = frontMorphologyMode;
     frontMorphologyWeightSelect.value = String(frontMorphologyWeight);
+    renderWulffRankingControls();
     capillaryGeometrySelect.value = capillaryGeometryMode;
     capillaryGeometryWeightSelect.value = String(capillaryGeometryWeight);
     epitaxyTemplateSelect.value = epitaxyTemplateMode;
@@ -28281,6 +28452,9 @@ function syncStageOptions() {
     const morphologyUse = frontMorphologyMode === "none"
       ? " Mesoscopic angular support and backing depth are reported but have zero rank weight."
       : ` A ${frontMorphologyWeight.toFixed(2)} soft ${frontMorphologyLabel()} term ranks the same exact actions from their parent-local angular support and backing-depth profile; it is not surface energy or mean curvature.`;
+    const wulffShapeUse = activeWulffRegularizerWeight() <= 0
+      ? ` The Wulff layer is display-only${wulffRankingMode === "shape" ? ` because ${wulffShapeRegularizerGate().reason}` : ""}.`
+      : ` A ${activeWulffRegularizerWeight().toFixed(2)} soft validated Wulff-shape term fits translation and one scale to the occupied nucleus, ranks only support-mismatch improvement inside ${wulffAngularReachDegrees}° oriented γ coverage, and abstains elsewhere; it is an equilibrium-shape prior, not attachment kinetics, mobility, or rate.`;
     const capillaryUse = capillaryGeometryMode === "none"
       ? " Local 3D occupied solid angle is diagnostic only."
       : ` A ${capillaryGeometryWeight.toFixed(2)} soft ${capillaryGeometryLabel()} term uses 32 equal-area directions around emitted sites; it is a discrete interface proxy, not curvature or surface energy.`;
@@ -28290,13 +28464,15 @@ function syncStageOptions() {
     growthModeNote.textContent = finiteIceAnchorMode
       ? "This sealed ice gate executes primitive H₂O connection ports with mutually exclusive orientation domains. Clusters² is disabled because no stationary promoted ice production has been certified."
       : hierarchyEnabled
-      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${displacementContactUse}${spinColorUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${ionicPairUse}${bondValenceUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${collectiveResponseUse}${configurationalMultiplicityUse}${constraintTensorUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`
-      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${spinColorUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${ionicPairUse}${bondValenceUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${collectiveResponseUse}${configurationalMultiplicityUse}${constraintTensorUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${capillaryUse}${epitaxyUse}`;
+      ? `Accepted clusters expose frozen ports and may promote into clusters². ${growthScheduling === "commuting" ? "Each displayed update is a permutation-certified antichain over the underlying tree." : "Each displayed update executes one best-first branch."} ${markingUse}${displacementContactUse}${spinColorUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${ionicPairUse}${bondValenceUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${collectiveResponseUse}${configurationalMultiplicityUse}${constraintTensorUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${wulffShapeUse}${capillaryUse}${epitaxyUse}`
+      : `Primitive-only mode permits the seed frontier but prevents accepted clusters from spawning another recursive frontier. ${growthScheduling === "commuting" ? "Compatible placements may still be displayed as one permutation-certified antichain." : "Placements are executed one best-first branch at a time."} ${markingUse}${spinColorUse}${strainUse}${relaxationUse}${compositionUse}${inventoryUse}${solutePartitionUse}${chargeUse}${chargeGeometryUse}${chargeMomentUse}${ionicPairUse}${bondValenceUse}${surfaceUse}${growthDrivingUse}${attachmentTopologyUse}${habitAnisotropyUse}${defectPrecursorUse}${coherencyMemoryUse}${collectiveResponseUse}${configurationalMultiplicityUse}${constraintTensorUse}${externalDriveUse}${thermalFieldUse}${robustnessUse}${microstructureUse}${loopClosureUse}${arrivalPathUse}${feedExposureUse}${explorationUse}${nucleiUse}${morphologyUse}${wulffShapeUse}${capillaryUse}${epitaxyUse}`;
   }
 }
 
 function resetCounters() {
   eventIndex = 0;
+  wulffShapeEvaluations = 0;
+  lastWulffRankingAudit = null;
   oracleCalls = 0;
   grammarDecisions = 0;
   acceptedDecisions = 0;
@@ -28922,6 +29098,7 @@ function stateForCandidate(candidate, evaluation) {
     configurationalMultiplicity: evaluation.configurationalMultiplicity,
     constraintTensor: evaluation.constraintTensor,
     frontMorphology: evaluation.frontMorphology,
+    wulffShapeRegularizer: evaluation.wulffShapeRegularizer,
     capillaryGeometry: evaluation.capillaryGeometry,
     epitaxyRegistry: evaluation.epitaxyRegistry,
     externalDrive: evaluation.externalDrive,
@@ -29323,6 +29500,7 @@ async function performOffLatticeEvent() {
     arrivalRoutePoints: evaluation.arrivalPath.selectedRoutePoints,
     arrivalRouteKind: evaluation.arrivalPath.selectedRouteKind,
     frontMorphology: evaluation.frontMorphology,
+    wulffShapeRegularizer: evaluation.wulffShapeRegularizer,
     capillaryGeometry: evaluation.capillaryGeometry,
     feedExposure: evaluation.feedExposure,
     thermalField: evaluation.thermalField,
@@ -30927,6 +31105,18 @@ function rebuildWorld() {
         new THREE.LineBasicMaterial({ color: 0x65e1bc, transparent: true, opacity: .44 }),
       ));
     }
+    if (candidateIndex < 12 && candidate.wulffShapeRegularizer?.supported) {
+      const normal = new THREE.Vector3(...candidate.wulffShapeRegularizer.candidateNormalCartesian).normalize();
+      const favorable = candidate.wulffShapeRegularizer.score >= 0;
+      decisionGroup.add(new THREE.Line(
+        new THREE.BufferGeometry().setFromPoints([
+          candidate.p.clone().addScaledVector(normal, .16), candidate.p.clone().addScaledVector(normal, .72),
+        ]),
+        new THREE.LineDashedMaterial({ color: favorable ? 0x65e1bc : 0xff8d78,
+          dashSize: .10, gapSize: .05, transparent: true, opacity: .84 }),
+      ));
+      decisionGroup.children.at(-1)?.computeLineDistances?.();
+    }
     if (markingToggle.checked) {
       const geometry = new THREE.IcosahedronGeometry(1.15, 0);
       const domain = new THREE.LineSegments(
@@ -31005,14 +31195,16 @@ function physicsTranslationRecords(leap = null) {
       boundary: "Multiplying one geometric ranking contribution by zero tests this encoded model term, not removal of the underlying physical mechanism. It changes no candidate geometry or hard admission, supplies no target, and infers no energy, kinetics, or time." },
     { id: "interfacial-free-energy", process: "orientation-resolved interfacial free energy / equilibrium habit geometry",
       status: interfacialEnergyValidationAudit ? "explicit" : "unavailable",
-      role: interfacialEnergyValidationAudit ? "validated normalized Wulff display" : "synthetic geometry preview only",
+      role: activeWulffRegularizerWeight() > 0 ? "validated finite-nucleus equilibrium-shape ordering"
+        : interfacialEnergyValidationAudit ? "validated normalized Wulff display" : "synthetic geometry preview only",
+      executionEffects: { hardAdmission: false, ranking: activeWulffRegularizerWeight() > 0 },
       encoding: interfacialEnergyValidationAudit
-        ? `${interfacialEnergyValidationAudit.orientations.length} oriented γ(n̂) values in ${interfacialEnergyValidationAudit.units}; exact structure and request hashes; halfspaces n̂·x≤γ/γmin yield ${interfacialEnergyValidationAudit.geometry.vertexCount} vertices and ${interfacialEnergyValidationAudit.geometry.facetCount} active facets`
+        ? `${interfacialEnergyValidationAudit.orientations.length} oriented γ(n̂) values in ${interfacialEnergyValidationAudit.units}; exact structure and request hashes; halfspaces n̂·x≤γ/γmin yield ${interfacialEnergyValidationAudit.geometry.vertexCount} vertices and ${interfacialEnergyValidationAudit.geometry.facetCount} active facets${activeWulffRegularizerWeight() > 0 ? `; occupied support is fit by translation + one scale and candidate mismatch improvement ranks at w=${activeWulffRegularizerWeight().toFixed(2)} with ${wulffAngularReachDegrees}° abstaining coverage` : ""}`
         : "no physical γ(n̂) values; the visible cubic/hexagonal/polar envelope uses explicitly synthetic arbitrary-unit orientations",
       evidence: interfacialEnergyValidationAudit
         ? `${interfacialEnergyValidationAudit.method.family} / ${interfacialEnergyValidationAudit.method.program}; adjacent phase ${interfacialEnergyValidationAudit.interface.adjacentPhase}; response ${interfacialEnergyValidationAudit.responseSha256?.slice(0, 12) || "locally validated"}.`
         : "Download the exact structure-bound request and validate a returned orientation set locally.",
-      boundary: "Morphology, facet frequency, undercoordination, and GCTS scores never supply γ. The finite Wulff envelope is conditional on the supplied oriented normals, method, and interface environment. It has arbitrary size and does not certify missing facets, complete equilibrium habit, Miller indices, attachment kinetics, nucleation rate, or growth ranking." },
+      boundary: "Morphology, facet frequency, undercoordination, and GCTS scores never supply γ. The optional soft term changes only candidate order for a finite target-free nucleus and abstains outside oriented coverage. It does not change candidate geometry or hard admission and is not attachment kinetics, mobility, a growth rate, nucleation rate, or physical time." },
     { id: "steric", process: "short-range repulsion / species contact", status: "hard", role: "hard admission gate",
       encoding: `${coloredDistanceEnvelopes?.records?.length || 0} colored pair envelopes with exact species coincidence and learned hard-exclusion radii${coloredDistanceEnvelopes?.records?.some((record) => record.directionalUncertaintyApplied) ? `; ${coloredDistanceEnvelopes.records.filter((record) => record.directionalUncertaintyApplied).length} retain one-sigma full-Uij support, transported as U_world=R U_local R^T and resolved again along every live pair direction` : ""}`,
       evidence: leapResult,
@@ -33000,7 +33192,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260830-346",
+    generatedAt: new Date().toISOString(), buildId: "20260831-354",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,
@@ -33719,7 +33911,27 @@ wulffResponseInput?.addEventListener("change", async () => {
   } finally { wulffResponseInput.value = ""; }
 });
 resetWulffPreview?.addEventListener("click", () => {
-  interfacialEnergyValidationAudit = null; renderWulffEvidence();
+  if (externalActionBarrierCheckpoint) releaseExternalActionBarrierCheckpoint(
+    "Action-barrier checkpoint released because interfacial-energy ranking evidence was removed.");
+  interfacialEnergyValidationAudit = null; wulffRankingMode = "display";
+  lastWulffRankingAudit = null; renderWulffEvidence();
+});
+wulffRankingModeSelect?.addEventListener("change", () => {
+  wulffRankingMode = wulffRankingModeSelect.value === "shape" ? "shape" : "display";
+  lastWulffRankingAudit = null; growthProtocolMode = "custom";
+  if (pipelineStage === 4) enterPipelineStage(4); else renderWulffEvidence();
+});
+wulffAngularReachSelect?.addEventListener("change", () => {
+  const value = Number(wulffAngularReachSelect.value);
+  wulffAngularReachDegrees = [15, 30, 45].includes(value) ? value : 30;
+  lastWulffRankingAudit = null; growthProtocolMode = "custom";
+  if (pipelineStage === 4) enterPipelineStage(4); else renderWulffEvidence();
+});
+wulffRegularizerWeightSelect?.addEventListener("change", () => {
+  const value = Number(wulffRegularizerWeightSelect.value);
+  wulffRegularizerWeight = [.12, .24, .48].includes(value) ? value : .24;
+  lastWulffRankingAudit = null; growthProtocolMode = "custom";
+  if (pipelineStage === 4) enterPipelineStage(4); else renderWulffEvidence();
 });
 
 function structuralStoichiometrySeries() {

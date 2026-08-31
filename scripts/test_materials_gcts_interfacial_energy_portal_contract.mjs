@@ -11,14 +11,14 @@ assert.match(html, /id="downloadWulffRequest"/);
 assert.match(html, /id="wulffResponseInput"/);
 assert.match(html, /illustrative only/);
 assert.match(html, /this evidence does not rank growth/);
-assert.match(app, /external-interfacial-energy\.mjs\?v=20260831-353/);
+assert.match(app, /external-interfacial-energy\.mjs\?v=20260831-354/);
 assert.match(app, /buildInterfacialEnergyRequest/);
 assert.match(app, /validateInterfacialEnergyResponse/);
 assert.match(app, /interfacialEnergyEvidence: interfacialEnergyReceipt\(\)/);
 assert.match(app, /morphology, facet frequency, undercoordination, and GCTS scores never supply γ/i);
 assert.match(app, /candidateRankingChanged: false|candidateRankingChangedByBinding/);
-assert.match(readme, /Build 353/);
+assert.match(readme, /Build 354/);
 assert.match(readme, /Opposite normals are not silently identified/);
-assert.match(readme, /does \*\*not\*\* infer γ from the morphology/);
+assert.match(readme, /γ is never inferred from[\s\S]*displayed morphology/);
 
 console.log("interfacial-energy portal contract passed");

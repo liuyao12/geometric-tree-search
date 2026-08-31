@@ -1,5 +1,29 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 354 · validated Wulff evidence → finite-nucleus shape prior
+
+Validated orientation-resolved interfacial energies can now be used, explicitly
+and optionally, as an equilibrium-shape regularizer during target-free growth.
+The app fits a translated, uniformly scaled Wulff support function to the
+currently occupied finite nucleus, freezes that fit before evaluating a
+candidate, and rewards only reductions in normalized support mismatch. Exact
+cluster poses, emitted sites, collision checks, connection marks, and every hard
+admission gate remain unchanged.
+
+The regularizer is disabled by default. It requires a validated structure-bound
+γ(n̂) response, `Finite nucleus · sphere`, and continuation beyond known-window
+replay. Users select a 15°, 30°, or 45° oriented angular reach and a bounded soft
+weight. A compact oriented kernel interpolates only among supplied normals inside
+that reach; unsupported candidates abstain at zero contribution. The dot product
+is signed—opposite polar terminations are never silently merged.
+
+Every frozen frontier reports supported/abstained candidates, pairwise rank
+inversions, leader changes, the response hash, and the unchanged candidate-set
+digest. Supported outward normals appear in the 3D evidence view. This is a
+conditional equilibrium-shape prior, not a growth law: γ is never inferred from
+the displayed morphology, and the app still does not infer attachment mobility,
+kinetic coefficients, growth or nucleation rates, or physical time.
+
 ## Build 353 · interfacial free energy → Wulff geometry
 
 The portal now has a sealed, local handoff for orientation-resolved solid/environment
