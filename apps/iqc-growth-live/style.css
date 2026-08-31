@@ -809,6 +809,19 @@ body.study-guide-open { overflow: hidden; }
 .toggle-stack label.local-deformation-layer { display: grid; grid-template-columns: minmax(0,1fr) 112px; gap: 7px; cursor: default; }
 .local-deformation-layer select { min-width: 0; padding: 4px 5px; border: 1px solid rgba(101,225,188,.2); background: #071516; color: #9ec0b7; font: 6px var(--mono); }
 .local-deformation-layer select:disabled { opacity: .38; }
+.receipt-scale-bridge-binding { margin-bottom: 8px; padding: 8px; border: 1px solid rgba(151,194,183,.16); background: linear-gradient(135deg,rgba(5,18,20,.95),rgba(8,26,25,.92)); box-shadow: inset 2px 0 rgba(151,194,183,.18); }
+.receipt-scale-bridge-binding header { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+.receipt-scale-bridge-binding header span,.receipt-scale-bridge-binding header small,.receipt-scale-bridge-binding header strong { display: block; min-width: 0; }
+.receipt-scale-bridge-binding header small { color: #627a74; font: 5px var(--mono); letter-spacing: .07em; text-transform: uppercase; }
+.receipt-scale-bridge-binding header strong { margin-top: 3px; color: #bdd4ce; font: 7px/1.35 var(--mono); font-weight: 400; }
+.receipt-scale-bridge-binding header b { flex: 0 0 auto; padding: 3px 5px; border: 1px solid currentColor; color: #718b84; font: 5px var(--mono); font-weight: 400; text-transform: uppercase; }
+.receipt-scale-bridge-binding p { margin: 6px 0 0; color: #688079; font: 6px/1.5 var(--mono); }
+.receipt-scale-bridge-binding.verified-design-stage-reached { border-color: rgba(101,225,188,.42); box-shadow: inset 2px 0 var(--mint); }
+.receipt-scale-bridge-binding.verified-design-stage-reached header b { color: var(--mint); }
+.receipt-scale-bridge-binding.verified-design-awaiting-stage { border-color: rgba(85,200,255,.34); box-shadow: inset 2px 0 rgba(85,200,255,.65); }
+.receipt-scale-bridge-binding.verified-design-awaiting-stage header b { color: #6dc6e0; }
+.receipt-scale-bridge-binding.design-packet-rejected,.receipt-scale-bridge-binding.material-mismatch { border-color: rgba(240,201,106,.4); box-shadow: inset 2px 0 rgba(240,201,106,.7); }
+.receipt-scale-bridge-binding.design-packet-rejected header b,.receipt-scale-bridge-binding.material-mismatch header b { color: var(--amber); }
 .receipt-actions { display: grid; grid-template-columns: 1.3fr .8fr; gap: 5px; }
 .receipt-actions button { min-height: 32px; padding: 0 8px; border: 1px solid rgba(181,148,255,.32); background: rgba(181,148,255,.045); color: var(--violet); font: 7px var(--mono); text-transform: uppercase; cursor: pointer; }
 .receipt-actions button:hover { border-color: var(--violet); background: rgba(181,148,255,.09); }

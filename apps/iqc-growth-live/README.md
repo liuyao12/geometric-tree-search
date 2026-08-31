@@ -1,5 +1,27 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 392 · design packet → execution receipt binding
+
+A verified scale-bridge design can now travel into the main laboratory as
+cryptographic provenance. The launch packet is captured before application
+initialization, rebuilt canonically, and checked against its SHA-256. The
+reproducibility panel then shows whether that design is absent, rejected,
+material-mismatched, waiting for its planned stage, or bound after that stage
+has been reached.
+
+The stage-aware run receipt includes the packet selection and verified digest,
+material and stage compatibility, launch timing, and the binding status. The
+ordinary receipt SHA therefore covers the design reference as well as the
+executed settings and outcomes. Build 391 packet digests remain stable, so
+previously shared protocol links are still verifiable in Build 392.
+
+This binding is deliberately evidentiary rather than permissive. It records
+`executionAuthorizedByPacket = false`, `executionConformanceClaimed = false`,
+and `greenGateEvaluated = false`; it cannot upgrade an outcome claim, invent
+physical time, expose targets, or assert that the proposed experiment was
+actually followed. A later conformance audit must compare the frozen design
+with the separately recorded run.
+
 ## Build 391 · portable scale-bridge protocol packets
 
 Every scale-bridge investigation can now be frozen as a deterministic protocol

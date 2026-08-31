@@ -1,5 +1,25 @@
 # Recursive GCTS benchmark for material growth
 
+## Design packet → execution receipt binding (Build 392)
+
+The portable scale-bridge design is now a first-class provenance input to the
+stage-aware laboratory receipt. Launch parameters are captured before app
+initialization; the app rebuilds the canonical packet, verifies its stable
+Build 391 SHA-256, and binds the verified reference to the current material and
+pipeline stage. The receipt records absent, rejected, material-mismatched,
+stage-pending, and stage-reached states instead of silently treating every
+shared link as applicable.
+
+The execution receipt's own digest covers the design selection, verified
+packet SHA, launch timing audit, material/stage compatibility, and claim
+boundary. No coordinates, candidate actions, evaluation labels, or targets are
+copied from the design packet. The binding explicitly fixes
+`executionAuthorizedByPacket = false`, `executionConformanceClaimed = false`,
+`greenGateEvaluated = false`, and `outcomeClaimUpgraded = false`. It therefore
+answers “which predeclared investigation did this run cite?” without answering
+the separate scientific questions “did the run conform?” or “did its gate
+pass?”.
+
 ### Portable scale-bridge protocol packets (Build 391)
 
 Build 391 adds a reproducible design artifact above the execution receipt. A
