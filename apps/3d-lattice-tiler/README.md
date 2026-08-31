@@ -272,10 +272,11 @@ both symmetry models for the same eight recovered classes. Every one of the
 12,000-plus parent types on the harder reflected instances carries a replayed
 atomic or exact obstruction. Other scales and clusters of four or more remain
 open for the six retained eight-copy survivors. For the three displayed
-leaders, the complete proper-orientation four-copy alphabet is now also
-excluded at scale 2: 1,034, 2,762, and 41,524 symmetry-distinct parents,
-respectively, each carrying a replayed atomic obstruction. Reflected
-four-copy alphabets, larger clusters, and non-scalar rules remain open.
+leaders, the complete four-copy alphabet is now also excluded at scale 2 in
+both symmetry models. The proper/reflected parent counts are 1,034/19,638,
+2,762/22,003, and 41,524/313,636, respectively; every parent carries a
+replayed atomic obstruction. Clusters of five or more and non-scalar rules
+remain open.
 The original stratum's exact two-, four-, and six-copy quotient screens reduce
 it to 356 reflection-class candidates.
 The next census level is also complete and removes the profile heuristic
