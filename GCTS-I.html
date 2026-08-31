@@ -145,7 +145,6 @@
       const tileHeading = document.querySelector('[data-demo-stage="tile"]');
       const windowDragHandle = document.getElementById('turtle-window-drag');
       const windowResizeHandle = document.getElementById('turtle-window-resize');
-      const articleShell = document.querySelector('.article-shell');
       const sqrt2 = Math.sqrt(2);
       const sqrt3 = Math.sqrt(3);
       const sqrt6 = Math.sqrt(6);
@@ -1242,16 +1241,13 @@
       }
 
       function updateDemoSafety() {
-        if (!floatingDemo || !demoCard || !articleShell || !tileHeading) return;
+        if (!floatingDemo || !demoCard || !tileHeading) return;
         demoSafeY = 0;
         syncDemoPosition();
         const demoRect = demoCard.getBoundingClientRect();
         const headingRect = tileHeading.getBoundingClientRect();
         const minimumTop = Math.max(12, headingRect.top);
-        const bottomAlignedTop = window.innerHeight - demoRect.height - 12;
-        const preferredTop = Math.max(minimumTop, bottomAlignedTop);
-        const targetTop = clamp(preferredTop + demoDragY, minimumTop, preferredTop);
-        demoSafeY = targetTop - demoRect.top;
+        demoSafeY = Math.max(0, minimumTop - demoRect.top);
         syncDemoPosition();
       }
 
@@ -2111,7 +2107,10 @@
         draw();
       });
       function demoStageForScroll() {
-        const triggerLine = window.innerHeight * 0.45;
+        const demoRect = demoCard?.getBoundingClientRect();
+        const triggerLine = demoRect
+          ? clamp(demoRect.bottom, 0, window.innerHeight)
+          : window.innerHeight * 0.45;
         let stageName = 'intro';
         document.querySelectorAll('[data-demo-stage]').forEach(section => {
           if (section.getBoundingClientRect().top <= triggerLine) stageName = section.dataset.demoStage;
