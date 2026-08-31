@@ -1,5 +1,36 @@
 # Recursive GCTS benchmark for material growth
 
+### Atomic transition-path microscope (Build 367)
+
+Validated coordinate chains are now inspectable as actual atomic structures,
+not only as scalar energy points. The selected event supplies one rotatable
+CPU-projected local scene. The image slider, accessible energy-profile points,
+and playback control select only indices present in the returned path; playback
+does not synthesize intermediate frames.
+
+This audit is not conditional on a kinetic model. An event selector exposes all
+validated path records as soon as barriers are bound, while the HTST spectrum
+continues to fail closed until complete prefactors are present. When the
+spectrum is enabled, its inspected event and the path selector share the same
+candidate ID.
+
+Every dynamic site is drawn in the standard element color. Filled, outlined,
+and dashed glyphs distinguish material, interface, and reservoir domains.
+Invariant material context is chosen by one deterministic rule: display at
+most the 180 fixed sites nearest any material- or interface-domain dynamic
+coordinate anywhere in the complete validated chain. Consequently the context
+set is stable across images and the
+readout reports displayed versus validated fixed-site counts. Sampled trails
+are projected from the exact returned coordinates and are explicitly labeled
+as sample connections rather than trajectories integrated in time.
+
+The per-image audit exposes ξ, energy relative to image zero, maximum force,
+saddle status, and domain populations. The experiment receipt retains the
+candidate/image selection, projection type, neighborhood cap, and negative
+interpolation and target-use flags. Orbiting affects only the projection. This
+viewer is evidence presentation; it neither modifies the path nor licenses a
+mechanism that the external response did not contain.
+
 ### Coordinate-bearing external action paths (Build 366)
 
 The v4 frozen-action response closes the gap between a scalar transition

@@ -7,7 +7,7 @@
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23071112'/%3E%3Cpath d='M17 19 46 12M17 19l8 30m21-37L25 49m-8-30 29 24M25 49l21-6' stroke='%236fffd4' stroke-width='4'/%3E%3Ccircle cx='17' cy='19' r='6' fill='%23f1fff9'/%3E%3Ccircle cx='46' cy='12' r='6' fill='%236fffd4'/%3E%3Ccircle cx='25' cy='49' r='6' fill='%238a7dff'/%3E%3Ccircle cx='46' cy='43' r='6' fill='%236fffd4'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css?v=20260831-366">
+  <link rel="stylesheet" href="./style.css?v=20260831-367">
   <script type="importmap">
     {
       "imports": {
@@ -1324,8 +1324,13 @@
                   <svg id="kineticEventSpectrumPlot" viewBox="0 0 360 170" role="group" aria-label="Candidate-resolved rate and probability spectrum"></svg>
                   <div class="kinetic-event-spectrum-legend"><span><i class="attach"></i>attachment</span><span><i class="detach"></i>detachment</span><span><i class="hop"></i>surface hop</span><span><i class="exchange"></i>species exchange</span><span><i class="selected"></i>selected event</span><span><i class="uncertainty"></i>rate uncertainty</span></div>
                   <article id="kineticEventSpectrumDetail" aria-live="polite">The spectrum appears only after a complete, method-bound HTST response is validated.</article>
-                  <div class="kinetic-path-heading"><span>selected event · coordinate-bearing external path</span><b>exact endpoints</b></div>
+                  <div class="kinetic-path-heading"><span>selected event · coordinate-bearing external path</span><label>event<select id="kineticEventPathCandidate" aria-label="Validated coordinate path to inspect"></select></label></div>
                   <svg id="kineticEventPathPlot" class="kinetic-event-path" viewBox="0 0 360 100" role="img" aria-label="Externally calculated energy profile over the selected candidate path"></svg>
+                  <div class="kinetic-path-structure-shell">
+                    <canvas id="kineticEventPathStructure" width="720" height="380" aria-label="Rotatable coordinate-bearing atomic path image"></canvas>
+                    <div class="kinetic-path-structure-controls"><button id="kineticEventPathPlay" type="button" disabled>Play returned images</button><label>exact image<input id="kineticEventPathImage" type="range" min="0" max="0" step="1" value="0" disabled></label><span><i class="material"></i>material <i class="interface"></i>interface <i class="reservoir"></i>reservoir</span></div>
+                    <p id="kineticEventPathStructureState">Import a validated path to inspect its returned atomic images.</p>
+                  </div>
                   <p id="kineticEventPathState" class="kinetic-event-path-state">A validated response must return stable site IDs, species, coordinates, domains, energies, and forces for every image.</p>
                   <p>Click an event to inspect its barrier, prefactor, uncertainty, rate, and probability inside this exact catalog. The plot never creates a mechanism, changes hard admission, or replaces the deterministic maximum-rate / seeded-KMC choice.</p>
                 </section>
@@ -2446,7 +2451,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260831-366"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260831-366"></script>
+  <script type="module" src="./app.js?v=20260831-367"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260831-367"></script>
 </body>
 </html>

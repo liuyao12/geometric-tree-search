@@ -1,5 +1,32 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 367 · atomic transition-path microscope
+
+The selected frozen event now has an interactive structural viewer in
+addition to its energy profile. A slider, keyboard/clickable energy images, and
+playback step through only the coordinate-bearing images returned by the
+external calculation. Dragging the canvas applies a proper 3D rotation to the
+view; it never changes, relaxes, or interpolates the stored coordinates.
+
+Path inspection is independent of kinetic competition: a candidate selector
+exposes every validated barrier/path record even when HTST prefactors and rates
+have not been supplied. Once rates exist, choosing a spectrum event and choosing
+its path remain synchronized.
+
+All moving, interface, and reservoir sites are displayed with their standard
+element colors and explicit domain glyphs. For responsiveness, the viewer adds
+the 180 invariant material sites nearest the complete moving path and reports
+that displayed count against the full validated invariant population. Dashed
+trails join returned samples only. Each frame exposes its reaction coordinate,
+relative energy, maximum force, saddle status, and material/interface/reservoir
+population.
+
+The receipt records the inspected candidate and image, projection kind,
+neighborhood cap, and `interpolationUsed=false`. This makes the visualization
+an auditable microscope over external evidence rather than an illustrative
+mechanism animation. It still does not establish unreturned intermediate
+states, physical time between images, a unique path, or method validity.
+
 ## Build 366 · coordinate-bearing external action paths
 
 Every externally returned frontier barrier must now carry an explicit image

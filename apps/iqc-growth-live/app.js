@@ -88,22 +88,24 @@ import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntim
   from "./external-trajectory-geometry.mjs?v=20260830-346";
 import { actionBarrierSha256, buildFrozenActionBarrierRequest, frozenActionBarrierRequestReceipt,
   frozenActionStateGeometrySha256, validateFrozenActionBarrierResponse }
-  from "./external-action-barrier.mjs?v=20260831-366";
+  from "./external-action-barrier.mjs?v=20260831-367";
+import { buildActionPathViewerFrame, projectActionPathViewerFrame }
+  from "./action-path-viewer.mjs?v=20260831-367";
 import { buildFrozenKineticCompetition }
-  from "./frozen-frontier-kinetics.mjs?v=20260831-366";
+  from "./frozen-frontier-kinetics.mjs?v=20260831-367";
 import { buildKineticEventSpectrum }
-  from "./kinetic-event-spectrum.mjs?v=20260831-366";
+  from "./kinetic-event-spectrum.mjs?v=20260831-367";
 import { enumerateDetachableLeafPlacements }
   from "./reversible-frontier-events.mjs?v=20260831-347";
 import { enumerateMassConservingSurfaceHops }
-  from "./surface-hop-events.mjs?v=20260831-366";
+  from "./surface-hop-events.mjs?v=20260831-367";
 import { enumerateLocalSpeciesExchangeEvents }
-  from "./species-exchange-events.mjs?v=20260831-366";
+  from "./species-exchange-events.mjs?v=20260831-367";
 import { buildExternalStateRelaxationRequest, stateRelaxationSha256,
   validateExternalStateRelaxationResponse }
-  from "./external-state-relaxation.mjs?v=20260831-366";
+  from "./external-state-relaxation.mjs?v=20260831-367";
 import { appendCommittedTransition }
-  from "./reversible-transition-lineage.mjs?v=20260831-366";
+  from "./reversible-transition-lineage.mjs?v=20260831-367";
 import { buildFiniteTransitionNetwork }
   from "./finite-transition-network.mjs?v=20260831-352";
 import { auditCompetingObservedTransitionPaths }
@@ -117,19 +119,19 @@ import { evaluateWulffShapeRegularizer, matchedWulffRankingAudit }
   from "./wulff-shape-regularizer.mjs?v=20260831-354";
 import { buildAttachmentKineticsRequest, buildNormalizedKineticWulffGeometry,
   validateAttachmentKineticsResponse, evaluateKineticHabitScore, matchedKineticHabitRankingAudit }
-  from "./external-attachment-kinetics.mjs?v=20260831-366";
+  from "./external-attachment-kinetics.mjs?v=20260831-367";
 import { buildInterfaceFluxRequest, validateInterfaceFluxResponse, evaluateInterfaceFluxScore,
   matchedInterfaceFluxRankingAudit }
-  from "./external-interface-flux.mjs?v=20260831-366";
+  from "./external-interface-flux.mjs?v=20260831-367";
 import { periodicSiteNumberDensity, coupleInterfaceSupplyAndAttachment,
   syntheticGrowthRegimePreview }
-  from "./growth-regime-bridge.mjs?v=20260831-366";
+  from "./growth-regime-bridge.mjs?v=20260831-367";
 import { buildLeapfrogPhysicsCycle, couplingModeGate, LEAPFROG_COUPLING_MODES }
-  from "./leapfrog-physics-cycle.mjs?v=20260831-366";
+  from "./leapfrog-physics-cycle.mjs?v=20260831-367";
 import { buildCatalogConditionalChronology }
-  from "./catalog-conditional-chronology.mjs?v=20260831-366";
+  from "./catalog-conditional-chronology.mjs?v=20260831-367";
 import { buildCoupledPhysicsState, coupledStateGate }
-  from "./coupled-physics-state.mjs?v=20260831-366";
+  from "./coupled-physics-state.mjs?v=20260831-367";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -657,6 +659,11 @@ const kineticEventSpectrumPlot = $("kineticEventSpectrumPlot");
 const kineticEventSpectrumDetail = $("kineticEventSpectrumDetail");
 const kineticEventPathPlot = $("kineticEventPathPlot");
 const kineticEventPathState = $("kineticEventPathState");
+const kineticEventPathCandidate = $("kineticEventPathCandidate");
+const kineticEventPathStructure = $("kineticEventPathStructure");
+const kineticEventPathImage = $("kineticEventPathImage");
+const kineticEventPathPlay = $("kineticEventPathPlay");
+const kineticEventPathStructureState = $("kineticEventPathStructureState");
 const actionBarrierInverseBadge = $("actionBarrierInverseBadge");
 const actionBarrierInverseSummary = $("actionBarrierInverseSummary");
 const actionBarrierInverseState = $("actionBarrierInverseState");
@@ -1761,6 +1768,12 @@ let externalActionBarrierHopReachNearestNeighbor = 3;
 let externalActionBarrierKineticMode = "none";
 let externalActionBarrierTemperatureKelvin = 300;
 let selectedKineticSpectrumCandidateId = null;
+let selectedKineticPathCandidateId = null;
+let selectedKineticPathImageIndex = 0;
+let kineticPathYaw = .65;
+let kineticPathPitch = -.35;
+let kineticPathPlaybackTimer = null;
+let kineticPathPointerStart = null;
 let catalogConditionalKineticClockSeconds = 0;
 let catalogConditionalKineticEventCount = 0;
 let reversibleDetachmentEventCount = 0;
@@ -3846,7 +3859,7 @@ async function downloadInterfacialEnergyRequest() {
   const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-366",
+  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-367",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256,
@@ -4090,7 +4103,7 @@ async function downloadAttachmentKineticsRequest() {
   const material = currentMaterial(); const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-366",
+  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-367",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256, intrinsicDimension, orientationBasisCartesian,
@@ -4609,7 +4622,7 @@ async function downloadSpatialInterfaceFluxRequest() {
   const interfaceGeometrySha256 = await receiptSha256(JSON.stringify({ structureSha256: configuration.structureSha256,
     confinement: confinementSelect?.value || "box", publicReach: growthDomainScale, atomCount: referenceAtoms.length }));
   const species = material.actualElements ? [...material.actualElements] : [...material.elements];
-  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-366",
+  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-367",
     scenarioId: scenarioSelect.value, materialName: material.name, species,
     structureSha256: configuration.structureSha256, interfaceGeometrySha256,
     interfaceConfiguration: configuration,
@@ -13888,7 +13901,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260831-366",
+      buildId: "20260831-367",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -16481,7 +16494,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260831-366" },
+    application: { name: "Materials Growth Lab", buildId: "20260831-367" },
     postLeapExternalRelaxation: stateRelaxationReceipt(),
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
@@ -24842,7 +24855,7 @@ async function freezeExternalStateRelaxation() {
     throw new Error("variable-cell relaxation requires a fully periodic 3D state");
   }
   const request = await buildExternalStateRelaxationRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-366",
+    generatedAt: new Date().toISOString(), buildId: "20260831-367",
     materialName: currentMaterial().name, sites,
     cellAngstrom: policy.cellAngstrom, periodicBoundary: policy.periodicBoundary,
     boundary: currentGrowthDomainSnapshot(), sourceLeapReceiptSha256: null,
@@ -25383,12 +25396,24 @@ function actionBarrierCheckpointReceipt(checkpoint = externalActionBarrierCheckp
         reservoirBoundaryCondition: record.pathGeometry.reservoir?.boundaryCondition || null,
         imageCount: record.pathGeometry.imageCount,
         saddleImageIndex: record.pathGeometry.saddleImageIndex,
+        fixedMaterialSiteCount: record.pathGeometry.fixedMaterialSiteCount,
+        movingOrReservoirSiteCount: record.pathGeometry.movingOrReservoirSiteCount,
         extendedSystemAtomCount: record.pathGeometry.extendedSystemAtomCount,
         maximumSiteDisplacementAngstrom: record.pathGeometry.maximumSiteDisplacementAngstrom,
         pathGeometrySha256: record.pathGeometrySha256 || null,
         exactInitialEndpoint: true, exactFinalEndpoint: true,
         pathSiteIdsPreserved: true, pathSpeciesPreserved: true,
       })),
+      structuralMicroscope: {
+        candidateId: selectedKineticPathCandidateId,
+        selectedImageIndex: selectedKineticPathCandidateId == null
+          ? null : selectedKineticPathImageIndex,
+        maximumDisplayedInvariantSites: 180,
+        allMovingAndReservoirSitesDisplayed: true,
+        projection: "proper-rotation-perspective",
+        sampleTrailsOnly: true, interpolationUsed: false,
+        orbitChangesCoordinates: false, targetUsed: false,
+      },
       claimBoundary: "Coordinate-bearing external images certify exact endpoint connectivity inside each returned extended system. They do not prove a unique global minimum-energy path, mechanism completeness, recrossing, reservoir validity, or method transferability.",
     } : null,
     rankingWeight: response && !kinetic ? externalActionBarrierWeight : 0,
@@ -25499,6 +25524,181 @@ function refreshExternalActionBarrierKinetics() {
       + (competition.mode === "seeded-kmc" ? 1 : 0) };
 }
 
+function stopKineticPathPlayback() {
+  if (kineticPathPlaybackTimer != null) clearInterval(kineticPathPlaybackTimer);
+  kineticPathPlaybackTimer = null;
+  if (kineticEventPathPlay) kineticEventPathPlay.textContent = "Play returned images";
+}
+
+function pathViewerElementColor(species) {
+  return `#${elementRecord(species).color.toString(16).padStart(6, "0")}`;
+}
+
+function renderKineticPathStructure(path, candidateId = null) {
+  const context = kineticEventPathStructure.getContext("2d");
+  const width = Math.max(320, kineticEventPathStructure.clientWidth || 360);
+  const height = 190;
+  const pixelRatio = Math.min(2, window.devicePixelRatio || 1);
+  if (kineticEventPathStructure.width !== Math.round(width * pixelRatio)
+      || kineticEventPathStructure.height !== Math.round(height * pixelRatio)) {
+    kineticEventPathStructure.width = Math.round(width * pixelRatio);
+    kineticEventPathStructure.height = Math.round(height * pixelRatio);
+  }
+  context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+  context.clearRect(0, 0, width, height);
+  if (!path) {
+    stopKineticPathPlayback(); selectedKineticPathCandidateId = null;
+    kineticEventPathImage.disabled = true; kineticEventPathPlay.disabled = true;
+    kineticEventPathImage.max = "0"; kineticEventPathImage.value = "0";
+    context.fillStyle = "rgba(139,170,162,.65)"; context.font = "10px monospace";
+    context.textAlign = "center";
+    context.fillText("COORDINATE-BEARING ATOMIC IMAGES UNAVAILABLE", width / 2, height / 2 - 4);
+    context.fillStyle = "rgba(102,126,120,.62)"; context.font = "8px monospace";
+    context.fillText("the browser never interpolates between frozen endpoints", width / 2,
+      height / 2 + 12);
+    kineticEventPathStructureState.textContent = "Import a validated path to inspect its returned atomic images.";
+    return;
+  }
+  if (selectedKineticPathCandidateId !== candidateId) {
+    stopKineticPathPlayback(); selectedKineticPathCandidateId = candidateId;
+    selectedKineticPathImageIndex = path.saddleImageIndex;
+  }
+  selectedKineticPathImageIndex = Math.max(0, Math.min(path.imageCount - 1,
+    selectedKineticPathImageIndex));
+  kineticEventPathImage.disabled = false; kineticEventPathPlay.disabled = false;
+  kineticEventPathImage.max = String(path.imageCount - 1);
+  kineticEventPathImage.value = String(selectedKineticPathImageIndex);
+  kineticEventPathImage.setAttribute("aria-valuetext",
+    `returned image ${selectedKineticPathImageIndex + 1} of ${path.imageCount}`);
+  const frame = buildActionPathViewerFrame(path, selectedKineticPathImageIndex,
+    { maximumFixedSites: 180 });
+  const projection = projectActionPathViewerFrame(frame, { width, height,
+    yaw: kineticPathYaw, pitch: kineticPathPitch, padding: 20 });
+  context.lineCap = "round"; context.lineJoin = "round";
+  projection.projectedTrails.forEach((trail) => {
+    if (trail.points.length < 2) return;
+    context.beginPath();
+    trail.points.forEach((point, index) => index
+      ? context.lineTo(point.x, point.y) : context.moveTo(point.x, point.y));
+    context.strokeStyle = "rgba(214,156,255,.28)"; context.lineWidth = 1;
+    context.setLineDash([2, 3]); context.stroke(); context.setLineDash([]);
+    trail.points.forEach((point, index) => {
+      context.beginPath(); context.arc(point.x, point.y,
+        index === frame.imageIndex ? 2.1 : 1.1, 0, Math.PI * 2);
+      context.fillStyle = index === frame.imageIndex
+        ? "rgba(255,222,178,.9)" : "rgba(214,156,255,.42)"; context.fill();
+    });
+  });
+  const depthMinimum = Math.min(...projection.projectedSites.map((site) => site.depth));
+  const depthMaximum = Math.max(...projection.projectedSites.map((site) => site.depth));
+  let labeledDynamicSites = 0;
+  projection.projectedSites.forEach((site) => {
+    const depth = depthMaximum === depthMinimum ? .5
+      : (site.depth - depthMinimum) / (depthMaximum - depthMinimum);
+    const radius = (site.fixed ? 2.5 : 5.4) * site.perspective * (.8 + .28 * depth);
+    const color = pathViewerElementColor(site.species);
+    context.globalAlpha = site.fixed ? .34 + .18 * depth : .9;
+    context.beginPath(); context.arc(site.x, site.y, radius, 0, Math.PI * 2);
+    if (site.domain === "material") {
+      context.fillStyle = color; context.fill();
+      context.strokeStyle = site.fixed ? "rgba(225,245,239,.24)" : "rgba(245,255,252,.86)";
+      context.lineWidth = site.fixed ? .45 : 1; context.stroke();
+    } else {
+      context.strokeStyle = site.domain === "interface" ? "#ffc169" : "#d69cff";
+      context.lineWidth = site.domain === "interface" ? 1.8 : 1.4;
+      context.setLineDash(site.domain === "reservoir" ? [2, 2] : []); context.stroke();
+      context.setLineDash([]);
+      context.beginPath(); context.arc(site.x, site.y, Math.max(1.3, radius * .52),
+        0, Math.PI * 2); context.fillStyle = color; context.fill();
+    }
+    if (!site.fixed && labeledDynamicSites < 18) {
+      labeledDynamicSites++;
+      context.globalAlpha = .9; context.fillStyle = "rgba(235,248,244,.88)";
+      context.font = "8px monospace"; context.textAlign = "left";
+      context.fillText(`${site.species} · ${site.domain}`, site.x + radius + 3, site.y + 3);
+    }
+  });
+  context.globalAlpha = 1; context.textAlign = "left";
+  context.fillStyle = "rgba(188,221,212,.82)"; context.font = "9px monospace";
+  context.fillText(`IMAGE ${frame.imageIndex + 1}/${frame.imageCount}${frame.saddle
+    ? " · SADDLE" : ""} · ξ ${frame.reactionCoordinate.toFixed(3)}`, 9, 14);
+  context.fillStyle = "rgba(118,148,140,.76)"; context.font = "8px monospace";
+  context.fillText("DRAG TO ORBIT · DASHED TRAILS CONNECT RETURNED SAMPLES ONLY", 9,
+    height - 9);
+  kineticEventPathStructureState.textContent = `Image ${frame.imageIndex + 1}/${frame.imageCount}${frame.saddle ? " · validated saddle" : ""} · ΔE ${frame.relativeEnergyElectronVolt >= 0 ? "+" : ""}${frame.relativeEnergyElectronVolt.toFixed(5)} eV · max force ${frame.maximumForceElectronVoltPerAngstrom.toFixed(5)} eV Å⁻¹ · material/interface/reservoir ${frame.materialSiteCount}/${frame.interfaceSiteCount}/${frame.reservoirSiteCount} · showing ${frame.displayedFixedMaterialSiteCount}/${frame.fixedMaterialSiteCount} nearest invariant sites plus all ${frame.movingOrReservoirSiteCount} moving/reservoir sites. Exact returned coordinates only; no interpolated frames.`;
+}
+
+function renderCoordinatePathAudit(path, candidateId, make) {
+  if (!path) {
+    const unavailable = make("text", { x: 180, y: 49, "text-anchor": "middle",
+      class: "axis-label" });
+    unavailable.textContent = "selected event has no validated path";
+    kineticEventPathPlot.append(unavailable); renderKineticPathStructure(null);
+    kineticEventPathState.textContent = "Path geometry is required for every frozen candidate.";
+    return;
+  }
+  if (selectedKineticPathCandidateId !== candidateId) {
+    stopKineticPathPlayback(); selectedKineticPathCandidateId = candidateId;
+    selectedKineticPathImageIndex = path.saddleImageIndex;
+  }
+  const pathLeft = 30; const pathRight = 350; const pathTop = 10; const pathBottom = 74;
+  const energies = path.images.map((image) => image.energyElectronVolt);
+  const energyMinimum = Math.min(...energies); const energyMaximum = Math.max(...energies);
+  const pathX = (coordinate) => pathLeft + (pathRight - pathLeft) * coordinate;
+  const pathY = (energy) => pathBottom - (pathBottom - pathTop)
+    * (energyMaximum === energyMinimum ? .5 : (energy - energyMinimum)
+      / (energyMaximum - energyMinimum));
+  kineticEventPathPlot.append(make("line", { x1: pathLeft, y1: pathBottom,
+    x2: pathRight, y2: pathBottom, class: "axis" }), make("line", { x1: pathLeft,
+    y1: pathTop, x2: pathLeft, y2: pathBottom, class: "axis" }));
+  const points = path.images.map((image) =>
+    `${pathX(image.reactionCoordinate)},${pathY(image.energyElectronVolt)}`).join(" ");
+  kineticEventPathPlot.append(make("polyline", { points, class: "path-profile" }));
+  path.images.forEach((image, index) => {
+    const point = make("circle", { cx: pathX(image.reactionCoordinate),
+      cy: pathY(image.energyElectronVolt), r: index === path.saddleImageIndex ? 3.8 : 2.4,
+      class: `path-image${index === path.saddleImageIndex ? " saddle" : ""}${index
+        === selectedKineticPathImageIndex ? " inspected" : ""}` });
+    const title = make("title");
+    title.textContent = `image ${index + 1}/${path.imageCount} · ξ ${image.reactionCoordinate.toFixed(3)} · E ${image.energyElectronVolt.toFixed(5)} eV · material/interface/reservoir ${path.materialCounts[index]}/${path.interfaceCounts[index]}/${path.reservoirCounts[index]}`;
+    point.append(title); point.setAttribute("tabindex", "0");
+    point.setAttribute("role", "button");
+    point.setAttribute("aria-label", `Inspect returned path image ${index + 1}`);
+    const inspectImage = () => {
+      selectedKineticPathCandidateId = candidateId; selectedKineticPathImageIndex = index;
+      stopKineticPathPlayback(); renderKineticEventSpectrum();
+    };
+    point.addEventListener("click", inspectImage);
+    point.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault(); inspectImage();
+      }
+    });
+    kineticEventPathPlot.append(point);
+  });
+  const pathAxis = make("text", { x: pathRight, y: 91, "text-anchor": "end",
+    class: "axis-label" });
+  pathAxis.textContent = "external reaction coordinate ξ · 0 → 1";
+  kineticEventPathPlot.append(pathAxis); renderKineticPathStructure(path, candidateId);
+  kineticEventPathState.textContent = `${path.imageCount} externally calculated images · ${path.pathModel.replaceAll("-", " ")} · saddle image ${path.saddleImageIndex + 1} · ${path.fixedMaterialSiteCount} invariant + ${path.movingOrReservoirSiteCount} moving/reservoir site IDs · max adjacent displacement ${path.maximumSiteDisplacementAngstrom.toFixed(3)} Å${path.reservoir ? ` · ${path.reservoir.boundaryCondition}` : " · closed system"}. Exact endpoints and energy barrier pass; path uniqueness, missing mechanisms, recrossing, and method transferability remain unclaimed.`;
+}
+
+function syncKineticPathCandidateOptions(records, preferredCandidateId = null) {
+  const available = records.map((record) => record.candidateId);
+  if (!available.includes(selectedKineticSpectrumCandidateId)) {
+    selectedKineticSpectrumCandidateId = available.includes(preferredCandidateId)
+      ? preferredCandidateId : available[0] || null;
+  }
+  kineticEventPathCandidate.replaceChildren(...records.map((record) => {
+    const option = document.createElement("option"); option.value = record.candidateId;
+    option.textContent = `${record.eventDirection} · ${record.candidateId}`; return option;
+  }));
+  kineticEventPathCandidate.disabled = !records.length;
+  if (selectedKineticSpectrumCandidateId) {
+    kineticEventPathCandidate.value = selectedKineticSpectrumCandidateId;
+  }
+}
+
 function renderKineticEventSpectrum() {
   const namespace = "http://www.w3.org/2000/svg";
   const make = (name, attributes = {}) => {
@@ -25508,22 +25708,36 @@ function renderKineticEventSpectrum() {
   };
   kineticEventSpectrumPlot.replaceChildren();
   kineticEventPathPlot.replaceChildren();
-  const competition = externalActionBarrierCheckpoint?.kineticCompetition;
+  const checkpoint = externalActionBarrierCheckpoint;
+  const pathRecords = checkpoint?.validatedResponse?.audit?.records || [];
+  const competition = checkpoint?.kineticCompetition;
+  syncKineticPathCandidateOptions(pathRecords, competition?.selectedCandidateId || null);
   const panel = kineticEventSpectrumBadge.closest(".kinetic-event-spectrum");
-  panel.classList.toggle("ready", Boolean(competition));
+  panel.classList.toggle("ready", Boolean(competition || pathRecords.length));
   kineticEventSpectrumMode.disabled = !competition;
   if (!competition) {
-    kineticEventSpectrumBadge.textContent = "awaiting rates";
-    kineticEventSpectrumSummary.textContent = "validate barriers and prefactors for every frozen action";
-    kineticEventSpectrumDetail.textContent = "The spectrum appears only after a complete, method-bound HTST response is validated and an event-competition mode is selected.";
+    kineticEventSpectrumBadge.textContent = pathRecords.length ? "paths validated" : "awaiting rates";
+    kineticEventSpectrumSummary.textContent = pathRecords.length
+      ? `${pathRecords.length} exact coordinate path${pathRecords.length === 1 ? "" : "s"} · HTST rates unavailable`
+      : "validate barriers and prefactors for every frozen action";
+    kineticEventSpectrumDetail.textContent = pathRecords.length
+      ? "Candidate-bound barriers and atomic images are inspectable now. Supply converged prefactors and select an event-competition mode to construct the finite HTST spectrum."
+      : "The spectrum appears only after a complete, method-bound HTST response is validated and an event-competition mode is selected.";
     const empty = make("text", { x: 180, y: 86, "text-anchor": "middle", class: "axis-label" });
     empty.textContent = "frozen candidate rates unavailable";
     kineticEventSpectrumPlot.append(empty);
-    const emptyPath = make("text", { x: 180, y: 49, "text-anchor": "middle",
-      class: "axis-label" });
-    emptyPath.textContent = "coordinate-bearing path unavailable";
-    kineticEventPathPlot.append(emptyPath);
-    kineticEventPathState.textContent = "A validated response must return stable site IDs, species, coordinates, domains, energies, and forces for every image.";
+    const selectedPathRecord = pathRecords.find((record) =>
+      record.candidateId === selectedKineticSpectrumCandidateId) || pathRecords[0];
+    if (selectedPathRecord) {
+      renderCoordinatePathAudit(selectedPathRecord.pathGeometry,
+        selectedPathRecord.candidateId, make);
+    } else {
+      const emptyPath = make("text", { x: 180, y: 49, "text-anchor": "middle",
+        class: "axis-label" });
+      emptyPath.textContent = "coordinate-bearing path unavailable";
+      kineticEventPathPlot.append(emptyPath); renderKineticPathStructure(null);
+      kineticEventPathState.textContent = "A validated response must return stable site IDs, species, coordinates, domains, energies, and forces for every image.";
+    }
     return;
   }
   const spectrum = buildKineticEventSpectrum(competition);
@@ -25611,40 +25825,7 @@ function renderKineticEventSpectrum() {
   kineticEventSpectrumDetail.append(heading, details, boundary);
   const path = externalActionBarrierCheckpoint.validatedResponse.recordsByCandidate
     .get(inspected.candidateId)?.pathGeometry;
-  if (!path) {
-    const unavailable = make("text", { x: 180, y: 49, "text-anchor": "middle",
-      class: "axis-label" });
-    unavailable.textContent = "selected event has no validated path";
-    kineticEventPathPlot.append(unavailable);
-    kineticEventPathState.textContent = "Path geometry is required before kinetic selection.";
-    return;
-  }
-  const pathLeft = 30; const pathRight = 350; const pathTop = 10; const pathBottom = 74;
-  const energies = path.images.map((image) => image.energyElectronVolt);
-  const energyMinimum = Math.min(...energies); const energyMaximum = Math.max(...energies);
-  const pathX = (coordinate) => pathLeft + (pathRight - pathLeft) * coordinate;
-  const pathY = (energy) => pathBottom - (pathBottom - pathTop)
-    * (energyMaximum === energyMinimum ? .5 : (energy - energyMinimum)
-      / (energyMaximum - energyMinimum));
-  kineticEventPathPlot.append(make("line", { x1: pathLeft, y1: pathBottom,
-    x2: pathRight, y2: pathBottom, class: "axis" }), make("line", { x1: pathLeft,
-    y1: pathTop, x2: pathLeft, y2: pathBottom, class: "axis" }));
-  const points = path.images.map((image) =>
-    `${pathX(image.reactionCoordinate)},${pathY(image.energyElectronVolt)}`).join(" ");
-  kineticEventPathPlot.append(make("polyline", { points, class: "path-profile" }));
-  path.images.forEach((image, index) => {
-    const point = make("circle", { cx: pathX(image.reactionCoordinate),
-      cy: pathY(image.energyElectronVolt), r: index === path.saddleImageIndex ? 3.8 : 2.4,
-      class: index === path.saddleImageIndex ? "path-image saddle" : "path-image" });
-    const title = make("title");
-    title.textContent = `image ${index + 1}/${path.imageCount} · ξ ${image.reactionCoordinate.toFixed(3)} · E ${image.energyElectronVolt.toFixed(5)} eV · material/interface/reservoir ${path.materialCounts[index]}/${path.interfaceCounts[index]}/${path.reservoirCounts[index]}`;
-    point.append(title); kineticEventPathPlot.append(point);
-  });
-  const pathAxis = make("text", { x: pathRight, y: 91, "text-anchor": "end",
-    class: "axis-label" });
-  pathAxis.textContent = "external reaction coordinate ξ · 0 → 1";
-  kineticEventPathPlot.append(pathAxis);
-  kineticEventPathState.textContent = `${path.imageCount} externally calculated images · ${path.pathModel.replaceAll("-", " ")} · saddle image ${path.saddleImageIndex + 1} · ${path.fixedMaterialSiteCount} invariant + ${path.movingOrReservoirSiteCount} moving/reservoir site IDs · max adjacent displacement ${path.maximumSiteDisplacementAngstrom.toFixed(3)} Å${path.reservoir ? ` · ${path.reservoir.boundaryCondition}` : " · closed system"}. Exact endpoints and energy barrier pass; path uniqueness, missing mechanisms, recrossing, and method transferability remain unclaimed.`;
+  renderCoordinatePathAudit(path, inspected.candidateId, make);
 }
 
 function renderActionBarrierCheckpoint() {
@@ -25908,7 +26089,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
     ...speciesExchangeCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-366",
+    generatedAt: new Date().toISOString(), buildId: "20260831-367",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -35250,7 +35431,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-366",
+    generatedAt: new Date().toISOString(), buildId: "20260831-367",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,
@@ -40856,6 +41037,53 @@ kineticEventSpectrumMode.addEventListener("change", () => {
   kineticEventSpectrumMode.value = kineticEventSpectrumMode.value === "probability"
     ? "probability" : "rate";
   renderKineticEventSpectrum();
+});
+kineticEventPathCandidate.addEventListener("change", () => {
+  const records = externalActionBarrierCheckpoint?.validatedResponse?.audit?.records || [];
+  if (!records.some((record) => record.candidateId === kineticEventPathCandidate.value)) return;
+  stopKineticPathPlayback(); selectedKineticSpectrumCandidateId = kineticEventPathCandidate.value;
+  selectedKineticPathCandidateId = null; renderKineticEventSpectrum();
+});
+kineticEventPathImage.addEventListener("input", () => {
+  stopKineticPathPlayback();
+  selectedKineticPathImageIndex = Math.max(0, Number(kineticEventPathImage.value) || 0);
+  renderKineticEventSpectrum();
+});
+kineticEventPathPlay.addEventListener("click", () => {
+  const path = externalActionBarrierCheckpoint?.validatedResponse?.recordsByCandidate
+    .get(selectedKineticSpectrumCandidateId)?.pathGeometry;
+  if (!path) return;
+  if (kineticPathPlaybackTimer != null) { stopKineticPathPlayback(); return; }
+  kineticEventPathPlay.textContent = "Pause exact images";
+  kineticPathPlaybackTimer = setInterval(() => {
+    const activePath = externalActionBarrierCheckpoint?.validatedResponse?.recordsByCandidate
+      .get(selectedKineticSpectrumCandidateId)?.pathGeometry;
+    if (!activePath) { stopKineticPathPlayback(); renderKineticEventSpectrum(); return; }
+    selectedKineticPathImageIndex = (selectedKineticPathImageIndex + 1)
+      % activePath.imageCount;
+    renderKineticEventSpectrum();
+  }, 720);
+});
+kineticEventPathStructure.addEventListener("pointerdown", (event) => {
+  kineticPathPointerStart = { x: event.clientX, y: event.clientY,
+    yaw: kineticPathYaw, pitch: kineticPathPitch };
+  kineticEventPathStructure.setPointerCapture?.(event.pointerId);
+});
+kineticEventPathStructure.addEventListener("pointermove", (event) => {
+  if (!kineticPathPointerStart || !(event.buttons & 1)) return;
+  kineticPathYaw = kineticPathPointerStart.yaw
+    + (event.clientX - kineticPathPointerStart.x) * .012;
+  kineticPathPitch = Math.max(-Math.PI * .48, Math.min(Math.PI * .48,
+    kineticPathPointerStart.pitch + (event.clientY - kineticPathPointerStart.y) * .009));
+  const path = externalActionBarrierCheckpoint?.validatedResponse?.recordsByCandidate
+    .get(selectedKineticSpectrumCandidateId)?.pathGeometry;
+  if (path) renderKineticPathStructure(path, selectedKineticSpectrumCandidateId);
+});
+kineticEventPathStructure.addEventListener("pointerup", () => {
+  kineticPathPointerStart = null;
+});
+kineticEventPathStructure.addEventListener("pointercancel", () => {
+  kineticPathPointerStart = null;
 });
 actionBarrierTemperatureSelect.addEventListener("change", () => {
   const value = Number(actionBarrierTemperatureSelect.value);
