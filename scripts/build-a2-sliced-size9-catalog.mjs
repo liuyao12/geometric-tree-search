@@ -58,8 +58,25 @@ if (periodicTenBounded.classification !== "bounded_inconclusive"
   throw new Error("Invalid bounded ten-copy periodic campaign summary");
 }
 const periodicTenById = new Map(
-  periodicTenBounded.candidates.map(record => [record.id, record])
+  periodicTenBounded.candidates.map(record => [record.id, {
+    ...record,
+    exact_node_limit: periodicTenBounded.exact_node_limit_per_orbit,
+    report: "data/a2-sliced-alcove-size9-periodic-copy10-exact500k-summary.json",
+  }])
 );
+const periodicTenContinuation = await readJson(
+  "data/a2-sliced-alcove-size9-periodic-copy10-exact2m-11364-summary.json"
+);
+if (periodicTenContinuation.classification !== "bounded_inconclusive"
+    || periodicTenContinuation.copies !== 10
+    || periodicTenContinuation.periodic_certificates.length !== 0) {
+  throw new Error("Invalid two-million-node ten-copy continuation summary");
+}
+for (const record of periodicTenContinuation.candidates) periodicTenById.set(record.id, {
+  ...record,
+  exact_node_limit: periodicTenContinuation.exact_node_limit_per_orbit,
+  report: "data/a2-sliced-alcove-size9-periodic-copy10-exact2m-11364-summary.json",
+});
 const coronaRows = await readNdjson("runs/a2-sliced-size9-corona1.ndjson");
 const coronaById = new Map(coronaRows.map(record => [record.id, record]));
 const radiusTwoRows = await readNdjson("runs/a2-sliced-size9-corona2-focused256-merged.ndjson");
@@ -275,9 +292,9 @@ const candidates = records.map(record => {
       periodic_ten_copy_exact_multicover_nodes: periodicTen?.exact_multicover_nodes ?? null,
       periodic_ten_copy_milliseconds: periodicTen?.milliseconds ?? null,
       periodic_ten_copy_exact_node_limit: periodicTen
-        ? periodicTenBounded.exact_node_limit_per_orbit : null,
+        ? periodicTen.exact_node_limit : null,
       periodic_ten_copy_bounded_report: periodicTen
-        ? "data/a2-sliced-alcove-size9-periodic-copy10-exact500k-summary.json" : null,
+        ? periodicTen.report : null,
       motif_tiles: certificate?.copies ?? null,
       period_vectors: certificate?.period_vectors ?? null,
       quotient_determinant: certificate?.determinant ?? null,
