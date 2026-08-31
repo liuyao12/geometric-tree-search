@@ -1232,11 +1232,15 @@
 
       function applyDemoSize() {
         if (!floatingDemo) return;
+        const previousRect = canvas.getBoundingClientRect();
+        const centerWorld = viewInitialized
+          ? screenToWorld(previousRect.width / 2, previousRect.height / 2)
+          : null;
         if (demoSize.width) floatingDemo.style.setProperty('--demo-width', `${demoSize.width}px`);
         else floatingDemo.style.removeProperty('--demo-width');
         if (demoSize.canvasHeight) floatingDemo.style.setProperty('--demo-canvas-height', `${demoSize.canvasHeight}px`);
         else floatingDemo.style.removeProperty('--demo-canvas-height');
-        resizeCanvas();
+        resizeCanvas({ centerWorld });
         window.requestAnimationFrame(updateTextWrap);
       }
 
@@ -1312,7 +1316,7 @@
         return true;
       }
 
-      function resizeCanvas() {
+      function resizeCanvas({ centerWorld = null } = {}) {
         const ratio = window.devicePixelRatio || 1;
         const rect = canvas.getBoundingClientRect();
         canvas.width = Math.max(320, Math.floor(rect.width * ratio));
@@ -1321,6 +1325,11 @@
         if (!viewInitialized) {
           centerSeedView({ resetScale: true });
           viewInitialized = true;
+        } else if (centerWorld) {
+          offset = {
+            x: rect.width / 2 - centerWorld.x * scale,
+            y: rect.height / 2 - centerWorld.y * scale
+          };
         }
         draw();
       }
