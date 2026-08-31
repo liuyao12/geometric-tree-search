@@ -138,7 +138,7 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
     "lattice_points": 12,
     "survivor_priority": 1,
     "survivor_count": 97,
-    "description": "Nine-alcove non-polycube from the completed palindromic-profile stratum on consecutive x+y+z=k sections. A heavy-first ten-copy quotient campaign exactly excludes 85 of 85 proper-A₂ orbit classes, covering 403 of 403 HNF bases. The fixed ten-copy determinant-15 screen is complete with zero solver unknowns. A separate radius-two core-CEGAR continuation retains 256 sound failure clauses after 256 rounds without exhausting the outer space or finding a replayed radius-two patch. For this leader, the complete proper five-copy metatile alphabet at scale 2 is also excluded: all 17,707 connected metatiles have replay-verified atomic local obstructions. An alternate 120-second QF_FD probe on 18 residual classes yields no SAT or UNSAT result; 12 interrupted partial receipts are excluded.",
+    "description": "Nine-alcove non-polycube from the completed palindromic-profile stratum on consecutive x+y+z=k sections. A heavy-first ten-copy quotient campaign exactly excludes 85 of 85 proper-A₂ orbit classes, covering 403 of 403 HNF bases. The fixed ten-copy determinant-15 screen is complete with zero solver unknowns. A separate radius-two core-CEGAR continuation retains 256 sound failure clauses after 256 rounds without exhausting the outer space or finding a replayed radius-two patch. For this leader, the complete five-copy metatile alphabets at scale 2 are also excluded across 949,344 connected parent/model cases, each with a replay-verified atomic local obstruction. An alternate 120-second QF_FD probe on 18 residual classes yields no SAT or UNSAT result; 12 interrupted partial receipts are excluded.",
     "screening": {
       "status": "inconclusive",
       "certificate": null,
@@ -219,15 +219,20 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
       "two_copy_substitution_parents_exhausted": 46,
       "two_copy_substitution_report": "data/a2-sliced-size9-palindromic-two-copy-substitution-scale2to3.ndjson.gz",
       "three_copy_substitution_exact_scales": [
-        2
+        2,
+        3
       ],
       "three_copy_substitution_models": [
         "proper",
         "reflected"
       ],
-      "three_copy_substitution_certified_negatives": 2,
-      "three_copy_substitution_parents_exhausted": 522,
+      "three_copy_substitution_certified_negatives": 4,
+      "three_copy_substitution_parents_exhausted": 1044,
       "three_copy_substitution_report": "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz",
+      "three_copy_substitution_reports": [
+        "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz",
+        "data/a2-sliced-size9-palindromic-three-copy-substitution-scale3-04636.ndjson.gz"
+      ],
       "four_copy_substitution_exact_scales": [
         2
       ],
@@ -245,12 +250,23 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
         2
       ],
       "five_copy_substitution_models": [
-        "proper"
+        "proper",
+        "reflected"
       ],
-      "five_copy_substitution_certified_negatives": 1,
-      "five_copy_substitution_parents_exhausted": 17707,
+      "five_copy_substitution_certified_negatives": 2,
+      "five_copy_substitution_parents_exhausted": 949344,
       "five_copy_substitution_report": "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-proper-04636.ndjson.gz",
       "five_copy_substitution_summary_report": null,
+      "five_copy_substitution_reports": [
+        "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-proper-04636.ndjson.gz",
+        "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-reflected-04636.ndjson.gz"
+      ],
+      "five_copy_substitution_summary_reports": [
+        "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-reflected-04636-summary.json"
+      ],
+      "five_copy_substitution_geometric_replay_reports": [
+        "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-reflected-04636-geometric-replay.json"
+      ],
       "corona_root_patch_copies": 42,
       "corona_solver": "z3",
       "corona_report": "data/a2-sliced-size9-palindromic-corona-z3-04636.ndjson.gz",
@@ -723,7 +739,7 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
     "lattice_points": 12,
     "survivor_priority": 2,
     "survivor_count": 97,
-    "description": "Nine-alcove non-polycube from the completed palindromic-profile stratum on consecutive x+y+z=k sections. A heavy-first ten-copy quotient campaign exactly excludes 85 of 85 proper-A₂ orbit classes, covering 403 of 403 HNF bases. The fixed ten-copy determinant-15 screen is complete with zero solver unknowns. A separate radius-two core-CEGAR continuation retains 256 sound failure clauses after 256 rounds without exhausting the outer space or finding a replayed radius-two patch. For this leader, the complete proper five-copy metatile alphabet at scale 2 is also excluded: all 68,758 connected metatiles have replay-verified atomic local obstructions. An alternate 120-second QF_FD probe on 18 residual classes yields no SAT or UNSAT result; 12 interrupted partial receipts are excluded.",
+    "description": "Nine-alcove non-polycube from the completed palindromic-profile stratum on consecutive x+y+z=k sections. A heavy-first ten-copy quotient campaign exactly excludes 85 of 85 proper-A₂ orbit classes, covering 403 of 403 HNF bases. The fixed ten-copy determinant-15 screen is complete with zero solver unknowns. A separate radius-two core-CEGAR continuation retains 256 sound failure clauses after 256 rounds without exhausting the outer space or finding a replayed radius-two patch. For this leader, the complete five-copy metatile alphabet at scale 2 is also excluded across 68,758 connected parent/model cases, each with a replay-verified atomic local obstruction. An alternate 120-second QF_FD probe on 18 residual classes yields no SAT or UNSAT result; 12 interrupted partial receipts are excluded.",
     "screening": {
       "status": "inconclusive",
       "certificate": null,
@@ -813,6 +829,9 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
       "three_copy_substitution_certified_negatives": 2,
       "three_copy_substitution_parents_exhausted": 606,
       "three_copy_substitution_report": "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz",
+      "three_copy_substitution_reports": [
+        "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz"
+      ],
       "four_copy_substitution_exact_scales": [
         2
       ],
@@ -836,6 +855,11 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
       "five_copy_substitution_parents_exhausted": 68758,
       "five_copy_substitution_report": "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-proper-01085.ndjson.gz",
       "five_copy_substitution_summary_report": null,
+      "five_copy_substitution_reports": [
+        "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-proper-01085.ndjson.gz"
+      ],
+      "five_copy_substitution_summary_reports": [],
+      "five_copy_substitution_geometric_replay_reports": [],
       "corona_root_patch_copies": 28,
       "corona_solver": "exact_gcts",
       "corona_report": "data/a2-sliced-size9-palindromic-focused-corona1-bounded.ndjson.gz",
@@ -1198,7 +1222,7 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
     "lattice_points": 12,
     "survivor_priority": 3,
     "survivor_count": 97,
-    "description": "Nine-alcove non-polycube from the completed palindromic-profile stratum on consecutive x+y+z=k sections. A heavy-first ten-copy quotient campaign exactly excludes 70 of 85 proper-A₂ orbit classes, covering 316 of 403 HNF bases. The remaining 15 classes are explicitly inconclusive after ten-million-node searches. A separate radius-two core-CEGAR continuation retains 256 sound failure clauses after 256 rounds without exhausting the outer space or finding a replayed radius-two patch. For this leader, the complete proper five-copy metatile alphabet at scale 2 is also excluded: all 1,999,910 connected metatiles have replay-verified atomic local obstructions. An alternate 120-second QF_FD probe on 18 residual classes yields no SAT or UNSAT result; 12 interrupted partial receipts are excluded.",
+    "description": "Nine-alcove non-polycube from the completed palindromic-profile stratum on consecutive x+y+z=k sections. A heavy-first ten-copy quotient campaign exactly excludes 70 of 85 proper-A₂ orbit classes, covering 316 of 403 HNF bases. The remaining 15 classes are explicitly inconclusive after ten-million-node searches. A separate radius-two core-CEGAR continuation retains 256 sound failure clauses after 256 rounds without exhausting the outer space or finding a replayed radius-two patch. For this leader, the complete five-copy metatile alphabet at scale 2 is also excluded across 1,999,910 connected parent/model cases, each with a replay-verified atomic local obstruction. An alternate 120-second QF_FD probe on 18 residual classes yields no SAT or UNSAT result; 12 interrupted partial receipts are excluded.",
     "screening": {
       "status": "inconclusive",
       "certificate": null,
@@ -1288,6 +1312,9 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
       "three_copy_substitution_certified_negatives": 2,
       "three_copy_substitution_parents_exhausted": 4518,
       "three_copy_substitution_report": "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz",
+      "three_copy_substitution_reports": [
+        "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz"
+      ],
       "four_copy_substitution_exact_scales": [
         2
       ],
@@ -1311,6 +1338,13 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
       "five_copy_substitution_parents_exhausted": 1999910,
       "five_copy_substitution_report": "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-proper-04468.ndjson.gz",
       "five_copy_substitution_summary_report": "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-proper-04468-summary.json",
+      "five_copy_substitution_reports": [
+        "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-proper-04468.ndjson.gz"
+      ],
+      "five_copy_substitution_summary_reports": [
+        "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-proper-04468-summary.json"
+      ],
+      "five_copy_substitution_geometric_replay_reports": [],
       "corona_root_patch_copies": 52,
       "corona_solver": "z3",
       "corona_report": "data/a2-sliced-size9-palindromic-corona-z3-04468.ndjson.gz",
@@ -2839,6 +2873,9 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
       "three_copy_substitution_certified_negatives": 2,
       "three_copy_substitution_parents_exhausted": 4128,
       "three_copy_substitution_report": "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz",
+      "three_copy_substitution_reports": [
+        "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz"
+      ],
       "four_copy_substitution_exact_scales": [],
       "four_copy_substitution_models": [],
       "four_copy_substitution_certified_negatives": 0,
@@ -2850,6 +2887,9 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
       "five_copy_substitution_parents_exhausted": 0,
       "five_copy_substitution_report": null,
       "five_copy_substitution_summary_report": null,
+      "five_copy_substitution_reports": [],
+      "five_copy_substitution_summary_reports": [],
+      "five_copy_substitution_geometric_replay_reports": [],
       "corona_root_patch_copies": 29,
       "corona_solver": "exact_gcts",
       "corona_report": "data/a2-sliced-size9-palindromic-focused-corona1-bounded.ndjson.gz",
@@ -4194,6 +4234,9 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
       "three_copy_substitution_certified_negatives": 2,
       "three_copy_substitution_parents_exhausted": 343,
       "three_copy_substitution_report": "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz",
+      "three_copy_substitution_reports": [
+        "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz"
+      ],
       "four_copy_substitution_exact_scales": [],
       "four_copy_substitution_models": [],
       "four_copy_substitution_certified_negatives": 0,
@@ -4205,6 +4248,9 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
       "five_copy_substitution_parents_exhausted": 0,
       "five_copy_substitution_report": null,
       "five_copy_substitution_summary_report": null,
+      "five_copy_substitution_reports": [],
+      "five_copy_substitution_summary_reports": [],
+      "five_copy_substitution_geometric_replay_reports": [],
       "corona_root_patch_copies": 28,
       "corona_solver": "exact_gcts",
       "corona_report": "data/a2-sliced-size9-palindromic-focused-corona1-bounded.ndjson.gz",

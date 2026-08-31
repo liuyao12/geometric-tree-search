@@ -1,0 +1,293 @@
+{
+  "id": "a2sp_9_04636",
+  "classification": "no_five_copy_metatile_scalar2_substitution",
+  "certified": true,
+  "scale": 2,
+  "include_reflections": true,
+  "family": "all_face_connected_five_copy_metatiles_modulo_selected_a2_group",
+  "four_copy_parent_total": 19638,
+  "raw_connected_extensions": 7450278,
+  "symmetry_distinct_metatiles": 931637,
+  "canonical_sha256": "04ff851067d2807d54cdb7a92d34c2772e0155b3ec742681a6186bddcd64dd4a",
+  "parents_completed": 931637,
+  "parent_counts": {
+    "atomic_local_obstruction": 931637,
+    "local_obstruction": 0,
+    "exact_unsat": 0,
+    "mixed_metatile_rule": 0,
+    "unresolved": 0
+  },
+  "closed_alphabet": null,
+  "all_parent_replays_verified": true,
+  "parent_results_sha256": "84c5a75225e76031c1f3f43c30750006dafcdc15c27586b51d72bcf878876e29",
+  "archive": "a2-sliced-size9-palindromic-five-copy-substitution-scale2-reflected-04636.ndjson.gz",
+  "archive_sha256": "02b3112d44e3efe6481f6c8e89959d7b6066b5f0fcf2e0099c82e25f1b0046d0",
+  "range_receipts": [
+    {
+      "path": "a2sp_9_04636-five-parents0000000-0050000.ndjson",
+      "parent_range": [
+        0,
+        50000
+      ],
+      "parent_counts": {
+        "atomic_local_obstruction": 50000,
+        "local_obstruction": 0,
+        "exact_unsat": 0,
+        "mixed_metatile_rule": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "path": "a2sp_9_04636-five-parents0050000-0100000.ndjson",
+      "parent_range": [
+        50000,
+        100000
+      ],
+      "parent_counts": {
+        "atomic_local_obstruction": 50000,
+        "local_obstruction": 0,
+        "exact_unsat": 0,
+        "mixed_metatile_rule": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "path": "a2sp_9_04636-five-parents0100000-0150000.ndjson",
+      "parent_range": [
+        100000,
+        150000
+      ],
+      "parent_counts": {
+        "atomic_local_obstruction": 50000,
+        "local_obstruction": 0,
+        "exact_unsat": 0,
+        "mixed_metatile_rule": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "path": "a2sp_9_04636-five-parents0150000-0200000.ndjson",
+      "parent_range": [
+        150000,
+        200000
+      ],
+      "parent_counts": {
+        "atomic_local_obstruction": 50000,
+        "local_obstruction": 0,
+        "exact_unsat": 0,
+        "mixed_metatile_rule": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "path": "a2sp_9_04636-five-parents0200000-0250000.ndjson",
+      "parent_range": [
+        200000,
+        250000
+      ],
+      "parent_counts": {
+        "atomic_local_obstruction": 50000,
+        "local_obstruction": 0,
+        "exact_unsat": 0,
+        "mixed_metatile_rule": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "path": "a2sp_9_04636-five-parents0250000-0300000.ndjson",
+      "parent_range": [
+        250000,
+        300000
+      ],
+      "parent_counts": {
+        "atomic_local_obstruction": 50000,
+        "local_obstruction": 0,
+        "exact_unsat": 0,
+        "mixed_metatile_rule": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "path": "a2sp_9_04636-five-parents0300000-0350000.ndjson",
+      "parent_range": [
+        300000,
+        350000
+      ],
+      "parent_counts": {
+        "atomic_local_obstruction": 50000,
+        "local_obstruction": 0,
+        "exact_unsat": 0,
+        "mixed_metatile_rule": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "path": "a2sp_9_04636-five-parents0350000-0400000.ndjson",
+      "parent_range": [
+        350000,
+        400000
+      ],
+      "parent_counts": {
+        "atomic_local_obstruction": 50000,
+        "local_obstruction": 0,
+        "exact_unsat": 0,
+        "mixed_metatile_rule": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "path": "a2sp_9_04636-five-parents0400000-0450000.ndjson",
+      "parent_range": [
+        400000,
+        450000
+      ],
+      "parent_counts": {
+        "atomic_local_obstruction": 50000,
+        "local_obstruction": 0,
+        "exact_unsat": 0,
+        "mixed_metatile_rule": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "path": "a2sp_9_04636-five-parents0450000-0500000.ndjson",
+      "parent_range": [
+        450000,
+        500000
+      ],
+      "parent_counts": {
+        "atomic_local_obstruction": 50000,
+        "local_obstruction": 0,
+        "exact_unsat": 0,
+        "mixed_metatile_rule": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "path": "a2sp_9_04636-five-parents0500000-0550000.ndjson",
+      "parent_range": [
+        500000,
+        550000
+      ],
+      "parent_counts": {
+        "atomic_local_obstruction": 50000,
+        "local_obstruction": 0,
+        "exact_unsat": 0,
+        "mixed_metatile_rule": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "path": "a2sp_9_04636-five-parents0550000-0600000.ndjson",
+      "parent_range": [
+        550000,
+        600000
+      ],
+      "parent_counts": {
+        "atomic_local_obstruction": 50000,
+        "local_obstruction": 0,
+        "exact_unsat": 0,
+        "mixed_metatile_rule": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "path": "a2sp_9_04636-five-parents0600000-0650000.ndjson",
+      "parent_range": [
+        600000,
+        650000
+      ],
+      "parent_counts": {
+        "atomic_local_obstruction": 50000,
+        "local_obstruction": 0,
+        "exact_unsat": 0,
+        "mixed_metatile_rule": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "path": "a2sp_9_04636-five-parents0650000-0700000.ndjson",
+      "parent_range": [
+        650000,
+        700000
+      ],
+      "parent_counts": {
+        "atomic_local_obstruction": 50000,
+        "local_obstruction": 0,
+        "exact_unsat": 0,
+        "mixed_metatile_rule": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "path": "a2sp_9_04636-five-parents0700000-0750000.ndjson",
+      "parent_range": [
+        700000,
+        750000
+      ],
+      "parent_counts": {
+        "atomic_local_obstruction": 50000,
+        "local_obstruction": 0,
+        "exact_unsat": 0,
+        "mixed_metatile_rule": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "path": "a2sp_9_04636-five-parents0750000-0800000.ndjson",
+      "parent_range": [
+        750000,
+        800000
+      ],
+      "parent_counts": {
+        "atomic_local_obstruction": 50000,
+        "local_obstruction": 0,
+        "exact_unsat": 0,
+        "mixed_metatile_rule": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "path": "a2sp_9_04636-five-parents0800000-0850000.ndjson",
+      "parent_range": [
+        800000,
+        850000
+      ],
+      "parent_counts": {
+        "atomic_local_obstruction": 50000,
+        "local_obstruction": 0,
+        "exact_unsat": 0,
+        "mixed_metatile_rule": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "path": "a2sp_9_04636-five-parents0850000-0900000.ndjson",
+      "parent_range": [
+        850000,
+        900000
+      ],
+      "parent_counts": {
+        "atomic_local_obstruction": 50000,
+        "local_obstruction": 0,
+        "exact_unsat": 0,
+        "mixed_metatile_rule": 0,
+        "unresolved": 0
+      }
+    },
+    {
+      "path": "a2sp_9_04636-five-parents0900000-0931637.ndjson",
+      "parent_range": [
+        900000,
+        931637
+      ],
+      "parent_counts": {
+        "atomic_local_obstruction": 31637,
+        "local_obstruction": 0,
+        "exact_unsat": 0,
+        "mixed_metatile_rule": 0,
+        "unresolved": 0
+      }
+    }
+  ]
+}

@@ -26,9 +26,14 @@ const directSubstitutions = await readGzipNdjson(
 const twoCopySubstitutions = await readGzipNdjson(
   "data/a2-sliced-size9-palindromic-two-copy-substitution-scale2to3.ndjson.gz"
 );
-const threeCopySubstitutions = await readGzipNdjson(
-  "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz"
-);
+const threeCopySubstitutions = [
+  ...(await readGzipNdjson(
+    "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz"
+  )),
+  ...(await readGzipNdjson(
+    "data/a2-sliced-size9-palindromic-three-copy-substitution-scale3-04636.ndjson.gz"
+  ))
+];
 const fourCopySubstitutions = [
   ...(await readGzipNdjson(
     "data/a2-sliced-size9-palindromic-four-copy-substitution-scale2-proper-leaders.ndjson.gz"
@@ -52,6 +57,32 @@ const radiusTwoContinuations = await readGzipNdjson(
 const fiveCopySummary04468 = await readJson(
   "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-proper-04468-summary.json"
 );
+const fiveCopySummaryReflected04636 = await readJson(
+  "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-reflected-04636-summary.json"
+);
+const fiveCopyGeometryReplayReflected04636 = await readJson(
+  "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-reflected-04636-geometric-replay.json"
+);
+const normalizedFiveCopySummary = summary => ({
+  id: summary.id,
+  classification: summary.classification,
+  five_copy_alcove_metatile_screen: {
+    certified: summary.certified,
+    scale: summary.scale,
+    include_reflections: summary.include_reflections,
+    family: summary.family,
+    four_copy_parent_total: summary.four_copy_parent_total,
+    raw_connected_extensions: summary.raw_connected_extensions,
+    symmetry_distinct_metatiles: summary.symmetry_distinct_metatiles,
+    canonical_sha256: summary.canonical_sha256,
+    parents_completed: summary.parents_completed,
+    parent_counts: summary.parent_counts,
+    closed_alphabet: summary.closed_alphabet,
+    all_parent_replays_verified: summary.all_parent_replays_verified,
+    parent_results_sha256: summary.parent_results_sha256,
+    archive_sha256: summary.archive_sha256,
+  }
+});
 const fiveCopySubstitutions = [
   ...(await readGzipNdjson(
     "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-proper-04636.ndjson.gz"
@@ -59,29 +90,8 @@ const fiveCopySubstitutions = [
   ...(await readGzipNdjson(
     "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-proper-01085.ndjson.gz"
   )),
-  (() => {
-    const summary = fiveCopySummary04468;
-    return {
-      id: summary.id,
-      classification: summary.classification,
-      five_copy_alcove_metatile_screen: {
-        certified: summary.certified,
-        scale: summary.scale,
-        include_reflections: summary.include_reflections,
-        family: summary.family,
-        four_copy_parent_total: summary.four_copy_parent_total,
-        raw_connected_extensions: summary.raw_connected_extensions,
-        symmetry_distinct_metatiles: summary.symmetry_distinct_metatiles,
-        canonical_sha256: summary.canonical_sha256,
-        parents_completed: summary.parents_completed,
-        parent_counts: summary.parent_counts,
-        closed_alphabet: summary.closed_alphabet,
-        all_parent_replays_verified: summary.all_parent_replays_verified,
-        parent_results_sha256: summary.parent_results_sha256,
-        archive_sha256: summary.archive_sha256,
-      }
-    };
-  })()
+  normalizedFiveCopySummary(fiveCopySummary04468),
+  normalizedFiveCopySummary(fiveCopySummaryReflected04636)
 ];
 const tenCopySolverProbe = tenCopySummary.solver_probe;
 if (!tenCopySolverProbe
@@ -110,7 +120,12 @@ const exactSixById = new Map(exactSix.map(record => [record.id, record]));
 const clusterSubstitutionById = new Map(periodicClusterSubstitutions.map(record => [record.id, record]));
 const tenCopySummaryById = new Map(tenCopySummary.candidates.map(record => [record.id, record]));
 const radiusTwoById = new Map(radiusTwoContinuations.map(record => [record.id, record]));
-const fiveCopySubstitutionById = new Map(fiveCopySubstitutions.map(record => [record.id, record]));
+const fiveCopySubstitutionById = fiveCopySubstitutions.reduce((groups, record) => {
+  const rows = groups.get(record.id) ?? [];
+  rows.push(record);
+  groups.set(record.id, rows);
+  return groups;
+}, new Map());
 const tenCopyReceiptsById = tenCopyReceipts.reduce((groups, record) => {
   const rows = groups.get(record.id) ?? [];
   rows.push(record);
@@ -200,7 +215,11 @@ const candidates = selectedIds.map((id, index) => {
   const tenCopy = tenCopySummaryById.get(id) ?? null;
   const tenCopyComplete = tenCopy?.node_capped_orbits === 0;
   const radiusTwo = radiusTwoById.get(id) ?? null;
-  const fiveCopy = fiveCopySubstitutionById.get(id) ?? null;
+  const fiveCopies = fiveCopySubstitutionById.get(id) ?? [];
+  const fiveCopy = fiveCopies.find(result =>
+    result.five_copy_alcove_metatile_screen.include_reflections === false) ?? null;
+  const reflectedFiveCopy = fiveCopies.find(result =>
+    result.five_copy_alcove_metatile_screen.include_reflections === true) ?? null;
   if (!record || !sixCopy || !corona) throw new Error(`Missing focused receipt for ${id}`);
   const periodicCertificate = record.periodic_z3.certificate ?? null;
   const clusterSubstitution = clusterSubstitutionById.get(id) ?? null;
@@ -233,10 +252,11 @@ const candidates = selectedIds.map((id, index) => {
     || result.two_copy_alcove_metatile_screen.certified !== true)) {
     throw new Error(`Missing scale-2-and-3 two-copy substitution exclusions for ${id}`);
   }
-  if (threeCopy.length !== 2 || threeCopy.some(result =>
+  const expectedThreeCopyNegatives = id === "a2sp_9_04636" ? 4 : 2;
+  if (threeCopy.length !== expectedThreeCopyNegatives || threeCopy.some(result =>
     !result.classification.startsWith("no_three_copy_metatile_scalar")
     || result.three_copy_alcove_metatile_screen.certified !== true)) {
-    throw new Error(`Missing scale-2 three-copy substitution exclusions for ${id}`);
+    throw new Error(`Missing three-copy substitution exclusions for ${id}`);
   }
   if (!isPeriodic && (fourCopy.length !== 2 || fourCopy.some(result =>
       result.classification !== "no_four_copy_metatile_scalar2_substitution"
@@ -284,6 +304,20 @@ const candidates = selectedIds.map((id, index) => {
         : fiveCopy.five_copy_alcove_metatile_screen.all_parent_replays_verified !== true))) {
     throw new Error(`Missing replayed proper five-copy substitution exclusion for ${id}`);
   }
+  if (id === "a2sp_9_04636" && (
+      reflectedFiveCopy?.classification !== "no_five_copy_metatile_scalar2_substitution"
+      || reflectedFiveCopy.five_copy_alcove_metatile_screen.certified !== true
+      || reflectedFiveCopy.five_copy_alcove_metatile_screen.symmetry_distinct_metatiles !== 931637
+      || reflectedFiveCopy.five_copy_alcove_metatile_screen.parents_completed !== 931637
+      || reflectedFiveCopy.five_copy_alcove_metatile_screen.parent_counts.atomic_local_obstruction !== 931637
+      || reflectedFiveCopy.five_copy_alcove_metatile_screen.all_parent_replays_verified !== true
+      || fiveCopyGeometryReplayReflected04636.id !== id
+      || fiveCopyGeometryReplayReflected04636.parents_replayed !== 931637
+      || fiveCopyGeometryReplayReflected04636.replay_failures !== 0
+      || fiveCopyGeometryReplayReflected04636.canonical_sha256
+        !== reflectedFiveCopy.five_copy_alcove_metatile_screen.canonical_sha256)) {
+    throw new Error("Missing replayed reflected five-copy substitution exclusion for a2sp_9_04636");
+  }
   const geometry = makeA2SlicedAlcoveUnion(record.alcoves);
   return {
     id,
@@ -297,7 +331,7 @@ const candidates = selectedIds.map((id, index) => {
     survivor_count: 97,
     description: isPeriodic
       ? "Nine-alcove non-polycube with a replayed eight-copy periodic quotient and induced scale-two cluster substitution."
-      : `Nine-alcove non-polycube from the completed palindromic-profile stratum on consecutive x+y+z=k sections. A heavy-first ten-copy quotient campaign exactly excludes ${tenCopy.exact_negative_orbits} of ${tenCopy.orbit_total} proper-A₂ orbit classes, covering ${tenCopy.hnfs_exactly_excluded} of ${tenCopy.hnf_total} HNF bases.${tenCopyComplete ? " The fixed ten-copy determinant-15 screen is complete with zero solver unknowns." : ` The remaining ${tenCopy.node_capped_orbits} classes are explicitly inconclusive after ten-million-node searches.`} A separate radius-two core-CEGAR continuation retains ${radiusTwo.corona2_core_cegar.clauses.length} sound failure clauses after ${radiusTwo.corona2_core_cegar.rounds} rounds without exhausting the outer space or finding a replayed radius-two patch.${fiveCopy ? ` For this leader, the complete proper five-copy metatile alphabet at scale 2 is also excluded: all ${fiveCopy.five_copy_alcove_metatile_screen.symmetry_distinct_metatiles.toLocaleString("en-US")} connected metatiles have replay-verified atomic local obstructions.` : ""} An alternate 120-second QF_FD probe on 18 residual classes yields no SAT or UNSAT result; 12 interrupted partial receipts are excluded.`,
+      : `Nine-alcove non-polycube from the completed palindromic-profile stratum on consecutive x+y+z=k sections. A heavy-first ten-copy quotient campaign exactly excludes ${tenCopy.exact_negative_orbits} of ${tenCopy.orbit_total} proper-A₂ orbit classes, covering ${tenCopy.hnfs_exactly_excluded} of ${tenCopy.hnf_total} HNF bases.${tenCopyComplete ? " The fixed ten-copy determinant-15 screen is complete with zero solver unknowns." : ` The remaining ${tenCopy.node_capped_orbits} classes are explicitly inconclusive after ten-million-node searches.`} A separate radius-two core-CEGAR continuation retains ${radiusTwo.corona2_core_cegar.clauses.length} sound failure clauses after ${radiusTwo.corona2_core_cegar.rounds} rounds without exhausting the outer space or finding a replayed radius-two patch.${fiveCopies.length ? ` For this leader, the complete five-copy metatile alphabet${fiveCopies.length > 1 ? "s" : ""} at scale 2 ${fiveCopies.length > 1 ? "are" : "is"} also excluded across ${fiveCopies.reduce((sum, result) => sum + result.five_copy_alcove_metatile_screen.symmetry_distinct_metatiles, 0).toLocaleString("en-US")} connected parent/model cases, each with a replay-verified atomic local obstruction.` : ""} An alternate 120-second QF_FD probe on 18 residual classes yields no SAT or UNSAT result; 12 interrupted partial receipts are excluded.`,
     screening: {
       status: isPeriodic ? "periodic" : "inconclusive",
       certificate: isPeriodic ? "translational" : null,
@@ -373,12 +407,19 @@ const candidates = selectedIds.map((id, index) => {
       two_copy_substitution_parents_exhausted: twoCopy.reduce((sum, result) =>
         sum + result.two_copy_alcove_metatile_screen.parents_completed, 0),
       two_copy_substitution_report: "data/a2-sliced-size9-palindromic-two-copy-substitution-scale2to3.ndjson.gz",
-      three_copy_substitution_exact_scales: [2],
+      three_copy_substitution_exact_scales: [...new Set(threeCopy.map(result =>
+        result.three_copy_alcove_metatile_screen.scale))].sort((left, right) => left - right),
       three_copy_substitution_models: ["proper", "reflected"],
       three_copy_substitution_certified_negatives: threeCopy.length,
       three_copy_substitution_parents_exhausted: threeCopy.reduce((sum, result) =>
         sum + result.three_copy_alcove_metatile_screen.parents_completed, 0),
       three_copy_substitution_report: "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz",
+      three_copy_substitution_reports: [
+        "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz",
+        ...(id === "a2sp_9_04636"
+          ? ["data/a2-sliced-size9-palindromic-three-copy-substitution-scale3-04636.ndjson.gz"]
+          : [])
+      ],
       four_copy_substitution_exact_scales: fourCopy.length ? [2] : [],
       four_copy_substitution_models: fourCopy.length ? ["proper", "reflected"] : [],
       four_copy_substitution_certified_negatives: fourCopy.length,
@@ -389,16 +430,33 @@ const candidates = selectedIds.map((id, index) => {
         "data/a2-sliced-size9-palindromic-four-copy-substitution-scale2-reflected-leaders.ndjson.gz"
       ] : [],
       five_copy_substitution_exact_scales: fiveCopy ? [2] : [],
-      five_copy_substitution_models: fiveCopy ? ["proper"] : [],
-      five_copy_substitution_certified_negatives: fiveCopy ? 1 : 0,
-      five_copy_substitution_parents_exhausted:
-        fiveCopy?.five_copy_alcove_metatile_screen.parents_completed ?? 0,
+      five_copy_substitution_models: [
+        ...(fiveCopy ? ["proper"] : []),
+        ...(reflectedFiveCopy ? ["reflected"] : [])
+      ],
+      five_copy_substitution_certified_negatives: fiveCopies.length,
+      five_copy_substitution_parents_exhausted: fiveCopies.reduce((sum, result) =>
+        sum + result.five_copy_alcove_metatile_screen.parents_completed, 0),
       five_copy_substitution_report: fiveCopy
         ? `data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-proper-${id.slice("a2sp_9_".length)}.ndjson.gz`
         : null,
       five_copy_substitution_summary_report: id === "a2sp_9_04468"
         ? "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-proper-04468-summary.json"
         : null,
+      five_copy_substitution_reports: fiveCopies.map(result =>
+        `data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-${result.five_copy_alcove_metatile_screen.include_reflections ? "reflected" : "proper"}-${id.slice("a2sp_9_".length)}.ndjson.gz`
+      ),
+      five_copy_substitution_summary_reports: [
+        ...(id === "a2sp_9_04468"
+          ? ["data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-proper-04468-summary.json"]
+          : []),
+        ...(reflectedFiveCopy
+          ? ["data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-reflected-04636-summary.json"]
+          : [])
+      ],
+      five_copy_substitution_geometric_replay_reports: reflectedFiveCopy
+        ? ["data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-reflected-04636-geometric-replay.json"]
+        : [],
       corona_root_patch_copies: corona.corona_z3.replay.patch_copies,
       corona_solver: corona.corona_z3.smt2_sha256 ? "z3" : "exact_gcts",
       corona_report: corona.corona_z3.smt2_sha256

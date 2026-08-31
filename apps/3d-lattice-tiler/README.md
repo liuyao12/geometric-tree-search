@@ -298,8 +298,16 @@ scalar scale 2 now check 17,707 (`04636`), 68,758 (`01085`), and 1,999,910
 replay-verified atomic local obstruction, so all three entire five-copy
 substitution families are exactly excluded. The large `04468` receipt is
 stream-verified by ordered parent index plus canonical, parent-result, and
-archive digests. Reflected five-copy metatiles, larger clusters, non-scalar
-inflations, and non-cellular boundaries remain open.
+archive digests. For `04636`, the reflected family is now complete as well:
+7,450,278 legal extensions reduce to 931,637 symmetry-distinct metatiles, and
+all 931,637 have replayed atomic local obstructions. Reflected five-copy
+metatiles remain open for the other two leaders; larger clusters, non-scalar
+inflations, and non-cellular boundaries remain open for all three.
+For `04636`, the complete connected three-copy alphabet at scalar scale 3 is
+also excluded in both symmetry models: all 67 proper and 455 reflected parents
+have independently replayed atomic local obstructions. Together with its
+scale-2 screens this exhausts 1,044 three-copy parents across four complete
+model/scale cases.
 The original stratum's exact two-, four-, and six-copy quotient screens reduce
 it to 356 reflection-class candidates.
 The next census level is also complete and removes the profile heuristic

@@ -1,0 +1,166 @@
+{
+  "id": "a2sp_9_04636",
+  "verification": "independent_fresh_atomic_local_obstruction_replay",
+  "scale": 2,
+  "include_reflections": true,
+  "raw_connected_extensions": 7450278,
+  "symmetry_distinct_metatiles": 931637,
+  "canonical_sha256": "04ff851067d2807d54cdb7a92d34c2772e0155b3ec742681a6186bddcd64dd4a",
+  "four_copy_parent_total": 19638,
+  "parents_replayed": 931637,
+  "replay_failures": 0,
+  "range_receipts": [
+    {
+      "parent_range": [
+        0,
+        50000
+      ],
+      "parents_replayed": 50000,
+      "obstruction_receipts_sha256": "3c677e65a3883ae0d5d4662f1980e50b911c26616c95f9be43e6c5bd4c3ead10"
+    },
+    {
+      "parent_range": [
+        50000,
+        100000
+      ],
+      "parents_replayed": 50000,
+      "obstruction_receipts_sha256": "0a8cab53c56f94ca98c097afce7e888c095ac1c75a2145750e806db53908468e"
+    },
+    {
+      "parent_range": [
+        100000,
+        150000
+      ],
+      "parents_replayed": 50000,
+      "obstruction_receipts_sha256": "0cb32cfafa918180811768b72c04c9d403b1f2cacfb39d2cdd374f5462c325bf"
+    },
+    {
+      "parent_range": [
+        150000,
+        200000
+      ],
+      "parents_replayed": 50000,
+      "obstruction_receipts_sha256": "fa0ae6ca0ab126dd2e2fb955f5ed5d176dc693963d4f2f43f4cd6a0b0282e707"
+    },
+    {
+      "parent_range": [
+        200000,
+        250000
+      ],
+      "parents_replayed": 50000,
+      "obstruction_receipts_sha256": "c936ca147e6a7b0a8cfdd736a3df070f432b13ebfe767f5aae68ab2bdf9917a5"
+    },
+    {
+      "parent_range": [
+        250000,
+        300000
+      ],
+      "parents_replayed": 50000,
+      "obstruction_receipts_sha256": "8dee89606bf9754ec12d5a828060a01cb4aeecaf103e747cf7e36fab850210b3"
+    },
+    {
+      "parent_range": [
+        300000,
+        350000
+      ],
+      "parents_replayed": 50000,
+      "obstruction_receipts_sha256": "007d8132b9a70d992255e0962dbb2a843b9629cf66a325dff90c5c07c25644ac"
+    },
+    {
+      "parent_range": [
+        350000,
+        400000
+      ],
+      "parents_replayed": 50000,
+      "obstruction_receipts_sha256": "2b09f8ff65302794dd385e9371e0de0b30ae55470e3b0332be92c3889e3e8806"
+    },
+    {
+      "parent_range": [
+        400000,
+        450000
+      ],
+      "parents_replayed": 50000,
+      "obstruction_receipts_sha256": "e6d1ac2ac29017c2d72bfe17841fe63a008e7460e254f78197795bc563ad6ae6"
+    },
+    {
+      "parent_range": [
+        450000,
+        500000
+      ],
+      "parents_replayed": 50000,
+      "obstruction_receipts_sha256": "b76e758c444ddf4cdc982c5ca7a3a0ea76732c06addca37b1d7702448fa8fe31"
+    },
+    {
+      "parent_range": [
+        500000,
+        550000
+      ],
+      "parents_replayed": 50000,
+      "obstruction_receipts_sha256": "7766371abd9ef05badd3b8a37fd3f1c2622b0e95928ac794c6332b427a6448bb"
+    },
+    {
+      "parent_range": [
+        550000,
+        600000
+      ],
+      "parents_replayed": 50000,
+      "obstruction_receipts_sha256": "2cdc3acb5511af2426fe7a7f57599de0c124668ccc08acdd6f8653d328616728"
+    },
+    {
+      "parent_range": [
+        600000,
+        650000
+      ],
+      "parents_replayed": 50000,
+      "obstruction_receipts_sha256": "91545e1bb838c4233d973abc12e1b33fa1a1c7967f0c90cdf67ec08fcb5370b3"
+    },
+    {
+      "parent_range": [
+        650000,
+        700000
+      ],
+      "parents_replayed": 50000,
+      "obstruction_receipts_sha256": "353edd41260e139a6577a50fa787a57adbb52689f7dc6f6f9ae4a8d5ac97d49b"
+    },
+    {
+      "parent_range": [
+        700000,
+        750000
+      ],
+      "parents_replayed": 50000,
+      "obstruction_receipts_sha256": "84c7ba2fd95af4e1879673c51540372f982a1b042e0117dff13077eee19b25cc"
+    },
+    {
+      "parent_range": [
+        750000,
+        800000
+      ],
+      "parents_replayed": 50000,
+      "obstruction_receipts_sha256": "c491b8cd80da529d558a301b90b9ab7a90bcd198dfb001a2c342b8ceb9da0f08"
+    },
+    {
+      "parent_range": [
+        800000,
+        850000
+      ],
+      "parents_replayed": 50000,
+      "obstruction_receipts_sha256": "aabb7232bf3b59f5d4bf4f240a4d4027350f5d675bdbd3279783cd6fb6204e4f"
+    },
+    {
+      "parent_range": [
+        850000,
+        900000
+      ],
+      "parents_replayed": 50000,
+      "obstruction_receipts_sha256": "552ca7424f9f904d2ce05112794e2290c1e81ce9c89f177824584d2edb411083"
+    },
+    {
+      "parent_range": [
+        900000,
+        931637
+      ],
+      "parents_replayed": 31637,
+      "obstruction_receipts_sha256": "18a465a2c11fd4cc46eee9804bfed329c059b332d59782628f23256a8f699a94"
+    }
+  ]
+}

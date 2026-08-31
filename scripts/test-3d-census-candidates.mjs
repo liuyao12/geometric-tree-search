@@ -1693,9 +1693,9 @@ assert.ok(palindromicUnresolved.every(candidate =>
   && candidate.screening.two_copy_substitution_exact_scales.join(",") === "2,3"
   && candidate.screening.two_copy_substitution_models.join(",") === "proper,reflected"
   && candidate.screening.two_copy_substitution_certified_negatives === 4
-  && candidate.screening.three_copy_substitution_exact_scales.join(",") === "2"
   && candidate.screening.three_copy_substitution_models.join(",") === "proper,reflected"
-  && candidate.screening.three_copy_substitution_certified_negatives === 2
+  && candidate.screening.three_copy_substitution_reports[0]
+    === "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz"
   && candidate.screening.four_copy_substitution_exact_scales.join(",") === "2"
   && candidate.screening.four_copy_substitution_models.join(",") === "proper,reflected"
   && candidate.screening.four_copy_substitution_certified_negatives === 2
@@ -1716,6 +1716,22 @@ assert.ok(palindromicUnresolved.every(candidate =>
   && candidate.screening.radius_two_stopped_by === "round_limit"
   && candidate.screening.corona_root_patch_copies > 1
 ));
+const palindromic04636 = palindromicUnresolved.find(candidate =>
+  candidate.id === "a2sp_9_04636"
+);
+assert.equal(palindromic04636.screening.three_copy_substitution_exact_scales.join(","), "2,3");
+assert.equal(palindromic04636.screening.three_copy_substitution_certified_negatives, 4);
+assert.equal(palindromic04636.screening.three_copy_substitution_parents_exhausted, 1044);
+assert.deepEqual(palindromic04636.screening.three_copy_substitution_reports, [
+  "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz",
+  "data/a2-sliced-size9-palindromic-three-copy-substitution-scale3-04636.ndjson.gz"
+]);
+assert.ok(palindromicUnresolved.filter(candidate => candidate.id !== "a2sp_9_04636")
+  .every(candidate =>
+    candidate.screening.three_copy_substitution_exact_scales.join(",") === "2"
+    && candidate.screening.three_copy_substitution_certified_negatives === 2
+    && candidate.screening.three_copy_substitution_reports.length === 1
+  ));
 assert.deepEqual(
   palindromicUnresolved.map(candidate => [
     candidate.screening.periodic_exact_through,
@@ -1727,8 +1743,21 @@ assert.deepEqual(
   [[10, 85, 0, 403, true], [10, 85, 0, 403, true], [8, 70, 15, 316, false]]
 );
 assert.deepEqual(palindromicUnresolved.map(candidate =>
-  candidate.screening.five_copy_substitution_parents_exhausted), [17707, 68758, 1999910]);
-assert.ok(palindromicUnresolved.every(candidate =>
+  candidate.screening.five_copy_substitution_parents_exhausted), [949344, 68758, 1999910]);
+assert.equal(palindromic04636.screening.five_copy_substitution_models.join(","),
+  "proper,reflected");
+assert.equal(palindromic04636.screening.five_copy_substitution_certified_negatives, 2);
+assert.deepEqual(palindromic04636.screening.five_copy_substitution_reports, [
+  "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-proper-04636.ndjson.gz",
+  "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-reflected-04636.ndjson.gz"
+]);
+assert.deepEqual(palindromic04636.screening.five_copy_substitution_summary_reports, [
+  "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-reflected-04636-summary.json"
+]);
+assert.deepEqual(palindromic04636.screening.five_copy_substitution_geometric_replay_reports, [
+  "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-reflected-04636-geometric-replay.json"
+]);
+assert.ok(palindromicUnresolved.slice(1).every(candidate =>
   candidate.screening.five_copy_substitution_exact_scales.join(",") === "2"
   && candidate.screening.five_copy_substitution_models.join(",") === "proper"
   && candidate.screening.five_copy_substitution_certified_negatives === 1));
