@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Geometrically Constrained Tree Search I — GCTS</title>
-  <link rel="stylesheet" href="style.css?v=20260831-marking-radios">
+  <link rel="stylesheet" href="style.css?v=20260831-toolbar-layout">
   <script>
     window.MathJax = {
       tex: {
@@ -24,7 +24,7 @@
       <p class="eyebrow">Geometrically Constrained Tree Search (GCTS)</p>
       <p><a href="./">← Back to home</a></p>
       <h1>Geometrically Constrained Tree Search I — Learning matching rules in tiling</h1>
-      <p class="article-byline">By Yao Liu</p>
+      <p class="article-byline">Written by Yao Liu; visuals/interactives implemented by GPT/Codex</p>
       <p class="article-source"><em>Originally published on <a href="https://observablehq.com/@liuyao12/tree-search-with-geometric-constraints">Observable</a>.</em></p>
     </header>
 
@@ -32,8 +32,6 @@
       <section class="article-content">
         <aside class="margin-note">GCTS is a wordplay on MCTS, or Monte Carlo Tree Search. The analogy stops there, though.</aside>
         <p>We describe a general method, <strong>Geometrically Constrained Tree Search (GCTS)</strong>, to solve certain combinatorial problems of tree search with "geometric constraints", in some respect similar to methods in <strong>geometric deep learning</strong>, specifically <em>equivariant</em> neural networks. For illustration we shall focus on the tiling problem: given a set of tiles (in 2D or 3D), with or without local matching rules, determine if and how they tile the plane or space, or a subset with prescribed boundary. When working, it shall compensate for a rudimentary (greedy and slow, no heuristics) tree search algorithm, and may provide an <em>interpretable</em> and <em>provably correct</em> algorithm. It shall become clear what is meant by all this.</p>
-        <p data-demo-stage="tile">We shall further restrict to tilings that can be placed on a lattice, i.e., all the vertices shall be on a lattice. In fact, this study was partly inspired by the discovery of the hat and the turtle (<a href="https://cs.uwaterloo.ca/~csk/hat/">Smith et al, 2023</a>) which, aside from being a solution to the "ein stein" problem that was the holy grail for much of tiling theory, actually live on the \(A_2\) lattice. This goes to show that, despite their rather rigid nature, lattice tilings are rich enough to be a furtile playground for combinatorial and discrete geometry, and as a portal to logic and computation via Wang tiles. Moreover, it appears that many known <a href="./apps/3d-lattice-tiler/">space-fillers</a> are lattice tiles on the standard integer lattice in \(\mathbb{R}^3\).</p>
-        <h2>Tiles and tilings</h2>
         <aside class="floating-demo" aria-label="Sticky turtle tiling demo">
                   <figure class="interactive-card" id="turtle-tiling-card">
                     <div class="interactive-toolbar" aria-label="Turtle tiling controls">
@@ -41,6 +39,10 @@
                         <button type="button" id="turtle-start">Start tiling</button>
                         <button type="button" id="turtle-markings" aria-pressed="false">Show marking</button>
                         <button type="button" id="turtle-reset">Reset</button>
+                        <span class="toolbar-primary-toggles">
+                          <label class="toolbar-toggle"><input type="checkbox" id="turtle-sublattice"> sublattice</label>
+                          <label class="toolbar-toggle"><input type="checkbox" id="turtle-lattice" checked=""> show grid</label>
+                        </span>
                         <span class="demo-drag-handle" id="turtle-window-drag" role="button" tabindex="0" aria-label="Drag turtle demo window">
         <svg aria-hidden="true" viewBox="0 0 24 24">
         <path d="M12 3v18M12 3 8.5 6.5M12 3l3.5 3.5M12 21l-3.5-3.5M12 21l3.5-3.5M3 12h18M3 12l3.5-3.5M3 12l3.5 3.5M21 12l-3.5-3.5M21 12l-3.5 3.5">
@@ -55,9 +57,6 @@
         rank <label><input type="radio" name="turtle-marking-rank" value="1"> 1</label><label><input type="radio" name="turtle-marking-rank" value="3" checked=""> 3</label></span>
                         <label class="toolbar-toggle mark-extension-control" id="turtle-mark-extension-control" hidden="">extent <input type="number" id="turtle-mark-extension" min="0" max="9" step="1" value="1" inputmode="numeric" aria-label="Marking extent in lattice steps">
         </label>
-                        <label class="toolbar-toggle"><input type="checkbox" id="turtle-sublattice"> sublattice</label>
-                        <label class="toolbar-toggle toolbar-toggle-right">
-        <input type="checkbox" id="turtle-lattice" checked=""> show grid</label>
                       </div>
                     </div>
                     <canvas id="turtle-tiling" width="960" height="520" aria-label="Interactive Turtle tiling canvas. Start a rudimentary frontier tiling, drag to pan, and use the mouse wheel or trackpad to zoom.">
@@ -69,6 +68,8 @@
         </span>
                   </figure>
                 </aside>
+        <p data-demo-stage="tile">We shall further restrict to tilings that can be placed on a lattice, i.e., all the vertices shall be on a lattice. In fact, this study was partly inspired by the discovery of the hat and the turtle (<a href="https://cs.uwaterloo.ca/~csk/hat/">Smith et al, 2023</a>) which, aside from being a solution to the "ein stein" problem that was the holy grail for much of tiling theory, actually live on the \(A_2\) lattice. This goes to show that, despite their rather rigid nature, lattice tilings are rich enough to be a furtile playground for combinatorial and discrete geometry, and as a portal to logic and computation via Wang tiles. Moreover, it appears that many known <a href="./apps/3d-lattice-tiler/">space-fillers</a> are lattice tiles on the standard integer lattice in \(\mathbb{R}^3\).</p>
+        <h2>Tiles and tilings</h2>
         <p>Let's fix the (standard) \(\mathbb{Z}^3\) lattice in the Euclidean 3-space. By a <strong>lattice tile</strong> (or <strong>tile</strong> for short) we shall mean a function</p>
         <div class="math-display">\[t: \mathbb{Z}^3 \to \mathbb{R}\]</div>
         <p>that is <em>finitely</em> supported, taking values between 0 and 1, inclusive. The interpretation of the value \(t({\bf x})\) at a point \({\bf x} \in \mathbb{Z}^3\) shall be the "solid angle" at \({\bf x}\), or the proportion of the \(\epsilon\)-neighborhood of \({\bf x}\) that is supposed to be "inside the tile". (We leave aside the question if or when a polyhedral tile <em>in the usual sense</em>, with all its vertices on the lattice, has a <em>faithful</em> realization as a lattice tile per our definition.)</p>
