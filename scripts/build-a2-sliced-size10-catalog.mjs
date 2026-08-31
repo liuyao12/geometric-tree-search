@@ -22,6 +22,9 @@ const directSubstitutions = await readGzipNdjson(
 const twoCopySubstitutions = await readGzipNdjson(
   "data/a2-sliced-size10-two-copy-substitution-scale2to3.ndjson.gz"
 );
+const threeCopySubstitutions = await readGzipNdjson(
+  "data/a2-sliced-size10-three-copy-substitution-scale2-leaders.ndjson.gz"
+);
 const sixCopyById = new Map(sixCopyRows.map(record => [record.id, record]));
 const coronaById = new Map(coronaRows.map(record => [record.id, record]));
 const directSubstitutionById = Map.groupBy
@@ -38,6 +41,12 @@ const twoCopySubstitutionById = twoCopySubstitutions.reduce((groups, record) => 
   groups.set(record.id, rows);
   return groups;
 }, new Map());
+const threeCopySubstitutionById = threeCopySubstitutions.reduce((groups, record) => {
+  const rows = groups.get(record.id) ?? [];
+  rows.push(record);
+  groups.set(record.id, rows);
+  return groups;
+}, new Map());
 const selectedIds = ["a2sa_10_36141", "a2sa_10_35323", "a2sa_10_36194"];
 
 const candidates = selectedIds.map((id, index) => {
@@ -45,6 +54,7 @@ const candidates = selectedIds.map((id, index) => {
   const corona = coronaById.get(id);
   const direct = directSubstitutionById.get(id) ?? [];
   const twoCopy = twoCopySubstitutionById.get(id) ?? [];
+  const threeCopy = threeCopySubstitutionById.get(id) ?? [];
   if (!record || record.classification !== "unresolved"
       || record.periodic_z3.hnf_range_exhausted !== true
       || record.periodic_z3.solver_unknown !== 0
@@ -65,6 +75,11 @@ const candidates = selectedIds.map((id, index) => {
     !result.classification.startsWith("no_two_copy_metatile_scalar")
     || result.two_copy_alcove_metatile_screen.certified !== true)) {
     throw new Error(`Missing scale-2-and-3 two-copy substitution exclusions for ${id}`);
+  }
+  if (threeCopy.length !== 2 || threeCopy.some(result =>
+    !result.classification.startsWith("no_three_copy_metatile_scalar")
+    || result.three_copy_alcove_metatile_screen.certified !== true)) {
+    throw new Error(`Missing scale-2 three-copy substitution exclusions for ${id}`);
   }
   const geometry = makeA2SlicedAlcoveUnion(record.alcoves);
   return {
@@ -107,6 +122,12 @@ const candidates = selectedIds.map((id, index) => {
       two_copy_substitution_parents_exhausted: twoCopy.reduce((sum, result) =>
         sum + result.two_copy_alcove_metatile_screen.parents_completed, 0),
       two_copy_substitution_report: "data/a2-sliced-size10-two-copy-substitution-scale2to3.ndjson.gz",
+      three_copy_substitution_exact_scales: [2],
+      three_copy_substitution_models: ["proper", "reflected"],
+      three_copy_substitution_certified_negatives: threeCopy.length,
+      three_copy_substitution_parents_exhausted: threeCopy.reduce((sum, result) =>
+        sum + result.three_copy_alcove_metatile_screen.parents_completed, 0),
+      three_copy_substitution_report: "data/a2-sliced-size10-three-copy-substitution-scale2-leaders.ndjson.gz",
       corona_root_patch_copies: corona.corona_z3.replay.patch_copies,
       corona_search_nodes: corona.corona_z3.exact_gcts.nodes,
       corona_report: "data/a2-sliced-size10-focused-corona1-bounded.ndjson.gz",

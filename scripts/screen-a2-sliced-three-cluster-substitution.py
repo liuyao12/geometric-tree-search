@@ -250,11 +250,14 @@ def main():
     parser.add_argument("--parent-start", type=int, default=0)
     parser.add_argument("--parent-stop", type=int, default=0)
     parser.add_argument("--defer-exact", action="store_true")
+    parser.add_argument("--only-unresolved", action="store_true")
     parser.add_argument("--offset", type=int, default=0)
     parser.add_argument("--limit", type=int, default=0)
     args = parser.parse_args()
-    records = [json.loads(line) for line in Path(args.input).read_text().splitlines()
-               if line.strip()]
+    records = TWO.read_ndjson(Path(args.input))
+    if args.only_unresolved:
+        records = [record for record in records
+                   if record.get("classification") == "unresolved"]
     records = records[max(0, args.offset):]
     if args.limit > 0:
         records = records[:args.limit]

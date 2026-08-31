@@ -262,6 +262,11 @@ Complete connected two-copy metatile screens at scalar scales 2 and 3 then
 exclude all 32 candidate/scale/model cases for those eight recovered classes,
 with every parent ending in a replayed local obstruction or exact UNSAT result.
 Connected alphabets with three or more copies remain open.
+At scalar scale 2 the complete connected three-copy family is now excluded in
+both symmetry models for the same eight recovered classes. Every one of the
+12,000-plus parent types on the harder reflected instances carries a replayed
+atomic or exact obstruction. Other scales and clusters of four or more remain
+open.
 The original stratum's exact two-, four-, and six-copy quotient screens reduce
 it to 356 reflection-class candidates.
 The next census level is also complete and removes the profile heuristic
@@ -281,6 +286,10 @@ metatile alphabets and non-scalar or non-cellular substitutions remain open.
 The complete connected two-copy family is also excluded at scalar scales 2
 and 3 in both symmetry models for all 13 survivors: 52 certified
 candidate/scale/model negatives. Three-copy and larger alphabets remain open.
+For the three displayed size-ten leaders, the complete connected three-copy
+family at scalar scale 2 is also excluded in both symmetry models. This
+exhausts 698–5,697 parent types per leader; three-copy scales beyond 2 and
+clusters of four or more remain open.
 Among the first eight priority classes, a complete determinant-12 eight-copy
 screen finds five replay-verified periodic quotients and exhausts all 455 HNF
 quotients for the remaining three, with no solver unknowns. Those three are

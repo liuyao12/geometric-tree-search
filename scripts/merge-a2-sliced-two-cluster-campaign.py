@@ -15,15 +15,16 @@ def read_ndjson(path: Path) -> list[dict]:
         return [json.loads(line) for line in stream if line.strip()]
 
 
-def validate(record: dict) -> tuple[str, int, bool]:
-    detail = record["two_copy_alcove_metatile_screen"]
+def validate(record: dict, cluster_copies: int = 2) -> tuple[str, int, bool]:
+    word = {2: "two", 3: "three"}[cluster_copies]
+    detail = record[f"{word}_copy_alcove_metatile_screen"]
     key = record["id"], detail["scale"], bool(detail["include_reflections"])
     if detail.get("parents_completed") != detail.get("symmetry_distinct_metatiles"):
         raise RuntimeError(f"incomplete parent enumeration {key}")
-    if record["classification"].startswith("no_two_copy_metatile_scalar"):
+    if record["classification"].startswith(f"no_{word}_copy_metatile_scalar"):
         if detail.get("certified") is not True or detail.get("closed_alphabet") is not None:
             raise RuntimeError(f"uncertified negative {key}")
-    elif record["classification"] == "two_copy_metatile_substitution_system":
+    elif record["classification"] == f"{word}_copy_metatile_substitution_system":
         if detail.get("certified") is not True or not detail.get("closed_alphabet"):
             raise RuntimeError(f"uncertified positive {key}")
     else:
@@ -31,7 +32,9 @@ def validate(record: dict) -> tuple[str, int, bool]:
     for parent in detail["parent_results"]:
         classification = parent["classification"]
         replay = (
-            parent.get("local_obstruction_replay")
+            parent.get("atomic_local_obstruction_replay")
+            if classification == "atomic_local_obstruction"
+            else parent.get("local_obstruction_replay")
             if classification == "local_obstruction"
             else parent.get("exact_unsat_replay")
             if classification == "exact_unsat"
@@ -49,14 +52,15 @@ def main() -> None:
     parser.add_argument("inputs", nargs="+")
     parser.add_argument("--output", required=True)
     parser.add_argument("--expected-results", type=int, default=0)
+    parser.add_argument("--cluster-copies", type=int, choices=(2, 3), default=2)
     args = parser.parse_args()
     records = [record for path in args.inputs for record in read_ndjson(Path(path))]
     if args.expected_results and len(records) != args.expected_results:
         raise RuntimeError(f"expected {args.expected_results} rows, found {len(records)}")
-    keys = [validate(record) for record in records]
+    keys = [validate(record, args.cluster_copies) for record in records]
     if len(set(keys)) != len(keys):
         raise RuntimeError("duplicate candidate/scale/model receipt")
-    records.sort(key=lambda record: validate(record))
+    records.sort(key=lambda record: validate(record, args.cluster_copies))
     output = Path(args.output)
     opener = gzip.open if output.suffix == ".gz" else open
     with opener(output, "wt", encoding="utf-8") as stream:
@@ -66,7 +70,11 @@ def main() -> None:
         "results": len(records),
         "candidates": len({record["id"] for record in records}),
         "positive_systems": sum(
-            record["classification"] == "two_copy_metatile_substitution_system"
+            record["classification"] == (
+                "two_copy_metatile_substitution_system"
+                if args.cluster_copies == 2
+                else "three_copy_metatile_substitution_system"
+            )
             for record in records
         ),
         "output": str(output),

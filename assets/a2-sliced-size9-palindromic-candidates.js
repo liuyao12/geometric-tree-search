@@ -183,6 +183,16 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
       "two_copy_substitution_certified_negatives": 4,
       "two_copy_substitution_parents_exhausted": 46,
       "two_copy_substitution_report": "data/a2-sliced-size9-palindromic-two-copy-substitution-scale2to3.ndjson.gz",
+      "three_copy_substitution_exact_scales": [
+        2
+      ],
+      "three_copy_substitution_models": [
+        "proper",
+        "reflected"
+      ],
+      "three_copy_substitution_certified_negatives": 2,
+      "three_copy_substitution_parents_exhausted": 522,
+      "three_copy_substitution_report": "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz",
       "corona_root_patch_copies": 42,
       "corona_solver": "z3",
       "corona_report": "data/a2-sliced-size9-palindromic-corona-z3-04636.ndjson.gz",
@@ -700,6 +710,16 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
       "two_copy_substitution_certified_negatives": 4,
       "two_copy_substitution_parents_exhausted": 46,
       "two_copy_substitution_report": "data/a2-sliced-size9-palindromic-two-copy-substitution-scale2to3.ndjson.gz",
+      "three_copy_substitution_exact_scales": [
+        2
+      ],
+      "three_copy_substitution_models": [
+        "proper",
+        "reflected"
+      ],
+      "three_copy_substitution_certified_negatives": 2,
+      "three_copy_substitution_parents_exhausted": 606,
+      "three_copy_substitution_report": "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz",
       "corona_root_patch_copies": 28,
       "corona_solver": "exact_gcts",
       "corona_report": "data/a2-sliced-size9-palindromic-focused-corona1-bounded.ndjson.gz",
@@ -1107,6 +1127,16 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
       "two_copy_substitution_certified_negatives": 4,
       "two_copy_substitution_parents_exhausted": 174,
       "two_copy_substitution_report": "data/a2-sliced-size9-palindromic-two-copy-substitution-scale2to3.ndjson.gz",
+      "three_copy_substitution_exact_scales": [
+        2
+      ],
+      "three_copy_substitution_models": [
+        "proper",
+        "reflected"
+      ],
+      "three_copy_substitution_certified_negatives": 2,
+      "three_copy_substitution_parents_exhausted": 4518,
+      "three_copy_substitution_report": "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz",
       "corona_root_patch_copies": 52,
       "corona_solver": "z3",
       "corona_report": "data/a2-sliced-size9-palindromic-corona-z3-04468.ndjson.gz",
