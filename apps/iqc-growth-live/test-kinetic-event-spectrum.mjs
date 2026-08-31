@@ -10,7 +10,7 @@ const spectrum = buildKineticEventSpectrum({
       uncertaintyElectronVolt: .02, attemptFrequencyPerSecond: 1e13,
       attemptFrequencyUncertaintyLog10: .1, log10RatePerSecond: 9,
       log10RateLowerPerSecond: 8.5, log10RateUpperPerSecond: 9.5,
-      probabilityWithinFrozenCatalog: .6 },
+      probabilityWithinFrozenCatalog: .5 },
     { candidateId: "detach-b", eventDirection: "detach", barrierElectronVolt: .5,
       uncertaintyElectronVolt: .03, attemptFrequencyPerSecond: 8e12,
       attemptFrequencyUncertaintyLog10: .15, log10RatePerSecond: 8.2,
@@ -26,15 +26,21 @@ const spectrum = buildKineticEventSpectrum({
       attemptFrequencyUncertaintyLog10: .1, log10RatePerSecond: 5,
       log10RateLowerPerSecond: 4.6, log10RateUpperPerSecond: 5.4,
       probabilityWithinFrozenCatalog: .1 },
+    { candidateId: "exchange-e", eventDirection: "exchange", barrierElectronVolt: .7,
+      uncertaintyElectronVolt: .025, attemptFrequencyPerSecond: 3e12,
+      attemptFrequencyUncertaintyLog10: .1, log10RatePerSecond: 7,
+      log10RateLowerPerSecond: 6.5, log10RateUpperPerSecond: 7.5,
+      probabilityWithinFrozenCatalog: .1 },
   ],
 });
 
-assert.equal(spectrum.candidateCount, 4);
+assert.equal(spectrum.candidateCount, 5);
 assert.equal(spectrum.selectedRank, 2);
 assert.equal(spectrum.selectedEventDirection, "detach");
-assert.ok(Math.abs(spectrum.probabilityMassByDirection.attach - .7) < 1e-12);
+assert.ok(Math.abs(spectrum.probabilityMassByDirection.attach - .6) < 1e-12);
 assert.ok(Math.abs(spectrum.probabilityMassByDirection.detach - .2) < 1e-12);
 assert.ok(Math.abs(spectrum.probabilityMassByDirection.hop - .1) < 1e-12);
+assert.ok(Math.abs(spectrum.probabilityMassByDirection.exchange - .1) < 1e-12);
 assert.equal(spectrum.uncertaintyCompetitiveCandidateCount, 2);
 assert.equal(spectrum.fastestCandidateSeparatedByUncertainty, false);
 assert.equal(spectrum.selectedInsideFastestUncertaintySet, true);

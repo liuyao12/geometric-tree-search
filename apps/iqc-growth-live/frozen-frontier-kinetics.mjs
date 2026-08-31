@@ -49,7 +49,7 @@ function normalizedKineticRecord(record, temperatureKelvin) {
   const barrierLog10Uncertainty = uncertaintyElectronVolt * inverseThermalEnergy / Math.LN10;
   return {
     candidateId: record.candidateId,
-    eventDirection: ["attach", "detach", "hop"].includes(record.eventDirection)
+    eventDirection: ["attach", "detach", "hop", "exchange"].includes(record.eventDirection)
       ? record.eventDirection : "attach",
     candidateDigestSha256: record.candidateDigestSha256 || null,
     barrierElectronVolt,
@@ -129,6 +129,7 @@ export function buildFrozenKineticCompetition(records, {
     attachmentEventCount: weighted.filter((record) => record.eventDirection === "attach").length,
     detachmentEventCount: weighted.filter((record) => record.eventDirection === "detach").length,
     surfaceHopEventCount: weighted.filter((record) => record.eventDirection === "hop").length,
+    speciesExchangeEventCount: weighted.filter((record) => record.eventDirection === "exchange").length,
     twoWayEventGeometryPresent: weighted.some((record) => record.eventDirection === "attach")
       && weighted.some((record) => record.eventDirection === "detach"),
     detailedBalanceCertified: false,

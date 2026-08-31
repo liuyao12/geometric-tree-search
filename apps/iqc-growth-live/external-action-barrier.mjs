@@ -1,5 +1,5 @@
-export const ACTION_BARRIER_REQUEST_SCHEMA = "gcts-frozen-frontier-action-barrier-request-v2";
-export const ACTION_BARRIER_RESPONSE_SCHEMA = "gcts-frozen-frontier-action-barrier-response-v2";
+export const ACTION_BARRIER_REQUEST_SCHEMA = "gcts-frozen-frontier-action-barrier-request-v3";
+export const ACTION_BARRIER_RESPONSE_SCHEMA = "gcts-frozen-frontier-action-barrier-response-v3";
 
 const finite = (value) => Number.isFinite(Number(value));
 
@@ -93,8 +93,8 @@ function normalizeCandidate(candidate, index) {
   const candidateId = requiredText(candidate?.candidateId, `candidate ${index + 1} id`);
   const eventDirection = candidate.eventDirection == null ? "attach"
     : requiredText(candidate.eventDirection, `candidate ${candidateId} event direction`);
-  if (!["attach", "detach", "hop"].includes(eventDirection)) {
-    throw new Error(`candidate ${candidateId} eventDirection must be attach, detach, or hop`);
+  if (!["attach", "detach", "hop", "exchange"].includes(eventDirection)) {
+    throw new Error(`candidate ${candidateId} eventDirection must be attach, detach, hop, or exchange`);
   }
   const emittedSites = Array.isArray(candidate.emittedSites)
     ? candidate.emittedSites.map((site, siteIndex) => normalizedSite(site,
@@ -107,11 +107,15 @@ function normalizeCandidate(candidate, index) {
       `candidate ${index + 1} action site ${siteIndex + 1}`)) : [];
   const hopConservesSpecies = eventDirection !== "hop"
     || sameSpeciesCounts(emittedSites, removedSites);
+  const exchangeChangesSpecies = eventDirection !== "exchange"
+    || !sameSpeciesCounts(emittedSites, removedSites);
   if (!actionSites.length || (eventDirection === "attach" && (!emittedSites.length || removedSites.length))
       || (eventDirection === "detach" && (!removedSites.length || emittedSites.length))
       || (eventDirection === "hop" && (!removedSites.length || !emittedSites.length
-        || !hopConservesSpecies))) {
-    throw new Error(`candidate ${candidateId} needs exact nonempty action geometry and ${eventDirection === "hop" ? "equal colored emitted/removed populations" : `one nonempty ${eventDirection === "attach" ? "emittedSites" : "removedSites"} set with the opposite set empty`}`);
+        || !hopConservesSpecies))
+      || (eventDirection === "exchange" && (!removedSites.length || !emittedSites.length
+        || removedSites.length !== emittedSites.length || !exchangeChangesSpecies))) {
+    throw new Error(`candidate ${candidateId} needs exact nonempty action geometry and ${eventDirection === "hop" ? "equal colored emitted/removed populations" : eventDirection === "exchange" ? "equal-count but differently colored emitted/removed populations" : `one nonempty ${eventDirection === "attach" ? "emittedSites" : "removedSites"} set with the opposite set empty`}`);
   }
   return {
     candidateId,
@@ -132,7 +136,9 @@ function normalizeCandidate(candidate, index) {
       ? "initial configuration union emittedSites; exact same-species coincidences are shared sites"
       : eventDirection === "detach"
         ? "initial configuration minus removedSites; retained shared support remains unchanged"
-        : "initial configuration minus removedSites then union emittedSites; atom count and colored population remain unchanged",
+        : eventDirection === "hop"
+          ? "initial configuration minus removedSites then union emittedSites; atom count and colored population remain unchanged"
+          : "initial configuration minus removedSites then union emittedSites; atom count remains unchanged and the exact colored population delta is exchanged with the declared reservoir",
   };
 }
 
@@ -157,7 +163,7 @@ async function bindCandidateStateGeometry(candidate, initialConfiguration) {
   const counts = new Map();
   initialSites.forEach((site) => counts.set(stateSiteKey(site), (counts.get(stateSiteKey(site)) || 0) + 1));
   let finalSites = [...initialSites];
-  if (["detach", "hop"].includes(candidate.eventDirection)) {
+  if (["detach", "hop", "exchange"].includes(candidate.eventDirection)) {
     candidate.removedSites.forEach((site) => {
       const key = stateSiteKey(site);
       const count = counts.get(key) || 0;
@@ -167,7 +173,7 @@ async function bindCandidateStateGeometry(candidate, initialConfiguration) {
       finalSites.splice(index, 1);
     });
   }
-  if (["attach", "hop"].includes(candidate.eventDirection)) {
+  if (["attach", "hop", "exchange"].includes(candidate.eventDirection)) {
     candidate.emittedSites.forEach((site) => {
       const key = stateSiteKey(site);
       if ((counts.get(key) || 0) === 0) {
@@ -247,7 +253,7 @@ export async function buildFrozenActionBarrierRequest(input) {
       hardAdmissionFrozenBeforeRequest: true,
     },
     calculation: {
-      quantity: "candidate-resolved attachment, exact leaf-detachment, and/or mass-conserving surface-hop transition barriers on one frozen frontier",
+      quantity: "candidate-resolved attachment, exact leaf-detachment, mass-conserving surface-hop, and/or equal-count reservoir-mediated species-exchange transition barriers on one frozen frontier",
       suitableMethods: ["nudged elastic band", "dimer or saddle search", "validated enhanced-sampling path"],
       requiredOutputs: ["one converged record for every candidate ID", "the supplied exact initial and final geometry digests",
         "at least three energy images", "maximum residual force", "barrier uncertainty and method provenance"],
@@ -296,6 +302,8 @@ export async function buildFrozenActionBarrierRequest(input) {
       responseScope: "ranking this exact candidate batch only",
       reversibleGeometryDoesNotImplyDetailedBalance: true,
       massConservingHopDoesNotSupplyMigrationPathOrBarrier: true,
+      speciesExchangeRequiresExternalReservoirChemicalWork: true,
+      speciesExchangeDoesNotSupplyReactionPathOrBarrier: true,
       optionalThermodynamicEvidenceMustBeExternal: true,
       geometricScoresMayNotSupplyChemicalPotentialOrFreeEnergy: true,
       oneInversePairMayNotClaimGlobalDetailedBalance: true,
@@ -635,6 +643,7 @@ export function validateFrozenActionBarrierResponse(response, expected) {
     reversibleEventGeometryPresent: normalized.records.some((record) => record.eventDirection === "attach")
       && normalized.records.some((record) => record.eventDirection === "detach"),
     surfaceHopGeometryPresent: normalized.records.some((record) => record.eventDirection === "hop"),
+    speciesExchangeGeometryPresent: normalized.records.some((record) => record.eventDirection === "exchange"),
     thermodynamicReversibilityCertified: false,
     detailedBalanceCertified: false,
     finitePairLocalBalanceCertified: false,

@@ -1,5 +1,32 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 365 · exact local species-exchange events
+
+The Stage 4 frozen-event catalog can now include reservoir-mediated local
+species exchange alongside attachment, ownership-certified detachment, and
+mass-conserving surface hops. An exchange pairs one detachable leaf support
+with an independently hard-admitted destination inside the selected local
+reach. Removed and emitted supports must have the same nonzero atom count but
+a different colored population; destination overlap may not depend on an atom
+being removed. The catalog records the exact integer species delta and both
+colored endpoint geometries before any ranking or external calculation.
+
+Commit is atomic and fail-closed. The app rechecks source ownership,
+destination admission and feedstock, endpoint identity, `ΔN = 0`, the frozen
+species delta, and the final colored-geometry hash. Returned source atoms and
+consumed destination species update the explicit feedstock ledger. Exchange
+events appear as a violet mechanism family in the kinetic spectrum and can
+participate in the same method-bound maximum-rate or seeded finite-catalog KMC
+selection as the other frozen actions. Same-direction exchange records may
+form an inverse pair only when their exact state hashes and species transfers
+reverse.
+
+Geometry still supplies neither a saddle nor an attempt frequency. Those must
+come from the external response, while reservoir chemical work is used only
+when independent species chemical potentials are supplied. This feature does
+not infer transmutation, a reaction pathway, missing exchange mechanisms,
+equilibrium alloy chemistry, or a complete kinetic model.
+
 ## Build 364 · periodic pressure-and-strain relaxation
 
 The post-leap mechanics handoff can now preserve and relax a periodic cell

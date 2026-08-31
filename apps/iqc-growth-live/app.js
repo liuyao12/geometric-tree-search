@@ -88,20 +88,22 @@ import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntim
   from "./external-trajectory-geometry.mjs?v=20260830-346";
 import { actionBarrierSha256, buildFrozenActionBarrierRequest, frozenActionBarrierRequestReceipt,
   frozenActionStateGeometrySha256, validateFrozenActionBarrierResponse }
-  from "./external-action-barrier.mjs?v=20260831-364";
+  from "./external-action-barrier.mjs?v=20260831-365";
 import { buildFrozenKineticCompetition }
-  from "./frozen-frontier-kinetics.mjs?v=20260831-364";
+  from "./frozen-frontier-kinetics.mjs?v=20260831-365";
 import { buildKineticEventSpectrum }
-  from "./kinetic-event-spectrum.mjs?v=20260831-364";
+  from "./kinetic-event-spectrum.mjs?v=20260831-365";
 import { enumerateDetachableLeafPlacements }
   from "./reversible-frontier-events.mjs?v=20260831-347";
 import { enumerateMassConservingSurfaceHops }
-  from "./surface-hop-events.mjs?v=20260831-364";
+  from "./surface-hop-events.mjs?v=20260831-365";
+import { enumerateLocalSpeciesExchangeEvents }
+  from "./species-exchange-events.mjs?v=20260831-365";
 import { buildExternalStateRelaxationRequest, stateRelaxationSha256,
   validateExternalStateRelaxationResponse }
-  from "./external-state-relaxation.mjs?v=20260831-364";
+  from "./external-state-relaxation.mjs?v=20260831-365";
 import { appendCommittedTransition }
-  from "./reversible-transition-lineage.mjs?v=20260831-364";
+  from "./reversible-transition-lineage.mjs?v=20260831-365";
 import { buildFiniteTransitionNetwork }
   from "./finite-transition-network.mjs?v=20260831-352";
 import { auditCompetingObservedTransitionPaths }
@@ -115,19 +117,19 @@ import { evaluateWulffShapeRegularizer, matchedWulffRankingAudit }
   from "./wulff-shape-regularizer.mjs?v=20260831-354";
 import { buildAttachmentKineticsRequest, buildNormalizedKineticWulffGeometry,
   validateAttachmentKineticsResponse, evaluateKineticHabitScore, matchedKineticHabitRankingAudit }
-  from "./external-attachment-kinetics.mjs?v=20260831-364";
+  from "./external-attachment-kinetics.mjs?v=20260831-365";
 import { buildInterfaceFluxRequest, validateInterfaceFluxResponse, evaluateInterfaceFluxScore,
   matchedInterfaceFluxRankingAudit }
-  from "./external-interface-flux.mjs?v=20260831-364";
+  from "./external-interface-flux.mjs?v=20260831-365";
 import { periodicSiteNumberDensity, coupleInterfaceSupplyAndAttachment,
   syntheticGrowthRegimePreview }
-  from "./growth-regime-bridge.mjs?v=20260831-364";
+  from "./growth-regime-bridge.mjs?v=20260831-365";
 import { buildLeapfrogPhysicsCycle, couplingModeGate, LEAPFROG_COUPLING_MODES }
-  from "./leapfrog-physics-cycle.mjs?v=20260831-364";
+  from "./leapfrog-physics-cycle.mjs?v=20260831-365";
 import { buildCatalogConditionalChronology }
-  from "./catalog-conditional-chronology.mjs?v=20260831-364";
+  from "./catalog-conditional-chronology.mjs?v=20260831-365";
 import { buildCoupledPhysicsState, coupledStateGate }
-  from "./coupled-physics-state.mjs?v=20260831-364";
+  from "./coupled-physics-state.mjs?v=20260831-365";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -1763,6 +1765,8 @@ let reversibleDetachmentEventCount = 0;
 let reversibleDetachedAtomCount = 0;
 let surfaceHopEventCount = 0;
 let surfaceHopMovedAtomCount = 0;
+let speciesExchangeEventCount = 0;
+let speciesExchangeAtomCount = 0;
 let reversibleTransitionHistory = [];
 let latestMicroscopicInverseAudit = null;
 let latestFiniteTransitionNetworkAudit = buildFiniteTransitionNetwork([]);
@@ -3840,7 +3844,7 @@ async function downloadInterfacialEnergyRequest() {
   const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-364",
+  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-365",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256,
@@ -4084,7 +4088,7 @@ async function downloadAttachmentKineticsRequest() {
   const material = currentMaterial(); const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-364",
+  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-365",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256, intrinsicDimension, orientationBasisCartesian,
@@ -4603,7 +4607,7 @@ async function downloadSpatialInterfaceFluxRequest() {
   const interfaceGeometrySha256 = await receiptSha256(JSON.stringify({ structureSha256: configuration.structureSha256,
     confinement: confinementSelect?.value || "box", publicReach: growthDomainScale, atomCount: referenceAtoms.length }));
   const species = material.actualElements ? [...material.actualElements] : [...material.elements];
-  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-364",
+  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-365",
     scenarioId: scenarioSelect.value, materialName: material.name, species,
     structureSha256: configuration.structureSha256, interfaceGeometrySha256,
     interfaceConfiguration: configuration,
@@ -13882,7 +13886,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260831-364",
+      buildId: "20260831-365",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -16475,7 +16479,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260831-364" },
+    application: { name: "Materials Growth Lab", buildId: "20260831-365" },
     postLeapExternalRelaxation: stateRelaxationReceipt(),
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
@@ -24717,6 +24721,8 @@ function catalogConditionalKineticClockSnapshot() {
     detachedAtomsReturnedToReservoir: reversibleDetachedAtomCount,
     committedSurfaceHopEvents: surfaceHopEventCount,
     surfaceHopMovedAtoms: surfaceHopMovedAtomCount,
+    committedSpeciesExchangeEvents: speciesExchangeEventCount,
+    speciesExchangeAtoms: speciesExchangeAtomCount,
     physicalScope: "finite enumerated catalog conditional",
     completeMechanismCatalogClaimed: false,
     detailedBalanceCertified: false, equilibriumEnsembleClaimed: false };
@@ -24834,7 +24840,7 @@ async function freezeExternalStateRelaxation() {
     throw new Error("variable-cell relaxation requires a fully periodic 3D state");
   }
   const request = await buildExternalStateRelaxationRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-364",
+    generatedAt: new Date().toISOString(), buildId: "20260831-365",
     materialName: currentMaterial().name, sites,
     cellAngstrom: policy.cellAngstrom, periodicBoundary: policy.periodicBoundary,
     boundary: currentGrowthDomainSnapshot(), sourceLeapReceiptSha256: null,
@@ -25330,8 +25336,9 @@ function actionBarrierCheckpointReceipt(checkpoint = externalActionBarrierCheckp
     attachmentEventCount: checkpoint.request.frontier.candidates.filter((candidate) => candidate.eventDirection === "attach").length,
     detachmentEventCount: checkpoint.request.frontier.candidates.filter((candidate) => candidate.eventDirection === "detach").length,
     surfaceHopEventCount: checkpoint.request.frontier.candidates.filter((candidate) => candidate.eventDirection === "hop").length,
+    speciesExchangeEventCount: checkpoint.request.frontier.candidates.filter((candidate) => candidate.eventDirection === "exchange").length,
     eventCatalogMode: checkpoint.eventCatalogMode || "forward-only",
-    surfaceHopReachNearestNeighbor: checkpoint.eventCatalogMode === "surface-hops"
+    surfaceHopReachNearestNeighbor: ["surface-hops", "local-events"].includes(checkpoint.eventCatalogMode)
       ? externalActionBarrierHopReachNearestNeighbor : null,
     surfaceHopCatalog: checkpoint.surfaceHopCatalog ? {
       consideredPairCount: checkpoint.surfaceHopCatalog.consideredPairCount,
@@ -25342,6 +25349,18 @@ function actionBarrierCheckpointReceipt(checkpoint = externalActionBarrierCheckp
       maximumCentroidDistanceAngstrom: checkpoint.surfaceHopCatalog.maximumCentroidDistanceAngstrom,
       atomCountConserved: true, speciesPopulationConserved: true,
       targetUsed: false, catalogCompleteBeyondFrozenPairs: false,
+    } : null,
+    speciesExchangeCatalog: checkpoint.speciesExchangeCatalog ? {
+      consideredPairCount: checkpoint.speciesExchangeCatalog.consideredPairCount,
+      admittedBeforeCap: checkpoint.speciesExchangeCatalog.admittedBeforeCap,
+      retainedEventCount: checkpoint.speciesExchangeEvents.length,
+      omittedByFiniteCap: checkpoint.speciesExchangeCatalog.omittedByFiniteCap,
+      maximumEvents: checkpoint.speciesExchangeCatalog.maximumEvents,
+      maximumCentroidDistanceAngstrom:
+        checkpoint.speciesExchangeCatalog.maximumCentroidDistanceAngstrom,
+      atomCountConserved: true, speciesPopulationMustChange: true,
+      exactReservoirSpeciesDeltaRequired: true, targetUsed: false,
+      catalogCompleteBeyondFrozenPairs: false,
     } : null,
     responseSha256: checkpoint.responseSha256 || null,
     couplingStateExpectation: checkpoint.requestReceipt.couplingStateExpectation || null,
@@ -25369,6 +25388,7 @@ function actionBarrierCheckpointReceipt(checkpoint = externalActionBarrierCheckp
       attachmentEventCount: kinetic.attachmentEventCount,
       detachmentEventCount: kinetic.detachmentEventCount,
       surfaceHopEventCount: kinetic.surfaceHopEventCount,
+      speciesExchangeEventCount: kinetic.speciesExchangeEventCount,
       twoWayEventGeometryPresent: kinetic.twoWayEventGeometryPresent,
       detailedBalanceCertified: false,
       selectedLog10RatePerSecond: kinetic.selectedLog10RatePerSecond,
@@ -25489,7 +25509,7 @@ function renderKineticEventSpectrum() {
     record.candidateId === selectedKineticSpectrumCandidateId) || spectrum.rankedRecords[0];
   kineticEventSpectrumBadge.textContent = competition.mode === "seeded-kmc"
     ? "seeded draw frozen" : "maximum rate frozen";
-  kineticEventSpectrumSummary.textContent = `${spectrum.candidateCount} events · effective ${spectrum.effectiveCompetingEventCount.toFixed(2)} · ${spectrum.rateSpanDecades.toFixed(2)} decades · ${(100 * spectrum.probabilityMassByDirection.attach).toFixed(1)}% attach / ${(100 * spectrum.probabilityMassByDirection.detach).toFixed(1)}% detach / ${(100 * spectrum.probabilityMassByDirection.hop).toFixed(1)}% hop`;
+  kineticEventSpectrumSummary.textContent = `${spectrum.candidateCount} events · effective ${spectrum.effectiveCompetingEventCount.toFixed(2)} · ${spectrum.rateSpanDecades.toFixed(2)} decades · ${(100 * spectrum.probabilityMassByDirection.attach).toFixed(1)}% attach / ${(100 * spectrum.probabilityMassByDirection.detach).toFixed(1)}% detach / ${(100 * spectrum.probabilityMassByDirection.hop).toFixed(1)}% hop / ${(100 * spectrum.probabilityMassByDirection.exchange).toFixed(1)}% exchange`;
   const rateMode = kineticEventSpectrumMode.value !== "probability";
   const left = 33; const right = 350; const top = 13; const bottom = 139;
   const x = (rank) => spectrum.candidateCount === 1 ? (left + right) / 2
@@ -25574,6 +25594,7 @@ function renderActionBarrierCheckpoint() {
   actionBarrierTemperatureSelect.value = String(externalActionBarrierTemperatureKelvin);
   const reversibleLeafCount = externalActionBarrierCatalogMode === "reversible-leaves"
     || externalActionBarrierCatalogMode === "surface-hops"
+    || externalActionBarrierCatalogMode === "local-events"
     ? reversibleLeafEventCatalog().admitted.length : 0;
   const available = pipelineStage === 4 && !knownWindowReplayActive() && !iceAnchorTrace
     && !iqcDisjointTrace && !currentMaterial().growthWithheld
@@ -25582,7 +25603,8 @@ function renderActionBarrierCheckpoint() {
   actionBarrierCatalogSelect.value = externalActionBarrierCatalogMode;
   actionBarrierCatalogSelect.disabled = Boolean(checkpoint) || growthFrontierWork.busy;
   actionBarrierHopReachSelect.value = String(externalActionBarrierHopReachNearestNeighbor);
-  actionBarrierHopReachSelect.disabled = externalActionBarrierCatalogMode !== "surface-hops"
+  actionBarrierHopReachSelect.disabled = !["surface-hops", "local-events"]
+    .includes(externalActionBarrierCatalogMode)
     || Boolean(checkpoint) || growthFrontierWork.busy;
   panel.classList.toggle("ready", Boolean(checkpoint));
   panel.classList.toggle("validated", Boolean(checkpoint?.validatedResponse));
@@ -25604,7 +25626,7 @@ function renderActionBarrierCheckpoint() {
   if (!checkpoint) {
     actionBarrierCheckpointBadge.textContent = available ? "ready to freeze" : "unavailable";
     actionBarrierCheckpointState.textContent = available
-      ? `Freeze the next target-free frontier before selection. The request contains the initial state, every hard-admitted attachment, and ${externalActionBarrierCatalogMode !== "forward-only" ? `${reversibleLeafCount} ownership-certified leaf detachment${reversibleLeafCount === 1 ? "" : "s"}` : "no reverse events"}${externalActionBarrierCatalogMode === "surface-hops" ? `; mass-conserving destinations within ${externalActionBarrierHopReachNearestNeighbor} dₙₙ will be paired after hard admission` : ""} in ångströms.${catalogConditionalKineticEventCount ? ` Current finite-catalog clock: ${kineticValueText(catalogConditionalKineticClockSeconds, " s")}.` : ""}`
+      ? `Freeze the next target-free frontier before selection. The request contains the initial state, every hard-admitted attachment, and ${externalActionBarrierCatalogMode !== "forward-only" ? `${reversibleLeafCount} ownership-certified leaf detachment${reversibleLeafCount === 1 ? "" : "s"}` : "no reverse events"}${["surface-hops", "local-events"].includes(externalActionBarrierCatalogMode) ? `; local endpoint pairs within ${externalActionBarrierHopReachNearestNeighbor} dₙₙ will be frozen after hard admission${externalActionBarrierCatalogMode === "local-events" ? ", including equal-count colored exchanges" : ""}` : ""} in ångströms.${catalogConditionalKineticEventCount ? ` Current finite-catalog clock: ${kineticValueText(catalogConditionalKineticClockSeconds, " s")}.` : ""}`
       : knownWindowReplayActive() ? "Action barriers are withheld during target-aware known-window replay. Continue to target-free growth first."
         : "Enter executable target-free material growth to freeze an action frontier.";
     actionBarrierSummary.replaceChildren(...(catalogConditionalKineticEventCount ? [
@@ -25630,7 +25652,7 @@ function renderActionBarrierCheckpoint() {
   const tiles = [
     ["frozen frontier", `${checkpoint.evaluated.length} candidates`],
     ["event catalog", `${checkpoint.request.frontier.candidateCount} actions`],
-    ["attach / detach / hop", `${checkpoint.request.frontier.candidates.filter((candidate) => candidate.eventDirection === "attach").length} / ${checkpoint.detachmentEvents.length} / ${checkpoint.surfaceHopEvents.length}`],
+    ["attach / detach / hop / exchange", `${checkpoint.request.frontier.candidates.filter((candidate) => candidate.eventDirection === "attach").length} / ${checkpoint.detachmentEvents.length} / ${checkpoint.surfaceHopEvents.length} / ${checkpoint.speciesExchangeEvents.length}`],
     ["candidate SHA", checkpoint.requestReceipt.candidateBatchSha256.slice(0, 12)],
     [audit ? "barrier range" : "execution effect", audit
       ? `${Math.min(...audit.records.map((record) => record.barrierElectronVolt)).toFixed(3)}–${Math.max(...audit.records.map((record) => record.barrierElectronVolt)).toFixed(3)} eV`
@@ -25726,17 +25748,51 @@ function surfaceHopEventCatalog(detachmentEvents, admissibleEntries) {
   })) };
 }
 
+function speciesExchangeEventCatalog(detachmentEvents, admissibleEntries) {
+  const sources = detachmentEvents.map((event) => ({
+    sourcePlacementId: event.placementId, clusterType: event.placement.type,
+    ruleId: event.placement.ruleId, removableAtomIds: event.audit.removableAtomIds,
+    removedSites: event.removedSites, actionSites: event.actionSites,
+    admitted: event.audit.admitted, targetUsed: false,
+  }));
+  const destinations = admissibleEntries.map((entry) => ({
+    destinationCandidateId: entry.candidate.key,
+    parentPlacementId: entry.candidate.parentId, clusterType: entry.candidate.type,
+    ruleId: entry.candidate.rule.id,
+    mergedAtomIds: entry.evaluation.merged.map(({ atom }) => atom.id),
+    emittedSites: entry.evaluation.fresh.map(actionBarrierSitePayload),
+    actionSites: entry.evaluation.sites.map(actionBarrierSitePayload),
+    admitted: entry.evaluation.accepted, targetUsed: false,
+  }));
+  const catalog = enumerateLocalSpeciesExchangeEvents({ sources, destinations,
+    maximumCentroidDistanceAngstrom: externalActionBarrierHopReachNearestNeighbor
+      * referenceSpacingA, maximumEvents: 512 });
+  const sourceById = new Map(detachmentEvents.map((event) => [event.placementId, event]));
+  const destinationById = new Map(admissibleEntries.map((entry) =>
+    [entry.candidate.key, entry]));
+  return { ...catalog, admitted: catalog.admitted.map((event) => ({ ...event,
+    sourceEvent: sourceById.get(event.sourcePlacementId),
+    destinationEntry: destinationById.get(event.destinationCandidateId),
+  })) };
+}
+
 async function buildExternalActionBarrierCheckpoint(evaluated, before, generation) {
   const admissibleEntries = evaluated.filter((entry) => entry.evaluation.accepted);
   const reversibleLeafCatalog = externalActionBarrierCatalogMode !== "forward-only"
     ? reversibleLeafEventCatalog() : { admitted: [], rejected: [], targetUsed: false };
   const detachmentEvents = reversibleLeafCatalog.admitted.map(detachedPlacementEventDescriptor);
-  const surfaceHopCatalog = externalActionBarrierCatalogMode === "surface-hops"
+  const surfaceHopCatalog = ["surface-hops", "local-events"]
+    .includes(externalActionBarrierCatalogMode)
     ? surfaceHopEventCatalog(detachmentEvents, admissibleEntries)
     : { admitted: [], rejected: [], omittedByFiniteCap: 0, targetUsed: false };
   const surfaceHopEvents = surfaceHopCatalog.admitted;
-  if (!admissibleEntries.length && !detachmentEvents.length && !surfaceHopEvents.length) {
-    throw new Error("the frozen frontier has no hard-admitted attachment, exact leaf detachment, or local surface hop to calculate");
+  const speciesExchangeCatalog = externalActionBarrierCatalogMode === "local-events"
+    ? speciesExchangeEventCatalog(detachmentEvents, admissibleEntries)
+    : { admitted: [], rejected: [], omittedByFiniteCap: 0, targetUsed: false };
+  const speciesExchangeEvents = speciesExchangeCatalog.admitted;
+  if (!admissibleEntries.length && !detachmentEvents.length && !surfaceHopEvents.length
+      && !speciesExchangeEvents.length) {
+    throw new Error("the frozen frontier has no hard-admitted attachment, exact leaf detachment, local surface hop, or local species exchange to calculate");
   }
   const initialConfiguration = await externalPhysicsConfigurationPayload(atoms, "frozen frontier initial state");
   const attachmentCandidates = await Promise.all(admissibleEntries.map(async (entry) => {
@@ -25773,10 +25829,22 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
     emittedSites: event.emittedSites, removedSites: event.removedSites,
     actionSites: event.actionSites,
   })));
-  const candidates = [...attachmentCandidates, ...detachmentCandidates, ...surfaceHopCandidates];
+  const speciesExchangeCandidates = await Promise.all(speciesExchangeEvents.map(async (event) => ({
+    candidateId: event.candidateId,
+    candidateDigestSha256: await actionBarrierSha256({ candidateId: event.candidateId,
+      eventDirection: "exchange", emittedSites: event.emittedSites,
+      removedSites: event.removedSites, actionSites: event.actionSites }),
+    actionLabel: `species exchange C${Number(event.sourceClusterType) + 1}→C${Number(event.destinationClusterType) + 1} · ${Object.entries(event.speciesDelta).map(([species, delta]) => `${species}${delta > 0 ? "+" : ""}${delta}`).join(" ")} · ${(event.exchangeDistanceAngstrom / Math.max(referenceSpacingA, 1e-12)).toFixed(2)} dₙₙ`,
+    parentType: event.sourceClusterType, childType: event.destinationClusterType,
+    ruleId: event.destinationRuleId, eventDirection: "exchange",
+    emittedSites: event.emittedSites, removedSites: event.removedSites,
+    actionSites: event.actionSites,
+  })));
+  const candidates = [...attachmentCandidates, ...detachmentCandidates, ...surfaceHopCandidates,
+    ...speciesExchangeCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-364",
+    generatedAt: new Date().toISOString(), buildId: "20260831-365",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -25786,7 +25854,8 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
   const requestReceipt = await frozenActionBarrierRequestReceipt(request);
   return { schema: 1, generation, controlsJson: JSON.stringify(currentGrowthProtocolSettings()),
     markingId: selectedMarking()?.id || null, before, evaluated, admissibleEntries,
-    detachmentEvents, surfaceHopEvents, surfaceHopCatalog, reversibleLeafCatalog,
+    detachmentEvents, surfaceHopEvents, surfaceHopCatalog,
+    speciesExchangeEvents, speciesExchangeCatalog, reversibleLeafCatalog,
     eventCatalogMode: externalActionBarrierCatalogMode,
     frontierDigest: frozenFrontierDigest(evaluated), request, requestReceipt,
     validatedResponse: null, responseSha256: null, consumed: false };
@@ -26041,6 +26110,32 @@ async function commutingFrontierBatch(frontierStructuralState = null) {
     stepButton.disabled = true; resetButton.disabled = true; updatePipelineButtons();
     refreshExternalActionBarrierScores();
     checkpoint.consumed = true;
+    const selectedSpeciesExchange = checkpoint.kineticCompetition
+      ? checkpoint.speciesExchangeEvents.find((event) =>
+        event.candidateId === checkpoint.kineticCompetition.selectedCandidateId) : null;
+    if (selectedSpeciesExchange) {
+      lastGrowthFrontierWorkAudit = {
+        schema: 1, evaluatedCandidates: checkpoint.request.frontier.candidateCount,
+        total: checkpoint.request.frontier.candidateCount, eventLoopYields: 0,
+        maximumSliceMilliseconds: 0, candidateSetFrozenBeforeEvaluation: true,
+        candidateSetTargetUsed: false, rankingTargetUsed: false,
+        externalActionBarrierCheckpointUsed: true,
+        externalActionBarrierRequestSha256: checkpoint.requestReceipt.requestSha256,
+        externalActionBarrierResponseSha256: checkpoint.responseSha256,
+        kineticCompetitionMode: checkpoint.kineticCompetition.mode,
+        kineticTemperatureKelvin: checkpoint.kineticCompetition.temperatureKelvin,
+        kineticSelectedCandidateId: checkpoint.kineticCompetition.selectedCandidateId,
+        kineticSerialOverride: true, selectedEventDirection: "exchange",
+        kineticCatalogCompleteBeyondFrozenFrontier: false,
+        physicalTimeInferred: checkpoint.kineticCompetition.mode === "seeded-kmc",
+        claimBoundary: "The exact equal-count colored exchange was selected by finite-catalog HTST competition. Its source ownership, independent destination, and endpoint species delta are certified; reservoir work and the mechanism catalog remain external and incomplete.",
+      };
+      return [{ candidate: { key: selectedSpeciesExchange.candidateId,
+        eventDirection: "exchange", sourcePlacementId: selectedSpeciesExchange.sourcePlacementId,
+        destinationCandidateId: selectedSpeciesExchange.destinationCandidateId },
+      evaluation: { accepted: true, eventDirection: "exchange" },
+      speciesExchangeEvent: selectedSpeciesExchange }];
+    }
     const selectedSurfaceHop = checkpoint.kineticCompetition
       ? checkpoint.surfaceHopEvents.find((event) =>
         event.candidateId === checkpoint.kineticCompetition.selectedCandidateId) : null;
@@ -27238,6 +27333,8 @@ function initializeOffLatticeSearch() {
   reversibleDetachedAtomCount = 0;
   surfaceHopEventCount = 0;
   surfaceHopMovedAtomCount = 0;
+  speciesExchangeEventCount = 0;
+  speciesExchangeAtomCount = 0;
   reversibleTransitionHistory = [];
   latestMicroscopicInverseAudit = null;
   latestFiniteTransitionNetworkAudit = buildFiniteTransitionNetwork([]);
@@ -28453,7 +28550,8 @@ function applyGrowthProtocolSettings(settings, options = {}) {
     ? Number(settings.nucleationPoseVariant) : 0;
   growthScheduling = settings.growthScheduling;
   hierarchyEnabled = settings.hierarchyEnabled;
-  externalActionBarrierCatalogMode = ["forward-only", "reversible-leaves", "surface-hops"]
+  externalActionBarrierCatalogMode = ["forward-only", "reversible-leaves", "surface-hops",
+    "local-events"]
     .includes(settings.externalActionBarrierCatalogMode)
     ? settings.externalActionBarrierCatalogMode : "reversible-leaves";
   externalActionBarrierHopReachNearestNeighbor = [1.5, 3, 6]
@@ -30098,6 +30196,8 @@ function resetCounters() {
   reversibleDetachedAtomCount = 0;
   surfaceHopEventCount = 0;
   surfaceHopMovedAtomCount = 0;
+  speciesExchangeEventCount = 0;
+  speciesExchangeAtomCount = 0;
   reversibleTransitionHistory = [];
   latestMicroscopicInverseAudit = null;
   latestFiniteTransitionNetworkAudit = buildFiniteTransitionNetwork([]);
@@ -31056,6 +31156,145 @@ async function performOwnershipCertifiedSurfaceHop(entry, before) {
   updateUI();
 }
 
+async function performOwnershipCertifiedSpeciesExchange(entry, before) {
+  const checkpoint = externalActionBarrierCheckpoint;
+  const kinetic = checkpoint?.kineticCompetition;
+  const frozenExchange = entry?.speciesExchangeEvent;
+  if (!checkpoint || !kinetic || entry?.candidate?.eventDirection !== "exchange"
+      || !frozenExchange) {
+    throw new Error("species-exchange execution requires one validated frozen kinetic event");
+  }
+  const currentSourceAudit = reversibleLeafEventCatalog().admitted.find((audit) =>
+    audit.placementId === frozenExchange.sourcePlacementId);
+  if (!currentSourceAudit || currentSourceAudit.removableAtomIds.join(".")
+      !== frozenExchange.removableAtomIds.join(".")) {
+    throw new Error("species-exchange source ownership changed after the event catalog was frozen");
+  }
+  const sourcePlacement = placedClusters.find((placement) =>
+    placement.id === currentSourceAudit.placementId);
+  const destinationCandidate = frontierCandidates.find((candidate) =>
+    candidate.key === frozenExchange.destinationCandidateId);
+  if (!sourcePlacement || !destinationCandidate
+      || destinationCandidate.parentId === sourcePlacement.id) {
+    throw new Error("species-exchange source or independent destination is no longer available");
+  }
+  const destinationEvaluation = evaluateCandidate(destinationCandidate);
+  if (!destinationEvaluation.accepted || !destinationEvaluation.feedstockSupply?.admitted) {
+    throw new Error("species-exchange destination is no longer hard-admitted or supplied");
+  }
+  const removableIds = new Set(currentSourceAudit.removableAtomIds);
+  if (destinationEvaluation.merged.some(({ atom }) => removableIds.has(atom.id))) {
+    throw new Error("species-exchange destination now depends on an atom removed from its source leaf");
+  }
+  const sourceAtoms = currentSourceAudit.removableAtomIds
+    .map((id) => atoms.find((atom) => atom.id === id)).filter(Boolean);
+  if (sourceAtoms.length !== removableIds.size) {
+    throw new Error("species-exchange source atom set is incomplete");
+  }
+  const requestCandidate = checkpoint.request.frontier.candidates.find((candidate) =>
+    candidate.candidateId === frozenExchange.candidateId);
+  if (!requestCandidate || requestCandidate.eventDirection !== "exchange") {
+    throw new Error("selected species exchange is absent from the frozen request");
+  }
+  const currentEmittedSites = destinationEvaluation.fresh.map(actionBarrierSitePayload);
+  const currentRemovedSites = sourceAtoms.map(actionBarrierSitePayload);
+  if (currentEmittedSites.length !== currentRemovedSites.length) {
+    throw new Error("species exchange no longer conserves total atom count");
+  }
+  const currentCandidateDigest = await actionBarrierSha256({
+    candidateId: frozenExchange.candidateId, eventDirection: "exchange",
+    emittedSites: currentEmittedSites, removedSites: currentRemovedSites,
+    actionSites: frozenExchange.actionSites });
+  if (currentCandidateDigest !== requestCandidate.candidateDigestSha256) {
+    throw new Error("species-exchange endpoint geometry changed after the event catalog was frozen");
+  }
+  const projectedGeometrySha256 = await frozenActionStateGeometrySha256([
+    ...atoms.filter((atom) => !removableIds.has(atom.id)).map(actionBarrierSitePayload),
+    ...currentEmittedSites,
+  ]);
+  if (projectedGeometrySha256 !== requestCandidate.finalGeometrySha256
+      || requestCandidate.initialAtomCount !== requestCandidate.finalAtomCount) {
+    throw new Error("projected species exchange does not match the frozen equal-count final state");
+  }
+  returnFeedstockForDetachedAtoms(sourceAtoms);
+  consumeFeedstockForFreshSites(destinationEvaluation.fresh);
+  atoms.forEach((atom) => {
+    if (!atom.clusterIds?.includes(sourcePlacement.id)) return;
+    atom.clusterIds = atom.clusterIds.filter((id) => id !== sourcePlacement.id);
+  });
+  atoms = atoms.filter((atom) => !removableIds.has(atom.id));
+  placedClusters = placedClusters.filter((placement) => placement.id !== sourcePlacement.id);
+  const sourceRule = overlapGrammar.rules?.find((rule) => rule.id === sourcePlacement.ruleId);
+  if (sourceRule?.used) sourceRule.used--;
+  extensionIndex = Math.max(0, extensionIndex - 1);
+  sectorCounts = new Array(BALANCE_DIRECTIONS.length).fill(0);
+  placedClusters.filter((placement) => placement.parentId != null)
+    .forEach((placement) => sectorCounts[frontierSector(placement.position)]++);
+  frontierCandidates = [];
+  frontierCandidateKeys = new Set();
+  rejectedCandidateKeys = new Set();
+  placedClusters.forEach(enqueueRulesFromPlacement);
+  rebuildSpatialIndex();
+  const leapCreationContext = {
+    schema: 1, leapIndex: leapEventCount + 1, atomsBeforeLeap: before.atoms,
+    clustersBeforeLeap: before.clusters, frontierCandidatesBeforeLeap: before.frontier,
+    proposedBatchActions: 1, hardAdmittedBatchActions: 1,
+    createdBeforeBatchCommit: true, commutingBatchOrderInvariant: true,
+    reservoirMediatedSpeciesExchange: true, sourcePlacementId: sourcePlacement.id,
+    frozenSpeciesDelta: { ...frozenExchange.speciesDelta },
+    targetUsed: false, coordinateFrameUsed: false,
+    physicalTimeModeled: kinetic.mode === "seeded-kmc",
+  };
+  const destinationPlacement = materializeCandidate(destinationCandidate,
+    destinationEvaluation, leapCreationContext);
+  freezeCreationGeometryForAtoms(destinationPlacement.freshAtomIds);
+  const committedStateSha256 = await frozenActionStateGeometrySha256(
+    atoms.map(actionBarrierSitePayload));
+  if (committedStateSha256 !== projectedGeometrySha256 || atoms.length !== before.atoms) {
+    throw new Error("committed species exchange failed exact endpoint or atom-count reproduction");
+  }
+  acceptedDecisions++;
+  speciesExchangeEventCount++;
+  speciesExchangeAtomCount += sourceAtoms.length;
+  eventIndex++;
+  registerCommittedReversibleTransition(checkpoint, frozenExchange.candidateId,
+    committedStateSha256);
+  if (kinetic.mode === "seeded-kmc") {
+    catalogConditionalKineticClockSeconds = kinetic.clockAfterSeconds;
+    catalogConditionalKineticEventCount = kinetic.eventCountAfter;
+    checkpoint.kineticClockCommitted = true;
+  }
+  const receipt = actionBarrierCheckpointReceipt(checkpoint);
+  const speciesDeltaText = Object.entries(frozenExchange.speciesDelta)
+    .map(([species, delta]) => `${species}${delta > 0 ? "+" : ""}${delta}`).join(" ");
+  appendHistory("exchange", { type: "exchange", depth: destinationPlacement.depth,
+    action: `exchange C${sourcePlacement.type + 1}→C${destinationPlacement.type + 1}`,
+    family: `${sourceAtoms.length} atoms replaced · ${speciesDeltaText} · ΔN=0` });
+  const after = currentLeapOutcomeSnapshot(1, 0);
+  captionAction.textContent = `1 ownership-certified local species exchange · ${sourceAtoms.length} atoms replaced · ${speciesDeltaText} · total atom count conserved.`;
+  recordStructuralLeap({ status: "accepted", label: "catalog-conditional local species exchange",
+    before,
+    proposal: { candidates: 1, sites: frozenExchange.actionSites.length,
+      shared: destinationEvaluation.merged.length, fresh: destinationEvaluation.fresh.length,
+      removed: sourceAtoms.length, eventDirection: "exchange", atomCountChange: 0,
+      speciesDelta: { ...frozenExchange.speciesDelta } },
+    tests: { summary: "ownership + independent destination + reservoir + exact endpoint certificates passed",
+      detail: "The source remained an exclusively owned non-seed leaf; the differently colored equal-count destination stayed independently hard-admitted and supplied; the exact species delta, final geometry digest, and total atom count were reproduced." },
+    asPlaced: null, settlingSensitivity: null, relaxation: null,
+    actionBarrierCheckpoint: receipt, after,
+    claimBoundary: `${kinetic.claimBoundary} This event certifies one exact reservoir-mediated colored endpoint exchange. The external response supplies its path barrier and prefactor; chemical-potential work is available only when independently supplied. No transmutation, reaction mechanism, omitted exchange channel, or equilibrium alloy chemistry is inferred from geometry.` });
+  lastExternalActionBarrierReceipt = { ...actionBarrierCheckpointReceipt(checkpoint),
+    status: "consumed", usedForRanking: true, selectedEventDirection: "exchange",
+    exactFinalGeometryReproduced: true, atomCountConserved: true,
+    speciesPopulationConserved: false, speciesDelta: { ...frozenExchange.speciesDelta } };
+  externalActionBarrierCheckpoint = null;
+  externalActionBarrierKineticMode = "none";
+  actionBarrierKineticModeSelect.value = "none";
+  actionBarrierResponseInput.value = "";
+  rebuildWorld();
+  updateUI();
+}
+
 async function performOffLatticeEvent() {
   if (externalStateRelaxationCheckpoint) {
     setPlaying(false);
@@ -31080,6 +31319,10 @@ async function performOffLatticeEvent() {
   const before = externalActionBarrierCheckpoint?.before || currentLeapInputSnapshot();
   const batch = await commutingFrontierBatch(before);
   if (batch === null) return;
+  if (batch.length === 1 && batch[0].candidate?.eventDirection === "exchange") {
+    await performOwnershipCertifiedSpeciesExchange(batch[0], before);
+    return;
+  }
   if (batch.length === 1 && batch[0].candidate?.eventDirection === "hop") {
     await performOwnershipCertifiedSurfaceHop(batch[0], before);
     return;
@@ -34938,7 +35181,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-364",
+    generatedAt: new Date().toISOString(), buildId: "20260831-365",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,
@@ -40503,10 +40746,13 @@ actionBarrierWeightSelect.addEventListener("change", () => {
   renderActionBarrierCheckpoint(); updateUI();
 });
 actionBarrierCatalogSelect.addEventListener("change", () => {
-  externalActionBarrierCatalogMode = ["forward-only", "reversible-leaves", "surface-hops"]
+  externalActionBarrierCatalogMode = ["forward-only", "reversible-leaves", "surface-hops",
+    "local-events"]
     .includes(actionBarrierCatalogSelect.value)
     ? actionBarrierCatalogSelect.value : "reversible-leaves";
-  receiptStatus.textContent = externalActionBarrierCatalogMode === "surface-hops"
+  receiptStatus.textContent = externalActionBarrierCatalogMode === "local-events"
+    ? `The next checkpoint will compare attachments, leaf detachments, same-population hops, and equal-count local species exchanges through ${externalActionBarrierHopReachNearestNeighbor} dₙₙ. Exchange reservoir work, paths, barriers, and prefactors remain external.`
+    : externalActionBarrierCatalogMode === "surface-hops"
     ? `The next checkpoint will include attachments, ownership-certified leaf detachments, and same-population local surface hops through ${externalActionBarrierHopReachNearestNeighbor} dₙₙ. Every endpoint remains hard-admitted; paths and barriers remain external.`
     : externalActionBarrierCatalogMode === "reversible-leaves"
       ? "The next checkpoint will include every hard-admitted attachment plus each ownership-certified non-seed leaf detachment. Shared atoms and dependent branches remain protected."
@@ -40517,7 +40763,7 @@ actionBarrierHopReachSelect.addEventListener("change", () => {
   externalActionBarrierHopReachNearestNeighbor = [1.5, 3, 6]
     .includes(Number(actionBarrierHopReachSelect.value))
     ? Number(actionBarrierHopReachSelect.value) : 3;
-  receiptStatus.textContent = `The next frozen catalog will retain mass-conserving surface hops through ${externalActionBarrierHopReachNearestNeighbor} dₙₙ, capped deterministically at 512 nearest exact endpoint pairs.`;
+  receiptStatus.textContent = `The next frozen catalog will retain local endpoint pairs through ${externalActionBarrierHopReachNearestNeighbor} dₙₙ, capped deterministically at 512 same-population hops plus 512 equal-count species exchanges.`;
   renderActionBarrierCheckpoint(); updateUI();
 });
 actionBarrierKineticModeSelect.addEventListener("change", () => {

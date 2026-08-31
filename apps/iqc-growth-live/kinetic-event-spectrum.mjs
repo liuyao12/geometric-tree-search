@@ -8,7 +8,7 @@ function requiredNumber(value, label) {
 function normalizedRecord(record, index) {
   const candidateId = typeof record?.candidateId === "string" ? record.candidateId.trim() : "";
   if (!candidateId) throw new TypeError(`kinetic record ${index + 1} needs a candidate ID`);
-  const eventDirection = ["attach", "detach", "hop"].includes(record.eventDirection)
+  const eventDirection = ["attach", "detach", "hop", "exchange"].includes(record.eventDirection)
     ? record.eventDirection : "attach";
   const log10RatePerSecond = requiredNumber(record.log10RatePerSecond,
     `log10 rate for ${candidateId}`);
@@ -90,6 +90,7 @@ export function buildKineticEventSpectrum(competition) {
       attach: probabilityMass("attach"),
       detach: probabilityMass("detach"),
       hop: probabilityMass("hop"),
+      exchange: probabilityMass("exchange"),
     },
     entropyNats,
     effectiveCompetingEventCount: Math.exp(entropyNats),

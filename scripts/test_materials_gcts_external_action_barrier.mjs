@@ -251,6 +251,27 @@ assert.equal(hopRequest.frontier.candidates[0].initialAtomCount, 1);
 assert.equal(hopRequest.frontier.candidates[0].finalAtomCount, 1);
 assert.notEqual(hopRequest.frontier.candidates[0].initialGeometrySha256,
   hopRequest.frontier.candidates[0].finalGeometrySha256);
+const exchangeRaw = { candidateId: "exchange:2->9", eventDirection: "exchange",
+  actionLabel: "local Na/K exchange", parentType: 1, childType: 2, ruleId: 9,
+  emittedSites: [{ species: "K", positionAngstrom: [2, 0, 0] }],
+  removedSites: [{ species: "Na", positionAngstrom: [0, 0, 0] }],
+  actionSites: [{ species: "Na", positionAngstrom: [0, 0, 0] },
+    { species: "K", positionAngstrom: [2, 0, 0] }] };
+const exchange = { ...exchangeRaw, candidateDigestSha256: await actionBarrierSha256({
+  candidateId: exchangeRaw.candidateId, eventDirection: "exchange",
+  emittedSites: exchangeRaw.emittedSites, removedSites: exchangeRaw.removedSites,
+  actionSites: exchangeRaw.actionSites }) };
+const exchangeRequest = await buildFrozenActionBarrierRequest({
+  generatedAt: "2026-08-30T00:00:00Z", buildId: "test", scenarioId: "nacl",
+  materialName: "NaKCl", elements: ["Na", "K"], candidates: [exchange], targetUsed: false,
+  initialConfiguration: { structureSha256: sha,
+    atoms: [{ siteId: 0, species: "Na", positionAngstrom: [0, 0, 0] }] },
+});
+assert.equal(exchangeRequest.frontier.candidates[0].eventDirection, "exchange");
+assert.equal(exchangeRequest.frontier.candidates[0].initialAtomCount, 1);
+assert.equal(exchangeRequest.frontier.candidates[0].finalAtomCount, 1);
+assert.notEqual(exchangeRequest.frontier.candidates[0].initialGeometrySha256,
+  exchangeRequest.frontier.candidates[0].finalGeometrySha256);
 await assert.rejects(() => buildFrozenActionBarrierRequest({
   generatedAt: "x", buildId: "test", scenarioId: "nacl", materialName: "NaCl",
   elements: ["Na", "Cl"], targetUsed: false,
@@ -259,6 +280,14 @@ await assert.rejects(() => buildFrozenActionBarrierRequest({
   candidates: [{ ...hop, emittedSites: [{ species: "Cl", positionAngstrom: [2, 0, 0] }],
     candidateDigestSha256: "0".repeat(64) }],
 }), /equal colored emitted\/removed populations/);
+await assert.rejects(() => buildFrozenActionBarrierRequest({
+  generatedAt: "x", buildId: "test", scenarioId: "nacl", materialName: "NaCl",
+  elements: ["Na"], targetUsed: false,
+  initialConfiguration: { structureSha256: sha,
+    atoms: [{ siteId: 0, species: "Na", positionAngstrom: [0, 0, 0] }] },
+  candidates: [{ ...exchange, emittedSites: [{ species: "Na", positionAngstrom: [2, 0, 0] }],
+    candidateDigestSha256: "0".repeat(64) }],
+}), /differently colored/);
 await assert.rejects(() => buildFrozenActionBarrierRequest({
   generatedAt: "x", buildId: "test", scenarioId: "nacl", materialName: "NaCl", elements: ["Na"],
   candidates: [{ ...detach, removedSites: [{ species: "Na", positionAngstrom: [9, 0, 0] }],

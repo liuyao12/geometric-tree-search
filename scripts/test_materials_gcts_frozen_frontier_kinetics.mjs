@@ -26,6 +26,13 @@ assert.ok(maximum.records.find((record) => record.candidateId === "fast").ratePe
   > maximum.records.find((record) => record.candidateId === "slow").ratePerSecond);
 assert.ok(Math.abs(maximum.records.reduce((sum, record) =>
   sum + record.probabilityWithinFrozenCatalog, 0) - 1) < 1e-12);
+const withExchange = buildFrozenKineticCompetition([...records,
+  { candidateId: "exchange", eventDirection: "exchange", barrierElectronVolt: .6,
+    uncertaintyElectronVolt: .02, attemptFrequencyPerSecond: 1e13,
+    attemptFrequencyUncertaintyLog10: .1 }], { temperatureKelvin: 600 });
+assert.equal(withExchange.speciesExchangeEventCount, 1);
+assert.equal(withExchange.records.find((record) =>
+  record.candidateId === "exchange").eventDirection, "exchange");
 
 const stochastic = buildFrozenKineticCompetition(records, {
   temperatureKelvin: 600, mode: "seeded-kmc", eventUniform: .5, waitingUniform: .25,

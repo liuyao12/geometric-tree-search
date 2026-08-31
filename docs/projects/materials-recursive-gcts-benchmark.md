@@ -1,5 +1,31 @@
 # Recursive GCTS benchmark for material growth
 
+### Exact local species exchange (Build 365)
+
+The finite Stage 4 mechanism catalog now has a fourth event family. A local
+species-exchange action combines an ownership-certified removable leaf with an
+independent hard-admitted destination within the declared nearest-neighbor
+reach. It is admitted only when the removed and emitted supports are equal in
+size, nonempty, differently colored, and have an integer species delta that
+sums to zero. No atom used as destination overlap may be removed by the source
+half of the event.
+
+The v3 action-barrier contract hashes the initial configuration, every exact
+removed/emitted/action site, and the derived final colored state. At commit the
+browser repeats ownership, admission, feedstock, independence, count,
+candidate-digest, and final-state checks before replacing the source support
+and updating the species ledger as one transaction. The kinetic contract and
+interactive spectrum report attachment, detachment, hop, and exchange masses
+separately. A reversed exchange is recognized only through exact reversed
+state hashes and opposite species deltas, not through a material label.
+
+This closes an endpoint-level mechanism gap without pretending geometry is
+chemistry. The external method must still provide a converged barrier,
+uncertainty, and prefactor for every frozen action. Optional independently
+supplied chemical potentials contribute reservoir work; they are not learned
+from the grown structure. The result is not a transition path, transmutation,
+mechanism completeness, equilibrium composition, or global detailed balance.
+
 ### Periodic pressure-and-strain relaxation (Build 364)
 
 The mechanics handoff now has an explicitly authorized variable-cell branch

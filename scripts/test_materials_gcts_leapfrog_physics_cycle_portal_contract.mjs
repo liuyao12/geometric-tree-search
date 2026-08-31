@@ -16,7 +16,7 @@ for (const document of [html, alias]) {
   assert.match(document, /Leap-frog co-simulation cycle/);
   assert.match(document, /Event-resolved · require J \+ action physics/);
 }
-assert.match(app, /leapfrog-physics-cycle\.mjs\?v=20260831-364/);
+assert.match(app, /leapfrog-physics-cycle\.mjs\?v=20260831-365/);
 assert.match(app, /function currentLeapfrogPhysicsCycle\(\)/);
 assert.match(app, /function renderLeapfrogPhysicsCycle\(\)/);
 assert.match(app, /function routeLeapfrogNextAction\(\)/);

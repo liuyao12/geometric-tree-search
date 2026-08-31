@@ -89,4 +89,19 @@ assert.equal(auditMicroscopicInversePair(base, { ...reverse,
   committedStateSha256: digest("9"), exactFinalGeometryReproduced: true })
   .microscopicPathClosurePassed, false);
 
+const exchangeForward = { ...base, eventId: "exchange-forward",
+  candidateId: "exchange:Na->Cl", eventDirection: "exchange",
+  speciesDelta: { Cl: 1, Na: -1 }, initialAtomCount: 12, finalAtomCount: 12 };
+const exchangeReverse = { ...reverse, eventId: "exchange-reverse",
+  candidateId: "exchange:Cl->Na", eventDirection: "exchange",
+  speciesDelta: { Cl: -1, Na: 1 }, initialAtomCount: 12, finalAtomCount: 12 };
+const exchangeAudit = auditMicroscopicInversePair(exchangeForward, exchangeReverse);
+assert.equal(exchangeAudit.geometryCycleClosed, true);
+assert.equal(exchangeAudit.oppositeDirections, false);
+assert.equal(exchangeAudit.directionPairCanReverse, true);
+assert.equal(exchangeAudit.speciesTransferReversed, true);
+const exchangeLedger = appendCommittedTransition(
+  appendCommittedTransition([], exchangeForward).history, exchangeReverse);
+assert.equal(exchangeLedger.inverseEventId, "exchange-forward");
+
 console.log("reversible transition lineage: passed");
