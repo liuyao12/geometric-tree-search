@@ -1309,6 +1309,7 @@
                   <button id="actionBarrierDownload" type="button" disabled>Download request</button>
                   <label class="action-barrier-import">Validate response<input id="actionBarrierResponse" type="file" accept="application/json,.json" disabled></label>
                   <label>ranking weight<select id="actionBarrierWeight" disabled><option value="0">0 · diagnostic only</option><option value="0.10">0.10 · gentle</option><option value="0.25" selected>0.25 · balanced</option><option value="0.50">0.50 · strong</option></select></label>
+                  <label>event catalog<select id="actionBarrierCatalog"><option value="forward-only">Attachment only</option><option value="reversible-leaves" selected>Attachment + exact leaf detachment</option></select></label>
                   <label>event competition<select id="actionBarrierKineticMode" disabled><option value="none" selected>Off · barrier ranking only</option><option value="rate-maximum">HTST · maximum rate</option><option value="seeded-kmc">HTST · seeded KMC draw</option></select></label>
                   <label>physical temperature<select id="actionBarrierTemperature" disabled><option value="100">100 K</option><option value="300" selected>300 K</option><option value="600">600 K</option><option value="900">900 K</option><option value="1200">1200 K</option><option value="1500">1500 K</option></select></label>
                   <button id="actionBarrierResume" type="button" disabled>Commit unchanged frontier</button>
@@ -1316,7 +1317,7 @@
                 </div>
                 <div id="actionBarrierSummary" class="action-barrier-summary" aria-live="polite"></div>
                 <p id="actionBarrierKineticState" class="action-barrier-kinetic-state">Kinetic competition remains unavailable until every frozen action has a converged, uncertainty-bearing attempt frequency.</p>
-                <p class="action-barrier-boundary">A validated barrier may softly reorder only the candidate IDs in this checkpoint; it cannot create a pose or change hard admission. With complete prefactors, an explicit Kelvin temperature can instead select one serial HTST event; a seeded waiting time is conditional on this finite enumerated catalog, not a complete dynamical trajectory.</p>
+                <p class="action-barrier-boundary">A validated barrier may softly reorder only attachment IDs in this checkpoint; it cannot create a pose or change hard admission. The reversible catalog additionally exports exact non-seed leaf detachments while retaining shared atoms. Complete prefactors and a Kelvin temperature can select one serial HTST event, but two-way geometry alone is not detailed balance, a reservoir thermodynamics model, or an equilibrium trajectory.</p>
               </section>
               <section class="policy-phase-map-card" aria-label="Two-hypothesis growth decision phase map">
                 <header><span><small>two-hypothesis decision map</small><strong>Attachment-action basins</strong></span><b id="policyPhaseMapState">awaiting a frozen frontier</b></header>
@@ -2271,7 +2272,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260830-346"></script>
+  <script type="module" src="./app.js?v=20260831-347"></script>
   <script type="module" src="./evidence-atlas.js?v=20260830-346"></script>
 </body>
 </html>

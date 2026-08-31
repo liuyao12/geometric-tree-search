@@ -43,6 +43,30 @@ export function consumeFeedstock(reservoir, requestedSpecies) {
     admittedAtoms: reservoir.admittedAtoms + audit.requestedAtoms }, audit };
 }
 
+export function releaseFeedstock(reservoir, releasedSpecies) {
+  const released = counts(releasedSpecies);
+  const consumed = { ...reservoir.consumed };
+  for (const [species, amount] of Object.entries(released)) {
+    if ((consumed[species] || 0) < amount) {
+      throw new Error(`cannot return ${amount} ${species} atoms when only ${consumed[species] || 0} were supplied`);
+    }
+    consumed[species] -= amount;
+  }
+  if (reservoir.mode === "open") return { reservoir: { ...reservoir, consumed,
+    admittedAtoms: Math.max(0, reservoir.admittedAtoms - releasedSpecies.length) },
+  audit: { released, releasedAtoms: releasedSpecies.length, open: true, targetUsed: false } };
+  const remaining = { ...reservoir.remaining };
+  for (const [species, amount] of Object.entries(released)) {
+    remaining[species] = (remaining[species] || 0) + amount;
+    if (remaining[species] > reservoir.initial[species]) {
+      throw new Error(`returned ${species} inventory exceeds the declared finite reservoir`);
+    }
+  }
+  return { reservoir: { ...reservoir, remaining, consumed,
+    admittedAtoms: Math.max(0, reservoir.admittedAtoms - releasedSpecies.length) },
+  audit: { released, releasedAtoms: releasedSpecies.length, open: false, targetUsed: false } };
+}
+
 export function feedstockReservoirSnapshot(reservoir) {
   const finite = reservoir?.mode !== "open";
   const species = Object.keys(reservoir?.referenceCounts || {}).map((symbol) => ({

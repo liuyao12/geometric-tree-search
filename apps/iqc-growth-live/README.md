@@ -1,5 +1,35 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 347 · reversible leaf events with exact state certificates
+
+The frozen frontier can now contain two event directions.  Forward actions are
+the existing hard-admitted whole-cluster attachments.  Reverse actions are
+generated only for non-seed leaf placements whose originally emitted atoms
+still have exactly one cluster owner, whose shared support atoms remain
+present, and which have no dependent child placement.  Detachment removes only
+those exclusive emitted atoms, retains every shared atom, returns the removed
+species to the declared open or finite feedstock ledger, rebuilds the frontier,
+and reproduces an independently hashed final colored configuration.  Shared,
+cross-nucleus, target-replay, cascading, or partially missing placements fail
+closed.
+
+The external path request is now schema v2.  Every action declares `attach` or
+`detach`; its digest covers the direction, changed sites, and complete action
+support.  The request derives canonical initial and final structure SHA-256s,
+and a returned barrier record must reproduce both before it can enter ranking
+or rate competition.  The UI exposes **Attachment only** and **Attachment +
+exact leaf detachment** catalogs.  With complete barriers and prefactors, the
+unchanged HTST/seeded-KMC selector may choose either direction as one serial
+event, and receipts retain direction counts, selected direction, ownership
+audit, atom return, state digest, and clock update.
+
+This closes a real geometric irreversibility in the live engine, but it does
+not manufacture thermodynamics.  A two-way finite catalog is not an inverse
+event pairing, grand-potential model, chemical-potential reservoir, detailed-
+balance certificate, equilibrium ensemble, complete desorption/attachment
+mechanism set, or unconditional physical clock.  Those remain explicit open
+boundaries.
+
 ## Build 346 · catalog-conditional transition-state kinetic leaps
 
 The frozen-frontier calculation handoff can now cross the rate boundary when,

@@ -5,6 +5,7 @@ if (!globalThis.crypto) globalThis.crypto = webcrypto;
 
 const {
   ACTION_BARRIER_RESPONSE_SCHEMA,
+  actionBarrierSha256,
   buildFrozenActionBarrierRequest,
   frozenActionBarrierRequestReceipt,
   validateFrozenActionBarrierResponse,
@@ -13,14 +14,18 @@ const { buildFrozenKineticCompetition } = await import(
   "../apps/iqc-growth-live/frozen-frontier-kinetics.mjs");
 
 const sha = "a".repeat(64);
-const candidates = [
-  { candidateId: "b", candidateDigestSha256: "b".repeat(64), actionLabel: "B", parentType: 1,
+const rawCandidates = [
+  { candidateId: "b", actionLabel: "B", parentType: 1,
     childType: 2, ruleId: 3, emittedSites: [{ species: "Na", positionAngstrom: [1, 0, 0] }],
     actionSites: [{ species: "Na", positionAngstrom: [1, 0, 0] }] },
-  { candidateId: "a", candidateDigestSha256: "c".repeat(64), actionLabel: "A", parentType: 2,
+  { candidateId: "a", actionLabel: "A", parentType: 2,
     childType: 1, ruleId: 4, emittedSites: [{ species: "Cl", positionAngstrom: [0, 1, 0] }],
     actionSites: [{ species: "Cl", positionAngstrom: [0, 1, 0] }] },
 ];
+const candidates = await Promise.all(rawCandidates.map(async (candidate) => ({ ...candidate,
+  candidateDigestSha256: await actionBarrierSha256({ candidateId: candidate.candidateId,
+    eventDirection: "attach", emittedSites: candidate.emittedSites, removedSites: [],
+    actionSites: candidate.actionSites }) })));
 
 const request = await buildFrozenActionBarrierRequest({
   generatedAt: "2026-08-30T00:00:00Z", buildId: "test", scenarioId: "nacl", materialName: "NaCl",
@@ -49,16 +54,18 @@ const response = {
     searchStepsUsedAsPhysicalTime: false, candidateSetChanged: false, hardAdmissionChanged: false },
   records: request.frontier.candidates.map((candidate, index) => ({ candidateId: candidate.candidateId,
     candidateDigestSha256: candidate.candidateDigestSha256, barrierElectronVolt: index ? 1.2 : .4,
+    initialGeometrySha256: candidate.initialGeometrySha256,
+    finalGeometrySha256: candidate.finalGeometrySha256,
     uncertaintyElectronVolt: .02, maximumForceElectronVoltPerAngstrom: .01,
     imageCount: 7, converged: true })),
 };
 const validated = validateFrozenActionBarrierResponse(response, { ...receipt,
-  candidates: request.frontier.candidates.map(({ candidateId, candidateDigestSha256 }) =>
-    ({ candidateId, candidateDigestSha256 })) });
+  candidates: request.frontier.candidates });
 assert.equal(validated.candidateCount, 2);
 assert.ok(validated.records[0].lowerBarrierScore > validated.records[1].lowerBarrierScore);
 assert.equal(validated.usedAsPhysicalClock, false);
 assert.equal(validated.kineticsEligible, false);
+assert.deepEqual(validated.eventDirections, ["attach"]);
 
 const kineticResponse = {
   ...response,
@@ -72,8 +79,7 @@ const kineticResponse = {
     prefactorConverged: true })),
 };
 const validatedKinetics = validateFrozenActionBarrierResponse(kineticResponse, { ...receipt,
-  candidates: request.frontier.candidates.map(({ candidateId, candidateDigestSha256 }) =>
-    ({ candidateId, candidateDigestSha256 })) });
+  candidates: request.frontier.candidates });
 assert.equal(validatedKinetics.kineticsEligible, true);
 assert.equal(validatedKinetics.records[0].attemptFrequencyPerSecond, 1e13);
 assert.equal(validatedKinetics.kinetics.catalogScope, "requested-hard-admitted-actions-only");
@@ -101,5 +107,30 @@ assert.throws(() => validateFrozenActionBarrierResponse({ ...kineticResponse,
 assert.throws(() => validateFrozenActionBarrierResponse({ ...kineticResponse,
   kinetics: { ...kineticResponse.kinetics, model: "unspecified-rate-model" } },
 { ...receipt, candidates: request.frontier.candidates }), /harmonic-transition-state-theory/);
+
+const detachRaw = { candidateId: "detach:2", eventDirection: "detach", actionLabel: "detach leaf",
+  parentType: 1, childType: 2, ruleId: 3, emittedSites: [],
+  removedSites: [{ species: "Na", positionAngstrom: [0, 0, 0] }],
+  actionSites: [{ species: "Na", positionAngstrom: [0, 0, 0] }] };
+const detach = { ...detachRaw, candidateDigestSha256: await actionBarrierSha256({
+  candidateId: detachRaw.candidateId, eventDirection: "detach", emittedSites: [],
+  removedSites: detachRaw.removedSites, actionSites: detachRaw.actionSites }) };
+const reversibleRequest = await buildFrozenActionBarrierRequest({
+  generatedAt: "2026-08-30T00:00:00Z", buildId: "test", scenarioId: "nacl", materialName: "NaCl",
+  elements: ["Na"], candidates: [candidates[0], detach], targetUsed: false,
+  initialConfiguration: { structureSha256: sha,
+    atoms: [{ siteId: 0, species: "Na", positionAngstrom: [0, 0, 0] }] },
+});
+assert.deepEqual(reversibleRequest.frontier.candidates.map((candidate) => candidate.eventDirection),
+  ["attach", "detach"]);
+assert.equal(reversibleRequest.frontier.candidates.find((candidate) =>
+  candidate.eventDirection === "detach").finalAtomCount, 0);
+await assert.rejects(() => buildFrozenActionBarrierRequest({
+  generatedAt: "x", buildId: "test", scenarioId: "nacl", materialName: "NaCl", elements: ["Na"],
+  candidates: [{ ...detach, removedSites: [{ species: "Na", positionAngstrom: [9, 0, 0] }],
+    candidateDigestSha256: "0".repeat(64) }], targetUsed: false,
+  initialConfiguration: { structureSha256: sha,
+    atoms: [{ siteId: 0, species: "Na", positionAngstrom: [0, 0, 0] }] },
+}), /absent/);
 
 console.log("external action barrier contract: passed");

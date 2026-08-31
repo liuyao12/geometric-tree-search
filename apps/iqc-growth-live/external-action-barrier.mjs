@@ -1,5 +1,5 @@
-export const ACTION_BARRIER_REQUEST_SCHEMA = "gcts-frozen-frontier-action-barrier-request-v1";
-export const ACTION_BARRIER_RESPONSE_SCHEMA = "gcts-frozen-frontier-action-barrier-response-v1";
+export const ACTION_BARRIER_REQUEST_SCHEMA = "gcts-frozen-frontier-action-barrier-request-v2";
+export const ACTION_BARRIER_RESPONSE_SCHEMA = "gcts-frozen-frontier-action-barrier-response-v2";
 
 const finite = (value) => Number.isFinite(Number(value));
 
@@ -62,29 +62,96 @@ function normalizeConfiguration(configuration) {
 
 function normalizeCandidate(candidate, index) {
   const candidateId = requiredText(candidate?.candidateId, `candidate ${index + 1} id`);
+  const eventDirection = candidate.eventDirection == null ? "attach"
+    : requiredText(candidate.eventDirection, `candidate ${candidateId} event direction`);
+  if (!["attach", "detach"].includes(eventDirection)) {
+    throw new Error(`candidate ${candidateId} eventDirection must be attach or detach`);
+  }
   const emittedSites = Array.isArray(candidate.emittedSites)
     ? candidate.emittedSites.map((site, siteIndex) => normalizedSite(site,
       `candidate ${index + 1} emitted site ${siteIndex + 1}`)) : [];
+  const removedSites = Array.isArray(candidate.removedSites)
+    ? candidate.removedSites.map((site, siteIndex) => normalizedSite(site,
+      `candidate ${index + 1} removed site ${siteIndex + 1}`)) : [];
   const actionSites = Array.isArray(candidate.actionSites)
     ? candidate.actionSites.map((site, siteIndex) => normalizedSite(site,
       `candidate ${index + 1} action site ${siteIndex + 1}`)) : [];
-  if (!emittedSites.length || !actionSites.length) {
-    throw new Error(`candidate ${candidateId} needs nonempty emittedSites and actionSites`);
+  if (!actionSites.length || (eventDirection === "attach" && (!emittedSites.length || removedSites.length))
+      || (eventDirection === "detach" && (!removedSites.length || emittedSites.length))) {
+    throw new Error(`candidate ${candidateId} needs one nonempty ${eventDirection === "attach" ? "emittedSites" : "removedSites"} set, the opposite set empty, and nonempty actionSites`);
   }
   return {
     candidateId,
     candidateDigestSha256: requiredText(candidate.candidateDigestSha256,
       `candidate ${candidateId} digest`),
     actionLabel: requiredText(candidate.actionLabel, `candidate ${candidateId} label`),
+    eventDirection,
     parentType: String(candidate.parentType),
     childType: String(candidate.childType),
     ruleId: String(candidate.ruleId),
     emittedAtomCount: emittedSites.length,
+    removedAtomCount: removedSites.length,
     actionAtomCount: actionSites.length,
     emittedSites,
+    removedSites,
     actionSites,
-    finalStateConstruction: "initial configuration union emittedSites; exact same-species coincidences are shared sites",
+    finalStateConstruction: eventDirection === "attach"
+      ? "initial configuration union emittedSites; exact same-species coincidences are shared sites"
+      : "initial configuration minus removedSites; retained shared support remains unchanged",
   };
+}
+
+function stateSiteKey(site) {
+  return `${site.species}\u0000${site.positionAngstrom.map((value) => Number(value).toPrecision(15)).join(",")}`;
+}
+
+function sortedStateSites(sites) {
+  return sites.map((site) => ({ species: site.species, positionAngstrom: [...site.positionAngstrom] }))
+    .sort((first, second) => stateSiteKey(first).localeCompare(stateSiteKey(second)));
+}
+
+export async function frozenActionStateGeometrySha256(sites) {
+  const normalized = (Array.isArray(sites) ? sites : []).map((site, index) =>
+    normalizedSite(site, `state site ${index + 1}`));
+  return actionBarrierSha256({ coordinateUnits: "angstrom", atoms: sortedStateSites(normalized) });
+}
+
+async function bindCandidateStateGeometry(candidate, initialConfiguration) {
+  const initialSites = initialConfiguration.atoms.map(({ species, positionAngstrom }) =>
+    ({ species, positionAngstrom }));
+  const counts = new Map();
+  initialSites.forEach((site) => counts.set(stateSiteKey(site), (counts.get(stateSiteKey(site)) || 0) + 1));
+  let finalSites = [...initialSites];
+  if (candidate.eventDirection === "attach") {
+    candidate.emittedSites.forEach((site) => {
+      const key = stateSiteKey(site);
+      if (!counts.has(key)) {
+        finalSites.push(site);
+        counts.set(key, 1);
+      }
+    });
+  } else {
+    candidate.removedSites.forEach((site) => {
+      const key = stateSiteKey(site);
+      const count = counts.get(key) || 0;
+      if (!count) throw new Error(`detachment candidate ${candidate.candidateId} removes a site absent from the initial configuration`);
+      counts.set(key, count - 1);
+      const index = finalSites.findIndex((entry) => stateSiteKey(entry) === key);
+      finalSites.splice(index, 1);
+    });
+  }
+  const initialGeometrySha256 = await frozenActionStateGeometrySha256(initialSites);
+  const finalGeometrySha256 = await frozenActionStateGeometrySha256(finalSites);
+  const canonicalCandidateDigest = await actionBarrierSha256({
+    candidateId: candidate.candidateId, eventDirection: candidate.eventDirection,
+    emittedSites: candidate.emittedSites, removedSites: candidate.removedSites,
+    actionSites: candidate.actionSites,
+  });
+  if (candidate.candidateDigestSha256 !== canonicalCandidateDigest) {
+    throw new Error(`candidate ${candidate.candidateId} digest does not match its exact direction and geometry`);
+  }
+  return { ...candidate, initialGeometrySha256, finalGeometrySha256,
+    initialAtomCount: initialSites.length, finalAtomCount: finalSites.length };
 }
 
 export async function buildFrozenActionBarrierRequest(input) {
@@ -95,7 +162,9 @@ export async function buildFrozenActionBarrierRequest(input) {
     throw new Error("a frozen action-barrier request needs at least one hard-admitted candidate");
   }
   const initialConfiguration = normalizeConfiguration(input.initialConfiguration);
-  const candidates = input.candidates.map(normalizeCandidate)
+  const normalizedCandidates = input.candidates.map(normalizeCandidate);
+  const candidates = (await Promise.all(normalizedCandidates.map((candidate) =>
+    bindCandidateStateGeometry(candidate, initialConfiguration))))
     .sort((first, second) => first.candidateId.localeCompare(second.candidateId));
   if (new Set(candidates.map((candidate) => candidate.candidateId)).size !== candidates.length) {
     throw new Error("frozen frontier candidate IDs must be unique");
@@ -103,7 +172,9 @@ export async function buildFrozenActionBarrierRequest(input) {
   const candidateBatchSha256 = await actionBarrierSha256(candidates.map((candidate) => ({
     candidateId: candidate.candidateId,
     candidateDigestSha256: candidate.candidateDigestSha256,
+    eventDirection: candidate.eventDirection,
     emittedSites: candidate.emittedSites,
+    removedSites: candidate.removedSites,
     actionSites: candidate.actionSites,
   })));
   return {
@@ -126,9 +197,9 @@ export async function buildFrozenActionBarrierRequest(input) {
       hardAdmissionFrozenBeforeRequest: true,
     },
     calculation: {
-      quantity: "candidate-resolved transition barriers on one exact frozen frontier",
+      quantity: "candidate-resolved attachment and/or exact leaf-detachment transition barriers on one frozen frontier",
       suitableMethods: ["nudged elastic band", "dimer or saddle search", "validated enhanced-sampling path"],
-      requiredOutputs: ["one converged record for every candidate ID", "explicit initial and final geometry digests",
+      requiredOutputs: ["one converged record for every candidate ID", "the supplied exact initial and final geometry digests",
         "at least three energy images", "maximum residual force", "uncertainty and method provenance"],
       optionalKineticOutputs: ["one positive converged attemptFrequencyPerSecond for every candidate ID",
         "attemptFrequencyUncertaintyLog10", "prefactor method and settings SHA-256",
@@ -155,6 +226,7 @@ export async function buildFrozenActionBarrierRequest(input) {
       candidateSetMayChangeAfterResponse: false,
       hardAdmissionMayChangeAfterResponse: false,
       responseScope: "ranking this exact candidate batch only",
+      reversibleGeometryDoesNotImplyDetailedBalance: true,
     },
   };
 }
@@ -267,6 +339,10 @@ export function validateFrozenActionBarrierResponse(response, expected) {
     if (record.candidateDigestSha256 !== candidate.candidateDigestSha256) {
       throw new Error(`barrier candidate digest mismatch for ${candidateId}`);
     }
+    if (record.initialGeometrySha256 !== candidate.initialGeometrySha256
+        || record.finalGeometrySha256 !== candidate.finalGeometrySha256) {
+      throw new Error(`barrier path geometry digest mismatch for ${candidateId}`);
+    }
     if (!finite(record.barrierElectronVolt) || Number(record.barrierElectronVolt) < 0) {
       throw new TypeError(`barrier for ${candidateId} must be finite and nonnegative`);
     }
@@ -290,6 +366,9 @@ export function validateFrozenActionBarrierResponse(response, expected) {
     return {
       candidateId,
       candidateDigestSha256: candidate.candidateDigestSha256,
+      eventDirection: candidate.eventDirection,
+      initialGeometrySha256: candidate.initialGeometrySha256,
+      finalGeometrySha256: candidate.finalGeometrySha256,
       barrierElectronVolt: Number(record.barrierElectronVolt),
       uncertaintyElectronVolt: Number(record.uncertaintyElectronVolt),
       maximumForceElectronVoltPerAngstrom: Number(record.maximumForceElectronVoltPerAngstrom),
@@ -328,5 +407,10 @@ export function validateFrozenActionBarrierResponse(response, expected) {
     eligibleForExactBatchRanking: true,
     eligibleAsTransferableLaw: false,
     physicalInferenceScope: "this initial configuration, candidate batch, method, and validation only",
+    eventDirections: [...new Set(normalized.records.map((record) => record.eventDirection))].sort(),
+    reversibleEventGeometryPresent: normalized.records.some((record) => record.eventDirection === "attach")
+      && normalized.records.some((record) => record.eventDirection === "detach"),
+    thermodynamicReversibilityCertified: false,
+    detailedBalanceCertified: false,
   };
 }

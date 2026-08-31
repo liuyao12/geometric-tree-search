@@ -87,10 +87,12 @@ import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntim
   validatedTrajectoryPairCorrelation }
   from "./external-trajectory-geometry.mjs?v=20260830-346";
 import { actionBarrierSha256, buildFrozenActionBarrierRequest, frozenActionBarrierRequestReceipt,
-  validateFrozenActionBarrierResponse }
-  from "./external-action-barrier.mjs?v=20260830-346";
+  frozenActionStateGeometrySha256, validateFrozenActionBarrierResponse }
+  from "./external-action-barrier.mjs?v=20260831-347";
 import { buildFrozenKineticCompetition }
-  from "./frozen-frontier-kinetics.mjs?v=20260830-346";
+  from "./frozen-frontier-kinetics.mjs?v=20260831-347";
+import { enumerateDetachableLeafPlacements }
+  from "./reversible-frontier-events.mjs?v=20260831-347";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -110,8 +112,8 @@ import { anisotropicDisplacementDampedWeightedPowderStructureFactor, compareStru
   weightedPowderStructureFactor }
   from "./structure-observables.js?v=20260827-7";
 import { compositionBalanceDelta, compositionDrift, learnCompositionTarget } from "./composition-balance.js?v=20260824-1";
-import { consumeFeedstock, evaluateFeedstockDemand, feedstockReservoirSnapshot,
-  initializeFeedstockReservoir } from "./feedstock-reservoir.js?v=20260827-2";
+import { consumeFeedstock, evaluateFeedstockDemand, feedstockReservoirSnapshot, releaseFeedstock,
+  initializeFeedstockReservoir } from "./feedstock-reservoir.js?v=20260831-347";
 import { localPackingDensityAudit } from "./local-packing-density.js?v=20260827-2";
 import { interstitialClearanceAudit } from "./interstitial-clearance.js?v=20260827-10";
 import { directionalContactExclusion, directionalPairDisplacementSigma, displacementClearanceKey,
@@ -606,6 +608,7 @@ const actionBarrierFreezeButton = $("actionBarrierFreeze");
 const actionBarrierDownloadButton = $("actionBarrierDownload");
 const actionBarrierResponseInput = $("actionBarrierResponse");
 const actionBarrierWeightSelect = $("actionBarrierWeight");
+const actionBarrierCatalogSelect = $("actionBarrierCatalog");
 const actionBarrierKineticModeSelect = $("actionBarrierKineticMode");
 const actionBarrierTemperatureSelect = $("actionBarrierTemperature");
 const actionBarrierKineticState = $("actionBarrierKineticState");
@@ -1611,10 +1614,13 @@ let growthSearchGeneration = 0;
 let pauseAfterCurrentGrowthLeap = false;
 let externalActionBarrierCheckpoint = null;
 let externalActionBarrierWeight = .25;
+let externalActionBarrierCatalogMode = "reversible-leaves";
 let externalActionBarrierKineticMode = "none";
 let externalActionBarrierTemperatureKelvin = 300;
 let catalogConditionalKineticClockSeconds = 0;
 let catalogConditionalKineticEventCount = 0;
+let reversibleDetachmentEventCount = 0;
+let reversibleDetachedAtomCount = 0;
 let lastExternalActionBarrierReceipt = null;
 let frontierCandidateKeys = new Set();
 let rejectedCandidateKeys = new Set();
@@ -2033,6 +2039,7 @@ const GROWTH_PROTOCOL_DEFAULTS = Object.freeze({
   requestedGrowthNuclei: 1, nucleationSiteMode: "replay", nucleationCandidateRank: 0,
   nucleationPoseVariant: 0,
   growthScheduling: "commuting", hierarchyEnabled: true,
+  externalActionBarrierCatalogMode: "reversible-leaves",
 });
 
 const GROWTH_PROTOCOLS = Object.freeze({
@@ -22657,6 +22664,12 @@ function consumeFeedstockForFreshSites(rawFreshSites) {
   return result.audit;
 }
 
+function returnFeedstockForDetachedAtoms(detachedAtoms) {
+  const result = releaseFeedstock(feedstockReservoir, detachedAtoms.map((atom) => atom.species));
+  feedstockReservoir = result.reservoir;
+  return result.audit;
+}
+
 function renderFeedstockInventory() {
   if (!feedstockInventoryBars || !feedstockInventoryState || !feedstockSupplyHint) return;
   const snapshot = currentFeedstockSnapshot();
@@ -23336,8 +23349,12 @@ function resetGrowthFrontierWork() {
 function catalogConditionalKineticClockSnapshot() {
   return { elapsedSeconds: catalogConditionalKineticClockSeconds,
     eventCount: catalogConditionalKineticEventCount,
+    attachmentAndDetachmentEventsAllowed: externalActionBarrierCatalogMode === "reversible-leaves",
+    committedDetachmentEvents: reversibleDetachmentEventCount,
+    detachedAtomsReturnedToReservoir: reversibleDetachedAtomCount,
     physicalScope: "finite enumerated catalog conditional",
-    completeMechanismCatalogClaimed: false };
+    completeMechanismCatalogClaimed: false,
+    detailedBalanceCertified: false, equilibriumEnsembleClaimed: false };
 }
 
 function currentLeapInputSnapshot() {
@@ -23369,7 +23386,10 @@ function actionBarrierCheckpointReceipt(checkpoint = externalActionBarrierCheckp
     candidateBatchSha256: checkpoint.requestReceipt.candidateBatchSha256,
     initialStructureSha256: checkpoint.requestReceipt.initialStructureSha256,
     frontierCandidateCount: checkpoint.evaluated.length,
-    hardAdmittedCandidateCount: checkpoint.admissibleEntries.length,
+    hardAdmittedCandidateCount: checkpoint.request.frontier.candidateCount,
+    attachmentEventCount: checkpoint.request.frontier.candidates.filter((candidate) => candidate.eventDirection === "attach").length,
+    detachmentEventCount: checkpoint.request.frontier.candidates.filter((candidate) => candidate.eventDirection === "detach").length,
+    eventCatalogMode: checkpoint.eventCatalogMode || "forward-only",
     responseSha256: checkpoint.responseSha256 || null,
     method: response?.audit.method || null,
     barrierRangeElectronVolt: response ? {
@@ -23389,6 +23409,11 @@ function actionBarrierCheckpointReceipt(checkpoint = externalActionBarrierCheckp
       recrossingCorrection: response.audit.kinetics?.recrossingCorrection || null,
       catalogScope: response.audit.kinetics?.catalogScope || null,
       candidateCount: kinetic.candidateCount, selectedCandidateId: kinetic.selectedCandidateId,
+      selectedEventDirection: kinetic.selectedEventDirection,
+      attachmentEventCount: kinetic.attachmentEventCount,
+      detachmentEventCount: kinetic.detachmentEventCount,
+      twoWayEventGeometryPresent: kinetic.twoWayEventGeometryPresent,
+      detailedBalanceCertified: false,
       selectedLog10RatePerSecond: kinetic.selectedLog10RatePerSecond,
       selectedProbabilityWithinFrozenCatalog: kinetic.selectedProbabilityWithinFrozenCatalog,
       log10TotalRatePerSecond: kinetic.log10TotalRatePerSecond,
@@ -23402,6 +23427,8 @@ function actionBarrierCheckpointReceipt(checkpoint = externalActionBarrierCheckp
       committed: kineticClockCommitted,
       targetUsed: false, catalogCompleteBeyondFrozenFrontier: false,
     } : null,
+    reversibleEventGeometryPresent: Boolean(response?.audit?.reversibleEventGeometryPresent),
+    thermodynamicReversibilityCertified: false, detailedBalanceCertified: false,
     candidateSetChanged: false, hardAdmissionChanged: false, candidateGeometryChanged: false,
     targetUsed: false, usedAsPotential: false, physicalRateInferred: Boolean(kinetic),
     physicalTimeInferred: Boolean(kineticClockCommitted && kinetic?.mode === "seeded-kmc"),
@@ -23452,8 +23479,13 @@ function renderActionBarrierCheckpoint() {
   const checkpoint = externalActionBarrierCheckpoint;
   actionBarrierKineticModeSelect.value = externalActionBarrierKineticMode;
   actionBarrierTemperatureSelect.value = String(externalActionBarrierTemperatureKelvin);
+  const reversibleLeafCount = externalActionBarrierCatalogMode === "reversible-leaves"
+    ? reversibleLeafEventCatalog().admitted.length : 0;
   const available = pipelineStage === 4 && !knownWindowReplayActive() && !iceAnchorTrace
-    && !iqcDisjointTrace && !currentMaterial().growthWithheld && frontierCandidates.length > 0;
+    && !iqcDisjointTrace && !currentMaterial().growthWithheld
+    && (frontierCandidates.length > 0 || reversibleLeafCount > 0);
+  actionBarrierCatalogSelect.value = externalActionBarrierCatalogMode;
+  actionBarrierCatalogSelect.disabled = Boolean(checkpoint) || growthFrontierWork.busy;
   panel.classList.toggle("ready", Boolean(checkpoint));
   panel.classList.toggle("validated", Boolean(checkpoint?.validatedResponse));
   panel.classList.toggle("kinetic", Boolean(checkpoint?.kineticCompetition)
@@ -23472,7 +23504,7 @@ function renderActionBarrierCheckpoint() {
   if (!checkpoint) {
     actionBarrierCheckpointBadge.textContent = available ? "ready to freeze" : "unavailable";
     actionBarrierCheckpointState.textContent = available
-      ? `Freeze the next target-free frontier before selection. The request contains the initial state and every hard-admitted exact action in ångströms.${catalogConditionalKineticEventCount ? ` Current finite-catalog clock: ${kineticValueText(catalogConditionalKineticClockSeconds, " s")}.` : ""}`
+      ? `Freeze the next target-free frontier before selection. The request contains the initial state, every hard-admitted attachment, and ${externalActionBarrierCatalogMode === "reversible-leaves" ? `${reversibleLeafCount} ownership-certified leaf detachment${reversibleLeafCount === 1 ? "" : "s"}` : "no reverse events"} in ångströms.${catalogConditionalKineticEventCount ? ` Current finite-catalog clock: ${kineticValueText(catalogConditionalKineticClockSeconds, " s")}.` : ""}`
       : knownWindowReplayActive() ? "Action barriers are withheld during target-aware known-window replay. Continue to target-free growth first."
         : "Enter executable target-free material growth to freeze an action frontier.";
     actionBarrierSummary.replaceChildren(...(catalogConditionalKineticEventCount ? [
@@ -23492,12 +23524,13 @@ function renderActionBarrierCheckpoint() {
   actionBarrierCheckpointBadge.textContent = audit ? "response bound" : "frontier frozen";
   actionBarrierCheckpointState.textContent = audit
     ? checkpoint.kineticCompetition
-      ? `${audit.candidateCount} converged barrier + prefactor records are bound to request ${checkpoint.requestReceipt.requestSha256.slice(0, 12)}… . Exactly one ${checkpoint.kineticCompetition.mode === "seeded-kmc" ? "seeded KMC" : "maximum-rate"} event will commit.`
+      ? `${audit.candidateCount} converged barrier + prefactor records are bound to request ${checkpoint.requestReceipt.requestSha256.slice(0, 12)}… . Exactly one ${checkpoint.kineticCompetition.selectedEventDirection} event selected by ${checkpoint.kineticCompetition.mode === "seeded-kmc" ? "seeded KMC" : "maximum rate"} will commit.`
       : `${audit.candidateCount} converged barriers are bound to request ${checkpoint.requestReceipt.requestSha256.slice(0, 12)}… . Weight ${externalActionBarrierWeight.toFixed(2)} changes only the stable ordering of this batch; Commit resumes the paused leap.`
     : `Growth is paused before commit. Download request ${checkpoint.requestReceipt.requestSha256.slice(0, 12)}… and return one converged barrier record for every admitted candidate.`;
   const tiles = [
     ["frozen frontier", `${checkpoint.evaluated.length} candidates`],
-    ["hard admitted", `${checkpoint.admissibleEntries.length} actions`],
+    ["event catalog", `${checkpoint.request.frontier.candidateCount} actions`],
+    ["attach / detach", `${checkpoint.request.frontier.candidates.filter((candidate) => candidate.eventDirection === "attach").length} / ${checkpoint.detachmentEvents.length}`],
     ["candidate SHA", checkpoint.requestReceipt.candidateBatchSha256.slice(0, 12)],
     [audit ? "barrier range" : "execution effect", audit
       ? `${Math.min(...audit.records.map((record) => record.barrierElectronVolt)).toFixed(3)}–${Math.max(...audit.records.map((record) => record.barrierElectronVolt)).toFixed(3)} eV`
@@ -23505,7 +23538,7 @@ function renderActionBarrierCheckpoint() {
   ];
   const kinetic = checkpoint.kineticCompetition;
   if (kinetic) tiles.push([kinetic.mode === "seeded-kmc" ? "sampled event" : "maximum-rate event",
-    `${kinetic.selectedCandidateId.slice(0, 12)} · log₁₀k ${kinetic.selectedLog10RatePerSecond.toFixed(2)}`]);
+    `${kinetic.selectedEventDirection} · ${kinetic.selectedCandidateId.slice(0, 12)} · log₁₀k ${kinetic.selectedLog10RatePerSecond.toFixed(2)}`]);
   actionBarrierSummary.replaceChildren(...tiles.map(([label, value]) => {
     const tile = document.createElement("span"); const strong = document.createElement("strong");
     tile.append(document.createTextNode(label)); strong.textContent = value; tile.append(strong); return tile;
@@ -23513,8 +23546,8 @@ function renderActionBarrierCheckpoint() {
   actionBarrierResumeButton.textContent = kinetic ? "Commit one kinetic event" : "Commit unchanged frontier";
   actionBarrierKineticState.textContent = kinetic
     ? kinetic.mode === "seeded-kmc"
-      ? `${kinetic.temperatureKelvin} K · selected catalog probability ${(100 * kinetic.selectedProbabilityWithinFrozenCatalog).toFixed(2)}% · Δt ${kineticValueText(kinetic.waitingTimeSeconds, " s")} · conditional clock after commit ${kineticValueText(kinetic.clockAfterSeconds, " s")}.`
-      : `${kinetic.temperatureKelvin} K · deterministic maximum-rate action · log₁₀(k/s⁻¹) ${kinetic.selectedLog10RatePerSecond.toFixed(3)} · no clock increment.`
+      ? `${kinetic.temperatureKelvin} K · selected ${kinetic.selectedEventDirection} probability ${(100 * kinetic.selectedProbabilityWithinFrozenCatalog).toFixed(2)}% · Δt ${kineticValueText(kinetic.waitingTimeSeconds, " s")} · conditional clock after commit ${kineticValueText(kinetic.clockAfterSeconds, " s")}.`
+      : `${kinetic.temperatureKelvin} K · deterministic maximum-rate ${kinetic.selectedEventDirection} · log₁₀(k/s⁻¹) ${kinetic.selectedLog10RatePerSecond.toFixed(3)} · no clock increment.`
     : !audit
       ? "No response is bound yet. Kinetic competition requires complete barrier and prefactor records for this exact frozen frontier."
       : kineticsEligible
@@ -23535,25 +23568,61 @@ function refreshExternalActionBarrierScores() {
   capturePolicyComparison(checkpoint.evaluated, checkpoint.before);
 }
 
+function reversibleLeafEventCatalog() {
+  const placements = placedClusters.map((placement) => ({ ...placement,
+    reconstructionOnly: Boolean(overlapGrammar.rules?.find((rule) => rule.id === placement.ruleId)?.reconstructionOnly),
+  }));
+  return enumerateDetachableLeafPlacements({ placements, atoms });
+}
+
+function detachedPlacementEventDescriptor(audit) {
+  const placement = placedClusters.find((entry) => entry.id === audit.placementId);
+  const removableAtoms = audit.removableAtomIds.map((id) => atoms.find((atom) => atom.id === id)).filter(Boolean);
+  const actionAtoms = audit.retainedSharedAtomIds.concat(audit.removableAtomIds)
+    .map((id) => atoms.find((atom) => atom.id === id)).filter(Boolean);
+  const removedSites = removableAtoms.map(actionBarrierSitePayload);
+  const actionSites = actionAtoms.map(actionBarrierSitePayload);
+  return { key: `detach:${placement.id}:${placement.ruleId}:${audit.removableAtomIds.join(".")}`,
+    eventDirection: "detach", placementId: placement.id, placement, audit,
+    removableAtoms, removedSites, actionSites,
+  };
+}
+
 async function buildExternalActionBarrierCheckpoint(evaluated, before, generation) {
   const admissibleEntries = evaluated.filter((entry) => entry.evaluation.accepted);
-  if (!admissibleEntries.length) throw new Error("the frozen frontier has no hard-admitted action to calculate");
+  const reversibleLeafCatalog = externalActionBarrierCatalogMode === "reversible-leaves"
+    ? reversibleLeafEventCatalog() : { admitted: [], rejected: [], targetUsed: false };
+  const detachmentEvents = reversibleLeafCatalog.admitted.map(detachedPlacementEventDescriptor);
+  if (!admissibleEntries.length && !detachmentEvents.length) {
+    throw new Error("the frozen frontier has no hard-admitted attachment or exact leaf detachment to calculate");
+  }
   const initialConfiguration = await externalPhysicsConfigurationPayload(atoms, "frozen frontier initial state");
-  const candidates = await Promise.all(admissibleEntries.map(async (entry) => {
+  const attachmentCandidates = await Promise.all(admissibleEntries.map(async (entry) => {
     const emittedSites = entry.evaluation.fresh.map(actionBarrierSitePayload);
     const actionSites = entry.evaluation.sites.map(actionBarrierSitePayload);
     return {
       candidateId: entry.candidate.key,
       candidateDigestSha256: await actionBarrierSha256({ candidateId: entry.candidate.key,
-        emittedSites, actionSites }),
+        eventDirection: "attach", emittedSites, removedSites: [], actionSites }),
       actionLabel: policyActionLabel(entry), parentType: entry.candidate.rule.from,
       childType: entry.candidate.rule.to, ruleId: entry.candidate.rule.id,
-      emittedSites, actionSites,
+      eventDirection: "attach", emittedSites, removedSites: [], actionSites,
     };
   }));
+  const detachmentCandidates = await Promise.all(detachmentEvents.map(async (event) => ({
+    candidateId: event.key,
+    candidateDigestSha256: await actionBarrierSha256({ candidateId: event.key,
+      eventDirection: "detach", emittedSites: [], removedSites: event.removedSites,
+      actionSites: event.actionSites }),
+    actionLabel: `detach leaf C${event.placement.type + 1} · retain ${event.audit.retainedSharedAtomIds.length} shared`,
+    parentType: event.placement.type, childType: event.placement.type,
+    ruleId: event.placement.ruleId, eventDirection: "detach",
+    emittedSites: [], removedSites: event.removedSites, actionSites: event.actionSites,
+  })));
+  const candidates = [...attachmentCandidates, ...detachmentCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260830-346",
+    generatedAt: new Date().toISOString(), buildId: "20260831-347",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -23562,13 +23631,16 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
   const requestReceipt = await frozenActionBarrierRequestReceipt(request);
   return { schema: 1, generation, controlsJson: JSON.stringify(currentGrowthProtocolSettings()),
     markingId: selectedMarking()?.id || null, before, evaluated, admissibleEntries,
+    detachmentEvents, reversibleLeafCatalog, eventCatalogMode: externalActionBarrierCatalogMode,
     frontierDigest: frozenFrontierDigest(evaluated), request, requestReceipt,
     validatedResponse: null, responseSha256: null, consumed: false };
 }
 
 async function freezeExternalActionBarrierFrontier() {
   if (pipelineStage !== 4 || knownWindowReplayActive() || externalActionBarrierCheckpoint
-      || growthFrontierWork.busy || !frontierCandidates.length) return;
+      || growthFrontierWork.busy || (!frontierCandidates.length
+        && !(externalActionBarrierCatalogMode === "reversible-leaves"
+          && reversibleLeafEventCatalog().admitted.length))) return;
   setPlaying(false);
   const before = currentLeapInputSnapshot();
   const evaluatedState = await evaluateFrozenFrontierEntries(before);
@@ -23587,7 +23659,7 @@ async function freezeExternalActionBarrierFrontier() {
   };
   growthFrontierWork.busy = false; growthFrontierWork.phase = "checkpoint";
   stepButton.disabled = false; resetButton.disabled = false; updatePipelineButtons();
-  receiptStatus.textContent = `Action frontier frozen · ${externalActionBarrierCheckpoint.admissibleEntries.length} admitted actions · no branch committed.`;
+  receiptStatus.textContent = `Action frontier frozen · ${externalActionBarrierCheckpoint.request.frontier.candidateCount} exact events (${externalActionBarrierCheckpoint.admissibleEntries.length} attach + ${externalActionBarrierCheckpoint.detachmentEvents.length} detach) · no branch committed.`;
   renderActionBarrierCheckpoint(); renderGrowthFrontierWork(); updateUI();
 }
 
@@ -23600,7 +23672,7 @@ async function downloadExternalActionBarrierRequest() {
   link.href = url; link.download = `gcts-${scenarioSelect.value}-frozen-frontier-action-barriers.json`;
   document.body.appendChild(link); link.click(); link.remove();
   setTimeout(() => URL.revokeObjectURL(url), 0);
-  receiptStatus.textContent = `Action-barrier request downloaded · ${checkpoint.admissibleEntries.length} exact candidates · request ${checkpoint.requestReceipt.requestSha256.slice(0, 12)}… · nothing submitted.`;
+  receiptStatus.textContent = `Action-barrier request downloaded · ${checkpoint.request.frontier.candidateCount} exact candidates · request ${checkpoint.requestReceipt.requestSha256.slice(0, 12)}… · nothing submitted.`;
 }
 
 async function validateExternalActionBarrierFile(file) {
@@ -23609,9 +23681,7 @@ async function validateExternalActionBarrierFile(file) {
     throw new Error("Freeze a frontier first; response files are limited to 32 MB");
   }
   const responseText = await file.text(); const response = JSON.parse(responseText);
-  const expected = { ...checkpoint.requestReceipt,
-    candidates: checkpoint.request.frontier.candidates.map(({ candidateId, candidateDigestSha256 }) =>
-      ({ candidateId, candidateDigestSha256 })) };
+  const expected = { ...checkpoint.requestReceipt, candidates: checkpoint.request.frontier.candidates };
   const audit = validateFrozenActionBarrierResponse(response, expected);
   const responseSha256 = await receiptSha256(responseText);
   checkpoint.validatedResponse = { audit,
@@ -23798,6 +23868,31 @@ async function commutingFrontierBatch(frontierStructuralState = null) {
     stepButton.disabled = true; resetButton.disabled = true; updatePipelineButtons();
     refreshExternalActionBarrierScores();
     checkpoint.consumed = true;
+    const selectedDetachment = checkpoint.kineticCompetition
+      ? checkpoint.detachmentEvents.find((event) =>
+        event.key === checkpoint.kineticCompetition.selectedCandidateId) : null;
+    if (selectedDetachment) {
+      lastGrowthFrontierWorkAudit = {
+        schema: 1, evaluatedCandidates: checkpoint.request.frontier.candidateCount,
+        total: checkpoint.request.frontier.candidateCount, eventLoopYields: 0,
+        maximumSliceMilliseconds: 0, candidateSetFrozenBeforeEvaluation: true,
+        candidateSetTargetUsed: false, rankingTargetUsed: false,
+        externalActionBarrierCheckpointUsed: true,
+        externalActionBarrierRequestSha256: checkpoint.requestReceipt.requestSha256,
+        externalActionBarrierResponseSha256: checkpoint.responseSha256,
+        kineticCompetitionMode: checkpoint.kineticCompetition.mode,
+        kineticTemperatureKelvin: checkpoint.kineticCompetition.temperatureKelvin,
+        kineticSelectedCandidateId: checkpoint.kineticCompetition.selectedCandidateId,
+        kineticSerialOverride: true, selectedEventDirection: "detach",
+        kineticCatalogCompleteBeyondFrozenFrontier: false,
+        physicalTimeInferred: checkpoint.kineticCompetition.mode === "seeded-kmc",
+        claimBoundary: "The exact ownership-certified leaf detachment was selected by the finite catalog HTST competition. The catalog is not a complete mechanism set or detailed-balance proof.",
+      };
+      return [{ candidate: { key: selectedDetachment.key, eventDirection: "detach",
+        placementId: selectedDetachment.placementId },
+      evaluation: { accepted: true, eventDirection: "detach" },
+      detachmentEvent: selectedDetachment }];
+    }
     evaluatedState = { evaluated: checkpoint.evaluated, generation: checkpoint.generation,
       frozenCandidates: checkpoint.evaluated.map((entry) => entry.candidate) };
   } else {
@@ -23809,7 +23904,7 @@ async function commutingFrontierBatch(frontierStructuralState = null) {
   if (batch === null || evaluatedState.generation !== growthSearchGeneration) return null;
   lastGrowthFrontierWorkAudit = {
     schema: 1, evaluatedCandidates: evaluatedState.evaluated.length,
-    total: evaluatedState.frozenCandidates.length,
+    total: checkpoint?.request.frontier.candidateCount || evaluatedState.frozenCandidates.length,
     eventLoopYields: growthFrontierWork.yields,
     maximumSliceMilliseconds: receiptRound(growthFrontierWork.maximumSliceMilliseconds, 3),
     candidateSetFrozenBeforeEvaluation: true, candidateSetTargetUsed: false,
@@ -24934,6 +25029,8 @@ function initializeOffLatticeSearch() {
   externalActionBarrierKineticMode = "none";
   catalogConditionalKineticClockSeconds = 0;
   catalogConditionalKineticEventCount = 0;
+  reversibleDetachmentEventCount = 0;
+  reversibleDetachedAtomCount = 0;
   lastPolicyComparison = null;
   policyComparisonHistory = [];
   selectedMarkingFrontierId = null;
@@ -25848,7 +25945,7 @@ function currentGrowthProtocolSettings() {
     feedExposureMode, feedExposureWeight,
     geometricExplorationScale, growthPathSeed, growthSeedProtocol,
     requestedGrowthNuclei, nucleationSiteMode, nucleationCandidateRank, nucleationPoseVariant,
-    growthScheduling, hierarchyEnabled,
+    growthScheduling, hierarchyEnabled, externalActionBarrierCatalogMode,
   };
 }
 
@@ -25916,6 +26013,7 @@ function growthSettingSelects() {
     nucleationCandidateRank: nucleationRankSelect,
     nucleationPoseVariant: nucleationPoseSelect,
     growthScheduling: growthSchedulingSelect,
+    externalActionBarrierCatalogMode: actionBarrierCatalogSelect,
   };
 }
 
@@ -26110,6 +26208,7 @@ function applyGrowthProtocolSettings(settings, options = {}) {
     ? Number(settings.nucleationPoseVariant) : 0;
   growthScheduling = settings.growthScheduling;
   hierarchyEnabled = settings.hierarchyEnabled;
+  externalActionBarrierCatalogMode = settings.externalActionBarrierCatalogMode || "reversible-leaves";
   if (options.sync === false) return;
   if (pipelineStage === 4) enterPipelineStage(4);
   else syncStageOptions();
@@ -27725,6 +27824,8 @@ function resetCounters() {
   externalActionBarrierKineticMode = "none";
   catalogConditionalKineticClockSeconds = 0;
   catalogConditionalKineticEventCount = 0;
+  reversibleDetachmentEventCount = 0;
+  reversibleDetachedAtomCount = 0;
   lastPolicyComparison = null;
   policyComparisonHistory = [];
   selectedMarkingFrontierId = null;
@@ -28323,11 +28424,16 @@ function freezeCreationGeometryForAtoms(atomIds) {
   });
 }
 
+function nextPlacementId() {
+  return Math.max(0, ...placedClusters.map((placement) =>
+    Number.isInteger(placement.id) ? placement.id : 0)) + 1;
+}
+
 function materializeCandidate(candidate, evaluation, leapCreationContext) {
   const parent = placedClusters.find((placement) => placement.id === candidate.parentId);
   const centerReferenceIndex = evaluation.sites.find((site) => site.center)?.referenceIndex;
   const placement = {
-    id: placedClusters.length + 1, type: candidate.type,
+    id: nextPlacementId(), type: candidate.type,
     nucleusId: parent?.nucleusId || 1,
     position: candidate.position.clone(), rotation: candidate.rotation.clone(),
     occurrenceIndex: overlapGrammar.coverBased || overlapGrammar.molecular ? candidate.occurrenceIndex : Number.isInteger(centerReferenceIndex)
@@ -28454,6 +28560,86 @@ function currentLeapOutcomeSnapshot(accepted, rejected) {
   };
 }
 
+async function performOwnershipCertifiedDetachment(entry, before) {
+  const checkpoint = externalActionBarrierCheckpoint;
+  const kinetic = checkpoint?.kineticCompetition;
+  if (!checkpoint || !kinetic || entry?.candidate?.eventDirection !== "detach") {
+    throw new Error("detachment execution requires one validated frozen kinetic event");
+  }
+  const currentAudit = reversibleLeafEventCatalog().admitted.find((audit) =>
+    audit.placementId === entry.detachmentEvent.placementId);
+  if (!currentAudit || currentAudit.removableAtomIds.join(".")
+      !== entry.detachmentEvent.audit.removableAtomIds.join(".")) {
+    throw new Error("leaf ownership changed after the reversible event catalog was frozen");
+  }
+  const placement = placedClusters.find((candidate) => candidate.id === currentAudit.placementId);
+  const removableIds = new Set(currentAudit.removableAtomIds);
+  const detachedAtoms = atoms.filter((atom) => removableIds.has(atom.id));
+  if (detachedAtoms.length !== removableIds.size) throw new Error("detachment atom set is incomplete");
+  const requestCandidate = checkpoint.request.frontier.candidates.find((candidate) =>
+    candidate.candidateId === entry.candidate.key);
+  if (!requestCandidate || requestCandidate.eventDirection !== "detach") {
+    throw new Error("selected detachment is absent from the frozen request");
+  }
+  const projectedGeometrySha256 = await frozenActionStateGeometrySha256(
+    atoms.filter((atom) => !removableIds.has(atom.id)).map(actionBarrierSitePayload));
+  if (projectedGeometrySha256 !== requestCandidate.finalGeometrySha256) {
+    throw new Error("projected detachment does not match the frozen final-state geometry digest");
+  }
+  returnFeedstockForDetachedAtoms(detachedAtoms);
+  atoms.forEach((atom) => {
+    if (!atom.clusterIds?.includes(placement.id)) return;
+    atom.clusterIds = atom.clusterIds.filter((id) => id !== placement.id);
+  });
+  atoms = atoms.filter((atom) => !removableIds.has(atom.id));
+  placedClusters = placedClusters.filter((candidate) => candidate.id !== placement.id);
+  const rule = overlapGrammar.rules?.find((candidate) => candidate.id === placement.ruleId);
+  if (rule?.used) rule.used--;
+  extensionIndex = Math.max(0, extensionIndex - 1);
+  sectorCounts = new Array(BALANCE_DIRECTIONS.length).fill(0);
+  placedClusters.filter((candidate) => candidate.parentId != null)
+    .forEach((candidate) => sectorCounts[frontierSector(candidate.position)]++);
+  frontierCandidates = [];
+  frontierCandidateKeys = new Set();
+  rejectedCandidateKeys = new Set();
+  placedClusters.forEach(enqueueRulesFromPlacement);
+  rebuildSpatialIndex();
+  currentCandidates = [];
+  acceptedDecisions++;
+  reversibleDetachmentEventCount++;
+  reversibleDetachedAtomCount += detachedAtoms.length;
+  eventIndex++;
+  if (kinetic.mode === "seeded-kmc") {
+    catalogConditionalKineticClockSeconds = kinetic.clockAfterSeconds;
+    catalogConditionalKineticEventCount = kinetic.eventCountAfter;
+    checkpoint.kineticClockCommitted = true;
+  }
+  const receipt = actionBarrierCheckpointReceipt(checkpoint);
+  appendHistory("detach", { type: "detach", depth: placement.depth,
+    action: `detach C${placement.type + 1}`, family: `${detachedAtoms.length} exclusive atoms removed · ${currentAudit.retainedSharedAtomIds.length} shared retained` });
+  const after = currentLeapOutcomeSnapshot(1, 0);
+  captionAction.textContent = `1 ownership-certified leaf detachment · ${detachedAtoms.length} atoms returned to the ${feedstockSupplyMode === "open" ? "open" : "finite"} reservoir · ${currentAudit.retainedSharedAtomIds.length} shared support atoms retained.`;
+  recordStructuralLeap({ status: "accepted", label: "catalog-conditional whole-cluster detachment",
+    before,
+    proposal: { candidates: 1, sites: placement.atomIds.length,
+      shared: currentAudit.retainedSharedAtomIds.length, fresh: 0,
+      removed: detachedAtoms.length, eventDirection: "detach" },
+    tests: { summary: "ownership + dependency certificate passed",
+      detail: "The placement was a non-seed leaf; every originally emitted atom remained exclusively owned; shared support was retained; the exact final geometry digest was reproduced." },
+    asPlaced: null, settlingSensitivity: null, relaxation: null,
+    actionBarrierCheckpoint: receipt, after,
+    claimBoundary: `${kinetic.claimBoundary} This reverse geometric event removes only an ownership-certified leaf and returns its atoms to the declared bookkeeping reservoir. It does not establish a chemical potential, grand potential, detailed balance, equilibrium sampling, surface desorption mechanism completeness, or a transferable rate law.` });
+  lastExternalActionBarrierReceipt = { ...actionBarrierCheckpointReceipt(checkpoint),
+    status: "consumed", usedForRanking: true, selectedEventDirection: "detach",
+    exactFinalGeometryReproduced: true };
+  externalActionBarrierCheckpoint = null;
+  externalActionBarrierKineticMode = "none";
+  actionBarrierKineticModeSelect.value = "none";
+  actionBarrierResponseInput.value = "";
+  rebuildWorld();
+  updateUI();
+}
+
 async function performOffLatticeEvent() {
   if (externalActionBarrierCheckpoint && !externalActionBarrierCheckpoint.validatedResponse) {
     receiptStatus.textContent = "This exact frontier is paused. Validate its action-barrier response or release the checkpoint before committing.";
@@ -28465,6 +28651,10 @@ async function performOffLatticeEvent() {
   const before = externalActionBarrierCheckpoint?.before || currentLeapInputSnapshot();
   const batch = await commutingFrontierBatch(before);
   if (batch === null) return;
+  if (batch.length === 1 && batch[0].candidate?.eventDirection === "detach") {
+    await performOwnershipCertifiedDetachment(batch[0], before);
+    return;
+  }
   if (!batch.length) {
     recordStructuralLeap({ status: "fixed", label: "no geometrically admissible successor",
       before, proposal: { candidates: 0, sites: 0, shared: 0, fresh: 0 },
@@ -30251,12 +30441,12 @@ function physicsTranslationRecords(leap = null) {
       executionEffects: { ranking: Boolean(externalActionBarrierCheckpoint?.validatedResponse
         && (externalActionBarrierWeight > 0 || externalActionBarrierCheckpoint.kineticCompetition)) },
       encoding: externalActionBarrierCheckpoint?.validatedResponse
-        ? `${externalActionBarrierCheckpoint.admissibleEntries.length} exact hard-admitted action IDs; response ${externalActionBarrierCheckpoint.responseSha256}; ${externalActionBarrierCheckpoint.kineticCompetition ? `barrier enters ${externalActionBarrierCheckpoint.kineticCompetition.mode} with an independently supplied prefactor at ${externalActionBarrierTemperatureKelvin} K` : `lower barrier mapped by tanh((median(E)-E)/(2 robustScale)); w=${externalActionBarrierWeight.toFixed(2)}`}`
+        ? `${externalActionBarrierCheckpoint.request.frontier.candidateCount} exact event IDs (${externalActionBarrierCheckpoint.admissibleEntries.length} attach + ${externalActionBarrierCheckpoint.detachmentEvents.length} ownership-certified detach); response ${externalActionBarrierCheckpoint.responseSha256}; ${externalActionBarrierCheckpoint.kineticCompetition ? `barrier enters ${externalActionBarrierCheckpoint.kineticCompetition.mode} with an independently supplied prefactor at ${externalActionBarrierTemperatureKelvin} K` : `attachment barriers map by tanh((median(E)-E)/(2 robustScale)); w=${externalActionBarrierWeight.toFixed(2)}`}`
         : "requires an explicitly frozen target-free frontier and one converged method-provenanced path record for every admitted action",
       evidence: externalActionBarrierCheckpoint?.validatedResponse
         ? `Request ${externalActionBarrierCheckpoint.requestReceipt.requestSha256}; candidate batch ${externalActionBarrierCheckpoint.requestReceipt.candidateBatchSha256}; ${externalActionBarrierCheckpoint.validatedResponse.audit.candidateCount} records passed exact ID, digest, convergence, holdout, uncertainty, and safeguard checks.`
         : "No validated response is bound to the current frontier.",
-      boundary: "A response may act only on this exact immutable candidate batch. It never creates geometry, changes hard admission, or transfers as an interatomic potential. A rate or conditional waiting time additionally requires complete prefactors and an explicit Kelvin temperature; barriers alone remain clock-free." },
+      boundary: "A response may act only on this exact immutable candidate batch. Leaf detachment retains shared atoms and forbids cascades, but geometric reversibility is not thermodynamic reversibility. The response never creates geometry, changes hard admission, transfers as an interatomic potential, or supplies chemical potentials, detailed balance, or equilibrium sampling." },
     { id: "calculation-stress", process: "external calculation stress / tensor-shaped metric",
       status: calculation?.stressCoverage > 0
         ? ["archive-stress", "archive-stress-reverse"].includes(affineLoadMode) ? "soft" : "explicit"
@@ -30539,12 +30729,12 @@ function physicsTranslationRecords(leap = null) {
         : "requires complete barriers, prefactors, and a declared Kelvin temperature",
       executionEffects: { ranking: Boolean(kineticReceipt), searchOrder: Boolean(kineticReceipt) },
       encoding: kineticReceipt
-        ? `${kineticReceipt.candidateCount} exact frozen actions at ${kineticReceipt.temperatureKelvin} K; selected ${kineticReceipt.selectedCandidateId}; log10 total rate ${kineticReceipt.log10TotalRatePerSecond.toFixed(3)} s^-1; prefactor ${kineticReceipt.prefactorMethod}`
+        ? `${kineticReceipt.candidateCount} exact frozen actions (${kineticReceipt.attachmentEventCount} attach + ${kineticReceipt.detachmentEventCount} detach) at ${kineticReceipt.temperatureKelvin} K; selected ${kineticReceipt.selectedEventDirection} ${kineticReceipt.selectedCandidateId}; log10 total rate ${kineticReceipt.log10TotalRatePerSecond.toFixed(3)} s^-1; prefactor ${kineticReceipt.prefactorMethod}`
         : "no method-bound complete action catalog with barriers and attempt frequencies",
       evidence: kineticReceipt
         ? `${kineticReceipt.mode === "seeded-kmc" ? `Seeded waiting time ${kineticValueText(kineticReceipt.waitingTimeSeconds, " s")}; catalog-conditional clock ${kineticValueText(kineticReceipt.clockAfterSeconds, " s")}.` : "No waiting time was drawn."} Request, candidate batch, barrier method, prefactor settings, temperature, and random uniforms are retained in the leap receipt.`
         : "No catalog-conditional physical rate has been evaluated.",
-      boundary: "The HTST competition is conditional on one finite hard-admitted event catalog. It omits unenumerated mechanisms and does not establish a transferable potential, complete kinetic model, MD trajectory, equilibrium ensemble, heat-flow solution, diffusion coefficient, nucleation rate, or unconditional material time." },
+      boundary: "The HTST competition is conditional on one finite hard-admitted event catalog. Even when attachment and leaf detachment are both present, no inverse event pairing, reservoir chemical potential, grand-potential difference, or detailed-balance relation is certified. It omits unenumerated mechanisms and does not establish a transferable potential, equilibrium ensemble, MD trajectory, or unconditional material time." },
     { id: "kinetics", process: "activation, diffusion, heat flow, and elapsed time", status: activeArrivalPathWeight() > 0 ? "soft" : "open", role: activeArrivalPathWeight() > 0 ? "geometric accessibility proxy" : "not modeled",
       encoding: activeArrivalPathWeight() > 0
         ? `${arrivalPathLabel()}; ${arrivalPathMode === "free-volume" ? "5 routes × " : ""}9 swept-clearance samples over 2dₙₙ for emitted sites only, w=${activeArrivalPathWeight().toFixed(2)}`
@@ -37522,6 +37712,14 @@ actionBarrierWeightSelect.addEventListener("change", () => {
       ? `Validated barriers will contribute w=${externalActionBarrierWeight.toFixed(2)} to this batch only.`
       : "Validated barriers remain diagnostic; branch ordering is unchanged.";
   }
+  renderActionBarrierCheckpoint(); updateUI();
+});
+actionBarrierCatalogSelect.addEventListener("change", () => {
+  externalActionBarrierCatalogMode = actionBarrierCatalogSelect.value === "forward-only"
+    ? "forward-only" : "reversible-leaves";
+  receiptStatus.textContent = externalActionBarrierCatalogMode === "reversible-leaves"
+    ? "The next checkpoint will include every hard-admitted attachment plus each ownership-certified non-seed leaf detachment. Shared atoms and dependent branches remain protected."
+    : "The next checkpoint will include hard-admitted attachments only.";
   renderActionBarrierCheckpoint(); updateUI();
 });
 actionBarrierKineticModeSelect.addEventListener("change", () => {

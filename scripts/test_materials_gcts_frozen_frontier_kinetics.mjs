@@ -5,7 +5,7 @@ import {
 } from "../apps/iqc-growth-live/frozen-frontier-kinetics.mjs";
 
 const records = [
-  { candidateId: "slow", barrierElectronVolt: .8, uncertaintyElectronVolt: .03,
+  { candidateId: "slow", eventDirection: "detach", barrierElectronVolt: .8, uncertaintyElectronVolt: .03,
     attemptFrequencyPerSecond: 1e13, attemptFrequencyUncertaintyLog10: .1 },
   { candidateId: "fast", barrierElectronVolt: .4, uncertaintyElectronVolt: .02,
     attemptFrequencyPerSecond: 1e13, attemptFrequencyUncertaintyLog10: .1 },
@@ -15,6 +15,11 @@ const maximum = buildFrozenKineticCompetition(records, {
   temperatureKelvin: 600, mode: "rate-maximum",
 });
 assert.equal(maximum.selectedCandidateId, "fast");
+assert.equal(maximum.selectedEventDirection, "attach");
+assert.equal(maximum.attachmentEventCount, 1);
+assert.equal(maximum.detachmentEventCount, 1);
+assert.equal(maximum.twoWayEventGeometryPresent, true);
+assert.equal(maximum.detailedBalanceCertified, false);
 assert.equal(maximum.waitingTimeSeconds, null);
 assert.equal(maximum.catalogConditionalClock, false);
 assert.ok(maximum.records.find((record) => record.candidateId === "fast").ratePerSecond
