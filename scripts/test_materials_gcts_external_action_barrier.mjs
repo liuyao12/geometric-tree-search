@@ -231,6 +231,34 @@ assert.deepEqual(reversibleThermodynamics.records.find((record) =>
   record.eventDirection === "attach").speciesDelta, { Na: 1 });
 assert.deepEqual(reversibleThermodynamics.records.find((record) =>
   record.eventDirection === "detach").speciesDelta, { Na: -1 });
+const hopRaw = { candidateId: "hop:2->9", eventDirection: "hop", actionLabel: "surface hop",
+  parentType: 1, childType: 1, ruleId: 8,
+  emittedSites: [{ species: "Na", positionAngstrom: [2, 0, 0] }],
+  removedSites: [{ species: "Na", positionAngstrom: [0, 0, 0] }],
+  actionSites: [{ species: "Na", positionAngstrom: [0, 0, 0] },
+    { species: "Na", positionAngstrom: [2, 0, 0] }] };
+const hop = { ...hopRaw, candidateDigestSha256: await actionBarrierSha256({
+  candidateId: hopRaw.candidateId, eventDirection: "hop", emittedSites: hopRaw.emittedSites,
+  removedSites: hopRaw.removedSites, actionSites: hopRaw.actionSites }) };
+const hopRequest = await buildFrozenActionBarrierRequest({
+  generatedAt: "2026-08-30T00:00:00Z", buildId: "test", scenarioId: "nacl",
+  materialName: "NaCl", elements: ["Na"], candidates: [hop], targetUsed: false,
+  initialConfiguration: { structureSha256: sha,
+    atoms: [{ siteId: 0, species: "Na", positionAngstrom: [0, 0, 0] }] },
+});
+assert.equal(hopRequest.frontier.candidates[0].eventDirection, "hop");
+assert.equal(hopRequest.frontier.candidates[0].initialAtomCount, 1);
+assert.equal(hopRequest.frontier.candidates[0].finalAtomCount, 1);
+assert.notEqual(hopRequest.frontier.candidates[0].initialGeometrySha256,
+  hopRequest.frontier.candidates[0].finalGeometrySha256);
+await assert.rejects(() => buildFrozenActionBarrierRequest({
+  generatedAt: "x", buildId: "test", scenarioId: "nacl", materialName: "NaCl",
+  elements: ["Na", "Cl"], targetUsed: false,
+  initialConfiguration: { structureSha256: sha,
+    atoms: [{ siteId: 0, species: "Na", positionAngstrom: [0, 0, 0] }] },
+  candidates: [{ ...hop, emittedSites: [{ species: "Cl", positionAngstrom: [2, 0, 0] }],
+    candidateDigestSha256: "0".repeat(64) }],
+}), /equal colored emitted\/removed populations/);
 await assert.rejects(() => buildFrozenActionBarrierRequest({
   generatedAt: "x", buildId: "test", scenarioId: "nacl", materialName: "NaCl", elements: ["Na"],
   candidates: [{ ...detach, removedSites: [{ species: "Na", positionAngstrom: [9, 0, 0] }],

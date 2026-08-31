@@ -31,8 +31,8 @@ function rootSumSquares(values) {
 
 export function normalizedCommittedTransition(raw) {
   const eventDirection = requiredText(raw?.eventDirection, "event direction");
-  if (!["attach", "detach"].includes(eventDirection)) {
-    throw new Error("event direction must be attach or detach");
+  if (!["attach", "detach", "hop"].includes(eventDirection)) {
+    throw new Error("event direction must be attach, detach, or hop");
   }
   const energyDeltaElectronVolt = optionalFinite(raw.energyDeltaElectronVolt, "energy delta");
   const energyDeltaUncertaintyElectronVolt = optionalFinite(raw.energyDeltaUncertaintyElectronVolt,
@@ -92,7 +92,7 @@ export function normalizedCommittedTransition(raw) {
         !== Object.values(speciesDelta).reduce((sum, delta) => sum + delta, 0)) {
     throw new Error("atom-count change must equal the summed species transfer");
   }
-  if (thermodynamicFieldCount && !Object.keys(speciesDelta).length) {
+  if (thermodynamicFieldCount && !Object.keys(speciesDelta).length && eventDirection !== "hop") {
     throw new Error("grand-canonical transition evidence needs a nonempty integer species delta");
   }
   return {
@@ -132,6 +132,8 @@ export function auditMicroscopicInversePair(firstRaw, secondRaw) {
   const first = normalizedCommittedTransition(firstRaw);
   const second = normalizedCommittedTransition(secondRaw);
   const oppositeDirections = first.eventDirection !== second.eventDirection;
+  const massConservingHopPair = first.eventDirection === "hop" && second.eventDirection === "hop";
+  const directionPairCanReverse = oppositeDirections || massConservingHopPair;
   const geometryCycleClosed = first.initialGeometrySha256 === second.finalGeometrySha256
     && first.finalGeometrySha256 === second.initialGeometrySha256;
   const exactCommittedStates = first.exactFinalGeometryReproduced
@@ -173,9 +175,9 @@ export function auditMicroscopicInversePair(firstRaw, secondRaw) {
     && Number.isFinite(record.grandPotentialDeltaUncertaintyElectronVolt));
   const transferredSpecies = [...new Set([...Object.keys(first.speciesDelta),
     ...Object.keys(second.speciesDelta)])].sort();
-  const speciesTransferReversed = transferredSpecies.length > 0
-    && transferredSpecies.every((species) => (first.speciesDelta[species] || 0)
-      + (second.speciesDelta[species] || 0) === 0);
+  const speciesTransferReversed = (massConservingHopPair && transferredSpecies.length === 0)
+    || (transferredSpecies.length > 0 && transferredSpecies.every((species) =>
+      (first.speciesDelta[species] || 0) + (second.speciesDelta[species] || 0) === 0));
   const sameThermodynamicSettings = grandCanonicalEvidenceComplete
     && first.freeEnergySettingsSha256 === second.freeEnergySettingsSha256
     && first.chemicalPotentialSettingsSha256 === second.chemicalPotentialSettingsSha256;
@@ -211,13 +213,15 @@ export function auditMicroscopicInversePair(firstRaw, secondRaw) {
       first.grandPotentialDeltaUncertaintyElectronVolt * inverseThermalEnergy]) : null;
   const localBalanceResidualPassed = withinThreeSigma(localBalanceLogResidual,
     localBalanceLogUncertainty);
-  const microscopicPathClosurePassed = oppositeDirections && geometryCycleClosed && exactCommittedStates
+  const microscopicPathClosurePassed = directionPairCanReverse && geometryCycleClosed && exactCommittedStates
     && sameBarrierMethod && energyDeltaCyclePassed && transitionStateClosurePassed;
   return {
     schema: "gcts-microscopic-inverse-pair-audit-v1",
     firstEventId: first.eventId,
     secondEventId: second.eventId,
     oppositeDirections,
+    massConservingHopPair,
+    directionPairCanReverse,
     geometryCycleClosed,
     exactCommittedStates,
     sameBarrierMethod,
@@ -269,7 +273,8 @@ export function appendCommittedTransition(history, raw, { maximumRecords = 128 }
     throw new Error(`duplicate committed transition ${transition.eventId}`);
   }
   const inverse = [...normalizedHistory].reverse().find((record) =>
-    record.eventDirection !== transition.eventDirection
+    (record.eventDirection !== transition.eventDirection
+      || (record.eventDirection === "hop" && transition.eventDirection === "hop"))
     && record.initialGeometrySha256 === transition.finalGeometrySha256
     && record.finalGeometrySha256 === transition.initialGeometrySha256
     && record.exactFinalGeometryReproduced && transition.exactFinalGeometryReproduced) || null;
@@ -281,7 +286,8 @@ export function appendCommittedTransition(history, raw, { maximumRecords = 128 }
     inverseEventId: inverse?.eventId || null,
     inverseAudit,
     exactInversePairCount: nextHistory.filter((record, index) => nextHistory.slice(0, index)
-      .some((prior) => prior.eventDirection !== record.eventDirection
+      .some((prior) => (prior.eventDirection !== record.eventDirection
+        || (prior.eventDirection === "hop" && record.eventDirection === "hop"))
         && prior.initialGeometrySha256 === record.finalGeometrySha256
         && prior.finalGeometrySha256 === record.initialGeometrySha256
         && prior.exactFinalGeometryReproduced && record.exactFinalGeometryReproduced)).length,

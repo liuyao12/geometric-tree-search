@@ -1,5 +1,27 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 362 · exact mass-conserving surface hops
+
+The frozen event catalog can now include local surface hops in addition to
+attachments and ownership-certified leaf detachments. A hop pairs one exact
+detachable colored support with an independent hard-admitted destination of
+the same cluster type and species population. The portal freezes both endpoint
+geometries, requires the destination not to depend on any atom being removed,
+and executes removal plus attachment as one atomic event with `ΔN = 0`.
+
+The user chooses a local reach in nearest-neighbor units. Admitted hops appear
+as a third, blue mechanism family in the kinetic spectrum, receive external
+barrier and prefactor evidence through the same method-bound handoff, and can
+participate in maximum-rate HTST or a seeded finite-catalog KMC draw. Two
+oppositely directed hop records may be audited as a microscopic inverse pair
+without inventing a reservoir transfer.
+
+This is exact endpoint and bookkeeping physics, not an inferred diffusion
+path. Geometry supplies neither the saddle, prefactor, recrossing correction,
+nor missing concerted/reconstructive mechanisms. Probabilities and waiting
+times remain conditional on the finite frozen catalog, and a hop pair does not
+by itself prove equilibrium or global detailed balance.
+
 ## Build 361 · frozen-event kinetic spectrum
 
 The action checkpoint now exposes the full candidate-resolved HTST/KMC

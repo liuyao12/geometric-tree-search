@@ -1,5 +1,32 @@
 # Recursive GCTS benchmark for material growth
 
+### Exact mass-conserving surface hops (Build 362)
+
+The event-resolved growth stage now has a third finite mechanism family. Each
+surface-hop candidate is the composition of an ownership-certified detachable
+leaf and an independent hard-admitted attachment endpoint. The source and
+destination must have the same cluster class and exactly equal colored atom
+population; destination support cannot use an atom removed at the source; and
+the endpoint centroids must lie inside the user-declared local reach in units
+of the specimen nearest-neighbor spacing.
+
+Execution revalidates source ownership, destination hard admission, candidate
+identity, exact colored final geometry, and unchanged atom count immediately
+before commit. It removes the source without returning atoms to a reservoir,
+materializes the destination without consuming feedstock, and records one
+atomic structural event. The candidate-resolved external calculation remains
+responsible for the transition path, barrier, uncertainty, and attempt
+frequency. Hop probability mass is reported separately in the interactive
+frozen-event spectrum.
+
+This closes an important mass-conserving surface-rearrangement gap while
+retaining a strict claim boundary. The finite catalog is capped and local; it
+does not enumerate all diffusion, exchange, concerted, reconstruction, or
+bulk-defect mechanisms. Exact endpoints do not determine the intervening
+trajectory. A validated inverse pair can test local balance only with explicit
+thermodynamic evidence and does not establish equilibrium or a complete
+kinetic model.
+
 ### Frozen-event kinetic spectrum (Build 361)
 
 Once a complete candidate-resolved barrier/prefactor response is bound, the

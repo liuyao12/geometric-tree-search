@@ -36,11 +36,19 @@ function speciesCounts(sites) {
   return result;
 }
 
+function sameSpeciesCounts(firstSites, secondSites) {
+  const first = speciesCounts(firstSites);
+  const second = speciesCounts(secondSites);
+  const species = [...new Set([...Object.keys(first), ...Object.keys(second)])];
+  return species.every((name) => (first[name] || 0) === (second[name] || 0));
+}
+
 function candidateSpeciesDelta(candidate) {
-  const sign = candidate.eventDirection === "attach" ? 1 : -1;
-  const changed = candidate.eventDirection === "attach" ? candidate.emittedSites : candidate.removedSites;
-  return Object.fromEntries(Object.entries(speciesCounts(changed)).sort(([first], [second]) =>
-    first.localeCompare(second)).map(([species, count]) => [species, sign * count]));
+  const emitted = speciesCounts(candidate.emittedSites);
+  const removed = speciesCounts(candidate.removedSites);
+  return Object.fromEntries([...new Set([...Object.keys(emitted), ...Object.keys(removed)])]
+    .sort().map((species) => [species, (emitted[species] || 0) - (removed[species] || 0)])
+    .filter(([, delta]) => delta !== 0));
 }
 
 function canonicalValue(value) {
@@ -85,8 +93,8 @@ function normalizeCandidate(candidate, index) {
   const candidateId = requiredText(candidate?.candidateId, `candidate ${index + 1} id`);
   const eventDirection = candidate.eventDirection == null ? "attach"
     : requiredText(candidate.eventDirection, `candidate ${candidateId} event direction`);
-  if (!["attach", "detach"].includes(eventDirection)) {
-    throw new Error(`candidate ${candidateId} eventDirection must be attach or detach`);
+  if (!["attach", "detach", "hop"].includes(eventDirection)) {
+    throw new Error(`candidate ${candidateId} eventDirection must be attach, detach, or hop`);
   }
   const emittedSites = Array.isArray(candidate.emittedSites)
     ? candidate.emittedSites.map((site, siteIndex) => normalizedSite(site,
@@ -97,9 +105,13 @@ function normalizeCandidate(candidate, index) {
   const actionSites = Array.isArray(candidate.actionSites)
     ? candidate.actionSites.map((site, siteIndex) => normalizedSite(site,
       `candidate ${index + 1} action site ${siteIndex + 1}`)) : [];
+  const hopConservesSpecies = eventDirection !== "hop"
+    || sameSpeciesCounts(emittedSites, removedSites);
   if (!actionSites.length || (eventDirection === "attach" && (!emittedSites.length || removedSites.length))
-      || (eventDirection === "detach" && (!removedSites.length || emittedSites.length))) {
-    throw new Error(`candidate ${candidateId} needs one nonempty ${eventDirection === "attach" ? "emittedSites" : "removedSites"} set, the opposite set empty, and nonempty actionSites`);
+      || (eventDirection === "detach" && (!removedSites.length || emittedSites.length))
+      || (eventDirection === "hop" && (!removedSites.length || !emittedSites.length
+        || !hopConservesSpecies))) {
+    throw new Error(`candidate ${candidateId} needs exact nonempty action geometry and ${eventDirection === "hop" ? "equal colored emitted/removed populations" : `one nonempty ${eventDirection === "attach" ? "emittedSites" : "removedSites"} set with the opposite set empty`}`);
   }
   return {
     candidateId,
@@ -118,7 +130,9 @@ function normalizeCandidate(candidate, index) {
     actionSites,
     finalStateConstruction: eventDirection === "attach"
       ? "initial configuration union emittedSites; exact same-species coincidences are shared sites"
-      : "initial configuration minus removedSites; retained shared support remains unchanged",
+      : eventDirection === "detach"
+        ? "initial configuration minus removedSites; retained shared support remains unchanged"
+        : "initial configuration minus removedSites then union emittedSites; atom count and colored population remain unchanged",
   };
 }
 
@@ -143,22 +157,23 @@ async function bindCandidateStateGeometry(candidate, initialConfiguration) {
   const counts = new Map();
   initialSites.forEach((site) => counts.set(stateSiteKey(site), (counts.get(stateSiteKey(site)) || 0) + 1));
   let finalSites = [...initialSites];
-  if (candidate.eventDirection === "attach") {
-    candidate.emittedSites.forEach((site) => {
-      const key = stateSiteKey(site);
-      if (!counts.has(key)) {
-        finalSites.push(site);
-        counts.set(key, 1);
-      }
-    });
-  } else {
+  if (["detach", "hop"].includes(candidate.eventDirection)) {
     candidate.removedSites.forEach((site) => {
       const key = stateSiteKey(site);
       const count = counts.get(key) || 0;
-      if (!count) throw new Error(`detachment candidate ${candidate.candidateId} removes a site absent from the initial configuration`);
+      if (!count) throw new Error(`${candidate.eventDirection} candidate ${candidate.candidateId} removes a site absent from the initial configuration`);
       counts.set(key, count - 1);
       const index = finalSites.findIndex((entry) => stateSiteKey(entry) === key);
       finalSites.splice(index, 1);
+    });
+  }
+  if (["attach", "hop"].includes(candidate.eventDirection)) {
+    candidate.emittedSites.forEach((site) => {
+      const key = stateSiteKey(site);
+      if ((counts.get(key) || 0) === 0) {
+        finalSites.push(site);
+        counts.set(key, 1);
+      }
     });
   }
   const initialGeometrySha256 = await frozenActionStateGeometrySha256(initialSites);
@@ -232,7 +247,7 @@ export async function buildFrozenActionBarrierRequest(input) {
       hardAdmissionFrozenBeforeRequest: true,
     },
     calculation: {
-      quantity: "candidate-resolved attachment and/or exact leaf-detachment transition barriers on one frozen frontier",
+      quantity: "candidate-resolved attachment, exact leaf-detachment, and/or mass-conserving surface-hop transition barriers on one frozen frontier",
       suitableMethods: ["nudged elastic band", "dimer or saddle search", "validated enhanced-sampling path"],
       requiredOutputs: ["one converged record for every candidate ID", "the supplied exact initial and final geometry digests",
         "at least three energy images", "maximum residual force", "barrier uncertainty and method provenance"],
@@ -280,6 +295,7 @@ export async function buildFrozenActionBarrierRequest(input) {
       hardAdmissionMayChangeAfterResponse: false,
       responseScope: "ranking this exact candidate batch only",
       reversibleGeometryDoesNotImplyDetailedBalance: true,
+      massConservingHopDoesNotSupplyMigrationPathOrBarrier: true,
       optionalThermodynamicEvidenceMustBeExternal: true,
       geometricScoresMayNotSupplyChemicalPotentialOrFreeEnergy: true,
       oneInversePairMayNotClaimGlobalDetailedBalance: true,
@@ -618,6 +634,7 @@ export function validateFrozenActionBarrierResponse(response, expected) {
     eventDirections: [...new Set(normalized.records.map((record) => record.eventDirection))].sort(),
     reversibleEventGeometryPresent: normalized.records.some((record) => record.eventDirection === "attach")
       && normalized.records.some((record) => record.eventDirection === "detach"),
+    surfaceHopGeometryPresent: normalized.records.some((record) => record.eventDirection === "hop"),
     thermodynamicReversibilityCertified: false,
     detailedBalanceCertified: false,
     finitePairLocalBalanceCertified: false,

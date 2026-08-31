@@ -7,7 +7,7 @@
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23071112'/%3E%3Cpath d='M17 19 46 12M17 19l8 30m21-37L25 49m-8-30 29 24M25 49l21-6' stroke='%236fffd4' stroke-width='4'/%3E%3Ccircle cx='17' cy='19' r='6' fill='%23f1fff9'/%3E%3Ccircle cx='46' cy='12' r='6' fill='%236fffd4'/%3E%3Ccircle cx='25' cy='49' r='6' fill='%238a7dff'/%3E%3Ccircle cx='46' cy='43' r='6' fill='%236fffd4'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css?v=20260831-361">
+  <link rel="stylesheet" href="./style.css?v=20260831-362">
   <script type="importmap">
     {
       "imports": {
@@ -1309,7 +1309,8 @@
                   <button id="actionBarrierDownload" type="button" disabled>Download request</button>
                   <label class="action-barrier-import">Validate response<input id="actionBarrierResponse" type="file" accept="application/json,.json" disabled></label>
                   <label>ranking weight<select id="actionBarrierWeight" disabled><option value="0">0 · diagnostic only</option><option value="0.10">0.10 · gentle</option><option value="0.25" selected>0.25 · balanced</option><option value="0.50">0.50 · strong</option></select></label>
-                  <label>event catalog<select id="actionBarrierCatalog"><option value="forward-only">Attachment only</option><option value="reversible-leaves" selected>Attachment + exact leaf detachment</option></select></label>
+                  <label>event catalog<select id="actionBarrierCatalog"><option value="forward-only">Attachment only</option><option value="reversible-leaves" selected>Attachment + exact leaf detachment</option><option value="surface-hops">Attachment + detach + local surface hops</option></select></label>
+                  <label>surface-hop reach<select id="actionBarrierHopReach" disabled><option value="1.5">1.5 dₙₙ · nearest</option><option value="3" selected>3 dₙₙ · local</option><option value="6">6 dₙₙ · extended</option></select></label>
                   <label>event competition<select id="actionBarrierKineticMode" disabled><option value="none" selected>Off · barrier ranking only</option><option value="rate-maximum">HTST · maximum rate</option><option value="seeded-kmc">HTST · seeded KMC draw</option></select></label>
                   <label>physical temperature<select id="actionBarrierTemperature" disabled><option value="100">100 K</option><option value="300" selected>300 K</option><option value="600">600 K</option><option value="900">900 K</option><option value="1200">1200 K</option><option value="1500">1500 K</option></select></label>
                   <button id="actionBarrierResume" type="button" disabled>Commit unchanged frontier</button>
@@ -1321,7 +1322,7 @@
                   <header><span><small>same hard-admitted catalog · no new events</small><strong>Frozen-event kinetic spectrum</strong></span><b id="kineticEventSpectrumBadge">awaiting rates</b></header>
                   <div class="kinetic-event-spectrum-controls"><label>vertical coordinate<select id="kineticEventSpectrumMode" aria-label="Kinetic event spectrum vertical coordinate"><option value="rate" selected>log₁₀ rate / s⁻¹</option><option value="probability">catalog probability</option></select></label><span id="kineticEventSpectrumSummary">validate barriers and prefactors for every frozen action</span></div>
                   <svg id="kineticEventSpectrumPlot" viewBox="0 0 360 170" role="group" aria-label="Candidate-resolved rate and probability spectrum"></svg>
-                  <div class="kinetic-event-spectrum-legend"><span><i class="attach"></i>attachment</span><span><i class="detach"></i>detachment</span><span><i class="selected"></i>selected event</span><span><i class="uncertainty"></i>rate uncertainty</span></div>
+                  <div class="kinetic-event-spectrum-legend"><span><i class="attach"></i>attachment</span><span><i class="detach"></i>detachment</span><span><i class="hop"></i>surface hop</span><span><i class="selected"></i>selected event</span><span><i class="uncertainty"></i>rate uncertainty</span></div>
                   <article id="kineticEventSpectrumDetail" aria-live="polite">The spectrum appears only after a complete, method-bound HTST response is validated.</article>
                   <p>Click an event to inspect its barrier, prefactor, uncertainty, rate, and probability inside this exact catalog. The plot never creates a mechanism, changes hard admission, or replaces the deterministic maximum-rate / seeded-KMC choice.</p>
                 </section>
@@ -1337,7 +1338,7 @@
                     <section class="finite-nucleation-landscape"><header><span><small>exact states · external T,V,μ</small><strong>Finite nucleation ΔΩ profile</strong></span><b id="finiteNucleationBadge">awaiting evidence</b></header><svg id="finiteNucleationPlot" viewBox="0 0 300 150" role="img" aria-label="Relative grand potential versus exact atom count"></svg><p id="finiteNucleationState">Reversible grand-potential edges and verified state sizes are required.</p></section>
                   </div>
                 </section>
-                <p class="action-barrier-boundary">A validated barrier may softly reorder only attachment IDs in this checkpoint; it cannot create a pose or change hard admission. The reversible catalog additionally exports exact non-seed leaf detachments while retaining shared atoms. Optional method-bound ΔF and species chemical potentials can test local balance only after an exact inverse pair is committed; neither a two-way catalog nor one passing pair proves global detailed balance or equilibrium.</p>
+                <p class="action-barrier-boundary">A validated barrier may softly reorder only IDs already frozen in this checkpoint; it cannot create a pose or change hard admission. The reversible catalog exports exact non-seed leaf detachments while retaining shared atoms; the surface-hop catalog additionally pairs one such source with an independent hard-admitted destination of the same colored population and commits it with ΔN = 0. Optional method-bound ΔF and species chemical potentials can test local balance only after an exact inverse pair is committed. Endpoint geometry supplies no saddle or prefactor, and neither a two-way catalog nor one passing pair proves global detailed balance or equilibrium.</p>
               </section>
               <section class="policy-phase-map-card" aria-label="Two-hypothesis growth decision phase map">
                 <header><span><small>two-hypothesis decision map</small><strong>Attachment-action basins</strong></span><b id="policyPhaseMapState">awaiting a frozen frontier</b></header>
@@ -2428,7 +2429,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260831-361"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260831-361"></script>
+  <script type="module" src="./app.js?v=20260831-362"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260831-362"></script>
 </body>
 </html>

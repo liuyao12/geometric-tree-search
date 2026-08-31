@@ -10,7 +10,7 @@ const spectrum = buildKineticEventSpectrum({
       uncertaintyElectronVolt: .02, attemptFrequencyPerSecond: 1e13,
       attemptFrequencyUncertaintyLog10: .1, log10RatePerSecond: 9,
       log10RateLowerPerSecond: 8.5, log10RateUpperPerSecond: 9.5,
-      probabilityWithinFrozenCatalog: .7 },
+      probabilityWithinFrozenCatalog: .6 },
     { candidateId: "detach-b", eventDirection: "detach", barrierElectronVolt: .5,
       uncertaintyElectronVolt: .03, attemptFrequencyPerSecond: 8e12,
       attemptFrequencyUncertaintyLog10: .15, log10RatePerSecond: 8.2,
@@ -21,19 +21,25 @@ const spectrum = buildKineticEventSpectrum({
       attemptFrequencyUncertaintyLog10: .1, log10RatePerSecond: 6,
       log10RateLowerPerSecond: 5.6, log10RateUpperPerSecond: 6.4,
       probabilityWithinFrozenCatalog: .1 },
+    { candidateId: "hop-d", eventDirection: "hop", barrierElectronVolt: .9,
+      uncertaintyElectronVolt: .02, attemptFrequencyPerSecond: 1e12,
+      attemptFrequencyUncertaintyLog10: .1, log10RatePerSecond: 5,
+      log10RateLowerPerSecond: 4.6, log10RateUpperPerSecond: 5.4,
+      probabilityWithinFrozenCatalog: .1 },
   ],
 });
 
-assert.equal(spectrum.candidateCount, 3);
+assert.equal(spectrum.candidateCount, 4);
 assert.equal(spectrum.selectedRank, 2);
 assert.equal(spectrum.selectedEventDirection, "detach");
-assert.ok(Math.abs(spectrum.probabilityMassByDirection.attach - .8) < 1e-12);
+assert.ok(Math.abs(spectrum.probabilityMassByDirection.attach - .7) < 1e-12);
 assert.ok(Math.abs(spectrum.probabilityMassByDirection.detach - .2) < 1e-12);
+assert.ok(Math.abs(spectrum.probabilityMassByDirection.hop - .1) < 1e-12);
 assert.equal(spectrum.uncertaintyCompetitiveCandidateCount, 2);
 assert.equal(spectrum.fastestCandidateSeparatedByUncertainty, false);
 assert.equal(spectrum.selectedInsideFastestUncertaintySet, true);
 assert.equal(spectrum.catalogCharacter, "few-event dominated");
-assert.equal(spectrum.rateSpanDecades, 3);
+assert.equal(spectrum.rateSpanDecades, 4);
 assert.ok(spectrum.effectiveCompetingEventCount > 1);
 assert.equal(spectrum.targetUsed, false);
 assert.equal(spectrum.selectedEventChanged, false);
