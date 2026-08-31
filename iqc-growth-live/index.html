@@ -8,7 +8,7 @@
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
   <base href="../apps/iqc-growth-live/">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23071112'/%3E%3Cpath d='M17 19 46 12M17 19l8 30m21-37L25 49m-8-30 29 24M25 49l21-6' stroke='%236fffd4' stroke-width='4'/%3E%3Ccircle cx='17' cy='19' r='6' fill='%23f1fff9'/%3E%3Ccircle cx='46' cy='12' r='6' fill='%236fffd4'/%3E%3Ccircle cx='25' cy='49' r='6' fill='%238a7dff'/%3E%3Ccircle cx='46' cy='43' r='6' fill='%236fffd4'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css?v=20260830-344">
+  <link rel="stylesheet" href="./style.css?v=20260830-345">
   <script type="importmap">
     {
       "imports": {
@@ -1302,6 +1302,20 @@
                 <p>Each row exposes the source quantity and unit, its reference scale, and the exact reduction used before a dimensionless weight enters branch ordering. These coordinates never alter candidate geometry or hard admission and are not energies, forces, rates, or elapsed physical time.</p>
               </section>
               <div class="policy-workbench-heading"><span><small>frozen-frontier intervention</small><strong id="policyWorkbenchState">baseline weights</strong></span><button id="policyWorkbenchReset" type="button" disabled>Reset ×1</button></div>
+              <section class="action-barrier-checkpoint" aria-label="External action barrier checkpoint">
+                <header><span><small>calculation handoff · exact frontier only</small><strong>External action barriers</strong></span><b id="actionBarrierCheckpointBadge">not frozen</b></header>
+                <p id="actionBarrierCheckpointState">Pause one target-free frontier, export every hard-admitted action for a method-provenanced path calculation, then bind the returned barriers to that unchanged candidate set.</p>
+                <div class="action-barrier-controls">
+                  <button id="actionBarrierFreeze" type="button">Freeze next frontier</button>
+                  <button id="actionBarrierDownload" type="button" disabled>Download request</button>
+                  <label class="action-barrier-import">Validate response<input id="actionBarrierResponse" type="file" accept="application/json,.json" disabled></label>
+                  <label>ranking weight<select id="actionBarrierWeight" disabled><option value="0">0 · diagnostic only</option><option value="0.10">0.10 · gentle</option><option value="0.25" selected>0.25 · balanced</option><option value="0.50">0.50 · strong</option></select></label>
+                  <button id="actionBarrierResume" type="button" disabled>Commit unchanged frontier</button>
+                  <button id="actionBarrierCancel" type="button" disabled>Release</button>
+                </div>
+                <div id="actionBarrierSummary" class="action-barrier-summary" aria-live="polite"></div>
+                <p class="action-barrier-boundary">A validated barrier may softly reorder only the candidate IDs in this checkpoint. It cannot create a pose, change hard admission, transfer as a potential, or provide time without an independently calibrated temperature and prefactor.</p>
+              </section>
               <section class="policy-phase-map-card" aria-label="Two-hypothesis growth decision phase map">
                 <header><span><small>two-hypothesis decision map</small><strong>Attachment-action basins</strong></span><b id="policyPhaseMapState">awaiting a frozen frontier</b></header>
                 <div class="policy-phase-axes"><label>horizontal<select id="policyPhaseX" aria-label="Horizontal physics hypothesis"></select></label><label>vertical<select id="policyPhaseY" aria-label="Vertical physics hypothesis"></select></label></div>
@@ -2255,7 +2269,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260830-344"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260830-344"></script>
+  <script type="module" src="./app.js?v=20260830-345"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260830-345"></script>
 </body>
 </html>

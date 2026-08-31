@@ -11,7 +11,7 @@ const expected = [
   "composition", "solute-partition", "formal-charge", "charge-geometry", "charge-moment",
   "ionic-pair", "bond-valence", "surface", "bulk-surface", "attachment", "habit",
   "defect", "coherency", "collective-response", "configurational-multiplicity", "constraint-tensor", "front", "capillary", "epitaxy", "drive", "thermal",
-  "robustness", "microstructure", "loop", "arrival", "exposure", "exploration",
+  "robustness", "microstructure", "loop", "arrival", "exposure", "action-barrier", "exploration",
 ];
 assert.deepEqual(Object.keys(SCORE_NORMALIZATION_SPECS), expected);
 assert.deepEqual(Object.keys(SCORE_PHYSICS_MANIFEST_IDS), expected);

@@ -1,5 +1,33 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 345 · an exact frozen-frontier action-barrier checkpoint
+
+Material growth can now pause after candidate enumeration and hard admission,
+but before branch selection or commit.  The checkpoint exports the complete
+initial configuration and every hard-admitted exact action in ångströms, with
+stable candidate IDs, per-action geometry digests, and one SHA-256 over the
+entire candidate batch.  This is deliberately separate from the preflight
+evidence planner: candidate-resolved barriers cannot be requested until the
+frontier actually exists.
+
+The returned JSON must contain exactly one converged, uncertainty-bearing path
+record for every requested candidate.  Request, initial-state, batch, candidate,
+method-settings, holdout, convergence, and no-target safeguards are checked
+locally. Missing, extra, duplicate, unconverged, negative, stale, or
+target-tainted records fail closed.  A passing response is reduced within that
+unchanged batch by a robust median/MAD coordinate; an explicit 0–0.50 weight can
+leave it diagnostic or add one bounded lower-barrier term to the existing score
+ledger.  The resumed commuting scheduler still rechecks exact species,
+collision, overlap, boundary, coordination, angle, marking, and feedstock
+certificates before committing whole clusters.
+
+This is method- and frontier-specific path evidence, not an interatomic
+potential.  It cannot create a pose, change hard admission, transfer to a later
+frontier, or provide a probability, rate, or physical clock without independent
+temperature and prefactor evidence.  Receipts retain hashes, counts, method,
+normalization, weight, use, and these claim boundaries; exported coordinates
+remain in the local download.
+
 ## Build 344 · residual-force geometry in GCTS connection markings
 
 A complete validated force response can now train an explicit

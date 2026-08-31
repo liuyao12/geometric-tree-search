@@ -78,14 +78,17 @@ import { buildGrowthActionPhysicsProvenance, buildPhysicsCompressionMap, buildPh
   PHYSICS_EFFECT_COLUMNS, PHYSICS_READINESS_STATES, physicsExecutionLineage }
   from "./physics-compression-map.js?v=20260828-320";
 import { buildExternalPhysicsRequest }
-  from "./external-physics-request.mjs?v=20260830-344";
+  from "./external-physics-request.mjs?v=20260830-345";
 import { validateExternalPhysicsResponse }
-  from "./external-physics-response.mjs?v=20260830-344";
+  from "./external-physics-response.mjs?v=20260830-345";
 import { bindValidatedForceGeometry, buildValidatedForceGeometryRuntime, validatedForcePairGeometry }
-  from "./external-force-geometry.mjs?v=20260830-344";
+  from "./external-force-geometry.mjs?v=20260830-345";
 import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntime,
   validatedTrajectoryPairCorrelation }
-  from "./external-trajectory-geometry.mjs?v=20260830-344";
+  from "./external-trajectory-geometry.mjs?v=20260830-345";
+import { actionBarrierSha256, buildFrozenActionBarrierRequest, frozenActionBarrierRequestReceipt,
+  validateFrozenActionBarrierResponse }
+  from "./external-action-barrier.mjs?v=20260830-345";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -595,6 +598,15 @@ const markingInterventionClear = $("markingInterventionClear");
 const markingInterventionBoundary = $("markingInterventionBoundary");
 const policyWorkbenchState = $("policyWorkbenchState");
 const policyWorkbenchReset = $("policyWorkbenchReset");
+const actionBarrierCheckpointBadge = $("actionBarrierCheckpointBadge");
+const actionBarrierCheckpointState = $("actionBarrierCheckpointState");
+const actionBarrierFreezeButton = $("actionBarrierFreeze");
+const actionBarrierDownloadButton = $("actionBarrierDownload");
+const actionBarrierResponseInput = $("actionBarrierResponse");
+const actionBarrierWeightSelect = $("actionBarrierWeight");
+const actionBarrierResumeButton = $("actionBarrierResume");
+const actionBarrierCancelButton = $("actionBarrierCancel");
+const actionBarrierSummary = $("actionBarrierSummary");
 const policyPhaseMapState = $("policyPhaseMapState");
 const policyPhaseX = $("policyPhaseX");
 const policyPhaseY = $("policyPhaseY");
@@ -1592,6 +1604,9 @@ let growthFrontierWork = { busy: false, phase: "idle", evaluated: 0, total: 0, y
 let lastGrowthFrontierWorkAudit = null;
 let growthSearchGeneration = 0;
 let pauseAfterCurrentGrowthLeap = false;
+let externalActionBarrierCheckpoint = null;
+let externalActionBarrierWeight = .25;
+let lastExternalActionBarrierReceipt = null;
 let frontierCandidateKeys = new Set();
 let rejectedCandidateKeys = new Set();
 let reconstructionCertified = false;
@@ -12604,7 +12619,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260830-344",
+      buildId: "20260830-345",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -14302,6 +14317,7 @@ async function buildExperimentReceipt() {
         ? { ...externalPhysicsRequestExportReceipt } : null,
       externalPhysicsResponseValidation: externalPhysicsResponseValidationReceipt
         ? { ...externalPhysicsResponseValidationReceipt } : null,
+      externalActionBarrierCheckpoint: actionBarrierCheckpointReceipt(),
       structuralLeapHistory: { totalEvents: leapEventCount, retainedEvents: leapHistory.length,
         maximumRetainedEvents: MAXIMUM_RETAINED_STRUCTURAL_LEAPS,
         truncated: leapEventCount > leapHistory.length,
@@ -14324,6 +14340,7 @@ async function buildExperimentReceipt() {
         consequenceFingerprint: leap.consequenceFingerprint || null,
         dynamicalEvidencePlan: leap.dynamicalEvidencePlan || null,
         dynamicalEvidenceHandoff: leap.dynamicalEvidenceHandoff || null,
+        actionBarrierCheckpoint: leap.actionBarrierCheckpoint || null,
         after: leap.after,
         targetUsed: leap.targetUsed, physicalTimeModeled: leap.physicalTimeModeled,
         dynamicsIntegrated: leap.dynamicsIntegrated, claimBoundary: leap.claimBoundary,
@@ -15021,6 +15038,7 @@ async function buildExperimentNotebookSnapshot() {
     consequenceFingerprint: leap.consequenceFingerprint || null,
     dynamicalEvidencePlan: leap.dynamicalEvidencePlan || null,
     dynamicalEvidenceHandoff: leap.dynamicalEvidenceHandoff || null,
+    actionBarrierCheckpoint: leap.actionBarrierCheckpoint || null,
     after: leap.after, targetUsed: leap.targetUsed, physicalTimeModeled: leap.physicalTimeModeled,
     dynamicsIntegrated: leap.dynamicsIntegrated, claimBoundary: leap.claimBoundary,
     physicsTranslation: leap.physicsTranslation,
@@ -15060,6 +15078,7 @@ async function buildExperimentNotebookSnapshot() {
       ? { ...externalPhysicsRequestExportReceipt } : null,
     externalPhysicsResponseValidation: externalPhysicsResponseValidationReceipt
       ? { ...externalPhysicsResponseValidationReceipt } : null,
+    externalActionBarrierCheckpoint: actionBarrierCheckpointReceipt(),
     structuralLeapHistory: { totalEvents: leapEventCount, retainedEvents: leapHistory.length,
       maximumRetainedEvents: MAXIMUM_RETAINED_STRUCTURAL_LEAPS, truncated: leapEventCount > leapHistory.length,
       settlingRobustness: buildSettlingMaterialResponseHistory(leapHistory) },
@@ -15110,7 +15129,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260830-344" },
+    application: { name: "Materials Growth Lab", buildId: "20260830-345" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },
@@ -20013,6 +20032,15 @@ function applyHypothesisSeparationMultipliers(terms) {
   return applyFrozenHypothesisSeparationMultipliers(terms, hypothesisSeparationExperiment);
 }
 
+function actionBarrierForEntry(entry) {
+  const checkpoint = externalActionBarrierCheckpoint;
+  const record = checkpoint?.validatedResponse?.recordsByCandidate?.get(entry?.candidate?.key);
+  return record && checkpoint.generation === growthSearchGeneration
+    ? { available: true, ...record, weight: externalActionBarrierWeight }
+    : { available: false, lowerBarrierScore: 0, barrierElectronVolt: null,
+      uncertaintyElectronVolt: null, weight: 0 };
+}
+
 function activeCandidateScoreTerms(entry, includeExploration = true) {
   const evaluation = entry.evaluation;
   const terms = [...baseCandidateScoreTerms(entry),
@@ -20077,6 +20105,9 @@ function activeCandidateScoreTerms(entry, includeExploration = true) {
       activeArrivalPathWeight(), "soft finite-route accessibility", "Not diffusion pathway or barrier."),
     scoreTerm("exposure", "feed exposure", evaluation.feedExposure.score,
       activeFeedExposureWeight(), "soft finite-ray visibility", "Not flux or deposition rate."),
+    scoreTerm("action-barrier", "validated action barrier", entry.actionBarrier?.lowerBarrierScore || 0,
+      entry.actionBarrier?.weight || 0, "exact-batch external path evidence",
+      "Method-specific barrier for this frozen action only; not a transferable potential, rate, probability, or clock."),
   ];
   if (includeExploration) terms.push(scoreTerm("exploration", "path exploration", entry.explorationOffset, 1,
     "seeded configurational sampling offset", "Not temperature, Boltzmann probability, or physical noise."));
@@ -23284,11 +23315,205 @@ function growthFrontierWorkReceipt() {
 
 function resetGrowthFrontierWork() {
   growthSearchGeneration++;
+  externalActionBarrierCheckpoint = null;
   growthFrontierWork = { busy: false, phase: "idle", evaluated: 0, total: 0, yields: 0,
     maximumSliceMilliseconds: 0, generation: growthSearchGeneration };
   lastGrowthFrontierWorkAudit = null;
   pauseAfterCurrentGrowthLeap = false;
   renderGrowthFrontierWork();
+}
+
+function currentLeapInputSnapshot() {
+  return { atoms: atoms.length, clusters: placedClusters.length, frontier: frontierCandidates.length,
+    morphology: structuralMorphologySnapshot(), composition: structuralCompositionSnapshot(),
+    packing: structuralPackingSnapshot(), voidClearance: structuralVoidClearanceSnapshot(),
+    interfaces: structuralInterfaceSnapshot(), orientationalOrder: structuralOrientationalOrderSnapshot(),
+    centrosymmetry: structuralCentrosymmetrySnapshot(), scattering: structuralScatteringSnapshot(),
+    chargeMoment: structuralChargeMomentSnapshot(), bondValenceState: structuralBondValenceSnapshot(),
+    feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() };
+}
+
+function actionBarrierSitePayload(site) {
+  const sceneUnitAngstrom = referenceSpacingA / Math.max(referenceSpacing, 1e-12);
+  return { species: site.displaySpecies || site.species,
+    positionAngstrom: site.p.clone().multiplyScalar(sceneUnitAngstrom).toArray()
+      .map((value) => receiptRound(value, 10)) };
+}
+
+function actionBarrierCheckpointReceipt(checkpoint = externalActionBarrierCheckpoint) {
+  if (!checkpoint) return lastExternalActionBarrierReceipt;
+  const response = checkpoint.validatedResponse;
+  return {
+    schema: 1, status: response ? checkpoint.consumed ? "consumed" : "validated" : "frozen-request",
+    requestSha256: checkpoint.requestReceipt.requestSha256,
+    candidateBatchSha256: checkpoint.requestReceipt.candidateBatchSha256,
+    initialStructureSha256: checkpoint.requestReceipt.initialStructureSha256,
+    frontierCandidateCount: checkpoint.evaluated.length,
+    hardAdmittedCandidateCount: checkpoint.admissibleEntries.length,
+    responseSha256: checkpoint.responseSha256 || null,
+    method: response?.audit.method || null,
+    barrierRangeElectronVolt: response ? {
+      minimum: Math.min(...response.audit.records.map((record) => record.barrierElectronVolt)),
+      maximum: Math.max(...response.audit.records.map((record) => record.barrierElectronVolt)),
+      robustCenter: response.audit.robustNormalization.centerElectronVolt,
+      robustScale: response.audit.robustNormalization.scaleElectronVolt,
+    } : null,
+    rankingWeight: response ? externalActionBarrierWeight : 0,
+    usedForRanking: Boolean(response && externalActionBarrierWeight > 0 && checkpoint.consumed),
+    candidateSetChanged: false, hardAdmissionChanged: false, candidateGeometryChanged: false,
+    targetUsed: false, usedAsPotential: false, physicalRateInferred: false, physicalTimeInferred: false,
+    claimBoundary: "Validated barriers are scoped to one exact frozen target-free action batch. They do not create poses, change hard admission, transfer as a potential, or supply a rate or clock without independent temperature and prefactor evidence.",
+  };
+}
+
+function renderActionBarrierCheckpoint() {
+  const panel = actionBarrierCheckpointBadge.closest(".action-barrier-checkpoint");
+  const checkpoint = externalActionBarrierCheckpoint;
+  const available = pipelineStage === 4 && !knownWindowReplayActive() && !iceAnchorTrace
+    && !iqcDisjointTrace && !currentMaterial().growthWithheld && frontierCandidates.length > 0;
+  panel.classList.toggle("ready", Boolean(checkpoint));
+  panel.classList.toggle("validated", Boolean(checkpoint?.validatedResponse));
+  actionBarrierFreezeButton.disabled = !available || growthFrontierWork.busy || Boolean(checkpoint);
+  actionBarrierDownloadButton.disabled = !checkpoint;
+  actionBarrierResponseInput.disabled = !checkpoint;
+  actionBarrierWeightSelect.disabled = !checkpoint?.validatedResponse;
+  actionBarrierResumeButton.disabled = !checkpoint?.validatedResponse || growthFrontierWork.busy;
+  actionBarrierCancelButton.disabled = !checkpoint || growthFrontierWork.busy;
+  if (!checkpoint) {
+    actionBarrierCheckpointBadge.textContent = available ? "ready to freeze" : "unavailable";
+    actionBarrierCheckpointState.textContent = available
+      ? "Freeze the next target-free frontier before selection. The request contains the initial state and every hard-admitted exact action in ångströms."
+      : knownWindowReplayActive() ? "Action barriers are withheld during target-aware known-window replay. Continue to target-free growth first."
+        : "Enter executable target-free material growth to freeze an action frontier.";
+    actionBarrierSummary.replaceChildren();
+    return;
+  }
+  const audit = checkpoint.validatedResponse?.audit;
+  actionBarrierCheckpointBadge.textContent = audit ? "response bound" : "frontier frozen";
+  actionBarrierCheckpointState.textContent = audit
+    ? `${audit.candidateCount} converged barriers are bound to request ${checkpoint.requestReceipt.requestSha256.slice(0, 12)}… . Weight ${externalActionBarrierWeight.toFixed(2)} changes only the stable ordering of this batch; Commit resumes the paused leap.`
+    : `Growth is paused before commit. Download request ${checkpoint.requestReceipt.requestSha256.slice(0, 12)}… and return one converged barrier record for every admitted candidate.`;
+  const tiles = [
+    ["frozen frontier", `${checkpoint.evaluated.length} candidates`],
+    ["hard admitted", `${checkpoint.admissibleEntries.length} actions`],
+    ["candidate SHA", checkpoint.requestReceipt.candidateBatchSha256.slice(0, 12)],
+    [audit ? "barrier range" : "execution effect", audit
+      ? `${Math.min(...audit.records.map((record) => record.barrierElectronVolt)).toFixed(3)}–${Math.max(...audit.records.map((record) => record.barrierElectronVolt)).toFixed(3)} eV`
+      : "none before validation"],
+  ];
+  actionBarrierSummary.replaceChildren(...tiles.map(([label, value]) => {
+    const tile = document.createElement("span"); const strong = document.createElement("strong");
+    tile.append(document.createTextNode(label)); strong.textContent = value; tile.append(strong); return tile;
+  }));
+}
+
+function refreshExternalActionBarrierScores() {
+  const checkpoint = externalActionBarrierCheckpoint;
+  if (!checkpoint?.validatedResponse) return;
+  checkpoint.evaluated.forEach((entry) => {
+    entry.actionBarrier = actionBarrierForEntry(entry);
+    entry.score = entry.geometricScore + entry.actionBarrier.lowerBarrierScore * entry.actionBarrier.weight;
+    entry.selectionScore = entry.score + entry.explorationOffset;
+    entry.candidate.growthPhysicsAttribution = freezeGrowthActionPhysicsFingerprint(entry);
+  });
+  capturePolicyComparison(checkpoint.evaluated, checkpoint.before);
+}
+
+async function buildExternalActionBarrierCheckpoint(evaluated, before, generation) {
+  const admissibleEntries = evaluated.filter((entry) => entry.evaluation.accepted);
+  if (!admissibleEntries.length) throw new Error("the frozen frontier has no hard-admitted action to calculate");
+  const initialConfiguration = await externalPhysicsConfigurationPayload(atoms, "frozen frontier initial state");
+  const candidates = await Promise.all(admissibleEntries.map(async (entry) => {
+    const emittedSites = entry.evaluation.fresh.map(actionBarrierSitePayload);
+    const actionSites = entry.evaluation.sites.map(actionBarrierSitePayload);
+    return {
+      candidateId: entry.candidate.key,
+      candidateDigestSha256: await actionBarrierSha256({ candidateId: entry.candidate.key,
+        emittedSites, actionSites }),
+      actionLabel: policyActionLabel(entry), parentType: entry.candidate.rule.from,
+      childType: entry.candidate.rule.to, ruleId: entry.candidate.rule.id,
+      emittedSites, actionSites,
+    };
+  }));
+  const material = currentMaterial();
+  const request = await buildFrozenActionBarrierRequest({
+    generatedAt: new Date().toISOString(), buildId: "20260830-345",
+    scenarioId: scenarioSelect.value, materialName: material.name,
+    elements: material.actualElements ? [...material.actualElements] : [...material.elements],
+    sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
+    initialConfiguration, candidates, targetUsed: false, candidateSetTargetUsed: false,
+  });
+  const requestReceipt = await frozenActionBarrierRequestReceipt(request);
+  return { schema: 1, generation, controlsJson: JSON.stringify(currentGrowthProtocolSettings()),
+    markingId: selectedMarking()?.id || null, before, evaluated, admissibleEntries,
+    frontierDigest: frozenFrontierDigest(evaluated), request, requestReceipt,
+    validatedResponse: null, responseSha256: null, consumed: false };
+}
+
+async function freezeExternalActionBarrierFrontier() {
+  if (pipelineStage !== 4 || knownWindowReplayActive() || externalActionBarrierCheckpoint
+      || growthFrontierWork.busy || !frontierCandidates.length) return;
+  setPlaying(false);
+  const before = currentLeapInputSnapshot();
+  const evaluatedState = await evaluateFrozenFrontierEntries(before);
+  if (!evaluatedState || evaluatedState.generation !== growthSearchGeneration) return;
+  capturePolicyComparison(evaluatedState.evaluated, before);
+  externalActionBarrierCheckpoint = await buildExternalActionBarrierCheckpoint(
+    evaluatedState.evaluated, before, evaluatedState.generation);
+  lastGrowthFrontierWorkAudit = {
+    schema: 1, evaluatedCandidates: evaluatedState.evaluated.length,
+    total: evaluatedState.frozenCandidates.length, eventLoopYields: growthFrontierWork.yields,
+    maximumSliceMilliseconds: receiptRound(growthFrontierWork.maximumSliceMilliseconds, 3),
+    candidateSetFrozenBeforeEvaluation: true, candidateSetTargetUsed: false,
+    rankingTargetUsed: false, checkpointPausedBeforeCommit: true,
+    physicalTimeInferred: false,
+    claimBoundary: "The exact frontier is paused for a local external calculation handoff. Browser work duration is not materials kinetics or physical time.",
+  };
+  growthFrontierWork.busy = false; growthFrontierWork.phase = "checkpoint";
+  stepButton.disabled = false; resetButton.disabled = false; updatePipelineButtons();
+  receiptStatus.textContent = `Action frontier frozen · ${externalActionBarrierCheckpoint.admissibleEntries.length} admitted actions · no branch committed.`;
+  renderActionBarrierCheckpoint(); renderGrowthFrontierWork(); updateUI();
+}
+
+async function downloadExternalActionBarrierRequest() {
+  const checkpoint = externalActionBarrierCheckpoint;
+  if (!checkpoint) return;
+  const serialized = JSON.stringify(checkpoint.request, null, 2);
+  const blob = new Blob([serialized], { type: "application/json" });
+  const url = URL.createObjectURL(blob); const link = document.createElement("a");
+  link.href = url; link.download = `gcts-${scenarioSelect.value}-frozen-frontier-action-barriers.json`;
+  document.body.appendChild(link); link.click(); link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 0);
+  receiptStatus.textContent = `Action-barrier request downloaded · ${checkpoint.admissibleEntries.length} exact candidates · request ${checkpoint.requestReceipt.requestSha256.slice(0, 12)}… · nothing submitted.`;
+}
+
+async function validateExternalActionBarrierFile(file) {
+  const checkpoint = externalActionBarrierCheckpoint;
+  if (!checkpoint || !file || file.size > 32 * 1024 * 1024) {
+    throw new Error("Freeze a frontier first; response files are limited to 32 MB");
+  }
+  const responseText = await file.text(); const response = JSON.parse(responseText);
+  const expected = { ...checkpoint.requestReceipt,
+    candidates: checkpoint.request.frontier.candidates.map(({ candidateId, candidateDigestSha256 }) =>
+      ({ candidateId, candidateDigestSha256 })) };
+  const audit = validateFrozenActionBarrierResponse(response, expected);
+  const responseSha256 = await receiptSha256(responseText);
+  checkpoint.validatedResponse = { audit,
+    recordsByCandidate: new Map(audit.records.map((record) => [record.candidateId, record])) };
+  checkpoint.responseSha256 = responseSha256;
+  refreshExternalActionBarrierScores();
+  receiptStatus.textContent = `${audit.candidateCount} action barriers validated and bound · response ${responseSha256.slice(0, 12)}… · candidate set unchanged.`;
+  renderActionBarrierCheckpoint(); updateUI();
+}
+
+function releaseExternalActionBarrierCheckpoint(reason = "Action-barrier checkpoint released without execution.") {
+  if (externalActionBarrierCheckpoint) lastExternalActionBarrierReceipt = {
+    ...actionBarrierCheckpointReceipt(externalActionBarrierCheckpoint), status: "released",
+    usedForRanking: false, releaseReason: reason };
+  externalActionBarrierCheckpoint = null;
+  actionBarrierResponseInput.value = "";
+  renderActionBarrierCheckpoint(); updateUI();
+  receiptStatus.textContent = reason;
 }
 
 function scoreFrontierCandidate(candidate, audit) {
@@ -23328,8 +23553,11 @@ function scoreFrontierCandidate(candidate, audit) {
   const explorationOffset = geometricExplorationOffset(candidate);
   candidate.explorationOffset = explorationOffset;
   const entry = { candidate, evaluation, sites: evaluation.sites, dynamicPriority, referenceGain,
-    referenceGuided: knownWindowReplayActive(), baseScore, score,
-    explorationOffset, selectionScore: score + explorationOffset };
+    referenceGuided: knownWindowReplayActive(), baseScore, geometricScore: score, score,
+    explorationOffset, actionBarrier: null, selectionScore: score + explorationOffset };
+  entry.actionBarrier = actionBarrierForEntry(entry);
+  entry.score = entry.geometricScore + entry.actionBarrier.lowerBarrierScore * entry.actionBarrier.weight;
+  entry.selectionScore = entry.score + explorationOffset;
   candidate.growthPhysicsAttribution = freezeGrowthActionPhysicsFingerprint(entry);
   return entry;
 }
@@ -23389,7 +23617,7 @@ async function selectCommutingFrontierBatch(evaluated, generation, frontierStruc
   return [...acceptedBatch, ...rejectedBatch];
 }
 
-async function commutingFrontierBatch(frontierStructuralState = null) {
+async function evaluateFrozenFrontierEntries(frontierStructuralState = null) {
   const audit = knownWindowReplayActive() ? referenceCoverageAudit()
     : { matched: referenceCount(), missing: 0, duplicateAtoms: 0, extraneousAtoms: 0 };
   // Candidate enumeration is frozen before this ranking. Geometric strain is
@@ -23423,14 +23651,45 @@ async function commutingFrontierBatch(frontierStructuralState = null) {
   growthFrontierWork.phase = "ranking";
   renderGrowthFrontierWork();
   await new Promise((resolve) => requestAnimationFrame(resolve));
-  const batch = await selectCommutingFrontierBatch(evaluated, generation, frontierStructuralState);
-  if (batch === null || generation !== growthSearchGeneration) return null;
+  return { audit, evaluated, generation, frozenCandidates, frontierStructuralState };
+}
+
+async function commutingFrontierBatch(frontierStructuralState = null) {
+  const checkpoint = externalActionBarrierCheckpoint;
+  let evaluatedState;
+  if (checkpoint) {
+    if (!checkpoint.validatedResponse) throw new Error("validate or release the frozen action-barrier checkpoint before committing");
+    if (checkpoint.generation !== growthSearchGeneration
+        || checkpoint.frontierDigest !== frozenFrontierDigest(checkpoint.evaluated)
+        || checkpoint.controlsJson !== JSON.stringify(currentGrowthProtocolSettings())
+        || checkpoint.markingId !== (selectedMarking()?.id || null)) {
+      throw new Error("the growth state or controls changed after the action frontier was frozen");
+    }
+    growthFrontierWork = { busy: true, phase: "ranking", evaluated: checkpoint.evaluated.length,
+      total: checkpoint.evaluated.length, yields: 0, maximumSliceMilliseconds: 0,
+      generation: checkpoint.generation };
+    stepButton.disabled = true; resetButton.disabled = true; updatePipelineButtons();
+    refreshExternalActionBarrierScores();
+    checkpoint.consumed = true;
+    evaluatedState = { evaluated: checkpoint.evaluated, generation: checkpoint.generation,
+      frozenCandidates: checkpoint.evaluated.map((entry) => entry.candidate) };
+  } else {
+    evaluatedState = await evaluateFrozenFrontierEntries(frontierStructuralState);
+  }
+  if (!evaluatedState || evaluatedState.generation !== growthSearchGeneration) return null;
+  const batch = await selectCommutingFrontierBatch(evaluatedState.evaluated,
+    evaluatedState.generation, frontierStructuralState);
+  if (batch === null || evaluatedState.generation !== growthSearchGeneration) return null;
   lastGrowthFrontierWorkAudit = {
-    schema: 1, evaluatedCandidates: evaluated.length, total: frozenCandidates.length,
+    schema: 1, evaluatedCandidates: evaluatedState.evaluated.length,
+    total: evaluatedState.frozenCandidates.length,
     eventLoopYields: growthFrontierWork.yields,
     maximumSliceMilliseconds: receiptRound(growthFrontierWork.maximumSliceMilliseconds, 3),
     candidateSetFrozenBeforeEvaluation: true, candidateSetTargetUsed: false,
     rankingTargetUsed: knownWindowReplayActive(), physicalTimeInferred: false,
+    externalActionBarrierCheckpointUsed: Boolean(checkpoint),
+    externalActionBarrierRequestSha256: checkpoint?.requestReceipt.requestSha256 || null,
+    externalActionBarrierResponseSha256: checkpoint?.responseSha256 || null,
     claimBoundary: "Browser scheduling slices expose progress and preserve the exact frozen candidate order. Slice duration is a responsiveness diagnostic, not materials kinetics or a speedup benchmark.",
   };
   return batch;
@@ -24535,6 +24794,8 @@ function initializeOffLatticeSearch() {
   constraintNeighborhoodSiteTotal = 0;
   maximumConstraintNeighborhoodSites = 0;
   publicBoundaryPrunes = 0;
+  externalActionBarrierCheckpoint = null;
+  lastExternalActionBarrierReceipt = null;
   lastPolicyComparison = null;
   policyComparisonHistory = [];
   selectedMarkingFrontierId = null;
@@ -27321,6 +27582,8 @@ function resetCounters() {
   constraintNeighborhoodSiteTotal = 0;
   maximumConstraintNeighborhoodSites = 0;
   publicBoundaryPrunes = 0;
+  externalActionBarrierCheckpoint = null;
+  lastExternalActionBarrierReceipt = null;
   lastPolicyComparison = null;
   policyComparisonHistory = [];
   selectedMarkingFrontierId = null;
@@ -28050,17 +28313,18 @@ function currentLeapOutcomeSnapshot(accepted, rejected) {
 }
 
 async function performOffLatticeEvent() {
+  if (externalActionBarrierCheckpoint && !externalActionBarrierCheckpoint.validatedResponse) {
+    receiptStatus.textContent = "This exact frontier is paused. Validate its action-barrier response or release the checkpoint before committing.";
+    renderActionBarrierCheckpoint();
+    return;
+  }
   const reconstructionWasCertified = reconstructionCertified;
   const relaxationAuthorized = targetFreeGrowthAuthorized();
-  const before = { atoms: atoms.length, clusters: placedClusters.length, frontier: frontierCandidates.length,
-    morphology: structuralMorphologySnapshot(), composition: structuralCompositionSnapshot(), packing: structuralPackingSnapshot(), voidClearance: structuralVoidClearanceSnapshot(),
-    interfaces: structuralInterfaceSnapshot(),
-    orientationalOrder: structuralOrientationalOrderSnapshot(), centrosymmetry: structuralCentrosymmetrySnapshot(),
-    scattering: structuralScatteringSnapshot(),
-    chargeMoment: structuralChargeMomentSnapshot(), bondValenceState: structuralBondValenceSnapshot(),
-    feedstock: currentFeedstockSnapshot(), domain: currentGrowthDomainSnapshot() };
+  const before = externalActionBarrierCheckpoint?.before || currentLeapInputSnapshot();
   const batch = await commutingFrontierBatch(before);
   if (batch === null) return;
+  const actionBarrierReceipt = externalActionBarrierCheckpoint
+    ? actionBarrierCheckpointReceipt(externalActionBarrierCheckpoint) : null;
   if (!batch.length) {
     recordStructuralLeap({ status: "fixed", label: "no geometrically admissible successor",
       before, proposal: { candidates: 0, sites: 0, shared: 0, fresh: 0 },
@@ -28310,10 +28574,17 @@ async function performOffLatticeEvent() {
     asPlaced,
     settlingSensitivity,
     relaxation,
+    actionBarrierCheckpoint: actionBarrierReceipt,
     after: currentLeapOutcomeSnapshot(acceptedInBatch, rejectedInBatch),
     claimBoundary: relaxation?.accepted
       ? "The accepted antichain is valid in every placement order. A bounded post-attachment constraint projection reduced the learned local contact-angle residual and re-passed every hard gate; it is not a force trajectory, energy minimization, probability, or physical elapsed time."
       : "The accepted antichain is valid in every placement order and jumps directly to a certified structural state. No force trajectory, energy minimization, transition probability, or physical elapsed time was computed." });
+  if (externalActionBarrierCheckpoint) {
+    lastExternalActionBarrierReceipt = { ...actionBarrierCheckpointReceipt(externalActionBarrierCheckpoint),
+      status: "consumed", usedForRanking: externalActionBarrierWeight > 0 };
+    externalActionBarrierCheckpoint = null;
+    actionBarrierResponseInput.value = "";
+  }
   rebuildWorld();
   updateUI();
 }
@@ -29803,6 +30074,21 @@ function physicsTranslationRecords(leap = null) {
         ? "Gold cluster-card edges show positive inward projection and dashed blue edges show outward projection. The frozen marking retains the response SHA and cannot replay without that exact force evidence."
         : "No residual-force projection is active in marking learning or growth ranking.",
       boundary: "This is a bounded geometric statistic of one method-specific residual-force snapshot, not a bond, attraction/repulsion law, transferable force field, energy surface, equilibrium solution, relaxation trajectory, rate, or physical clock. It changes only an explicitly selected marking fit; candidate geometry and hard certificates are unchanged." },
+    { id: "action-barrier-ranking", process: "candidate-resolved external transition-path barriers",
+      status: externalActionBarrierCheckpoint?.validatedResponse
+        ? externalActionBarrierWeight > 0 ? "soft" : "explicit" : "unavailable",
+      role: externalActionBarrierCheckpoint?.validatedResponse
+        ? externalActionBarrierWeight > 0 ? "exact frozen-frontier soft ranking" : "validated diagnostic only"
+        : "no exact candidate-batch response",
+      executionEffects: { ranking: Boolean(externalActionBarrierCheckpoint?.validatedResponse
+        && externalActionBarrierWeight > 0) },
+      encoding: externalActionBarrierCheckpoint?.validatedResponse
+        ? `${externalActionBarrierCheckpoint.admissibleEntries.length} exact hard-admitted action IDs; response ${externalActionBarrierCheckpoint.responseSha256}; lower barrier mapped by tanh((median(E)-E)/(2 robustScale)); w=${externalActionBarrierWeight.toFixed(2)}`
+        : "requires an explicitly frozen target-free frontier and one converged method-provenanced path record for every admitted action",
+      evidence: externalActionBarrierCheckpoint?.validatedResponse
+        ? `Request ${externalActionBarrierCheckpoint.requestReceipt.requestSha256}; candidate batch ${externalActionBarrierCheckpoint.requestReceipt.candidateBatchSha256}; ${externalActionBarrierCheckpoint.validatedResponse.audit.candidateCount} records passed exact ID, digest, convergence, holdout, uncertainty, and safeguard checks.`
+        : "No validated response is bound to the current frontier.",
+      boundary: "A response may reorder only this exact immutable candidate batch. It never creates geometry, changes hard admission, transfers as an interatomic potential, supplies temperature or a prefactor, maps a GCTS update to time, or by itself yields a transition probability or rate." },
     { id: "calculation-stress", process: "external calculation stress / tensor-shaped metric",
       status: calculation?.stressCoverage > 0
         ? ["archive-stress", "archive-stress-reverse"].includes(affineLoadMode) ? "soft" : "explicit"
@@ -31649,7 +31935,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260830-344",
+    generatedAt: new Date().toISOString(), buildId: "20260830-345",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,
@@ -36375,6 +36661,7 @@ function updateUI() {
   renderObservationProvenance();
   renderScalePassport();
   renderPolicyComparison();
+  renderActionBarrierCheckpoint();
   renderCollinearSpinGeometry();
   renderStructuralLeap();
   renderGrowthMechanismAudit();
@@ -36384,8 +36671,10 @@ function updateUI() {
   eventCounter.textContent = String(eventIndex).padStart(4, "0");
   const material = currentMaterial();
   renderActiveSamplePassport(material);
-  playButton.disabled = pipelineStage === 4 && Boolean(material.growthWithheld);
-  stepButton.disabled = pipelineStage === 4 && (Boolean(material.growthWithheld) || growthFrontierWork.busy);
+  playButton.disabled = pipelineStage === 4
+    && (Boolean(material.growthWithheld) || Boolean(externalActionBarrierCheckpoint));
+  stepButton.disabled = pipelineStage === 4 && (Boolean(material.growthWithheld)
+    || growthFrontierWork.busy || Boolean(externalActionBarrierCheckpoint));
   resetButton.disabled = growthFrontierWork.busy;
   if (pipelineStage === 0) {
     atomLabel.textContent = material.averageStructureSites ? "AVERAGE SITES" : "ATOMS"; atomMetric.textContent = String(referenceCount()); atomDelta.textContent = material.averageStructureSites ? `${material.occupancyWeightedAtomCount} occupancy-weighted atoms · xyz in Å` : `${material.name} · xyz in Å`;
@@ -36999,6 +37288,46 @@ playButton.addEventListener("click", () => {
   updateUI();
 });
 stepButton.addEventListener("click", () => { setPlaying(false); performEvent(); });
+actionBarrierFreezeButton.addEventListener("click", () => {
+  freezeExternalActionBarrierFrontier().catch((error) => {
+    console.error(error);
+    growthFrontierWork.busy = false;
+    updatePipelineButtons();
+    receiptStatus.textContent = `Action frontier freeze failed safely · ${error.message}`;
+    renderActionBarrierCheckpoint(); updateUI();
+  });
+});
+actionBarrierDownloadButton.addEventListener("click", () => {
+  downloadExternalActionBarrierRequest().catch((error) => {
+    console.error(error); receiptStatus.textContent = `Action-barrier export failed · ${error.message}`;
+  });
+});
+actionBarrierResponseInput.addEventListener("change", () => {
+  const [file] = actionBarrierResponseInput.files || [];
+  validateExternalActionBarrierFile(file).catch((error) => {
+    console.error(error); receiptStatus.textContent = `Action-barrier response rejected · ${error.message}`;
+    actionBarrierResponseInput.value = ""; renderActionBarrierCheckpoint();
+  });
+});
+actionBarrierWeightSelect.addEventListener("change", () => {
+  externalActionBarrierWeight = Math.max(0, Math.min(.5, Number(actionBarrierWeightSelect.value) || 0));
+  if (externalActionBarrierCheckpoint?.validatedResponse) {
+    refreshExternalActionBarrierScores();
+    receiptStatus.textContent = externalActionBarrierWeight > 0
+      ? `Validated barriers will contribute w=${externalActionBarrierWeight.toFixed(2)} to this batch only.`
+      : "Validated barriers remain diagnostic; branch ordering is unchanged.";
+  }
+  renderActionBarrierCheckpoint(); updateUI();
+});
+actionBarrierResumeButton.addEventListener("click", () => {
+  setPlaying(false);
+  performOffLatticeEvent().catch((error) => {
+    console.error(error); pauseGrowth("Action-barrier checkpoint failed safely before commit.");
+    receiptStatus.textContent = `Checkpoint execution rejected · ${error.message}`;
+  });
+});
+actionBarrierCancelButton.addEventListener("click", () =>
+  releaseExternalActionBarrierCheckpoint());
 processTimelineInput.addEventListener("input", () => scrubProcessTimeline(processTimelineInput.value));
 resetButton.addEventListener("click", () => enterPipelineStage(pipelineStage));
 downloadReceiptButton.addEventListener("click", () => withReceiptStatus(downloadReceiptButton, async () => {

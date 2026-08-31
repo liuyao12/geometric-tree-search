@@ -3,7 +3,7 @@ const LANE_DEFINITIONS = Object.freeze([
     interpretation: "Supplied or derived structural observables constrain the geometric state; they do not become a trajectory.",
     recordIds: Object.freeze(["hypothesis-separation", "local-mismatch-map", "calculation-forces",
       "calculation-stress", "stress-strain-response", "collinear-spin", "relaxation-ensemble", "geometry-calculation-calibration",
-      "local-rearrangement", "local-symmetry", "centrosymmetry", "reciprocal-space"]) }),
+      "local-rearrangement", "local-symmetry", "centrosymmetry", "reciprocal-space", "action-barrier-ranking"]) }),
   Object.freeze({ id: "local", label: "local attachment", short: "fast neighborhood closure",
     interpretation: "Steric, coordination, chemistry, charge, connection, and local projection evidence act on exact candidate geometry.",
     recordIds: Object.freeze(["steric", "local", "constraint-rigidity", "constraint-projection", "connection", "score-ledger",
@@ -48,6 +48,7 @@ const RANKING_IDS = new Set([
   "drive", "thermal-field", "robustness", "microstructure", "loop-closure",
   "feed-exposure", "kinetics", "long-range", "configurational-entropy",
   "constraint-rigidity",
+  "action-barrier-ranking",
 ]);
 
 const PHYSICS_ABLATION_BINDING_DEFINITIONS = [

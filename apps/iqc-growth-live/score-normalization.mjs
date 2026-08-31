@@ -34,6 +34,7 @@ export const SCORE_NORMALIZATION_SPECS = Object.freeze({
   loop: spec("independent parent paths agreeing on a full colored child pose", "witness counts", "number of already placed independent parents", "normalize compatible multi-parent consensus without changing exact overlap checks", "bounded compatibility score"),
   arrival: spec("minimum swept clearance along finite approach routes", "Å", "2 d_nn path length and hard-exclusion radii", "sample nine points per route, normalize minimum clearance by d_nn", "bounded accessibility score"),
   exposure: spec("unblocked source-ray samples for emitted sites", "visible sample fraction", "six samples over 3 d_nn per declared source direction", "average hard-clearance line-of-sight indicators", "[0, 1] visibility"),
+  "action-barrier": spec("validated candidate-resolved transition barrier", "electronvolt per complete frozen action", "median and robust scale within the exact candidate batch", "tanh((median(E)-E)/(2*max(1.4826 MAD, range/4)))", "[-1, 1]; lower barrier is positive"),
   exploration: spec("deterministic candidate-keyed Gumbel offset", "dimensionless seeded variate", "declared T* and integer path seed", "multiply the frozen variate by T*; geometry and hard gates remain unchanged", "unbounded branch-order offset"),
 });
 
@@ -85,6 +86,7 @@ export const SCORE_PHYSICS_MANIFEST_IDS = Object.freeze({
   loop: "loop-closure",
   arrival: "kinetics",
   exposure: "feed-exposure",
+  "action-barrier": "action-barrier-ranking",
   exploration: "path-ensemble",
 });
 

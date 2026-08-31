@@ -1,5 +1,32 @@
 # Recursive GCTS benchmark for material growth
 
+### Frozen-frontier external action barriers (Build 345)
+
+The Stage 4 policy workbench now has a calculation checkpoint at the exact
+selection boundary.  It evaluates and freezes the target-free frontier, pauses
+before any branch is selected, and exports every hard-admitted action with the
+initial state, emitted and complete action sites in ångströms, stable IDs,
+per-action digests, and a batch SHA-256.  This action-level protocol is kept
+separate from the earlier preflight evidence request because the candidate set
+does not exist at preflight time.
+
+Validation is deliberately all-or-nothing: exactly one converged path record is
+required for every candidate ID, with matching request/state/batch/action
+digests, declared method settings, uncertainty, independent holdout, residual
+force convergence, and no-target/no-score-label/no-search-clock safeguards.
+The response cannot add or remove candidates.  A robust within-batch
+`tanh((median(E)-E)/(2 max(1.4826 MAD, range/4)))` coordinate makes lower
+barriers favorable; the user must explicitly choose its bounded soft weight.
+The term is included in the exact additive score ledger, normalization audit,
+physics lineage, structural-leap certificate, and full experiment receipt.
+
+This closes the calculation-to-exact-action handoff but not kinetics.  The
+barrier is scoped to one frozen frontier and method; it is not a transferable
+potential, transition probability, rate, or GCTS clock.  Candidate geometry and
+all hard admission certificates remain unchanged and are checked again at
+commit.  Performance or physical-time speedup is not claimed by this portal
+contract alone.
+
 ### Residual-force connection marking deployment (Build 344)
 
 Residual forces already had a proper-pose transport law and an optional capped
