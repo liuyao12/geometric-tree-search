@@ -1,5 +1,31 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 382 · successful-passage geometric anatomy
+
+The finite-network leap now explains a successful source-to-target passage
+without sampling kinetic trajectories. From the exact target-hitting
+probabilities it constructs the Doob-conditioned rate graph, solves its
+fundamental matrix, and reports the expected residence time in every transient
+state and expected traversal count of every directed edge before target
+arrival.
+
+The interactive anatomy panel separates passage-time bottlenecks from heavily
+recrossed edges. State bars show fractions of the conditional passage time;
+edge bars show expected event counts and highlight counts above one. Every edge
+retains its attachment/detachment/hop/exchange direction, atom-count change,
+contact character, coordination change, and displacement exposure. The panel
+therefore reports cumulative expected atom transfer and geometric work along a
+successful passage, not merely a scalar mean time.
+
+Independent identities require summed residence to reproduce the conditional
+mean passage time, summed edge counts to reproduce expected jumps, target entry
+to equal one, transient flow to close, and atom-count increments to telescope
+to the endpoint difference. Serial, competing success/failure, and recrossing
+cycle controls pass analytically. These are exact expectations inside the
+finite observed catalog—not sampled trajectories, an unconditioned history, a
+complete transition-path ensemble, or evidence that missing mechanisms are
+absent.
+
 ## Build 381 · temperature-coherent finite-network passage
 
 The portal now turns an externally authorized temperature range into a

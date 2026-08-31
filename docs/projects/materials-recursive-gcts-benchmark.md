@@ -1,5 +1,47 @@
 # Recursive GCTS benchmark for material growth
 
+### Successful-passage geometric anatomy (Build 382)
+
+Build 382 computes the expected internal anatomy of a successful finite-
+catalog passage without Monte Carlo trajectories. Let `h_i` be the Build 377
+probability of reaching target `B`. For every positive-probability transient
+state, the conditioned edge rate is
+
+`k*_{ij} = k_{ij} h_j / h_i`.
+
+The transient conditioned generator gives the fundamental matrix. Its source
+row yields the expected residence `r_i` before target absorption, and each
+directed edge's expected traversal count is
+
+`n_{ij} = r_i k*_{ij}`.
+
+Rates are scaled by the largest observed log rate, so `n_{ij}` and residence
+fractions remain stable even when physical seconds underflow or overflow.
+State atom counts are independently reconstructed from every incident edge;
+inconsistent endpoint counts fail the atom telescope rather than being
+averaged.
+
+Five numerical identities audit the decomposition:
+
+1. `Σ_i r_i` equals the Build 377 conditional mean passage time.
+2. `Σ_{ij} n_{ij}` equals its conditional expected jump count.
+3. `Σ_{i→B} n_{iB} = 1`.
+4. `1[i=s] + Σ_j n_{ji} - Σ_j n_{ij} = 0` at every transient state.
+5. `Σ_{ij} n_{ij} ΔN_{ij} = N_B - N_s` when atom-count evidence is complete.
+
+Expected counts are also accumulated by exact geometric path character and,
+when every positive-traffic edge is resolved, by contact change, dynamic-
+coordination change, and maximum-displacement exposure. A recrossing edge can
+therefore appear more than once even though target entry remains exactly one.
+Analytic tests cover a two-step serial chain, a success/failure branch whose
+failure edge vanishes under target conditioning, and a reversible cycle with
+expected counts `2, 1, 1` before absorption.
+
+The fundamental matrix is exact only for the observed finite directed graph
+and conditions on eventual target success. It is not an unconditioned growth
+history, sampled trajectory ensemble, complete transition-path theory,
+reaction-coordinate proof, or macroscopic material-growth mechanism.
+
 ### Coherent finite-network temperature intervention (Build 381)
 
 Build 381 closes the principal physical limitation of the independent-edge
