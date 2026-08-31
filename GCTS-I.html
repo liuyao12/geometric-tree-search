@@ -55,7 +55,7 @@
         rank <label><input type="radio" name="turtle-marking-rank" value="1"> 1</label><label><input type="radio" name="turtle-marking-rank" value="3" checked=""> 3</label></span>
                         <label class="toolbar-toggle mark-extension-control" id="turtle-mark-extension-control" hidden="">extent <input type="number" id="turtle-mark-extension" min="0" max="9" step="1" value="1" inputmode="numeric" aria-label="Marking extent in lattice steps">
         </label>
-                        <label class="toolbar-toggle"><input type="checkbox" id="turtle-sublattice"> sublattice</label>
+                        <label class="toolbar-toggle"><input type="checkbox" id="turtle-sublattice"> lattice coset</label>
                         <label class="toolbar-toggle toolbar-toggle-right">
         <input type="checkbox" id="turtle-lattice" checked=""> show grid</label>
                       </div>
@@ -127,7 +127,7 @@
   </main>
 
   <script type="module">
-    import { A2_TILE_LOOPS, FixedTurtleMarking, NoA2Marking, a2Transform, makeHexBoundary, solveA2Tiling, tileOrientations } from './assets/a2-tiling-engine.js?v=20260831-index-four-sublattice';
+    import { A2_TILE_LOOPS, FixedTurtleMarking, NoA2Marking, a2Transform, makeHexBoundary, solveA2Tiling, tileOrientations } from './assets/a2-tiling-engine.js?v=20260831-turtle-lattice-coset';
     (() => {
       const canvas = document.getElementById('turtle-tiling');
       if (!canvas) return;
@@ -300,8 +300,9 @@
         return point.join(',');
       }
 
-      function isIndexFourSublatticePoint(point) {
-        return point.every(value => Math.abs(value % 2) < 1e-9);
+      function isTurtleSublatticeVector(point) {
+        const congruent = (left, right) => Math.abs((left - right) % 3) < 1e-9;
+        return congruent(point[0], point[1]) && congruent(point[1], point[2]);
       }
 
       function usingSublattice() {
@@ -468,7 +469,7 @@
           const occupancy = turtleOccupancy.map(entry => ({
             ...entry,
             point: transform3(entry.point, symmetry)
-          })).filter(entry => !usingSublattice() || isIndexFourSublatticePoint(subtract3(entry.point, localOrigin)));
+          })).filter(entry => !usingSublattice() || isTurtleSublatticeVector(subtract3(entry.point, localOrigin)));
           const anchorsByValue = new Map();
           occupancy.forEach((anchor, anchorIndex) => {
             if (!anchorsByValue.has(anchor.value)) anchorsByValue.set(anchor.value, []);
@@ -490,7 +491,7 @@
           });
           const markEntriesByKey = new Map();
           const setMarkEntry = entry => {
-            if (usingSublattice() && !isIndexFourSublatticePoint(subtract3(entry.point, localOrigin))) return;
+            if (usingSublattice() && !isTurtleSublatticeVector(subtract3(entry.point, localOrigin))) return;
             markEntriesByKey.set(`${key3(entry.point)}|${entry.component}`, entry);
           };
           markSegments.forEach(segment => {
@@ -566,9 +567,7 @@
 
       function makeSeedPlacement() {
         const orientation = orientations[seedOrientationIndex];
-        const translation = usingSublattice()
-          ? orientation.vertices3d[0].map(value => -value)
-          : [0, 0, 0];
+        const translation = [0, 0, 0];
         return makePlacement(orientation, translation, {
           step: 0,
           forced: true,
@@ -1392,19 +1391,24 @@
         const worldRadius = corners.reduce((radius, point) => Math.max(radius, Math.abs(point.x), Math.abs(point.y)), 0);
         const constantLimit = Math.min(220, Math.max(28, Math.ceil((worldRadius / latticeScale) * 1.7) + 8));
         const lineExtent = constantLimit * 3;
-        const gridStep = usingSublattice() ? 2 : 1;
-        const families = [
-          constant => t => [constant, t, -constant - t],
-          constant => t => [t, constant, -constant - t],
-          constant => t => [t, -constant - t, constant]
+        const representative = makeSeedPlacement().vertices3d[0];
+        const gridStep = usingSublattice() ? 3 : 1;
+        const families = usingSublattice() ? [
+          { offset: representative[1] - representative[2], points: constant => t => [t, (-t + constant) / 2, (-t - constant) / 2] },
+          { offset: representative[0] - representative[2], points: constant => t => [(-t + constant) / 2, t, (-t - constant) / 2] },
+          { offset: representative[0] - representative[1], points: constant => t => [(-t + constant) / 2, (-t - constant) / 2, t] }
+        ] : [
+          { offset: 0, points: constant => t => [constant, t, -constant - t] },
+          { offset: 0, points: constant => t => [t, constant, -constant - t] },
+          { offset: 0, points: constant => t => [t, -constant - t, constant] }
         ];
         ctx.save();
         ctx.strokeStyle = 'rgba(90, 90, 90, 0.30)';
         ctx.lineWidth = Math.max(0.35, Math.min(1.05, 1.05 * scale));
         families.forEach(family => {
-          const firstConstant = Math.ceil(-constantLimit / gridStep) * gridStep;
+          const firstConstant = family.offset + Math.ceil((-constantLimit - family.offset) / gridStep) * gridStep;
           for (let constant = firstConstant; constant <= constantLimit; constant += gridStep) {
-            const makePoint = family(constant);
+            const makePoint = family.points(constant);
             const a = projectA2(makePoint(-lineExtent));
             const b = projectA2(makePoint(lineExtent));
             const start = worldToScreen(a.x, a.y);
@@ -1780,7 +1784,7 @@
       }
       function createSharedLiveTilingSearch(useMarking) {
         const seed = makeSeedPlacement();
-        const latticePointFilter = usingSublattice() ? isIndexFourSublatticePoint : null;
+        const latticePointFilter = usingSublattice() ? isTurtleSublatticeVector : null;
         const sharedSeedOrientation = sharedOrientationFor(seed.orientation);
         const sharedSeedTranslation = add3(a2Transform(turtleVertices3d[0], seed.orientation), seed.translation);
         const stopToken = { stop: false };
@@ -2000,7 +2004,7 @@
         trialGhost = null;
         statusText = `${markingRulesToggle?.checked
           ? `branching with rank-${markingRank} marking constraints`
-          : 'branching without marking constraints'}${usingSublattice() ? ' on the index-4 sublattice' : ''}`;
+          : 'branching without marking constraints'}${usingSublattice() ? ' on the turtle lattice coset' : ''}`;
         showMarkings = markingRulesToggle.checked ? true : showMarkings;
         updateMarkingButton();
         startButton.textContent = 'Pause tiling';
@@ -2131,11 +2135,11 @@
         resetTilingForMarkingExtension();
         liveSearchUsesSublattice = usingSublattice();
         statusText = usingSublattice()
-          ? 'index-4 sublattice · original A2 coordinates'
+          ? 'turtle lattice coset · original A2 coordinates'
           : 'full A2 lattice';
-        if (stageLabel) stageLabel.textContent = usingSublattice() ? 'Stage: index-4 sublattice' : 'Stage: full lattice';
+        if (stageLabel) stageLabel.textContent = usingSublattice() ? 'Stage: turtle lattice coset' : 'Stage: full lattice';
         if (stageNote) stageNote.textContent = usingSublattice()
-          ? 'The grid and search use the even-coordinate sublattice; retained t- and m-values are unchanged.'
+          ? 'The grid and search use the affine coset containing 11 turtle boundary vertices and every marking line; retained t- and m-values are unchanged.'
           : 'The grid and search use every A2 lattice point.';
         draw();
       });
