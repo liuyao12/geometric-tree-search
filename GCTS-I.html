@@ -245,7 +245,7 @@
         markings: {
           label: 'Stage: three marking components',
           note: 'The displayed segments are the specified ±1 marking values between turtle vertices; reflected turtle orientations swap the two stripe colors.',
-          tiles: 12,
+          tiles: 1,
           markings: true,
           useMarkingRules: false
         },
@@ -445,10 +445,13 @@
           const markSegments = turtleMarkSegments.map(segment => {
             const start = vertices3d[segment.from];
             const end = vertices3d[segment.to];
+            const { step } = primitiveSegment(start, end);
             return {
               ...segment,
               fromPoint: start,
               toPoint: end,
+              displayFromPoint: start.map((value, index) => value - step[index] * extensionSteps),
+              displayToPoint: end.map((value, index) => value + step[index] * extensionSteps),
               component: transformCotangentComponent(segment.component, symmetry),
               value: segment.value * symmetry.planeSign
             };
@@ -509,7 +512,9 @@
         const markSegments = orientation.markSegments.map(segment => ({
           ...segment,
           fromPoint: add3(segment.fromPoint, translation),
-          toPoint: add3(segment.toPoint, translation)
+          toPoint: add3(segment.toPoint, translation),
+          displayFromPoint: add3(segment.displayFromPoint, translation),
+          displayToPoint: add3(segment.displayToPoint, translation)
         }));
         return {
           ...extras,
@@ -1363,39 +1368,14 @@
 
       function drawMarkings(placement) {
         ctx.save();
-        tracePolygon(placement.points);
-        ctx.clip();
         ctx.lineCap = 'round';
         placement.markSegments.forEach(segment => {
-          const a = projectA2(segment.fromPoint);
-          const b = projectA2(segment.toPoint);
+          const a = projectA2(segment.displayFromPoint || segment.fromPoint);
+          const b = projectA2(segment.displayToPoint || segment.toPoint);
           const start = worldToScreen(a.x, a.y);
           const end = worldToScreen(b.x, b.y);
           const color = segment.value > 0 ? markValueColors.positive : markValueColors.negative;
           drawLine(start, end, color, Math.max(2.2, 4.1 * scale));
-        });
-        ctx.restore();
-      }
-
-      function drawExteriorMarkingPoints(placement) {
-        const occupancyKeys = new Set(placement.occupancy.map(item => key3(item.point)));
-        const exterior = new Map();
-        placement.markings.forEach(entry => {
-          if (entry.value === 0 || occupancyKeys.has(key3(entry.point))) return;
-          exterior.set(markingKey(entry), entry);
-        });
-        if (!exterior.size) return;
-        ctx.save();
-        exterior.forEach(entry => {
-          const point = projectA2(entry.point);
-          const screen = worldToScreen(point.x, point.y);
-          ctx.beginPath();
-          ctx.arc(screen.x, screen.y, Math.max(1.7, 2.5 * scale), 0, Math.PI * 2);
-          ctx.fillStyle = entry.value > 0 ? markValueColors.positive : markValueColors.negative;
-          ctx.strokeStyle = 'rgba(255, 255, 255, 0.86)';
-          ctx.lineWidth = Math.max(0.55, 0.9 * scale);
-          ctx.fill();
-          ctx.stroke();
         });
         ctx.restore();
       }
@@ -1417,10 +1397,6 @@
         ctx.fill();
         ctx.stroke();
         ctx.setLineDash([]);
-        if (!options.ghost && showMarkings) {
-          drawMarkings(placement);
-          drawExteriorMarkingPoints(placement);
-        }
       }
 
       function labelAnchorForPoint(entry, placements) {
@@ -1528,6 +1504,7 @@
         if (latticeToggle.checked) drawGridLines(rect);
         const visible = visiblePlacements();
         visible.forEach(drawTurtle);
+        if (showMarkings) visible.forEach(drawMarkings);
         if (trialGhost) drawTurtle(trialGhost.placement, shownTiles, { ghost: true, valid: trialGhost.valid });
         const sums = visibleSums();
         drawValues(sums, visible);
@@ -1620,6 +1597,20 @@
         if (stageName === 'markings') {
           markingRulesToggle.checked = false;
           tilingRunUsesMarking = false;
+          if (markExtensionInput) markExtensionInput.value = '1';
+          markingExtension = 1;
+          orientations = buildOrientations(markingExtension);
+          const seed = makeSeedPlacement();
+          tilingRun = { placements: [seed], trace: [] };
+          tilingOrder = tilingRun.placements;
+          tilingTrace = tilingRun.trace;
+          shownTiles = 1;
+          playbackPlacements = null;
+          traceIndex = 0;
+          liveSearchIterator = null;
+          pausedCoronas.clear();
+          hasStartedTiling = false;
+          startButton.textContent = 'Start tiling';
           showMarkings = true;
           trialGhost = null;
           statusText = '';
