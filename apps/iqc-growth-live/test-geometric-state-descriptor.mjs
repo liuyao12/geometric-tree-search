@@ -12,6 +12,10 @@ assert.equal(descriptor.rotationallyInvariant, true);
 assert.ok(Number.isFinite(descriptor.steinhardtQ4));
 assert.ok(Number.isFinite(descriptor.steinhardtQ6));
 assert.equal(descriptor.chemicalBondClaimed, false);
+assert.equal(descriptor.dimensionlessPowderScattering.qTimesMedianNearestNeighbor.length, 24);
+assert.equal(descriptor.dimensionlessPowderScattering.unitWeightIntensity.length, 24);
+assert.equal(descriptor.dimensionlessPowderScattering.pairCount, 15);
+assert.equal(descriptor.dimensionlessPowderScattering.qDependentFormFactorsUsed, false);
 
 const rotation = [[0, -1, 0], [1, 0, 0], [0, 0, 1]];
 const transformed = [...octahedron].reverse().map((site) => ({ ...site,
@@ -23,6 +27,12 @@ for (const field of ["medianNearestNeighborAngstrom", "contactCount", "meanCoord
   "coordinationStandardDeviation", "steinhardtQ4", "steinhardtQ6"]) {
   assert.ok(Math.abs(descriptor[field] - transformedDescriptor[field]) < 1e-12, field);
 }
+assert.deepEqual(descriptor.dimensionlessPowderScattering.qTimesMedianNearestNeighbor,
+  transformedDescriptor.dimensionlessPowderScattering.qTimesMedianNearestNeighbor);
+descriptor.dimensionlessPowderScattering.unitWeightIntensity.forEach((value, index) => {
+  assert.ok(Math.abs(value
+    - transformedDescriptor.dimensionlessPowderScattering.unitWeightIntensity[index]) < 1e-12);
+});
 
 const path = { coordinateBearingImagesValidated: true,
   fixedMaterialSites: [{ species: "Na", positionAngstrom: [0, 0, 0] }],

@@ -63,10 +63,10 @@ def test_force_projection_is_visible_in_cluster_learning_and_physics_receipts():
 
 def test_build_344_is_cache_busted():
     for document in (HTML, ALIAS_HTML):
-        assert 'app.js?v=20260831-386' in document
-        assert 'style.css?v=20260831-386' in document
-        assert 'evidence-atlas.js?v=20260831-386' in document
-    assert 'buildId: "20260831-386"' in APP
+        assert 'app.js?v=20260831-387' in document
+        assert 'style.css?v=20260831-387' in document
+        assert 'evidence-atlas.js?v=20260831-387' in document
+    assert 'buildId: "20260831-387"' in APP
 
 
 def main() -> None:

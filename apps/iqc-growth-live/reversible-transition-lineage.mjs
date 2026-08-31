@@ -57,6 +57,38 @@ function rootSumSquares(values) {
   return Math.sqrt(values.filter(Number.isFinite).reduce((sum, value) => sum + value * value, 0));
 }
 
+function normalizedDimensionlessPowderScattering(raw, atomCount, label) {
+  if (raw == null) return null;
+  const q = Array.isArray(raw.qTimesMedianNearestNeighbor)
+    ? raw.qTimesMedianNearestNeighbor.map(Number) : [];
+  const intensity = Array.isArray(raw.unitWeightIntensity)
+    ? raw.unitWeightIntensity.map(Number) : [];
+  if (q.length < 4 || q.length !== intensity.length
+      || q.some((value, index) => !Number.isFinite(value) || value <= 0
+        || index > 0 && value <= q[index - 1])
+      || intensity.some((value) => !Number.isFinite(value) || value < -1e-9)) {
+    throw new Error(`${label} dimensionless powder signature is invalid`);
+  }
+  const pairCount = optionalFinite(raw.pairCount,
+    `${label} powder pair count`, { nonnegative: true });
+  if (!Number.isInteger(pairCount) || pairCount !== atomCount * (atomCount - 1) / 2) {
+    throw new Error(`${label} powder pair count must cover every finite-window site pair`);
+  }
+  if (raw.normalization !== "finite Debye orientational average divided by atom count"
+      || raw.lengthScale !== "each exact state's median nearest-neighbor distance"
+      || raw.scatteringWeights !== "one per site"
+      || raw.qDependentFormFactorsUsed !== false
+      || raw.DebyeWallerDampingUsed !== false
+      || raw.instrumentResponseUsed !== false) {
+    throw new Error(`${label} powder-signature method declaration is invalid`);
+  }
+  return { qTimesMedianNearestNeighbor: q, unitWeightIntensity: intensity, pairCount,
+    normalization: raw.normalization, lengthScale: raw.lengthScale,
+    scatteringWeights: raw.scatteringWeights,
+    qDependentFormFactorsUsed: false, DebyeWallerDampingUsed: false,
+    instrumentResponseUsed: false };
+}
+
 function normalizedStateGeometricDescriptor(raw, label) {
   if (raw == null) return null;
   const atomCount = optionalFinite(raw.atomCount, `${label} atom count`, { nonnegative: true });
@@ -119,12 +151,15 @@ function normalizedStateGeometricDescriptor(raw, label) {
   if ([steinhardtQ4, steinhardtQ6].some((value) => value != null && value > 1 + 1e-10)) {
     throw new RangeError(`${label} Steinhardt order cannot exceed one`);
   }
+  const dimensionlessPowderScattering = normalizedDimensionlessPowderScattering(
+    raw.dimensionlessPowderScattering, atomCount, label);
   return {
     schema: "gcts-global-geometric-state-descriptor-v1",
     atomCount, speciesCounts, contactReach, medianNearestNeighborAngstrom, cutoffAngstrom,
     contactCount, meanCoordination, coordinationStandardDeviation,
     minimumCoordination, maximumCoordination, sameSpeciesContactFraction,
     speciesPairContactFractions, steinhardtQ4, steinhardtQ6,
+    dimensionlessPowderScattering,
     finiteObservationBoundaryIncluded: true, periodicImagesAdded: false,
     targetUsed: false, rotationallyInvariant: true, chemicalBondClaimed: false,
     thermodynamicOrderParameterClaimed: false,

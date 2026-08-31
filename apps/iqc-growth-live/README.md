@@ -1,5 +1,28 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 387 · reciprocal-space signatures along successful paths
+
+Every externally validated exact state now carries a compact reciprocal-space
+fingerprint derived directly from its Cartesian geometry. The fingerprint is
+the finite Debye orientational average over every site pair, with unit site
+weights, divided by atom count, and evaluated on a fixed 24-point
+dimensionless \(q d_{nn}\) grid. Using each state's median nearest-neighbor
+distance removes uniform scale while preserving changes in pair geometry.
+
+The successful-path powder panel propagates these signatures through the same
+exact conditioned phase-type state probabilities used by Builds 384–386. A
+reciprocal-space heat map shows target-inclusive \(\Delta S(q,t)\) relative to
+the source. The receipt also keeps the still-in-flight mean and variance,
+source-to-target RMS contrast, the strongest reciprocal contrast, and the
+time of maximum spectral path heterogeneity. Repeated observations of one
+state must reproduce the same spectrum and q grid or the panel fails closed.
+
+This is deliberately a geometric bridge to experimental thinking, not a
+synthetic diffraction experiment. It uses no q-dependent X-ray form factors,
+neutron scattering lengths, occupancies, Debye–Waller damping, periodic image,
+instrument broadening, background, or refinement model. It cannot identify a
+phase or establish a mechanism-complete bulk scattering law.
+
 ## Build 386 · exact structural spread along successful paths
 
 Successful passage now reports more than its mean structural trajectory. The

@@ -8,7 +8,7 @@ const readme = await readFile(new URL("../apps/iqc-growth-live/README.md", impor
 assert.match(html, /id="actionBarrierCatalog"/);
 assert.match(html, /value="forward-only"/);
 assert.match(html, /value="reversible-leaves" selected/);
-assert.match(html, /app\.js\?v=20260831-386/);
+assert.match(html, /app\.js\?v=20260831-387/);
 assert.match(html, /Microscopic inverse lineage/);
 assert.match(html, /id="transitionNetworkPlot"/);
 assert.match(html, /id="transitionNetworkCycleSelect"/);

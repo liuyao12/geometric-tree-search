@@ -52,6 +52,36 @@ function populationStandardDeviation(values, mean) {
     / values.length);
 }
 
+export const DIMENSIONLESS_POWDER_Q_GRID = Object.freeze(
+  Array.from({ length: 24 }, (_, index) => .5 * (index + 1)),
+);
+
+function sinc(value) {
+  return Math.abs(value) <= 1e-12 ? 1 : Math.sin(value) / value;
+}
+
+function dimensionlessPowderScattering(pairDistances, atomCount,
+  medianNearestNeighborAngstrom) {
+  const normalizedPairDistances = pairDistances.map(({ distance }) =>
+    distance / medianNearestNeighborAngstrom);
+  const unitWeightIntensity = DIMENSIONLESS_POWDER_Q_GRID.map((q) => {
+    const intensity = (atomCount + 2 * normalizedPairDistances.reduce((sum, distance) =>
+      sum + sinc(q * distance), 0)) / atomCount;
+    return Math.abs(intensity) <= 1e-13 ? 0 : intensity;
+  });
+  return {
+    qTimesMedianNearestNeighbor: [...DIMENSIONLESS_POWDER_Q_GRID],
+    unitWeightIntensity,
+    pairCount: pairDistances.length,
+    normalization: "finite Debye orientational average divided by atom count",
+    lengthScale: "each exact state's median nearest-neighbor distance",
+    scatteringWeights: "one per site",
+    qDependentFormFactorsUsed: false,
+    DebyeWallerDampingUsed: false,
+    instrumentResponseUsed: false,
+  };
+}
+
 function steinhardtGlobalOrder(directedBonds, degree) {
   if (!directedBonds.length) return null;
   let normSquared = 0;
@@ -137,6 +167,8 @@ export function buildGeometricStateDescriptor(rawSites, { contactReach = 1.35 } 
   const speciesCounts = new Map();
   sites.forEach((site) => speciesCounts.set(site.species,
     (speciesCounts.get(site.species) || 0) + 1));
+  const dimensionlessPowder = dimensionlessPowderScattering(pairDistances,
+    sites.length, medianNearestNeighborAngstrom);
   return {
     schema: "gcts-global-geometric-state-descriptor-v1",
     atomCount: sites.length,
@@ -156,12 +188,13 @@ export function buildGeometricStateDescriptor(rawSites, { contactReach = 1.35 } 
       .map(([pair, count]) => [pair, count / contactCount])),
     steinhardtQ4: steinhardtGlobalOrder(directedBonds, 4),
     steinhardtQ6: steinhardtGlobalOrder(directedBonds, 6),
+    dimensionlessPowderScattering: dimensionlessPowder,
     finiteObservationBoundaryIncluded: true,
     periodicImagesAdded: false,
     targetUsed: false,
     rotationallyInvariant: true,
     chemicalBondClaimed: false,
     thermodynamicOrderParameterClaimed: false,
-    claimBoundary: "Coordination and global Steinhardt Q4/Q6 are computed from the finite exact colored point set using a cutoff equal to the declared reach times that state's median nearest-neighbor distance. Observation-boundary undercoordination is retained and no periodic images are invented. These geometric descriptors are not bond orders, phase labels, thermodynamic order parameters, or infinite-system averages.",
+    claimBoundary: "Coordination and global Steinhardt Q4/Q6 are computed from the finite exact colored point set using a cutoff equal to the declared reach times that state's median nearest-neighbor distance. The optional reciprocal-space fingerprint is the unit-weight finite Debye orientational average on a fixed q·dₙₙ grid, normalized by atom count. Observation boundaries are retained and no periodic images are invented. These descriptors are not chemical bond orders, experimental scattering intensities, phase labels, thermodynamic order parameters, or infinite-system averages.",
   };
 }

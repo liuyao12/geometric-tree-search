@@ -1,5 +1,35 @@
 # Recursive GCTS benchmark for material growth
 
+### Reciprocal-space signatures along successful paths (Build 387)
+
+Build 387 adds a reciprocal-space observable to every exact coordinate-bearing
+state. For \(N\) sites with pair distances \(r_{ij}\), the scale-normalized
+unit-weight finite-window signature is
+
+\[
+  S(qd_{nn}) = \frac{1}{N}\left[N + 2\sum_{i<j}
+  \frac{\sin(qr_{ij})}{qr_{ij}}\right],
+\]
+
+where every distance is divided by that state's median nearest-neighbor
+distance and the same 24-point \(q d_{nn}\) grid is used for all states.
+Repeated incident-edge observations of one state must reproduce both the grid
+and every intensity value. Missing or inconsistent signatures fail closed.
+
+The exact conditioned state probabilities then produce target-inclusive and
+not-yet-arrived means and variances at every q point and phase-type time. The
+portal renders a heat map of expected \(\Delta S(q,t)\) relative to the source
+and reports source-to-target RMS contrast, the strongest reciprocal contrast,
+and peak still-in-flight spectral dispersion. Initial mean and variance
+identities are checked independently.
+
+This is a rotationally invariant geometric powder fingerprint, not
+experimental scattering. Unit site weights replace X-ray form factors or
+neutron lengths; no occupancy amplitudes, Debye–Waller damping, periodic
+images, instrument response, background, or refinement are introduced. The
+result does not identify a phase, sample trajectories, or prove mechanism
+completeness.
+
 ### Exact structural spread along successful paths (Build 386)
 
 Build 386 resolves the state-to-state heterogeneity hidden by the conditional
