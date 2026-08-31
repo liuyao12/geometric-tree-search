@@ -53,7 +53,7 @@
         <input type="checkbox" id="turtle-marking-rules"> Tiling with marking</label>
                         <span class="toolbar-toggle marking-rank-control" id="turtle-marking-rank-control" role="radiogroup" aria-label="Marking rank" hidden="">
         rank <label><input type="radio" name="turtle-marking-rank" value="1"> 1</label><label><input type="radio" name="turtle-marking-rank" value="3" checked=""> 3</label></span>
-                        <label class="toolbar-toggle mark-extension-control" id="turtle-mark-extension-control" hidden="">mark reach <input type="number" id="turtle-mark-extension" min="0" max="9" step="1" value="1" inputmode="numeric" aria-label="Marking reach in lattice steps">
+                        <label class="toolbar-toggle mark-extension-control" id="turtle-mark-extension-control" hidden="">extent <input type="number" id="turtle-mark-extension" min="0" max="9" step="1" value="1" inputmode="numeric" aria-label="Marking extent in lattice steps">
         </label>
                         <label class="toolbar-toggle toolbar-toggle-right">
         <input type="checkbox" id="turtle-lattice" checked=""> show grid</label>
@@ -1639,7 +1639,7 @@
         liveSearchIterator = null;
         pausedCoronas.clear();
         trialGhost = null;
-        statusText = `rank-${markingRank} marking · reach ${markingExtension} lattice step${markingExtension === 1 ? '' : 's'}`;
+        statusText = `rank-${markingRank} marking · extent ${markingExtension} lattice step${markingExtension === 1 ? '' : 's'}`;
         hasStartedTiling = false;
         startButton.textContent = 'Start tiling';
         updateMarkingRankControl();
