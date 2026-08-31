@@ -7,7 +7,7 @@
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23071112'/%3E%3Cpath d='M17 19 46 12M17 19l8 30m21-37L25 49m-8-30 29 24M25 49l21-6' stroke='%236fffd4' stroke-width='4'/%3E%3Ccircle cx='17' cy='19' r='6' fill='%23f1fff9'/%3E%3Ccircle cx='46' cy='12' r='6' fill='%236fffd4'/%3E%3Ccircle cx='25' cy='49' r='6' fill='%238a7dff'/%3E%3Ccircle cx='46' cy='43' r='6' fill='%236fffd4'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css?v=20260831-382">
+  <link rel="stylesheet" href="./style.css?v=20260831-383">
   <script type="importmap">
     {
       "imports": {
@@ -1411,6 +1411,13 @@
                           <div class="finite-network-conditioned-passage-legend"><span><i class="residence"></i>passage-time residence</span><span><i class="traversal"></i>expected edge traversals</span><span><i class="recrossing"></i>count &gt; 1</span></div>
                           <div id="finiteNetworkConditionedPassageSummary" class="finite-network-conditioned-passage-summary" aria-live="polite"></div>
                           <p id="finiteNetworkConditionedPassageState">Choose a reachable source and target to decompose successful passage into expected state residence and geometric edge counts.</p>
+                          <section class="finite-network-conditioned-heterogeneity" aria-label="Exact successful-path variance and directed edge-use probabilities">
+                            <header><span><small>exact second moments · fixed rates · no trajectories</small><strong>Successful-path heterogeneity</strong></span><b id="finiteNetworkConditionedHeterogeneityBadge">awaiting target passage</b></header>
+                            <svg id="finiteNetworkConditionedHeterogeneityPlot" viewBox="0 0 300 112" role="img" aria-label="Probability each directed edge is used at least once and multiplicity when used on a successful path"></svg>
+                            <div class="finite-network-conditioned-heterogeneity-legend"><span><i class="mandatory"></i>mandatory / near-mandatory</span><span><i class="optional"></i>optional branch</span><span><i class="repeat"></i>repeated when used</span></div>
+                            <div id="finiteNetworkConditionedHeterogeneitySummary" class="finite-network-conditioned-heterogeneity-summary" aria-live="polite"></div>
+                            <p id="finiteNetworkConditionedHeterogeneityState">Exact second moments separate branching and recrossing variability from uncertainty in the supplied rates.</p>
+                          </section>
                         </section>
                       </section>
                     </section>
@@ -2548,7 +2555,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260831-382"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260831-382"></script>
+  <script type="module" src="./app.js?v=20260831-383"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260831-383"></script>
 </body>
 </html>

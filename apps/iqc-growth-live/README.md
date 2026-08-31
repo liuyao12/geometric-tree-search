@@ -1,5 +1,32 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 383 · exact successful-path heterogeneity
+
+The successful-passage analysis now distinguishes mandatory steps, optional
+branches, and recrossing variability without drawing kinetic trajectories.
+The Doob-conditioned continuous-time generator gives the exact first and
+second passage-time moments at fixed supplied rates. Its embedded jump chain
+simultaneously gives the exact mean and variance of observed jump count,
+atom-count change, contact change, dynamic-coordination change, and cumulative
+maximum-displacement exposure whenever the corresponding edge geometry is
+complete.
+
+For every directed edge, a separate finite hitting equation computes the
+probability that a successful path uses that edge at least once. Comparing
+this probability with its expected traversal count reveals how often the edge
+repeats when it is used. The interactive panel therefore separates a
+near-mandatory one-pass step from an optional recrossing edge even when both
+have the same mean traversal count. A traffic-weighted entropy is reported as
+an effective number of used edges; it is explicitly not called path entropy.
+
+Analytic serial, success/failure branch, and reversible-cycle controls verify
+deterministic jump counts, exponential waiting-time variation, failure-edge
+removal under success conditioning, recrossing use probability, geometric
+reward variance, and the zero atom-transfer variance implied by an exact
+endpoint telescope. This is path heterogeneity inside one finite fixed-rate
+catalog. It is separate from rate uncertainty, does not sample trajectories,
+and does not certify missing mechanisms absent.
+
 ## Build 382 · successful-passage geometric anatomy
 
 The finite-network leap now explains a successful source-to-target passage

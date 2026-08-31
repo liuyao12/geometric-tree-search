@@ -1,5 +1,43 @@
 # Recursive GCTS benchmark for material growth
 
+### Exact successful-path heterogeneity (Build 383)
+
+Build 383 extends the conditioned finite-network calculation from means to
+exact second moments. With conditioned rates `k*`, the embedded transition
+probabilities are `p*_{ij}=k*_{ij}/Σ_j k*_{ij}`. For any additive edge reward
+`r_{ij}`, its conditional mean `g_i` and second raw moment `s_i` solve
+
+`g_i = Σ_j p*_{ij}(r_{ij}+g_j)`,
+
+`s_i = Σ_j p*_{ij}(r²_{ij}+2r_{ij}g_j+s_j)`.
+
+The rewards include one per observed jump, exact `ΔN`, path contact and
+dynamic-coordination increments, and maximum-displacement exposure. For the
+continuous passage time, `A=-Q*` on transient states gives `Am=1` and
+`As=2m`; hence the time coefficient of variation is invariant to the common
+rate scaling used for numerical stability.
+
+For each directed edge `e`, an edge-specific hitting equation computes
+`P(N_e≥1 | target success)`. The ratio
+`E[N_e]/P(N_e≥1)` is the expected multiplicity conditional on using that edge.
+This distinguishes obligatory steps, optional branches, and optional
+recrossing. Normalized expected traversal counts also give a traffic entropy
+and effective traffic-edge count; these are edge-traffic summaries, not a
+path-ensemble entropy.
+
+Analytic controls require a serial two-step chain to have zero jump variance,
+a success/failure branch to have zero conditioned use of the failure edge, and
+a reversible cycle to have mean/variance jump count `4/8`, return-edge use
+probability `1/2`, and two returns conditional on using it. Exact state-function
+atom increments must retain zero variance even with recrossing. Linear-system
+residuals, first-moment identities, probability bounds, and that telescope are
+all audited independently.
+
+These are fixed-rate statistics of paths that succeed inside the observed
+finite graph. They are not uncertainty in barriers or prefactors, sampled
+trajectories, a complete transition-path ensemble, a reaction-coordinate
+proof, or bulk growth fluctuations.
+
 ### Successful-passage geometric anatomy (Build 382)
 
 Build 382 computes the expected internal anatomy of a successful finite-
