@@ -200,6 +200,7 @@
       let dragging = false;
       let last = { x: 0, y: 0 };
       let hoveredPoint = null;
+      let hoverPointer = null;
       let shownTiles = tilingOrder.length;
       let playbackPlacements = null;
       let timer = null;
@@ -1531,6 +1532,7 @@
         if (showMarkings) visible.forEach(drawMarkings);
         if (trialGhost) drawTurtle(trialGhost.placement, shownTiles, { ghost: true, valid: trialGhost.valid });
         const sums = visibleSums();
+        refreshHoveredPoint(sums);
         drawValues(sums, visible);
         drawFrontier(trialGhost || visible[visible.length - 1]);
         drawHoverTooltip();
@@ -1545,14 +1547,13 @@
         return { x: event.clientX - rect.left, y: event.clientY - rect.top };
       }
 
-      function updateHoveredPoint(event) {
-        const pointer = pointerPosition(event);
+      function refreshHoveredPoint(sums = visibleSums()) {
+        if (!hoverPointer) return;
         let best = null;
-        const sums = visibleSums();
         sums.forEach(entry => {
           const point = projectA2(entry.point);
           const screen = worldToScreen(point.x, point.y);
-          const distance = Math.hypot(screen.x - pointer.x, screen.y - pointer.y);
+          const distance = Math.hypot(screen.x - hoverPointer.x, screen.y - hoverPointer.y);
           if (distance < 12 && (!best || distance < best.distance)) best = { ...entry, distance };
         });
         if (showMarkings) {
@@ -1564,12 +1565,17 @@
           markPoints.forEach(entry => {
             const point = projectA2(entry.point);
             const screen = worldToScreen(point.x, point.y);
-            const distance = Math.hypot(screen.x - pointer.x, screen.y - pointer.y);
+            const distance = Math.hypot(screen.x - hoverPointer.x, screen.y - hoverPointer.y);
             if (distance < 12 && (!best || distance < best.distance)) best = { ...entry, distance };
           });
         }
         hoveredPoint = best;
         if (hoverReadout) hoverReadout.textContent = best ? hoverLinesForPoint(best).join('; ') : '';
+      }
+
+      function updateHoveredPoint(event) {
+        hoverPointer = pointerPosition(event);
+        refreshHoveredPoint();
       }
 
       function updateMarkingButton() {
@@ -1855,6 +1861,7 @@
       canvas.addEventListener('pointerdown', event => {
         dragging = true;
         last = pointerPosition(event);
+        hoverPointer = last;
         canvas.setPointerCapture(event.pointerId);
       });
       canvas.addEventListener('pointermove', event => {
@@ -1863,12 +1870,14 @@
           offset.x += next.x - last.x;
           offset.y += next.y - last.y;
           last = next;
+          hoverPointer = next;
         } else {
           updateHoveredPoint(event);
         }
         draw();
       });
       canvas.addEventListener('pointerleave', () => {
+        hoverPointer = null;
         hoveredPoint = null;
         if (hoverReadout) hoverReadout.textContent = '';
         draw();
