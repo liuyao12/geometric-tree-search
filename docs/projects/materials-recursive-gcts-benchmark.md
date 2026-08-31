@@ -1,5 +1,42 @@
 # Recursive GCTS benchmark for material growth
 
+### Time-resolved successful-path structure (Build 385)
+
+Build 385 projects the exact Doob-conditioned state distribution onto retained
+material geometry. Every state with positive successful-passage probability,
+plus the absorbing target, must carry an identical geometric descriptor on
+all incident observations. The audit requires consistent atom count, contact
+reach, coordination statistics, species counts, pair-contact fractions, and
+rotationally invariant global Q₄/Q₆. Edge atom counts are independently checked
+against the state descriptors.
+
+At each Build 384 phase-type time sample, two different expectations are
+retained. The target-inclusive expectation
+
+`E[D(X_t) | eventual target success]`
+
+includes probability already absorbed at the target. The in-flight expectation
+
+`E[D(X_t) | eventual target success, T_target > t]`
+
+renormalizes only over transient states, revealing which exact intermediate
+dominates paths that have not yet arrived. The panel displays up to four such
+survivor-state probability curves and a separate target-inclusive atom-count
+progress curve. Median-region atom count, coordination, Q₄, and Q₆ remain
+numerically traceable to the exact state descriptors.
+
+Controls cover a one-edge process, where every survivor must remain in the
+source state, and a serial chain, where the intermediate gains in-flight
+weight before target absorption. Repeated descriptors that disagree fail
+closed. Probability normalization, source identity, and the underlying phase-
+type identities are audited; target convergence is reported without being
+mistaken for infinite-time equilibrium.
+
+Finite-window undercoordination remains present and no periodic images are
+added. Coordination and Q₄/Q₆ here are geometric observables—not chemical bond
+orders, phase classifications, thermodynamic order parameters, bulk averages,
+or mechanism-complete material-growth kinetics.
+
 ### Exact successful-arrival distribution (Build 384)
 
 Build 384 evaluates the full successful first-arrival distribution of the

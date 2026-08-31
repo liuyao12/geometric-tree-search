@@ -1,5 +1,30 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 385 · time-resolved successful-path structure
+
+Successful finite-network passage is now resolved into the geometry of the
+material while it is still en route. Every state participating in the
+Doob-conditioned passage must reproduce one consistent finite-window global
+descriptor across all incident edge observations. The descriptor carries atom
+count, mean coordination, and rotationally invariant Steinhardt Q₄/Q₆ under
+one common contact reach; disagreements fail closed rather than being averaged.
+
+The new structural-path panel follows the exact-state probabilities among
+successful paths that have not yet reached the target. This survivor-
+conditioned view exposes transient intermediates that an absorbing-target
+population would otherwise hide. A separate target-inclusive curve shows
+expected atom-count progress, so already arrived paths remain represented
+rather than silently renormalized away. Median-region tiles identify the
+dominant in-flight state and its expected atom count and order.
+
+Analytic one-edge and serial-chain controls verify source identity, survivor
+conditioning, absorption toward the target descriptor, probability
+normalization, and fail-closed repeated-descriptor inconsistency. The finite
+observation boundary remains in the coordination and Q values; no periodic
+images are invented. These curves are not phase labels, thermodynamic order
+parameters, bulk structural averages, sampled trajectories, or a complete
+growth mechanism.
+
 ## Build 384 · exact successful-arrival distribution
 
 The portal now resolves the complete finite-catalog distribution of successful

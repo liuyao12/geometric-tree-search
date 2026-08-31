@@ -1,7 +1,7 @@
 import { buildFiniteNetworkFirstPassage }
-  from "./finite-network-first-passage.mjs?v=20260831-384";
+  from "./finite-network-first-passage.mjs?v=20260831-385";
 import { buildFiniteNetworkConditionedHeterogeneity }
-  from "./finite-network-conditioned-heterogeneity.mjs?v=20260831-384";
+  from "./finite-network-conditioned-heterogeneity.mjs?v=20260831-385";
 
 const DEFAULT_TAIL_TOLERANCE = 1e-12;
 
@@ -145,6 +145,7 @@ export function buildFiniteNetworkConditionedArrival(network, {
     return unavailable("The conditioned uniformization matrix is not stochastic.");
   }
   const initial = Array(transient.length + 1).fill(0); initial[sourceIndex] = 1;
+  const stateId = new Map(nodes.map((node) => [node.stateSha256, node.stateId]));
   const meanScaledTime = heterogeneity.passageTime.meanScaledTime;
   const meanUniformizationMultiplier = meanScaledTime * uniformizationScaledRate;
   const targetRatesByTransient = transient.map((node) => conditionedEdges.filter((edge) =>
@@ -180,6 +181,13 @@ export function buildFiniteNetworkConditionedArrival(network, {
       poissonTerms: propagated.poissonTerms,
       uniformizationSegments: propagated.segmentCount,
       accumulatedPoissonTailBound: propagated.accumulatedTailBound,
+      conditionedStateProbabilities: [
+        ...transient.map((node, index) => ({ stateId: node.stateId,
+          stateSha256: node.stateSha256, probability: propagated.probabilities[index],
+          absorbedTarget: false })),
+        { stateId: stateId.get(targetStateSha256), stateSha256: targetStateSha256,
+          probability: propagated.probabilities[targetIndex], absorbedTarget: true },
+      ],
     };
     cache.set(cacheKey, result); return result;
   };
