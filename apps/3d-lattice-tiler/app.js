@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260830-a2-sliced9-v259";
+} from "./engine.js?v=20260830-a2-sliced10-v260";
 
 const $ = (id) => document.getElementById(id);
 
@@ -1467,7 +1467,9 @@ function updateCandidateResearchPanel() {
       candidateResearchTitle.textContent = candidate.screening.status === "periodic"
         ? `Certified periodic control ${candidate.id}`
         : `Research candidate ${candidate.id}`;
-        candidateResearchDetail.textContent = candidate.kind === "a2_sliced_palindromic_alcove_census"
+        candidateResearchDetail.textContent = candidate.kind === "a2_sliced_size10_alcove_census"
+          ? `${candidate.description} Its solid-angle profile across the ${candidate.morphology.layer_count} consecutive sections is ${candidate.morphology.layer_weight_profile.join("–")}. The complete size-ten census contains ${candidate.screening.source_pool_size.toLocaleString()} connected shapes under the proper fixed-lattice symmetry group, with no layer-profile filter. The arithmetically minimal three-copy determinant-five screen finds ${candidate.screening.three_copy_periodic_certificates.toLocaleString()} replayed periods and completely excludes all 31 HNFs for the other ${candidate.screening.three_copy_proper_survivors.toLocaleString()} shapes; reflection reduction afterward gives ${candidate.screening.three_copy_reflection_classes.toLocaleString()} reporting classes. A ranked six-copy probe tests ${candidate.screening.focused_six_copy_classes} of those classes, finds ${candidate.screening.focused_six_copy_periodic_certificates} more exact periods, and leaves ${candidate.screening.focused_six_copy_survivors}. This candidate completely excludes all ${candidate.screening.periodic_six_copy_hnf_total} determinant-ten HNFs (${candidate.screening.periodic_six_copy_orbit_representatives} proper-A₂ orbits) with zero solver unknowns, visiting ${candidate.screening.periodic_six_copy_exact_multicover_nodes.toLocaleString()} exact states. An independently replayed ${candidate.screening.corona_root_patch_copies}-copy root corona survives local extension. Eight-copy and larger periodic domains, and extension beyond the first corona, remain open. These are exact bounded screening facts, not evidence of aperiodicity.`
+          : candidate.kind === "a2_sliced_palindromic_alcove_census"
           ? `${candidate.description} Its solid-angle profile across the ${candidate.morphology.layer_count} consecutive sections is ${candidate.morphology.layer_weight_profile.join("–")}. The complete size-nine census contains ${candidate.screening.complete_source_pool_size.toLocaleString()} connected shapes. This candidate comes from the ${candidate.screening.recovered_source_pool_size.toLocaleString()}-shape palindromic-profile stratum that the earlier ranking heuristic omitted. Exact quotient search certifies ${candidate.screening.recovered_two_copy_periodic_certificates.toLocaleString()} of that stratum at two copies and another ${candidate.screening.recovered_four_copy_additional_periodic_certificates} at four copies; ${candidate.screening.recovered_reflection_classes_through_four} reflection classes reach the six-copy screen, which removes another ${candidate.screening.recovered_six_copy_additional_periodic_classes} and leaves ${candidate.screening.recovered_reflection_classes_through_six}. This candidate completely excludes all ${candidate.screening.periodic_six_copy_hnf_total} determinant-nine HNF quotients through six copies with zero solver unknowns. Its bounded eight-copy continuation exactly excludes ${candidate.screening.periodic_eight_copy_bounded_hnf_visited} of 104 HNF orbits, covering ${candidate.screening.periodic_eight_copy_bounded_hnf_covered} of ${candidate.screening.periodic_eight_copy_hnf_total} HNFs, before the ${candidate.screening.periodic_eight_copy_candidate_time_limit_ms / 1000}-second candidate limit; the remainder is inconclusive. A ${candidate.screening.corona_solver === "z3" ? "separate Z3 backend" : "bounded exact GCTS run"} finds an independently replayed ${candidate.screening.corona_root_patch_copies}-copy root corona. Larger periodic domains and extension beyond the first corona remain open. These are exact bounded screening facts, not evidence of aperiodicity.`
           : candidate.kind === "a2_sliced_alcove_census"
         ? candidate.screening.status === "periodic"
@@ -3130,7 +3132,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260830-a2-sliced9-v254", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260830-a2-sliced10-v255", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3891,7 +3893,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260830-a2-sliced9-v254", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260830-a2-sliced10-v255", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     setRunButton();
     worker.addEventListener("message", event => {
