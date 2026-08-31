@@ -1624,11 +1624,12 @@
         markingsButton.textContent = showMarkings ? 'Hide marking' : 'Show marking';
         markingsButton.setAttribute('aria-pressed', String(showMarkings));
         updateMarkingRankControl();
+        updateMarkExtensionControl();
         if (hoveredPoint && hoverReadout) hoverReadout.textContent = hoverLinesForPoint(hoveredPoint).join('; ');
       }
 
       function updateMarkExtensionControl() {
-        if (markExtensionControl) markExtensionControl.hidden = !markingRulesToggle.checked;
+        if (markExtensionControl) markExtensionControl.hidden = !showMarkings;
       }
 
       function selectedMarkingRank() {
