@@ -88,11 +88,13 @@ import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntim
   from "./external-trajectory-geometry.mjs?v=20260830-346";
 import { actionBarrierSha256, buildFrozenActionBarrierRequest, frozenActionBarrierRequestReceipt,
   frozenActionStateGeometrySha256, validateFrozenActionBarrierResponse }
-  from "./external-action-barrier.mjs?v=20260831-347";
+  from "./external-action-barrier.mjs?v=20260831-348";
 import { buildFrozenKineticCompetition }
   from "./frozen-frontier-kinetics.mjs?v=20260831-347";
 import { enumerateDetachableLeafPlacements }
   from "./reversible-frontier-events.mjs?v=20260831-347";
+import { appendCommittedTransition }
+  from "./reversible-transition-lineage.mjs?v=20260831-348";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -612,6 +614,9 @@ const actionBarrierCatalogSelect = $("actionBarrierCatalog");
 const actionBarrierKineticModeSelect = $("actionBarrierKineticMode");
 const actionBarrierTemperatureSelect = $("actionBarrierTemperature");
 const actionBarrierKineticState = $("actionBarrierKineticState");
+const actionBarrierInverseBadge = $("actionBarrierInverseBadge");
+const actionBarrierInverseSummary = $("actionBarrierInverseSummary");
+const actionBarrierInverseState = $("actionBarrierInverseState");
 const actionBarrierResumeButton = $("actionBarrierResume");
 const actionBarrierCancelButton = $("actionBarrierCancel");
 const actionBarrierSummary = $("actionBarrierSummary");
@@ -1621,6 +1626,9 @@ let catalogConditionalKineticClockSeconds = 0;
 let catalogConditionalKineticEventCount = 0;
 let reversibleDetachmentEventCount = 0;
 let reversibleDetachedAtomCount = 0;
+let reversibleTransitionHistory = [];
+let latestMicroscopicInverseAudit = null;
+let reversibleInversePairCount = 0;
 let lastExternalActionBarrierReceipt = null;
 let frontierCandidateKeys = new Set();
 let rejectedCandidateKeys = new Set();
@@ -23375,6 +23383,93 @@ function actionBarrierSitePayload(site) {
       .map((value) => receiptRound(value, 10)) };
 }
 
+function registerCommittedReversibleTransition(checkpoint, candidateId, committedStateSha256) {
+  const candidate = checkpoint?.request?.frontier?.candidates.find((entry) =>
+    entry.candidateId === candidateId);
+  const barrier = checkpoint?.validatedResponse?.audit?.records.find((entry) =>
+    entry.candidateId === candidateId);
+  const rate = checkpoint?.kineticCompetition?.records.find((entry) =>
+    entry.candidateId === candidateId);
+  if (!candidate || !barrier || !rate || !checkpoint.responseSha256) {
+    throw new Error("a committed reversible transition needs its frozen candidate, barrier, and kinetic record");
+  }
+  const result = appendCommittedTransition(reversibleTransitionHistory, {
+    eventId: `${checkpoint.requestReceipt.requestSha256}:${candidateId}`,
+    candidateId,
+    requestSha256: checkpoint.requestReceipt.requestSha256,
+    responseSha256: checkpoint.responseSha256,
+    eventDirection: candidate.eventDirection,
+    initialGeometrySha256: candidate.initialGeometrySha256,
+    finalGeometrySha256: candidate.finalGeometrySha256,
+    committedStateSha256,
+    exactFinalGeometryReproduced: candidate.finalGeometrySha256 === committedStateSha256,
+    barrierElectronVolt: barrier.barrierElectronVolt,
+    barrierUncertaintyElectronVolt: barrier.uncertaintyElectronVolt,
+    energyDeltaElectronVolt: barrier.energyDeltaElectronVolt,
+    energyDeltaUncertaintyElectronVolt: barrier.energyDeltaUncertaintyElectronVolt,
+    attemptFrequencyPerSecond: barrier.attemptFrequencyPerSecond,
+    attemptFrequencyUncertaintyLog10: barrier.attemptFrequencyUncertaintyLog10,
+    logRatePerSecond: rate.logRatePerSecond,
+    temperatureKelvin: checkpoint.kineticCompetition.temperatureKelvin,
+    methodSettingsSha256: checkpoint.validatedResponse.audit.method.settingsSha256,
+    prefactorSettingsSha256: checkpoint.validatedResponse.audit.kinetics.prefactorSettingsSha256,
+  });
+  reversibleTransitionHistory = result.history;
+  reversibleInversePairCount = result.exactInversePairCount;
+  if (result.inverseAudit) latestMicroscopicInverseAudit = result.inverseAudit;
+  checkpoint.committedTransitionLineage = {
+    transition: result.transition,
+    inverseEventId: result.inverseEventId,
+    inverseAudit: result.inverseAudit,
+    exactInversePairCount: result.exactInversePairCount,
+    targetUsed: false,
+  };
+  return checkpoint.committedTransitionLineage;
+}
+
+function inverseResidualText(value) {
+  return Number.isFinite(value) ? `${value >= 0 ? "+" : ""}${value.toFixed(4)} eV` : "awaiting ΔE±σ";
+}
+
+function renderInverseTransitionLineage() {
+  const panel = actionBarrierInverseBadge.closest(".action-barrier-inverse");
+  const latest = reversibleTransitionHistory.at(-1) || null;
+  const audit = latestMicroscopicInverseAudit;
+  panel.classList.toggle("closed", Boolean(audit?.microscopicPathClosurePassed));
+  panel.classList.toggle("inconsistent", Boolean(audit?.energyEvidenceComplete
+    && !audit.microscopicPathClosurePassed));
+  actionBarrierInverseBadge.textContent = audit?.microscopicPathClosurePassed
+    ? "path closure passed"
+    : audit?.geometryCycleClosed
+      ? audit.energyEvidenceComplete ? "closure inconsistent" : "geometry cycle only"
+      : latest ? latest.exactFinalGeometryReproduced ? "awaiting inverse" : "post-state diverged"
+        : "no committed pair";
+  const tiles = [
+    ["serial events", String(reversibleTransitionHistory.length)],
+    ["exact inverse pairs", String(reversibleInversePairCount)],
+    ["ΔE cycle residual", inverseResidualText(audit?.energyDeltaCycleResidualElectronVolt)],
+    ["transition-state residual", inverseResidualText(audit?.transitionStateClosureResidualElectronVolt)],
+  ];
+  if (audit?.rateRatioAvailable) tiles.push(["ln(k₁/k₂)", audit.logRateRatio.toFixed(3)]);
+  actionBarrierInverseSummary.replaceChildren(...tiles.map(([label, value]) => {
+    const tile = document.createElement("span"); const strong = document.createElement("strong");
+    tile.append(document.createTextNode(label)); strong.textContent = value; tile.append(strong); return tile;
+  }));
+  actionBarrierInverseState.textContent = audit
+    ? audit.microscopicPathClosurePassed
+      ? `Exact colored-state hashes close in both directions. ΔE closure and a common transition-state energy agree within 3σ under the same barrier method.${audit.rateRatioAvailable ? " The kinetic rate ratio is reported at the shared temperature." : " A comparable rate ratio is unavailable."}`
+      : audit.geometryCycleClosed
+        ? audit.energyEvidenceComplete
+          ? "The exact geometry cycle closes, but the independently returned reaction energies and barriers fail the 3σ path-closure audit. This pair is retained as contradictory evidence."
+          : "The exact geometry cycle closes. Supply energyDeltaElectronVolt together with energyDeltaUncertaintyElectronVolt on both directions to test path-energy closure."
+        : "The latest stored events do not reverse the same initial and final colored configurations."
+    : latest
+      ? latest.exactFinalGeometryReproduced
+        ? `Committed ${latest.eventDirection} ${latest.candidateId}; a later exact state-reversed event is required for an inverse pair.`
+        : "The selected path was followed by a geometry-changing projection, so its frozen final state was not reproduced and it cannot seed an inverse pair."
+      : "A later event counts as an inverse only when its initial and final colored-geometry hashes exactly reverse a previously committed serial event. Energy and transition-state closure require independently supplied reaction-energy uncertainties.";
+}
+
 function actionBarrierCheckpointReceipt(checkpoint = externalActionBarrierCheckpoint) {
   if (!checkpoint) return lastExternalActionBarrierReceipt;
   const response = checkpoint.validatedResponse;
@@ -23428,6 +23523,7 @@ function actionBarrierCheckpointReceipt(checkpoint = externalActionBarrierCheckp
       targetUsed: false, catalogCompleteBeyondFrozenFrontier: false,
     } : null,
     reversibleEventGeometryPresent: Boolean(response?.audit?.reversibleEventGeometryPresent),
+    committedTransitionLineage: checkpoint.committedTransitionLineage || null,
     thermodynamicReversibilityCertified: false, detailedBalanceCertified: false,
     candidateSetChanged: false, hardAdmissionChanged: false, candidateGeometryChanged: false,
     targetUsed: false, usedAsPotential: false, physicalRateInferred: Boolean(kinetic),
@@ -23476,6 +23572,7 @@ function refreshExternalActionBarrierKinetics() {
 
 function renderActionBarrierCheckpoint() {
   const panel = actionBarrierCheckpointBadge.closest(".action-barrier-checkpoint");
+  renderInverseTransitionLineage();
   const checkpoint = externalActionBarrierCheckpoint;
   actionBarrierKineticModeSelect.value = externalActionBarrierKineticMode;
   actionBarrierTemperatureSelect.value = String(externalActionBarrierTemperatureKelvin);
@@ -23622,7 +23719,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
   const candidates = [...attachmentCandidates, ...detachmentCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-347",
+    generatedAt: new Date().toISOString(), buildId: "20260831-348",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -25031,6 +25128,9 @@ function initializeOffLatticeSearch() {
   catalogConditionalKineticEventCount = 0;
   reversibleDetachmentEventCount = 0;
   reversibleDetachedAtomCount = 0;
+  reversibleTransitionHistory = [];
+  latestMicroscopicInverseAudit = null;
+  reversibleInversePairCount = 0;
   lastPolicyComparison = null;
   policyComparisonHistory = [];
   selectedMarkingFrontierId = null;
@@ -27826,6 +27926,9 @@ function resetCounters() {
   catalogConditionalKineticEventCount = 0;
   reversibleDetachmentEventCount = 0;
   reversibleDetachedAtomCount = 0;
+  reversibleTransitionHistory = [];
+  latestMicroscopicInverseAudit = null;
+  reversibleInversePairCount = 0;
   lastPolicyComparison = null;
   policyComparisonHistory = [];
   selectedMarkingFrontierId = null;
@@ -28609,6 +28712,8 @@ async function performOwnershipCertifiedDetachment(entry, before) {
   reversibleDetachmentEventCount++;
   reversibleDetachedAtomCount += detachedAtoms.length;
   eventIndex++;
+  registerCommittedReversibleTransition(checkpoint, entry.candidate.key,
+    projectedGeometrySha256);
   if (kinetic.mode === "seeded-kmc") {
     catalogConditionalKineticClockSeconds = kinetic.clockAfterSeconds;
     catalogConditionalKineticEventCount = kinetic.eventCountAfter;
@@ -28895,6 +29000,12 @@ async function performOffLatticeEvent() {
     catalogConditionalKineticClockSeconds = kineticCompetition.clockAfterSeconds;
     catalogConditionalKineticEventCount = kineticCompetition.eventCountAfter;
     externalActionBarrierCheckpoint.kineticClockCommitted = true;
+  }
+  if (kineticCompetition && acceptedInBatch === 1) {
+    const committedStateSha256 = await frozenActionStateGeometrySha256(
+      atoms.map(actionBarrierSitePayload));
+    registerCommittedReversibleTransition(externalActionBarrierCheckpoint,
+      kineticCompetition.selectedCandidateId, committedStateSha256);
   }
   const actionBarrierReceipt = externalActionBarrierCheckpoint
     ? actionBarrierCheckpointReceipt(externalActionBarrierCheckpoint) : null;
@@ -30365,6 +30476,8 @@ function physicsTranslationRecords(leap = null) {
   const bondValenceStateAfter = leap?.after?.bondValenceState || null;
   const kineticReceipt = leap?.actionBarrierCheckpoint?.kineticCompetition
     || actionBarrierCheckpointReceipt()?.kineticCompetition || null;
+  const inverseReceipt = leap?.actionBarrierCheckpoint?.committedTransitionLineage?.inverseAudit
+    || latestMicroscopicInverseAudit || null;
   return [
     { id: "hypothesis-separation", process: "controlled separation of correlated geometry-encoded ranking hypotheses",
       status: hypothesisSeparationExperiment ? "soft" : "open",
@@ -30734,7 +30847,21 @@ function physicsTranslationRecords(leap = null) {
       evidence: kineticReceipt
         ? `${kineticReceipt.mode === "seeded-kmc" ? `Seeded waiting time ${kineticValueText(kineticReceipt.waitingTimeSeconds, " s")}; catalog-conditional clock ${kineticValueText(kineticReceipt.clockAfterSeconds, " s")}.` : "No waiting time was drawn."} Request, candidate batch, barrier method, prefactor settings, temperature, and random uniforms are retained in the leap receipt.`
         : "No catalog-conditional physical rate has been evaluated.",
-      boundary: "The HTST competition is conditional on one finite hard-admitted event catalog. Even when attachment and leaf detachment are both present, no inverse event pairing, reservoir chemical potential, grand-potential difference, or detailed-balance relation is certified. It omits unenumerated mechanisms and does not establish a transferable potential, equilibrium ensemble, MD trajectory, or unconditional material time." },
+      boundary: "The HTST competition is conditional on one finite hard-admitted event catalog. Exact inverse pairing is audited separately across committed checkpoints; neither a two-way catalog nor a closed microscopic path supplies reservoir chemical potentials, grand-potential differences, detailed balance, or equilibrium sampling. Unenumerated mechanisms remain open." },
+    { id: "microscopic-inverse-lineage", process: "microscopic inverse path / state-cycle consistency",
+      status: inverseReceipt?.microscopicPathClosurePassed ? "validated"
+        : inverseReceipt?.geometryCycleClosed ? "observed" : reversibleTransitionHistory.length ? "planned" : "unavailable",
+      role: inverseReceipt?.microscopicPathClosurePassed
+        ? "exact state-reversal + method-specific path-energy audit"
+        : inverseReceipt?.geometryCycleClosed ? "exact state-reversal geometry only"
+          : "awaiting a later state-reversed serial event",
+      encoding: `${reversibleTransitionHistory.length} committed exact-candidate transition edges; ${reversibleInversePairCount} reverse initial/final colored-state hash pair${reversibleInversePairCount === 1 ? "" : "s"}`,
+      evidence: inverseReceipt
+        ? `ΔE cycle residual ${inverseResidualText(inverseReceipt.energyDeltaCycleResidualElectronVolt)}; transition-state residual ${inverseResidualText(inverseReceipt.transitionStateClosureResidualElectronVolt)}; geometry ${inverseReceipt.geometryCycleClosed ? "closed" : "open"}; 3σ path closure ${inverseReceipt.microscopicPathClosurePassed ? "passed" : "not established"}.`
+        : reversibleTransitionHistory.length
+          ? "The latest serial event reproduced its frozen state, but no stored event reverses both state hashes."
+          : "No method-bound serial attachment or detachment has been committed.",
+      boundary: "A closed colored-state cycle plus barrier/reaction-energy consistency checks one microscopic path under reported uncertainty. It does not supply chemical potentials, free-energy differences, a complete Markov network, detailed balance, an equilibrium constant, or an equilibrium ensemble." },
     { id: "kinetics", process: "activation, diffusion, heat flow, and elapsed time", status: activeArrivalPathWeight() > 0 ? "soft" : "open", role: activeArrivalPathWeight() > 0 ? "geometric accessibility proxy" : "not modeled",
       encoding: activeArrivalPathWeight() > 0
         ? `${arrivalPathLabel()}; ${arrivalPathMode === "free-volume" ? "5 routes × " : ""}9 swept-clearance samples over 2dₙₙ for emitted sites only, w=${activeArrivalPathWeight().toFixed(2)}`
@@ -33827,6 +33954,14 @@ function renderStructuralLeap(leap = null) {
       ? `${kinetic.temperatureKelvin} K · Δt ${kineticValueText(kinetic.waitingTimeSeconds, " s")}`
       : `${kinetic.temperatureKelvin} K · maximum-rate event`,
     `${kinetic.candidateCount} frozen actions · selected p ${Number(kinetic.selectedProbabilityWithinFrozenCatalog * 100).toFixed(2)}% · log₁₀Σk ${kinetic.log10TotalRatePerSecond.toFixed(3)} s⁻¹${kinetic.committed ? ` · conditional clock ${kineticValueText(kinetic.clockAfterSeconds, " s")}` : " · no clock increment"}`]);
+  const inverseLineage = selected.actionBarrierCheckpoint?.committedTransitionLineage;
+  if (inverseLineage) leapCards.push([`${String(nextLeapCard++).padStart(2, "0")} · inverse lineage`,
+    inverseLineage.inverseAudit?.microscopicPathClosurePassed
+      ? "exact state + path-energy cycle"
+      : inverseLineage.inverseEventId ? "exact state cycle · energy audit open" : "awaiting inverse event",
+    inverseLineage.inverseAudit
+      ? `ΔE residual ${inverseResidualText(inverseLineage.inverseAudit.energyDeltaCycleResidualElectronVolt)} · transition-state residual ${inverseResidualText(inverseLineage.inverseAudit.transitionStateClosureResidualElectronVolt)} · detailed balance not claimed`
+      : `${inverseLineage.transition.eventDirection} ${inverseLineage.transition.candidateId} · final frozen state ${inverseLineage.transition.exactFinalGeometryReproduced ? "reproduced" : "changed by later projection"}`]);
   if (selected.relaxation) leapCards.push([`${String(nextLeapCard++).padStart(2, "0")} · local projection`,
     selected.relaxation.accepted
       ? `strain ${selected.relaxation.strainBefore.toFixed(3)} → ${selected.relaxation.strainAfter.toFixed(3)}`

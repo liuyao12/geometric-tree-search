@@ -56,6 +56,8 @@ const response = {
     candidateDigestSha256: candidate.candidateDigestSha256, barrierElectronVolt: index ? 1.2 : .4,
     initialGeometrySha256: candidate.initialGeometrySha256,
     finalGeometrySha256: candidate.finalGeometrySha256,
+    energyDeltaElectronVolt: index ? .25 : -.1,
+    energyDeltaUncertaintyElectronVolt: .015,
     uncertaintyElectronVolt: .02, maximumForceElectronVoltPerAngstrom: .01,
     imageCount: 7, converged: true })),
 };
@@ -66,6 +68,7 @@ assert.ok(validated.records[0].lowerBarrierScore > validated.records[1].lowerBar
 assert.equal(validated.usedAsPhysicalClock, false);
 assert.equal(validated.kineticsEligible, false);
 assert.deepEqual(validated.eventDirections, ["attach"]);
+assert.equal(validated.records[0].energyDeltaUncertaintyElectronVolt, .015);
 
 const kineticResponse = {
   ...response,
@@ -107,6 +110,10 @@ assert.throws(() => validateFrozenActionBarrierResponse({ ...kineticResponse,
 assert.throws(() => validateFrozenActionBarrierResponse({ ...kineticResponse,
   kinetics: { ...kineticResponse.kinetics, model: "unspecified-rate-model" } },
 { ...receipt, candidates: request.frontier.candidates }), /harmonic-transition-state-theory/);
+assert.throws(() => validateFrozenActionBarrierResponse({ ...response,
+  records: response.records.map((record, index) => index ? record
+    : { ...record, energyDeltaUncertaintyElectronVolt: null }) },
+{ ...receipt, candidates: request.frontier.candidates }), /supplied together/);
 
 const detachRaw = { candidateId: "detach:2", eventDirection: "detach", actionLabel: "detach leaf",
   parentType: 1, childType: 2, ruleId: 3, emittedSites: [],

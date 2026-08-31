@@ -1,5 +1,31 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 348 · exact microscopic inverse-event lineage
+
+Committed serial HTST events now enter a bounded cross-checkpoint transition
+ledger.  A later event is called an inverse only when its exact colored initial
+and final configuration SHA-256s reverse a previously committed event and both
+events reproduced their frozen final states.  Candidate IDs, request/response
+hashes, direction, barriers, uncertainties, attempt frequencies, temperature,
+method settings and state hashes remain attached to the edge.  A bounded
+post-attachment projection may still run, but if it changes the frozen final
+state that edge is visibly ineligible for exact inverse pairing.
+
+The optional external response contract now accepts a reaction energy only as
+the pair `energyDeltaElectronVolt` +
+`energyDeltaUncertaintyElectronVolt`.  When both directions supply it under the
+same barrier method, the browser checks both ΔE₁ + ΔE₂ = 0 and
+E‡₁ − E‡₂ − ΔE₁ = 0 against the propagated 3σ uncertainties.  Same-temperature
+rate ratios are reported separately.  The live barrier workbench and each
+structural-leap receipt show whether the geometry cycle closes, whether energy
+evidence is missing or contradictory, and the two signed residuals.
+
+This is a microscopic path-consistency audit, not detailed balance.  It does
+not introduce chemical potentials, grand potentials, state free energies,
+mechanism completeness, equilibrium constants or an equilibrium ensemble.  A
+closed state/path cycle is necessary evidence for a reversible kinetic model,
+but it is deliberately not presented as sufficient thermodynamics.
+
 ## Build 347 · reversible leaf events with exact state certificates
 
 The frozen frontier can now contain two event directions.  Forward actions are

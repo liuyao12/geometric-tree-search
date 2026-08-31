@@ -200,7 +200,9 @@ export async function buildFrozenActionBarrierRequest(input) {
       quantity: "candidate-resolved attachment and/or exact leaf-detachment transition barriers on one frozen frontier",
       suitableMethods: ["nudged elastic band", "dimer or saddle search", "validated enhanced-sampling path"],
       requiredOutputs: ["one converged record for every candidate ID", "the supplied exact initial and final geometry digests",
-        "at least three energy images", "maximum residual force", "uncertainty and method provenance"],
+        "at least three energy images", "maximum residual force", "barrier uncertainty and method provenance"],
+      optionalMicroscopicInverseOutputs: ["energyDeltaElectronVolt between the exact final and initial states",
+        "energyDeltaUncertaintyElectronVolt from the same method-specific calculation"],
       optionalKineticOutputs: ["one positive converged attemptFrequencyPerSecond for every candidate ID",
         "attemptFrequencyUncertaintyLog10", "prefactor method and settings SHA-256",
         "explicit requested-frontier-only catalog scope and recrossing declaration"],
@@ -356,6 +358,19 @@ export function validateFrozenActionBarrierResponse(response, expected) {
     if (!Number.isInteger(record.imageCount) || record.imageCount < 3 || record.converged !== true) {
       throw new Error(`barrier path for ${candidateId} is incomplete or unconverged`);
     }
+    if ((record.energyDeltaElectronVolt != null && !finite(record.energyDeltaElectronVolt))
+        || (record.energyDeltaUncertaintyElectronVolt != null
+          && !finite(record.energyDeltaUncertaintyElectronVolt))) {
+      throw new TypeError(`energy delta fields for ${candidateId} must be finite when supplied`);
+    }
+    const energyDeltaElectronVolt = record.energyDeltaElectronVolt == null
+      ? null : Number(record.energyDeltaElectronVolt);
+    const energyDeltaUncertaintyElectronVolt = record.energyDeltaUncertaintyElectronVolt == null
+      ? null : Number(record.energyDeltaUncertaintyElectronVolt);
+    if ((energyDeltaElectronVolt == null) !== (energyDeltaUncertaintyElectronVolt == null)
+        || (energyDeltaUncertaintyElectronVolt != null && energyDeltaUncertaintyElectronVolt < 0)) {
+      throw new Error(`energy delta and its nonnegative uncertainty must be supplied together for ${candidateId}`);
+    }
     if (kinetics && (!finite(record.attemptFrequencyPerSecond)
         || Number(record.attemptFrequencyPerSecond) <= 0
         || !finite(record.attemptFrequencyUncertaintyLog10)
@@ -373,7 +388,8 @@ export function validateFrozenActionBarrierResponse(response, expected) {
       uncertaintyElectronVolt: Number(record.uncertaintyElectronVolt),
       maximumForceElectronVoltPerAngstrom: Number(record.maximumForceElectronVoltPerAngstrom),
       imageCount: record.imageCount,
-      energyDeltaElectronVolt: finite(record.energyDeltaElectronVolt) ? Number(record.energyDeltaElectronVolt) : null,
+      energyDeltaElectronVolt,
+      energyDeltaUncertaintyElectronVolt,
       attemptFrequencyPerSecond: kinetics ? Number(record.attemptFrequencyPerSecond) : null,
       attemptFrequencyUncertaintyLog10: kinetics
         ? Number(record.attemptFrequencyUncertaintyLog10) : null,
