@@ -5,6 +5,7 @@ const transpose = (matrix) => matrix[0].map((_, column) => matrix.map((row) => r
 const matvec = (matrix, vector) => matrix.map((row) => row.reduce((sum, value, index) => sum + value * vector[index], 0));
 const matmul = (left, right) => left.map((row) => right[0].map((_, column) =>
   row.reduce((sum, value, index) => sum + value * right[index][column], 0)));
+const DONOR_CONE_DEGREES = 35;
 
 function determinant(matrix) {
   return matrix[0][0] * (matrix[1][1] * matrix[2][2] - matrix[1][2] * matrix[2][1])
@@ -93,6 +94,132 @@ function anchorSite(artifact, occurrence) {
   return [species, add(matvec(occurrence.rotation, point), occurrence.translation)];
 }
 
+function dot(left, right) {
+  return left.reduce((sum, value, index) => sum + value * right[index], 0);
+}
+
+function donorTowardAnchor(artifact, occurrence, neighborPoint) {
+  const sites = renderSites(artifact, occurrence);
+  const oxygen = sites.find(([species]) => species === "O")?.[1];
+  const hydrogens = sites.filter(([species]) => species === "H").map(([, point]) => point);
+  if (!oxygen || hydrogens.length !== 2) throw new Error("A molecular orientation must render one O and two H sites");
+  const connection = sub(neighborPoint, oxygen);
+  const connectionLength = Math.hypot(...connection);
+  if (!(connectionLength > 0)) throw new Error("Coincident oxygen anchors cannot define a proton direction");
+  const direction = connection.map((value) => value / connectionLength);
+  // A learned water orientation donates toward a neighboring oxygen when an
+  // O-H vector lies inside a conservative 35-degree cone around the O-O bond.
+  // This is a proper-motion-invariant geometric predicate, not an energy or
+  // potential. The wide margin tolerates the finite fitted coordinate noise
+  // while keeping tetrahedrally distinct directions separate.
+  return hydrogens.some((hydrogen) => {
+    const oh = sub(hydrogen, oxygen);
+    const length = Math.hypot(...oh);
+    return length > 0 && dot(oh, direction) / length >= Math.cos(DONOR_CONE_DEGREES * Math.PI / 180);
+  });
+}
+
+function orientationConstraintAudit(artifact, hypotheses, anchorSites) {
+  const records = [...hypotheses.entries()].sort(([first], [second]) => first.localeCompare(second))
+    .map(([key, domain]) => ({ key, point: anchorSites.get(key)[1],
+      domain: [...domain.entries()].sort(([first], [second]) => first.localeCompare(second))
+        .map(([poseKey, occurrence]) => ({ poseKey, occurrence })) }));
+  const edges = [];
+  records.forEach((left, first) => records.slice(first + 1).forEach((right, offset) => {
+    const second = first + offset + 1;
+    const separation = distance(left.point, right.point);
+    if (Math.abs(separation - artifact.anchor.connectionDistance) > artifact.anchor.connectionTolerance) return;
+    const allowed = left.domain.map((leftPose) => right.domain.map((rightPose) =>
+      Number(donorTowardAnchor(artifact, leftPose.occurrence, right.point))
+        + Number(donorTowardAnchor(artifact, rightPose.occurrence, left.point)) === 1));
+    edges.push({ first, second, separation, allowed });
+  }));
+  const incident = records.map(() => []);
+  edges.forEach((edge, edgeIndex) => {
+    incident[edge.first].push({ edgeIndex, other: edge.second, forward: true });
+    incident[edge.second].push({ edgeIndex, other: edge.first, forward: false });
+  });
+  const initialDomains = records.map((record) => record.domain.map((_, index) => index));
+
+  const pairAllowed = (edge, forward, own, other) => forward
+    ? edge.allowed[own]?.[other] === true : edge.allowed[other]?.[own] === true;
+  const propagate = (domains) => {
+    let changed = true;
+    while (changed) {
+      changed = false;
+      for (let index = 0; index < records.length; index++) {
+        const next = domains[index].filter((own) => incident[index].every(({ edgeIndex, other, forward }) =>
+          domains[other].some((otherValue) => pairAllowed(edges[edgeIndex], forward, own, otherValue))));
+        if (!next.length) return false;
+        if (next.length !== domains[index].length) {
+          domains[index] = next;
+          changed = true;
+        }
+      }
+    }
+    return true;
+  };
+  const solveFirst = (sourceDomains) => {
+    const domains = sourceDomains.map((domain) => domain.slice());
+    if (!propagate(domains)) return null;
+    const unresolved = domains.map((domain, index) => ({ index, size: domain.length }))
+      .filter(({ size }) => size > 1).sort((left, right) => left.size - right.size || left.index - right.index)[0];
+    if (!unresolved) return domains.map((domain) => domain[0]);
+    for (const value of domains[unresolved.index]) {
+      const branch = domains.map((domain) => domain.slice());
+      branch[unresolved.index] = [value];
+      const solution = solveFirst(branch);
+      if (solution) return solution;
+    }
+    return null;
+  };
+
+  const arcDomains = initialDomains.map((domain) => domain.slice());
+  const arcConsistent = propagate(arcDomains);
+  const canonical = arcConsistent ? solveFirst(arcDomains) : null;
+  const supportedDomains = arcConsistent && canonical ? arcDomains.map((domain, index) =>
+    domain.filter((value) => {
+      const branch = arcDomains.map((candidate) => candidate.slice());
+      branch[index] = [value];
+      return Boolean(solveFirst(branch));
+    })) : records.map(() => []);
+  const consistent = supportedDomains.every((domain) => domain.length > 0);
+  const resolvedAnchors = consistent ? supportedDomains.filter((domain) => domain.length === 1).length : 0;
+  const canonicalAssignment = consistent ? solveFirst(supportedDomains) : null;
+  let constrainedEdgesSatisfied = 0;
+  if (canonicalAssignment) edges.forEach((edge) => {
+    if (edge.allowed[canonicalAssignment[edge.first]]?.[canonicalAssignment[edge.second]]) constrainedEdgesSatisfied++;
+  });
+  const uniqueHydrogenSites = consistent ? records.flatMap((record, index) => {
+    if (supportedDomains[index].length !== 1) return [];
+    const occurrence = record.domain[supportedDomains[index][0]].occurrence;
+    return renderSites(artifact, occurrence).filter(([species]) => species === "H");
+  }) : [];
+  return {
+    schema: "gcts-ice-orientation-constraint-audit-v1",
+    anchors: records.length,
+    initialHypotheses: initialDomains.reduce((sum, domain) => sum + domain.length, 0),
+    globallySupportedHypotheses: supportedDomains.reduce((sum, domain) => sum + domain.length, 0),
+    oxygenConnections: edges.length,
+    donorConeDegrees: DONOR_CONE_DEGREES,
+    donorPredicate: "proper-motion-invariant O-H/O-O direction cosine",
+    interiorAnchors: incident.filter((neighbors) => neighbors.length === 4).length,
+    boundaryAnchors: incident.filter((neighbors) => neighbors.length < 4).length,
+    maximumCoordination: Math.max(0, ...incident.map((neighbors) => neighbors.length)),
+    consistent,
+    resolvedAnchors,
+    ambiguousAnchors: consistent ? records.length - resolvedAnchors : records.length,
+    constrainedEdgesSatisfied,
+    constrainedEdgesTotal: edges.length,
+    uniqueHydrogenSites,
+    allHydrogensResolved: consistent && resolvedAnchors === records.length,
+    targetUsed: false,
+    physicalPotentialUsed: false,
+    canonicalBranchMaterialized: false,
+    claimBoundary: "Binary O-O constraints require exactly one geometrically donated proton on every observed scaffold edge. Boundary bonds outside the finite public domain remain open; ambiguous H2O poses stay symbolic, and no energy, entropy, tunnelling, kinetics, probability, or physical time is inferred.",
+  };
+}
+
 function portOrbit(artifact, port) {
   const orbit = new Map();
   artifact.prototype.properSymmetries.forEach((parentSymmetry) => {
@@ -139,6 +266,7 @@ export function executeIceMolecularAnchorGrowth(artifact, caseId) {
     anchorSites.set(anchorKey, anchor);
   });
   const seedKeys = new Set(hypotheses.keys());
+  const seedOrientationAudit = orientationConstraintAudit(artifact, hypotheses, anchorSites);
   const waves = [];
   for (let waveIndex = 0; waveIndex < config.maximumWaves; waveIndex++) {
     const proposals = new Map();
@@ -185,10 +313,11 @@ export function executeIceMolecularAnchorGrowth(artifact, caseId) {
       acceptedPoints.push(anchor[1]);
     });
     if (!accepted.length) {
+      const orientationAudit = orientationConstraintAudit(artifact, hypotheses, anchorSites);
       waves.push({ wave: waveIndex + 1, candidateAnchors: proposals.size, acceptedAnchors: 0,
         retainedOrientationHypotheses: 0, rejectedNonunanimousAnchors: rejectedNonunanimous,
         rejectedCandidateAnchors: proposals.size,
-        emittedAnchors: [] });
+        emittedAnchors: [], orientationAudit });
       break;
     }
     let retained = 0;
@@ -204,13 +333,15 @@ export function executeIceMolecularAnchorGrowth(artifact, caseId) {
       anchorSites.set(anchorKey, anchor);
       emittedAnchors.push(anchor);
     });
+    const orientationAudit = orientationConstraintAudit(artifact, hypotheses, anchorSites);
     waves.push({ wave: waveIndex + 1, candidateAnchors: proposals.size,
       acceptedAnchors: accepted.length, retainedOrientationHypotheses: retained,
       rejectedNonunanimousAnchors: rejectedNonunanimous,
-      rejectedCandidateAnchors: proposals.size - accepted.length, emittedAnchors });
+      rejectedCandidateAnchors: proposals.size - accepted.length, emittedAnchors, orientationAudit });
   }
   const emittedAnchors = [...anchorSites.entries()].filter(([key]) => !seedKeys.has(key)).map(([, site]) => site);
   const actualCounts = waves.map((wave) => wave.acceptedAnchors);
+  const orientationAudit = waves.at(-1)?.orientationAudit || seedOrientationAudit;
   return {
     caseId,
     seedAnchors: seedKeys.size,
@@ -218,6 +349,8 @@ export function executeIceMolecularAnchorGrowth(artifact, caseId) {
     waves,
     emittedAnchors,
     unresolvedOrientationHypotheses: [...hypotheses.entries()].filter(([key, domain]) => !seedKeys.has(key) && domain.size > 1).length,
+    seedOrientationAudit,
+    orientationAudit,
     fixedPoint: Boolean(waves.length && waves.at(-1).acceptedAnchors === 0),
     expectedCounts: config.expectedAcceptedAnchors,
     exactBackendCountParity: JSON.stringify(actualCounts) === JSON.stringify(config.expectedAcceptedAnchors),

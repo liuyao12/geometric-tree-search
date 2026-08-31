@@ -1,5 +1,28 @@
 # Recursive GCTS benchmark for material growth
 
+## Finite proton-orientation constraint audit (Build 401)
+
+The browser now propagates the complete finite H₂O pose domains alongside the
+target-blind oxygen-anchor trace. It constructs the observed O graph from the
+frozen connection distance and tolerance, classifies a learned molecular pose
+as a donor through a proper-motion-invariant O–H/O–O angular predicate, and
+requires exactly one donation on every observed O–O edge. Arc consistency is
+followed by deterministic finite backtracking; a pose remains only if it
+participates in at least one global satisfying assignment.
+
+This is a constraint audit, not an extra scoring term. The anchor candidates,
+port support, unanimity selection, accepted counts, and fixed point are
+unchanged. Ice Ih retains exact `16 → 8 → 0` anchor waves. The resulting
+33-anchor finite graph satisfies 40 / 40 observed edge constraints, with 9
+fixed and 24 ambiguous molecular poses among 125 globally supported
+hypotheses. Ice Ic satisfies 16 / 16 edges, with 5 fixed and 12 ambiguous
+poses.
+
+Seed, per-wave, and final audits are serialized without materializing a
+canonical branch. The certificate explicitly withholds bonds outside the
+public boundary, a unique proton microstate, full molecular continuation,
+energy/entropy, tunnelling, kinetics, stationary recursion, and physical time.
+
 ## Molecular growth launch certificate (Build 400)
 
 The browser now treats a frozen molecular-anchor trace as a distinct executable

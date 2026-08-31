@@ -27,7 +27,8 @@ def test_average_structure_never_invents_one_molecular_assignment():
     assert 'if (currentMaterial().growthWithheld)' in APP
     assert 'renderConstraintLedger(null, "withheld")' in APP
     assert 'average sites are not emitted atoms' in APP
-    assert 'playButton.disabled = pipelineStage === 4 && Boolean(material.growthWithheld)' in APP
+    assert 'playButton.disabled = pipelineStage === 4' in APP
+    assert '&& (Boolean(material.growthWithheld)' in APP
 
 
 def test_ice_rule_microstate_is_optional_geometry_only_and_audited():

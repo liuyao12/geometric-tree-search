@@ -25,6 +25,26 @@ if (ih.emittedAnchors.length !== 24 || ic.emittedAnchors.length !== 12) throw ne
 if (!ih.fixedPoint || !ic.fixedPoint || !ih.exactBackendCountParity || !ic.exactBackendCountParity) throw new Error("backend parity/fixed point failed");
 if (ih.targetUsed || ic.targetUsed || !ih.alternativesAreMutuallyExclusive || !ic.alternativesAreMutuallyExclusive) throw new Error("leakage/alternative contract failed");
 if (ih.stationaryOrExponentialClaim || ic.stationaryOrExponentialClaim) throw new Error("finite trace overclaimed recurrence");
+if (!ih.orientationAudit.consistent || !ic.orientationAudit.consistent
+  || ih.orientationAudit.constrainedEdgesSatisfied !== 40
+  || ih.orientationAudit.constrainedEdgesTotal !== 40
+  || ih.orientationAudit.resolvedAnchors !== 9
+  || ih.orientationAudit.ambiguousAnchors !== 24
+  || ih.orientationAudit.globallySupportedHypotheses !== 125
+  || ic.orientationAudit.constrainedEdgesSatisfied !== 16
+  || ic.orientationAudit.constrainedEdgesTotal !== 16
+  || ic.orientationAudit.resolvedAnchors !== 5
+  || ic.orientationAudit.ambiguousAnchors !== 12) {
+  throw new Error("finite proton-orientation constraint audit changed");
+}
+for (const trace of [ih, ic]) {
+  const audits = [trace.seedOrientationAudit, ...trace.waves.map((wave) => wave.orientationAudit)];
+  if (audits.some((audit) => !audit || audit.targetUsed || audit.physicalPotentialUsed
+    || audit.canonicalBranchMaterialized || audit.constrainedEdgesSatisfied !== audit.constrainedEdgesTotal)) {
+    throw new Error("orientation audit leakage/claim-boundary contract failed");
+  }
+  if (trace.orientationAudit.allHydrogensResolved) throw new Error("finite boundary falsely resolved every proton pose");
+}
 
 const poisonedExpectation = structuredClone(artifact);
 poisonedExpectation.cases.iceIh.expectedAcceptedAnchors = [999];

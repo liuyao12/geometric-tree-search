@@ -1,5 +1,31 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 401 · finite proton-orientation constraint audit
+
+Molecular ice growth now carries the retained H₂O pose domains into a finite,
+target-blind Bernal–Fowler compatibility audit after every oxygen-scaffold
+wave. For each observed O–O neighbor edge, a pose donates when one learned O–H
+direction lies inside a fixed geometric cone around that edge. The binary
+constraint requires exactly one of the two adjacent poses to donate. Arc
+consistency and deterministic finite backtracking then remove pose hypotheses
+that belong to no globally consistent assignment.
+
+The audit changes neither the eight-port anchor grammar nor its candidates.
+Ice Ih still grows from 9 observed O anchors through 16 and 8 accepted anchors
+to the 33-anchor finite fixed point. At that point all 40 observed O–O edges
+admit exactly one geometrically donated proton, but only the 9 observed seed
+molecules are fixed; 24 grown H₂O poses remain symbolic across 125 globally
+supported hypotheses. Ice Ic likewise satisfies 16 / 16 finite edges while 12
+of 17 molecular poses remain ambiguous.
+
+The live launch certificate and Evidence Atlas now report those numbers, and
+both receipt forms serialize the seed, per-wave, and final constraint audits.
+No canonical proton branch is materialized. Bonds leaving the finite public
+domain remain open, and the result is not an energy minimum, entropy model,
+tunnelling calculation, kinetic path, stationary production, or physical
+time. This turns “protons unresolved” into an inspectable geometric boundary
+rather than a generic disclaimer.
+
 ## Build 400 · molecular growth launch certificate
 
 The Stage-4 launch audit now understands the specialized molecular-anchor

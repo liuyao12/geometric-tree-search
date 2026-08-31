@@ -1,15 +1,15 @@
-import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js";
+import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260831-401";
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
 import { A2_SLICED_SIZE7_CANDIDATES } from "../../assets/a2-sliced-size7-candidates.js?v=20260828-320";
 import { buildHierarchyPhysicsTransport, HIERARCHY_TRANSPORT_STAGES }
-  from "./hierarchy-physics-transport.mjs?v=20260831-400";
+  from "./hierarchy-physics-transport.mjs?v=20260831-401";
 import { buildHierarchyPhysicsInvestigation }
-  from "./hierarchy-physics-investigation.mjs?v=20260831-400";
+  from "./hierarchy-physics-investigation.mjs?v=20260831-401";
 import { buildHierarchyPhysicsProtocolPacket, hierarchyPhysicsProtocolShareUrl,
   hierarchyPhysicsProtocolSelectionFromSearch, hierarchyPhysicsProtocolPacketFilename }
-  from "./hierarchy-physics-protocol-packet.mjs?v=20260831-400";
+  from "./hierarchy-physics-protocol-packet.mjs?v=20260831-401";
 import { hierarchyPhysicsProtocolLaunchAuditFromPacket }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260831-400";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260831-401";
 
 const byId = (id) => document.getElementById(id);
 const A2_SLICED_SCALE3_OBSTRUCTIONS = A2_SLICED_SIZE7_CANDIDATES.filter((candidate) =>
@@ -85,14 +85,18 @@ const SYSTEMS = {
   },
   ice: {
     short: "H₂O ice", kind: "molecular crystal", name: "Ice Ih → Ice Ic",
-    summary: "Ice is covered molecularly rather than by atom-centred coordination spokes. A bent H₂O motif, hydrogen-bond bridge polyhedra, and O₆ ring-boundary gap clusters cover the periodic configuration; a sealed eight-port grammar then transfers exact unseen oxygen anchors until a conservative fixed point.",
+    summary: "Ice is covered molecularly rather than by atom-centred coordination spokes. A bent H₂O motif, hydrogen-bond bridge polyhedra, and O₆ ring-boundary gap clusters cover the periodic configuration; a sealed eight-port grammar then transfers exact unseen oxygen anchors and audits every retained proton-orientation domain against the finite ice-rule graph.",
     values: [27, 27 + acceptedPerWave("iceIh")[0], 27 + acceptedPerWave("iceIh")[0] + acceptedPerWave("iceIh")[1]], verifiedThrough: 2,
-    metrics: [["Ih isometry classes", "1 + 3 + 33"], ["Ic isometry classes", "1 + 2 + 39"], ["Ice VI conformers / ports", "5 / 84"], ["blind O frontiers", `Ih ${acceptedPerWave("iceIh").join(" → ")} · VI 4 → 3 → 1`]],
+    metrics: [["Ih isometry classes", "1 + 3 + 33"], ["Ic isometry classes", "1 + 2 + 39"],
+      ["blind O frontiers", `Ih ${acceptedPerWave("iceIh").join(" → ")} · VI 4 → 3 → 1`],
+      ["Ih ice-rule edges", `${ICE_TRACES.iceIh.orientationAudit.constrainedEdgesSatisfied} / ${ICE_TRACES.iceIh.orientationAudit.constrainedEdgesTotal}`],
+      ["Ih H₂O poses", `${ICE_TRACES.iceIh.orientationAudit.resolvedAnchors} fixed · ${ICE_TRACES.iceIh.orientationAudit.ambiguousAnchors} symbolic`]],
     verdict: ["progress", "Complete molecular cover and finite anchor transfer pass · proton and stationary growth remain open"],
     evidence: [
       ["Complete molecular cover", "Ih 216 / 216 · Ic 192 / 192", "H₂O molecules cover the atoms; bridge and O₆ ring-boundary clusters encode the interstitial connection geometry."],
       ["Frozen port fit", `${ICE_PORT_ARTIFACT.provenance.trainingMolecules} H₂O · ${ICE_PORT_ARTIFACT.ports.length} ports`, `${ICE_PORT_ARTIFACT.provenance.trainingAtoms} positions/species only; proper SE(3); target used = ${ICE_PORT_ARTIFACT.provenance.targetUsed}.`],
       ["Sealed finite execution", `Ih ${acceptedPerWave("iceIh").join(" → ")} · Ic ${acceptedPerWave("iceIc").join(" → ")}`, "Every accepted unseen oxygen anchor is exact; unsupported depth is rejected at a finite fixed point."],
+      ["Finite proton constraint audit", `${ICE_TRACES.iceIh.orientationAudit.constrainedEdgesSatisfied} / ${ICE_TRACES.iceIh.orientationAudit.constrainedEdgesTotal} Ih edges · ${ICE_TRACES.iceIc.orientationAudit.constrainedEdgesSatisfied} / ${ICE_TRACES.iceIc.orientationAudit.constrainedEdgesTotal} Ic edges`, `Exactly one geometrically donated proton is possible on every observed O–O edge. The audit fixes ${ICE_TRACES.iceIh.orientationAudit.resolvedAnchors} / ${ICE_TRACES.iceIh.orientationAudit.anchors} Ih molecular poses; ${ICE_TRACES.iceIh.orientationAudit.ambiguousAnchors} remain symbolic because the finite boundary does not select a unique proton microstate.`],
       ["Resolved claim boundary", "O anchors green · proton poses red", "Whole-H₂O continuation, clusters², stationary recurrence, and exponential ice growth are not claimed."],
       ["Disordered Ice VI transfer", "8 / 8 O anchors · 0 false", "A two-parent connection consensus selected on three training microstates transfers across a disjoint realization. All eight D₂O orientations stay symbolic; forced molecules make three site errors."],
     ],
