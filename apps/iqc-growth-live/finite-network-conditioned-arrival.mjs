@@ -1,7 +1,7 @@
 import { buildFiniteNetworkFirstPassage }
-  from "./finite-network-first-passage.mjs?v=20260831-388";
+  from "./finite-network-first-passage.mjs?v=20260831-389";
 import { buildFiniteNetworkConditionedHeterogeneity }
-  from "./finite-network-conditioned-heterogeneity.mjs?v=20260831-388";
+  from "./finite-network-conditioned-heterogeneity.mjs?v=20260831-389";
 
 const DEFAULT_TAIL_TOLERANCE = 1e-12;
 

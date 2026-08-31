@@ -1,6 +1,8 @@
 import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js";
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
 import { A2_SLICED_SIZE7_CANDIDATES } from "../../assets/a2-sliced-size7-candidates.js?v=20260828-320";
+import { buildHierarchyPhysicsTransport, HIERARCHY_TRANSPORT_STAGES }
+  from "./hierarchy-physics-transport.mjs?v=20260831-389";
 
 const byId = (id) => document.getElementById(id);
 const A2_SLICED_SCALE3_OBSTRUCTIONS = A2_SLICED_SIZE7_CANDIDATES.filter((candidate) =>
@@ -25,6 +27,12 @@ const atlasButton = byId("evidenceAtlasButton");
 const ribbonButton = byId("evidenceRibbonButton");
 const closeButton = byId("evidenceAtlasClose");
 const methodLink = byId("atlasMethodLink");
+const hierarchyPhysicsTransportSelect = byId("hierarchyPhysicsTransportSelect");
+const hierarchyPhysicsTransportSummary = byId("hierarchyPhysicsTransportSummary");
+const hierarchyPhysicsTransportMatrix = byId("hierarchyPhysicsTransportMatrix");
+const hierarchyPhysicsTransportDetail = byId("hierarchyPhysicsTransportDetail");
+const hierarchyPhysicsTransportBoundary = byId("hierarchyPhysicsTransportBoundary");
+let selectedHierarchyPhysicsChannel = "colored-geometry";
 
 const ICE_PORT_ARTIFACT = await fetch(new URL(
   "./ice-molecular-port-artifact.json?v=20260824-1", import.meta.url)).then((response) => {
@@ -807,6 +815,72 @@ function renderPhysics(key) {
     </div>`;
 }
 
+function renderHierarchyPhysicsTransport(receiptId = "iqc-reencoding") {
+  const audit = buildHierarchyPhysicsTransport(receiptId);
+  if (!hierarchyPhysicsTransportSelect.options.length) {
+    audit.options.forEach((option) => hierarchyPhysicsTransportSelect.add(new Option(option.label, option.id)));
+  }
+  hierarchyPhysicsTransportSelect.value = audit.receiptId;
+  hierarchyPhysicsTransportSummary.replaceChildren(...audit.stageSummaries.map((stage) => {
+    const article = document.createElement("article");
+    const small = document.createElement("small"); small.textContent = stage.label;
+    const strong = document.createElement("strong"); strong.textContent = `${stage.causalCount} / ${stage.total}`;
+    const span = document.createElement("span");
+    span.textContent = `${stage.exactCount} exact · ${stage.counts.reevaluated} re-evaluated · ${stage.counts.representation} representation · ${stage.openCount} open`;
+    article.append(small, strong, span);
+    return article;
+  }));
+  const header = document.createElement("div"); header.className = "hierarchy-transport-head";
+  header.setAttribute("role", "row");
+  const channelHead = document.createElement("span"); channelHead.textContent = "physical channel";
+  header.append(channelHead, ...HIERARCHY_TRANSPORT_STAGES.map((stage) => {
+    const cell = document.createElement("span"); cell.textContent = stage.short; return cell;
+  }));
+  const rows = audit.rows.map((row) => {
+    const button = document.createElement("button"); button.type = "button";
+    button.className = row.id === selectedHierarchyPhysicsChannel ? "active" : "";
+    button.dataset.hierarchyPhysicsChannel = row.id;
+    button.setAttribute("role", "row");
+    button.setAttribute("aria-pressed", String(row.id === selectedHierarchyPhysicsChannel));
+    const label = document.createElement("strong"); label.textContent = row.label;
+    button.append(label, ...row.stages.map((stage) => {
+      const cell = document.createElement("span"); cell.className = stage.status;
+      cell.textContent = stage.status === "exact" ? "exact" : stage.status === "reevaluated" ? "recheck"
+        : stage.status === "representation" ? "accounted" : "open";
+      cell.title = `${stage.label}: ${stage.statusLabel}`;
+      return cell;
+    }));
+    button.addEventListener("click", () => {
+      selectedHierarchyPhysicsChannel = row.id;
+      renderHierarchyPhysicsTransport(audit.receiptId);
+    });
+    return button;
+  });
+  hierarchyPhysicsTransportMatrix.replaceChildren(header, ...rows);
+  const selected = audit.rows.find((row) => row.id === selectedHierarchyPhysicsChannel) || audit.rows[0];
+  if (selected.id !== selectedHierarchyPhysicsChannel) selectedHierarchyPhysicsChannel = selected.id;
+  hierarchyPhysicsTransportDetail.replaceChildren();
+  const detailHeader = document.createElement("header");
+  const copy = document.createElement("span");
+  const small = document.createElement("small"); small.textContent = selected.physical;
+  const title = document.createElement("strong"); title.textContent = selected.label;
+  copy.append(small, title);
+  const frontier = document.createElement("b");
+  frontier.textContent = selected.lastTransportedStage
+    ? `causal through ${selected.lastTransportedStage.short}` : "no causal transport";
+  detailHeader.append(copy, frontier);
+  const evidence = document.createElement("div");
+  const evidenceLabel = document.createElement("b"); evidenceLabel.textContent = "transport certificate";
+  const evidenceCopy = document.createElement("p"); evidenceCopy.textContent = selected.evidence;
+  evidence.append(evidenceLabel, evidenceCopy);
+  const boundary = document.createElement("div");
+  const boundaryLabel = document.createElement("b"); boundaryLabel.textContent = "claim boundary";
+  const boundaryCopy = document.createElement("p"); boundaryCopy.textContent = selected.boundary;
+  boundary.append(boundaryLabel, boundaryCopy);
+  hierarchyPhysicsTransportDetail.append(detailHeader, evidence, boundary);
+  hierarchyPhysicsTransportBoundary.textContent = `${audit.title} · ${audit.claimBoundary}`;
+}
+
 function renderTimeline() {
   byId("researchTimeline").innerHTML = TIMELINE.map(([index, title, copy, status]) => `<article class="${status}"><span>${index}</span><div><small>${status === "proved" ? "established" : status === "progress" ? "measured advance" : "current frontier"}</small><h3>${title}</h3><p>${copy}</p></div><i></i></article>`).join("");
 }
@@ -832,6 +906,8 @@ atlas.addEventListener("click", (event) => { if (event.target === atlas) closeAt
 document.querySelectorAll("[data-atlas-tab]").forEach((button) => button.addEventListener("click", () => selectTab(button.dataset.atlasTab)));
 document.querySelectorAll("[data-anatomy]").forEach((button) => button.addEventListener("click", () => renderAnatomy(button.dataset.anatomy)));
 document.querySelectorAll("[data-physics]").forEach((button) => button.addEventListener("click", () => renderPhysics(button.dataset.physics)));
+hierarchyPhysicsTransportSelect.addEventListener("change", () =>
+  renderHierarchyPhysicsTransport(hierarchyPhysicsTransportSelect.value));
 document.querySelectorAll("[data-ledger-filter]").forEach((button) => button.addEventListener("click", () => renderLedger(button.dataset.ledgerFilter)));
 methodLink.addEventListener("click", closeAtlas);
 document.addEventListener("keydown", (event) => { if (event.key === "Escape" && !atlas.hidden) closeAtlas(); });
@@ -840,5 +916,6 @@ renderMatrix();
 renderSystems();
 renderAnatomy("cover");
 renderPhysics("bonding");
+renderHierarchyPhysicsTransport();
 renderTimeline();
 renderLedger();

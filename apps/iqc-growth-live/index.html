@@ -7,7 +7,7 @@
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23071112'/%3E%3Cpath d='M17 19 46 12M17 19l8 30m21-37L25 49m-8-30 29 24M25 49l21-6' stroke='%236fffd4' stroke-width='4'/%3E%3Ccircle cx='17' cy='19' r='6' fill='%23f1fff9'/%3E%3Ccircle cx='46' cy='12' r='6' fill='%236fffd4'/%3E%3Ccircle cx='25' cy='49' r='6' fill='%238a7dff'/%3E%3Ccircle cx='46' cy='43' r='6' fill='%236fffd4'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css?v=20260831-388">
+  <link rel="stylesheet" href="./style.css?v=20260831-389">
   <script type="importmap">
     {
       "imports": {
@@ -209,6 +209,14 @@
             </div>
             <article id="physicsMapDetail" class="physics-map-detail" aria-live="polite"></article>
             <p class="physics-map-note"><b>Interpretation:</b> GCTS is a structural continuation engine. It can compress dynamics only after physically relevant constraints have appeared in the training geometry or connection evidence; it does not turn geometry into an uncalibrated energy model.</p>
+            <section id="hierarchyPhysicsTransport" class="hierarchy-physics-transport" aria-label="Physics transport across the GCTS hierarchy">
+              <header><div><span>physics across recursive promotion</span><h3>What survives when clusters become clusters²?</h3></div><label for="hierarchyPhysicsTransportSelect">frozen receipt<select id="hierarchyPhysicsTransportSelect" aria-label="Select hierarchy receipt for the physics transport audit"></select></label></header>
+              <div id="hierarchyPhysicsTransportSummary" class="hierarchy-physics-transport-summary"></div>
+              <div class="hierarchy-physics-transport-key" aria-label="Physics transport state legend"><span class="exact">exact</span><span class="reevaluated">re-evaluated</span><span class="representation">representation only</span><span class="open">open</span></div>
+              <div id="hierarchyPhysicsTransportMatrix" class="hierarchy-physics-transport-matrix" role="table" aria-label="Physical information transport by hierarchy scale"></div>
+              <article id="hierarchyPhysicsTransportDetail" class="hierarchy-physics-transport-detail" aria-live="polite"></article>
+              <p id="hierarchyPhysicsTransportBoundary">Hierarchy depth never upgrades a missing physical coarse operator.</p>
+            </section>
           </section>
 
           <section class="atlas-panel" data-atlas-panel="journey" hidden>
@@ -2607,7 +2615,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260831-388"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260831-388"></script>
+  <script type="module" src="./app.js?v=20260831-389"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260831-389"></script>
 </body>
 </html>

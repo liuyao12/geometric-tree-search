@@ -1,5 +1,40 @@
 # Recursive GCTS benchmark for material growth
 
+### Physics transport across recursive promotion (Build 389)
+
+Build 389 adds a cross-scale physics contract to the Evidence atlas. For ten
+physical channels it asks separately what is preserved at the atomic,
+primitive-cluster, promoted-macro, and stationary-production scales. Four
+states are allowed:
+
+- **exact**: discrete coordinate/species, proper-pose, port, or population
+  semantics are preserved by an independently checked certificate;
+- **re-evaluated**: the quantity is recomputed on explicit occupied or
+  candidate geometry at execution rather than stored as a coarse law;
+- **representation only**: observed geometry remains present in the exact
+  support-plus-residual union but is not generated; and
+- **open**: no cross-scale operator is certified.
+
+At the macro scale, the current receipts transport colored geometry, proper
+pose/chirality, directed connection topology, and species population exactly.
+Steric exclusion, local strain/response, and interface/defect morphology are
+re-evaluated explicitly. Residuals are representation-only. Event kinetics and
+nonlocal diffusion, thermal, electronic, and elastic response remain open.
+This is intentionally stricter than saying that a macro “contains physics.”
+
+If a receipt has no exact normalized production common to three consecutive
+levels, every stationary-scale channel is forced open. Thus all ideal-IQC and
+Cd–Yb receipts remain entirely open in the stationary column even though they
+have deep exact-support hierarchies. The NaCl control transports four exact
+discrete channels across its stationary rule; explicit materialization still
+rechecks steric closure, while local response, interface physics, kinetics,
+and nonlocal fields remain open.
+
+The matrix is derived only from frozen benchmark receipts and immutable
+transport definitions. It inspects no candidate set, changes no geometry, uses
+no target, and integrates no physical time. Hierarchy depth, exact replay, or
+symbolic site count can never upgrade a missing physical coarse operator.
+
 ### Hierarchy evidence microscope (Build 388)
 
 Build 388 promotes the hierarchy claim boundary into an interactive,

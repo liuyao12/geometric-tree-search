@@ -1,5 +1,36 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 389 · physics transport across recursive promotion
+
+The Evidence atlas now audits the central leap-frogging assumption directly:
+when atoms become clusters and clusters become promoted clusters², which
+physical information is actually transported? Ten channels are followed from
+the atomic state through primitive clusters, promoted macros, and a proposed
+stationary law. The matrix distinguishes exact transport, explicit
+re-evaluation, representation-only accounting, and physics that remains open.
+
+Colored coordinates, proper pose/chirality, witnessed connection topology,
+and exact species populations survive into stored promoted macros. Steric
+closure, local response, and interface morphology are deliberately
+re-evaluated on explicit geometry rather than silently homogenized. Residual
+terminals preserve an observed coordinate/species union but are never called
+predicted atoms. Barriers/event kinetics and nonlocal diffusion, heat,
+electronic, or elastic response remain open until an independent reduced
+operator is validated.
+
+The selected frozen hierarchy receipt controls the final column. Every
+quasicrystal receipt leaves all stationary-scale channels open because no
+common exact three-level production exists. The NaCl positive control carries
+four exact discrete channels—colored geometry, proper pose, directed ports,
+and population substitution—while steric closure is still checked on explicit
+materialization. It does not inherit kinetics or nonlocal response merely
+because the structural rule is stationary.
+
+This prevents hierarchy depth from becoming a proxy for physical fidelity.
+The audit changes no candidate, score, or geometry and uses no target. It is a
+cross-scale validity ledger, not a new coarse potential or a physical-time
+model.
+
 ## Build 388 · hierarchy evidence microscope
 
 The material-growth stage now makes the cluster-of-clusters evidence chain
