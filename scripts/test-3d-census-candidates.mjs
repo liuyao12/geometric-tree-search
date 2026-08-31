@@ -1797,11 +1797,22 @@ assert.ok(A2_SLICED_SIZE10_CANDIDATES.every(candidate =>
   && candidate.screening.two_copy_substitution_exact_scales.join(",") === "2,3"
   && candidate.screening.two_copy_substitution_models.join(",") === "proper,reflected"
   && candidate.screening.two_copy_substitution_certified_negatives === 4
-  && candidate.screening.three_copy_substitution_exact_scales.join(",") === "2"
   && candidate.screening.three_copy_substitution_models.join(",") === "proper,reflected"
-  && candidate.screening.three_copy_substitution_certified_negatives === 2
   && candidate.screening.corona_root_patch_copies > 1
 ));
+const unresolvedSizeTen = A2_SLICED_SIZE10_CANDIDATES.filter(candidate =>
+  candidate.screening.status === "inconclusive"
+);
+assert.deepEqual(unresolvedSizeTen.map(candidate => [
+  candidate.id,
+  candidate.screening.three_copy_substitution_exact_scales.join(","),
+  candidate.screening.three_copy_substitution_certified_negatives,
+  candidate.screening.three_copy_substitution_parents_exhausted,
+  candidate.screening.three_copy_substitution_reports.length,
+]), [
+  ["a2sa_10_36141", "2,3", 4, 10710, 2],
+  ["a2sa_10_35323", "2,3", 4, 11394, 2],
+]);
 const sizeTenPeriodic = A2_SLICED_SIZE10_CANDIDATES.find(candidate => candidate.id === "a2sa_10_36194");
 assert.equal(sizeTenPeriodic.screening.status, "periodic");
 assert.equal(sizeTenPeriodic.screening.periodic_exact_through, 9);

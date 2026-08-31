@@ -1,0 +1,59 @@
+#!/usr/bin/env python3
+"""Build the deterministic size-10 leader three-copy scale-3 archive."""
+
+from __future__ import annotations
+
+import argparse
+import gzip
+import hashlib
+import json
+from pathlib import Path
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--inputs", nargs="+", required=True)
+    parser.add_argument("--output", required=True)
+    args = parser.parse_args()
+    records = []
+    for value in args.inputs:
+        path = Path(value)
+        lines = [line for line in path.read_text().splitlines() if line.strip()]
+        if len(lines) != 1:
+            raise ValueError(f"expected one NDJSON record in {path}")
+        record = json.loads(lines[0])
+        detail = record["three_copy_alcove_metatile_screen"]
+        if (not record["id"].startswith("a2sa_10_")
+                or detail["scale"] != 3
+                or record["classification"]
+                != "no_three_copy_metatile_scalar3_substitution"
+                or detail["certified"] is not True):
+            raise ValueError(f"unexpected proof identity in {path}")
+        records.append(record)
+    records.sort(key=lambda record: (
+        record["id"],
+        record["three_copy_alcove_metatile_screen"]["include_reflections"],
+    ))
+    identities = [(record["id"], record["three_copy_alcove_metatile_screen"]
+                   ["include_reflections"]) for record in records]
+    if len(set(identities)) != len(identities):
+        raise ValueError("duplicate candidate/model record")
+    payload = "".join(json.dumps(record, separators=(",", ":")) + "\n"
+                      for record in records).encode()
+    output = Path(args.output)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    temporary = output.with_suffix(output.suffix + ".tmp")
+    with temporary.open("wb") as raw:
+        with gzip.GzipFile(filename="", mode="wb", fileobj=raw, mtime=0) as stream:
+            stream.write(payload)
+    temporary.replace(output)
+    print(json.dumps({
+        "records": len(records),
+        "uncompressed_sha256": hashlib.sha256(payload).hexdigest(),
+        "archive_sha256": hashlib.sha256(output.read_bytes()).hexdigest(),
+        "output": str(output),
+    }, indent=2))
+
+
+if __name__ == "__main__":
+    main()

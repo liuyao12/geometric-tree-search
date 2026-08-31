@@ -208,15 +208,20 @@ export const A2_SLICED_SIZE10_CANDIDATES = Object.freeze([
       "two_copy_substitution_parents_exhausted": 188,
       "two_copy_substitution_report": "data/a2-sliced-size10-two-copy-substitution-scale2to3.ndjson.gz",
       "three_copy_substitution_exact_scales": [
-        2
+        2,
+        3
       ],
       "three_copy_substitution_models": [
         "proper",
         "reflected"
       ],
-      "three_copy_substitution_certified_negatives": 2,
-      "three_copy_substitution_parents_exhausted": 5355,
+      "three_copy_substitution_certified_negatives": 4,
+      "three_copy_substitution_parents_exhausted": 10710,
       "three_copy_substitution_report": "data/a2-sliced-size10-three-copy-substitution-scale2-leaders.ndjson.gz",
+      "three_copy_substitution_reports": [
+        "data/a2-sliced-size10-three-copy-substitution-scale2-leaders.ndjson.gz",
+        "data/a2-sliced-size10-three-copy-substitution-scale3-leaders.ndjson.gz"
+      ],
       "four_copy_substitution_exact_scales": [
         2
       ],
@@ -670,15 +675,20 @@ export const A2_SLICED_SIZE10_CANDIDATES = Object.freeze([
       "two_copy_substitution_parents_exhausted": 190,
       "two_copy_substitution_report": "data/a2-sliced-size10-two-copy-substitution-scale2to3.ndjson.gz",
       "three_copy_substitution_exact_scales": [
-        2
+        2,
+        3
       ],
       "three_copy_substitution_models": [
         "proper",
         "reflected"
       ],
-      "three_copy_substitution_certified_negatives": 2,
-      "three_copy_substitution_parents_exhausted": 5697,
+      "three_copy_substitution_certified_negatives": 4,
+      "three_copy_substitution_parents_exhausted": 11394,
       "three_copy_substitution_report": "data/a2-sliced-size10-three-copy-substitution-scale2-leaders.ndjson.gz",
+      "three_copy_substitution_reports": [
+        "data/a2-sliced-size10-three-copy-substitution-scale2-leaders.ndjson.gz",
+        "data/a2-sliced-size10-three-copy-substitution-scale3-leaders.ndjson.gz"
+      ],
       "four_copy_substitution_exact_scales": [
         2
       ],
@@ -2086,6 +2096,9 @@ export const A2_SLICED_SIZE10_CANDIDATES = Object.freeze([
       "three_copy_substitution_certified_negatives": 2,
       "three_copy_substitution_parents_exhausted": 698,
       "three_copy_substitution_report": "data/a2-sliced-size10-three-copy-substitution-scale2-leaders.ndjson.gz",
+      "three_copy_substitution_reports": [
+        "data/a2-sliced-size10-three-copy-substitution-scale2-leaders.ndjson.gz"
+      ],
       "four_copy_substitution_exact_scales": [],
       "four_copy_substitution_models": [],
       "four_copy_substitution_certified_negatives": 0,

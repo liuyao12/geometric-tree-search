@@ -23,9 +23,14 @@ const directSubstitutions = await readGzipNdjson(
 const twoCopySubstitutions = await readGzipNdjson(
   "data/a2-sliced-size10-two-copy-substitution-scale2to3.ndjson.gz"
 );
-const threeCopySubstitutions = await readGzipNdjson(
-  "data/a2-sliced-size10-three-copy-substitution-scale2-leaders.ndjson.gz"
-);
+const threeCopySubstitutions = [
+  ...(await readGzipNdjson(
+    "data/a2-sliced-size10-three-copy-substitution-scale2-leaders.ndjson.gz"
+  )),
+  ...(await readGzipNdjson(
+    "data/a2-sliced-size10-three-copy-substitution-scale3-leaders.ndjson.gz"
+  ))
+];
 const fourCopySubstitutions = [
   ...(await readGzipNdjson(
     "data/a2-sliced-size10-four-copy-substitution-scale2-proper-leaders.ndjson.gz"
@@ -136,10 +141,11 @@ const candidates = selectedIds.map((id, index) => {
     || result.two_copy_alcove_metatile_screen.certified !== true)) {
     throw new Error(`Missing scale-2-and-3 two-copy substitution exclusions for ${id}`);
   }
-  if (threeCopy.length !== 2 || threeCopy.some(result =>
+  const expectedThreeCopyNegatives = isPeriodic ? 2 : 4;
+  if (threeCopy.length !== expectedThreeCopyNegatives || threeCopy.some(result =>
     !result.classification.startsWith("no_three_copy_metatile_scalar")
     || result.three_copy_alcove_metatile_screen.certified !== true)) {
-    throw new Error(`Missing scale-2 three-copy substitution exclusions for ${id}`);
+    throw new Error(`Missing three-copy substitution exclusions for ${id}`);
   }
   if (!isPeriodic && (fourCopy.length !== 2 || fourCopy.some(result =>
       result.classification !== "no_four_copy_metatile_scalar2_substitution"
@@ -200,12 +206,19 @@ const candidates = selectedIds.map((id, index) => {
       two_copy_substitution_parents_exhausted: twoCopy.reduce((sum, result) =>
         sum + result.two_copy_alcove_metatile_screen.parents_completed, 0),
       two_copy_substitution_report: "data/a2-sliced-size10-two-copy-substitution-scale2to3.ndjson.gz",
-      three_copy_substitution_exact_scales: [2],
+      three_copy_substitution_exact_scales: [...new Set(threeCopy.map(result =>
+        result.three_copy_alcove_metatile_screen.scale))].sort((left, right) => left - right),
       three_copy_substitution_models: ["proper", "reflected"],
       three_copy_substitution_certified_negatives: threeCopy.length,
       three_copy_substitution_parents_exhausted: threeCopy.reduce((sum, result) =>
         sum + result.three_copy_alcove_metatile_screen.parents_completed, 0),
       three_copy_substitution_report: "data/a2-sliced-size10-three-copy-substitution-scale2-leaders.ndjson.gz",
+      three_copy_substitution_reports: [
+        "data/a2-sliced-size10-three-copy-substitution-scale2-leaders.ndjson.gz",
+        ...(!isPeriodic
+          ? ["data/a2-sliced-size10-three-copy-substitution-scale3-leaders.ndjson.gz"]
+          : [])
+      ],
       four_copy_substitution_exact_scales: fourCopy.length ? [2] : [],
       four_copy_substitution_models: fourCopy.length ? ["proper", "reflected"] : [],
       four_copy_substitution_certified_negatives: fourCopy.length,

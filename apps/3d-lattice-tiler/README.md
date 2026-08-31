@@ -330,8 +330,11 @@ and 3 in both symmetry models for all 13 survivors: 52 certified
 candidate/scale/model negatives. Three-copy and larger alphabets remain open.
 For the three displayed size-ten leaders, the complete connected three-copy
 family at scalar scale 2 is also excluded in both symmetry models. This
-exhausts 698–5,697 parent types per leader; three-copy scales beyond 2 and
-clusters of four or more remain open at this stage. A longer nine-copy
+exhausts 698–5,697 parent types per leader. For the two unresolved leaders,
+scale 3 is now complete as well: `35323` excludes another 1,447 proper and
+4,250 reflected parents, while `36141` excludes another 1,298 proper and 4,057
+reflected parents, all by independently replayed atomic obstructions. Higher
+three-copy scales and clusters of four or more remain open at this stage. A longer nine-copy
 determinant-15 quotient campaign then finds a replayed 9-tile period for
 `a2sa_10_36194`; its quotient induces a replayed scale-two 8-cluster
 substitution with 72 atomic tile placements. For each of the other two
