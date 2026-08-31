@@ -31,7 +31,7 @@ ENUMERATE_THREE = THREE.enumerate_three_copy_metatiles
 class SqliteMetatileList:
     """Read a canonical metatile alphabet in small ordered chunks."""
 
-    def __init__(self, path: Path, count: int, chunk_size: int = 256):
+    def __init__(self, path: Path, count: int, chunk_size: int = 100):
         self.path = path
         self.count = count
         self.chunk_size = chunk_size

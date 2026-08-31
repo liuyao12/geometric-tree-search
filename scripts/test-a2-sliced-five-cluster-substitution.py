@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import importlib.util
+import gzip
 import json
 import tempfile
 from pathlib import Path
@@ -45,26 +46,25 @@ def main():
 
         # Compact on-disk caches preserve the same canonical order and lazily
         # reconstruct the alcove geometry without duplicating verbose records.
-        split = max(1, len(five["metatiles"]) // 2)
-        paths = []
-        for start, stop in ((0, split), (split, len(four["metatiles"]))):
-            if start >= stop:
-                continue
-            shard = Path(directory) / f"shard-{start}-{stop}.json"
-            keys = [item["canonical_key"] for item in five["metatiles"]]
-            shard.write_text(json.dumps({
+        keys = [item["canonical_key"] for item in five["metatiles"]]
+        shard = Path(directory) / "shard.json.gz"
+        with gzip.open(shard, "wt", encoding="utf-8") as stream:
+            json.dump({
                 "id": record["id"], "include_reflections": False, "copies": 5,
                 "raw_connected_extensions": five["raw_connected_extensions"],
                 "symmetry_distinct_metatiles": len(keys),
                 "canonical_sha256": FIVE_BATCH.digest_keys(keys),
                 "four_copy_parent_total": len(four["metatiles"]),
-                "four_copy_parent_range": [start, stop],
+                "four_copy_parent_range": [0, len(four["metatiles"])],
                 "canonical_keys": keys,
-            }, separators=(",", ":")))
-            paths.append(shard)
+            }, stream, separators=(",", ":"))
+        assert FIVE_BATCH.valid_shard(
+            shard, record["id"], False, 0, len(four["metatiles"]),
+            len(four["metatiles"]),
+        )
         compact = Path(directory) / "five-copy.sqlite"
         FIVE_BATCH.merge_to_compact_sqlite(
-            paths, compact, record["id"], False, len(four["metatiles"])
+            [shard], compact, record["id"], False, len(four["metatiles"])
         )
         cached = FIVE.sqlite_enumeration(record, False, compact)
 
@@ -87,6 +87,7 @@ def main():
     # orientation, boundary face, or translation in the production routine.
     orientations = FIVE.SUB.oriented_cells(record["alcoves"], False)
     expected = set()
+    expected_raw = 0
     for parent in four["metatiles"]:
         cluster = parent["alcoves"]
         occupied = {FIVE.SUB.cell_key(cell) for cell in cluster}
@@ -103,8 +104,10 @@ def main():
                     if occupied.intersection(FIVE.SUB.cell_key(cell)
                                              for cell in partner):
                         continue
+                    expected_raw += 1
                     expected.add(TWO.canonical_key([*cluster, *partner], False))
     assert set(keys) == expected
+    assert five["raw_connected_extensions"] == expected_raw
     print(json.dumps({
         "four_copy_metatiles": len(four["metatiles"]),
         "five_copy_metatiles": len(keys),

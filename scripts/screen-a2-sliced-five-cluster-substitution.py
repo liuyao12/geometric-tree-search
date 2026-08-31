@@ -118,6 +118,13 @@ def enumerate_five_copy_metatiles(record, cache_path: Path,
     """
     four = FOUR.cached_enumeration(record, include_reflections, cache_path)
     orientations = SUB.oriented_cells(record["alcoves"], include_reflections)
+    anchors_by_kind = {}
+    for orientation_index, orientation in enumerate(orientations):
+        for own_cell in orientation["cells"]:
+            own_key = SUB.cell_key(own_cell)
+            anchors_by_kind.setdefault(own_key[3], []).append(
+                (orientation_index, orientation, own_key)
+            )
     representatives = {}
     raw = 0
     start = max(0, four_parent_start)
@@ -131,38 +138,48 @@ def enumerate_five_copy_metatiles(record, cache_path: Path,
         metatile = four["metatiles"][four_index]
         cluster = metatile["alcoves"]
         occupied = {SUB.cell_key(cell) for cell in cluster}
+        placement_cache = {}
+        canonicalized_placements = set()
         for neighbor in TWO.adjacent_atomic_cells(cluster):
             neighbor_key = SUB.cell_key(neighbor)
-            for orientation_index, orientation in enumerate(orientations):
-                for own_cell in orientation["cells"]:
-                    own_key = SUB.cell_key(own_cell)
-                    if own_key[3] != neighbor_key[3]:
-                        continue
-                    delta = tuple(
-                        neighbor_key[axis] - own_key[axis] for axis in range(3)
-                    )
+            for orientation_index, orientation, own_key in anchors_by_kind.get(
+                    neighbor_key[3], ()):
+                delta = tuple(
+                    neighbor_key[axis] - own_key[axis] for axis in range(3)
+                )
+                placement_key = (orientation_index, delta)
+                if placement_key not in placement_cache:
                     partner = TWO.translated_cells(orientation["cells"], delta)
                     partner_keys = {SUB.cell_key(cell) for cell in partner}
-                    if occupied.intersection(partner_keys):
-                        continue
-                    raw += 1
-                    union = [*cluster, *partner]
-                    canonical = TWO.canonical_key(union, include_reflections)
-                    if canonical in representatives:
-                        continue
-                    checked = TWO.replay_base_decomposition(cluster, partner, union)
-                    if not checked["verified"]:
-                        raise RuntimeError(f"five-copy base replay failed: {checked}")
-                    representatives[canonical] = {
-                        "alcoves": union,
-                        "canonical_key": [list(cell) for cell in canonical],
-                        "base_decomposition": {
-                            "four_copy_parent_index": four_index,
-                            "partner_orientation_index": orientation_index,
-                            "partner_translation": list(delta),
-                            "replay": checked,
-                        },
-                    }
+                    placement_cache[placement_key] = (
+                        None if occupied.intersection(partner_keys) else partner
+                    )
+                partner = placement_cache[placement_key]
+                if partner is None:
+                    continue
+                # Preserve the historical incidence count even when several
+                # boundary anchors identify the same translated fifth copy.
+                raw += 1
+                if placement_key in canonicalized_placements:
+                    continue
+                canonicalized_placements.add(placement_key)
+                union = [*cluster, *partner]
+                canonical = TWO.canonical_key(union, include_reflections)
+                if canonical in representatives:
+                    continue
+                checked = TWO.replay_base_decomposition(cluster, partner, union)
+                if not checked["verified"]:
+                    raise RuntimeError(f"five-copy base replay failed: {checked}")
+                representatives[canonical] = {
+                    "alcoves": union,
+                    "canonical_key": [list(cell) for cell in canonical],
+                    "base_decomposition": {
+                        "four_copy_parent_index": four_index,
+                        "partner_orientation_index": orientation_index,
+                        "partner_translation": list(delta),
+                        "replay": checked,
+                    },
+                }
     metatiles = [representatives[key] for key in sorted(representatives)]
     digest = hashlib.sha256(json.dumps(
         [item["canonical_key"] for item in metatiles], separators=(",", ":")

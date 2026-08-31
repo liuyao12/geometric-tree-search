@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import concurrent.futures
+import gzip
 import hashlib
 import importlib.util
 import json
@@ -43,7 +44,13 @@ def numeric_sort_key(canonical_key) -> bytes:
 
 
 def shard_path(output_dir: Path, candidate_id: str, start: int, stop: int) -> Path:
-    return output_dir / f"{candidate_id}-four-parents{start:05d}-{stop:05d}.json"
+    return output_dir / f"{candidate_id}-four-parents{start:05d}-{stop:05d}.json.gz"
+
+
+def read_receipt(path: Path) -> dict:
+    opener = gzip.open if path.suffix == ".gz" else open
+    with opener(path, "rt", encoding="utf-8") as stream:
+        return json.load(stream)
 
 
 def valid_shard(path: Path, candidate_id: str, include_reflections: bool,
@@ -51,7 +58,7 @@ def valid_shard(path: Path, candidate_id: str, include_reflections: bool,
     if not path.exists():
         return False
     try:
-        receipt = json.loads(path.read_text())
+        receipt = read_receipt(path)
         keys = receipt["canonical_keys"]
         return (
             receipt["id"] == candidate_id
@@ -90,7 +97,8 @@ def enumerate_worker(task: dict) -> dict:
     }
     output = Path(task["output"])
     temporary = output.with_suffix(f".tmp-{os.getpid()}")
-    temporary.write_text(json.dumps(receipt, separators=(",", ":")))
+    with gzip.open(temporary, "wt", encoding="utf-8", compresslevel=9) as stream:
+        json.dump(receipt, stream, separators=(",", ":"))
     os.replace(temporary, output)
     return {
         "start": task["start"], "stop": task["stop"],
@@ -139,7 +147,7 @@ def merge_to_compact_sqlite(paths: list[Path], output: Path,
     receipts = []
     try:
         for path in paths:
-            receipt = json.loads(path.read_text())
+            receipt = read_receipt(path)
             start, stop = receipt["four_copy_parent_range"]
             if start != cursor:
                 raise ValueError(f"four-copy parent gap before {path}: {cursor} != {start}")
