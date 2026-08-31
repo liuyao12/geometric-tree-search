@@ -1,5 +1,30 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 390 · sealed scale-bridge investigation planner
+
+The Evidence atlas now turns every cell of the atoms → clusters → clusters² →
+stationary-law transport matrix into an explicit experiment design. Select one
+of ten physical channels and one hierarchy scale to see:
+
+- the physical question and required independent evidence;
+- the geometric encoding that is allowed to carry that evidence;
+- the guarded or cross-archive validation split;
+- the exact admission/ranking/external-operator hook used during growth; and
+- the quantitative gate required before the claim can be upgraded.
+
+The planner is status-aware. Exact channels are stress-tested without changing
+their encoding; execution-time rechecks require matched candidate-set
+ablations; representation-only residuals must first become train-recurrent and
+never emit literal held-out coordinates; open channels require a separately
+validated operator. Kinetics and nonlocal transport therefore route to an
+external calibration protocol rather than being inferred from tree depth.
+
+Each plan has a one-click route back to the relevant sample, clustering,
+marking, or growth panel and the receipt's material system. Routing changes no
+scientific setting by itself. Plans freeze candidate geometry during ablations,
+do not use evaluation targets for fitting or selection, and never equate action
+order with physical time.
+
 ## Build 389 · physics transport across recursive promotion
 
 The Evidence atlas now audits the central leap-frogging assumption directly:

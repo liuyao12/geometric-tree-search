@@ -1,5 +1,32 @@
 # Recursive GCTS benchmark for material growth
 
+### Sealed scale-bridge investigation planner (Build 390)
+
+Build 390 converts the cross-scale physics audit into an actionable validation
+contract. For each frozen hierarchy receipt, physical channel, and scale, the
+portal now specifies a five-part chain:
+
+1. independent evidence needed to identify the physical content;
+2. the permitted invariant geometric encoding;
+3. a guarded spatial, grouped-nucleus, path, domain, or cross-archive holdout;
+4. the exact growth hook (hard admission, ranking, bounded projection, event
+   operator, or coupled field operator); and
+5. the green gate required to upgrade the claim.
+
+This makes the boundary operational. A coordinate-bearing residual can close
+an observed cover but cannot emit a new atom. A local response surrogate must
+transfer across a different calculation archive and abstain outside source
+support. Interface marks require whole-nucleus validation and matched candidate
+sets. Kinetics needs held-out event/path evidence, calibrated rates, and unknown
+exit mass before action order can become physical time. Nonlocal transport needs
+an independently validated conservative field operator across a new domain.
+
+The planner routes users to the relevant lab stage but does not silently change
+controls. Every plan declares that candidate geometry remains frozen during an
+ablation and that evaluation targets are absent from fitting and branch choice.
+Hierarchy depth, compression, and exact re-encoding alone never satisfy an open
+operator gate.
+
 ### Physics transport across recursive promotion (Build 389)
 
 Build 389 adds a cross-scale physics contract to the Evidence atlas. For ten

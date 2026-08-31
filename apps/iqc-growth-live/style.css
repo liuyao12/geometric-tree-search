@@ -2186,6 +2186,26 @@ body.study-guide-open { overflow: hidden; }
 .hierarchy-physics-transport-detail > div:last-child { border-bottom:0; }
 .hierarchy-physics-transport-detail > div b { color:#657f85; font:6px/1.45 var(--mono); font-weight:400; text-transform:uppercase; }
 .hierarchy-physics-transport-detail > div p { margin:0; color:#789095; font-size:8px; line-height:1.5; }
+.hierarchy-physics-investigation { margin-top:9px; border:1px solid rgba(181,148,255,.2); background:linear-gradient(135deg,rgba(181,148,255,.045),transparent 48%),rgba(3,12,17,.76); }
+.hierarchy-physics-investigation > header { display:flex; align-items:end; justify-content:space-between; gap:14px; padding:11px 13px; border-bottom:1px solid rgba(181,148,255,.13); }
+.hierarchy-physics-investigation > header span,.hierarchy-physics-investigation > header small,.hierarchy-physics-investigation > header strong { display:block; }
+.hierarchy-physics-investigation > header small { color:#756a91; font:6px var(--mono); text-transform:uppercase; }
+.hierarchy-physics-investigation > header strong { margin-top:4px; color:#d1c5eb; font-size:11px; font-weight:500; }
+.hierarchy-physics-investigation > header > b { padding:4px 7px; border:1px solid; font:6px var(--mono); font-weight:400; text-transform:uppercase; }
+.hierarchy-physics-investigation > header > b.exact { color:#77d9bd;border-color:rgba(101,225,188,.35) }.hierarchy-physics-investigation > header > b.reevaluated { color:#6fc4e0;border-color:rgba(85,200,255,.35) }.hierarchy-physics-investigation > header > b.representation { color:#aa98d3;border-color:rgba(181,148,255,.35) }.hierarchy-physics-investigation > header > b.open { color:#c47b7e;border-color:rgba(255,109,113,.32) }
+.hierarchy-physics-investigation-scales { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); padding:8px; gap:5px; }
+.hierarchy-physics-investigation-scales button { min-width:0; padding:7px 8px; border:1px solid rgba(181,148,255,.13); background:rgba(5,14,20,.62); color:#71868b; text-align:left; cursor:pointer; }
+.hierarchy-physics-investigation-scales button:hover,.hierarchy-physics-investigation-scales button.active { border-color:rgba(181,148,255,.42); background:rgba(181,148,255,.07); color:#c1b2df; }
+.hierarchy-physics-investigation-scales small,.hierarchy-physics-investigation-scales strong { display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.hierarchy-physics-investigation-scales small { color:#647b81; font:5.5px var(--mono); text-transform:uppercase; }.hierarchy-physics-investigation-scales strong { margin-top:3px; font-size:7px; font-weight:500; }
+.hierarchy-physics-investigation > article { position:relative; margin:0 8px; padding:11px 125px 11px 12px; border-left:2px solid #b594ff; background:rgba(181,148,255,.035); }
+.hierarchy-physics-investigation > article small,.hierarchy-physics-investigation > article strong,.hierarchy-physics-investigation > article p { display:block; margin:0; }
+.hierarchy-physics-investigation > article small { color:#766b91; font:6px var(--mono); text-transform:uppercase; }.hierarchy-physics-investigation > article strong { margin-top:4px; color:#d3cae8; font-size:10px; font-weight:500; }.hierarchy-physics-investigation > article p { margin-top:5px; color:#778d92; font-size:7px; line-height:1.5; }
+.hierarchy-physics-investigation > article > b { position:absolute; top:11px; right:11px; max-width:110px; color:#8b7eaa; font:5.5px/1.4 var(--mono); font-weight:400; text-align:right; text-transform:uppercase; }
+.hierarchy-physics-investigation-flow { display:grid; grid-template-columns:minmax(0,1fr) 16px minmax(0,1fr) 16px minmax(0,1fr) 16px minmax(0,1fr); align-items:stretch; gap:0; padding:8px; }
+.hierarchy-physics-investigation-flow article { min-width:0; padding:9px; border:1px solid rgba(101,142,150,.13); background:rgba(3,12,17,.62); }.hierarchy-physics-investigation-flow > i { display:grid; place-items:center; color:#586f75; font:8px var(--mono); font-style:normal; }
+.hierarchy-physics-investigation-flow small,.hierarchy-physics-investigation-flow strong { display:block; }.hierarchy-physics-investigation-flow small { color:#5d7379; font:6px var(--mono); }.hierarchy-physics-investigation-flow strong { margin-top:4px; color:#a9c1c6; font-size:8px; font-weight:500; text-transform:uppercase; }.hierarchy-physics-investigation-flow p { margin:6px 0 0; color:#71878c; font-size:7px; line-height:1.55; }
+.hierarchy-physics-investigation > footer { display:flex; align-items:center; justify-content:space-between; gap:14px; padding:9px 11px; border-top:1px solid rgba(181,148,255,.11); }.hierarchy-physics-investigation > footer span { max-width:74%; color:#788e93; font-size:7px; line-height:1.45; }.hierarchy-physics-investigation > footer span b { display:block; margin-bottom:3px; color:#8f80af; font:6px var(--mono); text-transform:uppercase; }.hierarchy-physics-investigation > footer button { flex:0 0 auto; padding:7px 10px; border:1px solid rgba(181,148,255,.38); background:rgba(181,148,255,.08); color:#c3b4df; font:7px var(--mono); cursor:pointer; }
 .hierarchy-physics-transport > p { margin:9px 0 0; padding-top:9px; border-top:1px solid rgba(85,200,255,.09); color:#657d83; font-size:7px; line-height:1.5; }
 
 @media (max-width: 1100px) {

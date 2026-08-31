@@ -2,7 +2,9 @@ import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.j
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
 import { A2_SLICED_SIZE7_CANDIDATES } from "../../assets/a2-sliced-size7-candidates.js?v=20260828-320";
 import { buildHierarchyPhysicsTransport, HIERARCHY_TRANSPORT_STAGES }
-  from "./hierarchy-physics-transport.mjs?v=20260831-389";
+  from "./hierarchy-physics-transport.mjs?v=20260831-390";
+import { buildHierarchyPhysicsInvestigation }
+  from "./hierarchy-physics-investigation.mjs?v=20260831-390";
 
 const byId = (id) => document.getElementById(id);
 const A2_SLICED_SCALE3_OBSTRUCTIONS = A2_SLICED_SIZE7_CANDIDATES.filter((candidate) =>
@@ -32,7 +34,15 @@ const hierarchyPhysicsTransportSummary = byId("hierarchyPhysicsTransportSummary"
 const hierarchyPhysicsTransportMatrix = byId("hierarchyPhysicsTransportMatrix");
 const hierarchyPhysicsTransportDetail = byId("hierarchyPhysicsTransportDetail");
 const hierarchyPhysicsTransportBoundary = byId("hierarchyPhysicsTransportBoundary");
+const hierarchyPhysicsInvestigationState = byId("hierarchyPhysicsInvestigationState");
+const hierarchyPhysicsInvestigationScales = byId("hierarchyPhysicsInvestigationScales");
+const hierarchyPhysicsInvestigationQuestion = byId("hierarchyPhysicsInvestigationQuestion");
+const hierarchyPhysicsInvestigationFlow = byId("hierarchyPhysicsInvestigationFlow");
+const hierarchyPhysicsInvestigationGate = byId("hierarchyPhysicsInvestigationGate");
+const hierarchyPhysicsInvestigationRoute = byId("hierarchyPhysicsInvestigationRoute");
 let selectedHierarchyPhysicsChannel = "colored-geometry";
+let selectedHierarchyPhysicsStage = "macro";
+let activeHierarchyPhysicsInvestigation = null;
 
 const ICE_PORT_ARTIFACT = await fetch(new URL(
   "./ice-molecular-port-artifact.json?v=20260824-1", import.meta.url)).then((response) => {
@@ -878,7 +888,63 @@ function renderHierarchyPhysicsTransport(receiptId = "iqc-reencoding") {
   const boundaryCopy = document.createElement("p"); boundaryCopy.textContent = selected.boundary;
   boundary.append(boundaryLabel, boundaryCopy);
   hierarchyPhysicsTransportDetail.append(detailHeader, evidence, boundary);
+  renderHierarchyPhysicsInvestigation(audit.receiptId);
   hierarchyPhysicsTransportBoundary.textContent = `${audit.title} · ${audit.claimBoundary}`;
+}
+
+function renderHierarchyPhysicsInvestigation(receiptId) {
+  const plan = buildHierarchyPhysicsInvestigation(receiptId,
+    selectedHierarchyPhysicsChannel, selectedHierarchyPhysicsStage);
+  activeHierarchyPhysicsInvestigation = plan;
+  hierarchyPhysicsInvestigationState.className = plan.status;
+  hierarchyPhysicsInvestigationState.textContent = `${plan.stageShort} · ${plan.statusLabel}`;
+  hierarchyPhysicsInvestigationScales.replaceChildren(...HIERARCHY_TRANSPORT_STAGES.map((stage) => {
+    const button = document.createElement("button"); button.type = "button";
+    button.className = stage.id === plan.stageId ? "active" : "";
+    button.setAttribute("aria-pressed", String(stage.id === plan.stageId));
+    const transport = buildHierarchyPhysicsTransport(receiptId).rows
+      .find((row) => row.id === plan.channelId).stages
+      .find((candidate) => candidate.id === stage.id);
+    const small = document.createElement("small"); small.textContent = stage.short;
+    const strong = document.createElement("strong"); strong.textContent = transport.statusLabel;
+    button.append(small, strong);
+    button.addEventListener("click", () => {
+      selectedHierarchyPhysicsStage = stage.id;
+      renderHierarchyPhysicsInvestigation(receiptId);
+    });
+    return button;
+  }));
+  hierarchyPhysicsInvestigationQuestion.className = plan.status;
+  hierarchyPhysicsInvestigationQuestion.innerHTML = `<small>${plan.channelLabel} · ${plan.stageLabel}</small><strong>${plan.question}</strong><p>${plan.nextAction}</p><b>${plan.operator}</b>`;
+  const records = [
+    ["01", "required evidence", plan.evidence],
+    ["02", "geometric encoding", plan.encoding],
+    ["03", "sealed validation", plan.validation],
+    ["04", "execution hook", plan.execution],
+  ];
+  hierarchyPhysicsInvestigationFlow.replaceChildren(...records.flatMap(([index, label, copy], position) => {
+    const article = document.createElement("article");
+    const small = document.createElement("small"); small.textContent = index;
+    const strong = document.createElement("strong"); strong.textContent = label;
+    const paragraph = document.createElement("p"); paragraph.textContent = copy;
+    article.append(small, strong, paragraph);
+    if (position === records.length - 1) return [article];
+    const arrow = document.createElement("i"); arrow.textContent = "→"; arrow.setAttribute("aria-hidden", "true");
+    return [article, arrow];
+  }));
+  hierarchyPhysicsInvestigationGate.innerHTML = `<b>green gate</b>${plan.greenGate}`;
+  hierarchyPhysicsInvestigationRoute.textContent = `${plan.route.label} →`;
+}
+
+function routeToHierarchyPhysicsInvestigation() {
+  const plan = activeHierarchyPhysicsInvestigation;
+  if (!plan) return;
+  launchWorkflow(plan.route.scenario, plan.route.stage);
+  window.setTimeout(() => {
+    const focus = byId(plan.route.focusId);
+    focus?.scrollIntoView({ behavior: "smooth", block: "center" });
+    if (focus?.matches("select,button,input")) focus.focus({ preventScroll: true });
+  }, 180);
 }
 
 function renderTimeline() {
@@ -908,6 +974,7 @@ document.querySelectorAll("[data-anatomy]").forEach((button) => button.addEventL
 document.querySelectorAll("[data-physics]").forEach((button) => button.addEventListener("click", () => renderPhysics(button.dataset.physics)));
 hierarchyPhysicsTransportSelect.addEventListener("change", () =>
   renderHierarchyPhysicsTransport(hierarchyPhysicsTransportSelect.value));
+hierarchyPhysicsInvestigationRoute.addEventListener("click", routeToHierarchyPhysicsInvestigation);
 document.querySelectorAll("[data-ledger-filter]").forEach((button) => button.addEventListener("click", () => renderLedger(button.dataset.ledgerFilter)));
 methodLink.addEventListener("click", closeAtlas);
 document.addEventListener("keydown", (event) => { if (event.key === "Escape" && !atlas.hidden) closeAtlas(); });
