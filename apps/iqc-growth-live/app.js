@@ -94,11 +94,13 @@ import { buildFrozenKineticCompetition }
 import { enumerateDetachableLeafPlacements }
   from "./reversible-frontier-events.mjs?v=20260831-347";
 import { appendCommittedTransition }
-  from "./reversible-transition-lineage.mjs?v=20260831-349";
+  from "./reversible-transition-lineage.mjs?v=20260831-352";
 import { buildFiniteTransitionNetwork }
-  from "./finite-transition-network.mjs?v=20260831-351";
+  from "./finite-transition-network.mjs?v=20260831-352";
 import { auditCompetingObservedTransitionPaths }
-  from "./finite-transition-pathways.mjs?v=20260831-351";
+  from "./finite-transition-pathways.mjs?v=20260831-352";
+import { buildFiniteNucleationLandscape }
+  from "./finite-nucleation-landscape.mjs?v=20260831-352";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -627,6 +629,9 @@ const transitionNetworkState = $("transitionNetworkState");
 const transitionPathSource = $("transitionPathSource");
 const transitionPathTarget = $("transitionPathTarget");
 const transitionPathState = $("transitionPathState");
+const finiteNucleationBadge = $("finiteNucleationBadge");
+const finiteNucleationPlot = $("finiteNucleationPlot");
+const finiteNucleationState = $("finiteNucleationState");
 const actionBarrierResumeButton = $("actionBarrierResume");
 const actionBarrierCancelButton = $("actionBarrierCancel");
 const actionBarrierSummary = $("actionBarrierSummary");
@@ -1643,6 +1648,8 @@ let selectedTransitionNetworkCycleId = null;
 let selectedTransitionPathSourceSha256 = null;
 let selectedTransitionPathTargetSha256 = null;
 let latestFiniteTransitionPathwayAudit = null;
+let latestFiniteNucleationLandscape = buildFiniteNucleationLandscape(
+  latestFiniteTransitionNetworkAudit);
 let reversibleInversePairCount = 0;
 let lastExternalActionBarrierReceipt = null;
 let frontierCandidateKeys = new Set();
@@ -23418,6 +23425,8 @@ function registerCommittedReversibleTransition(checkpoint, candidateId, committe
     finalGeometrySha256: candidate.finalGeometrySha256,
     committedStateSha256,
     exactFinalGeometryReproduced: candidate.finalGeometrySha256 === committedStateSha256,
+    initialAtomCount: candidate.initialAtomCount,
+    finalAtomCount: candidate.finalAtomCount,
     barrierElectronVolt: barrier.barrierElectronVolt,
     barrierUncertaintyElectronVolt: barrier.uncertaintyElectronVolt,
     energyDeltaElectronVolt: barrier.energyDeltaElectronVolt,
@@ -23453,6 +23462,8 @@ function registerCommittedReversibleTransition(checkpoint, candidateId, committe
     selectedTransitionNetworkCycleId = latestFiniteTransitionNetworkAudit.cycles[0]?.cycleId || null;
   }
   latestFiniteTransitionPathwayAudit = currentObservedPathwayAudit();
+  latestFiniteNucleationLandscape = buildFiniteNucleationLandscape(
+    latestFiniteTransitionNetworkAudit);
   checkpoint.committedTransitionLineage = {
     transition: result.transition,
     inverseEventId: result.inverseEventId,
@@ -23460,6 +23471,7 @@ function registerCommittedReversibleTransition(checkpoint, candidateId, committe
     exactInversePairCount: result.exactInversePairCount,
     finiteTransitionNetwork: latestFiniteTransitionNetworkAudit,
     finiteTransitionPathway: latestFiniteTransitionPathwayAudit,
+    finiteNucleationLandscape: latestFiniteNucleationLandscape,
     targetUsed: false,
   };
   return checkpoint.committedTransitionLineage;
@@ -23503,6 +23515,66 @@ function conditionalWaitingText(pathway) {
   }
   return Number.isFinite(pathway.logConditionalSerialWaitingTimeSeconds)
     ? `ln τ=${pathway.logConditionalSerialWaitingTimeSeconds.toFixed(2)}` : "rate incomplete";
+}
+
+function renderFiniteNucleationLandscape() {
+  const audit = latestFiniteNucleationLandscape
+    || buildFiniteNucleationLandscape(latestFiniteTransitionNetworkAudit);
+  const svgNamespace = "http://www.w3.org/2000/svg";
+  const makeSvg = (name, attributes = {}) => {
+    const element = document.createElementNS(svgNamespace, name);
+    Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, String(value)));
+    return element;
+  };
+  finiteNucleationPlot.replaceChildren();
+  finiteNucleationBadge.textContent = !audit.evidenceAvailable ? "awaiting evidence"
+    : audit.criticalSizeCandidateObserved ? "interior maximum observed" : "finite profile only";
+  if (!audit.evidenceAvailable) {
+    const text = makeSvg("text", { x: 150, y: 76, "text-anchor": "middle", class: "empty" });
+    text.textContent = "ΔΩ(N) unavailable"; finiteNucleationPlot.append(text);
+    finiteNucleationState.textContent = "A connected component needs exact reversible state pairs, verified atom counts, and uncertainty-bearing ΔΩ under one external T,V,μ method.";
+    return;
+  }
+  const left = 35, right = 288, top = 14, bottom = 125;
+  const atomCounts = audit.states.map((state) => state.atomCount);
+  const omegaValues = audit.states.flatMap((state) =>
+    [state.relativeGrandPotentialElectronVolt - state.uncertaintyElectronVolt,
+      state.relativeGrandPotentialElectronVolt + state.uncertaintyElectronVolt]);
+  const minN = Math.min(...atomCounts); const maxN = Math.max(...atomCounts);
+  const minOmega = Math.min(0, ...omegaValues); const maxOmega = Math.max(0, ...omegaValues);
+  const x = (value) => left + (right - left) * (maxN === minN ? .5 : (value - minN) / (maxN - minN));
+  const y = (value) => bottom - (bottom - top) * (maxOmega === minOmega ? .5
+    : (value - minOmega) / (maxOmega - minOmega));
+  finiteNucleationPlot.append(makeSvg("line", { x1: left, y1: bottom, x2: right,
+    y2: bottom, class: "axis" }), makeSvg("line", { x1: left, y1: top, x2: left,
+    y2: bottom, class: "axis" }), makeSvg("line", { x1: left, y1: y(0), x2: right,
+    y2: y(0), class: "zero" }));
+  const polyline = makeSvg("polyline", { points: audit.states.map((state) =>
+    `${x(state.atomCount)},${y(state.relativeGrandPotentialElectronVolt)}`).join(" "),
+  class: audit.finiteProfileConsistencyPassed ? "profile" : "profile inconsistent" });
+  finiteNucleationPlot.append(polyline);
+  audit.states.forEach((state) => {
+    const cx = x(state.atomCount); const cy = y(state.relativeGrandPotentialElectronVolt);
+    finiteNucleationPlot.append(makeSvg("line", { x1: cx,
+      y1: y(state.relativeGrandPotentialElectronVolt - state.uncertaintyElectronVolt),
+      x2: cx, y2: y(state.relativeGrandPotentialElectronVolt + state.uncertaintyElectronVolt),
+      class: "uncertainty" }));
+    const circle = makeSvg("circle", { cx, cy, r: state.stateSha256 === audit.criticalStateSha256
+      ? 5 : 3.5, class: state.stateSha256 === audit.criticalStateSha256 ? "critical" : "state" });
+    const title = makeSvg("title");
+    title.textContent = `N=${state.atomCount} · ΔΩ=${state.relativeGrandPotentialElectronVolt.toFixed(5)} ± ${state.uncertaintyElectronVolt.toFixed(5)} eV · ${state.stateSha256}`;
+    circle.append(title); finiteNucleationPlot.append(circle);
+  });
+  [[left, bottom + 12, `N ${minN}`], [right, bottom + 12, `N ${maxN}`],
+    [left - 4, top + 3, `${maxOmega.toFixed(2)} eV`],
+    [left - 4, bottom, `${minOmega.toFixed(2)}`]].forEach(([tx, ty, label], index) => {
+    const text = makeSvg("text", { x: tx, y: ty,
+      "text-anchor": index === 1 ? "end" : index > 1 ? "end" : "start", class: "label" });
+    text.textContent = label; finiteNucleationPlot.append(text);
+  });
+  finiteNucleationState.textContent = audit.criticalSizeCandidateObserved
+    ? `Observed interior maximum at N=${audit.criticalAtomCount}: relative ΔΩ ${audit.observedFormationBarrierElectronVolt.toFixed(4)} eV at ${audit.temperatureKelvin} K. ${audit.finiteProfileConsistencyPassed ? "All retained edge closures pass 3σ." : "At least one edge contradicts the reconstructed profile."} This is a finite critical-size candidate, not a CNT fit or nucleation rate.`
+    : `${audit.states.length} exact states span N=${minN}–${maxN} at ${audit.temperatureKelvin} K; no interior maximum is observed. ${audit.finiteProfileConsistencyPassed ? "Edge closure is consistent within 3σ." : "The supplied edges are inconsistent."}`;
 }
 
 function renderFiniteTransitionNetwork() {
@@ -23601,6 +23673,7 @@ function renderFiniteTransitionNetwork() {
     : !primary
       ? "No finite-rate directed route connects the selected observed states."
       : `${primary.stepCount} steps · bottleneck ln k=${primary.bottleneckLogRatePerSecond.toFixed(2)} · path-conditional serial τ ${conditionalWaitingText(primary)}.${primary.kineticConditionsComparable ? " Common T + barrier method." : " Mixed or incomplete kinetic conditions: rate comparison is descriptive only."}${competing ? ` Distinct route: ${competing.stepCount} steps, bottleneck ln k=${competing.bottleneckLogRatePerSecond.toFixed(2)}.` : " No route surviving a primary-edge exclusion is observed."} This is not an MFPT or a complete mechanism.`;
+  renderFiniteNucleationLandscape();
 }
 
 function renderInverseTransitionLineage() {
@@ -23923,7 +23996,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
   const candidates = [...attachmentCandidates, ...detachmentCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-351",
+    generatedAt: new Date().toISOString(), buildId: "20260831-352",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -25348,6 +25421,8 @@ function initializeOffLatticeSearch() {
   selectedTransitionPathSourceSha256 = null;
   selectedTransitionPathTargetSha256 = null;
   latestFiniteTransitionPathwayAudit = null;
+  latestFiniteNucleationLandscape = buildFiniteNucleationLandscape(
+    latestFiniteTransitionNetworkAudit);
   reversibleInversePairCount = 0;
   lastPolicyComparison = null;
   policyComparisonHistory = [];
@@ -28151,6 +28226,8 @@ function resetCounters() {
   selectedTransitionPathSourceSha256 = null;
   selectedTransitionPathTargetSha256 = null;
   latestFiniteTransitionPathwayAudit = null;
+  latestFiniteNucleationLandscape = buildFiniteNucleationLandscape(
+    latestFiniteTransitionNetworkAudit);
   reversibleInversePairCount = 0;
   lastPolicyComparison = null;
   policyComparisonHistory = [];
@@ -30705,6 +30782,8 @@ function physicsTranslationRecords(leap = null) {
     ?.finiteTransitionNetwork || latestFiniteTransitionNetworkAudit || null;
   const transitionPathwayReceipt = leap?.actionBarrierCheckpoint?.committedTransitionLineage
     ?.finiteTransitionPathway || latestFiniteTransitionPathwayAudit || null;
+  const nucleationLandscapeReceipt = leap?.actionBarrierCheckpoint?.committedTransitionLineage
+    ?.finiteNucleationLandscape || latestFiniteNucleationLandscape || null;
   return [
     { id: "hypothesis-separation", process: "controlled separation of correlated geometry-encoded ranking hypotheses",
       status: hypothesisSeparationExperiment ? "soft" : "open",
@@ -31117,6 +31196,21 @@ function physicsTranslationRecords(leap = null) {
         ? `Path-conditional serial waiting time ${conditionalWaitingText(transitionPathwayReceipt.primary)}; ${transitionPathwayReceipt.primary.grandPotentialEvidenceComplete ? `summed ΔΩ ${inverseResidualText(transitionPathwayReceipt.primary.grandPotentialDeltaElectronVolt)}` : "ΔΩ evidence incomplete"}.`
         : "No pathway audit is available.",
       boundary: "The route maximizes the slowest supplied rate only within observed exact edges, and quantitative cross-edge comparison requires common temperature and barrier settings. A competing route differs by at least one excluded primary edge but need not be fully edge-disjoint. Its serial waiting time conditions on traversing that route without branching or recrossing; it is not a committor, transition-path ensemble, global fastest mechanism, mean first-passage time, or proof of mechanism completeness." },
+    { id: "finite-nucleation-landscape", process: "finite nucleus-size grand-potential profile",
+      status: nucleationLandscapeReceipt?.criticalSizeCandidateObserved
+        && nucleationLandscapeReceipt?.finiteProfileConsistencyPassed ? "validated"
+        : nucleationLandscapeReceipt?.evidenceAvailable ? "observed" : "unavailable",
+      role: nucleationLandscapeReceipt?.evidenceAvailable
+        ? "relative ΔΩ reconstruction over exact reversible states" : "requires reversible external T,V,μ evidence",
+      encoding: nucleationLandscapeReceipt?.evidenceAvailable
+        ? `${nucleationLandscapeReceipt.states.length} exact states; N=${nucleationLandscapeReceipt.states[0].atomCount}–${nucleationLandscapeReceipt.states.at(-1).atomCount}; ${nucleationLandscapeReceipt.temperatureKelvin} K; ${nucleationLandscapeReceipt.edges.length} uncertainty-audited edges`
+        : "no connected exact-state component with compatible atom counts and ΔΩ",
+      evidence: nucleationLandscapeReceipt?.criticalSizeCandidateObserved
+        ? `Interior observed maximum N=${nucleationLandscapeReceipt.criticalAtomCount}, relative ΔΩ ${nucleationLandscapeReceipt.observedFormationBarrierElectronVolt.toFixed(4)} eV; edge consistency ${nucleationLandscapeReceipt.finiteProfileConsistencyPassed ? "passed" : "contradicted"}.`
+        : nucleationLandscapeReceipt?.evidenceAvailable
+          ? `Finite profile reconstructed; no interior maximum observed. Edge consistency ${nucleationLandscapeReceipt.finiteProfileConsistencyPassed ? "passed" : "contradicted"}.`
+          : "No finite grand-potential profile is available.",
+      boundary: "This is one relative finite-component ΔΩ(N) profile. An interior maximum is only a critical-size candidate. No surface/interfacial free energy, bulk driving force, CNT fit, shape ensemble, Zeldovich factor, nucleation rate, or macroscopic phase stability is inferred." },
     { id: "kinetics", process: "activation, diffusion, heat flow, and elapsed time", status: activeArrivalPathWeight() > 0 ? "soft" : "open", role: activeArrivalPathWeight() > 0 ? "geometric accessibility proxy" : "not modeled",
       encoding: activeArrivalPathWeight() > 0
         ? `${arrivalPathLabel()}; ${arrivalPathMode === "free-volume" ? "5 routes × " : ""}9 swept-clearance samples over 2dₙₙ for emitted sites only, w=${activeArrivalPathWeight().toFixed(2)}`

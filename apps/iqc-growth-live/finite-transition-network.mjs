@@ -1,5 +1,5 @@
 import { auditMicroscopicInversePair, normalizedCommittedTransition }
-  from "./reversible-transition-lineage.mjs";
+  from "./reversible-transition-lineage.mjs?v=20260831-352";
 
 const BOLTZMANN_ELECTRON_VOLT_PER_KELVIN = 8.617333262145e-5;
 
@@ -74,6 +74,8 @@ export function buildFiniteTransitionNetwork(rawHistory) {
     eventId: record.eventId,
     candidateId: record.candidateId,
     eventDirection: record.eventDirection,
+    initialAtomCount: record.initialAtomCount,
+    finalAtomCount: record.finalAtomCount,
     logRatePerSecond: record.logRatePerSecond,
     logRateUncertainty: rateLogUncertainty(record),
     barrierElectronVolt: record.barrierElectronVolt,

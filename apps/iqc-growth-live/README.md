@@ -1,5 +1,21 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 352 · finite nucleation grand-potential profile
+
+Exact committed states now retain atom counts independently verified while the
+candidate's initial and final colored geometries are hashed. When a connected
+set of reversible edges carries complete external `T,V,μ` evidence under one
+method, the portal reconstructs relative grand potential versus exact atom
+count. Every edge is checked against the reconstructed profile with propagated
+uncertainty, and the live plot shows state uncertainties and contradictory
+closures rather than smoothing them away.
+
+An interior observed maximum is highlighted as a **finite critical-size
+candidate**. It is not automatically a classical nucleation barrier. The portal
+does not infer surface or interfacial free energy, bulk driving force, nucleus
+shape statistics, a CNT fit, Zeldovich factor, attachment rate, nucleation rate,
+or macroscopic phase stability from this finite state component.
+
 ## Build 351 · observed competing-pathway microscope
 
 The exact-state graph now exposes its directed, method-bound kinetic edges to a

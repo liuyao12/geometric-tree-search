@@ -7,6 +7,7 @@ const sha = (letter) => letter.repeat(64);
 const states = { A: sha("a"), B: sha("b"), C: sha("c") };
 const energies = { A: 0, B: .12, C: -.04 };
 const grand = { A: 0, B: .08, C: -.03 };
+const counts = { A: 10, B: 11, C: 12 };
 const transfer = { "A->B": { Na: 1 }, "B->A": { Na: -1 },
   "B->C": { Na: 1 }, "C->B": { Na: -1 },
   "C->A": { Na: -2 }, "A->C": { Na: 2 } };
@@ -24,6 +25,7 @@ function transition(from, to, index) {
     eventDirection: index % 2 ? "detach" : "attach",
     initialGeometrySha256: states[from], finalGeometrySha256: states[to],
     committedStateSha256: states[to], exactFinalGeometryReproduced: true,
+    initialAtomCount: counts[from], finalAtomCount: counts[to],
     barrierElectronVolt: barrier, barrierUncertaintyElectronVolt: .001,
     energyDeltaElectronVolt: energyDelta, energyDeltaUncertaintyElectronVolt: .001,
     attemptFrequencyPerSecond: Math.exp(logRate + barrier / kbt),

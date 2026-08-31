@@ -78,6 +78,20 @@ export function normalizedCommittedTransition(raw) {
   }
   const speciesDelta = Object.fromEntries(rawSpeciesDelta
     .sort(([first], [second]) => first.localeCompare(second)));
+  const initialAtomCount = raw.initialAtomCount == null ? null
+    : optionalFinite(raw.initialAtomCount, "initial atom count", { nonnegative: true });
+  const finalAtomCount = raw.finalAtomCount == null ? null
+    : optionalFinite(raw.finalAtomCount, "final atom count", { nonnegative: true });
+  if ((initialAtomCount == null) !== (finalAtomCount == null)
+      || (initialAtomCount != null && (!Number.isInteger(initialAtomCount)
+        || !Number.isInteger(finalAtomCount)))) {
+    throw new Error("initial and final atom counts must be supplied together as nonnegative integers");
+  }
+  if (initialAtomCount != null && Object.keys(speciesDelta).length
+      && finalAtomCount - initialAtomCount
+        !== Object.values(speciesDelta).reduce((sum, delta) => sum + delta, 0)) {
+    throw new Error("atom-count change must equal the summed species transfer");
+  }
   if (thermodynamicFieldCount && !Object.keys(speciesDelta).length) {
     throw new Error("grand-canonical transition evidence needs a nonempty integer species delta");
   }
@@ -107,6 +121,8 @@ export function normalizedCommittedTransition(raw) {
     prefactorSettingsSha256: raw.prefactorSettingsSha256 == null ? null
       : requiredSha(raw.prefactorSettingsSha256, "prefactor settings SHA-256"),
     speciesDelta,
+    initialAtomCount,
+    finalAtomCount,
     ...thermodynamicFields,
     targetUsed: false,
   };
