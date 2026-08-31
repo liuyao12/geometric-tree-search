@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Geometrically Constrained Tree Search I — GCTS</title>
-  <link rel="stylesheet" href="style.css?v=20260829-title-byline">
+  <link rel="stylesheet" href="style.css?v=20260831-marking-radios">
   <script>
     window.MathJax = {
       tex: {
@@ -51,8 +51,8 @@
                       <div class="toolbar-row toolbar-toggle-row">
                         <label class="toolbar-toggle">
         <input type="checkbox" id="turtle-marking-rules"> Tiling with marking</label>
-                        <label class="toolbar-toggle">
-        <input type="checkbox" id="turtle-marking-rank" checked=""> <span id="turtle-marking-rank-label">rank 3</span></label>
+                        <span class="toolbar-toggle marking-rank-control" id="turtle-marking-rank-control" role="radiogroup" aria-label="Marking rank" hidden="">
+        rank <label><input type="radio" name="turtle-marking-rank" value="1"> 1</label><label><input type="radio" name="turtle-marking-rank" value="3" checked=""> 3</label></span>
                         <label class="toolbar-toggle mark-extension-control" id="turtle-mark-extension-control" hidden="">mark reach <input type="number" id="turtle-mark-extension" min="0" max="9" step="1" value="1" inputmode="numeric" aria-label="Marking reach in lattice steps">
         </label>
                         <label class="toolbar-toggle toolbar-toggle-right">
@@ -131,8 +131,8 @@
       const resetButton = document.getElementById('turtle-reset');
       const markingsButton = document.getElementById('turtle-markings');
       const markingRulesToggle = document.getElementById('turtle-marking-rules');
-      const markingRankToggle = document.getElementById('turtle-marking-rank');
-      const markingRankLabel = document.getElementById('turtle-marking-rank-label');
+      const markingRankControl = document.getElementById('turtle-marking-rank-control');
+      const markingRankInputs = Array.from(document.querySelectorAll('input[name="turtle-marking-rank"]'));
       const markExtensionControl = document.getElementById('turtle-mark-extension-control');
       const markExtensionInput = document.getElementById('turtle-mark-extension');
       const latticeToggle = document.getElementById('turtle-lattice');
@@ -182,7 +182,7 @@
       const center = rawTurtle.reduce((sum, point) => ({ x: sum.x + point.x, y: sum.y + point.y }), { x: 0, y: 0 });
       center.x /= rawTurtle.length;
       center.y /= rawTurtle.length;
-      let markingRank = markingRankToggle?.checked ? 3 : 1;
+      let markingRank = selectedMarkingRank();
       let markingExtension = normalizedMarkingExtension();
       let orientations = buildOrientations(markingExtension, markingRank);
       // This seed orientation keeps the marked frontier live, so Start tiling can show a second tile immediately.
@@ -1401,6 +1401,31 @@
         ctx.restore();
       }
 
+      function drawExteriorMarkingPoints(placement) {
+        const occupancyKeys = new Set(placement.occupancy.map(item => key3(item.point)));
+        const exterior = new Map();
+        placement.markings.forEach(entry => {
+          if (entry.value === 0 || occupancyKeys.has(key3(entry.point))) return;
+          exterior.set(markingKey(entry), entry);
+        });
+        if (!exterior.size) return;
+        ctx.save();
+        exterior.forEach(entry => {
+          const point = projectA2(entry.point);
+          const screen = worldToScreen(point.x, point.y);
+          ctx.beginPath();
+          ctx.arc(screen.x, screen.y, Math.max(2.2, 3.2 * scale), 0, Math.PI * 2);
+          ctx.fillStyle = markingRank === 1
+            ? '#707875'
+            : entry.value > 0 ? markValueColors.positive : markValueColors.negative;
+          ctx.strokeStyle = 'rgba(255, 255, 255, 0.92)';
+          ctx.lineWidth = Math.max(0.65, 1.05 * scale);
+          ctx.fill();
+          ctx.stroke();
+        });
+        ctx.restore();
+      }
+
       function drawTurtle(placement, index, options = {}) {
         tracePolygon(placement.points);
         if (options.ghost) {
@@ -1529,7 +1554,10 @@
         if (latticeToggle.checked) drawGridLines(rect);
         const visible = visiblePlacements();
         visible.forEach(drawTurtle);
-        if (showMarkings) visible.forEach(drawMarkings);
+        if (showMarkings) {
+          visible.forEach(drawMarkings);
+          visible.forEach(drawExteriorMarkingPoints);
+        }
         if (trialGhost) drawTurtle(trialGhost.placement, shownTiles, { ghost: true, valid: trialGhost.valid });
         const sums = visibleSums();
         refreshHoveredPoint(sums);
@@ -1581,6 +1609,7 @@
       function updateMarkingButton() {
         markingsButton.textContent = showMarkings ? 'Hide marking' : 'Show marking';
         markingsButton.setAttribute('aria-pressed', String(showMarkings));
+        updateMarkingRankControl();
         if (hoveredPoint && hoverReadout) hoverReadout.textContent = hoverLinesForPoint(hoveredPoint).join('; ');
       }
 
@@ -1588,15 +1617,19 @@
         if (markExtensionControl) markExtensionControl.hidden = !markingRulesToggle.checked;
       }
 
-      function updateMarkingRankToggle() {
-        if (markingRankToggle) markingRankToggle.checked = markingRank === 3;
-        if (markingRankLabel) markingRankLabel.textContent = `rank ${markingRank}`;
+      function selectedMarkingRank() {
+        return Number(markingRankInputs.find(input => input.checked)?.value) === 1 ? 1 : 3;
+      }
+
+      function updateMarkingRankControl() {
+        markingRankInputs.forEach(input => { input.checked = Number(input.value) === markingRank; });
+        if (markingRankControl) markingRankControl.hidden = !showMarkings;
       }
 
       function resetTilingForMarkingExtension() {
         stopTiling();
         liveSearchIterator?.cancel?.();
-        markingRank = markingRankToggle?.checked ? 3 : 1;
+        markingRank = selectedMarkingRank();
         markingExtension = normalizedMarkingExtension();
         orientations = buildOrientations(markingExtension, markingRank);
         const seed = makeSeedPlacement();
@@ -1613,7 +1646,7 @@
         statusText = `rank-${markingRank} marking · reach ${markingExtension} lattice step${markingExtension === 1 ? '' : 's'}`;
         hasStartedTiling = false;
         startButton.textContent = 'Start tiling';
-        updateMarkingRankToggle();
+        updateMarkingRankControl();
         centerSeedView();
         draw();
       }
@@ -1635,7 +1668,7 @@
           markingRulesToggle.checked = false;
           tilingRunUsesMarking = false;
           markingRank = stage.markingRank;
-          updateMarkingRankToggle();
+          updateMarkingRankControl();
           if (markExtensionInput) markExtensionInput.value = '1';
           markingExtension = 1;
           orientations = buildOrientations(markingExtension, markingRank);
@@ -1671,7 +1704,7 @@
         }
         if (typeof stage.markingRank === 'number') {
           markingRank = stage.markingRank;
-          updateMarkingRankToggle();
+          updateMarkingRankControl();
           orientations = buildOrientations(markingExtension, markingRank);
         }
         shownTiles = stage.tiles;
@@ -2042,15 +2075,15 @@
         updateMarkingButton();
         draw();
       });
-      markingRankToggle?.addEventListener('change', () => {
-        markingRank = markingRankToggle.checked ? 3 : 1;
-        showMarkings = markingRulesToggle.checked || showMarkings;
+      markingRankInputs.forEach(input => input.addEventListener('change', () => {
+        if (!input.checked) return;
+        markingRank = selectedMarkingRank();
         resetTilingForMarkingExtension();
         if (stageLabel) stageLabel.textContent = `Stage: rank-${markingRank} marking selected`;
         if (stageNote) stageNote.textContent = markingRulesToggle.checked
           ? `The restarted search will enforce the rank-${markingRank} marking.`
           : `The next marked search will enforce the rank-${markingRank} marking.`;
-      });
+      }));
       markExtensionInput?.addEventListener('change', resetTilingForMarkingExtension);
       markExtensionInput?.addEventListener('input', () => {
         const next = normalizedMarkingExtension();
@@ -2100,7 +2133,7 @@
         syncDemoStageToScroll();
       }, { passive: true });
       setDemoStage('intro');
-      updateMarkingRankToggle();
+      updateMarkingRankControl();
       updateMarkExtensionControl();
       resizeCanvas();
       syncDemoStageToScroll();
