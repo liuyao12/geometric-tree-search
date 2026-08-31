@@ -341,8 +341,12 @@ three-copy scales and clusters of four or more remain open at this stage. A long
 determinant-15 quotient campaign then finds a replayed 9-tile period for
 `a2sa_10_36194`; its quotient induces a replayed scale-two 8-cluster
 substitution with 72 atomic tile placements. For each of the other two
-leaders, 55 of 85 proper-A₂ quotient orbits are exact-negative and 30 remain
-node-capped. Complete four-copy substitution screens at scale 2 now exclude
+leaders, a selective ten-million-node retry closes most of the formerly hard
+proper-A₂ quotient orbits: `36141` now has 81 of 85 exact-negative with 4
+remaining caps (385 of 403 HNFs excluded), while `35323` has 77 of 85
+exact-negative with 8 caps (367 of 403 HNFs excluded). The committed strongest-
+receipt archive independently preserves all 214 selected orbit records. Complete
+four-copy substitution screens at scale 2 now exclude
 both symmetry models: 82,215 proper and 406,809 reflected parents for
 `a2sa_10_35323`, and 68,838 proper plus 377,876 reflected parents for
 `a2sa_10_36141`, with a replayed atomic obstruction for every parent.

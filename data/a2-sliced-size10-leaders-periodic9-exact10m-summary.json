@@ -1,0 +1,4496 @@
+{
+  "campaign": "a2_sliced_size10_periodic9_exact10m_retry",
+  "copies": 9,
+  "exact_node_limit_per_orbit": 2000000,
+  "exact_node_limits_per_orbit": [
+    2000000,
+    10000000
+  ],
+  "classification": "periodic",
+  "periodic_certificates": [
+    {
+      "id": "a2sa_10_36194",
+      "orbit": 43
+    }
+  ],
+  "candidates": [
+    {
+      "id": "a2sa_10_36141",
+      "classification": "bounded_inconclusive",
+      "periodic_orbit": null,
+      "orbit_total": 85,
+      "orbit_receipts": 85,
+      "exact_negative_orbits": 81,
+      "node_capped_orbits": 4,
+      "hnf_total": 403,
+      "hnfs_exactly_excluded": 385,
+      "exact_multicover_nodes": 225891768,
+      "exact_multicover_failed_states": 225350928,
+      "milliseconds": 10467436,
+      "receipts": [
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits000-001.ndjson",
+          "sha256": "44df707c9bbbf29461b9bbd745d6437b3b657d2e8646133c4950b234f07a04ba",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits000-001.ndjson",
+              "sha256": "44df707c9bbbf29461b9bbd745d6437b3b657d2e8646133c4950b234f07a04ba",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 95127
+            }
+          ],
+          "orbit_range": [
+            0,
+            1
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 95127,
+          "milliseconds": 9562
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits001-002.ndjson",
+          "sha256": "398538fd4a1b30d8155af91cece4e24450be20ef78b8c6fe466ac21c096a556d",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits001-002.ndjson",
+              "sha256": "398538fd4a1b30d8155af91cece4e24450be20ef78b8c6fe466ac21c096a556d",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 74005
+            }
+          ],
+          "orbit_range": [
+            1,
+            2
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 74005,
+          "milliseconds": 7670
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits002-003.ndjson",
+          "sha256": "d5b565ae9271dee5f85d9ad67620360c9736f906ef0a21fe02f7c541a78292d6",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits002-003.ndjson",
+              "sha256": "d5b565ae9271dee5f85d9ad67620360c9736f906ef0a21fe02f7c541a78292d6",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 38258
+            }
+          ],
+          "orbit_range": [
+            2,
+            3
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 38258,
+          "milliseconds": 3648
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits003-004.ndjson",
+          "sha256": "4a3cb0831fdb5515eb8a16c413d3be7bc178bdd30ea017a8ad88d3e8124270c6",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits003-004.ndjson",
+              "sha256": "4a3cb0831fdb5515eb8a16c413d3be7bc178bdd30ea017a8ad88d3e8124270c6",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 6801
+            }
+          ],
+          "orbit_range": [
+            3,
+            4
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 6801,
+          "milliseconds": 2043
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits004-005.ndjson",
+          "sha256": "50367a99b4e19f73157a741138108de59e0bb93b68e7db545d8ccb0cf64ec141",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits004-005.ndjson",
+              "sha256": "50367a99b4e19f73157a741138108de59e0bb93b68e7db545d8ccb0cf64ec141",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 137107
+            }
+          ],
+          "orbit_range": [
+            4,
+            5
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 137107,
+          "milliseconds": 17332
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits005-006.ndjson",
+          "sha256": "ce7724aa4dbacc556d6d9d3071e57f3b6e12d24bc82343f68f6d6df796fa1cee",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits005-006.ndjson",
+              "sha256": "ce7724aa4dbacc556d6d9d3071e57f3b6e12d24bc82343f68f6d6df796fa1cee",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 82961
+            }
+          ],
+          "orbit_range": [
+            5,
+            6
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 82961,
+          "milliseconds": 9840
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits006-007.ndjson",
+          "sha256": "a8c37d0531a8667213cbbb225ebd0281728b222e7278db31646d3a29313018a0",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits006-007.ndjson",
+              "sha256": "a8c37d0531a8667213cbbb225ebd0281728b222e7278db31646d3a29313018a0",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 4754
+            }
+          ],
+          "orbit_range": [
+            6,
+            7
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 4754,
+          "milliseconds": 812
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits007-008.ndjson",
+          "sha256": "db27abe6e7b52a02470cc632f50351ba33dff7e8c70c8f27725436650cc8e271",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits007-008.ndjson",
+              "sha256": "f40ec92cc722159176204472f92b68cccd51aed9fbe1c9edee704db9e71deccf",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits007-008.ndjson",
+              "sha256": "db27abe6e7b52a02470cc632f50351ba33dff7e8c70c8f27725436650cc8e271",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 8794328
+            }
+          ],
+          "orbit_range": [
+            7,
+            8
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 8794328,
+          "milliseconds": 409330
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits008-009.ndjson",
+          "sha256": "f98f22799b9cbeaad85418a8d6d22394ea23a9ce0b2f51c98934fbb81df49e91",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits008-009.ndjson",
+              "sha256": "f98f22799b9cbeaad85418a8d6d22394ea23a9ce0b2f51c98934fbb81df49e91",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 1
+            }
+          ],
+          "orbit_range": [
+            8,
+            9
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1,
+          "milliseconds": 397
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits009-010.ndjson",
+          "sha256": "207ea3c2f0d85c41d3b6a335686d57479d8b89ce3cde00c88db0783f892b59a0",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits009-010.ndjson",
+              "sha256": "16da24b2cc5cc2e273dd5ef16531833ee5d70f0b0caad803a7e8f5b14865c32b",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits009-010.ndjson",
+              "sha256": "207ea3c2f0d85c41d3b6a335686d57479d8b89ce3cde00c88db0783f892b59a0",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 7835483
+            }
+          ],
+          "orbit_range": [
+            9,
+            10
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 7835483,
+          "milliseconds": 534107
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits010-011.ndjson",
+          "sha256": "5b1784161978ed83debcdaea897333a727d45334f2205634b54994ac62aac642",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits010-011.ndjson",
+              "sha256": "5b1784161978ed83debcdaea897333a727d45334f2205634b54994ac62aac642",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 6805
+            }
+          ],
+          "orbit_range": [
+            10,
+            11
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 6805,
+          "milliseconds": 1196
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits011-012.ndjson",
+          "sha256": "b554a29a08f7bd68d2315efb386b031be14c4309325cb6a4258daadf97610580",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits011-012.ndjson",
+              "sha256": "b554a29a08f7bd68d2315efb386b031be14c4309325cb6a4258daadf97610580",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 106492
+            }
+          ],
+          "orbit_range": [
+            11,
+            12
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 106492,
+          "milliseconds": 12147
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits012-013.ndjson",
+          "sha256": "92c40cdc8711fe07f70a96d14c3be19b17e00c536ccfaf95e4ec5c234f04c6f3",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits012-013.ndjson",
+              "sha256": "92c40cdc8711fe07f70a96d14c3be19b17e00c536ccfaf95e4ec5c234f04c6f3",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 94794
+            }
+          ],
+          "orbit_range": [
+            12,
+            13
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 94794,
+          "milliseconds": 7390
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits013-014.ndjson",
+          "sha256": "40aba5e975840f552240d596a32e305cbc86750a442fe07d1fffd94b059518d2",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits013-014.ndjson",
+              "sha256": "40aba5e975840f552240d596a32e305cbc86750a442fe07d1fffd94b059518d2",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 10826
+            }
+          ],
+          "orbit_range": [
+            13,
+            14
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 10826,
+          "milliseconds": 1259
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits014-015.ndjson",
+          "sha256": "0db079348f83e952ba0c37d184272fede680c907f01765af63ee109c1a41a334",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits014-015.ndjson",
+              "sha256": "0db079348f83e952ba0c37d184272fede680c907f01765af63ee109c1a41a334",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 6200
+            }
+          ],
+          "orbit_range": [
+            14,
+            15
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 6200,
+          "milliseconds": 820
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits015-016.ndjson",
+          "sha256": "f6d50125dafb1d03e3cef5ae52b2b3e02b537d57edff0d15e24c760946631951",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits015-016.ndjson",
+              "sha256": "f6d50125dafb1d03e3cef5ae52b2b3e02b537d57edff0d15e24c760946631951",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 278237
+            }
+          ],
+          "orbit_range": [
+            15,
+            16
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 278237,
+          "milliseconds": 21140
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits016-017.ndjson",
+          "sha256": "4e0220e61d2ead077fde911a75d907c8c16d4c33f35e42bf52ac5f559d19ccdb",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits016-017.ndjson",
+              "sha256": "4e0220e61d2ead077fde911a75d907c8c16d4c33f35e42bf52ac5f559d19ccdb",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 7327
+            }
+          ],
+          "orbit_range": [
+            16,
+            17
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 7327,
+          "milliseconds": 1328
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits017-018.ndjson",
+          "sha256": "abb5282e4d1d584f61eda6ed2a4d5ca7016d59fabefbd100a29c746d515e0db9",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits017-018.ndjson",
+              "sha256": "1c2e09c8d92aafc83ce90153bc1c3e0a74ef7f746ea8ecd84b2f9d55627a1cb9",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits017-018.ndjson",
+              "sha256": "abb5282e4d1d584f61eda6ed2a4d5ca7016d59fabefbd100a29c746d515e0db9",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 10000001
+            }
+          ],
+          "orbit_range": [
+            17,
+            18
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 10000001,
+          "milliseconds": 372607
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits018-019.ndjson",
+          "sha256": "810e759f37e3d47b95d25d578b14c6451954f17a91f0568f19e40552d9a4cf58",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits018-019.ndjson",
+              "sha256": "810e759f37e3d47b95d25d578b14c6451954f17a91f0568f19e40552d9a4cf58",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 1
+            }
+          ],
+          "orbit_range": [
+            18,
+            19
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1,
+          "milliseconds": 362
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits019-020.ndjson",
+          "sha256": "4c5388b231762922b6d6493066c5740fad64a913bfb27c9de7712ec2efc12824",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits019-020.ndjson",
+              "sha256": "72929a67978d2e733ffd60461b4127d3781a0d25d7f185a87e633b7a52ca882b",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits019-020.ndjson",
+              "sha256": "4c5388b231762922b6d6493066c5740fad64a913bfb27c9de7712ec2efc12824",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 8003556
+            }
+          ],
+          "orbit_range": [
+            19,
+            20
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 8003556,
+          "milliseconds": 488960
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits020-021.ndjson",
+          "sha256": "1599ca31363c6df8a4cfe5c519a0a00bbba7e44d16bdf2cd0924a8572914ff48",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits020-021.ndjson",
+              "sha256": "fe6db559c2f710af97cfd82740c4bfc82685423a85dfbb70812245d2f1c2f060",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits020-021.ndjson",
+              "sha256": "1599ca31363c6df8a4cfe5c519a0a00bbba7e44d16bdf2cd0924a8572914ff48",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 9494657
+            }
+          ],
+          "orbit_range": [
+            20,
+            21
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 9494657,
+          "milliseconds": 257483
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits021-022.ndjson",
+          "sha256": "e5e0a89a6049d607604cd4afc4c35b310e1be72cbcb4f94dd85a3dff1ff71922",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits021-022.ndjson",
+              "sha256": "e5e0a89a6049d607604cd4afc4c35b310e1be72cbcb4f94dd85a3dff1ff71922",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 1
+            }
+          ],
+          "orbit_range": [
+            21,
+            22
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1,
+          "milliseconds": 317
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits022-023.ndjson",
+          "sha256": "495e88cc3bb46f2605b1754b4528c685975a7893b24f4e9f7f12507158ef4710",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits022-023.ndjson",
+              "sha256": "495e88cc3bb46f2605b1754b4528c685975a7893b24f4e9f7f12507158ef4710",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 66573
+            }
+          ],
+          "orbit_range": [
+            22,
+            23
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 66573,
+          "milliseconds": 5486
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits023-024.ndjson",
+          "sha256": "468e738c9b5e251a67817855a103ea71b7e892f807d8934f18359a1ce61b3c8c",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits023-024.ndjson",
+              "sha256": "12010be619d96b4c902d5fe3bcd14ee2c95be97f433313911a829dbfaf6fb8fa",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits023-024.ndjson",
+              "sha256": "468e738c9b5e251a67817855a103ea71b7e892f807d8934f18359a1ce61b3c8c",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 3613427
+            }
+          ],
+          "orbit_range": [
+            23,
+            24
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 3613427,
+          "milliseconds": 118736
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits024-025.ndjson",
+          "sha256": "f77b9de2cdd98bf09d1e6c9710a417af9a65b2058fc034fa761f24afe795be92",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits024-025.ndjson",
+              "sha256": "f77b9de2cdd98bf09d1e6c9710a417af9a65b2058fc034fa761f24afe795be92",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 102126
+            }
+          ],
+          "orbit_range": [
+            24,
+            25
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 102126,
+          "milliseconds": 6608
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits025-026.ndjson",
+          "sha256": "cf7fe3deba63ee55e0e779ee3bb680482299c59bcccb25f4e71809d798d1a7b5",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits025-026.ndjson",
+              "sha256": "cf7fe3deba63ee55e0e779ee3bb680482299c59bcccb25f4e71809d798d1a7b5",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 22991
+            }
+          ],
+          "orbit_range": [
+            25,
+            26
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 22991,
+          "milliseconds": 2007
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits026-027.ndjson",
+          "sha256": "de119925c6aa70cb08d6290355393a4ff278c1c12b1626f1953e357d8dd811cf",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits026-027.ndjson",
+              "sha256": "913ffa915edc98e156814cb22d4c4c3dcfa4c785c143076790d36c53cc20445f",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits026-027.ndjson",
+              "sha256": "de119925c6aa70cb08d6290355393a4ff278c1c12b1626f1953e357d8dd811cf",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 2551366
+            }
+          ],
+          "orbit_range": [
+            26,
+            27
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 2551366,
+          "milliseconds": 129508
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits027-028.ndjson",
+          "sha256": "f17646b04d9f385225062aa62e383e72c695dd0bae3d1004872fa573105a6295",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits027-028.ndjson",
+              "sha256": "f17646b04d9f385225062aa62e383e72c695dd0bae3d1004872fa573105a6295",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 783311
+            }
+          ],
+          "orbit_range": [
+            27,
+            28
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 783311,
+          "milliseconds": 35774
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits028-029.ndjson",
+          "sha256": "66909b61993461e50d30294e2a724c6b28660e1903d086c288f4fae1f4c02253",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits028-029.ndjson",
+              "sha256": "66909b61993461e50d30294e2a724c6b28660e1903d086c288f4fae1f4c02253",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 1127610
+            }
+          ],
+          "orbit_range": [
+            28,
+            29
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1127610,
+          "milliseconds": 75651
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits029-030.ndjson",
+          "sha256": "c4701ac1554f0ba649fdfdd7d9b25edb89d046ac28b187d9bf99cbe5ece99e2f",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits029-030.ndjson",
+              "sha256": "c4701ac1554f0ba649fdfdd7d9b25edb89d046ac28b187d9bf99cbe5ece99e2f",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 263494
+            }
+          ],
+          "orbit_range": [
+            29,
+            30
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 263494,
+          "milliseconds": 20949
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits030-031.ndjson",
+          "sha256": "d3ceac0c65f6668291499eb53aaa10587dea4a181ae8d12cb2831ba9ffbb5ef6",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits030-031.ndjson",
+              "sha256": "805b6df44506ff8583b4fa758c2f72e46ecd5f778dd5bec6fe3acfffb042bbfa",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits030-031.ndjson",
+              "sha256": "d3ceac0c65f6668291499eb53aaa10587dea4a181ae8d12cb2831ba9ffbb5ef6",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 10000001
+            }
+          ],
+          "orbit_range": [
+            30,
+            31
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 10000001,
+          "milliseconds": 327895
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits031-032.ndjson",
+          "sha256": "83a60c056d32737204683044fd0b5ba933d2fa01a76cf4fe3783088ec9169854",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits031-032.ndjson",
+              "sha256": "d292603fcf4054c00ff22d98804a7b8ba85ae230fa4a2d2208e94b9825935f26",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits031-032.ndjson",
+              "sha256": "83a60c056d32737204683044fd0b5ba933d2fa01a76cf4fe3783088ec9169854",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 9786021
+            }
+          ],
+          "orbit_range": [
+            31,
+            32
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 9786021,
+          "milliseconds": 525482
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits032-033.ndjson",
+          "sha256": "abc5146d59d62e459ccbe5f44c3cd6a717571f847fb1335a15874918ce944415",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits032-033.ndjson",
+              "sha256": "abc5146d59d62e459ccbe5f44c3cd6a717571f847fb1335a15874918ce944415",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 2679
+            }
+          ],
+          "orbit_range": [
+            32,
+            33
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 2679,
+          "milliseconds": 460
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits033-034.ndjson",
+          "sha256": "b20efa40b292b84c8ac3463b2efe765c90439a2efe12900bd061c03499addd6e",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits033-034.ndjson",
+              "sha256": "c279bd7cfb544403cbc5ea9d68ecb4e915e38874e49f4791a8ddb9c987e1cef6",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits033-034.ndjson",
+              "sha256": "b20efa40b292b84c8ac3463b2efe765c90439a2efe12900bd061c03499addd6e",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 2250531
+            }
+          ],
+          "orbit_range": [
+            33,
+            34
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 2250531,
+          "milliseconds": 109468
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits034-035.ndjson",
+          "sha256": "62fc21cb7cfd69b06f98b0cc85ca9dc68b4b83d18784d131e73e3fa47d523449",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits034-035.ndjson",
+              "sha256": "a8e7c885c2123da5aff403807ea2cb728347a0e7b44f3c493a7f02162d95fa9a",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits034-035.ndjson",
+              "sha256": "62fc21cb7cfd69b06f98b0cc85ca9dc68b4b83d18784d131e73e3fa47d523449",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 6308263
+            }
+          ],
+          "orbit_range": [
+            34,
+            35
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 6308263,
+          "milliseconds": 293367
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits035-036.ndjson",
+          "sha256": "6aa07c1934b0b566fc1bcc2470d5bf38edd69b62b5cb27b11e2b42c5225e6950",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits035-036.ndjson",
+              "sha256": "63cc2052357b20b50bbbd51eac8f0c030156834613769aa749b13acdb4a466dd",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits035-036.ndjson",
+              "sha256": "6aa07c1934b0b566fc1bcc2470d5bf38edd69b62b5cb27b11e2b42c5225e6950",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 6374411
+            }
+          ],
+          "orbit_range": [
+            35,
+            36
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 6374411,
+          "milliseconds": 252727
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits036-037.ndjson",
+          "sha256": "37b24223eaed8634823eb84c7d9f5b7a806737d76fff52a46ab6338931725e1b",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits036-037.ndjson",
+              "sha256": "37b24223eaed8634823eb84c7d9f5b7a806737d76fff52a46ab6338931725e1b",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 1664809
+            }
+          ],
+          "orbit_range": [
+            36,
+            37
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1664809,
+          "milliseconds": 75839
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits037-038.ndjson",
+          "sha256": "fbc85f94aa51fee842a2fccbb2dc6c11f01f291a8341bff5ace561f47c1003ba",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits037-038.ndjson",
+              "sha256": "fc2e23b9b028d0707115f1aeb1ad5540485bb05d009b0d00b60003495636b16c",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits037-038.ndjson",
+              "sha256": "fbc85f94aa51fee842a2fccbb2dc6c11f01f291a8341bff5ace561f47c1003ba",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 5609346
+            }
+          ],
+          "orbit_range": [
+            37,
+            38
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 5609346,
+          "milliseconds": 199750
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits038-039.ndjson",
+          "sha256": "68ede6d3a44b24b93174bd7b8f622cb01560d5d836033e58d552f895854bad74",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits038-039.ndjson",
+              "sha256": "68ede6d3a44b24b93174bd7b8f622cb01560d5d836033e58d552f895854bad74",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 705017
+            }
+          ],
+          "orbit_range": [
+            38,
+            39
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 705017,
+          "milliseconds": 82876
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits039-040.ndjson",
+          "sha256": "115014f1d92f1a79dde70c6efbb61ecaa58ca55f894249fe02d8d2a7f1f13b03",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits039-040.ndjson",
+              "sha256": "115014f1d92f1a79dde70c6efbb61ecaa58ca55f894249fe02d8d2a7f1f13b03",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 491253
+            }
+          ],
+          "orbit_range": [
+            39,
+            40
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 491253,
+          "milliseconds": 45465
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits040-041.ndjson",
+          "sha256": "4de6b3178c5b751440ec65c5213946c113deb1ede73d927da534abefe40c4637",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits040-041.ndjson",
+              "sha256": "4de6b3178c5b751440ec65c5213946c113deb1ede73d927da534abefe40c4637",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 7379
+            }
+          ],
+          "orbit_range": [
+            40,
+            41
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 7379,
+          "milliseconds": 1207
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits041-042.ndjson",
+          "sha256": "9cf85b38606f8145d4ef8547659780899db24ce29cb8eed4758c40b58cba27d8",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits041-042.ndjson",
+              "sha256": "9cf85b38606f8145d4ef8547659780899db24ce29cb8eed4758c40b58cba27d8",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 709204
+            }
+          ],
+          "orbit_range": [
+            41,
+            42
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 709204,
+          "milliseconds": 69004
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits042-043.ndjson",
+          "sha256": "9523b5051931c6e3be0a145d90869e607f3b2962efe60ca75a62dddfebc02d32",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits042-043.ndjson",
+              "sha256": "9523b5051931c6e3be0a145d90869e607f3b2962efe60ca75a62dddfebc02d32",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 608892
+            }
+          ],
+          "orbit_range": [
+            42,
+            43
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 608892,
+          "milliseconds": 31940
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits043-044.ndjson",
+          "sha256": "d2b97fd9732e22c0e698ce8b6f760601a20450d77371ede161f9accdc3f3ab83",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits043-044.ndjson",
+              "sha256": "575d6f6eced01de840d251439ef2572290751b77eff9f216c89051c177aedcdf",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits043-044.ndjson",
+              "sha256": "d2b97fd9732e22c0e698ce8b6f760601a20450d77371ede161f9accdc3f3ab83",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 6799553
+            }
+          ],
+          "orbit_range": [
+            43,
+            44
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 6799553,
+          "milliseconds": 293416
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits044-045.ndjson",
+          "sha256": "e0ecaf50342f3be1d942a94434c38d0226abe89ef081d8736c15d467744fe993",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits044-045.ndjson",
+              "sha256": "e0ecaf50342f3be1d942a94434c38d0226abe89ef081d8736c15d467744fe993",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 324813
+            }
+          ],
+          "orbit_range": [
+            44,
+            45
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 324813,
+          "milliseconds": 27980
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits045-046.ndjson",
+          "sha256": "c4222eddd3f16f36ca2bd900fc8a7f2aba087e4473bc12d2dfa82a2ca44fb55c",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits045-046.ndjson",
+              "sha256": "c4222eddd3f16f36ca2bd900fc8a7f2aba087e4473bc12d2dfa82a2ca44fb55c",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 656789
+            }
+          ],
+          "orbit_range": [
+            45,
+            46
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 656789,
+          "milliseconds": 74878
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits046-047.ndjson",
+          "sha256": "da23740332c7e7b3ce94815c6d90aa20e9956c3917c05098ea5d3ab4ae6e0cac",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits046-047.ndjson",
+              "sha256": "da23740332c7e7b3ce94815c6d90aa20e9956c3917c05098ea5d3ab4ae6e0cac",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 332781
+            }
+          ],
+          "orbit_range": [
+            46,
+            47
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 332781,
+          "milliseconds": 22621
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits047-048.ndjson",
+          "sha256": "b642f887f45d1a3457df8b92b1cb19193da07f64b80e7f6d6a6ec15b8debfce0",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits047-048.ndjson",
+              "sha256": "e96ed14b6119394009cf295ea241cf3763613a56df6cadd77a6095fbbefa7235",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits047-048.ndjson",
+              "sha256": "b642f887f45d1a3457df8b92b1cb19193da07f64b80e7f6d6a6ec15b8debfce0",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 6371798
+            }
+          ],
+          "orbit_range": [
+            47,
+            48
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 6371798,
+          "milliseconds": 191405
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits048-049.ndjson",
+          "sha256": "4c5ccc5d738622672e57a5a6b397926abab9ad3669db1d7cbe743ad41bec6632",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits048-049.ndjson",
+              "sha256": "7d310d387fb4d3bb8a9e5d4adf8bd340c9831e779b48e3cd4151d50b86f584bd",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits048-049.ndjson",
+              "sha256": "4c5ccc5d738622672e57a5a6b397926abab9ad3669db1d7cbe743ad41bec6632",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 10000001
+            }
+          ],
+          "orbit_range": [
+            48,
+            49
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 10000001,
+          "milliseconds": 403808
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits049-050.ndjson",
+          "sha256": "29e21547c27e5a211fe4316d2579ee9e1b90ad392a638f88847ea0b9db8b016d",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits049-050.ndjson",
+              "sha256": "29e21547c27e5a211fe4316d2579ee9e1b90ad392a638f88847ea0b9db8b016d",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 1534354
+            }
+          ],
+          "orbit_range": [
+            49,
+            50
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1534354,
+          "milliseconds": 127041
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits050-051.ndjson",
+          "sha256": "a5a4f503d17b5ca8855a8fc9bc3a4230bf40c0c4b7a7c88090c613bdb2cd11d0",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits050-051.ndjson",
+              "sha256": "a5a4f503d17b5ca8855a8fc9bc3a4230bf40c0c4b7a7c88090c613bdb2cd11d0",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 19586
+            }
+          ],
+          "orbit_range": [
+            50,
+            51
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 19586,
+          "milliseconds": 1819
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits051-052.ndjson",
+          "sha256": "8578ed150ffab94c29aee722e4d5280e9a102611c3ee2d10bb86e155a3c5c32d",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits051-052.ndjson",
+              "sha256": "8578ed150ffab94c29aee722e4d5280e9a102611c3ee2d10bb86e155a3c5c32d",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 740923
+            }
+          ],
+          "orbit_range": [
+            51,
+            52
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 740923,
+          "milliseconds": 42822
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits052-053.ndjson",
+          "sha256": "7e8667626baf373234231eef178ffb940a70699e48b1ccf9d7aa186764770c6f",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits052-053.ndjson",
+              "sha256": "b1c31be1f404ec8299d96b0c13615c44d495ec037effaee71f3220362e27647c",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits052-053.ndjson",
+              "sha256": "7e8667626baf373234231eef178ffb940a70699e48b1ccf9d7aa186764770c6f",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 3998376
+            }
+          ],
+          "orbit_range": [
+            52,
+            53
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 3998376,
+          "milliseconds": 138952
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits053-054.ndjson",
+          "sha256": "32ba58bea50b25d29fe8aebd987f52ab158ce24b409dcb53abd9b36f19c889fc",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits053-054.ndjson",
+              "sha256": "392deb6f7049b0b11c3113c53e4c25ac16e4eb2c8d3331e6090168c55a860184",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits053-054.ndjson",
+              "sha256": "32ba58bea50b25d29fe8aebd987f52ab158ce24b409dcb53abd9b36f19c889fc",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 6425512
+            }
+          ],
+          "orbit_range": [
+            53,
+            54
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 6425512,
+          "milliseconds": 306132
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits054-055.ndjson",
+          "sha256": "3826004adb2eb4a45e9d1aa4215a2594096c2a2c0e642435531a6b9230c57fe2",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits054-055.ndjson",
+              "sha256": "3826004adb2eb4a45e9d1aa4215a2594096c2a2c0e642435531a6b9230c57fe2",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 673875
+            }
+          ],
+          "orbit_range": [
+            54,
+            55
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 673875,
+          "milliseconds": 46255
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits055-056.ndjson",
+          "sha256": "353ace416ef57607100911dfd264b8fc03e2b4198a3059dcf59db22e14b636ac",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits055-056.ndjson",
+              "sha256": "353ace416ef57607100911dfd264b8fc03e2b4198a3059dcf59db22e14b636ac",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 656853
+            }
+          ],
+          "orbit_range": [
+            55,
+            56
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 656853,
+          "milliseconds": 64063
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits056-057.ndjson",
+          "sha256": "7962430055c5aa285ab8d7a36d651db31eea581eb55e9b375eb92dc6c1cbc9d2",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits056-057.ndjson",
+              "sha256": "7962430055c5aa285ab8d7a36d651db31eea581eb55e9b375eb92dc6c1cbc9d2",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 1
+            }
+          ],
+          "orbit_range": [
+            56,
+            57
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1,
+          "milliseconds": 345
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits057-058.ndjson",
+          "sha256": "b81ded7ddf2ffb965509274c3d9e44f3f1879ea6e9fb654d4283e7f12199a021",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits057-058.ndjson",
+              "sha256": "8fdb2e46450cd2983ccf9a6da42fffd1c6f2b8d46ca1a71453ed27f00cf3c02e",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits057-058.ndjson",
+              "sha256": "b81ded7ddf2ffb965509274c3d9e44f3f1879ea6e9fb654d4283e7f12199a021",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 9880258
+            }
+          ],
+          "orbit_range": [
+            57,
+            58
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 9880258,
+          "milliseconds": 377018
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits058-059.ndjson",
+          "sha256": "b9559aeb2b4f3c8f2b4de0c7f7302891ddf1ab370347654d3e9ed96539a247bb",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits058-059.ndjson",
+              "sha256": "b9559aeb2b4f3c8f2b4de0c7f7302891ddf1ab370347654d3e9ed96539a247bb",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 1238856
+            }
+          ],
+          "orbit_range": [
+            58,
+            59
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1238856,
+          "milliseconds": 92119
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits059-060.ndjson",
+          "sha256": "c164160aa31a9bd3effbe5c7689c47232197e3bd55ecf0042d49a81105900468",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits059-060.ndjson",
+              "sha256": "3e2bc69facd789c867f94c8d6e016a2376c4d92cd6b72c23a6656b4ba27f4338",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits059-060.ndjson",
+              "sha256": "c164160aa31a9bd3effbe5c7689c47232197e3bd55ecf0042d49a81105900468",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 9683636
+            }
+          ],
+          "orbit_range": [
+            59,
+            60
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 9683636,
+          "milliseconds": 354698
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits060-061.ndjson",
+          "sha256": "1b871e992ef932ab345253635329431c7248f9425383c939b721c7cd101f3a55",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits060-061.ndjson",
+              "sha256": "1b871e992ef932ab345253635329431c7248f9425383c939b721c7cd101f3a55",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 1686262
+            }
+          ],
+          "orbit_range": [
+            60,
+            61
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1686262,
+          "milliseconds": 147588
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits061-062.ndjson",
+          "sha256": "6cc0f871ac06fe979d3df0890225f4ecb498916ce6c07ef46e370cfd09c39f61",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits061-062.ndjson",
+              "sha256": "5e3ab5a9093da7b74759dbffc52fe9ff10fa1dc58c2c5114a5ef20b9e895c1c4",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits061-062.ndjson",
+              "sha256": "6cc0f871ac06fe979d3df0890225f4ecb498916ce6c07ef46e370cfd09c39f61",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 3950594
+            }
+          ],
+          "orbit_range": [
+            61,
+            62
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 3950594,
+          "milliseconds": 195790
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits062-063.ndjson",
+          "sha256": "f6d488d342e28913728929a197a19d5c6f90aea2a2c1529b9ae64e808de29faa",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits062-063.ndjson",
+              "sha256": "62620c26af813683057397cb2d65cf710a41335949b89c3aa6998f99e7eb3398",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits062-063.ndjson",
+              "sha256": "f6d488d342e28913728929a197a19d5c6f90aea2a2c1529b9ae64e808de29faa",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 7171219
+            }
+          ],
+          "orbit_range": [
+            62,
+            63
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 7171219,
+          "milliseconds": 392134
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits063-064.ndjson",
+          "sha256": "bd87c20c3a156acd99234931125fdf68796b30c4b27aff97016a4fd271b383a8",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits063-064.ndjson",
+              "sha256": "bd87c20c3a156acd99234931125fdf68796b30c4b27aff97016a4fd271b383a8",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 9
+            }
+          ],
+          "orbit_range": [
+            63,
+            64
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 9,
+          "milliseconds": 313
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits064-065.ndjson",
+          "sha256": "0eb605bddbea01bbd347a61bc18367559f248c60fe077652fae9435e3ae63a49",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits064-065.ndjson",
+              "sha256": "0eb605bddbea01bbd347a61bc18367559f248c60fe077652fae9435e3ae63a49",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 1
+            }
+          ],
+          "orbit_range": [
+            64,
+            65
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1,
+          "milliseconds": 336
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits065-066.ndjson",
+          "sha256": "b8ab54321accc78603d4fefe2dc689f9a714933affd8879e9a94bf41ee01bed6",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits065-066.ndjson",
+              "sha256": "b8ab54321accc78603d4fefe2dc689f9a714933affd8879e9a94bf41ee01bed6",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 104
+            }
+          ],
+          "orbit_range": [
+            65,
+            66
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 104,
+          "milliseconds": 359
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits066-067.ndjson",
+          "sha256": "a8b61b779a3b5b1f9bfb8ce2275b11481ecdb1fad42db2d4e5e911fee94b2d33",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits066-067.ndjson",
+              "sha256": "a8b61b779a3b5b1f9bfb8ce2275b11481ecdb1fad42db2d4e5e911fee94b2d33",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 26
+            }
+          ],
+          "orbit_range": [
+            66,
+            67
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 26,
+          "milliseconds": 359
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits067-068.ndjson",
+          "sha256": "873eb7851a3f2b411a664988258ef0c978f07d74eb34fe86bce5262ae99c4b9a",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits067-068.ndjson",
+              "sha256": "873eb7851a3f2b411a664988258ef0c978f07d74eb34fe86bce5262ae99c4b9a",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 16983
+            }
+          ],
+          "orbit_range": [
+            67,
+            68
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 16983,
+          "milliseconds": 2695
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits068-069.ndjson",
+          "sha256": "84b9379080df5a5841a9eaf10410f57db50ad87232f81c843ac6d2fef19c4617",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits068-069.ndjson",
+              "sha256": "84b9379080df5a5841a9eaf10410f57db50ad87232f81c843ac6d2fef19c4617",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 99613
+            }
+          ],
+          "orbit_range": [
+            68,
+            69
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 99613,
+          "milliseconds": 9710
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits069-070.ndjson",
+          "sha256": "eee176321106938e0720ca0812ad41f2f4fa05d710b52fdb0758b960d9ca943d",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits069-070.ndjson",
+              "sha256": "2b0cc854f357a33ddbbb02dc1f7d68dbf4a64bdd657ff516898526c3ca6e92a6",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits069-070.ndjson",
+              "sha256": "eee176321106938e0720ca0812ad41f2f4fa05d710b52fdb0758b960d9ca943d",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 8472136
+            }
+          ],
+          "orbit_range": [
+            69,
+            70
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 8472136,
+          "milliseconds": 514725
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits070-071.ndjson",
+          "sha256": "5dca16d839137dae17bfee884d9dcb9ea4485ea7958753ad9fa1a8f4a3da32ce",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits070-071.ndjson",
+              "sha256": "5dca16d839137dae17bfee884d9dcb9ea4485ea7958753ad9fa1a8f4a3da32ce",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 34627
+            }
+          ],
+          "orbit_range": [
+            70,
+            71
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 34627,
+          "milliseconds": 2662
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits071-072.ndjson",
+          "sha256": "ad6b116603b788e4953cd1abad8a83e897406404417afa81575e44d07b9d4143",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits071-072.ndjson",
+              "sha256": "2bbd72f3574a68349573571eb92c67e41fbfaad50bd86954033db0417760a0ef",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits071-072.ndjson",
+              "sha256": "ad6b116603b788e4953cd1abad8a83e897406404417afa81575e44d07b9d4143",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 6693734
+            }
+          ],
+          "orbit_range": [
+            71,
+            72
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 6693734,
+          "milliseconds": 290420
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits072-073.ndjson",
+          "sha256": "20e573294ce0a50d70867a6fdf8674d5ba5786a061c5c6d690aba6e001b8b9a0",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits072-073.ndjson",
+              "sha256": "20e573294ce0a50d70867a6fdf8674d5ba5786a061c5c6d690aba6e001b8b9a0",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 89941
+            }
+          ],
+          "orbit_range": [
+            72,
+            73
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 89941,
+          "milliseconds": 11986
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits073-074.ndjson",
+          "sha256": "f612f778d2fa20b39df1da613f003698c85100748602fee7107e4bf84c6b3b72",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits073-074.ndjson",
+              "sha256": "f612f778d2fa20b39df1da613f003698c85100748602fee7107e4bf84c6b3b72",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 963
+            }
+          ],
+          "orbit_range": [
+            73,
+            74
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 963,
+          "milliseconds": 466
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits074-075.ndjson",
+          "sha256": "324d4546ec606e3e136bdd87cddb97e589d4a14d3336bf08292967a608fd3060",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits074-075.ndjson",
+              "sha256": "324d4546ec606e3e136bdd87cddb97e589d4a14d3336bf08292967a608fd3060",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 1159776
+            }
+          ],
+          "orbit_range": [
+            74,
+            75
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1159776,
+          "milliseconds": 146387
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits075-076.ndjson",
+          "sha256": "52e8239cbb6824895adf60a96adaa4cfed9f38a61fc2c4764c78fbe1a6ce62c3",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits075-076.ndjson",
+              "sha256": "52e8239cbb6824895adf60a96adaa4cfed9f38a61fc2c4764c78fbe1a6ce62c3",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 46283
+            }
+          ],
+          "orbit_range": [
+            75,
+            76
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 46283,
+          "milliseconds": 4164
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits076-077.ndjson",
+          "sha256": "3eb4a03203374cf7b0c6f04373b5f7b33ec7c25422c83fcaf9356ec1f13e28e4",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits076-077.ndjson",
+              "sha256": "72226f6efcde8e4727d0d14c4178dfa72a1d317b106c086d90fa713a86064aba",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits076-077.ndjson",
+              "sha256": "3eb4a03203374cf7b0c6f04373b5f7b33ec7c25422c83fcaf9356ec1f13e28e4",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 8593394
+            }
+          ],
+          "orbit_range": [
+            76,
+            77
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 8593394,
+          "milliseconds": 367398
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits077-078.ndjson",
+          "sha256": "60cc1dc42ebfe8d2c6362fd5830a2f592440a459042d9e17397f3cea6497de8a",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits077-078.ndjson",
+              "sha256": "60cc1dc42ebfe8d2c6362fd5830a2f592440a459042d9e17397f3cea6497de8a",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 6392
+            }
+          ],
+          "orbit_range": [
+            77,
+            78
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 6392,
+          "milliseconds": 1068
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits078-079.ndjson",
+          "sha256": "9502a9032850a5abbe350a629f1230a5f7d8d2584ab36dbe3f12bd2a6137d322",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits078-079.ndjson",
+              "sha256": "9502a9032850a5abbe350a629f1230a5f7d8d2584ab36dbe3f12bd2a6137d322",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 7957
+            }
+          ],
+          "orbit_range": [
+            78,
+            79
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 7957,
+          "milliseconds": 1232
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits079-080.ndjson",
+          "sha256": "9cb6a81cb4ba99c974e9985301d24fd0bb4f40844b39db0e2fcd0770dc09a2fe",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits079-080.ndjson",
+              "sha256": "eec731c30e150d321a7489534ce1e79762966eb11323a96f6919d8d71d5f4b6a",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits079-080.ndjson",
+              "sha256": "9cb6a81cb4ba99c974e9985301d24fd0bb4f40844b39db0e2fcd0770dc09a2fe",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 8796918
+            }
+          ],
+          "orbit_range": [
+            79,
+            80
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 8796918,
+          "milliseconds": 310577
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits080-081.ndjson",
+          "sha256": "1864d52bf04bffe48c8c943e30059bc22798f88c5f83464f273ffd6294341194",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits080-081.ndjson",
+              "sha256": "1864d52bf04bffe48c8c943e30059bc22798f88c5f83464f273ffd6294341194",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 1
+            }
+          ],
+          "orbit_range": [
+            80,
+            81
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1,
+          "milliseconds": 361
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits081-082.ndjson",
+          "sha256": "c669878111400a541664f6e246a9139188aef5793ee84c45afcaca7bb867361a",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits081-082.ndjson",
+              "sha256": "36b91a99e62912ed0b4fd58e7ab0fe6634f5bf1e906b127a4e28b1473bfa0694",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits081-082.ndjson",
+              "sha256": "c669878111400a541664f6e246a9139188aef5793ee84c45afcaca7bb867361a",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 3217081
+            }
+          ],
+          "orbit_range": [
+            81,
+            82
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 3217081,
+          "milliseconds": 134029
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits082-083.ndjson",
+          "sha256": "4f508fb2605b489a299d506d449a5353d933f9499d3e16b6e06c7160fd935de8",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits082-083.ndjson",
+              "sha256": "7ff3aa471107784f14ab1343b15af88c35aba8dfb221f8cdd3a12dae8dad2523",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits082-083.ndjson",
+              "sha256": "4f508fb2605b489a299d506d449a5353d933f9499d3e16b6e06c7160fd935de8",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 6998340
+            }
+          ],
+          "orbit_range": [
+            82,
+            83
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 6998340,
+          "milliseconds": 308042
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits083-084.ndjson",
+          "sha256": "aad6ae91742b33cae623c35d18604d350686d8b4426a93ffd8633d0cdafe9440",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits083-084.ndjson",
+              "sha256": "8fc86427eedf0b2fb97efb7b0f480f9ed6828ff0aa3f48ddd1fb77473d96bec7",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits083-084.ndjson",
+              "sha256": "aad6ae91742b33cae623c35d18604d350686d8b4426a93ffd8633d0cdafe9440",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 10000001
+            }
+          ],
+          "orbit_range": [
+            83,
+            84
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 10000001,
+          "milliseconds": 416149
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits084-085.ndjson",
+          "sha256": "532f0b2adbdbfae80704755dde60799782f45b77585dcbc2f5b3c7660b68c97a",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36141-orbits084-085.ndjson",
+              "sha256": "74813ad57c67f0d13d9081e907bf5f00c0702b042c88a9c674ee086c7b215d9c",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_36141-orbits084-085.ndjson",
+              "sha256": "532f0b2adbdbfae80704755dde60799782f45b77585dcbc2f5b3c7660b68c97a",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 1385022
+            }
+          ],
+          "orbit_range": [
+            84,
+            85
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1385022,
+          "milliseconds": 73165
+        }
+      ]
+    },
+    {
+      "id": "a2sa_10_35323",
+      "classification": "bounded_inconclusive",
+      "periodic_orbit": null,
+      "orbit_total": 85,
+      "orbit_receipts": 85,
+      "exact_negative_orbits": 77,
+      "node_capped_orbits": 8,
+      "hnf_total": 403,
+      "hnfs_exactly_excluded": 367,
+      "exact_multicover_nodes": 234145736,
+      "exact_multicover_failed_states": 233594537,
+      "milliseconds": 10878432,
+      "receipts": [
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits000-001.ndjson",
+          "sha256": "66637b56f20ffb62f2601ca9a7135ef01329df73b74210532336735dcb02daaf",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits000-001.ndjson",
+              "sha256": "66637b56f20ffb62f2601ca9a7135ef01329df73b74210532336735dcb02daaf",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 105189
+            }
+          ],
+          "orbit_range": [
+            0,
+            1
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 105189,
+          "milliseconds": 10610
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits001-002.ndjson",
+          "sha256": "7a13d68e40eb916654926df7353d3d568857b09f14b0667a61805783cfd844ca",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits001-002.ndjson",
+              "sha256": "7a13d68e40eb916654926df7353d3d568857b09f14b0667a61805783cfd844ca",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 79441
+            }
+          ],
+          "orbit_range": [
+            1,
+            2
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 79441,
+          "milliseconds": 9687
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits002-003.ndjson",
+          "sha256": "3f3330d680883b96cf2cdec19231a31d5ddfb63c466a1f7425a6c52dedf8ade4",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits002-003.ndjson",
+              "sha256": "3f3330d680883b96cf2cdec19231a31d5ddfb63c466a1f7425a6c52dedf8ade4",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 32804
+            }
+          ],
+          "orbit_range": [
+            2,
+            3
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 32804,
+          "milliseconds": 4011
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits003-004.ndjson",
+          "sha256": "e29bcfb14b2d8341d63c10fd4057ad9f61b3555c235a77fa1c358c1e09d5b81a",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits003-004.ndjson",
+              "sha256": "e29bcfb14b2d8341d63c10fd4057ad9f61b3555c235a77fa1c358c1e09d5b81a",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 7137
+            }
+          ],
+          "orbit_range": [
+            3,
+            4
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 7137,
+          "milliseconds": 2147
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits004-005.ndjson",
+          "sha256": "1611251675c567b79073ae4cef3d6a83e4817b08bb559b30edf0719b5dfbf3da",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits004-005.ndjson",
+              "sha256": "1611251675c567b79073ae4cef3d6a83e4817b08bb559b30edf0719b5dfbf3da",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 154342
+            }
+          ],
+          "orbit_range": [
+            4,
+            5
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 154342,
+          "milliseconds": 16980
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits005-006.ndjson",
+          "sha256": "11e581829aec472838b870b6b52bf919e0b273c65a2c784d7b050c958e664d56",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits005-006.ndjson",
+              "sha256": "11e581829aec472838b870b6b52bf919e0b273c65a2c784d7b050c958e664d56",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 89523
+            }
+          ],
+          "orbit_range": [
+            5,
+            6
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 89523,
+          "milliseconds": 8337
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits006-007.ndjson",
+          "sha256": "97114c59d1fd61eb4a56ad3ef5e62edc656ac12cf5eb15365acbc2761906a7bc",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits006-007.ndjson",
+              "sha256": "97114c59d1fd61eb4a56ad3ef5e62edc656ac12cf5eb15365acbc2761906a7bc",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 3734
+            }
+          ],
+          "orbit_range": [
+            6,
+            7
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 3734,
+          "milliseconds": 737
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits007-008.ndjson",
+          "sha256": "6fba4d3c4ee3ed3d9bcc6e9aa793f54e1523d5fbb84202549cc1428e95f1cf51",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits007-008.ndjson",
+              "sha256": "42a4e8ba86cf535335c6d7acb931a7de83738124a71725313abdca292b3651e1",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits007-008.ndjson",
+              "sha256": "6fba4d3c4ee3ed3d9bcc6e9aa793f54e1523d5fbb84202549cc1428e95f1cf51",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 10000001
+            }
+          ],
+          "orbit_range": [
+            7,
+            8
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 10000001,
+          "milliseconds": 385821
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits008-009.ndjson",
+          "sha256": "c13441f00efc3f60b0cf89df6c2f07698c48fedcaa81344e860aeddaa854e368",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits008-009.ndjson",
+              "sha256": "c13441f00efc3f60b0cf89df6c2f07698c48fedcaa81344e860aeddaa854e368",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 9
+            }
+          ],
+          "orbit_range": [
+            8,
+            9
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 9,
+          "milliseconds": 412
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits009-010.ndjson",
+          "sha256": "d742ca71aa9e79e438c70ade3ad0da83e1cc5afa8881ca3cbe7b04affcf05d3b",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits009-010.ndjson",
+              "sha256": "85b4b7add7b70e614b8a228d28c23dd73da554e16235f9e6ea56d4d2352f7039",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits009-010.ndjson",
+              "sha256": "d742ca71aa9e79e438c70ade3ad0da83e1cc5afa8881ca3cbe7b04affcf05d3b",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 9814040
+            }
+          ],
+          "orbit_range": [
+            9,
+            10
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 9814040,
+          "milliseconds": 611649
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits010-011.ndjson",
+          "sha256": "00460ca8fbd5a83eb850786435e31eb83fa4f8f41bae77294346943e5d9f711c",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits010-011.ndjson",
+              "sha256": "00460ca8fbd5a83eb850786435e31eb83fa4f8f41bae77294346943e5d9f711c",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 7218
+            }
+          ],
+          "orbit_range": [
+            10,
+            11
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 7218,
+          "milliseconds": 1458
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits011-012.ndjson",
+          "sha256": "f7e8745d24bbcdb3959321a638332008051943ccdf8ecc9892aae111d01bbbe5",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits011-012.ndjson",
+              "sha256": "f7e8745d24bbcdb3959321a638332008051943ccdf8ecc9892aae111d01bbbe5",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 123126
+            }
+          ],
+          "orbit_range": [
+            11,
+            12
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 123126,
+          "milliseconds": 12616
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits012-013.ndjson",
+          "sha256": "eca5d49f250b1bf8604e9bb21433ac95871a2f763a0b66ca5724a05b2a658b46",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits012-013.ndjson",
+              "sha256": "eca5d49f250b1bf8604e9bb21433ac95871a2f763a0b66ca5724a05b2a658b46",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 108137
+            }
+          ],
+          "orbit_range": [
+            12,
+            13
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 108137,
+          "milliseconds": 7923
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits013-014.ndjson",
+          "sha256": "4664ad9cf25b75d38c6f88e2ef8d7d972617499dac3a008101a119bd30c04a12",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits013-014.ndjson",
+              "sha256": "4664ad9cf25b75d38c6f88e2ef8d7d972617499dac3a008101a119bd30c04a12",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 11823
+            }
+          ],
+          "orbit_range": [
+            13,
+            14
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 11823,
+          "milliseconds": 1382
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits014-015.ndjson",
+          "sha256": "1f19f5443ec1e3fb530b4d8063f74a9e90cd59cb6ec722252846783628e78c4e",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits014-015.ndjson",
+              "sha256": "1f19f5443ec1e3fb530b4d8063f74a9e90cd59cb6ec722252846783628e78c4e",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 7059
+            }
+          ],
+          "orbit_range": [
+            14,
+            15
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 7059,
+          "milliseconds": 944
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits015-016.ndjson",
+          "sha256": "72f92c9f97f5e7bed56c4ce04da3956ffb8b827d592f0c7db31d7e540a2f9c76",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits015-016.ndjson",
+              "sha256": "72f92c9f97f5e7bed56c4ce04da3956ffb8b827d592f0c7db31d7e540a2f9c76",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 377526
+            }
+          ],
+          "orbit_range": [
+            15,
+            16
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 377526,
+          "milliseconds": 27811
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits016-017.ndjson",
+          "sha256": "f27edb87c8a3094337b30de40e011a29b57aa34baffaf0d294863df22b8da37c",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits016-017.ndjson",
+              "sha256": "f27edb87c8a3094337b30de40e011a29b57aa34baffaf0d294863df22b8da37c",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 7789
+            }
+          ],
+          "orbit_range": [
+            16,
+            17
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 7789,
+          "milliseconds": 1322
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits017-018.ndjson",
+          "sha256": "d52a9ebd00128388f15d9e6edd8ac156ffca5315b4bf1bb0787425b5d3186d87",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits017-018.ndjson",
+              "sha256": "4d110de101e576be1b6ca046b8024c0205263638ab9b5ae45555b8c9cf1458bb",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits017-018.ndjson",
+              "sha256": "d52a9ebd00128388f15d9e6edd8ac156ffca5315b4bf1bb0787425b5d3186d87",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 10000001
+            }
+          ],
+          "orbit_range": [
+            17,
+            18
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 10000001,
+          "milliseconds": 322336
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits018-019.ndjson",
+          "sha256": "297c96613ae7f2c79fadd0124c66db19f5bd3e012e8929e3e4a6d38817cdd675",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits018-019.ndjson",
+              "sha256": "297c96613ae7f2c79fadd0124c66db19f5bd3e012e8929e3e4a6d38817cdd675",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 9
+            }
+          ],
+          "orbit_range": [
+            18,
+            19
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 9,
+          "milliseconds": 361
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits019-020.ndjson",
+          "sha256": "4b9464037838456c20bd55fb3fdad92adf823523c391ae87e9739e246226d770",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits019-020.ndjson",
+              "sha256": "3d6bc0ebd703dfbb9a349e7b7e43640374f58e4bda723b82daa0e72ffe20fd60",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits019-020.ndjson",
+              "sha256": "4b9464037838456c20bd55fb3fdad92adf823523c391ae87e9739e246226d770",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 10000001
+            }
+          ],
+          "orbit_range": [
+            19,
+            20
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 10000001,
+          "milliseconds": 577654
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits020-021.ndjson",
+          "sha256": "4f263eebd13e49f483b437db58a0de59dc229f5789d08aa19084472c1be747e1",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits020-021.ndjson",
+              "sha256": "87e445730352b9ed3caea11f44af64944458ef23a36dcd7fadce608dad29ec0b",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits020-021.ndjson",
+              "sha256": "4f263eebd13e49f483b437db58a0de59dc229f5789d08aa19084472c1be747e1",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 9566142
+            }
+          ],
+          "orbit_range": [
+            20,
+            21
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 9566142,
+          "milliseconds": 276013
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits021-022.ndjson",
+          "sha256": "fbbc9f86f623ed4e254841579ac6daa66be373b8850b18ef987264b22eeaa8bc",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits021-022.ndjson",
+              "sha256": "fbbc9f86f623ed4e254841579ac6daa66be373b8850b18ef987264b22eeaa8bc",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 9
+            }
+          ],
+          "orbit_range": [
+            21,
+            22
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 9,
+          "milliseconds": 297
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits022-023.ndjson",
+          "sha256": "70c90938c10d2b3bca84f63fdd760fe1e3b8cb84851cac3b1e0af5869a90763c",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits022-023.ndjson",
+              "sha256": "70c90938c10d2b3bca84f63fdd760fe1e3b8cb84851cac3b1e0af5869a90763c",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 79953
+            }
+          ],
+          "orbit_range": [
+            22,
+            23
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 79953,
+          "milliseconds": 6654
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits023-024.ndjson",
+          "sha256": "c7bcb265c69273f47979f53ab95c74c6fa04f549a59463ffa18758ac7e9fe09a",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits023-024.ndjson",
+              "sha256": "6df16a98118d730d6a5f94e90ed4feceb9c03e9ebdc367f7ac6bf0fe1936a24d",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits023-024.ndjson",
+              "sha256": "c7bcb265c69273f47979f53ab95c74c6fa04f549a59463ffa18758ac7e9fe09a",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 3532173
+            }
+          ],
+          "orbit_range": [
+            23,
+            24
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 3532173,
+          "milliseconds": 136977
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits024-025.ndjson",
+          "sha256": "7e47f281e9776f6435ec7cc7258663cfc728f84f5f3a0d15e9033744b51f4401",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits024-025.ndjson",
+              "sha256": "7e47f281e9776f6435ec7cc7258663cfc728f84f5f3a0d15e9033744b51f4401",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 120338
+            }
+          ],
+          "orbit_range": [
+            24,
+            25
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 120338,
+          "milliseconds": 7710
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits025-026.ndjson",
+          "sha256": "b2ffe309ba0eec970df611267eb10cf04d9843697eb45464120e86469ed03c4b",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits025-026.ndjson",
+              "sha256": "b2ffe309ba0eec970df611267eb10cf04d9843697eb45464120e86469ed03c4b",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 23626
+            }
+          ],
+          "orbit_range": [
+            25,
+            26
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 23626,
+          "milliseconds": 2089
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits026-027.ndjson",
+          "sha256": "b6f67612b4d5ef87dfe1869225ebca62b083d1fa9e5d60f4d46fd0c010d32ed7",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits026-027.ndjson",
+              "sha256": "fdaf0a3f62a32d7d290e155177cabd4b412e4c24be1475966f6c9e85948c7e1f",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits026-027.ndjson",
+              "sha256": "b6f67612b4d5ef87dfe1869225ebca62b083d1fa9e5d60f4d46fd0c010d32ed7",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 3479375
+            }
+          ],
+          "orbit_range": [
+            26,
+            27
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 3479375,
+          "milliseconds": 169195
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits027-028.ndjson",
+          "sha256": "108bc4f4ad55572583c9182b025aa0700f10f8cce58c822efad682d3762a054f",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits027-028.ndjson",
+              "sha256": "108bc4f4ad55572583c9182b025aa0700f10f8cce58c822efad682d3762a054f",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 760183
+            }
+          ],
+          "orbit_range": [
+            27,
+            28
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 760183,
+          "milliseconds": 35064
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits028-029.ndjson",
+          "sha256": "632bd2afe6bde7e98d7dee2f3ce53c00edfeb843cc0ad6dce90af6a1fa031268",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits028-029.ndjson",
+              "sha256": "632bd2afe6bde7e98d7dee2f3ce53c00edfeb843cc0ad6dce90af6a1fa031268",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 1267813
+            }
+          ],
+          "orbit_range": [
+            28,
+            29
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1267813,
+          "milliseconds": 83654
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits029-030.ndjson",
+          "sha256": "f2afbb6e29dd3c74384ae512197c1c5226bd0aca54c906ae8e71eb3c9d64fd70",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits029-030.ndjson",
+              "sha256": "f2afbb6e29dd3c74384ae512197c1c5226bd0aca54c906ae8e71eb3c9d64fd70",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 265651
+            }
+          ],
+          "orbit_range": [
+            29,
+            30
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 265651,
+          "milliseconds": 22550
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits030-031.ndjson",
+          "sha256": "62c5c5eb6ce8c58ecd9a70a46eddb97b30c5958489afd4cf5e3b33af5e9f9608",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits030-031.ndjson",
+              "sha256": "696024005b8f20063cd80eba91bbdaac40a92cf5b096549a1b69dbab97304984",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits030-031.ndjson",
+              "sha256": "62c5c5eb6ce8c58ecd9a70a46eddb97b30c5958489afd4cf5e3b33af5e9f9608",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 10000001
+            }
+          ],
+          "orbit_range": [
+            30,
+            31
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 10000001,
+          "milliseconds": 303085
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits031-032.ndjson",
+          "sha256": "0f8df650670219a61be33e9ff010d65f277695696c43c3db7e452718ce8041f1",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits031-032.ndjson",
+              "sha256": "fcf9e43597dc521e9c856d069c7663a4b754ed41d1e0a76882bb62c82b8cf801",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits031-032.ndjson",
+              "sha256": "0f8df650670219a61be33e9ff010d65f277695696c43c3db7e452718ce8041f1",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 10000001
+            }
+          ],
+          "orbit_range": [
+            31,
+            32
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 10000001,
+          "milliseconds": 556059
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits032-033.ndjson",
+          "sha256": "8b6f6abb2ef0f9a44df3eb52396eb3936b9a2e5f75a1031a54d63ec41f7ae63e",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits032-033.ndjson",
+              "sha256": "8b6f6abb2ef0f9a44df3eb52396eb3936b9a2e5f75a1031a54d63ec41f7ae63e",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 3184
+            }
+          ],
+          "orbit_range": [
+            32,
+            33
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 3184,
+          "milliseconds": 728
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits033-034.ndjson",
+          "sha256": "4736b5e62ac267302c4fd51a7acec4f2ef746ef35f8c2282c11e4f44f64c541b",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits033-034.ndjson",
+              "sha256": "53d918b7d7cb680016069ec0fdd85f40cea25a3d3cda64d4d98f314a638a8ca7",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits033-034.ndjson",
+              "sha256": "4736b5e62ac267302c4fd51a7acec4f2ef746ef35f8c2282c11e4f44f64c541b",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 2371873
+            }
+          ],
+          "orbit_range": [
+            33,
+            34
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 2371873,
+          "milliseconds": 116178
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits034-035.ndjson",
+          "sha256": "16fc64a0a273a457bd78cefb239ef6bcf85e659baf26a1a8eec3cece55b6c8fa",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits034-035.ndjson",
+              "sha256": "49bf313f7c96d1f5b5905ebe28af7fd6039ad6eddd64ca4d3a76e2a48a2d2575",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits034-035.ndjson",
+              "sha256": "16fc64a0a273a457bd78cefb239ef6bcf85e659baf26a1a8eec3cece55b6c8fa",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 8107965
+            }
+          ],
+          "orbit_range": [
+            34,
+            35
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 8107965,
+          "milliseconds": 360442
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits035-036.ndjson",
+          "sha256": "164f0d430460e689a0f00821c2baad33b1ef19015a709edbf44e81e2449d05d5",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits035-036.ndjson",
+              "sha256": "a571301ed648a7da5fff7ff4fb7db86e04d9e9de80313ec2028b190def229b15",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits035-036.ndjson",
+              "sha256": "164f0d430460e689a0f00821c2baad33b1ef19015a709edbf44e81e2449d05d5",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 7589414
+            }
+          ],
+          "orbit_range": [
+            35,
+            36
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 7589414,
+          "milliseconds": 319228
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits036-037.ndjson",
+          "sha256": "abe31a7fe89c12b00bb2cb8bebb25a9e9866e40cebb79512bacef48fe90f4260",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits036-037.ndjson",
+              "sha256": "abe31a7fe89c12b00bb2cb8bebb25a9e9866e40cebb79512bacef48fe90f4260",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 1408226
+            }
+          ],
+          "orbit_range": [
+            36,
+            37
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1408226,
+          "milliseconds": 68621
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits037-038.ndjson",
+          "sha256": "67b8b398a9731c93668b97de4fa27bdb0e8485484c799806431047040addba8d",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits037-038.ndjson",
+              "sha256": "b72e7dd19ab25c9d695f4c564ba18d12e85341ec2b9de79ff82e1b963f6b9631",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits037-038.ndjson",
+              "sha256": "67b8b398a9731c93668b97de4fa27bdb0e8485484c799806431047040addba8d",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 4586904
+            }
+          ],
+          "orbit_range": [
+            37,
+            38
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 4586904,
+          "milliseconds": 158733
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits038-039.ndjson",
+          "sha256": "1946efbe5f78400571adaf7b030bd67b3268def962d6f75cc60d72142fe052d0",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits038-039.ndjson",
+              "sha256": "1946efbe5f78400571adaf7b030bd67b3268def962d6f75cc60d72142fe052d0",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 918113
+            }
+          ],
+          "orbit_range": [
+            38,
+            39
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 918113,
+          "milliseconds": 89581
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits039-040.ndjson",
+          "sha256": "1196261eea2c737759ea7118f93a6e850a16534b5cd782cfd82491b0ce869829",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits039-040.ndjson",
+              "sha256": "1196261eea2c737759ea7118f93a6e850a16534b5cd782cfd82491b0ce869829",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 520454
+            }
+          ],
+          "orbit_range": [
+            39,
+            40
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 520454,
+          "milliseconds": 50061
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits040-041.ndjson",
+          "sha256": "c1ecad7462fbdf455343ab71a820b53a61dcd13ef299e45c07b0f328386b59f8",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits040-041.ndjson",
+              "sha256": "c1ecad7462fbdf455343ab71a820b53a61dcd13ef299e45c07b0f328386b59f8",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 7809
+            }
+          ],
+          "orbit_range": [
+            40,
+            41
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 7809,
+          "milliseconds": 1139
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits041-042.ndjson",
+          "sha256": "b71f18e7e58398699aea678bb3a9a5442859d3dc4165299daaaa180dff502151",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits041-042.ndjson",
+              "sha256": "b71f18e7e58398699aea678bb3a9a5442859d3dc4165299daaaa180dff502151",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 665944
+            }
+          ],
+          "orbit_range": [
+            41,
+            42
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 665944,
+          "milliseconds": 62767
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits042-043.ndjson",
+          "sha256": "da7a5600ef10a93b248ce27c0785325626f7bafe296d6ea00a99aa9e6c7570a2",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits042-043.ndjson",
+              "sha256": "da7a5600ef10a93b248ce27c0785325626f7bafe296d6ea00a99aa9e6c7570a2",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 578760
+            }
+          ],
+          "orbit_range": [
+            42,
+            43
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 578760,
+          "milliseconds": 27340
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits043-044.ndjson",
+          "sha256": "a0da261c4df7c2e1206bf7bfff4e2b50e54e251f7db92e5412b4f94223bd8949",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits043-044.ndjson",
+              "sha256": "f6bbdac9913ba346f3a994f92d9d043fde7b28523370ae14ea1c7a0cc28339d5",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits043-044.ndjson",
+              "sha256": "a0da261c4df7c2e1206bf7bfff4e2b50e54e251f7db92e5412b4f94223bd8949",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 6623050
+            }
+          ],
+          "orbit_range": [
+            43,
+            44
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 6623050,
+          "milliseconds": 285923
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits044-045.ndjson",
+          "sha256": "ec4fb3c258b5ac68a9b3e21f1d26cf2e259021329b62d788415379c9994de338",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits044-045.ndjson",
+              "sha256": "ec4fb3c258b5ac68a9b3e21f1d26cf2e259021329b62d788415379c9994de338",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 386644
+            }
+          ],
+          "orbit_range": [
+            44,
+            45
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 386644,
+          "milliseconds": 34509
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits045-046.ndjson",
+          "sha256": "e10ec2b5e974007c00839ca3de112edd9acf65db61b195fe9bd2401fe37bfc0e",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits045-046.ndjson",
+              "sha256": "e10ec2b5e974007c00839ca3de112edd9acf65db61b195fe9bd2401fe37bfc0e",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 532686
+            }
+          ],
+          "orbit_range": [
+            45,
+            46
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 532686,
+          "milliseconds": 54013
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits046-047.ndjson",
+          "sha256": "e70169e2b83387028124496d2ef167788f817f370c5ed4eb80aed6ea5a279498",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits046-047.ndjson",
+              "sha256": "e70169e2b83387028124496d2ef167788f817f370c5ed4eb80aed6ea5a279498",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 294171
+            }
+          ],
+          "orbit_range": [
+            46,
+            47
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 294171,
+          "milliseconds": 21019
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits047-048.ndjson",
+          "sha256": "98be608df48fe40301a59762568af572569413b791c3476428c585d0fd24adc0",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits047-048.ndjson",
+              "sha256": "f523e9dce282c0ffe2e5b8eba0580f686171f5d0fd689d36eabf5450065b8e63",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits047-048.ndjson",
+              "sha256": "98be608df48fe40301a59762568af572569413b791c3476428c585d0fd24adc0",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 5296532
+            }
+          ],
+          "orbit_range": [
+            47,
+            48
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 5296532,
+          "milliseconds": 176821
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits048-049.ndjson",
+          "sha256": "dd5b32bd1b13ee86a2666145f4144a2a917c333e8ee1d5c6c4acf91c611bd2a6",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits048-049.ndjson",
+              "sha256": "3433aef1925a96ebf4c573a60b340805a016f22b619fcc48e93e0e392f786609",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits048-049.ndjson",
+              "sha256": "dd5b32bd1b13ee86a2666145f4144a2a917c333e8ee1d5c6c4acf91c611bd2a6",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 10000001
+            }
+          ],
+          "orbit_range": [
+            48,
+            49
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 10000001,
+          "milliseconds": 413965
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits049-050.ndjson",
+          "sha256": "48bc066d4b73b55345c8dff9be5aac6dbd67fbb2fbe3f61e6410d8932078c4c2",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits049-050.ndjson",
+              "sha256": "48bc066d4b73b55345c8dff9be5aac6dbd67fbb2fbe3f61e6410d8932078c4c2",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 1504890
+            }
+          ],
+          "orbit_range": [
+            49,
+            50
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1504890,
+          "milliseconds": 125737
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits050-051.ndjson",
+          "sha256": "3e074b894784e30f3f3191ba5a1c0121223c7bb714a1db629a5e98c97f7f1e12",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits050-051.ndjson",
+              "sha256": "3e074b894784e30f3f3191ba5a1c0121223c7bb714a1db629a5e98c97f7f1e12",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 14492
+            }
+          ],
+          "orbit_range": [
+            50,
+            51
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 14492,
+          "milliseconds": 1315
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits051-052.ndjson",
+          "sha256": "3e3791f8f6ae3a95be3fc28a0f69c96fad3cdb5aae7a9586d82cd5b79d79a380",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits051-052.ndjson",
+              "sha256": "3e3791f8f6ae3a95be3fc28a0f69c96fad3cdb5aae7a9586d82cd5b79d79a380",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 749390
+            }
+          ],
+          "orbit_range": [
+            51,
+            52
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 749390,
+          "milliseconds": 41006
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits052-053.ndjson",
+          "sha256": "8fd62809ac62dd9763a0bae088aef43601627fcfc24965954d72b111aa6cfaf2",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits052-053.ndjson",
+              "sha256": "5c5c0106d70d8198a7f9e79e413dadea60f1c83fee4ca7d15e9dc8ea3b6334c8",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits052-053.ndjson",
+              "sha256": "8fd62809ac62dd9763a0bae088aef43601627fcfc24965954d72b111aa6cfaf2",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 8792404
+            }
+          ],
+          "orbit_range": [
+            52,
+            53
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 8792404,
+          "milliseconds": 416736
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits053-054.ndjson",
+          "sha256": "db56909410ec1236562befe348559bc49f4249809535ef9530f138231e01b34e",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits053-054.ndjson",
+              "sha256": "f0e90cf47ccf52d2a60a8201ffd62a7dc559d37996ac6d4a35ad99a112fe870f",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits053-054.ndjson",
+              "sha256": "db56909410ec1236562befe348559bc49f4249809535ef9530f138231e01b34e",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 5328571
+            }
+          ],
+          "orbit_range": [
+            53,
+            54
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 5328571,
+          "milliseconds": 232958
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits054-055.ndjson",
+          "sha256": "c633f1892dc98c92ee9215faa95fc5fc92935d372b41ca03a705d17b9faeebf2",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits054-055.ndjson",
+              "sha256": "c633f1892dc98c92ee9215faa95fc5fc92935d372b41ca03a705d17b9faeebf2",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 844954
+            }
+          ],
+          "orbit_range": [
+            54,
+            55
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 844954,
+          "milliseconds": 56989
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits055-056.ndjson",
+          "sha256": "99a764a97a03bbc3b9b3cd423322d93c19e0fa57a769e38cc41ef0a3a4a8d6ff",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits055-056.ndjson",
+              "sha256": "99a764a97a03bbc3b9b3cd423322d93c19e0fa57a769e38cc41ef0a3a4a8d6ff",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 536453
+            }
+          ],
+          "orbit_range": [
+            55,
+            56
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 536453,
+          "milliseconds": 46094
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits056-057.ndjson",
+          "sha256": "8d4a7e3bd1ff7947106d8e0e522c1a017493c8f469296ea818d930d52e2658c5",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits056-057.ndjson",
+              "sha256": "8d4a7e3bd1ff7947106d8e0e522c1a017493c8f469296ea818d930d52e2658c5",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 9
+            }
+          ],
+          "orbit_range": [
+            56,
+            57
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 9,
+          "milliseconds": 300
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits057-058.ndjson",
+          "sha256": "3b0c2636c8c6c18defb433268ad94071632cac16bd89dd698fe9768215f1c910",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits057-058.ndjson",
+              "sha256": "7f6eaccf6da4e0d47a31c590f1003c5ad52088a73b30b0f1ef118f8b488a472c",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits057-058.ndjson",
+              "sha256": "3b0c2636c8c6c18defb433268ad94071632cac16bd89dd698fe9768215f1c910",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 8967040
+            }
+          ],
+          "orbit_range": [
+            57,
+            58
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 8967040,
+          "milliseconds": 376281
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits058-059.ndjson",
+          "sha256": "f4de10c57c34a83076d56e717cf50b9c1ab69739f666ae60371d02a408b3101b",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits058-059.ndjson",
+              "sha256": "f4de10c57c34a83076d56e717cf50b9c1ab69739f666ae60371d02a408b3101b",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 697914
+            }
+          ],
+          "orbit_range": [
+            58,
+            59
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 697914,
+          "milliseconds": 40990
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits059-060.ndjson",
+          "sha256": "2bc32510f9c286f7485c970ec8744452fdeceb29bb0a9e4f8a332ee4f99a380d",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits059-060.ndjson",
+              "sha256": "5bef71215a7c8ea95cb547156df86e486852ddbb687bb9db55d2878f6b353df2",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits059-060.ndjson",
+              "sha256": "2bc32510f9c286f7485c970ec8744452fdeceb29bb0a9e4f8a332ee4f99a380d",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 8880029
+            }
+          ],
+          "orbit_range": [
+            59,
+            60
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 8880029,
+          "milliseconds": 323369
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits060-061.ndjson",
+          "sha256": "63d9f86fad8f67719467e0d74a97e4ce1fdf7abe5c127db8c77dcbca524a95ca",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits060-061.ndjson",
+              "sha256": "63d9f86fad8f67719467e0d74a97e4ce1fdf7abe5c127db8c77dcbca524a95ca",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 1448157
+            }
+          ],
+          "orbit_range": [
+            60,
+            61
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1448157,
+          "milliseconds": 126999
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits061-062.ndjson",
+          "sha256": "cf52125a6208807b1600b72bcca1aa99884116051588f67d221a8e42bc070127",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits061-062.ndjson",
+              "sha256": "61e924d9b1336f352e4a96c4ec65c1a666a07d42787d0a19ae0eb265d7e4209f",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits061-062.ndjson",
+              "sha256": "cf52125a6208807b1600b72bcca1aa99884116051588f67d221a8e42bc070127",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 4052461
+            }
+          ],
+          "orbit_range": [
+            61,
+            62
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 4052461,
+          "milliseconds": 188030
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits062-063.ndjson",
+          "sha256": "b9e0ab0a1d1ed0a72d8957c39fa00a3fd2933a966fb93c74392b5dc23699cebb",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits062-063.ndjson",
+              "sha256": "2b187da23bb54738247388fe0fb7634b43087467272fe56f4448e89579d2b5cf",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits062-063.ndjson",
+              "sha256": "b9e0ab0a1d1ed0a72d8957c39fa00a3fd2933a966fb93c74392b5dc23699cebb",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 6470030
+            }
+          ],
+          "orbit_range": [
+            62,
+            63
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 6470030,
+          "milliseconds": 369104
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits063-064.ndjson",
+          "sha256": "2b33225de2f4bf218ab7cf5499a03c3b49809c9dd12b9753438f0545a4cf6213",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits063-064.ndjson",
+              "sha256": "2b33225de2f4bf218ab7cf5499a03c3b49809c9dd12b9753438f0545a4cf6213",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 8
+            }
+          ],
+          "orbit_range": [
+            63,
+            64
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 8,
+          "milliseconds": 390
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits064-065.ndjson",
+          "sha256": "fc7022b788fd05657950c4a5e145ab518ae74590e7c93ca1979207cda8990b20",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits064-065.ndjson",
+              "sha256": "fc7022b788fd05657950c4a5e145ab518ae74590e7c93ca1979207cda8990b20",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 1
+            }
+          ],
+          "orbit_range": [
+            64,
+            65
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1,
+          "milliseconds": 352
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits065-066.ndjson",
+          "sha256": "6b672a42a61535763e6c83962bea7d56d6a94401a9cab10b1bf830fb54a306cd",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits065-066.ndjson",
+              "sha256": "6b672a42a61535763e6c83962bea7d56d6a94401a9cab10b1bf830fb54a306cd",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 133
+            }
+          ],
+          "orbit_range": [
+            65,
+            66
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 133,
+          "milliseconds": 328
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits066-067.ndjson",
+          "sha256": "360d4700b59b63493746a1e07f8050750106ca9bbfdd259cc02f5024782d332b",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits066-067.ndjson",
+              "sha256": "360d4700b59b63493746a1e07f8050750106ca9bbfdd259cc02f5024782d332b",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 30
+            }
+          ],
+          "orbit_range": [
+            66,
+            67
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 30,
+          "milliseconds": 811
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits067-068.ndjson",
+          "sha256": "c060a655f13760376e653b83f6d46014b6e34dfce8cdb2c665a3289baaac4851",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits067-068.ndjson",
+              "sha256": "c060a655f13760376e653b83f6d46014b6e34dfce8cdb2c665a3289baaac4851",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 19455
+            }
+          ],
+          "orbit_range": [
+            67,
+            68
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 19455,
+          "milliseconds": 2932
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits068-069.ndjson",
+          "sha256": "f575283099be7392e72eeeb11f3f5ac016a17e4fdc64fa324066ffb2b8a6ade8",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits068-069.ndjson",
+              "sha256": "f575283099be7392e72eeeb11f3f5ac016a17e4fdc64fa324066ffb2b8a6ade8",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 104562
+            }
+          ],
+          "orbit_range": [
+            68,
+            69
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 104562,
+          "milliseconds": 10090
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits069-070.ndjson",
+          "sha256": "8fb1effe3c0d2695a72c7da486a392d181d1a8fc5308d83dd4edf433b8252186",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits069-070.ndjson",
+              "sha256": "3f4d5fd995f014810a59a67b61069fc5b32f8e2f60c1c55f166979cee1ab75b1",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits069-070.ndjson",
+              "sha256": "8fb1effe3c0d2695a72c7da486a392d181d1a8fc5308d83dd4edf433b8252186",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 10000001
+            }
+          ],
+          "orbit_range": [
+            69,
+            70
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 10000001,
+          "milliseconds": 610686
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits070-071.ndjson",
+          "sha256": "a451852b47240b374a0920c2a68c005522aafe71db03a7c3760454daa638c297",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits070-071.ndjson",
+              "sha256": "a451852b47240b374a0920c2a68c005522aafe71db03a7c3760454daa638c297",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 42056
+            }
+          ],
+          "orbit_range": [
+            70,
+            71
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 42056,
+          "milliseconds": 3281
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits071-072.ndjson",
+          "sha256": "e5343fc36ab9c97ff15931890a6de57973000469f4e42a0e56504c9676ea2187",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits071-072.ndjson",
+              "sha256": "8e34ebcb1c01175b307ded509e538a992e9db38754e40e59c920f1f1421f8a7e",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits071-072.ndjson",
+              "sha256": "e5343fc36ab9c97ff15931890a6de57973000469f4e42a0e56504c9676ea2187",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 7439918
+            }
+          ],
+          "orbit_range": [
+            71,
+            72
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 7439918,
+          "milliseconds": 332645
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits072-073.ndjson",
+          "sha256": "a0efd14330824f3325c7ea37b6106d3fe665a8309c9e3f619b157cb5f7c99673",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits072-073.ndjson",
+              "sha256": "a0efd14330824f3325c7ea37b6106d3fe665a8309c9e3f619b157cb5f7c99673",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 89694
+            }
+          ],
+          "orbit_range": [
+            72,
+            73
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 89694,
+          "milliseconds": 8963
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits073-074.ndjson",
+          "sha256": "5bf97cbd6a7b2410ee1aafe4713368c6d6b71fab181001f51cc59f324b3932e5",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits073-074.ndjson",
+              "sha256": "5bf97cbd6a7b2410ee1aafe4713368c6d6b71fab181001f51cc59f324b3932e5",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 1067
+            }
+          ],
+          "orbit_range": [
+            73,
+            74
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1067,
+          "milliseconds": 443
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits074-075.ndjson",
+          "sha256": "aab14c2b997f65237cb2616fe6237c0fec00ca6796c7fc224a637b7167a58acb",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits074-075.ndjson",
+              "sha256": "aab14c2b997f65237cb2616fe6237c0fec00ca6796c7fc224a637b7167a58acb",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 1013102
+            }
+          ],
+          "orbit_range": [
+            74,
+            75
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1013102,
+          "milliseconds": 123731
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits075-076.ndjson",
+          "sha256": "ae5e9fc875c1c80ac8cac90cdb3c9dc7d84e224206ba951dbedfb92a554a4aaa",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits075-076.ndjson",
+              "sha256": "ae5e9fc875c1c80ac8cac90cdb3c9dc7d84e224206ba951dbedfb92a554a4aaa",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 47570
+            }
+          ],
+          "orbit_range": [
+            75,
+            76
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 47570,
+          "milliseconds": 4870
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits076-077.ndjson",
+          "sha256": "c1e86bdbe2851db1c7ee6a0146e8257cb5c2e729d2e1ca6f722a3e614d7fa253",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits076-077.ndjson",
+              "sha256": "38fe9c3d6a253942fd9bdd09f4e933795e879b193b5afb6db29876f7d16712bc",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits076-077.ndjson",
+              "sha256": "c1e86bdbe2851db1c7ee6a0146e8257cb5c2e729d2e1ca6f722a3e614d7fa253",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 10000001
+            }
+          ],
+          "orbit_range": [
+            76,
+            77
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 10000001,
+          "milliseconds": 434220
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits077-078.ndjson",
+          "sha256": "7b46f356c412398fba53378cc1094a35a0143ec2f5fa19c5a3d3c63aec7f00b6",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits077-078.ndjson",
+              "sha256": "7b46f356c412398fba53378cc1094a35a0143ec2f5fa19c5a3d3c63aec7f00b6",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 7022
+            }
+          ],
+          "orbit_range": [
+            77,
+            78
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 7022,
+          "milliseconds": 1282
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits078-079.ndjson",
+          "sha256": "8e02458731d3e54625e7d3d7e98753a2e8f00d5e8514a85477baa1dfc8af8349",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits078-079.ndjson",
+              "sha256": "8e02458731d3e54625e7d3d7e98753a2e8f00d5e8514a85477baa1dfc8af8349",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 7433
+            }
+          ],
+          "orbit_range": [
+            78,
+            79
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 7433,
+          "milliseconds": 1055
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits079-080.ndjson",
+          "sha256": "2cf27898d6774796e7152ed457c0a8c394edec6acb3981995d7cef5b43f735c4",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits079-080.ndjson",
+              "sha256": "fe1685876645fa57f5ee82d3b7c00e2bcde9370b23f9d82a4344b0a68d222d44",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits079-080.ndjson",
+              "sha256": "2cf27898d6774796e7152ed457c0a8c394edec6acb3981995d7cef5b43f735c4",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 7403681
+            }
+          ],
+          "orbit_range": [
+            79,
+            80
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 7403681,
+          "milliseconds": 286615
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits080-081.ndjson",
+          "sha256": "535bbc7236546f8e64c62b6a4b735c1fbd4e70d9cb0189466d9f54e468c114f8",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits080-081.ndjson",
+              "sha256": "535bbc7236546f8e64c62b6a4b735c1fbd4e70d9cb0189466d9f54e468c114f8",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 1
+            }
+          ],
+          "orbit_range": [
+            80,
+            81
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1,
+          "milliseconds": 365
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits081-082.ndjson",
+          "sha256": "8b02cc8798820f0048a7434664b6d4da7afa1505a18a87fe61edcbfbd13516df",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits081-082.ndjson",
+              "sha256": "e08bc4e8697c1bf3a3c86dc312919b276c51f2c06ccb5e3bdea21f282d713588",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits081-082.ndjson",
+              "sha256": "8b02cc8798820f0048a7434664b6d4da7afa1505a18a87fe61edcbfbd13516df",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 2704004
+            }
+          ],
+          "orbit_range": [
+            81,
+            82
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 2704004,
+          "milliseconds": 90790
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits082-083.ndjson",
+          "sha256": "b545da5eee1395f5f342edc232097c7cdb2d56a76df27d0629d7bc50c3adb8ea",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits082-083.ndjson",
+              "sha256": "00b39d6fcc4a6908eb97e0f4a3d7a6364f90bc77d6a01666e5f5127fe9482c38",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits082-083.ndjson",
+              "sha256": "b545da5eee1395f5f342edc232097c7cdb2d56a76df27d0629d7bc50c3adb8ea",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 6710883
+            }
+          ],
+          "orbit_range": [
+            82,
+            83
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 6710883,
+          "milliseconds": 288202
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits083-084.ndjson",
+          "sha256": "6d2ad721c8ea010efc9cba1c47b4f5fbff48faf0e63d04ef196b3949d1250b2c",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits083-084.ndjson",
+              "sha256": "036ccaafc94d85d7360591eed63293507e6d3b98202124b959d638a1b3c9f4bf",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits083-084.ndjson",
+              "sha256": "6d2ad721c8ea010efc9cba1c47b4f5fbff48faf0e63d04ef196b3949d1250b2c",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 8986751
+            }
+          ],
+          "orbit_range": [
+            83,
+            84
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 8986751,
+          "milliseconds": 430146
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits084-085.ndjson",
+          "sha256": "b6bb7607cf8da118a15742439b5c54b0e53eb9bc80d88a440ceca3bfe0bb757d",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_35323-orbits084-085.ndjson",
+              "sha256": "5955b65af90a257d7b68bbde4a4021f54cac91a9aa026216eb3226bd26b8942b",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            },
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact10m-retry/a2sa_10_35323-orbits084-085.ndjson",
+              "sha256": "b6bb7607cf8da118a15742439b5c54b0e53eb9bc80d88a440ceca3bfe0bb757d",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 1365665
+            }
+          ],
+          "orbit_range": [
+            84,
+            85
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1365665,
+          "milliseconds": 55714
+        }
+      ]
+    },
+    {
+      "id": "a2sa_10_36194",
+      "classification": "periodic",
+      "periodic_orbit": 43,
+      "orbit_total": 85,
+      "orbit_receipts": 44,
+      "exact_negative_orbits": 31,
+      "node_capped_orbits": 12,
+      "hnf_total": 403,
+      "hnfs_exactly_excluded": 171,
+      "exact_multicover_nodes": 32006813,
+      "exact_multicover_failed_states": 25851436,
+      "milliseconds": 1402350,
+      "receipts": [
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits000-001.ndjson",
+          "sha256": "f57aec991de56023371cb9a4a9b4409f72d8be7e9cb413791258459325b6d9eb",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits000-001.ndjson",
+              "sha256": "f57aec991de56023371cb9a4a9b4409f72d8be7e9cb413791258459325b6d9eb",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 111993
+            }
+          ],
+          "orbit_range": [
+            0,
+            1
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 111993,
+          "milliseconds": 9609
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits001-002.ndjson",
+          "sha256": "435e8b002a3158591e649f1732b23df676b10e2ca46aedef0b64321b1c9f37ab",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits001-002.ndjson",
+              "sha256": "435e8b002a3158591e649f1732b23df676b10e2ca46aedef0b64321b1c9f37ab",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 90004
+            }
+          ],
+          "orbit_range": [
+            1,
+            2
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 90004,
+          "milliseconds": 10187
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits002-003.ndjson",
+          "sha256": "289708d043d9081ae2d98b8f955f66632f2305ccd2a42efec4a169a6c50f3343",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits002-003.ndjson",
+              "sha256": "289708d043d9081ae2d98b8f955f66632f2305ccd2a42efec4a169a6c50f3343",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 41591
+            }
+          ],
+          "orbit_range": [
+            2,
+            3
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 41591,
+          "milliseconds": 6016
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits003-004.ndjson",
+          "sha256": "d9b69544b95803550d6437afba6fbd72ca0d2d199fcf33f0060e8b9c131b1897",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits003-004.ndjson",
+              "sha256": "d9b69544b95803550d6437afba6fbd72ca0d2d199fcf33f0060e8b9c131b1897",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 6632
+            }
+          ],
+          "orbit_range": [
+            3,
+            4
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 6632,
+          "milliseconds": 1917
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits004-005.ndjson",
+          "sha256": "1c44a2a0105e12a5ffc6b14ff3b27f1ad8b6b9f3b36fd764e20938f2537cae0f",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits004-005.ndjson",
+              "sha256": "1c44a2a0105e12a5ffc6b14ff3b27f1ad8b6b9f3b36fd764e20938f2537cae0f",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 105256
+            }
+          ],
+          "orbit_range": [
+            4,
+            5
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 105256,
+          "milliseconds": 9297
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits005-006.ndjson",
+          "sha256": "c1766978310f457572ae298aac8328718c8869a46a48135519a58ec63bba3edb",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits005-006.ndjson",
+              "sha256": "c1766978310f457572ae298aac8328718c8869a46a48135519a58ec63bba3edb",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 94199
+            }
+          ],
+          "orbit_range": [
+            5,
+            6
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 94199,
+          "milliseconds": 7052
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits006-007.ndjson",
+          "sha256": "e72c8acf8c56ce11c431c0bdfb5c97a74a37b9c4eb9cbbc2bcd34d49c45a3e24",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits006-007.ndjson",
+              "sha256": "e72c8acf8c56ce11c431c0bdfb5c97a74a37b9c4eb9cbbc2bcd34d49c45a3e24",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 3614
+            }
+          ],
+          "orbit_range": [
+            6,
+            7
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 3614,
+          "milliseconds": 716
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits007-008.ndjson",
+          "sha256": "173fb76f06e66903fa4354682c9054744f75d7f7742c834bab1a5b6c437f721f",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits007-008.ndjson",
+              "sha256": "173fb76f06e66903fa4354682c9054744f75d7f7742c834bab1a5b6c437f721f",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            }
+          ],
+          "orbit_range": [
+            7,
+            8
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 66924
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits008-009.ndjson",
+          "sha256": "4d447d1ad39bad57c7ddf1f70ba583a4eeb7181afc103ac8b087a719756ffd03",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits008-009.ndjson",
+              "sha256": "4d447d1ad39bad57c7ddf1f70ba583a4eeb7181afc103ac8b087a719756ffd03",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 13
+            }
+          ],
+          "orbit_range": [
+            8,
+            9
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 13,
+          "milliseconds": 406
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits009-010.ndjson",
+          "sha256": "33ae43a0099b8bdcaeae741a802790e45940289531c3313eb6df841bf9b3efe2",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits009-010.ndjson",
+              "sha256": "33ae43a0099b8bdcaeae741a802790e45940289531c3313eb6df841bf9b3efe2",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            }
+          ],
+          "orbit_range": [
+            9,
+            10
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 71011
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits010-011.ndjson",
+          "sha256": "ed6f8261e33ef57f52bde0e92fc01a2ea4d582806af46c55fce6ff0dfcf106a5",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits010-011.ndjson",
+              "sha256": "ed6f8261e33ef57f52bde0e92fc01a2ea4d582806af46c55fce6ff0dfcf106a5",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 6575
+            }
+          ],
+          "orbit_range": [
+            10,
+            11
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 6575,
+          "milliseconds": 1386
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits011-012.ndjson",
+          "sha256": "ea8c3e6ac4c5e9798a713b7a31b79d402fe8e9199bd3ae7d154d9fc89f188f6c",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits011-012.ndjson",
+              "sha256": "ea8c3e6ac4c5e9798a713b7a31b79d402fe8e9199bd3ae7d154d9fc89f188f6c",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 116941
+            }
+          ],
+          "orbit_range": [
+            11,
+            12
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 116941,
+          "milliseconds": 9805
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits012-013.ndjson",
+          "sha256": "a8b4a4f44c8f09268876542c71b1a439bd665a73923ab8b6ab71a6a208308c63",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits012-013.ndjson",
+              "sha256": "a8b4a4f44c8f09268876542c71b1a439bd665a73923ab8b6ab71a6a208308c63",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 92586
+            }
+          ],
+          "orbit_range": [
+            12,
+            13
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 92586,
+          "milliseconds": 6532
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits013-014.ndjson",
+          "sha256": "0c99b0f4642dfddd22b80ac678f1872c46895e36070850e5e4c8981fb41f9e1b",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits013-014.ndjson",
+              "sha256": "0c99b0f4642dfddd22b80ac678f1872c46895e36070850e5e4c8981fb41f9e1b",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 12145
+            }
+          ],
+          "orbit_range": [
+            13,
+            14
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 12145,
+          "milliseconds": 1085
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits014-015.ndjson",
+          "sha256": "eea9ea88a88386869d1ddd65b8d206bc5edbfc9abaa41544c0b4c22640a60218",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits014-015.ndjson",
+              "sha256": "eea9ea88a88386869d1ddd65b8d206bc5edbfc9abaa41544c0b4c22640a60218",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 5316
+            }
+          ],
+          "orbit_range": [
+            14,
+            15
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 5316,
+          "milliseconds": 594
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits015-016.ndjson",
+          "sha256": "54568ef42e1fb1980a1ef028a943cd3d9a2b049a2774ed0b74e0bd8a7333c72a",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits015-016.ndjson",
+              "sha256": "54568ef42e1fb1980a1ef028a943cd3d9a2b049a2774ed0b74e0bd8a7333c72a",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 437632
+            }
+          ],
+          "orbit_range": [
+            15,
+            16
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 437632,
+          "milliseconds": 24592
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits016-017.ndjson",
+          "sha256": "4b888e27279779876d4ffe1edf0644ce1f27ca7eb5947a0345cdca0073f5f9ab",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits016-017.ndjson",
+              "sha256": "4b888e27279779876d4ffe1edf0644ce1f27ca7eb5947a0345cdca0073f5f9ab",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 6795
+            }
+          ],
+          "orbit_range": [
+            16,
+            17
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 6795,
+          "milliseconds": 1013
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits017-018.ndjson",
+          "sha256": "9527b5c1fc2c5bff4c292cd47b7be1c0f0f8faf3aceab31c64e81cd9bf25bf62",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits017-018.ndjson",
+              "sha256": "9527b5c1fc2c5bff4c292cd47b7be1c0f0f8faf3aceab31c64e81cd9bf25bf62",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            }
+          ],
+          "orbit_range": [
+            17,
+            18
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 66256
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits018-019.ndjson",
+          "sha256": "809051a02c2ddd30e7c1cd860940789ad4f52c1ef4c671b59db70c19b0ea4db5",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits018-019.ndjson",
+              "sha256": "809051a02c2ddd30e7c1cd860940789ad4f52c1ef4c671b59db70c19b0ea4db5",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 13
+            }
+          ],
+          "orbit_range": [
+            18,
+            19
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 13,
+          "milliseconds": 330
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits019-020.ndjson",
+          "sha256": "4fe20461d52ed8a62d9bf51ac75465bb2d3d71c157d2d2c0da36212b4898dc8b",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits019-020.ndjson",
+              "sha256": "4fe20461d52ed8a62d9bf51ac75465bb2d3d71c157d2d2c0da36212b4898dc8b",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            }
+          ],
+          "orbit_range": [
+            19,
+            20
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 61484
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits020-021.ndjson",
+          "sha256": "7d8c937137f196426794e1eeb1e397ae3cabae744b6868731af0924cf0cf990f",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits020-021.ndjson",
+              "sha256": "7d8c937137f196426794e1eeb1e397ae3cabae744b6868731af0924cf0cf990f",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            }
+          ],
+          "orbit_range": [
+            20,
+            21
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 48773
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits021-022.ndjson",
+          "sha256": "e5977f0084e8a0b767015d9bf64130327737e337710d196f31b58b034a8e1825",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits021-022.ndjson",
+              "sha256": "e5977f0084e8a0b767015d9bf64130327737e337710d196f31b58b034a8e1825",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 17
+            }
+          ],
+          "orbit_range": [
+            21,
+            22
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 17,
+          "milliseconds": 306
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits022-023.ndjson",
+          "sha256": "bdcfc2fdd709a1a5288cba8ce56be4171092262655d4fd080e03744a1f14df85",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits022-023.ndjson",
+              "sha256": "bdcfc2fdd709a1a5288cba8ce56be4171092262655d4fd080e03744a1f14df85",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 92168
+            }
+          ],
+          "orbit_range": [
+            22,
+            23
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 92168,
+          "milliseconds": 6491
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits023-024.ndjson",
+          "sha256": "023d58806e12a6503bb8fb389c2e85733be74ef881198099b2d9c7ff6ce9159e",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits023-024.ndjson",
+              "sha256": "023d58806e12a6503bb8fb389c2e85733be74ef881198099b2d9c7ff6ce9159e",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            }
+          ],
+          "orbit_range": [
+            23,
+            24
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 68038
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits024-025.ndjson",
+          "sha256": "3e630a280c9cd410a18c85db4f96f70c1bfc42d9db576230fc970094716fee0f",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits024-025.ndjson",
+              "sha256": "3e630a280c9cd410a18c85db4f96f70c1bfc42d9db576230fc970094716fee0f",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 95634
+            }
+          ],
+          "orbit_range": [
+            24,
+            25
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 95634,
+          "milliseconds": 5340
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits025-026.ndjson",
+          "sha256": "638273d065d3f3508ebdaf0b4c9213665c2c4114bd6b84e37fd47c479ea9d565",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits025-026.ndjson",
+              "sha256": "638273d065d3f3508ebdaf0b4c9213665c2c4114bd6b84e37fd47c479ea9d565",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 55107
+            }
+          ],
+          "orbit_range": [
+            25,
+            26
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 55107,
+          "milliseconds": 3482
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits026-027.ndjson",
+          "sha256": "d73112c28e5d03476bcac92f49509766e1af323fe4dab656b57db5ed566719ac",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits026-027.ndjson",
+              "sha256": "d73112c28e5d03476bcac92f49509766e1af323fe4dab656b57db5ed566719ac",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 1033636
+            }
+          ],
+          "orbit_range": [
+            26,
+            27
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1033636,
+          "milliseconds": 55804
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits027-028.ndjson",
+          "sha256": "f6262ceca934f1b40bc54b9ca119288b97b2ed33bb941c4687399ecbea50b168",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits027-028.ndjson",
+              "sha256": "f6262ceca934f1b40bc54b9ca119288b97b2ed33bb941c4687399ecbea50b168",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 501458
+            }
+          ],
+          "orbit_range": [
+            27,
+            28
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 501458,
+          "milliseconds": 21824
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits028-029.ndjson",
+          "sha256": "173fc76ad4de9ebc83c944464d5d4341cc501c508a175c1d75d53faabb2c7d5a",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits028-029.ndjson",
+              "sha256": "173fc76ad4de9ebc83c944464d5d4341cc501c508a175c1d75d53faabb2c7d5a",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 897765
+            }
+          ],
+          "orbit_range": [
+            28,
+            29
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 897765,
+          "milliseconds": 50516
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits029-030.ndjson",
+          "sha256": "4c55571ef2a7c9a25467f6d773c38361f1f52b0c44470b0d8d4169b1bcdcb4ed",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits029-030.ndjson",
+              "sha256": "4c55571ef2a7c9a25467f6d773c38361f1f52b0c44470b0d8d4169b1bcdcb4ed",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 332877
+            }
+          ],
+          "orbit_range": [
+            29,
+            30
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 332877,
+          "milliseconds": 15566
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits030-031.ndjson",
+          "sha256": "0717a0e621f9dfe4cac91031900731a141d052159e14abb0cdc047731ad5a471",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits030-031.ndjson",
+              "sha256": "0717a0e621f9dfe4cac91031900731a141d052159e14abb0cdc047731ad5a471",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            }
+          ],
+          "orbit_range": [
+            30,
+            31
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 63380
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits031-032.ndjson",
+          "sha256": "1a5341733cd440594fcaea245d51d54cd56b180e63f9694f8956a3f5f784e269",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits031-032.ndjson",
+              "sha256": "1a5341733cd440594fcaea245d51d54cd56b180e63f9694f8956a3f5f784e269",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            }
+          ],
+          "orbit_range": [
+            31,
+            32
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 63102
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits032-033.ndjson",
+          "sha256": "1fe5b253df6740189d9fdf85d273c9e665214214d47858a341c7c5c1c3c85e15",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits032-033.ndjson",
+              "sha256": "1fe5b253df6740189d9fdf85d273c9e665214214d47858a341c7c5c1c3c85e15",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 3414
+            }
+          ],
+          "orbit_range": [
+            32,
+            33
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 3414,
+          "milliseconds": 508
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits033-034.ndjson",
+          "sha256": "7717ff409aa027578f82e96ed15867dedae3d3317df6ce4acc77d7d5d8c89302",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits033-034.ndjson",
+              "sha256": "7717ff409aa027578f82e96ed15867dedae3d3317df6ce4acc77d7d5d8c89302",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            }
+          ],
+          "orbit_range": [
+            33,
+            34
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 78864
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits034-035.ndjson",
+          "sha256": "2f91f0ec540d45680b7c3a9dea875c5e295908b1f6871636f1d0061270ae33c1",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits034-035.ndjson",
+              "sha256": "2f91f0ec540d45680b7c3a9dea875c5e295908b1f6871636f1d0061270ae33c1",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            }
+          ],
+          "orbit_range": [
+            34,
+            35
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 77167
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits035-036.ndjson",
+          "sha256": "8e580bf09f643b56019f027f285dab6019b895178851d6cba3c248ef034e1ce6",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits035-036.ndjson",
+              "sha256": "8e580bf09f643b56019f027f285dab6019b895178851d6cba3c248ef034e1ce6",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            }
+          ],
+          "orbit_range": [
+            35,
+            36
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 84803
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits036-037.ndjson",
+          "sha256": "96fd45038d1beabd1aa169ff38a35cd8ffec3acaca474be1fcb7598891c85101",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits036-037.ndjson",
+              "sha256": "96fd45038d1beabd1aa169ff38a35cd8ffec3acaca474be1fcb7598891c85101",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 399184
+            }
+          ],
+          "orbit_range": [
+            36,
+            37
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 399184,
+          "milliseconds": 17571
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits037-038.ndjson",
+          "sha256": "00f5a4c61b88398530074ada5bc9624df8b2a880b588ff3d4fe4eaae8720e779",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits037-038.ndjson",
+              "sha256": "00f5a4c61b88398530074ada5bc9624df8b2a880b588ff3d4fe4eaae8720e779",
+              "solver_unknown": 1,
+              "exact_multicover_nodes": 2000001
+            }
+          ],
+          "orbit_range": [
+            37,
+            38
+          ],
+          "solver_unknown": 1,
+          "exact_multicover_nodes": 2000001,
+          "milliseconds": 133418
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits038-039.ndjson",
+          "sha256": "9c2f6669ece559686bdcd0896f80b142e62779c04dbfd839784db724ece493e9",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits038-039.ndjson",
+              "sha256": "9c2f6669ece559686bdcd0896f80b142e62779c04dbfd839784db724ece493e9",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 831307
+            }
+          ],
+          "orbit_range": [
+            38,
+            39
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 831307,
+          "milliseconds": 53760
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits039-040.ndjson",
+          "sha256": "ae7c6d4769f1297e4e3e9ed3fa32890f0adc2b5c5fc69d5163dbd0cb95f12d69",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits039-040.ndjson",
+              "sha256": "ae7c6d4769f1297e4e3e9ed3fa32890f0adc2b5c5fc69d5163dbd0cb95f12d69",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 371587
+            }
+          ],
+          "orbit_range": [
+            39,
+            40
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 371587,
+          "milliseconds": 33490
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits040-041.ndjson",
+          "sha256": "6a55928a924b9aa6f82a02045afad21ffce776e89dc24e1bb674a085e48bb5a8",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits040-041.ndjson",
+              "sha256": "6a55928a924b9aa6f82a02045afad21ffce776e89dc24e1bb674a085e48bb5a8",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 6762
+            }
+          ],
+          "orbit_range": [
+            40,
+            41
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 6762,
+          "milliseconds": 1076
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits041-042.ndjson",
+          "sha256": "5d081f75a7189b302746dd9a8824b8b9fd2c1afa808f99cc712f34428364c5aa",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits041-042.ndjson",
+              "sha256": "5d081f75a7189b302746dd9a8824b8b9fd2c1afa808f99cc712f34428364c5aa",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 595345
+            }
+          ],
+          "orbit_range": [
+            41,
+            42
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 595345,
+          "milliseconds": 44554
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits042-043.ndjson",
+          "sha256": "cc6cb585164c557cb28b69e9f283b0a7158777e2e5de09cddbe8c2d23d543d0d",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits042-043.ndjson",
+              "sha256": "cc6cb585164c557cb28b69e9f283b0a7158777e2e5de09cddbe8c2d23d543d0d",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 1011764
+            }
+          ],
+          "orbit_range": [
+            42,
+            43
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 1011764,
+          "milliseconds": 87255
+        },
+        {
+          "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits043-044.ndjson",
+          "sha256": "d55ee3ba9ead3736dc6ac304ecf1dc4a119ffe3f9c21edc4fcb73df17f8541c8",
+          "attempts": [
+            {
+              "path": "a2-sliced-size10-leaders-periodic9-exact2m/a2sa_10_36194-orbits043-044.ndjson",
+              "sha256": "d55ee3ba9ead3736dc6ac304ecf1dc4a119ffe3f9c21edc4fcb73df17f8541c8",
+              "solver_unknown": 0,
+              "exact_multicover_nodes": 647471
+            }
+          ],
+          "orbit_range": [
+            43,
+            44
+          ],
+          "solver_unknown": 0,
+          "exact_multicover_nodes": 647471,
+          "milliseconds": 31050
+        }
+      ]
+    }
+  ],
+  "campaign_receipt_sha256": "c6d0465626ce384da128dc6e9f3e6c9b7982fec7e79a3f22c5d31a53b37f8372",
+  "claim_scope": "fixed_9_copy_weighted_hnf_quotients",
+  "strongest_receipt_archive": "data/a2-sliced-size10-leaders-periodic9-exact10m-best-receipts.ndjson.gz",
+  "strongest_receipt_archive_sha256": "317d09960ed54747ebadaeb4133518c4d18bd9e4c6586ab898f1ec5374352109"
+}

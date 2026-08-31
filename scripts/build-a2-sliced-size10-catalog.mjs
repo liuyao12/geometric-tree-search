@@ -40,7 +40,7 @@ const fourCopySubstitutions = [
   ))
 ];
 const nineCopySummary = await readJson(
-  "data/a2-sliced-size10-leaders-periodic9-exact2m-summary.json"
+  "data/a2-sliced-size10-leaders-periodic9-exact10m-summary.json"
 );
 const nineCopyCertificates = await readGzipNdjson(
   "data/a2-sliced-size10-36194-periodic9-certificate.ndjson.gz"
@@ -195,7 +195,8 @@ const candidates = selectedIds.map((id, index) => {
       periodic_template: webPeriodicTemplate(periodicCertificate, geometry),
       periodic_source: isPeriodic ? "an exact nine-copy weighted quotient with an independently replayed scale-two cluster substitution" : null,
       periodic_quotient_cluster_substitution: clusterRule,
-      periodic_report: "data/a2-sliced-size10-leaders-periodic9-exact2m-summary.json",
+      periodic_report: "data/a2-sliced-size10-leaders-periodic9-exact10m-summary.json",
+      periodic_nine_copy_receipt_archive: "data/a2-sliced-size10-leaders-periodic9-exact10m-best-receipts.ndjson.gz",
       direct_scalar_substitution_exact_scales: [2, 8],
       direct_scalar_substitution_models: ["proper", "reflected"],
       direct_scalar_substitution_certified_negatives: direct.length,

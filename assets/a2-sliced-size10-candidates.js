@@ -173,10 +173,10 @@ export const A2_SLICED_SIZE10_CANDIDATES = Object.freeze([
       "periodic_six_copy_milliseconds": 14947,
       "periodic_exact_through": 6,
       "periodic_nine_copy_orbit_total": 85,
-      "periodic_nine_copy_exact_negative_orbits": 55,
-      "periodic_nine_copy_node_capped_orbits": 30,
-      "periodic_nine_copy_hnfs_exactly_excluded": 273,
-      "periodic_nine_copy_exact_multicover_nodes": 76832834,
+      "periodic_nine_copy_exact_negative_orbits": 81,
+      "periodic_nine_copy_node_capped_orbits": 4,
+      "periodic_nine_copy_hnfs_exactly_excluded": 385,
+      "periodic_nine_copy_exact_multicover_nodes": 225891768,
       "periodic_nine_copy_certificate": null,
       "periodic_nine_copy_replay_verified": false,
       "motif_tiles": null,
@@ -185,7 +185,8 @@ export const A2_SLICED_SIZE10_CANDIDATES = Object.freeze([
       "periodic_template": null,
       "periodic_source": null,
       "periodic_quotient_cluster_substitution": null,
-      "periodic_report": "data/a2-sliced-size10-leaders-periodic9-exact2m-summary.json",
+      "periodic_report": "data/a2-sliced-size10-leaders-periodic9-exact10m-summary.json",
+      "periodic_nine_copy_receipt_archive": "data/a2-sliced-size10-leaders-periodic9-exact10m-best-receipts.ndjson.gz",
       "direct_scalar_substitution_exact_scales": [
         2,
         8
@@ -640,10 +641,10 @@ export const A2_SLICED_SIZE10_CANDIDATES = Object.freeze([
       "periodic_six_copy_milliseconds": 14607,
       "periodic_exact_through": 6,
       "periodic_nine_copy_orbit_total": 85,
-      "periodic_nine_copy_exact_negative_orbits": 55,
-      "periodic_nine_copy_node_capped_orbits": 30,
-      "periodic_nine_copy_hnfs_exactly_excluded": 273,
-      "periodic_nine_copy_exact_multicover_nodes": 76076853,
+      "periodic_nine_copy_exact_negative_orbits": 77,
+      "periodic_nine_copy_node_capped_orbits": 8,
+      "periodic_nine_copy_hnfs_exactly_excluded": 367,
+      "periodic_nine_copy_exact_multicover_nodes": 234145736,
       "periodic_nine_copy_certificate": null,
       "periodic_nine_copy_replay_verified": false,
       "motif_tiles": null,
@@ -652,7 +653,8 @@ export const A2_SLICED_SIZE10_CANDIDATES = Object.freeze([
       "periodic_template": null,
       "periodic_source": null,
       "periodic_quotient_cluster_substitution": null,
-      "periodic_report": "data/a2-sliced-size10-leaders-periodic9-exact2m-summary.json",
+      "periodic_report": "data/a2-sliced-size10-leaders-periodic9-exact10m-summary.json",
+      "periodic_nine_copy_receipt_archive": "data/a2-sliced-size10-leaders-periodic9-exact10m-best-receipts.ndjson.gz",
       "direct_scalar_substitution_exact_scales": [
         2,
         8
@@ -2064,7 +2066,8 @@ export const A2_SLICED_SIZE10_CANDIDATES = Object.freeze([
         },
         "interpretation": "The eight-tile periodic quotient is the metatile; its scale-two image is exactly eight translated copies of that quotient metatile."
       },
-      "periodic_report": "data/a2-sliced-size10-leaders-periodic9-exact2m-summary.json",
+      "periodic_report": "data/a2-sliced-size10-leaders-periodic9-exact10m-summary.json",
+      "periodic_nine_copy_receipt_archive": "data/a2-sliced-size10-leaders-periodic9-exact10m-best-receipts.ndjson.gz",
       "direct_scalar_substitution_exact_scales": [
         2,
         8

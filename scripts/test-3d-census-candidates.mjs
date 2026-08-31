@@ -1819,13 +1819,16 @@ const unresolvedSizeTen = A2_SLICED_SIZE10_CANDIDATES.filter(candidate =>
 );
 assert.deepEqual(unresolvedSizeTen.map(candidate => [
   candidate.id,
+  candidate.screening.periodic_nine_copy_exact_negative_orbits,
+  candidate.screening.periodic_nine_copy_node_capped_orbits,
+  candidate.screening.periodic_nine_copy_hnfs_exactly_excluded,
   candidate.screening.three_copy_substitution_exact_scales.join(","),
   candidate.screening.three_copy_substitution_certified_negatives,
   candidate.screening.three_copy_substitution_parents_exhausted,
   candidate.screening.three_copy_substitution_reports.length,
 ]), [
-  ["a2sa_10_36141", "2,3", 4, 10710, 2],
-  ["a2sa_10_35323", "2,3", 4, 11394, 2],
+  ["a2sa_10_36141", 81, 4, 385, "2,3", 4, 10710, 2],
+  ["a2sa_10_35323", 77, 8, 367, "2,3", 4, 11394, 2],
 ]);
 const sizeTenPeriodic = A2_SLICED_SIZE10_CANDIDATES.find(candidate => candidate.id === "a2sa_10_36194");
 assert.equal(sizeTenPeriodic.screening.status, "periodic");
@@ -1837,8 +1840,7 @@ assert.equal(sizeTenPeriodic.screening.periodic_template.motif.length, 9);
 assert.equal(sizeTenPeriodic.screening.periodic_quotient_cluster_substitution.expanded_tile_copies, 72);
 assert.ok(A2_SLICED_SIZE10_CANDIDATES.filter(candidate => candidate.screening.status === "inconclusive").every(candidate =>
   candidate.screening.periodic_exact_through === 6
-  && candidate.screening.periodic_nine_copy_exact_negative_orbits === 55
-  && candidate.screening.periodic_nine_copy_node_capped_orbits === 30
+  && candidate.screening.periodic_nine_copy_receipt_archive === "data/a2-sliced-size10-leaders-periodic9-exact10m-best-receipts.ndjson.gz"
   && candidate.screening.four_copy_substitution_exact_scales.join(",") === "2"
   && candidate.screening.four_copy_substitution_models.join(",") === "proper,reflected"
   && candidate.screening.four_copy_substitution_certified_negatives === 2
