@@ -138,6 +138,10 @@ def main() -> None:
     parser.add_argument("--exact-node-limit", type=int, default=0)
     parser.add_argument("--workers", type=int, default=8)
     parser.add_argument("--max-tasks", type=int, default=0)
+    parser.add_argument(
+        "--retry-unknown-from",
+        help="schedule only orbit shards whose receipt in this directory has solver_unknown > 0",
+    )
     args = parser.parse_args()
 
     input_path = Path(args.input).resolve()
@@ -156,6 +160,7 @@ def main() -> None:
         parser.error(f"candidate IDs not found among unresolved rows: {missing}")
 
     tasks = []
+    retry_unknown_dir = Path(args.retry_unknown_from).resolve() if args.retry_unknown_from else None
     candidate_paths: dict[str, list[Path]] = {}
     for candidate_id in requested:
         paths = []
@@ -178,6 +183,13 @@ def main() -> None:
             positive_marker.unlink(missing_ok=True)
         for start, path in zip(range(0, args.orbit_total, args.orbit_span), paths):
             stop = min(args.orbit_total, start + args.orbit_span)
+            if retry_unknown_dir is not None:
+                prior_path = shard_path(retry_unknown_dir, candidate_id, start, stop)
+                if not prior_path.exists():
+                    continue
+                prior = read_ndjson(prior_path)[0]
+                if not prior["periodic_z3"].get("solver_unknown"):
+                    continue
             if not valid_shard(path, candidate_id, start, stop):
                 tasks.append({
                     "id": candidate_id,
