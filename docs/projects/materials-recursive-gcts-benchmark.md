@@ -1,5 +1,36 @@
 # Recursive GCTS benchmark for material growth
 
+### Observed-network master-equation leap (Build 373)
+
+The finite exact-state graph now has a transient dynamics layer. It retains
+the latest exact committed observation for every directed edge, requires all
+retained log rates to share one temperature and one barrier-method settings
+digest, and verifies that every state has one consistent atom count. It then
+constructs the continuous-time generator `Q` and propagates a chosen one-hot
+initial state by uniformization,
+
+`p(t) = exp(-qt) Σ_n (qt)^n / n! · p(0) P^n`, with `P = I + Q/q`.
+
+Here `q` is the maximum observed exit rate. Working with shifted log rates
+keeps the matrix stable across extreme Arrhenius scales; the Poisson series is
+continued until its retained mass passes the declared tolerance. The audit
+checks stochastic rows, nonnegative state probabilities, conserved total
+probability, the number of terms, and the truncated tail at every horizon.
+
+The UI exposes `0.1, 0.3, 1, 3, 10, 30 τobs` and maps each multiplier back to
+physical seconds when representable. It plots probability for up to eight
+occupied exact geometries and reports the most probable state, expected atom
+count/change, and occupancy entropy. This leap is analytic on the finite
+observed graph: it avoids drawing every KMC transition while preserving the
+supplied state identities and rates.
+
+The crucial boundary is explicit. A missing exit receives zero only inside
+this conditional calculation. It is neither inferred nor certified absent.
+Consequently the projection is not a complete chemical master equation, an
+equilibrium ensemble, a mean first-passage time, a proof of ergodicity, or a
+long-time material-growth law. Those require a demonstrably adequate state
+and mechanism catalog.
+
 ### Coherent frontier mechanism landscape (Build 372)
 
 The action-barrier response already bound exact path geometry, barriers,

@@ -1,5 +1,30 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 373 · observed-network master-equation leap
+
+The exact reversible state graph now supports a transient population
+projection. Once at least two committed colored geometries are connected by
+finite rates from one temperature and one barrier-method settings digest, the
+portal assembles the continuous-time generator and solves its master equation
+by uniformization. This jumps directly to state probabilities at
+`0.1–30 τobs` without sampling every intervening KMC event.
+
+The interactive population plot lets the investigator choose the initial
+exact state and observed-network horizon. It displays each reachable state's
+probability trajectory, the most probable exact geometry, expected atom
+count and change, state entropy, and the physical time corresponding to the
+observed maximum exit rate. Atom counts are accepted only when every retained
+edge assigns a consistent count to each state, and probability conservation,
+nonnegativity, Poisson-tail truncation, shared temperature, and shared method
+are audited explicitly.
+
+This is deliberately a conditional finite-catalog calculation. Unobserved
+states and exits are assigned zero rate inside the matrix because no value was
+supplied—not because they are physically absent. A long-horizon distribution
+is therefore not labeled equilibrium, an MFPT, mechanism completeness, or a
+macroscopic growth law. Exact state geometry is never interpolated or changed
+by the population solver.
+
 ## Build 372 · coherent frontier mechanism landscape
 
 The portal now places every frozen candidate on one event-resolved landscape:

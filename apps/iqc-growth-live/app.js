@@ -88,34 +88,36 @@ import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntim
   from "./external-trajectory-geometry.mjs?v=20260830-346";
 import { actionBarrierSha256, buildFrozenActionBarrierRequest, frozenActionBarrierRequestReceipt,
   frozenActionStateGeometrySha256, validateFrozenActionBarrierResponse }
-  from "./external-action-barrier.mjs?v=20260831-372";
+  from "./external-action-barrier.mjs?v=20260831-373";
 import { buildActionPathViewerFrame, projectActionPathViewerFrame }
-  from "./action-path-viewer.mjs?v=20260831-372";
+  from "./action-path-viewer.mjs?v=20260831-373";
 import { actionPathMechanismSensitivity, analyzeActionPathMechanism }
-  from "./action-path-mechanism.mjs?v=20260831-372";
+  from "./action-path-mechanism.mjs?v=20260831-373";
 import { buildFrozenKineticCompetition }
-  from "./frozen-frontier-kinetics.mjs?v=20260831-372";
+  from "./frozen-frontier-kinetics.mjs?v=20260831-373";
 import { buildKineticEventSpectrum }
-  from "./kinetic-event-spectrum.mjs?v=20260831-372";
+  from "./kinetic-event-spectrum.mjs?v=20260831-373";
 import { buildTemperatureProgrammedKinetics, inspectTemperatureProgram }
-  from "./temperature-programmed-kinetics.mjs?v=20260831-372";
+  from "./temperature-programmed-kinetics.mjs?v=20260831-373";
 import { buildKineticGeometryResponse, inspectKineticGeometryResponse }
-  from "./kinetic-geometry-response.mjs?v=20260831-372";
+  from "./kinetic-geometry-response.mjs?v=20260831-373";
 import { buildFrontierMechanismLandscape }
-  from "./frontier-mechanism-landscape.mjs?v=20260831-372";
+  from "./frontier-mechanism-landscape.mjs?v=20260831-373";
 import { enumerateDetachableLeafPlacements }
   from "./reversible-frontier-events.mjs?v=20260831-347";
 import { enumerateMassConservingSurfaceHops }
-  from "./surface-hop-events.mjs?v=20260831-372";
+  from "./surface-hop-events.mjs?v=20260831-373";
 import { enumerateLocalSpeciesExchangeEvents }
-  from "./species-exchange-events.mjs?v=20260831-372";
+  from "./species-exchange-events.mjs?v=20260831-373";
 import { buildExternalStateRelaxationRequest, stateRelaxationSha256,
   validateExternalStateRelaxationResponse }
-  from "./external-state-relaxation.mjs?v=20260831-372";
+  from "./external-state-relaxation.mjs?v=20260831-373";
 import { appendCommittedTransition }
-  from "./reversible-transition-lineage.mjs?v=20260831-372";
+  from "./reversible-transition-lineage.mjs?v=20260831-373";
 import { buildFiniteTransitionNetwork }
   from "./finite-transition-network.mjs?v=20260831-352";
+import { buildFiniteNetworkPopulationDynamics }
+  from "./finite-network-population-dynamics.mjs?v=20260831-373";
 import { auditCompetingObservedTransitionPaths }
   from "./finite-transition-pathways.mjs?v=20260831-352";
 import { buildFiniteNucleationLandscape }
@@ -127,19 +129,19 @@ import { evaluateWulffShapeRegularizer, matchedWulffRankingAudit }
   from "./wulff-shape-regularizer.mjs?v=20260831-354";
 import { buildAttachmentKineticsRequest, buildNormalizedKineticWulffGeometry,
   validateAttachmentKineticsResponse, evaluateKineticHabitScore, matchedKineticHabitRankingAudit }
-  from "./external-attachment-kinetics.mjs?v=20260831-372";
+  from "./external-attachment-kinetics.mjs?v=20260831-373";
 import { buildInterfaceFluxRequest, validateInterfaceFluxResponse, evaluateInterfaceFluxScore,
   matchedInterfaceFluxRankingAudit }
-  from "./external-interface-flux.mjs?v=20260831-372";
+  from "./external-interface-flux.mjs?v=20260831-373";
 import { periodicSiteNumberDensity, coupleInterfaceSupplyAndAttachment,
   syntheticGrowthRegimePreview }
-  from "./growth-regime-bridge.mjs?v=20260831-372";
+  from "./growth-regime-bridge.mjs?v=20260831-373";
 import { buildLeapfrogPhysicsCycle, couplingModeGate, LEAPFROG_COUPLING_MODES }
-  from "./leapfrog-physics-cycle.mjs?v=20260831-372";
+  from "./leapfrog-physics-cycle.mjs?v=20260831-373";
 import { buildCatalogConditionalChronology }
-  from "./catalog-conditional-chronology.mjs?v=20260831-372";
+  from "./catalog-conditional-chronology.mjs?v=20260831-373";
 import { buildCoupledPhysicsState, coupledStateGate }
-  from "./coupled-physics-state.mjs?v=20260831-372";
+  from "./coupled-physics-state.mjs?v=20260831-373";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -699,6 +701,12 @@ const transitionNetworkState = $("transitionNetworkState");
 const transitionPathSource = $("transitionPathSource");
 const transitionPathTarget = $("transitionPathTarget");
 const transitionPathState = $("transitionPathState");
+const finiteNetworkPopulationBadge = $("finiteNetworkPopulationBadge");
+const finiteNetworkPopulationInitial = $("finiteNetworkPopulationInitial");
+const finiteNetworkPopulationHorizon = $("finiteNetworkPopulationHorizon");
+const finiteNetworkPopulationPlot = $("finiteNetworkPopulationPlot");
+const finiteNetworkPopulationSummary = $("finiteNetworkPopulationSummary");
+const finiteNetworkPopulationState = $("finiteNetworkPopulationState");
 const finiteNucleationBadge = $("finiteNucleationBadge");
 const finiteNucleationPlot = $("finiteNucleationPlot");
 const finiteNucleationState = $("finiteNucleationState");
@@ -1821,6 +1829,8 @@ let selectedTransitionNetworkCycleId = null;
 let selectedTransitionPathSourceSha256 = null;
 let selectedTransitionPathTargetSha256 = null;
 let latestFiniteTransitionPathwayAudit = null;
+let selectedFiniteNetworkPopulationInitialSha256 = null;
+let finiteNetworkPopulationHorizonMultiplier = 3;
 let latestFiniteNucleationLandscape = buildFiniteNucleationLandscape(
   latestFiniteTransitionNetworkAudit);
 let reversibleInversePairCount = 0;
@@ -3891,7 +3901,7 @@ async function downloadInterfacialEnergyRequest() {
   const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-372",
+  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-373",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256,
@@ -4135,7 +4145,7 @@ async function downloadAttachmentKineticsRequest() {
   const material = currentMaterial(); const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-372",
+  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-373",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256, intrinsicDimension, orientationBasisCartesian,
@@ -4654,7 +4664,7 @@ async function downloadSpatialInterfaceFluxRequest() {
   const interfaceGeometrySha256 = await receiptSha256(JSON.stringify({ structureSha256: configuration.structureSha256,
     confinement: confinementSelect?.value || "box", publicReach: growthDomainScale, atomCount: referenceAtoms.length }));
   const species = material.actualElements ? [...material.actualElements] : [...material.elements];
-  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-372",
+  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-373",
     scenarioId: scenarioSelect.value, materialName: material.name, species,
     structureSha256: configuration.structureSha256, interfaceGeometrySha256,
     interfaceConfiguration: configuration,
@@ -13933,7 +13943,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260831-372",
+      buildId: "20260831-373",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -16526,7 +16536,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260831-372" },
+    application: { name: "Materials Growth Lab", buildId: "20260831-373" },
     postLeapExternalRelaxation: stateRelaxationReceipt(),
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
@@ -24887,7 +24897,7 @@ async function freezeExternalStateRelaxation() {
     throw new Error("variable-cell relaxation requires a fully periodic 3D state");
   }
   const request = await buildExternalStateRelaxationRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-372",
+    generatedAt: new Date().toISOString(), buildId: "20260831-373",
     materialName: currentMaterial().name, sites,
     cellAngstrom: policy.cellAngstrom, periodicBoundary: policy.periodicBoundary,
     boundary: currentGrowthDomainSnapshot(), sourceLeapReceiptSha256: null,
@@ -25098,6 +25108,7 @@ function registerCommittedReversibleTransition(checkpoint, candidateId, committe
     selectedTransitionNetworkCycleId = latestFiniteTransitionNetworkAudit.cycles[0]?.cycleId || null;
   }
   latestFiniteTransitionPathwayAudit = currentObservedPathwayAudit();
+  const finiteNetworkPopulationDynamics = currentFiniteNetworkPopulationDynamics();
   latestFiniteNucleationLandscape = buildFiniteNucleationLandscape(
     latestFiniteTransitionNetworkAudit);
   checkpoint.committedTransitionLineage = {
@@ -25107,6 +25118,7 @@ function registerCommittedReversibleTransition(checkpoint, candidateId, committe
     exactInversePairCount: result.exactInversePairCount,
     finiteTransitionNetwork: latestFiniteTransitionNetworkAudit,
     finiteTransitionPathway: latestFiniteTransitionPathwayAudit,
+    finiteNetworkPopulationDynamics,
     finiteNucleationLandscape: latestFiniteNucleationLandscape,
     targetUsed: false,
   };
@@ -25151,6 +25163,112 @@ function conditionalWaitingText(pathway) {
   }
   return Number.isFinite(pathway.logConditionalSerialWaitingTimeSeconds)
     ? `ln τ=${pathway.logConditionalSerialWaitingTimeSeconds.toFixed(2)}` : "rate incomplete";
+}
+
+function currentFiniteNetworkPopulationDynamics() {
+  const nodes = latestFiniteTransitionNetworkAudit?.nodes || [];
+  if (!nodes.some((node) => node.stateSha256
+    === selectedFiniteNetworkPopulationInitialSha256)) {
+    selectedFiniteNetworkPopulationInitialSha256 = nodes[0]?.stateSha256 || null;
+  }
+  return buildFiniteNetworkPopulationDynamics(latestFiniteTransitionNetworkAudit, {
+    initialStateSha256: selectedFiniteNetworkPopulationInitialSha256,
+    horizonMultipliers: [0, 0.1, 0.3, 1, 3, 10, 30],
+  });
+}
+
+function finiteNetworkTimeText(sample) {
+  if (sample?.elapsedSeconds === 0) return "0 s";
+  if (Number.isFinite(sample?.elapsedSeconds)) return kineticValueText(sample.elapsedSeconds, " s");
+  return Number.isFinite(sample?.logElapsedSeconds)
+    ? `ln t=${sample.logElapsedSeconds.toFixed(2)} s` : "time unavailable";
+}
+
+function renderFiniteNetworkPopulationDynamics() {
+  const audit = currentFiniteNetworkPopulationDynamics();
+  const svgNamespace = "http://www.w3.org/2000/svg";
+  const makeSvg = (name, attributes = {}) => {
+    const element = document.createElementNS(svgNamespace, name);
+    Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, String(value)));
+    return element;
+  };
+  finiteNetworkPopulationPlot.replaceChildren();
+  finiteNetworkPopulationSummary.replaceChildren();
+  finiteNetworkPopulationInitial.replaceChildren();
+  (latestFiniteTransitionNetworkAudit?.nodes || []).forEach((node) => {
+    const option = document.createElement("option"); option.value = node.stateSha256;
+    option.textContent = `${node.stateId} · ${node.shortHash}`;
+    finiteNetworkPopulationInitial.append(option);
+  });
+  finiteNetworkPopulationInitial.disabled = !audit.available;
+  if (audit.available) finiteNetworkPopulationInitial.value = audit.initialStateSha256;
+  if (!audit.available) {
+    finiteNetworkPopulationBadge.textContent = "awaiting rates";
+    const empty = makeSvg("text", { x: 150, y: 82, "text-anchor": "middle", class: "empty" });
+    empty.textContent = "conditional state dynamics unavailable";
+    finiteNetworkPopulationPlot.append(empty);
+    finiteNetworkPopulationState.textContent = `${audit.reason} ${audit.claimBoundary}`;
+    return audit;
+  }
+  finiteNetworkPopulationBadge.textContent = `${audit.stateCount} states · ${audit.temperatureKelvin} K`;
+  finiteNetworkPopulationHorizon.value = String(finiteNetworkPopulationHorizonMultiplier);
+  const selectedSample = audit.timeline.reduce((best, sample) =>
+    Math.abs(sample.observedTimescaleMultiplier - finiteNetworkPopulationHorizonMultiplier)
+      < Math.abs(best.observedTimescaleMultiplier - finiteNetworkPopulationHorizonMultiplier)
+      ? sample : best, audit.timeline[0]);
+  const left = 34, right = 290, top = 12, bottom = 132;
+  const maximumMultiplier = audit.timeline.at(-1).observedTimescaleMultiplier;
+  const x = (value) => left + (right - left) * Math.log1p(value) / Math.log1p(maximumMultiplier);
+  const y = (value) => bottom - (bottom - top) * value;
+  [0, .25, .5, .75, 1].forEach((value) => {
+    finiteNetworkPopulationPlot.append(makeSvg("line", { x1: left, y1: y(value),
+      x2: right, y2: y(value), class: value === 0 ? "axis" : "grid" }));
+  });
+  finiteNetworkPopulationPlot.append(makeSvg("line", { x1: left, y1: top,
+    x2: left, y2: bottom, class: "axis" }), makeSvg("line", { x1: x(
+    selectedSample.observedTimescaleMultiplier), y1: top,
+    x2: x(selectedSample.observedTimescaleMultiplier), y2: bottom, class: "cursor" }));
+  const stateSeries = audit.timeline[0].stateProbabilities.map((state, stateIndex) => ({
+    ...state,
+    stateIndex,
+    maximumProbability: Math.max(...audit.timeline.map((sample) =>
+      sample.stateProbabilities[stateIndex].probability)),
+  })).filter((state) => state.maximumProbability > 1e-4)
+    .sort((first, second) => second.maximumProbability - first.maximumProbability).slice(0, 8);
+  const palette = ["#65e1bc", "#89beff", "#ff81b8", "#ffc169", "#b88cff", "#74d8ff",
+    "#a8dc7b", "#ff8e75"];
+  stateSeries.forEach((state, colorIndex) => {
+    const color = palette[colorIndex % palette.length];
+    const points = audit.timeline.map((sample) => `${x(sample.observedTimescaleMultiplier)},${y(
+      sample.stateProbabilities[state.stateIndex].probability)}`).join(" ");
+    const line = makeSvg("polyline", { points, class: "population-line", stroke: color });
+    const title = makeSvg("title"); title.textContent = `${state.stateId} · N=${state.atomCount}`;
+    line.append(title); finiteNetworkPopulationPlot.append(line);
+    const probability = selectedSample.stateProbabilities[state.stateIndex].probability;
+    const point = makeSvg("circle", { cx: x(selectedSample.observedTimescaleMultiplier),
+      cy: y(probability), r: probability === selectedSample.mostProbableState.probability ? 4 : 2.5,
+      fill: color, class: "population-point" });
+    const pointTitle = makeSvg("title"); pointTitle.textContent = `${state.stateId}: ${(100 * probability).toFixed(3)}%`;
+    point.append(pointTitle); finiteNetworkPopulationPlot.append(point);
+  });
+  [[left, bottom + 13, "0"], [right, bottom + 13, `${maximumMultiplier} τobs`],
+    [left - 5, top + 3, "p=1"], [left - 5, bottom, "0"]].forEach(([tx, ty, label], index) => {
+    const text = makeSvg("text", { x: tx, y: ty,
+      "text-anchor": index === 1 ? "end" : index > 1 ? "end" : "start", class: "label" });
+    text.textContent = label; finiteNetworkPopulationPlot.append(text);
+  });
+  const tiles = [
+    ["horizon", `${selectedSample.observedTimescaleMultiplier} τobs · ${finiteNetworkTimeText(selectedSample)}`],
+    ["most probable", `${selectedSample.mostProbableState.stateId} · ${(100 * selectedSample.mostProbableState.probability).toFixed(2)}%`],
+    ["expected atoms", `${selectedSample.expectedAtomCount.toFixed(3)} (${selectedSample.expectedAtomCountChange >= 0 ? "+" : ""}${selectedSample.expectedAtomCountChange.toFixed(3)})`],
+    ["state entropy", `${selectedSample.occupancyEntropyNat.toFixed(3)} nat`],
+  ];
+  finiteNetworkPopulationSummary.replaceChildren(...tiles.map(([label, value]) => {
+    const tile = document.createElement("span"); const strong = document.createElement("strong");
+    tile.append(document.createTextNode(label)); strong.textContent = value; tile.append(strong); return tile;
+  }));
+  finiteNetworkPopulationState.textContent = `Uniformization conserves probability across ${audit.directedEdgeCount} latest exact directed rates; ${audit.observedDeadEndStateCount} observed state${audit.observedDeadEndStateCount === 1 ? " has" : "s have"} no measured exit. Unobserved exits are zero only inside this conditional calculation. This is not equilibrium, an MFPT, or a complete growth law.`;
+  return audit;
 }
 
 function renderFiniteNucleationLandscape() {
@@ -25310,6 +25428,7 @@ function renderFiniteTransitionNetwork() {
       ? "No finite-rate directed route connects the selected observed states."
       : `${primary.stepCount} steps · bottleneck ln k=${primary.bottleneckLogRatePerSecond.toFixed(2)} · path-conditional serial τ ${conditionalWaitingText(primary)}.${primary.kineticConditionsComparable ? " Common T + barrier method." : " Mixed or incomplete kinetic conditions: rate comparison is descriptive only."}${competing ? ` Distinct route: ${competing.stepCount} steps, bottleneck ln k=${competing.bottleneckLogRatePerSecond.toFixed(2)}.` : " No route surviving a primary-edge exclusion is observed."} This is not an MFPT or a complete mechanism.`;
   renderFiniteNucleationLandscape();
+  renderFiniteNetworkPopulationDynamics();
 }
 
 function renderInverseTransitionLineage() {
@@ -26696,7 +26815,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
     ...speciesExchangeCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-372",
+    generatedAt: new Date().toISOString(), buildId: "20260831-373",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -28199,6 +28318,8 @@ function initializeOffLatticeSearch() {
   selectedTransitionPathSourceSha256 = null;
   selectedTransitionPathTargetSha256 = null;
   latestFiniteTransitionPathwayAudit = null;
+  selectedFiniteNetworkPopulationInitialSha256 = null;
+  finiteNetworkPopulationHorizonMultiplier = 3;
   latestFiniteNucleationLandscape = buildFiniteNucleationLandscape(
     latestFiniteTransitionNetworkAudit);
   reversibleInversePairCount = 0;
@@ -31062,6 +31183,8 @@ function resetCounters() {
   selectedTransitionPathSourceSha256 = null;
   selectedTransitionPathTargetSha256 = null;
   latestFiniteTransitionPathwayAudit = null;
+  selectedFiniteNetworkPopulationInitialSha256 = null;
+  finiteNetworkPopulationHorizonMultiplier = 3;
   latestFiniteNucleationLandscape = buildFiniteNucleationLandscape(
     latestFiniteTransitionNetworkAudit);
   reversibleInversePairCount = 0;
@@ -33957,6 +34080,8 @@ function physicsTranslationRecords(leap = null) {
     ?.finiteTransitionNetwork || latestFiniteTransitionNetworkAudit || null;
   const transitionPathwayReceipt = leap?.actionBarrierCheckpoint?.committedTransitionLineage
     ?.finiteTransitionPathway || latestFiniteTransitionPathwayAudit || null;
+  const populationDynamicsReceipt = leap?.actionBarrierCheckpoint?.committedTransitionLineage
+    ?.finiteNetworkPopulationDynamics || currentFiniteNetworkPopulationDynamics();
   const nucleationLandscapeReceipt = leap?.actionBarrierCheckpoint?.committedTransitionLineage
     ?.finiteNucleationLandscape || latestFiniteNucleationLandscape || null;
   return [
@@ -34446,6 +34571,19 @@ function physicsTranslationRecords(leap = null) {
         ? `Path-conditional serial waiting time ${conditionalWaitingText(transitionPathwayReceipt.primary)}; ${transitionPathwayReceipt.primary.grandPotentialEvidenceComplete ? `summed ΔΩ ${inverseResidualText(transitionPathwayReceipt.primary.grandPotentialDeltaElectronVolt)}` : "ΔΩ evidence incomplete"}.`
         : "No pathway audit is available.",
       boundary: "The route maximizes the slowest supplied rate only within observed exact edges, and quantitative cross-edge comparison requires common temperature and barrier settings. A competing route differs by at least one excluded primary edge but need not be fully edge-disjoint. Its serial waiting time conditions on traversing that route without branching or recrossing; it is not a committor, transition-path ensemble, global fastest mechanism, mean first-passage time, or proof of mechanism completeness." },
+    { id: "finite-network-population-dynamics", process: "transient exact-state population propagation",
+      status: populationDynamicsReceipt?.available ? "sampled"
+        : transitionNetworkReceipt?.nodes?.length ? "planned" : "unavailable",
+      role: populationDynamicsReceipt?.available
+        ? "conditional continuous-time master-equation leap" : "awaiting comparable finite-rate edges",
+      encoding: populationDynamicsReceipt?.available
+        ? `${populationDynamicsReceipt.stateCount} exact states and ${populationDynamicsReceipt.directedEdgeCount} latest directed rates at ${populationDynamicsReceipt.temperatureKelvin} K; uniformization from ${populationDynamicsReceipt.initialStateId}; ${populationDynamicsReceipt.timeline.length} logarithmically spaced observed-network horizons`
+        : "no common-temperature, common-method finite-rate state graph",
+      evidence: populationDynamicsReceipt?.available
+        ? `Probability conserved=${populationDynamicsReceipt.probabilityConserved}; nonnegative=${populationDynamicsReceipt.nonnegativeProbabilities}; characteristic observed exit time ${Number.isFinite(populationDynamicsReceipt.characteristicObservedExitTimeSeconds) ? kineticValueText(populationDynamicsReceipt.characteristicObservedExitTimeSeconds, " s") : `ln τ=${(-populationDynamicsReceipt.logUniformizationRatePerSecond).toFixed(2)} s`}; ${populationDynamicsReceipt.observedDeadEndStateCount} observed dead-end states.`
+        : populationDynamicsReceipt?.reason || "No conditional propagation is available.",
+      boundary: populationDynamicsReceipt?.claimBoundary
+        || "Missing states and exits remain unknown; no equilibrium or complete growth law is inferred." },
     { id: "finite-nucleation-landscape", process: "finite nucleus-size grand-potential profile",
       status: nucleationLandscapeReceipt?.criticalSizeCandidateObserved
         && nucleationLandscapeReceipt?.finiteProfileConsistencyPassed ? "validated"
@@ -36038,7 +36176,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-372",
+    generatedAt: new Date().toISOString(), buildId: "20260831-373",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,
@@ -41772,6 +41910,14 @@ transitionPathTarget.addEventListener("change", () => {
   selectedTransitionPathTargetSha256 = transitionPathTarget.value || null;
   latestFiniteTransitionPathwayAudit = currentObservedPathwayAudit();
   renderFiniteTransitionNetwork();
+});
+finiteNetworkPopulationInitial.addEventListener("change", () => {
+  selectedFiniteNetworkPopulationInitialSha256 = finiteNetworkPopulationInitial.value || null;
+  renderFiniteNetworkPopulationDynamics();
+});
+finiteNetworkPopulationHorizon.addEventListener("change", () => {
+  finiteNetworkPopulationHorizonMultiplier = Number(finiteNetworkPopulationHorizon.value) || 3;
+  renderFiniteNetworkPopulationDynamics();
 });
 processTimelineInput.addEventListener("input", () => scrubProcessTimeline(processTimelineInput.value));
 resetButton.addEventListener("click", () => enterPipelineStage(pipelineStage));
