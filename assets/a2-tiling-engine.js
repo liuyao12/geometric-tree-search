@@ -480,7 +480,7 @@ const TURTLE_MARK_SEGMENTS=TURTLE_LINE_DOMAINS.map((segment,index)=>({...segment
 const primitiveComponent=(a,b)=>{const d=a2Sub(b,a),steps=gcd3(d[0],d[1],d[2]),step=d.map(value=>value/steps);const component=step.findIndex((value,index)=>{const other=[0,1,2].filter(i=>i!==index);return step[other[0]]===step[other[1]]&&value===-2*step[other[0]];});return component<0?0:component;};
 const extendedSegmentPoints=(a,b,extra)=>{const d=a2Sub(b,a),steps=gcd3(d[0],d[1],d[2]),step=d.map(value=>value/steps);return Array.from({length:steps+1+extra*2},(_,raw)=>a2Add(a,step.map(value=>value*(raw-extra))));};
 export class FixedTurtleMarking extends NoA2Marking{
-  constructor(extension=1){
+  constructor(extension=1,{pointFilter=null}={}){
     super();this.prunes=0;this.support=[];this.contacts=new Map();this.entryCache=new Map();
     const origin=A2_TILE_LOOPS.turtle[0];
     for(const segment of TURTLE_MARK_SEGMENTS){const a=A2_TILE_LOOPS.turtle[segment.from],b=A2_TILE_LOOPS.turtle[segment.to],component=primitiveComponent(a,b);for(const point of extendedSegmentPoints(a,b,extension))this.support.push({tile:"turtle",point:a2Sub(point,origin),component,value:segment.value});}
@@ -495,6 +495,7 @@ export class FixedTurtleMarking extends NoA2Marking{
       if([...values.values()].filter(value=>value!==0).length!==2)continue;
       const component=[0,1,2].find(index=>!values.has(index));if(component!==undefined)this.support.push({tile:"turtle",point:key.split(",").map(Number),component,value:0});
     }
+    if(pointFilter)this.support=this.support.filter(entry=>pointFilter(entry.point));
   }
   entries(placement){
     const cacheKey=placement.id??`${placement.tile}:${placement.orientation.index}:${a2Key(placement.translation)}`;
@@ -530,10 +531,11 @@ export function learnA2ClusterProposals(placements,{maxDistance=12,window=16}={}
   return [...weights.entries()];
 }
 
-export async function solveA2Tiling({boundary,seed=null,startPoints=[],tiles=["hat"],customTiles={},maximize=false,targetPlacements=500,preferredPlacements=[],clusterProposals=[],placementFilter=null,pointTarget=null,nodeLimit=250000,animationDelayMs=0,learningWarmupDepth=0,maxMarkingRevisions=Infinity,markingStagnationNodes=1200,randomSeed=1,marking=null,auditFrontierGraph=false,waitForSearchDemand=null,onEvent=()=>{},stopToken={stop:false}}){
-  const desired=polygonOccupancy(boundary),seedOccupancy=seed?polygonOccupancy(seed.loop):new Map();
+export async function solveA2Tiling({boundary,seed=null,startPoints=[],tiles=["hat"],customTiles={},maximize=false,targetPlacements=500,preferredPlacements=[],clusterProposals=[],placementFilter=null,latticePointFilter=null,pointTarget=null,nodeLimit=250000,animationDelayMs=0,learningWarmupDepth=0,maxMarkingRevisions=Infinity,markingStagnationNodes=1200,randomSeed=1,marking=null,auditFrontierGraph=false,waitForSearchDemand=null,onEvent=()=>{},stopToken={stop:false}}){
+  const pointAllowed=point=>!latticePointFilter||latticePointFilter(point);
+  const desired=polygonOccupancy(boundary),seedOccupancy=new Map([...(seed?polygonOccupancy(seed.loop):new Map())].filter(([,entry])=>pointAllowed(entry.point)));
   const tileDefs={};for(const tile of tiles)tileDefs[tile]=customTiles[tile]??A2_TILE_LOOPS[tile];
-  const orientedTiles=Object.entries(tileDefs).flatMap(([tile,loop])=>tileOrientations(tile,loop));
+  const orientedTiles=Object.entries(tileDefs).flatMap(([tile,loop])=>tileOrientations(tile,loop)).map(orientation=>({...orientation,occupancy:new Map([...orientation.occupancy].filter(([,entry])=>pointAllowed(entry.point)))}));
   const memoRadius=Math.max(1,...orientedTiles.map(orientation=>{const points=[...orientation.occupancy.values()].map(entry=>entry.point);let diameter=1;for(const left of points)for(const right of points)diameter=Math.max(diameter,...a2Sub(left,right).map(Math.abs));return diameter;}));
   const preferredRanks=new Map(preferredPlacements.map((id,index)=>[id,index]));
   const clusterWeights=new Map(clusterProposals);
