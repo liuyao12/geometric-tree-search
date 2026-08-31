@@ -1,5 +1,32 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 364 · periodic pressure-and-strain relaxation
+
+The post-leap mechanics handoff can now preserve and relax a periodic cell
+instead of reducing every grown state to a finite Cartesian cloud. Before
+freezing a Stage 4 state, the user chooses a fixed boundary or one of the
+declared isotropic-pressure variable-cell protocols. Variable-cell choices are
+enabled only when the live specimen supplies a nonsingular, fully periodic 3D
+cell; finite clusters, partial periodicity, and intrinsic-2D specimens fail
+closed.
+
+The v2 request binds atom IDs, species, Cartesian coordinates, the complete
+3×3 cell, periodic axes, cell policy, and target pressure into an exact state
+digest. A variable-cell response must return a nonsingular same-handed cell,
+a recomputable final-state digest, a symmetric Cauchy stress tensor with unit
+and sign convention, and a finite stress residual in addition to the existing
+energy, force, convergence, and method evidence. Fixed-cell responses are
+rejected if any cell entry changes.
+
+The audit reports initial/final volume, ΔV/V, the deformation gradient,
+Green–Lagrange strain norm, and separate affine and non-affine displacement
+RMS. Adoption carries the validated final cell and periodic axes into the new
+observation before rerunning structure validation, clustering, GCTS learning,
+and growth compilation. This supports externally resolved pressure- or
+epitaxy-sensitive structural jumps without pretending the browser integrated
+a barostat. One endpoint still does not establish an equation of state,
+elastic tensor, relaxation path, thermal ensemble, or transferable potential.
+
 ## Build 363 · external post-leap relaxation loop
 
 The growth laboratory can now alternate exact GCTS structural jumps with a
@@ -28,8 +55,9 @@ exact leap`.
 The response certifies one method-bound relaxed endpoint only. It does not
 provide the relaxation trajectory, physical duration, transition barrier,
 thermodynamic ensemble, or transferability of the chosen electronic-structure,
-force-field, or ML-potential method. Cell relaxation and atom/species exchange
-remain disallowed in this first contract.
+force-field, or ML-potential method. Atom/species exchange remains disallowed;
+Build 364 adds an explicit periodic variable-cell contract rather than silently
+weakening this first fixed-cell result.
 
 ## Build 362 · exact mass-conserving surface hops
 

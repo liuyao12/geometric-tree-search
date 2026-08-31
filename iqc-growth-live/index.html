@@ -7,7 +7,7 @@
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23071112'/%3E%3Cpath d='M17 19 46 12M17 19l8 30m21-37L25 49m-8-30 29 24M25 49l21-6' stroke='%236fffd4' stroke-width='4'/%3E%3Ccircle cx='17' cy='19' r='6' fill='%23f1fff9'/%3E%3Ccircle cx='46' cy='12' r='6' fill='%236fffd4'/%3E%3Ccircle cx='25' cy='49' r='6' fill='%238a7dff'/%3E%3Ccircle cx='46' cy='43' r='6' fill='%236fffd4'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css?v=20260831-363">
+  <link rel="stylesheet" href="./style.css?v=20260831-364">
   <script type="importmap">
     {
       "imports": {
@@ -1342,8 +1342,9 @@
               </section>
               <section id="stateRelaxationPanel" class="post-leap-relaxation" aria-label="External post-leap state relaxation">
                 <header><span><small>exact GCTS state → external mechanics → new observation</small><strong>Post-leap relaxation handoff</strong></span><b id="stateRelaxationBadge">not frozen</b></header>
-                <p id="stateRelaxationState">Freeze the current colored configuration, relax it with a documented external DFT, interatomic-potential, or validated ML-potential calculation, then return one converged position for every unchanged atom ID.</p>
+                <p id="stateRelaxationState">Freeze the current colored configuration, choose fixed-cell or fully periodic constant-pressure relaxation, then return one externally converged endpoint for every unchanged atom ID.</p>
                 <div class="state-relaxation-controls">
+                  <label>Mechanical boundary<select id="stateRelaxationCellPolicy"><option value="fixed">Fixed cell / finite boundary</option><option value="variable-isotropic-pressure:0">Relax cell · 0 GPa</option><option value="variable-isotropic-pressure:1">Relax cell · 1 GPa</option><option value="variable-isotropic-pressure:5">Relax cell · 5 GPa</option></select></label>
                   <button id="stateRelaxationFreeze" type="button">Freeze current state</button>
                   <button id="stateRelaxationDownload" type="button" disabled>Download request</button>
                   <label>Validate response<input id="stateRelaxationResponse" type="file" accept="application/json,.json" disabled></label>
@@ -1351,7 +1352,7 @@
                   <button id="stateRelaxationRelease" type="button" disabled>Release</button>
                 </div>
                 <div id="stateRelaxationSummary" class="state-relaxation-summary" aria-live="polite"></div>
-                <p class="state-relaxation-boundary">Adoption begins a new observation round and reruns cluster identification and GCTS learning; it does not silently bend the frozen grammar around a relaxed state. The response must preserve every atom ID and species and supply explicit convergence evidence. This endpoint handoff is not a trajectory, elapsed physical time, barrier, ensemble, or transferable force field.</p>
+                <p class="state-relaxation-boundary">Adoption begins a new observation round and reruns cluster identification and GCTS learning; it does not silently bend the frozen grammar around a relaxed state. A fully periodic 3D specimen may authorize a variable cell at one declared isotropic pressure; the response must bind the final cell, stress convention, stress residual, every atom ID, and species. The portal separates affine cell strain from non-affine rearrangement. This endpoint handoff is not a trajectory, elapsed physical time, equation of state, elastic tensor, thermal ensemble, or transferable force field.</p>
               </section>
               <section class="policy-phase-map-card" aria-label="Two-hypothesis growth decision phase map">
                 <header><span><small>two-hypothesis decision map</small><strong>Attachment-action basins</strong></span><b id="policyPhaseMapState">awaiting a frozen frontier</b></header>
@@ -2442,7 +2443,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260831-363"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260831-363"></script>
+  <script type="module" src="./app.js?v=20260831-364"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260831-364"></script>
 </body>
 </html>

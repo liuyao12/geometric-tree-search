@@ -88,20 +88,20 @@ import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntim
   from "./external-trajectory-geometry.mjs?v=20260830-346";
 import { actionBarrierSha256, buildFrozenActionBarrierRequest, frozenActionBarrierRequestReceipt,
   frozenActionStateGeometrySha256, validateFrozenActionBarrierResponse }
-  from "./external-action-barrier.mjs?v=20260831-363";
+  from "./external-action-barrier.mjs?v=20260831-364";
 import { buildFrozenKineticCompetition }
-  from "./frozen-frontier-kinetics.mjs?v=20260831-363";
+  from "./frozen-frontier-kinetics.mjs?v=20260831-364";
 import { buildKineticEventSpectrum }
-  from "./kinetic-event-spectrum.mjs?v=20260831-363";
+  from "./kinetic-event-spectrum.mjs?v=20260831-364";
 import { enumerateDetachableLeafPlacements }
   from "./reversible-frontier-events.mjs?v=20260831-347";
 import { enumerateMassConservingSurfaceHops }
-  from "./surface-hop-events.mjs?v=20260831-363";
+  from "./surface-hop-events.mjs?v=20260831-364";
 import { buildExternalStateRelaxationRequest, stateRelaxationSha256,
   validateExternalStateRelaxationResponse }
-  from "./external-state-relaxation.mjs?v=20260831-363";
+  from "./external-state-relaxation.mjs?v=20260831-364";
 import { appendCommittedTransition }
-  from "./reversible-transition-lineage.mjs?v=20260831-363";
+  from "./reversible-transition-lineage.mjs?v=20260831-364";
 import { buildFiniteTransitionNetwork }
   from "./finite-transition-network.mjs?v=20260831-352";
 import { auditCompetingObservedTransitionPaths }
@@ -115,19 +115,19 @@ import { evaluateWulffShapeRegularizer, matchedWulffRankingAudit }
   from "./wulff-shape-regularizer.mjs?v=20260831-354";
 import { buildAttachmentKineticsRequest, buildNormalizedKineticWulffGeometry,
   validateAttachmentKineticsResponse, evaluateKineticHabitScore, matchedKineticHabitRankingAudit }
-  from "./external-attachment-kinetics.mjs?v=20260831-363";
+  from "./external-attachment-kinetics.mjs?v=20260831-364";
 import { buildInterfaceFluxRequest, validateInterfaceFluxResponse, evaluateInterfaceFluxScore,
   matchedInterfaceFluxRankingAudit }
-  from "./external-interface-flux.mjs?v=20260831-363";
+  from "./external-interface-flux.mjs?v=20260831-364";
 import { periodicSiteNumberDensity, coupleInterfaceSupplyAndAttachment,
   syntheticGrowthRegimePreview }
-  from "./growth-regime-bridge.mjs?v=20260831-363";
+  from "./growth-regime-bridge.mjs?v=20260831-364";
 import { buildLeapfrogPhysicsCycle, couplingModeGate, LEAPFROG_COUPLING_MODES }
-  from "./leapfrog-physics-cycle.mjs?v=20260831-363";
+  from "./leapfrog-physics-cycle.mjs?v=20260831-364";
 import { buildCatalogConditionalChronology }
-  from "./catalog-conditional-chronology.mjs?v=20260831-363";
+  from "./catalog-conditional-chronology.mjs?v=20260831-364";
 import { buildCoupledPhysicsState, coupledStateGate }
-  from "./coupled-physics-state.mjs?v=20260831-363";
+  from "./coupled-physics-state.mjs?v=20260831-364";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -671,6 +671,7 @@ const actionBarrierSummary = $("actionBarrierSummary");
 const stateRelaxationPanel = $("stateRelaxationPanel");
 const stateRelaxationBadge = $("stateRelaxationBadge");
 const stateRelaxationState = $("stateRelaxationState");
+const stateRelaxationCellPolicy = $("stateRelaxationCellPolicy");
 const stateRelaxationFreezeButton = $("stateRelaxationFreeze");
 const stateRelaxationDownloadButton = $("stateRelaxationDownload");
 const stateRelaxationResponseInput = $("stateRelaxationResponse");
@@ -3839,7 +3840,7 @@ async function downloadInterfacialEnergyRequest() {
   const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-363",
+  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-364",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256,
@@ -4083,7 +4084,7 @@ async function downloadAttachmentKineticsRequest() {
   const material = currentMaterial(); const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-363",
+  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-364",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256, intrinsicDimension, orientationBasisCartesian,
@@ -4602,7 +4603,7 @@ async function downloadSpatialInterfaceFluxRequest() {
   const interfaceGeometrySha256 = await receiptSha256(JSON.stringify({ structureSha256: configuration.structureSha256,
     confinement: confinementSelect?.value || "box", publicReach: growthDomainScale, atomCount: referenceAtoms.length }));
   const species = material.actualElements ? [...material.actualElements] : [...material.elements];
-  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-363",
+  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-364",
     scenarioId: scenarioSelect.value, materialName: material.name, species,
     structureSha256: configuration.structureSha256, interfaceGeometrySha256,
     interfaceConfiguration: configuration,
@@ -13881,7 +13882,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260831-363",
+      buildId: "20260831-364",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -16474,7 +16475,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260831-363" },
+    application: { name: "Materials Growth Lab", buildId: "20260831-364" },
     postLeapExternalRelaxation: stateRelaxationReceipt(),
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
@@ -24743,9 +24744,33 @@ function stateRelaxationSitePayload(atom) {
   return { atomId: atom.id, ...actionBarrierSitePayload(atom) };
 }
 
+function stateRelaxationCellSnapshot() {
+  const periodicBoundary = currentPbc();
+  const cell = periodicBoundary.some(Boolean) ? currentCell() : null;
+  return { periodicBoundary: [...periodicBoundary],
+    cellAngstrom: cell?.map((vector) => vector.toArray()
+      .map((value) => receiptRound(value, 10))) || null };
+}
+
+function stateRelaxationPolicySelection() {
+  const [cellPolicy, pressureText] = String(stateRelaxationCellPolicy.value || "fixed")
+    .split(":");
+  const { periodicBoundary, cellAngstrom } = stateRelaxationCellSnapshot();
+  const variableCellAvailable = Boolean(cellAngstrom && periodicBoundary.every(Boolean)
+    && currentMaterial().intrinsicDimension !== 2);
+  return { cellPolicy, targetPressureGPa: cellPolicy === "variable-isotropic-pressure"
+    ? Number(pressureText) : null, variableCellAvailable, periodicBoundary, cellAngstrom };
+}
+
 async function currentStateRelaxationGeometrySha256() {
   return stateRelaxationSha256(atoms.map(stateRelaxationSitePayload)
     .sort((first, second) => first.atomId - second.atomId));
+}
+
+async function currentStateRelaxationStateSha256() {
+  const { periodicBoundary, cellAngstrom } = stateRelaxationCellSnapshot();
+  return stateRelaxationSha256({ sites: atoms.map(stateRelaxationSitePayload)
+    .sort((first, second) => first.atomId - second.atomId), cellAngstrom, periodicBoundary });
 }
 
 function stateRelaxationReceipt(checkpoint = externalStateRelaxationCheckpoint) {
@@ -24756,8 +24781,10 @@ function stateRelaxationReceipt(checkpoint = externalStateRelaxationCheckpoint) 
     status: validation ? "validated" : "frozen-request",
     requestSha256: checkpoint.request.requestSha256,
     initialGeometrySha256: checkpoint.request.initialState.geometrySha256,
+    initialStateSha256: checkpoint.request.initialState.stateSha256,
     responseSha256: validation?.responseSha256 || null,
     finalGeometrySha256: validation?.response.finalGeometrySha256 || null,
+    finalStateSha256: validation?.response.finalStateSha256 || null,
     atomCount: checkpoint.request.initialState.atomCount,
     sourceEventIndex: checkpoint.sourceEventIndex,
     sourceGrowthGeneration: checkpoint.sourceGrowthGeneration,
@@ -24774,6 +24801,17 @@ function stateRelaxationReceipt(checkpoint = externalStateRelaxationCheckpoint) 
     displacementRmsAngstrom: validation?.audit.displacement.rmsAngstrom ?? null,
     maximumDisplacementAngstrom: validation?.audit.displacement.maximumAngstrom ?? null,
     movedAtomCount: validation?.audit.displacement.movedAtomCount ?? null,
+    affineDisplacementRmsAngstrom: validation?.audit.displacement.affineRmsAngstrom ?? null,
+    nonAffineDisplacementRmsAngstrom: validation?.audit.displacement.nonAffineRmsAngstrom ?? null,
+    cellPolicy: checkpoint.request.calculation.cellPolicy,
+    targetPressureGPa: checkpoint.request.calculation.targetPressureGPa,
+    initialCellAngstrom: checkpoint.request.initialState.cellAngstrom,
+    finalCellAngstrom: validation?.response.finalCellAngstrom || null,
+    initialVolumeCubicAngstrom: validation?.audit.cell.initialVolumeCubicAngstrom ?? null,
+    finalVolumeCubicAngstrom: validation?.audit.cell.finalVolumeCubicAngstrom ?? null,
+    volumetricStrain: validation?.audit.cell.volumetricStrain ?? null,
+    greenLagrangeStrainNorm: validation?.audit.cell.greenLagrangeStrainNorm ?? null,
+    maximumStressResidualGPa: validation?.response.stress?.maximumResidualGPa ?? null,
     atomCountPreserved: Boolean(validation?.audit.atomCountPreserved),
     atomIdsPreserved: Boolean(validation?.audit.atomIdsPreserved),
     speciesPreserved: Boolean(validation?.audit.speciesPreserved),
@@ -24791,11 +24829,16 @@ async function freezeExternalStateRelaxation() {
       || externalActionBarrierCheckpoint || externalStateRelaxationCheckpoint) return;
   setPlaying(false);
   const sites = atoms.map(stateRelaxationSitePayload);
+  const policy = stateRelaxationPolicySelection();
+  if (policy.cellPolicy === "variable-isotropic-pressure" && !policy.variableCellAvailable) {
+    throw new Error("variable-cell relaxation requires a fully periodic 3D state");
+  }
   const request = await buildExternalStateRelaxationRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-363",
+    generatedAt: new Date().toISOString(), buildId: "20260831-364",
     materialName: currentMaterial().name, sites,
-    cellAngstrom: null, periodicBoundary: [false, false, false],
+    cellAngstrom: policy.cellAngstrom, periodicBoundary: policy.periodicBoundary,
     boundary: currentGrowthDomainSnapshot(), sourceLeapReceiptSha256: null,
+    cellPolicy: policy.cellPolicy, targetPressureGPa: policy.targetPressureGPa,
     targetUsed: false,
   });
   externalStateRelaxationCheckpoint = {
@@ -24804,7 +24847,7 @@ async function freezeExternalStateRelaxation() {
     sourceGrowthGeneration: growthSearchGeneration,
     sourceAtomCount: atoms.length,
   };
-  receiptStatus.textContent = `Post-leap state frozen · ${atoms.length.toLocaleString()} atom IDs · request ${request.requestSha256.slice(0, 12)}… · no force or relaxation inferred.`;
+  receiptStatus.textContent = `Post-leap state frozen · ${atoms.length.toLocaleString()} atom IDs · ${request.calculation.cellPolicy === "fixed" ? "fixed cell/boundary" : `${request.calculation.targetPressureGPa} GPa variable cell`} · request ${request.requestSha256.slice(0, 12)}… · no force or relaxation inferred.`;
   renderStateRelaxationCheckpoint(); updateUI();
 }
 
@@ -24815,21 +24858,23 @@ async function downloadExternalStateRelaxationRequest() {
   const url = URL.createObjectURL(blob); const link = document.createElement("a");
   link.href = url; link.download = `gcts-post-leap-relaxation-${scenarioSelect.value}-${eventIndex}.json`;
   document.body.appendChild(link); link.click(); link.remove(); URL.revokeObjectURL(url);
-  receiptStatus.textContent = "External relaxation request downloaded · run a documented fixed-composition relaxation and return the bound response JSON.";
+  receiptStatus.textContent = `External relaxation request downloaded · run the documented fixed-composition ${externalStateRelaxationCheckpoint.request.calculation.cellPolicy === "fixed" ? "fixed-cell" : "variable-cell"} relaxation and return the bound response JSON.`;
 }
 
 async function validateExternalStateRelaxationFile(file) {
   const checkpoint = externalStateRelaxationCheckpoint;
   if (!checkpoint || !file) return;
   const currentGeometry = await currentStateRelaxationGeometrySha256();
+  const currentState = await currentStateRelaxationStateSha256();
   if (currentGeometry !== checkpoint.request.initialState.geometrySha256
+      || currentState !== checkpoint.request.initialState.stateSha256
       || atoms.length !== checkpoint.sourceAtomCount) {
-    throw new Error("current geometry changed after the relaxation request was frozen");
+    throw new Error("current geometry or periodic cell changed after the relaxation request was frozen");
   }
   const response = JSON.parse(await file.text());
   checkpoint.validation = await validateExternalStateRelaxationResponse(response, checkpoint.request);
   lastExternalStateRelaxationReceipt = stateRelaxationReceipt(checkpoint);
-  receiptStatus.textContent = `Relaxed endpoint validated · RMS displacement ${checkpoint.validation.audit.displacement.rmsAngstrom.toFixed(4)} Å · max force ${checkpoint.validation.response.maximumResidualForce.toPrecision(4)} ${checkpoint.validation.response.forceUnit}.`;
+  receiptStatus.textContent = `Relaxed endpoint validated · non-affine RMS ${checkpoint.validation.audit.displacement.nonAffineRmsAngstrom.toFixed(4)} Å · max force ${checkpoint.validation.response.maximumResidualForce.toPrecision(4)} ${checkpoint.validation.response.forceUnit}${checkpoint.validation.audit.cellRelaxationAuthorized ? ` · ΔV/V ${(100 * checkpoint.validation.audit.cell.volumetricStrain).toFixed(3)}%` : ""}.`;
   renderStateRelaxationCheckpoint(); updateUI();
 }
 
@@ -24845,9 +24890,11 @@ async function adoptExternalRelaxedState() {
   const validation = checkpoint?.validation;
   if (!checkpoint || !validation) throw new Error("validate one relaxation response before adoption");
   const currentGeometry = await currentStateRelaxationGeometrySha256();
+  const currentState = await currentStateRelaxationStateSha256();
   if (currentGeometry !== checkpoint.request.initialState.geometrySha256
+      || currentState !== checkpoint.request.initialState.stateSha256
       || atoms.length !== checkpoint.sourceAtomCount) {
-    throw new Error("current geometry changed after the relaxation request was frozen");
+    throw new Error("current geometry or periodic cell changed after the relaxation request was frozen");
   }
   const receipt = { ...stateRelaxationReceipt(checkpoint), status: "adopted-new-observation" };
   const relaxed = {
@@ -24856,7 +24903,8 @@ async function adoptExternalRelaxedState() {
     comment: `Adopted from GCTS event ${checkpoint.sourceEventIndex}; request ${checkpoint.request.requestSha256}`,
     atoms: validation.response.finalSites.map((site) => ({ species: site.species,
       position: [...site.positionAngstrom], occupancy: 1 })),
-    cell: null, pbc: [false, false, false],
+    cell: validation.response.finalCellAngstrom,
+    pbc: [...checkpoint.request.initialState.periodicBoundary],
     metadata: {
       source: "external post-leap relaxation handoff",
       preferredFrameIndex: 0,
@@ -24869,6 +24917,10 @@ async function adoptExternalRelaxedState() {
         energyUnit: validation.response.energyUnit,
         forceRmsElectronVoltPerAngstrom: validation.response.forceUnit === "eV/angstrom"
           ? validation.response.forceRms : null,
+        stressTensor: validation.response.stress?.tensor || null,
+        stressUnit: validation.response.stress?.unit || null,
+        targetPressureGPa: validation.response.stress?.targetPressureGPa ?? null,
+        maximumStressResidualGPa: validation.response.stress?.maximumResidualGPa ?? null,
         forceCoverage: 0,
       },
     },
@@ -24891,6 +24943,14 @@ function renderStateRelaxationCheckpoint() {
     : checkpoint ? "exact state frozen" : "not frozen";
   const available = pipelineStage === 4 && atoms.length && !growthFrontierWork.busy
     && !externalActionBarrierCheckpoint;
+  const policy = stateRelaxationPolicySelection();
+  stateRelaxationCellPolicy.querySelectorAll('option[value^="variable-isotropic-pressure"]')
+    .forEach((option) => { option.disabled = !policy.variableCellAvailable; });
+  if (!checkpoint && !policy.variableCellAvailable
+      && stateRelaxationCellPolicy.value.startsWith("variable-isotropic-pressure")) {
+    stateRelaxationCellPolicy.value = "fixed";
+  }
+  stateRelaxationCellPolicy.disabled = !available || Boolean(checkpoint);
   stateRelaxationFreezeButton.disabled = !available || Boolean(checkpoint);
   stateRelaxationDownloadButton.disabled = !checkpoint;
   stateRelaxationResponseInput.disabled = !checkpoint;
@@ -24899,19 +24959,27 @@ function renderStateRelaxationCheckpoint() {
   stateRelaxationState.textContent = validation
     ? `${validation.response.method}${validation.response.methodVersion ? ` ${validation.response.methodVersion}` : ""} converged in ${validation.response.iterationCount} iterations. The exact returned endpoint can become a new observation round; continuing with the old frozen grammar is deliberately disallowed.`
     : checkpoint
-      ? `${checkpoint.request.initialState.atomCount.toLocaleString()} fixed atom IDs · initial geometry ${checkpoint.request.initialState.geometrySha256.slice(0, 12)}… · awaiting externally converged coordinates, energy, and residual-force evidence.`
-      : "Freeze the current colored configuration, relax it with a documented external DFT, interatomic-potential, or validated ML-potential calculation, then return one converged position for every unchanged atom ID.";
+      ? `${checkpoint.request.initialState.atomCount.toLocaleString()} fixed atom IDs · ${checkpoint.request.calculation.cellPolicy === "fixed" ? "fixed cell" : `${checkpoint.request.calculation.targetPressureGPa} GPa variable cell`} · initial state ${checkpoint.request.initialState.stateSha256.slice(0, 12)}… · awaiting externally converged coordinates, energy, force${checkpoint.request.calculation.cellPolicy === "fixed" ? "" : ", cell, and stress"} evidence.`
+      : "Freeze the current colored configuration, choose fixed-cell or fully periodic constant-pressure relaxation, then return one externally converged endpoint for every unchanged atom ID.";
   const rows = validation ? [
     ["topology", `${validation.audit.atomCount} IDs + species exact`],
-    ["RMS displacement", `${validation.audit.displacement.rmsAngstrom.toFixed(4)} Å`],
+    ["total RMS displacement", `${validation.audit.displacement.rmsAngstrom.toFixed(4)} Å`],
+    ["affine / non-affine RMS", `${validation.audit.displacement.affineRmsAngstrom.toFixed(4)} / ${validation.audit.displacement.nonAffineRmsAngstrom.toFixed(4)} Å`],
     ["maximum displacement", `${validation.audit.displacement.maximumAngstrom.toFixed(4)} Å`],
     ["residual force", `${validation.response.maximumResidualForce.toPrecision(4)} ${validation.response.forceUnit}`],
     ["energy", `${validation.response.totalEnergy.toPrecision(7)} ${validation.response.energyUnit}`],
+    ["cell", validation.audit.cellRelaxationAuthorized
+      ? `ΔV/V ${(100 * validation.audit.cell.volumetricStrain).toFixed(3)}% · ‖E‖ ${validation.audit.cell.greenLagrangeStrainNorm.toFixed(4)}`
+      : validation.audit.cell.cellPresent ? "fixed + exact" : "finite boundary"],
+    ["stress residual", validation.response.stress
+      ? `${validation.response.stress.maximumResidualGPa.toPrecision(4)} GPa` : "not requested"],
     ["endpoint", validation.response.finalGeometrySha256.slice(0, 12) + "…"],
     ["trajectory", "not inferred"], ["physical time", "not inferred"],
   ] : checkpoint ? [
     ["atoms", checkpoint.request.initialState.atomCount.toLocaleString()],
-    ["composition", "fixed"], ["cell", "fixed / finite boundary"],
+    ["composition", "fixed"], ["cell", checkpoint.request.calculation.cellPolicy === "fixed"
+      ? checkpoint.request.initialState.cellAngstrom ? "fixed periodic cell" : "finite boundary"
+      : `variable · target ${checkpoint.request.calculation.targetPressureGPa} GPa`],
     ["target used", "false"],
   ] : [];
   stateRelaxationSummary.replaceChildren(...rows.map(([label, value]) => {
@@ -25708,7 +25776,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
   const candidates = [...attachmentCandidates, ...detachmentCandidates, ...surfaceHopCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-363",
+    generatedAt: new Date().toISOString(), buildId: "20260831-364",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -34870,7 +34938,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-363",
+    generatedAt: new Date().toISOString(), buildId: "20260831-364",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,
@@ -40528,6 +40596,9 @@ stateRelaxationAdoptButton.addEventListener("click", () => {
   });
 });
 stateRelaxationReleaseButton.addEventListener("click", releaseExternalStateRelaxation);
+stateRelaxationCellPolicy.addEventListener("change", () => {
+  renderStateRelaxationCheckpoint(); updateUI();
+});
 transitionNetworkCycleSelect.addEventListener("change", () => {
   selectedTransitionNetworkCycleId = transitionNetworkCycleSelect.value || null;
   renderFiniteTransitionNetwork();

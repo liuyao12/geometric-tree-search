@@ -10,27 +10,34 @@ const benchmark = fs.readFileSync("docs/projects/materials-recursive-gcts-benchm
 
 for (const document of [html, alias]) {
   for (const id of ["stateRelaxationPanel", "stateRelaxationBadge", "stateRelaxationFreeze",
+    "stateRelaxationCellPolicy",
     "stateRelaxationDownload", "stateRelaxationResponse", "stateRelaxationAdopt",
     "stateRelaxationRelease", "stateRelaxationSummary"]) {
     assert.match(document, new RegExp(`id="${id}"`));
   }
   assert.match(document, /Post-leap relaxation handoff/);
   assert.match(document, /Adopt as next observation/);
-  assert.match(document, /app\.js\?v=20260831-363/);
+  assert.match(document, /app\.js\?v=20260831-364/);
 }
-assert.match(app, /external-state-relaxation\.mjs\?v=20260831-363/);
+assert.match(app, /external-state-relaxation\.mjs\?v=20260831-364/);
 assert.match(app, /async function freezeExternalStateRelaxation/);
 assert.match(app, /async function adoptExternalRelaxedState/);
 assert.match(app, /maximumAtoms: 12000/);
+assert.match(app, /variable-isotropic-pressure/);
+assert.match(app, /currentStateRelaxationStateSha256/);
 assert.match(app, /postLeapExternalRelaxation: stateRelaxationReceipt\(\)/);
-assert.match(moduleText, /gcts-external-state-relaxation-request-v1/);
-assert.match(moduleText, /gcts-external-state-relaxation-response-v1/);
+assert.match(moduleText, /gcts-external-state-relaxation-request-v2/);
+assert.match(moduleText, /gcts-external-state-relaxation-response-v2/);
+assert.match(moduleText, /greenLagrangeStrain/);
+assert.match(moduleText, /maximumStressResidualGPa/);
 assert.match(moduleText, /topologyAndSpeciesMustBePreserved: true/);
 assert.match(moduleText, /browserRelaxationUsed: false/);
 assert.match(moduleText, /adoptionRequiresNewObservationRound: true/);
 assert.match(readme, /Build 363/);
+assert.match(readme, /Build 364/);
 assert.match(readme, /exact geometry → external relaxation/);
 assert.match(benchmark, /External post-leap relaxation loop \(Build 363\)/);
+assert.match(benchmark, /Periodic pressure-and-strain relaxation \(Build 364\)/);
 assert.match(benchmark, /No pre-relaxation\s+cluster or production is silently retained/);
 
 console.log("external post-leap relaxation portal contract passed");

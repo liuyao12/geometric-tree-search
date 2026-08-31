@@ -1,5 +1,37 @@
 # Recursive GCTS benchmark for material growth
 
+### Periodic pressure-and-strain relaxation (Build 364)
+
+The mechanics handoff now has an explicitly authorized variable-cell branch
+for fully periodic three-dimensional states. Its request hashes the exact
+colored sites together with the reported 3×3 cell and periodic axes. The
+policy is either byte-exact fixed cell or variable cell at one selected
+isotropic pressure; no solver is permitted to infer that authorization from
+the material label.
+
+The v2 response binds both the initial geometry and complete initial state,
+then supplies independently recomputable final geometry and final-state
+digests. Variable-cell validation requires a finite nonsingular cell with the
+same handedness, unchanged periodic axes, symmetric stress with explicit unit
+and convention, the frozen target pressure, and a nonnegative maximum stress
+residual. Fixed-cell validation rejects any changed cell entry. Atom IDs,
+species, and count remain exact in both modes.
+
+For interpretation, the portal computes `F = H_final H_initial⁻¹` and the
+Green–Lagrange strain `E = (FᵀF − I)/2`, reports ΔV/V, and resolves every atomic
+motion into the affine image of the original fractional coordinate plus a
+minimum-image non-affine residual in the final cell. The validated cell,
+periodicity, coordinates, energy/force/stress evidence, and method provenance
+are adopted together into a new observation. The ordinary structure validator
+and every geometric learner are then rebuilt.
+
+This is a method-bound constant-pressure endpoint, not an in-browser barostat,
+trajectory, thermal NPT ensemble, equation of state, elastic modulus, phase
+boundary, or claim that the external method is valid outside its documented
+domain. Partial periodicity and intrinsic-2D cells remain fail-closed until a
+separate constrained-cell contract defines their admissible degrees of
+freedom.
+
 ### External post-leap relaxation loop (Build 363)
 
 The portal now implements the missing mechanics leg of the leap-frog workflow.
@@ -26,11 +58,12 @@ co-simulation loop in which an external solver resolves local mechanics at
 selected structural checkpoints while GCTS skips the intervening dynamical
 integration.
 
-The current contract keeps a finite boundary and fixed composition/cell. It
+The Build 363 contract keeps a finite boundary and fixed composition/cell. It
 does not infer a relaxation path, transition state, physical relaxation time,
 thermal ensemble, force-field validity, atom exchange, or variable-cell
-thermodynamics. Those remain explicit future contracts rather than implicit
-browser behavior.
+thermodynamics. Build 364 closes only the explicitly authorized fully periodic
+isotropic-pressure endpoint; atom exchange and unconstrained cell protocols
+remain absent rather than implicit browser behavior.
 
 ### Exact mass-conserving surface hops (Build 362)
 
