@@ -28,6 +28,19 @@ for (let size = 1; size <= expected.length; size += 1) {
   assert.ok(census.every(candidate => candidate.morphology.layer_equation === "x+y+z=k"));
 }
 
+const largerCensusCounts = new Map([
+  [7, { all: 1271, asymmetric: 1112 }],
+  [8, { all: 5282, asymmetric: 4406 }],
+  [9, { all: 22607, asymmetric: 20980 }]
+]);
+for (const [size, counts] of largerCensusCounts) {
+  const census = enumerateA2SlicedAlcoves({ size });
+  assert.equal(census.length, counts.all, `complete size-${size} alcove census`);
+  assert.equal(census.filter(candidate =>
+    candidate.morphology.transverse_profile_asymmetric).length,
+  counts.asymmetric, `asymmetric-profile size-${size} alcove census`);
+}
+
 const single = makeA2SlicedAlcoveUnion([seed]);
 assert.deepEqual(single.occ.map(entry => entry[1]).sort((a, b) => a - b), [1, 1, 3, 3]);
 assert.deepEqual(single.layer_sums, [0, 1, 2, 3]);
