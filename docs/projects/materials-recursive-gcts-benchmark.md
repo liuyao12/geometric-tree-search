@@ -1,5 +1,32 @@
 # Recursive GCTS benchmark for material growth
 
+### Exact structural spread along successful paths (Build 386)
+
+Build 386 resolves the state-to-state heterogeneity hidden by the conditional
+means introduced in Build 385. For each deterministic phase-type time sample,
+let \(p_i(t)\) be the exact probability of state \(i\) conditioned on eventual
+target arrival, and let \(x_i\) be an exact-state geometric observable. The
+target-inclusive moments are
+
+\[
+  \mu_x(t)=\sum_i p_i(t)x_i,\qquad
+  \sigma_x^2(t)=\sum_i p_i(t)(x_i-\mu_x(t))^2.
+\]
+
+The survivor-conditioned calculation renormalizes over transient states only,
+so already absorbed target paths cannot artificially collapse the apparent
+spread among mechanisms still in flight. The same normalized weights produce
+discrete 10/50/90% quantiles, structural covariances, correlations, Shannon
+entropy, and the effective number of occupied states.
+
+The audited observables are atom count, finite-window mean coordination, and
+global Steinhardt Q₄/Q₆. Every mean is checked against the independently
+computed Build 385 structural path; the exact source distribution must have
+zero variance. All values retain the finite observation boundary. These are
+path-ensemble moments on one observed fixed-rate graph, not within-state
+thermal fluctuations, rate uncertainty, trajectory samples, bulk response
+functions, phase identities, or proof of mechanism completeness.
+
 ### Time-resolved successful-path structure (Build 385)
 
 Build 385 projects the exact Doob-conditioned state distribution onto retained

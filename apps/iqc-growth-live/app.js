@@ -88,64 +88,66 @@ import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntim
   from "./external-trajectory-geometry.mjs?v=20260830-346";
 import { actionBarrierSha256, buildFrozenActionBarrierRequest, frozenActionBarrierRequestReceipt,
   frozenActionStateGeometrySha256, validateFrozenActionBarrierResponse }
-  from "./external-action-barrier.mjs?v=20260831-385";
+  from "./external-action-barrier.mjs?v=20260831-386";
 import { buildActionPathViewerFrame, projectActionPathViewerFrame }
-  from "./action-path-viewer.mjs?v=20260831-385";
+  from "./action-path-viewer.mjs?v=20260831-386";
 import { actionPathMechanismSensitivity, analyzeActionPathMechanism }
-  from "./action-path-mechanism.mjs?v=20260831-385";
+  from "./action-path-mechanism.mjs?v=20260831-386";
 import { buildFrozenKineticCompetition }
-  from "./frozen-frontier-kinetics.mjs?v=20260831-385";
+  from "./frozen-frontier-kinetics.mjs?v=20260831-386";
 import { buildKineticEventSpectrum }
-  from "./kinetic-event-spectrum.mjs?v=20260831-385";
+  from "./kinetic-event-spectrum.mjs?v=20260831-386";
 import { buildTemperatureProgrammedKinetics, inspectTemperatureProgram }
-  from "./temperature-programmed-kinetics.mjs?v=20260831-385";
+  from "./temperature-programmed-kinetics.mjs?v=20260831-386";
 import { buildKineticGeometryResponse, inspectKineticGeometryResponse }
-  from "./kinetic-geometry-response.mjs?v=20260831-385";
+  from "./kinetic-geometry-response.mjs?v=20260831-386";
 import { buildFrontierMechanismLandscape }
-  from "./frontier-mechanism-landscape.mjs?v=20260831-385";
+  from "./frontier-mechanism-landscape.mjs?v=20260831-386";
 import { enumerateDetachableLeafPlacements }
   from "./reversible-frontier-events.mjs?v=20260831-347";
 import { enumerateMassConservingSurfaceHops }
-  from "./surface-hop-events.mjs?v=20260831-385";
+  from "./surface-hop-events.mjs?v=20260831-386";
 import { enumerateLocalSpeciesExchangeEvents }
-  from "./species-exchange-events.mjs?v=20260831-385";
+  from "./species-exchange-events.mjs?v=20260831-386";
 import { buildExternalStateRelaxationRequest, stateRelaxationSha256,
   validateExternalStateRelaxationResponse }
-  from "./external-state-relaxation.mjs?v=20260831-385";
+  from "./external-state-relaxation.mjs?v=20260831-386";
 import { appendCommittedTransition }
-  from "./reversible-transition-lineage.mjs?v=20260831-385";
+  from "./reversible-transition-lineage.mjs?v=20260831-386";
 import { buildFiniteTransitionNetwork }
   from "./finite-transition-network.mjs?v=20260831-352";
 import { buildFiniteNetworkPopulationDynamics }
-  from "./finite-network-population-dynamics.mjs?v=20260831-385";
+  from "./finite-network-population-dynamics.mjs?v=20260831-386";
 import { buildFiniteNetworkGeometricFlux }
-  from "./finite-network-geometric-flux.mjs?v=20260831-385";
+  from "./finite-network-geometric-flux.mjs?v=20260831-386";
 import { buildFiniteNetworkStructuralFlux }
-  from "./finite-network-structural-flux.mjs?v=20260831-385";
+  from "./finite-network-structural-flux.mjs?v=20260831-386";
 import { buildGeometricStateDescriptor, materialEndpointSites }
-  from "./geometric-state-descriptor.mjs?v=20260831-385";
+  from "./geometric-state-descriptor.mjs?v=20260831-386";
 import { buildFiniteNetworkGlobalOrder }
-  from "./finite-network-global-order.mjs?v=20260831-385";
+  from "./finite-network-global-order.mjs?v=20260831-386";
 import { auditCompetingObservedTransitionPaths }
   from "./finite-transition-pathways.mjs?v=20260831-352";
 import { buildFiniteNetworkFirstPassage }
-  from "./finite-network-first-passage.mjs?v=20260831-385";
+  from "./finite-network-first-passage.mjs?v=20260831-386";
 import { buildFiniteNetworkFirstPassageUncertainty }
-  from "./finite-network-first-passage-uncertainty.mjs?v=20260831-385";
+  from "./finite-network-first-passage-uncertainty.mjs?v=20260831-386";
 import { buildFiniteNetworkPassageControl }
-  from "./finite-network-passage-control.mjs?v=20260831-385";
+  from "./finite-network-passage-control.mjs?v=20260831-386";
 import { buildFiniteNetworkRateIntervention }
-  from "./finite-network-rate-intervention.mjs?v=20260831-385";
+  from "./finite-network-rate-intervention.mjs?v=20260831-386";
 import { buildFiniteNetworkTemperatureIntervention }
-  from "./finite-network-temperature-intervention.mjs?v=20260831-385";
+  from "./finite-network-temperature-intervention.mjs?v=20260831-386";
 import { buildFiniteNetworkConditionedPassage }
-  from "./finite-network-conditioned-passage.mjs?v=20260831-385";
+  from "./finite-network-conditioned-passage.mjs?v=20260831-386";
 import { buildFiniteNetworkConditionedHeterogeneity }
-  from "./finite-network-conditioned-heterogeneity.mjs?v=20260831-385";
+  from "./finite-network-conditioned-heterogeneity.mjs?v=20260831-386";
 import { buildFiniteNetworkConditionedArrival }
-  from "./finite-network-conditioned-arrival.mjs?v=20260831-385";
+  from "./finite-network-conditioned-arrival.mjs?v=20260831-386";
 import { buildFiniteNetworkConditionedStructuralPath }
-  from "./finite-network-conditioned-structural-path.mjs?v=20260831-385";
+  from "./finite-network-conditioned-structural-path.mjs?v=20260831-386";
+import { buildFiniteNetworkConditionedStructuralDispersion }
+  from "./finite-network-conditioned-structural-dispersion.mjs?v=20260831-386";
 import { buildFiniteNucleationLandscape }
   from "./finite-nucleation-landscape.mjs?v=20260831-352";
 import { buildInterfacialEnergyRequest, buildNormalizedWulffGeometry,
@@ -155,19 +157,19 @@ import { evaluateWulffShapeRegularizer, matchedWulffRankingAudit }
   from "./wulff-shape-regularizer.mjs?v=20260831-354";
 import { buildAttachmentKineticsRequest, buildNormalizedKineticWulffGeometry,
   validateAttachmentKineticsResponse, evaluateKineticHabitScore, matchedKineticHabitRankingAudit }
-  from "./external-attachment-kinetics.mjs?v=20260831-385";
+  from "./external-attachment-kinetics.mjs?v=20260831-386";
 import { buildInterfaceFluxRequest, validateInterfaceFluxResponse, evaluateInterfaceFluxScore,
   matchedInterfaceFluxRankingAudit }
-  from "./external-interface-flux.mjs?v=20260831-385";
+  from "./external-interface-flux.mjs?v=20260831-386";
 import { periodicSiteNumberDensity, coupleInterfaceSupplyAndAttachment,
   syntheticGrowthRegimePreview }
-  from "./growth-regime-bridge.mjs?v=20260831-385";
+  from "./growth-regime-bridge.mjs?v=20260831-386";
 import { buildLeapfrogPhysicsCycle, couplingModeGate, LEAPFROG_COUPLING_MODES }
-  from "./leapfrog-physics-cycle.mjs?v=20260831-385";
+  from "./leapfrog-physics-cycle.mjs?v=20260831-386";
 import { buildCatalogConditionalChronology }
-  from "./catalog-conditional-chronology.mjs?v=20260831-385";
+  from "./catalog-conditional-chronology.mjs?v=20260831-386";
 import { buildCoupledPhysicsState, coupledStateGate }
-  from "./coupled-physics-state.mjs?v=20260831-385";
+  from "./coupled-physics-state.mjs?v=20260831-386";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -766,6 +768,10 @@ const finiteNetworkConditionedStructuralPathBadge = $("finiteNetworkConditionedS
 const finiteNetworkConditionedStructuralPathPlot = $("finiteNetworkConditionedStructuralPathPlot");
 const finiteNetworkConditionedStructuralPathSummary = $("finiteNetworkConditionedStructuralPathSummary");
 const finiteNetworkConditionedStructuralPathState = $("finiteNetworkConditionedStructuralPathState");
+const finiteNetworkConditionedStructuralDispersionBadge = $("finiteNetworkConditionedStructuralDispersionBadge");
+const finiteNetworkConditionedStructuralDispersionPlot = $("finiteNetworkConditionedStructuralDispersionPlot");
+const finiteNetworkConditionedStructuralDispersionSummary = $("finiteNetworkConditionedStructuralDispersionSummary");
+const finiteNetworkConditionedStructuralDispersionState = $("finiteNetworkConditionedStructuralDispersionState");
 const finiteNetworkPopulationBadge = $("finiteNetworkPopulationBadge");
 const finiteNetworkPopulationInitial = $("finiteNetworkPopulationInitial");
 const finiteNetworkPopulationHorizon = $("finiteNetworkPopulationHorizon");
@@ -3981,7 +3987,7 @@ async function downloadInterfacialEnergyRequest() {
   const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-385",
+  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-386",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256,
@@ -4225,7 +4231,7 @@ async function downloadAttachmentKineticsRequest() {
   const material = currentMaterial(); const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-385",
+  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-386",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256, intrinsicDimension, orientationBasisCartesian,
@@ -4744,7 +4750,7 @@ async function downloadSpatialInterfaceFluxRequest() {
   const interfaceGeometrySha256 = await receiptSha256(JSON.stringify({ structureSha256: configuration.structureSha256,
     confinement: confinementSelect?.value || "box", publicReach: growthDomainScale, atomCount: referenceAtoms.length }));
   const species = material.actualElements ? [...material.actualElements] : [...material.elements];
-  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-385",
+  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-386",
     scenarioId: scenarioSelect.value, materialName: material.name, species,
     structureSha256: configuration.structureSha256, interfaceGeometrySha256,
     interfaceConfiguration: configuration,
@@ -14023,7 +14029,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260831-385",
+      buildId: "20260831-386",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -16616,7 +16622,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260831-385" },
+    application: { name: "Materials Growth Lab", buildId: "20260831-386" },
     postLeapExternalRelaxation: stateRelaxationReceipt(),
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
@@ -24977,7 +24983,7 @@ async function freezeExternalStateRelaxation() {
     throw new Error("variable-cell relaxation requires a fully periodic 3D state");
   }
   const request = await buildExternalStateRelaxationRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-385",
+    generatedAt: new Date().toISOString(), buildId: "20260831-386",
     materialName: currentMaterial().name, sites,
     cellAngstrom: policy.cellAngstrom, periodicBoundary: policy.periodicBoundary,
     boundary: currentGrowthDomainSnapshot(), sourceLeapReceiptSha256: null,
@@ -25214,6 +25220,7 @@ function registerCommittedReversibleTransition(checkpoint, candidateId, committe
   const finiteNetworkConditionedHeterogeneity = currentFiniteNetworkConditionedHeterogeneity();
   const finiteNetworkConditionedArrival = currentFiniteNetworkConditionedArrival();
   const finiteNetworkConditionedStructuralPath = currentFiniteNetworkConditionedStructuralPath();
+  const finiteNetworkConditionedStructuralDispersion = currentFiniteNetworkConditionedStructuralDispersion();
   const finiteNetworkGeometricFlux = currentFiniteNetworkGeometricFlux();
   const finiteNetworkStructuralFlux = currentFiniteNetworkStructuralFlux();
   const finiteNetworkGlobalOrder = currentFiniteNetworkGlobalOrder();
@@ -25235,6 +25242,7 @@ function registerCommittedReversibleTransition(checkpoint, candidateId, committe
     finiteNetworkConditionedHeterogeneity,
     finiteNetworkConditionedArrival,
     finiteNetworkConditionedStructuralPath,
+    finiteNetworkConditionedStructuralDispersion,
     finiteNetworkPopulationDynamics,
     finiteNetworkGeometricFlux,
     finiteNetworkStructuralFlux,
@@ -25380,6 +25388,13 @@ function currentFiniteNetworkConditionedArrival() {
 
 function currentFiniteNetworkConditionedStructuralPath() {
   return buildFiniteNetworkConditionedStructuralPath(latestFiniteTransitionNetworkAudit, {
+    sourceStateSha256: selectedTransitionPathSourceSha256,
+    targetStateSha256: selectedTransitionPathTargetSha256,
+  });
+}
+
+function currentFiniteNetworkConditionedStructuralDispersion() {
+  return buildFiniteNetworkConditionedStructuralDispersion(latestFiniteTransitionNetworkAudit, {
     sourceStateSha256: selectedTransitionPathSourceSha256,
     targetStateSha256: selectedTransitionPathTargetSha256,
   });
@@ -26010,6 +26025,7 @@ function renderFiniteNetworkConditionedStructuralPath() {
     empty.textContent = "successful-path structure unavailable";
     finiteNetworkConditionedStructuralPathPlot.append(empty);
     finiteNetworkConditionedStructuralPathState.textContent = `${audit.reason} ${audit.claimBoundary}`;
+    renderFiniteNetworkConditionedStructuralDispersion();
     return audit;
   }
   const median = audit.medianRegion;
@@ -26090,6 +26106,97 @@ function renderFiniteNetworkConditionedStructuralPath() {
     return tile;
   }));
   finiteNetworkConditionedStructuralPathState.textContent = `Finite-window geometry moves from ${audit.sourceDescriptor.atomCount} atoms, coordination ${audit.sourceDescriptor.meanCoordination.toFixed(3)}, Q₄/Q₆ ${audit.sourceDescriptor.steinhardtQ4.toFixed(4)}/${audit.sourceDescriptor.steinhardtQ6.toFixed(4)} to target ${audit.targetDescriptor.atomCount}, ${audit.targetDescriptor.meanCoordination.toFixed(3)}, ${audit.targetDescriptor.steinhardtQ4.toFixed(4)}/${audit.targetDescriptor.steinhardtQ6.toFixed(4)}. Curves for exact states are conditioned on successful paths that have not yet arrived; ΔN progress includes absorbed target paths. Probability residual ${audit.maximumStateProbabilityNormalizationResidual.toExponential(2)}; initial identity ${audit.initialIdentityResidual.toExponential(2)}; identities ${audit.identitiesPassed ? "passed" : "failed"}. Q₄/Q₆ and coordination retain the finite observation boundary and are not phases, thermodynamic order parameters, or bulk averages.`;
+  renderFiniteNetworkConditionedStructuralDispersion();
+  return audit;
+}
+
+function renderFiniteNetworkConditionedStructuralDispersion() {
+  const audit = currentFiniteNetworkConditionedStructuralDispersion();
+  const namespace = "http://www.w3.org/2000/svg";
+  const make = (name, attributes = {}) => {
+    const node = document.createElementNS(namespace, name);
+    Object.entries(attributes).forEach(([key, value]) => node.setAttribute(key, String(value)));
+    return node;
+  };
+  finiteNetworkConditionedStructuralDispersionPlot.replaceChildren();
+  finiteNetworkConditionedStructuralDispersionSummary.replaceChildren();
+  if (!audit.available) {
+    finiteNetworkConditionedStructuralDispersionBadge.textContent = "awaiting path diversity";
+    const empty = make("text", { x: 150, y: 58, "text-anchor": "middle", class: "empty" });
+    empty.textContent = "conditioned structural spread unavailable";
+    finiteNetworkConditionedStructuralDispersionPlot.append(empty);
+    finiteNetworkConditionedStructuralDispersionState.textContent = `${audit.reason} ${audit.claimBoundary}`;
+    return audit;
+  }
+  const peak = audit.peakSurvivorDiversity;
+  finiteNetworkConditionedStructuralDispersionBadge.textContent = `peak ${peak.surviving.effectiveStateCount.toFixed(2)} effective states · identities ${audit.identitiesPassed ? "passed" : "failed"}`;
+  const left = 42, right = 291, top = 10, bottom = 100;
+  const positive = audit.timeline.filter((sample) =>
+    sample.relativeToConditionalMean > 0 && sample.surviving);
+  const minimumRatio = positive[0].relativeToConditionalMean;
+  const maximumRatio = positive.at(-1).relativeToConditionalMean;
+  const x = (ratio) => left + (right - left) * (Math.log(Math.max(minimumRatio, ratio))
+    - Math.log(minimumRatio)) / Math.max(1e-15,
+    Math.log(maximumRatio) - Math.log(minimumRatio));
+  const y = (value) => bottom - (bottom - top) * Math.max(0, Math.min(1, value));
+  finiteNetworkConditionedStructuralDispersionPlot.append(make("line", { x1: left, y1: bottom,
+    x2: right, y2: bottom, class: "dispersion-axis" }), make("line", { x1: left, y1: top,
+    x2: left, y2: bottom, class: "dispersion-axis" }));
+  [0, .5, 1].forEach((value) => {
+    finiteNetworkConditionedStructuralDispersionPlot.append(make("line", { x1: left,
+      y1: y(value), x2: right, y2: y(value), class: "dispersion-grid" }));
+    const label = make("text", { x: left - 4, y: y(value) + 1.7,
+      "text-anchor": "end", class: "label" });
+    label.textContent = value === 1 ? "series max" : value.toFixed(1);
+    finiteNetworkConditionedStructuralDispersionPlot.append(label);
+  });
+  const series = [
+    ["atoms", "atomCount", "atom-count σ"],
+    ["coordination", "meanCoordination", "mean-coordination σ"],
+    ["q4", "steinhardtQ4", "Q₄ σ"],
+    ["q6", "steinhardtQ6", "Q₆ σ"],
+  ];
+  series.forEach(([className, field, label]) => {
+    const maximum = Math.max(1e-15, ...positive.map((sample) =>
+      sample.surviving.fields[field].standardDeviation));
+    const path = positive.map((sample, index) =>
+      `${index ? "L" : "M"}${x(sample.relativeToConditionalMean).toFixed(2)},${y(sample.surviving.fields[field].standardDeviation / maximum).toFixed(2)}`).join(" ");
+    const line = make("path", { d: path, class: `dispersion-line ${className}` });
+    const title = make("title");
+    title.textContent = `${label} among successful paths not yet arrived; series maximum ${maximum.toPrecision(5)}`;
+    line.append(title); finiteNetworkConditionedStructuralDispersionPlot.append(line);
+  });
+  const medianX = x(audit.structuralPath.arrival.quantiles.median.relativeToConditionalMean);
+  finiteNetworkConditionedStructuralDispersionPlot.append(make("line", { x1: medianX, y1: top,
+    x2: medianX, y2: bottom, class: "dispersion-median" }));
+  [[left, bottom + 11, `${minimumRatio.toPrecision(2)}×`, "start"],
+    [medianX, bottom + 11, "median", "middle"],
+    [right, bottom + 11, `${maximumRatio.toPrecision(2)}×`, "end"]]
+    .forEach(([labelX, labelY, value, anchor]) => {
+      const label = make("text", { x: labelX, y: labelY, "text-anchor": anchor,
+        class: "label" }); label.textContent = value;
+      finiteNetworkConditionedStructuralDispersionPlot.append(label);
+    });
+  const median = audit.medianRegion.surviving;
+  const tiles = [
+    ["median in-flight σ atoms", median
+      ? median.fields.atomCount.standardDeviation.toFixed(4) : "arrived"],
+    ["median in-flight σ coordination", median
+      ? median.fields.meanCoordination.standardDeviation.toFixed(4) : "arrived"],
+    ["median in-flight σ Q₄ / Q₆", median
+      ? `${median.fields.steinhardtQ4.standardDeviation.toFixed(4)} / ${median.fields.steinhardtQ6.standardDeviation.toFixed(4)}` : "arrived"],
+    ["peak in-flight diversity", `${peak.surviving.effectiveStateCount.toFixed(3)} effective states`],
+  ];
+  finiteNetworkConditionedStructuralDispersionSummary.replaceChildren(...tiles.map(([label, value]) => {
+    const tile = document.createElement("span"); const strong = document.createElement("strong");
+    tile.append(document.createTextNode(label)); strong.textContent = value; tile.append(strong);
+    return tile;
+  }));
+  const atomQ6Correlation = median?.correlations["atomCount:steinhardtQ6"]?.correlation;
+  const coordinationQ6Correlation = median
+    ?.correlations["meanCoordination:steinhardtQ6"]?.correlation;
+  const correlationText = (value) => Number.isFinite(value) ? value.toFixed(3) : "undefined (zero spread)";
+  finiteNetworkConditionedStructuralDispersionState.textContent = `At the median-arrival region, successful paths still in flight occupy ${median?.effectiveStateCount.toFixed(3) || "0"} effective exact states. Their atom-count↔Q₆ correlation is ${correlationText(atomQ6Correlation)} and coordination↔Q₆ correlation is ${correlationText(coordinationQ6Correlation)}; weighted 10/50/90% quantiles and exact second moments remain in the receipt. Mean consistency residual ${audit.maximumMeanConsistencyResidual.toExponential(2)}; initial variance residual ${audit.initialVarianceResidual.toExponential(2)}. This is discrete path heterogeneity in one finite observed fixed-rate graph—not thermal motion, coordinate uncertainty, uncertain rates, sampled trajectories, a bulk susceptibility, or a phase label.`;
   return audit;
 }
 
@@ -28035,7 +28142,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
     ...speciesExchangeCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-385",
+    generatedAt: new Date().toISOString(), buildId: "20260831-386",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -35318,6 +35425,7 @@ function physicsTranslationRecords(leap = null) {
   const conditionedHeterogeneityReceipt = currentFiniteNetworkConditionedHeterogeneity();
   const conditionedArrivalReceipt = currentFiniteNetworkConditionedArrival();
   const conditionedStructuralPathReceipt = currentFiniteNetworkConditionedStructuralPath();
+  const conditionedStructuralDispersionReceipt = currentFiniteNetworkConditionedStructuralDispersion();
   const populationDynamicsReceipt = leap?.actionBarrierCheckpoint?.committedTransitionLineage
     ?.finiteNetworkPopulationDynamics || currentFiniteNetworkPopulationDynamics();
   const populationFluxReceipt = leap?.actionBarrierCheckpoint?.committedTransitionLineage
@@ -35932,6 +36040,19 @@ function physicsTranslationRecords(leap = null) {
         : conditionedStructuralPathReceipt?.reason || "No conditioned structural path is available.",
       boundary: conditionedStructuralPathReceipt?.claimBoundary
         || "Finite-window structural trajectories are not phase labels, thermodynamic order parameters, or bulk growth kinetics." },
+    { id: "finite-network-conditioned-structural-dispersion", process: "time-resolved structural heterogeneity along successful passage",
+      status: conditionedStructuralDispersionReceipt?.available ? "explicit" : "unavailable",
+      role: conditionedStructuralDispersionReceipt?.available
+        ? "exact target-inclusive and survivor-conditioned geometric second moments"
+        : "awaiting consistent geometry and exact successful-path state probabilities",
+      encoding: conditionedStructuralDispersionReceipt?.available
+        ? `${conditionedStructuralDispersionReceipt.relevantStateCount} exact successful-passage states; weighted atom-count, coordination, Q₄, and Q₆ variance plus discrete 10/50/90% quantiles across ${conditionedStructuralDispersionReceipt.timeline.length} deterministic phase-type samples`
+        : "no exact structural path ensemble",
+      evidence: conditionedStructuralDispersionReceipt?.available
+        ? `Median in-flight σN=${conditionedStructuralDispersionReceipt.medianRegion.surviving?.fields.atomCount.standardDeviation.toFixed(5) || "arrived"}, σQ₆=${conditionedStructuralDispersionReceipt.medianRegion.surviving?.fields.steinhardtQ6.standardDeviation.toFixed(5) || "arrived"}; peak effective-state diversity ${conditionedStructuralDispersionReceipt.peakSurvivorDiversity.surviving.effectiveStateCount.toFixed(5)}; mean residual ${conditionedStructuralDispersionReceipt.maximumMeanConsistencyResidual.toExponential(2)}; identities=${conditionedStructuralDispersionReceipt.identitiesPassed}.`
+        : conditionedStructuralDispersionReceipt?.reason || "No conditioned structural dispersion is available.",
+      boundary: conditionedStructuralDispersionReceipt?.claimBoundary
+        || "Structural path spread is not thermal fluctuation, rate uncertainty, trajectory sampling, or a bulk susceptibility." },
     { id: "finite-network-population-dynamics", process: "transient exact-state population propagation",
       status: populationDynamicsReceipt?.available ? "sampled"
         : transitionNetworkReceipt?.nodes?.length ? "planned" : "unavailable",
@@ -37576,7 +37697,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-385",
+    generatedAt: new Date().toISOString(), buildId: "20260831-386",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,

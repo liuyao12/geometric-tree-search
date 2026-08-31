@@ -1,5 +1,26 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 386 · exact structural spread along successful paths
+
+Successful passage now reports more than its mean structural trajectory. The
+portal evaluates exact second moments and discrete weighted 10/50/90%
+quantiles of atom count, finite-window coordination, and rotationally
+invariant Q₄/Q₆ at every deterministic phase-type time sample. Both the full
+target-inclusive ensemble and the paths still in flight are retained.
+
+The new structural-spread panel makes a scientifically important distinction
+visible: two mechanisms can have the same mean growth progress while one stays
+near a single coherent intermediate and the other fans out over geometrically
+different states. It reports survivor effective-state diversity and exact
+atom-count↔Q₆ and coordination↔Q₆ correlations at the median-arrival region.
+All means are cross-checked against Build 385, the source variance is required
+to vanish, and no path is sampled.
+
+The spread is deliberately narrow in meaning. It is discrete heterogeneity
+inside one finite observed fixed-rate state graph. It is not thermal motion
+within a state, coordinate or barrier uncertainty, a bulk susceptibility, a
+phase label, or evidence that the observed mechanism catalog is complete.
+
 ## Build 385 · time-resolved successful-path structure
 
 Successful finite-network passage is now resolved into the geometry of the

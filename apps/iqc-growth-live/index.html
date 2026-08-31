@@ -7,7 +7,7 @@
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23071112'/%3E%3Cpath d='M17 19 46 12M17 19l8 30m21-37L25 49m-8-30 29 24M25 49l21-6' stroke='%236fffd4' stroke-width='4'/%3E%3Ccircle cx='17' cy='19' r='6' fill='%23f1fff9'/%3E%3Ccircle cx='46' cy='12' r='6' fill='%236fffd4'/%3E%3Ccircle cx='25' cy='49' r='6' fill='%238a7dff'/%3E%3Ccircle cx='46' cy='43' r='6' fill='%236fffd4'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css?v=20260831-385">
+  <link rel="stylesheet" href="./style.css?v=20260831-386">
   <script type="importmap">
     {
       "imports": {
@@ -1429,6 +1429,13 @@
                                 <div class="finite-network-conditioned-structural-path-legend"><span><i class="state"></i>state among survivors</span><span><i class="progress"></i>target-inclusive ΔN progress</span><span><i class="median"></i>median arrival</span></div>
                                 <div id="finiteNetworkConditionedStructuralPathSummary" class="finite-network-conditioned-structural-path-summary" aria-live="polite"></div>
                                 <p id="finiteNetworkConditionedStructuralPathState">Consistent exact-state geometry is required before successful passage can be resolved into atom count, coordination, and rotationally invariant order.</p>
+                                <section class="finite-network-conditioned-structural-dispersion" aria-label="Exact structural spread across successful finite-network paths">
+                                  <header><span><small>exact second moments · discrete path ensemble</small><strong>Successful-path structural spread</strong></span><b id="finiteNetworkConditionedStructuralDispersionBadge">awaiting path diversity</b></header>
+                                  <svg id="finiteNetworkConditionedStructuralDispersionPlot" viewBox="0 0 300 126" role="img" aria-label="Normalized structural standard deviations among successful paths not yet arrived"></svg>
+                                  <div class="finite-network-conditioned-structural-dispersion-legend"><span><i class="atoms"></i>atom count σ</span><span><i class="coordination"></i>coordination σ</span><span><i class="q4"></i>Q₄ σ</span><span><i class="q6"></i>Q₆ σ</span></div>
+                                  <div id="finiteNetworkConditionedStructuralDispersionSummary" class="finite-network-conditioned-structural-dispersion-summary" aria-live="polite"></div>
+                                  <p id="finiteNetworkConditionedStructuralDispersionState">Exact state probabilities are needed to distinguish coherent passage from structurally diverse successful routes.</p>
+                                </section>
                               </section>
                             </section>
                           </section>
@@ -2569,7 +2576,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260831-385"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260831-385"></script>
+  <script type="module" src="./app.js?v=20260831-386"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260831-386"></script>
 </body>
 </html>
