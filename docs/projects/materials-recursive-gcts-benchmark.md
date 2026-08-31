@@ -1,5 +1,37 @@
 # Recursive GCTS benchmark for material growth
 
+### External post-leap relaxation loop (Build 363)
+
+The portal now implements the missing mechanics leg of the leap-frog workflow.
+One explicit grown configuration is frozen as a colored, ID-bearing Cartesian
+state and exported to an external fixed-composition relaxation calculation.
+The request is target-free and includes an exact initial-state SHA-256, finite
+boundary provenance, allowed method classes, required outputs, and a
+fail-closed statement that atom count, atom IDs, species, and the cell policy
+may not change.
+
+Response validation is exact rather than label-based. It requires a bijection
+over all frozen atom IDs, unchanged species, finite coordinates, a recomputed
+final-state digest, converged finite total energy and residual-force metrics,
+an explicit convergence criterion and iteration count, and method/settings
+provenance. The resulting receipt separates the returned endpoint from the
+unobserved path and records RMS/maximum displacement without treating either as
+elapsed time.
+
+Adoption is a new observation round. The returned geometry is passed through
+the ordinary imported-structure validator and the complete cluster-cover,
+orientation, marking, and grammar learners are rebuilt. No pre-relaxation
+cluster or production is silently retained as exact. This gives a realistic
+co-simulation loop in which an external solver resolves local mechanics at
+selected structural checkpoints while GCTS skips the intervening dynamical
+integration.
+
+The current contract keeps a finite boundary and fixed composition/cell. It
+does not infer a relaxation path, transition state, physical relaxation time,
+thermal ensemble, force-field validity, atom exchange, or variable-cell
+thermodynamics. Those remain explicit future contracts rather than implicit
+browser behavior.
+
 ### Exact mass-conserving surface hops (Build 362)
 
 The event-resolved growth stage now has a third finite mechanism family. Each

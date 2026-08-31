@@ -1,5 +1,36 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 363 · external post-leap relaxation loop
+
+The growth laboratory can now alternate exact GCTS structural jumps with a
+real external mechanics calculation. At any Stage 4 state, the new post-leap
+checkpoint freezes every atom ID, species, and Cartesian position together
+with the public boundary and exact initial-geometry digest. Its downloadable
+request asks for a fixed-composition DFT, validated interatomic-potential, or
+documented machine-learned-potential relaxation.
+
+A returned endpoint is accepted only when it binds the frozen request and
+initial geometry, contains exactly one final position for every unchanged atom
+ID and species, preserves atom count, reproduces its declared final-geometry
+SHA-256, and supplies a converged total energy, maximum residual force, force
+RMS, convergence criterion, iteration count, method, version, and settings
+digest. The live audit reports RMS and maximum displacement, moved-atom count,
+energy, force, method, and both endpoint identities.
+
+Choosing **Adopt as next observation** creates a new imported observation with
+the validated positions and calculation provenance. Cluster identification,
+the complete cluster/gap cover, orientation atlas, GCTS sections, and frontier
+grammar are relearned from that state; the old grammar is never bent around a
+relaxed configuration. This makes the leap-frog cycle explicit:
+`exact geometry → external relaxation → new observed geometry → relearn → next
+exact leap`.
+
+The response certifies one method-bound relaxed endpoint only. It does not
+provide the relaxation trajectory, physical duration, transition barrier,
+thermodynamic ensemble, or transferability of the chosen electronic-structure,
+force-field, or ML-potential method. Cell relaxation and atom/species exchange
+remain disallowed in this first contract.
+
 ## Build 362 · exact mass-conserving surface hops
 
 The frozen event catalog can now include local surface hops in addition to
