@@ -349,6 +349,7 @@ def exact_weighted_multicover(
 
         pivot_mask = 0
         pivot_score = None
+        pivot_residue = None
         for residue, capacity in enumerate(state_capacities):
             if not capacity:
                 continue
@@ -375,6 +376,7 @@ def exact_weighted_multicover(
             if pivot_score is None or score < pivot_score:
                 pivot_score = score
                 pivot_mask = choices
+                pivot_residue = residue
 
         # A multicover pivot can require contributions from several selected
         # placements.  Without canonical branching, choosing A and then B is
@@ -383,25 +385,29 @@ def exact_weighted_multicover(
         # every earlier pivot alternative: this declares ``bit`` to be the
         # least selected alternative for this pivot.  Every feasible subset
         # has exactly one such least member, so the reduction is complete and
-        # explores each subset once rather than many placement orders.
+        # explores each subset once rather than many placement orders.  Try
+        # the largest contribution to the MRV pivot first, then retain stable
+        # placement-index order within each weight class.
         skipped_pivot_mask = 0
-        while pivot_mask:
-            bit = pivot_mask & -pivot_mask
-            compact_index = bit.bit_length() - 1
-            pivot_mask -= bit
-            next_capacities = list(state_capacities)
-            for residue, weight in sparse_vectors[compact_index]:
-                next_capacities[residue] -= weight
-            suffix = search(
-                tuple(next_capacities),
-                selected_mask | skipped_pivot_mask | bit,
-                remaining - 1,
-            )
-            if suffix is fallback:
-                return fallback
-            if suffix is not None:
-                return (original_indices[compact_index], *suffix)
-            skipped_pivot_mask |= bit
+        for pivot_weight in range(full_weight, 0, -1):
+            same_weight_mask = pivot_mask & weight_masks[pivot_residue][pivot_weight]
+            while same_weight_mask:
+                bit = same_weight_mask & -same_weight_mask
+                compact_index = bit.bit_length() - 1
+                same_weight_mask -= bit
+                next_capacities = list(state_capacities)
+                for residue, weight in sparse_vectors[compact_index]:
+                    next_capacities[residue] -= weight
+                suffix = search(
+                    tuple(next_capacities),
+                    selected_mask | skipped_pivot_mask | bit,
+                    remaining - 1,
+                )
+                if suffix is fallback:
+                    return fallback
+                if suffix is not None:
+                    return (original_indices[compact_index], *suffix)
+                skipped_pivot_mask |= bit
         failed.add(state)
         return None
 
