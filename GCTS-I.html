@@ -1665,6 +1665,22 @@
         if (markingRankControl) markingRankControl.hidden = !showMarkings;
       }
 
+      function refreshPlacementsForMarkingRank() {
+        const remap = placement => {
+          const orientation = orientations.find(candidate => sameSymmetry(candidate, placement.orientation));
+          if (!orientation) return placement;
+          const {
+            orientation: oldOrientation, translation, vertices3d, occupancy,
+            markings, markSegments, points, values, ...extras
+          } = placement;
+          return makePlacement(orientation, translation, extras);
+        };
+        tilingOrder = tilingOrder.map(remap);
+        tilingRun = { ...tilingRun, placements: tilingOrder };
+        if (playbackPlacements) playbackPlacements = playbackPlacements.map(remap);
+        if (trialGhost?.placement) trialGhost = { ...trialGhost, placement: remap(trialGhost.placement) };
+      }
+
       function resetTilingForMarkingExtension() {
         stopTiling();
         liveSearchIterator?.cancel?.();
@@ -1704,27 +1720,16 @@
           return;
         }
         if (stageName === 'marking' || stageName === 'markings') {
-          markingRulesToggle.checked = false;
-          tilingRunUsesMarking = false;
           markingRank = stage.markingRank;
-          updateMarkingRankControl();
-          if (markExtensionInput) markExtensionInput.value = '1';
-          markingExtension = 1;
           orientations = buildOrientations(markingExtension, markingRank);
-          const seed = makeSeedPlacement();
-          tilingRun = { placements: [seed], trace: [] };
-          tilingOrder = tilingRun.placements;
-          tilingTrace = tilingRun.trace;
-          shownTiles = 1;
-          playbackPlacements = null;
-          traceIndex = 0;
+          refreshPlacementsForMarkingRank();
           liveSearchIterator = null;
           pausedCoronas.clear();
           hasStartedTiling = false;
           startButton.textContent = 'Start tiling';
           showMarkings = true;
           trialGhost = null;
-          statusText = '';
+          statusText = `displaying rank-${markingRank} marking`;
           if (stageLabel) stageLabel.textContent = stage.label;
           if (stageNote) stageNote.textContent = stage.note;
           stageChips.forEach(chip => {
@@ -1732,7 +1737,6 @@
           });
           updateMarkingButton();
           updateMarkExtensionControl();
-          centerSeedView();
           draw();
           return;
         }
@@ -2120,11 +2124,21 @@
       });
       markingRankInputs.forEach(input => input.addEventListener('change', () => {
         if (!input.checked) return;
+        stopTiling();
+        liveSearchIterator?.cancel?.();
         markingRank = selectedMarkingRank();
-        resetTilingForMarkingExtension();
+        orientations = buildOrientations(markingExtension, markingRank);
+        refreshPlacementsForMarkingRank();
+        liveSearchIterator = null;
+        pausedCoronas.clear();
+        trialGhost = null;
+        hasStartedTiling = false;
+        startButton.textContent = 'Start tiling';
+        updateMarkingRankControl();
+        draw();
         if (stageLabel) stageLabel.textContent = `Stage: rank-${markingRank} marking selected`;
         if (stageNote) stageNote.textContent = markingRulesToggle.checked
-          ? `The restarted search will enforce the rank-${markingRank} marking.`
+          ? `The next search will enforce the rank-${markingRank} marking.`
           : `The next marked search will enforce the rank-${markingRank} marking.`;
       }));
       markExtensionInput?.addEventListener('change', resetTilingForMarkingExtension);
@@ -2148,10 +2162,13 @@
       resetButton.addEventListener('click', () => {
         stopTiling();
         liveSearchIterator?.cancel?.();
-        centerSeedView();
+        const seed = makeSeedPlacement();
+        tilingRun = { placements: [seed], trace: [] };
+        tilingOrder = tilingRun.placements;
+        tilingTrace = tilingRun.trace;
+        playbackPlacements = [seed];
         hoveredPoint = null;
         shownTiles = 1;
-        playbackPlacements = null;
         traceIndex = 0;
         liveSearchIterator = null;
         pausedCoronas.clear();
@@ -2159,7 +2176,6 @@
         statusText = '';
         hasStartedTiling = false;
         autoplayTarget = 30;
-        showMarkings = false;
         startButton.textContent = 'Start tiling';
         updateMarkExtensionControl();
         updateMarkingButton();
