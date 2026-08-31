@@ -16,7 +16,7 @@ def main() -> None:
         assert 'id="continuationEvidenceLadder"' in document
         assert 'id="continuationEvidenceSteps"' in document
         assert 'id="continuationEvidenceBoundary"' in document
-        assert 'app.js?v=20260830-346' in document
+        assert 'app.js?v=20260831-353' in document
 
     for needle in (
         "function continuationEvidenceSnapshot",

@@ -101,6 +101,9 @@ import { auditCompetingObservedTransitionPaths }
   from "./finite-transition-pathways.mjs?v=20260831-352";
 import { buildFiniteNucleationLandscape }
   from "./finite-nucleation-landscape.mjs?v=20260831-352";
+import { buildInterfacialEnergyRequest, buildNormalizedWulffGeometry,
+  validateInterfacialEnergyResponse }
+  from "./external-interfacial-energy.mjs?v=20260831-353";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -914,6 +917,18 @@ const dynamicalEvidencePlan = $("dynamicalEvidencePlan");
 const dynamicalEvidencePlanDetail = $("dynamicalEvidencePlanDetail");
 const dynamicalEvidencePlanBoundary = $("dynamicalEvidencePlanBoundary");
 const externalPhysicsResponseInput = $("externalPhysicsResponseInput");
+const wulffEvidenceCard = document.querySelector(".wulff-evidence-card");
+const wulffEvidenceBadge = $("wulffEvidenceBadge");
+const wulffPresetControls = $("wulffPresetControls");
+const wulffGeometryPlot = $("wulffGeometryPlot");
+const wulffOrientationState = $("wulffOrientationState");
+const wulffOrientationBars = $("wulffOrientationBars");
+const downloadWulffRequest = $("downloadWulffRequest");
+const importWulffResponse = $("importWulffResponse");
+const resetWulffPreview = $("resetWulffPreview");
+const wulffResponseInput = $("wulffResponseInput");
+const wulffEvidenceState = $("wulffEvidenceState");
+const wulffEvidenceBoundary = $("wulffEvidenceBoundary");
 const settlingSensitivityLab = $("settlingSensitivityLab");
 const settlingSensitivityState = $("settlingSensitivityState");
 const settlingSensitivityArms = $("settlingSensitivityArms");
@@ -1859,6 +1874,9 @@ let externalPhysicsResponseValidationReceipt = null;
 let externalPhysicsResponseRuntime = null;
 let externalPhysicsForceGeometryEnabled = false;
 let externalPhysicsTrajectoryGeometryEnabled = false;
+let interfacialEnergyRequestRuntime = null;
+let interfacialEnergyValidationAudit = null;
+let selectedWulffPreset = "cubic";
 let externalTrajectoryCovarianceMode = "display";
 let currentPhysicsPairProgress = null;
 let currentPhysicsPairIntervention = null;
@@ -3424,6 +3442,193 @@ function resetExternalTrajectoryCovarianceMode() {
   });
 }
 
+function syntheticWulffOrientations(preset, dimension) {
+  if (dimension === 2) {
+    const count = preset === "hexagonal" ? 12 : 16;
+    return Array.from({ length: count }, (_, index) => {
+      const angle = 2 * Math.PI * index / count;
+      const harmonic = preset === "hexagonal" ? .13 * Math.cos(6 * angle)
+        : preset === "polar" ? .18 * Math.sin(angle) : .11 * Math.cos(4 * angle);
+      return { orientationId: `preview-${index + 1}`, normal: [Math.cos(angle), Math.sin(angle)],
+        interfacialFreeEnergy: 1 + harmonic, uncertainty: .02 };
+    });
+  }
+  const basal = Array.from({ length: 6 }, (_, index) => {
+    const angle = Math.PI * index / 3;
+    return { orientationId: `basal-${index + 1}`, normal: [Math.cos(angle), Math.sin(angle), 0],
+      interfacialFreeEnergy: 1, uncertainty: .02 };
+  });
+  if (preset === "hexagonal") return [...basal,
+    { orientationId: "top", normal: [0, 0, 1], interfacialFreeEnergy: .72, uncertainty: .02 },
+    { orientationId: "bottom", normal: [0, 0, -1], interfacialFreeEnergy: .72, uncertainty: .02 }];
+  if (preset === "polar") return [...basal,
+    { orientationId: "positive-polar", normal: [0, 0, 1], interfacialFreeEnergy: .58, uncertainty: .02 },
+    { orientationId: "negative-polar", normal: [0, 0, -1], interfacialFreeEnergy: 1.14, uncertainty: .02 }];
+  const axes = [[1, 0, 0], [-1, 0, 0], [0, 1, 0], [0, -1, 0], [0, 0, 1], [0, 0, -1]]
+    .map((normal, index) => ({ orientationId: `cube-${index + 1}`, normal,
+      interfacialFreeEnergy: 1, uncertainty: .02 }));
+  const corners = [];
+  for (const x of [-1, 1]) for (const y of [-1, 1]) for (const z of [-1, 1]) {
+    corners.push({ orientationId: `corner-${x}-${y}-${z}`, normal: [x, y, z],
+      interfacialFreeEnergy: 1.34, uncertainty: .025 });
+  }
+  return [...axes, ...corners];
+}
+
+function activeWulffEvidence() {
+  if (interfacialEnergyValidationAudit) return {
+    orientations: interfacialEnergyValidationAudit.orientations,
+    geometry: interfacialEnergyValidationAudit.geometry,
+    validated: true,
+  };
+  const dimension = currentMaterial().intrinsicDimension === 2 ? 2 : 3;
+  const orientations = syntheticWulffOrientations(selectedWulffPreset, dimension);
+  return { orientations, geometry: buildNormalizedWulffGeometry(orientations, dimension), validated: false };
+}
+
+function renderWulffEvidence() {
+  if (!wulffGeometryPlot || !wulffOrientationBars) return;
+  let evidence;
+  try { evidence = activeWulffEvidence(); }
+  catch (error) {
+    wulffEvidenceState.textContent = `Wulff geometry withheld · ${error instanceof Error ? error.message : "invalid evidence"}`;
+    wulffGeometryPlot.replaceChildren(); wulffOrientationBars.replaceChildren(); return;
+  }
+  const { orientations, geometry, validated } = evidence;
+  wulffEvidenceCard?.classList.toggle("validated", validated);
+  wulffEvidenceBadge.textContent = validated ? "validated external evidence" : "illustrative only";
+  resetWulffPreview.hidden = !validated;
+  [...wulffPresetControls.querySelectorAll("button[data-wulff-preset]")].forEach((button) =>
+    button.setAttribute("aria-pressed", String(button.dataset.wulffPreset === selectedWulffPreset)));
+  const projected = geometry.vertices.map((point) => geometry.intrinsicDimension === 2
+    ? { x: point[0], y: -point[1], depth: 0 }
+    : { x: point[0] + .56 * point[2], y: -.82 * point[1] + .36 * point[2],
+      depth: point[1] + .45 * point[2] });
+  const xValues = projected.map((point) => point.x); const yValues = projected.map((point) => point.y);
+  const minimumX = Math.min(...xValues); const maximumX = Math.max(...xValues);
+  const minimumY = Math.min(...yValues); const maximumY = Math.max(...yValues);
+  const scale = Math.min(244 / Math.max(1e-9, maximumX - minimumX), 166 / Math.max(1e-9, maximumY - minimumY));
+  const map = (point) => [160 + scale * (point.x - (minimumX + maximumX) / 2),
+    106 + scale * (point.y - (minimumY + maximumY) / 2)];
+  const svg = (name, attributes = {}) => {
+    const node = document.createElementNS("http://www.w3.org/2000/svg", name);
+    Object.entries(attributes).forEach(([key, value]) => node.setAttribute(key, String(value))); return node;
+  };
+  wulffGeometryPlot.replaceChildren();
+  [[22, 110, 298, 110], [160, 20, 160, 198]].forEach(([x1, y1, x2, y2]) =>
+    wulffGeometryPlot.append(svg("line", { x1, y1, x2, y2, class: "wulff-axis" })));
+  const energyById = new Map(orientations.map((entry) => [entry.orientationId, entry.interfacialFreeEnergy]));
+  const low = Math.min(...orientations.map((entry) => entry.interfacialFreeEnergy));
+  const high = Math.max(...orientations.map((entry) => entry.interfacialFreeEnergy));
+  if (geometry.intrinsicDimension === 3) {
+    [...geometry.facets].sort((first, second) => {
+      const mean = (facet) => facet.vertexIndices.reduce((sum, index) => sum + projected[index].depth, 0)
+        / facet.vertexIndices.length;
+      return mean(first) - mean(second);
+    }).forEach((facet) => {
+      const points = facet.vertexIndices.map((index) => map(projected[index]).join(",")).join(" ");
+      const relative = (energyById.get(facet.orientationId) - low) / Math.max(1e-9, high - low);
+      wulffGeometryPlot.append(svg("polygon", { points, class: "wulff-face",
+        fill: `hsla(${196 + 66 * relative},70%,${48 + 8 * relative}%,.22)` }));
+    });
+  }
+  const edgeKeys = new Set();
+  if (geometry.intrinsicDimension === 2) {
+    geometry.vertices.forEach((_, index) => edgeKeys.add(`${index}:${(index + 1) % geometry.vertices.length}`));
+  } else geometry.facets.forEach((facet) => facet.vertexIndices.forEach((index, position) => {
+    const next = facet.vertexIndices[(position + 1) % facet.vertexIndices.length];
+    edgeKeys.add([index, next].sort((a, b) => a - b).join(":"));
+  }));
+  edgeKeys.forEach((key) => {
+    const [first, second] = key.split(":").map(Number); const a = map(projected[first]); const b = map(projected[second]);
+    wulffGeometryPlot.append(svg("line", { x1: a[0], y1: a[1], x2: b[0], y2: b[1], class: "wulff-edge" }));
+  });
+  const caption = svg("text", { x: 12, y: 211, class: "wulff-caption" });
+  caption.textContent = `${geometry.intrinsicDimension}D normalized envelope · ${geometry.vertexCount} vertices · ${geometry.facetCount} active facets`;
+  wulffGeometryPlot.append(caption);
+  const maximumEnergy = Math.max(...orientations.map((entry) => entry.interfacialFreeEnergy));
+  wulffOrientationBars.replaceChildren(...orientations.map((entry) => {
+    const row = document.createElement("div"); const label = document.createElement("b");
+    const bar = document.createElement("i"); const value = document.createElement("span");
+    label.textContent = entry.orientationId; bar.style.setProperty("--wulff-bar", `${100 * entry.interfacialFreeEnergy / maximumEnergy}%`);
+    value.textContent = `${entry.interfacialFreeEnergy.toPrecision(3)} ± ${entry.uncertainty.toPrecision(2)}`;
+    row.append(label, bar, value); return row;
+  }));
+  wulffOrientationState.textContent = validated
+    ? `${orientations.length} validated oriented energies · ${interfacialEnergyValidationAudit.interface.adjacentPhase}`
+    : `${orientations.length} synthetic directions · arbitrary γ units`;
+  wulffEvidenceState.textContent = validated
+    ? `Request ${interfacialEnergyValidationAudit.requestSha256.slice(0, 12)} · ${interfacialEnergyValidationAudit.method.program} · ${geometry.activeOrientationIds.length}/${orientations.length} supplied orientations active in the normalized envelope.`
+    : `Synthetic ${selectedWulffPreset} preview · γ values are pedagogical and have no material identity or physical units.`;
+  wulffEvidenceBoundary.textContent = validated
+    ? "Validated γ(n̂) is scoped to this exact specimen, method, and adjacent phase. The finite envelope is conditional on the supplied orientations; physical size, unsampled facets, Miller indices, equilibrium completeness, attachment kinetics, nucleation rate, and growth ranking remain unresolved."
+    : "The envelope is conditional on the supplied oriented normals and interface environment. Scale, missing orientations, Miller indices, attachment kinetics, nucleation rate, and equilibrium completeness are not inferred; this preview does not rank growth.";
+}
+
+function resetInterfacialEnergyRoundTrip() {
+  interfacialEnergyRequestRuntime = null; interfacialEnergyValidationAudit = null;
+  if (importWulffResponse) importWulffResponse.disabled = true;
+  renderWulffEvidence();
+}
+
+function interfacialEnergyReceipt() {
+  const request = interfacialEnergyRequestRuntime ? {
+    requestSha256: interfacialEnergyRequestRuntime.requestSha256,
+    structureSha256: interfacialEnergyRequestRuntime.structureSha256,
+    intrinsicDimension: interfacialEnergyRequestRuntime.intrinsicDimension,
+    orientationBasisCartesian: interfacialEnergyRequestRuntime.request.specimen.orientationBasisCartesian,
+    targetUsed: false,
+  } : null;
+  if (!interfacialEnergyValidationAudit) return { request, validation: null };
+  const audit = interfacialEnergyValidationAudit;
+  return { request, validation: {
+    schema: audit.schema, requestSha256: audit.requestSha256, responseSha256: audit.responseSha256,
+    structureSha256: audit.structureSha256, intrinsicDimension: audit.intrinsicDimension,
+    method: audit.method, interface: audit.interface, units: audit.units,
+    orientations: audit.orientations.map((entry) => ({ ...entry, normal: [...entry.normal] })),
+    geometry: audit.geometry,
+    candidateSetChanged: false, candidateRankingChanged: false, usedAsGrowthLaw: false,
+    usedAsAttachmentRate: false, targetUsed: false,
+  } };
+}
+
+async function downloadInterfacialEnergyRequest() {
+  const configuration = await externalPhysicsConfigurationPayload(referenceAtoms, "supplied observation");
+  const material = currentMaterial();
+  const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
+  const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
+    intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
+  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-353",
+    scenarioId: scenarioSelect.value, materialName: material.name,
+    elements: material.actualElements ? [...material.actualElements] : [...material.elements],
+    structureSha256: configuration.structureSha256,
+    intrinsicDimension, orientationBasisCartesian,
+    sourceProvenance: scenarioSelect.value === "imported" ? importedStructure?.metadata || null
+      : material.fixtureProvenance || { fixture: material.name },
+    recordedConditions: activeMeasurementConditions(), targetUsed: false, targetCoordinatesEmbedded: false });
+  const serialized = JSON.stringify(request, null, 2); const requestSha256 = await receiptSha256(serialized);
+  interfacialEnergyValidationAudit = null;
+  interfacialEnergyRequestRuntime = { request, requestSha256,
+    structureSha256: configuration.structureSha256, intrinsicDimension: request.specimen.intrinsicDimension };
+  importWulffResponse.disabled = false;
+  const blob = new Blob([serialized], { type: "application/json" }); const url = URL.createObjectURL(blob);
+  const link = document.createElement("a"); link.href = url;
+  link.download = `gcts-${scenarioSelect.value}-interfacial-energy-request.json`;
+  document.body.appendChild(link); link.click(); link.remove(); setTimeout(() => URL.revokeObjectURL(url), 0);
+  receiptStatus.textContent = `Interfacial-energy request downloaded · exact ${request.specimen.intrinsicDimension}D specimen ${configuration.structureSha256.slice(0, 12)} · request ${requestSha256.slice(0, 12)} · nothing submitted.`;
+  renderWulffEvidence();
+}
+
+async function validateInterfacialEnergyFile(file) {
+  if (!file || file.size > 2 * 1024 * 1024) throw new Error("interfacial-energy response exceeds the 2 MB local limit");
+  if (!interfacialEnergyRequestRuntime) throw new Error("download the exact request before validating a response");
+  const responseText = await file.text(); const response = JSON.parse(responseText);
+  interfacialEnergyValidationAudit = validateInterfacialEnergyResponse(response, interfacialEnergyRequestRuntime);
+  interfacialEnergyValidationAudit.responseSha256 = await receiptSha256(responseText);
+  receiptStatus.textContent = `Interfacial energies validated · ${interfacialEnergyValidationAudit.orientations.length} oriented γ values · ${interfacialEnergyValidationAudit.geometry.facetCount} active Wulff facets · display only.`;
+  renderWulffEvidence();
+}
+
 function clearExternalPhysicsRoundTrip() {
   resetExternalForceGeometry();
   dynamicalEvidenceHandoffReceipt = null;
@@ -3434,6 +3639,7 @@ function clearExternalPhysicsRoundTrip() {
   externalPhysicsForceGeometryEnabled = false;
   externalPhysicsTrajectoryGeometryEnabled = false;
   resetExternalTrajectoryCovarianceMode();
+  resetInterfacialEnergyRoundTrip();
 }
 
 function bindExternalForceGeometryToReference(source) {
@@ -14363,6 +14569,7 @@ async function buildExperimentReceipt() {
         ? { ...externalPhysicsRequestExportReceipt } : null,
       externalPhysicsResponseValidation: externalPhysicsResponseValidationReceipt
         ? { ...externalPhysicsResponseValidationReceipt } : null,
+      interfacialEnergyEvidence: interfacialEnergyReceipt(),
       externalActionBarrierCheckpoint: actionBarrierCheckpointReceipt(),
       structuralLeapHistory: { totalEvents: leapEventCount, retainedEvents: leapHistory.length,
         maximumRetainedEvents: MAXIMUM_RETAINED_STRUCTURAL_LEAPS,
@@ -15124,6 +15331,7 @@ async function buildExperimentNotebookSnapshot() {
       ? { ...externalPhysicsRequestExportReceipt } : null,
     externalPhysicsResponseValidation: externalPhysicsResponseValidationReceipt
       ? { ...externalPhysicsResponseValidationReceipt } : null,
+    interfacialEnergyEvidence: interfacialEnergyReceipt(),
     externalActionBarrierCheckpoint: actionBarrierCheckpointReceipt(),
     structuralLeapHistory: { totalEvents: leapEventCount, retainedEvents: leapHistory.length,
       maximumRetainedEvents: MAXIMUM_RETAINED_STRUCTURAL_LEAPS, truncated: leapEventCount > leapHistory.length,
@@ -23996,7 +24204,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
   const candidates = [...attachmentCandidates, ...detachmentCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-352",
+    generatedAt: new Date().toISOString(), buildId: "20260831-353",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -30795,6 +31003,16 @@ function physicsTranslationRecords(leap = null) {
         ? `${hypothesisSeparationSettingsStillMatch() ? "Registered growth controls still match." : "One or more other growth controls changed."} Input identity and one-factor validity are checked only after both executed arms are saved.`
         : "No score-channel separation experiment is active.",
       boundary: "Multiplying one geometric ranking contribution by zero tests this encoded model term, not removal of the underlying physical mechanism. It changes no candidate geometry or hard admission, supplies no target, and infers no energy, kinetics, or time." },
+    { id: "interfacial-free-energy", process: "orientation-resolved interfacial free energy / equilibrium habit geometry",
+      status: interfacialEnergyValidationAudit ? "explicit" : "unavailable",
+      role: interfacialEnergyValidationAudit ? "validated normalized Wulff display" : "synthetic geometry preview only",
+      encoding: interfacialEnergyValidationAudit
+        ? `${interfacialEnergyValidationAudit.orientations.length} oriented γ(n̂) values in ${interfacialEnergyValidationAudit.units}; exact structure and request hashes; halfspaces n̂·x≤γ/γmin yield ${interfacialEnergyValidationAudit.geometry.vertexCount} vertices and ${interfacialEnergyValidationAudit.geometry.facetCount} active facets`
+        : "no physical γ(n̂) values; the visible cubic/hexagonal/polar envelope uses explicitly synthetic arbitrary-unit orientations",
+      evidence: interfacialEnergyValidationAudit
+        ? `${interfacialEnergyValidationAudit.method.family} / ${interfacialEnergyValidationAudit.method.program}; adjacent phase ${interfacialEnergyValidationAudit.interface.adjacentPhase}; response ${interfacialEnergyValidationAudit.responseSha256?.slice(0, 12) || "locally validated"}.`
+        : "Download the exact structure-bound request and validate a returned orientation set locally.",
+      boundary: "Morphology, facet frequency, undercoordination, and GCTS scores never supply γ. The finite Wulff envelope is conditional on the supplied oriented normals, method, and interface environment. It has arbitrary size and does not certify missing facets, complete equilibrium habit, Miller indices, attachment kinetics, nucleation rate, or growth ranking." },
     { id: "steric", process: "short-range repulsion / species contact", status: "hard", role: "hard admission gate",
       encoding: `${coloredDistanceEnvelopes?.records?.length || 0} colored pair envelopes with exact species coincidence and learned hard-exclusion radii${coloredDistanceEnvelopes?.records?.some((record) => record.directionalUncertaintyApplied) ? `; ${coloredDistanceEnvelopes.records.filter((record) => record.directionalUncertaintyApplied).length} retain one-sigma full-Uij support, transported as U_world=R U_local R^T and resolved again along every live pair direction` : ""}`,
       evidence: leapResult,
@@ -33478,6 +33696,30 @@ externalPhysicsResponseInput?.addEventListener("change", async () => {
   } finally {
     externalPhysicsResponseInput.value = "";
   }
+});
+
+wulffPresetControls?.addEventListener("click", (event) => {
+  const button = event.target.closest("button[data-wulff-preset]");
+  if (!button || interfacialEnergyValidationAudit) return;
+  selectedWulffPreset = button.dataset.wulffPreset; renderWulffEvidence();
+});
+downloadWulffRequest?.addEventListener("click", async () => {
+  downloadWulffRequest.disabled = true;
+  try { await downloadInterfacialEnergyRequest(); }
+  catch (error) {
+    receiptStatus.textContent = `Interfacial-energy request failed closed · ${error instanceof Error ? error.message : "invalid request"}`;
+  } finally { downloadWulffRequest.disabled = false; }
+});
+importWulffResponse?.addEventListener("click", () => wulffResponseInput?.click());
+wulffResponseInput?.addEventListener("change", async () => {
+  const [file] = wulffResponseInput.files || [];
+  try { await validateInterfacialEnergyFile(file); }
+  catch (error) {
+    receiptStatus.textContent = `Interfacial-energy response rejected · ${error instanceof Error ? error.message : "invalid response"}`;
+  } finally { wulffResponseInput.value = ""; }
+});
+resetWulffPreview?.addEventListener("click", () => {
+  interfacialEnergyValidationAudit = null; renderWulffEvidence();
 });
 
 function structuralStoichiometrySeries() {
@@ -39428,6 +39670,7 @@ buildPeriodicTable();
 renderDatabaseStructureFamily();
 const launchStage = applyLaunchParameters();
 enterPipelineStage(launchStage);
+renderWulffEvidence();
 const sharedSpecimen = new URLSearchParams(window.location.search).get("specimen");
 if (sharedSpecimen === `nomad:${WORKED_PUBLIC_ARCHIVE.id}`) {
   loadWorkedPublicArchive({ updateAddress: false }).then((loaded) => {

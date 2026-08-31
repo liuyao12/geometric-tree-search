@@ -86,8 +86,8 @@ def test_transport_and_receipt_boundaries_are_visible():
 
 def test_build_342_is_cache_busted():
     for document in (HTML, ALIAS_HTML):
-        assert 'app.js?v=20260830-346' in document
-        assert 'style.css?v=20260830-346' in document
+        assert 'app.js?v=20260831-353' in document
+        assert 'style.css?v=20260831-353' in document
         assert 'evidence-atlas.js?v=20260830-346' in document
     assert 'buildId: "20260830-346"' in APP
 

@@ -98,8 +98,8 @@ def test_cdyb_site_section_portal_contract() -> None:
     assert "exploratory training-corpus result" in README
     assert "older fully nested margin *selection* remains red at 94.48%" in README
     assert 'buildId: "20260830-346"' in APP
-    assert 'app.js?v=20260830-346' in HTML
-    assert 'style.css?v=20260830-346' in HTML
+    assert 'app.js?v=20260831-353' in HTML
+    assert 'style.css?v=20260831-353' in HTML
     assert 'evidence-atlas.js?v=20260830-346' in HTML
 
 

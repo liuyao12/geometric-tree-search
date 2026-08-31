@@ -1,5 +1,27 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 353 · interfacial free energy → Wulff geometry
+
+The portal now has a sealed, local handoff for orientation-resolved solid/environment
+interfacial free energy γ(n̂). A downloaded request binds the exact specimen geometry,
+intrinsic dimension, source provenance, coordinate frame, required units, method
+settings, validation declarations, and claim limits. A returned JSON file is accepted
+only when its request and structure hashes match, every oriented normal is unique,
+every energy remains positive at its three-sigma lower bound, the normals bound the
+origin, and the full method/uncertainty contract passes.
+
+Validated energies become halfspaces `n̂·x ≤ γ(n̂)/γmin`. Their exact intersections
+produce a normalized 2D polygon or 3D polyhedron, identify active and inactive
+supplied orientations, and retain the adjacent phase or substrate in provenance.
+The live card also offers clearly labelled cubic, hexagonal, and polar synthetic
+previews so the construction can be explored before external evidence exists.
+
+The app does **not** infer γ from the morphology, facet count, undercoordination, or
+any GCTS score. Opposite normals are not silently identified, which keeps polar
+terminations distinct. The finite orientation set does not certify a complete
+equilibrium shape; physical size, unsampled facets, Miller indices, attachment
+kinetics, nucleation rate, and growth ranking remain unresolved.
+
 ## Build 352 · finite nucleation grand-potential profile
 
 Exact committed states now retain atom counts independently verified while the

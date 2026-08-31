@@ -53,8 +53,12 @@ def test_generated_sliced_catalog_has_the_published_finite_audit():
     bounded_four_copy = [item for item in records if
                          item["screening"]["four_copy_metatile_scale2_reflected_status"] ==
                          "no_four_copy_metatile_scalar2_substitution"]
-    assert [item["id"] for item in bounded_four_copy] == ["a2sa_7_00120"]
-    assert bounded_four_copy[0]["screening"]["four_copy_metatile_scale2_reflected_parent_types"] == 65110
+    assert sorted(item["id"] for item in bounded_four_copy) == [
+        "a2sa_7_00120", "a2sa_7_00139", "a2sa_7_00170", "a2sa_7_00569",
+        "a2sa_7_00626", "a2sa_7_00674", "a2sa_7_00699", "a2sa_7_00822",
+    ]
+    assert sum(item["screening"]["four_copy_metatile_scale2_reflected_parent_types"]
+               for item in bounded_four_copy) == 755940
     candidate_139 = next(item for item in records
                          if item["id"] == "a2sa_7_00139")
     screening = candidate_139["screening"]

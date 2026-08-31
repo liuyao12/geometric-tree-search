@@ -36,7 +36,7 @@ def main() -> None:
         assert 'id="publishedFixtureHeading"' in document
         assert 'id="publishedFixtureNote"' in document
         assert 'Ideal 6D IQC model set · Al/Cu/Fe colors' in document
-        assert 'app.js?v=20260830-346' in document
+        assert 'app.js?v=20260831-353' in document
 
     for document in (readme, benchmark):
         assert "507" in document
