@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
 import { buildHierarchyPhysicsProtocolPacket, hierarchyPhysicsProtocolShareUrl }
   from "../apps/iqc-growth-live/hierarchy-physics-protocol-packet.mjs";
-import { captureHierarchyPhysicsProtocolLaunch, bindHierarchyPhysicsProtocolToExecution }
+import { captureHierarchyPhysicsProtocolLaunch, bindHierarchyPhysicsProtocolToExecution,
+  hierarchyPhysicsProtocolLaunchAuditFromPacket }
   from "../apps/iqc-growth-live/hierarchy-physics-execution-binding.mjs";
 
 const packet = await buildHierarchyPhysicsProtocolPacket("iqc-reencoding", "kinetics", "stationary");
@@ -13,9 +14,14 @@ assert.equal(verified.actualSha256,
 assert.equal(verified.capturedBeforeAppInitialization, true);
 assert.equal(verified.targetUsed, false);
 assert.equal(verified.coordinatesEmbedded, false);
+assert.deepEqual(hierarchyPhysicsProtocolLaunchAuditFromPacket({ ...verified.selection,
+  expectedSha256: verified.expectedSha256 }, packet), verified);
+assert.throws(() => hierarchyPhysicsProtocolLaunchAuditFromPacket({ ...verified.selection,
+  expectedSha256: verified.expectedSha256 }, { ...packet,
+  selection: { ...packet.selection, stageId: "macro" } }), /does not match/);
 
 const awaiting = bindHierarchyPhysicsProtocolToExecution(verified,
-  { scenarioId: "iqc", pipelineStage: 0, receiptBuildId: "20260831-394" });
+  { scenarioId: "iqc", pipelineStage: 0, receiptBuildId: "20260831-395" });
 assert.equal(awaiting.status, "verified-design-awaiting-stage");
 assert.equal(awaiting.designReferenceBoundToReceipt, true);
 assert.equal(awaiting.currentRunCompatible, true);
@@ -27,13 +33,13 @@ assert.equal(awaiting.greenGateSatisfied, null);
 assert.equal(awaiting.outcomeClaimUpgraded, false);
 
 const reached = bindHierarchyPhysicsProtocolToExecution(verified,
-  { scenarioId: "iqc", pipelineStage: 4, receiptBuildId: "20260831-394" });
+  { scenarioId: "iqc", pipelineStage: 4, receiptBuildId: "20260831-395" });
 assert.equal(reached.status, "verified-design-stage-reached");
 assert.equal(reached.plannedStageReached, true);
 assert.equal(reached.greenGateEvaluated, false);
 
 const mismatch = bindHierarchyPhysicsProtocolToExecution(verified,
-  { scenarioId: "competition", pipelineStage: 4, receiptBuildId: "20260831-394" });
+  { scenarioId: "competition", pipelineStage: 4, receiptBuildId: "20260831-395" });
 assert.equal(mismatch.status, "material-mismatch");
 assert.equal(mismatch.currentRunCompatible, false);
 

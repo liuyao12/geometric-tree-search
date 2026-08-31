@@ -1,5 +1,5 @@
 import { buildHierarchyPhysicsProtocolPacket, hierarchyPhysicsProtocolSelectionFromSearch }
-  from "./hierarchy-physics-protocol-packet.mjs?v=20260831-394";
+  from "./hierarchy-physics-protocol-packet.mjs?v=20260831-395";
 
 export async function captureHierarchyPhysicsProtocolLaunch(search) {
   let selection;
@@ -18,6 +18,21 @@ export async function captureHierarchyPhysicsProtocolLaunch(search) {
     coordinatesEmbedded: false, candidateActionsEmbedded: false });
   const packet = await buildHierarchyPhysicsProtocolPacket(
     selection.receiptId, selection.channelId, selection.stageId);
+  return hierarchyPhysicsProtocolLaunchAuditFromPacket(selection, packet);
+}
+
+export function hierarchyPhysicsProtocolLaunchAuditFromPacket(selection, packet) {
+  if (!selection || !/^[0-9a-f]{64}$/.test(selection.expectedSha256 || "")) {
+    throw new TypeError("A parsed protocol selection with expected SHA-256 is required.");
+  }
+  if (!packet?.selection || !/^[0-9a-f]{64}$/.test(packet.sha256 || "")) {
+    throw new TypeError("A canonical hashed protocol packet is required.");
+  }
+  if (packet.selection.receiptId !== selection.receiptId
+    || packet.selection.channelId !== selection.channelId
+    || packet.selection.stageId !== selection.stageId) {
+    throw new Error("Protocol packet selection does not match the captured launch selection.");
+  }
   const digestVerified = packet.sha256 === selection.expectedSha256;
   return Object.freeze({
     schema: "gcts-hierarchy-physics-protocol-launch-v1",

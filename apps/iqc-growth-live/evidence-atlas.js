@@ -2,12 +2,14 @@ import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.j
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
 import { A2_SLICED_SIZE7_CANDIDATES } from "../../assets/a2-sliced-size7-candidates.js?v=20260828-320";
 import { buildHierarchyPhysicsTransport, HIERARCHY_TRANSPORT_STAGES }
-  from "./hierarchy-physics-transport.mjs?v=20260831-394";
+  from "./hierarchy-physics-transport.mjs?v=20260831-395";
 import { buildHierarchyPhysicsInvestigation }
-  from "./hierarchy-physics-investigation.mjs?v=20260831-394";
+  from "./hierarchy-physics-investigation.mjs?v=20260831-395";
 import { buildHierarchyPhysicsProtocolPacket, hierarchyPhysicsProtocolShareUrl,
   hierarchyPhysicsProtocolSelectionFromSearch, hierarchyPhysicsProtocolPacketFilename }
-  from "./hierarchy-physics-protocol-packet.mjs?v=20260831-394";
+  from "./hierarchy-physics-protocol-packet.mjs?v=20260831-395";
+import { hierarchyPhysicsProtocolLaunchAuditFromPacket }
+  from "./hierarchy-physics-execution-binding.mjs?v=20260831-395";
 
 const byId = (id) => document.getElementById(id);
 const A2_SLICED_SCALE3_OBSTRUCTIONS = A2_SLICED_SIZE7_CANDIDATES.filter((candidate) =>
@@ -978,6 +980,12 @@ async function renderHierarchyPhysicsProtocolPacket(plan) {
       ? "Shared packet verified byte-for-byte · design only · execution still requires a separate run receipt."
       : mismatch ? "Shared packet SHA-256 mismatch · plan shown, but provenance is not verified."
         : "Deterministic design packet · coordinates and candidate actions absent · executionAuthorized = false.";
+    if (sameSelection) {
+      const launchAudit = hierarchyPhysicsProtocolLaunchAuditFromPacket(shared, packet);
+      window.__gctsHierarchyPhysicsProtocolLaunchAudit = launchAudit;
+      window.dispatchEvent(new CustomEvent("gcts:hierarchy-physics-protocol-audit",
+        { detail: launchAudit }));
+    }
     [hierarchyPhysicsProtocolCopyLink, hierarchyPhysicsProtocolCopyJson,
       hierarchyPhysicsProtocolDownload].forEach((button) => { button.disabled = false; });
   } catch (error) {
