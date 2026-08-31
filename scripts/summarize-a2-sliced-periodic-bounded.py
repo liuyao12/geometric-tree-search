@@ -15,6 +15,11 @@ def main():
     parser.add_argument("--copies", type=int, required=True)
     parser.add_argument("--orbit-total", type=int, required=True)
     parser.add_argument("--exact-node-limit", type=int, required=True)
+    parser.add_argument(
+        "--campaign",
+        default="",
+        help="stable campaign identifier; defaults to a copy-count-specific generic name",
+    )
     args = parser.parse_args()
     directory = Path(args.input_dir)
     candidates = []
@@ -74,14 +79,16 @@ def main():
             "receipts": receipts,
         })
     result = {
-        "campaign": "a2_sliced_size9_periodic_copy10_exact_gcts_bounded",
+        "campaign": args.campaign or (
+            f"a2_sliced_periodic_copy{args.copies}_exact_gcts_bounded"
+        ),
         "copies": args.copies,
         "exact_node_limit_per_orbit": args.exact_node_limit,
         "classification": "periodic" if positives else "bounded_inconclusive",
         "periodic_certificates": positives,
         "candidates": candidates,
         "campaign_receipt_sha256": campaign_digest.hexdigest(),
-        "claim_scope": "fixed_ten_copy_weighted_hnf_quotients",
+        "claim_scope": f"fixed_{args.copies}_copy_weighted_hnf_quotients",
     }
     Path(args.output).write_text(json.dumps(result, indent=2) + "\n")
     print(json.dumps({

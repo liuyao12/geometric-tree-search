@@ -12,6 +12,7 @@ quotient coordinates before they are written.
 from __future__ import annotations
 
 import argparse
+import gzip
 import itertools
 import json
 import math
@@ -24,6 +25,12 @@ from sympy.matrices.normalforms import hermite_normal_form
 
 
 PERMUTATIONS = tuple(itertools.permutations(range(3)))
+
+
+def read_ndjson(path: Path) -> list[dict]:
+    opener = gzip.open if path.suffix == ".gz" else open
+    with opener(path, "rt", encoding="utf-8") as stream:
+        return [json.loads(line) for line in stream if line.strip()]
 
 
 def permutation_parity(permutation: tuple[int, int, int]) -> int:
@@ -915,7 +922,7 @@ def main():
     if args.min_copies < 1 or args.max_copies < args.min_copies:
         parser.error("invalid copy range")
 
-    records = [json.loads(line) for line in Path(args.input).read_text().splitlines() if line.strip()]
+    records = read_ndjson(Path(args.input))
     if args.only_unresolved:
         records = [record for record in records if record.get("classification") == "unresolved"]
     records = records[max(0, args.offset):]

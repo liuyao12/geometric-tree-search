@@ -2,6 +2,7 @@
 """Regression checks for resumable A2-sliced periodic orbit shards."""
 
 import importlib.util
+import gzip
 import json
 import tempfile
 from pathlib import Path
@@ -51,5 +52,12 @@ with tempfile.TemporaryDirectory() as directory:
 
     write_report(shard, candidate_id="other")
     assert not MODULE.valid_shard(shard, "probe", 3, 4)
+
+    compressed = directory / "input.ndjson.gz"
+    with gzip.open(compressed, "wt", encoding="utf-8") as stream:
+        stream.write(json.dumps({"id": "compressed", "classification": "unresolved"}) + "\n")
+    assert MODULE.read_ndjson(compressed) == [
+        {"id": "compressed", "classification": "unresolved"}
+    ]
 
 print("A2-sliced resumable periodic batch regression passed")

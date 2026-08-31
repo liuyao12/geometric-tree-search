@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import concurrent.futures
+import gzip
 import importlib.util
 import json
 import os
@@ -24,7 +25,9 @@ MERGE_SPEC.loader.exec_module(MERGE)
 
 
 def read_ndjson(path: Path) -> list[dict]:
-    return [json.loads(line) for line in path.read_text().splitlines() if line.strip()]
+    opener = gzip.open if path.suffix == ".gz" else open
+    with opener(path, "rt", encoding="utf-8") as stream:
+        return [json.loads(line) for line in stream if line.strip()]
 
 
 def shard_path(output_dir: Path, candidate_id: str, start: int, stop: int) -> Path:
@@ -190,6 +193,10 @@ def main() -> None:
                     "positive_marker": str(positive_marker),
                 })
         candidate_paths[candidate_id] = paths
+    requested_rank = {candidate_id: index for index, candidate_id in enumerate(requested)}
+    tasks.sort(key=lambda task: (
+        task["start"], task["stop"], requested_rank[task["id"]]
+    ))
     if args.max_tasks > 0:
         tasks = tasks[:args.max_tasks]
 
