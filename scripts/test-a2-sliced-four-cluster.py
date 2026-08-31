@@ -58,6 +58,13 @@ with tempfile.TemporaryDirectory() as directory:
          for index, value in enumerate(values)),
     )
     connection.execute(
+        "CREATE TABLE canonical_order (canonical_index INTEGER PRIMARY KEY, sort_key BLOB UNIQUE NOT NULL)"
+    )
+    connection.executemany(
+        "INSERT INTO canonical_order VALUES(?,?)",
+        ((index, bytes([index])) for index in range(3)),
+    )
+    connection.execute(
         "CREATE TABLE metadata (key TEXT PRIMARY KEY, value_json TEXT NOT NULL) WITHOUT ROWID"
     )
     metadata = {

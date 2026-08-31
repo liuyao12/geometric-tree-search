@@ -50,8 +50,11 @@ class SqliteMetatileList:
         start = (index // self.chunk_size) * self.chunk_size
         if start != self.chunk_start:
             rows = self.connection.execute(
-                "SELECT value_json FROM representatives ORDER BY sort_key LIMIT ? OFFSET ?",
-                (self.chunk_size, start),
+                "SELECT r.value_json FROM canonical_order AS o "
+                "JOIN representatives AS r USING(sort_key) "
+                "WHERE o.canonical_index>=? AND o.canonical_index<? "
+                "ORDER BY o.canonical_index",
+                (start, min(self.count, start + self.chunk_size)),
             )
             self.chunk = [json.loads(row[0]) for row in rows]
             self.chunk_start = start

@@ -69,6 +69,7 @@ with tempfile.TemporaryDirectory() as directory:
     connection = MODULE.sqlite3.connect(sqlite_cache)
     try:
         assert connection.execute("SELECT COUNT(*) FROM representatives").fetchone()[0] == 3
+        assert connection.execute("SELECT COUNT(*) FROM canonical_order").fetchone()[0] == 3
         metadata = dict(connection.execute("SELECT key,value_json FROM metadata"))
         assert json.loads(metadata["canonical_sha256"]) == streamed["canonical_sha256"]
     finally:

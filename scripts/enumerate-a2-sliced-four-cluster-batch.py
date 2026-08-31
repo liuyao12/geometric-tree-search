@@ -247,6 +247,15 @@ def merge_shards_to_cache(paths: list[Path], candidate_id: str,
                 stream.write("]}}")
             os.replace(temporary, output)
         if sqlite_output is not None:
+            connection.execute(
+                "CREATE TABLE canonical_order (canonical_index INTEGER PRIMARY KEY, sort_key BLOB UNIQUE NOT NULL)"
+            )
+            connection.executemany(
+                "INSERT INTO canonical_order(canonical_index,sort_key) VALUES(?,?)",
+                ((index, sort_key) for index, (sort_key,) in enumerate(connection.execute(
+                    "SELECT sort_key FROM representatives ORDER BY sort_key"
+                ))),
+            )
             connection.execute("CREATE TABLE metadata (key TEXT PRIMARY KEY, value_json TEXT NOT NULL) WITHOUT ROWID")
             metadata = {
                 "id": candidate_id,
@@ -288,6 +297,7 @@ def main() -> None:
     parser.add_argument("--merged-cache", required=True)
     parser.add_argument("--sqlite-cache")
     parser.add_argument("--sqlite-only", action="store_true")
+    parser.add_argument("--merge-existing", action="store_true")
     parser.add_argument("--candidate-index", type=int, required=True)
     parser.add_argument("--candidate-id", required=True)
     parser.add_argument("--three-parent-total", type=int, required=True)
@@ -329,7 +339,7 @@ def main() -> None:
         stop = min(args.three_parent_total, start + span)
         path = shard_path(output_dir, args.candidate_id, start, stop)
         paths.append(path)
-        if not valid_shard(
+        if not args.merge_existing and not valid_shard(
             path, args.candidate_id, args.include_reflections,
             start, stop, args.three_parent_total,
         ):
@@ -357,10 +367,12 @@ def main() -> None:
                 "partial_types": result["types"],
             }, separators=(",", ":")), flush=True)
 
-    complete = all(valid_shard(
-        path, args.candidate_id, args.include_reflections,
-        start, min(args.three_parent_total, start + span), args.three_parent_total,
-    ) for start, path in zip(range(0, args.three_parent_total, span), paths))
+    complete = (all(path.exists() for path in paths) if args.merge_existing else all(
+        valid_shard(
+            path, args.candidate_id, args.include_reflections,
+            start, min(args.three_parent_total, start + span), args.three_parent_total,
+        ) for start, path in zip(range(0, args.three_parent_total, span), paths)
+    ))
     if complete:
         output = Path(args.merged_cache)
         result = merge_shards_to_cache(
