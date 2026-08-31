@@ -1,5 +1,39 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 356 · validated continuum transport → spatial interface supply
+
+The portal now separates **where material arrives** from both equilibrium habit
+and orientation-only attachment speed. A third exact local handoff freezes the
+current finite interface and requests a steady, spatially resolved net
+incorporation-flux map `J(x,n̂)` from an external multicomponent transport solve
+or spatially resolved measurement. The request binds the exact structure,
+interface geometry, transported species, public boundary, source provenance,
+and recorded conditions.
+
+Returned maps must reproduce the request, structure, and interface SHA-256s;
+report every predeclared quadrature position, outward normal, area weight,
+species-resolved flux, and uncertainty; close species sums patch by patch; remain
+positive at three sigma; and pass explicit steady-state, 0.1% global
+mass-balance, and 5% mesh-convergence gates. Uniform-shell, substrate-fed, and
+shadowed-pair previews make the spatial distinction visible before any physical
+transport evidence is loaded.
+
+After explicit opt-in, a compact kernel interpolates the validated map in both
+Cartesian interface position and oriented outward normal. It ranks only the
+already enumerated, hard-admitted, target-free GCTS candidates by bounded log
+flux contrast and abstains outside the declared local reach. The candidate set,
+exact cluster poses, emitted sites, collision and connection gates remain
+unchanged. A matched audit reports coverage, abstention, rank inversions, leader
+changes, and the frozen candidate digest; candidate normals carry cyan supply
+glyphs in the 3D scene.
+
+This layer does not convert geometric visibility into diffusion. It does not
+infer a concentration or chemical-potential field, diffusivity, attachment
+velocity, sticking probability, complete moving-boundary solution, or physical
+clock. The response is valid for one frozen interface and boundary condition;
+it must be recalculated rather than silently transported after the morphology
+changes.
+
 ## Build 355 · validated attachment velocity → kinetic growth habit
 
 The portal now separates equilibrium habit from orientation-dependent growth

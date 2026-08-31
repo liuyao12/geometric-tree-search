@@ -32,6 +32,6 @@ assert.match(moduleText, /orientedNormalsNotSilentlyInversionSymmetrized: true/)
 assert.match(moduleText, /physicalTimeIntegrated: false/);
 assert.match(readme, /Build 355/);
 assert.match(readme, /neither the displayed[\s\S]*γ\(n̂\)[\s\S]*supplies `v\(n̂\)`/);
-assert.match(atlas, /Equilibrium habit, kinetic habit, and exact events are now separate evidence layers/);
-assert.match(atlas, /Neither morphology nor γ supplies v/);
+assert.match(atlas, /Equilibrium habit, kinetic habit, spatial supply, and exact events are separate evidence layers/);
+assert.match(atlas, /γ does not supply v/);
 console.log("orientation-resolved attachment-kinetics portal contract passed");

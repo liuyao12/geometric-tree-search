@@ -1,5 +1,40 @@
 # Recursive GCTS benchmark for material growth
 
+### Spatially resolved interface transport handoff (Build 356)
+
+The browser now represents nonuniform material supply as a distinct external
+evidence layer.  It exports an exact request bound to the colored structure,
+frozen finite interface, transported species set, public growth boundary,
+source provenance, and recorded conditions.  A valid response supplies a
+predeclared interface quadrature with Cartesian positions, oriented outward
+normals, area weights, species-resolved steady incorporation fluxes, and
+one-sigma uncertainties in atoms m⁻² s⁻¹.
+
+Validation is deliberately stronger than accepting a colored scalar field:
+request, structure, interface, method, settings, and boundary-condition hashes
+must agree; per-patch species fluxes must sum to the reported net flux; every
+net flux must remain positive at three sigma; the solver must declare
+convergence and a verified steady window; global mass-balance residual must not
+exceed 10⁻³; and the declared mesh-refinement change must not exceed 5%.  A
+failed field remains display-ineligible and cannot enter search.
+
+An optional target-free rank term interpolates only among locally supported
+patches using compact kernels in normalized interface position and signed
+outward-normal angle.  The dimensionless score is
+`tanh(log J_candidate − mean(log J_patch))`. Unsupported candidates abstain.
+The exact candidate list, cluster pose, emitted atoms, GCTS marking, collision
+checks, connection ports, and hard admission do not change.  The matched audit
+retains support coverage, abstentions, pairwise rank inversions, leader change,
+and the frozen candidate-set digest.
+
+This closes the uniform-driving limitation of the orientation-only kinetic
+habit without pretending to solve transport inside GCTS.  Source-ray
+visibility is not reused as physical flux, and neither morphology, γ(n̂), nor
+v(n̂) supplies J(x,n̂).  The map applies to one frozen interface and boundary
+condition; it is not a concentration or chemical-potential field, inferred
+diffusivity, sticking probability, moving-boundary solution, universal growth
+law, or physical clock.
+
 ### Catalog-conditional HTST / KMC execution (Build 346)
 
 Build 345 froze exact action geometry and accepted candidate-resolved barriers,

@@ -6,9 +6,8 @@
   <meta name="theme-color" content="#071112">
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
-  <base href="../apps/iqc-growth-live/">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23071112'/%3E%3Cpath d='M17 19 46 12M17 19l8 30m21-37L25 49m-8-30 29 24M25 49l21-6' stroke='%236fffd4' stroke-width='4'/%3E%3Ccircle cx='17' cy='19' r='6' fill='%23f1fff9'/%3E%3Ccircle cx='46' cy='12' r='6' fill='%236fffd4'/%3E%3Ccircle cx='25' cy='49' r='6' fill='%238a7dff'/%3E%3Ccircle cx='46' cy='43' r='6' fill='%236fffd4'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css?v=20260831-355">
+  <link rel="stylesheet" href="./style.css?v=20260831-356">
   <script type="importmap">
     {
       "imports": {
@@ -2102,6 +2101,38 @@
           <p id="kineticHabitBoundary">The preview is pedagogical. A kinetic-Wulff envelope is conditional on one declared driving condition; it is not γ(n̂), an action barrier, attachment probability, diffusion law, or integrated physical time.</p>
         </section>
 
+        <section class="interface-flux-card" aria-label="Spatial interface transport flux to growth geometry">
+          <div class="section-heading"><p class="eyebrow">continuum transport → geometry</p><span id="interfaceFluxBadge">illustrative only</span></div>
+          <header class="interface-flux-heading"><span><small>spatial net incorporation flux J(x,n̂)</small><strong>Interface supply map</strong></span><p>Resolve diffusion, substrate supply, or shadowing outside GCTS; import only the frozen interface flux with its balance and mesh evidence.</p></header>
+          <div id="interfaceFluxPresetControls" class="interface-flux-presets" role="group" aria-label="Choose a synthetic interface supply preview">
+            <button type="button" data-flux-preset="uniform" aria-pressed="true">uniform shell</button>
+            <button type="button" data-flux-preset="substrate" aria-pressed="false">substrate-fed</button>
+            <button type="button" data-flux-preset="shadowed" aria-pressed="false">shadowed pair</button>
+          </div>
+          <div class="interface-flux-layout">
+            <svg id="interfaceFluxPlot" viewBox="0 0 320 220" role="img" aria-label="Spatially resolved interface incorporation-flux map"></svg>
+            <aside><header><small>interface quadrature</small><strong id="interfaceFluxPatchState">synthetic preview</strong></header><div id="interfaceFluxBars" class="interface-flux-bars"></div></aside>
+          </div>
+          <div class="interface-flux-actions">
+            <button id="downloadInterfaceFluxRequest" type="button">Download exact J(x,n̂) request</button>
+            <button id="importInterfaceFluxResponse" type="button" disabled>Validate returned flux map</button>
+            <button id="resetInterfaceFluxPreview" type="button" hidden>Return to preview</button>
+            <input id="interfaceFluxResponseInput" type="file" accept=".json,application/json" hidden>
+          </div>
+          <section class="interface-flux-ranking" aria-label="Optional spatial supply ranking">
+            <header><span><small>target-free frontier use</small><strong>Local supply prior</strong></span><b id="interfaceFluxRankingGate">display only</b></header>
+            <div>
+              <label for="interfaceFluxModeSelect"><span>Growth role</span><select id="interfaceFluxModeSelect"><option value="display" selected>Display only · no frontier effect</option><option value="rank">Rank by validated local flux</option></select></label>
+              <label for="interfaceFluxReachSelect"><span>Spatial reach</span><select id="interfaceFluxReachSelect"><option value="0.35">Strict · 0.35R</option><option value="0.55" selected>Balanced · 0.55R</option><option value="0.8">Exploratory · 0.80R</option></select></label>
+              <label for="interfaceFluxWeightSelect"><span>Soft weight</span><select id="interfaceFluxWeightSelect"><option value="0.12">Subtle · 0.12</option><option value="0.24" selected>Balanced · 0.24</option><option value="0.48">Strong · 0.48</option></select></label>
+            </div>
+            <p id="interfaceFluxRankingState">Requires a validated steady interface-flux map, finite spherical nucleus, and target-free continuation.</p>
+            <div id="interfaceFluxRankingAudit" class="interface-flux-audit"><span><small>coverage</small><b>—</b></span><span><small>rank inversions</small><b>—</b></span><span><small>candidate set</small><b>unchanged</b></span></div>
+          </section>
+          <p id="interfaceFluxState">Synthetic finite-interface supply map · no physical transport solve is loaded.</p>
+          <p id="interfaceFluxBoundary">The preview is pedagogical. Geometric visibility is not diffusion: this map is not a concentration field, chemical potential, diffusivity, attachment velocity, probability, or integrated physical time.</p>
+        </section>
+
         <section id="leapCertificateSection" class="leap-certificate-section" hidden>
           <div class="section-heading"><p class="eyebrow">structural leap certificate</p><span id="leapCertificateState">no action yet</span></div>
           <div id="leapHistory" class="leap-history" role="group" aria-label="Inspect recent structural leap updates"></div>
@@ -2349,7 +2380,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260831-355"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260831-355"></script>
+  <script type="module" src="./app.js?v=20260831-356"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260831-356"></script>
 </body>
 </html>
