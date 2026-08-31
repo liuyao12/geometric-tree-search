@@ -13,11 +13,15 @@ const packet = await buildHierarchyPhysicsProtocolPacket("iqc-reencoding", "kine
 const launch = hierarchyPhysicsProtocolLaunchAuditFromPacket({ ...packet.selection,
   expectedSha256: packet.sha256 }, packet);
 const binding = bindHierarchyPhysicsProtocolToExecution(launch,
-  { scenarioId: "iqc", pipelineStage: 4, receiptBuildId: "20260831-397" });
+  { scenarioId: "iqc", pipelineStage: 4, receiptBuildId: "20260831-398" });
 const requirements = hierarchyPhysicsProtocolConformanceRequirements("kinetics", "stationary");
 assert.ok(requirements.some((requirement) => requirement.id === "externalTransitionEvidence"));
 assert.ok(requirements.some((requirement) => requirement.id === "threeLevelStationaryWitness"));
 assert.equal(new Set(requirements.map((requirement) => requirement.id)).size, requirements.length);
+assert.ok(requirements.every((requirement) => Number.isInteger(requirement.route.stage)
+  && requirement.route.stage >= 0 && requirement.route.stage <= 4));
+assert.ok(requirements.every((requirement) => requirement.route.focusId
+  && requirement.route.label));
 
 const partialFacts = Object.fromEntries(requirements.map((requirement) => [requirement.id,
   ["protocolFrozenBeforeEvidenceUse", "candidateGeometryFrozen", "targetFreeFitAndSelection"].includes(requirement.id)]));
@@ -29,6 +33,16 @@ assert.equal(partial.gateEvaluated, false);
 assert.equal(partial.claimUpgradeAllowed, false);
 assert.equal(partial.physicalTimeClaimed, false);
 assert.equal(partial.targetUsedForFitOrSelection, false);
+assert.ok(partial.requirements.every((requirement) => requirement.reported === true));
+assert.equal(partial.requirements.find((requirement) => requirement.id === "externalTransitionEvidence")
+  .evidenceState, "not-evidenced");
+assert.equal(partial.requirements.find((requirement) => requirement.id === "protocolFrozenBeforeEvidenceUse")
+  .evidenceState, "evidenced");
+
+const sparse = buildHierarchyPhysicsProtocolConformance(binding,
+  { facts: { protocolFrozenBeforeEvidenceUse: true } });
+assert.equal(sparse.requirements.find((requirement) => requirement.id === "candidateGeometryFrozen")
+  .evidenceState, "unreported");
 
 const allFacts = Object.fromEntries(requirements.map((requirement) => [requirement.id, true]));
 const ready = buildHierarchyPhysicsProtocolConformance(binding, { facts: allFacts });

@@ -1,5 +1,5 @@
 import { buildHierarchyPhysicsInvestigation }
-  from "./hierarchy-physics-investigation.mjs?v=20260831-397";
+  from "./hierarchy-physics-investigation.mjs?v=20260831-398";
 
 const UNIVERSAL = Object.freeze([
   ["protocolFrozenBeforeEvidenceUse", "Protocol frozen before evidence use"],
@@ -94,6 +94,62 @@ const SCALE_REQUIREMENTS = Object.freeze({
   ]),
 });
 
+const INSPECTION_ROUTES = Object.freeze({
+  universal: Object.freeze({ stage: 4, focusId: "receiptScaleBridgeBinding",
+    label: "Run receipt and provenance binding" }),
+  "colored-geometry": Object.freeze({ stage: 1, focusId: "clusterGeometryOptions",
+    label: "Cluster geometry and complete-cover audit" }),
+  "proper-pose": Object.freeze({ stage: 1, focusId: "clusterGeometryOptions",
+    label: "Symmetry-reduced pose atlas" }),
+  "connection-topology": Object.freeze({ stage: 3, focusId: "connectionCoverageAtlas",
+    label: "Frozen cluster-to-port coverage atlas" }),
+  "steric-exclusion": Object.freeze({ stage: 4, focusId: "growthSearchOptions",
+    label: "Whole-action admission and collision audit" }),
+  composition: Object.freeze({ stage: 0, focusId: "activeSamplePassport",
+    label: "Species, occupancy, and input provenance" }),
+  residuals: Object.freeze({ stage: 1, focusId: "clusterGeometryOptions",
+    label: "Complete cover and explicit residual classes" }),
+  "local-response": Object.freeze({ stage: 4, focusId: "growthPhysicsPreflightMatrix",
+    label: "Response evidence and execution-hook preflight" }),
+  interface: Object.freeze({ stage: 4, focusId: "growthPhysicsPreflightMatrix",
+    label: "Interface-response and matched-candidate preflight" }),
+  kinetics: Object.freeze({ stage: 4, focusId: "growthPhysicsPreflightMatrix",
+    label: "External event, barrier, and chronology evidence" }),
+  nonlocal: Object.freeze({ stage: 4, focusId: "growthPhysicsPreflightMatrix",
+    label: "Coupled-field evidence and boundary audit" }),
+  cluster: Object.freeze({ stage: 3, focusId: "connectionCoverageAtlas",
+    label: "Frozen cluster vocabulary and ports" }),
+  macro: Object.freeze({ stage: 4, focusId: "hierarchyEvidenceMicroscope",
+    label: "Promoted cluster-of-clusters evidence" }),
+  stationary: Object.freeze({ stage: 4, focusId: "hierarchyEvidenceMicroscope",
+    label: "Three-level stationary-production gate" }),
+});
+
+const REQUIREMENT_ROUTE_OVERRIDES = Object.freeze({
+  protocolFrozenBeforeEvidenceUse: INSPECTION_ROUTES.universal,
+  candidateGeometryFrozen: INSPECTION_ROUTES["steric-exclusion"],
+  targetFreeFitAndSelection: INSPECTION_ROUTES.universal,
+  inputGeometryDigested: INSPECTION_ROUTES.composition,
+  completeSupportResidualAccounting: INSPECTION_ROUTES.residuals,
+  exactHeldoutReplay: INSPECTION_ROUTES["colored-geometry"],
+  exactSpeciesReplay: INSPECTION_ROUTES.composition,
+  finiteProperPoseVocabulary: INSPECTION_ROUTES["proper-pose"],
+  permutationRigidMetamorphic: INSPECTION_ROUTES["proper-pose"],
+  reflectionControl: INSPECTION_ROUTES["proper-pose"],
+  frozenPortAtlas: INSPECTION_ROUTES["connection-topology"],
+  boundedIncomingContext: INSPECTION_ROUTES["connection-topology"],
+  matchedCandidateAblation: INSPECTION_ROUTES["connection-topology"],
+  shuffledMarkingControl: INSPECTION_ROUTES["connection-topology"],
+  causalMarkingGain: INSPECTION_ROUTES["connection-topology"],
+  clusterVocabularyFrozen: INSPECTION_ROUTES.cluster,
+  promotedHierarchyPresent: INSPECTION_ROUTES.macro,
+  exactMacroReplay: INSPECTION_ROUTES.macro,
+  threeLevelStationaryWitness: INSPECTION_ROUTES.stationary,
+  repeatedScale: INSPECTION_ROUTES.stationary,
+  populationSubstitutionRepeated: INSPECTION_ROUTES.stationary,
+  independentStationaryHoldout: INSPECTION_ROUTES.stationary,
+});
+
 const uniqueRequirements = (records) => [...new Map(records.map((record) => [record[0], record])).values()];
 
 function publicFacts(facts) {
@@ -111,9 +167,13 @@ export function hierarchyPhysicsProtocolConformanceRequirements(channelId, stage
   if (!channel) throw new TypeError(`Unknown conformance channel: ${channelId}`);
   if (!scale) throw new TypeError(`Unknown conformance scale: ${stageId}`);
   return Object.freeze(uniqueRequirements([...UNIVERSAL, ...channel, ...scale])
-    .map(([id, label]) => Object.freeze({ id, label,
-      scope: UNIVERSAL.some(([candidate]) => candidate === id) ? "universal"
-        : scale.some(([candidate]) => candidate === id) ? "scale" : "channel" })));
+    .map(([id, label]) => {
+      const scope = UNIVERSAL.some(([candidate]) => candidate === id) ? "universal"
+        : scale.some(([candidate]) => candidate === id) ? "scale" : "channel";
+      const route = REQUIREMENT_ROUTE_OVERRIDES[id]
+        || INSPECTION_ROUTES[scope === "scale" ? stageId : scope === "channel" ? channelId : "universal"];
+      return Object.freeze({ id, label, scope, route: Object.freeze({ ...route }) });
+    }));
 }
 
 export function buildHierarchyPhysicsProtocolConformance(binding, evidence = {}) {
@@ -129,9 +189,12 @@ export function buildHierarchyPhysicsProtocolConformance(binding, evidence = {})
     plan = buildHierarchyPhysicsInvestigation(selection.receiptId,
       selection.channelId, selection.stageId);
     requirements = hierarchyPhysicsProtocolConformanceRequirements(
-      selection.channelId, selection.stageId).map((requirement) => Object.freeze({
-      ...requirement, met: facts[requirement.id] === true,
-    }));
+      selection.channelId, selection.stageId).map((requirement) => {
+      const reported = Object.prototype.hasOwnProperty.call(facts, requirement.id);
+      const met = facts[requirement.id] === true;
+      return Object.freeze({ ...requirement, met, reported,
+        evidenceState: met ? "evidenced" : reported ? "not-evidenced" : "unreported" });
+    });
   }
   const metCount = requirements.filter((requirement) => requirement.met).length;
   const missing = requirements.filter((requirement) => !requirement.met);

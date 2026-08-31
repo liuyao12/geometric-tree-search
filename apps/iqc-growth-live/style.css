@@ -840,6 +840,37 @@ body.study-guide-open { overflow: hidden; }
 .receipt-scale-bridge-conformance.sealed-gate-passed { border-color: rgba(101,225,188,.48); box-shadow: inset 2px 0 var(--mint); }
 .receipt-scale-bridge-conformance.sealed-gate-passed header b { color: var(--mint); }
 .receipt-scale-bridge-conformance.sealed-gate-failed { border-color: rgba(240,201,106,.44); }
+.receipt-conformance-ledger { margin-top: 8px; padding-top: 7px; border-top: 1px solid rgba(151,194,183,.1); }
+.receipt-conformance-ledger > header { display: flex; align-items: end; justify-content: space-between; gap: 8px; }
+.receipt-conformance-ledger > header span small,.receipt-conformance-ledger > header span strong { display: block; }
+.receipt-conformance-ledger > header span small { color: #536b65; font: 4px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.receipt-conformance-ledger > header span strong { margin-top: 2px; color: #9eb7b0; font-size: 7px; }
+.receipt-conformance-ledger nav { display: flex; gap: 2px; }
+.receipt-conformance-ledger nav button { padding: 3px 5px; border: 1px solid rgba(151,194,183,.13); background: #071516; color: #617670; font: 4px var(--mono); text-transform: uppercase; cursor: pointer; }
+.receipt-conformance-ledger nav button.active { border-color: rgba(85,200,255,.4); color: #80cee7; background: rgba(85,200,255,.06); }
+.receipt-conformance-ledger-rows { display: grid; grid-template-columns: minmax(0,1fr); gap: 3px; margin-top: 6px; max-height: 174px; overflow: auto; scrollbar-color: rgba(101,225,188,.22) transparent; }
+.receipt-conformance-ledger-rows > button { display: grid; grid-template-columns: 18px minmax(0,1fr) 12px; align-items: center; gap: 4px; min-width: 0; padding: 5px; border: 1px solid rgba(151,194,183,.1); background: rgba(3,14,15,.72); color: #71857f; text-align: left; cursor: pointer; }
+.receipt-conformance-ledger-rows > button:hover,.receipt-conformance-ledger-rows > button.active { border-color: rgba(85,200,255,.34); background: rgba(85,200,255,.045); }
+.receipt-conformance-ledger-rows > button.evidenced { border-left: 2px solid rgba(101,225,188,.52); }
+.receipt-conformance-ledger-rows > button.missing { border-left: 2px solid rgba(240,201,106,.38); }
+.receipt-conformance-ledger-rows > button small { color: #425b55; font: 4px var(--mono); }
+.receipt-conformance-ledger-rows > button span { min-width: 0; }
+.receipt-conformance-ledger-rows > button strong,.receipt-conformance-ledger-rows > button em { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.receipt-conformance-ledger-rows > button strong { color: #91a8a1; font-size: 5px; font-style: normal; font-weight: 500; }
+.receipt-conformance-ledger-rows > button em { margin-top: 2px; color: #536a64; font: 4px var(--mono); font-style: normal; }
+.receipt-conformance-ledger-rows > button b { color: #8d7850; font: 7px var(--mono); text-align: right; }
+.receipt-conformance-ledger-rows > button.evidenced b { color: var(--mint); }
+.receipt-conformance-empty { grid-column: 1/-1; margin: 0; padding: 8px; border: 1px dashed rgba(151,194,183,.14); color: #5e736d; font: 5px/1.4 var(--mono); }
+.receipt-conformance-inspector { position: relative; margin-top: 5px; padding: 7px 102px 7px 8px; border: 1px solid rgba(151,194,183,.12); background: rgba(8,23,24,.72); min-height: 44px; }
+.receipt-conformance-inspector.evidenced { border-color: rgba(101,225,188,.26); }
+.receipt-conformance-inspector.missing { border-color: rgba(240,201,106,.23); }
+.receipt-conformance-inspector small,.receipt-conformance-inspector strong { display: block; }
+.receipt-conformance-inspector small { color: #59716a; font: 4px var(--mono); letter-spacing: .05em; text-transform: uppercase; }
+.receipt-conformance-inspector strong { margin-top: 3px; color: #a4bbb5; font-size: 6px; }
+.receipt-conformance-inspector p { margin-top: 4px; color: #687e77; font: 5px/1.4 var(--mono); }
+.receipt-conformance-inspector button { position: absolute; top: 8px; right: 7px; width: 88px; min-height: 30px; padding: 5px; border: 1px solid rgba(85,200,255,.28); background: rgba(85,200,255,.05); color: #73bcd4; font: 4px/1.35 var(--mono); cursor: pointer; }
+.receipt-conformance-inspector button:disabled { border-color: rgba(151,194,183,.1); color: #445954; cursor: default; }
+@media (max-width:760px) { .receipt-conformance-inspector { padding-right: 8px; }.receipt-conformance-inspector button { position: static; width: 100%; margin-top: 6px; } }
 .receipt-actions { display: grid; grid-template-columns: 1.3fr .8fr; gap: 5px; }
 .receipt-actions button { min-height: 32px; padding: 0 8px; border: 1px solid rgba(181,148,255,.32); background: rgba(181,148,255,.045); color: var(--violet); font: 7px var(--mono); text-transform: uppercase; cursor: pointer; }
 .receipt-actions button:hover { border-color: var(--violet); background: rgba(181,148,255,.09); }

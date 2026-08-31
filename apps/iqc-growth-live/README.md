@@ -1,5 +1,27 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 398 · interactive conformance evidence ledger
+
+The scale-bridge receipt now exposes every channel- and scale-specific
+requirement rather than only the first five missing items. Scientists can
+filter the ledger to all, evidenced, or missing obligations and inspect each
+row's universal, channel, or hierarchy-scale scope. The selected row states
+whether the current receipt positively evidences the fact, explicitly lacks
+it, or never reported it.
+
+Each requirement also carries a deterministic lab route. Input/species facts
+return to the specimen passport; cover, pose, and residual facts return to
+cluster identification; connection facts return to the per-cluster port atlas;
+hard-closure and physical-response facts return to the growth preflight; and
+macro or stationary claims return to the hierarchy evidence microscope. The
+route changes no setting and supplies no evidence by itself—it reveals where
+the corresponding execution or validation record must be audited.
+
+This closes an important usability gap in the packet → receipt → evidence
+chain. A `3 / 13` status is now decomposable into falsifiable obligations while
+the sealed gate remains separate. Evidenced rows still cannot upgrade a claim
+without the preregistered, denominator-frozen, independently hashed gate.
+
 ## Build 396 · design-versus-run conformance audit
 
 The verified scale-bridge packet now expands into a live, channel- and

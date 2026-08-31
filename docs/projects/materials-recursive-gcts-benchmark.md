@@ -1,5 +1,28 @@
 # Recursive GCTS benchmark for material growth
 
+## Interactive conformance evidence ledger (Build 398)
+
+The live packet-to-receipt audit now renders the complete requirement set as an
+interactive evidence ledger. Every row preserves its requirement ID, label,
+scope, boolean receipt fact, three-state evidence classification
+(`evidenced`, `not-evidenced`, or `unreported`), and deterministic route to the
+scientific panel where that evidence can be inspected or supplied. Filters do
+not change the conformance model or hide requirements from the downloaded
+receipt.
+
+Routes respect the four-stage workflow. Species and occupancy return to input;
+isometry, pose, complete-cover, and residual obligations return to clustering;
+port and bounded-context requirements return to GCTS learning; execution,
+response, and field checks return to growth; promoted and stationary evidence
+returns to the hierarchy microscope. Opening a route changes no scientific
+control, fits no model, runs no action, and satisfies no requirement.
+
+The model distinguishes an explicit false receipt fact from a fact that was
+never reported. Both remain missing for the gate. This distinction makes the
+portal useful for diagnosing instrumentation gaps without weakening the
+original rule: the claim can advance only after every requirement is evidenced
+and the separate preregistered sealed gate passes.
+
 ## Design-versus-run conformance audit (Build 396)
 
 The packet-to-receipt binding now expands into a falsifiable conformance
