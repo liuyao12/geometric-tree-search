@@ -245,8 +245,17 @@ size-nine leads, followed by the surviving size-eight and deeper size-seven
 unions of Kuhn tetrahedra. Their exact solid-angle functions
 live on and couple every consecutive A₂ lattice section `x+y+z=k`; polycubes
 are retained later in the catalogue as regression benchmarks. The fresh
-size-nine census enumerates 20,980 directed shapes. Exact two-, four-, and
-six-copy quotient screens reduce these to 356 reflection-class candidates.
+size-nine census originally enumerated 20,980 shapes whose scalar layer-weight
+profiles are not palindromic. That was a ranking heuristic, not a symmetry
+quotient. The complete census has 22,607 shapes: a closure pass adds the 1,627
+palindromic-profile shapes that had been omitted. Of those, 1,135 have exact
+two-copy periods and another 304 have exact four-copy periods. The remaining
+188 reduce to 114 reflection classes; exact six-copy screening removes 17
+more. Combined with the original stratum, 453 reflection classes survive
+through six copies. All periodic certificates are independently replayed and
+all negative quotient searches in this chain have zero solver unknowns.
+The original stratum's exact two-, four-, and six-copy quotient screens reduce
+it to 356 reflection-class candidates.
 Among the first eight priority classes, a complete determinant-12 eight-copy
 screen finds five replay-verified periodic quotients and exhausts all 455 HNF
 quotients for the remaining three, with no solver unknowns. Those three are
