@@ -300,8 +300,11 @@ substitution families are exactly excluded. The large `04468` receipt is
 stream-verified by ordered parent index plus canonical, parent-result, and
 archive digests. For `04636`, the reflected family is now complete as well:
 7,450,278 legal extensions reduce to 931,637 symmetry-distinct metatiles, and
-all 931,637 have replayed atomic local obstructions. Reflected five-copy
-metatiles remain open for the other two leaders; larger clusters, non-scalar
+all 931,637 have replayed atomic local obstructions. For `01085`, 8,206,464
+reflected extensions reduce to 1,109,220 symmetry-distinct metatiles, and a
+fresh geometric reconstruction independently replays all 1,109,220 atomic
+obstructions with zero failures. Reflected five-copy metatiles remain open
+only for `04468`; larger clusters, non-scalar
 inflations, and non-cellular boundaries remain open for all three.
 For all three leaders, the complete connected three-copy alphabet at scalar
 scale 3 is also excluded in both symmetry models. The proper/reflected parent

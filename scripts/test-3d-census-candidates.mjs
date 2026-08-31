@@ -1747,7 +1747,7 @@ assert.deepEqual(
   [[10, 85, 0, 403, true], [10, 85, 0, 403, true], [8, 70, 15, 316, false]]
 );
 assert.deepEqual(palindromicUnresolved.map(candidate =>
-  candidate.screening.five_copy_substitution_parents_exhausted), [949344, 68758, 1999910]);
+  candidate.screening.five_copy_substitution_parents_exhausted), [949344, 1177978, 1999910]);
 assert.equal(palindromic04636.screening.five_copy_substitution_models.join(","),
   "proper,reflected");
 assert.equal(palindromic04636.screening.five_copy_substitution_certified_negatives, 2);
@@ -1761,7 +1761,21 @@ assert.deepEqual(palindromic04636.screening.five_copy_substitution_summary_repor
 assert.deepEqual(palindromic04636.screening.five_copy_substitution_geometric_replay_reports, [
   "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-reflected-04636-geometric-replay.json"
 ]);
-assert.ok(palindromicUnresolved.slice(1).every(candidate =>
+const palindromic01085 = palindromicUnresolved[1];
+assert.equal(palindromic01085.screening.five_copy_substitution_models.join(","),
+  "proper,reflected");
+assert.equal(palindromic01085.screening.five_copy_substitution_certified_negatives, 2);
+assert.deepEqual(palindromic01085.screening.five_copy_substitution_reports, [
+  "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-proper-01085.ndjson.gz",
+  "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-reflected-01085.ndjson.gz"
+]);
+assert.deepEqual(palindromic01085.screening.five_copy_substitution_summary_reports, [
+  "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-reflected-01085-summary.json"
+]);
+assert.deepEqual(palindromic01085.screening.five_copy_substitution_geometric_replay_reports, [
+  "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-reflected-01085-geometric-replay.json"
+]);
+assert.ok(palindromicUnresolved.slice(2).every(candidate =>
   candidate.screening.five_copy_substitution_exact_scales.join(",") === "2"
   && candidate.screening.five_copy_substitution_models.join(",") === "proper"
   && candidate.screening.five_copy_substitution_certified_negatives === 1));
