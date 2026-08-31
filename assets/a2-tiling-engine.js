@@ -480,28 +480,30 @@ const TURTLE_MARK_SEGMENTS=TURTLE_LINE_DOMAINS.map((segment,index)=>({...segment
 const primitiveComponent=(a,b)=>{const d=a2Sub(b,a),steps=gcd3(d[0],d[1],d[2]),step=d.map(value=>value/steps);const component=step.findIndex((value,index)=>{const other=[0,1,2].filter(i=>i!==index);return step[other[0]]===step[other[1]]&&value===-2*step[other[0]];});return component<0?0:component;};
 const extendedSegmentPoints=(a,b,extra)=>{const d=a2Sub(b,a),steps=gcd3(d[0],d[1],d[2]),step=d.map(value=>value/steps);return Array.from({length:steps+1+extra*2},(_,raw)=>a2Add(a,step.map(value=>value*(raw-extra))));};
 export class FixedTurtleMarking extends NoA2Marking{
-  constructor(extension=1,{pointFilter=null}={}){
-    super();this.prunes=0;this.support=[];this.contacts=new Map();this.entryCache=new Map();
+  constructor(extension=1,{pointFilter=null,rank=3}={}){
+    super();this.prunes=0;this.support=[];this.contacts=new Map();this.entryCache=new Map();this.rank=rank===1?1:3;
     const origin=A2_TILE_LOOPS.turtle[0];
-    for(const segment of TURTLE_MARK_SEGMENTS){const a=A2_TILE_LOOPS.turtle[segment.from],b=A2_TILE_LOOPS.turtle[segment.to],component=primitiveComponent(a,b);for(const point of extendedSegmentPoints(a,b,extension))this.support.push({tile:"turtle",point:a2Sub(point,origin),component,value:segment.value});}
+    for(const segment of TURTLE_MARK_SEGMENTS){const a=A2_TILE_LOOPS.turtle[segment.from],b=A2_TILE_LOOPS.turtle[segment.to],component=this.rank===1?0:primitiveComponent(a,b),value=this.rank===1?1:segment.value;for(const point of extendedSegmentPoints(a,b,extension))this.support.push({tile:"turtle",point:a2Sub(point,origin),component,value});}
     const markedPoints=new Set(this.support.map(entry=>a2Key(entry.point)));
     for(const entry of polygonOccupancy(A2_TILE_LOOPS.turtle).values()){
       const point=a2Sub(entry.point,origin);if(markedPoints.has(a2Key(point)))continue;
-      for(let component=0;component<3;component++)this.support.push({tile:"turtle",point,component,value:0});
+      for(let component=0;component<this.rank;component++)this.support.push({tile:"turtle",point,component,value:0});
     }
-    const valuesByPoint=new Map();
-    for(const entry of this.support){const key=a2Key(entry.point);if(!valuesByPoint.has(key))valuesByPoint.set(key,new Map());valuesByPoint.get(key).set(entry.component,entry.value);}
-    for(const [key,values] of valuesByPoint){
-      if([...values.values()].filter(value=>value!==0).length!==2)continue;
-      const component=[0,1,2].find(index=>!values.has(index));if(component!==undefined)this.support.push({tile:"turtle",point:key.split(",").map(Number),component,value:0});
+    if(this.rank===3){
+      const valuesByPoint=new Map();
+      for(const entry of this.support){const key=a2Key(entry.point);if(!valuesByPoint.has(key))valuesByPoint.set(key,new Map());valuesByPoint.get(key).set(entry.component,entry.value);}
+      for(const [key,values] of valuesByPoint){
+        if([...values.values()].filter(value=>value!==0).length!==2)continue;
+        const component=[0,1,2].find(index=>!values.has(index));if(component!==undefined)this.support.push({tile:"turtle",point:key.split(",").map(Number),component,value:0});
+      }
     }
     if(pointFilter)this.support=this.support.filter(entry=>pointFilter(entry.point));
   }
   entries(placement){
     const cacheKey=placement.id??`${placement.tile}:${placement.orientation.index}:${a2Key(placement.translation)}`;
     if(this.entryCache.has(cacheKey))return this.entryCache.get(cacheKey);
-    const result=new Map(),symmetry=placement.orientation.symmetry,coefficient=permutationParity(symmetry.permutation);
-    for(const mark of this.support){if(mark.tile!==placement.tile)continue;const global=a2Add(a2Transform(mark.point,symmetry),placement.translation),component=symmetry.permutation.indexOf(mark.component);result.set(`${a2Key(global)}|${component}`,mark.value*coefficient);}
+    const result=new Map(),symmetry=placement.orientation.symmetry,coefficient=this.rank===1?1:permutationParity(symmetry.permutation);
+    for(const mark of this.support){if(mark.tile!==placement.tile)continue;const global=a2Add(a2Transform(mark.point,symmetry),placement.translation),component=this.rank===1?0:symmetry.permutation.indexOf(mark.component);result.set(`${a2Key(global)}|${component}`,mark.value*coefficient);}
     return cacheMarkEntries(this.entryCache,cacheKey,result);
   }
   compatible(candidate,context,count=true){

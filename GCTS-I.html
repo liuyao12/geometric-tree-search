@@ -1824,7 +1824,7 @@
           maximize: true,
           targetPlacements: 1000,
           nodeLimit: 1000000,
-          marking: useMarking ? new FixedTurtleMarking(markingExtension, { pointFilter: latticePointFilter }) : new NoA2Marking(),
+          marking: useMarking ? new FixedTurtleMarking(markingExtension, { pointFilter: latticePointFilter, rank: markingRank }) : new NoA2Marking(),
           latticePointFilter,
           // These deterministic branch orders keep both comparison modes
           // representative without making the reader wait through a long,
