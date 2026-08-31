@@ -1,7 +1,7 @@
 import { buildFrozenKineticCompetition }
-  from "./frozen-frontier-kinetics.mjs?v=20260831-377";
+  from "./frozen-frontier-kinetics.mjs?v=20260831-378";
 import { buildEventGeometryObservables }
-  from "./kinetic-geometry-response.mjs?v=20260831-377";
+  from "./kinetic-geometry-response.mjs?v=20260831-378";
 
 export const GRAND_POTENTIAL_CLASSES = Object.freeze([
   "downhill", "uncertainty-overlapping-zero", "uphill",

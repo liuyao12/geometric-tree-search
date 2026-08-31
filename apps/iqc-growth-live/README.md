@@ -1,5 +1,26 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 378 · uncertainty-aware first-passage leap
+
+The finite-network passage calculation now propagates the uncertainty already
+returned with every barrier and attempt frequency. Each directed edge's
+combined one-sigma log-rate uncertainty enters a deterministic 64-draw,
+antithetic Halton ensemble. Every draw reruns the complete target-hitting,
+target-conditioned time, and conditional jump backward equations while exact
+states, edge topology, geometry, and source/target choices remain frozen.
+
+The nested uncertainty panel shows diagnostic 5–95% bands for target-hit
+probability and log passage time, nominal and median markers, the physical
+time endpoints when representable, and whether the 50% target-hit conclusion
+is stable across the sampled rate uncertainty. All sample-level linear
+identities must pass.
+
+The cross-edge uncertainty model is explicit: directed log-rate errors are
+treated as independent Gaussians. That is a diagnostic propagation assumption,
+not a learned covariance model. The displayed quantiles are neither confidence
+nor credible intervals, and they do not sample shared method bias, correlated
+barriers, missing states, or omitted mechanisms.
+
 ## Build 377 · observed first-passage leap
 
 The exact-state network now answers a source-to-product question without

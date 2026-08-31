@@ -1,5 +1,32 @@
 # Recursive GCTS benchmark for material growth
 
+### Uncertainty-aware first-passage leap (Build 378)
+
+Every active directed edge already carries
+
+`σ²_ln k = (σ_E‡ / kBT)² + (ln(10) σ_log10 ν)²`,
+
+when both barrier and prefactor uncertainty are supplied. Build 378 propagates
+these values through the Build 377 backward equations. Edges are ordered by
+their exact key, mapped to distinct Halton dimensions, transformed through an
+inverse-normal approximation, and paired antithetically. This produces 64
+fully deterministic rate realizations without changing graph topology.
+
+For every realization the solver records source target-hit probability,
+target-conditioned mean log passage time, expected observed jump count, and
+all linear-system identity results. The audit exposes empirical minimum,
+5th percentile, median, 95th percentile, and maximum; the time band also
+reports `exp(q95_ln τ - q05_ln τ)` as a scale-free spread. Repeated calls on
+the same finite graph are byte-for-byte deterministic, and a zero-uncertainty
+graph collapses exactly to the nominal result.
+
+The portal labels the modeling boundary directly beside the bands. Independent
+Gaussian directed-edge errors are assumed, not inferred. Antithetic Halton
+quantiles are diagnostic sensitivity bands rather than sampling-based
+confidence or Bayesian credible intervals. Cross-edge method correlation,
+shared systematic error, uncertain graph topology, unknown exits, and omitted
+mechanisms remain outside this calculation.
+
 ### Observed first-passage leap (Build 377)
 
 For a selected exact source `s` and target `B`, Build 377 finds the observed
