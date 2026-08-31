@@ -9,6 +9,7 @@ const root = new URL("../", import.meta.url);
 const readGzipNdjson = async relativePath => gunzipSync(
   await readFile(new URL(relativePath, root))
 ).toString("utf8").trim().split("\n").filter(Boolean).map(JSON.parse);
+const readJson = async relativePath => JSON.parse(await readFile(new URL(relativePath, root), "utf8"));
 
 const sixCopyRows = await readGzipNdjson(
   "data/a2-sliced-size10-focused-periodic-exact6-ranks9-72.ndjson.gz"
@@ -24,6 +25,15 @@ const twoCopySubstitutions = await readGzipNdjson(
 );
 const threeCopySubstitutions = await readGzipNdjson(
   "data/a2-sliced-size10-three-copy-substitution-scale2-leaders.ndjson.gz"
+);
+const nineCopySummary = await readJson(
+  "data/a2-sliced-size10-leaders-periodic9-exact2m-summary.json"
+);
+const nineCopyCertificates = await readGzipNdjson(
+  "data/a2-sliced-size10-36194-periodic9-certificate.ndjson.gz"
+);
+const nineCopyClusterRules = await readGzipNdjson(
+  "data/a2-sliced-size10-36194-periodic9-cluster-substitution.ndjson.gz"
 );
 const sixCopyById = new Map(sixCopyRows.map(record => [record.id, record]));
 const coronaById = new Map(coronaRows.map(record => [record.id, record]));
@@ -48,6 +58,36 @@ const threeCopySubstitutionById = threeCopySubstitutions.reduce((groups, record)
   return groups;
 }, new Map());
 const selectedIds = ["a2sa_10_36141", "a2sa_10_35323", "a2sa_10_36194"];
+const nineCopySummaryById = new Map(nineCopySummary.candidates.map(record => [record.id, record]));
+const nineCopyCertificateById = new Map(nineCopyCertificates.map(record => [record.id, record]));
+const nineCopyClusterById = new Map(nineCopyClusterRules.map(record => [record.id, record]));
+
+const proofOrientationTransforms = [
+  [1, [0, 1, 2]], [1, [1, 2, 0]], [1, [2, 0, 1]],
+  [-1, [0, 2, 1]], [-1, [1, 0, 2]], [-1, [2, 1, 0]]
+];
+const webPeriodicTemplate = (certificate, geometry) => {
+  if (!certificate) return null;
+  const shifts = proofOrientationTransforms.map(([sign, permutation]) =>
+    [0, 1, 2].map(axis => Math.min(...geometry.v.map(vertex => sign * vertex[permutation[axis]])))
+  );
+  const hashes = proofOrientationTransforms.map(([sign, permutation], index) => {
+    const transform = point => [0, 1, 2].map(axis => sign * point[permutation[axis]] - shifts[index][axis]);
+    return `${geometry.v.map(transform).map(p => p.join(",")).sort().join("|")}@@${geometry.occ.map(([p, w]) => `${transform(p).join(",")}:${w}`).sort().join("|")}`;
+  });
+  const webHashes = [];
+  for (const proofIndex of [0, 3, 4, 1, 2, 5]) if (!webHashes.includes(hashes[proofIndex])) webHashes.push(hashes[proofIndex]);
+  const proofToWeb = hashes.map(hash => webHashes.indexOf(hash));
+  const rootShift = shifts[certificate.placements[0].orientation_index].map(value => -value);
+  return {
+    period_vectors: certificate.period_vectors,
+    motif: certificate.placements.map(placement => ({
+      prototile_idx: 0,
+      orientation_index: proofToWeb[placement.orientation_index],
+      translation: placement.translation.map((value, axis) => value + shifts[placement.orientation_index][axis] + rootShift[axis])
+    }))
+  };
+};
 
 const candidates = selectedIds.map((id, index) => {
   const record = sixCopyById.get(id);
@@ -55,6 +95,11 @@ const candidates = selectedIds.map((id, index) => {
   const direct = directSubstitutionById.get(id) ?? [];
   const twoCopy = twoCopySubstitutionById.get(id) ?? [];
   const threeCopy = threeCopySubstitutionById.get(id) ?? [];
+  const nineCopy = nineCopySummaryById.get(id);
+  const nineCopyRecord = nineCopyCertificateById.get(id);
+  const periodicCertificate = nineCopyRecord?.periodic_z3?.certificate ?? null;
+  const clusterRule = nineCopyClusterById.get(id)?.substitution ?? null;
+  const isPeriodic = periodicCertificate !== null;
   if (!record || record.classification !== "unresolved"
       || record.periodic_z3.hnf_range_exhausted !== true
       || record.periodic_z3.solver_unknown !== 0
@@ -86,7 +131,7 @@ const candidates = selectedIds.map((id, index) => {
     id,
     kind: "a2_sliced_size10_alcove_census",
     registry_id: `a2_sliced_${id.slice("a2sa_".length)}`,
-    name: `A2 Consecutive-Layer Size-10 Candidate ${id.slice("a2sa_10_".length)}`,
+    name: `A2 Consecutive-Layer Size-10 ${isPeriodic ? "Periodic Control" : "Candidate"} ${id.slice("a2sa_10_".length)}`,
     alcoves: record.alcoves,
     morphology: record.morphology,
     lattice_points: geometry.occ.length,
@@ -94,9 +139,9 @@ const candidates = selectedIds.map((id, index) => {
     survivor_count: 13,
     description: "Ten-alcove non-polycube from the complete consecutive-section census on x+y+z=k.",
     screening: {
-      status: "inconclusive",
-      certificate: null,
-      census_stage: "a2_sliced_size10_complete_exact_through6_focus_2026_08_30",
+      status: isPeriodic ? "periodic" : "inconclusive",
+      certificate: isPeriodic ? "translational" : null,
+      census_stage: isPeriodic ? "a2_sliced_size10_nine_copy_positive_2026_08_31" : "a2_sliced_size10_nine_copy_bounded_2026_08_31",
       source_pool_size: 98537,
       three_copy_periodic_certificates: 2558,
       three_copy_proper_survivors: 95979,
@@ -104,14 +149,27 @@ const candidates = selectedIds.map((id, index) => {
       focused_six_copy_classes: 72,
       focused_six_copy_periodic_certificates: 59,
       focused_six_copy_survivors: 13,
-      periodic_exact_through: 6,
       periodic_six_copy_hnf_total: record.periodic_z3.hnf_total,
       periodic_six_copy_hnf_covered: record.periodic_z3.hnf_covered,
       periodic_six_copy_orbit_representatives: record.periodic_z3.hnf_orbit_total,
       periodic_six_copy_solver_unknowns: record.periodic_z3.solver_unknown,
       periodic_six_copy_exact_multicover_nodes: record.periodic_z3.exact_multicover_nodes,
       periodic_six_copy_milliseconds: record.periodic_z3.milliseconds,
-      periodic_report: "data/a2-sliced-size10-focused-periodic-exact6-ranks9-72.ndjson.gz",
+      periodic_exact_through: isPeriodic ? 9 : 6,
+      periodic_nine_copy_orbit_total: nineCopy.orbit_total,
+      periodic_nine_copy_exact_negative_orbits: nineCopy.exact_negative_orbits,
+      periodic_nine_copy_node_capped_orbits: nineCopy.node_capped_orbits,
+      periodic_nine_copy_hnfs_exactly_excluded: nineCopy.hnfs_exactly_excluded,
+      periodic_nine_copy_exact_multicover_nodes: nineCopy.exact_multicover_nodes,
+      periodic_nine_copy_certificate: periodicCertificate,
+      periodic_nine_copy_replay_verified: nineCopyRecord?.periodic_z3?.replay?.verified ?? false,
+      motif_tiles: periodicCertificate?.copies ?? null,
+      period_vectors: periodicCertificate?.period_vectors ?? null,
+      quotient_determinant: periodicCertificate?.determinant ?? null,
+      periodic_template: webPeriodicTemplate(periodicCertificate, geometry),
+      periodic_source: isPeriodic ? "an exact nine-copy weighted quotient with an independently replayed scale-two cluster substitution" : null,
+      periodic_quotient_cluster_substitution: clusterRule,
+      periodic_report: "data/a2-sliced-size10-leaders-periodic9-exact2m-summary.json",
       direct_scalar_substitution_exact_scales: [2, 8],
       direct_scalar_substitution_models: ["proper", "reflected"],
       direct_scalar_substitution_certified_negatives: direct.length,

@@ -1720,8 +1720,7 @@ assert.deepEqual(A2_SLICED_SIZE10_CANDIDATES.map(candidate => candidate.id), [
   "a2sa_10_36141", "a2sa_10_35323", "a2sa_10_36194"
 ]);
 assert.ok(A2_SLICED_SIZE10_CANDIDATES.every(candidate =>
-  candidate.screening.periodic_exact_through === 6
-  && candidate.screening.periodic_six_copy_hnf_covered === 217
+  candidate.screening.periodic_six_copy_hnf_covered === 217
   && candidate.screening.periodic_six_copy_solver_unknowns === 0
   && candidate.screening.focused_six_copy_survivors === 13
   && candidate.screening.direct_scalar_substitution_exact_scales.join(",") === "2,8"
@@ -1734,6 +1733,19 @@ assert.ok(A2_SLICED_SIZE10_CANDIDATES.every(candidate =>
   && candidate.screening.three_copy_substitution_models.join(",") === "proper,reflected"
   && candidate.screening.three_copy_substitution_certified_negatives === 2
   && candidate.screening.corona_root_patch_copies > 1
+));
+const sizeTenPeriodic = A2_SLICED_SIZE10_CANDIDATES.find(candidate => candidate.id === "a2sa_10_36194");
+assert.equal(sizeTenPeriodic.screening.status, "periodic");
+assert.equal(sizeTenPeriodic.screening.periodic_exact_through, 9);
+assert.equal(sizeTenPeriodic.screening.motif_tiles, 9);
+assert.equal(sizeTenPeriodic.screening.quotient_determinant, 15);
+assert.equal(sizeTenPeriodic.screening.periodic_nine_copy_replay_verified, true);
+assert.equal(sizeTenPeriodic.screening.periodic_template.motif.length, 9);
+assert.equal(sizeTenPeriodic.screening.periodic_quotient_cluster_substitution.expanded_tile_copies, 72);
+assert.ok(A2_SLICED_SIZE10_CANDIDATES.filter(candidate => candidate.screening.status === "inconclusive").every(candidate =>
+  candidate.screening.periodic_exact_through === 6
+  && candidate.screening.periodic_nine_copy_exact_negative_orbits === 55
+  && candidate.screening.periodic_nine_copy_node_capped_orbits === 30
 ));
 assert.deepEqual(
   slicedSizeNineLeads.map(candidate => [
@@ -1813,12 +1825,12 @@ assert.deepEqual(
   }
 );
 assert.equal(shellControls.length, 9);
-assert.equal(periodicControls.length, 51);
+assert.equal(periodicControls.length, 52);
 const visiblePeriodicControls = periodicControls.filter(isGctsFigureVisibleInCatalog);
 assert.equal(GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES, 5);
 assert.deepEqual(
   visiblePeriodicControls.map(figure => figure.census_candidate.id).sort(),
-  ["10_45033", "11_151715", "12_204255", "12_405129", "13_0635270", "a2lp_7_00694", "a2sa_8_00240", "a2sa_8_00888", "a2sa_8_01059", "a2sa_8_02946", "a2sa_8_02965", "a2sa_8_02979", "a2sa_8_03138", "a2sa_9_01109", "a2sa_9_03727", "a2sa_9_14433", "a2sa_9_15089", "a2sa_9_16327", "a2sp_9_15353", "a2sp_9_17745", "p9-43172"],
+  ["10_45033", "11_151715", "12_204255", "12_405129", "13_0635270", "a2lp_7_00694", "a2sa_10_36194", "a2sa_8_00240", "a2sa_8_00888", "a2sa_8_01059", "a2sa_8_02946", "a2sa_8_02965", "a2sa_8_02979", "a2sa_8_03138", "a2sa_9_01109", "a2sa_9_03727", "a2sa_9_14433", "a2sa_9_15089", "a2sa_9_16327", "a2sp_9_15353", "a2sp_9_17745", "p9-43172"],
   "the public catalogue should retain only periodic controls with a large certified motif"
 );
 assert.ok(periodicControls
