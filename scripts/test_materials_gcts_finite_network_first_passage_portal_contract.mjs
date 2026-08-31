@@ -11,9 +11,9 @@ const benchmark = fs.readFileSync("docs/projects/materials-recursive-gcts-benchm
 for (const document of [html, alias]) {
   assert.match(document, /finiteNetworkFirstPassagePlot/);
   assert.match(document, /Observed first-passage leap/);
-  assert.match(document, /app\.js\?v=20260831-392/);
+  assert.match(document, /app\.js\?v=20260831-393/);
 }
-assert.match(app, /finite-network-first-passage\.mjs\?v=20260831-392/);
+assert.match(app, /finite-network-first-passage\.mjs\?v=20260831-393/);
 assert.match(app, /buildFiniteNetworkFirstPassage/);
 assert.match(app, /finiteNetworkFirstPassage,/);
 assert.match(model, /targetUnreachableObservedStatesTreatedAsFailure: true/);
