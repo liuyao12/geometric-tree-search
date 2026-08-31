@@ -7,7 +7,7 @@ DB = (ROOT / "apps/iqc-growth-live/structure-database.js").read_text()
 IO = (ROOT / "apps/iqc-growth-live/structure-io.js").read_text()
 MODULE = (ROOT / "apps/iqc-growth-live/collinear-spin-geometry.js").read_text()
 
-assert 'app.js?v=20260831-360' in HTML
+assert 'app.js?v=20260831-361' in HTML
 assert 'collinear-spin-geometry.js?v=20260826-1' in APP
 for element_id in ("spinGeometryState", "spinMapSelect", "spinMapState",
                    "spinCorrelationPlot", "spinMapExtremes", "spinGeometryDetail"):

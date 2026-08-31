@@ -1,5 +1,26 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 361 · frozen-event kinetic spectrum
+
+The action checkpoint now exposes the full candidate-resolved HTST/KMC
+competition instead of collapsing it to the selected event. An interactive
+spectrum plots every hard-admitted attachment and exact leaf-detachment event
+by either `log10(k / s⁻¹)` or probability within the frozen catalog. Rate mode
+shows the combined barrier/prefactor uncertainty interval for every candidate;
+clicking a point reveals its exact event ID, direction, barrier, prefactor,
+uncertainties, rate, catalog probability, and rank.
+
+The summary reports attachment and detachment probability mass, rate span in
+decades, Shannon effective competing-event count, and how many candidates have
+uncertainty intervals overlapping the nominal fastest event. The selected
+maximum-rate or seeded-KMC event remains visually distinct, and all of these
+statistics are retained in the action-checkpoint receipt.
+
+This is a diagnostic view over an already frozen candidate set. It cannot add a
+missing mechanism, change collision/connection/admission certificates, alter
+the deterministic maximum-rate or seeded random draw, or turn conditional
+catalog probabilities into unconditional physical probabilities.
+
 ## Build 360 · shared-state coherence across coupled physics
 
 The event-resolved pipeline now fails closed unless spatial transport,

@@ -1,5 +1,30 @@
 # Recursive GCTS benchmark for material growth
 
+### Frozen-event kinetic spectrum (Build 361)
+
+Once a complete candidate-resolved barrier/prefactor response is bound, the
+portal now preserves and visualizes the entire finite kinetic competition. The
+pure spectrum audit sorts the unchanged frozen action IDs by HTST rate, retains
+the independently supplied barrier and prefactor uncertainty envelope, and
+computes probability mass by event direction, rate span, Shannon effective
+event count, nominal selected-event rank, and the set whose rate uncertainty
+overlaps the nominal fastest candidate.
+
+The SVG can switch between `log10(k / s⁻¹)` and probability within the frozen
+catalog. Every attachment or ownership-certified leaf-detachment point is
+keyboard/click inspectable, while the event already selected by maximum-rate
+HTST or the seeded KMC draw is marked separately. The visualization changes no
+candidate ID, pose, hard gate, rate, random draw, or selected event. The compact
+statistics are included in the action-checkpoint receipt with explicit
+`targetUsed=false`, `candidateSetChanged=false`, and
+`selectedEventChanged=false` fields.
+
+All probabilities remain conditional on the enumerated hard-admitted catalog.
+The spectrum does not claim coverage of diffusion, reconstruction, concerted,
+nucleation, desorption, recrossing, quantum, or other absent mechanisms, and it
+does not turn a finite event catalog into an equilibrium or complete kinetic
+model.
+
 ### Shared-state coherence across coupled physics (Build 360)
 
 Coupled execution now has an explicit cross-response state contract. Spatial

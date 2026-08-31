@@ -88,9 +88,11 @@ import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntim
   from "./external-trajectory-geometry.mjs?v=20260830-346";
 import { actionBarrierSha256, buildFrozenActionBarrierRequest, frozenActionBarrierRequestReceipt,
   frozenActionStateGeometrySha256, validateFrozenActionBarrierResponse }
-  from "./external-action-barrier.mjs?v=20260831-349";
+  from "./external-action-barrier.mjs?v=20260831-361";
 import { buildFrozenKineticCompetition }
   from "./frozen-frontier-kinetics.mjs?v=20260831-347";
+import { buildKineticEventSpectrum }
+  from "./kinetic-event-spectrum.mjs?v=20260831-361";
 import { enumerateDetachableLeafPlacements }
   from "./reversible-frontier-events.mjs?v=20260831-347";
 import { appendCommittedTransition }
@@ -108,19 +110,19 @@ import { evaluateWulffShapeRegularizer, matchedWulffRankingAudit }
   from "./wulff-shape-regularizer.mjs?v=20260831-354";
 import { buildAttachmentKineticsRequest, buildNormalizedKineticWulffGeometry,
   validateAttachmentKineticsResponse, evaluateKineticHabitScore, matchedKineticHabitRankingAudit }
-  from "./external-attachment-kinetics.mjs?v=20260831-360";
+  from "./external-attachment-kinetics.mjs?v=20260831-361";
 import { buildInterfaceFluxRequest, validateInterfaceFluxResponse, evaluateInterfaceFluxScore,
   matchedInterfaceFluxRankingAudit }
-  from "./external-interface-flux.mjs?v=20260831-360";
+  from "./external-interface-flux.mjs?v=20260831-361";
 import { periodicSiteNumberDensity, coupleInterfaceSupplyAndAttachment,
   syntheticGrowthRegimePreview }
-  from "./growth-regime-bridge.mjs?v=20260831-360";
+  from "./growth-regime-bridge.mjs?v=20260831-361";
 import { buildLeapfrogPhysicsCycle, couplingModeGate, LEAPFROG_COUPLING_MODES }
-  from "./leapfrog-physics-cycle.mjs?v=20260831-360";
+  from "./leapfrog-physics-cycle.mjs?v=20260831-361";
 import { buildCatalogConditionalChronology }
-  from "./catalog-conditional-chronology.mjs?v=20260831-360";
+  from "./catalog-conditional-chronology.mjs?v=20260831-361";
 import { buildCoupledPhysicsState, coupledStateGate }
-  from "./coupled-physics-state.mjs?v=20260831-360";
+  from "./coupled-physics-state.mjs?v=20260831-361";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -640,6 +642,11 @@ const actionBarrierCatalogSelect = $("actionBarrierCatalog");
 const actionBarrierKineticModeSelect = $("actionBarrierKineticMode");
 const actionBarrierTemperatureSelect = $("actionBarrierTemperature");
 const actionBarrierKineticState = $("actionBarrierKineticState");
+const kineticEventSpectrumBadge = $("kineticEventSpectrumBadge");
+const kineticEventSpectrumMode = $("kineticEventSpectrumMode");
+const kineticEventSpectrumSummary = $("kineticEventSpectrumSummary");
+const kineticEventSpectrumPlot = $("kineticEventSpectrumPlot");
+const kineticEventSpectrumDetail = $("kineticEventSpectrumDetail");
 const actionBarrierInverseBadge = $("actionBarrierInverseBadge");
 const actionBarrierInverseSummary = $("actionBarrierInverseSummary");
 const actionBarrierInverseState = $("actionBarrierInverseState");
@@ -1732,6 +1739,7 @@ let externalActionBarrierWeight = .25;
 let externalActionBarrierCatalogMode = "reversible-leaves";
 let externalActionBarrierKineticMode = "none";
 let externalActionBarrierTemperatureKelvin = 300;
+let selectedKineticSpectrumCandidateId = null;
 let catalogConditionalKineticClockSeconds = 0;
 let catalogConditionalKineticEventCount = 0;
 let reversibleDetachmentEventCount = 0;
@@ -3810,7 +3818,7 @@ async function downloadInterfacialEnergyRequest() {
   const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-360",
+  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-361",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256,
@@ -4054,7 +4062,7 @@ async function downloadAttachmentKineticsRequest() {
   const material = currentMaterial(); const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-360",
+  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-361",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256, intrinsicDimension, orientationBasisCartesian,
@@ -4573,7 +4581,7 @@ async function downloadSpatialInterfaceFluxRequest() {
   const interfaceGeometrySha256 = await receiptSha256(JSON.stringify({ structureSha256: configuration.structureSha256,
     confinement: confinementSelect?.value || "box", publicReach: growthDomainScale, atomCount: referenceAtoms.length }));
   const species = material.actualElements ? [...material.actualElements] : [...material.elements];
-  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-360",
+  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-361",
     scenarioId: scenarioSelect.value, materialName: material.name, species,
     structureSha256: configuration.structureSha256, interfaceGeometrySha256,
     interfaceConfiguration: configuration,
@@ -13851,7 +13859,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260831-360",
+      buildId: "20260831-361",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -16438,7 +16446,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260831-360" },
+    application: { name: "Materials Growth Lab", buildId: "20260831-361" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },
@@ -25029,6 +25037,7 @@ function actionBarrierCheckpointReceipt(checkpoint = externalActionBarrierCheckp
   if (!checkpoint) return lastExternalActionBarrierReceipt;
   const response = checkpoint.validatedResponse;
   const kinetic = checkpoint.kineticCompetition;
+  const kineticSpectrum = kinetic ? buildKineticEventSpectrum(kinetic) : null;
   const kineticClockCommitted = Boolean(checkpoint.kineticClockCommitted);
   return {
     schema: 1, status: response ? checkpoint.consumed ? "consumed" : "validated" : "frozen-request",
@@ -25079,6 +25088,20 @@ function actionBarrierCheckpointReceipt(checkpoint = externalActionBarrierCheckp
       eventCountAfter: kineticClockCommitted ? kinetic.eventCountAfter : null,
       committed: kineticClockCommitted,
       targetUsed: false, catalogCompleteBeyondFrozenFrontier: false,
+    } : null,
+    kineticEventSpectrum: kineticSpectrum ? {
+      schema: kineticSpectrum.schema,
+      candidateCount: kineticSpectrum.candidateCount,
+      selectedCandidateId: kineticSpectrum.selectedCandidateId,
+      selectedRank: kineticSpectrum.selectedRank,
+      probabilityMassByDirection: kineticSpectrum.probabilityMassByDirection,
+      effectiveCompetingEventCount: kineticSpectrum.effectiveCompetingEventCount,
+      rateSpanDecades: kineticSpectrum.rateSpanDecades,
+      uncertaintyCompetitiveCandidateCount: kineticSpectrum.uncertaintyCompetitiveCandidateCount,
+      fastestCandidateSeparatedByUncertainty: kineticSpectrum.fastestCandidateSeparatedByUncertainty,
+      catalogCharacter: kineticSpectrum.catalogCharacter,
+      candidateSetChanged: false, selectedEventChanged: false, targetUsed: false,
+      claimBoundary: kineticSpectrum.claimBoundary,
     } : null,
     reversibleEventGeometryPresent: Boolean(response?.audit?.reversibleEventGeometryPresent),
     grandCanonicalEvidence: response?.audit?.thermodynamics ? {
@@ -25141,10 +25164,117 @@ function refreshExternalActionBarrierKinetics() {
       + (competition.mode === "seeded-kmc" ? 1 : 0) };
 }
 
+function renderKineticEventSpectrum() {
+  const namespace = "http://www.w3.org/2000/svg";
+  const make = (name, attributes = {}) => {
+    const node = document.createElementNS(namespace, name);
+    Object.entries(attributes).forEach(([key, value]) => node.setAttribute(key, String(value)));
+    return node;
+  };
+  kineticEventSpectrumPlot.replaceChildren();
+  const competition = externalActionBarrierCheckpoint?.kineticCompetition;
+  const panel = kineticEventSpectrumBadge.closest(".kinetic-event-spectrum");
+  panel.classList.toggle("ready", Boolean(competition));
+  kineticEventSpectrumMode.disabled = !competition;
+  if (!competition) {
+    kineticEventSpectrumBadge.textContent = "awaiting rates";
+    kineticEventSpectrumSummary.textContent = "validate barriers and prefactors for every frozen action";
+    kineticEventSpectrumDetail.textContent = "The spectrum appears only after a complete, method-bound HTST response is validated and an event-competition mode is selected.";
+    const empty = make("text", { x: 180, y: 86, "text-anchor": "middle", class: "axis-label" });
+    empty.textContent = "frozen candidate rates unavailable";
+    kineticEventSpectrumPlot.append(empty);
+    return;
+  }
+  const spectrum = buildKineticEventSpectrum(competition);
+  if (!spectrum.rankedRecords.some((record) =>
+    record.candidateId === selectedKineticSpectrumCandidateId)) {
+    selectedKineticSpectrumCandidateId = spectrum.selectedCandidateId;
+  }
+  const inspected = spectrum.rankedRecords.find((record) =>
+    record.candidateId === selectedKineticSpectrumCandidateId) || spectrum.rankedRecords[0];
+  kineticEventSpectrumBadge.textContent = competition.mode === "seeded-kmc"
+    ? "seeded draw frozen" : "maximum rate frozen";
+  kineticEventSpectrumSummary.textContent = `${spectrum.candidateCount} events · effective ${spectrum.effectiveCompetingEventCount.toFixed(2)} · ${spectrum.rateSpanDecades.toFixed(2)} decades · ${(100 * spectrum.probabilityMassByDirection.attach).toFixed(1)}% attach / ${(100 * spectrum.probabilityMassByDirection.detach).toFixed(1)}% detach`;
+  const rateMode = kineticEventSpectrumMode.value !== "probability";
+  const left = 33; const right = 350; const top = 13; const bottom = 139;
+  const x = (rank) => spectrum.candidateCount === 1 ? (left + right) / 2
+    : left + (right - left) * (rank - 1) / (spectrum.candidateCount - 1);
+  const rateMinimum = Math.min(...spectrum.rankedRecords.map((record) =>
+    record.log10RateLowerPerSecond));
+  const rateMaximum = Math.max(...spectrum.rankedRecords.map((record) =>
+    record.log10RateUpperPerSecond));
+  const probabilityMaximum = Math.max(...spectrum.rankedRecords.map((record) =>
+    record.probabilityWithinFrozenCatalog), 1e-12);
+  const domainMinimum = rateMode ? rateMinimum : 0;
+  const domainMaximum = rateMode ? rateMaximum : probabilityMaximum;
+  const y = (value) => bottom - (bottom - top) * (domainMaximum === domainMinimum ? .5
+    : (value - domainMinimum) / (domainMaximum - domainMinimum));
+  for (let index = 0; index <= 4; index++) {
+    const value = domainMinimum + (domainMaximum - domainMinimum) * index / 4;
+    const py = y(value);
+    kineticEventSpectrumPlot.append(make("line", { x1: left, y1: py, x2: right,
+      y2: py, class: index ? "grid" : "axis" }));
+    const label = make("text", { x: left - 4, y: py + 2, "text-anchor": "end",
+      class: "axis-label" });
+    label.textContent = rateMode ? value.toFixed(1) : `${(100 * value).toFixed(0)}%`;
+    kineticEventSpectrumPlot.append(label);
+  }
+  kineticEventSpectrumPlot.append(make("line", { x1: left, y1: top, x2: left,
+    y2: bottom, class: "axis" }), make("line", { x1: left, y1: bottom, x2: right,
+    y2: bottom, class: "axis" }));
+  const axisLabel = make("text", { x: right, y: 160, "text-anchor": "end",
+    class: "axis-label" });
+  axisLabel.textContent = `event rank 1 → ${spectrum.candidateCount}`;
+  kineticEventSpectrumPlot.append(axisLabel);
+  spectrum.rankedRecords.forEach((record) => {
+    const px = x(record.rank);
+    const value = rateMode ? record.log10RatePerSecond
+      : record.probabilityWithinFrozenCatalog;
+    const group = make("g", { class: `event ${record.eventDirection}${record.selected
+      ? " selected" : ""}`, tabindex: 0, role: "button",
+    "aria-label": `${record.eventDirection} event rank ${record.rank}, ${rateMode
+      ? `log10 rate ${record.log10RatePerSecond.toFixed(3)}`
+      : `catalog probability ${(100 * record.probabilityWithinFrozenCatalog).toFixed(3)} percent`}` });
+    group.append(make("line", { x1: px, y1: bottom, x2: px, y2: y(value), class: "stem" }));
+    if (rateMode) {
+      group.append(make("line", { x1: px, y1: y(record.log10RateLowerPerSecond),
+        x2: px, y2: y(record.log10RateUpperPerSecond), class: "whisker" }));
+      group.append(make("line", { x1: px - 2, y1: y(record.log10RateLowerPerSecond),
+        x2: px + 2, y2: y(record.log10RateLowerPerSecond), class: "whisker" }));
+      group.append(make("line", { x1: px - 2, y1: y(record.log10RateUpperPerSecond),
+        x2: px + 2, y2: y(record.log10RateUpperPerSecond), class: "whisker" }));
+    }
+    group.append(make("circle", { cx: px, cy: y(value),
+      r: record.candidateId === selectedKineticSpectrumCandidateId ? 4
+        : spectrum.candidateCount > 120 ? 1.35 : 2.45, class: "point" }));
+    const title = make("title");
+    title.textContent = `${record.eventDirection} ${record.candidateId} · rank ${record.rank}/${spectrum.candidateCount} · log₁₀k ${record.log10RatePerSecond.toFixed(3)} · p ${(100 * record.probabilityWithinFrozenCatalog).toFixed(3)}%${record.selected ? " · selected to commit" : ""}`;
+    group.append(title);
+    const inspect = () => {
+      selectedKineticSpectrumCandidateId = record.candidateId;
+      renderKineticEventSpectrum();
+    };
+    group.addEventListener("click", inspect);
+    group.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") { event.preventDefault(); inspect(); }
+    });
+    kineticEventSpectrumPlot.append(group);
+  });
+  kineticEventSpectrumDetail.replaceChildren();
+  const heading = document.createElement("strong");
+  heading.textContent = `${inspected.selected ? "selected · " : "inspect · "}${inspected.eventDirection} · rank ${inspected.rank}/${spectrum.candidateCount}`;
+  const details = document.createElement("span");
+  details.textContent = ` ${inspected.candidateId} · ΔE‡ ${inspected.barrierElectronVolt.toFixed(4)} ± ${inspected.uncertaintyElectronVolt.toFixed(4)} eV · ν ${inspected.attemptFrequencyPerSecond.toExponential(3)} s⁻¹ · log₁₀k ${inspected.log10RatePerSecond.toFixed(3)} [${inspected.log10RateLowerPerSecond.toFixed(3)}, ${inspected.log10RateUpperPerSecond.toFixed(3)}] · catalog p ${(100 * inspected.probabilityWithinFrozenCatalog).toFixed(4)}%. `;
+  const boundary = document.createElement("span");
+  boundary.textContent = `${spectrum.uncertaintyCompetitiveCandidateCount} event${spectrum.uncertaintyCompetitiveCandidateCount === 1 ? "" : "s"} overlap the fastest event's uncertainty band; ${spectrum.catalogCharacter}.`;
+  kineticEventSpectrumDetail.append(heading, details, boundary);
+}
+
 function renderActionBarrierCheckpoint() {
   const panel = actionBarrierCheckpointBadge.closest(".action-barrier-checkpoint");
   renderInverseTransitionLineage();
   const checkpoint = externalActionBarrierCheckpoint;
+  renderKineticEventSpectrum();
   actionBarrierKineticModeSelect.value = externalActionBarrierKineticMode;
   actionBarrierTemperatureSelect.value = String(externalActionBarrierTemperatureKelvin);
   const reversibleLeafCount = externalActionBarrierCatalogMode === "reversible-leaves"
@@ -25296,7 +25426,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
   const candidates = [...attachmentCandidates, ...detachmentCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-360",
+    generatedAt: new Date().toISOString(), buildId: "20260831-361",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -34278,7 +34408,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-360",
+    generatedAt: new Date().toISOString(), buildId: "20260831-361",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,
@@ -39862,6 +39992,11 @@ actionBarrierKineticModeSelect.addEventListener("change", () => {
     receiptStatus.textContent = `Kinetic competition rejected safely · ${error.message}`;
   }
   renderActionBarrierCheckpoint(); updateUI();
+});
+kineticEventSpectrumMode.addEventListener("change", () => {
+  kineticEventSpectrumMode.value = kineticEventSpectrumMode.value === "probability"
+    ? "probability" : "rate";
+  renderKineticEventSpectrum();
 });
 actionBarrierTemperatureSelect.addEventListener("change", () => {
   const value = Number(actionBarrierTemperatureSelect.value);
