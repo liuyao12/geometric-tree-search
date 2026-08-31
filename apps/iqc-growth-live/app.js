@@ -88,24 +88,26 @@ import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntim
   from "./external-trajectory-geometry.mjs?v=20260830-346";
 import { actionBarrierSha256, buildFrozenActionBarrierRequest, frozenActionBarrierRequestReceipt,
   frozenActionStateGeometrySha256, validateFrozenActionBarrierResponse }
-  from "./external-action-barrier.mjs?v=20260831-367";
+  from "./external-action-barrier.mjs?v=20260831-368";
 import { buildActionPathViewerFrame, projectActionPathViewerFrame }
-  from "./action-path-viewer.mjs?v=20260831-367";
+  from "./action-path-viewer.mjs?v=20260831-368";
+import { actionPathMechanismSensitivity, analyzeActionPathMechanism }
+  from "./action-path-mechanism.mjs?v=20260831-368";
 import { buildFrozenKineticCompetition }
-  from "./frozen-frontier-kinetics.mjs?v=20260831-367";
+  from "./frozen-frontier-kinetics.mjs?v=20260831-368";
 import { buildKineticEventSpectrum }
-  from "./kinetic-event-spectrum.mjs?v=20260831-367";
+  from "./kinetic-event-spectrum.mjs?v=20260831-368";
 import { enumerateDetachableLeafPlacements }
   from "./reversible-frontier-events.mjs?v=20260831-347";
 import { enumerateMassConservingSurfaceHops }
-  from "./surface-hop-events.mjs?v=20260831-367";
+  from "./surface-hop-events.mjs?v=20260831-368";
 import { enumerateLocalSpeciesExchangeEvents }
-  from "./species-exchange-events.mjs?v=20260831-367";
+  from "./species-exchange-events.mjs?v=20260831-368";
 import { buildExternalStateRelaxationRequest, stateRelaxationSha256,
   validateExternalStateRelaxationResponse }
-  from "./external-state-relaxation.mjs?v=20260831-367";
+  from "./external-state-relaxation.mjs?v=20260831-368";
 import { appendCommittedTransition }
-  from "./reversible-transition-lineage.mjs?v=20260831-367";
+  from "./reversible-transition-lineage.mjs?v=20260831-368";
 import { buildFiniteTransitionNetwork }
   from "./finite-transition-network.mjs?v=20260831-352";
 import { auditCompetingObservedTransitionPaths }
@@ -119,19 +121,19 @@ import { evaluateWulffShapeRegularizer, matchedWulffRankingAudit }
   from "./wulff-shape-regularizer.mjs?v=20260831-354";
 import { buildAttachmentKineticsRequest, buildNormalizedKineticWulffGeometry,
   validateAttachmentKineticsResponse, evaluateKineticHabitScore, matchedKineticHabitRankingAudit }
-  from "./external-attachment-kinetics.mjs?v=20260831-367";
+  from "./external-attachment-kinetics.mjs?v=20260831-368";
 import { buildInterfaceFluxRequest, validateInterfaceFluxResponse, evaluateInterfaceFluxScore,
   matchedInterfaceFluxRankingAudit }
-  from "./external-interface-flux.mjs?v=20260831-367";
+  from "./external-interface-flux.mjs?v=20260831-368";
 import { periodicSiteNumberDensity, coupleInterfaceSupplyAndAttachment,
   syntheticGrowthRegimePreview }
-  from "./growth-regime-bridge.mjs?v=20260831-367";
+  from "./growth-regime-bridge.mjs?v=20260831-368";
 import { buildLeapfrogPhysicsCycle, couplingModeGate, LEAPFROG_COUPLING_MODES }
-  from "./leapfrog-physics-cycle.mjs?v=20260831-367";
+  from "./leapfrog-physics-cycle.mjs?v=20260831-368";
 import { buildCatalogConditionalChronology }
-  from "./catalog-conditional-chronology.mjs?v=20260831-367";
+  from "./catalog-conditional-chronology.mjs?v=20260831-368";
 import { buildCoupledPhysicsState, coupledStateGate }
-  from "./coupled-physics-state.mjs?v=20260831-367";
+  from "./coupled-physics-state.mjs?v=20260831-368";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -664,6 +666,10 @@ const kineticEventPathStructure = $("kineticEventPathStructure");
 const kineticEventPathImage = $("kineticEventPathImage");
 const kineticEventPathPlay = $("kineticEventPathPlay");
 const kineticEventPathStructureState = $("kineticEventPathStructureState");
+const kineticEventPathMechanismPlot = $("kineticEventPathMechanismPlot");
+const kineticEventPathMechanismSummary = $("kineticEventPathMechanismSummary");
+const kineticEventPathMechanismState = $("kineticEventPathMechanismState");
+const kineticEventPathContactReach = $("kineticEventPathContactReach");
 const actionBarrierInverseBadge = $("actionBarrierInverseBadge");
 const actionBarrierInverseSummary = $("actionBarrierInverseSummary");
 const actionBarrierInverseState = $("actionBarrierInverseState");
@@ -1774,6 +1780,8 @@ let kineticPathYaw = .65;
 let kineticPathPitch = -.35;
 let kineticPathPlaybackTimer = null;
 let kineticPathPointerStart = null;
+let kineticPathContactReach = 1.35;
+const actionPathMechanismCache = new WeakMap();
 let catalogConditionalKineticClockSeconds = 0;
 let catalogConditionalKineticEventCount = 0;
 let reversibleDetachmentEventCount = 0;
@@ -3859,7 +3867,7 @@ async function downloadInterfacialEnergyRequest() {
   const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-367",
+  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-368",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256,
@@ -4103,7 +4111,7 @@ async function downloadAttachmentKineticsRequest() {
   const material = currentMaterial(); const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-367",
+  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-368",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256, intrinsicDimension, orientationBasisCartesian,
@@ -4622,7 +4630,7 @@ async function downloadSpatialInterfaceFluxRequest() {
   const interfaceGeometrySha256 = await receiptSha256(JSON.stringify({ structureSha256: configuration.structureSha256,
     confinement: confinementSelect?.value || "box", publicReach: growthDomainScale, atomCount: referenceAtoms.length }));
   const species = material.actualElements ? [...material.actualElements] : [...material.elements];
-  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-367",
+  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-368",
     scenarioId: scenarioSelect.value, materialName: material.name, species,
     structureSha256: configuration.structureSha256, interfaceGeometrySha256,
     interfaceConfiguration: configuration,
@@ -13901,7 +13909,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260831-367",
+      buildId: "20260831-368",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -16494,7 +16502,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260831-367" },
+    application: { name: "Materials Growth Lab", buildId: "20260831-368" },
     postLeapExternalRelaxation: stateRelaxationReceipt(),
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
@@ -24855,7 +24863,7 @@ async function freezeExternalStateRelaxation() {
     throw new Error("variable-cell relaxation requires a fully periodic 3D state");
   }
   const request = await buildExternalStateRelaxationRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-367",
+    generatedAt: new Date().toISOString(), buildId: "20260831-368",
     materialName: currentMaterial().name, sites,
     cellAngstrom: policy.cellAngstrom, periodicBoundary: policy.periodicBoundary,
     boundary: currentGrowthDomainSnapshot(), sourceLeapReceiptSha256: null,
@@ -25341,6 +25349,12 @@ function actionBarrierCheckpointReceipt(checkpoint = externalActionBarrierCheckp
   const kinetic = checkpoint.kineticCompetition;
   const kineticSpectrum = kinetic ? buildKineticEventSpectrum(kinetic) : null;
   const kineticClockCommitted = Boolean(checkpoint.kineticClockCommitted);
+  const inspectedPathRecord = response?.audit.records.find((record) =>
+    record.candidateId === selectedKineticPathCandidateId) || null;
+  const inspectedMechanism = inspectedPathRecord
+    ? cachedActionPathMechanism(inspectedPathRecord.pathGeometry) : null;
+  const inspectedMechanismSensitivity = inspectedPathRecord
+    ? cachedActionPathMechanismSensitivity(inspectedPathRecord.pathGeometry) : null;
   return {
     schema: 1, status: response ? checkpoint.consumed ? "consumed" : "validated" : "frozen-request",
     requestSha256: checkpoint.requestReceipt.requestSha256,
@@ -25413,6 +25427,22 @@ function actionBarrierCheckpointReceipt(checkpoint = externalActionBarrierCheckp
         projection: "proper-rotation-perspective",
         sampleTrailsOnly: true, interpolationUsed: false,
         orbitChangesCoordinates: false, targetUsed: false,
+        geometricMechanism: inspectedMechanism ? {
+          contactReach: inspectedMechanism.contactReach,
+          referenceLengthAngstrom: inspectedMechanism.referenceLengthAngstrom,
+          cutoffAngstrom: inspectedMechanism.cutoffAngstrom,
+          referenceLengthSource: inspectedMechanism.referenceLengthSource,
+          geometricCharacter: inspectedMechanism.geometricCharacter,
+          netFormedContactCount: inspectedMechanism.netFormedContactCount,
+          netBrokenContactCount: inspectedMechanism.netBrokenContactCount,
+          transientContactCount: inspectedMechanism.transientContactCount,
+          sensitivityReaches: inspectedMechanismSensitivity.reaches,
+          sensitivityCharacterStable: inspectedMechanismSensitivity.characterStable,
+          sensitivityNetFormedRange: inspectedMechanismSensitivity.netFormedRange,
+          sensitivityNetBrokenRange: inspectedMechanismSensitivity.netBrokenRange,
+          thresholdChangesCandidate: false, chemicalBondClaimed: false,
+          targetUsed: false,
+        } : null,
       },
       claimBoundary: "Coordinate-bearing external images certify exact endpoint connectivity inside each returned extended system. They do not prove a unique global minimum-energy path, mechanism completeness, recrossing, reservoir validity, or method transferability.",
     } : null,
@@ -25628,12 +25658,130 @@ function renderKineticPathStructure(path, candidateId = null) {
   kineticEventPathStructureState.textContent = `Image ${frame.imageIndex + 1}/${frame.imageCount}${frame.saddle ? " · validated saddle" : ""} · ΔE ${frame.relativeEnergyElectronVolt >= 0 ? "+" : ""}${frame.relativeEnergyElectronVolt.toFixed(5)} eV · max force ${frame.maximumForceElectronVoltPerAngstrom.toFixed(5)} eV Å⁻¹ · material/interface/reservoir ${frame.materialSiteCount}/${frame.interfaceSiteCount}/${frame.reservoirSiteCount} · showing ${frame.displayedFixedMaterialSiteCount}/${frame.fixedMaterialSiteCount} nearest invariant sites plus all ${frame.movingOrReservoirSiteCount} moving/reservoir sites. Exact returned coordinates only; no interpolated frames.`;
 }
 
+function cachedActionPathMechanism(path, contactReach = kineticPathContactReach) {
+  if (!path) return null;
+  let cache = actionPathMechanismCache.get(path);
+  if (!cache) { cache = new Map(); actionPathMechanismCache.set(path, cache); }
+  const key = Number(contactReach).toFixed(3);
+  if (!cache.has(key)) cache.set(key, analyzeActionPathMechanism(path,
+    { contactReach: Number(contactReach) }));
+  return cache.get(key);
+}
+
+function cachedActionPathMechanismSensitivity(path) {
+  if (!path) return null;
+  let cache = actionPathMechanismCache.get(path);
+  if (!cache) { cache = new Map(); actionPathMechanismCache.set(path, cache); }
+  if (!cache.has("sensitivity")) cache.set("sensitivity",
+    actionPathMechanismSensitivity(path, [1.15, 1.35, 1.6]));
+  return cache.get("sensitivity");
+}
+
+function renderKineticPathMechanism(path) {
+  const namespace = "http://www.w3.org/2000/svg";
+  const make = (name, attributes = {}) => {
+    const node = document.createElementNS(namespace, name);
+    Object.entries(attributes).forEach(([key, value]) => node.setAttribute(key, String(value)));
+    return node;
+  };
+  kineticEventPathMechanismPlot.replaceChildren();
+  kineticEventPathMechanismSummary.replaceChildren();
+  kineticEventPathContactReach.disabled = !path;
+  kineticEventPathContactReach.value = String(kineticPathContactReach);
+  if (!path) {
+    const empty = make("text", { x: 180, y: 65, "text-anchor": "middle",
+      class: "axis-label" }); empty.textContent = "GEOMETRIC MECHANISM UNAVAILABLE";
+    kineticEventPathMechanismPlot.append(empty);
+    kineticEventPathMechanismState.textContent = "A validated coordinate chain is required. Geometric contacts are not chemical bonds.";
+    return;
+  }
+  const audit = cachedActionPathMechanism(path);
+  const sensitivity = cachedActionPathMechanismSensitivity(path);
+  if (!audit.referenceAvailable) {
+    const empty = make("text", { x: 180, y: 65, "text-anchor": "middle",
+      class: "axis-label" }); empty.textContent = "NO LOCAL NEAREST-NEIGHBOR REFERENCE";
+    kineticEventPathMechanismPlot.append(empty);
+    kineticEventPathMechanismState.textContent = "No material-facing moving site has a neighboring site from which to derive dₙₙ. Contacts remain unresolved rather than guessed.";
+    return;
+  }
+  const left = 55; const right = 350;
+  const x = (index) => audit.imageCount === 1 ? (left + right) / 2
+    : left + (right - left) * index / (audit.imageCount - 1);
+  const rows = [
+    { key: "contactCount", label: "contacts", y: 25, color: "contacts" },
+    { key: "meanDynamicCoordination", label: "mean coord.", y: 64, color: "coordination" },
+    { key: "rmsDynamicDisplacementAngstrom", label: "Δr RMS", y: 103,
+      color: "displacement" },
+  ];
+  const columnWidth = Math.max(4, (right - left) / Math.max(1, audit.imageCount - 1) * .76);
+  kineticEventPathMechanismPlot.append(make("rect", {
+    x: x(selectedKineticPathImageIndex) - columnWidth / 2, y: 4,
+    width: columnWidth, height: 116, rx: 2, class: "selected-image" }));
+  rows.forEach((row) => {
+    const values = audit.perImage.map((image) => image[row.key]);
+    const maximum = Math.max(...values, 1e-12);
+    const y = (value) => row.y + 13 - 26 * value / maximum;
+    kineticEventPathMechanismPlot.append(make("line", { x1: left, y1: row.y + 13,
+      x2: right, y2: row.y + 13, class: "guide" }));
+    const label = make("text", { x: left - 5, y: row.y + 3, "text-anchor": "end",
+      class: "axis-label" }); label.textContent = row.label;
+    kineticEventPathMechanismPlot.append(label);
+    const polyline = make("polyline", { points: values.map((value, index) =>
+      `${x(index)},${y(value)}`).join(" "), class: row.color });
+    kineticEventPathMechanismPlot.append(polyline);
+    audit.perImage.forEach((image, index) => {
+      const point = make("circle", { cx: x(index), cy: y(image[row.key]), r: 2,
+        class: `data-point ${row.color}` });
+      const title = make("title"); title.textContent = `image ${index + 1} · ${row.label} ${image[row.key].toFixed(4)}`;
+      point.append(title); kineticEventPathMechanismPlot.append(point);
+    });
+  });
+  const contactMaximum = Math.max(...audit.perImage.flatMap((image) =>
+    [image.formedContactCount, image.brokenContactCount]), 1);
+  audit.perImage.forEach((image, index) => {
+    const px = x(index); const barScale = 10 / contactMaximum;
+    if (image.formedContactCount) kineticEventPathMechanismPlot.append(make("rect", {
+      x: px - 4, y: 37 - image.formedContactCount * barScale, width: 3,
+      height: image.formedContactCount * barScale, class: "formed" }));
+    if (image.brokenContactCount) kineticEventPathMechanismPlot.append(make("rect", {
+      x: px + 1, y: 37 - image.brokenContactCount * barScale, width: 3,
+      height: image.brokenContactCount * barScale, class: "broken" }));
+    const hit = make("rect", { x: px - columnWidth / 2, y: 3, width: columnWidth,
+      height: 118, fill: "transparent", tabindex: 0, role: "button",
+      "aria-label": `Inspect mechanism image ${index + 1}` });
+    const inspect = () => {
+      stopKineticPathPlayback(); selectedKineticPathImageIndex = index;
+      renderKineticEventSpectrum();
+    };
+    hit.addEventListener("click", inspect); hit.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault(); inspect();
+      }
+    });
+    kineticEventPathMechanismPlot.append(hit);
+  });
+  const tiles = [
+    ["geometric character", audit.geometricCharacter],
+    ["cutoff", `${audit.cutoffAngstrom.toFixed(3)} Å · ${audit.contactReach.toFixed(2)} dₙₙ`],
+    ["net contacts", `+${audit.netFormedContactCount} / −${audit.netBrokenContactCount}`],
+    ["reach sensitivity", sensitivity.characterStable ? "character stable" : "character changes"],
+  ];
+  kineticEventPathMechanismSummary.append(...tiles.map(([label, value]) => {
+    const tile = document.createElement("span"); const strong = document.createElement("strong");
+    tile.append(document.createTextNode(label)); strong.textContent = value; tile.append(strong);
+    return tile;
+  }));
+  const inspected = audit.perImage[selectedKineticPathImageIndex] || audit.perImage[0];
+  kineticEventPathMechanismState.textContent = `Image ${inspected.imageIndex + 1}: ${inspected.contactCount} contacts · ${inspected.formedContactCount} formed / ${inspected.brokenContactCount} broken since the preceding returned image · mean dynamic coordination ${inspected.meanDynamicCoordination.toFixed(2)} · RMS step displacement ${inspected.rmsDynamicDisplacementAngstrom.toFixed(3)} Å. Across 1.15/1.35/1.60 dₙₙ, net formed range ${sensitivity.netFormedRange[0]}–${sensitivity.netFormedRange[1]} and broken range ${sensitivity.netBrokenRange[0]}–${sensitivity.netBrokenRange[1]}. Contacts involve a moving site and are geometric neighbors, not bond orders, bond energies, or physical time.`;
+}
+
 function renderCoordinatePathAudit(path, candidateId, make) {
   if (!path) {
     const unavailable = make("text", { x: 180, y: 49, "text-anchor": "middle",
       class: "axis-label" });
     unavailable.textContent = "selected event has no validated path";
     kineticEventPathPlot.append(unavailable); renderKineticPathStructure(null);
+    renderKineticPathMechanism(null);
     kineticEventPathState.textContent = "Path geometry is required for every frozen candidate.";
     return;
   }
@@ -25680,6 +25828,7 @@ function renderCoordinatePathAudit(path, candidateId, make) {
     class: "axis-label" });
   pathAxis.textContent = "external reaction coordinate ξ · 0 → 1";
   kineticEventPathPlot.append(pathAxis); renderKineticPathStructure(path, candidateId);
+  renderKineticPathMechanism(path);
   kineticEventPathState.textContent = `${path.imageCount} externally calculated images · ${path.pathModel.replaceAll("-", " ")} · saddle image ${path.saddleImageIndex + 1} · ${path.fixedMaterialSiteCount} invariant + ${path.movingOrReservoirSiteCount} moving/reservoir site IDs · max adjacent displacement ${path.maximumSiteDisplacementAngstrom.toFixed(3)} Å${path.reservoir ? ` · ${path.reservoir.boundaryCondition}` : " · closed system"}. Exact endpoints and energy barrier pass; path uniqueness, missing mechanisms, recrossing, and method transferability remain unclaimed.`;
 }
 
@@ -25736,6 +25885,7 @@ function renderKineticEventSpectrum() {
         class: "axis-label" });
       emptyPath.textContent = "coordinate-bearing path unavailable";
       kineticEventPathPlot.append(emptyPath); renderKineticPathStructure(null);
+      renderKineticPathMechanism(null);
       kineticEventPathState.textContent = "A validated response must return stable site IDs, species, coordinates, domains, energies, and forces for every image.";
     }
     return;
@@ -26089,7 +26239,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
     ...speciesExchangeCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-367",
+    generatedAt: new Date().toISOString(), buildId: "20260831-368",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -35431,7 +35581,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-367",
+    generatedAt: new Date().toISOString(), buildId: "20260831-368",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,
@@ -41043,6 +41193,11 @@ kineticEventPathCandidate.addEventListener("change", () => {
   if (!records.some((record) => record.candidateId === kineticEventPathCandidate.value)) return;
   stopKineticPathPlayback(); selectedKineticSpectrumCandidateId = kineticEventPathCandidate.value;
   selectedKineticPathCandidateId = null; renderKineticEventSpectrum();
+});
+kineticEventPathContactReach.addEventListener("change", () => {
+  const reach = Number(kineticEventPathContactReach.value);
+  kineticPathContactReach = [1.15, 1.35, 1.6].includes(reach) ? reach : 1.35;
+  renderKineticEventSpectrum();
 });
 kineticEventPathImage.addEventListener("input", () => {
   stopKineticPathPlayback();

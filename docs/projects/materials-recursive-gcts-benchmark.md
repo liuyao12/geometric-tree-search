@@ -1,5 +1,36 @@
 # Recursive GCTS benchmark for material growth
 
+### Threshold-explicit geometric mechanism fingerprint (Build 368)
+
+The path microscope now resolves structural changes rather than leaving the
+investigator to infer them from an animation. At every returned image it counts
+contacts containing at least one dynamic path site, computes dynamic-site
+coordination, identifies contact appearances and disappearances relative to the
+preceding returned image, and reports RMS and maximum dynamic displacement.
+The interactive timeline shares its image index with the atomic viewer and
+energy profile.
+
+The analysis uses no element-specific bond table or material label. It derives
+one local reference length from the median of the nearest material-facing
+neighbor distances sampled by moving sites over all path images. The displayed
+contact relation is then an explicit multiplier—1.15, 1.35, or 1.60—of that
+frozen `d_nn`. A simultaneous three-reach sensitivity audit reports the range
+of net contact formation and breaking and whether the coarse character
+(`contact-forming`, `contact-breaking`, `contact exchange / reconstructive`, or
+`displacive at this contact reach`) survives the threshold change.
+
+Only pairs containing a moving site are evaluated, so cost scales with the
+active environment rather than the square of the full invariant specimen.
+Reservoir-domain sites do not define the material nearest-neighbor scale or a
+material contact. If no material-facing neighbor exists, the audit returns an
+unresolved reference instead of fabricating a cutoff.
+
+The receipt retains the active threshold, derived reference/cutoff, net and
+transient contact counts, and sensitivity ranges with explicit
+`chemicalBondClaimed=false`, `physicalTimeInferred=false`, and
+`targetUsed=false`. These are geometric neighbor events, not bond orders, bond
+energies, electronic reaction assignments, or proof of a unique mechanism.
+
 ### Atomic transition-path microscope (Build 367)
 
 Validated coordinate chains are now inspectable as actual atomic structures,

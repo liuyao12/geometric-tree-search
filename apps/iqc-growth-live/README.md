@@ -1,5 +1,28 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 368 · threshold-explicit geometric mechanism fingerprint
+
+Every validated atomic path now carries a geometry-only mechanism audit. For
+each returned image the portal reports the number of local contacts involving
+a moving site, mean and maximum moving-site coordination, contacts formed and
+broken since the preceding returned image, and RMS/maximum step displacement.
+The timeline is linked to the same exact-image selection used by the structural
+microscope.
+
+The contact length is not hidden or called a chemical bond. The portal derives
+`d_nn` as the median nearest-neighbor distance seen by material- or interface-
+domain moving sites across the full path, then lets the investigator inspect
+1.15, 1.35, or 1.60 `d_nn`. A sensitivity audit always recomputes the net
+formed/broken ranges and reports whether the qualitative geometric character
+is stable across all three reaches. If no local reference exists, the result is
+left unresolved rather than assigned a guessed radius.
+
+The receipt stores the chosen reach, derived reference and cutoff, contact-
+change character, net and transient counts, and the three-reach sensitivity.
+This analysis never changes a candidate, endpoint, or path image. Its contacts
+are neighbor relations—not bond orders, reaction energies, electronic
+mechanisms, or elapsed physical time.
+
 ## Build 367 · atomic transition-path microscope
 
 The selected frozen event now has an interactive structural viewer in
