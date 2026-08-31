@@ -1,5 +1,28 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 381 · temperature-coherent finite-network passage
+
+The portal now turns an externally authorized temperature range into a
+coherent intervention on the complete observed state network. Committed
+transitions retain their HTST barrier, prefactor, uncertainties, prefactor
+settings digest, and bounded constant-barrier/prefactor applicability instead
+of discarding that evidence when the finite graph is assembled.
+
+Within the common intersection of every edge's authorized interval, the new
+slider recomputes all log rates from the retained barriers and prefactors and
+reruns the exact target-passage equations. A solid curve gives the nonlinear
+conditional passage response; a dashed curve projects the Build 379 edge
+elasticities along the same multi-edge thermal displacement. The selected
+temperature reports the passage-time ratio, target-hit change, dominant
+geometry-linked thermal control edge, and nominal HTST consistency residual.
+
+The panel fails closed if any edge is single-temperature-only, lacks barrier or
+prefactor evidence, disagrees with its nominal HTST rate, uses incompatible
+method settings, or has no common authorized interval. Constant barriers and
+prefactors are an explicit external assumption. Thermal expansion, structural
+relaxation, anharmonicity, recrossing, temperature-dependent free energies,
+phase changes, missing mechanisms, and equilibrium remain outside the claim.
+
 ## Build 380 · exact geometric rate what-if
 
 The kinetic-control map is now actionable without changing the simulated

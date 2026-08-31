@@ -25,6 +25,34 @@ function optionalFinite(value, label, { nonnegative = false, positive = false } 
   return normalized;
 }
 
+function normalizedTemperatureApplicability(raw) {
+  if (raw == null) return null;
+  const scope = requiredText(raw.scope, "temperature applicability scope");
+  if (scope === "single-temperature") {
+    if (raw.minimumKelvin != null || raw.maximumKelvin != null
+        || raw.externallyAuthorized === true
+        || raw.barrierAndPrefactorAssumedConstant === true) {
+      throw new Error("single-temperature applicability cannot authorize a temperature interval");
+    }
+    return { scope, minimumKelvin: null, maximumKelvin: null,
+      externallyAuthorized: false, barrierAndPrefactorAssumedConstant: false };
+  }
+  if (scope !== "bounded-constant-htst") {
+    throw new Error("temperature applicability scope must be single-temperature or bounded-constant-htst");
+  }
+  const minimumKelvin = optionalFinite(raw.minimumKelvin,
+    "minimum applicable temperature", { positive: true });
+  const maximumKelvin = optionalFinite(raw.maximumKelvin,
+    "maximum applicable temperature", { positive: true });
+  if (!(minimumKelvin >= 1 && maximumKelvin <= 5000 && minimumKelvin < maximumKelvin)
+      || raw.externallyAuthorized !== true
+      || raw.barrierAndPrefactorAssumedConstant !== true) {
+    throw new Error("bounded constant-HTST applicability needs an authorized 1..5000 K interval and constant barrier/prefactor assumption");
+  }
+  return { scope, minimumKelvin, maximumKelvin,
+    externallyAuthorized: true, barrierAndPrefactorAssumedConstant: true };
+}
+
 function rootSumSquares(values) {
   return Math.sqrt(values.filter(Number.isFinite).reduce((sum, value) => sum + value * value, 0));
 }
@@ -268,6 +296,7 @@ export function normalizedCommittedTransition(raw) {
       "attempt-frequency uncertainty", { nonnegative: true }),
     logRatePerSecond: optionalFinite(raw.logRatePerSecond, "log rate"),
     temperatureKelvin: optionalFinite(raw.temperatureKelvin, "temperature", { positive: true }),
+    temperatureApplicability: normalizedTemperatureApplicability(raw.temperatureApplicability),
     methodSettingsSha256: requiredSha(raw.methodSettingsSha256, "method settings SHA-256"),
     prefactorSettingsSha256: raw.prefactorSettingsSha256 == null ? null
       : requiredSha(raw.prefactorSettingsSha256, "prefactor settings SHA-256"),

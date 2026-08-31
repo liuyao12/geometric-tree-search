@@ -32,6 +32,9 @@ function transition(from, to, index) {
     attemptFrequencyUncertaintyLog10: .001,
     logRatePerSecond: logRate, temperatureKelvin: 600,
     methodSettingsSha256: sha("d"), prefactorSettingsSha256: sha("e"),
+    temperatureApplicability: { scope: "bounded-constant-htst",
+      minimumKelvin: 400, maximumKelvin: 900, externallyAuthorized: true,
+      barrierAndPrefactorAssumedConstant: true },
     speciesDelta: transfer[`${from}->${to}`],
     thermodynamicEvidenceSha256: sha("f"),
     freeEnergySettingsSha256: sha("1"), chemicalPotentialSettingsSha256: sha("2"),
@@ -52,6 +55,11 @@ const network = buildFiniteTransitionNetwork(history);
 assert.equal(network.nodes.length, 3);
 assert.equal(network.directedEdges.length, 6);
 assert.equal(network.directedEdges.every((edge) => Number.isFinite(edge.logRatePerSecond)), true);
+assert.equal(network.directedEdges.every((edge) => edge.attemptFrequencyPerSecond > 0), true);
+assert.equal(network.directedEdges.every((edge) =>
+  edge.temperatureApplicability?.scope === "bounded-constant-htst"), true);
+assert.equal(network.directedEdges.every((edge) =>
+  edge.prefactorSettingsSha256 === sha("e")), true);
 assert.equal(network.activeObservationPolicy,
   "latest exact committed observation per directed edge");
 assert.equal(network.pairedEdgeCount, 3);

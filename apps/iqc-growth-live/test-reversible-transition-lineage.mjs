@@ -12,6 +12,9 @@ const base = {
   energyDeltaUncertaintyElectronVolt: .01, attemptFrequencyPerSecond: 1e12,
   attemptFrequencyUncertaintyLog10: .02, temperatureKelvin,
   methodSettingsSha256: sha("3"), prefactorSettingsSha256: sha("4"),
+  temperatureApplicability: { scope: "bounded-constant-htst",
+    minimumKelvin: 400, maximumKelvin: 900, externallyAuthorized: true,
+    barrierAndPrefactorAssumedConstant: true },
   speciesDelta: {}, initialAtomCount: 20, finalAtomCount: 20,
   thermodynamicEvidenceSha256: sha("5"), freeEnergySettingsSha256: sha("6"),
   chemicalPotentialSettingsSha256: sha("7"), thermodynamicTemperatureKelvin: temperatureKelvin,
@@ -67,6 +70,7 @@ assert.equal(second.exactInversePairCount, 1);
 assert.equal(second.inverseAudit.massConservingHopPair, true);
 assert.equal(second.history[0].geometricPathObservable.netContactDelta, 1);
 assert.equal(second.history[0].initialStateGeometricDescriptor.atomCount, 20);
+assert.equal(second.history[0].temperatureApplicability.minimumKelvin, 400);
 
 assert.throws(() => appendCommittedTransition([], { ...forward,
   geometricPathObservable: { ...geometry(1), finalContactCount: 5 } }),

@@ -1,5 +1,43 @@
 # Recursive GCTS benchmark for material growth
 
+### Coherent finite-network temperature intervention (Build 381)
+
+Build 381 closes the principal physical limitation of the independent-edge
+what-if. Each committed exact transition now carries its HTST barrier `E‡`,
+attempt frequency `ν`, both uncertainties, prefactor-method digest, and the
+validated temperature-applicability declaration into the finite network. No
+temperature response is shown unless every retained edge authorizes a bounded
+constant-HTST interval and those intervals possess a nonempty common
+intersection.
+
+At a selected authorized temperature `T`, every edge is reevaluated as
+
+`ln k_e(T) = ln ν_e - E‡_e / (k_B T)`.
+
+The source graph is copied, its topology and geometry remain fixed, and the
+complete target-hitting/conditional-time backward equations are solved again.
+The nominal stored rate must reproduce the retained barrier and prefactor to
+`10⁻⁸` in log-rate units. Method and prefactor settings must be common across
+the graph. Barrier and prefactor uncertainties are also rescaled coherently at
+the selected temperature.
+
+For interpretation, the Build 379 elasticity vector is projected along the
+same all-edge log-rate displacement,
+
+`Δln τ_local = Σ_e (∂ln τ/∂ln k_e) Δln k_e(T)`,
+
+and plotted against the exact nonlinear `Δln τ`. Per-edge thermal leverage is
+linked back to the retained coordinate-path character, exposing which
+contact-forming, breaking, reconstructive, or displacive transition dominates
+the local temperature response. Analytic serial and success/failure branching
+networks validate both passage time and target probability; lineage/network
+tests verify that applicability and prefactor evidence survive commitment.
+
+This remains an authorized constant-HTST counterfactual over one frozen,
+finite observed mechanism catalog. It does not infer temperature-dependent
+barriers or free energies, thermal expansion, relaxation, anharmonicity,
+recrossing, phase changes, new mechanisms, equilibrium, or a bulk growth law.
+
 ### Exact finite-rate intervention explorer (Build 380)
 
 Build 380 converts the local control derivative into an exact finite what-if.

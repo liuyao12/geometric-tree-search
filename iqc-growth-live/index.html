@@ -7,7 +7,7 @@
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23071112'/%3E%3Cpath d='M17 19 46 12M17 19l8 30m21-37L25 49m-8-30 29 24M25 49l21-6' stroke='%236fffd4' stroke-width='4'/%3E%3Ccircle cx='17' cy='19' r='6' fill='%23f1fff9'/%3E%3Ccircle cx='46' cy='12' r='6' fill='%236fffd4'/%3E%3Ccircle cx='25' cy='49' r='6' fill='%238a7dff'/%3E%3Ccircle cx='46' cy='43' r='6' fill='%236fffd4'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css?v=20260831-380">
+  <link rel="stylesheet" href="./style.css?v=20260831-381">
   <script type="importmap">
     {
       "imports": {
@@ -1397,6 +1397,14 @@
                           <div id="finiteNetworkRateInterventionSummary" class="finite-network-rate-intervention-summary" aria-live="polite"></div>
                           <p id="finiteNetworkRateInterventionState">Click a kinetic-control bar, then test a finite rate multiplier. The actual growth state is never changed.</p>
                         </section>
+                        <section class="finite-network-temperature-intervention" aria-label="Coherent common-temperature intervention on all authorized observed edge rates">
+                          <header><span><small>all edges · externally authorized constant HTST</small><strong>Temperature-coherent passage</strong></span><b id="finiteNetworkTemperatureInterventionBadge">range not authorized</b></header>
+                          <label class="finite-network-temperature-intervention-control"><span>common network temperature</span><input id="finiteNetworkTemperatureInterventionInput" type="range" min="1" max="5000" step="1" value="300" disabled aria-label="Common authorized finite-network temperature"><output id="finiteNetworkTemperatureInterventionReadout">— K</output></label>
+                          <svg id="finiteNetworkTemperatureInterventionPlot" viewBox="0 0 300 112" role="img" aria-label="Exact and local-control-projected passage response under coherent all-edge temperature reweighting"></svg>
+                          <div class="finite-network-temperature-intervention-legend"><span><i class="exact"></i>exact all-edge re-solve</span><span><i class="projection"></i>local control projection</span><span><i class="nominal"></i>supplied T</span></div>
+                          <div id="finiteNetworkTemperatureInterventionSummary" class="finite-network-temperature-intervention-summary" aria-live="polite"></div>
+                          <p id="finiteNetworkTemperatureInterventionState">Every retained edge needs a shared authorized temperature range, barrier, and prefactor before the network can be reweighted coherently.</p>
+                        </section>
                       </section>
                     </section>
                     <section class="finite-network-population" aria-label="Conditional finite-network population dynamics">
@@ -2533,7 +2541,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260831-380"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260831-380"></script>
+  <script type="module" src="./app.js?v=20260831-381"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260831-381"></script>
 </body>
 </html>
