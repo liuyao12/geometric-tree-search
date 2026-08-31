@@ -1746,6 +1746,10 @@ assert.ok(A2_SLICED_SIZE10_CANDIDATES.filter(candidate => candidate.screening.st
   candidate.screening.periodic_exact_through === 6
   && candidate.screening.periodic_nine_copy_exact_negative_orbits === 55
   && candidate.screening.periodic_nine_copy_node_capped_orbits === 30
+  && candidate.screening.four_copy_substitution_exact_scales.join(",") === "2"
+  && candidate.screening.four_copy_substitution_models.join(",") === "proper"
+  && candidate.screening.four_copy_substitution_certified_negatives === 1
+  && candidate.screening.four_copy_substitution_parents_exhausted > 68000
 ));
 assert.deepEqual(
   slicedSizeNineLeads.map(candidate => [

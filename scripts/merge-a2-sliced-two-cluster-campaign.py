@@ -16,7 +16,7 @@ def read_ndjson(path: Path) -> list[dict]:
 
 
 def validate(record: dict, cluster_copies: int = 2) -> tuple[str, int, bool]:
-    word = {2: "two", 3: "three"}[cluster_copies]
+    word = {2: "two", 3: "three", 4: "four"}[cluster_copies]
     detail = record[f"{word}_copy_alcove_metatile_screen"]
     key = record["id"], detail["scale"], bool(detail["include_reflections"])
     if detail.get("parents_completed") != detail.get("symmetry_distinct_metatiles"):
@@ -52,7 +52,7 @@ def main() -> None:
     parser.add_argument("inputs", nargs="+")
     parser.add_argument("--output", required=True)
     parser.add_argument("--expected-results", type=int, default=0)
-    parser.add_argument("--cluster-copies", type=int, choices=(2, 3), default=2)
+    parser.add_argument("--cluster-copies", type=int, choices=(2, 3, 4), default=2)
     args = parser.parse_args()
     records = [record for path in args.inputs for record in read_ndjson(Path(path))]
     if args.expected_results and len(records) != args.expected_results:
@@ -66,15 +66,12 @@ def main() -> None:
     with opener(output, "wt", encoding="utf-8") as stream:
         for record in records:
             stream.write(json.dumps(record, separators=(",", ":")) + "\n")
+    word = {2: "two", 3: "three", 4: "four"}[args.cluster_copies]
     print(json.dumps({
         "results": len(records),
         "candidates": len({record["id"] for record in records}),
         "positive_systems": sum(
-            record["classification"] == (
-                "two_copy_metatile_substitution_system"
-                if args.cluster_copies == 2
-                else "three_copy_metatile_substitution_system"
-            )
+            record["classification"] == f"{word}_copy_metatile_substitution_system"
             for record in records
         ),
         "output": str(output),
