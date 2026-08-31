@@ -735,9 +735,9 @@ export async function solveA2Tiling({boundary,seed=null,startPoints=[],tiles=["h
     if(maximize?chosen.length>=targetPlacements:[...desired].every(([key,entry])=>Math.abs((sums.get(key)||0)-entry.weight)<1e-7))return true;
     let choice=null,options=null,choiceInfo={forced:false,branchCount:0,frontierValue:0};
     if(maximize){
-      // The frontier-candidate graph is the branching engine: detect a dead
-      // point anywhere on the active frontier, then choose a globally forced
-      // point before any genuine branch. Distance only breaks equal-size ties.
+      // The frontier-candidate graph is the branching engine. Close forced
+      // points first; for a genuine choice, preserve balanced growth by using
+      // the frontier point introduced in the earliest placement generation.
       const incrementalGraphActive=!graphNeedsGlobalPlacementUpdate();
       const frontier=(incrementalGraphActive?[...frontierGraph.values()]:[...sums].filter(([point,value])=>value<targetAt(point.split(",").map(Number))-1e-7).map(([point,value])=>{
         const coordinates=point.split(",").map(Number);return{point,value,distance:distanceFromInitial(point),introduced:pointDepth.get(point)??Infinity,norm:coordinates.reduce((sum,v)=>sum+Math.abs(v),0)};
@@ -749,12 +749,15 @@ export async function solveA2Tiling({boundary,seed=null,startPoints=[],tiles=["h
       }
       if(!frontier.length)return true;
       const nearestDistance=frontier[0].distance;
-      let selected=null;
+      const viable=[];
       for(const entry of frontier){
         const legal=incrementalGraphActive?[...entry.legal.values()]:legalAt(entry.point);
         if(!legal.length){if(!legalAt(entry.point,1,true).length)learner.rememberFrontierFailure?.(frontierPattern(entry.point));noteFailedPath(trackers,entry.point);emit("fail",{choice:entry.point,frontierValue:entry.value});return false;}
-        if(!selected||legal.length<selected.legal.length)selected={...entry,legal};
+        viable.push({...entry,legal});
       }
+      const byGeneration=(left,right)=>left.introduced-right.introduced||left.legal.length-right.legal.length||left.distance-right.distance||right.value-left.value||left.norm-right.norm||lexicalCompare(left.point,right.point);
+      const forced=viable.filter(entry=>entry.legal.length===1).sort(byGeneration);
+      const selected=forced[0]??viable.sort(byGeneration)[0];
       if(chosen.length>best.length){best=chosen.slice();bestFilled=filledWeight();lastImprovementNode=nodes;learner.rememberPositive?.(best);}
       choice=selected.point;options=selected.legal.map(placement=>{
         let atChoice=0,coverage=0,size=0;
