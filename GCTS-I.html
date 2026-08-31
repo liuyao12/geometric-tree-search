@@ -51,6 +51,8 @@
                       <div class="toolbar-row toolbar-toggle-row">
                         <label class="toolbar-toggle">
         <input type="checkbox" id="turtle-marking-rules"> Tiling with marking</label>
+                        <label class="toolbar-toggle">
+        <input type="checkbox" id="turtle-marking-rank" checked=""> <span id="turtle-marking-rank-label">rank 3</span></label>
                         <label class="toolbar-toggle mark-extension-control" id="turtle-mark-extension-control" hidden="">mark reach <input type="number" id="turtle-mark-extension" min="0" max="9" step="1" value="1" inputmode="numeric" aria-label="Marking reach in lattice steps">
         </label>
                         <label class="toolbar-toggle toolbar-toggle-right">
@@ -129,6 +131,8 @@
       const resetButton = document.getElementById('turtle-reset');
       const markingsButton = document.getElementById('turtle-markings');
       const markingRulesToggle = document.getElementById('turtle-marking-rules');
+      const markingRankToggle = document.getElementById('turtle-marking-rank');
+      const markingRankLabel = document.getElementById('turtle-marking-rank-label');
       const markExtensionControl = document.getElementById('turtle-mark-extension-control');
       const markExtensionInput = document.getElementById('turtle-mark-extension');
       const latticeToggle = document.getElementById('turtle-lattice');
@@ -178,8 +182,9 @@
       const center = rawTurtle.reduce((sum, point) => ({ x: sum.x + point.x, y: sum.y + point.y }), { x: 0, y: 0 });
       center.x /= rawTurtle.length;
       center.y /= rawTurtle.length;
+      let markingRank = markingRankToggle?.checked ? 3 : 1;
       let markingExtension = normalizedMarkingExtension();
-      let orientations = buildOrientations(markingExtension);
+      let orientations = buildOrientations(markingExtension, markingRank);
       // This seed orientation keeps the marked frontier live, so Start tiling can show a second tile immediately.
       const seedOrientationIndex = 1;
       let tilingRunUsesMarking = markingRulesToggle?.checked || false;
@@ -202,13 +207,13 @@
       let liveSearchIterator = null;
       let playbackTickBusy = false;
       let liveSearchUsesMarking = tilingRunUsesMarking;
+      let liveSearchMarkingRank = markingRank;
       let autoplayTarget = 30;
       const pausedCoronas = new Set();
       let hasStartedTiling = false;
       let trialGhost = null;
       let statusText = '';
       let showMarkings = false;
-      let markingRank = 3;
       let windowDragging = false;
       let windowResizing = false;
       let windowDragLast = { x: 0, y: 0 };
@@ -441,7 +446,7 @@
         return Math.max(0, Math.min(9, Number.isFinite(parsed) ? parsed : 1));
       }
 
-      function buildOrientations(extensionSteps = markingExtension) {
+      function buildOrientations(extensionSteps = markingExtension, rank = markingRank) {
         return buildA2Symmetries().map((symmetry, orientationIndex) => {
           const occupancy = turtleOccupancy.map(entry => ({
             ...entry,
@@ -463,8 +468,8 @@
               toPoint: end,
               displayFromPoint: start.map((value, index) => value - step[index] * extensionSteps),
               displayToPoint: end.map((value, index) => value + step[index] * extensionSteps),
-              component: transformCotangentComponent(segment.component, symmetry),
-              value: segment.value * symmetry.planeSign
+              component: rank === 1 ? 0 : transformCotangentComponent(segment.component, symmetry),
+              value: rank === 1 ? 1 : segment.value * symmetry.planeSign
             };
           });
           const markEntriesByKey = new Map();
@@ -476,13 +481,13 @@
               setMarkEntry({ point, component: segment.component, value: segment.value });
             });
           });
-          // An occupied lattice site with no stripe value at all would otherwise
-          // read (*,*,*). Treat precisely those all-wildcard sites as (0,0,0);
-          // partially marked sites retain their unspecified components.
+          const markingComponents = rank === 1 ? [0] : [0, 1, 2];
+          // An occupied lattice site with no stripe value at all is zero in every
+          // channel of the selected marking model.
           occupancy.forEach(entry => {
-            const hasStripe = [0, 1, 2].some(component => markEntriesByKey.has(`${key3(entry.point)}|${component}`));
+            const hasStripe = markingComponents.some(component => markEntriesByKey.has(`${key3(entry.point)}|${component}`));
             if (hasStripe) return;
-            for (let component = 0; component < 3; component += 1) {
+            for (const component of markingComponents) {
               setMarkEntry({ point: entry.point, component, value: 0 });
             }
           });
@@ -492,11 +497,13 @@
             if (!valuesByPoint.has(pointKey)) valuesByPoint.set(pointKey, new Map());
             valuesByPoint.get(pointKey).set(entry.component, entry.value);
           });
-          valuesByPoint.forEach((values, pointKey) => {
-            if (Array.from(values.values()).filter(value => value !== 0).length !== 2) return;
-            const component = [0, 1, 2].find(index => !values.has(index));
-            if (component !== undefined) setMarkEntry({ point: pointKey.split(',').map(Number), component, value: 0 });
-          });
+          if (rank === 3) {
+            valuesByPoint.forEach((values, pointKey) => {
+              if (Array.from(values.values()).filter(value => value !== 0).length !== 2) return;
+              const component = [0, 1, 2].find(index => !values.has(index));
+              if (component !== undefined) setMarkEntry({ point: pointKey.split(',').map(Number), component, value: 0 });
+            });
+          }
           const markEntries = Array.from(markEntriesByKey.values());
           return {
             ...symmetry,
@@ -1575,11 +1582,17 @@
         if (markExtensionControl) markExtensionControl.hidden = !markingRulesToggle.checked;
       }
 
+      function updateMarkingRankToggle() {
+        if (markingRankToggle) markingRankToggle.checked = markingRank === 3;
+        if (markingRankLabel) markingRankLabel.textContent = `rank ${markingRank}`;
+      }
+
       function resetTilingForMarkingExtension() {
         stopTiling();
         liveSearchIterator?.cancel?.();
+        markingRank = markingRankToggle?.checked ? 3 : 1;
         markingExtension = normalizedMarkingExtension();
-        orientations = buildOrientations(markingExtension);
+        orientations = buildOrientations(markingExtension, markingRank);
         const seed = makeSeedPlacement();
         tilingRun = { placements: [seed], trace: [] };
         tilingOrder = tilingRun.placements;
@@ -1591,9 +1604,10 @@
         liveSearchIterator = null;
         pausedCoronas.clear();
         trialGhost = null;
-        statusText = `marking reach set to ${markingExtension} lattice step${markingExtension === 1 ? '' : 's'}`;
+        statusText = `rank-${markingRank} marking · reach ${markingExtension} lattice step${markingExtension === 1 ? '' : 's'}`;
         hasStartedTiling = false;
         startButton.textContent = 'Start tiling';
+        updateMarkingRankToggle();
         centerSeedView();
         draw();
       }
@@ -1615,9 +1629,10 @@
           markingRulesToggle.checked = false;
           tilingRunUsesMarking = false;
           markingRank = stage.markingRank;
+          updateMarkingRankToggle();
           if (markExtensionInput) markExtensionInput.value = '1';
           markingExtension = 1;
-          orientations = buildOrientations(markingExtension);
+          orientations = buildOrientations(markingExtension, markingRank);
           const seed = makeSeedPlacement();
           tilingRun = { placements: [seed], trace: [] };
           tilingOrder = tilingRun.placements;
@@ -1648,7 +1663,11 @@
           tilingRunUsesMarking = stage.useMarkingRules;
           updateMarkExtensionControl();
         }
-        if (typeof stage.markingRank === 'number') markingRank = stage.markingRank;
+        if (typeof stage.markingRank === 'number') {
+          markingRank = stage.markingRank;
+          updateMarkingRankToggle();
+          orientations = buildOrientations(markingExtension, markingRank);
+        }
         shownTiles = stage.tiles;
         playbackPlacements = null;
         traceIndex = 0;
@@ -1878,7 +1897,8 @@
           return;
         }
         const useMarking = markingRulesToggle?.checked || false;
-        const modeChanged = useMarking !== liveSearchUsesMarking;
+        const modeChanged = useMarking !== liveSearchUsesMarking
+          || (useMarking && markingRank !== liveSearchMarkingRank);
         if (reset || !hasStartedTiling || modeChanged || !liveSearchIterator) {
           liveSearchIterator?.cancel?.();
           shownTiles = 1;
@@ -1889,6 +1909,7 @@
           liveSearchIterator = createSharedLiveTilingSearch(useMarking);
           pausedCoronas.clear();
           liveSearchUsesMarking = useMarking;
+          liveSearchMarkingRank = markingRank;
           tilingRunUsesMarking = useMarking;
           centerSeedView();
           traceIndex = 0;
@@ -1897,7 +1918,9 @@
         autoplayTarget = shownTiles + 30;
         if (!playbackPlacements) playbackPlacements = tilingOrder.slice(0, Math.max(1, shownTiles));
         trialGhost = null;
-        statusText = markingRulesToggle?.checked ? 'branching with marking constraints' : 'branching without marking constraints';
+        statusText = markingRulesToggle?.checked
+          ? `branching with rank-${markingRank} marking constraints`
+          : 'branching without marking constraints';
         showMarkings = markingRulesToggle.checked ? true : showMarkings;
         updateMarkingButton();
         startButton.textContent = 'Pause tiling';
@@ -2005,10 +2028,19 @@
       markingRulesToggle.addEventListener('change', () => {
         showMarkings = markingRulesToggle.checked || showMarkings;
         if (stageLabel) stageLabel.textContent = markingRulesToggle.checked ? 'Stage: marking flag set' : 'Stage: marking flag cleared';
-        if (stageNote) stageNote.textContent = markingRulesToggle.checked ? 'The next Start tiling run will use the ±1 marking stripes as compatibility constraints.' : 'The next Start tiling run will use only the t-value tile constraints.';
+        if (stageNote) stageNote.textContent = markingRulesToggle.checked ? `The next Start tiling run will use the rank-${markingRank} marking as a compatibility constraint.` : 'The next Start tiling run will use only the t-value tile constraints.';
         updateMarkExtensionControl();
         updateMarkingButton();
         draw();
+      });
+      markingRankToggle?.addEventListener('change', () => {
+        markingRank = markingRankToggle.checked ? 3 : 1;
+        showMarkings = markingRulesToggle.checked || showMarkings;
+        resetTilingForMarkingExtension();
+        if (stageLabel) stageLabel.textContent = `Stage: rank-${markingRank} marking selected`;
+        if (stageNote) stageNote.textContent = markingRulesToggle.checked
+          ? `The restarted search will enforce the rank-${markingRank} marking.`
+          : `The next marked search will enforce the rank-${markingRank} marking.`;
       });
       markExtensionInput?.addEventListener('change', resetTilingForMarkingExtension);
       markExtensionInput?.addEventListener('input', () => {
@@ -2059,6 +2091,7 @@
         syncDemoStageToScroll();
       }, { passive: true });
       setDemoStage('intro');
+      updateMarkingRankToggle();
       updateMarkExtensionControl();
       resizeCanvas();
       syncDemoStageToScroll();
