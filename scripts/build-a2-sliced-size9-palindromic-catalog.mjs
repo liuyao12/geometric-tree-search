@@ -41,10 +41,10 @@ const periodicClusterSubstitutions = await readGzipNdjson(
   "data/a2-sliced-size9-palindromic-periodic-cluster-substitutions.ndjson.gz"
 );
 const tenCopySummary = await readJson(
-  "data/a2-sliced-size9-palindromic-periodic10-exact5m-summary.json"
+  "data/a2-sliced-size9-palindromic-periodic10-exact10m-summary.json"
 );
 const tenCopyReceipts = await readGzipNdjson(
-  "data/a2-sliced-size9-palindromic-periodic10-best-receipts.ndjson.gz"
+  "data/a2-sliced-size9-palindromic-periodic10-best10m-receipts.ndjson.gz"
 );
 const tenCopySolverProbe = tenCopySummary.solver_probe;
 if (!tenCopySolverProbe
@@ -159,6 +159,7 @@ const candidates = selectedIds.map((id, index) => {
   const threeCopy = threeCopySubstitutionById.get(id) ?? [];
   const fourCopy = fourCopySubstitutionById.get(id) ?? [];
   const tenCopy = tenCopySummaryById.get(id) ?? null;
+  const tenCopyComplete = tenCopy?.node_capped_orbits === 0;
   if (!record || !sixCopy || !corona) throw new Error(`Missing focused receipt for ${id}`);
   const periodicCertificate = record.periodic_z3.certificate ?? null;
   const clusterSubstitution = clusterSubstitutionById.get(id) ?? null;
@@ -229,7 +230,7 @@ const candidates = selectedIds.map((id, index) => {
     survivor_count: 97,
     description: isPeriodic
       ? "Nine-alcove non-polycube with a replayed eight-copy periodic quotient and induced scale-two cluster substitution."
-      : `Nine-alcove non-polycube from the completed palindromic-profile stratum on consecutive x+y+z=k sections. A longer ten-copy quotient pass exactly excludes ${tenCopy.exact_negative_orbits} of ${tenCopy.orbit_total} proper-A₂ orbit classes, covering ${tenCopy.hnfs_exactly_excluded} HNF bases; ${tenCopy.node_capped_orbits} classes remain explicitly inconclusive after selective two- and five-million-node searches. An alternate 120-second QF_FD probe on 18 residual classes yields no SAT or UNSAT result; 12 interrupted partial receipts are excluded.`,
+      : `Nine-alcove non-polycube from the completed palindromic-profile stratum on consecutive x+y+z=k sections. A heavy-first ten-copy quotient campaign exactly excludes ${tenCopy.exact_negative_orbits} of ${tenCopy.orbit_total} proper-A₂ orbit classes, covering ${tenCopy.hnfs_exactly_excluded} of ${tenCopy.hnf_total} HNF bases.${tenCopyComplete ? " The fixed ten-copy determinant-15 screen is complete with zero solver unknowns." : ` The remaining ${tenCopy.node_capped_orbits} classes are explicitly inconclusive after ten-million-node searches.`} An alternate 120-second QF_FD probe on 18 residual classes yields no SAT or UNSAT result; 12 interrupted partial receipts are excluded.`,
     screening: {
       status: isPeriodic ? "periodic" : "inconclusive",
       certificate: isPeriodic ? "translational" : null,
@@ -243,7 +244,7 @@ const candidates = selectedIds.map((id, index) => {
       recovered_reflection_classes_through_four: 114,
       recovered_six_copy_additional_periodic_classes: 17,
       recovered_reflection_classes_through_six: 97,
-      periodic_exact_through: 8,
+      periodic_exact_through: tenCopyComplete ? 10 : 8,
       periodic_six_copy_hnf_total: sixCopy.periodic_z3.hnf_total,
       periodic_six_copy_hnf_covered: sixCopy.periodic_z3.hnf_covered,
       periodic_six_copy_solver_unknowns: 0,
@@ -266,15 +267,16 @@ const candidates = selectedIds.map((id, index) => {
       periodic_ten_copy_milliseconds: tenCopy?.milliseconds ?? 0,
       periodic_ten_copy_exact_node_limits: tenCopy
         ? tenCopySummary.exact_node_limits_per_orbit : [],
+      periodic_ten_copy_complete: tenCopyComplete,
       periodic_ten_copy_qffd_timeout_ms: tenCopy ? tenCopySolverProbe.timeout_ms_per_orbit : 0,
       periodic_ten_copy_qffd_completed_shards: tenCopy ? tenCopySolverProbe.completed_shards : 0,
       periodic_ten_copy_qffd_solver_unknown_shards: tenCopy ? tenCopySolverProbe.solver_unknown_shards : 0,
       periodic_ten_copy_qffd_partial_receipts_excluded: tenCopy
         ? tenCopySolverProbe.partial_interrupted_receipts_excluded : 0,
       periodic_ten_copy_summary_report: tenCopy
-        ? "data/a2-sliced-size9-palindromic-periodic10-exact5m-summary.json" : null,
+        ? "data/a2-sliced-size9-palindromic-periodic10-exact10m-summary.json" : null,
       periodic_ten_copy_receipt_archive: tenCopy
-        ? "data/a2-sliced-size9-palindromic-periodic10-best-receipts.ndjson.gz" : null,
+        ? "data/a2-sliced-size9-palindromic-periodic10-best10m-receipts.ndjson.gz" : null,
       motif_tiles: periodicCertificate?.copies ?? null,
       period_vectors: periodicCertificate?.period_vectors ?? null,
       quotient_determinant: periodicCertificate?.determinant ?? null,

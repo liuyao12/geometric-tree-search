@@ -1682,8 +1682,7 @@ const palindromicUnresolved = A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES.filter(
 );
 assert.equal(palindromicUnresolved.length, 3);
 assert.ok(palindromicUnresolved.every(candidate =>
-  candidate.screening.periodic_exact_through === 8
-  && candidate.screening.periodic_six_copy_solver_unknowns === 0
+  candidate.screening.periodic_six_copy_solver_unknowns === 0
   && candidate.screening.periodic_eight_copy_complete === true
   && candidate.screening.periodic_eight_copy_orbits_visited === 104
   && candidate.screening.periodic_eight_copy_hnf_covered === 455
@@ -1705,7 +1704,7 @@ assert.ok(palindromicUnresolved.every(candidate =>
   && candidate.screening.periodic_ten_copy_exact_negative_orbits
     + candidate.screening.periodic_ten_copy_node_capped_orbits === 85
   && candidate.screening.periodic_ten_copy_hnf_total === 403
-  && candidate.screening.periodic_ten_copy_exact_node_limits.join(",") === "2000000,5000000"
+  && candidate.screening.periodic_ten_copy_exact_node_limits.join(",") === "2000000,5000000,10000000"
   && candidate.screening.periodic_ten_copy_qffd_timeout_ms === 120000
   && candidate.screening.periodic_ten_copy_qffd_completed_shards === 18
   && candidate.screening.periodic_ten_copy_qffd_solver_unknown_shards === 18
@@ -1714,11 +1713,13 @@ assert.ok(palindromicUnresolved.every(candidate =>
 ));
 assert.deepEqual(
   palindromicUnresolved.map(candidate => [
+    candidate.screening.periodic_exact_through,
     candidate.screening.periodic_ten_copy_exact_negative_orbits,
     candidate.screening.periodic_ten_copy_node_capped_orbits,
     candidate.screening.periodic_ten_copy_hnfs_exactly_excluded,
+    candidate.screening.periodic_ten_copy_complete,
   ]),
-  [[57, 28, 271], [62, 23, 274], [55, 30, 259]]
+  [[10, 85, 0, 403, true], [10, 85, 0, 403, true], [8, 70, 15, 316, false]]
 );
 const palindromicPeriodic = A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES.filter(
   candidate => candidate.screening.status === "periodic"

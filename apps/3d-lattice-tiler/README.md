@@ -278,10 +278,11 @@ both symmetry models. The proper/reflected parent counts are 1,034/19,638,
 replayed atomic obstruction. Clusters of five or more and non-scalar rules
 remain open.
 A determinant-15 ten-copy campaign then checks all 85 proper-A₂ quotient
-orbits for each displayed leader. A two-million-node first pass followed by a
-selective five-million-node retry finds no quotient and exactly excludes
-57/62/55 orbit classes for `04636`/`01085`/`04468`, covering 271/274/259 of
-the 403 HNF bases. The remaining 28/23/30 orbit classes are explicitly
+orbits for each displayed leader. Two- and five-million-node passes followed
+by a heavy-first ten-million-node retry find no quotient. The campaign exactly
+excludes 85/85/70 orbit classes for `04636`/`01085`/`04468`, covering
+403/403/316 of the 403 HNF bases. Thus the fixed ten-copy screen is complete
+for the first two leaders. The remaining 15 classes for `04468` are explicitly
 node-capped rather than reported negative.
 An alternate QF_FD solver probe gives all 18 sampled residual classes 120
 seconds each and obtains neither a periodic witness nor an UNSAT result. The
