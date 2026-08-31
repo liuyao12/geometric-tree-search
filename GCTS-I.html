@@ -92,14 +92,14 @@
         <p>for all \({\bf x}\), and we put this \(g\) in \(K_i\), and repeat the process. Thus we obtain a finite-branching tree to search over. A branch stops or dies if it runs out of choices (for any "boundary point" \({\bf p}\)). We are particularly interested in tiles that admit nontrivial tilings: neither too restricted that the branchings all have a unique choice, nor too loose that <em>any</em> branch appears to lead to valid tilings. Note that this algorithm could not tell whether a (partial) tiling is periodic, and by itself is unable to say if it actually extends to a tiling of the whole space.</p>
         <p>The live search maintains this choice structure as a bipartite graph: one class of vertices consists of the current frontier points, and the other consists of candidate tile placements, with an edge whenever a candidate can legally complete a frontier point. Placing or removing a tile changes only the nearby incidences, so the graph is updated locally and rolled back with the search branch. The algorithm can therefore branch at a frontier point of minimum degree without recomputing every point's candidate list from scratch.</p>
         <p>In practice, it may be more natural to "branch over" faces instead of boundary points; and we may adopt simple rules to choose the face or the point \({\bf p}\) for each branching, but no need to employ more sophisticated heuristics. This is essentially what is implemented <a href="./apps/3d-lattice-tiler/">here</a>.</p>
-        <h2 data-demo-stage="markings">Markings and matching rules</h2>
+        <h2>Markings and matching rules</h2>
         <p>When playing jigsaw puzzles, we would direct our attention to the colors and patterns on the pieces; two pieces fit not just by the geometry (shape of the boundary) but the patterns have to "match". Similarly in tiling, we would often, for the sake of forcing aperiodicity, introduce "markings" on the tiles, along with "matching rules" that the markings need to match in certain ways. Not the least, the Wang tiles work via color matching. Let's formalize all these in a definition, specialized for our discrete setting.</p>
-        <p>By a <strong>marking</strong> on a lattice tile \(t\), we shall mean a function</p>
+        <p data-demo-stage="marking">By a <strong>marking</strong> on a lattice tile \(t\), we shall mean a function</p>
         <div class="math-display">\[m : \mathbb{Z}^3 \to \mathbb{R}\]</div>
         <p>with support that <em>may be larger</em> than that of the tile. We say that \(t\) <strong>tiles</strong> space <strong>with marking \(m\)</strong> if, in addition to the above, we have for any \(g, h \in K\),</p>
         <div class="math-display">\[m(g^{-1} {\bf x}) = m(h^{-1} {\bf x})\]</div>
         <p>on the overlap of their supports. This way, all these transformed functions would <em>glue</em> to be a "global section" of this (trivial) sheaf.</p>
-        <p>It is natural to extend this definition to a vector bundle:</p>
+        <p data-demo-stage="markings">It is natural to extend this definition to a vector bundle:</p>
         <div class="math-display">\[m : \mathbb{Z}^3 \to \mathbb{R}^n\]</div>
         <p>and there is an action of \(G\) on \(\mathbb{R}^n\) (a representation), then the matching rule would be</p>
         <div class="math-display">\[g\cdot m(g^{-1} {\bf x}) = h \cdot m(h^{-1} {\bf x})\]</div>
@@ -208,6 +208,7 @@
       let trialGhost = null;
       let statusText = '';
       let showMarkings = false;
+      let markingRank = 3;
       let windowDragging = false;
       let windowResizing = false;
       let windowDragLast = { x: 0, y: 0 };
@@ -242,11 +243,20 @@
           useMarkingRules: false,
           autoplay: true
         },
+        marking: {
+          label: 'Stage: rank-1 marking',
+          note: 'The four gray segments illustrate the support of a single scalar marking on one turtle.',
+          tiles: 1,
+          markings: true,
+          markingRank: 1,
+          useMarkingRules: false
+        },
         markings: {
           label: 'Stage: three marking components',
           note: 'The displayed segments are the specified ±1 marking values between turtle vertices; reflected turtle orientations swap the two stripe colors.',
           tiles: 1,
           markings: true,
+          markingRank: 3,
           useMarkingRules: false
         },
         markedTiling: {
@@ -254,6 +264,7 @@
           note: 'The same live search now treats the markings as matching constraints while it tries, rejects, accepts, and backtracks.',
           tiles: 1,
           markings: true,
+          markingRank: 3,
           useMarkingRules: true,
           autoplay: true
         }
@@ -1374,7 +1385,9 @@
           const b = projectA2(segment.displayToPoint || segment.toPoint);
           const start = worldToScreen(a.x, a.y);
           const end = worldToScreen(b.x, b.y);
-          const color = segment.value > 0 ? markValueColors.positive : markValueColors.negative;
+          const color = markingRank === 1
+            ? '#707875'
+            : segment.value > 0 ? markValueColors.positive : markValueColors.negative;
           drawLine(start, end, color, Math.max(2.2, 4.1 * scale));
         });
         ctx.restore();
@@ -1466,8 +1479,12 @@
         const lines = [`t=${formatTValue(pointEntry.value)} at (${pointEntry.point.join(',')})`];
         if (showMarkings) {
           const mark = markStateAt(pointEntry.point);
-          lines.push(formatMarkVector(mark.vector));
-          if (mark.conflicts.length) lines.push(`conflict ${mark.conflicts.map(formatMarkConflict).join(', ')}`);
+          if (markingRank === 1) {
+            lines.push(`m=${mark.vector.some(value => value !== null && value !== 0) ? 1 : 0}`);
+          } else {
+            lines.push(formatMarkVector(mark.vector));
+            if (mark.conflicts.length) lines.push(`conflict ${mark.conflicts.map(formatMarkConflict).join(', ')}`);
+          }
         }
         return lines;
       }
@@ -1594,9 +1611,10 @@
           updateTextWrap();
           return;
         }
-        if (stageName === 'markings') {
+        if (stageName === 'marking' || stageName === 'markings') {
           markingRulesToggle.checked = false;
           tilingRunUsesMarking = false;
+          markingRank = stage.markingRank;
           if (markExtensionInput) markExtensionInput.value = '1';
           markingExtension = 1;
           orientations = buildOrientations(markingExtension);
@@ -1630,6 +1648,7 @@
           tilingRunUsesMarking = stage.useMarkingRules;
           updateMarkExtensionControl();
         }
+        if (typeof stage.markingRank === 'number') markingRank = stage.markingRank;
         shownTiles = stage.tiles;
         playbackPlacements = null;
         traceIndex = 0;
