@@ -22,6 +22,9 @@ const exactCorona = await readGzipNdjson(
 const directSubstitutions = await readGzipNdjson(
   "data/a2-sliced-size9-palindromic-direct-substitution-scale2to8.ndjson.gz"
 );
+const twoCopySubstitutions = await readGzipNdjson(
+  "data/a2-sliced-size9-palindromic-two-copy-substitution-scale2to3.ndjson.gz"
+);
 const coronaOverrides = [
   ...(await readGzipNdjson("data/a2-sliced-size9-palindromic-corona-z3-04636.ndjson.gz")),
   ...(await readGzipNdjson("data/a2-sliced-size9-palindromic-corona-z3-04468.ndjson.gz"))
@@ -40,11 +43,18 @@ const directSubstitutionById = Map.groupBy
       groups.set(record.id, rows);
       return groups;
     }, new Map());
+const twoCopySubstitutionById = twoCopySubstitutions.reduce((groups, record) => {
+  const rows = groups.get(record.id) ?? [];
+  rows.push(record);
+  groups.set(record.id, rows);
+  return groups;
+}, new Map());
 const candidates = selectedIds.map((id, index) => {
   const record = periodicById.get(id);
   const sixCopy = exactSixById.get(id);
   const corona = coronaById.get(id);
   const direct = directSubstitutionById.get(id) ?? [];
+  const twoCopy = twoCopySubstitutionById.get(id) ?? [];
   if (!record || !sixCopy || !corona) throw new Error(`Missing focused receipt for ${id}`);
   if (record.classification !== "unresolved"
       || record.periodic_z3.stopped_by !== "candidate_time_limit") {
@@ -59,6 +69,11 @@ const candidates = selectedIds.map((id, index) => {
     || result.alcove_substitution.certified !== true
     || result.alcove_substitution.independent_replay?.verified !== true)) {
     throw new Error(`Missing replayed scale-2-through-8 substitution exclusions for ${id}`);
+  }
+  if (twoCopy.length !== 4 || twoCopy.some(result =>
+    !result.classification.startsWith("no_two_copy_metatile_scalar")
+    || result.two_copy_alcove_metatile_screen.certified !== true)) {
+    throw new Error(`Missing scale-2-and-3 two-copy substitution exclusions for ${id}`);
   }
   const geometry = makeA2SlicedAlcoveUnion(record.alcoves);
   return {
@@ -99,6 +114,12 @@ const candidates = selectedIds.map((id, index) => {
       direct_scalar_substitution_models: ["proper", "reflected"],
       direct_scalar_substitution_certified_negatives: direct.length,
       direct_scalar_substitution_report: "data/a2-sliced-size9-palindromic-direct-substitution-scale2to8.ndjson.gz",
+      two_copy_substitution_exact_scales: [2, 3],
+      two_copy_substitution_models: ["proper", "reflected"],
+      two_copy_substitution_certified_negatives: twoCopy.length,
+      two_copy_substitution_parents_exhausted: twoCopy.reduce((sum, result) =>
+        sum + result.two_copy_alcove_metatile_screen.parents_completed, 0),
+      two_copy_substitution_report: "data/a2-sliced-size9-palindromic-two-copy-substitution-scale2to3.ndjson.gz",
       corona_root_patch_copies: corona.corona_z3.replay.patch_copies,
       corona_solver: corona.corona_z3.smt2_sha256 ? "z3" : "exact_gcts",
       corona_report: corona.corona_z3.smt2_sha256

@@ -1684,6 +1684,9 @@ assert.ok(A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES.every(candidate =>
   && candidate.screening.direct_scalar_substitution_exact_scales.join(",") === "2,8"
   && candidate.screening.direct_scalar_substitution_models.join(",") === "proper,reflected"
   && candidate.screening.direct_scalar_substitution_certified_negatives === 14
+  && candidate.screening.two_copy_substitution_exact_scales.join(",") === "2,3"
+  && candidate.screening.two_copy_substitution_models.join(",") === "proper,reflected"
+  && candidate.screening.two_copy_substitution_certified_negatives === 4
   && candidate.screening.corona_root_patch_copies > 1
 ));
 assert.deepEqual(A2_SLICED_SIZE10_CANDIDATES.map(candidate => candidate.id), [
@@ -1697,6 +1700,9 @@ assert.ok(A2_SLICED_SIZE10_CANDIDATES.every(candidate =>
   && candidate.screening.direct_scalar_substitution_exact_scales.join(",") === "2,8"
   && candidate.screening.direct_scalar_substitution_models.join(",") === "proper,reflected"
   && candidate.screening.direct_scalar_substitution_certified_negatives === 14
+  && candidate.screening.two_copy_substitution_exact_scales.join(",") === "2,3"
+  && candidate.screening.two_copy_substitution_models.join(",") === "proper,reflected"
+  && candidate.screening.two_copy_substitution_certified_negatives === 4
   && candidate.screening.corona_root_patch_copies > 1
 ));
 assert.deepEqual(

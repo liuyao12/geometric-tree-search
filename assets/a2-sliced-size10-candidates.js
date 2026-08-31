@@ -183,6 +183,17 @@ export const A2_SLICED_SIZE10_CANDIDATES = Object.freeze([
       ],
       "direct_scalar_substitution_certified_negatives": 14,
       "direct_scalar_substitution_report": "data/a2-sliced-size10-direct-substitution-scale2to8.ndjson.gz",
+      "two_copy_substitution_exact_scales": [
+        2,
+        3
+      ],
+      "two_copy_substitution_models": [
+        "proper",
+        "reflected"
+      ],
+      "two_copy_substitution_certified_negatives": 4,
+      "two_copy_substitution_parents_exhausted": 188,
+      "two_copy_substitution_report": "data/a2-sliced-size10-two-copy-substitution-scale2to3.ndjson.gz",
       "corona_root_patch_copies": 29,
       "corona_search_nodes": 30,
       "corona_report": "data/a2-sliced-size10-focused-corona1-bounded.ndjson.gz",
@@ -598,6 +609,17 @@ export const A2_SLICED_SIZE10_CANDIDATES = Object.freeze([
       ],
       "direct_scalar_substitution_certified_negatives": 14,
       "direct_scalar_substitution_report": "data/a2-sliced-size10-direct-substitution-scale2to8.ndjson.gz",
+      "two_copy_substitution_exact_scales": [
+        2,
+        3
+      ],
+      "two_copy_substitution_models": [
+        "proper",
+        "reflected"
+      ],
+      "two_copy_substitution_certified_negatives": 4,
+      "two_copy_substitution_parents_exhausted": 190,
+      "two_copy_substitution_report": "data/a2-sliced-size10-two-copy-substitution-scale2to3.ndjson.gz",
       "corona_root_patch_copies": 26,
       "corona_search_nodes": 28,
       "corona_report": "data/a2-sliced-size10-focused-corona1-bounded.ndjson.gz",
@@ -989,6 +1011,17 @@ export const A2_SLICED_SIZE10_CANDIDATES = Object.freeze([
       ],
       "direct_scalar_substitution_certified_negatives": 14,
       "direct_scalar_substitution_report": "data/a2-sliced-size10-direct-substitution-scale2to8.ndjson.gz",
+      "two_copy_substitution_exact_scales": [
+        2,
+        3
+      ],
+      "two_copy_substitution_models": [
+        "proper",
+        "reflected"
+      ],
+      "two_copy_substitution_certified_negatives": 4,
+      "two_copy_substitution_parents_exhausted": 54,
+      "two_copy_substitution_report": "data/a2-sliced-size10-two-copy-substitution-scale2to3.ndjson.gz",
       "corona_root_patch_copies": 29,
       "corona_search_nodes": 143,
       "corona_report": "data/a2-sliced-size10-focused-corona1-bounded.ndjson.gz",

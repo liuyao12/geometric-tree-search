@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import gzip
 import hashlib
 import importlib.util
 import json
@@ -21,6 +22,12 @@ def load(name: str, filename: str):
 
 
 SUB = load("a2_sliced_substitution", "screen-a2-sliced-alcove-substitution.py")
+
+
+def read_ndjson(path):
+    opener = gzip.open if path.suffix == ".gz" else open
+    with opener(path, "rt", encoding="utf-8") as stream:
+        return [json.loads(line) for line in stream if line.strip()]
 
 
 def translated_cells(cells, delta):
@@ -371,11 +378,14 @@ def main():
     parser.add_argument("--timeout-ms", type=int, default=30000)
     parser.add_argument("--include-reflections", action="store_true")
     parser.add_argument("--max-parents", type=int, default=0)
+    parser.add_argument("--only-unresolved", action="store_true")
     parser.add_argument("--offset", type=int, default=0)
     parser.add_argument("--limit", type=int, default=0)
     args = parser.parse_args()
-    records = [json.loads(line) for line in Path(args.input).read_text().splitlines()
-               if line.strip()]
+    records = read_ndjson(Path(args.input))
+    if args.only_unresolved:
+        records = [record for record in records
+                   if record.get("classification") == "unresolved"]
     records = records[max(0, args.offset):]
     if args.limit > 0:
         records = records[:args.limit]

@@ -258,6 +258,10 @@ The eight recovered classes selected for deeper screening also have 112
 independently replayed atomic obstructions excluding direct scalar monotile
 substitution at every integer scale from 2 through 8 in both the proper and
 reflected models. Connected metatile alphabets remain open.
+Complete connected two-copy metatile screens at scalar scales 2 and 3 then
+exclude all 32 candidate/scale/model cases for those eight recovered classes,
+with every parent ending in a replayed local obstruction or exact UNSAT result.
+Connected alphabets with three or more copies remain open.
 The original stratum's exact two-, four-, and six-copy quotient screens reduce
 it to 356 reflection-class candidates.
 The next census level is also complete and removes the profile heuristic
@@ -274,6 +278,9 @@ atomic-obstruction screens exclude direct scalar monotile substitutions at
 every integer scale from 2 through 8, with proper copies and with reflected
 copies. This is 182 certified candidate/scale/model negatives; connected
 metatile alphabets and non-scalar or non-cellular substitutions remain open.
+The complete connected two-copy family is also excluded at scalar scales 2
+and 3 in both symmetry models for all 13 survivors: 52 certified
+candidate/scale/model negatives. Three-copy and larger alphabets remain open.
 Among the first eight priority classes, a complete determinant-12 eight-copy
 screen finds five replay-verified periodic quotients and exhausts all 455 HNF
 quotients for the remaining three, with no solver unknowns. Those three are

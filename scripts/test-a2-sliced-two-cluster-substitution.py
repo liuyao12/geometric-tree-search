@@ -4,7 +4,9 @@
 from __future__ import annotations
 
 import importlib.util
+import gzip
 import json
+import tempfile
 from pathlib import Path
 
 
@@ -15,6 +17,12 @@ SPEC = importlib.util.spec_from_file_location(
 )
 TWO = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(TWO)
+
+with tempfile.TemporaryDirectory() as directory:
+    compressed = Path(directory) / "probe.ndjson.gz"
+    with gzip.open(compressed, "wt", encoding="utf-8") as stream:
+        stream.write(json.dumps({"id": "gzip-probe"}) + "\n")
+    assert TWO.read_ndjson(compressed) == [{"id": "gzip-probe"}]
 
 
 control = {"id": "alcove_control", "alcoves": [
