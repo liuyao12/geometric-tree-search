@@ -1,5 +1,33 @@
 # Recursive GCTS benchmark for material growth
 
+### Shared-state coherence across coupled physics (Build 360)
+
+Coupled execution now has an explicit cross-response state contract. Spatial
+interface transport `J(x,n̂)`, active orientation attachment kinetics `v(n̂)`,
+and candidate-level HTST evidence each expose a 64-hex driving-state digest.
+Every active channel must be validated, current for the geometry it describes,
+and equal on that digest; separately supplied temperatures must agree within a
+fixed numerical tolerance.
+
+When a current state is available, the frozen action-barrier request records its
+digest, optional Kelvin temperature, and the evidence channels that established
+it. A kinetic response must reproduce the expected digest. If a temperature was
+frozen, both kinetic and optional grand-canonical thermodynamic evidence must
+match it. Response-bound temperature becomes the immutable temperature used by
+the subsequent HTST/KMC competition.
+
+The leap-frog execution gate is now ordered as follows: current target-free
+geometry → current interface transport → frozen frontier → validated complete
+barrier/prefactor response → explicit maximum-rate or seeded-KMC event selection
+→ shared-state coherence → exact structural commit. A mismatch releases no
+action and the UI identifies the offending channel or temperature.
+
+This contract prevents accidental mixing of simulations performed under
+different reservoirs, temperatures, or boundary conditions. It does not prove
+that the shared state is physically complete or accurate, infer a missing state
+from geometry or labels, establish equilibrium/detailed balance, or complete an
+enumerated mechanism catalog.
+
 ### Catalog-conditional kinetic leap chronicle (Build 359)
 
 Seeded HTST/KMC evidence is now accumulated as a persistent chronology rather

@@ -7,7 +7,7 @@
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23071112'/%3E%3Cpath d='M17 19 46 12M17 19l8 30m21-37L25 49m-8-30 29 24M25 49l21-6' stroke='%236fffd4' stroke-width='4'/%3E%3Ccircle cx='17' cy='19' r='6' fill='%23f1fff9'/%3E%3Ccircle cx='46' cy='12' r='6' fill='%236fffd4'/%3E%3Ccircle cx='25' cy='49' r='6' fill='%238a7dff'/%3E%3Ccircle cx='46' cy='43' r='6' fill='%236fffd4'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css?v=20260831-359">
+  <link rel="stylesheet" href="./style.css?v=20260831-360">
   <script type="importmap">
     {
       "imports": {
@@ -2156,6 +2156,12 @@
           </div>
           <div id="multiphysicsCycleFlow" class="multiphysics-cycle-flow" role="list" aria-label="Current multiphysics coupling stages"></div>
           <div class="multiphysics-cycle-legend"><span class="ready">current</span><span class="available">available</span><span class="missing">missing</span><span class="stale">stale</span><span class="blocked">blocked</span></div>
+          <section class="coupled-state-ledger" aria-label="Shared external physics state coherence">
+            <header><span><small>temperature · reservoirs · boundary conditions</small><strong>Shared-state coherence</strong></span><b id="coupledStateBadge">diagnostic · no combined state</b></header>
+            <div id="coupledStateChannels" class="coupled-state-channels"></div>
+            <p id="coupledStateState">Structural mode does not combine absent physical responses.</p>
+            <p id="coupledStateBoundary">Geometry and matching labels never manufacture a thermodynamic state identity.</p>
+          </section>
           <section class="kinetic-chronology" aria-label="Catalog-conditional kinetic leap chronology">
             <header><span><small>validated event catalog → waiting time</small><strong>Kinetic leap chronicle</strong></span><b id="kineticChronologyBadge">conditional clock unavailable</b></header>
             <div id="kineticChronologyPlot" class="kinetic-chronology-plot" role="group" aria-label="Select a retained clocked structural leap"></div>
@@ -2414,7 +2420,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260831-359"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260831-359"></script>
+  <script type="module" src="./app.js?v=20260831-360"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260831-360"></script>
 </body>
 </html>

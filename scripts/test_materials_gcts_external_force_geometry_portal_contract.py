@@ -54,9 +54,9 @@ def test_force_geometry_contract_preserves_the_scientific_boundary():
 
 def test_build_340_is_documented_and_cache_busted():
     for document in (HTML, ALIAS_HTML):
-        assert 'app.js?v=20260831-359' in document
-        assert 'style.css?v=20260831-359' in document
-        assert 'evidence-atlas.js?v=20260831-359' in document
+        assert 'app.js?v=20260831-360' in document
+        assert 'style.css?v=20260831-360' in document
+        assert 'evidence-atlas.js?v=20260831-360' in document
     assert "Build 340 · encode validated force vectors as geometry" in README
     assert "Validated force-to-geometry deployment (Build 340)" in BENCHMARK
     assert "not an automatic force-field deployment" in README

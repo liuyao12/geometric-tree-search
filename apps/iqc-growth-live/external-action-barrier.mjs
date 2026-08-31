@@ -8,6 +8,12 @@ function requiredText(value, label) {
   return value.trim();
 }
 
+function requiredSha(value, label) {
+  const normalized = requiredText(value, label).toLowerCase();
+  if (!/^[a-f0-9]{64}$/.test(normalized)) throw new TypeError(`${label} must contain 64 hexadecimal characters`);
+  return normalized;
+}
+
 function finiteVector(value, label) {
   if (!Array.isArray(value) || value.length !== 3 || !value.every(finite)) {
     throw new TypeError(`${label} must be a finite Cartesian three-vector`);
@@ -177,6 +183,19 @@ export async function buildFrozenActionBarrierRequest(input) {
     throw new Error("a frozen action-barrier request needs at least one hard-admitted candidate");
   }
   const initialConfiguration = normalizeConfiguration(input.initialConfiguration);
+  const couplingStateExpectation = input.couplingStateExpectation == null ? null : {
+    couplingStateSha256: requiredSha(input.couplingStateExpectation.couplingStateSha256,
+      "expected coupling-state SHA-256"),
+    temperatureKelvin: input.couplingStateExpectation.temperatureKelvin == null ? null
+      : Number(input.couplingStateExpectation.temperatureKelvin),
+    sourceEvidence: Array.isArray(input.couplingStateExpectation.sourceEvidence)
+      ? [...new Set(input.couplingStateExpectation.sourceEvidence.map(String))].sort() : [],
+  };
+  if (couplingStateExpectation?.temperatureKelvin != null
+      && (!Number.isFinite(couplingStateExpectation.temperatureKelvin)
+        || couplingStateExpectation.temperatureKelvin <= 0)) {
+    throw new TypeError("expected coupling-state temperature must be positive Kelvin");
+  }
   const normalizedCandidates = input.candidates.map(normalizeCandidate);
   const candidates = (await Promise.all(normalizedCandidates.map((candidate) =>
     bindCandidateStateGeometry(candidate, initialConfiguration))))
@@ -202,6 +221,7 @@ export async function buildFrozenActionBarrierRequest(input) {
       elements: [...new Set((input.elements || []).map(String))].sort(),
       sourceProvenance: input.sourceProvenance || null,
     },
+    couplingStateExpectation,
     frontier: {
       candidateBatchSha256,
       candidateCount: candidates.length,
@@ -236,6 +256,10 @@ export async function buildFrozenActionBarrierRequest(input) {
       optionalKineticResponseContract: {
         rootKinetics: { model: "harmonic-transition-state-theory", prefactorMethod: "method name",
           prefactorSettingsSha256: "64 hexadecimal characters",
+          couplingStateSha256: couplingStateExpectation?.couplingStateSha256
+            || "optional shared external-physics state digest",
+          temperatureKelvin: couplingStateExpectation?.temperatureKelvin
+            || "positive Kelvin when a shared state declares temperature",
           recrossingCorrection: "included | not-included",
           catalogScope: "requested-hard-admitted-actions-only" },
         validationFlags: ["prefactorsReported", "everyPrefactorConverged",
@@ -270,6 +294,7 @@ export async function frozenActionBarrierRequestReceipt(request) {
     candidateBatchSha256: request.frontier.candidateBatchSha256,
     initialStructureSha256: request.frontier.initialConfiguration.structureSha256,
     candidateCount: request.frontier.candidates.length,
+    couplingStateExpectation: request.couplingStateExpectation || null,
   };
 }
 
@@ -327,6 +352,10 @@ export function validateFrozenActionBarrierResponse(response, expected) {
     recrossingCorrection: requiredText(response.kinetics.recrossingCorrection,
       "recrossing correction declaration"),
     catalogScope: requiredText(response.kinetics.catalogScope, "kinetic catalog scope"),
+    couplingStateSha256: response.kinetics.couplingStateSha256 == null ? null
+      : requiredSha(response.kinetics.couplingStateSha256, "kinetic coupling-state SHA-256"),
+    temperatureKelvin: response.kinetics.temperatureKelvin == null ? null
+      : Number(response.kinetics.temperatureKelvin),
   };
   if (kinetics) {
     if (kinetics.model !== "harmonic-transition-state-theory") {
@@ -344,6 +373,19 @@ export function validateFrozenActionBarrierResponse(response, expected) {
     if (!(validation.prefactorsReported === true && validation.everyPrefactorConverged === true
         && validation.prefactorUncertaintyReported === true)) {
       throw new Error("kinetic prefactors have not passed every frozen validation gate");
+    }
+    const expectedState = expected.couplingStateExpectation;
+    if (expectedState && kinetics.couplingStateSha256 !== expectedState.couplingStateSha256) {
+      throw new Error("kinetic response does not match the requested shared coupling state");
+    }
+    if (kinetics.temperatureKelvin != null
+        && (!Number.isFinite(kinetics.temperatureKelvin) || kinetics.temperatureKelvin <= 0)) {
+      throw new Error("kinetic response temperature must be positive Kelvin");
+    }
+    if (expectedState?.temperatureKelvin != null
+        && (kinetics.temperatureKelvin == null || Math.abs(kinetics.temperatureKelvin
+          - expectedState.temperatureKelvin) > Math.max(1e-9, expectedState.temperatureKelvin * 1e-9))) {
+      throw new Error("kinetic response temperature does not match the requested shared state");
     }
   }
   const thermodynamics = response.thermodynamics == null ? null : (() => {
@@ -402,6 +444,11 @@ export function validateFrozenActionBarrierResponse(response, expected) {
         && validation.everyStateFreeEnergyConverged === true
         && validation.chemicalPotentialUncertaintyReported === true)) {
       throw new Error("thermodynamic evidence has not passed every frozen validation gate");
+    }
+    if (expected.couplingStateExpectation?.temperatureKelvin != null
+        && Math.abs(normalized.temperatureKelvin - expected.couplingStateExpectation.temperatureKelvin)
+          > Math.max(1e-9, normalized.temperatureKelvin * 1e-9)) {
+      throw new Error("thermodynamic temperature does not match the requested shared state");
     }
     return normalized;
   })();
@@ -552,6 +599,7 @@ export function validateFrozenActionBarrierResponse(response, expected) {
     method: methodSummary,
     kinetics,
     thermodynamics,
+    couplingStateExpectation: expected.couplingStateExpectation || null,
     kineticsEligible: Boolean(kinetics),
     grandCanonicalEvidenceEligible: Boolean(thermodynamics),
     validationPassed: true,

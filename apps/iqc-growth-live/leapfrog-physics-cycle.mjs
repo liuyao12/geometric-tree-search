@@ -44,13 +44,18 @@ export function buildLeapfrogPhysicsCycle(input) {
   const frontierAvailable = stageReady && frontier.available === true;
   const checkpoint = input.eventCheckpoint || {};
   const checkpointCurrent = checkpoint.present === true && checkpoint.generationCurrent === true;
-  const eventReady = checkpointCurrent && checkpoint.validated === true;
+  const responseReady = checkpointCurrent && checkpoint.validated === true;
+  const eventReady = responseReady && (!contract.requireEventPhysics || checkpoint.eventSelected === true);
+  const stateCoherence = input.stateCoherence || {};
+  const stateCoherent = stateCoherence.compatible === true;
   const prerequisitesForFrontier = stageReady && (!contract.requireInterfaceTransport || transportCurrent);
   let nextAction;
   if (!stageReady) nextAction = "enter-target-free-growth";
   else if (contract.requireInterfaceTransport && !transportCurrent) nextAction = "recalculate-interface-transport";
   else if (contract.requireEventPhysics && !checkpointCurrent) nextAction = "freeze-action-frontier";
-  else if (checkpointCurrent && !eventReady) nextAction = "calculate-action-physics";
+  else if (checkpointCurrent && !responseReady) nextAction = "calculate-action-physics";
+  else if (contract.requireEventPhysics && !eventReady) nextAction = "select-kinetic-event";
+  else if ((mode === "interface" || eventReady) && !stateCoherent) nextAction = "resolve-coupling-state";
   else if (!frontierAvailable && !checkpointCurrent) nextAction = "await-geometric-frontier";
   else nextAction = "commit-structural-leap";
   const commitReady = nextAction === "commit-structural-leap";
@@ -72,9 +77,11 @@ export function buildLeapfrogPhysicsCycle(input) {
           : "waiting for a target-free geometric frontier", contract.requireEventPhysics,
       checkpoint.candidateBatchDigest || null),
     node("event", "Candidate-resolved event physics",
-      eventReady ? "ready" : checkpointCurrent ? "missing" : contract.requireEventPhysics ? "waiting" : "optional",
+      eventReady && stateCoherent ? "ready" : eventReady ? "stale"
+        : checkpointCurrent ? "missing" : contract.requireEventPhysics ? "waiting" : "optional",
       eventReady ? `response ${checkpoint.responseDigest || "validated"} matches the frozen action batch`
-        : checkpointCurrent ? "barriers/prefactors are not yet validated for this batch"
+        : responseReady ? "validated rates are available; select maximum-rate HTST or seeded KMC"
+          : checkpointCurrent ? "barriers/prefactors are not yet validated for this batch"
           : "no action-level calculation checkpoint is active", contract.requireEventPhysics,
       checkpoint.responseDigest || null),
     node("leap", "Exact GCTS leap", commitReady ? "ready" : "blocked",
@@ -86,7 +93,9 @@ export function buildLeapfrogPhysicsCycle(input) {
     nextGeometryRevision: (Number(input.geometryRevision) || 0) + 1,
   };
   const receiptCore = { schema: 1, mode, geometryStateDigest: geometryDigest, stageReady,
-    materialEvidenceCount, transportCurrent, frontierAvailable, checkpointCurrent, eventReady,
+    materialEvidenceCount, transportCurrent, frontierAvailable, checkpointCurrent, responseReady, eventReady,
+    stateCoherent, stateCoherenceFingerprint: stateCoherence.stateFingerprint || null,
+    stateCoherenceMismatches: [...(stateCoherence.mismatches || [])],
     commitReady, nextAction, nodes, invalidationAfterCommit,
     targetUsed: false, dynamicsLeapfrogged: true, physicalTimeIntegrated: false };
   return { ...receiptCore, cycleFingerprint: leapfrogCycleFingerprint(receiptCore),

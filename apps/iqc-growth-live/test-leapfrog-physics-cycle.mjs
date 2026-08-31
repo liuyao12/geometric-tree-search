@@ -5,7 +5,8 @@ import { buildLeapfrogPhysicsCycle, couplingModeGate, leapfrogCycleFingerprint }
 const base = { pipelineStage: 4, targetFree: true, geometryStateDigest: "state-a",
   geometryRevision: 7, atomCount: 512, materialEvidenceCount: 2,
   interfaceTransport: { validated: false }, frontier: { available: true, candidateCount: 18 },
-  eventCheckpoint: { present: false } };
+  eventCheckpoint: { present: false }, stateCoherence: { compatible: true, mismatches: [],
+    stateFingerprint: "coherent" } };
 const structural = buildLeapfrogPhysicsCycle({ ...base, mode: "structural" });
 assert.equal(structural.commitReady, true);
 assert.equal(structural.nextAction, "commit-structural-leap");
@@ -30,10 +31,20 @@ const needPhysics = buildLeapfrogPhysicsCycle({ ...base, mode: "event", interfac
   eventCheckpoint: { present: true, generationCurrent: true, validated: false,
     candidateCount: 18, candidateBatchDigest: "batch" } });
 assert.equal(needPhysics.nextAction, "calculate-action-physics");
+const needSelection = buildLeapfrogPhysicsCycle({ ...base, mode: "event", interfaceTransport: currentFlux,
+  eventCheckpoint: { present: true, generationCurrent: true, validated: true, eventSelected: false,
+    candidateCount: 18, candidateBatchDigest: "batch", responseDigest: "response" } });
+assert.equal(needSelection.nextAction, "select-kinetic-event");
 const eventReady = buildLeapfrogPhysicsCycle({ ...base, mode: "event", interfaceTransport: currentFlux,
-  eventCheckpoint: { present: true, generationCurrent: true, validated: true,
+  eventCheckpoint: { present: true, generationCurrent: true, validated: true, eventSelected: true,
     candidateCount: 18, candidateBatchDigest: "batch", responseDigest: "response" } });
 assert.equal(eventReady.commitReady, true);
+const incompatible = buildLeapfrogPhysicsCycle({ ...base, mode: "event", interfaceTransport: currentFlux,
+  stateCoherence: { compatible: false, mismatches: ["temperature-mismatch"], stateFingerprint: "bad" },
+  eventCheckpoint: { present: true, generationCurrent: true, validated: true, eventSelected: true,
+    candidateCount: 18, candidateBatchDigest: "batch", responseDigest: "response" } });
+assert.equal(incompatible.nextAction, "resolve-coupling-state");
+assert.equal(incompatible.commitReady, false);
 assert.deepEqual(eventReady.invalidationAfterCommit.invalidated,
   ["current-interface transport map", "frozen candidate batch", "candidate-resolved barriers and prefactors"]);
 assert.equal(eventReady.targetUsed, false);

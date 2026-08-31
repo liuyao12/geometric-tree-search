@@ -1,5 +1,34 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 360 · shared-state coherence across coupled physics
+
+The event-resolved pipeline now fails closed unless spatial transport,
+orientation attachment kinetics when active, and candidate-level HTST evidence
+identify the same explicit driving-state digest. A compact interactive ledger
+shows which channels are required, active, current, state-bearing, and
+temperature-bearing before an exact structural leap can commit.
+
+Frozen action-barrier requests now carry the currently established coupling
+state and, when available, its temperature. A kinetic response must echo that
+state identity and the response-bound temperature; a mismatch is rejected
+during local validation. The selected HTST/KMC calculation temperature is then
+locked to the validated response rather than remaining an unrelated UI value.
+Older standalone barrier calculations remain valid when no coupled-state
+expectation was frozen.
+
+The selectable coupling contracts are stricter as a result. Interface-coupled
+mode requires a current `J(x,n̂)` response with an explicit state digest.
+Event-resolved mode additionally requires a complete barrier/prefactor response
+at that same state and an explicit maximum-rate HTST or seeded-KMC event
+selection. Stale geometry, missing state identity, unequal digests, unequal
+temperatures, or an unselected event blocks commit and routes the user to the
+required repair.
+
+State identity is provenance, not a physical closure theorem. Matching digests
+and temperatures do not prove mechanism completeness, equilibrium, detailed
+balance, or accuracy, and geometry or material labels never manufacture a
+missing thermodynamic state.
+
 ## Build 359 · catalog-conditional kinetic leap chronicle
 
 The transient HTST/KMC checkpoint now feeds a persistent kinetic chronology

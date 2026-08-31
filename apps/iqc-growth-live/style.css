@@ -2435,6 +2435,24 @@ body.study-guide-open { overflow: hidden; }
 .multiphysics-cycle-legend span { color:#75898d; font:5px var(--mono); text-transform:uppercase; }
 .multiphysics-cycle-legend span::before { content:""; display:inline-block; width:5px; height:5px; margin-right:4px; border-radius:50%; background:#75898d; }
 .multiphysics-cycle-legend .ready::before { background:#65e1bc; }.multiphysics-cycle-legend .available::before { background:#7ee1e8; }.multiphysics-cycle-legend .missing::before,.multiphysics-cycle-legend .stale::before,.multiphysics-cycle-legend .blocked::before { background:#ff8d90; }
+.coupled-state-ledger { margin-top:8px; padding:9px; border:1px solid rgba(101,225,188,.15); background:linear-gradient(110deg,rgba(101,225,188,.035),rgba(85,200,255,.025)); }
+.coupled-state-ledger > header { display:flex; align-items:end; justify-content:space-between; gap:8px; }
+.coupled-state-ledger > header small,.coupled-state-ledger > header strong { display:block; }
+.coupled-state-ledger > header small { color:#648e88; font:4px var(--mono); text-transform:uppercase; }
+.coupled-state-ledger > header strong { margin-top:3px; color:#c7dcda; font:8px var(--mono); font-weight:400; }
+.coupled-state-ledger > header b { color:#65e1bc; font:5px var(--mono); font-weight:400; text-align:right; text-transform:uppercase; }
+.coupled-state-channels { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:3px; margin-top:7px; }
+.coupled-state-channels article { min-width:0; padding:6px; border:1px solid rgba(101,225,188,.08); background:rgba(5,12,16,.58); }
+.coupled-state-channels small,.coupled-state-channels strong,.coupled-state-channels b,.coupled-state-channels p { display:block; overflow:hidden; text-overflow:ellipsis; }
+.coupled-state-channels small { color:#5b7472; font:4px var(--mono); text-transform:uppercase; }
+.coupled-state-channels strong { min-height:17px; margin-top:3px; color:#9eb3b2; font:5px/1.35 var(--mono); font-weight:400; }
+.coupled-state-channels b { margin-top:4px; color:#708583; font:5px var(--mono); font-weight:400; }
+.coupled-state-channels p { margin:3px 0 0; color:#647674; font:4px var(--mono); }
+.coupled-state-channels article.ready { border-color:rgba(101,225,188,.36); }.coupled-state-channels article.ready b { color:#65e1bc; }
+.coupled-state-channels article.missing { border-color:rgba(255,141,144,.3); }.coupled-state-channels article.missing b { color:#ff8d90; }
+.coupled-state-channels article.inactive { opacity:.48; border-style:dashed; }
+.coupled-state-ledger > p { margin:6px 0 0; color:#718784; font:5px/1.45 var(--mono); }
+.coupled-state-ledger > p:last-child { padding-top:6px; border-top:1px solid rgba(101,225,188,.08); color:#667774; }
 .kinetic-chronology { margin-top:10px; padding:9px; border:1px solid rgba(255,175,105,.16); background:linear-gradient(100deg,rgba(255,175,105,.035),rgba(181,148,255,.025)); }
 .kinetic-chronology > header { display:flex; align-items:end; justify-content:space-between; gap:8px; }
 .kinetic-chronology > header small,.kinetic-chronology > header strong { display:block; }
@@ -2459,4 +2477,4 @@ body.study-guide-open { overflow: hidden; }
 .multiphysics-cycle-card > p { margin:7px 0 0; color:#819599; font:6px/1.5 var(--mono); }
 .multiphysics-cycle-card > p:last-child { padding:7px 8px; border-left:2px solid #b594ff; background:rgba(181,148,255,.035); color:#7e7693; }
 @media (max-width:1000px) { .multiphysics-cycle-flow { grid-template-columns:repeat(3,minmax(0,1fr)); }.multiphysics-cycle-flow article:nth-child(3)::after { display:none; } }
-@media (max-width:650px) { .multiphysics-cycle-card > header,.multiphysics-cycle-controls { grid-template-columns:1fr; }.multiphysics-cycle-flow { grid-template-columns:repeat(2,minmax(0,1fr)); }.multiphysics-cycle-flow article:nth-child(2n)::after { display:none; }.kinetic-chronology-metrics { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width:650px) { .multiphysics-cycle-card > header,.multiphysics-cycle-controls { grid-template-columns:1fr; }.multiphysics-cycle-flow { grid-template-columns:repeat(2,minmax(0,1fr)); }.multiphysics-cycle-flow article:nth-child(2n)::after { display:none; }.coupled-state-channels { grid-template-columns:1fr; }.kinetic-chronology-metrics { grid-template-columns:repeat(2,minmax(0,1fr)); } }

@@ -96,6 +96,31 @@ assert.ok(validatedKinetics.records.some((record) =>
 assert.ok(kineticCompetition.waitingTimeSeconds > 0);
 assert.equal(kineticCompetition.targetUsed, false);
 
+const coupledRequest = await buildFrozenActionBarrierRequest({
+  generatedAt: "2026-08-30T00:00:00Z", buildId: "test", scenarioId: "nacl", materialName: "NaCl",
+  elements: ["Cl", "Na"], candidates, targetUsed: false, candidateSetTargetUsed: false,
+  couplingStateExpectation: { couplingStateSha256: "9".repeat(64), temperatureKelvin: 600,
+    sourceEvidence: ["interface-flux", "attachment-kinetics"] },
+  initialConfiguration: request.frontier.initialConfiguration,
+});
+const coupledReceipt = await frozenActionBarrierRequestReceipt(coupledRequest);
+assert.equal(coupledReceipt.couplingStateExpectation.temperatureKelvin, 600);
+const coupledResponse = { ...kineticResponse,
+  requestSha256: coupledReceipt.requestSha256,
+  candidateBatchSha256: coupledReceipt.candidateBatchSha256,
+  initialStructureSha256: coupledReceipt.initialStructureSha256,
+  kinetics: { ...kineticResponse.kinetics, couplingStateSha256: "9".repeat(64),
+    temperatureKelvin: 600 } };
+const coupledAudit = validateFrozenActionBarrierResponse(coupledResponse, { ...coupledReceipt,
+  candidates: coupledRequest.frontier.candidates });
+assert.equal(coupledAudit.kinetics.couplingStateSha256, "9".repeat(64));
+assert.throws(() => validateFrozenActionBarrierResponse({ ...coupledResponse,
+  kinetics: { ...coupledResponse.kinetics, couplingStateSha256: "8".repeat(64) } },
+{ ...coupledReceipt, candidates: coupledRequest.frontier.candidates }), /shared coupling state/);
+assert.throws(() => validateFrozenActionBarrierResponse({ ...coupledResponse,
+  kinetics: { ...coupledResponse.kinetics, temperatureKelvin: 601 } },
+{ ...coupledReceipt, candidates: coupledRequest.frontier.candidates }), /temperature does not match/);
+
 const thermodynamicResponse = {
   ...kineticResponse,
   safeguards: { ...kineticResponse.safeguards,

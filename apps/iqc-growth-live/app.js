@@ -108,17 +108,19 @@ import { evaluateWulffShapeRegularizer, matchedWulffRankingAudit }
   from "./wulff-shape-regularizer.mjs?v=20260831-354";
 import { buildAttachmentKineticsRequest, buildNormalizedKineticWulffGeometry,
   validateAttachmentKineticsResponse, evaluateKineticHabitScore, matchedKineticHabitRankingAudit }
-  from "./external-attachment-kinetics.mjs?v=20260831-359";
+  from "./external-attachment-kinetics.mjs?v=20260831-360";
 import { buildInterfaceFluxRequest, validateInterfaceFluxResponse, evaluateInterfaceFluxScore,
   matchedInterfaceFluxRankingAudit }
-  from "./external-interface-flux.mjs?v=20260831-359";
+  from "./external-interface-flux.mjs?v=20260831-360";
 import { periodicSiteNumberDensity, coupleInterfaceSupplyAndAttachment,
   syntheticGrowthRegimePreview }
-  from "./growth-regime-bridge.mjs?v=20260831-359";
+  from "./growth-regime-bridge.mjs?v=20260831-360";
 import { buildLeapfrogPhysicsCycle, couplingModeGate, LEAPFROG_COUPLING_MODES }
-  from "./leapfrog-physics-cycle.mjs?v=20260831-359";
+  from "./leapfrog-physics-cycle.mjs?v=20260831-360";
 import { buildCatalogConditionalChronology }
-  from "./catalog-conditional-chronology.mjs?v=20260831-359";
+  from "./catalog-conditional-chronology.mjs?v=20260831-360";
+import { buildCoupledPhysicsState, coupledStateGate }
+  from "./coupled-physics-state.mjs?v=20260831-360";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -998,6 +1000,10 @@ const multiphysicsCycleNextButton = $("multiphysicsCycleNextButton");
 const multiphysicsCycleFlow = $("multiphysicsCycleFlow");
 const multiphysicsCycleState = $("multiphysicsCycleState");
 const multiphysicsCycleBoundary = $("multiphysicsCycleBoundary");
+const coupledStateBadge = $("coupledStateBadge");
+const coupledStateChannels = $("coupledStateChannels");
+const coupledStateState = $("coupledStateState");
+const coupledStateBoundary = $("coupledStateBoundary");
 const kineticChronologyBadge = $("kineticChronologyBadge");
 const kineticChronologyPlot = $("kineticChronologyPlot");
 const kineticChronologyMetrics = $("kineticChronologyMetrics");
@@ -3804,7 +3810,7 @@ async function downloadInterfacialEnergyRequest() {
   const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-359",
+  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-360",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256,
@@ -4048,7 +4054,7 @@ async function downloadAttachmentKineticsRequest() {
   const material = currentMaterial(); const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-359",
+  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-360",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256, intrinsicDimension, orientationBasisCartesian,
@@ -4270,6 +4276,7 @@ function currentLeapfrogPhysicsCycle() {
     && !currentMaterial()?.growthWithheld;
   const materialEvidenceCount = [interfacialEnergyValidationAudit, attachmentKineticsValidationAudit,
     externalPhysicsResponseRuntime, archivedStressStrainResponse()?.promotionPassed ? true : null].filter(Boolean).length;
+  const stateCoherence = currentCoupledPhysicsState();
   return buildLeapfrogPhysicsCycle({ mode: multiphysicsCouplingMode, pipelineStage, targetFree,
     geometryStateDigest: interfaceFluxStateDigest(), geometryRevision: atomGeometryRevision,
     atomCount: atoms.length, materialEvidenceCount,
@@ -4280,9 +4287,51 @@ function currentLeapfrogPhysicsCycle() {
       candidateCount: frontierCandidates.length },
     eventCheckpoint: { present: Boolean(checkpoint), generationCurrent: Boolean(checkpoint
         && checkpoint.generation === growthSearchGeneration), validated: Boolean(checkpoint?.validatedResponse),
+      eventSelected: Boolean(checkpoint?.kineticCompetition),
       candidateCount: checkpoint?.request?.frontier?.candidateCount || 0,
       candidateBatchDigest: checkpoint?.requestReceipt?.candidateBatchSha256 || null,
-      responseDigest: checkpoint?.responseSha256 || null } });
+      responseDigest: checkpoint?.responseSha256 || null }, stateCoherence });
+}
+
+function currentCouplingStateExpectation() {
+  const sources = [];
+  const fluxCurrent = Boolean(interfaceFluxValidationAudit
+    && interfaceFluxValidationAudit.boundStateDigest === interfaceFluxStateDigest());
+  if (fluxCurrent && interfaceFluxValidationAudit.couplingStateSha256) sources.push({
+    id: "interface-flux", state: interfaceFluxValidationAudit.couplingStateSha256,
+    temperatureKelvin: null });
+  const attachmentActive = kineticHabitMode === "rank" || activeRateControlEvidence().validated;
+  const attachmentState = attachmentKineticsValidationAudit?.drivingCondition?.couplingStateSha256;
+  if (attachmentActive && attachmentState) sources.push({ id: "attachment-kinetics", state: attachmentState,
+    temperatureKelvin: attachmentKineticsValidationAudit.drivingCondition.temperatureKelvin });
+  const states = [...new Set(sources.map((entry) => entry.state))];
+  if (states.length !== 1) return null;
+  const temperatures = sources.map((entry) => entry.temperatureKelvin).filter((value) => value != null);
+  return { couplingStateSha256: states[0], temperatureKelvin: temperatures[0] ?? null,
+    sourceEvidence: sources.map((entry) => entry.id) };
+}
+
+function currentCoupledPhysicsState() {
+  const checkpoint = externalActionBarrierCheckpoint;
+  const actionAudit = checkpoint?.validatedResponse?.audit;
+  const rateControl = activeRateControlEvidence();
+  return buildCoupledPhysicsState({ mode: multiphysicsCouplingMode,
+    interfaceTransport: { validated: Boolean(interfaceFluxValidationAudit),
+      currentGeometry: Boolean(interfaceFluxValidationAudit
+        && interfaceFluxValidationAudit.boundStateDigest === interfaceFluxStateDigest()),
+      couplingStateSha256: interfaceFluxValidationAudit?.couplingStateSha256 || null,
+      evidenceSha256: interfaceFluxValidationAudit?.responseSha256 || null },
+    attachmentKinetics: { validated: Boolean(attachmentKineticsValidationAudit),
+      enabled: kineticHabitMode === "rank" || rateControl.validated,
+      couplingStateSha256: attachmentKineticsValidationAudit?.drivingCondition?.couplingStateSha256 || null,
+      temperatureKelvin: attachmentKineticsValidationAudit?.drivingCondition?.temperatureKelvin || null,
+      evidenceSha256: attachmentKineticsValidationAudit?.responseSha256 || null },
+    eventKinetics: { validated: Boolean(actionAudit?.kineticsEligible),
+      couplingStateSha256: actionAudit?.kinetics?.couplingStateSha256 || null,
+      temperatureKelvin: actionAudit?.kinetics?.temperatureKelvin
+        ?? actionAudit?.thermodynamics?.temperatureKelvin
+        ?? checkpoint?.kineticCompetition?.temperatureKelvin ?? null,
+      evidenceSha256: checkpoint?.responseSha256 || null } });
 }
 
 function leapfrogActionLabel(action) {
@@ -4290,6 +4339,8 @@ function leapfrogActionLabel(action) {
     "recalculate-interface-transport": "Download current-interface J request",
     "freeze-action-frontier": "Freeze exact action frontier",
     "calculate-action-physics": "Download candidate-physics request",
+    "select-kinetic-event": "Select HTST / seeded KMC event",
+    "resolve-coupling-state": "Refresh incompatible state evidence",
     "await-geometric-frontier": "Await geometric frontier",
     "commit-structural-leap": "Commit certified leap" })[action] || "Inspect next requirement";
 }
@@ -4313,7 +4364,35 @@ function renderLeapfrogPhysicsCycle() {
     ? `${LEAPFROG_COUPLING_MODES[multiphysicsCouplingMode].label} is current. One exact leap may commit; afterward interface and action-scoped evidence expires automatically.`
     : `${LEAPFROG_COUPLING_MODES[multiphysicsCouplingMode].label} is blocked at ${cycle.nodes.find((entry) => ["missing", "stale", "blocked", "waiting"].includes(entry.status))?.label || "the next dependency"}. Next action: ${leapfrogActionLabel(cycle.nextAction)}.`;
   multiphysicsCycleBoundary.textContent = `${cycle.claimBoundary} After commit: retain ${cycle.invalidationAfterCommit.retained.join("; ")}; invalidate ${cycle.invalidationAfterCommit.invalidated.join("; ")}.`;
+  renderCoupledPhysicsState();
   renderKineticChronology();
+}
+
+function renderCoupledPhysicsState() {
+  if (!coupledStateChannels) return;
+  const state = currentCoupledPhysicsState();
+  const strict = multiphysicsCouplingMode !== "structural";
+  const gate = coupledStateGate(state, { strict });
+  coupledStateBadge.textContent = state.compatible
+    ? `coherent · ${state.sharedStateSha256?.slice(0, 12) || state.stateFingerprint}`
+    : strict ? "coupled execution blocked" : "diagnostic · no combined state";
+  coupledStateChannels.replaceChildren(...state.channels.map((entry) => {
+    const article = document.createElement("article");
+    article.className = !entry.active ? "inactive" : entry.validated && entry.currentGeometry
+      && entry.stateSha256 ? "ready" : "missing";
+    const small = document.createElement("small"); const strong = document.createElement("strong");
+    const b = document.createElement("b"); const p = document.createElement("p");
+    small.textContent = entry.required ? "required" : entry.active ? "active" : "inactive";
+    strong.textContent = entry.label; b.textContent = entry.stateSha256?.slice(0, 12) || "no state digest";
+    p.textContent = entry.temperatureKelvin == null ? "temperature not separately declared"
+      : `${entry.temperatureKelvin} K`;
+    article.append(small, strong, b, p); return article;
+  }));
+  coupledStateState.textContent = gate.allowed
+    ? state.compatible ? `${state.activeChannelCount} active external channels identify one shared state${state.sharedTemperatureKelvin == null ? "" : ` at ${state.sharedTemperatureKelvin} K`}.`
+      : "Structural mode does not combine absent physical responses; strict coupled modes require explicit state identity."
+    : `Commit withheld: ${state.mismatches.join(" · ") || "no comparable active evidence"}.`;
+  coupledStateBoundary.textContent = `${state.claimBoundary} State receipt ${state.stateFingerprint}.`;
 }
 
 function currentKineticChronology(pendingLeap = null) {
@@ -4375,6 +4454,18 @@ function routeLeapfrogNextAction() {
   if (cycle.nextAction === "calculate-action-physics") {
     actionBarrierDownloadButton?.click();
     actionBarrierResponseInput?.closest(".action-barrier-checkpoint")?.scrollIntoView?.({ behavior: "smooth", block: "center" });
+    return;
+  }
+  if (cycle.nextAction === "select-kinetic-event") {
+    actionBarrierKineticModeSelect?.scrollIntoView?.({ behavior: "smooth", block: "center" });
+    actionBarrierKineticModeSelect?.focus?.();
+    receiptStatus.textContent = "Event-resolved coupling requires an explicit maximum-rate HTST or seeded KMC selection from the validated frozen catalog.";
+    return;
+  }
+  if (cycle.nextAction === "resolve-coupling-state") {
+    if (externalActionBarrierCheckpoint) releaseExternalActionBarrierCheckpoint(
+      "Incompatible action evidence released. Re-freeze the frontier after loading responses for one shared coupling state.");
+    interfaceFluxCard?.scrollIntoView({ behavior: "smooth", block: "center" });
     return;
   }
   if (cycle.nextAction === "commit-structural-leap") {
@@ -4482,7 +4573,7 @@ async function downloadSpatialInterfaceFluxRequest() {
   const interfaceGeometrySha256 = await receiptSha256(JSON.stringify({ structureSha256: configuration.structureSha256,
     confinement: confinementSelect?.value || "box", publicReach: growthDomainScale, atomCount: referenceAtoms.length }));
   const species = material.actualElements ? [...material.actualElements] : [...material.elements];
-  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-359",
+  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-360",
     scenarioId: scenarioSelect.value, materialName: material.name, species,
     structureSha256: configuration.structureSha256, interfaceGeometrySha256,
     interfaceConfiguration: configuration,
@@ -13760,7 +13851,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260831-359",
+      buildId: "20260831-360",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -15512,6 +15603,7 @@ async function buildExperimentReceipt() {
       orientationAttachmentKineticsEvidence: attachmentKineticsReceipt(),
       spatialInterfaceFluxEvidence: interfaceFluxReceipt(),
       leapfrogPhysicsCycle: currentLeapfrogPhysicsCycle(),
+      coupledPhysicsState: currentCoupledPhysicsState(),
       catalogConditionalChronology: currentKineticChronology(),
       externalActionBarrierCheckpoint: actionBarrierCheckpointReceipt(),
       structuralLeapHistory: { totalEvents: leapEventCount, retainedEvents: leapHistory.length,
@@ -16293,6 +16385,7 @@ async function buildExperimentNotebookSnapshot() {
     orientationAttachmentKineticsEvidence: attachmentKineticsReceipt(),
     spatialInterfaceFluxEvidence: interfaceFluxReceipt(),
     leapfrogPhysicsCycle: currentLeapfrogPhysicsCycle(),
+    coupledPhysicsState: currentCoupledPhysicsState(),
     catalogConditionalChronology: currentKineticChronology(),
     externalActionBarrierCheckpoint: actionBarrierCheckpointReceipt(),
     structuralLeapHistory: { totalEvents: leapEventCount, retainedEvents: leapHistory.length,
@@ -16345,7 +16438,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260831-359" },
+    application: { name: "Materials Growth Lab", buildId: "20260831-360" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },
@@ -24948,6 +25041,7 @@ function actionBarrierCheckpointReceipt(checkpoint = externalActionBarrierCheckp
     detachmentEventCount: checkpoint.request.frontier.candidates.filter((candidate) => candidate.eventDirection === "detach").length,
     eventCatalogMode: checkpoint.eventCatalogMode || "forward-only",
     responseSha256: checkpoint.responseSha256 || null,
+    couplingStateExpectation: checkpoint.requestReceipt.couplingStateExpectation || null,
     method: response?.audit.method || null,
     barrierRangeElectronVolt: response ? {
       minimum: Math.min(...response.audit.records.map((record) => record.barrierElectronVolt)),
@@ -24965,6 +25059,8 @@ function actionBarrierCheckpointReceipt(checkpoint = externalActionBarrierCheckp
       prefactorSettingsSha256: response.audit.kinetics?.prefactorSettingsSha256 || null,
       recrossingCorrection: response.audit.kinetics?.recrossingCorrection || null,
       catalogScope: response.audit.kinetics?.catalogScope || null,
+      couplingStateSha256: response.audit.kinetics?.couplingStateSha256 || null,
+      evidenceTemperatureKelvin: response.audit.kinetics?.temperatureKelvin || null,
       candidateCount: kinetic.candidateCount, selectedCandidateId: kinetic.selectedCandidateId,
       selectedEventDirection: kinetic.selectedEventDirection,
       attachmentEventCount: kinetic.attachmentEventCount,
@@ -25071,7 +25167,8 @@ function renderActionBarrierCheckpoint() {
   actionBarrierKineticModeSelect.disabled = !kineticsEligible;
   actionBarrierTemperatureSelect.disabled = !kineticsEligible
     || externalActionBarrierKineticMode === "none"
-    || Boolean(checkpoint?.validatedResponse?.audit?.thermodynamics);
+    || Boolean(checkpoint?.validatedResponse?.audit?.thermodynamics
+      || checkpoint?.validatedResponse?.audit?.kinetics?.temperatureKelvin != null);
   actionBarrierResumeButton.disabled = !checkpoint?.validatedResponse || growthFrontierWork.busy;
   actionBarrierCancelButton.disabled = !checkpoint || growthFrontierWork.busy;
   if (!checkpoint) {
@@ -25109,6 +25206,8 @@ function renderActionBarrierCheckpoint() {
       ? `${Math.min(...audit.records.map((record) => record.barrierElectronVolt)).toFixed(3)}–${Math.max(...audit.records.map((record) => record.barrierElectronVolt)).toFixed(3)} eV`
       : "none before validation"],
   ];
+  if (checkpoint.requestReceipt.couplingStateExpectation) tiles.push(["shared state",
+    `${checkpoint.requestReceipt.couplingStateExpectation.couplingStateSha256.slice(0, 12)}${checkpoint.requestReceipt.couplingStateExpectation.temperatureKelvin == null ? "" : ` · ${checkpoint.requestReceipt.couplingStateExpectation.temperatureKelvin} K`}`]);
   const kinetic = checkpoint.kineticCompetition;
   if (kinetic) tiles.push([kinetic.mode === "seeded-kmc" ? "sampled event" : "maximum-rate event",
     `${kinetic.selectedEventDirection} · ${kinetic.selectedCandidateId.slice(0, 12)} · log₁₀k ${kinetic.selectedLog10RatePerSecond.toFixed(2)}`]);
@@ -25197,11 +25296,12 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
   const candidates = [...attachmentCandidates, ...detachmentCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-359",
+    generatedAt: new Date().toISOString(), buildId: "20260831-360",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
-    initialConfiguration, candidates, targetUsed: false, candidateSetTargetUsed: false,
+    initialConfiguration, candidates, couplingStateExpectation: currentCouplingStateExpectation(),
+    targetUsed: false, candidateSetTargetUsed: false,
   });
   const requestReceipt = await frozenActionBarrierRequestReceipt(request);
   return { schema: 1, generation, controlsJson: JSON.stringify(currentGrowthProtocolSettings()),
@@ -25262,13 +25362,15 @@ async function validateExternalActionBarrierFile(file) {
   checkpoint.validatedResponse = { audit,
     recordsByCandidate: new Map(audit.records.map((record) => [record.candidateId, record])) };
   checkpoint.responseSha256 = responseSha256;
-  if (audit.thermodynamics) {
-    const value = String(audit.thermodynamics.temperatureKelvin);
+  const evidenceTemperatureKelvin = audit.thermodynamics?.temperatureKelvin
+    ?? audit.kinetics?.temperatureKelvin ?? null;
+  if (evidenceTemperatureKelvin != null) {
+    const value = String(evidenceTemperatureKelvin);
     if (![...actionBarrierTemperatureSelect.options].some((option) => option.value === value)) {
       const option = document.createElement("option"); option.value = value;
       option.textContent = `${value} K · response-bound`; actionBarrierTemperatureSelect.append(option);
     }
-    externalActionBarrierTemperatureKelvin = audit.thermodynamics.temperatureKelvin;
+    externalActionBarrierTemperatureKelvin = evidenceTemperatureKelvin;
     actionBarrierTemperatureSelect.value = value;
   }
   refreshExternalActionBarrierScores();
@@ -32081,6 +32183,7 @@ function physicsTranslationRecords(leap = null) {
   const rateControlBridge = activeRateControlEvidence();
   const leapfrogCycle = currentLeapfrogPhysicsCycle();
   const kineticChronology = currentKineticChronology(leap);
+  const coupledPhysicsState = currentCoupledPhysicsState();
   const localSymmetry = leap?.localSymmetryTransition || null;
   const centrosymmetry = leap?.centrosymmetryTransition || null;
   const reciprocalSpace = leap?.reciprocalSpaceTransition || null;
@@ -32162,6 +32265,15 @@ function physicsTranslationRecords(leap = null) {
         ? "Every required response is current for this exact geometry/frontier; one leap may commit."
         : `Commit is withheld until ${leapfrogActionLabel(leapfrogCycle.nextAction)}.`,
       boundary: "This gate enforces refresh order and evidence scope. It does not run an external solver, infer missing physics, make a finite candidate catalog complete, or map browser duration to material time." },
+    { id: "coupled-state-coherence", process: "shared thermodynamic and driving-state identity across external physics",
+      status: coupledPhysicsState.compatible ? "validated" : "unavailable",
+      role: multiphysicsCouplingMode === "structural" ? "diagnostic provenance audit" : "hard coupled-execution gate",
+      executionEffects: { hardAdmission: multiphysicsCouplingMode !== "structural", ranking: false },
+      encoding: `${coupledPhysicsState.activeChannelCount} active / ${coupledPhysicsState.comparableChannelCount} digest-bearing channels · ${coupledPhysicsState.compatible ? `shared ${coupledPhysicsState.sharedStateSha256?.slice(0, 12)}` : coupledPhysicsState.mismatches.join(", ") || "no combined state"}`,
+      evidence: coupledPhysicsState.compatible
+        ? `${coupledPhysicsState.channels.filter((entry) => entry.active).map((entry) => entry.label).join(" + ")} explicitly agree${coupledPhysicsState.sharedTemperatureKelvin == null ? "" : ` at ${coupledPhysicsState.sharedTemperatureKelvin} K`}; receipt ${coupledPhysicsState.stateFingerprint}.`
+        : "No external response is silently relabelled or combined by geometry, material name, or coincident temperature.",
+      boundary: coupledPhysicsState.claimBoundary },
     { id: "steric", process: "short-range repulsion / species contact", status: "hard", role: "hard admission gate",
       encoding: `${coloredDistanceEnvelopes?.records?.length || 0} colored pair envelopes with exact species coincidence and learned hard-exclusion radii${coloredDistanceEnvelopes?.records?.some((record) => record.directionalUncertaintyApplied) ? `; ${coloredDistanceEnvelopes.records.filter((record) => record.directionalUncertaintyApplied).length} retain one-sigma full-Uij support, transported as U_world=R U_local R^T and resolved again along every live pair direction` : ""}`,
       evidence: leapResult,
@@ -32645,6 +32757,7 @@ const PHYSICS_CONTROL_ROUTES = Object.freeze({
   "spatial-interface-flux": { stage: 4, controlId: "interfaceFluxModeSelect", label: "Configure interface supply" },
   "transport-attachment-regime": { stage: 4, controlId: "rateControlPlot", label: "Inspect rate control" },
   "leapfrog-physics-cycle": { stage: 4, controlId: "multiphysicsCouplingModeSelect", label: "Configure co-simulation cycle" },
+  "coupled-state-coherence": { stage: 4, controlId: "coupledStateChannels", label: "Inspect shared-state coherence" },
   "kinetic-chronology": { stage: 4, controlId: "kineticChronologyPlot", label: "Inspect kinetic chronology" },
   steric: { stage: 1, controlId: "clusterToleranceSelect", label: "Open metric tolerance" },
   local: { stage: 1, controlId: "geometryModeSelect", label: "Open support geometry" },
@@ -34165,7 +34278,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-359",
+    generatedAt: new Date().toISOString(), buildId: "20260831-360",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,
