@@ -88,30 +88,30 @@ import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntim
   from "./external-trajectory-geometry.mjs?v=20260830-346";
 import { actionBarrierSha256, buildFrozenActionBarrierRequest, frozenActionBarrierRequestReceipt,
   frozenActionStateGeometrySha256, validateFrozenActionBarrierResponse }
-  from "./external-action-barrier.mjs?v=20260831-370";
+  from "./external-action-barrier.mjs?v=20260831-371";
 import { buildActionPathViewerFrame, projectActionPathViewerFrame }
-  from "./action-path-viewer.mjs?v=20260831-370";
+  from "./action-path-viewer.mjs?v=20260831-371";
 import { actionPathMechanismSensitivity, analyzeActionPathMechanism }
-  from "./action-path-mechanism.mjs?v=20260831-370";
+  from "./action-path-mechanism.mjs?v=20260831-371";
 import { buildFrozenKineticCompetition }
-  from "./frozen-frontier-kinetics.mjs?v=20260831-370";
+  from "./frozen-frontier-kinetics.mjs?v=20260831-371";
 import { buildKineticEventSpectrum }
-  from "./kinetic-event-spectrum.mjs?v=20260831-370";
+  from "./kinetic-event-spectrum.mjs?v=20260831-371";
 import { buildTemperatureProgrammedKinetics, inspectTemperatureProgram }
-  from "./temperature-programmed-kinetics.mjs?v=20260831-370";
+  from "./temperature-programmed-kinetics.mjs?v=20260831-371";
 import { buildKineticGeometryResponse, inspectKineticGeometryResponse }
-  from "./kinetic-geometry-response.mjs?v=20260831-370";
+  from "./kinetic-geometry-response.mjs?v=20260831-371";
 import { enumerateDetachableLeafPlacements }
   from "./reversible-frontier-events.mjs?v=20260831-347";
 import { enumerateMassConservingSurfaceHops }
-  from "./surface-hop-events.mjs?v=20260831-370";
+  from "./surface-hop-events.mjs?v=20260831-371";
 import { enumerateLocalSpeciesExchangeEvents }
-  from "./species-exchange-events.mjs?v=20260831-370";
+  from "./species-exchange-events.mjs?v=20260831-371";
 import { buildExternalStateRelaxationRequest, stateRelaxationSha256,
   validateExternalStateRelaxationResponse }
-  from "./external-state-relaxation.mjs?v=20260831-370";
+  from "./external-state-relaxation.mjs?v=20260831-371";
 import { appendCommittedTransition }
-  from "./reversible-transition-lineage.mjs?v=20260831-370";
+  from "./reversible-transition-lineage.mjs?v=20260831-371";
 import { buildFiniteTransitionNetwork }
   from "./finite-transition-network.mjs?v=20260831-352";
 import { auditCompetingObservedTransitionPaths }
@@ -125,19 +125,19 @@ import { evaluateWulffShapeRegularizer, matchedWulffRankingAudit }
   from "./wulff-shape-regularizer.mjs?v=20260831-354";
 import { buildAttachmentKineticsRequest, buildNormalizedKineticWulffGeometry,
   validateAttachmentKineticsResponse, evaluateKineticHabitScore, matchedKineticHabitRankingAudit }
-  from "./external-attachment-kinetics.mjs?v=20260831-370";
+  from "./external-attachment-kinetics.mjs?v=20260831-371";
 import { buildInterfaceFluxRequest, validateInterfaceFluxResponse, evaluateInterfaceFluxScore,
   matchedInterfaceFluxRankingAudit }
-  from "./external-interface-flux.mjs?v=20260831-370";
+  from "./external-interface-flux.mjs?v=20260831-371";
 import { periodicSiteNumberDensity, coupleInterfaceSupplyAndAttachment,
   syntheticGrowthRegimePreview }
-  from "./growth-regime-bridge.mjs?v=20260831-370";
+  from "./growth-regime-bridge.mjs?v=20260831-371";
 import { buildLeapfrogPhysicsCycle, couplingModeGate, LEAPFROG_COUPLING_MODES }
-  from "./leapfrog-physics-cycle.mjs?v=20260831-370";
+  from "./leapfrog-physics-cycle.mjs?v=20260831-371";
 import { buildCatalogConditionalChronology }
-  from "./catalog-conditional-chronology.mjs?v=20260831-370";
+  from "./catalog-conditional-chronology.mjs?v=20260831-371";
 import { buildCoupledPhysicsState, coupledStateGate }
-  from "./coupled-physics-state.mjs?v=20260831-370";
+  from "./coupled-physics-state.mjs?v=20260831-371";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -3884,7 +3884,7 @@ async function downloadInterfacialEnergyRequest() {
   const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-370",
+  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-371",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256,
@@ -4128,7 +4128,7 @@ async function downloadAttachmentKineticsRequest() {
   const material = currentMaterial(); const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-370",
+  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-371",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256, intrinsicDimension, orientationBasisCartesian,
@@ -4647,7 +4647,7 @@ async function downloadSpatialInterfaceFluxRequest() {
   const interfaceGeometrySha256 = await receiptSha256(JSON.stringify({ structureSha256: configuration.structureSha256,
     confinement: confinementSelect?.value || "box", publicReach: growthDomainScale, atomCount: referenceAtoms.length }));
   const species = material.actualElements ? [...material.actualElements] : [...material.elements];
-  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-370",
+  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-371",
     scenarioId: scenarioSelect.value, materialName: material.name, species,
     structureSha256: configuration.structureSha256, interfaceGeometrySha256,
     interfaceConfiguration: configuration,
@@ -13926,7 +13926,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260831-370",
+      buildId: "20260831-371",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -16519,7 +16519,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260831-370" },
+    application: { name: "Materials Growth Lab", buildId: "20260831-371" },
     postLeapExternalRelaxation: stateRelaxationReceipt(),
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
@@ -24880,7 +24880,7 @@ async function freezeExternalStateRelaxation() {
     throw new Error("variable-cell relaxation requires a fully periodic 3D state");
   }
   const request = await buildExternalStateRelaxationRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-370",
+    generatedAt: new Date().toISOString(), buildId: "20260831-371",
     materialName: currentMaterial().name, sites,
     cellAngstrom: policy.cellAngstrom, periodicBoundary: policy.periodicBoundary,
     boundary: currentGrowthDomainSnapshot(), sourceLeapReceiptSha256: null,
@@ -25560,9 +25560,12 @@ function actionBarrierCheckpointReceipt(checkpoint = externalActionBarrierCheckp
         inspectedKineticGeometry.dominantResolvedGeometricCharacter,
       dominantCharacterCrossoverCount:
         kineticGeometryResponse.dominantCharacterCrossovers.length,
+      rateBoxEnvelope: inspectedKineticGeometry.rateBoxEnvelope,
+      adversarialRateIntervalEnvelopeComputed: true,
+      rateIntervalAssumption: kineticGeometryResponse.rateIntervalAssumption,
       targetUsed: false, candidateSetChanged: false, geometricEndpointsChanged: false,
       physicalTrajectoryIntegrated: false, futureFrontierAssumedUnchanged: false,
-      uncertaintyPropagatedIntoResponse: false,
+      stochasticUncertaintyPropagatedIntoResponse: false,
       claimBoundary: kineticGeometryResponse.claimBoundary,
     } : {
       available: false, reason: kineticGeometryResponse.reason,
@@ -25979,8 +25982,23 @@ function renderKineticGeometryResponse() {
   const atomValues = response.samples.map((sample) => sample.expectedMaterialAtomDeltaPerEvent);
   const contactValues = response.samples.map((sample) =>
     sample.conditionalExpectedNetContactDeltaPerResolvedEvent);
-  const atomBand = scaleBand(atomValues, 13, 71);
-  const contactBand = scaleBand(contactValues, 92, 150);
+  const atomEnvelopes = response.samples.map((sample) =>
+    sample.rateBoxEnvelope.expectedMaterialAtomDeltaPerEvent);
+  const contactEnvelopes = response.samples.map((sample) =>
+    sample.rateBoxEnvelope.conditionalExpectedNetContactDeltaPerResolvedEvent);
+  const atomBand = scaleBand([...atomValues, ...atomEnvelopes.flat()], 13, 71);
+  const contactBand = scaleBand([...contactValues,
+    ...contactEnvelopes.filter(Boolean).flat()], 92, 150);
+  const drawEnvelope = (band, envelopes, className) => {
+    const valid = envelopes.map((envelope, index) => ({ envelope, index }))
+      .filter(({ envelope }) => Array.isArray(envelope));
+    if (!valid.length) return;
+    const upper = valid.map(({ envelope, index }) => `${x(index)},${band.y(envelope[1])}`);
+    const lower = [...valid].reverse().map(({ envelope, index }) =>
+      `${x(index)},${band.y(envelope[0])}`);
+    kineticGeometryResponsePlot.append(make("polygon",
+      { points: [...upper, ...lower].join(" "), class: className }));
+  };
   const drawBand = (band, values, className, label) => {
     kineticGeometryResponsePlot.append(make("line", { x1: left, y1: band.y(0),
       x2: right, y2: band.y(0), class: "zero" }));
@@ -26003,7 +26021,9 @@ function renderKineticGeometryResponse() {
     lower.textContent = band.minimum.toFixed(2);
     kineticGeometryResponsePlot.append(upper, lower);
   };
-  drawBand(atomBand, atomValues, "atom-response", "E[ΔN] / next event");
+  drawEnvelope(atomBand, atomEnvelopes, "atom-envelope");
+  drawEnvelope(contactBand, contactEnvelopes, "contact-envelope");
+  drawBand(atomBand, atomValues, "atom-response", "E[ΔN] / next event · interval box envelope");
   drawBand(contactBand, contactValues, "contact-response",
     "E[formed − broken contacts] / resolved event");
   const inspectedIndex = response.samples.indexOf(inspected);
@@ -26011,10 +26031,10 @@ function renderKineticGeometryResponse() {
     x2: x(inspectedIndex), y2: 153, class: "inspection" }));
   const tiles = [
     ["grow / shrink / preserve", `${(100 * inspected.growingProbability).toFixed(1)} / ${(100 * inspected.shrinkingProbability).toFixed(1)} / ${(100 * inspected.countPreservingProbability).toFixed(1)}%`],
-    ["E[ΔN]", inspected.expectedMaterialAtomDeltaPerEvent.toFixed(3)],
+    ["E[ΔN] · box range", `${inspected.expectedMaterialAtomDeltaPerEvent.toFixed(3)} [${inspected.rateBoxEnvelope.expectedMaterialAtomDeltaPerEvent.map((value) => value.toFixed(3)).join(", ")}]`],
     ["contact-resolved mass", `${(100 * inspected.contactResolvedProbabilityMass).toFixed(1)}%`],
-    ["conditional net contacts", inspected.conditionalExpectedNetContactDeltaPerResolvedEvent == null
-      ? "unresolved" : inspected.conditionalExpectedNetContactDeltaPerResolvedEvent.toFixed(3)],
+    ["net contacts · box range", inspected.conditionalExpectedNetContactDeltaPerResolvedEvent == null
+      ? "unresolved" : `${inspected.conditionalExpectedNetContactDeltaPerResolvedEvent.toFixed(3)} [${inspected.rateBoxEnvelope.conditionalExpectedNetContactDeltaPerResolvedEvent.map((value) => value.toFixed(3)).join(", ")}]`],
     ["dominant geometry", inspected.dominantResolvedGeometricCharacter || "unresolved"],
     ["expected max step", `${inspected.expectedMaximumAdjacentDisplacementAngstrom.toFixed(3)} Å`],
   ];
@@ -26023,7 +26043,7 @@ function renderKineticGeometryResponse() {
     tile.append(document.createTextNode(label)); strong.textContent = value; tile.append(strong);
     return tile;
   }));
-  kineticGeometryResponseState.textContent = `${inspected.temperatureKelvin.toFixed(0)} K · nominal next-event response from ${response.candidateCount} unchanged candidates. Contact values are conditional on ${(100 * inspected.contactResolvedProbabilityMass).toFixed(1)}% resolved probability mass at ${response.contactReach.toFixed(2)} dₙₙ. ${response.claimBoundary}`;
+  kineticGeometryResponseState.textContent = `${inspected.temperatureKelvin.toFixed(0)} K · nominal next-event response from ${response.candidateCount} unchanged candidates. Contact values are conditional on ${(100 * inspected.contactResolvedProbabilityMass).toFixed(1)}% resolved probability mass at ${response.contactReach.toFixed(2)} dₙₙ. Bands are extrema over independent supplied per-event log-rate boxes, not confidence intervals. ${response.claimBoundary}`;
   return response;
 }
 
@@ -26522,7 +26542,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
     ...speciesExchangeCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-370",
+    generatedAt: new Date().toISOString(), buildId: "20260831-371",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -35864,7 +35884,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-370",
+    generatedAt: new Date().toISOString(), buildId: "20260831-371",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,

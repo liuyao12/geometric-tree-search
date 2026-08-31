@@ -2504,6 +2504,8 @@ body.study-guide-open { overflow: hidden; }
 .kinetic-geometry-response .axis-label { fill: #776b82; font: 4.8px var(--mono); }
 .kinetic-geometry-response .zero { stroke: rgba(255,255,255,.16); stroke-width: .7; stroke-dasharray: 2 2; }
 .kinetic-geometry-response .atom-response,.kinetic-geometry-response .contact-response { fill: none; vector-effect: non-scaling-stroke; }
+.kinetic-geometry-response .atom-envelope { fill: rgba(101,225,188,.12); stroke: none; }
+.kinetic-geometry-response .contact-envelope { fill: rgba(214,156,255,.12); stroke: none; }
 .kinetic-geometry-response .atom-response { stroke: #65e1bc; stroke-width: 1.6; }
 .kinetic-geometry-response .contact-response { stroke: #d69cff; stroke-width: 1.4; }
 .kinetic-geometry-response .inspection { stroke: #ffc169; stroke-width: 1.1; filter: drop-shadow(0 0 2px rgba(255,193,105,.48)); }

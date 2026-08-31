@@ -1,9 +1,9 @@
 import { analyzeActionPathMechanism }
-  from "./action-path-mechanism.mjs?v=20260831-370";
+  from "./action-path-mechanism.mjs?v=20260831-371";
 import { buildFrozenKineticCompetition }
-  from "./frozen-frontier-kinetics.mjs?v=20260831-370";
+  from "./frozen-frontier-kinetics.mjs?v=20260831-371";
 import { buildTemperatureProgrammedKinetics }
-  from "./temperature-programmed-kinetics.mjs?v=20260831-370";
+  from "./temperature-programmed-kinetics.mjs?v=20260831-371";
 
 export const KINETIC_GEOMETRY_CHARACTERS = Object.freeze([
   "contact-forming", "contact-breaking", "contact exchange / reconstructive",
@@ -13,6 +13,54 @@ export const KINETIC_GEOMETRY_CHARACTERS = Object.freeze([
 function probabilityMass(records, predicate) {
   return records.filter(predicate).reduce((sum, record) =>
     sum + record.probabilityWithinFrozenCatalog, 0);
+}
+
+function logSumExp(values) {
+  if (!values.length) return -Infinity;
+  const maximum = Math.max(...values);
+  return maximum + Math.log(values.reduce((sum, value) => sum + Math.exp(value - maximum), 0));
+}
+
+function extremalSignedSumSign(records, observable, threshold, maximize) {
+  const positive = []; const negative = [];
+  records.forEach((record) => {
+    const coefficient = observable(record) - threshold;
+    if (Math.abs(coefficient) < 1e-15) return;
+    const favorCoefficient = maximize ? coefficient > 0 : coefficient < 0;
+    const logRate = Math.LN10 * (favorCoefficient
+      ? record.log10RateUpperPerSecond : record.log10RateLowerPerSecond);
+    const term = logRate + Math.log(Math.abs(coefficient));
+    (coefficient > 0 ? positive : negative).push(term);
+  });
+  const positiveLog = logSumExp(positive); const negativeLog = logSumExp(negative);
+  if (positiveLog === negativeLog) return 0;
+  return positiveLog > negativeLog ? 1 : -1;
+}
+
+export function rateBoxObservableEnvelope(records, observable) {
+  if (!Array.isArray(records) || !records.length) {
+    throw new TypeError("a rate-box envelope needs at least one event");
+  }
+  const values = records.map((record) => Number(observable(record)));
+  if (values.some((value) => !Number.isFinite(value))
+      || records.some((record) => !Number.isFinite(record.log10RateLowerPerSecond)
+        || !Number.isFinite(record.log10RateUpperPerSecond)
+        || record.log10RateLowerPerSecond > record.log10RateUpperPerSecond)) {
+    throw new TypeError("rate-box observables and logarithmic rate bounds must be finite and ordered");
+  }
+  const domainMinimum = Math.min(...values); const domainMaximum = Math.max(...values);
+  if (domainMinimum === domainMaximum) return [domainMinimum, domainMaximum];
+  const solve = (maximize) => {
+    let low = domainMinimum; let high = domainMaximum;
+    for (let iteration = 0; iteration < 90; iteration += 1) {
+      const middle = (low + high) / 2;
+      const sign = extremalSignedSumSign(records, observable, middle, maximize);
+      if (maximize ? sign > 0 : sign >= 0) low = middle;
+      else high = middle;
+    }
+    return (low + high) / 2;
+  };
+  return [solve(false), solve(true)];
 }
 
 function transitionIntervals(samples, field) {
@@ -106,6 +154,22 @@ export function buildKineticGeometryResponse(records, applicability, {
       ? [...KINETIC_GEOMETRY_CHARACTERS].sort((first, second) =>
         geometricCharacterProbabilityMass[second] - geometricCharacterProbabilityMass[first]
         || first.localeCompare(second))[0] : null;
+    const materialAtomDeltaEnvelope = rateBoxObservableEnvelope(weighted,
+      (record) => record.geometry.materialAtomDelta);
+    const growingProbabilityEnvelope = rateBoxObservableEnvelope(weighted,
+      (record) => record.geometry.materialAtomDelta > 0 ? 1 : 0);
+    const shrinkingProbabilityEnvelope = rateBoxObservableEnvelope(weighted,
+      (record) => record.geometry.materialAtomDelta < 0 ? 1 : 0);
+    const countPreservingProbabilityEnvelope = rateBoxObservableEnvelope(weighted,
+      (record) => record.geometry.materialAtomDelta === 0 ? 1 : 0);
+    const netContactDeltaEnvelope = contactWeighted.length
+      ? rateBoxObservableEnvelope(contactWeighted, (record) => record.geometry.netContactDelta)
+      : null;
+    const coordinationDeltaEnvelope = contactWeighted.length
+      ? rateBoxObservableEnvelope(contactWeighted,
+        (record) => record.geometry.meanDynamicCoordinationDelta) : null;
+    const displacementEnvelopeAngstrom = rateBoxObservableEnvelope(weighted,
+      (record) => record.geometry.maximumAdjacentDisplacementAngstrom);
     return {
       temperatureKelvin: temperatureSample.temperatureKelvin,
       fastestCandidateId: temperatureSample.fastestCandidateId,
@@ -117,6 +181,15 @@ export function buildKineticGeometryResponse(records, applicability, {
       conditionalExpectedNetContactDeltaPerResolvedEvent,
       conditionalExpectedCoordinationDeltaPerResolvedEvent,
       expectedMaximumAdjacentDisplacementAngstrom,
+      rateBoxEnvelope: {
+        expectedMaterialAtomDeltaPerEvent: materialAtomDeltaEnvelope,
+        growingProbability: growingProbabilityEnvelope,
+        shrinkingProbability: shrinkingProbabilityEnvelope,
+        countPreservingProbability: countPreservingProbabilityEnvelope,
+        conditionalExpectedNetContactDeltaPerResolvedEvent: netContactDeltaEnvelope,
+        conditionalExpectedCoordinationDeltaPerResolvedEvent: coordinationDeltaEnvelope,
+        expectedMaximumAdjacentDisplacementAngstrom: displacementEnvelopeAngstrom,
+      },
       geometricCharacterProbabilityMass,
       dominantResolvedGeometricCharacter,
       log10TotalRatePerSecond: competition.log10TotalRatePerSecond,
@@ -138,8 +211,10 @@ export function buildKineticGeometryResponse(records, applicability, {
     geometricEndpointsChanged: false,
     physicalTrajectoryIntegrated: false,
     futureFrontierAssumedUnchanged: false,
-    uncertaintyPropagatedIntoResponse: false,
-    claimBoundary: "This is the nominal expectation for the next event inside one unchanged finite frontier catalog. Contact expectations are conditional on the probability mass with a derived local contact reference. It does not keep the frontier fixed after an event, integrate morphology or time, propagate model uncertainty, discover missing events, or predict a bulk growth regime.",
+    adversarialRateIntervalEnvelopeComputed: true,
+    rateIntervalAssumption: "independent per-event barrier-plus-prefactor log-rate boxes",
+    stochasticUncertaintyPropagatedIntoResponse: false,
+    claimBoundary: "This is the nominal expectation for the next event inside one unchanged finite frontier catalog. Contact expectations are conditional on the probability mass with a derived local contact reference. Shaded extrema are adversarial bounds over independent supplied log-rate intervals, not confidence or credible intervals. The response does not keep the frontier fixed after an event, integrate morphology or time, discover missing events, or predict a bulk growth regime.",
   };
 }
 

@@ -1,5 +1,32 @@
 # Recursive GCTS benchmark for material growth
 
+### Adversarial kinetic-response uncertainty envelopes (Build 371)
+
+For a geometric observable `a_i` and positive candidate rates constrained by
+`r_i ∈ [r_i^-, r_i^+]`, the portal now bounds
+`Σ r_i a_i / Σ r_i` exactly under the independent-box model. At a trial value
+`t`, minimizing or maximizing `Σ r_i(a_i-t)` chooses one endpoint of every rate
+interval solely from the sign of `a_i-t`. Bisection locates the unique ratio
+extremum. Positive and negative sums are compared with log-sum-exp arithmetic,
+so the sign test remains stable when rates span extreme Arrhenius decades.
+
+This calculation is applied to material atom-count change, the indicator
+observables for growth/shrink/count preservation, maximum adjacent-image
+displacement, and—over the explicitly resolved event subset—net contact and
+coordination change. Nominal expectations are independently checked to lie
+inside every computed envelope. Constant observables collapse to an exact
+zero-width interval.
+
+The interactive response uses translucent bands around its two signed curves
+and exposes the inspected bounds numerically. The experiment receipt stores
+the full inspected envelope and the exact assumption string
+`independent per-event barrier-plus-prefactor log-rate boxes`.
+
+This is a deterministic robustness envelope, not statistical uncertainty
+propagation. It does not assign probability to interval points, model
+correlations, correct systematic method bias, cover an incomplete candidate
+catalog, or turn a one-event frontier response into a long-time growth law.
+
 ### Finite-catalog kinetic-to-geometric response (Build 370)
 
 The bounded temperature map now answers a structural question rather than only

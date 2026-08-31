@@ -1,5 +1,29 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 371 · adversarial kinetic-response uncertainty envelopes
+
+The kinetic-to-geometric response now carries an uncertainty envelope rather
+than a nominal line alone. Each candidate's barrier uncertainty and prefactor
+uncertainty define lower and upper log-rate bounds at every authorized
+temperature. For any scalar geometric observable, the portal finds the exact
+minimum and maximum rate-weighted expectation over those independent boxes.
+It does this in signed log space, so catalogs separated by hundreds of rate
+decades remain numerically stable without enumerating `2^N` box vertices.
+
+The envelope covers expected material `ΔN`, growth/shrink/preserve probability,
+conditional net contact and coordination change, and maximum adjacent-image
+displacement. The response plot shades the atom-count and contact ranges around
+their nominal curves, and the inspection tiles show the current numerical
+bounds. Contact extrema use only events with a resolved local contact reference,
+matching the conditional nominal statistic.
+
+These are adversarial sensitivity bounds, not confidence or credible
+intervals. They assume every event's supplied rate interval can vary
+independently and do not encode covariance, distribution shape, systematic
+method error, or missing mechanisms. The receipt records that assumption,
+the inspected envelopes, and `stochasticUncertaintyPropagated=false` rather
+than overstating the result.
+
 ## Build 370 · finite-catalog kinetic-to-geometric response
 
 The temperature program now connects event competition back to actual returned
