@@ -1,5 +1,26 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 391 · portable scale-bridge protocol packets
+
+Every scale-bridge investigation can now be frozen as a deterministic protocol
+packet. The canonical JSON contains the selected hierarchy receipt, physical
+channel, scale, required evidence, invariant encoding, sealed validation split,
+execution hook, green gate, route, and claim boundary. It also fixes the safety
+invariants: candidate geometry stays unchanged during ablations, targets are
+absent from fitting and selection, hierarchy depth cannot upgrade a claim, and
+the packet is design-only with `executionAuthorized = false`.
+
+Web Crypto computes SHA-256 over the canonical unsigned packet. Users can copy
+the JSON, download it, or copy a deep link. Opening that link restores the exact
+receipt/channel/scale in the Evidence atlas, recomputes the full digest, and
+shows a verified or mismatched provenance state. The link preserves unrelated
+material/study parameters, and malformed or incomplete packet parameters fail
+closed.
+
+The packet deliberately embeds no atomic coordinates, candidate actions,
+evaluation labels, or physical-time trajectory. Executing the proposed study
+still requires a separate stage-aware run receipt from the main lab.
+
 ## Build 390 · sealed scale-bridge investigation planner
 
 The Evidence atlas now turns every cell of the atoms → clusters → clusters² →

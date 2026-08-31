@@ -1,5 +1,26 @@
 # Recursive GCTS benchmark for material growth
 
+### Portable scale-bridge protocol packets (Build 391)
+
+Build 391 adds a reproducible design artifact above the execution receipt. A
+canonical packet binds one frozen hierarchy receipt, physical channel, and
+hierarchy scale to the evidence → encoding → sealed validation → execution hook
+→ green-gate chain introduced in Build 390. SHA-256 covers that complete design,
+its route, the current claim boundary, and these immutable invariants:
+
+- candidate geometry is frozen during an ablation;
+- evaluation targets are absent from fitting and branch selection;
+- hierarchy depth does not upgrade a physical claim;
+- the artifact is plan-only and does not authorize execution; and
+- physical time is not claimed without a separately validated kinetic model.
+
+Canonical JSON can be copied or downloaded. A share URL records the selection
+and full digest; reopening it recomputes the packet and displays verified or
+mismatched provenance. Incomplete, unknown, or malformed selections fail
+closed. The design packet contains neither coordinates nor candidate actions,
+so a separate stage-aware run receipt remains mandatory before outcomes can be
+compared.
+
 ### Sealed scale-bridge investigation planner (Build 390)
 
 Build 390 converts the cross-scale physics audit into an actionable validation

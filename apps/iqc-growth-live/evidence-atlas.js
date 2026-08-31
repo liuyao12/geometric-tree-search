@@ -2,9 +2,12 @@ import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.j
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
 import { A2_SLICED_SIZE7_CANDIDATES } from "../../assets/a2-sliced-size7-candidates.js?v=20260828-320";
 import { buildHierarchyPhysicsTransport, HIERARCHY_TRANSPORT_STAGES }
-  from "./hierarchy-physics-transport.mjs?v=20260831-390";
+  from "./hierarchy-physics-transport.mjs?v=20260831-391";
 import { buildHierarchyPhysicsInvestigation }
-  from "./hierarchy-physics-investigation.mjs?v=20260831-390";
+  from "./hierarchy-physics-investigation.mjs?v=20260831-391";
+import { buildHierarchyPhysicsProtocolPacket, hierarchyPhysicsProtocolShareUrl,
+  hierarchyPhysicsProtocolSelectionFromSearch, hierarchyPhysicsProtocolPacketFilename }
+  from "./hierarchy-physics-protocol-packet.mjs?v=20260831-391";
 
 const byId = (id) => document.getElementById(id);
 const A2_SLICED_SCALE3_OBSTRUCTIONS = A2_SLICED_SIZE7_CANDIDATES.filter((candidate) =>
@@ -40,9 +43,20 @@ const hierarchyPhysicsInvestigationQuestion = byId("hierarchyPhysicsInvestigatio
 const hierarchyPhysicsInvestigationFlow = byId("hierarchyPhysicsInvestigationFlow");
 const hierarchyPhysicsInvestigationGate = byId("hierarchyPhysicsInvestigationGate");
 const hierarchyPhysicsInvestigationRoute = byId("hierarchyPhysicsInvestigationRoute");
+const hierarchyPhysicsProtocolDigest = byId("hierarchyPhysicsProtocolDigest");
+const hierarchyPhysicsProtocolStatus = byId("hierarchyPhysicsProtocolStatus");
+const hierarchyPhysicsProtocolCopyLink = byId("hierarchyPhysicsProtocolCopyLink");
+const hierarchyPhysicsProtocolCopyJson = byId("hierarchyPhysicsProtocolCopyJson");
+const hierarchyPhysicsProtocolDownload = byId("hierarchyPhysicsProtocolDownload");
 let selectedHierarchyPhysicsChannel = "colored-geometry";
 let selectedHierarchyPhysicsStage = "macro";
 let activeHierarchyPhysicsInvestigation = null;
+let activeHierarchyPhysicsProtocolPacket = null;
+let hierarchyPhysicsProtocolRenderVersion = 0;
+let sharedHierarchyPhysicsSelection = null;
+let sharedHierarchyPhysicsLoadError = null;
+try { sharedHierarchyPhysicsSelection = hierarchyPhysicsProtocolSelectionFromSearch(window.location.search); }
+catch (error) { sharedHierarchyPhysicsLoadError = error; }
 
 const ICE_PORT_ARTIFACT = await fetch(new URL(
   "./ice-molecular-port-artifact.json?v=20260824-1", import.meta.url)).then((response) => {
@@ -934,6 +948,61 @@ function renderHierarchyPhysicsInvestigation(receiptId) {
   }));
   hierarchyPhysicsInvestigationGate.innerHTML = `<b>green gate</b>${plan.greenGate}`;
   hierarchyPhysicsInvestigationRoute.textContent = `${plan.route.label} →`;
+  renderHierarchyPhysicsProtocolPacket(plan);
+}
+
+async function renderHierarchyPhysicsProtocolPacket(plan) {
+  const version = ++hierarchyPhysicsProtocolRenderVersion;
+  activeHierarchyPhysicsProtocolPacket = null;
+  hierarchyPhysicsProtocolDigest.className = "pending";
+  hierarchyPhysicsProtocolDigest.textContent = "computing SHA-256…";
+  hierarchyPhysicsProtocolStatus.className = "pending";
+  hierarchyPhysicsProtocolStatus.textContent = "Canonicalizing evidence, encoding, validation, hook, gate, and leakage invariants.";
+  [hierarchyPhysicsProtocolCopyLink, hierarchyPhysicsProtocolCopyJson,
+    hierarchyPhysicsProtocolDownload].forEach((button) => { button.disabled = true; });
+  try {
+    const packet = await buildHierarchyPhysicsProtocolPacket(plan.receiptId, plan.channelId, plan.stageId);
+    if (version !== hierarchyPhysicsProtocolRenderVersion) return;
+    activeHierarchyPhysicsProtocolPacket = packet;
+    hierarchyPhysicsProtocolDigest.textContent = `${packet.sha256.slice(0, 16)}…`;
+    const shared = sharedHierarchyPhysicsSelection;
+    const sameSelection = shared && shared.receiptId === plan.receiptId
+      && shared.channelId === plan.channelId && shared.stageId === plan.stageId;
+    const verified = sameSelection && shared.expectedSha256 === packet.sha256;
+    const mismatch = sameSelection && !verified;
+    const malformedShare = sharedHierarchyPhysicsLoadError && !shared;
+    hierarchyPhysicsProtocolDigest.className = verified ? "verified" : mismatch || malformedShare ? "mismatch" : "ready";
+    hierarchyPhysicsProtocolStatus.className = verified ? "verified" : mismatch || malformedShare ? "mismatch" : "ready";
+    hierarchyPhysicsProtocolStatus.textContent = malformedShare
+      ? `Shared plan rejected: ${sharedHierarchyPhysicsLoadError.message}` : verified
+      ? "Shared packet verified byte-for-byte · design only · execution still requires a separate run receipt."
+      : mismatch ? "Shared packet SHA-256 mismatch · plan shown, but provenance is not verified."
+        : "Deterministic design packet · coordinates and candidate actions absent · executionAuthorized = false.";
+    [hierarchyPhysicsProtocolCopyLink, hierarchyPhysicsProtocolCopyJson,
+      hierarchyPhysicsProtocolDownload].forEach((button) => { button.disabled = false; });
+  } catch (error) {
+    if (version !== hierarchyPhysicsProtocolRenderVersion) return;
+    hierarchyPhysicsProtocolDigest.className = "mismatch";
+    hierarchyPhysicsProtocolDigest.textContent = "packet unavailable";
+    hierarchyPhysicsProtocolStatus.className = "mismatch";
+    hierarchyPhysicsProtocolStatus.textContent = error.message;
+  }
+}
+
+function protocolPacketDownload(packet) {
+  const blob = new Blob([packet.canonicalPacketJson], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a"); link.href = url;
+  link.download = hierarchyPhysicsProtocolPacketFilename(packet);
+  document.body.appendChild(link); link.click(); link.remove();
+  window.setTimeout(() => URL.revokeObjectURL(url), 0);
+}
+
+async function copyProtocolText(text, success) {
+  if (!navigator.clipboard?.writeText) throw new Error("Clipboard API unavailable.");
+  await navigator.clipboard.writeText(text);
+  hierarchyPhysicsProtocolStatus.className = "verified";
+  hierarchyPhysicsProtocolStatus.textContent = success;
 }
 
 function routeToHierarchyPhysicsInvestigation() {
@@ -975,6 +1044,23 @@ document.querySelectorAll("[data-physics]").forEach((button) => button.addEventL
 hierarchyPhysicsTransportSelect.addEventListener("change", () =>
   renderHierarchyPhysicsTransport(hierarchyPhysicsTransportSelect.value));
 hierarchyPhysicsInvestigationRoute.addEventListener("click", routeToHierarchyPhysicsInvestigation);
+hierarchyPhysicsProtocolCopyLink.addEventListener("click", () => {
+  const packet = activeHierarchyPhysicsProtocolPacket;
+  if (!packet) return;
+  copyProtocolText(hierarchyPhysicsProtocolShareUrl(window.location.href, packet),
+    "Verified plan link copied · reopening recomputes and checks the full SHA-256.")
+    .catch((error) => { hierarchyPhysicsProtocolStatus.textContent = error.message; });
+});
+hierarchyPhysicsProtocolCopyJson.addEventListener("click", () => {
+  const packet = activeHierarchyPhysicsProtocolPacket;
+  if (!packet) return;
+  copyProtocolText(packet.canonicalPacketJson,
+    "Canonical protocol JSON copied · plan only · no coordinates or candidate actions embedded.")
+    .catch((error) => { hierarchyPhysicsProtocolStatus.textContent = error.message; });
+});
+hierarchyPhysicsProtocolDownload.addEventListener("click", () => {
+  if (activeHierarchyPhysicsProtocolPacket) protocolPacketDownload(activeHierarchyPhysicsProtocolPacket);
+});
 document.querySelectorAll("[data-ledger-filter]").forEach((button) => button.addEventListener("click", () => renderLedger(button.dataset.ledgerFilter)));
 methodLink.addEventListener("click", closeAtlas);
 document.addEventListener("keydown", (event) => { if (event.key === "Escape" && !atlas.hidden) closeAtlas(); });
@@ -983,6 +1069,14 @@ renderMatrix();
 renderSystems();
 renderAnatomy("cover");
 renderPhysics("bonding");
-renderHierarchyPhysicsTransport();
+if (sharedHierarchyPhysicsSelection) {
+  selectedHierarchyPhysicsChannel = sharedHierarchyPhysicsSelection.channelId;
+  selectedHierarchyPhysicsStage = sharedHierarchyPhysicsSelection.stageId;
+  renderHierarchyPhysicsTransport(sharedHierarchyPhysicsSelection.receiptId);
+  selectTab("physics");
+  window.setTimeout(openAtlas, 0);
+} else {
+  renderHierarchyPhysicsTransport();
+}
 renderTimeline();
 renderLedger();
