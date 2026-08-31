@@ -7,7 +7,7 @@
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23071112'/%3E%3Cpath d='M17 19 46 12M17 19l8 30m21-37L25 49m-8-30 29 24M25 49l21-6' stroke='%236fffd4' stroke-width='4'/%3E%3Ccircle cx='17' cy='19' r='6' fill='%23f1fff9'/%3E%3Ccircle cx='46' cy='12' r='6' fill='%236fffd4'/%3E%3Ccircle cx='25' cy='49' r='6' fill='%238a7dff'/%3E%3Ccircle cx='46' cy='43' r='6' fill='%236fffd4'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css?v=20260831-348">
+  <link rel="stylesheet" href="./style.css?v=20260831-350">
   <script type="importmap">
     {
       "imports": {
@@ -1321,6 +1321,10 @@
                   <header><span><small>cross-checkpoint state cycle</small><strong>Microscopic inverse lineage</strong></span><b id="actionBarrierInverseBadge">no committed pair</b></header>
                   <div id="actionBarrierInverseSummary" class="action-barrier-summary" aria-live="polite"></div>
                   <p id="actionBarrierInverseState">A later event counts as an inverse only when its initial and final colored-geometry hashes exactly reverse a previously committed serial event. Optional ΔF and species-μ evidence can test grand-canonical local balance for that finite pair.</p>
+                  <div class="transition-network-shell">
+                    <svg id="transitionNetworkPlot" class="transition-network-plot" viewBox="0 0 300 150" role="img" aria-label="Observed exact-state transition network"></svg>
+                    <div class="transition-network-controls"><label>independent cycle<select id="transitionNetworkCycleSelect" aria-label="Inspect an independent transition-network cycle"></select></label><span id="transitionNetworkState">no exact transition network yet</span></div>
+                  </div>
                 </section>
                 <p class="action-barrier-boundary">A validated barrier may softly reorder only attachment IDs in this checkpoint; it cannot create a pose or change hard admission. The reversible catalog additionally exports exact non-seed leaf detachments while retaining shared atoms. Optional method-bound ΔF and species chemical potentials can test local balance only after an exact inverse pair is committed; neither a two-way catalog nor one passing pair proves global detailed balance or equilibrium.</p>
               </section>
@@ -2277,7 +2281,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260831-349"></script>
+  <script type="module" src="./app.js?v=20260831-350"></script>
   <script type="module" src="./evidence-atlas.js?v=20260830-346"></script>
 </body>
 </html>

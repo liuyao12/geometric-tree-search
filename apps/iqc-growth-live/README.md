@@ -1,5 +1,23 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 350 · finite observed transition-network cycles
+
+Committed method-bound events now assemble into an exact colored-state graph,
+not only isolated inverse pairs. The portal retains the latest exact observation
+for each directed edge, pairs state-reversed directions, builds a spanning
+forest, and audits its fundamental cycle basis. Every independent cycle reports
+the Kolmogorov log-rate affinity and the summed grand-potential change with
+propagated uncertainty. Perturbed rates, missing reverse edges, and transitions
+whose committed post-state diverges from the frozen final state fail closed.
+
+The barrier workbench renders the observed graph directly: exact states are
+nodes, paired and one-way events are distinct edges, and a cycle selector
+highlights each independent closure test. The physics evidence ledger and leap
+receipt preserve the same network audit. A passing badge says **finite observed-
+network cycle consistency**—never global detailed balance. The state graph may
+still omit mechanisms or regions, and no completeness, ergodicity, phase
+equilibrium, partition function, or equilibrium ensemble is inferred.
+
 ## Build 349 · evidence-bound grand-canonical pair audit
 
 An external action-barrier response may now optionally carry a complete

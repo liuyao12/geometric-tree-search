@@ -95,6 +95,8 @@ import { enumerateDetachableLeafPlacements }
   from "./reversible-frontier-events.mjs?v=20260831-347";
 import { appendCommittedTransition }
   from "./reversible-transition-lineage.mjs?v=20260831-349";
+import { buildFiniteTransitionNetwork }
+  from "./finite-transition-network.mjs?v=20260831-350";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -617,6 +619,9 @@ const actionBarrierKineticState = $("actionBarrierKineticState");
 const actionBarrierInverseBadge = $("actionBarrierInverseBadge");
 const actionBarrierInverseSummary = $("actionBarrierInverseSummary");
 const actionBarrierInverseState = $("actionBarrierInverseState");
+const transitionNetworkPlot = $("transitionNetworkPlot");
+const transitionNetworkCycleSelect = $("transitionNetworkCycleSelect");
+const transitionNetworkState = $("transitionNetworkState");
 const actionBarrierResumeButton = $("actionBarrierResume");
 const actionBarrierCancelButton = $("actionBarrierCancel");
 const actionBarrierSummary = $("actionBarrierSummary");
@@ -1628,6 +1633,8 @@ let reversibleDetachmentEventCount = 0;
 let reversibleDetachedAtomCount = 0;
 let reversibleTransitionHistory = [];
 let latestMicroscopicInverseAudit = null;
+let latestFiniteTransitionNetworkAudit = buildFiniteTransitionNetwork([]);
+let selectedTransitionNetworkCycleId = null;
 let reversibleInversePairCount = 0;
 let lastExternalActionBarrierReceipt = null;
 let frontierCandidateKeys = new Set();
@@ -23432,11 +23439,17 @@ function registerCommittedReversibleTransition(checkpoint, candidateId, committe
   reversibleTransitionHistory = result.history;
   reversibleInversePairCount = result.exactInversePairCount;
   if (result.inverseAudit) latestMicroscopicInverseAudit = result.inverseAudit;
+  latestFiniteTransitionNetworkAudit = buildFiniteTransitionNetwork(reversibleTransitionHistory);
+  if (!latestFiniteTransitionNetworkAudit.cycles.some((cycle) =>
+    cycle.cycleId === selectedTransitionNetworkCycleId)) {
+    selectedTransitionNetworkCycleId = latestFiniteTransitionNetworkAudit.cycles[0]?.cycleId || null;
+  }
   checkpoint.committedTransitionLineage = {
     transition: result.transition,
     inverseEventId: result.inverseEventId,
     inverseAudit: result.inverseAudit,
     exactInversePairCount: result.exactInversePairCount,
+    finiteTransitionNetwork: latestFiniteTransitionNetworkAudit,
     targetUsed: false,
   };
   return checkpoint.committedTransitionLineage;
@@ -23448,6 +23461,74 @@ function inverseResidualText(value) {
 
 function dimensionlessResidualText(value) {
   return Number.isFinite(value) ? `${value >= 0 ? "+" : ""}${value.toFixed(3)}` : "awaiting μ + ΔF";
+}
+
+function renderFiniteTransitionNetwork() {
+  const audit = latestFiniteTransitionNetworkAudit || buildFiniteTransitionNetwork([]);
+  const svgNamespace = "http://www.w3.org/2000/svg";
+  const makeSvg = (name, attributes = {}) => {
+    const element = document.createElementNS(svgNamespace, name);
+    Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, String(value)));
+    return element;
+  };
+  transitionNetworkPlot.replaceChildren();
+  const selectedCycle = audit.cycles.find((cycle) =>
+    cycle.cycleId === selectedTransitionNetworkCycleId) || audit.cycles[0] || null;
+  selectedTransitionNetworkCycleId = selectedCycle?.cycleId || null;
+  const selectedEdges = new Set(selectedCycle?.edgeKeys || []);
+  const positions = new Map(audit.nodes.map((node, index) => {
+    const angle = audit.nodes.length === 1 ? 0 : -Math.PI / 2 + 2 * Math.PI * index / audit.nodes.length;
+    return [node.stateSha256, { x: audit.nodes.length === 1 ? 150 : 150 + 116 * Math.cos(angle),
+      y: audit.nodes.length === 1 ? 75 : 75 + 52 * Math.sin(angle), node }];
+  }));
+  const drawEdge = (edge, paired) => {
+    const first = positions.get(edge.lowStateSha256); const second = positions.get(edge.highStateSha256);
+    if (!first || !second) return;
+    const classes = ["network-edge", paired ? "paired" : "unpaired"];
+    if (selectedEdges.has(edge.key)) classes.push("cycle");
+    if (paired && !edge.pairAudit?.finitePairLocalBalancePassed) classes.push("failed");
+    const line = makeSvg("line", { x1: first.x, y1: first.y, x2: second.x, y2: second.y,
+      class: classes.join(" ") });
+    const title = makeSvg("title");
+    title.textContent = paired
+      ? `${first.node.stateId} ↔ ${second.node.stateId} · local balance ${edge.pairAudit?.finitePairLocalBalancePassed ? "passed" : "not established"}`
+      : `${first.node.stateId} → ${second.node.stateId} · inverse not observed`;
+    line.append(title); transitionNetworkPlot.append(line);
+  };
+  audit.unpairedEdges.forEach((edge) => drawEdge(edge, false));
+  audit.pairedEdges.forEach((edge) => drawEdge(edge, true));
+  positions.forEach(({ x, y, node }) => {
+    const group = makeSvg("g", { class: "network-node", tabindex: "0", role: "button",
+      "aria-label": `${node.stateId}, exact colored-state hash ${node.shortHash}` });
+    group.append(makeSvg("circle", { cx: x, cy: y, r: 10 }));
+    const label = makeSvg("text", { x, y: y + 2.2, "text-anchor": "middle" });
+    label.textContent = node.stateId;
+    const title = makeSvg("title"); title.textContent = node.stateSha256;
+    group.append(label, title);
+    group.addEventListener("click", () => {
+      transitionNetworkState.textContent = `${node.stateId} · exact colored-state SHA-256 ${node.stateSha256}`;
+    });
+    transitionNetworkPlot.append(group);
+  });
+  transitionNetworkCycleSelect.replaceChildren();
+  if (!audit.cycles.length) {
+    const option = document.createElement("option"); option.value = "";
+    option.textContent = "No independent cycles"; transitionNetworkCycleSelect.append(option);
+    transitionNetworkCycleSelect.disabled = true;
+  } else {
+    audit.cycles.forEach((cycle) => {
+      const option = document.createElement("option"); option.value = cycle.cycleId;
+      option.textContent = `${cycle.cycleId} · ${cycle.edgeKeys.length} edges · ${cycle.cycleConsistencyPassed ? "closed" : "inconsistent"}`;
+      transitionNetworkCycleSelect.append(option);
+    });
+    transitionNetworkCycleSelect.disabled = false;
+    transitionNetworkCycleSelect.value = selectedTransitionNetworkCycleId;
+  }
+  transitionNetworkState.textContent = !audit.nodes.length
+    ? "Commit method-bound serial events to build the exact-state graph."
+    : audit.cycles.length
+      ? `${audit.nodes.length} states · ${audit.pairedEdgeCount} paired edges · ${audit.independentCycleCount} independent cycle${audit.independentCycleCount === 1 ? "" : "s"} · ${audit.finiteObservedNetworkCycleConsistencyPassed ? "finite observed-network consistency passed" : "cycle consistency not established"}. Network completeness remains unproven.`
+      : `${audit.nodes.length} states · ${audit.pairedEdgeCount} paired / ${audit.unpairedEdgeCount} unpaired edges · no independent cycle yet.`;
 }
 
 function renderInverseTransitionLineage() {
@@ -23502,6 +23583,7 @@ function renderInverseTransitionLineage() {
         ? `Committed ${latest.eventDirection} ${latest.candidateId}; a later exact state-reversed event is required for an inverse pair.`
         : "The selected path was followed by a geometry-changing projection, so its frozen final state was not reproduced and it cannot seed an inverse pair."
       : "A later event counts as an inverse only when its initial and final colored-geometry hashes exactly reverse a previously committed serial event. Optional method-bound ΔF and species-μ evidence can test grand-canonical local balance for that finite pair.";
+  renderFiniteTransitionNetwork();
 }
 
 function actionBarrierCheckpointReceipt(checkpoint = externalActionBarrierCheckpoint) {
@@ -23769,7 +23851,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
   const candidates = [...attachmentCandidates, ...detachmentCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-349",
+    generatedAt: new Date().toISOString(), buildId: "20260831-350",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -25189,6 +25271,8 @@ function initializeOffLatticeSearch() {
   reversibleDetachedAtomCount = 0;
   reversibleTransitionHistory = [];
   latestMicroscopicInverseAudit = null;
+  latestFiniteTransitionNetworkAudit = buildFiniteTransitionNetwork([]);
+  selectedTransitionNetworkCycleId = null;
   reversibleInversePairCount = 0;
   lastPolicyComparison = null;
   policyComparisonHistory = [];
@@ -27987,6 +28071,8 @@ function resetCounters() {
   reversibleDetachedAtomCount = 0;
   reversibleTransitionHistory = [];
   latestMicroscopicInverseAudit = null;
+  latestFiniteTransitionNetworkAudit = buildFiniteTransitionNetwork([]);
+  selectedTransitionNetworkCycleId = null;
   reversibleInversePairCount = 0;
   lastPolicyComparison = null;
   policyComparisonHistory = [];
@@ -30537,6 +30623,8 @@ function physicsTranslationRecords(leap = null) {
     || actionBarrierCheckpointReceipt()?.kineticCompetition || null;
   const inverseReceipt = leap?.actionBarrierCheckpoint?.committedTransitionLineage?.inverseAudit
     || latestMicroscopicInverseAudit || null;
+  const transitionNetworkReceipt = leap?.actionBarrierCheckpoint?.committedTransitionLineage
+    ?.finiteTransitionNetwork || latestFiniteTransitionNetworkAudit || null;
   return [
     { id: "hypothesis-separation", process: "controlled separation of correlated geometry-encoded ranking hypotheses",
       status: hypothesisSeparationExperiment ? "soft" : "open",
@@ -30924,6 +31012,20 @@ function physicsTranslationRecords(leap = null) {
           ? "The latest serial event reproduced its frozen state, but no stored event reverses both state hashes."
           : "No method-bound serial attachment or detachment has been committed.",
       boundary: "A closed colored-state cycle plus path-energy consistency checks one microscopic transition. Optional externally supplied system free energies and species chemical potentials test local balance for that finite pair only. No complete Markov network, global detailed balance, equilibrium constant, phase equilibrium, or equilibrium ensemble is inferred." },
+    { id: "finite-transition-network", process: "finite observed transition network / independent cycle basis",
+      status: transitionNetworkReceipt?.finiteObservedNetworkCycleConsistencyPassed ? "validated"
+        : transitionNetworkReceipt?.independentCycleCount ? "observed"
+          : transitionNetworkReceipt?.nodes?.length ? "planned" : "unavailable",
+      role: transitionNetworkReceipt?.independentCycleCount
+        ? "Kolmogorov rate-affinity + grand-potential integrability audit"
+        : "exact bidirectional state-graph assembly",
+      encoding: transitionNetworkReceipt
+        ? `${transitionNetworkReceipt.nodes.length} exact colored states; ${transitionNetworkReceipt.pairedEdgeCount} bidirectional and ${transitionNetworkReceipt.unpairedEdgeCount} one-way edges; spanning-forest basis with ${transitionNetworkReceipt.independentCycleCount} independent cycle${transitionNetworkReceipt.independentCycleCount === 1 ? "" : "s"}`
+        : "no committed exact-state graph",
+      evidence: transitionNetworkReceipt?.independentCycleCount
+        ? `${transitionNetworkReceipt.kineticKolmogorovCycleConsistencyPassed ? "Rate-affinity cycles close" : "Rate-affinity closure not established"}; ${transitionNetworkReceipt.grandPotentialIntegrabilityPassed ? "ΔΩ is integrable on observed cycles" : "ΔΩ integrability not established"}; finite observed-network result ${transitionNetworkReceipt.finiteObservedNetworkCycleConsistencyPassed ? "passed" : "not established"}.`
+        : "At least one independently closed bidirectional cycle is required before network consistency can be tested.",
+      boundary: "Only the latest exact committed observation per directed edge enters this finite observed graph. Missing states and mechanisms remain unknown; cycle consistency is not network completeness, ergodicity, global detailed balance, phase equilibrium, or an equilibrium ensemble." },
     { id: "kinetics", process: "activation, diffusion, heat flow, and elapsed time", status: activeArrivalPathWeight() > 0 ? "soft" : "open", role: activeArrivalPathWeight() > 0 ? "geometric accessibility proxy" : "not modeled",
       encoding: activeArrivalPathWeight() > 0
         ? `${arrivalPathLabel()}; ${arrivalPathMode === "free-volume" ? "5 routes × " : ""}9 swept-clearance samples over 2dₙₙ for emitted sites only, w=${activeArrivalPathWeight().toFixed(2)}`
@@ -37962,6 +38064,10 @@ actionBarrierResumeButton.addEventListener("click", () => {
 });
 actionBarrierCancelButton.addEventListener("click", () =>
   releaseExternalActionBarrierCheckpoint());
+transitionNetworkCycleSelect.addEventListener("change", () => {
+  selectedTransitionNetworkCycleId = transitionNetworkCycleSelect.value || null;
+  renderFiniteTransitionNetwork();
+});
 processTimelineInput.addEventListener("input", () => scrubProcessTimeline(processTimelineInput.value));
 resetButton.addEventListener("click", () => enterPipelineStage(pipelineStage));
 downloadReceiptButton.addEventListener("click", () => withReceiptStatus(downloadReceiptButton, async () => {
