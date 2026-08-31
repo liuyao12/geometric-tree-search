@@ -49,9 +49,14 @@ const tenCopyReceipts = await readGzipNdjson(
 const radiusTwoContinuations = await readGzipNdjson(
   "data/a2-sliced-size9-palindromic-corona2-core256.ndjson.gz"
 );
-const fiveCopySubstitutions = await readGzipNdjson(
-  "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-proper-04636.ndjson.gz"
-);
+const fiveCopySubstitutions = [
+  ...(await readGzipNdjson(
+    "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-proper-04636.ndjson.gz"
+  )),
+  ...(await readGzipNdjson(
+    "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-proper-01085.ndjson.gz"
+  ))
+];
 const tenCopySolverProbe = tenCopySummary.solver_probe;
 if (!tenCopySolverProbe
     || tenCopySolverProbe.solver !== "qffd"
@@ -235,13 +240,17 @@ const candidates = selectedIds.map((id, index) => {
       throw new Error(`Missing validated radius-two continuation for ${id}`);
     }
   }
-  if (id === "a2sp_9_04636" && (
+  const expectedFiveCopyParents = new Map([
+    ["a2sp_9_04636", 17707],
+    ["a2sp_9_01085", 68758]
+  ]).get(id);
+  if (expectedFiveCopyParents && (
       fiveCopy?.classification !== "no_five_copy_metatile_scalar2_substitution"
       || fiveCopy.five_copy_alcove_metatile_screen.certified !== true
       || fiveCopy.five_copy_alcove_metatile_screen.include_reflections !== false
-      || fiveCopy.five_copy_alcove_metatile_screen.symmetry_distinct_metatiles !== 17707
-      || fiveCopy.five_copy_alcove_metatile_screen.parents_completed !== 17707
-      || fiveCopy.five_copy_alcove_metatile_screen.parent_counts.atomic_local_obstruction !== 17707
+      || fiveCopy.five_copy_alcove_metatile_screen.symmetry_distinct_metatiles !== expectedFiveCopyParents
+      || fiveCopy.five_copy_alcove_metatile_screen.parents_completed !== expectedFiveCopyParents
+      || fiveCopy.five_copy_alcove_metatile_screen.parent_counts.atomic_local_obstruction !== expectedFiveCopyParents
       || fiveCopy.five_copy_alcove_metatile_screen.parent_results.some(result =>
         result.atomic_local_obstruction_replay?.verified !== true))) {
     throw new Error(`Missing replayed proper five-copy substitution exclusion for ${id}`);
@@ -356,7 +365,7 @@ const candidates = selectedIds.map((id, index) => {
       five_copy_substitution_parents_exhausted:
         fiveCopy?.five_copy_alcove_metatile_screen.parents_completed ?? 0,
       five_copy_substitution_report: fiveCopy
-        ? "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-proper-04636.ndjson.gz"
+        ? `data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-proper-${id.slice("a2sp_9_".length)}.ndjson.gz`
         : null,
       corona_root_patch_copies: corona.corona_z3.replay.patch_copies,
       corona_solver: corona.corona_z3.smt2_sha256 ? "z3" : "exact_gcts",
