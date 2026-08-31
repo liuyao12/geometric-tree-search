@@ -4,7 +4,7 @@ import {
   GCTS_CATALOG_MIN_PERIODIC_MOTIF_TILES,
   isGctsFigureVisibleInCatalog,
   tileSpecs
-} from "./engine.js?v=20260830-a2-sliced9-v257";
+} from "./engine.js?v=20260830-a2-sliced9-v258";
 
 const $ = (id) => document.getElementById(id);
 
@@ -799,14 +799,17 @@ function catalogGroupForFigure(figure) {
 function sortCatalogFigures(groupId, figures) {
   return figures.slice().sort((a, b) => {
     if (groupId === "a2-layered") {
-      const slicedDelta = Number(b.census_candidate?.kind === "a2_sliced_alcove_census")
-        - Number(a.census_candidate?.kind === "a2_sliced_alcove_census");
+      const aIsSliced = a.census_candidate?.kind?.startsWith("a2_sliced_");
+      const bIsSliced = b.census_candidate?.kind?.startsWith("a2_sliced_");
+      const slicedDelta = Number(bIsSliced) - Number(aIsSliced);
       if (slicedDelta !== 0) return slicedDelta;
-      if (a.census_candidate?.kind === "a2_sliced_alcove_census"
-          && b.census_candidate?.kind === "a2_sliced_alcove_census") {
+      if (aIsSliced && bIsSliced) {
         const sizeDelta = (b.census_candidate.alcoves?.length ?? 0)
           - (a.census_candidate.alcoves?.length ?? 0);
         if (sizeDelta !== 0) return sizeDelta;
+        const exactDepthDelta = (b.census_candidate.screening?.periodic_exact_through ?? 0)
+          - (a.census_candidate.screening?.periodic_exact_through ?? 0);
+        if (exactDepthDelta !== 0) return exactDepthDelta;
       }
       const priorityDelta = (a.census_candidate?.survivor_priority ?? Infinity)
         - (b.census_candidate?.survivor_priority ?? Infinity);
@@ -1464,7 +1467,9 @@ function updateCandidateResearchPanel() {
       candidateResearchTitle.textContent = candidate.screening.status === "periodic"
         ? `Certified periodic control ${candidate.id}`
         : `Research candidate ${candidate.id}`;
-      candidateResearchDetail.textContent = candidate.kind === "a2_sliced_alcove_census"
+        candidateResearchDetail.textContent = candidate.kind === "a2_sliced_palindromic_alcove_census"
+          ? `${candidate.description} Its solid-angle profile across the ${candidate.morphology.layer_count} consecutive sections is ${candidate.morphology.layer_weight_profile.join("–")}. The complete size-nine census contains ${candidate.screening.complete_source_pool_size.toLocaleString()} connected shapes. This candidate comes from the ${candidate.screening.recovered_source_pool_size.toLocaleString()}-shape palindromic-profile stratum that the earlier ranking heuristic omitted. Exact quotient search certifies ${candidate.screening.recovered_two_copy_periodic_certificates.toLocaleString()} of that stratum at two copies and another ${candidate.screening.recovered_four_copy_additional_periodic_certificates} at four copies; ${candidate.screening.recovered_reflection_classes_through_four} reflection classes reach the six-copy screen, which removes another ${candidate.screening.recovered_six_copy_additional_periodic_classes} and leaves ${candidate.screening.recovered_reflection_classes_through_six}. This candidate completely excludes all ${candidate.screening.periodic_six_copy_hnf_total} determinant-nine HNF quotients through six copies with zero solver unknowns. Its bounded eight-copy continuation exactly excludes ${candidate.screening.periodic_eight_copy_bounded_hnf_visited} of 104 HNF orbits, covering ${candidate.screening.periodic_eight_copy_bounded_hnf_covered} of ${candidate.screening.periodic_eight_copy_hnf_total} HNFs, before the ${candidate.screening.periodic_eight_copy_candidate_time_limit_ms / 1000}-second candidate limit; the remainder is inconclusive. A ${candidate.screening.corona_solver === "z3" ? "separate Z3 backend" : "bounded exact GCTS run"} finds an independently replayed ${candidate.screening.corona_root_patch_copies}-copy root corona. Larger periodic domains and extension beyond the first corona remain open. These are exact bounded screening facts, not evidence of aperiodicity.`
+          : candidate.kind === "a2_sliced_alcove_census"
         ? candidate.screening.status === "periodic"
           ? `${candidate.description} Exact determinant-${candidate.screening.quotient_determinant} quotient search found a replay-verified ${candidate.screening.motif_tiles}-copy translational tiling with period vectors ${candidate.screening.period_vectors.map(vector => `(${vector.join(",")})`).join(", ")}. This conclusively removes the tile from the aperiodic-candidate shortlist and retains it as a large-domain non-polycube periodic control.`
           : candidate.alcoves?.length === 9
@@ -3125,7 +3130,7 @@ function flushFullUpdateNow() {
 
 function ensureSolverWorker() {
   if (solverWorker) return solverWorker;
-  solverWorker = new Worker(new URL("./solver-worker.js?v=20260830-a2-sliced9-v252", import.meta.url), { type: "module" });
+  solverWorker = new Worker(new URL("./solver-worker.js?v=20260830-a2-sliced9-v253", import.meta.url), { type: "module" });
   solverWorker.addEventListener("message", (event) => {
     const { seq, type, message, error } = event.data ?? {};
     if (seq !== runSeq) return;
@@ -3886,7 +3891,7 @@ function startGrowthBenchmark() {
   };
 
   for (const mode of GROWTH_MODES) {
-    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260830-a2-sliced9-v252", import.meta.url), { type: "module" });
+    const worker = new Worker(new URL("./growth-benchmark-worker.js?v=20260830-a2-sliced9-v253", import.meta.url), { type: "module" });
     growthWorkers.set(mode.id, worker);
     setRunButton();
     worker.addEventListener("message", event => {

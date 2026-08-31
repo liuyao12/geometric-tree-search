@@ -29,6 +29,7 @@ import { A2_LAYERED_SIZE9_CANDIDATES } from "../assets/a2-layered-size9-candidat
 import { A2_SLICED_SIZE7_CANDIDATES } from "../assets/a2-sliced-size7-candidates.js";
 import { A2_SLICED_SIZE8_CANDIDATES } from "../assets/a2-sliced-size8-candidates.js";
 import { A2_SLICED_SIZE9_CANDIDATES } from "../assets/a2-sliced-size9-candidates.js";
+import { A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES } from "../assets/a2-sliced-size9-palindromic-candidates.js";
 import {
   polycubeCoronaBoundaryKey,
   searchPolycubeCorona,
@@ -1634,7 +1635,7 @@ assert.equal(
 );
 
 const candidates = tileSpecs.figureCatalog.filter(figure => figure.census_candidate);
-assert.equal(candidates.length, 56 + A2_LAYERED_SIZE7_CANDIDATES.length + A2_LAYERED_SIZE8_CANDIDATES.length + A2_LAYERED_SIZE9_CANDIDATES.length + A2_SLICED_SIZE7_CANDIDATES.length + A2_SLICED_SIZE8_CANDIDATES.length + A2_SLICED_SIZE9_CANDIDATES.length,
+assert.equal(candidates.length, 56 + A2_LAYERED_SIZE7_CANDIDATES.length + A2_LAYERED_SIZE8_CANDIDATES.length + A2_LAYERED_SIZE9_CANDIDATES.length + A2_SLICED_SIZE7_CANDIDATES.length + A2_SLICED_SIZE8_CANDIDATES.length + A2_SLICED_SIZE9_CANDIDATES.length + A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES.length,
   "the lattice controls, free-polycube representatives, and focused A2 survivors must remain in the catalog");
 assert.ok(!candidates.some(figure => figure.census_candidate.id === "10_26470"));
 const survivors = candidates.filter(figure => figure.census_candidate.screening.status === "inconclusive");
@@ -1644,7 +1645,7 @@ const shellControls = candidates.filter(figure =>
 const periodicControls = candidates.filter(figure =>
   ["translational", "isohedral_periodic_quotient"].includes(figure.census_candidate.screening.certificate)
 );
-const unresolvedA2Candidates = [...A2_SLICED_SIZE9_CANDIDATES, ...A2_SLICED_SIZE8_CANDIDATES, ...A2_SLICED_SIZE7_CANDIDATES, ...A2_LAYERED_SIZE9_CANDIDATES, ...A2_LAYERED_SIZE8_CANDIDATES, ...A2_LAYERED_SIZE7_CANDIDATES].filter(
+const unresolvedA2Candidates = [...A2_SLICED_SIZE9_CANDIDATES, ...A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES, ...A2_SLICED_SIZE8_CANDIDATES, ...A2_SLICED_SIZE7_CANDIDATES, ...A2_LAYERED_SIZE9_CANDIDATES, ...A2_LAYERED_SIZE8_CANDIDATES, ...A2_LAYERED_SIZE7_CANDIDATES].filter(
   candidate => candidate.screening.status === "inconclusive"
 );
 assert.equal(survivors.length, 11 + unresolvedA2Candidates.length);
@@ -1671,6 +1672,16 @@ const slicedSizeNineLeads = A2_SLICED_SIZE9_CANDIDATES.filter(
 assert.deepEqual(slicedSizeNineLeads.map(candidate => candidate.id), [
   "a2sa_9_11364", "a2sa_9_13833", "a2sa_9_15635"
 ]);
+assert.deepEqual(A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES.map(candidate => candidate.id), [
+  "a2sp_9_04636", "a2sp_9_01085", "a2sp_9_04468"
+]);
+assert.ok(A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES.every(candidate =>
+  candidate.screening.periodic_exact_through === 6
+  && candidate.screening.periodic_six_copy_solver_unknowns === 0
+  && candidate.screening.periodic_eight_copy_stopped_by === "candidate_time_limit"
+  && candidate.screening.periodic_eight_copy_bounded_hnf_visited >= 4
+  && candidate.screening.corona_root_patch_copies > 1
+));
 assert.deepEqual(
   slicedSizeNineLeads.map(candidate => [
     candidate.screening.periodic_ten_copy_exact_negative_orbits,
