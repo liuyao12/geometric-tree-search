@@ -321,13 +321,31 @@ def exact_weighted_multicover(
             return fallback
         if remaining == 0:
             return () if not any(state_capacities) else None
-        state = (state_capacities, selected_mask)
+        # ``selected_mask`` also contains canonically skipped pivot choices,
+        # so it does not determine how many copies were actually selected for
+        # arbitrary synthetic vectors.  Keep the cardinality in the memo key.
+        state = (state_capacities, selected_mask, remaining)
         if state in failed:
             return None
 
         fitting_mask = all_mask & ~selected_mask
         for residue, capacity in enumerate(state_capacities):
             fitting_mask &= ~exceed_masks[residue][capacity]
+
+        # The geometric quotient uses equal positive-weight placements, but
+        # this exact helper is also tested independently.  If all capacities
+        # are filled before the requested cardinality, only all-zero vectors
+        # may occupy the remaining Boolean slots.
+        if not any(state_capacities):
+            if popcount(fitting_mask) < remaining:
+                failed.add(state)
+                return None
+            zero_indices = []
+            while fitting_mask and len(zero_indices) < remaining:
+                bit = fitting_mask & -fitting_mask
+                fitting_mask -= bit
+                zero_indices.append(original_indices[bit.bit_length() - 1])
+            return tuple(zero_indices)
 
         pivot_mask = 0
         pivot_score = None

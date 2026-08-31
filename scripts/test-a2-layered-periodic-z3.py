@@ -128,6 +128,16 @@ cutoff = MODULE.exact_weighted_multicover(
 assert cutoff["result"] == "unknown"
 assert cutoff["chosen_indices"] is None
 
+# The helper also remains exact for unequal-total synthetic vectors: after a
+# weighted residue is filled, zero vectors may still satisfy the copy count.
+unequal_total = MODULE.exact_weighted_multicover(
+    [{"weights": [8]}, {"weights": [16]}, {"weights": [0]},
+     {"weights": [40]}, {"weights": [40]}],
+    3,
+)
+assert unequal_total["result"] == "sat"
+assert unequal_total["chosen_indices"] == [0, 3, 2]
+
 # Force the seven-copy 3+3 fallback and compare its complete result with an
 # independent brute-force oracle.  A one-node DFS budget makes every
 # nontrivial instance enter the meet-in-the-middle path.
