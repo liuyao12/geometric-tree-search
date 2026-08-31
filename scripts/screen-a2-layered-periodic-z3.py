@@ -899,6 +899,12 @@ def main():
     parser.add_argument("--solver", choices=("exact", "default", "qffd"), default="exact")
     parser.add_argument("--exact-node-limit", type=int, default=0)
     parser.add_argument("--progress-every-hnf", type=int, default=0)
+    parser.add_argument(
+        "--progress-every-candidate",
+        type=int,
+        default=1,
+        help="print one candidate result every N records; use 0 for summary only",
+    )
     parser.add_argument("--hnf-orbit-representatives", action="store_true")
     parser.add_argument("--hnf-start", type=int, default=0)
     parser.add_argument("--hnf-stop", type=int, default=0)
@@ -926,7 +932,14 @@ def main():
             stream.flush()
             certificate = screened["periodic_z3"].get("certificate")
             suffix = f" {certificate['copies']}-copy det={certificate['determinant']}" if certificate else ""
-            print(f"{index}/{len(records)} {record['id']} {screened['classification']}{suffix}", flush=True)
+            if args.progress_every_candidate and (
+                index % args.progress_every_candidate == 0 or index == len(records)
+            ):
+                print(
+                    f"{index}/{len(records)} {record['id']} "
+                    f"{screened['classification']}{suffix}",
+                    flush=True,
+                )
     print(json.dumps({"records": len(records), **counts, "output": str(output)}, indent=2))
 
 
