@@ -88,74 +88,74 @@ import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntim
   from "./external-trajectory-geometry.mjs?v=20260830-346";
 import { actionBarrierSha256, buildFrozenActionBarrierRequest, frozenActionBarrierRequestReceipt,
   frozenActionStateGeometrySha256, validateFrozenActionBarrierResponse }
-  from "./external-action-barrier.mjs?v=20260831-398";
+  from "./external-action-barrier.mjs?v=20260831-399";
 import { buildActionPathViewerFrame, projectActionPathViewerFrame }
-  from "./action-path-viewer.mjs?v=20260831-398";
+  from "./action-path-viewer.mjs?v=20260831-399";
 import { actionPathMechanismSensitivity, analyzeActionPathMechanism }
-  from "./action-path-mechanism.mjs?v=20260831-398";
+  from "./action-path-mechanism.mjs?v=20260831-399";
 import { buildFrozenKineticCompetition }
-  from "./frozen-frontier-kinetics.mjs?v=20260831-398";
+  from "./frozen-frontier-kinetics.mjs?v=20260831-399";
 import { buildKineticEventSpectrum }
-  from "./kinetic-event-spectrum.mjs?v=20260831-398";
+  from "./kinetic-event-spectrum.mjs?v=20260831-399";
 import { buildTemperatureProgrammedKinetics, inspectTemperatureProgram }
-  from "./temperature-programmed-kinetics.mjs?v=20260831-398";
+  from "./temperature-programmed-kinetics.mjs?v=20260831-399";
 import { buildKineticGeometryResponse, inspectKineticGeometryResponse }
-  from "./kinetic-geometry-response.mjs?v=20260831-398";
+  from "./kinetic-geometry-response.mjs?v=20260831-399";
 import { buildFrontierMechanismLandscape }
-  from "./frontier-mechanism-landscape.mjs?v=20260831-398";
+  from "./frontier-mechanism-landscape.mjs?v=20260831-399";
 import { enumerateDetachableLeafPlacements }
   from "./reversible-frontier-events.mjs?v=20260831-347";
 import { enumerateMassConservingSurfaceHops }
-  from "./surface-hop-events.mjs?v=20260831-398";
+  from "./surface-hop-events.mjs?v=20260831-399";
 import { enumerateLocalSpeciesExchangeEvents }
-  from "./species-exchange-events.mjs?v=20260831-398";
+  from "./species-exchange-events.mjs?v=20260831-399";
 import { buildExternalStateRelaxationRequest, stateRelaxationSha256,
   validateExternalStateRelaxationResponse }
-  from "./external-state-relaxation.mjs?v=20260831-398";
+  from "./external-state-relaxation.mjs?v=20260831-399";
 import { appendCommittedTransition }
-  from "./reversible-transition-lineage.mjs?v=20260831-398";
+  from "./reversible-transition-lineage.mjs?v=20260831-399";
 import { buildFiniteTransitionNetwork }
   from "./finite-transition-network.mjs?v=20260831-352";
 import { buildFiniteNetworkPopulationDynamics }
-  from "./finite-network-population-dynamics.mjs?v=20260831-398";
+  from "./finite-network-population-dynamics.mjs?v=20260831-399";
 import { buildFiniteNetworkGeometricFlux }
-  from "./finite-network-geometric-flux.mjs?v=20260831-398";
+  from "./finite-network-geometric-flux.mjs?v=20260831-399";
 import { buildFiniteNetworkStructuralFlux }
-  from "./finite-network-structural-flux.mjs?v=20260831-398";
+  from "./finite-network-structural-flux.mjs?v=20260831-399";
 import { buildGeometricStateDescriptor, materialEndpointSites }
-  from "./geometric-state-descriptor.mjs?v=20260831-398";
+  from "./geometric-state-descriptor.mjs?v=20260831-399";
 import { buildFiniteNetworkGlobalOrder }
-  from "./finite-network-global-order.mjs?v=20260831-398";
+  from "./finite-network-global-order.mjs?v=20260831-399";
 import { auditCompetingObservedTransitionPaths }
   from "./finite-transition-pathways.mjs?v=20260831-352";
 import { buildFiniteNetworkFirstPassage }
-  from "./finite-network-first-passage.mjs?v=20260831-398";
+  from "./finite-network-first-passage.mjs?v=20260831-399";
 import { buildFiniteNetworkFirstPassageUncertainty }
-  from "./finite-network-first-passage-uncertainty.mjs?v=20260831-398";
+  from "./finite-network-first-passage-uncertainty.mjs?v=20260831-399";
 import { buildFiniteNetworkPassageControl }
-  from "./finite-network-passage-control.mjs?v=20260831-398";
+  from "./finite-network-passage-control.mjs?v=20260831-399";
 import { buildFiniteNetworkRateIntervention }
-  from "./finite-network-rate-intervention.mjs?v=20260831-398";
+  from "./finite-network-rate-intervention.mjs?v=20260831-399";
 import { buildFiniteNetworkTemperatureIntervention }
-  from "./finite-network-temperature-intervention.mjs?v=20260831-398";
+  from "./finite-network-temperature-intervention.mjs?v=20260831-399";
 import { buildFiniteNetworkConditionedPassage }
-  from "./finite-network-conditioned-passage.mjs?v=20260831-398";
+  from "./finite-network-conditioned-passage.mjs?v=20260831-399";
 import { buildFiniteNetworkConditionedHeterogeneity }
-  from "./finite-network-conditioned-heterogeneity.mjs?v=20260831-398";
+  from "./finite-network-conditioned-heterogeneity.mjs?v=20260831-399";
 import { buildFiniteNetworkConditionedArrival }
-  from "./finite-network-conditioned-arrival.mjs?v=20260831-398";
+  from "./finite-network-conditioned-arrival.mjs?v=20260831-399";
 import { buildFiniteNetworkConditionedStructuralPath }
-  from "./finite-network-conditioned-structural-path.mjs?v=20260831-398";
+  from "./finite-network-conditioned-structural-path.mjs?v=20260831-399";
 import { buildFiniteNetworkConditionedStructuralDispersion }
-  from "./finite-network-conditioned-structural-dispersion.mjs?v=20260831-398";
+  from "./finite-network-conditioned-structural-dispersion.mjs?v=20260831-399";
 import { buildFiniteNetworkConditionedScatteringPath }
-  from "./finite-network-conditioned-scattering-path.mjs?v=20260831-398";
+  from "./finite-network-conditioned-scattering-path.mjs?v=20260831-399";
 import { buildHierarchyEvidenceMicroscope }
-  from "./hierarchy-evidence-microscope.mjs?v=20260831-398";
+  from "./hierarchy-evidence-microscope.mjs?v=20260831-399";
 import { captureHierarchyPhysicsProtocolLaunch, bindHierarchyPhysicsProtocolToExecution }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260831-398";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260831-399";
 import { buildHierarchyPhysicsProtocolConformance }
-  from "./hierarchy-physics-protocol-conformance.mjs?v=20260831-398";
+  from "./hierarchy-physics-protocol-conformance.mjs?v=20260831-399";
 import { buildFiniteNucleationLandscape }
   from "./finite-nucleation-landscape.mjs?v=20260831-352";
 import { buildInterfacialEnergyRequest, buildNormalizedWulffGeometry,
@@ -165,19 +165,19 @@ import { evaluateWulffShapeRegularizer, matchedWulffRankingAudit }
   from "./wulff-shape-regularizer.mjs?v=20260831-354";
 import { buildAttachmentKineticsRequest, buildNormalizedKineticWulffGeometry,
   validateAttachmentKineticsResponse, evaluateKineticHabitScore, matchedKineticHabitRankingAudit }
-  from "./external-attachment-kinetics.mjs?v=20260831-398";
+  from "./external-attachment-kinetics.mjs?v=20260831-399";
 import { buildInterfaceFluxRequest, validateInterfaceFluxResponse, evaluateInterfaceFluxScore,
   matchedInterfaceFluxRankingAudit }
-  from "./external-interface-flux.mjs?v=20260831-398";
+  from "./external-interface-flux.mjs?v=20260831-399";
 import { periodicSiteNumberDensity, coupleInterfaceSupplyAndAttachment,
   syntheticGrowthRegimePreview }
-  from "./growth-regime-bridge.mjs?v=20260831-398";
+  from "./growth-regime-bridge.mjs?v=20260831-399";
 import { buildLeapfrogPhysicsCycle, couplingModeGate, LEAPFROG_COUPLING_MODES }
-  from "./leapfrog-physics-cycle.mjs?v=20260831-398";
+  from "./leapfrog-physics-cycle.mjs?v=20260831-399";
 import { buildCatalogConditionalChronology }
-  from "./catalog-conditional-chronology.mjs?v=20260831-398";
+  from "./catalog-conditional-chronology.mjs?v=20260831-399";
 import { buildCoupledPhysicsState, coupledStateGate }
-  from "./coupled-physics-state.mjs?v=20260831-398";
+  from "./coupled-physics-state.mjs?v=20260831-399";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -2137,6 +2137,7 @@ let trainingProgress = 0;
 let clusterDiscoveryTrace = null;
 let clusterDiscoveryProgress = 0;
 let molecularCoverFocus = "all";
+let molecularGalleryFilter = "representative";
 let selectedProcessEvidenceIndex = 0;
 let selectedConstraintName = "species / hard core";
 let leapHistory = [];
@@ -4046,7 +4047,7 @@ async function downloadInterfacialEnergyRequest() {
   const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-398",
+  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-399",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256,
@@ -4290,7 +4291,7 @@ async function downloadAttachmentKineticsRequest() {
   const material = currentMaterial(); const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-398",
+  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-399",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256, intrinsicDimension, orientationBasisCartesian,
@@ -4809,7 +4810,7 @@ async function downloadSpatialInterfaceFluxRequest() {
   const interfaceGeometrySha256 = await receiptSha256(JSON.stringify({ structureSha256: configuration.structureSha256,
     confinement: confinementSelect?.value || "box", publicReach: growthDomainScale, atomCount: referenceAtoms.length }));
   const species = material.actualElements ? [...material.actualElements] : [...material.elements];
-  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-398",
+  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-399",
     scenarioId: scenarioSelect.value, materialName: material.name, species,
     structureSha256: configuration.structureSha256, interfaceGeometrySha256,
     interfaceConfiguration: configuration,
@@ -12054,19 +12055,32 @@ function buildMolecularGalleryToolbar(types) {
   const galleryAccounting = learnedCover.molecular?.metricConformerClasses > 1
     ? `${learnedCover.molecular.metricConformerClasses} molecular metric conformers retained beneath one topology class`
     : "no classes merged";
+  const representativeIndices = new Set();
+  if (learnedCover.molecular) {
+    ["molecule", "bridge", "gap", "residual"].forEach((family) => {
+      const index = types.findIndex((cluster) => clusterGalleryFamily(cluster) === family);
+      if (index >= 0) representativeIndices.add(index);
+    });
+  }
   const filters = learnedCover.molecular ? [
-    ["all", "All cover classes"], ["molecule", learnedCover.molecular.water ? `${learnedCover.molecular.waterLabel || "H₂O"} molecules` : "Molecules"],
+    ["representative", "Family overview"], ["all", "All cover classes"],
+    ["molecule", learnedCover.molecular.water ? `${learnedCover.molecular.waterLabel || "H₂O"} molecules` : "Molecules"],
     ["bridge", "Bridge polyhedra"], ["gap", "Gap boundaries"],
   ] : [
     ["all", "All cover classes"], ["support", "Recurring supports"],
     ...(types.some((cluster) => cluster.gap && !cluster.residual) ? [["gap", "Void boundaries"]] : []),
     ["residual", "Gap / residual terminals"],
   ];
-  const inheritedFamily = learnedCover.molecular
-    && filters.some(([family]) => family === molecularCoverFocus) ? molecularCoverFocus : "all";
+  const requestedFamily = learnedCover.molecular && molecularCoverFocus !== "all"
+    ? molecularCoverFocus : molecularGalleryFilter;
+  const inheritedFamily = filters.some(([family]) => family === requestedFamily)
+    ? requestedFamily : learnedCover.molecular ? "representative" : "all";
+  const visibleForFilter = (family, cluster, index) => family === "all"
+    || (family === "representative" ? representativeIndices.has(index)
+      : clusterGalleryFamily(cluster) === family);
   filters.forEach(([family, label], index) => {
-    const count = family === "all" ? types.length
-      : types.filter((cluster) => clusterGalleryFamily(cluster) === family).length;
+    const count = types.filter((cluster, clusterIndex) =>
+      visibleForFilter(family, cluster, clusterIndex)).length;
     const button = document.createElement("button");
     button.type = "button";
     button.dataset.clusterFamilyFilter = family;
@@ -12074,7 +12088,11 @@ function buildMolecularGalleryToolbar(types) {
     button.setAttribute("aria-pressed", String(family === inheritedFamily));
     button.innerHTML = `<span>${label}</span><b>${count}</b>`;
     button.addEventListener("click", () => {
-      if (learnedCover.molecular) molecularCoverFocus = family;
+      if (learnedCover.molecular) {
+        molecularGalleryFilter = family;
+        molecularCoverFocus = ["molecule", "bridge", "gap", "residual"].includes(family)
+          ? family : "all";
+      }
       controls.querySelectorAll("button").forEach((candidate) => {
         const active = candidate === button;
         candidate.classList.toggle("active", active);
@@ -12082,11 +12100,15 @@ function buildMolecularGalleryToolbar(types) {
       });
       let visible = 0;
       clusterGallery.querySelectorAll(".cluster-card").forEach((card) => {
-        const show = family === "all" || card.dataset.clusterFamily === family;
+        const show = family === "all" || (family === "representative"
+          ? representativeIndices.has(Number(card.dataset.clusterIndex))
+          : card.dataset.clusterFamily === family);
         card.hidden = !show;
         visible += Number(show);
       });
-      status.textContent = `Showing ${visible} / ${types.length} cover classes${family === "all" ? "" : ` · ${label} focus`} · ${galleryAccounting}`;
+      status.textContent = family === "representative"
+        ? `Showing ${visible} family representatives / ${types.length} retained isometry classes · open All cover classes for the complete library`
+        : `Showing ${visible} / ${types.length} cover classes${family === "all" ? "" : ` · ${label} focus`} · ${galleryAccounting}`;
       const selected = clusterGallery.querySelector(".cluster-card.active:not([hidden])")
         || clusterGallery.querySelector(".cluster-card:not([hidden])");
       if (selected) {
@@ -12100,9 +12122,11 @@ function buildMolecularGalleryToolbar(types) {
     });
     controls.append(button);
   });
-  const inheritedCount = inheritedFamily === "all" ? types.length
-    : types.filter((cluster) => clusterGalleryFamily(cluster) === inheritedFamily).length;
-  status.textContent = `Showing ${inheritedCount} / ${types.length} cover classes${inheritedFamily === "all" ? "" : " · inherited cover focus"} · ${galleryAccounting}`;
+  const inheritedCount = types.filter((cluster, clusterIndex) =>
+    visibleForFilter(inheritedFamily, cluster, clusterIndex)).length;
+  status.textContent = inheritedFamily === "representative"
+    ? `Showing ${inheritedCount} family representatives / ${types.length} retained isometry classes · complete library remains available`
+    : `Showing ${inheritedCount} / ${types.length} cover classes${inheritedFamily === "all" ? "" : " · inherited cover focus"} · ${galleryAccounting}`;
   const inspector = document.createElement("div");
   inspector.className = "cluster-gallery-inspector";
   inspector.setAttribute("aria-live", "polite");
@@ -12184,7 +12208,7 @@ function updateClusterGalleryTrainingReadouts() {
   if (!sectionModel || clusterGallery.hidden) return;
   const visible = [...clusterGallery.querySelectorAll(".cluster-card")].filter((card) => !card.hidden).length;
   const status = clusterGallery.querySelector(".cluster-gallery-toolbar p");
-  if (status) status.textContent = `GCTS fit ${trainingProgress}/${markingSampleCount()} · showing ${visible}/${clusterGalleryTypes().length} cluster marking scenes${molecularCoverFocus === "all" ? "" : ` · ${molecularCoverFocus} cover focus`}`;
+  if (status) status.textContent = `GCTS fit ${trainingProgress}/${markingSampleCount()} · showing ${visible}/${clusterGalleryTypes().length} cluster marking scenes${molecularGalleryFilter === "representative" ? " · one representative per cover family" : molecularCoverFocus === "all" ? " · complete isometry library" : ` · ${molecularCoverFocus} cover focus`}`;
   clusterGallery.querySelectorAll("[data-cluster-training]").forEach((readout) => {
     const galleryIndex = Number(readout.dataset.clusterTraining);
     const cluster = clusterGalleryTypes()[galleryIndex];
@@ -13552,6 +13576,8 @@ async function coverLineageReceiptEvidence() {
   return {
     role: "coordinate-free provenance from the learned cover family to accepted growth actions",
     displayFocusAtReceipt: molecularCoverFocus,
+    galleryFilterAtReceipt: molecularGalleryFilter,
+    representativeGalleryChangesLearningOrRanking: false,
     displayFocusUsedForRanking: false,
     acceptedGenericPlacementCount: records.length,
     acceptedGenericPlacementSha256: await receiptSha256(JSON.stringify(records)),
@@ -14085,7 +14111,7 @@ async function buildExperimentReceipt() {
   const creationResponseEvidence = searchVisible ? await creationResponseReceiptEvidence() : null;
   const scaleBridgeBinding = bindHierarchyPhysicsProtocolToExecution(
     await scaleBridgeProtocolLaunchAuditPromise,
-    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260831-398" });
+    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260831-399" });
   const scaleBridgeConformance = buildHierarchyPhysicsProtocolConformance(scaleBridgeBinding,
     currentScaleBridgeConformanceEvidence());
   const receipt = {
@@ -14093,7 +14119,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260831-398",
+      buildId: "20260831-399",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -16688,7 +16714,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260831-398" },
+    application: { name: "Materials Growth Lab", buildId: "20260831-399" },
     postLeapExternalRelaxation: stateRelaxationReceipt(),
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
@@ -25049,7 +25075,7 @@ async function freezeExternalStateRelaxation() {
     throw new Error("variable-cell relaxation requires a fully periodic 3D state");
   }
   const request = await buildExternalStateRelaxationRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-398",
+    generatedAt: new Date().toISOString(), buildId: "20260831-399",
     materialName: currentMaterial().name, sites,
     cellAngstrom: policy.cellAngstrom, periodicBoundary: policy.periodicBoundary,
     boundary: currentGrowthDomainSnapshot(), sourceLeapReceiptSha256: null,
@@ -28320,7 +28346,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
     ...speciesExchangeCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-398",
+    generatedAt: new Date().toISOString(), buildId: "20260831-399",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -32814,6 +32840,7 @@ function resetCounters() {
   clusterDiscoveryTrace = null;
   clusterDiscoveryProgress = 0;
   molecularCoverFocus = "all";
+  molecularGalleryFilter = "representative";
   leapHistory = [];
   selectedKineticChronologyIndex = -1;
   selectedLeapIndex = -1;
@@ -32871,11 +32898,13 @@ function resetCounters() {
 
 function enterPipelineStage(index, options = {}) {
   const retainedMolecularCoverFocus = Number(index) === 0 ? "all" : molecularCoverFocus;
+  const retainedMolecularGalleryFilter = Number(index) === 0 ? "representative" : molecularGalleryFilter;
   pipelineStage = Math.max(0, Math.min(4, index));
   stageElapsed = 0;
   setPlaying(false);
   resetCounters();
   molecularCoverFocus = retainedMolecularCoverFocus;
+  molecularGalleryFilter = retainedMolecularGalleryFilter;
   if (scenarioSelect.value === "imported") syncImportedFrameMaterial();
   rngState = 0x8f23ab17 ^ scenarioSelect.selectedIndex * 0x91e10da5
     ^ confinementSelect.selectedIndex * 0x734a9d ^ growthDomainScale * 0x45d9f3b;
@@ -32963,7 +32992,9 @@ function enterPipelineStage(index, options = {}) {
   clusterGallery.hidden = pipelineStage !== 3;
   viewport.classList.toggle("cluster-gallery-mode", pipelineStage === 3);
   viewportHint.textContent = pipelineStage === 3
-    ? "one evolving marking scene per cluster · scroll for all types"
+    ? learnedCover?.molecular
+      ? "one representative marking scene per cover family · full isometry library on demand"
+      : "one evolving marking scene per cluster · scroll for all types"
     : pipelineStage === 1 ? "full configuration · tentative → rejected → settled supports"
       : "drag to orbit · wheel to zoom · click an atom";
   if (pipelineStage === 3) rebuildClusterGallery();
@@ -37975,7 +38006,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-398",
+    generatedAt: new Date().toISOString(), buildId: "20260831-399",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,
@@ -43020,7 +43051,7 @@ function renderScaleBridgeRunBinding() {
     return;
   }
   const binding = bindHierarchyPhysicsProtocolToExecution(audit,
-    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260831-398" });
+    { scenarioId: scenarioSelect.value, pipelineStage, receiptBuildId: "20260831-399" });
   receiptScaleBridgeBinding.className = `receipt-scale-bridge-binding ${binding.status}`;
   receiptScaleBridgeState.textContent = binding.status.replaceAll("-", " ");
   if (binding.status === "no-design-packet") {

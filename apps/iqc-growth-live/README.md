@@ -1,5 +1,28 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 399 · molecular-family GCTS overview
+
+Molecular materials now enter GCTS learning through a deliberately compact
+family overview. Instead of opening every decorated isometry class at once,
+Stage 3 initially shows one independently rotating representative for each
+learned cover role: the finite molecule, an intermolecular connection
+polyhedron, and an explicit gap or void boundary. For ice Ih this is three
+scenes rather than the complete 37-card H₂O / bridge / decorated-O₆ library.
+
+The simplification is display-only. `All cover classes` restores every retained
+isometry class, while molecule, bridge, and gap filters isolate their complete
+families. No class is merged, discarded, or removed from fitting; marking
+sample counts, pose/port ranks, validation, candidate geometry, and growth
+ranking remain unchanged. The receipt records both the cover-family focus and
+the gallery filter and explicitly states that the representative view changes
+neither learning nor ranking.
+
+This preserves the scientific accounting—72 H₂O occurrences close 216 / 216
+ice-Ih atoms, 144 bridge supports constrain attachment geometry, and 180 O₆
+boundaries encode interstices—while making the intended molecule → connection
+→ gap hierarchy legible before a scientist drills into all 33 decorated void
+classes.
+
 ## Build 398 · interactive conformance evidence ledger
 
 The scale-bridge receipt now exposes every channel- and scale-specific

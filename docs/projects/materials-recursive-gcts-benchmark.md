@@ -1,5 +1,26 @@
 # Recursive GCTS benchmark for material growth
 
+## Molecular-family GCTS overview (Build 399)
+
+The browser's molecular marking gallery now defaults to one representative per
+cover family. The representative indices are selected deterministically from
+the frozen gallery order for molecule, bridge, gap/void boundary, and (when
+present) literal residual families. Ice Ih therefore begins with three
+separate rotating scenes—H₂O, one water-connection prism, and one O₆ boundary—
+instead of visually presenting all 37 decorated classes as peers.
+
+This is not a scientific quotient. Every type remains in the frozen vocabulary
+and section fit; the full class count and one-click `All cover classes` route
+remain visible. Family-specific filters still expose every member, and a focus
+chosen during cluster identification is inherited by GCTS learning. The
+representative filter is separately receipt-visible and is forbidden from
+changing marking samples, coefficients, candidate geometry, or ranking.
+
+The view makes the complete-cover algebra easier to audit: molecules close the
+atom set, connection supports overlap that cover without adding sites, and
+void boundaries surround empty regions without claiming a physical void
+volume. It changes presentation, not the exact set-cover certificate.
+
 ## Interactive conformance evidence ledger (Build 398)
 
 The live packet-to-receipt audit now renders the complete requirement set as an

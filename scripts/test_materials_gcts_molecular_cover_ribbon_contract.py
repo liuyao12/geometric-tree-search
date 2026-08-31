@@ -27,12 +27,13 @@ def test_molecular_cover_ribbon_contract():
         'countFamily("bridge")',
         'countFamily("gap")',
         'let molecularCoverFocus = "all"',
+        'let molecularGalleryFilter = "representative"',
         'edge.families?.has(molecularCoverFocus)',
         'article.setAttribute("aria-pressed"',
         'molecularCoverFocus = record.focus',
         "buildClusterOverlay();",
-        "const inheritedFamily = learnedCover.molecular",
-        "if (learnedCover.molecular) molecularCoverFocus = family",
+        "const requestedFamily = learnedCover.molecular",
+        "molecularGalleryFilter = family",
         'const retainedMolecularCoverFocus = Number(index) === 0 ? "all" : molecularCoverFocus',
         "molecularCoverFocus = retainedMolecularCoverFocus",
         "inheritedFilter.click()",
@@ -77,8 +78,8 @@ def test_molecular_cover_ribbon_contract():
     assert ".molecular-cover-flow button.active" in CSS
     assert ".growth-lineage-map" in CSS
     assert 'id="growthLineageMap"' in HTML
-    assert 'buildId: "20260829-335"' in APP
-    assert 'app.js?v=20260829-335' in HTML
+    assert 'buildId: "20260831-399"' in APP
+    assert 'app.js?v=20260831-399' in HTML
 
 
 if __name__ == "__main__":
