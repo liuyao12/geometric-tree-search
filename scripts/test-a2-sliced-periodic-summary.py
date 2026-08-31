@@ -2,6 +2,7 @@
 """Regression for copy-count-specific bounded campaign summaries."""
 
 import json
+import gzip
 import subprocess
 import sys
 import tempfile
@@ -48,5 +49,36 @@ with tempfile.TemporaryDirectory() as directory_name:
     assert summary["copies"] == 8
     assert summary["claim_scope"] == "fixed_8_copy_weighted_hnf_quotients"
     assert summary["candidates"][0]["exact_negative_orbits"] == 1
+
+    retry_directory = directory / "retry"
+    retry_directory.mkdir()
+    retry_shard = retry_directory / shard.name
+    retry_record = json.loads(shard.read_text())
+    retry_record["periodic_z3"].update({
+        "solver_unknown": 0,
+        "hnf_covered": 5,
+        "exact_multicover_nodes": 23,
+        "exact_multicover_failed_states": 22,
+        "milliseconds": 7,
+    })
+    retry_shard.write_text(json.dumps(retry_record) + "\n")
+    archive = directory / "strongest.ndjson.gz"
+    subprocess.run([
+        sys.executable,
+        str(SCRIPT),
+        "--input-dir", str(directory),
+        "--retry-dir", str(retry_directory),
+        "--output", str(output),
+        "--receipt-archive", str(archive),
+        "--candidate-ids", "probe",
+        "--copies", "8",
+        "--orbit-total", "1",
+        "--exact-node-limit", "20",
+    ], cwd=ROOT, check=True, capture_output=True, text=True)
+    summary = json.loads(output.read_text())
+    assert summary["candidates"][0]["exact_multicover_nodes"] == 23
+    archived = [json.loads(line) for line in gzip.open(archive, "rt") if line.strip()]
+    assert len(archived) == 1
+    assert archived[0]["periodic_z3"]["exact_multicover_nodes"] == 23
 
 print("A2-sliced bounded periodic summary regression passed")

@@ -9,6 +9,7 @@ const root = new URL("../", import.meta.url);
 const readGzipNdjson = async relativePath => gunzipSync(
   await readFile(new URL(relativePath, root))
 ).toString("utf8").trim().split("\n").filter(Boolean).map(JSON.parse);
+const readJson = async relativePath => JSON.parse(await readFile(new URL(relativePath, root), "utf8"));
 
 const exactEight = await readGzipNdjson(
   "data/a2-sliced-size9-palindromic-periodic-exact8-complete.ndjson.gz"
@@ -39,6 +40,12 @@ const fourCopySubstitutions = [
 const periodicClusterSubstitutions = await readGzipNdjson(
   "data/a2-sliced-size9-palindromic-periodic-cluster-substitutions.ndjson.gz"
 );
+const tenCopySummary = await readJson(
+  "data/a2-sliced-size9-palindromic-periodic10-exact5m-summary.json"
+);
+const tenCopyReceipts = await readGzipNdjson(
+  "data/a2-sliced-size9-palindromic-periodic10-best-receipts.ndjson.gz"
+);
 const coronaOverrides = [
   ...(await readGzipNdjson("data/a2-sliced-size9-palindromic-corona-z3-04636.ndjson.gz")),
   ...(await readGzipNdjson("data/a2-sliced-size9-palindromic-corona-z3-04468.ndjson.gz"))
@@ -53,6 +60,13 @@ const selectedIds = [
 const periodicById = new Map(exactEight.map(record => [record.id, record]));
 const exactSixById = new Map(exactSix.map(record => [record.id, record]));
 const clusterSubstitutionById = new Map(periodicClusterSubstitutions.map(record => [record.id, record]));
+const tenCopySummaryById = new Map(tenCopySummary.candidates.map(record => [record.id, record]));
+const tenCopyReceiptsById = tenCopyReceipts.reduce((groups, record) => {
+  const rows = groups.get(record.id) ?? [];
+  rows.push(record);
+  groups.set(record.id, rows);
+  return groups;
+}, new Map());
 const fourCopySubstitutionById = fourCopySubstitutions.reduce((groups, record) => {
   const rows = groups.get(record.id) ?? [];
   rows.push(record);
@@ -133,6 +147,7 @@ const candidates = selectedIds.map((id, index) => {
   const twoCopy = twoCopySubstitutionById.get(id) ?? [];
   const threeCopy = threeCopySubstitutionById.get(id) ?? [];
   const fourCopy = fourCopySubstitutionById.get(id) ?? [];
+  const tenCopy = tenCopySummaryById.get(id) ?? null;
   if (!record || !sixCopy || !corona) throw new Error(`Missing focused receipt for ${id}`);
   const periodicCertificate = record.periodic_z3.certificate ?? null;
   const clusterSubstitution = clusterSubstitutionById.get(id) ?? null;
@@ -175,6 +190,21 @@ const candidates = selectedIds.map((id, index) => {
       || result.four_copy_alcove_metatile_screen.certified !== true))) {
     throw new Error(`Missing proper/reflected scale-2 four-copy substitution exclusions for ${id}`);
   }
+  if (!isPeriodic) {
+    const receipts = tenCopyReceiptsById.get(id) ?? [];
+    const exactNegative = receipts.filter(result => result.periodic_z3.solver_unknown === 0);
+    if (!tenCopy || tenCopySummary.copies !== 10
+        || tenCopy.classification !== "bounded_inconclusive"
+        || tenCopy.orbit_total !== 85
+        || tenCopy.orbit_receipts !== 85
+        || tenCopy.exact_negative_orbits + tenCopy.node_capped_orbits !== 85
+        || receipts.length !== 85
+        || exactNegative.length !== tenCopy.exact_negative_orbits
+        || exactNegative.reduce((sum, result) => sum + result.periodic_z3.hnf_covered, 0)
+          !== tenCopy.hnfs_exactly_excluded) {
+      throw new Error(`Missing validated ten-copy bounded campaign for ${id}`);
+    }
+  }
   const geometry = makeA2SlicedAlcoveUnion(record.alcoves);
   return {
     id,
@@ -188,7 +218,7 @@ const candidates = selectedIds.map((id, index) => {
     survivor_count: 97,
     description: isPeriodic
       ? "Nine-alcove non-polycube with a replayed eight-copy periodic quotient and induced scale-two cluster substitution."
-      : "Nine-alcove non-polycube from the completed palindromic-profile stratum on consecutive x+y+z=k sections.",
+      : `Nine-alcove non-polycube from the completed palindromic-profile stratum on consecutive x+y+z=k sections. A longer ten-copy quotient pass exactly excludes ${tenCopy.exact_negative_orbits} of ${tenCopy.orbit_total} proper-A₂ orbit classes, covering ${tenCopy.hnfs_exactly_excluded} HNF bases; ${tenCopy.node_capped_orbits} classes remain explicitly inconclusive after selective two- and five-million-node searches.`,
     screening: {
       status: isPeriodic ? "periodic" : "inconclusive",
       certificate: isPeriodic ? "translational" : null,
@@ -216,6 +246,19 @@ const candidates = selectedIds.map((id, index) => {
       periodic_eight_copy_solver_unknowns: record.periodic_z3.solver_unknown,
       periodic_eight_copy_certificate: periodicCertificate,
       periodic_eight_copy_replay_verified: record.periodic_z3.replay?.verified ?? false,
+      periodic_ten_copy_orbit_total: tenCopy?.orbit_total ?? 0,
+      periodic_ten_copy_exact_negative_orbits: tenCopy?.exact_negative_orbits ?? 0,
+      periodic_ten_copy_node_capped_orbits: tenCopy?.node_capped_orbits ?? 0,
+      periodic_ten_copy_hnf_total: tenCopy?.hnf_total ?? 0,
+      periodic_ten_copy_hnfs_exactly_excluded: tenCopy?.hnfs_exactly_excluded ?? 0,
+      periodic_ten_copy_exact_multicover_nodes: tenCopy?.exact_multicover_nodes ?? 0,
+      periodic_ten_copy_milliseconds: tenCopy?.milliseconds ?? 0,
+      periodic_ten_copy_exact_node_limits: tenCopy
+        ? tenCopySummary.exact_node_limits_per_orbit : [],
+      periodic_ten_copy_summary_report: tenCopy
+        ? "data/a2-sliced-size9-palindromic-periodic10-exact5m-summary.json" : null,
+      periodic_ten_copy_receipt_archive: tenCopy
+        ? "data/a2-sliced-size9-palindromic-periodic10-best-receipts.ndjson.gz" : null,
       motif_tiles: periodicCertificate?.copies ?? null,
       period_vectors: periodicCertificate?.period_vectors ?? null,
       quotient_determinant: periodicCertificate?.determinant ?? null,

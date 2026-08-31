@@ -1701,8 +1701,21 @@ assert.ok(palindromicUnresolved.every(candidate =>
   && candidate.screening.four_copy_substitution_models.join(",") === "proper,reflected"
   && candidate.screening.four_copy_substitution_certified_negatives === 2
   && candidate.screening.four_copy_substitution_parents_exhausted >= 20672
+  && candidate.screening.periodic_ten_copy_orbit_total === 85
+  && candidate.screening.periodic_ten_copy_exact_negative_orbits
+    + candidate.screening.periodic_ten_copy_node_capped_orbits === 85
+  && candidate.screening.periodic_ten_copy_hnf_total === 403
+  && candidate.screening.periodic_ten_copy_exact_node_limits.join(",") === "2000000,5000000"
   && candidate.screening.corona_root_patch_copies > 1
 ));
+assert.deepEqual(
+  palindromicUnresolved.map(candidate => [
+    candidate.screening.periodic_ten_copy_exact_negative_orbits,
+    candidate.screening.periodic_ten_copy_node_capped_orbits,
+    candidate.screening.periodic_ten_copy_hnfs_exactly_excluded,
+  ]),
+  [[57, 28, 271], [62, 23, 274], [55, 30, 259]]
+);
 const palindromicPeriodic = A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES.filter(
   candidate => candidate.screening.status === "periodic"
 );

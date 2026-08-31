@@ -277,6 +277,12 @@ both symmetry models. The proper/reflected parent counts are 1,034/19,638,
 2,762/22,003, and 41,524/313,636, respectively; every parent carries a
 replayed atomic obstruction. Clusters of five or more and non-scalar rules
 remain open.
+A determinant-15 ten-copy campaign then checks all 85 proper-A₂ quotient
+orbits for each displayed leader. A two-million-node first pass followed by a
+selective five-million-node retry finds no quotient and exactly excludes
+57/62/55 orbit classes for `04636`/`01085`/`04468`, covering 271/274/259 of
+the 403 HNF bases. The remaining 28/23/30 orbit classes are explicitly
+node-capped rather than reported negative.
 The original stratum's exact two-, four-, and six-copy quotient screens reduce
 it to 356 reflection-class candidates.
 The next census level is also complete and removes the profile heuristic
