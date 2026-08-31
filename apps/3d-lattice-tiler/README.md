@@ -283,6 +283,10 @@ selective five-million-node retry finds no quotient and exactly excludes
 57/62/55 orbit classes for `04636`/`01085`/`04468`, covering 271/274/259 of
 the 403 HNF bases. The remaining 28/23/30 orbit classes are explicitly
 node-capped rather than reported negative.
+An alternate QF_FD solver probe gives all 18 sampled residual classes 120
+seconds each and obtains neither a periodic witness nor an UNSAT result. The
+12 receipts interrupted while stopping the unproductive campaign are excluded
+from the completed-probe count and from every mathematical claim.
 The original stratum's exact two-, four-, and six-copy quotient screens reduce
 it to 356 reflection-class candidates.
 The next census level is also complete and removes the profile heuristic

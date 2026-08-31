@@ -23,6 +23,9 @@ def main():
         default="",
         help="optional gzip NDJSON archive of the strongest receipt per orbit",
     )
+    parser.add_argument("--probe-dir", default="")
+    parser.add_argument("--probe-solver", default="")
+    parser.add_argument("--probe-timeout-ms", type=int, default=0)
     parser.add_argument("--candidate-ids", required=True)
     parser.add_argument("--copies", type=int, required=True)
     parser.add_argument("--orbit-total", type=int, required=True)
@@ -151,6 +154,39 @@ def main():
         "campaign_receipt_sha256": campaign_digest.hexdigest(),
         "claim_scope": f"fixed_{args.copies}_copy_weighted_hnf_quotients",
     }
+    if args.probe_dir:
+        assert args.probe_solver and args.probe_timeout_ms > 0
+        complete_probes = []
+        partial_probes = []
+        for path in sorted(Path(args.probe_dir).glob("*.ndjson")):
+            payload = path.read_bytes()
+            records = [json.loads(line) for line in payload.splitlines() if line.strip()]
+            assert len(records) == 1
+            record = records[0]
+            detail = record["periodic_z3"]
+            target = complete_probes if detail["milliseconds"] >= args.probe_timeout_ms else partial_probes
+            target.append(record)
+            if target is complete_probes:
+                digest = hashlib.sha256(payload).hexdigest()
+                campaign_digest.update(f"probe/{path.name}:{digest}\n".encode())
+        result["solver_probe"] = {
+            "solver": args.probe_solver,
+            "timeout_ms_per_orbit": args.probe_timeout_ms,
+            "completed_shards": len(complete_probes),
+            "partial_interrupted_receipts_excluded": len(partial_probes),
+            "periodic_certificates": sum(
+                record["classification"] == "periodic" for record in complete_probes
+            ),
+            "exact_negative_orbits": sum(
+                record["classification"] == "unresolved"
+                and record["periodic_z3"]["solver_unknown"] == 0
+                for record in complete_probes
+            ),
+            "solver_unknown_shards": sum(
+                record["periodic_z3"]["solver_unknown"] for record in complete_probes
+            ),
+        }
+        result["campaign_receipt_sha256"] = campaign_digest.hexdigest()
     if args.receipt_archive:
         archive_payload = "".join(
             json.dumps(record, sort_keys=True, separators=(",", ":")) + "\n"

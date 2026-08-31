@@ -46,6 +46,17 @@ const tenCopySummary = await readJson(
 const tenCopyReceipts = await readGzipNdjson(
   "data/a2-sliced-size9-palindromic-periodic10-best-receipts.ndjson.gz"
 );
+const tenCopySolverProbe = tenCopySummary.solver_probe;
+if (!tenCopySolverProbe
+    || tenCopySolverProbe.solver !== "qffd"
+    || tenCopySolverProbe.timeout_ms_per_orbit !== 120000
+    || tenCopySolverProbe.completed_shards !== 18
+    || tenCopySolverProbe.partial_interrupted_receipts_excluded !== 12
+    || tenCopySolverProbe.periodic_certificates !== 0
+    || tenCopySolverProbe.exact_negative_orbits !== 0
+    || tenCopySolverProbe.solver_unknown_shards !== 18) {
+  throw new Error("Missing validated alternate-solver ten-copy probe");
+}
 const coronaOverrides = [
   ...(await readGzipNdjson("data/a2-sliced-size9-palindromic-corona-z3-04636.ndjson.gz")),
   ...(await readGzipNdjson("data/a2-sliced-size9-palindromic-corona-z3-04468.ndjson.gz"))
@@ -218,7 +229,7 @@ const candidates = selectedIds.map((id, index) => {
     survivor_count: 97,
     description: isPeriodic
       ? "Nine-alcove non-polycube with a replayed eight-copy periodic quotient and induced scale-two cluster substitution."
-      : `Nine-alcove non-polycube from the completed palindromic-profile stratum on consecutive x+y+z=k sections. A longer ten-copy quotient pass exactly excludes ${tenCopy.exact_negative_orbits} of ${tenCopy.orbit_total} proper-A₂ orbit classes, covering ${tenCopy.hnfs_exactly_excluded} HNF bases; ${tenCopy.node_capped_orbits} classes remain explicitly inconclusive after selective two- and five-million-node searches.`,
+      : `Nine-alcove non-polycube from the completed palindromic-profile stratum on consecutive x+y+z=k sections. A longer ten-copy quotient pass exactly excludes ${tenCopy.exact_negative_orbits} of ${tenCopy.orbit_total} proper-A₂ orbit classes, covering ${tenCopy.hnfs_exactly_excluded} HNF bases; ${tenCopy.node_capped_orbits} classes remain explicitly inconclusive after selective two- and five-million-node searches. An alternate 120-second QF_FD probe on 18 residual classes yields no SAT or UNSAT result; 12 interrupted partial receipts are excluded.`,
     screening: {
       status: isPeriodic ? "periodic" : "inconclusive",
       certificate: isPeriodic ? "translational" : null,
@@ -255,6 +266,11 @@ const candidates = selectedIds.map((id, index) => {
       periodic_ten_copy_milliseconds: tenCopy?.milliseconds ?? 0,
       periodic_ten_copy_exact_node_limits: tenCopy
         ? tenCopySummary.exact_node_limits_per_orbit : [],
+      periodic_ten_copy_qffd_timeout_ms: tenCopy ? tenCopySolverProbe.timeout_ms_per_orbit : 0,
+      periodic_ten_copy_qffd_completed_shards: tenCopy ? tenCopySolverProbe.completed_shards : 0,
+      periodic_ten_copy_qffd_solver_unknown_shards: tenCopy ? tenCopySolverProbe.solver_unknown_shards : 0,
+      periodic_ten_copy_qffd_partial_receipts_excluded: tenCopy
+        ? tenCopySolverProbe.partial_interrupted_receipts_excluded : 0,
       periodic_ten_copy_summary_report: tenCopy
         ? "data/a2-sliced-size9-palindromic-periodic10-exact5m-summary.json" : null,
       periodic_ten_copy_receipt_archive: tenCopy

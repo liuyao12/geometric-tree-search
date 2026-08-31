@@ -1706,6 +1706,10 @@ assert.ok(palindromicUnresolved.every(candidate =>
     + candidate.screening.periodic_ten_copy_node_capped_orbits === 85
   && candidate.screening.periodic_ten_copy_hnf_total === 403
   && candidate.screening.periodic_ten_copy_exact_node_limits.join(",") === "2000000,5000000"
+  && candidate.screening.periodic_ten_copy_qffd_timeout_ms === 120000
+  && candidate.screening.periodic_ten_copy_qffd_completed_shards === 18
+  && candidate.screening.periodic_ten_copy_qffd_solver_unknown_shards === 18
+  && candidate.screening.periodic_ten_copy_qffd_partial_receipts_excluded === 12
   && candidate.screening.corona_root_patch_copies > 1
 ));
 assert.deepEqual(

@@ -81,4 +81,40 @@ with tempfile.TemporaryDirectory() as directory_name:
     assert len(archived) == 1
     assert archived[0]["periodic_z3"]["exact_multicover_nodes"] == 23
 
+    probe_directory = directory / "solver-probe"
+    probe_directory.mkdir()
+    full_probe = json.loads(shard.read_text())
+    full_probe["periodic_z3"].update({
+        "solver_unknown": 1,
+        "hnf_covered": 0,
+        "milliseconds": 120,
+    })
+    (probe_directory / "full.ndjson").write_text(json.dumps(full_probe) + "\n")
+    partial_probe = json.loads(json.dumps(full_probe))
+    partial_probe["periodic_z3"]["milliseconds"] = 30
+    (probe_directory / "partial.ndjson").write_text(json.dumps(partial_probe) + "\n")
+    subprocess.run([
+        sys.executable,
+        str(SCRIPT),
+        "--input-dir", str(directory),
+        "--output", str(output),
+        "--candidate-ids", "probe",
+        "--copies", "8",
+        "--orbit-total", "1",
+        "--exact-node-limit", "2000000",
+        "--probe-dir", str(probe_directory),
+        "--probe-solver", "qffd",
+        "--probe-timeout-ms", "120",
+    ], cwd=ROOT, check=True, capture_output=True, text=True)
+    summary = json.loads(output.read_text())
+    assert summary["solver_probe"] == {
+        "solver": "qffd",
+        "timeout_ms_per_orbit": 120,
+        "completed_shards": 1,
+        "partial_interrupted_receipts_excluded": 1,
+        "periodic_certificates": 0,
+        "exact_negative_orbits": 0,
+        "solver_unknown_shards": 1,
+    }
+
 print("A2-sliced bounded periodic summary regression passed")

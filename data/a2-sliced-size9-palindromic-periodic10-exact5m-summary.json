@@ -5503,8 +5503,17 @@
       ]
     }
   ],
-  "campaign_receipt_sha256": "4411e8276974d7cc9c74c1c291e8642acac745b660f3fc901fad5b68b4e16db7",
+  "campaign_receipt_sha256": "54078a7914f892a10aa07a5db23fa842ce363cea079e8484a76d5250af7da9d6",
   "claim_scope": "fixed_10_copy_weighted_hnf_quotients",
+  "solver_probe": {
+    "solver": "qffd",
+    "timeout_ms_per_orbit": 120000,
+    "completed_shards": 18,
+    "partial_interrupted_receipts_excluded": 12,
+    "periodic_certificates": 0,
+    "exact_negative_orbits": 0,
+    "solver_unknown_shards": 18
+  },
   "strongest_receipt_archive": "data/a2-sliced-size9-palindromic-periodic10-best-receipts.ndjson.gz",
   "strongest_receipt_archive_sha256": "a9727043a8a45b871d10fc66ca1d317942cfd34fdc4124f43f65f4b7a57bdf67"
 }
