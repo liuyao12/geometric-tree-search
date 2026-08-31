@@ -1,4 +1,5 @@
 const SHA256 = /^[a-f0-9]{64}$/i;
+const BOLTZMANN_ELECTRON_VOLT_PER_KELVIN = 8.617333262145e-5;
 
 function requiredText(value, label) {
   if (typeof value !== "string" || !value.trim()) throw new TypeError(`${label} is required`);
@@ -9,6 +10,10 @@ function requiredSha(value, label) {
   const normalized = requiredText(value, label);
   if (!SHA256.test(normalized)) throw new TypeError(`${label} must be a SHA-256 digest`);
   return normalized.toLowerCase();
+}
+
+function optionalSha(value, label) {
+  return value == null ? null : requiredSha(value, label);
 }
 
 function optionalFinite(value, label, { nonnegative = false, positive = false } = {}) {
@@ -35,6 +40,47 @@ export function normalizedCommittedTransition(raw) {
   if ((energyDeltaElectronVolt == null) !== (energyDeltaUncertaintyElectronVolt == null)) {
     throw new Error("energy delta and its uncertainty must be supplied together");
   }
+  const thermodynamicFields = {
+    thermodynamicEvidenceSha256: optionalSha(raw.thermodynamicEvidenceSha256,
+      "thermodynamic evidence SHA-256"),
+    freeEnergySettingsSha256: optionalSha(raw.freeEnergySettingsSha256,
+      "free-energy settings SHA-256"),
+    chemicalPotentialSettingsSha256: optionalSha(raw.chemicalPotentialSettingsSha256,
+      "chemical-potential settings SHA-256"),
+    thermodynamicTemperatureKelvin: optionalFinite(raw.thermodynamicTemperatureKelvin,
+      "thermodynamic temperature", { positive: true }),
+    systemFreeEnergyDeltaElectronVolt: optionalFinite(raw.systemFreeEnergyDeltaElectronVolt,
+      "system free-energy delta"),
+    systemFreeEnergyDeltaUncertaintyElectronVolt: optionalFinite(
+      raw.systemFreeEnergyDeltaUncertaintyElectronVolt,
+      "system free-energy uncertainty", { nonnegative: true }),
+    reservoirChemicalWorkElectronVolt: optionalFinite(raw.reservoirChemicalWorkElectronVolt,
+      "reservoir chemical work"),
+    reservoirChemicalWorkUncertaintyElectronVolt: optionalFinite(
+      raw.reservoirChemicalWorkUncertaintyElectronVolt,
+      "reservoir chemical-work uncertainty", { nonnegative: true }),
+    grandPotentialDeltaElectronVolt: optionalFinite(raw.grandPotentialDeltaElectronVolt,
+      "grand-potential delta"),
+    grandPotentialDeltaUncertaintyElectronVolt: optionalFinite(
+      raw.grandPotentialDeltaUncertaintyElectronVolt,
+      "grand-potential uncertainty", { nonnegative: true }),
+  };
+  const thermodynamicFieldCount = Object.values(thermodynamicFields)
+    .filter((value) => value != null).length;
+  if (thermodynamicFieldCount !== 0
+      && thermodynamicFieldCount !== Object.keys(thermodynamicFields).length) {
+    throw new Error("grand-canonical transition evidence must be complete or absent");
+  }
+  const rawSpeciesDelta = Object.entries(raw.speciesDelta || {})
+    .map(([species, delta]) => [requiredText(species, "species-delta key"), Number(delta)]);
+  if (rawSpeciesDelta.some(([, delta]) => !Number.isInteger(delta) || delta === 0)) {
+    throw new Error("every species delta must be a nonzero integer");
+  }
+  const speciesDelta = Object.fromEntries(rawSpeciesDelta
+    .sort(([first], [second]) => first.localeCompare(second)));
+  if (thermodynamicFieldCount && !Object.keys(speciesDelta).length) {
+    throw new Error("grand-canonical transition evidence needs a nonempty integer species delta");
+  }
   return {
     schema: "gcts-committed-reversible-transition-v1",
     eventId: requiredText(raw.eventId, "event ID"),
@@ -60,6 +106,8 @@ export function normalizedCommittedTransition(raw) {
     methodSettingsSha256: requiredSha(raw.methodSettingsSha256, "method settings SHA-256"),
     prefactorSettingsSha256: raw.prefactorSettingsSha256 == null ? null
       : requiredSha(raw.prefactorSettingsSha256, "prefactor settings SHA-256"),
+    speciesDelta,
+    ...thermodynamicFields,
     targetUsed: false,
   };
 }
@@ -103,6 +151,52 @@ export function auditMicroscopicInversePair(firstRaw, secondRaw) {
     && first.temperatureKelvin === second.temperatureKelvin;
   const rateRatioAvailable = sameTemperature && Number.isFinite(first.logRatePerSecond)
     && Number.isFinite(second.logRatePerSecond);
+  const grandCanonicalEvidenceComplete = [first, second].every((record) =>
+    record.thermodynamicEvidenceSha256 != null
+    && Number.isFinite(record.grandPotentialDeltaElectronVolt)
+    && Number.isFinite(record.grandPotentialDeltaUncertaintyElectronVolt));
+  const transferredSpecies = [...new Set([...Object.keys(first.speciesDelta),
+    ...Object.keys(second.speciesDelta)])].sort();
+  const speciesTransferReversed = transferredSpecies.length > 0
+    && transferredSpecies.every((species) => (first.speciesDelta[species] || 0)
+      + (second.speciesDelta[species] || 0) === 0);
+  const sameThermodynamicSettings = grandCanonicalEvidenceComplete
+    && first.freeEnergySettingsSha256 === second.freeEnergySettingsSha256
+    && first.chemicalPotentialSettingsSha256 === second.chemicalPotentialSettingsSha256;
+  const thermodynamicTemperatureMatched = grandCanonicalEvidenceComplete && sameTemperature
+    && first.thermodynamicTemperatureKelvin === second.thermodynamicTemperatureKelvin
+    && first.thermodynamicTemperatureKelvin === first.temperatureKelvin;
+  const grandPotentialCycleResidualElectronVolt = grandCanonicalEvidenceComplete
+    ? first.grandPotentialDeltaElectronVolt + second.grandPotentialDeltaElectronVolt : null;
+  const grandPotentialCycleUncertaintyElectronVolt = grandCanonicalEvidenceComplete
+    ? rootSumSquares([first.grandPotentialDeltaUncertaintyElectronVolt,
+      second.grandPotentialDeltaUncertaintyElectronVolt]) : null;
+  const grandPotentialCyclePassed = withinThreeSigma(grandPotentialCycleResidualElectronVolt,
+    grandPotentialCycleUncertaintyElectronVolt);
+  const inverseThermalEnergy = thermodynamicTemperatureMatched
+    ? 1 / (BOLTZMANN_ELECTRON_VOLT_PER_KELVIN * first.temperatureKelvin) : null;
+  const localBalanceLogResidual = grandCanonicalEvidenceComplete && rateRatioAvailable
+    && Number.isFinite(inverseThermalEnergy)
+    ? first.logRatePerSecond - second.logRatePerSecond
+      + first.grandPotentialDeltaElectronVolt * inverseThermalEnergy : null;
+  const localBalancePredictedLogRateRatio = grandCanonicalEvidenceComplete
+    && Number.isFinite(inverseThermalEnergy)
+    ? -first.grandPotentialDeltaElectronVolt * inverseThermalEnergy : null;
+  const logRateUncertainty = (record) => Number.isFinite(inverseThermalEnergy)
+    && Number.isFinite(record.barrierUncertaintyElectronVolt)
+    && Number.isFinite(record.attemptFrequencyUncertaintyLog10)
+    ? rootSumSquares([record.barrierUncertaintyElectronVolt * inverseThermalEnergy,
+      record.attemptFrequencyUncertaintyLog10 * Math.LN10]) : null;
+  const firstLogRateUncertainty = logRateUncertainty(first);
+  const secondLogRateUncertainty = logRateUncertainty(second);
+  const localBalanceLogUncertainty = Number.isFinite(localBalanceLogResidual)
+    && Number.isFinite(firstLogRateUncertainty) && Number.isFinite(secondLogRateUncertainty)
+    ? rootSumSquares([firstLogRateUncertainty, secondLogRateUncertainty,
+      first.grandPotentialDeltaUncertaintyElectronVolt * inverseThermalEnergy]) : null;
+  const localBalanceResidualPassed = withinThreeSigma(localBalanceLogResidual,
+    localBalanceLogUncertainty);
+  const microscopicPathClosurePassed = oppositeDirections && geometryCycleClosed && exactCommittedStates
+    && sameBarrierMethod && energyDeltaCyclePassed && transitionStateClosurePassed;
   return {
     schema: "gcts-microscopic-inverse-pair-audit-v1",
     firstEventId: first.eventId,
@@ -123,13 +217,28 @@ export function auditMicroscopicInversePair(firstRaw, secondRaw) {
     transitionStateClosurePassed,
     logRateRatio: rateRatioAvailable ? first.logRatePerSecond - second.logRatePerSecond : null,
     rateRatioAvailable,
-    microscopicPathClosurePassed: oppositeDirections && geometryCycleClosed && exactCommittedStates
-      && sameBarrierMethod && energyDeltaCyclePassed && transitionStateClosurePassed,
+    microscopicPathClosurePassed,
+    grandCanonicalEvidenceComplete,
+    speciesTransferReversed,
+    sameThermodynamicSettings,
+    thermodynamicTemperatureMatched,
+    grandPotentialCycleResidualElectronVolt,
+    grandPotentialCycleUncertaintyElectronVolt,
+    grandPotentialCyclePassed,
+    localBalanceLogResidual,
+    localBalancePredictedLogRateRatio,
+    localBalanceLogUncertainty,
+    localBalanceResidualPassed,
+    finitePairLocalBalancePassed: microscopicPathClosurePassed && speciesTransferReversed
+      && sameThermodynamicSettings
+      && thermodynamicTemperatureMatched && grandPotentialCyclePassed
+      && localBalanceResidualPassed,
     thermodynamicDetailedBalanceCertified: false,
-    reservoirChemicalPotentialUsed: false,
+    globalDetailedBalanceCertified: false,
+    reservoirChemicalPotentialUsed: grandCanonicalEvidenceComplete,
     equilibriumConstantInferred: false,
     targetUsed: false,
-    claimBoundary: "Exact reversed state hashes establish a microscopic geometry cycle. Barrier/reaction-energy closure checks one method-specific transition-state identity within reported uncertainty. Neither result supplies reservoir chemical potentials, free energies, mechanism completeness, detailed balance, an equilibrium constant, or an equilibrium ensemble.",
+    claimBoundary: "Exact reversed state hashes establish a microscopic geometry cycle. Barrier/reaction-energy closure checks one method-specific transition-state identity. Optional system free energies and chemical potentials can test the local-balance equation for this finite pair within reported uncertainty. None of these audits proves mechanism completeness, global detailed balance, an equilibrium constant, or an equilibrium ensemble.",
   };
 }
 

@@ -88,13 +88,13 @@ import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntim
   from "./external-trajectory-geometry.mjs?v=20260830-346";
 import { actionBarrierSha256, buildFrozenActionBarrierRequest, frozenActionBarrierRequestReceipt,
   frozenActionStateGeometrySha256, validateFrozenActionBarrierResponse }
-  from "./external-action-barrier.mjs?v=20260831-348";
+  from "./external-action-barrier.mjs?v=20260831-349";
 import { buildFrozenKineticCompetition }
   from "./frozen-frontier-kinetics.mjs?v=20260831-347";
 import { enumerateDetachableLeafPlacements }
   from "./reversible-frontier-events.mjs?v=20260831-347";
 import { appendCommittedTransition }
-  from "./reversible-transition-lineage.mjs?v=20260831-348";
+  from "./reversible-transition-lineage.mjs?v=20260831-349";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -23413,6 +23413,21 @@ function registerCommittedReversibleTransition(checkpoint, candidateId, committe
     temperatureKelvin: checkpoint.kineticCompetition.temperatureKelvin,
     methodSettingsSha256: checkpoint.validatedResponse.audit.method.settingsSha256,
     prefactorSettingsSha256: checkpoint.validatedResponse.audit.kinetics.prefactorSettingsSha256,
+    speciesDelta: barrier.speciesDelta,
+    thermodynamicEvidenceSha256: checkpoint.validatedResponse.audit.thermodynamics?.evidenceSha256,
+    freeEnergySettingsSha256: checkpoint.validatedResponse.audit.thermodynamics?.freeEnergySettingsSha256,
+    chemicalPotentialSettingsSha256: checkpoint.validatedResponse.audit.thermodynamics
+      ?.chemicalPotentialSettingsSha256,
+    thermodynamicTemperatureKelvin: checkpoint.validatedResponse.audit.thermodynamics
+      ?.temperatureKelvin,
+    systemFreeEnergyDeltaElectronVolt: barrier.systemFreeEnergyDeltaElectronVolt,
+    systemFreeEnergyDeltaUncertaintyElectronVolt: barrier
+      .systemFreeEnergyDeltaUncertaintyElectronVolt,
+    reservoirChemicalWorkElectronVolt: barrier.reservoirChemicalWorkElectronVolt,
+    reservoirChemicalWorkUncertaintyElectronVolt: barrier
+      .reservoirChemicalWorkUncertaintyElectronVolt,
+    grandPotentialDeltaElectronVolt: barrier.grandPotentialDeltaElectronVolt,
+    grandPotentialDeltaUncertaintyElectronVolt: barrier.grandPotentialDeltaUncertaintyElectronVolt,
   });
   reversibleTransitionHistory = result.history;
   reversibleInversePairCount = result.exactInversePairCount;
@@ -23431,15 +23446,23 @@ function inverseResidualText(value) {
   return Number.isFinite(value) ? `${value >= 0 ? "+" : ""}${value.toFixed(4)} eV` : "awaiting ΔE±σ";
 }
 
+function dimensionlessResidualText(value) {
+  return Number.isFinite(value) ? `${value >= 0 ? "+" : ""}${value.toFixed(3)}` : "awaiting μ + ΔF";
+}
+
 function renderInverseTransitionLineage() {
   const panel = actionBarrierInverseBadge.closest(".action-barrier-inverse");
   const latest = reversibleTransitionHistory.at(-1) || null;
   const audit = latestMicroscopicInverseAudit;
-  panel.classList.toggle("closed", Boolean(audit?.microscopicPathClosurePassed));
-  panel.classList.toggle("inconsistent", Boolean(audit?.energyEvidenceComplete
-    && !audit.microscopicPathClosurePassed));
-  actionBarrierInverseBadge.textContent = audit?.microscopicPathClosurePassed
-    ? "path closure passed"
+  panel.classList.toggle("closed", Boolean(audit?.finitePairLocalBalancePassed
+    || audit?.microscopicPathClosurePassed));
+  panel.classList.toggle("inconsistent", Boolean((audit?.energyEvidenceComplete
+    && !audit.microscopicPathClosurePassed) || (audit?.grandCanonicalEvidenceComplete
+      && !audit.finitePairLocalBalancePassed)));
+  actionBarrierInverseBadge.textContent = audit?.finitePairLocalBalancePassed
+    ? "finite-pair balance passed"
+    : audit?.microscopicPathClosurePassed
+      ? audit.grandCanonicalEvidenceComplete ? "local balance inconsistent" : "path closure passed"
     : audit?.geometryCycleClosed
       ? audit.energyEvidenceComplete ? "closure inconsistent" : "geometry cycle only"
       : latest ? latest.exactFinalGeometryReproduced ? "awaiting inverse" : "post-state diverged"
@@ -23451,13 +23474,24 @@ function renderInverseTransitionLineage() {
     ["transition-state residual", inverseResidualText(audit?.transitionStateClosureResidualElectronVolt)],
   ];
   if (audit?.rateRatioAvailable) tiles.push(["ln(k₁/k₂)", audit.logRateRatio.toFixed(3)]);
+  if (audit?.grandCanonicalEvidenceComplete) {
+    tiles.push(["ΔΩ cycle residual", inverseResidualText(
+      audit.grandPotentialCycleResidualElectronVolt)]);
+    tiles.push(["local-balance residual", dimensionlessResidualText(audit.localBalanceLogResidual)]);
+    tiles.push(["−ΔΩ/kBT", dimensionlessResidualText(
+      audit.localBalancePredictedLogRateRatio)]);
+  }
   actionBarrierInverseSummary.replaceChildren(...tiles.map(([label, value]) => {
     const tile = document.createElement("span"); const strong = document.createElement("strong");
     tile.append(document.createTextNode(label)); strong.textContent = value; tile.append(strong); return tile;
   }));
   actionBarrierInverseState.textContent = audit
-    ? audit.microscopicPathClosurePassed
-      ? `Exact colored-state hashes close in both directions. ΔE closure and a common transition-state energy agree within 3σ under the same barrier method.${audit.rateRatioAvailable ? " The kinetic rate ratio is reported at the shared temperature." : " A comparable rate ratio is unavailable."}`
+    ? audit.finitePairLocalBalancePassed
+      ? "Exact state reversal, path-energy closure, grand-potential cycle closure, and ln(k₁/k₂) = −ΔΩ/kBT agree within propagated 3σ uncertainty for this finite pair. Global detailed balance and equilibrium remain unclaimed."
+      : audit.microscopicPathClosurePassed
+        ? audit.grandCanonicalEvidenceComplete
+          ? "The microscopic path closes, but the supplied system free energies, chemical potentials, and measured rate ratio do not pass the finite-pair local-balance audit under the frozen uncertainty model."
+          : `Exact colored-state hashes close in both directions. ΔE closure and a common transition-state energy agree within 3σ under the same barrier method.${audit.rateRatioAvailable ? " The kinetic rate ratio is reported, but chemical potentials and system free energies are absent." : " A comparable rate ratio is unavailable."}`
       : audit.geometryCycleClosed
         ? audit.energyEvidenceComplete
           ? "The exact geometry cycle closes, but the independently returned reaction energies and barriers fail the 3σ path-closure audit. This pair is retained as contradictory evidence."
@@ -23467,7 +23501,7 @@ function renderInverseTransitionLineage() {
       ? latest.exactFinalGeometryReproduced
         ? `Committed ${latest.eventDirection} ${latest.candidateId}; a later exact state-reversed event is required for an inverse pair.`
         : "The selected path was followed by a geometry-changing projection, so its frozen final state was not reproduced and it cannot seed an inverse pair."
-      : "A later event counts as an inverse only when its initial and final colored-geometry hashes exactly reverse a previously committed serial event. Energy and transition-state closure require independently supplied reaction-energy uncertainties.";
+      : "A later event counts as an inverse only when its initial and final colored-geometry hashes exactly reverse a previously committed serial event. Optional method-bound ΔF and species-μ evidence can test grand-canonical local balance for that finite pair.";
 }
 
 function actionBarrierCheckpointReceipt(checkpoint = externalActionBarrierCheckpoint) {
@@ -23523,6 +23557,19 @@ function actionBarrierCheckpointReceipt(checkpoint = externalActionBarrierCheckp
       targetUsed: false, catalogCompleteBeyondFrozenFrontier: false,
     } : null,
     reversibleEventGeometryPresent: Boolean(response?.audit?.reversibleEventGeometryPresent),
+    grandCanonicalEvidence: response?.audit?.thermodynamics ? {
+      model: response.audit.thermodynamics.model,
+      ensemble: response.audit.thermodynamics.ensemble,
+      systemFreeEnergyKind: response.audit.thermodynamics.systemFreeEnergyKind,
+      temperatureKelvin: response.audit.thermodynamics.temperatureKelvin,
+      freeEnergyMethod: response.audit.thermodynamics.freeEnergyMethod,
+      freeEnergySettingsSha256: response.audit.thermodynamics.freeEnergySettingsSha256,
+      chemicalPotentialReference: response.audit.thermodynamics.chemicalPotentialReference,
+      chemicalPotentialSettingsSha256: response.audit.thermodynamics.chemicalPotentialSettingsSha256,
+      evidenceSha256: response.audit.thermodynamics.evidenceSha256,
+      uncertaintyAssumption: response.audit.thermodynamics.uncertaintyAssumption,
+      finitePairOnly: true, globalDetailedBalanceCertified: false,
+    } : null,
     committedTransitionLineage: checkpoint.committedTransitionLineage || null,
     thermodynamicReversibilityCertified: false, detailedBalanceCertified: false,
     candidateSetChanged: false, hardAdmissionChanged: false, candidateGeometryChanged: false,
@@ -23595,7 +23642,8 @@ function renderActionBarrierCheckpoint() {
     || externalActionBarrierKineticMode !== "none";
   actionBarrierKineticModeSelect.disabled = !kineticsEligible;
   actionBarrierTemperatureSelect.disabled = !kineticsEligible
-    || externalActionBarrierKineticMode === "none";
+    || externalActionBarrierKineticMode === "none"
+    || Boolean(checkpoint?.validatedResponse?.audit?.thermodynamics);
   actionBarrierResumeButton.disabled = !checkpoint?.validatedResponse || growthFrontierWork.busy;
   actionBarrierCancelButton.disabled = !checkpoint || growthFrontierWork.busy;
   if (!checkpoint) {
@@ -23636,6 +23684,8 @@ function renderActionBarrierCheckpoint() {
   const kinetic = checkpoint.kineticCompetition;
   if (kinetic) tiles.push([kinetic.mode === "seeded-kmc" ? "sampled event" : "maximum-rate event",
     `${kinetic.selectedEventDirection} · ${kinetic.selectedCandidateId.slice(0, 12)} · log₁₀k ${kinetic.selectedLog10RatePerSecond.toFixed(2)}`]);
+  if (audit?.thermodynamics) tiles.push(["reservoir evidence",
+    `${audit.thermodynamics.temperatureKelvin} K · ${audit.thermodynamics.chemicalPotentials.length} μ species`]);
   actionBarrierSummary.replaceChildren(...tiles.map(([label, value]) => {
     const tile = document.createElement("span"); const strong = document.createElement("strong");
     tile.append(document.createTextNode(label)); strong.textContent = value; tile.append(strong); return tile;
@@ -23719,7 +23769,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
   const candidates = [...attachmentCandidates, ...detachmentCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-348",
+    generatedAt: new Date().toISOString(), buildId: "20260831-349",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -23784,8 +23834,17 @@ async function validateExternalActionBarrierFile(file) {
   checkpoint.validatedResponse = { audit,
     recordsByCandidate: new Map(audit.records.map((record) => [record.candidateId, record])) };
   checkpoint.responseSha256 = responseSha256;
+  if (audit.thermodynamics) {
+    const value = String(audit.thermodynamics.temperatureKelvin);
+    if (![...actionBarrierTemperatureSelect.options].some((option) => option.value === value)) {
+      const option = document.createElement("option"); option.value = value;
+      option.textContent = `${value} K · response-bound`; actionBarrierTemperatureSelect.append(option);
+    }
+    externalActionBarrierTemperatureKelvin = audit.thermodynamics.temperatureKelvin;
+    actionBarrierTemperatureSelect.value = value;
+  }
   refreshExternalActionBarrierScores();
-  receiptStatus.textContent = `${audit.candidateCount} action barriers${audit.kineticsEligible ? " + attempt frequencies" : ""} validated and bound · response ${responseSha256.slice(0, 12)}… · candidate set unchanged.`;
+  receiptStatus.textContent = `${audit.candidateCount} action barriers${audit.kineticsEligible ? " + attempt frequencies" : ""}${audit.thermodynamics ? " + grand-canonical state evidence" : ""} validated and bound · response ${responseSha256.slice(0, 12)}… · candidate set unchanged.`;
   renderActionBarrierCheckpoint(); updateUI();
 }
 
@@ -30849,19 +30908,22 @@ function physicsTranslationRecords(leap = null) {
         : "No catalog-conditional physical rate has been evaluated.",
       boundary: "The HTST competition is conditional on one finite hard-admitted event catalog. Exact inverse pairing is audited separately across committed checkpoints; neither a two-way catalog nor a closed microscopic path supplies reservoir chemical potentials, grand-potential differences, detailed balance, or equilibrium sampling. Unenumerated mechanisms remain open." },
     { id: "microscopic-inverse-lineage", process: "microscopic inverse path / state-cycle consistency",
-      status: inverseReceipt?.microscopicPathClosurePassed ? "validated"
+      status: inverseReceipt?.finitePairLocalBalancePassed ? "validated"
+        : inverseReceipt?.microscopicPathClosurePassed ? "learned"
         : inverseReceipt?.geometryCycleClosed ? "observed" : reversibleTransitionHistory.length ? "planned" : "unavailable",
-      role: inverseReceipt?.microscopicPathClosurePassed
+      role: inverseReceipt?.finitePairLocalBalancePassed
+        ? "finite-pair grand-canonical local-balance audit"
+        : inverseReceipt?.microscopicPathClosurePassed
         ? "exact state-reversal + method-specific path-energy audit"
         : inverseReceipt?.geometryCycleClosed ? "exact state-reversal geometry only"
           : "awaiting a later state-reversed serial event",
       encoding: `${reversibleTransitionHistory.length} committed exact-candidate transition edges; ${reversibleInversePairCount} reverse initial/final colored-state hash pair${reversibleInversePairCount === 1 ? "" : "s"}`,
       evidence: inverseReceipt
-        ? `ΔE cycle residual ${inverseResidualText(inverseReceipt.energyDeltaCycleResidualElectronVolt)}; transition-state residual ${inverseResidualText(inverseReceipt.transitionStateClosureResidualElectronVolt)}; geometry ${inverseReceipt.geometryCycleClosed ? "closed" : "open"}; 3σ path closure ${inverseReceipt.microscopicPathClosurePassed ? "passed" : "not established"}.`
+        ? `ΔE cycle ${inverseResidualText(inverseReceipt.energyDeltaCycleResidualElectronVolt)}; transition state ${inverseResidualText(inverseReceipt.transitionStateClosureResidualElectronVolt)}; ΔΩ cycle ${inverseResidualText(inverseReceipt.grandPotentialCycleResidualElectronVolt)}; local-balance log residual ${dimensionlessResidualText(inverseReceipt.localBalanceLogResidual)}; finite-pair audit ${inverseReceipt.finitePairLocalBalancePassed ? "passed" : "not established"}.`
         : reversibleTransitionHistory.length
           ? "The latest serial event reproduced its frozen state, but no stored event reverses both state hashes."
           : "No method-bound serial attachment or detachment has been committed.",
-      boundary: "A closed colored-state cycle plus barrier/reaction-energy consistency checks one microscopic path under reported uncertainty. It does not supply chemical potentials, free-energy differences, a complete Markov network, detailed balance, an equilibrium constant, or an equilibrium ensemble." },
+      boundary: "A closed colored-state cycle plus path-energy consistency checks one microscopic transition. Optional externally supplied system free energies and species chemical potentials test local balance for that finite pair only. No complete Markov network, global detailed balance, equilibrium constant, phase equilibrium, or equilibrium ensemble is inferred." },
     { id: "kinetics", process: "activation, diffusion, heat flow, and elapsed time", status: activeArrivalPathWeight() > 0 ? "soft" : "open", role: activeArrivalPathWeight() > 0 ? "geometric accessibility proxy" : "not modeled",
       encoding: activeArrivalPathWeight() > 0
         ? `${arrivalPathLabel()}; ${arrivalPathMode === "free-volume" ? "5 routes × " : ""}9 swept-clearance samples over 2dₙₙ for emitted sites only, w=${activeArrivalPathWeight().toFixed(2)}`
@@ -33956,11 +34018,13 @@ function renderStructuralLeap(leap = null) {
     `${kinetic.candidateCount} frozen actions · selected p ${Number(kinetic.selectedProbabilityWithinFrozenCatalog * 100).toFixed(2)}% · log₁₀Σk ${kinetic.log10TotalRatePerSecond.toFixed(3)} s⁻¹${kinetic.committed ? ` · conditional clock ${kineticValueText(kinetic.clockAfterSeconds, " s")}` : " · no clock increment"}`]);
   const inverseLineage = selected.actionBarrierCheckpoint?.committedTransitionLineage;
   if (inverseLineage) leapCards.push([`${String(nextLeapCard++).padStart(2, "0")} · inverse lineage`,
-    inverseLineage.inverseAudit?.microscopicPathClosurePassed
+    inverseLineage.inverseAudit?.finitePairLocalBalancePassed
+      ? "finite-pair local balance passed"
+      : inverseLineage.inverseAudit?.microscopicPathClosurePassed
       ? "exact state + path-energy cycle"
       : inverseLineage.inverseEventId ? "exact state cycle · energy audit open" : "awaiting inverse event",
     inverseLineage.inverseAudit
-      ? `ΔE residual ${inverseResidualText(inverseLineage.inverseAudit.energyDeltaCycleResidualElectronVolt)} · transition-state residual ${inverseResidualText(inverseLineage.inverseAudit.transitionStateClosureResidualElectronVolt)} · detailed balance not claimed`
+      ? `ΔE ${inverseResidualText(inverseLineage.inverseAudit.energyDeltaCycleResidualElectronVolt)} · E‡ ${inverseResidualText(inverseLineage.inverseAudit.transitionStateClosureResidualElectronVolt)} · ΔΩ ${inverseResidualText(inverseLineage.inverseAudit.grandPotentialCycleResidualElectronVolt)} · local residual ${dimensionlessResidualText(inverseLineage.inverseAudit.localBalanceLogResidual)} · global detailed balance not claimed`
       : `${inverseLineage.transition.eventDirection} ${inverseLineage.transition.candidateId} · final frozen state ${inverseLineage.transition.exactFinalGeometryReproduced ? "reproduced" : "changed by later projection"}`]);
   if (selected.relaxation) leapCards.push([`${String(nextLeapCard++).padStart(2, "0")} · local projection`,
     selected.relaxation.accepted

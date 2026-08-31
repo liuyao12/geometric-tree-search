@@ -3,6 +3,7 @@ import { appendCommittedTransition, auditMicroscopicInversePair,
   normalizedCommittedTransition } from "../apps/iqc-growth-live/reversible-transition-lineage.mjs";
 
 const digest = (letter) => letter.repeat(64);
+const thermalEnergy = 8.617333262145e-5 * 600;
 const base = {
   eventId: "attach-event", candidateId: "attach:1", requestSha256: digest("a"),
   responseSha256: digest("b"), eventDirection: "attach",
@@ -13,12 +14,25 @@ const base = {
   attemptFrequencyPerSecond: 1e13, attemptFrequencyUncertaintyLog10: .1,
   logRatePerSecond: 4, temperatureKelvin: 600,
   methodSettingsSha256: digest("e"), prefactorSettingsSha256: digest("f"),
+  speciesDelta: { Na: 1 }, thermodynamicEvidenceSha256: digest("3"),
+  freeEnergySettingsSha256: digest("4"), chemicalPotentialSettingsSha256: digest("5"),
+  thermodynamicTemperatureKelvin: 600,
+  systemFreeEnergyDeltaElectronVolt: -3 * thermalEnergy - .2,
+  systemFreeEnergyDeltaUncertaintyElectronVolt: .008,
+  reservoirChemicalWorkElectronVolt: -.2,
+  reservoirChemicalWorkUncertaintyElectronVolt: .006,
+  grandPotentialDeltaElectronVolt: -3 * thermalEnergy,
+  grandPotentialDeltaUncertaintyElectronVolt: .01,
 };
 const reverse = { ...base, eventId: "detach-event", candidateId: "detach:1",
   requestSha256: digest("1"), responseSha256: digest("2"), eventDirection: "detach",
   initialGeometrySha256: digest("d"), finalGeometrySha256: digest("c"),
   committedStateSha256: digest("c"), barrierElectronVolt: .5,
   energyDeltaElectronVolt: -.3, logRatePerSecond: 1,
+  speciesDelta: { Na: -1 }, thermodynamicEvidenceSha256: digest("6"),
+  systemFreeEnergyDeltaElectronVolt: 3 * thermalEnergy + .2,
+  reservoirChemicalWorkElectronVolt: .2,
+  grandPotentialDeltaElectronVolt: 3 * thermalEnergy,
 };
 
 const audit = auditMicroscopicInversePair(base, reverse);
@@ -29,7 +43,15 @@ assert.ok(Math.abs(audit.transitionStateClosureResidualElectronVolt) < 1e-12);
 assert.equal(audit.microscopicPathClosurePassed, true);
 assert.equal(audit.logRateRatio, 3);
 assert.equal(audit.thermodynamicDetailedBalanceCertified, false);
-assert.equal(audit.reservoirChemicalPotentialUsed, false);
+assert.equal(audit.reservoirChemicalPotentialUsed, true);
+assert.equal(audit.grandCanonicalEvidenceComplete, true);
+assert.equal(audit.speciesTransferReversed, true);
+assert.ok(Math.abs(audit.localBalanceLogResidual) < 1e-12);
+assert.ok(Math.abs(audit.localBalancePredictedLogRateRatio - 3) < 1e-12);
+assert.equal(audit.grandPotentialCyclePassed, true);
+assert.equal(audit.localBalanceResidualPassed, true);
+assert.equal(audit.finitePairLocalBalancePassed, true);
+assert.equal(audit.globalDetailedBalanceCertified, false);
 
 let ledger = appendCommittedTransition([], base);
 assert.equal(ledger.inverseAudit, null);
@@ -44,6 +66,14 @@ assert.equal(inconsistent.geometryCycleClosed, true);
 assert.equal(inconsistent.energyDeltaCyclePassed, false);
 assert.equal(inconsistent.transitionStateClosurePassed, false);
 assert.equal(inconsistent.microscopicPathClosurePassed, false);
+assert.equal(inconsistent.finitePairLocalBalancePassed, false);
+
+const reservoirMismatch = auditMicroscopicInversePair(base, { ...reverse,
+  chemicalPotentialSettingsSha256: digest("7") });
+assert.equal(reservoirMismatch.sameThermodynamicSettings, false);
+assert.equal(reservoirMismatch.finitePairLocalBalancePassed, false);
+assert.equal(auditMicroscopicInversePair(base, { ...reverse,
+  speciesDelta: { Na: -2 } }).finitePairLocalBalancePassed, false);
 
 const geometryOnly = auditMicroscopicInversePair({ ...base,
   energyDeltaElectronVolt: null, energyDeltaUncertaintyElectronVolt: null }, { ...reverse,

@@ -1,5 +1,32 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 349 · evidence-bound grand-canonical pair audit
+
+An external action-barrier response may now optionally carry a complete
+grand-canonical `T,V,μ` evidence block.  The contract fixes a Helmholtz
+state-free-energy method, one temperature, independently referenced species
+chemical potentials, SHA-256s for every settings/evidence artifact, and an
+independent-one-sigma uncertainty model.  Every action must then return a
+converged system ΔF±σ.  Missing transferred species, duplicate μ entries,
+partial free-energy records, unconverged states, or incomplete validation flags
+fail closed.
+
+The browser derives each action's signed integer ΔN directly from its exact
+emitted or removed sites, then calculates reservoir work ΣμᵢΔNᵢ and
+ΔΩ=ΔF−ΣμᵢΔNᵢ with propagated uncertainty.  The response temperature becomes
+the frozen kinetic temperature for that checkpoint.  When a later committed
+event exactly reverses the colored states and species transfer, the inverse
+ledger checks ΔΩ₁+ΔΩ₂=0 and
+`ln(k₁/k₂)+ΔΩ₁/(kBT)=0`, in addition to the Build 348 path-energy tests.  The
+live workbench, physics manifest and leap receipt display all signed residuals
+and retain contradictory results.
+
+A passing result is deliberately named **finite-pair local balance**.  It is
+not global detailed balance: the portal still lacks a complete transition
+network, proof of ergodicity, phase equilibrium, a partition function, an
+equilibrium constant or an equilibrium ensemble.  Geometry-only feedstock
+bookkeeping never acquires μ values unless this external evidence is supplied.
+
 ## Build 348 · exact microscopic inverse-event lineage
 
 Committed serial HTST events now enter a bounded cross-checkpoint transition

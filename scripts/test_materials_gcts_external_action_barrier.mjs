@@ -36,6 +36,8 @@ const request = await buildFrozenActionBarrierRequest({
 });
 assert.deepEqual(request.frontier.candidates.map((candidate) => candidate.candidateId), ["a", "b"]);
 assert.match(request.frontier.candidateBatchSha256, /^[a-f0-9]{64}$/);
+assert.equal(request.calculation.optionalReservoirThermodynamics.ensemble,
+  "grand-canonical-T-V-mu");
 const permuted = await buildFrozenActionBarrierRequest({
   generatedAt: "later", buildId: "test", scenarioId: "nacl", materialName: "NaCl", elements: ["Na", "Cl"],
   candidates: [...candidates].reverse(), targetUsed: false, candidateSetTargetUsed: false,
@@ -94,6 +96,46 @@ assert.ok(validatedKinetics.records.some((record) =>
 assert.ok(kineticCompetition.waitingTimeSeconds > 0);
 assert.equal(kineticCompetition.targetUsed, false);
 
+const thermodynamicResponse = {
+  ...kineticResponse,
+  safeguards: { ...kineticResponse.safeguards,
+    chemicalPotentialsExternallySupplied: true,
+    stateFreeEnergiesExternallySupplied: true,
+    geometricScoresUsedAsThermodynamicLabels: false,
+    globalDetailedBalanceClaimed: false },
+  thermodynamics: { model: "grand-canonical-state-free-energy",
+    ensemble: "grand-canonical-T-V-mu", systemFreeEnergyKind: "Helmholtz",
+    temperatureKelvin: 600, freeEnergyMethod: "harmonic free energy",
+    freeEnergySettingsSha256: "1".repeat(64),
+    chemicalPotentialReference: "separately converged elemental reservoirs",
+    chemicalPotentialSettingsSha256: "2".repeat(64), evidenceSha256: "3".repeat(64),
+    uncertaintyAssumption: "independent-one-sigma", volumeHeldFixedAcrossPath: true,
+    chemicalPotentials: [
+      { species: "Na", electronVolt: -1, uncertaintyElectronVolt: .02 },
+      { species: "Cl", electronVolt: -2, uncertaintyElectronVolt: .03 },
+    ] },
+  validation: { ...kineticResponse.validation, thermodynamicsReported: true,
+    everyStateFreeEnergyConverged: true, chemicalPotentialUncertaintyReported: true },
+  records: kineticResponse.records.map((record, index) => ({ ...record,
+    systemFreeEnergyDeltaElectronVolt: index ? -.8 : -2.2,
+    systemFreeEnergyDeltaUncertaintyElectronVolt: .04,
+    stateFreeEnergyConverged: true })),
+};
+const validatedThermodynamics = validateFrozenActionBarrierResponse(thermodynamicResponse,
+  { ...receipt, candidates: request.frontier.candidates });
+assert.equal(validatedThermodynamics.grandCanonicalEvidenceEligible, true);
+assert.deepEqual(validatedThermodynamics.records[0].speciesDelta, { Cl: 1 });
+assert.ok(Math.abs(validatedThermodynamics.records[0].grandPotentialDeltaElectronVolt + .2) < 1e-12);
+assert.ok(validatedThermodynamics.records[0].grandPotentialDeltaUncertaintyElectronVolt > .04);
+assert.throws(() => validateFrozenActionBarrierResponse({ ...thermodynamicResponse,
+  thermodynamics: { ...thermodynamicResponse.thermodynamics,
+    chemicalPotentials: thermodynamicResponse.thermodynamics.chemicalPotentials.slice(0, 1) } },
+{ ...receipt, candidates: request.frontier.candidates }), /missing chemical potentials/);
+assert.throws(() => validateFrozenActionBarrierResponse({ ...thermodynamicResponse,
+  safeguards: { ...thermodynamicResponse.safeguards,
+    geometricScoresUsedAsThermodynamicLabels: true } },
+{ ...receipt, candidates: request.frontier.candidates }), /geometry-derived/);
+
 assert.throws(() => validateFrozenActionBarrierResponse({ ...response,
   records: [response.records[0], response.records[0]] }, { ...receipt,
   candidates: request.frontier.candidates }), /duplicate|exactly/);
@@ -132,6 +174,38 @@ assert.deepEqual(reversibleRequest.frontier.candidates.map((candidate) => candid
   ["attach", "detach"]);
 assert.equal(reversibleRequest.frontier.candidates.find((candidate) =>
   candidate.eventDirection === "detach").finalAtomCount, 0);
+const reversibleReceipt = await frozenActionBarrierRequestReceipt(reversibleRequest);
+const reversibleThermodynamicResponse = {
+  schema: ACTION_BARRIER_RESPONSE_SCHEMA,
+  requestSha256: reversibleReceipt.requestSha256,
+  candidateBatchSha256: reversibleReceipt.candidateBatchSha256,
+  initialStructureSha256: reversibleReceipt.initialStructureSha256,
+  method: response.method,
+  thermodynamics: { ...thermodynamicResponse.thermodynamics,
+    chemicalPotentials: [{ species: "Na", electronVolt: -1,
+      uncertaintyElectronVolt: .02 }] },
+  validation: { ...response.validation, thermodynamicsReported: true,
+    everyStateFreeEnergyConverged: true, chemicalPotentialUncertaintyReported: true },
+  safeguards: thermodynamicResponse.safeguards,
+  records: reversibleRequest.frontier.candidates.map((candidate) => ({
+    candidateId: candidate.candidateId,
+    candidateDigestSha256: candidate.candidateDigestSha256,
+    initialGeometrySha256: candidate.initialGeometrySha256,
+    finalGeometrySha256: candidate.finalGeometrySha256,
+    barrierElectronVolt: .5, uncertaintyElectronVolt: .02,
+    maximumForceElectronVoltPerAngstrom: .01, imageCount: 7, converged: true,
+    systemFreeEnergyDeltaElectronVolt: candidate.eventDirection === "attach" ? -.8 : .8,
+    systemFreeEnergyDeltaUncertaintyElectronVolt: .04,
+    stateFreeEnergyConverged: true,
+  })),
+};
+const reversibleThermodynamics = validateFrozenActionBarrierResponse(
+  reversibleThermodynamicResponse, { ...reversibleReceipt,
+    candidates: reversibleRequest.frontier.candidates });
+assert.deepEqual(reversibleThermodynamics.records.find((record) =>
+  record.eventDirection === "attach").speciesDelta, { Na: 1 });
+assert.deepEqual(reversibleThermodynamics.records.find((record) =>
+  record.eventDirection === "detach").speciesDelta, { Na: -1 });
 await assert.rejects(() => buildFrozenActionBarrierRequest({
   generatedAt: "x", buildId: "test", scenarioId: "nacl", materialName: "NaCl", elements: ["Na"],
   candidates: [{ ...detach, removedSites: [{ species: "Na", positionAngstrom: [9, 0, 0] }],

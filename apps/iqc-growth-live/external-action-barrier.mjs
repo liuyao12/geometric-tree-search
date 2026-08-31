@@ -22,6 +22,21 @@ function normalizedSite(site, label) {
   };
 }
 
+function speciesCounts(sites) {
+  const result = {};
+  (Array.isArray(sites) ? sites : []).forEach((site) => {
+    result[site.species] = (result[site.species] || 0) + 1;
+  });
+  return result;
+}
+
+function candidateSpeciesDelta(candidate) {
+  const sign = candidate.eventDirection === "attach" ? 1 : -1;
+  const changed = candidate.eventDirection === "attach" ? candidate.emittedSites : candidate.removedSites;
+  return Object.fromEntries(Object.entries(speciesCounts(changed)).sort(([first], [second]) =>
+    first.localeCompare(second)).map(([species, count]) => [species, sign * count]));
+}
+
 function canonicalValue(value) {
   if (Array.isArray(value)) return value.map(canonicalValue);
   if (value && typeof value === "object") return Object.fromEntries(Object.keys(value).sort()
@@ -203,6 +218,18 @@ export async function buildFrozenActionBarrierRequest(input) {
         "at least three energy images", "maximum residual force", "barrier uncertainty and method provenance"],
       optionalMicroscopicInverseOutputs: ["energyDeltaElectronVolt between the exact final and initial states",
         "energyDeltaUncertaintyElectronVolt from the same method-specific calculation"],
+      optionalReservoirThermodynamics: {
+        model: "grand-canonical-state-free-energy",
+        ensemble: "grand-canonical-T-V-mu",
+        systemFreeEnergyKind: "Helmholtz",
+        requiredRootFields: ["temperatureKelvin", "freeEnergyMethod", "freeEnergySettingsSha256",
+          "chemicalPotentialReference", "chemicalPotentialSettingsSha256", "evidenceSha256",
+          "chemicalPotentials with one value + uncertainty per transferred species",
+          "uncertaintyAssumption=independent-one-sigma", "volumeHeldFixedAcrossPath=true"],
+        requiredCandidateFields: ["systemFreeEnergyDeltaElectronVolt",
+          "systemFreeEnergyDeltaUncertaintyElectronVolt", "stateFreeEnergyConverged=true"],
+        scope: "optional evidence for a later exact inverse-pair local-balance audit only",
+      },
       optionalKineticOutputs: ["one positive converged attemptFrequencyPerSecond for every candidate ID",
         "attemptFrequencyUncertaintyLog10", "prefactor method and settings SHA-256",
         "explicit requested-frontier-only catalog scope and recrossing declaration"],
@@ -229,6 +256,9 @@ export async function buildFrozenActionBarrierRequest(input) {
       hardAdmissionMayChangeAfterResponse: false,
       responseScope: "ranking this exact candidate batch only",
       reversibleGeometryDoesNotImplyDetailedBalance: true,
+      optionalThermodynamicEvidenceMustBeExternal: true,
+      geometricScoresMayNotSupplyChemicalPotentialOrFreeEnergy: true,
+      oneInversePairMayNotClaimGlobalDetailedBalance: true,
     },
   };
 }
@@ -316,12 +346,77 @@ export function validateFrozenActionBarrierResponse(response, expected) {
       throw new Error("kinetic prefactors have not passed every frozen validation gate");
     }
   }
+  const thermodynamics = response.thermodynamics == null ? null : (() => {
+    const source = response.thermodynamics;
+    const normalized = {
+      model: requiredText(source.model, "thermodynamic model"),
+      ensemble: requiredText(source.ensemble, "thermodynamic ensemble"),
+      systemFreeEnergyKind: requiredText(source.systemFreeEnergyKind, "system free-energy kind"),
+      temperatureKelvin: finite(source.temperatureKelvin) ? Number(source.temperatureKelvin) : null,
+      freeEnergyMethod: requiredText(source.freeEnergyMethod, "free-energy method"),
+      freeEnergySettingsSha256: requiredText(source.freeEnergySettingsSha256,
+        "free-energy settings SHA-256"),
+      chemicalPotentialReference: requiredText(source.chemicalPotentialReference,
+        "chemical-potential reference"),
+      chemicalPotentialSettingsSha256: requiredText(source.chemicalPotentialSettingsSha256,
+        "chemical-potential settings SHA-256"),
+      evidenceSha256: requiredText(source.evidenceSha256, "thermodynamic evidence SHA-256"),
+      uncertaintyAssumption: requiredText(source.uncertaintyAssumption,
+        "thermodynamic uncertainty assumption"),
+      volumeHeldFixedAcrossPath: source.volumeHeldFixedAcrossPath === true,
+    };
+    if (normalized.model !== "grand-canonical-state-free-energy"
+        || normalized.ensemble !== "grand-canonical-T-V-mu"
+        || normalized.systemFreeEnergyKind !== "Helmholtz"
+        || normalized.uncertaintyAssumption !== "independent-one-sigma"
+        || !normalized.volumeHeldFixedAcrossPath) {
+      throw new Error("thermodynamic evidence must use the declared grand-canonical T-V-mu Helmholtz contract");
+    }
+    if (!Number.isFinite(normalized.temperatureKelvin)
+        || normalized.temperatureKelvin < 1 || normalized.temperatureKelvin > 5000) {
+      throw new RangeError("thermodynamic temperature must be between 1 and 5000 K");
+    }
+    ["freeEnergySettingsSha256", "chemicalPotentialSettingsSha256", "evidenceSha256"]
+      .forEach((field) => {
+        if (!/^[a-f0-9]{64}$/i.test(normalized[field])) {
+          throw new Error(`${field} must contain 64 hexadecimal characters`);
+        }
+      });
+    if (!Array.isArray(source.chemicalPotentials) || !source.chemicalPotentials.length) {
+      throw new Error("thermodynamic evidence needs at least one chemical potential");
+    }
+    const seenSpecies = new Set();
+    normalized.chemicalPotentials = source.chemicalPotentials.map((entry, index) => {
+      const species = requiredText(entry?.species, `chemical potential ${index + 1} species`);
+      if (seenSpecies.has(species)) throw new Error(`duplicate chemical potential for ${species}`);
+      seenSpecies.add(species);
+      if (entry.electronVolt == null || entry.uncertaintyElectronVolt == null
+          || !finite(entry.electronVolt) || !finite(entry.uncertaintyElectronVolt)
+          || Number(entry.uncertaintyElectronVolt) < 0) {
+        throw new Error(`chemical potential for ${species} needs a finite value and nonnegative uncertainty`);
+      }
+      return { species, electronVolt: Number(entry.electronVolt),
+        uncertaintyElectronVolt: Number(entry.uncertaintyElectronVolt) };
+    }).sort((first, second) => first.species.localeCompare(second.species));
+    if (!(validation.thermodynamicsReported === true
+        && validation.everyStateFreeEnergyConverged === true
+        && validation.chemicalPotentialUncertaintyReported === true)) {
+      throw new Error("thermodynamic evidence has not passed every frozen validation gate");
+    }
+    return normalized;
+  })();
   if (response.safeguards?.containsGrowthTargetCoordinates !== false
       || response.safeguards?.geometricScoresUsedAsPhysicalLabels !== false
       || response.safeguards?.searchStepsUsedAsPhysicalTime !== false
       || response.safeguards?.candidateSetChanged !== false
       || response.safeguards?.hardAdmissionChanged !== false) {
     throw new Error("action-barrier response safeguards are incomplete or target-tainted");
+  }
+  if (thermodynamics && !(response.safeguards.chemicalPotentialsExternallySupplied === true
+      && response.safeguards.stateFreeEnergiesExternallySupplied === true
+      && response.safeguards.geometricScoresUsedAsThermodynamicLabels === false
+      && response.safeguards.globalDetailedBalanceClaimed === false)) {
+    throw new Error("grand-canonical evidence safeguards are incomplete or geometry-derived");
   }
   if (!Array.isArray(response.records) || response.records.length !== expected.candidates.length) {
     throw new Error(`action-barrier response needs exactly ${expected.candidates.length} candidate records`);
@@ -371,6 +466,46 @@ export function validateFrozenActionBarrierResponse(response, expected) {
         || (energyDeltaUncertaintyElectronVolt != null && energyDeltaUncertaintyElectronVolt < 0)) {
       throw new Error(`energy delta and its nonnegative uncertainty must be supplied together for ${candidateId}`);
     }
+    const speciesDelta = candidateSpeciesDelta(candidate);
+    let systemFreeEnergyDeltaElectronVolt = null;
+    let systemFreeEnergyDeltaUncertaintyElectronVolt = null;
+    let reservoirChemicalWorkElectronVolt = null;
+    let reservoirChemicalWorkUncertaintyElectronVolt = null;
+    let grandPotentialDeltaElectronVolt = null;
+    let grandPotentialDeltaUncertaintyElectronVolt = null;
+    if (thermodynamics) {
+      if (record.systemFreeEnergyDeltaElectronVolt == null
+          || record.systemFreeEnergyDeltaUncertaintyElectronVolt == null
+          || !finite(record.systemFreeEnergyDeltaElectronVolt)
+          || !finite(record.systemFreeEnergyDeltaUncertaintyElectronVolt)
+          || Number(record.systemFreeEnergyDeltaUncertaintyElectronVolt) < 0
+          || record.stateFreeEnergyConverged !== true) {
+        throw new Error(`state free energy for ${candidateId} is incomplete, invalid, or unconverged`);
+      }
+      systemFreeEnergyDeltaElectronVolt = Number(record.systemFreeEnergyDeltaElectronVolt);
+      systemFreeEnergyDeltaUncertaintyElectronVolt = Number(
+        record.systemFreeEnergyDeltaUncertaintyElectronVolt);
+      const potentials = new Map(thermodynamics.chemicalPotentials.map((entry) =>
+        [entry.species, entry]));
+      const missing = Object.keys(speciesDelta).filter((species) => !potentials.has(species));
+      if (missing.length) {
+        throw new Error(`thermodynamic evidence is missing chemical potentials for ${missing.join(", ")}`);
+      }
+      reservoirChemicalWorkElectronVolt = Object.entries(speciesDelta).reduce((sum,
+        [species, delta]) => sum + delta * potentials.get(species).electronVolt, 0);
+      reservoirChemicalWorkUncertaintyElectronVolt = Math.sqrt(Object.entries(speciesDelta)
+        .reduce((sum, [species, delta]) => sum
+          + (delta * potentials.get(species).uncertaintyElectronVolt) ** 2, 0));
+      grandPotentialDeltaElectronVolt = systemFreeEnergyDeltaElectronVolt
+        - reservoirChemicalWorkElectronVolt;
+      grandPotentialDeltaUncertaintyElectronVolt = Math.sqrt(
+        systemFreeEnergyDeltaUncertaintyElectronVolt ** 2
+        + reservoirChemicalWorkUncertaintyElectronVolt ** 2);
+    } else if (record.systemFreeEnergyDeltaElectronVolt != null
+        || record.systemFreeEnergyDeltaUncertaintyElectronVolt != null
+        || record.stateFreeEnergyConverged != null) {
+      throw new Error("per-candidate state free-energy fields require the complete thermodynamics declaration");
+    }
     if (kinetics && (!finite(record.attemptFrequencyPerSecond)
         || Number(record.attemptFrequencyPerSecond) <= 0
         || !finite(record.attemptFrequencyUncertaintyLog10)
@@ -390,6 +525,13 @@ export function validateFrozenActionBarrierResponse(response, expected) {
       imageCount: record.imageCount,
       energyDeltaElectronVolt,
       energyDeltaUncertaintyElectronVolt,
+      speciesDelta,
+      systemFreeEnergyDeltaElectronVolt,
+      systemFreeEnergyDeltaUncertaintyElectronVolt,
+      reservoirChemicalWorkElectronVolt,
+      reservoirChemicalWorkUncertaintyElectronVolt,
+      grandPotentialDeltaElectronVolt,
+      grandPotentialDeltaUncertaintyElectronVolt,
       attemptFrequencyPerSecond: kinetics ? Number(record.attemptFrequencyPerSecond) : null,
       attemptFrequencyUncertaintyLog10: kinetics
         ? Number(record.attemptFrequencyUncertaintyLog10) : null,
@@ -409,7 +551,9 @@ export function validateFrozenActionBarrierResponse(response, expected) {
     initialStructureSha256: response.initialStructureSha256,
     method: methodSummary,
     kinetics,
+    thermodynamics,
     kineticsEligible: Boolean(kinetics),
+    grandCanonicalEvidenceEligible: Boolean(thermodynamics),
     validationPassed: true,
     candidateCount: records.length,
     robustNormalization: { centerElectronVolt: normalized.centerElectronVolt,
@@ -428,5 +572,7 @@ export function validateFrozenActionBarrierResponse(response, expected) {
       && normalized.records.some((record) => record.eventDirection === "detach"),
     thermodynamicReversibilityCertified: false,
     detailedBalanceCertified: false,
+    finitePairLocalBalanceCertified: false,
+    equilibriumEnsembleClaimed: false,
   };
 }

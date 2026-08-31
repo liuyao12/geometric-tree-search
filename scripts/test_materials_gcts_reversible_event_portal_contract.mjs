@@ -8,7 +8,7 @@ const readme = await readFile(new URL("../apps/iqc-growth-live/README.md", impor
 assert.match(html, /id="actionBarrierCatalog"/);
 assert.match(html, /value="forward-only"/);
 assert.match(html, /value="reversible-leaves" selected/);
-assert.match(html, /app\.js\?v=20260831-348/);
+assert.match(html, /app\.js\?v=20260831-349/);
 assert.match(html, /Microscopic inverse lineage/);
 
 assert.match(app, /enumerateDetachableLeafPlacements/);
@@ -18,9 +18,12 @@ assert.match(app, /thermodynamicReversibilityCertified: false/);
 assert.match(app, /detailedBalanceCertified: false/);
 assert.match(app, /registerCommittedReversibleTransition/);
 assert.match(app, /microscopic-inverse-lineage/);
+assert.match(app, /finitePairLocalBalancePassed/);
+assert.match(app, /grandCanonicalEvidence/);
 
 assert.match(readme, /Build 347/);
 assert.match(readme, /Build 348/);
+assert.match(readme, /Build 349/);
 assert.match(readme, /does\s+not manufacture thermodynamics/);
 
 console.log("reversible event portal integration: passed");
