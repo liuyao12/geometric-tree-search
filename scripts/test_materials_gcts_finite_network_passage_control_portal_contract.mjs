@@ -11,9 +11,9 @@ const benchmark = fs.readFileSync("docs/projects/materials-recursive-gcts-benchm
 for (const document of [html, alias]) {
   assert.match(document, /finiteNetworkPassageControlPlot/);
   assert.match(document, /Geometric kinetic-control map/);
-  assert.match(document, /app\.js\?v=20260831-379/);
+  assert.match(document, /app\.js\?v=20260831-380/);
 }
-assert.match(app, /finite-network-passage-control\.mjs\?v=20260831-379/);
+assert.match(app, /finite-network-passage-control\.mjs\?v=20260831-380/);
 assert.match(app, /buildFiniteNetworkPassageControl/);
 assert.match(app, /finiteNetworkPassageControl,/);
 assert.match(model, /commonModeTargetProbabilityDerivative/);

@@ -1,5 +1,37 @@
 # Recursive GCTS benchmark for material growth
 
+### Exact finite-rate intervention explorer (Build 380)
+
+Build 380 converts the local control derivative into an exact finite what-if.
+For a selected observed edge `e` and multiplier `m`, it constructs a copied
+network with
+
+`ln k'_e = ln k_e + ln m`
+
+and leaves every other rate, exact state, directed edge, and coordinate-path
+record byte-for-byte fixed. It then reruns the full Build 377 backward solve.
+The returned response contains the exact target-hit change, conditional
+passage-time ratio, expected-jump ratio, and the discrepancy
+
+`Δln τ_exact - (∂ln τ/∂ln k_e) ln m`
+
+from the Build 379 tangent. Serial and competing-success/failure analytic
+networks verify the nonlinear result, input immutability, geometry retention,
+and fail-closed multiplier/edge validation.
+
+In the portal, clicking a signed control bar selects the edge and the discrete
+quarter- through four-fold buttons select `m`; there is no unconstrained text
+input. A solid curve shows the exact re-solve and a dashed curve the local
+elasticity, linked to the edge's event, contact, and coordination geometry.
+The complete intervention receipt is stored with the committed transition
+lineage and surfaced in the physics-evidence inventory.
+
+This is a virtual intervention on a finite observed model. It does not mutate
+growth, infer how an experimental knob changes a barrier, allow correlated
+geometry/rate relaxation, or certify missing mechanisms absent. Its purpose is
+to test whether a local geometric bottleneck interpretation survives a finite
+rate change before undertaking a more expensive physical calculation.
+
 ### Geometry-linked kinetic-control map (Build 379)
 
 For each observed directed edge `e`, Build 379 reevaluates the complete finite-

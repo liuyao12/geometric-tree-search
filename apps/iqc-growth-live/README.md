@@ -1,5 +1,26 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 380 · exact geometric rate what-if
+
+The kinetic-control map is now actionable without changing the simulated
+material. A scientist can select any displayed observed edge and test a
+quarter-, half-, one-, two-, or four-fold virtual rate. For every factor the
+portal copies the exact finite network, changes only that edge's supplied log
+rate, and reruns the complete target-hitting and target-conditioned passage
+equations.
+
+The solid response curve is the exact nonlinear change in conditional passage
+time; the dashed curve is the local Build 379 elasticity. The selected point
+reports its exact passage-time ratio, target-hit probability change, departure
+from the tangent, and the edge's contact/coordination character. This reveals
+when a bottleneck ranking remains reliable over a finite intervention and when
+network branching makes the response nonlinear.
+
+The experiment is deliberately counterfactual and non-mutating. Exact states,
+topology, path geometry, and every other rate remain frozen. It neither claims
+that the chosen rate can be changed independently in a laboratory nor predicts
+the barrier shift produced by temperature, chemistry, stress, or processing.
+
 ## Build 379 · geometry-linked kinetic-control map
 
 The passage analysis now identifies which observed geometric transition
