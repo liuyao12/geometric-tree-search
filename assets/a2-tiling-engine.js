@@ -489,6 +489,12 @@ export class FixedTurtleMarking extends NoA2Marking{
       const point=a2Sub(entry.point,origin);if(markedPoints.has(a2Key(point)))continue;
       for(let component=0;component<3;component++)this.support.push({tile:"turtle",point,component,value:0});
     }
+    const valuesByPoint=new Map();
+    for(const entry of this.support){const key=a2Key(entry.point);if(!valuesByPoint.has(key))valuesByPoint.set(key,new Map());valuesByPoint.get(key).set(entry.component,entry.value);}
+    for(const [key,values] of valuesByPoint){
+      if([...values.values()].filter(value=>value!==0).length!==2)continue;
+      const component=[0,1,2].find(index=>!values.has(index));if(component!==undefined)this.support.push({tile:"turtle",point:key.split(",").map(Number),component,value:0});
+    }
   }
   entries(placement){
     const cacheKey=placement.id??`${placement.tile}:${placement.orientation.index}:${a2Key(placement.translation)}`;

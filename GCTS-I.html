@@ -471,6 +471,17 @@
               setMarkEntry({ point: entry.point, component, value: 0 });
             }
           });
+          const valuesByPoint = new Map();
+          markEntriesByKey.forEach(entry => {
+            const pointKey = key3(entry.point);
+            if (!valuesByPoint.has(pointKey)) valuesByPoint.set(pointKey, new Map());
+            valuesByPoint.get(pointKey).set(entry.component, entry.value);
+          });
+          valuesByPoint.forEach((values, pointKey) => {
+            if (Array.from(values.values()).filter(value => value !== 0).length !== 2) return;
+            const component = [0, 1, 2].find(index => !values.has(index));
+            if (component !== undefined) setMarkEntry({ point: pointKey.split(',').map(Number), component, value: 0 });
+          });
           const markEntries = Array.from(markEntriesByKey.values());
           return {
             ...symmetry,

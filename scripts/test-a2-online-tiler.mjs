@@ -92,14 +92,18 @@ const fixed = await solveA2Tiling({
 });
 assert.equal(fixed.result, "yes", "the shared tiler must grow a large patch with the article marking");
 assert.equal(fixed.placements.length, 50);
-const fixedZeroSites = new Map();
-for (const entry of new FixedTurtleMarking(1).support.filter(entry => entry.value === 0)) {
+const fixedMarkingSites = new Map();
+for (const entry of new FixedTurtleMarking(1).support) {
   const key = entry.point.join(",");
-  if (!fixedZeroSites.has(key)) fixedZeroSites.set(key, new Set());
-  fixedZeroSites.get(key).add(entry.component);
+  if (!fixedMarkingSites.has(key)) fixedMarkingSites.set(key, new Map());
+  fixedMarkingSites.get(key).set(entry.component, entry.value);
 }
-assert.equal(fixedZeroSites.size, 19, "all-wildcard Turtle sites must be replaced by zero triples");
-assert.ok([...fixedZeroSites.values()].every(components => components.size === 3), "each refined site must carry (0,0,0)");
+const fixedZeroTriples = [...fixedMarkingSites.values()].filter(values => values.size === 3 && [...values.values()].every(value => value === 0));
+const fixedTwoLineSites = [...fixedMarkingSites.values()].filter(values => [...values.values()].filter(value => value !== 0).length === 2);
+assert.equal(fixedZeroTriples.length, 19, "all-wildcard Turtle sites must be replaced by zero triples");
+assert.equal(fixedTwoLineSites.length, 5, "the Turtle marking must have five two-line intersection sites");
+assert.ok(fixedTwoLineSites.every(values => values.size === 3 && [...values.values()].includes(0)), "a two-line intersection must set its third component to zero");
+assert.ok([...fixedMarkingSites.values()].every(values => [...values.values()].filter(value => value !== 0).length < 3), "no Turtle marking point may carry all three nonzero lines");
 assert.equal(new Set(fixed.placements.map(placement => placement.id)).size, 50, "growth cannot reuse a placement");
 assert.equal(fixed.stats.frontierGraphFullBuilds, 1, "the fixed-marking search initializes the frontier graph once");
 assert.ok(fixed.stats.frontierGraphLocalUpdates > 0, "placements must update the frontier graph locally");
