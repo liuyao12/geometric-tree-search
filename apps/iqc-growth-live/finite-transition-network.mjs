@@ -85,6 +85,7 @@ export function buildFiniteTransitionNetwork(rawHistory) {
       record.grandPotentialDeltaUncertaintyElectronVolt,
     temperatureKelvin: record.temperatureKelvin,
     methodSettingsSha256: record.methodSettingsSha256,
+    geometricPathObservable: record.geometricPathObservable,
     freeEnergySettingsSha256: record.freeEnergySettingsSha256,
     chemicalPotentialSettingsSha256: record.chemicalPotentialSettingsSha256,
   }));

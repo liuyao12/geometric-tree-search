@@ -95,6 +95,70 @@ export function normalizedCommittedTransition(raw) {
   if (thermodynamicFieldCount && !Object.keys(speciesDelta).length && eventDirection !== "hop") {
     throw new Error("grand-canonical transition evidence needs a nonempty integer species delta");
   }
+  const geometricPathObservable = raw.geometricPathObservable == null ? null : (() => {
+    const source = raw.geometricPathObservable;
+    const contactReach = optionalFinite(source.contactReach, "geometric contact reach",
+      { positive: true });
+    if (!(contactReach > 1)) throw new RangeError("geometric contact reach must exceed one");
+    const contactResolved = source.contactResolved === true;
+    const referenceLengthAngstrom = optionalFinite(source.referenceLengthAngstrom,
+      "geometric reference length", { positive: true });
+    const netContactDelta = optionalFinite(source.netContactDelta, "net geometric contact delta");
+    const netFormedContactCount = optionalFinite(source.netFormedContactCount,
+      "formed geometric contact count", { nonnegative: true });
+    const netBrokenContactCount = optionalFinite(source.netBrokenContactCount,
+      "broken geometric contact count", { nonnegative: true });
+    const initialContactCount = optionalFinite(source.initialContactCount,
+      "initial geometric contact count", { nonnegative: true });
+    const finalContactCount = optionalFinite(source.finalContactCount,
+      "final geometric contact count", { nonnegative: true });
+    const initialMeanDynamicCoordination = optionalFinite(source.initialMeanDynamicCoordination,
+      "initial mean dynamic coordination", { nonnegative: true });
+    const finalMeanDynamicCoordination = optionalFinite(source.finalMeanDynamicCoordination,
+      "final mean dynamic coordination", { nonnegative: true });
+    const meanDynamicCoordinationDelta = optionalFinite(source.meanDynamicCoordinationDelta,
+      "mean dynamic coordination delta");
+    const maximumAdjacentDisplacementAngstrom = optionalFinite(
+      source.maximumAdjacentDisplacementAngstrom, "maximum adjacent displacement",
+      { nonnegative: true });
+    const geometricCharacter = source.geometricCharacter == null ? null
+      : requiredText(source.geometricCharacter, "geometric character");
+    const integerCounts = [netContactDelta, netFormedContactCount, netBrokenContactCount,
+      initialContactCount, finalContactCount];
+    if (integerCounts.some((value) => value != null && !Number.isInteger(value))) {
+      throw new Error("geometric contact counts and deltas must be integers");
+    }
+    const resolvedFields = [referenceLengthAngstrom, netContactDelta, netFormedContactCount,
+      netBrokenContactCount, initialContactCount, finalContactCount,
+      initialMeanDynamicCoordination, finalMeanDynamicCoordination,
+      meanDynamicCoordinationDelta, geometricCharacter];
+    if (contactResolved && resolvedFields.some((value) => value == null)) {
+      throw new Error("resolved geometric path evidence must include all contact observables");
+    }
+    if (!contactResolved && resolvedFields.some((value) => value != null)) {
+      throw new Error("unresolved geometric path evidence cannot carry contact observables");
+    }
+    if (contactResolved && netContactDelta !== finalContactCount - initialContactCount) {
+      throw new Error("net contact delta must match final minus initial contact count");
+    }
+    if (contactResolved && netContactDelta !== netFormedContactCount - netBrokenContactCount) {
+      throw new Error("net contact delta must match formed minus broken contacts");
+    }
+    if (contactResolved && Math.abs(meanDynamicCoordinationDelta
+      - (finalMeanDynamicCoordination - initialMeanDynamicCoordination)) > 1e-10) {
+      throw new Error("coordination delta must match final minus initial coordination");
+    }
+    return {
+      schema: "gcts-committed-path-geometric-observable-v1",
+      contactReach, contactResolved, referenceLengthAngstrom,
+      netContactDelta, netFormedContactCount, netBrokenContactCount,
+      initialContactCount, finalContactCount,
+      initialMeanDynamicCoordination, finalMeanDynamicCoordination,
+      meanDynamicCoordinationDelta, maximumAdjacentDisplacementAngstrom,
+      geometricCharacter,
+      targetUsed: false, chemicalBondClaimed: false, physicalTimeInferred: false,
+    };
+  })();
   return {
     schema: "gcts-committed-reversible-transition-v1",
     eventId: requiredText(raw.eventId, "event ID"),
@@ -123,6 +187,7 @@ export function normalizedCommittedTransition(raw) {
     speciesDelta,
     initialAtomCount,
     finalAtomCount,
+    geometricPathObservable,
     ...thermodynamicFields,
     targetUsed: false,
   };
@@ -217,6 +282,21 @@ export function auditMicroscopicInversePair(firstRaw, secondRaw) {
       first.grandPotentialDeltaUncertaintyElectronVolt * inverseThermalEnergy]) : null;
   const localBalanceResidualPassed = withinThreeSigma(localBalanceLogResidual,
     localBalanceLogUncertainty);
+  const geometricPathEvidenceComplete = first.geometricPathObservable?.contactResolved === true
+    && second.geometricPathObservable?.contactResolved === true;
+  const sameGeometricContactDefinition = geometricPathEvidenceComplete
+    && first.geometricPathObservable.contactReach === second.geometricPathObservable.contactReach
+    && Math.abs(first.geometricPathObservable.referenceLengthAngstrom
+      - second.geometricPathObservable.referenceLengthAngstrom) <= 1e-10;
+  const geometricContactCycleResidual = sameGeometricContactDefinition
+    ? first.geometricPathObservable.netContactDelta
+      + second.geometricPathObservable.netContactDelta : null;
+  const geometricCoordinationCycleResidual = sameGeometricContactDefinition
+    ? first.geometricPathObservable.meanDynamicCoordinationDelta
+      + second.geometricPathObservable.meanDynamicCoordinationDelta : null;
+  const geometricPathObservableClosurePassed = sameGeometricContactDefinition
+    && Math.abs(geometricContactCycleResidual) <= 1e-10
+    && Math.abs(geometricCoordinationCycleResidual) <= 1e-10;
   const microscopicPathClosurePassed = directionPairCanReverse && geometryCycleClosed && exactCommittedStates
     && sameBarrierMethod && energyDeltaCyclePassed && transitionStateClosurePassed;
   return {
@@ -253,6 +333,11 @@ export function auditMicroscopicInversePair(firstRaw, secondRaw) {
     localBalancePredictedLogRateRatio,
     localBalanceLogUncertainty,
     localBalanceResidualPassed,
+    geometricPathEvidenceComplete,
+    sameGeometricContactDefinition,
+    geometricContactCycleResidual,
+    geometricCoordinationCycleResidual,
+    geometricPathObservableClosurePassed,
     finitePairLocalBalancePassed: microscopicPathClosurePassed && speciesTransferReversed
       && sameThermodynamicSettings
       && thermodynamicTemperatureMatched && grandPotentialCyclePassed
@@ -262,7 +347,7 @@ export function auditMicroscopicInversePair(firstRaw, secondRaw) {
     reservoirChemicalPotentialUsed: grandCanonicalEvidenceComplete,
     equilibriumConstantInferred: false,
     targetUsed: false,
-    claimBoundary: "Exact reversed state hashes establish a microscopic geometry cycle. Barrier/reaction-energy closure checks one method-specific transition-state identity. Optional system free energies and chemical potentials can test the local-balance equation for this finite pair within reported uncertainty. None of these audits proves mechanism completeness, global detailed balance, an equilibrium constant, or an equilibrium ensemble.",
+    claimBoundary: "Exact reversed state hashes establish a microscopic geometry cycle. Barrier/reaction-energy closure checks one method-specific transition-state identity. A separately matched contact definition can test reversal of local geometric contact and coordination changes. Optional system free energies and chemical potentials can test the local-balance equation for this finite pair within reported uncertainty. None of these audits proves mechanism completeness, global detailed balance, an equilibrium constant, or an equilibrium ensemble.",
   };
 }
 

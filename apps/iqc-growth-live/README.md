@@ -1,5 +1,32 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 375 · traffic-weighted structural-order current
+
+Committed reversible edges now retain the geometry of their validated
+coordinate path: the explicit contact reach and local reference length,
+initial/final contact counts, formed and broken contacts, initial/final mean
+dynamic coordination, maximum adjacent-image displacement, and geometric path
+character. These fields are normalized and checked when the edge enters the
+exact-state history rather than reconstructed later from labels.
+
+The state-network population current now weights those observables by exact
+edge traffic `p_i k_ij`. The new structural-order panel reports net contact
+current, mean-coordination current, displacement activity, and the activity
+partition among contact-forming, contact-breaking, reconstructive, and
+displacive paths. Traffic with absent path geometry or an unresolved local
+reference remains an explicit missing fraction. Edges with different contact
+reaches are never silently aggregated.
+
+Exact inverse pairs also receive a separate geometry-observable closure audit:
+under one matched contact definition, forward and reverse contact and
+coordination changes must cancel. This remains independent of the energetic
+and grand-canonical local-balance tests.
+
+All observables are path-local geometry. A thresholded contact is not a bond,
+the coordination current is not a bulk order parameter, and the weighted
+finite-network derivative is not a relaxation trajectory or complete
+structural kinetics law.
+
 ## Build 374 · geometry-resolved transient probability current
 
 The observed-network master equation now resolves instantaneous traffic on

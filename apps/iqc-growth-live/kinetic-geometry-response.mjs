@@ -1,9 +1,9 @@
 import { analyzeActionPathMechanism }
-  from "./action-path-mechanism.mjs?v=20260831-374";
+  from "./action-path-mechanism.mjs?v=20260831-375";
 import { buildFrozenKineticCompetition }
-  from "./frozen-frontier-kinetics.mjs?v=20260831-374";
+  from "./frozen-frontier-kinetics.mjs?v=20260831-375";
 import { buildTemperatureProgrammedKinetics }
-  from "./temperature-programmed-kinetics.mjs?v=20260831-374";
+  from "./temperature-programmed-kinetics.mjs?v=20260831-375";
 
 export const KINETIC_GEOMETRY_CHARACTERS = Object.freeze([
   "contact-forming", "contact-breaking", "contact exchange / reconstructive",
@@ -85,6 +85,8 @@ export function buildEventGeometryObservables(record, contactReach = 1.35) {
   const finalMaterialCount = record.pathGeometry.materialCounts.at(-1);
   const initialCoordination = mechanism.perImage[0].meanDynamicCoordination;
   const finalCoordination = mechanism.perImage.at(-1).meanDynamicCoordination;
+  const initialContactCount = mechanism.perImage[0].contactCount;
+  const finalContactCount = mechanism.perImage.at(-1).contactCount;
   return {
     candidateId: record.candidateId,
     eventDirection: record.eventDirection,
@@ -96,6 +98,10 @@ export function buildEventGeometryObservables(record, contactReach = 1.35) {
       ? mechanism.netFormedContactCount : null,
     netBrokenContactCount: mechanism.referenceAvailable
       ? mechanism.netBrokenContactCount : null,
+    initialContactCount: mechanism.referenceAvailable ? initialContactCount : null,
+    finalContactCount: mechanism.referenceAvailable ? finalContactCount : null,
+    initialMeanDynamicCoordination: mechanism.referenceAvailable ? initialCoordination : null,
+    finalMeanDynamicCoordination: mechanism.referenceAvailable ? finalCoordination : null,
     meanDynamicCoordinationDelta: mechanism.referenceAvailable
       ? finalCoordination - initialCoordination : null,
     maximumAdjacentDisplacementAngstrom: record.pathGeometry.maximumSiteDisplacementAngstrom,

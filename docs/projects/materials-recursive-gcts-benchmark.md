@@ -1,5 +1,38 @@
 # Recursive GCTS benchmark for material growth
 
+### Traffic-weighted structural-order current (Build 375)
+
+The committed transition contract now preserves each validated path's local
+geometric observable at the investigator-selected contact reach. For resolved
+paths this includes the reference length, initial/final contact counts,
+formed/broken counts, initial/final mean coordination, their signed changes,
+maximum adjacent-image displacement, and one mutually exclusive geometric
+character. Integer and difference identities are checked during normalization;
+unresolved paths cannot smuggle in apparent zero-valued contact evidence.
+
+At a selected master-equation horizon, every directed edge has traffic
+`T_ij = p_i k_ij/q`. Build 375 evaluates the partial observed derivatives
+
+`dC/d(qt) = Σ_resolved T_ij ΔC_ij` and
+`dZ/d(qt) = Σ_resolved T_ij ΔZ_ij`,
+
+alongside traffic-weighted maximum adjacent-image displacement. The sums are
+partial whenever any current-carrying edge lacks geometry or a local contact
+reference; coverage fractions are therefore first-class outputs. Contact
+aggregation is rejected if retained edges use different reach multipliers.
+
+The UI displays contact and coordination current, displacement activity, the
+conditional contact change per resolved transition, and a stacked activity
+partition over forming, breaking, reconstructive, and displacive paths. Exact
+inverse path pairs with a matched contact definition are also audited for
+zero forward-plus-reverse contact and coordination residual.
+
+These are threshold-explicit, path-local geometric relations. They are not
+chemical bond orders, a bulk crystallinity coordinate, a relaxation
+trajectory, or a mechanism-complete kinetics model. A globally comparable
+order parameter would require an observation-wide definition evaluated on
+every exact state, not merely local event paths.
+
 ### Geometry-resolved transient probability current (Build 374)
 
 For the Build 373 state distribution `p(t)` and each latest observed directed
