@@ -49,6 +49,9 @@ const tenCopyReceipts = await readGzipNdjson(
 const radiusTwoContinuations = await readGzipNdjson(
   "data/a2-sliced-size9-palindromic-corona2-core256.ndjson.gz"
 );
+const fiveCopySubstitutions = await readGzipNdjson(
+  "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-proper-04636.ndjson.gz"
+);
 const tenCopySolverProbe = tenCopySummary.solver_probe;
 if (!tenCopySolverProbe
     || tenCopySolverProbe.solver !== "qffd"
@@ -76,6 +79,7 @@ const exactSixById = new Map(exactSix.map(record => [record.id, record]));
 const clusterSubstitutionById = new Map(periodicClusterSubstitutions.map(record => [record.id, record]));
 const tenCopySummaryById = new Map(tenCopySummary.candidates.map(record => [record.id, record]));
 const radiusTwoById = new Map(radiusTwoContinuations.map(record => [record.id, record]));
+const fiveCopySubstitutionById = new Map(fiveCopySubstitutions.map(record => [record.id, record]));
 const tenCopyReceiptsById = tenCopyReceipts.reduce((groups, record) => {
   const rows = groups.get(record.id) ?? [];
   rows.push(record);
@@ -165,6 +169,7 @@ const candidates = selectedIds.map((id, index) => {
   const tenCopy = tenCopySummaryById.get(id) ?? null;
   const tenCopyComplete = tenCopy?.node_capped_orbits === 0;
   const radiusTwo = radiusTwoById.get(id) ?? null;
+  const fiveCopy = fiveCopySubstitutionById.get(id) ?? null;
   if (!record || !sixCopy || !corona) throw new Error(`Missing focused receipt for ${id}`);
   const periodicCertificate = record.periodic_z3.certificate ?? null;
   const clusterSubstitution = clusterSubstitutionById.get(id) ?? null;
@@ -230,6 +235,17 @@ const candidates = selectedIds.map((id, index) => {
       throw new Error(`Missing validated radius-two continuation for ${id}`);
     }
   }
+  if (id === "a2sp_9_04636" && (
+      fiveCopy?.classification !== "no_five_copy_metatile_scalar2_substitution"
+      || fiveCopy.five_copy_alcove_metatile_screen.certified !== true
+      || fiveCopy.five_copy_alcove_metatile_screen.include_reflections !== false
+      || fiveCopy.five_copy_alcove_metatile_screen.symmetry_distinct_metatiles !== 17707
+      || fiveCopy.five_copy_alcove_metatile_screen.parents_completed !== 17707
+      || fiveCopy.five_copy_alcove_metatile_screen.parent_counts.atomic_local_obstruction !== 17707
+      || fiveCopy.five_copy_alcove_metatile_screen.parent_results.some(result =>
+        result.atomic_local_obstruction_replay?.verified !== true))) {
+    throw new Error(`Missing replayed proper five-copy substitution exclusion for ${id}`);
+  }
   const geometry = makeA2SlicedAlcoveUnion(record.alcoves);
   return {
     id,
@@ -243,7 +259,7 @@ const candidates = selectedIds.map((id, index) => {
     survivor_count: 97,
     description: isPeriodic
       ? "Nine-alcove non-polycube with a replayed eight-copy periodic quotient and induced scale-two cluster substitution."
-      : `Nine-alcove non-polycube from the completed palindromic-profile stratum on consecutive x+y+z=k sections. A heavy-first ten-copy quotient campaign exactly excludes ${tenCopy.exact_negative_orbits} of ${tenCopy.orbit_total} proper-A₂ orbit classes, covering ${tenCopy.hnfs_exactly_excluded} of ${tenCopy.hnf_total} HNF bases.${tenCopyComplete ? " The fixed ten-copy determinant-15 screen is complete with zero solver unknowns." : ` The remaining ${tenCopy.node_capped_orbits} classes are explicitly inconclusive after ten-million-node searches.`} A separate radius-two core-CEGAR continuation retains ${radiusTwo.corona2_core_cegar.clauses.length} sound failure clauses after ${radiusTwo.corona2_core_cegar.rounds} rounds without exhausting the outer space or finding a replayed radius-two patch. An alternate 120-second QF_FD probe on 18 residual classes yields no SAT or UNSAT result; 12 interrupted partial receipts are excluded.`,
+      : `Nine-alcove non-polycube from the completed palindromic-profile stratum on consecutive x+y+z=k sections. A heavy-first ten-copy quotient campaign exactly excludes ${tenCopy.exact_negative_orbits} of ${tenCopy.orbit_total} proper-A₂ orbit classes, covering ${tenCopy.hnfs_exactly_excluded} of ${tenCopy.hnf_total} HNF bases.${tenCopyComplete ? " The fixed ten-copy determinant-15 screen is complete with zero solver unknowns." : ` The remaining ${tenCopy.node_capped_orbits} classes are explicitly inconclusive after ten-million-node searches.`} A separate radius-two core-CEGAR continuation retains ${radiusTwo.corona2_core_cegar.clauses.length} sound failure clauses after ${radiusTwo.corona2_core_cegar.rounds} rounds without exhausting the outer space or finding a replayed radius-two patch.${fiveCopy ? ` For this leader, the complete proper five-copy metatile alphabet at scale 2 is also excluded: all ${fiveCopy.five_copy_alcove_metatile_screen.symmetry_distinct_metatiles.toLocaleString("en-US")} connected metatiles have replay-verified atomic local obstructions.` : ""} An alternate 120-second QF_FD probe on 18 residual classes yields no SAT or UNSAT result; 12 interrupted partial receipts are excluded.`,
     screening: {
       status: isPeriodic ? "periodic" : "inconclusive",
       certificate: isPeriodic ? "translational" : null,
@@ -334,6 +350,14 @@ const candidates = selectedIds.map((id, index) => {
         "data/a2-sliced-size9-palindromic-four-copy-substitution-scale2-proper-leaders.ndjson.gz",
         "data/a2-sliced-size9-palindromic-four-copy-substitution-scale2-reflected-leaders.ndjson.gz"
       ] : [],
+      five_copy_substitution_exact_scales: fiveCopy ? [2] : [],
+      five_copy_substitution_models: fiveCopy ? ["proper"] : [],
+      five_copy_substitution_certified_negatives: fiveCopy ? 1 : 0,
+      five_copy_substitution_parents_exhausted:
+        fiveCopy?.five_copy_alcove_metatile_screen.parents_completed ?? 0,
+      five_copy_substitution_report: fiveCopy
+        ? "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-proper-04636.ndjson.gz"
+        : null,
       corona_root_patch_copies: corona.corona_z3.replay.patch_copies,
       corona_solver: corona.corona_z3.smt2_sha256 ? "z3" : "exact_gcts",
       corona_report: corona.corona_z3.smt2_sha256

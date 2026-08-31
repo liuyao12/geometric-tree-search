@@ -1726,6 +1726,13 @@ assert.deepEqual(
   ]),
   [[10, 85, 0, 403, true], [10, 85, 0, 403, true], [8, 70, 15, 316, false]]
 );
+const fiveCopyLeader = palindromicUnresolved.find(candidate => candidate.id === "a2sp_9_04636");
+assert.deepEqual(fiveCopyLeader?.screening.five_copy_substitution_exact_scales, [2]);
+assert.deepEqual(fiveCopyLeader?.screening.five_copy_substitution_models, ["proper"]);
+assert.equal(fiveCopyLeader?.screening.five_copy_substitution_certified_negatives, 1);
+assert.equal(fiveCopyLeader?.screening.five_copy_substitution_parents_exhausted, 17707);
+assert.ok(palindromicUnresolved.filter(candidate => candidate.id !== "a2sp_9_04636")
+  .every(candidate => candidate.screening.five_copy_substitution_certified_negatives === 0));
 const palindromicPeriodic = A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES.filter(
   candidate => candidate.screening.status === "periodic"
 );

@@ -138,7 +138,7 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
     "lattice_points": 12,
     "survivor_priority": 1,
     "survivor_count": 97,
-    "description": "Nine-alcove non-polycube from the completed palindromic-profile stratum on consecutive x+y+z=k sections. A heavy-first ten-copy quotient campaign exactly excludes 85 of 85 proper-A₂ orbit classes, covering 403 of 403 HNF bases. The fixed ten-copy determinant-15 screen is complete with zero solver unknowns. A separate radius-two core-CEGAR continuation retains 256 sound failure clauses after 256 rounds without exhausting the outer space or finding a replayed radius-two patch. An alternate 120-second QF_FD probe on 18 residual classes yields no SAT or UNSAT result; 12 interrupted partial receipts are excluded.",
+    "description": "Nine-alcove non-polycube from the completed palindromic-profile stratum on consecutive x+y+z=k sections. A heavy-first ten-copy quotient campaign exactly excludes 85 of 85 proper-A₂ orbit classes, covering 403 of 403 HNF bases. The fixed ten-copy determinant-15 screen is complete with zero solver unknowns. A separate radius-two core-CEGAR continuation retains 256 sound failure clauses after 256 rounds without exhausting the outer space or finding a replayed radius-two patch. For this leader, the complete proper five-copy metatile alphabet at scale 2 is also excluded: all 17,707 connected metatiles have replay-verified atomic local obstructions. An alternate 120-second QF_FD probe on 18 residual classes yields no SAT or UNSAT result; 12 interrupted partial receipts are excluded.",
     "screening": {
       "status": "inconclusive",
       "certificate": null,
@@ -241,6 +241,15 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
         "data/a2-sliced-size9-palindromic-four-copy-substitution-scale2-proper-leaders.ndjson.gz",
         "data/a2-sliced-size9-palindromic-four-copy-substitution-scale2-reflected-leaders.ndjson.gz"
       ],
+      "five_copy_substitution_exact_scales": [
+        2
+      ],
+      "five_copy_substitution_models": [
+        "proper"
+      ],
+      "five_copy_substitution_certified_negatives": 1,
+      "five_copy_substitution_parents_exhausted": 17707,
+      "five_copy_substitution_report": "data/a2-sliced-size9-palindromic-five-copy-substitution-scale2-proper-04636.ndjson.gz",
       "corona_root_patch_copies": 42,
       "corona_solver": "z3",
       "corona_report": "data/a2-sliced-size9-palindromic-corona-z3-04636.ndjson.gz",
@@ -816,6 +825,11 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
         "data/a2-sliced-size9-palindromic-four-copy-substitution-scale2-proper-leaders.ndjson.gz",
         "data/a2-sliced-size9-palindromic-four-copy-substitution-scale2-reflected-leaders.ndjson.gz"
       ],
+      "five_copy_substitution_exact_scales": [],
+      "five_copy_substitution_models": [],
+      "five_copy_substitution_certified_negatives": 0,
+      "five_copy_substitution_parents_exhausted": 0,
+      "five_copy_substitution_report": null,
       "corona_root_patch_copies": 28,
       "corona_solver": "exact_gcts",
       "corona_report": "data/a2-sliced-size9-palindromic-focused-corona1-bounded.ndjson.gz",
@@ -1281,6 +1295,11 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
         "data/a2-sliced-size9-palindromic-four-copy-substitution-scale2-proper-leaders.ndjson.gz",
         "data/a2-sliced-size9-palindromic-four-copy-substitution-scale2-reflected-leaders.ndjson.gz"
       ],
+      "five_copy_substitution_exact_scales": [],
+      "five_copy_substitution_models": [],
+      "five_copy_substitution_certified_negatives": 0,
+      "five_copy_substitution_parents_exhausted": 0,
+      "five_copy_substitution_report": null,
       "corona_root_patch_copies": 52,
       "corona_solver": "z3",
       "corona_report": "data/a2-sliced-size9-palindromic-corona-z3-04468.ndjson.gz",
@@ -2814,6 +2833,11 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
       "four_copy_substitution_certified_negatives": 0,
       "four_copy_substitution_parents_exhausted": 0,
       "four_copy_substitution_reports": [],
+      "five_copy_substitution_exact_scales": [],
+      "five_copy_substitution_models": [],
+      "five_copy_substitution_certified_negatives": 0,
+      "five_copy_substitution_parents_exhausted": 0,
+      "five_copy_substitution_report": null,
       "corona_root_patch_copies": 29,
       "corona_solver": "exact_gcts",
       "corona_report": "data/a2-sliced-size9-palindromic-focused-corona1-bounded.ndjson.gz",
@@ -4163,6 +4187,11 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
       "four_copy_substitution_certified_negatives": 0,
       "four_copy_substitution_parents_exhausted": 0,
       "four_copy_substitution_reports": [],
+      "five_copy_substitution_exact_scales": [],
+      "five_copy_substitution_models": [],
+      "five_copy_substitution_certified_negatives": 0,
+      "five_copy_substitution_parents_exhausted": 0,
+      "five_copy_substitution_report": null,
       "corona_root_patch_copies": 28,
       "corona_solver": "exact_gcts",
       "corona_report": "data/a2-sliced-size9-palindromic-focused-corona1-bounded.ndjson.gz",
