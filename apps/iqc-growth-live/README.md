@@ -1,5 +1,28 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 344 · residual-force geometry in GCTS connection markings
+
+A complete validated force response can now train an explicit
+**force-projected ports** representation.  For each witnessed connection, the
+browser projects the two site-force vectors onto their common connection axis,
+forms the inward relative component, and normalizes it by the observation's
+force-magnitude p90.  This scalar is invariant under a common proper rotation
+and contributes one bounded correction to the existing pose × port target.
+
+The route is opt-in and evidence-bound.  The option remains disabled until the
+exact observation has a validated, request-linked force response; a frozen
+library marking stores that response SHA and cannot silently replay after the
+evidence changes.  During training, per-cluster scenes draw positive inward
+projection in gold and outward projection as dashed blue connections.  The
+experiment receipt records observation counts, normalization, summary range,
+and unchanged candidate/admission boundaries.
+
+This is the geometry of one method-specific residual-force snapshot.  It is
+not a bond, attraction or repulsion law, transferable force field, energy
+surface, equilibrium solution, relaxation trajectory, rate, or clock.  It can
+affect branch ranking only after the user explicitly trains and selects that
+marking; it never creates candidate poses or bypasses hard certificates.
+
 ## Build 343 · collective trajectory geometry in GCTS connection markings
 
 A validated trajectory can now supply an explicit **trajectory-correlated

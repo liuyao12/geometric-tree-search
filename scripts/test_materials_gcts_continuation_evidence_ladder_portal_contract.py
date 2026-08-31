@@ -16,7 +16,7 @@ def main() -> None:
         assert 'id="continuationEvidenceLadder"' in document
         assert 'id="continuationEvidenceSteps"' in document
         assert 'id="continuationEvidenceBoundary"' in document
-        assert 'app.js?v=20260830-343' in document
+        assert 'app.js?v=20260830-344' in document
 
     for needle in (
         "function continuationEvidenceSnapshot",
@@ -34,7 +34,7 @@ def main() -> None:
         'physicalTimeIntegrated: false',
         'explicitMaterializationComplexity: "O(N)"',
         "continuationEvidenceLadder: continuationEvidenceSnapshot()",
-        'buildId: "20260830-343"',
+        'buildId: "20260830-344"',
     ):
         assert needle in APP, needle
 

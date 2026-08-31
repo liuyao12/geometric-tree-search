@@ -1,5 +1,30 @@
 # Recursive GCTS benchmark for material growth
 
+### Residual-force connection marking deployment (Build 344)
+
+Residual forces already had a proper-pose transport law and an optional capped
+post-attachment projection, but they did not inform the learned connection
+section.  Build 344 adds a separate explicit representation.  For a directed
+port with unit axis `u`, it computes
+`p_in = 1/2 (F_i − F_j)·u` and divides by the finite observation's force-vector
+magnitude p90, clipping only the marking feature to `[-1,1]`.  The result is
+unchanged by a common proper rotation and enters the existing pose × port
+target with fixed bounded weight `0.12`.
+
+**Force-projected ports** is disabled without a complete validated force
+response on the exact observation.  Its frozen config records the response
+SHA, so marking-library compatibility fails closed if that evidence is removed
+or replaced.  Gold and dashed blue connections in the separate cluster cards
+show positive inward and outward residual projections; receipts retain the
+normalization, summary statistics, source hash, and execution boundaries.
+
+The candidate set, exact poses, overlap/collision tests, and hard admission are
+unchanged.  The feature may affect ranking only through an explicitly trained
+marking.  It is not interpreted as a bond, attraction/repulsion law,
+transferable force field, energy landscape, mechanical equilibrium, physical
+relaxation trajectory, rate, or clock.  No performance benefit is asserted
+without a later identical-candidate ablation.
+
 ### Collective trajectory marking deployment (Build 343)
 
 Per-site covariance does not say whether neighboring environments move

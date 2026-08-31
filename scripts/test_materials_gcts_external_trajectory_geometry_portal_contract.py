@@ -13,7 +13,7 @@ BENCHMARK = (ROOT / "docs/projects/materials-recursive-gcts-benchmark.md").read_
 
 def test_trajectory_response_has_an_explicit_local_section_gate():
     for fragment in (
-        'from "./external-trajectory-geometry.mjs?v=20260830-343"',
+        'from "./external-trajectory-geometry.mjs?v=20260830-344"',
         "externalPhysicsRequestRuntime",
         "externalPhysicsTrajectoryGeometryEnabled",
         "buildValidatedTrajectoryGeometryRuntime",
@@ -86,10 +86,10 @@ def test_transport_and_receipt_boundaries_are_visible():
 
 def test_build_342_is_cache_busted():
     for document in (HTML, ALIAS_HTML):
-        assert 'app.js?v=20260830-343' in document
-        assert 'style.css?v=20260830-343' in document
-        assert 'evidence-atlas.js?v=20260830-343' in document
-    assert 'buildId: "20260830-343"' in APP
+        assert 'app.js?v=20260830-344' in document
+        assert 'style.css?v=20260830-344' in document
+        assert 'evidence-atlas.js?v=20260830-344' in document
+    assert 'buildId: "20260830-344"' in APP
 
 
 def main() -> None:

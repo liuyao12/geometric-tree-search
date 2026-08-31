@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { bindValidatedForceGeometry, buildValidatedForceGeometryRuntime }
+import { bindValidatedForceGeometry, buildValidatedForceGeometryRuntime, validatedForcePairGeometry }
   from "../apps/iqc-growth-live/external-force-geometry.mjs";
 
 const audit = {
@@ -17,6 +17,23 @@ assert.equal(runtime.calculationProvenance.forceVectorCount, 2);
 assert.equal(runtime.calculationProvenance.forceRmsElectronVoltPerAngstrom, Math.sqrt(12.5));
 assert.equal(runtime.calculationProvenance.stressHydrostaticGigaPascal, 2);
 assert.equal(runtime.calculationProvenance.usedAsPotential, false);
+const pair = validatedForcePairGeometry(runtime, 0, 1, [1, 0, 0]);
+assert.equal(pair.available, true);
+assert.equal(pair.inwardProjectionElectronVoltPerAngstrom, 1.5);
+assert.equal(pair.commonModeProjectionElectronVoltPerAngstrom, 1.5);
+assert.equal(pair.transverseRelativeElectronVoltPerAngstrom, 4);
+assert.equal(pair.normalizedInwardProjection, .5);
+assert.equal(pair.properRotationInvariant, true);
+assert.equal(pair.forceFieldInferred, false);
+const rotateZ = ([x, y, z]) => [-y, x, z];
+const rotatedRuntime = buildValidatedForceGeometryRuntime({ results: {
+  ...response.results,
+  forceVectorsElectronVoltPerAngstrom: response.results.forceVectorsElectronVoltPerAngstrom.map(rotateZ),
+} }, audit, "e".repeat(64));
+const rotatedPair = validatedForcePairGeometry(rotatedRuntime, 0, 1, [0, 1, 0]);
+assert.equal(rotatedPair.normalizedInwardProjection, pair.normalizedInwardProjection);
+assert.equal(rotatedPair.transverseRelativeElectronVoltPerAngstrom,
+  pair.transverseRelativeElectronVoltPerAngstrom);
 
 const atoms = [{ species: "A" }, { species: "B" }];
 const binding = bindValidatedForceGeometry(atoms, runtime);

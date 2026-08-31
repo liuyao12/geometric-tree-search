@@ -17,6 +17,9 @@ export function buildValidatedForceGeometryRuntime(response, audit, responseSha2
   const forceRmsElectronVoltPerAngstrom = Math.sqrt(magnitudes.reduce((sum, value) => sum + value ** 2, 0)
     / normalized.length);
   const forceMaximumElectronVoltPerAngstrom = Math.max(...magnitudes);
+  const sortedMagnitudes = magnitudes.slice().sort((first, second) => first - second);
+  const forceP90ElectronVoltPerAngstrom = sortedMagnitudes[
+    Math.floor(.9 * Math.max(0, sortedMagnitudes.length - 1))];
   const stress = response.results.stressTensorGigaPascal === undefined
     || response.results.stressTensorGigaPascal === null ? null
     : response.results.stressTensorGigaPascal.map((row, index) => finiteVector(row, `stress row ${index + 1}`));
@@ -34,6 +37,7 @@ export function buildValidatedForceGeometryRuntime(response, audit, responseSha2
     quantityId: "forces", configurationRole: "observation",
     configurationSha256: audit.configurationSha256, responseSha256,
     forceVectorsElectronVoltPerAngstrom: normalized,
+    forceP90ElectronVoltPerAngstrom,
     calculationProvenance: {
       available: true, source: "validated request-linked external-physics response",
       responseSha256, requestSha256: audit.requestSha256,
@@ -41,6 +45,7 @@ export function buildValidatedForceGeometryRuntime(response, audit, responseSha2
       methodFamily: audit.method.family, methodSettingsSha256: audit.method.settingsSha256,
       forceCoverage: 1, forceVectorCount: normalized.length,
       forceRmsElectronVoltPerAngstrom, forceMaximumElectronVoltPerAngstrom,
+      forceP90ElectronVoltPerAngstrom,
       totalEnergyElectronVolt,
       energyPerPrimitiveAtomElectronVolt: totalEnergyElectronVolt / normalized.length,
       stressCoverage: stress ? 1 : 0, stressTensorGigaPascal: stress,
@@ -49,6 +54,50 @@ export function buildValidatedForceGeometryRuntime(response, audit, responseSha2
       exactObservationStructureMatched: true, validationGatePassed: true,
       targetUsed: false, usedAsPotential: false, physicalTimeModeled: false,
     },
+  };
+}
+
+export function validatedForcePairGeometry(runtime, firstIndex, secondIndex, direction) {
+  const vectors = runtime?.forceVectorsElectronVoltPerAngstrom;
+  const first = vectors?.[firstIndex];
+  const second = vectors?.[secondIndex];
+  if (!first || !second) return { available: false, reason: "validated pair forces unavailable" };
+  const axis = finiteVector(direction, "pair direction");
+  const length = Math.hypot(...axis);
+  if (!(length > 1e-14)) throw new Error("pair direction must be nonzero");
+  const unit = axis.map((value) => value / length);
+  const project = (vector) => vector.reduce((sum, value, component) =>
+    sum + value * unit[component], 0);
+  const firstAlongConnection = project(first);
+  const secondAlongConnection = project(second);
+  const inwardProjectionElectronVoltPerAngstrom = .5
+    * (firstAlongConnection - secondAlongConnection);
+  const commonModeProjectionElectronVoltPerAngstrom = .5
+    * (firstAlongConnection + secondAlongConnection);
+  const relative = second.map((value, component) => value - first[component]);
+  const relativeNorm = Math.hypot(...relative);
+  const relativeLongitudinal = project(relative);
+  const transverseRelativeElectronVoltPerAngstrom = Math.sqrt(Math.max(0,
+    relativeNorm ** 2 - relativeLongitudinal ** 2));
+  const normalization = Math.max(1e-14,
+    runtime.forceP90ElectronVoltPerAngstrom
+      || runtime.calculationProvenance?.forceP90ElectronVoltPerAngstrom
+      || runtime.calculationProvenance?.forceRmsElectronVoltPerAngstrom || 0);
+  return {
+    available: true,
+    firstReferenceIndex: firstIndex,
+    secondReferenceIndex: secondIndex,
+    inwardProjectionElectronVoltPerAngstrom,
+    commonModeProjectionElectronVoltPerAngstrom,
+    transverseRelativeElectronVoltPerAngstrom,
+    normalizedInwardProjection: Math.max(-1, Math.min(1,
+      inwardProjectionElectronVoltPerAngstrom / normalization)),
+    normalization: "observation force-magnitude p90",
+    normalizationElectronVoltPerAngstrom: normalization,
+    properRotationInvariant: true,
+    forceFieldInferred: false,
+    energySurfaceInferred: false,
+    targetUsed: false,
   };
 }
 
@@ -65,6 +114,7 @@ export function bindValidatedForceGeometry(source, runtime) {
     atom.calculationForceEvPerAngstrom = vectors[index].slice();
     atom.calculationForceResponseSha256 = runtime.responseSha256;
     atom.calculationForceValidatedExternal = true;
+    atom.externalForceReferenceIndex = index;
   });
   return { boundSites: source.length, properPoseTransport: "F_world = R_cluster F_local",
     candidateGeometryChanged: false, candidateRankingChanged: false,

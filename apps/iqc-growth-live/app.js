@@ -78,14 +78,14 @@ import { buildGrowthActionPhysicsProvenance, buildPhysicsCompressionMap, buildPh
   PHYSICS_EFFECT_COLUMNS, PHYSICS_READINESS_STATES, physicsExecutionLineage }
   from "./physics-compression-map.js?v=20260828-320";
 import { buildExternalPhysicsRequest }
-  from "./external-physics-request.mjs?v=20260830-343";
+  from "./external-physics-request.mjs?v=20260830-344";
 import { validateExternalPhysicsResponse }
-  from "./external-physics-response.mjs?v=20260830-343";
-import { bindValidatedForceGeometry, buildValidatedForceGeometryRuntime }
-  from "./external-force-geometry.mjs?v=20260830-343";
+  from "./external-physics-response.mjs?v=20260830-344";
+import { bindValidatedForceGeometry, buildValidatedForceGeometryRuntime, validatedForcePairGeometry }
+  from "./external-force-geometry.mjs?v=20260830-344";
 import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntime,
   validatedTrajectoryPairCorrelation }
-  from "./external-trajectory-geometry.mjs?v=20260830-343";
+  from "./external-trajectory-geometry.mjs?v=20260830-344";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -3221,6 +3221,24 @@ function activeTrajectoryGeometryProvenance() {
     ? externalPhysicsResponseRuntime.trajectoryProvenance : null;
 }
 
+function activeForceGeometryProvenance() {
+  return externalPhysicsForceGeometryEnabled
+    && externalPhysicsResponseRuntime?.quantityId === "forces"
+    && externalPhysicsResponseRuntime.configurationRole === "observation"
+    ? externalPhysicsResponseRuntime.calculationProvenance : null;
+}
+
+function forceConnectionGeometry(firstAtom, secondAtom, direction) {
+  if (!externalPhysicsForceGeometryEnabled
+      || externalPhysicsResponseRuntime?.quantityId !== "forces") return null;
+  const firstIndex = firstAtom?.externalForceReferenceIndex;
+  const secondIndex = secondAtom?.externalForceReferenceIndex;
+  if (!Number.isInteger(firstIndex) || !Number.isInteger(secondIndex)) return null;
+  const record = validatedForcePairGeometry(externalPhysicsResponseRuntime,
+    firstIndex, secondIndex, direction?.isVector3 ? direction.toArray() : direction);
+  return record.available ? record : null;
+}
+
 function trajectoryConnectionCorrelation(firstAtom, secondAtom, direction) {
   if (!externalPhysicsTrajectoryGeometryEnabled
       || externalPhysicsResponseRuntime?.quantityId !== "trajectory") return null;
@@ -3271,6 +3289,48 @@ function trajectoryCorrelationSectionAudit() {
   };
 }
 
+function forceProjectionSectionAudit() {
+  const active = sectionModel?.representation === "force-ports";
+  const observations = active ? sectionModel.forceProjectionObservations || [] : [];
+  const values = observations.map((record) => record.normalizedInwardProjection).filter(Number.isFinite);
+  return {
+    active,
+    selectedRepresentation: sectionModel?.representation || markingDraft.representation,
+    responseSha256: active ? sectionModel.forceProjectionEvidenceSha256 : null,
+    directedPortObservations: observations.length,
+    inwardObservations: values.filter((value) => value > .08).length,
+    outwardObservations: values.filter((value) => value < -.08).length,
+    normalizedInwardProjection: values.length ? {
+      minimum: receiptRound(Math.min(...values)),
+      mean: receiptRound(values.reduce((sum, value) => sum + value, 0) / values.length),
+      maximum: receiptRound(Math.max(...values)),
+    } : null,
+    normalization: "observation force-magnitude p90",
+    properRotationInvariant: true,
+    boundedTargetWeight: MARKING_REPRESENTATIONS["force-ports"].forceProjectionWeight,
+    existingPosePortChannelBasisUsed: true,
+    markingRankingMayChangeOnlyWhenExplicitlySelected: true,
+    candidateGeometryChanged: false,
+    candidateEnumerationChanged: false,
+    hardAdmissionChanged: false,
+    forceFieldInferred: false,
+    energySurfaceInferred: false,
+    equilibriumInferred: false,
+    physicalTimeIntegrated: false,
+    targetUsed: false,
+  };
+}
+
+function resetExternalForceGeometry() {
+  for (const source of [atoms, referenceAtoms]) source?.forEach((atom) => {
+    if (!atom.calculationForceValidatedExternal) return;
+    delete atom.calculationForceEvPerAngstrom;
+    delete atom.calculationForceResponseSha256;
+    delete atom.calculationForceValidatedExternal;
+    delete atom.externalForceReferenceIndex;
+  });
+}
+
 function resetExternalTrajectoryCovarianceMode() {
   externalTrajectoryCovarianceMode = "display";
   if (externalTrajectoryCovarianceModeSelect) externalTrajectoryCovarianceModeSelect.value = "display";
@@ -3304,6 +3364,7 @@ function resetExternalTrajectoryCovarianceMode() {
 }
 
 function clearExternalPhysicsRoundTrip() {
+  resetExternalForceGeometry();
   dynamicalEvidenceHandoffReceipt = null;
   externalPhysicsRequestExportReceipt = null;
   externalPhysicsRequestRuntime = null;
@@ -8536,6 +8597,10 @@ function markingProvenanceForCandidate(candidate) {
     representation: config.representation,
     representationLabel: representation.label,
     representationReadout: representation.readout,
+    forceEvidenceSha256: config.forceEvidenceSha256 || null,
+    trajectoryEvidenceSha256: config.trajectoryEvidenceSha256 || null,
+    responseBoundPhysicsRepresentation: Boolean(representation.requiresValidatedForce
+      || representation.requiresValidatedTrajectory),
     score: Number.isFinite(score.score) ? receiptRound(score.score) : null,
     threshold: Number.isFinite(score.threshold) ? receiptRound(score.threshold) : null,
     acceptedByAnyCompatibleMarking: candidate.markingAccepted,
@@ -10844,6 +10909,43 @@ function drawClusterCardTrajectoryCorrelations(context, projected) {
   }
 }
 
+function drawClusterCardForceProjections(context, projected) {
+  if (pipelineStage !== 3 || sectionModel?.representation !== "force-ports") return;
+  const records = [];
+  for (let first = 0; first < projected.length - 1; first++) {
+    for (let second = first + 1; second < projected.length; second++) {
+      const firstAtom = projected[first].atom;
+      const secondAtom = projected[second].atom;
+      const direction = periodicDisplacement(firstAtom, secondAtom);
+      if (!(direction.lengthSq() > 1e-12)
+          || direction.length() > descriptorCutoff() * referenceSpacingA * 1.25) continue;
+      const projection = forceConnectionGeometry(firstAtom, secondAtom, direction);
+      if (!projection || Math.abs(projection.normalizedInwardProjection) < .12) continue;
+      records.push({ first: projected[first], second: projected[second], projection });
+    }
+  }
+  records.sort((first, second) => Math.abs(second.projection.normalizedInwardProjection)
+    - Math.abs(first.projection.normalizedInwardProjection));
+  records.slice(0, 12).forEach((record) => {
+    const value = record.projection.normalizedInwardProjection;
+    context.save(); context.beginPath(); context.moveTo(record.first.x, record.first.y);
+    context.lineTo(record.second.x, record.second.y);
+    context.strokeStyle = value >= 0
+      ? `rgba(255,196,92,${.18 + .55 * Math.abs(value)})`
+      : `rgba(100,174,255,${.18 + .55 * Math.abs(value)})`;
+    context.lineWidth = .8 + 1.8 * Math.abs(value);
+    if (value < 0) context.setLineDash([3, 3]);
+    context.stroke(); context.restore();
+  });
+  if (records.length) {
+    const inward = records.filter((record) => record.projection.normalizedInwardProjection >= 0).length;
+    context.save(); context.font = "9px ui-monospace, SFMono-Regular, Menlo, monospace";
+    context.fillStyle = "rgba(255,215,143,.86)";
+    context.fillText(`force projection ${inward} in / ${records.length - inward} out`, 8, 60);
+    context.restore();
+  }
+}
+
 function drawClusterCardScalarSpins(context, projected) {
   if (!scalarSpinColoringActive()) return;
   let drawn = 0;
@@ -11030,6 +11132,7 @@ function drawClusterGallery(now) {
       if (kind === "outline" && cluster.visualKind === "molecule") context.setLineDash([2, 3]);
       context.stroke(); context.restore();
     });
+    drawClusterCardForceProjections(context, projected);
     drawClusterCardTrajectoryCorrelations(context, projected);
     drawClusterCardDisplacementEllipses(context, projected, quaternion, scaleToScene);
     drawClusterCardScalarSpins(context, projected);
@@ -11696,6 +11799,9 @@ const MARKING_REPRESENTATIONS = {
     readout: "halo plus learned mirror-odd colored-connection pseudoscalar" },
   ports: { label: "connection-port vector", short: "port vector", exponent: 6, overlapWeight: .70,
     readout: "bidirectional endpoint-port agreement" },
+  "force-ports": { label: "force-projected connection ports", short: "force ports",
+    exponent: 6, overlapWeight: .70, forceProjectionWeight: .12, requiresValidatedForce: true,
+    readout: "port agreement plus proper-rotation-invariant residual-force projection" },
   "trajectory-ports": { label: "trajectory-correlated connection ports", short: "correlated ports",
     exponent: 6, overlapWeight: .70, trajectoryCorrelationWeight: .14, requiresValidatedTrajectory: true,
     readout: "port agreement plus proper-rotation-invariant observed longitudinal co-motion" },
@@ -11758,6 +11864,8 @@ function currentMarkingConfig() {
     channelMode: requestedChannels ? "manual" : "auto",
     reach: Number(markingDraft.reach),
     representation: markingDraft.representation,
+    forceEvidenceSha256: representation.requiresValidatedForce
+      ? activeForceGeometryProvenance()?.responseSha256 || null : null,
     trajectoryEvidenceSha256: representation.requiresValidatedTrajectory
       ? activeTrajectoryGeometryProvenance()?.responseSha256 || null : null,
     spinColoring: scalarSpinColoringMode(),
@@ -12496,7 +12604,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260830-343",
+      buildId: "20260830-344",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -13402,6 +13510,7 @@ async function buildExperimentReceipt() {
         reach: sectionModel.reach,
         representation: sectionModel.representation,
         representationReadout: MARKING_REPRESENTATIONS[sectionModel.representation]?.readout || null,
+        forceProjection: forceProjectionSectionAudit(),
         trajectoryCorrelation: trajectoryCorrelationSectionAudit(),
         learnedChiralPortClasses: Object.keys(sectionModel.representationState?.chiralPreferences || {}).length,
         fitSamples: sectionModel.fitCount ?? sectionModel.curve.length,
@@ -15001,7 +15110,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260830-343" },
+    application: { name: "Materials Growth Lab", buildId: "20260830-344" },
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
       candidateGeometryChangedByView: false, searchStateChangedByView: false },
@@ -15046,6 +15155,7 @@ async function buildExperimentNotebookSnapshot() {
         : null,
       learned: markingVisible ? { validationMismatch: receiptRound(currentTrainingPoint().validationLoss),
         representationReadout: MARKING_REPRESENTATIONS[sectionModel.representation]?.readout || null,
+        forceProjection: forceProjectionSectionAudit(),
         trajectoryCorrelation: trajectoryCorrelationSectionAudit() } : null },
     search,
     evidenceBoundary: { benchmarkStatus: benchmark.status, benchmarkGate: benchmark.gate,
@@ -17547,6 +17657,7 @@ function learnSectionModel(source, config = currentMarkingConfig()) {
     incidentEdges[edge.first].push(edge);
     if (edge.second !== edge.first) incidentEdges[edge.second].push(edge);
   });
+  const forceProjectionObservations = [];
   const trajectoryCorrelationObservations = [];
   const basisAt = (centerIndex, atomIndex) => {
     const vector = periodicDisplacement(source[centerIndex], source[atomIndex]);
@@ -17579,13 +17690,21 @@ function learnSectionModel(source, config = currentMarkingConfig()) {
       const baseTarget = (.10 + edge.shared * .035) * channelGain;
       const correlation = representation.requiresValidatedTrajectory
         ? trajectoryConnectionCorrelation(center, source[otherIndex], worldDirection) : null;
+      const forceProjection = representation.requiresValidatedForce
+        ? forceConnectionGeometry(center, source[otherIndex], worldDirection) : null;
       if (correlation) trajectoryCorrelationObservations.push({ centerIndex, otherIndex,
         isotropicCorrelation: correlation.isotropicCorrelation,
         longitudinalCorrelation: correlation.longitudinalCorrelation,
         relativeRmsAngstrom: correlation.relativeRmsAngstrom });
-      const correlatedTarget = correlation
-        ? baseTarget + representation.trajectoryCorrelationWeight * correlation.longitudinalCorrelation : baseTarget;
-      values[bestAxis] = Math.max(values[bestAxis], Math.max(-.18, Math.min(.36, correlatedTarget)));
+      if (forceProjection) forceProjectionObservations.push({ centerIndex, otherIndex,
+        normalizedInwardProjection: forceProjection.normalizedInwardProjection,
+        inwardProjectionElectronVoltPerAngstrom: forceProjection.inwardProjectionElectronVoltPerAngstrom,
+        transverseRelativeElectronVoltPerAngstrom: forceProjection.transverseRelativeElectronVoltPerAngstrom });
+      const physicsTarget = correlation
+        ? baseTarget + representation.trajectoryCorrelationWeight * correlation.longitudinalCorrelation
+        : forceProjection ? baseTarget + representation.forceProjectionWeight
+          * forceProjection.normalizedInwardProjection : baseTarget;
+      values[bestAxis] = Math.max(values[bestAxis], Math.max(-.18, Math.min(.36, physicsTarget)));
     });
     return values;
   });
@@ -17716,6 +17835,9 @@ function learnSectionModel(source, config = currentMarkingConfig()) {
     fitCount: fitIndices.length, holdoutCount: holdoutIndices.length,
     prototypeCount: clusterCount, sampleLabels: learnedClusters.labels.slice(),
     activeChannelsByPrototype, portAtlas,
+    forceProjectionObservations,
+    forceProjectionEvidenceSha256: representation.requiresValidatedForce
+      ? activeForceGeometryProvenance()?.responseSha256 || null : null,
     trajectoryCorrelationObservations,
     trajectoryCorrelationEvidenceSha256: representation.requiresValidatedTrajectory
       ? activeTrajectoryGeometryProvenance()?.responseSha256 || null : null,
@@ -17777,7 +17899,9 @@ function learnMolecularSectionModel(source, config) {
         const worldDirection = periodicDisplacement(source[fromCenterIndex], source[toCenterIndex]);
         const correlation = representation.requiresValidatedTrajectory && worldDirection.lengthSq() > 1e-12
           ? trajectoryConnectionCorrelation(source[fromCenterIndex], source[toCenterIndex], worldDirection) : null;
-        incident[from].push({ direction, shared, observations: 1, correlation,
+        const forceProjection = representation.requiresValidatedForce && worldDirection.lengthSq() > 1e-12
+          ? forceConnectionGeometry(source[fromCenterIndex], source[toCenterIndex], worldDirection) : null;
+        incident[from].push({ direction, shared, observations: 1, correlation, forceProjection,
           fromCenterIndex, toCenterIndex });
       });
     }
@@ -17806,10 +17930,12 @@ function learnMolecularSectionModel(source, config) {
         });
       }
       const baseTarget = (.10 + port.shared * .035) * channelGain;
-      const correlatedTarget = port.correlation
+      const physicsTarget = port.correlation
         ? baseTarget + representation.trajectoryCorrelationWeight
-          * port.correlation.longitudinalCorrelation : baseTarget;
-      values[bestAxis] = Math.max(values[bestAxis], Math.max(-.18, Math.min(.36, correlatedTarget)));
+          * port.correlation.longitudinalCorrelation
+        : port.forceProjection ? baseTarget + representation.forceProjectionWeight
+          * port.forceProjection.normalizedInwardProjection : baseTarget;
+      values[bestAxis] = Math.max(values[bestAxis], Math.max(-.18, Math.min(.36, physicsTarget)));
     });
     return values;
   });
@@ -17871,6 +17997,17 @@ function learnMolecularSectionModel(source, config) {
     fitCount: fitIndices.length, holdoutCount: holdoutIndices.length,
     prototypeCount, sampleLabels, sampleFamilies,
     activeChannelsByPrototype, portAtlas,
+    forceProjectionObservations: incident.flatMap((ports) => ports
+      .filter((port) => port.forceProjection).map((port) => ({
+        centerIndex: port.fromCenterIndex, otherIndex: port.toCenterIndex,
+        normalizedInwardProjection: port.forceProjection.normalizedInwardProjection,
+        inwardProjectionElectronVoltPerAngstrom:
+          port.forceProjection.inwardProjectionElectronVoltPerAngstrom,
+        transverseRelativeElectronVoltPerAngstrom:
+          port.forceProjection.transverseRelativeElectronVoltPerAngstrom,
+      }))),
+    forceProjectionEvidenceSha256: representation.requiresValidatedForce
+      ? activeForceGeometryProvenance()?.responseSha256 || null : null,
     trajectoryCorrelationObservations: incident.flatMap((ports) => ports
       .filter((port) => port.correlation).map((port) => ({
         centerIndex: port.fromCenterIndex, otherIndex: port.toCenterIndex,
@@ -24992,6 +25129,9 @@ function compatibleMarkings() {
   return markingLibrary.filter((marking) => marking.materialKey === key
     && (marking.config.geometryMode || "auto") === geometryMode
     && (marking.config.clusterToleranceMode || "balanced") === clusterToleranceMode
+    && (marking.config.forceEvidenceSha256 || null)
+      === (MARKING_REPRESENTATIONS[marking.config.representation]?.requiresValidatedForce
+        ? activeForceGeometryProvenance()?.responseSha256 || null : null)
     && (marking.config.trajectoryEvidenceSha256 || null)
       === (MARKING_REPRESENTATIONS[marking.config.representation]?.requiresValidatedTrajectory
         ? activeTrajectoryGeometryProvenance()?.responseSha256 || null : null)
@@ -26605,6 +26745,13 @@ function syncStageOptions() {
       : resolvedMode === "offlattice" ? `metric-set ${rotationGroupLabel()}` : "lattice candidate"} · ${toleranceLabel}`;
     return;
   }
+  const forcePortOption = markingRepresentationSelect
+    .querySelector('option[value="force-ports"]');
+  const forcePortAvailable = Boolean(activeForceGeometryProvenance());
+  if (forcePortOption) forcePortOption.disabled = !forcePortAvailable;
+  if (markingDraft.representation === "force-ports" && !forcePortAvailable) {
+    markingDraft.representation = "ports";
+  }
   const trajectoryPortOption = markingRepresentationSelect
     .querySelector('option[value="trajectory-ports"]');
   const trajectoryPortAvailable = Boolean(activeTrajectoryGeometryProvenance());
@@ -26646,9 +26793,11 @@ function syncStageOptions() {
     saveMarkingButton.textContent = existing ? "Update library copy" : "Freeze to library";
     renderConnectionCoverageAtlas();
     renderMarkingCapacityFrontier();
+    const forceReadout = sectionModel?.representation === "force-ports"
+      ? ` ${sectionModel.forceProjectionObservations.length} directed port observations carry response ${sectionModel.forceProjectionEvidenceSha256?.slice(0, 12)} normalized inward residual-force projection; gold card edges point inward and dashed blue edges point outward.` : "";
     const correlationReadout = sectionModel?.representation === "trajectory-ports"
       ? ` ${sectionModel.trajectoryCorrelationObservations.length} directed port observations carry response ${sectionModel.trajectoryCorrelationEvidenceSha256?.slice(0, 12)} longitudinal co-motion; cyan card edges are correlated and dashed pink edges are anticorrelated.` : "";
-    markingConfigNote.textContent = `${resolvedChannels} real coefficient channels${markingDraft.channels ? " (manual capacity override)" : " (derived from the frozen pose × port incidence rank)"} · ${markingChannelAllocationLabel()} · support R=${sectionModel?.support.toFixed(2) || "—"}a · ${MARKING_REPRESENTATIONS[markingDraft.representation].label}: ${MARKING_REPRESENTATIONS[markingDraft.representation].readout}.${correlationReadout} ${suppliedSpinSites ? scalarSpinColoringMode() === "preserve" ? "Supplied collinear scalar-spin signs are an additional exact overlap color." : "Supplied scalar-spin signs are ignored by the registered chemistry-only ablation." : "No scalar-spin color is available."} Clustering freezes the finite or sampled proper-rotation support before this fit; symmetry-equivalent rotations share channels and inactive coefficients remain exactly zero. Solid card lobes follow witnessed intrinsic ports; dashed red lobes are unsupported training sectors. No spherical fallback or physical potential is inferred.`;
+    markingConfigNote.textContent = `${resolvedChannels} real coefficient channels${markingDraft.channels ? " (manual capacity override)" : " (derived from the frozen pose × port incidence rank)"} · ${markingChannelAllocationLabel()} · support R=${sectionModel?.support.toFixed(2) || "—"}a · ${MARKING_REPRESENTATIONS[markingDraft.representation].label}: ${MARKING_REPRESENTATIONS[markingDraft.representation].readout}.${forceReadout}${correlationReadout} ${suppliedSpinSites ? scalarSpinColoringMode() === "preserve" ? "Supplied collinear scalar-spin signs are an additional exact overlap color." : "Supplied scalar-spin signs are ignored by the registered chemistry-only ablation." : "No scalar-spin color is available."} Clustering freezes the finite or sampled proper-rotation support before this fit; symmetry-equivalent rotations share channels and inactive coefficients remain exactly zero. Solid card lobes follow witnessed intrinsic ports; dashed red lobes are unsupported training sectors. No spherical fallback or physical potential is inferred.`;
   } else {
     renderMarkingLibrary();
     renderGrowthProtocolSummary();
@@ -29639,6 +29788,21 @@ function physicsTranslationRecords(leap = null) {
       boundary: structuralRelaxationSpec().forceSeed
         ? "One method-dependent residual-force snapshot supplies only an initial direction for a bounded geometric hypothesis. A worsening seed is ignored and every hard certificate is rechecked. Copying the vector with a rigid cluster does not infer a transferable force field, energy surface, mass, time step, trajectory, rate, or physical time; total energies are not compared across entries, methods, or compositions."
         : "Residual forces diagnose the supplied calculation state only. They never rank, admit, displace, relax, or extrapolate a growth action; total energies are not compared across entries, methods, or compositions." },
+    { id: "force-port-projection", process: "residual-force projection across learned connection ports",
+      status: sectionModel?.representation === "force-ports" ? "learned"
+        : activeForceGeometryProvenance() ? "available" : "unavailable",
+      role: sectionModel?.representation === "force-ports"
+        ? "explicit response-bound GCTS marking channel" : activeForceGeometryProvenance()
+          ? "available only after selecting force-projected ports" : "no validated force projection",
+      encoding: sectionModel?.representation === "force-ports"
+        ? `${sectionModel.forceProjectionObservations.length} directed train-witnessed ports use a bounded inward residual-force correction in the existing pose × port channel basis; response ${sectionModel.forceProjectionEvidenceSha256}`
+        : activeForceGeometryProvenance()
+          ? "the validated force vectors can supply a common-rotation-invariant relative longitudinal projection normalized by the observation force-magnitude p90"
+          : "requires a validated complete force response on the exact observation",
+      evidence: sectionModel?.representation === "force-ports"
+        ? "Gold cluster-card edges show positive inward projection and dashed blue edges show outward projection. The frozen marking retains the response SHA and cannot replay without that exact force evidence."
+        : "No residual-force projection is active in marking learning or growth ranking.",
+      boundary: "This is a bounded geometric statistic of one method-specific residual-force snapshot, not a bond, attraction/repulsion law, transferable force field, energy surface, equilibrium solution, relaxation trajectory, rate, or physical clock. It changes only an explicitly selected marking fit; candidate geometry and hard certificates are unchanged." },
     { id: "calculation-stress", process: "external calculation stress / tensor-shaped metric",
       status: calculation?.stressCoverage > 0
         ? ["archive-stress", "archive-stress-reverse"].includes(affineLoadMode) ? "soft" : "explicit"
@@ -31485,7 +31649,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260830-343",
+    generatedAt: new Date().toISOString(), buildId: "20260830-344",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,
@@ -31580,10 +31744,12 @@ async function validateReturnedExternalPhysicsFile(file, quantity) {
     physicalInferenceResolvedGlobally: false,
     geometricEncodingEligible: ["forces", "trajectory"].includes(quantity.id)
       && audit.configurationRole === "observation",
-    geometricEncodingRoute: quantity.id === "forces" ? "proper-pose residual-force vector"
+    geometricEncodingRoute: quantity.id === "forces"
+      ? "proper-pose residual-force vector + response-bound port projection"
       : quantity.id === "trajectory" ? "drift-removed endpoint displacement section" : null,
     geometricEncodingEnabled: false,
   };
+  resetExternalForceGeometry();
   externalPhysicsResponseRuntime = validatedRuntime;
   externalPhysicsForceGeometryEnabled = false;
   externalPhysicsTrajectoryGeometryEnabled = false;
@@ -31602,7 +31768,10 @@ function enableValidatedExternalForceGeometry() {
   receipt.candidateRankingChangedByBinding = false;
   receipt.forceSeedRequiresExplicitOptIn = true;
   receipt.properPoseTransportHypothesis = "F_world = R_cluster F_local";
-  receiptStatus.textContent = `Validated forces encoded as geometry · ${externalPhysicsResponseRuntime.forceVectorsElectronVoltPerAngstrom.length} observation vectors · relearning local proper-pose transport · force-seeded settling remains opt-in.`;
+  receipt.forceProjectedPortMarkingAvailable = true;
+  receipt.forceProjectedPortMarkingRequiresExplicitSelection = true;
+  receipt.forceProjectedPortNormalization = "observation force-magnitude p90";
+  receiptStatus.textContent = `Validated forces encoded as geometry · ${externalPhysicsResponseRuntime.forceVectorsElectronVoltPerAngstrom.length} observation vectors · relearning local proper-pose transport · force-projected ports are now selectable · force-seeded settling remains independently opt-in.`;
   enterPipelineStage(3);
 }
 
