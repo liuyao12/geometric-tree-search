@@ -820,17 +820,19 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
       "two_copy_substitution_parents_exhausted": 46,
       "two_copy_substitution_report": "data/a2-sliced-size9-palindromic-two-copy-substitution-scale2to3.ndjson.gz",
       "three_copy_substitution_exact_scales": [
-        2
+        2,
+        3
       ],
       "three_copy_substitution_models": [
         "proper",
         "reflected"
       ],
-      "three_copy_substitution_certified_negatives": 2,
-      "three_copy_substitution_parents_exhausted": 606,
+      "three_copy_substitution_certified_negatives": 4,
+      "three_copy_substitution_parents_exhausted": 1212,
       "three_copy_substitution_report": "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz",
       "three_copy_substitution_reports": [
-        "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz"
+        "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz",
+        "data/a2-sliced-size9-palindromic-three-copy-substitution-scale3-additional-leaders.ndjson.gz"
       ],
       "four_copy_substitution_exact_scales": [
         2
@@ -1303,17 +1305,19 @@ export const A2_SLICED_SIZE9_PALINDROMIC_CANDIDATES = Object.freeze([
       "two_copy_substitution_parents_exhausted": 174,
       "two_copy_substitution_report": "data/a2-sliced-size9-palindromic-two-copy-substitution-scale2to3.ndjson.gz",
       "three_copy_substitution_exact_scales": [
-        2
+        2,
+        3
       ],
       "three_copy_substitution_models": [
         "proper",
         "reflected"
       ],
-      "three_copy_substitution_certified_negatives": 2,
-      "three_copy_substitution_parents_exhausted": 4518,
+      "three_copy_substitution_certified_negatives": 4,
+      "three_copy_substitution_parents_exhausted": 9036,
       "three_copy_substitution_report": "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz",
       "three_copy_substitution_reports": [
-        "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz"
+        "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz",
+        "data/a2-sliced-size9-palindromic-three-copy-substitution-scale3-additional-leaders.ndjson.gz"
       ],
       "four_copy_substitution_exact_scales": [
         2

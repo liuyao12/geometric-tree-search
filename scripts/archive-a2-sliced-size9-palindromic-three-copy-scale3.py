@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the deterministic 04636 three-copy scale-3 proof archive."""
+"""Build a deterministic archive of size-9 palindromic scale-3 screens."""
 
 from __future__ import annotations
 
@@ -10,15 +10,14 @@ import json
 from pathlib import Path
 
 
-def load_record(path: Path, reflected: bool) -> dict:
+def load_record(path: Path) -> dict:
     lines = [line for line in path.read_text().splitlines() if line.strip()]
     if len(lines) != 1:
         raise ValueError(f"expected one NDJSON record in {path}")
     record = json.loads(lines[0])
     detail = record["three_copy_alcove_metatile_screen"]
-    if (record["id"] != "a2sp_9_04636"
+    if (not record["id"].startswith("a2sp_9_")
             or detail["scale"] != 3
-            or detail["include_reflections"] is not reflected
             or record["classification"]
             != "no_three_copy_metatile_scalar3_substitution"
             or detail["certified"] is not True):
@@ -28,15 +27,19 @@ def load_record(path: Path, reflected: bool) -> dict:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--proper", required=True)
-    parser.add_argument("--reflected", required=True)
+    parser.add_argument("--inputs", nargs="+", required=True)
     parser.add_argument("--output", required=True)
     args = parser.parse_args()
 
-    records = [
-        load_record(Path(args.proper), False),
-        load_record(Path(args.reflected), True),
-    ]
+    records = [load_record(Path(path)) for path in args.inputs]
+    identities = [(record["id"], record["three_copy_alcove_metatile_screen"]
+                   ["include_reflections"]) for record in records]
+    if len(set(identities)) != len(identities):
+        raise ValueError("duplicate candidate/model record")
+    records.sort(key=lambda record: (
+        record["id"],
+        record["three_copy_alcove_metatile_screen"]["include_reflections"],
+    ))
     payload = "".join(json.dumps(record, separators=(",", ":")) + "\n"
                       for record in records).encode()
     output = Path(args.output)
@@ -48,6 +51,7 @@ def main() -> None:
     temporary.replace(output)
     print(json.dumps({
         "records": len(records),
+        "identities": identities,
         "uncompressed_sha256": hashlib.sha256(payload).hexdigest(),
         "archive_sha256": hashlib.sha256(output.read_bytes()).hexdigest(),
         "output": str(output),

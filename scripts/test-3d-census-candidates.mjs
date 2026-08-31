@@ -1726,12 +1726,16 @@ assert.deepEqual(palindromic04636.screening.three_copy_substitution_reports, [
   "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz",
   "data/a2-sliced-size9-palindromic-three-copy-substitution-scale3-04636.ndjson.gz"
 ]);
-assert.ok(palindromicUnresolved.filter(candidate => candidate.id !== "a2sp_9_04636")
-  .every(candidate =>
-    candidate.screening.three_copy_substitution_exact_scales.join(",") === "2"
-    && candidate.screening.three_copy_substitution_certified_negatives === 2
-    && candidate.screening.three_copy_substitution_reports.length === 1
-  ));
+assert.deepEqual(palindromicUnresolved.map(candidate => [
+  candidate.screening.three_copy_substitution_exact_scales.join(","),
+  candidate.screening.three_copy_substitution_certified_negatives,
+  candidate.screening.three_copy_substitution_parents_exhausted,
+  candidate.screening.three_copy_substitution_reports.length,
+]), [
+  ["2,3", 4, 1044, 2],
+  ["2,3", 4, 1212, 2],
+  ["2,3", 4, 9036, 2],
+]);
 assert.deepEqual(
   palindromicUnresolved.map(candidate => [
     candidate.screening.periodic_exact_through,

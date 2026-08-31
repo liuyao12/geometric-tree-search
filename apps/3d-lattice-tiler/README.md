@@ -303,11 +303,12 @@ archive digests. For `04636`, the reflected family is now complete as well:
 all 931,637 have replayed atomic local obstructions. Reflected five-copy
 metatiles remain open for the other two leaders; larger clusters, non-scalar
 inflations, and non-cellular boundaries remain open for all three.
-For `04636`, the complete connected three-copy alphabet at scalar scale 3 is
-also excluded in both symmetry models: all 67 proper and 455 reflected parents
-have independently replayed atomic local obstructions. Together with its
-scale-2 screens this exhausts 1,044 three-copy parents across four complete
-model/scale cases.
+For all three leaders, the complete connected three-copy alphabet at scalar
+scale 3 is also excluded in both symmetry models. The proper/reflected parent
+counts are 67/455 (`04636`), 123/483 (`01085`), and 937/3,581 (`04468`), all
+with independently replayed atomic local obstructions. Together with the
+scale-2 screens this exhausts 1,044, 1,212, and 9,036 three-copy parent/model
+cases, respectively.
 The original stratum's exact two-, four-, and six-copy quotient screens reduce
 it to 356 reflection-class candidates.
 The next census level is also complete and removes the profile heuristic

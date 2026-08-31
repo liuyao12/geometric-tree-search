@@ -32,6 +32,9 @@ const threeCopySubstitutions = [
   )),
   ...(await readGzipNdjson(
     "data/a2-sliced-size9-palindromic-three-copy-substitution-scale3-04636.ndjson.gz"
+  )),
+  ...(await readGzipNdjson(
+    "data/a2-sliced-size9-palindromic-three-copy-substitution-scale3-additional-leaders.ndjson.gz"
   ))
 ];
 const fourCopySubstitutions = [
@@ -252,7 +255,9 @@ const candidates = selectedIds.map((id, index) => {
     || result.two_copy_alcove_metatile_screen.certified !== true)) {
     throw new Error(`Missing scale-2-and-3 two-copy substitution exclusions for ${id}`);
   }
-  const expectedThreeCopyNegatives = id === "a2sp_9_04636" ? 4 : 2;
+  const expectedThreeCopyNegatives = [
+    "a2sp_9_04636", "a2sp_9_01085", "a2sp_9_04468"
+  ].includes(id) ? 4 : 2;
   if (threeCopy.length !== expectedThreeCopyNegatives || threeCopy.some(result =>
     !result.classification.startsWith("no_three_copy_metatile_scalar")
     || result.three_copy_alcove_metatile_screen.certified !== true)) {
@@ -418,7 +423,9 @@ const candidates = selectedIds.map((id, index) => {
         "data/a2-sliced-size9-palindromic-three-copy-substitution-scale2.ndjson.gz",
         ...(id === "a2sp_9_04636"
           ? ["data/a2-sliced-size9-palindromic-three-copy-substitution-scale3-04636.ndjson.gz"]
-          : [])
+          : ["a2sp_9_01085", "a2sp_9_04468"].includes(id)
+            ? ["data/a2-sliced-size9-palindromic-three-copy-substitution-scale3-additional-leaders.ndjson.gz"]
+            : [])
       ],
       four_copy_substitution_exact_scales: fourCopy.length ? [2] : [],
       four_copy_substitution_models: fourCopy.length ? ["proper", "reflected"] : [],
