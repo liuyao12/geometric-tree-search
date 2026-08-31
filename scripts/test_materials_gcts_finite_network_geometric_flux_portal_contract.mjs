@@ -11,9 +11,9 @@ const benchmark = fs.readFileSync("docs/projects/materials-recursive-gcts-benchm
 for (const document of [html, alias]) {
   assert.match(document, /finiteNetworkFluxPlot/);
   assert.match(document, /Geometric probability current/);
-  assert.match(document, /app\.js\?v=20260831-378/);
+  assert.match(document, /app\.js\?v=20260831-379/);
 }
-assert.match(app, /finite-network-geometric-flux\.mjs\?v=20260831-378/);
+assert.match(app, /finite-network-geometric-flux\.mjs\?v=20260831-379/);
 assert.match(app, /expectedAtomDriftIdentityResidualPerObservedTimescale/);
 assert.match(model, /probabilityTrafficPerObservedTimescale/);
 assert.match(model, /macroscopicInterfaceVelocityClaimed: false/);

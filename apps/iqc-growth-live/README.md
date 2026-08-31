@@ -1,5 +1,27 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 379 · geometry-linked kinetic-control map
+
+The passage analysis now identifies which observed geometric transition
+controls target success and conditional time. Each exact directed log rate is
+perturbed symmetrically while every state, other rate, edge, source/target
+choice, and coordinate-path record stays fixed. The resulting derivatives
+report `∂Ptarget/∂ln k`, `∂ln τ/∂ln k`, and the conditional-jump
+elasticity for every edge.
+
+The interactive signed-bar map ranks edges by conditional-time control and
+links the dominant edge back to its exact event direction, atom-count change,
+contact-forming/breaking/reconstructive/displacive character, contact delta,
+coordination delta, and supplied log-rate uncertainty. A linearized
+independent-edge contribution to `σln τ` is shown beside the full nonlinear
+uncertainty ensemble.
+
+Three common-mode identities audit the calculation: uniformly multiplying
+all rates must leave target probability and expected jump count unchanged,
+while passage time must scale as `k⁻¹`. These are sensitivities of the frozen
+finite model, not experimental causal effects or evidence that one physical
+barrier can vary independently of every other barrier.
+
 ## Build 378 · uncertainty-aware first-passage leap
 
 The finite-network passage calculation now propagates the uncertainty already

@@ -1,9 +1,9 @@
 import { analyzeActionPathMechanism }
-  from "./action-path-mechanism.mjs?v=20260831-378";
+  from "./action-path-mechanism.mjs?v=20260831-379";
 import { buildFrozenKineticCompetition }
-  from "./frozen-frontier-kinetics.mjs?v=20260831-378";
+  from "./frozen-frontier-kinetics.mjs?v=20260831-379";
 import { buildTemperatureProgrammedKinetics }
-  from "./temperature-programmed-kinetics.mjs?v=20260831-378";
+  from "./temperature-programmed-kinetics.mjs?v=20260831-379";
 
 export const KINETIC_GEOMETRY_CHARACTERS = Object.freeze([
   "contact-forming", "contact-breaking", "contact exchange / reconstructive",

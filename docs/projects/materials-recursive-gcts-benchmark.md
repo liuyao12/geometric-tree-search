@@ -1,5 +1,38 @@
 # Recursive GCTS benchmark for material growth
 
+### Geometry-linked kinetic-control map (Build 379)
+
+For each observed directed edge `e`, Build 379 reevaluates the complete finite-
+catalog passage solve at `ln k_e ± 10⁻⁴`. The symmetric derivatives are
+
+`Cᴾ_e = ∂Ptarget/∂ln k_e`,
+
+`Cᵗ_e = ∂ln τconditional/∂ln k_e`, and
+
+`Cʲ_e = ∂ln ⟨jumps⟩conditional/∂ln k_e`.
+
+Every other rate, exact state, edge, coordinate path, and source/target choice
+is held fixed. The edge record carries its event direction, integer atom-count
+change, geometric path character, contact and coordination changes, maximum
+image displacement, and optional one-sigma log-rate uncertainty into the
+control audit. This lets a materials scientist distinguish, for example, a
+contact-forming bottleneck from a fast diversion into a target-poor basin.
+
+Uniform rate scaling provides three independent invariants:
+
+`Σ_e Cᴾ_e = 0`, `Σ_e Cᵗ_e = -1`, and `Σ_e Cʲ_e = 0`.
+
+The test suite verifies the exact analytic elasticities of serial and branched
+networks and requires all common-mode residuals to close. When every edge has
+`σln k`, the portal also reports the independent linearized root-sum-square
+estimate for `σln τ`; the nonlinear Build 378 ensemble remains the primary
+finite-perturbation diagnostic.
+
+An elasticity is a derivative of the observed finite model. It does not prove
+experimental causality, identify a complete reaction coordinate, establish
+that one physical barrier can be changed independently, or account for an
+unobserved state or mechanism.
+
 ### Uncertainty-aware first-passage leap (Build 378)
 
 Every active directed edge already carries

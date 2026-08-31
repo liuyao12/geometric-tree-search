@@ -88,50 +88,52 @@ import { bindValidatedTrajectoryGeometry, buildValidatedTrajectoryGeometryRuntim
   from "./external-trajectory-geometry.mjs?v=20260830-346";
 import { actionBarrierSha256, buildFrozenActionBarrierRequest, frozenActionBarrierRequestReceipt,
   frozenActionStateGeometrySha256, validateFrozenActionBarrierResponse }
-  from "./external-action-barrier.mjs?v=20260831-378";
+  from "./external-action-barrier.mjs?v=20260831-379";
 import { buildActionPathViewerFrame, projectActionPathViewerFrame }
-  from "./action-path-viewer.mjs?v=20260831-378";
+  from "./action-path-viewer.mjs?v=20260831-379";
 import { actionPathMechanismSensitivity, analyzeActionPathMechanism }
-  from "./action-path-mechanism.mjs?v=20260831-378";
+  from "./action-path-mechanism.mjs?v=20260831-379";
 import { buildFrozenKineticCompetition }
-  from "./frozen-frontier-kinetics.mjs?v=20260831-378";
+  from "./frozen-frontier-kinetics.mjs?v=20260831-379";
 import { buildKineticEventSpectrum }
-  from "./kinetic-event-spectrum.mjs?v=20260831-378";
+  from "./kinetic-event-spectrum.mjs?v=20260831-379";
 import { buildTemperatureProgrammedKinetics, inspectTemperatureProgram }
-  from "./temperature-programmed-kinetics.mjs?v=20260831-378";
+  from "./temperature-programmed-kinetics.mjs?v=20260831-379";
 import { buildKineticGeometryResponse, inspectKineticGeometryResponse }
-  from "./kinetic-geometry-response.mjs?v=20260831-378";
+  from "./kinetic-geometry-response.mjs?v=20260831-379";
 import { buildFrontierMechanismLandscape }
-  from "./frontier-mechanism-landscape.mjs?v=20260831-378";
+  from "./frontier-mechanism-landscape.mjs?v=20260831-379";
 import { enumerateDetachableLeafPlacements }
   from "./reversible-frontier-events.mjs?v=20260831-347";
 import { enumerateMassConservingSurfaceHops }
-  from "./surface-hop-events.mjs?v=20260831-378";
+  from "./surface-hop-events.mjs?v=20260831-379";
 import { enumerateLocalSpeciesExchangeEvents }
-  from "./species-exchange-events.mjs?v=20260831-378";
+  from "./species-exchange-events.mjs?v=20260831-379";
 import { buildExternalStateRelaxationRequest, stateRelaxationSha256,
   validateExternalStateRelaxationResponse }
-  from "./external-state-relaxation.mjs?v=20260831-378";
+  from "./external-state-relaxation.mjs?v=20260831-379";
 import { appendCommittedTransition }
-  from "./reversible-transition-lineage.mjs?v=20260831-378";
+  from "./reversible-transition-lineage.mjs?v=20260831-379";
 import { buildFiniteTransitionNetwork }
   from "./finite-transition-network.mjs?v=20260831-352";
 import { buildFiniteNetworkPopulationDynamics }
-  from "./finite-network-population-dynamics.mjs?v=20260831-378";
+  from "./finite-network-population-dynamics.mjs?v=20260831-379";
 import { buildFiniteNetworkGeometricFlux }
-  from "./finite-network-geometric-flux.mjs?v=20260831-378";
+  from "./finite-network-geometric-flux.mjs?v=20260831-379";
 import { buildFiniteNetworkStructuralFlux }
-  from "./finite-network-structural-flux.mjs?v=20260831-378";
+  from "./finite-network-structural-flux.mjs?v=20260831-379";
 import { buildGeometricStateDescriptor, materialEndpointSites }
-  from "./geometric-state-descriptor.mjs?v=20260831-378";
+  from "./geometric-state-descriptor.mjs?v=20260831-379";
 import { buildFiniteNetworkGlobalOrder }
-  from "./finite-network-global-order.mjs?v=20260831-378";
+  from "./finite-network-global-order.mjs?v=20260831-379";
 import { auditCompetingObservedTransitionPaths }
   from "./finite-transition-pathways.mjs?v=20260831-352";
 import { buildFiniteNetworkFirstPassage }
-  from "./finite-network-first-passage.mjs?v=20260831-378";
+  from "./finite-network-first-passage.mjs?v=20260831-379";
 import { buildFiniteNetworkFirstPassageUncertainty }
-  from "./finite-network-first-passage-uncertainty.mjs?v=20260831-378";
+  from "./finite-network-first-passage-uncertainty.mjs?v=20260831-379";
+import { buildFiniteNetworkPassageControl }
+  from "./finite-network-passage-control.mjs?v=20260831-379";
 import { buildFiniteNucleationLandscape }
   from "./finite-nucleation-landscape.mjs?v=20260831-352";
 import { buildInterfacialEnergyRequest, buildNormalizedWulffGeometry,
@@ -141,19 +143,19 @@ import { evaluateWulffShapeRegularizer, matchedWulffRankingAudit }
   from "./wulff-shape-regularizer.mjs?v=20260831-354";
 import { buildAttachmentKineticsRequest, buildNormalizedKineticWulffGeometry,
   validateAttachmentKineticsResponse, evaluateKineticHabitScore, matchedKineticHabitRankingAudit }
-  from "./external-attachment-kinetics.mjs?v=20260831-378";
+  from "./external-attachment-kinetics.mjs?v=20260831-379";
 import { buildInterfaceFluxRequest, validateInterfaceFluxResponse, evaluateInterfaceFluxScore,
   matchedInterfaceFluxRankingAudit }
-  from "./external-interface-flux.mjs?v=20260831-378";
+  from "./external-interface-flux.mjs?v=20260831-379";
 import { periodicSiteNumberDensity, coupleInterfaceSupplyAndAttachment,
   syntheticGrowthRegimePreview }
-  from "./growth-regime-bridge.mjs?v=20260831-378";
+  from "./growth-regime-bridge.mjs?v=20260831-379";
 import { buildLeapfrogPhysicsCycle, couplingModeGate, LEAPFROG_COUPLING_MODES }
-  from "./leapfrog-physics-cycle.mjs?v=20260831-378";
+  from "./leapfrog-physics-cycle.mjs?v=20260831-379";
 import { buildCatalogConditionalChronology }
-  from "./catalog-conditional-chronology.mjs?v=20260831-378";
+  from "./catalog-conditional-chronology.mjs?v=20260831-379";
 import { buildCoupledPhysicsState, coupledStateGate }
-  from "./coupled-physics-state.mjs?v=20260831-378";
+  from "./coupled-physics-state.mjs?v=20260831-379";
 import { PERIODIC_ELEMENTS } from "./periodic-table.js";
 import {
   executeIceMolecularAnchorGrowth,
@@ -721,6 +723,10 @@ const finiteNetworkFirstPassageUncertaintyBadge = $("finiteNetworkFirstPassageUn
 const finiteNetworkFirstPassageUncertaintyPlot = $("finiteNetworkFirstPassageUncertaintyPlot");
 const finiteNetworkFirstPassageUncertaintySummary = $("finiteNetworkFirstPassageUncertaintySummary");
 const finiteNetworkFirstPassageUncertaintyState = $("finiteNetworkFirstPassageUncertaintyState");
+const finiteNetworkPassageControlBadge = $("finiteNetworkPassageControlBadge");
+const finiteNetworkPassageControlPlot = $("finiteNetworkPassageControlPlot");
+const finiteNetworkPassageControlSummary = $("finiteNetworkPassageControlSummary");
+const finiteNetworkPassageControlState = $("finiteNetworkPassageControlState");
 const finiteNetworkPopulationBadge = $("finiteNetworkPopulationBadge");
 const finiteNetworkPopulationInitial = $("finiteNetworkPopulationInitial");
 const finiteNetworkPopulationHorizon = $("finiteNetworkPopulationHorizon");
@@ -3933,7 +3939,7 @@ async function downloadInterfacialEnergyRequest() {
   const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-378",
+  const request = buildInterfacialEnergyRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-379",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256,
@@ -4177,7 +4183,7 @@ async function downloadAttachmentKineticsRequest() {
   const material = currentMaterial(); const intrinsicDimension = material.intrinsicDimension === 2 ? 2 : 3;
   const orientationBasisCartesian = intrinsicScatteringBasis(intrinsicDimension,
     intrinsicDimension === 2 ? intrinsicPlaneNormal(referenceAtoms) : null);
-  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-378",
+  const request = buildAttachmentKineticsRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-379",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     structureSha256: configuration.structureSha256, intrinsicDimension, orientationBasisCartesian,
@@ -4696,7 +4702,7 @@ async function downloadSpatialInterfaceFluxRequest() {
   const interfaceGeometrySha256 = await receiptSha256(JSON.stringify({ structureSha256: configuration.structureSha256,
     confinement: confinementSelect?.value || "box", publicReach: growthDomainScale, atomCount: referenceAtoms.length }));
   const species = material.actualElements ? [...material.actualElements] : [...material.elements];
-  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-378",
+  const request = buildInterfaceFluxRequest({ generatedAt: new Date().toISOString(), buildId: "20260831-379",
     scenarioId: scenarioSelect.value, materialName: material.name, species,
     structureSha256: configuration.structureSha256, interfaceGeometrySha256,
     interfaceConfiguration: configuration,
@@ -13975,7 +13981,7 @@ async function buildExperimentReceipt() {
     generatedAt: new Date().toISOString(),
     application: {
       name: "Materials Growth Lab",
-      buildId: "20260831-378",
+      buildId: "20260831-379",
       pipelineStages: ["sample configuration", "cluster identification", "GCTS learning", "material growth"],
       visualization: { mode: renderer.isFallback ? "non-WebGL scientific fallback" : "interactive WebGL 3D",
         webglAvailable: !renderer.isFallback, scientificControlsAvailable: true,
@@ -16568,7 +16574,7 @@ async function buildExperimentNotebookSnapshot() {
   const receipt = {
     schema: "gcts-materials-growth-notebook-snapshot-v1",
     generatedAt: new Date().toISOString(),
-    application: { name: "Materials Growth Lab", buildId: "20260831-378" },
+    application: { name: "Materials Growth Lab", buildId: "20260831-379" },
     postLeapExternalRelaxation: stateRelaxationReceipt(),
     view: { growthSceneMode: pipelineStage === 4 && !growthEvidenceToggle.checked ? "atoms-only" : "scientific-evidence",
       growthEvidenceOverlaysVisible: pipelineStage === 4 && growthEvidenceToggle.checked,
@@ -24929,7 +24935,7 @@ async function freezeExternalStateRelaxation() {
     throw new Error("variable-cell relaxation requires a fully periodic 3D state");
   }
   const request = await buildExternalStateRelaxationRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-378",
+    generatedAt: new Date().toISOString(), buildId: "20260831-379",
     materialName: currentMaterial().name, sites,
     cellAngstrom: policy.cellAngstrom, periodicBoundary: policy.periodicBoundary,
     boundary: currentGrowthDomainSnapshot(), sourceLeapReceiptSha256: null,
@@ -25157,6 +25163,7 @@ function registerCommittedReversibleTransition(checkpoint, candidateId, committe
   const finiteNetworkPopulationDynamics = currentFiniteNetworkPopulationDynamics();
   const finiteNetworkFirstPassage = currentFiniteNetworkFirstPassage();
   const finiteNetworkFirstPassageUncertainty = currentFiniteNetworkFirstPassageUncertainty();
+  const finiteNetworkPassageControl = currentFiniteNetworkPassageControl();
   const finiteNetworkGeometricFlux = currentFiniteNetworkGeometricFlux();
   const finiteNetworkStructuralFlux = currentFiniteNetworkStructuralFlux();
   const finiteNetworkGlobalOrder = currentFiniteNetworkGlobalOrder();
@@ -25171,6 +25178,7 @@ function registerCommittedReversibleTransition(checkpoint, candidateId, committe
     finiteTransitionPathway: latestFiniteTransitionPathwayAudit,
     finiteNetworkFirstPassage,
     finiteNetworkFirstPassageUncertainty,
+    finiteNetworkPassageControl,
     finiteNetworkPopulationDynamics,
     finiteNetworkGeometricFlux,
     finiteNetworkStructuralFlux,
@@ -25245,6 +25253,14 @@ function currentFiniteNetworkFirstPassageUncertainty() {
     sourceStateSha256: selectedTransitionPathSourceSha256,
     targetStateSha256: selectedTransitionPathTargetSha256,
     sampleCount: 64,
+  });
+}
+
+function currentFiniteNetworkPassageControl() {
+  return buildFiniteNetworkPassageControl(latestFiniteTransitionNetworkAudit, {
+    sourceStateSha256: selectedTransitionPathSourceSha256,
+    targetStateSha256: selectedTransitionPathTargetSha256,
+    logarithmicRateStep: 1e-4,
   });
 }
 
@@ -25365,6 +25381,74 @@ function renderFiniteNetworkFirstPassageUncertainty() {
   return audit;
 }
 
+function renderFiniteNetworkPassageControl() {
+  const audit = currentFiniteNetworkPassageControl();
+  const namespace = "http://www.w3.org/2000/svg";
+  const make = (name, attributes = {}) => {
+    const node = document.createElementNS(namespace, name);
+    Object.entries(attributes).forEach(([key, value]) => node.setAttribute(key, String(value)));
+    return node;
+  };
+  finiteNetworkPassageControlPlot.replaceChildren();
+  finiteNetworkPassageControlSummary.replaceChildren();
+  if (!audit.available) {
+    finiteNetworkPassageControlBadge.textContent = "awaiting solvable passage";
+    const empty = make("text", { x: 150, y: 50, "text-anchor": "middle", class: "empty" });
+    empty.textContent = "edge-rate control map unavailable";
+    finiteNetworkPassageControlPlot.append(empty);
+    finiteNetworkPassageControlState.textContent = `${audit.reason} ${audit.claimBoundary}`;
+    return audit;
+  }
+  finiteNetworkPassageControlBadge.textContent = `${audit.geometryResolvedEdgeCount}/${audit.directedEdgeCount} geometry-resolved`;
+  const stateId = new Map((latestFiniteTransitionNetworkAudit?.nodes || []).map((node) =>
+    [node.stateSha256, node.stateId]));
+  const edges = audit.rankedByConditionalTimeControl.slice(0, 6);
+  const maximum = Math.max(1e-12, ...edges.map((edge) =>
+    Math.abs(edge.logPassageTimeElasticity)));
+  const center = 164, left = 62, right = 292, top = 13, rowHeight = 15;
+  finiteNetworkPassageControlPlot.append(make("line", { x1: center, y1: 6,
+    x2: center, y2: 102, class: "zero" }));
+  edges.forEach((edge, index) => {
+    const value = edge.logPassageTimeElasticity;
+    const y = top + index * rowHeight;
+    const x = center + value / maximum * (right - center);
+    const line = make("line", { x1: center, y1: y, x2: x, y2: y,
+      class: `control-bar ${value <= 0 ? "accelerating" : "diverting"}` });
+    const title = make("title");
+    title.textContent = `${stateId.get(edge.fromStateSha256)}→${stateId.get(edge.toStateSha256)}: ∂ln τ/∂ln k=${value.toFixed(5)}, ∂P/∂ln k=${edge.targetProbabilityElasticity.toFixed(5)}; ${edge.geometricCharacter || "path geometry unresolved"}`;
+    line.append(title); finiteNetworkPassageControlPlot.append(line);
+    finiteNetworkPassageControlPlot.append(make("circle", { cx: x, cy: y, r: 2.4,
+      class: `control-point ${value <= 0 ? "accelerating" : "diverting"}` }));
+    const label = make("text", { x: left - 3, y: y + 1.7, "text-anchor": "end",
+      class: "label" });
+    label.textContent = `${stateId.get(edge.fromStateSha256)}→${stateId.get(edge.toStateSha256)}`;
+    finiteNetworkPassageControlPlot.append(label);
+  });
+  [[left, 111, "faster if k↑"], [center, 111, "0"], [right, 111, "slower if k↑"]]
+    .forEach(([x, y, label], index) => {
+      const text = make("text", { x, y, "text-anchor": index === 0 ? "start"
+        : index === 2 ? "end" : "middle", class: "label" });
+      text.textContent = label; finiteNetworkPassageControlPlot.append(text);
+    });
+  const dominant = audit.dominantConditionalTimeControlEdge;
+  const dominantLabel = dominant
+    ? `${stateId.get(dominant.fromStateSha256)}→${stateId.get(dominant.toStateSha256)}` : "none";
+  const tiles = [
+    ["dominant time control", dominantLabel],
+    ["∂ln τ / ∂ln k", dominant ? dominant.logPassageTimeElasticity.toFixed(4) : "—"],
+    ["∂Ptarget / ∂ln k", dominant ? dominant.targetProbabilityElasticity.toFixed(4) : "—"],
+    ["linearized σln τ", Number.isFinite(audit.independentLinearizedLogTimeSigma)
+      ? audit.independentLinearizedLogTimeSigma.toFixed(4) : "incomplete σln k"],
+  ];
+  finiteNetworkPassageControlSummary.replaceChildren(...tiles.map(([label, value]) => {
+    const tile = document.createElement("span"); const strong = document.createElement("strong");
+    tile.append(document.createTextNode(label)); strong.textContent = value; tile.append(strong);
+    return tile;
+  }));
+  finiteNetworkPassageControlState.textContent = `${dominant?.geometricCharacter || "Unresolved path character"}${Number.isFinite(dominant?.netContactDelta) ? ` · Δcontacts ${dominant.netContactDelta >= 0 ? "+" : ""}${dominant.netContactDelta}` : ""}${Number.isFinite(dominant?.meanDynamicCoordinationDelta) ? ` · Δcoord ${dominant.meanDynamicCoordinationDelta >= 0 ? "+" : ""}${dominant.meanDynamicCoordinationDelta.toFixed(3)}` : ""}. Common-rate scaling identities: Σ∂P=${audit.commonModeTargetProbabilityDerivative.toExponential(2)}, Σ∂lnτ=${audit.commonModeLogPassageTimeDerivative.toFixed(6)}, Σ∂ln jumps=${audit.commonModeLogExpectedJumpsDerivative.toExponential(2)} (${audit.commonModeIdentitiesPassed ? "passed" : "failed"}). Sensitivities hold every other rate and exact geometry fixed; this is model control, not experimental causality.`;
+  return audit;
+}
+
 function renderFiniteNetworkFirstPassage() {
   const audit = currentFiniteNetworkFirstPassage();
   const namespace = "http://www.w3.org/2000/svg";
@@ -25382,6 +25466,7 @@ function renderFiniteNetworkFirstPassage() {
     finiteNetworkFirstPassagePlot.append(empty);
     finiteNetworkFirstPassageState.textContent = `${audit.reason} ${audit.claimBoundary}`;
     renderFiniteNetworkFirstPassageUncertainty();
+    renderFiniteNetworkPassageControl();
     return audit;
   }
   const source = audit.states.find((state) => state.stateSha256 === audit.sourceStateSha256);
@@ -25439,6 +25524,7 @@ function renderFiniteNetworkFirstPassage() {
     audit.backwardEquationConditionalJumpResidual);
   finiteNetworkFirstPassageState.textContent = `${audit.targetReachableStateCount}/${audit.stateCount} observed states can reach the selected target; ${audit.observedFailureStateCount} target-unreachable state${audit.observedFailureStateCount === 1 ? " is" : "s are"} explicit failure. Backward-equation residual ${maximumResidual.toExponential(2)}. Unobserved exits remain unknown, so this is a finite-catalog reachability and target-conditioned time—not a mechanism-complete committor or MFPT.`;
   renderFiniteNetworkFirstPassageUncertainty();
+  renderFiniteNetworkPassageControl();
   return audit;
 }
 
@@ -27305,7 +27391,7 @@ async function buildExternalActionBarrierCheckpoint(evaluated, before, generatio
     ...speciesExchangeCandidates];
   const material = currentMaterial();
   const request = await buildFrozenActionBarrierRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-378",
+    generatedAt: new Date().toISOString(), buildId: "20260831-379",
     scenarioId: scenarioSelect.value, materialName: material.name,
     elements: material.actualElements ? [...material.actualElements] : [...material.elements],
     sourceProvenance: material.fixtureProvenance || importedStructure?.metadata || null,
@@ -34574,6 +34660,8 @@ function physicsTranslationRecords(leap = null) {
     ?.finiteNetworkFirstPassage || currentFiniteNetworkFirstPassage();
   const firstPassageUncertaintyReceipt = leap?.actionBarrierCheckpoint?.committedTransitionLineage
     ?.finiteNetworkFirstPassageUncertainty || currentFiniteNetworkFirstPassageUncertainty();
+  const passageControlReceipt = leap?.actionBarrierCheckpoint?.committedTransitionLineage
+    ?.finiteNetworkPassageControl || currentFiniteNetworkPassageControl();
   const populationDynamicsReceipt = leap?.actionBarrierCheckpoint?.committedTransitionLineage
     ?.finiteNetworkPopulationDynamics || currentFiniteNetworkPopulationDynamics();
   const populationFluxReceipt = leap?.actionBarrierCheckpoint?.committedTransitionLineage
@@ -35097,6 +35185,19 @@ function physicsTranslationRecords(leap = null) {
         : firstPassageUncertaintyReceipt?.reason || "No first-passage uncertainty audit is available.",
       boundary: firstPassageUncertaintyReceipt?.claimBoundary
         || "Diagnostic quantiles are not confidence or credible intervals; correlated systematic errors and omitted mechanisms remain unresolved." },
+    { id: "finite-network-passage-control", process: "geometry-linked edge control of target passage",
+      status: passageControlReceipt?.available ? "sampled"
+        : firstPassageReceipt?.available ? "planned" : "unavailable",
+      role: passageControlReceipt?.available
+        ? "local log-rate sensitivity map on the frozen exact-state graph" : "awaiting nonzero source-to-target passage",
+      encoding: passageControlReceipt?.available
+        ? `${passageControlReceipt.directedEdgeCount} symmetric one-edge derivatives at δln k=${passageControlReceipt.logarithmicRateStep}; ${passageControlReceipt.geometryResolvedEdgeCount} edges retain exact path character; exact states, topology, and other rates fixed per derivative`
+        : "no differentiable finite-catalog passage observable",
+      evidence: passageControlReceipt?.available
+        ? `Dominant ∂lnτ/∂lnk=${passageControlReceipt.dominantConditionalTimeControlEdge.logPassageTimeElasticity.toFixed(5)} on ${passageControlReceipt.dominantConditionalTimeControlEdge.geometricCharacter || "unresolved geometry"}; common-mode sums ∂P=${passageControlReceipt.commonModeTargetProbabilityDerivative.toExponential(2)}, ∂lnτ=${passageControlReceipt.commonModeLogPassageTimeDerivative.toFixed(6)}, ∂ln jumps=${passageControlReceipt.commonModeLogExpectedJumpsDerivative.toExponential(2)}; identities=${passageControlReceipt.commonModeIdentitiesPassed}.`
+        : passageControlReceipt?.reason || "No passage-control audit is available.",
+      boundary: passageControlReceipt?.claimBoundary
+        || "Finite-catalog rate elasticity is model sensitivity, not experimental causal identification or proof that one physical barrier varies independently." },
     { id: "finite-network-population-dynamics", process: "transient exact-state population propagation",
       status: populationDynamicsReceipt?.available ? "sampled"
         : transitionNetworkReceipt?.nodes?.length ? "planned" : "unavailable",
@@ -36741,7 +36842,7 @@ async function externalPhysicsRequestPackage(quantity) {
     provenance: material.fixtureProvenance || null,
   };
   return buildExternalPhysicsRequest({
-    generatedAt: new Date().toISOString(), buildId: "20260831-378",
+    generatedAt: new Date().toISOString(), buildId: "20260831-379",
     quantityId: quantity.id, quantityLabel: quantity.label,
     earliestPermittedUse: quantity.earliestPermittedUse,
     handoff: dynamicalEvidenceHandoffReceipt,
