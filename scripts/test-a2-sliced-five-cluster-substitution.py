@@ -20,6 +20,7 @@ def load(name: str, filename: str):
 
 
 FIVE = load("a2_sliced_five_cluster", "screen-a2-sliced-five-cluster-substitution.py")
+FIVE_BATCH = load("a2_sliced_five_cluster_batch", "enumerate-a2-sliced-five-cluster-batch.py")
 FOUR = FIVE.FOUR
 TWO = FIVE.TWO
 
@@ -42,6 +43,31 @@ def main():
         }, separators=(",", ":")))
         five = FIVE.enumerate_five_copy_metatiles(record, cache, False)
 
+        # Compact on-disk caches preserve the same canonical order and lazily
+        # reconstruct the alcove geometry without duplicating verbose records.
+        split = max(1, len(five["metatiles"]) // 2)
+        paths = []
+        for start, stop in ((0, split), (split, len(four["metatiles"]))):
+            if start >= stop:
+                continue
+            shard = Path(directory) / f"shard-{start}-{stop}.json"
+            keys = [item["canonical_key"] for item in five["metatiles"]]
+            shard.write_text(json.dumps({
+                "id": record["id"], "include_reflections": False, "copies": 5,
+                "raw_connected_extensions": five["raw_connected_extensions"],
+                "symmetry_distinct_metatiles": len(keys),
+                "canonical_sha256": FIVE_BATCH.digest_keys(keys),
+                "four_copy_parent_total": len(four["metatiles"]),
+                "four_copy_parent_range": [start, stop],
+                "canonical_keys": keys,
+            }, separators=(",", ":")))
+            paths.append(shard)
+        compact = Path(directory) / "five-copy.sqlite"
+        FIVE_BATCH.merge_to_compact_sqlite(
+            paths, compact, record["id"], False, len(four["metatiles"])
+        )
+        cached = FIVE.sqlite_enumeration(record, False, compact)
+
     keys = [tuple(tuple(cell) for cell in item["canonical_key"])
             for item in five["metatiles"]]
     assert keys == sorted(set(keys))
@@ -50,6 +76,11 @@ def main():
     assert all(len(item["alcoves"]) == 5 for item in five["metatiles"])
     assert all(item["base_decomposition"]["replay"]["verified"]
                for item in five["metatiles"])
+    assert len(cached["metatiles"]) == len(five["metatiles"])
+    assert [cached["metatiles"][index]["canonical_key"]
+            for index in range(len(cached["metatiles"]))] == [
+                item["canonical_key"] for item in five["metatiles"]
+            ]
 
     # Independently reconstruct the canonical extension set from the complete
     # four-copy census.  This guards against accidentally skipping a parent,
