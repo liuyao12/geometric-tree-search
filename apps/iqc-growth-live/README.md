@@ -1,5 +1,31 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 400 · molecular growth launch certificate
+
+The Stage-4 launch audit now understands the specialized molecular-anchor
+executor. Previously, expanding the search controls during an ice run exposed
+the generic seed diagnostic and incorrectly said that no fitted cluster
+occurrence could initialize growth—even while the certified oxygen-anchor
+trace was executing. The panel now switches to a dedicated, receipt-visible
+molecular launch certificate.
+
+For ice Ih it reports the complete molecule / bridge / gap cover, the frozen
+proper-SE(3) molecular-port count, the spatially disjoint oxygen seed, the next
+anchor frontier, emitted anchors, public-boundary margin, exact browser/backend
+count parity, and whether the finite fixed point has been reached. Once the
+trace exhausts, the panel records 24 target-blind emitted O anchors across two
+self-fed waves and explains why no unanimously supported successor remains.
+
+The generic nucleus and retraining buttons are disabled for this path because
+they do not control the frozen molecular executor. The only active route
+returns to the molecular cover. The panel states the crucial boundary: it is a
+finite shared-oxygen scaffold, not full H₂O placement, proton dynamics,
+stationarity, exponential ice growth, a potential, or physical stopping time.
+
+The same launch-readiness record is serialized into experiment and notebook
+receipts, so a downloaded run cannot show the certified molecular trace while
+retaining the old contradictory generic diagnosis.
+
 ## Build 399 · molecular-family GCTS overview
 
 Molecular materials now enter GCTS learning through a deliberately compact

@@ -1,5 +1,27 @@
 # Recursive GCTS benchmark for material growth
 
+## Molecular growth launch certificate (Build 400)
+
+The browser now treats a frozen molecular-anchor trace as a distinct executable
+launch mode. Its preflight does not reuse generic `placedClusters` counts,
+because the certified ice executor intentionally initializes explicit oxygen
+anchors while keeping mutually exclusive H/D molecular orientations symbolic.
+The old generic diagnostic therefore produced a false “cluster support
+missing” message despite a valid 396-occurrence molecular cover.
+
+The corrected audit reports cover occurrences, seed oxygen anchors, retained
+conformer types, frozen molecular ports, current candidate-anchor frontier,
+emitted anchors, executed wave count, boundary margin, backend parity, target
+use, and finite-fixed-point status. It is serialized beside the seed protocol
+in both full experiment and compact notebook receipts.
+
+For the ice-Ih fixture the immutable trace starts from 9 observed O anchors,
+accepts 16 of 19 candidates in wave one and 8 of 9 in wave two, then reaches a
+safe finite fixed point at 33 anchors. All 24 emitted anchors are target-blind.
+The certificate does not materialize a mutually exclusive hydrogen pose or
+claim a full molecular solid; it keeps proton orientation, barriers, entropy,
+stationarity, exponential recursion, and physical time explicitly open.
+
 ## Molecular-family GCTS overview (Build 399)
 
 The browser's molecular marking gallery now defaults to one representative per

@@ -13,9 +13,9 @@ const benchmark = fs.readFileSync("docs/projects/materials-recursive-gcts-benchm
 for (const document of [html, alias]) {
   assert.match(document, /finiteNetworkConditionedHeterogeneityPlot/);
   assert.match(document, /Successful-path heterogeneity/);
-  assert.match(document, /app\.js\?v=20260831-399/);
+  assert.match(document, /app\.js\?v=20260831-400/);
 }
-assert.match(app, /finite-network-conditioned-heterogeneity\.mjs\?v=20260831-399/);
+assert.match(app, /finite-network-conditioned-heterogeneity\.mjs\?v=20260831-400/);
 assert.match(app, /buildFiniteNetworkConditionedHeterogeneity/);
 assert.match(app, /finiteNetworkConditionedHeterogeneity,/);
 assert.match(app, /finite-network-conditioned-heterogeneity/);
