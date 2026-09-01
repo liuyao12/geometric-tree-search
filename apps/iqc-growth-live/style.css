@@ -1781,6 +1781,32 @@ body.study-guide-open { overflow: hidden; }
 .rdf-controls select { max-width: 148px; min-height: 22px; padding: 0 20px 0 6px; border: 1px solid var(--line); background: #091719; color: #8fa39d; font: 6px var(--mono); }
 .rdf-controls button { padding: 2px 0; border: 0; border-bottom: 1px solid rgba(181, 148, 255, .38); color: var(--violet); background: transparent; font: 6px var(--mono); cursor: pointer; }
 .rdf-controls button[aria-pressed="true"] { color: var(--gold); border-bottom-color: rgba(240, 201, 106, .62); }
+.experimental-scattering-card { margin-top: 8px; padding: 9px; border: 1px solid rgba(105,211,185,.16); border-radius: 5px; background: radial-gradient(circle at 92% 10%,rgba(105,211,185,.06),transparent 42%),rgba(5,16,17,.74); }
+.experimental-scattering-card > header { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+.experimental-scattering-card > header span { display: grid; gap: 2px; }
+.experimental-scattering-card > header small { color: #66847d; font: 5px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+.experimental-scattering-card > header strong { color: #c6ded8; font: 8px var(--display); font-weight: 500; }
+.experimental-scattering-card > header b { padding: 3px 5px; border: 1px solid rgba(240,201,106,.22); color: var(--gold); font: 4.5px var(--mono); font-weight: 500; text-transform: uppercase; }
+.experimental-scattering-controls { display: flex; flex-wrap: wrap; align-items: end; gap: 5px; margin: 8px 0 5px; }
+.experimental-scattering-controls label { display: grid; gap: 2px; color: #67827c; font: 4.2px var(--mono); text-transform: uppercase; }
+.experimental-scattering-controls select { min-height: 23px; padding: 0 20px 0 6px; border: 1px solid var(--line); background: #091719; color: #9db4ae; font: 5px var(--mono); }
+.experimental-scattering-controls button { min-height: 23px; padding: 0 7px; border: 1px solid rgba(105,211,185,.22); background: rgba(105,211,185,.05); color: #9ecbc0; font: 4.7px var(--mono); cursor: pointer; }
+.experimental-scattering-controls button:hover { border-color: rgba(240,201,106,.44); color: var(--gold); }
+.experimental-scattering-card svg { display: block; width: 100%; height: 184px; border: 1px solid rgba(105,211,185,.09); background: rgba(2,10,11,.56); }
+.experimental-scattering-card .profile-axis { stroke: rgba(170,203,195,.25); stroke-width: .7; }
+.experimental-scattering-card .profile-grid { stroke: rgba(170,203,195,.09); stroke-width: .55; stroke-dasharray: 2 2; }
+.experimental-scattering-card .profile-observed { fill: none; stroke: #f0c96a; stroke-width: 1.1; opacity: .9; }
+.experimental-scattering-card .profile-uncertainty { fill: rgba(240,201,106,.10); stroke: none; }
+.experimental-scattering-card .profile-calculated { fill: none; stroke: #69d3b9; stroke-width: 1.1; opacity: .9; }
+.experimental-scattering-card .profile-residual { fill: none; stroke: #ff8e72; stroke-width: .85; opacity: .8; }
+.experimental-scattering-card .profile-zero { stroke: rgba(255,142,114,.24); stroke-width: .6; }
+.experimental-scattering-card .profile-label { fill: #708c85; font: 5px var(--mono); }
+.experimental-scattering-card .profile-empty { fill: #60756f; font: 6px var(--mono); }
+.experimental-scattering-metrics { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 4px; margin-top: 5px; }
+.experimental-scattering-metrics span { padding: 5px; border: 1px solid rgba(105,211,185,.09); color: #69837d; font: 4px var(--mono); text-transform: uppercase; }
+.experimental-scattering-metrics strong { display: block; margin-top: 2px; color: #c3dad4; font: 6px var(--mono); font-weight: 500; text-transform: none; }
+.experimental-scattering-card > p { margin: 5px 0 0; color: #718983; font: 4.5px/1.5 var(--mono); }
+@media (max-width: 720px) { .experimental-scattering-metrics { grid-template-columns: repeat(2,minmax(0,1fr)); } }
 .structure-status button { padding: 0; border: 0; border-bottom: 1px solid rgba(181, 148, 255, .5); color: var(--violet); background: transparent; font: inherit; cursor: pointer; }
 .structure-card svg { display: block; width: 100%; height: 102px; margin-top: 4px; overflow: visible; }
 .chart-axis { stroke: rgba(151, 194, 183, .24); stroke-width: 1; vector-effect: non-scaling-stroke; }

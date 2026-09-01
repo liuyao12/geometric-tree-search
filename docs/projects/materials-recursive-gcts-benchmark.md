@@ -1,5 +1,35 @@
 # Recursive GCTS benchmark for material growth
 
+## Independent powder-profile validation boundary (Build 417)
+
+The structural microscope now separates a calculated scattering fingerprint
+from an independent measurement contract. The browser freezes a request using
+the exact observed-structure digest, species, current contrast channel, probe,
+and physical q interval. A response must bind that identity and provide at
+least twelve aligned points on a strictly increasing `q` axis or on a `2θ`/`d`
+axis that can be converted unambiguously using a supplied wavelength. DOI,
+URL, or dataset provenance is mandatory. Standard uncertainties are retained;
+counts may use the explicit Poisson `sqrt(counts)` fallback, while other
+unweighted data are visibly labeled unit-weight.
+
+The numerical comparison is deliberately small and auditable. It broadens the
+frozen finite-window model by the response's declared Gaussian q-resolution,
+interpolates it only inside the common q range, and performs weighted least
+squares with a user-visible nuisance family. The reported Rwp is
+`sqrt(sum w(Iobs-Icalc)^2 / sum w Iobs^2)`; reduced χ², correlation, scale,
+constant/linear background, residual curve, uncertainty source, correction
+list, and both artifact hashes remain in the receipt. The accepted pdCIF-style
+field names and intensity semantics follow the
+[IUCr powder diffraction CIF dictionary](https://www.iucr.org/resources/cif/dictionaries/browse/cif_pd).
+
+This is a post-growth validation layer. The profile object enforces
+`targetUsedBeforeGrowth=false` and `candidateSetChanged=false`, and rejects any
+response declaring use in growth, marking, or candidate selection. The
+built-in synthetic-count demonstrator is useful for testing axis conversion,
+resolution, nuisance fitting, and rendering but is not independent evidence.
+Even an excellent profile agreement is neither a Rietveld refinement nor a
+phase/mechanism/energy/kinetics claim.
+
 ## Interactive critical-nucleus cover and port evidence (Build 416)
 
 The admission result is now inspectable rather than confined to metrics and a

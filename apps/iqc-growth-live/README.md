@@ -1,5 +1,35 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 417 · geometric growth meets an independent powder profile
+
+The reciprocal-space microscope now opens a dedicated experiment-validation
+workspace. A scientist chooses an X-ray, neutron, or electron probe contract
+and downloads a request bound to the exact structure SHA-256, species set,
+selected scattering contrast, and physical inverse-ångström range. The response
+contract accepts strictly increasing `q`, `2θ`, or `d` axes, converts them to a
+common `q` scale, and retains wavelength, intensity units, standard
+uncertainties, correction history, instrument-resolution FWHM, temperature,
+and DOI/URL/dataset provenance. Its pdCIF names follow the
+[IUCr powder CIF dictionary](https://www.iucr.org/resources/cif/dictionaries/browse/cif_pd).
+
+Comparison happens only after a profile validates. The finite-section Debye
+curve is converted from `q·d_nn` to Å⁻¹, convolved with the declared Gaussian
+resolution, interpolated only on the common measured range, and fitted with one
+explicitly selected nuisance model: nonnegative scale, optional constant
+background, or optional linear background. The plot shows observed,
+calculated, and residual curves together; the evidence ledger records Rwp,
+reduced χ², shape correlation, q overlap, nuisance parameters, uncertainty
+source, profile/comparison hashes, and exact claim boundaries.
+
+No measured intensity can alter cluster discovery, marking learning, candidate
+generation, hard admission, ranking, or material growth. The built-in
+instrument demonstrator applies deterministic resolution, background, and
+count perturbations to the calculated curve solely to exercise the pipeline;
+it is visibly and cryptographically marked `demonstratorOnly` and never counts
+as independent experimental evidence. A good fit is not presented as a
+structure refinement, phase identification, mechanism, energy, rate, or proof
+that the growth path is physically realized.
+
 ## Build 416 · the critical-nucleus grammar decision becomes visible
 
 The critical-nucleus viewer now switches among three evidence layers without

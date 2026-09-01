@@ -25,7 +25,7 @@ for (const token of ["id=\"classicalNucleationKineticsEvidence\"",
   "A barrier alone is not a rate"])
   assert.ok(html.includes(token), token);
 
-for (const token of ["classical-nucleation-kinetics.mjs?v=20260901-416",
+for (const token of ["classical-nucleation-kinetics.mjs?v=20260901-417",
   "function renderClassicalNucleationKineticsEvidence()",
   "downloadClassicalNucleationKineticsEvidenceRequest",
   "validateClassicalNucleationKineticsFile", "evaluatePoissonNucleationWindow(",

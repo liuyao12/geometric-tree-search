@@ -24,11 +24,11 @@ for (const token of ["id=\"classicalNucleationEvidence\"", "Conditional nucleati
   "id=\"bulkDrivingResponseInput\"", "id=\"classicalNucleationState\"",
   "id=\"classicalNucleationBoundary\""]) assert.ok(html.includes(token), token);
 
-for (const token of ["classical-nucleation-evidence.mjs?v=20260901-416",
+for (const token of ["classical-nucleation-evidence.mjs?v=20260901-417",
   "function renderClassicalNucleationEvidence()", "function classicalNucleationReceipt()",
   "function downloadBulkDrivingForceEvidenceRequest()", "function validateBulkDrivingForceFile(file)",
   "classicalNucleation: classicalNucleationReceipt()", "candidateSetChanged: false",
-  "growthRankingChanged: activeClassicalCapillarityWeight() > 0", "buildId: \"20260901-416\""]) assert.ok(app.includes(token), token);
+  "growthRankingChanged: activeClassicalCapillarityWeight() > 0", "buildId: \"20260901-417\""]) assert.ok(app.includes(token), token);
 
 assert.ok(css.includes(".classical-nucleation-evidence"));
 assert.ok(css.includes(".classical-net"));
@@ -36,8 +36,8 @@ assert.ok(atlas.includes("Conditional classical nucleation work"));
 assert.ok(atlas.includes("bulk parent-to-nucleus driving-force density Δg"));
 assert.ok(readme.includes("Build 410 · geometry-bound classical nucleation work"));
 assert.ok(methods.includes("Conditional Wulff nucleation-work bridge (Build 410)"));
-assert.ok(html.includes("app.js?v=20260901-416"));
-assert.ok(html.includes("style.css?v=20260901-416"));
-assert.ok(html.includes("evidence-atlas.js?v=20260901-416"));
+assert.ok(html.includes("app.js?v=20260901-417"));
+assert.ok(html.includes("style.css?v=20260901-417"));
+assert.ok(html.includes("evidence-atlas.js?v=20260901-417"));
 
 console.log("classical nucleation portal contract: passed");
