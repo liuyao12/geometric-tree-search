@@ -2232,7 +2232,7 @@
             const frontierGeneration = minimumFrontierGeneration(playbackPlacements || event.placements || []);
             if (frontierGeneration >= 3 && frontierGeneration % 2 === 1 && frontierGeneration > highestPausedCorona) {
               highestPausedCorona = frontierGeneration;
-              statusText = `coronas ${frontierGeneration}`;
+              statusText = `pausing at corona ${frontierGeneration}`;
               stopTiling();
             }
           }
