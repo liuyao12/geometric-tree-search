@@ -44,6 +44,40 @@ const combined = incrementalFinitePointChargeElectrostatics(
     forceReferenceLengthAngstrom: 2.82, rankingObservable: "combined" });
 assert.equal(combined.score, (combined.energyScore + combined.forceCancellationScore) / 2);
 
+const bornAmplitude = 1000;
+const bornDecay = .3;
+const bornPair = incrementalFinitePointChargeElectrostatics(
+  [{ position: [0, 0, 0], charge: 1 }],
+  [{ position: [2.82, 0, 0], charge: -1 }],
+  { relativePermittivity: 1, temperatureKelvin: 300,
+    bornMayerAmplitudeElectronVolt: bornAmplitude,
+    bornMayerDecayAngstrom: bornDecay });
+const expectedBornEnergy = bornAmplitude * Math.exp(-2.82 / bornDecay);
+assert.ok(Math.abs(bornPair.bornMayerRepulsiveEnergyElectronVolt - expectedBornEnergy) < 1e-12);
+assert.ok(Math.abs(bornPair.deltaEnergyElectronVolt
+  - (pair.deltaEnergyElectronVolt + expectedBornEnergy)) < 1e-12);
+assert.ok(Math.abs(bornPair.addedBornMayerForceVectorsElectronVoltPerAngstrom[0][0]
+  - expectedBornEnergy / bornDecay) < 1e-12);
+assert.ok(Math.abs(bornPair.addedForceVectorsElectronVoltPerAngstrom[0][0]
+  - (pair.addedForceVectorsElectronVoltPerAngstrom[0][0] + expectedBornEnergy / bornDecay)) < 1e-12);
+assert.equal(bornPair.pairInteractionModel, "Coulomb + Born–Mayer");
+assert.equal(bornPair.bornMayerRepulsionApplied, true);
+
+const bornDisplacedEnergy = (x) => incrementalFinitePointChargeElectrostatics(
+  [{ position: [0, 0, 0], charge: 1 }], [{ position: [x, 0, 0], charge: -1 }],
+  { relativePermittivity: 4, temperatureKelvin: 300,
+    bornMayerAmplitudeElectronVolt: bornAmplitude, bornMayerDecayAngstrom: bornDecay })
+  .deltaEnergyElectronVolt;
+const bornFiniteDifferenceStep = 1e-5;
+const bornFiniteDifferenceForce = -(bornDisplacedEnergy(2.82 + bornFiniteDifferenceStep)
+  - bornDisplacedEnergy(2.82 - bornFiniteDifferenceStep)) / (2 * bornFiniteDifferenceStep);
+const bornAnalyticForce = incrementalFinitePointChargeElectrostatics(
+  [{ position: [0, 0, 0], charge: 1 }], [{ position: [2.82, 0, 0], charge: -1 }],
+  { relativePermittivity: 4, temperatureKelvin: 300,
+    bornMayerAmplitudeElectronVolt: bornAmplitude, bornMayerDecayAngstrom: bornDecay })
+  .addedForceVectorsElectronVoltPerAngstrom[0][0];
+assert.ok(Math.abs(bornFiniteDifferenceForce - bornAnalyticForce) < 1e-9);
+
 const finiteDifferenceStep = 1e-5;
 const displacedEnergy = (x) => incrementalFinitePointChargeElectrostatics(
   [{ position: [0, 0, 0], charge: 1 }], [{ position: [x, 0, 0], charge: -1 }],
@@ -117,5 +151,8 @@ assert.throws(() => incrementalFinitePointChargeElectrostatics(
 assert.throws(() => incrementalFinitePointChargeElectrostatics(
   [{ position: [0, 0, 0], charge: 1 }], [{ position: [1, 0, 0], charge: -1 }],
   { rankingObservable: "force-field" }), /rankingObservable/);
+assert.throws(() => incrementalFinitePointChargeElectrostatics(
+  [{ position: [0, 0, 0], charge: 1 }], [{ position: [1, 0, 0], charge: -1 }],
+  { bornMayerAmplitudeElectronVolt: -1 }), /bornMayerAmplitudeElectronVolt/);
 
 console.log("finite point-charge electrostatics tests passed");

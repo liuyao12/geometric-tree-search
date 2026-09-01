@@ -8,7 +8,7 @@
   <meta name="description" content="Learn finite SE(3) cluster-overlap grammars and transported GCTS connection sections from atomic point sets, then run explicit off-lattice growth.">
   <title>Materials Growth Lab — Off-Lattice SE(3) Growth</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23071112'/%3E%3Cpath d='M17 19 46 12M17 19l8 30m21-37L25 49m-8-30 29 24M25 49l21-6' stroke='%236fffd4' stroke-width='4'/%3E%3Ccircle cx='17' cy='19' r='6' fill='%23f1fff9'/%3E%3Ccircle cx='46' cy='12' r='6' fill='%236fffd4'/%3E%3Ccircle cx='25' cy='49' r='6' fill='%238a7dff'/%3E%3Ccircle cx='46' cy='43' r='6' fill='%236fffd4'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css?v=20260901-424">
+  <link rel="stylesheet" href="./style.css?v=20260901-425">
   <script type="importmap">
     {
       "imports": {
@@ -793,6 +793,7 @@
                 <option value="none" selected>Off · signed pair sum reported</option>
                 <option value="madelung">Madelung-like · favor lower signed 1/r sum</option>
                 <option value="coulomb">Finite Coulomb · formal point charges in eV</option>
+                <option value="coulomb-born-mayer">Coulomb + Born–Mayer · finite pair hypothesis</option>
               </select>
             </label>
             <label class="field" for="ionicPairReachSelect">
@@ -813,6 +814,24 @@
                 <option value="80">80 · water-like continuum</option>
               </select>
             </label>
+            <label class="field" for="ionicPairBornAmplitudeSelect">
+              <span>Born–Mayer amplitude A <b>declared generic · eV</b></span>
+              <select id="ionicPairBornAmplitudeSelect">
+                <option value="250">250 eV · soft core</option>
+                <option value="500">500 eV</option>
+                <option value="1000" selected>1,000 eV · reference hypothesis</option>
+                <option value="2000">2,000 eV · hard core</option>
+              </select>
+            </label>
+            <label class="field" for="ionicPairBornDecaySelect">
+              <span>Born–Mayer decay ρ <b>declared generic · Å</b></span>
+              <select id="ionicPairBornDecaySelect">
+                <option value="0.2">0.20 Å · compact</option>
+                <option value="0.3" selected>0.30 Å · reference hypothesis</option>
+                <option value="0.4">0.40 Å · extended</option>
+                <option value="0.5">0.50 Å · broad</option>
+              </select>
+            </label>
             <label class="field" for="ionicPairTemperatureSelect">
               <span>Electrostatic comparison temperature <b>Kelvin · score scale only</b></span>
               <select id="ionicPairTemperatureSelect">
@@ -824,7 +843,7 @@
               </select>
             </label>
             <label class="field" for="ionicPairObservableSelect">
-              <span>Finite Coulomb observable <b>energy gradient · unchanged poses</b></span>
+              <span>Finite pair observable <b>energy gradient · unchanged poses</b></span>
               <select id="ionicPairObservableSelect">
                 <option value="energy" selected>Energy · favor lower ΔU / emitted site</option>
                 <option value="force-cancellation">Force cancellation · favor lower electrostatic F<sub>rms</sub></option>
@@ -1968,7 +1987,7 @@
               <option value="directional-clearance">1σ directional clearance</option>
             </select></label>
             <label><input id="forceToggle" type="checkbox" checked disabled><span id="forceToggleLabel">Residual forces · unavailable</span></label>
-            <label><input id="electrostaticForceToggle" type="checkbox" checked disabled><span id="electrostaticForceToggleLabel">Candidate Coulomb ∇U · select ionic reach point</span></label>
+            <label><input id="electrostaticForceToggle" type="checkbox" checked disabled><span id="electrostaticForceToggleLabel">Candidate pair force F=−∇U · select ionic reach point</span></label>
             <label><input id="localConstraintMismatchToggle" type="checkbox"><span id="localConstraintMismatchToggleLabel">Current local constraint mismatch · learning geometry</span></label>
             <label class="local-deformation-layer"><span>Mismatch color</span><select id="localConstraintMismatchMetric" aria-label="Current local geometric mismatch halo observable">
               <option value="combined">contact + angle residual</option>
@@ -2829,7 +2848,7 @@
     </main>
   </div>
 
-  <script type="module" src="./app.js?v=20260901-424"></script>
-  <script type="module" src="./evidence-atlas.js?v=20260901-424"></script>
+  <script type="module" src="./app.js?v=20260901-425"></script>
+  <script type="module" src="./evidence-atlas.js?v=20260901-425"></script>
 </body>
 </html>

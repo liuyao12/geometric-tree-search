@@ -1,5 +1,21 @@
 # Recursive GCTS benchmark for material growth
 
+## Conditional Coulomb + Born–Mayer pair hypothesis (Build 425)
+
+The unchanged finite candidate set can now be ranked by the declared pair
+expression `U(r)=kqᵢqⱼ/(εr)+A exp(−r/ρ)`. The implementation evaluates
+only current–new and new–new pairs, preserves the candidate-independent omitted
+current–current constant, and accumulates exact equal-and-opposite new–new
+forces. Analytic total forces pass finite-difference checks; `A=0` reproduces
+the prior Coulomb path.
+
+This closes one visible physical omission without promoting a generic preset to
+a material force field. `A` and `ρ` are scientist-declared, isotropic, and shared
+by every pair; they are not fitted species-pair coefficients. The learned hard
+exclusion remains a separate geometric admission certificate. No dispersion,
+polarization, electronic structure, many-body term, periodic sum, relaxation,
+rate, or trajectory is inferred.
+
 ## Candidate-bound electrostatic force glyphs (Build 424)
 
 The exact per-emitted-site gradient added in Build 423 is now visible on the

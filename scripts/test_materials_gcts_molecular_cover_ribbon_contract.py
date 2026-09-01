@@ -78,8 +78,8 @@ def test_molecular_cover_ribbon_contract():
     assert ".molecular-cover-flow button.active" in CSS
     assert ".growth-lineage-map" in CSS
     assert 'id="growthLineageMap"' in HTML
-    assert 'buildId: "20260901-424"' in APP
-    assert 'app.js?v=20260901-424' in HTML
+    assert 'buildId: "20260901-425"' in APP
+    assert 'app.js?v=20260901-425' in HTML
 
 
 if __name__ == "__main__":

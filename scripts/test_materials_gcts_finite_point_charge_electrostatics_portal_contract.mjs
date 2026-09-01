@@ -13,10 +13,12 @@ const atlas = read("apps/iqc-growth-live/evidence-atlas.js");
 
 for (const document of [html, compatibility]) {
   for (const id of ["ionicPairDielectricSelect", "ionicPairTemperatureSelect",
-    "ionicPairObservableSelect", "electrostaticForceToggle", "electrostaticForceToggleLabel"]) {
+    "ionicPairObservableSelect", "ionicPairBornAmplitudeSelect", "ionicPairBornDecaySelect",
+    "electrostaticForceToggle", "electrostaticForceToggleLabel"]) {
     assert.match(document, new RegExp(`id="${id}"`));
   }
   assert.match(document, /value="coulomb">Finite Coulomb/);
+  assert.match(document, /value="coulomb-born-mayer">Coulomb \+ Born–Mayer/);
   assert.match(document, /conditional ΔU in eV/);
 }
 
@@ -26,12 +28,14 @@ for (const token of [
   "ionicPairRelativePermittivity",
   "ionicPairTemperatureKelvin",
   "ionicPairObservable",
-  "const CUSTOM_EXPERIMENT_SCHEMA_VERSION = 2",
+  "const CUSTOM_EXPERIMENT_SCHEMA_VERSION = 3",
   "migrateCustomExperimentManifest",
   "migratedFromSchemaVersion",
   "electrostaticEnergyEvaluated",
   "electrostaticForceEvaluated",
   "electrostaticForceGlyphAudit",
+  "ionicPairBornAmplitudeElectronVolt",
+  "ionicPairBornDecayAngstrom",
   "electrostaticForceSites",
   "vectorDirectionsPhysical: true",
   "arrowLengthsPhysical: false",
@@ -46,6 +50,9 @@ for (const token of [
   "deltaEnergyElectronVolt",
   "reducedThermalEnergyPerAddedSite",
   "addedForceVectorsElectronVoltPerAngstrom",
+  "addedBornMayerForceVectorsElectronVoltPerAngstrom",
+  "bornMayerRepulsiveEnergyElectronVolt",
+  "bornMayerRepulsionApplied",
   "rmsAddedForceElectronVoltPerAngstrom",
   "netAddedForceMagnitudeElectronVoltPerAngstrom",
   "electrostaticTorqueMagnitudeElectronVolt",
@@ -61,11 +68,14 @@ for (const token of [
 assert.match(readme, /Build 422 · finite point-charge electrostatics/);
 assert.match(readme, /Build 423 · electrostatic energy becomes force geometry/);
 assert.match(readme, /Build 424 · electrostatic force vectors become inspectable 3D sections/);
+assert.match(readme, /Build 425 · Coulomb acquires an explicit short-range core/);
 assert.match(benchmark, /Finite formal-charge electrostatic boundary \(Build 422\)/);
 assert.match(benchmark, /Finite electrostatic force geometry \(Build 423\)/);
 assert.match(benchmark, /Candidate-bound electrostatic force glyphs \(Build 424\)/);
+assert.match(benchmark, /Conditional Coulomb \+ Born–Mayer pair hypothesis \(Build 425\)/);
 assert.match(atlas, /"27", "Conditional finite electrostatics"/);
 assert.match(atlas, /"28", "Electrostatic force geometry"/);
 assert.match(atlas, /"29", "Candidate-bound Coulomb force glyphs"/);
+assert.match(atlas, /"30", "Finite Coulomb \+ Born–Mayer hypothesis"/);
 
 console.log("finite point-charge electrostatics portal contract passed");

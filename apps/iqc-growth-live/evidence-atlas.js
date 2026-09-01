@@ -1,16 +1,16 @@
-import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260901-424";
-import { buildPeriodicIceIhBoundarySeries } from "./ice-periodic-boundary-audit.mjs?v=20260901-424";
+import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260901-425";
+import { buildPeriodicIceIhBoundarySeries } from "./ice-periodic-boundary-audit.mjs?v=20260901-425";
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
 import { A2_SLICED_SIZE7_CANDIDATES } from "../../assets/a2-sliced-size7-candidates.js?v=20260828-320";
 import { buildHierarchyPhysicsTransport, HIERARCHY_TRANSPORT_STAGES }
-  from "./hierarchy-physics-transport.mjs?v=20260901-424";
+  from "./hierarchy-physics-transport.mjs?v=20260901-425";
 import { buildHierarchyPhysicsInvestigation }
-  from "./hierarchy-physics-investigation.mjs?v=20260901-424";
+  from "./hierarchy-physics-investigation.mjs?v=20260901-425";
 import { buildHierarchyPhysicsProtocolPacket, hierarchyPhysicsProtocolShareUrl,
   hierarchyPhysicsProtocolSelectionFromSearch, hierarchyPhysicsProtocolPacketFilename }
-  from "./hierarchy-physics-protocol-packet.mjs?v=20260901-424";
+  from "./hierarchy-physics-protocol-packet.mjs?v=20260901-425";
 import { hierarchyPhysicsProtocolLaunchAuditFromPacket }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260901-424";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260901-425";
 
 const byId = (id) => document.getElementById(id);
 const A2_SLICED_SCALE3_OBSTRUCTIONS = A2_SLICED_SIZE7_CANDIDATES.filter((candidate) =>
@@ -68,7 +68,7 @@ const ICE_PORT_ARTIFACT = await fetch(new URL(
   return response.json();
 });
 const ICE_ORIENTATION_MARKING_AUDIT = await fetch(new URL(
-  "./ice-orientation-marking-artifact.json?v=20260901-424", import.meta.url)).then((response) => {
+  "./ice-orientation-marking-artifact.json?v=20260901-425", import.meta.url)).then((response) => {
   if (!response.ok) throw new Error(`Cannot load frozen ice orientation-marking audit: ${response.status}`);
   return response.json();
 });
@@ -432,6 +432,7 @@ const TIMELINE = [
   ["27", "Conditional finite electrostatics", "Supplied formal oxidation states can now enter an opt-in finite open-boundary Coulomb ΔU in eV under a declared uniform εr and Kelvin temperature. The same frozen candidates are ranked without geometry mutation; periodic images, Ewald sums, polarization, charge transfer, short-range repulsion, and electronic structure remain explicit omissions.", "proved"],
   ["28", "Electrostatic force geometry", "The finite point-charge hypothesis now exposes its exact analytic gradient on emitted sites: per-site vectors, RMS/max force, net cluster traction, and centroidal torque. Energy, force-cancellation, or combined observables reorder the same frozen candidates; no total force, relaxation, dynamics, or physical time is inferred.", "proved"],
   ["29", "Candidate-bound Coulomb force glyphs", "Selecting an ionic reach candidate now anchors its finite-global electrostatic gradient to every emitted site in 3D. Directions are physical and values remain in eV/Å; rendered arrow lengths use a bounded within-candidate normalization and cannot change geometry, admission, ranking, relaxation, or time.", "proved"],
+  ["30", "Finite Coulomb + Born–Mayer hypothesis", "An opt-in isotropic A exp(-r/ρ) core now augments the finite formal-charge Coulomb term with an exact analytic total force. A and ρ are explicit generic controls, not fitted species-pair parameters; hard geometry stays independent and dispersion, polarization, many-body physics, relaxation, and time remain open.", "proved"],
 ];
 
 const CLAIMS = [

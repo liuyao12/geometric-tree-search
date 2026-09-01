@@ -1,5 +1,22 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 425 · Coulomb acquires an explicit short-range core
+
+The finite pair hypothesis can now add an opt-in Born–Mayer repulsion to the
+formal-charge Coulomb term:
+`U(r)=14.3996454784255 qᵢqⱼ/(εr)+A exp(−r/ρ)` in eV. Compact selectors expose
+the declared generic amplitude `A` and decay length `ρ`; there are no text
+fields or hidden fitted coefficients. Energy, force-cancellation, and combined
+ranking use the exact analytic gradient of the total pair expression while the
+candidate set and hard geometric contact gates remain identical.
+
+The cutoff portrait now decomposes total ΔU into Coulomb and Born–Mayer parts,
+and the 3D arrows show `F=−∇U` for the selected total pair model. This is a
+controlled hypothesis, not a transferable force field: one isotropic `A,ρ` pair
+is applied to every species pair, and neither value is fitted to the specimen.
+Dispersion, polarization, many-body interactions, charge transfer, periodic
+electrostatics, relaxation, and physical time remain outside the model.
+
 ## Build 424 · electrostatic force vectors become inspectable 3D sections
 
 Selecting a point in the ionic 2/4/8/global reach portrait now attaches the

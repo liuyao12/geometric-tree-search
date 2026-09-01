@@ -2,7 +2,7 @@ export const COULOMB_ENERGY_ELECTRON_VOLT_ANGSTROM = 14.3996454784255;
 export const BOLTZMANN_ELECTRON_VOLT_PER_KELVIN = 8.617333262145e-5;
 
 export const FINITE_POINT_CHARGE_PROVENANCE = Object.freeze({
-  model: "finite open-boundary formal-point-charge Coulomb interaction and exact analytic gradient",
+  model: "finite open-boundary formal-point-charge Coulomb interaction with optional Born–Mayer repulsive core and exact analytic gradient",
   coulombConstantSource: "2018 CODATA elementary charge and vacuum permittivity",
   coulombConstantElectronVoltAngstrom: COULOMB_ENERGY_ELECTRON_VOLT_ANGSTROM,
   boltzmannConstantElectronVoltPerKelvin: BOLTZMANN_ELECTRON_VOLT_PER_KELVIN,
@@ -48,6 +48,8 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
   reachAngstrom = "global",
   forceReferenceLengthAngstrom = 1,
   rankingObservable: rawRankingObservable = "energy",
+  bornMayerAmplitudeElectronVolt = 0,
+  bornMayerDecayAngstrom = .3,
 } = {}) {
   if (!finite(relativePermittivity) || Number(relativePermittivity) < 1
       || Number(relativePermittivity) > 1000) {
@@ -59,6 +61,14 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
   }
   if (!finite(forceReferenceLengthAngstrom) || Number(forceReferenceLengthAngstrom) <= 0) {
     throw new RangeError("forceReferenceLengthAngstrom must be positive");
+  }
+  if (!finite(bornMayerAmplitudeElectronVolt) || Number(bornMayerAmplitudeElectronVolt) < 0
+      || Number(bornMayerAmplitudeElectronVolt) > 1e6) {
+    throw new RangeError("bornMayerAmplitudeElectronVolt must be between 0 and 1e6 eV");
+  }
+  if (!finite(bornMayerDecayAngstrom) || Number(bornMayerDecayAngstrom) <= 0
+      || Number(bornMayerDecayAngstrom) > 10) {
+    throw new RangeError("bornMayerDecayAngstrom must be between 0 and 10 angstrom");
   }
   const observable = rankingObservable(rawRankingObservable);
   const reach = declaredReach(reachAngstrom);
@@ -75,10 +85,15 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
   let signedChargeDistanceSumPerAngstrom = 0;
   let attractiveEnergyElectronVolt = 0;
   let repulsiveEnergyElectronVolt = 0;
+  let bornMayerRepulsiveEnergyElectronVolt = 0;
   let pairCount = 0;
   let distanceEvaluations = 0;
   const addedForceVectorsElectronVoltPerAngstrom = added.map(() => [0, 0, 0]);
+  const addedCoulombForceVectorsElectronVoltPerAngstrom = added.map(() => [0, 0, 0]);
+  const addedBornMayerForceVectorsElectronVoltPerAngstrom = added.map(() => [0, 0, 0]);
   const prefactor = COULOMB_ENERGY_ELECTRON_VOLT_ANGSTROM / Number(relativePermittivity);
+  const bornAmplitude = Number(bornMayerAmplitudeElectronVolt);
+  const bornDecay = Number(bornMayerDecayAngstrom);
   const accumulate = (first, second, firstAddedIndex, secondAddedIndex = null) => {
     const displacement = first.position.map((value, axis) => value - second.position[axis]);
     const separation = vectorNorm(displacement);
@@ -86,16 +101,27 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
     if (!(separation > 1e-10)) throw new Error("coincident charged sites make the point-charge model singular");
     if (separation > reach) return;
     const chargeDistanceTerm = first.charge * second.charge / separation;
-    const energy = prefactor * chargeDistanceTerm;
+    const coulombEnergy = prefactor * chargeDistanceTerm;
+    const bornMayerEnergy = bornAmplitude * Math.exp(-separation / bornDecay);
+    const energy = coulombEnergy + bornMayerEnergy;
     signedChargeDistanceSumPerAngstrom += chargeDistanceTerm;
-    if (energy < 0) attractiveEnergyElectronVolt += -energy;
-    else repulsiveEnergyElectronVolt += energy;
-    const forceScale = prefactor * first.charge * second.charge / separation ** 3;
+    if (coulombEnergy < 0) attractiveEnergyElectronVolt += -coulombEnergy;
+    else repulsiveEnergyElectronVolt += coulombEnergy;
+    bornMayerRepulsiveEnergyElectronVolt += bornMayerEnergy;
+    repulsiveEnergyElectronVolt += bornMayerEnergy;
+    const coulombForceScale = prefactor * first.charge * second.charge / separation ** 3;
+    const bornMayerForceScale = bornMayerEnergy / (bornDecay * separation);
     displacement.forEach((component, axis) => {
-      const force = forceScale * component;
+      const coulombForce = coulombForceScale * component;
+      const bornMayerForce = bornMayerForceScale * component;
+      const force = coulombForce + bornMayerForce;
       addedForceVectorsElectronVoltPerAngstrom[firstAddedIndex][axis] += force;
+      addedCoulombForceVectorsElectronVoltPerAngstrom[firstAddedIndex][axis] += coulombForce;
+      addedBornMayerForceVectorsElectronVoltPerAngstrom[firstAddedIndex][axis] += bornMayerForce;
       if (secondAddedIndex !== null) {
         addedForceVectorsElectronVoltPerAngstrom[secondAddedIndex][axis] -= force;
+        addedCoulombForceVectorsElectronVoltPerAngstrom[secondAddedIndex][axis] -= coulombForce;
+        addedBornMayerForceVectorsElectronVoltPerAngstrom[secondAddedIndex][axis] -= bornMayerForce;
       }
     });
     pairCount += 1;
@@ -104,7 +130,9 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
     accumulate(site, neighbor, addedIndex)));
   added.forEach((site, index) => added.slice(index + 1)
     .forEach((neighbor, relativeIndex) => accumulate(site, neighbor, index, index + relativeIndex + 1)));
-  const deltaEnergyElectronVolt = prefactor * signedChargeDistanceSumPerAngstrom;
+  const coulombDeltaEnergyElectronVolt = prefactor * signedChargeDistanceSumPerAngstrom;
+  const deltaEnergyElectronVolt = coulombDeltaEnergyElectronVolt
+    + bornMayerRepulsiveEnergyElectronVolt;
   const thermalEnergyElectronVolt = BOLTZMANN_ELECTRON_VOLT_PER_KELVIN
     * Number(temperatureKelvin);
   const reducedThermalEnergyPerAddedSite = deltaEnergyElectronVolt
@@ -124,12 +152,21 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
     netAddedForceVectorElectronVoltPerAngstrom);
   const addedCentroidAngstrom = [0, 1, 2].map((axis) =>
     added.reduce((sum, site) => sum + site.position[axis], 0) / added.length);
-  const electrostaticTorqueVectorElectronVolt = added.reduce((sum, site, index) => {
+  const torqueFor = (vectors) => added.reduce((sum, site, index) => {
     const lever = site.position.map((value, axis) => value - addedCentroidAngstrom[axis]);
-    const torque = cross(lever, addedForceVectorsElectronVoltPerAngstrom[index]);
+    const torque = cross(lever, vectors[index]);
     return sum.map((value, axis) => value + torque[axis]);
   }, [0, 0, 0]);
+  const pairInteractionTorqueVectorElectronVolt = torqueFor(
+    addedForceVectorsElectronVoltPerAngstrom);
+  const pairInteractionTorqueMagnitudeElectronVolt = vectorNorm(
+    pairInteractionTorqueVectorElectronVolt);
+  const electrostaticTorqueVectorElectronVolt = torqueFor(
+    addedCoulombForceVectorsElectronVoltPerAngstrom);
   const electrostaticTorqueMagnitudeElectronVolt = vectorNorm(electrostaticTorqueVectorElectronVolt);
+  const bornMayerTorqueVectorElectronVolt = torqueFor(
+    addedBornMayerForceVectorsElectronVoltPerAngstrom);
+  const bornMayerTorqueMagnitudeElectronVolt = vectorNorm(bornMayerTorqueVectorElectronVolt);
   const reducedRmsForce = rmsAddedForceElectronVoltPerAngstrom
     * Number(forceReferenceLengthAngstrom) / thermalEnergyElectronVolt;
   const forceCancellationScore = (1 - reducedRmsForce) / (1 + reducedRmsForce);
@@ -146,6 +183,8 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
     forceCancellationScore,
     combinedScore,
     deltaEnergyElectronVolt,
+    coulombDeltaEnergyElectronVolt,
+    bornMayerRepulsiveEnergyElectronVolt,
     energyPerAddedSiteElectronVolt: deltaEnergyElectronVolt / added.length,
     attractiveEnergyElectronVolt,
     repulsiveEnergyElectronVolt,
@@ -153,6 +192,8 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
     thermalEnergyElectronVolt,
     reducedThermalEnergyPerAddedSite,
     addedForceVectorsElectronVoltPerAngstrom,
+    addedCoulombForceVectorsElectronVoltPerAngstrom,
+    addedBornMayerForceVectorsElectronVoltPerAngstrom,
     forceMagnitudesElectronVoltPerAngstrom,
     rmsAddedForceElectronVoltPerAngstrom,
     maximumAddedForceElectronVoltPerAngstrom,
@@ -161,6 +202,10 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
     addedCentroidAngstrom,
     electrostaticTorqueVectorElectronVolt,
     electrostaticTorqueMagnitudeElectronVolt,
+    bornMayerTorqueVectorElectronVolt,
+    bornMayerTorqueMagnitudeElectronVolt,
+    pairInteractionTorqueVectorElectronVolt,
+    pairInteractionTorqueMagnitudeElectronVolt,
     forceReferenceLengthAngstrom: Number(forceReferenceLengthAngstrom),
     reducedRmsForce,
     rankingObservable: observable,
@@ -172,6 +217,10 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
     currentSites: current.length,
     addedSites: added.length,
     relativePermittivity: Number(relativePermittivity),
+    bornMayerAmplitudeElectronVolt: bornAmplitude,
+    bornMayerDecayAngstrom: bornDecay,
+    bornMayerRepulsionApplied: bornAmplitude > 0,
+    pairInteractionModel: bornAmplitude > 0 ? "Coulomb + Born–Mayer" : "Coulomb",
     temperatureKelvin: Number(temperatureKelvin),
     reachAngstrom: Number.isFinite(reach) ? reach : "global",
     scoreDefinition: observable === "force-cancellation"
@@ -189,6 +238,10 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
     electrostaticEnergyEvaluated: true,
     electrostaticForceEvaluated: true,
     electrostaticForceIsEnergyGradient: true,
+    pairInteractionEnergyEvaluated: true,
+    pairInteractionForceEvaluated: true,
+    pairInteractionForceIsNegativeEnergyGradient: true,
+    bornMayerParametersFitted: false,
     totalMechanicalForceInferred: false,
     relaxationIntegrated: false,
     candidateGeometryChanged: false,
@@ -202,7 +255,9 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
     chargeTransferModeled: false,
     electronicStructureModeled: false,
     physicalTimeIntegrated: false,
-    claimBoundary: "This is the pair interaction energy and exact analytic electrostatic force on emitted supplied formal point charges in a declared uniform isotropic relative permittivity over one finite open-boundary crop. It omits periodic images, Ewald summation, polarization, charge transfer, self energy, short-range repulsion, dispersion, electronic structure, and solvent or reservoir response. The force is not a total mechanical force and is not integrated into relaxation or time; the model is conditional, not a validated material energy or force field.",
+    claimBoundary: bornAmplitude > 0
+      ? "This is a conditional finite open-boundary Coulomb + isotropic Born–Mayer pair hypothesis. A and rho are declared generic parameters, not fitted species-pair coefficients. It omits periodic images, Ewald summation, polarization, charge transfer, dispersion, many-body terms, electronic structure, and reservoir response. The force is not a validated total mechanical force and is not integrated into relaxation or time."
+      : "This is the pair interaction energy and exact analytic electrostatic force on emitted supplied formal point charges in a declared uniform isotropic relative permittivity over one finite open-boundary crop. It omits periodic images, Ewald summation, polarization, charge transfer, self energy, short-range repulsion, dispersion, electronic structure, and solvent or reservoir response. The force is not a total mechanical force and is not integrated into relaxation or time; the model is conditional, not a validated material energy or force field.",
   };
 }
 
@@ -212,6 +267,8 @@ export function finitePointChargeReachProfile(currentSites = [], addedSites = []
   relativePermittivity = 1,
   temperatureKelvin = 300,
   rankingObservable: rawRankingObservable = "energy",
+  bornMayerAmplitudeElectronVolt = 0,
+  bornMayerDecayAngstrom = .3,
 } = {}) {
   if (!finite(nearestNeighborAngstrom) || Number(nearestNeighborAngstrom) <= 0) {
     throw new RangeError("nearestNeighborAngstrom must be positive");
@@ -225,6 +282,8 @@ export function finitePointChargeReachProfile(currentSites = [], addedSites = []
       temperatureKelvin,
       forceReferenceLengthAngstrom: Number(nearestNeighborAngstrom),
       rankingObservable: rawRankingObservable,
+      bornMayerAmplitudeElectronVolt,
+      bornMayerDecayAngstrom,
       reachAngstrom: reach === "global" ? "global" : reach * Number(nearestNeighborAngstrom),
     }));
   const availableSamples = samples.filter((sample) => sample.available);
@@ -243,6 +302,8 @@ export function finitePointChargeReachProfile(currentSites = [], addedSites = []
     relativePermittivity: Number(relativePermittivity),
     temperatureKelvin: Number(temperatureKelvin),
     rankingObservable: rankingObservable(rawRankingObservable),
+    bornMayerAmplitudeElectronVolt: Number(bornMayerAmplitudeElectronVolt),
+    bornMayerDecayAngstrom: Number(bornMayerDecayAngstrom),
     nearestNeighborAngstrom: Number(nearestNeighborAngstrom),
     candidateSetChanged: false,
     candidateGeometryChanged: false,

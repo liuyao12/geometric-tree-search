@@ -15,9 +15,9 @@ const benchmark = fs.readFileSync("docs/projects/materials-recursive-gcts-benchm
 for (const document of [html, alias]) {
   assert.match(document, /finiteNetworkTemperatureInterventionInput/);
   assert.match(document, /Temperature-coherent passage/);
-  assert.match(document, /app\.js\?v=20260901-424/);
+  assert.match(document, /app\.js\?v=20260901-425/);
 }
-assert.match(app, /finite-network-temperature-intervention\.mjs\?v=20260901-424/);
+assert.match(app, /finite-network-temperature-intervention\.mjs\?v=20260901-425/);
 assert.match(app, /buildFiniteNetworkTemperatureIntervention/);
 assert.match(app, /finiteNetworkTemperatureIntervention,/);
 assert.match(app, /finite-network-temperature-intervention/);
