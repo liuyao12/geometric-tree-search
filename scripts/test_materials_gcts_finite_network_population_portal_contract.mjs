@@ -13,9 +13,9 @@ const benchmark = fs.readFileSync(
 for (const document of [html, alias]) {
   assert.match(document, /finiteNetworkPopulationPlot/);
   assert.match(document, /State-population leap/);
-  assert.match(document, /app\.js\?v=20260901-450/);
+  assert.match(document, /app\.js\?v=20260901-451/);
 }
-assert.match(app, /finite-network-population-dynamics\.mjs\?v=20260901-450/);
+assert.match(app, /finite-network-population-dynamics\.mjs\?v=20260901-451/);
 assert.match(app, /currentFiniteNetworkPopulationDynamics/);
 assert.match(app, /finite-network-population-dynamics/);
 assert.match(model, /continuous-time Markov master equation by uniformization/);

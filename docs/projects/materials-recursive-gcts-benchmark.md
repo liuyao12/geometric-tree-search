@@ -10765,6 +10765,26 @@ Richardson divisor/error, `ΔU`, `W+ΔU`, and the final numerical allowance. Thi
 is a nested quadrature convergence certificate, not physical uncertainty,
 thermodynamic work, free energy, NEB, dynamics, rate, or time.
 
+# Build 451: Fixed-environment reaction torque
+
+The response-path acceptance gate now independently differentiates energy under
+rigid rotations of the fixed environment at both endpoints. All torques use one
+declared origin: the centroid of current plus movable finite sites. Fine/coarse
+central angular differences recover the fixed-side reaction torque; it must
+cancel `Σ(rᵢ−r₀)×Fᵢ` over movable sites for the total and every active Coulomb,
+Born–Mayer, dispersion, and induction component.
+
+The gate adds twelve energy-only evaluations per endpoint. Its induction-force
+allowance is conservatively projected through the sum of movable lever-arm
+lengths. Receipts and six interactive cells expose origin, lever-arm scale,
+movable and reaction torques, residuals, allowances, branch stability, probe
+work, and failures. An orthogonal-force corruption fails the expected angular
+axis while real pair and response-consistent induction paths close.
+
+No rotated environment is committed. The result certifies rotational invariance
+and group-level angular-momentum balance, not per-fixed-atom forces, fixed-solid
+relaxation, couple stress, traction, mechanical equilibrium, dynamics, or time.
+
 # Build 450: Fixed-environment reaction balance
 
 The bounded response audit now independently differentiates the interaction

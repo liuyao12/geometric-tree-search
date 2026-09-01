@@ -1,5 +1,26 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 451 · fixed-environment reaction torque
+
+The endpoint balance certificate now closes angular as well as linear momentum.
+At each endpoint, the fixed environment is rigidly rotated by `±θ` and `±θ/2`
+about the centroid of the complete finite system while the movable atoms remain
+fixed. Independent energy derivatives recover the environment's reaction torque.
+It must cancel the torque formed from reported movable-site forces about that
+same origin in `x`, `y`, and `z` for total and every active interaction component.
+
+The new torque compass contributes six initial/final × axis cells driven by the
+same component selector as the energy path, Cartesian gradient, and reaction
+force views. Selecting a cell reveals movable torque, derived environment
+reaction torque, angular residual, Richardson allowance, and decision. The cost
+is twelve energy probes per endpoint, independent of fixed-environment size.
+
+A synthetic transverse-force corruption that produces a spurious couple fails
+the angular gate; real central-pair and numerical-induction controls pass. The
+rotation is a differentiation probe only: no fixed atom is committed or relaxed.
+This is rotational invariance and group-level angular-momentum balance—not
+per-fixed-site forces, couple stress, traction, equilibrium, dynamics, or time.
+
 ## Build 450 · fixed-environment reaction balance
 
 The finite-interaction response now checks both sides of the structural leap.

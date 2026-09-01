@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { auditCartesianForceEnergyGradient,
   auditComponentForceEnergyPathClosures, auditFiniteReachPathTopology,
   auditEnvironmentReactionForceBalance,
+  auditEnvironmentReactionTorqueBalance,
   auditForceEnergyPathClosure,
   auditInteriorForceEnergyGradientConsistency,
   auditPanelResolvedForceEnergyPathClosure,
@@ -278,6 +279,20 @@ assert.equal(transverseReactionFailure.passed, false);
 assert.deepEqual(transverseReactionFailure.failedComponentIds, ["total"]);
 assert.deepEqual(transverseReactionFailure.components.find((component) =>
   component.id === "total").failedAxes, ["y"]);
+const finitePairEnvironmentTorque = auditEnvironmentReactionTorqueBalance(current,
+  added, finitePairSeed.evaluation, finitePairOptions);
+assert.equal(finitePairEnvironmentTorque.passed, true);
+assert.equal(finitePairEnvironmentTorque.probeEvaluationCount, 12);
+assert.equal(finitePairEnvironmentTorque.fixedEnvironmentRotatedCollectivelyForProbe, true);
+assert.equal(finitePairEnvironmentTorque.fixedEnvironmentRelaxed, false);
+assert.equal(finitePairEnvironmentTorque.perFixedSiteForcesResolved, false);
+assert.deepEqual(finitePairEnvironmentTorque.failedComponentIds, []);
+const transverseTorqueFailure = auditEnvironmentReactionTorqueBalance(current,
+  added, transverseForceCorruption, finitePairOptions);
+assert.equal(transverseTorqueFailure.passed, false);
+assert.deepEqual(transverseTorqueFailure.failedComponentIds, ["total"]);
+assert.deepEqual(transverseTorqueFailure.components.find((component) =>
+  component.id === "total").failedAxes, ["z"]);
 const forceSettling = auditModelForceRelaxationOutcome(current, added,
   [{ ...added[0], position: [2.79, 0, 0] }], {
     baselineEvaluation: finitePairSeed.evaluation,
@@ -321,6 +336,11 @@ assert.equal(forceSettlingPath.environmentReactionEndpointCount, 2);
 assert.equal(forceSettlingPath.environmentReactionCoordinateCount, 6);
 assert.equal(forceSettlingPath.environmentReactionProbeEvaluationCount, 24);
 assert.deepEqual(forceSettlingPath.failedEnvironmentReactionEndpointImageIndices, []);
+assert.equal(forceSettlingPath.endpointEnvironmentTorquePassed, true);
+assert.equal(forceSettlingPath.environmentTorqueEndpointCount, 2);
+assert.equal(forceSettlingPath.environmentTorqueCoordinateCount, 6);
+assert.equal(forceSettlingPath.environmentTorqueProbeEvaluationCount, 24);
+assert.deepEqual(forceSettlingPath.failedEnvironmentTorqueEndpointImageIndices, []);
 assert.equal(forceSettlingPath.smoothModelBranchPassed, true);
 assert.equal(forceSettlingPath.modelStateStableAcrossImages, true);
 assert.equal(forceSettlingPath.analyticReachTopologyPassed, true);
@@ -405,6 +425,10 @@ assert.equal(inductionPath.componentWorkEnergyClosures.records
   .find((record) => record.id === "induction").passed, true);
 assert.equal(inductionPath.endpointEnvironmentReactionPassed, true);
 assert.equal(inductionPath.endpointEnvironmentReactionAudit.records
+  .every((record) => record.components.find((component) =>
+    component.id === "induction").passed), true);
+assert.equal(inductionPath.endpointEnvironmentTorquePassed, true);
+assert.equal(inductionPath.endpointEnvironmentTorqueAudit.records
   .every((record) => record.components.find((component) =>
     component.id === "induction").passed), true);
 

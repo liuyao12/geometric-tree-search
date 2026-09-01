@@ -1627,6 +1627,9 @@ body.study-guide-open { overflow: hidden; }
 .model-force-reaction-grid .model-force-cartesian-cell { border-color: rgba(186,139,255,.2); background: linear-gradient(145deg,rgba(186,139,255,.06),rgba(6,13,16,.5)); }
 .model-force-reaction-grid .model-force-cartesian-cell::after { background: #ba8bff; }
 .model-force-reaction-grid .model-force-cartesian-cell.failed::after { background: #ff6f75; }
+.model-force-torque-grid .model-force-cartesian-cell { border-color: rgba(255,179,111,.2); background: linear-gradient(145deg,rgba(255,179,111,.06),rgba(6,13,16,.5)); }
+.model-force-torque-grid .model-force-cartesian-cell::after { background: #ffb36f; }
+.model-force-torque-grid .model-force-cartesian-cell.failed::after { background: #ff6f75; }
 @media (max-width: 760px) { .model-force-cartesian-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
 .stress-strain-response { margin-top: 7px; padding: 7px; border: 1px solid rgba(90,226,168,.18); background: linear-gradient(135deg,rgba(90,226,168,.035),rgba(98,172,255,.03)); }
 .stress-strain-response[hidden] { display: none; }

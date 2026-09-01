@@ -4,7 +4,7 @@ export const TANG_TOENNIES_DISPERSION_ORDER = 6;
 
 import { canonicalSpeciesPairKey } from "./born-mayer-pair-matrix.mjs";
 import { finiteDifferenceIncrementalChargeInductionForces,
-  incrementalFiniteChargeInduction } from "./finite-charge-induction.mjs?v=20260901-450";
+  incrementalFiniteChargeInduction } from "./finite-charge-induction.mjs?v=20260901-451";
 
 export const FINITE_POINT_CHARGE_PROVENANCE = Object.freeze({
   model: "finite open-boundary formal-point-charge Coulomb interaction with optional Born–Mayer repulsion, damped dispersion, and damped charge-induced-dipole energy",
