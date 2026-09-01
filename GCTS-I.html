@@ -2134,7 +2134,7 @@
             trialGhost = null;
             statusText = `${event.forced ? 'forced move' : `${event.branchCount}-way branch`} accepted at t=${event.frontierValue}/12`;
             const frontierGeneration = minimumFrontierGeneration(playbackPlacements || event.placements || []);
-            if (frontierGeneration && frontierGeneration % 2 === 0 && frontierGeneration > highestPausedCorona) {
+            if (frontierGeneration >= 3 && frontierGeneration % 2 === 1 && frontierGeneration > highestPausedCorona) {
               highestPausedCorona = frontierGeneration;
               statusText = `paused at complete corona ${frontierGeneration}; every frontier point has generation ≥ ${frontierGeneration}`;
               stopTiling();
