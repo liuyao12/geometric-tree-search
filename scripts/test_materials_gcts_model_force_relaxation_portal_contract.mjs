@@ -46,6 +46,10 @@ for (const token of [
   "modelForceEnergyChangeElectronVolt",
   "modelForceEnergyResponseConsistent",
   "modelForceResidualDecreased",
+  "modelForceResidualRedistributionPassed",
+  "modelForceGroupResiduals",
+  "modelForceGroupCount",
+  "modelForceGroupLabelsFrozenBeforeProposal",
   "modelForceRmsBeforeEvPerAngstrom",
   "modelForceRmsAfterEvPerAngstrom",
   "modelForceP90BeforeEvPerAngstrom",
@@ -82,6 +86,10 @@ for (const token of [
   "forceResidualDecreased",
   "rmsForceDecreased",
   "p90ForceDecreased",
+  "auditGroupedForceResiduals",
+  "forceResidualRedistributionPassed",
+  "forceGroupResiduals",
+  "forceGroupLabels",
 ]) assert.ok(moduleSource.includes(token), token);
 
 for (const token of [
@@ -96,5 +104,7 @@ assert.match(readme, /Build 433 · a settling leap must reduce residual force/);
 assert.match(benchmark, /Emitted-site force-residual descent \(Build 433\)/);
 assert.match(atlas, /"38", "Residual-force descent gate"/);
 assert.match(atlas, /"41", "Anchored two-shell interface response"/);
+assert.match(atlas, /"42", "Force-residual redistribution gate"/);
+assert.match(readme, /Build 437 · force-residual redistribution gate/);
 
 console.log("model-force relaxation portal contract passed");

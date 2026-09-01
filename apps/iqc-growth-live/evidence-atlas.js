@@ -1,16 +1,16 @@
-import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260901-436";
-import { buildPeriodicIceIhBoundarySeries } from "./ice-periodic-boundary-audit.mjs?v=20260901-436";
+import { executeIceMolecularAnchorGrowth } from "./ice-molecular-anchor-growth.js?v=20260901-437";
+import { buildPeriodicIceIhBoundarySeries } from "./ice-periodic-boundary-audit.mjs?v=20260901-437";
 import { A2_LAYERED_SIZE8_CANDIDATES } from "../../assets/a2-layered-size8-candidates.js?v=20260827-2";
 import { A2_SLICED_SIZE7_CANDIDATES } from "../../assets/a2-sliced-size7-candidates.js?v=20260828-320";
 import { buildHierarchyPhysicsTransport, HIERARCHY_TRANSPORT_STAGES }
-  from "./hierarchy-physics-transport.mjs?v=20260901-436";
+  from "./hierarchy-physics-transport.mjs?v=20260901-437";
 import { buildHierarchyPhysicsInvestigation }
-  from "./hierarchy-physics-investigation.mjs?v=20260901-436";
+  from "./hierarchy-physics-investigation.mjs?v=20260901-437";
 import { buildHierarchyPhysicsProtocolPacket, hierarchyPhysicsProtocolShareUrl,
   hierarchyPhysicsProtocolSelectionFromSearch, hierarchyPhysicsProtocolPacketFilename }
-  from "./hierarchy-physics-protocol-packet.mjs?v=20260901-436";
+  from "./hierarchy-physics-protocol-packet.mjs?v=20260901-437";
 import { hierarchyPhysicsProtocolLaunchAuditFromPacket }
-  from "./hierarchy-physics-execution-binding.mjs?v=20260901-436";
+  from "./hierarchy-physics-execution-binding.mjs?v=20260901-437";
 
 const byId = (id) => document.getElementById(id);
 const A2_SLICED_SCALE3_OBSTRUCTIONS = A2_SLICED_SIZE7_CANDIDATES.filter((candidate) =>
@@ -68,7 +68,7 @@ const ICE_PORT_ARTIFACT = await fetch(new URL(
   return response.json();
 });
 const ICE_ORIENTATION_MARKING_AUDIT = await fetch(new URL(
-  "./ice-orientation-marking-artifact.json?v=20260901-436", import.meta.url)).then((response) => {
+  "./ice-orientation-marking-artifact.json?v=20260901-437", import.meta.url)).then((response) => {
   if (!response.ok) throw new Error(`Cannot load frozen ice orientation-marking audit: ${response.status}`);
   return response.json();
 });
@@ -444,6 +444,7 @@ const TIMELINE = [
   ["39", "Anchored interface-shell accommodation", "A new arm moves the emitted batch and its first learned-contact substrate shell under separate 5% and 1.5% d_nn caps. Every substrate atom needs a fixed connected second-shell anchor and must retain its discrete site identity; all hard geometry re-runs atomically. Frozen cluster membership is not refitted, so this is bounded interface accommodation—not exact reconstructed cluster geometry, elasticity, or dynamics.", "proved"],
   ["40", "Force-informed coupled interface step", "Fresh atoms and the anchored substrate shell can now form one movable finite-interaction group with separate 5% and 1.5% d_nn budgets. Learned strain, response-consistent energy, force RMS, and force p90 must all fall before the coupled move commits. The outer solid and symbolic cluster grammar remain fixed, so this leapfrogs a local interface response without claiming total equilibrium, elasticity, or dynamics.", "proved"],
   ["41", "Anchored two-shell interface response", "A new fail-closed arm carries the same complete finite interaction through two connected substrate shells with declared 5%, 1.5%, and 0.5% d_nn budgets. Every response site needs an outward learned-contact path to fixed third-shell anchors; the receipt reports each layer and its realized displacement. This is finite-depth geometric accommodation, not an elastic Green function, force balance, equilibrium, or dynamics.", "proved"],
+  ["42", "Force-residual redistribution gate", "Whole-group force descent can hide a worse substrate shell. The acceptance audit now freezes fresh, shell-1, and shell-2 populations before evaluation and requires RMS plus p90 force residual to remain non-increasing in every group, alongside strict global energy/force descent. This blocks hidden outward residual export without claiming atomwise force balance, stress equilibrium, elasticity, or dynamics.", "proved"],
 ];
 
 const CLAIMS = [

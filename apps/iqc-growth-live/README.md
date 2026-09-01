@@ -1,5 +1,24 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 437 · force-residual redistribution gate
+
+Finite-interaction accommodation now audits force residuals by the population
+that carries them. Before evaluating a proposed coordinate set, the movable
+sites are frozen into `fresh`, `substrate-shell-1`, and (when enabled)
+`substrate-shell-2`. The complete before/after gradient is reduced to RMS and
+p90 force magnitude separately for every population. Global energy, global RMS,
+and global p90 must still decrease strictly; in addition, neither RMS nor p90
+may increase in any frozen population. A proposal can therefore no longer pass
+by lowering the fresh-batch residual while exporting a larger unresolved force
+into the substrate.
+
+The receipt preserves each population label, site count, before/after RMS and
+p90, signed changes, tolerances, and the combined redistribution result. Labels
+carry no target or proposed geometry and are fixed from attachment/shell identity
+before the proposal is evaluated. This is a residual monotonicity safeguard—not
+atomwise force balance, stress equilibrium, elasticity, dynamics, or evidence
+that the declared interaction is a transferable material force field.
+
 ## Build 436 · anchored two-shell interface response
 
 The post-attachment laboratory now offers an explicitly layered finite-interaction

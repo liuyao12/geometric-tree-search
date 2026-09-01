@@ -1,10 +1,73 @@
 import { incrementalFinitePointChargeElectrostatics }
-  from "./finite-point-charge-electrostatics.mjs?v=20260901-436";
+  from "./finite-point-charge-electrostatics.mjs?v=20260901-437";
 import { boundedForceSeedOffset, forceMagnitudeP90 }
   from "./force-seed-geometry.js?v=20260827-1";
 
 const finiteVector = (value) => Array.isArray(value) && value.length === 3
   && value.every(Number.isFinite);
+
+const vectorRms = (vectors) => Math.sqrt(vectors.reduce((sum, vector) =>
+  sum + vector.reduce((inner, value) => inner + value * value, 0), 0)
+  / Math.max(1, vectors.length));
+
+/**
+ * Check that a lower aggregate residual was not obtained by exporting force
+ * into one declared movable population. Group labels carry no geometry and are
+ * fixed before the proposed coordinates are evaluated.
+ */
+export function auditGroupedForceResiduals(beforeVectors, afterVectors, groupLabels, {
+  absoluteToleranceElectronVoltPerAngstrom = 1e-10,
+  relativeTolerance = 1e-10,
+} = {}) {
+  if (!Array.isArray(beforeVectors) || !Array.isArray(afterVectors)
+      || beforeVectors.length !== afterVectors.length
+      || !beforeVectors.every(finiteVector) || !afterVectors.every(finiteVector)) {
+    throw new Error("grouped force audit requires complete paired finite force vectors");
+  }
+  if (!Array.isArray(groupLabels) || groupLabels.length !== beforeVectors.length) {
+    throw new Error("grouped force audit requires one frozen group label per force vector");
+  }
+  const labels = groupLabels.map((label) => String(label));
+  if (labels.some((label) => !label.length)) throw new Error("force group labels must be nonempty");
+  const uniqueLabels = [...new Set(labels)].sort();
+  const groups = uniqueLabels.map((label) => {
+    const indices = labels.map((candidate, index) => candidate === label ? index : -1)
+      .filter((index) => index >= 0);
+    const before = indices.map((index) => beforeVectors[index]);
+    const after = indices.map((index) => afterVectors[index]);
+    const beforeRms = vectorRms(before);
+    const afterRms = vectorRms(after);
+    const beforeP90 = forceMagnitudeP90(before);
+    const afterP90 = forceMagnitudeP90(after);
+    const rmsTolerance = Math.max(Number(absoluteToleranceElectronVoltPerAngstrom),
+      Number(relativeTolerance) * Math.max(1, Math.abs(beforeRms)));
+    const p90Tolerance = Math.max(Number(absoluteToleranceElectronVoltPerAngstrom),
+      Number(relativeTolerance) * Math.max(1, Math.abs(beforeP90)));
+    return Object.freeze({
+      label,
+      sites: indices.length,
+      beforeRmsElectronVoltPerAngstrom: beforeRms,
+      afterRmsElectronVoltPerAngstrom: afterRms,
+      beforeP90ElectronVoltPerAngstrom: beforeP90,
+      afterP90ElectronVoltPerAngstrom: afterP90,
+      rmsChangeElectronVoltPerAngstrom: afterRms - beforeRms,
+      p90ChangeElectronVoltPerAngstrom: afterP90 - beforeP90,
+      rmsNonIncreasing: afterRms <= beforeRms + rmsTolerance,
+      p90NonIncreasing: afterP90 <= beforeP90 + p90Tolerance,
+      residualNonIncreasing: afterRms <= beforeRms + rmsTolerance
+        && afterP90 <= beforeP90 + p90Tolerance,
+    });
+  });
+  return Object.freeze({
+    available: true,
+    passed: groups.every((group) => group.residualNonIncreasing),
+    groups: Object.freeze(groups),
+    groupCount: groups.length,
+    groupLabelsFrozenBeforeProposal: true,
+    targetUsed: false,
+    claimBoundary: "This audit prevents a lower aggregate force residual from hiding an increased RMS or p90 residual in a declared movable population. It is not local force balance, stress equilibrium, an elastic response, or dynamics.",
+  });
+}
 
 /**
  * Convert a complete finite interaction gradient into a bounded geometric
@@ -84,6 +147,7 @@ export function auditModelForceRelaxationOutcome(
     relativeTolerance = 1e-10,
     absoluteForceToleranceElectronVoltPerAngstrom = 1e-10,
     relativeForceTolerance = 1e-10,
+    forceGroupLabels = null,
   } = {}) {
   if (originalAddedSites.length !== proposedAddedSites.length) {
     throw new Error("energy-descent audit requires one proposed site per original added site");
@@ -132,7 +196,16 @@ export function auditModelForceRelaxationOutcome(
   const p90ForceDecreased = evaluationsAvailable && responseConsistent
     && afterForceP90 < beforeForceP90 - requiredP90ForceDecrease;
   const forceResidualDecreased = rmsForceDecreased && p90ForceDecreased;
-  const accepted = energyDecreased && forceResidualDecreased;
+  const groupedForceResidual = evaluationsAvailable && responseConsistent
+    ? auditGroupedForceResiduals(beforeVectors, afterVectors,
+      forceGroupLabels || originalAddedSites.map(() => "movable"), {
+        absoluteToleranceElectronVoltPerAngstrom:
+          absoluteForceToleranceElectronVoltPerAngstrom,
+        relativeTolerance: relativeForceTolerance,
+      }) : null;
+  const forceResidualRedistributionPassed = Boolean(groupedForceResidual?.passed);
+  const accepted = energyDecreased && forceResidualDecreased
+    && forceResidualRedistributionPassed;
   return Object.freeze({
     available: evaluationsAvailable && responseConsistent,
     accepted,
@@ -141,6 +214,8 @@ export function auditModelForceRelaxationOutcome(
       : !responseConsistent ? `induction response changed from ${before.inductionAppliedResponseModel} to ${after.inductionAppliedResponseModel}`
         : !energyDecreased ? "finite interaction energy did not decrease beyond numerical tolerance"
           : !forceResidualDecreased ? "finite interaction force residual did not decrease in both RMS and p90"
+            : !forceResidualRedistributionPassed
+              ? "force residual increased in at least one declared movable population"
             : "finite interaction energy and force residual decreased",
     beforeEnergyElectronVolt: before.deltaEnergyElectronVolt ?? null,
     afterEnergyElectronVolt: after.deltaEnergyElectronVolt ?? null,
@@ -148,6 +223,11 @@ export function auditModelForceRelaxationOutcome(
     requiredDecreaseElectronVolt,
     energyDecreased,
     forceResidualDecreased,
+    forceResidualRedistributionPassed,
+    forceGroupResiduals: groupedForceResidual?.groups || Object.freeze([]),
+    forceGroupCount: groupedForceResidual?.groupCount || 0,
+    forceGroupLabelsFrozenBeforeProposal:
+      groupedForceResidual?.groupLabelsFrozenBeforeProposal || false,
     rmsForceDecreased,
     p90ForceDecreased,
     beforeForceRmsElectronVoltPerAngstrom: beforeForceRms,

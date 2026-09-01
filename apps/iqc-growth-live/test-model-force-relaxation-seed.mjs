@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
-import { auditModelForceRelaxationEnergyDescent, auditModelForceRelaxationOutcome,
+import { auditGroupedForceResiduals, auditModelForceRelaxationEnergyDescent,
+  auditModelForceRelaxationOutcome,
   buildModelForceRelaxationSeed }
   from "./model-force-relaxation-seed.mjs";
 
@@ -26,6 +27,22 @@ assert.equal(heterogeneousSeed.heterogeneousDisplacementCaps, true);
 assert.deepEqual(heterogeneousSeed.displacementCaps, [.05, .01]);
 assert.ok(Math.hypot(...heterogeneousSeed.offsets[0]) <= .05 + 1e-12);
 assert.ok(Math.hypot(...heterogeneousSeed.offsets[1]) <= .01 + 1e-12);
+const groupedPass = auditGroupedForceResiduals(
+  [[3, 0, 0], [2, 0, 0], [1, 0, 0]],
+  [[2, 0, 0], [1.5, 0, 0], [.8, 0, 0]],
+  ["fresh", "shell-1", "shell-2"],
+);
+assert.equal(groupedPass.passed, true);
+assert.equal(groupedPass.groupCount, 3);
+assert.equal(groupedPass.groupLabelsFrozenBeforeProposal, true);
+const hiddenRedistribution = auditGroupedForceResiduals(
+  [[4, 0, 0], [2, 0, 0]],
+  [[2, 0, 0], [2.5, 0, 0]],
+  ["fresh", "shell-1"],
+);
+assert.equal(hiddenRedistribution.passed, false);
+assert.equal(hiddenRedistribution.groups.find((group) => group.label === "shell-1")
+  .residualNonIncreasing, false);
 const downhill = auditModelForceRelaxationEnergyDescent(current, added,
   [{ ...added[0], position: [2.79, 0, 0] }], {
     baselineEvaluation: pairSeed.evaluation,
@@ -106,5 +123,7 @@ assert.throws(() => buildModelForceRelaxationSeed(current, added,
   { displacementCap: .05, displacementCaps: [.06] }), /per-site caps/);
 assert.throws(() => auditModelForceRelaxationEnergyDescent(current, added,
   [{ position: [2.79, 0, 0], charge: 1, species: "Cl" }]), /identity or charge/);
+assert.throws(() => auditGroupedForceResiduals([[1, 0, 0]], [[.5, 0, 0]], []),
+  /one frozen group label/);
 
 console.log("model-force relaxation seed tests passed");

@@ -53,6 +53,8 @@ def test_projection_moves_fresh_or_strictly_bounded_interface_sites_and_fails_cl
     assert "properPortTopologyRetained: true" in APP
     assert "continuumElasticityClaimed: false" in APP
     assert "mechanicalEquilibriumClaimed: false" in APP
+    assert "modelForceResidualRedistributionPassed" in APP
+    assert "modelForceGroupResiduals" in APP
 
 
 def test_projection_is_auditable_without_physical_overclaim():

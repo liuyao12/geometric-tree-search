@@ -1,5 +1,28 @@
 # Recursive GCTS benchmark for material growth
 
+## Population-resolved force redistribution gate (Build 437)
+
+Whole-group force descent is necessary but insufficient for an interface
+response: the fresh batch can improve while a movable substrate shell becomes
+more strongly forced. The finite-interaction outcome audit now accepts frozen
+group labels alongside the complete before/after force vectors. It reports RMS
+and p90 magnitude for each of `fresh`, `substrate-shell-1`, and (when active)
+`substrate-shell-2`, with signed changes and numerical tolerances.
+
+Acceptance retains the existing strict decrease in response-consistent energy,
+whole-group force RMS, and whole-group force p90. It now additionally requires
+both population metrics to remain non-increasing in every group. Labels are
+derived from exact attachment and contact-shell membership before proposed
+coordinates are evaluated; they contain no target positions, score, or branch
+outcome. A synthetic control proves that a lower aggregate residual is rejected
+when one shell's RMS/p90 rises, while simultaneous descent in all three groups
+passes.
+
+This gate prevents hidden outward residual transfer but does not establish zero
+force on any atom, virial stress balance, a Hessian, elastic response, a minimum,
+or physical dynamics. It remains a fail-closed certificate for one finite,
+declared interaction hypothesis.
+
 ## Anchored two-shell interface response (Build 436)
 
 The coupled finite-interaction projection can now carry a bounded response two
