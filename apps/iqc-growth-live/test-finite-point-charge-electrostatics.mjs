@@ -123,6 +123,28 @@ assert.equal(induced.pairInteractionForceIsNegativeEnergyGradient, false);
 assert.match(induced.pairInteractionModel, /charge induction/);
 assert.ok(induced.maximumInducedDipoleElectronAngstrom > 0);
 
+const mutuallyInduced = incrementalFinitePointChargeElectrostatics(
+  [{ position: [-1, 0, 0], charge: 1 }, { position: [1, 0, 0], charge: -1 }],
+  [{ position: [0, 1.5, 0], charge: 1 }],
+  { relativePermittivity: 4, temperatureKelvin: 300,
+    bornMayerAmplitudeElectronVolt: bornAmplitude, bornMayerDecayAngstrom: bornDecay,
+    dispersionC6ElectronVoltAngstrom6: dispersionC6,
+    dispersionDampingLengthAngstrom: bornDecay,
+    inductionPolarizabilityAngstrom3: 2,
+    inductionDampingLengthAngstrom: bornDecay,
+    inductionResponseModel: "self-consistent",
+    inductionMaximumIterations: 128,
+    inductionConvergenceToleranceElectronAngstrom: 1e-6 });
+assert.equal(mutuallyInduced.inductionRequestedResponseModel, "self-consistent");
+assert.equal(mutuallyInduced.inductionAppliedResponseModel, "self-consistent");
+assert.equal(mutuallyInduced.inductionSelfConsistentConverged, true);
+assert.equal(mutuallyInduced.mutualDipoleInductionSolved, true);
+assert.equal(mutuallyInduced.inductionDirectFallbackApplied, false);
+assert.ok(mutuallyInduced.inductionMutualTensorEvaluations > 0);
+assert.ok(mutuallyInduced.inductionConvergenceIterations > 0);
+assert.notEqual(mutuallyInduced.chargeInductionDeltaEnergyElectronVolt,
+  induced.chargeInductionDeltaEnergyElectronVolt);
+
 const speciesPairMatrix = buildBornMayerPairMatrix(["Na", "Cl"], {
   available: true, radiiAngstrom: { Na: 1.1, Cl: 1.7 },
   selectedPairCount: 2, rmsResidualAngstrom: .02,
@@ -240,6 +262,18 @@ assert.equal(profile.samples[0].available, false);
 assert.equal(profile.samples[1].available, true);
 assert.equal(profile.samples.at(-1).reachAngstrom, "global");
 assert.equal(profile.targetUsed, false);
+
+const mutualProfile = finitePointChargeReachProfile(
+  [{ position: [0, 0, 0], charge: 1 }, { position: [2, 0, 0], charge: -1 }],
+  [{ position: [1, 1.5, 0], charge: 1 }],
+  { nearestNeighborAngstrom: 1, relativePermittivity: 4, temperatureKelvin: 500,
+    inductionPolarizabilityAngstrom3: 1,
+    inductionResponseModel: "self-consistent",
+    inductionMaximumIterations: 128,
+    inductionConvergenceToleranceElectronAngstrom: 1e-6 });
+assert.equal(mutualProfile.mutualDipoleInductionSolved, true);
+assert.equal(mutualProfile.inductionDirectFallbackSamples, 0);
+assert.ok(mutualProfile.inductionMutualTensorEvaluations > 0);
 
 assert.throws(() => incrementalFinitePointChargeElectrostatics(
   [{ position: [0, 0, 0], charge: 1 }], [{ position: [0, 0, 0], charge: -1 }]),

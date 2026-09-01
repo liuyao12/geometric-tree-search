@@ -3,7 +3,7 @@ export const BOLTZMANN_ELECTRON_VOLT_PER_KELVIN = 8.617333262145e-5;
 export const TANG_TOENNIES_DISPERSION_ORDER = 6;
 
 import { canonicalSpeciesPairKey } from "./born-mayer-pair-matrix.mjs";
-import { incrementalFiniteChargeInduction } from "./finite-charge-induction.mjs?v=20260901-428";
+import { incrementalFiniteChargeInduction } from "./finite-charge-induction.mjs?v=20260901-429";
 
 export const FINITE_POINT_CHARGE_PROVENANCE = Object.freeze({
   model: "finite open-boundary formal-point-charge Coulomb interaction with optional Born–Mayer repulsion, damped dispersion, and damped charge-induced-dipole energy",
@@ -11,6 +11,9 @@ export const FINITE_POINT_CHARGE_PROVENANCE = Object.freeze({
   coulombConstantElectronVoltAngstrom: COULOMB_ENERGY_ELECTRON_VOLT_ANGSTROM,
   boltzmannConstantElectronVoltPerKelvin: BOLTZMANN_ELECTRON_VOLT_PER_KELVIN,
   boundaryCondition: "finite open boundary; no periodic images or neutralizing background",
+  interactingDipoleReference: "B. T. Thole, Chemical Physics 59 (1981) 341–350",
+  interactingDipoleReferenceDoi: "10.1016/0301-0104(81)85176-2",
+  implementationBoundary: "The optional f3/f5 Tang-Toennies tensor is a declared finite geometry hypothesis inspired by smeared interacting-dipole models; it is not a fitted Thole/AMOEBA parameterization.",
 });
 
 const finite = (value) => Number.isFinite(Number(value));
@@ -131,6 +134,10 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
   dispersionDampingLengthAngstrom = .3,
   inductionPolarizabilityAngstrom3 = 0,
   inductionDampingLengthAngstrom = .3,
+  inductionResponseModel = "direct",
+  inductionMaximumIterations = 128,
+  inductionConvergenceToleranceElectronAngstrom = 1e-6,
+  inductionIterationMixing = .5,
 } = {}) {
   if (!finite(relativePermittivity) || Number(relativePermittivity) < 1
       || Number(relativePermittivity) > 1000) {
@@ -271,6 +278,10 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
     dampingLengthAngstrom: Number(inductionDampingLengthAngstrom),
     reachAngstrom: Number.isFinite(reach) ? reach : "global",
     relativePermittivity: Number(relativePermittivity),
+    responseModel: inductionResponseModel,
+    maximumIterations: inductionMaximumIterations,
+    convergenceToleranceElectronAngstrom: inductionConvergenceToleranceElectronAngstrom,
+    iterationMixing: inductionIterationMixing,
   });
   const chargeInductionDeltaEnergyElectronVolt = chargeInduction.deltaEnergyElectronVolt;
   const deltaEnergyElectronVolt = coulombDeltaEnergyElectronVolt
@@ -393,6 +404,16 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
     inductionPolarizabilityAngstrom3: Number(inductionPolarizabilityAngstrom3),
     inductionDampingLengthAngstrom: Number(inductionDampingLengthAngstrom),
     inductionDampingModel: chargeInduction.dampingModel,
+    inductionMutualDampingModel: chargeInduction.mutualDampingModel,
+    inductionRequestedResponseModel: chargeInduction.requestedResponseModel,
+    inductionAppliedResponseModel: chargeInduction.appliedResponseModel,
+    inductionSelfConsistentConverged: chargeInduction.selfConsistentConverged,
+    inductionConvergenceIterations: chargeInduction.convergenceIterations,
+    inductionConvergenceResidualElectronAngstrom:
+      chargeInduction.convergenceResidualElectronAngstrom,
+    inductionDirectFallbackApplied: chargeInduction.directFallbackApplied,
+    inductionFallbackReason: chargeInduction.fallbackReason,
+    inductionMutualTensorEvaluations: chargeInduction.mutualTensorEvaluations,
     chargeInductionApplied: Number(inductionPolarizabilityAngstrom3) > 0,
     maximumInducedDipoleElectronAngstrom:
       chargeInduction.projected.maximumInducedDipoleElectronAngstrom,
@@ -410,8 +431,13 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
       : observable === "combined"
         ? `mean of total energy and ${Number(inductionPolarizabilityAngstrom3) > 0 ? "pair-force-only" : "exact energy-gradient"} cancellation scores`
         : "-x/(1+|x|), x = delta U / (N_added k_B T)",
-    incrementalPairsOnly: true,
+    incrementalPairsOnly: Number(inductionPolarizabilityAngstrom3) === 0,
+    incrementalManyBodyStateDifferenceEvaluated:
+      Number(inductionPolarizabilityAngstrom3) > 0,
     currentCurrentConstantOmitted: true,
+    pairCurrentCurrentConstantOmitted: true,
+    inductionCurrentAndProjectedStatesEvaluated:
+      Number(inductionPolarizabilityAngstrom3) > 0,
     formalPointChargesAssumed: true,
     suppliedFormalChargeOnly: true,
     coulombPrefactorApplied: true,
@@ -428,7 +454,7 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
     inductionParametersFitted: false,
     chargeInductionEnergyEvaluated: Number(inductionPolarizabilityAngstrom3) > 0,
     chargeInductionEnergyIsManyBodyInChargeGeometry: Number(inductionPolarizabilityAngstrom3) > 0,
-    mutualDipoleInductionSolved: false,
+    mutualDipoleInductionSolved: chargeInduction.mutualDipoleInductionSolved,
     polarizationForceEvaluated: false,
     totalMechanicalForceInferred: false,
     relaxationIntegrated: false,
@@ -444,7 +470,7 @@ export function incrementalFinitePointChargeElectrostatics(currentSites = [], ad
     electronicStructureModeled: false,
     physicalTimeIntegrated: false,
     claimBoundary: bornMayerApplied || dispersionC6 > 0 || Number(inductionPolarizabilityAngstrom3) > 0
-      ? `This is a conditional finite open-boundary Coulomb${bornMayerApplied ? " + isotropic Born–Mayer" : ""}${dispersionC6 > 0 ? " + Tang-Toennies-damped dispersion" : ""}${Number(inductionPolarizabilityAngstrom3) > 0 ? " + damped charge-induced-dipole energy" : ""} hypothesis. ${bornMayerApplied ? pairMatrix.available ? "The supplied species-pair matrix may be conditioned on frozen observed contact geometry, but no energy or force coefficient is fitted." : "A and rho are declared generic parameters, not fitted species-pair coefficients." : " Short-range repulsion is omitted."}${dispersionC6 > 0 ? " C6 and the damping length are declared generic controls, not fitted species-pair dispersion coefficients." : " Dispersion is omitted."}${Number(inductionPolarizabilityAngstrom3) > 0 ? " Charge-field superposition makes the induction energy many-body in geometry, but induced dipoles do not polarize one another and their force is not evaluated." : " Polarization is omitted."} It omits periodic images, Ewald summation, charge transfer, electronic structure, and reservoir response. The displayed pair force is not a validated total mechanical force and is not integrated into relaxation or time.`
+      ? `This is a conditional finite open-boundary Coulomb${bornMayerApplied ? " + isotropic Born–Mayer" : ""}${dispersionC6 > 0 ? " + Tang-Toennies-damped dispersion" : ""}${Number(inductionPolarizabilityAngstrom3) > 0 ? " + damped charge-induced-dipole energy" : ""} hypothesis. ${bornMayerApplied ? pairMatrix.available ? "The supplied species-pair matrix may be conditioned on frozen observed contact geometry, but no energy or force coefficient is fitted." : "A and rho are declared generic parameters, not fitted species-pair coefficients." : " Short-range repulsion is omitted."}${dispersionC6 > 0 ? " C6 and the damping length are declared generic controls, not fitted species-pair dispersion coefficients." : " Dispersion is omitted."}${Number(inductionPolarizabilityAngstrom3) > 0 ? ` Charge-field superposition makes the induction energy many-body in geometry.${chargeInduction.mutualDipoleInductionSolved ? " A damped mutual dipole tensor was iterated self-consistently to the reported tolerance." : chargeInduction.directFallbackApplied ? ` The requested mutual response failed closed to a consistent direct-only comparison (${chargeInduction.fallbackReason}).` : " Induced dipoles do not polarize one another."} Polarization force is not evaluated.` : " Polarization is omitted."} It omits periodic images, Ewald summation, charge transfer, electronic structure, and reservoir response. The displayed pair force is not a validated total mechanical force and is not integrated into relaxation or time.`
       : "This is the pair interaction energy and exact analytic electrostatic force on emitted supplied formal point charges in a declared uniform isotropic relative permittivity over one finite open-boundary crop. It omits periodic images, Ewald summation, polarization, charge transfer, self energy, short-range repulsion, dispersion, electronic structure, and solvent or reservoir response. The force is not a total mechanical force and is not integrated into relaxation or time; the model is conditional, not a validated material energy or force field.",
   };
 }
@@ -462,6 +488,10 @@ export function finitePointChargeReachProfile(currentSites = [], addedSites = []
   dispersionDampingLengthAngstrom = .3,
   inductionPolarizabilityAngstrom3 = 0,
   inductionDampingLengthAngstrom = .3,
+  inductionResponseModel = "direct",
+  inductionMaximumIterations = 128,
+  inductionConvergenceToleranceElectronAngstrom = 1e-6,
+  inductionIterationMixing = .5,
 } = {}) {
   if (!finite(nearestNeighborAngstrom) || Number(nearestNeighborAngstrom) <= 0) {
     throw new RangeError("nearestNeighborAngstrom must be positive");
@@ -482,6 +512,10 @@ export function finitePointChargeReachProfile(currentSites = [], addedSites = []
       dispersionDampingLengthAngstrom,
       inductionPolarizabilityAngstrom3,
       inductionDampingLengthAngstrom,
+      inductionResponseModel,
+      inductionMaximumIterations,
+      inductionConvergenceToleranceElectronAngstrom,
+      inductionIterationMixing,
       reachAngstrom: reach === "global" ? "global" : reach * Number(nearestNeighborAngstrom),
     }));
   const availableSamples = samples.filter((sample) => sample.available);
@@ -508,9 +542,24 @@ export function finitePointChargeReachProfile(currentSites = [], addedSites = []
     dispersionDampingLengthAngstrom: Number(dispersionDampingLengthAngstrom),
     inductionPolarizabilityAngstrom3: Number(inductionPolarizabilityAngstrom3),
     inductionDampingLengthAngstrom: Number(inductionDampingLengthAngstrom),
+    inductionResponseModel,
+    inductionMaximumIterations,
+    inductionConvergenceToleranceElectronAngstrom,
+    inductionIterationMixing,
     chargeInductionApplied: Number(inductionPolarizabilityAngstrom3) > 0,
     inductionParametersFitted: false,
-    mutualDipoleInductionSolved: false,
+    mutualDipoleInductionSolved: Number(inductionPolarizabilityAngstrom3) > 0
+      && inductionResponseModel === "self-consistent" && availableSamples.length > 0
+      && availableSamples.every((sample) => sample.mutualDipoleInductionSolved),
+    inductionDirectFallbackSamples: availableSamples.filter((sample) =>
+      sample.inductionDirectFallbackApplied).length,
+    inductionMaximumConvergenceIterations: Math.max(0, ...availableSamples.map((sample) =>
+      sample.inductionConvergenceIterations || 0)),
+    inductionMaximumConvergenceResidualElectronAngstrom: Math.max(0,
+      ...availableSamples.map((sample) =>
+        sample.inductionConvergenceResidualElectronAngstrom || 0)),
+    inductionMutualTensorEvaluations: availableSamples.reduce((sum, sample) =>
+      sum + (sample.inductionMutualTensorEvaluations || 0), 0),
     polarizationForceEvaluated: false,
     nearestNeighborAngstrom: Number(nearestNeighborAngstrom),
     candidateSetChanged: false,

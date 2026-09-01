@@ -1,5 +1,27 @@
 # Materials Growth Lab: off-lattice GCTS covering
 
+## Build 429 · induced dipoles can now close the mutual-response loop
+
+The finite polarization laboratory now offers a second no-text-field response
+mode. **Direct** preserves Build 428 exactly. **Self-consistent** starts from
+the damped formal-charge field, then iterates every induced dipole against the
+other induced dipoles through a finite Tang–Toennies `f₃/f₅` tensor. At a
+converged fixed point the energy is evaluated as
+`Uind=−(kₑ/2εᵣ)Σᵢ μᵢ·Eᵢq`; current and projected configurations are solved
+separately before their difference ranks an unchanged candidate.
+
+The receipt exposes the requested and applied response, iteration count,
+maximum dipole residual, tensor work, and any fallback. A requested mutual
+solve is claimed only when both current and projected states converge; if
+either does not, both are recomputed in the direct model so the comparison
+fails closed rather than mixing two polarization approximations. Dipole glyphs
+show the applied solution. The declared `α` is still global rather than
+species-fitted, the `f₃/f₅` tensor is a transparent hypothesis rather than a
+parameterized Thole/AMOEBA force field, and polarization force, periodic
+response, charge transfer, electronic structure, relaxation, and time remain
+outside the claim. The interacting-dipole motivation follows
+[Thole (1981)](https://doi.org/10.1016/0301-0104(81)85176-2).
+
 ## Build 428 · finite charge induction adds many-body geometry
 
 The finite interaction laboratory now has an opt-in isotropic polarizability

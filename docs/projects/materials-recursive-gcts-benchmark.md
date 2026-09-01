@@ -1,5 +1,31 @@
 # Recursive GCTS benchmark for material growth
 
+## Finite self-consistent mutual polarization (Build 429)
+
+Build 429 turns the one-way induction diagnostic into an optional closed local
+response loop without changing the exact GCTS action vocabulary. For each
+finite current or projected configuration, the solver iterates
+`μᵢ=(α/εᵣ)(Eᵢq+ΣⱼTᵢⱼμⱼ)`, with an isotropic Tang–Toennies-damped tensor
+`Tμ=[3f₅(μ·r̂)r̂−f₃μ]/r³`. Once the fixed-point residual is below the frozen
+tolerance, the stationary polarization energy is
+`−(kₑ/2εᵣ)Σᵢμᵢ·Eᵢq`. This introduces recursive many-body feedback into the
+geometry score while preserving candidate IDs, poses, collision tests, and
+hard cover certificates.
+
+Convergence is part of the scientific output, not hidden numerical plumbing.
+Receipts retain iteration count, residual, tensor evaluations, requested and
+applied response, and fallback reason. If either side of an incremental
+comparison fails, both sides are recomputed using direct induction; a mixed
+direct/mutual ΔU is forbidden. The implementation is motivated by the
+smeared interacting-dipole model of
+[Thole, *Chemical Physics* 59 (1981) 341–350](https://doi.org/10.1016/0301-0104(81)85176-2),
+which formulates coupled induced dipoles and short-range damping to avoid the
+point-dipole polarization catastrophe. The portal does **not** claim to
+reproduce that paper's fitted atomic polarizabilities or a modern AMOEBA
+parameterization: α remains one declared global control, the damping tensor is
+the portal's explicit `f₃/f₅` hypothesis, and polarization force, periodic
+response, electronic relaxation, and physical dynamics remain open.
+
 ## Damped charge-induced-dipole energy (Build 428)
 
 A selectable isotropic polarizability now converts the finite damped formal-

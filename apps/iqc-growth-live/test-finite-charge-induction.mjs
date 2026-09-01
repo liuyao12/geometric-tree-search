@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { finiteDampedChargeInductionEnergy, incrementalFiniteChargeInduction,
-  tangToenniesChargeDamping } from "./finite-charge-induction.mjs";
+  tangToenniesChargeDamping, tangToenniesDipoleField } from "./finite-charge-induction.mjs";
 
 const close = (actual, expected, tolerance = 1e-10) => assert.ok(
   Math.abs(actual - expected) <= tolerance * Math.max(1, Math.abs(actual), Math.abs(expected)),
@@ -42,6 +42,11 @@ close(screenedAudit.maximumInducedDipoleElectronAngstrom,
 const zero = finiteDampedChargeInductionEnergy(sites, { polarizabilityAngstrom3: 0 });
 close(zero.energyElectronVolt, 0);
 assert.equal(zero.available, false);
+const zeroMutual = incrementalFiniteChargeInduction(sites.slice(0, 2), sites.slice(2), {
+  polarizabilityAngstrom3: 0, responseModel: "self-consistent" });
+assert.equal(zeroMutual.appliedResponseModel, "off");
+assert.equal(zeroMutual.mutualDipoleInductionSolved, false);
+assert.equal(zeroMutual.energyIsManyBodyInChargeGeometry, false);
 
 const incremental = incrementalFiniteChargeInduction(sites.slice(0, 2), sites.slice(2), {
   polarizabilityAngstrom3: 2, dampingLengthAngstrom: .35 });
@@ -51,6 +56,69 @@ close(incremental.deltaEnergyElectronVolt,
 assert.equal(incremental.energyIsManyBodyInChargeGeometry, true);
 assert.equal(incremental.polarizationForceEvaluated, false);
 assert.equal(incremental.targetUsed, false);
+
+const axialDipoleField = tangToenniesDipoleField([2, 0, 0], [1, 0, 0], .35);
+assert.ok(axialDipoleField[0] > 0);
+close(axialDipoleField[1], 0);
+close(axialDipoleField[2], 0);
+
+const mutual = finiteDampedChargeInductionEnergy(sites, {
+  polarizabilityAngstrom3: 2,
+  dampingLengthAngstrom: .35,
+  responseModel: "self-consistent",
+  maximumIterations: 128,
+});
+assert.equal(mutual.selfConsistentConverged, true);
+assert.equal(mutual.mutualDipoleInductionSolved, true);
+assert.equal(mutual.appliedResponseModel, "self-consistent");
+assert.ok(mutual.convergenceIterations > 1);
+assert.ok(mutual.mutualTensorEvaluations > 0);
+assert.ok(Math.abs(mutual.energyElectronVolt - audit.energyElectronVolt) > 1e-5);
+
+const mutualTransformed = finiteDampedChargeInductionEnergy(transformed, {
+  polarizabilityAngstrom3: 2,
+  dampingLengthAngstrom: .35,
+  responseModel: "self-consistent",
+  maximumIterations: 128,
+});
+close(mutualTransformed.energyElectronVolt, mutual.energyElectronVolt, 1e-8);
+close(mutualTransformed.maximumInducedDipoleElectronAngstrom,
+  mutual.maximumInducedDipoleElectronAngstrom, 1e-8);
+
+const mutualIncremental = incrementalFiniteChargeInduction(sites.slice(0, 2), sites.slice(2), {
+  polarizabilityAngstrom3: 2,
+  dampingLengthAngstrom: .35,
+  responseModel: "self-consistent",
+  maximumIterations: 128,
+});
+assert.equal(mutualIncremental.mutualDipoleInductionSolved, true);
+assert.equal(mutualIncremental.directFallbackApplied, false);
+close(mutualIncremental.deltaEnergyElectronVolt,
+  mutual.energyElectronVolt - finiteDampedChargeInductionEnergy(sites.slice(0, 2), {
+    polarizabilityAngstrom3: 2,
+    dampingLengthAngstrom: .35,
+    responseModel: "self-consistent",
+    maximumIterations: 128,
+  }).energyElectronVolt, 1e-8);
+
+const failedMutual = incrementalFiniteChargeInduction(sites.slice(0, 2), sites.slice(2), {
+  polarizabilityAngstrom3: 4,
+  dampingLengthAngstrom: .35,
+  responseModel: "self-consistent",
+  maximumIterations: 1,
+  convergenceToleranceElectronAngstrom: 1e-14,
+});
+assert.equal(failedMutual.directFallbackApplied, true);
+assert.equal(failedMutual.appliedResponseModel, "direct");
+assert.equal(failedMutual.mutualDipoleInductionSolved, false);
+assert.ok(failedMutual.fallbackReason.includes("did not converge"));
+close(failedMutual.deltaEnergyElectronVolt,
+  incrementalFiniteChargeInduction(sites.slice(0, 2), sites.slice(2), {
+    polarizabilityAngstrom3: 4,
+    dampingLengthAngstrom: .35,
+  }).deltaEnergyElectronVolt);
+assert.throws(() => finiteDampedChargeInductionEnergy(sites, {
+  polarizabilityAngstrom3: 1, responseModel: "oracle" }), /responseModel/);
 
 const oppositeField = finiteDampedChargeInductionEnergy([
   { charge: 0, position: [0, 0, 0] },
